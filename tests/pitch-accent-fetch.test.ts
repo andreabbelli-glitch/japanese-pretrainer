@@ -8,6 +8,7 @@ import {
   extractPitchAccentCandidatesFromOjadHtml,
   extractPitchAccentFromWiktionaryWikitext,
   fetchPitchAccentsForBundle,
+  parsePitchAccentWordList,
   resolvePitchAccentForEntry
 } from "@/lib/pitch-accent-fetch";
 
@@ -57,6 +58,64 @@ describe("pitch accent fetch helpers", () => {
         pitchAccent: 2,
         reading: "たべる",
         title: "食べる・食べます"
+      }
+    ]);
+  });
+
+  it("parses pitch accent word lists from tab-separated rows and JSON arrays", () => {
+    expect(
+      parsePitchAccentWordList(
+        [
+          "# comment",
+          "食べる",
+          "設定\tせってい",
+          "未解決\tみかいけつ\tterm-mikai",
+          "grammar-toki"
+        ].join("\n")
+      )
+    ).toEqual([
+      {
+        raw: "食べる",
+        word: "食べる"
+      },
+      {
+        raw: "設定\tせってい",
+        reading: "せってい",
+        word: "設定"
+      },
+      {
+        entryId: "term-mikai",
+        raw: "未解決\tみかいけつ\tterm-mikai",
+        reading: "みかいけつ",
+        word: "未解決"
+      },
+      {
+        entryId: "grammar-toki",
+        raw: "grammar-toki"
+      }
+    ]);
+
+    expect(
+      parsePitchAccentWordList(
+        JSON.stringify([
+          "進化",
+          {
+            entry_id: "term-shinka",
+            reading: "しんか",
+            word: "進化"
+          }
+        ])
+      )
+    ).toEqual([
+      {
+        raw: "進化",
+        word: "進化"
+      },
+      {
+        entryId: "term-shinka",
+        raw: '{"entry_id":"term-shinka","reading":"しんか","word":"進化"}',
+        reading: "しんか",
+        word: "進化"
       }
     ]);
   });
@@ -198,7 +257,10 @@ describe("pitch accent fetch helpers", () => {
         );
       }
 
-      return new Response("Not Found", { status: 404, statusText: "Not Found" });
+      return new Response("Not Found", {
+        status: 404,
+        statusText: "Not Found"
+      });
     });
     vi.stubGlobal("fetch", fetchMock);
 
@@ -227,29 +289,30 @@ describe("pitch accent fetch helpers", () => {
   it("writes pronunciations.json with pitch accent source metadata", async () => {
     const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pitch-manifest-"));
     const mediaDirectory = path.join(tempDir, "media", "fixture");
-    const fetchMock = vi.fn(async () =>
-      new Response(
-        JSON.stringify({
-          query: {
-            pages: [
-              {
-                title: "進化",
-                revisions: [
-                  {
-                    slots: {
-                      main: {
-                        content:
-                          "==Japanese==\n===Pronunciation===\n* {{ja-pron|しんか|acc=1|acc_ref=NHK}}\n"
+    const fetchMock = vi.fn(
+      async () =>
+        new Response(
+          JSON.stringify({
+            query: {
+              pages: [
+                {
+                  title: "進化",
+                  revisions: [
+                    {
+                      slots: {
+                        main: {
+                          content:
+                            "==Japanese==\n===Pronunciation===\n* {{ja-pron|しんか|acc=1|acc_ref=NHK}}\n"
+                        }
                       }
                     }
-                  }
-                ]
-              }
-            ]
-          }
-        }),
-        { status: 200 }
-      )
+                  ]
+                }
+              ]
+            }
+          }),
+          { status: 200 }
+        )
     );
     vi.stubGlobal("fetch", fetchMock);
 
@@ -302,6 +365,173 @@ describe("pitch accent fetch helpers", () => {
           pitch_accent_status: "resolved"
         }
       ]);
+    } finally {
+      await rm(tempDir, { force: true, recursive: true });
+    }
+  });
+
+  it("fetches only requested words from a bundle-scoped word array", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pitch-words-"));
+    const mediaDirectory = path.join(tempDir, "media", "fixture");
+    const fetchMock = vi.fn(async (url: string) => {
+      if (
+        url.includes("wiktionary") &&
+        url.includes(encodeURIComponent("進化"))
+      ) {
+        return new Response(
+          JSON.stringify({
+            query: {
+              pages: [
+                {
+                  title: "進化",
+                  revisions: [
+                    {
+                      slots: {
+                        main: {
+                          content:
+                            "==Japanese==\n===Pronunciation===\n* {{ja-pron|しんか|acc=1|acc_ref=NHK}}\n"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }),
+          { status: 200 }
+        );
+      }
+
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    try {
+      const summary = await fetchPitchAccentsForBundle({
+        bundle: {
+          cardFiles: [],
+          cards: [],
+          grammarPatterns: [],
+          lessons: [],
+          media: null,
+          mediaDirectory,
+          mediaSlug: "fixture",
+          references: [],
+          terms: [
+            {
+              aliases: [],
+              id: "term-shinka",
+              kind: "term",
+              lemma: "進化",
+              meaningIt: "evoluzione",
+              pitchAccent: undefined,
+              reading: "しんか",
+              romaji: "shinka",
+              source: {
+                documentKind: "cards",
+                filePath: "fixture.md",
+                sequence: 0
+              }
+            },
+            {
+              aliases: [],
+              id: "term-mishiyou",
+              kind: "term",
+              lemma: "未使用",
+              meaningIt: "non usato",
+              pitchAccent: undefined,
+              reading: "みしよう",
+              romaji: "mishiyou",
+              source: {
+                documentKind: "cards",
+                filePath: "fixture.md",
+                sequence: 1
+              }
+            }
+          ]
+        },
+        network: {
+          requestDelayMs: 0
+        },
+        words: ["進化"]
+      });
+
+      expect(summary.results).toHaveLength(1);
+      expect(summary.results[0]).toMatchObject({
+        entryId: "term-shinka",
+        status: "resolved"
+      });
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+
+      const manifest = JSON.parse(
+        await readFile(path.join(mediaDirectory, "pronunciations.json"), "utf8")
+      );
+
+      expect(manifest.entries).toEqual([
+        {
+          entry_id: "term-shinka",
+          entry_type: "term",
+          pitch_accent: 1,
+          pitch_accent_page_url:
+            "https://en.wiktionary.org/wiki/%E9%80%B2%E5%8C%96",
+          pitch_accent_source: "Wiktionary",
+          pitch_accent_status: "resolved"
+        }
+      ]);
+    } finally {
+      await rm(tempDir, { force: true, recursive: true });
+    }
+  });
+
+  it("reports unmatched requested words without querying pitch accent sources", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pitch-unmatched-"));
+    const mediaDirectory = path.join(tempDir, "media", "fixture");
+    const fetchMock = vi.fn(async () => new Response("{}", { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    try {
+      const summary = await fetchPitchAccentsForBundle({
+        bundle: {
+          cardFiles: [],
+          cards: [],
+          grammarPatterns: [],
+          lessons: [],
+          media: null,
+          mediaDirectory,
+          mediaSlug: "fixture",
+          references: [],
+          terms: [
+            {
+              aliases: [],
+              id: "term-shinka",
+              kind: "term",
+              lemma: "進化",
+              meaningIt: "evoluzione",
+              pitchAccent: undefined,
+              reading: "しんか",
+              romaji: "shinka",
+              source: {
+                documentKind: "cards",
+                filePath: "fixture.md",
+                sequence: 0
+              }
+            }
+          ]
+        },
+        network: {
+          requestDelayMs: 0
+        },
+        words: ["未登録"]
+      });
+
+      expect(summary.results).toEqual([]);
+      expect(summary.requestedUnresolved).toEqual([
+        {
+          raw: "未登録",
+          reason: "no glossary match for '未登録'"
+        }
+      ]);
+      expect(fetchMock).not.toHaveBeenCalled();
     } finally {
       await rm(tempDir, { force: true, recursive: true });
     }
@@ -400,7 +630,10 @@ describe("pitch accent fetch helpers", () => {
         );
       }
 
-      if (url.includes("ojad") && url.includes(encodeURIComponent("みかいけつ"))) {
+      if (
+        url.includes("ojad") &&
+        url.includes(encodeURIComponent("みかいけつ"))
+      ) {
         return new Response("Not Found", {
           status: 404,
           statusText: "Not Found"

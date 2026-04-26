@@ -261,7 +261,7 @@ export async function hydrateReviewCardUncached(input: {
         nowIso,
         fsrsOptimizerSnapshot,
         queueStateSnapshot,
-        undefined,
+        buildReviewCardContexts(subjectContext.contextCards, subjectContext.mediaById),
         {
           reviewStateUpdatedAt: subjectState?.updatedAt ?? null
         }
@@ -368,7 +368,7 @@ export async function getReviewCardDetailData(
     nowIso,
     undefined,
     queueStateSnapshot,
-    undefined,
+    buildReviewCardContexts(subjectContext.contextCards, subjectContext.mediaById),
     {
       reviewStateUpdatedAt: subjectState?.updatedAt ?? null
     }
@@ -480,27 +480,43 @@ async function loadReviewSubjectCardContext(input: {
   );
   const mediaById = buildReviewMediaLookup(await listMediaCached(input.database));
 
-  if (input.subjectIdentity.entryType === "term") {
-    return {
-      entryLookup: buildEntryLookup(
-        mergeGlossaryEntries(input.terms, groupEntries as ReviewTermLookupEntry[]),
-        input.grammar
-      ),
-      mediaById,
-      subjectCards
-    };
-  }
+  const mergedTerms =
+    input.subjectIdentity.entryType === "term"
+      ? (mergeGlossaryEntries(
+          input.terms,
+          groupEntries as ReviewTermLookupEntry[]
+        ) as ReviewTermLookupEntry[])
+      : input.terms;
+  const mergedGrammar =
+    input.subjectIdentity.entryType === "grammar"
+      ? (mergeGlossaryEntries(
+          input.grammar,
+          groupEntries as ReviewGrammarLookupEntry[]
+        ) as ReviewGrammarLookupEntry[])
+      : input.grammar;
+
+  const subjectEntryLookup = buildReviewSubjectEntryLookup({
+    grammar: mergedGrammar,
+    terms: mergedTerms
+  });
+
+  const subjectGroupCards = subjectCards.filter((card) => {
+    const identity = deriveReviewSubjectIdentity({
+      cardId: card.id,
+      cardType: card.cardType,
+      front: card.front,
+      entryLinks: card.entryLinks,
+      entryLookup: subjectEntryLookup
+    });
+
+    return identity.subjectKey === input.subjectIdentity.subjectKey;
+  });
 
   return {
-    entryLookup: buildEntryLookup(
-      input.terms,
-      mergeGlossaryEntries(
-        input.grammar,
-        groupEntries as ReviewGrammarLookupEntry[]
-      )
-    ),
+    contextCards: subjectCards,
+    entryLookup: buildEntryLookup(mergedTerms, mergedGrammar),
     mediaById,
-    subjectCards
+    subjectCards: subjectGroupCards
   };
 }
 
@@ -510,6 +526,7 @@ function buildSingleReviewSubjectCardContext(input: {
   terms: ReviewTermLookupEntry[];
 }) {
   return {
+    contextCards: [input.card],
     entryLookup: buildEntryLookup(input.terms, input.grammar),
     mediaById: buildSingleMediaLookup({
       id: input.card.mediaId,

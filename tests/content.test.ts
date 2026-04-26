@@ -644,8 +644,12 @@ describe("content parser and validator", () => {
 
   it("parses the real Duel Masters bundle", async () => {
     const result = await parseMediaDirectory(duelMastersMediaDirectory);
-    const lessonSlugs = result.data.lessons.map((lesson) => lesson.frontmatter.slug);
-    const cardFileIds = result.data.cardFiles.map((file) => file.frontmatter.id);
+    const lessonSlugs = result.data.lessons.map(
+      (lesson) => lesson.frontmatter.slug
+    );
+    const cardFileIds = result.data.cardFiles.map(
+      (file) => file.frontmatter.id
+    );
     const termIds = result.data.terms.map((term) => term.id);
     const grammarIds = result.data.grammarPatterns.map((grammar) => grammar.id);
     const cardIds = result.data.cards.map((card) => card.id);
@@ -685,9 +689,9 @@ describe("content parser and validator", () => {
         "card-apollonus-dragelion-recognition"
       ])
     );
-    expect(result.data.cards.every((card) => card.exampleJp && card.exampleIt)).toBe(
-      true
-    );
+    expect(
+      result.data.cards.every((card) => card.exampleJp && card.exampleIt)
+    ).toBe(true);
 
     const balgariskLesson = result.data.lessons.find(
       (lesson) =>
@@ -703,6 +707,20 @@ describe("content parser and validator", () => {
         "term:term-motsu"
       ])
     );
+  });
+
+  it("keeps distinct bonus acquisition card fronts on distinct review entries", async () => {
+    const result = await parseMediaDirectory(duelMastersMediaDirectory);
+    const lessonId =
+      "lesson-duel-masters-dm25-live-duel-encounters-bonus-cards-acquisition";
+    const lessonCards = result.data.cards.filter(
+      (card) => card.lessonId === lessonId
+    );
+    const entryIds = lessonCards.map((card) => card.entryId);
+
+    expect(result.ok).toBe(true);
+    expect(lessonCards).toHaveLength(7);
+    expect(new Set(entryIds).size).toBe(lessonCards.length);
   });
 
   it("aggregates media bundles from the content root", async () => {

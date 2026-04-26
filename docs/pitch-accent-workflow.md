@@ -24,12 +24,43 @@ Comandi utili:
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --dry-run
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --limit 20
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --refresh
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --entry term-taberu
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --word 食べる --word 設定
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --words-file tmp/pitch-accent-targets.tsv
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --entry-delay-ms 300000 --request-delay-ms 5000
 ```
 
 `--entry-delay-ms` inserisce una pausa tra una entry e la successiva. E utile
 quando si vuole procedere molto lentamente, per esempio un termine ogni 5
 minuti.
+
+## Modalita mirata
+
+Per i workflow editoriali locali, quando sono state appena create o riviste
+solo alcune flashcard, non lanciare di default il fetch sull'intero media.
+Passa invece solo le entry nuove o aggiornate:
+
+```bash
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --entry <term-or-grammar-id>
+```
+
+Se non hai ancora una lista affidabile di ID, puoi passare le parole:
+
+```bash
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --word 食べる --word 設定
+```
+
+`--words-file` accetta:
+
+- una parola per riga, per esempio `食べる`;
+- `word<TAB>reading`;
+- `word<TAB>reading<TAB>entry_id`;
+- un ID diretto `term-...` o `grammar-...` su una riga singola;
+- un array JSON di stringhe o oggetti `{ "word": "...", "reading": "...",
+  "entry_id": "..." }`.
+
+Nel riepilogo, righe non risolte contro il glossary del bundle vengono
+stampate come `skipped <raw> (...)` e non interrogano Wiktionary o OJAD.
 
 ## Ordine delle fonti
 

@@ -94,6 +94,11 @@ Primary target files:
   repeated rules-text expression.
 - Before creating flashcards, search for existing cards that already train the
   same reading task.
+- A card's `entry_id` must represent the full review surface trained by its
+  `front`, not merely a lemma contained inside that front. If the front is a
+  longer chunk, phrase, or inflected form, create or reuse a dedicated
+  `term-*`/`grammar-*` entry for that exact surface. Reuse the same `entry_id`
+  only when the visible Japanese surface and reading are the same.
 - If the new material could later feed `Kanji Clash`, keep the canonical
   orthography and reading stable; do not create near-duplicate cards or lessons
   just to manufacture extra pair candidates.
@@ -284,6 +289,10 @@ Practical card-selection rules:
   explicitly asks for name memorization as a separate goal;
 - if several candidates satisfy the criteria, create all of them, provided they
   are not duplicates;
+- concept/chunk cards are not allowed to point at a shorter lemma entry just
+  because the lemma appears inside the `front`; the chunk needs its own entry so
+  review subject, pitch accent, and pronunciation audio stay aligned with what
+  the user actually sees;
 - do not ignore "small" items just because they are written in kana or look
   simple; words like `すべて`, `それ`, `それら`, `その中`, `各`, or similar
   markers can deserve a card when they change who is affected, how many cards
@@ -340,9 +349,14 @@ Practical card-selection rules:
   or fixture updates caused by the new content have been committed alongside
   the content change.
 - After creating new glossary or grammar entries for the card, fetch pitch
-  accents for the affected media bundle before finishing.
-- Use the repo workflow:
-  `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media duel-masters-dm25`
+  accents for the flashcard entries created or revised in this task before
+  finishing.
+- Use the targeted repo workflow, preferring entry IDs and passing one
+  `--entry` per new term or grammar entry:
+  `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media duel-masters-dm25 --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]`
+- Use `--word` or `--words-file` only when a reliable entry-id list is not
+  available. Do not run a whole-media pitch accent fetch for normal live-card
+  imports unless the user explicitly asks to backfill the media backlog.
 - Let the workflow save `pitch_accent`, `pitch_accent_source`, and
   `pitch_accent_page_url` into `pronunciations.json` when it resolves them.
 - After adding or revising cards, regenerate

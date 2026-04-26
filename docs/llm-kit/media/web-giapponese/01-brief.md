@@ -61,6 +61,9 @@ I termini molto verticali del singolo sito vanno trattati cosi:
 - le extra devono essere N5-N3 oppure estremamente comuni e davvero utili;
 - se una parola esiste gia in altri media, crea comunque l'occorrenza locale
   quando questa pagina introduce una sfumatura, un esempio o una card utile;
+- quando una flashcard allena una frase UI o un chunk piu lungo, `entry_id`
+  deve puntare a una entry dedicata a quella superficie completa, non al lemma
+  interno piu corto;
 - l'importer unisce automaticamente glossary/review per superficie
   normalizzata; `cross_media_group` e solo metadata documentativo opzionale;
 - se la sfumatura locale cambia davvero, renderlo esplicito in `notes_it`;
@@ -106,7 +109,8 @@ Per una singola pagina:
 - aggiornamento di `workflow/image-requests.yaml`
 - aggiornamento di `workflow/image-assets.yaml`
 - validazione del repo con i comandi canonici
-- fetch dei pitch accent del media con
-  `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese`
+- fetch dei pitch accent solo per le flashcard create o riviste, preferendo gli
+  ID entry:
+  `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`
 - import incrementale nel DB target con
   `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`

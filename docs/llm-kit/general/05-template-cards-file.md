@@ -102,6 +102,11 @@ Regole pratiche:
 - `example_jp` deve mostrare uso vivo, non spiegazione della parola: vietate
   frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
   `Xという言葉は...` o simili;
+- `entry_id` deve seguire il target review completo della card. Se `front` e
+  una locuzione, una forma flessa o un chunk operativo, definisci una entry
+  dedicata per quella superficie completa invece di puntare al lemma interno.
+  Riusa lo stesso `entry_id` solo per card con la stessa superficie
+  grafica/lettura canonica.
 - evita anche esempi da template come `これはXです`, `ここはXです`,
   `Xがだいじです`, `Xタイプのポケモンです` quando non corrispondono a una
   schermata o battuta naturale del media;

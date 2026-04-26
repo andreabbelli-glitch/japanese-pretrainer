@@ -52,6 +52,35 @@ level_hint: n3
 :::
 
 :::term
+id: term-hyoujishiteiru
+lemma: 表示している
+reading: ひょうじしている
+romaji: hyouji shite iru
+pos: phrase
+aliases: [表示している, hyouji shite iru, ひょうじしている]
+meaning_it: visualizzato / mostrato
+notes_it: >-
+  Forma stativa di `表示する`: non indica solo l'azione di "mostrare", ma lo stato
+  in cui qualcosa risulta attualmente visualizzato a schermo.
+level_hint: n3
+:::
+
+:::term
+id: term-kaki-ni-hyoujishiteiru
+lemma: 下記に表示している
+reading: かきにひょうじしている
+romaji: kaki ni hyouji shite iru
+pos: phrase
+aliases: [下記に表示している, kaki ni hyouji shite iru, かきにひょうじしている]
+meaning_it: visualizzato qui sotto / mostrato di seguito
+notes_it: >-
+  Combina il puntatore formale `下記` con `に` locativo e lo stato `表示している`.
+  Nelle UI introduce elementi che l'utente deve guardare nella parte sottostante
+  dello schermo o della pagina.
+level_hint: n2
+:::
+
+:::term
 id: term-tokuten
 lemma: 特典
 reading: とくてん
@@ -64,6 +93,35 @@ notes_it: >-
   si usa per indicare gli oggetti omaggio, le carte promo o i bonus che si ottengono
   compiendo una specifica azione o un acquisto (es. pre-order bonus o特典).
 level_hint: n2
+:::
+
+:::term
+id: term-pack-kara-nyuushu
+lemma: パックから入手
+reading: パックからにゅうしゅ
+romaji: pakku kara nyuushu
+pos: phrase
+aliases: [パックから入手, pakku kara nyuushu, パックからにゅうしゅ]
+meaning_it: ottenere da un pacchetto
+notes_it: >-
+  Locuzione UI che contrappone la fonte `パックから` ad altri modi di ottenere una
+  carta, per esempio la generazione/crafting.
+level_hint: custom
+:::
+
+:::term
+id: term-tokuten-card-wo-kakutoku-shimasu
+lemma: 特典カードを獲得します
+reading: とくてんカードをかくとくします
+romaji: tokuten kaado wo kakutoku shimasu
+pos: phrase
+aliases:
+  [特典カードを獲得します, tokuten kaado wo kakutoku shimasu, とくてんカードをかくとくします]
+meaning_it: ottieni / otterrai le carte bonus
+notes_it: >-
+  Frase cortese da interfaccia: `特典カード` e l'oggetto marcato da `を`, mentre
+  `獲得します` comunica l'acquisizione effettiva del bonus.
+level_hint: custom
 :::
 
 :::card
@@ -104,7 +162,7 @@ tags: [live-duel, ui, noun]
 id: card-duel-masters-dm25-live-duel-encounters-bonus-cards-acquisition-term-hyoujishiteiru
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bonus-cards-acquisition
 entry_type: term
-entry_id: term-hyouji
+entry_id: term-hyoujishiteiru
 card_type: concept
 front: '{{表示|ひょうじ}}している'
 back: 'visualizzato, mostrato'
@@ -121,7 +179,7 @@ tags: [live-duel, ui, verb]
 id: card-duel-masters-dm25-live-duel-encounters-bonus-cards-acquisition-chunk-kaki-ni-hyoujishiteiru
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bonus-cards-acquisition
 entry_type: term
-entry_id: term-kaki
+entry_id: term-kaki-ni-hyoujishiteiru
 card_type: concept
 front: '{{下記|かき}}に{{表示|ひょうじ}}している'
 back: 'visualizzate qui sotto'
@@ -155,7 +213,7 @@ tags: [live-duel, ui, noun]
 id: card-duel-masters-dm25-live-duel-encounters-bonus-cards-acquisition-chunk-pack-kara-nyuushu
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bonus-cards-acquisition
 entry_type: term
-entry_id: term-nyuushu
+entry_id: term-pack-kara-nyuushu
 card_type: concept
 front: 'パックから{{入手|にゅうしゅ}}'
 back: 'ottenere da un pacchetto'
@@ -172,7 +230,7 @@ tags: [live-duel, ui, chunk]
 id: card-duel-masters-dm25-live-duel-encounters-bonus-cards-acquisition-chunk-tokuten-card-wo-kakutoku-shimasu
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bonus-cards-acquisition
 entry_type: term
-entry_id: term-tokuten
+entry_id: term-tokuten-card-wo-kakutoku-shimasu
 card_type: concept
 front: '{{特典|とくてん}}カードを{{獲得|かくとく}}します'
 back: 'otterrai le carte bonus'

@@ -294,6 +294,26 @@ cross-media, esegue il fetch offline e manda a Forvo manuale solo il residuo.
 mirati di fallback o debug del fetcher. La source of truth operativa e
 [`docs/pronunciation-workflow.md`](./docs/pronunciation-workflow.md).
 
+## Workflow pitch accent
+
+Per backfill completi:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug>
+```
+
+Per workflow editoriali che creano o modificano solo alcune flashcard, usa il
+fetch mirato sulle entry appena toccate:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --entry <term-or-grammar-id>
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --word 食べる --word 設定
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --words-file tmp/pitch-accent-targets.tsv
+```
+
+La procedura dettagliata e in
+[`docs/pitch-accent-workflow.md`](./docs/pitch-accent-workflow.md).
+
 ## Database locale
 
 Il layer persistence iniziale usa `Drizzle ORM` su `SQLite` locale-first.

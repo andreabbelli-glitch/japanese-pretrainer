@@ -62,7 +62,7 @@ File da produrre di norma:
 
 Comandi operativi obbligatori dopo la scrittura:
 - esegui i controlli canonici del repo;
-- esegui `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese`;
+- esegui `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>` per ogni entry flashcard appena creata o rivista;
 - esegui `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`;
 - considera il lavoro incompleto se pitch accent fetch, import o cache
   revalidation falliscono.
@@ -71,6 +71,9 @@ Regole di formato obbligatorie:
 - Non cambiare il formato.
 - Non inventare nuovi campi.
 - Usa furigana, link semantici e blocchi strutturati solo nelle forme supportate.
+- Ogni flashcard deve puntare all'entry della superficie completa del `front`:
+  se alleni una frase UI o un chunk piu lungo, crea una entry dedicata per quel
+  chunk invece di riusare l'entry del lemma interno.
 - `example_jp` e `example_it` vanno sempre insieme.
 - `notes_it`, `summary`, `description` e prose YAML vanno serializzati in modo
   sicuro (`>-` oppure stringhe quotate quando opportuno).

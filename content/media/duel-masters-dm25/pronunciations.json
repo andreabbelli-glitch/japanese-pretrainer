@@ -1408,6 +1408,23 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-hyouji",
+      "audio_src": "assets/audio/term/term-hyouji/forvo-manual-ひょうし.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A1%A8%E7%A4%BA/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A1%A8%E7%A4%BA",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-hyoujishiteiru",
+      "pitch_accent_status": "source_error"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-ichiban-shita",
       "audio_src": "assets/audio/term/term-ichiban-shita/forvo-manual-いちは-んした.mp3",
       "audio_source": "forvo",
@@ -1541,6 +1558,23 @@
       "entry_type": "term",
       "entry_id": "term-justdiver",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kaki",
+      "audio_src": "assets/audio/term/term-kaki/forvo-manual-かき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%B8%8B%E8%A8%98/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%B8%8B%E8%A8%98",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kaki-ni-hyoujishiteiru",
+      "pitch_accent_status": "source_error"
     },
     {
       "entry_type": "term",
@@ -1976,6 +2010,18 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-nyuushu",
+      "audio_src": "assets/audio/term/term-nyuushu/forvo-manual-にゅうしゅ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%85%A5%E6%89%8B/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%85%A5%E6%89%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-offer-rate",
       "audio_src": "assets/audio/term/term-offer-rate/forvo-manual-ていきょうわりあい.mp3",
       "audio_source": "forvo",
@@ -2116,6 +2162,11 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E6%89%80%E6%8C%81%E3%83%81%E3%82%B1%E3%83%83%E3%83%88/#ja",
+      "pitch_accent_status": "source_error"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-pack-kara-nyuushu",
       "pitch_accent_status": "source_error"
     },
     {
@@ -2736,6 +2787,23 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%A8%E3%81%B0%E3%81%99/#ja",
+      "pitch_accent_status": "source_error"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tokuten",
+      "audio_src": "assets/audio/term/term-tokuten/forvo-manual-とくてん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%89%B9%E5%85%B8/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%89%B9%E5%85%B8",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tokuten-card-wo-kakutoku-shimasu",
       "pitch_accent_status": "source_error"
     },
     {

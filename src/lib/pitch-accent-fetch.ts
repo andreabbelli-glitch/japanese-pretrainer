@@ -60,6 +60,18 @@ export type PitchAccentResult =
       detail?: string;
     };
 
+type PitchAccentWordListRequest = {
+  entryId?: string;
+  raw: string;
+  reading?: string;
+  word?: string;
+};
+
+export type PitchAccentRequestedUnresolved = {
+  raw: string;
+  reason: string;
+};
+
 type OjadCandidate = {
   pitchAccent: number;
   query: string;
@@ -81,19 +93,31 @@ const pitchAccentFetchThrottle = createFetchThrottle({
 export async function fetchPitchAccentsForBundle(input: {
   bundle: NormalizedMediaBundle;
   dryRun?: boolean;
+  entryIds?: string[];
   entryDelayMs?: number;
   limit?: number;
   network?: PronunciationFetchNetworkOptions;
   refresh?: boolean;
+  wordListSource?: string;
+  words?: string[];
 }) {
   const allTargets = collectPitchAccentTargets(input.bundle);
+  const requestedTargets = resolvePitchAccentRequestedTargets({
+    bundle: input.bundle,
+    entryIds: input.entryIds,
+    wordListSource: input.wordListSource,
+    words: input.words
+  });
+  const selectedTargets = hasRequestedPitchAccentTargets(input)
+    ? requestedTargets.targets
+    : allTargets;
   const { entries: manifestEntries } = await loadValidatedManifest(
     input.bundle.mediaDirectory,
     input.bundle.mediaSlug
   );
   const targets = input.refresh
-    ? allTargets
-    : allTargets.filter((entry) =>
+    ? selectedTargets
+    : selectedTargets.filter((entry) =>
         shouldFetchPitchAccentEntry(
           entry,
           manifestEntries.get(buildEntryKey(entry.kind, entry.id))
@@ -126,16 +150,107 @@ export async function fetchPitchAccentsForBundle(input: {
     manifestEntries.set(manifestKey, updatedManifestEntry);
 
     if (!input.dryRun) {
-      await persistManifestEntries(input.bundle.mediaDirectory, manifestEntries);
+      await persistManifestEntries(
+        input.bundle.mediaDirectory,
+        manifestEntries
+      );
     }
   }
 
   return {
     errors: results.filter((result) => result.status === "source_error").length,
     missed: results.filter((result) => result.status === "miss").length,
+    requestedUnresolved: requestedTargets.unresolved,
     resolved: results.filter((result) => result.status === "resolved").length,
     results,
-    skipped: allTargets.length - targets.length
+    skipped: selectedTargets.length - targets.length
+  };
+}
+
+export function parsePitchAccentWordList(source: string) {
+  const trimmed = source.trim();
+
+  if (trimmed.length === 0) {
+    return [];
+  }
+
+  if (trimmed.startsWith("[")) {
+    return parsePitchAccentWordListJson(trimmed);
+  }
+
+  return source
+    .split(/\r?\n/u)
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0 && !line.startsWith("#"))
+    .map<PitchAccentWordListRequest>((line) => {
+      const parts = line.split("\t").map((part) => part.trim());
+
+      if (parts.length === 1) {
+        return pitchAccentRequestFromSingleValue(parts[0] ?? "", line);
+      }
+
+      return {
+        entryId: parts[2] || undefined,
+        raw: line,
+        reading: parts[1] || undefined,
+        word: parts[0] || undefined
+      };
+    });
+}
+
+export function resolvePitchAccentRequestedTargets(input: {
+  bundle: NormalizedMediaBundle;
+  entryIds?: string[];
+  wordListSource?: string;
+  words?: string[];
+}) {
+  const rows = [
+    ...(input.entryIds ?? []).map<PitchAccentWordListRequest>((entryId) => ({
+      entryId,
+      raw: entryId
+    })),
+    ...(input.words ?? []).map<PitchAccentWordListRequest>((word) => ({
+      raw: word,
+      word
+    })),
+    ...(input.wordListSource
+      ? parsePitchAccentWordList(input.wordListSource)
+      : [])
+  ];
+  const allTargets = collectPitchAccentTargets(input.bundle);
+  const candidatesById = new Map(allTargets.map((entry) => [entry.id, entry]));
+  const seen = new Set<string>();
+  const targets: PitchAccentFetchTarget[] = [];
+  const unresolved: PitchAccentRequestedUnresolved[] = [];
+
+  for (const row of rows) {
+    const resolved = resolvePitchAccentWordListRow({
+      candidatesById,
+      row,
+      targets: allTargets
+    });
+
+    if (!resolved.ok) {
+      unresolved.push({
+        raw: row.raw,
+        reason: resolved.reason
+      });
+      continue;
+    }
+
+    const key = buildEntryKey(resolved.target.kind, resolved.target.id);
+
+    if (seen.has(key)) {
+      continue;
+    }
+
+    seen.add(key);
+    targets.push(resolved.target);
+  }
+
+  return {
+    targets,
+    unresolved
   };
 }
 
@@ -480,6 +595,168 @@ function collectPitchAccentTargets(bundle: NormalizedMediaBundle) {
   ];
 }
 
+function hasRequestedPitchAccentTargets(input: {
+  entryIds?: string[];
+  wordListSource?: string;
+  words?: string[];
+}) {
+  return (
+    (input.entryIds?.length ?? 0) > 0 ||
+    (input.words?.length ?? 0) > 0 ||
+    typeof input.wordListSource === "string"
+  );
+}
+
+function parsePitchAccentWordListJson(source: string) {
+  const parsed = JSON.parse(source) as unknown;
+
+  if (!Array.isArray(parsed)) {
+    throw new Error("Pitch accent words JSON must be an array.");
+  }
+
+  return parsed.map<PitchAccentWordListRequest>((item, index) => {
+    if (typeof item === "string") {
+      return pitchAccentRequestFromSingleValue(item, item);
+    }
+
+    if (isPitchAccentWordListObject(item)) {
+      const raw = JSON.stringify(item);
+
+      return {
+        entryId: item.entryId ?? item.entry_id,
+        raw,
+        reading: item.reading,
+        word: item.word
+      };
+    }
+
+    throw new Error(
+      `Pitch accent words JSON item ${index + 1} must be a string or object.`
+    );
+  });
+}
+
+function isPitchAccentWordListObject(value: unknown): value is {
+  entryId?: string;
+  entry_id?: string;
+  reading?: string;
+  word?: string;
+} {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function pitchAccentRequestFromSingleValue(
+  value: string,
+  raw: string
+): PitchAccentWordListRequest {
+  return isEntryIdLike(value) ? { entryId: value, raw } : { raw, word: value };
+}
+
+function resolvePitchAccentWordListRow(input: {
+  candidatesById: Map<string, PitchAccentFetchTarget>;
+  row: PitchAccentWordListRequest;
+  targets: PitchAccentFetchTarget[];
+}):
+  | { ok: true; target: PitchAccentFetchTarget }
+  | { ok: false; reason: string } {
+  if (input.row.entryId) {
+    const directMatch = input.candidatesById.get(input.row.entryId);
+
+    return directMatch
+      ? { ok: true, target: directMatch }
+      : { ok: false, reason: `entry '${input.row.entryId}' not found` };
+  }
+
+  const searchNeedles = [input.row.word, input.row.reading]
+    .filter((value): value is string => typeof value === "string")
+    .map(normalizePronunciationText)
+    .filter(Boolean);
+
+  if (searchNeedles.length === 0) {
+    return {
+      ok: false,
+      reason: "empty word row"
+    };
+  }
+
+  const ranked = input.targets
+    .map((target) => ({
+      score: scorePitchAccentTargetMatch(target, input.row),
+      target
+    }))
+    .filter((candidate) => candidate.score > 0)
+    .sort((left, right) => right.score - left.score);
+
+  if (ranked.length === 0) {
+    return {
+      ok: false,
+      reason: `no glossary match for '${input.row.raw}'`
+    };
+  }
+
+  if (
+    ranked.length > 1 &&
+    ranked[0]?.score === ranked[1]?.score &&
+    ranked[0]?.target.id !== ranked[1]?.target.id
+  ) {
+    return {
+      ok: false,
+      reason: `ambiguous glossary match for '${input.row.raw}'`
+    };
+  }
+
+  return {
+    ok: true,
+    target: ranked[0]!.target
+  };
+}
+
+function scorePitchAccentTargetMatch(
+  target: PitchAccentFetchTarget,
+  row: PitchAccentWordListRequest
+) {
+  const rowWord = normalizePronunciationText(row.word ?? "");
+  const rowReading = normalizePronunciationText(row.reading ?? "");
+  const label = normalizePronunciationText(target.label);
+  const reading = normalizePronunciationText(target.reading ?? "");
+  const aliases = new Set(target.aliases.map(normalizePronunciationText));
+  let score = 0;
+
+  if (rowWord.length > 0) {
+    if (label === rowWord) {
+      score += 70;
+    }
+
+    if (reading === rowWord) {
+      score += 55;
+    }
+
+    if (aliases.has(rowWord)) {
+      score += 30;
+    }
+  }
+
+  if (rowReading.length > 0) {
+    if (reading === rowReading) {
+      score += 45;
+    }
+
+    if (aliases.has(rowReading)) {
+      score += 20;
+    }
+  }
+
+  if (score > 0 && target.pitchAccent === undefined) {
+    score += 3;
+  }
+
+  return score;
+}
+
+function isEntryIdLike(value: string) {
+  return /^(term|grammar)-/u.test(value);
+}
+
 function mapToPitchAccentTarget(
   bundle: NormalizedMediaBundle,
   entry: NormalizedGrammarPattern | NormalizedTerm,
@@ -524,8 +801,7 @@ function buildManifestEntryFromTarget(
     pitchAccent: entry.pitchAccent,
     pitchAccentPageUrl: entry.pitchAccentPageUrl,
     pitchAccentSource: entry.pitchAccentSource,
-    pitchAccentStatus:
-      entry.pitchAccent !== undefined ? "resolved" : undefined
+    pitchAccentStatus: entry.pitchAccent !== undefined ? "resolved" : undefined
   };
 }
 
@@ -578,7 +854,9 @@ function mapResultStatusToPitchAccentCheckStatus(
   status: PitchAccentResult["status"]
 ): PitchAccentCheckStatus {
   if (status === "skipped_existing") {
-    throw new Error("Unexpected skipped_existing status while persisting pitch accent results.");
+    throw new Error(
+      "Unexpected skipped_existing status while persisting pitch accent results."
+    );
   }
 
   return status;

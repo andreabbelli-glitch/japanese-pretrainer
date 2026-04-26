@@ -63,8 +63,11 @@ Optional:
    so every newly added card without local audio is recorded in the pending
    manifest.
 8. Run the repo validation flow before closing.
-9. Fetch pitch accents for the updated media with:
-   `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese`
+9. Fetch pitch accents only for the flashcard entries created or revised in
+   this task. Prefer entry IDs:
+   `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`
+   Pass multiple `--entry` flags for multiple new cards. Use `--word` or
+   `--words-file` only when a reliable entry-id list is not available.
 10. Import the updated media into the configured target database with:
     `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`
 11. Treat the work as incomplete if pitch accent fetch, import, or cache
@@ -86,6 +89,11 @@ Optional:
   Only do that when the user explicitly asks.
 - If a term already exists in another media, create a local occurrence when this
   page adds a useful nuance, example, or review card.
+- A card's `entry_id` must represent the full review surface trained by its
+  `front`, not merely a shorter lemma contained inside that front. If the front
+  is a longer UI phrase, chunk, or inflected form, create or reuse a dedicated
+  local entry for that exact surface. Reuse the same `entry_id` only when the
+  visible Japanese surface and reading are the same.
 - The importer groups glossary/review automatically by normalized written
   surface. `cross_media_group` is optional documentary metadata only; do not use
   it to force a merge or split.
@@ -148,13 +156,17 @@ lesson into the configured target database:
 
 ```bash
 ./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese
-./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
 ./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese
 ```
 
 If `pitch-accents:fetch` creates or updates
 `content/media/web-giapponese/pronunciations.json`, keep that file in the same
 change set as the lesson and cards.
+
+Do not run a whole-media pitch accent fetch for normal page-builder batches.
+Use the whole-media form only when the user explicitly asks to backfill the
+media backlog.
 
 Keep
 `content/media/web-giapponese/workflow/pronunciation-pending.json`

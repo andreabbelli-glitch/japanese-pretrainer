@@ -1,34 +1,9 @@
 {
   "version": 1,
   "media_slug": "duel-masters-dm25",
-  "total_targets": 341,
-  "audio_backed_count": 205,
-  "known_missing_count": 132,
-  "pending_count": 4,
-  "pending": [
-    {
-      "entry_type": "term",
-      "entry_id": "term-nyuushu",
-      "label": "入手",
-      "reading": "にゅうしゅ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kaki",
-      "label": "下記",
-      "reading": "かき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-hyouji",
-      "label": "表示",
-      "reading": "ひょうじ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-tokuten",
-      "label": "特典",
-      "reading": "とくてん"
-    }
-  ]
+  "total_targets": 345,
+  "audio_backed_count": 209,
+  "known_missing_count": 136,
+  "pending_count": 0,
+  "pending": []
 }

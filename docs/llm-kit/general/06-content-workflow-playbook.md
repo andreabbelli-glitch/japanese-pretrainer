@@ -140,6 +140,10 @@ La richiesta deve esplicitare:
   anche elementi molto verticali quando servono a capire la scena o a
   interagire correttamente con il media, mentre le flashcard devono
   privilegiare il giapponese piu spendibile e riusabile;
+- obbligo di far puntare ogni flashcard all'entry della superficie che allena:
+  se il `front` e un chunk piu lungo, una forma flessa o una locuzione, crea
+  una entry dedicata a quel chunk; non riusare l'entry del lemma interno solo
+  perche appare nel testo;
 - obbligo di non trasformare in flashcard i nomi propri di cose o entita
   singole solo perche compaiono nel media: se servono, vanno spiegati nel
   textbook, e solo eventuali componenti giapponesi riusabili del nome possono
@@ -228,6 +232,11 @@ Regole pratiche:
 - non chiedere all'LLM di popolare `audio_src` se l'asset non esiste davvero;
 - dopo il batch editoriale, usa il workflow locale di pronunce per cercare
   audio mancanti;
+- se il batch crea o rivede flashcard, cerca anche il pitch accent solo per le
+  entry appena create o aggiornate con
+  `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --entry <new-term-or-grammar-id>`;
+- passa piu `--entry` per piu card nuove; usa `--word` o `--words-file` solo
+  se non hai una lista affidabile di ID;
 - prima esegui il fetch offline;
 - poi, se restano mancanti, puoi usare il fallback Forvo.
 

@@ -68,6 +68,14 @@ typically at:
     command for explicit fallback batches and debug. Only use the raw automated
     Playwright path without `--manual` when the user explicitly wants to test
     or debug the browser fetcher.
+13. This skill normally updates pronunciation audio artifacts only. If the same
+    task also creates or revises local flashcard entries, run the pitch accent
+    workflow after the content edit and before import, targeted to those new
+    entries:
+    `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --entry <new-term-or-grammar-id>`
+    Pass multiple `--entry` flags as needed; use `--word` / `--words-file`
+    only when the entry IDs are not available. Do not use a whole-media pitch
+    accent fetch for normal content-creation follow-up.
 
 ## Input format
 

@@ -185,9 +185,11 @@ Per un normale aggiornamento editoriale il gate tipico è:
 
 Se la skill crea o modifica card, pronunce o accenti, aggiunge i workflow
 specifici del media, per esempio `pronunciations:pending` e
-`pitch-accents:fetch`. Se invece cambia codice di parser, importer, routing,
-DB, auth, cache o UI, torna ai gate canonici del repo e ai test mirati indicati
-dalla skill.
+`pitch-accents:fetch`. Per nuove flashcard locali, il fetch accenti deve essere
+mirato alle entry appena create o riviste, usando `--entry <id>` come default e
+`--word` / `--words-file` solo quando la lista ID non e disponibile. Se invece
+cambia codice di parser, importer, routing, DB, auth, cache o UI, torna ai gate
+canonici del repo e ai test mirati indicati dalla skill.
 
 ## Kanji Clash
 
