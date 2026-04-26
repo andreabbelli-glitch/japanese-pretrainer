@@ -48,11 +48,19 @@ src/
         content-cache/ API di invalidazione e refresh della cache contenuti
           revalidate/ API per revalidation mirata delle cache contenuti
     glossary/       Portal glossary globale e stati di caricamento
+      grammar/      Pagine dettaglio per pattern grammaticali del glossary globale
+      term/         Pagine dettaglio per termini del glossary globale
     kanji-clash/    Modalita' allenamento kanji con sessioni dedicate
+    katakana-speed/ Modalita' drill katakana con sessioni e recap dedicati
+      recap/        Recap della sessione katakana speed
+      session/      Esecuzione interattiva della sessione katakana speed
     login/          Pagina di accesso locale
     media/          Route dinamiche per media, textbook, review e progress
       [mediaSlug]/assets/ Asset route del media bundle
         [...assetPath]/ Catch-all per servire file statici del media bundle
+      [mediaSlug]/glossary/ Glossary locale filtrato per media
+        grammar/    Pagine dettaglio grammatica del glossary locale media
+        term/       Pagine dettaglio termini del glossary locale media
       [mediaSlug]/progress/ Stato di avanzamento e metriche del media
       [mediaSlug]/review/ Vista review verticale sul sistema review globale
         card/           Vista dedicata alla review di una card nel contesto del media
@@ -69,6 +77,7 @@ src/
     media/          Pagine dettaglio media
     glossary/       Indice e ricerca glossary
     kanji-clash/    UI e interazioni della modalita' kanji clash
+    katakana-speed/ UI e interazioni della modalita' katakana speed
     review/         Sessione di review (card, grading, coda)
     textbook/       Reader delle lesson
     settings/       Pagina impostazioni utente
@@ -90,6 +99,9 @@ src/
       model/        Pairing, queue, scheduler e utility pure
       server/       Loader sessione, token queue e contrasti manuali
       tooling/      Generazione dataset kanji simili e override editoriali
+    katakana-speed/ Logica canonica della modalita' Katakana Speed
+      model/        Catalogo, tokenizer, scheduler e stato sessione
+      server/       Persistenza e loader server-side delle sessioni
     textbook/       Contratti e helper del textbook reader
       client/       Stato e adapter client-side del reader
       server/       API server-side e loader condivisi del textbook
@@ -121,6 +133,7 @@ scripts/            CLI standalone (non fanno parte del server Next.js)
   generate-kanji-clash-similar-kanji-dataset.ts Genera il dataset di kanji simili per kanji clash
   image-workflow-status.ts Riassume stato richieste e asset immagine
   apply-image-blocks.ts    Applica blocchi immagine generati ai contenuti derivati
+  load-env.ts              Helper condiviso per caricare variabili ambiente negli script
   db-migrate.ts           Esegue migrazioni DB
   db-backfill-review-subject-state.ts Normalizza stati review legacy
   db-seed.ts              Esegue seed DB
@@ -165,6 +178,7 @@ docs/
   forvo-pronunciation-fetch.md Workflow fallback Forvo autenticato
   importer-sync-strategy.md Strategia di import e sync dei bundle contenuto
   kanji-clash.md          Specifica della modalita' Kanji Clash
+  katakana-speed.md        Specifica della modalita' Katakana Speed
   llm-kit/                Guide per integrazione LLM esterna
     README.md             Indice e regole del kit LLM
     general/              Template e regole riusabili cross-media
