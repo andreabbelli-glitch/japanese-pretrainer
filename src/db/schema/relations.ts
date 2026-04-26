@@ -23,6 +23,15 @@ import {
   kanjiClashManualContrastRoundState
 } from "./kanji-clash.ts";
 import {
+  katakanaAttemptLog,
+  katakanaConfusionEdge,
+  katakanaExerciseBlock,
+  katakanaExerciseResult,
+  katakanaItemState,
+  katakanaSession,
+  katakanaTrial
+} from "./katakana-speed.ts";
+import {
   card,
   cardEntryLink,
   reviewSubjectLog,
@@ -240,6 +249,112 @@ export const kanjiClashManualContrastRoundLogRelations = relations(
     roundState: one(kanjiClashManualContrastRoundState, {
       fields: [kanjiClashManualContrastRoundLog.roundKey],
       references: [kanjiClashManualContrastRoundState.roundKey]
+    })
+  })
+);
+
+export const katakanaItemStateRelations = relations(
+  katakanaItemState,
+  ({ many }) => ({
+    attempts: many(katakanaAttemptLog),
+    trials: many(katakanaTrial)
+  })
+);
+
+export const katakanaSessionRelations = relations(
+  katakanaSession,
+  ({ many }) => ({
+    attempts: many(katakanaAttemptLog),
+    blocks: many(katakanaExerciseBlock),
+    confusionEdges: many(katakanaConfusionEdge),
+    exerciseResults: many(katakanaExerciseResult),
+    trials: many(katakanaTrial)
+  })
+);
+
+export const katakanaExerciseBlockRelations = relations(
+  katakanaExerciseBlock,
+  ({ many, one }) => ({
+    attempts: many(katakanaAttemptLog),
+    confusionEdges: many(katakanaConfusionEdge),
+    results: many(katakanaExerciseResult),
+    session: one(katakanaSession, {
+      fields: [katakanaExerciseBlock.sessionId],
+      references: [katakanaSession.id]
+    }),
+    trials: many(katakanaTrial)
+  })
+);
+
+export const katakanaTrialRelations = relations(
+  katakanaTrial,
+  ({ many, one }) => ({
+    block: one(katakanaExerciseBlock, {
+      fields: [katakanaTrial.blockId],
+      references: [katakanaExerciseBlock.blockId]
+    }),
+    itemState: one(katakanaItemState, {
+      fields: [katakanaTrial.itemId],
+      references: [katakanaItemState.itemId]
+    }),
+    results: many(katakanaExerciseResult),
+    session: one(katakanaSession, {
+      fields: [katakanaTrial.sessionId],
+      references: [katakanaSession.id]
+    })
+  })
+);
+
+export const katakanaAttemptLogRelations = relations(
+  katakanaAttemptLog,
+  ({ one }) => ({
+    block: one(katakanaExerciseBlock, {
+      fields: [katakanaAttemptLog.blockId],
+      references: [katakanaExerciseBlock.blockId]
+    }),
+    itemState: one(katakanaItemState, {
+      fields: [katakanaAttemptLog.itemId],
+      references: [katakanaItemState.itemId]
+    }),
+    session: one(katakanaSession, {
+      fields: [katakanaAttemptLog.sessionId],
+      references: [katakanaSession.id]
+    }),
+    trial: one(katakanaTrial, {
+      fields: [katakanaAttemptLog.trialId],
+      references: [katakanaTrial.trialId]
+    })
+  })
+);
+
+export const katakanaExerciseResultRelations = relations(
+  katakanaExerciseResult,
+  ({ one }) => ({
+    block: one(katakanaExerciseBlock, {
+      fields: [katakanaExerciseResult.blockId],
+      references: [katakanaExerciseBlock.blockId]
+    }),
+    session: one(katakanaSession, {
+      fields: [katakanaExerciseResult.sessionId],
+      references: [katakanaSession.id]
+    }),
+    trial: one(katakanaTrial, {
+      fields: [katakanaExerciseResult.trialId],
+      references: [katakanaTrial.trialId]
+    })
+  })
+);
+
+export const katakanaConfusionEdgeRelations = relations(
+  katakanaConfusionEdge,
+  ({ one }) => ({
+    block: one(katakanaExerciseBlock, {
+      fields: [katakanaConfusionEdge.blockId],
+      references: [katakanaExerciseBlock.blockId]
+    }),
+    session: one(katakanaSession, {
+      fields: [katakanaConfusionEdge.sessionId],
+      references: [katakanaSession.id]
     })
   })
 );

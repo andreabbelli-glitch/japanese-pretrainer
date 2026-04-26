@@ -27,6 +27,8 @@ Il repository include attualmente:
 - limite dei nuovi globale sulla review, non per media;
 - font self-hosted, cosi `build` non dipende da fetch esterni;
 - tooling locale per lint, format, typecheck, test unit/integration ed E2E;
+- workspace top-level `Katakana Speed` per drill katakana locale-first,
+  separato da review, media e Kanji Clash;
 - struttura cartelle coerente con importer, persistence e UI gia in uso.
 
 ## Glossary Canonico Globale
@@ -108,6 +110,25 @@ In v1 non cambia scheduling o log di `/review`, non include `grammar` nel pool
 eleggibile e non usa doppioni editoriali o quasi-cloni per forzare nuove pair.
 La source of truth tecnica e
 [`docs/kanji-clash.md`](./docs/kanji-clash.md).
+
+## Katakana Speed
+
+`Katakana Speed` e il workspace top-level per allenare automaticita sui
+katakana confondibili e sui chunk estesi piu frequenti.
+
+- route `/katakana-speed`, `/katakana-speed/session/[sessionId]` e
+  `/katakana-speed/recap/[sessionId]`;
+- catalogo statico in TypeScript sotto `src/features/katakana-speed/`;
+- persistenza runtime in tabelle `katakana_*`;
+- registry operativo statico non-audio con word bank completa, trap moraiche,
+  variant pair, chunk spotting, ladder verticali e mode diagnostic/repair;
+- drill choice, raw choice, segment select, tile builder, self-check timed,
+  rare combo, pseudoword/sentence transfer, repeated reading e RAN Grid
+  aggregata;
+- nessuna integrazione con `/review`, media bundle o Kanji Clash.
+
+La source of truth tecnica e
+[`docs/katakana-speed.md`](./docs/katakana-speed.md).
 
 ## Bootstrap locale
 
@@ -442,6 +463,7 @@ Per workflow con LLM esterni, il punto di partenza operativo e
 - [Content parser e validator](./docs/content-parser.md)
 - [Importer sync strategy](./docs/importer-sync-strategy.md)
 - [Kanji Clash](./docs/kanji-clash.md) - contratto tecnico e guardrail editoriali della feature
+- [Katakana Speed](./docs/katakana-speed.md) - workspace drill katakana persistito
 - [Checklist QA manuale](./docs/qa-manual-checklist.md)
 - [Note di verifica locale](./docs/local-verification-notes.md)
 - [Kit operativo LLM esterni (source of truth)](./docs/llm-kit/README.md)

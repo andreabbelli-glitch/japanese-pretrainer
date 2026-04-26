@@ -69,12 +69,12 @@ Apri Drizzle Studio:
 ## Struttura implementata
 
 - `src/db/schema/*`: schema tipizzato per i domini content, glossary, review,
-  Kanji Clash e progress
+  Kanji Clash, Katakana Speed e progress
 - `src/db/client.ts`: client Drizzle condiviso e factory per DB custom
 - `src/db/migrate.ts`: wrapper applicativo per eseguire le migrazioni versionate
 - `src/db/seed.ts`: fixture tecnica minima usata dai test unitari
 - `src/db/queries/*`: helper tipizzati per media, lessons, glossary,
-  cards/review e sessioni Kanji Clash
+  cards/review, sessioni Kanji Clash e sessioni Katakana Speed
 - `src/instrumentation.ts`: warm-up best-effort e non bloccante delle cache
   dati piu pesanti dopo l'avvio del runtime
 - Per confrontare cold vs warm in pratica, avvia `pnpm start`, misura la
@@ -108,6 +108,10 @@ Tabelle incluse nel perimetro del task:
 - `kanji_clash_manual_contrast`
 - `kanji_clash_manual_contrast_round_state`
 - `kanji_clash_manual_contrast_round_log`
+- `katakana_item_state`
+- `katakana_session`
+- `katakana_trial`
+- `katakana_attempt_log`
 - `lesson_progress`
 - `user_setting`
 - `content_import`
@@ -173,6 +177,16 @@ Tabelle incluse nel perimetro del task:
   `kanji_clash_manual_contrast_round_log`. L'archiviazione di un contrasto
   manuale agisce anche come kill-switch rispetto alla pair automatica
   equivalente.
+- Katakana Speed e un workspace runtime separato da review, media e Kanji
+  Clash. Il catalogo degli item resta statico in TypeScript sotto
+  `src/features/katakana-speed/`; il DB conserva solo dati utente/runtime:
+  `katakana_item_state` per lo stato per item, `katakana_session` per il rollup
+  sessione, `katakana_trial` per il piano persistito, `katakana_attempt_log`
+  per i tentativi idempotenti, `katakana_exercise_block` per i blocchi
+  persistiti, `katakana_exercise_result` per risultati aggregati come RAN Grid
+  e repeated reading, e `katakana_confusion_edge` per confusioni direzionali.
+  Nessuna tabella Katakana Speed referenzia `review_subject_state` o le tabelle
+  Kanji Clash.
 
 ## Seed locale
 

@@ -176,6 +176,20 @@
       "when": 1776530562567,
       "tag": "0024_superb_apocalypse",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "6",
+      "when": 1777158150413,
+      "tag": "0025_normal_scalphunter",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "6",
+      "when": 1777190277380,
+      "tag": "0026_nervous_sister_grimm",
+      "breakpoints": true
     }
   ]
 }

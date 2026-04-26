@@ -1,5 +1,12 @@
 export type NavItem = {
-  href: "/" | "/media" | "/glossary" | "/review" | "/kanji-clash" | "/settings";
+  href:
+    | "/"
+    | "/media"
+    | "/glossary"
+    | "/review"
+    | "/kanji-clash"
+    | "/katakana-speed"
+    | "/settings";
   label: string;
   description: string;
 };
@@ -31,6 +38,11 @@ export const primaryNav: NavItem[] = [
     description: "Confronta kanji simili"
   },
   {
+    href: "/katakana-speed",
+    label: "Katakana",
+    description: "Velocità kana"
+  },
+  {
     href: "/settings",
     label: "Settings",
     description: "Preferenze"
@@ -52,6 +64,13 @@ export function resolveActivePrimaryNavHref(pathname: string): NavItem["href"] {
 
   if (pathname === "/kanji-clash" || pathname.startsWith("/kanji-clash/")) {
     return "/kanji-clash";
+  }
+
+  if (
+    pathname === "/katakana-speed" ||
+    pathname.startsWith("/katakana-speed/")
+  ) {
+    return "/katakana-speed";
   }
 
   if (
