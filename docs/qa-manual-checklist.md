@@ -44,6 +44,38 @@
 - `Kanji Clash` `/kanji-clash`: apre un workspace separato dalla review, con
   modalita `FSRS` e `Drill`, e senza confondere la UI con la
   coda FSRS standard.
+- `Katakana Speed` `/katakana-speed`: apre il dashboard con quick start,
+  weak spots e recap recente, usando solo la voce primaria `Katakana` in
+  navbar.
+- `Katakana Speed`: `Start drill` crea una sessione e porta a
+  `/katakana-speed/session/[sessionId]`; la route sessione non mostra la sticky
+  global header.
+- `Katakana Speed`: tasti `1`-`4` e tap/click sulle opzioni salvano il
+  tentativo, avanzano al trial successivo e mantengono layout leggibile anche
+  su mobile.
+- `Katakana Speed`: il mode picker avvia baseline (`Diag`, `Rare`, `RAN`),
+  transfer (`Pseudo`, `Decode`, `Sprint`, `Repeated`) e repair (`Traps`,
+  `Spot`, `Build`, `Ladder`, `Variants`); nessun mode mostra romaji o reading
+  label.
+- `Katakana Speed`: `Traps`, `Variants` e `Ladder` salvano choice raw
+  text-only contro `expected_surface`; `Spot` usa segmenti tappabili; `Build`
+  costruisce la parola con tile kana e permette reset prima del salvataggio.
+- `Katakana Speed`: le sessioni self-check usano `Space` per il timer, `1`-`3`
+  per il rating e `Enter` per continuare.
+- `Katakana Speed`: `Repeated` mostra tre passaggi con due frasi identiche e
+  una transfer, richiede timer fermato prima di avanzare/salvare e registra un
+  solo risultato aggregato.
+- `Katakana Speed`: `RAN` mostra una griglia 5x5 leggibile anche su mobile,
+  richiede timer fermato prima del salvataggio, permette di segnare le celle
+  sbagliate solo dopo `Stop`, deriva il count errori dalle celle selezionate e
+  registra `items/sec` con posizioni evidenziate nel recap.
+- `Katakana Speed`: `Abbandona e salva recap` e il completamento naturale
+  portano a `/katakana-speed/recap/[sessionId]`, con attempt log e metriche
+  coerenti con le risposte date.
+- `Katakana Speed`: riprendere una sessione attiva dal dashboard riparte dal
+  primo trial non ancora risposto, non dal primo trial gia loggato.
+- `Katakana Speed`: una sessione completata o parziale non altera numeri, log o
+  coda di `/review`, non scrive in Kanji Clash e non modifica `content/media`.
 - `Kanji Clash`: con `media=<slug>` valido il workspace filtra il pool al media
   scelto; senza slug esplicito il runtime resta globale anche se il default in
   settings e` `media`.

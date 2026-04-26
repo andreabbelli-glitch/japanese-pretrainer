@@ -57,6 +57,7 @@ describe("site helpers", () => {
       "Glossary",
       "Review",
       "Kanji Clash",
+      "Katakana",
       "Settings"
     ]);
     expect(hrefs).toEqual([
@@ -65,6 +66,7 @@ describe("site helpers", () => {
       "/glossary",
       "/review",
       "/kanji-clash",
+      "/katakana-speed",
       "/settings"
     ]);
   });
@@ -213,6 +215,15 @@ describe("site helpers", () => {
     expect(resolveActivePrimaryNavHref("/kanji-clash")).toBe("/kanji-clash");
     expect(resolveActivePrimaryNavHref("/kanji-clash/manual")).toBe(
       "/kanji-clash"
+    );
+    expect(resolveActivePrimaryNavHref("/katakana-speed")).toBe(
+      "/katakana-speed"
+    );
+    expect(
+      resolveActivePrimaryNavHref("/katakana-speed/session/session-1")
+    ).toBe("/katakana-speed");
+    expect(resolveActivePrimaryNavHref("/katakana-speed/recap/session-1")).toBe(
+      "/katakana-speed"
     );
     expect(resolveActivePrimaryNavHref("/settings")).toBe("/settings");
   });

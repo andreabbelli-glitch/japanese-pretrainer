@@ -19,6 +19,14 @@ export function SiteShell({ children }: SiteShellProps) {
     return <div className="app-shell">{children}</div>;
   }
 
+  if (pathname.startsWith("/katakana-speed/session/")) {
+    return (
+      <div className="app-shell app-shell--focus">
+        <main className="page-shell page-shell--focus">{children}</main>
+      </div>
+    );
+  }
+
   return (
     <div className="app-shell">
       <header className="site-header">

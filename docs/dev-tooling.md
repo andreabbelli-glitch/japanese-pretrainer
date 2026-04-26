@@ -55,6 +55,11 @@ Verifica completa del setup:
 ./scripts/tooling-doctor.sh
 ```
 
+La suite Vitest e volutamente limitata a pochi worker in `vitest.config.ts`.
+Molti test creano database SQLite temporanei, eseguono migrazioni e importano
+bundle reali; su macchine locali saturare tutti i core rende i test piu lenti e
+fragili invece che piu rapidi.
+
 ## Codex locale in sandbox
 
 Per worktree e automazioni Codex locali, il repo include una configurazione
@@ -206,6 +211,47 @@ server action di Kanji Clash:
 - esegui almeno `./scripts/with-node.sh pnpm check`;
 - esegui anche `./scripts/with-node.sh pnpm release:check` se il cambiamento e
   user-facing oppure tocca routing, sessione o logica di queue.
+
+## Katakana Speed
+
+Katakana Speed usa un catalogo statico in
+`src/features/katakana-speed/model/catalog.ts` e persiste solo stato runtime
+nelle tabelle `katakana_*`. Non richiede workflow contenuto, import dei media,
+pronunce o asset audio.
+
+Il registry operativo non-audio vive in
+`src/features/katakana-speed/model/exercise-catalog.ts` e alimenta word bank,
+trap moraiche, variant pair, chunk spotting, ladder verticali e opzioni raw
+senza creare una tabella catalogo. I nuovi mode operativi usano le tabelle
+session/trial/block/result esistenti e salvano metadata in JSON snapshot.
+
+Per modifiche mirate al modello puro puoi lanciare i test Katakana Speed:
+
+```sh
+./scripts/with-node.sh pnpm exec vitest run tests/katakana-speed-catalog-tokenizer.test.ts tests/katakana-speed-options-errors.test.ts tests/katakana-speed-scheduler-session.test.ts
+./scripts/with-node.sh pnpm exec vitest run tests/katakana-speed-operational-catalog.test.ts tests/katakana-speed-operational-planner.test.ts tests/katakana-speed-raw-answer.test.ts
+```
+
+Per modifiche a scheduler espanso, Server Actions o controller sessione usa
+anche i test di persistenza/UI della feature:
+
+```sh
+./scripts/with-node.sh pnpm exec vitest run tests/katakana-speed-persistence-expansion.test.ts tests/katakana-speed-expansion-actions.test.ts tests/katakana-speed-interactions.test.ts
+```
+
+Per modifiche a persistenza, Server Actions, route o UI della sessione, usa i
+gate canonici:
+
+```sh
+./scripts/with-node.sh pnpm check
+./scripts/with-node.sh pnpm release:check
+```
+
+Quando aggiungi o cambi tabelle `katakana_*`, genera sempre la migrazione con:
+
+```sh
+./scripts/with-node.sh pnpm db:generate
+```
 
 ## Tool da avere pronti
 

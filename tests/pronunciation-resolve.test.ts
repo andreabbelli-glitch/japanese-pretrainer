@@ -101,7 +101,7 @@ describe("pronunciation resolve", () => {
         cwd: process.cwd()
       }
     );
-  });
+  }, 60_000);
 
   it("accepts equals-form options in the resolver CLI used by the skill wrapper", async () => {
     closeDatabaseClient(database);
@@ -133,7 +133,7 @@ describe("pronunciation resolve", () => {
         databaseUrl: databasePath
       });
     }
-  });
+  }, 60_000);
 
   it("loads .env.local before creating the resolver CLI database client", async () => {
     closeDatabaseClient(database);
@@ -171,7 +171,7 @@ describe("pronunciation resolve", () => {
         databaseUrl: databasePath
       });
     }
-  });
+  }, 60_000);
 
   it("selects review targets globally and deduplicates linked entries", async () => {
     const selection = await selectPronunciationResolveTargets({

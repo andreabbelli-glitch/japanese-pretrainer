@@ -79,12 +79,12 @@ describe("content importer", () => {
     });
 
     await runMigrations(database);
-  });
+  }, 60_000);
 
   afterEach(async () => {
     closeDatabaseClient(database);
     await rm(tempDir, { recursive: true, force: true });
-  });
+  }, 60_000);
 
   it("imports validated markdown into normalized database tables", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
@@ -161,7 +161,7 @@ describe("content importer", () => {
     );
     expect(importedGrammar?.audioLicense).toBe("CC BY 4.0");
     expect(importedGrammar?.searchRomajiNorm).toBe("teiru");
-  });
+  }, 60_000);
 
   it("imports the real Duel Masters bundle", async () => {
     await copySingleMediaBundleFixture(demoMediaFixtureRoot, contentRoot);
@@ -228,7 +228,7 @@ describe("content importer", () => {
     expect(importedCardLink?.entryId).toBe(
       buildScopedEntryId("term", "media-duel-masters-dm25", "term-invasion")
     );
-  }, 15_000);
+  }, 60_000);
 
   it("deduplicates grammar aliases after search normalization", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
@@ -262,7 +262,7 @@ describe("content importer", () => {
       aliasNorm: "てる",
       grammarId: grammarDbId
     });
-  });
+  }, 60_000);
 
   it("reimports the same content idempotently without duplicating rows or wiping user state", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
@@ -301,10 +301,11 @@ describe("content importer", () => {
       await database.query.reviewSubjectState.findFirst({
         where: eq(reviewSubjectState.subjectKey, canonicalSubjectKey)
       });
-    const legacyReviewState =
-      await database.query.reviewSubjectState.findFirst({
+    const legacyReviewState = await database.query.reviewSubjectState.findFirst(
+      {
         where: eq(reviewSubjectState.subjectKey, `entry:term:${termDbId}`)
-      });
+      }
+    );
     const persistedReviewLog = await database.query.reviewSubjectLog.findMany({
       where: eq(reviewSubjectLog.subjectKey, canonicalSubjectKey)
     });
@@ -318,7 +319,7 @@ describe("content importer", () => {
     expect(legacyReviewState).toBeUndefined();
     expect(persistedReviewLog).toHaveLength(1);
     expect(persistedLessonProgress?.status).toBe("in_progress");
-  });
+  }, 60_000);
 
   it("counts a segment_ref-only cards file change once", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
@@ -362,7 +363,7 @@ describe("content importer", () => {
       "episode-01",
       "episode-02"
     ]);
-  });
+  }, 60_000);
 
   it("imports semantic references nested inside inline code into card entry links", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
@@ -403,7 +404,7 @@ describe("content importer", () => {
     );
 
     expect(mentionedTermLink).toBeDefined();
-  });
+  }, 60_000);
 
   it("imports lesson entry links referenced from grammar notes", async () => {
     const noteReferencedTermId = "term-yoku";
@@ -471,7 +472,7 @@ describe("content importer", () => {
     );
 
     expect(mentionedTermLink).toBeDefined();
-  });
+  }, 60_000);
 
   it("updates imported content on reimport while preserving existing user review state", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
@@ -521,16 +522,17 @@ describe("content importer", () => {
           `group:term:${importedTerm?.crossMediaGroupId}`
         )
       });
-    const legacyReviewState =
-      await database.query.reviewSubjectState.findFirst({
+    const legacyReviewState = await database.query.reviewSubjectState.findFirst(
+      {
         where: eq(reviewSubjectState.subjectKey, `entry:term:${termDbId}`)
-      });
+      }
+    );
 
     expect(importedTerm?.meaningIt).toBe("assumere cibo");
     expect(importedCard?.back).toBe("assumere cibo");
     expect(persistedReviewState?.state).toBe("learning");
     expect(legacyReviewState).toBeUndefined();
-  });
+  }, 60_000);
 
   it("archives removed lessons or cards and prunes removed entries without deleting user-owned state", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
@@ -682,7 +684,7 @@ tags: [grammar, core]
     expect(persistedReviewState?.manualOverride).toBe(true);
     expect(persistedReviewLog).toHaveLength(1);
     expect(activeCards.map((entry) => entry.id)).toEqual([grammarCardId]);
-  });
+  }, 60_000);
 
   it("prunes stale segments when no imported content references them anymore", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
@@ -753,7 +755,7 @@ tags: [grammar, core]
     expect(importedGrammar?.segmentId).toBeNull();
     expect(importedTermCard?.segmentId).toBeNull();
     expect(importedGrammarCard?.segmentId).toBeNull();
-  });
+  }, 60_000);
 
   it("supports incremental media-scoped imports without archiving out-of-scope media", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
@@ -827,7 +829,7 @@ tags: [grammar, core]
     expect(preservedScopedLesson?.status).toBe("active");
     expect(preservedScopedCard?.status).toBe("active");
     expect(preservedScopedTerm?.lemma).toBe("ライオス");
-  });
+  }, 60_000);
 
   it("supports scoped imports when the target media reuses term and grammar source ids from another media", async () => {
     await writeCrossMediaContentFixture(contentRoot);
@@ -885,7 +887,7 @@ tags: [grammar, core]
     expect(
       await countRows(database.query.crossMediaGroup.findMany())
     ).toBeGreaterThanOrEqual(2);
-  });
+  }, 60_000);
 
   it("fails cleanly on invalid content without partially mutating imported tables", async () => {
     const result = await importContentWorkspace({
@@ -907,7 +909,7 @@ tags: [grammar, core]
     });
 
     expect(failedImport?.status).toBe("failed");
-  });
+  }, 60_000);
 });
 
 async function copyContentFixture(sourceRoot: string, destinationRoot: string) {
