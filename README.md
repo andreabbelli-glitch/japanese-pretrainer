@@ -122,8 +122,9 @@ katakana confondibili e sui chunk estesi piu frequenti.
 - persistenza runtime in tabelle `katakana_*`;
 - registry operativo statico non-audio con chunk estesi, word bank,
   pseudoword, cluster di confusione, trap moraiche e loop daily/diagnostic/repair;
-- drill choice focalizzati, scelta inversa romaji -> katakana, raw choice
-  moraiche, self-check timed per parole/pseudoparole e RAN Grid aggregata;
+- drill choice focalizzati con primo trial inverso romaji -> katakana,
+  selettore manuale per esercizio, raw choice moraiche, self-check timed per
+  parole/pseudoparole e RAN Grid aggregata;
 - nessuna integrazione con `/review`, media bundle o Kanji Clash.
 
 La source of truth tecnica e

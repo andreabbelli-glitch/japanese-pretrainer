@@ -8,6 +8,7 @@ import {
   startKatakanaSpeedSession,
   submitKatakanaSpeedAnswer,
   submitKatakanaSpeedSelfCheck,
+  type KatakanaSpeedManualExercise,
   type KatakanaSpeedSelfRating,
   type KatakanaSpeedSessionMode
 } from "@/features/katakana-speed/server";
@@ -15,6 +16,7 @@ import {
 export async function startKatakanaSpeedSessionAction(input: {
   count?: number;
   database?: DatabaseClient;
+  manualExercise?: KatakanaSpeedManualExercise;
   mode?: KatakanaSpeedSessionMode;
   now?: Date;
   seed?: string;
@@ -22,6 +24,7 @@ export async function startKatakanaSpeedSessionAction(input: {
   return startKatakanaSpeedSession({
     count: input.count,
     database: input.database ?? db,
+    manualExercise: input.manualExercise,
     mode: input.mode,
     now: input.now,
     seed: input.seed

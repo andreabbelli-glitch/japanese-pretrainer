@@ -133,6 +133,50 @@ describe("katakana speed expansion actions", () => {
     ]);
   });
 
+  it("starts manual exercise presets without changing the guided session mode", async () => {
+    const inverseSession = await startKatakanaSpeedSessionAction({
+      count: 8,
+      database,
+      manualExercise: "romaji_to_katakana",
+      mode: "daily",
+      now: new Date("2026-04-26T08:00:00.000Z"),
+      seed: "manual-inverse-action"
+    } as Parameters<typeof startKatakanaSpeedSessionAction>[0] & {
+      manualExercise: "romaji_to_katakana";
+    });
+    const ranSession = await startKatakanaSpeedSessionAction({
+      count: 1,
+      database,
+      manualExercise: "ran_grid",
+      mode: "daily",
+      now: new Date("2026-04-26T08:01:00.000Z"),
+      seed: "manual-ran-action"
+    } as Parameters<typeof startKatakanaSpeedSessionAction>[0] & {
+      manualExercise: "ran_grid";
+    });
+    const ranBlock = await database.query.katakanaExerciseBlock.findFirst({
+      where: eq(katakanaExerciseBlock.sessionId, ranSession.sessionId)
+    });
+
+    expect(
+      inverseSession.trials.every(
+        (trial) =>
+          trial.features?.exerciseFamily === "romaji_to_katakana_choice" &&
+          trial.features?.promptKind === "romaji"
+      )
+    ).toBe(true);
+    expect(inverseSession.trials).toHaveLength(8);
+    expect(ranSession.trials).toHaveLength(1);
+    expect(ranSession.trials[0]).toMatchObject({
+      blockId: `${ranSession.sessionId}:manual-ran-grid`,
+      mode: "ran_grid"
+    });
+    expect(JSON.parse(ranBlock?.metricsJson ?? "{}")).toMatchObject({
+      manualExercise: "ran_grid",
+      sessionMode: "daily"
+    });
+  });
+
   it("rejects stale legacy session modes at runtime", async () => {
     await expect(
       startKatakanaSpeedSession({

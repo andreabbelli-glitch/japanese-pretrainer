@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 test("starts a Katakana Speed session and persists a recap", async ({
   page
@@ -28,28 +28,15 @@ test("starts a Katakana Speed session and persists a recap", async ({
     0
   );
 
-  const promptSurface = (
-    await page.locator(".katakana-speed-prompt").textContent()
-  )?.trim();
   const optionButtons = page.locator(".katakana-speed-option");
-  const optionCount = await optionButtons.count();
-  for (let index = 0; index < optionCount; index += 1) {
-    const option = optionButtons.nth(index);
-    const surface = (
-      await option.locator(".katakana-speed-option__surface").textContent()
-    )?.trim();
-    if (surface && surface !== promptSurface) {
-      await option.click();
-      break;
-    }
+  await optionButtons.first().click();
+  const continueButton = page.getByRole("button", { name: "Continua" });
+  try {
+    await continueButton.waitFor({ state: "visible", timeout: 1000 });
+    await continueButton.click();
+  } catch {
+    // Correct objective choices advance immediately.
   }
-
-  await expect(page.locator(".katakana-speed-reading-hint strong")).toHaveCount(
-    0
-  );
-  await page.keyboard.press("Space");
-  await expect(page.getByLabel("Mostra lettura")).toBeChecked();
-  await page.getByRole("button", { name: "Continua" }).click();
 
   await expect(page.locator(".katakana-speed-session-top")).toContainText(
     "2 / 32"
@@ -64,7 +51,9 @@ test("starts a Katakana Speed session and persists a recap", async ({
   await expect(page.locator(".katakana-speed-attempt-row")).toHaveCount(1);
 });
 
-test("shows only the three public Katakana Speed actions", async ({ page }) => {
+test("shows guided actions and the manual Katakana Speed selector", async ({
+  page
+}) => {
   await page.goto("/katakana-speed");
 
   await expect(page.getByRole("button", { name: "Start 5 min" })).toHaveCount(
@@ -74,6 +63,13 @@ test("shows only the three public Katakana Speed actions", async ({ page }) => {
   await expect(
     page.getByRole("button", { name: "Ripara debolezza" })
   ).toHaveCount(1);
+  await expect(
+    page.getByRole("region", { name: "Esercizio manuale" })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Romaji -> katakana" })
+  ).toBeVisible();
+  await expect(page.getByRole("button", { name: "Griglia RAN" })).toBeVisible();
   await expect(page.getByText("Modalità avanzate / debug")).toHaveCount(0);
 });
 
@@ -82,15 +78,6 @@ test("includes inverse romaji-to-katakana choices without reading hints", async 
 }) => {
   await page.goto("/katakana-speed");
   await page.getByRole("button", { name: "Start 5 min" }).click();
-
-  await answerCurrentChoiceByPrompt(page);
-  await expect(page.locator(".katakana-speed-session-top")).toContainText(
-    "2 / 32"
-  );
-  await answerCurrentChoiceByPrompt(page);
-  await expect(page.locator(".katakana-speed-session-top")).toContainText(
-    "3 / 32"
-  );
 
   await expect(page.locator(".katakana-speed-task-copy")).toContainText(
     "romaji"
@@ -113,6 +100,27 @@ test("includes inverse romaji-to-katakana choices without reading hints", async 
   await expect(page.locator(".katakana-speed-reading-hint")).toHaveCount(0);
 });
 
+test("starts a manual RAN Grid exercise with varied cells", async ({
+  page
+}) => {
+  await page.goto("/katakana-speed");
+  await page.getByRole("button", { name: "Griglia RAN" }).click();
+
+  await expect(page).toHaveURL(/\/katakana-speed\/session\/[^/]+$/);
+  await expect(page.locator(".katakana-speed-stage__meta")).toContainText(
+    "Griglia di velocita"
+  );
+  const cellSurfaces = await page
+    .locator(".katakana-speed-ran-cell span:first-child")
+    .allTextContents();
+
+  expect(cellSurfaces).toHaveLength(25);
+  expect(
+    new Set(cellSurfaces.map((surface) => surface.trim())).size
+  ).toBeGreaterThanOrEqual(8);
+  expect(cellSurfaces.map((surface) => surface.trim())).not.toContain("ー");
+});
+
 test("keeps low-value legacy modes out of the picker", async ({ page }) => {
   await page.goto("/katakana-speed");
 
@@ -133,27 +141,3 @@ test("keeps low-value legacy modes out of the picker", async ({ page }) => {
   await expect(page.getByRole("button", { name: /^Chunk$/ })).toHaveCount(0);
   await expect(page.getByRole("button", { name: /^Rare$/ })).toHaveCount(0);
 });
-
-async function answerCurrentChoiceByPrompt(page: Page) {
-  const promptSurface = (
-    await page.locator(".katakana-speed-prompt").textContent()
-  )?.trim();
-  if (!promptSurface) {
-    throw new Error("Missing Katakana Speed prompt.");
-  }
-
-  const optionButtons = page.locator(".katakana-speed-option");
-  const optionCount = await optionButtons.count();
-  for (let index = 0; index < optionCount; index += 1) {
-    const option = optionButtons.nth(index);
-    const surface = (
-      await option.locator(".katakana-speed-option__surface").textContent()
-    )?.trim();
-    if (surface === promptSurface) {
-      await option.click();
-      return;
-    }
-  }
-
-  throw new Error(`No Katakana Speed option matched ${promptSurface}.`);
-}

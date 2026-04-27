@@ -7,13 +7,17 @@ import { useState } from "react";
 
 import { startKatakanaSpeedSessionAction } from "@/actions/katakana-speed";
 import type {
+  KatakanaSpeedManualExercise,
   KatakanaSpeedPageData,
   KatakanaSpeedSessionMode
 } from "@/features/katakana-speed/server";
 
 import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
-import { KATAKANA_SPEED_PRIMARY_ACTIONS } from "./katakana-speed-copy";
+import {
+  KATAKANA_SPEED_MANUAL_EXERCISE_ACTIONS,
+  KATAKANA_SPEED_PRIMARY_ACTIONS
+} from "./katakana-speed-copy";
 import {
   ConfusionList,
   FamilyCards,
@@ -28,8 +32,9 @@ type KatakanaSpeedPageProps = {
 
 export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
   const router = useRouter();
-  const [startingMode, setStartingMode] =
-    useState<KatakanaSpeedSessionMode | null>(null);
+  const [startingActionKey, setStartingActionKey] = useState<string | null>(
+    null
+  );
   const [clientError, setClientError] = useState<string | null>(null);
   const recommendedMode = data.analytics.recommendedMode;
   const recentHref: Route | null = data.recentSession
@@ -38,13 +43,22 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
         : `/katakana-speed/recap/${data.recentSession.sessionId}`) as Route)
     : null;
 
-  async function startSession(mode: KatakanaSpeedSessionMode = "daily") {
-    setStartingMode(mode);
+  async function startSession(input: {
+    count?: number;
+    manualExercise?: KatakanaSpeedManualExercise;
+    mode?: KatakanaSpeedSessionMode;
+  }) {
+    const mode = input.mode ?? "daily";
+    const actionKey = input.manualExercise
+      ? `manual:${input.manualExercise}`
+      : mode;
+    setStartingActionKey(actionKey);
     setClientError(null);
 
     try {
       const session = await startKatakanaSpeedSessionAction({
-        count: defaultCountForMode(mode),
+        count: input.count ?? defaultCountForMode(mode),
+        manualExercise: input.manualExercise,
         mode
       });
       router.push(`/katakana-speed/session/${session.sessionId}` as Route);
@@ -54,7 +68,7 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
           ? error.message
           : "Impossibile avviare Katakana Speed."
       );
-      setStartingMode(null);
+      setStartingActionKey(null);
     }
   }
 
@@ -78,12 +92,12 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
                     ? "button button--primary"
                     : "button button--ghost"
                 }
-                disabled={startingMode !== null}
+                disabled={startingActionKey !== null}
                 key={action.mode}
-                onClick={() => startSession(action.mode)}
+                onClick={() => startSession({ mode: action.mode })}
                 type="button"
               >
-                {startingMode === action.mode ? "Avvio..." : action.label}
+                {startingActionKey === action.mode ? "Avvio..." : action.label}
               </button>
             ))}
             <span className="katakana-speed-cta-detail">
@@ -110,6 +124,45 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
             Kana o chunk su cui sbagli o rallenti più spesso.
           </p>
           <FocusList items={data.recommendedFocus} />
+        </SurfaceCard>
+      </section>
+
+      <section aria-label="Esercizio manuale">
+        <SurfaceCard className="katakana-speed-panel katakana-speed-panel--wide">
+          <div className="katakana-speed-copy">
+            <p className="katakana-speed-eyebrow">Esercizio manuale</p>
+            <p className="katakana-speed-muted">
+              Avvia un solo tipo di drill sul focus consigliato.
+            </p>
+          </div>
+          <div className="katakana-speed-mode-picker">
+            {KATAKANA_SPEED_MANUAL_EXERCISE_ACTIONS.map((action) => {
+              const actionKey = `manual:${action.manualExercise}`;
+
+              return (
+                <button
+                  className="katakana-speed-mode-button"
+                  disabled={startingActionKey !== null}
+                  key={action.manualExercise}
+                  onClick={() =>
+                    startSession({
+                      count: action.count,
+                      manualExercise: action.manualExercise,
+                      mode: "daily"
+                    })
+                  }
+                  type="button"
+                >
+                  <span>
+                    {startingActionKey === actionKey
+                      ? "Avvio..."
+                      : action.label}
+                  </span>
+                  <small>{action.detail}</small>
+                </button>
+              );
+            })}
+          </div>
         </SurfaceCard>
       </section>
 

@@ -1,4 +1,5 @@
 import type {
+  KatakanaSpeedManualExercise,
   KatakanaSpeedSelfRating,
   KatakanaSpeedSessionMode,
   KatakanaSpeedTrialPlan
@@ -26,6 +27,47 @@ export const KATAKANA_SPEED_PRIMARY_ACTIONS: readonly KatakanaSpeedModeCopy[] =
       detail: "focus sulla debolezza",
       label: "Ripara debolezza",
       mode: "repair"
+    }
+  ];
+
+export type KatakanaSpeedManualExerciseCopy = {
+  readonly count: number;
+  readonly detail: string;
+  readonly label: string;
+  readonly manualExercise: KatakanaSpeedManualExercise;
+};
+
+export const KATAKANA_SPEED_MANUAL_EXERCISE_ACTIONS: readonly KatakanaSpeedManualExerciseCopy[] =
+  [
+    {
+      count: 12,
+      detail: "prompt romaji, quattro grafie vicine",
+      label: "Romaji -> katakana",
+      manualExercise: "romaji_to_katakana"
+    },
+    {
+      count: 16,
+      detail: "scelte rapide sul focus attuale",
+      label: "Contrasti",
+      manualExercise: "contrast"
+    },
+    {
+      count: 16,
+      detail: "parole e pseudo senza aiuti",
+      label: "Lettura",
+      manualExercise: "reading"
+    },
+    {
+      count: 1,
+      detail: "griglia 5x5 a timer",
+      label: "Griglia RAN",
+      manualExercise: "ran_grid"
+    },
+    {
+      count: 16,
+      detail: "coppie con ー e ッ",
+      label: "Trappole ー/ッ",
+      manualExercise: "mora_contrast"
     }
   ];
 

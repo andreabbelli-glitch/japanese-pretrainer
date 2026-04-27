@@ -292,7 +292,11 @@ export function KatakanaSpeedSessionPage({
                 <small>
                   {canRevealReadings
                     ? "Space mostra o nasconde il romaji del trial."
-                    : "Il romaji e gia il prompt."}
+                    : currentTrialHasRomajiPrompt
+                      ? "Il romaji e gia il prompt."
+                      : controller.isRanGridTrial
+                        ? "Dopo Stop, per controllare il reading."
+                        : "Dopo risposta, per controllare il reading."}
                 </small>
               </span>
             </label>

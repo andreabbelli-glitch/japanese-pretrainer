@@ -218,7 +218,7 @@ describe("katakana speed session persistence", () => {
       responseMs: 420,
       sessionId: session.sessionId,
       trialId: trial.trialId,
-      userAnswer: trial.promptSurface
+      userAnswer: trial.expectedSurface ?? trial.promptSurface
     });
 
     const attempts = await database.query.katakanaAttemptLog.findMany({
@@ -236,7 +236,7 @@ describe("katakana speed session persistence", () => {
 
     expect(attempts).toHaveLength(1);
     expect(attempts[0]).toMatchObject({
-      expectedAnswer: trial.promptSurface,
+      expectedAnswer: trial.expectedSurface ?? trial.promptSurface,
       isCorrect: 1,
       responseMs: 420
     });
@@ -602,7 +602,10 @@ describe("katakana speed session persistence", () => {
       responseMs: 300,
       sessionId: session.sessionId,
       trialId: session.trials[0]?.trialId ?? "",
-      userAnswer: session.trials[0]?.promptSurface ?? ""
+      userAnswer:
+        session.trials[0]?.expectedSurface ??
+        session.trials[0]?.promptSurface ??
+        ""
     });
     await submitKatakanaSpeedAnswer({
       database,
@@ -661,7 +664,7 @@ describe("katakana speed session persistence", () => {
       responseMs: firstTrial.targetRtMs + 450,
       sessionId: session.sessionId,
       trialId: firstTrial.trialId,
-      userAnswer: firstTrial.promptSurface
+      userAnswer: firstTrial.expectedSurface ?? firstTrial.promptSurface
     });
     const wrongItem = secondTrial.optionItemIds
       .filter((itemId) => itemId !== secondTrial.correctItemId)

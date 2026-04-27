@@ -22,6 +22,13 @@ export type KatakanaSpeedTrialMode =
 
 export type KatakanaSpeedSessionMode = "daily" | "diagnostic_probe" | "repair";
 
+export type KatakanaSpeedManualExercise =
+  | "contrast"
+  | "mora_contrast"
+  | "ran_grid"
+  | "reading"
+  | "romaji_to_katakana";
+
 export type KatakanaSpeedSelfRating = "clean" | "hesitated" | "wrong";
 
 export type KatakanaSpeedErrorTag =

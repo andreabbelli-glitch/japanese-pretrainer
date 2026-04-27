@@ -223,9 +223,10 @@ pronunce o asset audio.
 
 Il registry operativo non-audio vive in
 `src/features/katakana-speed/model/exercise-catalog.ts` e alimenta word bank,
-trap moraiche, variant pair, chunk spotting, ladder verticali e opzioni raw
-senza creare una tabella catalogo. I nuovi mode operativi usano le tabelle
-session/trial/block/result esistenti e salvano metadata in JSON snapshot.
+trap moraiche, scelta inversa romaji -> katakana, RAN Grid e opzioni raw senza
+creare una tabella catalogo. I preset manuali sono un input di planning
+separato da `sessionMode`: usano le tabelle session/trial/block/result
+esistenti e salvano metadata in JSON snapshot.
 
 Per modifiche mirate al modello puro puoi lanciare i test Katakana Speed:
 

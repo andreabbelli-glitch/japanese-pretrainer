@@ -53,12 +53,13 @@
 - `Katakana Speed`: tasti `1`-`4` e tap/click sulle opzioni salvano il
   tentativo; le risposte corrette avanzano al trial successivo, gli errori
   restano sul trial con feedback e richiedono continue manuale.
-- `Katakana Speed`: il dashboard espone solo `Start 5 min`, `Diagnosi` e
-  `Ripara debolezza`; non deve comparire il vecchio picker legacy/debug.
-- `Katakana Speed`: i blocchi choice includono contrasti kana -> kana e trial
-  inversi romaji -> katakana con quattro opzioni visivamente o fonologicamente
-  vicine; nei trial inversi gli hint romaji sotto le opzioni restano nascosti
-  per non rivelare la risposta.
+- `Katakana Speed`: il dashboard espone `Start 5 min`, `Diagnosi`,
+  `Ripara debolezza` e un selettore manuale con preset supportati; non deve
+  comparire il vecchio picker legacy/debug.
+- `Katakana Speed`: i blocchi choice includono contrasti kana -> kana e partono
+  da un trial inverso romaji -> katakana con quattro opzioni visivamente o
+  fonologicamente vicine; nei trial inversi gli hint romaji sotto le opzioni
+  restano nascosti per non rivelare la risposta.
 - `Katakana Speed`: le trappole moraiche salvano choice raw text-only contro
   `expected_surface`; non ci sono flussi tile builder, chunk spotting,
   varianti normative o repeated reading.
@@ -67,10 +68,10 @@
   manuale su `Da rifare`; `Space` puo mostrare/nascondere il romaji prima del
   rating.
 - `Katakana Speed`: `Griglia` mostra una griglia 5x5 leggibile anche su mobile,
-  fa partire automaticamente il timer, usa `Enter` per fermare/salvare,
-  permette di segnare le celle sbagliate solo dopo lo stop, deriva il count
-  errori dalle celle selezionate e registra `items/sec` con posizioni
-  evidenziate nel recap.
+  con superfici concrete e mai solo marker isolati come `ー`; fa partire
+  automaticamente il timer, usa `Enter` per fermare/salvare, permette di
+  segnare le celle sbagliate solo dopo lo stop, deriva il count errori dalle
+  celle selezionate e registra `items/sec` con posizioni evidenziate nel recap.
 - `Katakana Speed`: `Abbandona e salva recap` e il completamento naturale
   portano a `/katakana-speed/recap/[sessionId]`, con attempt log e metriche
   coerenti con le risposte date.

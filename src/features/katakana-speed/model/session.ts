@@ -1,6 +1,7 @@
 import type {
   KatakanaSpeedItem,
   KatakanaSpeedItemKind,
+  KatakanaSpeedManualExercise,
   KatakanaSpeedSessionMode,
   KatakanaSpeedState,
   KatakanaSpeedTrialMode,
@@ -13,6 +14,7 @@ import {
 } from "./catalog.ts";
 import { encodeKatakanaSpeedRawOption } from "./exercise-catalog.ts";
 import {
+  KATAKANA_SPEED_FOCUSES,
   getItemsForFocus,
   pickKatakanaTrainingFocus,
   type KatakanaTrainingFocus
@@ -38,15 +40,39 @@ const MORA_CONTRAST_PAIRS: readonly KatakanaSpeedMoraContrastPair[] =
   Object.freeze([
     moraContrast("sokuon", "バッグ", "バグ"),
     moraContrast("sokuon", "ベッド", "ベド"),
+    moraContrast("sokuon", "メッセージ", "メセージ"),
+    moraContrast("sokuon", "アップデート", "アプデート"),
     moraContrast("sokuon", "ネット", "ネト"),
+    moraContrast("sokuon", "チェック", "チェク"),
+    moraContrast("sokuon", "ピッツァ", "ピツァ"),
     moraContrast("sokuon", "チケット", "チケト"),
+    moraContrast("sokuon", "ウォレット", "ウォレト"),
+    moraContrast("sokuon", "クァルテット", "クァルテト"),
+    moraContrast("sokuon", "ストップウォッチ", "ストプウォッチ"),
     moraContrast("long-vowel", "コーヒー", "コヒー"),
+    moraContrast("long-vowel", "メール", "メル"),
+    moraContrast("long-vowel", "データ", "デタ"),
     moraContrast("long-vowel", "サーバー", "サバ"),
-    moraContrast("long-vowel", "スーパー", "スパ")
+    moraContrast("long-vowel", "スーパー", "スパ"),
+    moraContrast("long-vowel", "チーズ", "チズ"),
+    moraContrast("long-vowel", "ケーキ", "ケキ"),
+    moraContrast("long-vowel", "タクシー", "タクシ"),
+    moraContrast("long-vowel", "ギター", "ギタ"),
+    moraContrast("long-vowel", "パーティー", "パティ"),
+    moraContrast("long-vowel", "サービス", "サビス"),
+    moraContrast("long-vowel", "キャンペーン", "キャンペン"),
+    moraContrast("long-vowel", "ニューヨーク", "ニュヨク"),
+    moraContrast("long-vowel", "プロデューサー", "プロデュサ"),
+    moraContrast("long-vowel", "クォーター", "クォタ"),
+    moraContrast("long-vowel", "ヒンドゥー", "ヒンドゥ"),
+    moraContrast("long-vowel", "ヴィーナス", "ヴィナス"),
+    moraContrast("long-vowel", "ヴォーカル", "ヴォカル"),
+    moraContrast("long-vowel", "フュージョン", "フュジョン")
   ]);
 
 export function generateKatakanaSpeedSessionPlan(input: {
   count: number;
+  manualExercise?: KatakanaSpeedManualExercise;
   now: Date | string;
   seed: string;
   sessionMode?: KatakanaSpeedSessionMode;
@@ -57,6 +83,7 @@ export function generateKatakanaSpeedSessionPlan(input: {
 
   return generateKatakanaSpeedTrainingLoopPlan({
     count: input.count,
+    manualExercise: input.manualExercise,
     mode,
     now: input.now,
     seed: input.seed,
@@ -76,6 +103,7 @@ function assertKatakanaSpeedTrainingLoopMode(
 
 function generateKatakanaSpeedTrainingLoopPlan(input: {
   count: number;
+  manualExercise?: KatakanaSpeedManualExercise;
   mode: KatakanaSpeedTrainingLoopMode;
   now: Date | string;
   seed: string;
@@ -91,6 +119,15 @@ function generateKatakanaSpeedTrainingLoopPlan(input: {
     recentAttempts: [],
     state: input.state
   });
+
+  if (input.manualExercise) {
+    return buildManualExercisePlan({
+      count,
+      focus,
+      manualExercise: input.manualExercise,
+      seed: input.seed
+    });
+  }
 
   if (input.mode === "repair") {
     return buildRepairTrainingPlan({
@@ -112,6 +149,56 @@ function generateKatakanaSpeedTrainingLoopPlan(input: {
     count,
     focus,
     seed: input.seed
+  });
+}
+
+function buildManualExercisePlan(input: {
+  count: number;
+  focus: KatakanaTrainingFocus;
+  manualExercise: KatakanaSpeedManualExercise;
+  seed: string;
+}) {
+  if (input.manualExercise === "romaji_to_katakana") {
+    return buildRomajiToKatakanaChoiceTrials({
+      blockId: "manual-romaji-to-katakana",
+      count: input.count,
+      focus: input.focus,
+      seed: `${input.seed}:manual:romaji`
+    });
+  }
+
+  if (input.manualExercise === "contrast") {
+    return buildContrastSprintTrials({
+      blockId: "manual-contrast",
+      count: input.count,
+      focus: input.focus,
+      seed: `${input.seed}:manual:contrast`
+    });
+  }
+
+  if (input.manualExercise === "reading") {
+    return buildTimedReadingTrials({
+      blockId: "manual-reading",
+      count: input.count,
+      focus: input.focus,
+      seed: `${input.seed}:manual:reading`
+    });
+  }
+
+  if (input.manualExercise === "mora_contrast") {
+    return buildManualMoraContrastTrials({
+      blockId: "manual-mora-contrast",
+      count: input.count,
+      focus: input.focus,
+      seed: `${input.seed}:manual:mora`
+    });
+  }
+
+  return buildRanGridTrials({
+    blockId: "manual-ran-grid",
+    count: 1,
+    focus: input.focus,
+    seed: `${input.seed}:manual:ran`
   });
 }
 
@@ -217,7 +304,21 @@ function buildContrastSprintTrials(input: {
   wasRepair?: boolean;
 }): KatakanaSpeedTrialPlan[] {
   if (input.focus.kind === "mora_contrast") {
-    const trials = buildMoraContrastTrials(input);
+    const inverseTrials = buildRomajiToKatakanaChoiceTrials({
+      blockId: input.blockId,
+      count: Math.min(1, input.count),
+      focus: input.focus,
+      seed: `${input.seed}:romaji-first`,
+      wasRepair: input.wasRepair
+    });
+    const trials = [
+      ...inverseTrials,
+      ...buildMoraContrastTrials({
+        ...input,
+        count: Math.max(0, input.count - inverseTrials.length),
+        seed: `${input.seed}:mora`
+      })
+    ];
     if (trials.length > 0) {
       return trials;
     }
@@ -226,65 +327,43 @@ function buildContrastSprintTrials(input: {
   const surfaces = [
     ...new Set([...input.focus.targetChunks, ...input.focus.distractorChunks])
   ];
-  const targetItems = input.focus.targetChunks.flatMap((surface) => {
-    const item = getKatakanaSpeedItemBySurface(surface);
-    return item ? [item] : [];
-  });
-  const fallbackItem =
-    targetItems[0] ??
-    getItemsForFocus({ focus: input.focus, includeRare: true })[0] ??
-    getKatakanaSpeedCatalog()[0];
+  const fallbackItem = pickFallbackItemForFocus(input.focus);
   const shuffledSurfaces = stableShuffle(
     surfaces.length > 0 ? surfaces : [fallbackItem.surface],
     `${input.seed}:surfaces`
   );
 
   return Array.from({ length: input.count }, (_, index) => {
-    const isRomajiToKatakanaChoice = index % 4 === 2;
-    const correctSurface = isRomajiToKatakanaChoice
-      ? pickRomajiChoiceCorrectSurface({
-          fallbackSurface: fallbackItem.surface,
-          focus: input.focus,
-          index: Math.floor(index / 4)
-        })
-      : (input.focus.targetChunks[
-          index % Math.max(1, input.focus.targetChunks.length)
-        ] ??
-        shuffledSurfaces[index % Math.max(1, shuffledSurfaces.length)] ??
-        fallbackItem.surface);
+    const isRomajiToKatakanaChoice = index % 4 === 0;
+    if (isRomajiToKatakanaChoice) {
+      return buildRomajiToKatakanaChoiceTrial({
+        blockId: input.blockId,
+        fallbackItem,
+        focus: input.focus,
+        index: Math.floor(index / 4),
+        seed: `${input.seed}:${index}`,
+        wasRepair: input.wasRepair
+      });
+    }
+
+    const correctSurface =
+      input.focus.targetChunks[
+        index % Math.max(1, input.focus.targetChunks.length)
+      ] ??
+      shuffledSurfaces[index % Math.max(1, shuffledSurfaces.length)] ??
+      fallbackItem.surface;
     const item = getKatakanaSpeedItemBySurface(correctSurface) ?? fallbackItem;
     const mode: KatakanaSpeedTrialMode =
-      index % 4 === 1 ? "blink" : "minimal_pair";
-    const promptReading = isRomajiToKatakanaChoice
-      ? romanizeKatakanaForLearner(correctSurface)
-      : null;
-    const optionSurfaces =
-      isRomajiToKatakanaChoice && promptReading
-        ? buildRomajiChoiceOptionSurfaces({
-            correctSurface,
-            focus: input.focus,
-            maxOptions: 4,
-            promptReading,
-            seed: `${input.seed}:${index}`
-          })
-        : buildContrastOptionSurfaces({
-            correctSurface,
-            focus: input.focus,
-            maxOptions: mode === "blink" ? 2 : 4,
-            seed: `${input.seed}:${index}`
-          });
-    const targetRtMs =
-      isRomajiToKatakanaChoice && promptReading
-        ? 1150
-        : mode === "blink"
-          ? 850
-          : 1050;
+      index % 4 === 2 ? "blink" : "minimal_pair";
+    const optionSurfaces = buildContrastOptionSurfaces({
+      correctSurface,
+      focus: input.focus,
+      maxOptions: mode === "blink" ? 2 : 4,
+      seed: `${input.seed}:${index}`
+    });
+    const targetRtMs = mode === "blink" ? 850 : 1050;
     const exerciseFamily =
-      isRomajiToKatakanaChoice && promptReading
-        ? "romaji_to_katakana_choice"
-        : mode === "blink"
-          ? "blink_choice"
-          : "contrast_choice";
+      mode === "blink" ? "blink_choice" : "contrast_choice";
 
     return {
       blockId: input.blockId,
@@ -293,14 +372,6 @@ function buildContrastSprintTrials(input: {
       expectedSurface: correctSurface,
       ...(mode === "blink" ? { exposureMs: 700 } : {}),
       features: {
-        ...(exerciseFamily === "romaji_to_katakana_choice"
-          ? {
-              answerKind: "katakana",
-              direction: "romaji_to_katakana",
-              exerciseCode: "E04",
-              promptKind: "romaji"
-            }
-          : {}),
         correctnessSource: "objective",
         exerciseFamily,
         focusId: input.focus.id,
@@ -322,16 +393,100 @@ function buildContrastSprintTrials(input: {
         const optionItem = getKatakanaSpeedItemBySurface(surface);
         return optionItem?.id ?? encodeKatakanaSpeedRawOption(surface);
       }),
-      promptSurface:
-        exerciseFamily === "romaji_to_katakana_choice" && promptReading
-          ? promptReading
-          : correctSurface,
+      promptSurface: correctSurface,
       rarity: item.rarity,
       targetRtMs,
       trialId: `katakana-speed-${input.seed}-${index}-${slugForTrial(correctSurface)}`,
       ...(input.wasRepair ? { wasRepair: true } : {})
     };
   });
+}
+
+function buildRomajiToKatakanaChoiceTrials(input: {
+  blockId: string;
+  count: number;
+  focus: KatakanaTrainingFocus;
+  seed: string;
+  wasRepair?: boolean;
+}): KatakanaSpeedTrialPlan[] {
+  if (input.count <= 0) {
+    return [];
+  }
+
+  const fallbackItem = pickFallbackItemForFocus(input.focus);
+
+  return Array.from({ length: input.count }, (_, index) =>
+    buildRomajiToKatakanaChoiceTrial({
+      blockId: input.blockId,
+      fallbackItem,
+      focus: input.focus,
+      index,
+      seed: `${input.seed}:${index}`,
+      wasRepair: input.wasRepair
+    })
+  );
+}
+
+function buildRomajiToKatakanaChoiceTrial(input: {
+  blockId: string;
+  fallbackItem: KatakanaSpeedItem;
+  focus: KatakanaTrainingFocus;
+  index: number;
+  seed: string;
+  wasRepair?: boolean;
+}): KatakanaSpeedTrialPlan {
+  const correctSurface = pickRomajiChoiceCorrectSurface({
+    fallbackSurface: input.fallbackItem.surface,
+    focus: input.focus,
+    index: input.index,
+    seed: `${input.seed}:correct`
+  });
+  const item =
+    getKatakanaSpeedItemBySurface(correctSurface) ?? input.fallbackItem;
+  const promptReading =
+    romanizeKatakanaForLearner(correctSurface) ?? input.fallbackItem.reading;
+  const optionSurfaces = buildRomajiChoiceOptionSurfaces({
+    correctSurface,
+    focus: input.focus,
+    maxOptions: 4,
+    promptReading,
+    seed: input.seed
+  });
+
+  return {
+    blockId: input.blockId,
+    correctItemId: item.id,
+    exerciseId: `katakana-speed-${blockMode(input.blockId)}`,
+    expectedSurface: correctSurface,
+    features: {
+      answerKind: "katakana",
+      correctnessSource: "objective",
+      direction: "romaji_to_katakana",
+      exerciseCode: "E04",
+      exerciseFamily: "romaji_to_katakana_choice",
+      focusId: input.focus.id,
+      focusLabel: input.focus.label,
+      hardMode: true,
+      interaction: "raw_choice",
+      promptKind: "romaji",
+      showReadingDuringTrial: false
+    },
+    focusChunks: input.focus.targetChunks,
+    itemId: item.id,
+    itemType: item.kind,
+    metadataRole: input.wasRepair ? "repair_block" : "confusion_repair",
+    metrics: {
+      focusId: input.focus.id,
+      targetRtMs: 1150
+    },
+    mode: "minimal_pair",
+    optionItemIds: optionSurfaces.map(surfaceToOptionId),
+    promptSurface: promptReading,
+    rarity: item.rarity,
+    targetRtMs: 1150,
+    trialId: `katakana-speed-${input.seed}-${input.index}-${slugForTrial(correctSurface)}-romaji`,
+    ...(input.wasRepair ? { wasRepair: true } : {})
+  };
 }
 
 function buildMoraContrastTrials(input: {
@@ -401,6 +556,39 @@ function buildMoraContrastTrials(input: {
       ...(input.wasRepair ? { wasRepair: true } : {})
     };
   });
+}
+
+function buildManualMoraContrastTrials(input: {
+  blockId: string;
+  count: number;
+  focus: KatakanaTrainingFocus;
+  seed: string;
+}) {
+  const moraFoci = KATAKANA_SPEED_FOCUSES.filter(
+    (focus) => focus.kind === "mora_contrast"
+  );
+  const orderedFoci =
+    input.focus.kind === "mora_contrast"
+      ? [
+          input.focus,
+          ...moraFoci.filter((focus) => focus.id !== input.focus.id)
+        ]
+      : stableShuffle(moraFoci, `${input.seed}:mora-foci`);
+  const counts = splitCounts(
+    input.count,
+    orderedFoci.map(() => 1)
+  );
+
+  return interleavePools(
+    orderedFoci.map((focus, index) =>
+      buildMoraContrastTrials({
+        blockId: input.blockId,
+        count: counts[index] ?? 0,
+        focus,
+        seed: `${input.seed}:${focus.id}`
+      })
+    )
+  ).slice(0, input.count);
 }
 
 function buildTimedReadingTrials(input: {
@@ -495,25 +683,9 @@ function buildRanGridTrials(input: {
     return [];
   }
 
-  const surfaces = [
-    ...new Set([...input.focus.targetChunks, ...input.focus.distractorChunks])
-  ];
-  const sourceItems = stableShuffle(
-    getKatakanaSpeedCatalog().filter(
-      (item) =>
-        item.kind === "single_kana" ||
-        item.kind === "core_mora" ||
-        item.kind === "extended_chunk"
-    ),
-    `${input.seed}:source`
-  );
-  const gridSurfaces = Array.from({ length: 25 }, (_, index) => {
-    const surface = surfaces[index % Math.max(1, surfaces.length)];
-    return (
-      surface ??
-      sourceItems[index % Math.max(1, sourceItems.length)]?.surface ??
-      "ティ"
-    );
+  const gridSurfaces = buildRanGridSurfaces({
+    focus: input.focus,
+    seed: input.seed
   });
   const gridItemIds = gridSurfaces.map((surface, index) => {
     const item = getKatakanaSpeedItemBySurface(surface);
@@ -559,6 +731,52 @@ function buildRanGridTrials(input: {
       wasTransfer: true
     }
   ];
+}
+
+function buildRanGridSurfaces(input: {
+  focus: KatakanaTrainingFocus;
+  seed: string;
+}) {
+  const focusedSurfaces = getItemsForFocus({
+    focus: input.focus,
+    includeRare: false,
+    kind: ["single_kana", "core_mora", "extended_chunk", "word"]
+  }).map((item) => item.surface);
+  const moraFocusSurfaces =
+    input.focus.kind === "mora_contrast" &&
+    isMoraContrastFocusId(input.focus.id)
+      ? getMoraContrastPairsForFocus(input.focus.id).map(
+          (pair) => pair.correctSurface
+        )
+      : [];
+  const sourceSurfaces = getKatakanaSpeedCatalog()
+    .filter(
+      (item) =>
+        item.rarity !== "rare" &&
+        (item.kind === "single_kana" ||
+          item.kind === "core_mora" ||
+          item.kind === "extended_chunk")
+    )
+    .map((item) => item.surface);
+  const prioritySurfaces = stableShuffle(
+    uniqueDisplayableSurfaces([...moraFocusSurfaces, ...focusedSurfaces]),
+    `${input.seed}:ran-priority`
+  );
+  const fillerSurfaces = stableShuffle(
+    uniqueDisplayableSurfaces(sourceSurfaces).filter(
+      (surface) => !prioritySurfaces.includes(surface)
+    ),
+    `${input.seed}:ran-source`
+  );
+  const pool = [...prioritySurfaces, ...fillerSurfaces];
+  const selected =
+    pool.length === 0
+      ? ["ティ"]
+      : pool.length >= 25
+        ? pool.slice(0, 25)
+        : Array.from({ length: 25 }, (_, index) => pool[index % pool.length]);
+
+  return stableShuffle(selected, `${input.seed}:ran-grid`);
 }
 
 function splitCounts(total: number, weights: readonly number[]) {
@@ -624,13 +842,22 @@ function pickRomajiChoiceCorrectSurface(input: {
   fallbackSurface: string;
   focus: KatakanaTrainingFocus;
   index: number;
+  seed: string;
 }) {
-  const candidates = [
-    ...new Set([...input.focus.targetChunks, ...input.focus.distractorChunks])
-  ].filter((surface) => getKatakanaSpeedItemBySurface(surface));
+  const focusCandidates =
+    input.focus.kind === "mora_contrast" &&
+    isMoraContrastFocusId(input.focus.id)
+      ? getMoraContrastPairsForFocus(input.focus.id).map(
+          (pair) => pair.correctSurface
+        )
+      : [...input.focus.targetChunks, ...input.focus.distractorChunks];
+  const candidates = uniqueDisplayableSurfaces(focusCandidates).filter(
+    (surface) => getKatakanaSpeedItemBySurface(surface)
+  );
+  const shuffled = stableShuffle(candidates, input.seed);
 
   return (
-    candidates[input.index % Math.max(1, candidates.length)] ??
+    shuffled[input.index % Math.max(1, shuffled.length)] ??
     input.fallbackSurface
   );
 }
@@ -647,6 +874,15 @@ function buildRomajiChoiceOptionSurfaces(input: {
   const focusSurfaces = [
     ...new Set([...input.focus.distractorChunks, ...input.focus.targetChunks])
   ];
+  const moraPairSurfaces = MORA_CONTRAST_PAIRS.filter(
+    (pair) => pair.correctSurface === input.correctSurface
+  ).flatMap((pair) => [
+    pair.distractorSurface,
+    ...getMoraContrastPairsForFocus(pair.focusId).flatMap((candidate) => [
+      candidate.correctSurface,
+      candidate.distractorSurface
+    ])
+  ]);
   const clusterSurfaces =
     correctItem?.distractorItemIds.flatMap((itemId) => {
       const item = getKatakanaSpeedItemById(itemId);
@@ -675,6 +911,12 @@ function buildRomajiChoiceOptionSurfaces(input: {
 
   fillRomajiChoiceSurfaces({
     candidates: focusSurfaces,
+    maxOptions: input.maxOptions,
+    promptReading: input.promptReading,
+    selected
+  });
+  fillRomajiChoiceSurfaces({
+    candidates: stableShuffle(moraPairSurfaces, `${input.seed}:mora`),
     maxOptions: input.maxOptions,
     promptReading: input.promptReading,
     selected
@@ -725,12 +967,51 @@ function fillRomajiChoiceSurfaces(input: {
 }
 
 function isKatakanaOptionSurface(surface: string) {
-  return /^[\u30a0-\u30ffー]+$/u.test(surface);
+  return (
+    /^[\u30a0-\u30ffー]+$/u.test(surface) && /[\u30a1-\u30fa]/u.test(surface)
+  );
 }
 
 function surfaceToOptionId(surface: string) {
   const optionItem = getKatakanaSpeedItemBySurface(surface);
   return optionItem?.id ?? encodeKatakanaSpeedRawOption(surface);
+}
+
+function pickFallbackItemForFocus(focus: KatakanaTrainingFocus) {
+  const targetItems = focus.targetChunks.flatMap((surface) => {
+    const item = getKatakanaSpeedItemBySurface(surface);
+    return item && isDisplayableRanCellSurface(item.surface) ? [item] : [];
+  });
+
+  return (
+    targetItems[0] ??
+    getItemsForFocus({ focus, includeRare: true }).find((item) =>
+      isDisplayableRanCellSurface(item.surface)
+    ) ??
+    getKatakanaSpeedCatalog()[0]
+  );
+}
+
+function getMoraContrastPairsForFocus(
+  focusId: KatakanaSpeedMoraContrastPair["focusId"]
+) {
+  return MORA_CONTRAST_PAIRS.filter((pair) => pair.focusId === focusId);
+}
+
+function isMoraContrastFocusId(
+  focusId: string
+): focusId is KatakanaSpeedMoraContrastPair["focusId"] {
+  return focusId === "long-vowel" || focusId === "sokuon";
+}
+
+function uniqueDisplayableSurfaces(surfaces: readonly string[]) {
+  return [...new Set(surfaces)].filter(isDisplayableRanCellSurface);
+}
+
+function isDisplayableRanCellSurface(surface: string) {
+  return (
+    isKatakanaOptionSurface(surface) && surface !== "ー" && surface !== "ッ"
+  );
 }
 
 function pickReadingItems(input: {

@@ -103,16 +103,19 @@ describe("katakana speed operational session planning", () => {
     const inverseTrials = plan.filter(
       (trial) => trial.features?.exerciseFamily === "romaji_to_katakana_choice"
     );
-    const trial = inverseTrials[0];
+    const trial = plan[0];
     expect(trial).toBeDefined();
     const surfaces = optionSurfaces(trial!.optionItemIds);
 
     expect(inverseTrials.length).toBeGreaterThanOrEqual(2);
     expect(trial).toMatchObject({
-      expectedSurface: "ティ",
       mode: "minimal_pair",
-      promptSurface: "ti"
+      features: expect.objectContaining({
+        exerciseFamily: "romaji_to_katakana_choice"
+      })
     });
+    expect(trial!.promptSurface).toMatch(/^[a-z]+$/iu);
+    expect(trial!.expectedSurface).not.toBe(trial!.promptSurface);
     expect(trial!.features).toMatchObject({
       answerKind: "katakana",
       direction: "romaji_to_katakana",
@@ -123,7 +126,7 @@ describe("katakana speed operational session planning", () => {
     });
     expect(surfaces).toHaveLength(4);
     expect(new Set(surfaces).size).toBe(4);
-    expect(surfaces).toEqual(expect.arrayContaining(["ティ", "チ", "ディ"]));
+    expect(surfaces).toContain(trial!.expectedSurface);
     expect(
       surfaces.every((surface) => /^[\u30a0-\u30ffー]+$/u.test(surface))
     ).toBe(true);
@@ -133,6 +136,45 @@ describe("katakana speed operational session planning", () => {
           romanizeKatakanaForLearner(surface) === trial!.promptSurface
       )
     ).toEqual([trial!.expectedSurface]);
+  });
+
+  it("builds long-vowel RAN grids from concrete varied surfaces", () => {
+    const initial = createInitialKatakanaSpeedState({
+      now: "2026-04-26T08:00:00.000Z"
+    });
+    const serverItem = getKatakanaSpeedItemBySurface("サーバー");
+    expect(serverItem).toBeDefined();
+    const longVowelState = updateKatakanaSpeedStateAfterAttempt({
+      actualSurface: "サバ",
+      expectedSurface: "サーバー",
+      itemId: serverItem!.id,
+      now: "2026-04-26T08:01:00.000Z",
+      responseMs: 900,
+      state: initial
+    });
+
+    const plan = generateKatakanaSpeedSessionPlan({
+      count: 32,
+      now: "2026-04-26T08:02:00.000Z",
+      seed: "long-vowel-ran-grid",
+      sessionMode: "daily",
+      state: longVowelState
+    });
+    const ranTrial = plan.find((trial) => trial.mode === "ran_grid");
+    const gridSurfaces = ranTrial?.features?.gridSurfaces;
+
+    expect(plan[0]?.features?.exerciseFamily).toBe("romaji_to_katakana_choice");
+    expect(Array.isArray(gridSurfaces)).toBe(true);
+    const surfaces = gridSurfaces as string[];
+    expect(surfaces).toHaveLength(25);
+    expect(surfaces).not.toContain("ー");
+    expect(new Set(surfaces).size).toBeGreaterThanOrEqual(8);
+    expect(surfaces.every((surface) => /[\u30a1-\u30ff]/u.test(surface))).toBe(
+      true
+    );
+    expect(
+      surfaces.some((surface) => surface.length > 1 && surface.includes("ー"))
+    ).toBe(true);
   });
 
   it("builds repair as focused contrast, reading, final contrast", () => {
@@ -213,7 +255,12 @@ describe("katakana speed operational session planning", () => {
       sessionMode: "daily",
       state
     });
-    const firstTrial = plan[0];
+    const firstTrial = plan.find(
+      (trial) => trial.features?.promptKind !== "romaji"
+    );
+    if (!firstTrial) {
+      throw new Error("Expected a non-romaji contrast trial.");
+    }
 
     expect(firstTrial).toMatchObject({
       expectedSurface: expect.any(String),
@@ -256,21 +303,33 @@ describe("katakana speed operational session planning", () => {
       state: initial
     });
 
-    const sokuonTrial = generateKatakanaSpeedSessionPlan({
+    const sokuonPlan = generateKatakanaSpeedSessionPlan({
       count: 6,
       now: "2026-04-26T08:03:00.000Z",
       seed: "sokuon-mora-contrast",
       sessionMode: "repair",
       state: sokuonState
-    })[0];
-    const longVowelTrial = generateKatakanaSpeedSessionPlan({
+    });
+    const longVowelPlan = generateKatakanaSpeedSessionPlan({
       count: 6,
       now: "2026-04-26T08:03:00.000Z",
       seed: "long-vowel-mora-contrast",
       sessionMode: "repair",
       state: longVowelState
-    })[0];
+    });
+    const sokuonTrial = sokuonPlan.find(
+      (trial) => trial.features?.exerciseFamily === "mora_contrast"
+    );
+    const longVowelTrial = longVowelPlan.find(
+      (trial) => trial.features?.exerciseFamily === "mora_contrast"
+    );
 
+    expect(sokuonPlan[0]?.features?.exerciseFamily).toBe(
+      "romaji_to_katakana_choice"
+    );
+    expect(longVowelPlan[0]?.features?.exerciseFamily).toBe(
+      "romaji_to_katakana_choice"
+    );
     expect(sokuonTrial).toBeDefined();
     expect(longVowelTrial).toBeDefined();
     expect(sokuonTrial!.features).toMatchObject({
@@ -297,6 +356,48 @@ describe("katakana speed operational session planning", () => {
       ])
     );
     expect(longVowelTrial!.optionItemIds.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("uses a broad long-vowel mora contrast pool instead of cycling the same few words", () => {
+    const initial = createInitialKatakanaSpeedState({
+      now: "2026-04-26T08:00:00.000Z"
+    });
+    const serverItem = getKatakanaSpeedItemBySurface("サーバー");
+    expect(serverItem).toBeDefined();
+    const longVowelState = updateKatakanaSpeedStateAfterAttempt({
+      actualSurface: "サバ",
+      expectedSurface: "サーバー",
+      itemId: serverItem!.id,
+      now: "2026-04-26T08:01:00.000Z",
+      responseMs: 900,
+      state: initial
+    });
+
+    const contrastSurfaces = generateKatakanaSpeedSessionPlan({
+      count: 34,
+      now: "2026-04-26T08:02:00.000Z",
+      seed: "long-vowel-varied-contrast",
+      sessionMode: "repair",
+      state: longVowelState
+    })
+      .filter(
+        (trial) =>
+          trial.blockId === "repair-b1-contrast" &&
+          trial.features?.exerciseFamily === "mora_contrast"
+      )
+      .map((trial) => trial.expectedSurface ?? trial.promptSurface);
+
+    expect(new Set(contrastSurfaces).size).toBeGreaterThanOrEqual(8);
+    expect(contrastSurfaces.slice(0, 8)).not.toEqual([
+      "コーヒー",
+      "サーバー",
+      "スーパー",
+      "コーヒー",
+      "サーバー",
+      "スーパー",
+      "コーヒー",
+      "サーバー"
+    ]);
   });
 
   it("rejects stale session modes at runtime", () => {

@@ -51,13 +51,17 @@ import {
 import type {
   KatakanaSpeedErrorTag,
   KatakanaSpeedItemState,
+  KatakanaSpeedManualExercise,
   KatakanaSpeedSessionMode,
   KatakanaSpeedState,
   KatakanaSpeedTrialMode,
   KatakanaSpeedTrialPlan
 } from "../types";
 
-export type { KatakanaSpeedSessionMode } from "../types";
+export type {
+  KatakanaSpeedManualExercise,
+  KatakanaSpeedSessionMode
+} from "../types";
 
 export type KatakanaSpeedSelfRating = "clean" | "hesitated" | "wrong";
 
@@ -329,6 +333,7 @@ export async function getKatakanaSpeedRecapPageData(input: {
 export async function startKatakanaSpeedSession(input: {
   count?: number;
   database?: DatabaseClient;
+  manualExercise?: KatakanaSpeedManualExercise;
   mode?: KatakanaSpeedSessionMode;
   now?: Date;
   seed?: string;
@@ -339,13 +344,17 @@ export async function startKatakanaSpeedSession(input: {
   const sessionId = `katakana-speed-session-${input.seed ?? randomUUID()}`;
   const mode = input.mode ?? "daily";
   assertKatakanaSpeedSessionMode(mode);
+  assertKatakanaSpeedManualExercise(input.manualExercise);
 
   return database.transaction(async (transaction) => {
     const state = await loadKatakanaSpeedState(transaction, now);
     const seed = input.seed ?? sessionId;
-    const count = input.count ?? defaultKatakanaSpeedSessionCount(mode);
+    const count =
+      input.count ??
+      defaultKatakanaSpeedSessionCount(mode, input.manualExercise);
     const plan = generateExpandedKatakanaSpeedSessionPlan({
       count,
+      manualExercise: input.manualExercise,
       mode,
       now,
       seed,
@@ -443,6 +452,7 @@ type ExpandedKatakanaTrialPlan = KatakanaSpeedTrialPlan &
 
 function generateExpandedKatakanaSpeedSessionPlan(input: {
   count: number;
+  manualExercise?: KatakanaSpeedManualExercise;
   mode: KatakanaSpeedSessionMode;
   now: Date;
   seed: string;
@@ -454,12 +464,15 @@ function generateExpandedKatakanaSpeedSessionPlan(input: {
 } {
   const generatedTrials = generateKatakanaSpeedSessionPlan({
     count: input.count,
+    manualExercise: input.manualExercise,
     now: input.now,
     seed: input.seed,
     sessionMode: input.mode,
     state: input.state
   }) as readonly ExpandedKatakanaTrialPlan[];
-  const exerciseId = `${input.sessionId}:${input.mode}`;
+  const exerciseId = input.manualExercise
+    ? `${input.sessionId}:manual:${input.manualExercise}`
+    : `${input.sessionId}:${input.mode}`;
   const trials = generatedTrials.map((trial) => ({
     ...trial,
     blockId: `${input.sessionId}:${trial.blockId ?? `${input.mode}-block`}`,
@@ -487,6 +500,7 @@ function generateExpandedKatakanaSpeedSessionPlan(input: {
           typeof snapshot.features.focusId === "string"
             ? snapshot.features.focusId
             : undefined,
+        manualExercise: input.manualExercise,
         sessionMode: input.mode
       },
       mode: trial.mode,
@@ -501,7 +515,22 @@ function generateExpandedKatakanaSpeedSessionPlan(input: {
   };
 }
 
-function defaultKatakanaSpeedSessionCount(mode: KatakanaSpeedSessionMode) {
+function defaultKatakanaSpeedSessionCount(
+  mode: KatakanaSpeedSessionMode,
+  manualExercise?: KatakanaSpeedManualExercise
+) {
+  if (manualExercise === "ran_grid") {
+    return 1;
+  }
+  if (manualExercise === "romaji_to_katakana") {
+    return 12;
+  }
+  if (manualExercise === "contrast" || manualExercise === "mora_contrast") {
+    return 16;
+  }
+  if (manualExercise === "reading") {
+    return 16;
+  }
   if (mode === "repair") {
     return 34;
   }
@@ -549,6 +578,23 @@ function assertKatakanaSpeedSessionMode(
   }
 }
 
+function assertKatakanaSpeedManualExercise(
+  manualExercise: string | undefined
+): asserts manualExercise is KatakanaSpeedManualExercise | undefined {
+  if (
+    manualExercise === undefined ||
+    manualExercise === "contrast" ||
+    manualExercise === "mora_contrast" ||
+    manualExercise === "ran_grid" ||
+    manualExercise === "reading" ||
+    manualExercise === "romaji_to_katakana"
+  ) {
+    return;
+  }
+
+  throw new Error("Unsupported Katakana Speed manual exercise.");
+}
+
 function assertNeverKatakanaSpeedSessionMode(mode: never): never {
   throw new Error(`Unsupported Katakana Speed session mode: ${mode}`);
 }
@@ -557,6 +603,21 @@ function trainingBlockTitle(
   blockId: string | undefined,
   role: KatakanaSpeedTrialPlan["metadataRole"]
 ) {
+  if (blockId?.includes("manual-romaji-to-katakana")) {
+    return "Romaji -> katakana";
+  }
+  if (blockId?.includes("manual-contrast")) {
+    return "Contrasti";
+  }
+  if (blockId?.includes("manual-reading")) {
+    return "Lettura";
+  }
+  if (blockId?.includes("manual-ran-grid")) {
+    return "RAN grid";
+  }
+  if (blockId?.includes("manual-mora-contrast")) {
+    return "Trappole di mora";
+  }
   if (blockId?.includes("b1-contrast")) {
     return "Contrasti rapidi";
   }
