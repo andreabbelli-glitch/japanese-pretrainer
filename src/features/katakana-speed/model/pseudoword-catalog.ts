@@ -124,24 +124,6 @@ export const KATAKANA_SPEED_MINIMAL_PSEUDO_PAIRS = [
   pair("vyu-byu", "ヴュ", "ビュ", "ヴュラン", "ビュラン")
 ] as const;
 
-const LEGACY_PSEUDOWORD_IDS_BY_SURFACE = {
-  クォリック: "pseudo-kwo-rikku",
-  ディラード: "pseudo-di-rado",
-  デュカン: "pseudo-dyu-kan",
-  ティラード: "pseudo-ti-rado",
-  ファモル: "pseudo-fa-moru",
-  フィラード: "pseudo-fi-rado",
-  ヴョラン: "pseudo-vyo-ran",
-  ウェラン: "pseudo-we-ran"
-} as const;
-
-const LEGACY_SUPPLEMENTAL_PSEUDOWORDS = [
-  {
-    focusChunk: "ヴョ",
-    surface: "ヴョラン"
-  }
-] as const;
-
 const B_TIER_CHUNKS = new Set([
   "イェ",
   "ウィ",
@@ -304,10 +286,7 @@ function buildPseudowordCatalog() {
       mergeDefinition(definitionsBySurface, {
         family: "pseudo-bank",
         focusChunks: [chunk],
-        id: idForSurface(
-          surface,
-          `pseudo-seed-${slugForChunk(chunk)}-${frame.id}`
-        ),
+        id: `pseudo-seed-${slugForChunk(chunk)}-${frame.id}`,
         rarity: rarityForTier(tierForChunks([chunk])),
         surface,
         tags: [
@@ -321,28 +300,6 @@ function buildPseudowordCatalog() {
         tier: tierForChunks([chunk])
       });
     }
-  }
-
-  for (const legacy of LEGACY_SUPPLEMENTAL_PSEUDOWORDS) {
-    const tier = tierForChunks([legacy.focusChunk]);
-    mergeDefinition(definitionsBySurface, {
-      family: "pseudo-bank",
-      focusChunks: [legacy.focusChunk],
-      id: idForSurface(
-        legacy.surface,
-        `pseudo-legacy-${slugForChunk(legacy.focusChunk)}`
-      ),
-      rarity: rarityForTier(tier),
-      surface: legacy.surface,
-      tags: [
-        "pseudoword",
-        "pseudo-legacy",
-        `pseudo-focus-${slugForChunk(legacy.focusChunk)}`,
-        `tier-${tier}`
-      ],
-      targetable: true,
-      tier
-    });
   }
 
   return [...definitionsBySurface.values()].map((definition) =>
@@ -367,14 +324,8 @@ function buildPseudowordConfusionClusters() {
     Object.freeze({
       id: `pseudo-pair-${pairDefinition.id}`,
       itemIds: Object.freeze([
-        idForSurface(
-          pairDefinition.targetSurface,
-          `pseudo-pair-${pairDefinition.id}-target`
-        ),
-        idForSurface(
-          pairDefinition.distractorSurface,
-          `pseudo-pair-${pairDefinition.id}-distractor`
-        )
+        `pseudo-pair-${pairDefinition.id}-target`,
+        `pseudo-pair-${pairDefinition.id}-distractor`
       ])
     })
   );
@@ -392,10 +343,7 @@ function pairItemDefinition(input: {
   return {
     family: "pseudo-bank",
     focusChunks: [input.chunk],
-    id: idForSurface(
-      input.surface,
-      `pseudo-pair-${input.pairId}-${input.role}`
-    ),
+    id: `pseudo-pair-${input.pairId}-${input.role}`,
     rarity: rarityForTier(tier),
     surface: input.surface,
     tags: [
@@ -420,7 +368,7 @@ function mergeDefinition(
     definitionsBySurface.set(nextDefinition.surface, {
       family: nextDefinition.family,
       focusChunks: new Set(nextDefinition.focusChunks),
-      id: idForSurface(nextDefinition.surface, nextDefinition.id),
+      id: nextDefinition.id,
       rarity: nextDefinition.rarity,
       surface: nextDefinition.surface,
       tags: new Set(nextDefinition.tags),
@@ -431,7 +379,6 @@ function mergeDefinition(
     return;
   }
 
-  existing.id = idForSurface(nextDefinition.surface, existing.id);
   existing.rarity = maxRarity(existing.rarity, nextDefinition.rarity);
   existing.targetable ||= nextDefinition.targetable;
   existing.tier = maxTier(existing.tier, nextDefinition.tier);
@@ -442,14 +389,6 @@ function mergeDefinition(
     existing.tags.add(tag);
   }
   existing.tags.delete("targetable-false");
-}
-
-function idForSurface(surface: string, fallbackId: string) {
-  return (
-    LEGACY_PSEUDOWORD_IDS_BY_SURFACE[
-      surface as keyof typeof LEGACY_PSEUDOWORD_IDS_BY_SURFACE
-    ] ?? fallbackId
-  );
 }
 
 function pair(

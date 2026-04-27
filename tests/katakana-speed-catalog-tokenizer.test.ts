@@ -84,12 +84,14 @@ describe("katakana speed catalog", () => {
       tier: "A"
     });
 
-    expect(getKatakanaSpeedItemById("pseudo-ti-rado")).toMatchObject({
-      focusChunks: ["ティ"],
-      kind: "pseudoword",
-      surface: "ティラード",
-      tier: "A"
-    });
+    expect(getKatakanaSpeedItemById("pseudo-pair-ti-chi-target")).toMatchObject(
+      {
+        focusChunks: ["ティ"],
+        kind: "pseudoword",
+        surface: "ティラード",
+        tier: "A"
+      }
+    );
 
     expect(getKatakanaSpeedItemById("sentence-P01")).toMatchObject({
       focusChunks: ["ティ", "ファ", "チェ"],

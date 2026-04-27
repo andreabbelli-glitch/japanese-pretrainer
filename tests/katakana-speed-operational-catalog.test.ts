@@ -5,16 +5,10 @@ import {
   getKatakanaSpeedConfusionClusters,
   getKatakanaSpeedItemBySurface
 } from "@/features/katakana-speed/model";
-import {
-  getKatakanaSpeedChunkSpottingTargets,
-  getKatakanaSpeedExerciseCatalog,
-  getKatakanaSpeedLadderDefinitions,
-  getKatakanaSpeedMoraTrapPairs,
-  getKatakanaSpeedVariantPairs
-} from "@/features/katakana-speed/model/exercise-catalog";
+import { getKatakanaSpeedExerciseCatalog } from "@/features/katakana-speed/model/exercise-catalog";
 
 describe("katakana speed operational exercise catalog", () => {
-  it("materializes the complete non-audio operational exercise registry", () => {
+  it("materializes only the current training-loop exercise registry", () => {
     const exercises = getKatakanaSpeedExerciseCatalog();
     const supportedExerciseIds = exercises
       .filter((exercise) => exercise.supported)
@@ -28,26 +22,20 @@ describe("katakana speed operational exercise catalog", () => {
       "E02",
       "E03",
       "E04",
-      "E05",
-      "E08",
-      "E09",
       "E10",
-      "E11",
       "E12",
       "E13",
-      "E14",
       "E15",
       "E16",
-      "E17",
       "E18",
-      "E20",
-      "E21",
-      "E22"
+      "E20"
     ]);
-    expect(audioExerciseIds).toEqual(["E06", "E07", "E19"]);
-    expect(exercises.find((exercise) => exercise.id === "E22")).toMatchObject({
-      defaultNoRomaji: true
-    });
+    expect(audioExerciseIds).toEqual([]);
+    expect(
+      exercises.some((exercise) =>
+        ["E08", "E09", "E14", "E17", "E21", "E22"].includes(exercise.id)
+      )
+    ).toBe(false);
   });
 
   it("adds the operational word bank seeds as static word items", () => {
@@ -116,58 +104,7 @@ describe("katakana speed operational exercise catalog", () => {
     }
   });
 
-  it("exposes mora traps, variants, chunk spotting targets, and ladders", () => {
-    expect(getKatakanaSpeedMoraTrapPairs()).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          correctSurface: "バッグ",
-          trapSurface: "バグ",
-          feature: "sokuon"
-        }),
-        expect.objectContaining({
-          correctSurface: "サーバー",
-          trapSurface: "サバ",
-          feature: "long-vowel"
-        })
-      ])
-    );
-    expect(getKatakanaSpeedVariantPairs()).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          firstSurface: "ウイスキー",
-          secondSurface: "ウィスキー"
-        }),
-        expect.objectContaining({
-          firstSurface: "インタビュー",
-          secondSurface: "インタヴュー"
-        })
-      ])
-    );
-    expect(getKatakanaSpeedChunkSpottingTargets()).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          chunk: "ティ",
-          wordSurface: "セキュリティ"
-        }),
-        expect.objectContaining({
-          chunk: "フュ",
-          wordSurface: "フュージョン"
-        })
-      ])
-    );
-    expect(getKatakanaSpeedLadderDefinitions()).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          id: "ladder-di",
-          targetSurface: "ディ"
-        }),
-        expect.objectContaining({
-          id: "ladder-f-family",
-          targetSurface: "フィ"
-        })
-      ])
-    );
-
+  it("keeps the operational word bank inside the static item catalog", () => {
     expect(
       getKatakanaSpeedCatalog().filter((item) =>
         item.tags.includes("operational-word-bank")

@@ -10,11 +10,10 @@ import type {
   KatakanaSpeedPageData,
   KatakanaSpeedSessionMode
 } from "@/features/katakana-speed/server";
-import { cx } from "@/lib/classnames";
 
 import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
-import { KATAKANA_SPEED_MODE_GROUPS } from "./katakana-speed-copy";
+import { KATAKANA_SPEED_PRIMARY_ACTIONS } from "./katakana-speed-copy";
 import {
   ConfusionList,
   FamilyCards,
@@ -45,7 +44,7 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
 
     try {
       const session = await startKatakanaSpeedSessionAction({
-        count: 12,
+        count: defaultCountForMode(mode),
         mode
       });
       router.push(`/katakana-speed/session/${session.sessionId}` as Route);
@@ -67,21 +66,26 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
             <p className="katakana-speed-eyebrow">Drill locale</p>
             <h1 className="katakana-speed-title">Katakana Speed</h1>
             <p className="katakana-speed-summary">
-              Allena la lettura del katakana con esercizi brevi: scegli, leggi a
-              tempo, ricostruisci parole e correggi le confusioni più lente.
+              Allena il riconoscimento immediato di katakana, piccoli kana e
+              combinazioni estese con una sessione focalizzata.
             </p>
           </div>
           <div className="katakana-speed-actions">
-            <button
-              className="button button--primary"
-              disabled={startingMode !== null}
-              onClick={() => startSession(recommendedMode.mode)}
-              type="button"
-            >
-              {startingMode === recommendedMode.mode
-                ? "Avvio..."
-                : "Inizia drill"}
-            </button>
+            {KATAKANA_SPEED_PRIMARY_ACTIONS.map((action) => (
+              <button
+                className={
+                  action.mode === recommendedMode.mode
+                    ? "button button--primary"
+                    : "button button--ghost"
+                }
+                disabled={startingMode !== null}
+                key={action.mode}
+                onClick={() => startSession(action.mode)}
+                type="button"
+              >
+                {startingMode === action.mode ? "Avvio..." : action.label}
+              </button>
+            ))}
             <span className="katakana-speed-cta-detail">
               Consigliato: {recommendedMode.detail}
             </span>
@@ -93,39 +97,6 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
               </Link>
             ) : null}
           </div>
-          <details className="katakana-speed-mode-details">
-            <summary>Scegli esercizio</summary>
-            <div
-              className="katakana-speed-mode-picker"
-              aria-label="Selettore esercizi"
-            >
-              {KATAKANA_SPEED_MODE_GROUPS.map((group) => (
-                <div className="katakana-speed-mode-group" key={group.label}>
-                  <span className="katakana-speed-mode-group__label">
-                    {group.label}
-                  </span>
-                  <div className="katakana-speed-mode-group__items">
-                    {group.options.map((option) => (
-                      <button
-                        className={cx(
-                          "katakana-speed-mode-button",
-                          option.mode === recommendedMode.mode &&
-                            "katakana-speed-mode-button--recommended"
-                        )}
-                        disabled={startingMode !== null}
-                        key={option.mode}
-                        onClick={() => startSession(option.mode)}
-                        type="button"
-                      >
-                        <span>{option.label}</span>
-                        <small>{option.detail}</small>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </details>
           {clientError ? (
             <p className="kanji-clash-stage__error" role="alert">
               {clientError}
@@ -146,24 +117,24 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
         <p className="katakana-speed-eyebrow">Il tuo livello</p>
         <div className="stats-grid stats-grid--compact">
           <StatBlock
-            detail="Catalogo statico"
-            label="Kana/chunk"
-            value={String(data.catalogSize)}
+            detail="Mediana recente"
+            label="Velocità"
+            value={formatDuration(data.analytics.overview.medianRtMs)}
           />
           <StatBlock
-            detail="Storico recente"
+            detail="Risposte oggettive e self-check"
             label="Accuratezza"
             value={formatPercent(data.analytics.overview.accuracyPercent)}
           />
           <StatBlock
-            detail="Corrette sotto soglia"
+            detail="Senza esitazione o lentezza"
             label="Fluide"
             value={formatPercent(data.analytics.overview.fluentCorrectPercent)}
           />
           <StatBlock
-            detail="Mediana recente"
-            label="Tempo mediano"
-            value={formatDuration(data.analytics.overview.medianRtMs)}
+            detail="Focus suggerito"
+            label="Problema"
+            value={data.recommendedFocus[0]?.surface ?? "-"}
           />
         </div>
 
@@ -214,12 +185,23 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
             )}
           </SurfaceCard>
         ) : null}
-
       </section>
     </div>
   );
 }
 
+function defaultCountForMode(mode: KatakanaSpeedSessionMode) {
+  if (mode === "repair") {
+    return 34;
+  }
+  if (mode === "diagnostic_probe") {
+    return 24;
+  }
+  if (mode === "daily") {
+    return 32;
+  }
+  return 32;
+}
 
 function FocusList({
   items

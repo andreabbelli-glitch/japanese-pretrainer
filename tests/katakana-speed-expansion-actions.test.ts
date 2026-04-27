@@ -24,12 +24,12 @@ import {
   katakanaSession,
   katakanaTrial
 } from "@/db/schema";
+import { getKatakanaSpeedItemById } from "@/features/katakana-speed/model/catalog";
 import {
   getKatakanaSpeedSessionPageData,
   startKatakanaSpeedSession,
   submitKatakanaSpeedAnswer
 } from "@/features/katakana-speed/server";
-import { getKatakanaSpeedItemById } from "@/features/katakana-speed/model/catalog";
 
 describe("katakana speed expansion actions", () => {
   let tempDir = "";
@@ -48,13 +48,13 @@ describe("katakana speed expansion actions", () => {
     await rm(tempDir, { recursive: true, force: true });
   });
 
-  it("starts non-daily modes with exercise blocks and trial snapshots", async () => {
+  it("starts daily with only the three training-loop blocks", async () => {
     const session = await startKatakanaSpeedSessionAction({
-      count: 4,
+      count: 32,
       database,
-      mode: "pseudoword_transfer",
+      mode: "daily",
       now: new Date("2026-04-26T08:00:00.000Z"),
-      seed: "pseudo-transfer"
+      seed: "daily-action"
     });
 
     const persistedSession = await database.query.katakanaSession.findFirst({
@@ -68,102 +68,89 @@ describe("katakana speed expansion actions", () => {
     });
 
     expect(persistedSession?.status).toBe("active");
-    expect(blocks).toHaveLength(1);
-    expect(blocks[0]).toMatchObject({
-      exerciseId: `${session.sessionId}:pseudoword_transfer`,
-      itemType: "pseudoword",
-      mode: "pseudoword_sprint",
-      sortOrder: 0
-    });
+    expect(blocks.map((block) => block.blockId)).toEqual([
+      `${session.sessionId}:daily-b1-contrast`,
+      `${session.sessionId}:daily-b2-reading`,
+      `${session.sessionId}:daily-b3-transfer`
+    ]);
+    expect(blocks.map((block) => block.sortOrder)).toEqual([0, 1, 2]);
     expect(
-      JSON.parse(blocks[0]?.focusChunksJson ?? "[]").length
-    ).toBeGreaterThan(0);
-    expect(trials).toHaveLength(4);
-    expect(trials.map((trial) => trial.sortOrder)).toEqual([0, 1, 2, 3]);
-    expect(trials.every((trial) => trial.blockId === blocks[0]?.blockId)).toBe(
-      true
-    );
-    expect(
-      trials.every((trial) => trial.exerciseId === blocks[0]?.exerciseId)
-    ).toBe(true);
-    expect(trials.every((trial) => trial.itemType === "pseudoword")).toBe(true);
-    expect(
-      trials.every(
-        (trial) =>
-          !getKatakanaSpeedItemById(trial.itemId)?.tags.includes(
-            "targetable-false"
-          )
+      blocks.every(
+        (block) => JSON.parse(block.metricsJson).sessionMode === "daily"
       )
     ).toBe(true);
-    expect(trials.every((trial) => trial.wasPseudo === 1)).toBe(true);
-    expect(trials.every((trial) => trial.wasTransfer === 1)).toBe(true);
-    expect(trials.every((trial) => trial.expectedSurface)).toBe(true);
-    expect(trials.every((trial) => trial.focusChunksJson !== "[]")).toBe(true);
-    expect(trials.every((trial) => trial.metricsJson !== "{}")).toBe(true);
-  });
-
-  it("starts rare combo through the capped block-aware scheduler", async () => {
-    const session = await startKatakanaSpeedSessionAction({
-      count: 20,
-      database,
-      mode: "rare_combo",
-      now: new Date("2026-04-26T08:00:00.000Z"),
-      seed: "rare-capped-action"
-    });
-    const blocks = await database.query.katakanaExerciseBlock.findMany({
-      where: eq(katakanaExerciseBlock.sessionId, session.sessionId)
-    });
-    const trials = await database.query.katakanaTrial.findMany({
-      where: eq(katakanaTrial.sessionId, session.sessionId)
-    });
-
-    expect(blocks.length).toBeGreaterThan(1);
-    expect(
-      blocks.map((block) => block.sortOrder).sort((left, right) => left - right)
-    ).toEqual(blocks.map((_, index) => index));
-    expect(
-      trials.filter((trial) => trial.featuresJson.includes('"wasRare":true'))
-    ).toHaveLength(5);
-  });
-
-  it("starts model-backed operational modes with raw expected-answer snapshots", async () => {
-    const session = await startKatakanaSpeedSessionAction({
-      count: 4,
-      database,
-      mode: "mora_trap",
-      now: new Date("2026-04-26T08:00:00.000Z"),
-      seed: "mora-trap-action"
-    });
-    const blocks = await database.query.katakanaExerciseBlock.findMany({
-      where: eq(katakanaExerciseBlock.sessionId, session.sessionId)
-    });
-    const trials = await database.query.katakanaTrial.findMany({
-      where: eq(katakanaTrial.sessionId, session.sessionId)
-    });
-
-    expect(blocks.length).toBeGreaterThan(1);
-    expect(trials).toHaveLength(4);
-    expect(trials[0]).toMatchObject({
-      mode: "minimal_pair",
-      itemType: "raw_choice"
-    });
-    expect(trials[0]?.expectedSurface).toBeTruthy();
-    expect(JSON.parse(trials[0]?.featuresJson ?? "{}")).toMatchObject({
-      hardMode: true,
-      interaction: "raw_choice"
-    });
-    expect(JSON.parse(trials[0]?.optionItemIdsJson ?? "[]")).toEqual(
-      expect.arrayContaining([expect.stringMatching(/^raw:/)])
+    expect(trials).toHaveLength(32);
+    expect(trials.map((trial) => trial.sortOrder)).toEqual(
+      trials.map((_, index) => index)
     );
+    expect(
+      trials.every((trial) => {
+        const features = JSON.parse(trial.featuresJson);
+        return features.showReadingDuringTrial === false;
+      })
+    ).toBe(true);
+    expect(
+      new Set(
+        trials.map((trial) => JSON.parse(trial.featuresJson).exerciseFamily)
+      )
+    ).not.toContain("tile_builder");
+    expect(
+      new Set(
+        trials.map((trial) => JSON.parse(trial.featuresJson).exerciseFamily)
+      )
+    ).not.toContain("chunk_spotting");
   });
 
-  it("reloads expanded sessions with block and snapshot metadata", async () => {
-    const session = await startKatakanaSpeedSessionAction({
-      count: 2,
+  it("starts repair and diagnostic without legacy standalone modes", async () => {
+    const repairSession = await startKatakanaSpeedSessionAction({
+      count: 34,
       database,
-      mode: "pseudoword_transfer",
+      mode: "repair",
       now: new Date("2026-04-26T08:00:00.000Z"),
-      seed: "reload-pseudo"
+      seed: "repair-action"
+    });
+    const diagnosticSession = await startKatakanaSpeedSessionAction({
+      count: 24,
+      database,
+      mode: "diagnostic_probe",
+      now: new Date("2026-04-26T08:01:00.000Z"),
+      seed: "diagnostic-action"
+    });
+    const repairTrials = await database.query.katakanaTrial.findMany({
+      where: eq(katakanaTrial.sessionId, repairSession.sessionId)
+    });
+    const diagnosticBlocks =
+      await database.query.katakanaExerciseBlock.findMany({
+        where: eq(katakanaExerciseBlock.sessionId, diagnosticSession.sessionId)
+      });
+
+    expect(repairTrials).toHaveLength(34);
+    expect(repairTrials.every((trial) => trial.wasRepair === 1)).toBe(true);
+    expect(diagnosticBlocks.map((block) => block.blockId)).toEqual([
+      `${diagnosticSession.sessionId}:diagnostic-b1-contrast`,
+      `${diagnosticSession.sessionId}:diagnostic-b2-reading`,
+      `${diagnosticSession.sessionId}:diagnostic-b3-transfer`
+    ]);
+  });
+
+  it("rejects stale legacy session modes at runtime", async () => {
+    await expect(
+      startKatakanaSpeedSession({
+        database,
+        mode: "rare_combo" as never,
+        now: new Date("2026-04-26T08:00:00.000Z"),
+        seed: "legacy-mode-runtime"
+      })
+    ).rejects.toThrow("Unsupported Katakana Speed session mode");
+  });
+
+  it("reloads sessions with block and snapshot metadata", async () => {
+    const session = await startKatakanaSpeedSessionAction({
+      count: 6,
+      database,
+      mode: "daily",
+      now: new Date("2026-04-26T08:00:00.000Z"),
+      seed: "reload-daily"
     });
     const reloaded = await getKatakanaSpeedSessionPageData({
       database,
@@ -171,35 +158,41 @@ describe("katakana speed expansion actions", () => {
     });
 
     expect(reloaded?.trials[0]).toMatchObject({
-      blockId: expect.stringContaining("pseudoword_transfer"),
-      exerciseId: expect.stringContaining("pseudoword_transfer"),
-      itemType: "pseudoword",
-      wasPseudo: true,
-      wasTransfer: true
+      blockId: expect.stringContaining("daily-b1-contrast"),
+      exerciseId: `${session.sessionId}:daily`,
+      features: expect.objectContaining({
+        showReadingDuringTrial: false
+      })
     });
     expect(reloaded?.trials[0]?.focusChunks?.length).toBeGreaterThan(0);
     expect(reloaded?.trials[0]?.metrics).toMatchObject({
-      sessionMode: "pseudoword_transfer"
+      focusId: expect.any(String)
     });
   });
 
   it("records self-check results once and rejects trials from another session", async () => {
     const firstSession = await startKatakanaSpeedSessionAction({
-      count: 2,
+      count: 12,
       database,
-      mode: "sentence_sprint",
+      mode: "daily",
       now: new Date("2026-04-26T08:00:00.000Z"),
       seed: "self-check-a"
     });
     const secondSession = await startKatakanaSpeedSessionAction({
-      count: 1,
+      count: 12,
       database,
-      mode: "sentence_sprint",
+      mode: "daily",
       now: new Date("2026-04-26T08:01:00.000Z"),
       seed: "self-check-b"
     });
-    const trial = firstSession.trials[0];
-    expect(trial).toBeDefined();
+    const trial = firstSession.trials.find(
+      (candidate) =>
+        candidate.mode === "word_naming" ||
+        candidate.mode === "pseudoword_sprint"
+    );
+    if (!trial) {
+      throw new Error("Expected a self-check trial.");
+    }
 
     const firstResult = await submitKatakanaSpeedSelfCheckAction({
       database,
@@ -240,8 +233,15 @@ describe("katakana speed expansion actions", () => {
     expect(attempts).toHaveLength(1);
     expect(attempts[0]).toMatchObject({
       isCorrect: 1,
-      metricsJson: JSON.stringify({ durationMs: 1800, moraPerSecond: 4.2 }),
       selfRating: "hesitated"
+    });
+    expect(JSON.parse(attempts[0]?.metricsJson ?? "{}")).toMatchObject({
+      correctnessSource: "self_report",
+      durationMs: 1800,
+      moraPerSecond: 4.2,
+      msPerMora: expect.any(Number),
+      slowCorrect: true,
+      targetMsPerMora: expect.any(Number)
     });
     expect(persistedTrial).toMatchObject({
       answeredAt: "2026-04-26T08:00:02.000Z",
@@ -263,14 +263,14 @@ describe("katakana speed expansion actions", () => {
 
   it("canonizes RAN aggregate cell positions idempotently", async () => {
     const session = await startKatakanaSpeedSessionAction({
-      count: 6,
+      count: 24,
       database,
-      mode: "ran_grid",
+      mode: "diagnostic_probe",
       now: new Date("2026-04-26T08:00:00.000Z"),
       seed: "ran-result"
     });
     const block = await database.query.katakanaExerciseBlock.findFirst({
-      where: eq(katakanaExerciseBlock.sessionId, session.sessionId)
+      where: eq(katakanaExerciseBlock.mode, "ran_grid")
     });
     if (!block) {
       throw new Error("Expected RAN exercise block.");
@@ -306,7 +306,7 @@ describe("katakana speed expansion actions", () => {
       where: eq(katakanaExerciseResult.sessionId, session.sessionId)
     });
     const trials = await database.query.katakanaTrial.findMany({
-      where: eq(katakanaTrial.sessionId, session.sessionId)
+      where: eq(katakanaTrial.blockId, block.blockId)
     });
     const attempts = await database.query.katakanaAttemptLog.findMany({
       where: eq(katakanaAttemptLog.sessionId, session.sessionId)
@@ -323,23 +323,13 @@ describe("katakana speed expansion actions", () => {
     expect(rows).toHaveLength(1);
     const metrics = JSON.parse(rows[0]?.metricsJson ?? "{}") as {
       adjustedItemsPerSecond?: number;
-      columns?: number;
       correctItems?: number;
       durationMs?: number;
       errorRate?: number;
       errors?: number;
       itemsPerSecond?: number;
-      rows?: number;
-      schemaVersion?: number;
       totalItems?: number;
       wrongCellIndexes?: number[];
-      wrongCells?: Array<{
-        column: number;
-        index: number;
-        itemId: string;
-        row: number;
-        surface: string;
-      }>;
     };
     expect(rows[0]).toMatchObject({
       blockId: block.blockId,
@@ -354,38 +344,23 @@ describe("katakana speed expansion actions", () => {
       errorRate: 0.08,
       errors: 2,
       itemsPerSecond: 2.083,
-      rows: 5,
-      columns: 5,
-      schemaVersion: 1,
       totalItems: 25,
       wrongCellIndexes: [6, 18]
     });
-    expect(metrics.wrongCells).toEqual([
-      expect.objectContaining({
-        column: 2,
-        index: 6,
-        row: 2
-      }),
-      expect.objectContaining({
-        column: 4,
-        index: 18,
-        row: 4
-      })
-    ]);
     expect(trials.every((trial) => trial.status === "answered")).toBe(true);
     expect(attempts).toHaveLength(0);
   });
 
   it("rejects RAN aggregate wrong cell indexes outside the grid", async () => {
     const session = await startKatakanaSpeedSessionAction({
-      count: 6,
+      count: 24,
       database,
-      mode: "ran_grid",
+      mode: "diagnostic_probe",
       now: new Date("2026-04-26T08:00:00.000Z"),
       seed: "ran-bad-index"
     });
     const block = await database.query.katakanaExerciseBlock.findFirst({
-      where: eq(katakanaExerciseBlock.sessionId, session.sessionId)
+      where: eq(katakanaExerciseBlock.mode, "ran_grid")
     });
     if (!block) {
       throw new Error("Expected RAN exercise block.");
@@ -403,127 +378,52 @@ describe("katakana speed expansion actions", () => {
     ).rejects.toThrow("wrong cell index");
   });
 
-  it("creates RAN as one 5x5 aggregate screen trial", async () => {
+  it("aggregates repeated reading when daily transfer selects it", async () => {
     const session = await startKatakanaSpeedSessionAction({
-      count: 6,
+      count: 32,
       database,
-      mode: "ran_grid",
+      mode: "daily",
       now: new Date("2026-04-26T08:00:00.000Z"),
-      seed: "ran-grid-screen"
+      seed: "operational-daily"
     });
-    const trials = await database.query.katakanaTrial.findMany({
-      where: eq(katakanaTrial.sessionId, session.sessionId)
+    const block = await database.query.katakanaExerciseBlock.findFirst({
+      where: eq(katakanaExerciseBlock.mode, "repeated_reading_pass")
     });
-
-    expect(trials).toHaveLength(1);
-    expect(trials[0]).toMatchObject({
-      mode: "ran_grid",
-      sortOrder: 0
-    });
-    const features = JSON.parse(trials[0]?.featuresJson ?? "{}") as {
-      gridItemIds?: string[];
-      gridSurfaces?: string[];
-    };
-    expect(features.gridItemIds).toHaveLength(25);
-    expect(features.gridSurfaces).toHaveLength(25);
-  });
-
-  it("creates repeated reading as two same-sentence passes plus one transfer pass", async () => {
-    const session = await startKatakanaSpeedSessionAction({
-      count: 12,
-      database,
-      mode: "repeated_reading",
-      now: new Date("2026-04-26T08:00:00.000Z"),
-      seed: "repeated-reading"
-    });
-    const blocks = await database.query.katakanaExerciseBlock.findMany({
-      where: eq(katakanaExerciseBlock.sessionId, session.sessionId)
-    });
-    const trials = await database.query.katakanaTrial.findMany({
-      where: eq(katakanaTrial.sessionId, session.sessionId)
-    });
-
-    expect(blocks).toHaveLength(1);
-    expect(blocks[0]).toMatchObject({
-      mode: "repeated_reading_pass",
-      sortOrder: 0
-    });
-    expect(trials).toHaveLength(3);
-    expect(new Set(trials.map((trial) => trial.trialId)).size).toBe(3);
-    expect(trials.map((trial) => trial.sortOrder)).toEqual([0, 1, 2]);
-    expect(trials.map((trial) => trial.mode)).toEqual([
-      "repeated_reading_pass",
-      "repeated_reading_pass",
-      "repeated_reading_pass"
-    ]);
-    expect(trials[0]?.promptSurface).toBe(trials[1]?.promptSurface);
-    expect(trials[2]?.promptSurface).not.toBe(trials[0]?.promptSurface);
-    const firstFocusChunks = JSON.parse(
-      trials[0]?.focusChunksJson ?? "[]"
-    ) as string[];
-    const transferFocusChunks = JSON.parse(
-      trials[2]?.focusChunksJson ?? "[]"
-    ) as string[];
-    expect(
-      firstFocusChunks.some((chunk) => transferFocusChunks.includes(chunk))
-    ).toBe(true);
-  });
-
-  it("validates aggregate blocks before returning duplicate results", async () => {
-    const session = await startKatakanaSpeedSessionAction({
-      count: 6,
-      database,
-      mode: "ran_grid",
-      now: new Date("2026-04-26T08:00:00.000Z"),
-      seed: "ran-duplicate-validation"
-    });
-    const ranBlock = await database.query.katakanaExerciseBlock.findFirst({
-      where: eq(katakanaExerciseBlock.sessionId, session.sessionId)
-    });
-    if (!ranBlock) {
-      throw new Error("Expected RAN exercise block.");
+    if (!block) {
+      throw new Error("Expected repeated reading exercise block.");
     }
 
-    await aggregateKatakanaSpeedExerciseResultAction({
-      blockId: ranBlock.blockId,
+    const result = await aggregateKatakanaSpeedExerciseResultAction({
+      blockId: block.blockId,
       database,
-      exerciseId: ranBlock.exerciseId,
-      metricsJson: { cells: 25, durationMs: 12000, errors: 2 },
-      resultId: "ran-duplicate-result",
+      exerciseId: block.exerciseId,
+      metricsJson: {
+        firstPassMs: 4000,
+        repeatedPassMs: 3200,
+        transferPassMs: 3500
+      },
+      now: new Date("2026-04-26T08:00:12.000Z"),
+      resultId: "repeated-result-1",
+      selfRating: "clean",
       sessionId: session.sessionId
     });
-
-    const sentenceSession = await startKatakanaSpeedSessionAction({
-      count: 2,
-      database,
-      mode: "sentence_sprint",
-      now: new Date("2026-04-26T08:01:00.000Z"),
-      seed: "sentence-duplicate-validation"
+    const trials = await database.query.katakanaTrial.findMany({
+      where: eq(katakanaTrial.blockId, block.blockId)
     });
-    const sentenceBlock = await database.query.katakanaExerciseBlock.findFirst({
-      where: eq(katakanaExerciseBlock.sessionId, sentenceSession.sessionId)
-    });
-    if (!sentenceBlock) {
-      throw new Error("Expected sentence exercise block.");
-    }
 
-    await expect(
-      aggregateKatakanaSpeedExerciseResultAction({
-        blockId: sentenceBlock.blockId,
-        database,
-        exerciseId: ranBlock.exerciseId,
-        metricsJson: { cells: 25, durationMs: 1 },
-        resultId: "ran-duplicate-result",
-        sessionId: session.sessionId
-      })
-    ).rejects.toThrow("exercise block was not found");
+    expect(result).toEqual({
+      idempotent: false,
+      resultId: "repeated-result-1"
+    });
+    expect(trials).toHaveLength(3);
+    expect(trials.every((trial) => trial.status === "answered")).toBe(true);
   });
 
   it("rejects aggregate exercise results without an aggregate block", async () => {
     const session = await startKatakanaSpeedSessionAction({
-      count: 2,
+      count: 12,
       database,
-      mode: "sentence_sprint",
+      mode: "daily",
       now: new Date("2026-04-26T08:00:00.000Z"),
       seed: "bad-aggregate"
     });
@@ -531,7 +431,7 @@ describe("katakana speed expansion actions", () => {
       where: eq(katakanaExerciseBlock.sessionId, session.sessionId)
     });
     if (!block) {
-      throw new Error("Expected sentence exercise block.");
+      throw new Error("Expected exercise block.");
     }
 
     await expect(
@@ -547,7 +447,7 @@ describe("katakana speed expansion actions", () => {
 
   it("persists confusion edges for wrong choice answers when the response matches an item", async () => {
     const session = await startKatakanaSpeedSession({
-      count: 1,
+      count: 4,
       database,
       mode: "daily",
       now: new Date("2026-04-26T08:00:00.000Z"),
@@ -556,7 +456,9 @@ describe("katakana speed expansion actions", () => {
     const trial = session.trials[0];
     expect(trial).toBeDefined();
     const wrongItemId = trial.optionItemIds.find(
-      (itemId) => itemId !== trial.correctItemId
+      (itemId) =>
+        itemId !== trial.correctItemId &&
+        getKatakanaSpeedItemById(itemId) !== undefined
     );
     expect(wrongItemId).toBeDefined();
     const wrongItem = getKatakanaSpeedItemById(wrongItemId ?? "");

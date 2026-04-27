@@ -2,6 +2,7 @@ export * from "./analytics.ts";
 export * from "./catalog.ts";
 export * from "./errors.ts";
 export * from "./exercise-catalog.ts";
+export * from "./focus.ts";
 export * from "./options.ts";
 export * from "./readings.ts";
 export * from "./scoring.ts";

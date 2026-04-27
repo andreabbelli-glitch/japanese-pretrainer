@@ -30,7 +30,6 @@ import {
   getKatakanaSpeedItemById,
   getKatakanaSpeedItemBySurface
 } from "../model/catalog";
-import { isKatakanaSpeedTargetablePseudowordItem } from "../model/pseudoword-catalog";
 import {
   isKatakanaSpeedAnswerCorrect,
   scoreKatakanaSpeedRanGrid
@@ -46,12 +45,10 @@ import {
 import { classifyKatakanaSpeedError } from "../model/errors";
 import {
   createInitialKatakanaSpeedState,
-  generateKatakanaSpeedSessionPlan,
-  stableShuffle
+  generateKatakanaSpeedSessionPlan
 } from "../model";
 import type {
   KatakanaSpeedErrorTag,
-  KatakanaSpeedItem,
   KatakanaSpeedItemState,
   KatakanaSpeedSessionMode,
   KatakanaSpeedState,
@@ -329,11 +326,12 @@ export async function startKatakanaSpeedSession(input: {
   const nowIso = now.toISOString();
   const sessionId = `katakana-speed-session-${input.seed ?? randomUUID()}`;
   const mode = input.mode ?? "daily";
+  assertKatakanaSpeedSessionMode(mode);
 
   return database.transaction(async (transaction) => {
     const state = await loadKatakanaSpeedState(transaction, now);
     const seed = input.seed ?? sessionId;
-    const count = input.count ?? 12;
+    const count = input.count ?? defaultKatakanaSpeedSessionCount(mode);
     const plan = generateExpandedKatakanaSpeedSessionPlan({
       count,
       mode,
@@ -431,193 +429,9 @@ type KatakanaTrialSnapshot = {
 type ExpandedKatakanaTrialPlan = KatakanaSpeedTrialPlan &
   Partial<KatakanaTrialSnapshot>;
 
-type ModelBackedSessionMode = Extract<
-  KatakanaSpeedSessionMode,
-  | "diagnostic_probe"
-  | "mora_trap"
-  | "chunk_spotting"
-  | "loanword_decoder"
-  | "tile_builder"
-  | "confusion_ladder"
-  | "variant_normalization"
->;
-
 function generateExpandedKatakanaSpeedSessionPlan(input: {
   count: number;
   mode: KatakanaSpeedSessionMode;
-  now: Date;
-  seed: string;
-  sessionId: string;
-  state: KatakanaSpeedState;
-}): {
-  readonly blocks: readonly ExpandedKatakanaExerciseBlockPlan[];
-  readonly trials: readonly ExpandedKatakanaTrialPlan[];
-} {
-  if (input.mode === "daily") {
-    const dailyTrials = generateKatakanaSpeedSessionPlan({
-      count: input.count,
-      now: input.now,
-      seed: input.seed,
-      sessionMode: "daily",
-      state: input.state
-    }) as readonly ExpandedKatakanaTrialPlan[];
-    const blocksById = new Map<string, ExpandedKatakanaExerciseBlockPlan>();
-    const exerciseId = `${input.sessionId}:daily`;
-    const trials = dailyTrials.map((trial) => ({
-      ...trial,
-      blockId: `${input.sessionId}:${trial.blockId ?? "daily-block"}`,
-      exerciseId
-    }));
-
-    for (const trial of trials) {
-      const snapshot = snapshotKatakanaTrial(trial);
-      const blockId = snapshot.blockId ?? `${input.sessionId}:daily:block-0`;
-      const existing = blocksById.get(blockId);
-      const focusChunks = [
-        ...new Set([...(existing?.focusChunks ?? []), ...snapshot.focusChunks])
-      ];
-
-      blocksById.set(blockId, {
-        blockId,
-        exerciseId,
-        focusChunks,
-        itemType: snapshot.itemType,
-        metrics: {
-          ...(existing?.metrics ?? {}),
-          sessionMode: "daily"
-        },
-        mode: trial.mode,
-        sortOrder: existing?.sortOrder ?? blocksById.size,
-        title: dailyBlockTitle(trial.metadataRole)
-      });
-    }
-
-    return {
-      blocks: [...blocksById.values()],
-      trials
-    };
-  }
-  if (input.mode === "rare_combo") {
-    const rareTrials = (
-      generateKatakanaSpeedSessionPlan({
-        count: input.count,
-        now: input.now,
-        seed: input.seed,
-        sessionMode: "rare_combo",
-        state: input.state
-      }) as readonly ExpandedKatakanaTrialPlan[]
-    ).map((trial) => ({
-      ...trial,
-      blockId: `${input.sessionId}:${trial.blockId ?? "rare-combo-block"}`,
-      exerciseId: `${input.sessionId}:rare_combo`
-    }));
-    const blocksById = new Map<string, ExpandedKatakanaExerciseBlockPlan>();
-
-    for (const trial of rareTrials) {
-      const snapshot = snapshotKatakanaTrial(trial);
-      const blockId =
-        snapshot.blockId ?? `${input.sessionId}:rare_combo:block-0`;
-      const existing = blocksById.get(blockId);
-      const focusChunks = [
-        ...new Set([...(existing?.focusChunks ?? []), ...snapshot.focusChunks])
-      ];
-
-      blocksById.set(blockId, {
-        blockId,
-        exerciseId: `${input.sessionId}:rare_combo`,
-        focusChunks,
-        itemType: snapshot.itemType,
-        metrics: {
-          ...(existing?.metrics ?? {}),
-          sessionMode: "rare_combo"
-        },
-        mode: trial.mode,
-        sortOrder: existing?.sortOrder ?? blocksById.size,
-        title: dailyBlockTitle(trial.metadataRole)
-      });
-    }
-
-    return {
-      blocks: [...blocksById.values()],
-      trials: rareTrials
-    };
-  }
-  if (isModelBackedSessionMode(input.mode)) {
-    return generateModelBackedSessionPlan({
-      ...input,
-      mode: input.mode
-    });
-  }
-  if (input.mode === "repeated_reading") {
-    return generateRepeatedReadingSessionPlan(input);
-  }
-  if (input.mode === "ran_grid") {
-    return generateRanGridSessionPlan(input);
-  }
-
-  const config = expandedModeConfig(input.mode);
-  const items = stableShuffle(
-    getKatakanaSpeedCatalog().filter(config.includeItem),
-    `${input.seed}:${input.mode}`
-  ).slice(0, Math.max(0, input.count));
-  const exerciseId = `${input.sessionId}:${input.mode}`;
-  const blockId = `${exerciseId}:block-0`;
-  const focusChunks = [
-    ...new Set(items.flatMap((item) => item.focusChunks))
-  ].slice(0, 12);
-
-  return {
-    blocks: [
-      {
-        blockId,
-        exerciseId,
-        focusChunks,
-        itemType: config.itemType,
-        metrics: {
-          itemCount: items.length,
-          sessionMode: input.mode
-        },
-        mode: config.trialMode,
-        sortOrder: 0,
-        title: config.title
-      }
-    ],
-    trials: items.map((item, sortOrder) => ({
-      blockId,
-      correctItemId: item.id,
-      exerciseId,
-      expectedSurface: item.surface,
-      features: {
-        family: item.family,
-        kind: item.kind,
-        moraCount: item.moraCount,
-        rarity: item.rarity,
-        tier: item.tier
-      },
-      focusChunks: item.focusChunks,
-      itemId: item.id,
-      itemType: config.itemType,
-      metrics: {
-        sessionMode: input.mode,
-        targetRtMs: item.targetRtMs
-      },
-      mode: config.trialMode,
-      optionItemIds: config.usesChoiceOptions
-        ? [item.id, ...item.distractorItemIds].slice(0, 4)
-        : [item.id],
-      promptSurface: item.surface,
-      targetRtMs: item.targetRtMs,
-      trialId: `katakana-speed-${input.seed}-${input.mode}-${sortOrder}-${item.id}`,
-      wasPseudo: item.kind === "pseudoword" || Boolean(item.isPseudo),
-      wasRepair: false,
-      wasTransfer: input.mode === "pseudoword_transfer"
-    }))
-  };
-}
-
-function generateModelBackedSessionPlan(input: {
-  count: number;
-  mode: ModelBackedSessionMode;
   now: Date;
   seed: string;
   sessionId: string;
@@ -636,7 +450,7 @@ function generateModelBackedSessionPlan(input: {
   const exerciseId = `${input.sessionId}:${input.mode}`;
   const trials = generatedTrials.map((trial) => ({
     ...trial,
-    blockId: `${input.sessionId}:${trial.blockId ?? `${input.mode}:block-0`}`,
+    blockId: `${input.sessionId}:${trial.blockId ?? `${input.mode}-block`}`,
     exerciseId
   }));
   const blocksById = new Map<string, ExpandedKatakanaExerciseBlockPlan>();
@@ -657,11 +471,15 @@ function generateModelBackedSessionPlan(input: {
       itemType: snapshot.itemType,
       metrics: {
         ...(existing?.metrics ?? {}),
+        focusId:
+          typeof snapshot.features.focusId === "string"
+            ? snapshot.features.focusId
+            : undefined,
         sessionMode: input.mode
       },
       mode: trial.mode,
       sortOrder: existing?.sortOrder ?? blocksById.size,
-      title: dailyBlockTitle(trial.metadataRole)
+      title: trainingBlockTitle(trial.blockId, trial.metadataRole)
     });
   }
 
@@ -671,283 +489,54 @@ function generateModelBackedSessionPlan(input: {
   };
 }
 
-function isModelBackedSessionMode(
-  mode: KatakanaSpeedSessionMode
-): mode is ModelBackedSessionMode {
-  return [
-    "diagnostic_probe",
-    "mora_trap",
-    "chunk_spotting",
-    "loanword_decoder",
-    "tile_builder",
-    "confusion_ladder",
-    "variant_normalization"
-  ].includes(mode);
-}
-
-function generateRepeatedReadingSessionPlan(input: {
-  count: number;
-  mode: KatakanaSpeedSessionMode;
-  now: Date;
-  seed: string;
-  sessionId: string;
-  state: KatakanaSpeedState;
-}): {
-  readonly blocks: readonly ExpandedKatakanaExerciseBlockPlan[];
-  readonly trials: readonly ExpandedKatakanaTrialPlan[];
-} {
-  const sentences = stableShuffle(
-    getKatakanaSpeedCatalog().filter(
-      (item) => item.kind === "sentence" && item.focusChunks.length > 0
-    ),
-    `${input.seed}:repeated-reading`
-  );
-  const sharedPair = findRepeatedReadingPair(sentences);
-  const firstSentence = sharedPair.firstSentence;
-  const transferSentence = sharedPair.transferSentence;
-  const focusChunks = [
-    ...new Set([...firstSentence.focusChunks, ...transferSentence.focusChunks])
-  ];
-  const exerciseId = `${input.sessionId}:repeated_reading`;
-  const blockId = `${exerciseId}:block-0`;
-  const trialItems = [
-    { item: firstSentence, passRole: "first_pass" },
-    { item: firstSentence, passRole: "repeat_pass" },
-    { item: transferSentence, passRole: "transfer_pass" }
-  ] as const;
-
-  return {
-    blocks: [
-      {
-        blockId,
-        exerciseId,
-        focusChunks,
-        itemType: "sentence",
-        metrics: {
-          passCount: 3,
-          sessionMode: "repeated_reading"
-        },
-        mode: "repeated_reading_pass",
-        sortOrder: 0,
-        title: "Repeated reading"
-      }
-    ],
-    trials: trialItems.map(({ item, passRole }, sortOrder) => ({
-      blockId,
-      correctItemId: item.id,
-      exerciseId,
-      expectedSurface: item.surface,
-      features: {
-        family: item.family,
-        kind: item.kind,
-        moraCount: item.moraCount,
-        rarity: item.rarity,
-        repeatedReadingPass: sortOrder + 1,
-        repeatedReadingRole: passRole,
-        tier: item.tier
-      },
-      focusChunks: item.focusChunks,
-      itemId: item.id,
-      itemType: "sentence",
-      metrics: {
-        passRole,
-        repeatedReadingPass: sortOrder + 1,
-        sessionMode: "repeated_reading",
-        targetMsPerMora: Math.round(
-          item.targetRtMs / Math.max(1, item.moraCount)
-        )
-      },
-      mode: "repeated_reading_pass",
-      optionItemIds: [item.id],
-      promptSurface: item.surface,
-      targetRtMs: item.targetRtMs,
-      trialId: `katakana-speed-${input.seed}-repeated_reading-${sortOrder}-${item.id}`,
-      wasTransfer: passRole === "transfer_pass"
-    }))
-  };
-}
-
-function findRepeatedReadingPair(sentences: readonly KatakanaSpeedItem[]) {
-  for (const firstSentence of sentences) {
-    for (const focusChunk of firstSentence.focusChunks) {
-      const transferSentence = sentences.find(
-        (candidate) =>
-          candidate.id !== firstSentence.id &&
-          candidate.focusChunks.includes(focusChunk)
-      );
-
-      if (transferSentence) {
-        return { firstSentence, transferSentence };
-      }
-    }
+function defaultKatakanaSpeedSessionCount(mode: KatakanaSpeedSessionMode) {
+  if (mode === "repair") {
+    return 34;
+  }
+  if (mode === "diagnostic_probe") {
+    return 24;
+  }
+  if (mode === "daily") {
+    return 32;
   }
 
-  const firstSentence = sentences[0] ?? getKatakanaSpeedCatalog()[0];
-  const transferSentence =
-    sentences.find((candidate) => candidate.id !== firstSentence.id) ??
-    firstSentence;
-
-  return { firstSentence, transferSentence };
+  return assertNeverKatakanaSpeedSessionMode(mode);
 }
 
-function generateRanGridSessionPlan(input: {
-  count: number;
-  mode: KatakanaSpeedSessionMode;
-  now: Date;
-  seed: string;
-  sessionId: string;
-  state: KatakanaSpeedState;
-}): {
-  readonly blocks: readonly ExpandedKatakanaExerciseBlockPlan[];
-  readonly trials: readonly ExpandedKatakanaTrialPlan[];
-} {
-  const sourceItems = stableShuffle(
-    getKatakanaSpeedCatalog().filter(
-      (item) =>
-        item.kind === "single_kana" ||
-        item.kind === "core_mora" ||
-        item.kind === "extended_chunk"
-    ),
-    `${input.seed}:ran-grid`
-  );
-  const gridItems = Array.from({ length: 25 }, (_, index) => {
-    const item = sourceItems[index % Math.max(1, sourceItems.length)];
-
-    return item ?? getKatakanaSpeedCatalog()[0];
-  });
-  const firstItem = gridItems[0] ?? getKatakanaSpeedCatalog()[0];
-  const exerciseId = `${input.sessionId}:ran_grid`;
-  const blockId = `${exerciseId}:block-0`;
-  const focusChunks = [
-    ...new Set(gridItems.flatMap((item) => item.focusChunks))
-  ].slice(0, 16);
-
-  return {
-    blocks: [
-      {
-        blockId,
-        exerciseId,
-        focusChunks,
-        itemType: "ran_grid",
-        metrics: {
-          cellCount: 25,
-          sessionMode: "ran_grid",
-          targetItemsPerSecond: 1.8
-        },
-        mode: "ran_grid",
-        sortOrder: 0,
-        title: "RAN Grid"
-      }
-    ],
-    trials: [
-      {
-        blockId,
-        correctItemId: firstItem.id,
-        exerciseId,
-        expectedSurface: firstItem.surface,
-        features: {
-          cellCount: 25,
-          gridItemIds: gridItems.map((item) => item.id),
-          gridSurfaces: gridItems.map((item) => item.surface)
-        },
-        focusChunks,
-        itemId: firstItem.id,
-        itemType: "ran_grid",
-        metrics: {
-          cellCount: 25,
-          sessionMode: "ran_grid",
-          targetItemsPerSecond: 1.8
-        },
-        mode: "ran_grid",
-        optionItemIds: [firstItem.id],
-        promptSurface: firstItem.surface,
-        targetRtMs: 14_000,
-        trialId: `katakana-speed-${input.seed}-ran_grid-0-${firstItem.id}`
-      }
-    ]
-  };
-}
-
-function expandedModeConfig(
-  mode: Exclude<
-    KatakanaSpeedSessionMode,
-    "daily" | "diagnostic_probe" | ModelBackedSessionMode
-  >
-): {
-  readonly includeItem: (item: KatakanaSpeedItem) => boolean;
-  readonly itemType: string;
-  readonly title: string;
-  readonly trialMode: KatakanaSpeedTrialMode;
-  readonly usesChoiceOptions: boolean;
-} {
-  switch (mode) {
-    case "rare_combo":
-      return {
-        includeItem: (item) => item.rarity === "rare" || item.tier === "C",
-        itemType: "rare_combo",
-        title: "Rare combo",
-        trialMode: "minimal_pair",
-        usesChoiceOptions: true
-      };
-    case "pseudoword_transfer":
-      return {
-        includeItem: isKatakanaSpeedTargetablePseudowordItem,
-        itemType: "pseudoword",
-        title: "Pseudoword transfer",
-        trialMode: "pseudoword_sprint",
-        usesChoiceOptions: false
-      };
-    case "sentence_sprint":
-      return {
-        includeItem: (item) => item.kind === "sentence",
-        itemType: "sentence",
-        title: "Sentence sprint",
-        trialMode: "sentence_sprint",
-        usesChoiceOptions: false
-      };
-    case "repeated_reading":
-      return {
-        includeItem: (item) => item.kind === "sentence",
-        itemType: "sentence",
-        title: "Repeated reading",
-        trialMode: "repeated_reading_pass",
-        usesChoiceOptions: false
-      };
-    case "ran_grid":
-      return {
-        includeItem: (item) =>
-          item.kind === "single_kana" ||
-          item.kind === "core_mora" ||
-          item.kind === "extended_chunk",
-        itemType: "ran_grid",
-        title: "RAN grid",
-        trialMode: "ran_grid",
-        usesChoiceOptions: false
-      };
+function assertKatakanaSpeedSessionMode(
+  mode: string
+): asserts mode is KatakanaSpeedSessionMode {
+  if (mode !== "daily" && mode !== "diagnostic_probe" && mode !== "repair") {
+    throw new Error("Unsupported Katakana Speed session mode.");
   }
 }
 
-function dailyBlockTitle(role: KatakanaSpeedTrialPlan["metadataRole"]) {
-  if (role === "pseudoword_transfer") {
-    return "Pseudoword transfer";
+function assertNeverKatakanaSpeedSessionMode(mode: never): never {
+  throw new Error(`Unsupported Katakana Speed session mode: ${mode}`);
+}
+
+function trainingBlockTitle(
+  blockId: string | undefined,
+  role: KatakanaSpeedTrialPlan["metadataRole"]
+) {
+  if (blockId?.includes("b1-contrast")) {
+    return "Contrasti rapidi";
   }
-  if (role === "sentence_transfer") {
-    return "Sentence sprint";
+  if (blockId?.includes("b2-reading")) {
+    return "Lettura a tempo";
   }
+  if (blockId?.includes("b3-transfer")) {
+    return "Transfer";
+  }
+  if (blockId?.includes("b3-final")) {
+    return "Verifica finale";
+  }
+
   if (role === "repeated_reading") {
     return "Repeated reading";
   }
   if (role === "ran_grid") {
     return "RAN grid";
-  }
-  if (role === "rare_shock") {
-    return "Rare shock";
-  }
-  if (role === "confusion_repair") {
-    return "Confusion repair";
-  }
-  if (role === "word_transfer") {
-    return "Word transfer";
   }
 
   return "Daily drill";
@@ -1085,7 +674,13 @@ export async function submitKatakanaSpeedAnswer(input: {
       expectedAnswer,
       expectedSurface: trialSnapshot.expectedSurface,
       exposureMs: trial.exposureMs,
-      featuresJson: JSON.stringify(trialSnapshot.features),
+      featuresJson: JSON.stringify({
+        ...trialSnapshot.features,
+        correctnessSource:
+          typeof trialSnapshot.features.correctnessSource === "string"
+            ? trialSnapshot.features.correctnessSource
+            : "objective"
+      }),
       focusChunksJson: JSON.stringify(trialSnapshot.focusChunks),
       id: `katakana-speed-attempt-${input.trialId}`,
       inputMethod: input.inputMethod?.trim() || null,
@@ -1142,6 +737,7 @@ export async function submitKatakanaSpeedAnswer(input: {
       });
     }
     await updateItemStateAfterAttempt(transaction, {
+      correctnessSource: "objective",
       errorTags,
       isCorrect,
       itemId: trial.itemId,
@@ -1218,10 +814,20 @@ export async function submitKatakanaSpeedSelfCheck(input: {
       throw new Error("Katakana Speed trial is not answerable.");
     }
 
-    const isCorrect = input.selfRating !== "wrong";
-    const errorTags = selfRatingErrorTags(input.selfRating);
-    const metricsJson = normalizeMetricsJson(input.metricsJson);
     const trialSnapshot = snapshotKatakanaTrialRow(trial);
+    const metrics = normalizeSelfCheckMetrics({
+      inputMetrics: input.metricsJson,
+      responseMs,
+      selfRating: input.selfRating,
+      targetRtMs: trial.targetRtMs,
+      trialMetrics: trialSnapshot.metrics
+    });
+    const isCorrect = input.selfRating !== "wrong";
+    const errorTags = selfRatingErrorTags({
+      selfRating: input.selfRating,
+      slowCorrect: Boolean(metrics.slowCorrect)
+    });
+    const metricsJson = JSON.stringify(metrics);
     const expectedAnswer = trial.expectedSurface ?? trial.promptSurface;
 
     const inserted = await insertKatakanaAttemptLogIfAbsent(transaction, {
@@ -1233,7 +839,15 @@ export async function submitKatakanaSpeedSelfCheck(input: {
       expectedAnswer,
       expectedSurface: trialSnapshot.expectedSurface,
       exposureMs: trial.exposureMs,
-      featuresJson: JSON.stringify(trialSnapshot.features),
+      featuresJson: JSON.stringify({
+        ...trialSnapshot.features,
+        correctnessSource: "self_report",
+        exerciseFamily:
+          typeof trialSnapshot.features.exerciseFamily === "string"
+            ? trialSnapshot.features.exerciseFamily
+            : exerciseFamilyForTrialMode(trial.mode),
+        showReadingDuringTrial: false
+      }),
       focusChunksJson: JSON.stringify(trialSnapshot.focusChunks),
       id: `katakana-speed-attempt-${input.trialId}`,
       inputMethod: "self_check",
@@ -1273,6 +887,7 @@ export async function submitKatakanaSpeedSelfCheck(input: {
       trialId: input.trialId
     });
     await updateItemStateAfterAttempt(transaction, {
+      correctnessSource: "self_report",
       errorTags,
       isCorrect,
       itemId: trial.itemId,
@@ -1531,6 +1146,7 @@ async function loadKatakanaSpeedState(
 async function updateItemStateAfterAttempt(
   database: Parameters<Parameters<DatabaseClient["transaction"]>[0]>[0],
   input: {
+    correctnessSource: "objective" | "self_report";
     errorTags: readonly KatakanaSpeedErrorTag[];
     isCorrect: boolean;
     itemId: string;
@@ -1541,7 +1157,10 @@ async function updateItemStateAfterAttempt(
   const current = await database.query.katakanaItemState.findFirst({
     where: (table, { eq }) => eq(table.itemId, input.itemId)
   });
-  const slowCorrect = input.errorTags.includes("slow_correct");
+  const selfReportedWeakness =
+    input.correctnessSource === "self_report" && !input.isCorrect;
+  const slowCorrect =
+    input.errorTags.includes("slow_correct") || selfReportedWeakness;
   const fluentCorrect = input.isCorrect && !slowCorrect;
   const recentResponseMs = [
     ...parseJsonArray<number>(current?.recentResponseMsJson ?? "[]"),
@@ -1564,7 +1183,9 @@ async function updateItemStateAfterAttempt(
     correctStreak,
     createdAt: current?.createdAt ?? input.nowIso,
     itemId: input.itemId,
-    lapses: (current?.lapses ?? 0) + (input.isCorrect ? 0 : 1),
+    lapses:
+      (current?.lapses ?? 0) +
+      (!input.isCorrect && input.correctnessSource === "objective" ? 1 : 0),
     lastAttemptAt: input.nowIso,
     lastCorrectAt: fluentCorrect
       ? input.nowIso
@@ -1864,13 +1485,64 @@ function parseKatakanaSelfRating(
     : null;
 }
 
-function selfRatingErrorTags(
-  selfRating: KatakanaSpeedSelfRating
-): KatakanaSpeedErrorTag[] {
-  if (selfRating === "hesitated") {
+function normalizeSelfCheckMetrics(input: {
+  readonly inputMetrics: unknown;
+  readonly responseMs: number;
+  readonly selfRating: KatakanaSpeedSelfRating;
+  readonly targetRtMs: number;
+  readonly trialMetrics: Readonly<Record<string, unknown>>;
+}) {
+  const inputMetrics = parseUnknownObject(input.inputMetrics);
+  const moraCount =
+    nullableNumber(inputMetrics.moraCount) ??
+    nullableNumber(input.trialMetrics.moraCount) ??
+    1;
+  const msPerMora =
+    nullableNumber(inputMetrics.msPerMora) ??
+    Math.round(input.responseMs / Math.max(1, moraCount));
+  const targetMsPerMora =
+    nullableNumber(inputMetrics.targetMsPerMora) ??
+    nullableNumber(input.trialMetrics.targetMsPerMora) ??
+    Math.round(input.targetRtMs / Math.max(1, moraCount));
+  const slowCorrect =
+    input.selfRating === "hesitated" ||
+    (input.selfRating !== "wrong" && msPerMora > targetMsPerMora);
+
+  return {
+    ...input.trialMetrics,
+    ...inputMetrics,
+    correctnessSource: "self_report",
+    durationMs:
+      nullableNumber(inputMetrics.durationMs) ?? Math.max(0, input.responseMs),
+    moraCount,
+    msPerMora,
+    slowCorrect,
+    targetMsPerMora
+  };
+}
+
+function exerciseFamilyForTrialMode(mode: string) {
+  if (mode === "pseudoword_sprint") {
+    return "timed_pseudoword_reading";
+  }
+  if (mode === "word_naming") {
+    return "timed_word_reading";
+  }
+  if (mode === "sentence_sprint") {
+    return "repeated_reading";
+  }
+
+  return "timed_word_reading";
+}
+
+function selfRatingErrorTags(input: {
+  readonly selfRating: KatakanaSpeedSelfRating;
+  readonly slowCorrect: boolean;
+}): KatakanaSpeedErrorTag[] {
+  if (input.selfRating === "hesitated" || input.slowCorrect) {
     return ["slow_correct"];
   }
-  if (selfRating === "wrong") {
+  if (input.selfRating === "wrong") {
     return ["unclassified_error"];
   }
 

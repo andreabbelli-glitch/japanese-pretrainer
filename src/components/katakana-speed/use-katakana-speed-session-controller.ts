@@ -64,16 +64,11 @@ export type KatakanaSpeedSessionControllerResult = {
   readonly handleContinueRepeatedReading: () => void;
   readonly handleSubmitRanGrid: () => void;
   readonly handleSubmitSelfCheck: (selfRating: KatakanaSpeedSelfRating) => void;
-  readonly handleSubmitTileBuilder: () => void;
-  readonly handleClearTiles: () => void;
-  readonly handleSelectTile: (index: number) => void;
   readonly handleToggleRanWrongCell: (index: number) => void;
   readonly handleToggleTimer: () => void;
   readonly isRanGridTrial: boolean;
   readonly isRepeatedReadingTrial: boolean;
-  readonly isSegmentSelectTrial: boolean;
   readonly isSelfCheckTrial: boolean;
-  readonly isTileBuilderTrial: boolean;
   readonly isSubmitting: boolean;
   readonly options: readonly KatakanaSpeedSessionOption[];
   readonly progressPercent: number;
@@ -83,7 +78,6 @@ export type KatakanaSpeedSessionControllerResult = {
   readonly ranWrongCellIndexes: readonly number[];
   readonly repeatedReadingState: KatakanaSpeedRepeatedReadingState | null;
   readonly selfCheckRatings: readonly KatakanaSpeedSelfCheckRatingOption[];
-  readonly tileBuilderState: KatakanaSpeedTileBuilderState | null;
   readonly timerState: KatakanaSpeedTimerState;
   readonly totalTrials: number;
 };
@@ -106,19 +100,6 @@ export type KatakanaSpeedSelfCheckRatingOption = {
   readonly key: string;
   readonly label: string;
   readonly value: KatakanaSpeedSelfRating;
-};
-
-export type KatakanaSpeedTile = {
-  readonly index: number;
-  readonly readingHint: string | null;
-  readonly selected: boolean;
-  readonly surface: string;
-};
-
-export type KatakanaSpeedTileBuilderState = {
-  readonly answerSurface: string;
-  readonly selectedIndexes: readonly number[];
-  readonly tiles: readonly KatakanaSpeedTile[];
 };
 
 const SELF_CHECK_RATINGS: readonly KatakanaSpeedSelfCheckRatingOption[] = [
@@ -166,7 +147,6 @@ export function useKatakanaSpeedSessionController(
     []
   );
   const [repeatedPassIndex, setRepeatedPassIndex] = useState(0);
-  const [selectedTileIndexes, setSelectedTileIndexes] = useState<number[]>([]);
   const presentedAtRef = useRef(performance.now());
   const timerStartedAtRef = useRef<number | null>(null);
   const submittingRef = useRef(false);
@@ -178,9 +158,6 @@ export function useKatakanaSpeedSessionController(
     : false;
   const isRepeatedReadingTrial = currentTrial?.mode === "repeated_reading_pass";
   const isRanGridTrial = currentTrial?.mode === "ran_grid";
-  const interaction = currentTrial?.features?.interaction;
-  const isTileBuilderTrial = interaction === "tile_builder";
-  const isSegmentSelectTrial = interaction === "segment_select";
   const isTimedTrial =
     isSelfCheckTrial || isRepeatedReadingTrial || isRanGridTrial;
   const shouldAutoStartTimer = isTimedTrial;
@@ -214,7 +191,6 @@ export function useKatakanaSpeedSessionController(
     setRanWrongCellIndexes([]);
     setRepeatedPassDurations([]);
     setRepeatedPassIndex(0);
-    setSelectedTileIndexes([]);
     setTimerState({
       elapsedMs: 0,
       phase: shouldAutoStartTimer ? "running" : "idle"
@@ -252,29 +228,6 @@ export function useKatakanaSpeedSessionController(
       }),
     [currentTrial?.optionItemIds]
   );
-
-  const tileBuilderState = useMemo(() => {
-    if (!currentTrial || !isTileBuilderTrial) {
-      return null;
-    }
-
-    const tileSurfaces = parseStringArray(currentTrial.features?.tiles);
-    const tiles = tileSurfaces.map((surface, index) => ({
-      index,
-      readingHint: formatKatakanaSpeedReading(surface),
-      selected: selectedTileIndexes.includes(index),
-      surface
-    }));
-    const answerSurface = selectedTileIndexes
-      .map((index) => tileSurfaces[index] ?? "")
-      .join("");
-
-    return {
-      answerSurface,
-      selectedIndexes: selectedTileIndexes,
-      tiles
-    };
-  }, [currentTrial, isTileBuilderTrial, selectedTileIndexes]);
 
   const ranGridCells = useMemo(() => {
     if (!currentTrial || !isRanGridTrial) {
@@ -537,132 +490,6 @@ export function useKatakanaSpeedSessionController(
       totalTrials
     ]
   );
-
-  const handleSelectTile = useCallback(
-    (index: number) => {
-      if (!isTileBuilderTrial || submittingRef.current || awaitingContinue) {
-        return;
-      }
-
-      const tileCount = parseStringArray(currentTrial?.features?.tiles).length;
-      const normalizedIndex = Math.round(index);
-      if (
-        !Number.isFinite(normalizedIndex) ||
-        normalizedIndex < 0 ||
-        normalizedIndex >= tileCount
-      ) {
-        return;
-      }
-
-      setSelectedTileIndexes((current) =>
-        current.includes(normalizedIndex)
-          ? current
-          : [...current, normalizedIndex]
-      );
-    },
-    [awaitingContinue, currentTrial?.features?.tiles, isTileBuilderTrial]
-  );
-
-  const handleClearTiles = useCallback(() => {
-    if (!isTileBuilderTrial || submittingRef.current || awaitingContinue) {
-      return;
-    }
-
-    setSelectedTileIndexes([]);
-  }, [awaitingContinue, isTileBuilderTrial]);
-
-  const handleSubmitTileBuilder = useCallback(async (): Promise<void> => {
-    if (
-      !currentTrial ||
-      !isTileBuilderTrial ||
-      submittingRef.current ||
-      awaitingContinue
-    ) {
-      return;
-    }
-
-    const tileSurfaces = parseStringArray(currentTrial.features?.tiles);
-    const userAnswer = selectedTileIndexes
-      .map((index) => tileSurfaces[index] ?? "")
-      .join("");
-    if (!userAnswer) {
-      return;
-    }
-
-    const expectedItem = getKatakanaSpeedItemById(currentTrial.correctItemId);
-    const expectedSurface =
-      currentTrial.expectedSurface ??
-      expectedItem?.surface ??
-      currentTrial.promptSurface;
-    const responseMs = Math.max(
-      0,
-      Math.round(performance.now() - presentedAtRef.current)
-    );
-    const isCorrect = userAnswer === expectedSurface;
-
-    submittingRef.current = true;
-    setIsSubmitting(true);
-    setClientError(null);
-    setFeedback({
-      errorTags: [],
-      expectedSurface,
-      responseMs,
-      selectedSurface: userAnswer,
-      status: isCorrect
-        ? responseMs <= currentTrial.targetRtMs
-          ? "correct-fast"
-          : "correct-slow"
-        : "incorrect",
-      trialId: currentTrial.trialId
-    });
-
-    try {
-      const result = await submitKatakanaSpeedAnswerAction({
-        inputMethod: "pointer",
-        responseMs,
-        sessionId: session.sessionId,
-        trialId: currentTrial.trialId,
-        userAnswer
-      });
-
-      const nextFeedback: KatakanaSpeedSessionFeedback = {
-        errorTags: result.errorTags,
-        expectedSurface,
-        responseMs,
-        selectedSurface: userAnswer,
-        status: result.isCorrect
-          ? responseMs <= currentTrial.targetRtMs
-            ? "correct-fast"
-            : "correct-slow"
-          : "incorrect",
-        trialId: currentTrial.trialId
-      };
-      setFeedback(nextFeedback);
-      if (result.isCorrect) {
-        setCurrentIndex((index) => Math.min(index + 1, totalTrials));
-      } else {
-        setAwaitingContinue(true);
-        setContinueToIndex(Math.min(currentIndex + 1, totalTrials));
-      }
-    } catch (error) {
-      setClientError(
-        error instanceof Error
-          ? error.message
-          : "Impossibile salvare la risposta."
-      );
-    } finally {
-      submittingRef.current = false;
-      setIsSubmitting(false);
-    }
-  }, [
-    awaitingContinue,
-    currentIndex,
-    currentTrial,
-    isTileBuilderTrial,
-    selectedTileIndexes,
-    session.sessionId,
-    totalTrials
-  ]);
 
   const handleContinueRepeatedReading = useCallback(async (): Promise<void> => {
     if (
@@ -1006,12 +833,6 @@ export function useKatakanaSpeedSessionController(
       const optionIndex = Number(event.key) - 1;
       const option = options[optionIndex];
 
-      if (event.key === "Enter" && isTileBuilderTrial) {
-        event.preventDefault();
-        void handleSubmitTileBuilder();
-        return;
-      }
-
       if (!option) {
         return;
       }
@@ -1027,15 +848,12 @@ export function useKatakanaSpeedSessionController(
     handleContinue,
     handleContinueRepeatedReading,
     handleSubmitSelfCheck,
-    handleSubmitTileBuilder,
     handleSubmitRanGrid,
-    handleToggleRanWrongCell,
     handleToggleTimer,
     awaitingContinue,
     isRanGridTrial,
     isRepeatedReadingTrial,
     isSelfCheckTrial,
-    isTileBuilderTrial,
     timerState.phase,
     options
   ]);
@@ -1055,16 +873,11 @@ export function useKatakanaSpeedSessionController(
     handleContinueRepeatedReading,
     handleSubmitRanGrid,
     handleSubmitSelfCheck,
-    handleSubmitTileBuilder,
-    handleClearTiles,
-    handleSelectTile,
     handleToggleRanWrongCell,
     handleToggleTimer,
     isRanGridTrial,
     isRepeatedReadingTrial,
-    isSegmentSelectTrial,
     isSelfCheckTrial,
-    isTileBuilderTrial,
     isSubmitting,
     options,
     progressPercent:
@@ -1075,7 +888,6 @@ export function useKatakanaSpeedSessionController(
     ranWrongCellIndexes,
     repeatedReadingState,
     selfCheckRatings: SELF_CHECK_RATINGS,
-    tileBuilderState,
     timerState,
     totalTrials
   };

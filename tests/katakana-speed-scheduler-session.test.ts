@@ -105,7 +105,7 @@ describe("katakana speed scheduler state", () => {
 });
 
 describe("katakana speed session planning", () => {
-  it("generates serializable adaptive trial plans using only minimal_pair and blink", () => {
+  it("defaults to the focused daily training loop", () => {
     const initial = createInitialKatakanaSpeedState({
       now: "2026-04-25T08:00:00.000Z"
     });
@@ -127,24 +127,21 @@ describe("katakana speed session planning", () => {
 
     expect(plan).toHaveLength(8);
     expect(new Set(plan.map((trial) => trial.trialId)).size).toBe(8);
-    expect(
-      plan
-        .map((trial) => trial.mode)
-        .every((mode) => mode === "minimal_pair" || mode === "blink")
-    ).toBe(true);
+    expect(new Set(plan.map((trial) => trial.blockId))).toEqual(
+      new Set(["daily-b1-contrast", "daily-b2-reading", "daily-b3-transfer"])
+    );
     expect(plan[0]).toMatchObject({
-      correctItemId: "kana-shi",
-      confusionClusterId: "visual-shi-tsu-so-n",
-      itemId: "kana-shi",
-      promptSurface: "シ",
+      features: expect.objectContaining({
+        exerciseFamily: expect.stringMatching(/choice$/),
+        showReadingDuringTrial: false
+      }),
       targetRtMs: expect.any(Number)
     });
-    expect(plan[0]?.optionItemIds).toContain("kana-shi");
     expect(plan.some((trial) => trial.exposureMs !== undefined)).toBe(true);
     expect(JSON.parse(JSON.stringify(plan))).toEqual(plan);
   });
 
-  it("keeps rare and edge items from dominating a fresh early plan", () => {
+  it("keeps rare and edge items from dominating a fresh daily plan", () => {
     const state = createInitialKatakanaSpeedState({
       now: "2026-04-25T08:00:00.000Z"
     });
@@ -162,7 +159,7 @@ describe("katakana speed session planning", () => {
     expect(rareCount).toBeLessThanOrEqual(2);
   });
 
-  it("generates a block-aware daily expansion mix with capped rare shock trials", () => {
+  it("generates a focused three-block daily trainer", () => {
     const initial = createInitialKatakanaSpeedState({
       now: "2026-04-25T08:00:00.000Z"
     });
@@ -194,46 +191,34 @@ describe("katakana speed session planning", () => {
     const modes = new Set(plan.map((trial) => trial.mode));
     const rareTrials = plan.filter((trial) => trial.rarity === "rare");
     const blockIds = new Set(plan.map((trial) => trial.blockId));
+    const exerciseFamilies = new Set(
+      plan.map((trial) => String(trial.features?.exerciseFamily ?? ""))
+    );
 
     expect(plan).toHaveLength(30);
-    expect(blockIds.size).toBeGreaterThan(1);
+    expect(blockIds).toEqual(
+      new Set(["daily-b1-contrast", "daily-b2-reading", "daily-b3-transfer"])
+    );
     expect(modes.has("minimal_pair")).toBe(true);
     expect(modes.has("blink")).toBe(true);
     expect(modes.has("word_naming")).toBe(true);
     expect(modes.has("pseudoword_sprint")).toBe(true);
-    expect(modes.has("sentence_sprint")).toBe(true);
+    expect(modes.has("ran_grid")).toBe(true);
     expect(modes.has("repeated_reading_pass")).toBe(false);
-    expect(modes.has("ran_grid")).toBe(false);
-    expect(plan.some((trial) => trial.wasRepair)).toBe(true);
+    expect(modes.has("sentence_sprint")).toBe(false);
+    expect(exerciseFamilies).toEqual(
+      new Set([
+        "blink_choice",
+        "contrast_choice",
+        "timed_word_reading",
+        "timed_pseudoword_reading",
+        "ran_grid"
+      ])
+    );
+    expect(plan.some((trial) => trial.wasRepair)).toBe(false);
     expect(plan.some((trial) => trial.wasTransfer)).toBe(true);
     expect(plan.some((trial) => trial.wasPseudo)).toBe(true);
-    expect(plan.some((trial) => trial.metadataRole === "weak_item")).toBe(true);
-    expect(plan.some((trial) => trial.metadataRole === "easy_review")).toBe(
-      true
-    );
     expect(rareTrials.length).toBeLessThanOrEqual(3);
     expect(JSON.parse(JSON.stringify(plan))).toEqual(plan);
-  });
-
-  it("keeps rare combo expansion sessions under a one-quarter rare cap", () => {
-    const state = createInitialKatakanaSpeedState({
-      now: "2026-04-25T08:00:00.000Z"
-    });
-
-    const plan = generateKatakanaSpeedSessionPlan({
-      count: 20,
-      now: "2026-04-25T08:01:00.000Z",
-      seed: "rare-combo",
-      sessionMode: "rare_combo",
-      state
-    });
-
-    expect(
-      plan.every((trial) => trial.blockId?.startsWith("rare_combo-") === true)
-    ).toBe(true);
-    expect(plan.filter((trial) => trial.rarity === "rare")).toHaveLength(5);
-    expect(plan.some((trial) => trial.metadataRole === "rare_shock")).toBe(
-      true
-    );
   });
 });

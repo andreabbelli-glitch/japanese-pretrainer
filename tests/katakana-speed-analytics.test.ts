@@ -32,7 +32,7 @@ describe("katakana speed analytics", () => {
         features: { family: "pseudo-bank", moraCount: 4, rarity: "edge" },
         focusChunks: ["ティ"],
         isCorrect: true,
-        itemId: "pseudo-ti-rado",
+        itemId: "pseudo-pair-ti-chi-target",
         itemType: "pseudoword",
         metrics: { msPerMora: 410 },
         mode: "pseudoword_sprint",
@@ -169,7 +169,8 @@ describe("katakana speed analytics", () => {
       surface: "ヴョ"
     });
     expect(analytics.familyCards.length).toBeGreaterThan(0);
-    expect(analytics.recommendedMode.mode).toBe("rare_combo");
+    expect(analytics.recommendedMode.mode).toBe("repair");
+    expect(analytics.recommendedMode.detail).toContain("ヴョ");
   });
 });
 

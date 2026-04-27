@@ -191,7 +191,6 @@ function ModeAwareMetrics({
           label: "Precisione rare",
           value: formatPercent(metrics.rareAccuracy.accuracyPercent)
         }
-
       : null,
     metrics.pseudoTransfer
       ? {
@@ -333,9 +332,7 @@ function AttemptLog({
       </div>
       {hidden.length > 0 ? (
         <details className="katakana-speed-mode-details">
-          <summary>
-            Mostra tutte ({attempts.length})
-          </summary>
+          <summary>Mostra tutte ({attempts.length})</summary>
           <div className="katakana-speed-attempt-log">
             {hidden.map((attempt) => (
               <AttemptRow attempt={attempt} key={attempt.createdAt} />
@@ -398,21 +395,13 @@ function formatExerciseCodeLabel(exerciseCode: string) {
     E02: "Riconoscimento rapido",
     E03: "Coppie minime",
     E04: "Confusioni",
-    E05: "Uguale o diverso",
-    E08: "Costruisci parole",
-    E09: "Trova chunk",
     E10: "Leggi parole",
-    E11: "Prestiti",
     E12: "Pseudo-parole",
     E13: "Griglia",
-    E14: "Scala confusioni",
-    E15: "Trappole di mora",
-    E16: "Corsa coppie",
-    E17: "Varianti",
+    E15: "Contrasti di mora",
+    E16: "Contrasti ー/ッ",
     E18: "Frasi",
-    E20: "Riparazione",
-    E21: "Mix veloce",
-    E22: "Senza romaji"
+    E20: "Riparazione"
   };
 
   return labels[exerciseCode] ?? exerciseCode;

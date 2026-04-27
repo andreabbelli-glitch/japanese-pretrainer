@@ -346,7 +346,7 @@ describe("katakana speed session controller", () => {
       (
         latestController as unknown as KatakanaSpeedSessionControllerResult
       ).options.map((option) => option.surface)
-    ).toEqual(["同じ", "違う"]);
+    ).toEqual(["ティ", "チ"]);
 
     now = 4_380;
     await act(async () => {
@@ -359,146 +359,8 @@ describe("katakana speed session controller", () => {
       responseMs: 380,
       sessionId: "session-raw-choice",
       trialId: "trial-raw-choice",
-      userAnswer: "違う"
+      userAnswer: "チ"
     });
-  });
-
-  it("builds tile answers from tap order and can clear the sequence", async () => {
-    let now = 4_500;
-    vi.spyOn(performance, "now").mockImplementation(() => now);
-    mocks.submitKatakanaSpeedAnswerAction.mockResolvedValue({
-      errorTags: [],
-      idempotent: false,
-      isCorrect: true
-    });
-
-    let latestController: KatakanaSpeedSessionControllerResult | null = null;
-
-    function Probe(props: { session: StartKatakanaSpeedSessionResult }) {
-      const controller = useKatakanaSpeedSessionController(props.session);
-
-      useEffect(() => {
-        latestController = controller;
-      }, [controller]);
-
-      return null;
-    }
-
-    container = document.createElement("div");
-    root = createRoot(container);
-
-    await act(async () => {
-      root!.render(
-        createElement(Probe, { session: buildTileBuilderSession() })
-      );
-      await Promise.resolve();
-    });
-
-    let controller =
-      latestController as unknown as KatakanaSpeedSessionControllerResult;
-    expect(controller.isTileBuilderTrial).toBe(true);
-    expect(
-      controller.tileBuilderState?.tiles.map((tile) => tile.surface)
-    ).toEqual(["ティ", "リ", "セ", "キュ"]);
-
-    await act(async () => {
-      controller.handleSelectTile(0);
-      controller.handleSelectTile(1);
-      await Promise.resolve();
-    });
-    controller =
-      latestController as unknown as KatakanaSpeedSessionControllerResult;
-    expect(controller.tileBuilderState?.answerSurface).toBe("ティリ");
-
-    await act(async () => {
-      controller.handleClearTiles();
-      controller.handleSelectTile(2);
-      controller.handleSelectTile(3);
-      controller.handleSelectTile(1);
-      controller.handleSelectTile(0);
-      await Promise.resolve();
-    });
-
-    now = 5_700;
-    await act(async () => {
-      (
-        latestController as unknown as KatakanaSpeedSessionControllerResult
-      ).handleSubmitTileBuilder();
-      await Promise.resolve();
-    });
-
-    expect(mocks.submitKatakanaSpeedAnswerAction).toHaveBeenCalledWith({
-      inputMethod: "pointer",
-      responseMs: 1200,
-      sessionId: "session-tile-builder",
-      trialId: "trial-tile-builder",
-      userAnswer: "セキュリティ"
-    });
-  });
-
-  it("keeps an incorrect tile-builder answer on the same trial until continue", async () => {
-    let now = 4_500;
-    vi.spyOn(performance, "now").mockImplementation(() => now);
-    mocks.submitKatakanaSpeedAnswerAction.mockResolvedValue({
-      errorTags: ["order"],
-      idempotent: false,
-      isCorrect: false
-    });
-
-    let latestController: KatakanaSpeedSessionControllerResult | null = null;
-
-    function Probe(props: { session: StartKatakanaSpeedSessionResult }) {
-      const controller = useKatakanaSpeedSessionController(props.session);
-
-      useEffect(() => {
-        latestController = controller;
-      }, [controller]);
-
-      return null;
-    }
-
-    container = document.createElement("div");
-    root = createRoot(container);
-
-    await act(async () => {
-      root!.render(
-        createElement(Probe, { session: buildTileBuilderSession() })
-      );
-      await Promise.resolve();
-    });
-
-    await act(async () => {
-      (
-        latestController as unknown as KatakanaSpeedSessionControllerResult
-      ).handleSelectTile(0);
-      (
-        latestController as unknown as KatakanaSpeedSessionControllerResult
-      ).handleSelectTile(1);
-      await Promise.resolve();
-    });
-
-    now = 5_000;
-    await act(async () => {
-      (
-        latestController as unknown as KatakanaSpeedSessionControllerResult
-      ).handleSubmitTileBuilder();
-      await Promise.resolve();
-    });
-
-    let controller =
-      latestController as unknown as KatakanaSpeedSessionControllerResult;
-    expect(controller.feedback?.status).toBe("incorrect");
-    expect(controller.awaitingContinue).toBe(true);
-    expect(controller.currentTrial?.trialId).toBe("trial-tile-builder");
-
-    await act(async () => {
-      dispatchWindowKeyboardEvent("Enter");
-      await Promise.resolve();
-    });
-
-    controller =
-      latestController as unknown as KatakanaSpeedSessionControllerResult;
-    expect(controller.completed).toBe(true);
   });
 
   it("submits repeated reading as one aggregate result after three timed passes", async () => {
@@ -891,13 +753,13 @@ function buildSelfCheckSession(): StartKatakanaSpeedSessionResult {
     sessionId: "session-self-check",
     trials: [
       {
-        correctItemId: "pseudo-ti-rado",
+        correctItemId: "pseudo-pair-ti-chi-target",
         features: { moraCount: 4 },
         focusChunks: ["ティ"],
-        itemId: "pseudo-ti-rado",
+        itemId: "pseudo-pair-ti-chi-target",
         itemType: "pseudoword",
         mode: "pseudoword_sprint",
-        optionItemIds: ["pseudo-ti-rado"],
+        optionItemIds: ["pseudo-pair-ti-chi-target"],
         promptSurface: "ティラード",
         targetRtMs: 1800,
         trialId: "trial-pseudo",
@@ -927,43 +789,18 @@ function buildRawChoiceSession(): StartKatakanaSpeedSessionResult {
     trials: [
       {
         correctItemId: "word-security",
-        expectedSurface: "違う",
+        expectedSurface: "ティ",
         features: {
-          exerciseCode: "E05",
+          exerciseCode: "E15",
           interaction: "raw_choice"
         },
         itemId: "word-security",
-        itemType: "same_different",
+        itemType: "raw_choice",
         mode: "minimal_pair",
-        optionItemIds: ["raw:%E5%90%8C%E3%81%98", "raw:%E9%81%95%E3%81%86"],
-        promptSurface: "セキュリティ / セキュリテイ",
+        optionItemIds: ["raw:%E3%83%86%E3%82%A3", "raw:%E3%83%81"],
+        promptSurface: "ティ",
         targetRtMs: 950,
         trialId: "trial-raw-choice"
-      }
-    ]
-  };
-}
-
-function buildTileBuilderSession(): StartKatakanaSpeedSessionResult {
-  return {
-    sessionId: "session-tile-builder",
-    trials: [
-      {
-        correctItemId: "word-security",
-        expectedSurface: "セキュリティ",
-        features: {
-          exerciseCode: "E08",
-          interaction: "tile_builder",
-          tiles: ["ティ", "リ", "セ", "キュ"]
-        },
-        focusChunks: ["ティ"],
-        itemId: "word-security",
-        itemType: "scrambled_loanword",
-        mode: "minimal_pair",
-        optionItemIds: [],
-        promptSurface: "セキュリティ",
-        targetRtMs: 3200,
-        trialId: "trial-tile-builder"
       }
     ]
   };

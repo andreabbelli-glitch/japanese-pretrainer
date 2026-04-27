@@ -45,18 +45,18 @@ describe("katakana speed raw answer scoring", () => {
     });
     await database.insert(katakanaTrial).values({
       correctItemId: "word-security",
-      expectedSurface: "違う",
+      expectedSurface: "ティ",
       featuresJson: JSON.stringify({
-        exerciseCode: "E05",
+        exerciseCode: "E15",
         interaction: "raw_choice"
       }),
       focusChunksJson: JSON.stringify(["ティ"]),
       itemId: "word-security",
-      itemType: "same_different",
+      itemType: "raw_choice",
       metricsJson: JSON.stringify({ targetRtMs: 950 }),
       mode: "minimal_pair",
-      optionItemIdsJson: JSON.stringify(["raw:同じ", "raw:違う"]),
-      promptSurface: "セキュリティ / セキュリテイ",
+      optionItemIdsJson: JSON.stringify(["raw:ティ", "raw:チ"]),
+      promptSurface: "ティ",
       sessionId: "session-raw-answer",
       sortOrder: 0,
       status: "planned",
@@ -70,7 +70,7 @@ describe("katakana speed raw answer scoring", () => {
       responseMs: 640,
       sessionId: "session-raw-answer",
       trialId: "trial-raw-answer",
-      userAnswer: "違う"
+      userAnswer: "ティ"
     });
     const attempt = await database.query.katakanaAttemptLog.findFirst({
       where: eq(katakanaAttemptLog.trialId, "trial-raw-answer")
@@ -82,72 +82,11 @@ describe("katakana speed raw answer scoring", () => {
       isCorrect: true
     });
     expect(attempt).toMatchObject({
-      expectedAnswer: "違う",
-      expectedSurface: "違う",
+      expectedAnswer: "ティ",
+      expectedSurface: "ティ",
       isCorrect: 1,
-      promptSurface: "セキュリティ / セキュリテイ",
-      userAnswer: "違う"
-    });
-  });
-
-  it("accepts a chunk spotting display segment that contains the expected chunk", async () => {
-    await database.insert(katakanaSession).values({
-      createdAt: "2026-04-26T08:00:00.000Z",
-      id: "session-segment-answer",
-      startedAt: "2026-04-26T08:00:00.000Z",
-      status: "active",
-      updatedAt: "2026-04-26T08:00:00.000Z"
-    });
-    await database.insert(katakanaTrial).values({
-      correctItemId: "word-security",
-      expectedSurface: "フィ",
-      featuresJson: JSON.stringify({
-        chunk: "フィ",
-        exerciseCode: "E09",
-        interaction: "segment_select"
-      }),
-      focusChunksJson: JSON.stringify(["フィ"]),
-      itemId: "word-security",
-      itemType: "segment_select",
-      metricsJson: JSON.stringify({ targetRtMs: 1400 }),
-      mode: "minimal_pair",
-      optionItemIdsJson: JSON.stringify([
-        "raw:%E3%83%97",
-        "raw:%E3%83%AD",
-        "raw:%E3%83%95%E3%82%A3%E3%83%BC",
-        "raw:%E3%83%AB"
-      ]),
-      promptSurface: "プロフィール",
-      sessionId: "session-segment-answer",
-      sortOrder: 0,
-      status: "planned",
-      targetRtMs: 1400,
-      trialId: "trial-segment-answer"
-    });
-
-    const result = await submitKatakanaSpeedAnswer({
-      database,
-      now: new Date("2026-04-26T08:00:01.000Z"),
-      responseMs: 850,
-      sessionId: "session-segment-answer",
-      trialId: "trial-segment-answer",
-      userAnswer: "フィー"
-    });
-    const attempt = await database.query.katakanaAttemptLog.findFirst({
-      where: eq(katakanaAttemptLog.trialId, "trial-segment-answer")
-    });
-
-    expect(result).toMatchObject({
-      errorTags: [],
-      idempotent: false,
-      isCorrect: true
-    });
-    expect(attempt).toMatchObject({
-      expectedAnswer: "フィ",
-      expectedSurface: "フィ",
-      isCorrect: 1,
-      promptSurface: "プロフィール",
-      userAnswer: "フィー"
+      promptSurface: "ティ",
+      userAnswer: "ティ"
     });
   });
 });

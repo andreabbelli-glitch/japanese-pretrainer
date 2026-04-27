@@ -12,11 +12,7 @@ export function isKatakanaSpeedAnswerCorrect(input: {
     return true;
   }
 
-  return (
-    input.interaction === "segment_select" &&
-    expectedSurface.length > 0 &&
-    userAnswer.includes(expectedSurface)
-  );
+  return false;
 }
 
 export type KatakanaSpeedTransferStatus =

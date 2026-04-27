@@ -15,17 +15,6 @@ import {
   KATAKANA_SPEED_PSEUDOWORD_SEED_FRAMES
 } from "@/features/katakana-speed/model/pseudoword-catalog";
 
-const legacyPseudowordIds = [
-  ["pseudo-ti-rado", "ティラード"],
-  ["pseudo-di-rado", "ディラード"],
-  ["pseudo-dyu-kan", "デュカン"],
-  ["pseudo-fa-moru", "ファモル"],
-  ["pseudo-fi-rado", "フィラード"],
-  ["pseudo-we-ran", "ウェラン"],
-  ["pseudo-kwo-rikku", "クォリック"],
-  ["pseudo-vyo-ran", "ヴョラン"]
-] as const;
-
 describe("katakana speed full pseudoword catalog", () => {
   it("materializes the operational 45 chunk x 6 frame seed bank", () => {
     const seedItems = getKatakanaSpeedCatalog().filter(
@@ -48,13 +37,12 @@ describe("katakana speed full pseudoword catalog", () => {
     expect(surfaces.size).toBe(catalog.length);
   });
 
-  it("preserves legacy pseudoword IDs and makes イェ a real chunk target", () => {
-    for (const [itemId, surface] of legacyPseudowordIds) {
-      expect(getKatakanaSpeedItemById(itemId)).toMatchObject({
-        kind: "pseudoword",
-        surface
-      });
-    }
+  it("uses current taxonomy IDs and makes イェ a real chunk target", () => {
+    expect(getKatakanaSpeedItemBySurface("ティラード")).toMatchObject({
+      id: "pseudo-pair-ti-chi-target",
+      kind: "pseudoword"
+    });
+    expect(getKatakanaSpeedItemById("pseudo-ti-rado")).toBeUndefined();
 
     expect(getKatakanaSpeedItemById("chunk-ye")).toMatchObject({
       focusChunks: ["イェ"],
@@ -115,12 +103,12 @@ describe("katakana speed full pseudoword catalog", () => {
     });
   });
 
-  it("keeps distractor-only pair ends out of pseudoword transfer target pools", () => {
+  it("keeps distractor-only pair ends out of daily pseudoword transfer pools", () => {
     const plan = generateKatakanaSpeedSessionPlan({
       count: 30,
       now: new Date("2026-04-26T08:00:00.000Z"),
       seed: "pseudo-targetable",
-      sessionMode: "pseudoword_transfer",
+      sessionMode: "daily",
       state: createInitialKatakanaSpeedState({
         now: new Date("2026-04-26T08:00:00.000Z")
       })
@@ -138,8 +126,8 @@ describe("katakana speed full pseudoword catalog", () => {
     ).toBe(true);
   });
 
-  it("keeps targetable rare/C-tier pseudowords reachable in explicit transfer", () => {
-    const rarePseudoword = getKatakanaSpeedItemById("pseudo-vyo-ran");
+  it("keeps rare/C-tier pseudowords out of the normal transfer pool", () => {
+    const rarePseudoword = getKatakanaSpeedItemBySurface("ヴョトール");
     const initialState = createInitialKatakanaSpeedState({
       now: new Date("2026-04-26T08:00:00.000Z")
     });
@@ -150,7 +138,7 @@ describe("katakana speed full pseudoword catalog", () => {
       tier: "C"
     });
     if (!rarePseudoword) {
-      throw new Error("Missing legacy C-tier pseudoword pseudo-vyo-ran");
+      throw new Error("Missing C-tier pseudoword for ヴョ.");
     }
 
     const state = {
@@ -167,17 +155,16 @@ describe("katakana speed full pseudoword catalog", () => {
       }
     };
     const plan = generateKatakanaSpeedSessionPlan({
-      count: 1,
+      count: 34,
       now: new Date("2026-04-26T08:00:00.000Z"),
       seed: "rare-pseudo-targetable",
-      sessionMode: "pseudoword_transfer",
+      sessionMode: "repair",
       state
     });
 
-    expect(plan[0]).toMatchObject({
-      itemId: rarePseudoword.id,
-      mode: "pseudoword_sprint"
-    });
+    expect(plan.some((trial) => trial.itemId === rarePseudoword.id)).toBe(
+      false
+    );
   });
 
   it("prefers direct minimal-pair distractors when building choice options", () => {

@@ -46,9 +46,13 @@ export function KatakanaSpeedSessionPage({
     controller.repeatedReadingState?.trials[
       controller.repeatedReadingState.currentPassIndex
     ] ?? null;
-  const visibleTrialKey = repeatedPass?.trialId ?? currentTrial?.trialId ?? null;
+  const visibleTrialKey =
+    repeatedPass?.trialId ?? currentTrial?.trialId ?? null;
   const showReadings =
-    readingVisibility.trialKey === visibleTrialKey && readingVisibility.show;
+    (controller.feedback !== null || controller.ranCanMarkErrors) &&
+    readingVisibility.trialKey === visibleTrialKey &&
+    readingVisibility.show;
+  const showFeedbackReading = controller.feedback !== null;
 
   useEffect(() => {
     if (!controller.completed || finalizingRef.current) {
@@ -86,6 +90,9 @@ export function KatakanaSpeedSessionPage({
       if (event.target instanceof HTMLElement) {
         event.target.blur();
       }
+      if (!controller.feedback && !controller.ranCanMarkErrors) {
+        return;
+      }
       setReadingVisibility((current) => ({
         show: current.trialKey === visibleTrialKey ? !current.show : true,
         trialKey: visibleTrialKey
@@ -94,7 +101,7 @@ export function KatakanaSpeedSessionPage({
 
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
-  }, [visibleTrialKey]);
+  }, [controller.feedback, controller.ranCanMarkErrors, visibleTrialKey]);
 
   async function abandonSession() {
     setIsFinalizing(true);
@@ -148,13 +155,7 @@ export function KatakanaSpeedSessionPage({
     ? repeatedPass?.promptSurface
     : controller.isRanGridTrial
       ? null
-      : controller.isTileBuilderTrial
-        ? (currentItem?.meaningIt ?? null)
-        : currentTrial?.promptSurface;
-  const comparativePromptParts = getComparativePromptParts(
-    currentTrial,
-    visiblePrompt
-  );
+      : currentTrial?.promptSurface;
   const readingHint = controller.isRepeatedReadingTrial
     ? formatKatakanaSpeedReading(
         repeatedPassItem ?? repeatedPass?.promptSurface
@@ -162,7 +163,6 @@ export function KatakanaSpeedSessionPage({
     : formatKatakanaSpeedReading(currentItem ?? visiblePrompt);
   const promptClassName = cx(
     "katakana-speed-prompt",
-    controller.isTileBuilderTrial && "katakana-speed-prompt--hint",
     (currentTrial?.mode === "sentence_sprint" ||
       currentTrial?.mode === "repeated_reading_pass") &&
       "katakana-speed-prompt--sentence"
@@ -218,14 +218,12 @@ export function KatakanaSpeedSessionPage({
               ) : null}
               {visiblePrompt ? (
                 <>
-                  {comparativePromptParts ? (
-                    <ComparativePrompt parts={comparativePromptParts} />
-                  ) : (
-                    <p className={promptClassName}>{visiblePrompt}</p>
-                  )}
+                  <p className={promptClassName}>{visiblePrompt}</p>
                   <ReadingHint
                     label="Lettura"
-                    value={showReadings ? readingHint : null}
+                    value={
+                      showReadings || showFeedbackReading ? readingHint : null
+                    }
                   />
                 </>
               ) : null}
@@ -240,19 +238,6 @@ export function KatakanaSpeedSessionPage({
                   controller={controller}
                   disabled={controller.isSubmitting || isFinalizing}
                   showReadings={showReadings}
-                />
-              ) : controller.isTileBuilderTrial ? (
-                <TileBuilderControls
-                  controller={controller}
-                  disabled={controller.isSubmitting || isFinalizing}
-                  showReadings={showReadings}
-                />
-              ) : controller.isSegmentSelectTrial ? (
-                <SegmentSelectControls
-                  controller={controller}
-                  disabled={controller.isSubmitting || isFinalizing}
-                  showReadings={showReadings}
-                  trial={currentTrial}
                 />
               ) : controller.isSelfCheckTrial ? (
                 <SelfCheckControls
@@ -305,7 +290,11 @@ export function KatakanaSpeedSessionPage({
             <label className="katakana-speed-reading-toggle">
               <input
                 checked={showReadings}
+                disabled={!controller.feedback && !controller.ranCanMarkErrors}
                 onChange={(event) => {
+                  if (!controller.feedback && !controller.ranCanMarkErrors) {
+                    return;
+                  }
                   setReadingVisibility({
                     show: event.target.checked,
                     trialKey: visibleTrialKey
@@ -316,7 +305,7 @@ export function KatakanaSpeedSessionPage({
               />
               <span>
                 <strong>Mostra lettura</strong>
-                <small>Romaji per controllare se stai leggendo giusto.</small>
+                <small>Dopo risposta o stop, per controllare il reading.</small>
               </span>
             </label>
             <button
@@ -375,118 +364,6 @@ function ChoiceControls({
           <ReadingHint value={showReadings ? option.readingHint : null} />
         </button>
       ))}
-    </div>
-  );
-}
-
-function SegmentSelectControls({
-  controller,
-  disabled,
-  showReadings,
-  trial
-}: {
-  controller: ReturnType<typeof useKatakanaSpeedSessionController>;
-  disabled: boolean;
-  showReadings: boolean;
-  trial: KatakanaSpeedTrialPlan;
-}) {
-  return (
-    <div className="katakana-speed-segment-options">
-      {controller.options.map((option) => (
-        <button
-          className={cx(
-            "katakana-speed-segment-option",
-            controller.feedback?.trialId === trial.trialId &&
-              controller.feedback.selectedSurface === option.surface &&
-              (controller.feedback.status === "incorrect"
-                ? "katakana-speed-option--incorrect"
-                : "katakana-speed-option--correct")
-          )}
-          disabled={disabled || controller.awaitingContinue}
-          key={option.itemId}
-          onClick={() =>
-            controller.handleChooseOption(option.itemId, "pointer")
-          }
-          type="button"
-        >
-          <span>{option.surface}</span>
-          <ReadingHint value={showReadings ? option.readingHint : null} />
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function TileBuilderControls({
-  controller,
-  disabled,
-  showReadings
-}: {
-  controller: ReturnType<typeof useKatakanaSpeedSessionController>;
-  disabled: boolean;
-  showReadings: boolean;
-}) {
-  const state = controller.tileBuilderState;
-
-  if (!state) {
-    return null;
-  }
-
-  return (
-    <div className="katakana-speed-tile-builder">
-      <div className="katakana-speed-tile-answer" aria-live="polite">
-        {state.answerSurface || " "}
-        <ReadingHint
-          value={
-            showReadings
-              ? formatKatakanaSpeedReading(state.answerSurface)
-              : null
-          }
-        />
-      </div>
-      <div className="katakana-speed-tile-grid">
-        {state.tiles.map((tile) => (
-          <button
-            className={cx(
-              "katakana-speed-tile",
-              tile.selected && "katakana-speed-tile--selected"
-            )}
-            disabled={disabled || controller.awaitingContinue || tile.selected}
-            key={`${tile.surface}-${tile.index}`}
-            onClick={() => controller.handleSelectTile(tile.index)}
-            type="button"
-          >
-            <span>{tile.surface}</span>
-            <ReadingHint value={showReadings ? tile.readingHint : null} />
-          </button>
-        ))}
-      </div>
-      <div className="katakana-speed-tile-actions">
-        <button
-          className="button button--ghost"
-          disabled={
-            disabled ||
-            controller.awaitingContinue ||
-            state.selectedIndexes.length === 0
-          }
-          onClick={controller.handleClearTiles}
-          type="button"
-        >
-          Svuota
-        </button>
-        <button
-          className="button button--primary"
-          disabled={
-            disabled ||
-            controller.awaitingContinue ||
-            state.selectedIndexes.length === 0
-          }
-          onClick={controller.handleSubmitTileBuilder}
-          type="button"
-        >
-          Controlla
-        </button>
-      </div>
     </div>
   );
 }
@@ -808,41 +685,6 @@ function ReadingHint({
       <strong>{value}</strong>
     </span>
   );
-}
-
-function ComparativePrompt({ parts }: { parts: readonly [string, string] }) {
-  return (
-    <p
-      aria-label={`${parts[0]} / ${parts[1]}`}
-      className="katakana-speed-prompt katakana-speed-comparison-prompt"
-    >
-      <span className="katakana-speed-comparison-prompt__item">
-        {parts[0]}
-      </span>
-      <span className="katakana-speed-comparison-prompt__item">
-        {parts[1]}
-      </span>
-    </p>
-  );
-}
-
-function getComparativePromptParts(
-  trial: KatakanaSpeedTrialPlan | null,
-  prompt: string | null | undefined
-): readonly [string, string] | null {
-  const exerciseCode = String(trial?.features?.exerciseCode ?? "");
-  if (exerciseCode !== "E05" && exerciseCode !== "E17") {
-    return null;
-  }
-
-  const parts = (prompt ?? "")
-    .split(/\s+\/\s+/u)
-    .map((part) => part.trim())
-    .filter(Boolean);
-
-  return parts.length === 2 && parts[0] && parts[1]
-    ? [parts[0], parts[1]]
-    : null;
 }
 
 function formatRepeatedPassLabel(index: number) {

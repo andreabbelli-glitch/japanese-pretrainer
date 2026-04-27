@@ -7,9 +7,10 @@ non legge `content/media/**` e non modifica gli stati review esistenti.
 
 ## Route
 
-- `/katakana-speed`: dashboard con quick start adattivo, mode picker compatto,
-  fluency snapshot, family cards, top confusioni, top slow-correct, weak spots e
-  recap recente.
+- `/katakana-speed`: dashboard con tre azioni primarie (`Start 5 min`,
+  `Diagnosi`, `Ripara debolezza`), fluency snapshot, punti deboli, top
+  confusioni, top slow-correct e recap recente. Non esiste più un picker di
+  modalità legacy/debug: la UI pubblica espone solo i tre training loop.
 - `/katakana-speed/session/[sessionId]`: loop focalizzato per una sessione
   persistita. Lo shell globale viene nascosto per ridurre distrazioni.
 - `/katakana-speed/recap/[sessionId]`: recap persistito con metriche
@@ -37,9 +38,9 @@ set statico copre:
   `コ/ロ/ユ/ヨ`, `マ/ム`, `ラ/フ/ヲ/ワ`, `タ/ク/ケ`,
   `ハ/バ/パ`, dakuon core e long-vowel mark;
 - mora base di fallback per opzioni e smoke test.
-- word bank operativo completo dalla specifica non-audio, pseudoword seed,
-  trap moraiche, variant pair, chunk spotting target, ladder verticali e phrase
-  bank `P01-P60`.
+- word bank operativo completo dalla specifica non-audio, pseudoword seed e
+  phrase bank `P01-P60`. Gli asset di supporto al catalogo restano dati
+  statici, ma non definiscono modalità sessione autonome.
 
 Il catalogo pseudoword materializza 45 chunk operativi per 6 frame statici
 (`{chunk}トール`, `{chunk}リック`, `ア{chunk}ール`,
@@ -47,37 +48,48 @@ Il catalogo pseudoword materializza 45 chunk operativi per 6 frame statici
 targetable. Include inoltre 26 minimal pseudo-pair first-class: entrambi gli
 estremi sono item pseudoword reali, i distractor diretti sono collegati tramite
 cluster fonologici e gli estremi usati solo come distractor sono taggati
-`targetable-false` per non entrare nei target di `pseudoword_transfer`. Gli 8
-ID legacy dell'MVP restano preservati e il dedupe avviene per superficie,
-fondendo tag e metadata; mora count e display segmentation sono sempre derivati
-dal tokenizer.
+`targetable-false` per non entrare nei target del blocco di lettura. Il dedupe
+avviene per superficie, fondendo tag e metadata; mora count e display
+segmentation sono sempre derivati dal tokenizer.
 
-Il modello puro include tokenizer, generatore opzioni, classificatore errori,
-scheduler item, scoring e generatore sessione. La feature supporta:
+Il modello puro include tokenizer, focus registry, generatore opzioni,
+classificatore errori, scheduler item, scoring e generatore sessione. Le
+modalità pubbliche sono:
+
+- `daily`: sessione da circa 5 minuti in 3 blocchi: contrast sprint, lettura a
+  tempo con parole/pseudoparole, transfer con RAN o repeated reading.
+- `diagnostic_probe`: baseline breve con gli stessi tre blocchi, tarata per
+  fotografare lentezza e confusioni.
+- `repair`: loop focalizzato sulla debolezza principale con contrasti, lettura
+  e verifica finale.
+
+I trial persistiti usano i mode DB esistenti:
 
 - `minimal_pair`: scelta tra quattro opzioni;
 - `blink`: esposizione breve senza audio, con due opzioni.
 - `word_naming`, `pseudoword_sprint`, `sentence_sprint`: timer automatico e
   self-check `clean / hesitated / wrong`;
-- raw-choice text-only per same/different, mora trap, long/sokuon pair race,
-  variant normalization e vertical ladder. Le opzioni raw sono codificate nel
-  piano della sessione e corrette contro `expected_surface`, senza richiedere
-  item catalogo fittizi.
-- `segment_select` per chunk spotting e `tile_builder` per scrambled loanword
-  builder; entrambi riusano la session route e il submit answer esistente.
+- raw-choice text-only per contrast choice e mora contrast. Le opzioni raw sono
+  codificate nel piano della sessione e corrette contro `expected_surface`,
+  senza richiedere item catalogo fittizi.
 - `repeated_reading_pass`: blocco aggregato a tre passaggi, due sulla stessa
   frase e uno di transfer su frase con focus chunk condiviso;
 - `ran_grid`: griglia 5x5 con timer totale, celle sbagliate marcabili dopo
   stop e risultato aggregato con posizioni 0-based canonizzate.
 
-I mode avviabili dall'hub includono `diagnostic_probe`, `mora_trap`,
-`chunk_spotting`, `loanword_decoder`, `tile_builder`, `confusion_ladder` e
-`variant_normalization`, oltre ai mode gia esistenti. Non sono inclusi audio,
-voice recognition, shadowing, export, chart avanzate o integrazione con
-`/review`. Dashboard e recap mostrano solo superfici kana e metriche
-diagnostiche. Nelle sessioni il romaji resta nascosto di default, ma `Space`
-lo mostra o nasconde in ogni esercizio per permettere un controllo immediato
-della lettura.
+Ogni trial V2 salva in `featuresJson`/`metricsJson` metadata derivabili senza
+migration: `focusId`, `exerciseFamily`, `correctnessSource`,
+`showReadingDuringTrial`, `targetMsPerMora` e, dopo self-check, `msPerMora`.
+Non sono inclusi audio, voice recognition, shadowing, export, chart avanzate o
+integrazione con `/review`. Dashboard e recap mostrano superfici kana e metriche
+diagnostiche azionabili. Nelle sessioni il romaji resta nascosto durante il
+trial; la lettura compare dopo risposta, feedback o stop del timer.
+
+Il refactor non mantiene adapter per vecchie `sessionMode` come `rare_combo`,
+`mora_trap`, `tile_builder`, `chunk_spotting`, `variant_normalization` o mode
+standalone per RAN/pseudoword. La feature e recente e i dati reali possono
+essere rigenerati; una sessione pre-refactor puo essere scartata invece di
+tenere codice di compatibilita.
 
 ## Persistenza
 
@@ -103,15 +115,15 @@ riprese partono dal primo trial non ancora risposto usando `answeredCount`.
 
 ## Flusso utente
 
-1. Da `/katakana-speed`, `Start drill` crea una sessione daily locale con mix
-   blitz non-audio; il mode picker compatto avvia baseline, transfer e repair
-   mirati.
+1. Da `/katakana-speed`, `Start 5 min` crea una sessione daily focalizzata:
+   blocco contrasti, blocco lettura a tempo, blocco transfer. `Diagnosi` e
+   `Ripara debolezza` usano lo stesso focus engine con conteggi diversi.
 2. I choice drill accettano tasti `1`-`4` e tap/click sulle opzioni.
-3. Same/different, trap, variant e ladder usano choice raw text-only. Chunk
-   spotting usa segmenti tappabili; tile builder usa tile kana tappabili con
-   reset e salvataggio.
-4. In tutti gli esercizi `Space` mostra o nasconde il romaji/reading hint. Il
-   timer parte automaticamente nei drill temporizzati.
+3. Mora contrast e contrasti raw usano choice text-only; non ci sono flussi di
+   costruzione tessere, chunk spotting standalone o varianti normative.
+4. Durante il trial non viene mostrato romaji. Dopo risposta o stop, `Space` o
+   il toggle dedicato possono mostrare/nascondere la lettura. Il timer parte
+   automaticamente nei drill temporizzati.
 5. I self-check drill usano `1`-`3` per il rating: `clean` e `hesitated`
    avanzano automaticamente dopo il salvataggio, `wrong` resta sul trial con
    feedback e richiede `Enter` o `Continua`.
@@ -122,10 +134,9 @@ riprese partono dal primo trial non ancora risposto usando `answeredCount`.
 7. A fine sessione o con `Abbandona e salva recap`, il rollup viene scritto in
    `katakana_session` e il recap resta raggiungibile.
 8. Dashboard e recap derivano analytics server-side da log e snapshot gia
-   persistiti: rare accuracy, pseudo transfer, sentence flow, repeated-reading
-   gain, RAN items/sec, celle RAN sbagliate quando disponibili, confusioni top,
-   slow item e family progress. Non serve una migration dedicata per queste
-   viste.
+   persistiti: accuratezza, fluenza, tempi per mora quando disponibili, RAN
+   items/sec, celle RAN sbagliate, confusioni top, slow item, focus consigliato
+   e family progress. Non serve una migration dedicata per queste viste.
 
 ## Verifica
 
@@ -133,7 +144,7 @@ Per modifiche alla feature:
 
 ```sh
 ./scripts/with-node.sh pnpm exec vitest run tests/katakana-speed-catalog-tokenizer.test.ts tests/katakana-speed-options-errors.test.ts tests/katakana-speed-scheduler-session.test.ts tests/katakana-speed-session-persistence.test.ts tests/katakana-speed-persistence-expansion.test.ts tests/katakana-speed-expansion-actions.test.ts tests/katakana-speed-interactions.test.ts tests/katakana-speed-route.test.ts
-./scripts/with-node.sh pnpm exec vitest run tests/katakana-speed-operational-catalog.test.ts tests/katakana-speed-operational-planner.test.ts tests/katakana-speed-raw-answer.test.ts
+./scripts/with-node.sh pnpm exec vitest run tests/katakana-speed-focus.test.ts tests/katakana-speed-operational-catalog.test.ts tests/katakana-speed-operational-planner.test.ts tests/katakana-speed-raw-answer.test.ts tests/katakana-speed-analytics.test.ts
 ./scripts/with-node.sh pnpm check
 ./scripts/with-node.sh pnpm release:check
 ```

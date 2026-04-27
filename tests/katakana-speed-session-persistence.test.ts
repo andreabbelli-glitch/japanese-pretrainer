@@ -17,8 +17,14 @@ import {
   getKatakanaSpeedRecapPageData,
   getKatakanaSpeedSessionPageData,
   startKatakanaSpeedSession,
-  submitKatakanaSpeedAnswer
+  submitKatakanaSpeedAnswer,
+  submitKatakanaSpeedSelfCheck
 } from "@/features/katakana-speed/server";
+import {
+  getKatakanaSpeedItemById,
+  getKatakanaSpeedItemBySurface
+} from "@/features/katakana-speed/model/catalog";
+import { decodeKatakanaSpeedRawOption } from "@/features/katakana-speed/model/exercise-catalog";
 import {
   katakanaAttemptLog,
   katakanaItemState,
@@ -74,7 +80,7 @@ describe("katakana speed session persistence", () => {
     );
     expect(
       trials
-        .sort((left, right) => left.trialId.localeCompare(right.trialId))
+        .sort((left, right) => left.sortOrder - right.sortOrder)
         .map((trial) => trial.sortOrder)
     ).toEqual([0, 1, 2, 3, 4]);
   });
@@ -101,10 +107,10 @@ describe("katakana speed session persistence", () => {
         trialId: "manual-word-later"
       },
       {
-        correctItemId: "pseudo-ti-rado",
-        itemId: "pseudo-ti-rado",
+        correctItemId: "pseudo-pair-ti-chi-target",
+        itemId: "pseudo-pair-ti-chi-target",
         mode: "pseudoword_sprint",
-        optionItemIdsJson: JSON.stringify(["pseudo-ti-rado"]),
+        optionItemIdsJson: JSON.stringify(["pseudo-pair-ti-chi-target"]),
         promptSurface: "ティラード",
         sessionId: "manual-sort-session",
         sortOrder: 10,
@@ -187,7 +193,7 @@ describe("katakana speed session persistence", () => {
 
   it("keeps duplicate submit for one trial idempotent", async () => {
     const session = await startKatakanaSpeedSession({
-      count: 2,
+      count: 4,
       database,
       now: new Date("2026-04-25T08:00:00.000Z"),
       seed: "duplicate-submit"
@@ -356,6 +362,64 @@ describe("katakana speed session persistence", () => {
     expect(persistedSession?.slowCorrectCount).toBe(1);
   });
 
+  it("persists self-check metadata without counting hesitation as objective lapse", async () => {
+    const session = await startKatakanaSpeedSession({
+      count: 24,
+      database,
+      mode: "daily",
+      now: new Date("2026-04-25T08:00:00.000Z"),
+      seed: "self-report-metadata"
+    });
+    const trial = session.trials.find(
+      (candidate) => candidate.mode === "pseudoword_sprint"
+    );
+    expect(trial).toBeDefined();
+
+    await submitKatakanaSpeedSelfCheck({
+      database,
+      metricsJson: {
+        durationMs: 2400,
+        moraCount: 4,
+        msPerMora: 600
+      },
+      now: new Date("2026-04-25T08:00:03.000Z"),
+      responseMs: 2400,
+      selfRating: "hesitated",
+      sessionId: session.sessionId,
+      trialId: trial?.trialId ?? ""
+    });
+
+    const attempt = await database.query.katakanaAttemptLog.findFirst({
+      where: eq(katakanaAttemptLog.trialId, trial?.trialId ?? "")
+    });
+    const itemState = await database.query.katakanaItemState.findFirst({
+      where: eq(katakanaItemState.itemId, trial?.itemId ?? "")
+    });
+    const persistedFeatures = JSON.parse(attempt?.featuresJson ?? "{}");
+    const persistedMetrics = JSON.parse(attempt?.metricsJson ?? "{}");
+
+    expect(attempt).toMatchObject({
+      isCorrect: 1,
+      selfRating: "hesitated"
+    });
+    expect(persistedFeatures).toMatchObject({
+      correctnessSource: "self_report",
+      exerciseFamily: "timed_pseudoword_reading",
+      focusId: "ti-chi-tei",
+      showReadingDuringTrial: false
+    });
+    expect(persistedMetrics).toMatchObject({
+      msPerMora: 600,
+      targetMsPerMora: expect.any(Number)
+    });
+    expect(itemState).toMatchObject({
+      correctStreak: 0,
+      lapses: 0,
+      slowCorrectCount: 1,
+      slowStreak: 1
+    });
+  });
+
   it("completion writes recap metrics", async () => {
     const session = await startKatakanaSpeedSession({
       count: 2,
@@ -431,13 +495,30 @@ describe("katakana speed session persistence", () => {
       trialId: firstTrial.trialId,
       userAnswer: firstTrial.promptSurface
     });
+    const wrongItem = secondTrial.optionItemIds
+      .filter((itemId) => itemId !== secondTrial.correctItemId)
+      .map((itemId) => {
+        const optionItem = getKatakanaSpeedItemById(itemId);
+        return (
+          optionItem ??
+          getKatakanaSpeedItemBySurface(decodeKatakanaSpeedRawOption(itemId))
+        );
+      })
+      .find((item) => item !== undefined);
+    const fallbackWrongItem =
+      wrongItem ??
+      ["ディ", "ティ", "シ", "ツ"]
+        .map((surface) => getKatakanaSpeedItemBySurface(surface))
+        .find((item) => item && item.id !== secondTrial.correctItemId);
+    expect(fallbackWrongItem).toBeDefined();
+
     await submitKatakanaSpeedAnswer({
       database,
       now: new Date("2026-04-25T08:00:01.200Z"),
       responseMs: 1200,
       sessionId: session.sessionId,
       trialId: secondTrial.trialId,
-      userAnswer: firstTrial.promptSurface
+      userAnswer: fallbackWrongItem?.surface ?? ""
     });
 
     await completeKatakanaSpeedSession({
@@ -454,9 +535,7 @@ describe("katakana speed session persistence", () => {
     expect(dashboard.analytics.overview.totalAttempts).toBe(2);
     expect(dashboard.analytics.topSlowItems.length).toBeGreaterThan(0);
     expect(dashboard.analytics.familyCards.length).toBeGreaterThan(0);
-    expect(dashboard.analytics.recommendedMode.mode).toMatch(
-      /daily|rare_combo|pseudoword_transfer|sentence_sprint|repeated_reading|ran_grid/
-    );
+    expect(dashboard.analytics.recommendedMode.mode).toMatch(/daily|repair/);
     expect(recap?.analytics.overview.totalAttempts).toBe(2);
     expect(recap?.analytics.topConfusions.length).toBeGreaterThan(0);
     expect(recap?.attempts[0]).toMatchObject({

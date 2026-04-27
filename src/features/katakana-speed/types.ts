@@ -21,20 +21,7 @@ export type KatakanaSpeedTrialMode =
   | "repeated_reading_pass"
   | "ran_grid";
 
-export type KatakanaSpeedSessionMode =
-  | "daily"
-  | "diagnostic_probe"
-  | "rare_combo"
-  | "pseudoword_transfer"
-  | "sentence_sprint"
-  | "repeated_reading"
-  | "ran_grid"
-  | "mora_trap"
-  | "chunk_spotting"
-  | "loanword_decoder"
-  | "tile_builder"
-  | "confusion_ladder"
-  | "variant_normalization";
+export type KatakanaSpeedSessionMode = "daily" | "diagnostic_probe" | "repair";
 
 export type KatakanaSpeedSelfRating = "clean" | "hesitated" | "wrong";
 
@@ -107,27 +94,12 @@ export type KatakanaSpeedTrialPlan = {
   readonly itemId: string;
   readonly itemType?: KatakanaSpeedItemKind | string;
   readonly metadataRole?:
-    | "weak_item"
     | "confusion_repair"
     | "word_transfer"
-    | "sentence_transfer"
     | "pseudoword_transfer"
-    | "rare_shock"
-    | "easy_review"
     | "repeated_reading"
     | "ran_grid"
     | "diagnostic_probe"
-    | "blink_recognition"
-    | "minimal_pair_drill"
-    | "confusion_set"
-    | "same_different"
-    | "tile_builder"
-    | "chunk_spotting"
-    | "loanword_decoder"
-    | "mora_trap"
-    | "pair_race"
-    | "variant_normalization"
-    | "confusion_ladder"
     | "repair_block";
   readonly metrics?: Readonly<Record<string, unknown>>;
   readonly mode: KatakanaSpeedTrialMode;

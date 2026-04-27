@@ -566,35 +566,32 @@ function recommendMode(input: {
   topConfusions: readonly KatakanaSpeedConfusionSummary[];
   topSlowItems: readonly KatakanaSpeedSlowItemSummary[];
 }): KatakanaSpeedRecommendedMode {
-  if (
-    input.topSlowItems.some(
+  const slowest =
+    input.topSlowItems.find(
       (item) => item.rarity === "rare" || item.tier === "C"
-    )
-  ) {
+    ) ?? input.topSlowItems[0];
+  if (slowest) {
     return {
-      detail: "kana poco comuni lenti",
-      label: "Inizia: Rare",
-      mode: "rare_combo"
+      detail: `Ripara ${slowest.surface}: corretta ma lenta`,
+      label: "Ripara debolezza",
+      mode: "repair"
     };
   }
-  if (
-    input.modeMetrics.pseudoTransfer &&
-    input.modeMetrics.pseudoTransfer.status !== "transfer_ready"
-  ) {
+
+  const confusion = input.topConfusions[0];
+  if (confusion) {
     return {
-      detail: "transfer pseudo sotto soglia",
-      label: "Inizia: Pseudo",
-      mode: "pseudoword_transfer"
+      detail: `Ripara ${confusion.expectedSurface}/${confusion.observedSurface}`,
+      label: "Ripara debolezza",
+      mode: "repair"
     };
   }
-  if (
-    input.modeMetrics.sentenceFlow &&
-    input.modeMetrics.sentenceFlow.status === "slow"
-  ) {
+
+  if (input.modeMetrics.pseudoTransfer?.status === "blocked") {
     return {
-      detail: "frasi cronometrate lente",
-      label: "Inizia: Frasi",
-      mode: "sentence_sprint"
+      detail: "transfer su pseudoparole sotto soglia",
+      label: "Start 5 min",
+      mode: "daily"
     };
   }
   if (
@@ -603,8 +600,8 @@ function recommendMode(input: {
   ) {
     return {
       detail: "transfer frase da riparare",
-      label: "Inizia: Ripetuta",
-      mode: "repeated_reading"
+      label: "Ripara debolezza",
+      mode: "repair"
     };
   }
   if (
@@ -614,21 +611,14 @@ function recommendMode(input: {
   ) {
     return {
       detail: "lettura griglia lenta",
-      label: "Inizia: Griglia",
-      mode: "ran_grid"
-    };
-  }
-  if (input.topConfusions.length > 0) {
-    return {
-      detail: "confusioni frequenti da correggere",
-      label: "Inizia: Daily",
+      label: "Start 5 min",
       mode: "daily"
     };
   }
 
   return {
-    detail: "mix adattivo consigliato",
-    label: "Inizia: Daily",
+    detail: "sessione focalizzata consigliata",
+    label: "Start 5 min",
     mode: "daily"
   };
 }
