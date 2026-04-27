@@ -22,17 +22,17 @@ contenuto, asset, pronunce o sidecar workflow del media.
 
 | Layer         | Tecnologia                                                |
 | ------------- | --------------------------------------------------------- |
-| Framework     | Next.js 16 (App Router)                                   |
-| Linguaggio    | TypeScript 5 strict                                       |
-| Frontend      | React 19, Server Components, Server Actions               |
-| Runtime       | Node.js 22                                                |
-| Database      | SQLite locale / LibSQL Turso remoto                       |
-| ORM           | Drizzle ORM                                               |
-| SRS           | ts-fsrs (FSRS algorithm)                                  |
+| Framework     | Next.js 16.1 (App Router)                                 |
+| Linguaggio    | TypeScript 5.9 strict                                     |
+| Frontend      | React 19.2, Server Components, Server Actions             |
+| Runtime       | Node.js 22.x                                              |
+| Database      | SQLite locale / LibSQL Turso remoto (@libsql/client 0.17) |
+| ORM           | Drizzle ORM 0.45                                          |
+| SRS           | ts-fsrs 5.2 (FSRS algorithm)                              |
 | Content       | Markdown + YAML frontmatter, Unified/remark parser custom |
-| Test unitari  | Vitest                                                    |
-| Test E2E      | Playwright                                                |
-| Linter/Format | ESLint + Prettier                                         |
+| Test unitari  | Vitest 4.0                                                |
+| Test E2E      | Playwright 1.58                                           |
+| Linter/Format | ESLint 9 + Prettier 3.8                                   |
 
 ---
 
@@ -49,18 +49,24 @@ src/
           revalidate/ API per revalidation mirata delle cache contenuti
     glossary/       Portal glossary globale e stati di caricamento
       grammar/      Pagine dettaglio per pattern grammaticali del glossary globale
+        [surface]/  Route dettaglio grammar globale per superficie
       term/         Pagine dettaglio per termini del glossary globale
+        [surface]/  Route dettaglio termine globale per superficie
     kanji-clash/    Modalita' allenamento kanji con sessioni dedicate
     katakana-speed/ Modalita' drill katakana con sessioni e recap dedicati
       recap/        Recap della sessione katakana speed
+        [sessionId]/ Recap di una sessione katakana speed specifica
       session/      Esecuzione interattiva della sessione katakana speed
+        [sessionId]/ Route sessione katakana speed specifica
     login/          Pagina di accesso locale
     media/          Route dinamiche per media, textbook, review e progress
       [mediaSlug]/assets/ Asset route del media bundle
         [...assetPath]/ Catch-all per servire file statici del media bundle
       [mediaSlug]/glossary/ Glossary locale filtrato per media
         grammar/    Pagine dettaglio grammatica del glossary locale media
+          [entryId]/ Route dettaglio grammar locale per entry
         term/       Pagine dettaglio termini del glossary locale media
+          [entryId]/ Route dettaglio termine locale per entry
       [mediaSlug]/progress/ Stato di avanzamento e metriche del media
       [mediaSlug]/review/ Vista review verticale sul sistema review globale
         card/           Vista dedicata alla review di una card nel contesto del media
