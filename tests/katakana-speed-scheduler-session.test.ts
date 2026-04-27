@@ -204,12 +204,13 @@ describe("katakana speed session planning", () => {
     expect(modes.has("word_naming")).toBe(true);
     expect(modes.has("pseudoword_sprint")).toBe(true);
     expect(modes.has("ran_grid")).toBe(true);
-    expect(modes.has("repeated_reading_pass")).toBe(false);
+    expect([...modes]).not.toContain("repeated_reading_pass");
     expect(modes.has("sentence_sprint")).toBe(false);
     expect(exerciseFamilies).toEqual(
       new Set([
         "blink_choice",
         "contrast_choice",
+        "romaji_to_katakana_choice",
         "timed_word_reading",
         "timed_pseudoword_reading",
         "ran_grid"

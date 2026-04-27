@@ -183,8 +183,8 @@ Tabelle incluse nel perimetro del task:
   `katakana_item_state` per lo stato per item, `katakana_session` per il rollup
   sessione, `katakana_trial` per il piano persistito, `katakana_attempt_log`
   per i tentativi idempotenti, `katakana_exercise_block` per i blocchi
-  persistiti, `katakana_exercise_result` per risultati aggregati come RAN Grid
-  e repeated reading, e `katakana_confusion_edge` per confusioni direzionali.
+  persistiti, `katakana_exercise_result` per risultati aggregati come RAN Grid,
+  e `katakana_confusion_edge` per confusioni direzionali.
   Nessuna tabella Katakana Speed referenzia `review_subject_state` o le tabelle
   Kanji Clash.
 

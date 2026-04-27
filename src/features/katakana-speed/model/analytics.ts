@@ -72,12 +72,6 @@ export type KatakanaSpeedSentenceFlowMetric = {
   readonly status: "fluent" | "steady" | "slow";
 };
 
-export type KatakanaSpeedRepeatedReadingMetric = {
-  readonly latestGainPercent: number;
-  readonly transferPassMs: number | null;
-  readonly transferStatus: string;
-};
-
 export type KatakanaSpeedRanWrongCell = {
   readonly column: number;
   readonly index: number;
@@ -139,7 +133,6 @@ export type KatakanaSpeedAnalytics = {
     readonly pseudoTransfer: KatakanaSpeedPseudoTransferMetric | null;
     readonly ranItemsPerSecond: KatakanaSpeedRanMetric | null;
     readonly rareAccuracy: KatakanaSpeedModeMetric | null;
-    readonly repeatedReadingGain: KatakanaSpeedRepeatedReadingMetric | null;
     readonly sentenceFlow: KatakanaSpeedSentenceFlowMetric | null;
   };
   readonly overview: {
@@ -170,7 +163,6 @@ export function buildKatakanaSpeedAnalytics(input: {
     pseudoTransfer: buildPseudoTransferMetric(attempts),
     ranItemsPerSecond: buildRanMetric(input.exerciseResults),
     rareAccuracy: buildRareAccuracyMetric(attempts),
-    repeatedReadingGain: buildRepeatedReadingMetric(input.exerciseResults),
     sentenceFlow: buildSentenceFlowMetric(attempts)
   };
   const analytics = {
@@ -290,27 +282,6 @@ function buildSentenceFlowMetric(
         : medianMsPerMora !== null && medianMsPerMora <= 420
           ? "steady"
           : "slow"
-  };
-}
-
-function buildRepeatedReadingMetric(
-  results: readonly KatakanaSpeedAnalyticsExerciseResult[]
-): KatakanaSpeedRepeatedReadingMetric | null {
-  const result = [...results]
-    .reverse()
-    .find(
-      (candidate) => typeof candidate.metrics.improvementRatio === "number"
-    );
-  if (!result) {
-    return null;
-  }
-
-  return {
-    latestGainPercent: Math.round(
-      toFiniteNumber(result.metrics.improvementRatio, 0) * 100
-    ),
-    transferPassMs: nullableNumber(result.metrics.transferPassMs),
-    transferStatus: String(result.metrics.transferStatus ?? "unknown")
   };
 }
 
@@ -592,16 +563,6 @@ function recommendMode(input: {
       detail: "transfer su pseudoparole sotto soglia",
       label: "Start 5 min",
       mode: "daily"
-    };
-  }
-  if (
-    input.modeMetrics.repeatedReadingGain &&
-    input.modeMetrics.repeatedReadingGain.transferStatus === "needs_repair"
-  ) {
-    return {
-      detail: "transfer frase da riparare",
-      label: "Ripara debolezza",
-      mode: "repair"
     };
   }
   if (

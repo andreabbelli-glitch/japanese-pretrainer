@@ -18,7 +18,6 @@ export type KatakanaSpeedTrialMode =
   | "word_naming"
   | "pseudoword_sprint"
   | "sentence_sprint"
-  | "repeated_reading_pass"
   | "ran_grid";
 
 export type KatakanaSpeedSessionMode = "daily" | "diagnostic_probe" | "repair";
@@ -97,7 +96,6 @@ export type KatakanaSpeedTrialPlan = {
     | "confusion_repair"
     | "word_transfer"
     | "pseudoword_transfer"
-    | "repeated_reading"
     | "ran_grid"
     | "diagnostic_probe"
     | "repair_block";

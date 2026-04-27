@@ -25,6 +25,7 @@ import {
   updateKatakanaTrialsAnsweredByBlock,
   upsertKatakanaItemState
 } from "@/db/queries";
+import { katakanaTrialModeValues } from "@/db/schema/enums";
 import {
   getKatakanaSpeedCatalog,
   getKatakanaSpeedItemById,
@@ -110,6 +111,13 @@ type KatakanaConfusionEdgeRow = Awaited<
 type KatakanaItemStateRow = Awaited<
   ReturnType<typeof listKatakanaItemStateRows>
 >[number];
+
+const katakanaTrialModeSet = new Set<string>(katakanaTrialModeValues);
+const selfCheckTrialModes = new Set<KatakanaSpeedTrialMode>([
+  "word_naming",
+  "pseudoword_sprint",
+  "sentence_sprint"
+]);
 
 export type KatakanaSpeedFocusItem = {
   readonly itemId: string;
@@ -219,6 +227,7 @@ export async function getKatakanaSpeedPageData(
   const analytics = buildKatakanaSpeedAnalytics({
     attempts: attemptGroups
       .flat()
+      .filter(hasSupportedKatakanaAttemptMode)
       .sort((left, right) => left.createdAt.localeCompare(right.createdAt))
       .map(mapKatakanaAnalyticsAttemptRow),
     confusionEdges: confusionEdgeGroups.flat().map(mapKatakanaConfusionEdgeRow),
@@ -269,11 +278,13 @@ export async function getKatakanaSpeedSessionPageData(input: {
     database,
     input.sessionId
   );
-  const trials = trialRows.map(mapKatakanaTrialRow);
+  const supportedTrialRows = trialRows.filter(hasSupportedKatakanaTrialMode);
+  const trials = supportedTrialRows.map(mapKatakanaTrialRow);
 
   return {
-    answeredCount: trialRows.filter((trial) => trial.status === "answered")
-      .length,
+    answeredCount: supportedTrialRows.filter(
+      (trial) => trial.status === "answered"
+    ).length,
     sessionId: session.id,
     startedAt: session.startedAt,
     status: session.status,
@@ -297,6 +308,7 @@ export async function getKatakanaSpeedRecapPageData(input: {
     listKatakanaConfusionEdgeRowsBySession(database, input.sessionId)
   ]);
   const mappedAttempts = attempts
+    .filter(hasSupportedKatakanaAttemptMode)
     .sort((left, right) => left.createdAt.localeCompare(right.createdAt))
     .map(mapKatakanaAttemptRow);
   const mappedResults = exerciseResults.map(mapKatakanaExerciseResultRow);
@@ -503,6 +515,32 @@ function defaultKatakanaSpeedSessionCount(mode: KatakanaSpeedSessionMode) {
   return assertNeverKatakanaSpeedSessionMode(mode);
 }
 
+function hasSupportedKatakanaTrialMode(row: Pick<KatakanaTrialRow, "mode">) {
+  return parseKatakanaSpeedTrialMode(row.mode) !== null;
+}
+
+function hasSupportedKatakanaAttemptMode(
+  row: Pick<KatakanaAttemptRow, "mode">
+) {
+  return parseKatakanaSpeedTrialMode(row.mode) !== null;
+}
+
+function parseKatakanaSpeedTrialMode(
+  mode: string
+): KatakanaSpeedTrialMode | null {
+  return katakanaTrialModeSet.has(mode)
+    ? (mode as KatakanaSpeedTrialMode)
+    : null;
+}
+
+function assertKatakanaSpeedTrialMode(
+  mode: string
+): asserts mode is KatakanaSpeedTrialMode {
+  if (!parseKatakanaSpeedTrialMode(mode)) {
+    throw new Error("Unsupported Katakana Speed trial mode.");
+  }
+}
+
 function assertKatakanaSpeedSessionMode(
   mode: string
 ): asserts mode is KatakanaSpeedSessionMode {
@@ -532,9 +570,6 @@ function trainingBlockTitle(
     return "Verifica finale";
   }
 
-  if (role === "repeated_reading") {
-    return "Repeated reading";
-  }
   if (role === "ran_grid") {
     return "RAN grid";
   }
@@ -624,6 +659,7 @@ export async function submitKatakanaSpeedAnswer(input: {
     if (!trial) {
       throw new Error("Katakana Speed trial was not found.");
     }
+    assertKatakanaSpeedTrialMode(trial.mode);
 
     const existingAttempt = await getKatakanaAttemptLogByTrialId(
       transaction,
@@ -789,11 +825,11 @@ export async function submitKatakanaSpeedSelfCheck(input: {
     if (!trial) {
       throw new Error("Katakana Speed trial was not found.");
     }
-    if (
-      !["word_naming", "pseudoword_sprint", "sentence_sprint"].includes(
-        trial.mode
-      )
-    ) {
+    const trialMode = parseKatakanaSpeedTrialMode(trial.mode);
+    if (!trialMode) {
+      throw new Error("Unsupported Katakana Speed trial mode.");
+    }
+    if (!selfCheckTrialModes.has(trialMode)) {
       throw new Error("Katakana Speed trial does not accept self-check.");
     }
 
@@ -845,7 +881,7 @@ export async function submitKatakanaSpeedSelfCheck(input: {
         exerciseFamily:
           typeof trialSnapshot.features.exerciseFamily === "string"
             ? trialSnapshot.features.exerciseFamily
-            : exerciseFamilyForTrialMode(trial.mode),
+            : exerciseFamilyForTrialMode(trialMode),
         showReadingDuringTrial: false
       }),
       focusChunksJson: JSON.stringify(trialSnapshot.focusChunks),
@@ -855,7 +891,7 @@ export async function submitKatakanaSpeedSelfCheck(input: {
       itemId: trial.itemId,
       itemType: trialSnapshot.itemType,
       metricsJson,
-      mode: trial.mode,
+      mode: trialMode,
       promptSurface: trial.promptSurface,
       responseMs,
       selfRating: input.selfRating,
@@ -950,7 +986,7 @@ export async function aggregateKatakanaSpeedExerciseResult(input: {
     if (block.exerciseId !== input.exerciseId) {
       throw new Error("Katakana Speed exercise block does not match.");
     }
-    if (!["ran_grid", "repeated_reading_pass"].includes(block.mode)) {
+    if (block.mode !== "ran_grid") {
       throw new Error("Katakana Speed exercise does not accept aggregates.");
     }
 
@@ -1217,10 +1253,9 @@ async function refreshSessionRollup(
     status: "active" | "completed" | "abandoned";
   }
 ) {
-  const attempts = await listKatakanaAttemptLogsBySession(
-    database,
-    input.sessionId
-  );
+  const attempts = (
+    await listKatakanaAttemptLogsBySession(database, input.sessionId)
+  ).filter(hasSupportedKatakanaAttemptMode);
   const responseTimes = attempts
     .map((attempt) => attempt.responseMs)
     .sort((left, right) => left - right);
@@ -1529,7 +1564,7 @@ function exerciseFamilyForTrialMode(mode: string) {
     return "timed_word_reading";
   }
   if (mode === "sentence_sprint") {
-    return "repeated_reading";
+    return "sentence_flow";
   }
 
   return "timed_word_reading";
@@ -1627,6 +1662,10 @@ function mapKatakanaSpeedSessionSummary(
 
 function mapKatakanaTrialRow(row: KatakanaTrialRow): KatakanaSpeedTrialPlan {
   const item = getKatakanaSpeedItemById(row.itemId);
+  const mode = parseKatakanaSpeedTrialMode(row.mode);
+  if (!mode) {
+    throw new Error("Unsupported Katakana Speed trial mode.");
+  }
   const optionItemIds = parseJsonArray<string>(row.optionItemIdsJson);
   const snapshot = snapshotKatakanaTrialRow(row);
   const selfRating = parseKatakanaSelfRating(row.selfRating);
@@ -1645,7 +1684,7 @@ function mapKatakanaTrialRow(row: KatakanaTrialRow): KatakanaSpeedTrialPlan {
     itemId: row.itemId,
     itemType: snapshot.itemType,
     metrics: snapshot.metrics,
-    mode: row.mode,
+    mode,
     optionItemIds:
       optionItemIds.length > 0 ? optionItemIds : [row.correctItemId],
     promptSurface: row.promptSurface,

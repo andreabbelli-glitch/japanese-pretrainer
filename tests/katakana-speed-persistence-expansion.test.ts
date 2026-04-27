@@ -58,7 +58,6 @@ describe("katakana speed persistence expansion", () => {
       "word_naming",
       "pseudoword_sprint",
       "sentence_sprint",
-      "repeated_reading_pass",
       "ran_grid"
     ]);
   });

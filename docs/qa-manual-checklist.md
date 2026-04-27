@@ -47,26 +47,25 @@
 - `Katakana Speed` `/katakana-speed`: apre il dashboard con quick start,
   weak spots e recap recente, usando solo la voce primaria `Katakana` in
   navbar.
-- `Katakana Speed`: la CTA primaria `Inizia: ...` crea una sessione e porta a
+- `Katakana Speed`: la CTA primaria `Start 5 min` crea una sessione e porta a
   `/katakana-speed/session/[sessionId]`; la route sessione non mostra la sticky
   global header.
 - `Katakana Speed`: tasti `1`-`4` e tap/click sulle opzioni salvano il
   tentativo; le risposte corrette avanzano al trial successivo, gli errori
   restano sul trial con feedback e richiedono continue manuale.
-- `Katakana Speed`: il mode picker avvia baseline (`Diagnosi`, `Rare`,
-  `Griglia`), transfer (`Pseudo`, `Prestiti`, `Frasi`, `Ripetuta`) e repair
-  (`Trappole`, `Chunk`, `Costruisci`, `Scala`, `Varianti`); il romaji e
-  nascosto di default ma `Space` mostra/nasconde la lettura in ogni mode.
-- `Katakana Speed`: `Trappole`, `Varianti` e `Scala` salvano choice raw
-  text-only contro `expected_surface`; `Chunk` usa segmenti tappabili;
-  `Costruisci` costruisce la parola con tile kana e permette reset prima del
-  salvataggio.
+- `Katakana Speed`: il dashboard espone solo `Start 5 min`, `Diagnosi` e
+  `Ripara debolezza`; non deve comparire il vecchio picker legacy/debug.
+- `Katakana Speed`: i blocchi choice includono contrasti kana -> kana e trial
+  inversi romaji -> katakana con quattro opzioni visivamente o fonologicamente
+  vicine; nei trial inversi gli hint romaji sotto le opzioni restano nascosti
+  per non rivelare la risposta.
+- `Katakana Speed`: le trappole moraiche salvano choice raw text-only contro
+  `expected_surface`; non ci sono flussi tile builder, chunk spotting,
+  varianti normative o repeated reading.
 - `Katakana Speed`: le sessioni self-check hanno timer autostart, usano `1`-`3`
   per il rating, avanzano da sole su `Fluida`/`Incerta` e richiedono continue
-  manuale su `Da rifare`.
-- `Katakana Speed`: `Ripetuta` mostra tre passaggi con due frasi identiche e
-  una transfer, fa partire automaticamente ogni timer, usa `Enter` per
-  fermare/avanzare/salvare e registra un solo risultato aggregato.
+  manuale su `Da rifare`; `Space` puo mostrare/nascondere il romaji prima del
+  rating.
 - `Katakana Speed`: `Griglia` mostra una griglia 5x5 leggibile anche su mobile,
   fa partire automaticamente il timer, usa `Enter` per fermare/salvare,
   permette di segnare le celle sbagliate solo dopo lo stop, deriva il count

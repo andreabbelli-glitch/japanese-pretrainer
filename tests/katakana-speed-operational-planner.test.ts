@@ -5,6 +5,7 @@ import {
   generateKatakanaSpeedSessionPlan,
   getKatakanaSpeedItemById,
   getKatakanaSpeedItemBySurface,
+  romanizeKatakanaForLearner,
   updateKatakanaSpeedStateAfterAttempt
 } from "@/features/katakana-speed/model";
 import { decodeKatakanaSpeedRawOption } from "@/features/katakana-speed/model/exercise-catalog";
@@ -42,7 +43,8 @@ describe("katakana speed operational session planning", () => {
       new Set([
         "blink_choice",
         "contrast_choice",
-        "repeated_reading",
+        "romaji_to_katakana_choice",
+        "ran_grid",
         "timed_word_reading",
         "timed_pseudoword_reading"
       ])
@@ -84,6 +86,53 @@ describe("katakana speed operational session planning", () => {
     expect(correctIndexes.length).toBeGreaterThan(4);
     expect(new Set(correctIndexes).size).toBeGreaterThan(1);
     expect(correctIndexes.some((index) => index > 0)).toBe(true);
+  });
+
+  it("adds inverse romaji prompts with four close katakana options", () => {
+    const state = createInitialKatakanaSpeedState({
+      now: "2026-04-26T08:00:00.000Z"
+    });
+
+    const plan = generateKatakanaSpeedSessionPlan({
+      count: 32,
+      now: "2026-04-26T08:01:00.000Z",
+      seed: "inverse-romaji-daily",
+      sessionMode: "daily",
+      state
+    });
+    const inverseTrials = plan.filter(
+      (trial) => trial.features?.exerciseFamily === "romaji_to_katakana_choice"
+    );
+    const trial = inverseTrials[0];
+    expect(trial).toBeDefined();
+    const surfaces = optionSurfaces(trial!.optionItemIds);
+
+    expect(inverseTrials.length).toBeGreaterThanOrEqual(2);
+    expect(trial).toMatchObject({
+      expectedSurface: "ティ",
+      mode: "minimal_pair",
+      promptSurface: "ti"
+    });
+    expect(trial!.features).toMatchObject({
+      answerKind: "katakana",
+      direction: "romaji_to_katakana",
+      exerciseCode: "E04",
+      interaction: "raw_choice",
+      promptKind: "romaji",
+      showReadingDuringTrial: false
+    });
+    expect(surfaces).toHaveLength(4);
+    expect(new Set(surfaces).size).toBe(4);
+    expect(surfaces).toEqual(expect.arrayContaining(["ティ", "チ", "ディ"]));
+    expect(
+      surfaces.every((surface) => /^[\u30a0-\u30ffー]+$/u.test(surface))
+    ).toBe(true);
+    expect(
+      surfaces.filter(
+        (surface) =>
+          romanizeKatakanaForLearner(surface) === trial!.promptSurface
+      )
+    ).toEqual([trial!.expectedSurface]);
   });
 
   it("builds repair as focused contrast, reading, final contrast", () => {
@@ -144,6 +193,7 @@ describe("katakana speed operational session planning", () => {
       new Set([
         "blink_choice",
         "contrast_choice",
+        "romaji_to_katakana_choice",
         "timed_word_reading",
         "timed_pseudoword_reading",
         "ran_grid"

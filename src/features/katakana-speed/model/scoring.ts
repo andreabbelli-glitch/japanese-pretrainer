@@ -63,30 +63,6 @@ export function scoreKatakanaSpeedSentenceSprint(input: {
   };
 }
 
-export function scoreKatakanaSpeedRepeatedReading(input: {
-  firstPassMs: number;
-  repeatedPassMs: number;
-  transferPassMs: number;
-}): {
-  readonly improvementRatio: number;
-  readonly transferStatus: "retained" | "needs_repair";
-} {
-  const firstPassMs = Math.max(1, input.firstPassMs);
-  const improvementRatio = roundTo(
-    Math.max(0, firstPassMs - input.repeatedPassMs) / firstPassMs,
-    3
-  );
-
-  return {
-    improvementRatio,
-    transferStatus:
-      improvementRatio >= 0.12 &&
-      input.transferPassMs <= input.repeatedPassMs * 1.15
-        ? "retained"
-        : "needs_repair"
-  };
-}
-
 export function scoreKatakanaSpeedRanGrid(input: {
   correctItems: number;
   responseMs: number;

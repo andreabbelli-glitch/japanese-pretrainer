@@ -378,47 +378,6 @@ describe("katakana speed expansion actions", () => {
     ).rejects.toThrow("wrong cell index");
   });
 
-  it("aggregates repeated reading when daily transfer selects it", async () => {
-    const session = await startKatakanaSpeedSessionAction({
-      count: 32,
-      database,
-      mode: "daily",
-      now: new Date("2026-04-26T08:00:00.000Z"),
-      seed: "operational-daily"
-    });
-    const block = await database.query.katakanaExerciseBlock.findFirst({
-      where: eq(katakanaExerciseBlock.mode, "repeated_reading_pass")
-    });
-    if (!block) {
-      throw new Error("Expected repeated reading exercise block.");
-    }
-
-    const result = await aggregateKatakanaSpeedExerciseResultAction({
-      blockId: block.blockId,
-      database,
-      exerciseId: block.exerciseId,
-      metricsJson: {
-        firstPassMs: 4000,
-        repeatedPassMs: 3200,
-        transferPassMs: 3500
-      },
-      now: new Date("2026-04-26T08:00:12.000Z"),
-      resultId: "repeated-result-1",
-      selfRating: "clean",
-      sessionId: session.sessionId
-    });
-    const trials = await database.query.katakanaTrial.findMany({
-      where: eq(katakanaTrial.blockId, block.blockId)
-    });
-
-    expect(result).toEqual({
-      idempotent: false,
-      resultId: "repeated-result-1"
-    });
-    expect(trials).toHaveLength(3);
-    expect(trials.every((trial) => trial.status === "answered")).toBe(true);
-  });
-
   it("rejects aggregate exercise results without an aggregate block", async () => {
     const session = await startKatakanaSpeedSessionAction({
       count: 12,

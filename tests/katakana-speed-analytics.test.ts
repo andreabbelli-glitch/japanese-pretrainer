@@ -61,16 +61,6 @@ describe("katakana speed analytics", () => {
     const exerciseResults: KatakanaSpeedAnalyticsExerciseResult[] = [
       {
         metrics: {
-          firstPassMs: 7200,
-          improvementRatio: 0.25,
-          repeatedPassMs: 5400,
-          transferPassMs: 5800,
-          transferStatus: "retained"
-        },
-        selfRating: null
-      },
-      {
-        metrics: {
           adjustedItemsPerSecond: 1.7,
           cellSurfaces: Array.from({ length: 25 }, (_, index) =>
             index % 2 === 0 ? "シ" : "ツ"
@@ -126,10 +116,6 @@ describe("katakana speed analytics", () => {
     expect(analytics.modeMetrics.sentenceFlow).toMatchObject({
       attempts: 1,
       medianMsPerMora: 300
-    });
-    expect(analytics.modeMetrics.repeatedReadingGain).toMatchObject({
-      latestGainPercent: 25,
-      transferStatus: "retained"
     });
     expect(analytics.modeMetrics.ranItemsPerSecond).toMatchObject({
       adjustedItemsPerSecond: 1.7,

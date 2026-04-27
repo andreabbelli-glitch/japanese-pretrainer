@@ -8,6 +8,7 @@ import type {
 } from "../types.ts";
 import {
   getKatakanaSpeedCatalog,
+  getKatakanaSpeedItemById,
   getKatakanaSpeedItemBySurface
 } from "./catalog.ts";
 import { encodeKatakanaSpeedRawOption } from "./exercise-catalog.ts";
@@ -18,6 +19,7 @@ import {
 } from "./focus.ts";
 import { stableShuffle } from "./options.ts";
 import { isKatakanaSpeedTargetablePseudowordItem } from "./pseudoword-catalog.ts";
+import { romanizeKatakanaForLearner } from "./readings.ts";
 
 type KatakanaSpeedTrainingLoopMode = Extract<
   KatakanaSpeedSessionMode,
@@ -118,13 +120,11 @@ function buildDailyTrainingPlan(input: {
   focus: KatakanaTrainingFocus;
   seed: string;
 }) {
-  const useRepeatedReading =
-    input.count >= 20 && shouldUseRepeatedReadingTransfer(input.seed);
-  const transferCount = useRepeatedReading ? 3 : 1;
-  const counts = splitCounts(Math.max(0, input.count - transferCount), [
-    14,
-    useRepeatedReading ? 15 : 17
-  ]);
+  const transferCount = 1;
+  const counts = splitCounts(
+    Math.max(0, input.count - transferCount),
+    [14, 17]
+  );
 
   return [
     ...buildContrastSprintTrials({
@@ -139,18 +139,12 @@ function buildDailyTrainingPlan(input: {
       focus: input.focus,
       seed: `${input.seed}:daily:reading`
     }),
-    ...(useRepeatedReading
-      ? buildRepeatedReadingTrials({
-          blockId: "daily-b3-transfer",
-          focus: input.focus,
-          seed: `${input.seed}:daily:repeated`
-        })
-      : buildRanGridTrials({
-          blockId: "daily-b3-transfer",
-          count: transferCount,
-          focus: input.focus,
-          seed: `${input.seed}:daily:ran`
-        }))
+    ...buildRanGridTrials({
+      blockId: "daily-b3-transfer",
+      count: transferCount,
+      focus: input.focus,
+      seed: `${input.seed}:daily:ran`
+    })
   ];
 }
 
@@ -246,22 +240,51 @@ function buildContrastSprintTrials(input: {
   );
 
   return Array.from({ length: input.count }, (_, index) => {
-    const correctSurface =
-      input.focus.targetChunks[
-        index % Math.max(1, input.focus.targetChunks.length)
-      ] ??
-      shuffledSurfaces[index % Math.max(1, shuffledSurfaces.length)] ??
-      fallbackItem.surface;
+    const isRomajiToKatakanaChoice = index % 4 === 2;
+    const correctSurface = isRomajiToKatakanaChoice
+      ? pickRomajiChoiceCorrectSurface({
+          fallbackSurface: fallbackItem.surface,
+          focus: input.focus,
+          index: Math.floor(index / 4)
+        })
+      : (input.focus.targetChunks[
+          index % Math.max(1, input.focus.targetChunks.length)
+        ] ??
+        shuffledSurfaces[index % Math.max(1, shuffledSurfaces.length)] ??
+        fallbackItem.surface);
     const item = getKatakanaSpeedItemBySurface(correctSurface) ?? fallbackItem;
     const mode: KatakanaSpeedTrialMode =
       index % 4 === 1 ? "blink" : "minimal_pair";
-    const optionSurfaces = buildContrastOptionSurfaces({
-      correctSurface,
-      focus: input.focus,
-      maxOptions: mode === "blink" ? 2 : 4,
-      seed: `${input.seed}:${index}`
-    });
-    const targetRtMs = mode === "blink" ? 850 : 1050;
+    const promptReading = isRomajiToKatakanaChoice
+      ? romanizeKatakanaForLearner(correctSurface)
+      : null;
+    const optionSurfaces =
+      isRomajiToKatakanaChoice && promptReading
+        ? buildRomajiChoiceOptionSurfaces({
+            correctSurface,
+            focus: input.focus,
+            maxOptions: 4,
+            promptReading,
+            seed: `${input.seed}:${index}`
+          })
+        : buildContrastOptionSurfaces({
+            correctSurface,
+            focus: input.focus,
+            maxOptions: mode === "blink" ? 2 : 4,
+            seed: `${input.seed}:${index}`
+          });
+    const targetRtMs =
+      isRomajiToKatakanaChoice && promptReading
+        ? 1150
+        : mode === "blink"
+          ? 850
+          : 1050;
+    const exerciseFamily =
+      isRomajiToKatakanaChoice && promptReading
+        ? "romaji_to_katakana_choice"
+        : mode === "blink"
+          ? "blink_choice"
+          : "contrast_choice";
 
     return {
       blockId: input.blockId,
@@ -270,8 +293,16 @@ function buildContrastSprintTrials(input: {
       expectedSurface: correctSurface,
       ...(mode === "blink" ? { exposureMs: 700 } : {}),
       features: {
+        ...(exerciseFamily === "romaji_to_katakana_choice"
+          ? {
+              answerKind: "katakana",
+              direction: "romaji_to_katakana",
+              exerciseCode: "E04",
+              promptKind: "romaji"
+            }
+          : {}),
         correctnessSource: "objective",
-        exerciseFamily: mode === "blink" ? "blink_choice" : "contrast_choice",
+        exerciseFamily,
         focusId: input.focus.id,
         focusLabel: input.focus.label,
         hardMode: true,
@@ -291,7 +322,10 @@ function buildContrastSprintTrials(input: {
         const optionItem = getKatakanaSpeedItemBySurface(surface);
         return optionItem?.id ?? encodeKatakanaSpeedRawOption(surface);
       }),
-      promptSurface: correctSurface,
+      promptSurface:
+        exerciseFamily === "romaji_to_katakana_choice" && promptReading
+          ? promptReading
+          : correctSurface,
       rarity: item.rarity,
       targetRtMs,
       trialId: `katakana-speed-${input.seed}-${index}-${slugForTrial(correctSurface)}`,
@@ -527,101 +561,6 @@ function buildRanGridTrials(input: {
   ];
 }
 
-function buildRepeatedReadingTrials(input: {
-  blockId: string;
-  focus: KatakanaTrainingFocus;
-  seed: string;
-}): KatakanaSpeedTrialPlan[] {
-  const focusedSentences = getItemsForFocus({
-    focus: input.focus,
-    includeRare: true,
-    kind: "sentence"
-  });
-  const fallbackSentences = getKatakanaSpeedCatalog().filter(
-    (item) => item.kind === "sentence"
-  );
-  const sentences = stableShuffle(
-    focusedSentences.length > 0 ? focusedSentences : fallbackSentences,
-    `${input.seed}:sentences`
-  );
-  const { firstSentence, transferSentence } = findRepeatedReadingPair(
-    sentences.length > 0 ? sentences : [getKatakanaSpeedCatalog()[0]],
-    input.focus
-  );
-  const trialItems = [
-    { item: firstSentence, passRole: "first_pass" },
-    { item: firstSentence, passRole: "repeat_pass" },
-    { item: transferSentence, passRole: "transfer_pass" }
-  ] as const;
-
-  return trialItems.map(({ item, passRole }, index) => ({
-    blockId: input.blockId,
-    correctItemId: item.id,
-    exerciseId: `katakana-speed-${blockMode(input.blockId)}`,
-    expectedSurface: item.surface,
-    features: {
-      correctnessSource: "aggregate_manual",
-      exerciseFamily: "repeated_reading",
-      focusId: input.focus.id,
-      focusLabel: input.focus.label,
-      kind: item.kind,
-      moraCount: item.moraCount,
-      repeatedReadingPass: index + 1,
-      repeatedReadingRole: passRole,
-      showReadingDuringTrial: false
-    },
-    focusChunks:
-      item.focusChunks.length > 0 ? item.focusChunks : input.focus.targetChunks,
-    itemId: item.id,
-    itemType: "sentence",
-    metadataRole: "repeated_reading",
-    metrics: {
-      exerciseFamily: "repeated_reading",
-      focusId: input.focus.id,
-      passRole,
-      repeatedReadingPass: index + 1,
-      targetMsPerMora: Math.round(item.targetRtMs / Math.max(1, item.moraCount))
-    },
-    mode: "repeated_reading_pass",
-    optionItemIds: [item.id],
-    promptSurface: item.surface,
-    rarity: item.rarity,
-    targetRtMs: item.targetRtMs,
-    trialId: `katakana-speed-${input.seed}-${index}-${item.id}`,
-    ...(passRole === "transfer_pass" ? { wasTransfer: true } : {})
-  }));
-}
-
-function findRepeatedReadingPair(
-  sentences: readonly KatakanaSpeedItem[],
-  focus: KatakanaTrainingFocus
-) {
-  for (const firstSentence of sentences) {
-    for (const focusChunk of [
-      ...focus.targetChunks,
-      ...firstSentence.focusChunks
-    ]) {
-      const transferSentence = sentences.find(
-        (candidate) =>
-          candidate.id !== firstSentence.id &&
-          (candidate.focusChunks.includes(focusChunk) ||
-            candidate.surface.includes(focusChunk))
-      );
-
-      if (transferSentence) {
-        return { firstSentence, transferSentence };
-      }
-    }
-  }
-
-  const firstSentence = sentences[0] ?? getKatakanaSpeedCatalog()[0];
-  const transferSentence =
-    sentences.find((candidate) => candidate.id !== firstSentence.id) ??
-    firstSentence;
-
-  return { firstSentence, transferSentence };
-}
-
 function splitCounts(total: number, weights: readonly number[]) {
   if (total <= 0) {
     return weights.map(() => 0);
@@ -681,6 +620,114 @@ function buildContrastOptionSurfaces(input: {
   ).slice(0, input.maxOptions);
 }
 
+function pickRomajiChoiceCorrectSurface(input: {
+  fallbackSurface: string;
+  focus: KatakanaTrainingFocus;
+  index: number;
+}) {
+  const candidates = [
+    ...new Set([...input.focus.targetChunks, ...input.focus.distractorChunks])
+  ].filter((surface) => getKatakanaSpeedItemBySurface(surface));
+
+  return (
+    candidates[input.index % Math.max(1, candidates.length)] ??
+    input.fallbackSurface
+  );
+}
+
+function buildRomajiChoiceOptionSurfaces(input: {
+  correctSurface: string;
+  focus: KatakanaTrainingFocus;
+  maxOptions: number;
+  promptReading: string;
+  seed: string;
+}) {
+  const selected = new Set([input.correctSurface]);
+  const correctItem = getKatakanaSpeedItemBySurface(input.correctSurface);
+  const focusSurfaces = [
+    ...new Set([...input.focus.distractorChunks, ...input.focus.targetChunks])
+  ];
+  const clusterSurfaces =
+    correctItem?.distractorItemIds.flatMap((itemId) => {
+      const item = getKatakanaSpeedItemById(itemId);
+      return item ? [item.surface] : [];
+    }) ?? [];
+  const familySurfaces =
+    correctItem === undefined
+      ? []
+      : getKatakanaSpeedCatalog()
+          .filter(
+            (item) =>
+              item.id !== correctItem.id &&
+              item.family === correctItem.family &&
+              item.rarity !== "rare"
+          )
+          .map((item) => item.surface);
+  const fallbackSurfaces = getKatakanaSpeedCatalog()
+    .filter(
+      (item) =>
+        item.surface !== input.correctSurface &&
+        item.kind !== "word" &&
+        item.kind !== "sentence" &&
+        item.kind !== "pseudoword"
+    )
+    .map((item) => item.surface);
+
+  fillRomajiChoiceSurfaces({
+    candidates: focusSurfaces,
+    maxOptions: input.maxOptions,
+    promptReading: input.promptReading,
+    selected
+  });
+  fillRomajiChoiceSurfaces({
+    candidates: stableShuffle(clusterSurfaces, `${input.seed}:clusters`),
+    maxOptions: input.maxOptions,
+    promptReading: input.promptReading,
+    selected
+  });
+  fillRomajiChoiceSurfaces({
+    candidates: stableShuffle(familySurfaces, `${input.seed}:family`),
+    maxOptions: input.maxOptions,
+    promptReading: input.promptReading,
+    selected
+  });
+  fillRomajiChoiceSurfaces({
+    candidates: stableShuffle(fallbackSurfaces, `${input.seed}:fallback`),
+    maxOptions: input.maxOptions,
+    promptReading: input.promptReading,
+    selected
+  });
+
+  return stableShuffle([...selected], `${input.seed}:final`).slice(
+    0,
+    input.maxOptions
+  );
+}
+
+function fillRomajiChoiceSurfaces(input: {
+  candidates: readonly string[];
+  maxOptions: number;
+  promptReading: string;
+  selected: Set<string>;
+}) {
+  for (const candidate of input.candidates) {
+    if (input.selected.size >= input.maxOptions) {
+      return;
+    }
+    if (input.selected.has(candidate) || !isKatakanaOptionSurface(candidate)) {
+      continue;
+    }
+    if (romanizeKatakanaForLearner(candidate) === input.promptReading) {
+      continue;
+    }
+    input.selected.add(candidate);
+  }
+}
+
+function isKatakanaOptionSurface(surface: string) {
+  return /^[\u30a0-\u30ffー]+$/u.test(surface);
+}
+
 function surfaceToOptionId(surface: string) {
   const optionItem = getKatakanaSpeedItemBySurface(surface);
   return optionItem?.id ?? encodeKatakanaSpeedRawOption(surface);
@@ -729,19 +776,6 @@ function interleavePools<T>(pools: readonly (readonly T[])[]) {
   }
 
   return result;
-}
-
-function shouldUseRepeatedReadingTransfer(seed: string) {
-  return hashSeed(seed) % 2 === 0;
-}
-
-function hashSeed(seed: string) {
-  let hash = 0;
-  for (const character of seed) {
-    hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
-  }
-
-  return hash;
 }
 
 function blockMode(blockId: string) {

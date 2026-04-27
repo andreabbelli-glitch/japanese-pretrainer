@@ -207,13 +207,6 @@ function ModeAwareMetrics({
           value: `${formatDuration(metrics.sentenceFlow.medianMsPerMora)} / mora`
         }
       : null,
-    metrics.repeatedReadingGain
-      ? {
-          detail: metrics.repeatedReadingGain.transferStatus,
-          label: "Lettura ripetuta",
-          value: `${metrics.repeatedReadingGain.latestGainPercent}%`
-        }
-      : null,
     metrics.ranItemsPerSecond
       ? {
           detail:
@@ -364,9 +357,6 @@ function formatExerciseLabel(metrics: Readonly<Record<string, unknown>>) {
   if (typeof metrics.itemsPerSecond === "number") {
     return "Griglia";
   }
-  if (typeof metrics.improvementRatio === "number") {
-    return "Lettura ripetuta";
-  }
 
   return "Aggregate";
 }
@@ -374,9 +364,6 @@ function formatExerciseLabel(metrics: Readonly<Record<string, unknown>>) {
 function formatExerciseMetric(metrics: Readonly<Record<string, unknown>>) {
   if (typeof metrics.itemsPerSecond === "number") {
     return `${metrics.itemsPerSecond.toFixed(2).replace(".", ",")} items/sec`;
-  }
-  if (typeof metrics.improvementRatio === "number") {
-    return `${Math.round(metrics.improvementRatio * 100)}% gain`;
   }
   if (typeof metrics.durationMs === "number") {
     return formatDuration(metrics.durationMs);

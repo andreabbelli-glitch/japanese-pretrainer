@@ -120,11 +120,10 @@ katakana confondibili e sui chunk estesi piu frequenti.
   `/katakana-speed/recap/[sessionId]`;
 - catalogo statico in TypeScript sotto `src/features/katakana-speed/`;
 - persistenza runtime in tabelle `katakana_*`;
-- registry operativo statico non-audio con word bank completa, trap moraiche,
-  variant pair, chunk spotting, ladder verticali e mode diagnostic/repair;
-- drill choice, raw choice, segment select, tile builder, self-check timed,
-  rare combo, pseudoword/sentence transfer, repeated reading e RAN Grid
-  aggregata;
+- registry operativo statico non-audio con chunk estesi, word bank,
+  pseudoword, cluster di confusione, trap moraiche e loop daily/diagnostic/repair;
+- drill choice focalizzati, scelta inversa romaji -> katakana, raw choice
+  moraiche, self-check timed per parole/pseudoparole e RAN Grid aggregata;
 - nessuna integrazione con `/review`, media bundle o Kanji Clash.
 
 La source of truth tecnica e

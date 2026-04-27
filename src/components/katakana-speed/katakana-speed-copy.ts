@@ -36,8 +36,7 @@ export type KatakanaSpeedTrialCopy = {
 };
 
 export function getKatakanaSpeedTrialCopy(
-  trial: KatakanaSpeedTrialPlan,
-  repeatedPassLabel?: string | null
+  trial: KatakanaSpeedTrialPlan
 ): KatakanaSpeedTrialCopy {
   const exerciseCode =
     typeof trial.features?.exerciseCode === "string"
@@ -50,24 +49,10 @@ export function getKatakanaSpeedTrialCopy(
   if (trial.mode === "ran_grid") {
     return {
       controls:
-        "Il timer parte da solo. Enter ferma o salva. La lettura compare dopo lo stop.",
+        "Il timer parte da solo. Enter ferma o salva; Space mostra/nasconde la lettura.",
       instruction:
         "Leggi tutte le celle da sinistra a destra, riga per riga. Ferma il timer, segna le celle sbagliate e salva.",
       label: "Griglia di velocita"
-    };
-  }
-
-  if (trial.mode === "repeated_reading_pass") {
-    return {
-      controls:
-        "Il timer parte da solo. Enter ferma o continua. La lettura compare dopo lo stop.",
-      instruction:
-        repeatedPassLabel === "Transfer"
-          ? "Leggi la nuova frase con lo stesso pattern, ferma il timer e salva il blocco."
-          : "Leggi il passaggio, ferma il timer e passa alla lettura successiva.",
-      label: repeatedPassLabel
-        ? `Lettura ripetuta: ${repeatedPassLabel}`
-        : "Lettura ripetuta"
     };
   }
 
@@ -79,7 +64,7 @@ export function getKatakanaSpeedTrialCopy(
   ) {
     return {
       controls:
-        "Leggi senza romaji. Scegli 1-3 per valutarti; la lettura compare dopo.",
+        "Leggi senza romaji. Space mostra/nasconde la lettura; scegli 1-3 per valutarti.",
       instruction:
         trial.mode === "sentence_sprint"
           ? "Leggi la frase una volta, poi valuta se e stata fluida."
@@ -96,17 +81,29 @@ export function getKatakanaSpeedTrialCopy(
   if (exerciseCode === "E15" || exerciseCode === "E16") {
     return {
       controls:
-        "Scegli la forma corretta tra le due opzioni. La lettura compare dopo.",
+        "Scegli la forma corretta tra le due opzioni. Space mostra/nasconde la lettura.",
       instruction:
         "Scegli la forma che scrive la lettura mostrata, senza farti ingannare da ー, ッ o piccoli kana.",
       label: "Trappola di mora"
     };
   }
 
+  if (
+    trial.features?.exerciseFamily === "romaji_to_katakana_choice" ||
+    trial.features?.promptKind === "romaji"
+  ) {
+    return {
+      controls: "Rispondi con 1-4 dalla tastiera o tocca una scelta.",
+      instruction:
+        "Leggi il romaji e scegli la scrittura katakana corretta tra opzioni molto simili.",
+      label: "Dal romaji al kana"
+    };
+  }
+
   if (trial.mode === "blink") {
     return {
       controls:
-        "Rispondi con 1-2 dalla tastiera o tocca una scelta. La lettura compare dopo.",
+        "Rispondi con 1-2 dalla tastiera o tocca una scelta. Space mostra/nasconde la lettura.",
       instruction: "Scegli rapidamente la scrittura corretta.",
       label: "Riconoscimento rapido"
     };
@@ -114,7 +111,7 @@ export function getKatakanaSpeedTrialCopy(
 
   return {
     controls:
-      "Rispondi con 1-4 dalla tastiera o tocca una scelta. La lettura compare dopo.",
+      "Rispondi con 1-4 dalla tastiera o tocca una scelta. Space mostra/nasconde la lettura.",
     instruction: "Guarda il prompt e scegli la risposta corretta.",
     label: "Scegli la lettura"
   };

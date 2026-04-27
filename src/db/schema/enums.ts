@@ -80,7 +80,6 @@ export const katakanaTrialModeValues = [
   "word_naming",
   "pseudoword_sprint",
   "sentence_sprint",
-  "repeated_reading_pass",
   "ran_grid"
 ] as const;
 export const lessonProgressStatusValues = [

@@ -3,7 +3,6 @@ import { describe, expect, it } from "vitest";
 import {
   scoreKatakanaSpeedPseudowordTransfer,
   scoreKatakanaSpeedRanGrid,
-  scoreKatakanaSpeedRepeatedReading,
   scoreKatakanaSpeedSentenceSprint
 } from "@/features/katakana-speed/model";
 
@@ -63,30 +62,6 @@ describe("katakana speed expansion scoring", () => {
     ).toEqual({
       msPerMora: 250,
       status: "fluent"
-    });
-  });
-
-  it("scores repeated reading improvement and transfer readiness", () => {
-    expect(
-      scoreKatakanaSpeedRepeatedReading({
-        firstPassMs: 7200,
-        repeatedPassMs: 5400,
-        transferPassMs: 5800
-      })
-    ).toEqual({
-      improvementRatio: 0.25,
-      transferStatus: "retained"
-    });
-
-    expect(
-      scoreKatakanaSpeedRepeatedReading({
-        firstPassMs: 7200,
-        repeatedPassMs: 6900,
-        transferPassMs: 7600
-      })
-    ).toEqual({
-      improvementRatio: 0.042,
-      transferStatus: "needs_repair"
     });
   });
 

@@ -12,8 +12,7 @@ import { decodeKatakanaSpeedRawOption } from "@/features/katakana-speed/model/ex
 import { formatKatakanaSpeedReading } from "@/features/katakana-speed/model/readings";
 import {
   isKatakanaSpeedAnswerCorrect,
-  scoreKatakanaSpeedRanGrid,
-  scoreKatakanaSpeedRepeatedReading
+  scoreKatakanaSpeedRanGrid
 } from "@/features/katakana-speed/model/scoring";
 import type { StartKatakanaSpeedSessionResult } from "@/features/katakana-speed/server";
 import type {
@@ -61,13 +60,11 @@ export type KatakanaSpeedSessionControllerResult = {
     inputMethod: "keyboard" | "pointer" | "touch"
   ) => void;
   readonly handleContinue: () => void;
-  readonly handleContinueRepeatedReading: () => void;
   readonly handleSubmitRanGrid: () => void;
   readonly handleSubmitSelfCheck: (selfRating: KatakanaSpeedSelfRating) => void;
   readonly handleToggleRanWrongCell: (index: number) => void;
   readonly handleToggleTimer: () => void;
   readonly isRanGridTrial: boolean;
-  readonly isRepeatedReadingTrial: boolean;
   readonly isSelfCheckTrial: boolean;
   readonly isSubmitting: boolean;
   readonly options: readonly KatakanaSpeedSessionOption[];
@@ -76,7 +73,6 @@ export type KatakanaSpeedSessionControllerResult = {
   readonly ranErrorCount: number;
   readonly ranGridCells: readonly KatakanaSpeedRanGridCell[];
   readonly ranWrongCellIndexes: readonly number[];
-  readonly repeatedReadingState: KatakanaSpeedRepeatedReadingState | null;
   readonly selfCheckRatings: readonly KatakanaSpeedSelfCheckRatingOption[];
   readonly timerState: KatakanaSpeedTimerState;
   readonly totalTrials: number;
@@ -86,13 +82,6 @@ export type KatakanaSpeedRanGridCell = {
   readonly itemId: string;
   readonly readingHint: string | null;
   readonly surface: string;
-};
-
-export type KatakanaSpeedRepeatedReadingState = {
-  readonly currentPassIndex: number;
-  readonly durationsMs: readonly number[];
-  readonly passCount: number;
-  readonly trials: readonly KatakanaSpeedTrialPlan[];
 };
 
 export type KatakanaSpeedSelfCheckRatingOption = {
@@ -143,10 +132,6 @@ export function useKatakanaSpeedSessionController(
   });
   const [continueToIndex, setContinueToIndex] = useState<number | null>(null);
   const [ranWrongCellIndexes, setRanWrongCellIndexes] = useState<number[]>([]);
-  const [repeatedPassDurations, setRepeatedPassDurations] = useState<number[]>(
-    []
-  );
-  const [repeatedPassIndex, setRepeatedPassIndex] = useState(0);
   const presentedAtRef = useRef(performance.now());
   const timerStartedAtRef = useRef<number | null>(null);
   const submittingRef = useRef(false);
@@ -156,10 +141,9 @@ export function useKatakanaSpeedSessionController(
   const isSelfCheckTrial = currentTrial
     ? isSelfCheckMode(currentTrial.mode)
     : false;
-  const isRepeatedReadingTrial = currentTrial?.mode === "repeated_reading_pass";
   const isRanGridTrial = currentTrial?.mode === "ran_grid";
-  const isTimedTrial =
-    isSelfCheckTrial || isRepeatedReadingTrial || isRanGridTrial;
+  const isRomajiPromptTrial = currentTrial?.features?.promptKind === "romaji";
+  const isTimedTrial = isSelfCheckTrial || isRanGridTrial;
   const shouldAutoStartTimer = isTimedTrial;
   const currentBlockTrials = useMemo(() => {
     if (!currentTrial) {
@@ -189,8 +173,6 @@ export function useKatakanaSpeedSessionController(
     setAwaitingContinue(false);
     setContinueToIndex(null);
     setRanWrongCellIndexes([]);
-    setRepeatedPassDurations([]);
-    setRepeatedPassIndex(0);
     setTimerState({
       elapsedMs: 0,
       phase: shouldAutoStartTimer ? "running" : "idle"
@@ -222,11 +204,13 @@ export function useKatakanaSpeedSessionController(
         return {
           itemId,
           reading: item?.reading ?? "",
-          readingHint: formatKatakanaSpeedReading(item ?? surface),
+          readingHint: isRomajiPromptTrial
+            ? null
+            : formatKatakanaSpeedReading(item ?? surface),
           surface
         };
       }),
-    [currentTrial?.optionItemIds]
+    [currentTrial?.optionItemIds, isRomajiPromptTrial]
   );
 
   const ranGridCells = useMemo(() => {
@@ -267,15 +251,6 @@ export function useKatakanaSpeedSessionController(
     isRanGridTrial && timerState.phase === "stopped" && !awaitingContinue;
   const ranErrorCount = ranWrongCellIndexes.length;
 
-  const repeatedReadingState = isRepeatedReadingTrial
-    ? {
-        currentPassIndex: repeatedPassIndex,
-        durationsMs: repeatedPassDurations,
-        passCount: currentBlockTrials.length,
-        trials: currentBlockTrials
-      }
-    : null;
-
   const handleToggleTimer = useCallback(() => {
     if (!currentTrial || !isTimedTrial || submittingRef.current) {
       return;
@@ -285,11 +260,6 @@ export function useKatakanaSpeedSessionController(
       const startedAt = timerStartedAtRef.current ?? presentedAtRef.current;
       const elapsedMs = Math.max(0, Math.round(performance.now() - startedAt));
       timerStartedAtRef.current = null;
-      if (isRepeatedReadingTrial) {
-        setRepeatedPassDurations((durations) =>
-          replaceDuration(durations, repeatedPassIndex, elapsedMs)
-        );
-      }
       setTimerState({
         elapsedMs,
         phase: "stopped"
@@ -302,13 +272,7 @@ export function useKatakanaSpeedSessionController(
       elapsedMs: 0,
       phase: "running"
     });
-  }, [
-    currentTrial,
-    isRepeatedReadingTrial,
-    isTimedTrial,
-    repeatedPassIndex,
-    timerState.phase
-  ]);
+  }, [currentTrial, isTimedTrial, timerState.phase]);
 
   const handleChooseOption = useCallback(
     async (
@@ -491,126 +455,6 @@ export function useKatakanaSpeedSessionController(
     ]
   );
 
-  const handleContinueRepeatedReading = useCallback(async (): Promise<void> => {
-    if (
-      !currentTrial ||
-      !isRepeatedReadingTrial ||
-      submittingRef.current ||
-      awaitingContinue
-    ) {
-      return;
-    }
-    if (timerState.phase !== "stopped") {
-      return;
-    }
-
-    const durationMs = computeSelfCheckResponseMs({
-      presentedAt: presentedAtRef.current,
-      timerStartedAt: timerStartedAtRef.current,
-      timerState
-    });
-    const nextDurations = replaceDuration(
-      repeatedPassDurations,
-      repeatedPassIndex,
-      durationMs
-    );
-
-    if (repeatedPassIndex < currentBlockTrials.length - 1) {
-      setRepeatedPassDurations(nextDurations);
-      setRepeatedPassIndex((index) => index + 1);
-      presentedAtRef.current = performance.now();
-      timerStartedAtRef.current = presentedAtRef.current;
-      setTimerState({ elapsedMs: 0, phase: "running" });
-      return;
-    }
-
-    if (!currentTrial.blockId || !currentTrial.exerciseId) {
-      setClientError("Blocco repeated reading non valido.");
-      return;
-    }
-
-    const firstPassMs = nextDurations[0] ?? 0;
-    const repeatedPassMs = nextDurations[1] ?? firstPassMs;
-    const transferPassMs = nextDurations[2] ?? repeatedPassMs;
-    const score = scoreKatakanaSpeedRepeatedReading({
-      firstPassMs,
-      repeatedPassMs,
-      transferPassMs
-    });
-    const metricsJson = {
-      firstPassMs,
-      focusChunks: [
-        ...new Set(
-          currentBlockTrials.flatMap((trial) => trial.focusChunks ?? [])
-        )
-      ],
-      improvementRatio: score.improvementRatio,
-      passCount: currentBlockTrials.length,
-      repeatedPassMs,
-      transferPassMs,
-      transferStatus: score.transferStatus,
-      trialIds: currentBlockTrials.map((trial) => trial.trialId)
-    };
-
-    submittingRef.current = true;
-    setIsSubmitting(true);
-    setClientError(null);
-
-    try {
-      await aggregateKatakanaSpeedExerciseResultAction({
-        blockId: currentTrial.blockId,
-        exerciseId: currentTrial.exerciseId,
-        metricsJson,
-        resultId: `${currentTrial.blockId}:aggregate`,
-        sessionId: session.sessionId,
-        sortOrder: currentTrial.sortOrder ?? currentIndex,
-        trialId: currentTrial.trialId
-      });
-
-      const nextFeedback: KatakanaSpeedSessionFeedback = {
-        errorTags: [],
-        expectedSurface: currentTrial.promptSurface,
-        responseMs: transferPassMs,
-        selectedSurface: score.transferStatus,
-        status:
-          score.transferStatus === "retained" ? "correct-fast" : "correct-slow",
-        trialId: currentTrial.trialId
-      };
-      const nextIndex = Math.min(
-        currentIndex + currentBlockTrials.length,
-        totalTrials
-      );
-      setFeedback(nextFeedback);
-      setRepeatedPassDurations(nextDurations);
-      if (score.transferStatus === "retained") {
-        setCurrentIndex(nextIndex);
-      } else {
-        setAwaitingContinue(true);
-        setContinueToIndex(nextIndex);
-      }
-    } catch (error) {
-      setClientError(
-        error instanceof Error
-          ? error.message
-          : "Impossibile salvare il repeated reading."
-      );
-    } finally {
-      submittingRef.current = false;
-      setIsSubmitting(false);
-    }
-  }, [
-    awaitingContinue,
-    currentBlockTrials,
-    currentIndex,
-    currentTrial,
-    isRepeatedReadingTrial,
-    repeatedPassDurations,
-    repeatedPassIndex,
-    session.sessionId,
-    timerState,
-    totalTrials
-  ]);
-
   const handleToggleRanWrongCell = useCallback(
     (index: number) => {
       if (
@@ -790,11 +634,10 @@ export function useKatakanaSpeedSessionController(
         return;
       }
 
-      if (isSelfCheckTrial || isRepeatedReadingTrial || isRanGridTrial) {
+      if (isSelfCheckTrial || isRanGridTrial) {
         if (
           event.key === "Enter" &&
           isActivationTarget(event.target) &&
-          !isRepeatedReadingTrial &&
           !isRanGridTrial
         ) {
           return;
@@ -802,13 +645,8 @@ export function useKatakanaSpeedSessionController(
 
         if (event.key === "Enter") {
           event.preventDefault();
-          if (
-            (isRepeatedReadingTrial || isRanGridTrial) &&
-            timerState.phase === "running"
-          ) {
+          if (isRanGridTrial && timerState.phase === "running") {
             handleToggleTimer();
-          } else if (isRepeatedReadingTrial) {
-            void handleContinueRepeatedReading();
           } else if (isRanGridTrial) {
             void handleSubmitRanGrid();
           }
@@ -846,13 +684,11 @@ export function useKatakanaSpeedSessionController(
   }, [
     handleChooseOption,
     handleContinue,
-    handleContinueRepeatedReading,
     handleSubmitSelfCheck,
     handleSubmitRanGrid,
     handleToggleTimer,
     awaitingContinue,
     isRanGridTrial,
-    isRepeatedReadingTrial,
     isSelfCheckTrial,
     timerState.phase,
     options
@@ -870,13 +706,11 @@ export function useKatakanaSpeedSessionController(
     feedback: currentTrialFeedback,
     handleChooseOption,
     handleContinue,
-    handleContinueRepeatedReading,
     handleSubmitRanGrid,
     handleSubmitSelfCheck,
     handleToggleRanWrongCell,
     handleToggleTimer,
     isRanGridTrial,
-    isRepeatedReadingTrial,
     isSelfCheckTrial,
     isSubmitting,
     options,
@@ -886,7 +720,6 @@ export function useKatakanaSpeedSessionController(
     ranErrorCount,
     ranGridCells,
     ranWrongCellIndexes,
-    repeatedReadingState,
     selfCheckRatings: SELF_CHECK_RATINGS,
     timerState,
     totalTrials
@@ -938,16 +771,6 @@ function buildSelfCheckMetrics(
     moraCount,
     msPerMora: Math.round(responseMs / Math.max(1, moraCount))
   };
-}
-
-function replaceDuration(
-  durations: readonly number[],
-  index: number,
-  durationMs: number
-) {
-  const nextDurations = [...durations];
-  nextDurations[index] = durationMs;
-  return nextDurations;
 }
 
 function buildRanGridCellSnapshots(

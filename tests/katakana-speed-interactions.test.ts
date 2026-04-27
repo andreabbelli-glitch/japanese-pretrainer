@@ -363,12 +363,13 @@ describe("katakana speed session controller", () => {
     });
   });
 
-  it("submits repeated reading as one aggregate result after three timed passes", async () => {
+  it("submits inverse romaji choices without exposing option readings", async () => {
     let now = 5_000;
     vi.spyOn(performance, "now").mockImplementation(() => now);
-    mocks.aggregateKatakanaSpeedExerciseResultAction.mockResolvedValue({
+    mocks.submitKatakanaSpeedAnswerAction.mockResolvedValue({
+      errorTags: [],
       idempotent: false,
-      resultId: "block-repeated:aggregate"
+      isCorrect: true
     });
 
     let latestController: KatakanaSpeedSessionControllerResult | null = null;
@@ -388,72 +389,40 @@ describe("katakana speed session controller", () => {
 
     await act(async () => {
       root!.render(
-        createElement(Probe, { session: buildRepeatedReadingSession() })
+        createElement(Probe, { session: buildInverseChoiceSession() })
       );
       await Promise.resolve();
     });
 
-    expect(
-      (latestController as unknown as KatakanaSpeedSessionControllerResult)
-        .timerState.phase
-    ).toBe("running");
-    expect(
-      mocks.aggregateKatakanaSpeedExerciseResultAction
-    ).not.toHaveBeenCalled();
-    expect(
-      (latestController as unknown as KatakanaSpeedSessionControllerResult)
-        .repeatedReadingState?.currentPassIndex
-    ).toBe(0);
-
-    await stopTimedPass(1_200);
-    expect(
-      (latestController as unknown as KatakanaSpeedSessionControllerResult)
-        .timerState.phase
-    ).toBe("running");
-
-    await stopTimedPass(900);
-    expect(
-      (latestController as unknown as KatakanaSpeedSessionControllerResult)
-        .timerState.phase
-    ).toBe("running");
-
-    await stopTimedPass(980);
-
-    expect(
-      mocks.aggregateKatakanaSpeedExerciseResultAction
-    ).toHaveBeenCalledWith({
-      blockId: "block-repeated",
-      exerciseId: "exercise-repeated",
-      metricsJson: expect.objectContaining({
-        firstPassMs: 1200,
-        improvementRatio: 0.25,
-        repeatedPassMs: 900,
-        transferPassMs: 980,
-        transferStatus: "retained",
-        trialIds: ["trial-repeat-1", "trial-repeat-2", "trial-repeat-3"]
-      }),
-      resultId: "block-repeated:aggregate",
-      sessionId: "session-repeated",
-      sortOrder: 0,
-      trialId: "trial-repeat-1"
-    });
-    expect(latestController).not.toBeNull();
     const controller =
       latestController as unknown as KatakanaSpeedSessionControllerResult;
-    expect(controller.awaitingContinue).toBe(false);
-    expect(controller.completed).toBe(true);
+    expect(controller.currentTrial?.promptSurface).toBe("ti");
+    expect(controller.options.map((option) => option.surface)).toEqual([
+      "ティ",
+      "チ",
+      "ディ",
+      "テュ"
+    ]);
+    expect(controller.options.map((option) => option.readingHint)).toEqual([
+      null,
+      null,
+      null,
+      null
+    ]);
 
-    async function stopTimedPass(durationMs: number) {
-      now += durationMs;
-      await act(async () => {
-        dispatchWindowKeyboardEvent("Enter");
-        await Promise.resolve();
-      });
-      await act(async () => {
-        dispatchWindowKeyboardEvent("Enter");
-        await Promise.resolve();
-      });
-    }
+    now = 5_360;
+    await act(async () => {
+      dispatchWindowKeyboardEvent("1");
+      await Promise.resolve();
+    });
+
+    expect(mocks.submitKatakanaSpeedAnswerAction).toHaveBeenCalledWith({
+      inputMethod: "keyboard",
+      responseMs: 360,
+      sessionId: "session-inverse-choice",
+      trialId: "trial-inverse-choice",
+      userAnswer: "ティ"
+    });
   });
 
   it("submits RAN grid with derived wrong cell positions", async () => {
@@ -806,59 +775,32 @@ function buildRawChoiceSession(): StartKatakanaSpeedSessionResult {
   };
 }
 
-function buildRepeatedReadingSession(): StartKatakanaSpeedSessionResult {
+function buildInverseChoiceSession(): StartKatakanaSpeedSessionResult {
   return {
-    sessionId: "session-repeated",
+    sessionId: "session-inverse-choice",
     trials: [
       {
-        blockId: "block-repeated",
-        correctItemId: "sentence-P37",
-        exerciseId: "exercise-repeated",
-        features: { moraCount: 22, repeatedReadingPass: 1 },
-        focusChunks: ["ティ"],
-        itemId: "sentence-P37",
-        itemType: "sentence",
-        mode: "repeated_reading_pass",
-        optionItemIds: ["sentence-P37"],
-        promptSurface:
-          "ミーティング、セキュリティ、コミュニティを連続で読みます。",
-        sortOrder: 0,
-        targetRtMs: 4200,
-        trialId: "trial-repeat-1",
-        wasTransfer: true
-      },
-      {
-        blockId: "block-repeated",
-        correctItemId: "sentence-P37",
-        exerciseId: "exercise-repeated",
-        features: { moraCount: 22, repeatedReadingPass: 2 },
-        focusChunks: ["ティ"],
-        itemId: "sentence-P37",
-        itemType: "sentence",
-        mode: "repeated_reading_pass",
-        optionItemIds: ["sentence-P37"],
-        promptSurface:
-          "ミーティング、セキュリティ、コミュニティを連続で読みます。",
-        sortOrder: 1,
-        targetRtMs: 4200,
-        trialId: "trial-repeat-2",
-        wasTransfer: true
-      },
-      {
-        blockId: "block-repeated",
-        correctItemId: "sentence-P02",
-        exerciseId: "exercise-repeated",
-        features: { moraCount: 18, repeatedReadingPass: 3 },
-        focusChunks: ["ティ"],
-        itemId: "sentence-P02",
-        itemType: "sentence",
-        mode: "repeated_reading_pass",
-        optionItemIds: ["sentence-P02"],
-        promptSurface: "セキュリティのため、パスワードをアップデートしました。",
-        sortOrder: 2,
-        targetRtMs: 4200,
-        trialId: "trial-repeat-3",
-        wasTransfer: true
+        correctItemId: "chunk-ti",
+        expectedSurface: "ティ",
+        features: {
+          answerKind: "katakana",
+          direction: "romaji_to_katakana",
+          exerciseFamily: "romaji_to_katakana_choice",
+          interaction: "raw_choice",
+          promptKind: "romaji"
+        },
+        itemId: "chunk-ti",
+        itemType: "extended_chunk",
+        mode: "minimal_pair",
+        optionItemIds: [
+          "raw:%E3%83%86%E3%82%A3",
+          "raw:%E3%83%81",
+          "raw:%E3%83%87%E3%82%A3",
+          "raw:%E3%83%86%E3%83%A5"
+        ],
+        promptSurface: "ti",
+        targetRtMs: 1150,
+        trialId: "trial-inverse-choice"
       }
     ]
   };

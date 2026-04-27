@@ -42,17 +42,21 @@ export function KatakanaSpeedSessionPage({
   const finalizingRef = useRef(false);
   const recapHref = `/katakana-speed/recap/${data.sessionId}` as Route;
   const currentTrial = controller.currentTrial;
-  const repeatedPass =
-    controller.repeatedReadingState?.trials[
-      controller.repeatedReadingState.currentPassIndex
-    ] ?? null;
-  const visibleTrialKey =
-    repeatedPass?.trialId ?? currentTrial?.trialId ?? null;
+  const visibleTrialKey = currentTrial?.trialId ?? null;
+  const currentTrialHasRomajiPrompt =
+    currentTrial?.features?.promptKind === "romaji";
+  const feedbackBelongsToCurrentTrial =
+    controller.feedback?.trialId === visibleTrialKey;
+  const canRevealReadings =
+    Boolean(visibleTrialKey) &&
+    !currentTrialHasRomajiPrompt &&
+    (controller.isSelfCheckTrial ||
+      controller.ranCanMarkErrors ||
+      feedbackBelongsToCurrentTrial);
   const showReadings =
-    (controller.feedback !== null || controller.ranCanMarkErrors) &&
+    canRevealReadings &&
     readingVisibility.trialKey === visibleTrialKey &&
     readingVisibility.show;
-  const showFeedbackReading = controller.feedback !== null;
 
   useEffect(() => {
     if (!controller.completed || finalizingRef.current) {
@@ -90,7 +94,7 @@ export function KatakanaSpeedSessionPage({
       if (event.target instanceof HTMLElement) {
         event.target.blur();
       }
-      if (!controller.feedback && !controller.ranCanMarkErrors) {
+      if (!visibleTrialKey || !canRevealReadings) {
         return;
       }
       setReadingVisibility((current) => ({
@@ -101,7 +105,7 @@ export function KatakanaSpeedSessionPage({
 
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
-  }, [controller.feedback, controller.ranCanMarkErrors, visibleTrialKey]);
+  }, [canRevealReadings, visibleTrialKey]);
 
   async function abandonSession() {
     setIsFinalizing(true);
@@ -140,31 +144,19 @@ export function KatakanaSpeedSessionPage({
   const currentItem = currentTrial
     ? getKatakanaSpeedItemById(currentTrial.itemId)
     : null;
-  const repeatedPassLabel = controller.isRepeatedReadingTrial
-    ? formatRepeatedPassLabel(
-        controller.repeatedReadingState?.currentPassIndex ?? 0
-      )
-    : null;
   const trialCopy = currentTrial
-    ? getKatakanaSpeedTrialCopy(currentTrial, repeatedPassLabel)
+    ? getKatakanaSpeedTrialCopy(currentTrial)
     : null;
-  const repeatedPassItem = repeatedPass
-    ? getKatakanaSpeedItemById(repeatedPass.itemId)
-    : null;
-  const visiblePrompt = controller.isRepeatedReadingTrial
-    ? repeatedPass?.promptSurface
-    : controller.isRanGridTrial
-      ? null
-      : currentTrial?.promptSurface;
-  const readingHint = controller.isRepeatedReadingTrial
-    ? formatKatakanaSpeedReading(
-        repeatedPassItem ?? repeatedPass?.promptSurface
-      )
+  const visiblePrompt = controller.isRanGridTrial
+    ? null
+    : currentTrial?.promptSurface;
+  const readingHint = currentTrialHasRomajiPrompt
+    ? null
     : formatKatakanaSpeedReading(currentItem ?? visiblePrompt);
   const promptClassName = cx(
     "katakana-speed-prompt",
-    (currentTrial?.mode === "sentence_sprint" ||
-      currentTrial?.mode === "repeated_reading_pass") &&
+    currentTrialHasRomajiPrompt && "katakana-speed-prompt--romaji",
+    currentTrial?.mode === "sentence_sprint" &&
       "katakana-speed-prompt--sentence"
   );
 
@@ -221,19 +213,12 @@ export function KatakanaSpeedSessionPage({
                   <p className={promptClassName}>{visiblePrompt}</p>
                   <ReadingHint
                     label="Lettura"
-                    value={
-                      showReadings || showFeedbackReading ? readingHint : null
-                    }
+                    value={showReadings ? readingHint : null}
                   />
                 </>
               ) : null}
 
-              {controller.isRepeatedReadingTrial ? (
-                <RepeatedReadingControls
-                  controller={controller}
-                  disabled={controller.isSubmitting || isFinalizing}
-                />
-              ) : controller.isRanGridTrial ? (
+              {controller.isRanGridTrial ? (
                 <RanGridControls
                   controller={controller}
                   disabled={controller.isSubmitting || isFinalizing}
@@ -249,7 +234,7 @@ export function KatakanaSpeedSessionPage({
                 <ChoiceControls
                   controller={controller}
                   disabled={controller.isSubmitting || isFinalizing}
-                  showReadings={showReadings}
+                  showReadings={canRevealReadings && showReadings}
                   trial={currentTrial}
                 />
               )}
@@ -267,12 +252,11 @@ export function KatakanaSpeedSessionPage({
             clientError={clientError ?? controller.clientError}
             currentTrial={currentTrial}
             feedback={controller.feedback}
-            showReadings={showReadings}
+            showReadings={canRevealReadings && showReadings}
             isFinalizing={isFinalizing}
             awaitingContinue={
               controller.awaitingContinue &&
               !controller.isSelfCheckTrial &&
-              !controller.isRepeatedReadingTrial &&
               !controller.isRanGridTrial
             }
             isSubmitting={controller.isSubmitting || isFinalizing}
@@ -290,9 +274,9 @@ export function KatakanaSpeedSessionPage({
             <label className="katakana-speed-reading-toggle">
               <input
                 checked={showReadings}
-                disabled={!controller.feedback && !controller.ranCanMarkErrors}
+                disabled={!canRevealReadings}
                 onChange={(event) => {
-                  if (!controller.feedback && !controller.ranCanMarkErrors) {
+                  if (!visibleTrialKey || !canRevealReadings) {
                     return;
                   }
                   setReadingVisibility({
@@ -305,7 +289,11 @@ export function KatakanaSpeedSessionPage({
               />
               <span>
                 <strong>Mostra lettura</strong>
-                <small>Dopo risposta o stop, per controllare il reading.</small>
+                <small>
+                  {canRevealReadings
+                    ? "Space mostra o nasconde il romaji del trial."
+                    : "Il romaji e gia il prompt."}
+                </small>
               </span>
             </label>
             <button
@@ -421,73 +409,6 @@ function SelfCheckControls({
         type="button"
       >
         Continua
-      </button>
-    </div>
-  );
-}
-
-function RepeatedReadingControls({
-  controller,
-  disabled
-}: {
-  controller: ReturnType<typeof useKatakanaSpeedSessionController>;
-  disabled: boolean;
-}) {
-  const state = controller.repeatedReadingState;
-  const timerRunning = controller.timerState.phase === "running";
-  const canAdvance =
-    controller.timerState.phase === "stopped" && !controller.awaitingContinue;
-
-  if (!state) {
-    return null;
-  }
-
-  return (
-    <div className="katakana-speed-selfcheck">
-      <div className="katakana-speed-pass-list" aria-label="Passaggi">
-        {state.trials.map((trial, index) => (
-          <span
-            className={cx(
-              "katakana-speed-pass-chip",
-              index === state.currentPassIndex &&
-                "katakana-speed-pass-chip--active"
-            )}
-            key={trial.trialId}
-          >
-            {formatRepeatedPassLabel(index)}
-          </span>
-        ))}
-      </div>
-
-      <div className="katakana-speed-timer" role="timer">
-        <span className="katakana-speed-timer__value">
-          {formatTimerLabel(controller.timerState.elapsedMs)}
-        </span>
-        <button
-          className="button button--primary"
-          disabled={disabled || controller.awaitingContinue || !timerRunning}
-          onClick={controller.handleToggleTimer}
-          type="button"
-        >
-          {timerRunning ? "Ferma tempo" : "Timer fermo"}
-        </button>
-      </div>
-
-      <button
-        className="button button--ghost"
-        disabled={disabled || (!canAdvance && !controller.awaitingContinue)}
-        onClick={
-          controller.awaitingContinue
-            ? controller.handleContinue
-            : controller.handleContinueRepeatedReading
-        }
-        type="button"
-      >
-        {controller.awaitingContinue
-          ? "Continua"
-          : state.currentPassIndex + 1 >= state.passCount
-            ? "Salva blocco"
-            : "Prossima lettura"}
       </button>
     </div>
   );
@@ -685,17 +606,6 @@ function ReadingHint({
       <strong>{value}</strong>
     </span>
   );
-}
-
-function formatRepeatedPassLabel(index: number) {
-  if (index === 0) {
-    return "Prima";
-  }
-  if (index === 1) {
-    return "Ripeti";
-  }
-
-  return "Transfer";
 }
 
 function formatTimerLabel(value: number) {

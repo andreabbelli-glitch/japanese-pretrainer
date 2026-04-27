@@ -1480,6 +1480,12 @@ rt {
   overflow-wrap: anywhere;
 }
 
+.katakana-speed-prompt--romaji {
+  font-family: var(--font-family-ui);
+  font-size: clamp(3rem, 2.2rem + 2vw, 5rem);
+  line-height: 1;
+}
+
 .katakana-speed-prompt--hint {
   color: var(--color-ink-muted);
   font-family: var(--font-family-ui);

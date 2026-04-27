@@ -131,6 +131,76 @@ describe("katakana speed session persistence", () => {
     ]);
   });
 
+  it("drops stale repeated reading trials when resuming a session", async () => {
+    await database.insert(katakanaSession).values({
+      createdAt: "2026-04-25T08:00:00.000Z",
+      id: "manual-stale-session",
+      startedAt: "2026-04-25T08:00:00.000Z",
+      status: "active",
+      updatedAt: "2026-04-25T08:00:00.000Z"
+    });
+    await database.insert(katakanaTrial).values({
+      correctItemId: "word-security",
+      itemId: "word-security",
+      mode: "word_naming",
+      optionItemIdsJson: JSON.stringify(["word-security"]),
+      promptSurface: "セキュリティ",
+      sessionId: "manual-stale-session",
+      sortOrder: 20,
+      status: "planned",
+      targetRtMs: 1600,
+      trialId: "manual-supported-word"
+    });
+    await database.$client.execute({
+      args: [
+        "manual-stale-repeated",
+        "manual-stale-session",
+        10,
+        "word-security",
+        "repeated_reading_pass",
+        "セキュリティ",
+        JSON.stringify(["word-security"]),
+        "word-security",
+        1600,
+        "planned"
+      ],
+      sql: `
+        INSERT INTO katakana_trial (
+          trial_id,
+          session_id,
+          sort_order,
+          item_id,
+          mode,
+          prompt_surface,
+          option_item_ids_json,
+          correct_item_id,
+          target_rt_ms,
+          status
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `
+    });
+
+    const data = await getKatakanaSpeedSessionPageData({
+      database,
+      sessionId: "manual-stale-session"
+    });
+
+    expect(data?.trials.map((trial) => trial.trialId)).toEqual([
+      "manual-supported-word"
+    ]);
+    await expect(
+      submitKatakanaSpeedAnswer({
+        database,
+        now: new Date("2026-04-25T08:00:00.300Z"),
+        responseMs: 300,
+        sessionId: "manual-stale-session",
+        trialId: "manual-stale-repeated",
+        userAnswer: "セキュリティ"
+      })
+    ).rejects.toThrow("Unsupported Katakana Speed trial mode.");
+  });
+
   it("submits an answer once, updates item state, and rolls up session counters", async () => {
     const session = await startKatakanaSpeedSession({
       count: 3,
@@ -189,6 +259,104 @@ describe("katakana speed session persistence", () => {
       answeredAt: "2026-04-25T08:00:00.420Z",
       status: "answered"
     });
+  });
+
+  it("ignores stale repeated reading attempts when refreshing rollups", async () => {
+    const session = await startKatakanaSpeedSession({
+      count: 1,
+      database,
+      now: new Date("2026-04-25T08:00:00.000Z"),
+      seed: "stale-rollup"
+    });
+    const trial = session.trials[0];
+    expect(trial).toBeDefined();
+    await database.$client.execute({
+      args: [
+        "manual-rollup-stale-repeated",
+        session.sessionId,
+        10,
+        "word-security",
+        "repeated_reading_pass",
+        "セキュリティ",
+        JSON.stringify(["word-security"]),
+        "word-security",
+        1600,
+        "answered"
+      ],
+      sql: `
+        INSERT INTO katakana_trial (
+          trial_id,
+          session_id,
+          sort_order,
+          item_id,
+          mode,
+          prompt_surface,
+          option_item_ids_json,
+          correct_item_id,
+          target_rt_ms,
+          status
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `
+    });
+    await database.$client.execute({
+      args: [
+        "manual-rollup-stale-attempt",
+        session.sessionId,
+        "manual-rollup-stale-repeated",
+        10,
+        "word-security",
+        "repeated_reading_pass",
+        "セキュリティ",
+        "セキュリティ",
+        "セキュリティ",
+        1,
+        9999,
+        "2026-04-25T08:00:01.000Z"
+      ],
+      sql: `
+        INSERT INTO katakana_attempt_log (
+          id,
+          session_id,
+          trial_id,
+          sort_order,
+          item_id,
+          mode,
+          prompt_surface,
+          expected_answer,
+          user_answer,
+          is_correct,
+          response_ms,
+          created_at
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `
+    });
+
+    await submitKatakanaSpeedAnswer({
+      database,
+      now: new Date("2026-04-25T08:00:02.000Z"),
+      responseMs: 300,
+      sessionId: session.sessionId,
+      trialId: trial.trialId,
+      userAnswer: trial.promptSurface
+    });
+
+    const persistedSession = await database.query.katakanaSession.findFirst({
+      where: eq(katakanaSession.id, session.sessionId)
+    });
+    const recap = await getKatakanaSpeedRecapPageData({
+      database,
+      sessionId: session.sessionId
+    });
+
+    expect(persistedSession).toMatchObject({
+      correctAttempts: 1,
+      medianRtMs: 300,
+      p90RtMs: 300,
+      totalAttempts: 1
+    });
+    expect(recap?.attempts.map((attempt) => attempt.responseMs)).toEqual([300]);
   });
 
   it("keeps duplicate submit for one trial idempotent", async () => {
