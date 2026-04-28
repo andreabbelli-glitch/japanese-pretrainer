@@ -1763,12 +1763,14 @@ rt {
   aspect-ratio: 1;
   display: grid;
   place-items: center;
+  align-content: center;
+  gap: 0.18rem;
   border: 1px solid rgba(210, 197, 177, 0.76);
   border-radius: var(--radius-md);
   background: rgba(255, 250, 242, 0.9);
   color: var(--color-ink-strong);
   font-family: var(--font-family-jp);
-  font-size: clamp(1.35rem, 0.95rem + 1.4vw, 2.4rem);
+  font-size: clamp(2rem, 1.55rem + 1.8vw, 3.35rem);
   line-height: 1;
   position: relative;
   transition:

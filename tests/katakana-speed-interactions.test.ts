@@ -464,7 +464,7 @@ describe("katakana speed session controller", () => {
     expect(
       (latestController as unknown as KatakanaSpeedSessionControllerResult)
         .ranWrongCellIndexes
-    ).toEqual([]);
+    ).toEqual([6]);
 
     now += 12_500;
     await act(async () => {
@@ -483,9 +483,6 @@ describe("katakana speed session controller", () => {
       (
         latestController as unknown as KatakanaSpeedSessionControllerResult
       ).handleToggleRanWrongCell(18);
-      (
-        latestController as unknown as KatakanaSpeedSessionControllerResult
-      ).handleToggleRanWrongCell(6);
       await Promise.resolve();
     });
 
@@ -560,6 +557,58 @@ describe("katakana speed session controller", () => {
       (latestController as unknown as KatakanaSpeedSessionControllerResult)
         .completed
     ).toBe(true);
+  });
+
+  it("keeps RAN cell error marking available while the timer is running", async () => {
+    let now = 15_000;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+
+    let latestController: KatakanaSpeedSessionControllerResult | null = null;
+
+    function Probe(props: { session: StartKatakanaSpeedSessionResult }) {
+      const controller = useKatakanaSpeedSessionController(props.session);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(createElement(Probe, { session: buildRanSession() }));
+      await Promise.resolve();
+    });
+
+    let controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.timerState.phase).toBe("running");
+    expect(controller.ranCanMarkErrors).toBe(true);
+
+    await act(async () => {
+      controller.handleToggleRanWrongCell(3);
+      controller.handleToggleRanWrongCell(12);
+      await Promise.resolve();
+    });
+
+    controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.ranWrongCellIndexes).toEqual([3, 12]);
+
+    now += 1_700;
+    await act(async () => {
+      dispatchWindowKeyboardEvent("Enter");
+      await Promise.resolve();
+    });
+
+    controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.timerState.phase).toBe("stopped");
+    expect(controller.ranCanMarkErrors).toBe(true);
+    expect(controller.ranWrongCellIndexes).toEqual([3, 12]);
   });
 
   it("does not let Space stop or restart the RAN timer from a focused cell", async () => {

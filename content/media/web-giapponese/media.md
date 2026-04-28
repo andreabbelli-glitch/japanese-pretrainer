@@ -1,21 +1,21 @@
 ---
 id: media-web-giapponese
 slug: web-giapponese
-title: Web giapponese
-media_type: web
-segment_kind: site
+title: Giapponese random
+media_type: random
+segment_kind: segment
 language: ja
 base_explanation_language: it
 status: active
-tags: [web, siti, lettura, ui]
+tags: [random, web, videogiochi, screenshot, ui]
 description: >-
-  Pagine web giapponesi reali con navigation, label, filtri, tab e box
-  risultati: mokuji, hyoka, seino e tsukaimichi distinguono indice, giudizio,
-  dati e contesti d'uso.
+  Frammenti giapponesi incontrati in giro: pagine web, schermate di gioco,
+  tutorial, menu e label operative da trasformare in textbook e review.
 ---
 
-# Web giapponese
+# Giapponese random
 
-Le pagine sono trattate come interfacce da leggere: {{目次|もくじ}} apre
-l'indice, {{評価|ひょうか}} riassume un giudizio, {{性能|せいのう}} presenta dati
-del kit e {{使|つか}}い{{道|みち}} sposta la lettura sugli scenari d'uso.
+Ogni frammento viene trattato come testo reale da leggere nel suo contesto:
+{{目次|もくじ}} apre un indice, {{評価|ひょうか}} riassume un giudizio,
+{{性能|せいのう}} presenta dati del kit e [{{攻略|こうりゃく}}](term:term-kouryaku)
+può indicare una guida oppure il superamento concreto di una sfida.

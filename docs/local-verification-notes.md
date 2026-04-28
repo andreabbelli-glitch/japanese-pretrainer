@@ -124,8 +124,8 @@ non sostituisce un audit completo e aggiornato del codice.
 - Settings mostra anche lo stato read-only dell'optimizer FSRS, inclusi ultimo
   training riuscito, review nuove accumulate e stato dei preset `recognition` /
   `concept`.
-- Il media `web-giapponese` resta navigabile nelle route principali con lesson
-  reali e senza contenuti bootstrap residui.
+- Il media `web-giapponese` resta navigabile come `Giapponese random` nelle
+  route principali, con lesson reali e senza contenuti bootstrap residui.
 
 ## Comando E2E
 

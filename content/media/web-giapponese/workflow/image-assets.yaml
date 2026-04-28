@@ -169,3 +169,20 @@ assets:
       arriva solo dopo l'immissione.
     notes: >-
       Element screenshot reale preso con Playwright dal riquadro di destra.
+  - id: puzzle-dragons-tutorial-kouryaku
+    src: assets/puzzle-dragons-tutorial-kouryaku.jpg
+    source_type: screenshot
+    width: 1179
+    height: 1709
+    lesson_slug: 040-puzzle-dragons-tutorial-kouryaku
+    anchor: "Il tutorial invita ad affrontare anche questo dungeon."
+    alt_it: >-
+      Schermata tutorial di Puzzle and Dragons con dialogo su recupero HP e
+      dungeon.
+    caption_it: >-
+      Dopo `HPが{{回復|かいふく}}したよ！`, il tutorial dice
+      `それじゃ、このダンジョンも[{{攻略|こうりゃく}}](term:term-kouryaku)してみよう！`:
+      non sta nominando una guida, ma invita ad affrontare e completare il
+      dungeon.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.

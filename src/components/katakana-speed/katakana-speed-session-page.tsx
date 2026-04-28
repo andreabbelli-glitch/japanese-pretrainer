@@ -295,7 +295,7 @@ export function KatakanaSpeedSessionPage({
                     : currentTrialHasRomajiPrompt
                       ? "Il romaji e gia il prompt."
                       : controller.isRanGridTrial
-                        ? "Dopo Stop, per controllare il reading."
+                        ? "Durante la griglia, per controllare subito."
                         : "Dopo risposta, per controllare il reading."}
                 </small>
               </span>
@@ -480,7 +480,7 @@ function RanGridControls({
         <p className="katakana-speed-ran-errors" aria-live="polite">
           <span>
             {controller.ranCanMarkErrors
-              ? "Marca le celle sbagliate"
+              ? "Clicca subito le celle sbagliate"
               : "Dopo Stop: marca errori"}
           </span>
           <strong>Errori: {controller.ranErrorCount}</strong>

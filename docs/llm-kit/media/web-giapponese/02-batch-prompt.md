@@ -1,53 +1,58 @@
-# Prompt - Web giapponese Pagina singola
+# Prompt - Giapponese random Item singolo
 
 Usa questo prompt con l'LLM esterno o come base di lavoro per l'agente che
-genera una singola pagina del media `web-giapponese`.
+genera un singolo item del media tecnico `web-giapponese`.
 
 ```text
 Stai producendo contenuti per una webapp privata di studio del giapponese.
 Devi restituire SOLO file Markdown o YAML conformi alla specifica fornita.
 
 Contesto del progetto:
-- Il media visibile e `Web giapponese`.
+- Il media visibile e `Giapponese random`.
 - Lo slug tecnico resta `web-giapponese`.
-- Ogni lesson reale corrisponde a una singola pagina web giapponese.
+- Ogni lesson reale corrisponde a un item concreto incontrato dall'utente:
+  pagina web, screenshot, prompt di gioco, schermata UI, carta, rules panel o
+  piccolo flow.
 - Il focus primario e insegnare giapponese leggibile e riusabile, non
-  documentare il sito come prodotto.
-- La fonte primaria e la pagina renderizzata nel browser.
+  documentare la fonte come prodotto.
+- La fonte primaria e l'item visibile: pagina renderizzata, screenshot locale,
+  testo copiato o immagine allegata.
 
 Input richiesto:
-- URL della pagina pubblica;
+- URL pubblica, screenshot locale/allegato o testo copiato dall'item;
 - seed terms o seed phrases da coprire obbligatoriamente.
 
 Input opzionali:
-- testo copiato dalla pagina;
-- focus area come navbar, filtri, tab, tabella, box risultati, badge, header;
-- nota sul punto di difficolta percepito dall'utente.
+- focus area come navbar, filtri, tab, tabella, box risultati, badge, header,
+  finestra tutorial, prompt, label UI o rules text;
+- nota sul punto di difficolta percepito dall'utente;
+- trascrizione manuale quando OCR o screenshot non bastano.
 
 Vincoli didattici obbligatori:
-- la lesson deve restare centrata su una pagina reale, non su una overview
-  astratta del sito;
+- la lesson deve restare centrata su un item reale, non su una overview
+  astratta della fonte;
 - copri sempre i seed terms richiesti;
 - puoi aggiungere al massimo 5 flashcard extra automatiche;
 - le extra devono essere N5-N3 oppure estremamente comuni e davvero utili;
-- non promuovere automaticamente a flashcard i label molto verticali del sito;
+- non promuovere automaticamente a flashcard i label molto verticali della
+  fonte;
 - se un termine esiste gia in altri media, crea una nuova occorrenza locale
   solo se qui aggiunge sfumatura, esempio o card utile; il glossary/review
   globale verra unito automaticamente dalla superficie normalizzata;
 - se la sfumatura locale cambia davvero, esplicitala in `notes_it`;
-- riusa una frase vera della pagina come `example_jp` solo se la frase completa
+- riusa una frase vera della fonte come `example_jp` solo se la frase completa
   resta leggibile col corpus gia coperto; altrimenti crea un esempio
   semplificato ma fedele al contesto.
 - se la entry e stata estratta da una locuzione piu lunga e da sola non
-  compare in modo autonomo nella pagina, crea una frase nuova ma naturale che
-  la usi bene nel dominio del sito.
+  compare in modo autonomo nella fonte, crea una frase nuova ma naturale che
+  la usi bene nel dominio dell'item.
 - `example_jp` deve mostrare uso vivo della entry, non spiegarla: vietate
   frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
   `Xという言葉は...`; se devi spiegare famiglia lessicale o composizione,
   fallo in `notes_it`, non in `example_jp`.
 
 Politica immagini:
-- prevedi una snapshot generale orientativa della pagina;
+- prevedi una snapshot generale orientativa o usa lo screenshot fornito;
 - prevedi crop mirati solo per i punti spiegati davvero;
 - aggiorna `workflow/image-requests.yaml` e `workflow/image-assets.yaml` con
   criterio editoriale, non come semplice lista tecnica;
@@ -78,16 +83,16 @@ Regole di formato obbligatorie:
 - `notes_it`, `summary`, `description` e prose YAML vanno serializzati in modo
   sicuro (`>-` oppure stringhe quotate quando opportuno).
 - Le spiegazioni devono chiarire significato reale + effetto concreto sulla
-  lettura della pagina.
+  lettura dell'item.
 - Non scrivere meta-discorso sul workflow o sulla lesson come oggetto.
 - Restituisci solo il contenuto dei file richiesti, senza commenti extra.
 
 Media:
 - id: media-web-giapponese
 - slug: web-giapponese
-- title: Web giapponese
-- media_type: web
-- segment_kind: site
+- title: Giapponese random
+- media_type: random
+- segment_kind: segment
 
 Documenti da seguire:
 - docs/llm-kit/general/01-content-format.md

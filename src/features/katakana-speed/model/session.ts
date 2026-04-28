@@ -740,30 +740,26 @@ function buildRanGridSurfaces(input: {
   const focusedSurfaces = getItemsForFocus({
     focus: input.focus,
     includeRare: false,
-    kind: ["single_kana", "core_mora", "extended_chunk", "word"]
-  }).map((item) => item.surface);
-  const moraFocusSurfaces =
-    input.focus.kind === "mora_contrast" &&
-    isMoraContrastFocusId(input.focus.id)
-      ? getMoraContrastPairsForFocus(input.focus.id).map(
-          (pair) => pair.correctSurface
-        )
-      : [];
+    kind: ["single_kana", "core_mora", "extended_chunk"]
+  })
+    .map((item) => item.surface)
+    .filter(isRanKanaUnitSurface);
   const sourceSurfaces = getKatakanaSpeedCatalog()
     .filter(
       (item) =>
         item.rarity !== "rare" &&
         (item.kind === "single_kana" ||
           item.kind === "core_mora" ||
-          item.kind === "extended_chunk")
+          item.kind === "extended_chunk") &&
+        isRanKanaUnitSurface(item.surface)
     )
     .map((item) => item.surface);
   const prioritySurfaces = stableShuffle(
-    uniqueDisplayableSurfaces([...moraFocusSurfaces, ...focusedSurfaces]),
+    uniqueRanKanaUnitSurfaces(focusedSurfaces),
     `${input.seed}:ran-priority`
   );
   const fillerSurfaces = stableShuffle(
-    uniqueDisplayableSurfaces(sourceSurfaces).filter(
+    uniqueRanKanaUnitSurfaces(sourceSurfaces).filter(
       (surface) => !prioritySurfaces.includes(surface)
     ),
     `${input.seed}:ran-source`
@@ -1011,6 +1007,24 @@ function uniqueDisplayableSurfaces(surfaces: readonly string[]) {
 function isDisplayableRanCellSurface(surface: string) {
   return (
     isKatakanaOptionSurface(surface) && surface !== "ー" && surface !== "ッ"
+  );
+}
+
+function uniqueRanKanaUnitSurfaces(surfaces: readonly string[]) {
+  return [...new Set(surfaces)].filter(isRanKanaUnitSurface);
+}
+
+function isRanKanaUnitSurface(surface: string) {
+  const chars = [...surface];
+
+  if (chars.length === 1) {
+    return /^[ァ-ヴン]$/u.test(chars[0] ?? "");
+  }
+
+  return (
+    chars.length === 2 &&
+    /^[ァ-ヴ]$/u.test(chars[0] ?? "") &&
+    /^[ァィゥェォャュョ]$/u.test(chars[1] ?? "")
   );
 }
 

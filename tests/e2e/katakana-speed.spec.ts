@@ -118,7 +118,19 @@ test("starts a manual RAN Grid exercise with varied cells", async ({
   expect(
     new Set(cellSurfaces.map((surface) => surface.trim())).size
   ).toBeGreaterThanOrEqual(8);
-  expect(cellSurfaces.map((surface) => surface.trim())).not.toContain("ー");
+  expect(
+    cellSurfaces.map((surface) => surface.trim()).every(isRanKanaUnit)
+  ).toBe(true);
+  expect(cellSurfaces.every((surface) => !/[ーッ]/u.test(surface))).toBe(true);
+
+  await page.keyboard.press("Space");
+  await expect(
+    page.locator(".katakana-speed-ran-cell .katakana-speed-reading-hint strong")
+  ).toHaveCount(25);
+
+  const firstCell = page.locator(".katakana-speed-ran-cell").first();
+  await firstCell.click();
+  await expect(firstCell).toHaveAttribute("aria-pressed", "true");
 });
 
 test("keeps low-value legacy modes out of the picker", async ({ page }) => {
@@ -141,3 +153,28 @@ test("keeps low-value legacy modes out of the picker", async ({ page }) => {
   await expect(page.getByRole("button", { name: /^Chunk$/ })).toHaveCount(0);
   await expect(page.getByRole("button", { name: /^Rare$/ })).toHaveCount(0);
 });
+
+const SMALL_KATAKANA = new Set([
+  "ァ",
+  "ィ",
+  "ゥ",
+  "ェ",
+  "ォ",
+  "ャ",
+  "ュ",
+  "ョ"
+]);
+
+function isRanKanaUnit(surface: string) {
+  const chars = [...surface];
+
+  if (chars.length === 1) {
+    return /^[ァ-ヴン]$/u.test(chars[0] ?? "");
+  }
+
+  return (
+    chars.length === 2 &&
+    /^[ァ-ヴ]$/u.test(chars[0] ?? "") &&
+    SMALL_KATAKANA.has(chars[1] ?? "")
+  );
+}

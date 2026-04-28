@@ -248,7 +248,7 @@ export function useKatakanaSpeedSessionController(
     });
   }, [currentBlockTrials, currentTrial, isRanGridTrial]);
   const ranCanMarkErrors =
-    isRanGridTrial && timerState.phase === "stopped" && !awaitingContinue;
+    isRanGridTrial && timerState.phase !== "idle" && !awaitingContinue;
   const ranErrorCount = ranWrongCellIndexes.length;
 
   const handleToggleTimer = useCallback(() => {
@@ -459,7 +459,7 @@ export function useKatakanaSpeedSessionController(
     (index: number) => {
       if (
         !isRanGridTrial ||
-        timerState.phase !== "stopped" ||
+        timerState.phase === "idle" ||
         awaitingContinue ||
         submittingRef.current
       ) {

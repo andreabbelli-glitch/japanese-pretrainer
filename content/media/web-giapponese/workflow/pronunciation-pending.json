@@ -1,9 +1,16 @@
 {
   "version": 1,
   "media_slug": "web-giapponese",
-  "total_targets": 35,
+  "total_targets": 36,
   "audio_backed_count": 33,
   "known_missing_count": 2,
-  "pending_count": 0,
-  "pending": []
+  "pending_count": 1,
+  "pending": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-kouryaku",
+      "label": "攻略",
+      "reading": "こうりゃく"
+    }
+  ]
 }

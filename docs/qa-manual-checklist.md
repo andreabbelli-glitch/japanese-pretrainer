@@ -68,10 +68,12 @@
   manuale su `Da rifare`; `Space` puo mostrare/nascondere il romaji prima del
   rating.
 - `Katakana Speed`: `Griglia` mostra una griglia 5x5 leggibile anche su mobile,
-  con superfici concrete e mai solo marker isolati come `ー`; fa partire
-  automaticamente il timer, usa `Enter` per fermare/salvare, permette di
-  segnare le celle sbagliate solo dopo lo stop, deriva il count errori dalle
-  celle selezionate e registra `items/sec` con posizioni evidenziate nel recap.
+  con singoli kana o chunk con piccoli kana, mai parole intere o marker isolati
+  come `ー`; fa partire automaticamente il timer, usa `Space` per
+  mostrare/nascondere la lettura, usa `Enter` per fermare/salvare, permette di
+  segnare subito le celle sbagliate anche prima dello stop, deriva il count
+  errori dalle celle selezionate e registra `items/sec` con posizioni
+  evidenziate nel recap.
 - `Katakana Speed`: `Abbandona e salva recap` e il completamento naturale
   portano a `/katakana-speed/recap/[sessionId]`, con attempt log e metriche
   coerenti con le risposte date.
@@ -199,8 +201,9 @@
 - Media secondario: aprendo `Mobile Suit Gundam Arsenal Base`, textbook,
   glossary globale filtrato e progress risultano navigabili senza errori o
   stati vuoti incoerenti.
-- Media `Web giapponese`: detail, textbook, glossary globale filtrato e review aprono senza
-  errori; il textbook espone le lesson reali generate dal workflow web.
+- Media `Giapponese random` (`web-giapponese`): detail, textbook, glossary
+  globale filtrato e review aprono senza errori; il textbook espone le lesson
+  reali generate dal workflow random/web.
 
 ## Stati e resilienza
 

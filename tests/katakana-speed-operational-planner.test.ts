@@ -138,7 +138,7 @@ describe("katakana speed operational session planning", () => {
     ).toEqual([trial!.expectedSurface]);
   });
 
-  it("builds long-vowel RAN grids from concrete varied surfaces", () => {
+  it("builds long-vowel RAN grids from kana-sized surfaces only", () => {
     const initial = createInitialKatakanaSpeedState({
       now: "2026-04-26T08:00:00.000Z"
     });
@@ -167,14 +167,11 @@ describe("katakana speed operational session planning", () => {
     expect(Array.isArray(gridSurfaces)).toBe(true);
     const surfaces = gridSurfaces as string[];
     expect(surfaces).toHaveLength(25);
-    expect(surfaces).not.toContain("ー");
     expect(new Set(surfaces).size).toBeGreaterThanOrEqual(8);
-    expect(surfaces.every((surface) => /[\u30a1-\u30ff]/u.test(surface))).toBe(
-      true
-    );
-    expect(
-      surfaces.some((surface) => surface.length > 1 && surface.includes("ー"))
-    ).toBe(true);
+    expect(surfaces.every(isReadableRanKanaUnit)).toBe(true);
+    expect(surfaces.some((surface) => [...surface].length > 1)).toBe(true);
+    expect(surfaces.every((surface) => !/[ーッ]/u.test(surface))).toBe(true);
+    expect(surfaces).not.toContain("サーバー");
   });
 
   it("builds repair as focused contrast, reading, final contrast", () => {
@@ -422,4 +419,29 @@ function optionSurfaces(optionItemIds: readonly string[]) {
     const optionItem = getKatakanaSpeedItemById(optionId);
     return optionItem?.surface ?? decodeKatakanaSpeedRawOption(optionId);
   });
+}
+
+const SMALL_KATAKANA = new Set([
+  "ァ",
+  "ィ",
+  "ゥ",
+  "ェ",
+  "ォ",
+  "ャ",
+  "ュ",
+  "ョ"
+]);
+
+function isReadableRanKanaUnit(surface: string) {
+  const chars = [...surface];
+
+  if (chars.length === 1) {
+    return /^[ァ-ヴン]$/u.test(chars[0] ?? "");
+  }
+
+  return (
+    chars.length === 2 &&
+    /^[ァ-ヴ]$/u.test(chars[0] ?? "") &&
+    SMALL_KATAKANA.has(chars[1] ?? "")
+  );
 }

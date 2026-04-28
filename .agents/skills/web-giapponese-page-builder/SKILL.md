@@ -1,9 +1,9 @@
 ---
 name: web-giapponese-page-builder
-description: Use when the user wants to create or revise a Japanese Web study page in the Japanese Custom Study repo from a public URL, with textbook content, flashcards, and screenshot assets derived from the rendered page.
+description: Use when the user wants to create or revise a Giapponese random study item in the Japanese Custom Study repo from a public URL, screenshot, copied UI text, game prompt, card/rules text, with textbook content, flashcards, and screenshot assets.
 ---
 
-# Web Giapponese Page Builder
+# Giapponese Random Item Builder
 
 Use this skill inside:
 
@@ -14,10 +14,11 @@ This repo-scoped skill is versioned at
 
 Trigger this skill when the request is like:
 
-- add a new page to `web-giapponese`;
-- turn this Japanese URL into a textbook lesson and flashcards;
-- study this site page;
-- generate screenshots and crops for a web page lesson.
+- add a new item to `web-giapponese`;
+- turn this Japanese URL, screenshot, UI prompt, game text or card text into a
+  textbook lesson and flashcards;
+- study this source page or in-game screenshot;
+- generate screenshots and crops for a random/web lesson.
 
 ## Required grounding
 
@@ -34,25 +35,29 @@ Before writing content, read:
 
 Required:
 
-- public URL;
+- public URL, screenshot path/attachment, copied UI text, game prompt or card
+  text;
 - seed terms or seed phrases that must become study material.
 
 Optional:
 
-- copied page text;
-- focus areas like navbar, filters, tabs, table, result box, badges, ranking;
-- short note describing what is hard about the page.
+- copied page text or manual transcription;
+- focus areas like navbar, filters, tabs, table, result box, badges, ranking,
+  dialog box, tutorial prompt, rules text;
+- short note describing what is hard about the item.
 
 ## Canonical workflow
 
-1. Open the page in a real browser and treat the rendered page as the primary
-   source of truth.
-2. Identify the site section slug using `domain + thematic area` when a plain
-   domain would be too broad.
+1. Identify the concrete source item. For web pages, open the page in a real
+   browser and treat the rendered page as the primary source of truth. For
+   screenshots or attached images, treat the provided image plus visible text as
+   the source of truth.
+2. Identify the section slug using the source/game/app plus thematic area when a
+   plain source name would be too broad.
 3. Capture:
-   - one overview screenshot that helps remember the page;
+   - one overview screenshot or the provided image that helps remember the item;
    - only the crops that directly support the explanation.
-4. Draft one lesson file for the page and one cards file for the page.
+4. Draft one lesson file for the item and one cards file for the item.
 5. Save screenshot assets under `content/media/web-giapponese/assets/`.
 6. Update:
    - `content/media/web-giapponese/workflow/image-requests.yaml`
@@ -75,9 +80,9 @@ Optional:
 
 ## Editorial rules
 
-- A real lesson maps to one real page, not to a site overview.
-- Keep the lesson focused on teaching Japanese, not on reviewing the website as
-  a product.
+- A real lesson maps to one real item, not to a source overview.
+- Keep the lesson focused on teaching Japanese, not on reviewing the website,
+  game, app or card product.
 - For learner-facing card text, keep the written Japanese surface, not a
   hiragana-only fallback. If a term is normally written with kanji, author the
   visible `front` with kanji plus furigana markup, because review surfaces show
@@ -85,10 +90,10 @@ Optional:
 - Seed terms are mandatory.
 - Automatic extra flashcards are capped at `5`.
 - Automatic extras must be N5-N3 or extremely common and genuinely useful.
-- Do not automatically promote highly site-specific labels into flashcards.
+- Do not automatically promote highly source-specific labels into flashcards.
   Only do that when the user explicitly asks.
 - If a term already exists in another media, create a local occurrence when this
-  page adds a useful nuance, example, or review card.
+  item adds a useful nuance, example, or review card.
 - A card's `entry_id` must represent the full review surface trained by its
   `front`, not merely a shorter lemma contained inside that front. If the front
   is a longer UI phrase, chunk, or inflected form, create or reuse a dedicated
@@ -98,10 +103,10 @@ Optional:
   surface. `cross_media_group` is optional documentary metadata only; do not use
   it to force a merge or split.
 - When the local nuance changes, state that clearly in `notes_it`.
-- Reuse a full sentence from the page as `example_jp` only when the whole
+- Reuse a full sentence from the source as `example_jp` only when the whole
   sentence stays readable with already-covered material; otherwise write a
-  simpler example that still matches the page context.
-- If a page introduces a high-risk shared-kanji contrast that may matter for
+  simpler example that still matches the item context.
+- If an item introduces a high-risk shared-kanji contrast that may matter for
   Kanji Clash later, keep the local entry canonical and avoid creating a
   duplicate study card solely to mirror the contrast. See
   `docs/kanji-clash.md` for the workspace contract.
@@ -114,15 +119,15 @@ Optional:
 
 ## Screenshot rules
 
-- One overview image per page.
+- One overview image per item.
 - Crops only where the textbook actually explains something.
 - Favor visible text and layout that clarify function: navbar, filters, tabs,
-  table headers, badges, result boxes, CTA labels.
+  table headers, badges, result boxes, CTA labels, prompt text or rules text.
 - Do not insert `:::image` blocks with invented `src` values.
 
 ## Output targets
 
-Typical files for one page:
+Typical files for one item:
 
 - `content/media/web-giapponese/textbook/<order>-<page-slug>.md`
 - `content/media/web-giapponese/cards/<order>-<page-slug>.md`
@@ -140,7 +145,7 @@ For browser capture and inspection, use:
 
 ## Verification
 
-For the normal page-builder workflow, where the diff is limited to
+For the normal item-builder workflow, where the diff is limited to
 `content/media/web-giapponese/**` lesson/card/asset/workflow/pronunciation files
 and no app code, parser, importer, routing, DB schema, auth, cache, or UI code
 changed, do not run the full `pnpm check` or `pnpm release:check` suites.
@@ -164,7 +169,7 @@ If `pitch-accents:fetch` creates or updates
 `content/media/web-giapponese/pronunciations.json`, keep that file in the same
 change set as the lesson and cards.
 
-Do not run a whole-media pitch accent fetch for normal page-builder batches.
+Do not run a whole-media pitch accent fetch for normal item-builder batches.
 Use the whole-media form only when the user explicitly asks to backfill the
 media backlog.
 

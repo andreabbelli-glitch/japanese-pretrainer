@@ -85,8 +85,9 @@ I trial persistiti usano i mode DB esistenti:
 - raw-choice text-only per contrast choice e mora contrast. Le opzioni raw sono
   codificate nel piano della sessione e corrette contro `expected_surface`,
   senza richiedere item catalogo fittizi.
-- `ran_grid`: griglia 5x5 con timer totale, celle sbagliate marcabili dopo
-  stop e risultato aggregato con posizioni 0-based canonizzate.
+- `ran_grid`: griglia 5x5 con timer totale, superfici limitate a singoli kana
+  o chunk con piccoli kana, celle sbagliate marcabili anche durante il timer e
+  risultato aggregato con posizioni 0-based canonizzate.
 
 Ogni trial V2 salva in `featuresJson`/`metricsJson` metadata derivabili senza
 migration: `focusId`, `exerciseFamily`, `correctnessSource`,
@@ -100,12 +101,12 @@ Non sono inclusi audio, voice recognition, shadowing, export, chart avanzate o
 integrazione con `/review`. Dashboard e recap mostrano superfici kana e metriche
 diagnostiche azionabili. Nelle sessioni il romaji resta nascosto di default;
 `Space` e il toggle `Mostra lettura` lo mostrano o nascondono prima del rating
-nei self-check, dopo feedback nei choice drill e dopo stop nella RAN Grid. Nei
-trial inversi il romaji e gia il prompt: gli hint romaji sulle opzioni e il
-toggle lettura sono disabilitati per non rivelare la risposta.
-La RAN Grid non usa mai marker isolati come `ー` o `ッ` come celle: quando il
-focus è moraico pesca superfici concrete dal word bank e dai pair curati, poi
-completa la griglia con kana/chunk displayable e shuffle seed-driven.
+nei self-check, dopo feedback nei choice drill e durante la RAN Grid. Nei trial
+inversi il romaji e gia il prompt: gli hint romaji sulle opzioni e il toggle
+lettura sono disabilitati per non rivelare la risposta.
+La RAN Grid non usa parole, pseudoparole, marker isolati come `ー` o `ッ`, né
+segmenti multi-mora come celle: completa la griglia con singoli kana o chunk
+con piccoli kana e shuffle seed-driven.
 
 Le aggiunte manuali alla banca parole passano dalla skill repo-scoped
 `.agents/skills/katakana-speed-word-bank`, che aggiorna solo
@@ -154,14 +155,15 @@ riprese partono dal primo trial non ancora risposto usando `answeredCount`.
    costruzione tessere, chunk spotting standalone o varianti normative.
 5. Durante il trial il romaji parte nascosto. `Space` o il toggle dedicato
    mostrano/nascondono la lettura nei self-check prima del rating, nei choice
-   drill dopo feedback e nella RAN Grid dopo lo stop; il timer parte
-   automaticamente nei drill temporizzati.
+   drill dopo feedback e nella RAN Grid anche mentre il timer corre; il timer
+   parte automaticamente nei drill temporizzati.
 6. I self-check drill usano `1`-`3` per il rating: `clean` e `hesitated`
    avanzano automaticamente dopo il salvataggio, `wrong` resta sul trial con
    feedback e richiede `Enter` o `Continua`.
 7. RAN usa `Enter` per fermare il timer e poi salvare la griglia. Tap/click
-   sulle celle sbagliate sono abilitati solo dopo lo stop; se ci sono celle
-   segnate come errore, il feedback resta visibile fino al continue manuale.
+   sulle celle sbagliate sono abilitati mentre il timer corre e restano
+   modificabili dopo lo stop; se ci sono celle segnate come errore, il feedback
+   resta visibile fino al continue manuale.
 8. A fine sessione o con `Abbandona e salva recap`, il rollup viene scritto in
    `katakana_session` e il recap resta raggiungibile.
 9. Dashboard e recap derivano analytics server-side da log e snapshot gia

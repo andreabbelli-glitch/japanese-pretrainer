@@ -91,9 +91,9 @@ export function getKatakanaSpeedTrialCopy(
   if (trial.mode === "ran_grid") {
     return {
       controls:
-        "Il timer parte da solo. Enter ferma o salva; Space mostra/nasconde la lettura.",
+        "Il timer parte da solo. Space mostra/nasconde la lettura; clic segna un errore; Enter ferma o salva.",
       instruction:
-        "Leggi tutte le celle da sinistra a destra, riga per riga. Ferma il timer, segna le celle sbagliate e salva.",
+        "Leggi i kana da sinistra a destra, riga per riga. Se sbagli una cella, cliccala subito; alla fine ferma il timer e salva.",
       label: "Griglia di velocita"
     };
   }
