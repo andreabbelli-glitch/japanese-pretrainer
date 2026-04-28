@@ -55,11 +55,27 @@ dei giochi, ma non va tradotta sempre nello stesso modo. Come nome, vicino a
 strategia o walkthrough. Con un bersaglio giocabile come `ダンジョン`, invece,
 il centro diventa l'azione: affrontare la sfida, superarla, arrivare al clear.
 
+Le accezioni principali partono tutte dall'idea di “attaccare un obiettivo e
+portarlo sotto controllo”. In senso letterale può voler dire conquistare una
+fortezza o una posizione nemica: lì “conquistare” è la traduzione più diretta.
+In senso operativo diventa “risolvere/superare” un problema difficile, una
+prova o un punto debole. Nel lessico dei giochi, `ステージを{{攻略|こうりゃく}}する`,
+`ボスを{{攻略|こうりゃく}}する` e `ダンジョンを{{攻略|こうりゃく}}する` parlano del
+clear: entri nella sfida, trovi il modo giusto di giocarla e la completi.
+Quando [{{攻略|こうりゃく}}](term:term-kouryaku) modifica un nome come `サイト`,
+`{{情報|じょうほう}}`, `{{記事|きじ}}`, `{{本|ほん}}` o `{{法|ほう}}`, non indica
+più l'azione in corso ma il contenuto strategico: guida, informazioni, articolo
+o metodo di soluzione. In contesti di route, dating sim o fan talk può anche
+suonare come “conquistare/ottenere” un personaggio o una route, cioè riuscire a
+raggiungere quel bersaglio narrativo.
+
 In `このダンジョンも[{{攻略|こうりゃく}}](term:term-kouryaku)してみよう`, l'oggetto
 è `このダンジョン`, quindi il senso naturale è “proviamo ad affrontare e
-completare anche questo dungeon”. Il `も` aggiunge “anche”: dopo aver recuperato
-HP, il tutorial tratta il dungeon successivo come un altro obiettivo da provare,
-non come una spiegazione teorica.
+completare anche questo dungeon”. Una resa più libera come “Proviamo a
+conquistarlo!” funziona se vuoi mantenere un tono da gioco, ma aggiunge un
+colore più epico rispetto al tutorial. Il `も` aggiunge “anche”: dopo aver
+recuperato HP, il tutorial tratta il dungeon successivo come un altro obiettivo
+da provare, non come una spiegazione teorica.
 
 `〜してみよう` rende l'invito meno secco di un comando. `して` collega
 [{{攻略|こうりゃく}}](term:term-kouryaku) al verbo `みる`, che qui significa
@@ -86,5 +102,7 @@ translation_it: >-
 
 Quando [{{攻略|こうりゃく}}](term:term-kouryaku) modifica `サイト`,
 `{{情報|じょうほう}}` o `{{記事|きじ}}`, pensa a una guida o a contenuto
-strategico. Quando prende come oggetto un dungeon, uno stage o una quest,
-leggi invece il movimento pratico: entrare nella sfida e cercare di superarla.
+strategico. Quando prende come oggetto un dungeon, uno stage, un boss o una
+quest, leggi invece il movimento pratico: entrare nella sfida e cercare di
+superarla. “Conquistare” resta una buona immagine mentale, purché non faccia
+dimenticare che nei giochi spesso il risultato concreto è clearare.

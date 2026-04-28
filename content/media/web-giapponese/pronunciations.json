@@ -137,6 +137,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-kouryaku",
+      "audio_src": "assets/audio/term/term-kouryaku/forvo-manual-こうりゃく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%94%BB%E7%95%A5/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%94%BB%E7%95%A5",
