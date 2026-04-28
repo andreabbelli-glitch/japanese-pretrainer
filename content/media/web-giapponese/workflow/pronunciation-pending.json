@@ -1,9 +1,9 @@
 {
   "version": 1,
   "media_slug": "web-giapponese",
-  "total_targets": 36,
-  "audio_backed_count": 34,
-  "known_missing_count": 2,
+  "total_targets": 39,
+  "audio_backed_count": 36,
+  "known_missing_count": 3,
   "pending_count": 0,
   "pending": []
 }

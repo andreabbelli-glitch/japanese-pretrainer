@@ -5,6 +5,10 @@ pronunce MP3 e inserirle nel bundle locale. Nel flusso operativo standard usa
 `--manual` nel browser normale; il percorso browser dedicato resta per debug o
 manutenzione del fetcher.
 
+La modalita manuale richiede un TTY interattivo. In Codex il comando va avviato
+con `tty: true`, altrimenti viene rifiutato prima di aprire Forvo: senza TTY non
+puo esporre in modo affidabile il controllo browser `/skip`.
+
 Per richieste operative ad alto livello come `review`, `next-lesson` o
 `lesson-url`, l'entry point standard e ora
 `pnpm pronunciations:resolve`. `pnpm pronunciations:forvo` resta il comando
@@ -98,6 +102,8 @@ Per i batch reali usa sempre `--manual`:
 - mentre aspetta espone anche un URL locale, di default
   `http://127.0.0.1:3210/skip`, che puoi richiamare da browser per saltare senza
   tornare al terminale.
+- il prefill `word-add` e obbligatorio: gli skip devono sempre aprire la
+  richiesta gia precompilata e registrarla nello storico.
 
 Opzioni utili:
 
@@ -109,8 +115,9 @@ Opzioni utili:
   `word-add` gia aperte;
 - `--retry-known-missing`: riprova anche le voci gia marcate come missing; vale
   sia per `pnpm pronunciations:forvo` sia per `pnpm pronunciations:resolve`.
-- `--no-open-word-add-on-skip`: registra la richiesta ma non apre la tab
-  `word-add` quando salti una entry.
+
+Il vecchio flag `--no-open-word-add-on-skip` non e piu un flusso valido: se
+viene passato, il comando fallisce invece di saltare il prefill della richiesta.
 
 ## Userscript Tampermonkey
 
@@ -160,6 +167,8 @@ term-taberu
 - default: browser headed, perche Forvo passa da Cloudflare e sessione login;
 - `--headless` esiste ma non e consigliato per il flusso reale;
 - `--manual` e la modalita operativa standard per questo repo; usa il browser Playwright solo per debug mirato o manutenzione del fetcher;
+- `--manual` richiede stdin/stdout TTY; in Codex usare `exec_command` con
+  `tty: true` e verificare che l'output mostri `browser skip URL:`;
 - se una voce esiste gia in un altro media compatibile, il comando deve
   collegarla e non proportela su Forvo;
 - nessun batch implicito: `--limit` va passato solo quando l'utente chiede

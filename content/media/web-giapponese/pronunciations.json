@@ -16,6 +16,11 @@
       "pitch_accent_status": "miss"
     },
     {
+      "entry_type": "grammar",
+      "entry_id": "grammar-te-mite-ne",
+      "pitch_accent_status": "miss"
+    },
+    {
       "entry_type": "term",
       "entry_id": "term-backline",
       "audio_src": "assets/audio/term/term-backline/forvo-manual-こうえい.mp3",
@@ -106,6 +111,18 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-iroiro",
+      "audio_src": "assets/audio/term/term-iroiro/forvo-manual-いろいろ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%89%B2%E3%80%85/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%89%B2%E3%80%85",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-kangaekata",
       "audio_src": "assets/audio/term/term-kangaekata/forvo-manual-かんか-えかた.mp3",
       "audio_source": "forvo",
@@ -144,6 +161,18 @@
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%94%BB%E7%95%A5",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kyouryoku",
+      "audio_src": "assets/audio/term/term-kyouryoku/forvo-manual-きょうりょく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%BC%B7%E5%8A%9B/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BC%B7%E5%8A%9B",
       "pitch_accent_status": "resolved"
     },
     {

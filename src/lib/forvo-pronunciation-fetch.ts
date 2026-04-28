@@ -75,6 +75,13 @@ export type ForvoManualOptions = {
   retryKnownMissing?: boolean;
 };
 
+export type ForvoManualRuntimeOptions = {
+  openWordAddOnSkip?: boolean;
+  requireInteractiveTTY?: boolean;
+  stdinIsTTY?: boolean;
+  stdoutIsTTY?: boolean;
+};
+
 type SkipResolutionMode = "active" | "pending";
 
 type ManualForvoCaptureResult =
@@ -243,6 +250,10 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
   wordListSource?: string;
   words?: string[];
 }) {
+  assertForvoManualRunCanStart({
+    openWordAddOnSkip: input.manual.openWordAddOnSkip ?? true
+  });
+
   const preparedRun = await prepareForvoPronunciationRun({
     bundle: input.bundle,
     dryRun: input.dryRun,
@@ -496,6 +507,33 @@ async function prepareForvoPronunciationRun(input: {
     requestedUnresolved: requestedTargets.unresolved,
     runnableTargets
   };
+}
+
+export function assertForvoManualRunCanStart(
+  input: ForvoManualRuntimeOptions = {}
+) {
+  const issues: string[] = [];
+
+  if (input.openWordAddOnSkip === false) {
+    issues.push(
+      "Manual Forvo mode must keep word-add request prefill enabled so skipped entries open the prefilled Forvo request tab and are recorded in data/forvo-requested-word-add.json. Remove --no-open-word-add-on-skip."
+    );
+  }
+
+  if (input.requireInteractiveTTY ?? true) {
+    const stdinIsTTY = input.stdinIsTTY ?? process.stdin.isTTY === true;
+    const stdoutIsTTY = input.stdoutIsTTY ?? process.stdout.isTTY === true;
+
+    if (!stdinIsTTY || !stdoutIsTTY) {
+      issues.push(
+        "Manual Forvo mode requires an interactive TTY so the /skip control server can be exposed. In Codex, run exec_command with tty:true or use .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh from an interactive terminal."
+      );
+    }
+  }
+
+  if (issues.length > 0) {
+    throw new Error(issues.join("\n"));
+  }
 }
 
 async function downloadForvoPronunciation(input: {
@@ -933,27 +971,7 @@ async function waitForManualDownloadOrSkip(input: {
   const timeoutAt = Date.now() + 5 * 60 * 1000;
 
   if (!process.stdin.isTTY || !process.stdout.isTTY) {
-    while (Date.now() < timeoutAt) {
-      const candidate = await findNewestCompletedAudioFile({
-        afterMs: input.afterMs,
-        downloadsDir: input.downloadsDir
-      });
-
-      if (candidate) {
-        const stable = await waitForFileToStabilize(candidate);
-
-        if (stable) {
-          return {
-            downloadedFile: candidate,
-            status: "downloaded"
-          } as const;
-        }
-      }
-
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-    }
-
-    return null;
+    assertForvoManualRunCanStart();
   }
 
   return await new Promise<

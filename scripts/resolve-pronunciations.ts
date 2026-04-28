@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 
 import { db } from "../src/db/client.ts";
+import { assertForvoManualRunCanStart } from "../src/lib/pronunciation.ts";
 import {
   resolvePronunciations,
   type PronunciationResolveMode
@@ -30,7 +31,17 @@ type CliOptions = {
 
 const options = parseCliOptions(process.argv.slice(2));
 
-if (!options.mode) {
+if (!options.openWordAddOnSkip) {
+  try {
+    assertForvoManualRunCanStart({
+      openWordAddOnSkip: options.openWordAddOnSkip,
+      requireInteractiveTTY: false
+    });
+  } catch (error) {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exitCode = 1;
+  }
+} else if (!options.mode) {
   console.error("Missing required --mode (review | next-lesson | lesson-url).");
   process.exitCode = 1;
 } else if (options.mode === "next-lesson" && !options.mediaSlug) {

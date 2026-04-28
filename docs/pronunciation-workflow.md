@@ -136,6 +136,9 @@ Per Forvo:
 - passa `--limit` solo se l'utente chiede esplicitamente un numero massimo o
   uno smoke test;
 - usa sempre il flusso `--manual` nel browser normale.
+- avvia il Forvo manuale solo da un TTY interattivo; in Codex usa
+  `exec_command` con `tty: true`, perche il controllo browser `/skip` dipende
+  da quella sessione;
 - quando salti una entry con `s` o `/skip`, lascia che il comando apra anche la
   tab `word-add/...` per chiedere la pronuncia e registri la richiesta fatta;
 - se usi il helper Tampermonkey locale, lascia che legga gli hint `jcs_*`
@@ -166,6 +169,10 @@ La documentazione operativa dettagliata di Forvo resta in
   usare `pnpm pronunciations:resolve`.
 - Non usare il browser Playwright per i batch reali Forvo; il comportamento
   standard e il browser normale in `--manual`.
+- Non lanciare il Forvo manuale da una sessione non-TTY: il comando deve
+  rifiutarsi invece di aspettare download senza server `/skip`.
+- Non disattivare il prefill `word-add` sugli skip; le richieste da fare vanno
+  aperte e registrate automaticamente.
 - Non aprire Forvo per entry che possono essere collegate a un audio gia
   presente in un altro media compatibile.
 - Non proporre batch Forvo su tutto il bundle se prima non e stato eseguito il

@@ -367,3 +367,35 @@ requests:
       dungeon.
     notes: >-
       Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: puzzle-dragons-tutorial-skill
+    lesson_slug: 050-puzzle-dragons-tutorial-skill
+    anchor: "Il popup spiega le skill e invita a provarne varie."
+    kind: game-screen
+    priority: high
+    placement_rationale: >-
+      Va dopo il contesto iniziale, perché mostra il popup completo con
+      `これがスキルだよ！`, la motivazione con
+      [{{強力|きょうりょく}}](term:term-kyouryoku) e la richiesta
+      [{{色々|いろいろ}}{{試|ため}}してみてね](grammar:grammar-te-mite-ne).
+    visual_goal: >-
+      Rendere leggibile il dialogo tutoriale sulle skill mantenendo board, HP e
+      contesto di battaglia visibili.
+    source_preference: >-
+      Screenshot fornito dall'utente come file locale
+      /Users/abelli/Downloads/Screenshot 2026-04-29 (00.16.17).png.
+    capture_instructions: >-
+      Usa lo screenshot così com'è, senza crop: il popup e la board insieme
+      chiariscono che `スキル` è una meccanica da provare in battaglia.
+    must_show: >-
+      `これがスキルだよ！`, `強力なスキルがたくさんあるから`,
+      `色々試してみてね！`, il board e il pulsante OK.
+    avoid: >-
+      Ritagli che perdono la prima riga del popup o il contesto di battaglia.
+    alt_it: >-
+      Schermata tutorial di Puzzle and Dragons con popup che spiega le skill.
+    caption_it: >-
+      Il popup passa da `これがスキルだよ！` a
+      `[{{色々|いろいろ}}{{試|ため}}してみてね](grammar:grammar-te-mite-ne)`:
+      prima identifica la meccanica, poi invita a provare molte skill.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.

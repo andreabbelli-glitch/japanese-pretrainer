@@ -1,9 +1,5 @@
-export {
-  buildPronunciationData
-} from "./pronunciation-data.ts";
-export type {
-  PronunciationData
-} from "./pronunciation-data.ts";
+export { buildPronunciationData } from "./pronunciation-data.ts";
+export type { PronunciationData } from "./pronunciation-data.ts";
 
 export {
   fetchPronunciationsForBundle,
@@ -46,6 +42,7 @@ export type {
 } from "./pronunciation-workflow.ts";
 
 export {
+  assertForvoManualRunCanStart,
   fetchForvoPronunciationsForBundle,
   fetchForvoPronunciationsForBundleManual,
   parseForvoCandidateText,
@@ -56,7 +53,8 @@ export {
 export type {
   ForvoBrowserOptions,
   ForvoCandidate,
-  ForvoManualOptions
+  ForvoManualOptions,
+  ForvoManualRuntimeOptions
 } from "./forvo-pronunciation-fetch.ts";
 
 export {

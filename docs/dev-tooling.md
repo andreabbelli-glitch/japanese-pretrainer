@@ -132,6 +132,11 @@ solo il residuo. Aggiorna anche lo storico
 e' stato trovato un audio. `pronunciations:forvo` resta il comando low-level
 per batch mirati o debug del solo fallback manuale.
 
+Il fallback Forvo manuale richiede un TTY interattivo: in Codex va lanciato con
+`tty: true`, cosi il comando espone anche `http://127.0.0.1:3210/skip`. Gli
+skip aprono sempre la richiesta `word-add/...` precompilata e la registrano in
+`data/forvo-requested-word-add.json`.
+
 Workflow optimizer FSRS:
 
 ```sh

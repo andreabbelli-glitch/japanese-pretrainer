@@ -4,6 +4,7 @@ import os from "node:os";
 
 import { parseContentRoot } from "../src/lib/content/validator.ts";
 import {
+  assertForvoManualRunCanStart,
   fetchForvoPronunciationsForBundle,
   fetchForvoPronunciationsForBundleManual,
   resolveRequestedTargets,
@@ -35,6 +36,19 @@ type CliOptions = {
 };
 
 const options = parseCliOptions(process.argv.slice(2));
+
+if (options.manual || !options.openWordAddOnSkip) {
+  try {
+    assertForvoManualRunCanStart({
+      openWordAddOnSkip: options.openWordAddOnSkip,
+      requireInteractiveTTY: options.manual
+    });
+  } catch (error) {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  }
+}
+
 const contentRoot = path.resolve(options.contentRoot);
 const parseResult = await parseContentRoot(contentRoot);
 const wordListSource = options.wordListPath
@@ -107,7 +121,9 @@ if (!parseResult.ok) {
         const refreshed = await parseContentRoot(contentRoot);
 
         if (!refreshed.ok) {
-          throw new Error("Content validation failed after cross-media pronunciation reuse.");
+          throw new Error(
+            "Content validation failed after cross-media pronunciation reuse."
+          );
         }
 
         liveBundles = refreshed.data.bundles;
@@ -116,7 +132,9 @@ if (!parseResult.ok) {
         );
 
         if (!refreshedBundle) {
-          throw new Error(`Bundle '${bundle.mediaSlug}' disappeared after reuse.`);
+          throw new Error(
+            `Bundle '${bundle.mediaSlug}' disappeared after reuse.`
+          );
         }
 
         currentBundle = refreshedBundle;
@@ -168,7 +186,9 @@ if (!parseResult.ok) {
       }
 
       for (const skipped of summary.knownMissingSkipped ?? []) {
-        console.info(`  skipped ${skipped.kind}:${skipped.entryId} (known missing on Forvo)`);
+        console.info(
+          `  skipped ${skipped.kind}:${skipped.entryId} (known missing on Forvo)`
+        );
       }
 
       for (const result of summary.results) {
@@ -179,9 +199,13 @@ if (!parseResult.ok) {
             typeof votes === "number"
               ? `speaker=${speaker ?? "unknown"} votes=${votes}`
               : `speaker=${speaker ?? "unknown"}`;
-          console.info(`  matched ${result.kind}:${result.entryId} -> ${detail}`);
+          console.info(
+            `  matched ${result.kind}:${result.entryId} -> ${detail}`
+          );
         } else if (result.status === "skipped_known_missing") {
-          console.info(`  skipped ${result.kind}:${result.entryId} (marked missing on Forvo)`);
+          console.info(
+            `  skipped ${result.kind}:${result.entryId} (marked missing on Forvo)`
+          );
         } else {
           console.info(`  miss ${result.kind}:${result.entryId}`);
         }

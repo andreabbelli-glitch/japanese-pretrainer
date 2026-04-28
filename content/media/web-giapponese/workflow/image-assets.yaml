@@ -186,3 +186,18 @@ assets:
       dungeon.
     notes: >-
       Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: puzzle-dragons-tutorial-skill
+    src: assets/puzzle-dragons-tutorial-skill.png
+    source_type: screenshot
+    width: 1179
+    height: 1839
+    lesson_slug: 050-puzzle-dragons-tutorial-skill
+    anchor: "Il popup spiega le skill e invita a provarne varie."
+    alt_it: >-
+      Schermata tutorial di Puzzle and Dragons con popup che spiega le skill.
+    caption_it: >-
+      Il popup passa da `これがスキルだよ！` a
+      `[{{色々|いろいろ}}{{試|ため}}してみてね](grammar:grammar-te-mite-ne)`:
+      prima identifica la meccanica, poi invita a provare molte skill.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
