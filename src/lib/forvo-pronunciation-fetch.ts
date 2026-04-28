@@ -12,6 +12,7 @@ import { buildEntryKey } from "./entry-id.ts";
 import { sleep } from "./fetch-throttle.ts";
 import {
   loadValidatedManifest,
+  mergePronunciationAudioManifestEntry,
   persistManifestEntries
 } from "./manifest-helpers.ts";
 import {
@@ -176,16 +177,23 @@ export async function fetchForvoPronunciationsForBundle(input: {
         continue;
       }
 
-      manifestEntries.set(buildEntryKey(entry.kind, entry.id), {
-        entryId: entry.id,
-        entryType: entry.kind,
-        audioAttribution: resolved.audioAttribution,
-        audioLicense: resolved.audioLicense,
-        audioPageUrl: resolved.audioPageUrl,
-        audioSource: "forvo",
-        audioSpeaker: resolved.audioSpeaker,
-        audioSrc: resolved.audioSrc
-      });
+      const entryKey = buildEntryKey(entry.kind, entry.id);
+      manifestEntries.set(
+        entryKey,
+        mergePronunciationAudioManifestEntry({
+          audio: {
+            audioAttribution: resolved.audioAttribution,
+            audioLicense: resolved.audioLicense,
+            audioPageUrl: resolved.audioPageUrl,
+            audioSource: "forvo",
+            audioSpeaker: resolved.audioSpeaker,
+            audioSrc: resolved.audioSrc
+          },
+          entryId: entry.id,
+          entryType: entry.kind,
+          existing: manifestEntries.get(entryKey)
+        })
+      );
 
       if (!input.dryRun) {
         await persistManifestEntries(
@@ -322,16 +330,23 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
         continue;
       }
 
-      manifestEntries.set(buildEntryKey(entry.kind, entry.id), {
-        entryId: entry.id,
-        entryType: entry.kind,
-        audioAttribution: resolved.audioAttribution,
-        audioLicense: resolved.audioLicense,
-        audioPageUrl: resolved.audioPageUrl,
-        audioSource: "forvo",
-        audioSpeaker: resolved.audioSpeaker,
-        audioSrc: resolved.audioSrc
-      });
+      const entryKey = buildEntryKey(entry.kind, entry.id);
+      manifestEntries.set(
+        entryKey,
+        mergePronunciationAudioManifestEntry({
+          audio: {
+            audioAttribution: resolved.audioAttribution,
+            audioLicense: resolved.audioLicense,
+            audioPageUrl: resolved.audioPageUrl,
+            audioSource: "forvo",
+            audioSpeaker: resolved.audioSpeaker,
+            audioSrc: resolved.audioSrc
+          },
+          entryId: entry.id,
+          entryType: entry.kind,
+          existing: manifestEntries.get(entryKey)
+        })
+      );
 
       if (!input.dryRun) {
         await persistManifestEntries(
@@ -1091,7 +1106,7 @@ function ensureSkipControlServer(port: number) {
     if (request.url?.startsWith("/skip")) {
       const mode = triggerSkipResolution();
       response.writeHead(200, {
-        "Connection": "close",
+        Connection: "close",
         "Content-Type": "text/html; charset=utf-8"
       });
       response.end(
@@ -1103,7 +1118,7 @@ function ensureSkipControlServer(port: number) {
     }
 
     response.writeHead(200, {
-      "Connection": "close",
+      Connection: "close",
       "Content-Type": "text/plain; charset=utf-8"
     });
     response.end(

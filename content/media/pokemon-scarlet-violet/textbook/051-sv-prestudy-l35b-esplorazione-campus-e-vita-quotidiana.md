@@ -14,7 +14,9 @@ tags:
 - phase-c
 - lesson-35
 prerequisites: []
-summary: 'Lessico ed espressioni per esplorazione, campus e vita quotidiana: 19 carte lessicali attive, 4 formule ricorrenti, 0 pattern grammaticali e 0 etichette contestuali da riconoscere.'
+summary: >-
+  Seguire esplorazione, campus e vita quotidiana: leggere consigli di direzione,
+  piccoli dialoghi, sandwich e messaggi sul rapporto con i Pokemon.
 ---
 # Obiettivo
 

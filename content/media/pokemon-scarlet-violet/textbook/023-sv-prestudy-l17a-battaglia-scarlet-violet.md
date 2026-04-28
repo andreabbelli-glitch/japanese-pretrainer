@@ -14,77 +14,64 @@ tags:
 - phase-a
 - lesson-17
 prerequisites: []
-summary: 'Lessico ed espressioni per battaglia, Scarlet/Violet: 18 carte lessicali
-  attive, 3 formule ricorrenti, 0 pattern grammaticali e 1 etichette contestuali da
-  riconoscere.'
+summary: >-
+  Battaglia, dialoghi e Accademia: riconosci chi agisce, quale tipo o stato
+  conta, e come formule brevi aprono turni, richieste e spiegazioni.
 ---
 # Obiettivo
 
-Capire il giapponese che compare in battaglia in Scarlet/Violet: parole operative, formule di dialogo e segnali che ti fanno leggere subito cosa succede sullo schermo.
+Leggere battute e schermate brevi quando Scarlet/Violet passa tra conversazione, lotta, Accademia e filone dei Titan: chi parla, chi entra in campo, quale tipo conta e quale ruolo viene nominato.
 
-## Contesto
+## Aperture e richieste
 
-Qui compaiono parole che marcano ruolo, gruppo, danno e tono della battaglia: チーム nomina la squadra, ボス il capo, ダメージ l'effetto subito o inflitto, さて / どうぞ regolano l'apertura e il turno della battuta.
+[さて](term:term-e030-sate) chiude il punto precedente e apre una nuova mossa del discorso: dopo quella parola spesso arriva una spiegazione, un invito o il passaggio al turno successivo. [どうぞ](term:term-e031-douzo) concede qualcosa all'interlocutore, da un oggetto a un permesso; non è solo "prego", ma il segnale che l'altro può procedere. [お{{願|ねが}}いします](term:term-e032-onegaishimasu) trasforma la frase in richiesta cortese o affidamento dell'azione.
 
-## Termini chiave
+## Squadre, capi e luoghi
 
-- [チーム](term:term-v157-chiimu) — squadra
-- [学園](term:term-v158-gakuen) — accademia / campus
-- [ボス](term:term-v159-bosu) — capo
-- [くさ](term:term-v160-kusa) — erba
-- [不思議](term:term-v161-fushigi) — misterioso / strano
-- [ダメージ](term:term-v162-dameeji) — danno
-- [スパイス](term:term-v163-supaisu) — spezia
-- [アジト](term:term-v165-ajito) — base / nascondiglio
+[チーム](term:term-v157-chiimu) nomina un gruppo organizzato; con で può indicare che si agisce in squadra. [ボス](term:term-v159-bosu) restringe subito la scena al capo da raggiungere o affrontare, mentre [アジト](term:term-v165-ajito) indica la base o il nascondiglio del gruppo. [ヌシ](term:term-v167-nushi) non va letto come "padrone" generico: in Scarlet/Violet segnala il dominante legato ai Titan, cioè un avversario speciale con ruolo di boss.
 
-## Espressioni ricorrenti
+La cornice scolastica usa parole diverse. [{{学園|がくえん}}](term:term-v158-gakuen) è il campus come istituzione e luogo, [{{校長|こうちょう}}](term:term-v168-kouchou) è la figura che rappresenta l'Accademia nei dialoghi, e [{{勉強|べんきょう}}](term:term-v174-benkyou) sposta la lettura su lezioni, studio o preparazione.
 
-- [さて](term:term-e030-sate) — bene allora / dunque
-- [どうぞ](term:term-e031-douzo) — prego / ecco
-- [お願いします](term:term-e032-onegaishimasu) — per favore / ti affido la cosa
+## Tipi, danno e ingresso in campo
 
-## Etichette da riconoscere
+In battaglia [くさ](term:term-v160-kusa), [ほのお](term:term-v170-honoo) e [みず](term:term-v173-mizu) sono tipi: decidono relazioni di efficacia e non vanno tradotti come semplici oggetti naturali. [ダメージ](term:term-v162-dameeji) indica l'effetto subito o inflitto, [ランク](term:term-v171-ranku) un grado classificato, e [{{力|ちから}}](term:term-v176-chikara) la forza reale di un Pokémon, di una mossa o di una situazione.
 
-- [ヌシ](term:term-v167-nushi) — Titan / boss dominante
+[{{出|だ}}す](term:term-v172-dasu) è il verbo operativo per mandare qualcosa fuori: in lotta, ポケモンを{{出|だ}}す vuol dire far entrare un Pokémon in campo. [{{新|あたら}}しい](term:term-v169-atarashii) segnala che una mossa, funzione o strada è appena apparsa; [{{以上|いじょう}}](term:term-v175-ijou) marca invece un limite già raggiunto o superato, come in これ{{以上|いじょう}}.
 
-## Spiegazione
+## Titan, cucina e mistero
 
-Parole come [チーム](term:term-v157-chiimu), [学園](term:term-v158-gakuen) e [ボス](term:term-v159-bosu) ti fanno capire chi o che cosa è al centro della scena: una squadra, l'accademia o il capo avversario. Nei menu e nei dialoghi questi segnali trasformano le schermate in istruzioni leggibili.
-
-Le espressioni come [さて](term:term-e030-sate) e [どうぞ](term:term-e031-douzo) regolano il parlato: [さて](term:term-e030-sate) apre o cambia argomento, [どうぞ](term:term-e031-douzo) invita, concede il turno o offre qualcosa. In un gioco molto dialogato bastano spesso a capire il tono della scena.
-
-[ヌシ](term:term-v167-nushi) è una label contestuale: nel giapponese comune può richiamare il "padrone" o dominante di un luogo, ma qui funziona come nome di gioco per un boss Titan.
+[スパイス](term:term-v163-supaisu) non è solo una parola da cucina: nel filone dei Titan rimanda alle spezie speciali e agli effetti legati ai pasti. [{{料理|りょうり}}](term:term-v166-ryouri) può indicare sia il cucinare sia il piatto preparato; con を{{作|つく}}る il focus è l'azione di preparare. [{{不思議|ふ.し.ぎ}}](term:term-v161-fushigi) descrive qualcosa che non torna, sembra misterioso o chiede una spiegazione nella scena.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  さて、 どうぞ。
+  さて、 チームの ボスが {{来|き}}ます。
 translation_it: >-
-  Bene allora, prego.
+  Bene allora, arriva il capo della squadra.
 :::
 
 :::example_sentence
 jp: >-
-  はい、 どうぞ。
+  ほのおタイプの わざで くさタイプに ダメージを {{与|あた}}える。
 translation_it: >-
-  Prego.
+  Infligge danni al tipo Erba con una mossa di tipo Fuoco.
 :::
 
 :::example_sentence
 jp: >-
-  お{{願|ねが}}いします。
+  {{新|あたら}}しい ポケモンを {{出|だ}}す。
 translation_it: >-
-  Per favore.
+  Mando in campo un nuovo Pokémon.
 :::
 
 :::example_sentence
 jp: >-
-  チームで {{戦|たたか}}います。
+  スパイスで {{料理|りょうり}}を {{作|つく}}ります。
 translation_it: >-
-  Combattiamo in squadra.
+  Preparo un piatto con la spezia.
 :::
 
 ## Nota finale
 
-In questa lesson, チーム / ボス identificano chi agisce, ダメージ indica che cosa succede alla lotta, さて / どうぞ gestiscono il passaggio di turno nel dialogo.
+Per orientarti rapidamente, separa quattro domande: chi agisce, quale luogo o ruolo viene nominato, quale tipo o valore cambia la battaglia, e quale formula sta aprendo la battuta successiva.

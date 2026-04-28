@@ -121,7 +121,8 @@ katakana confondibili e sui chunk estesi piu frequenti.
 - catalogo statico in TypeScript sotto `src/features/katakana-speed/`;
 - persistenza runtime in tabelle `katakana_*`;
 - registry operativo statico non-audio con chunk estesi, word bank,
-  pseudoword, cluster di confusione, trap moraiche e loop daily/diagnostic/repair;
+  pseudoword, termini media/ad hoc, cluster di confusione, trap moraiche e loop
+  daily/diagnostic/repair;
 - drill choice focalizzati con primo trial inverso romaji -> katakana,
   selettore manuale per esercizio, raw choice moraiche, self-check timed per
   parole/pseudoparole e RAN Grid aggregata;

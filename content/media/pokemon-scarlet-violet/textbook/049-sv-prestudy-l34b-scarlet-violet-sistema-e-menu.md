@@ -14,13 +14,13 @@ tags:
 - phase-c
 - lesson-34
 prerequisites: []
-summary: 'Lessico per schermate di Scarlet/Violet: menu, scuola, funzioni online,
-  stato della scena e messaggi di completamento. Include 24 carte lessicali attive
-  e 2 etichette contestuali da riconoscere.'
+summary: >-
+  Leggere schermate di ricerca, scuola, gruppi e funzioni online: capire stato
+  della scena, messaggi di completamento e controlli prima di agire.
 ---
 # Obiettivo
 
-Leggere con precisione le schermate in cui Scarlet/Violet parla di ricerca, scuola, gruppi, funzioni online e stato di un'azione. Le parole di questo pacchetto compaiono come sostantivi da menu, formule di stato o descrizioni brevi dentro dialoghi e tutorial.
+Leggere con precisione le schermate in cui Scarlet/Violet parla di ricerca, scuola, gruppi, funzioni online e stato di un'azione. Queste parole compaiono come sostantivi da menu, formule di stato o descrizioni brevi dentro dialoghi e tutorial.
 
 ## Contesto
 
@@ -52,7 +52,13 @@ Il lessico qui non è un blocco di battaglia puro. Serve quando il gioco passa d
 
 Nelle interfacce online, [共有](term:term-v714-kyouyuu), [おことわりリスト](term:term-v720-okotowaririsuto), [活動メンバー](term:term-v730-katsudoumenbaa) e [交換完了](term:term-v733-koukankanryou) segnalano funzioni molto pratiche: condividere informazioni, bloccare o rifiutare un contatto, controllare chi è attivo, confermare che lo scambio è terminato. [チームＩＤ](term:term-v729-chiimuid) resta un'etichetta di identificazione, non un nome narrativo.
 
-Le parole di area e controllo hanno collocazioni più rigide. [一帯](term:term-v734-ittai) sta bene con `この一帯` o `湖の一帯`, cioè la zona attorno a un punto; [占拠](term:term-v735-senkyo) richiede qualcosa che viene preso e controllato, come una base o un edificio. Per [競い合う](term:term-v732-seiau), la lettura da fissare è `きそいあう`: il verbo descrive persone o gruppi che competono tra loro.
+Le parole di area e controllo hanno collocazioni più rigide. [一帯](term:term-v734-ittai) sta bene con `この一帯` o `湖の一帯`, cioè la zona attorno a un punto; [占拠](term:term-v735-senkyo) richiede qualcosa che viene preso e controllato, come una base o un edificio. Per [競い合う](term:term-v732-seiau), la lettura importante è `きそいあう`: il verbo descrive persone o gruppi che competono tra loro.
+
+Nelle frasi scolastiche, [在籍](term:term-v721-zaiseki) indica che qualcuno risulta iscritto o registrato in un elenco ufficiale, mentre [本格的](term:term-v723-honkakuteki) segnala che un'attività passa alla fase seria, completa, "a tutti gli effetti". Se la storia parla di un [守護者](term:term-v728-shugosha), il ruolo è narrativo: qualcuno protegge un luogo o un tesoro, non semplicemente controlla un ingresso come un addetto.
+
+Le missioni e i minigiochi leggono spesso come sistemi di punteggio. [ボーナスミッション](term:term-v722-boonasumisshon) è un obiettivo extra, [高得点](term:term-v726-koutokuten) è un punteggio alto e [勝率](term:term-v727-shouritsu) è la percentuale di vittoria. [優先度](term:term-v724-yuusendo) decide quale azione viene prima, mentre [動き方](term:term-v725-ugokikata) descrive il modo concreto in cui un personaggio o un Pokemon si muove; insieme ti fanno leggere non solo "che cosa fare", ma anche "con quale ordine e quale controllo".
+
+Prima di una spedizione o di una prova lunga, [買いだめ](term:term-v731-kaidame) spiega perché il gioco insiste su negozi e consumabili: stai facendo scorta, non comprando un singolo oggetto casuale. Nei dialoghi, [驚かせる](term:term-v736-odorokaseru) è transitivo: qualcuno sorprende o spaventa qualcun altro. Questo dettaglio evita di confonderlo con `驚く`, dove invece il soggetto è chi si sorprende.
 
 ## Esempi guidati
 

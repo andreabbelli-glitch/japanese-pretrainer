@@ -14,9 +14,9 @@ tags:
 - phase-a
 - lesson-19
 prerequisites: []
-summary: 'Lessico ed espressioni per reazioni e parlato, Scarlet/Violet: 16 carte
-  lessicali attive, 3 formule ricorrenti, 3 pattern grammaticali e 2 etichette contestuali
-  da riconoscere.'
+summary: >-
+  Capire reazioni e inviti di Scarlet/Violet: leggere conferme, cambiamenti e
+  scelte rapide per seguire dialoghi, luoghi e funzioni di movimento.
 ---
 # Obiettivo
 
@@ -24,7 +24,7 @@ Capire il giapponese che compare in reazioni e parlato, Scarlet/Violet. Qui guar
 
 ## Contesto
 
-Le forme di questa lesson coprono avvio, invito, cambiamento, conferma e facilità: さっそく fa partire l'azione, ぜひ rafforza un invito, 変わる descrive ciò che diventa diverso. I nomi ゼロラボ e ライドポケモン fissano invece luogo e funzione di movimento.
+Queste forme coprono avvio, invito, cambiamento, conferma e facilità: さっそく fa partire l'azione, ぜひ rafforza un invito, 変わる descrive ciò che diventa diverso. I nomi ゼロラボ e ライドポケモン fissano invece luogo e funzione di movimento, mentre le parole di sistema e dialogo separano punti, informazioni, rapporti e preoccupazioni.
 
 ## Termini chiave
 
@@ -36,6 +36,14 @@ Le forme di questa lesson coprono avvio, invito, cambiamento, conferma e facilit
 - [世界](term:term-v244-sekai) — mondo
 - [特別](term:term-v245-tokubetsu) — speciale
 - [記録](term:term-v246-kiroku) — record / registrazione
+- [ポイント](term:term-v247-pointo) — punti
+- [存在](term:term-v248-sonzai) — esistenza
+- [ノーマル](term:term-v249-noomaru) — normale
+- [情報](term:term-v250-jouhou) — informazioni
+- [関係](term:term-v251-kankei) — relazione / rapporto
+- [すでに](term:term-v252-sudeni) — già
+- [心配](term:term-v253-shinpai) — preoccupazione
+- [有名](term:term-v254-yuumei) — famoso
 
 ## Espressioni ricorrenti
 
@@ -57,6 +65,14 @@ Le forme di questa lesson coprono avvio, invito, cambiamento, conferma e facilit
 ## Spiegazione
 
 Parole come [さっそく](term:term-v235-sassoku), [ぜひ](term:term-v238-zehi) e [変わる](term:term-v240-kawa-ru) non sono solo riempitivi: segnalano subito se il gioco sta avviando un'azione, invitando il giocatore a farla o mostrando che qualcosa è cambiato. Quando compaiono, ti dicono quale pezzo della scena è già pronto, richiesto o diverso da prima.
+
+Nei messaggi di menu, [ポイント](term:term-v247-pointo) indica una quantità che può aumentare o essere spesa, mentre [すでに](term:term-v252-sudeni) ti dice che uno stato è già vero prima della riga attuale. Se leggi すでに終わっている, non devi aspettarti un'azione in corso: il gioco sta chiarendo che la cosa è già conclusa.
+
+Quando il dialogo passa a indizi e rapporti tra personaggi, [情報](term:term-v250-jouhou) è il dato ricevuto o scoperto, [存在](term:term-v248-sonzai) è la presenza reale di qualcuno o qualcosa, e [関係](term:term-v251-kankei) collega fatti, persone o argomenti. In pratica, queste parole ti fanno capire se la battuta sta dando un indizio, rivelando che qualcosa esiste, oppure negando che due cose c'entrino tra loro.
+
+Per il tono emotivo, [心配](term:term-v253-shinpai) segnala preoccupazione o rassicurazione, soprattutto in frasi come 心配しないで; [有名](term:term-v254-yuumei) invece non dice che qualcuno è forte, ma che è conosciuto. In una scena con allenatori o luoghi importanti, questa distinzione evita di confondere reputazione, capacità e ruolo narrativo.
+
+Nei nomi di tipo, [ゴースト](term:term-v241-goosuto) e [ノーマル](term:term-v249-noomaru) vanno letti come categorie di battaglia. ノーマル in katakana non è il 普通 del parlato comune: indica il tipo Normale e quindi influenza mosse, compatibilità e messaggi di battaglia.
 
 Le espressioni come [そうだね](term:term-e043-soudane) e [とにかく](term:term-e044-tonikaku) servono invece a confermare o a riportare il discorso al punto. [そうだね] approva o fa eco a ciò che è stato detto; [とにかく] taglia la deviazione e fa ripartire l'azione. In un gioco molto dialogato sono utili perché spesso bastano da sole a far capire se chi parla sta assentendo o sta spingendo avanti la scena.
 

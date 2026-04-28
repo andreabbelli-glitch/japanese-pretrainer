@@ -14,9 +14,9 @@ tags:
 - phase-s
 - lesson-11
 prerequisites: []
-summary: 'Lessico ed espressioni per verbi operativi, particelle e struttura: 11 carte
-  lessicali attive, 2 formule ricorrenti, 3 pattern grammaticali e 1 etichetta contestuale
-  da riconoscere.'
+summary: >-
+  Capire verbi operativi e particelle nei menu: riconoscere chi fa cosa, verso
+  dove si va e quale azione viene richiesta o completata.
 ---
 # Obiettivo
 
@@ -24,7 +24,7 @@ Capire il giapponese che compare in verbi operativi, particelle e struttura: qui
 
 ## Contesto
 
-Questa lezione ruota attorno ad azioni operative e al modo in cui la frase le collega: [会う](term:term-v126-au), [決める](term:term-v127-kime-ru), [探す](term:term-v129-sagasu) e [挑む](term:term-v132-idomu) dicono che cosa fai; [どうやって](term:term-v133-douyatte) chiede il modo; [地図](term:term-v134-chizu) porta la lettura su mappa e destinazione.
+Qui contano le azioni operative e il modo in cui la frase le collega: [会う](term:term-v126-au), [決める](term:term-v127-kime-ru), [探す](term:term-v129-sagasu) e [挑む](term:term-v132-idomu) dicono che cosa fai; [見つける](term:term-v135-mitsu-keru) dice che la ricerca arriva al risultato; [どうやって](term:term-v133-douyatte) chiede il modo; [なぜ](term:term-v136-naze) chiede la ragione; [地図](term:term-v134-chizu) e [旅](term:term-v137-tabi) portano la lettura su mappa, destinazione e percorso.
 
 ## Termini chiave
 
@@ -36,6 +36,9 @@ Questa lezione ruota attorno ad azioni operative e al modo in cui la frase le co
 - [挑む](term:term-v132-idomu) — sfidare / affrontare
 - [どうやって](term:term-v133-douyatte) — in che modo
 - [地図](term:term-v134-chizu) — mappa
+- [見つける](term:term-v135-mitsu-keru) — trovare
+- [なぜ](term:term-v136-naze) — perché
+- [旅](term:term-v137-tabi) — viaggio
 
 ## Espressioni ricorrenti
 
@@ -54,7 +57,9 @@ Questa lezione ruota attorno ad azioni operative e al modo in cui la frase le co
 
 ## Spiegazione
 
-Parole come [会う](term:term-v126-au), [決める](term:term-v127-kime-ru), [探す](term:term-v129-sagasu) e [挑む](term:term-v132-idomu) descrivono azioni concrete: incontrare, decidere, cercare, sfidare o affrontare. [難しい](term:term-v128-muzukashii) dice che qualcosa è impegnativo o difficile, mentre [簡単](term:term-v131-kantan) dice che è semplice. [どうやって](term:term-v133-douyatte) chiede il modo concreto, quindi equivale a "come si fa?" o "in che modo?".
+Parole come [会う](term:term-v126-au), [決める](term:term-v127-kime-ru), [探す](term:term-v129-sagasu), [見つける](term:term-v135-mitsu-keru) e [挑む](term:term-v132-idomu) descrivono azioni concrete: incontrare, decidere, cercare, trovare, sfidare o affrontare. La differenza tra [探す](term:term-v129-sagasu) e [見つける](term:term-v135-mitsu-keru) è pratica: il primo è la ricerca in corso, il secondo è il momento in cui il Pokémon, la persona o il luogo viene trovato. [難しい](term:term-v128-muzukashii) dice che qualcosa è impegnativo o difficile, mentre [簡単](term:term-v131-kantan) dice che è semplice.
+
+Le domande orientano il dialogo: [どうやって](term:term-v133-douyatte) chiede il modo concreto, quindi "come si fa?", mentre [なぜ](term:term-v136-naze) chiede la ragione, spesso prima di una spiegazione su una scelta o una regola. [旅](term:term-v137-tabi) non è solo movimento fisico: in Scarlet/Violet può indicare il percorso di crescita del giocatore, soprattutto con frasi come `旅に出る`, "partire per un viaggio".
 
 Le espressioni come [ちょっと待って](term:term-e023-chotto-matsu-te) e [どの ポケモンに 使いますか？](term:term-e024-dono-pokemoni-tsukaimasuka) servono a fermare la scena o a chiedere il bersaglio dell'azione: "aspetta un attimo" e "su quale Pokémon vuoi usarlo?".
 
@@ -97,6 +102,20 @@ jp: >-
   ポケモンを {{探|さが}}す。
 translation_it: >-
   Cerco un Pokémon.
+:::
+
+:::example_sentence
+jp: >-
+  ポケモンを {{見|み}}つける。
+translation_it: >-
+  Trovo un Pokémon.
+:::
+
+:::example_sentence
+jp: >-
+  なぜ {{旅|たび}}に {{出|で}}るのですか。
+translation_it: >-
+  Perché parti per un viaggio?
 :::
 
 ## Nota finale

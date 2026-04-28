@@ -72,7 +72,9 @@ back: mangiare
     expect(parseResult.ok).toBe(true);
 
     const bundle = parseResult.ok
-      ? parseResult.data.bundles.find((candidate) => candidate.mediaSlug === "sample-game")
+      ? parseResult.data.bundles.find(
+          (candidate) => candidate.mediaSlug === "sample-game"
+        )
       : undefined;
 
     expect(bundle).toBeDefined();
@@ -109,7 +111,8 @@ back: mangiare
         audio_source: "lingua_libre",
         audio_speaker: "Test Native Speaker",
         audio_license: "CC BY-SA 4.0",
-        audio_attribution: "Test Native Speaker via Lingua Libre / Wikimedia Commons",
+        audio_attribution:
+          "Test Native Speaker via Lingua Libre / Wikimedia Commons",
         audio_page_url:
           "https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Test_Native_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg"
       }
@@ -129,6 +132,106 @@ back: mangiare
         )
       )
     ).resolves.toBeDefined();
+  });
+
+  it("preserves existing pitch accent metadata when reusing audio", async () => {
+    await seedMedia({
+      contentRoot,
+      cardsSource: `---
+id: cards-sample-game-ep01
+media_id: media-sample-game
+slug: ep01-core
+title: Episodio 1 - Core cards
+order: 10
+segment_ref: episode-01
+---
+
+:::term
+id: term-eat
+lemma: 食べる
+reading: たべる
+romaji: taberu
+meaning_it: mangiare
+aliases: [たべる, taberu]
+:::
+
+:::card
+id: card-eat-recognition
+lesson_id: lesson-sample-game
+entry_type: term
+entry_id: term-eat
+card_type: recognition
+front: '{{食|た}}べる'
+back: mangiare
+:::
+`
+    });
+    await writeFile(
+      path.join(contentRoot, "media", "sample-game", "pronunciations.json"),
+      `${JSON.stringify(
+        {
+          version: 1,
+          entries: [
+            {
+              entry_type: "term",
+              entry_id: "term-eat",
+              pitch_accent: 2,
+              pitch_accent_source: "Wiktionary",
+              pitch_accent_page_url:
+                "https://en.wiktionary.org/wiki/%E9%A3%9F%E3%81%B9%E3%82%8B",
+              pitch_accent_status: "resolved"
+            }
+          ]
+        },
+        null,
+        2
+      )}\n`
+    );
+
+    const parseResult = await parseContentRoot(contentRoot);
+    expect(parseResult.ok).toBe(true);
+
+    const bundle = parseResult.ok
+      ? parseResult.data.bundles.find(
+          (candidate) => candidate.mediaSlug === "sample-game"
+        )
+      : undefined;
+
+    expect(bundle).toBeDefined();
+
+    const summary = await reusePronunciationsAcrossMedia({
+      allBundles: parseResult.ok ? parseResult.data.bundles : [],
+      bundle: bundle!
+    });
+
+    expect(summary.reused).toBe(1);
+
+    const manifest = JSON.parse(
+      await readFile(
+        path.join(contentRoot, "media", "sample-game", "pronunciations.json"),
+        "utf8"
+      )
+    );
+
+    expect(manifest.entries).toEqual([
+      {
+        entry_type: "term",
+        entry_id: "term-eat",
+        audio_src: "assets/audio/term/term-eat/term-taberu.ogg",
+        audio_source: "lingua_libre",
+        audio_speaker: "Test Native Speaker",
+        audio_license: "CC BY-SA 4.0",
+        audio_attribution:
+          "Test Native Speaker via Lingua Libre / Wikimedia Commons",
+        audio_page_url:
+          "https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Test_Native_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg",
+        pitch_accent: 2,
+        pitch_accent_source: "Wiktionary",
+        pitch_accent_page_url:
+          "https://en.wiktionary.org/wiki/%E9%A3%9F%E3%81%B9%E3%82%8B",
+        pitch_accent_status: "resolved"
+      }
+    ]);
   });
 
   it("stops on ambiguous cross-media matches instead of picking one", async () => {
@@ -230,7 +333,9 @@ back: divorare
     expect(parseResult.ok).toBe(true);
 
     const bundle = parseResult.ok
-      ? parseResult.data.bundles.find((candidate) => candidate.mediaSlug === "sample-game")
+      ? parseResult.data.bundles.find(
+          (candidate) => candidate.mediaSlug === "sample-game"
+        )
       : undefined;
 
     expect(bundle).toBeDefined();
@@ -263,7 +368,10 @@ async function seedMedia(input: { cardsSource: string; contentRoot: string }) {
 
   await mkdir(path.join(mediaDirectory, "cards"), { recursive: true });
   await mkdir(path.join(mediaDirectory, "textbook"), { recursive: true });
-  await writeFile(path.join(mediaDirectory, "cards", "001-core.md"), input.cardsSource);
+  await writeFile(
+    path.join(mediaDirectory, "cards", "001-core.md"),
+    input.cardsSource
+  );
   await writeFile(
     path.join(mediaDirectory, "textbook", "001-intro.md"),
     `---

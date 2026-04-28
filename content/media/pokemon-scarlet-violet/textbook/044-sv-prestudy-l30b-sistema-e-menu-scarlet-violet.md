@@ -14,9 +14,9 @@ tags:
 - phase-b
 - lesson-30
 prerequisites: []
-summary: 'Lessico ed espressioni per sistema e menu, Scarlet/Violet: 18 carte lessicali
-  attive, 4 formule ricorrenti, 4 pattern grammaticali e 5 etichette contestuali da
-  riconoscere.'
+summary: >-
+  Leggere schermate di connessione, sfide online, conferme e funzioni di
+  sistema, distinguendo bonus, strumenti e stato dell'interfaccia.
 ---
 # Obiettivo
 
@@ -24,7 +24,7 @@ Leggere il giapponese di connessione, menu online, conferme e funzioni di sistem
 
 ## Contesto
 
-In Scarlet / Violet questa lezione raccoglie parole che compaiono quando il gioco parla di connessione, sfide online, conferme e funzioni del sistema. Le etichette più specifiche nominano invece bonus o strumenti precisi dell'interfaccia.
+In Scarlet / Violet queste parole compaiono quando il gioco parla di connessione, sfide online, conferme e funzioni del sistema. Le etichette più specifiche nominano invece bonus o strumenti precisi dell'interfaccia.
 
 ## Termini chiave
 
@@ -68,6 +68,12 @@ Le espressioni come [〜してあげましょう](term:term-e094-shiteagemashou)
 Sul piano grammaticale, [〜まま](grammar:grammar-g098-cosi-com-e-lasciando-come-sta) mantiene uno stato invariato, mentre [〜じゃん](grammar:grammar-g099-vero-che-ma-guarda) porta la frase nel parlato colloquiale. In `そのまま` il testo dice di lasciare qualcosa com'è; in `いいじゃん` il parlante reagisce come a una constatazione condivisa, non come a un ordine di menu.
 
 [ちびちびパワー](term:term-v600-chibichibipawaa), [でかでかパワー](term:term-v601-dekadekapawaa), [二つ名パワー](term:term-v602-nitsunapawaa) e [どうぐプリンター](term:term-v608-dougupurintaa) sono etichette di funzione. `パワー` segnala un bonus applicato, mentre `プリンター` indica uno strumento che produce oggetti: il nome specifico va letto come categoria d'uso prima ancora di cercarne il dettaglio.
+
+Quando la schermata riguarda profilo, foto o dati da scrivere, il lessico diventa più fine. [表情](term:term-v603-hyoujou) indica la faccia o l'espressione scelta per un'immagine, mentre [入力](term:term-v614-nyuuryoku) è il momento in cui il giocatore inserisce testo, numeri o un codice. Se il menu passa da posa a `入力`, stai lasciando la lettura passiva e stai compilando un campo.
+
+In esplorazione e battaglia, leggi insieme posizione e condizione. [距離](term:term-v606-kyori) misura quanto sei lontano, [山頂](term:term-v607-sanchou) restringe la meta alla cima e [不意](term:term-v604-fui) segnala una sorpresa o un vantaggio preso prima che l'altro reagisca. [どく状態](term:term-v605-dokujoutai) non è un colpo singolo: è una condizione persistente, quindi cambia come interpreti i turni successivi.
+
+Nelle schermate competitive o evento, [鍛えた](term:term-v610-kitae-ta) descrive un Pokemon o un avversario preparato in anticipo, [合計](term:term-v612-goukei) raccoglie più valori in un totale e [大量発生](term:term-v613-tairyouhassei) marca un evento sulla mappa con molte apparizioni della stessa specie. Sono segnali diversi, ma tutti rispondono alla stessa domanda: la schermata sta parlando di preparazione, somma o evento attivo?
 
 ## Esempi guidati
 

@@ -8,6 +8,7 @@ import {
 } from "./content/pronunciations-manifest.ts";
 import type { NormalizedMediaBundle } from "./content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
+import { mergePronunciationAudioManifestEntry } from "./manifest-helpers.ts";
 import { resolveMediaAssetAbsolutePath } from "./media-assets.ts";
 import {
   collectPronunciationTargets,
@@ -123,16 +124,23 @@ export async function reusePronunciationsAcrossMedia(input: {
       await copyFile(sourcePath, targetPath);
     }
 
-    manifestEntries.set(buildEntryKey(target.kind, target.id), {
-      entryId: target.id,
-      entryType: target.kind,
-      audioAttribution: source.audioAttribution ?? undefined,
-      audioLicense: source.audioLicense ?? undefined,
-      audioPageUrl: source.audioPageUrl ?? undefined,
-      audioSource: source.audioSource ?? undefined,
-      audioSpeaker: source.audioSpeaker ?? undefined,
-      audioSrc: targetRelativePath
-    });
+    const entryKey = buildEntryKey(target.kind, target.id);
+    manifestEntries.set(
+      entryKey,
+      mergePronunciationAudioManifestEntry({
+        audio: {
+          audioAttribution: source.audioAttribution ?? undefined,
+          audioLicense: source.audioLicense ?? undefined,
+          audioPageUrl: source.audioPageUrl ?? undefined,
+          audioSource: source.audioSource ?? undefined,
+          audioSpeaker: source.audioSpeaker ?? undefined,
+          audioSrc: targetRelativePath
+        },
+        entryId: target.id,
+        entryType: target.kind,
+        existing: manifestEntries.get(entryKey)
+      })
+    );
     results.push({
       entryId: target.id,
       kind: target.kind,

@@ -14,7 +14,9 @@ tags:
 - phase-c
 - lesson-35
 prerequisites: []
-summary: 'Lessico ed espressioni per Team Star, telefonate e parlato marcato: 8 carte lessicali attive, 2 formule ricorrenti, 3 pattern grammaticali e 0 etichette contestuali da riconoscere.'
+summary: >-
+  Capire Team Star, telefonate e parlato marcato: riconoscere intrusione,
+  controllo, tono brusco e richieste operative nelle scene di contatto.
 ---
 # Obiettivo
 

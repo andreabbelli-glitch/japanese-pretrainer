@@ -14,7 +14,9 @@ tags:
 - phase-s
 - lesson-07
 prerequisites: []
-summary: 'Lessico ed espressioni per capire reazioni, istruzioni e linguaggio di battaglia: avverbi frequenti, lessico del team e tre pattern grammaticali centrali.'
+summary: >-
+  Capire reazioni, istruzioni e frasi di battaglia: riconoscere priorità,
+  ragioni, compagni, statistiche e obblighi prima di scegliere come rispondere.
 ---
 # Obiettivo
 

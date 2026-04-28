@@ -7,6 +7,7 @@ import {
   countKatakanaMora,
   tokenizeKatakanaDisplaySegments
 } from "./tokenizer.ts";
+import mediaWordBankJson from "./media-word-bank.json";
 import {
   buildKatakanaSpeedPseudowordCatalog,
   buildKatakanaSpeedPseudowordConfusionClusters,
@@ -495,6 +496,7 @@ const itemDefinitions = [
   word("word-si-rare", "スィート", "C", ["スィ"], "sweet"),
   word("word-gwe-rare", "グェルフ", "C", ["グェ"], "Guelfo"),
   ...operationalWordDefinitions(),
+  ...mediaWordDefinitions(),
   ...buildKatakanaSpeedPseudowordCatalog().map(pseudowordFromCatalog),
   ...sentenceDefinitions()
 ];
@@ -688,6 +690,56 @@ function operationalWordDefinitions() {
         }
       );
     });
+}
+
+function mediaWordDefinitions() {
+  const reservedSurfaces = new Set([
+    ...MANUAL_WORD_SURFACES,
+    ...getKatakanaSpeedOperationalWordSurfaces()
+  ]);
+  const seenSurfaces = new Set<string>();
+
+  return Object.entries(mediaWordBankJson).flatMap(([sourceSlug, surfaces]) =>
+    surfaces.flatMap((surface) => {
+      const normalizedSurface = surface.normalize("NFKC").trim();
+      if (
+        !normalizedSurface ||
+        countKatakanaMora(normalizedSurface) === 0 ||
+        reservedSurfaces.has(normalizedSurface) ||
+        seenSurfaces.has(normalizedSurface)
+      ) {
+        return [];
+      }
+
+      seenSurfaces.add(normalizedSurface);
+      const focusChunks = inferOperationalFocusChunks(normalizedSurface);
+      const tier = resolveTier(focusChunks);
+      const sourceTag =
+        sourceSlug === "custom" ? "custom-word-bank" : "media-word-bank";
+      const tags = [
+        "word",
+        sourceTag,
+        `${sourceSlug === "custom" ? "custom" : "media"}:${sourceSlug}`,
+        `tier-${tier}`,
+        ...featureTagsForSurface(normalizedSurface)
+      ];
+
+      return item(
+        `${sourceSlug === "custom" ? "custom" : "media"}-word-${sourceSlug}-${hashSurface(normalizedSurface)}`,
+        normalizedSurface,
+        normalizedSurface,
+        `${sourceSlug === "custom" ? "custom" : "media"}-word-bank`,
+        "word",
+        "edge",
+        tier,
+        {
+          focusChunks,
+          tags,
+          targetRtMs: Math.max(1600, 280 * countKatakanaMora(normalizedSurface))
+        }
+      );
+    })
+  );
 }
 
 function pseudowordFromCatalog(

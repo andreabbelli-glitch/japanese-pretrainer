@@ -14,7 +14,9 @@ tags:
 - phase-c
 - lesson-35
 prerequisites: []
-summary: 'Lessico ed espressioni per scuola, classi e regole d''accademia: 12 carte lessicali attive, 0 formule ricorrenti, 0 pattern grammaticali e 0 etichette contestuali da riconoscere.'
+summary: >-
+  Capire aula, classi di lotta, avvisi scolastici e regole dell'accademia,
+  riconoscendo ruoli, orari, prove e istruzioni che orientano il campus.
 ---
 # Obiettivo
 

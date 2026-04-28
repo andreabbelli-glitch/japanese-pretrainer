@@ -23,7 +23,7 @@ Capire il giapponese che compare nelle reazioni e nel parlato di Scarlet/Violet:
 
 ## Contesto
 
-[もう](term:term-v013-mou) cambia la sfumatura temporale: `もう {{行|い}}こう` spinge verso l’azione adesso, mentre `もう {{大丈夫|だいじょうぶ}}` presenta la situazione come risolta. [がんばって](term:term-e004-ganbatte) e [よろしく](term:term-e005-yoroshiku) regolano il rapporto tra personaggi; [～ないで](grammar:grammar-g005-senza-fare-non-fare-e) ferma un’azione, e [～てる](grammar:grammar-g006-contrazione-colloquiale-di) trasforma `{{待|ま}}っている` in `{{待|ま}}ってる`, la forma parlata che compare più naturalmente nei dialoghi.
+[もう](term:term-v013-mou) cambia la sfumatura temporale: `もう {{行|い}}こう` spinge verso l’azione adesso, mentre `もう {{大丈夫|だいじょうぶ}}` presenta la situazione come risolta. [がんばって](term:term-e004-ganbatte) e [よろしく](term:term-e005-yoroshiku) regolano il rapporto tra personaggi; [～ないで](grammar:grammar-g005-senza-fare-non-fare-e) ferma un’azione, e [～てる](grammar:grammar-g006-contrazione-colloquiale-di) trasforma `{{待|ま}}っている` in `{{待|ま}}ってる`, la forma parlata che compare più naturalmente nei dialoghi. Quando la scena passa da presentazioni scolastiche a obiettivi della Lega, [生徒](term:term-v024-seito) ti dice il ruolo sociale della persona, mentre [四天王](term:term-v025-shitenou) sposta subito il riferimento verso la parte alta del percorso competitivo.
 
 ## Termini chiave
 
@@ -35,6 +35,8 @@ Capire il giapponese che compare nelle reazioni e nel parlato di Scarlet/Violet:
 - [アカデミー](term:term-v020-akademii) — accademia
 - [強い](term:term-v021-tsuyoi) — forte
 - [サンドウィッチ](term:term-v023-sandowicchi) — sandwich
+- [生徒](term:term-v024-seito) — studente
+- [四天王](term:term-v025-shitenou) — Superquattro
 
 ## Espressioni ricorrenti
 
@@ -62,6 +64,8 @@ Tra i termini, [もう](term:term-v013-mou) è importante perché spesso non vuo
 [～ないで](grammar:grammar-g005-senza-fare-non-fare-e) appare spesso in richieste e divieti: `バトルしないで` è "non combattere", quindi il focus non è una negazione astratta ma l'istruzione di non fare quell'azione. [～てる](grammar:grammar-g006-contrazione-colloquiale-di) è il parlato contratto di `～ている`: quando senti o leggi `{{待|ま}}ってる`, il significato resta "sta aspettando", ma il tono è più naturale e colloquiale. In una battuta come `ネモが {{待|ま}}ってる`, la forma tagliata fa suonare la frase come parlato vivo, non come manuale.
 
 [スター団](term:term-v017-sutaa-dan) nomina il gruppo legato al filone scolastico dei bulli e delle basi; [ボタン](term:term-v018-botan) è il personaggio Penny quando il dialogo passa su quel filone; [エリアゼロ](term:term-v022-eriazero) è il luogo centrale della trama più avanti. Quando appaiono, il punto non è scomporli grammaticalmente: servono a capire quale ramo narrativo o quale area viene richiamata.
+
+Nelle frasi di scuola, [生徒](term:term-v024-seito) è una parola di ruolo: vicino ad アカデミー, 学校 o 先生 ti dice che la persona è uno studente, non solo "qualcuno" nella scena. [四天王](term:term-v025-shitenou) funziona invece come titolo istituzionale della Lega: se compare accanto a チャンピオン, 挑戦 o 強い, prepara il lettore a una sfida di rango alto.
 
 ## Esempi guidati
 
@@ -91,6 +95,20 @@ jp: >-
   ここで バトルしないで。
 translation_it: >-
   Non combattere qui.
+:::
+
+:::example_sentence
+jp: >-
+  {{新|あたら}}しい {{生徒|せいと}}が アカデミーに {{来|き}}ます。
+translation_it: >-
+  Un nuovo studente arriva all'Accademia.
+:::
+
+:::example_sentence
+jp: >-
+  {{四天王|し.てん.のう}}に {{挑戦|ちょうせん}}する {{前|まえ}}に {{準備|じゅんび}}する。
+translation_it: >-
+  Mi preparo prima di sfidare i Superquattro.
 :::
 
 ## Nota finale

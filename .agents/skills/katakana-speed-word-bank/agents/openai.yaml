@@ -1,0 +1,7 @@
+interface:
+  display_name: "Katakana Speed Word Bank"
+  short_description: "Add katakana terms to practice"
+  default_prompt: "Use $katakana-speed-word-bank to add these katakana terms to Katakana Speed practice."
+
+policy:
+  allow_implicit_invocation: true

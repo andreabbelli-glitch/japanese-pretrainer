@@ -19,7 +19,7 @@ summary: >-
 
 Capire il giapponese del tratto che va dal
 [ポケモンセンター](term:term-pokemon-center) di プラトタウン fino al primo uso
-reale del [テラスタル](term:term-terastal). In questo blocco Scarlet / Violet
+reale del [テラスタル](term:term-terastal). In questa sequenza Scarlet / Violet
 spiega dove rimettere in sesto la squadra, come funzionano
 [LP（リーグペイ）](term:term-lp) e [わざマシン](term:term-waza-machine), che
 cosa fa [レッツゴー](term:term-lets-go), come Nemona legge la tua crescita
@@ -112,7 +112,7 @@ caption: >-
 stabilizzi questa differenza, rischi di capire male la frase sul crafting delle
 MT e di cercare quest item dove il gioco sta parlando di drop di specie.
 
-[レッツゴー](term:term-lets-go) e un ottimo esempio di katakana da fissare bene.
+[レッツゴー](term:term-lets-go) e un ottimo esempio di katakana da riconoscere bene.
 Non e uno slogan inglese messo per colore: e il nome del
 comando con cui mandi in avanti il Pokemon in testa alla squadra. Le frasi che
 Nemona usa per spiegarlo, con verbi come `{{拾|ひろ}}ってきて` e
@@ -187,7 +187,7 @@ citta, poi raggiungimi; finisci una cosa, poi scatta la successiva.
 per leggere le spiegazioni di sistema del personale del
 [ポケモンセンター](term:term-pokemon-center).
 
-Infine, questo blocco insegna una regola utile per tutto il percorso verticale:
+Infine, la sequenza insegna una regola utile per tutto il percorso verticale:
 non tutto il linguaggio tutorial arriva sotto forma di finestra di sistema.
 Spesso e un personaggio a infilare dentro una battuta amichevole il contenuto
 che ti sblocca la meccanica successiva. Nemona lo fa di continuo in questa

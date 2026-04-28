@@ -731,8 +731,10 @@ function labelForFamily(family: string) {
   const labels: Readonly<Record<string, string>> = {
     "c-tier": "Kana rari",
     f: "Famiglia F",
+    "custom-word-bank": "Parole ad hoc",
     "kw-gw": "KW/GW",
     "loanword-bank": "Prestiti",
+    "media-word-bank": "Media",
     mixed: "Misto",
     "pseudo-bank": "Pseudo-parole",
     "sentence-sprint": "Frasi",

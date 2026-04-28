@@ -54,6 +54,25 @@ describe("katakana speed operational exercise catalog", () => {
     }
   });
 
+  it("adds media katakana terms as static training words", () => {
+    for (const [surface, sourceTag] of [
+      ["アビスラッシュ", "media:duel-masters-dm25"],
+      ["イモータルジャスティスガンダム", "media:gundam-arsenal-base"],
+      ["テラスタルエネルギー", "media:pokemon-scarlet-violet"]
+    ] as const) {
+      expect(getKatakanaSpeedItemBySurface(surface)).toMatchObject({
+        kind: "word",
+        surface,
+        tags: expect.arrayContaining(["media-word-bank", sourceTag])
+      });
+    }
+    expect(
+      getKatakanaSpeedCatalog().filter((item) =>
+        item.tags.includes("media-word-bank")
+      ).length
+    ).toBeGreaterThan(140);
+  });
+
   it("covers visual clusters V3 through V10 with reusable static items", () => {
     const clusters = getKatakanaSpeedConfusionClusters();
 

@@ -101,7 +101,7 @@ pronta". Curare la squadra, fare [レポート](term:term-report) o segnare una
 [{{目的地|もく.てき.ち}}](term:term-mokutekichi) `しておく` significa mettere in
 sicurezza il prossimo blocco di gioco prima che inizi davvero.
 
-Oltre ai pattern grammaticali, conviene riconoscere anche alcune formule fisse
+Oltre alle strutture della frase, conviene riconoscere anche alcune formule fisse
 di sistema. `{{手|て}}に {{入|い}}れた！` ti dice che hai ottenuto un oggetto o
 una ricompensa; `バッグに しまった` ti dice che l'oggetto è stato archiviato
 automaticamente nella tasca corretta. Sono formule di sistema da riconoscere

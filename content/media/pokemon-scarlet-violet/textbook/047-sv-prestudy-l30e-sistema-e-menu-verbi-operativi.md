@@ -14,9 +14,9 @@ tags:
 - phase-b
 - lesson-30
 prerequisites: []
-summary: 'Lessico ed espressioni per sistema e menu, verbi operativi: 23 carte lessicali
-  attive, 3 formule ricorrenti, 3 pattern grammaticali e 0 etichette contestuali da
-  riconoscere.'
+summary: >-
+  Seguire comandi di sistema e verbi operativi: riconoscere attività
+  scolastiche, selezioni, conferme e avvii per sapere come procedere nel menu.
 ---
 # Obiettivo
 
@@ -56,6 +56,12 @@ Parole come [引き返す](term:term-v661-hikikaesu), [伝統行事](term:term-v
 Le espressioni come [どの 技を 回復する？](term:term-e106-dono-wazao-kaifukusuru) e [〜してもいいからね](term:term-e107-shitemoiikarane) regolano il tono del parlato: domanda pratica, permesso, incoraggiamento o piccola rassicurazione.
 
 Sul piano grammaticale, [〜ってば](grammar:grammar-g109-ti-sto-dicendo-che) spinge sull'insistenza, mentre [〜わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) corregge una lettura troppo forte. In `行くってば` il parlante ribadisce l'azione; in `嫌いなわけじゃない` non nega tutto, ma restringe l'interpretazione.
+
+Nei menu, il primo bersaglio è spesso una riga specifica. [項目](term:term-v670-koumoku) indica una voce o elemento dell'elenco: con `項目を選ぶ` non stai scegliendo un oggetto nel mondo, ma una riga della UI. Questo è lo stesso ambiente in cui [全選択](term:term-v665-zensentaku), [受けとり可能](term:term-v668-uketorikanou) e [受けとり済み](term:term-v669-uketorizumi) decidono se l'azione è ancora disponibile.
+
+Nelle sfide, riconosci se il testo parla di collaborazione, difficoltà o ottimizzazione. [共闘](term:term-v671-kyoutou) è combattere insieme contro un avversario, [困難](term:term-v672-konnan) marca una prova difficile e [最適解](term:term-v679-saitekikai) indica la soluzione più efficace in quella situazione. [腕を磨く](term:term-v680-ude-wo-migaku) trasforma l'allenamento in miglioramento graduale, mentre [一苦労](term:term-v681-hitokurou) avverte che arrivare al risultato richiederà fatica.
+
+Quando il testo torna al campo o al dialogo, cambia il tipo di azione. [追いはらう](term:term-v674-oiharau) è scacciare una minaccia, [振る舞う](term:term-v676-furu-mau) è offrire o servire qualcosa a qualcuno, [縦横無尽](term:term-v682-juuoumujin) descrive movimento libero in ogni direzione e [予感](term:term-v683-yokan) crea aspettativa prima che il fatto sia confermato. Sono parole utili perché ti dicono se stai leggendo comando, ospitalità, libertà di movimento o anticipazione narrativa.
 
 ## Esempi guidati
 

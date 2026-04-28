@@ -14,9 +14,9 @@ tags:
 - phase-a
 - lesson-20
 prerequisites: []
-summary: 'Lessico ed espressioni per battaglia, scuola e storia: 17 carte lessicali
-  attive, 3 formule ricorrenti, 4 pattern grammaticali e 1 etichetta contestuale da
-  riconoscere.'
+summary: >-
+  Leggere battaglia e scuola insieme: separare mosse, stati e confronti dai
+  ruoli accademici e dalle spiegazioni che guidano la scena.
 ---
 # Obiettivo
 
@@ -24,7 +24,7 @@ Leggere il giapponese che compare in battaglia, scuola e storia: parole operativ
 
 ## Contesto
 
-Queste forme separano funzione, movimento, incontro, stato e aspettativa: 機能 nomina ciò che un menu può fare, ダッシュ indica scatto, 出会い apre l'idea di incontro, 調子 descrive la condizione, 期待 guarda a ciò che deve ancora succedere.
+Queste forme separano funzione, movimento, incontro, stato e aspettativa: 機能 nomina ciò che un menu può fare, ダッシュ indica scatto, 出会い apre l'idea di incontro, 調子 descrive la condizione, 期待 guarda a ciò che deve ancora succedere. La lezione alterna battaglia, menu e scuola perché Scarlet/Violet passa spesso da una schermata tecnica a una battuta di classe o trama.
 
 ## Termini chiave
 
@@ -36,6 +36,15 @@ Queste forme separano funzione, movimento, incontro, stato e aspettativa: 機能
 - [エスパー](term:term-v299-esupaa) — psico
 - [入る](term:term-v300-iru) — entrare
 - [交換する](term:term-v301-koukan-suru) — scambiare
+- [出会い](term:term-v302-deai) — incontri
+- [調子](term:term-v303-choushi) — condizione / forma
+- [秘密](term:term-v304-himitsu) — segreto
+- [設定](term:term-v305-settei) — impostazioni
+- [数学](term:term-v307-suugaku) — matematica
+- [経験](term:term-v309-keiken) — esperienza
+- [期待](term:term-v310-kitai) — attesa / aspettativa
+- [命中率](term:term-v311-meichuuritsu) — precisione
+- [じめん](term:term-v312-jimen) — terra
 
 ## Espressioni ricorrenti
 
@@ -57,6 +66,12 @@ Queste forme separano funzione, movimento, incontro, stato e aspettativa: 機能
 ## Spiegazione
 
 Parole come [ダッシュ](term:term-v294-dasshu), [機能](term:term-v295-kinou) e [あく](term:term-v296-aku) ti dicono se la schermata parla di uno scatto, di una funzione di menu o del tipo buio. Quando le leggi, capisci subito che voce stai guardando e che cosa cambia davvero nel gioco.
+
+Nei dialoghi di trama, [出会い](term:term-v302-deai) apre l'idea di un incontro nuovo o importante, [調子](term:term-v303-choushi) dice come sta andando qualcuno in quel momento, e [秘密](term:term-v304-himitsu) marca un'informazione tenuta nascosta. Sono parole utili perché una battuta può passare da "andiamo" a "non dirlo a nessuno" senza cambiare schermata.
+
+Nelle schermate tecniche, [設定](term:term-v305-settei) indica opzioni modificabili, mentre [命中率](term:term-v311-meichuuritsu) è la precisione di una mossa. Se leggi 命中率が高い, il dato importante è la probabilità che la mossa colpisca, non la forza del colpo.
+
+Per battaglia e crescita, [じめん](term:term-v312-jimen) è il tipo Terra, [経験](term:term-v309-keiken) è l'esperienza che aumenta o si accumula, e [期待](term:term-v310-kitai) è l'aspettativa verso ciò che deve ancora succedere. In una scena di scuola o prova, [数学](term:term-v307-suugaku) invece segnala una materia: il testo sta entrando nella cornice accademica, non in un calcolo isolato.
 
 Le espressioni come [行ってみよう](term:term-e057-ittemiyou) e [それなら](term:term-e058-sorenara) servono a spingere avanti una scelta, confermare una proposta o rispondere a una condizione. In dialogo orientano il passo successivo della scena, non solo il tono generale.
 

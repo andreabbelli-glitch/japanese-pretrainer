@@ -14,9 +14,10 @@ tags:
 - phase-a
 - lesson-22
 prerequisites: []
-summary: 'Lessico ed espressioni per esplorazione e movimento, battaglia: 15 carte
-  lessicali attive, 4 formule ricorrenti, 3 pattern grammaticali e 3 etichette contestuali
-  da riconoscere.'
+summary: >-
+  Seguire esplorazione e battaglia quando il testo indica direzione,
+  apprendimento, stato o risultato, così da orientare movimento e scelta di
+  lotta.
 ---
 # Obiettivo
 
@@ -36,6 +37,13 @@ In Scarlet / Violet alcune parole tornano come lessico riusabile, mentre nomi pr
 - [一瞬](term:term-v381-isshun) — un istante
 - [広い](term:term-v383-hiroi) — ampio / largo
 - [水上](term:term-v384-suijou) — sull'acqua
+- [一気に](term:term-v385-ikki-ni) — tutto d'un colpo
+- [強力](term:term-v386-kyouryoku) — potente
+- [大ジャンプ](term:term-v387-oojanpu) — super salto
+- [着く](term:term-v388-tsuku) — arrivare
+- [危ない](term:term-v389-abunai) — pericoloso
+- [結晶化](term:term-v390-kesshouka) — cristallizzazione
+- [育てる](term:term-v391-sodate-ru) — allenare / crescere
 
 ## Espressioni ricorrenti
 
@@ -59,6 +67,10 @@ In Scarlet / Violet alcune parole tornano come lessico riusabile, mentre nomi pr
 ## Spiegazione
 
 [謎](term:term-v376-nazo) segnala un mistero o un punto non chiarito; [アドバイス](term:term-v377-adobaisu) ti avvisa che sta arrivando un consiglio o una dritta; [ねむり](term:term-v378-nemuri) indica la condizione di sonno in battaglia. Sono parole che non descrivono solo il tema generale: dicono che tipo di informazione stai leggendo.
+
+Quando il testo guida il movimento, [周り](term:term-v379-mawari) ti fa controllare ciò che hai intorno, [近づく](term:term-v380-chikazu-ku) descrive l'avvicinamento, [一瞬](term:term-v381-isshun) o [一気に](term:term-v385-ikki-ni) indicano rapidità, [大ジャンプ](term:term-v387-oojanpu) nomina un salto potenziato e [着く](term:term-v388-tsuku) marca l'arrivo a destinazione. [広い](term:term-v383-hiroi), [水上](term:term-v384-suijou) e [危ない](term:term-v389-abunai) danno invece qualità della zona: ampia, sull'acqua o rischiosa.
+
+In battaglia o gestione squadra, [強力](term:term-v386-kyouryoku) valuta la potenza di una mossa, [結晶化](term:term-v390-kesshouka) richiama la trasformazione cristallina della teracristallizzazione e [育てる](term:term-v391-sodate-ru) parla di far crescere un Pokémon nel tempo. Sono tre situazioni diverse: giudicare forza immediata, riconoscere una meccanica visiva, oppure investire nella crescita della squadra.
 
 [手加減しないよ](term:term-e071-tekagen-shinaiyo) suona come una sfida diretta: "non avrò pietà". [〜してくれない？](term:term-e072-shitekurenai) è una richiesta morbida, più vicina a "non è che potresti...?". [本当に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) è la conferma forte che il gioco usa quando vuole sapere se sei davvero sicuro.
 
@@ -94,6 +106,34 @@ jp: >-
   {{本当|ほんとう}}に よろしいですか？
 translation_it: >-
   Sei davvero sicuro?
+:::
+
+:::example_sentence
+jp: >-
+  {{一気|いっき}}に {{近|ちか}}づいて、 ゼロゲートに {{着|つ}}く。
+translation_it: >-
+  Mi avvicino tutto d'un colpo e arrivo allo Zero Gate.
+:::
+
+:::example_sentence
+jp: >-
+  {{危|あぶ}}ないから {{大|おお}}ジャンプしない。
+translation_it: >-
+  Non faccio il super salto perché è pericoloso.
+:::
+
+:::example_sentence
+jp: >-
+  {{強力|きょうりょく}}な わざで ポケモンが {{結晶化|けっ.しょう.か}}する。
+translation_it: >-
+  Con una mossa potente il Pokémon si cristallizza.
+:::
+
+:::example_sentence
+jp: >-
+  ポケモンを {{育|そだ}}てる。
+translation_it: >-
+  Alleno un Pokémon.
 :::
 
 ## Nota finale

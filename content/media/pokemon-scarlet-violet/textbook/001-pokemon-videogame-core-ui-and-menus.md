@@ -60,7 +60,7 @@ chiudono, confermano o cambiano una schermata.
 
 ## Spiegazione
 
-[レポート](term:term-report) è il primo falso amico da fissare. In Pokemon non
+[レポート](term:term-report) è il primo falso amico operativo. In Pokemon non
 vuol dire "report" nel senso di documento: è il comando di salvataggio. Quando
 il gioco ti chiede se vuoi fare `レポート` o ti mostra una conferma con `はい`
 e `いいえ`, sta chiedendo se vuoi registrare lo stato attuale della tua

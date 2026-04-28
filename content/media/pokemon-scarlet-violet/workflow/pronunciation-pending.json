@@ -2,16 +2,10 @@
   "version": 1,
   "media_slug": "pokemon-scarlet-violet",
   "total_targets": 1057,
-  "audio_backed_count": 176,
-  "known_missing_count": 64,
-  "pending_count": 817,
+  "audio_backed_count": 213,
+  "known_missing_count": 80,
+  "pending_count": 764,
   "pending": [
-    {
-      "entry_type": "term",
-      "entry_id": "term-v146-ikisaki",
-      "label": "行先",
-      "reading": "いきさき"
-    },
     {
       "entry_type": "term",
       "entry_id": "term-v147-sutaadasutosutoriito",
@@ -32,117 +26,9 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-v150-waka-ru",
-      "label": "分かる",
-      "reading": "わかる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-e027-sasete",
-      "label": "〜させて",
-      "reading": "〜させて"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v153-tada",
-      "label": "ただ",
-      "reading": "ただ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v154-iwa",
-      "label": "いわ",
-      "reading": "いわ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v155-hontou",
-      "label": "本当",
-      "reading": "ほんとう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v156-jugyou",
-      "label": "授業",
-      "reading": "じゅぎょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v157-chiimu",
-      "label": "チーム",
-      "reading": "ちーむ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v158-gakuen",
-      "label": "学園",
-      "reading": "がくえん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v159-bosu",
-      "label": "ボス",
-      "reading": "ぼす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v160-kusa",
-      "label": "くさ",
-      "reading": "くさ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v161-fushigi",
-      "label": "不思議",
-      "reading": "ふしぎ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v162-dameeji",
-      "label": "ダメージ",
-      "reading": "だめーじ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v163-supaisu",
-      "label": "スパイス",
-      "reading": "スパイス"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v165-ajito",
-      "label": "アジト",
-      "reading": "あじと"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v166-ryouri",
-      "label": "料理",
-      "reading": "りょうり"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-v167-nushi",
       "label": "ヌシ",
       "reading": "ヌシ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v168-kouchou",
-      "label": "校長",
-      "reading": "こうちょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v169-atarashii",
-      "label": "新しい",
-      "reading": "あたらしい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v170-honoo",
-      "label": "ほのお",
-      "reading": "ほのお"
     },
     {
       "entry_type": "term",
@@ -173,12 +59,6 @@
       "entry_id": "term-v176-chikara",
       "label": "力",
       "reading": "ちから"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-e035-ga-arimasu",
-      "label": "〜が あります",
-      "reading": "〜が あります"
     },
     {
       "entry_type": "term",
@@ -215,12 +95,6 @@
       "entry_id": "term-v183-daiji",
       "label": "大事",
       "reading": "だいじ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v185-namae",
-      "label": "名前",
-      "reading": "なまえ"
     },
     {
       "entry_type": "term",
@@ -2132,12 +2006,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-v474-nyuushu",
-      "label": "入手",
-      "reading": "にゅうしゅ"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-v475-hitsu-kome-ru",
       "label": "引っ込める",
       "reading": "ひっこめる"
@@ -2819,12 +2687,6 @@
       "entry_id": "term-v585-ikitomari",
       "label": "行き止まり",
       "reading": "いきとまり"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v586-hyouji",
-      "label": "表示",
-      "reading": "ひょうじ"
     },
     {
       "entry_type": "term",
@@ -4283,156 +4145,6 @@
       "entry_id": "term-takara-sagashi",
       "label": "宝探し",
       "reading": "たからさがし"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g001-spiegazione-enfasi",
-      "label": "～のだ / ～んだ"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g002-mi-chiedo-se",
-      "label": "～かな"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g003-stato-in-corso-stato-risultante",
-      "label": "～ている"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g005-senza-fare-non-fare-e",
-      "label": "～ないで"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g006-contrazione-colloquiale-di",
-      "label": "～てる"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g009-contrazione-di-dovere",
-      "label": "～なきゃ / ～なくちゃ"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g010-prima-di",
-      "label": "～前に"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g011-voler-fare",
-      "label": "～たい"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g014-si-puo-va-bene-fare",
-      "label": "～てもいい"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g015-dopo",
-      "label": "～後で / ～あとで"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g017-pensare-che",
-      "label": "～と思う"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g018-non-si-deve",
-      "label": "～てはいけない / ～ちゃいけない"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g019-dover-fare",
-      "label": "～なければならない / ～ないといけない"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g020-poter-fare",
-      "label": "可能形"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g021-passato-completamento",
-      "label": "た形"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g022-collega-azioni-crea-richieste-e-molte-co",
-      "label": "て形"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g023-negazione",
-      "label": "ない形"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g024-registro-cortese-vs-piano",
-      "label": "ます / 辞書形"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g025-da-fino-a",
-      "label": "から / まで"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo",
-      "label": "が"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g027-luogo-dell-azione-mezzo",
-      "label": "で"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g028-con-e-citazione",
-      "label": "と"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g029-destinazione-tempo-bersaglio-esistenza",
-      "label": "に"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g030-possesso-collegamento-tra-nomi",
-      "label": "の"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g031-marca-il-tema",
-      "label": "は"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g032-verso",
-      "label": "へ"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g033-marca-l-oggetto-diretto",
-      "label": "を"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g034-perche",
-      "label": "から"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g035-ma-pero",
-      "label": "けど / けれど"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-g036-siccome-dato-che",
-      "label": "ので"
     },
     {
       "entry_type": "grammar",

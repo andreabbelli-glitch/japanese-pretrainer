@@ -166,7 +166,7 @@ caption: >-
   Il leggendario appare qui in una [{{姿|すがた}}](term:term-sugata) diversa da quella di un Pokemon da battaglia normale: il visuale mostra un cambio di stato, non un semplice incontro casuale.
 :::
 
-In questo stesso blocco torna utile [～てしまう](grammar:grammar-te-shimau).
+Accanto a questo contrasto torna utile [～てしまう](grammar:grammar-te-shimau).
 Nella scena della caduta o quando si parla di un oggetto che si consuma, il
 pattern mantiene la sua doppia funzione: qualcosa accade fino in fondo oppure
 finisce in un esito non desiderato. Se senti forme contratte come `{{落|お}}ちちゃう`

@@ -42,6 +42,10 @@ set statico copre:
 - word bank operativo completo dalla specifica non-audio, pseudoword seed e
   phrase bank `P01-P60`. Gli asset di supporto al catalogo restano dati
   statici, ma non definiscono modalità sessione autonome.
+- word bank media/ad hoc in
+  `src/features/katakana-speed/model/media-word-bank.json`: questi termini
+  vengono materializzati come normali item `word`, con tag di sorgente
+  `media:*` o `custom:*`, senza priorità speciale nello scheduler.
 
 Il catalogo pseudoword materializza 45 chunk operativi per 6 frame statici
 (`{chunk}トール`, `{chunk}リック`, `ア{chunk}ール`,
@@ -102,6 +106,11 @@ toggle lettura sono disabilitati per non rivelare la risposta.
 La RAN Grid non usa mai marker isolati come `ー` o `ッ` come celle: quando il
 focus è moraico pesca superfici concrete dal word bank e dai pair curati, poi
 completa la griglia con kana/chunk displayable e shuffle seed-driven.
+
+Le aggiunte manuali alla banca parole passano dalla skill repo-scoped
+`.agents/skills/katakana-speed-word-bank`, che aggiorna solo
+`src/features/katakana-speed/model/media-word-bank.json` e lascia invariata la
+strategia di scheduling.
 
 Il refactor non mantiene adapter per vecchie `sessionMode` come `rare_combo`,
 `mora_trap`, `tile_builder`, `chunk_spotting`, `variant_normalization` o mode

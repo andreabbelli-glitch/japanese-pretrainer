@@ -6,6 +6,7 @@ import { buildEntryKey } from "./entry-id.ts";
 import { createFetchThrottle } from "./fetch-throttle.ts";
 import {
   loadValidatedManifest,
+  mergePronunciationAudioManifestEntry,
   persistManifestEntries
 } from "./manifest-helpers.ts";
 import { isSupportedAudioAssetPath } from "./media-assets.ts";
@@ -105,7 +106,8 @@ export async function fetchPronunciationsForBundle(input: {
     input.bundle.mediaDirectory,
     input.bundle.mediaSlug
   );
-  const targetPool = input.onlyTargets ?? collectPronunciationTargets(input.bundle);
+  const targetPool =
+    input.onlyTargets ?? collectPronunciationTargets(input.bundle);
   const entries = targetPool.filter((entry) => {
     if (input.refresh) {
       return true;
@@ -164,16 +166,23 @@ export async function fetchPronunciationsForBundle(input: {
       }
     }
 
-    manifestEntries.set(buildEntryKey(entry.kind, entry.id), {
-      entryId: entry.id,
-      entryType: entry.kind,
-      audioSrc: localAsset,
-      audioSource: resolved.candidate.source,
-      audioSpeaker: resolved.candidate.speaker,
-      audioLicense: resolved.candidate.license,
-      audioAttribution: resolved.candidate.attribution,
-      audioPageUrl: resolved.candidate.pageUrl
-    });
+    const entryKey = buildEntryKey(entry.kind, entry.id);
+    manifestEntries.set(
+      entryKey,
+      mergePronunciationAudioManifestEntry({
+        audio: {
+          audioSrc: localAsset,
+          audioSource: resolved.candidate.source,
+          audioSpeaker: resolved.candidate.speaker,
+          audioLicense: resolved.candidate.license,
+          audioAttribution: resolved.candidate.attribution,
+          audioPageUrl: resolved.candidate.pageUrl
+        },
+        entryId: entry.id,
+        entryType: entry.kind,
+        existing: manifestEntries.get(entryKey)
+      })
+    );
     results.push({
       entryId: entry.id,
       fileTitle: resolved.candidate.fileTitle,

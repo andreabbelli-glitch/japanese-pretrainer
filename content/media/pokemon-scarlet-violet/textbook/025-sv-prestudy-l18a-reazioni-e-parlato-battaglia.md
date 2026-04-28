@@ -14,85 +14,62 @@ tags:
 - phase-a
 - lesson-18
 prerequisites: []
-summary: 'Lessico ed espressioni per reazioni e parlato, battaglia: 12 carte lessicali
-  attive, 2 formule ricorrenti, 3 pattern grammaticali e 2 etichette contestuali da
-  riconoscere.'
+summary: >-
+  Reazioni, confronti e combattimento: leggi assenso, incredulità, condizioni e
+  paragoni insieme a torneo, tipo, oggetto tenuto e risultato della lotta.
 ---
 # Obiettivo
 
-Leggere il giapponese che compare in reazioni, dialoghi brevi e messaggi di battaglia: parole che indicano torneo, durata o quantità, espressioni di assenso e sorpresa, e strutture che confrontano o collegano le frasi.
+Leggere battute rapide dove un personaggio capisce, dubita, confronta o propone una condizione, e collegarle alle parole di torneo, combattimento, tipi e strumenti tenuti.
 
-## Contesto
+## Reazioni: capire, confermare, restare sorpresi
 
-Questa lesson mette insieme parole da dialogo e nomi fissi del gioco. [そうか](term:term-e036-souka) prende atto di un'informazione, [まさか](term:term-e038-masaka) reagisce con incredulità, [大会](term:term-v196-taikai) nomina un torneo e [持たせる](term:term-v202-mota-seru) descrive l'azione di far tenere uno strumento a un Pokémon.
+[そうか](term:term-e036-souka) prende atto di un'informazione appena ricevuta: non aggiunge una nuova azione, ma mostra che il parlante ha capito. [たしかに](term:term-v206-tashikani) conferma con "in effetti", mentre [まさか](term:term-e038-masaka) reagisce a qualcosa che sembra improbabile o scioccante.
 
-## Termini chiave
+[{{大変|たいへん}}](term:term-v207-taihen) descrive una situazione dura o impegnativa; non è solo "grande". [{{感謝|かんしゃ}}](term:term-v208-kansha) porta invece il discorso sulla gratitudine, spesso dopo aiuto, salvataggio o collaborazione.
 
-- [大会](term:term-v196-taikai) — torneo
-- [ずっと](term:term-v197-zutto) — per tutto il tempo / di gran lunga
-- [言葉](term:term-v198-kotoba) — parola / espressione
-- [一番](term:term-v199-ichiban) — numero uno / il più
-- [むし](term:term-v200-mushi) — coleottero / tipo insetto
-- [持たせる](term:term-v202-mota-seru) — far tenere (un oggetto)
-- [全然](term:term-v203-zenzen) — per niente / completamente
-- [こおり](term:term-v204-koori) — ghiaccio
+## Tornei, lotte e tipi
 
-## Espressioni ricorrenti
+[{{大会|たいかい}}](term:term-v196-taikai) nomina un torneo o competizione. [{{戦闘|せんとう}}](term:term-v205-sentou) è il combattimento come evento o stato, più tecnico di una semplice "lotta" detta al volo. [{{一番|いちばん}}](term:term-v199-ichiban) indica il numero uno o il massimo nella scala, e con [ずっと](term:term-v197-zutto) puoi leggere durata continuativa oppure confronto più netto, come "molto più".
 
-- [そうか](term:term-e036-souka) — ah, capisco
-- [まさか](term:term-e038-masaka) — non ci credo / ma dai
+[むし](term:term-v200-mushi) e [こおり](term:term-v204-koori) sono tipi in battaglia. [{{全然|ぜんぜん}}](term:term-v203-zenzen) rafforza la negazione o, in parlato moderno, l'intensità: controlla sempre se dopo arriva una forma negativa o una valutazione positiva.
 
-## Pattern grammaticali chiave
+## Parole, oggetti e grammatica della scelta
 
-- [～って](grammar:grammar-g037-citazione-tema-colloquiale) — citazione / tema colloquiale
-- [～より / ～ほど](grammar:grammar-g038-piu-di-al-punto-da) — più di / al punto da
-- [～ば](grammar:grammar-g039-se) — se
+[{{言葉|ことば}}](term:term-v198-kotoba) può indicare una parola, una frase o il modo in cui qualcosa viene detto. [{{持|も}}たせる](term:term-v202-mota-seru) è causativo pratico: fai tenere un oggetto a un Pokémon, quindi l'oggetto passa dal menu al singolo membro della squadra.
 
-## Etichette da riconoscere
-
-- [テラピース](term:term-v201-terapiisu) — Tera Shards
-- [お疲れさまでスター](term:term-e037-otsukaresamadesutaa) — ottimo lavoro, Star!
-
-## Spiegazione
-
-Parole come [大会](term:term-v196-taikai), [ずっと](term:term-v197-zutto) e [言葉](term:term-v198-kotoba) dicono subito se la frase parla di un torneo, di una durata o di una parola/espressione citata da un personaggio. Quando compaiono, il messaggio non è astratto: ti sta dicendo su cosa si sta concentrando la scena.
-
-Le espressioni come [そうか](term:term-e036-souka) e [まさか](term:term-e038-masaka) sono reazioni in miniatura. [そうか](term:term-e036-souka) segnala comprensione o presa d'atto; [まさか](term:term-e038-masaka) segnala sorpresa, incredulità o rifiuto dell'ipotesi.
-
-Sul piano grammaticale, [〜って](grammar:grammar-g037-citazione-tema-colloquiale) introduce ciò che qualcuno ha detto o sposta il discorso su un tema; [〜より / 〜ほど](grammar:grammar-g038-piu-di-al-punto-da) confronta due elementi o misura l'intensità; [〜ば](grammar:grammar-g039-se) introduce una condizione. Se li riconosci, capisci subito se la frase sta citando, confrontando o impostando un "se...".
-
-[テラピース](term:term-v201-terapiisu) e [お疲れさまでスター](term:term-e037-otsukaresamadesutaa) sono riferimenti contestuali diversi: il primo è una risorsa legata alla Teracristal, il secondo gioca su お疲れさま e スター per produrre una formula di Team Star.
+[〜って](grammar:grammar-g037-citazione-tema-colloquiale) aggancia una citazione o porta un tema in primo piano: ネモって... vuol dire "quanto a Nemona..." o "Nemona, dici?". [〜より / 〜ほど](grammar:grammar-g038-piu-di-al-punto-da) costruisce confronto o misura d'intensità, mentre [〜ば](grammar:grammar-g039-se) apre una condizione: prima leggi il "se", poi cerca la conseguenza.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  そうか、 わかった。
+  そうか、 たしかに {{大変|たいへん}}だった。
 translation_it: >-
-  Ah, ho capito.
+  Ah, in effetti è stata dura.
 :::
 
 :::example_sentence
 jp: >-
-  ネモって {{一番|いちばん}}だよね。
+  ネモって {{一番|いちばん}} {{強|つよ}}いよね。
 translation_it: >-
-  Nemona, dici? È la numero uno, vero?
+  Nemona, dici? È la più forte, vero?
 :::
 
 :::example_sentence
 jp: >-
-  まさか！
+  ポケモンに {{道具|どうぐ}}を {{持|も}}たせる。
 translation_it: >-
-  Ma dai!
+  Faccio tenere un oggetto al Pokémon.
 :::
 
 :::example_sentence
 jp: >-
-  {{学校|がっこう}}より ジムのほうが {{近|ちか}}い。
+  {{大会|たいかい}}で {{勝|か}}てば、 みんなが {{感謝|かんしゃ}}します。
 translation_it: >-
-  La palestra è più vicina della scuola.
+  Se vinci il torneo, tutti ti ringraziano.
 :::
 
 ## Nota finale
 
-In queste frasi, そうか / まさか danno la reazione, 〜って introduce citazione o tema, より / ほど confrontano due elementi e ば apre una condizione. Sono queste forme a decidere se la scena sta rispondendo, citando, paragonando o impostando un "se".
+Le forme brevi decidono la logica della battuta: reazione, citazione, confronto o condizione. Le parole di battaglia dicono invece quale evento, tipo o oggetto rende quella logica utile sullo schermo.

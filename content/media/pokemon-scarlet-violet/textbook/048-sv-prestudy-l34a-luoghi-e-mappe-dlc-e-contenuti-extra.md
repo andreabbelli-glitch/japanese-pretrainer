@@ -14,9 +14,9 @@ tags:
 - phase-c
 - lesson-34
 prerequisites: []
-summary: 'Lessico ed espressioni per leggere mappe, luoghi, DLC e schermate extra:
-  9 carte lessicali attive, 0 formule ricorrenti, 0 pattern grammaticali e 18 etichette
-  contestuali da riconoscere.'
+summary: >-
+  Leggere mappe, luoghi, DLC e schermate extra: collegare nomi di zona,
+  missioni, consegne, basi e stati visivi alla funzione pratica mostrata.
 ---
 # Obiettivo
 
@@ -106,4 +106,4 @@ translation_it: >-
 
 ## Nota finale
 
-Per le etichette di luogo basta riconoscere il nome e collegarlo alla zona giusta della mappa. Per le 9 carte attive, memorizza la combinazione con una funzione concreta: missione, consegna, cover, trasformazione, stato standard, base, pattern visivo o atmosfera.
+Per le etichette di luogo basta riconoscere il nome e collegarlo alla zona giusta della mappa. Per le parole operative, memorizza la combinazione con una funzione concreta: missione, consegna, cover, trasformazione, stato standard, base, pattern visivo o atmosfera.

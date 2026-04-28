@@ -14,79 +14,64 @@ tags:
 - phase-a
 - lesson-18
 prerequisites: []
-summary: 'Lessico ed espressioni per reazioni e parlato, scuola e storia: 13 carte
-  lessicali attive, 3 formule ricorrenti, 3 pattern grammaticali e 0 etichette contestuali
-  da riconoscere.'
+summary: >-
+  Aiuto, direzioni, pasti e prove scolastiche: leggi proposte, contrasto,
+  categorie, menu e risultati senza confondere parlato, UI e Accademia.
 ---
 # Obiettivo
 
-Capire il giapponese breve che in scuola e storia segnala aiuto, contrasto, proposta, direzione e reazione.
+Leggere frasi che offrono aiuto, propongono un'azione, indicano una direzione o passano da menu e pasti alla vita scolastica dell'Accademia.
 
-## Contesto
+## Aiuto, proposte e contrasto
 
-Qui compaiono parole che marcano aiuto, direzione, categoria e risultato: 〜してあげる offre un'azione a favore di qualcuno, 向こう indica l'altra parte dello spazio, 種類 classifica, 勝利 nomina l'esito positivo.
+[〜してあげる](term:term-e042-shiteageru) dice che il parlante fa qualcosa a beneficio di qualcun altro; il favore è dentro la grammatica, non aggiunto dall'italiano. [～ましょう / ～ましょ](grammar:grammar-g044-facciamo-andiamo-a) invita a fare qualcosa insieme o guida l'interlocutore con tono cortese. [～よう](grammar:grammar-g045-facciamo-provero-a) è volitivo: può suonare come "facciamo", "andiamo a" o "proverò a".
 
-## Termini chiave
+[～のに](grammar:grammar-g043-anche-se-nonostante) segnala contrasto inatteso: la prima parte crea un'aspettativa, la seconda la rompe. [{{今度|こんど}}](term:term-v228-kondo) restringe la proposta a "questa volta" o "la prossima volta"; [{{残念|ざんねん}}](term:term-v232-zannen) esprime che l'esito dispiace o non è quello sperato.
 
-- [種類](term:term-v224-shurui) — tipo / categoria
-- [食事](term:term-v225-shokuji) — pasto
-- [ライド技](term:term-v226-raidowaza) — abilità di ride
-- [メニュー](term:term-v227-menyuu) — menu
-- [今度](term:term-v228-kondo) — questa volta / la prossima
-- [色違い](term:term-v229-irochigai) — shiny / colore diverso
-- [意味](term:term-v230-imi) — significato
-- [でんき](term:term-v231-denki) — elettro
+## Direzioni e libertà di scelta
 
-## Espressioni ricorrenti
+[{{向|む}}こう](term:term-e062-mukou) indica l'altra parte dello spazio: di là, laggiù, oltre il punto in cui sei. [どっち？](term:term-e063-docchi) chiede quale lato, direzione o opzione scegliere. [{{自由|じゆう}}](term:term-v233-jiyuu) segnala libertà d'azione: in una frase di gioco può voler dire che puoi muoverti o scegliere senza un percorso unico.
 
-- [〜してあげる](term:term-e042-shiteageru) — te lo faccio io
-- [向こう](term:term-e062-mukou) — laggiù / di là / dall’altra parte
-- [どっち？](term:term-e063-docchi) — quale direzione? / da che parte?
+## Menu, pasti e abilità di movimento
 
-## Pattern grammaticali chiave
+[{{種類|しゅるい}}](term:term-v224-shurui) classifica per tipo o categoria. [{{食事|しょくじ}}](term:term-v225-shokuji) è il pasto come evento o menu di cibo, importante quando i bonus del picnic entrano nella lettura. [メニュー](term:term-v227-menyuu) è la schermata o lista di scelte, mentre [ライド{{技|わざ}}](term:term-v226-raidowaza) nomina un'abilità di movimento del Pokémon cavalcatura.
 
-- [～のに](grammar:grammar-g043-anche-se-nonostante) — anche se / nonostante
-- [～ましょう / ～ましょ](grammar:grammar-g044-facciamo-andiamo-a) — facciamo… / andiamo a…
-- [～よう](grammar:grammar-g045-facciamo-provero-a) — facciamo… / proverò a…
+[{{色違|いろちが}}い](term:term-v229-irochigai) indica il Pokémon shiny, letteralmente di colore diverso. [でんき](term:term-v231-denki) è il tipo Elettro o l'elemento elettrico in battaglia; il contesto decide se stai leggendo una categoria di tipo o una descrizione più generale.
 
-## Spiegazione
+## Accademia, significato e risultato
 
-Parole come [種類](term:term-v224-shurui), [食事](term:term-v225-shokuji), [ライド技](term:term-v226-raidowaza) e [メニュー](term:term-v227-menyuu) distinguono quattro domini della schermata: categoria, pasto, abilità di cavalcata e menu di sistema. La forma restringe subito il tipo di scelta o informazione richiesta.
-
-Le espressioni come [〜してあげる](term:term-e042-shiteageru), [向こう](term:term-e062-mukou) e [どっち？](term:term-e063-docchi) dividono parlato e spazio: la prima offre aiuto, la seconda colloca qualcosa dall'altra parte, la terza chiede quale direzione o scelta prendere.
-
-Sul piano grammaticale, [〜のに](grammar:grammar-g043-anche-se-nonostante) segnala un contrasto inatteso, [〜ましょう / 〜ましょ](grammar:grammar-g044-facciamo-andiamo-a) è un invito cortese e [〜よう](grammar:grammar-g045-facciamo-provero-a) è la forma volitiva che suona come proposta, intenzione o auto-incoraggiamento.
+[{{意味|いみ}}](term:term-v230-imi) chiede che cosa vuol dire una parola, una scelta o un segnale. [{{勝利|しょうり}}](term:term-v234-shouri) è la vittoria come esito positivo, non semplicemente "andare bene". Nella cornice scolastica, [{{中間|ちゅうかん}}テスト](term:term-v342-chuukan-tesuto) è l'esame di metà corso e [{{期末|きまつ}}テスト](term:term-v343-kimatsu-tesuto) quello finale: i due termini ti dicono subito in quale punto della valutazione ti trovi.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  あとで {{教|おし}}えてあげる。
+  {{向|む}}こうの メニューを {{見|み}}ましょう。
 translation_it: >-
-  Te lo spiego dopo.
+  Guardiamo il menu laggiù.
 :::
 
 :::example_sentence
 jp: >-
-  {{近|ちか}}いのに {{行|い}}けない。
+  {{自由|じゆう}}に {{選|えら}}べるのに、 どっちか まだ {{決|き}}められない。
 translation_it: >-
-  È vicino, ma non ci posso andare.
+  Anche se posso scegliere liberamente, non riesco ancora a decidere quale.
 :::
 
 :::example_sentence
 jp: >-
-  いっしょに {{行|い}}きましょう。
+  {{食事|しょくじ}}の {{種類|しゅるい}}で {{色違|いろちが}}いの ポケモンを {{探|さが}}そう。
 translation_it: >-
-  Andiamo insieme.
+  Proviamo a cercare Pokémon shiny tramite il tipo di pasto.
 :::
 
 :::example_sentence
 jp: >-
-  もう {{帰|かえ}}ろう。
+  {{勝利|しょうり}}したのに、 {{残念|ざんねん}}そうです。
 translation_it: >-
-  Torniamo, dai.
+  Anche se ha vinto, sembra deluso.
 :::
 
 ## Nota finale
 
-Quando incontri queste battute, 〜してあげる segnala l'aiuto offerto, 〜のに il contrasto inatteso, 〜ましょう / 〜よう la proposta o intenzione, 向こう / どっち la direzione nello spazio.
+Separa sempre il tipo di segnale: aiuto offerto, proposta, contrasto, direzione, categoria di menu o risultato scolastico. La frase smette di essere una lista di parole e diventa una piccola istruzione di scena.

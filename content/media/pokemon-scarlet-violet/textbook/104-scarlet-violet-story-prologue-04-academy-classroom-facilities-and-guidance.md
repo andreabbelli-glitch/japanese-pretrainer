@@ -69,7 +69,7 @@ caption: >-
 
 ## Spiegazione
 
-Il lessico di questo blocco va letto come una mappa del campus. In Scarlet /
+Il lessico qui funziona come una mappa del campus. In Scarlet /
 Violet le sale della scuola non sono scenografia neutra: ogni etichetta ti dice
 che tipo di interazione stai per avere. Se il gioco ti manda alla
 [{{学生食堂|がく.せい.しょく.どう}}](term:term-gakusei-shokudou), non sta solo
@@ -89,7 +89,7 @@ futuro. Quando il gioco ti chiede `{{将来|しょうらい}} 何を {{目指|�
 ですか`, non sta riempiendo tempo con chiacchiera scolastica: sta cercando di
 farti leggere la storia come scelta di direzione e obiettivo.
 
-Le tre sale piu importanti di questo blocco hanno funzioni molto diverse. La
+Le tre sale piu importanti della sequenza hanno funzioni molto diverse. La
 [{{学生食堂|がく.せい.しょく.どう}}](term:term-gakusei-shokudou) e il punto dove
 la storia usa un luogo quotidiano per farti arrivare un invito o una proposta.
 La [{{職員室|しょく.いん.しつ}}](term:term-shokuinshitsu) e il posto in cui il gioco
@@ -140,7 +140,7 @@ Nemona, ma resta una vera istruzione quando ti dice di riposare o di seguirla.
 spinge a provare una direzione o a pensare a un obiettivo, non solo a fare un
 esperimento astratto.
 
-In pratica, questo blocco ti insegna a leggere l'accademia come sistema di
+In pratica, l'accademia va letta come sistema di
 instradamento. Aula, mensa, uffici e dormitorio non sono stanze equivalenti:
 sono nodi che distribuiscono tutorial, agganci di route e avanzamento del
 prologo.
@@ -217,7 +217,7 @@ translation_it: >-
 
 ## Nota finale
 
-Per leggere bene questo blocco non basta seguire i personaggi. Devi leggere
+Per leggere bene questa parte non basta seguire i personaggi. Devi leggere
 anche il valore delle stanze. Se stabilizzi
 [{{学生食堂|がく.せい.しょく.どう}}](term:term-gakusei-shokudou),
 [{{職員室|しょく.いん.しつ}}](term:term-shokuinshitsu),
@@ -226,4 +226,3 @@ anche il valore delle stanze. Se stabilizzi
 [{{目指|めざ}}す](term:term-mezasu), la parte scolastica smette di sembrare un
 blocco di dialoghi generici e diventa una sequenza leggibile di scelte e
 briefing.
-

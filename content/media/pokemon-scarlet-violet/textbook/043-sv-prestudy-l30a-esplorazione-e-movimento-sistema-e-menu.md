@@ -14,9 +14,9 @@ tags:
 - phase-b
 - lesson-30
 prerequisites: []
-summary: 'Lessico ed espressioni per esplorazione e movimento, sistema e menu: 19
-  carte lessicali attive, 4 formule ricorrenti, 4 pattern grammaticali e 2 etichette
-  contestuali da riconoscere.'
+summary: >-
+  Muoversi tra esplorazione e menu: riconoscere negozi, macchine, azioni
+  simultanee e comandi di sistema per scegliere dove andare o cosa attivare.
 ---
 # Obiettivo
 
@@ -65,6 +65,12 @@ Le espressioni come [くやしいけど](term:term-e090-kuyashiikedo) e [〜し�
 Sul piano grammaticale, [〜ように](grammar:grammar-g093-in-modo-da-affinche) e [〜ために](grammar:grammar-g097-per-allo-scopo-di) agganciano un'azione a uno scopo, mentre [〜だって](grammar:grammar-g094-persino-ma-dai-infatti) e [〜なんて](grammar:grammar-g096-una-cosa-come-che) aggiungono sorpresa, enfasi o incredulità. Se una frase contiene `勝てるように` o `準備するために`, non descrive solo un fatto: spiega a quale risultato tende l'azione.
 
 [デリバードポーチ](term:term-v573-deribaadopoochi) e [シンクロマシン](term:term-v589-shinkuromashin) sono nomi verticali, ma nella frase funzionano come punti di ancoraggio. Il primo segnala un negozio riconoscibile sulla mappa; il secondo indica una macchina o funzione da attivare. In entrambi i casi il nome proprio va letto insieme al verbo vicino, non come lore separata.
+
+Nelle frasi di esplorazione, distingue sempre la forma del percorso dal risultato dello spostamento. [坂道](term:term-v578-sakamichi) ti avverte che il tratto sale o scende, mentre [行き止まり](term:term-v585-ikitomari) chiude la possibilità di proseguire: se leggi `この先は行き止まり`, non cercare un obiettivo nascosto, cerca una direzione alternativa. [周囲](term:term-v587-shuui) restringe l'attenzione ai dintorni del punto corrente, e [到着](term:term-v581-touchaku) segnala che il tragitto è arrivato alla meta.
+
+Nei menu la domanda cambia: non "dove vado?", ma "quale funzione sto attivando?". [装置](term:term-v579-souchi) nomina un dispositivo, [使用](term:term-v584-shiyou) dice che qualcosa viene usato davvero, [内容](term:term-v583-naiyou) chiede di controllare il contenuto prima della conferma e [フィルター](term:term-v588-firutaa) limita ciò che la schermata mostra. In una sequenza come `内容を確認してから使用`, il gioco ti sta facendo verificare prima di consumare o avviare.
+
+Le schermate sociali e fotografiche hanno un ritmo diverso. [自撮り](term:term-v580-jidori) appartiene alla camera e al profilo del giocatore: indica uno scatto di sé, non una foto panoramica. [特別講師](term:term-v582-tokubetsukoushi), invece, sposta la scena verso l'Accademia o il DLC scolastico: la persona non è un NPC qualunque, ma un docente invitato con una funzione precisa.
 
 ## Esempi guidati
 

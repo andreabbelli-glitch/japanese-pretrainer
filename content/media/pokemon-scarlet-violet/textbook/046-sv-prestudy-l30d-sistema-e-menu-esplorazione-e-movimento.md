@@ -14,9 +14,9 @@ tags:
 - phase-b
 - lesson-30
 prerequisites: []
-summary: 'Lessico ed espressioni per sistema e menu, esplorazione e movimento: 23
-  carte lessicali attive, 3 formule ricorrenti, 3 pattern grammaticali e 0 etichette
-  contestuali da riconoscere.'
+summary: >-
+  Leggere menu ed esplorazione quando il gioco mostra destinazioni,
+  impostazioni, controlli e comandi di movimento, collegando testo e azione.
 ---
 # Obiettivo
 
@@ -56,6 +56,12 @@ Parole come [落下](term:term-v638-rakka), [支援ボード](term:term-v639-shi
 Le espressioni come [本気で？](term:term-e103-honki-de) e [また来てくださいね](term:term-e104-matakitekudasaine) reagiscono o chiudono un'interazione: la prima mette in dubbio ciò che è appena stato detto, la seconda congeda il giocatore come farebbe un negozio o un NPC dopo un servizio.
 
 Sul piano grammaticale, [〜でござる](grammar:grammar-g106-registro-samurai-comico) marca un registro samurai caricaturale, [〜について](grammar:grammar-g107-riguardo-a-su) introduce l'argomento di una spiegazione e [〜ばっかり](grammar:grammar-g108-solo-nientaltro-che) concentra la frase su una ripetizione eccessiva. Sono segnali di voce e di focus: chi parla, di che cosa parla e se sta criticando un comportamento ripetuto.
+
+Nei dialoghi scolastici e di gruppo, guarda se la frase parla di ruolo o pressione sociale. [教員](term:term-v647-kyouin) indica il corpo docente come ruolo istituzionale, [勧誘](term:term-v646-kanyuu) descrive il tentativo di reclutare qualcuno e [憧れ](term:term-v660-akogare) dà al parlante un modello o un'aspirazione. In una scena Team Star, [勧誘](term:term-v646-kanyuu) non è una semplice informazione: implica che qualcuno sta cercando di portare altri dentro un gruppo.
+
+Nelle interfacce di scambio e negozio, il bersaglio dell'azione è diverso da quello che possiedi. [交換相手](term:term-v649-koukanaite) è la persona con cui fai lo scambio, non il Pokemon; [ラインナップ](term:term-v656-rainnappu) è l'offerta disponibile, non il carrello; [まとめ買い](term:term-v655-matomekai) raggruppa più acquisti in una sola conferma. Se poi compare `合計`, sai che il prezzo sta sommando l'intero blocco.
+
+Le frasi di movimento e crisi comprimono molte informazioni operative. [下降](term:term-v650-kakou) indica discesa o calo, [全速力](term:term-v657-zensokuryoku) alza il ritmo alla massima velocità e [緊急事態](term:term-v658-kinkyuujitai) segnala che non è una commissione ordinaria. In battaglia o storia, [退ける](term:term-v651-shirizoke-ru) significa respingere una minaccia, [勝ち負け](term:term-v654-kachimake) riassume l'esito vittoria/sconfitta e [退場](term:term-v659-taijou) rimuove qualcuno dalla scena o dall'attività.
 
 ## Esempi guidati
 

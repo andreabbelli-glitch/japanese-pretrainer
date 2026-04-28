@@ -14,9 +14,9 @@ tags:
 - phase-b
 - lesson-29
 prerequisites: []
-summary: 'Lessico ed espressioni per sistema e menu, scuola e storia: 27 carte lessicali
-  attive, 1 formule ricorrenti, 0 pattern grammaticali e 4 etichette contestuali da
-  riconoscere.'
+summary: >-
+  Leggere menu, scuola e storia quando la schermata parla di conferme, shop,
+  ruoli accademici, luoghi e lotte, collegando ogni parola alla cornice giusta.
 ---
 # Obiettivo
 
@@ -34,6 +34,7 @@ In Scarlet / Violet molte informazioni arrivano in frasi corte: pulsanti di conf
 - [受けとり](term:term-v532-uketori) — ritiro / ricezione da menu
 - [追加](term:term-v517-tsuika) — aggiunta a lista, squadra o opzione
 - [自動](term:term-v538-jidou) — automatico, come in impostazioni di sistema
+- [便利](term:term-v526-benri) — comodo / utile
 - [おこづかい](term:term-v533-okozukai) — soldi a disposizione / ricompensa
 - [エントリー](term:term-v536-entorii) — iscrizione o registrazione a un evento
 
@@ -69,6 +70,8 @@ In Scarlet / Violet molte informazioni arrivano in frasi corte: pulsanti di conf
 ## Spiegazione
 
 [これでＯＫ](term:term-e096-korede-okee) è la formula di chiusura: se la schermata dice così, la scelta è pronta per essere confermata. Subito intorno compaiono spesso parole operative: [注文](term:term-v529-chuumon) quando ordini, [受けとり](term:term-v532-uketori) quando ritiri un regalo o una ricompensa, [追加](term:term-v517-tsuika) quando aggiungi un elemento, [自動](term:term-v538-jidou) quando una funzione lavora senza intervento manuale.
+
+In menu e impostazioni, [便利](term:term-v526-benri) valuta una funzione dal punto di vista pratico: `便利な機能` è una funzione utile, `とても便利です` segnala che rende più facile orientarsi o gestire dati. È una parola naturale accanto a mappa, ricerca, scorciatoie e opzioni automatiche, non un complimento estetico come [素敵](term:term-v522-suteki).
 
 Nel blocco scolastico conviene leggere i sostantivi insieme al verbo naturale: [入学](term:term-v528-nyuugaku) si usa in `アカデミーに入学する`, [教室](term:term-v521-kyoushitsu) con `教室へ向かう` o `教室で授業を受ける`, [部室](term:term-v520-bushitsu) con `部室に集まる`. [生徒会長](term:term-v519-seitokaichou), [先輩](term:term-v531-senpai) e [助手](term:term-v518-joshu) indicano ruoli: aiutano a capire chi parla o chi sta dando istruzioni.
 
@@ -111,6 +114,13 @@ translation_it: >-
   Sto aspettando la risposta del senpai.
 :::
 
+:::example_sentence
+jp: >-
+  マップの {{検索|けんさく}}{{機能|きのう}}は とても {{便利|べんり}}です。
+translation_it: >-
+  La funzione di ricerca della mappa è molto comoda.
+:::
+
 ## Nota finale
 
-Quando incontri una parola di questo pacchetto, chiediti prima in quale cornice sta lavorando: conferma di menu, procedura di shop, ruolo scolastico, luogo della storia o lotta. La traduzione italiana rimane semplice, ma la collocazione giapponese ti dice quale azione concreta sta chiedendo la schermata.
+Quando incontri una di queste parole, chiediti prima in quale cornice sta lavorando: conferma di menu, procedura di shop, funzione utile, ruolo scolastico, luogo della storia o lotta. La traduzione italiana rimane semplice, ma la collocazione giapponese ti dice quale azione concreta sta chiedendo la schermata.

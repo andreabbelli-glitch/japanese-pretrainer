@@ -67,8 +67,8 @@ Il blocco più ricorrente del testo di lotta ruota attorno a
 [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun) ti dice che hai colpito
 una debolezza e che il danno è aumentato. Quando il gioco usa formule come
 `こうかは いまひとつのようだ` o `こうかが ないみたいだ……`, ti sta dicendo
-l'opposto: resistenza o assenza totale di effetto. Non confondere questo blocco
-con [{{急所|きゅうしょ}}](term:term-kyuusho): il colpo critico riguarda un
+l'opposto: resistenza o assenza totale di effetto. Non confondere la compatibilità
+dei tipi con [{{急所|きゅうしょ}}](term:term-kyuusho): il colpo critico riguarda un
 picco di danno del singolo attacco, mentre la compatibilità dei tipi dipende
 dalla relazione tra attaccante e bersaglio.
 
@@ -175,4 +175,3 @@ dopo il turno o dopo lo scontro. Se sai leggere bene
 [{{経験値|けい.けん.ち}}](term:term-keikenchi) e
 [{{進化|しんか}}](term:term-shinka), il flusso di lotta diventa molto più
 trasparente.
-

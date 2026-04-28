@@ -14,15 +14,15 @@ tags:
 - phase-b
 - lesson-29
 prerequisites: []
-summary: 'Lessico ed espressioni per Scarlet/Violet, battaglia: 28 carte lessicali
-  attive, 0 formule ricorrenti, 0 pattern grammaticali e 4 etichette contestuali da
-  riconoscere.'
+summary: >-
+  Seguire frasi di battaglia e storia: capire chi agisce, quale bersaglio cambia
+  stato, quale risultato segue e quando il dialogo segnala identità o fastidio.
 ---
 # Obiettivo
 
 Leggere le frasi di Scarlet/Violet che dicono chi agisce in battaglia, quale
 Pokémon o mossa viene colpito, quale stato cambia e quale risultato segue.
-Il pacchetto copre anche le parole di dialogo che segnalano autenticità,
+La lettura include anche le parole di dialogo che segnalano autenticità,
 fastidio, identità nascosta e riferimenti narrativi.
 
 ## Contesto

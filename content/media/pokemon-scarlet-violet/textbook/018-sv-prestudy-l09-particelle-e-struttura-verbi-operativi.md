@@ -14,9 +14,9 @@ tags:
 - phase-s
 - lesson-09
 prerequisites: []
-summary: 'Lessico ed espressioni per particelle e struttura, verbi operativi: 8 carte
-  lessicali attive, 2 formule ricorrenti, 3 pattern grammaticali e 2 etichette contestuali
-  da riconoscere.'
+summary: >-
+  Seguire indicazioni di movimento e stato: distinguere partenza, arrivo,
+  presenza, luogo e mezzo per capire dove andare e che cosa controllare.
 ---
 # Obiettivo
 
@@ -95,4 +95,4 @@ translation_it: >-
 
 ## Nota finale
 
-Nelle frasi di questa lesson, から / まで delimitano partenza e arrivo, が introduce ciò che esiste o conta, で marca luogo o mezzo. Le formule fisse chiariscono se la battuta accoglie, controlla lo stato di qualcuno o dà un'indicazione di movimento.
+In queste frasi, から / まで delimitano partenza e arrivo, が introduce ciò che esiste o conta, で marca luogo o mezzo. Le formule fisse chiariscono se la battuta accoglie, controlla lo stato di qualcuno o dà un'indicazione di movimento.

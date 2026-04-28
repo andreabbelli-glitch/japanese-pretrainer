@@ -14,9 +14,9 @@ tags:
 - phase-a
 - lesson-22
 prerequisites: []
-summary: 'Lessico ed espressioni per verbi operativi, sistema e menu: 16 carte lessicali
-  attive, 5 formule ricorrenti, 2 pattern grammaticali e 2 etichette contestuali da
-  riconoscere.'
+summary: >-
+  Capire comandi brevi di sistema: leggere blocchi, conferme, ritorni e proposte
+  collegando ogni verbo all'azione concreta sullo schermo.
 ---
 # Obiettivo
 
@@ -24,7 +24,7 @@ Capire il giapponese dei comandi, dei messaggi di sistema e delle frasi di menu:
 
 ## Contesto
 
-Qui compaiono verbi di azione, comandi brevi e formule ricorrenti da schermata. Le voci utili servono a leggere subito blocchi, conferme, ritorni e proposte; i riferimenti molto specifici al mondo di gioco bastano a riconoscerli quando compaiono.
+Qui compaiono verbi di azione, comandi brevi e frasi ricorrenti da schermata. Le voci utili servono a leggere subito blocchi, conferme, ritorni e proposte; i riferimenti molto specifici al mondo di gioco bastano a riconoscerli quando compaiono.
 
 ## Termini chiave
 
@@ -36,6 +36,8 @@ Qui compaiono verbi di azione, comandi brevi e formule ricorrenti da schermata. 
 - [中央](term:term-v361-chuuou) — centro
 - [お気に入り](term:term-v362-okiniiri) — preferito / favorito
 - [途中](term:term-v364-tochuu) — durante il percorso / a metà
+- [走る](term:term-v367-hashiru) — correre
+- [知る](term:term-v370-shiru) — sapere / venire a sapere
 
 ## Espressioni ricorrenti
 
@@ -57,7 +59,7 @@ Qui compaiono verbi di azione, comandi brevi e formule ricorrenti da schermata. 
 
 ## Spiegazione
 
-Verbi come [集める](term:term-v354-atsume-ru), [頼む](term:term-v356-tanomu), [向かう](term:term-v358-muka-u), [教える](term:term-v359-oshie-ru) e [歩く](term:term-v360-aruku) servono a leggere istruzioni o dialoghi operativi: raccogliere, chiedere o affidare, dirigersi verso, spiegare o insegnare e camminare. Qui non sono verbi astratti: ti dicono subito quale azione viene proposta o descritta.
+Verbi come [集める](term:term-v354-atsume-ru), [頼む](term:term-v356-tanomu), [向かう](term:term-v358-muka-u), [教える](term:term-v359-oshie-ru), [歩く](term:term-v360-aruku) e [走る](term:term-v367-hashiru) servono a leggere istruzioni o dialoghi operativi: raccogliere, chiedere o affidare, dirigersi verso, spiegare o insegnare, camminare e correre. Qui non sono verbi astratti: ti dicono subito quale azione viene proposta o descritta. [知る](term:term-v370-shiru) è diverso: non muove il personaggio, ma segnala che qualcuno viene a sapere un'informazione nuova.
 
 Termini come [中央](term:term-v361-chuuou), [お気に入り](term:term-v362-okiniiri), [途中](term:term-v364-tochuu), [制限時間](term:term-v366-seigenjikan), [選択](term:term-v368-sentaku), [ロックオン](term:term-v369-rokkuon), [キャンセル](term:term-v371-kyanseru), [全力](term:term-v372-zenryoku) e [人々](term:term-v373-hitobito) invece dicono qualcosa sullo stato della schermata o della scena: centro, preferiti, metà del percorso, tempo limite, scelta, aggancio, annullamento, massimo impegno e persone presenti.
 
@@ -95,6 +97,20 @@ jp: >-
   この ポケモンは どうだ？
 translation_it: >-
   Che ne dici di questo Pokémon?
+:::
+
+:::example_sentence
+jp: >-
+  {{中央|ちゅうおう}}へ {{走|はし}}る。
+translation_it: >-
+  Corro verso il centro.
+:::
+
+:::example_sentence
+jp: >-
+  {{新|あたら}}しい {{情報|じょうほう}}を {{知|し}}る。
+translation_it: >-
+  Vengo a sapere una nuova informazione.
 :::
 
 ## Nota finale

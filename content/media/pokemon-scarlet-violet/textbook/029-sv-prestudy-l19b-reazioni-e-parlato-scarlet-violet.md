@@ -14,9 +14,9 @@ tags:
 - phase-a
 - lesson-19
 prerequisites: []
-summary: 'Lessico ed espressioni per reazioni e parlato, Scarlet/Violet: 17 carte
-  lessicali attive, 3 formule ricorrenti, 2 pattern grammaticali e 1 etichetta contestuale
-  da riconoscere.'
+summary: >-
+  Leggere parlato e reazioni quando il gioco conferma, contrasta o sposta il
+  focus: distinguere tono, luogo, scelta e conseguenza nella scena.
 ---
 # Obiettivo
 
@@ -24,7 +24,7 @@ Capire il giapponese che compare in reazioni e parlato in Scarlet/Violet: parole
 
 ## Contesto
 
-Le forme qui distinguono tipo, avvertimento, ricezione, scelta e richiesta personale: フェアリー e はがね classificano battaglie, 注意 avverte, 受けとりました conferma ricezione, 選んでください chiede una scelta. テーブルシティ funziona come destinazione o luogo citato.
+Le forme qui distinguono tipo, avvertimento, ricezione, scelta e richiesta personale: フェアリー e はがね classificano battaglie, 注意 avverte, 受けとりました conferma ricezione, 選んでください chiede una scelta. テーブルシティ funziona come destinazione o luogo citato; le altre parole ti orientano fra ricette, comunicazione, risultati e promesse.
 
 ## Termini chiave
 
@@ -36,6 +36,15 @@ Le forme qui distinguono tipo, avvertimento, ricezione, scelta e richiesta perso
 - [注意](term:term-v261-chuui) — attenzione / cautela
 - [受ける](term:term-v262-ukeru) — ricevere / sostenere
 - [家庭科](term:term-v263-kateika) — economia domestica
+- [レシピ](term:term-v264-reshipi) — ricetta
+- [ひこう](term:term-v265-hikou) — volo
+- [全部](term:term-v266-zenbu) — tutto
+- [通信](term:term-v267-tsuushin) — connessione / comunicazione
+- [普通](term:term-v268-futsuu) — normale
+- [結果](term:term-v269-kekka) — risultato
+- [せっかく](term:term-v270-sekkaku) — visto che / già che
+- [約束](term:term-v271-yakusoku) — promessa / appuntamento
+- [かくとう](term:term-v273-kakutou) — lotta
 
 ## Espressioni ricorrenti
 
@@ -55,6 +64,14 @@ Le forme qui distinguono tipo, avvertimento, ricezione, scelta e richiesta perso
 ## Spiegazione
 
 Parole come [古代](term:term-v255-kodai), [フェアリー](term:term-v256-fearii) e [はがね](term:term-v257-hagane) ti dicono subito se il testo sta parlando di passato remoto, tipo folletto o tipo acciaio. Nei menu e nei dialoghi questi segnali bastano a capire quale voce o quale tipo stai guardando.
+
+Nelle schermate di ricompensa o crafting, [レシピ](term:term-v264-reshipi) è la procedura che ricevi o sblocchi; [全部](term:term-v266-zenbu) allarga la scelta all'intero insieme. Se la riga dice 全部選んでください, il punto non è una descrizione generica: il menu ti sta chiedendo di selezionare tutto.
+
+Quando una scena passa a funzioni locali o online, [通信](term:term-v267-tsuushin) segnala comunicazione o connessione, mentre [約束](term:term-v271-yakusoku) indica un impegno preso in dialogo. Insieme a [テーブルシティ](term:term-v272-teeburushitei), questi termini ti dicono se la battuta parla di un luogo da raggiungere, di uno scambio fra giocatori o di una promessa fra personaggi.
+
+Per leggere conseguenze e tono della scelta, [結果](term:term-v269-kekka) è l'esito che viene mostrato dopo una prova, e [せっかく](term:term-v270-sekkaku) introduce l'idea di sfruttare un'occasione già ottenuta. せっかくなので prepara spesso una proposta: "già che ci siamo, proviamo a farlo".
+
+Nei tipi di battaglia, [ひこう](term:term-v265-hikou) e [かくとう](term:term-v273-kakutou) funzionano come フェアリー e はがね: sono categorie tecniche. [普通](term:term-v268-futsuu), invece, è il "normale" del parlato o di una valutazione generale; non va confuso con il tipo ノーマル in katakana.
 
 Le espressioni come [〜を 受けとりました！](term:term-e046-o-uketorimashita), [〜を 選んでください](term:term-e047-o-erandekudasai) e [〜してみて](term:term-e053-shitemite) indicano rispettivamente una ricezione, una selezione obbligata e una prova da fare. Qui non servono come formule astratte: ti dicono se la schermata ti sta consegnando qualcosa, ti sta chiedendo una scelta o ti sta invitando a tentare un'azione.
 

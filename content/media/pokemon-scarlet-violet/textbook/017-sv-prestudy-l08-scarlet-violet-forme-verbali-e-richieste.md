@@ -14,9 +14,9 @@ tags:
 - phase-s
 - lesson-08
 prerequisites: []
-summary: 'Lessico ed espressioni per Scarlet/Violet, forme verbali e richieste: 7
-  carte lessicali attive, 2 formule ricorrenti, 3 pattern grammaticali e 4 etichette
-  contestuali da riconoscere.'
+summary: >-
+  Leggere richieste e scelte iniziali di Scarlet/Violet: capire quale opzione
+  scegliere, quale azione avviare e quali bonus o compagni vengono nominati.
 ---
 # Obiettivo
 
@@ -62,7 +62,7 @@ Le espressioni come [どうしよう](term:term-e017-doushiyou) e [どうした�
 
 Sul piano grammaticale, [て形](grammar:grammar-g022-collega-azioni-crea-richieste-e-molte-co) collega azioni e apre richieste o istruzioni, come in `始めて`; [ない形](grammar:grammar-g023-negazione) marca il divieto o la negazione secca; [ます / 辞書形](grammar:grammar-g024-registro-cortese-vs-piano) ti fa leggere il contrasto tra parlato cortese e parlato piano nei dialoghi.
 
-Le etichette contestuali come [食事パワー](term:term-v094-shokujipawaa), [コライドン](term:term-v096-koraidon), [ミライドン](term:term-v097-miraidon) e [秘伝スパイス](term:term-v100-hiden-supaisu) non richiedono analisi grammaticale: sono nomi o label di sistema che indicano bonus, compagni leggendari e risorse del percorso. Nel caso di `秘伝スパイス`, `秘伝` (`hiden`) suggerisce anche l'idea di qualcosa di segreto o custodito come una ricetta speciale, quindi "spezia segreta" è una buona resa di supporto accanto a Herba Mystica.
+I nomi di sistema come [食事パワー](term:term-v094-shokujipawaa), [コライドン](term:term-v096-koraidon), [ミライドン](term:term-v097-miraidon) e [秘伝スパイス](term:term-v100-hiden-supaisu) non richiedono analisi grammaticale: indicano bonus, compagni leggendari e risorse del percorso. Nel caso di `秘伝スパイス`, `秘伝` (`hiden`) suggerisce anche l'idea di qualcosa di segreto o custodito come una ricetta speciale, quindi "spezia segreta" è una buona resa di supporto accanto a Herba Mystica.
 
 ## Esempi guidati
 
@@ -96,4 +96,4 @@ translation_it: >-
 
 ## Nota finale
 
-In questa lesson, [どれ](term:term-v091-dore) apre una scelta, [始める](term:term-v095-hajime-ru) avvia un'azione, [近く](term:term-v098-chikaku) colloca qualcosa nello spazio e [答え](term:term-v099-kotae) chiude una domanda. Le label specifiche fissano il referente della schermata; le forme giapponesi spiegano che cosa devi scegliere, iniziare o rispondere.
+[どれ](term:term-v091-dore) apre una scelta, [始める](term:term-v095-hajime-ru) avvia un'azione, [近く](term:term-v098-chikaku) colloca qualcosa nello spazio e [答え](term:term-v099-kotae) chiude una domanda. I nomi specifici fissano il referente della schermata; le forme giapponesi spiegano che cosa devi scegliere, iniziare o rispondere.

@@ -228,6 +228,12 @@ creare una tabella catalogo. I preset manuali sono un input di planning
 separato da `sessionMode`: usano le tabelle session/trial/block/result
 esistenti e salvano metadata in JSON snapshot.
 
+I termini media/ad hoc aggiuntivi vivono in
+`src/features/katakana-speed/model/media-word-bank.json`. Per aggiunte manuali
+usa la skill repo-scoped `.agents/skills/katakana-speed-word-bank`, che fornisce
+lo script `scripts/add-katakana-words.mjs`; le parole entrano nel catalogo come
+candidati normali, senza preferenza nello scheduling.
+
 Per modifiche mirate al modello puro puoi lanciare i test Katakana Speed:
 
 ```sh

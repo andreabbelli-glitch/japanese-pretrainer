@@ -14,9 +14,9 @@ tags:
 - phase-a
 - lesson-16
 prerequisites: []
-summary: 'Lessico ed espressioni per battaglia, saluti e dialogo: 6 carte lessicali
-  attive, 3 formule ricorrenti, 0 pattern grammaticali e 0 etichette contestuali da
-  riconoscere.'
+summary: >-
+  Seguire saluti, dialoghi brevi e lotta: capire chi sfida chi, quando una frase
+  apre il turno e quale risposta o azione viene proposta.
 ---
 # Obiettivo
 

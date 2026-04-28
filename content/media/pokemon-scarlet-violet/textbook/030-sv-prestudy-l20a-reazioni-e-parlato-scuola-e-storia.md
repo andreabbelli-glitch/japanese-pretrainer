@@ -14,9 +14,9 @@ tags:
 - phase-a
 - lesson-20
 prerequisites: []
-summary: 'Lessico ed espressioni per reazioni e parlato, scuola e storia: 19 carte
-  lessicali attive, 3 formule ricorrenti, 4 pattern grammaticali e 1 etichetta contestuale
-  da riconoscere.'
+summary: >-
+  Seguire dialoghi scolastici e reazioni: riconoscere ruoli, dubbi, risultati e
+  segnali di tempo per capire che cosa viene spiegato o richiesto.
 ---
 # Obiettivo
 
@@ -24,7 +24,7 @@ Leggere il giapponese che compare in reazioni, parlato, scuola e storia. Qui le 
 
 ## Contesto
 
-In Scarlet / Violet queste voci compaiono quando un menu chiude un'azione, rimuove un effetto, mostra uno stato o quando un personaggio commenta scuola e ricerca. Le parole riusabili aprono il senso della frase; i nomi specifici come 秘伝 fissano invece un riferimento del mondo di gioco.
+In Scarlet / Violet queste voci compaiono quando un menu chiude un'azione, rimuove un effetto, mostra uno stato o quando un personaggio commenta scuola e ricerca. Le parole riusabili aprono il senso della frase; i nomi specifici come 秘伝 fissano invece un riferimento del mondo di gioco. Qui impari anche a leggere mappe, contatti, rischi e motivazioni dei personaggi.
 
 ## Termini chiave
 
@@ -36,6 +36,17 @@ In Scarlet / Violet queste voci compaiono quando un menu chiude un'azione, rimuo
 - [かっくう](term:term-v280-kakkuu) — planata
 - [大切](term:term-v281-taisetsu) — importante / caro
 - [宝](term:term-v282-takara) — tesoro
+- [草原](term:term-v283-sougen) — prateria
+- [行動](term:term-v284-koudou) — azione
+- [理由](term:term-v285-riyuu) — motivo
+- [宝物](term:term-v286-takaramono) — tesoro personale
+- [実力](term:term-v287-jitsuryoku) — vera capacità / livello reale
+- [マップアプリ](term:term-v288-mappuapuri) — app mappa
+- [持つ](term:term-v289-motsu) — avere / tenere
+- [連絡](term:term-v290-renraku) — contatto / chiamata / messaggio
+- [苦手](term:term-v291-nigate) — non essere bravo / non piacere
+- [危険](term:term-v292-kiken) — pericolo
+- [安心](term:term-v293-anshin) — sollievo / tranquillità
 
 ## Espressioni ricorrenti
 
@@ -57,6 +68,14 @@ In Scarlet / Violet queste voci compaiono quando un menu chiude un'azione, rimuo
 ## Spiegazione
 
 Parole come [やけど](term:term-v274-yakedo), [終了](term:term-v275-shuuryou) e [解除](term:term-v276-kaijo) ti dicono subito che cosa sta succedendo nella schermata: una condizione del personaggio, la chiusura di un menu o la rimozione di un effetto.
+
+Nelle indicazioni di esplorazione, [草原](term:term-v283-sougen) nomina un ambiente aperto da raggiungere o attraversare, mentre [マップアプリ](term:term-v288-mappuapuri) è lo strumento con cui controlli posizione, destinazioni e segnalini. Se una riga aggiunge [危険](term:term-v292-kiken), il testo non sta solo descrivendo un posto: ti sta avvertendo che quel luogo o quell'azione comporta rischio.
+
+Quando il gioco parla di persone e scelte, [理由](term:term-v285-riyuu) chiede o dà il motivo, [宝物](term:term-v286-takaramono) restringe 宝 a qualcosa di prezioso per qualcuno, e [実力](term:term-v287-jitsuryoku) indica la capacità reale che si dimostra. Queste parole fanno capire se la scena sta spiegando una decisione, mostrando un legame personale o valutando quanto qualcuno vale davvero.
+
+Nei dialoghi scolastici e nelle chiamate, [連絡](term:term-v290-renraku) è il contatto o messaggio che arriva, [持つ](term:term-v289-motsu) indica avere o tenere con sé qualcosa, e [行動](term:term-v284-koudou) è l'azione da scegliere o compiere. Se appare [苦手](term:term-v291-nigate), il personaggio non sta dicendo solo "debole": sta dicendo che qualcosa non gli riesce bene o non gli piace.
+
+Infine, [安心](term:term-v293-anshin) segnala che una preoccupazione si scioglie dopo un dubbio o un pericolo. Letto insieme a 心配 in altre lezioni, rende leggibile il passaggio emotivo: prima il rischio o la paura, poi il sollievo.
 
 Le espressioni come [それって](term:term-e054-sorette) e [またね](term:term-e055-matane) servono nel parlato quotidiano: riprendono quello che è stato detto, chiudono una battuta o segnalano una piccola reazione. In un gioco molto dialogato bastano spesso da sole a far capire il tono.
 

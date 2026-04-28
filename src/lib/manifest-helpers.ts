@@ -8,6 +8,17 @@ import {
 } from "./content/pronunciations-manifest.ts";
 import { buildEntryKey } from "./entry-id.ts";
 
+type PronunciationAudioManifestFields = Pick<
+  PronunciationManifestEntry,
+  | "audioAttribution"
+  | "audioLicense"
+  | "audioPageUrl"
+  | "audioSource"
+  | "audioSpeaker"
+  | "audioSrc"
+> &
+  Required<Pick<PronunciationManifestEntry, "audioSrc">>;
+
 export function buildManifestEntryMap(
   entries: PronunciationManifestEntry[]
 ): Map<string, PronunciationManifestEntry> {
@@ -34,6 +45,20 @@ export async function loadValidatedManifest(
   return {
     manifest: manifest.manifest,
     entries: buildManifestEntryMap(manifest.manifest?.entries ?? [])
+  };
+}
+
+export function mergePronunciationAudioManifestEntry(input: {
+  audio: PronunciationAudioManifestFields;
+  entryId: string;
+  entryType: PronunciationManifestEntry["entryType"];
+  existing?: PronunciationManifestEntry;
+}): PronunciationManifestEntry {
+  return {
+    ...input.existing,
+    entryId: input.entryId,
+    entryType: input.entryType,
+    ...input.audio
   };
 }
 

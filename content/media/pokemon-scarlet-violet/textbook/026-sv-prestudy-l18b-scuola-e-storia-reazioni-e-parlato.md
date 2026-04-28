@@ -14,79 +14,62 @@ tags:
 - phase-a
 - lesson-18
 prerequisites: []
-summary: 'Lessico ed espressioni per scuola e storia, reazioni e parlato: 13 carte
-  lessicali attive, 3 formule ricorrenti, 3 pattern grammaticali e 0 etichette contestuali
-  da riconoscere.'
+summary: >-
+  Accademia, spiegazioni e dubbi: riconosci ruoli scolastici, materie, esiti,
+  oggetti di cura e forme che indicano momento, supposizione o sorpresa.
 ---
 # Obiettivo
 
-Capire il giapponese che compare in scuola, storia, reazioni e parlato. Qui le parole ti dicono subito se la frase parla di una materia, di un risultato, di una reazione o di un dubbio.
+Leggere scene dell'Accademia e dialoghi di passaggio: saluti, cambi d'argomento, domande insistenti, spiegazioni scolastiche, risultati e piccoli segnali di battaglia.
 
-## Contesto
+## Saluti, cambi d'argomento e dubbi
 
-In Scarlet / Violet [転入生](term:term-v210-tenyuusei), [生物](term:term-v214-seibutsu), [説明](term:term-v215-setsumei), [合格](term:term-v216-goukaku) e [問題](term:term-v217-mondai) fanno subito capire se la scena è scolastica, se sta spiegando qualcosa o se sta parlando di un esito. [最近](term:term-v212-saikin), [絶対](term:term-v213-zettai), [一度](term:term-v220-ichido) e [本気](term:term-v219-honki) sono invece segnali di parlato: cambiano il peso, la frequenza o la serietà della frase.
+[いってらっしゃい](term:term-e039-itterasshai) manda via qualcuno con l'idea che torni: è formula di partenza, non semplice "ciao". [ところで](term:term-e040-tokorode) cambia argomento e prepara una domanda nuova. [いったい](term:term-e041-ittai) rende la domanda più pressante, come "ma che cosa...?" o "in fondo chi...?".
 
-## Termini chiave
+[～とき](grammar:grammar-g040-quando-nel-momento-in-cui) introduce il momento o la situazione in cui avviene il resto della frase. [～だろう / でしょう](grammar:grammar-g041-probabilmente-suppongo) segnala supposizione, previsione o tono più morbido. [～のか](grammar:grammar-g042-domanda-spiegativa-sorpresa-davvero-e-co) cerca una spiegazione o reagisce con sorpresa: non chiede solo sì/no, ma vuole capire che cosa c'è dietro.
 
-- [転入生](term:term-v210-tenyuusei) — studente trasferito
-- [高い](term:term-v211-takai) — alto
-- [最近](term:term-v212-saikin) — ultimamente
-- [絶対](term:term-v213-zettai) — assolutamente
-- [生物](term:term-v214-seibutsu) — biologia / esseri viventi
-- [説明](term:term-v215-setsumei) — spiegazione
-- [合格](term:term-v216-goukaku) — promozione / superamento
-- [問題](term:term-v217-mondai) — problema
+## Accademia, materie e risultati
 
-## Espressioni ricorrenti
+[{{転入生|てん.にゅう.せい}}](term:term-v210-tenyuusei) è lo studente trasferito, quindi una persona nuova dentro la scuola. [{{生物|せいぶつ}}](term:term-v214-seibutsu) può indicare esseri viventi o la materia di biologia; nel contesto dell'Accademia spesso ti porta verso le lezioni. [{{説明|せつめい}}](term:term-v215-setsumei) annuncia che qualcuno sta chiarendo una regola, un fenomeno o una procedura.
 
-- [いってらっしゃい](term:term-e039-itterasshai) — buon viaggio / vai e torna
-- [ところで](term:term-e040-tokorode) — a proposito
-- [いったい](term:term-e041-ittai) — ma che... / in fondo chi / cosa...?
+[{{問題|もんだい}}](term:term-v217-mondai) può essere un problema concreto o una domanda d'esame. [{{合格|ごうかく}}](term:term-v216-goukaku) è il superamento di una prova, non una qualità generica. [{{未来|みらい}}](term:term-v218-mirai) sposta la frase verso ciò che verrà dopo, utile sia nei dialoghi sulla storia sia nelle lezioni che parlano di possibilità.
 
-## Pattern grammaticali chiave
+## Intensità, cura e lotta
 
-- [～とき](grammar:grammar-g040-quando-nel-momento-in-cui) — quando / nel momento in cui
-- [～だろう / でしょう](grammar:grammar-g041-probabilmente-suppongo) — probabilmente / suppongo
-- [～のか](grammar:grammar-g042-domanda-spiegativa-sorpresa-davvero-e-co) — domanda spiegativa / sorpresa: “davvero…? / è così che…?”
+[{{最近|さいきん}}](term:term-v212-saikin) limita il discorso a ciò che è successo ultimamente. [{{絶対|ぜったい}}](term:term-v213-zettai) rafforza la frase con "assolutamente"; [{{本気|ほんき}}](term:term-v219-honki) aggiunge serietà o intensità reale. [{{一度|いちど}}](term:term-v220-ichido) dice "una volta", spesso come prova o tentativo.
 
-## Spiegazione
-
-Tra i termini, [転入生](term:term-v210-tenyuusei) indica lo studente trasferito che entra nella scuola come nuovo arrivato: non è un'etichetta astratta, ma un ruolo preciso nella scena. [生物](term:term-v214-seibutsu) è la materia di biologia, mentre [説明](term:term-v215-setsumei), [合格](term:term-v216-goukaku) e [問題](term:term-v217-mondai) ti dicono se il testo sta spiegando, annunciando un esito o segnalando un problema.
-
-Le parole di tono come [高い](term:term-v211-takai), [最近](term:term-v212-saikin), [絶対](term:term-v213-zettai), [一度](term:term-v220-ichido) e [本気](term:term-v219-honki) non servono a fare scena in astratto: [高い](term:term-v211-takai) resta "alto", [最近](term:term-v212-saikin) vuol dire "ultimamente", [絶対](term:term-v213-zettai) rafforza la frase, [一度](term:term-v220-ichido) indica "una volta" e [本気](term:term-v219-honki) alza il livello di serietà o intensità.
-
-[いってらっしゃい](term:term-e039-itterasshai) è la formula con cui mandi qualcuno via dicendogli di andare e tornare; [ところで](term:term-e040-tokorode) apre un cambio di argomento; [いったい](term:term-e041-ittai) aggiunge sorpresa o insistenza alla domanda. Sul piano grammaticale, [～とき](grammar:grammar-g040-quando-nel-momento-in-cui) introduce il momento in cui succede qualcosa, [～だろう / でしょう](grammar:grammar-g041-probabilmente-suppongo) esprime una supposizione e [～のか](grammar:grammar-g042-domanda-spiegativa-sorpresa-davvero-e-co) suona come domanda esplicativa o sorpresa.
+[{{高|たか}}い](term:term-v211-takai) resta "alto", ma il sostantivo vicino decide se parli di livello, valore, altezza o probabilità. [キズぐすり](term:term-v221-kizu-gusuri) è l'oggetto di cura base; [{{防御|ぼうぎょ}}](term:term-v223-bougyo) è la difesa come statistica o azione difensiva, quindi appartiene alla lettura pratica della lotta.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  いってらっしゃい。
+  いってらっしゃい。 {{転入生|てん.にゅう.せい}}も {{一度|いちど}} {{学園|がくえん}}を {{見|み}}よう。
 translation_it: >-
-  Vai e torna.
+  Vai e torna. Anche lo studente trasferito guarderà l'Accademia una volta.
 :::
 
 :::example_sentence
 jp: >-
-  ところで、 {{問題|もんだい}}は？
+  {{生物|せいぶつ}}の {{説明|せつめい}}を {{聞|き}}くとき、 {{問題|もんだい}}を {{見|み}}ます。
 translation_it: >-
-  A proposito, ci sono problemi?
+  Quando ascolto la spiegazione di biologia, guardo il problema.
 :::
 
 :::example_sentence
 jp: >-
-  {{困|こま}}ったときは マップを {{見|み}}る。
+  {{防御|ぼうぎょ}}が {{高|たか}}いから、 キズぐすりは まだ {{使|つか}}わないだろう。
 translation_it: >-
-  Quando sei in difficoltà, guardi la mappa.
+  Siccome la Difesa è alta, probabilmente non userò ancora la Pozione.
 :::
 
 :::example_sentence
 jp: >-
-  いったい どうしたの？
+  いったい {{未来|みらい}}の ポケモンなのか？
 translation_it: >-
-  Ma che succede, di preciso?
+  Ma è davvero un Pokémon del futuro?
 :::
 
 ## Nota finale
 
-Se una frase è corta ma sfuggente, cerca prima il ruolo della forma: 生物 nomina la materia, 合格 l'esito, ところで il cambio di argomento, だろう / でしょう la supposizione e のか la domanda esplicativa.
+Quando una battuta scolastica sembra breve ma densa, cerca prima se sta salutando, cambiando tema, chiedendo spiegazione, nominando una materia o valutando un esito. Il resto della frase si organizza attorno a quel segnale.

@@ -14,13 +14,13 @@ tags:
 - phase-a
 - lesson-23
 prerequisites: []
-summary: 'Lessico ed espressioni per verbi operativi, sistema e menu: 15 carte lessicali
-  attive, 3 formule ricorrenti, 3 pattern grammaticali e 5 etichette contestuali da
-  riconoscere.'
+summary: >-
+  Leggere comandi che aprono menu, spostano il personaggio, riordinano oggetti o
+  propongono una scelta, collegando particelle e nomi alla funzione visibile.
 ---
 # Obiettivo
 
-Leggere i comandi brevi che aprono menu, spostano il personaggio, riordinano oggetti o descrivono una scelta di sistema. Il pacchetto lavora su verbi con particella, nomi da menu e formule da dialogo rapido.
+Leggere i comandi brevi che aprono menu, spostano il personaggio, riordinano oggetti o descrivono una scelta di sistema. Qui contano verbi con particella, nomi da menu e formule da dialogo rapido.
 
 ## Contesto
 
@@ -79,7 +79,7 @@ Nei dialoghi brevi, [見てみよう](term:term-e075-mitemiyou) propone di contr
 
 Sul piano grammaticale, [〜ないでください](grammar:grammar-g079-per-favore-non-fare) è una richiesta negativa gentile, [〜たがる](grammar:grammar-g080-sembrare-voler-fare-terza-persona) descrive il desiderio mostrato da un'altra persona e [〜ほうがいい](grammar:grammar-g081-e-meglio-fare) introduce un consiglio pratico prima di un'azione.
 
-Le etichette di menu in questo pacchetto si riconoscono dal sostantivo finale:
+Le etichette di menu in queste schermate si riconoscono dal sostantivo finale:
 [かがやきパワー](term:term-v395-kagayakipawaa),
 [パラドックスポケモン](term:term-v398-paradokkusupokemon),
 [そうぐうパワー](term:term-v399-souguupawaa),

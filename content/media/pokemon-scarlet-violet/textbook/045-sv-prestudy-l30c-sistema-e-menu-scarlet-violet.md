@@ -14,9 +14,9 @@ tags:
 - phase-b
 - lesson-30
 prerequisites: []
-summary: 'Lessico ed espressioni per sistema e menu, Scarlet/Violet: 22 carte lessicali
-  attive, 2 formule ricorrenti, 4 pattern grammaticali e 2 etichette contestuali da
-  riconoscere.'
+summary: >-
+  Capire menu e dialoghi che introducono persone, salvataggi, reset, posture e
+  scelte alternative, così da riconoscere quale azione è possibile.
 ---
 # Obiettivo
 
@@ -63,6 +63,14 @@ Le espressioni come [気が変わったら よろしくね](term:term-e099-kigak
 Sul piano grammaticale, pattern come [〜らしい](grammar:grammar-g102-pare-che-tipico-di) e [〜うちに](grammar:grammar-g103-mentre-finche) chiariscono stato, deduzione e sequenza. Sono utili perché fanno capire se la frase suona come supposizione, azione da fare in tempo o passaggio da chiudere prima che cambi la situazione.
 
 [レンタルチーム](term:term-v623-rentaruchiimu) e [指定の教室へ 向かってください](term:term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai) sono istruzioni più che semplici etichette. `レンタル` dice che il team non è tuo ma preso in prestito; `指定の教室へ` restringe la destinazione all'aula indicata, quindi il verbo [向かう](term:term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai) diventa un comando di spostamento concreto.
+
+Nelle scene scolastiche, alcuni termini spiegano perché non puoi procedere subito. [不在](term:term-v624-fuzai) dice che la persona prevista non è presente, mentre [本校](term:term-v636-honkou) distingue la sede principale dell'Accademia da attività esterne o luoghi secondari. Se compare `先生は不在です`, la prossima azione plausibile non è scegliere una risposta, ma cercare, aspettare o cambiare interlocutore.
+
+Per movimento e visuale, separa ciò che è dietro da ciò che blocca. [背後](term:term-v626-haigo) punta alle spalle del personaggio o di un oggetto, [障害物](term:term-v632-shougaibutsu) nomina un ostacolo fisico e [広大](term:term-v629-koudai) descrive una zona vasta. In un mondo aperto questi segnali aiutano a capire se devi girarti, aggirare qualcosa o prepararti a una distanza lunga.
+
+Nei menu competitivi, [ランキング](term:term-v627-rankingu) è la classifica come schermata o sistema, [順位](term:term-v631-juni) è la tua posizione dentro quella classifica e [有利](term:term-v628-yuuri) dice che la situazione è favorevole rispetto a un confronto concreto. Non leggere [有利](term:term-v628-yuuri) come "forte" in assoluto: spesso dipende da tipo, matchup o posizione.
+
+Le interfacce di ricerca e attesa usano parole compatte ma decisive. [固定](term:term-v633-kotei) blocca un'impostazione, [ヘルプ](term:term-v634-herupu) apre spiegazioni, [頭文字](term:term-v635-atamamoji) filtra per iniziale e [待機中](term:term-v637-taikinaka) segnala che il sistema sta aspettando. Quando vedi [待機中](term:term-v637-taikinaka), la frase non chiede una nuova scelta: ti informa che la procedura non è ancora avanzata.
 
 ## Esempi guidati
 

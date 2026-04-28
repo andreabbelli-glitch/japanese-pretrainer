@@ -14,75 +14,66 @@ tags:
 - phase-a
 - lesson-17
 prerequisites: []
-summary: 'Lessico ed espressioni per battaglia, reazioni e parlato: 16 carte lessicali
-  attive, 3 formule ricorrenti, 0 pattern grammaticali e 1 etichetta contestuale da
-  riconoscere.'
+summary: >-
+  Ricerca, tipi e reazioni: separa parole da battaglia, indagine e crescita
+  dalle formule che confermano, scusano o segnalano presenza.
 ---
 # Obiettivo
 
-Capire il giapponese che compare in battaglia, nelle reazioni e nel parlato: parole che nominano la ricerca, il tipo drago, la potenza delle mosse e formule brevi che segnalano scusa, presa d'atto o presenza di qualcosa.
+Capire frasi che alternano spiegazione, battaglia e dialogo: una battuta può confermare un'informazione, scusarsi, indicare una presenza, oppure spostarsi su indagini, tipi, statistiche e progressi.
 
-## Contesto
+## Reazioni e agganci del parlato
 
-Questa lesson combina vocaboli di battaglia e parole da dialogo. [威力](term:term-v179-iryoku) e [能力](term:term-v184-nouryoku) portano la lettura su mossa e statistica; [なるほど](term:term-e033-naruhodo), [すみません](term:term-e034-sumimasen) e [〜が あります](term:term-e035-ga-arimasu) segnalano presa d'atto, scusa o presenza in un punto preciso. I nomi propri come [ポケモンリーグ](term:term-v187-pokemonriigu) vanno letti come riferimenti del gioco, non come lessico da scomporre.
+[なるほど](term:term-e033-naruhodo) è una presa d'atto: chi parla segnala che la spiegazione torna o che il pezzo mancante è stato capito. [すみません](term:term-e034-sumimasen) può chiedere scusa o attirare l'attenzione prima di parlare. [もしかして](term:term-v191-moshikashite) introduce un'ipotesi esitante, spesso "forse per caso...?", mentre [{{今回|こんかい}}](term:term-v192-konkai) limita il discorso a questa occasione precisa.
 
-## Termini chiave
+[〜が あります](term:term-e035-ga-arimasu) non è solo "c'è": la particella が fa comparire il soggetto della presenza. Se prima trovi un luogo, come ここに, la frase dice che quell'elemento si trova lì; se prima trovi una situazione, segnala che una possibilità, un oggetto o un evento è disponibile.
 
-- [研究](term:term-v177-kenkyuu) — ricerca
-- [ドラゴン](term:term-v178-doragon) — drago
-- [威力](term:term-v179-iryoku) — potenza
-- [結晶](term:term-v181-kesshou) — cristallo
-- [どく](term:term-v182-doku) — veleno
-- [大事](term:term-v183-daiji) — importante / prezioso
-- [能力](term:term-v184-nouryoku) — statistica / capacità
-- [名前](term:term-v185-namae) — nome
+## Ricerca, storia e partecipazione
 
-## Espressioni ricorrenti
+[{{研究|けんきゅう}}](term:term-v177-kenkyuu) indica uno studio sistematico, mentre [{{調査|ちょうさ}}](term:term-v190-chousa) suona più come indagine concreta o verifica sul campo. [{{歴史|れきし}}](term:term-v186-rekishi) sposta la frase sul passato o sulla ricostruzione degli eventi; [{{名前|なまえ}}](term:term-v185-namae) chiede o assegna l'etichetta con cui qualcuno o qualcosa viene chiamato.
 
-- [なるほど](term:term-e033-naruhodo) — capisco / ah, ecco
-- [すみません](term:term-e034-sumimasen) — scusi / mi scusi
-- [〜が あります](term:term-e035-ga-arimasu) — c’è / ci sono …
+Quando una schermata o un dialogo parla di prendere parte a qualcosa, [{{参加|さんか}}](term:term-v195-sanka) è la parola chiave: non descrive osservazione passiva, ma ingresso in una gara, attività o funzione.
 
-## Etichette da riconoscere
+## Battaglia, tipi e Teracristal
 
-- [ポケモンリーグ](term:term-v187-pokemonriigu) — Lega Pokémon
+[ドラゴン](term:term-v178-doragon) e [どく](term:term-v182-doku) sono tipi di Pokémon o mosse; vanno letti come informazioni operative di efficacia. [{{威力|いりょく}}](term:term-v179-iryoku) misura la potenza di una mossa, mentre [{{能力|のうりょく}}](term:term-v184-nouryoku) indica una capacità o statistica del Pokémon. [{{結晶|けっしょう}}](term:term-v181-kesshou) rimanda al cristallo e quindi al lessico visivo della Teracristal.
 
-## Spiegazione
+[{{可能|かのう}}](term:term-v189-kanou) dice che un'azione è possibile o abilitata; in una UI fa la differenza tra ciò che puoi fare ora e ciò che resta bloccato. [{{大事|だいじ}}](term:term-v183-daiji) segnala che un oggetto o informazione va trattato come importante o prezioso.
 
-[研究](term:term-v177-kenkyuu) e [調査](term:term-v190-chousa) indicano ricerca o indagine: quando compaiono, il testo sta parlando di studio, verifica o progressione concreta. [ドラゴン](term:term-v178-doragon) e [どく](term:term-v182-doku) non sono etichette vaghe: segnano tipi di Pokémon, quindi vanno letti come informazioni di battaglia. [威力](term:term-v179-iryoku) dice quanto è forte una mossa, [能力](term:term-v184-nouryoku) rimanda alla capacità o alla statistica coinvolta; [結晶](term:term-v181-kesshou), [大事](term:term-v183-daiji) e [名前](term:term-v185-namae) sono parole pratiche da UI e dialogo: cristallo, importante, nome.
+## Crescita e valutazione
 
-[なるほど](term:term-e033-naruhodo) è una presa d'atto: segnala che hai capito o che una spiegazione ti torna. [すみません](term:term-e034-sumimasen) serve sia per scusarsi sia per attirare l'attenzione. [〜が あります](term:term-e035-ga-arimasu) indica che qualcosa c'è o si trova in un punto preciso.
+[{{成長|せいちょう}}](term:term-v193-seichou) descrive un miglioramento nel tempo: può riguardare il Pokémon, il giocatore o una capacità. [{{最高|さいこう}}](term:term-v194-saikou) è valutazione massima, "il migliore" o "top"; non misura una quantità, ma mette qualcosa al livello più alto della scala.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  なるほど、 そういうことか。
+  なるほど、 {{今回|こんかい}}は {{調査|ちょうさ}}に {{参加|さんか}}します。
 translation_it: >-
-  Ah, capisco. Quindi è così.
+  Capisco: questa volta partecipo all'indagine.
 :::
 
 :::example_sentence
 jp: >-
-  すみません。
+  すみません、 ここに {{名前|なまえ}}が あります。
 translation_it: >-
-  Mi scusi.
-:::
-
-:::example_sentence
-jp: >-
-  ここに ポケモンセンターが あります。
-translation_it: >-
-  Qui c’è un Centro Pokémon.
+  Mi scusi, qui c'è un nome.
 :::
 
 :::example_sentence
 jp: >-
   この わざは {{威力|いりょく}}が {{高|たか}}いです。
 translation_it: >-
-  La potenza di questa mossa è alta.
+  Questa mossa ha una potenza alta.
+:::
+
+:::example_sentence
+jp: >-
+  {{成長|せいちょう}}した ポケモンの {{能力|のうりょく}}を {{見|み}}ます。
+translation_it: >-
+  Controllo le statistiche del Pokémon che è cresciuto.
 :::
 
 ## Nota finale
 
-Quando leggi queste frasi, cerca prima il dominio della parola: ドラゴン / どく sono tipi, 威力 è la potenza della mossa, 〜が あります marca presenza, なるほど e すみません regolano la risposta del parlante. [ポケモンリーグ](term:term-v187-pokemonriigu) fissa invece il luogo istituzionale della scena.
+La scorciatoia migliore è chiederti se la frase sta reagendo, localizzando qualcosa, studiando un fatto o valutando una mossa. La stessa battuta diventa molto più leggibile quando distingui presenza, indagine, tipo e statistica.
