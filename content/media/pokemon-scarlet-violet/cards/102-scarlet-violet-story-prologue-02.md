@@ -459,14 +459,15 @@ entry_type: grammar
 entry_id: grammar-te-miru
 card_type: concept
 front: ～てみる
-back: provare a fare
+back: 'provare a fare e vedere che succede'
 example_jp: >-
   まずは {{野生|やせい}}の ポケモンと {{戦|たたか}}ってみて！
 example_it: >-
   Per iniziare, prova a combattere contro un Pokemon selvatico!
 notes_it: >-
-  Qui `～てみる` funziona come invito a testare subito un'azione. Nel flusso
-  tutorial apre un comando pratico immediato, non un'intenzione futura astratta.
+  Qui `～てみる` funziona come invito a testare subito un'azione: entrare nel
+  combattimento e vedere che cosa succede. Nel flusso tutorial apre un comando
+  pratico immediato, non un'intenzione futura astratta.
 :::
 :::card
 id: card-te-shimau-prologue-02-concept

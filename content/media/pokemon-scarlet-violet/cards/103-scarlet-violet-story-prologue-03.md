@@ -320,14 +320,14 @@ entry_type: grammar
 entry_id: grammar-te-miru
 card_type: concept
 front: ～てみる
-back: provare a fare
+back: 'provare a fare e vedere che succede'
 example_jp: >-
   {{今|いま}}の チームで どこまで {{戦|たたか}}えるか {{試|ため}}してみよう。
 example_it: >-
   Con la squadra attuale puoi testare fin dove riesci ad arrivare.
 notes_it: >-
-  In questo capitolo la forma marca un test pratico: verificare sul campo la
-  soglia reale della squadra attuale.
+  In questo capitolo la forma marca un test pratico: provare sul campo e vedere
+  fino a dove arriva davvero la squadra attuale.
 :::
 :::card
 id: card-koto-ga-dekiru-prologue-03-concept

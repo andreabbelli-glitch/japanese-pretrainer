@@ -381,6 +381,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-tamesu",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A9%A6%E3%81%99",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-tsukaimichi",
       "audio_src": "assets/audio/term/term-tsukaimichi/forvo-manual-つかいみち.mp3",
       "audio_source": "forvo",

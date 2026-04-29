@@ -45,6 +45,7 @@ caption: >-
 
 - [{{強力|きょうりょく}}](term:term-kyouryoku)
 - [{{色々|いろいろ}}](term:term-iroiro)
+- [{{試|ため}}す](term:term-tamesu)
 - [{{攻略|こうりゃく}}](term:term-kouryaku)
 
 ## Pattern grammaticali chiave
@@ -75,9 +76,12 @@ dell'azione.
 dire “varie cose”, “in modi diversi”: prova più skill, più timing, più
 possibilità. Dentro
 [{{色々|いろいろ}}{{試|ため}}してみてね](grammar:grammar-te-mite-ne),
-`{{試|ため}}す` è “provare/testare”, `〜てみる` aggiunge “provare a fare per
-vedere come va” e `ね` ammorbidisce il prompt. Il tono è da guida amichevole:
-non “devi farlo”, ma “provale un po' e vedi”.
+[{{試|ため}}す](term:term-tamesu) è “provare/testare”: qui non descrive un
+ragionamento astratto, ma l'azione concreta di usare una skill e osservare
+l'effetto. Subito dopo arriva `みて`, da `〜てみる`: non significa solo
+“vedere”, ma “provare a fare qualcosa per vedere che succede”. Il risultato
+`{{試|ため}}してみてね` suona naturale: “prova/testa e guarda come va”, con
+`ね` che ammorbidisce il prompt.
 
 La frase finale `それじゃ、このダンジョンも
 [{{攻略|こうりゃく}}](term:term-kouryaku)してみよう！` ricollega il tutorial alla

@@ -616,10 +616,12 @@ title: Provare a fare
 meaning_it: fare qualcosa per prova / per vedere come va
 aliases: [～てみよう, ～てみたら]
 notes_it: >-
-  Nei tutorial Pokemon introduce un test operativo immediato. Dopo `～てみる`, il
-  gioco richiede di eseguire l'azione nella UI, per esempio registrare una
+  Nei tutorial Pokemon introduce un test operativo immediato: fai l'azione e
+  guarda che cosa succede. Dopo `～てみる`, il gioco richiede di eseguire
+  davvero un comando nella UI, per esempio registrare una
   [{{目的地|もく.てき.ち}}](term:term-mokutekichi) o aprire
-  [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru).
+  [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru), così puoi verificarne
+  subito l'effetto.
 :::
 :::card
 id: card-te-miru-concept
@@ -628,7 +630,7 @@ entry_type: grammar
 entry_id: grammar-te-miru
 card_type: concept
 front: '～てみる'
-back: provare a fare
+back: 'provare a fare e vedere che succede'
 example_jp: >-
   {{目的地|もく.てき.ち}}に {{登録|とうろく}}してみたら？
 example_it: >-

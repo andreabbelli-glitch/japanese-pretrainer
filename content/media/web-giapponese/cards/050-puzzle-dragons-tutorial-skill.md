@@ -39,6 +39,23 @@ notes_it: >-
 level_hint: n4
 :::
 
+:::term
+id: term-tamesu
+cross_media_group: term-shared-tamesu
+lemma: 試す
+reading: ためす
+romaji: tamesu
+meaning_it: provare; testare
+pos: verb
+aliases: [試して, 試し]
+notes_it: >-
+  [{{試|ため}}す](term:term-tamesu) indica il provare concretamente qualcosa
+  per verificarne effetto o risultato. In `{{試|ため}}してみてね`, non è un
+  tentativo vago: il tutorial ti invita a usare una skill e vedere che effetto
+  produce.
+level_hint: n4
+:::
+
 :::grammar
 id: grammar-te-mite-ne
 cross_media_group: grammar-shared-te-mite-ne
@@ -89,6 +106,28 @@ notes_it: >-
   [{{色々|いろいろ}}](term:term-iroiro) lascia aperte le opzioni: il gioco non
   specifica una skill unica, ma ti spinge a sperimentare più possibilità.
 tags: [videogame, tutorial, variation]
+:::
+
+:::card
+id: card-web-giapponese-tamesu-recognition
+lesson_id: lesson-web-giapponese-puzzle-dragons-tutorial-skill
+entry_type: term
+entry_id: term-tamesu
+card_type: recognition
+front: '{{試|ため}}す'
+back: >-
+  provare/testare; in `{{試|ため}}してみて`, l'idea è: prova e guarda che
+  succede
+example_jp: >-
+  このスキルを{{試|ため}}してみてね。
+example_it: >-
+  Prova questa skill, mi raccomando.
+notes_it: >-
+  [{{試|ため}}す](term:term-tamesu) diventa `{{試|ため}}して` davanti a
+  `みて`: la costruzione `〜てみる` aggiunge l'idea di fare un tentativo per
+  vedere l'effetto. Per questo `{{試|ため}}してみてね` non è ridondante in
+  giapponese: suona come un invito naturale a testare e osservare il risultato.
+tags: [videogame, tutorial, verb]
 :::
 
 :::card
