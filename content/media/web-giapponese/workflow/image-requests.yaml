@@ -399,3 +399,100 @@ requests:
       prima identifica la meccanica, poi invita a provare molte skill.
     notes: >-
       Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: dragon-quest-adventure-skill-grow-crystals
+    lesson_slug: 060-dragon-quest-adventure-skill-grow-crystals
+    anchor: "Il banner spiega come ottenere le skill di avventura."
+    kind: game-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il contesto, perché mostra titolo, regole con due
+      occorrenze di `と` e pulsante `とじる` nella stessa schermata.
+    visual_goal: >-
+      Rendere leggibile il banner tutoriale, concentrandosi sul testo sopra e
+      sotto l'immagine centrale più che sui dettagli delle tre carte di esempio.
+    source_preference: >-
+      Screenshot fornito dall'utente come file locale
+      /Users/abelli/Downloads/IMG_1168.jpg.
+    capture_instructions: >-
+      Usa lo screenshot così com'è, senza crop: il pannello completo chiarisce
+      che il testo appartiene a una finestra tutoriale di gioco.
+    must_show: >-
+      `冒険スキルを手に入れよう`, `敵を倒すとグロウ結晶を落とすぞ。`,
+      `グロウ結晶をたくさん手に入れると冒険スキルを獲得するぞ。` e
+      `とじる`.
+    avoid: >-
+      Interpretare o trascrivere i testi minuti dentro le tre carte illustrate:
+      non sono il focus didattico di questo item.
+    alt_it: >-
+      Schermata tutorial di un'app Dragon Quest con banner su cristalli e skill
+      di avventura.
+    caption_it: >-
+      Il focus è il testo del banner:
+      `{{敵|てき}}を{{倒|たお}}すとグロウ{{結晶|けっしょう}}を{{落|お}}とすぞ。`
+      e `グロウ{{結晶|けっしょう}}をたくさん
+      [{{手|て}}に{{入|い}}れる](term:term-te-ni-ireru)と
+      {{冒険|ぼうけん}}スキルを{{獲得|かくとく}}するぞ。`
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: dragon-quest-smash-grow-stage-rewards
+    lesson_slug: 070-dragon-quest-smash-grow-rewards-and-joining
+    anchor: "La schermata ricompense separa stage, difficoltà e fonte dei premi."
+    kind: game-screen
+    priority: high
+    placement_rationale: >-
+      Va nel contesto iniziale, perché mostra insieme intestazione dello stage,
+      difficoltà, lista degli item ottenuti e nastri delle ricompense.
+    visual_goal: >-
+      Rendere leggibili `第1章`, `平原`, `難易度`, `初回報酬`,
+      `達成報酬` e `キャンペーン` dentro una schermata reale di reward.
+    source_preference: >-
+      Screenshot fornito dall'utente come file locale
+      /Users/abelli/Downloads/IMG_1169.PNG.
+    capture_instructions: >-
+      Usa lo screenshot così com'è, senza crop: la griglia completa serve a
+      distinguere le fonti delle ricompense.
+    must_show: >-
+      `第1章 ルイナ平原 ステージ 5`, `難易度:ノーマル`,
+      `手にいれたアイテム`, `初回報酬`, `達成報酬`, `キャンペーン` e `つぎへ`.
+    avoid: >-
+      Ritagli che perdono l'intestazione dello stage o i nastri sotto le icone
+      reward.
+    alt_it: >-
+      Schermata ricompense di Dragon Quest Smash Grow dopo uno stage normale.
+    caption_it: >-
+      In alto leggi `{{第1章|だいいっしょう}} ルイナ{{平原|へいげん}}
+      ステージ{{5|ご}}` e `{{難易度|なんいど}}: ノーマル`; nella griglia i nastri
+      distinguono [{{初回報酬|しょかいほうしゅう}}](term:term-shokai-houshuu),
+      [{{達成報酬|たっせいほうしゅう}}](term:term-tassei-houshuu) e
+      [キャンペーン](term:term-campaign).
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: dragon-quest-smash-grow-companion-join
+    lesson_slug: 070-dragon-quest-smash-grow-rewards-and-joining
+    anchor: "La schermata annuncia l'ingresso di un nuovo compagno."
+    kind: game-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo la schermata reward perché chiude lo stesso flow con un
+      risultato diverso dagli item: un nuovo personaggio entra nel gruppo.
+    visual_goal: >-
+      Rendere leggibile il grande testo `仲間加入！` sopra il personaggio appena
+      acquisito.
+    source_preference: >-
+      Screenshot fornito dall'utente come file locale
+      /Users/abelli/Downloads/IMG_1170.PNG.
+    capture_instructions: >-
+      Usa lo screenshot così com'è, mantenendo visibile il testo in alto e il
+      personaggio al centro.
+    must_show: >-
+      `仲間加入！` e il personaggio entrato nel gruppo.
+    avoid: >-
+      Ritagli che tagliano il testo grande o rimuovono il personaggio.
+    alt_it: >-
+      Schermata di Dragon Quest Smash Grow con un nuovo personaggio entrato nel
+      gruppo.
+    caption_it: >-
+      `{{仲間加入|なかまかにゅう}}！` è un annuncio di stato: il personaggio mostrato
+      non è solo ottenuto come item, ma entra tra i membri disponibili.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
