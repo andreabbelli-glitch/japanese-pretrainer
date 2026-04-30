@@ -2,12 +2,12 @@
 id: lesson-web-giapponese-dragon-quest-adventure-skill-grow-crystals
 media_id: media-web-giapponese
 slug: 060-dragon-quest-adventure-skill-grow-crystals
-title: Dragon Quest app - 冒険スキルを手に入れよう
+title: Dragon Quest Smash Grow - 冒険スキルを手に入れよう
 order: 60
-segment_ref: dragon-quest-app
+segment_ref: dragon-quest-smash-grow
 difficulty: n4
 status: active
-tags: [random, videogame, dragon-quest, tutorial, ui]
+tags: [random, videogame, dragon-quest-smash-grow, tutorial, ui]
 prerequisites: []
 summary: >-
   Leggi un banner tutoriale su cristalli e skill riconoscendo il valore
@@ -23,17 +23,18 @@ ottieni una skill di avventura.
 
 ## Contesto
 
-La schermata viene da un'app di area Dragon Quest con combattimento e
-progressione. Le tre carte illustrate al centro servono da esempio visivo, ma
-il testo da leggere è il banner: titolo, regole sotto l'immagine e pulsante
-`とじる`. Le frasi usano due volte [〜すると](grammar:grammar-plain-to-consequence):
-prima per il drop dei cristalli, poi per l'acquisizione della skill.
+La schermata viene da Dragon Quest Smash Grow e presenta una meccanica di
+combattimento e progressione. Le tre carte illustrate al centro servono da
+esempio visivo, ma il testo da leggere è il banner: titolo, regole sotto
+l'immagine e pulsante `とじる`. Le frasi usano due volte
+[〜すると](grammar:grammar-plain-to-consequence): prima per il drop dei
+cristalli, poi per l'acquisizione della skill.
 
 :::image
 src: assets/dragon-quest-adventure-skill-grow-crystals.jpg
 alt: >-
-  Schermata tutorial di un'app Dragon Quest con banner su cristalli e skill di
-  avventura.
+  Schermata tutorial di Dragon Quest Smash Grow con banner su cristalli e skill
+  di avventura.
 caption: >-
   Il focus è il testo del banner:
   `{{敵|てき}}を{{倒|たお}}すとグロウ{{結晶|けっしょう}}を{{落|お}}とすぞ。`

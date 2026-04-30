@@ -2,9 +2,9 @@
 id: cards-web-giapponese-dragon-quest-adventure-skill-grow-crystals
 media_id: media-web-giapponese
 slug: 060-dragon-quest-adventure-skill-grow-crystals
-title: Dragon Quest app - 冒険スキルを手に入れよう
+title: Dragon Quest Smash Grow - 冒険スキルを手に入れよう
 order: 60
-segment_ref: dragon-quest-app
+segment_ref: dragon-quest-smash-grow
 ---
 
 :::term
