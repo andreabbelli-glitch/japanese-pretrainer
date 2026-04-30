@@ -228,10 +228,10 @@ pronunce o asset audio.
 
 Il registry operativo non-audio vive in
 `src/features/katakana-speed/model/exercise-catalog.ts` e alimenta word bank,
-trap moraiche, scelta inversa romaji -> katakana, RAN Grid e opzioni raw senza
-creare una tabella catalogo. I preset manuali sono un input di planning
-separato da `sessionMode`: usano le tabelle session/trial/block/result
-esistenti e salvano metadata in JSON snapshot.
+scelta inversa romaji -> katakana, RAN Grid e opzioni raw senza creare una
+tabella catalogo. I preset manuali sono un input di planning separato da
+`sessionMode`: usano le tabelle session/trial/block/result esistenti e salvano
+metadata in JSON snapshot.
 
 I termini media/ad hoc aggiuntivi vivono in
 `src/features/katakana-speed/model/media-word-bank.json`. Per aggiunte manuali

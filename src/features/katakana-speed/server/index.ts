@@ -525,7 +525,7 @@ function defaultKatakanaSpeedSessionCount(
   if (manualExercise === "romaji_to_katakana") {
     return 12;
   }
-  if (manualExercise === "contrast" || manualExercise === "mora_contrast") {
+  if (manualExercise === "contrast") {
     return 16;
   }
   if (manualExercise === "reading") {
@@ -584,7 +584,6 @@ function assertKatakanaSpeedManualExercise(
   if (
     manualExercise === undefined ||
     manualExercise === "contrast" ||
-    manualExercise === "mora_contrast" ||
     manualExercise === "ran_grid" ||
     manualExercise === "reading" ||
     manualExercise === "romaji_to_katakana"
@@ -614,9 +613,6 @@ function trainingBlockTitle(
   }
   if (blockId?.includes("manual-ran-grid")) {
     return "RAN grid";
-  }
-  if (blockId?.includes("manual-mora-contrast")) {
-    return "Trappole di mora";
   }
   if (blockId?.includes("b1-contrast")) {
     return "Contrasti rapidi";

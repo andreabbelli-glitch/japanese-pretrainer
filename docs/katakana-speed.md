@@ -70,9 +70,9 @@ modalità pubbliche sono:
 
 Il dashboard può inoltre passare a `startKatakanaSpeedSession` un
 `manualExercise` separato dal `sessionMode`: `romaji_to_katakana`, `contrast`,
-`reading`, `ran_grid` o `mora_contrast`. Questi preset riusano lo stesso focus
-engine e le stesse tabelle runtime, ma costruiscono una sessione composta da un
-solo tipo di drill.
+`reading` o `ran_grid`. Questi preset riusano lo stesso focus engine e le
+stesse tabelle runtime, ma costruiscono una sessione composta da un solo tipo
+di drill.
 
 I trial persistiti usano i mode DB esistenti:
 
@@ -82,9 +82,9 @@ I trial persistiti usano i mode DB esistenti:
 - `blink`: esposizione breve senza audio, con due opzioni.
 - `word_naming`, `pseudoword_sprint`, `sentence_sprint`: timer automatico e
   self-check `clean / hesitated / wrong`;
-- raw-choice text-only per contrast choice e mora contrast. Le opzioni raw sono
-  codificate nel piano della sessione e corrette contro `expected_surface`,
-  senza richiedere item catalogo fittizi.
+- raw-choice text-only per contrast choice e romaji -> katakana. Le opzioni
+  raw sono codificate nel piano della sessione e corrette contro
+  `expected_surface`, senza richiedere item catalogo fittizi.
 - `ran_grid`: griglia 5x5 con timer totale, superfici limitate a singoli kana
   o chunk con piccoli kana, celle sbagliate marcabili anche durante il timer e
   risultato aggregato con posizioni 0-based canonizzate.
@@ -146,13 +146,13 @@ riprese partono dal primo trial non ancora risposto usando `answeredCount`.
    blocco contrasti, blocco lettura a tempo, blocco transfer. `Diagnosi` e
    `Ripara debolezza` usano lo stesso focus engine con conteggi diversi.
 2. Il selettore manuale del dashboard avvia direttamente un preset supportato:
-   romaji -> katakana, contrasti, lettura, RAN Grid o trappole moraiche.
+   romaji -> katakana, contrasti, lettura o RAN Grid.
 3. I choice drill accettano tasti `1`-`4` e tap/click sulle opzioni. Il primo
    trial dei blocchi choice guidati mostra il romaji e chiede di selezionare
    la grafia katakana corretta tra quattro forme vicine scelte da focus,
    cluster e distractor del catalogo.
-4. Mora contrast e contrasti raw usano choice text-only; non ci sono flussi di
-   costruzione tessere, chunk spotting standalone o varianti normative.
+4. Contrasti raw usano choice text-only; non ci sono flussi di costruzione
+   tessere, chunk spotting standalone, trappole moraiche o varianti normative.
 5. Durante il trial il romaji parte nascosto. `Space` o il toggle dedicato
    mostrano/nascondono la lettura nei self-check prima del rating, nei choice
    drill dopo feedback e nella RAN Grid anche mentre il timer corre; il timer

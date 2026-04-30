@@ -385,8 +385,6 @@ function formatExerciseCodeLabel(exerciseCode: string) {
     E10: "Leggi parole",
     E12: "Pseudo-parole",
     E13: "Griglia",
-    E15: "Contrasti di mora",
-    E16: "Contrasti ー/ッ",
     E18: "Frasi",
     E20: "Riparazione"
   };

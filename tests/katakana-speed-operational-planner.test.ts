@@ -277,7 +277,7 @@ describe("katakana speed operational session planning", () => {
     expect(firstTrial.promptSurface).toBe(firstTrial.expectedSurface);
   });
 
-  it("uses concrete mora contrast pairs for sokuon and long-vowel focus", () => {
+  it("does not plan mora contrast drills for sokuon and long-vowel focus", () => {
     const initial = createInitialKatakanaSpeedState({
       now: "2026-04-26T08:00:00.000Z"
     });
@@ -314,12 +314,6 @@ describe("katakana speed operational session planning", () => {
       sessionMode: "repair",
       state: longVowelState
     });
-    const sokuonTrial = sokuonPlan.find(
-      (trial) => trial.features?.exerciseFamily === "mora_contrast"
-    );
-    const longVowelTrial = longVowelPlan.find(
-      (trial) => trial.features?.exerciseFamily === "mora_contrast"
-    );
 
     expect(sokuonPlan[0]?.features?.exerciseFamily).toBe(
       "romaji_to_katakana_choice"
@@ -327,74 +321,21 @@ describe("katakana speed operational session planning", () => {
     expect(longVowelPlan[0]?.features?.exerciseFamily).toBe(
       "romaji_to_katakana_choice"
     );
-    expect(sokuonTrial).toBeDefined();
-    expect(longVowelTrial).toBeDefined();
-    expect(sokuonTrial!.features).toMatchObject({
-      errorTagOnWrong: "sokuon_missed",
-      exerciseFamily: "mora_contrast",
-      focusId: "sokuon"
-    });
-    expect(optionSurfaces(sokuonTrial!.optionItemIds)).toEqual(
-      expect.arrayContaining([
-        sokuonTrial!.expectedSurface,
-        expect.not.stringContaining("ッ")
-      ])
-    );
-    expect(sokuonTrial!.optionItemIds.length).toBeGreaterThanOrEqual(2);
-    expect(longVowelTrial!.features).toMatchObject({
-      errorTagOnWrong: "long_vowel_missed",
-      exerciseFamily: "mora_contrast",
-      focusId: "long-vowel"
-    });
-    expect(optionSurfaces(longVowelTrial!.optionItemIds)).toEqual(
-      expect.arrayContaining([
-        longVowelTrial!.expectedSurface,
-        expect.not.stringContaining("ー")
-      ])
-    );
-    expect(longVowelTrial!.optionItemIds.length).toBeGreaterThanOrEqual(2);
-  });
-
-  it("uses a broad long-vowel mora contrast pool instead of cycling the same few words", () => {
-    const initial = createInitialKatakanaSpeedState({
-      now: "2026-04-26T08:00:00.000Z"
-    });
-    const serverItem = getKatakanaSpeedItemBySurface("サーバー");
-    expect(serverItem).toBeDefined();
-    const longVowelState = updateKatakanaSpeedStateAfterAttempt({
-      actualSurface: "サバ",
-      expectedSurface: "サーバー",
-      itemId: serverItem!.id,
-      now: "2026-04-26T08:01:00.000Z",
-      responseMs: 900,
-      state: initial
-    });
-
-    const contrastSurfaces = generateKatakanaSpeedSessionPlan({
-      count: 34,
-      now: "2026-04-26T08:02:00.000Z",
-      seed: "long-vowel-varied-contrast",
-      sessionMode: "repair",
-      state: longVowelState
-    })
-      .filter(
-        (trial) =>
-          trial.blockId === "repair-b1-contrast" &&
-          trial.features?.exerciseFamily === "mora_contrast"
+    expect(
+      [...sokuonPlan, ...longVowelPlan].some(
+        (trial) => trial.features?.exerciseFamily === "mora_contrast"
       )
-      .map((trial) => trial.expectedSurface ?? trial.promptSurface);
-
-    expect(new Set(contrastSurfaces).size).toBeGreaterThanOrEqual(8);
-    expect(contrastSurfaces.slice(0, 8)).not.toEqual([
-      "コーヒー",
-      "サーバー",
-      "スーパー",
-      "コーヒー",
-      "サーバー",
-      "スーパー",
-      "コーヒー",
-      "サーバー"
-    ]);
+    ).toBe(false);
+    expect(
+      [...sokuonPlan, ...longVowelPlan].some(
+        (trial) => trial.features?.exerciseCode === "E15"
+      )
+    ).toBe(false);
+    expect(
+      [...sokuonPlan, ...longVowelPlan].some(
+        (trial) => trial.features?.exerciseCode === "E16"
+      )
+    ).toBe(false);
   });
 
   it("rejects stale session modes at runtime", () => {

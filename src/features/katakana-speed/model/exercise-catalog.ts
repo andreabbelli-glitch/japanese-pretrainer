@@ -18,8 +18,6 @@ const EXERCISE_CATALOG: readonly KatakanaSpeedExerciseDefinition[] =
     exercise("E10", "Timed Word Naming", "self_check"),
     exercise("E12", "Pseudoword Read Sprint", "self_check"),
     exercise("E13", "RAN Grid", "aggregate"),
-    exercise("E15", "Mora Contrast", "raw_choice"),
-    exercise("E16", "Long/Sokuon Contrast", "raw_choice"),
     exercise("E18", "Sentence Sprint", "self_check"),
     exercise("E20", "Error Repair Drill", "choice")
   ]);

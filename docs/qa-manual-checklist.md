@@ -60,13 +60,16 @@
   da un trial inverso romaji -> katakana con quattro opzioni visivamente o
   fonologicamente vicine; nei trial inversi gli hint romaji sotto le opzioni
   restano nascosti per non rivelare la risposta.
-- `Katakana Speed`: le trappole moraiche salvano choice raw text-only contro
+- `Katakana Speed`: i contrasti raw salvano choice text-only contro
   `expected_surface`; non ci sono flussi tile builder, chunk spotting,
-  varianti normative o repeated reading.
+  trappole moraiche, varianti normative o repeated reading.
 - `Katakana Speed`: le sessioni self-check hanno timer autostart, usano `1`-`3`
   per il rating, avanzano da sole su `Fluida`/`Incerta` e richiedono continue
   manuale su `Da rifare`; `Space` puo mostrare/nascondere il romaji prima del
   rating.
+- `Katakana Speed`: nei self-check con parole katakana lunghe, il prompt
+  riduce dinamicamente la dimensione e resta su una riga senza overflow o
+  sovrapposizioni.
 - `Katakana Speed`: `Griglia` mostra una griglia 5x5 leggibile anche su mobile,
   con singoli kana o chunk con piccoli kana, mai parole intere o marker isolati
   come `ー`; fa partire automaticamente il timer, usa `Space` per

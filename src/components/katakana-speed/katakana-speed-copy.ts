@@ -62,12 +62,6 @@ export const KATAKANA_SPEED_MANUAL_EXERCISE_ACTIONS: readonly KatakanaSpeedManua
       detail: "griglia 5x5 a timer",
       label: "Griglia RAN",
       manualExercise: "ran_grid"
-    },
-    {
-      count: 16,
-      detail: "coppie con ー e ッ",
-      label: "Trappole ー/ッ",
-      manualExercise: "mora_contrast"
     }
   ];
 
@@ -80,10 +74,6 @@ export type KatakanaSpeedTrialCopy = {
 export function getKatakanaSpeedTrialCopy(
   trial: KatakanaSpeedTrialPlan
 ): KatakanaSpeedTrialCopy {
-  const exerciseCode =
-    typeof trial.features?.exerciseCode === "string"
-      ? trial.features.exerciseCode
-      : null;
   const interaction =
     typeof trial.features?.interaction === "string"
       ? trial.features.interaction
@@ -117,16 +107,6 @@ export function getKatakanaSpeedTrialCopy(
           : trial.mode === "sentence_sprint"
             ? "Leggi la frase"
             : "Leggi la parola"
-    };
-  }
-
-  if (exerciseCode === "E15" || exerciseCode === "E16") {
-    return {
-      controls:
-        "Scegli la forma corretta tra le due opzioni. Space mostra/nasconde la lettura.",
-      instruction:
-        "Scegli la forma che scrive la lettura mostrata, senza farti ingannare da ー, ッ o piccoli kana.",
-      label: "Trappola di mora"
     };
   }
 

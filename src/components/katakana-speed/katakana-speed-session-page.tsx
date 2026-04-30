@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import type { Route } from "next";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -21,6 +22,7 @@ import {
   formatSelfRatingLabel,
   getKatakanaSpeedTrialCopy
 } from "./katakana-speed-copy";
+import { getKatakanaSpeedPromptFitSize } from "./katakana-speed-prompt-fit";
 import { formatDuration } from "./katakana-speed-shared";
 import { useKatakanaSpeedSessionController } from "./use-katakana-speed-session-controller";
 
@@ -159,6 +161,12 @@ export function KatakanaSpeedSessionPage({
     currentTrial?.mode === "sentence_sprint" &&
       "katakana-speed-prompt--sentence"
   );
+  const promptStyle = visiblePrompt
+    ? ({
+        "--katakana-speed-prompt-fit-size":
+          getKatakanaSpeedPromptFitSize(visiblePrompt)
+      } as CSSProperties)
+    : undefined;
 
   return (
     <div className="katakana-speed-session-page">
@@ -210,7 +218,9 @@ export function KatakanaSpeedSessionPage({
               ) : null}
               {visiblePrompt ? (
                 <>
-                  <p className={promptClassName}>{visiblePrompt}</p>
+                  <p className={promptClassName} style={promptStyle}>
+                    {visiblePrompt}
+                  </p>
                   <ReadingHint
                     label="Lettura"
                     value={showReadings ? readingHint : null}

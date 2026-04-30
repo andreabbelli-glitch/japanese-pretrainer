@@ -25,15 +25,15 @@ describe("katakana speed operational exercise catalog", () => {
       "E10",
       "E12",
       "E13",
-      "E15",
-      "E16",
       "E18",
       "E20"
     ]);
     expect(audioExerciseIds).toEqual([]);
     expect(
       exercises.some((exercise) =>
-        ["E08", "E09", "E14", "E17", "E21", "E22"].includes(exercise.id)
+        ["E08", "E09", "E14", "E15", "E16", "E17", "E21", "E22"].includes(
+          exercise.id
+        )
       )
     ).toBe(false);
   });

@@ -47,7 +47,7 @@ describe("katakana speed raw answer scoring", () => {
       correctItemId: "word-security",
       expectedSurface: "ティ",
       featuresJson: JSON.stringify({
-        exerciseCode: "E15",
+        exerciseCode: "E04",
         interaction: "raw_choice"
       }),
       focusChunksJson: JSON.stringify(["ティ"]),

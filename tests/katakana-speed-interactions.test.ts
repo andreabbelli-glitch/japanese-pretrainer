@@ -809,7 +809,7 @@ function buildRawChoiceSession(): StartKatakanaSpeedSessionResult {
         correctItemId: "word-security",
         expectedSurface: "ティ",
         features: {
-          exerciseCode: "E15",
+          exerciseCode: "E04",
           interaction: "raw_choice"
         },
         itemId: "word-security",

@@ -14,7 +14,6 @@ import {
 } from "./catalog.ts";
 import { encodeKatakanaSpeedRawOption } from "./exercise-catalog.ts";
 import {
-  KATAKANA_SPEED_FOCUSES,
   getItemsForFocus,
   pickKatakanaTrainingFocus,
   type KatakanaTrainingFocus
@@ -27,48 +26,6 @@ type KatakanaSpeedTrainingLoopMode = Extract<
   KatakanaSpeedSessionMode,
   "daily" | "diagnostic_probe" | "repair"
 >;
-
-type KatakanaSpeedMoraContrastPair = {
-  readonly correctSurface: string;
-  readonly distractorSurface: string;
-  readonly errorTag: string;
-  readonly feature: "long-vowel" | "sokuon";
-  readonly focusId: "long-vowel" | "sokuon";
-};
-
-const MORA_CONTRAST_PAIRS: readonly KatakanaSpeedMoraContrastPair[] =
-  Object.freeze([
-    moraContrast("sokuon", "バッグ", "バグ"),
-    moraContrast("sokuon", "ベッド", "ベド"),
-    moraContrast("sokuon", "メッセージ", "メセージ"),
-    moraContrast("sokuon", "アップデート", "アプデート"),
-    moraContrast("sokuon", "ネット", "ネト"),
-    moraContrast("sokuon", "チェック", "チェク"),
-    moraContrast("sokuon", "ピッツァ", "ピツァ"),
-    moraContrast("sokuon", "チケット", "チケト"),
-    moraContrast("sokuon", "ウォレット", "ウォレト"),
-    moraContrast("sokuon", "クァルテット", "クァルテト"),
-    moraContrast("sokuon", "ストップウォッチ", "ストプウォッチ"),
-    moraContrast("long-vowel", "コーヒー", "コヒー"),
-    moraContrast("long-vowel", "メール", "メル"),
-    moraContrast("long-vowel", "データ", "デタ"),
-    moraContrast("long-vowel", "サーバー", "サバ"),
-    moraContrast("long-vowel", "スーパー", "スパ"),
-    moraContrast("long-vowel", "チーズ", "チズ"),
-    moraContrast("long-vowel", "ケーキ", "ケキ"),
-    moraContrast("long-vowel", "タクシー", "タクシ"),
-    moraContrast("long-vowel", "ギター", "ギタ"),
-    moraContrast("long-vowel", "パーティー", "パティ"),
-    moraContrast("long-vowel", "サービス", "サビス"),
-    moraContrast("long-vowel", "キャンペーン", "キャンペン"),
-    moraContrast("long-vowel", "ニューヨーク", "ニュヨク"),
-    moraContrast("long-vowel", "プロデューサー", "プロデュサ"),
-    moraContrast("long-vowel", "クォーター", "クォタ"),
-    moraContrast("long-vowel", "ヒンドゥー", "ヒンドゥ"),
-    moraContrast("long-vowel", "ヴィーナス", "ヴィナス"),
-    moraContrast("long-vowel", "ヴォーカル", "ヴォカル"),
-    moraContrast("long-vowel", "フュージョン", "フュジョン")
-  ]);
 
 export function generateKatakanaSpeedSessionPlan(input: {
   count: number;
@@ -185,15 +142,6 @@ function buildManualExercisePlan(input: {
     });
   }
 
-  if (input.manualExercise === "mora_contrast") {
-    return buildManualMoraContrastTrials({
-      blockId: "manual-mora-contrast",
-      count: input.count,
-      focus: input.focus,
-      seed: `${input.seed}:manual:mora`
-    });
-  }
-
   return buildRanGridTrials({
     blockId: "manual-ran-grid",
     count: 1,
@@ -303,27 +251,6 @@ function buildContrastSprintTrials(input: {
   seed: string;
   wasRepair?: boolean;
 }): KatakanaSpeedTrialPlan[] {
-  if (input.focus.kind === "mora_contrast") {
-    const inverseTrials = buildRomajiToKatakanaChoiceTrials({
-      blockId: input.blockId,
-      count: Math.min(1, input.count),
-      focus: input.focus,
-      seed: `${input.seed}:romaji-first`,
-      wasRepair: input.wasRepair
-    });
-    const trials = [
-      ...inverseTrials,
-      ...buildMoraContrastTrials({
-        ...input,
-        count: Math.max(0, input.count - inverseTrials.length),
-        seed: `${input.seed}:mora`
-      })
-    ];
-    if (trials.length > 0) {
-      return trials;
-    }
-  }
-
   const surfaces = [
     ...new Set([...input.focus.targetChunks, ...input.focus.distractorChunks])
   ];
@@ -487,108 +414,6 @@ function buildRomajiToKatakanaChoiceTrial(input: {
     trialId: `katakana-speed-${input.seed}-${input.index}-${slugForTrial(correctSurface)}-romaji`,
     ...(input.wasRepair ? { wasRepair: true } : {})
   };
-}
-
-function buildMoraContrastTrials(input: {
-  blockId: string;
-  count: number;
-  focus: KatakanaTrainingFocus;
-  seed: string;
-  wasRepair?: boolean;
-}): KatakanaSpeedTrialPlan[] {
-  if (input.count <= 0) {
-    return [];
-  }
-
-  const pairs = stableShuffle(
-    MORA_CONTRAST_PAIRS.filter((pair) => pair.focusId === input.focus.id),
-    `${input.seed}:mora-pairs`
-  );
-
-  if (pairs.length === 0) {
-    return [];
-  }
-
-  return Array.from({ length: input.count }, (_, index) => {
-    const pair = pairs[index % pairs.length]!;
-    const item =
-      getKatakanaSpeedItemBySurface(pair.correctSurface) ??
-      getItemsForFocus({ focus: input.focus, includeRare: true })[0] ??
-      getKatakanaSpeedCatalog()[0];
-    const optionSurfaces = stableShuffle(
-      [pair.correctSurface, pair.distractorSurface],
-      `${input.seed}:${index}:mora-options`
-    );
-
-    return {
-      blockId: input.blockId,
-      correctItemId: item.id,
-      exerciseId: `katakana-speed-${blockMode(input.blockId)}`,
-      expectedSurface: pair.correctSurface,
-      features: {
-        correctnessSource: "objective",
-        errorTagOnWrong: pair.errorTag,
-        exerciseCode: "E16",
-        exerciseFamily: "mora_contrast",
-        feature: pair.feature,
-        focusId: input.focus.id,
-        focusLabel: input.focus.label,
-        hardMode: true,
-        interaction: "raw_choice",
-        showReadingDuringTrial: false
-      },
-      focusChunks: input.focus.targetChunks,
-      itemId: item.id,
-      itemType: item.kind,
-      metadataRole: input.wasRepair ? "repair_block" : "confusion_repair",
-      metrics: {
-        exerciseFamily: "mora_contrast",
-        feature: pair.feature,
-        focusId: input.focus.id,
-        targetRtMs: 1400
-      },
-      mode: "minimal_pair",
-      optionItemIds: optionSurfaces.map(surfaceToOptionId),
-      promptSurface: pair.correctSurface,
-      rarity: item.rarity,
-      targetRtMs: 1400,
-      trialId: `katakana-speed-${input.seed}-${index}-${slugForTrial(pair.correctSurface)}-${slugForTrial(pair.distractorSurface)}`,
-      ...(input.wasRepair ? { wasRepair: true } : {})
-    };
-  });
-}
-
-function buildManualMoraContrastTrials(input: {
-  blockId: string;
-  count: number;
-  focus: KatakanaTrainingFocus;
-  seed: string;
-}) {
-  const moraFoci = KATAKANA_SPEED_FOCUSES.filter(
-    (focus) => focus.kind === "mora_contrast"
-  );
-  const orderedFoci =
-    input.focus.kind === "mora_contrast"
-      ? [
-          input.focus,
-          ...moraFoci.filter((focus) => focus.id !== input.focus.id)
-        ]
-      : stableShuffle(moraFoci, `${input.seed}:mora-foci`);
-  const counts = splitCounts(
-    input.count,
-    orderedFoci.map(() => 1)
-  );
-
-  return interleavePools(
-    orderedFoci.map((focus, index) =>
-      buildMoraContrastTrials({
-        blockId: input.blockId,
-        count: counts[index] ?? 0,
-        focus,
-        seed: `${input.seed}:${focus.id}`
-      })
-    )
-  ).slice(0, input.count);
 }
 
 function buildTimedReadingTrials(input: {
@@ -840,13 +665,10 @@ function pickRomajiChoiceCorrectSurface(input: {
   index: number;
   seed: string;
 }) {
-  const focusCandidates =
-    input.focus.kind === "mora_contrast" &&
-    isMoraContrastFocusId(input.focus.id)
-      ? getMoraContrastPairsForFocus(input.focus.id).map(
-          (pair) => pair.correctSurface
-        )
-      : [...input.focus.targetChunks, ...input.focus.distractorChunks];
+  const focusCandidates = [
+    ...input.focus.targetChunks,
+    ...input.focus.distractorChunks
+  ];
   const candidates = uniqueDisplayableSurfaces(focusCandidates).filter(
     (surface) => getKatakanaSpeedItemBySurface(surface)
   );
@@ -870,15 +692,6 @@ function buildRomajiChoiceOptionSurfaces(input: {
   const focusSurfaces = [
     ...new Set([...input.focus.distractorChunks, ...input.focus.targetChunks])
   ];
-  const moraPairSurfaces = MORA_CONTRAST_PAIRS.filter(
-    (pair) => pair.correctSurface === input.correctSurface
-  ).flatMap((pair) => [
-    pair.distractorSurface,
-    ...getMoraContrastPairsForFocus(pair.focusId).flatMap((candidate) => [
-      candidate.correctSurface,
-      candidate.distractorSurface
-    ])
-  ]);
   const clusterSurfaces =
     correctItem?.distractorItemIds.flatMap((itemId) => {
       const item = getKatakanaSpeedItemById(itemId);
@@ -907,12 +720,6 @@ function buildRomajiChoiceOptionSurfaces(input: {
 
   fillRomajiChoiceSurfaces({
     candidates: focusSurfaces,
-    maxOptions: input.maxOptions,
-    promptReading: input.promptReading,
-    selected
-  });
-  fillRomajiChoiceSurfaces({
-    candidates: stableShuffle(moraPairSurfaces, `${input.seed}:mora`),
     maxOptions: input.maxOptions,
     promptReading: input.promptReading,
     selected
@@ -986,18 +793,6 @@ function pickFallbackItemForFocus(focus: KatakanaTrainingFocus) {
     ) ??
     getKatakanaSpeedCatalog()[0]
   );
-}
-
-function getMoraContrastPairsForFocus(
-  focusId: KatakanaSpeedMoraContrastPair["focusId"]
-) {
-  return MORA_CONTRAST_PAIRS.filter((pair) => pair.focusId === focusId);
-}
-
-function isMoraContrastFocusId(
-  focusId: string
-): focusId is KatakanaSpeedMoraContrastPair["focusId"] {
-  return focusId === "long-vowel" || focusId === "sokuon";
 }
 
 function uniqueDisplayableSurfaces(surfaces: readonly string[]) {
@@ -1075,20 +870,6 @@ function interleavePools<T>(pools: readonly (readonly T[])[]) {
 
 function blockMode(blockId: string) {
   return blockId.split("-")[0] ?? "daily";
-}
-
-function moraContrast(
-  focusId: "long-vowel" | "sokuon",
-  correctSurface: string,
-  distractorSurface: string
-): KatakanaSpeedMoraContrastPair {
-  return {
-    correctSurface,
-    distractorSurface,
-    errorTag: focusId === "sokuon" ? "sokuon_missed" : "long_vowel_missed",
-    feature: focusId,
-    focusId
-  };
 }
 
 function slugForTrial(surface: string) {

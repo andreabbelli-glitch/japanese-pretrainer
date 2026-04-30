@@ -10,7 +10,6 @@ import { getKatakanaSpeedCatalog } from "./catalog.ts";
 export type KatakanaTrainingFocusKind =
   | "chunk_confusion"
   | "visual_confusion"
-  | "mora_contrast"
   | "general_speed";
 
 export type KatakanaTrainingFocus = {
@@ -86,22 +85,6 @@ export const KATAKANA_SPEED_FOCUSES: readonly KatakanaTrainingFocus[] = [
     targetChunks: ["デュ", "ドゥ"]
   }),
   focus(6, {
-    distractorChunks: [],
-    errorTags: ["sokuon_missed"],
-    id: "sokuon",
-    kind: "mora_contrast",
-    label: "小さいッ",
-    targetChunks: ["ッ"]
-  }),
-  focus(7, {
-    distractorChunks: [],
-    errorTags: ["long_vowel_missed"],
-    id: "long-vowel",
-    kind: "mora_contrast",
-    label: "長音ー",
-    targetChunks: ["ー"]
-  }),
-  focus(8, {
     distractorChunks: [],
     errorTags: ["visual_confusion"],
     id: "visual-shi-tsu",
