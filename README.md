@@ -35,7 +35,8 @@ Il repository include attualmente:
 
 Il glossary pubblico e solo globale: `/glossary` mostra l'enciclopedia
 ricercabile cross-media e le CTA dei media puntano a `/glossary?media=<slug>`.
-Le vecchie route `/media/[mediaSlug]/glossary` e detail locali non sono piu una
+Le vecchie route `/media/[mediaSlug]/glossary` e detail locali restano solo
+stub di compatibilita nel router e restituiscono `404`: non sono piu una
 superficie supportata.
 
 Termini e pattern grammaticali vengono raggruppati automaticamente per
@@ -436,13 +437,17 @@ src/
     api/
     glossary/
     kanji-clash/
+    katakana-speed/
     media/
     review/
     settings/
+  actions/
   components/
+    auth/
     dashboard/
     glossary/
     kanji-clash/
+    katakana-speed/
     layout/
     media/
     review/
@@ -455,10 +460,12 @@ src/
   features/
     glossary/
     kanji-clash/
+    katakana-speed/
     textbook/
   lib/
     content/
     e2e/
+    kanji-clash/
     site/
   styles/
 .agents/
@@ -495,8 +502,12 @@ Per workflow con LLM esterni, il punto di partenza operativo e
 
 ## Convenzioni UI
 
-- Lo shell usa top bar editoriale su desktop e bottom navigation su mobile.
-- I pattern base riusabili vivono in `src/components/ui` e `src/components/layout`.
+- Lo shell usa una top bar editoriale su desktop; su mobile la stessa
+  navigazione primaria diventa una griglia compatta sotto il brand, non una
+  bottom navigation separata.
+- I pattern base riusabili vivono in `src/components/ui` e
+  `src/components/layout`; lo shell globale e in `src/components/site-shell*.tsx`.
 - Dashboard, library e media detail leggono il DB tramite helper server-side in
-  `src/lib/dashboard.ts` e `src/lib/media-shell.ts`, mentre glossary,
-  textbook e Kanji Clash espongono i loader canonici da `src/features/*`.
+  `src/lib/dashboard.ts`, `src/lib/media-shell.ts` e `src/lib/progress.ts`,
+  mentre glossary, textbook, Kanji Clash e Katakana Speed espongono i loader
+  canonici da `src/features/*` o dai rispettivi helper `src/lib/*`.

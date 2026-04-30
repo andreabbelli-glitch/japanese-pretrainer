@@ -59,13 +59,15 @@ migrazioni semplici, ottimo punto di partenza.
 ### Parsing e contenuti
 
 - Markdown con frontmatter YAML
-- Unified / remark / rehype
-- Plugin custom per furigana, riferimenti semantici e blocchi card
+- Unified / remark-parse
+- Parser e renderer custom per furigana, riferimenti semantici, blocchi
+  strutturati e HTML runtime
 
 ### Search
 
 - Campi normalizzati per kana e romaji
-- Normalizzazione via libreria tipo `wanakana`
+- Normalizzazione applicativa nei parser/importer e nei query helper del
+  glossary, senza dipendenza runtime da `wanakana`
 - FTS5 come evoluzione futura, da introdurre solo quando il corpus o i pattern
   di query lo richiedono davvero
 
@@ -104,11 +106,9 @@ model delle entita.
 - `lesson`
 - `term`
 - `grammar_pattern`
-- `example_sentence`
 - `card`
 - `entry_link`
 - `card_entry_link`
-- `entry_status`
 - `review_subject_state`
 - `review_subject_log`
 - `kanji_clash_pair_state`
@@ -119,6 +119,12 @@ model delle entita.
 - `user_setting`
 - `lesson_progress`
 - `content_import`
+
+`example_sentence` e un blocco strutturato del contenuto renderizzato, non una
+tabella persistita autonoma. Non esiste una tabella `entry_status`: gli
+override manuali e le sospensioni vivono nel subject-level review state
+(`review_subject_state.manual_override`, `review_subject_state.suspended` e
+stati come `known_manual`).
 
 ### 6.3 Distinzione chiave
 
@@ -299,20 +305,24 @@ livello di contrasto, due round direzionali schedulabili e lifecycle esplicito
 
 ## 11. Security e accesso remoto
 
-Deploy iniziale:
+Deploy corrente:
 
-- solo locale;
-- nessun requisito di auth complessa.
+- locale-first e single-user;
+- aperto quando nessuna variabile `AUTH_*` e configurata;
+- protetto da login minimale se sono presenti `AUTH_USERNAME`,
+  `AUTH_SESSION_SECRET` e una tra `AUTH_PASSWORD_HASH` o `AUTH_PASSWORD`;
+- compatibile con database locale SQLite o Turso/libSQL remoto.
 
-Se in futuro l'app viene esposta via port forwarding:
+Se l'app viene esposta pubblicamente:
 
-- aggiungere autenticazione;
+- usare sempre la configurazione `AUTH_*`;
 - usare reverse proxy;
 - limitare IP o proteggere via tunnel/VPN quando possibile;
 - non esporre SQLite e processi di sviluppo;
 - passare a cookie sicuri e CSRF protection complete.
 
-Questo va trattato come una milestone separata, non come un toggle banale.
+Hardening multi-user, ruoli, collaborazione e auth complessa restano una
+milestone separata, non un toggle banale.
 
 ## 12. Roadmap operativa
 
@@ -383,7 +393,8 @@ I documenti da mantenere nel repo in questa fase sono:
 - Glossary derivato da textbook e cards.
 - Segmentazione per media flessibile e dipendente dal tipo di contenuto.
 - Supporto desktop e mobile.
-- Deploy iniziale locale.
+- Deploy locale-first, con auth minimale opzionale tramite variabili `AUTH_*`
+  per esposizioni pubbliche controllate.
 - Review system Anki-like con override manuale dello stato appreso.
 - Kanji Clash come workspace stabile, collegato alla Review solo tramite
   contrasti manuali transazionali e con persistenza separata.
@@ -396,6 +407,6 @@ I documenti da mantenere nel repo in questa fase sono:
 1. Creare lo scheletro del progetto applicativo.
 2. Definire schema DB e import model.
 3. Implementare la specifica Markdown v1.
-4. Costruire un media demo con contenuti fittizi.
+4. Costruire o importare un primo bundle media reale validato.
 5. Sviluppare textbook reader e glossary.
 6. Aggiungere review e progress tracking.

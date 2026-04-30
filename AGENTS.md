@@ -62,11 +62,11 @@ src/
     media/          Route dinamiche per media, textbook, review e progress
       [mediaSlug]/assets/ Asset route del media bundle
         [...assetPath]/ Catch-all per servire file statici del media bundle
-      [mediaSlug]/glossary/ Glossary locale filtrato per media
-        grammar/    Pagine dettaglio grammatica del glossary locale media
-          [entryId]/ Route dettaglio grammar locale per entry
-        term/       Pagine dettaglio termini del glossary locale media
-          [entryId]/ Route dettaglio termine locale per entry
+      [mediaSlug]/glossary/ Route legacy non supportata: 404; usare /glossary?media=<slug>
+        grammar/    Route legacy dettaglio grammatica locale: 404
+          [entryId]/ Stub 404 per vecchi link grammar locali
+        term/       Route legacy dettaglio termini locale: 404
+          [entryId]/ Stub 404 per vecchi link term locali
       [mediaSlug]/progress/ Stato di avanzamento e metriche del media
       [mediaSlug]/review/ Vista review verticale sul sistema review globale
         card/           Vista dedicata alla review di una card nel contesto del media
@@ -79,7 +79,7 @@ src/
   components/       Componenti React organizzati per feature area
     auth/           Form di login
     dashboard/      Homepage e widget overview
-    layout/         Shell globale (header, nav, sidebar)
+    layout/         Header sticky riusabili e componenti di layout locali
     media/          Pagine dettaglio media
     glossary/       Indice e ricerca glossary
     kanji-clash/    UI e interazioni della modalita' kanji clash
@@ -88,13 +88,15 @@ src/
     textbook/       Reader delle lesson
     settings/       Pagina impostazioni utente
     ui/             Primitivi UI condivisi (bottoni, badge, ecc.)
+    site-shell.tsx  Shell globale client-side e contenitore app
+    site-shell-primary-nav.tsx Navigazione primaria responsive
   actions/          Server Actions Next.js (mutazioni DB lato server)
   db/
     schema/         Tabelle Drizzle (un file per entità)
     queries/        Prepared query riutilizzabili
     client.ts       Singleton del client LibSQL/SQLite
     config.ts       Configurazione connessione DB
-    seed.ts         Seeder dati iniziali
+    seed.ts         Fixture tecnica minima usata dai test unitari
     migrate.ts      Runner migrazioni
   domain/           Logica di dominio pura, zero dipendenze framework
   features/         Moduli feature-oriented condivisi tra route, componenti e test
@@ -196,7 +198,6 @@ docs/
   pronunciation-workflow.md Workflow editoriale e tecnico delle pronunce
   qa-manual-checklist.md  Checklist QA manuale
   tasks/                  Task operative e note di lavoro per manutenzione e backlog
-  drift-report.md         Report periodico di drift tra codice e docs strategiche
 
 prompts/                  Prompt locali ignorati da git
   automations/            Prompt per automazioni Codex locali
@@ -211,8 +212,8 @@ prompts/                  Prompt locali ignorati da git
 ## Entità core del DB
 
 `media` → `segment` → `lesson` → contenuto Markdown renderizzato
-`term` / `grammar_pattern` → `card` → `review_subject_state` / `review_subject_log`
-`glossary_terms` / `glossary_grammar` → indice ricercabile cross-media
+`term` / `grammar_pattern` + alias → `card` → `review_subject_state` / `review_subject_log`
+`cross_media_group` → layer canonico per glossary e review cross-media
 `lesson_progress` → avanzamento textbook per media
 `user_setting` → preferenze utente (furigana mode, ecc.)
 

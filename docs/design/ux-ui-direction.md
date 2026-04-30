@@ -2,10 +2,10 @@
 
 ## Scopo
 
-Questo documento definisce la direzione UX/UI per i task frontend iniziali della
-webapp di studio del giapponese. L'obiettivo non e produrre una UI finale
-pixel-perfect, ma una base concreta e implementabile in Next.js che orienti
-Task 06, 07, 08 e 09 senza ricadere in un layout da admin panel.
+Questo documento definisce la direzione UX/UI della webapp di studio del
+giapponese. L'obiettivo non e produrre una UI finale pixel-perfect, ma
+mantenere una base concreta e implementabile in Next.js senza ricadere in un
+layout da admin panel.
 
 ## Assunzioni operative
 
@@ -60,13 +60,15 @@ persistenti. Non va implementata una miniatura del desktop.
 
 ## Architettura dell'esperienza
 
-| Schermata | Ruolo UX | Cosa deve far capire subito |
-| --- | --- | --- |
-| Dashboard | punto di ingresso | cosa studiare adesso |
-| Media detail | home base del media | dove proseguire tra textbook, glossary, review, progress |
-| Textbook reader | lettura profonda | dove sono, cosa sto leggendo, come chiarire un dubbio |
-| Glossary | lookup e consolidamento | come trovare e capire una entry in pochi secondi |
-| Review session | loop rapido | quanti elementi restano e quale risposta dare |
+| Schermata       | Ruolo UX                | Cosa deve far capire subito                              |
+| --------------- | ----------------------- | -------------------------------------------------------- |
+| Dashboard       | punto di ingresso       | cosa studiare adesso                                     |
+| Media detail    | home base del media     | dove proseguire tra textbook, glossary, review, progress |
+| Textbook reader | lettura profonda        | dove sono, cosa sto leggendo, come chiarire un dubbio    |
+| Glossary        | lookup e consolidamento | come trovare e capire una entry in pochi secondi         |
+| Review session  | loop rapido             | quanti elementi restano e quale risposta dare            |
+| Kanji Clash     | discriminazione mirata  | quale contrasto sto allenando senza toccare la review    |
+| Katakana Speed  | automatismo kana        | quale loop rapido o esercizio manuale avviare            |
 
 ## Direzione visiva
 
@@ -109,8 +111,9 @@ metadati. Nessun testo essenziale va affidato solo al colore.
 - body UI e controlli: `Instrument Sans`
 - testo giapponese, lemma e furigana: `BIZ UDPGothic`
 
-Questa combinazione e realistica in Next.js con `next/font/google`, evita
-l'effetto template e mantiene il giapponese piu leggibile del testo italiano.
+Questa combinazione e implementata con font self-hosted via `@fontsource` /
+`@fontsource-variable`, evita fetch esterni in build e mantiene il giapponese
+piu leggibile del testo italiano.
 
 ### Regole tipografiche
 
@@ -144,11 +147,12 @@ l'effetto template e mantiene il giapponese piu leggibile del testo italiano.
 
 ### Shell globale
 
-Per Task 06 lo shell raccomandato e:
+Lo shell implementato segue questa direzione:
 
 - desktop: top bar sottile e orizzontale, non sidebar fissa da applicazione
   gestionale;
-- mobile: bottom navigation con 5 destinazioni primarie;
+- mobile: header statico con brand e nav primaria compatta a griglia; non c'e
+  una bottom navigation separata;
 - contenuto su container centrale con grandi margini respiranti.
 
 Motivazione: una sidebar persistente farebbe sembrare il prodotto un backoffice.
@@ -327,7 +331,8 @@ Ridurre l'attrito decisionale e mantenere un ritmo calmo ma veloce.
 ### Navigazione
 
 - desktop: top bar con navigazione principale sempre visibile
-- mobile: bottom nav persistente per home, media, glossary, review, settings
+- mobile: navigazione primaria compatta sotto il brand, con link a Home, Media,
+  Glossary, Review, Kanji Clash, Katakana e Settings
 - nelle pagine interne del media la navigazione secondaria resta contestuale al
   media, non nella nav globale
 
@@ -398,7 +403,8 @@ al 70-80% viewport.
 
 ## Raccomandazioni implementative per Next.js
 
-- Caricare i font con `next/font/google` e mapparli a custom properties globali.
+- Caricare i font tramite i pacchetti `@fontsource*` importati in
+  `src/app/globals.css` e mapparli a custom properties globali.
 - Usare CSS custom properties come fonte unica per colori, spaziature e testo.
 - Rendere il testo lesson dentro `article` semantico; i token annotati devono
   essere elementi focusable.
@@ -410,6 +416,8 @@ al 70-80% viewport.
 ## Decisioni da mantenere stabili nei task successivi
 
 - top navigation desktop invece di sidebar globale;
+- nav primaria mobile nel normale flow dell'header, non bottom navigation
+  persistente;
 - bottom sheet come risposta mobile principale a tooltip e pannelli contestuali;
 - reader con rail lesson desktop e colonna di lettura stretta;
 - review session come modalita focalizzata, separata dal resto della UI;

@@ -696,6 +696,12 @@ Campi obbligatori:
 - `romaji`
 - `meaning_it`
 
+Vincolo editoriale:
+
+- `romaji` deve restare coerente con `reading`; nei termini compatti con
+  piccolo `っ/ッ` preserva la consonante doppia, per esempio `まって -> matte`
+  e `ひっこめる -> hikkomeru`.
+
 Campi opzionali:
 
 - `pos`
@@ -817,10 +823,14 @@ Regole:
   quindi evita kanji nudi e preferisci una descrizione italiana o una lettura
   in kana / katakana;
 - `caption`, se presente, supporta furigana e riferimenti semantici inline;
+- nel reader le immagini del textbook restano immagini classiche: click/tap
+  apre l'ingrandimento, non tooltip o sheet dedicati;
 - `caption` e testo visibile nel reader: se contiene kanji, annotali con
   furigana; se richiama una entry glossary / flashcard, collega il termine e
   annota anche il label visibile quando contiene kanji;
 - il blocco `image` e ammesso nel textbook, non nei file `cards/`.
+- `card_id`, se presente in contenuti legacy, viene ignorato e non va più
+  usato nei nuovi blocchi `image`.
 
 ## 9. Riferimenti semantici inline
 

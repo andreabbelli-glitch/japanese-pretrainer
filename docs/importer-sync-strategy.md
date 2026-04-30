@@ -34,6 +34,7 @@ L'importer popola o sincronizza:
 
 - `media`
 - `segment` derivato da `segment_ref`
+- `cross_media_group`
 - `lesson`
 - `lesson_content`
 - `term`
@@ -43,6 +44,7 @@ L'importer popola o sincronizza:
 - `entry_link`
 - `card`
 - `card_entry_link`
+- `review_subject_state` tramite riallineamento subject-level dopo il sync
 - `content_import`
 
 ## Strategia di sync
@@ -74,9 +76,10 @@ La policy e volutamente diversa per record content-owned e user-owned.
   le FK verso `segment` sono `ON DELETE SET NULL`; quindi un reimport deve
   rimuovere i segment non piu derivabili senza lasciare record fantasma.
 - `term`, `grammar_pattern`: prune controllato.
-  Motivazione: lo stato utente vive in `entry_status` senza FK hard verso le
-  entita canoniche, quindi i record possono essere rimossi dal glossary attivo
-  senza perdere l'override manuale.
+  Motivazione: lo stato SRS vive in `review_subject_state` senza FK hard verso
+  `term` o `grammar_pattern`, quindi i record possono essere rimossi dal
+  glossary attivo; se lo stesso subject torna in un import futuro, il sync
+  subject-level lo riallinea.
 - `term_alias`, `grammar_alias`, `entry_link`, `card_entry_link`: rigenerate per
   le sorgenti correnti; i link di card archiviate restano per non perdere
   contesto storico.
@@ -87,20 +90,22 @@ La policy e volutamente diversa per record content-owned e user-owned.
 
 - `review_subject_state`
 - `review_subject_log`
-- `entry_status`
 - `lesson_progress`
 - `user_setting`
 
 ### Garanzie
 
-- Nessuna di queste tabelle viene svuotata o ricalcolata dall'importer.
+- Nessuna di queste tabelle viene svuotata dall'importer.
+- `review_subject_state` viene pero riallineata dopo ogni sync contenuti per
+  materializzare subject mancanti, aggiornare l'identita canonica entry/group/card
+  e migrare eventuali subject key legacy senza perdere memoria FSRS.
 - Le card rimosse vengono archiviate, non cancellate, quindi
   `review_subject_state` e `review_subject_log` restano intatti.
 - Le lesson rimosse vengono archiviate, non cancellate, quindi
   `lesson_progress` resta intatto.
 - Le entry rimosse (`term`, `grammar_pattern`) vengono prunate dal contenuto
-  attivo ma `entry_status` resta nel DB, pronto a riagganciarsi se lo stesso
-  stable ID torna in un import futuro.
+  attivo. Gli stati review subject-level restano protetti e vengono
+  riallineati dal sync canonico quando il materiale torna eleggibile.
 
 ## Segmenti
 

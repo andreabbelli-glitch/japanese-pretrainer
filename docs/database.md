@@ -100,7 +100,6 @@ Tabelle incluse nel perimetro del task:
 - `entry_link`
 - `card`
 - `card_entry_link`
-- `entry_status`
 - `review_subject_state`
 - `review_subject_log`
 - `kanji_clash_pair_state`
@@ -110,8 +109,11 @@ Tabelle incluse nel perimetro del task:
 - `kanji_clash_manual_contrast_round_log`
 - `katakana_item_state`
 - `katakana_session`
+- `katakana_exercise_block`
 - `katakana_trial`
 - `katakana_attempt_log`
+- `katakana_exercise_result`
+- `katakana_confusion_edge`
 - `lesson_progress`
 - `user_setting`
 - `content_import`
@@ -131,8 +133,10 @@ Tabelle incluse nel perimetro del task:
 - `cross_media_group` non sostituisce le entry locali: recupera le occorrenze
   del media e permette a glossary/review di mostrare una sola voce canonica con
   `meaning_it`, `notes_it`, audio, esempi e lesson locali.
-- `entry_status` e il modello review restano separati per tenere distinti
-  override manuali di entita e stato SRS.
+- Non esiste una tabella `entry_status` separata. Override manuali e
+  sospensioni sono modellati nel subject-level review state tramite
+  `review_subject_state.manual_override`, `review_subject_state.suspended` e
+  stati espliciti come `known_manual`.
 - I riferimenti polimorfici (`entry_type + entry_id`, `source_type + source_id`)
   non usano false foreign key; per `entry_id` il valore persistito e la chiave
   tecnica interna della entry, mentre il routing pubblico continua a usare

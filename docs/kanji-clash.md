@@ -243,10 +243,13 @@ Rappresenta il contrasto canonico unordered segnalato manualmente:
 
 - chiave `contrastKey` unordered, costruita sugli endpoint canonici dei due
   subject;
-- estremi canonici della coppia;
-- `source` (`review_confusion` / forced manual flow);
-- `status` archivistico (`active` o `archived`);
-- metadata di conferma (`timesConfirmed`, `lastConfirmedAt`, `lastForcedAt`).
+- estremi canonici della coppia (`subjectAKey`, `subjectBKey`);
+- `source` (`manual` per inserimenti diretti futuri, `forced` per il flusso
+  Review -> Kanji Clash);
+- `status` archivistico (`active`, `suspended` o `archived`);
+- metadata di conferma (`timesConfirmed`, `lastConfirmedAt`, `lastForcedAt`) e
+  `forcedDueAt`, usato per riportare subito il contrasto in queue dopo
+  segnalazione o restore.
 
 Questa tabella non e` un log di risposta: esiste per dedupe, archivio,
 riattivazione e soppressione del candidate automatico equivalente.
@@ -255,11 +258,12 @@ riattivazione e soppressione del candidate automatico equivalente.
 
 Rappresenta invece il round direzionale schedulato:
 
-- chiave `contrastCardKey` / `roundKey` distinta per direzione;
+- chiave `roundKey` distinta per direzione;
 - `contrastKey` unordered di appartenenza;
-- `targetEndpointKey` e `distractorEndpointKey`;
+- `direction` (`subject_a` o `subject_b`);
+- `targetSubjectKey`, `leftSubjectKey` e `rightSubjectKey`;
 - stato SRS e `dueAt` per singola direzione;
-- eventuale `forcedDueAt` o reset `due-now` quando il contrasto viene appena
+- reset `due-now` su entrambe le direzioni quando il contrasto viene appena
   segnalato o ripristinato.
 
 La separazione e` intenzionale: una sola pair state unordered non basta a
@@ -449,6 +453,7 @@ dei nuovi della review standard.
 I `forced manual contrast` hanno un lifecycle archivistico esplicito:
 
 - `active`: il contrasto puo` entrare in queue;
+- `suspended`: il contrasto resta visibile nel riepilogo ma non viene queueato;
 - `archived`: entrambe le direzioni spariscono dalla queue;
 - `restore`: il contrasto torna `active` e rientra `due-now`.
 

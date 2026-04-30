@@ -19,7 +19,7 @@ Legenda rapida:
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│ Top bar: logo | Home | Media | Review | Settings                 Profilo    │
+│ Top bar: logo | Home | Media | Glossary | Review | Kanji | Katakana | Settings │
 └──────────────────────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────── Oggi sul tavolo ─────────────────────┬───────────┐
@@ -74,7 +74,7 @@ Legenda rapida:
 └────────────────────────────┘
 
 ┌────────────────────────────┐
-│ Bottom nav: Home Media Review Settings │
+│ Nav mobile sotto header: Home Media Glossary Review Kanji Katakana Settings │
 └────────────────────────────┘
 ```
 

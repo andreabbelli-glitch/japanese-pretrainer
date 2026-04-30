@@ -22,7 +22,7 @@
 - Dashboard: compare `Duel Masters`, con CTA per riprendere studio e review.
 - Libreria media: `Duel Masters` e `Mobile Suit Gundam Arsenal Base` sono entrambi visibili con metriche sintetiche coerenti.
 - Ogni media attivo in `content/media` apre senza errori almeno `detail`,
-  `textbook`, `review` e il redirect `progress`; la CTA `Glossary` porta al
+  `textbook`, `review` e `progress`; la CTA `Glossary` porta al
   glossary globale filtrato per media.
 - Glossary globale `/glossary`: ricerca cross-media navigabile e coerente con
   il filtro `media=<slug>`.
@@ -216,5 +216,5 @@
 
 - Desktop: reader con rail sticky e tooltip leggibile.
 - Mobile: reader e glossary restano leggibili senza zoom orizzontale.
-- Bottom navigation mobile non copre CTA o contenuto critico.
+- La nav mobile compatta sotto il brand non copre CTA o contenuto critico.
 - I messaggi principali sono coerenti con il tono editoriale del prodotto.

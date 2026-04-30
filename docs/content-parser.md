@@ -53,7 +53,9 @@ disponibile, `location.range`.
 ```ts
 import { parseMediaDirectory } from "@/lib/content";
 
-const result = await parseMediaDirectory("/abs/path/content/media/sample-anime");
+const result = await parseMediaDirectory(
+  "/abs/path/content/media/sample-anime"
+);
 
 if (!result.ok) {
   console.error(result.issues);
@@ -88,5 +90,5 @@ code `1` se trova issue di tipo `syntax`, `schema`, `reference` o `integrity`.
 - I blocchi `:::image` nei lesson sono validi solo se `src` punta a un file
   reale sotto `content/media/<slug>/assets/`.
 - I file cards sono volutamente strict: accettano solo blocchi strutturati.
-- Il payload e pensato per essere consumato dal Task 05 senza dover riparse-are
-  il Markdown grezzo.
+- Il payload e pensato per essere consumato direttamente da importer, renderer
+  e workflow di validazione senza dover riparsare il Markdown grezzo.

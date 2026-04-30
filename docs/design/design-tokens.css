@@ -1,11 +1,12 @@
 :root {
   /* Font families */
-  --font-family-display: "Newsreader", "Iowan Old Style", "Palatino Linotype",
-    serif;
-  --font-family-ui: "Instrument Sans", "Avenir Next", "Segoe UI", sans-serif;
+  --font-family-display:
+    "Newsreader", "Iowan Old Style", "Palatino Linotype", serif;
+  --font-family-ui:
+    "Instrument Sans Variable", "Avenir Next", "Segoe UI", sans-serif;
   --font-family-jp: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", sans-serif;
-  --font-family-mono: "SFMono-Regular", "SF Mono", "Cascadia Code",
-    "Roboto Mono", monospace;
+  --font-family-mono:
+    "SFMono-Regular", "SF Mono", "Cascadia Code", "Roboto Mono", monospace;
 
   /* Warm neutral palette */
   --color-canvas: #f2ece1;
