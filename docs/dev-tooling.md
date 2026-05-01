@@ -158,11 +158,17 @@ flag blocca solo il job automatico schedulato.
 `FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS` puo ridurre o estendere il timeout di ogni
 training preset; se non e impostato resta il default runtime di `5000ms`.
 
-`fsrs:optimize:if-needed` e il comando da schedulare esternamente una volta al
-giorno. Il comando fa no-op finche non sono passati almeno `30` giorni
+`fsrs:optimize:if-needed` e il comando CLI per eseguire manualmente lo stesso
+gate. Il comando fa no-op finche non sono passati almeno `30` giorni
 dall'ultimo training riuscito oppure non ci sono almeno `500` review nuove
-eleggibili. La schedulazione vera resta fuori dal repo: usare `cron`,
-`launchd`, `systemd` o automazioni Codex.
+eleggibili.
+
+In produzione il job e registrato in `vercel.json`: Vercel Cron chiama una
+volta al giorno `/api/internal/fsrs-optimizer/run`, che richiede
+`Authorization: Bearer $CRON_SECRET` e usa il `DATABASE_URL` canonico del
+runtime. Su Hobby la schedulazione giornaliera rientra nei limiti free; l'orario
+cron e in UTC e puo essere invocato da Vercel entro la finestra oraria prevista
+dal piano.
 
 Workflow dataset `Kanji Clash` per kanji simili:
 

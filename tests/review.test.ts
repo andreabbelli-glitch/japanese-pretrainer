@@ -1874,7 +1874,8 @@ describe("review system", () => {
       await database
         .update(card)
         .set({
-          front: "{{語彙|ごい}}"
+          front: "{{語彙|ごい}}",
+          back: "lessico; in `{{語彙|ごい}}` indica il vocabolario"
         })
         .where(eq(card.id, developmentFixture.primaryCardId));
 
@@ -1882,7 +1883,8 @@ describe("review system", () => {
         getReviewPageData(
           developmentFixture.mediaSlug,
           {
-            card: developmentFixture.primaryCardId
+            card: developmentFixture.primaryCardId,
+            show: "answer"
           },
           database
         ),
@@ -1907,10 +1909,16 @@ describe("review system", () => {
         'review-stage__front jp-inline"><ruby class="app-ruby">'
       );
       expect(reviewMarkup).not.toContain("{{語彙|ごい}}");
+      expect(reviewMarkup).toContain(
+        'review-stage__back">lessico; in <code class="jp-inline"><ruby class="app-ruby">'
+      );
       expect(detailMarkup).toContain(
         'glossary-entry-hero__title jp-inline"><ruby class="app-ruby">'
       );
       expect(detailMarkup).not.toContain("{{語彙|ごい}}");
+      expect(detailMarkup).toContain(
+        'glossary-entry-hero__meaning">lessico; in <code class="jp-inline"><ruby class="app-ruby">'
+      );
     });
 
     it("preserves a review return target on the detail page when provided", async () => {

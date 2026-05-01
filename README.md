@@ -84,15 +84,16 @@ la mutazione in background. Se il submit fallisce, il client ripristina la card
 precedente e mostra l'errore senza perdere il contesto della sessione.
 
 Lo scheduler FSRS supporta anche parametri ottimizzati sui log reali. Il
-training e volutamente esterno al runtime Next.js: il comando canonico e
-`pnpm fsrs:optimize:if-needed`, pensato per essere eseguito da `cron`,
-`launchd`, `systemd` o da un'automazione Codex. Il gate interno allena al
-massimo una volta ogni `30` giorni e solo dopo almeno `500` review eleggibili
-nuove, segmentando i parametri in due preset per `cardType`:
-`recognition` e `concept`. La pagina `/settings` mostra in sola lettura lo
-stato corrente dell'optimizer e dei preset salvati in `user_setting`.
-`FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS` puo essere impostato per cambiare il
-timeout per-preset del training CLI, altrimenti resta il default di `5000ms`.
+training automatico vive fuori dal runtime interattivo dell'app: in produzione
+Vercel Cron chiama ogni giorno `/api/internal/fsrs-optimizer/run`, protetta da
+`CRON_SECRET`, e l'endpoint esegue lo stesso gate di
+`pnpm fsrs:optimize:if-needed`. Il gate interno allena al massimo una volta ogni
+`30` giorni e solo dopo almeno `500` review eleggibili nuove, segmentando i
+parametri in due preset per `cardType`: `recognition` e `concept`. La pagina
+`/settings` mostra in sola lettura lo stato corrente dell'optimizer e dei preset
+salvati in `user_setting`. `FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS` puo essere
+impostato per cambiare il timeout per-preset del training CLI/server, altrimenti
+resta il default di `5000ms`.
 
 ## Kanji Clash
 
@@ -357,6 +358,7 @@ Per un deploy pubblico conviene invece impostare almeno:
   solo se l'hosting garantisce persistenza del filesystem;
 - `DATABASE_AUTH_TOKEN` oppure `LIBSQL_AUTH_TOKEN` se il provider `libsql`
   richiede un token;
+- `CRON_SECRET` per proteggere l'endpoint Vercel Cron dell'optimizer FSRS;
 - `AUTH_USERNAME`, `AUTH_SESSION_SECRET` e una tra `AUTH_PASSWORD_HASH` o
   `AUTH_PASSWORD` per attivare il login minimale dell'app.
 

@@ -156,7 +156,9 @@ export function ReviewPageStage({
                     {selectedCard.reading}
                   </p>
                 ) : null}
-                <p className="review-stage__back">{selectedCard.back}</p>
+                <p className="review-stage__back">
+                  {renderFurigana(selectedCard.back)}
+                </p>
                 {fullSelectedCard && fullSelectedCard.pronunciations.length > 0 ? (
                   <div className="stack-list stack-list--tight">
                     {showCompactPronunciation ? (

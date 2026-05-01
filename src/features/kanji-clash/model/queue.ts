@@ -321,7 +321,9 @@ function summarizeSelectedCandidates(
   let dueCount = 0;
   let newQueuedCount = 0;
   let reserveCount = 0;
-  const rounds = selectedCandidates.map((candidate, index) => {
+  const orderedCandidates =
+    diversifyAdjacentKanjiClashCandidates(selectedCandidates);
+  const rounds = orderedCandidates.map((candidate, index) => {
     switch (candidate.source) {
       case "due":
         dueCount += 1;
@@ -343,6 +345,145 @@ function summarizeSelectedCandidates(
     reserveCount,
     rounds
   };
+}
+
+function diversifyAdjacentKanjiClashCandidates(
+  candidates: KanjiClashQueuedCandidate[]
+): KanjiClashQueuedCandidate[] {
+  if (candidates.length < 3) {
+    return candidates;
+  }
+
+  const diversifiedCandidates: KanjiClashQueuedCandidate[] = [];
+  let blockStart = 0;
+
+  while (blockStart < candidates.length) {
+    const source = candidates[blockStart]!.source;
+    let blockEnd = blockStart + 1;
+
+    while (
+      blockEnd < candidates.length &&
+      candidates[blockEnd]!.source === source
+    ) {
+      blockEnd += 1;
+    }
+
+    diversifiedCandidates.push(
+      ...diversifySameSourceKanjiClashCandidates(
+        candidates.slice(blockStart, blockEnd),
+        blockStart
+      )
+    );
+    blockStart = blockEnd;
+  }
+
+  return diversifiedCandidates;
+}
+
+function diversifySameSourceKanjiClashCandidates(
+  candidates: KanjiClashQueuedCandidate[],
+  outputStartIndex: number
+): KanjiClashQueuedCandidate[] {
+  if (candidates.length < 3) {
+    return candidates;
+  }
+
+  const remaining = candidates.map((candidate, originalIndex) => ({
+    candidate,
+    originalIndex,
+  }));
+  const diversified: KanjiClashQueuedCandidate[] = [];
+
+  while (remaining.length > 0) {
+    const previousTarget =
+      diversified.length > 0
+        ? getKanjiClashQueuedCandidateTargetSubjectKey(
+            diversified[diversified.length - 1]!,
+            outputStartIndex + diversified.length - 1
+          )
+        : null;
+    const nextIndex = findNextDiversifiedCandidateIndex(
+      remaining,
+      previousTarget,
+      outputStartIndex + diversified.length
+    );
+    const [next] = remaining.splice(nextIndex, 1);
+
+    diversified.push(next!.candidate);
+  }
+
+  return diversified;
+}
+
+function findNextDiversifiedCandidateIndex(
+  candidates: Array<{
+    candidate: KanjiClashQueuedCandidate;
+    originalIndex: number;
+  }>,
+  previousTarget: string | null,
+  outputIndex: number
+) {
+  const targetCounts = new Map<string, number>();
+
+  for (const candidate of candidates) {
+    const targetSubjectKey = getKanjiClashQueuedCandidateTargetSubjectKey(
+      candidate.candidate,
+      outputIndex
+    );
+
+    targetCounts.set(
+      targetSubjectKey,
+      (targetCounts.get(targetSubjectKey) ?? 0) + 1
+    );
+  }
+
+  let bestIndex = 0;
+  let bestCount = -1;
+
+  for (let index = 0; index < candidates.length; index += 1) {
+    const candidate = candidates[index]!;
+    const targetSubjectKey = getKanjiClashQueuedCandidateTargetSubjectKey(
+      candidate.candidate,
+      outputIndex
+    );
+
+    if (
+      previousTarget &&
+      targetSubjectKey === previousTarget &&
+      candidates.some(
+        (current) =>
+          getKanjiClashQueuedCandidateTargetSubjectKey(
+            current.candidate,
+            outputIndex
+          ) !== previousTarget
+      )
+    ) {
+      continue;
+    }
+
+    const count = targetCounts.get(targetSubjectKey) ?? 0;
+
+    if (
+      count > bestCount ||
+      (count === bestCount &&
+        candidate.originalIndex < candidates[bestIndex]!.originalIndex)
+    ) {
+      bestIndex = index;
+      bestCount = count;
+    }
+  }
+
+  return bestIndex;
+}
+
+function getKanjiClashQueuedCandidateTargetSubjectKey(
+  queuedCandidate: KanjiClashQueuedCandidate,
+  index: number
+) {
+  return materializeKanjiClashSessionRound(
+    queuedCandidate,
+    index
+  ).targetSubjectKey;
 }
 
 function resolveKanjiClashRoundSource(

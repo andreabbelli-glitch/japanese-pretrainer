@@ -368,4 +368,71 @@ describe("kanji clash queue builder", () => {
     });
     expect(queue.rounds[0]?.targetSubjectKey).toBe(beta.subjectKey);
   });
+
+  it("interleaves due manual rounds when the same target would repeat consecutively", () => {
+    const alpha = makeSubject({
+      kanji: ["分"],
+      label: "分かる",
+      reading: "わかる",
+      subjectKey: "entry:term:alpha"
+    });
+    const beta = makeSubject({
+      kanji: ["分", "解"],
+      label: "分解",
+      reading: "ぶんかい",
+      subjectKey: "entry:term:beta"
+    });
+    const gamma = makeSubject({
+      kanji: ["分", "離"],
+      label: "分離",
+      reading: "ぶんり",
+      subjectKey: "entry:term:gamma"
+    });
+    const alphaBeta = buildKanjiClashCandidate(alpha, beta);
+    const alphaGamma = buildKanjiClashCandidate(alpha, gamma);
+    const betaGamma = buildKanjiClashCandidate(beta, gamma);
+
+    if (!alphaBeta || !alphaGamma || !betaGamma) {
+      throw new Error("Missing manual contrast diversification fixture.");
+    }
+
+    const queue = buildKanjiClashQueueSnapshot({
+      candidates: [
+        withManualTarget(alphaBeta, alpha),
+        withManualTarget(alphaGamma, alpha),
+        withManualTarget(betaGamma, beta)
+      ],
+      mode: "manual",
+      now: "2026-04-09T10:00:00.000Z",
+      requestedSize: 3,
+      scope: "global"
+    });
+
+    expect(queue.rounds.map((round) => round.targetSubjectKey)).toEqual([
+      alpha.subjectKey,
+      beta.subjectKey,
+      alpha.subjectKey
+    ]);
+  });
 });
+
+function withManualTarget(
+  candidate: NonNullable<ReturnType<typeof buildKanjiClashCandidate>>,
+  target: KanjiClashEligibleSubject
+) {
+  return {
+    ...candidate,
+    roundOverride: {
+      origin: {
+        contrastKey: candidate.pairKey,
+        direction:
+          target.subjectKey === candidate.leftSubjectKey
+            ? ("subject_a" as const)
+            : ("subject_b" as const),
+        type: "manual-contrast" as const
+      },
+      roundKey: `${candidate.pairKey}::target:${target.subjectKey}`,
+      targetSubjectKey: target.subjectKey
+    }
+  };
+}

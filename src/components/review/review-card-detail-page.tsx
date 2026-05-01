@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Route } from "next";
 
-import { renderFurigana } from "@/lib/render-furigana";
+import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
 import {
   appendReturnToParam,
   buildReviewSessionHref,
@@ -50,7 +50,7 @@ export function ReviewCardDetailPage({
         backLabel="Torna alla Review"
         eyebrow="Card"
         title={renderFurigana(data.card.front)}
-        summary={data.card.back}
+        summary={stripInlineMarkdown(data.card.back)}
         meta={
           <>
             <span>{data.card.reviewLabel}</span>
@@ -86,7 +86,9 @@ export function ReviewCardDetailPage({
               {data.card.reading}
             </p>
           ) : null}
-          <p className="glossary-entry-hero__meaning">{data.card.back}</p>
+          <p className="glossary-entry-hero__meaning">
+            {renderFurigana(data.card.back)}
+          </p>
           <p className="glossary-entry-hero__detail">
             Tipo: {data.card.typeLabel}
           </p>

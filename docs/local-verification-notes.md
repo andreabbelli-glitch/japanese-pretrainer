@@ -185,6 +185,8 @@ specifico, ma non conta come matrice ufficiale di verifica.
   verificare che l'empty state dedicato non sembri una review locale vuota.
 - Le performance sono verificate solo a livello locale/percepito, non con budget automatizzati.
 - Il prodotto resta single-user e locale-first; non include hardening per esposizione remota.
-- Il training automatico FSRS dipende da una schedulazione esterna del comando
-  `./scripts/with-node.sh pnpm fsrs:optimize:if-needed`; il repo non avvia job
-  periodici in autonomia.
+- Il training automatico FSRS in produzione dipende da Vercel Cron, configurato
+  in `vercel.json` sulla route `/api/internal/fsrs-optimizer/run`. La route
+  richiede `CRON_SECRET` e usa il `DATABASE_URL` remoto del runtime. In locale lo
+  stesso gate puo essere verificato con
+  `./scripts/with-node.sh pnpm fsrs:optimize:if-needed`.

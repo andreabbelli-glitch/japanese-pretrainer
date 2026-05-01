@@ -1,4 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "crons": [
+    {
+      "path": "/api/internal/fsrs-optimizer/run",
+      "schedule": "0 3 * * *"
+    }
+  ]
 }
