@@ -12,6 +12,7 @@ import {
 
 const INTERNAL_CONTENT_CACHE_REVALIDATE_PATH =
   "/api/internal/content-cache/revalidate";
+const INTERNAL_FSRS_OPTIMIZER_RUN_PATH = "/api/internal/fsrs-optimizer/run";
 
 export function proxy(request: NextRequest) {
   const config = getAuthConfig();
@@ -29,6 +30,8 @@ export function proxy(request: NextRequest) {
   const isLoginPage = isLoginPath(pathname);
   const isInternalContentCacheRevalidate =
     pathname === INTERNAL_CONTENT_CACHE_REVALIDATE_PATH;
+  const isInternalFsrsOptimizerRun =
+    pathname === INTERNAL_FSRS_OPTIMIZER_RUN_PATH;
   const sessionToken = request.cookies.get(AUTH_SESSION_COOKIE)?.value;
   const isAuthenticated = hasValidSessionToken(sessionToken);
 
@@ -36,7 +39,12 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  if (isLoginPage || isAuthenticated || isInternalContentCacheRevalidate) {
+  if (
+    isLoginPage ||
+    isAuthenticated ||
+    isInternalContentCacheRevalidate ||
+    isInternalFsrsOptimizerRun
+  ) {
     return continueRequest(requestHeaders);
   }
 
