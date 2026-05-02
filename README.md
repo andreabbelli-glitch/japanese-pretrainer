@@ -88,12 +88,13 @@ training automatico vive fuori dal runtime interattivo dell'app: in produzione
 Vercel Cron chiama ogni giorno `/api/internal/fsrs-optimizer/run`, protetta da
 `CRON_SECRET`, e l'endpoint esegue lo stesso gate di
 `pnpm fsrs:optimize:if-needed`. Il gate interno allena al massimo una volta ogni
-`30` giorni e solo dopo almeno `500` review eleggibili nuove, segmentando i
-parametri in due preset per `cardType`: `recognition` e `concept`. La pagina
-`/settings` mostra in sola lettura lo stato corrente dell'optimizer e dei preset
-salvati in `user_setting`. `FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS` puo essere
-impostato per cambiare il timeout per-preset del training CLI/server, altrimenti
-resta il default di `5000ms`.
+`30` giorni e solo quando le review eleggibili nuove raggiungono
+`min(3000, max(500, 25% del training precedente))`, segmentando i parametri in
+due preset per `cardType`: `recognition` e `concept`. La pagina `/settings`
+mostra in sola lettura lo stato corrente dell'optimizer, la soglia dinamica
+corrente e i preset salvati in `user_setting`. `FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS`
+puo essere impostato per cambiare il timeout per-preset del training CLI/server,
+altrimenti resta il default di `5000ms`.
 
 ## Kanji Clash
 

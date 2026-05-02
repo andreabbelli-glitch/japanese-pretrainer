@@ -43,7 +43,7 @@ export function FsrsOptimizerStatusPanel({
         <p className="settings-panel__body">
           Review nuove accumulate:{" "}
           <strong>{status.newEligibleReviews}</strong>
-          {` / ${status.config.minNewReviews} minime`}
+          {` / ${status.nextTrainingNewReviewThreshold} minime`}
         </p>
         <p className="settings-panel__body">
           Ultimo check:{" "}

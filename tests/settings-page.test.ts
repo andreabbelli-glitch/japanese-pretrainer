@@ -137,6 +137,7 @@ function buildFsrsOptimizerStatus(
       ...overrides
     },
     newEligibleReviews: 42,
+    nextTrainingNewReviewThreshold: 500,
     presets: {
       concept: {
         desiredRetention: 0.9,

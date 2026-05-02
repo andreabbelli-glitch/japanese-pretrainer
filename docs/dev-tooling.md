@@ -160,8 +160,12 @@ training preset; se non e impostato resta il default runtime di `5000ms`.
 
 `fsrs:optimize:if-needed` e il comando CLI per eseguire manualmente lo stesso
 gate. Il comando fa no-op finche non sono passati almeno `30` giorni
-dall'ultimo training riuscito oppure non ci sono almeno `500` review nuove
-eleggibili.
+dall'ultimo training riuscito oppure non ci sono abbastanza review nuove
+eleggibili. La soglia review e dinamica:
+`min(3000, max(500, 25% delle review usate nell'ultimo training riuscito))`.
+Questa policy mantiene un floor minimo nelle prime fasi, cresce con il dataset
+quando il segnale storico e ancora piccolo, e applica un cap per non rendere il
+retrain troppo raro quando la cronologia diventa grande.
 
 In produzione il job e registrato in `vercel.json`: Vercel Cron chiama una
 volta al giorno `/api/internal/fsrs-optimizer/run`, che richiede

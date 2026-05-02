@@ -30,6 +30,7 @@ describe("settings route", () => {
         presetStrategy: "card_type_v1"
       },
       newEligibleReviews: 42,
+      nextTrainingNewReviewThreshold: 500,
       presets: {
         concept: {
           desiredRetention: 0.9,

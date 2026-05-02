@@ -214,6 +214,83 @@ describe("fsrs optimizer", () => {
     expect(snapshot.state.newEligibleReviewsSinceLastTraining).toBe(400);
   });
 
+  it("uses the configured minimum as the dynamic review gate floor", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 300,
+      recognitionLogCount: 300
+    });
+    await writeFsrsOptimizerState(
+      {
+        bindingVersion: "0.3.0",
+        lastAttemptAt: "2026-02-01T10:00:00.000Z",
+        lastCheckAt: "2026-02-01T10:00:00.000Z",
+        lastSuccessfulTrainingAt: "2026-02-01T10:00:00.000Z",
+        lastTrainingError: null,
+        newEligibleReviewsSinceLastTraining: 0,
+        totalEligibleReviewsAtLastTraining: 200
+      },
+      database
+    );
+
+    const status = await getFsrsOptimizerStatus(database);
+
+    expect(status.newEligibleReviews).toBe(400);
+    expect(status.nextTrainingNewReviewThreshold).toBe(500);
+  });
+
+  it("raises the dynamic review gate to 25 percent of the last training size", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 450,
+      recognitionLogCount: 450
+    });
+    await writeFsrsOptimizerState(
+      {
+        bindingVersion: "0.3.0",
+        lastAttemptAt: "2026-02-01T10:00:00.000Z",
+        lastCheckAt: "2026-02-01T10:00:00.000Z",
+        lastSuccessfulTrainingAt: "2026-02-01T10:00:00.000Z",
+        lastTrainingError: null,
+        newEligibleReviewsSinceLastTraining: 0,
+        totalEligibleReviewsAtLastTraining: 2400
+      },
+      database
+    );
+
+    const result = await runTestFsrsOptimizer({
+      database,
+      now: new Date("2026-04-01T09:00:00.000Z")
+    });
+    const status = await getFsrsOptimizerStatus(database);
+
+    expect(result).toMatchObject({
+      newEligibleReviews: 0,
+      reason: "insufficient-new-reviews",
+      status: "skipped",
+      totalEligibleReviews: 900
+    });
+    expect(status.nextTrainingNewReviewThreshold).toBe(600);
+  });
+
+  it("caps the dynamic review gate after the training history is large", async () => {
+    await writeFsrsOptimizerState(
+      {
+        bindingVersion: "0.3.0",
+        lastAttemptAt: "2026-02-01T10:00:00.000Z",
+        lastCheckAt: "2026-02-01T10:00:00.000Z",
+        lastSuccessfulTrainingAt: "2026-02-01T10:00:00.000Z",
+        lastTrainingError: null,
+        newEligibleReviewsSinceLastTraining: 0,
+        totalEligibleReviewsAtLastTraining: 40_000
+      },
+      database
+    );
+
+    const status = await getFsrsOptimizerStatus(database);
+
+    expect(status.newEligibleReviews).toBe(0);
+    expect(status.nextTrainingNewReviewThreshold).toBe(3000);
+  });
+
   it("preserves the training baseline after a no-trainable-data run", async () => {
     await seedFsrsFixture(database, {
       conceptLogCount: 1,

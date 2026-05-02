@@ -2989,6 +2989,7 @@ button.katakana-speed-ran-cell:disabled {
 .review-entry-card {
   display: grid;
   gap: var(--space-4);
+  min-width: 0;
 }
 
 .review-stage {
@@ -3006,6 +3007,7 @@ button.katakana-speed-ran-cell:disabled {
   align-items: start;
   justify-content: space-between;
   gap: var(--space-3);
+  min-width: 0;
 }
 
 .review-stage__chips,
@@ -3013,6 +3015,8 @@ button.katakana-speed-ran-cell:disabled {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .review-stage__position,
@@ -3028,6 +3032,7 @@ button.katakana-speed-ran-cell:disabled {
   display: grid;
   align-content: start;
   gap: var(--space-4);
+  min-width: 0;
   min-height: var(--review-card-min-height);
   padding: var(--space-5);
   border: 1px solid rgba(210, 197, 177, 0.72);
@@ -3060,11 +3065,26 @@ button.katakana-speed-ran-cell:disabled {
   line-height: var(--line-height-jp);
 }
 
+.review-stage__front.jp-inline,
+.review-stage__back {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: anywhere;
+}
+
+.review-stage__front.jp-inline .app-ruby,
+.review-stage__back .app-ruby {
+  overflow-wrap: anywhere;
+}
+
 .review-stage__veil,
 .review-stage__answer,
 .review-sidebar__notice {
   display: grid;
   gap: var(--space-3);
+  min-width: 0;
   padding: var(--space-4);
   border: 1px solid rgba(192, 175, 150, 0.72);
   border-radius: var(--radius-lg);

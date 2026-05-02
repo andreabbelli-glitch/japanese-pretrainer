@@ -54,6 +54,7 @@ export type FsrsOptimizerStatus = {
   config: FsrsOptimizerConfig;
   state: FsrsOptimizerState;
   newEligibleReviews: number;
+  nextTrainingNewReviewThreshold: number;
   presets: Record<FsrsPresetKey, FsrsOptimizerPresetStatus>;
   totalEligibleReviews: number;
 };
@@ -134,6 +135,8 @@ const fsrsOptimizerRuntimeCacheKeySettingKeys = [
 ] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
 
 const FSRS_RUNTIME_CONTEXT_TTL_MS = 60_000;
+const FSRS_OPTIMIZER_NEW_REVIEW_RATIO = 0.25;
+const FSRS_OPTIMIZER_MAX_NEW_REVIEW_THRESHOLD = 3_000;
 
 const defaultFsrsOptimizerConfig: FsrsOptimizerConfig = {
   desiredRetention: 0.9,
@@ -192,6 +195,25 @@ export function buildReviewSeedStateWithFsrsPreset(
 
 export function getFsrsOptimizerConfigDefaults() {
   return defaultFsrsOptimizerConfig;
+}
+
+export function calculateFsrsOptimizerNewReviewThreshold(input: {
+  minNewReviews: number;
+  totalEligibleReviewsAtLastTraining: number;
+}) {
+  const floor = normalizePositiveInteger(
+    input.minNewReviews,
+    defaultFsrsOptimizerConfig.minNewReviews
+  );
+  const proportionalThreshold = Math.ceil(
+    normalizeNonNegativeInteger(input.totalEligibleReviewsAtLastTraining) *
+      FSRS_OPTIMIZER_NEW_REVIEW_RATIO
+  );
+
+  return Math.min(
+    FSRS_OPTIMIZER_MAX_NEW_REVIEW_THRESHOLD,
+    Math.max(floor, proportionalThreshold)
+  );
 }
 
 export function buildDefaultFsrsOptimizerSnapshot(): FsrsOptimizerSnapshot {
@@ -266,6 +288,11 @@ export async function getFsrsOptimizerStatus(
   return {
     config: snapshot.config,
     newEligibleReviews,
+    nextTrainingNewReviewThreshold: calculateFsrsOptimizerNewReviewThreshold({
+      minNewReviews: snapshot.config.minNewReviews,
+      totalEligibleReviewsAtLastTraining:
+        snapshot.state.totalEligibleReviewsAtLastTraining
+    }),
     presets: {
       concept: buildPresetStatus(
         "concept",

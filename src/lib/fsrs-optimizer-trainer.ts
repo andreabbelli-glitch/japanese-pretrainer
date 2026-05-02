@@ -7,6 +7,7 @@ import {
 import { db, type DatabaseClient } from "../db/index.ts";
 import {
   buildFsrsTrainingDataset,
+  calculateFsrsOptimizerNewReviewThreshold,
   countEligibleFsrsOptimizerReviews,
   getBindingPackageVersion,
   getFsrsOptimizerSnapshot,
@@ -54,6 +55,11 @@ export async function runFsrsOptimizer(
     totalEligibleReviews - snapshot.state.totalEligibleReviewsAtLastTraining,
     0
   );
+  const newReviewThreshold = calculateFsrsOptimizerNewReviewThreshold({
+    minNewReviews: snapshot.config.minNewReviews,
+    totalEligibleReviewsAtLastTraining:
+      snapshot.state.totalEligibleReviewsAtLastTraining
+  });
 
   await writeFsrsOptimizerConfig(snapshot.config, database, nowIso);
 
@@ -96,7 +102,7 @@ export async function runFsrsOptimizer(
     };
   }
 
-  if (!input.force && newEligibleReviews < snapshot.config.minNewReviews) {
+  if (!input.force && newEligibleReviews < newReviewThreshold) {
     await writeSkippedFsrsOptimizerState({
       database,
       nowIso,
