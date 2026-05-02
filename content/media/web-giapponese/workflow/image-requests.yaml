@@ -496,3 +496,98 @@ requests:
       non è solo ottenuto come item, ma entra tra i membri disponibili.
     notes: >-
       Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: dragon-quest-smash-grow-star3-reroll-fukubiki
+    lesson_slug: 080-dragon-quest-smash-grow-reroll-hard-mode-and-weapon-enhancement
+    anchor: "La CTA spiega che laふくびき si può rifare finché non esce l'arma voluta."
+    kind: game-screen
+    priority: high
+    placement_rationale: >-
+      Va nel contesto iniziale, perché mostra insieme testo grande, badge di
+      reroll e pulsante `{{1回|いっかい}} ふくびき`.
+    visual_goal: >-
+      Rendere leggibili `好きな★3ぶきが出るまで`,
+      `何度でも引き直せる`, `引き直し可能` e `ふくびき` nella stessa schermata.
+    source_preference: >-
+      Screenshot fornito dall'utente come file locale
+      /Users/abelli/Downloads/IMG_1178.jpg.
+    capture_instructions: >-
+      Usa lo screenshot così com'è, senza crop: il testo in alto e il pulsante
+      in basso servono entrambi per leggere il flusso dellaふくびき.
+    must_show: >-
+      `好きな★3ぶきが出るまで`, `何度でも引き直せる`,
+      `引き直し可能`, `1回`, `ふくびき` e il ticket posseduto.
+    avoid: >-
+      Ritagli che tagliano il titolo grande o il pulsante dellaふくびき.
+    alt_it: >-
+      Schermata Dragon Quest Smash Grow con gacha arma a tre stelle
+      rerollabile.
+    caption_it: >-
+      `{{好|す}}きな{{★3|ほしさん}}ぶきが{{出|で}}るまで` dà il limite del
+      reroll: continui finché non esce una [ぶき](term:term-buki) a
+      `{{★3|ほしさん}}` che vuoi davvero.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: dragon-quest-smash-grow-hard-mode-unlocked
+    lesson_slug: 080-dragon-quest-smash-grow-reroll-hard-mode-and-weapon-enhancement
+    anchor: "Il popup annuncia lo sblocco dell'hard mode e la comparsa di mostri più forti."
+    kind: game-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo la spiegazione del reroll, perché cambia dal sistema di
+      estrazione alla progressione di difficoltà.
+    visual_goal: >-
+      Rendere leggibile il titolo `ハードモードが解放されました` e la frase
+      esplicativa su mostri più forti in hard mode.
+    source_preference: >-
+      Screenshot fornito dall'utente come file locale
+      /Users/abelli/Downloads/IMG_1176.jpg.
+    capture_instructions: >-
+      Usa lo screenshot così com'è, mantenendo visibili titolo, immagine
+      centrale, testo esplicativo e pulsante `とじる`.
+    must_show: >-
+      `ハードモードが解放されました`,
+      `ハードモードではさらに強力なモンスターが出現` e `とじる`.
+    avoid: >-
+      Ritagli che tagliano il titolo o la frase esplicativa sotto l'immagine.
+    alt_it: >-
+      Popup di Dragon Quest Smash Grow che annuncia lo sblocco dell'hard mode.
+    caption_it: >-
+      `ハードモードが{{解放|かいほう}}されました` è un risultato già avvenuto; la
+      frase successiva spiega la conseguenza: mostri più
+      [{{強力|きょうりょく}}](term:term-kyouryoku) faranno
+      [{{出現|しゅつげん}}](term:term-shutsugen).
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: dragon-quest-smash-grow-weapon-enhancement-party
+    lesson_slug: 080-dragon-quest-smash-grow-reroll-hard-mode-and-weapon-enhancement
+    anchor: "La schermata mostra il titoloぶき強化 e le classi dei due personaggi."
+    kind: game-screen
+    priority: high
+    placement_rationale: >-
+      Va nella parte finale, perché collega il lessico del potenziamento al
+      party visibile e ai label di classe.
+    visual_goal: >-
+      Rendere leggibili `ぶき強化（かんたん）`, `戦士` e `魔法使い` mantenendo il
+      contesto della schermata di progressione.
+    source_preference: >-
+      Screenshot fornito dall'utente come file locale
+      /Users/abelli/Downloads/IMG_1174.PNG.
+    capture_instructions: >-
+      Usa lo screenshot così com'è: titolo, personaggi, classi e box di
+      risultato devono restare nello stesso frame.
+    must_show: >-
+      `ぶき強化（かんたん）`, `戦士`, `魔法使い`, i due personaggi e il box
+      risultato.
+    avoid: >-
+      Ritagli che perdono il titolo o i label di classe sotto i personaggi.
+    alt_it: >-
+      Schermata Dragon Quest Smash Grow con rafforzamento arma e due membri del
+      party.
+    caption_it: >-
+      Nel titolo `ぶき{{強化|きょうか}}（かんたん）`,
+      [{{強化|きょうか}}](term:term-kyouka) è il rafforzamento; sotto, i ruoli
+      [{{戦士|せんし}}](term:term-senshi) e
+      [{{魔法使|まほうつか}}い](term:term-mahoutsukai) identificano le classi dei
+      personaggi.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
