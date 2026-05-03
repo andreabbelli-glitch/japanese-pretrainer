@@ -3069,14 +3069,15 @@ button.katakana-speed-ran-cell:disabled {
 .review-stage__back {
   min-width: 0;
   max-width: 100%;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   word-break: normal;
-  line-break: anywhere;
+  line-break: auto;
 }
 
 .review-stage__front.jp-inline .app-ruby,
 .review-stage__back .app-ruby {
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .review-stage__veil,
