@@ -301,3 +301,36 @@ assets:
       personaggi.
     notes: >-
       Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: dragon-quest-smash-grow-auto-mode
+    src: assets/dragon-quest-smash-grow-auto-mode.jpg
+    source_type: screenshot
+    width: 1179
+    height: 1603
+    lesson_slug: 090-dragon-quest-smash-grow-auto-mode-and-new-legend
+    anchor: "Il tutorial spiega cosa succede quando si preme il pulsante Auto."
+    alt_it: >-
+      Schermata tutorial di Dragon Quest Smash Grow che spiega la funzione
+      auto.
+    caption_it: >-
+      `オートボタンを{{押|お}}すと` imposta la condizione: quando premi il
+      pulsante, [{{移動|いどう}}](term:term-idou) e `{{攻撃|こうげき}}` passano a
+      [{{自動|じどう}}](term:term-jidou).
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: dragon-quest-smash-grow-new-legend-dialogue
+    src: assets/dragon-quest-smash-grow-new-legend-dialogue.jpg
+    source_type: screenshot
+    width: 1179
+    height: 594
+    lesson_slug: 090-dragon-quest-smash-grow-auto-mode-and-new-legend
+    anchor: "Il robottino annuncia che una nuova leggenda sta per nascere."
+    alt_it: >-
+      Dialogo di Dragon Quest Smash Grow in cui il robottino annuncia una nuova
+      leggenda.
+    caption_it: >-
+      `{{生|う}}まれようとしてイル` usa
+      [〜ようとしている](grammar:grammar-you-to-shite-iru) per dire che la
+      [{{伝説|でんせつ}}](term:term-densetsu) è sul punto di nascere; `イル` in
+      katakana rende più meccanica la voce del personaggio.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.

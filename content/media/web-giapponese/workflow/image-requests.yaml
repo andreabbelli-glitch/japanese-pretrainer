@@ -591,3 +591,67 @@ requests:
       personaggi.
     notes: >-
       Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: dragon-quest-smash-grow-auto-mode
+    lesson_slug: 090-dragon-quest-smash-grow-auto-mode-and-new-legend
+    anchor: "Il tutorial spiega cosa succede quando si preme il pulsante Auto."
+    kind: game-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il contesto, perché mostra titolo, immagine esplicativa e
+      frase operativa della funzione auto nella stessa schermata.
+    visual_goal: >-
+      Rendere leggibili `オート機能`, `オートボタンを押すと`,
+      `移動と攻撃`, `自動で行う` e `オートモードに切り替わる`.
+    source_preference: >-
+      Screenshot fornito dall'utente come file locale
+      /Users/abelli/Downloads/IMG_1171.jpg.
+    capture_instructions: >-
+      Usa lo screenshot così com'è, senza crop: il pannello intero serve a
+      collegare titolo, icone Auto e frase esplicativa.
+    must_show: >-
+      `オート機能`, le due icone Auto, la freccia centrale, la frase
+      `オートボタンを押すと、移動と攻撃を自動で行う、オートモードに切り替わるぞ。`
+      e il pulsante `とじる`.
+    avoid: >-
+      Ritagli che perdono il titolo o la frase sotto l'immagine centrale.
+    alt_it: >-
+      Schermata tutorial di Dragon Quest Smash Grow che spiega la funzione
+      auto.
+    caption_it: >-
+      `オートボタンを{{押|お}}すと` imposta la condizione: quando premi il
+      pulsante, [{{移動|いどう}}](term:term-idou) e `{{攻撃|こうげき}}` passano a
+      [{{自動|じどう}}](term:term-jidou).
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: dragon-quest-smash-grow-new-legend-dialogue
+    lesson_slug: 090-dragon-quest-smash-grow-auto-mode-and-new-legend
+    anchor: "Il robottino annuncia che una nuova leggenda sta per nascere."
+    kind: game-screen
+    priority: high
+    placement_rationale: >-
+      Va accanto alla spiegazione narrativa, perché rende visibile il contrasto
+      tra lessico epico e scrittura meccanica di `イル`.
+    visual_goal: >-
+      Rendere leggibile la battuta `今 新しい伝説が 生まれようとしてイル！` e il
+      personaggio robotico che la pronuncia.
+    source_preference: >-
+      Screenshot fornito dall'utente come file locale
+      /Users/abelli/Downloads/IMG_1194.jpg.
+    capture_instructions: >-
+      Usa lo screenshot così com'è, mantenendo visibili il robottino, il box
+      dialogo e l'intera frase.
+    must_show: >-
+      Il personaggio robotico e la frase
+      `今 新しい伝説が 生まれようとしてイル！`.
+    avoid: >-
+      Crop che tagliano il personaggio o la scrittura finale `イル`.
+    alt_it: >-
+      Dialogo di Dragon Quest Smash Grow in cui il robottino annuncia una nuova
+      leggenda.
+    caption_it: >-
+      `{{生|う}}まれようとしてイル` usa
+      [〜ようとしている](grammar:grammar-you-to-shite-iru) per dire che la
+      [{{伝説|でんせつ}}](term:term-densetsu) è sul punto di nascere; `イル` in
+      katakana rende più meccanica la voce del personaggio.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
