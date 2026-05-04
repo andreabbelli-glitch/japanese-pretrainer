@@ -126,8 +126,8 @@ Workflow pronunce:
 
 `pronunciations:resolve` e il percorso operativo standard: seleziona i target
 da review, prossima lesson o pagina textbook, filtra le entry gia coperte,
-prova il riuso cross-media, esegue il fetch offline e manda a Forvo manuale
-solo il residuo. Aggiorna anche lo storico
+prova il riuso cross-media e manda a Forvo manuale solo il residuo. Aggiorna
+anche lo storico
 `data/forvo-requested-word-add.json`, marcando come `resolved` le entry per cui
 e' stato trovato un audio. `pronunciations:forvo` resta il comando low-level
 per batch mirati o debug del solo fallback manuale.

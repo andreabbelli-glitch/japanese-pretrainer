@@ -256,7 +256,7 @@ describe("pronunciation resolve", () => {
     ).toEqual(["term:term-kiku", "term:term-yomu"]);
   });
 
-  it("runs reuse, offline fetch, and Forvo only on the unresolved remainder", async () => {
+  it("runs reuse and Forvo only on the unresolved remainder", async () => {
     const bundle = await loadBundle(contentRoot, "sample-game");
     const selectedTargets: PronunciationTargetEntry[] = [
       createTarget(bundle, "term", "term-miru"),
@@ -275,23 +275,6 @@ describe("pronunciation resolve", () => {
           sourceEntryId: "term-taberu",
           sourceMediaSlug: "sample-anime",
           status: "reused" as const
-        }
-      ]
-    }));
-    const offlineSpy = vi.fn(async () => ({
-      matched: 1,
-      missed: 1,
-      results: [
-        {
-          entryId: "term-kiku",
-          fileTitle: "File:Ja-kiku.ogg",
-          kind: "term" as const,
-          status: "matched" as const
-        },
-        {
-          entryId: "term-yomu",
-          kind: "term" as const,
-          status: "miss" as const
         }
       ]
     }));
@@ -327,7 +310,6 @@ describe("pronunciation resolve", () => {
     const summary = await executePronunciationResolveForBundle({
       bundle,
       dryRun: false,
-      fetchOffline: offlineSpy,
       fetchForvoManual: forvoSpy,
       knownMissingEntryIds: new Set(),
       refreshBundleState: refreshSpy,
@@ -346,24 +328,15 @@ describe("pronunciation resolve", () => {
         ])
       })
     );
-    expect(offlineSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        onlyTargets: expect.arrayContaining([
-          expect.objectContaining({ id: "term-kiku" }),
-          expect.objectContaining({ id: "term-yomu" })
-        ])
-      })
-    );
     expect(forvoSpy).toHaveBeenCalledWith(
       expect.objectContaining({
-        entryIds: ["term-yomu"]
+        entryIds: ["term-kiku", "term-yomu"]
       })
     );
-    expect(refreshSpy).toHaveBeenCalledTimes(3);
+    expect(refreshSpy).toHaveBeenCalledTimes(2);
     expect(pendingSpy).toHaveBeenCalledOnce();
-    expect(summary.finalEntryIds).toEqual(["term-yomu"]);
+    expect(summary.finalEntryIds).toEqual(["term-kiku", "term-yomu"]);
     expect(summary.reuseSummary.reused).toBe(1);
-    expect(summary.offlineSummary.matched).toBe(1);
     expect(summary.forvoSummary?.matched).toBe(1);
   });
 
@@ -386,17 +359,6 @@ describe("pronunciation resolve", () => {
     await executePronunciationResolveForBundle({
       bundle,
       dryRun: true,
-      fetchOffline: vi.fn(async () => ({
-        matched: 0,
-        missed: 1,
-        results: [
-          {
-            entryId: "term-yomu",
-            kind: "term" as const,
-            status: "miss" as const
-          }
-        ]
-      })),
       fetchForvoManual: vi.fn(async () => ({
         knownMissingSkipped: [],
         matched: 0,
@@ -441,17 +403,6 @@ describe("pronunciation resolve", () => {
       reused: 0,
       results: []
     }));
-    const offlineSpy = vi.fn(async () => ({
-      matched: 0,
-      missed: 1,
-      results: [
-        {
-          entryId: "term-kiku",
-          kind: "term" as const,
-          status: "miss" as const
-        }
-      ]
-    }));
     const forvoSpy = vi.fn(async () => ({
       knownMissingSkipped: [],
       matched: 1,
@@ -471,7 +422,6 @@ describe("pronunciation resolve", () => {
     const summary = await executePronunciationResolveForBundle({
       bundle,
       dryRun: false,
-      fetchOffline: offlineSpy,
       fetchForvoManual: forvoSpy,
       knownMissingEntryIds: new Set(),
       refreshBundleState: vi.fn(async () => bundle),
@@ -499,11 +449,6 @@ describe("pronunciation resolve", () => {
         onlyTargets: [expect.objectContaining({ id: "term-kiku" })]
       })
     );
-    expect(offlineSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        onlyTargets: [expect.objectContaining({ id: "term-kiku" })]
-      })
-    );
     expect(forvoSpy).toHaveBeenCalledWith(
       expect.objectContaining({
         entryIds: ["term-kiku"]
@@ -519,17 +464,6 @@ describe("pronunciation resolve", () => {
     const summary = await executePronunciationResolveForBundle({
       bundle,
       dryRun: false,
-      fetchOffline: vi.fn(async () => ({
-        matched: 0,
-        missed: 1,
-        results: [
-          {
-            entryId: "term-yomu",
-            kind: "term" as const,
-            status: "miss" as const
-          }
-        ]
-      })),
       fetchForvoManual: forvoSpy,
       knownMissingEntryIds: new Set(["term:term-yomu"]),
       refreshBundleState: vi.fn(async () => bundle),
@@ -581,17 +515,6 @@ describe("pronunciation resolve", () => {
     const summary = await executePronunciationResolveForBundle({
       bundle,
       dryRun: false,
-      fetchOffline: vi.fn(async () => ({
-        matched: 0,
-        missed: 1,
-        results: [
-          {
-            entryId: "term-kiku",
-            kind: "term" as const,
-            status: "miss" as const
-          }
-        ]
-      })),
       fetchForvoManual: forvoSpy,
       knownMissingEntryIds: new Set(["term:term-yomu"]),
       limit: 1,
@@ -651,17 +574,6 @@ describe("pronunciation resolve", () => {
     const summary = await executePronunciationResolveForBundle({
       bundle,
       dryRun: false,
-      fetchOffline: vi.fn(async () => ({
-        matched: 0,
-        missed: 1,
-        results: [
-          {
-            entryId: "term-yomu",
-            kind: "term" as const,
-            status: "miss" as const
-          }
-        ]
-      })),
       fetchForvoManual: forvoSpy,
       knownMissingEntryIds: new Set(["term:term-yomu"]),
       refreshBundleState: vi.fn(async () => bundle),
@@ -1002,12 +914,10 @@ async function seedResolveDatabase(database: DatabaseClient) {
 
   await database.insert(term).values([
     {
-      audioAttribution:
-        "Test Native Speaker via Lingua Libre / Wikimedia Commons",
-      audioLicense: "CC BY-SA 4.0",
-      audioPageUrl:
-        "https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Test_Native_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg",
-      audioSource: "lingua_libre",
+      audioAttribution: "Test Native Speaker via Forvo",
+      audioLicense: "Forvo terms",
+      audioPageUrl: "https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%82%8B/#ja",
+      audioSource: "forvo",
       audioSpeaker: "Test Native Speaker",
       audioSrc: "assets/audio/term/term-taberu/term-taberu.ogg",
       createdAt: NOW,

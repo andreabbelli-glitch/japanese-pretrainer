@@ -237,8 +237,7 @@ Regole pratiche:
   `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --entry <new-term-or-grammar-id>`;
 - passa piu `--entry` per piu card nuove; usa `--word` o `--words-file` solo
   se non hai una lista affidabile di ID;
-- prima esegui il fetch offline;
-- poi, se restano mancanti, puoi usare il fallback Forvo.
+- usa il workflow Forvo locale solo dopo aver creato asset e metadata reali.
 
 ### 4. Valida localmente prima dell'import
 

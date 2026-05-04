@@ -9,7 +9,6 @@ import {
   resolvePronunciations,
   type PronunciationResolveMode
 } from "../src/lib/pronunciation-resolve.ts";
-import type { PronunciationFetchNetworkOptions } from "../src/lib/pronunciation.ts";
 
 type CliOptions = {
   contentRoot: string;
@@ -22,7 +21,6 @@ type CliOptions = {
   manualOpenUrls: boolean;
   mediaSlug?: string;
   mode?: PronunciationResolveMode;
-  network: PronunciationFetchNetworkOptions;
   openWordAddOnSkip: boolean;
   refresh: boolean;
   requestRegistryPath: string;
@@ -70,7 +68,6 @@ if (!options.openWordAddOnSkip) {
       limit: options.limit,
       mediaSlug: options.mediaSlug,
       mode: options.mode,
-      network: options.network,
       refresh: options.refresh,
       retryKnownMissing: options.retryKnownMissing
     });
@@ -81,7 +78,7 @@ if (!options.openWordAddOnSkip) {
 
     for (const summary of result.summaries) {
       console.info(
-        `${summary.bundle.mediaSlug}: selected=${summary.targets.length} reuse=${summary.execution.reuseSummary.reused} offline_matched=${summary.execution.offlineSummary.matched} offline_missed=${summary.execution.offlineSummary.missed} forvo_matched=${summary.execution.forvoSummary?.matched ?? 0} forvo_missed=${summary.execution.forvoSummary?.missed ?? 0} pending=${summary.execution.pendingSummary.pendingCount}`
+        `${summary.bundle.mediaSlug}: selected=${summary.targets.length} reuse=${summary.execution.reuseSummary.reused} forvo_matched=${summary.execution.forvoSummary?.matched ?? 0} forvo_missed=${summary.execution.forvoSummary?.missed ?? 0} pending=${summary.execution.pendingSummary.pendingCount}`
       );
 
       if (summary.lessonSlug) {
@@ -115,7 +112,6 @@ function parseCliOptions(argv: string[]): CliOptions {
     knownMissingPath: path.join("data", "forvo-known-missing.json"),
     manualDownloadsDir: path.join(os.homedir(), "Downloads"),
     manualOpenUrls: true,
-    network: {},
     openWordAddOnSkip: true,
     refresh: false,
     requestRegistryPath: path.join("data", "forvo-requested-word-add.json"),
@@ -178,56 +174,6 @@ function parseCliOptions(argv: string[]): CliOptions {
 
     if (argument === "--refresh") {
       options.refresh = true;
-      continue;
-    }
-
-    if (argument === "--request-delay-ms") {
-      const parsedDelay = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
-
-      if (Number.isFinite(parsedDelay) && parsedDelay >= 0) {
-        options.network.requestDelayMs = parsedDelay;
-      }
-
-      index += 1;
-      continue;
-    }
-
-    if (argument === "--request-timeout-ms") {
-      const parsedTimeout = Number.parseInt(
-        normalizedArgv[index + 1] ?? "",
-        10
-      );
-
-      if (Number.isFinite(parsedTimeout) && parsedTimeout >= 0) {
-        options.network.requestTimeoutMs = parsedTimeout;
-      }
-
-      index += 1;
-      continue;
-    }
-
-    if (argument === "--max-retries") {
-      const parsedRetries = Number.parseInt(
-        normalizedArgv[index + 1] ?? "",
-        10
-      );
-
-      if (Number.isFinite(parsedRetries) && parsedRetries >= 0) {
-        options.network.maxRetries = parsedRetries;
-      }
-
-      index += 1;
-      continue;
-    }
-
-    if (argument === "--retry-base-delay-ms") {
-      const parsedDelay = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
-
-      if (Number.isFinite(parsedDelay) && parsedDelay >= 0) {
-        options.network.retryBaseDelayMs = parsedDelay;
-      }
-
-      index += 1;
       continue;
     }
 

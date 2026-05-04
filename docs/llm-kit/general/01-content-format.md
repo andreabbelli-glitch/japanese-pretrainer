@@ -680,11 +680,11 @@ notes_it: >-
 level_hint: n5
 aliases: [たべる, taberu]
 audio_src: assets/audio/term/term-taberu/term-taberu.ogg
-audio_source: lingua_libre
+audio_source: forvo
 audio_speaker: Example Speaker
-audio_license: CC BY-SA 4.0
-audio_attribution: Example Speaker via Lingua Libre / Wikimedia Commons
-audio_page_url: https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Example_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg
+audio_license: Forvo terms
+audio_attribution: Example Speaker via Forvo
+audio_page_url: https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%82%8B/#ja
 :::
 ```
 
@@ -742,9 +742,9 @@ notes_it: >-
   Compare molto spesso nel parlato e nei testi descrittivi.
 level_hint: n4
 audio_src: assets/audio/grammar/grammar-teiru/grammar-teiru.mp3
-audio_source: wikimedia_commons
+audio_source: forvo
 audio_speaker: Example Speaker
-audio_license: CC BY 4.0
+audio_license: Forvo terms
 :::
 ```
 
@@ -889,9 +889,9 @@ Per ogni entry del glossary il sistema deve poter risalire a:
 
 ## 11.1 Manifest opzionale `pronunciations.json`
 
-Per l'enrichment offline e disponibile un manifest JSON opzionale nel root del
-bundle media. Serve soprattutto per salvare audio scaricato via CLI senza
-riscrivere i blocchi Markdown editoriali.
+Per le pronunce e' disponibile un manifest JSON opzionale nel root del bundle
+media. Serve soprattutto per salvare audio scaricato via CLI senza riscrivere i
+blocchi Markdown editoriali.
 
 Formato minimo:
 
@@ -903,11 +903,11 @@ Formato minimo:
       "entry_type": "grammar",
       "entry_id": "grammar-teiru",
       "audio_src": "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3",
-      "audio_source": "wikimedia_commons",
+      "audio_source": "forvo",
       "audio_speaker": "Example Speaker",
-      "audio_license": "CC BY 4.0",
-      "audio_attribution": "Example Speaker via Wikimedia Commons",
-      "audio_page_url": "https://commons.wikimedia.org/wiki/File:Ja-%E3%81%A6%E3%81%84%E3%82%8B.mp3"
+      "audio_license": "Forvo terms",
+      "audio_attribution": "Example Speaker via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%81%84%E3%82%8B/#ja"
     }
   ]
 }

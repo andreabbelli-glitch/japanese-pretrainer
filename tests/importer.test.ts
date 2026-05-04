@@ -155,11 +155,11 @@ describe("content importer", () => {
     expect(importedTerm?.audioSrc).toBe(
       "assets/audio/term/term-taberu/term-taberu.ogg"
     );
-    expect(importedTerm?.audioSource).toBe("lingua_libre");
+    expect(importedTerm?.audioSource).toBe("forvo");
     expect(importedGrammar?.audioSrc).toBe(
       "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
     );
-    expect(importedGrammar?.audioLicense).toBe("CC BY 4.0");
+    expect(importedGrammar?.audioLicense).toBe("Forvo terms");
     expect(importedGrammar?.searchRomajiNorm).toBe("teiru");
   }, 60_000);
 
@@ -632,12 +632,12 @@ tags: [grammar, core]
               entry_type: "grammar",
               entry_id: "grammar-teiru",
               audio_src: "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3",
-              audio_source: "wikimedia_commons",
+              audio_source: "forvo",
               audio_speaker: "Grammar Sample Speaker",
-              audio_license: "CC BY 4.0",
-              audio_attribution: "Grammar Sample Speaker via Wikimedia Commons",
+              audio_license: "Forvo terms",
+              audio_attribution: "Grammar Sample Speaker via Forvo",
               audio_page_url:
-                "https://commons.wikimedia.org/wiki/File:Ja-%E3%81%A6%E3%81%84%E3%82%8B.mp3",
+                "https://forvo.com/word/%E3%81%A6%E3%81%84%E3%82%8B/#ja",
               pitch_accent: 0,
               pitch_accent_source: "Wiktionary",
               pitch_accent_page_url:

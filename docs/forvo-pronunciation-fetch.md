@@ -1,9 +1,9 @@
-# Fetch pronunce da Forvo
+# Pronunce da Forvo
 
-Lo script `pnpm pronunciations:forvo` supporta il fallback Forvo per scaricare
-pronunce MP3 e inserirle nel bundle locale. Nel flusso operativo standard usa
-`--manual` nel browser normale; il percorso browser dedicato resta per debug o
-manutenzione del fetcher.
+Lo script `pnpm pronunciations:forvo` scarica pronunce MP3 da Forvo e le
+inserisce nel bundle locale. Nel flusso operativo standard usa `--manual` nel
+browser normale; il percorso browser dedicato resta per debug o manutenzione
+del fetcher.
 
 La modalita manuale richiede un TTY interattivo. In Codex il comando va avviato
 con `tty: true`, altrimenti viene rifiutato prima di aprire Forvo: senza TTY non
@@ -16,18 +16,15 @@ low-level per batch espliciti di fallback manuale e debug.
 
 ## Ruolo nel workflow
 
-Questo non e il primo step del workflow pronunce.
-
-Forvo e un fallback da usare solo dopo il pass offline sulle sole entry rimaste
-senza audio anche dopo il controllo di riuso cross-media. La source of truth
-del processo completo e
-`docs/pronunciation-workflow.md`.
+Forvo manuale e' l'unico recupero esterno effettivo delle pronunce audio. Prima
+di aprire Forvo il workflow deve comunque filtrare gli audio gia locali e
+riusare eventuali audio compatibili presenti in altri media. La source of truth
+del processo completo e' `docs/pronunciation-workflow.md`.
 
 ## Quando usarlo
 
-- hai gia eseguito il fetch offline e restano entry senza audio locale;
-- hai gia lasciato che il workflow riusasse gli audio compatibili presenti in
-  altri media;
+- hai gia lasciato che il workflow filtrasse gli audio locali e riusasse gli
+  audio compatibili presenti in altri media;
 - hai un account Forvo e puoi scaricare manualmente gli MP3 dal browser;
 - vuoi passare una lista mirata di parole o entry invece di processare tutto il
   bundle.

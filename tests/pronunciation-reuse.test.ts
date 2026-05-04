@@ -108,13 +108,11 @@ back: mangiare
         entry_type: "term",
         entry_id: "term-eat",
         audio_src: "assets/audio/term/term-eat/term-taberu.ogg",
-        audio_source: "lingua_libre",
+        audio_source: "forvo",
         audio_speaker: "Test Native Speaker",
-        audio_license: "CC BY-SA 4.0",
-        audio_attribution:
-          "Test Native Speaker via Lingua Libre / Wikimedia Commons",
-        audio_page_url:
-          "https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Test_Native_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg"
+        audio_license: "Forvo terms",
+        audio_attribution: "Test Native Speaker via Forvo",
+        audio_page_url: "https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%82%8B/#ja"
       }
     ]);
 
@@ -218,13 +216,12 @@ back: mangiare
         entry_type: "term",
         entry_id: "term-eat",
         audio_src: "assets/audio/term/term-eat/term-taberu.ogg",
-        audio_source: "lingua_libre",
+        audio_source: "forvo",
         audio_speaker: "Test Native Speaker",
-        audio_license: "CC BY-SA 4.0",
-        audio_attribution:
-          "Test Native Speaker via Lingua Libre / Wikimedia Commons",
+        audio_license: "Forvo terms",
+        audio_attribution: "Test Native Speaker via Forvo",
         audio_page_url:
-          "https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Test_Native_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg",
+          "https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%82%8B/#ja",
         pitch_accent: 2,
         pitch_accent_source: "Wiktionary",
         pitch_accent_page_url:
@@ -285,10 +282,10 @@ romaji: taberu
 meaning_it: divorare
 aliases: [たべる, taberu]
 audio_src: assets/audio/term/term-devour/devour.ogg
-audio_source: lingua_libre
+audio_source: forvo
 audio_speaker: Ambiguous Speaker
-audio_license: CC BY-SA 4.0
-audio_attribution: Ambiguous Speaker via Lingua Libre / Wikimedia Commons
+audio_license: Forvo terms
+audio_attribution: Ambiguous Speaker via Forvo
 audio_page_url: https://example.com/devour
 :::
 

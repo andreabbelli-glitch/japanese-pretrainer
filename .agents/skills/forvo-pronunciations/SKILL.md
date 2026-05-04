@@ -1,6 +1,6 @@
 ---
 name: forvo-pronunciations
-description: Use when the task is to run the smart pronunciation workflow or the Forvo fallback for unresolved Japanese pronunciation audio in the Japanese Custom Study repo. It supports review-scoped, next-lesson, and textbook-page driven batches, always reuses existing audio first, runs offline fetch before Forvo, and uses manual Forvo only for the final unresolved remainder.
+description: Use when the task is to run the smart pronunciation workflow or Forvo manual retrieval for unresolved Japanese pronunciation audio in the Japanese Custom Study repo. It supports review-scoped, next-lesson, and textbook-page driven batches, always reuses existing audio first, and uses manual Forvo for the unresolved remainder.
 ---
 
 # Forvo Pronunciations
@@ -32,7 +32,7 @@ typically at:
    `./scripts/with-node.sh pnpm pronunciations:resolve` for normal user
    requests. It is the standard path for `review`, `next-lesson`, and
    `lesson-url`, and it already performs selection, audio-backed filtering,
-   cross-media reuse, offline fetch, and only then the manual Forvo fallback.
+   cross-media reuse, and then manual Forvo for the unresolved remainder.
 3. Before opening Forvo for any entry, always check whether another media
    already has a matching audio-backed card with the same entry type, label,
    and reading. If it exists, reuse/link that audio instead of fetching a new
@@ -144,7 +144,7 @@ If you edit pronunciation or Forvo implementation code, wrapper scripts, or the
 selection workflow, run the targeted subsystem tests instead of the full suite:
 
 ```bash
-./scripts/with-node.sh pnpm test -- tests/pronunciation-resolve.test.ts tests/pronunciation-workflow.test.ts tests/pronunciation-fetch.test.ts tests/pronunciation-reuse.test.ts tests/forvo-pronunciation-fetch.test.ts tests/forvo-known-missing.test.ts tests/forvo-word-add.test.ts tests/forvo-pronunciations-wrapper.test.ts tests/pronunciation-runtime-boundary.test.ts
+./scripts/with-node.sh pnpm test -- tests/pronunciation-resolve.test.ts tests/pronunciation-workflow.test.ts tests/pronunciation-reuse.test.ts tests/forvo-pronunciation-fetch.test.ts tests/forvo-known-missing.test.ts tests/forvo-word-add.test.ts tests/forvo-pronunciations-wrapper.test.ts tests/pronunciation-runtime-boundary.test.ts
 ```
 
 Run `pnpm check` or `pnpm release:check` only if the task also changes app

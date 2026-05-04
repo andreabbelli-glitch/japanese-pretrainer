@@ -262,7 +262,6 @@ pnpm db:studio
 pnpm auth:hash-password
 pnpm fsrs:optimize
 pnpm fsrs:optimize:if-needed
-pnpm pronunciations:fetch
 pnpm pronunciations:resolve
 pnpm pronunciations:pending
 pnpm pronunciations:reuse
@@ -292,7 +291,7 @@ parte piu dal low-level Forvo, ma dal resolver smart:
 ```
 
 Il resolver seleziona i target, esclude le entry gia coperte, prova il riuso
-cross-media, esegue il fetch offline e manda a Forvo manuale solo il residuo.
+cross-media e manda a Forvo manuale solo il residuo.
 
 `pnpm pronunciations:forvo` resta disponibile come comando low-level per batch
 mirati di fallback o debug del fetcher. La source of truth operativa e

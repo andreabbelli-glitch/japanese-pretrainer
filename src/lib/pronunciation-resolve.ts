@@ -18,7 +18,6 @@ import { loadValidatedManifest } from "./manifest-helpers.ts";
 import {
   createPronunciationReuseContext,
   fetchForvoPronunciationsForBundleManual,
-  fetchPronunciationsForBundle,
   loadForvoKnownMissingRegistry,
   loadForvoWordAddRequestRegistry,
   persistForvoWordAddRequestRegistry,
@@ -28,7 +27,6 @@ import {
   summarizeBundlePronunciationPending,
   writeBundlePronunciationPendingSummary,
   type ForvoManualOptions,
-  type PronunciationFetchNetworkOptions,
   type PronunciationReuseContext
 } from "./pronunciation.ts";
 import {
@@ -58,7 +56,6 @@ export type BundleResolveExecutionSummary = {
     ReturnType<typeof fetchForvoPronunciationsForBundleManual>
   > | null;
   knownMissingSkipped: string[];
-  offlineSummary: Awaited<ReturnType<typeof fetchPronunciationsForBundle>>;
   pendingSummary: Awaited<
     ReturnType<typeof writeBundlePronunciationPendingSummary>
   >;
@@ -79,15 +76,6 @@ type ExecutePronunciationResolveForBundleInput = {
   }) => Promise<
     Awaited<ReturnType<typeof fetchForvoPronunciationsForBundleManual>>
   >;
-  fetchOffline: (input: {
-    bundle: NormalizedMediaBundle;
-    cacheRoot: string;
-    dryRun?: boolean;
-    limit?: number;
-    network?: PronunciationFetchNetworkOptions;
-    onlyTargets?: PronunciationTargetEntry[];
-    refresh?: boolean;
-  }) => Promise<Awaited<ReturnType<typeof fetchPronunciationsForBundle>>>;
   forvoManualOptions?: ForvoManualOptions;
   knownMissingEntryIds: Set<string>;
   limit?: number;
@@ -235,7 +223,7 @@ export async function executePronunciationResolveForBundle(
     onlyTargets: limitedTargets,
     reuseContext: input.reuseContext
   });
-  let remainingTargets = removeTargetsByEntryIds(
+  const forvoTargets = removeTargetsByEntryIds(
     limitedTargets,
     reuseSummary.results
       .filter((result) => result.status === "reused")
@@ -246,25 +234,6 @@ export async function executePronunciationResolveForBundle(
     currentBundle = await input.refreshBundleState(currentBundle);
   }
 
-  const offlineSummary = await input.fetchOffline({
-    bundle: currentBundle,
-    cacheRoot: path.resolve(process.cwd(), "data", "pronunciations-cache"),
-    dryRun: input.dryRun,
-    onlyTargets: remainingTargets,
-    refresh: input.refresh
-  });
-  remainingTargets = removeTargetsByEntryIds(
-    remainingTargets,
-    offlineSummary.results
-      .filter((result) => result.status === "matched")
-      .map((result) => buildEntryKey(result.kind, result.entryId))
-  );
-
-  if (!input.dryRun && offlineSummary.matched > 0) {
-    currentBundle = await input.refreshBundleState(currentBundle);
-  }
-
-  const forvoTargets = remainingTargets;
   let forvoSummary: Awaited<
     ReturnType<typeof fetchForvoPronunciationsForBundleManual>
   > | null = null;
@@ -301,7 +270,6 @@ export async function executePronunciationResolveForBundle(
     finalEntryIds: forvoTargets.map((target) => target.id),
     forvoSummary,
     knownMissingSkipped,
-    offlineSummary,
     pendingSummary,
     reuseSummary
   };
@@ -317,7 +285,6 @@ export async function resolvePronunciations(input: {
   limit?: number;
   mediaSlug?: string;
   mode: PronunciationResolveMode;
-  network?: PronunciationFetchNetworkOptions;
   refresh?: boolean;
   retryKnownMissing?: boolean;
 }) {
@@ -354,16 +321,6 @@ export async function resolvePronunciations(input: {
           dryRun: params.dryRun,
           entryIds: params.entryIds,
           manual: params.manual,
-          refresh: params.refresh
-        }),
-      fetchOffline: (params) =>
-        fetchPronunciationsForBundle({
-          bundle: params.bundle,
-          cacheRoot: params.cacheRoot,
-          dryRun: params.dryRun,
-          limit: params.limit,
-          network: input.network,
-          onlyTargets: params.onlyTargets,
           refresh: params.refresh
         }),
       forvoManualOptions: input.forvoManualOptions,

@@ -137,9 +137,8 @@ Workflow consigliato:
 1. l'LLM esterno produce `media.md`, `textbook/` e `cards/`;
 2. eventuali campi audio restano assenti, salvo che esista gia un asset locale
    reale con provenance nota;
-3. la pipeline locale prova in seguito il fetch offline delle pronunce;
-4. se restano mancanti, il fallback Forvo completa il residuo;
-5. i metadata audio vengono salvati con asset e provenance reali, non
+3. la pipeline locale usa in seguito il workflow Forvo per le pronunce mancanti;
+4. i metadata audio vengono salvati con asset e provenance reali, non
    inventati.
 
 Regola operativa:

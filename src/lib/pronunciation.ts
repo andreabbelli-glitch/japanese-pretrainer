@@ -1,20 +1,11 @@
 export { buildPronunciationData } from "./pronunciation-data.ts";
 export type { PronunciationData } from "./pronunciation-data.ts";
 
-export {
-  fetchPronunciationsForBundle,
-  extractCommonsFileTitlesFromWiktionaryWikitext,
-  extractSpokenTextFromCommonsTitle,
-  resolvePronunciationForEntry,
-  scorePronunciationCandidate,
-  selectBestPronunciationCandidate
-} from "./pronunciation-fetch.ts";
 export type {
   EntryKind,
-  PronunciationCandidate,
   PronunciationFetchNetworkOptions,
   PronunciationTargetEntry
-} from "./pronunciation-fetch.ts";
+} from "./pronunciation-shared.ts";
 
 export {
   createPronunciationReuseContext,

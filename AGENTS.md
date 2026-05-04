@@ -128,7 +128,6 @@ scripts/            CLI standalone (non fanno parte del server Next.js)
   start-e2e.ts            Avvia il server per i test E2E
   import-content.ts       Importa bundle media nel DB
   validate-content.ts     Valida formato Markdown prima dell'import
-  fetch-pronunciations.ts Scarica audio pronuncia (Forvo)
   resolve-pronunciations.ts Risolve pronunce mancanti per review/lesson con workflow guidato
   fetch-forvo-pronunciations.ts Fallback Forvo da sessione browser autenticata
   request-forvo-word-add.ts Richiede l'aggiunta di lemmi mancanti su Forvo
@@ -261,7 +260,6 @@ prompts/                  Prompt locali ignorati da git
 ./scripts/with-node.sh pnpm content:test-stats # aggiorna fixture statistiche per bundle reali
 ./scripts/with-node.sh pnpm content:import  # importa bundle media nel DB
 ./scripts/with-node.sh pnpm content:validate # valida formato Markdown
-./scripts/with-node.sh pnpm pronunciations:fetch # scarica pronunce dai provider configurati
 ./scripts/with-node.sh pnpm pronunciations:resolve # risolve backlog pronunce per review o lesson con workflow guidato
 ./scripts/with-node.sh pnpm pronunciations:pending # aggiorna il backlog pronunce mancanti
 ./scripts/with-node.sh pnpm pronunciations:reuse # riusa pronunce già presenti

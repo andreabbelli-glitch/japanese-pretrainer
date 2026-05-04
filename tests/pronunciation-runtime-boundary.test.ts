@@ -21,8 +21,7 @@ const workflowOnlyTerms = [
   "node:fs",
   "node:path",
   "pronunciation-workflow",
-  "pronunciation-reuse",
-  "pronunciation-fetch"
+  "pronunciation-reuse"
 ] as const;
 
 describe("pronunciation runtime boundary", () => {

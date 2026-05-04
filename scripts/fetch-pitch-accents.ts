@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 
 import { parseContentRoot } from "../src/lib/content/validator.ts";
 import { fetchPitchAccentsForBundle } from "../src/lib/pitch-accent-fetch.ts";
-import type { PronunciationFetchNetworkOptions } from "../src/lib/pronunciation-fetch.ts";
+import type { PronunciationFetchNetworkOptions } from "../src/lib/pronunciation-shared.ts";
 
 type CliOptions = {
   contentRoot: string;

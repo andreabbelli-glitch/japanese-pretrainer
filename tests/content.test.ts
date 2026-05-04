@@ -344,12 +344,10 @@ describe("content parser and validator", () => {
 
     expect(result.ok).toBe(true);
     expect(result.data.terms[0]?.audio).toEqual({
-      audioAttribution:
-        "Test Native Speaker via Lingua Libre / Wikimedia Commons",
-      audioLicense: "CC BY-SA 4.0",
-      audioPageUrl:
-        "https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Test_Native_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg",
-      audioSource: "lingua_libre",
+      audioAttribution: "Test Native Speaker via Forvo",
+      audioLicense: "Forvo terms",
+      audioPageUrl: "https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%82%8B/#ja",
+      audioSource: "forvo",
       audioSpeaker: "Test Native Speaker",
       audioSrc: "assets/audio/term/term-taberu/term-taberu.ogg"
     });
@@ -359,11 +357,10 @@ describe("content parser and validator", () => {
       "https://en.wiktionary.org/wiki/%E9%A3%9F%E3%81%B9%E3%82%8B"
     );
     expect(result.data.grammarPatterns[0]?.audio).toEqual({
-      audioAttribution: "Grammar Sample Speaker via Wikimedia Commons",
-      audioLicense: "CC BY 4.0",
-      audioPageUrl:
-        "https://commons.wikimedia.org/wiki/File:Ja-%E3%81%A6%E3%81%84%E3%82%8B.mp3",
-      audioSource: "wikimedia_commons",
+      audioAttribution: "Grammar Sample Speaker via Forvo",
+      audioLicense: "Forvo terms",
+      audioPageUrl: "https://forvo.com/word/%E3%81%A6%E3%81%84%E3%82%8B/#ja",
+      audioSource: "forvo",
       audioSpeaker: "Grammar Sample Speaker",
       audioSrc: "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
     });
@@ -436,15 +433,12 @@ describe("content parser and validator", () => {
             "audio_src: assets/audio/term/term-taberu/term-taberu.ogg\n",
             ""
           )
-          .replace("audio_source: lingua_libre\n", "")
+          .replace("audio_source: forvo\n", "")
           .replace("audio_speaker: Test Native Speaker\n", "")
-          .replace("audio_license: CC BY-SA 4.0\n", "")
+          .replace("audio_license: Forvo terms\n", "")
+          .replace("audio_attribution: Test Native Speaker via Forvo\n", "")
           .replace(
-            "audio_attribution: Test Native Speaker via Lingua Libre / Wikimedia Commons\n",
-            ""
-          )
-          .replace(
-            "audio_page_url: https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Test_Native_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg\n",
+            "audio_page_url: https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%82%8B/#ja\n",
             ""
           )
       );
