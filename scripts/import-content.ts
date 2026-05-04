@@ -5,11 +5,15 @@ import path from "node:path";
 import { closeDatabaseClient, db } from "../src/db/client.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
+import { readContentCacheRevalidationErrorDetails } from "../src/lib/content/importer/revalidation-error.ts";
 
 const CONTENT_CACHE_REVALIDATE_TIMEOUT_MS = 15_000;
 
 dotenv.config({ path: path.resolve(process.cwd(), ".env") });
-dotenv.config({ path: path.resolve(process.cwd(), ".env.local"), override: true });
+dotenv.config({
+  path: path.resolve(process.cwd(), ".env.local"),
+  override: true
+});
 
 try {
   const cliOptions = resolveCliOptions(process.argv.slice(2));
@@ -98,7 +102,9 @@ try {
           mediaSlug: bundle.mediaSlug
         }))
       ),
-      mediaSlugs: result.parseResult.data.bundles.map((bundle) => bundle.mediaSlug)
+      mediaSlugs: result.parseResult.data.bundles.map(
+        (bundle) => bundle.mediaSlug
+      )
     });
 
     if (cacheRevalidationResult.status === "failed") {
@@ -249,7 +255,7 @@ async function revalidateContentCache(input: {
     }
 
     if (!response.ok) {
-      const details = await readRevalidationError(response);
+      const details = await readContentCacheRevalidationErrorDetails(response);
 
       return {
         message: `Import completed, but cache revalidation failed (${response.status}). ${details}`,
@@ -292,20 +298,6 @@ function dedupeLessons(
   }
 
   return [...unique.values()];
-}
-
-async function readRevalidationError(response: Response) {
-  try {
-    const payload = (await response.json()) as { error?: string };
-
-    if (payload.error?.trim()) {
-      return payload.error.trim();
-    }
-  } catch {}
-
-  const text = await response.text().catch(() => "");
-
-  return text.trim() || "No error details returned.";
 }
 
 async function readRevalidationPayload(response: Response) {
