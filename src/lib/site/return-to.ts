@@ -42,27 +42,9 @@ export function readInternalHref(
 }
 
 function hasEncodedPathSeparator(href: string) {
-  let pathname = href.split(/[?#]/u, 1)[0] ?? "";
+  const pathname = href.split(/[?#]/u, 1)[0] ?? "";
 
-  while (true) {
-    if (/%(?:2f|5c)/iu.test(pathname)) {
-      return true;
-    }
-
-    try {
-      const decodedPathname = decodeURIComponent(pathname);
-
-      if (decodedPathname === pathname) {
-        return false;
-      }
-
-      pathname = decodedPathname;
-    } catch {
-      return true;
-    }
-  }
-
-  return false;
+  return /%(?:25)*(?:2f|5c)/iu.test(pathname);
 }
 
 export function readNestedReturnTo(

@@ -311,6 +311,17 @@ describe("site helpers", () => {
     ).toBe("/review");
   });
 
+  it("keeps valid literal-percent path segments in internal return targets", () => {
+    expect(readInternalHref(["/glossary/term/100%25", "/review"])).toBe(
+      "/glossary/term/100%25"
+    );
+    expect(resolveReturnToContext("/glossary/term/100%25")).toMatchObject({
+      href: "/glossary/term/100%25",
+      kind: "globalGlossary",
+      pathname: "/glossary/term/100%25"
+    });
+  });
+
   it("derives glossary back navigation from explicit return context with safe fallbacks", () => {
     expect(
       resolveGlossaryBackNavigation({
