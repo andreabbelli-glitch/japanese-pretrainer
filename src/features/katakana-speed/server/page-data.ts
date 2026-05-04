@@ -2,8 +2,11 @@ import { db, type DatabaseClient } from "@/db";
 import {
   getKatakanaSessionRow,
   listKatakanaAttemptLogsBySession,
+  listKatakanaAttemptLogsBySessions,
   listKatakanaConfusionEdgeRowsBySession,
+  listKatakanaConfusionEdgeRowsBySessions,
   listKatakanaExerciseResultRowsBySession,
+  listKatakanaExerciseResultRowsBySessions,
   listKatakanaItemStateRows,
   listKatakanaTrialRowsBySession,
   listRecentKatakanaSessionRows
@@ -46,33 +49,18 @@ export async function getKatakanaSpeedPageData(
     ? mapKatakanaSpeedSessionSummary(sessionRows[0])
     : null;
   const sessionIds = sessionRows.map((session) => session.id);
-  const [attemptGroups, exerciseResultGroups, confusionEdgeGroups] =
-    await Promise.all([
-      Promise.all(
-        sessionIds.map((sessionId) =>
-          listKatakanaAttemptLogsBySession(database, sessionId)
-        )
-      ),
-      Promise.all(
-        sessionIds.map((sessionId) =>
-          listKatakanaExerciseResultRowsBySession(database, sessionId)
-        )
-      ),
-      Promise.all(
-        sessionIds.map((sessionId) =>
-          listKatakanaConfusionEdgeRowsBySession(database, sessionId)
-        )
-      )
-    ]);
+  const [attempts, exerciseResults, confusionEdges] = await Promise.all([
+    listKatakanaAttemptLogsBySessions(database, sessionIds),
+    listKatakanaExerciseResultRowsBySessions(database, sessionIds),
+    listKatakanaConfusionEdgeRowsBySessions(database, sessionIds)
+  ]);
   const analytics = buildKatakanaSpeedAnalytics({
-    attempts: attemptGroups
-      .flat()
+    attempts: attempts
       .filter(hasSupportedKatakanaAttemptMode)
       .sort((left, right) => left.createdAt.localeCompare(right.createdAt))
       .map(mapKatakanaAnalyticsAttemptRow),
-    confusionEdges: confusionEdgeGroups.flat().map(mapKatakanaConfusionEdgeRow),
-    exerciseResults: exerciseResultGroups
-      .flat()
+    confusionEdges: confusionEdges.map(mapKatakanaConfusionEdgeRow),
+    exerciseResults: exerciseResults
       .sort((left, right) => left.createdAt.localeCompare(right.createdAt))
       .map(mapKatakanaAnalyticsExerciseResultRow),
     itemStates: itemStateRows.map(mapKatakanaAnalyticsItemStateRow)

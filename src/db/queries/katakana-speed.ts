@@ -1,4 +1,4 @@
-import { and, asc, eq } from "drizzle-orm";
+import { and, asc, eq, inArray } from "drizzle-orm";
 
 import type { DatabaseClient, DatabaseQueryClient } from "../client.ts";
 import {
@@ -194,6 +194,19 @@ export async function listKatakanaExerciseResultRowsBySession(
   });
 }
 
+export async function listKatakanaExerciseResultRowsBySessions(
+  database: DatabaseQueryClient,
+  sessionIds: readonly string[]
+) {
+  if (sessionIds.length === 0) {
+    return [];
+  }
+
+  return database.query.katakanaExerciseResult.findMany({
+    where: inArray(katakanaExerciseResult.sessionId, sessionIds)
+  });
+}
+
 export async function listKatakanaExerciseResultRowsByExercise(
   database: DatabaseQueryClient,
   exerciseId: string
@@ -239,6 +252,19 @@ export async function listKatakanaConfusionEdgeRowsBySession(
   return database.query.katakanaConfusionEdge.findMany({
     orderBy: [asc(katakanaConfusionEdge.sortOrder)],
     where: eq(katakanaConfusionEdge.sessionId, sessionId)
+  });
+}
+
+export async function listKatakanaConfusionEdgeRowsBySessions(
+  database: DatabaseQueryClient,
+  sessionIds: readonly string[]
+) {
+  if (sessionIds.length === 0) {
+    return [];
+  }
+
+  return database.query.katakanaConfusionEdge.findMany({
+    where: inArray(katakanaConfusionEdge.sessionId, sessionIds)
   });
 }
 
@@ -365,6 +391,19 @@ export async function listKatakanaAttemptLogsBySession(
 ) {
   return database.query.katakanaAttemptLog.findMany({
     where: eq(katakanaAttemptLog.sessionId, sessionId)
+  });
+}
+
+export async function listKatakanaAttemptLogsBySessions(
+  database: DatabaseQueryClient,
+  sessionIds: readonly string[]
+) {
+  if (sessionIds.length === 0) {
+    return [];
+  }
+
+  return database.query.katakanaAttemptLog.findMany({
+    where: inArray(katakanaAttemptLog.sessionId, sessionIds)
   });
 }
 
