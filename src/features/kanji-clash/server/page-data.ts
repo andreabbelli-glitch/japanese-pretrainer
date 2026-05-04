@@ -1,5 +1,6 @@
 import { db, type DatabaseClient } from "@/db";
 import { listMediaCached } from "@/lib/data-cache";
+import { readMatchingSearchParam } from "@/lib/search-params";
 import {
   getStudySettings,
   kanjiClashManualDefaultSizeOptions,
@@ -163,25 +164,4 @@ function resolvePageScope(
   return resolveKanjiClashDefaultScope(defaultScope, null) === "media"
     ? "media"
     : "global";
-}
-
-function readMatchingSearchParam(
-  value: string | string[] | undefined,
-  matcher: (candidate: string) => boolean
-) {
-  const candidates = Array.isArray(value) ? value : [value];
-
-  for (const candidate of candidates) {
-    const trimmed = candidate?.trim();
-
-    if (!trimmed) {
-      continue;
-    }
-
-    if (matcher(trimmed)) {
-      return trimmed;
-    }
-  }
-
-  return null;
 }

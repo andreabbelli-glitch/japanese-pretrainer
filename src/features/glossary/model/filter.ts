@@ -4,6 +4,10 @@ import { deriveEntryStudyState } from "@/lib/study-entry";
 import { buildEntryKey } from "@/lib/entry-id";
 import { pickBestBy } from "@/lib/collections";
 import {
+  readFirstNonEmptySearchParam,
+  readMatchingSearchParam
+} from "@/lib/search-params";
+import {
   buildFilteredQuery,
   buildRankedGlossaryEntry,
   compareBestLocalEntries,
@@ -44,8 +48,7 @@ export function normalizeGlossaryQuery(
   } = {}
 ): GlossaryQueryState {
   const rawCards = readMatchingSearchParam(
-    searchParams,
-    "cards",
+    searchParams.cards,
     (value): value is GlossaryCardsFilter =>
       cardsFilterOptions.includes(value as GlossaryCardsFilter)
   );
@@ -53,21 +56,18 @@ export function normalizeGlossaryQuery(
   const parsedPage = readPositiveIntegerSearchParam(searchParams, "page");
   const rawQuery = readSearchParam(searchParams, "q");
   const rawType = readMatchingSearchParam(
-    searchParams,
-    "type",
+    searchParams.type,
     (value): value is GlossaryQueryState["entryType"] =>
       value === "term" || value === "grammar"
   );
   const rawSegment = readSearchParam(searchParams, "segment");
   const rawSort = readMatchingSearchParam(
-    searchParams,
-    "sort",
+    searchParams.sort,
     (value): value is GlossaryQueryState["sort"] =>
       value === "alphabetical" || value === "lesson_order"
   );
   const rawStudy = readMatchingSearchParam(
-    searchParams,
-    "study",
+    searchParams.study,
     (value): value is GlossaryQueryState["study"] =>
       studyFilterOptions.includes(value as GlossaryQueryState["study"])
   );
@@ -323,61 +323,25 @@ export function readSearchParam(
   searchParams: Record<string, string | string[] | undefined>,
   key: string
 ) {
-  const value = searchParams[key];
-
-  if (Array.isArray(value)) {
-    return (
-      value
-        .find((entry) => typeof entry === "string" && entry.trim().length > 0)
-        ?.trim() ?? ""
-    );
-  }
-
-  return value?.trim() ?? "";
-}
-
-function readMatchingSearchParam<T extends string>(
-  searchParams: Record<string, string | string[] | undefined>,
-  key: string,
-  matcher: (value: string) => value is T
-) {
-  const value = searchParams[key];
-  const candidates = Array.isArray(value) ? value : [value];
-
-  for (const entry of candidates) {
-    const trimmed = entry?.trim();
-
-    if (!trimmed) {
-      continue;
-    }
-
-    if (matcher(trimmed)) {
-      return trimmed;
-    }
-  }
-
-  return undefined;
+  return readFirstNonEmptySearchParam(searchParams[key]) ?? "";
 }
 
 function readPositiveIntegerSearchParam(
   searchParams: Record<string, string | string[] | undefined>,
   key: string
 ) {
-  const value = searchParams[key];
-  const candidates = Array.isArray(value) ? value : [value];
-
-  for (const entry of candidates) {
-    const trimmed = entry?.trim();
-
-    if (!trimmed || !/^\d+$/u.test(trimmed)) {
-      continue;
+  const value = readMatchingSearchParam(searchParams[key], (candidate) => {
+    if (!/^\d+$/u.test(candidate)) {
+      return false;
     }
 
-    const parsed = Number.parseInt(trimmed, 10);
+    const parsed = Number.parseInt(candidate, 10);
 
-    if (Number.isSafeInteger(parsed) && parsed > 0) {
-      return parsed;
-    }
+    return Number.isSafeInteger(parsed) && parsed > 0;
+  });
+
+  if (value) {
+    return Number.parseInt(value, 10);
   }
 
   return 0;

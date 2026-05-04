@@ -24,6 +24,7 @@ import {
   type TermGlossaryEntrySummary
 } from "@/db/queries";
 import { buildEntryKey } from "@/lib/entry-id";
+import { readMatchingSearchParam } from "@/lib/search-params";
 import {
   GLOSSARY_SUMMARY_TAG,
   buildGlossarySummaryTags,
@@ -1183,8 +1184,7 @@ function resolvePreviewEntry<T extends { id: string; kind: GlossaryKind }>(
   results: T[]
 ) {
   const previewKind = readMatchingSearchParam(
-    searchParams,
-    "previewKind",
+    searchParams.previewKind,
     (value) => value === "term" || value === "grammar"
   ) as "term" | "grammar" | undefined;
 
@@ -1192,7 +1192,7 @@ function resolvePreviewEntry<T extends { id: string; kind: GlossaryKind }>(
     return results[0];
   }
 
-  const selected = readMatchingSearchParam(searchParams, "preview", (value) =>
+  const selected = readMatchingSearchParam(searchParams.preview, (value) =>
     results.some((result) => result.id === value && result.kind === previewKind)
   );
 
@@ -1203,27 +1203,4 @@ function resolvePreviewEntry<T extends { id: string; kind: GlossaryKind }>(
   }
 
   return results[0];
-}
-
-function readMatchingSearchParam(
-  searchParams: Record<string, string | string[] | undefined>,
-  key: string,
-  matcher: (value: string) => boolean
-) {
-  const value = searchParams[key];
-  const candidates = Array.isArray(value) ? value : [value];
-
-  for (const entry of candidates) {
-    const trimmed = entry?.trim();
-
-    if (!trimmed) {
-      continue;
-    }
-
-    if (matcher(trimmed)) {
-      return trimmed;
-    }
-  }
-
-  return undefined;
 }

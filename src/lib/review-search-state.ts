@@ -1,3 +1,8 @@
+import {
+  readFirstNonEmptySearchParam,
+  readMatchingSearchParam
+} from "@/lib/search-params";
+
 type ReviewSearchState = {
   answeredCount: number;
   extraNewCount: number;
@@ -40,8 +45,7 @@ export function normalizeReviewSearchState(
     selectedCardId: readSearchParam(searchParams, "card") || null,
     showAnswer:
       readMatchingSearchParam(
-        searchParams,
-        "show",
+        searchParams.show,
         (value): value is "answer" => value === "answer"
       ) === "answer"
   };
@@ -51,7 +55,7 @@ function readPositiveIntegerSearchParam(
   searchParams: Record<string, string | string[] | undefined>,
   key: string
 ) {
-  const value = readMatchingSearchParam(searchParams, key, (candidate) => {
+  const value = readMatchingSearchParam(searchParams[key], (candidate) => {
     if (!/^\d+$/u.test(candidate)) {
       return false;
     }
@@ -68,38 +72,5 @@ function readSearchParam(
   searchParams: Record<string, string | string[] | undefined>,
   key: string
 ) {
-  const value = searchParams[key];
-
-  if (Array.isArray(value)) {
-    return (
-      value
-        .find((entry) => typeof entry === "string" && entry.trim().length > 0)
-        ?.trim() ?? ""
-    );
-  }
-
-  return value?.trim() ?? "";
-}
-
-function readMatchingSearchParam(
-  searchParams: Record<string, string | string[] | undefined>,
-  key: string,
-  matcher: (value: string) => boolean
-) {
-  const value = searchParams[key];
-  const candidates = Array.isArray(value) ? value : [value];
-
-  for (const entry of candidates) {
-    const trimmed = entry?.trim();
-
-    if (!trimmed) {
-      continue;
-    }
-
-    if (matcher(trimmed)) {
-      return trimmed;
-    }
-  }
-
-  return undefined;
+  return readFirstNonEmptySearchParam(searchParams[key]) ?? "";
 }
