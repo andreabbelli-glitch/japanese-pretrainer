@@ -325,7 +325,9 @@ describe("katakana speed expansion actions", () => {
       database,
       exerciseId: block.exerciseId,
       metricsJson: {
+        adjustedItemsPerSecond: 999,
         durationMs: 12000,
+        itemsPerSecond: 999,
         wrongCellIndexes: [18, 6, 6]
       },
       now: new Date("2026-04-26T08:00:12.000Z"),

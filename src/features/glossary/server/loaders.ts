@@ -35,10 +35,6 @@ import {
   runWithTaggedCache
 } from "@/lib/data-cache";
 import {
-  aggregateGlossaryLessonConnections,
-  pickPrimaryGlossaryLesson
-} from "@/features/glossary/model/detail-helpers";
-import {
   buildFilteredQuery,
   buildGlobalGlossaryAutocompleteSuggestions,
   compareRankedEntries
@@ -56,14 +52,15 @@ import {
 } from "@/features/glossary/model/filter";
 import {
   buildGlossaryDetailData,
+  buildLocalGlossaryPreviewData,
+  buildLocalGlossaryResults,
   buildGlossaryMediaSummary,
+  buildRankedGlossaryDetailEntry,
   mapEntryToBaseModel,
   mapGrammarSummaryToBaseModel,
   mapTermSummaryToBaseModel
 } from "@/features/glossary/model/format";
 import { defaultStudySettings, getGlossaryDefaultSort } from "@/lib/settings";
-import { mediaGlossaryEntryHref } from "@/lib/site";
-import { deriveEntryStudyState } from "@/lib/study-entry";
 import { normalizeReviewSubjectSurface } from "@/lib/review-subject";
 import type {
   GlossaryBaseEntry,
@@ -178,54 +175,17 @@ export async function loadGlossaryPageData(
     ]);
   const lessonsByEntry = groupRowsByEntry(lessonConnections);
   const mediaSummary = buildGlossaryMediaSummary(media);
-  const results = filteredEntries.map((entry) => {
-    const lessonRows =
-      lessonsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? [];
-    const uniqueLessons = aggregateGlossaryLessonConnections(lessonRows);
-    const primaryLesson = pickPrimaryGlossaryLesson(uniqueLessons, media.slug);
-
-    return {
-      ...entry,
-      bestLocalHref: entry.href,
-      lessonCount: uniqueLessons.length,
-      mediaCount: 1,
-      mediaHits: [
-        {
-          cardCount: entry.cardCount,
-          hasCards: entry.hasCards,
-          href: entry.href,
-          id: entry.id,
-          internalId: entry.internalId,
-          isBestLocal: true,
-          kind: entry.kind,
-          matchesCurrentFilters: true,
-          matchesCurrentQuery: entry.matchesCurrentQuery,
-          mediaId: entry.mediaId,
-          mediaSlug: entry.mediaSlug,
-          mediaTitle: entry.mediaTitle,
-          segmentTitle: entry.segmentTitle,
-          studyState: entry.studyState
-        }
-      ],
-      resultKey: `${entry.kind}:entry:${entry.internalId}`,
-      primaryLesson
-    };
+  const results = buildLocalGlossaryResults({
+    entries: filteredEntries,
+    lessonsByEntry,
+    mediaSlug: media.slug
   });
-  const preview = previewEntry
-    ? buildGlossaryDetailData({
-        cardConnections: selectedPreviewCardConnections,
-        entry: previewEntry,
-        lessonConnections:
-          lessonsByEntry.get(
-            `${previewEntry.kind}:${previewEntry.internalId}`
-          ) ?? [],
-        crossMediaFamily: {
-          group: null,
-          siblings: []
-        },
-        media: mediaSummary
-      })
-    : undefined;
+  const preview = buildLocalGlossaryPreviewData({
+    cardConnections: selectedPreviewCardConnections,
+    entry: previewEntry,
+    lessonsByEntry,
+    media: mediaSummary
+  });
   const hasActiveFilters =
     hasActiveNonSortFilters ||
     filters.sort !==
@@ -430,9 +390,11 @@ async function loadGlobalGlossaryDetailDataUncached(input: {
       ? await getGlossaryEntriesByCrossMediaGroupIds(input.database, "term", [
           resolvedGroup.id
         ])
-      : await getGlossaryEntriesByCrossMediaGroupIds(input.database, "grammar", [
-          resolvedGroup.id
-        ]);
+      : await getGlossaryEntriesByCrossMediaGroupIds(
+          input.database,
+          "grammar",
+          [resolvedGroup.id]
+        );
 
   if (entries.length === 0) {
     return null;
@@ -455,27 +417,17 @@ async function loadGlobalGlossaryDetailDataUncached(input: {
     await Promise.all([
       listEntryLessonConnections(input.database, entryRefs),
       listEntryCardConnections(input.database, entryRefs),
-      getCrossMediaFamilyByEntryId(input.database, input.kind, preferredEntry.id)
+      getCrossMediaFamilyByEntryId(
+        input.database,
+        input.kind,
+        preferredEntry.id
+      )
     ]);
-  const entryStudySignals = cardConnections.filter(
-    (connection) => connection.cardStatus === "active"
-  );
-  const baseEntry =
-    input.kind === "term"
-      ? mapEntryToBaseModel(preferredEntry as TermGlossaryEntry, "term")
-      : mapEntryToBaseModel(preferredEntry as GrammarGlossaryEntry, "grammar");
-  const rankedEntry = {
-    ...baseEntry,
-    href: mediaGlossaryEntryHref(media.slug, input.kind, baseEntry.label, {
-      sourceId: preferredEntry.sourceId
-    }),
-    matchBadges: [],
-    matchedFields: {
-      aliases: []
-    },
-    score: 0,
-    studyState: deriveEntryStudyState(entryStudySignals)
-  };
+  const rankedEntry = buildRankedGlossaryDetailEntry({
+    cardConnections,
+    entry: preferredEntry,
+    kind: input.kind
+  });
 
   return buildGlossaryDetailData({
     cardConnections,
@@ -489,8 +441,9 @@ async function loadGlobalGlossaryDetailDataUncached(input: {
 function readFirstSearchParam(value: string | string[] | undefined) {
   if (Array.isArray(value)) {
     return (
-      value.find((entry) => typeof entry === "string" && entry.trim())?.trim() ??
-      undefined
+      value
+        .find((entry) => typeof entry === "string" && entry.trim())
+        ?.trim() ?? undefined
     );
   }
 
@@ -554,25 +507,11 @@ async function loadGlossaryDetailDataUncached(input: {
       ]),
       crossMediaFamilyPromise
     ]);
-  const entryStudySignals = cardConnections.filter(
-    (connection) => connection.cardStatus === "active"
-  );
-  const baseEntry =
-    input.kind === "term"
-      ? mapEntryToBaseModel(entry as TermGlossaryEntry, "term")
-      : mapEntryToBaseModel(entry as GrammarGlossaryEntry, "grammar");
-  const rankedEntry = {
-    ...baseEntry,
-    href: mediaGlossaryEntryHref(media.slug, input.kind, baseEntry.label, {
-      sourceId: entry.sourceId
-    }),
-    matchBadges: [],
-    matchedFields: {
-      aliases: []
-    },
-    score: 0,
-    studyState: deriveEntryStudyState(entryStudySignals)
-  };
+  const rankedEntry = buildRankedGlossaryDetailEntry({
+    cardConnections,
+    entry,
+    kind: input.kind
+  });
 
   return buildGlossaryDetailData({
     cardConnections,

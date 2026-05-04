@@ -9,11 +9,12 @@ import {
 } from "@/actions/katakana-speed";
 import { getKatakanaSpeedItemById } from "@/features/katakana-speed/model/catalog";
 import { decodeKatakanaSpeedRawOption } from "@/features/katakana-speed/model/exercise-catalog";
-import { formatKatakanaSpeedReading } from "@/features/katakana-speed/model/readings";
 import {
-  isKatakanaSpeedAnswerCorrect,
-  scoreKatakanaSpeedRanGrid
-} from "@/features/katakana-speed/model/scoring";
+  buildKatakanaSpeedRanGridCellSnapshots,
+  buildKatakanaSpeedRanGridMetrics
+} from "@/features/katakana-speed/model/ran-grid-metrics";
+import { formatKatakanaSpeedReading } from "@/features/katakana-speed/model/readings";
+import { isKatakanaSpeedAnswerCorrect } from "@/features/katakana-speed/model/scoring";
 import type { StartKatakanaSpeedSessionResult } from "@/features/katakana-speed/server";
 import type {
   KatakanaSpeedErrorTag,
@@ -511,40 +512,20 @@ export function useKatakanaSpeedSessionController(
       timerStartedAt: timerStartedAtRef.current,
       timerState
     });
-    const totalItems = ranGridCells.length;
-    const cellSnapshots = buildRanGridCellSnapshots(ranGridCells);
-    const wrongCellIndexes = uniqueSortedIndexes(
-      ranWrongCellIndexes,
-      totalItems
-    );
-    const wrongCells = wrongCellIndexes.flatMap((index) => {
-      const cell = cellSnapshots[index];
-      return cell ? [cell] : [];
+    const cellSnapshots = buildKatakanaSpeedRanGridCellSnapshots({
+      cells: ranGridCells,
+      columns: 5
     });
-    const errors = wrongCellIndexes.length;
-    const correctItems = totalItems - errors;
-    const score = scoreKatakanaSpeedRanGrid({
-      correctItems,
-      responseMs: durationMs,
-      totalItems
-    });
-    const metricsJson = {
-      adjustedItemsPerSecond: score.adjustedItemsPerSecond,
+    const metricsJson = buildKatakanaSpeedRanGridMetrics({
       cells: cellSnapshots,
-      cellItemIds: ranGridCells.map((cell) => cell.itemId),
-      cellSurfaces: ranGridCells.map((cell) => cell.surface),
       columns: 5,
-      correctItems,
       durationMs,
-      errorRate: totalItems > 0 ? roundTo(errors / totalItems, 3) : 0,
-      errors,
-      itemsPerSecond: score.itemsPerSecond,
       rows: 5,
-      schemaVersion: 1,
-      totalItems,
-      wrongCellIndexes,
-      wrongCells
-    };
+      wrongCellIndexes: ranWrongCellIndexes
+    });
+    const totalItems = metricsJson.totalItems;
+    const errors = metricsJson.errors;
+    const correctItems = totalItems - errors;
 
     submittingRef.current = true;
     setIsSubmitting(true);
@@ -771,36 +752,6 @@ function buildSelfCheckMetrics(
     moraCount,
     msPerMora: Math.round(responseMs / Math.max(1, moraCount))
   };
-}
-
-function buildRanGridCellSnapshots(
-  cells: readonly KatakanaSpeedRanGridCell[],
-  columns = 5
-) {
-  return cells.map((cell, index) => ({
-    column: (index % columns) + 1,
-    index,
-    itemId: cell.itemId,
-    row: Math.floor(index / columns) + 1,
-    surface: cell.surface
-  }));
-}
-
-function uniqueSortedIndexes(indexes: readonly number[], totalItems: number) {
-  return [
-    ...new Set(
-      indexes
-        .map((index) => Math.round(index))
-        .filter(
-          (index) => Number.isFinite(index) && index >= 0 && index < totalItems
-        )
-    )
-  ].sort((left, right) => left - right);
-}
-
-function roundTo(value: number, digits: number) {
-  const factor = 10 ** digits;
-  return Math.round(value * factor) / factor;
 }
 
 function parseStringArray(value: unknown): string[] {

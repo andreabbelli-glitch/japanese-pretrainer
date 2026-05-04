@@ -111,22 +111,19 @@ function filterReviewSubjectGroupsByCards(
   });
 }
 
-export async function buildReviewPageDataFromWorkspace(input: {
+async function buildReviewSelectionContext(input: {
   cards: ReviewCardSource[];
   dailyLimit: number;
-  database: DatabaseClient;
-  excludeCardIds?: string[];
+  database?: DatabaseClient;
   entryLookup: Map<string, ReviewEntryLookupItem>;
-  media: ReviewPageWorkspace;
-  mediaById: ReviewMediaLookup;
+  excludeCardIds?: string[];
+  fsrsOptimizerSnapshot?: FsrsOptimizerSnapshot;
   newIntroducedTodayCount: number;
   now: Date;
-  reviewFrontFurigana: boolean;
-  scope: ReviewScope;
+  profiler?: ReviewProfiler | null;
   searchState: ReviewSearchState;
   subjectGroups: ReviewSubjectGroup[];
   visibleMediaId?: string;
-  profiler?: ReviewProfiler | null;
 }) {
   const nowIso = input.now.toISOString();
   const segmentFilteredCards = input.searchState.segmentId
@@ -183,11 +180,72 @@ export async function buildReviewPageDataFromWorkspace(input: {
           selection.queueIndex + 1 + REVIEW_ADVANCE_WINDOW_SIZE
         )
       : [];
-  const fsrsOptimizerSnapshotPromise =
-    hasSelectedCard || advanceCardModels.length > 0
-      ? getFsrsOptimizerRuntimeSnapshot(input.database)
-      : Promise.resolve(null);
-  const selectedCardPronunciationsPromise = hasSelectedCard
+  let fsrsOptimizerSnapshotPromise: Promise<FsrsOptimizerSnapshot | null> | null =
+    null;
+  const getFsrsOptimizerSnapshot = () => {
+    fsrsOptimizerSnapshotPromise ??=
+      input.fsrsOptimizerSnapshot !== undefined
+        ? Promise.resolve(input.fsrsOptimizerSnapshot)
+        : hasSelectedCard || advanceCardModels.length > 0
+          ? getFsrsOptimizerRuntimeSnapshot(input.database ?? db)
+          : Promise.resolve(null);
+
+    return fsrsOptimizerSnapshotPromise;
+  };
+
+  return {
+    advanceCardModels,
+    getFsrsOptimizerSnapshot,
+    hasSelectedCard,
+    nowIso,
+    queueCardIds,
+    queueSnapshot,
+    selectedRawCard,
+    selection
+  };
+}
+
+export async function buildReviewPageDataFromWorkspace(input: {
+  cards: ReviewCardSource[];
+  dailyLimit: number;
+  database: DatabaseClient;
+  excludeCardIds?: string[];
+  entryLookup: Map<string, ReviewEntryLookupItem>;
+  media: ReviewPageWorkspace;
+  mediaById: ReviewMediaLookup;
+  newIntroducedTodayCount: number;
+  now: Date;
+  reviewFrontFurigana: boolean;
+  scope: ReviewScope;
+  searchState: ReviewSearchState;
+  subjectGroups: ReviewSubjectGroup[];
+  visibleMediaId?: string;
+  profiler?: ReviewProfiler | null;
+}) {
+  const {
+    advanceCardModels,
+    getFsrsOptimizerSnapshot,
+    hasSelectedCard,
+    nowIso,
+    queueCardIds,
+    queueSnapshot,
+    selectedRawCard,
+    selection
+  } = await buildReviewSelectionContext({
+    cards: input.cards,
+    dailyLimit: input.dailyLimit,
+    database: input.database,
+    entryLookup: input.entryLookup,
+    excludeCardIds: input.excludeCardIds,
+    newIntroducedTodayCount: input.newIntroducedTodayCount,
+    now: input.now,
+    profiler: input.profiler,
+    searchState: input.searchState,
+    subjectGroups: input.subjectGroups,
+    visibleMediaId: input.visibleMediaId
+  });
+  const fsrsOptimizerSnapshotPromise = getFsrsOptimizerSnapshot();
+  const selectedCardPronunciationsPromise = selectedRawCard
     ? measureWith(
         input.profiler,
         "loadReviewCardPronunciations.selected",
@@ -509,62 +567,28 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   visibleMediaId?: string;
   profiler?: ReviewProfiler | null;
 }): Promise<ReviewFirstCandidatePageData> {
-  const nowIso = input.now.toISOString();
-  const segmentFilteredCards = input.searchState.segmentId
-    ? input.cards.filter(
-        (card) => card.segmentId === input.searchState.segmentId
-      )
-    : input.cards;
-  const segmentFilteredSubjectGroups =
-    segmentFilteredCards === input.cards
-      ? input.subjectGroups
-      : filterReviewSubjectGroupsByCards(
-          input.subjectGroups,
-          segmentFilteredCards
-        );
-  const queueSnapshot = await measureWith(
-    input.profiler,
-    "buildReviewQueueSubjectSnapshot",
-    () =>
-      buildReviewQueueSubjectSnapshot({
-        cards: segmentFilteredCards,
-        dailyLimit: input.dailyLimit,
-        entryLookup: input.entryLookup,
-        extraNewCount: input.searchState.extraNewCount,
-        newIntroducedTodayCount: input.newIntroducedTodayCount,
-        nowIso,
-        subjectGroups: segmentFilteredSubjectGroups,
-        visibleMediaId: input.visibleMediaId
-      }),
-    (value) => ({
-      dueCount: value.dueCount,
-      newQueuedCount: value.newQueuedCount,
-      queueCount: value.queueCount,
-      subjectModels: value.subjectModels.length
-    })
-  );
-  const selection = resolveReviewPageSelection({
+  const {
+    advanceCardModels,
+    getFsrsOptimizerSnapshot,
+    nowIso,
+    queueCardIds,
     queueSnapshot,
-    searchState: input.searchState
+    selectedRawCard,
+    selection
+  } = await buildReviewSelectionContext({
+    cards: input.cards,
+    dailyLimit: input.dailyLimit,
+    database: input.database,
+    entryLookup: input.entryLookup,
+    fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
+    newIntroducedTodayCount: input.newIntroducedTodayCount,
+    now: input.now,
+    profiler: input.profiler,
+    searchState: input.searchState,
+    subjectGroups: input.subjectGroups,
+    visibleMediaId: input.visibleMediaId
   });
-  const selectedRawCard = selection.selectedModel
-    ? resolveReviewSubjectSelectionCard({
-        selectedCardId: selection.selectedCardId,
-        subjectModel: selection.selectedModel
-      })
-    : null;
-  const advanceCardModels =
-    selection.queueIndex >= 0
-      ? queueSnapshot.queueModels.slice(
-          selection.queueIndex + 1,
-          selection.queueIndex + 1 + REVIEW_ADVANCE_WINDOW_SIZE
-        )
-      : [];
-  const fsrsOptimizerSnapshot =
-    input.fsrsOptimizerSnapshot ??
-    (selectedRawCard !== null || advanceCardModels.length > 0
-      ? await getFsrsOptimizerRuntimeSnapshot(input.database ?? db)
-      : null);
+  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot();
   const selectedCard =
     selection.selectedModel && selectedRawCard && fsrsOptimizerSnapshot
       ? mapReviewQueueSubjectCardPreview({
@@ -606,7 +630,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   return {
     media: input.media,
     nextCardId,
-    queueCardIds: queueSnapshot.queueModels.map((model) => model.card.id),
+    queueCardIds,
     queue: {
       advanceCards,
       dailyLimit: queueSnapshot.dailyLimit,

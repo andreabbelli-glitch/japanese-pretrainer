@@ -17,6 +17,7 @@ import {
   pickPrimaryGlossaryLesson
 } from "@/features/glossary/model/detail-helpers";
 import {
+  mediaGlossaryEntryHref,
   mediaGlossaryHref,
   mediaReviewCardHref,
   mediaStudyHref,
@@ -38,10 +39,12 @@ import {
 } from "@/lib/study-search";
 import { buildPronunciationData } from "@/lib/pronunciation-data";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
+import { deriveEntryStudyState } from "@/lib/study-entry";
 import type {
   GlossaryBaseEntry,
   GlossaryDetailData,
   GlossaryKind,
+  GlossaryPageData,
   GlossaryMediaSummary,
   RankedGlossaryEntry
 } from "@/features/glossary/types";
@@ -239,6 +242,116 @@ export function buildGlossaryMediaSummary(media: {
     mediaTypeLabel: formatMediaTypeLabel(media.mediaType),
     segmentKindLabel: formatSegmentKindLabel(media.segmentKind),
     textbookHref: mediaStudyHref(media.slug, "textbook")
+  };
+}
+
+export function buildLocalGlossaryResults(input: {
+  entries: Array<
+    RankedGlossaryEntry & {
+      cardCount: number;
+      hasCards: boolean;
+      matchesCurrentQuery: boolean;
+    }
+  >;
+  lessonsByEntry: Map<string, EntryLessonConnection[]>;
+  mediaSlug: string;
+}): GlossaryPageData["results"] {
+  return input.entries.map((entry) => {
+    const lessonRows =
+      input.lessonsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? [];
+    const uniqueLessons = aggregateGlossaryLessonConnections(lessonRows);
+    const primaryLesson = pickPrimaryGlossaryLesson(
+      uniqueLessons,
+      input.mediaSlug
+    );
+
+    return {
+      ...entry,
+      bestLocalHref: entry.href,
+      lessonCount: uniqueLessons.length,
+      mediaCount: 1,
+      mediaHits: [
+        {
+          cardCount: entry.cardCount,
+          hasCards: entry.hasCards,
+          href: entry.href,
+          id: entry.id,
+          internalId: entry.internalId,
+          isBestLocal: true,
+          kind: entry.kind,
+          matchesCurrentFilters: true,
+          matchesCurrentQuery: entry.matchesCurrentQuery,
+          mediaId: entry.mediaId,
+          mediaSlug: entry.mediaSlug,
+          mediaTitle: entry.mediaTitle,
+          segmentTitle: entry.segmentTitle,
+          studyState: entry.studyState
+        }
+      ],
+      resultKey: `${entry.kind}:entry:${entry.internalId}`,
+      primaryLesson
+    };
+  });
+}
+
+export function buildLocalGlossaryPreviewData(input: {
+  cardConnections: EntryCardConnection[];
+  crossMediaFamily?: {
+    group: CrossMediaGroupRecord | null;
+    siblings: CrossMediaSibling[];
+  };
+  entry: RankedGlossaryEntry | null;
+  lessonsByEntry: Map<string, EntryLessonConnection[]>;
+  media: GlossaryMediaSummary;
+}): GlossaryDetailData | undefined {
+  if (!input.entry) {
+    return undefined;
+  }
+
+  return buildGlossaryDetailData({
+    cardConnections: input.cardConnections,
+    entry: input.entry,
+    lessonConnections:
+      input.lessonsByEntry.get(
+        `${input.entry.kind}:${input.entry.internalId}`
+      ) ?? [],
+    crossMediaFamily: input.crossMediaFamily ?? {
+      group: null,
+      siblings: []
+    },
+    media: input.media
+  });
+}
+
+export function buildRankedGlossaryDetailEntry(input: {
+  cardConnections: EntryCardConnection[];
+  entry: TermGlossaryEntry | GrammarGlossaryEntry;
+  kind: GlossaryKind;
+}): RankedGlossaryEntry {
+  const entryStudySignals = input.cardConnections.filter(
+    (connection) => connection.cardStatus === "active"
+  );
+  const baseEntry =
+    input.kind === "term"
+      ? mapEntryToBaseModel(input.entry as TermGlossaryEntry, "term")
+      : mapEntryToBaseModel(input.entry as GrammarGlossaryEntry, "grammar");
+
+  return {
+    ...baseEntry,
+    href: mediaGlossaryEntryHref(
+      input.entry.media.slug,
+      input.kind,
+      baseEntry.label,
+      {
+        sourceId: input.entry.sourceId
+      }
+    ),
+    matchBadges: [],
+    matchedFields: {
+      aliases: []
+    },
+    score: 0,
+    studyState: deriveEntryStudyState(entryStudySignals)
   };
 }
 

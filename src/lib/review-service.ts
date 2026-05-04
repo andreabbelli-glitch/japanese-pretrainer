@@ -208,32 +208,32 @@ export async function gradeReviewCardInTransaction(input: {
       weights: optimizedParameters?.weights ?? undefined
     }
   });
+  const sourceState = resolveReviewSubjectStateSource(subjectContext, nowIso);
 
-  await upsertReviewSubjectState(input.transaction, {
-    cardId: loadedCard.id,
-    createdAt:
-      subjectContext.subjectState?.createdAt ??
-      subjectContext.seedCard.createdAt,
-    crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
-    difficulty: scheduled.difficulty,
-    dueAt: scheduled.dueAt,
-    entryId: subjectContext.identity.entryId,
-    entryType: subjectContext.identity.entryType,
-    lapses: scheduled.lapses,
-    lastInteractionAt: nowIso,
-    lastReviewedAt: nowIso,
-    learningSteps: scheduled.learningSteps,
-    manualOverride: false,
-    reps: scheduled.reps,
-    scheduledDays: scheduled.scheduledDays,
-    schedulerVersion: scheduled.schedulerVersion,
-    stability: scheduled.stability,
-    state: scheduled.state,
-    subjectKey: subjectContext.identity.subjectKey,
-    subjectType: subjectContext.identity.subjectKind,
-    suspended: false,
-    updatedAt: nowIso
-  });
+  await upsertReviewSubjectState(
+    input.transaction,
+    patchReviewSubjectState(sourceState, {
+      cardId: loadedCard.id,
+      crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
+      difficulty: scheduled.difficulty,
+      dueAt: scheduled.dueAt,
+      entryId: subjectContext.identity.entryId,
+      entryType: subjectContext.identity.entryType,
+      lapses: scheduled.lapses,
+      lastInteractionAt: nowIso,
+      lastReviewedAt: nowIso,
+      learningSteps: scheduled.learningSteps,
+      manualOverride: false,
+      reps: scheduled.reps,
+      scheduledDays: scheduled.scheduledDays,
+      schedulerVersion: scheduled.schedulerVersion,
+      stability: scheduled.stability,
+      state: scheduled.state,
+      subjectType: subjectContext.identity.subjectKind,
+      suspended: false,
+      updatedAt: nowIso
+    })
+  );
 
   await input.transaction.insert(reviewSubjectLog).values({
     id: `review_subject_log_${randomUUID()}`,
@@ -308,31 +308,32 @@ export async function resetReviewCardProgress(input: {
         )
       );
 
-    await upsertReviewSubjectState(tx, {
-      cardId: loadedCard.id,
-      createdAt:
-        subjectContext.subjectState?.createdAt ??
-        subjectContext.seedCard.createdAt,
-      crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
-      difficulty: null,
-      dueAt: nowIso,
-      entryId: subjectContext.identity.entryId,
-      entryType: subjectContext.identity.entryType,
-      lapses: 0,
-      lastInteractionAt: nowIso,
-      lastReviewedAt: null,
-      learningSteps: 0,
-      manualOverride: false,
-      reps: 0,
-      scheduledDays: 0,
-      schedulerVersion: "fsrs_v1",
-      stability: null,
-      state: "new",
-      subjectKey: subjectContext.identity.subjectKey,
-      subjectType: subjectContext.identity.subjectKind,
-      suspended: false,
-      updatedAt: nowIso
-    });
+    const sourceState = resolveReviewSubjectStateSource(subjectContext, nowIso);
+
+    await upsertReviewSubjectState(
+      tx,
+      patchReviewSubjectState(sourceState, {
+        cardId: loadedCard.id,
+        crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
+        difficulty: null,
+        dueAt: nowIso,
+        entryId: subjectContext.identity.entryId,
+        entryType: subjectContext.identity.entryType,
+        lapses: 0,
+        lastInteractionAt: nowIso,
+        lastReviewedAt: null,
+        learningSteps: 0,
+        manualOverride: false,
+        reps: 0,
+        scheduledDays: 0,
+        schedulerVersion: "fsrs_v1",
+        stability: null,
+        state: "new",
+        subjectType: subjectContext.identity.subjectKind,
+        suspended: false,
+        updatedAt: nowIso
+      })
+    );
 
     return {
       cardId: loadedCard.id,
@@ -379,80 +380,17 @@ export async function setReviewCardSuspended(input: {
         )
       );
 
-    const sourceSeedCard = subjectContext.seedCard;
-    const sourceState = subjectContext.subjectState ?? {
-      cardId: sourceSeedCard.id,
-      crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
-      createdAt: sourceSeedCard.createdAt,
-      difficulty: null,
-      dueAt: null,
-      entryId: subjectContext.identity.entryId,
-      entryType: subjectContext.identity.entryType,
-      lapses: 0,
-      lastInteractionAt: sourceSeedCard.updatedAt ?? sourceSeedCard.createdAt,
-      lastReviewedAt: null,
-      learningSteps: 0,
-      manualOverride: false,
-      suspended: false,
-      reps: 0,
-      scheduledDays: 0,
-      stability: null,
-      state: "new" as ReviewState,
-      subjectKey: subjectContext.identity.subjectKey,
-      subjectType: subjectContext.identity.subjectKind,
-      updatedAt: nowIso
-    };
-    const schedulerVersion = "fsrs_v1";
+    const sourceState = resolveReviewSubjectStateSource(subjectContext, nowIso);
 
-    await tx
-      .insert(reviewSubjectState)
-      .values({
-        cardId: sourceState.cardId,
-        crossMediaGroupId: sourceState.crossMediaGroupId,
-        createdAt: sourceState.createdAt,
-        difficulty: sourceState.difficulty,
-        dueAt: sourceState.dueAt,
-        entryId: sourceState.entryId,
-        entryType: sourceState.entryType,
+    await upsertReviewSubjectState(
+      tx,
+      patchReviewSubjectState(sourceState, {
         lastInteractionAt: nowIso,
-        lastReviewedAt: sourceState.lastReviewedAt,
-        learningSteps: sourceState.learningSteps,
-        lapses: sourceState.lapses,
-        manualOverride: sourceState.manualOverride,
-        reps: sourceState.reps,
-        scheduledDays: sourceState.scheduledDays,
-        schedulerVersion,
-        stability: sourceState.stability,
-        state: sourceState.state,
-        subjectKey: sourceState.subjectKey,
-        subjectType: sourceState.subjectType,
+        schedulerVersion: "fsrs_v1",
         suspended: input.suspended,
         updatedAt: nowIso
       })
-      .onConflictDoUpdate({
-        target: reviewSubjectState.subjectKey,
-        set: {
-          cardId: sourceState.cardId,
-          crossMediaGroupId: sourceState.crossMediaGroupId,
-          difficulty: sourceState.difficulty,
-          dueAt: sourceState.dueAt,
-          entryId: sourceState.entryId,
-          entryType: sourceState.entryType,
-          lastInteractionAt: nowIso,
-          lastReviewedAt: sourceState.lastReviewedAt,
-          learningSteps: sourceState.learningSteps,
-          lapses: sourceState.lapses,
-          manualOverride: sourceState.manualOverride,
-          reps: sourceState.reps,
-          scheduledDays: sourceState.scheduledDays,
-          schedulerVersion,
-          stability: sourceState.stability,
-          state: sourceState.state,
-          subjectType: sourceState.subjectType,
-          suspended: input.suspended,
-          updatedAt: nowIso
-        }
-      });
+    );
 
     return {
       cardId: loadedCard.id,
@@ -495,52 +433,24 @@ export async function setLinkedEntryStatusByCard(input: {
 
     const isManualOverride = input.status === "known_manual";
     const isSuspended = input.status === "ignored";
-    const sourceSeedCard = subjectContext.seedCard;
-    const sourceState = subjectContext.subjectState ?? {
-      cardId: sourceSeedCard.id,
-      crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
-      createdAt: sourceSeedCard.createdAt,
-      difficulty: null,
-      dueAt: null,
-      entryId: subjectContext.identity.entryId,
-      entryType: subjectContext.identity.entryType,
-      lapses: 0,
-      lastInteractionAt: sourceSeedCard.updatedAt ?? sourceSeedCard.createdAt,
-      lastReviewedAt: null,
-      learningSteps: 0,
-      manualOverride: false,
-      suspended: false,
-      reps: 0,
-      scheduledDays: 0,
-      stability: null,
-      state: (input.status === "learning" ? "learning" : "new") as ReviewState,
-      subjectKey: subjectContext.identity.subjectKey,
-      subjectType: subjectContext.identity.subjectKind,
-      updatedAt: nowIso
-    };
-    await upsertReviewSubjectState(tx, {
-      cardId: sourceState.cardId,
-      createdAt: sourceState.createdAt,
-      crossMediaGroupId: sourceState.crossMediaGroupId,
-      difficulty: sourceState.difficulty,
-      dueAt: sourceState.dueAt,
-      entryId: sourceState.entryId,
-      entryType: sourceState.entryType,
-      lapses: sourceState.lapses,
-      lastInteractionAt: nowIso,
-      lastReviewedAt: sourceState.lastReviewedAt,
-      learningSteps: sourceState.learningSteps,
-      manualOverride: isManualOverride,
-      reps: sourceState.reps,
-      scheduledDays: sourceState.scheduledDays,
-      schedulerVersion: "fsrs_v1",
-      stability: sourceState.stability,
-      state: sourceState.state,
-      subjectKey: sourceState.subjectKey,
-      subjectType: sourceState.subjectType,
-      suspended: isSuspended,
-      updatedAt: nowIso
-    });
+    const sourceState = resolveReviewSubjectStateSource(
+      subjectContext,
+      nowIso,
+      {
+        initialState: input.status === "learning" ? "learning" : "new"
+      }
+    );
+
+    await upsertReviewSubjectState(
+      tx,
+      patchReviewSubjectState(sourceState, {
+        lastInteractionAt: nowIso,
+        manualOverride: isManualOverride,
+        schedulerVersion: "fsrs_v1",
+        suspended: isSuspended,
+        updatedAt: nowIso
+      })
+    );
 
     return {
       cardId: loadedCard.id,
@@ -830,9 +740,101 @@ function resolveSubjectReviewStateForValidation(
   return null;
 }
 
+type ReviewSubjectStateInsert = typeof reviewSubjectState.$inferInsert;
+type ReviewSubjectStatePatch = Partial<
+  Omit<ReviewSubjectStateInsert, "createdAt" | "subjectKey">
+>;
+
+function resolveReviewSubjectStateSource(
+  context: ReviewSubjectMutationContext,
+  nowIso: string,
+  options: { initialState?: ReviewState } = {}
+): ReviewSubjectStateInsert {
+  if (context.subjectState) {
+    return normalizeReviewSubjectStateSource(context.subjectState);
+  }
+
+  return buildInitialReviewSubjectStateSource({
+    context,
+    nowIso,
+    state: options.initialState ?? "new"
+  });
+}
+
+function normalizeReviewSubjectStateSource(
+  subjectState: ReviewSubjectStateSnapshot
+): ReviewSubjectStateInsert {
+  return {
+    cardId: subjectState.cardId,
+    createdAt: subjectState.createdAt,
+    crossMediaGroupId: subjectState.crossMediaGroupId,
+    difficulty: subjectState.difficulty,
+    dueAt: subjectState.dueAt,
+    entryId: subjectState.entryId,
+    entryType: subjectState.entryType,
+    lapses: subjectState.lapses,
+    lastInteractionAt: subjectState.lastInteractionAt,
+    lastReviewedAt: subjectState.lastReviewedAt,
+    learningSteps: subjectState.learningSteps,
+    manualOverride: subjectState.manualOverride,
+    reps: subjectState.reps,
+    scheduledDays: subjectState.scheduledDays,
+    schedulerVersion: subjectState.schedulerVersion,
+    stability: subjectState.stability,
+    state: subjectState.state,
+    subjectKey: subjectState.subjectKey,
+    subjectType: subjectState.subjectType,
+    suspended: subjectState.suspended,
+    updatedAt: subjectState.updatedAt
+  };
+}
+
+function buildInitialReviewSubjectStateSource(input: {
+  context: ReviewSubjectMutationContext;
+  nowIso: string;
+  state: ReviewState;
+}): ReviewSubjectStateInsert {
+  const { context, nowIso, state } = input;
+  const sourceSeedCard = context.seedCard;
+
+  return {
+    cardId: sourceSeedCard.id,
+    createdAt: sourceSeedCard.createdAt,
+    crossMediaGroupId: context.identity.crossMediaGroupId,
+    difficulty: null,
+    dueAt: null,
+    entryId: context.identity.entryId,
+    entryType: context.identity.entryType,
+    lapses: 0,
+    lastInteractionAt: sourceSeedCard.updatedAt ?? sourceSeedCard.createdAt,
+    lastReviewedAt: null,
+    learningSteps: 0,
+    manualOverride: false,
+    reps: 0,
+    scheduledDays: 0,
+    schedulerVersion: "fsrs_v1",
+    stability: null,
+    state,
+    subjectKey: context.identity.subjectKey,
+    subjectType: context.identity.subjectKind,
+    suspended: false,
+    updatedAt: nowIso
+  };
+}
+
+function patchReviewSubjectState(
+  sourceState: ReviewSubjectStateInsert,
+  patch: ReviewSubjectStatePatch
+): ReviewSubjectStateInsert {
+  return {
+    ...sourceState,
+    ...patch
+  };
+}
+
 async function upsertReviewSubjectState(
   transaction: ReviewMutationTransaction,
-  state: typeof reviewSubjectState.$inferInsert
+  state: ReviewSubjectStateInsert
 ) {
   await transaction
     .insert(reviewSubjectState)

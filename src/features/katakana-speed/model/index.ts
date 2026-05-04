@@ -4,6 +4,7 @@ export * from "./errors.ts";
 export * from "./exercise-catalog.ts";
 export * from "./focus.ts";
 export * from "./options.ts";
+export * from "./ran-grid-metrics.ts";
 export * from "./readings.ts";
 export * from "./scoring.ts";
 export * from "./scheduler.ts";
