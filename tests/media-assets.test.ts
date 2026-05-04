@@ -2,17 +2,15 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { GET } from "@/app/media/[mediaSlug]/assets/[...assetPath]/route";
 import { getMediaAssetContentType } from "@/lib/media-assets";
 
 describe("media asset serving", () => {
-  let originalCwd = "";
   let tempDir = "";
 
   beforeEach(async () => {
-    originalCwd = process.cwd();
     tempDir = await mkdtemp(path.join(tmpdir(), "jcs-media-assets-"));
     await mkdir(
       path.join(tempDir, "content", "media", "fixture", "assets", "audio"),
@@ -44,11 +42,11 @@ describe("media asset serving", () => {
       ),
       "OggS-fixture"
     );
-    process.chdir(tempDir);
+    vi.spyOn(process, "cwd").mockReturnValue(tempDir);
   });
 
   afterEach(async () => {
-    process.chdir(originalCwd);
+    vi.restoreAllMocks();
     await rm(tempDir, { recursive: true, force: true });
   });
 
