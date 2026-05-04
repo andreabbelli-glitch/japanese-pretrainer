@@ -180,10 +180,25 @@ export function parseTextbookLessonUrl(value: string) {
     throw new Error(`Unsupported lesson URL: '${value}'.`);
   }
 
+  const mediaSlug = decodeLessonUrlSegment(match[1] ?? "");
+  const lessonSlug = decodeLessonUrlSegment(match[2] ?? "");
+
+  if (mediaSlug === null || lessonSlug === null) {
+    throw new Error(`Unsupported lesson URL: '${value}'.`);
+  }
+
   return {
-    lessonSlug: decodeURIComponent(match[2] ?? ""),
-    mediaSlug: decodeURIComponent(match[1] ?? "")
+    lessonSlug,
+    mediaSlug
   };
+}
+
+function decodeLessonUrlSegment(value: string) {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return null;
+  }
 }
 
 export async function executePronunciationResolveForBundle(

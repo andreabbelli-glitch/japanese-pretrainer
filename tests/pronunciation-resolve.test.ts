@@ -89,6 +89,12 @@ describe("pronunciation resolve", () => {
     ).toThrow("Unsupported lesson URL");
   });
 
+  it("rejects malformed encoded lesson URL segments", () => {
+    expect(() =>
+      parseTextbookLessonUrl("/media/sample-game/textbook/next%lesson")
+    ).toThrow("Unsupported lesson URL");
+  });
+
   it("can be imported by the Node strip-types runtime used by pronunciation scripts", async () => {
     await execFileAsync(
       process.execPath,
