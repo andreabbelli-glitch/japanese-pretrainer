@@ -5,7 +5,8 @@ import { buildEntryKey } from "@/lib/entry-id";
 import { pickBestBy } from "@/lib/collections";
 import {
   readFirstNonEmptySearchParam,
-  readMatchingSearchParam
+  readMatchingSearchParam,
+  readPositiveIntegerSearchParam
 } from "@/lib/search-params";
 import {
   buildFilteredQuery,
@@ -53,7 +54,7 @@ export function normalizeGlossaryQuery(
       cardsFilterOptions.includes(value as GlossaryCardsFilter)
   );
   const rawMedia = readSearchParam(searchParams, "media");
-  const parsedPage = readPositiveIntegerSearchParam(searchParams, "page");
+  const parsedPage = readPositiveIntegerSearchParam(searchParams.page);
   const rawQuery = readSearchParam(searchParams, "q");
   const rawType = readMatchingSearchParam(
     searchParams.type,
@@ -76,7 +77,7 @@ export function normalizeGlossaryQuery(
     cards: rawCards ?? "all",
     entryType: rawType ?? "all",
     media: (options.forcedMediaSlug ?? rawMedia) || "all",
-    page: Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1,
+    page: parsedPage ?? 1,
     query: rawQuery,
     segmentId: options.supportsSegmentFilter ? rawSegment || "all" : "all",
     sort: rawSort ?? defaultSort,
@@ -324,27 +325,6 @@ export function readSearchParam(
   key: string
 ) {
   return readFirstNonEmptySearchParam(searchParams[key]) ?? "";
-}
-
-function readPositiveIntegerSearchParam(
-  searchParams: Record<string, string | string[] | undefined>,
-  key: string
-) {
-  const value = readMatchingSearchParam(searchParams[key], (candidate) => {
-    if (!/^\d+$/u.test(candidate)) {
-      return false;
-    }
-
-    const parsed = Number.parseInt(candidate, 10);
-
-    return Number.isSafeInteger(parsed) && parsed > 0;
-  });
-
-  if (value) {
-    return Number.parseInt(value, 10);
-  }
-
-  return 0;
 }
 
 export function groupRowsByEntry<

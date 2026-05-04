@@ -13,6 +13,20 @@ export function readFirstNonEmptySearchParam(value: SearchParamValue) {
   return readMatchingSearchParam(value, () => true);
 }
 
+export function readPositiveIntegerSearchParam(value: SearchParamValue) {
+  const matched = readMatchingSearchParam(value, (candidate) => {
+    if (!/^\d+$/u.test(candidate)) {
+      return false;
+    }
+
+    const parsed = Number.parseInt(candidate, 10);
+
+    return Number.isSafeInteger(parsed) && parsed > 0;
+  });
+
+  return matched ? Number.parseInt(matched, 10) : undefined;
+}
+
 export function readMatchingSearchParam<T extends string>(
   value: SearchParamValue,
   matcher: (value: string) => value is T

@@ -1,6 +1,7 @@
 import {
   readFirstNonEmptySearchParam,
-  readMatchingSearchParam
+  readMatchingSearchParam,
+  readPositiveIntegerSearchParam
 } from "@/lib/search-params";
 
 type ReviewSearchState = {
@@ -28,14 +29,10 @@ export function buildReviewSearchStateCacheKeyParts(input: ReviewSearchState) {
 export function normalizeReviewSearchState(
   searchParams: Record<string, string | string[] | undefined>
 ): ReviewSearchState {
-  const answeredCount = readPositiveIntegerSearchParam(
-    searchParams,
-    "answered"
-  );
-  const extraNewCount = readPositiveIntegerSearchParam(
-    searchParams,
-    "extraNew"
-  );
+  const answeredCount =
+    readPositiveIntegerSearchParam(searchParams.answered) ?? 0;
+  const extraNewCount =
+    readPositiveIntegerSearchParam(searchParams.extraNew) ?? 0;
 
   return {
     answeredCount,
@@ -49,23 +46,6 @@ export function normalizeReviewSearchState(
         (value): value is "answer" => value === "answer"
       ) === "answer"
   };
-}
-
-function readPositiveIntegerSearchParam(
-  searchParams: Record<string, string | string[] | undefined>,
-  key: string
-) {
-  const value = readMatchingSearchParam(searchParams[key], (candidate) => {
-    if (!/^\d+$/u.test(candidate)) {
-      return false;
-    }
-
-    const parsed = Number.parseInt(candidate, 10);
-
-    return Number.isSafeInteger(parsed) && parsed > 0;
-  });
-
-  return value ? Number.parseInt(value, 10) : 0;
 }
 
 function readSearchParam(
