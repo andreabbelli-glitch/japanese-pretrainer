@@ -11,6 +11,8 @@ vi.mock("next/navigation", () => ({
 }));
 
 import MediaGlossaryRoute from "@/app/media/[mediaSlug]/glossary/page";
+import MediaGlossaryGrammarDetailRoute from "@/app/media/[mediaSlug]/glossary/grammar/[entryId]/page";
+import MediaGlossaryTermDetailRoute from "@/app/media/[mediaSlug]/glossary/term/[entryId]/page";
 
 describe("media glossary route", () => {
   beforeEach(() => {
@@ -32,4 +34,47 @@ describe("media glossary route", () => {
 
     expect(notFoundMock).toHaveBeenCalledOnce();
   });
+
+  it("does not wait on unused route props before returning 404", async () => {
+    const pendingSearchParams =
+      new Promise<Record<string, string | string[] | undefined>>(() => {});
+    const pendingMediaParams = new Promise<{ mediaSlug: string }>(() => {});
+    const pendingDetailParams =
+      new Promise<{ entryId: string; mediaSlug: string }>(() => {});
+
+    const results = await Promise.all([
+      immediateRouteResult(
+        MediaGlossaryRoute({
+          params: pendingMediaParams,
+          searchParams: pendingSearchParams
+        })
+      ),
+      immediateRouteResult(
+        MediaGlossaryTermDetailRoute({
+          params: pendingDetailParams,
+          searchParams: pendingSearchParams
+        })
+      ),
+      immediateRouteResult(
+        MediaGlossaryGrammarDetailRoute({
+          params: pendingDetailParams,
+          searchParams: pendingSearchParams
+        })
+      )
+    ]);
+
+    expect(results).toEqual(["not-found", "not-found", "not-found"]);
+    expect(notFoundMock).toHaveBeenCalledTimes(3);
+  });
 });
+
+async function immediateRouteResult(routePromise: Promise<unknown>) {
+  return Promise.race([
+    routePromise.catch((error: unknown) =>
+      error instanceof Error ? error.message : String(error)
+    ),
+    new Promise((resolve) => {
+      setTimeout(() => resolve("still-pending"), 0);
+    })
+  ]);
+}

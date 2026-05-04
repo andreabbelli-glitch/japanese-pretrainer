@@ -9,10 +9,9 @@ type GlossaryGrammarDetailRouteProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
-export default async function GlossaryGrammarDetailRoute({
-  params,
-  searchParams
-}: GlossaryGrammarDetailRouteProps) {
-  await Promise.all([params, searchParams]);
+export default async function GlossaryGrammarDetailRoute(
+  props: GlossaryGrammarDetailRouteProps
+) {
+  void props;
   notFound();
 }

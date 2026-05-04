@@ -7,10 +7,7 @@ type GlossaryRouteProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
-export default async function MediaGlossaryRoute({
-  params,
-  searchParams
-}: GlossaryRouteProps) {
-  await Promise.all([params, searchParams]);
+export default async function MediaGlossaryRoute(props: GlossaryRouteProps) {
+  void props;
   notFound();
 }
