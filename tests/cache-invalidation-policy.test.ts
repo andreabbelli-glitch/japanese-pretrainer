@@ -40,14 +40,14 @@ describe("cache invalidation policy", () => {
     updateTagMock.mockReset();
   });
 
-  it("revalidates settings caches after the settings form saves", () => {
+  it("updates settings caches immediately after the settings form saves", () => {
     invalidateStudySettingsSaved();
 
-    expect(revalidateTagMock.mock.calls).toEqual([
-      [SETTINGS_TAG, "max"],
-      [REVIEW_FIRST_CANDIDATE_TAG, "max"]
+    expect(updateTagMock.mock.calls).toEqual([
+      [SETTINGS_TAG],
+      [REVIEW_FIRST_CANDIDATE_TAG]
     ]);
-    expect(updateTagMock).not.toHaveBeenCalled();
+    expect(revalidateTagMock).not.toHaveBeenCalled();
     expect(revalidatePathMock).not.toHaveBeenCalled();
   });
 

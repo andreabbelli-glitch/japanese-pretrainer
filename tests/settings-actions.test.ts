@@ -1,11 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const { redirectMock, revalidateSettingsCacheMock, updateStudySettingsMock } =
+const { redirectMock, updateSettingsCacheMock, updateStudySettingsMock } =
   vi.hoisted(() => ({
     redirectMock: vi.fn((href: string) => {
       throw new Error(`redirect:${href}`);
     }),
-    revalidateSettingsCacheMock: vi.fn(),
+    updateSettingsCacheMock: vi.fn(),
     updateStudySettingsMock: vi.fn()
   }));
 
@@ -14,7 +14,7 @@ vi.mock("next/navigation", () => ({
 }));
 
 vi.mock("@/lib/data-cache", () => ({
-  revalidateSettingsCache: revalidateSettingsCacheMock
+  updateSettingsCache: updateSettingsCacheMock
 }));
 
 vi.mock("@/lib/settings", async (importOriginal) => {
@@ -32,7 +32,7 @@ import { defaultStudySettings } from "@/lib/settings";
 describe("settings actions", () => {
   beforeEach(() => {
     redirectMock.mockClear();
-    revalidateSettingsCacheMock.mockClear();
+    updateSettingsCacheMock.mockClear();
     updateStudySettingsMock.mockReset();
   });
 
@@ -60,7 +60,7 @@ describe("settings actions", () => {
       reviewFrontFurigana: true,
       reviewDailyLimit: defaultStudySettings.reviewDailyLimit
     });
-    expect(revalidateSettingsCacheMock).toHaveBeenCalledTimes(1);
+    expect(updateSettingsCacheMock).toHaveBeenCalledTimes(1);
   });
 
   it("keeps the first valid duplicated return target after saving settings", async () => {
@@ -79,6 +79,6 @@ describe("settings actions", () => {
       "redirect:/settings?saved=1&returnTo=%2Freview%3Fanswered%3D2%26card%3Dcard-iku"
     );
 
-    expect(revalidateSettingsCacheMock).toHaveBeenCalledTimes(1);
+    expect(updateSettingsCacheMock).toHaveBeenCalledTimes(1);
   });
 });

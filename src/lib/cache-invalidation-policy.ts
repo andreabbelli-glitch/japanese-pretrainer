@@ -4,7 +4,6 @@ import {
   revalidateGlossarySummaryCache,
   revalidateMediaListCache,
   revalidateReviewSummaryCache,
-  revalidateSettingsCache,
   revalidateTextbookLessonBodyCache,
   revalidateTextbookTooltipCache,
   updateGlossarySummaryCache,
@@ -29,7 +28,7 @@ type ImportedContentLesson = {
 };
 
 export function invalidateStudySettingsSaved() {
-  revalidateSettingsCache();
+  updateSettingsCache();
 }
 
 export function invalidateFuriganaModeChanged() {
