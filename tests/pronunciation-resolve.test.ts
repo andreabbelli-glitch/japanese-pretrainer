@@ -95,6 +95,12 @@ describe("pronunciation resolve", () => {
     ).toThrow("Unsupported lesson URL");
   });
 
+  it("rejects malformed absolute lesson URLs with the workflow validation error", () => {
+    expect(() => parseTextbookLessonUrl("http://%")).toThrow(
+      "Unsupported lesson URL"
+    );
+  });
+
   it("can be imported by the Node strip-types runtime used by pronunciation scripts", async () => {
     await execFileAsync(
       process.execPath,

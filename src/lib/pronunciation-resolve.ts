@@ -171,9 +171,12 @@ export function parseTextbookLessonUrl(value: string) {
     throw new Error("Unsupported lesson URL: empty value.");
   }
 
-  const pathname = hasUrlProtocol(trimmed)
-    ? new URL(trimmed).pathname
-    : trimmed;
+  const pathname = readLessonUrlPathname(trimmed);
+
+  if (pathname === null) {
+    throw new Error(`Unsupported lesson URL: '${value}'.`);
+  }
+
   const match = pathname.match(/^\/media\/([^/]+)\/textbook\/([^/?#]+)\/?$/u);
 
   if (!match) {
@@ -191,6 +194,18 @@ export function parseTextbookLessonUrl(value: string) {
     lessonSlug,
     mediaSlug
   };
+}
+
+function readLessonUrlPathname(value: string) {
+  if (!hasUrlProtocol(value)) {
+    return value;
+  }
+
+  try {
+    return new URL(value).pathname;
+  } catch {
+    return null;
+  }
 }
 
 function decodeLessonUrlSegment(value: string) {
