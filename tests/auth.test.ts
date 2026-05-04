@@ -1,3 +1,7 @@
+import { execFile } from "node:child_process";
+import path from "node:path";
+import { promisify } from "node:util";
+
 import { afterEach, describe, expect, it } from "vitest";
 
 import {
@@ -22,6 +26,7 @@ const AUTH_ENV_KEYS = [
   "AUTH_SESSION_SECRET",
   "AUTH_USERNAME"
 ] as const;
+const execFileAsync = promisify(execFile);
 
 const originalAuthEnv = new Map<string, string | undefined>(
   AUTH_ENV_KEYS.map((key) => [key, process.env[key]])
@@ -109,6 +114,40 @@ describe("auth helpers", () => {
     );
     expect(verifySessionToken(`${token}.extra`, issuedAt + 1_000)).toBe(false);
   });
+
+  it("hashes the exact password passed to the auth hash CLI", async () => {
+    clearAuthEnv();
+
+    const { stdout } = await execFileAsync(
+      process.execPath,
+      [
+        "--experimental-strip-types",
+        path.join(process.cwd(), "scripts", "hash-auth-password.ts"),
+        "--",
+        " study-hard "
+      ],
+      {
+        cwd: process.cwd()
+      }
+    );
+
+    process.env.AUTH_USERNAME = "owner";
+    process.env.AUTH_PASSWORD_HASH = stdout.trim();
+    process.env.AUTH_SESSION_SECRET = "super-secret-session-key";
+
+    expect(
+      verifyLoginCredentials({
+        password: " study-hard ",
+        username: "owner"
+      })
+    ).toBe(true);
+    expect(
+      verifyLoginCredentials({
+        password: "study-hard",
+        username: "owner"
+      })
+    ).toBe(false);
+  }, 60_000);
 
   it("rejects malformed password hashes without throwing during login", () => {
     clearAuthEnv();

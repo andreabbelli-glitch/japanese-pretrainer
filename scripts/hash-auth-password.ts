@@ -2,10 +2,9 @@ import { createPasswordHash } from "../src/lib/auth.ts";
 
 const password = process.argv
   .slice(2)
-  .find((value) => value !== "--")
-  ?.trim();
+  .find((value) => value !== "--");
 
-if (!password) {
+if (password === undefined || password.length === 0) {
   console.error(
     "Usage: ./scripts/with-node.sh pnpm auth:hash-password -- \"your-password\""
   );
