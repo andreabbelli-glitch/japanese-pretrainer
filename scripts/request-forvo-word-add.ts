@@ -124,59 +124,54 @@ function parseCliOptions(argv: string[]): CliOptions {
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
 
+    if (argument === "--") {
+      continue;
+    }
+
     if (argument === "--known-missing-file") {
-      options.knownMissingPath = argv[index + 1] ?? options.knownMissingPath;
+      options.knownMissingPath = readOptionValue(
+        argv,
+        index,
+        "--known-missing-file"
+      );
       index += 1;
       continue;
     }
 
     if (argument === "--request-registry-file") {
-      options.requestRegistryPath =
-        argv[index + 1] ?? options.requestRegistryPath;
+      options.requestRegistryPath = readOptionValue(
+        argv,
+        index,
+        "--request-registry-file"
+      );
       index += 1;
       continue;
     }
 
     if (argument === "--media") {
-      const mediaSlug = argv[index + 1];
-
-      if (mediaSlug) {
-        options.mediaSlugs.push(mediaSlug);
-      }
-
+      options.mediaSlugs.push(readOptionValue(argv, index, "--media"));
       index += 1;
       continue;
     }
 
     if (argument === "--entry") {
-      const entryId = argv[index + 1];
-
-      if (entryId) {
-        options.entryIds.push(entryId);
-      }
-
+      options.entryIds.push(readOptionValue(argv, index, "--entry"));
       index += 1;
       continue;
     }
 
     if (argument === "--limit") {
-      const parsedLimit = Number.parseInt(argv[index + 1] ?? "", 10);
-
-      if (Number.isFinite(parsedLimit) && parsedLimit >= 0) {
-        options.limit = parsedLimit;
-      }
-
+      options.limit = readNonNegativeIntegerOption(argv, index, "--limit");
       index += 1;
       continue;
     }
 
     if (argument === "--request-delay-ms") {
-      const parsedDelay = Number.parseInt(argv[index + 1] ?? "", 10);
-
-      if (Number.isFinite(parsedDelay) && parsedDelay >= 0) {
-        options.requestDelayMs = parsedDelay;
-      }
-
+      options.requestDelayMs = readNonNegativeIntegerOption(
+        argv,
+        index,
+        "--request-delay-ms"
+      );
       index += 1;
       continue;
     }
@@ -195,9 +190,35 @@ function parseCliOptions(argv: string[]): CliOptions {
       options.dryRun = true;
       continue;
     }
+
+    throw new Error(`Unknown argument: ${argument}`);
   }
 
   return options;
+}
+
+function readOptionValue(argv: string[], index: number, flag: string) {
+  const value = argv[index + 1];
+
+  if (!value || value.startsWith("--")) {
+    throw new Error(`Missing value for ${flag}.`);
+  }
+
+  return value;
+}
+
+function readNonNegativeIntegerOption(
+  argv: string[],
+  index: number,
+  flag: string
+) {
+  const value = readOptionValue(argv, index, flag);
+
+  if (!/^\d+$/u.test(value)) {
+    throw new Error(`${flag} must be a non-negative integer.`);
+  }
+
+  return Number.parseInt(value, 10);
 }
 
 async function openUrlInDefaultBrowser(url: string) {
