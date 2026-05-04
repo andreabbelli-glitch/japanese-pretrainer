@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { GlossaryDetailPage } from "@/components/glossary/glossary-detail-page";
 import { getGlobalGrammarGlossaryDetailData } from "@/features/glossary/server";
-import { readInternalHref } from "@/lib/site";
+import { decodeRouteSegment, readInternalHref } from "@/lib/site";
 
 type GlobalGlossaryGrammarRouteProps = {
   params: Promise<{
@@ -20,7 +20,7 @@ export default async function GlobalGlossaryGrammarRoute({
     searchParams
   ]);
   const detailData = await getGlobalGrammarGlossaryDetailData(
-    decodeURIComponent(surface),
+    decodeRouteSegment(surface),
     resolvedSearchParams
   );
   const returnTo = readInternalHref(resolvedSearchParams.returnTo);
