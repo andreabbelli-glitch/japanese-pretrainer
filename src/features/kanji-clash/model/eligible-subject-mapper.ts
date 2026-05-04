@@ -33,9 +33,11 @@ export function mapEligibleKanjiClashSubjectRows(
 ): KanjiClashEligibleSubject[] {
   const subjects = new Map<string, KanjiClashEligibleSubject>();
 
-  for (const row of rows.filter((currentRow) =>
-    isEligibleKanjiClashCardFront(currentRow.cardFront)
-  )) {
+  for (const row of rows) {
+    if (!isEligibleKanjiClashCardFront(row.cardFront)) {
+      continue;
+    }
+
     const member: KanjiClashEligibleSubjectMember = {
       entryId: row.entryId,
       lemma: row.lemma,
