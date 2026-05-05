@@ -6,6 +6,7 @@ import {
   readFile,
   readdir,
   rm,
+  symlink,
   writeFile
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -921,13 +922,38 @@ async function copySingleMediaBundleFixture(
   destinationContentRoot: string
 ) {
   const destinationMediaRoot = path.join(destinationContentRoot, "media");
+  const destinationMediaDirectory = path.join(
+    destinationMediaRoot,
+    path.basename(sourceMediaDirectory)
+  );
 
   await mkdir(destinationMediaRoot, { recursive: true });
-  await cp(
-    sourceMediaDirectory,
-    path.join(destinationMediaRoot, path.basename(sourceMediaDirectory)),
-    { recursive: true }
-  );
+  await mkdir(destinationMediaDirectory, { recursive: true });
+  await Promise.all([
+    cp(
+      path.join(sourceMediaDirectory, "media.md"),
+      path.join(destinationMediaDirectory, "media.md")
+    ),
+    cp(
+      path.join(sourceMediaDirectory, "textbook"),
+      path.join(destinationMediaDirectory, "textbook"),
+      { recursive: true }
+    ),
+    cp(
+      path.join(sourceMediaDirectory, "cards"),
+      path.join(destinationMediaDirectory, "cards"),
+      { recursive: true }
+    ),
+    cp(
+      path.join(sourceMediaDirectory, "pronunciations.json"),
+      path.join(destinationMediaDirectory, "pronunciations.json")
+    ),
+    symlink(
+      path.join(sourceMediaDirectory, "assets"),
+      path.join(destinationMediaDirectory, "assets"),
+      process.platform === "win32" ? "junction" : "dir"
+    )
+  ]);
 }
 
 async function countImportableMediaSourceFiles(mediaDirectory: string) {
