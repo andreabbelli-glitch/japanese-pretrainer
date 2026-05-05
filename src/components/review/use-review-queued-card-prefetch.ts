@@ -31,8 +31,19 @@ export function useReviewQueuedCardPrefetch({
 }: ReviewQueuedCardPrefetchInput) {
   const prefetchBufferRef = useRef<Map<string, ReviewQueueCard>>(new Map());
   const prefetchInFlightRef = useRef<Set<string>>(new Set());
+  const queueCardIdSetRef = useRef<Set<string>>(new Set(queueCardIds));
+  const isMountedRef = useRef(false);
 
   useEffect(() => {
+    isMountedRef.current = true;
+
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    queueCardIdSetRef.current = new Set(queueCardIds);
     prefetchBufferRef.current = pruneQueuedPrefetchedCardMap(
       prefetchBufferRef.current,
       queueCardIds
@@ -61,14 +72,16 @@ export function useReviewQueuedCardPrefetch({
       return;
     }
 
-    let cancelled = false;
-
     for (const cardId of cardIdsToFetch) {
       prefetchInFlightRef.current.add(cardId);
 
       void prefetchReviewCardSessionAction({ cardId })
         .then((card) => {
-          if (cancelled || !card) {
+          if (
+            !isMountedRef.current ||
+            !card ||
+            !queueCardIdSetRef.current.has(cardId)
+          ) {
             return;
           }
 
@@ -81,10 +94,6 @@ export function useReviewQueuedCardPrefetch({
           prefetchInFlightRef.current.delete(cardId);
         });
     }
-
-    return () => {
-      cancelled = true;
-    };
   }, [
     activeQueueCardIds,
     isQueueCard,

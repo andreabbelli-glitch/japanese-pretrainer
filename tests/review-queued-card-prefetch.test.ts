@@ -93,6 +93,46 @@ describe("useReviewQueuedCardPrefetch", () => {
     expect(prefetchedCardIds()).toEqual(["card-b", "card-c"]);
   });
 
+  it("keeps in-flight prefetch results across an equivalent rerender", async () => {
+    const cardC = createDeferred<ReviewQueueCard | null>();
+    const queueCardIds = ["card-a", "card-b", "card-c"];
+    const selectedCard = buildQueueCard("card-a");
+    mocks.prefetchReviewCardSessionAction.mockImplementation(
+      ({ cardId }: { cardId: string }) =>
+        cardId === "card-c"
+          ? cardC.promise
+          : Promise.resolve(buildQueueCard(cardId))
+    );
+    const controller = await renderPrefetchHook({
+      activeQueueCardIds: queueCardIds,
+      queueCardIds,
+      queueIndex: 0,
+      selectedCard
+    });
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          activeQueueCardIds: [...queueCardIds],
+          queueCardIds: [...queueCardIds],
+          queueIndex: 0,
+          selectedCard,
+          serverAdvanceCardIds: new Set<string>()
+        })
+      );
+      await flushPromises();
+    });
+
+    expect(prefetchedCardIds()).toEqual(["card-b", "card-c"]);
+
+    await act(async () => {
+      cardC.resolve(buildQueueCard("card-c"));
+      await flushPromises();
+    });
+
+    expect(controller().getPrefetchedCards().get("card-c")?.id).toBe("card-c");
+  });
+
   it("prunes buffered and in-flight cards when the queue changes", async () => {
     const firstCardC = createDeferred<ReviewQueueCard | null>();
     let cardCPrefetches = 0;
