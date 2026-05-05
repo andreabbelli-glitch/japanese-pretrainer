@@ -57,10 +57,10 @@ Verifica completa del setup:
 ./scripts/tooling-doctor.sh
 ```
 
-La suite Vitest e volutamente limitata a pochi worker in `vitest.config.ts`.
-Molti test creano database SQLite temporanei, eseguono migrazioni e importano
-bundle reali; su macchine locali saturare tutti i core rende i test piu lenti e
-fragili invece che piu rapidi.
+La suite Vitest esegue i file test in sequenza in `vitest.config.ts`. Molti
+test creano database SQLite temporanei, eseguono migrazioni e importano bundle
+reali; su macchine locali e sandbox Codex il parallelismo per file rende i test
+piu lenti e fragili invece che piu rapidi, fino a timeout del worker pool.
 
 ## Codex locale in sandbox
 
