@@ -80,6 +80,9 @@ export function SettingsPage({
   const returnContext = resolveReturnToContext(returnTo);
   const backLabel = resolveReturnToLabel(returnContext);
   const showAccountSettings = isAuthEnabled();
+  const displayedReviewLimitOptions = buildReviewLimitOptions(
+    settings.reviewDailyLimit
+  );
 
   return (
     <div className="settings-page">
@@ -194,7 +197,7 @@ export function SettingsPage({
                 defaultValue={String(settings.reviewDailyLimit)}
                 name="reviewDailyLimit"
               >
-                {reviewLimitOptions.map((value) => (
+                {displayedReviewLimitOptions.map((value) => (
                   <option key={value} value={value}>
                     {value} nuove
                   </option>
@@ -280,4 +283,12 @@ export function SettingsPage({
       ) : null}
     </div>
   );
+}
+
+function buildReviewLimitOptions(currentLimit: number) {
+  const options = new Set<number>(reviewLimitOptions);
+
+  options.add(currentLimit);
+
+  return [...options].sort((left, right) => left - right);
 }

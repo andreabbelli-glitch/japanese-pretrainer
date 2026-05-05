@@ -116,6 +116,28 @@ describe("settings page", () => {
     expect(markup).toContain("Disattivato");
     expect(markup).toContain("pnpm fsrs:optimize");
   });
+
+  it("preserves a valid persisted review daily limit outside the preset list", () => {
+    clearAuthEnv();
+
+    const markup = renderToStaticMarkup(
+      createElement(SettingsPage, {
+        fsrsOptimizerStatus: buildFsrsOptimizerStatus(),
+        saved: false,
+        settings: {
+          furiganaMode: "hover",
+          glossaryDefaultSort: "lesson_order",
+          kanjiClashDailyNewLimit: 5,
+          kanjiClashDefaultScope: "global",
+          kanjiClashManualDefaultSize: 20,
+          reviewFrontFurigana: true,
+          reviewDailyLimit: 7
+        }
+      })
+    );
+
+    expect(markup).toContain('<option value="7" selected="">7 nuove</option>');
+  });
 });
 
 function clearAuthEnv() {
