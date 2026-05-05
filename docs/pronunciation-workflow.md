@@ -46,6 +46,13 @@ Il resolver:
 Non aggiungere mai un limite batch implicito. Usa `--limit` solo quando l'utente
 chiede esplicitamente un numero massimo o uno smoke test.
 
+Per debug mirati del solo riuso interno, senza aprire Forvo, usa il comando
+scopato e in dry-run:
+
+```bash
+./scripts/with-node.sh pnpm pronunciations:reuse -- --media-slug <media-slug> --dry-run
+```
+
 ## Forvo manuale
 
 Il Forvo manuale richiede un TTY interattivo. In Codex avvia il comando con

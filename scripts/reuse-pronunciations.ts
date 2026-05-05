@@ -96,25 +96,28 @@ function parseCliOptions(argv: string[]): CliOptions {
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
 
+    if (argument === "--") {
+      continue;
+    }
+
     if (argument === "--content-root") {
-      options.contentRoot = argv[index + 1] ?? options.contentRoot;
+      options.contentRoot = readOptionValue(argv, index, "--content-root");
       index += 1;
       continue;
     }
 
-    if (argument === "--media") {
-      const mediaSlug = argv[index + 1];
-
-      if (mediaSlug) {
-        options.mediaSlugs.push(mediaSlug);
-      }
-
+    if (argument === "--media" || argument === "--media-slug") {
+      options.mediaSlugs.push(readOptionValue(argv, index, argument));
       index += 1;
       continue;
     }
 
     if (argument === "--known-missing-file") {
-      options.knownMissingPath = argv[index + 1] ?? options.knownMissingPath;
+      options.knownMissingPath = readOptionValue(
+        argv,
+        index,
+        "--known-missing-file"
+      );
       index += 1;
       continue;
     }
@@ -123,7 +126,22 @@ function parseCliOptions(argv: string[]): CliOptions {
       options.dryRun = true;
       continue;
     }
+
+    throw new Error(`Unknown argument: ${argument}`);
   }
 
-  return options;
+  return {
+    ...options,
+    mediaSlugs: [...new Set(options.mediaSlugs)]
+  };
+}
+
+function readOptionValue(argv: string[], index: number, optionName: string) {
+  const value = argv[index + 1];
+
+  if (!value || value.startsWith("--")) {
+    throw new Error(`Missing value for ${optionName}.`);
+  }
+
+  return value;
 }
