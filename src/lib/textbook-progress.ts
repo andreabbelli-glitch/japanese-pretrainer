@@ -3,7 +3,11 @@ import { eq, sql } from "drizzle-orm";
 import { db, type DatabaseClient } from "@/db";
 import { lessonProgress } from "@/db/schema";
 import { updateStudySettings, type FuriganaMode } from "@/lib/settings";
-import { formatLessonProgressStatusLabel } from "@/lib/study-format";
+import {
+  calculatePercent,
+  compareIsoDates,
+  formatLessonProgressStatusLabel
+} from "@/lib/study-format";
 import type {
   TextbookLessonData,
   TextbookLessonNavItem
@@ -153,6 +157,13 @@ export function applyLessonOpenedState(
 
   const nextStatus = openedState.status;
   const nextStatusLabel = formatLessonProgressStatusLabel(nextStatus);
+  const previousStatus = currentLessonItem?.status ?? data.lesson.status;
+  const completionDelta =
+    Number(nextStatus === "completed") - Number(previousStatus === "completed");
+  const nextCompletedLessons = Math.max(
+    0,
+    Math.min(data.totalLessons, data.completedLessons + completionDelta)
+  );
   const updatedLesson =
     currentLessonItem === null
       ? null
@@ -169,11 +180,15 @@ export function applyLessonOpenedState(
           index === currentLessonIndex ? updatedLesson : lesson
         );
   const activeLesson =
-    updatedLesson && nextStatus === "in_progress"
+    hasStatusChange
+      ? selectActiveLesson(lessons)
+      : updatedLesson && nextStatus === "in_progress"
       ? updatedLesson
       : data.activeLesson;
   const resumeLesson =
-    updatedLesson && data.resumeLesson?.id === updatedLesson.id
+    hasStatusChange
+      ? selectResumeLesson(lessons)
+      : updatedLesson && data.resumeLesson?.id === updatedLesson.id
       ? updatedLesson
       : data.resumeLesson;
   const groups =
@@ -184,6 +199,13 @@ export function applyLessonOpenedState(
             ? group
             : {
                 ...group,
+                completedLessons: Math.max(
+                  0,
+                  Math.min(
+                    group.totalLessons,
+                    group.completedLessons + completionDelta
+                  )
+                ),
                 lessons: group.lessons.map((lesson) =>
                   lesson.id === updatedLesson.id ? updatedLesson : lesson
                 )
@@ -193,6 +215,7 @@ export function applyLessonOpenedState(
   return {
     ...data,
     activeLesson,
+    completedLessons: nextCompletedLessons,
     groups,
     lesson: {
       ...data.lesson,
@@ -200,8 +223,36 @@ export function applyLessonOpenedState(
       statusLabel: nextStatusLabel
     },
     lessons,
-    resumeLesson
+    resumeLesson,
+    textbookProgressPercent: calculatePercent(
+      nextCompletedLessons,
+      data.totalLessons
+    )
   };
+}
+
+function selectActiveLesson(lessons: TextbookLessonNavItem[]) {
+  const inProgressLessons = lessons.filter(
+    (lesson) => lesson.status === "in_progress"
+  );
+
+  if (inProgressLessons.length === 0) {
+    return null;
+  }
+
+  return inProgressLessons.reduce((best, candidate) =>
+    compareIsoDates(best.lastOpenedAt, candidate.lastOpenedAt) < 0
+      ? candidate
+      : best
+  );
+}
+
+function selectResumeLesson(lessons: TextbookLessonNavItem[]) {
+  return (
+    lessons.find((lesson) => lesson.status !== "completed") ??
+    lessons[0] ??
+    null
+  );
 }
 
 function defaultLessonOpenRenderErrorHandler(error: unknown) {

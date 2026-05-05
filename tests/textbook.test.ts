@@ -629,6 +629,38 @@ describe("textbook data", () => {
     ).toBe("in_progress");
   });
 
+  it("reconciles aggregate completion when the opened lesson state is newer than the client payload", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "not_started",
+        startedAt: null,
+        completedAt: null,
+        lastOpenedAt: null
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const lessonData = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(lessonData?.lesson.status).toBe("not_started");
+    expect(lessonData?.completedLessons).toBe(0);
+
+    const patched = applyLessonOpenedState(lessonData!, {
+      lastOpenedAt: "2026-03-12T10:00:00.000Z",
+      startedAt: "2026-03-09T10:00:00.000Z",
+      status: "completed"
+    });
+
+    expect(patched.lesson.status).toBe("completed");
+    expect(patched.completedLessons).toBe(1);
+    expect(patched.groups[0]?.completedLessons).toBe(1);
+    expect(patched.textbookProgressPercent).toBe(100);
+  });
+
   it("keeps completed lesson progress completed when reopening the lesson", async () => {
     await database
       .update(lessonProgress)
