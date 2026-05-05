@@ -213,13 +213,11 @@ export async function refreshPronunciationReuseContextBundle(
 }
 
 async function collectAudioBackedEntries(bundles: NormalizedMediaBundle[]) {
-  const entries: AudioBackedEntry[] = [];
+  const entriesByBundle = await Promise.all(
+    bundles.map((bundle) => collectAudioBackedEntriesForBundle(bundle))
+  );
 
-  for (const bundle of bundles) {
-    entries.push(...(await collectAudioBackedEntriesForBundle(bundle)));
-  }
-
-  return entries;
+  return entriesByBundle.flat();
 }
 
 async function collectAudioBackedEntriesForBundle(
