@@ -64,6 +64,15 @@ describe("pronunciation resolve", () => {
       lessonSlug: "next-lesson",
       mediaSlug: "sample-game"
     });
+
+    expect(
+      parseTextbookLessonUrl(
+        "/media/sample-game/textbook/next-lesson?foo=1#bar"
+      )
+    ).toEqual({
+      lessonSlug: "next-lesson",
+      mediaSlug: "sample-game"
+    });
   });
 
   it("rejects non-textbook routes while parsing lesson URLs", () => {

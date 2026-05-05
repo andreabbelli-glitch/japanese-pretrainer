@@ -198,6 +198,14 @@ export function parseTextbookLessonUrl(value: string) {
 
 function readLessonUrlPathname(value: string) {
   if (!hasUrlProtocol(value)) {
+    if (value.startsWith("/") && !value.startsWith("//")) {
+      try {
+        return new URL(value, "https://jcs.local").pathname;
+      } catch {
+        return null;
+      }
+    }
+
     return value;
   }
 
