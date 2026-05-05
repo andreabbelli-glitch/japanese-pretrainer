@@ -1,9 +1,8 @@
-import { timingSafeEqual } from "node:crypto";
-
 import { NextResponse } from "next/server";
 
 import { db } from "@/db";
 import { runFsrsOptimizer } from "@/lib/fsrs-optimizer-trainer";
+import { matchesSecret } from "@/lib/secret-compare";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -59,19 +58,4 @@ function parseBearerToken(authorization: string | null) {
   const token = authorization.slice(prefix.length).trim();
 
   return token.length > 0 ? token : null;
-}
-
-function matchesSecret(providedSecret: string | null, configuredSecret: string) {
-  if (!providedSecret) {
-    return false;
-  }
-
-  const providedBuffer = Buffer.from(providedSecret);
-  const configuredBuffer = Buffer.from(configuredSecret);
-
-  if (providedBuffer.length !== configuredBuffer.length) {
-    return false;
-  }
-
-  return timingSafeEqual(providedBuffer, configuredBuffer);
 }

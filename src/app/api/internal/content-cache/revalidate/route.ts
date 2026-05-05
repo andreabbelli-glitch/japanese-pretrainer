@@ -1,10 +1,9 @@
-import { timingSafeEqual } from "node:crypto";
-
 import { NextResponse } from "next/server";
 
 import { db } from "@/db";
 import { getMediaBySlug } from "@/db/queries";
 import { invalidateImportedContentCaches } from "@/lib/cache-invalidation-policy";
+import { matchesSecret } from "@/lib/secret-compare";
 
 type RevalidationRequest = {
   importId?: unknown;
@@ -132,22 +131,4 @@ function normalizeLessons(lessons: unknown) {
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
-}
-
-function matchesSecret(
-  providedSecret: string | undefined,
-  configuredSecret: string
-) {
-  if (!providedSecret) {
-    return false;
-  }
-
-  const providedBuffer = Buffer.from(providedSecret);
-  const configuredBuffer = Buffer.from(configuredSecret);
-
-  if (providedBuffer.length !== configuredBuffer.length) {
-    return false;
-  }
-
-  return timingSafeEqual(providedBuffer, configuredBuffer);
 }
