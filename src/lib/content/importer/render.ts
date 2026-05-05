@@ -38,8 +38,12 @@ export function normalizeSourceFile(
   sourceFile: string
 ): string {
   const relativePath = path.relative(contentRoot, sourceFile);
+  const exitsContentRoot =
+    relativePath === ".." ||
+    relativePath.startsWith(`..${path.sep}`) ||
+    path.isAbsolute(relativePath);
 
-  if (!relativePath.startsWith("..")) {
+  if (!exitsContentRoot) {
     return relativePath.split(path.sep).join("/");
   }
 
