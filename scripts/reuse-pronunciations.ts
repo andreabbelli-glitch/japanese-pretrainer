@@ -2,6 +2,8 @@ import path from "node:path";
 
 import { parseContentRoot } from "../src/lib/content/validator.ts";
 import {
+  createPronunciationReuseContext,
+  refreshPronunciationReuseContextBundle,
   reusePronunciationsAcrossMedia,
   writeBundlePronunciationPendingSummary
 } from "../src/lib/pronunciation.ts";
@@ -32,12 +34,16 @@ if (!parseResult.ok) {
       options.mediaSlugs.length === 0 ||
       options.mediaSlugs.includes(bundle.mediaSlug)
   );
+  const reuseContext = await createPronunciationReuseContext(
+    parseResult.data.bundles
+  );
 
   for (const bundle of bundles) {
     const summary = await reusePronunciationsAcrossMedia({
       allBundles: parseResult.data.bundles,
       bundle,
-      dryRun: options.dryRun
+      dryRun: options.dryRun,
+      reuseContext
     });
 
     for (const result of summary.results) {
@@ -59,6 +65,10 @@ if (!parseResult.ok) {
     }
 
     if (!options.dryRun) {
+      if (summary.reused > 0) {
+        await refreshPronunciationReuseContextBundle(reuseContext, bundle);
+      }
+
       const pendingSummary = await writeBundlePronunciationPendingSummary({
         bundle,
         knownMissingPath: path.resolve(options.knownMissingPath)
