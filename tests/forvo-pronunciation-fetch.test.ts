@@ -154,6 +154,28 @@ describe("forvo pronunciation helpers", () => {
     });
   }, 60_000);
 
+  it("rejects unknown manual CLI flags before starting the workflow", async () => {
+    await expect(
+      execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          fetchForvoScriptPath,
+          "--bogus",
+          "--manual",
+          "--dry-run",
+          "--content-root",
+          validContentRoot,
+          "--limit",
+          "0"
+        ],
+        { cwd: process.cwd() }
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining("Unknown argument: --bogus")
+    });
+  }, 60_000);
+
   it("fails the CLI when the word-add prefill is disabled", async () => {
     await expect(
       execFileAsync(

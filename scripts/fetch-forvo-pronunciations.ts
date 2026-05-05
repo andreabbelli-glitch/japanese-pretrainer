@@ -401,6 +401,8 @@ function parseCliOptions(argv: string[]): CliOptions {
       options.keepBrowserOpen = true;
       continue;
     }
+
+    throw new Error(`Unknown argument: ${argument}`);
   }
 
   return options;
