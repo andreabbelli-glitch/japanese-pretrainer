@@ -82,6 +82,9 @@ La documentazione operativa dettagliata di Forvo e' in
 
 - Non aprire Forvo per entry che possono riusare audio gia presente in un altro
   media compatibile.
+- I flag con valore (`--media`, `--media-slug`, `--known-missing-file` e
+  simili) devono avere sempre un valore esplicito: il workflow deve fermarsi
+  prima di partire se il valore manca o se al suo posto arriva un altro flag.
 - Non usare `pnpm pronunciations:forvo` come entry point standard quando lo
   scope reale e' `review`, `next-lesson` o una pagina textbook: usa
   `pnpm pronunciations:resolve`.

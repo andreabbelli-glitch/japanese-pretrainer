@@ -62,37 +62,21 @@ function parseCliOptions(args: string[]) {
     }
 
     if (value === "--content-root") {
-      const nextValue = args[index + 1];
-
-      if (!nextValue) {
-        throw new Error("Missing value for --content-root.");
-      }
-
-      contentRoot = path.resolve(nextValue);
+      contentRoot = path.resolve(
+        readOptionValue(args, index, "--content-root")
+      );
       index += 1;
       continue;
     }
 
     if (value === "--media-slug") {
-      const nextValue = args[index + 1];
-
-      if (!nextValue) {
-        throw new Error("Missing value for --media-slug.");
-      }
-
-      mediaSlugs.push(nextValue);
+      mediaSlugs.push(readOptionValue(args, index, "--media-slug"));
       index += 1;
       continue;
     }
 
     if (value === "--known-missing-file") {
-      const nextValue = args[index + 1];
-
-      if (!nextValue) {
-        throw new Error("Missing value for --known-missing-file.");
-      }
-
-      knownMissingPath = nextValue;
+      knownMissingPath = readOptionValue(args, index, "--known-missing-file");
       index += 1;
       continue;
     }
@@ -105,4 +89,14 @@ function parseCliOptions(args: string[]) {
     knownMissingPath,
     mediaSlugs: [...new Set(mediaSlugs)]
   };
+}
+
+function readOptionValue(args: string[], index: number, flag: string) {
+  const value = args[index + 1];
+
+  if (!value || value.startsWith("--")) {
+    throw new Error(`Missing value for ${flag}.`);
+  }
+
+  return value;
 }
