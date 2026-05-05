@@ -120,7 +120,7 @@ export async function persistForvoWordAddRequestRegistry(
     `${JSON.stringify(
       {
         version: 1,
-        entries: registry.entries.sort((left, right) => {
+        entries: [...registry.entries].sort((left, right) => {
           const mediaDelta = left.mediaSlug.localeCompare(right.mediaSlug);
 
           if (mediaDelta !== 0) {

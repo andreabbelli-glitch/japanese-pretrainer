@@ -126,6 +126,7 @@ describe("forvo known-missing registry", () => {
       ],
       version: 1
     };
+    const originalEntryOrder = registry.entries.map((entry) => entry.entryId);
 
     await persistForvoKnownMissingRegistry(registryPath, registry);
 
@@ -159,6 +160,9 @@ describe("forvo known-missing registry", () => {
         }
       ]
     });
+    expect(registry.entries.map((entry) => entry.entryId)).toEqual(
+      originalEntryOrder
+    );
   });
 
   it("adds known-missing entries once per media, kind, and entry id", () => {
