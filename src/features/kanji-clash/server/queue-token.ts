@@ -3,7 +3,7 @@ import {
   verifySignedPayloadToken
 } from "@/lib/signed-token";
 import { materializeKanjiClashSessionRound } from "../model/queue.ts";
-import { buildKanjiClashPairKey } from "../model/utils.ts";
+import { buildKanjiClashPairKey } from "../model/keys.ts";
 import type {
   KanjiClashEligibleSubject,
   KanjiClashPairReason,

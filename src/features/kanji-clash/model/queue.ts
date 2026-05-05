@@ -12,7 +12,7 @@ import {
   dedupeStable,
   normalizePositiveInteger
 } from "./shared-utils.ts";
-import { hashKanjiClashString } from "./utils.ts";
+import { hashKanjiClashString } from "./hash.ts";
 
 const DEFAULT_KANJI_CLASH_DAILY_NEW_LIMIT = 5;
 

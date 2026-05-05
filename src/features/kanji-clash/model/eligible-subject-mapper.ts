@@ -8,7 +8,7 @@ import {
   collectKanjiFromSurfaces,
   isEligibleKanjiClashCardFront,
   normalizeKanjiClashSurface
-} from "./utils.ts";
+} from "./surface.ts";
 
 export type EligibleKanjiClashSubjectRow = {
   cardFront: string;

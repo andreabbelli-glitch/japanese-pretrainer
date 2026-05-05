@@ -1,4 +1,4 @@
-import { isKanjiClashKanjiCharacter } from "../model/utils.ts";
+import { isKanjiClashKanjiCharacter } from "../model/surface.ts";
 import type {
   BuildSimilarKanjiDatasetInput,
   SimilarKanjiDataset,

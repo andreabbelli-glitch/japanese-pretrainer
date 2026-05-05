@@ -22,7 +22,7 @@ import type {
 import {
   collectKanjiFromSurfaces,
   normalizeKanjiClashSurface
-} from "../model/utils.ts";
+} from "../model/surface.ts";
 
 type ManualContrastTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]

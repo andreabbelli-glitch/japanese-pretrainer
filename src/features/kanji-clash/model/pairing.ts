@@ -8,21 +8,23 @@ import {
   buildKanjiClashSimilarKanjiSwap,
   listKanjiClashSimilarKanjiTargets
 } from "./similar-kanji.ts";
+import { orderKanjiClashSubjects } from "./keys.ts";
+import {
+  isKanjiClashKanjiCharacter,
+  splitKanjiClashSurfaceIntoCodePoints
+} from "./surface.ts";
 import {
   hasContextualizedHeadFamilySurface,
   hasCrossEdgeMixedStemSurface,
-  hasSharedContextualPrefixSurface,
   getSharedKanji,
   hasQualifiedContainedCloneSurface,
   hasSameKanjiCoreReadingSurface,
-  hasSharedLexicalCoreSurface,
   hasSharedComparisonSurface,
+  hasSharedContextualPrefixSurface,
+  hasSharedLexicalCoreSurface,
   hasSharedNormalizedSurface,
-  hasSharedReading,
-  isKanjiClashKanjiCharacter,
-  orderKanjiClashSubjects,
-  splitKanjiClashSurfaceIntoCodePoints
-} from "./utils.ts";
+  hasSharedReading
+} from "./surface-relations.ts";
 
 export function buildKanjiClashInvertedIndex(
   subjects: KanjiClashEligibleSubject[]

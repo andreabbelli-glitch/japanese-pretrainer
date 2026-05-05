@@ -11,7 +11,7 @@ import {
   type EntryType
 } from "@/db/schema";
 
-import { buildKanjiClashContrastKey } from "../model/utils";
+import { buildKanjiClashContrastKey } from "../model/keys.ts";
 import {
   REVIEW_FORCED_CONTRAST_SAME_SUBJECT_ERROR,
   REVIEW_FORCED_CONTRAST_TARGET_UNAVAILABLE_ERROR
