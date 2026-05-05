@@ -1,6 +1,9 @@
 import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { execFile } from "node:child_process";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
 
 import { afterEach, describe, expect, it, vi } from "vitest";
 
@@ -11,6 +14,18 @@ import {
   parsePitchAccentWordList,
   resolvePitchAccentForEntry
 } from "@/lib/pitch-accent-fetch";
+
+const execFileAsync = promisify(execFile);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const repoRoot = path.resolve(__dirname, "..");
+const validContentRoot = path.resolve(
+  __dirname,
+  "fixtures",
+  "content",
+  "valid",
+  "content"
+);
 
 const sampleOjadHtml = `
 <table>
@@ -35,6 +50,20 @@ describe("pitch accent fetch helpers", () => {
   afterEach(() => {
     vi.unstubAllGlobals();
   });
+
+  it("rejects unknown CLI flags before running the pitch accent workflow", async () => {
+    await expect(
+      runPitchAccentCli(
+        "--content-root",
+        validContentRoot,
+        "--dry-run",
+        "--limit=0",
+        "--bogus"
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining("Unknown argument: --bogus")
+    });
+  }, 60_000);
 
   it("extracts a single pitch accent from Wiktionary ja-pron templates", () => {
     const source = `
@@ -758,3 +787,17 @@ describe("pitch accent fetch helpers", () => {
     }
   });
 });
+
+function runPitchAccentCli(...args: string[]) {
+  return execFileAsync(
+    process.execPath,
+    [
+      "--experimental-strip-types",
+      path.join(repoRoot, "scripts", "fetch-pitch-accents.ts"),
+      ...args
+    ],
+    {
+      cwd: repoRoot
+    }
+  );
+}

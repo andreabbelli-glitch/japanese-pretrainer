@@ -97,6 +97,10 @@ function parseCliOptions(argv: string[]): CliOptions {
   for (let index = 0; index < normalizedArgv.length; index += 1) {
     const argument = normalizedArgv[index];
 
+    if (argument === "--") {
+      continue;
+    }
+
     if (argument === "--content-root") {
       options.contentRoot = normalizedArgv[index + 1] ?? options.contentRoot;
       index += 1;
@@ -223,6 +227,8 @@ function parseCliOptions(argv: string[]): CliOptions {
       options.refresh = true;
       continue;
     }
+
+    throw new Error(`Unknown argument: ${argument}`);
   }
 
   return options;
