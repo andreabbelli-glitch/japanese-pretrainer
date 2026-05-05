@@ -1,11 +1,14 @@
 import { revalidatePath } from "next/cache";
 
 import {
-  revalidateGlossarySummaryCache,
-  revalidateMediaListCache,
-  revalidateReviewSummaryCache,
-  revalidateTextbookLessonBodyCache,
-  revalidateTextbookTooltipCache,
+  GLOSSARY_SUMMARY_TAG,
+  MEDIA_LIST_TAG,
+  REVIEW_FIRST_CANDIDATE_TAG,
+  buildGlossarySummaryTags,
+  buildReviewSummaryTags,
+  buildTextbookLessonBodyTags,
+  buildTextbookTooltipTags,
+  revalidateDataCacheTags,
   updateGlossarySummaryCache,
   updateMediaListCache,
   updateReviewSummaryCache,
@@ -64,14 +67,17 @@ export function invalidateImportedContentCaches(input: {
   mediaIds: string[];
   mediaSlugs: string[];
 }) {
-  revalidateMediaListCache();
-  revalidateGlossarySummaryCache();
-  revalidateReviewSummaryCache();
-
-  for (const mediaId of input.mediaIds) {
-    revalidateGlossarySummaryCache(mediaId);
-    revalidateReviewSummaryCache(mediaId);
-  }
+  revalidateDataCacheTags([
+    MEDIA_LIST_TAG,
+    REVIEW_FIRST_CANDIDATE_TAG,
+    GLOSSARY_SUMMARY_TAG,
+    ...buildGlossarySummaryTags(input.mediaIds),
+    ...buildReviewSummaryTags(input.mediaIds),
+    ...input.lessons.flatMap((lesson) => [
+      ...buildTextbookLessonBodyTags(lesson),
+      ...buildTextbookTooltipTags(lesson)
+    ])
+  ]);
 
   revalidatePath("/");
   revalidatePath("/glossary");
@@ -87,8 +93,6 @@ export function invalidateImportedContentCaches(input: {
   }
 
   for (const lesson of input.lessons) {
-    revalidateTextbookLessonBodyCache(lesson);
-    revalidateTextbookTooltipCache(lesson);
     revalidatePath(
       mediaTextbookLessonHref(lesson.mediaSlug, lesson.lessonSlug)
     );

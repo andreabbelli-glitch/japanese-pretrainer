@@ -101,6 +101,12 @@ export async function runWithTaggedCache<T>(input: {
   })();
 }
 
+export function revalidateDataCacheTags(tags: string[]) {
+  for (const tag of dedupeTags(tags)) {
+    safeRevalidateTag(tag);
+  }
+}
+
 export const getMediaBySlugCached = cache(
   (database: DatabaseClient, slug: string) => {
     const inFlightBySlug = inFlightMediaBySlugSnapshots.get(database);

@@ -2,20 +2,12 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const {
   getMediaBySlugMock,
-  revalidateGlossarySummaryCacheMock,
-  revalidateTextbookLessonBodyCacheMock,
-  revalidateMediaListCacheMock,
-  revalidatePathMock,
-  revalidateReviewSummaryCacheMock,
-  revalidateTextbookTooltipCacheMock
+  revalidateDataCacheTagsMock,
+  revalidatePathMock
 } = vi.hoisted(() => ({
   getMediaBySlugMock: vi.fn(),
-  revalidateGlossarySummaryCacheMock: vi.fn(),
-  revalidateTextbookLessonBodyCacheMock: vi.fn(),
-  revalidateMediaListCacheMock: vi.fn(),
-  revalidatePathMock: vi.fn(),
-  revalidateReviewSummaryCacheMock: vi.fn(),
-  revalidateTextbookTooltipCacheMock: vi.fn()
+  revalidateDataCacheTagsMock: vi.fn(),
+  revalidatePathMock: vi.fn()
 }));
 
 vi.mock("next/cache", () => ({
@@ -30,13 +22,14 @@ vi.mock("@/db/queries", () => ({
   getMediaBySlug: getMediaBySlugMock
 }));
 
-vi.mock("@/lib/data-cache", () => ({
-  revalidateGlossarySummaryCache: revalidateGlossarySummaryCacheMock,
-  revalidateMediaListCache: revalidateMediaListCacheMock,
-  revalidateReviewSummaryCache: revalidateReviewSummaryCacheMock,
-  revalidateTextbookLessonBodyCache: revalidateTextbookLessonBodyCacheMock,
-  revalidateTextbookTooltipCache: revalidateTextbookTooltipCacheMock
-}));
+vi.mock("@/lib/data-cache", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/data-cache")>();
+
+  return {
+    ...actual,
+    revalidateDataCacheTags: revalidateDataCacheTagsMock
+  };
+});
 
 import { POST } from "@/app/api/internal/content-cache/revalidate/route";
 
@@ -44,12 +37,8 @@ describe("content cache revalidation route", () => {
   beforeEach(() => {
     process.env.CONTENT_CACHE_REVALIDATE_SECRET = "test-secret";
     getMediaBySlugMock.mockReset();
-    revalidateGlossarySummaryCacheMock.mockReset();
-    revalidateTextbookLessonBodyCacheMock.mockReset();
-    revalidateMediaListCacheMock.mockReset();
+    revalidateDataCacheTagsMock.mockReset();
     revalidatePathMock.mockReset();
-    revalidateReviewSummaryCacheMock.mockReset();
-    revalidateTextbookTooltipCacheMock.mockReset();
   });
 
   it("revalidates both global and media-specific summary tags for imported media", async () => {
@@ -86,15 +75,23 @@ describe("content cache revalidation route", () => {
     );
 
     expect(response.status).toBe(200);
-    expect(revalidateMediaListCacheMock).toHaveBeenCalledTimes(1);
-    expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledWith();
-    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith();
-    expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledWith("media_dm");
-    expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledWith("media_p5");
-    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith("media_dm");
-    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith("media_p5");
-    expect(revalidateTextbookLessonBodyCacheMock).toHaveBeenCalledTimes(2);
-    expect(revalidateTextbookTooltipCacheMock).toHaveBeenCalledTimes(2);
+    expect(revalidateDataCacheTagsMock).toHaveBeenCalledTimes(1);
+    expect(revalidateDataCacheTagsMock).toHaveBeenCalledWith(
+      expect.arrayContaining([
+        "media-list",
+        "review-first-candidate",
+        "glossary-summary",
+        "glossary-summary:media_dm",
+        "glossary-summary:media_p5",
+        "review-summary",
+        "review-summary:media_dm",
+        "review-summary:media_p5",
+        "textbook-lesson-body:duel-masters:lesson-1",
+        "textbook-lesson-body:persona:lesson-2",
+        "textbook-tooltips:duel-masters:lesson-1",
+        "textbook-tooltips:persona:lesson-2"
+      ])
+    );
   });
 
   it("revalidates parent media pages when the payload only lists lessons", async () => {
@@ -166,8 +163,12 @@ describe("content cache revalidation route", () => {
       ok: true
     });
     expect(response.status).toBe(200);
-    expect(revalidateTextbookLessonBodyCacheMock).toHaveBeenCalledTimes(1);
-    expect(revalidateTextbookTooltipCacheMock).toHaveBeenCalledTimes(1);
+    expect(revalidateDataCacheTagsMock).toHaveBeenCalledWith(
+      expect.arrayContaining([
+        "textbook-lesson-body:duel-masters:lesson-1",
+        "textbook-tooltips:duel-masters:lesson-1"
+      ])
+    );
     expect(getMediaBySlugMock).toHaveBeenCalledTimes(1);
   });
 });
