@@ -288,9 +288,17 @@ function buildSentenceFlowMetric(
 function buildRanMetric(
   results: readonly KatakanaSpeedAnalyticsExerciseResult[]
 ): KatakanaSpeedRanMetric | null {
-  const result = [...results]
-    .reverse()
-    .find((candidate) => typeof candidate.metrics.itemsPerSecond === "number");
+  let result: KatakanaSpeedAnalyticsExerciseResult | null = null;
+
+  for (let index = results.length - 1; index >= 0; index -= 1) {
+    const candidate = results[index];
+
+    if (candidate && Number.isFinite(candidate.metrics.itemsPerSecond)) {
+      result = candidate;
+      break;
+    }
+  }
+
   if (!result) {
     return null;
   }
