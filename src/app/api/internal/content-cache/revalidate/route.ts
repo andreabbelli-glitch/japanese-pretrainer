@@ -36,12 +36,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
-  const mediaSlugs = normalizeMediaSlugs(body.mediaSlugs);
   const lessons = normalizeLessons(body.lessons);
-  const mediaIds = await resolveMediaIds([
-    ...mediaSlugs,
+  const mediaSlugs = normalizeMediaSlugs([
+    ...normalizeMediaSlugs(body.mediaSlugs),
     ...lessons.map((lesson) => lesson.mediaSlug)
   ]);
+  const mediaIds = await resolveMediaIds(mediaSlugs);
 
   invalidateImportedContentCaches({
     lessons,

@@ -97,6 +97,44 @@ describe("content cache revalidation route", () => {
     expect(revalidateTextbookTooltipCacheMock).toHaveBeenCalledTimes(2);
   });
 
+  it("revalidates parent media pages when the payload only lists lessons", async () => {
+    getMediaBySlugMock.mockResolvedValue({ id: "media_dm" });
+
+    const response = await POST(
+      new Request(
+        "https://example.test/api/internal/content-cache/revalidate",
+        {
+          body: JSON.stringify({
+            lessons: [
+              { lessonSlug: "lesson-1", mediaSlug: "duel-masters" }
+            ]
+          }),
+          headers: {
+            "content-type": "application/json",
+            "x-revalidate-secret": "test-secret"
+          },
+          method: "POST"
+        }
+      )
+    );
+
+    await expect(response.json()).resolves.toMatchObject({
+      lessonCount: 1,
+      mediaCount: 1,
+      ok: true
+    });
+    expect(revalidatePathMock).toHaveBeenCalledWith("/media/duel-masters");
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      "/media/duel-masters/progress"
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      "/media/duel-masters/textbook"
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      "/media/duel-masters/textbook/lesson-1"
+    );
+  });
+
   it("ignores malformed payload members instead of failing the revalidation request", async () => {
     getMediaBySlugMock.mockResolvedValue({ id: "media_dm" });
 
