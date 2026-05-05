@@ -43,7 +43,6 @@ describe("submitKanjiClashAnswerAction", () => {
     });
 
     await runMigrations(database);
-    await seedKanjiClashFixture(database);
   });
 
   afterEach(async () => {
@@ -52,6 +51,8 @@ describe("submitKanjiClashAnswerAction", () => {
   });
 
   it("validates the current round and delegates the answer mutation", async () => {
+    await seedKanjiClashFixture(database);
+
     const queue = await loadKanjiClashQueueSnapshot({
       database,
       mode: "manual",
@@ -91,6 +92,8 @@ describe("submitKanjiClashAnswerAction", () => {
   });
 
   it("rejects stale pair keys before writing state", async () => {
+    await seedKanjiClashFixture(database);
+
     const queue = await loadKanjiClashQueueSnapshot({
       database,
       mode: "manual",
@@ -122,6 +125,8 @@ describe("submitKanjiClashAnswerAction", () => {
   });
 
   it("rejects replaying the same round payload after the first submit wins", async () => {
+    await seedKanjiClashFixture(database);
+
     const queue = await loadKanjiClashQueueSnapshot({
       database,
       mode: "manual",
@@ -180,6 +185,8 @@ describe("submitKanjiClashAnswerAction", () => {
   });
 
   it("rejects tampered queue tokens before writing state", async () => {
+    await seedKanjiClashFixture(database);
+
     const queue = await loadKanjiClashQueueSnapshot({
       database,
       mode: "manual",
@@ -402,6 +409,8 @@ describe("submitKanjiClashAnswerAction", () => {
   });
 
   it("archives and restores forced manual contrasts by resetting both directions due now", async () => {
+    await seedKanjiClashFixture(database);
+
     const queue = await loadKanjiClashQueueSnapshot({
       database,
       mode: "manual",
