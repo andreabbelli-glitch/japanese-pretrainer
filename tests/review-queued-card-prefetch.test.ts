@@ -235,6 +235,79 @@ describe("useReviewQueuedCardPrefetch", () => {
     expect(controller().getPrefetchedCards().has("card-d")).toBe(false);
   });
 
+  it("keeps the newest prefetch when an older card request resolves after re-entering the queue", async () => {
+    const firstCardB = createDeferred<ReviewQueueCard | null>();
+    const secondCardB = createDeferred<ReviewQueueCard | null>();
+    let cardBPrefetches = 0;
+
+    mocks.prefetchReviewCardSessionAction.mockImplementation(
+      ({ cardId }: { cardId: string }) => {
+        if (cardId === "card-b") {
+          cardBPrefetches += 1;
+          return cardBPrefetches === 1
+            ? firstCardB.promise
+            : secondCardB.promise;
+        }
+
+        return Promise.resolve(buildQueueCard(cardId));
+      }
+    );
+    const controller = await renderPrefetchHook({
+      activeQueueCardIds: ["card-a", "card-b"],
+      queueCardIds: ["card-a", "card-b"],
+      queueIndex: 0,
+      selectedCard: buildQueueCard("card-a")
+    });
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          activeQueueCardIds: ["card-a", "card-c"],
+          queueCardIds: ["card-a", "card-c"],
+          queueIndex: 0,
+          selectedCard: buildQueueCard("card-a")
+        })
+      );
+      await flushPromises();
+    });
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          activeQueueCardIds: ["card-a", "card-b"],
+          queueCardIds: ["card-a", "card-b"],
+          queueIndex: 0,
+          selectedCard: buildQueueCard("card-a")
+        })
+      );
+      await flushPromises();
+    });
+
+    await act(async () => {
+      secondCardB.resolve({
+        ...buildQueueCard("card-b"),
+        front: "fresh card-b"
+      });
+      await flushPromises();
+    });
+
+    expect(controller().getPrefetchedCards().get("card-b")?.front).toBe(
+      "fresh card-b"
+    );
+
+    await act(async () => {
+      firstCardB.resolve({
+        ...buildQueueCard("card-b"),
+        front: "stale card-b"
+      });
+      await flushPromises();
+    });
+
+    expect(controller().getPrefetchedCards().get("card-b")?.front).toBe(
+      "fresh card-b"
+    );
+  });
+
   it("returns a stable getter that reads the current prefetch buffer", async () => {
     const cardB = createDeferred<ReviewQueueCard | null>();
     mocks.prefetchReviewCardSessionAction.mockReturnValue(cardB.promise);

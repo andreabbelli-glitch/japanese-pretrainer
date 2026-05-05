@@ -8,8 +8,7 @@ import type { ReviewQueueCard } from "@/lib/review-types";
 import type { ReviewPageClientData } from "./review-page-state";
 import {
   collectQueuedPrefetchCardIds,
-  pruneQueuedPrefetchedCardMap,
-  pruneQueuedPrefetchingCardIds
+  pruneQueuedPrefetchedCardMap
 } from "./review-page-helpers";
 
 export type ReviewQueuedCardPrefetchInput = {
@@ -30,8 +29,10 @@ export function useReviewQueuedCardPrefetch({
   serverAdvanceCardIds
 }: ReviewQueuedCardPrefetchInput) {
   const prefetchBufferRef = useRef<Map<string, ReviewQueueCard>>(new Map());
-  const prefetchInFlightRef = useRef<Set<string>>(new Set());
+  const prefetchInFlightRef = useRef<Map<string, number>>(new Map());
   const queueCardIdSetRef = useRef<Set<string>>(new Set(queueCardIds));
+  const queueGenerationRef = useRef(0);
+  const queueSignatureRef = useRef(buildQueueSignature(queueCardIds));
   const isMountedRef = useRef(false);
 
   useEffect(() => {
@@ -43,15 +44,23 @@ export function useReviewQueuedCardPrefetch({
   }, []);
 
   useEffect(() => {
-    queueCardIdSetRef.current = new Set(queueCardIds);
+    const nextQueueCardIdSet = new Set(queueCardIds);
+    const nextQueueSignature = buildQueueSignature(queueCardIds);
+    if (queueSignatureRef.current !== nextQueueSignature) {
+      queueSignatureRef.current = nextQueueSignature;
+      queueGenerationRef.current += 1;
+    }
+
+    queueCardIdSetRef.current = nextQueueCardIdSet;
     prefetchBufferRef.current = pruneQueuedPrefetchedCardMap(
       prefetchBufferRef.current,
       queueCardIds
     );
-    prefetchInFlightRef.current = pruneQueuedPrefetchingCardIds(
-      prefetchInFlightRef.current,
-      queueCardIds
-    );
+    for (const cardId of prefetchInFlightRef.current.keys()) {
+      if (!nextQueueCardIdSet.has(cardId)) {
+        prefetchInFlightRef.current.delete(cardId);
+      }
+    }
   }, [queueCardIds]);
 
   useEffect(() => {
@@ -63,7 +72,7 @@ export function useReviewQueuedCardPrefetch({
       bufferSize: 3,
       coveredCardIds: serverAdvanceCardIds,
       prefetchedCardIds: new Set(prefetchBufferRef.current.keys()),
-      prefetchingCardIds: prefetchInFlightRef.current,
+      prefetchingCardIds: new Set(prefetchInFlightRef.current.keys()),
       queueCardIds: activeQueueCardIds,
       queueIndex
     });
@@ -73,12 +82,14 @@ export function useReviewQueuedCardPrefetch({
     }
 
     for (const cardId of cardIdsToFetch) {
-      prefetchInFlightRef.current.add(cardId);
+      const requestQueueGeneration = queueGenerationRef.current;
+      prefetchInFlightRef.current.set(cardId, requestQueueGeneration);
 
       void prefetchReviewCardSessionAction({ cardId })
         .then((card) => {
           if (
             !isMountedRef.current ||
+            queueGenerationRef.current !== requestQueueGeneration ||
             !card ||
             !queueCardIdSetRef.current.has(cardId)
           ) {
@@ -91,7 +102,11 @@ export function useReviewQueuedCardPrefetch({
           console.error(error);
         })
         .finally(() => {
-          prefetchInFlightRef.current.delete(cardId);
+          if (
+            prefetchInFlightRef.current.get(cardId) === requestQueueGeneration
+          ) {
+            prefetchInFlightRef.current.delete(cardId);
+          }
         });
     }
   }, [
@@ -107,4 +122,8 @@ export function useReviewQueuedCardPrefetch({
   return {
     getPrefetchedCards
   };
+}
+
+function buildQueueSignature(queueCardIds: string[]) {
+  return JSON.stringify(queueCardIds);
 }
