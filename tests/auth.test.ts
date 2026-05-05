@@ -149,6 +149,30 @@ describe("auth helpers", () => {
     ).toBe(false);
   }, 60_000);
 
+  it("rejects ambiguous multi-argument auth hash CLI passwords", async () => {
+    clearAuthEnv();
+
+    await expect(
+      execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          path.join(process.cwd(), "scripts", "hash-auth-password.ts"),
+          "--",
+          "study",
+          "hard"
+        ],
+        {
+          cwd: process.cwd()
+        }
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining(
+        'Password must be passed as one argument. Wrap passwords with spaces in quotes.'
+      )
+    });
+  }, 60_000);
+
   it("rejects malformed password hashes without throwing during login", () => {
     clearAuthEnv();
     process.env.AUTH_USERNAME = "owner";
