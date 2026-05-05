@@ -74,6 +74,33 @@ describe("fetch throttle", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
+  it("does not retry after the caller aborts the request", async () => {
+    const abortController = new AbortController();
+    const abortError = Object.assign(new Error("aborted"), {
+      name: "AbortError"
+    });
+    const fetchMock = vi.fn(async () => {
+      abortController.abort();
+      throw abortError;
+    });
+    const throttle = createFetchThrottle({
+      maxRetries: 2,
+      requestDelayMs: 0,
+      requestTimeoutMs: 1_000,
+      retryBaseDelayMs: 0
+    });
+
+    vi.stubGlobal("fetch", fetchMock);
+
+    await expect(
+      throttle.fetchWithRetry("https://example.test/cancelled.ogg", {
+        signal: abortController.signal
+      })
+    ).rejects.toBe(abortError);
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
   it("serializes calls already waiting for the next throttle slot", async () => {
     vi.useFakeTimers();
     const start = new Date("2026-04-24T12:00:00.000Z");

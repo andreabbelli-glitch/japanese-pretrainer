@@ -66,6 +66,10 @@ export function createFetchThrottle(
       try {
         response = await throttledFetch(url, init, resolvedConfig);
       } catch (error) {
+        if (init?.signal?.aborted) {
+          throw error;
+        }
+
         if (attempt < resolvedConfig.maxRetries) {
           await sleep(resolvedConfig.retryBaseDelayMs * 2 ** attempt);
           continue;
