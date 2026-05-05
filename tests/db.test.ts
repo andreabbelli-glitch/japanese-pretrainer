@@ -27,6 +27,7 @@ import {
   listLessonsByMediaId,
   listLessonsByMediaIdsForShell,
   listMedia,
+  listMediaBySlugs,
   listReviewCardsByMediaIds,
   listTermEntryReviewSummaries,
   listTermEntryReviewSummariesByIds
@@ -78,9 +79,18 @@ describe("database layer", () => {
     expect(rows[0]?.slug).toBe(developmentFixture.mediaSlug);
 
     const media = await getMediaBySlug(database, developmentFixture.mediaSlug);
+    const mediaBySlugs = await listMediaBySlugs(database, [
+      developmentFixture.mediaSlug,
+      "missing-media",
+      developmentFixture.mediaSlug
+    ]);
 
     expect(media?.id).toBe(developmentFixture.mediaId);
     expect(media?.slug).toBe(developmentFixture.mediaSlug);
+    expect(mediaBySlugs.map((row) => row.id)).toEqual([
+      developmentFixture.mediaId
+    ]);
+    await expect(listMediaBySlugs(database, [])).resolves.toEqual([]);
   });
 
   it("uses a trimmed media query for list and slug lookups", async () => {

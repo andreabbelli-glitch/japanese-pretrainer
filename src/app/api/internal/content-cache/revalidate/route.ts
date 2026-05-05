@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { db } from "@/db";
-import { getMediaBySlug } from "@/db/queries";
+import { listMediaBySlugs } from "@/db/queries";
 import { invalidateImportedContentCaches } from "@/lib/cache-invalidation-policy";
 import { matchesSecret } from "@/lib/secret-compare";
 
@@ -84,19 +84,9 @@ function normalizeMediaSlugs(mediaSlugs: unknown) {
 }
 
 async function resolveMediaIds(mediaSlugs: string[]) {
-  const media = await Promise.all(
-    normalizeMediaSlugs(mediaSlugs).map((mediaSlug) =>
-      getMediaBySlug(db, mediaSlug)
-    )
-  );
+  const media = await listMediaBySlugs(db, mediaSlugs);
 
-  return [
-    ...new Set(
-      media
-        .map((entry) => entry?.id)
-        .filter((mediaId): mediaId is string => Boolean(mediaId))
-    )
-  ];
+  return [...new Set(media.map((entry) => entry.id))];
 }
 
 function normalizeLessons(lessons: unknown) {

@@ -1,11 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const {
-  getMediaBySlugMock,
+  listMediaBySlugsMock,
   revalidateDataCacheTagsMock,
   revalidatePathMock
 } = vi.hoisted(() => ({
-  getMediaBySlugMock: vi.fn(),
+  listMediaBySlugsMock: vi.fn(),
   revalidateDataCacheTagsMock: vi.fn(),
   revalidatePathMock: vi.fn()
 }));
@@ -19,7 +19,7 @@ vi.mock("@/db", () => ({
 }));
 
 vi.mock("@/db/queries", () => ({
-  getMediaBySlug: getMediaBySlugMock
+  listMediaBySlugs: listMediaBySlugsMock
 }));
 
 vi.mock("@/lib/data-cache", async (importOriginal) => {
@@ -36,23 +36,16 @@ import { POST } from "@/app/api/internal/content-cache/revalidate/route";
 describe("content cache revalidation route", () => {
   beforeEach(() => {
     process.env.CONTENT_CACHE_REVALIDATE_SECRET = "test-secret";
-    getMediaBySlugMock.mockReset();
+    listMediaBySlugsMock.mockReset();
     revalidateDataCacheTagsMock.mockReset();
     revalidatePathMock.mockReset();
   });
 
   it("revalidates both global and media-specific summary tags for imported media", async () => {
-    getMediaBySlugMock.mockImplementation(async (_database, slug: string) => {
-      if (slug === "duel-masters") {
-        return { id: "media_dm" };
-      }
-
-      if (slug === "persona") {
-        return { id: "media_p5" };
-      }
-
-      return null;
-    });
+    listMediaBySlugsMock.mockResolvedValue([
+      { id: "media_dm", slug: "duel-masters" },
+      { id: "media_p5", slug: "persona" }
+    ]);
 
     const response = await POST(
       new Request(
@@ -75,6 +68,11 @@ describe("content cache revalidation route", () => {
     );
 
     expect(response.status).toBe(200);
+    expect(listMediaBySlugsMock).toHaveBeenCalledTimes(1);
+    expect(listMediaBySlugsMock).toHaveBeenCalledWith(
+      {},
+      ["duel-masters", "persona"]
+    );
     expect(revalidateDataCacheTagsMock).toHaveBeenCalledTimes(1);
     expect(revalidateDataCacheTagsMock).toHaveBeenCalledWith(
       expect.arrayContaining([
@@ -95,7 +93,9 @@ describe("content cache revalidation route", () => {
   });
 
   it("revalidates parent media pages when the payload only lists lessons", async () => {
-    getMediaBySlugMock.mockResolvedValue({ id: "media_dm" });
+    listMediaBySlugsMock.mockResolvedValue([
+      { id: "media_dm", slug: "duel-masters" }
+    ]);
 
     const response = await POST(
       new Request(
@@ -133,7 +133,9 @@ describe("content cache revalidation route", () => {
   });
 
   it("ignores malformed payload members instead of failing the revalidation request", async () => {
-    getMediaBySlugMock.mockResolvedValue({ id: "media_dm" });
+    listMediaBySlugsMock.mockResolvedValue([
+      { id: "media_dm", slug: "duel-masters" }
+    ]);
 
     const response = await POST(
       new Request(
@@ -169,6 +171,7 @@ describe("content cache revalidation route", () => {
         "textbook-tooltips:duel-masters:lesson-1"
       ])
     );
-    expect(getMediaBySlugMock).toHaveBeenCalledTimes(1);
+    expect(listMediaBySlugsMock).toHaveBeenCalledTimes(1);
+    expect(listMediaBySlugsMock).toHaveBeenCalledWith({}, ["duel-masters"]);
   });
 });
