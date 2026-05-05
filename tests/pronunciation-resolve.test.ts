@@ -5,7 +5,15 @@ import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi
+} from "vitest";
 
 import {
   closeDatabaseClient,
@@ -40,31 +48,6 @@ const validContentRoot = path.join(fixturesRoot, "valid", "content");
 const NOW = "2026-04-18T09:00:00.000Z";
 
 describe("pronunciation resolve", () => {
-  let contentRoot = "";
-  let database: DatabaseClient;
-  let databasePath = "";
-  let tempDir = "";
-
-  beforeEach(async () => {
-    tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pronunciation-resolve-"));
-    contentRoot = path.join(tempDir, "content");
-    databasePath = path.join(tempDir, "test.sqlite");
-    database = createDatabaseClient({
-      databaseUrl: databasePath
-    });
-
-    await runMigrations(database);
-    await cp(validContentRoot, contentRoot, { recursive: true });
-    await seedSampleGameContent(contentRoot);
-    await seedResolveDatabase(database);
-  });
-
-  afterEach(async () => {
-    closeDatabaseClient(database);
-    await rm(tempDir, { force: true, recursive: true });
-    vi.restoreAllMocks();
-  });
-
   it("parses textbook lesson URLs from full URLs and app paths", () => {
     expect(
       parseTextbookLessonUrl(
@@ -115,334 +98,283 @@ describe("pronunciation resolve", () => {
     );
   }, 60_000);
 
-  it("accepts equals-form options in the resolver CLI used by the skill wrapper", async () => {
-    closeDatabaseClient(database);
+  describe("with content and database fixtures", () => {
+    let contentRoot = "";
+    let database: DatabaseClient;
+    let databasePath = "";
+    let tempDir = "";
 
-    try {
-      const { stdout } = await execFileAsync(
-        process.execPath,
-        [
-          "--experimental-strip-types",
-          path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
-          "--mode=review",
-          `--content-root=${contentRoot}`,
-          "--dry-run",
-          "--limit=0",
-          "--no-open"
-        ],
-        {
-          cwd: process.cwd(),
-          env: {
-            ...process.env,
-            DATABASE_URL: databasePath
+    beforeAll(async () => {
+      tempDir = await mkdtemp(
+        path.join(tmpdir(), "jcs-pronunciation-resolve-")
+      );
+      contentRoot = path.join(tempDir, "content");
+      databasePath = path.join(tempDir, "test.sqlite");
+      database = createDatabaseClient({
+        databaseUrl: databasePath
+      });
+
+      await runMigrations(database);
+      await cp(validContentRoot, contentRoot, { recursive: true });
+      await seedSampleGameContent(contentRoot);
+      await seedResolveDatabase(database);
+    });
+
+    afterAll(async () => {
+      closeDatabaseClient(database);
+      await rm(tempDir, { force: true, recursive: true });
+    });
+
+    afterEach(() => {
+      vi.restoreAllMocks();
+    });
+
+    it("accepts equals-form options in the resolver CLI used by the skill wrapper", async () => {
+      closeDatabaseClient(database);
+
+      try {
+        const { stdout } = await execFileAsync(
+          process.execPath,
+          [
+            "--experimental-strip-types",
+            path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
+            "--mode=review",
+            `--content-root=${contentRoot}`,
+            "--dry-run",
+            "--limit=0",
+            "--no-open"
+          ],
+          {
+            cwd: process.cwd(),
+            env: {
+              ...process.env,
+              DATABASE_URL: databasePath
+            }
           }
-        }
+        );
+
+        expect(stdout).toContain("mode=review");
+      } finally {
+        database = createDatabaseClient({
+          databaseUrl: databasePath
+        });
+      }
+    }, 60_000);
+
+    it("loads .env.local before creating the resolver CLI database client", async () => {
+      closeDatabaseClient(database);
+      await writeFile(
+        path.join(tempDir, ".env.local"),
+        `DATABASE_URL=${databasePath}\n`
       );
+      const env = { ...process.env };
+      delete env.DATABASE_URL;
+      delete env.DATABASE_AUTH_TOKEN;
+      delete env.LIBSQL_AUTH_TOKEN;
 
-      expect(stdout).toContain("mode=review");
-    } finally {
-      database = createDatabaseClient({
-        databaseUrl: databasePath
+      try {
+        const { stdout } = await execFileAsync(
+          process.execPath,
+          [
+            "--experimental-strip-types",
+            path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
+            "--mode=review",
+            `--content-root=${contentRoot}`,
+            "--dry-run",
+            "--limit=0",
+            "--no-open"
+          ],
+          {
+            cwd: tempDir,
+            env
+          }
+        );
+
+        expect(stdout).toContain("mode=review");
+        expect(stdout).toContain("media=sample-anime,sample-game");
+      } finally {
+        database = createDatabaseClient({
+          databaseUrl: databasePath
+        });
+      }
+    }, 60_000);
+
+    it("selects review targets globally and deduplicates linked entries", async () => {
+      const selection = await selectPronunciationResolveTargets({
+        contentRoot,
+        database,
+        mode: "review"
       });
-    }
-  }, 60_000);
 
-  it("loads .env.local before creating the resolver CLI database client", async () => {
-    closeDatabaseClient(database);
-    await writeFile(
-      path.join(tempDir, ".env.local"),
-      `DATABASE_URL=${databasePath}\n`
-    );
-    const env = { ...process.env };
-    delete env.DATABASE_URL;
-    delete env.DATABASE_AUTH_TOKEN;
-    delete env.LIBSQL_AUTH_TOKEN;
+      expect(selection.mode).toBe("review");
+      expect(selection.selectedMediaSlugs.sort()).toEqual([
+        "sample-anime",
+        "sample-game"
+      ]);
+      expect(
+        selection.bundles.map((bundle) => bundle.bundle.mediaSlug).sort()
+      ).toEqual(["sample-anime", "sample-game"]);
 
-    try {
-      const { stdout } = await execFileAsync(
-        process.execPath,
-        [
-          "--experimental-strip-types",
-          path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
-          "--mode=review",
-          `--content-root=${contentRoot}`,
-          "--dry-run",
-          "--limit=0",
-          "--no-open"
-        ],
-        {
-          cwd: tempDir,
-          env
-        }
-      );
+      const animeTargets =
+        selection.bundles.find(
+          (bundle) => bundle.bundle.mediaSlug === "sample-anime"
+        )?.targets ?? [];
+      const gameTargets =
+        selection.bundles.find(
+          (bundle) => bundle.bundle.mediaSlug === "sample-game"
+        )?.targets ?? [];
 
-      expect(stdout).toContain("mode=review");
-      expect(stdout).toContain("media=sample-anime,sample-game");
-    } finally {
-      database = createDatabaseClient({
-        databaseUrl: databasePath
+      expect(
+        animeTargets.map((entry) => `${entry.kind}:${entry.id}`).sort()
+      ).toEqual(["grammar:grammar-teiru", "term:term-taberu"]);
+      expect(gameTargets.map((entry) => `${entry.kind}:${entry.id}`)).toEqual([
+        "term:term-miru"
+      ]);
+    });
+
+    it("selects review targets for one media only when filtered", async () => {
+      const selection = await selectPronunciationResolveTargets({
+        contentRoot,
+        database,
+        mediaSlug: "sample-anime",
+        mode: "review"
       });
-    }
-  }, 60_000);
 
-  it("selects review targets globally and deduplicates linked entries", async () => {
-    const selection = await selectPronunciationResolveTargets({
-      contentRoot,
-      database,
-      mode: "review"
+      expect(selection.selectedMediaSlugs).toEqual(["sample-anime"]);
+      expect(selection.bundles).toHaveLength(1);
+      expect(
+        selection.bundles[0]?.targets
+          .map((entry) => `${entry.kind}:${entry.id}`)
+          .sort()
+      ).toEqual(["grammar:grammar-teiru", "term:term-taberu"]);
     });
 
-    expect(selection.mode).toBe("review");
-    expect(selection.selectedMediaSlugs.sort()).toEqual([
-      "sample-anime",
-      "sample-game"
-    ]);
-    expect(
-      selection.bundles.map((bundle) => bundle.bundle.mediaSlug).sort()
-    ).toEqual(["sample-anime", "sample-game"]);
+    it("selects the first non-completed lesson for next-lesson mode", async () => {
+      const selection = await selectPronunciationResolveTargets({
+        contentRoot,
+        database,
+        mediaSlug: "sample-game",
+        mode: "next-lesson"
+      });
 
-    const animeTargets =
-      selection.bundles.find(
-        (bundle) => bundle.bundle.mediaSlug === "sample-anime"
-      )?.targets ?? [];
-    const gameTargets =
-      selection.bundles.find(
-        (bundle) => bundle.bundle.mediaSlug === "sample-game"
-      )?.targets ?? [];
-
-    expect(
-      animeTargets.map((entry) => `${entry.kind}:${entry.id}`).sort()
-    ).toEqual(["grammar:grammar-teiru", "term:term-taberu"]);
-    expect(gameTargets.map((entry) => `${entry.kind}:${entry.id}`)).toEqual([
-      "term:term-miru"
-    ]);
-  });
-
-  it("selects review targets for one media only when filtered", async () => {
-    const selection = await selectPronunciationResolveTargets({
-      contentRoot,
-      database,
-      mediaSlug: "sample-anime",
-      mode: "review"
+      expect(selection.mode).toBe("next-lesson");
+      expect(selection.bundles).toHaveLength(1);
+      expect(selection.bundles[0]?.lessonSlug).toBe("next-lesson");
+      expect(
+        selection.bundles[0]?.targets.map(
+          (entry) => `${entry.kind}:${entry.id}`
+        )
+      ).toEqual(["term:term-kiku", "term:term-yomu"]);
     });
 
-    expect(selection.selectedMediaSlugs).toEqual(["sample-anime"]);
-    expect(selection.bundles).toHaveLength(1);
-    expect(
-      selection.bundles[0]?.targets
-        .map((entry) => `${entry.kind}:${entry.id}`)
-        .sort()
-    ).toEqual(["grammar:grammar-teiru", "term:term-taberu"]);
-  });
+    it("selects lesson targets from a textbook page URL", async () => {
+      const selection = await selectPronunciationResolveTargets({
+        contentRoot,
+        database,
+        lessonUrl:
+          "http://localhost:3000/media/sample-game/textbook/next-lesson",
+        mode: "lesson-url"
+      });
 
-  it("selects the first non-completed lesson for next-lesson mode", async () => {
-    const selection = await selectPronunciationResolveTargets({
-      contentRoot,
-      database,
-      mediaSlug: "sample-game",
-      mode: "next-lesson"
+      expect(selection.mode).toBe("lesson-url");
+      expect(selection.bundles).toHaveLength(1);
+      expect(selection.bundles[0]?.bundle.mediaSlug).toBe("sample-game");
+      expect(selection.bundles[0]?.lessonSlug).toBe("next-lesson");
+      expect(
+        selection.bundles[0]?.targets.map(
+          (entry) => `${entry.kind}:${entry.id}`
+        )
+      ).toEqual(["term:term-kiku", "term:term-yomu"]);
     });
 
-    expect(selection.mode).toBe("next-lesson");
-    expect(selection.bundles).toHaveLength(1);
-    expect(selection.bundles[0]?.lessonSlug).toBe("next-lesson");
-    expect(
-      selection.bundles[0]?.targets.map((entry) => `${entry.kind}:${entry.id}`)
-    ).toEqual(["term:term-kiku", "term:term-yomu"]);
-  });
+    it("runs reuse and Forvo only on the unresolved remainder", async () => {
+      const bundle = await loadBundle(contentRoot, "sample-game");
+      const selectedTargets: PronunciationTargetEntry[] = [
+        createTarget(bundle, "term", "term-miru"),
+        createTarget(bundle, "term", "term-kiku"),
+        createTarget(bundle, "term", "term-yomu")
+      ];
 
-  it("selects lesson targets from a textbook page URL", async () => {
-    const selection = await selectPronunciationResolveTargets({
-      contentRoot,
-      database,
-      lessonUrl: "http://localhost:3000/media/sample-game/textbook/next-lesson",
-      mode: "lesson-url"
-    });
-
-    expect(selection.mode).toBe("lesson-url");
-    expect(selection.bundles).toHaveLength(1);
-    expect(selection.bundles[0]?.bundle.mediaSlug).toBe("sample-game");
-    expect(selection.bundles[0]?.lessonSlug).toBe("next-lesson");
-    expect(
-      selection.bundles[0]?.targets.map((entry) => `${entry.kind}:${entry.id}`)
-    ).toEqual(["term:term-kiku", "term:term-yomu"]);
-  });
-
-  it("runs reuse and Forvo only on the unresolved remainder", async () => {
-    const bundle = await loadBundle(contentRoot, "sample-game");
-    const selectedTargets: PronunciationTargetEntry[] = [
-      createTarget(bundle, "term", "term-miru"),
-      createTarget(bundle, "term", "term-kiku"),
-      createTarget(bundle, "term", "term-yomu")
-    ];
-
-    const refreshSpy = vi.fn(async () => bundle);
-    const reuseSpy = vi.fn(async () => ({
-      ambiguous: 0,
-      reused: 1,
-      results: [
-        {
-          entryId: "term-miru",
-          kind: "term" as const,
-          sourceEntryId: "term-taberu",
-          sourceMediaSlug: "sample-anime",
-          status: "reused" as const
-        }
-      ]
-    }));
-    const forvoSpy = vi.fn(async () => ({
-      knownMissingSkipped: [],
-      matched: 1,
-      missed: 0,
-      requestedUnresolved: [],
-      results: [
-        {
-          entryId: "term-yomu",
-          kind: "term" as const,
-          speaker: "Test Speaker",
-          status: "matched" as const,
-          votes: 5
-        }
-      ]
-    }));
-    const pendingSpy = vi.fn(async () => ({
-      audioBackedCount: 3,
-      knownMissingCount: 0,
-      mediaSlug: "sample-game",
-      pending: [],
-      pendingCount: 0,
-      totalTargets: 3,
-      workflowFilePath: path.join(
-        bundle.mediaDirectory,
-        "workflow",
-        "pronunciation-pending.json"
-      )
-    }));
-
-    const summary = await executePronunciationResolveForBundle({
-      bundle,
-      dryRun: false,
-      fetchForvoManual: forvoSpy,
-      knownMissingEntryIds: new Set(),
-      refreshBundleState: refreshSpy,
-      reuseCrossMedia: reuseSpy,
-      reuseContext: { audioBackedEntries: [] },
-      selectedTargets,
-      updatePendingSummary: pendingSpy
-    });
-
-    expect(reuseSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        onlyTargets: expect.arrayContaining([
-          expect.objectContaining({ id: "term-kiku" }),
-          expect.objectContaining({ id: "term-miru" }),
-          expect.objectContaining({ id: "term-yomu" })
-        ])
-      })
-    );
-    expect(forvoSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        entryIds: ["term-kiku", "term-yomu"]
-      })
-    );
-    expect(refreshSpy).toHaveBeenCalledTimes(2);
-    expect(pendingSpy).toHaveBeenCalledOnce();
-    expect(summary.finalEntryIds).toEqual(["term-kiku", "term-yomu"]);
-    expect(summary.reuseSummary.reused).toBe(1);
-    expect(summary.forvoSummary?.matched).toBe(1);
-  });
-
-  it("summarizes pending pronunciations without writing during dry runs", async () => {
-    const bundle = await loadBundle(contentRoot, "sample-game");
-    const pendingSpy = vi.fn(async () => ({
-      audioBackedCount: 0,
-      knownMissingCount: 0,
-      mediaSlug: "sample-game",
-      pending: [],
-      pendingCount: 0,
-      totalTargets: 1,
-      workflowFilePath: path.join(
-        bundle.mediaDirectory,
-        "workflow",
-        "pronunciation-pending.json"
-      )
-    }));
-
-    await executePronunciationResolveForBundle({
-      bundle,
-      dryRun: true,
-      fetchForvoManual: vi.fn(async () => ({
+      const refreshSpy = vi.fn(async () => bundle);
+      const reuseSpy = vi.fn(async () => ({
+        ambiguous: 0,
+        reused: 1,
+        results: [
+          {
+            entryId: "term-miru",
+            kind: "term" as const,
+            sourceEntryId: "term-taberu",
+            sourceMediaSlug: "sample-anime",
+            status: "reused" as const
+          }
+        ]
+      }));
+      const forvoSpy = vi.fn(async () => ({
         knownMissingSkipped: [],
-        matched: 0,
-        missed: 1,
+        matched: 1,
+        missed: 0,
         requestedUnresolved: [],
         results: [
           {
             entryId: "term-yomu",
             kind: "term" as const,
-            status: "miss" as const
+            speaker: "Test Speaker",
+            status: "matched" as const,
+            votes: 5
           }
         ]
-      })),
-      knownMissingEntryIds: new Set(),
-      refreshBundleState: vi.fn(async () => bundle),
-      reuseCrossMedia: vi.fn(async () => ({
-        ambiguous: 0,
-        reused: 0,
-        results: []
-      })),
-      reuseContext: { audioBackedEntries: [] },
-      selectedTargets: [createTarget(bundle, "term", "term-yomu")],
-      updatePendingSummary: pendingSpy
+      }));
+      const pendingSpy = vi.fn(async () => ({
+        audioBackedCount: 3,
+        knownMissingCount: 0,
+        mediaSlug: "sample-game",
+        pending: [],
+        pendingCount: 0,
+        totalTargets: 3,
+        workflowFilePath: path.join(
+          bundle.mediaDirectory,
+          "workflow",
+          "pronunciation-pending.json"
+        )
+      }));
+
+      const summary = await executePronunciationResolveForBundle({
+        bundle,
+        dryRun: false,
+        fetchForvoManual: forvoSpy,
+        knownMissingEntryIds: new Set(),
+        refreshBundleState: refreshSpy,
+        reuseCrossMedia: reuseSpy,
+        reuseContext: { audioBackedEntries: [] },
+        selectedTargets,
+        updatePendingSummary: pendingSpy
+      });
+
+      expect(reuseSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          onlyTargets: expect.arrayContaining([
+            expect.objectContaining({ id: "term-kiku" }),
+            expect.objectContaining({ id: "term-miru" }),
+            expect.objectContaining({ id: "term-yomu" })
+          ])
+        })
+      );
+      expect(forvoSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          entryIds: ["term-kiku", "term-yomu"]
+        })
+      );
+      expect(refreshSpy).toHaveBeenCalledTimes(2);
+      expect(pendingSpy).toHaveBeenCalledOnce();
+      expect(summary.finalEntryIds).toEqual(["term-kiku", "term-yomu"]);
+      expect(summary.reuseSummary.reused).toBe(1);
+      expect(summary.forvoSummary?.matched).toBe(1);
     });
 
-    expect(pendingSpy).toHaveBeenCalledWith({
-      bundle,
-      write: false
-    });
-  });
-
-  it("applies limit after dropping already audio-backed targets", async () => {
-    const bundle = await loadBundle(contentRoot, "sample-game");
-    const audioBackedTarget = createTarget(
-      await loadBundle(contentRoot, "sample-anime"),
-      "term",
-      "term-taberu"
-    );
-    const unresolvedTarget = createTarget(bundle, "term", "term-kiku");
-    const reuseSpy = vi.fn(async () => ({
-      ambiguous: 0,
-      reused: 0,
-      results: []
-    }));
-    const forvoSpy = vi.fn(async () => ({
-      knownMissingSkipped: [],
-      matched: 1,
-      missed: 0,
-      requestedUnresolved: [],
-      results: [
-        {
-          entryId: "term-kiku",
-          kind: "term" as const,
-          speaker: "Test Speaker",
-          status: "matched" as const,
-          votes: 5
-        }
-      ]
-    }));
-
-    const summary = await executePronunciationResolveForBundle({
-      bundle,
-      dryRun: false,
-      fetchForvoManual: forvoSpy,
-      knownMissingEntryIds: new Set(),
-      refreshBundleState: vi.fn(async () => bundle),
-      reuseCrossMedia: reuseSpy,
-      reuseContext: { audioBackedEntries: [] },
-      selectedTargets: [audioBackedTarget, unresolvedTarget],
-      limit: 1,
-      updatePendingSummary: vi.fn(async () => ({
-        audioBackedCount: 1,
+    it("summarizes pending pronunciations without writing during dry runs", async () => {
+      const bundle = await loadBundle(contentRoot, "sample-game");
+      const pendingSpy = vi.fn(async () => ({
+        audioBackedCount: 0,
         knownMissingCount: 0,
         mediaSlug: "sample-game",
         pending: [],
@@ -453,172 +385,260 @@ describe("pronunciation resolve", () => {
           "workflow",
           "pronunciation-pending.json"
         )
-      }))
+      }));
+
+      await executePronunciationResolveForBundle({
+        bundle,
+        dryRun: true,
+        fetchForvoManual: vi.fn(async () => ({
+          knownMissingSkipped: [],
+          matched: 0,
+          missed: 1,
+          requestedUnresolved: [],
+          results: [
+            {
+              entryId: "term-yomu",
+              kind: "term" as const,
+              status: "miss" as const
+            }
+          ]
+        })),
+        knownMissingEntryIds: new Set(),
+        refreshBundleState: vi.fn(async () => bundle),
+        reuseCrossMedia: vi.fn(async () => ({
+          ambiguous: 0,
+          reused: 0,
+          results: []
+        })),
+        reuseContext: { audioBackedEntries: [] },
+        selectedTargets: [createTarget(bundle, "term", "term-yomu")],
+        updatePendingSummary: pendingSpy
+      });
+
+      expect(pendingSpy).toHaveBeenCalledWith({
+        bundle,
+        write: false
+      });
     });
 
-    expect(reuseSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        onlyTargets: [expect.objectContaining({ id: "term-kiku" })]
-      })
-    );
-    expect(forvoSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        entryIds: ["term-kiku"]
-      })
-    );
-    expect(summary.finalEntryIds).toEqual(["term-kiku"]);
-  });
-
-  it("skips known-missing entries before the Forvo step", async () => {
-    const bundle = await loadBundle(contentRoot, "sample-game");
-    const forvoSpy = vi.fn();
-
-    const summary = await executePronunciationResolveForBundle({
-      bundle,
-      dryRun: false,
-      fetchForvoManual: forvoSpy,
-      knownMissingEntryIds: new Set(["term:term-yomu"]),
-      refreshBundleState: vi.fn(async () => bundle),
-      reuseCrossMedia: vi.fn(async () => ({
+    it("applies limit after dropping already audio-backed targets", async () => {
+      const bundle = await loadBundle(contentRoot, "sample-game");
+      const audioBackedTarget = createTarget(
+        await loadBundle(contentRoot, "sample-anime"),
+        "term",
+        "term-taberu"
+      );
+      const unresolvedTarget = createTarget(bundle, "term", "term-kiku");
+      const reuseSpy = vi.fn(async () => ({
         ambiguous: 0,
         reused: 0,
         results: []
-      })),
-      reuseContext: { audioBackedEntries: [] },
-      selectedTargets: [createTarget(bundle, "term", "term-yomu")],
-      updatePendingSummary: vi.fn(async () => ({
-        audioBackedCount: 0,
-        knownMissingCount: 1,
-        mediaSlug: "sample-game",
-        pending: [],
-        pendingCount: 0,
-        totalTargets: 1,
-        workflowFilePath: path.join(
-          bundle.mediaDirectory,
-          "workflow",
-          "pronunciation-pending.json"
-        )
-      }))
+      }));
+      const forvoSpy = vi.fn(async () => ({
+        knownMissingSkipped: [],
+        matched: 1,
+        missed: 0,
+        requestedUnresolved: [],
+        results: [
+          {
+            entryId: "term-kiku",
+            kind: "term" as const,
+            speaker: "Test Speaker",
+            status: "matched" as const,
+            votes: 5
+          }
+        ]
+      }));
+
+      const summary = await executePronunciationResolveForBundle({
+        bundle,
+        dryRun: false,
+        fetchForvoManual: forvoSpy,
+        knownMissingEntryIds: new Set(),
+        refreshBundleState: vi.fn(async () => bundle),
+        reuseCrossMedia: reuseSpy,
+        reuseContext: { audioBackedEntries: [] },
+        selectedTargets: [audioBackedTarget, unresolvedTarget],
+        limit: 1,
+        updatePendingSummary: vi.fn(async () => ({
+          audioBackedCount: 1,
+          knownMissingCount: 0,
+          mediaSlug: "sample-game",
+          pending: [],
+          pendingCount: 0,
+          totalTargets: 1,
+          workflowFilePath: path.join(
+            bundle.mediaDirectory,
+            "workflow",
+            "pronunciation-pending.json"
+          )
+        }))
+      });
+
+      expect(reuseSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          onlyTargets: [expect.objectContaining({ id: "term-kiku" })]
+        })
+      );
+      expect(forvoSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          entryIds: ["term-kiku"]
+        })
+      );
+      expect(summary.finalEntryIds).toEqual(["term-kiku"]);
     });
 
-    expect(forvoSpy).not.toHaveBeenCalled();
-    expect(summary.finalEntryIds).toEqual([]);
-    expect(summary.knownMissingSkipped).toEqual(["term-yomu"]);
-  });
+    it("skips known-missing entries before the Forvo step", async () => {
+      const bundle = await loadBundle(contentRoot, "sample-game");
+      const forvoSpy = vi.fn();
 
-  it("does not let known-missing entries consume the batch limit", async () => {
-    const bundle = await loadBundle(contentRoot, "sample-game");
-    const forvoSpy = vi.fn(async () => ({
-      knownMissingSkipped: [],
-      matched: 1,
-      missed: 0,
-      requestedUnresolved: [],
-      results: [
-        {
-          entryId: "term-kiku",
-          kind: "term" as const,
-          speaker: "Test Speaker",
-          status: "matched" as const,
-          votes: 5
-        }
-      ]
-    }));
+      const summary = await executePronunciationResolveForBundle({
+        bundle,
+        dryRun: false,
+        fetchForvoManual: forvoSpy,
+        knownMissingEntryIds: new Set(["term:term-yomu"]),
+        refreshBundleState: vi.fn(async () => bundle),
+        reuseCrossMedia: vi.fn(async () => ({
+          ambiguous: 0,
+          reused: 0,
+          results: []
+        })),
+        reuseContext: { audioBackedEntries: [] },
+        selectedTargets: [createTarget(bundle, "term", "term-yomu")],
+        updatePendingSummary: vi.fn(async () => ({
+          audioBackedCount: 0,
+          knownMissingCount: 1,
+          mediaSlug: "sample-game",
+          pending: [],
+          pendingCount: 0,
+          totalTargets: 1,
+          workflowFilePath: path.join(
+            bundle.mediaDirectory,
+            "workflow",
+            "pronunciation-pending.json"
+          )
+        }))
+      });
 
-    const summary = await executePronunciationResolveForBundle({
-      bundle,
-      dryRun: false,
-      fetchForvoManual: forvoSpy,
-      knownMissingEntryIds: new Set(["term:term-yomu"]),
-      limit: 1,
-      refreshBundleState: vi.fn(async () => bundle),
-      reuseCrossMedia: vi.fn(async () => ({
-        ambiguous: 0,
-        reused: 0,
-        results: []
-      })),
-      reuseContext: { audioBackedEntries: [] },
-      selectedTargets: [
-        createTarget(bundle, "term", "term-yomu"),
-        createTarget(bundle, "term", "term-kiku")
-      ],
-      updatePendingSummary: vi.fn(async () => ({
-        audioBackedCount: 0,
-        knownMissingCount: 1,
-        mediaSlug: "sample-game",
-        pending: [],
-        pendingCount: 0,
-        totalTargets: 2,
-        workflowFilePath: path.join(
-          bundle.mediaDirectory,
-          "workflow",
-          "pronunciation-pending.json"
-        )
-      }))
+      expect(forvoSpy).not.toHaveBeenCalled();
+      expect(summary.finalEntryIds).toEqual([]);
+      expect(summary.knownMissingSkipped).toEqual(["term-yomu"]);
     });
 
-    expect(forvoSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        entryIds: ["term-kiku"]
-      })
-    );
-    expect(summary.finalEntryIds).toEqual(["term-kiku"]);
-    expect(summary.knownMissingSkipped).toEqual(["term-yomu"]);
-  });
+    it("does not let known-missing entries consume the batch limit", async () => {
+      const bundle = await loadBundle(contentRoot, "sample-game");
+      const forvoSpy = vi.fn(async () => ({
+        knownMissingSkipped: [],
+        matched: 1,
+        missed: 0,
+        requestedUnresolved: [],
+        results: [
+          {
+            entryId: "term-kiku",
+            kind: "term" as const,
+            speaker: "Test Speaker",
+            status: "matched" as const,
+            votes: 5
+          }
+        ]
+      }));
 
-  it("retries known-missing entries when retry is enabled", async () => {
-    const bundle = await loadBundle(contentRoot, "sample-game");
-    const forvoSpy = vi.fn(async () => ({
-      knownMissingSkipped: [],
-      matched: 1,
-      missed: 0,
-      requestedUnresolved: [],
-      results: [
-        {
-          entryId: "term-yomu",
-          kind: "term" as const,
-          speaker: "Test Speaker",
-          status: "matched" as const,
-          votes: 5
-        }
-      ]
-    }));
+      const summary = await executePronunciationResolveForBundle({
+        bundle,
+        dryRun: false,
+        fetchForvoManual: forvoSpy,
+        knownMissingEntryIds: new Set(["term:term-yomu"]),
+        limit: 1,
+        refreshBundleState: vi.fn(async () => bundle),
+        reuseCrossMedia: vi.fn(async () => ({
+          ambiguous: 0,
+          reused: 0,
+          results: []
+        })),
+        reuseContext: { audioBackedEntries: [] },
+        selectedTargets: [
+          createTarget(bundle, "term", "term-yomu"),
+          createTarget(bundle, "term", "term-kiku")
+        ],
+        updatePendingSummary: vi.fn(async () => ({
+          audioBackedCount: 0,
+          knownMissingCount: 1,
+          mediaSlug: "sample-game",
+          pending: [],
+          pendingCount: 0,
+          totalTargets: 2,
+          workflowFilePath: path.join(
+            bundle.mediaDirectory,
+            "workflow",
+            "pronunciation-pending.json"
+          )
+        }))
+      });
 
-    const summary = await executePronunciationResolveForBundle({
-      bundle,
-      dryRun: false,
-      fetchForvoManual: forvoSpy,
-      knownMissingEntryIds: new Set(["term:term-yomu"]),
-      refreshBundleState: vi.fn(async () => bundle),
-      reuseCrossMedia: vi.fn(async () => ({
-        ambiguous: 0,
-        reused: 0,
-        results: []
-      })),
-      reuseContext: { audioBackedEntries: [] },
-      retryKnownMissing: true,
-      selectedTargets: [createTarget(bundle, "term", "term-yomu")],
-      updatePendingSummary: vi.fn(async () => ({
-        audioBackedCount: 1,
-        knownMissingCount: 0,
-        mediaSlug: "sample-game",
-        pending: [],
-        pendingCount: 0,
-        totalTargets: 1,
-        workflowFilePath: path.join(
-          bundle.mediaDirectory,
-          "workflow",
-          "pronunciation-pending.json"
-        )
-      }))
-    } as Parameters<typeof executePronunciationResolveForBundle>[0]);
+      expect(forvoSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          entryIds: ["term-kiku"]
+        })
+      );
+      expect(summary.finalEntryIds).toEqual(["term-kiku"]);
+      expect(summary.knownMissingSkipped).toEqual(["term-yomu"]);
+    });
 
-    expect(forvoSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        entryIds: ["term-yomu"]
-      })
-    );
-    expect(summary.finalEntryIds).toEqual(["term-yomu"]);
-    expect(summary.knownMissingSkipped).toEqual([]);
+    it("retries known-missing entries when retry is enabled", async () => {
+      const bundle = await loadBundle(contentRoot, "sample-game");
+      const forvoSpy = vi.fn(async () => ({
+        knownMissingSkipped: [],
+        matched: 1,
+        missed: 0,
+        requestedUnresolved: [],
+        results: [
+          {
+            entryId: "term-yomu",
+            kind: "term" as const,
+            speaker: "Test Speaker",
+            status: "matched" as const,
+            votes: 5
+          }
+        ]
+      }));
+
+      const summary = await executePronunciationResolveForBundle({
+        bundle,
+        dryRun: false,
+        fetchForvoManual: forvoSpy,
+        knownMissingEntryIds: new Set(["term:term-yomu"]),
+        refreshBundleState: vi.fn(async () => bundle),
+        reuseCrossMedia: vi.fn(async () => ({
+          ambiguous: 0,
+          reused: 0,
+          results: []
+        })),
+        reuseContext: { audioBackedEntries: [] },
+        retryKnownMissing: true,
+        selectedTargets: [createTarget(bundle, "term", "term-yomu")],
+        updatePendingSummary: vi.fn(async () => ({
+          audioBackedCount: 1,
+          knownMissingCount: 0,
+          mediaSlug: "sample-game",
+          pending: [],
+          pendingCount: 0,
+          totalTargets: 1,
+          workflowFilePath: path.join(
+            bundle.mediaDirectory,
+            "workflow",
+            "pronunciation-pending.json"
+          )
+        }))
+      } as Parameters<typeof executePronunciationResolveForBundle>[0]);
+
+      expect(forvoSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          entryIds: ["term-yomu"]
+        })
+      );
+      expect(summary.finalEntryIds).toEqual(["term-yomu"]);
+      expect(summary.knownMissingSkipped).toEqual([]);
+    });
   });
 });
 
