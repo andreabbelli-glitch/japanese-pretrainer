@@ -17,6 +17,17 @@ const mocks = vi.hoisted(() => ({
   submitKatakanaSpeedSelfCheckAction: vi.fn()
 }));
 
+function createDeferred<T>() {
+  let resolve!: (value: T) => void;
+
+  return {
+    promise: new Promise<T>((innerResolve) => {
+      resolve = innerResolve;
+    }),
+    resolve
+  };
+}
+
 vi.mock("@/actions/katakana-speed", () => ({
   abandonKatakanaSpeedSessionAction:
     mocks.abandonKatakanaSpeedSessionAction,
@@ -729,6 +740,45 @@ describe("katakana speed session controller", () => {
 
     expect(event.defaultPrevented).toBe(false);
     expect(event.stopImmediatePropagation).not.toHaveBeenCalled();
+  });
+
+  it("shows finalizing feedback while a completed session recap is being persisted", async () => {
+    const completeDeferred = createDeferred<void>();
+    mocks.completeKatakanaSpeedSessionAction.mockReturnValue(
+      completeDeferred.promise
+    );
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(KatakanaSpeedSessionPage, {
+          data: {
+            ...buildSession(),
+            answeredCount: 2,
+            startedAt: "2026-04-26T08:00:00.000Z",
+            status: "active"
+          }
+        })
+      );
+      await Promise.resolve();
+    });
+
+    expect(mocks.completeKatakanaSpeedSessionAction).toHaveBeenCalledWith({
+      sessionId: "session-keyboard"
+    });
+    expect(container.textContent).toContain("Recap in aggiornamento.");
+
+    completeDeferred.resolve();
+    await act(async () => {
+      await completeDeferred.promise;
+      await Promise.resolve();
+    });
+
+    expect(mocks.routerPush).toHaveBeenCalledWith(
+      "/katakana-speed/recap/session-keyboard"
+    );
   });
 
   it("submits RAN with Enter even when a wrong cell is focused", async () => {

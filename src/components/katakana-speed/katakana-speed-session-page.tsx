@@ -49,6 +49,8 @@ export function KatakanaSpeedSessionPage({
   const recapHref = `/katakana-speed/recap/${data.sessionId}` as Route;
   const currentTrial = controller.currentTrial;
   const visibleTrialKey = currentTrial?.trialId ?? null;
+  const isCompletingSession = controller.completed && clientError === null;
+  const isSessionFinalizing = isFinalizing || isCompletingSession;
   const currentTrialHasRomajiPrompt =
     currentTrial?.features?.promptKind === "romaji";
   const feedbackBelongsToCurrentTrial =
@@ -236,19 +238,19 @@ export function KatakanaSpeedSessionPage({
               {controller.isRanGridTrial ? (
                 <RanGridControls
                   controller={controller}
-                  disabled={controller.isSubmitting || isFinalizing}
+                  disabled={controller.isSubmitting || isSessionFinalizing}
                   showReadings={showReadings}
                 />
               ) : controller.isSelfCheckTrial ? (
                 <SelfCheckControls
                   controller={controller}
-                  disabled={controller.isSubmitting || isFinalizing}
+                  disabled={controller.isSubmitting || isSessionFinalizing}
                   trial={currentTrial}
                 />
               ) : (
                 <ChoiceControls
                   controller={controller}
-                  disabled={controller.isSubmitting || isFinalizing}
+                  disabled={controller.isSubmitting || isSessionFinalizing}
                   showReadings={canRevealReadings && showReadings}
                   trial={currentTrial}
                 />
@@ -268,13 +270,13 @@ export function KatakanaSpeedSessionPage({
             currentTrial={currentTrial}
             feedback={controller.feedback}
             showReadings={canRevealReadings && showReadings}
-            isFinalizing={isFinalizing}
+            isFinalizing={isSessionFinalizing}
             awaitingContinue={
               controller.awaitingContinue &&
               !controller.isSelfCheckTrial &&
               !controller.isRanGridTrial
             }
-            isSubmitting={controller.isSubmitting || isFinalizing}
+            isSubmitting={controller.isSubmitting || isSessionFinalizing}
             onContinue={controller.handleContinue}
           />
         </SurfaceCard>
@@ -317,7 +319,7 @@ export function KatakanaSpeedSessionPage({
             </label>
             <button
               className="button button--ghost"
-              disabled={isFinalizing}
+              disabled={isSessionFinalizing}
               onClick={abandonSession}
               type="button"
             >
