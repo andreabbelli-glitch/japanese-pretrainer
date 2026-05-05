@@ -50,6 +50,21 @@ describe("buildReviewControllerSnapshot", () => {
     );
   });
 
+  it("skips blank requested card search params before hydrating global review data", () => {
+    const snapshot = buildReviewControllerSnapshot(
+      buildSnapshotInput({
+        currentSearchParams: {
+          answered: "1",
+          card: ["", " card-b "],
+          show: "answer"
+        },
+        viewData: buildFullReviewPageData("card-a")
+      })
+    );
+
+    expect(snapshot.requestedSelectedCardId).toBe("card-b");
+  });
+
   it("derives queue position and the queued advance window", () => {
     const queueCardIds = ["card-a", "card-b", "card-c", "card-d", "card-e"];
     const snapshot = buildReviewControllerSnapshot(

@@ -23,7 +23,8 @@ import { isReviewPageData, type ReviewGradeValue } from "./review-page-helpers";
 import { buildReviewControllerSnapshot } from "./review-page-controller-snapshot";
 import {
   buildReviewSessionActionInput,
-  buildSearchParamsRecord
+  buildSearchParamsRecord,
+  resolveRequestedSelectedReviewCardId
 } from "./review-page-client-utils";
 import { useReviewSessionUpdateRunner } from "./use-review-session-update-runner";
 import { useReviewForcedContrastController } from "./use-review-forced-contrast-controller";
@@ -110,16 +111,10 @@ export function useReviewPageController(input: {
   });
   const forcedContrastSelection = forcedContrast.forcedContrastSelection;
   const runnerIsGlobalReview = viewData.scope === "global";
-  const runnerRequestedSelectedCardId =
-    runnerIsGlobalReview &&
-    currentSearchParams &&
-    typeof currentSearchParams.card === "string"
-      ? currentSearchParams.card
-      : runnerIsGlobalReview &&
-          currentSearchParams &&
-          Array.isArray(currentSearchParams.card)
-        ? (currentSearchParams.card[0] ?? null)
-        : null;
+  const runnerRequestedSelectedCardId = resolveRequestedSelectedReviewCardId({
+    isGlobalReview: runnerIsGlobalReview,
+    searchParams: currentSearchParams
+  });
   const {
     enqueueOptimisticGradeSessionUpdate,
     isPending,

@@ -1,4 +1,5 @@
 import type { ReviewPageData } from "@/lib/review-types";
+import { readFirstNonEmptySearchParam } from "@/lib/search-params";
 
 import {
   getInitiallyRevealedCardId,
@@ -122,4 +123,15 @@ export function buildSearchParamsRecord(
   }
 
   return Object.keys(record).length > 0 ? record : fallback;
+}
+
+export function resolveRequestedSelectedReviewCardId(input: {
+  isGlobalReview: boolean;
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  if (!input.isGlobalReview) {
+    return null;
+  }
+
+  return readFirstNonEmptySearchParam(input.searchParams?.card) ?? null;
 }

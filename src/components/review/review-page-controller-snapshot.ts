@@ -6,7 +6,10 @@ import {
   buildCanonicalReviewSessionHrefForBase
 } from "@/lib/site";
 
-import { buildReviewGradePreviewLookup } from "./review-page-client-utils";
+import {
+  buildReviewGradePreviewLookup,
+  resolveRequestedSelectedReviewCardId
+} from "./review-page-client-utils";
 import {
   buildReviewHydrationRequestKey,
   collectQueuedAdvanceCandidateCardIds,
@@ -86,14 +89,10 @@ export function buildReviewControllerSnapshot(
     currentSearchParams !== undefined &&
     viewData.scope === "global" &&
     clientError === null;
-  const requestedSelectedCardId =
-    isGlobalReview &&
-    currentSearchParams &&
-    typeof currentSearchParams.card === "string"
-      ? currentSearchParams.card
-      : isGlobalReview && Array.isArray(currentSearchParams?.card)
-        ? (currentSearchParams.card[0] ?? null)
-        : null;
+  const requestedSelectedCardId = resolveRequestedSelectedReviewCardId({
+    isGlobalReview,
+    searchParams: currentSearchParams
+  });
 
   const selectedCard = viewData.selectedCard;
   const selectedCardId = selectedCard?.id ?? null;
