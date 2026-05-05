@@ -176,6 +176,28 @@ describe("forvo pronunciation helpers", () => {
     });
   }, 60_000);
 
+  it("rejects missing CLI option values before treating later flags as request data", async () => {
+    await expect(
+      execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          fetchForvoScriptPath,
+          "--content-root",
+          validContentRoot,
+          "--word",
+          "--manual",
+          "--dry-run",
+          "--limit",
+          "0"
+        ],
+        { cwd: process.cwd() }
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining("Missing value for --word.")
+    });
+  }, 60_000);
+
   it("fails the CLI when the word-add prefill is disabled", async () => {
     await expect(
       execFileAsync(
