@@ -15,7 +15,6 @@ import {
   updateSettingsCache
 } from "@/lib/data-cache";
 import {
-  mediaGlossaryHref,
   mediaHref,
   mediaStudyHref,
   mediaTextbookLessonHref,
@@ -86,7 +85,6 @@ export function invalidateImportedContentCaches(input: {
 
   for (const mediaSlug of input.mediaSlugs) {
     revalidatePath(mediaHref(mediaSlug));
-    revalidatePath(mediaGlossaryHref(mediaSlug));
     revalidatePath(mediaStudyHref(mediaSlug, "progress"));
     revalidatePath(mediaStudyHref(mediaSlug, "review"));
     revalidatePath(mediaStudyHref(mediaSlug, "textbook"));
