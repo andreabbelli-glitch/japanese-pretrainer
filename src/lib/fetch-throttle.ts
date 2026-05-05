@@ -33,7 +33,7 @@ export function createFetchThrottle(
     nextAllowedAt = scheduledAt + Math.max(0, resolvedConfig.requestDelayMs);
 
     if (waitMs > 0) {
-      await sleep(waitMs);
+      await sleep(waitMs, init?.signal);
     }
 
     const timeoutController = new AbortController();
@@ -71,7 +71,10 @@ export function createFetchThrottle(
         }
 
         if (attempt < resolvedConfig.maxRetries) {
-          await sleep(resolvedConfig.retryBaseDelayMs * 2 ** attempt);
+          await sleep(
+            resolvedConfig.retryBaseDelayMs * 2 ** attempt,
+            init?.signal
+          );
           continue;
         }
 
@@ -98,7 +101,7 @@ export function createFetchThrottle(
           url
         });
         await cancelResponseBody(response);
-        await sleep(retryDelayMs);
+        await sleep(retryDelayMs, init?.signal);
         continue;
       }
 
@@ -158,10 +161,42 @@ function resolveConfig(
   };
 }
 
-export async function sleep(durationMs: number) {
+export async function sleep(durationMs: number, signal?: AbortSignal | null) {
+  if (signal?.aborted) {
+    throw readAbortReason(signal);
+  }
+
   if (durationMs <= 0) {
     return;
   }
 
-  await new Promise((resolve) => setTimeout(resolve, durationMs));
+  if (!signal) {
+    await new Promise((resolve) => setTimeout(resolve, durationMs));
+    return;
+  }
+
+  const abortSignal = signal;
+
+  await new Promise<void>((resolve, reject) => {
+    const timeout = setTimeout(() => {
+      abortSignal.removeEventListener("abort", onAbort);
+      resolve();
+    }, durationMs);
+
+    function onAbort() {
+      clearTimeout(timeout);
+      reject(readAbortReason(abortSignal));
+    }
+
+    abortSignal.addEventListener("abort", onAbort, { once: true });
+  });
+}
+
+function readAbortReason(signal: AbortSignal) {
+  return (
+    signal.reason ??
+    Object.assign(new Error("The operation was aborted."), {
+      name: "AbortError"
+    })
+  );
 }
