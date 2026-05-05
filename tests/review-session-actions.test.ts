@@ -611,6 +611,12 @@ describe("review session actions", () => {
       expect(result.selectedCardContext.remainingCount).toBe(
         Math.max(0, result.queue.queueCount - 1)
       );
+      expect(result.selectedCard?.reviewStateUpdatedAt).toEqual(
+        expect.any(String)
+      );
+      expect(result.selectedCardContext.reviewStateUpdatedAt).toBe(
+        result.selectedCard?.reviewStateUpdatedAt
+      );
       expect(result.selectedCardContext.showAnswer).toBe(false);
       expect(result.queue.advanceCards).toEqual([]);
       expect(result.session.answeredCount).toBe(

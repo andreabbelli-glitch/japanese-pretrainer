@@ -107,6 +107,8 @@ export async function resolvePostGradeReviewSessionPageData(input: {
             0,
             updatedQueue.queueCount - hydratedAdvanceCandidate.position
           ),
+          reviewStateUpdatedAt:
+            hydratedAdvanceCandidate.card.reviewStateUpdatedAt ?? null,
           showAnswer: false
         },
         sessionInput
@@ -177,6 +179,7 @@ export async function resolvePostGradeReviewSessionPageData(input: {
             isQueueCard: true,
             position: 1,
             remainingCount: Math.max(0, updatedQueue.queueCount - 1),
+            reviewStateUpdatedAt: hydratedCard.reviewStateUpdatedAt ?? null,
             showAnswer: false
           },
           sessionInput
