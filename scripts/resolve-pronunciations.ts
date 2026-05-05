@@ -223,6 +223,8 @@ function parseCliOptions(argv: string[]): CliOptions {
       options.openWordAddOnSkip = false;
       continue;
     }
+
+    throw new Error(`Unknown argument: ${argument}`);
   }
 
   return options;

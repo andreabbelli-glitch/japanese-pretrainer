@@ -208,6 +208,41 @@ describe("pronunciation resolve", () => {
       }
     }, 60_000);
 
+    it("rejects unknown resolver CLI flags instead of silently running", async () => {
+      closeDatabaseClient(database);
+
+      try {
+        await expect(
+          execFileAsync(
+            process.execPath,
+            [
+              "--experimental-strip-types",
+              path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
+              "--mode=review",
+              `--content-root=${contentRoot}`,
+              "--dry-run",
+              "--limit=0",
+              "--no-open",
+              "--bogus"
+            ],
+            {
+              cwd: process.cwd(),
+              env: {
+                ...process.env,
+                DATABASE_URL: databasePath
+              }
+            }
+          )
+        ).rejects.toMatchObject({
+          stderr: expect.stringContaining("Unknown argument: --bogus")
+        });
+      } finally {
+        database = createDatabaseClient({
+          databaseUrl: databasePath
+        });
+      }
+    }, 60_000);
+
     it("selects review targets globally and deduplicates linked entries", async () => {
       const selection = await selectPronunciationResolveTargets({
         contentRoot,
