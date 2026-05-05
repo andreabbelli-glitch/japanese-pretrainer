@@ -34,8 +34,9 @@ Comandi utili:
 quando si vuole procedere molto lentamente, per esempio un termine ogni 5
 minuti.
 
-Il comando fallisce subito se riceve argomenti non riconosciuti, cosi un typo
-nei flag non avvia un batch piu ampio del previsto.
+Il comando fallisce subito se riceve argomenti non riconosciuti oppure valori
+mancanti/non validi, cosi un typo nei flag non avvia un batch piu ampio del
+previsto.
 
 ## Modalita mirata
 

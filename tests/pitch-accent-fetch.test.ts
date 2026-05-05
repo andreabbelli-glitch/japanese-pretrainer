@@ -65,6 +65,21 @@ describe("pitch accent fetch helpers", () => {
     });
   }, 60_000);
 
+  it("rejects missing numeric CLI option values before running the pitch accent workflow", async () => {
+    await expect(
+      runPitchAccentCli(
+        "--content-root",
+        validContentRoot,
+        "--media",
+        "__missing__",
+        "--limit",
+        "--dry-run"
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining("Missing value for --limit.")
+    });
+  }, 60_000);
+
   it("extracts a single pitch accent from Wiktionary ja-pron templates", () => {
     const source = `
 ==Japanese==
