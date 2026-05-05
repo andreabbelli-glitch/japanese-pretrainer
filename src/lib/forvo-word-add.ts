@@ -86,7 +86,11 @@ export async function loadForvoWordAddRequestRegistry(filePath?: string) {
 
     return {
       entries: Array.isArray(parsed.entries)
-        ? parsed.entries.map((entry) => normalizeForvoWordAddRequestEntry(entry))
+        ? parsed.entries
+            .map((entry) => normalizeForvoWordAddRequestEntry(entry))
+            .filter(
+              (entry): entry is ForvoWordAddRequestEntry => entry !== null
+            )
         : [],
       version: 1
     } satisfies ForvoWordAddRequestRegistry;
@@ -269,21 +273,46 @@ function inferForvoWordAddPhrase(input: ForvoWordAddEntryLike) {
   return false;
 }
 
-function normalizeForvoWordAddRequestEntry(entry: unknown): ForvoWordAddRequestEntry {
+function normalizeForvoWordAddRequestEntry(
+  entry: unknown
+): ForvoWordAddRequestEntry | null {
   const record =
     typeof entry === "object" && entry !== null
       ? (entry as Partial<ForvoWordAddRequestEntry>)
-      : ({} as Partial<ForvoWordAddRequestEntry>);
+      : null;
+
+  if (!record) {
+    return null;
+  }
+
+  const entryKind =
+    record.entryKind === "term" || record.entryKind === "grammar"
+      ? record.entryKind
+      : null;
+  const entryId =
+    typeof record.entryId === "string" && record.entryId.trim().length > 0
+      ? record.entryId
+      : null;
+  const mediaSlug =
+    typeof record.mediaSlug === "string" && record.mediaSlug.trim().length > 0
+      ? record.mediaSlug
+      : null;
+
+  if (!entryKind || !entryId || !mediaSlug) {
+    return null;
+  }
 
   return {
-    entryId: typeof record.entryId === "string" ? record.entryId : "",
-    entryKind: record.entryKind === "grammar" ? "grammar" : "term",
+    entryId,
+    entryKind,
     label: typeof record.label === "string" ? record.label : "",
-    mediaSlug: typeof record.mediaSlug === "string" ? record.mediaSlug : "",
+    mediaSlug,
     reading: typeof record.reading === "string" ? record.reading : undefined,
     requestUrl: typeof record.requestUrl === "string" ? record.requestUrl : "",
-    requestedAt: typeof record.requestedAt === "string" ? record.requestedAt : "",
-    resolvedAt: typeof record.resolvedAt === "string" ? record.resolvedAt : undefined,
+    requestedAt:
+      typeof record.requestedAt === "string" ? record.requestedAt : "",
+    resolvedAt:
+      typeof record.resolvedAt === "string" ? record.resolvedAt : undefined,
     resolvedAudioSource:
       typeof record.resolvedAudioSource === "string"
         ? record.resolvedAudioSource

@@ -10,7 +10,7 @@ import {
   normalizeForvoWordAddLabel,
   type ForvoWordAddRequestRegistry
 } from "@/lib/pronunciation";
-import { mkdtemp, writeFile } from "node:fs/promises";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
@@ -157,6 +157,67 @@ describe("forvo word-add helpers", () => {
         "assets/audio/term/term-kougekisaki/forvo-speaker.mp3"
     });
     expect(registry.entries[0]?.resolvedAt).toEqual(expect.any(String));
+  });
+
+  it("filters malformed registry entries while preserving valid requests", async () => {
+    const tempDir = await mkdtemp(
+      path.join(os.tmpdir(), "jcs-forvo-word-add-")
+    );
+    const registryPath = path.join(tempDir, "forvo-requested-word-add.json");
+
+    try {
+      await writeFile(
+        registryPath,
+        `${JSON.stringify(
+          {
+            version: 1,
+            entries: [
+              {
+                entryId: "term-kougekisaki",
+                entryKind: "term",
+                label: "攻撃先",
+                mediaSlug: "duel-masters-dm25",
+                requestUrl:
+                  "https://forvo.com/word-add/%E6%94%BB%E6%92%83%E5%85%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+                requestedAt: "2026-04-11T22:12:00.000Z"
+              },
+              {
+                entryId: "term-bad-kind",
+                entryKind: "kanji",
+                mediaSlug: "duel-masters-dm25"
+              },
+              {
+                entryId: "term-missing-media",
+                entryKind: "term"
+              },
+              null
+            ]
+          },
+          null,
+          2
+        )}\n`
+      );
+
+      const registry = await loadForvoWordAddRequestRegistry(registryPath);
+
+      expect(registry.entries).toEqual([
+        {
+          entryId: "term-kougekisaki",
+          entryKind: "term",
+          label: "攻撃先",
+          mediaSlug: "duel-masters-dm25",
+          reading: undefined,
+          requestUrl:
+            "https://forvo.com/word-add/%E6%94%BB%E6%92%83%E5%85%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+          requestedAt: "2026-04-11T22:12:00.000Z",
+          resolvedAt: undefined,
+          resolvedAudioSource: undefined,
+          resolvedAudioSrc: undefined
+        }
+      ]);
+    } finally {
+      await rm(tempDir, { recursive: true, force: true });
+    }
   });
 
   it("loads legacy registries without resolved metadata", async () => {
