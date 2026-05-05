@@ -24,6 +24,10 @@ import {
 } from "./katakana-speed-copy";
 import { getKatakanaSpeedPromptFitSize } from "./katakana-speed-prompt-fit";
 import { formatDuration } from "./katakana-speed-shared";
+import {
+  isActivationKeyboardTarget,
+  isEditableKeyboardTarget
+} from "./keyboard-targets";
 import { useKatakanaSpeedSessionController } from "./use-katakana-speed-session-controller";
 
 type KatakanaSpeedSessionPageProps = {
@@ -86,7 +90,8 @@ export function KatakanaSpeedSessionPage({
         event.metaKey ||
         event.ctrlKey ||
         event.altKey ||
-        isEditableTarget(event.target)
+        isEditableKeyboardTarget(event.target) ||
+        isActivationKeyboardTarget(event.target)
       ) {
         return;
       }
@@ -624,17 +629,4 @@ function ReadingHint({
 
 function formatTimerLabel(value: number) {
   return `${(value / 1000).toFixed(1)} s`;
-}
-
-function isEditableTarget(target: EventTarget | null) {
-  if (!(target instanceof HTMLElement)) {
-    return false;
-  }
-
-  return (
-    target.isContentEditable ||
-    target.tagName === "INPUT" ||
-    target.tagName === "TEXTAREA" ||
-    target.tagName === "SELECT"
-  );
 }

@@ -22,6 +22,11 @@ import type {
   KatakanaSpeedTrialPlan
 } from "@/features/katakana-speed/types";
 
+import {
+  isActivationKeyboardTarget,
+  isEditableKeyboardTarget
+} from "./keyboard-targets";
+
 export type KatakanaSpeedFeedbackStatus =
   | "correct-fast"
   | "correct-slow"
@@ -604,7 +609,7 @@ export function useKatakanaSpeedSessionController(
         event.metaKey ||
         event.ctrlKey ||
         event.altKey ||
-        isEditableTarget(event.target)
+        isEditableKeyboardTarget(event.target)
       ) {
         return;
       }
@@ -618,7 +623,7 @@ export function useKatakanaSpeedSessionController(
       if (isSelfCheckTrial || isRanGridTrial) {
         if (
           event.key === "Enter" &&
-          isActivationTarget(event.target) &&
+          isActivationKeyboardTarget(event.target) &&
           !isRanGridTrial
         ) {
           return;
@@ -758,29 +763,4 @@ function parseStringArray(value: unknown): string[] {
   return Array.isArray(value)
     ? value.filter((item): item is string => typeof item === "string")
     : [];
-}
-
-function isEditableTarget(target: EventTarget | null) {
-  if (!(target instanceof HTMLElement)) {
-    return false;
-  }
-
-  return (
-    target.isContentEditable ||
-    target.tagName === "INPUT" ||
-    target.tagName === "TEXTAREA" ||
-    target.tagName === "SELECT"
-  );
-}
-
-function isActivationTarget(target: EventTarget | null) {
-  if (!(target instanceof HTMLElement)) {
-    return false;
-  }
-
-  return (
-    target.tagName === "BUTTON" ||
-    target.tagName === "A" ||
-    target.getAttribute("role") === "button"
-  );
 }

@@ -9,18 +9,32 @@ import {
 } from "./helpers/minimal-dom";
 
 const mocks = vi.hoisted(() => ({
+  abandonKatakanaSpeedSessionAction: vi.fn(),
   aggregateKatakanaSpeedExerciseResultAction: vi.fn(),
+  completeKatakanaSpeedSessionAction: vi.fn(),
+  routerPush: vi.fn(),
   submitKatakanaSpeedAnswerAction: vi.fn(),
   submitKatakanaSpeedSelfCheckAction: vi.fn()
 }));
 
 vi.mock("@/actions/katakana-speed", () => ({
+  abandonKatakanaSpeedSessionAction:
+    mocks.abandonKatakanaSpeedSessionAction,
   aggregateKatakanaSpeedExerciseResultAction:
     mocks.aggregateKatakanaSpeedExerciseResultAction,
+  completeKatakanaSpeedSessionAction:
+    mocks.completeKatakanaSpeedSessionAction,
   submitKatakanaSpeedAnswerAction: mocks.submitKatakanaSpeedAnswerAction,
   submitKatakanaSpeedSelfCheckAction: mocks.submitKatakanaSpeedSelfCheckAction
 }));
 
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: mocks.routerPush
+  })
+}));
+
+import { KatakanaSpeedSessionPage } from "@/components/katakana-speed/katakana-speed-session-page";
 import type { KatakanaSpeedSessionControllerResult } from "@/components/katakana-speed/use-katakana-speed-session-controller";
 import { useKatakanaSpeedSessionController } from "@/components/katakana-speed/use-katakana-speed-session-controller";
 import type { StartKatakanaSpeedSessionResult } from "@/features/katakana-speed/server";
@@ -31,7 +45,10 @@ describe("katakana speed session controller", () => {
 
   beforeEach(() => {
     installMinimalDom();
+    mocks.abandonKatakanaSpeedSessionAction.mockReset();
     mocks.aggregateKatakanaSpeedExerciseResultAction.mockReset();
+    mocks.completeKatakanaSpeedSessionAction.mockReset();
+    mocks.routerPush.mockReset();
     mocks.submitKatakanaSpeedAnswerAction.mockReset();
     mocks.submitKatakanaSpeedSelfCheckAction.mockReset();
   });
@@ -666,6 +683,52 @@ describe("katakana speed session controller", () => {
       (latestController as unknown as KatakanaSpeedSessionControllerResult)
         .timerState.phase
     ).toBe("running");
+  });
+
+  it("lets Space activate focused controls without being captured by the reading shortcut", async () => {
+    vi.spyOn(performance, "now").mockReturnValue(40_000);
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(KatakanaSpeedSessionPage, {
+          data: {
+            ...buildRanSession(),
+            answeredCount: 0,
+            startedAt: "2026-04-26T08:00:00.000Z",
+            status: "active"
+          }
+        })
+      );
+      await Promise.resolve();
+    });
+
+    const focusedControl = document.createElement("button");
+    focusedControl.focus();
+    const event = {
+      altKey: false,
+      ctrlKey: false,
+      defaultPrevented: false,
+      key: " ",
+      metaKey: false,
+      preventDefault() {
+        event.defaultPrevented = true;
+      },
+      shiftKey: false,
+      stopImmediatePropagation: vi.fn(),
+      target: focusedControl,
+      type: "keydown"
+    };
+
+    await act(async () => {
+      window.dispatchEvent(event as unknown as Event);
+      await Promise.resolve();
+    });
+
+    expect(event.defaultPrevented).toBe(false);
+    expect(event.stopImmediatePropagation).not.toHaveBeenCalled();
   });
 
   it("submits RAN with Enter even when a wrong cell is focused", async () => {
