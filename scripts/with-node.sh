@@ -45,6 +45,10 @@ for NVM_SH in "${NVM_SCRIPT_CANDIDATES[@]}"; do
     . "$NVM_SH" --no-use
 
     if nvm use --silent "$NODE_VERSION" >/dev/null 2>&1; then
+      if [[ -n "${NVM_BIN:-}" ]]; then
+        export PATH="$NVM_BIN:$PATH"
+      fi
+
       exec "$@"
     fi
   done

@@ -165,7 +165,8 @@ repository con `nvm use`.
 Lo script `./scripts/with-node.sh` prova a usare `nvm` da `$NVM_DIR`,
 `/opt/homebrew/opt/nvm/nvm.sh` o `/usr/local/opt/nvm/nvm.sh`. Se la versione
 corretta di Node e gia attiva, esegue direttamente il comando senza dipendere
-da `nvm`.
+da `nvm`; quando invece attiva `nvm`, forza il binario Node selezionato davanti
+al resto del `PATH`.
 
 Il runtime ufficialmente supportato resta `Node 22.x`. Gli script TypeScript
 CLI del repo evitano dipendenze da flag rimossi in `Node 25`, quindi un lancio

@@ -40,6 +40,8 @@ Questo e il percorso canonico anche quando `pnpm` sembra funzionare con una
 versione Node diversa: il repo supporta ufficialmente `Node 22.x`, mentre la
 compatibilita con release successive come `Node 25` resta solo best effort per
 gli script CLI TypeScript.
+Quando il wrapper attiva `nvm`, il binario Node risolto da `.nvmrc` viene
+portato davanti agli altri runtime gia presenti in `PATH`.
 
 Verifica minima:
 
