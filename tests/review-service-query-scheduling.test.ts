@@ -16,36 +16,9 @@ import {
 import { runMigrations } from "@/db/migrate";
 import { lessonProgress, reviewSubjectState } from "@/db/schema";
 import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
+import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
 const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
-
-function createDeferred() {
-  let resolve!: () => void;
-  const promise = new Promise<void>((innerResolve) => {
-    resolve = innerResolve;
-  });
-
-  return {
-    promise,
-    resolve
-  };
-}
-
-async function waitForTruthy(
-  predicate: () => boolean,
-  message: string,
-  attempts = 50
-) {
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    if (predicate()) {
-      return;
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-  }
-
-  throw new Error(message);
-}
 
 describe("review service query scheduling", () => {
   let tempDir = "";
@@ -83,9 +56,9 @@ describe("review service query scheduling", () => {
   });
 
   it("starts the member-card lookup before the subject state settles during grading", async () => {
-    const subjectStateGate = createDeferred();
-    let subjectStateStarted = false;
-    let memberCardLookupStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const subjectStateGate = schedule.gate("subject state");
+    const memberCardLookupGate = schedule.gate("member-card lookup");
     const originalGetReviewSubjectStateByKey =
       dbQueriesModule.getReviewSubjectStateByKey;
     const originalListReviewCardIdsByEntryRefs =
@@ -93,15 +66,14 @@ describe("review service query scheduling", () => {
     const subjectStateSpy = vi
       .spyOn(dbQueriesModule, "getReviewSubjectStateByKey")
       .mockImplementation(async (...args) => {
-        subjectStateStarted = true;
         const resultPromise = originalGetReviewSubjectStateByKey(...args);
-        await subjectStateGate.promise;
+        await subjectStateGate.loader()();
         return resultPromise;
       });
     const memberCardLookupSpy = vi
       .spyOn(dbQueriesModule, "listReviewCardIdsByEntryRefs")
       .mockImplementation(async (...args) => {
-        memberCardLookupStarted = true;
+        await memberCardLookupGate.loader()();
         return originalListReviewCardIdsByEntryRefs(...args);
       });
 
@@ -113,16 +85,14 @@ describe("review service query scheduling", () => {
     });
 
     try {
-      await waitForTruthy(
-        () => subjectStateStarted,
-        "Expected the subject state lookup to start."
+      await schedule.expectStarted(
+        "subject state",
+        "member-card lookup"
       );
-      await waitForTruthy(
-        () => memberCardLookupStarted,
-        "Expected the member-card lookup to start before the subject state resolved."
-      );
+      schedule.expectNotSettled("subject state");
     } finally {
       subjectStateGate.resolve();
+      memberCardLookupGate.resolve();
       await gradePromise;
       subjectStateSpy.mockRestore();
       memberCardLookupSpy.mockRestore();
@@ -130,9 +100,9 @@ describe("review service query scheduling", () => {
   });
 
   it("starts the FSRS snapshot lookup before the subject context settles during grading", async () => {
-    const subjectStateGate = createDeferred();
-    let subjectStateStarted = false;
-    let fsrsSnapshotStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const subjectStateGate = schedule.gate("subject context");
+    const fsrsSnapshotGate = schedule.gate("fsrs snapshot");
     const originalGetReviewSubjectStateByKey =
       dbQueriesModule.getReviewSubjectStateByKey;
     const originalGetFsrsOptimizerSnapshot =
@@ -140,15 +110,14 @@ describe("review service query scheduling", () => {
     const subjectStateSpy = vi
       .spyOn(dbQueriesModule, "getReviewSubjectStateByKey")
       .mockImplementation(async (...args) => {
-        subjectStateStarted = true;
         const resultPromise = originalGetReviewSubjectStateByKey(...args);
-        await subjectStateGate.promise;
+        await subjectStateGate.loader()();
         return resultPromise;
       });
     const fsrsSnapshotSpy = vi
       .spyOn(fsrsOptimizerModule, "getFsrsOptimizerSnapshot")
       .mockImplementation(async (...args) => {
-        fsrsSnapshotStarted = true;
+        await fsrsSnapshotGate.loader()();
         return originalGetFsrsOptimizerSnapshot(...args);
       });
 
@@ -160,16 +129,11 @@ describe("review service query scheduling", () => {
     });
 
     try {
-      await waitForTruthy(
-        () => subjectStateStarted,
-        "Expected the subject context lookup to start."
-      );
-      await waitForTruthy(
-        () => fsrsSnapshotStarted,
-        "Expected the FSRS snapshot lookup to start before the subject context resolved."
-      );
+      await schedule.expectStarted("subject context", "fsrs snapshot");
+      schedule.expectNotSettled("subject context");
     } finally {
       subjectStateGate.resolve();
+      fsrsSnapshotGate.resolve();
       await gradePromise;
       subjectStateSpy.mockRestore();
       fsrsSnapshotSpy.mockRestore();

@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { act } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { createDeferred, flushMicrotasks } from "./helpers/async";
 import { installMinimalDom, uninstallMinimalDom } from "./helpers/minimal-dom";
 
 import {
@@ -61,7 +62,7 @@ describe("useReviewSessionUpdateRunner", () => {
       controller().runSessionUpdate(() => Promise.resolve(nextData), {
         onSuccess
       });
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(controller().viewData.selectedCard?.id).toBe("card-b");
@@ -94,7 +95,7 @@ describe("useReviewSessionUpdateRunner", () => {
       controller().runSessionUpdate(() => Promise.resolve(staleData), {
         onDiscarded
       });
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(onDiscarded).toHaveBeenCalledWith(staleData);
@@ -122,7 +123,7 @@ describe("useReviewSessionUpdateRunner", () => {
         acceptSameProgressSelectionChange: true,
         onDiscarded
       });
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(onDiscarded).not.toHaveBeenCalled();
@@ -169,7 +170,7 @@ describe("useReviewSessionUpdateRunner", () => {
           }
         }
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(onError).toHaveBeenCalledTimes(1);
@@ -190,7 +191,7 @@ describe("useReviewSessionUpdateRunner", () => {
           shouldLogError: () => false
         }
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(controller().clientError).toBe("Errore controllato.");
@@ -245,14 +246,14 @@ describe("useReviewSessionUpdateRunner", () => {
 
     await act(async () => {
       firstPersistence.resolve(persistedB);
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(loadSecond).toHaveBeenCalledTimes(1);
 
     await act(async () => {
       secondPersistence.resolve(persistedC);
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(controller().viewData.selectedCard?.id).toBe("card-c");
@@ -326,7 +327,7 @@ describe("useReviewSessionUpdateRunner", () => {
 
     await act(async () => {
       firstPersistence.reject(new Error("Persistence failed."));
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(firstError).toHaveBeenCalledTimes(1);
@@ -353,7 +354,7 @@ describe("useReviewSessionUpdateRunner", () => {
 
     await act(async () => {
       thirdPersistence.resolve(persistedB);
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(controller().viewData.selectedCard?.id).toBe("card-b");
@@ -418,7 +419,7 @@ async function renderRunner(
 
   await act(async () => {
     root!.render(createElement(Probe));
-    await flushPromises();
+    await flushMicrotasks(3);
   });
 
   return () => {
@@ -556,21 +557,4 @@ function buildQueueCard(id: string): ReviewQueueCard {
     segmentTitle: "Tcg Core",
     typeLabel: "Recognition"
   };
-}
-
-function createDeferred<T>() {
-  let resolve!: (value: T) => void;
-  let reject!: (reason?: unknown) => void;
-  const promise = new Promise<T>((resolvePromise, rejectPromise) => {
-    resolve = resolvePromise;
-    reject = rejectPromise;
-  });
-
-  return { promise, reject, resolve };
-}
-
-async function flushPromises() {
-  await Promise.resolve();
-  await Promise.resolve();
-  await Promise.resolve();
 }

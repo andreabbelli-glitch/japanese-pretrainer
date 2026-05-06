@@ -373,6 +373,9 @@ Per generare un hash password PBKDF2 senza dipendenze extra:
 ./scripts/with-node.sh pnpm auth:hash-password -- "scegli-una-password"
 ```
 
+La password deve arrivare al comando come un singolo argomento: se contiene
+spazi, lascia le virgolette.
+
 Poi usa l'output come valore di `AUTH_PASSWORD_HASH`.
 Se lo incolli dentro un file `.env*`, ricordati di fare escape dei simboli
 `$` come `\$`, altrimenti Next prova a espanderli e l'hash risulta troncato.

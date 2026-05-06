@@ -131,9 +131,7 @@ export async function refreshSessionRollup(
   const attempts = (
     await listKatakanaAttemptLogsBySession(database, input.sessionId)
   ).filter(hasSupportedKatakanaAttemptMode);
-  const responseTimes = attempts
-    .map((attempt) => attempt.responseMs)
-    .sort((left, right) => left - right);
+  const responseTimes = attempts.map((attempt) => attempt.responseMs);
   const errorTagCounts = countValues(
     attempts.flatMap((attempt) =>
       parseJsonArray<KatakanaSpeedErrorTag>(attempt.errorTagsJson)

@@ -26,7 +26,10 @@ export function KatakanaSpeedRecapPage({ data }: KatakanaSpeedRecapPageProps) {
       : null;
 
   return (
-    <div className="katakana-speed-recap-page">
+    <div
+      className="katakana-speed-recap-page"
+      data-testid="katakana-speed-recap"
+    >
       <section className="katakana-speed-hero">
         <SurfaceCard className="katakana-speed-recap-panel" variant="hero">
           <p className="katakana-speed-eyebrow">Recap sessione</p>
@@ -343,7 +346,10 @@ function AttemptRow({
   attempt: KatakanaSpeedRecapPageData["attempts"][number];
 }) {
   return (
-    <article className="katakana-speed-attempt-row">
+    <article
+      className="katakana-speed-attempt-row"
+      data-testid="katakana-speed-attempt-row"
+    >
       <span className="jp-inline">{attempt.promptSurface}</span>
       <strong>
         {attempt.isCorrect ? "✓ Corretta" : "✗ Da rivedere"} ·{" "}

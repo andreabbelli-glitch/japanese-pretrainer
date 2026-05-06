@@ -1,25 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-type Deferred<T> = {
-  promise: Promise<T>;
-  resolve: (value: T) => void;
-};
-
-function createDeferred<T>(): Deferred<T> {
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
-
-async function flushMicrotasks() {
-  await Promise.resolve();
-  await Promise.resolve();
-}
+import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
 describe("kanji clash session loader scheduling", () => {
   afterEach(() => {
@@ -34,32 +15,27 @@ describe("kanji clash session loader scheduling", () => {
   });
 
   it("starts loading manual contrast candidates before eligible subjects settle", async () => {
-    const eligibleSubjectsDeferred =
-      createDeferred<Array<{ subjectKey: string }>>();
-    const manualContrastSeedDeferred = createDeferred<{
+    const schedule = createQuerySchedulingHarness();
+    const eligibleSubjectsGate =
+      schedule.gate<Array<{ subjectKey: string }>>("eligible subjects");
+    const manualContrastSeedGate = schedule.gate<{
       candidates: [];
       pairStates: Map<string, null>;
       suppressedContrastKeys: Set<string>;
-    }>();
-    let eligibleSubjectsStarted = false;
-    let manualContrastStarted = false;
+    }>("manual contrast seed");
 
     vi.doMock("@/db", () => ({
       db: {}
     }));
     vi.doMock("@/db/queries", () => ({
       countKanjiClashAutomaticNewPairIntroductions: vi.fn(),
-      listEligibleKanjiClashSubjects: vi.fn(() => {
-        eligibleSubjectsStarted = true;
-        return eligibleSubjectsDeferred.promise;
-      }),
+      listEligibleKanjiClashSubjects: vi.fn(eligibleSubjectsGate.loader()),
       listKanjiClashPairStatesByPairKeys: vi.fn()
     }));
     vi.doMock("@/features/kanji-clash/server/manual-contrast.ts", () => ({
-      loadKanjiClashManualContrastCandidates: vi.fn(() => {
-        manualContrastStarted = true;
-        return manualContrastSeedDeferred.promise;
-      })
+      loadKanjiClashManualContrastCandidates: vi.fn(
+        manualContrastSeedGate.loader()
+      )
     }));
     vi.doMock("@/features/kanji-clash/server/manual-queue-loader.ts", () => ({
       loadManualKanjiClashQueueSnapshot: vi.fn(() =>
@@ -89,14 +65,12 @@ describe("kanji clash session loader scheduling", () => {
       scope: "global"
     });
 
-    await flushMicrotasks();
-
     try {
-      expect(eligibleSubjectsStarted).toBe(true);
-      expect(manualContrastStarted).toBe(true);
+      await schedule.expectStarted("eligible subjects", "manual contrast seed");
+      schedule.expectNotSettled("eligible subjects");
     } finally {
-      eligibleSubjectsDeferred.resolve([]);
-      manualContrastSeedDeferred.resolve({
+      eligibleSubjectsGate.resolve([]);
+      manualContrastSeedGate.resolve({
         candidates: [],
         pairStates: new Map<string, null>(),
         suppressedContrastKeys: new Set()
@@ -106,26 +80,21 @@ describe("kanji clash session loader scheduling", () => {
   });
 
   it("starts introduced-today counting before automatic pair-state loading settles", async () => {
-    const pairStatesDeferred = createDeferred<Map<string, null>>();
-    const introducedTodayDeferred = createDeferred<number>();
-    let pairStatesStarted = false;
-    let introducedTodayStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const pairStatesGate = schedule.gate<Map<string, null>>("pair states");
+    const introducedTodayGate = schedule.gate<number>("introduced today");
 
     vi.doMock("@/db", () => ({
       db: {}
     }));
     vi.doMock("@/db/queries", () => ({
-      countKanjiClashAutomaticNewPairIntroductions: vi.fn(() => {
-        introducedTodayStarted = true;
-        return introducedTodayDeferred.promise;
-      }),
+      countKanjiClashAutomaticNewPairIntroductions: vi.fn(
+        introducedTodayGate.loader()
+      ),
       listEligibleKanjiClashSubjects: vi.fn(() =>
         Promise.resolve([{ subjectKey: "subject-a" }])
       ),
-      listKanjiClashPairStatesByPairKeys: vi.fn(() => {
-        pairStatesStarted = true;
-        return pairStatesDeferred.promise;
-      })
+      listKanjiClashPairStatesByPairKeys: vi.fn(pairStatesGate.loader())
     }));
     vi.doMock("@/features/kanji-clash/server/manual-contrast.ts", () => ({
       loadKanjiClashManualContrastCandidates: vi.fn(() =>
@@ -169,14 +138,12 @@ describe("kanji clash session loader scheduling", () => {
       scope: "global"
     });
 
-    await flushMicrotasks();
-
     try {
-      expect(pairStatesStarted).toBe(true);
-      expect(introducedTodayStarted).toBe(true);
+      await schedule.expectStarted("pair states", "introduced today");
+      schedule.expectNotSettled("pair states");
     } finally {
-      pairStatesDeferred.resolve(new Map<string, null>());
-      introducedTodayDeferred.resolve(3);
+      pairStatesGate.resolve(new Map<string, null>());
+      introducedTodayGate.resolve(3);
     }
 
     await expect(queuePromise).resolves.toMatchObject({

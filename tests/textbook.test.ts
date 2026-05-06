@@ -21,6 +21,7 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
+import { createDeferred, waitForTruthy } from "./helpers/async";
 import {
   applyLessonOpenedState,
   getFuriganaMode,
@@ -155,34 +156,6 @@ back: passato
 :::
 `
   );
-}
-
-function createDeferred() {
-  let resolve!: () => void;
-  const promise = new Promise<void>((res) => {
-    resolve = res;
-  });
-
-  return {
-    promise,
-    resolve
-  };
-}
-
-async function waitForTruthy(
-  predicate: () => boolean,
-  message: string,
-  attempts = 50
-) {
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    if (predicate()) {
-      return;
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-  }
-
-  throw new Error(message);
 }
 
 describe("textbook data", () => {

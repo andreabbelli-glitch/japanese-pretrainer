@@ -2,14 +2,14 @@
   "parser": {
     "lessons": 60,
     "cardFiles": 54,
-    "terms": 257,
+    "terms": 261,
     "grammarPatterns": 84,
     "cards": 387,
     "references": 2477
   },
   "importer": {
-    "term": 257,
-    "termAlias": 708,
+    "term": 261,
+    "termAlias": 720,
     "grammarPattern": 84,
     "grammarAlias": 111,
     "entryLink": 1477,

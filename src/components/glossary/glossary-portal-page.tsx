@@ -127,7 +127,10 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
           />
         ) : (
           <>
-            <div className="glossary-results glossary-results--portal">
+            <div
+              className="glossary-results glossary-results--portal"
+              data-testid="glossary-portal-results"
+            >
               {data.results.map((entry) => (
                 <GlobalGlossaryResultCard
                   key={entry.resultKey}

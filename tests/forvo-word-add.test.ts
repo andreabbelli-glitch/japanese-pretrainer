@@ -1,3 +1,16 @@
+import { execFile } from "node:child_process";
+import {
+  chmod,
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  writeFile
+} from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
+import { promisify } from "node:util";
+
 import { describe, expect, it } from "vitest";
 
 import {
@@ -6,13 +19,13 @@ import {
   buildForvoWordAddUrl,
   hasForvoWordAddRequestForEntry,
   loadForvoWordAddRequestRegistry,
-  reconcileForvoWordAddRequestRegistry,
   normalizeForvoWordAddLabel,
+  persistForvoWordAddRequestRegistry,
+  reconcileForvoWordAddRequestRegistry,
   type ForvoWordAddRequestRegistry
 } from "@/lib/pronunciation";
-import { mkdtemp, rm, writeFile } from "node:fs/promises";
-import os from "node:os";
-import path from "node:path";
+
+const execFileAsync = promisify(execFile);
 
 describe("forvo word-add helpers", () => {
   it("builds the expected word-add URL for a label", () => {
@@ -123,6 +136,51 @@ describe("forvo word-add helpers", () => {
     expect(registry.entries[0]?.requestUrl).toBe(
       "https://forvo.com/word-add/%E6%94%BB%E6%92%83%E5%85%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0"
     );
+  });
+
+  it("persists requested word-add entries sorted without mutating the registry", async () => {
+    const tempDir = await mkdtemp(path.join(os.tmpdir(), "jcs-forvo-word-add-"));
+    const registryPath = path.join(tempDir, "forvo-requested-word-add.json");
+    const registry: ForvoWordAddRequestRegistry = {
+      entries: [
+        {
+          entryId: "term-b",
+          entryKind: "term",
+          label: "B",
+          mediaSlug: "sample-z",
+          requestUrl: "https://forvo.com/word-add/b/",
+          requestedAt: "2026-04-11T22:12:00.000Z"
+        },
+        {
+          entryId: "grammar-a",
+          entryKind: "grammar",
+          label: "A",
+          mediaSlug: "sample-a",
+          requestUrl: "https://forvo.com/word-add/a/",
+          requestedAt: "2026-04-11T22:13:00.000Z"
+        }
+      ],
+      version: 1
+    };
+    const originalEntryOrder = registry.entries.map((entry) => entry.entryId);
+
+    try {
+      await persistForvoWordAddRequestRegistry(registryPath, registry);
+
+      const persisted = JSON.parse(await readFile(registryPath, "utf8")) as {
+        entries: Array<{ entryId: string }>;
+      };
+
+      expect(persisted.entries.map((entry) => entry.entryId)).toEqual([
+        "grammar-a",
+        "term-b"
+      ]);
+      expect(registry.entries.map((entry) => entry.entryId)).toEqual(
+        originalEntryOrder
+      );
+    } finally {
+      await rm(tempDir, { recursive: true, force: true });
+    }
   });
 
   it("marks requested entries as resolved when audio becomes available", () => {
@@ -254,5 +312,74 @@ describe("forvo word-add helpers", () => {
         "https://forvo.com/word-add/%E6%94%BB%E6%92%83%E5%85%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0"
     });
     expect(registry.entries[0]?.resolvedAt).toBeUndefined();
+  });
+
+  it("does not mark word-add requests when the browser open fails", async () => {
+    const tempDir = await mkdtemp(
+      path.join(os.tmpdir(), "jcs-forvo-word-add-")
+    );
+    const fakeBinDir = path.join(tempDir, "bin");
+    const knownMissingPath = path.join(tempDir, "forvo-known-missing.json");
+    const requestRegistryPath = path.join(
+      tempDir,
+      "forvo-requested-word-add.json"
+    );
+
+    try {
+      await mkdir(fakeBinDir, { recursive: true });
+      await writeFile(
+        path.join(fakeBinDir, "open"),
+        ["#!/usr/bin/env bash", "exit 42"].join("\n")
+      );
+      await chmod(path.join(fakeBinDir, "open"), 0o755);
+      await writeFile(
+        knownMissingPath,
+        `${JSON.stringify({
+          version: 1,
+          entries: [
+            {
+              entryId: "term-kiku",
+              entryKind: "term",
+              label: "聞く",
+              mediaSlug: "sample-game",
+              reading: "きく"
+            }
+          ]
+        })}\n`
+      );
+
+      await expect(
+        execFileAsync(
+          process.execPath,
+          [
+            "--experimental-strip-types",
+            path.join(process.cwd(), "scripts", "request-forvo-word-add.ts"),
+            "--known-missing-file",
+            knownMissingPath,
+            "--request-registry-file",
+            requestRegistryPath,
+            "--media",
+            "sample-game"
+          ],
+          {
+            cwd: process.cwd(),
+            env: {
+              ...process.env,
+              PATH: `${fakeBinDir}:${process.env.PATH ?? ""}`
+            }
+          }
+        )
+      ).rejects.toMatchObject({
+        stderr: expect.stringContaining("Failed to open browser URL")
+      });
+
+      await expect(readFile(requestRegistryPath, "utf8")).rejects.toMatchObject(
+        {
+          code: "ENOENT"
+        }
+      );
+    } finally {
+      await rm(tempDir, { recursive: true, force: true });
+    }
   });
 });

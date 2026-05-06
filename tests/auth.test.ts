@@ -149,6 +149,30 @@ describe("auth helpers", () => {
     ).toBe(false);
   }, 60_000);
 
+  it("rejects ambiguous multi-argument auth hash CLI passwords", async () => {
+    clearAuthEnv();
+
+    await expect(
+      execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          path.join(process.cwd(), "scripts", "hash-auth-password.ts"),
+          "--",
+          "study",
+          "hard"
+        ],
+        {
+          cwd: process.cwd()
+        }
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining(
+        'Password must be passed as one argument. Wrap passwords with spaces in quotes.'
+      )
+    });
+  }, 60_000);
+
   it("rejects malformed password hashes without throwing during login", () => {
     clearAuthEnv();
     process.env.AUTH_USERNAME = "owner";
@@ -169,6 +193,23 @@ describe("auth helpers", () => {
     process.env.AUTH_PASSWORD_HASH = createPasswordHash("study-hard").replace(
       "$210000$",
       "$210000abc$"
+    );
+    process.env.AUTH_SESSION_SECRET = "super-secret-session-key";
+
+    expect(
+      verifyLoginCredentials({
+        password: "study-hard",
+        username: "owner"
+      })
+    ).toBe(false);
+  });
+
+  it("rejects password hashes with out-of-range iteration counts", () => {
+    clearAuthEnv();
+    process.env.AUTH_USERNAME = "owner";
+    process.env.AUTH_PASSWORD_HASH = createPasswordHash("study-hard").replace(
+      "$210000$",
+      "$2147483648$"
     );
     process.env.AUTH_SESSION_SECRET = "super-secret-session-key";
 

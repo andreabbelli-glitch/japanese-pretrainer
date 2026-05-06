@@ -1,14 +1,5 @@
 import path from "node:path";
-import {
-  cp,
-  mkdir,
-  mkdtemp,
-  readFile,
-  readdir,
-  rm,
-  symlink,
-  writeFile
-} from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 
@@ -41,19 +32,16 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
+import {
+  richContentFixture,
+  writeRichContentFixture
+} from "./helpers/content-fixtures";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const repositoryRoot = path.resolve(__dirname, "..");
 const fixturesRoot = path.resolve(__dirname, "fixtures", "content");
 const validContentRoot = path.join(fixturesRoot, "valid", "content");
 const invalidContentRoot = path.join(fixturesRoot, "invalid", "content");
-const demoMediaFixtureRoot = path.join(
-  repositoryRoot,
-  "content",
-  "media",
-  "duel-masters-dm25"
-);
 const mediaId = "media-sample-anime";
 const lessonId = "lesson-sample-anime-ep01-intro";
 const termId = "term-taberu";
@@ -164,11 +152,8 @@ describe("content importer", () => {
     expect(importedGrammar?.searchRomajiNorm).toBe("teiru");
   }, 60_000);
 
-  it("imports the real Duel Masters bundle", async () => {
-    await copySingleMediaBundleFixture(demoMediaFixtureRoot, contentRoot);
-    const expectedSourceFileCount =
-      await countImportableMediaSourceFiles(demoMediaFixtureRoot);
-
+  it("imports a rich synthetic bundle into normalized database tables", async () => {
+    await writeRichContentFixture(contentRoot);
     const result = await importContentWorkspace({
       contentRoot,
       database,
@@ -176,58 +161,67 @@ describe("content importer", () => {
     });
 
     expect(result.status).toBe("completed");
-    expect(result.filesScanned).toBe(expectedSourceFileCount);
-    expect(result.filesChanged).toBe(expectedSourceFileCount);
+    expect(result.filesScanned).toBe(5);
+    expect(result.filesChanged).toBe(5);
 
     expect(await countRows(database.query.media.findMany())).toBe(1);
+    expect(await countRows(database.query.segment.findMany())).toBe(1);
+    expect(await countRows(database.query.lesson.findMany())).toBe(2);
+    expect(await countRows(database.query.lessonContent.findMany())).toBe(2);
+    expect(await countRows(database.query.term.findMany())).toBe(2);
+    expect(await countRows(database.query.grammarPattern.findMany())).toBe(2);
+    expect(await countRows(database.query.card.findMany())).toBe(4);
+    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(6);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedMedia = await database.query.media.findFirst({
-      where: eq(media.id, "media-duel-masters-dm25")
+      where: eq(media.id, richContentFixture.mediaId)
     });
     const importedSegment = await database.query.segment.findFirst({
-      where: eq(segment.slug, "tcg-core")
+      where: eq(segment.slug, richContentFixture.segmentSlug)
     });
     const importedLesson = await database.query.lesson.findFirst({
-      where: eq(lesson.id, "lesson-duel-masters-dm25-tcg-core-overview"),
+      where: eq(lesson.id, richContentFixture.lessonIntroId),
       with: {
         content: true
       }
     });
     const importedTerm = await database.query.term.findFirst({
-      where: eq(term.sourceId, "term-invasion")
+      where: eq(term.sourceId, richContentFixture.termPrimaryId)
     });
     const importedGrammar = await database.query.grammarPattern.findFirst({
-      where: eq(grammarPattern.sourceId, "grammar-toki")
+      where: eq(grammarPattern.sourceId, richContentFixture.grammarPrimaryId)
     });
     const importedCard = await database.query.card.findFirst({
-      where: eq(card.id, "card-invasion-recognition")
+      where: eq(card.id, richContentFixture.termPrimaryCardId)
     });
     const importedCardLink = await database.query.cardEntryLink.findFirst({
-      where: eq(cardEntryLink.cardId, "card-invasion-recognition")
+      where: eq(cardEntryLink.cardId, richContentFixture.termPrimaryCardId)
     });
 
-    expect(importedMedia?.slug).toBe("duel-masters-dm25");
-    expect(importedMedia?.title).toBe("Duel Masters");
-    expect(importedSegment?.slug).toBe("tcg-core");
-    expect(importedSegment?.mediaId).toBe("media-duel-masters-dm25");
+    expect(importedMedia?.slug).toBe(richContentFixture.mediaSlug);
+    expect(importedMedia?.title).toBe(richContentFixture.mediaTitle);
+    expect(importedSegment?.slug).toBe(richContentFixture.segmentSlug);
+    expect(importedSegment?.mediaId).toBe(richContentFixture.mediaId);
     expect(importedLesson?.sourceFile).toBe(
-      "media/duel-masters-dm25/textbook/001-tcg-core-overview.md"
+      `media/${richContentFixture.mediaSlug}/textbook/001-intro.md`
     );
     expect(importedLesson?.content?.htmlRendered).toContain("<ruby>");
     expect(importedLesson?.content?.astJson).toContain('"type":"image"');
-    expect(importedTerm?.lemma).toBe("侵略");
-    expect(importedGrammar?.pattern).toBe("～時 / ～た時");
-    expect(importedGrammar?.reading).toBe("とき / たとき");
-    expect(importedCard?.front).toBe("{{侵略|しんりゃく}}");
-    expect(importedCard?.exampleJp).toBe(
-      "{{侵略|しんりゃく}}でこのクリーチャーの{{上|うえ}}に{{重|かさ}}ねる。"
-    );
-    expect(importedCard?.exampleIt).toBe(
-      "Con Invasion, sovrapponila su questa creatura."
-    );
+    expect(importedTerm?.lemma).toBe("明かり");
+    expect(importedTerm?.audioSrc).toBe(richContentFixture.termAudioSrc);
+    expect(importedGrammar?.pattern).toBe("～ている");
+    expect(importedGrammar?.reading).toBe("ている");
+    expect(importedGrammar?.audioSrc).toBe(richContentFixture.grammarAudioSrc);
+    expect(importedCard?.front).toBe("{{明|あ}}かり");
+    expect(importedCard?.exampleJp).toBe("{{明|あ}}かりがついている。");
+    expect(importedCard?.exampleIt).toBe("La luce e accesa.");
     expect(importedCardLink?.entryId).toBe(
-      buildScopedEntryId("term", "media-duel-masters-dm25", "term-invasion")
+      buildScopedEntryId(
+        "term",
+        richContentFixture.mediaId,
+        richContentFixture.termPrimaryId
+      )
     );
   }, 60_000);
 
@@ -915,66 +909,6 @@ tags: [grammar, core]
 
 async function copyContentFixture(sourceRoot: string, destinationRoot: string) {
   await cp(sourceRoot, destinationRoot, { recursive: true });
-}
-
-async function copySingleMediaBundleFixture(
-  sourceMediaDirectory: string,
-  destinationContentRoot: string
-) {
-  const destinationMediaRoot = path.join(destinationContentRoot, "media");
-  const destinationMediaDirectory = path.join(
-    destinationMediaRoot,
-    path.basename(sourceMediaDirectory)
-  );
-
-  await mkdir(destinationMediaRoot, { recursive: true });
-  await mkdir(destinationMediaDirectory, { recursive: true });
-  await Promise.all([
-    cp(
-      path.join(sourceMediaDirectory, "media.md"),
-      path.join(destinationMediaDirectory, "media.md")
-    ),
-    cp(
-      path.join(sourceMediaDirectory, "textbook"),
-      path.join(destinationMediaDirectory, "textbook"),
-      { recursive: true }
-    ),
-    cp(
-      path.join(sourceMediaDirectory, "cards"),
-      path.join(destinationMediaDirectory, "cards"),
-      { recursive: true }
-    ),
-    cp(
-      path.join(sourceMediaDirectory, "pronunciations.json"),
-      path.join(destinationMediaDirectory, "pronunciations.json")
-    ),
-    symlink(
-      path.join(sourceMediaDirectory, "assets"),
-      path.join(destinationMediaDirectory, "assets"),
-      process.platform === "win32" ? "junction" : "dir"
-    )
-  ]);
-}
-
-async function countImportableMediaSourceFiles(mediaDirectory: string) {
-  const textbookDirectory = path.join(mediaDirectory, "textbook");
-  const cardsDirectory = path.join(mediaDirectory, "cards");
-  const [textbookFiles, cardFiles] = await Promise.all([
-    listMarkdownFiles(textbookDirectory),
-    listMarkdownFiles(cardsDirectory)
-  ]);
-
-  return 1 + textbookFiles.length + cardFiles.length;
-}
-
-async function listMarkdownFiles(directory: string) {
-  const entries = await readdir(directory, {
-    withFileTypes: true
-  });
-
-  return entries.filter(
-    (entry) => entry.isFile() && entry.name.endsWith(".md")
-  );
 }
 
 async function writeScopedMediaFixture(destinationRoot: string) {

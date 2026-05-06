@@ -1,13 +1,14 @@
 import { db, type DatabaseClient } from "@/db";
 import {
+  getQueuedNewReviewSubjectSummaryByMediaId,
   listGlossaryPreviewEntries,
   listGlossaryProgressSummaries,
   listLessonsByMediaId,
   listLessonsByMediaIdsForShell,
   type MediaListItem,
+  type ReviewLaunchCandidate,
   type ShellLessonListItem
 } from "@/db/queries";
-import type { ReviewLaunchCandidate } from "@/db/queries/review";
 import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
@@ -24,9 +25,9 @@ import {
 import { calculatePercent } from "@/lib/study-format";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 import {
-  loadReviewLaunchCandidateByMediaIdCached,
   loadReviewIntroducedTodayCountCached,
-  loadReviewLaunchCandidatesCached
+  loadReviewLaunchCandidatesCached,
+  loadReviewOverviewSnapshots
 } from "@/lib/review-loader";
 import { getReviewDailyLimit } from "@/lib/settings";
 import { formatDerivedStudyStateLabel } from "@/lib/study-entry";
@@ -41,6 +42,7 @@ import {
   type MediaShellSnapshot
 } from "@/lib/media-shell-snapshot";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
+import type { ReviewOverviewSnapshot } from "./review-types";
 
 function buildGlossaryReviewTags(mediaIds: string[] = []) {
   return [
@@ -55,7 +57,6 @@ type ResolvedMedia = NonNullable<
 
 export async function getMediaLibraryData(database: DatabaseClient = db) {
   const now = new Date();
-  const nowIso = now.toISOString();
   const cacheBucketKey = getLocalIsoTimeBucketKey(now);
 
   return runWithTaggedCache({
@@ -66,28 +67,21 @@ export async function getMediaLibraryData(database: DatabaseClient = db) {
       const dailyLimitPromise = getReviewDailyLimit(database);
       const newIntroducedTodayCountPromise =
         loadReviewIntroducedTodayCountCached(database, now);
-      const reviewCandidatesPromise = loadReviewLaunchCandidatesCached(
-        database,
-        nowIso
-      );
       const [
         rows,
         resolvedDailyLimit,
-        resolvedNewIntroducedTodayCount,
-        resolvedReviewCandidates
+        resolvedNewIntroducedTodayCount
       ] = await Promise.all([
         mediaRowsPromise,
         dailyLimitPromise,
-        newIntroducedTodayCountPromise,
-        reviewCandidatesPromise
+        newIntroducedTodayCountPromise
       ]);
 
       return loadMediaShellSnapshots(database, rows, {
         includePreviewEntries: false,
         now,
         resolvedDailyLimit,
-        resolvedNewIntroducedTodayCount,
-        resolvedReviewCandidates
+        resolvedNewIntroducedTodayCount
       });
     },
     tags: [
@@ -163,6 +157,7 @@ export async function loadMediaShellSnapshots(
     resolvedDailyLimit?: number;
     resolvedNewIntroducedTodayCount?: number;
     resolvedReviewCandidates?: ReviewLaunchCandidate[];
+    resolvedReviewSnapshots?: Map<string, ReviewOverviewSnapshot>;
     now?: Date;
   } = {}
 ) {
@@ -171,15 +166,76 @@ export async function loadMediaShellSnapshots(
   }
 
   const now = options.now ?? new Date();
-  const nowIso = now.toISOString();
+  const dailyLimitPromise =
+    options.resolvedDailyLimit != null
+      ? Promise.resolve(options.resolvedDailyLimit)
+      : getReviewDailyLimit(database);
+  const newIntroducedTodayCountPromise =
+    options.resolvedNewIntroducedTodayCount != null
+      ? Promise.resolve(options.resolvedNewIntroducedTodayCount)
+      : loadReviewIntroducedTodayCountCached(database, now);
+  const reviewCandidatesPromise =
+    options.resolvedReviewCandidates ??
+    loadReviewLaunchCandidatesCached(database, now.toISOString());
+  const reviewSnapshotsPromise =
+    options.resolvedReviewSnapshots ??
+    Promise.all([
+      reviewCandidatesPromise,
+      dailyLimitPromise,
+      newIntroducedTodayCountPromise
+    ]).then(async ([reviewCandidates, dailyLimit, newIntroducedTodayCount]) => {
+      const queuedNewLimit = Math.max(
+        dailyLimit - newIntroducedTodayCount,
+        0
+      );
+      const queuedNewSummaries = await Promise.all(
+        media.map(async (item) => [
+          item.id,
+          await getQueuedNewReviewSubjectSummaryByMediaId(database, {
+            asOf: now,
+            mediaId: item.id,
+            queuedNewLimit
+          })
+        ] as const)
+      );
+      const queuedNewSummaryByMedia = new Map(queuedNewSummaries);
+      const candidatesByMedia = new Map(
+        reviewCandidates.map((candidate) => [candidate.mediaId, candidate])
+      );
+
+      return new Map(
+        media.map((item) => {
+          const candidate = candidatesByMedia.get(item.id);
+          const queuedSummary = queuedNewSummaryByMedia.get(item.id);
+
+          return [
+            item.id,
+            {
+              activeCards: candidate?.activeReviewCards ?? 0,
+              dailyLimit,
+              dueCount: candidate?.dueCount ?? 0,
+              effectiveDailyLimit: dailyLimit,
+              manualCount: candidate?.manualCount ?? 0,
+              newAvailableCount: candidate?.newAvailableCount ?? 0,
+              newQueuedCount: queuedSummary?.count ?? 0,
+              queueCount:
+                (candidate?.dueCount ?? 0) + (queuedSummary?.count ?? 0),
+              queueLabel: "",
+              suspendedCount: candidate?.suspendedCount ?? 0,
+              tomorrowCount: candidate?.tomorrowCount ?? 0,
+              totalCards: candidate?.totalCards ?? 0,
+              upcomingCount: Math.max(
+                (candidate?.activeReviewCards ?? 0) -
+                  (candidate?.dueCount ?? 0),
+                0
+              )
+            } satisfies ReviewOverviewSnapshot
+          ] as const;
+        })
+      );
+    });
   const mediaIds = media.map((item) => item.id);
-  const [
-    lessons,
-    glossarySnapshots,
-    reviewCandidates,
-    dailyLimit,
-    newIntroducedTodayCount
-  ] = await Promise.all([
+  const [lessons, glossarySnapshots, reviewSnapshots] = await Promise.all([
     listLessonsByMediaIdsForShell(database, mediaIds),
     loadGlossaryProgressSummarySnapshotsCached(
       database,
@@ -188,25 +244,12 @@ export async function loadMediaShellSnapshots(
         slug: item.slug
       }))
     ),
-    options.resolvedReviewCandidates ??
-      loadReviewLaunchCandidatesCached(database, nowIso),
-    options.resolvedDailyLimit ?? getReviewDailyLimit(database),
-    options.resolvedNewIntroducedTodayCount ??
-      loadReviewIntroducedTodayCountCached(database, now)
+    reviewSnapshotsPromise
   ]);
   const lessonsByMedia = groupLessonsByMedia(lessons);
 
-  const candidatesByMedia = new Map(
-    reviewCandidates.map((candidate) => [candidate.mediaId, candidate])
-  );
-  const remainingNewSlots = Math.max(dailyLimit - newIntroducedTodayCount, 0);
-
   const snapshots = media.map((item) => {
-    const candidate = candidatesByMedia.get(item.id);
-    const newQueuedCount = Math.min(
-      candidate?.newCount ?? 0,
-      remainingNewSlots
-    );
+    const reviewSnapshot = reviewSnapshots.get(item.id);
 
     return mapMediaShellSnapshotFromCounts({
       glossary:
@@ -214,10 +257,10 @@ export async function loadMediaShellSnapshots(
       lessons: lessonsByMedia.get(item.id) ?? [],
       media: item,
       reviewCounts: {
-        activeReviewCards: candidate?.activeReviewCards ?? 0,
-        cardsTotal: candidate?.cardsTotal ?? 0,
-        dueCount: candidate?.dueCount ?? 0,
-        newQueuedCount
+        activeReviewCards: reviewSnapshot?.activeCards ?? 0,
+        cardsTotal: reviewSnapshot?.totalCards ?? 0,
+        dueCount: reviewSnapshot?.dueCount ?? 0,
+        newQueuedCount: reviewSnapshot?.newQueuedCount ?? 0
       }
     });
   });
@@ -440,22 +483,20 @@ async function loadMediaReviewCounts(
   mediaId: string,
   now: Date = new Date()
 ) {
-  const nowIso = now.toISOString();
-  const [reviewCandidate, dailyLimit, newIntroducedTodayCount] =
-    await Promise.all([
-      loadReviewLaunchCandidateByMediaIdCached(database, mediaId, nowIso),
-      getReviewDailyLimit(database),
-      loadReviewIntroducedTodayCountCached(database, now)
-    ]);
+  const reviewSnapshots = await loadReviewOverviewSnapshots(
+    database,
+    [{ id: mediaId, slug: mediaId }],
+    {
+      asOf: now
+    }
+  );
+  const reviewSnapshot = reviewSnapshots.get(mediaId);
 
   return {
-    activeReviewCards: reviewCandidate?.activeReviewCards ?? 0,
-    cardsTotal: reviewCandidate?.cardsTotal ?? 0,
-    dueCount: reviewCandidate?.dueCount ?? 0,
-    newQueuedCount: Math.min(
-      reviewCandidate?.newCount ?? 0,
-      Math.max(dailyLimit - newIntroducedTodayCount, 0)
-    )
+    activeReviewCards: reviewSnapshot?.activeCards ?? 0,
+    cardsTotal: reviewSnapshot?.totalCards ?? 0,
+    dueCount: reviewSnapshot?.dueCount ?? 0,
+    newQueuedCount: reviewSnapshot?.newQueuedCount ?? 0
   };
 }
 

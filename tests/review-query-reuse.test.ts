@@ -44,40 +44,8 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
+import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 import { importContentWorkspace } from "@/lib/content/importer";
-
-function createDeferred() {
-  let resolve!: () => void;
-  const promise = new Promise<void>((res) => {
-    resolve = res;
-  });
-
-  return {
-    promise,
-    resolve
-  };
-}
-
-async function flushMicrotasks() {
-  await Promise.resolve();
-  await Promise.resolve();
-}
-
-async function waitForTruthy(
-  predicate: () => boolean,
-  message: string,
-  attempts = 50
-) {
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    if (predicate()) {
-      return;
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-  }
-
-  throw new Error(message);
-}
 
 describe("review media query reuse", () => {
   let tempDir = "";
@@ -124,10 +92,9 @@ describe("review media query reuse", () => {
   });
 
   it("starts the settings lookup before the media list settles when the media is already resolved", async () => {
-    const mediaGate = createDeferred();
-    const settingsGate = createDeferred();
-    let mediaStarted = false;
-    let settingsStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const mediaGate = schedule.gate("media list");
+    const settingsGate = schedule.gate("settings");
     const resolvedMedia = await dataCacheModule.getMediaBySlugCached(
       database,
       developmentFixture.mediaSlug
@@ -140,17 +107,15 @@ describe("review media query reuse", () => {
     const mediaLookupSpy = vi
       .spyOn(dataCacheModule, "listMediaCached")
       .mockImplementation(async (...args) => {
-        mediaStarted = true;
         const resultPromise = originalListMediaCached(...args);
-        await mediaGate.promise;
+        await mediaGate.loader()();
         return resultPromise;
       });
     const settingsLookupSpy = vi
       .spyOn(settingsModule, "getStudySettings")
       .mockImplementation(async (...args) => {
-        settingsStarted = true;
         const resultPromise = originalGetStudySettings(...args);
-        await settingsGate.promise;
+        await settingsGate.loader()();
         return resultPromise;
       });
 
@@ -167,8 +132,8 @@ describe("review media query reuse", () => {
     await Promise.resolve();
 
     try {
-      expect(mediaStarted).toBe(true);
-      expect(settingsStarted).toBe(true);
+      await schedule.expectStarted("media list", "settings");
+      schedule.expectNotSettled("media list");
     } finally {
       mediaGate.resolve();
       settingsGate.resolve();
@@ -179,27 +144,24 @@ describe("review media query reuse", () => {
   });
 
   it("starts the settings lookup before the media list settles on standard media review loads", async () => {
-    const mediaGate = createDeferred();
-    const settingsGate = createDeferred();
-    let mediaStarted = false;
-    let settingsStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const mediaGate = schedule.gate("media list");
+    const settingsGate = schedule.gate("settings");
 
     const originalListMediaCached = dataCacheModule.listMediaCached;
     const originalGetStudySettings = settingsModule.getStudySettings;
     const mediaLookupSpy = vi
       .spyOn(dataCacheModule, "listMediaCached")
       .mockImplementation(async (...args) => {
-        mediaStarted = true;
         const resultPromise = originalListMediaCached(...args);
-        await mediaGate.promise;
+        await mediaGate.loader()();
         return resultPromise;
       });
     const settingsLookupSpy = vi
       .spyOn(settingsModule, "getStudySettings")
       .mockImplementation(async (...args) => {
-        settingsStarted = true;
         const resultPromise = originalGetStudySettings(...args);
-        await settingsGate.promise;
+        await settingsGate.loader()();
         return resultPromise;
       });
 
@@ -209,11 +171,9 @@ describe("review media query reuse", () => {
       database
     );
 
-    await flushMicrotasks();
-
     try {
-      expect(mediaStarted).toBe(true);
-      expect(settingsStarted).toBe(true);
+      await schedule.expectStarted("media list", "settings");
+      schedule.expectNotSettled("media list");
     } finally {
       mediaGate.resolve();
       settingsGate.resolve();
@@ -224,10 +184,9 @@ describe("review media query reuse", () => {
   });
 
   it("starts the global review workspace before settings settle when media rows are already resolved", async () => {
-    const settingsGate = createDeferred();
-    const workspaceGate = createDeferred();
-    let settingsStarted = false;
-    let workspaceStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const settingsGate = schedule.gate("settings");
+    const workspaceGate = schedule.gate("workspace");
     const resolvedMediaRows = await dataCacheModule.listMediaCached(database);
 
     const originalGetStudySettings = settingsModule.getStudySettings;
@@ -236,17 +195,15 @@ describe("review media query reuse", () => {
     const settingsLookupSpy = vi
       .spyOn(settingsModule, "getStudySettings")
       .mockImplementation(async (...args) => {
-        settingsStarted = true;
         const resultPromise = originalGetStudySettings(...args);
-        await settingsGate.promise;
+        await settingsGate.loader()();
         return resultPromise;
       });
     const workspaceLookupSpy = vi
       .spyOn(dbQueriesModule, "listReviewCardsByMediaIds")
       .mockImplementation(async (...args) => {
-        workspaceStarted = true;
         const resultPromise = originalListReviewCardsByMediaIds(...args);
-        await workspaceGate.promise;
+        await workspaceGate.loader()();
         return resultPromise;
       });
 
@@ -259,13 +216,8 @@ describe("review media query reuse", () => {
     );
 
     try {
-      await waitForTruthy(
-        () => settingsStarted,
-        "Expected the settings lookup to start."
-      );
-      await flushMicrotasks();
-
-      expect(workspaceStarted).toBe(true);
+      await schedule.expectStarted("settings", "workspace");
+      schedule.expectNotSettled("settings");
     } finally {
       settingsGate.resolve();
       workspaceGate.resolve();
@@ -276,10 +228,9 @@ describe("review media query reuse", () => {
   });
 
   it("starts subject-group resolution before the daily limit settles", async () => {
-    const dailyLimitGate = createDeferred();
-    const subjectGroupsGate = createDeferred();
-    let dailyLimitStarted = false;
-    let subjectGroupsStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const dailyLimitGate = schedule.gate("daily limit");
+    const subjectGroupsGate = schedule.gate("subject groups");
 
     const originalGetReviewDailyLimit = settingsModule.getReviewDailyLimit;
     const originalResolveReviewSubjectGroups =
@@ -287,17 +238,15 @@ describe("review media query reuse", () => {
     const dailyLimitSpy = vi
       .spyOn(settingsModule, "getReviewDailyLimit")
       .mockImplementation(async (...args) => {
-        dailyLimitStarted = true;
         const resultPromise = originalGetReviewDailyLimit(...args);
-        await dailyLimitGate.promise;
+        await dailyLimitGate.loader()();
         return resultPromise;
       });
     const subjectGroupsSpy = vi
       .spyOn(reviewSubjectStateLookupModule, "resolveReviewSubjectGroups")
       .mockImplementation(async (...args) => {
-        subjectGroupsStarted = true;
         const resultPromise = originalResolveReviewSubjectGroups(...args);
-        await subjectGroupsGate.promise;
+        await subjectGroupsGate.loader()();
         return resultPromise;
       });
 
@@ -307,14 +256,8 @@ describe("review media query reuse", () => {
     });
 
     try {
-      await waitForTruthy(
-        () => dailyLimitStarted,
-        "Expected the daily limit lookup to start."
-      );
-      await waitForTruthy(
-        () => subjectGroupsStarted,
-        "Expected subject-group resolution to start before the daily limit settles."
-      );
+      await schedule.expectStarted("daily limit", "subject groups");
+      schedule.expectNotSettled("daily limit");
     } finally {
       dailyLimitGate.resolve();
       subjectGroupsGate.resolve();
@@ -375,10 +318,9 @@ describe("review media query reuse", () => {
   });
 
   it("starts cross-media detail lookups before the review subject state settles", async () => {
-    const subjectStateGate = createDeferred();
-    const crossMediaGate = createDeferred();
-    let subjectStateStarted = false;
-    let crossMediaStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const subjectStateGate = schedule.gate("subject state");
+    const crossMediaGate = schedule.gate("cross-media families");
 
     const originalGetReviewSubjectStateByKey =
       dbQueriesModule.getReviewSubjectStateByKey;
@@ -387,17 +329,15 @@ describe("review media query reuse", () => {
     const subjectStateSpy = vi
       .spyOn(dbQueriesModule, "getReviewSubjectStateByKey")
       .mockImplementation(async (...args) => {
-        subjectStateStarted = true;
         const resultPromise = originalGetReviewSubjectStateByKey(...args);
-        await subjectStateGate.promise;
+        await subjectStateGate.loader()();
         return resultPromise;
       });
     const crossMediaSpy = vi
       .spyOn(dbQueriesModule, "listCrossMediaFamiliesByEntryIds")
       .mockImplementation(async (...args) => {
-        crossMediaStarted = true;
         const resultPromise = originalListCrossMediaFamiliesByEntryIds(...args);
-        await crossMediaGate.promise;
+        await crossMediaGate.loader()();
         return resultPromise;
       });
 
@@ -408,13 +348,8 @@ describe("review media query reuse", () => {
     );
 
     try {
-      await waitForTruthy(
-        () => subjectStateStarted,
-        "Expected the review subject lookup to start."
-      );
-      await flushMicrotasks();
-
-      expect(crossMediaStarted).toBe(true);
+      await schedule.expectStarted("subject state", "cross-media families");
+      schedule.expectNotSettled("subject state");
     } finally {
       subjectStateGate.resolve();
       crossMediaGate.resolve();
@@ -425,10 +360,9 @@ describe("review media query reuse", () => {
   });
 
   it("starts cross-media detail lookups before glossary entry loading settles", async () => {
-    const glossaryGate = createDeferred();
-    const crossMediaGate = createDeferred();
-    let glossaryStarted = false;
-    let crossMediaStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const glossaryGate = schedule.gate("glossary entries");
+    const crossMediaGate = schedule.gate("cross-media families");
 
     const originalGetGlossaryEntriesByIds =
       dbQueriesModule.getGlossaryEntriesByIds;
@@ -437,17 +371,15 @@ describe("review media query reuse", () => {
     const glossarySpy = vi
       .spyOn(dbQueriesModule, "getGlossaryEntriesByIds")
       .mockImplementation(async (...args) => {
-        glossaryStarted = true;
         const resultPromise = originalGetGlossaryEntriesByIds(...args);
-        await glossaryGate.promise;
+        await glossaryGate.loader()();
         return resultPromise;
       });
     const crossMediaSpy = vi
       .spyOn(dbQueriesModule, "listCrossMediaFamiliesByEntryIds")
       .mockImplementation(async (...args) => {
-        crossMediaStarted = true;
         const resultPromise = originalListCrossMediaFamiliesByEntryIds(...args);
-        await crossMediaGate.promise;
+        await crossMediaGate.loader()();
         return resultPromise;
       });
 
@@ -458,13 +390,8 @@ describe("review media query reuse", () => {
     );
 
     try {
-      await waitForTruthy(
-        () => glossaryStarted,
-        "Expected glossary entry loading to start."
-      );
-      await flushMicrotasks();
-
-      expect(crossMediaStarted).toBe(true);
+      await schedule.expectStarted("glossary entries", "cross-media families");
+      schedule.expectNotSettled("glossary entries");
     } finally {
       glossaryGate.resolve();
       crossMediaGate.resolve();
@@ -475,10 +402,9 @@ describe("review media query reuse", () => {
   });
 
   it("starts selected-card pronunciation loading before the FSRS snapshot settles", async () => {
-    const fsrsGate = createDeferred();
-    const pronunciationsGate = createDeferred();
-    let fsrsStarted = false;
-    let pronunciationsStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const fsrsGate = schedule.gate("fsrs snapshot");
+    const pronunciationsGate = schedule.gate("pronunciations");
 
     const originalGetFsrsOptimizerRuntimeSnapshot =
       fsrsOptimizerModule.getFsrsOptimizerRuntimeSnapshot;
@@ -487,17 +413,15 @@ describe("review media query reuse", () => {
     const fsrsSnapshotSpy = vi
       .spyOn(fsrsOptimizerModule, "getFsrsOptimizerRuntimeSnapshot")
       .mockImplementation(async (...args) => {
-        fsrsStarted = true;
         const resultPromise = originalGetFsrsOptimizerRuntimeSnapshot(...args);
-        await fsrsGate.promise;
+        await fsrsGate.loader()();
         return resultPromise;
       });
     const pronunciationsSpy = vi
       .spyOn(reviewCardHydrationModule, "loadReviewCardPronunciations")
       .mockImplementation(async (...args) => {
-        pronunciationsStarted = true;
         const resultPromise = originalLoadReviewCardPronunciations(...args);
-        await pronunciationsGate.promise;
+        await pronunciationsGate.loader()();
         return resultPromise;
       });
 
@@ -508,13 +432,8 @@ describe("review media query reuse", () => {
     );
 
     try {
-      await waitForTruthy(
-        () => fsrsStarted,
-        "Expected the FSRS snapshot lookup to start."
-      );
-      await flushMicrotasks();
-
-      expect(pronunciationsStarted).toBe(true);
+      await schedule.expectStarted("fsrs snapshot", "pronunciations");
+      schedule.expectNotSettled("fsrs snapshot");
     } finally {
       fsrsGate.resolve();
       pronunciationsGate.resolve();

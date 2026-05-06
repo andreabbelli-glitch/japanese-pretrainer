@@ -1,25 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-type Deferred<T> = {
-  promise: Promise<T>;
-  resolve: (value: T) => void;
-};
-
-function createDeferred<T>(): Deferred<T> {
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
-
-async function flushMicrotasks() {
-  await Promise.resolve();
-  await Promise.resolve();
-}
+import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
 describe("kanji clash page query scheduling", () => {
   afterEach(() => {
@@ -35,6 +16,7 @@ describe("kanji clash page query scheduling", () => {
   });
 
   it("starts queue loading before manual contrast summaries settle", async () => {
+    const schedule = createQuerySchedulingHarness();
     const settingsValue = {
       kanjiClashDailyNewLimit: 7,
       kanjiClashDefaultScope: "global" as const,
@@ -54,9 +36,9 @@ describe("kanji clash page query scheduling", () => {
       snapshotAtIso: "2026-04-21T01:00:00.000Z",
       totalCount: 0
     };
-    const settingsDeferred = createDeferred<typeof settingsValue>();
-    const mediaRowsDeferred = createDeferred<typeof mediaRowsValue>();
-    const manualContrastSnapshotDeferred = createDeferred<{
+    const settingsGate = schedule.gate<typeof settingsValue>("settings");
+    const mediaRowsGate = schedule.gate<typeof mediaRowsValue>("media rows");
+    const manualContrastSnapshotGate = schedule.gate<{
       manualContrastSeed: {
         candidates: [];
         pairStates: Map<string, null>;
@@ -66,18 +48,18 @@ describe("kanji clash page query scheduling", () => {
         contrastKey: string;
         status: "active";
       }>;
-    }>();
-    const queueDeferred = createDeferred<typeof queueValue>();
-    const loadKanjiClashQueueSnapshot = vi.fn(() => queueDeferred.promise);
+    }>("manual contrast snapshot");
+    const queueGate = schedule.gate<typeof queueValue>("queue");
+    const loadKanjiClashQueueSnapshot = vi.fn(queueGate.loader());
 
     vi.doMock("@/db", () => ({
       db: {}
     }));
     vi.doMock("@/lib/data-cache", () => ({
-      listMediaCached: vi.fn(() => mediaRowsDeferred.promise)
+      listMediaCached: vi.fn(mediaRowsGate.loader())
     }));
     vi.doMock("@/lib/settings", () => ({
-      getStudySettings: vi.fn(() => settingsDeferred.promise),
+      getStudySettings: vi.fn(settingsGate.loader()),
       kanjiClashManualDefaultSizeOptions: [10, 20, 40],
       resolveKanjiClashDefaultScope: vi.fn(
         (defaultScope: "global" | "media") => defaultScope
@@ -85,7 +67,7 @@ describe("kanji clash page query scheduling", () => {
     }));
     vi.doMock("@/features/kanji-clash/server/manual-contrast.ts", () => ({
       loadKanjiClashManualContrastPageSnapshot: vi.fn(
-        () => manualContrastSnapshotDeferred.promise
+        manualContrastSnapshotGate.loader()
       )
     }));
     vi.doMock("@/features/kanji-clash/model/queue.ts", () => ({
@@ -104,10 +86,11 @@ describe("kanji clash page query scheduling", () => {
       media: "alpha"
     });
 
-    await flushMicrotasks();
-    settingsDeferred.resolve(settingsValue);
-    mediaRowsDeferred.resolve(mediaRowsValue);
-    await flushMicrotasks();
+    await schedule.expectStarted("settings", "media rows");
+    settingsGate.resolve(settingsValue);
+    mediaRowsGate.resolve(mediaRowsValue);
+    await schedule.expectStarted("manual contrast snapshot", "queue");
+    schedule.expectNotSettled("manual contrast snapshot");
 
     expect(loadKanjiClashQueueSnapshot).toHaveBeenCalledTimes(1);
     expect(loadKanjiClashQueueSnapshot).toHaveBeenCalledWith(
@@ -123,7 +106,7 @@ describe("kanji clash page query scheduling", () => {
       })
     );
 
-    manualContrastSnapshotDeferred.resolve({
+    manualContrastSnapshotGate.resolve({
       manualContrastSeed: {
         candidates: [],
         pairStates: new Map<string, null>(),
@@ -131,7 +114,7 @@ describe("kanji clash page query scheduling", () => {
       },
       manualContrasts: []
     });
-    queueDeferred.resolve(queueValue);
+    queueGate.resolve(queueValue);
 
     const data = await dataPromise;
 

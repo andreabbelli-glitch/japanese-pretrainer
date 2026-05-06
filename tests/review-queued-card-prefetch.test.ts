@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { act } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { createDeferred, flushMicrotasks } from "./helpers/async";
 import { installMinimalDom, uninstallMinimalDom } from "./helpers/minimal-dom";
 
 import type { ReviewQueueCard } from "@/lib/review-types";
@@ -34,7 +35,7 @@ describe("useReviewQueuedCardPrefetch", () => {
   afterEach(async () => {
     await act(async () => {
       root?.unmount();
-      await flushPromises();
+      await flushMicrotasks(3);
     });
     vi.restoreAllMocks();
     root = null;
@@ -87,7 +88,7 @@ describe("useReviewQueuedCardPrefetch", () => {
           selectedCard
         })
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(prefetchedCardIds()).toEqual(["card-b", "card-c"]);
@@ -120,14 +121,14 @@ describe("useReviewQueuedCardPrefetch", () => {
           serverAdvanceCardIds: new Set<string>()
         })
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(prefetchedCardIds()).toEqual(["card-b", "card-c"]);
 
     await act(async () => {
       cardC.resolve(buildQueueCard("card-c"));
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(controller().getPrefetchedCards().get("card-c")?.id).toBe("card-c");
@@ -168,7 +169,7 @@ describe("useReviewQueuedCardPrefetch", () => {
           selectedCard: buildQueueCard("card-a")
         })
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect([...controller().getPrefetchedCards().keys()]).toEqual([]);
@@ -182,7 +183,7 @@ describe("useReviewQueuedCardPrefetch", () => {
           selectedCard: buildQueueCard("card-a")
         })
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(prefetchedCardIds()).toEqual(["card-b", "card-c", "card-c"]);
@@ -211,25 +212,25 @@ describe("useReviewQueuedCardPrefetch", () => {
           selectedCard: buildQueueCard("card-a")
         })
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     await act(async () => {
       cardB.resolve(buildQueueCard("card-b"));
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(controller().getPrefetchedCards().has("card-b")).toBe(false);
 
     await act(async () => {
       root?.unmount();
-      await flushPromises();
+      await flushMicrotasks(3);
     });
     root = null;
 
     await act(async () => {
       cardD.resolve(buildQueueCard("card-d"));
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(controller().getPrefetchedCards().has("card-d")).toBe(false);
@@ -268,7 +269,7 @@ describe("useReviewQueuedCardPrefetch", () => {
           selectedCard: buildQueueCard("card-a")
         })
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     await act(async () => {
@@ -280,7 +281,7 @@ describe("useReviewQueuedCardPrefetch", () => {
           selectedCard: buildQueueCard("card-a")
         })
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     await act(async () => {
@@ -288,7 +289,7 @@ describe("useReviewQueuedCardPrefetch", () => {
         ...buildQueueCard("card-b"),
         front: "fresh card-b"
       });
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(controller().getPrefetchedCards().get("card-b")?.front).toBe(
@@ -300,7 +301,7 @@ describe("useReviewQueuedCardPrefetch", () => {
         ...buildQueueCard("card-b"),
         front: "stale card-b"
       });
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(controller().getPrefetchedCards().get("card-b")?.front).toBe(
@@ -323,7 +324,7 @@ describe("useReviewQueuedCardPrefetch", () => {
 
     await act(async () => {
       cardB.resolve(buildQueueCard("card-b"));
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(controller().getPrefetchedCards).toBe(getPrefetchedCards);
@@ -362,7 +363,7 @@ async function renderPrefetchHook(
 
   await act(async () => {
     root!.render(createElement(Probe, input));
-    await flushPromises();
+    await flushMicrotasks(3);
   });
 
   return getLatestHookSnapshot;
@@ -423,21 +424,4 @@ function buildQueueCard(id: string): ReviewQueueCard {
     segmentTitle: "Tcg Core",
     typeLabel: "Recognition"
   };
-}
-
-function createDeferred<T>() {
-  let resolve!: (value: T) => void;
-  let reject!: (reason?: unknown) => void;
-  const promise = new Promise<T>((resolvePromise, rejectPromise) => {
-    resolve = resolvePromise;
-    reject = rejectPromise;
-  });
-
-  return { promise, reject, resolve };
-}
-
-async function flushPromises() {
-  await Promise.resolve();
-  await Promise.resolve();
-  await Promise.resolve();
 }

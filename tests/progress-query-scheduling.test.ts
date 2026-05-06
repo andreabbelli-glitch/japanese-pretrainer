@@ -1,29 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-type Deferred<T> = {
-  promise: Promise<T>;
-  reject: (reason: unknown) => void;
-  resolve: (value: T) => void;
-};
-
-function createDeferred<T>(): Deferred<T> {
-  let reject!: (reason: unknown) => void;
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve, innerReject) => {
-      reject = innerReject;
-      resolve = innerResolve;
-    }),
-    reject,
-    resolve
-  };
-}
-
-async function flushMicrotasks() {
-  await Promise.resolve();
-  await Promise.resolve();
-}
+import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
 describe("progress query scheduling", () => {
   afterEach(() => {
@@ -40,6 +17,7 @@ describe("progress query scheduling", () => {
   });
 
   it("starts shared settings lookups before the cache-enabled media lookup settles", async () => {
+    const schedule = createQuerySchedulingHarness();
     const settingsValue = {
       furiganaMode: "hover" as const,
       glossaryDefaultSort: "lesson_order" as const,
@@ -49,16 +27,13 @@ describe("progress query scheduling", () => {
       reviewFrontFurigana: true,
       reviewDailyLimit: 7
     };
-    const mediaDeferred = createDeferred<{
+    const mediaGate = schedule.gate<{
       id: string;
       slug: string;
       title: string;
-    } | null>();
-    const settingsDeferred = createDeferred<typeof settingsValue>();
-    const introducedTodayDeferred = createDeferred<number>();
-    let mediaStarted = false;
-    let settingsStarted = false;
-    let introducedTodayStarted = false;
+    } | null>("media");
+    const settingsGate = schedule.gate<typeof settingsValue>("settings");
+    const introducedTodayGate = schedule.gate<number>("introduced today");
 
     vi.doMock("@/db", () => ({
       db: {}
@@ -72,69 +47,7 @@ describe("progress query scheduling", () => {
       buildGlossarySummaryTags: vi.fn(() => []),
       buildReviewSummaryTags: vi.fn(() => []),
       canUseDataCache: vi.fn(() => true),
-      getMediaBySlugCached: vi.fn(() => {
-        mediaStarted = true;
-        return mediaDeferred.promise;
-      }),
-      listMediaCached: vi.fn(),
-      runWithTaggedCache: vi.fn(async ({ loader }) => loader())
-    }));
-    vi.doMock("@/lib/local-date", () => ({
-      getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
-    }));
-    vi.doMock("@/lib/review", () => ({
-      loadGlobalReviewOverviewSnapshot: vi.fn(),
-      loadReviewIntroducedTodayCountCached: vi.fn(() => {
-        introducedTodayStarted = true;
-        return introducedTodayDeferred.promise;
-      }),
-      loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
-      mapReviewOverviewSnapshot: vi.fn()
-    }));
-    vi.doMock("@/lib/settings", () => ({
-      getStudySettings: vi.fn(() => {
-        settingsStarted = true;
-        return settingsDeferred.promise;
-      })
-    }));
-
-    const { getMediaProgressPageData } = await import("@/lib/progress");
-    const progressPromise = getMediaProgressPageData("fixture-media");
-
-    await flushMicrotasks();
-
-    expect(mediaStarted).toBe(true);
-    expect(settingsStarted).toBe(true);
-    expect(introducedTodayStarted).toBe(true);
-
-    mediaDeferred.resolve(null);
-    settingsDeferred.resolve(settingsValue);
-    introducedTodayDeferred.resolve(2);
-    await expect(progressPromise).resolves.toBeNull();
-  });
-
-  it("handles shared query failures when the media lookup misses", async () => {
-    const mediaDeferred = createDeferred<{
-      id: string;
-      slug: string;
-      title: string;
-    } | null>();
-    const settingsDeferred = createDeferred<never>();
-    const introducedTodayDeferred = createDeferred<number>();
-
-    vi.doMock("@/db", () => ({
-      db: {}
-    }));
-    vi.doMock("@/lib/data-cache", () => ({
-      GLOSSARY_SUMMARY_TAG: "glossary-summary",
-      MEDIA_LIST_TAG: "media-list",
-      REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
-      REVIEW_SUMMARY_TAG: "review-summary",
-      SETTINGS_TAG: "settings",
-      buildGlossarySummaryTags: vi.fn(() => []),
-      buildReviewSummaryTags: vi.fn(() => []),
-      canUseDataCache: vi.fn(() => true),
-      getMediaBySlugCached: vi.fn(() => mediaDeferred.promise),
+      getMediaBySlugCached: vi.fn(mediaGate.loader()),
       listMediaCached: vi.fn(),
       runWithTaggedCache: vi.fn(async ({ loader }) => loader())
     }));
@@ -144,51 +57,36 @@ describe("progress query scheduling", () => {
     vi.doMock("@/lib/review", () => ({
       loadGlobalReviewOverviewSnapshot: vi.fn(),
       loadReviewIntroducedTodayCountCached: vi.fn(
-        () => introducedTodayDeferred.promise
+        introducedTodayGate.loader()
       ),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
       mapReviewOverviewSnapshot: vi.fn()
     }));
     vi.doMock("@/lib/settings", () => ({
-      getStudySettings: vi.fn(() => settingsDeferred.promise)
+      getStudySettings: vi.fn(settingsGate.loader())
     }));
 
     const { getMediaProgressPageData } = await import("@/lib/progress");
-    const progressPromise = getMediaProgressPageData("missing-media");
+    const progressPromise = getMediaProgressPageData("fixture-media");
 
-    await flushMicrotasks();
-    settingsDeferred.reject(new Error("settings lookup failed after media miss"));
-    introducedTodayDeferred.resolve(2);
-    mediaDeferred.resolve(null);
+    await schedule.expectStarted("media", "settings", "introduced today");
+    schedule.expectNotSettled("media");
 
+    mediaGate.resolve(null);
+    settingsGate.resolve(settingsValue);
+    introducedTodayGate.resolve(2);
     await expect(progressPromise).resolves.toBeNull();
-    await flushMicrotasks();
   });
 
-  it("starts the global review overview before the cache-enabled media lookup settles", async () => {
-    const settingsValue = {
-      furiganaMode: "hover" as const,
-      glossaryDefaultSort: "lesson_order" as const,
-      kanjiClashDailyNewLimit: 5,
-      kanjiClashDefaultScope: "global" as const,
-      kanjiClashManualDefaultSize: 20,
-      reviewFrontFurigana: true,
-      reviewDailyLimit: 7
-    };
-    const mediaDeferred = createDeferred<{
+  it("handles shared query failures when the media lookup misses", async () => {
+    const schedule = createQuerySchedulingHarness();
+    const mediaGate = schedule.gate<{
       id: string;
       slug: string;
       title: string;
-    } | null>();
-    const settingsDeferred = createDeferred<typeof settingsValue>();
-    const introducedTodayDeferred = createDeferred<number>();
-    const globalOverviewDeferred = createDeferred<unknown>();
-    let overviewStarted = false;
-
-    const loadGlobalReviewOverviewSnapshot = vi.fn(() => {
-      overviewStarted = true;
-      return globalOverviewDeferred.promise;
-    });
+    } | null>("media");
+    const settingsGate = schedule.gate<never>("settings");
+    const introducedTodayGate = schedule.gate<number>("introduced today");
 
     vi.doMock("@/db", () => ({
       db: {}
@@ -202,7 +100,72 @@ describe("progress query scheduling", () => {
       buildGlossarySummaryTags: vi.fn(() => []),
       buildReviewSummaryTags: vi.fn(() => []),
       canUseDataCache: vi.fn(() => true),
-      getMediaBySlugCached: vi.fn(() => mediaDeferred.promise),
+      getMediaBySlugCached: vi.fn(mediaGate.loader()),
+      listMediaCached: vi.fn(),
+      runWithTaggedCache: vi.fn(async ({ loader }) => loader())
+    }));
+    vi.doMock("@/lib/local-date", () => ({
+      getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
+    }));
+    vi.doMock("@/lib/review", () => ({
+      loadGlobalReviewOverviewSnapshot: vi.fn(),
+      loadReviewIntroducedTodayCountCached: vi.fn(
+        introducedTodayGate.loader()
+      ),
+      loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
+      mapReviewOverviewSnapshot: vi.fn()
+    }));
+    vi.doMock("@/lib/settings", () => ({
+      getStudySettings: vi.fn(settingsGate.loader())
+    }));
+
+    const { getMediaProgressPageData } = await import("@/lib/progress");
+    const progressPromise = getMediaProgressPageData("missing-media");
+
+    await schedule.expectStarted("media", "settings", "introduced today");
+    settingsGate.reject(new Error("settings lookup failed after media miss"));
+    introducedTodayGate.resolve(2);
+    mediaGate.resolve(null);
+
+    await expect(progressPromise).resolves.toBeNull();
+    await schedule.releaseAll();
+  });
+
+  it("starts the global review overview before the cache-enabled media lookup settles", async () => {
+    const schedule = createQuerySchedulingHarness();
+    const settingsValue = {
+      furiganaMode: "hover" as const,
+      glossaryDefaultSort: "lesson_order" as const,
+      kanjiClashDailyNewLimit: 5,
+      kanjiClashDefaultScope: "global" as const,
+      kanjiClashManualDefaultSize: 20,
+      reviewFrontFurigana: true,
+      reviewDailyLimit: 7
+    };
+    const mediaGate = schedule.gate<{
+      id: string;
+      slug: string;
+      title: string;
+    } | null>("media");
+    const settingsGate = schedule.gate<typeof settingsValue>("settings");
+    const introducedTodayGate = schedule.gate<number>("introduced today");
+    const globalOverviewGate = schedule.gate<unknown>("global overview");
+
+    const loadGlobalReviewOverviewSnapshot = vi.fn(globalOverviewGate.loader());
+
+    vi.doMock("@/db", () => ({
+      db: {}
+    }));
+    vi.doMock("@/lib/data-cache", () => ({
+      GLOSSARY_SUMMARY_TAG: "glossary-summary",
+      MEDIA_LIST_TAG: "media-list",
+      REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
+      REVIEW_SUMMARY_TAG: "review-summary",
+      SETTINGS_TAG: "settings",
+      buildGlossarySummaryTags: vi.fn(() => []),
+      buildReviewSummaryTags: vi.fn(() => []),
+      canUseDataCache: vi.fn(() => true),
+      getMediaBySlugCached: vi.fn(mediaGate.loader()),
       listMediaCached: vi.fn(),
       runWithTaggedCache: vi.fn(async ({ loader }) => loader())
     }));
@@ -215,26 +178,26 @@ describe("progress query scheduling", () => {
     vi.doMock("@/lib/review", () => ({
       loadGlobalReviewOverviewSnapshot,
       loadReviewIntroducedTodayCountCached: vi.fn(
-        () => introducedTodayDeferred.promise
+        introducedTodayGate.loader()
       ),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
       mapReviewOverviewSnapshot: vi.fn()
     }));
     vi.doMock("@/lib/settings", () => ({
-      getStudySettings: vi.fn(() => settingsDeferred.promise)
+      getStudySettings: vi.fn(settingsGate.loader())
     }));
 
     const { getMediaProgressPageData } = await import("@/lib/progress");
     const progressPromise = getMediaProgressPageData("fixture-media");
 
-    await flushMicrotasks();
-    expect(overviewStarted).toBe(false);
+    await schedule.expectStarted("media", "settings", "introduced today");
+    schedule.expectNotStarted("global overview");
 
-    settingsDeferred.resolve(settingsValue);
-    introducedTodayDeferred.resolve(2);
-    await flushMicrotasks();
+    settingsGate.resolve(settingsValue);
+    introducedTodayGate.resolve(2);
+    await schedule.expectStarted("global overview");
+    schedule.expectNotSettled("media");
 
-    expect(overviewStarted).toBe(true);
     expect(loadGlobalReviewOverviewSnapshot).toHaveBeenCalledWith(
       {},
       expect.objectContaining({
@@ -243,12 +206,13 @@ describe("progress query scheduling", () => {
       })
     );
 
-    mediaDeferred.resolve(null);
-    globalOverviewDeferred.resolve(null);
+    mediaGate.resolve(null);
+    globalOverviewGate.resolve(null);
     await expect(progressPromise).resolves.toBeNull();
   });
 
-  it("starts the global review overview load before the local media candidate settles", async () => {
+  it("starts the global review overview load before the local media overview settles", async () => {
+    const schedule = createQuerySchedulingHarness();
     const settingsValue = {
       furiganaMode: "hover" as const,
       glossaryDefaultSort: "lesson_order" as const,
@@ -299,19 +263,17 @@ describe("progress query scheduling", () => {
       textbookProgressPercent: null,
       title: "Fixture Media"
     };
-    const settingsDeferred = createDeferred<typeof settingsValue>();
-    const introducedTodayDeferred = createDeferred<number>();
-    const mediaCandidateDeferred = createDeferred<{
-      activeReviewCards: number;
-      cardsTotal: number;
-      dueCount: number;
-      newCount: number;
-    } | null>();
-    const globalOverviewDeferred = createDeferred<typeof globalOverviewValue>();
-    const sharedMediaDeferred = createDeferred<typeof sharedMediaValue>();
+    const settingsGate = schedule.gate<typeof settingsValue>("settings");
+    const introducedTodayGate = schedule.gate<number>("introduced today");
+    const mediaOverviewGate =
+      schedule.gate<Map<string, unknown>>("media overview");
+    const globalOverviewGate =
+      schedule.gate<typeof globalOverviewValue>("global overview");
+    const sharedMediaGate =
+      schedule.gate<typeof sharedMediaValue>("shared media");
 
     const loadGlobalReviewOverviewSnapshot = vi.fn(
-      () => globalOverviewDeferred.promise
+      globalOverviewGate.loader()
     );
 
     vi.doMock("@/db", () => ({
@@ -340,52 +302,17 @@ describe("progress query scheduling", () => {
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
     }));
     vi.doMock("@/lib/media-shell", () => ({
-      getMediaDetailData: vi.fn(() => sharedMediaDeferred.promise)
+      getMediaDetailData: vi.fn(sharedMediaGate.loader())
     }));
     vi.doMock("@/lib/review", () => ({
       loadGlobalReviewOverviewSnapshot,
       loadReviewIntroducedTodayCountCached: vi.fn(
-        () => introducedTodayDeferred.promise
+        introducedTodayGate.loader()
       ),
-      loadReviewLaunchCandidateByMediaIdCached: vi.fn(
-        () => mediaCandidateDeferred.promise
-      ),
-      mapReviewOverviewSnapshot: vi.fn(
-        ({
-          dailyLimit,
-          newIntroducedTodayCount,
-          overview
-        }: {
-          dailyLimit: number;
-          newIntroducedTodayCount: number;
-          overview:
-            | {
-                activeReviewCards: number;
-                cardsTotal?: number;
-                dueCount: number;
-                newAvailableCount?: number;
-                newCount?: number;
-              }
-            | undefined;
-        }) => ({
-          activeCards: overview?.activeReviewCards ?? 0,
-          dailyLimit,
-          dueCount: overview?.dueCount ?? 0,
-          manualCount: 0,
-          newAvailableCount:
-            overview?.newAvailableCount ?? overview?.newCount ?? 0,
-          newQueuedCount: 0,
-          queueCount: overview?.dueCount ?? 0,
-          queueLabel: `limit:${dailyLimit}-introduced:${newIntroducedTodayCount}`,
-          suspendedCount: 0,
-          tomorrowCount: 0,
-          totalCards: overview?.cardsTotal ?? 0,
-          upcomingCount: 0
-        })
-      )
+      loadReviewOverviewSnapshots: vi.fn(mediaOverviewGate.loader())
     }));
     vi.doMock("@/lib/settings", () => ({
-      getStudySettings: vi.fn(() => settingsDeferred.promise)
+      getStudySettings: vi.fn(settingsGate.loader())
     }));
     vi.doMock("@/lib/site", () => ({
       mediaGlossaryHref: (slug: string) => `/media/${slug}/glossary`,
@@ -402,10 +329,11 @@ describe("progress query scheduling", () => {
     const { getMediaProgressPageData } = await import("@/lib/progress");
     const progressPromise = getMediaProgressPageData("fixture-media");
 
-    await flushMicrotasks();
-    settingsDeferred.resolve(settingsValue);
-    introducedTodayDeferred.resolve(2);
-    await flushMicrotasks();
+    await schedule.expectStarted("settings", "introduced today");
+    settingsGate.resolve(settingsValue);
+    introducedTodayGate.resolve(2);
+    await schedule.expectStarted("media overview", "global overview");
+    schedule.expectNotSettled("media overview");
 
     expect(loadGlobalReviewOverviewSnapshot).toHaveBeenCalledTimes(1);
     expect(loadGlobalReviewOverviewSnapshot).toHaveBeenCalledWith(
@@ -416,14 +344,25 @@ describe("progress query scheduling", () => {
       })
     );
 
-    mediaCandidateDeferred.resolve({
-      activeReviewCards: 1,
-      cardsTotal: 2,
-      dueCount: 1,
-      newCount: 1
-    });
-    globalOverviewDeferred.resolve(globalOverviewValue);
-    sharedMediaDeferred.resolve(sharedMediaValue);
+    mediaOverviewGate.resolve(
+      new Map([
+        [
+          "media-1",
+          {
+            activeCards: 1,
+            dailyLimit: 7,
+            dueCount: 1,
+            newAvailableCount: 1,
+            newQueuedCount: 0,
+            queueCount: 1,
+            queueLabel: "1 due",
+            totalCards: 2
+          }
+        ]
+      ])
+    );
+    globalOverviewGate.resolve(globalOverviewValue);
+    sharedMediaGate.resolve(sharedMediaValue);
 
     const data = await progressPromise;
 

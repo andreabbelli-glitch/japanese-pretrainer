@@ -15,6 +15,8 @@ type FetchRetryHooks = {
 
 type FetchOverrideConfig = Partial<FetchThrottleConfig>;
 
+const MAX_TIMER_DELAY_MS = 2_147_483_647;
+
 export function createFetchThrottle(
   config: FetchThrottleConfig,
   hooks: FetchRetryHooks = {}
@@ -33,7 +35,7 @@ export function createFetchThrottle(
     nextAllowedAt = scheduledAt + Math.max(0, resolvedConfig.requestDelayMs);
 
     if (waitMs > 0) {
-      await sleep(waitMs);
+      await sleep(waitMs, init?.signal);
     }
 
     const timeoutController = new AbortController();
@@ -71,7 +73,10 @@ export function createFetchThrottle(
         }
 
         if (attempt < resolvedConfig.maxRetries) {
-          await sleep(resolvedConfig.retryBaseDelayMs * 2 ** attempt);
+          await sleep(
+            resolvedConfig.retryBaseDelayMs * 2 ** attempt,
+            init?.signal
+          );
           continue;
         }
 
@@ -98,7 +103,7 @@ export function createFetchThrottle(
           url
         });
         await cancelResponseBody(response);
-        await sleep(retryDelayMs);
+        await sleep(retryDelayMs, init?.signal);
         continue;
       }
 
@@ -128,11 +133,16 @@ export function parseRetryAfterMs(value: string | null) {
   }
 
   const trimmed = value.trim();
-  const asSeconds =
-    /^[0-9]+$/.test(trimmed) ? Number.parseInt(trimmed, 10) : Number.NaN;
+  const asSeconds = /^[0-9]+$/u.test(trimmed)
+    ? Number.parseInt(trimmed, 10)
+    : Number.NaN;
 
-  if (Number.isFinite(asSeconds) && asSeconds >= 0) {
-    return asSeconds * 1000;
+  if (Number.isSafeInteger(asSeconds) && asSeconds >= 0) {
+    return normalizeTimerDelayMs(asSeconds * 1000);
+  }
+
+  if (!/[a-z]/iu.test(trimmed)) {
+    return null;
   }
 
   const retryAt = Date.parse(trimmed);
@@ -141,7 +151,11 @@ export function parseRetryAfterMs(value: string | null) {
     return null;
   }
 
-  return Math.max(0, retryAt - Date.now());
+  return normalizeTimerDelayMs(Math.max(0, retryAt - Date.now()));
+}
+
+function normalizeTimerDelayMs(delayMs: number) {
+  return delayMs <= MAX_TIMER_DELAY_MS ? delayMs : null;
 }
 
 function resolveConfig(
@@ -158,10 +172,42 @@ function resolveConfig(
   };
 }
 
-export async function sleep(durationMs: number) {
+export async function sleep(durationMs: number, signal?: AbortSignal | null) {
+  if (signal?.aborted) {
+    throw readAbortReason(signal);
+  }
+
   if (durationMs <= 0) {
     return;
   }
 
-  await new Promise((resolve) => setTimeout(resolve, durationMs));
+  if (!signal) {
+    await new Promise((resolve) => setTimeout(resolve, durationMs));
+    return;
+  }
+
+  const abortSignal = signal;
+
+  await new Promise<void>((resolve, reject) => {
+    const timeout = setTimeout(() => {
+      abortSignal.removeEventListener("abort", onAbort);
+      resolve();
+    }, durationMs);
+
+    function onAbort() {
+      clearTimeout(timeout);
+      reject(readAbortReason(abortSignal));
+    }
+
+    abortSignal.addEventListener("abort", onAbort, { once: true });
+  });
+}
+
+function readAbortReason(signal: AbortSignal) {
+  return (
+    signal.reason ??
+    Object.assign(new Error("The operation was aborted."), {
+      name: "AbortError"
+    })
+  );
 }

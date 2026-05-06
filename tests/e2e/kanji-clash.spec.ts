@@ -1,4 +1,4 @@
-import { expect, test, type Locator, type Page } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import { eq } from "drizzle-orm";
 
 import {
@@ -13,6 +13,17 @@ import {
 import { loadKanjiClashQueueSnapshot } from "@/lib/kanji-clash";
 
 import { resolveStartE2EDatabaseUrl } from "../../scripts/start-e2e-config.ts";
+import {
+  answerRoundWithClick,
+  answerRoundWithTap,
+  finishManualSession,
+  readCurrentRound,
+  readStatBlockValue,
+  readStatBlockValuesWithin,
+  readVisibleRound,
+  waitForNextRound
+} from "./helpers/kanji-clash-page";
+import { testIds } from "./helpers/selectors";
 
 const fixtureRoute =
   "/kanji-clash?media=zz-kanji-clash-e2e&mode=manual&size=10";
@@ -223,9 +234,7 @@ test("opens Kanji Clash from global review and leaves review counts unchanged", 
 
   const firstRound = await readCurrentRound(page);
   await answerRoundWithClick(page, firstRound.correctSide);
-  await expect(
-    page.locator(".kanji-clash-feedback[role='status']")
-  ).toHaveCount(0);
+  await expect(page.getByTestId(testIds.kanjiClashFeedback)).toHaveCount(0);
   await waitForNextRound(page, firstRound);
 
   await page.goto("/review");
@@ -288,9 +297,7 @@ test("opens Kanji Clash from media detail and leaves local review counts unchang
 
   const firstRound = await readCurrentRound(page);
   await answerRoundWithClick(page, firstRound.correctSide);
-  await expect(
-    page.locator(".kanji-clash-feedback[role='status']")
-  ).toHaveCount(0);
+  await expect(page.getByTestId(testIds.kanjiClashFeedback)).toHaveCount(0);
   await waitForNextRound(page, firstRound);
 
   await page.goto("/media/zz-kanji-clash-e2e");
@@ -328,20 +335,22 @@ test("asserts visible Kanji Clash reveal state on wrong answers", async ({
   expect(currentVisibleRound.reading).not.toBe("");
   expect(currentVisibleRound.meaning).not.toBe("");
   await expect(page.locator(".kanji-clash-target__note")).toHaveCount(0);
-  await expect(page.locator(".kanji-clash-option--left")).toHaveAttribute(
-    "aria-pressed",
-    "false"
-  );
-  await expect(page.locator(".kanji-clash-option--right")).toHaveAttribute(
-    "aria-pressed",
-    "false"
-  );
-  await expect(page.locator(".kanji-clash-option--left")).toBeEnabled();
-  await expect(page.locator(".kanji-clash-option--right")).toBeEnabled();
+  await expect(
+    page.getByTestId(testIds.kanjiClashOption("left"))
+  ).toHaveAttribute("aria-pressed", "false");
+  await expect(
+    page.getByTestId(testIds.kanjiClashOption("right"))
+  ).toHaveAttribute("aria-pressed", "false");
+  await expect(
+    page.getByTestId(testIds.kanjiClashOption("left"))
+  ).toBeEnabled();
+  await expect(
+    page.getByTestId(testIds.kanjiClashOption("right"))
+  ).toBeEnabled();
 
   await answerRoundWithClick(page, currentRound.wrongSide);
 
-  const wrongAnswerAlert = page.locator(".kanji-clash-feedback[role='alert']");
+  const wrongAnswerAlert = page.getByTestId(testIds.kanjiClashFeedback);
   await expect(wrongAnswerAlert).toContainText("Risposta errata");
   await expect(wrongAnswerAlert).toContainText(
     currentVisibleRound[currentRound.wrongSide]
@@ -350,23 +359,23 @@ test("asserts visible Kanji Clash reveal state on wrong answers", async ({
     currentVisibleRound[currentRound.correctSide]
   );
   await expect(
-    page.locator(`.kanji-clash-option--${currentRound.wrongSide}`)
+    page.getByTestId(testIds.kanjiClashOption(currentRound.wrongSide))
   ).toHaveAttribute("aria-pressed", "true");
   await expect(
-    page.locator(`.kanji-clash-option--${currentRound.wrongSide}`)
+    page.getByTestId(testIds.kanjiClashOption(currentRound.wrongSide))
   ).toContainText("Scelta");
   await expect(
-    page.locator(`.kanji-clash-option--${currentRound.correctSide}`)
+    page.getByTestId(testIds.kanjiClashOption(currentRound.correctSide))
   ).toContainText("Corretto");
   await expect(page.locator(".kanji-clash-target__note")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Continua" })).toBeVisible();
-  await expect(page.locator(".kanji-clash-stage__title")).toHaveText(
+  await expect(page.getByTestId(testIds.kanjiClashRoundTitle)).toHaveText(
     currentVisibleRound.title
   );
-  await expect(page.locator(".kanji-clash-target__reading")).toHaveText(
+  await expect(page.getByTestId(testIds.kanjiClashTargetReading)).toHaveText(
     currentVisibleRound.reading
   );
-  await expect(page.locator(".kanji-clash-target__meaning")).toHaveText(
+  await expect(page.getByTestId(testIds.kanjiClashTargetMeaning)).toHaveText(
     currentVisibleRound.meaning
   );
   await expect(readStatBlockValue(page, "Rimanenti")).resolves.toBe(
@@ -386,9 +395,7 @@ test("advances a correct round without feedback panel or viewport jump", async (
   const currentRound = await readCurrentRound(page);
 
   await answerRoundWithClick(page, currentRound.correctSide);
-  await expect(
-    page.locator(".kanji-clash-feedback[role='status']")
-  ).toHaveCount(0);
+  await expect(page.getByTestId(testIds.kanjiClashFeedback)).toHaveCount(0);
   await waitForNextRound(page, currentRound);
 
   const finalScrollY = await page.evaluate(() => window.scrollY);
@@ -406,9 +413,7 @@ test("supports keyboard arrow interaction for the current round", async ({
   await page.keyboard.press(
     currentRound.correctSide === "left" ? "ArrowLeft" : "ArrowRight"
   );
-  await expect(
-    page.locator(".kanji-clash-feedback[role='status']")
-  ).toHaveCount(0);
+  await expect(page.getByTestId(testIds.kanjiClashFeedback)).toHaveCount(0);
   await waitForNextRound(page, currentRound);
 });
 
@@ -487,16 +492,18 @@ test("filters Kanji Clash by media and exposes a playable manual round", async (
   expect(currentVisibleRound.reading).not.toBe("");
   expect(currentVisibleRound.meaning).not.toBe("");
   await expect(page.locator(".kanji-clash-target__note")).toHaveCount(0);
-  await expect(page.locator(".kanji-clash-option--left")).toHaveAttribute(
-    "aria-pressed",
-    "false"
-  );
-  await expect(page.locator(".kanji-clash-option--right")).toHaveAttribute(
-    "aria-pressed",
-    "false"
-  );
-  await expect(page.locator(".kanji-clash-option--left")).toBeEnabled();
-  await expect(page.locator(".kanji-clash-option--right")).toBeEnabled();
+  await expect(
+    page.getByTestId(testIds.kanjiClashOption("left"))
+  ).toHaveAttribute("aria-pressed", "false");
+  await expect(
+    page.getByTestId(testIds.kanjiClashOption("right"))
+  ).toHaveAttribute("aria-pressed", "false");
+  await expect(
+    page.getByTestId(testIds.kanjiClashOption("left"))
+  ).toBeEnabled();
+  await expect(
+    page.getByTestId(testIds.kanjiClashOption("right"))
+  ).toBeEnabled();
 });
 
 test("keeps Kanji Clash progress when archiving and restoring a manual contrast", async ({
@@ -584,227 +591,10 @@ test.describe("Kanji Clash mobile tap-only coverage", () => {
     const currentRound = await readCurrentRound(page);
 
     await answerRoundWithTap(page, currentRound.correctSide);
-    await expect(
-      page.locator(".kanji-clash-feedback[role='status']")
-    ).toHaveCount(0);
+    await expect(page.getByTestId(testIds.kanjiClashFeedback)).toHaveCount(0);
     await waitForNextRound(page, currentRound);
   });
 });
-
-type KanjiClashRoundSnapshot = {
-  correctSide: "left" | "right";
-  pairKey: string;
-  signature: `${string}::${string}`;
-  targetSubjectKey: string;
-  wrongSide: "left" | "right";
-};
-
-type KanjiClashRoundState =
-  | { kind: "done" }
-  | { kind: "round"; signature: `${string}::${string}` }
-  | { kind: "transition"; state: "missing" | "unknown" };
-
-async function readCurrentRound(page: Page) {
-  const stage = page.locator(".kanji-clash-stage");
-
-  await expect(stage).toBeVisible();
-
-  const pairKey = await stage.getAttribute("data-pair-key");
-  const targetSubjectKey = await stage.getAttribute("data-target-subject-key");
-  const leftSubjectKey = await page
-    .locator(".kanji-clash-option--left")
-    .getAttribute("data-subject-key");
-  const rightSubjectKey = await page
-    .locator(".kanji-clash-option--right")
-    .getAttribute("data-subject-key");
-
-  if (!pairKey || !targetSubjectKey || !leftSubjectKey || !rightSubjectKey) {
-    throw new Error("Missing Kanji Clash round metadata for E2E verification.");
-  }
-
-  const correctSide = leftSubjectKey === targetSubjectKey ? "left" : "right";
-
-  return {
-    correctSide,
-    pairKey,
-    signature: `${pairKey}::${targetSubjectKey}`,
-    targetSubjectKey,
-    wrongSide: correctSide === "left" ? "right" : "left"
-  } as const satisfies KanjiClashRoundSnapshot;
-}
-
-async function waitForNextRound(
-  page: Page,
-  previousRound: KanjiClashRoundSnapshot
-) {
-  const nextState = await waitForNextRoundOrCompletion(page, previousRound);
-
-  if (nextState === "done") {
-    throw new Error(
-      "Expected another Kanji Clash round, but the session ended."
-    );
-  }
-
-  return nextState;
-}
-
-async function waitForNextRoundOrCompletion(
-  page: Page,
-  previousRound: KanjiClashRoundSnapshot
-) {
-  const timeoutAt = Date.now() + 5_000;
-  let lastState: KanjiClashRoundState = {
-    kind: "transition",
-    state: "unknown"
-  };
-
-  while (Date.now() < timeoutAt) {
-    lastState = await getRoundState(page);
-
-    if (lastState.kind === "done") {
-      return "done";
-    }
-
-    if (
-      lastState.kind === "round" &&
-      lastState.signature !== previousRound.signature
-    ) {
-      return readCurrentRound(page);
-    }
-
-    await page.waitForTimeout(100);
-  }
-
-  throw new Error(
-    `Timed out waiting for Kanji Clash to advance from ${previousRound.signature}. Last observed state: ${describeRoundState(
-      lastState
-    )}.`
-  );
-}
-
-async function finishManualSession(page: Page, maxRounds: number) {
-  for (let index = 0; index < maxRounds; index += 1) {
-    const currentRound = await readCurrentRound(page);
-
-    await answerRoundWithClick(page, currentRound.correctSide);
-
-    const nextState = await waitForNextRoundOrCompletion(page, currentRound);
-
-    if (nextState === "done") {
-      return;
-    }
-  }
-
-  throw new Error(
-    "Manual Kanji Clash session did not complete within the expected rounds."
-  );
-}
-
-async function getRoundState(page: Page) {
-  const stage = page.locator(".kanji-clash-stage");
-
-  if (await stage.isVisible().catch(() => false)) {
-    const pairKey = await stage.getAttribute("data-pair-key");
-    const targetSubjectKey = await stage.getAttribute(
-      "data-target-subject-key"
-    );
-
-    if (pairKey && targetSubjectKey) {
-      return {
-        kind: "round",
-        signature: `${pairKey}::${targetSubjectKey}`
-      } as const satisfies KanjiClashRoundState;
-    }
-
-    return {
-      kind: "transition",
-      state: "missing"
-    } as const satisfies KanjiClashRoundState;
-  }
-
-  if (
-    await page
-      .locator(".empty-state")
-      .isVisible()
-      .catch(() => false)
-  ) {
-    return { kind: "done" } as const satisfies KanjiClashRoundState;
-  }
-
-  return {
-    kind: "transition",
-    state: "unknown"
-  } as const satisfies KanjiClashRoundState;
-}
-
-function describeRoundState(state: KanjiClashRoundState) {
-  if (state.kind === "round") {
-    return state.signature;
-  }
-
-  if (state.kind === "transition") {
-    return state.state;
-  }
-
-  return state.kind;
-}
-
-async function answerRoundWithClick(page: Page, side: "left" | "right") {
-  await page.locator(`.kanji-clash-option--${side}`).click();
-}
-
-async function answerRoundWithTap(page: Page, side: "left" | "right") {
-  await page.locator(`.kanji-clash-option--${side}`).tap();
-}
-
-async function readVisibleRound(page: Page) {
-  return {
-    left: (
-      (await page
-        .locator(".kanji-clash-option--left .kanji-clash-option__surface")
-        .textContent()) ?? ""
-    ).trim(),
-    meaning: (
-      (await page.locator(".kanji-clash-target__meaning").textContent()) ?? ""
-    ).trim(),
-    reading: (
-      (await page.locator(".kanji-clash-target__reading").textContent()) ?? ""
-    ).trim(),
-    remaining: await readStatBlockValue(page, "Rimanenti"),
-    right: (
-      (await page
-        .locator(".kanji-clash-option--right .kanji-clash-option__surface")
-        .textContent()) ?? ""
-    ).trim(),
-    title: (
-      (await page.locator(".kanji-clash-stage__title").textContent()) ?? ""
-    ).trim()
-  } as const;
-}
-
-async function readStatBlockValue(page: Page, label: string) {
-  return readStatBlockValueWithin(page.locator("body"), label);
-}
-
-async function readStatBlockValueWithin(root: Locator, label: string) {
-  const statBlock = root.locator(".stat-block").filter({
-    hasText: label
-  });
-  const value = await statBlock.locator(".stat-block__value").textContent();
-
-  return Number.parseInt(value ?? "0", 10);
-}
-
-async function readStatBlockValuesWithin(root: Locator, labels: string[]) {
-  return Object.fromEntries(
-    await Promise.all(
-      labels.map(async (label) => [
-        label,
-        await readStatBlockValueWithin(root, label)
-      ])
-    )
-  );
-}
 
 async function applyKanjiClashSettings(
   page: Page,

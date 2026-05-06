@@ -1,41 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-type Deferred<T> = {
-  promise: Promise<T>;
-  resolve: (value: T) => void;
-};
-
-function createDeferred<T>(): Deferred<T> {
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
-
-async function flushMicrotasks() {
-  await Promise.resolve();
-  await Promise.resolve();
-}
-
-async function waitForTruthy(
-  predicate: () => boolean,
-  message: string,
-  attempts = 50
-) {
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    if (predicate()) {
-      return;
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-  }
-
-  throw new Error(message);
-}
+import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
 describe("textbook lesson query scheduling", () => {
   afterEach(() => {
@@ -49,8 +14,9 @@ describe("textbook lesson query scheduling", () => {
   });
 
   it("returns null on a missing media slug without waiting for furigana settings", async () => {
-    const mediaDeferred = createDeferred<null>();
-    const furiganaDeferred = createDeferred<"hover">();
+    const schedule = createQuerySchedulingHarness();
+    const mediaGate = schedule.gate<null>("media");
+    const furiganaGate = schedule.gate<"hover">("furigana");
     const noStoreMock = vi.fn();
 
     vi.doMock("next/cache", () => ({
@@ -73,11 +39,11 @@ describe("textbook lesson query scheduling", () => {
       buildTextbookLessonBodyTags: vi.fn(() => []),
       buildTextbookTooltipTags: vi.fn(() => []),
       canUseDataCache: vi.fn(() => true),
-      getMediaBySlugCached: vi.fn(() => mediaDeferred.promise),
+      getMediaBySlugCached: vi.fn(mediaGate.loader()),
       runWithTaggedCache: vi.fn(async ({ loader }) => loader())
     }));
     vi.doMock("@/lib/settings", () => ({
-      getFuriganaModeSetting: vi.fn(() => furiganaDeferred.promise)
+      getFuriganaModeSetting: vi.fn(furiganaGate.loader())
     }));
 
     const { getTextbookLessonData } = await import("@/lib/textbook");
@@ -90,19 +56,20 @@ describe("textbook lesson query scheduling", () => {
       return result;
     });
 
-    await flushMicrotasks();
-    mediaDeferred.resolve(null);
+    await schedule.expectStarted("media", "furigana");
+    mediaGate.resolve(null);
 
     try {
-      await waitForTruthy(
-        () => resolved,
+      await schedule.expectResolvesWhileBlocked(
+        lessonDataPromise,
+        "furigana",
         "Expected missing lesson media lookup to resolve immediately."
       );
+      expect(resolved).toBe(true);
       await expect(lessonDataPromise).resolves.toBeNull();
       expect(noStoreMock).toHaveBeenCalledTimes(1);
     } finally {
-      furiganaDeferred.resolve("hover");
-      await lessonDataPromise;
+      await schedule.releaseAll();
     }
   });
 });

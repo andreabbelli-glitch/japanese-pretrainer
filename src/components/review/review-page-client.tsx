@@ -18,7 +18,7 @@ export function ReviewPageClient({
   });
 
   return (
-    <div className="review-page">
+    <div className="review-page" data-testid="review-page">
       <section className="hero-grid hero-grid--detail review-workspace">
         <ReviewPageStage
           additionalNewCount={controller.additionalNewCount}

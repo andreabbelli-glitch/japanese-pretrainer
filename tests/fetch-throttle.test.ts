@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { createFetchThrottle } from "@/lib/fetch-throttle";
+import { createFetchThrottle, parseRetryAfterMs } from "@/lib/fetch-throttle";
 
 describe("fetch throttle", () => {
   afterEach(() => {
@@ -101,6 +101,47 @@ describe("fetch throttle", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
+  it("does not start a throttled request after the caller aborts while waiting", async () => {
+    vi.useFakeTimers();
+    const start = new Date("2026-04-24T12:00:00.000Z");
+    vi.setSystemTime(start);
+    const abortController = new AbortController();
+    const abortError = Object.assign(new Error("cancelled"), {
+      name: "AbortError"
+    });
+    const successResponse = {
+      ok: true
+    } as Response;
+    const fetchMock = vi.fn().mockResolvedValue(successResponse);
+    const throttle = createFetchThrottle({
+      requestDelayMs: 1_000,
+      requestTimeoutMs: 10_000
+    });
+
+    vi.stubGlobal("fetch", fetchMock);
+
+    await expect(
+      throttle.throttledFetch("https://example.test/one.ogg")
+    ).resolves.toBe(successResponse);
+
+    const waitingFetch = throttle.throttledFetch(
+      "https://example.test/two.ogg",
+      {
+        signal: abortController.signal
+      }
+    );
+
+    const waitingFetchExpectation =
+      expect(waitingFetch).rejects.toBe(abortError);
+
+    abortController.abort(abortError);
+
+    await vi.advanceTimersByTimeAsync(1_000);
+
+    await waitingFetchExpectation;
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
   it("serializes calls already waiting for the next throttle slot", async () => {
     vi.useFakeTimers();
     const start = new Date("2026-04-24T12:00:00.000Z");
@@ -122,7 +163,9 @@ describe("fetch throttle", () => {
 
     const firstFetch = throttle.throttledFetch("https://example.test/one.ogg");
     const secondFetch = throttle.throttledFetch("https://example.test/two.ogg");
-    const thirdFetch = throttle.throttledFetch("https://example.test/three.ogg");
+    const thirdFetch = throttle.throttledFetch(
+      "https://example.test/three.ogg"
+    );
 
     expect(fetchStartTimes).toEqual([start.getTime()]);
 
@@ -144,5 +187,21 @@ describe("fetch throttle", () => {
       start.getTime() + 1_000,
       start.getTime() + 2_000
     ]);
+  });
+
+  it("ignores malformed numeric retry-after values instead of parsing them as dates", () => {
+    expect(parseRetryAfterMs("-1")).toBeNull();
+    expect(parseRetryAfterMs("+1")).toBeNull();
+    expect(parseRetryAfterMs("1.5")).toBeNull();
+  });
+
+  it("ignores retry-after delays that exceed the maximum timer delay", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-04-24T12:00:00.000Z"));
+
+    expect(parseRetryAfterMs("2147484")).toBeNull();
+    expect(
+      parseRetryAfterMs("Wed, 01 Jul 2026 12:00:00 GMT")
+    ).toBeNull();
   });
 });

@@ -16,7 +16,7 @@ export function EmptyState({
   action
 }: EmptyStateProps) {
   return (
-    <SurfaceCard className="empty-state" variant="quiet">
+    <SurfaceCard className="empty-state" testId="empty-state" variant="quiet">
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
       <h2 className="empty-state__title">{title}</h2>
       <p className="empty-state__description">{description}</p>

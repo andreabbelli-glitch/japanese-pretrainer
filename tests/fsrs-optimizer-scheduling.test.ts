@@ -2,38 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
 import { runFsrsOptimizer } from "@/lib/fsrs-optimizer-trainer";
-
-type Deferred = {
-  promise: Promise<void>;
-  resolve: () => void;
-};
-
-function createDeferred(): Deferred {
-  let resolve!: () => void;
-
-  return {
-    promise: new Promise<void>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
-
-async function waitForTruthy(
-  predicate: () => boolean,
-  message: string,
-  attempts = 50
-) {
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    if (predicate()) {
-      return;
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-  }
-
-  throw new Error(message);
-}
+import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
 describe("fsrs optimizer query scheduling", () => {
   afterEach(() => {
@@ -41,44 +10,44 @@ describe("fsrs optimizer query scheduling", () => {
   });
 
   it("starts counting eligible reviews before the optimizer snapshot settles", async () => {
-    const snapshotGate = createDeferred();
-    let snapshotStarted = false;
-    let eligibleReviewCountStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const snapshotGate = schedule.gate("optimizer snapshot");
+    const eligibleReviewCountGate = schedule.gate("eligible review count");
 
-    vi.spyOn(fsrsOptimizerModule, "getFsrsOptimizerSnapshot").mockImplementation(
-      async () => {
-        snapshotStarted = true;
-        await snapshotGate.promise;
+    vi.spyOn(
+      fsrsOptimizerModule,
+      "getFsrsOptimizerSnapshot"
+    ).mockImplementation(async () => {
+      await snapshotGate.loader()();
 
-        return {
-          config: {
-            desiredRetention: 0.9,
-            enabled: false,
-            minDaysBetweenRuns: 7,
-            minNewReviews: 50,
-            presetStrategy: "card_type_v1"
-          },
-          presets: {
-            concept: null,
-            recognition: null
-          },
-          state: {
-            bindingVersion: "0.3.0",
-            lastAttemptAt: null,
-            lastCheckAt: null,
-            lastSuccessfulTrainingAt: null,
-            lastTrainingError: null,
-            newEligibleReviewsSinceLastTraining: 0,
-            totalEligibleReviewsAtLastTraining: 0
-          }
-        };
-      }
-    );
+      return {
+        config: {
+          desiredRetention: 0.9,
+          enabled: false,
+          minDaysBetweenRuns: 7,
+          minNewReviews: 50,
+          presetStrategy: "card_type_v1"
+        },
+        presets: {
+          concept: null,
+          recognition: null
+        },
+        state: {
+          bindingVersion: "0.3.0",
+          lastAttemptAt: null,
+          lastCheckAt: null,
+          lastSuccessfulTrainingAt: null,
+          lastTrainingError: null,
+          newEligibleReviewsSinceLastTraining: 0,
+          totalEligibleReviewsAtLastTraining: 0
+        }
+      };
+    });
     vi.spyOn(
       fsrsOptimizerModule,
       "countEligibleFsrsOptimizerReviews"
     ).mockImplementation(async () => {
-      eligibleReviewCountStarted = true;
+      await eligibleReviewCountGate.loader()();
       return 12;
     });
     vi.spyOn(fsrsOptimizerModule, "writeFsrsOptimizerConfig").mockResolvedValue(
@@ -97,13 +66,14 @@ describe("fsrs optimizer query scheduling", () => {
     });
 
     try {
-      await waitForTruthy(
-        () => snapshotStarted,
-        "Expected the optimizer snapshot lookup to start."
+      await schedule.expectStarted(
+        "optimizer snapshot",
+        "eligible review count"
       );
-      expect(eligibleReviewCountStarted).toBe(true);
+      schedule.expectNotSettled("optimizer snapshot");
     } finally {
       snapshotGate.resolve();
+      eligibleReviewCountGate.resolve();
     }
 
     await expect(runPromise).resolves.toMatchObject({

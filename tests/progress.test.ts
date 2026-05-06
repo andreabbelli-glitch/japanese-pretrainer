@@ -133,7 +133,7 @@ describe("progress, settings, and study controls", () => {
     mediaFindManySpy.mockRestore();
   });
 
-  it("loads the local progress review snapshot from the scoped media candidate query", async () => {
+  it("loads the local progress review snapshot from scoped overview queries", async () => {
     const globalCandidatesSpy = vi.spyOn(
       dbQueriesModule,
       "listReviewLaunchCandidates"
@@ -141,6 +141,14 @@ describe("progress, settings, and study controls", () => {
     const mediaCandidateSpy = vi.spyOn(
       dbQueriesModule,
       "getReviewLaunchCandidateByMediaId"
+    );
+    const mediaOverviewSpy = vi.spyOn(
+      dbQueriesModule,
+      "getReviewOverviewDataByMediaId"
+    );
+    const queuedNewSpy = vi.spyOn(
+      dbQueriesModule,
+      "getQueuedNewReviewSubjectSummaryByMediaId"
     );
 
     const data = await getMediaProgressPageData(
@@ -150,10 +158,14 @@ describe("progress, settings, and study controls", () => {
 
     expect(data).not.toBeNull();
     expect(globalCandidatesSpy).not.toHaveBeenCalled();
-    expect(mediaCandidateSpy).toHaveBeenCalledTimes(1);
+    expect(mediaCandidateSpy).not.toHaveBeenCalled();
+    expect(mediaOverviewSpy).toHaveBeenCalledTimes(1);
+    expect(queuedNewSpy).toHaveBeenCalledTimes(1);
 
     globalCandidatesSpy.mockRestore();
     mediaCandidateSpy.mockRestore();
+    mediaOverviewSpy.mockRestore();
+    queuedNewSpy.mockRestore();
   });
 
   it("includes glossary preview entries for the media detail progress page", async () => {

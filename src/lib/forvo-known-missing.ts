@@ -63,7 +63,7 @@ export async function persistForvoKnownMissingRegistry(
     `${JSON.stringify(
       {
         version: 1,
-        entries: registry.entries.sort(compareForvoKnownMissingEntries)
+        entries: [...registry.entries].sort(compareForvoKnownMissingEntries)
       },
       null,
       2

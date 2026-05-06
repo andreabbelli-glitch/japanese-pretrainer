@@ -107,11 +107,11 @@ export function ReviewPageStage({
     : false;
 
   return (
-    <SurfaceCard className="review-stage" variant="hero">
+    <SurfaceCard className="review-stage" testId="review-stage" variant="hero">
       {selectedCard ? (
         <>
           <div className="review-stage__top">
-            <div className="review-stage__chips">
+            <div className="review-stage__chips" data-testid="review-chips">
               <span className="chip">{selectedCard.bucketLabel}</span>
               <span className="meta-pill">{selectedCard.typeLabel}</span>
               <span className="meta-pill">
@@ -149,7 +149,7 @@ export function ReviewPageStage({
                 </button>
               </div>
             ) : (
-              <div className="review-stage__answer">
+              <div className="review-stage__answer" data-testid="review-answer">
                 <p className="eyebrow">Retro</p>
                 {selectedCard.reading ? (
                   <p className="review-stage__reading jp-inline">
@@ -159,7 +159,8 @@ export function ReviewPageStage({
                 <p className="review-stage__back">
                   {renderFurigana(selectedCard.back)}
                 </p>
-                {fullSelectedCard && fullSelectedCard.pronunciations.length > 0 ? (
+                {fullSelectedCard &&
+                fullSelectedCard.pronunciations.length > 0 ? (
                   <div className="stack-list stack-list--tight">
                     {showCompactPronunciation ? (
                       <p className="eyebrow">Pronuncia</p>
@@ -199,7 +200,9 @@ export function ReviewPageStage({
                     {fullSelectedCard.contexts.slice(0, 4).map((context) => (
                       <p key={context.cardId} className="review-stage__meta">
                         <strong>{context.mediaTitle}</strong>
-                        {context.segmentTitle ? ` · ${context.segmentTitle}` : ""}
+                        {context.segmentTitle
+                          ? ` · ${context.segmentTitle}`
+                          : ""}
                         {`: ${context.front}`}
                       </p>
                     ))}
@@ -220,7 +223,9 @@ export function ReviewPageStage({
                   <div className="review-stage__contrast-selection">
                     <span className="chip">
                       Contrasto con:{" "}
-                      <span className="jp-inline">{forcedContrastSelection.label}</span>
+                      <span className="jp-inline">
+                        {forcedContrastSelection.label}
+                      </span>
                     </span>
                     {forcedContrastSelection.reading ? (
                       <span className="meta-pill jp-inline">
@@ -265,7 +270,9 @@ export function ReviewPageStage({
                       inputMode="search"
                       onBlur={handleCloseForcedContrast}
                       onChange={(event) => {
-                        handleForcedContrastQueryChange(event.currentTarget.value);
+                        handleForcedContrastQueryChange(
+                          event.currentTarget.value
+                        );
                       }}
                       onKeyDown={(event) => {
                         if (event.key === "Escape") {
@@ -280,7 +287,9 @@ export function ReviewPageStage({
                     <GlossaryAutocompleteDropdown
                       listboxId={forcedContrastListboxId}
                       onSelect={handleForcedContrastSelect}
-                      shouldShowSuggestions={forcedContrastShouldShowSuggestions}
+                      shouldShowSuggestions={
+                        forcedContrastShouldShowSuggestions
+                      }
                       suggestions={forcedContrastSuggestions}
                     />
                   </div>
@@ -308,7 +317,8 @@ export function ReviewPageStage({
                     <span>{rating.label}</span>
                     <small>{rating.detail}</small>
                     <small className="review-grade-button__next">
-                      Prossima review: {gradePreviewLookup.get(rating.value) ?? "n/d"}
+                      Prossima review:{" "}
+                      {gradePreviewLookup.get(rating.value) ?? "n/d"}
                     </small>
                   </button>
                 ))}
@@ -358,7 +368,9 @@ export function ReviewPageStage({
                   type="button"
                   onClick={handleToggleSuspended}
                 >
-                  {selectedCard.bucket === "suspended" ? "Riprendi" : "Sospendi"}
+                  {selectedCard.bucket === "suspended"
+                    ? "Riprendi"
+                    : "Sospendi"}
                 </button>
 
                 {fullSelectedCard
@@ -377,12 +389,13 @@ export function ReviewPageStage({
               {selectedCard.bucket === "manual" ? (
                 <p className="review-stage__hint">
                   Lo stato manuale si applica alle voci collegate: la card resta
-                  intatta e riprende il suo scheduling appena la rimetti in studio.
+                  intatta e riprende il suo scheduling appena la rimetti in
+                  studio.
                 </p>
               ) : selectedCard.bucket === "suspended" ? (
                 <p className="review-stage__hint">
-                  La sospensione usa lo stato della card, non cancella intervalli o
-                  log già presenti.
+                  La sospensione usa lo stato della card, non cancella
+                  intervalli o log già presenti.
                 </p>
               ) : null}
             </>
@@ -428,7 +441,10 @@ export function ReviewPageStage({
                   {formatTopUpLabel(additionalNewCount)}
                 </Link>
               ) : null}
-              <Link className="button button--ghost" href={contextualGlossaryHref}>
+              <Link
+                className="button button--ghost"
+                href={contextualGlossaryHref}
+              >
                 Apri Glossary
               </Link>
             </>
@@ -447,7 +463,10 @@ export function ReviewPageStage({
               : "Quando importerai le prime card o riattiverai una voce dal Glossary, qui riapparirà il flusso di Review del media."
           }
           action={
-            <Link className="button button--ghost" href={contextualGlossaryHref}>
+            <Link
+              className="button button--ghost"
+              href={contextualGlossaryHref}
+            >
               Apri Glossary
             </Link>
           }

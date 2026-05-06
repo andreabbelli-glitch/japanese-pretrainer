@@ -255,68 +255,66 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--content-root") {
-      options.contentRoot = normalizedArgv[index + 1] ?? options.contentRoot;
+      options.contentRoot = readOptionValue(
+        normalizedArgv,
+        index,
+        "--content-root"
+      );
       index += 1;
       continue;
     }
 
     if (argument === "--control-port") {
-      const parsedPort = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
-
-      if (Number.isFinite(parsedPort) && parsedPort > 0) {
-        options.controlPort = parsedPort;
-      }
+      options.controlPort = readPositiveIntegerOption(
+        normalizedArgv,
+        index,
+        "--control-port"
+      );
 
       index += 1;
       continue;
     }
 
     if (argument === "--media") {
-      const mediaSlug = normalizedArgv[index + 1];
-
-      if (mediaSlug) {
-        options.mediaSlugs.push(mediaSlug);
-      }
+      options.mediaSlugs.push(
+        readOptionValue(normalizedArgv, index, "--media")
+      );
 
       index += 1;
       continue;
     }
 
     if (argument === "--limit") {
-      const parsedLimit = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
-
-      if (Number.isFinite(parsedLimit) && parsedLimit >= 0) {
-        options.limit = parsedLimit;
-      }
+      options.limit = readNonNegativeIntegerOption(
+        normalizedArgv,
+        index,
+        "--limit"
+      );
 
       index += 1;
       continue;
     }
 
     if (argument === "--word") {
-      const word = normalizedArgv[index + 1];
-
-      if (word) {
-        options.words.push(word);
-      }
+      options.words.push(readOptionValue(normalizedArgv, index, "--word"));
 
       index += 1;
       continue;
     }
 
     if (argument === "--entry") {
-      const entryId = normalizedArgv[index + 1];
-
-      if (entryId) {
-        options.entryIds.push(entryId);
-      }
+      options.entryIds.push(readOptionValue(normalizedArgv, index, "--entry"));
 
       index += 1;
       continue;
     }
 
     if (argument === "--words-file") {
-      options.wordListPath = normalizedArgv[index + 1];
+      options.wordListPath = readOptionValue(
+        normalizedArgv,
+        index,
+        "--words-file"
+      );
       index += 1;
       continue;
     }
@@ -327,22 +325,31 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--downloads-dir") {
-      options.manualDownloadsDir =
-        normalizedArgv[index + 1] ?? options.manualDownloadsDir;
+      options.manualDownloadsDir = readOptionValue(
+        normalizedArgv,
+        index,
+        "--downloads-dir"
+      );
       index += 1;
       continue;
     }
 
     if (argument === "--known-missing-file") {
-      options.knownMissingPath =
-        normalizedArgv[index + 1] ?? options.knownMissingPath;
+      options.knownMissingPath = readOptionValue(
+        normalizedArgv,
+        index,
+        "--known-missing-file"
+      );
       index += 1;
       continue;
     }
 
     if (argument === "--request-registry-file") {
-      options.requestRegistryPath =
-        normalizedArgv[index + 1] ?? options.requestRegistryPath;
+      options.requestRegistryPath = readOptionValue(
+        normalizedArgv,
+        index,
+        "--request-registry-file"
+      );
       index += 1;
       continue;
     }
@@ -358,20 +365,21 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--profile-dir") {
-      options.profileDir = normalizedArgv[index + 1] ?? options.profileDir;
+      options.profileDir = readOptionValue(
+        normalizedArgv,
+        index,
+        "--profile-dir"
+      );
       index += 1;
       continue;
     }
 
     if (argument === "--browser-timeout-ms") {
-      const parsedTimeout = Number.parseInt(
-        normalizedArgv[index + 1] ?? "",
-        10
+      options.browserTimeoutMs = readPositiveIntegerOption(
+        normalizedArgv,
+        index,
+        "--browser-timeout-ms"
       );
-
-      if (Number.isFinite(parsedTimeout) && parsedTimeout > 0) {
-        options.browserTimeoutMs = parsedTimeout;
-      }
 
       index += 1;
       continue;
@@ -401,9 +409,61 @@ function parseCliOptions(argv: string[]): CliOptions {
       options.keepBrowserOpen = true;
       continue;
     }
+
+    throw new Error(`Unknown argument: ${argument}`);
   }
 
   return options;
+}
+
+function readOptionValue(argv: string[], index: number, flag: string) {
+  const value = argv[index + 1];
+
+  if (!value || value.startsWith("--")) {
+    throw new Error(`Missing value for ${flag}.`);
+  }
+
+  return value;
+}
+
+function readNonNegativeIntegerOption(
+  argv: string[],
+  index: number,
+  flag: string
+) {
+  const value = readOptionValue(argv, index, flag);
+
+  if (!/^\d+$/u.test(value)) {
+    throw new Error(`${flag} must be a non-negative integer.`);
+  }
+
+  const parsed = Number.parseInt(value, 10);
+
+  if (!Number.isSafeInteger(parsed)) {
+    throw new Error(`${flag} must be a safe non-negative integer.`);
+  }
+
+  return parsed;
+}
+
+function readPositiveIntegerOption(
+  argv: string[],
+  index: number,
+  flag: string
+) {
+  const value = readOptionValue(argv, index, flag);
+
+  if (!/^[1-9]\d*$/u.test(value)) {
+    throw new Error(`${flag} must be a positive integer.`);
+  }
+
+  const parsed = Number.parseInt(value, 10);
+
+  if (!Number.isSafeInteger(parsed)) {
+    throw new Error(`${flag} must be a safe positive integer.`);
+  }
+
+  return parsed;
 }
 
 function expandEqualsOptions(argv: string[]) {

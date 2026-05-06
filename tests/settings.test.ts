@@ -1,15 +1,6 @@
-import { mkdtemp, rm } from "node:fs/promises";
-import { tmpdir } from "node:os";
-import path from "node:path";
-
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-  closeDatabaseClient,
-  createDatabaseClient,
-  type DatabaseClient
-} from "@/db";
-import { runMigrations } from "@/db/migrate";
+import type { DatabaseClient } from "@/db";
 import { userSetting } from "@/db/schema";
 import {
   defaultStudySettings,
@@ -19,24 +10,26 @@ import {
   resolveKanjiClashDefaultScope,
   updateStudySettings
 } from "@/lib/settings";
+import {
+  cleanupTestDatabase,
+  setupTestDatabase,
+  type TestDatabaseFixture
+} from "./helpers/test-db";
 
 describe("study settings", () => {
-  let tempDir = "";
+  let fixture: TestDatabaseFixture;
   let database: DatabaseClient;
 
   beforeEach(async () => {
-    tempDir = await mkdtemp(path.join(tmpdir(), "jcs-settings-"));
-    database = createDatabaseClient({
-      databaseUrl: path.join(tempDir, "test.sqlite")
+    fixture = await setupTestDatabase({
+      prefix: "jcs-settings-"
     });
-
-    await runMigrations(database);
+    database = fixture.database;
   });
 
   afterEach(async () => {
     vi.useRealTimers();
-    closeDatabaseClient(database);
-    await rm(tempDir, { recursive: true, force: true });
+    await cleanupTestDatabase(fixture);
   });
 
   it("loads kanji clash defaults from an empty database", async () => {

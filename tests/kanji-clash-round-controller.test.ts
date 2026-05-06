@@ -2,6 +2,7 @@ import { act, createElement, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { createDeferred } from "./helpers/async";
 import { installMinimalDom, uninstallMinimalDom } from "./helpers/minimal-dom";
 
 import type { KanjiClashRoundControllerResult } from "@/components/kanji-clash/use-kanji-clash-round-controller";
@@ -335,18 +336,3 @@ describe("useKanjiClashRoundController manual contrast sync", () => {
     performanceNowSpy.mockRestore();
   });
 });
-
-function createDeferred<T>() {
-  let resolve!: (value: T) => void;
-  let reject!: (reason?: unknown) => void;
-  const promise = new Promise<T>((promiseResolve, promiseReject) => {
-    resolve = promiseResolve;
-    reject = promiseReject;
-  });
-
-  return {
-    promise,
-    reject,
-    resolve
-  };
-}

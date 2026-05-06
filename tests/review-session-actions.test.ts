@@ -31,6 +31,7 @@ import {
   cleanupReviewDatabase,
   setupReviewDatabase
 } from "./helpers/review-db-fixture";
+import { flushMicrotasks, waitForTruthy } from "./helpers/async";
 
 const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
 const secondarySubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
@@ -939,16 +940,11 @@ describe("review session actions", () => {
       sessionSettings: pageData?.settings
     });
 
-    for (let attempt = 0; attempt < 50; attempt += 1) {
-      if (startedCardIds.has(bufferedCardBId)) {
-        break;
-      }
-
-      await new Promise((resolve) => setTimeout(resolve, 0));
-    }
-
-    await Promise.resolve();
-    await Promise.resolve();
+    await waitForTruthy(
+      () => startedCardIds.has(bufferedCardBId),
+      "Expected the buffered card hydration to start."
+    );
+    await flushMicrotasks();
 
     expect(startedCardIds).toContain(bufferedCardBId);
     expect(startedCardIds).toContain(bufferedCardCId);

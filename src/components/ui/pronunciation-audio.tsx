@@ -30,10 +30,18 @@ export function PronunciationAudio({
         </div>
       ) : null}
       {showPitchAccent && audio.pitchAccent ? (
-        <PitchAccentNotation compact={compact} pitchAccent={audio.pitchAccent} />
+        <PitchAccentNotation
+          compact={compact}
+          pitchAccent={audio.pitchAccent}
+        />
       ) : null}
       {audio.src ? (
-        <audio className="pronunciation-audio__player" controls preload={preload}>
+        <audio
+          className="pronunciation-audio__player"
+          controls
+          data-testid="pronunciation-audio"
+          preload={preload}
+        >
           <source src={audio.src} />
         </audio>
       ) : null}
@@ -42,11 +50,7 @@ export function PronunciationAudio({
           {audio.attribution ? <span>{audio.attribution}</span> : null}
           {audio.license ? <span>{audio.license}</span> : null}
           {audio.pageUrl ? (
-            <a
-              href={audio.pageUrl}
-              rel="noreferrer"
-              target="_blank"
-            >
+            <a href={audio.pageUrl} rel="noreferrer" target="_blank">
               Fonte
             </a>
           ) : null}

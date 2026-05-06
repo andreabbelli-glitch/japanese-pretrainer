@@ -85,6 +85,10 @@ if (entries.length === 0) {
     );
 
     if (!options.dryRun) {
+      if (options.openUrls) {
+        await openUrlInDefaultBrowser(requestUrl);
+      }
+
       addForvoWordAddRequestEntry(requestRegistry, {
         entryId: entry.entryId,
         entryKind: entry.entryKind,
@@ -97,10 +101,6 @@ if (entries.length === 0) {
         path.resolve(options.requestRegistryPath),
         requestRegistry
       );
-
-      if (options.openUrls) {
-        await openUrlInDefaultBrowser(requestUrl);
-      }
     }
 
     if (index < entries.length - 1 && options.openUrls) {

@@ -44,6 +44,7 @@ export type MediaShellSnapshot = {
   cardsDue: number;
   cardsTotal: number;
   activeReviewCards: number;
+  newQueuedReviewCards?: number;
   reviewStatValue: string;
   reviewStatDetail: string;
   reviewQueueLabel: string;
@@ -188,6 +189,7 @@ export function mapMediaShellSnapshotFromCounts(input: {
     cardsDue: reviewCounts.dueCount,
     cardsTotal: reviewCounts.cardsTotal,
     activeReviewCards: reviewCounts.activeReviewCards,
+    newQueuedReviewCards: reviewCounts.newQueuedCount,
     reviewStatValue: reviewSignals.value,
     reviewStatDetail: reviewSignals.detail,
     reviewQueueLabel: reviewSignals.queueLabel,

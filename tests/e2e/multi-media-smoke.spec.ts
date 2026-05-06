@@ -1,5 +1,8 @@
 import { expect, test } from "@playwright/test";
 
+import { expectReviewReady } from "./helpers/review-page";
+import { testIds } from "./helpers/selectors";
+
 const canonicalMediaSlug = "duel-masters-dm25";
 
 test("smokes core study routes for duel-masters-dm25", async ({ page }) => {
@@ -16,15 +19,21 @@ test("smokes core study routes for duel-masters-dm25", async ({ page }) => {
   await page.goto(`/media/${canonicalMediaSlug}`);
 
   await expect(page).toHaveURL(`/media/${canonicalMediaSlug}`);
-  await expect(page.locator(".media-detail-page")).toBeVisible();
-  await expect(page.locator(".entry-point-grid")).toContainText("Textbook");
-  await expect(page.locator(".entry-point-grid")).toContainText("Glossary");
-  await expect(page.locator(".entry-point-grid")).toContainText("Review");
+  await expect(page.getByTestId(testIds.mediaDetailPage)).toBeVisible();
+  await expect(page.getByTestId(testIds.entryPointGrid)).toContainText(
+    "Textbook"
+  );
+  await expect(page.getByTestId(testIds.entryPointGrid)).toContainText(
+    "Glossary"
+  );
+  await expect(page.getByTestId(testIds.entryPointGrid)).toContainText(
+    "Review"
+  );
 
   await page.goto(`/media/${canonicalMediaSlug}/textbook`);
 
   await expect(page).toHaveURL(`/media/${canonicalMediaSlug}/textbook`);
-  const firstLessonLink = page.locator(".textbook-lesson-link").first();
+  const firstLessonLink = page.getByTestId(testIds.textbookLessonLink).first();
   await expect(firstLessonLink).toBeVisible();
 
   await firstLessonLink.click();
@@ -32,7 +41,7 @@ test("smokes core study routes for duel-masters-dm25", async ({ page }) => {
   await expect(page).toHaveURL(
     new RegExp(`/media/${canonicalMediaSlug}/textbook/[^/?#]+$`)
   );
-  await expect(page.locator(".reader-article").first()).toBeVisible();
+  await expect(page.getByTestId(testIds.readerArticle).first()).toBeVisible();
 
   await page.goto(`/glossary?media=${canonicalMediaSlug}`);
 
@@ -40,20 +49,20 @@ test("smokes core study routes for duel-masters-dm25", async ({ page }) => {
   await expect(page.getByRole("combobox", { name: "Media" })).toHaveValue(
     canonicalMediaSlug
   );
-  await expect(page.locator(".glossary-results--portal")).toBeVisible();
+  await expect(page.getByTestId(testIds.glossaryPortalResults)).toBeVisible();
 
   await page.goto(`/media/${canonicalMediaSlug}/review`);
 
   await expect(page).toHaveURL(
     new RegExp(`/media/${canonicalMediaSlug}/review(?:\\?.*)?$`)
   );
-  await expect(page.locator(".review-page")).toBeVisible();
-  await expect(page.locator(".review-stage, .empty-state").first()).toBeVisible();
+  await expect(page.getByTestId(testIds.reviewPage)).toBeVisible();
+  await expectReviewReady(page);
 
   await page.goto(`/media/${canonicalMediaSlug}/progress`);
 
   await expect(page).toHaveURL(
     new RegExp(`/media/${canonicalMediaSlug}(?:#overview)?$`)
   );
-  await expect(page.locator(".media-detail-page")).toBeVisible();
+  await expect(page.getByTestId(testIds.mediaDetailPage)).toBeVisible();
 });

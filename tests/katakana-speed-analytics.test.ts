@@ -158,6 +158,39 @@ describe("katakana speed analytics", () => {
     expect(analytics.recommendedMode.mode).toBe("repair");
     expect(analytics.recommendedMode.detail).toContain("ヴョ");
   });
+
+  it("uses the latest finite RAN aggregate when a newer result is malformed", () => {
+    const exerciseResults: KatakanaSpeedAnalyticsExerciseResult[] = [
+      {
+        metrics: {
+          adjustedItemsPerSecond: 1.7,
+          itemsPerSecond: 2.1,
+          totalItems: 25
+        },
+        selfRating: null
+      },
+      {
+        metrics: {
+          adjustedItemsPerSecond: Number.NaN,
+          itemsPerSecond: Number.NaN,
+          totalItems: 25
+        },
+        selfRating: null
+      }
+    ];
+
+    const analytics = buildKatakanaSpeedAnalytics({
+      attempts: [],
+      exerciseResults,
+      itemStates: []
+    });
+
+    expect(analytics.modeMetrics.ranItemsPerSecond).toMatchObject({
+      adjustedItemsPerSecond: 1.7,
+      itemsPerSecond: 2.1,
+      totalItems: 25
+    });
+  });
 });
 
 function attempt(

@@ -126,43 +126,54 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--content-root") {
-      options.contentRoot = normalizedArgv[index + 1] ?? options.contentRoot;
+      options.contentRoot = readOptionValue(
+        normalizedArgv,
+        index,
+        "--content-root"
+      );
       index += 1;
       continue;
     }
 
     if (argument === "--mode") {
-      const mode = normalizedArgv[index + 1];
+      const mode = readOptionValue(normalizedArgv, index, "--mode");
       if (
         mode === "review" ||
         mode === "next-lesson" ||
         mode === "lesson-url"
       ) {
         options.mode = mode;
+      } else {
+        throw new Error(
+          "--mode must be one of review, next-lesson, or lesson-url."
+        );
       }
       index += 1;
       continue;
     }
 
     if (argument === "--media") {
-      options.mediaSlug = normalizedArgv[index + 1] ?? options.mediaSlug;
+      options.mediaSlug = readOptionValue(normalizedArgv, index, "--media");
       index += 1;
       continue;
     }
 
     if (argument === "--lesson-url") {
-      options.lessonUrl = normalizedArgv[index + 1] ?? options.lessonUrl;
+      options.lessonUrl = readOptionValue(
+        normalizedArgv,
+        index,
+        "--lesson-url"
+      );
       index += 1;
       continue;
     }
 
     if (argument === "--limit") {
-      const parsedLimit = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
-
-      if (Number.isFinite(parsedLimit) && parsedLimit >= 0) {
-        options.limit = parsedLimit;
-      }
-
+      options.limit = readNonNegativeIntegerOption(
+        normalizedArgv,
+        index,
+        "--limit"
+      );
       index += 1;
       continue;
     }
@@ -178,19 +189,21 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--downloads-dir") {
-      options.manualDownloadsDir =
-        normalizedArgv[index + 1] ?? options.manualDownloadsDir;
+      options.manualDownloadsDir = readOptionValue(
+        normalizedArgv,
+        index,
+        "--downloads-dir"
+      );
       index += 1;
       continue;
     }
 
     if (argument === "--control-port") {
-      const parsedPort = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
-
-      if (Number.isFinite(parsedPort) && parsedPort > 0) {
-        options.controlPort = parsedPort;
-      }
-
+      options.controlPort = readPositiveIntegerOption(
+        normalizedArgv,
+        index,
+        "--control-port"
+      );
       index += 1;
       continue;
     }
@@ -201,15 +214,21 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--known-missing-file") {
-      options.knownMissingPath =
-        normalizedArgv[index + 1] ?? options.knownMissingPath;
+      options.knownMissingPath = readOptionValue(
+        normalizedArgv,
+        index,
+        "--known-missing-file"
+      );
       index += 1;
       continue;
     }
 
     if (argument === "--request-registry-file") {
-      options.requestRegistryPath =
-        normalizedArgv[index + 1] ?? options.requestRegistryPath;
+      options.requestRegistryPath = readOptionValue(
+        normalizedArgv,
+        index,
+        "--request-registry-file"
+      );
       index += 1;
       continue;
     }
@@ -223,9 +242,61 @@ function parseCliOptions(argv: string[]): CliOptions {
       options.openWordAddOnSkip = false;
       continue;
     }
+
+    throw new Error(`Unknown argument: ${argument}`);
   }
 
   return options;
+}
+
+function readOptionValue(argv: string[], index: number, flag: string) {
+  const value = argv[index + 1];
+
+  if (!value || value.startsWith("--")) {
+    throw new Error(`Missing value for ${flag}.`);
+  }
+
+  return value;
+}
+
+function readNonNegativeIntegerOption(
+  argv: string[],
+  index: number,
+  flag: string
+) {
+  const value = readOptionValue(argv, index, flag);
+
+  if (!/^\d+$/u.test(value)) {
+    throw new Error(`${flag} must be a non-negative integer.`);
+  }
+
+  const parsed = Number.parseInt(value, 10);
+
+  if (!Number.isSafeInteger(parsed)) {
+    throw new Error(`${flag} must be a safe non-negative integer.`);
+  }
+
+  return parsed;
+}
+
+function readPositiveIntegerOption(
+  argv: string[],
+  index: number,
+  flag: string
+) {
+  const value = readOptionValue(argv, index, flag);
+
+  if (!/^[1-9]\d*$/u.test(value)) {
+    throw new Error(`${flag} must be a positive integer.`);
+  }
+
+  const parsed = Number.parseInt(value, 10);
+
+  if (!Number.isSafeInteger(parsed)) {
+    throw new Error(`${flag} must be a safe positive integer.`);
+  }
+
+  return parsed;
 }
 
 function expandEqualsOptions(argv: string[]) {

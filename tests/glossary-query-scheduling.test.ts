@@ -1,41 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-type Deferred<T> = {
-  promise: Promise<T>;
-  resolve: (value: T) => void;
-};
-
-function createDeferred<T>(): Deferred<T> {
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
-
-async function flushMicrotasks() {
-  await Promise.resolve();
-  await Promise.resolve();
-}
-
-async function waitForTruthy(
-  predicate: () => boolean,
-  message: string,
-  attempts = 50
-) {
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    if (predicate()) {
-      return;
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-  }
-
-  throw new Error(message);
-}
+import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
 function mockGlossaryDb(overrides: Record<string, unknown>) {
   vi.doMock("@/db", () => ({
@@ -110,74 +75,57 @@ describe("glossary query scheduling", () => {
   });
 
   it("starts the global browse query as soon as the default sort is ready", async () => {
-    const defaultSortDeferred = createDeferred<
-      "lesson_order" | "alphabetical"
-    >();
-    const mediaRowsDeferred = createDeferred<
+    const schedule = createQuerySchedulingHarness();
+    const defaultSortGate =
+      schedule.gate<"lesson_order" | "alphabetical">("default sort");
+    const mediaRowsGate = schedule.gate<
       Array<{
         id: string;
         slug: string;
         title: string;
       }>
-    >();
-    const aggregateStatsDeferred = createDeferred<{
+    >("media rows");
+    const aggregateStatsGate = schedule.gate<{
       crossMediaCount: number;
       entryCount: number;
       withCardsCount: number;
-    }>();
-    const browseRefsDeferred = createDeferred<
+    }>("aggregate stats");
+    const browseRefsGate = schedule.gate<
       Array<{
         resultKey: string;
         totalCount: number;
       }>
-    >();
-    let mediaStarted = false;
-    let aggregateStarted = false;
-    let browseStarted = false;
+    >("browse refs");
 
     mockGlossaryDb({
       countGlobalGlossaryBrowseGroups: vi.fn(),
-      getGlobalGlossaryAggregateStats: vi.fn(() => {
-        aggregateStarted = true;
-        return aggregateStatsDeferred.promise;
-      }),
-      listGlobalGlossaryBrowseGroupRefs: vi.fn(() => {
-        browseStarted = true;
-        return browseRefsDeferred.promise;
-      })
+      getGlobalGlossaryAggregateStats: vi.fn(aggregateStatsGate.loader()),
+      listGlobalGlossaryBrowseGroupRefs: vi.fn(browseRefsGate.loader())
     });
     mockGlossaryDataCache({
-      listMediaCached: vi.fn(() => {
-        mediaStarted = true;
-        return mediaRowsDeferred.promise;
-      })
+      listMediaCached: vi.fn(mediaRowsGate.loader())
     });
-    mockGlossarySettings(() => defaultSortDeferred.promise);
+    mockGlossarySettings(defaultSortGate.loader());
 
     const { loadGlobalGlossaryPageData } =
       await import("@/features/glossary/server/loaders");
     const glossaryPromise = loadGlobalGlossaryPageData({}, {} as never);
 
-    await flushMicrotasks();
+    await schedule.expectStarted("media rows", "aggregate stats");
+    schedule.expectNotStarted("browse refs");
 
-    expect(mediaStarted).toBe(true);
-    expect(aggregateStarted).toBe(true);
-    expect(browseStarted).toBe(false);
+    defaultSortGate.resolve("lesson_order");
+    await schedule.expectStarted("browse refs");
 
-    defaultSortDeferred.resolve("lesson_order");
-    await flushMicrotasks();
-
-    expect(browseStarted).toBe(true);
-
-    browseRefsDeferred.resolve([]);
-    mediaRowsDeferred.resolve([
+    browseRefsGate.resolve([]);
+    mediaRowsGate.resolve([
       {
         id: "media-1",
         slug: "fixture-media",
         title: "Fixture Media"
       }
     ]);
-    aggregateStatsDeferred.resolve({
+    aggregateStatsGate.resolve({
       crossMediaCount: 0,
       entryCount: 12,
       withCardsCount: 7
@@ -199,47 +147,37 @@ describe("glossary query scheduling", () => {
   });
 
   it("starts the global browse query before the default sort settles when the URL already pins sort", async () => {
-    const defaultSortDeferred = createDeferred<
-      "lesson_order" | "alphabetical"
-    >();
-    const mediaRowsDeferred = createDeferred<
+    const schedule = createQuerySchedulingHarness();
+    const defaultSortGate =
+      schedule.gate<"lesson_order" | "alphabetical">("default sort");
+    const mediaRowsGate = schedule.gate<
       Array<{
         id: string;
         slug: string;
         title: string;
       }>
-    >();
-    const aggregateStatsDeferred = createDeferred<{
+    >("media rows");
+    const aggregateStatsGate = schedule.gate<{
       crossMediaCount: number;
       entryCount: number;
       withCardsCount: number;
-    }>();
-    const browseRefsDeferred = createDeferred<
+    }>("aggregate stats");
+    const browseRefsGate = schedule.gate<
       Array<{
         resultKey: string;
         totalCount: number;
       }>
-    >();
-    let browseStarted = false;
-    let defaultSortStarted = false;
+    >("browse refs");
 
     mockGlossaryDb({
       countGlobalGlossaryBrowseGroups: vi.fn(),
-      getGlobalGlossaryAggregateStats: vi.fn(
-        () => aggregateStatsDeferred.promise
-      ),
-      listGlobalGlossaryBrowseGroupRefs: vi.fn(() => {
-        browseStarted = true;
-        return browseRefsDeferred.promise;
-      })
+      getGlobalGlossaryAggregateStats: vi.fn(aggregateStatsGate.loader()),
+      listGlobalGlossaryBrowseGroupRefs: vi.fn(browseRefsGate.loader())
     });
     mockGlossaryDataCache({
-      listMediaCached: vi.fn(() => mediaRowsDeferred.promise)
+      listMediaCached: vi.fn(mediaRowsGate.loader())
     });
-    mockGlossarySettings(() => {
-      defaultSortStarted = true;
-      return defaultSortDeferred.promise;
-    });
+    mockGlossarySettings(defaultSortGate.loader());
 
     const { loadGlobalGlossaryPageData } =
       await import("@/features/glossary/server/loaders");
@@ -250,25 +188,23 @@ describe("glossary query scheduling", () => {
       {} as never
     );
 
-    await flushMicrotasks();
+    await schedule.expectStarted("browse refs", "default sort");
+    schedule.expectNotSettled("default sort");
 
-    expect(browseStarted).toBe(true);
-    expect(defaultSortStarted).toBe(true);
-
-    browseRefsDeferred.resolve([]);
-    mediaRowsDeferred.resolve([
+    browseRefsGate.resolve([]);
+    mediaRowsGate.resolve([
       {
         id: "media-1",
         slug: "fixture-media",
         title: "Fixture Media"
       }
     ]);
-    aggregateStatsDeferred.resolve({
+    aggregateStatsGate.resolve({
       crossMediaCount: 0,
       entryCount: 12,
       withCardsCount: 7
     });
-    defaultSortDeferred.resolve("lesson_order");
+    defaultSortGate.resolve("lesson_order");
 
     const data = await glossaryPromise;
 
@@ -277,15 +213,14 @@ describe("glossary query scheduling", () => {
   });
 
   it("starts the local browse query before the default sort settles when the URL already pins sort", async () => {
-    const defaultSortDeferred = createDeferred<
-      "lesson_order" | "alphabetical"
-    >();
-    let localBrowseStarted = false;
-    let defaultSortStarted = false;
+    const schedule = createQuerySchedulingHarness();
+    const defaultSortGate =
+      schedule.gate<"lesson_order" | "alphabetical">("default sort");
+    const localBrowseGate = schedule.gate("local browse");
 
     mockGlossaryDb({
-      listTermEntrySummaries: vi.fn(() => {
-        localBrowseStarted = true;
+      listTermEntrySummaries: vi.fn(async () => {
+        await localBrowseGate.loader()();
         return Promise.resolve([]);
       })
     });
@@ -301,12 +236,10 @@ describe("glossary query scheduling", () => {
         })
       )
     });
-    mockGlossarySettings(() => {
-      defaultSortStarted = true;
-      return defaultSortDeferred.promise;
-    });
+    mockGlossarySettings(defaultSortGate.loader());
 
-    const { loadGlossaryPageData } = await import("@/features/glossary/server/loaders");
+    const { loadGlossaryPageData } =
+      await import("@/features/glossary/server/loaders");
     const glossaryPromise = loadGlossaryPageData(
       "fixture-media",
       {
@@ -315,12 +248,11 @@ describe("glossary query scheduling", () => {
       {} as never
     );
 
-    await flushMicrotasks();
+    await schedule.expectStarted("local browse", "default sort");
+    schedule.expectNotSettled("default sort");
 
-    expect(localBrowseStarted).toBe(true);
-    expect(defaultSortStarted).toBe(true);
-
-    defaultSortDeferred.resolve("lesson_order");
+    defaultSortGate.resolve("lesson_order");
+    localBrowseGate.resolve();
 
     const data = await glossaryPromise;
 
@@ -329,40 +261,37 @@ describe("glossary query scheduling", () => {
   });
 
   it("serves the global glossary without waiting for default sort when another filter is already active", async () => {
-    const defaultSortDeferred = createDeferred<
-      "lesson_order" | "alphabetical"
-    >();
-    const mediaRowsDeferred = createDeferred<
+    const schedule = createQuerySchedulingHarness();
+    const defaultSortGate =
+      schedule.gate<"lesson_order" | "alphabetical">("default sort");
+    const mediaRowsGate = schedule.gate<
       Array<{
         id: string;
         slug: string;
         title: string;
       }>
-    >();
-    const aggregateStatsDeferred = createDeferred<{
+    >("media rows");
+    const aggregateStatsGate = schedule.gate<{
       crossMediaCount: number;
       entryCount: number;
       withCardsCount: number;
-    }>();
-    const browseRefsDeferred = createDeferred<
+    }>("aggregate stats");
+    const browseRefsGate = schedule.gate<
       Array<{
         resultKey: string;
         totalCount: number;
       }>
-    >();
-    let glossaryResolved = false;
+    >("browse refs");
 
     mockGlossaryDb({
       countGlobalGlossaryBrowseGroups: vi.fn(),
-      getGlobalGlossaryAggregateStats: vi.fn(
-        () => aggregateStatsDeferred.promise
-      ),
-      listGlobalGlossaryBrowseGroupRefs: vi.fn(() => browseRefsDeferred.promise)
+      getGlobalGlossaryAggregateStats: vi.fn(aggregateStatsGate.loader()),
+      listGlobalGlossaryBrowseGroupRefs: vi.fn(browseRefsGate.loader())
     });
     mockGlossaryDataCache({
-      listMediaCached: vi.fn(() => mediaRowsDeferred.promise)
+      listMediaCached: vi.fn(mediaRowsGate.loader())
     });
-    mockGlossarySettings(() => defaultSortDeferred.promise);
+    mockGlossarySettings(defaultSortGate.loader());
 
     const { loadGlobalGlossaryPageData } =
       await import("@/features/glossary/server/loaders");
@@ -372,46 +301,41 @@ describe("glossary query scheduling", () => {
         sort: "alphabetical"
       },
       {} as never
-    ).then((data) => {
-      glossaryResolved = true;
-      return data;
-    });
+    );
 
-    browseRefsDeferred.resolve([]);
-    mediaRowsDeferred.resolve([
+    browseRefsGate.resolve([]);
+    mediaRowsGate.resolve([
       {
         id: "media-1",
         slug: "fixture-media",
         title: "Fixture Media"
       }
     ]);
-    aggregateStatsDeferred.resolve({
+    aggregateStatsGate.resolve({
       crossMediaCount: 0,
       entryCount: 12,
       withCardsCount: 7
     });
 
     try {
-      await waitForTruthy(
-        () => glossaryResolved,
+      const data = await schedule.expectResolvesWhileBlocked(
+        glossaryPromise,
+        "default sort",
         "Expected the global glossary response to resolve without the default sort lookup."
       );
-
-      const data = await glossaryPromise;
 
       expect(data.filters.sort).toBe("alphabetical");
       expect(data.hasActiveFilters).toBe(true);
     } finally {
-      defaultSortDeferred.resolve("lesson_order");
+      defaultSortGate.resolve("lesson_order");
       await glossaryPromise;
     }
   });
 
   it("serves the local glossary without waiting for default sort when another filter is already active", async () => {
-    const defaultSortDeferred = createDeferred<
-      "lesson_order" | "alphabetical"
-    >();
-    let glossaryResolved = false;
+    const schedule = createQuerySchedulingHarness();
+    const defaultSortGate =
+      schedule.gate<"lesson_order" | "alphabetical">("default sort");
 
     mockGlossaryDb({});
     mockGlossaryDataCache({
@@ -426,9 +350,10 @@ describe("glossary query scheduling", () => {
         })
       )
     });
-    mockGlossarySettings(() => defaultSortDeferred.promise);
+    mockGlossarySettings(defaultSortGate.loader());
 
-    const { loadGlossaryPageData } = await import("@/features/glossary/server/loaders");
+    const { loadGlossaryPageData } =
+      await import("@/features/glossary/server/loaders");
     const glossaryPromise = loadGlossaryPageData(
       "fixture-media",
       {
@@ -436,33 +361,28 @@ describe("glossary query scheduling", () => {
         type: "term"
       },
       {} as never
-    ).then((data) => {
-      glossaryResolved = true;
-      return data;
-    });
+    );
 
     try {
-      await waitForTruthy(
-        () => glossaryResolved,
+      const data = await schedule.expectResolvesWhileBlocked(
+        glossaryPromise,
+        "default sort",
         "Expected the local glossary response to resolve without the default sort lookup."
       );
-
-      const data = await glossaryPromise;
 
       expect(data?.filters.sort).toBe("alphabetical");
       expect(data?.hasActiveFilters).toBe(true);
     } finally {
-      defaultSortDeferred.resolve("lesson_order");
+      defaultSortGate.resolve("lesson_order");
       await glossaryPromise;
     }
   });
 
   it("returns null for missing local media without waiting for default sort", async () => {
-    const defaultSortDeferred = createDeferred<
-      "lesson_order" | "alphabetical"
-    >();
-    const mediaDeferred = createDeferred<null>();
-    let glossaryResolved = false;
+    const schedule = createQuerySchedulingHarness();
+    const defaultSortGate =
+      schedule.gate<"lesson_order" | "alphabetical">("default sort");
+    const mediaGate = schedule.gate<null>("media");
 
     mockGlossaryDb({
       listEntryCardCounts: vi.fn(),
@@ -473,31 +393,30 @@ describe("glossary query scheduling", () => {
       listTermEntrySummaries: vi.fn()
     });
     mockGlossaryDataCache({
-      getMediaBySlugCached: vi.fn(() => mediaDeferred.promise)
+      getMediaBySlugCached: vi.fn(mediaGate.loader())
     });
-    mockGlossarySettings(() => defaultSortDeferred.promise);
+    mockGlossarySettings(defaultSortGate.loader());
 
-    const { loadGlossaryPageData } = await import("@/features/glossary/server/loaders");
+    const { loadGlossaryPageData } =
+      await import("@/features/glossary/server/loaders");
     const glossaryPromise = loadGlossaryPageData(
       "missing-media",
       {},
       {} as never
-    ).then((data) => {
-      glossaryResolved = true;
-      return data;
-    });
+    );
 
-    mediaDeferred.resolve(null);
+    mediaGate.resolve(null);
 
     try {
-      await waitForTruthy(
-        () => glossaryResolved,
+      await schedule.expectResolvesWhileBlocked(
+        glossaryPromise,
+        "default sort",
         "Expected the local glossary response to resolve without the default sort lookup."
       );
 
       await expect(glossaryPromise).resolves.toBeNull();
     } finally {
-      defaultSortDeferred.resolve("lesson_order");
+      defaultSortGate.resolve("lesson_order");
       await glossaryPromise;
     }
   });

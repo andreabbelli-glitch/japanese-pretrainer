@@ -178,8 +178,15 @@ export function KatakanaSpeedSessionPage({
   return (
     <div className="katakana-speed-session-page">
       <div className="katakana-speed-session-layout">
-        <SurfaceCard className="katakana-speed-stage" variant="hero">
-          <div className="katakana-speed-session-top">
+        <SurfaceCard
+          className="katakana-speed-stage"
+          testId="katakana-speed-stage"
+          variant="hero"
+        >
+          <div
+            className="katakana-speed-session-top"
+            data-testid="katakana-speed-top"
+          >
             <p className="katakana-speed-eyebrow">Katakana Speed</p>
             <span className="katakana-speed-muted">
               {Math.min(controller.currentIndex + 1, controller.totalTrials)} /{" "}
@@ -202,7 +209,10 @@ export function KatakanaSpeedSessionPage({
 
           {currentTrial ? (
             <>
-              <div className="katakana-speed-stage__meta">
+              <div
+                className="katakana-speed-stage__meta"
+                data-testid="katakana-speed-stage-meta"
+              >
                 <span className="badge katakana-speed-meta-badge">
                   <span className="katakana-speed-meta-badge__label">
                     Esercizio
@@ -219,13 +229,20 @@ export function KatakanaSpeedSessionPage({
                 </span>
               </div>
               {trialCopy ? (
-                <div className="katakana-speed-task-copy">
+                <div
+                  className="katakana-speed-task-copy"
+                  data-testid="katakana-speed-task-copy"
+                >
                   <p>{trialCopy.instruction}</p>
                 </div>
               ) : null}
               {visiblePrompt ? (
                 <>
-                  <p className={promptClassName} style={promptStyle}>
+                  <p
+                    className={promptClassName}
+                    data-testid="katakana-speed-prompt"
+                    style={promptStyle}
+                  >
                     {visiblePrompt}
                   </p>
                   <ReadingHint
@@ -355,6 +372,7 @@ function ChoiceControls({
                 ? "katakana-speed-option--incorrect"
                 : "katakana-speed-option--correct")
           )}
+          data-testid="katakana-speed-option"
           disabled={disabled || controller.awaitingContinue}
           key={option.itemId}
           onClick={() =>
@@ -367,7 +385,10 @@ function ChoiceControls({
           type="button"
         >
           <span className="katakana-speed-option__key">{index + 1}</span>
-          <span className="katakana-speed-option__surface">
+          <span
+            className="katakana-speed-option__surface"
+            data-testid="katakana-speed-option-surface"
+          >
             {option.surface}
           </span>
           <ReadingHint value={showReadings ? option.readingHint : null} />
@@ -467,12 +488,15 @@ function RanGridControls({
               className={`katakana-speed-ran-cell${
                 isWrong ? " katakana-speed-ran-cell--wrong" : ""
               }`}
+              data-testid="katakana-speed-ran-cell"
               disabled={disabled || !controller.ranCanMarkErrors}
               key={`${cell.itemId}-${index}`}
               onClick={() => controller.handleToggleRanWrongCell(index)}
               type="button"
             >
-              <span>{cell.surface}</span>
+              <span data-testid="katakana-speed-ran-cell-surface">
+                {cell.surface}
+              </span>
               <ReadingHint value={showReadings ? cell.readingHint : null} />
             </button>
           );
@@ -622,7 +646,10 @@ function ReadingHint({
   }
 
   return (
-    <span className="katakana-speed-reading-hint">
+    <span
+      className="katakana-speed-reading-hint"
+      data-testid="katakana-speed-reading-hint"
+    >
       <span>{label}</span>
       <strong>{value}</strong>
     </span>

@@ -1,10 +1,6 @@
-import { expect, test, type Locator } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
-async function enterSearchQuery(searchbox: Locator, query: string) {
-  await searchbox.click();
-  await searchbox.fill("");
-  await searchbox.pressSequentially(query);
-}
+import { enterSearchQuery } from "./helpers/glossary-page";
 
 test("shows autocomplete suggestions and navigates when a suggestion is selected", async ({
   page
@@ -32,7 +28,10 @@ test("hides stale autocomplete suggestions while a new query or filter set is pe
   await page.route("**/api/glossary/autocomplete**", async (route) => {
     const requestUrl = route.request().url();
 
-    if (requestUrl.includes("q=kosuto") || requestUrl.includes("cards=with_cards")) {
+    if (
+      requestUrl.includes("q=kosuto") ||
+      requestUrl.includes("cards=with_cards")
+    ) {
       await new Promise((resolve) => {
         setTimeout(resolve, 200);
       });
@@ -75,7 +74,9 @@ test("keeps the glossary portal state while moving from global search to local d
   await expect(page.getByRole("combobox", { name: "Flashcard" })).toHaveValue(
     "with_cards"
   );
-  await expect(page.getByRole("heading", { name: "コスト" }).first()).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "コスト" }).first()
+  ).toBeVisible();
 
   const mediaLink = page.locator(".glossary-global-result__media-link").first();
 
@@ -91,10 +92,9 @@ test("keeps the glossary portal state while moving from global search to local d
     /\/glossary\/term\/%E3%82%B3%E3%82%B9%E3%83%88\?media=duel-masters-dm25&source=term-cost&returnTo=%2Fglossary%3Fq%3Dkosuto%26cards%3Dwith_cards$/
   );
   await expect(glossaryNav).toHaveAttribute("aria-current", "page");
-  await expect(page.getByRole("link", { name: "Torna al Glossary" })).toHaveAttribute(
-    "href",
-    "/glossary?q=kosuto&cards=with_cards"
-  );
+  await expect(
+    page.getByRole("link", { name: "Torna al Glossary" })
+  ).toHaveAttribute("href", "/glossary?q=kosuto&cards=with_cards");
 
   await page.getByRole("link", { name: "Torna al Glossary" }).click();
 
