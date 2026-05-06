@@ -14,33 +14,7 @@ import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import * as dataCacheModule from "@/lib/data-cache";
 import { getGlossaryPageData } from "@/features/glossary/server";
 import * as settingsModule from "@/lib/settings";
-
-function createDeferred<T>() {
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
-
-async function waitForTruthy(
-  predicate: () => boolean,
-  message: string,
-  attempts = 50
-) {
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    if (predicate()) {
-      return;
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-  }
-
-  throw new Error(message);
-}
+import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
 describe("glossary page query scheduling", () => {
   let tempDir = "";
@@ -65,13 +39,14 @@ describe("glossary page query scheduling", () => {
   });
 
   it("starts the default-sort lookup before the media lookup resolves", async () => {
+    const schedule = createQuerySchedulingHarness();
     const resolvedMedia = await dataCacheModule.getMediaBySlugCached(
       database,
       developmentFixture.mediaSlug
     );
-    const mediaLookupGate = createDeferred<typeof resolvedMedia>();
-    let mediaLookupStarted = false;
-    let defaultSortStarted = false;
+    const mediaLookupGate =
+      schedule.gate<typeof resolvedMedia>("media lookup");
+    const defaultSortGate = schedule.gate("default sort");
     const originalGetGlossaryDefaultSort =
       settingsModule.getGlossaryDefaultSort;
 
@@ -79,13 +54,12 @@ describe("glossary page query scheduling", () => {
       .spyOn(dataCacheModule, "getMediaBySlugCached")
       .mockImplementation(async (...args) => {
         void args;
-        mediaLookupStarted = true;
-        return mediaLookupGate.promise;
+        return mediaLookupGate.loader()();
       });
     const defaultSortSpy = vi
       .spyOn(settingsModule, "getGlossaryDefaultSort")
       .mockImplementation(async (...args) => {
-        defaultSortStarted = true;
+        defaultSortGate.loader()();
         return originalGetGlossaryDefaultSort(...args);
       });
 
@@ -96,16 +70,14 @@ describe("glossary page query scheduling", () => {
     );
 
     try {
-      await waitForTruthy(
-        () => mediaLookupStarted,
-        "Expected the local glossary media lookup to start."
+      await schedule.expectStarted(
+        "media lookup",
+        "default sort"
       );
-      await waitForTruthy(
-        () => defaultSortStarted,
-        "Expected the default sort lookup to start before the media lookup resolved."
-      );
+      schedule.expectNotSettled("media lookup");
     } finally {
       mediaLookupGate.resolve(resolvedMedia);
+      await schedule.releaseAll();
       await pageDataPromise;
       mediaLookupSpy.mockRestore();
       defaultSortSpy.mockRestore();

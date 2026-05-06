@@ -186,6 +186,7 @@ function KanjiClashRoundWorkspace({
     <article
       className="surface-card surface-card--hero kanji-clash-stage"
       data-pair-key={round.pairKey}
+      data-testid="kanji-clash-stage"
       data-target-subject-key={round.targetSubjectKey}
       onTouchEnd={onTouchEnd}
       onTouchStart={onTouchStart}
@@ -193,7 +194,10 @@ function KanjiClashRoundWorkspace({
       <div className="kanji-clash-stage__top">
         <div className="kanji-clash-stage__copy">
           <p className="eyebrow">Round attuale</p>
-          <h2 className="kanji-clash-stage__title">
+          <h2
+            className="kanji-clash-stage__title"
+            data-testid="kanji-clash-round-title"
+          >
             {formatKanjiClashRoundPosition(
               queue.currentRoundIndex,
               queue.totalCount
@@ -265,10 +269,16 @@ function KanjiClashRoundWorkspace({
 
         <SurfaceCard className="kanji-clash-target" variant="accent">
           <p className="eyebrow">Target</p>
-          <h3 className="kanji-clash-target__reading jp-inline">
+          <h3
+            className="kanji-clash-target__reading jp-inline"
+            data-testid="kanji-clash-target-reading"
+          >
             {getKanjiClashSubjectReading(round.target)}
           </h3>
-          <p className="kanji-clash-target__meaning">
+          <p
+            className="kanji-clash-target__meaning"
+            data-testid="kanji-clash-target-meaning"
+          >
             {getKanjiClashSubjectMeaning(round.target)}
           </p>
           {round.candidate.sharedKanji.length > 0 ||
@@ -307,6 +317,7 @@ function KanjiClashRoundWorkspace({
             "kanji-clash-feedback",
             "kanji-clash-feedback--incorrect"
           )}
+          data-testid="kanji-clash-feedback"
           role="alert"
         >
           <p className="kanji-clash-feedback__title">{feedbackCopy.title}</p>
@@ -383,6 +394,7 @@ function KanjiClashOptionCard({
       )}
       data-side={side}
       data-subject-key={subject.subjectKey}
+      data-testid={`kanji-clash-option-${side}`}
       disabled={disabled}
       onClick={onSelect}
       type="button"

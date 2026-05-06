@@ -29,8 +29,7 @@ import {
 import {
   loadGlobalReviewOverviewSnapshot,
   loadReviewIntroducedTodayCountCached,
-  loadReviewLaunchCandidateByMediaIdCached,
-  mapReviewOverviewSnapshot
+  loadReviewOverviewSnapshots
 } from "./review";
 import type { ReviewOverviewSnapshot } from "./review-types";
 import { getLocalIsoTimeBucketKey } from "./local-date";
@@ -146,11 +145,14 @@ export async function getMediaProgressPageData(
       void globalReviewSnapshotPromise.catch(() => {
         // This eager query can be abandoned when the media slug does not resolve.
       });
+      const globalMediaRowsPromise = cacheEligible
+        ? Promise.resolve(undefined)
+        : listMediaCached(database);
       const mediaPromise = cacheEligible
         ? getMediaBySlugCached(database, mediaSlug)
-        : listMediaCached(database).then(
+        : globalMediaRowsPromise.then(
             (mediaRows) =>
-              mediaRows.find((candidate) => candidate.slug === mediaSlug) ??
+              mediaRows?.find((candidate) => candidate.slug === mediaSlug) ??
               null
           );
       const media = await mediaPromise;
@@ -159,27 +161,22 @@ export async function getMediaProgressPageData(
         return null;
       }
 
-      const reviewSnapshotsPromise = Promise.all([
+      const localReviewSnapshotsPromise = Promise.all([
         settingsPromise,
         newIntroducedTodayCountPromise,
-        loadReviewLaunchCandidateByMediaIdCached(
-          database,
-          media.id,
-          now.toISOString()
-        ),
+        globalMediaRowsPromise
+      ]).then(([settings, newIntroducedTodayCount, globalMediaRows]) =>
+        loadReviewOverviewSnapshots(database, [media], {
+          asOf: now,
+          globalMediaRows,
+          resolvedDailyLimit: settings.reviewDailyLimit,
+          resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+        })
+      );
+      const reviewSnapshotsPromise = Promise.all([
+        localReviewSnapshotsPromise,
         globalReviewSnapshotPromise
-      ]).then(([settings, newIntroducedTodayCount, mediaCandidate, global]) => {
-
-        const byMedia = new Map([
-          [
-            media.id,
-            mapReviewOverviewSnapshot({
-              dailyLimit: settings.reviewDailyLimit,
-              newIntroducedTodayCount,
-              overview: mediaCandidate ?? undefined
-            })
-          ]
-        ]);
+      ]).then(([byMedia, global]) => {
 
         return {
           byMedia,

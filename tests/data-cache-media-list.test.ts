@@ -1,35 +1,27 @@
-import { mkdtemp, rm } from "node:fs/promises";
-import { tmpdir } from "node:os";
-import path from "node:path";
-
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-  closeDatabaseClient,
-  createDatabaseClient,
-  type DatabaseClient
-} from "@/db";
-import { runMigrations } from "@/db/migrate";
-import { seedDevelopmentDatabase } from "@/db/seed";
+import type { DatabaseClient } from "@/db";
 import { listMediaCached } from "@/lib/data-cache";
+import {
+  cleanupTestDatabase,
+  setupTestDatabase,
+  type TestDatabaseFixture
+} from "./helpers/test-db";
 
 describe("media list cache", () => {
-  let tempDir = "";
+  let fixture: TestDatabaseFixture;
   let database: DatabaseClient;
 
   beforeEach(async () => {
-    tempDir = await mkdtemp(path.join(tmpdir(), "jcs-media-cache-"));
-    database = createDatabaseClient({
-      databaseUrl: path.join(tempDir, "test.sqlite")
+    fixture = await setupTestDatabase({
+      prefix: "jcs-media-cache-",
+      seedDevelopmentFixture: true
     });
-
-    await runMigrations(database);
-    await seedDevelopmentDatabase(database);
+    database = fixture.database;
   });
 
   afterEach(async () => {
-    closeDatabaseClient(database);
-    await rm(tempDir, { recursive: true, force: true });
+    await cleanupTestDatabase(fixture);
   });
 
   it("deduplicates concurrent media list getters into one database read", async () => {

@@ -1,6 +1,7 @@
 import { db, type DatabaseClient } from "@/db";
 import {
   countReviewSubjectsIntroducedOnDay,
+  getQueuedNewReviewSubjectSummaryByMediaId,
   getGlobalReviewOverviewData,
   getReviewOverviewDataByMediaId,
   getReviewLaunchCandidateByMediaId,
@@ -460,6 +461,11 @@ export async function loadReviewOverviewSnapshots(
     slug: string;
   }>,
   options: {
+    asOf?: Date;
+    globalMediaRows?: Array<{
+      id: string;
+      slug: string;
+    }>;
     resolvedDailyLimit?: number;
     resolvedNewIntroducedTodayCount?: number;
   } = {}
@@ -468,7 +474,7 @@ export async function loadReviewOverviewSnapshots(
     return new Map<string, ReviewOverviewSnapshot>();
   }
 
-  const now = new Date();
+  const now = options.asOf ?? new Date();
   const [singleMedia] = media;
 
   if (singleMedia && media.length === 1) {
@@ -478,6 +484,14 @@ export async function loadReviewOverviewSnapshots(
       options.resolvedNewIntroducedTodayCount ??
         loadReviewIntroducedTodayCountCached(database, now)
     ]);
+    const queuedNewSummary = await getQueuedNewReviewSubjectSummaryByMediaId(
+      database,
+      {
+        asOf: now,
+        mediaId: singleMedia.id,
+        queuedNewLimit: Math.max(dailyLimit - newIntroducedTodayCount, 0)
+      }
+    );
 
     return new Map([
       [
@@ -485,13 +499,20 @@ export async function loadReviewOverviewSnapshots(
         mapReviewOverviewSnapshot({
           dailyLimit,
           newIntroducedTodayCount,
-          overview
+          overview: {
+            ...overview,
+            firstDueFront: queuedNewSummary.firstDueFront,
+            firstNewFront: queuedNewSummary.firstFront,
+            newQueuedCount: queuedNewSummary.count
+          }
         })
       ]
     ]);
   }
 
-  const mediaIds = media.map((item) => item.id);
+  const globalMediaRows =
+    options.globalMediaRows ?? (await listMediaCached(database));
+  const mediaIds = globalMediaRows.map((item) => item.id);
   const workspace = await loadReviewWorkspaceV2({
     database,
     mediaIds,
@@ -582,7 +603,10 @@ export function mapReviewOverviewSnapshot(input: {
   newIntroducedTodayCount: number;
   overview:
     | Awaited<ReturnType<typeof getGlobalReviewOverviewData>>
-    | (ReviewLaunchCandidate & { newAvailableCount: number })
+    | (ReviewLaunchCandidate & {
+        newAvailableCount: number;
+        newQueuedCount?: number;
+      })
     | undefined;
 }) {
   const { dailyLimit, newIntroducedTodayCount, overview } = input;
@@ -613,10 +637,10 @@ export function mapReviewOverviewSnapshot(input: {
   }
 
   const remainingNewSlots = Math.max(dailyLimit - newIntroducedTodayCount, 0);
-  const newQueuedCount = Math.min(
-    overview.newAvailableCount,
-    remainingNewSlots
-  );
+  const newQueuedCount =
+    "newQueuedCount" in overview && overview.newQueuedCount != null
+      ? overview.newQueuedCount
+      : Math.min(overview.newAvailableCount, remainingNewSlots);
   const upcomingCount = Math.max(
     overview.activeReviewCards - overview.dueCount,
     0

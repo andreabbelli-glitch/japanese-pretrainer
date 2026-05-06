@@ -2,6 +2,7 @@ import { createElement, act, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { createDeferred, flushMicrotasks } from "./helpers/async";
 import {
   dispatchWindowKeyboardEvent,
   installMinimalDom,
@@ -309,7 +310,7 @@ describe("useReviewPageController first-candidate grading", () => {
           selectedCardId: "card-b"
         })
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(2);
@@ -399,7 +400,7 @@ describe("useReviewPageController first-candidate grading", () => {
 
     await act(async () => {
       cardAGrade.reject(new Error("Persistence failed."));
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(1);
@@ -1058,21 +1059,4 @@ function buildQueueCard(
     segmentTitle: "Tcg Core",
     typeLabel: "Recognition"
   };
-}
-
-function createDeferred<T>() {
-  let resolve!: (value: T) => void;
-  let reject!: (reason?: unknown) => void;
-  const promise = new Promise<T>((resolvePromise, rejectPromise) => {
-    resolve = resolvePromise;
-    reject = rejectPromise;
-  });
-
-  return { promise, reject, resolve };
-}
-
-async function flushPromises() {
-  await Promise.resolve();
-  await Promise.resolve();
-  await Promise.resolve();
 }

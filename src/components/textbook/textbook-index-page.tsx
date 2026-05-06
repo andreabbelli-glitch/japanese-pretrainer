@@ -122,7 +122,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
                       <div
                         className="textbook-group__progress-fill"
                         style={{
-                          width: `${(group.completedLessons / group.totalLessons) * 100}%`,
+                          width: `${(group.completedLessons / group.totalLessons) * 100}%`
                         }}
                       />
                     </div>
@@ -172,6 +172,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
                               </Link>
                               <Link
                                 className="button button--primary button--small textbook-lesson-link"
+                                data-testid="textbook-lesson-link"
                                 href={mediaTextbookLessonHref(
                                   data.media.slug,
                                   lesson.slug

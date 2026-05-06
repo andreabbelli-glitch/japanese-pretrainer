@@ -1,25 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-type Deferred<T> = {
-  promise: Promise<T>;
-  resolve: (value: T) => void;
-};
-
-function createDeferred<T>(): Deferred<T> {
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
-
-async function flushMicrotasks() {
-  await Promise.resolve();
-  await Promise.resolve();
-}
+import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
 describe("media library query scheduling", () => {
   afterEach(() => {
@@ -37,8 +18,9 @@ describe("media library query scheduling", () => {
     vi.doUnmock("@/lib/study-metrics");
   });
 
-  it("starts shared review queries before the cached media list settles", async () => {
-    const mediaRowsDeferred = createDeferred<
+  it("starts shared review settings before the cached media list settles", async () => {
+    const schedule = createQuerySchedulingHarness();
+    const mediaRowsGate = schedule.gate<
       Array<{
         description: string;
         id: string;
@@ -48,27 +30,24 @@ describe("media library query scheduling", () => {
         status: string;
         title: string;
       }>
-    >();
-    const dailyLimitDeferred = createDeferred<number>();
-    const introducedTodayDeferred = createDeferred<number>();
-    const reviewCandidatesDeferred = createDeferred<
-      Array<{
-        activeReviewCards: number;
-        cardsTotal: number;
-        dueCount: number;
-        mediaId: string;
-        newCount: number;
-      }>
-    >();
-    let mediaStarted = false;
-    let dailyLimitStarted = false;
-    let introducedTodayStarted = false;
-    let reviewCandidatesStarted = false;
+    >("media rows");
+    const dailyLimitGate = schedule.gate<number>("daily limit");
+    const introducedTodayGate = schedule.gate<number>("introduced today");
+    const queuedSummaryGate = schedule.gate<{
+      count: number;
+      firstDueFront: string | null;
+      firstFront: string | null;
+    }>(
+      "queued summary"
+    );
 
     vi.doMock("@/db", () => ({
       db: {}
     }));
     vi.doMock("@/db/queries", () => ({
+      getQueuedNewReviewSubjectSummaryByMediaId: vi.fn(
+        queuedSummaryGate.loader()
+      ),
       listGlossaryPreviewEntries: vi.fn(() => Promise.resolve([])),
       listGlossaryProgressSummaries: vi.fn(() => Promise.resolve([])),
       listLessonsByMediaId: vi.fn(() => Promise.resolve([])),
@@ -84,10 +63,7 @@ describe("media library query scheduling", () => {
       buildReviewSummaryTags: vi.fn(() => []),
       canUseDataCache: vi.fn(() => true),
       getMediaBySlugCached: vi.fn(),
-      listMediaCached: vi.fn(() => {
-        mediaStarted = true;
-        return mediaRowsDeferred.promise;
-      }),
+      listMediaCached: vi.fn(mediaRowsGate.loader()),
       runWithTaggedCache: vi.fn(async ({ loader }) => loader())
     }));
     vi.doMock("@/lib/local-date", () => ({
@@ -127,21 +103,30 @@ describe("media library query scheduling", () => {
       pickFocusMedia: vi.fn(() => null)
     }));
     vi.doMock("@/lib/review-loader", () => ({
-      loadReviewIntroducedTodayCountCached: vi.fn(() => {
-        introducedTodayStarted = true;
-        return introducedTodayDeferred.promise;
-      }),
+      loadReviewIntroducedTodayCountCached: vi.fn(
+        introducedTodayGate.loader()
+      ),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
-      loadReviewLaunchCandidatesCached: vi.fn(() => {
-        reviewCandidatesStarted = true;
-        return reviewCandidatesDeferred.promise;
-      })
+      loadReviewLaunchCandidatesCached: vi.fn(() =>
+        Promise.resolve([
+          {
+            activeReviewCards: 1,
+            cardsTotal: 3,
+            dueCount: 1,
+            manualCount: 0,
+            mediaId: "media-1",
+            newAvailableCount: 4,
+            newCount: 4,
+            suspendedCount: 0,
+            tomorrowCount: 0,
+            totalCards: 3
+          }
+        ])
+      ),
+      loadReviewOverviewSnapshots: vi.fn()
     }));
     vi.doMock("@/lib/settings", () => ({
-      getReviewDailyLimit: vi.fn(() => {
-        dailyLimitStarted = true;
-        return dailyLimitDeferred.promise;
-      })
+      getReviewDailyLimit: vi.fn(dailyLimitGate.loader())
     }));
     vi.doMock("@/lib/site", () => ({
       mediaGlossaryEntryHref: vi.fn(() => "/glossary/entry")
@@ -168,14 +153,15 @@ describe("media library query scheduling", () => {
     const { getMediaLibraryData } = await import("@/lib/media-shell");
     const mediaLibraryPromise = getMediaLibraryData();
 
-    await flushMicrotasks();
+    await schedule.expectStarted(
+      "media rows",
+      "daily limit",
+      "introduced today"
+    );
+    schedule.expectNotStarted("queued summary");
+    schedule.expectNotSettled("media rows");
 
-    expect(mediaStarted).toBe(true);
-    expect(dailyLimitStarted).toBe(true);
-    expect(introducedTodayStarted).toBe(true);
-    expect(reviewCandidatesStarted).toBe(true);
-
-    mediaRowsDeferred.resolve([
+    mediaRowsGate.resolve([
       {
         description: "Fixture media",
         id: "media-1",
@@ -186,17 +172,14 @@ describe("media library query scheduling", () => {
         title: "Fixture Media"
       }
     ]);
-    dailyLimitDeferred.resolve(7);
-    introducedTodayDeferred.resolve(2);
-    reviewCandidatesDeferred.resolve([
-      {
-        activeReviewCards: 1,
-        cardsTotal: 3,
-        dueCount: 1,
-        mediaId: "media-1",
-        newCount: 4
-      }
-    ]);
+    dailyLimitGate.resolve(7);
+    introducedTodayGate.resolve(2);
+    await schedule.expectStarted("queued summary");
+    queuedSummaryGate.resolve({
+      count: 4,
+      firstDueFront: null,
+      firstFront: null
+    });
 
     await expect(mediaLibraryPromise).resolves.toEqual([
       expect.objectContaining({

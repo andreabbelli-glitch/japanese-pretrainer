@@ -113,33 +113,7 @@ import {
   buildReviewSubjectStateRow,
   seedSingleReviewCardFixture
 } from "./helpers/review-fixture";
-
-function createDeferred<T>() {
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
-
-async function waitForTruthy(
-  predicate: () => boolean,
-  message: string,
-  attempts = 50
-) {
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    if (predicate()) {
-      return;
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-  }
-
-  throw new Error(message);
-}
+import { createDeferred, waitForTruthy } from "./helpers/async";
 
 function buildTestFsrsSnapshot(recognitionWeights: number[] | null = null) {
   return {

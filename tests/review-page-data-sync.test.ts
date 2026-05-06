@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { act } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { createDeferred, flushMicrotasks } from "./helpers/async";
 import { installMinimalDom, uninstallMinimalDom } from "./helpers/minimal-dom";
 
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
@@ -75,7 +76,7 @@ describe("useReviewPageDataSync", () => {
     });
 
     await act(async () => {
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(mocks.loadReviewPageDataSessionAction).not.toHaveBeenCalled();
@@ -112,7 +113,7 @@ describe("useReviewPageDataSync", () => {
           selectedCardId: "card-b"
         })
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(mocks.loadReviewPageDataSessionAction).toHaveBeenCalledTimes(1);
@@ -144,7 +145,7 @@ describe("useReviewPageDataSync", () => {
     });
 
     await act(async () => {
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(harness.snapshot().viewData.selectedCard?.id).toBe("card-a");
@@ -185,7 +186,7 @@ describe("useReviewPageDataSync", () => {
         requestedSelectedCardId: null,
         resetQueuedGradeFailure
       });
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(harness.snapshot().clientError).toBeNull();
@@ -226,7 +227,7 @@ describe("useReviewPageDataSync", () => {
         requestedSelectedCardId: "card-b",
         resetQueuedGradeFailure
       });
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(mocks.loadReviewPageDataSessionAction).toHaveBeenCalledTimes(2);
@@ -238,7 +239,7 @@ describe("useReviewPageDataSync", () => {
           selectedCardId: "card-b"
         })
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     await act(async () => {
@@ -248,7 +249,7 @@ describe("useReviewPageDataSync", () => {
           selectedCardId: "card-a"
         })
       );
-      await flushPromises();
+      await flushMicrotasks(3);
     });
 
     expect(harness.snapshot().viewData.selectedCard?.id).toBe("card-b");
@@ -511,21 +512,4 @@ function buildQueueCard(id: string): ReviewQueueCard {
     segmentTitle: "Tcg Core",
     typeLabel: "Recognition"
   };
-}
-
-function createDeferred<T>() {
-  let resolve!: (value: T) => void;
-  let reject!: (reason?: unknown) => void;
-  const promise = new Promise<T>((resolvePromise, rejectPromise) => {
-    resolve = resolvePromise;
-    reject = rejectPromise;
-  });
-
-  return { promise, reject, resolve };
-}
-
-async function flushPromises() {
-  await Promise.resolve();
-  await Promise.resolve();
-  await Promise.resolve();
 }

@@ -7,6 +7,11 @@ non sostituisce un audit completo e aggiornato del codice.
 ## Copertura Attuale Dei Controlli
 
 - Suite E2E minima con Playwright su DB dedicato e import reale dell'intero workspace `content/`.
+- I test unit/integration ordinari di parser, validator e importer usano fixture
+  sintetiche versionate o generate in `tests/helpers/content-fixtures.ts`; il
+  bundle reale `duel-masters-dm25` resta coperto solo dal canary esplicito
+  `tests/content-real-bundle-canary.test.ts`, che confronta invarianti generali
+  e statistiche aggregate.
 - Copertura dei flussi chiave: dashboard, media detail, textbook reader, tooltip, lightbox immagini, glossary, review, progress, settings.
 - Copertura dedicata di `Kanji Clash` su `/kanji-clash` con filtro media,
   sessione manuale e interazioni click/tastiera/touch.

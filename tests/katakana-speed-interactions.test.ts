@@ -7,6 +7,7 @@ import {
   installMinimalDom,
   uninstallMinimalDom
 } from "./helpers/minimal-dom";
+import { createDeferred } from "./helpers/async";
 
 const mocks = vi.hoisted(() => ({
   abandonKatakanaSpeedSessionAction: vi.fn(),
@@ -17,24 +18,11 @@ const mocks = vi.hoisted(() => ({
   submitKatakanaSpeedSelfCheckAction: vi.fn()
 }));
 
-function createDeferred<T>() {
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
-
 vi.mock("@/actions/katakana-speed", () => ({
-  abandonKatakanaSpeedSessionAction:
-    mocks.abandonKatakanaSpeedSessionAction,
+  abandonKatakanaSpeedSessionAction: mocks.abandonKatakanaSpeedSessionAction,
   aggregateKatakanaSpeedExerciseResultAction:
     mocks.aggregateKatakanaSpeedExerciseResultAction,
-  completeKatakanaSpeedSessionAction:
-    mocks.completeKatakanaSpeedSessionAction,
+  completeKatakanaSpeedSessionAction: mocks.completeKatakanaSpeedSessionAction,
   submitKatakanaSpeedAnswerAction: mocks.submitKatakanaSpeedAnswerAction,
   submitKatakanaSpeedSelfCheckAction: mocks.submitKatakanaSpeedSelfCheckAction
 }));

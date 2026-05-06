@@ -401,7 +401,7 @@ export function LessonArticle({
   };
 
   return (
-    <article className="reader-article">
+    <article className="reader-article" data-testid="reader-article">
       {renderBlocks(document.blocks)}
     </article>
   );
@@ -489,7 +489,9 @@ function blocksHaveTooltipTargets(blocks: ContentBlock[]): boolean {
       case "heading":
         return inlineNodesHaveTooltipTargets(block.children);
       case "list":
-        return block.items.some((item) => blocksHaveTooltipTargets(item.children));
+        return block.items.some((item) =>
+          blocksHaveTooltipTargets(item.children)
+        );
       case "blockquote":
         return blocksHaveTooltipTargets(block.children);
       case "image":

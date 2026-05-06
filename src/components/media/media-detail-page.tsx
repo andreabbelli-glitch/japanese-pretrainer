@@ -110,7 +110,7 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
   ];
 
   return (
-    <div className="media-detail-page">
+    <div className="media-detail-page" data-testid="media-detail-page">
       <StickyPageHeader
         backHref="/media"
         backLabel="Torna alla libreria"
@@ -142,7 +142,7 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
         eyebrow="Aree di studio"
         title="Scegli dove continuare"
       >
-        <div className="entry-point-grid">
+        <div className="entry-point-grid" data-testid="entry-point-grid">
           {studyAreas.map((area) => {
             if (area.key === "textbook") {
               return (

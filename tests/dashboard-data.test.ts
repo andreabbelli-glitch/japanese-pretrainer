@@ -90,6 +90,34 @@ describe("dashboard data", () => {
     expect(dashboard.focusMedia).toBe(focusMedia);
     expect(dashboard.reviewMedia).toBe(dueMedia);
   });
+
+  it("prefers the media with more queued new cards when no review cards are due", async () => {
+    const oneQueuedMedia = buildMediaSnapshot({
+      cardsTotal: 4,
+      id: "one-queued-media",
+      newQueuedReviewCards: 1,
+      reviewStatValue: "Nuove pronte",
+      slug: "one-queued-media",
+      title: "Alpha Media"
+    });
+    const twoQueuedMedia = buildMediaSnapshot({
+      cardsTotal: 2,
+      id: "two-queued-media",
+      newQueuedReviewCards: 2,
+      reviewStatValue: "Nuove pronte",
+      slug: "two-queued-media",
+      title: "Beta Media"
+    });
+
+    mockDashboardDependencies({
+      mediaSnapshots: [oneQueuedMedia, twoQueuedMedia]
+    });
+
+    const { getDashboardData } = await import("@/lib/dashboard");
+    const dashboard = await getDashboardData({} as never);
+
+    expect(dashboard.reviewMedia).toBe(twoQueuedMedia);
+  });
 });
 
 function mockDashboardDependencies(input: {

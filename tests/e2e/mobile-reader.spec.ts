@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+import { testIds } from "./helpers/selectors";
+
 test.use({
   hasTouch: true,
   viewport: {
@@ -21,13 +23,16 @@ test("keeps reader interactions usable on mobile", async ({ page }) => {
   ).toBeVisible();
   await expect(mobileSheet).not.toContainText("Livello:");
   await expect(mobileSheet).not.toContainText("Segmento:");
-  const pronunciationAudio = mobileSheet.locator(
-    "audio.pronunciation-audio__player"
+  const pronunciationAudio = mobileSheet.getByTestId(
+    testIds.pronunciationAudio
   );
   await expect(pronunciationAudio).toHaveAttribute("preload", "none");
-  await page.waitForTimeout(250);
-  await expect(pronunciationAudio).toHaveAttribute("preload", "auto");
-  await expect(mobileSheet.getByRole("link", { name: "Apri voce" })).toBeVisible();
+  await expect
+    .poll(() => pronunciationAudio.getAttribute("preload"))
+    .toBe("auto");
+  await expect(
+    mobileSheet.getByRole("link", { name: "Apri voce" })
+  ).toBeVisible();
 
   await page.getByRole("button", { name: "Chiudi", exact: true }).tap();
   await page.getByRole("button", { name: "Lezioni" }).tap();

@@ -1,12 +1,11 @@
-import { act, createElement, useEffect } from "react";
-import { createRoot } from "react-dom/client";
+import { act } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { dispatchWindowKeyboardEvent } from "./helpers/minimal-dom";
 import {
-  dispatchWindowKeyboardEvent,
-  installMinimalDom,
-  uninstallMinimalDom
-} from "./helpers/minimal-dom";
+  createControllerProbe,
+  createReactControllerHarness
+} from "./helpers/react-controller-harness";
 
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 
@@ -43,11 +42,10 @@ const contrastSuggestion: GlobalGlossaryAutocompleteSuggestion = {
 };
 
 describe("useReviewForcedContrastController", () => {
-  let container: HTMLDivElement | null = null;
-  let root: ReturnType<typeof createRoot> | null = null;
+  let harness: ReturnType<typeof createReactControllerHarness>;
 
   beforeEach(() => {
-    installMinimalDom();
+    harness = createReactControllerHarness();
     mocks.useGlossaryAutocomplete.mockImplementation(
       ({ isOpen, query }: { isOpen: boolean; query: string }) => ({
         listboxId: "review-contrast-listbox",
@@ -59,142 +57,92 @@ describe("useReviewForcedContrastController", () => {
   });
 
   afterEach(async () => {
-    await act(async () => {
-      root?.unmount();
-      await Promise.resolve();
-    });
+    await harness.cleanup();
     vi.restoreAllMocks();
-    root = null;
-    container = null;
-    uninstallMinimalDom();
   });
 
   it("opens with C only after answer reveal and closes with Escape", async () => {
-    let latestController: ReviewForcedContrastControllerResult | null = null;
+    const probe = createControllerProbe<
+      {
+        isAnswerRevealed: boolean;
+        selectedCardId: string | null;
+      },
+      ReviewForcedContrastControllerResult
+    >(useReviewForcedContrastController);
 
-    function Probe(props: {
-      isAnswerRevealed: boolean;
-      selectedCardId: string | null;
-    }) {
-      const controller = useReviewForcedContrastController(props);
-
-      useEffect(() => {
-        latestController = controller;
-      }, [controller]);
-
-      return null;
-    }
-
-    container = document.createElement("div");
-    root = createRoot(container);
-
-    await act(async () => {
-      root!.render(
-        createElement(Probe, {
-          isAnswerRevealed: false,
-          selectedCardId: "card-a"
-        })
-      );
-    });
-
-    const controller = () => {
-      if (!latestController) {
-        throw new Error("controller not mounted");
-      }
-
-      return latestController;
-    };
+    await harness.render(
+      probe.element({
+        isAnswerRevealed: false,
+        selectedCardId: "card-a"
+      })
+    );
 
     act(() => {
       dispatchWindowKeyboardEvent("c");
     });
 
-    expect(controller().isForcedContrastOpen).toBe(false);
+    expect(probe.controller().isForcedContrastOpen).toBe(false);
 
-    await act(async () => {
-      root!.render(
-        createElement(Probe, {
-          isAnswerRevealed: true,
-          selectedCardId: "card-a"
-        })
-      );
-    });
+    await harness.render(
+      probe.element({
+        isAnswerRevealed: true,
+        selectedCardId: "card-a"
+      })
+    );
 
     act(() => {
       dispatchWindowKeyboardEvent("c");
     });
 
-    expect(controller().isForcedContrastOpen).toBe(true);
+    expect(probe.controller().isForcedContrastOpen).toBe(true);
 
     act(() => {
       dispatchWindowKeyboardEvent("Escape");
     });
 
-    expect(controller().isForcedContrastOpen).toBe(false);
+    expect(probe.controller().isForcedContrastOpen).toBe(false);
   });
 
   it("exposes empty forced contrast state when the selected card changes", async () => {
-    let latestController: ReviewForcedContrastControllerResult | null = null;
+    const probe = createControllerProbe<
+      {
+        isAnswerRevealed: boolean;
+        selectedCardId: string | null;
+      },
+      ReviewForcedContrastControllerResult
+    >(useReviewForcedContrastController);
 
-    function Probe(props: {
-      isAnswerRevealed: boolean;
-      selectedCardId: string | null;
-    }) {
-      const controller = useReviewForcedContrastController(props);
-
-      useEffect(() => {
-        latestController = controller;
-      }, [controller]);
-
-      return null;
-    }
-
-    container = document.createElement("div");
-    root = createRoot(container);
-
-    await act(async () => {
-      root!.render(
-        createElement(Probe, {
-          isAnswerRevealed: true,
-          selectedCardId: "card-a"
-        })
-      );
-    });
-
-    const controller = () => {
-      if (!latestController) {
-        throw new Error("controller not mounted");
-      }
-
-      return latestController;
-    };
+    await harness.render(
+      probe.element({
+        isAnswerRevealed: true,
+        selectedCardId: "card-a"
+      })
+    );
 
     act(() => {
-      controller().handleOpenForcedContrast();
+      probe.controller().handleOpenForcedContrast();
     });
     act(() => {
-      controller().handleForcedContrastQueryChange("kosuto");
+      probe.controller().handleForcedContrastQueryChange("kosuto");
     });
     act(() => {
-      controller().handleForcedContrastSelect(contrastSuggestion);
+      probe.controller().handleForcedContrastSelect(contrastSuggestion);
     });
 
-    expect(controller().forcedContrastQuery).toBe("コスト");
-    expect(controller().forcedContrastSelection?.resultKey).toBe(
+    expect(probe.controller().forcedContrastQuery).toBe("コスト");
+    expect(probe.controller().forcedContrastSelection?.resultKey).toBe(
       "term:entry:cost"
     );
 
-    await act(async () => {
-      root!.render(
-        createElement(Probe, {
-          isAnswerRevealed: true,
-          selectedCardId: "card-b"
-        })
-      );
-    });
+    await harness.render(
+      probe.element({
+        isAnswerRevealed: true,
+        selectedCardId: "card-b"
+      })
+    );
 
-    expect(controller().forcedContrastQuery).toBe("");
-    expect(controller().forcedContrastSelection).toBeNull();
-    expect(controller().isForcedContrastOpen).toBe(false);
+    expect(probe.controller().forcedContrastQuery).toBe("");
+    expect(probe.controller().forcedContrastSelection).toBeNull();
+    expect(probe.controller().isForcedContrastOpen).toBe(false);
   });
 });

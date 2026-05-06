@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-describe("katakana speed page data query scheduling", () => {
+describe("katakana speed page data query contract", () => {
   afterEach(() => {
     vi.resetModules();
     vi.clearAllMocks();

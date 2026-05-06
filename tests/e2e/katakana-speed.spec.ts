@@ -1,5 +1,15 @@
 import { expect, test } from "@playwright/test";
 
+import {
+  continueIfVisible,
+  katakanaSpeedOptions,
+  katakanaSpeedOptionSurfaces,
+  katakanaSpeedRanCells,
+  readAllText,
+  startKatakanaSpeedSession
+} from "./helpers/katakana-speed-page";
+import { testIds } from "./helpers/selectors";
+
 test("starts a Katakana Speed session and persists a recap", async ({
   page
 }) => {
@@ -14,31 +24,22 @@ test("starts a Katakana Speed session and persists a recap", async ({
   await expect(
     page.getByRole("button", { name: "Ripara debolezza" })
   ).toBeVisible();
-  await page.getByRole("button", { name: "Start 5 min" }).click();
+  await startKatakanaSpeedSession(page);
 
-  await expect(page).toHaveURL(/\/katakana-speed\/session\/[^/]+$/);
-  await expect(page.locator(".site-header")).toHaveCount(0);
-  await expect(page.locator(".katakana-speed-stage")).toBeVisible();
-  await expect(page.locator(".katakana-speed-task-copy")).toBeVisible();
+  await expect(page.getByRole("banner")).toHaveCount(0);
+  await expect(page.getByTestId(testIds.katakanaSpeedTaskCopy)).toBeVisible();
 
-  await page.locator(".katakana-speed-stage").focus();
+  await page.getByTestId(testIds.katakanaSpeedStage).focus();
   await page.keyboard.press("Space");
   await expect(page.getByLabel("Mostra lettura")).toBeDisabled();
-  await expect(page.locator(".katakana-speed-reading-hint strong")).toHaveCount(
+  await expect(page.getByTestId(testIds.katakanaSpeedReadingHint)).toHaveCount(
     0
   );
 
-  const optionButtons = page.locator(".katakana-speed-option");
-  await optionButtons.first().click();
-  const continueButton = page.getByRole("button", { name: "Continua" });
-  try {
-    await continueButton.waitFor({ state: "visible", timeout: 1000 });
-    await continueButton.click();
-  } catch {
-    // Correct objective choices advance immediately.
-  }
+  await katakanaSpeedOptions(page).first().click();
+  await continueIfVisible(page);
 
-  await expect(page.locator(".katakana-speed-session-top")).toContainText(
+  await expect(page.getByTestId(testIds.katakanaSpeedTop)).toContainText(
     "2 / 32"
   );
   await expect(page.getByLabel("Mostra lettura")).not.toBeChecked();
@@ -46,9 +47,11 @@ test("starts a Katakana Speed session and persists a recap", async ({
   await page.getByRole("button", { name: "Abbandona e salva recap" }).click();
 
   await expect(page).toHaveURL(/\/katakana-speed\/recap\/[^/]+$/);
-  await expect(page.locator(".katakana-speed-recap-page")).toBeVisible();
+  await expect(page.getByTestId(testIds.katakanaSpeedRecap)).toBeVisible();
   await expect(page.getByText("Risposte registrate")).toBeVisible();
-  await expect(page.locator(".katakana-speed-attempt-row")).toHaveCount(1);
+  await expect(page.getByTestId(testIds.katakanaSpeedAttemptRow)).toHaveCount(
+    1
+  );
 });
 
 test("shows guided actions and the manual Katakana Speed selector", async ({
@@ -77,16 +80,16 @@ test("includes inverse romaji-to-katakana choices without reading hints", async 
   page
 }) => {
   await page.goto("/katakana-speed");
-  await page.getByRole("button", { name: "Start 5 min" }).click();
+  await startKatakanaSpeedSession(page);
 
-  await expect(page.locator(".katakana-speed-task-copy")).toContainText(
+  await expect(page.getByTestId(testIds.katakanaSpeedTaskCopy)).toContainText(
     "romaji"
   );
-  await expect(page.locator(".katakana-speed-prompt")).toHaveText(/^[a-z]+$/iu);
+  await expect(page.getByTestId(testIds.katakanaSpeedPrompt)).toHaveText(
+    /^[a-z]+$/iu
+  );
   await expect(page.getByLabel("Mostra lettura")).toBeDisabled();
-  const optionSurfaces = await page
-    .locator(".katakana-speed-option__surface")
-    .allTextContents();
+  const optionSurfaces = await readAllText(katakanaSpeedOptionSurfaces(page));
 
   expect(optionSurfaces).toHaveLength(4);
   expect(new Set(optionSurfaces.map((surface) => surface.trim())).size).toBe(4);
@@ -97,7 +100,9 @@ test("includes inverse romaji-to-katakana choices without reading hints", async 
   ).toBe(true);
 
   await page.keyboard.press("Space");
-  await expect(page.locator(".katakana-speed-reading-hint")).toHaveCount(0);
+  await expect(page.getByTestId(testIds.katakanaSpeedReadingHint)).toHaveCount(
+    0
+  );
 });
 
 test("starts a manual RAN Grid exercise with varied cells", async ({
@@ -107,12 +112,12 @@ test("starts a manual RAN Grid exercise with varied cells", async ({
   await page.getByRole("button", { name: "Griglia RAN" }).click();
 
   await expect(page).toHaveURL(/\/katakana-speed\/session\/[^/]+$/);
-  await expect(page.locator(".katakana-speed-stage__meta")).toContainText(
+  await expect(page.getByTestId(testIds.katakanaSpeedStageMeta)).toContainText(
     "Griglia di velocita"
   );
-  const cellSurfaces = await page
-    .locator(".katakana-speed-ran-cell span:first-child")
-    .allTextContents();
+  const cellSurfaces = await readAllText(
+    katakanaSpeedRanCells(page).getByTestId(testIds.katakanaSpeedRanCellSurface)
+  );
 
   expect(cellSurfaces).toHaveLength(25);
   expect(
@@ -125,10 +130,10 @@ test("starts a manual RAN Grid exercise with varied cells", async ({
 
   await page.keyboard.press("Space");
   await expect(
-    page.locator(".katakana-speed-ran-cell .katakana-speed-reading-hint strong")
+    katakanaSpeedRanCells(page).getByTestId(testIds.katakanaSpeedReadingHint)
   ).toHaveCount(25);
 
-  const firstCell = page.locator(".katakana-speed-ran-cell").first();
+  const firstCell = katakanaSpeedRanCells(page).first();
   await firstCell.click();
   await expect(firstCell).toHaveAttribute("aria-pressed", "true");
 });

@@ -2,6 +2,7 @@ import { createElement, act, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { createDeferred } from "./helpers/async";
 import { installMinimalDom, uninstallMinimalDom } from "./helpers/minimal-dom";
 
 import { useGlossaryAutocomplete } from "@/components/glossary/use-glossary-autocomplete";
@@ -524,17 +525,6 @@ type GlossaryAutocompleteProbeResult = {
   shouldShowSuggestions: boolean;
   suggestions: GlobalGlossaryAutocompleteSuggestion[];
 };
-
-function createDeferred<T>() {
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
 
 function useGlossaryAutocompleteProbe(input: {
   isOpen: boolean;

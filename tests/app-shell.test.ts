@@ -1,16 +1,9 @@
-import { mkdtemp, rm } from "node:fs/promises";
-import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
-import {
-  closeDatabaseClient,
-  createDatabaseClient,
-  type DatabaseClient
-} from "@/db";
-import { runMigrations } from "@/db/migrate";
+import type { DatabaseClient } from "@/db";
 import {
   card,
   lesson,
@@ -18,7 +11,7 @@ import {
   media,
   reviewSubjectState
 } from "@/db/schema";
-import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
+import { developmentFixture } from "@/db/seed";
 import { importContentWorkspace } from "@/lib/content/importer";
 import { getDashboardData } from "@/lib/dashboard";
 import { getMediaDetailData } from "@/lib/media-shell";
@@ -27,24 +20,26 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
+import {
+  cleanupTestDatabase,
+  setupTestDatabase,
+  type TestDatabaseFixture
+} from "./helpers/test-db";
 
 describe("app shell live data", () => {
-  let tempDir = "";
+  let fixture: TestDatabaseFixture;
   let database: DatabaseClient;
 
   beforeEach(async () => {
-    tempDir = await mkdtemp(path.join(tmpdir(), "jcs-app-shell-"));
-    database = createDatabaseClient({
-      databaseUrl: path.join(tempDir, "test.sqlite")
+    fixture = await setupTestDatabase({
+      prefix: "jcs-app-shell-",
+      seedDevelopmentFixture: true
     });
-
-    await runMigrations(database);
-    await seedDevelopmentDatabase(database);
+    database = fixture.database;
   });
 
   afterEach(async () => {
-    closeDatabaseClient(database);
-    await rm(tempDir, { recursive: true, force: true });
+    await cleanupTestDatabase(fixture);
   });
 
   it("derives overview metrics from live lesson, entry, and review tables", async () => {
@@ -204,7 +199,7 @@ describe("app shell live data", () => {
   });
 
   it("uses the deduplicated global review snapshot for dashboard review totals", async () => {
-    const contentRoot = path.join(tempDir, "cross-media-content");
+    const contentRoot = path.join(fixture.tempDir, "cross-media-content");
 
     await writeCrossMediaContentFixture(contentRoot);
 

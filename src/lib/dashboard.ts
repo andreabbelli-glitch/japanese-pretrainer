@@ -148,6 +148,13 @@ function pickReviewMedia(media: MediaShellSnapshot[]) {
       return right.cardsDue - left.cardsDue;
     }
 
+    const newQueuedDifference =
+      (right.newQueuedReviewCards ?? 0) - (left.newQueuedReviewCards ?? 0);
+
+    if (newQueuedDifference !== 0) {
+      return newQueuedDifference;
+    }
+
     if (left.activeReviewCards !== right.activeReviewCards) {
       return right.activeReviewCards - left.activeReviewCards;
     }
@@ -165,13 +172,17 @@ function scoreMediaReview(item: MediaShellSnapshot) {
     return 0;
   }
 
-  if (item.activeReviewCards > 0) {
+  if ((item.newQueuedReviewCards ?? 0) > 0) {
     return 1;
   }
 
-  if (item.cardsTotal > 0) {
+  if (item.activeReviewCards > 0) {
     return 2;
   }
 
-  return 3;
+  if (item.cardsTotal > 0) {
+    return 3;
+  }
+
+  return 4;
 }
