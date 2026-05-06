@@ -139,7 +139,7 @@ function resolveCliOptions(args: string[]) {
     if (value === "--content-root") {
       const nextValue = args[index + 1];
 
-      if (!nextValue) {
+      if (!nextValue || nextValue.startsWith("--")) {
         throw new Error("Missing value for --content-root.");
       }
 
