@@ -80,6 +80,21 @@ describe("pitch accent fetch helpers", () => {
     });
   }, 60_000);
 
+  it("rejects unsafe numeric CLI options before running the pitch accent workflow", async () => {
+    await expect(
+      runPitchAccentCli(
+        "--content-root",
+        validContentRoot,
+        "--dry-run",
+        "--max-retries=9007199254740993"
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining(
+        "--max-retries must be a safe non-negative integer."
+      )
+    });
+  }, 60_000);
+
   it("extracts a single pitch accent from Wiktionary ja-pron templates", () => {
     const source = `
 ==Japanese==

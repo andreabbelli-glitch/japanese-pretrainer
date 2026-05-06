@@ -200,7 +200,9 @@ describe("forvo pronunciation helpers", () => {
 
   it.each([
     ["--control-port", "0", "positive integer"],
+    ["--control-port", "9007199254740993", "safe positive integer"],
     ["--limit", "two", "non-negative integer"],
+    ["--limit", "9007199254740993", "safe non-negative integer"],
     ["--browser-timeout-ms", "1s", "positive integer"]
   ])(
     "rejects invalid %s values before starting the workflow",

@@ -314,6 +314,42 @@ describe("pronunciation resolve", () => {
       }
     }, 60_000);
 
+    it("rejects unsafe numeric resolver CLI options instead of rounding them", async () => {
+      closeDatabaseClient(database);
+
+      try {
+        await expect(
+          execFileAsync(
+            process.execPath,
+            [
+              "--experimental-strip-types",
+              path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
+              "--mode=review",
+              `--content-root=${contentRoot}`,
+              "--dry-run",
+              "--limit=9007199254740993",
+              "--no-open"
+            ],
+            {
+              cwd: process.cwd(),
+              env: {
+                ...process.env,
+                DATABASE_URL: databasePath
+              }
+            }
+          )
+        ).rejects.toMatchObject({
+          stderr: expect.stringContaining(
+            "--limit must be a safe non-negative integer."
+          )
+        });
+      } finally {
+        database = createDatabaseClient({
+          databaseUrl: databasePath
+        });
+      }
+    }, 60_000);
+
     it("selects review targets globally and deduplicates linked entries", async () => {
       const selection = await selectPronunciationResolveTargets({
         contentRoot,

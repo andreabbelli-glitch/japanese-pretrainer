@@ -437,7 +437,13 @@ function readNonNegativeIntegerOption(
     throw new Error(`${flag} must be a non-negative integer.`);
   }
 
-  return Number.parseInt(value, 10);
+  const parsed = Number.parseInt(value, 10);
+
+  if (!Number.isSafeInteger(parsed)) {
+    throw new Error(`${flag} must be a safe non-negative integer.`);
+  }
+
+  return parsed;
 }
 
 function readPositiveIntegerOption(
@@ -451,7 +457,13 @@ function readPositiveIntegerOption(
     throw new Error(`${flag} must be a positive integer.`);
   }
 
-  return Number.parseInt(value, 10);
+  const parsed = Number.parseInt(value, 10);
+
+  if (!Number.isSafeInteger(parsed)) {
+    throw new Error(`${flag} must be a safe positive integer.`);
+  }
+
+  return parsed;
 }
 
 function expandEqualsOptions(argv: string[]) {
