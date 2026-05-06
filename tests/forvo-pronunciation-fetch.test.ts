@@ -198,6 +198,34 @@ describe("forvo pronunciation helpers", () => {
     });
   }, 60_000);
 
+  it.each([
+    ["--control-port", "0", "positive integer"],
+    ["--limit", "two", "non-negative integer"],
+    ["--browser-timeout-ms", "1s", "positive integer"]
+  ])(
+    "rejects invalid %s values before starting the workflow",
+    async (flag, value, expectedMessage) => {
+      await expect(
+        execFileAsync(
+          process.execPath,
+          [
+            "--experimental-strip-types",
+            fetchForvoScriptPath,
+            "--content-root",
+            validContentRoot,
+            flag,
+            value,
+            "--dry-run"
+          ],
+          { cwd: process.cwd() }
+        )
+      ).rejects.toMatchObject({
+        stderr: expect.stringContaining(`${flag} must be a ${expectedMessage}.`)
+      });
+    },
+    60_000
+  );
+
   it("fails the CLI when the word-add prefill is disabled", async () => {
     await expect(
       execFileAsync(

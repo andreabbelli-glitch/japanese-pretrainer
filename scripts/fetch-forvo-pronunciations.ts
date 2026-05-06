@@ -265,14 +265,11 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--control-port") {
-      const parsedPort = Number.parseInt(
-        readOptionValue(normalizedArgv, index, "--control-port"),
-        10
+      options.controlPort = readPositiveIntegerOption(
+        normalizedArgv,
+        index,
+        "--control-port"
       );
-
-      if (Number.isFinite(parsedPort) && parsedPort > 0) {
-        options.controlPort = parsedPort;
-      }
 
       index += 1;
       continue;
@@ -288,14 +285,11 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--limit") {
-      const parsedLimit = Number.parseInt(
-        readOptionValue(normalizedArgv, index, "--limit"),
-        10
+      options.limit = readNonNegativeIntegerOption(
+        normalizedArgv,
+        index,
+        "--limit"
       );
-
-      if (Number.isFinite(parsedLimit) && parsedLimit >= 0) {
-        options.limit = parsedLimit;
-      }
 
       index += 1;
       continue;
@@ -381,14 +375,11 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--browser-timeout-ms") {
-      const parsedTimeout = Number.parseInt(
-        readOptionValue(normalizedArgv, index, "--browser-timeout-ms"),
-        10
+      options.browserTimeoutMs = readPositiveIntegerOption(
+        normalizedArgv,
+        index,
+        "--browser-timeout-ms"
       );
-
-      if (Number.isFinite(parsedTimeout) && parsedTimeout > 0) {
-        options.browserTimeoutMs = parsedTimeout;
-      }
 
       index += 1;
       continue;
@@ -433,6 +424,34 @@ function readOptionValue(argv: string[], index: number, flag: string) {
   }
 
   return value;
+}
+
+function readNonNegativeIntegerOption(
+  argv: string[],
+  index: number,
+  flag: string
+) {
+  const value = readOptionValue(argv, index, flag);
+
+  if (!/^\d+$/u.test(value)) {
+    throw new Error(`${flag} must be a non-negative integer.`);
+  }
+
+  return Number.parseInt(value, 10);
+}
+
+function readPositiveIntegerOption(
+  argv: string[],
+  index: number,
+  flag: string
+) {
+  const value = readOptionValue(argv, index, flag);
+
+  if (!/^[1-9]\d*$/u.test(value)) {
+    throw new Error(`${flag} must be a positive integer.`);
+  }
+
+  return Number.parseInt(value, 10);
 }
 
 function expandEqualsOptions(argv: string[]) {
