@@ -194,4 +194,14 @@ describe("fetch throttle", () => {
     expect(parseRetryAfterMs("+1")).toBeNull();
     expect(parseRetryAfterMs("1.5")).toBeNull();
   });
+
+  it("ignores retry-after delays that exceed the maximum timer delay", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-04-24T12:00:00.000Z"));
+
+    expect(parseRetryAfterMs("2147484")).toBeNull();
+    expect(
+      parseRetryAfterMs("Wed, 01 Jul 2026 12:00:00 GMT")
+    ).toBeNull();
+  });
 });

@@ -15,6 +15,8 @@ type FetchRetryHooks = {
 
 type FetchOverrideConfig = Partial<FetchThrottleConfig>;
 
+const MAX_TIMER_DELAY_MS = 2_147_483_647;
+
 export function createFetchThrottle(
   config: FetchThrottleConfig,
   hooks: FetchRetryHooks = {}
@@ -131,12 +133,12 @@ export function parseRetryAfterMs(value: string | null) {
   }
 
   const trimmed = value.trim();
-  const asSeconds = /^[0-9]+$/.test(trimmed)
+  const asSeconds = /^[0-9]+$/u.test(trimmed)
     ? Number.parseInt(trimmed, 10)
     : Number.NaN;
 
-  if (Number.isFinite(asSeconds) && asSeconds >= 0) {
-    return asSeconds * 1000;
+  if (Number.isSafeInteger(asSeconds) && asSeconds >= 0) {
+    return normalizeTimerDelayMs(asSeconds * 1000);
   }
 
   if (!/[a-z]/iu.test(trimmed)) {
@@ -149,7 +151,11 @@ export function parseRetryAfterMs(value: string | null) {
     return null;
   }
 
-  return Math.max(0, retryAt - Date.now());
+  return normalizeTimerDelayMs(Math.max(0, retryAt - Date.now()));
+}
+
+function normalizeTimerDelayMs(delayMs: number) {
+  return delayMs <= MAX_TIMER_DELAY_MS ? delayMs : null;
 }
 
 function resolveConfig(
