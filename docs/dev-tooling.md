@@ -62,6 +62,12 @@ test creano database SQLite temporanei, eseguono migrazioni e importano bundle
 reali; su macchine locali e sandbox Codex il parallelismo per file rende i test
 piu lenti e fragili invece che piu rapidi, fino a timeout del worker pool.
 
+Il gate `pnpm lint` usa ESLint su `.` ma la flat config esclude esplicitamente
+artefatti locali e directory di tooling generate (`.codex/`, `.playwright-*`,
+`output/`, `tmp/`, `test-results/`, cache SQLite/TypeScript). Le skill in
+`.agents/` restano nel repo, ma ESLint ignora solo i loro file Markdown/YAML e
+shell: eventuali helper JavaScript continuano a essere coperti dal lint.
+
 ## Codex locale in sandbox
 
 Per worktree e automazioni Codex locali, il repo include una configurazione
