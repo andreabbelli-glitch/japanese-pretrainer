@@ -12,6 +12,7 @@ export const APP_PATHNAME_HEADER = "x-jcs-pathname";
 export const APP_SEARCH_HEADER = "x-jcs-search";
 const PBKDF2_DIGEST = "sha256";
 const PBKDF2_ITERATIONS = 210_000;
+const PBKDF2_MAX_ITERATIONS = 1_000_000;
 const PBKDF2_KEY_LENGTH = 32;
 const SESSION_DURATION_MS = 1000 * 60 * 60 * 24 * 30;
 
@@ -234,7 +235,11 @@ function verifyPasswordHash(password: string, storedHash: string) {
 
   const iterations = Number(rawIterations);
 
-  if (!Number.isSafeInteger(iterations) || iterations <= 0) {
+  if (
+    !Number.isSafeInteger(iterations) ||
+    iterations <= 0 ||
+    iterations > PBKDF2_MAX_ITERATIONS
+  ) {
     return false;
   }
 
