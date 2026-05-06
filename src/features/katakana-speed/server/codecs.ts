@@ -355,22 +355,25 @@ export function assertKatakanaExerciseResultIdentity(
 }
 
 export function percentile(values: readonly number[], percentileValue: number) {
-  if (values.length === 0) {
+  const sorted = values
+    .filter((value) => Number.isFinite(value))
+    .sort((left, right) => left - right);
+  if (sorted.length === 0) {
     return null;
   }
 
-  if (percentileValue === 0.5 && values.length % 2 === 0) {
-    const upperIndex = values.length / 2;
-    const lower = values[upperIndex - 1] ?? null;
-    const upper = values[upperIndex] ?? null;
+  if (percentileValue === 0.5 && sorted.length % 2 === 0) {
+    const upperIndex = sorted.length / 2;
+    const lower = sorted[upperIndex - 1] ?? null;
+    const upper = sorted[upperIndex] ?? null;
 
     if (lower !== null && upper !== null) {
       return Math.round((lower + upper) / 2);
     }
   }
 
-  const index = Math.ceil(values.length * percentileValue) - 1;
-  return values[Math.max(0, Math.min(values.length - 1, index))] ?? null;
+  const index = Math.ceil(sorted.length * percentileValue) - 1;
+  return sorted[Math.max(0, Math.min(sorted.length - 1, index))] ?? null;
 }
 
 export function countValues(values: readonly string[]) {
