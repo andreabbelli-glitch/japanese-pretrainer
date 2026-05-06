@@ -9,6 +9,7 @@ import {
 } from "../db/schema/review.ts";
 
 import type { ReviewSubjectStateSnapshot } from "./review-subject.ts";
+import { pickBestBy } from "./collections.ts";
 import {
   resolveReviewSubjectGroups,
   type ResolveReviewSubjectGroupsResult
@@ -352,7 +353,7 @@ function selectBestReviewSubjectState(
     return null;
   }
 
-  return [...states].sort(compareReviewSubjectStatesForMerge)[0] ?? null;
+  return pickBestBy(states, compareReviewSubjectStatesForMerge);
 }
 
 function compareReviewSubjectStatesForMerge(
