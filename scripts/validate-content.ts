@@ -75,29 +75,17 @@ function resolveCliOptions(args: string[]) {
     }
 
     if (value === "--content-root") {
-      const nextValue = args[index + 1];
-
-      if (!nextValue) {
-        throw new Error("Missing value for --content-root.");
-      }
-
-      contentRoot = path.resolve(nextValue);
+      contentRoot = path.resolve(readOptionValue(args, index, "--content-root"));
       index += 1;
       continue;
     }
 
     if (value === "--media-slug") {
-      const nextValue = args[index + 1];
-
-      if (!nextValue) {
-        throw new Error("Missing value for --media-slug.");
-      }
-
       if (mediaSlug !== null) {
         throw new Error("Use --media-slug only once with content:validate.");
       }
 
-      mediaSlug = nextValue;
+      mediaSlug = readOptionValue(args, index, "--media-slug");
       index += 1;
       continue;
     }
@@ -109,6 +97,16 @@ function resolveCliOptions(args: string[]) {
     contentRoot,
     mediaSlug
   };
+}
+
+function readOptionValue(args: string[], index: number, flag: string) {
+  const value = args[index + 1];
+
+  if (!value || value.startsWith("--")) {
+    throw new Error(`Missing value for ${flag}.`);
+  }
+
+  return value;
 }
 
 function countBundleFiles(bundle: {

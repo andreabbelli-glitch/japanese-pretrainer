@@ -68,4 +68,43 @@ describe("import content CLI", () => {
     expect(stdout).toContain("Imported 1 bundle(s)");
     expect(stdout).toContain("Mode: incremental (sample-anime).");
   }, 60_000);
+
+  it("rejects missing media slug values before running the importer", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-import-cli-"));
+    tempDirs.push(tempDir);
+    const databasePath = path.join(tempDir, "import.sqlite");
+    const database = createDatabaseClient({ databaseUrl: databasePath });
+    await runMigrations(database);
+    closeDatabaseClient(database);
+    await writeFile(
+      path.join(tempDir, ".env.local"),
+      `DATABASE_URL=${databasePath}\n`
+    );
+    const env = { ...process.env };
+    delete env.CONTENT_CACHE_REVALIDATE_SECRET;
+    delete env.CONTENT_CACHE_REVALIDATE_URL;
+    delete env.DATABASE_AUTH_TOKEN;
+    delete env.DATABASE_URL;
+    delete env.LIBSQL_AUTH_TOKEN;
+
+    await expect(
+      execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          path.join(process.cwd(), "scripts", "import-content.ts"),
+          "--content-root",
+          validContentRoot,
+          "--media-slug",
+          "--content-root"
+        ],
+        {
+          cwd: tempDir,
+          env
+        }
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining("Missing value for --media-slug.")
+    });
+  }, 60_000);
 });
