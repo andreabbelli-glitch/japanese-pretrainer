@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { createFetchThrottle } from "@/lib/fetch-throttle";
+import { createFetchThrottle, parseRetryAfterMs } from "@/lib/fetch-throttle";
 
 describe("fetch throttle", () => {
   afterEach(() => {
@@ -131,9 +131,8 @@ describe("fetch throttle", () => {
       }
     );
 
-    const waitingFetchExpectation = expect(waitingFetch).rejects.toBe(
-      abortError
-    );
+    const waitingFetchExpectation =
+      expect(waitingFetch).rejects.toBe(abortError);
 
     abortController.abort(abortError);
 
@@ -164,7 +163,9 @@ describe("fetch throttle", () => {
 
     const firstFetch = throttle.throttledFetch("https://example.test/one.ogg");
     const secondFetch = throttle.throttledFetch("https://example.test/two.ogg");
-    const thirdFetch = throttle.throttledFetch("https://example.test/three.ogg");
+    const thirdFetch = throttle.throttledFetch(
+      "https://example.test/three.ogg"
+    );
 
     expect(fetchStartTimes).toEqual([start.getTime()]);
 
@@ -186,5 +187,11 @@ describe("fetch throttle", () => {
       start.getTime() + 1_000,
       start.getTime() + 2_000
     ]);
+  });
+
+  it("ignores malformed numeric retry-after values instead of parsing them as dates", () => {
+    expect(parseRetryAfterMs("-1")).toBeNull();
+    expect(parseRetryAfterMs("+1")).toBeNull();
+    expect(parseRetryAfterMs("1.5")).toBeNull();
   });
 });
