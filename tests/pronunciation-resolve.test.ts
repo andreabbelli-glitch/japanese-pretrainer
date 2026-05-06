@@ -243,6 +243,77 @@ describe("pronunciation resolve", () => {
       }
     }, 60_000);
 
+    it("rejects missing resolver CLI option values before treating later flags as request data", async () => {
+      closeDatabaseClient(database);
+
+      try {
+        await expect(
+          execFileAsync(
+            process.execPath,
+            [
+              "--experimental-strip-types",
+              path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
+              "--mode=review",
+              "--media",
+              "--dry-run",
+              `--content-root=${contentRoot}`,
+              "--limit=0",
+              "--no-open"
+            ],
+            {
+              cwd: process.cwd(),
+              env: {
+                ...process.env,
+                DATABASE_URL: databasePath
+              }
+            }
+          )
+        ).rejects.toMatchObject({
+          stderr: expect.stringContaining("Missing value for --media.")
+        });
+      } finally {
+        database = createDatabaseClient({
+          databaseUrl: databasePath
+        });
+      }
+    }, 60_000);
+
+    it("rejects invalid numeric resolver CLI options instead of silently using defaults", async () => {
+      closeDatabaseClient(database);
+
+      try {
+        await expect(
+          execFileAsync(
+            process.execPath,
+            [
+              "--experimental-strip-types",
+              path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
+              "--mode=review",
+              `--content-root=${contentRoot}`,
+              "--dry-run",
+              "--limit=two",
+              "--no-open"
+            ],
+            {
+              cwd: process.cwd(),
+              env: {
+                ...process.env,
+                DATABASE_URL: databasePath
+              }
+            }
+          )
+        ).rejects.toMatchObject({
+          stderr: expect.stringContaining(
+            "--limit must be a non-negative integer."
+          )
+        });
+      } finally {
+        database = createDatabaseClient({
+          databaseUrl: databasePath
+        });
+      }
+    }, 60_000);
+
     it("selects review targets globally and deduplicates linked entries", async () => {
       const selection = await selectPronunciationResolveTargets({
         contentRoot,
