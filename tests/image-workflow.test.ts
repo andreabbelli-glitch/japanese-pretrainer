@@ -1,7 +1,9 @@
 import path from "node:path";
+import { execFile } from "node:child_process";
 import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
@@ -13,6 +15,7 @@ import {
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const execFileAsync = promisify(execFile);
 const fixturesRoot = path.resolve(__dirname, "fixtures", "content");
 const validContentRoot = path.join(fixturesRoot, "valid", "content");
 
@@ -101,6 +104,30 @@ describe("image workflow", () => {
     expect(block).not.toContain("card_id:");
   });
 
+  it("rejects missing image workflow CLI option values before treating flags as data", async () => {
+    await expect(
+      runImageWorkflowCli("image-workflow-status.ts", [
+        "--content-root",
+        validContentRoot,
+        "--media-slug",
+        "--content-root"
+      ])
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining("Missing value for --media-slug.")
+    });
+
+    await expect(
+      runImageWorkflowCli("apply-image-blocks.ts", [
+        "--content-root",
+        validContentRoot,
+        "--media-slug",
+        "--dry-run"
+      ])
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining("Missing value for --media-slug.")
+    });
+  });
+
   async function writeWorkflowFiles() {
     await writeFile(
       path.join(workflowDirectory, "image-requests.yaml"),
@@ -142,3 +169,17 @@ describe("image workflow", () => {
     );
   }
 });
+
+function runImageWorkflowCli(scriptName: string, args: string[]) {
+  return execFileAsync(
+    process.execPath,
+    [
+      "--experimental-strip-types",
+      path.join(process.cwd(), "scripts", scriptName),
+      ...args
+    ],
+    {
+      cwd: process.cwd()
+    }
+  );
+}
