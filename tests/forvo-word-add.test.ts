@@ -28,6 +28,25 @@ import {
 const execFileAsync = promisify(execFile);
 
 describe("forvo word-add helpers", () => {
+  it("rejects request delay values above Node's maximum timer delay before opening URLs", async () => {
+    await expect(
+      execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          path.join(process.cwd(), "scripts", "request-forvo-word-add.ts"),
+          "--request-delay-ms",
+          "2147483648"
+        ],
+        { cwd: process.cwd() }
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining(
+        "--request-delay-ms must be at most 2147483647 ms."
+      )
+    });
+  });
+
   it("builds the expected word-add URL for a label", () => {
     expect(
       buildForvoWordAddUrl({

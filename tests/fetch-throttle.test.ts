@@ -1,6 +1,11 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { createFetchThrottle, parseRetryAfterMs } from "@/lib/fetch-throttle";
+import {
+  MAX_TIMER_DELAY_MS,
+  createFetchThrottle,
+  parseRetryAfterMs,
+  sleep
+} from "@/lib/fetch-throttle";
 
 describe("fetch throttle", () => {
   afterEach(() => {
@@ -187,6 +192,51 @@ describe("fetch throttle", () => {
       start.getTime() + 1_000,
       start.getTime() + 2_000
     ]);
+  });
+
+  it.each([
+    [
+      "requestDelayMs",
+      {
+        requestDelayMs: MAX_TIMER_DELAY_MS + 1,
+        requestTimeoutMs: 1_000,
+        retryBaseDelayMs: 0
+      }
+    ],
+    [
+      "requestTimeoutMs",
+      {
+        requestDelayMs: 0,
+        requestTimeoutMs: MAX_TIMER_DELAY_MS + 1,
+        retryBaseDelayMs: 0
+      }
+    ],
+    [
+      "retryBaseDelayMs",
+      {
+        requestDelayMs: 0,
+        requestTimeoutMs: 1_000,
+        retryBaseDelayMs: MAX_TIMER_DELAY_MS + 1
+      }
+    ]
+  ])("rejects %s values above Node's maximum timer delay", async (_, config) => {
+    const successResponse = {
+      ok: true
+    } as Response;
+    const fetchMock = vi.fn().mockResolvedValue(successResponse);
+    const throttle = createFetchThrottle(config);
+
+    vi.stubGlobal("fetch", fetchMock);
+
+    await expect(
+      throttle.fetchWithRetry("https://example.test/audio.ogg")
+    ).rejects.toThrow(`must be at most ${MAX_TIMER_DELAY_MS} ms`);
+  });
+
+  it("rejects sleep durations above Node's maximum timer delay", async () => {
+    await expect(sleep(MAX_TIMER_DELAY_MS + 1)).rejects.toThrow(
+      `sleep duration must be at most ${MAX_TIMER_DELAY_MS} ms`
+    );
   });
 
   it("ignores malformed numeric retry-after values instead of parsing them as dates", () => {

@@ -203,7 +203,8 @@ describe("forvo pronunciation helpers", () => {
     ["--control-port", "9007199254740993", "safe positive integer"],
     ["--limit", "two", "non-negative integer"],
     ["--limit", "9007199254740993", "safe non-negative integer"],
-    ["--browser-timeout-ms", "1s", "positive integer"]
+    ["--browser-timeout-ms", "1s", "positive integer"],
+    ["--browser-timeout-ms", "2147483648", "at most 2147483647 ms"]
   ])(
     "rejects invalid %s values before starting the workflow",
     async (flag, value, expectedMessage) => {
@@ -222,7 +223,11 @@ describe("forvo pronunciation helpers", () => {
           { cwd: process.cwd() }
         )
       ).rejects.toMatchObject({
-        stderr: expect.stringContaining(`${flag} must be a ${expectedMessage}.`)
+        stderr: expect.stringContaining(
+          expectedMessage.startsWith("at most")
+            ? `${flag} must be ${expectedMessage}.`
+            : `${flag} must be a ${expectedMessage}.`
+        )
       });
     },
     60_000

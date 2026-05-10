@@ -178,6 +178,30 @@ describe("global review queue filtering", () => {
     expect(mediaBProgress?.review.nextCardFront).toBe("B shared");
   });
 
+  it("does not count a globally queued new subject when the local shared sibling is suspended", async () => {
+    await seedCrossMediaNewOrderingFixture(database);
+    await database
+      .update(card)
+      .set({ status: "suspended" })
+      .where(eq(card.id, "card_b_shared"));
+
+    const [mediaBProgress, snapshots] = await Promise.all([
+      getMediaProgressPageData("media-b", database),
+      loadReviewOverviewSnapshots(database, [{ id: "media_b", slug: "media-b" }])
+    ]);
+    const mediaBSnapshot = snapshots.get("media_b");
+
+    expect(mediaBSnapshot?.newAvailableCount).toBe(1);
+    expect(mediaBSnapshot?.newQueuedCount).toBe(0);
+    expect(mediaBSnapshot?.queueCount).toBe(0);
+    expect(mediaBSnapshot?.nextCardFront).toBeUndefined();
+
+    expect(mediaBProgress?.review.newAvailableCount).toBe(1);
+    expect(mediaBProgress?.review.newQueuedCount).toBe(0);
+    expect(mediaBProgress?.review.queueCount).toBe(0);
+    expect(mediaBProgress?.review.nextCardFront).toBeUndefined();
+  });
+
   it("shows the first globally due subject front in single-media progress", async () => {
     await seedCrossMediaDueOrderingFixture(database);
     const now = new Date("2026-03-10T13:00:00.000Z");
@@ -210,6 +234,39 @@ describe("global review queue filtering", () => {
       expect(mediaBProgress?.review.dueCount).toBe(2);
       expect(mediaBProgress?.review.newQueuedCount).toBe(0);
       expect(mediaBProgress?.review.nextCardFront).toBe("B due one");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("skips suspended local shared siblings when showing the first globally due subject front", async () => {
+    await seedCrossMediaDueOrderingFixture(database);
+    await database
+      .update(card)
+      .set({ status: "suspended" })
+      .where(eq(card.id, "card_b_due_one"));
+
+    const now = new Date("2026-03-10T13:00:00.000Z");
+
+    vi.useFakeTimers();
+    vi.setSystemTime(now);
+
+    try {
+      const [mediaBProgress, snapshots] = await Promise.all([
+        getMediaProgressPageData("media-b", database),
+        loadReviewOverviewSnapshots(database, [
+          { id: "media_b", slug: "media-b" }
+        ])
+      ]);
+      const mediaBSnapshot = snapshots.get("media_b");
+
+      expect(mediaBSnapshot?.dueCount).toBe(1);
+      expect(mediaBSnapshot?.queueCount).toBe(1);
+      expect(mediaBSnapshot?.nextCardFront).toBe("B due two");
+
+      expect(mediaBProgress?.review.dueCount).toBe(1);
+      expect(mediaBProgress?.review.queueCount).toBe(1);
+      expect(mediaBProgress?.review.nextCardFront).toBe("B due two");
     } finally {
       vi.useRealTimers();
     }

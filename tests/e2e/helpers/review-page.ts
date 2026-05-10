@@ -1,10 +1,10 @@
-import { expect, type Page } from "@playwright/test";
+import { expect, type Locator, type Page } from "@playwright/test";
 
 import { testIds } from "./selectors";
 
 export function reviewReadyLocator(page: Page) {
   return page
-    .getByTestId(testIds.reviewStage)
+    .getByTestId(testIds.reviewChips)
     .or(page.getByTestId(testIds.emptyState))
     .first();
 }
@@ -18,6 +18,62 @@ export async function revealReviewAnswer(page: Page) {
   await expect(page.getByTestId(testIds.reviewAnswer)).toBeVisible();
 }
 
+export async function startElementConnectionStabilityWatch(
+  locator: Locator,
+  options: { stabilityMs?: number } = {}
+) {
+  const stabilityMs = options.stabilityMs ?? 250;
+  const handle = await locator.elementHandle();
+  expect(handle).not.toBeNull();
+
+  const connectionResult = handle!.evaluate((element, durationMs) => {
+    return new Promise<boolean>((resolve) => {
+      if (!element.isConnected) {
+        resolve(false);
+        return;
+      }
+
+      let settled = false;
+      let observer: MutationObserver | null = null;
+      let timeout: number | null = null;
+
+      const finish = (isConnected: boolean) => {
+        if (settled) {
+          return;
+        }
+
+        settled = true;
+        observer?.disconnect();
+
+        if (timeout !== null) {
+          window.clearTimeout(timeout);
+        }
+
+        resolve(isConnected);
+      };
+
+      observer = new MutationObserver(() => {
+        if (!element.isConnected) {
+          finish(false);
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+
+      timeout = window.setTimeout(() => {
+        finish(element.isConnected);
+      }, durationMs);
+    });
+  }, stabilityMs);
+
+  return async () => {
+    try {
+      await expect(connectionResult).resolves.toBe(true);
+    } finally {
+      await handle!.dispose();
+    }
+  };
+}
+
 export async function gradeReview(page: Page, gradeName: RegExp | string) {
   await page.getByRole("button", { name: gradeName }).click();
 }
@@ -27,24 +83,23 @@ export function reviewFrontLocator(page: Page) {
 }
 
 export async function readReviewPageSignature(page: Page) {
-  const stage = page.getByTestId(testIds.reviewStage);
+  const chips = page.getByTestId(testIds.reviewChips).first();
 
-  if ((await stage.count()) > 0) {
+  if (await chips.isVisible().catch(() => false)) {
     return {
       kind: "stage" as const,
       value: [
-        (
-          (await page.getByTestId(testIds.reviewChips).textContent()) ?? ""
-        ).trim(),
+        ((await chips.textContent()) ?? "").trim(),
         ((await reviewFrontLocator(page).textContent()) ?? "").trim()
       ].join(" | ")
     };
   }
 
+  const emptyState = page.getByTestId(testIds.emptyState).first();
+  await expect(emptyState).toBeVisible();
+
   return {
     kind: "empty" as const,
-    value: (
-      (await page.getByTestId(testIds.emptyState).textContent()) ?? ""
-    ).trim()
+    value: ((await emptyState.textContent()) ?? "").trim()
   };
 }

@@ -974,6 +974,9 @@ export async function getQueuedNewReviewSubjectSummaryByMediaId(
       INNER JOIN completed_lessons cl
         ON cl.id = si.lesson_id
       WHERE si.lesson_id IS NOT NULL
+        AND si.card_status != 'suspended'
+        AND COALESCE(rss.suspended, 0) = 0
+        AND COALESCE(rss.state, 'new') != 'suspended'
     ),
     visible_due_subjects AS (
       SELECT
@@ -1034,6 +1037,9 @@ export async function getQueuedNewReviewSubjectSummaryByMediaId(
       INNER JOIN completed_lessons cl
         ON cl.id = si.lesson_id
       WHERE si.lesson_id IS NOT NULL
+        AND si.card_status != 'suspended'
+        AND COALESCE(rss.suspended, 0) = 0
+        AND COALESCE(rss.state, 'new') != 'suspended'
         AND qns.queueRank <= ${queuedNewLimit}
     ),
     visible_queued_subjects AS (

@@ -15,7 +15,7 @@ type FetchRetryHooks = {
 
 type FetchOverrideConfig = Partial<FetchThrottleConfig>;
 
-const MAX_TIMER_DELAY_MS = 2_147_483_647;
+export const MAX_TIMER_DELAY_MS = 2_147_483_647;
 
 export function createFetchThrottle(
   config: FetchThrottleConfig,
@@ -158,21 +158,42 @@ function normalizeTimerDelayMs(delayMs: number) {
   return delayMs <= MAX_TIMER_DELAY_MS ? delayMs : null;
 }
 
+export function assertTimerDelayMs(delayMs: number, label: string) {
+  if (!Number.isFinite(delayMs) || !Number.isInteger(delayMs) || delayMs < 0) {
+    throw new Error(`${label} must be a non-negative integer.`);
+  }
+
+  if (delayMs > MAX_TIMER_DELAY_MS) {
+    throw new Error(`${label} must be at most ${MAX_TIMER_DELAY_MS} ms.`);
+  }
+
+  return delayMs;
+}
+
 function resolveConfig(
   config: FetchThrottleConfig,
   override?: FetchOverrideConfig
 ) {
+  const requestDelayMs = override?.requestDelayMs ?? config.requestDelayMs;
+  const requestTimeoutMs =
+    override?.requestTimeoutMs ?? config.requestTimeoutMs ?? 15_000;
+  const retryBaseDelayMs =
+    override?.retryBaseDelayMs ?? config.retryBaseDelayMs ?? 5000;
+
   return {
     maxRetries: override?.maxRetries ?? config.maxRetries ?? 4,
-    requestDelayMs: override?.requestDelayMs ?? config.requestDelayMs,
-    requestTimeoutMs:
-      override?.requestTimeoutMs ?? config.requestTimeoutMs ?? 15_000,
-    retryBaseDelayMs:
-      override?.retryBaseDelayMs ?? config.retryBaseDelayMs ?? 5000
+    requestDelayMs: assertTimerDelayMs(requestDelayMs, "requestDelayMs"),
+    requestTimeoutMs: assertTimerDelayMs(requestTimeoutMs, "requestTimeoutMs"),
+    retryBaseDelayMs: assertTimerDelayMs(
+      retryBaseDelayMs,
+      "retryBaseDelayMs"
+    )
   };
 }
 
 export async function sleep(durationMs: number, signal?: AbortSignal | null) {
+  assertTimerDelayMs(durationMs, "sleep duration");
+
   if (signal?.aborted) {
     throw readAbortReason(signal);
   }

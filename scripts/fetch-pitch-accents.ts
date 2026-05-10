@@ -2,6 +2,7 @@ import path from "node:path";
 import { readFile } from "node:fs/promises";
 
 import { parseContentRoot } from "../src/lib/content/validator.ts";
+import { MAX_TIMER_DELAY_MS } from "../src/lib/fetch-throttle.ts";
 import { fetchPitchAccentsForBundle } from "../src/lib/pitch-accent-fetch.ts";
 import type { PronunciationFetchNetworkOptions } from "../src/lib/pronunciation-shared.ts";
 
@@ -128,7 +129,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--entry-delay-ms") {
-      options.entryDelayMs = readNonNegativeIntegerOption(
+      options.entryDelayMs = readNonNegativeTimerDelayOption(
         normalizedArgv,
         index,
         "--entry-delay-ms"
@@ -165,7 +166,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--request-delay-ms") {
-      options.network.requestDelayMs = readNonNegativeIntegerOption(
+      options.network.requestDelayMs = readNonNegativeTimerDelayOption(
         normalizedArgv,
         index,
         "--request-delay-ms"
@@ -175,7 +176,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--request-timeout-ms") {
-      options.network.requestTimeoutMs = readNonNegativeIntegerOption(
+      options.network.requestTimeoutMs = readNonNegativeTimerDelayOption(
         normalizedArgv,
         index,
         "--request-timeout-ms"
@@ -195,7 +196,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--retry-base-delay-ms") {
-      options.network.retryBaseDelayMs = readNonNegativeIntegerOption(
+      options.network.retryBaseDelayMs = readNonNegativeTimerDelayOption(
         normalizedArgv,
         index,
         "--retry-base-delay-ms"
@@ -240,6 +241,20 @@ function readNonNegativeIntegerOption(
 
   if (!Number.isSafeInteger(parsed)) {
     throw new Error(`${flag} must be a safe non-negative integer.`);
+  }
+
+  return parsed;
+}
+
+function readNonNegativeTimerDelayOption(
+  argv: string[],
+  index: number,
+  flag: string
+) {
+  const parsed = readNonNegativeIntegerOption(argv, index, flag);
+
+  if (parsed > MAX_TIMER_DELAY_MS) {
+    throw new Error(`${flag} must be at most ${MAX_TIMER_DELAY_MS} ms.`);
   }
 
   return parsed;

@@ -95,6 +95,31 @@ describe("pitch accent fetch helpers", () => {
     });
   }, 60_000);
 
+  it.each([
+    "--entry-delay-ms",
+    "--request-delay-ms",
+    "--request-timeout-ms",
+    "--retry-base-delay-ms"
+  ])(
+    "rejects %s values above Node's maximum timer delay before running the pitch accent workflow",
+    async (flag) => {
+      await expect(
+        runPitchAccentCli(
+          "--content-root",
+          validContentRoot,
+          "--dry-run",
+          "--limit=0",
+          `${flag}=2147483648`
+        )
+      ).rejects.toMatchObject({
+        stderr: expect.stringContaining(
+          `${flag} must be at most 2147483647 ms.`
+        )
+      });
+    },
+    60_000
+  );
+
   it("extracts a single pitch accent from Wiktionary ja-pron templates", () => {
     const source = `
 ==Japanese==

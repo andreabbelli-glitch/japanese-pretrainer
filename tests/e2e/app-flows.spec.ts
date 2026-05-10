@@ -8,7 +8,8 @@ import {
   gradeReview,
   readReviewPageSignature,
   reviewFrontLocator,
-  revealReviewAnswer
+  revealReviewAnswer,
+  startElementConnectionStabilityWatch
 } from "./helpers/review-page";
 import { testIds } from "./helpers/selectors";
 
@@ -217,14 +218,12 @@ test.describe("review flows", () => {
     await answer.evaluate((element) => {
       element.setAttribute("data-audit-id", "stable-answer");
     });
+    const expectAnswerStayedConnected =
+      await startElementConnectionStabilityWatch(answer);
 
     await expect(page).toHaveURL(
       /\/media\/duel-masters-dm25\/review\?show=answer$/
     );
-    await expect(
-      page.locator(
-        '[data-testid="review-answer"][data-audit-id="stable-answer"]'
-      )
-    ).toHaveCount(1);
+    await expectAnswerStayedConnected();
   });
 });

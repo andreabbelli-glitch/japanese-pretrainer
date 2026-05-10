@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import os from "node:os";
 
 import { parseContentRoot } from "../src/lib/content/validator.ts";
+import { MAX_TIMER_DELAY_MS } from "../src/lib/fetch-throttle.ts";
 import {
   assertForvoManualRunCanStart,
   fetchForvoPronunciationsForBundle,
@@ -375,7 +376,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--browser-timeout-ms") {
-      options.browserTimeoutMs = readPositiveIntegerOption(
+      options.browserTimeoutMs = readPositiveTimerDelayOption(
         normalizedArgv,
         index,
         "--browser-timeout-ms"
@@ -461,6 +462,20 @@ function readPositiveIntegerOption(
 
   if (!Number.isSafeInteger(parsed)) {
     throw new Error(`${flag} must be a safe positive integer.`);
+  }
+
+  return parsed;
+}
+
+function readPositiveTimerDelayOption(
+  argv: string[],
+  index: number,
+  flag: string
+) {
+  const parsed = readPositiveIntegerOption(argv, index, flag);
+
+  if (parsed > MAX_TIMER_DELAY_MS) {
+    throw new Error(`${flag} must be at most ${MAX_TIMER_DELAY_MS} ms.`);
   }
 
   return parsed;

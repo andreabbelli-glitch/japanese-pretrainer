@@ -1,6 +1,7 @@
 import path from "node:path";
 import { spawn } from "node:child_process";
 
+import { MAX_TIMER_DELAY_MS } from "../src/lib/fetch-throttle.ts";
 import {
   addForvoWordAddRequestEntry,
   buildForvoWordAddUrl,
@@ -167,7 +168,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--request-delay-ms") {
-      options.requestDelayMs = readNonNegativeIntegerOption(
+      options.requestDelayMs = readNonNegativeTimerDelayOption(
         argv,
         index,
         "--request-delay-ms"
@@ -219,6 +220,24 @@ function readNonNegativeIntegerOption(
   }
 
   return Number.parseInt(value, 10);
+}
+
+function readNonNegativeTimerDelayOption(
+  argv: string[],
+  index: number,
+  flag: string
+) {
+  const parsed = readNonNegativeIntegerOption(argv, index, flag);
+
+  if (!Number.isSafeInteger(parsed)) {
+    throw new Error(`${flag} must be a safe non-negative integer.`);
+  }
+
+  if (parsed > MAX_TIMER_DELAY_MS) {
+    throw new Error(`${flag} must be at most ${MAX_TIMER_DELAY_MS} ms.`);
+  }
+
+  return parsed;
 }
 
 async function openUrlInDefaultBrowser(url: string) {
