@@ -23,6 +23,7 @@ export type ReviewSessionInput = {
   cardMediaSlug?: string;
   candidateCardIds?: string[];
   canonicalCandidateCardIds?: string[];
+  extraNewAnchorCount?: number | null;
   extraNewCount: number;
   expectedUpdatedAt?: string | null;
   forcedContrast?: ReviewForcedContrastPayload;
@@ -122,6 +123,7 @@ export async function resolvePostGradeReviewSessionPageData(input: {
             sessionInput,
             buildReviewSearchParams({
               answeredCount: sessionInput.answeredCount + 1,
+              extraNewAnchorCount: sessionInput.extraNewAnchorCount,
               extraNewCount: sessionInput.extraNewCount,
               segmentId: sessionInput.segmentId
             }),
@@ -155,6 +157,7 @@ export async function resolvePostGradeReviewSessionPageData(input: {
           sessionInput,
           buildReviewSearchParams({
             answeredCount: sessionInput.answeredCount + 1,
+            extraNewAnchorCount: sessionInput.extraNewAnchorCount,
             extraNewCount: sessionInput.extraNewCount
           }),
           {
@@ -190,6 +193,7 @@ export async function resolvePostGradeReviewSessionPageData(input: {
         sessionInput,
         buildReviewSearchParams({
           answeredCount: sessionInput.answeredCount + 1,
+          extraNewAnchorCount: sessionInput.extraNewAnchorCount,
           extraNewCount: sessionInput.extraNewCount,
           segmentId: sessionInput.segmentId
         }),
@@ -203,6 +207,7 @@ export async function resolvePostGradeReviewSessionPageData(input: {
       sessionInput,
       buildReviewSearchParams({
         answeredCount: sessionInput.answeredCount + 1,
+        extraNewAnchorCount: sessionInput.extraNewAnchorCount,
         extraNewCount: sessionInput.extraNewCount,
         segmentId: sessionInput.segmentId
       }),
@@ -216,6 +221,7 @@ export async function resolvePostGradeReviewSessionPageData(input: {
     sessionInput,
     buildReviewSearchParams({
       answeredCount: sessionInput.answeredCount + 1,
+      extraNewAnchorCount: sessionInput.extraNewAnchorCount,
       extraNewCount: sessionInput.extraNewCount,
       segmentId: sessionInput.segmentId
     }),
@@ -463,6 +469,7 @@ function buildReviewSessionPageData(input: {
     selectedCardContext: input.selectedCardContext,
     session: {
       answeredCount: input.sessionInput.answeredCount + 1,
+      extraNewAnchorCount: input.sessionInput.extraNewAnchorCount ?? null,
       extraNewCount: input.sessionInput.extraNewCount,
       ...(input.includeForcedContrast
         ? {

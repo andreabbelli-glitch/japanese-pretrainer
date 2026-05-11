@@ -145,6 +145,7 @@ export function buildReviewControllerSnapshot(
     answeredCount: viewData.session.answeredCount,
     baseHref: viewData.media.reviewHref,
     cardId: selectedCardId,
+    extraNewAnchorCount: viewData.session.extraNewAnchorCount,
     extraNewCount: viewData.session.extraNewCount,
     isQueueCard,
     position,

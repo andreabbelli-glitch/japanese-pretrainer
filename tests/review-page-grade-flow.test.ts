@@ -56,6 +56,32 @@ describe("buildReviewGradeSubmissionPlan", () => {
     );
   });
 
+  it("sends a null freshness token for brand-new queued cards", () => {
+    const currentData = buildFullReviewPageData("card-new");
+
+    const plan = buildReviewGradeSubmissionPlan({
+      activeQueueCardIds: ["card-new", "card-b"],
+      advanceWindowCardIds: ["card-b"],
+      forcedContrastSelection: null,
+      fullViewData: currentData,
+      gradedCardIds: ["card-new"],
+      isHydratingFullData: false,
+      isQueueCard: true,
+      pendingGradeSubmissionCount: 0,
+      prefetchedCards: new Map(),
+      rating: "good",
+      selectedCard: currentData.selectedCard!,
+      sessionViewData: currentData
+    });
+
+    expect(plan.kind).toBe("advance-queue");
+    if (plan.kind !== "advance-queue") {
+      throw new Error("Expected an advance-queue plan.");
+    }
+
+    expect(plan.actionInput).toHaveProperty("expectedUpdatedAt", null);
+  });
+
   it("allows optimistic first-candidate advance without full session queue snapshots", () => {
     const currentData = buildFirstCandidateReviewPageData("card-a");
 

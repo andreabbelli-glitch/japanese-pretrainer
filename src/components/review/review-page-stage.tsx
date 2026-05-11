@@ -431,6 +431,7 @@ export function ReviewPageStage({
                   href={buildCanonicalReviewSessionHrefForBase({
                     answeredCount: viewData.session.answeredCount,
                     baseHref: viewData.media.reviewHref,
+                    extraNewAnchorCount: viewData.session.extraNewAnchorCount,
                     extraNewCount:
                       viewData.session.extraNewCount + additionalNewCount,
                     isQueueCard: true,

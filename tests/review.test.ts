@@ -1030,6 +1030,41 @@ describe("review system", () => {
       expect(afterLogs).toHaveLength((beforeLogs?.length ?? 0) + 1);
     });
 
+    it("rejects a stale duplicate grade after a brand-new subject is first graded", async () => {
+      const fixture = await createIsolatedNewMediaFixture(database, {
+        cardCount: 1,
+        mediaId: "media_new_grade_guard",
+        mediaSlug: "new-grade-guard",
+        title: "New Grade Guard"
+      });
+      const cardId = fixture.cardIds[0]!;
+      const subjectKey = `entry:term:${fixture.termIds[0]}`;
+
+      await applyReviewGrade({
+        cardId,
+        database,
+        expectedUpdatedAt: null,
+        now: new Date("2026-03-12T09:00:00.000Z"),
+        rating: "good"
+      });
+
+      await expect(
+        applyReviewGrade({
+          cardId,
+          database,
+          expectedUpdatedAt: null,
+          now: new Date("2026-03-12T09:01:00.000Z"),
+          rating: "easy"
+        })
+      ).rejects.toThrow("Review card is out of date.");
+
+      const logs = await database.query.reviewSubjectLog.findMany({
+        where: eq(reviewSubjectLog.subjectKey, subjectKey)
+      });
+
+      expect(logs).toHaveLength(1);
+    });
+
     it("stores cross-media grading on the canonical shared subject state", async () => {
       const contentRoot = path.join(tempDir, "cross-media-legacy-mirror");
 
@@ -2145,6 +2180,99 @@ describe("review system", () => {
         state: "learning",
         suspended: false
       });
+    });
+
+    it.each([true, false])(
+      "normalizes a legacy known_manual subject state with manualOverride=%s when reopened",
+      async (manualOverride) => {
+        await database
+          .update(reviewSubjectState)
+          .set({
+            dueAt: "2000-01-01T00:00:00.000Z",
+            manualOverride,
+            state: "known_manual",
+            suspended: false
+          })
+          .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+
+        const legacyQueue = await getReviewQueueSnapshotForMedia(
+          developmentFixture.mediaSlug,
+          database
+        );
+
+        expect(
+          legacyQueue?.cards.some(
+            (card) => card.id === developmentFixture.primaryCardId
+          )
+        ).toBe(false);
+        expect(legacyQueue?.manualCount).toBeGreaterThan(0);
+
+        await setLinkedEntryStatusByCard({
+          cardId: developmentFixture.primaryCardId,
+          database,
+          now: new Date("2026-03-09T13:05:00.000Z"),
+          status: "learning"
+        });
+
+        const reopenedQueue = await getReviewQueueSnapshotForMedia(
+          developmentFixture.mediaSlug,
+          database
+        );
+
+        expect(
+          await database.query.reviewSubjectState.findFirst({
+            where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+          })
+        ).toMatchObject({
+          manualOverride: false,
+          state: "learning",
+          suspended: false
+        });
+        expect(
+          reopenedQueue?.cards.some(
+            (card) => card.id === developmentFixture.primaryCardId
+          )
+        ).toBe(true);
+      }
+    );
+
+    it("preserves an existing scheduled review state when reopening a modern manual override", async () => {
+      await database
+        .update(reviewSubjectState)
+        .set({
+          dueAt: "2000-01-01T00:00:00.000Z",
+          manualOverride: true,
+          state: "review",
+          suspended: false
+        })
+        .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+
+      await setLinkedEntryStatusByCard({
+        cardId: developmentFixture.primaryCardId,
+        database,
+        now: new Date("2026-03-09T13:05:00.000Z"),
+        status: "learning"
+      });
+
+      const reopenedQueue = await getReviewQueueSnapshotForMedia(
+        developmentFixture.mediaSlug,
+        database
+      );
+
+      expect(
+        await database.query.reviewSubjectState.findFirst({
+          where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+        })
+      ).toMatchObject({
+        manualOverride: false,
+        state: "review",
+        suspended: false
+      });
+      expect(
+        reopenedQueue?.cards.some(
+          (card) => card.id === developmentFixture.primaryCardId
+        )
+      ).toBe(true);
     });
 
     it("does not count manually excluded new cards as available new work in the global overview", async () => {

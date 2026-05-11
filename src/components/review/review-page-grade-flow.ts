@@ -228,10 +228,11 @@ function buildBaseGradeActionInput(input: {
     answeredCount: input.sessionViewData.session.answeredCount,
     cardId: input.selectedCard.id,
     cardMediaSlug: input.selectedCard.mediaSlug,
+    extraNewAnchorCount:
+      input.sessionViewData.session.extraNewAnchorCount ?? null,
     extraNewCount: input.sessionViewData.session.extraNewCount,
     expectedUpdatedAt:
-      input.sessionViewData.selectedCardContext.reviewStateUpdatedAt ??
-      undefined,
+      input.sessionViewData.selectedCardContext.reviewStateUpdatedAt ?? null,
     gradedCardIds: input.gradedCardIds,
     mediaSlug:
       input.sessionViewData.scope === "media"

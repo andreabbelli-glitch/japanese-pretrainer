@@ -6,6 +6,7 @@ import {
 
 type ReviewSearchState = {
   answeredCount: number;
+  extraNewAnchorCount: number | null;
   extraNewCount: number;
   noticeCode: string | null;
   segmentId: string | null;
@@ -19,6 +20,7 @@ export function buildReviewSearchStateCacheKeyParts(input: ReviewSearchState) {
   return [
     `answered:${input.answeredCount}`,
     `extra-new:${input.extraNewCount}`,
+    `extra-new-anchor:${input.extraNewAnchorCount ?? ""}`,
     `notice:${input.noticeCode ?? ""}`,
     `segment:${input.segmentId ?? ""}`,
     `selected:${input.selectedCardId ?? ""}`,
@@ -33,9 +35,14 @@ export function normalizeReviewSearchState(
     readPositiveIntegerSearchParam(searchParams.answered) ?? 0;
   const extraNewCount =
     readPositiveIntegerSearchParam(searchParams.extraNew) ?? 0;
+  const extraNewAnchorCount =
+    extraNewCount > 0
+      ? readNonNegativeIntegerSearchParam(searchParams.extraNewAnchor) ?? null
+      : null;
 
   return {
     answeredCount,
+    extraNewAnchorCount,
     extraNewCount,
     noticeCode: readSearchParam(searchParams, "notice") || null,
     segmentId: readSearchParam(searchParams, "segment") || null,
@@ -53,4 +60,20 @@ function readSearchParam(
   key: string
 ) {
   return readFirstNonEmptySearchParam(searchParams[key]) ?? "";
+}
+
+function readNonNegativeIntegerSearchParam(
+  value: string | string[] | undefined
+) {
+  const matched = readMatchingSearchParam(value, (candidate) => {
+    if (!/^\d+$/u.test(candidate)) {
+      return false;
+    }
+
+    const parsed = Number.parseInt(candidate, 10);
+
+    return Number.isSafeInteger(parsed) && parsed >= 0;
+  });
+
+  return matched ? Number.parseInt(matched, 10) : undefined;
 }

@@ -50,7 +50,10 @@ export async function gradeReviewCardAction(formData: FormData) {
   const rating = readRequiredString(formData, "rating");
   const answeredCount = readCount(formData, "answered");
   const extraNewCount = readCount(formData, "extraNew");
-  const expectedUpdatedAt = readOptionalString(formData, "expectedUpdatedAt");
+  const expectedUpdatedAt = readOptionalFreshnessToken(
+    formData,
+    "expectedUpdatedAt"
+  );
   const mediaId = await requireMediaIdForSlug(mediaSlug);
 
   await applyReviewGrade({
@@ -268,6 +271,7 @@ async function runReviewSessionMutationAction(
     buildRedirectSearchParams({
       answeredCount: input.answeredCount,
       cardId: input.cardId,
+      extraNewAnchorCount: input.extraNewAnchorCount,
       extraNewCount: input.extraNewCount,
       notice: mutationResult.notice,
       redirectMode: input.redirectMode,
@@ -295,11 +299,16 @@ function readCount(formData: FormData, key: string) {
   return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : 0;
 }
 
-function readOptionalString(formData: FormData, key: string) {
+function readOptionalFreshnessToken(formData: FormData, key: string) {
   const value = formData.get(key);
-  const normalized = typeof value === "string" ? value.trim() : "";
 
-  return normalized.length > 0 ? normalized : undefined;
+  if (typeof value !== "string") {
+    return undefined;
+  }
+
+  const normalized = value.trim();
+
+  return normalized.length > 0 ? normalized : null;
 }
 
 function readRedirectMode(formData: FormData): ReviewRedirectMode {

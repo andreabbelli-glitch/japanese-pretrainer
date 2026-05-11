@@ -3,7 +3,12 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ReviewPage } from "@/components/review/review-page";
-import { card, lessonProgress, reviewSubjectState } from "@/db/schema";
+import {
+  card,
+  lessonProgress,
+  reviewSubjectLog,
+  reviewSubjectState
+} from "@/db/schema";
 import type { DatabaseClient } from "@/db";
 import { developmentFixture } from "@/db/seed";
 import { buildKanjiClashContrastKey } from "@/lib/kanji-clash";
@@ -454,6 +459,167 @@ describe("review session actions", () => {
       reps: 1,
       state: "learning"
     });
+  });
+
+  it("consumes top-up allowance across server refreshes using the session anchor", async () => {
+    await updateStudySettings(
+      {
+        furiganaMode: "on",
+        glossaryDefaultSort: "lesson_order",
+        reviewDailyLimit: 1
+      },
+      database
+    );
+    const fixture = await createIsolatedNewMediaFixture(database, {
+      cardCount: 4,
+      mediaId: "topup_anchor_media",
+      mediaSlug: "topup-anchor-media",
+      title: "Top-up Anchor Media"
+    });
+
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-03-11T13:00:00.000Z"));
+
+    try {
+      const initialPage = await getReviewPageData(
+        fixture.mediaSlug,
+        {},
+        database
+      );
+
+      expect(initialPage?.queue.dailyLimit).toBe(1);
+      expect(initialPage?.queue.newQueuedCount).toBe(1);
+
+      await applyReviewGrade({
+        cardId: initialPage?.selectedCard?.id ?? fixture.cardIds[0],
+        database,
+        rating: "good"
+      });
+
+      const topUpPage = await getReviewPageData(
+        fixture.mediaSlug,
+        {
+          answered: "1",
+          extraNew: "2",
+          extraNewAnchor: "1"
+        },
+        database
+      );
+      const firstExtraCardId = topUpPage?.selectedCard?.id;
+
+      expect(topUpPage?.queue.newAvailableCount).toBe(3);
+      expect(topUpPage?.queue.newQueuedCount).toBe(2);
+      expect(
+        (
+          topUpPage?.session as
+            | { extraNewAnchorCount?: number | null }
+            | undefined
+        )?.extraNewAnchorCount
+      ).toBe(1);
+
+      await applyReviewGrade({
+        cardId: firstExtraCardId ?? fixture.cardIds[1],
+        database,
+        rating: "good"
+      });
+
+      const refreshedPage = await getReviewPageData(
+        fixture.mediaSlug,
+        {
+          answered: "2",
+          extraNew: "2",
+          extraNewAnchor: "1"
+        },
+        database
+      );
+
+      expect(refreshedPage?.queue.newAvailableCount).toBe(2);
+      expect(refreshedPage?.queue.newQueuedCount).toBe(1);
+      expect(refreshedPage?.queue.queueCount).toBe(1);
+      expect(refreshedPage?.queueCardIds).toHaveLength(1);
+      expect(refreshedPage?.queueCardIds).not.toContain(firstExtraCardId);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("treats an unanchored top-up as fresh after earlier extra introductions", async () => {
+    await updateStudySettings(
+      {
+        furiganaMode: "on",
+        glossaryDefaultSort: "lesson_order",
+        reviewDailyLimit: 1
+      },
+      database
+    );
+    const fixture = await createIsolatedNewMediaFixture(database, {
+      cardCount: 4,
+      mediaId: "topup_fresh_anchor_media",
+      mediaSlug: "topup-fresh-anchor-media",
+      title: "Fresh Top-up Anchor Media"
+    });
+
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-03-11T13:00:00.000Z"));
+
+    try {
+      const initialPage = await getReviewPageData(
+        fixture.mediaSlug,
+        {},
+        database
+      );
+
+      await applyReviewGrade({
+        cardId: initialPage?.selectedCard?.id ?? fixture.cardIds[0],
+        database,
+        rating: "good"
+      });
+
+      const firstTopUp = await getReviewPageData(
+        fixture.mediaSlug,
+        {
+          answered: "1",
+          extraNew: "1"
+        },
+        database
+      );
+
+      expect(firstTopUp?.session.extraNewAnchorCount).toBe(1);
+      expect(firstTopUp?.queue.newQueuedCount).toBe(1);
+
+      await applyReviewGrade({
+        cardId: firstTopUp?.selectedCard?.id ?? fixture.cardIds[1],
+        database,
+        rating: "good"
+      });
+
+      const consumedFirstTopUp = await getReviewPageData(
+        fixture.mediaSlug,
+        {
+          answered: "2",
+          extraNew: "1",
+          extraNewAnchor: "1"
+        },
+        database
+      );
+
+      expect(consumedFirstTopUp?.queue.newQueuedCount).toBe(0);
+
+      const freshTopUp = await getReviewPageData(
+        fixture.mediaSlug,
+        {
+          answered: "2",
+          extraNew: "1"
+        },
+        database
+      );
+
+      expect(freshTopUp?.session.extraNewAnchorCount).toBe(2);
+      expect(freshTopUp?.queue.newQueuedCount).toBe(1);
+      expect(freshTopUp?.queueCardIds).toHaveLength(1);
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("blocks single-card hydration, prefetch, and grading when the lesson is incomplete", async () => {
@@ -1164,6 +1330,39 @@ describe("review session actions", () => {
       developmentFixture.mediaId
     );
     expect(revalidatePathMock).not.toHaveBeenCalled();
+  });
+
+  it("treats a blank form freshness token as an observed missing subject state", async () => {
+    const fixture = await createIsolatedNewMediaFixture(database, {
+      cardCount: 1,
+      mediaId: "media_form_grade_guard",
+      mediaSlug: "form-grade-guard",
+      title: "Form Grade Guard"
+    });
+    const cardId = fixture.cardIds[0]!;
+    const subjectKey = `entry:term:${fixture.termIds[0]}`;
+    const { gradeReviewCardAction } =
+      await loadReviewActionsForDatabase(database);
+    const formData = new FormData();
+    formData.set("mediaSlug", fixture.mediaSlug);
+    formData.set("cardId", cardId);
+    formData.set("rating", "good");
+    formData.set("answered", "0");
+    formData.set("extraNew", "0");
+    formData.set("expectedUpdatedAt", "");
+
+    await expect(gradeReviewCardAction(formData)).rejects.toThrow(
+      `redirect:/media/${fixture.mediaSlug}/review?answered=1`
+    );
+    await expect(gradeReviewCardAction(formData)).rejects.toThrow(
+      "Review card is out of date."
+    );
+
+    const logs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, subjectKey)
+    });
+
+    expect(logs).toHaveLength(1);
   });
 
   it("advances to the next queue card after reopening a manual card when redirectMode advances queue", async () => {

@@ -85,6 +85,7 @@ export function buildReviewSessionActionInput(
     answeredCount: viewData.session.answeredCount,
     cardId: selectedCard.id,
     cardMediaSlug: selectedCard.mediaSlug,
+    extraNewAnchorCount: viewData.session.extraNewAnchorCount ?? null,
     extraNewCount: viewData.session.extraNewCount,
     gradedCardIds,
     mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,

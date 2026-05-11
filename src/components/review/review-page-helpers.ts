@@ -273,6 +273,8 @@ export function buildOptimisticGradeResult(input: {
         },
     session: {
       answeredCount: input.currentData.session.answeredCount + 1,
+      extraNewAnchorCount:
+        input.currentData.session.extraNewAnchorCount ?? null,
       extraNewCount: input.currentData.session.extraNewCount,
       segmentId: input.currentData.session.segmentId
     }
@@ -326,6 +328,8 @@ export function buildOptimisticFirstCandidateGradeResult(input: {
         },
     session: {
       answeredCount: input.currentData.session.answeredCount + 1,
+      extraNewAnchorCount:
+        input.currentData.session.extraNewAnchorCount ?? null,
       extraNewCount: input.currentData.session.extraNewCount,
       segmentId: input.currentData.session.segmentId
     }

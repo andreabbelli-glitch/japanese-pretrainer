@@ -132,13 +132,16 @@ describe("site helpers", () => {
       buildReviewSessionHref({
         answeredCount: 3,
         cardId: "card-iku-review",
+        extraNewAnchorCount: 1,
         extraNewCount: 2,
         mediaSlug: "fixture-tcg",
         segmentId: "segment_fixture_starter_core",
         showAnswer: true
+      } as Parameters<typeof buildReviewSessionHref>[0] & {
+        extraNewAnchorCount: number;
       })
     ).toBe(
-      "/media/fixture-tcg/review?answered=3&card=card-iku-review&extraNew=2&segment=segment_fixture_starter_core&show=answer"
+      "/media/fixture-tcg/review?answered=3&card=card-iku-review&extraNew=2&extraNewAnchor=1&segment=segment_fixture_starter_core&show=answer"
     );
     expect(areas.map((area) => mediaStudyHref("fixture-tcg", area))).toEqual([
       "/media/fixture-tcg/textbook",
@@ -153,14 +156,17 @@ describe("site helpers", () => {
       buildReviewRedirectUrl({
         answeredCount: 4,
         cardId: "card-iku-review",
+        extraNewAnchorCount: 1,
         extraNewCount: 2,
         mediaSlug: "fixture-tcg",
         notice: "known",
         redirectMode: "preserve_card",
         segmentId: "segment_fixture_starter_core"
+      } as Parameters<typeof buildReviewRedirectUrl>[0] & {
+        extraNewAnchorCount: number;
       })
     ).toBe(
-      "/media/fixture-tcg/review?answered=4&card=card-iku-review&extraNew=2&segment=segment_fixture_starter_core&notice=known"
+      "/media/fixture-tcg/review?answered=4&card=card-iku-review&extraNew=2&extraNewAnchor=1&segment=segment_fixture_starter_core&notice=known"
     );
 
     expect(

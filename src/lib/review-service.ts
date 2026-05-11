@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 
-import { eq, inArray } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 
 import { db, type DatabaseClient, type DatabaseQueryClient } from "@/db";
 import {
@@ -51,6 +51,8 @@ import { buildEntryKey } from "./entry-id";
 export type ReviewMutationTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]
 >[0];
+
+const REVIEW_CARD_OUT_OF_DATE_ERROR_MESSAGE = "Review card is out of date.";
 
 function splitLinkIds(links: Array<{ entryType: string; entryId: string }>) {
   const termIds = new Set<string>();
@@ -158,14 +160,16 @@ export async function gradeReviewCardInTransaction(input: {
     subjectContextPromise,
     fsrsOptimizerSnapshotPromise
   ]);
-  const expectedUpdatedAt = normalizeOptionalString(input.expectedUpdatedAt);
+  const expectedUpdatedAt = normalizeReviewFreshnessExpectation(
+    input.expectedUpdatedAt
+  );
   const currentUpdatedAt = subjectContext.subjectState?.updatedAt ?? null;
 
   if (
     expectedUpdatedAt !== undefined &&
     expectedUpdatedAt !== currentUpdatedAt
   ) {
-    throw new Error("Review card is out of date.");
+    throw new Error(REVIEW_CARD_OUT_OF_DATE_ERROR_MESSAGE);
   }
 
   const resolvedSubjectState = resolveSubjectReviewStateForValidation(
@@ -210,7 +214,7 @@ export async function gradeReviewCardInTransaction(input: {
   });
   const sourceState = resolveReviewSubjectStateSource(subjectContext, nowIso);
 
-  await upsertReviewSubjectState(
+  const didWriteSubjectState = await writeReviewSubjectStateForGrade(
     input.transaction,
     patchReviewSubjectState(sourceState, {
       cardId: loadedCard.id,
@@ -232,8 +236,13 @@ export async function gradeReviewCardInTransaction(input: {
       subjectType: subjectContext.identity.subjectKind,
       suspended: false,
       updatedAt: nowIso
-    })
+    }),
+    expectedUpdatedAt
   );
+
+  if (!didWriteSubjectState) {
+    throw new Error(REVIEW_CARD_OUT_OF_DATE_ERROR_MESSAGE);
+  }
 
   await input.transaction.insert(reviewSubjectLog).values({
     id: `review_subject_log_${randomUUID()}`,
@@ -440,6 +449,10 @@ export async function setLinkedEntryStatusByCard(input: {
         initialState: input.status === "learning" ? "learning" : "new"
       }
     );
+    const restoredState =
+      input.status === "learning" && sourceState.state === "known_manual"
+        ? "learning"
+        : sourceState.state;
 
     await upsertReviewSubjectState(
       tx,
@@ -447,6 +460,7 @@ export async function setLinkedEntryStatusByCard(input: {
         lastInteractionAt: nowIso,
         manualOverride: isManualOverride,
         schedulerVersion: "fsrs_v1",
+        state: restoredState,
         suspended: isSuspended,
         updatedAt: nowIso
       })
@@ -744,6 +758,7 @@ type ReviewSubjectStateInsert = typeof reviewSubjectState.$inferInsert;
 type ReviewSubjectStatePatch = Partial<
   Omit<ReviewSubjectStateInsert, "createdAt" | "subjectKey">
 >;
+type ReviewFreshnessExpectation = string | null | undefined;
 
 function resolveReviewSubjectStateSource(
   context: ReviewSubjectMutationContext,
@@ -841,28 +856,91 @@ async function upsertReviewSubjectState(
     .values(state)
     .onConflictDoUpdate({
       target: reviewSubjectState.subjectKey,
-      set: {
-        cardId: state.cardId,
-        crossMediaGroupId: state.crossMediaGroupId,
-        difficulty: state.difficulty,
-        dueAt: state.dueAt,
-        entryId: state.entryId,
-        entryType: state.entryType,
-        lastInteractionAt: state.lastInteractionAt,
-        lastReviewedAt: state.lastReviewedAt,
-        learningSteps: state.learningSteps,
-        lapses: state.lapses,
-        manualOverride: state.manualOverride,
-        reps: state.reps,
-        scheduledDays: state.scheduledDays,
-        schedulerVersion: state.schedulerVersion,
-        suspended: state.suspended,
-        stability: state.stability,
-        state: state.state,
-        subjectType: state.subjectType,
-        updatedAt: state.updatedAt
-      }
+      set: getReviewSubjectStateMutationSet(state)
     });
+}
+
+async function writeReviewSubjectStateForGrade(
+  transaction: ReviewMutationTransaction,
+  state: ReviewSubjectStateInsert,
+  expectedUpdatedAt: ReviewFreshnessExpectation
+) {
+  if (expectedUpdatedAt === undefined) {
+    await upsertReviewSubjectState(transaction, state);
+    return true;
+  }
+
+  if (expectedUpdatedAt === null) {
+    return insertReviewSubjectStateIfAbsent(transaction, state);
+  }
+
+  return updateReviewSubjectStateIfCurrent(
+    transaction,
+    state,
+    expectedUpdatedAt
+  );
+}
+
+async function insertReviewSubjectStateIfAbsent(
+  transaction: ReviewMutationTransaction,
+  state: ReviewSubjectStateInsert
+) {
+  const [insertedRow] = await transaction
+    .insert(reviewSubjectState)
+    .values(state)
+    .onConflictDoNothing({
+      target: reviewSubjectState.subjectKey
+    })
+    .returning({
+      subjectKey: reviewSubjectState.subjectKey
+    });
+
+  return Boolean(insertedRow);
+}
+
+async function updateReviewSubjectStateIfCurrent(
+  transaction: ReviewMutationTransaction,
+  state: ReviewSubjectStateInsert,
+  expectedUpdatedAt: string
+) {
+  const [updatedRow] = await transaction
+    .update(reviewSubjectState)
+    .set(getReviewSubjectStateMutationSet(state))
+    .where(
+      and(
+        eq(reviewSubjectState.subjectKey, state.subjectKey),
+        eq(reviewSubjectState.updatedAt, expectedUpdatedAt)
+      )
+    )
+    .returning({
+      subjectKey: reviewSubjectState.subjectKey
+    });
+
+  return Boolean(updatedRow);
+}
+
+function getReviewSubjectStateMutationSet(state: ReviewSubjectStateInsert) {
+  return {
+    cardId: state.cardId,
+    crossMediaGroupId: state.crossMediaGroupId,
+    difficulty: state.difficulty,
+    dueAt: state.dueAt,
+    entryId: state.entryId,
+    entryType: state.entryType,
+    lastInteractionAt: state.lastInteractionAt,
+    lastReviewedAt: state.lastReviewedAt,
+    learningSteps: state.learningSteps,
+    lapses: state.lapses,
+    manualOverride: state.manualOverride,
+    reps: state.reps,
+    scheduledDays: state.scheduledDays,
+    schedulerVersion: state.schedulerVersion,
+    suspended: state.suspended,
+    stability: state.stability,
+    state: state.state,
+    subjectType: state.subjectType,
+    updatedAt: state.updatedAt
+  };
 }
 
 function dedupeLinkedEntryRefs(entryRefs: LinkedEntryRef[]) {
@@ -883,8 +961,18 @@ function dedupeLinkedEntryRefs(entryRefs: LinkedEntryRef[]) {
   return deduped;
 }
 
-function normalizeOptionalString(value?: string | null) {
-  const normalized = value?.trim();
+function normalizeReviewFreshnessExpectation(
+  value?: string | null
+): ReviewFreshnessExpectation {
+  if (value === undefined) {
+    return undefined;
+  }
 
-  return normalized ? normalized : undefined;
+  if (value === null) {
+    return null;
+  }
+
+  const normalized = value.trim();
+
+  return normalized ? normalized : null;
 }

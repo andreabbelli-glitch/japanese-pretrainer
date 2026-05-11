@@ -185,16 +185,32 @@ describe("global review queue filtering", () => {
       .set({ status: "suspended" })
       .where(eq(card.id, "card_b_shared"));
 
-    const [mediaBProgress, snapshots] = await Promise.all([
-      getMediaProgressPageData("media-b", database),
-      loadReviewOverviewSnapshots(database, [{ id: "media_b", slug: "media-b" }])
-    ]);
+    const [mediaBPage, mediaBQueue, mediaBProgress, snapshots] =
+      await Promise.all([
+        getReviewPageData("media-b", {}, database),
+        getReviewQueueSnapshotForMedia("media-b", database),
+        getMediaProgressPageData("media-b", database),
+        loadReviewOverviewSnapshots(database, [
+          { id: "media_b", slug: "media-b" }
+        ])
+      ]);
     const mediaBSnapshot = snapshots.get("media_b");
 
     expect(mediaBSnapshot?.newAvailableCount).toBe(1);
     expect(mediaBSnapshot?.newQueuedCount).toBe(0);
     expect(mediaBSnapshot?.queueCount).toBe(0);
     expect(mediaBSnapshot?.nextCardFront).toBeUndefined();
+
+    expect(mediaBPage?.queue.newAvailableCount).toBe(1);
+    expect(mediaBPage?.queue.newQueuedCount).toBe(0);
+    expect(mediaBPage?.queue.queueCount).toBe(0);
+    expect(mediaBPage?.queueCardIds).toEqual([]);
+    expect(mediaBPage?.selectedCard).toBeNull();
+
+    expect(mediaBQueue?.cards).toEqual([]);
+    expect(mediaBQueue?.newAvailableCount).toBe(1);
+    expect(mediaBQueue?.newQueuedCount).toBe(0);
+    expect(mediaBQueue?.queueCount).toBe(0);
 
     expect(mediaBProgress?.review.newAvailableCount).toBe(1);
     expect(mediaBProgress?.review.newQueuedCount).toBe(0);
@@ -252,17 +268,31 @@ describe("global review queue filtering", () => {
     vi.setSystemTime(now);
 
     try {
-      const [mediaBProgress, snapshots] = await Promise.all([
-        getMediaProgressPageData("media-b", database),
-        loadReviewOverviewSnapshots(database, [
-          { id: "media_b", slug: "media-b" }
-        ])
-      ]);
+      const [mediaBPage, mediaBQueue, mediaBProgress, snapshots] =
+        await Promise.all([
+          getReviewPageData("media-b", {}, database),
+          getReviewQueueSnapshotForMedia("media-b", database),
+          getMediaProgressPageData("media-b", database),
+          loadReviewOverviewSnapshots(database, [
+            { id: "media_b", slug: "media-b" }
+          ])
+        ]);
       const mediaBSnapshot = snapshots.get("media_b");
 
       expect(mediaBSnapshot?.dueCount).toBe(1);
       expect(mediaBSnapshot?.queueCount).toBe(1);
       expect(mediaBSnapshot?.nextCardFront).toBe("B due two");
+
+      expect(mediaBPage?.queue.dueCount).toBe(1);
+      expect(mediaBPage?.queue.queueCount).toBe(1);
+      expect(mediaBPage?.queueCardIds).toEqual(["card_b_due_two"]);
+      expect(mediaBPage?.selectedCard?.id).toBe("card_b_due_two");
+
+      expect(mediaBQueue?.cards.map((reviewCard) => reviewCard.id)).toEqual([
+        "card_b_due_two"
+      ]);
+      expect(mediaBQueue?.dueCount).toBe(1);
+      expect(mediaBQueue?.queueCount).toBe(1);
 
       expect(mediaBProgress?.review.dueCount).toBe(1);
       expect(mediaBProgress?.review.queueCount).toBe(1);

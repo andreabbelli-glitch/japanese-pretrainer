@@ -100,6 +100,7 @@ describe("resolveReviewPageSelection", () => {
       queueSnapshot,
       searchState: {
         answeredCount: 0,
+        extraNewAnchorCount: null,
         extraNewCount: 0,
         noticeCode: null,
         segmentId: null,
@@ -135,6 +136,7 @@ describe("resolveReviewPageSelection", () => {
       queueSnapshot,
       searchState: {
         answeredCount: 0,
+        extraNewAnchorCount: null,
         extraNewCount: 0,
         noticeCode: null,
         segmentId: null,
@@ -168,6 +170,7 @@ describe("resolveReviewPageSelection", () => {
       queueSnapshot,
       searchState: {
         answeredCount: 0,
+        extraNewAnchorCount: null,
         extraNewCount: 0,
         noticeCode: null,
         segmentId: null,

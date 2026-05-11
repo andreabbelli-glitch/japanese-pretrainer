@@ -17,6 +17,7 @@ export type ReviewRedirectMode =
 export function buildReviewSessionHref(input: {
   answeredCount?: number;
   cardId?: string | null;
+  extraNewAnchorCount?: number | null;
   extraNewCount?: number;
   mediaSlug: string;
   segmentId?: string | null;
@@ -28,6 +29,7 @@ export function buildReviewSessionHref(input: {
 export function buildGlobalReviewSessionHref(input: {
   answeredCount?: number;
   cardId?: string | null;
+  extraNewAnchorCount?: number | null;
   extraNewCount?: number;
   segmentId?: string | null;
   showAnswer?: boolean;
@@ -54,6 +56,7 @@ export function shouldPersistReviewSessionCard(input: {
 export function buildCanonicalReviewSessionHref(input: {
   answeredCount?: number;
   cardId?: string | null;
+  extraNewAnchorCount?: number | null;
   extraNewCount?: number;
   isQueueCard: boolean;
   mediaSlug: string;
@@ -64,6 +67,7 @@ export function buildCanonicalReviewSessionHref(input: {
   return buildReviewSessionHref({
     answeredCount: input.answeredCount,
     cardId: shouldPersistReviewSessionCard(input) ? input.cardId : null,
+    extraNewAnchorCount: input.extraNewAnchorCount,
     extraNewCount: input.extraNewCount,
     mediaSlug: input.mediaSlug,
     segmentId: input.segmentId,
@@ -75,6 +79,7 @@ export function buildCanonicalReviewSessionHrefForBase(input: {
   answeredCount?: number;
   baseHref: Route;
   cardId?: string | null;
+  extraNewAnchorCount?: number | null;
   extraNewCount?: number;
   isQueueCard: boolean;
   position: number | null;
@@ -84,6 +89,7 @@ export function buildCanonicalReviewSessionHrefForBase(input: {
   return buildReviewSessionHrefForBase(input.baseHref, {
     answeredCount: input.answeredCount,
     cardId: shouldPersistReviewSessionCard(input) ? input.cardId : null,
+    extraNewAnchorCount: input.extraNewAnchorCount,
     extraNewCount: input.extraNewCount,
     segmentId: input.segmentId,
     showAnswer: input.showAnswer
@@ -95,6 +101,7 @@ function buildReviewSessionHrefForBase(
   input: {
     answeredCount?: number;
     cardId?: string | null;
+    extraNewAnchorCount?: number | null;
     extraNewCount?: number;
     segmentId?: string | null;
     showAnswer?: boolean;
@@ -111,6 +118,14 @@ function buildReviewSessionHrefForBase(
 
     if (input.extraNewCount && input.extraNewCount > 0) {
       params.set("extraNew", String(input.extraNewCount));
+
+      if (
+        input.extraNewAnchorCount !== null &&
+        input.extraNewAnchorCount !== undefined &&
+        input.extraNewAnchorCount >= 0
+      ) {
+        params.set("extraNewAnchor", String(input.extraNewAnchorCount));
+      }
     }
 
     if (input.segmentId) {
@@ -136,6 +151,7 @@ export function replaceReviewCardInHref(
 export function buildReviewRedirectUrl(input: {
   answeredCount: number;
   cardId?: string;
+  extraNewAnchorCount?: number | null;
   extraNewCount?: number;
   mediaSlug: string;
   redirectMode?: ReviewRedirectMode;
@@ -154,6 +170,7 @@ export function buildReviewRedirectUrl(input: {
     buildRedirectSearchParams({
       answeredCount: input.answeredCount,
       cardId: input.cardId,
+      extraNewAnchorCount: input.extraNewAnchorCount,
       extraNewCount: input.extraNewCount,
       notice: input.notice,
       redirectMode: input.redirectMode,
@@ -171,6 +188,7 @@ export function buildReviewRedirectUrl(input: {
 export function buildRedirectSearchParams(input: {
   answeredCount: number;
   cardId?: string;
+  extraNewAnchorCount?: number | null;
   extraNewCount?: number;
   notice?: string;
   redirectMode?: ReviewRedirectMode;
@@ -182,6 +200,7 @@ export function buildRedirectSearchParams(input: {
       input.cardId && input.redirectMode === "preserve_card"
         ? input.cardId
         : undefined,
+    extraNewAnchorCount: input.extraNewAnchorCount,
     extraNewCount: input.extraNewCount,
     notice: input.notice,
     segmentId: input.segmentId
@@ -191,6 +210,7 @@ export function buildRedirectSearchParams(input: {
 export function buildReviewSearchParams(input: {
   answeredCount: number;
   cardId?: string;
+  extraNewAnchorCount?: number | null;
   extraNewCount?: number;
   notice?: string;
   segmentId?: string | null;
@@ -208,6 +228,14 @@ export function buildReviewSearchParams(input: {
 
   if (input.extraNewCount && input.extraNewCount > 0) {
     params.extraNew = String(input.extraNewCount);
+
+    if (
+      input.extraNewAnchorCount !== null &&
+      input.extraNewAnchorCount !== undefined &&
+      input.extraNewAnchorCount >= 0
+    ) {
+      params.extraNewAnchor = String(input.extraNewAnchorCount);
+    }
   }
 
   if (input.segmentId) {

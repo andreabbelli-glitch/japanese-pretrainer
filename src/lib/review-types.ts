@@ -164,6 +164,7 @@ export type ReviewPageData = {
   };
   session: {
     answeredCount: number;
+    extraNewAnchorCount?: number | null;
     extraNewCount: number;
     forcedContrast?: ReviewForcedContrastResolution;
     notice?: string;

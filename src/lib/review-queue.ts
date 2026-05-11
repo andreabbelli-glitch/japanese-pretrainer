@@ -93,16 +93,21 @@ function preferReviewSubjectModelCardForMedia(
   const preferredCards = model.group.cards.filter(
     (card) => card.mediaId === preferredMediaId
   );
+  const activePreferredCards = preferredCards.filter(
+    (card) => card.status !== "suspended"
+  );
+  const displayCards =
+    activePreferredCards.length > 0 ? activePreferredCards : preferredCards;
 
   if (
-    preferredCards.length === 0 ||
-    preferredCards.length === model.group.cards.length
+    displayCards.length === 0 ||
+    displayCards.length === model.group.cards.length
   ) {
     return model;
   }
 
   const selectedCard = selectReviewSubjectRepresentativeCard(
-    preferredCards,
+    displayCards,
     model.group.subjectState,
     nowIso
   );
@@ -174,6 +179,7 @@ function buildQueuedNewReviewSubjectModels(input: {
 
   return queuedNewModels
     .map(input.resolveModelForDisplay)
+    .filter((model) => model.queueStateSnapshot.bucket === "new")
     .sort(compareReviewSubjectModelsByOrder);
 }
 
@@ -216,6 +222,7 @@ function createReviewSubjectDisplayResolver(input: {
 
 function resolveQueuedNewSlots(input: {
   dailyLimit: number;
+  extraNewAnchorCount?: number | null;
   extraNewCount: number;
   newIntroducedTodayCount: number;
 }) {
@@ -223,14 +230,32 @@ function resolveQueuedNewSlots(input: {
     input.dailyLimit - input.newIntroducedTodayCount,
     0
   );
+  const extraNewCount = Math.max(input.extraNewCount, 0);
 
-  return baseNewSlots + input.extraNewCount;
+  if (extraNewCount === 0) {
+    return baseNewSlots;
+  }
+
+  const extraNewAnchorCount =
+    input.extraNewAnchorCount ?? input.newIntroducedTodayCount;
+  const extraNewBaseline = Math.max(input.dailyLimit, extraNewAnchorCount);
+  const extraNewConsumedCount = Math.max(
+    input.newIntroducedTodayCount - extraNewBaseline,
+    0
+  );
+  const remainingExtraNewSlots = Math.max(
+    extraNewCount - extraNewConsumedCount,
+    0
+  );
+
+  return baseNewSlots + remainingExtraNewSlots;
 }
 
 export function buildReviewOverviewSnapshot(input: {
   cards: ReviewCardSource[];
   dailyLimit: number;
   entryLookup: Map<string, unknown>;
+  extraNewAnchorCount?: number | null;
   extraNewCount: number;
   newIntroducedTodayCount: number;
   nowIso: string;
@@ -254,18 +279,20 @@ export function buildReviewOverviewSnapshot(input: {
   const isVisibleInMedia = createReviewSubjectVisibilityResolver(
     input.visibleMediaId
   );
-  const classifiedModels = classifyReviewSubjectModels(
-    modelBuckets,
-    isVisibleInMedia,
-    input.visibleMediaId
-  );
   const resolveModelForDisplay = createReviewSubjectDisplayResolver({
     nowIso: input.nowIso,
     visibleMediaId: input.visibleMediaId
   });
+  const classifiedModels = classifyReviewSubjectModels(
+    modelBuckets,
+    isVisibleInMedia,
+    resolveModelForDisplay,
+    input.visibleMediaId
+  );
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
   const newSlots = resolveQueuedNewSlots({
     dailyLimit: input.dailyLimit,
+    extraNewAnchorCount: input.extraNewAnchorCount,
     extraNewCount: input.extraNewCount,
     newIntroducedTodayCount: input.newIntroducedTodayCount
   });
@@ -325,6 +352,7 @@ export function buildReviewQueueSubjectSnapshot(input: {
   dailyLimit: number;
   entryLookup: Map<string, unknown>;
   excludeCardIds?: string[];
+  extraNewAnchorCount?: number | null;
   extraNewCount: number;
   newIntroducedTodayCount: number;
   nowIso: string;
@@ -353,18 +381,20 @@ export function buildReviewQueueSubjectSnapshot(input: {
     ? subjectModels.filter((model) => isVisibleInMedia(model.group))
     : subjectModels;
   const buckets = bucketAndSortReviewSubjectModels(subjectModels);
-  const classifiedModels = classifyReviewSubjectModels(
-    buckets,
-    isVisibleInMedia,
-    input.visibleMediaId
-  );
   const resolveModelForDisplay = createReviewSubjectDisplayResolver({
     nowIso: input.nowIso,
     visibleMediaId: input.visibleMediaId
   });
+  const classifiedModels = classifyReviewSubjectModels(
+    buckets,
+    isVisibleInMedia,
+    resolveModelForDisplay,
+    input.visibleMediaId
+  );
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
   const newSlots = resolveQueuedNewSlots({
     dailyLimit: input.dailyLimit,
+    extraNewAnchorCount: input.extraNewAnchorCount,
     extraNewCount: input.extraNewCount,
     newIntroducedTodayCount: input.newIntroducedTodayCount
   });
@@ -470,6 +500,7 @@ export function bucketAndSortReviewSubjectModels(models: ReviewSubjectModel[]) {
 function classifyReviewSubjectModels(
   buckets: ReturnType<typeof bucketAndSortReviewSubjectModels>,
   isVisibleInMedia: (group: ReviewSubjectGroup) => boolean,
+  resolveModelForDisplay: (model: ReviewSubjectModel) => ReviewSubjectModel,
   visibleMediaId?: string
 ) {
   if (!visibleMediaId) {
@@ -489,14 +520,44 @@ function classifyReviewSubjectModels(
     };
   }
 
-  const filterVisible = (models: ReviewSubjectModel[]) =>
-    models.filter((model) => isVisibleInMedia(model.group));
+  const dueModels: ReviewSubjectModel[] = [];
+  const visibleNewModels: ReviewSubjectModel[] = [];
+  const manualModels: ReviewSubjectModel[] = [];
+  const suspendedModels: ReviewSubjectModel[] = [];
+  const upcomingModels: ReviewSubjectModel[] = [];
+  const reclassifyVisibleModels = (models: ReviewSubjectModel[]) => {
+    for (const model of models) {
+      if (!isVisibleInMedia(model.group)) {
+        continue;
+      }
 
-  const dueModels = filterVisible(buckets.dueModels);
-  const visibleNewModels = filterVisible(buckets.newModels);
-  const manualModels = filterVisible(buckets.manualModels);
-  const suspendedModels = filterVisible(buckets.suspendedModels);
-  const upcomingModels = filterVisible(buckets.upcomingModels);
+      const displayModel = resolveModelForDisplay(model);
+
+      switch (displayModel.queueStateSnapshot.bucket) {
+        case "due":
+          dueModels.push(displayModel);
+          break;
+        case "new":
+          visibleNewModels.push(displayModel);
+          break;
+        case "manual":
+          manualModels.push(displayModel);
+          break;
+        case "suspended":
+          suspendedModels.push(displayModel);
+          break;
+        case "upcoming":
+          upcomingModels.push(displayModel);
+          break;
+      }
+    }
+  };
+
+  reclassifyVisibleModels(buckets.dueModels);
+  reclassifyVisibleModels(buckets.newModels);
+  reclassifyVisibleModels(buckets.manualModels);
+  reclassifyVisibleModels(buckets.suspendedModels);
+  reclassifyVisibleModels(buckets.upcomingModels);
 
   return {
     dueModels,

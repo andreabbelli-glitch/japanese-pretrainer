@@ -111,6 +111,18 @@ function filterReviewSubjectGroupsByCards(
   });
 }
 
+function resolveReviewExtraNewAnchorCount(input: {
+  extraNewAnchorCount: number | null;
+  extraNewCount: number;
+  newIntroducedTodayCount: number;
+}) {
+  if (input.extraNewCount <= 0) {
+    return null;
+  }
+
+  return input.extraNewAnchorCount ?? input.newIntroducedTodayCount;
+}
+
 async function buildReviewSelectionContext(input: {
   cards: ReviewCardSource[];
   dailyLimit: number;
@@ -138,6 +150,11 @@ async function buildReviewSelectionContext(input: {
           input.subjectGroups,
           segmentFilteredCards
         );
+  const extraNewAnchorCount = resolveReviewExtraNewAnchorCount({
+    extraNewAnchorCount: input.searchState.extraNewAnchorCount,
+    extraNewCount: input.searchState.extraNewCount,
+    newIntroducedTodayCount: input.newIntroducedTodayCount
+  });
   const queueSnapshot = await measureWith(
     input.profiler,
     "buildReviewQueueSubjectSnapshot",
@@ -147,6 +164,7 @@ async function buildReviewSelectionContext(input: {
         dailyLimit: input.dailyLimit,
         entryLookup: input.entryLookup,
         excludeCardIds: input.excludeCardIds,
+        extraNewAnchorCount,
         extraNewCount: input.searchState.extraNewCount,
         newIntroducedTodayCount: input.newIntroducedTodayCount,
         nowIso,
@@ -195,6 +213,7 @@ async function buildReviewSelectionContext(input: {
 
   return {
     advanceCardModels,
+    extraNewAnchorCount,
     getFsrsOptimizerSnapshot,
     hasSelectedCard,
     nowIso,
@@ -224,6 +243,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
 }) {
   const {
     advanceCardModels,
+    extraNewAnchorCount,
     getFsrsOptimizerSnapshot,
     hasSelectedCard,
     nowIso,
@@ -344,6 +364,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
     },
     session: {
       answeredCount: input.searchState.answeredCount,
+      extraNewAnchorCount,
       extraNewCount: input.searchState.extraNewCount,
       notice: resolveReviewNotice(input.searchState.noticeCode),
       segmentId: input.searchState.segmentId
@@ -569,6 +590,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
 }): Promise<ReviewFirstCandidatePageData> {
   const {
     advanceCardModels,
+    extraNewAnchorCount,
     getFsrsOptimizerSnapshot,
     nowIso,
     queueCardIds,
@@ -658,6 +680,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
     },
     session: {
       answeredCount: input.searchState.answeredCount,
+      extraNewAnchorCount,
       extraNewCount: input.searchState.extraNewCount,
       notice: resolveReviewNotice(input.searchState.noticeCode),
       segmentId: input.searchState.segmentId
@@ -869,6 +892,7 @@ export function buildReviewQueueSnapshot(input: {
   cards: ReviewCardSource[];
   dailyLimit: number;
   entryLookup: Map<string, ReviewEntryLookupItem>;
+  extraNewAnchorCount?: number | null;
   extraNewCount: number;
   fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
   mediaById: ReviewMediaLookup;
@@ -881,6 +905,7 @@ export function buildReviewQueueSnapshot(input: {
     cards: input.cards,
     dailyLimit: input.dailyLimit,
     entryLookup: input.entryLookup,
+    extraNewAnchorCount: input.extraNewAnchorCount,
     extraNewCount: input.extraNewCount,
     newIntroducedTodayCount: input.newIntroducedTodayCount,
     nowIso: input.nowIso,
