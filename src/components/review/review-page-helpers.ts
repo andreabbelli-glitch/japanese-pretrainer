@@ -36,7 +36,9 @@ export const reviewGradeRatingCopy = [
 export type ReviewGradeValue = (typeof reviewGradeRatingCopy)[number]["value"];
 
 export function formatRemainingCardsLabel(count: number) {
-  return count === 1 ? "1 flashcard rimanente" : `${count} flashcard rimanenti`;
+  return count === 1
+    ? "1 flashcard dopo questa"
+    : `${count} flashcard dopo questa`;
 }
 
 export function collectQueuedPrefetchCardIds(input: {

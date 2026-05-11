@@ -189,6 +189,54 @@ describe("review page client hydration", () => {
     expect(markup).toContain("+ Contrasto");
   });
 
+  it("labels the stage counter as cards after the current one", () => {
+    const data = buildFullReviewPageData({
+      cardId: "card-a"
+    });
+
+    const markup = renderToStaticMarkup(
+      ReviewPageStage({
+        additionalNewCount: 0,
+        contextualGlossaryHref: "/glossary",
+        forcedContrastInputRef: { current: null },
+        forcedContrastListboxId: "review-contrast-listbox",
+        forcedContrastQuery: "",
+        forcedContrastSelection: null,
+        forcedContrastShouldShowSuggestions: false,
+        forcedContrastSuggestions: [],
+        fullSelectedCard: data.selectedCard,
+        gradePreviewLookup: new Map(),
+        handleGradeCard: () => {},
+        handleCloseForcedContrast: () => {},
+        handleForcedContrastQueryChange: () => {},
+        handleForcedContrastSelect: () => {},
+        handleMarkKnown: () => {},
+        handleOpenForcedContrast: () => {},
+        handleResetCard: () => {},
+        handleRevealAnswer: () => {},
+        handleRemoveForcedContrast: () => {},
+        handleSetLearning: () => {},
+        handleToggleSuspended: () => {},
+        hasSupportCards: false,
+        isAnswerRevealed: false,
+        isForcedContrastOpen: false,
+        isFullReviewPageData: true,
+        isGlobalReview: true,
+        isGradeControlsDisabled: false,
+        isHydratingFullData: false,
+        isPending: false,
+        remainingCount: 1,
+        sessionHref: "/review",
+        showCompletionState: false,
+        showFrontFurigana: true,
+        viewData: data
+      })
+    );
+
+    expect(markup).toContain("1 flashcard dopo questa");
+    expect(markup).not.toContain("1 flashcard rimanente");
+  });
+
   it("renders the selected forced contrast chip before grading", () => {
     const data = buildFirstCandidateReviewPageData({
       cardId: "card-a",
