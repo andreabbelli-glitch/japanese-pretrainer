@@ -370,6 +370,188 @@ describe("pitch accent fetch helpers", () => {
     });
   });
 
+  it("falls back to Jiten when Wiktionary and OJAD do not resolve", async () => {
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.includes("wiktionary")) {
+        return new Response(
+          JSON.stringify({
+            query: {
+              pages: [
+                {
+                  title: "覚悟",
+                  revisions: [
+                    {
+                      slots: {
+                        main: {
+                          content: "==Japanese==\n===Pronunciation===\n"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }),
+          { status: 200 }
+        );
+      }
+
+      if (url.includes("ojad")) {
+        return new Response("Not Found", {
+          status: 404,
+          statusText: "Not Found"
+        });
+      }
+
+      if (url.includes("api.jiten.moe/api/vocabulary/search")) {
+        return new Response(
+          JSON.stringify({
+            query: "覚悟",
+            queryType: "japanese",
+            results: [
+              {
+                wordId: 1206080,
+                readingIndex: 0,
+                text: "覚悟",
+                rubyText: "覚[かく]悟[ご]",
+                partsOfSpeech: ["n", "vs", "vt"],
+                meanings: ["readiness"],
+                frequencyRank: 725
+              }
+            ],
+            dictionaryResults: [],
+            hasMore: false
+          }),
+          { status: 200 }
+        );
+      }
+
+      if (url.includes("api.jiten.moe/api/vocabulary/1206080/0/info")) {
+        return new Response(
+          JSON.stringify({
+            wordId: 1206080,
+            mainReading: {
+              text: "覚[かく]悟[ご]",
+              readingIndex: 0
+            },
+            alternativeReadings: [],
+            pitchAccents: [1]
+          }),
+          { status: 200 }
+        );
+      }
+
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await resolvePitchAccentForEntry({
+      entry: {
+        aliases: [],
+        id: "term-kakugo",
+        kind: "term",
+        label: "覚悟",
+        mediaDirectory: "/tmp/fixture",
+        mediaSlug: "fixture",
+        reading: "かくご"
+      },
+      network: {
+        requestDelayMs: 0
+      }
+    });
+
+    expect(result).toMatchObject({
+      pitchAccent: 1,
+      source: {
+        pageUrl: "https://jiten.moe/vocabulary/1206080/0",
+        sourceLabel: "Jiten"
+      },
+      status: "resolved"
+    });
+  });
+
+  it("can restrict lookups to Jiten only", async () => {
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.includes("wiktionary") || url.includes("ojad")) {
+        throw new Error(`Unexpected non-Jiten URL: ${url}`);
+      }
+
+      if (url.includes("api.jiten.moe/api/vocabulary/search")) {
+        return new Response(
+          JSON.stringify({
+            results: [
+              {
+                wordId: 1206080,
+                readingIndex: 0,
+                text: "覚悟",
+                rubyText: "覚[かく]悟[ご]"
+              }
+            ]
+          }),
+          { status: 200 }
+        );
+      }
+
+      if (url.includes("api.jiten.moe/api/vocabulary/1206080/0/info")) {
+        return new Response(
+          JSON.stringify({
+            mainReading: {
+              text: "覚[かく]悟[ご]",
+              readingIndex: 0
+            },
+            pitchAccents: [1]
+          }),
+          { status: 200 }
+        );
+      }
+
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await resolvePitchAccentForEntry({
+      entry: {
+        aliases: [],
+        id: "term-kakugo",
+        kind: "term",
+        label: "覚悟",
+        mediaDirectory: "/tmp/fixture",
+        mediaSlug: "fixture",
+        reading: "かくご"
+      },
+      network: {
+        requestDelayMs: 0
+      },
+      sources: ["jiten"]
+    });
+
+    expect(result).toMatchObject({
+      pitchAccent: 1,
+      source: {
+        sourceLabel: "Jiten"
+      },
+      status: "resolved"
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it("rejects unknown pitch accent source filters before running the workflow", async () => {
+    await expect(
+      runPitchAccentCli(
+        "--content-root",
+        validContentRoot,
+        "--dry-run",
+        "--limit=0",
+        "--source",
+        "invalid"
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining(
+        "--source must be one of: wiktionary, ojad, jiten."
+      )
+    });
+  }, 60_000);
+
   it("writes pronunciations.json with pitch accent source metadata", async () => {
     const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pitch-manifest-"));
     const mediaDirectory = path.join(tempDir, "media", "fixture");
@@ -725,6 +907,17 @@ describe("pitch accent fetch helpers", () => {
       }
 
       if (
+        url.includes("api.jiten.moe") &&
+        (url.includes(encodeURIComponent("未解決")) ||
+          url.includes(encodeURIComponent("みかいけつ")))
+      ) {
+        return new Response("Not Found", {
+          status: 404,
+          statusText: "Not Found"
+        });
+      }
+
+      if (
         (url.includes("wiktionary") &&
           url.includes(encodeURIComponent("障害"))) ||
         (url.includes("wiktionary") &&
@@ -834,6 +1027,207 @@ describe("pitch accent fetch helpers", () => {
           pitch_accent_page_url:
             "https://en.wiktionary.org/wiki/%E9%9A%9C%E5%AE%B3",
           pitch_accent_source: "Wiktionary",
+          pitch_accent_status: "resolved"
+        }
+      ]);
+    } finally {
+      await rm(tempDir, { force: true, recursive: true });
+    }
+  });
+
+  it("retries persisted misses only when retryMisses is enabled", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pitch-retry-miss-"));
+    const mediaDirectory = path.join(tempDir, "media", "fixture");
+    const bundle = {
+      cardFiles: [],
+      cards: [],
+      grammarPatterns: [],
+      lessons: [],
+      media: null,
+      mediaDirectory,
+      mediaSlug: "fixture",
+      references: [],
+      terms: [
+        {
+          aliases: [],
+          id: "term-kakugo",
+          kind: "term" as const,
+          lemma: "覚悟",
+          meaningIt: "prontezza",
+          pitchAccent: undefined,
+          reading: "かくご",
+          romaji: "kakugo",
+          source: {
+            documentKind: "cards" as const,
+            filePath: "fixture.md",
+            sequence: 0
+          }
+        }
+      ]
+    };
+
+    const missFetchMock = vi.fn(async (url: string) => {
+      if (url.includes("wiktionary")) {
+        return new Response(
+          JSON.stringify({
+            query: {
+              pages: [
+                {
+                  title: "覚悟",
+                  revisions: [
+                    {
+                      slots: {
+                        main: {
+                          content: "==Japanese==\n===Pronunciation===\n"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }),
+          { status: 200 }
+        );
+      }
+
+      if (url.includes("ojad") || url.includes("api.jiten.moe")) {
+        return new Response("Not Found", {
+          status: 404,
+          statusText: "Not Found"
+        });
+      }
+
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+    vi.stubGlobal("fetch", missFetchMock);
+
+    try {
+      await fetchPitchAccentsForBundle({
+        bundle,
+        network: {
+          maxRetries: 0,
+          requestDelayMs: 0
+        }
+      });
+
+      const skippedFetchMock = vi.fn(
+        async () => new Response("{}", { status: 200 })
+      );
+      vi.stubGlobal("fetch", skippedFetchMock);
+
+      const skippedSummary = await fetchPitchAccentsForBundle({
+        bundle,
+        network: {
+          maxRetries: 0,
+          requestDelayMs: 0
+        }
+      });
+
+      expect(skippedSummary.results).toEqual([]);
+      expect(skippedFetchMock).not.toHaveBeenCalled();
+
+      const jitenFetchMock = vi.fn(async (url: string) => {
+        if (url.includes("wiktionary")) {
+          return new Response(
+            JSON.stringify({
+              query: {
+                pages: [
+                  {
+                    title: "覚悟",
+                    revisions: [
+                      {
+                        slots: {
+                          main: {
+                            content: "==Japanese==\n===Pronunciation===\n"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }),
+            { status: 200 }
+          );
+        }
+
+        if (url.includes("ojad")) {
+          return new Response("Not Found", {
+            status: 404,
+            statusText: "Not Found"
+          });
+        }
+
+        if (url.includes("api.jiten.moe/api/vocabulary/search")) {
+          return new Response(
+            JSON.stringify({
+              query: "覚悟",
+              queryType: "japanese",
+              results: [
+                {
+                  wordId: 1206080,
+                  readingIndex: 0,
+                  text: "覚悟",
+                  rubyText: "覚[かく]悟[ご]",
+                  partsOfSpeech: ["n", "vs", "vt"],
+                  meanings: ["readiness"],
+                  frequencyRank: 725
+                }
+              ],
+              dictionaryResults: [],
+              hasMore: false
+            }),
+            { status: 200 }
+          );
+        }
+
+        if (url.includes("api.jiten.moe/api/vocabulary/1206080/0/info")) {
+          return new Response(
+            JSON.stringify({
+              wordId: 1206080,
+              mainReading: {
+                text: "覚[かく]悟[ご]",
+                readingIndex: 0
+              },
+              alternativeReadings: [],
+              pitchAccents: [1]
+            }),
+            { status: 200 }
+          );
+        }
+
+        throw new Error(`Unexpected URL: ${url}`);
+      });
+      vi.stubGlobal("fetch", jitenFetchMock);
+
+      const retriedSummary = await fetchPitchAccentsForBundle({
+        bundle,
+        network: {
+          maxRetries: 0,
+          requestDelayMs: 0
+        },
+        retryMisses: true
+      });
+
+      expect(retriedSummary.results).toHaveLength(1);
+      expect(retriedSummary.results[0]).toMatchObject({
+        entryId: "term-kakugo",
+        pitchAccent: 1,
+        status: "resolved"
+      });
+
+      const manifest = JSON.parse(
+        await readFile(path.join(mediaDirectory, "pronunciations.json"), "utf8")
+      );
+
+      expect(manifest.entries).toEqual([
+        {
+          entry_id: "term-kakugo",
+          entry_type: "term",
+          pitch_accent: 1,
+          pitch_accent_page_url: "https://jiten.moe/vocabulary/1206080/0",
+          pitch_accent_source: "Jiten",
           pitch_accent_status: "resolved"
         }
       ]);

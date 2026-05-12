@@ -125,7 +125,8 @@ export function buildReviewControllerSnapshot(
         })
       : [];
   const position = selectedCard ? selectedCardContext.position : null;
-  const remainingCount = selectedCard ? selectedCardContext.remainingCount : 0;
+  const remainingCount =
+    selectedCard && isQueueCard ? viewData.queue.queueCount : 0;
   const fullSelectedCardContext = isFullReviewPageData
     ? viewData.selectedCardContext
     : null;

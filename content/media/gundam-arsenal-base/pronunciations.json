@@ -96,7 +96,10 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E6%88%A6%E7%B8%BE/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1646170/0",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -149,7 +152,10 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%82%AB%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 4,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2290760/0",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -557,7 +563,10 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%87%BA%E6%92%83/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1338730/0",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",

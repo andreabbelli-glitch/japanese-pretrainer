@@ -24,6 +24,8 @@ Comandi utili:
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --dry-run
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --limit 20
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --refresh
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --retry-misses
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --retry-misses --source jiten
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --entry term-taberu
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --word 食べる --word 設定
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --words-file tmp/pitch-accent-targets.tsv
@@ -72,7 +74,15 @@ Per ogni entry:
 
 1. si prova `Wiktionary`;
 2. se non c'e un `acc=` univoco e coerente con la reading, si prova `OJAD`;
-3. se una fonte risolve, si aggiorna `pronunciations.json`.
+3. se anche OJAD non risolve, si prova `Jiten`;
+4. se una fonte risolve, si aggiorna `pronunciations.json`.
+
+Il fallback Jiten usa solo le API vocabulary per leggere `pitchAccents`; non
+scarica o genera audio.
+
+`--source` limita le fonti da interrogare e puo essere passato piu volte. I
+valori supportati sono `wiktionary`, `ojad` e `jiten`. Senza `--source`, il
+comando usa l'ordine completo sopra.
 
 ## Stati possibili
 
@@ -99,3 +109,6 @@ Quando il fetch riparte senza `--refresh`:
 - le entry `resolved` vengono saltate;
 - le entry `miss` vengono saltate, perche sono gia state controllate;
 - le entry `source_error` vengono ritentate.
+
+Usa `--retry-misses` quando vuoi riprovare le entry gia marcate `miss`, per
+esempio dopo l'aggiunta di una nuova fonte come Jiten.

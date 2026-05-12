@@ -99,6 +99,27 @@ describe("buildReviewControllerSnapshot", () => {
     ]);
   });
 
+  it("uses the visible queue total for the stage remaining counter", () => {
+    const queueCardIds = Array.from(
+      { length: 21 },
+      (_, index) => `card-${index + 1}`
+    );
+    const snapshot = buildReviewControllerSnapshot(
+      buildSnapshotInput({
+        queueCardIds,
+        viewData: buildFullReviewPageData("card-5", {
+          position: 5,
+          queueCardIds,
+          selectedRemainingCount: 16
+        })
+      })
+    );
+
+    expect(snapshot.queueIndex).toBe(4);
+    expect(snapshot.selectedCardContext.remainingCount).toBe(16);
+    expect(snapshot.remainingCount).toBe(21);
+  });
+
   it("builds session and contextual glossary hrefs when the answer is revealed", () => {
     const snapshot = buildReviewControllerSnapshot(
       buildSnapshotInput({
@@ -196,6 +217,7 @@ function buildFullReviewPageData(
     position?: number | null;
     queueCardIds?: string[];
     scope?: "global" | "media";
+    selectedRemainingCount?: number;
     segmentId?: string | null;
     showAnswer?: boolean;
   }
@@ -240,7 +262,8 @@ function buildFullReviewPageData(
       gradePreviews: [],
       isQueueCard: options?.isQueueCard ?? true,
       position: options?.position ?? 1,
-      remainingCount: Math.max(0, queueCardIds.length - 1),
+      remainingCount:
+        options?.selectedRemainingCount ?? Math.max(0, queueCardIds.length - 1),
       reviewStateUpdatedAt: selectedCard.reviewStateUpdatedAt ?? null,
       showAnswer: options?.showAnswer ?? false
     },

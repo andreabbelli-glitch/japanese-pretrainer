@@ -21,7 +21,7 @@ import {
   type PronunciationFetchNetworkOptions
 } from "./pronunciation-shared.ts";
 
-type PitchAccentSourceKey = "wiktionary" | "ojad";
+type PitchAccentSourceKey = "wiktionary" | "ojad" | "jiten";
 
 type PitchAccentFetchTarget = {
   aliases: string[];
@@ -85,6 +85,31 @@ type WiktionaryTemplate = {
   reading?: string;
 };
 
+type JitenSearchResponse = {
+  dictionaryResults?: JitenSearchResult[];
+  results?: JitenSearchResult[];
+};
+
+type JitenSearchResult = {
+  readingIndex: number;
+  rubyText?: string;
+  text?: string;
+  wordId: number;
+};
+
+type JitenWordInfoResponse = {
+  alternativeReadings?: Array<{
+    readingIndex?: number;
+    text?: string;
+  }>;
+  mainReading?: {
+    readingIndex?: number;
+    text?: string;
+  };
+  pitchAccents?: number[];
+  wordId?: number;
+};
+
 const DEFAULT_REQUEST_DELAY_MS = 400;
 const pitchAccentFetchThrottle = createFetchThrottle({
   requestDelayMs: DEFAULT_REQUEST_DELAY_MS
@@ -98,6 +123,8 @@ export async function fetchPitchAccentsForBundle(input: {
   limit?: number;
   network?: PronunciationFetchNetworkOptions;
   refresh?: boolean;
+  retryMisses?: boolean;
+  sources?: PitchAccentSourceKey[];
   wordListSource?: string;
   words?: string[];
 }) {
@@ -120,7 +147,8 @@ export async function fetchPitchAccentsForBundle(input: {
     : selectedTargets.filter((entry) =>
         shouldFetchPitchAccentEntry(
           entry,
-          manifestEntries.get(buildEntryKey(entry.kind, entry.id))
+          manifestEntries.get(buildEntryKey(entry.kind, entry.id)),
+          input.retryMisses
         )
       );
   const limitedTargets =
@@ -136,7 +164,8 @@ export async function fetchPitchAccentsForBundle(input: {
 
     const resolved = await resolvePitchAccentForEntry({
       entry,
-      network: input.network
+      network: input.network,
+      sources: input.sources
     });
     results.push(resolved);
 
@@ -257,45 +286,72 @@ export function resolvePitchAccentRequestedTargets(input: {
 export async function resolvePitchAccentForEntry(input: {
   entry: PitchAccentFetchTarget;
   network?: PronunciationFetchNetworkOptions;
+  sources?: PitchAccentSourceKey[];
 }): Promise<PitchAccentResult> {
   const errors: string[] = [];
+  const sources = resolvePitchAccentSources(input.sources);
 
-  try {
-    const wiktionary = await lookupWiktionaryPitchAccent({
-      entry: input.entry,
-      network: input.network
-    });
+  if (sources.has("wiktionary")) {
+    try {
+      const wiktionary = await lookupWiktionaryPitchAccent({
+        entry: input.entry,
+        network: input.network
+      });
 
-    if (wiktionary) {
-      return {
-        entryId: input.entry.id,
-        kind: input.entry.kind,
-        pitchAccent: wiktionary.pitchAccent,
-        source: wiktionary,
-        status: "resolved"
-      };
+      if (wiktionary) {
+        return {
+          entryId: input.entry.id,
+          kind: input.entry.kind,
+          pitchAccent: wiktionary.pitchAccent,
+          source: wiktionary,
+          status: "resolved"
+        };
+      }
+    } catch (error) {
+      errors.push(error instanceof Error ? error.message : String(error));
     }
-  } catch (error) {
-    errors.push(error instanceof Error ? error.message : String(error));
   }
 
-  try {
-    const ojad = await lookupOjadPitchAccent({
-      entry: input.entry,
-      network: input.network
-    });
+  if (sources.has("ojad")) {
+    try {
+      const ojad = await lookupOjadPitchAccent({
+        entry: input.entry,
+        network: input.network
+      });
 
-    if (ojad) {
-      return {
-        entryId: input.entry.id,
-        kind: input.entry.kind,
-        pitchAccent: ojad.pitchAccent,
-        source: ojad,
-        status: "resolved"
-      };
+      if (ojad) {
+        return {
+          entryId: input.entry.id,
+          kind: input.entry.kind,
+          pitchAccent: ojad.pitchAccent,
+          source: ojad,
+          status: "resolved"
+        };
+      }
+    } catch (error) {
+      errors.push(error instanceof Error ? error.message : String(error));
     }
-  } catch (error) {
-    errors.push(error instanceof Error ? error.message : String(error));
+  }
+
+  if (sources.has("jiten")) {
+    try {
+      const jiten = await lookupJitenPitchAccent({
+        entry: input.entry,
+        network: input.network
+      });
+
+      if (jiten) {
+        return {
+          entryId: input.entry.id,
+          kind: input.entry.kind,
+          pitchAccent: jiten.pitchAccent,
+          source: jiten,
+          status: "resolved"
+        };
+      }
+    } catch (error) {
+      errors.push(error instanceof Error ? error.message : String(error));
+    }
   }
 
   if (errors.length > 0) {
@@ -312,6 +368,81 @@ export async function resolvePitchAccentForEntry(input: {
     kind: input.entry.kind,
     status: "miss"
   };
+}
+
+export async function lookupJitenPitchAccent(input: {
+  entry: PitchAccentFetchTarget;
+  network?: PronunciationFetchNetworkOptions;
+}) {
+  const queries = buildJitenQueries(input.entry);
+
+  for (const query of queries) {
+    let search: JitenSearchResponse;
+
+    try {
+      search = await fetchJson<JitenSearchResponse>({
+        network: input.network,
+        url: `https://api.jiten.moe/api/vocabulary/search?query=${encodeURIComponent(query)}&limit=5`
+      });
+    } catch (error) {
+      if (isNotFoundError(error)) {
+        continue;
+      }
+
+      throw error;
+    }
+
+    const candidates = [
+      ...(search.results ?? []),
+      ...(search.dictionaryResults ?? [])
+    ];
+    const ranked = candidates
+      .map((candidate) => ({
+        candidate,
+        score: scoreJitenSearchCandidate(input.entry, candidate)
+      }))
+      .filter(({ score }) => score > 0)
+      .sort((left, right) => right.score - left.score);
+
+    for (const { candidate } of ranked) {
+      let info: JitenWordInfoResponse;
+
+      try {
+        info = await fetchJson<JitenWordInfoResponse>({
+          network: input.network,
+          url: `https://api.jiten.moe/api/vocabulary/${candidate.wordId}/${candidate.readingIndex}/info`
+        });
+      } catch (error) {
+        if (isNotFoundError(error)) {
+          continue;
+        }
+
+        throw error;
+      }
+
+      const pitchAccents = (info.pitchAccents ?? []).filter(
+        (accent) => Number.isInteger(accent) && accent >= 0
+      );
+
+      if (pitchAccents.length !== 1) {
+        continue;
+      }
+
+      if (!matchesJitenWordInfo(input.entry, info)) {
+        continue;
+      }
+
+      return {
+        pageUrl: `https://jiten.moe/vocabulary/${candidate.wordId}/${candidate.readingIndex}`,
+        pitchAccent: pitchAccents[0]!,
+        query,
+        sourceKey: "jiten" as const,
+        sourceLabel: "Jiten"
+      };
+    }
+  }
+
+  return null;
 }
 
 export async function lookupWiktionaryPitchAccent(input: {
@@ -545,6 +676,10 @@ function buildOjadQueries(entry: PitchAccentFetchTarget) {
   return dedupeLookupValues(rawValues).filter((value) => isMostlyKana(value));
 }
 
+function buildJitenQueries(entry: PitchAccentFetchTarget) {
+  return dedupeLookupValues([entry.label, entry.reading]);
+}
+
 function splitLookupVariants(value: string | undefined) {
   if (typeof value !== "string") {
     return [];
@@ -582,6 +717,52 @@ function containsJapaneseScript(value: string) {
 
 function isMostlyKana(value: string) {
   return /[\p{Script=Hiragana}\p{Script=Katakana}]/u.test(value);
+}
+
+function scoreJitenSearchCandidate(
+  entry: PitchAccentFetchTarget,
+  candidate: JitenSearchResult
+) {
+  let score = 0;
+  const text = normalizePronunciationText(candidate.text ?? "");
+  const rubyReading = normalizePronunciationText(
+    extractReadingFromJitenRuby(candidate.rubyText)
+  );
+  const label = normalizePronunciationText(entry.label);
+  const reading = normalizePronunciationText(entry.reading ?? "");
+  const aliases = new Set(entry.aliases.map(normalizePronunciationText));
+
+  if (text.length > 0) {
+    if (text === label) {
+      score += 100;
+    }
+
+    if (aliases.has(text)) {
+      score += 40;
+    }
+  }
+
+  if (rubyReading.length > 0 && reading.length > 0 && rubyReading === reading) {
+    score += 100;
+  }
+
+  return score;
+}
+
+function matchesJitenWordInfo(
+  entry: PitchAccentFetchTarget,
+  info: JitenWordInfoResponse
+) {
+  const readings = [
+    info.mainReading?.text,
+    ...(info.alternativeReadings ?? []).map((reading) => reading.text)
+  ]
+    .map(extractReadingFromJitenRuby)
+    .filter((reading) => reading.length > 0);
+
+  return readings.length === 0
+    ? true
+    : readings.some((reading) => matchesPitchAccentTarget(entry, reading));
 }
 
 function collectPitchAccentTargets(bundle: NormalizedMediaBundle) {
@@ -807,7 +988,8 @@ function buildManifestEntryFromTarget(
 
 function shouldFetchPitchAccentEntry(
   entry: PitchAccentFetchTarget,
-  manifestEntry: PronunciationManifestEntry | undefined
+  manifestEntry: PronunciationManifestEntry | undefined,
+  retryMisses = false
 ) {
   if (entry.pitchAccent !== undefined) {
     return false;
@@ -817,7 +999,11 @@ function shouldFetchPitchAccentEntry(
     ? getPitchAccentCheckStatus(manifestEntry)
     : undefined;
 
-  return status === undefined || status === "source_error";
+  return (
+    status === undefined ||
+    status === "source_error" ||
+    (retryMisses && status === "miss")
+  );
 }
 
 function updateManifestEntryWithPitchAccentResult(
@@ -890,6 +1076,25 @@ function parsePitchAccentValue(value: string | undefined) {
 
   const parsed = Number.parseInt(normalized, 10);
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
+}
+
+function resolvePitchAccentSources(
+  sources: PitchAccentSourceKey[] | undefined
+) {
+  return new Set<PitchAccentSourceKey>(
+    sources && sources.length > 0 ? sources : ["wiktionary", "ojad", "jiten"]
+  );
+}
+
+function extractReadingFromJitenRuby(value: string | undefined) {
+  if (!value) {
+    return "";
+  }
+
+  return value
+    .replace(/[\p{Script=Han}々〆ヵヶ]+\[([^\]]+)\]/gu, "$1")
+    .replace(/\[[^\]]+\]/gu, "")
+    .trim();
 }
 
 function scoreOjadCandidate(

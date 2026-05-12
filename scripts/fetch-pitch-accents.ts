@@ -6,6 +6,8 @@ import { MAX_TIMER_DELAY_MS } from "../src/lib/fetch-throttle.ts";
 import { fetchPitchAccentsForBundle } from "../src/lib/pitch-accent-fetch.ts";
 import type { PronunciationFetchNetworkOptions } from "../src/lib/pronunciation-shared.ts";
 
+type PitchAccentSourceOption = "wiktionary" | "ojad" | "jiten";
+
 type CliOptions = {
   contentRoot: string;
   dryRun: boolean;
@@ -15,6 +17,8 @@ type CliOptions = {
   mediaSlugs: string[];
   network: PronunciationFetchNetworkOptions;
   refresh: boolean;
+  retryMisses: boolean;
+  sources: PitchAccentSourceOption[];
   wordListPath?: string;
   words: string[];
 };
@@ -56,6 +60,8 @@ if (!parseResult.ok) {
         limit: options.limit,
         network: options.network,
         refresh: options.refresh,
+        retryMisses: options.retryMisses,
+        sources: options.sources,
         wordListSource,
         words: options.words
       });
@@ -92,6 +98,8 @@ function parseCliOptions(argv: string[]): CliOptions {
     mediaSlugs: [],
     network: {},
     refresh: false,
+    retryMisses: false,
+    sources: [],
     words: []
   };
 
@@ -113,7 +121,9 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--media") {
-      options.mediaSlugs.push(readOptionValue(normalizedArgv, index, "--media"));
+      options.mediaSlugs.push(
+        readOptionValue(normalizedArgv, index, "--media")
+      );
       index += 1;
       continue;
     }
@@ -210,10 +220,33 @@ function parseCliOptions(argv: string[]): CliOptions {
       continue;
     }
 
+    if (argument === "--retry-misses") {
+      options.retryMisses = true;
+      continue;
+    }
+
+    if (argument === "--source") {
+      options.sources.push(
+        readPitchAccentSourceOption(
+          readOptionValue(normalizedArgv, index, "--source")
+        )
+      );
+      index += 1;
+      continue;
+    }
+
     throw new Error(`Unknown argument: ${argument}`);
   }
 
   return options;
+}
+
+function readPitchAccentSourceOption(value: string): PitchAccentSourceOption {
+  if (value === "wiktionary" || value === "ojad" || value === "jiten") {
+    return value;
+  }
+
+  throw new Error("--source must be one of: wiktionary, ojad, jiten.");
 }
 
 function readOptionValue(argv: string[], index: number, flag: string) {

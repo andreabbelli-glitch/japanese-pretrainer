@@ -189,10 +189,22 @@ describe("review page client hydration", () => {
     expect(markup).toContain("+ Contrasto");
   });
 
-  it("labels the stage counter as cards after the current one", () => {
-    const data = buildFullReviewPageData({
+  it("labels the stage counter as the current queue total", () => {
+    const baseData = buildFullReviewPageData({
       cardId: "card-a"
     });
+    const data = {
+      ...baseData,
+      queue: {
+        ...baseData.queue,
+        queueCount: 21
+      },
+      selectedCardContext: {
+        ...baseData.selectedCardContext,
+        position: 5,
+        remainingCount: 16
+      }
+    } as ReviewPageData;
 
     const markup = renderToStaticMarkup(
       ReviewPageStage({
@@ -225,7 +237,7 @@ describe("review page client hydration", () => {
         isGradeControlsDisabled: false,
         isHydratingFullData: false,
         isPending: false,
-        remainingCount: 1,
+        remainingCount: data.queue.queueCount,
         sessionHref: "/review",
         showCompletionState: false,
         showFrontFurigana: true,
@@ -233,8 +245,9 @@ describe("review page client hydration", () => {
       })
     );
 
-    expect(markup).toContain("1 flashcard dopo questa");
-    expect(markup).not.toContain("1 flashcard rimanente");
+    expect(markup).toContain("21 flashcard rimanenti");
+    expect(markup).not.toContain("16 flashcard rimanenti");
+    expect(markup).not.toContain("flashcard dopo questa");
   });
 
   it("renders the selected forced contrast chip before grading", () => {
