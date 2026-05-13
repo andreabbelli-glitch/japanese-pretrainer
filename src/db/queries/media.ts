@@ -21,6 +21,17 @@ export async function listMedia(database: DatabaseClient) {
   });
 }
 
+export async function listReviewMediaRefs(database: DatabaseClient) {
+  return database.query.media.findMany({
+    columns: {
+      id: true,
+      slug: true
+    },
+    where: eq(media.status, "active"),
+    orderBy: [asc(media.title), asc(media.slug)]
+  });
+}
+
 export async function getMediaBySlug(database: DatabaseClient, slug: string) {
   return database.query.media.findFirst({
     columns: mediaSummaryColumns,

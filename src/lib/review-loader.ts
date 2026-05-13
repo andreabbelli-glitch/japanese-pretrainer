@@ -1,16 +1,15 @@
 import { db, type DatabaseClient } from "@/db";
 import {
   countReviewSubjectsIntroducedOnDay,
-  getQueuedNewReviewSubjectSummaryByMediaId,
-  getGlobalReviewOverviewData,
-  getReviewOverviewDataByMediaId,
   getReviewLaunchCandidateByMediaId,
   listGrammarEntryReviewSummariesByIds,
+  listReviewMediaRefs,
   listReviewLaunchCandidates,
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
   listReviewSubjectStatesByKeys,
   listTermEntryReviewSummariesByIds,
+  type GlobalReviewOverviewData,
   type MediaListItem,
   type ReviewCardListItem,
   type ReviewLaunchCandidate
@@ -419,26 +418,51 @@ export async function getReviewLaunchMedia(
   slug: string;
   title: string;
 } | null> {
-  const candidates = await loadReviewLaunchCandidatesCached(database);
+  const mediaRows = await listMediaCached(database);
+  const snapshots = await loadReviewOverviewSnapshots(
+    database,
+    mediaRows.map((item) => ({
+      id: item.id,
+      slug: item.slug
+    })),
+    {
+      globalMediaRows: mediaRows
+    }
+  );
 
-  return pickBestBy(candidates, (left, right) => {
+  return pickBestBy(mediaRows, (left, right) => {
+    const leftSnapshot = snapshots.get(left.id);
+    const rightSnapshot = snapshots.get(right.id);
     const scoreDifference =
-      scoreReviewLaunchCandidate(left) - scoreReviewLaunchCandidate(right);
+      scoreReviewLaunchCandidate({
+        activeReviewCards: leftSnapshot?.activeCards ?? 0,
+        cardsTotal: leftSnapshot?.totalCards ?? 0,
+        dueCount: leftSnapshot?.dueCount ?? 0
+      }) -
+      scoreReviewLaunchCandidate({
+        activeReviewCards: rightSnapshot?.activeCards ?? 0,
+        cardsTotal: rightSnapshot?.totalCards ?? 0,
+        dueCount: rightSnapshot?.dueCount ?? 0
+      });
 
     if (scoreDifference !== 0) {
       return scoreDifference;
     }
 
-    if (left.dueCount !== right.dueCount) {
-      return right.dueCount - left.dueCount;
+    if ((leftSnapshot?.dueCount ?? 0) !== (rightSnapshot?.dueCount ?? 0)) {
+      return (rightSnapshot?.dueCount ?? 0) - (leftSnapshot?.dueCount ?? 0);
     }
 
-    if (left.activeReviewCards !== right.activeReviewCards) {
-      return right.activeReviewCards - left.activeReviewCards;
+    if (
+      (leftSnapshot?.activeCards ?? 0) !== (rightSnapshot?.activeCards ?? 0)
+    ) {
+      return (
+        (rightSnapshot?.activeCards ?? 0) - (leftSnapshot?.activeCards ?? 0)
+      );
     }
 
-    if (left.cardsTotal !== right.cardsTotal) {
-      return right.cardsTotal - left.cardsTotal;
+    if ((leftSnapshot?.totalCards ?? 0) !== (rightSnapshot?.totalCards ?? 0)) {
+      return (rightSnapshot?.totalCards ?? 0) - (leftSnapshot?.totalCards ?? 0);
     }
 
     return left.title.localeCompare(right.title, "it");
@@ -454,64 +478,27 @@ export async function getEligibleReviewCardsByMediaId(
   return filterEligibleReviewCards(cards);
 }
 
-export async function loadReviewOverviewSnapshots(
+type ReviewOverviewLoadOptions = {
+  asOf?: Date;
+  globalMediaRows?: Array<{
+    id: string;
+    slug: string;
+  }>;
+  resolvedDailyLimit?: number;
+  resolvedNewIntroducedTodayCount?: number;
+};
+
+export async function loadReviewOverviewBundle(
   database: DatabaseClient,
   media: Array<{
     id: string;
     slug: string;
   }>,
-  options: {
-    asOf?: Date;
-    globalMediaRows?: Array<{
-      id: string;
-      slug: string;
-    }>;
-    resolvedDailyLimit?: number;
-    resolvedNewIntroducedTodayCount?: number;
-  } = {}
+  options: ReviewOverviewLoadOptions = {}
 ) {
-  if (media.length === 0) {
-    return new Map<string, ReviewOverviewSnapshot>();
-  }
-
   const now = options.asOf ?? new Date();
-  const [singleMedia] = media;
-
-  if (singleMedia && media.length === 1) {
-    const [overview, dailyLimit, newIntroducedTodayCount] = await Promise.all([
-      getReviewOverviewDataByMediaId(database, singleMedia.id, now),
-      options.resolvedDailyLimit ?? getReviewDailyLimit(database),
-      options.resolvedNewIntroducedTodayCount ??
-        loadReviewIntroducedTodayCountCached(database, now)
-    ]);
-    const queuedNewSummary = await getQueuedNewReviewSubjectSummaryByMediaId(
-      database,
-      {
-        asOf: now,
-        mediaId: singleMedia.id,
-        queuedNewLimit: Math.max(dailyLimit - newIntroducedTodayCount, 0)
-      }
-    );
-
-    return new Map([
-      [
-        singleMedia.id,
-        mapReviewOverviewSnapshot({
-          dailyLimit,
-          newIntroducedTodayCount,
-          overview: {
-            ...overview,
-            firstDueFront: queuedNewSummary.firstDueFront,
-            firstNewFront: queuedNewSummary.firstFront,
-            newQueuedCount: queuedNewSummary.count
-          }
-        })
-      ]
-    ]);
-  }
-
   const globalMediaRows =
-    options.globalMediaRows ?? (await listMediaCached(database));
+    options.globalMediaRows ?? (await listReviewMediaRefs(database));
   const mediaIds = globalMediaRows.map((item) => item.id);
   const workspace = await loadReviewWorkspaceV2({
     database,
@@ -520,37 +507,33 @@ export async function loadReviewOverviewSnapshots(
     resolvedDailyLimit: options.resolvedDailyLimit,
     resolvedNewIntroducedTodayCount: options.resolvedNewIntroducedTodayCount
   });
-  const snapshots = new Map<string, ReviewOverviewSnapshot>();
+  const shared = buildSharedReviewOverviewInput(workspace);
 
-  const nowIso = workspace.now.toISOString();
-  const subjectModels = buildReviewSubjectModels({
-    cards: workspace.cards,
-    entryLookup: EMPTY_ENTRY_LOOKUP,
-    nowIso,
-    subjectGroups: workspace.subjectGroups
-  });
+  return {
+    byMedia: buildReviewOverviewSnapshotsFromWorkspace(
+      workspace,
+      media,
+      shared
+    ),
+    global: buildReviewOverviewSnapshotFromWorkspace(workspace, shared)
+  };
+}
 
-  const buckets = bucketAndSortReviewSubjectModels(subjectModels);
-
-  for (const item of media) {
-    snapshots.set(
-      item.id,
-      buildReviewOverviewSnapshot({
-        cards: workspace.cards,
-        dailyLimit: workspace.dailyLimit,
-        entryLookup: EMPTY_ENTRY_LOOKUP,
-        extraNewCount: 0,
-        newIntroducedTodayCount: workspace.newIntroducedTodayCount,
-        nowIso,
-        subjectGroups: workspace.subjectGroups,
-        subjectModels,
-        buckets,
-        visibleMediaId: item.id
-      })
-    );
+export async function loadReviewOverviewSnapshots(
+  database: DatabaseClient,
+  media: Array<{
+    id: string;
+    slug: string;
+  }>,
+  options: ReviewOverviewLoadOptions = {}
+) {
+  if (media.length === 0) {
+    return new Map<string, ReviewOverviewSnapshot>();
   }
 
-  return snapshots;
+  const bundle = await loadReviewOverviewBundle(database, media, options);
+
+  return bundle.byMedia;
 }
 
 export async function loadGlobalReviewOverviewSnapshot(
@@ -562,47 +545,87 @@ export async function loadGlobalReviewOverviewSnapshot(
   } = {}
 ) {
   const now = options.asOf ?? new Date();
-  const dailyLimitPromise =
-    options.resolvedDailyLimit != null
-      ? Promise.resolve(options.resolvedDailyLimit)
-      : getReviewDailyLimit(database);
-  const newIntroducedTodayCountPromise =
-    options.resolvedNewIntroducedTodayCount != null
-      ? Promise.resolve(options.resolvedNewIntroducedTodayCount)
-      : loadReviewIntroducedTodayCountCached(database, now);
+  const bundle = await loadReviewOverviewBundle(database, [], {
+    asOf: now,
+    resolvedDailyLimit: options.resolvedDailyLimit,
+    resolvedNewIntroducedTodayCount: options.resolvedNewIntroducedTodayCount
+  });
 
-  const [dailyLimit, newIntroducedTodayCount, overview] = await Promise.all([
-    dailyLimitPromise,
-    newIntroducedTodayCountPromise,
-    loadGlobalReviewOverviewDataCached(database, now)
-  ]);
+  return bundle.global;
+}
 
-  return mapReviewOverviewSnapshot({
-    dailyLimit,
-    newIntroducedTodayCount,
-    overview
+function buildSharedReviewOverviewInput(workspace: LoadedReviewWorkspaceV2) {
+  const nowIso = workspace.now.toISOString();
+  const subjectModels = buildReviewSubjectModels({
+    cards: workspace.cards,
+    entryLookup: EMPTY_ENTRY_LOOKUP,
+    nowIso,
+    subjectGroups: workspace.subjectGroups
+  });
+
+  return {
+    buckets: bucketAndSortReviewSubjectModels(subjectModels),
+    nowIso,
+    subjectModels
+  };
+}
+
+function buildReviewOverviewSnapshotFromWorkspace(
+  workspace: LoadedReviewWorkspaceV2,
+  shared = buildSharedReviewOverviewInput(workspace)
+) {
+  const { buckets, nowIso, subjectModels } = shared;
+
+  return buildReviewOverviewSnapshot({
+    buckets,
+    cards: workspace.cards,
+    dailyLimit: workspace.dailyLimit,
+    entryLookup: EMPTY_ENTRY_LOOKUP,
+    extraNewCount: 0,
+    newIntroducedTodayCount: workspace.newIntroducedTodayCount,
+    nowIso,
+    subjectGroups: workspace.subjectGroups,
+    subjectModels
   });
 }
 
-export async function loadGlobalReviewOverviewDataCached(
-  database: DatabaseClient = db,
-  asOf = new Date()
+function buildReviewOverviewSnapshotsFromWorkspace(
+  workspace: LoadedReviewWorkspaceV2,
+  media: Array<{
+    id: string;
+    slug: string;
+  }>,
+  shared = buildSharedReviewOverviewInput(workspace)
 ) {
-  const cacheBucketKey = getLocalIsoTimeBucketKey(asOf);
+  const { buckets, nowIso, subjectModels } = shared;
+  const snapshots = new Map<string, ReviewOverviewSnapshot>();
 
-  return runWithTaggedCache({
-    enabled: canUseDataCache(database),
-    keyParts: ["review-global-overview", `bucket:${cacheBucketKey}`],
-    loader: () => getGlobalReviewOverviewData(database, asOf),
-    tags: buildReviewSummaryTags()
-  });
+  for (const item of media) {
+    snapshots.set(
+      item.id,
+      buildReviewOverviewSnapshot({
+        buckets,
+        cards: workspace.cards,
+        dailyLimit: workspace.dailyLimit,
+        entryLookup: EMPTY_ENTRY_LOOKUP,
+        extraNewCount: 0,
+        newIntroducedTodayCount: workspace.newIntroducedTodayCount,
+        nowIso,
+        subjectGroups: workspace.subjectGroups,
+        subjectModels,
+        visibleMediaId: item.id
+      })
+    );
+  }
+
+  return snapshots;
 }
 
 export function mapReviewOverviewSnapshot(input: {
   dailyLimit: number;
   newIntroducedTodayCount: number;
   overview:
-    | Awaited<ReturnType<typeof getGlobalReviewOverviewData>>
+    | GlobalReviewOverviewData
     | (ReviewLaunchCandidate & {
         newAvailableCount: number;
         newQueuedCount?: number;

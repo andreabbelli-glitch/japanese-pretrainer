@@ -133,7 +133,7 @@ describe("progress, settings, and study controls", () => {
     mediaFindManySpy.mockRestore();
   });
 
-  it("loads the local progress review snapshot from scoped overview queries", async () => {
+  it("loads the local progress review snapshot without the legacy overview SQL helpers", async () => {
     const globalCandidatesSpy = vi.spyOn(
       dbQueriesModule,
       "listReviewLaunchCandidates"
@@ -159,8 +159,8 @@ describe("progress, settings, and study controls", () => {
     expect(data).not.toBeNull();
     expect(globalCandidatesSpy).not.toHaveBeenCalled();
     expect(mediaCandidateSpy).not.toHaveBeenCalled();
-    expect(mediaOverviewSpy).toHaveBeenCalledTimes(1);
-    expect(queuedNewSpy).toHaveBeenCalledTimes(1);
+    expect(mediaOverviewSpy).not.toHaveBeenCalled();
+    expect(queuedNewSpy).not.toHaveBeenCalled();
 
     globalCandidatesSpy.mockRestore();
     mediaCandidateSpy.mockRestore();

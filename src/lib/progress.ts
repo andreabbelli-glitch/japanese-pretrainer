@@ -27,9 +27,8 @@ import {
 } from "@/lib/study-metrics";
 
 import {
-  loadGlobalReviewOverviewSnapshot,
   loadReviewIntroducedTodayCountCached,
-  loadReviewOverviewSnapshots
+  loadReviewOverviewBundle
 } from "./review";
 import type { ReviewOverviewSnapshot } from "./review-types";
 import { getLocalIsoTimeBucketKey } from "./local-date";
@@ -132,19 +131,6 @@ export async function getMediaProgressPageData(
       const settingsPromise = getStudySettings(database);
       const newIntroducedTodayCountPromise =
         loadReviewIntroducedTodayCountCached(database, now);
-      const globalReviewSnapshotPromise = Promise.all([
-        settingsPromise,
-        newIntroducedTodayCountPromise
-      ]).then(([settings, newIntroducedTodayCount]) =>
-        loadGlobalReviewOverviewSnapshot(database, {
-          asOf: now,
-          resolvedDailyLimit: settings.reviewDailyLimit,
-          resolvedNewIntroducedTodayCount: newIntroducedTodayCount
-        })
-      );
-      void globalReviewSnapshotPromise.catch(() => {
-        // This eager query can be abandoned when the media slug does not resolve.
-      });
       const globalMediaRowsPromise = cacheEligible
         ? Promise.resolve(undefined)
         : listMediaCached(database);
@@ -161,28 +147,18 @@ export async function getMediaProgressPageData(
         return null;
       }
 
-      const localReviewSnapshotsPromise = Promise.all([
+      const reviewSnapshotsPromise = Promise.all([
         settingsPromise,
         newIntroducedTodayCountPromise,
         globalMediaRowsPromise
       ]).then(([settings, newIntroducedTodayCount, globalMediaRows]) =>
-        loadReviewOverviewSnapshots(database, [media], {
+        loadReviewOverviewBundle(database, [media], {
           asOf: now,
           globalMediaRows,
           resolvedDailyLimit: settings.reviewDailyLimit,
           resolvedNewIntroducedTodayCount: newIntroducedTodayCount
         })
       );
-      const reviewSnapshotsPromise = Promise.all([
-        localReviewSnapshotsPromise,
-        globalReviewSnapshotPromise
-      ]).then(([byMedia, global]) => {
-
-        return {
-          byMedia,
-          global
-        } satisfies ProgressReviewSnapshots;
-      });
       const [sharedMedia, reviewSnapshots, settings] = await Promise.all([
         getMediaDetailData(mediaSlug, database, {
           includeReviewCounts: false,
@@ -248,7 +224,10 @@ function buildMediaProgressPageData(
       ...resume,
       activeLesson: sharedMedia.activeLesson,
       activeLessonHref: sharedMedia.activeLesson
-        ? mediaTextbookLessonHref(sharedMedia.slug, sharedMedia.activeLesson.slug)
+        ? mediaTextbookLessonHref(
+            sharedMedia.slug,
+            sharedMedia.activeLesson.slug
+          )
         : undefined,
       lastOpenedLesson: sharedMedia.lastOpenedLesson,
       lastOpenedLessonHref: sharedMedia.lastOpenedLesson
@@ -259,7 +238,10 @@ function buildMediaProgressPageData(
         : undefined,
       resumeLesson: sharedMedia.resumeLesson,
       resumeLessonHref: sharedMedia.resumeLesson
-        ? mediaTextbookLessonHref(sharedMedia.slug, sharedMedia.resumeLesson.slug)
+        ? mediaTextbookLessonHref(
+            sharedMedia.slug,
+            sharedMedia.resumeLesson.slug
+          )
         : undefined,
       nextLesson: sharedMedia.nextLesson,
       nextLessonHref: sharedMedia.nextLesson

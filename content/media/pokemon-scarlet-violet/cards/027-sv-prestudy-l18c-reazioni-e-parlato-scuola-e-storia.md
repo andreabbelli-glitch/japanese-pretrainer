@@ -84,8 +84,11 @@ meaning_it: facciamo… / proverò a…
 aliases:
 - 〜ましょう
 notes_it: >-
-  Formazione: volitivo di verbo. Molto comune nelle proposte tra amici e nelle
-  auto-esortazioni.
+  Volitivo informale. Si usa per proporre un'azione condivisa ("facciamo...",
+  "andiamo...") oppure, parlando di se stessi, per esprimere intenzione
+  ("proverò a...", spesso con と{{思|おも}}う). È la versione colloquiale di
+  ～ましょう / ～ましょ. La forma precisa dipende dal verbo: gli ichidan prendono
+  ～よう, mentre i godan cambiano la vocale finale in o + う, quindi ～おう.
 :::
 :::card
 id: card-g045-facciamo-provero-a-concept
@@ -94,11 +97,19 @@ entry_type: grammar
 entry_id: grammar-g045-facciamo-provero-a
 card_type: concept
 front: '～よう'
-back: facciamo… / proverò a…
+back: >-
+  volitivo informale: "facciamo..." / "andiamo..." oppure "proverò a..." /
+  "ho intenzione di..."
 example_jp: >-
   もう {{帰|かえ}}ろう。
 example_it: >-
-  Torniamo, dai.
+  Torniamo a casa ora, dai.
+notes_it: >-
+  In `もう {{帰|かえ}}ろう`, `もう` vale "ormai / adesso" e `{{帰|かえ}}ろう`
+  è il volitivo di [{{帰|かえ}}る](term:term-v397-kaeru): un invito diretto
+  tra persone in confidenza. Il titolo resta ～よう per la regola generale, ma
+  con i verbi godan come 帰る la forma diventa ～おう: 帰る -> 帰ろう. Con gli
+  ichidan si vede invece proprio ～よう: 食べる -> 食べよう.
 :::
 :::term
 id: term-e062-mukou

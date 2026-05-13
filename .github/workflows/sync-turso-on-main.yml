@@ -4,7 +4,29 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "content/media/**"
+      - "drizzle/**"
+      - "scripts/db-migrate.ts"
+      - "src/db/migrate.ts"
+      - "src/db/schema/**"
+      - ".github/workflows/sync-turso-on-main.yml"
   workflow_dispatch:
+    inputs:
+      run_migrations:
+        description: "Apply database migrations before any import."
+        required: true
+        type: boolean
+        default: true
+      media_slugs:
+        description: "Space- or comma-separated media slugs to import. Leave empty to skip content import."
+        required: false
+        type: string
+      full_import:
+        description: "Run a full content import. Use only when a media-scoped import is not enough."
+        required: true
+        type: boolean
+        default: false
 
 concurrency:
   group: sync-turso-${{ github.ref }}
@@ -24,23 +46,136 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve sync scope
+        id: scope
+        shell: bash
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          DISPATCH_FULL_IMPORT: ${{ github.event.inputs.full_import }}
+          DISPATCH_MEDIA_SLUGS: ${{ github.event.inputs.media_slugs }}
+          DISPATCH_RUN_MIGRATIONS: ${{ github.event.inputs.run_migrations }}
+          EVENT_NAME: ${{ github.event_name }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          full_import=false
+          has_work=false
+          media_slugs=""
+          run_migrations=false
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            if [[ "${DISPATCH_RUN_MIGRATIONS:-true}" == "true" ]]; then
+              run_migrations=true
+            fi
+
+            if [[ "${DISPATCH_FULL_IMPORT:-false}" == "true" ]]; then
+              full_import=true
+            fi
+
+            raw_media_slugs="${DISPATCH_MEDIA_SLUGS:-}"
+            if [[ -n "$raw_media_slugs" ]]; then
+              media_slugs="$(
+                printf '%s\n' "$raw_media_slugs" |
+                  tr ',\n\t' '    ' |
+                  xargs -n1 |
+                  sort -u |
+                  tr '\n' ' ' |
+                  sed 's/[[:space:]]*$//'
+              )"
+            fi
+          else
+            if [[ -z "$BEFORE_SHA" || "$BEFORE_SHA" =~ ^0+$ ]]; then
+              changed_files="$(git diff-tree --no-commit-id --name-only -r "$HEAD_SHA")"
+            else
+              changed_files="$(git diff --name-only "$BEFORE_SHA" "$HEAD_SHA")"
+            fi
+
+            echo "Changed files:"
+            printf '%s\n' "$changed_files"
+
+            if printf '%s\n' "$changed_files" |
+              grep -Eq '^(drizzle/|scripts/db-migrate\.ts$|src/db/migrate\.ts$|src/db/schema/)'; then
+              run_migrations=true
+            fi
+
+            media_slugs="$(
+              printf '%s\n' "$changed_files" |
+                sed -nE 's#^content/media/([^/]+)/.*#\1#p' |
+                sort -u |
+                tr '\n' ' ' |
+                sed 's/[[:space:]]*$//'
+            )"
+          fi
+
+          if [[ -n "$media_slugs" ]]; then
+            for slug in $media_slugs; do
+              if [[ ! "$slug" =~ ^[a-z0-9][a-z0-9-]*$ ]]; then
+                echo "Invalid media slug: $slug" >&2
+                exit 1
+              fi
+            done
+          fi
+
+          if [[ "$run_migrations" == "true" || "$full_import" == "true" || -n "$media_slugs" ]]; then
+            has_work=true
+          fi
+
+          {
+            echo "full_import=$full_import"
+            echo "has_work=$has_work"
+            echo "media_slugs=$media_slugs"
+            echo "run_migrations=$run_migrations"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "run_migrations=$run_migrations"
+          echo "full_import=$full_import"
+          echo "media_slugs=${media_slugs:-<none>}"
 
       - name: Set up pnpm
+        if: steps.scope.outputs.has_work == 'true'
         uses: pnpm/action-setup@v4
         with:
           version: 10.30.3
 
       - name: Set up Node.js
+        if: steps.scope.outputs.has_work == 'true'
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: pnpm
 
       - name: Install dependencies
+        if: steps.scope.outputs.has_work == 'true'
         run: pnpm install --frozen-lockfile
 
       - name: Apply database migrations
+        if: steps.scope.outputs.run_migrations == 'true'
         run: pnpm db:migrate
 
-      - name: Import repository content into Turso
+      - name: Import all repository content into Turso
+        if: steps.scope.outputs.full_import == 'true'
+        env:
+          ALLOW_REMOTE_FULL_CONTENT_IMPORT: "1"
         run: pnpm content:import
+
+      - name: Import changed media content into Turso
+        if: steps.scope.outputs.full_import != 'true' && steps.scope.outputs.media_slugs != ''
+        shell: bash
+        env:
+          MEDIA_SLUGS: ${{ steps.scope.outputs.media_slugs }}
+        run: |
+          set -euo pipefail
+          args=()
+          for slug in $MEDIA_SLUGS; do
+            args+=(--media-slug "$slug")
+          done
+
+          pnpm content:import -- "${args[@]}"
+
+      - name: Skip Turso sync
+        if: steps.scope.outputs.has_work != 'true'
+        run: echo "No Turso migrations or media imports are required for this change."

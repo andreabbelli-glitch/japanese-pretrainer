@@ -16,9 +16,8 @@ import {
   type MediaShellSnapshot
 } from "@/lib/media-shell";
 import {
-  loadGlobalReviewOverviewSnapshot,
   loadReviewIntroducedTodayCountCached,
-  loadReviewLaunchCandidatesCached
+  loadReviewOverviewBundle
 } from "@/lib/review";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { getReviewDailyLimit } from "@/lib/settings";
@@ -72,38 +71,44 @@ async function loadDashboardData(
     database,
     now
   );
-  const reviewCandidatesPromise = loadReviewLaunchCandidatesCached(
-    database,
-    now.toISOString()
-  );
-  const globalReviewOverviewPromise = Promise.all([
+  const reviewOverviewBundlePromise = Promise.all([
+    mediaRowsPromise,
     dailyLimitPromise,
     newIntroducedTodayCountPromise
-  ]).then(([dailyLimit, newIntroducedTodayCount]) =>
-    loadGlobalReviewOverviewSnapshot(database, {
-      asOf: now,
-      resolvedDailyLimit: dailyLimit,
-      resolvedNewIntroducedTodayCount: newIntroducedTodayCount
-    })
+  ]).then(([mediaRows, dailyLimit, newIntroducedTodayCount]) =>
+    loadReviewOverviewBundle(
+      database,
+      mediaRows.map((item) => ({
+        id: item.id,
+        slug: item.slug
+      })),
+      {
+        asOf: now,
+        globalMediaRows: mediaRows,
+        resolvedDailyLimit: dailyLimit,
+        resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+      }
+    )
   );
   const mediaPromise = Promise.all([
     mediaRowsPromise,
     dailyLimitPromise,
     newIntroducedTodayCountPromise,
-    reviewCandidatesPromise
+    reviewOverviewBundlePromise
   ]).then(
-    ([mediaRows, dailyLimit, newIntroducedTodayCount, reviewCandidates]) =>
+    ([mediaRows, dailyLimit, newIntroducedTodayCount, reviewOverviewBundle]) =>
       loadMediaShellSnapshots(database, mediaRows, {
         now,
         resolvedDailyLimit: dailyLimit,
         resolvedNewIntroducedTodayCount: newIntroducedTodayCount,
-        resolvedReviewCandidates: reviewCandidates
+        resolvedReviewSnapshots: reviewOverviewBundle.byMedia
       })
   );
-  const [media, globalReviewOverview] = await Promise.all([
+  const [media, reviewOverviewBundle] = await Promise.all([
     mediaPromise,
-    globalReviewOverviewPromise
+    reviewOverviewBundlePromise
   ]);
+  const globalReviewOverview = reviewOverviewBundle.global;
   const focusMedia = pickFocusMedia(media);
   const reviewMedia = pickReviewMedia(media);
 

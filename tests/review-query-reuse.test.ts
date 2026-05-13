@@ -483,12 +483,16 @@ describe("review media query reuse", () => {
     canUseDataCacheSpy.mockRestore();
   });
 
-  it("builds the global review overview from a single raw overview query", async () => {
+  it("builds the global review overview from the shared review workspace", async () => {
     const databaseAllSpy = vi.spyOn(
       database as DatabaseClient & {
         all: (sql: string) => Promise<unknown[]>;
       },
       "all"
+    );
+    const reviewCardsSpy = vi.spyOn(
+      dbQueriesModule,
+      "listReviewCardsByMediaIds"
     );
 
     const overview = await loadGlobalReviewOverviewSnapshot(database);
@@ -500,8 +504,10 @@ describe("review media query reuse", () => {
           typeof sql === "string" &&
           sql.includes("global_subject_card_candidates")
       )
-    ).toHaveLength(1);
+    ).toHaveLength(0);
+    expect(reviewCardsSpy).toHaveBeenCalledTimes(1);
 
+    reviewCardsSpy.mockRestore();
     databaseAllSpy.mockRestore();
   });
 
@@ -751,7 +757,7 @@ describe("review media query reuse", () => {
     ).toBe(1);
   });
 
-  it("builds a single-media overview snapshot without hydrating the full review workspace", async () => {
+  it("builds a single-media overview snapshot from the shared global review workspace", async () => {
     const reviewCardsSpy = vi.spyOn(
       dbQueriesModule,
       "listReviewCardsByMediaIds"
@@ -775,9 +781,9 @@ describe("review media query reuse", () => {
     expect(
       snapshots.get(developmentFixture.mediaId)?.queueCount
     ).toBeGreaterThanOrEqual(0);
-    expect(reviewCardsSpy).not.toHaveBeenCalled();
-    expect(termsSpy).not.toHaveBeenCalled();
-    expect(grammarSpy).not.toHaveBeenCalled();
+    expect(reviewCardsSpy).toHaveBeenCalledTimes(1);
+    expect(termsSpy).toHaveBeenCalledTimes(1);
+    expect(grammarSpy).toHaveBeenCalledTimes(1);
 
     reviewCardsSpy.mockRestore();
     termsSpy.mockRestore();

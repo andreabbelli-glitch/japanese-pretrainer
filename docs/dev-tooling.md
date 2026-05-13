@@ -110,6 +110,10 @@ Action repo-shared consigliate nell'app Codex:
 .codex/scripts/content-import.sh
 ```
 
+`./scripts/with-node.sh pnpm release:check` prepara un DB SQLite locale dedicato
+in `.tmp/release-check/` e forza build/E2E su quel database. Questo evita che un
+`.env.local` puntato a Turso consumi quota remota durante i gate locali.
+
 Workflow immagini:
 
 ```sh
@@ -178,9 +182,13 @@ retrain troppo raro quando la cronologia diventa grande.
 In produzione il job e registrato in `vercel.json`: Vercel Cron chiama una
 volta al giorno `/api/internal/fsrs-optimizer/run`, che richiede
 `Authorization: Bearer $CRON_SECRET` e usa il `DATABASE_URL` canonico del
-runtime. Su Hobby la schedulazione giornaliera rientra nei limiti free; l'orario
-cron e in UTC e puo essere invocato da Vercel entro la finestra oraria prevista
-dal piano.
+runtime. L'orario cron e in UTC e puo essere invocato da Vercel entro la
+finestra oraria prevista dal piano. Il job deve restare leggero: controlla prima
+le soglie e non carica lo storico completo dei log se il training non e dovuto.
+
+Per Turso remoto, non usare i workflow GitHub come sync generico a ogni push:
+`Sync Turso On Main` e limitato a migrazioni e import media-scoped, mentre il
+backup remoto e manuale perche `turso db export` puo consumare molte `Rows Read`.
 
 Workflow dataset `Kanji Clash` per kanji simili:
 

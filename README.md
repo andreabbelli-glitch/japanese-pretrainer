@@ -230,9 +230,14 @@ Il comando `release:check` copre l'intero set di controlli locali:
 - lint
 - typecheck
 - test unit/integration
+- preparazione di un DB SQLite locale dedicato in `.tmp/release-check/`
 - build di produzione
 - validazione contenuti su tutti i bundle reali presenti in `content/media`
 - E2E su browser Playwright di default
+
+Anche se `.env.local` punta a un database Turso remoto, `release:check` forza
+build ed E2E sul DB SQLite locale dedicato e disattiva la cache revalidation
+remota del content import preparatorio.
 
 ## Script disponibili
 

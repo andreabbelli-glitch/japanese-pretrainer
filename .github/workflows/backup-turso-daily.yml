@@ -1,9 +1,12 @@
 name: Backup Turso Database
 
 on:
-  schedule:
-    - cron: "15 2 * * *"
   workflow_dispatch:
+    inputs:
+      confirm_export:
+        description: "Type EXPORT to confirm this full remote database export and its row-read cost."
+        required: true
+        type: string
 
 concurrency:
   group: backup-turso-database
@@ -11,6 +14,7 @@ concurrency:
 
 jobs:
   backup:
+    if: github.event.inputs.confirm_export == 'EXPORT'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:

@@ -33,21 +33,34 @@ describe("media library query scheduling", () => {
     >("media rows");
     const dailyLimitGate = schedule.gate<number>("daily limit");
     const introducedTodayGate = schedule.gate<number>("introduced today");
-    const queuedSummaryGate = schedule.gate<{
-      count: number;
-      firstDueFront: string | null;
-      firstFront: string | null;
-    }>(
-      "queued summary"
-    );
+    const reviewSnapshotsGate = schedule.gate<
+      Map<
+        string,
+        {
+          activeCards: number;
+          dailyLimit: number;
+          dueCount: number;
+          effectiveDailyLimit: number;
+          manualCount: number;
+          newAvailableCount: number;
+          newQueuedCount: number;
+          queueCount: number;
+          queueLabel: string;
+          suspendedCount: number;
+          tomorrowCount: number;
+          totalCards: number;
+          upcomingCount: number;
+        }
+      >
+    >("review snapshots");
 
     vi.doMock("@/db", () => ({
       db: {}
     }));
     vi.doMock("@/db/queries", () => ({
-      getQueuedNewReviewSubjectSummaryByMediaId: vi.fn(
-        queuedSummaryGate.loader()
-      ),
+      getQueuedNewReviewSubjectSummaryByMediaId: vi.fn(() => {
+        throw new Error("Legacy queued-new SQL summary should not run.");
+      }),
       listGlossaryPreviewEntries: vi.fn(() => Promise.resolve([])),
       listGlossaryProgressSummaries: vi.fn(() => Promise.resolve([])),
       listLessonsByMediaId: vi.fn(() => Promise.resolve([])),
@@ -103,9 +116,7 @@ describe("media library query scheduling", () => {
       pickFocusMedia: vi.fn(() => null)
     }));
     vi.doMock("@/lib/review-loader", () => ({
-      loadReviewIntroducedTodayCountCached: vi.fn(
-        introducedTodayGate.loader()
-      ),
+      loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
       loadReviewLaunchCandidatesCached: vi.fn(() =>
         Promise.resolve([
@@ -123,7 +134,7 @@ describe("media library query scheduling", () => {
           }
         ])
       ),
-      loadReviewOverviewSnapshots: vi.fn()
+      loadReviewOverviewSnapshots: vi.fn(reviewSnapshotsGate.loader())
     }));
     vi.doMock("@/lib/settings", () => ({
       getReviewDailyLimit: vi.fn(dailyLimitGate.loader())
@@ -158,7 +169,7 @@ describe("media library query scheduling", () => {
       "daily limit",
       "introduced today"
     );
-    schedule.expectNotStarted("queued summary");
+    schedule.expectNotStarted("review snapshots");
     schedule.expectNotSettled("media rows");
 
     mediaRowsGate.resolve([
@@ -174,12 +185,29 @@ describe("media library query scheduling", () => {
     ]);
     dailyLimitGate.resolve(7);
     introducedTodayGate.resolve(2);
-    await schedule.expectStarted("queued summary");
-    queuedSummaryGate.resolve({
-      count: 4,
-      firstDueFront: null,
-      firstFront: null
-    });
+    await schedule.expectStarted("review snapshots");
+    reviewSnapshotsGate.resolve(
+      new Map([
+        [
+          "media-1",
+          {
+            activeCards: 1,
+            dailyLimit: 7,
+            dueCount: 1,
+            effectiveDailyLimit: 7,
+            manualCount: 0,
+            newAvailableCount: 4,
+            newQueuedCount: 4,
+            queueCount: 5,
+            queueLabel: "",
+            suspendedCount: 0,
+            tomorrowCount: 0,
+            totalCards: 3,
+            upcomingCount: 0
+          }
+        ]
+      ])
+    );
 
     await expect(mediaLibraryPromise).resolves.toEqual([
       expect.objectContaining({

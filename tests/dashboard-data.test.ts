@@ -170,7 +170,27 @@ function mockDashboardDependencies(input: {
       })
     ),
     loadReviewIntroducedTodayCountCached: vi.fn(() => Promise.resolve(0)),
-    loadReviewLaunchCandidatesCached: vi.fn(() => Promise.resolve([]))
+    loadReviewLaunchCandidatesCached: vi.fn(() => Promise.resolve([])),
+    loadReviewOverviewBundle: vi.fn(() =>
+      Promise.resolve({
+        byMedia: new Map(),
+        global: {
+          activeCards: 4,
+          dailyLimit: 7,
+          dueCount: 2,
+          effectiveDailyLimit: 7,
+          manualCount: 0,
+          newAvailableCount: 1,
+          newQueuedCount: 1,
+          queueCount: 3,
+          queueLabel: "3 card in coda",
+          suspendedCount: 0,
+          tomorrowCount: 0,
+          totalCards: 5,
+          upcomingCount: 0
+        }
+      })
+    )
   }));
   vi.doMock("@/lib/settings", () => ({
     getReviewDailyLimit: vi.fn(() => Promise.resolve(7))

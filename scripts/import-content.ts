@@ -8,9 +8,11 @@ import { importContentWorkspace } from "../src/lib/content/importer.ts";
 import { readContentCacheRevalidationErrorDetails } from "../src/lib/content/importer/revalidation-error.ts";
 
 const CONTENT_CACHE_REVALIDATE_TIMEOUT_MS = 15_000;
+const ALLOW_REMOTE_FULL_IMPORT_ENV = "ALLOW_REMOTE_FULL_CONTENT_IMPORT";
 
 try {
   const cliOptions = resolveCliOptions(process.argv.slice(2));
+  assertRemoteFullImportIsAllowed(cliOptions);
   const result = await importContentWorkspace({
     contentRoot: cliOptions.contentRoot,
     mediaSlugs: cliOptions.mediaSlugs,
@@ -127,7 +129,9 @@ function resolveCliOptions(args: string[]) {
     }
 
     if (value === "--content-root") {
-      contentRoot = path.resolve(readOptionValue(args, index, "--content-root"));
+      contentRoot = path.resolve(
+        readOptionValue(args, index, "--content-root")
+      );
       index += 1;
       continue;
     }
@@ -155,6 +159,34 @@ function readOptionValue(args: string[], index: number, flag: string) {
   }
 
   return value;
+}
+
+function assertRemoteFullImportIsAllowed(input: { mediaSlugs: string[] }) {
+  if (input.mediaSlugs.length > 0 || !isRemoteDatabaseUrl()) {
+    return;
+  }
+
+  if (process.env[ALLOW_REMOTE_FULL_IMPORT_ENV] === "1") {
+    return;
+  }
+
+  throw new Error(
+    [
+      "Refusing to run a full content import against a remote DATABASE_URL.",
+      "Use --media-slug for scoped remote imports, or set",
+      `${ALLOW_REMOTE_FULL_IMPORT_ENV}=1 when a full remote import is intentional.`
+    ].join(" ")
+  );
+}
+
+function isRemoteDatabaseUrl() {
+  const databaseUrl = process.env.DATABASE_URL?.trim();
+
+  return (
+    databaseUrl?.startsWith("libsql://") === true ||
+    databaseUrl?.startsWith("https://") === true ||
+    databaseUrl?.startsWith("http://") === true
+  );
 }
 
 function formatIssue(issue: {

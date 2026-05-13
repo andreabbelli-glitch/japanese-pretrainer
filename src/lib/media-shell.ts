@@ -1,12 +1,10 @@
 import { db, type DatabaseClient } from "@/db";
 import {
-  getQueuedNewReviewSubjectSummaryByMediaId,
   listGlossaryPreviewEntries,
   listGlossaryProgressSummaries,
   listLessonsByMediaId,
   listLessonsByMediaIdsForShell,
   type MediaListItem,
-  type ReviewLaunchCandidate,
   type ShellLessonListItem
 } from "@/db/queries";
 import {
@@ -26,7 +24,6 @@ import { calculatePercent } from "@/lib/study-format";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 import {
   loadReviewIntroducedTodayCountCached,
-  loadReviewLaunchCandidatesCached,
   loadReviewOverviewSnapshots
 } from "@/lib/review-loader";
 import { getReviewDailyLimit } from "@/lib/settings";
@@ -67,15 +64,12 @@ export async function getMediaLibraryData(database: DatabaseClient = db) {
       const dailyLimitPromise = getReviewDailyLimit(database);
       const newIntroducedTodayCountPromise =
         loadReviewIntroducedTodayCountCached(database, now);
-      const [
-        rows,
-        resolvedDailyLimit,
-        resolvedNewIntroducedTodayCount
-      ] = await Promise.all([
-        mediaRowsPromise,
-        dailyLimitPromise,
-        newIntroducedTodayCountPromise
-      ]);
+      const [rows, resolvedDailyLimit, resolvedNewIntroducedTodayCount] =
+        await Promise.all([
+          mediaRowsPromise,
+          dailyLimitPromise,
+          newIntroducedTodayCountPromise
+        ]);
 
       return loadMediaShellSnapshots(database, rows, {
         includePreviewEntries: false,
@@ -156,7 +150,6 @@ export async function loadMediaShellSnapshots(
     previewEntryLimit?: number;
     resolvedDailyLimit?: number;
     resolvedNewIntroducedTodayCount?: number;
-    resolvedReviewCandidates?: ReviewLaunchCandidate[];
     resolvedReviewSnapshots?: Map<string, ReviewOverviewSnapshot>;
     now?: Date;
   } = {}
@@ -174,66 +167,24 @@ export async function loadMediaShellSnapshots(
     options.resolvedNewIntroducedTodayCount != null
       ? Promise.resolve(options.resolvedNewIntroducedTodayCount)
       : loadReviewIntroducedTodayCountCached(database, now);
-  const reviewCandidatesPromise =
-    options.resolvedReviewCandidates ??
-    loadReviewLaunchCandidatesCached(database, now.toISOString());
   const reviewSnapshotsPromise =
     options.resolvedReviewSnapshots ??
-    Promise.all([
-      reviewCandidatesPromise,
-      dailyLimitPromise,
-      newIntroducedTodayCountPromise
-    ]).then(async ([reviewCandidates, dailyLimit, newIntroducedTodayCount]) => {
-      const queuedNewLimit = Math.max(
-        dailyLimit - newIntroducedTodayCount,
-        0
-      );
-      const queuedNewSummaries = await Promise.all(
-        media.map(async (item) => [
-          item.id,
-          await getQueuedNewReviewSubjectSummaryByMediaId(database, {
+    Promise.all([dailyLimitPromise, newIntroducedTodayCountPromise]).then(
+      ([dailyLimit, newIntroducedTodayCount]) =>
+        loadReviewOverviewSnapshots(
+          database,
+          media.map((item) => ({
+            id: item.id,
+            slug: item.slug
+          })),
+          {
             asOf: now,
-            mediaId: item.id,
-            queuedNewLimit
-          })
-        ] as const)
-      );
-      const queuedNewSummaryByMedia = new Map(queuedNewSummaries);
-      const candidatesByMedia = new Map(
-        reviewCandidates.map((candidate) => [candidate.mediaId, candidate])
-      );
-
-      return new Map(
-        media.map((item) => {
-          const candidate = candidatesByMedia.get(item.id);
-          const queuedSummary = queuedNewSummaryByMedia.get(item.id);
-
-          return [
-            item.id,
-            {
-              activeCards: candidate?.activeReviewCards ?? 0,
-              dailyLimit,
-              dueCount: candidate?.dueCount ?? 0,
-              effectiveDailyLimit: dailyLimit,
-              manualCount: candidate?.manualCount ?? 0,
-              newAvailableCount: candidate?.newAvailableCount ?? 0,
-              newQueuedCount: queuedSummary?.count ?? 0,
-              queueCount:
-                (candidate?.dueCount ?? 0) + (queuedSummary?.count ?? 0),
-              queueLabel: "",
-              suspendedCount: candidate?.suspendedCount ?? 0,
-              tomorrowCount: candidate?.tomorrowCount ?? 0,
-              totalCards: candidate?.totalCards ?? 0,
-              upcomingCount: Math.max(
-                (candidate?.activeReviewCards ?? 0) -
-                  (candidate?.dueCount ?? 0),
-                0
-              )
-            } satisfies ReviewOverviewSnapshot
-          ] as const;
-        })
-      );
-    });
+            globalMediaRows: media,
+            resolvedDailyLimit: dailyLimit,
+            resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+          }
+        )
+    );
   const mediaIds = media.map((item) => item.id);
   const [lessons, glossarySnapshots, reviewSnapshots] = await Promise.all([
     listLessonsByMediaIdsForShell(database, mediaIds),

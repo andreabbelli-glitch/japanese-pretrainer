@@ -54,6 +54,22 @@ Se usi anche il workflow GitHub [`Sync Turso On Main`](../.github/workflows/sync
 esponi le stesse due variabili anche come GitHub Actions secrets, altrimenti
 il DB remoto si aggiorna ma le cache server-side del deploy restano stale.
 
+Il workflow remoto non deve essere trattato come un deploy hook generico. Per
+contenere la quota Turso, i push su `main` lo avviano solo quando cambiano
+`content/media/**`, `drizzle/**` o i file minimi del migrator/schema DB. I push
+di UI, test o documentazione non toccano Turso. Quando cambia un media, il
+workflow passa automaticamente solo gli slug interessati a `content:import`
+tramite `--media-slug`; un import remoto full va lanciato solo manualmente dal
+workflow dispatch impostando `full_import`. Anche il CLI locale blocca i full
+import quando `DATABASE_URL` punta a un host remoto: usa sempre `--media-slug`
+per gli import Turso ordinari, oppure imposta
+`ALLOW_REMOTE_FULL_CONTENT_IMPORT=1` solo per un full import intenzionale.
+
+Il backup Turso via GitHub Actions e manuale. `turso db export` legge l'intero
+database remoto e puo consumare una quota `Rows Read` sproporzionata rispetto
+alla dimensione del file SQLite, quindi non deve girare su schedule nel piano
+free o con budget mensili stretti.
+
 Setup completo del DB locale:
 
 ```sh

@@ -56,10 +56,9 @@ describe("progress query scheduling", () => {
     }));
     vi.doMock("@/lib/review", () => ({
       loadGlobalReviewOverviewSnapshot: vi.fn(),
-      loadReviewIntroducedTodayCountCached: vi.fn(
-        introducedTodayGate.loader()
-      ),
+      loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
+      loadReviewOverviewBundle: vi.fn(),
       mapReviewOverviewSnapshot: vi.fn()
     }));
     vi.doMock("@/lib/settings", () => ({
@@ -109,10 +108,9 @@ describe("progress query scheduling", () => {
     }));
     vi.doMock("@/lib/review", () => ({
       loadGlobalReviewOverviewSnapshot: vi.fn(),
-      loadReviewIntroducedTodayCountCached: vi.fn(
-        introducedTodayGate.loader()
-      ),
+      loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
+      loadReviewOverviewBundle: vi.fn(),
       mapReviewOverviewSnapshot: vi.fn()
     }));
     vi.doMock("@/lib/settings", () => ({
@@ -131,7 +129,7 @@ describe("progress query scheduling", () => {
     await schedule.releaseAll();
   });
 
-  it("starts the global review overview before the cache-enabled media lookup settles", async () => {
+  it("does not start the review overview before the cache-enabled media lookup settles", async () => {
     const schedule = createQuerySchedulingHarness();
     const settingsValue = {
       furiganaMode: "hover" as const,
@@ -149,9 +147,9 @@ describe("progress query scheduling", () => {
     } | null>("media");
     const settingsGate = schedule.gate<typeof settingsValue>("settings");
     const introducedTodayGate = schedule.gate<number>("introduced today");
-    const globalOverviewGate = schedule.gate<unknown>("global overview");
+    const reviewOverviewGate = schedule.gate<unknown>("review overview");
 
-    const loadGlobalReviewOverviewSnapshot = vi.fn(globalOverviewGate.loader());
+    const loadReviewOverviewBundle = vi.fn(reviewOverviewGate.loader());
 
     vi.doMock("@/db", () => ({
       db: {}
@@ -176,11 +174,9 @@ describe("progress query scheduling", () => {
       getMediaDetailData: vi.fn()
     }));
     vi.doMock("@/lib/review", () => ({
-      loadGlobalReviewOverviewSnapshot,
-      loadReviewIntroducedTodayCountCached: vi.fn(
-        introducedTodayGate.loader()
-      ),
+      loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
+      loadReviewOverviewBundle,
       mapReviewOverviewSnapshot: vi.fn()
     }));
     vi.doMock("@/lib/settings", () => ({
@@ -191,27 +187,19 @@ describe("progress query scheduling", () => {
     const progressPromise = getMediaProgressPageData("fixture-media");
 
     await schedule.expectStarted("media", "settings", "introduced today");
-    schedule.expectNotStarted("global overview");
+    schedule.expectNotStarted("review overview");
 
     settingsGate.resolve(settingsValue);
     introducedTodayGate.resolve(2);
-    await schedule.expectStarted("global overview");
+    schedule.expectNotStarted("review overview");
     schedule.expectNotSettled("media");
 
-    expect(loadGlobalReviewOverviewSnapshot).toHaveBeenCalledWith(
-      {},
-      expect.objectContaining({
-        resolvedDailyLimit: 7,
-        resolvedNewIntroducedTodayCount: 2
-      })
-    );
-
     mediaGate.resolve(null);
-    globalOverviewGate.resolve(null);
     await expect(progressPromise).resolves.toBeNull();
+    expect(loadReviewOverviewBundle).not.toHaveBeenCalled();
   });
 
-  it("starts the global review overview load before the local media overview settles", async () => {
+  it("loads global and local progress review snapshots in one overview bundle", async () => {
     const schedule = createQuerySchedulingHarness();
     const settingsValue = {
       furiganaMode: "hover" as const,
@@ -223,16 +211,20 @@ describe("progress query scheduling", () => {
       reviewDailyLimit: 7
     };
     const globalOverviewValue = {
-      activeReviewCards: 3,
-      cardsTotal: 5,
+      activeCards: 3,
+      dailyLimit: 7,
       dueCount: 1,
+      effectiveDailyLimit: 7,
       manualCount: 0,
       newAvailableCount: 2,
-      firstDueFront: "共有レビュー",
-      firstNewFront: "新しいカード",
+      newQueuedCount: 1,
+      nextCardFront: "共有レビュー",
+      queueCount: 2,
+      queueLabel: "2 queued",
       suspendedCount: 0,
       tomorrowCount: 0,
-      totalCards: 5
+      totalCards: 5,
+      upcomingCount: 2
     };
     const sharedMediaValue = {
       activeLesson: null,
@@ -265,16 +257,14 @@ describe("progress query scheduling", () => {
     };
     const settingsGate = schedule.gate<typeof settingsValue>("settings");
     const introducedTodayGate = schedule.gate<number>("introduced today");
-    const mediaOverviewGate =
-      schedule.gate<Map<string, unknown>>("media overview");
-    const globalOverviewGate =
-      schedule.gate<typeof globalOverviewValue>("global overview");
+    const reviewOverviewGate = schedule.gate<{
+      byMedia: Map<string, unknown>;
+      global: typeof globalOverviewValue;
+    }>("review overview");
     const sharedMediaGate =
       schedule.gate<typeof sharedMediaValue>("shared media");
 
-    const loadGlobalReviewOverviewSnapshot = vi.fn(
-      globalOverviewGate.loader()
-    );
+    const loadReviewOverviewBundle = vi.fn(reviewOverviewGate.loader());
 
     vi.doMock("@/db", () => ({
       db: {}
@@ -305,11 +295,8 @@ describe("progress query scheduling", () => {
       getMediaDetailData: vi.fn(sharedMediaGate.loader())
     }));
     vi.doMock("@/lib/review", () => ({
-      loadGlobalReviewOverviewSnapshot,
-      loadReviewIntroducedTodayCountCached: vi.fn(
-        introducedTodayGate.loader()
-      ),
-      loadReviewOverviewSnapshots: vi.fn(mediaOverviewGate.loader())
+      loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
+      loadReviewOverviewBundle
     }));
     vi.doMock("@/lib/settings", () => ({
       getStudySettings: vi.fn(settingsGate.loader())
@@ -332,36 +319,55 @@ describe("progress query scheduling", () => {
     await schedule.expectStarted("settings", "introduced today");
     settingsGate.resolve(settingsValue);
     introducedTodayGate.resolve(2);
-    await schedule.expectStarted("media overview", "global overview");
-    schedule.expectNotSettled("media overview");
+    await schedule.expectStarted("review overview");
+    schedule.expectNotSettled("review overview");
 
-    expect(loadGlobalReviewOverviewSnapshot).toHaveBeenCalledTimes(1);
-    expect(loadGlobalReviewOverviewSnapshot).toHaveBeenCalledWith(
+    expect(loadReviewOverviewBundle).toHaveBeenCalledTimes(1);
+    expect(loadReviewOverviewBundle).toHaveBeenCalledWith(
       {},
+      [
+        {
+          id: "media-1",
+          slug: "fixture-media",
+          title: "Fixture Media"
+        }
+      ],
       expect.objectContaining({
+        globalMediaRows: [
+          {
+            id: "media-1",
+            slug: "fixture-media",
+            title: "Fixture Media"
+          }
+        ],
         resolvedDailyLimit: 7,
         resolvedNewIntroducedTodayCount: 2
       })
     );
 
-    mediaOverviewGate.resolve(
-      new Map([
+    reviewOverviewGate.resolve({
+      byMedia: new Map([
         [
           "media-1",
           {
             activeCards: 1,
             dailyLimit: 7,
             dueCount: 1,
+            effectiveDailyLimit: 7,
+            manualCount: 0,
             newAvailableCount: 1,
             newQueuedCount: 0,
             queueCount: 1,
             queueLabel: "1 due",
-            totalCards: 2
+            suspendedCount: 0,
+            tomorrowCount: 0,
+            totalCards: 2,
+            upcomingCount: 0
           }
         ]
-      ])
-    );
-    globalOverviewGate.resolve(globalOverviewValue);
+      ]),
+      global: globalOverviewValue
+    });
     sharedMediaGate.resolve(sharedMediaValue);
 
     const data = await progressPromise;

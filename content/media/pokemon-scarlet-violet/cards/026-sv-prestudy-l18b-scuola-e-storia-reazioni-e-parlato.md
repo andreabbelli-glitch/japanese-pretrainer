@@ -79,7 +79,11 @@ reading: いったい
 romaji: ittai
 meaning_it: ma che... / in fondo chi / cosa...?
 notes_it: >-
-  Dà enfasi a una domanda: いったい{{何|なに}}？
+  Enfatizza una domanda con sorpresa, incredulità, frustrazione o
+  esasperazione: "che diavolo...", "ma cosa...", "chi mai...". È molto comune
+  in anime, manga e parlato informale. いったい{{何|なに}}？ = "Ma cosa diavolo
+  è?" / "Che diavolo succede?"; いったいどうして？ = "Ma perché mai?" / "Per
+  quale assurdo motivo?"; いったい{{誰|だれ}}ですか？ = "Ma chi diavolo è?"
 :::
 :::card
 id: card-e041-ittai-recognition
@@ -88,11 +92,11 @@ entry_type: term
 entry_id: term-e041-ittai
 card_type: recognition
 front: 'いったい'
-back: ma che... / in fondo chi / cosa...?
+back: che diavolo... / ma cosa...
 example_jp: >-
-  いったい どうしたの？
+  いったい{{何|なに}}？
 example_it: >-
-  Ma che succede, di preciso?
+  Ma cosa diavolo è? / Che diavolo succede?
 :::
 :::grammar
 id: grammar-g041-probabilmente-suppongo

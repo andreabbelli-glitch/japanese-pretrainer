@@ -100,7 +100,6 @@ import {
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { loadReviewPageDataSession } from "@/lib/review-page-data";
 import {
-  loadGlobalReviewOverviewDataCached,
   loadReviewLaunchCandidatesCached,
   loadReviewWorkspaceV2
 } from "@/lib/review-loader";
@@ -257,7 +256,7 @@ describe("global review first-candidate cache", () => {
     }
   });
 
-  it("reuses the time-sensitive review loader caches within a local bucket and refreshes on the next bucket", async () => {
+  it("reuses the time-sensitive review launch cache within a local bucket and refreshes on the next bucket", async () => {
     const databaseAllSpy = vi.spyOn(
       database as DatabaseClient & {
         all: (sql: string) => Promise<unknown[]>;
@@ -267,14 +266,6 @@ describe("global review first-candidate cache", () => {
     const firstTime = new Date(2026, 2, 10, 10, 1, 0, 0);
     const secondTime = new Date(2026, 2, 10, 10, 8, 0, 0);
     const thirdTime = new Date(2026, 2, 10, 10, 11, 0, 0);
-    const firstOverviewKey = JSON.stringify([
-      "review-global-overview",
-      `bucket:${getLocalIsoTimeBucketKey(firstTime)}`
-    ]);
-    const thirdOverviewKey = JSON.stringify([
-      "review-global-overview",
-      `bucket:${getLocalIsoTimeBucketKey(thirdTime)}`
-    ]);
     const firstCandidateKey = JSON.stringify([
       "review-launch-candidates",
       `bucket:${getLocalIsoTimeBucketKey(firstTime)}`
@@ -284,16 +275,11 @@ describe("global review first-candidate cache", () => {
       `bucket:${getLocalIsoTimeBucketKey(thirdTime)}`
     ]);
 
-    await loadGlobalReviewOverviewDataCached(database, firstTime);
     await loadReviewLaunchCandidatesCached(database, firstTime.toISOString());
-    await loadGlobalReviewOverviewDataCached(database, secondTime);
     await loadReviewLaunchCandidatesCached(database, secondTime.toISOString());
-    await loadGlobalReviewOverviewDataCached(database, thirdTime);
     await loadReviewLaunchCandidatesCached(database, thirdTime.toISOString());
 
-    expect(databaseAllSpy).toHaveBeenCalledTimes(4);
-    expect(cacheStore.has(firstOverviewKey)).toBe(true);
-    expect(cacheStore.has(thirdOverviewKey)).toBe(true);
+    expect(databaseAllSpy).toHaveBeenCalledTimes(2);
     expect(cacheStore.has(firstCandidateKey)).toBe(true);
     expect(cacheStore.has(thirdCandidateKey)).toBe(true);
 

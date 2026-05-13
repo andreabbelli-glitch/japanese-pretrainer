@@ -164,9 +164,15 @@ Per eseguire il controllo locale piu completo:
 Il gate canonico copre nell'ordine:
 
 - `pnpm check` per lint, typecheck e test unit/integration;
+- preparazione di un DB SQLite locale dedicato in `.tmp/release-check/`;
 - `pnpm build`;
 - `pnpm content:validate`;
 - runner E2E Playwright sul setup locale dedicato.
+
+Il DB locale del release gate viene passato esplicitamente come `DATABASE_URL` e
+`E2E_DATABASE_URL`, con `DATABASE_AUTH_TOKEN`, `LIBSQL_AUTH_TOKEN` e le variabili
+di cache revalidation svuotate, per evitare letture o invalidazioni Turso quando
+`.env.local` contiene credenziali remote.
 
 Il sign-off locale resta valido solo sul runtime supportato del repo, cioe
 `Node 22.x` risolto tramite `./scripts/with-node.sh`. Gli script CLI
@@ -195,3 +201,7 @@ specifico, ma non conta come matrice ufficiale di verifica.
   richiede `CRON_SECRET` e usa il `DATABASE_URL` remoto del runtime. In locale lo
   stesso gate puo essere verificato con
   `./scripts/with-node.sh pnpm fsrs:optimize:if-needed`.
+- I workflow GitHub che toccano Turso remoto sono volutamente limitati: il sync
+  automatico su `main` copre solo migrazioni e import `content/media/**`
+  incrementali per slug, mentre il backup `turso db export` resta manuale per
+  evitare consumi improvvisi della quota `Rows Read`.

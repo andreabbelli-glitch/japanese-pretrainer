@@ -107,4 +107,38 @@ describe("import content CLI", () => {
       stderr: expect.stringContaining("Missing value for --media-slug.")
     });
   }, 60_000);
+
+  it("rejects full imports against remote databases unless explicitly allowed", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-import-cli-"));
+    tempDirs.push(tempDir);
+    const env: NodeJS.ProcessEnv = {
+      ...process.env,
+      DATABASE_AUTH_TOKEN: "test-token",
+      DATABASE_URL: "libsql://example.turso.io"
+    };
+    delete env.ALLOW_REMOTE_FULL_CONTENT_IMPORT;
+    delete env.CONTENT_CACHE_REVALIDATE_SECRET;
+    delete env.CONTENT_CACHE_REVALIDATE_URL;
+    delete env.LIBSQL_AUTH_TOKEN;
+
+    await expect(
+      execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          path.join(process.cwd(), "scripts", "import-content.ts"),
+          "--content-root",
+          validContentRoot
+        ],
+        {
+          cwd: tempDir,
+          env
+        }
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining(
+        "Refusing to run a full content import against a remote DATABASE_URL."
+      )
+    });
+  }, 60_000);
 });
