@@ -13,7 +13,7 @@ reading: ざっし
 romaji: zasshi
 meaning_it: rivista
 notes_it: >-
-  {{雑|ざっ}}{{誌|し}} significa rivista. Nel materiale di Scarlet / Violet ricorre 16 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{雑|ざっ}}{{誌|し}} indica specificamente le riviste e i periodici. Nel contesto dell'Accademia di Paldea, la troverai per riferirsi alle copie dei magazine (come il mensile sull'occulto) sparse per le librerie.
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: さきほど
 romaji: sakihodo
 meaning_it: poco fa
 notes_it: >-
-  {{先|さき}}ほど significa poco fa. Nel materiale di Scarlet / Violet ricorre 16 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{先|さき}}ほど è l'equivalente formale e cortese di さっき, “poco fa”. Si usa quando il tono è più educato, per esempio in annunci dell'Accademia, dialoghi con adulti o comunicazioni ufficiali. Indica un'azione appena terminata.
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: ほしい
 romaji: hoshii
 meaning_it: volere; desiderare
 notes_it: >-
-  {{欲|ほ}}しい significa volere; desiderare. Nel materiale di Scarlet / Violet ricorre 16 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  In giapponese {{欲|ほ}}しい è un Aggettivo-I, non un verbo. La cosa desiderata è il soggetto grammaticale e prende が: きのみが{{欲|ほ}}しい (voglio la bacca). Si usa solo per esprimere il desiderio di chi parla (o in domande dirette alla seconda persona).
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: おちる
 romaji: ochiru
 meaning_it: cadere; scendere
 notes_it: >-
-  {{落|お}}ちる significa cadere; scendere. Nel materiale di Scarlet / Violet ricorre 16 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{落|お}}ちる è un verbo intransitivo: l'azione accade da sola e il soggetto prende が. È frequentissimo nelle lotte per indicare le statistiche che scendono (すばやさが{{落|お}}ちた) o oggetti che cadono a terra.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: かいじょう
 romaji: kaijou
 meaning_it: luogo dell’evento; sede
 notes_it: >-
-  {{会|かい}}{{場|じょう}} significa luogo dell’evento; sede. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{会|かい}}{{場|じょう}} indica un'area specifica allestita per un evento temporaneo o un test, come l'arena per un esame della palestra o per un torneo. Viene spesso determinata dal nome dell'evento, ad esempio {{大|たい}}{{会|かい}}の{{会|かい}}{{場|じょう}} (il luogo del torneo).
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: たかめる
 romaji: takameru
 meaning_it: aumentare; elevare
 notes_it: >-
-  {{高|たか}}める significa aumentare; elevare. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{高|たか}}める è un verbo transitivo che esprime l'intenzione di far crescere qualcosa (usando を). Si incontra continuamente nelle lotte Pokémon per le mosse o gli strumenti che incrementano le statistiche (es. こうげきを{{高|たか}}める).
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: さくひん
 romaji: sakuhin
 meaning_it: opera; lavoro artistico
 notes_it: >-
-  {{作|さく}}{{品|ひん}} significa opera; lavoro artistico. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{作|さく}}{{品|ひん}} copre qualsiasi produzione artistica o artigianale. Sentirai questa parola specialmente dal Professor Hassel (ハッサク) quando valuta le sculture di Brassius (コルサ) o l'espressività degli studenti.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: こども
 romaji: kodomo
 meaning_it: bambino
 notes_it: >-
-  {{子|こ}}{{供|ども}} significa bambino. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{子|こ}}{{供|ども}} si contrappone spesso a {{大人|おとな}} (adulto). In un'Accademia dove persone di ogni età studiano insieme, questa parola viene usata per sottolineare che il talento nelle lotte o lo spirito di avventura non dipendono dall'età.
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: しじょう
 romaji: shijou
 meaning_it: mercato
 notes_it: >-
-  {{市|し}}{{場|じょう}} significa mercato. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{市|し}}{{場|じょう}} indica il mercato in senso più astratto o generale (es. il mercato dei beni o le dinamiche di scambio). Attenzione: quando ci si riferisce a un mercato fisico rionale, i personaggi usano solitamente la lettura いちば (come per il mercato di Marinada).
 level_hint: custom
 :::
 :::term
@@ -103,7 +103,7 @@ reading: ながい
 romaji: nagai
 meaning_it: lungo
 notes_it: >-
-  {{長|なが}}い significa lungo. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  {{長|なが}}い è un Aggettivo-I molto versatile. Si usa sia per lo spazio fisico (una strada, una coda) sia per la dimensione temporale (un viaggio lungo, una lunga attesa). Può precedere il nome come in {{長|なが}}い{{冒|ぼう}}{{険|けん}} (lunga avventura).
 level_hint: custom
 :::
 :::card
@@ -112,14 +112,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-zasshi
 card_type: recognition
-front: '{{雑|ざっ}}{{誌|し}}'
-back: 'ざっし — rivista'
+front: '{{雑|ざっ}}{{誌|し}} / ざっし'
+back: >-
+  ざっし — rivista; usato per le pubblicazioni, come il magazine di occulto dell'Accademia.
 example_jp: >-
-  {{雑|ざっ}}{{誌|し}}が ある。
+  エントランスに オカルト{{雑|ざっ}}{{誌|し}}が {{置|お}}いてある。
 example_it: >-
-  C’è rivista.
+  All'ingresso c'è una rivista sull'occulto.
 notes_it: >-
-  {{雑|ざっ}}{{誌|し}} significa rivista. Nel materiale di Scarlet / Violet ricorre 16 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{雑|ざっ}}{{誌|し}} indica specificamente le riviste e i periodici. Nel contesto dell'Accademia di Paldea, la troverai per riferirsi alle copie dei magazine (come il mensile sull'occulto) sparse per le librerie.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::
 :::card
@@ -128,14 +129,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-sakihodo
 card_type: recognition
-front: '{{先|さき}}ほど'
-back: 'さきほど — poco fa'
+front: '{{先|さき}}ほど / さきほど'
+back: >-
+  さきほど — poco fa; forma più formale e cortese di さっき, usata in annunci e dialoghi educati.
 example_jp: >-
-  {{先|さき}}ほど、ネモが きた。
+  {{先|さき}}ほど {{校|こう}}{{長|ちょう}}が お{{見|み}}えになりました。
 example_it: >-
-  poco fa: Nemona è arrivata.
+  Il preside è arrivato poco fa.
 notes_it: >-
-  {{先|さき}}ほど significa poco fa. Nel materiale di Scarlet / Violet ricorre 16 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{先|さき}}ほど è l'equivalente formale e cortese di さっき, “poco fa”. Si usa quando il tono è più educato, per esempio in annunci dell'Accademia, dialoghi con adulti o comunicazioni ufficiali. Indica un'azione appena terminata.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::
 :::card
@@ -144,14 +146,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-hoshii
 card_type: recognition
-front: '{{欲|ほ}}しい'
-back: 'ほしい — volere; desiderare'
+front: '{{欲|ほ}}しい / ほしい'
+back: >-
+  ほしい — volere, desiderare; è un Aggettivo-I, la cosa desiderata prende la particella が.
 example_jp: >-
-  それは {{欲|ほ}}しい。
+  その めずらしい きのみが {{欲|ほ}}しいな！
 example_it: >-
-  È volere; desiderare.
+  Voglio quella bacca rara!
 notes_it: >-
-  {{欲|ほ}}しい significa volere; desiderare. Nel materiale di Scarlet / Violet ricorre 16 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  In giapponese {{欲|ほ}}しい è un Aggettivo-I, non un verbo. La cosa desiderata è il soggetto grammaticale e prende が: きのみが{{欲|ほ}}しい (voglio la bacca). Si usa solo per esprimere il desiderio di chi parla (o in domande dirette alla seconda persona).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::
 :::card
@@ -160,14 +163,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-ochiru
 card_type: recognition
-front: '{{落|お}}ちる'
-back: 'おちる — cadere; scendere'
+front: '{{落|お}}ちる / おちる'
+back: >-
+  おちる — cadere, scendere; verbo intransitivo, il soggetto che cade o scende prende が.
 example_jp: >-
-  {{落|お}}ちる ことが ある。
+  ポケモンの すばやさが ガクッと {{落|お}}ちる！
 example_it: >-
-  A volte capita di cadere; scendere.
+  La velocità del Pokémon scende di colpo!
 notes_it: >-
-  {{落|お}}ちる significa cadere; scendere. Nel materiale di Scarlet / Violet ricorre 16 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{落|お}}ちる è un verbo intransitivo: l'azione accade da sola e il soggetto prende が. È frequentissimo nelle lotte per indicare le statistiche che scendono (すばやさが{{落|お}}ちた) o oggetti che cadono a terra.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::
 :::card
@@ -176,14 +180,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-kaijou
 card_type: recognition
-front: '{{会|かい}}{{場|じょう}}'
-back: 'かいじょう — luogo dell’evento; sede'
+front: '{{会|かい}}{{場|じょう}} / かいじょう'
+back: >-
+  かいじょう — luogo dell’evento, sede; si collega all'evento specifico tramite la particella の.
 example_jp: >-
-  {{会|かい}}{{場|じょう}}が ある。
+  ジムテストの {{会|かい}}{{場|じょう}}は あちら です。
 example_it: >-
-  C’è luogo dell’evento; sede.
+  La sede dell'esame della palestra è da quella parte.
 notes_it: >-
-  {{会|かい}}{{場|じょう}} significa luogo dell’evento; sede. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{会|かい}}{{場|じょう}} indica un'area specifica allestita per un evento temporaneo o un test, come l'arena per un esame della palestra o per un torneo. Viene spesso determinata dal nome dell'evento, ad esempio {{大|たい}}{{会|かい}}の{{会|かい}}{{場|じょう}} (il luogo del torneo).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::
 :::card
@@ -192,14 +197,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-takameru
 card_type: recognition
-front: '{{高|たか}}める'
-back: 'たかめる — aumentare; elevare'
+front: '{{高|たか}}める / たかめる'
+back: >-
+  たかめる — aumentare, elevare; verbo transitivo, l'oggetto che viene incrementato prende を.
 example_jp: >-
-  {{高|たか}}める ことが ある。
+  わざで ポケモンの すばやさを {{高|たか}}める！
 example_it: >-
-  A volte capita di aumentare; elevare.
+  Aumento la velocità del Pokémon con una mossa!
 notes_it: >-
-  {{高|たか}}める significa aumentare; elevare. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{高|たか}}める è un verbo transitivo che esprime l'intenzione di far crescere qualcosa (usando を). Si incontra continuamente nelle lotte Pokémon per le mosse o gli strumenti che incrementano le statistiche (es. こうげきを{{高|たか}}める).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::
 :::card
@@ -208,14 +214,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-sakuhin
 card_type: recognition
-front: '{{作|さく}}{{品|ひん}}'
-back: 'さくひん — opera; lavoro artistico'
+front: '{{作|さく}}{{品|ひん}} / さくひん'
+back: >-
+  さくひん — opera, lavoro artistico; racchiude quadri, sculture e compiti creativi degli studenti.
 example_jp: >-
-  {{作|さく}}{{品|ひん}}が ある。
+  {{美|び}}{{術|じゅつ}}の {{授|じゅ}}{{業|ぎょう}}で {{素|す}}{{晴|ば}}らしい {{作|さく}}{{品|ひん}}を {{作|つく}}ったね。
 example_it: >-
-  C’è opera; lavoro artistico.
+  Hai creato un'opera magnifica durante la lezione di educazione artistica.
 notes_it: >-
-  {{作|さく}}{{品|ひん}} significa opera; lavoro artistico. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{作|さく}}{{品|ひん}} copre qualsiasi produzione artistica o artigianale. Sentirai questa parola specialmente dal Professor Hassel (ハッサク) quando valuta le sculture di Brassius (コルサ) o l'espressività degli studenti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::
 :::card
@@ -224,14 +231,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-kodomo
 card_type: recognition
-front: '{{子|こ}}{{供|ども}}'
-back: 'こども — bambino'
+front: '{{子|こ}}{{供|ども}} / こども'
+back: >-
+  こども — bambino, ragazzino; evidenzia la giovane età in contrasto con gli adulti ({{大人|おとな}}).
 example_jp: >-
-  {{子|こ}}{{供|ども}}が いる。
+  ポケモン{{勝|しょう}}{{負|ぶ}}に {{大人|おとな}}や {{子|こ}}{{供|ども}}は {{関|かん}}{{係|けい}}ない！
 example_it: >-
-  C’è bambino.
+  Nelle lotte Pokémon non importa se si è adulti o bambini!
 notes_it: >-
-  {{子|こ}}{{供|ども}} significa bambino. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{子|こ}}{{供|ども}} si contrappone spesso a {{大人|おとな}} (adulto). In un'Accademia dove persone di ogni età studiano insieme, questa parola viene usata per sottolineare che il talento nelle lotte o lo spirito di avventura non dipendono dall'età.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::
 :::card
@@ -240,14 +248,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-shijou
 card_type: recognition
-front: '{{市|し}}{{場|じょう}}'
-back: 'しじょう — mercato'
+front: '{{市|し}}{{場|じょう}} / しじょう'
+back: >-
+  しじょう — mercato; usato in senso economico generale. Il mercato fisico (come Marinada) spesso si legge いちば.
 example_jp: >-
-  {{市|し}}{{場|じょう}}が ある。
+  この {{地|ち}}{{方|ほう}}の {{市|し}}{{場|じょう}}には たくさんの アイテムが {{出|で}}{{回|まわ}}っている。
 example_it: >-
-  C’è mercato.
+  Nel mercato di questa regione circolano tantissimi strumenti.
 notes_it: >-
-  {{市|し}}{{場|じょう}} significa mercato. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{市|し}}{{場|じょう}} indica il mercato in senso più astratto o generale (es. il mercato dei beni o le dinamiche di scambio). Attenzione: quando ci si riferisce a un mercato fisico rionale, i personaggi usano solitamente la lettura いちば (come per il mercato di Marinada).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::
 :::card
@@ -256,13 +265,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-nagai
 card_type: recognition
-front: '{{長|なが}}い'
-back: 'ながい — lungo'
+front: '{{長|なが}}い / ながい'
+back: >-
+  ながい — lungo; aggettivo-i che descrive una grande estensione sia nello spazio sia nel tempo.
 example_jp: >-
-  それは {{長|なが}}い。
+  {{長|なが}}い {{冒|ぼう}}{{険|けん}}の {{末|すえ}}に、ついに エリアゼロへ たどり{{着|つ}}いた。
 example_it: >-
-  È lungo.
+  Al termine di una lunga avventura, siamo finalmente arrivati nell'Area Zero.
 notes_it: >-
-  {{長|なが}}い significa lungo. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  {{長|なが}}い è un Aggettivo-I molto versatile. Si usa sia per lo spazio fisico (una strada, una coda) sia per la dimensione temporale (un viaggio lungo, una lunga attesa). Può precedere il nome come in {{長|なが}}い{{冒|ぼう}}{{険|けん}} (lunga avventura).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::

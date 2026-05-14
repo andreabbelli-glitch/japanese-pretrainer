@@ -13,7 +13,7 @@ reading: とめる
 romaji: tomeru
 meaning_it: fermare; smettere; spegnere
 notes_it: >-
-  {{止|と}}める significa fermare; smettere; spegnere. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{止|と}}める indica l'azione di bloccare o interrompere qualcosa in corso. Prende l'oggetto in を: {{進|しん}}{{化|か}}を{{止|と}}める (fermare l'evoluzione). A differenza del verbo intransitivo {{止|と}}まる (fermarsi), qui c'è un soggetto attivo che compie l'azione.
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: ゆきやま
 romaji: yukiyama
 meaning_it: montagna innevata
 notes_it: >-
-  {{雪|ゆき}}{{山|やま}} significa montagna innevata. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{雪|ゆき}}{{山|やま}} è composto da {{雪|ゆき}} (neve) e {{山|やま}} (montagna). Si usa per indicare le aree montuose fredde, come il Monte Glaseado (ナッペ{{山|やま}}) a Paldea, habitat tipico dei Pokémon di tipo Ghiaccio. Spesso è accompagnato dalla particella di luogo に: {{雪|ゆき}}{{山|やま}}に.
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: みせ
 romaji: mise
 meaning_it: negozio
 notes_it: >-
-  {{店|みせ}} significa negozio. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il sostantivo {{店|みせ}} indica qualsiasi attività commerciale, dalle panetterie alle farmacie. Spesso prende la particella で per indicare il luogo dove si svolge l'azione ({{店|みせ}}で{{買|か}}う: comprare al negozio) o に per la destinazione ({{店|みせ}}に{{行|い}}く: andare al negozio).
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: ばい
 romaji: bai
 meaning_it: doppio; volte
 notes_it: >-
-  {{倍|ばい}} significa doppio; volte. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il suffisso {{倍|ばい}} funge da moltiplicatore. Da solo può significare "doppio", ma si lega ai numeri per indicare le volte (es. due{{倍|ばい}}, tre{{倍|ばい}}). È essenziale nel sistema di lotta per esprimere l'aumento delle statistiche o i calcoli dei danni.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: やさしい
 romaji: yasashii
 meaning_it: gentile
 notes_it: >-
-  {{優|やさ}}しい significa gentile. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  L'aggettivo in -i {{優|やさ}}しい descrive un carattere premuroso, dolce o affettuoso. Si usa spesso in contrasto con un'apparenza dura, per descrivere personaggi o Pokémon con una natura docile. Non va confuso con {{易|やさ}}しい (stessa pronuncia), che significa "facile".
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: にばい
 romaji: nibai
 meaning_it: due volte; doppio
 notes_it: >-
-  {{2倍|にばい}} significa due volte; doppio. Nel materiale di Scarlet / Violet ricorre 19 volte, quindi va riconosciuto rapidamente. È un blocco di quantità: contatore, moltiplicatore o numero da leggere come unità intera nel testo.
+  La quantità {{2倍|にばい}} è composta dal numero due (に) e dal contatore per i moltiplicatori {{倍|ばい}} (ばい). Fondamentale nelle lotte per calcolare l'efficacia dei tipi. Si collega al nome successivo con の (due{{倍|ばい}}のダメージ: danno doppio) o si usa come avverbio (due{{倍|ばい}}になる: raddoppiare).
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: きょうし
 romaji: kyoushi
 meaning_it: insegnante
 notes_it: >-
-  {{教|きょう}}{{師|し}} significa insegnante. Nel materiale di Scarlet / Violet ricorre 19 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{教|きょう}}{{師|し}} è il termine formale per indicare la professione dell'insegnante. All'Accademia di Paldea, ci si rivolge ai professori chiamandoli {{先生|せんせい}} (せんせい) come titolo onorifico, ma la loro categoria professionale o il loro ruolo istituzionale è descritto come {{教|きょう}}{{師|し}}.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: ひろば
 romaji: hiroba
 meaning_it: piazza
 notes_it: >-
-  {{広|ひろ}}{{場|ば}} significa piazza. Nel materiale di Scarlet / Violet ricorre 19 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Composto da {{広|ひろ}} (ampio) e {{場|ば}} (luogo), {{広|ひろ}}{{場|ば}} indica una piazza o uno spiazzo pubblico. È una parola fondamentale per orientarsi nelle grandi città di Paldea, dove le piazze (come il {{中|ちゅう}}{{央|おう}}{{広|ひろ}}{{場|ば}}) fungono da snodi principali o punti di ritrovo per gli allenatori.
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: おきて
 romaji: okite
 meaning_it: regola; codice
 notes_it: >-
-  {{掟|おきて}} significa regola; codice. Nel materiale di Scarlet / Violet ricorre 19 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{掟|おきて}} indica un codice di condotta, una legge non scritta o una regola rigida interna a un gruppo, come le norme del Team Star. Ha una sfumatura più tribale e solenne rispetto al più comune e generico ルール (regola).
 level_hint: custom
 :::
 :::term
@@ -103,7 +103,7 @@ reading: よっつ
 romaji: yottsu
 meaning_it: quattro cose
 notes_it: >-
-  {{4|よっ}}つ significa quattro cose. Nel materiale di Scarlet / Violet ricorre 18 volte, quindi va riconosciuto rapidamente. È un blocco di quantità: contatore, moltiplicatore o numero da leggere come unità intera nel testo.
+  {{4|よっ}}つ utilizza il contatore universale giapponese (-つ) per la quantità "quattro". A differenza dei contatori specifici (come -{{匹|ひき}} per i Pokémon), si usa per concetti astratti, oggetti generici o elementi del gioco come le mosse (わざ). La pronuncia è irregolare e richiede di prestare attenzione al raddoppio consonantico.
 level_hint: custom
 :::
 :::card
@@ -112,14 +112,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-nego
 entry_type: term
 entry_id: term-anki-l07-tomeru
 card_type: recognition
-front: '{{止|と}}める'
-back: 'とめる — fermare; smettere; spegnere'
+front: '{{止|と}}める / とめる'
+back: >-
+  とめる — fermare; smettere; spegnere. Verbo transitivo che indica l'azione attiva di bloccare qualcosa in corso (es. un'evoluzione), prendendo il suo oggetto con la particella を.
 example_jp: >-
-  {{止|と}}める ことが ある。
+  Bボタンで {{進|しん}}{{化|か}}を {{止|と}}める ことが できる。
 example_it: >-
-  A volte capita di fermare; smettere; spegnere.
+  Puoi fermare l'evoluzione con il tasto B.
 notes_it: >-
-  {{止|と}}める significa fermare; smettere; spegnere. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{止|と}}める indica l'azione di bloccare o interrompere qualcosa in corso. Prende l'oggetto in を: {{進|しん}}{{化|か}}を{{止|と}}める (fermare l'evoluzione). A differenza del verbo intransitivo {{止|と}}まる (fermarsi), qui c'è un soggetto attivo che compie l'azione.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -128,14 +129,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-nego
 entry_type: term
 entry_id: term-anki-l07-yukiyama
 card_type: recognition
-front: '{{雪|ゆき}}{{山|やま}}'
-back: 'ゆきやま — montagna innevata'
+front: '{{雪|ゆき}}{{山|やま}} / ゆきやま'
+back: >-
+  ゆきやま — montagna innevata. Sostantivo che indica aree montuose fredde; come luogo dell'azione o destinazione prende le particelle に o で.
 example_jp: >-
-  {{雪|ゆき}}{{山|やま}}が ある。
+  この {{雪|ゆき}}{{山|やま}}には こおりタイプの ポケモンが たくさん いる。
 example_it: >-
-  C’è montagna innevata.
+  Su questa montagna innevata ci sono molti Pokémon di tipo Ghiaccio.
 notes_it: >-
-  {{雪|ゆき}}{{山|やま}} significa montagna innevata. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{雪|ゆき}}{{山|やま}} è composto da {{雪|ゆき}} (neve) e {{山|やま}} (montagna). Si usa per indicare le aree montuose fredde, come il Monte Glaseado (ナッペ{{山|やま}}) a Paldea, habitat tipico dei Pokémon di tipo Ghiaccio. Spesso è accompagnato dalla particella di luogo に: {{雪|ゆき}}{{山|やま}}に.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -144,14 +146,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-nego
 entry_type: term
 entry_id: term-anki-l07-mise
 card_type: recognition
-front: '{{店|みせ}}'
-back: 'みせ — negozio'
+front: '{{店|みせ}} / みせ'
+back: >-
+  みせ — negozio. Sostantivo che indica qualsiasi attività commerciale, si usa comunemente con で per marcare il luogo in cui avviene un acquisto.
 example_jp: >-
-  {{店|みせ}}が ある。
+  テーブルシティの {{店|みせ}}で サンドウィッチの {{材|ざい}}{{料|りょう}}を {{買|か}}った。
 example_it: >-
-  C’è negozio.
+  Ho comprato gli ingredienti per i panini in un negozio a Mesagoza.
 notes_it: >-
-  {{店|みせ}} significa negozio. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il sostantivo {{店|みせ}} indica qualsiasi attività commerciale, dalle panetterie alle farmacie. Spesso prende la particella で per indicare il luogo dove si svolge l'azione ({{店|みせ}}で{{買|か}}う: comprare al negozio) o に per la destinazione ({{店|みせ}}に{{行|い}}く: andare al negozio).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -160,14 +163,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-nego
 entry_type: term
 entry_id: term-anki-l07-bai
 card_type: recognition
-front: '{{倍|ばい}}'
-back: 'ばい — doppio; volte'
+front: '{{倍|ばい}} / ばい'
+back: >-
+  ばい — doppio; volte. Suffisso che funge da moltiplicatore nei calcoli, essenziale nel gioco per esprimere le dinamiche di debolezza, resistenza o aumento di statistiche.
 example_jp: >-
-  {{倍|ばい}}が ある。
+  {{弱|じゃく}}{{点|てん}}を {{突|つ}}くと ダメージが {{倍|ばい}}に なる。
 example_it: >-
-  C’è doppio; volte.
+  Se colpisci un punto debole, il danno raddoppia.
 notes_it: >-
-  {{倍|ばい}} significa doppio; volte. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il suffisso {{倍|ばい}} funge da moltiplicatore. Da solo può significare "doppio", ma si lega ai numeri per indicare le volte (es. due{{倍|ばい}}, tre{{倍|ばい}}). È essenziale nel sistema di lotta per esprimere l'aumento delle statistiche o i calcoli dei danni.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -176,14 +180,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-nego
 entry_type: term
 entry_id: term-anki-l07-yasashii
 card_type: recognition
-front: '{{優|やさ}}しい'
-back: 'やさしい — gentile'
+front: '{{優|やさ}}しい / やさしい'
+back: >-
+  やさしい — gentile. Aggettivo in -i che descrive una natura premurosa e affettuosa. Da non confondere con l'omofono {{易|やさ}}しい (facile).
 example_jp: >-
-  それは {{優|やさ}}しい。
+  ペパーは ぶっきらぼうに {{見|み}}えるけど、 {{本|ほん}}{{当|とう}}は とても {{優|やさ}}しい。
 example_it: >-
-  È gentile.
+  Arven sembra burbero, ma in realtà è molto gentile.
 notes_it: >-
-  {{優|やさ}}しい significa gentile. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  L'aggettivo in -i {{優|やさ}}しい descrive un carattere premuroso, dolce o affettuoso. Si usa spesso in contrasto con un'apparenza dura, per descrivere personaggi o Pokémon con una natura docile. Non va confuso con {{易|やさ}}しい (stessa pronuncia), che significa "facile".
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -192,14 +197,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-nego
 entry_type: term
 entry_id: term-anki-l07-nibai
 card_type: recognition
-front: '{{2倍|にばい}}'
-back: 'にばい — due volte; doppio'
+front: '{{2倍|にばい}} / にばい'
+back: >-
+  にばい — due volte; doppio. Composto da numero + contatore moltiplicatore, si lega al sostantivo seguente con の per indicare una quantità o un effetto raddoppiato.
 example_jp: >-
-  ポケモンが {{2倍|にばい}} いる。
+  くさタイプの わざは みずタイプの ポケモンに {{2倍|にばい}}の ダメージを {{与|あた}}える。
 example_it: >-
-  Ci sono due volte; doppio.
+  Le mosse di tipo Erba infliggono il doppio dei danni ai Pokémon di tipo Acqua.
 notes_it: >-
-  {{2倍|にばい}} significa due volte; doppio. Nel materiale di Scarlet / Violet ricorre 19 volte, quindi va riconosciuto rapidamente. È un blocco di quantità: contatore, moltiplicatore o numero da leggere come unità intera nel testo.
+  La quantità {{2倍|にばい}} è composta dal numero due (に) e dal contatore per i moltiplicatori {{倍|ばい}} (ばい). Fondamentale nelle lotte per calcolare l'efficacia dei tipi. Si collega al nome successivo con の (due{{倍|ばい}}のダメージ: danno doppio) o si usa come avverbio (due{{倍|ばい}}になる: raddoppiare).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -208,14 +214,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-nego
 entry_type: term
 entry_id: term-anki-l07-kyoushi
 card_type: recognition
-front: '{{教|きょう}}{{師|し}}'
-back: 'きょうし — insegnante'
+front: '{{教|きょう}}{{師|し}} / きょうし'
+back: >-
+  きょうし — insegnante. Termine formale e oggettivo per la professione dell'insegnante, usato in contesti istituzionali o per descrivere il ruolo.
 example_jp: >-
-  {{教|きょう}}{{師|し}}が いる。
+  アカデミーの {{教|きょう}}{{師|し}}たちは みんな {{個|こ}}{{性|せい}}が {{強|つよ}}い。
 example_it: >-
-  C’è un insegnante.
+  Gli insegnanti dell'Accademia hanno tutti una forte personalità.
 notes_it: >-
-  {{教|きょう}}{{師|し}} significa insegnante. Nel materiale di Scarlet / Violet ricorre 19 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{教|きょう}}{{師|し}} è il termine formale per indicare la professione dell'insegnante. All'Accademia di Paldea, ci si rivolge ai professori chiamandoli {{先生|せんせい}} (せんせい) come titolo onorifico, ma la loro categoria professionale o il loro ruolo istituzionale è descritto come {{教|きょう}}{{師|し}}.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -224,14 +231,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-nego
 entry_type: term
 entry_id: term-anki-l07-hiroba
 card_type: recognition
-front: '{{広|ひろ}}{{場|ば}}'
-back: 'ひろば — piazza'
+front: '{{広|ひろ}}{{場|ば}} / ひろば'
+back: >-
+  ひろば — piazza. Composto da "ampio" e "luogo", indica uno spiazzo pubblico cittadino usato come snodo o punto d'incontro.
 example_jp: >-
-  {{広|ひろ}}{{場|ば}}が ある。
+  テーブルシティの {{中|ちゅう}}{{央|おう}}{{広|ひろ}}{{場|ば}}で {{友|とも}}だちと {{待|ま}}ち{{合|あ}}わせを した。
 example_it: >-
-  C’è piazza.
+  Mi sono incontrato con un amico nella piazza centrale di Mesagoza.
 notes_it: >-
-  {{広|ひろ}}{{場|ば}} significa piazza. Nel materiale di Scarlet / Violet ricorre 19 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Composto da {{広|ひろ}} (ampio) e {{場|ば}} (luogo), {{広|ひろ}}{{場|ば}} indica una piazza o uno spiazzo pubblico. È una parola fondamentale per orientarsi nelle grandi città di Paldea, dove le piazze (come il {{中|ちゅう}}{{央|おう}}{{広|ひろ}}{{場|ば}}) fungono da snodi principali o punti di ritrovo per gli allenatori.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -240,14 +248,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-nego
 entry_type: term
 entry_id: term-anki-l07-okite
 card_type: recognition
-front: '{{掟|おきて}}'
-back: 'おきて — regola; codice'
+front: '{{掟|おきて}} / おきて'
+back: >-
+  おきて — regola; codice. Termine solenne che indica leggi non scritte o codici di condotta interni a un gruppo, più rigido e tribale rispetto a ルール.
 example_jp: >-
-  {{掟|おきて}}が ある。
+  スター{{団|だん}}には、 {{誰|だれ}}もが {{守|まも}}らなければならない {{掟|おきて}}が ある。
 example_it: >-
-  C’è regola; codice.
+  Il Team Star ha delle regole assolute che tutti devono rispettare.
 notes_it: >-
-  {{掟|おきて}} significa regola; codice. Nel materiale di Scarlet / Violet ricorre 19 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{掟|おきて}} indica un codice di condotta, una legge non scritta o una regola rigida interna a un gruppo, come le norme del Team Star. Ha una sfumatura più tribale e solenne rispetto al più comune e generico ルール (regola).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -256,13 +265,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-nego
 entry_type: term
 entry_id: term-anki-l07-yottsu
 card_type: recognition
-front: '{{4|よっ}}つ'
-back: 'よっつ — quattro cose'
+front: '{{4|よっ}}つ / よっつ'
+back: >-
+  よっつ — quattro (cose). Utilizza il contatore universale (-つ) per enumerare entità astratte, oggetti privi di contatori specifici o elementi di gioco come le mosse.
 example_jp: >-
-  ボールが {{4|よっ}}つ ある。
+  ポケモンは わざを {{4|よっ}}つまで {{覚|おぼ}}える ことが できる。
 example_it: >-
-  Ci sono quattro Ball.
+  I Pokémon possono imparare fino a quattro mosse.
 notes_it: >-
-  {{4|よっ}}つ significa quattro cose. Nel materiale di Scarlet / Violet ricorre 18 volte, quindi va riconosciuto rapidamente. È un blocco di quantità: contatore, moltiplicatore o numero da leggere come unità intera nel testo.
+  {{4|よっ}}つ utilizza il contatore universale giapponese (-つ) per la quantità "quattro". A differenza dei contatori specifici (come -{{匹|ひき}} per i Pokémon), si usa per concetti astratti, oggetti generici o elementi del gioco come le mosse (わざ). La pronuncia è irregolare e richiede di prestare attenzione al raddoppio consonantico.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::

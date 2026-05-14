@@ -13,7 +13,7 @@ reading: たりる
 romaji: tariru
 meaning_it: bastare; essere sufficiente
 notes_it: >-
-  {{足|た}}りる significa bastare; essere sufficiente. Nel materiale di Scarlet / Violet ricorre 38 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{足|た}}りる guarda alla sufficienza: ボールが{{足|た}}りる = le Ball bastano. Nelle scene di acquisti o lotte è comune anche la negativa {{足|た}}りない, quando mancano soldi, oggetti, PP o PS.
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: おおい
 romaji: ooi
 meaning_it: molti; numeroso
 notes_it: >-
-  {{多|おお}}い significa molti; numeroso. Nel materiale di Scarlet / Violet ricorre 38 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  L'aggettivo {{多|おお}}い descrive la numerosità. Una particolarità fondamentale per chi impara è che non si pone prima di un sostantivo (non si dice {{多|おお}}いポケモン per 'molti Pokémon'). Si costruisce invece una frase dove il nome è il soggetto marcato da が: ポケモンが{{多|おお}}い (i Pokémon sono numerosi).
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: はじめて
 romaji: hajimete
 meaning_it: per la prima volta
 notes_it: >-
-  {{初|はじ}}めて significa per la prima volta. Nel materiale di Scarlet / Violet ricorre 37 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{初|はじ}}めて segnala che qualcosa non era mai successo prima. Si distingue da {{最初|さいしょ}}, che spesso indica semplicemente il primo elemento di una sequenza o il momento iniziale.
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: かんがえる
 romaji: kangaeru
 meaning_it: pensare; riflettere
 notes_it: >-
-  {{考|かんが}}える significa pensare; riflettere. Nel materiale di Scarlet / Violet ricorre 36 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{考|かんが}}える implica valutare, pianificare o cercare una soluzione, come scegliere una mossa in lotta. {{思|おも}}う invece copre più spesso un'impressione, un'opinione o un pensiero che viene spontaneo.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: とうちゃん
 romaji: touchan
 meaning_it: papà
 notes_it: >-
-  {{父|とう}}ちゃん significa papà. Nel materiale di Scarlet / Violet ricorre 35 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Il ちゃん dà a {{父|とう}} un tono familiare, intimo e colloquiale. Per parlare del proprio padre in modo neutro o formale si usa {{父|ちち}}; per il padre di un'altra persona, di solito お{{父|とう}}さん.
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: むかし
 romaji: mukashi
 meaning_it: tempo fa; il passato
 notes_it: >-
-  {{昔|むかし}} significa tempo fa; il passato. Nel materiale di Scarlet / Violet ricorre 34 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{昔|むかし}} evoca un passato indeterminato, che può andare dai ricordi d'infanzia fino alle leggende antiche. Si usa come un nome, collegandosi ad altri sostantivi tramite の ({{昔|むかし}}のポケモン = Pokémon del passato) o funzionando come riferimento temporale se accompagnato da particelle come から ({{昔|むかし}}から = fin dai vecchi tempi).
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: かあちゃん
 romaji: kaachan
 meaning_it: mamma
 notes_it: >-
-  {{母|かあ}}ちゃん significa mamma. Nel materiale di Scarlet / Violet ricorre 34 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Il ちゃん rende {{母|かあ}} un modo domestico e colloquiale di dire mamma. Per parlare della propria madre in modo neutro o formale si usa {{母|はは}}; per la madre di un'altra persona, di solito お{{母|かあ}}さん.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: いっぴき
 romaji: ippiki
 meaning_it: una creatura/animale
 notes_it: >-
-  {{1匹|いっぴき}} significa una creatura/animale. Nel materiale di Scarlet / Violet ricorre 33 volte, quindi va riconosciuto rapidamente. È un blocco di quantità: contatore, moltiplicatore o numero da leggere come unità intera nel testo.
+  Il kanji {{匹|ひき}} funge da classificatore standard nel mondo Pokémon: si usa per contare qualunque creatura tascabile, da un minuscolo Joltik a un gigantesco Wailord. La numerazione presenta variazioni fonetiche dovute all'assimilazione: per dire uno si usa {{1匹|いっぴき}}, ma due diventa {{2匹|にひき}} e tre {{3匹|さんびき}}.
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: わるい
 romaji: warui
 meaning_it: cattivo; negativo; sbagliato
 notes_it: >-
-  {{悪|わる}}い significa cattivo; negativo; sbagliato. Nel materiale di Scarlet / Violet ricorre 32 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  {{悪|わる}}い non significa solo cattivo. Da solo o in formule come {{悪|わる}}いけど può ammorbidire una richiesta o introdurre una scusa informale: il parlante riconosce che sta creando un piccolo fastidio all'interlocutore.
 level_hint: custom
 :::
 :::term
@@ -103,7 +103,7 @@ reading: かく
 romaji: kaku
 meaning_it: scrivere
 notes_it: >-
-  {{書|か}}く significa scrivere. Nel materiale di Scarlet / Violet ricorre 32 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{書|か}}く usa la particella を per indicare il testo prodotto o i dati trascritti, mentre si appoggia a に per indicare la superficie, il libro o il mezzo su cui l'informazione viene fissata (ノートに{{書|か}}く). Negli RPG è storicamente associato al salvataggio della partita (レポートを{{書|か}}く = scrivere il rapporto).
 level_hint: custom
 :::
 :::card
@@ -112,14 +112,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-tariru
 card_type: recognition
-front: '{{足|た}}りる'
-back: 'たりる — bastare; essere sufficiente'
+front: '{{足|た}}りる / たりる'
+back: >-
+  たりる — bastare; essere sufficiente. Indica che una quantità, una risorsa o una condizione copre il bisogno. La cosa che basta si marca di solito con が; il bisogno o lo scopo può comparire con に/には.
 example_jp: >-
-  {{足|た}}りる ことが ある。
+  モンスターボールの {{数|かず}}は これで {{足|た}}りるかな？
 example_it: >-
-  A volte capita di bastare; essere sufficiente.
+  Chissà se questo numero di Poké Ball basterà.
 notes_it: >-
-  {{足|た}}りる significa bastare; essere sufficiente. Nel materiale di Scarlet / Violet ricorre 38 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{足|た}}りる guarda alla sufficienza: ボールが{{足|た}}りる = le Ball bastano. Nelle scene di acquisti o lotte è comune anche la negativa {{足|た}}りない, quando mancano soldi, oggetti, PP o PS.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
 :::
 :::card
@@ -128,14 +129,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-ooi
 card_type: recognition
-front: '{{多|おお}}い'
-back: 'おおい — molti; numeroso'
+front: '{{多|おお}}い / おおい'
+back: >-
+  おおい — molti; numeroso. Aggettivo in い che descrive un'alta quantità. Al contrario dell'italiano, non si usa quasi mai per modificare direttamente un nome, ma funge da predicato.
 example_jp: >-
-  それは {{多|おお}}い。
+  パルデア{{地方|ちほう}}は めずらしい ポケモンが {{多|おお}}いですね。
 example_it: >-
-  È molti; numeroso.
+  La regione di Paldea ha molti Pokémon rari, vero?
 notes_it: >-
-  {{多|おお}}い significa molti; numeroso. Nel materiale di Scarlet / Violet ricorre 38 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  L'aggettivo {{多|おお}}い descrive la numerosità. Una particolarità fondamentale per chi impara è che non si pone prima di un sostantivo (non si dice {{多|おお}}いポケモン per 'molti Pokémon'). Si costruisce invece una frase dove il nome è il soggetto marcato da が: ポケモンが{{多|おお}}い (i Pokémon sono numerosi).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
 :::
 :::card
@@ -144,14 +146,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-hajimete
 card_type: recognition
-front: '{{初|はじ}}めて'
-back: 'はじめて — per la prima volta'
+front: '{{初|はじ}}めて / はじめて'
+back: >-
+  はじめて — per la prima volta. Indica la prima esperienza o il primo verificarsi di un'azione; può funzionare da avverbio o entrare in costruzioni nominali.
 example_jp: >-
-  {{初|はじ}}めて、ネモが きた。
+  ジムリーダーと たたかうのは これが {{初|はじ}}めて なの？
 example_it: >-
-  per la prima volta: Nemona è arrivata.
+  È la prima volta che lotti contro un Capopalestra?
 notes_it: >-
-  {{初|はじ}}めて significa per la prima volta. Nel materiale di Scarlet / Violet ricorre 37 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{初|はじ}}めて segnala che qualcosa non era mai successo prima. Si distingue da {{最初|さいしょ}}, che spesso indica semplicemente il primo elemento di una sequenza o il momento iniziale.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
 :::
 :::card
@@ -160,14 +163,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-kangaeru
 card_type: recognition
-front: '{{考|かんが}}える'
-back: 'かんがえる — pensare; riflettere'
+front: '{{考|かんが}}える / かんがえる'
+back: >-
+  かんがえる — pensare; riflettere. Esprime un ragionamento attivo o una valutazione. L'oggetto della riflessione si marca con を; l'argomento può essere introdotto da について.
 example_jp: >-
-  {{考|かんが}}える ことが ある。
+  つぎの ターン、どの わざを だすか よく {{考|かんが}}えるんだ！
 example_it: >-
-  A volte capita di pensare; riflettere.
+  Pensa bene a quale mossa usare al prossimo turno!
 notes_it: >-
-  {{考|かんが}}える significa pensare; riflettere. Nel materiale di Scarlet / Violet ricorre 36 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{考|かんが}}える implica valutare, pianificare o cercare una soluzione, come scegliere una mossa in lotta. {{思|おも}}う invece copre più spesso un'impressione, un'opinione o un pensiero che viene spontaneo.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
 :::
 :::card
@@ -176,14 +180,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-touchan
 card_type: recognition
-front: '{{父|とう}}ちゃん'
-back: 'とうちゃん — papà'
+front: '{{父|とう}}ちゃん / とうちゃん'
+back: >-
+  とうちゃん — papà. Modo informale e affettuoso per chiamare o nominare il proprio padre in famiglia.
 example_jp: >-
-  {{父|とう}}ちゃんが いる。
+  {{父|とう}}ちゃんは {{昔|むかし}}、ポケモン{{勝負|しょうぶ}}が {{強|つよ}}かったんだ！
 example_it: >-
-  C’è papà.
+  Mio papà, un tempo, era forte nelle lotte Pokémon!
 notes_it: >-
-  {{父|とう}}ちゃん significa papà. Nel materiale di Scarlet / Violet ricorre 35 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Il ちゃん dà a {{父|とう}} un tono familiare, intimo e colloquiale. Per parlare del proprio padre in modo neutro o formale si usa {{父|ちち}}; per il padre di un'altra persona, di solito お{{父|とう}}さん.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
 :::
 :::card
@@ -192,14 +197,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-mukashi
 card_type: recognition
-front: '{{昔|むかし}}'
-back: 'むかし — tempo fa; il passato'
+front: '{{昔|むかし}} / むかし'
+back: >-
+  むかし — tempo fa; il passato. Sostantivo che indica un tempo remoto o leggendario. Spesso contrapposto al presente ({{今|いま}}).
 example_jp: >-
-  {{昔|むかし}}が ある。
+  この エリアゼロには {{昔|むかし}}から ふしぎな ポケモンが いるらしい。
 example_it: >-
-  C’è tempo fa; il passato.
+  Sembra che in quest'Area Zero vivano da tempo immemore Pokémon misteriosi.
 notes_it: >-
-  {{昔|むかし}} significa tempo fa; il passato. Nel materiale di Scarlet / Violet ricorre 34 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{昔|むかし}} evoca un passato indeterminato, che può andare dai ricordi d'infanzia fino alle leggende antiche. Si usa come un nome, collegandosi ad altri sostantivi tramite の ({{昔|むかし}}のポケモン = Pokémon del passato) o funzionando come riferimento temporale se accompagnato da particelle come から ({{昔|むかし}}から = fin dai vecchi tempi).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
 :::
 :::card
@@ -208,14 +214,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-kaachan
 card_type: recognition
-front: '{{母|かあ}}ちゃん'
-back: 'かあちゃん — mamma'
+front: '{{母|かあ}}ちゃん / かあちゃん'
+back: >-
+  かあちゃん — mamma. Modo informale e affettuoso per chiamare o nominare la propria madre in famiglia.
 example_jp: >-
-  {{母|かあ}}ちゃんが いる。
+  {{母|かあ}}ちゃんが サンドウィッチを つくってくれたよ。
 example_it: >-
-  C’è mamma.
+  La mamma mi ha preparato un panino.
 notes_it: >-
-  {{母|かあ}}ちゃん significa mamma. Nel materiale di Scarlet / Violet ricorre 34 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Il ちゃん rende {{母|かあ}} un modo domestico e colloquiale di dire mamma. Per parlare della propria madre in modo neutro o formale si usa {{母|はは}}; per la madre di un'altra persona, di solito お{{母|かあ}}さん.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
 :::
 :::card
@@ -224,14 +231,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-ippiki
 card_type: recognition
-front: '{{1匹|いっぴき}}'
-back: 'いっぴき — una creatura/animale'
+front: '{{1匹|いっぴき}} / いっぴき'
+back: >-
+  いっぴき — una creatura/animale. Contatore universale per piccoli animali, insetti, pesci e per tutti i Pokémon, indipendentemente dalle loro dimensioni.
 example_jp: >-
-  ポケモンが {{1匹|いっぴき}} いる。
+  あそこを {{歩|ある}}いている ポケモン、{{1匹|いっぴき}} つかまえてみよう！
 example_it: >-
-  Ci sono una creatura/animale.
+  Proviamo a catturare quel Pokémon che sta camminando laggiù!
 notes_it: >-
-  {{1匹|いっぴき}} significa una creatura/animale. Nel materiale di Scarlet / Violet ricorre 33 volte, quindi va riconosciuto rapidamente. È un blocco di quantità: contatore, moltiplicatore o numero da leggere come unità intera nel testo.
+  Il kanji {{匹|ひき}} funge da classificatore standard nel mondo Pokémon: si usa per contare qualunque creatura tascabile, da un minuscolo Joltik a un gigantesco Wailord. La numerazione presenta variazioni fonetiche dovute all'assimilazione: per dire uno si usa {{1匹|いっぴき}}, ma due diventa {{2匹|にひき}} e tre {{3匹|さんびき}}.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
 :::
 :::card
@@ -240,14 +248,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-warui
 card_type: recognition
-front: '{{悪|わる}}い'
-back: 'わるい — cattivo; negativo; sbagliato'
+front: '{{悪|わる}}い / わるい'
+back: >-
+  わるい — cattivo; negativo; sbagliato; mi dispiace. Aggettivo in い molto comune: può descrivere una qualità negativa o funzionare da scusa informale.
 example_jp: >-
-  それは {{悪|わる}}い。
+  {{悪|わる}}いけど、この ポケモンは ゆずれないんだ。
 example_it: >-
-  È cattivo; negativo; sbagliato.
+  Scusa, ma questo Pokémon non posso cedertelo.
 notes_it: >-
-  {{悪|わる}}い significa cattivo; negativo; sbagliato. Nel materiale di Scarlet / Violet ricorre 32 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  {{悪|わる}}い non significa solo cattivo. Da solo o in formule come {{悪|わる}}いけど può ammorbidire una richiesta o introdurre una scusa informale: il parlante riconosce che sta creando un piccolo fastidio all'interlocutore.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
 :::
 :::card
@@ -256,13 +265,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-kaku
 card_type: recognition
-front: '{{書|か}}く'
-back: 'かく — scrivere'
+front: '{{書|か}}く / かく'
+back: >-
+  かく — scrivere. Verbo del primo gruppo (godan) che indica l'azione di tracciare lettere o fissare dati su un supporto testuale o digitale.
 example_jp: >-
-  {{書|か}}く ことが ある。
+  ポケモン{{図鑑|ずかん}}に {{新|あたら}}しい データを {{書|か}}くんだ。
 example_it: >-
-  A volte capita di scrivere.
+  Scrivi i nuovi dati nel Pokédex.
 notes_it: >-
-  {{書|か}}く significa scrivere. Nel materiale di Scarlet / Violet ricorre 32 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{書|か}}く usa la particella を per indicare il testo prodotto o i dati trascritti, mentre si appoggia a に per indicare la superficie, il libro o il mezzo su cui l'informazione viene fissata (ノートに{{書|か}}く). Negli RPG è storicamente associato al salvataggio della partita (レポートを{{書|か}}く = scrivere il rapporto).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
 :::

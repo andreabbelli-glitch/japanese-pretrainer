@@ -13,7 +13,7 @@ reading: きく
 romaji: kiku
 meaning_it: ascoltare; sentire; chiedere
 notes_it: >-
-  {{聞|き}}く significa ascoltare; sentire; chiedere. Nel materiale di Scarlet / Violet ricorre 86 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{聞|き}}く racchiude sia la ricezione di un suono (“sentire/ascoltare”) sia la ricerca attiva di informazioni (“chiedere”). La persona a cui chiedi prende に: {{人|ひと}}に{{聞|き}}く. Il contenuto che ascolti o chiedi prende を: {{話|はなし}}を{{聞|き}}く, ポケモンのことを{{聞|き}}く.
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: まつ
 romaji: matsu
 meaning_it: aspettare
 notes_it: >-
-  {{待|ま}}つ significa aspettare. Nel materiale di Scarlet / Violet ricorre 84 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{待|ま}}つ (aspettare) si usa frequentemente nella forma -て/-で per descrivere un'azione in corso ({{待|ま}}っている, spesso contratto in {{待|ま}}ってる) o per dire a qualcuno di aspettare ({{待|ま}}って). Il luogo dell'attesa si marca con で.
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: ちがう
 romaji: chigau
 meaning_it: essere diverso; essere sbagliato
 notes_it: >-
-  {{違|ちが}}う significa essere diverso; essere sbagliato. Nel materiale di Scarlet / Violet ricorre 76 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  Il verbo {{違|ちが}}う si usa sia per indicare che due cose differiscono strutturalmente (Xと{{違|ちが}}う, "essere diverso da X"), sia in conversazione come esclamazione per correggere qualcuno o smentire una situazione ("non è così" / "ti sbagli"). È un verbo, non un aggettivo.
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: たべる
 romaji: taberu
 meaning_it: mangiare
 notes_it: >-
-  {{食|た}}べる significa mangiare. Nel materiale di Scarlet / Violet ricorre 76 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{食|た}}べる indica l'azione di consumare cibo solido. Negli avvisi di lotta del gioco si incontra quando un Pokémon usa autonomamente uno strumento tenuto, come una Bacca: オボンのみを{{食|た}}べて.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: まち
 romaji: machi
 meaning_it: città; paese
 notes_it: >-
-  {{町|まち}} significa città; paese. Nel materiale di Scarlet / Violet ricorre 76 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{町|まち}} indica un nucleo abitato o la zona centrale di una cittadina, differenziandosi da una metropoli o grande città ({{市|し}}). Nei giochi Pokémon, definisce solitamente i paesi base dotati di Centro Pokémon o Palestra.
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: えん
 romaji: en
 meaning_it: yen; moneta; cerchio
 notes_it: >-
-  Nei negozi indica il prezzo in yen. Quando compare vicino a Ball o strumenti, il testo sta parlando di costo reale e non di un numero decorativo.
+  Nei negozi o nelle lotte indica i soldi in yen. In giapponese si scrive direttamente la parola al posto del simbolo occidentale. È utile notare che nelle interfacce dei giochi, il conteggio della valuta omette i plurali.
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: わたし
 romaji: watashi
 meaning_it: io; me
 notes_it: >-
-  {{私|わたし}} significa io; me. Nel materiale di Scarlet / Violet ricorre 55 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{私|わたし}} è un pronome di prima persona. È usato per mantenere un registro cortese ({{丁|てい}}{{寧|ねい}}{{語|ご}}, teineigo). Si sente da figure formali come presidi o professori, o neutramente da giovani allenatrici e allenatori in certi contesti.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: きょう
 romaji: kyou
 meaning_it: oggi
 notes_it: >-
-  {{今日|きょう}} significa oggi. Nel materiale di Scarlet / Violet ricorre 51 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{今日|きょう}} è un sostantivo temporale e come tale si usa generalmente senza la particella di tempo に. Può formare espressioni di partenza nel tempo come {{今日|きょう}}から (da oggi), segnando spesso l'inizio di un'avventura.
 level_hint: custom
 :::
 :::card
@@ -92,14 +92,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-053-sv-anki-l01-dialoghi-ba
 entry_type: term
 entry_id: term-anki-l01-kiku
 card_type: recognition
-front: '{{聞|き}}く'
-back: 'きく — ascoltare; sentire; chiedere'
+front: '{{聞|き}}く / きく'
+back: >-
+  きく — ascoltare; sentire; chiedere. Il verbo racchiude sia la ricezione di un suono ("sentire/ascoltare") sia la ricerca attiva di informazioni ("chiedere"). La persona a cui si chiede prende に ({{人|ひと}}に{{聞|き}}く), mentre il contenuto prende を ({{話|はなし}}を{{聞|き}}く).
 example_jp: >-
-  {{聞|き}}く ことが ある。
+  チャンピオンの ネモに {{話|はなし}}を {{聞|き}}く。
 example_it: >-
-  A volte capita di ascoltare; sentire; chiedere.
+  Ascolto quello che ha da dire Nemona, la Campionessa.
 notes_it: >-
-  {{聞|き}}く significa ascoltare; sentire; chiedere. Nel materiale di Scarlet / Violet ricorre 86 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{聞|き}}く racchiude sia la ricezione di un suono (“sentire/ascoltare”) sia la ricerca attiva di informazioni (“chiedere”). La persona a cui chiedi prende に: {{人|ひと}}に{{聞|き}}く. Il contenuto che ascolti o chiedi prende を: {{話|はなし}}を{{聞|き}}く, ポケモンのことを{{聞|き}}く.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::
 :::card
@@ -108,14 +109,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-053-sv-anki-l01-dialoghi-ba
 entry_type: term
 entry_id: term-anki-l01-matsu
 card_type: recognition
-front: '{{待|ま}}つ'
-back: 'まつ — aspettare'
+front: '{{待|ま}}つ / まつ'
+back: >-
+  まつ — aspettare. Spesso usato in forma progressiva {{待|ま}}っている (stare aspettando) o in forma sospensiva ({{待|ま}}って！) per intimare a qualcuno di fermarsi. Il luogo in cui si aspetta prende で.
 example_jp: >-
-  {{待|ま}}つ ことが ある。
+  テーブルシティで ネモを {{待|ま}}つ あいだ、ポケモンセンターに よろう。
 example_it: >-
-  A volte capita di aspettare.
+  Mentre aspettiamo Nemona a Mesapoli, passiamo dal Centro Pokémon.
 notes_it: >-
-  {{待|ま}}つ significa aspettare. Nel materiale di Scarlet / Violet ricorre 84 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{待|ま}}つ (aspettare) si usa frequentemente nella forma -て/-で per descrivere un'azione in corso ({{待|ま}}っている, spesso contratto in {{待|ま}}ってる) o per dire a qualcuno di aspettare ({{待|ま}}って). Il luogo dell'attesa si marca con で.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::
 :::card
@@ -124,14 +126,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-053-sv-anki-l01-dialoghi-ba
 entry_type: term
 entry_id: term-anki-l01-chigau
 card_type: recognition
-front: '{{違|ちが}}う'
-back: 'ちがう — essere diverso; essere sbagliato'
+front: '{{違|ちが}}う / ちがう'
+back: >-
+  ちがう — essere diverso; essere sbagliato. Un verbo che si traduce spesso con un aggettivo in italiano ("diverso") o per negare un'affermazione ("no, ti sbagli"). L'elemento di confronto si esprime con と.
 example_jp: >-
-  それは {{違|ちが}}う。
+  {{野生|やせい}}の ポケモンとは {{少|すこ}}し {{違|ちが}}う みたいね。
 example_it: >-
-  È essere diverso; essere sbagliato.
+  Sembra essere un po' diverso dai Pokémon selvatici.
 notes_it: >-
-  {{違|ちが}}う significa essere diverso; essere sbagliato. Nel materiale di Scarlet / Violet ricorre 76 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  Il verbo {{違|ちが}}う si usa sia per indicare che due cose differiscono strutturalmente (Xと{{違|ちが}}う, "essere diverso da X"), sia in conversazione come esclamazione per correggere qualcuno o smentire una situazione ("non è così" / "ti sbagli"). È un verbo, non un aggettivo.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::
 :::card
@@ -140,14 +143,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-053-sv-anki-l01-dialoghi-ba
 entry_type: term
 entry_id: term-anki-l01-taberu
 card_type: recognition
-front: '{{食|た}}べる'
-back: 'たべる — mangiare'
+front: '{{食|た}}べる / たべる'
+back: >-
+  たべる — mangiare. Verbo Ichidan diretto. Il cibo mangiato è marcato con を. Nei giochi Pokémon, spesso appare in relazione a ingredienti per i panini o alle Bacche consumate in lotta.
 example_jp: >-
-  {{食|た}}べる ことが ある。
+  オボンのみを {{食|た}}べると ＨＰが {{回復|かいふく}}する。
 example_it: >-
-  A volte capita di mangiare.
+  Quando mangia una Baccacedro, recupera PS.
 notes_it: >-
-  {{食|た}}べる significa mangiare. Nel materiale di Scarlet / Violet ricorre 76 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{食|た}}べる indica l'azione di consumare cibo solido. Negli avvisi di lotta del gioco si incontra quando un Pokémon usa autonomamente uno strumento tenuto, come una Bacca: オボンのみを{{食|た}}べて.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::
 :::card
@@ -156,14 +160,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-053-sv-anki-l01-dialoghi-ba
 entry_type: term
 entry_id: term-anki-l01-machi
 card_type: recognition
-front: '{{町|まち}}'
-back: 'まち — città; paese'
+front: '{{町|まち}} / まち'
+back: >-
+  まち — città; paese. Si riferisce tipicamente a un centro abitato di dimensioni modeste o a una cittadina, al contrario di un centro maggiore ({{市|し}}, し) o della metropoli.
 example_jp: >-
-  {{町|まち}}が ある。
+  この {{町|まち}}には ポケモンジムが ありません。
 example_it: >-
-  C’è città; paese.
+  In questa città non c'è una Palestra Pokémon.
 notes_it: >-
-  {{町|まち}} significa città; paese. Nel materiale di Scarlet / Violet ricorre 76 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{町|まち}} indica un nucleo abitato o la zona centrale di una cittadina, differenziandosi da una metropoli o grande città ({{市|し}}). Nei giochi Pokémon, definisce solitamente i paesi base dotati di Centro Pokémon o Palestra.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::
 :::card
@@ -172,14 +177,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-053-sv-anki-l01-dialoghi-ba
 entry_type: term
 entry_id: term-anki-l01-en
 card_type: recognition
-front: '{{円|えん}}'
-back: 'えん — yen; moneta; cerchio'
+front: '{{円|えん}} / えん'
+back: >-
+  えん — yen; moneta. È l'unità monetaria standard. Usata per i prezzi nei negozi o per indicare la ricompensa ricevuta dopo aver vinto una lotta. Si legge "en".
 example_jp: >-
-  {{円|えん}}で かう。
+  モンスターボールは {{200|にひゃく}}{{円|えん}} です。
 example_it: >-
-  Lo compri in yen.
+  Le Poké Ball costano duecento yen.
 notes_it: >-
-  Nei negozi indica il prezzo in yen. Quando compare vicino a Ball o strumenti, il testo sta parlando di costo reale e non di un numero decorativo.
+  Nei negozi o nelle lotte indica i soldi in yen. In giapponese si scrive direttamente la parola al posto del simbolo occidentale. È utile notare che nelle interfacce dei giochi, il conteggio della valuta omette i plurali.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::
 :::card
@@ -188,14 +194,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-053-sv-anki-l01-dialoghi-ba
 entry_type: term
 entry_id: term-v300-iru
 card_type: recognition
-front: '{{入|はい}}る'
-back: 'はいる — entrare'
+front: '{{入|はい}}る / はいる'
+back: >-
+  はいる — entrare. Verbo Godan intransitivo. Si usa per l'ingresso in un luogo o uno spazio delimitato, indicato dalla particella に (es. {{部屋|へや}}に{{入|はい}}る). Diverso da {{入|い}}れる (inserire/mettere dentro).
 example_jp: >-
-  {{入|はい}}る ことが ある。
+  ポケモンセンターに {{入|はい}}ると、すぐ カウンターが ある。
 example_it: >-
-  A volte capita di entrare.
+  Quando entri nel Centro Pokémon, trovi subito il bancone.
 notes_it: >-
-  {{入|はい}}る significa entrare. Nel materiale di Scarlet / Violet ricorre 60 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{入|はい}}る (entrare) è intransitivo: descrive il soggetto che si sposta all'interno di uno spazio fisico (che prende la particella に, per indicare la destinazione). Va distinto dal verbo transitivo {{入|い}}れる (mettere dentro).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::
 :::card
@@ -204,14 +211,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-053-sv-anki-l01-dialoghi-ba
 entry_type: term
 entry_id: term-lp
 card_type: recognition
-front: '{{Ｌ|エル}}{{Ｐ|ピー}}'
-back: 'エルピー — LP, Punti Lega'
+front: '{{Ｌ|エル}}{{Ｐ|ピー}} / エルピー'
+back: >-
+  エルピー — LP, Punti Lega. Acronimo scritto con lettere latine e letto con pronuncia katakana. Si usa come valuta alternativa agli yen per acquisti o per fabbricare MT.
 example_jp: >-
-  {{Ｌ|エル}}{{Ｐ|ピー}}が たりない。
+  わざマシンを {{作|つく}}るには {{Ｌ|エル}}{{Ｐ|ピー}}が {{必要|ひつよう}}なんだ。
 example_it: >-
-  Non hai abbastanza LP.
+  Per creare le Macchine Tecniche ti servono i Punti Lega.
 notes_it: >-
-  I Punti Lega sono una valuta di sistema: li spendi in negozi e funzioni tecniche, e se mancano il gioco blocca l'azione come farebbe con il denaro.
+  I Punti Lega (LP) sono una valuta di sistema: si spendono alla Macchina MT e nei negozi al posto degli yen. Quando lettere latine compaiono nella UI giapponese, spesso vengono lette con una pronuncia katakana: LP diventa エルピー.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::
 :::card
@@ -220,14 +228,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-053-sv-anki-l01-dialoghi-ba
 entry_type: term
 entry_id: term-anki-l01-watashi
 card_type: recognition
-front: '{{私|わたし}}'
-back: 'わたし — io; me'
+front: '{{私|わたし}} / わたし'
+back: >-
+  わたし — io; me. Pronome di prima persona neutro ed educato. Usato abitualmente dai personaggi femminili e, in contesti formali, da tutti (come presidi, professori, negozianti).
 example_jp: >-
-  {{私|わたし}}が いる。
+  {{私|わたし}}の {{名前|なまえ}}は クラベル。アカデミーの {{校長|こうちょう}}です。
 example_it: >-
-  C’è io; me.
+  Il mio nome è Clavel. Sono il preside dell'Accademia.
 notes_it: >-
-  {{私|わたし}} significa io; me. Nel materiale di Scarlet / Violet ricorre 55 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{私|わたし}} è un pronome di prima persona. È usato per mantenere un registro cortese ({{丁|てい}}{{寧|ねい}}{{語|ご}}, teineigo). Si sente da figure formali come presidi o professori, o neutramente da giovani allenatrici e allenatori in certi contesti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::
 :::card
@@ -236,13 +245,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-053-sv-anki-l01-dialoghi-ba
 entry_type: term
 entry_id: term-anki-l01-kyou
 card_type: recognition
-front: '{{今日|きょう}}'
-back: 'きょう — oggi'
+front: '{{今日|きょう}} / きょう'
+back: >-
+  きょう — oggi. Indicatore temporale. Non richiede particelle se usato genericamente, ma può prendere は se enfatizzato come tema della frase.
 example_jp: >-
-  {{今日|きょう}}、ネモが きた。
+  {{今日|きょう}}から あなたも アカデミーの {{生徒|せいと}}ですね！
 example_it: >-
-  oggi: Nemona è arrivata.
+  Da oggi anche tu sei un allievo dell'Accademia!
 notes_it: >-
-  {{今日|きょう}} significa oggi. Nel materiale di Scarlet / Violet ricorre 51 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{今日|きょう}} è un sostantivo temporale e come tale si usa generalmente senza la particella di tempo に. Può formare espressioni di partenza nel tempo come {{今日|きょう}}から (da oggi), segnando spesso l'inizio di un'avventura.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::

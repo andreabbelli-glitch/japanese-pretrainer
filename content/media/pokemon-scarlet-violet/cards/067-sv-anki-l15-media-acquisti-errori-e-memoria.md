@@ -13,7 +13,7 @@ reading: どうが
 romaji: douga
 meaning_it: video
 notes_it: >-
-  {{動|どう}}{{画|が}} significa video. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{動|どう}}{{画|が}} (どうが) è composto dai kanji {{動|どう}} (movimento) e {{画|が}} (immagine), descrivendo letteralmente le "immagini in movimento". Viene usato per riferirsi ai video in streaming o ai filmati che puoi visualizzare sui vari dispositivi.
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: える
 romaji: eru
 meaning_it: ottenere
 notes_it: >-
-  {{得|え}}る significa ottenere. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{得|え}}る (える) indica l'acquisizione e il conseguimento di qualcosa, ma si usa di preferenza per concetti immateriali, come {{経|けい}}{{験|けん}} (esperienza) o {{知|ち}}{{識|しき}} (conoscenza). La cosa ottenuta prende la particella を: {{経|けい}}{{験|けん}}を{{得|え}}る. Per gli oggetti fisici o gli strumenti si preferisce {{手|て}}に{{入|い}}れる o もらう.
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: かいもの
 romaji: kaimono
 meaning_it: shopping; acquisti
 notes_it: >-
-  {{買|か}}いもの significa shopping; acquisti. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{買|か}}いもの (かいもの) si forma unendo la radice del verbo {{買|か}}う (comprare) alla parola もの (cosa). Unito al verbo fare diventa {{買|か}}いものをする, la tipica espressione per "fare compere". Si riferisce agli acquisti in qualsiasi negozio, dalle boutique alle Delibird Consegne.
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: ふせいかい
 romaji: fuseikai
 meaning_it: risposta sbagliata
 notes_it: >-
-  {{不|ふ}}{{正|せい}}{{解|かい}} significa risposta sbagliata. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{不|ふ}}{{正|せい}}{{解|かい}} è l'esatto contrario di {{正|せい}}{{解|かい}}, “risposta corretta”. Il prefisso {{不|ふ}} ha una funzione di negazione, simile all'italiano “in-” o “s-”. Durante lezioni ed esami dell'Accademia, questo termine appare quando una risposta è sbagliata.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: やっつ
 romaji: yattsu
 meaning_it: otto cose
 notes_it: >-
-  {{8|やっ}}つ significa otto cose. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. È un blocco di quantità: contatore, moltiplicatore o numero da leggere come unità intera nel testo.
+  Il termine {{8|やっ}}つ (やっつ) appartiene alla serie dei contatori nativi giapponesi (ひとつ, ふたつ...) e si usa per contare quantità generiche di oggetti che non richiedono un classificatore specifico. Le Medaglie della Palestra (バッジ) vengono comunemente contate con questa serie, e non con {{個|こ}} (こ).
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: いんたい
 romaji: intai
 meaning_it: ritiro
 notes_it: >-
-  {{引|いん}}{{退|たい}} significa ritiro. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{引|いん}}{{退|たい}} (いんたい) descrive il momento in cui qualcuno si ritira dalla propria professione o dal proprio ruolo agonistico (come un Allenatore o un Capopalestra). L'azione richiede il verbo する e la particella を per indicare il ruolo lasciato: トレーナーを{{引|いん}}{{退|たい}}する.
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: あける
 romaji: akeru
 meaning_it: aprire
 notes_it: >-
-  {{開|あ}}ける significa aprire. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{開|あ}}ける indica l'azione volontaria di aprire qualcosa di concreto. L'oggetto aperto prende を: ドアを{{開|あ}}ける. Non va confuso con {{開|ひら}}く, più comune per aprire schermate, menu o mappe.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: かんじ
 romaji: kanji
 meaning_it: sensazione; impressione
 notes_it: >-
-  {{感|かん}}じ significa sensazione; impressione. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{感|かん}}じ (かんじ) esprime l'impressione, l'atmosfera o la sensazione che si riceve da qualcosa o qualcuno. Molto spesso è abbinato al verbo する ({{感|かん}}じがする) per significare "dare l'impressione di" o "avere la sensazione che". Si può unire anche ad aggettivi per descrivere l'atmosfera di un ambiente (es. いい{{感|かん}}じ).
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: きづく
 romaji: kizuku
 meaning_it: accorgersi; notare
 notes_it: >-
-  {{気|き}}づく significa accorgersi; notare. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{気|き}}づく (きづく) indica il momento in cui si prende coscienza o si nota un dettaglio, un cambiamento o una presenza. L'elemento notato è introdotto dalla particella に. Nel gioco, la forma passiva ({{気|き}}づかれる, "essere notati") è diffusissima per descrivere i Pokémon selvatici che si accorgono del giocatore nell'overworld.
 level_hint: custom
 :::
 :::term
@@ -103,7 +103,7 @@ reading: きおく
 romaji: kioku
 meaning_it: memoria; ricordo
 notes_it: >-
-  {{記|き}}{{憶|おく}} significa memoria; ricordo. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{記|き}}{{憶|おく}} sottolinea la capacità e l'atto di conservare o richiamare informazioni, distinguendosi dal più generico {{思|おも}}い{{出|で}}, che richiama i ricordi affettivi. Può fungere da sostantivo o combinarsi con する per formare il verbo “memorizzare”.
 level_hint: custom
 :::
 :::card
@@ -112,14 +112,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-douga
 card_type: recognition
-front: '{{動|どう}}{{画|が}}'
-back: 'どうが — video'
+front: '{{動|どう}}{{画|が}} / どうが'
+back: >-
+  どうが — video. Indica video o filmati visualizzati su dispositivi come lo Smart Rotom, distinguendosi da immagini statiche.
 example_jp: >-
-  {{動|どう}}{{画|が}}が ある。
+  スマホロトムで {{動|どう}}{{画|が}}を {{見|み}}る。
 example_it: >-
-  C’è video.
+  Guardo un video sullo Smart Rotom.
 notes_it: >-
-  {{動|どう}}{{画|が}} significa video. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{動|どう}}{{画|が}} (どうが) è composto dai kanji {{動|どう}} (movimento) e {{画|が}} (immagine), descrivendo letteralmente le "immagini in movimento". Viene usato per riferirsi ai video in streaming o ai filmati che puoi visualizzare sui vari dispositivi.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::
 :::card
@@ -128,14 +129,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-eru
 card_type: recognition
-front: '{{得|え}}る'
-back: 'える — ottenere'
+front: '{{得|え}}る / える'
+back: >-
+  える — ottenere. Verbo usato per il conseguimento di elementi intangibili (conoscenza, esperienza), prendendo la particella を.
 example_jp: >-
-  {{得|え}}る ことが ある。
+  ポケモンとの バトルで {{経|けい}}{{験|けん}}を {{得|え}}る。
 example_it: >-
-  A volte capita di ottenere.
+  Ottengo esperienza lottando con i Pokémon.
 notes_it: >-
-  {{得|え}}る significa ottenere. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{得|え}}る (える) indica l'acquisizione e il conseguimento di qualcosa, ma si usa di preferenza per concetti immateriali, come {{経|けい}}{{験|けん}} (esperienza) o {{知|ち}}{{識|しき}} (conoscenza). La cosa ottenuta prende la particella を: {{経|けい}}{{験|けん}}を{{得|え}}る. Per gli oggetti fisici o gli strumenti si preferisce {{手|て}}に{{入|い}}れる o もらう.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::
 :::card
@@ -144,14 +146,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-kaimono
 card_type: recognition
-front: '{{買|か}}いもの'
-back: 'かいもの — shopping; acquisti'
+front: '{{買|か}}いもの / かいもの'
+back: >-
+  かいもの — shopping; acquisti. Sostantivo derivato dal verbo {{買|か}}う, si combina con する per indicare l'azione di fare compere.
 example_jp: >-
-  {{買|か}}いものが ある。
+  テーブルシティで {{買|か}}いものを する。
 example_it: >-
-  C’è shopping; acquisti.
+  Faccio acquisti a Mesapoli.
 notes_it: >-
-  {{買|か}}いもの significa shopping; acquisti. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{買|か}}いもの (かいもの) si forma unendo la radice del verbo {{買|か}}う (comprare) alla parola もの (cosa). Unito al verbo fare diventa {{買|か}}いものをする, la tipica espressione per "fare compere". Si riferisce agli acquisti in qualsiasi negozio, dalle boutique alle Delibird Consegne.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::
 :::card
@@ -160,14 +163,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-fuseikai
 card_type: recognition
-front: '{{不|ふ}}{{正|せい}}{{解|かい}}'
-back: 'ふせいかい — risposta sbagliata'
+front: '{{不|ふ}}{{正|せい}}{{解|かい}} / ふせいかい'
+back: >-
+  ふせいかい — risposta sbagliata. Parola composta con il prefisso negativo {{不|ふ}}, comune in contesti di test e verifiche.
 example_jp: >-
-  {{不|ふ}}{{正|せい}}{{解|かい}}が ある。
+  テストの {{答|こた}}えが {{不|ふ}}{{正|せい}}{{解|かい}}だった。
 example_it: >-
-  C’è risposta sbagliata.
+  La risposta del test era sbagliata.
 notes_it: >-
-  {{不|ふ}}{{正|せい}}{{解|かい}} significa risposta sbagliata. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{不|ふ}}{{正|せい}}{{解|かい}} è l'esatto contrario di {{正|せい}}{{解|かい}}, “risposta corretta”. Il prefisso {{不|ふ}} ha una funzione di negazione, simile all'italiano “in-” o “s-”. Durante lezioni ed esami dell'Accademia, questo termine appare quando una risposta è sbagliata.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::
 :::card
@@ -176,14 +180,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-yattsu
 card_type: recognition
-front: '{{8|やっ}}つ'
-back: 'やっつ — otto cose'
+front: '{{8|やっ}}つ / やっつ'
+back: >-
+  やっつ — otto (cose). Contatore generico della serie nativa giapponese usato per quantificare oggetti senza un contatore specifico.
 example_jp: >-
-  ボールが {{8|やっ}}つ ある。
+  ジムバッジを {{8|やっ}}つ {{集|あつ}}めた。
 example_it: >-
-  Ci sono otto Ball.
+  Ho raccolto otto Medaglie della Palestra.
 notes_it: >-
-  {{8|やっ}}つ significa otto cose. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. È un blocco di quantità: contatore, moltiplicatore o numero da leggere come unità intera nel testo.
+  Il termine {{8|やっ}}つ (やっつ) appartiene alla serie dei contatori nativi giapponesi (ひとつ, ふたつ...) e si usa per contare quantità generiche di oggetti che non richiedono un classificatore specifico. Le Medaglie della Palestra (バッジ) vengono comunemente contate con questa serie, e non con {{個|こ}} (こ).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::
 :::card
@@ -192,14 +197,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-intai
 card_type: recognition
-front: '{{引|いん}}{{退|たい}}'
-back: 'いんたい — ritiro'
+front: '{{引|いん}}{{退|たい}} / いんたい'
+back: >-
+  いんたい — ritiro. Indica il ritirarsi da un ruolo attivo (es. allenatore); il ruolo abbandonato prende la particella を.
 example_jp: >-
-  {{引|いん}}{{退|たい}}が ある。
+  ポケモントレーナーを {{引|いん}}{{退|たい}}する。
 example_it: >-
-  C’è ritiro.
+  Ritirarsi dall'essere un Allenatore di Pokémon.
 notes_it: >-
-  {{引|いん}}{{退|たい}} significa ritiro. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{引|いん}}{{退|たい}} (いんたい) descrive il momento in cui qualcuno si ritira dalla propria professione o dal proprio ruolo agonistico (come un Allenatore o un Capopalestra). L'azione richiede il verbo する e la particella を per indicare il ruolo lasciato: トレーナーを{{引|いん}}{{退|たい}}する.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::
 :::card
@@ -208,14 +214,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-akeru
 card_type: recognition
-front: '{{開|あ}}ける'
-back: 'あける — aprire'
+front: '{{開|あ}}ける / あける'
+back: >-
+  あける — aprire. Verbo transitivo per aprire fisicamente qualcosa, come una porta, un coperchio o una borsa; l'oggetto prende を.
 example_jp: >-
-  {{開|あ}}ける ことが ある。
+  {{教|きょう}}{{室|しつ}}の ドアを {{開|あ}}ける。
 example_it: >-
-  A volte capita di aprire.
+  Apro la porta dell'aula.
 notes_it: >-
-  {{開|あ}}ける significa aprire. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{開|あ}}ける indica l'azione volontaria di aprire qualcosa di concreto. L'oggetto aperto prende を: ドアを{{開|あ}}ける. Non va confuso con {{開|ひら}}く, più comune per aprire schermate, menu o mappe.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::
 :::card
@@ -224,14 +231,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-kanji
 card_type: recognition
-front: '{{感|かん}}じ'
-back: 'かんじ — sensazione; impressione'
+front: '{{感|かん}}じ / かんじ'
+back: >-
+  かんじ — sensazione; impressione. Sostantivo spesso abbinato al verbo する ({{感|かん}}じがする) per esprimere una percezione personale.
 example_jp: >-
-  {{感|かん}}じが ある。
+  この ポケモンは ふしぎな {{感|かん}}じが する。
 example_it: >-
-  C’è sensazione; impressione.
+  Questo Pokémon dà una sensazione misteriosa.
 notes_it: >-
-  {{感|かん}}じ significa sensazione; impressione. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{感|かん}}じ (かんじ) esprime l'impressione, l'atmosfera o la sensazione che si riceve da qualcosa o qualcuno. Molto spesso è abbinato al verbo する ({{感|かん}}じがする) per significare "dare l'impressione di" o "avere la sensazione che". Si può unire anche ad aggettivi per descrivere l'atmosfera di un ambiente (es. いい{{感|かん}}じ).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::
 :::card
@@ -240,14 +248,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-kizuku
 card_type: recognition
-front: '{{気|き}}づく'
-back: 'きづく — accorgersi; notare'
+front: '{{気|き}}づく / きづく'
+back: >-
+  きづく — accorgersi; notare. Verbo che prende la particella に per l'oggetto notato; frequente nella forma passiva per i Pokémon.
 example_jp: >-
-  {{気|き}}づく ことが ある。
+  {{野|や}}{{生|せい}}の ポケモンに {{気|き}}づく。
 example_it: >-
-  A volte capita di accorgersi; notare.
+  Mi accorgo di un Pokémon selvatico.
 notes_it: >-
-  {{気|き}}づく significa accorgersi; notare. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{気|き}}づく (きづく) indica il momento in cui si prende coscienza o si nota un dettaglio, un cambiamento o una presenza. L'elemento notato è introdotto dalla particella に. Nel gioco, la forma passiva ({{気|き}}づかれる, "essere notati") è diffusissima per descrivere i Pokémon selvatici che si accorgono del giocatore nell'overworld.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::
 :::card
@@ -256,13 +265,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-kioku
 card_type: recognition
-front: '{{記|き}}{{憶|おく}}'
-back: 'きおく — memoria; ricordo'
+front: '{{記|き}}{{憶|おく}} / きおく'
+back: >-
+  きおく — memoria; ricordo. Sostantivo che indica il bagaglio dei ricordi, usato con する per l'atto di memorizzare.
 example_jp: >-
-  {{記|き}}{{憶|おく}}が ある。
+  ペパーには むかしの {{記|き}}{{憶|おく}}が ある。
 example_it: >-
-  C’è memoria; ricordo.
+  Pepe ha ricordi del passato.
 notes_it: >-
-  {{記|き}}{{憶|おく}} significa memoria; ricordo. Nel materiale di Scarlet / Violet ricorre 11 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{記|き}}{{憶|おく}} sottolinea la capacità e l'atto di conservare o richiamare informazioni, distinguendosi dal più generico {{思|おも}}い{{出|で}}, che richiama i ricordi affettivi. Può fungere da sostantivo o combinarsi con する per formare il verbo “memorizzare”.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::

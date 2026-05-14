@@ -13,7 +13,7 @@ reading: つづく
 romaji: tsuzuku
 meaning_it: continuare; durare
 notes_it: >-
-  {{続|つづ}}く significa continuare; durare. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo intransitivo {{続|つづ}}く indica un'azione o uno stato che va avanti nel tempo senza interruzioni. Il soggetto che continua prende la particella が: {{冒|ぼう}}{{険|けん}}が{{続|つづ}}く (l'avventura continua).
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: かみがた
 romaji: kamigata
 meaning_it: acconciatura
 notes_it: >-
-  {{髪|かみ}}{{型|がた}} significa acconciatura. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il sostantivo {{髪|かみ}}{{型|がた}} combina {{髪|かみ}} (capelli) e {{型|かた}} (forma, modello) con rendaku. Nei saloni di Paldea, si usa regolarmente con il verbo する per indicare la decisione o la realizzazione di un taglio: {{髪|かみ}}{{型|がた}}にする (farsi un'acconciatura).
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: きこえる
 romaji: kikoeru
 meaning_it: sentirsi; essere udibile
 notes_it: >-
-  {{聞|き}}こえる significa sentirsi; essere udibile. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{聞|き}}こえる descrive un suono che raggiunge le orecchie spontaneamente, indipendentemente dalla volontà di chi ascolta ("essere udibile", "giungere all'orecchio"). Il suono percepito è il soggetto della frase e prende la particella が: {{声|こえ}}が{{聞|き}}こえる. Si distingue da {{聞|き}}く (ascoltare attivamente).
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: みかくにん
 romaji: mikakunin
 meaning_it: non confermato; non identificato
 notes_it: >-
-  {{未|み}}{{確|かく}}{{認|にん}} significa non confermato; non identificato. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il prefisso {{未|み}} (non ancora) si unisce a {{確|かく}}{{認|にん}} (conferma) per descrivere qualcosa di non ancora verificato o sconosciuto. Spesso usato come aggettivo tramite la particella の: {{未|み}}{{確|かく}}{{認|にん}}のポケモン.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: ゆめ
 romaji: yume
 meaning_it: sogno
 notes_it: >-
-  {{夢|ゆめ}} significa sogno. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{夢|ゆめ}} indica sia l'esperienza onirica sia un'ambizione o un obiettivo di vita. Per esprimere il contenuto del sogno si usa spesso la nominalizzazione verbale (のが) o una frase relativa che precede il sostantivo: チャンピオンになる{{夢|ゆめ}} (il sogno di diventare campione).
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: みっつ
 romaji: mittsu
 meaning_it: tre cose
 notes_it: >-
-  {{3|みっ}}つ significa tre cose. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. È un blocco di quantità: contatore, moltiplicatore o numero da leggere come unità intera nel testo.
+  {{3|みっ}}つ fa parte del sistema di conteggio tradizionale giapponese. Si usa per contare oggetti generici (come le Poké Ball o gli strumenti) fino a dieci. Quando modifica un verbo (es. {{買|か}}う), di solito segue la particella dell'oggetto agendo da avverbio di quantità: ボールを{{3|みっ}}つ{{買|か}}う.
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: おれい
 romaji: orei
 meaning_it: ringraziamento
 notes_it: >-
-  お{{礼|れい}} significa ringraziamento. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{礼|れい}} (gratitudine) prende il prefisso onorifico お per formare お{{礼|れい}}. È molto frequente nell'espressione お{{礼|れい}}に (in segno di ringraziamento), usata da NPC e compagni quando offrono una ricompensa per aver completato una richiesta o vinto una lotta.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: いむしつ
 romaji: imushitsu
 meaning_it: infermeria
 notes_it: >-
-  {{医|い}}{{務|む}}{{室|しつ}} significa infermeria. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{医|い}}{{務|む}}{{室|しつ}} indica l'infermeria scolastica o aziendale. All'Accademia, è il luogo designato per il riposo e le cure. La particella に indica l'ubicazione spaziale: {{医|い}}{{務|む}}{{室|しつ}}にいる (essere in infermeria).
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: かぞく
 romaji: kazoku
 meaning_it: famiglia
 notes_it: >-
-  {{家|か}}{{族|ぞく}} significa famiglia. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{家|か}}{{族|ぞく}} indica il nucleo familiare. Quando si parla della famiglia come argomento o concetto generale, è molto comune espanderlo con のこと (riguardo a / le questioni di): {{家|か}}{{族|ぞく}}のことを{{話|はな}}す (parlare della propria famiglia).
 level_hint: custom
 :::
 :::term
@@ -103,7 +103,7 @@ reading: みつかる
 romaji: mitsukaru
 meaning_it: essere trovato
 notes_it: >-
-  {{見|み}}つかる significa essere trovato. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo intransitivo {{見|み}}つかる indica la scoperta spontanea o accidentale di qualcosa ("farsi trovare", "venire alla luce"). L'oggetto scoperto è il soggetto grammaticale e prende が: スパイスが{{見|み}}つかる. Se indica l'essere stati scoperti da qualcuno (es. un Pokémon selvatico), la persona/creatura che scopre prende に.
 level_hint: custom
 :::
 :::card
@@ -112,14 +112,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-tsuzuku
 card_type: recognition
-front: '{{続|つづ}}く'
-back: 'つづく — continuare; durare'
+front: '{{続|つづ}}く / つづく'
+back: >-
+  つづく — continuare; durare Il soggetto che continua prende la particella が: {{冒|ぼう}}{{険|けん}}が{{続|つづ}}く.
 example_jp: >-
-  {{続|つづ}}く ことが ある。
+  まだまだ {{冒|ぼう}}{{険|けん}}は {{続|つづ}}く。
 example_it: >-
-  A volte capita di continuare; durare.
+  L'avventura continua ancora.
 notes_it: >-
-  {{続|つづ}}く significa continuare; durare. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo intransitivo {{続|つづ}}く indica un'azione o uno stato che va avanti nel tempo senza interruzioni. Il soggetto che continua prende la particella が: {{冒|ぼう}}{{険|けん}}が{{続|つづ}}く (l'avventura continua).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::
 :::card
@@ -128,14 +129,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-kamigata
 card_type: recognition
-front: '{{髪|かみ}}{{型|がた}}'
-back: 'かみがた — acconciatura'
+front: '{{髪|かみ}}{{型|がた}} / かみがた'
+back: >-
+  かみがた — acconciatura Si usa con il verbo する per indicare la scelta di un taglio: {{髪|かみ}}{{型|がた}}にする (farsi un'acconciatura).
 example_jp: >-
-  {{髪|かみ}}{{型|がた}}が ある。
+  サロンで {{新|あたら}}しい {{髪|かみ}}{{型|がた}}に した。
 example_it: >-
-  C’è acconciatura.
+  Ho fatto una nuova acconciatura al salone.
 notes_it: >-
-  {{髪|かみ}}{{型|がた}} significa acconciatura. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il sostantivo {{髪|かみ}}{{型|がた}} combina {{髪|かみ}} (capelli) e {{型|かた}} (forma, modello) con rendaku. Nei saloni di Paldea, si usa regolarmente con il verbo する per indicare la decisione o la realizzazione di un taglio: {{髪|かみ}}{{型|がた}}にする (farsi un'acconciatura).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::
 :::card
@@ -144,14 +146,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-kikoeru
 card_type: recognition
-front: '{{聞|き}}こえる'
-back: 'きこえる — sentirsi; essere udibile'
+front: '{{聞|き}}こえる / きこえる'
+back: >-
+  きこえる — sentirsi; essere udibile Descrive un suono che raggiunge le orecchie spontaneamente. Il suono percepito prende が: {{声|こえ}}が{{聞|き}}こえる.
 example_jp: >-
-  {{聞|き}}こえる ことが ある。
+  {{遠|とお}}くから ポケモンの {{鳴|な}}き{{声|ごえ}}が {{聞|き}}こえる。
 example_it: >-
-  A volte capita di sentirsi; essere udibile.
+  Si sente il verso di un Pokémon da lontano.
 notes_it: >-
-  {{聞|き}}こえる significa sentirsi; essere udibile. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{聞|き}}こえる descrive un suono che raggiunge le orecchie spontaneamente, indipendentemente dalla volontà di chi ascolta ("essere udibile", "giungere all'orecchio"). Il suono percepito è il soggetto della frase e prende la particella が: {{声|こえ}}が{{聞|き}}こえる. Si distingue da {{聞|き}}く (ascoltare attivamente).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::
 :::card
@@ -160,14 +163,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-mikakunin
 card_type: recognition
-front: '{{未|み}}{{確|かく}}{{認|にん}}'
-back: 'みかくにん — non confermato; non identificato'
+front: '{{未|み}}{{確|かく}}{{認|にん}} / みかくにん'
+back: >-
+  みかくにん — non confermato; non identificato Spesso usato come aggettivo tramite la particella の per descrivere entità misteriose.
 example_jp: >-
-  {{未|み}}{{確|かく}}{{認|にん}}が ある。
+  エリアゼロで {{未|み}}{{確|かく}}{{認|にん}}の ポケモンが {{発|はっ}}{{見|けん}}された。
 example_it: >-
-  C’è non confermato; non identificato.
+  È stato scoperto un Pokémon non identificato nell'Area Zero.
 notes_it: >-
-  {{未|み}}{{確|かく}}{{認|にん}} significa non confermato; non identificato. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il prefisso {{未|み}} (non ancora) si unisce a {{確|かく}}{{認|にん}} (conferma) per descrivere qualcosa di non ancora verificato o sconosciuto. Spesso usato come aggettivo tramite la particella の: {{未|み}}{{確|かく}}{{認|にん}}のポケモン.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::
 :::card
@@ -176,14 +180,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-yume
 card_type: recognition
-front: '{{夢|ゆめ}}'
-back: 'ゆめ — sogno'
+front: '{{夢|ゆめ}} / ゆめ'
+back: >-
+  ゆめ — sogno Indica sia l'esperienza onirica sia un'ambizione di vita, come diventare Campione.
 example_jp: >-
-  {{夢|ゆめ}}が ある。
+  チャンピオンに なるのが {{私|わたし}}の {{夢|ゆめ}}だ。
 example_it: >-
-  C’è sogno.
+  Il mio sogno è diventare Campione.
 notes_it: >-
-  {{夢|ゆめ}} significa sogno. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{夢|ゆめ}} indica sia l'esperienza onirica sia un'ambizione o un obiettivo di vita. Per esprimere il contenuto del sogno si usa spesso la nominalizzazione verbale (のが) o una frase relativa che precede il sostantivo: チャンピオンになる{{夢|ゆめ}} (il sogno di diventare campione).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::
 :::card
@@ -192,14 +197,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-mittsu
 card_type: recognition
-front: '{{3|みっ}}つ'
-back: 'みっつ — tre cose'
+front: '{{3|みっ}}つ / みっつ'
+back: >-
+  みっつ — tre cose Sistema di conteggio tradizionale. Come avverbio di quantità, segue la particella dell'oggetto.
 example_jp: >-
-  ボールが {{3|みっ}}つ ある。
+  フレンドリィショップで モンスターボールを {{3|みっ}}つ {{買|か}}った。
 example_it: >-
-  Ci sono tre Ball.
+  Ho comprato tre Poké Ball al Pokémon Market.
 notes_it: >-
-  {{3|みっ}}つ significa tre cose. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. È un blocco di quantità: contatore, moltiplicatore o numero da leggere come unità intera nel testo.
+  {{3|みっ}}つ fa parte del sistema di conteggio tradizionale giapponese. Si usa per contare oggetti generici (come le Poké Ball o gli strumenti) fino a dieci. Quando modifica un verbo (es. {{買|か}}う), di solito segue la particella dell'oggetto agendo da avverbio di quantità: ボールを{{3|みっ}}つ{{買|か}}う.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::
 :::card
@@ -208,14 +214,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-orei
 card_type: recognition
-front: 'お{{礼|れい}}'
-back: 'おれい — ringraziamento'
+front: 'お{{礼|れい}} / おれい'
+back: >-
+  おれい — ringraziamento Frequente nell'espressione お{{礼|れい}}に (come ringraziamento) per offrire ricompense.
 example_jp: >-
-  お{{礼|れい}}が ある。
+  {{助|たす}}けてくれた お{{礼|れい}}に この {{道|どう}}{{具|ぐ}}を あげよう。
 example_it: >-
-  C’è ringraziamento.
+  Come ringraziamento per avermi aiutato, ti darò questo strumento.
 notes_it: >-
-  お{{礼|れい}} significa ringraziamento. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{礼|れい}} (gratitudine) prende il prefisso onorifico お per formare お{{礼|れい}}. È molto frequente nell'espressione お{{礼|れい}}に (in segno di ringraziamento), usata da NPC e compagni quando offrono una ricompensa per aver completato una richiesta o vinto una lotta.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::
 :::card
@@ -224,14 +231,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-imushitsu
 card_type: recognition
-front: '{{医|い}}{{務|む}}{{室|しつ}}'
-back: 'いむしつ — infermeria'
+front: '{{医|い}}{{務|む}}{{室|しつ}} / いむしつ'
+back: >-
+  いむしつ — infermeria Luogo scolastico. L'ubicazione di persone o cose al suo interno prende la particella に.
 example_jp: >-
-  {{医|い}}{{務|む}}{{室|しつ}}が ある。
+  ミモザ{{先|せん}}{{生|せい}}は {{医|い}}{{務|む}}{{室|しつ}}に いるはずだ。
 example_it: >-
-  C’è infermeria.
+  La professoressa Mimosa dovrebbe essere in infermeria.
 notes_it: >-
-  {{医|い}}{{務|む}}{{室|しつ}} significa infermeria. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{医|い}}{{務|む}}{{室|しつ}} indica l'infermeria scolastica o aziendale. All'Accademia, è il luogo designato per il riposo e le cure. La particella に indica l'ubicazione spaziale: {{医|い}}{{務|む}}{{室|しつ}}にいる (essere in infermeria).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::
 :::card
@@ -240,14 +248,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-kazoku
 card_type: recognition
-front: '{{家|か}}{{族|ぞく}}'
-back: 'かぞく — famiglia'
+front: '{{家|か}}{{族|ぞく}} / かぞく'
+back: >-
+  かぞく — famiglia Quando è l'argomento centrale di una conversazione, prende frequentemente のこと.
 example_jp: >-
-  {{家|か}}{{族|ぞく}}が ある。
+  ペパーは {{家|か}}{{族|ぞく}}の ことを あまり {{話|はな}}さない。
 example_it: >-
-  C’è famiglia.
+  Pepe non parla molto della sua famiglia.
 notes_it: >-
-  {{家|か}}{{族|ぞく}} significa famiglia. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{家|か}}{{族|ぞく}} indica il nucleo familiare. Quando si parla della famiglia come argomento o concetto generale, è molto comune espanderlo con のこと (riguardo a / le questioni di): {{家|か}}{{族|ぞく}}のことを{{話|はな}}す (parlare della propria famiglia).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::
 :::card
@@ -256,13 +265,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-mitsukaru
 card_type: recognition
-front: '{{見|み}}つかる'
-back: 'みつかる — essere trovato'
+front: '{{見|み}}つかる / みつかる'
+back: >-
+  みつかる — essere trovato L'oggetto scoperto è il soggetto grammaticale e prende が: スパイスが{{見|み}}つかる.
 example_jp: >-
-  {{見|み}}つかる ことが ある。
+  ここに {{探|さが}}していた スパイスが {{見|み}}つかる はずだ。
 example_it: >-
-  A volte capita di essere trovato.
+  Qui dovrebbe trovarsi la spezia che stavamo cercando.
 notes_it: >-
-  {{見|み}}つかる significa essere trovato. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo intransitivo {{見|み}}つかる indica la scoperta spontanea o accidentale di qualcosa ("farsi trovare", "venire alla luce"). L'oggetto scoperto è il soggetto grammaticale e prende が: スパイスが{{見|み}}つかる. Se indica l'essere stati scoperti da qualcuno (es. un Pokémon selvatico), la persona/creatura che scopre prende に.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::

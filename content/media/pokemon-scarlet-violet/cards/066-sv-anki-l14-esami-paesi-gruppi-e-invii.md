@@ -13,7 +13,7 @@ reading: いない
 romaji: inai
 meaning_it: entro; dentro il limite
 notes_it: >-
-  {{以|い}}{{内|ない}} significa entro; dentro il limite. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il suffisso {{以|い}}{{内|ない}} si aggancia direttamente a un'espressione di quantità o tempo per fissare un limite massimo. {{10分以内|じゅっぷんいない}} significa “entro dieci minuti”, cioè senza superare quel limite.
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: はな
 romaji: hana
 meaning_it: fiore
 notes_it: >-
-  {{花|はな}} significa fiore. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{花|はな}} indica il fiore in senso generale. Nelle frasi prende la particella richiesta dal verbo: を se il fiore è l'oggetto di trovare o raccogliere, に se è il punto verso cui va un'azione come dare acqua.
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: けいさん
 romaji: keisan
 meaning_it: calcolo
 notes_it: >-
-  {{計|けい}}{{算|さん}} significa calcolo. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{計|けい}}{{算|さん}} unisce "misurare" e "calcolare". Può funzionare come sostantivo isolato (il calcolo, come nella frase di esempio) o diventare un verbo combinandolo con する ({{計|けい}}{{算|さん}}する, calcolare). In un contesto di lotta, si riferisce spesso alle formule dietro i danni o le statistiche.
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: くに
 romaji: kuni
 meaning_it: paese; stato
 notes_it: >-
-  {{国|くに}} significa paese; stato. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{国|くに}} indica una nazione, uno stato o una regione geograficamente e culturalmente distinta. Con l'aggettivo {{遠|とお}}い (lontano) crea la formula classica "da un paese lontano" ({{遠|とお}}い{{国|くに}}から), tipica per descrivere Pokémon stranieri, esotici o scambiati a livello internazionale.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: こどもたち
 romaji: kodomotachi
 meaning_it: bambini
 notes_it: >-
-  {{子|こ}}{{供|ども}}たち significa bambini. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Il suffisso たち si aggiunge a sostantivi riferiti a persone per formare un gruppo o un plurale. {{子|こ}}{{供|ども}}たち si riferisce a un gruppo di bambini o ragazzini in senso generale. Gli adulti (come professori o residenti) lo usano spesso per rivolgersi o riferirsi agli studenti dell'Accademia in blocco.
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: しさつ
 romaji: shisatsu
 meaning_it: ispezione; sopralluogo
 notes_it: >-
-  {{視|し}}{{察|さつ}} significa ispezione; sopralluogo. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{視|し}}{{察|さつ}} è un termine molto formale che indica un'ispezione sul campo condotta da chi detiene una certa autorità (come un Superquattro o la Presidente della Lega). Usa la particella の per collegarsi alla struttura ispezionata: ジムの{{視|し}}{{察|さつ}} (l'ispezione della palestra).
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: しけん
 romaji: shiken
 meaning_it: esame; test
 notes_it: >-
-  {{試|し}}{{験|けん}} significa esame; test. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{試|し}}{{験|けん}} copre sia i test accademici scritti (a scuola) sia le prove pratiche (come l'esame della Lega Pokémon). Si usa tipicamente con verbi di superamento ({{合|ごう}}{{格|かく}}する), fallimento ({{落|お}}ちる) o per descrivere l'inizio di una prova ufficiale.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: あつまる
 romaji: atsumaru
 meaning_it: radunarsi
 notes_it: >-
-  {{集|あつ}}まる significa radunarsi. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{集|あつ}}まる è la forma intransitiva: l'azione avviene da sé, come se le persone convergessero naturalmente. Se invece un agente esterno spinge le cose a radunarsi (es. "raccogliere oggetti"), si usa il transitivo {{集|あつ}}める. Il luogo dell'assembramento prende la particella に ({{広|ひろ}}{{場|ば}}に).
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: おくる
 romaji: okuru
 meaning_it: inviare; mandare
 notes_it: >-
-  {{送|おく}}る significa inviare; mandare. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{送|おく}}る implica un trasferimento fisico (spedire una lettera) o digitale/sistemico (inviare un Pokémon al PC) da un punto di partenza a una destinazione. L'oggetto spostato prende を, mentre la destinazione di arrivo (o il destinatario) prende la particella に.
 level_hint: custom
 :::
 :::term
@@ -103,7 +103,7 @@ reading: だれも
 romaji: daremo
 meaning_it: chiunque; nessuno con ない
 notes_it: >-
-  {{誰|だれ}}も significa chiunque; nessuno con ない. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{誰|だれ}}も cambia valore in base alla polarità della frase. Con un verbo negativo, come いない, significa “nessuno”; in costruzioni positive può invece avvicinarsi a “chiunque” o “tutti”.
 level_hint: custom
 :::
 :::card
@@ -112,14 +112,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi
 entry_type: term
 entry_id: term-anki-l14-inai
 card_type: recognition
-front: '{{以|い}}{{内|ない}}'
-back: 'いない — entro; dentro il limite'
+front: '{{以|い}}{{内|ない}} / いない'
+back: >-
+  いない — entro; non oltre; dentro un limite. Si attacca a quantità, tempi o distanze per indicare un massimo incluso.
 example_jp: >-
-  {{以|い}}{{内|ない}}が ある。
+  {{10分以内|じゅっぷんいない}}に ポケモンを たくさん {{倒|たお}}すんだ！
 example_it: >-
-  C’è entro; dentro il limite.
+  Sconfiggi un sacco di Pokémon entro dieci minuti!
 notes_it: >-
-  {{以|い}}{{内|ない}} significa entro; dentro il limite. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il suffisso {{以|い}}{{内|ない}} si aggancia direttamente a un'espressione di quantità o tempo per fissare un limite massimo. {{10分以内|じゅっぷんいない}} significa “entro dieci minuti”, cioè senza superare quel limite.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::
 :::card
@@ -128,14 +129,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi
 entry_type: term
 entry_id: term-anki-l14-hana
 card_type: recognition
-front: '{{花|はな}}'
-back: 'はな — fiore'
+front: '{{花|はな}} / はな'
+back: >-
+  はな — fiore. Parola comune per fiori e piante fiorite, utile in descrizioni di luoghi, oggetti e mosse.
 example_jp: >-
-  {{花|はな}}が ある。
+  めずらしい {{花|はな}}を {{見|み}}つけたら、{{教|おし}}えてね。
 example_it: >-
-  C’è fiore.
+  Se trovi dei fiori rari, fammelo sapere.
 notes_it: >-
-  {{花|はな}} significa fiore. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{花|はな}} indica il fiore in senso generale. Nelle frasi prende la particella richiesta dal verbo: を se il fiore è l'oggetto di trovare o raccogliere, に se è il punto verso cui va un'azione come dare acqua.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::
 :::card
@@ -144,14 +146,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi
 entry_type: term
 entry_id: term-anki-l14-keisan
 card_type: recognition
-front: '{{計|けい}}{{算|さん}}'
-back: 'けいさん — calcolo'
+front: '{{計|けい}}{{算|さん}} / けいさん'
+back: >-
+  けいさん — calcolo. Sostantivo suru ({{計|けい}}{{算|さん}}する) che indica l'azione di calcolare danni, punti o traiettorie.
 example_jp: >-
-  {{計|けい}}{{算|さん}}が ある。
+  ダメージの {{計|けい}}{{算|さん}}は、すこし {{複|ふく}}{{雑|ざつ}}なんだ。
 example_it: >-
-  C’è calcolo.
+  Il calcolo dei danni è un po' complicato.
 notes_it: >-
-  {{計|けい}}{{算|さん}} significa calcolo. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{計|けい}}{{算|さん}} unisce "misurare" e "calcolare". Può funzionare come sostantivo isolato (il calcolo, come nella frase di esempio) o diventare un verbo combinandolo con する ({{計|けい}}{{算|さん}}する, calcolare). In un contesto di lotta, si riferisce spesso alle formule dietro i danni o le statistiche.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::
 :::card
@@ -160,14 +163,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi
 entry_type: term
 entry_id: term-anki-l14-kuni
 card_type: recognition
-front: '{{国|くに}}'
-back: 'くに — paese; stato'
+front: '{{国|くに}} / くに'
+back: >-
+  くに — paese; nazione; regione d'origine. Spesso usato per riferirsi a terre lontane da cui provengono personaggi o Pokémon.
 example_jp: >-
-  {{国|くに}}が ある。
+  この ポケモンは、{{遠|とお}}い {{国|くに}}から {{来|き}}たらしい。
 example_it: >-
-  C’è paese; stato.
+  Sembra che questo Pokémon provenga da un paese lontano.
 notes_it: >-
-  {{国|くに}} significa paese; stato. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{国|くに}} indica una nazione, uno stato o una regione geograficamente e culturalmente distinta. Con l'aggettivo {{遠|とお}}い (lontano) crea la formula classica "da un paese lontano" ({{遠|とお}}い{{国|くに}}から), tipica per descrivere Pokémon stranieri, esotici o scambiati a livello internazionale.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::
 :::card
@@ -176,14 +180,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi
 entry_type: term
 entry_id: term-anki-l14-kodomotachi
 card_type: recognition
-front: '{{子|こ}}{{供|ども}}たち'
-back: 'こどもたち — bambini'
+front: '{{子|こ}}{{供|ども}}たち / こどもたち'
+back: >-
+  こどもたち — bambini; ragazzini. Il suffisso たち rende plurale il sostantivo base {{子|こ}}{{供|ども}}.
 example_jp: >-
-  {{子|こ}}{{供|ども}}たちが いる。
+  アカデミーには、たくさんの {{子|こ}}{{供|ども}}たちが いるよ。
 example_it: >-
-  C’è bambini.
+  All'Accademia ci sono tantissimi bambini.
 notes_it: >-
-  {{子|こ}}{{供|ども}}たち significa bambini. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Il suffisso たち si aggiunge a sostantivi riferiti a persone per formare un gruppo o un plurale. {{子|こ}}{{供|ども}}たち si riferisce a un gruppo di bambini o ragazzini in senso generale. Gli adulti (come professori o residenti) lo usano spesso per rivolgersi o riferirsi agli studenti dell'Accademia in blocco.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::
 :::card
@@ -192,14 +197,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi
 entry_type: term
 entry_id: term-anki-l14-shisatsu
 card_type: recognition
-front: '{{視|し}}{{察|さつ}}'
-back: 'しさつ — ispezione; sopralluogo'
+front: '{{視|し}}{{察|さつ}} / しさつ'
+back: >-
+  しさつ — ispezione; sopralluogo. Sostantivo suru usato per visite ufficiali per controllare una struttura o un'attività.
 example_jp: >-
-  {{視|し}}{{察|さつ}}が ある。
+  オモダカさんは、ジムの {{視|し}}{{察|さつ}}で {{忙|いそが}}しいみたい。
 example_it: >-
-  C’è ispezione; sopralluogo.
+  Sembra che Alisma sia impegnata con l'ispezione delle Palestre.
 notes_it: >-
-  {{視|し}}{{察|さつ}} significa ispezione; sopralluogo. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{視|し}}{{察|さつ}} è un termine molto formale che indica un'ispezione sul campo condotta da chi detiene una certa autorità (come un Superquattro o la Presidente della Lega). Usa la particella の per collegarsi alla struttura ispezionata: ジムの{{視|し}}{{察|さつ}} (l'ispezione della palestra).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::
 :::card
@@ -208,14 +214,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi
 entry_type: term
 entry_id: term-anki-l14-shiken
 card_type: recognition
-front: '{{試|し}}{{験|けん}}'
-back: 'しけん — esame; test'
+front: '{{試|し}}{{験|けん}} / しけん'
+back: >-
+  しけん — esame; test; prova. Spesso accompagnato dal verbo {{受|う}}ける (sostenere un esame) o {{合|ごう}}{{格|かく}}する (superare un esame).
 example_jp: >-
-  {{試|し}}{{験|けん}}が ある。
+  チャンピオンになるための {{試|し}}{{験|けん}}を はじめます。
 example_it: >-
-  C’è esame; test.
+  Iniziamo l'esame per diventare Campione.
 notes_it: >-
-  {{試|し}}{{験|けん}} significa esame; test. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{試|し}}{{験|けん}} copre sia i test accademici scritti (a scuola) sia le prove pratiche (come l'esame della Lega Pokémon). Si usa tipicamente con verbi di superamento ({{合|ごう}}{{格|かく}}する), fallimento ({{落|お}}ちる) o per descrivere l'inizio di una prova ufficiale.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::
 :::card
@@ -224,14 +231,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi
 entry_type: term
 entry_id: term-anki-l14-atsumaru
 card_type: recognition
-front: '{{集|あつ}}まる'
-back: 'あつまる — radunarsi'
+front: '{{集|あつ}}まる / あつまる'
+back: >-
+  あつまる — radunarsi; riunirsi; raggrupparsi. Verbo intransitivo (qualcosa/qualcuno si raduna, prende が). Il luogo in cui ci si raduna prende に.
 example_jp: >-
-  {{集|あつ}}まる ことが ある。
+  {{広|ひろ}}{{場|ば}}に たくさんの {{人|ひと}}が {{集|あつ}}まるよ。
 example_it: >-
-  A volte capita di radunarsi.
+  In piazza si radunerà un sacco di gente.
 notes_it: >-
-  {{集|あつ}}まる significa radunarsi. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{集|あつ}}まる è la forma intransitiva: l'azione avviene da sé, come se le persone convergessero naturalmente. Se invece un agente esterno spinge le cose a radunarsi (es. "raccogliere oggetti"), si usa il transitivo {{集|あつ}}める. Il luogo dell'assembramento prende la particella に ({{広|ひろ}}{{場|ば}}に).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::
 :::card
@@ -240,14 +248,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi
 entry_type: term
 entry_id: term-anki-l14-okuru
 card_type: recognition
-front: '{{送|おく}}る'
-back: 'おくる — inviare; mandare'
+front: '{{送|おく}}る / おくる'
+back: >-
+  おくる — inviare; mandare; spedire. Verbo transitivo (prende を per l'oggetto inviato e に per la destinazione).
 example_jp: >-
-  {{送|おく}}る ことが ある。
+  {{捕|つか}}まえた ポケモンを ボックスに {{送|おく}}るね。
 example_it: >-
-  A volte capita di inviare; mandare.
+  Mando il Pokémon catturato nel Box.
 notes_it: >-
-  {{送|おく}}る significa inviare; mandare. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{送|おく}}る implica un trasferimento fisico (spedire una lettera) o digitale/sistemico (inviare un Pokémon al PC) da un punto di partenza a una destinazione. L'oggetto spostato prende を, mentre la destinazione di arrivo (o il destinatario) prende la particella に.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::
 :::card
@@ -256,13 +265,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi
 entry_type: term
 entry_id: term-anki-l14-daremo
 card_type: recognition
-front: '{{誰|だれ}}も'
-back: 'だれも — chiunque; nessuno con ない'
+front: '{{誰|だれ}}も / だれも'
+back: >-
+  だれも — nessuno con verbo negativo; chiunque/tutti in alcuni usi positivi. Unisce {{誰|だれ}} (chi) e も (anche).
 example_jp: >-
-  {{誰|だれ}}も いない。
+  この {{部|へ}}{{屋|や}}には、{{誰|だれ}}も いないようだ。
 example_it: >-
-  Non c’è nessuno.
+  Sembra che non ci sia nessuno in questa stanza.
 notes_it: >-
-  {{誰|だれ}}も significa chiunque; nessuno con ない. Nel materiale di Scarlet / Violet ricorre 12 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{誰|だれ}}も cambia valore in base alla polarità della frase. Con un verbo negativo, come いない, significa “nessuno”; in costruzioni positive può invece avvicinarsi a “chiunque” o “tutti”.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::

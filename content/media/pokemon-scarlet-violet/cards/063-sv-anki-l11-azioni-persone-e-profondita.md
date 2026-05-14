@@ -13,7 +13,7 @@ reading: わたす
 romaji: watasu
 meaning_it: consegnare; passare
 notes_it: >-
-  {{渡|わた}}す significa consegnare; passare. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{渡|わた}}す si concentra sul trasferimento fisico (passare di mano in mano). Il destinatario prende に e l'oggetto を. Spesso appare in forma {{渡|わた}}してくれる per chiedere un favore di consegna all'interlocutore.
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: あたる
 romaji: ataru
 meaning_it: colpire; indovinare
 notes_it: >-
-  {{当|あ}}たる significa colpire; indovinare. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{当|あ}}たる ha una sfumatura di 'centrare il bersaglio' e avviene spontaneamente o come risultato. Il suo equivalente transitivo è {{当|あ}}てる (colpire volontariamente). Si applica a mosse che vanno a segno, previsioni corrette o lotterie.
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: かのじょ
 romaji: kanojo
 meaning_it: lei; fidanzata
 notes_it: >-
-  {{彼|かの}}{{女|じょ}} significa lei; fidanzata. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Mentre in italiano usiamo molto i pronomi, in giapponese {{彼|かれ}}{{女|おんな}} si usa solo se il nome non è noto o per dare un tono narrativo specifico. Se si conosce il nome (es. ネモ), si usa quasi sempre il nome + suffisso.
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: こわい
 romaji: kowai
 meaning_it: spaventoso; pauroso
 notes_it: >-
-  {{怖|こわ}}い significa spaventoso; pauroso. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  {{怖|こわ}}い (kowai) descrive il senso di timore verso qualcosa di minaccioso. Da non confondere con {{恐|おそ}}ろしい (osoroshii), che ha un tono più formale e profondo, mentre {{怖|こわ}}い è l'emozione immediata di fronte al pericolo.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: あのこ
 romaji: anoko
 meaning_it: quel ragazzo/quella ragazza
 notes_it: >-
-  あの{{子|こ}} significa quel ragazzo/quella ragazza. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Viene usato spesso dagli insegnanti o dai capopalestra per riferirsi agli studenti senza usare pronomi rigidi come {{彼|かれ}}/{{彼|かれ}}{{女|おんな}}, mantenendo un tono accogliente e informale (o di benevola superiorità) nella scena.
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: もういちど
 romaji: mouichido
 meaning_it: ancora una volta
 notes_it: >-
-  もう{{一|いち}}{{度|ど}} significa ancora una volta. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Una struttura modulare fondamentale: もう (più, ancora) + un contatore. In questo caso {{度|ど}} è il contatore delle volte. Costrutto onnipresente nei giochi per i prompt in cui puoi riprovare un minigioco o riascoltare regole.
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: きしょ
 romaji: kisho
 meaning_it: libro strano/insolito
 notes_it: >-
-  {{奇|き}}{{書|しょ}} significa libro strano/insolito. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il kanji {{奇|き}} indica qualcosa di anomalo o fuori dall'ordinario (come in {{奇|き}}{{妙|みょう}}). Nel gioco, il Libro Scarlatto o Violetto vengono chiamati {{奇|き}}{{書|しょ}} (kisho) dagli scienziati per il loro contenuto fantastico e poco credibile scientificamente.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: よばれる
 romaji: yobareru
 meaning_it: essere chiamato
 notes_it: >-
-  {{呼|よ}}ばれる significa essere chiamato. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  La struttura sintattica fissa è 「Xと {{呼|よ}}ばれる Y」 (un Y chiamato X). Usare il verbo passivo (-れる) nasconde volutamente l'agente (non importa 'chi' lo chiami così), concentrandosi sul fatto che quel nome è stabilito.
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: さいしんぶ
 romaji: saishinbu
 meaning_it: parte più profonda
 notes_it: >-
-  {{最|さい}}{{深|しん}}{{部|ぶ}} significa parte più profonda. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  L'uso del prefisso {{最|さい}}- (sai) crea dei superlativi assoluti naturali (es. {{最|さい}}{{高|こう}} il migliore, {{最|さい}}{{終|しゅう}} l'ultimo). Aggiungendo il suffisso -{{部|ぶ}} si identifica la zona ultima e irraggiungibile di un'area.
 level_hint: custom
 :::
 :::term
@@ -103,7 +103,7 @@ reading: しごと
 romaji: shigoto
 meaning_it: lavoro
 notes_it: >-
-  {{仕|し}}{{事|ごと}} significa lavoro. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Composto da {{仕|し}} (servire, fare) e {{事|ごと}} (faccenda, cosa). In giapponese le mansioni lavorative si 'fanno' usando il verbo する ({{仕|し}}{{事|ごと}}をする). Viene usato spessissimo da personaggi (come il Capopalestra Ubaldo/Larry) che concepiscono la lotta come un semplice impiego.
 level_hint: custom
 :::
 :::card
@@ -112,14 +112,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-watasu
 card_type: recognition
-front: '{{渡|わた}}す'
-back: 'わたす — consegnare; passare'
+front: '{{渡|わた}}す / わたす'
+back: >-
+  わたす — consegnare; passare Verbo transitivo (lo usi con を) per il passaggio fisico di un oggetto da una persona all'altra. Implica che chi riceve lo prenda in mano.
 example_jp: >-
-  {{渡|わた}}す ことが ある。
+  このモンスターボールを {{校|こう}}{{長|ちょう}}に {{渡|わた}}す ように たのまれた。
 example_it: >-
-  A volte capita di consegnare; passare.
+  Mi hanno chiesto di consegnare questa Poké Ball al preside.
 notes_it: >-
-  {{渡|わた}}す significa consegnare; passare. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{渡|わた}}す si concentra sul trasferimento fisico (passare di mano in mano). Il destinatario prende に e l'oggetto を. Spesso appare in forma {{渡|わた}}してくれる per chiedere un favore di consegna all'interlocutore.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::
 :::card
@@ -128,14 +129,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-ataru
 card_type: recognition
-front: '{{当|あ}}たる'
-back: 'あたる — colpire; indovinare'
+front: '{{当|あ}}たる / あたる'
+back: >-
+  あたる — colpire; indovinare Verbo intransitivo (prende に). Significa che qualcosa 'colpisce il bersaglio', letteralmente (una mossa in lotta) o metaforicamente (indovinare una risposta o vincere un premio).
 example_jp: >-
-  {{当|あ}}たる ことが ある。
+  この わざは ぜったいに {{当|あ}}たる！
 example_it: >-
-  A volte capita di colpire; indovinare.
+  Questa mossa colpisce infallibilmente!
 notes_it: >-
-  {{当|あ}}たる significa colpire; indovinare. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{当|あ}}たる ha una sfumatura di 'centrare il bersaglio' e avviene spontaneamente o come risultato. Il suo equivalente transitivo è {{当|あ}}てる (colpire volontariamente). Si applica a mosse che vanno a segno, previsioni corrette o lotterie.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::
 :::card
@@ -144,14 +146,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-kanojo
 card_type: recognition
-front: '{{彼|かの}}{{女|じょ}}'
-back: 'かのじょ — lei; fidanzata'
+front: '{{彼|かの}}{{女|じょ}} / かのじょ'
+back: >-
+  かのじょ — lei; fidanzata Pronome di terza persona femminile o 'fidanzata'. Nel parlato degli NPC, spesso usato per riferirsi a una ragazza di cui si sta parlando.
 example_jp: >-
-  {{彼|かの}}{{女|じょ}}が いる。
+  {{彼|かの}}{{女|じょ}}は いつも ポケモンバトルを したがっている。
 example_it: >-
-  C’è lei; fidanzata.
+  Lei ha sempre voglia di lottare con i Pokémon.
 notes_it: >-
-  {{彼|かの}}{{女|じょ}} significa lei; fidanzata. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Mentre in italiano usiamo molto i pronomi, in giapponese {{彼|かれ}}{{女|おんな}} si usa solo se il nome non è noto o per dare un tono narrativo specifico. Se si conosce il nome (es. ネモ), si usa quasi sempre il nome + suffisso.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::
 :::card
@@ -160,14 +163,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-kowai
 card_type: recognition
-front: '{{怖|こわ}}い'
-back: 'こわい — spaventoso; pauroso'
+front: '{{怖|こわ}}い / こわい'
+back: >-
+  こわい — spaventoso; pauroso Aggettivo in -i usato per esprimere paura. Definisce sia una qualità oggettiva ('quella cosa fa paura') sia una sensazione soggettiva ('io ho paura').
 example_jp: >-
-  それは {{怖|こわ}}い。
+  エリアゼロの {{最|さい}}{{深|しん}}{{部|ぶ}}には {{怖|こわ}}い ポケモンが いる らしい。
 example_it: >-
-  È spaventoso; pauroso.
+  Sembra che ci siano Pokémon spaventosi nella parte più profonda dell'Area Zero.
 notes_it: >-
-  {{怖|こわ}}い significa spaventoso; pauroso. Nel materiale di Scarlet / Violet ricorre 15 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  {{怖|こわ}}い (kowai) descrive il senso di timore verso qualcosa di minaccioso. Da non confondere con {{恐|おそ}}ろしい (osoroshii), che ha un tono più formale e profondo, mentre {{怖|こわ}}い è l'emozione immediata di fronte al pericolo.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::
 :::card
@@ -176,14 +180,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-anoko
 card_type: recognition
-front: 'あの{{子|こ}}'
-back: 'あのこ — quel ragazzo/quella ragazza'
+front: 'あの{{子|こ}} / あのこ'
+back: >-
+  あのこ — quel ragazzo/quella ragazza. Espressione affettuosa o colloquiale per indicare un giovane; unisce il dimostrativo あの e {{子|こ}}.
 example_jp: >-
-  あの{{子|こ}}が いる。
+  あの{{子|こ}}の ポケモン、とても {{珍|めずら}}しい わね。
 example_it: >-
-  C’è quel ragazzo/quella ragazza.
+  Il Pokémon di quel ragazzo è davvero raro, vero?
 notes_it: >-
-  あの{{子|こ}} significa quel ragazzo/quella ragazza. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Viene usato spesso dagli insegnanti o dai capopalestra per riferirsi agli studenti senza usare pronomi rigidi come {{彼|かれ}}/{{彼|かれ}}{{女|おんな}}, mantenendo un tono accogliente e informale (o di benevola superiorità) nella scena.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::
 :::card
@@ -192,14 +197,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-mouichido
 card_type: recognition
-front: 'もう{{一|いち}}{{度|ど}}'
-back: 'もういちど — ancora una volta'
+front: 'もう{{一|いち}}{{度|ど}} / もういちど'
+back: >-
+  もういちど — ancora una volta Avverbio di tempo formato da もう (di nuovo/ancora) e {{一|いち}}{{度|ど}} (una volta). Si usa per ripetere un'azione appena successa o chiedere un'altra prova.
 example_jp: >-
-  もう{{一|いち}}{{度|ど}}、ネモが きた。
+  {{準|じゅん}}{{備|び}}が できたら、もう{{一|いち}}{{度|ど}} {{話|はな}}しかけて くれ。
 example_it: >-
-  ancora una volta: Nemona è arrivata.
+  Quando sei pronto, parlami ancora una volta.
 notes_it: >-
-  もう{{一|いち}}{{度|ど}} significa ancora una volta. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Una struttura modulare fondamentale: もう (più, ancora) + un contatore. In questo caso {{度|ど}} è il contatore delle volte. Costrutto onnipresente nei giochi per i prompt in cui puoi riprovare un minigioco o riascoltare regole.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::
 :::card
@@ -208,14 +214,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-kisho
 card_type: recognition
-front: '{{奇|き}}{{書|しょ}}'
-back: 'きしょ — libro strano/insolito'
+front: '{{奇|き}}{{書|しょ}} / きしょ'
+back: >-
+  きしょ — libro strano/insolito Sostantivo composto da {{奇|き}} (strano, bizzarro) e {{書|か}} (libro, testo). Si riferisce a tomi antichi dai contenuti dubbi o misteriosi.
 example_jp: >-
-  {{奇|き}}{{書|しょ}}が ある。
+  ペパーが {{持|も}}って いる のは、エリアゼロに ついて {{書|か}}かれた {{奇|き}}{{書|しょ}}だ。
 example_it: >-
-  C’è libro strano/insolito.
+  Quello che ha Pepe è un libro insolito che parla dell'Area Zero.
 notes_it: >-
-  {{奇|き}}{{書|しょ}} significa libro strano/insolito. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il kanji {{奇|き}} indica qualcosa di anomalo o fuori dall'ordinario (come in {{奇|き}}{{妙|みょう}}). Nel gioco, il Libro Scarlatto o Violetto vengono chiamati {{奇|き}}{{書|しょ}} (kisho) dagli scienziati per il loro contenuto fantastico e poco credibile scientificamente.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::
 :::card
@@ -224,14 +231,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-yobareru
 card_type: recognition
-front: '{{呼|よ}}ばれる'
-back: 'よばれる — essere chiamato'
+front: '{{呼|よ}}ばれる / よばれる'
+back: >-
+  よばれる — essere chiamato Forma passiva di {{呼|よ}}ぶ (chiamare). Si usa per introdurre il nome proprio o il soprannome con cui qualcosa è noto al pubblico.
 example_jp: >-
-  {{呼|よ}}ばれる ことが ある。
+  ここは パルデアの {{大|おお}}{{穴|あな}}と {{呼|よ}}ばれる {{場|ば}}{{所|しょ}}だ。
 example_it: >-
-  A volte capita di essere chiamato.
+  Questo è il luogo chiamato Voragine di Paldea.
 notes_it: >-
-  {{呼|よ}}ばれる significa essere chiamato. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  La struttura sintattica fissa è 「Xと {{呼|よ}}ばれる Y」 (un Y chiamato X). Usare il verbo passivo (-れる) nasconde volutamente l'agente (non importa 'chi' lo chiami così), concentrandosi sul fatto che quel nome è stabilito.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::
 :::card
@@ -240,14 +248,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-saishinbu
 card_type: recognition
-front: '{{最|さい}}{{深|しん}}{{部|ぶ}}'
-back: 'さいしんぶ — parte più profonda'
+front: '{{最|さい}}{{深|しん}}{{部|ぶ}} / さいしんぶ'
+back: >-
+  さいしんぶ — parte più profonda Composto da {{最|さい}} (il più), {{深|ふか}} (profondo), e {{部|ぶ}} (sezione/area). Identifica il fondo geografico e inesplorato di un dungeon o cratere.
 example_jp: >-
-  {{最|さい}}{{深|しん}}{{部|ぶ}}が ある。
+  {{最|さい}}{{深|しん}}{{部|ぶ}}には タイムマシンが {{隠|かく}}されて いた。
 example_it: >-
-  C’è parte più profonda.
+  Nella parte più profonda era nascosta una macchina del tempo.
 notes_it: >-
-  {{最|さい}}{{深|しん}}{{部|ぶ}} significa parte più profonda. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  L'uso del prefisso {{最|さい}}- (sai) crea dei superlativi assoluti naturali (es. {{最|さい}}{{高|こう}} il migliore, {{最|さい}}{{終|しゅう}} l'ultimo). Aggiungendo il suffisso -{{部|ぶ}} si identifica la zona ultima e irraggiungibile di un'area.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::
 :::card
@@ -256,13 +265,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-shigoto
 card_type: recognition
-front: '{{仕|し}}{{事|ごと}}'
-back: 'しごと — lavoro'
+front: '{{仕|し}}{{事|ごと}} / しごと'
+back: >-
+  しごと — lavoro Sostantivo generale per 'lavoro' come professione o 'incarico' temporaneo. Si applica sia al lavoro d'ufficio sia a compiti specifici nel gioco.
 example_jp: >-
-  {{仕|し}}{{事|ごと}}が ある。
+  ジムリーダーの {{仕|し}}{{事|ごと}}は チャレンジャーの {{実|じつ}}{{力|りょく}}を {{試|ため}}す こと です。
 example_it: >-
-  C’è lavoro.
+  Il lavoro di un Capopalestra è mettere alla prova le capacità degli sfidanti.
 notes_it: >-
-  {{仕|し}}{{事|ごと}} significa lavoro. Nel materiale di Scarlet / Violet ricorre 14 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Composto da {{仕|し}} (servire, fare) e {{事|ごと}} (faccenda, cosa). In giapponese le mansioni lavorative si 'fanno' usando il verbo する ({{仕|し}}{{事|ごと}}をする). Viene usato spessissimo da personaggi (come il Capopalestra Ubaldo/Larry) che concepiscono la lotta come un semplice impiego.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::

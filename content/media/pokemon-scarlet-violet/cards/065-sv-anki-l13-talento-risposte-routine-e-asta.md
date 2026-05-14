@@ -13,7 +13,7 @@ reading: さいのう
 romaji: sainou
 meaning_it: talento
 notes_it: >-
-  {{才|さい}}{{能|のう}} significa talento. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{才|さい}}{{能|のう}} indica una predisposizione innata o un talento naturale per un'attività. Prende la particella が quando si descrive la sua presenza ({{才|さい}}{{能|のう}}がある) o l'assenza ({{才|さい}}{{能|のう}}がない).
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: つかえる
 romaji: tsukaeru
 meaning_it: essere usabile; saper usare
 notes_it: >-
-  {{使|つか}}える significa essere usabile; saper usare. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  {{使|つか}}える è la forma potenziale di {{使|つか}}う, ma nel parlato informale può anche voler dire “essere utile”. Con に si marca il bersaglio o destinatario dell'uso, come in ポケモンに{{使|つか}}える.
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: にる
 romaji: niru
 meaning_it: assomigliare
 notes_it: >-
-  {{似|に}}る significa assomigliare. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{似|に}}る esprime la somiglianza. La persona o la cosa a cui si assomiglia prende sempre la particella に ({{君|きみ}}に). Per descrivere uno stato attuale di somiglianza, si usa tipicamente la forma in -ている ({{似|に}}ている).
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: だんかい
 romaji: dankai
 meaning_it: fase; livello
 notes_it: >-
-  {{段|だん}}{{階|かい}} significa fase; livello. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{段|だん}}{{階|かい}} si usa per contare o indicare fasi e stadi di un processo. Nel contesto delle lotte, indica il numero di livelli (o "stadi") di cui aumenta o diminuisce una statistica.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: こたえる
 romaji: kotaeru
 meaning_it: rispondere
 notes_it: >-
-  {{答|こた}}える significa rispondere. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{答|こた}}える significa rispondere a voce o per iscritto a una domanda. L'elemento a cui si risponde (un quiz, una domanda, una persona) prende come bersaglio dell'azione la particella に (クイズに{{答|こた}}える).
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: かれ
 romaji: kare
 meaning_it: lui; fidanzato
 notes_it: >-
-  {{彼|かれ}} significa lui; fidanzato. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{彼|かれ}} funge da pronome per "lui", tipico del giapponese scritto o parlato formale. Nella vita reale può anche significare "fidanzato", ma in un gioco di ruolo si usa soprattutto per indicare un personaggio maschile.
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: まいにち
 romaji: mainichi
 meaning_it: ogni giorno
 notes_it: >-
-  {{毎|まい}}{{日|にち}} significa ogni giorno. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{毎|まい}}{{日|にち}} è una parola temporale che non richiede l'aggiunta di particelle grammaticali (come に) per specificare il tempo dell'azione. Si usa per esprimere una routine forte e costante.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: らくさつ
 romaji: rakusatsu
 meaning_it: aggiudicazione; asta vinta
 notes_it: >-
-  Vuol dire aggiudicarsi un oggetto all'asta: la scelta è finita e il prezzo vincente è stato accettato.
+  {{落|らく}}{{札|さつ}} è il termine commerciale per indicare l'accettazione e la vittoria di un'offerta a un'asta ({{競|せ}}り). A Porto Marinada è il verbo chiave per confermare che hai ottenuto l'oggetto in palio.
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: ほこら
 romaji: hokora
 meaning_it: piccolo santuario
 notes_it: >-
-  {{祠|ほこら}} significa piccolo santuario. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{祠|ほこら}} indica i piccoli santuari che si trovano isolati nella natura rispetto ai grandi Jinja ({{神|じん}}{{社|じゃ}}). Nel contesto di Paldea, è la parola specifica usata per descrivere i sigilli dei Pokémon nefasti.
 level_hint: custom
 :::
 :::term
@@ -103,7 +103,7 @@ reading: ピーピー
 romaji: piipii
 meaning_it: PP, Punti Potenza
 notes_it: >-
-  PP è la risorsa delle mosse: quando scende a zero, quella mossa non può più essere usata.
+  ＰＰ è un prestito dall'inglese "Power Points". Le sigle o le lettere occidentali nell'interfaccia giapponese si trovano spesso a larghezza intera (fullwidth) e sfruttano il furigana per standardizzare la pronuncia ai giocatori locali.
 level_hint: custom
 :::
 :::card
@@ -112,14 +112,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-sainou
 card_type: recognition
-front: '{{才|さい}}{{能|のう}}'
-back: 'さいのう — talento'
+front: '{{才|さい}}{{能|のう}} / さいのう'
+back: >-
+  さいのう — talento; capacità innata. Si usa tipicamente con ある o ない per indicarne la presenza.
 example_jp: >-
-  {{才|さい}}{{能|のう}}が ある。
+  バトルには {{才|さい}}{{能|のう}}が {{必|ひつ}}{{要|よう}}ですか？
 example_it: >-
-  C’è talento.
+  Serve talento per le lotte?
 notes_it: >-
-  {{才|さい}}{{能|のう}} significa talento. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{才|さい}}{{能|のう}} indica una predisposizione innata o un talento naturale per un'attività. Prende la particella が quando si descrive la sua presenza ({{才|さい}}{{能|のう}}がある) o l'assenza ({{才|さい}}{{能|のう}}がない).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::
 :::card
@@ -128,14 +129,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-tsukaeru
 card_type: recognition
-front: '{{使|つか}}える'
-back: 'つかえる — essere usabile; saper usare'
+front: '{{使|つか}}える / つかえる'
+back: >-
+  つかえる — essere usabile; essere utile. Forma potenziale di {{使|つか}}う (usare), si usa spesso per dire che un oggetto "torna utile".
 example_jp: >-
-  それは {{使|つか}}える。
+  このどうぐは いろんなポケモンに {{使|つか}}えるね。
 example_it: >-
-  È essere usabile; saper usare.
+  Questo strumento può essere usato su vari Pokémon, vero.
 notes_it: >-
-  {{使|つか}}える significa essere usabile; saper usare. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  {{使|つか}}える è la forma potenziale di {{使|つか}}う, ma nel parlato informale può anche voler dire “essere utile”. Con に si marca il bersaglio o destinatario dell'uso, come in ポケモンに{{使|つか}}える.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::
 :::card
@@ -144,14 +146,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-niru
 card_type: recognition
-front: '{{似|に}}る'
-back: 'にる — assomigliare'
+front: '{{似|に}}る / にる'
+back: >-
+  にる — assomigliare. Prende に per indicare a chi o cosa si somiglia, spesso usato nello stato progressivo ({{似|に}}ている).
 example_jp: >-
-  {{似|に}}る ことが ある。
+  このポケモンは トレーナーに {{似|に}}るって よく {{言|い}}われるよ。
 example_it: >-
-  A volte capita di assomigliare.
+  Si dice spesso che questo Pokémon assomigli al suo Allenatore.
 notes_it: >-
-  {{似|に}}る significa assomigliare. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{似|に}}る esprime la somiglianza. La persona o la cosa a cui si assomiglia prende sempre la particella に ({{君|きみ}}に). Per descrivere uno stato attuale di somiglianza, si usa tipicamente la forma in -ている ({{似|に}}ている).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::
 :::card
@@ -160,14 +163,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-dankai
 card_type: recognition
-front: '{{段|だん}}{{階|かい}}'
-back: 'だんかい — fase; livello'
+front: '{{段|だん}}{{階|かい}} / だんかい'
+back: >-
+  だんかい — fase; stadio; livello. Si usa per descrivere un grado o lo step di un processo in evoluzione.
 example_jp: >-
-  {{段|だん}}{{階|かい}}が ある。
+  ポケモンの こうげきが {{2|ふた}}{{段|だん}}{{階|かい}} {{上|あ}}がった！
 example_it: >-
-  C’è fase; livello.
+  L'Attacco del Pokémon è salito di due livelli!
 notes_it: >-
-  {{段|だん}}{{階|かい}} significa fase; livello. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{段|だん}}{{階|かい}} si usa per contare o indicare fasi e stadi di un processo. Nel contesto delle lotte, indica il numero di livelli (o "stadi") di cui aumenta o diminuisce una statistica.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::
 :::card
@@ -176,14 +180,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-kotaeru
 card_type: recognition
-front: '{{答|こた}}える'
-back: 'こたえる — rispondere'
+front: '{{答|こた}}える / こたえる'
+back: >-
+  こたえる — rispondere. L'elemento a cui si risponde (un test, una persona) è marcato dalla particella に.
 example_jp: >-
-  {{答|こた}}える ことが ある。
+  アカデミーの クイズに {{答|こた}}えると、{{先|せん}}{{生|せい}}が ほめてくれるよ。
 example_it: >-
-  A volte capita di rispondere.
+  Se rispondi al quiz dell'Accademia, l'insegnante ti farà i complimenti.
 notes_it: >-
-  {{答|こた}}える significa rispondere. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{答|こた}}える significa rispondere a voce o per iscritto a una domanda. L'elemento a cui si risponde (un quiz, una domanda, una persona) prende come bersaglio dell'azione la particella に (クイズに{{答|こた}}える).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::
 :::card
@@ -192,14 +197,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-kare
 card_type: recognition
-front: '{{彼|かれ}}'
-back: 'かれ — lui; fidanzato'
+front: '{{彼|かれ}} / かれ'
+back: >-
+  かれ — lui; il suo ({{彼|かれ}}の). Pronome maschile di terza persona, usato per riferirsi a qualcuno non presente nella conversazione diretta.
 example_jp: >-
-  {{彼|かれ}}が いる。
+  {{彼|かれ}}は アカデミーの {{先|せん}}{{生|せい}}だ。
 example_it: >-
-  C’è lui; fidanzato.
+  Lui è un professore dell'Accademia.
 notes_it: >-
-  {{彼|かれ}} significa lui; fidanzato. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{彼|かれ}} funge da pronome per "lui", tipico del giapponese scritto o parlato formale. Nella vita reale può anche significare "fidanzato", ma in un gioco di ruolo si usa soprattutto per indicare un personaggio maschile.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::
 :::card
@@ -208,14 +214,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-mainichi
 card_type: recognition
-front: '{{毎|まい}}{{日|にち}}'
-back: 'まいにち — ogni giorno'
+front: '{{毎|まい}}{{日|にち}} / まいにち'
+back: >-
+  まいにち — ogni giorno. Avverbio temporale che si posiziona liberamente senza richiedere particelle per agganciarsi al verbo.
 example_jp: >-
-  {{毎|まい}}{{日|にち}}、ネモが きた。
+  ぼくは {{毎|まい}}{{日|にち}} ポケモンと あそんでいるよ。
 example_it: >-
-  ogni giorno: Nemona è arrivata.
+  Io gioco ogni giorno con i Pokémon.
 notes_it: >-
-  {{毎|まい}}{{日|にち}} significa ogni giorno. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{毎|まい}}{{日|にち}} è una parola temporale che non richiede l'aggiunta di particelle grammaticali (come に) per specificare il tempo dell'azione. Si usa per esprimere una routine forte e costante.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::
 :::card
@@ -224,14 +231,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-rakusatsu
 card_type: recognition
-front: '{{落|らく}}{{札|さつ}}'
-back: 'らくさつ — aggiudicazione; asta vinta'
+front: '{{落|らく}}{{札|さつ}} / らくさつ'
+back: >-
+  らくさつ — aggiudicazione; asta vinta. Verbo suru o sostantivo che indica l'atto di essersi aggiudicati un oggetto all'asta.
 example_jp: >-
-  {{落|らく}}{{札|さつ}}に さんかする。
+  みごと アイテムを {{落|らく}}{{札|さつ}}した！
 example_it: >-
-  Partecipi alla procedura dell'asta.
+  Ti sei brillantemente aggiudicato lo strumento!
 notes_it: >-
-  Vuol dire aggiudicarsi un oggetto all'asta: la scelta è finita e il prezzo vincente è stato accettato.
+  {{落|らく}}{{札|さつ}} è il termine commerciale per indicare l'accettazione e la vittoria di un'offerta a un'asta ({{競|せ}}り). A Porto Marinada è il verbo chiave per confermare che hai ottenuto l'oggetto in palio.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::
 :::card
@@ -240,14 +248,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-hokora
 card_type: recognition
-front: '{{祠|ほこら}}'
-back: 'ほこら — piccolo santuario'
+front: '{{祠|ほこら}} / ほこら'
+back: >-
+  ほこら — piccolo santuario; tempietto. Struttura in legno o pietra, usata a Paldea per i santuari dei Pokémon leggendari.
 example_jp: >-
-  {{祠|ほこら}}が ある。
+  パルデアの どこかに あやしい {{祠|ほこら}}が あるらしい。
 example_it: >-
-  C’è piccolo santuario.
+  Sembra che da qualche parte a Paldea ci sia un santuario misterioso.
 notes_it: >-
-  {{祠|ほこら}} significa piccolo santuario. Nel materiale di Scarlet / Violet ricorre 13 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{祠|ほこら}} indica i piccoli santuari che si trovano isolati nella natura rispetto ai grandi Jinja ({{神|じん}}{{社|じゃ}}). Nel contesto di Paldea, è la parola specifica usata per descrivere i sigilli dei Pokémon nefasti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::
 :::card
@@ -256,13 +265,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-piipii
 card_type: recognition
-front: '{{Ｐ|ピー}}{{Ｐ|ピー}}'
-back: 'ピーピー — PP, Punti Potenza'
+front: '{{Ｐ|ピー}}{{Ｐ|ピー}} / ピーピー'
+back: >-
+  ピーピー — PP, Punti Potenza. Sigla dell'interfaccia usata per gestire gli utilizzi rimanenti delle mosse.
 example_jp: >-
-  {{Ｐ|ピー}}{{Ｐ|ピー}}が たりない。
+  わざの {{Ｐ|ピー}}{{Ｐ|ピー}}が たりなくて {{使|つか}}えない！
 example_it: >-
-  Non hai abbastanza PP, Punti Potenza.
+  I PP della mossa non bastano e non puoi usarla!
 notes_it: >-
-  PP è la risorsa delle mosse: quando scende a zero, quella mossa non può più essere usata.
+  ＰＰ è un prestito dall'inglese "Power Points". Le sigle o le lettere occidentali nell'interfaccia giapponese si trovano spesso a larghezza intera (fullwidth) e sfruttano il furigana per standardizzare la pronuncia ai giocatori locali.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::

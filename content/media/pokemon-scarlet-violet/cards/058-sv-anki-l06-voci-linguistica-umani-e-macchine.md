@@ -13,7 +13,7 @@ reading: うわさ
 romaji: uwasa
 meaning_it: voce; rumor
 notes_it: >-
-  {{噂|うわさ}} significa voce; rumor. Nel materiale di Scarlet / Violet ricorre 22 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{噂|うわさ}} indica una diceria, una voce che circola. Si associa frequentemente al verbo {{聞|き}}く per "sentire una voce" o {{流|なが}}れる per una voce che "gira".
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: げんごがく
 romaji: gengogaku
 meaning_it: linguistica
 notes_it: >-
-  {{言|げん}}{{語|ご}}{{学|がく}} significa linguistica. Nel materiale di Scarlet / Violet ricorre 22 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Composto da {{言|げん}}{{語|ご}} (lingua/linguaggio) e il suffisso {{学|まな}} (studio/scienza). Nel contesto dell'Accademia, indica le lezioni di lingue impartite da professori come セイジ (Zim).
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: し
 romaji: shi
 meaning_it: signor; sig.
 notes_it: >-
-  {{氏|し}} significa signor; sig. Nel materiale di Scarlet / Violet ricorre 22 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Il suffisso {{氏|し}} crea distanza formale: è più rigido di さん e suona adatto a comunicazioni ufficiali, resoconti o riferimenti a persone con un ruolo pubblico.
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: あがる
 romaji: agaru
 meaning_it: salire; aumentare
 notes_it: >-
-  {{上|あ}}がる significa salire; aumentare. Nel materiale di Scarlet / Violet ricorre 21 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{上|あ}}がる presenta il cambiamento dal punto di vista della cosa che sale o aumenta: la statistica prende が. Con {{上|あ}}げる, invece, il parlante mette in primo piano chi alza o aumenta qualcosa.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: くう
 romaji: kuu
 meaning_it: mangiare, colloquiale/ruvido
 notes_it: >-
-  {{食|く}}う significa mangiare, colloquiale/ruvido. Nel materiale di Scarlet / Violet ricorre 21 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{食|く}}う può suonare grezzo, diretto o famelico. Rispetto a {{食|た}}べる, abbassa molto il registro e caratterizza il parlante come informale o poco raffinato.
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: しんじる
 romaji: shinjiru
 meaning_it: credere; fidarsi
 notes_it: >-
-  {{信|しん}}じる significa credere; fidarsi. Nel materiale di Scarlet / Violet ricorre 21 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  A differenza di {{思|おも}}う (pensare/credere nel senso di opinione), {{信|しん}}じる implica un atto di fede o fiducia profonda verso qualcuno o qualcosa.
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: にんげん
 romaji: ningen
 meaning_it: essere umano
 notes_it: >-
-  {{人|にん}}{{間|げん}} significa essere umano. Nel materiale di Scarlet / Violet ricorre 21 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola unisce {{人|ひと}} (persona) e {{間|あいだ}} (spazio/tra), indicando l'umanità nel suo complesso o l'individuo in quanto specie. È una parola chiave nella lore del mondo Pokémon per delineare il rapporto tra le due specie coabitanti.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: かいさん
 romaji: kaisan
 meaning_it: scioglimento; sciogliersi
 notes_it: >-
-  {{解|かい}}{{散|さん}} significa scioglimento; sciogliersi. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Un termine che sentirai spesso da direttori o insegnanti. Ordina a un gruppo radunato di disperdersi o dichiara la fine di un'attività. Da non confondere con la distruzione fisica di qualcosa.
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: たのしみ
 romaji: tanoshimi
 meaning_it: piacere; cosa attesa con gioia
 notes_it: >-
-  {{楽|たの}}しみ significa piacere; cosa attesa con gioia. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Deriva dall'aggettivo {{楽|たの}}しい (divertente/piacevole), trasformato in sostantivo. La forma {{楽|たの}}しみにする significa letteralmente "fare di qualcosa la propria gioia", traducibile come "non vedere l'ora".
 level_hint: custom
 :::
 :::term
@@ -103,7 +103,7 @@ reading: きかい
 romaji: kikai
 meaning_it: macchina; meccanismo
 notes_it: >-
-  {{機|き}}{{械|かい}} significa macchina; meccanismo. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{機|き}}{{械|かい}} indica una macchina o apparecchiatura con meccanismi interni. In parole come タイムマシン, il giapponese può usare il prestito マシン per il nome specifico e {{機|き}}{{械|かい}} per descriverne la natura di macchinario.
 level_hint: custom
 :::
 :::card
@@ -112,14 +112,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-uwasa
 card_type: recognition
-front: '{{噂|うわさ}}'
-back: 'うわさ — voce; rumor'
+front: '{{噂|うわさ}} / うわさ'
+back: >-
+  うわさ — voce; diceria. Si usa con particelle come が per indicare l'esistenza della voce ({{噂|うわさ}}がある) o を per riceverla/sentirla ({{噂|うわさ}}を{{聞|き}}く).
 example_jp: >-
-  {{噂|うわさ}}が ある。
+  あの ポケモンの {{噂|うわさ}}、 {{本|ほん}}{{当|とう}} だったんだ！
 example_it: >-
-  C’è voce; rumor.
+  Le voci su quel Pokémon erano vere!
 notes_it: >-
-  {{噂|うわさ}} significa voce; rumor. Nel materiale di Scarlet / Violet ricorre 22 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola {{噂|うわさ}} indica una diceria, una voce che circola. Si associa frequentemente al verbo {{聞|き}}く per "sentire una voce" o {{流|なが}}れる per una voce che "gira".
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::
 :::card
@@ -128,14 +129,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-gengogaku
 card_type: recognition
-front: '{{言|げん}}{{語|ご}}{{学|がく}}'
-back: 'げんごがく — linguistica'
+front: '{{言|げん}}{{語|ご}}{{学|がく}} / げんごがく'
+back: >-
+  げんごがく — linguistica. È una materia di studio e si abbina a verbi come “studiare/imparare”; con la particella の modifica un nome, come in una “lezione di linguistica”.
 example_jp: >-
-  {{言|げん}}{{語|ご}}{{学|がく}}が ある。
+  セイジ{{先|せん}}{{生|せい}}の {{言|げん}}{{語|ご}}{{学|がく}}の {{授|じゅ}}{{業|ぎょう}}は おもしろい ですよ。
 example_it: >-
-  C’è linguistica.
+  Le lezioni di linguistica del professor Zim sono interessanti.
 notes_it: >-
-  {{言|げん}}{{語|ご}}{{学|がく}} significa linguistica. Nel materiale di Scarlet / Violet ricorre 22 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Composto da {{言|げん}}{{語|ご}} (lingua/linguaggio) e il suffisso {{学|まな}} (studio/scienza). Nel contesto dell'Accademia, indica le lezioni di lingue impartite da professori come セイジ (Zim).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::
 :::card
@@ -144,14 +146,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-shi
 card_type: recognition
-front: '{{氏|し}}'
-back: 'し — signor; sig.'
+front: '{{氏|し}} / し'
+back: >-
+  し — signor; sig. È un suffisso onorifico formale, spesso usato nei notiziari, nei documenti ufficiali o per indicare figure professionali autorevoli.
 example_jp: >-
-  サワロ{{氏|し}}が いる。
+  クラベル{{氏|し}}から {{連|れん}}{{絡|らく}}が ありました。
 example_it: >-
-  C’è il signor Saguaro.
+  È arrivata una comunicazione dal signor Clavel.
 notes_it: >-
-  {{氏|し}} significa signor; sig. Nel materiale di Scarlet / Violet ricorre 22 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Il suffisso {{氏|し}} crea distanza formale: è più rigido di さん e suona adatto a comunicazioni ufficiali, resoconti o riferimenti a persone con un ruolo pubblico.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::
 :::card
@@ -160,14 +163,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-agaru
 card_type: recognition
-front: '{{上|あ}}がる'
-back: 'あがる — salire; aumentare'
+front: '{{上|あ}}がる / あがる'
+back: >-
+  あがる — salire; aumentare. Verbo intransitivo (prende が); indica un innalzamento di livello, posizione o stat. Contrasta con l'azione transitiva {{上|あ}}げる (alzare qualcosa).
 example_jp: >-
-  {{上|あ}}がる ことが ある。
+  これを {{使|つか}}うと、 ポケモンの こうげきが {{上|あ}}がる。
 example_it: >-
-  A volte capita di salire; aumentare.
+  Se usi questo, l'Attacco del Pokémon sale.
 notes_it: >-
-  {{上|あ}}がる significa salire; aumentare. Nel materiale di Scarlet / Violet ricorre 21 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{上|あ}}がる presenta il cambiamento dal punto di vista della cosa che sale o aumenta: la statistica prende が. Con {{上|あ}}げる, invece, il parlante mette in primo piano chi alza o aumenta qualcosa.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::
 :::card
@@ -176,14 +180,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-kuu
 card_type: recognition
-front: '{{食|く}}う'
-back: 'くう — mangiare, colloquiale/ruvido'
+front: '{{食|く}}う / くう'
+back: >-
+  くう — mangiare. È una variante colloquiale e ruvida di {{食|た}}べる; si usa con を per l'oggetto consumato, come in サンドウィッチを{{食|く}}う.
 example_jp: >-
-  {{食|く}}う ことが ある。
+  おれも その サンドウィッチ、 {{食|く}}う ぞ！
 example_it: >-
-  A volte capita di mangiare, colloquiale/ruvido.
+  Lo mangio anch'io quel sandwich!
 notes_it: >-
-  {{食|く}}う significa mangiare, colloquiale/ruvido. Nel materiale di Scarlet / Violet ricorre 21 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{食|く}}う può suonare grezzo, diretto o famelico. Rispetto a {{食|た}}べる, abbassa molto il registro e caratterizza il parlante come informale o poco raffinato.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::
 :::card
@@ -192,14 +197,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-shinjiru
 card_type: recognition
-front: '{{信|しん}}じる'
-back: 'しんじる — credere; fidarsi'
+front: '{{信|しん}}じる / しんじる'
+back: >-
+  しんじる — credere; fidarsi. Si usa con を per indicare la persona o la cosa in cui si ripone fiducia (ポケモンを{{信|しん}}じる).
 example_jp: >-
-  {{信|しん}}じる ことが ある。
+  おれは {{自|じ}}{{分|ぶん}}の ポケモンを {{信|しん}}じる！
 example_it: >-
-  A volte capita di credere; fidarsi.
+  Credo nei miei Pokémon!
 notes_it: >-
-  {{信|しん}}じる significa credere; fidarsi. Nel materiale di Scarlet / Violet ricorre 21 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  A differenza di {{思|おも}}う (pensare/credere nel senso di opinione), {{信|しん}}じる implica un atto di fede o fiducia profonda verso qualcuno o qualcosa.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::
 :::card
@@ -208,14 +214,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-ningen
 card_type: recognition
-front: '{{人|にん}}{{間|げん}}'
-back: 'にんげん — essere umano'
+front: '{{人|にん}}{{間|げん}} / にんげん'
+back: >-
+  にんげん — essere umano. Spesso usato in contrapposizione ad altre specie, come i Pokémon ({{人|にん}}{{間|げん}}とポケモン).
 example_jp: >-
-  {{人|にん}}{{間|げん}}が いる。
+  ポケモンと {{人|にん}}{{間|げん}}は ずっと {{助|たす}}け{{合|あ}}って きました。
 example_it: >-
-  C’è un essere umano.
+  Pokémon ed esseri umani si sono sempre aiutati a vicenda.
 notes_it: >-
-  {{人|にん}}{{間|げん}} significa essere umano. Nel materiale di Scarlet / Violet ricorre 21 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La parola unisce {{人|ひと}} (persona) e {{間|あいだ}} (spazio/tra), indicando l'umanità nel suo complesso o l'individuo in quanto specie. È una parola chiave nella lore del mondo Pokémon per delineare il rapporto tra le due specie coabitanti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::
 :::card
@@ -224,14 +231,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-kaisan
 card_type: recognition
-front: '{{解|かい}}{{散|さん}}'
-back: 'かいさん — scioglimento; sciogliersi'
+front: '{{解|かい}}{{散|さん}} / かいさん'
+back: >-
+  かいさん — scioglimento; congedo. Usato per indicare la fine di una riunione o di un raggruppamento temporaneo (es. una classe o un team). Si usa spesso come esclamazione o col verbo する.
 example_jp: >-
-  {{解|かい}}{{散|さん}}が ある。
+  {{今日|きょう}}の {{授|じゅ}}{{業|ぎょう}}は これで {{終|お}}わりです。 {{解|かい}}{{散|さん}}！
 example_it: >-
-  C’è scioglimento; sciogliersi.
+  La lezione di oggi finisce qui. Siete liberi di andare!
 notes_it: >-
-  {{解|かい}}{{散|さん}} significa scioglimento; sciogliersi. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Un termine che sentirai spesso da direttori o insegnanti. Ordina a un gruppo radunato di disperdersi o dichiara la fine di un'attività. Da non confondere con la distruzione fisica di qualcosa.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::
 :::card
@@ -240,14 +248,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-tanoshimi
 card_type: recognition
-front: '{{楽|たの}}しみ'
-back: 'たのしみ — piacere; cosa attesa con gioia'
+front: '{{楽|たの}}しみ / たのしみ'
+back: >-
+  たのしみ — piacere; attesa gioiosa. Spesso si usa per esprimere entusiasmo per un evento futuro (バトルが{{楽|たの}}しみだ).
 example_jp: >-
-  {{楽|たの}}しみが ある。
+  {{次|つぎ}}の ジム{{戦|せん}}、 とても {{楽|たの}}しみに しています。
 example_it: >-
-  C’è piacere; cosa attesa con gioia.
+  Non vedo l'ora di affrontare la prossima lotta in Palestra.
 notes_it: >-
-  {{楽|たの}}しみ significa piacere; cosa attesa con gioia. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Deriva dall'aggettivo {{楽|たの}}しい (divertente/piacevole), trasformato in sostantivo. La forma {{楽|たの}}しみにする significa letteralmente "fare di qualcosa la propria gioia", traducibile come "non vedere l'ora".
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::
 :::card
@@ -256,13 +265,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-kikai
 card_type: recognition
-front: '{{機|き}}{{械|かい}}'
-back: 'きかい — macchina; meccanismo'
+front: '{{機|き}}{{械|かい}} / きかい'
+back: >-
+  きかい — macchina; apparecchiatura meccanica. Si differenzia da {{道|どう}}{{具|ぐ}} (strumento manuale) perché implica componenti interni complessi e spesso alimentazione elettrica o futuristica.
 example_jp: >-
-  {{機|き}}{{械|かい}}が ある。
+  タイムマシンは とても {{複|ふく}}{{雑|ざつ}}な {{機|き}}{{械|かい}} です。
 example_it: >-
-  C’è macchina; meccanismo.
+  La macchina del tempo è un meccanismo molto complesso.
 notes_it: >-
-  {{機|き}}{{械|かい}} significa macchina; meccanismo. Nel materiale di Scarlet / Violet ricorre 20 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{機|き}}{{械|かい}} indica una macchina o apparecchiatura con meccanismi interni. In parole come タイムマシン, il giapponese può usare il prestito マシン per il nome specifico e {{機|き}}{{械|かい}} per descriverne la natura di macchinario.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::

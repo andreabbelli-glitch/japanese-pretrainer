@@ -13,7 +13,7 @@ reading: つかれる
 romaji: tsukareru
 meaning_it: stancarsi
 notes_it: >-
-  {{疲|つか}}れる significa stancarsi. Nel materiale di Scarlet / Violet ricorre 24 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{疲|つか}}れる indica l'esaurimento fisico o mentale. Essendo un verbo intransitivo, il soggetto che subisce la stanchezza prende la particella が. A differenza dell'italiano, si incontra spesso nella forma passata ({{疲|つか}}れた) come stato acquisito.
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: ほうこく
 romaji: houkoku
 meaning_it: rapporto; segnalazione
 notes_it: >-
-  {{報|ほう}}{{告|こく}} significa rapporto; segnalazione. Nel materiale di Scarlet / Violet ricorre 24 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{報|ほう}}{{告|こく}} indica un resoconto ufficiale, tipico di contesti lavorativi o scolastici. È un sostantivo che forma il verbo con する; la persona a cui si fa rapporto è spesso marcata da に.
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: みなさん
 romaji: minasan
 meaning_it: tutti; voi tutti
 notes_it: >-
-  {{皆|みな}}さん significa tutti; voi tutti. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{皆|みな}}さん è un modo cortese per rivolgersi a un gruppo di persone. Rispetto a みんな, l'aggiunta del suffisso onorifico さん eleva il registro, rendendolo adatto ai discorsi pubblici, come gli annunci del preside o le lezioni dei professori.
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: まなぶ
 romaji: manabu
 meaning_it: imparare; studiare
 notes_it: >-
-  {{学|まな}}ぶ significa imparare; studiare. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{学|まな}}ぶ indica l'apprendimento, spesso sotto la guida di un insegnante o tratto dall'esperienza diretta. A differenza di {{勉|べん}}{{強|きょう}}する (studiare, applicarsi con sforzo), pone più enfasi sull'atto di assimilare una nuova conoscenza. Il contenuto appreso prende を.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: きになる
 romaji: kininaru
 meaning_it: incuriosire; preoccupare
 notes_it: >-
-  {{気|き}}になる significa incuriosire; preoccupare. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{気|き}}になる descrive qualcosa che cattura l'attenzione senza volerlo: può essere curiosità, apprensione o preoccupazione. La cosa che interessa prende が, mentre chi prova l'interesse spesso resta implicito o viene marcato da は.
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: あなた
 romaji: anata
 meaning_it: tu, forma scritta/formale
 notes_it: >-
-  {{貴方|あなた}} significa tu, forma scritta/formale. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{貴方|あなた}} è un pronome di seconda persona relativamente distaccato. Nel parlato giapponese spesso è più naturale usare il nome o il titolo dell'interlocutore; quando compare, può creare un tono neutro-formale o segnare distanza sociale.
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: きさま
 romaji: kisama
 meaning_it: tu, forma rude/offensiva
 notes_it: >-
-  {{貴|き}}{{様|さま}} significa tu, forma rude/offensiva. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Nonostante i kanji di origine onorifica ({{貴|き}} 'nobile', {{様|さま}} 'signore'), {{貴|き}}{{様|さま}} è oggi un pronome di seconda persona estremamente volgare e dispregiativo. A Paldea si incontra sulla bocca di antagonisti arrabbiati (come le reclute del Team Star) e serve a marcare una rottura violenta della cortesia.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: わざわい
 romaji: wazawai
 meaning_it: disgrazia; calamità
 notes_it: >-
-  {{災|わざわ}}い significa disgrazia; calamità. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{災|わざわ}}い si riferisce a disastri, maledizioni o calamità epocali, distinguendosi da normali incidenti quotidiani (come {{事|じ}}{{故|こ}}). Nel mondo di Scarlet e Violet, si lega profondamente al folklore e alle leggende antiche (come per i Pokémon Rovina).
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: しょうせい
 romaji: shousei
 meaning_it: io, umile/letterario
 notes_it: >-
-  {{小|しょう}}{{生|せい}} significa io, umile/letterario. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{小|しょう}}{{生|せい}} (letteralmente 'piccola vita') è un pronome di prima persona estremamente formale e antiquato. Viene usato esclusivamente da uomini colti per mostrarsi umili davanti a un interlocutore. A Paldea, è il tratto linguistico che caratterizza l'eloquio artistico e compassato del professor Hassaku.
 level_hint: custom
 :::
 :::term
@@ -103,7 +103,7 @@ reading: ただしい
 romaji: tadashii
 meaning_it: corretto; giusto
 notes_it: >-
-  {{正|ただ}}しい significa corretto; giusto. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  L'aggettivo in い {{正|ただ}}しい indica ciò che è corretto, esatto o conforme a una regola. Nei contesti scolastici segnala la risposta giusta; nei dialoghi può anche valutare se una decisione è giusta.
 level_hint: custom
 :::
 :::card
@@ -112,14 +112,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-tsukareru
 card_type: recognition
-front: '{{疲|つか}}れる'
-back: 'つかれる — stancarsi'
+front: '{{疲|つか}}れる / つかれる'
+back: >-
+  つかれる — stancarsi; verbo intransitivo, il soggetto che si stanca prende が. Si usa spesso al passato per indicare uno stato di stanchezza acquisito.
 example_jp: >-
-  {{疲|つか}}れる ことが ある。
+  ポケモンがバトルで{{疲|つか}}れると、センターで{{休|やす}}ませたくなる。
 example_it: >-
-  A volte capita di stancarsi.
+  Quando un Pokémon si stanca in battaglia, viene voglia di farlo riposare al Centro.
 notes_it: >-
-  {{疲|つか}}れる significa stancarsi. Nel materiale di Scarlet / Violet ricorre 24 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Il verbo {{疲|つか}}れる indica l'esaurimento fisico o mentale. Essendo un verbo intransitivo, il soggetto che subisce la stanchezza prende la particella が. A differenza dell'italiano, si incontra spesso nella forma passata ({{疲|つか}}れた) come stato acquisito.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card
@@ -128,14 +129,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-houkoku
 card_type: recognition
-front: '{{報|ほう}}{{告|こく}}'
-back: 'ほうこく — rapporto; segnalazione'
+front: '{{報|ほう}}{{告|こく}} / ほうこく'
+back: >-
+  ほうこく — rapporto; segnalazione; sostantivo verbale (する) per resoconti formali. Il destinatario del rapporto prende に.
 example_jp: >-
-  {{報|ほう}}{{告|こく}}が ある。
+  クラベル{{校長|こうちょう}}への{{報|ほう}}{{告|こく}}は{{済|す}}んだか？
 example_it: >-
-  C’è rapporto; segnalazione.
+  Hai già fatto rapporto al preside Clavel?
 notes_it: >-
-  {{報|ほう}}{{告|こく}} significa rapporto; segnalazione. Nel materiale di Scarlet / Violet ricorre 24 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{報|ほう}}{{告|こく}} indica un resoconto ufficiale, tipico di contesti lavorativi o scolastici. È un sostantivo che forma il verbo con する; la persona a cui si fa rapporto è spesso marcata da に.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card
@@ -144,14 +146,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-minasan
 card_type: recognition
-front: '{{皆|みな}}さん'
-back: 'みなさん — tutti; voi tutti'
+front: '{{皆|みな}}さん / みなさん'
+back: >-
+  みなさん — tutti; voi tutti; espressione formale per rivolgersi a un gruppo, marca distanza sociale e rispetto con il suffisso さん.
 example_jp: >-
-  {{皆|みな}}さんが いる。
+  アカデミーの{{皆|みな}}さん、おはようございます！
 example_it: >-
-  C’è tutti; voi tutti.
+  Buongiorno a tutti voi dell'Accademia!
 notes_it: >-
-  {{皆|みな}}さん significa tutti; voi tutti. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{皆|みな}}さん è un modo cortese per rivolgersi a un gruppo di persone. Rispetto a みんな, l'aggiunta del suffisso onorifico さん eleva il registro, rendendolo adatto ai discorsi pubblici, come gli annunci del preside o le lezioni dei professori.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card
@@ -160,14 +163,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-manabu
 card_type: recognition
-front: '{{学|まな}}ぶ'
-back: 'まなぶ — imparare; studiare'
+front: '{{学|まな}}ぶ / まなぶ'
+back: >-
+  まなぶ — imparare; studiare; verbo transitivo che sottolinea l'assimilazione di conoscenze. La materia di studio prende を.
 example_jp: >-
-  {{学|まな}}ぶ ことが ある。
+  この{{授業|じゅぎょう}}ではポケモンの{{生態|せいたい}}について{{学|まな}}ぶ。
 example_it: >-
-  A volte capita di imparare; studiare.
+  In questa lezione impareremo a conoscere l'ecologia dei Pokémon.
 notes_it: >-
-  {{学|まな}}ぶ significa imparare; studiare. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{学|まな}}ぶ indica l'apprendimento, spesso sotto la guida di un insegnante o tratto dall'esperienza diretta. A differenza di {{勉|べん}}{{強|きょう}}する (studiare, applicarsi con sforzo), pone più enfasi sull'atto di assimilare una nuova conoscenza. Il contenuto appreso prende を.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card
@@ -176,14 +180,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-kininaru
 card_type: recognition
-front: '{{気|き}}になる'
-back: 'きになる — incuriosire; preoccupare'
+front: '{{気|き}}になる / きになる'
+back: >-
+  きになる — incuriosire; preoccupare; espressione idiomatica per un pensiero che si fissa in testa. La cosa che attira l'attenzione prende が.
 example_jp: >-
-  {{気|き}}になる ことが ある。
+  エリアゼロの{{底|そこ}}にあるものが、どうしても{{気|き}}になる。
 example_it: >-
-  A volte capita di incuriosire; preoccupare.
+  Non riesco proprio a togliermi dalla testa ciò che c'è sul fondo dell'Area Zero.
 notes_it: >-
-  {{気|き}}になる significa incuriosire; preoccupare. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{気|き}}になる descrive qualcosa che cattura l'attenzione senza volerlo: può essere curiosità, apprensione o preoccupazione. La cosa che interessa prende が, mentre chi prova l'interesse spesso resta implicito o viene marcato da は.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card
@@ -192,14 +197,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-anata
 card_type: recognition
-front: '{{貴方|あなた}}'
-back: 'あなた — tu, forma scritta/formale'
+front: '{{貴方|あなた}} / あなた'
+back: >-
+  あなた — tu (forma scritta/formale); pronome di seconda persona distaccato, usato in assenza di confidenza o in testi scritti formali.
 example_jp: >-
-  {{貴方|あなた}}が いる。
+  {{貴方|あなた}}のポケモン、とても{{強|つよ}}そうですね。
 example_it: >-
-  C’è tu, forma scritta/formale.
+  Il tuo Pokémon sembra davvero forte.
 notes_it: >-
-  {{貴方|あなた}} significa tu, forma scritta/formale. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{貴方|あなた}} è un pronome di seconda persona relativamente distaccato. Nel parlato giapponese spesso è più naturale usare il nome o il titolo dell'interlocutore; quando compare, può creare un tono neutro-formale o segnare distanza sociale.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card
@@ -208,14 +214,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-kisama
 card_type: recognition
-front: '{{貴|き}}{{様|さま}}'
-back: 'きさま — tu, forma rude/offensiva'
+front: '{{貴|き}}{{様|さま}} / きさま'
+back: >-
+  きさま — tu (forma rude/offensiva); pronome estremamente ostile e dispregiativo. Si usa per esprimere rabbia e aggressività.
 example_jp: >-
-  {{貴|き}}{{様|さま}}が いる。
+  {{貴|き}}{{様|さま}}、スター{{団|だん}}のジャマをする{{気|き}}か！
 example_it: >-
-  C’è tu, forma rude/offensiva.
+  Maledetto, hai intenzione di intralciare il Team Star?!
 notes_it: >-
-  {{貴|き}}{{様|さま}} significa tu, forma rude/offensiva. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Nonostante i kanji di origine onorifica ({{貴|き}} 'nobile', {{様|さま}} 'signore'), {{貴|き}}{{様|さま}} è oggi un pronome di seconda persona estremamente volgare e dispregiativo. A Paldea si incontra sulla bocca di antagonisti arrabbiati (come le reclute del Team Star) e serve a marcare una rottura violenta della cortesia.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card
@@ -224,14 +231,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-wazawai
 card_type: recognition
-front: '{{災|わざわ}}い'
-back: 'わざわい — disgrazia; calamità'
+front: '{{災|わざわ}}い / わざわい'
+back: >-
+  わざわい — disgrazia; calamità; termine solenne legato a disastri su vasta scala, miti storici o rovine.
 example_jp: >-
-  {{災|わざわ}}いが ある。
+  パルデアの{{歴史|れきし}}には、{{大昔|おおむかし}}の{{災|わざわ}}いについて{{書|か}}かれている。
 example_it: >-
-  C’è disgrazia; calamità.
+  Nella storia di Paldea si narra di un'antica calamità.
 notes_it: >-
-  {{災|わざわ}}い significa disgrazia; calamità. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il termine {{災|わざわ}}い si riferisce a disastri, maledizioni o calamità epocali, distinguendosi da normali incidenti quotidiani (come {{事|じ}}{{故|こ}}). Nel mondo di Scarlet e Violet, si lega profondamente al folklore e alle leggende antiche (come per i Pokémon Rovina).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card
@@ -240,14 +248,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-shousei
 card_type: recognition
-front: '{{小|しょう}}{{生|せい}}'
-back: 'しょうせい — io, umile/letterario'
+front: '{{小|しょう}}{{生|せい}} / しょうせい'
+back: >-
+  しょうせい — io (umile/letterario); pronome di prima persona antiquato, usato solo da uomini per abbassarsi rispetto a chi ascolta.
 example_jp: >-
-  {{小|しょう}}{{生|せい}}が いる。
+  {{小|しょう}}{{生|せい}}はアカデミーで{{美術|びじゅつ}}を{{教|おし}}えております。
 example_it: >-
-  C’è io, umile/letterario.
+  Il sottoscritto insegna arte all'Accademia.
 notes_it: >-
-  {{小|しょう}}{{生|せい}} significa io, umile/letterario. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  {{小|しょう}}{{生|せい}} (letteralmente 'piccola vita') è un pronome di prima persona estremamente formale e antiquato. Viene usato esclusivamente da uomini colti per mostrarsi umili davanti a un interlocutore. A Paldea, è il tratto linguistico che caratterizza l'eloquio artistico e compassato del professor Hassaku.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card
@@ -256,13 +265,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-tadashii
 card_type: recognition
-front: '{{正|ただ}}しい'
-back: 'ただしい — corretto; giusto'
+front: '{{正|ただ}}しい / ただしい'
+back: >-
+  ただしい — corretto; giusto; aggettivo い per indicare conformità alla verità, alle regole o a un comportamento morale.
 example_jp: >-
-  それは {{正|ただ}}しい。
+  テストの{{正|ただ}}しい{{答|こた}}えを{{選|えら}}んでください。
 example_it: >-
-  È corretto; giusto.
+  Per favore, seleziona la risposta corretta nel test.
 notes_it: >-
-  {{正|ただ}}しい significa corretto; giusto. Nel materiale di Scarlet / Violet ricorre 23 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  L'aggettivo in い {{正|ただ}}しい indica ciò che è corretto, esatto o conforme a una regola. Nei contesti scolastici segnala la risposta giusta; nei dialoghi può anche valutare se una decisione è giusta.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::

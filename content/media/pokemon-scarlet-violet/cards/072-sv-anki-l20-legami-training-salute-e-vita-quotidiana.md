@@ -13,7 +13,7 @@ reading: どうほう
 romaji: douhou
 meaning_it: compagno; fratello
 notes_it: >-
-  {{同|どう}}{{胞|ほう}} significa compagno; fratello. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  La parola {{同|どう}}{{胞|ほう}} unisce {{同|おな}} (stesso) e {{胞|ほう}} (grembo/sacco). Indica una profonda connessione identitaria e ideologica. Viene usata per innalzare il registro, richiamando un senso epico di fedeltà, spesso nei monologhi dei capi squadra o nelle dichiarazioni dei leader.
 level_hint: custom
 :::
 :::term
@@ -23,7 +23,7 @@ reading: とっくん
 romaji: tokkun
 meaning_it: allenamento speciale
 notes_it: >-
-  {{特|とっ}}{{訓|くん}} significa allenamento speciale. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{特|とっ}}{{訓|くん}} fonde l'idea di “speciale” e “addestramento”. A differenza della semplice {{練|れん}}{{習|しゅう}}, implica un salto di qualità, uno sforzo extra o una preparazione intensiva contro un avversario forte.
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: とつぜん
 romaji: totsuzen
 meaning_it: improvviso; all’improvviso
 notes_it: >-
-  {{突|とつ}}{{然|ぜん}} significa improvviso; all’improvviso. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il kanji {{突|つ}} indica l'atto di 'colpire' o 'spingere all'improvviso'. Se usato direttamente davanti a un verbo agisce come avverbio. Per descrivere un sostantivo necessita invece della particella の: {{突|とつ}}{{然|ぜん}}の{{出|で}}{{来|き}}{{事|ごと}} (un evento inaspettato).
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: なやむ
 romaji: nayamu
 meaning_it: preoccuparsi; essere indecisi
 notes_it: >-
-  {{悩|なや}}む significa preoccuparsi; essere indecisi. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{考|かんが}}える è pensare o valutare; {{悩|なや}}む implica fatica mentale, incertezza o preoccupazione. Il tema del dubbio può essere espresso con に, come {{進|しん}}{{路|ろ}}に{{悩|なや}}む, oppure con una domanda indiretta in か.
 level_hint: custom
 :::
 :::term
@@ -53,7 +53,7 @@ reading: はんぶん
 romaji: hanbun
 meaning_it: metà
 notes_it: >-
-  {{半|はん}}{{分|ぶん}} significa metà. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La lettura はんぶん è composta da {{半|はん}} (metà) e {{分|ふん}} (parte/frazione). Nelle lotte, determina spesso soglie di attivazione cruciali: abilità o strumenti che reagiscono quando i PS scendono 'sotto la metà' ({{半|はん}}{{分|ぶん}}{{以|い}}{{下|か}}).
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: かれら
 romaji: karera
 meaning_it: loro
 notes_it: >-
-  {{彼|かれ}}ら significa loro. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Il suffisso ら pluralizza il pronome {{彼|かれ}}, “egli”. In giapponese si preferisce spesso usare nomi o ruoli per riferirsi agli altri; {{彼|かれ}}ら crea invece una distanza formale tra chi parla e il gruppo nominato.
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: かなしい
 romaji: kanashii
 meaning_it: triste
 notes_it: >-
-  {{悲|かな}}しい significa triste. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  Con aggettivi emotivi come {{悲|かな}}しい, il giapponese evita spesso di affermare direttamente lo stato interno di una terza persona senza segnali. Per dire che qualcuno sembra triste, sono naturali {{悲|かな}}しそう o {{悲|かな}}しんでいる.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: ふんびょう
 romaji: funbyou
 meaning_it: minuti e secondi; istante
 notes_it: >-
-  {{分|ふん}}{{秒|びょう}} significa minuti e secondi; istante. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{分|ふん}}{{秒|びょう}} unisce le unità di tempo minuto e secondo. L'espressione {{分|ふん}}{{秒|びょう}}を{{争|あらそ}}う significa agire con estrema urgenza, quando anche poco tempo può fare la differenza.
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: ほけん
 romaji: hoken
 meaning_it: salute; igiene; educazione sanitaria
 notes_it: >-
-  Rimanda a salute e infermeria scolastica, quindi sposta il dialogo verso cura e vita quotidiana dell'Accademia.
+  La radice {{保|ほ}} significa 'preservare', mentre {{健|けん}} indica la 'salute robusta'. In Accademia non è solo una materia di studio (educazione alla salute), ma si declina fisicamente nella {{保|ほ}}{{健|けん}}{{室|しつ}} (l'infermeria scolastica), luogo centrale per la guarigione e i dialoghi con i membri dello staff.
 level_hint: custom
 :::
 :::term
@@ -103,7 +103,7 @@ reading: くらす
 romaji: kurasu
 meaning_it: vivere; abitare
 notes_it: >-
-  {{暮|く}}らす significa vivere; abitare. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Mentre {{住|す}}む (sumu) indica staticamente il luogo di residenza e {{生|い}}きる (ikiru) indica il fatto biologico di essere vivi, {{暮|く}}らす (kurasu) abbraccia il trascorrere armonico delle proprie giornate e delle proprie abitudini. Il luogo in cui si svolge questo stile di vita si marca con で.
 level_hint: custom
 :::
 :::card
@@ -112,14 +112,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-douhou
 card_type: recognition
-front: '{{同|どう}}{{胞|ほう}}'
-back: 'どうほう — compagno; fratello'
+front: '{{同|どう}}{{胞|ほう}} / どうほう'
+back: >-
+  どうほう — compagno; fratello. Indica chi condivide la stessa origine o gruppo; ha un sapore solenne ed epico.
 example_jp: >-
-  {{同|どう}}{{胞|ほう}}が いる。
+  スター{{団|だん}}の {{同|どう}}{{胞|ほう}}たちを {{見|み}}{{捨|す}}てる わけには いかない！
 example_it: >-
-  C’è compagno; fratello.
+  Non possiamo certo abbandonare i nostri compagni del Team Star!
 notes_it: >-
-  {{同|どう}}{{胞|ほう}} significa compagno; fratello. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  La parola {{同|どう}}{{胞|ほう}} unisce {{同|おな}} (stesso) e {{胞|ほう}} (grembo/sacco). Indica una profonda connessione identitaria e ideologica. Viene usata per innalzare il registro, richiamando un senso epico di fedeltà, spesso nei monologhi dei capi squadra o nelle dichiarazioni dei leader.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
 :::card
@@ -128,14 +129,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-tokkun
 card_type: recognition
-front: '{{特|とっ}}{{訓|くん}}'
-back: 'とっくん — allenamento speciale'
+front: '{{特|とっ}}{{訓|くん}} / とっくん'
+back: >-
+  とっくん — allenamento speciale. Indica un addestramento intensivo per un obiettivo specifico; in forma verbale si usa con を する ({{特|とっ}}{{訓|くん}}をする).
 example_jp: >-
-  {{特|とっ}}{{訓|くん}}が ある。
+  ジムテストに {{向|む}}けて、ポケモンたちと {{特|とっ}}{{訓|くん}}を しているんだ。
 example_it: >-
-  C’è allenamento speciale.
+  Sto facendo un allenamento speciale con i miei Pokémon in vista dell'esame della Palestra.
 notes_it: >-
-  {{特|とっ}}{{訓|くん}} significa allenamento speciale. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{特|とっ}}{{訓|くん}} fonde l'idea di “speciale” e “addestramento”. A differenza della semplice {{練|れん}}{{習|しゅう}}, implica un salto di qualità, uno sforzo extra o una preparazione intensiva contro un avversario forte.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
 :::card
@@ -144,14 +146,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-totsuzen
 card_type: recognition
-front: '{{突|とつ}}{{然|ぜん}}'
-back: 'とつぜん — improvviso; all’improvviso'
+front: '{{突|とつ}}{{然|ぜん}} / とつぜん'
+back: >-
+  とつぜん — improvviso; all'improvviso. Agisce tipicamente come avverbio all'inizio di frase per descrivere eventi subitanei che interrompono l'azione.
 example_jp: >-
-  {{突|とつ}}{{然|ぜん}}、ネモが きた。
+  {{草|くさ}}むらから {{突|とつ}}{{然|ぜん}}、{{野|や}}{{生|せい}}の ポケモンが とびだしてきた！
 example_it: >-
-  improvviso; all’improvviso: Nemona è arrivata.
+  All'improvviso, un Pokémon selvatico è saltato fuori dall'erba alta!
 notes_it: >-
-  {{突|とつ}}{{然|ぜん}} significa improvviso; all’improvviso. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  Il kanji {{突|つ}} indica l'atto di 'colpire' o 'spingere all'improvviso'. Se usato direttamente davanti a un verbo agisce come avverbio. Per descrivere un sostantivo necessita invece della particella の: {{突|とつ}}{{然|ぜん}}の{{出|で}}{{来|き}}{{事|ごと}} (un evento inaspettato).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
 :::card
@@ -160,14 +163,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-nayamu
 card_type: recognition
-front: '{{悩|なや}}む'
-back: 'なやむ — preoccuparsi; essere indecisi'
+front: '{{悩|なや}}む / なやむ'
+back: >-
+  なやむ — preoccuparsi; essere indecisi. Esprime un dubbio che pesa o blocca, non un semplice ragionamento strategico.
 example_jp: >-
-  {{悩|なや}}む ことが ある。
+  どの ポケモンを パーティに {{入|い}}れるか {{悩|なや}}む トレーナーは {{多|おお}}い。
 example_it: >-
-  A volte capita di preoccuparsi; essere indecisi.
+  Molti Allenatori sono indecisi su quale Pokémon mettere in squadra.
 notes_it: >-
-  {{悩|なや}}む significa preoccuparsi; essere indecisi. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  {{考|かんが}}える è pensare o valutare; {{悩|なや}}む implica fatica mentale, incertezza o preoccupazione. Il tema del dubbio può essere espresso con に, come {{進|しん}}{{路|ろ}}に{{悩|なや}}む, oppure con una domanda indiretta in か.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
 :::card
@@ -176,14 +180,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-hanbun
 card_type: recognition
-front: '{{半|はん}}{{分|ぶん}}'
-back: 'はんぶん — metà'
+front: '{{半|はん}}{{分|ぶん}} / はんぶん'
+back: >-
+  はんぶん — metà. Indica la frazione esatta di quantità, statistiche o risorse fisiche come i PS; si accompagna spesso a limiti come {{以|い}}{{下|か}} (meno di).
 example_jp: >-
-  {{半|はん}}{{分|ぶん}}が ある。
+  ボスの ポケモンの ＨＰを {{半|はん}}{{分|ぶん}} {{以|い}}{{下|か}}まで {{削|けず}}ったぞ！
 example_it: >-
-  C’è metà.
+  Abbiamo ridotto i PS del Pokémon del boss fin sotto la metà!
 notes_it: >-
-  {{半|はん}}{{分|ぶん}} significa metà. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  La lettura はんぶん è composta da {{半|はん}} (metà) e {{分|ふん}} (parte/frazione). Nelle lotte, determina spesso soglie di attivazione cruciali: abilità o strumenti che reagiscono quando i PS scendono 'sotto la metà' ({{半|はん}}{{分|ぶん}}{{以|い}}{{下|か}}).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
 :::card
@@ -192,14 +197,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-karera
 card_type: recognition
-front: '{{彼|かれ}}ら'
-back: 'かれら — loro'
+front: '{{彼|かれ}}ら / かれら'
+back: >-
+  かれら — loro. Pronome di terza persona plurale che crea una distanza oggettiva e formale tra il parlante e il gruppo di cui si parla.
 example_jp: >-
-  {{彼|かれ}}らが いる。
+  {{彼|かれ}}らは スター{{団|だん}}と して、アカデミーの ルールに {{反|はん}}している。
 example_it: >-
-  C’è loro.
+  Loro, in quanto membri del Team Star, stanno infrangendo le regole dell'Accademia.
 notes_it: >-
-  {{彼|かれ}}ら significa loro. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Identifica chi parla o chi è incluso; questo cambia registro, distanza sociale e responsabilità nella scena.
+  Il suffisso ら pluralizza il pronome {{彼|かれ}}, “egli”. In giapponese si preferisce spesso usare nomi o ruoli per riferirsi agli altri; {{彼|かれ}}ら crea invece una distanza formale tra chi parla e il gruppo nominato.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
 :::card
@@ -208,14 +214,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-kanashii
 card_type: recognition
-front: '{{悲|かな}}しい'
-back: 'かなしい — triste'
+front: '{{悲|かな}}しい / かなしい'
+back: >-
+  かなしい — triste; doloroso. Aggettivo in い per una tristezza sentita o valutata dal parlante.
 example_jp: >-
-  それは {{悲|かな}}しい。
+  いっしょに {{冒|ぼう}}{{険|けん}}した ポケモンと {{別|わか}}れるのは、やっぱり {{悲|かな}}しいよ。
 example_it: >-
-  È triste.
+  Come immaginavo, separarsi dai Pokémon con cui si è viaggiato insieme è triste.
 notes_it: >-
-  {{悲|かな}}しい significa triste. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Funziona come valutazione: segnala tono, giudizio o intensità emotiva di una battuta.
+  Con aggettivi emotivi come {{悲|かな}}しい, il giapponese evita spesso di affermare direttamente lo stato interno di una terza persona senza segnali. Per dire che qualcuno sembra triste, sono naturali {{悲|かな}}しそう o {{悲|かな}}しんでいる.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
 :::card
@@ -224,14 +231,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-funbyou
 card_type: recognition
-front: '{{分|ふん}}{{秒|びょう}}'
-back: 'ふんびょう — minuti e secondi; istante'
+front: '{{分|ふん}}{{秒|びょう}} / ふんびょう'
+back: >-
+  ふんびょう — minuti e secondi; ogni istante. Si usa per parlare del tempo misurato in modo preciso o, in espressioni come {{分|ふん}}{{秒|びょう}}を{{争|あらそ}}う, di urgenza.
 example_jp: >-
-  {{分|ふん}}{{秒|びょう}}が ある。
+  ペパーの ポケモンを {{助|たす}}けるため、{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}って {{秘|ひ}}{{伝|でん}}スパイスを {{探|さが}}した。
 example_it: >-
-  C’è minuti e secondi; istante.
+  Per aiutare il Pokémon di Pepe, abbiamo cercato le Spezie Segrete senza perdere un istante.
 notes_it: >-
-  {{分|ふん}}{{秒|びょう}} significa minuti e secondi; istante. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Usalo per ancorare la frase a un referente concreto: luogo, risorsa, materia scolastica, oggetto, concetto di trama o attività.
+  {{分|ふん}}{{秒|びょう}} unisce le unità di tempo minuto e secondo. L'espressione {{分|ふん}}{{秒|びょう}}を{{争|あらそ}}う significa agire con estrema urgenza, quando anche poco tempo può fare la differenza.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
 :::card
@@ -240,14 +248,15 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-hoken
 card_type: recognition
-front: '{{保|ほ}}{{健|けん}}'
-back: 'ほけん — salute; igiene; educazione sanitaria'
+front: '{{保|ほ}}{{健|けん}} / ほけん'
+back: >-
+  ほけん — salute; igiene; educazione sanitaria. In ambiente scolastico indica sia la materia sia, in {{保|ほ}}{{健|けん}}{{室|しつ}}, l'infermeria.
 example_jp: >-
-  {{保|ほ}}{{健|けん}}が ある。
+  アカデミーの {{保|ほ}}{{健|けん}}の {{授|じゅ}}{{業|ぎょう}}では、ポケモンと {{人|ひと}}の {{体|からだ}}の ことを {{学|まな}}ぶ。
 example_it: >-
-  C’è salute; igiene; educazione sanitaria.
+  Nelle lezioni di educazione sanitaria dell'Accademia si studia il corpo delle persone e dei Pokémon.
 notes_it: >-
-  Rimanda a salute e infermeria scolastica, quindi sposta il dialogo verso cura e vita quotidiana dell'Accademia.
+  La radice {{保|ほ}} significa 'preservare', mentre {{健|けん}} indica la 'salute robusta'. In Accademia non è solo una materia di studio (educazione alla salute), ma si declina fisicamente nella {{保|ほ}}{{健|けん}}{{室|しつ}} (l'infermeria scolastica), luogo centrale per la guarigione e i dialoghi con i membri dello staff.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
 :::card
@@ -256,13 +265,14 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-kurasu
 card_type: recognition
-front: '{{暮|く}}らす'
-back: 'くらす — vivere; abitare'
+front: '{{暮|く}}らす / くらす'
+back: >-
+  くらす — vivere; abitare; trascorrere la vita. Non indica la mera esistenza biologica, ma lo svolgimento delle abitudini quotidiane in un luogo (marcato con で).
 example_jp: >-
-  {{暮|く}}らす ことが ある。
+  パルデア{{地|ち}}{{方|ほう}}で ポケモンと {{暮|く}}らす まいにちは、{{新|あたら}}しい {{発|はっ}}{{見|けん}}で いっぱいだ。
 example_it: >-
-  A volte capita di vivere; abitare.
+  Ogni giorno vissuto con i Pokémon nella regione di Paldea è pieno di nuove scoperte.
 notes_it: >-
-  {{暮|く}}らす significa vivere; abitare. Nel materiale di Scarlet / Violet ricorre 10 volte, quindi va riconosciuto rapidamente. Leggilo come azione reale della scena: qualcuno ascolta, entra, risponde, cambia stato o compie un passo del tutorial.
+  Mentre {{住|す}}む (sumu) indica staticamente il luogo di residenza e {{生|い}}きる (ikiru) indica il fatto biologico di essere vivi, {{暮|く}}らす (kurasu) abbraccia il trascorrere armonico delle proprie giornate e delle proprie abitudini. Il luogo in cui si svolge questo stile di vita si marca con で.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
