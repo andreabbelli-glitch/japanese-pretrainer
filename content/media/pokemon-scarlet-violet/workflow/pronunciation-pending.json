@@ -1,10 +1,10 @@
 {
   "version": 1,
   "media_slug": "pokemon-scarlet-violet",
-  "total_targets": 1057,
+  "total_targets": 1254,
   "audio_backed_count": 306,
   "known_missing_count": 103,
-  "pending_count": 648,
+  "pending_count": 845,
   "pending": [
     {
       "entry_type": "term",
@@ -3281,6 +3281,1188 @@
       "entry_id": "term-v769-nanoru",
       "label": "名乗る",
       "reading": "なのる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-kiku",
+      "label": "聞く",
+      "reading": "きく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-matsu",
+      "label": "待つ",
+      "reading": "まつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-chigau",
+      "label": "違う",
+      "reading": "ちがう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-taberu",
+      "label": "食べる",
+      "reading": "たべる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-machi",
+      "label": "町",
+      "reading": "まち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-en",
+      "label": "円",
+      "reading": "えん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-watashi",
+      "label": "私",
+      "reading": "わたし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-kyou",
+      "label": "今日",
+      "reading": "きょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-nen",
+      "label": "年",
+      "reading": "ねん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-sukoshi",
+      "label": "少し",
+      "reading": "すこし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-kanjiru",
+      "label": "感じる",
+      "reading": "かんじる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-yobu",
+      "label": "呼ぶ",
+      "reading": "よぶ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-yomu",
+      "label": "読む",
+      "reading": "よむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-hanashi",
+      "label": "話",
+      "reading": "はなし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-hanasu",
+      "label": "話す",
+      "reading": "はなす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-nanika",
+      "label": "何か",
+      "reading": "なにか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-tariru",
+      "label": "足りる",
+      "reading": "たりる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-ooi",
+      "label": "多い",
+      "reading": "おおい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-hajimete",
+      "label": "初めて",
+      "reading": "はじめて"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-kangaeru",
+      "label": "考える",
+      "reading": "かんがえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-touchan",
+      "label": "父ちゃん",
+      "reading": "とうちゃん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-mukashi",
+      "label": "昔",
+      "reading": "むかし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-kaachan",
+      "label": "母ちゃん",
+      "reading": "かあちゃん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-ippiki",
+      "label": "1匹",
+      "reading": "いっぴき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-warui",
+      "label": "悪い",
+      "reading": "わるい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-kaku",
+      "label": "書く",
+      "reading": "かく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-bijutsu",
+      "label": "美術",
+      "reading": "びじゅつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-yasumu",
+      "label": "休む",
+      "reading": "やすむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-miseru",
+      "label": "見せる",
+      "reading": "みせる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-ookina",
+      "label": "大きな",
+      "reading": "おおきな"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-heya",
+      "label": "部屋",
+      "reading": "へや"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-dono",
+      "label": "殿",
+      "reading": "どの"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-subarashii",
+      "label": "素晴らしい",
+      "reading": "すばらしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-honjitsu",
+      "label": "本日",
+      "reading": "ほんじつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-tatakai",
+      "label": "戦い",
+      "reading": "たたかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-tsukareru",
+      "label": "疲れる",
+      "reading": "つかれる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-houkoku",
+      "label": "報告",
+      "reading": "ほうこく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-minasan",
+      "label": "皆さん",
+      "reading": "みなさん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-manabu",
+      "label": "学ぶ",
+      "reading": "まなぶ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-kininaru",
+      "label": "気になる",
+      "reading": "きになる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-anata",
+      "label": "貴方",
+      "reading": "あなた"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-kisama",
+      "label": "貴様",
+      "reading": "きさま"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-wazawai",
+      "label": "災い",
+      "reading": "わざわい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-shousei",
+      "label": "小生",
+      "reading": "しょうせい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-tadashii",
+      "label": "正しい",
+      "reading": "ただしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-uwasa",
+      "label": "噂",
+      "reading": "うわさ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-gengogaku",
+      "label": "言語学",
+      "reading": "げんごがく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-shi",
+      "label": "氏",
+      "reading": "し"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-agaru",
+      "label": "上がる",
+      "reading": "あがる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-kuu",
+      "label": "食う",
+      "reading": "くう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-shinjiru",
+      "label": "信じる",
+      "reading": "しんじる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-ningen",
+      "label": "人間",
+      "reading": "にんげん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-kaisan",
+      "label": "解散",
+      "reading": "かいさん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-tanoshimi",
+      "label": "楽しみ",
+      "reading": "たのしみ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-kikai",
+      "label": "機械",
+      "reading": "きかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-tomeru",
+      "label": "止める",
+      "reading": "とめる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-yukiyama",
+      "label": "雪山",
+      "reading": "ゆきやま"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-mise",
+      "label": "店",
+      "reading": "みせ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-bai",
+      "label": "倍",
+      "reading": "ばい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-yasashii",
+      "label": "優しい",
+      "reading": "やさしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-nibai",
+      "label": "2倍",
+      "reading": "にばい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-kyoushi",
+      "label": "教師",
+      "reading": "きょうし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-hiroba",
+      "label": "広場",
+      "reading": "ひろば"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-okite",
+      "label": "掟",
+      "reading": "おきて"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-yottsu",
+      "label": "4つ",
+      "reading": "よっつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-eeai",
+      "label": "AI",
+      "reading": "エーアイ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-okane",
+      "label": "お金",
+      "reading": "おかね"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-konomae",
+      "label": "この前",
+      "reading": "このまえ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-ossu",
+      "label": "押忍",
+      "reading": "おっす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-tanoshimu",
+      "label": "楽しむ",
+      "reading": "たのしむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-seri",
+      "label": "競り",
+      "reading": "せり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-geijutsu",
+      "label": "芸術",
+      "reading": "げいじゅつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-imamade",
+      "label": "今まで",
+      "reading": "いままで"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-neru",
+      "label": "寝る",
+      "reading": "ねる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-kaeru",
+      "label": "変える",
+      "reading": "かえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-kao",
+      "label": "顔",
+      "reading": "かお"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-jikai",
+      "label": "次回",
+      "reading": "じかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-dareka",
+      "label": "誰か",
+      "reading": "だれか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-tsutaeru",
+      "label": "伝える",
+      "reading": "つたえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-okoru",
+      "label": "怒る",
+      "reading": "おこる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-ugoku",
+      "label": "動く",
+      "reading": "うごく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-utsukushii",
+      "label": "美しい",
+      "reading": "うつくしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-buttai",
+      "label": "物体",
+      "reading": "ぶったい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-yoru",
+      "label": "夜",
+      "reading": "よる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-omise",
+      "label": "お店",
+      "reading": "おみせ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-zasshi",
+      "label": "雑誌",
+      "reading": "ざっし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-sakihodo",
+      "label": "先ほど",
+      "reading": "さきほど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-hoshii",
+      "label": "欲しい",
+      "reading": "ほしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-ochiru",
+      "label": "落ちる",
+      "reading": "おちる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-kaijou",
+      "label": "会場",
+      "reading": "かいじょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-takameru",
+      "label": "高める",
+      "reading": "たかめる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-sakuhin",
+      "label": "作品",
+      "reading": "さくひん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-kodomo",
+      "label": "子供",
+      "reading": "こども"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-shijou",
+      "label": "市場",
+      "reading": "しじょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-nagai",
+      "label": "長い",
+      "reading": "ながい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-watasu",
+      "label": "渡す",
+      "reading": "わたす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-ataru",
+      "label": "当たる",
+      "reading": "あたる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-kanojo",
+      "label": "彼女",
+      "reading": "かのじょ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-kowai",
+      "label": "怖い",
+      "reading": "こわい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-anoko",
+      "label": "あの子",
+      "reading": "あのこ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-mouichido",
+      "label": "もう一度",
+      "reading": "もういちど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-kisho",
+      "label": "奇書",
+      "reading": "きしょ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-yobareru",
+      "label": "呼ばれる",
+      "reading": "よばれる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-saishinbu",
+      "label": "最深部",
+      "reading": "さいしんぶ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-shigoto",
+      "label": "仕事",
+      "reading": "しごと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-tsuzuku",
+      "label": "続く",
+      "reading": "つづく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-kamigata",
+      "label": "髪型",
+      "reading": "かみがた"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-kikoeru",
+      "label": "聞こえる",
+      "reading": "きこえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-mikakunin",
+      "label": "未確認",
+      "reading": "みかくにん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-yume",
+      "label": "夢",
+      "reading": "ゆめ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-mittsu",
+      "label": "3つ",
+      "reading": "みっつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-orei",
+      "label": "お礼",
+      "reading": "おれい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-imushitsu",
+      "label": "医務室",
+      "reading": "いむしつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-kazoku",
+      "label": "家族",
+      "reading": "かぞく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-mitsukaru",
+      "label": "見つかる",
+      "reading": "みつかる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-sainou",
+      "label": "才能",
+      "reading": "さいのう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-tsukaeru",
+      "label": "使える",
+      "reading": "つかえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-niru",
+      "label": "似る",
+      "reading": "にる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-dankai",
+      "label": "段階",
+      "reading": "だんかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-kotaeru",
+      "label": "答える",
+      "reading": "こたえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-kare",
+      "label": "彼",
+      "reading": "かれ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-mainichi",
+      "label": "毎日",
+      "reading": "まいにち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-rakusatsu",
+      "label": "落札",
+      "reading": "らくさつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-hokora",
+      "label": "祠",
+      "reading": "ほこら"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-piipii",
+      "label": "PP",
+      "reading": "ピーピー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-inai",
+      "label": "以内",
+      "reading": "いない"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-hana",
+      "label": "花",
+      "reading": "はな"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-keisan",
+      "label": "計算",
+      "reading": "けいさん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-kuni",
+      "label": "国",
+      "reading": "くに"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-kodomotachi",
+      "label": "子供たち",
+      "reading": "こどもたち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-shisatsu",
+      "label": "視察",
+      "reading": "しさつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-shiken",
+      "label": "試験",
+      "reading": "しけん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-atsumaru",
+      "label": "集まる",
+      "reading": "あつまる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-okuru",
+      "label": "送る",
+      "reading": "おくる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-daremo",
+      "label": "誰も",
+      "reading": "だれも"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-douga",
+      "label": "動画",
+      "reading": "どうが"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-eru",
+      "label": "得る",
+      "reading": "える"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-kaimono",
+      "label": "買いもの",
+      "reading": "かいもの"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-fuseikai",
+      "label": "不正解",
+      "reading": "ふせいかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-yattsu",
+      "label": "8つ",
+      "reading": "やっつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-intai",
+      "label": "引退",
+      "reading": "いんたい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-akeru",
+      "label": "開ける",
+      "reading": "あける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-kanji",
+      "label": "感じ",
+      "reading": "かんじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-kizuku",
+      "label": "気づく",
+      "reading": "きづく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-kioku",
+      "label": "記憶",
+      "reading": "きおく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-kinniku",
+      "label": "筋肉",
+      "reading": "きんにく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-kinchou",
+      "label": "緊張",
+      "reading": "きんちょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-imakara",
+      "label": "今から",
+      "reading": "いまから"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-shokun",
+      "label": "諸君",
+      "reading": "しょくん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-shinrai",
+      "label": "信頼",
+      "reading": "しんらい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-fukai",
+      "label": "深い",
+      "reading": "ふかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-jinsei",
+      "label": "人生",
+      "reading": "じんせい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-ooku",
+      "label": "多く",
+      "reading": "おおく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-taiken",
+      "label": "体験",
+      "reading": "たいけん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-doushi",
+      "label": "同士",
+      "reading": "どうし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-nyuusatsu",
+      "label": "入札",
+      "reading": "にゅうさつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-hakken",
+      "label": "発見",
+      "reading": "はっけん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-hokyuu",
+      "label": "補給",
+      "reading": "ほきゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-yuushuu",
+      "label": "優秀",
+      "reading": "ゆうしゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-yuushou",
+      "label": "優勝",
+      "reading": "ゆうしょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-sasou",
+      "label": "誘う",
+      "reading": "さそう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-asobu",
+      "label": "遊ぶ",
+      "reading": "あそぶ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-ryuu",
+      "label": "竜",
+      "reading": "りゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-yonin",
+      "label": "4人",
+      "reading": "よにん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-okashi",
+      "label": "お菓子",
+      "reading": "おかし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-gozonji",
+      "label": "ご存知",
+      "reading": "ごぞんじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-yaruki",
+      "label": "やる気",
+      "reading": "やるき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-kowareru",
+      "label": "壊れる",
+      "reading": "こわれる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-rakuen",
+      "label": "楽園",
+      "reading": "らくえん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-katsuyaku",
+      "label": "活躍",
+      "reading": "かつやく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-kyoumibukai",
+      "label": "興味深い",
+      "reading": "きょうみぶかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-arawareru",
+      "label": "現れる",
+      "reading": "あらわれる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-hikaru",
+      "label": "光る",
+      "reading": "ひかる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-goukakusha",
+      "label": "合格者",
+      "reading": "ごうかくしゃ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-zaihou",
+      "label": "財宝",
+      "reading": "ざいほう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-rikai",
+      "label": "理解",
+      "reading": "りかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-wakai",
+      "label": "若い",
+      "reading": "わかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-jugyou-o-ukeru",
+      "label": "授業を受ける",
+      "reading": "じゅぎょうをうける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-tasukaru",
+      "label": "助かる",
+      "reading": "たすかる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-joukyou",
+      "label": "状況",
+      "reading": "じょうきょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-shinai",
+      "label": "親愛",
+      "reading": "しんあい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-shoujiki",
+      "label": "正直",
+      "reading": "しょうじき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-ikiru",
+      "label": "生きる",
+      "reading": "いきる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-zenin",
+      "label": "全員",
+      "reading": "ぜんいん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-tai",
+      "label": "隊",
+      "reading": "たい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-danin",
+      "label": "団員",
+      "reading": "だんいん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-meibutsu",
+      "label": "名物",
+      "reading": "めいぶつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-douhou",
+      "label": "同胞",
+      "reading": "どうほう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-tokkun",
+      "label": "特訓",
+      "reading": "とっくん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-totsuzen",
+      "label": "突然",
+      "reading": "とつぜん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-nayamu",
+      "label": "悩む",
+      "reading": "なやむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-hanbun",
+      "label": "半分",
+      "reading": "はんぶん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-karera",
+      "label": "彼ら",
+      "reading": "かれら"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-kanashii",
+      "label": "悲しい",
+      "reading": "かなしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-funbyou",
+      "label": "分秒",
+      "reading": "ふんびょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-hoken",
+      "label": "保健",
+      "reading": "ほけん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-kurasu",
+      "label": "暮らす",
+      "reading": "くらす"
     },
     {
       "entry_type": "term",

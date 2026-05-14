@@ -37,6 +37,8 @@ type ReviewSubjectCoverageSnapshot = {
   subjectGroups: ResolveReviewSubjectGroupsResult["subjectGroups"];
 };
 
+const REVIEW_SUBJECT_STATE_UPSERT_BATCH_SIZE = 40;
+
 export async function syncReviewSubjectState(
   database: ReviewSubjectStateDatabase,
   input: {
@@ -58,34 +60,39 @@ export async function syncReviewSubjectState(
     snapshot.subjectGroups
   );
 
-  await database
-    .insert(reviewSubjectState)
-    .values(synchronizedStates.map((entry) => entry.state))
-    .onConflictDoUpdate({
-      target: reviewSubjectState.subjectKey,
-      set: {
-        cardId: sql.raw("excluded.card_id"),
-        createdAt: sql.raw("excluded.created_at"),
-        crossMediaGroupId: sql.raw("excluded.cross_media_group_id"),
-        difficulty: sql.raw("excluded.difficulty"),
-        dueAt: sql.raw("excluded.due_at"),
-        entryId: sql.raw("excluded.entry_id"),
-        entryType: sql.raw("excluded.entry_type"),
-        lapses: sql.raw("excluded.lapses"),
-        lastInteractionAt: sql.raw("excluded.last_interaction_at"),
-        lastReviewedAt: sql.raw("excluded.last_reviewed_at"),
-        learningSteps: sql.raw("excluded.learning_steps"),
-        manualOverride: sql.raw("excluded.manual_override"),
-        reps: sql.raw("excluded.reps"),
-        scheduledDays: sql.raw("excluded.scheduled_days"),
-        schedulerVersion: sql.raw("excluded.scheduler_version"),
-        stability: sql.raw("excluded.stability"),
-        state: sql.raw("excluded.state"),
-        subjectType: sql.raw("excluded.subject_type"),
-        suspended: sql.raw("excluded.suspended"),
-        updatedAt: sql.raw("excluded.updated_at")
-      }
-    });
+  for (const stateBatch of chunkArray(
+    synchronizedStates.map((entry) => entry.state),
+    REVIEW_SUBJECT_STATE_UPSERT_BATCH_SIZE
+  )) {
+    await database
+      .insert(reviewSubjectState)
+      .values(stateBatch)
+      .onConflictDoUpdate({
+        target: reviewSubjectState.subjectKey,
+        set: {
+          cardId: sql.raw("excluded.card_id"),
+          createdAt: sql.raw("excluded.created_at"),
+          crossMediaGroupId: sql.raw("excluded.cross_media_group_id"),
+          difficulty: sql.raw("excluded.difficulty"),
+          dueAt: sql.raw("excluded.due_at"),
+          entryId: sql.raw("excluded.entry_id"),
+          entryType: sql.raw("excluded.entry_type"),
+          lapses: sql.raw("excluded.lapses"),
+          lastInteractionAt: sql.raw("excluded.last_interaction_at"),
+          lastReviewedAt: sql.raw("excluded.last_reviewed_at"),
+          learningSteps: sql.raw("excluded.learning_steps"),
+          manualOverride: sql.raw("excluded.manual_override"),
+          reps: sql.raw("excluded.reps"),
+          scheduledDays: sql.raw("excluded.scheduled_days"),
+          schedulerVersion: sql.raw("excluded.scheduler_version"),
+          stability: sql.raw("excluded.stability"),
+          state: sql.raw("excluded.state"),
+          subjectType: sql.raw("excluded.subject_type"),
+          suspended: sql.raw("excluded.suspended"),
+          updatedAt: sql.raw("excluded.updated_at")
+        }
+      });
+  }
 
   for (const entry of synchronizedStates) {
     if (entry.legacySubjectKeys.length === 0) {
@@ -407,4 +414,14 @@ function getReviewSubjectStateMergeRank(state: ReviewSubjectStateSnapshot) {
   }
 
   return 3;
+}
+
+function chunkArray<T>(values: T[], size: number) {
+  const batches: T[][] = [];
+
+  for (let index = 0; index < values.length; index += size) {
+    batches.push(values.slice(index, index + size));
+  }
+
+  return batches;
 }

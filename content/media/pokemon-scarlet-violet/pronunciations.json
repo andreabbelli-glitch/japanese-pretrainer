@@ -810,6 +810,1543 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-anki-l01-chigau",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%81%95%E3%81%86",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-en",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1216250/1",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-kiku",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8D%E3%81%8F",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-kyou",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1579110/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-machi",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1603990/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-matsu",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BE%85%E3%81%A4",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-taberu",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1358280/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l01-watashi",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1311110/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-hanashi",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1600900/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-hanasu",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1562350/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-kanjiru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1212260/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-nanika",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1188270/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-nen",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2084840/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-sukoshi",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1348870/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-yobu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1266440/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l02-yomu",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1456360/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-hajimete",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%88%9D%E3%82%81%E3%81%A6",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-ippiki",
+      "pitch_accent": 4,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1166060/3",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-kaachan",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2399270/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-kaku",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8B%E3%81%8F",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-kangaeru",
+      "pitch_accent": 4,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%80%83%E3%81%88%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-mukashi",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%98%94",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-ooi",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A4%9A%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-tariru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%B6%B3%E3%82%8A%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-touchan",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%88%B6%E3%81%A1%E3%82%83%E3%82%93",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l03-warui",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%82%AA%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-bijutsu",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1486440/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-dono",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1442500/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-heya",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1499320/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-honjitsu",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1523110/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-miseru",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1259210/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-ookina",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1412890/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-subarashii",
+      "pitch_accent": 4,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1397300/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-tatakai",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1596950/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l04-yasumu",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1227560/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-anata",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-houkoku",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1515670/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-kininaru",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-kisama",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1223620/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-manabu",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-minasan",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1202170/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-shousei",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1348390/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-tadashii",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1376600/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-tsukareru",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1483740/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l05-wazawai",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1295080/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-agaru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%B8%8A%E3%81%8C%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-gengogaku",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A8%80%E8%AA%9E%E5%AD%A6",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-kaisan",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A7%A3%E6%95%A3",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-kikai",
+      "pitch_accent": 2,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8D%E3%81%8B%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-kuu",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%A3%9F%E3%81%86",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-ningen",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%BA%BA%E9%96%93",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-shi",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%B0%8F",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-shinjiru",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%BF%A1%E3%81%98%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-tanoshimi",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%A5%BD%E3%81%97%E3%81%BF",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l06-uwasa",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%99%82",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-bai",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2711610/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-hiroba",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1278590/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-kyoushi",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1237130/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-mise",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1582120/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-nibai",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1462920/2",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-okite",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1567460/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-tomeru",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1310670/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-yasashii",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-yottsu",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l07-yukiyama",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1842240/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-eeai",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2222190/2",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-geijutsu",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-imamade",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1587590/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-kaeru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1510650/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-konomae",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2216900/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-neru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1360010/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-okane",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1001820/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-ossu",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1180540/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-seri",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2599900/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l08-tanoshimu",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1207270/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-buttai",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%89%A9%E4%BD%93",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-dareka",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%AA%B0%E3%81%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-jikai",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%AC%A1%E5%9B%9E",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-kao",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%A1%94",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-okoru",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%80%92%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-omise",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%8A%E5%BA%97",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-tsutaeru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%BC%9D%E3%81%88%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-ugoku",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%8B%95%E3%81%8F",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-utsukushii",
+      "pitch_accent": 4,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%BE%8E%E3%81%97%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l09-yoru",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A4%9C",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-hoshii",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%BB%E3%81%97%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-kaijou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%BC%9A%E5%A0%B4",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-kodomo",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%AD%90%E4%BE%9B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-nagai",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%95%B7%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-ochiru",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%90%BD%E3%81%A1%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-sakihodo",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%85%88%E3%81%BB%E3%81%A9",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-sakuhin",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%BD%9C%E5%93%81",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-shijou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%B8%82%E5%A0%B4",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-takameru",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%AB%98%E3%82%81%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l10-zasshi",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%9B%91%E8%AA%8C",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-anoko",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2707760/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-ataru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1448810/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-kanojo",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1483150/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-kisho",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2854273/1",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-kowai",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1593480/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-mouichido",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-saishinbu",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-shigoto",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1304970/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-watasu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1444610/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l11-yobareru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1631030/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-imushitsu",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1160090/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-kamigata",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8B%E3%81%BF%E3%81%8C%E3%81%9F",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-kazoku",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%AE%B6%E6%97%8F",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-kikoeru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%81%9E%E3%81%93%E3%81%88%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-mikakunin",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2080310/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-mitsukaru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%BF%E3%81%A4%E3%81%8B%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-mittsu",
+      "pitch_accent": 3,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%BF%E3%81%A3%E3%81%A4",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-orei",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%8A%E7%A4%BC",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-tsuzuku",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%B6%9A%E3%81%8F",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l12-yume",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A4%A2",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-dankai",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1419950/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-hokora",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1581260/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-kare",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1483070/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-kotaeru",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2827352/3",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-mainichi",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-niru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1314600/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-piipii",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2097020/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-rakusatsu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1548750/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-sainou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1294630/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l13-tsukaeru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1607180/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-atsumaru",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1333550/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-daremo",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-hana",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1194500/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-inai",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1155180/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-keisan",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1252140/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-kodomotachi",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1307870/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-kuni",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1592250/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-okuru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1402730/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-shiken",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1312350/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l14-shisatsu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1312040/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-akeru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%96%8B%E3%81%91%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-douga",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%8B%95%E7%94%BB",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-eru",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BE%97%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-fuseikai",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%B8%8D%E6%AD%A3%E8%A7%A3",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-intai",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BC%95%E9%80%80",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-kaimono",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8B%E3%81%84%E3%82%82%E3%81%AE",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-kanji",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%84%9F%E3%81%98",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-kioku",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A8%98%E6%86%B6",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-kizuku",
+      "pitch_accent": 2,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8D%E3%81%A5%E3%81%8F",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l15-yattsu",
+      "pitch_accent": 3,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%82%84%E3%81%A3%E3%81%A4",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-doushi",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%90%8C%E5%A3%AB",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-fukai",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%B7%B1%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-imakara",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-jinsei",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%BA%BA%E7%94%9F",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-kinchou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%B7%8A%E5%BC%B5",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-kinniku",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%AD%8B%E8%82%89",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-ooku",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8A%E3%81%8A%E3%81%8F",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-shinrai",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%BF%A1%E9%A0%BC",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-shokun",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%AB%B8%E5%90%9B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l16-taiken",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%BD%93%E9%A8%93",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-asobu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1542160/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-hakken",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1477310/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-hokyuu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1514510/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-nyuusatsu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1466180/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-okashi",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1001710/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-ryuu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1629170/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-sasou",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1541900/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-yonin",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1584950/2",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-yuushou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1539280/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l17-yuushuu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1539230/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-arawareru",
+      "pitch_accent": 4,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1263510/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-goukakusha",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-gozonji",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1593570/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-hikaru",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1272820/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-katsuyaku",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1208450/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-kowareru",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1199900/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-kyoumibukai",
+      "pitch_accent": 5,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1238420/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-rakuen",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1207290/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-rikai",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1549910/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-yaruki",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2005890/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l18-zaihou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1296990/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-danin",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1419180/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-ikiru",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1378520/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-joukyou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1356700/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-jugyou-o-ukeru",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-meibutsu",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1531810/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-shinai",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1365090/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-shoujiki",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2365140/1",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-tai",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1956610/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-tasukaru",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1344380/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-wakai",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1324300/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l19-zenin",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1394840/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-douhou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%90%8C%E8%83%9E",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-funbyou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1504150/0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-hanbun",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%8D%8A%E5%88%86",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-hoken",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%BF%9D%E5%81%A5",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-kanashii",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%82%B2%E3%81%97%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-karera",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BD%BC%E3%82%89",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-kurasu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%9A%AE%E3%82%89%E3%81%99",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-nayamu",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%82%A9%E3%82%80",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-tokkun",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%89%B9%E8%A8%93",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-anki-l20-totsuzen",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%AA%81%E7%84%B6",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-bag",
       "audio_src": "assets/audio/term/term-bag/forvo-manual-ハ-ック.mp3",
       "audio_source": "forvo",

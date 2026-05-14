@@ -12,7 +12,10 @@ import {
 } from "@/db";
 import { runMigrations } from "@/db/migrate";
 import {
+  card,
+  cardEntryLink,
   lessonProgress,
+  media,
   reviewSubjectLog,
   reviewSubjectState,
   term
@@ -280,4 +283,86 @@ describe("review subject state recovery backfill", () => {
     ]);
     expect(rewrittenLogs.every((log) => log.cardId)).toBe(true);
   });
+
+  it("backfills large subject sets without exceeding SQLite variable limits", async () => {
+    const now = "2026-03-11T09:00:00.000Z";
+    const rows = Array.from({ length: 1_600 }, (_, index) => index);
+
+    await database.insert(media).values({
+      id: "media-large-review-backfill",
+      slug: "large-review-backfill",
+      title: "Large review backfill",
+      mediaType: "test",
+      segmentKind: "lesson",
+      language: "ja",
+      baseExplanationLanguage: "it",
+      status: "active",
+      createdAt: now,
+      updatedAt: now
+    });
+
+    for (const batch of chunk(rows, 400)) {
+      await database.insert(term).values(
+        batch.map((index) => ({
+          id: `term-large-review-backfill-${index}`,
+          sourceId: `term-large-review-backfill-${index}`,
+          mediaId: "media-large-review-backfill",
+          lemma: `語${index}`,
+          reading: `ご${index}`,
+          romaji: `go-${index}`,
+          meaningIt: `termine ${index}`,
+          searchLemmaNorm: `語${index}`,
+          searchReadingNorm: `ご${index}`,
+          searchRomajiNorm: `go-${index}`,
+          createdAt: now,
+          updatedAt: now
+        }))
+      );
+
+      await database.insert(card).values(
+        batch.map((index) => ({
+          id: `card-large-review-backfill-${index}`,
+          mediaId: "media-large-review-backfill",
+          sourceFile: "large-review-backfill.md",
+          cardType: "recognition",
+          front: `語${index}`,
+          normalizedFront: `語${index}`,
+          back: `ご${index} - termine ${index}`,
+          status: "active" as const,
+          orderIndex: index,
+          createdAt: now,
+          updatedAt: now
+        }))
+      );
+
+      await database.insert(cardEntryLink).values(
+        batch.map((index) => ({
+          id: `card-entry-link-large-review-backfill-${index}`,
+          cardId: `card-large-review-backfill-${index}`,
+          entryType: "term" as const,
+          entryId: `term-large-review-backfill-${index}`,
+          relationshipType: "primary" as const
+        }))
+      );
+    }
+
+    const result = await backfillReviewSubjectState(database, {
+      now: new Date(now)
+    });
+
+    expect(result.subjectCount).toBe(1_600);
+    expect(await database.query.reviewSubjectState.findMany()).toHaveLength(
+      1_600
+    );
+  });
 });
+
+function chunk<T>(values: T[], size: number) {
+  const batches: T[][] = [];
+
+  for (let index = 0; index < values.length; index += size) {
+    batches.push(values.slice(index, index + size));
+  }
+
+  return batches;
+}
