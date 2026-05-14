@@ -315,10 +315,12 @@ describe("database layer", () => {
   it("returns only glossary study-signal fields needed by loaders", async () => {
     const rows = await listEntryStudySignals(database, [
       {
+        crossMediaGroupId: null,
         entryId: developmentFixture.termDbId,
         entryType: "term"
       },
       {
+        crossMediaGroupId: null,
         entryId: developmentFixture.grammarDbId,
         entryType: "grammar"
       }
@@ -334,6 +336,155 @@ describe("database layer", () => {
     expect(rows[0]).not.toHaveProperty("cardId");
     expect(rows[0]).not.toHaveProperty("dueAt");
     expect(rows[0]).not.toHaveProperty("relationshipType");
+  });
+
+  it("looks up glossary study signals without rejoining entry tables", async () => {
+    const executeSpy = vi.spyOn(database.$client, "execute");
+
+    await listEntryStudySignals(database, [
+      {
+        crossMediaGroupId: null,
+        entryId: developmentFixture.termDbId,
+        entryType: "term"
+      },
+      {
+        crossMediaGroupId: null,
+        entryId: developmentFixture.grammarDbId,
+        entryType: "grammar"
+      }
+    ]);
+
+    const queryLog = executeSpy.mock.calls
+      .map((call) => {
+        const [input] = call as unknown[];
+
+        if (typeof input === "string") {
+          return input;
+        }
+
+        if (input && typeof input === "object" && "sql" in input) {
+          const { sql } = input as { sql?: unknown };
+
+          return typeof sql === "string" ? sql : "";
+        }
+
+        return "";
+      })
+      .join("\n");
+
+    expect(queryLog).toContain("card_entry_link");
+    expect(queryLog).not.toMatch(/\bjoin\s+term\b/i);
+    expect(queryLog).not.toMatch(/\bjoin\s+grammar_pattern\b/i);
+
+    executeSpy.mockRestore();
+  });
+
+  it("resolves grouped glossary study signals through the caller-provided group id", async () => {
+    const groupedTermId = "term_fixture_grouped_signal";
+    const groupedCardId = "card_fixture_grouped_signal";
+    const groupedCrossMediaGroupId = "group_fixture_study_signal";
+
+    await database.insert(crossMediaGroup).values({
+      id: groupedCrossMediaGroupId,
+      entryType: "term",
+      groupKey: "study-signal-group",
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(term).values({
+      id: groupedTermId,
+      sourceId: "term_fixture_grouped_signal",
+      crossMediaGroupId: groupedCrossMediaGroupId,
+      mediaId: developmentFixture.mediaId,
+      segmentId: developmentFixture.segmentId,
+      lemma: "信号",
+      reading: "しんごう",
+      romaji: "shingou",
+      pos: "noun",
+      meaningIt: "segnale",
+      meaningLiteralIt: null,
+      notesIt: null,
+      levelHint: null,
+      audioSrc: null,
+      audioSource: null,
+      audioSpeaker: null,
+      audioLicense: null,
+      audioAttribution: null,
+      audioPageUrl: null,
+      pitchAccent: null,
+      pitchAccentSource: null,
+      pitchAccentPageUrl: null,
+      searchLemmaNorm: "信号",
+      searchReadingNorm: "しんごう",
+      searchRomajiNorm: "shingou",
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(card).values({
+      id: groupedCardId,
+      mediaId: developmentFixture.mediaId,
+      lessonId: developmentFixture.lessonId,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/fixtures/db/fixture-tcg/cards/grouped-signal.md",
+      cardType: "recognition",
+      front: "信号",
+      normalizedFront: "信号",
+      back: "segnale",
+      exampleJp: null,
+      exampleIt: null,
+      notesIt: null,
+      status: "active",
+      orderIndex: 9,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(cardEntryLink).values({
+      id: "card_entry_link_fixture_grouped_signal",
+      cardId: groupedCardId,
+      entryType: "term",
+      entryId: groupedTermId,
+      relationshipType: "primary"
+    });
+    await database.insert(reviewSubjectState).values({
+      subjectKey: `group:term:${groupedCrossMediaGroupId}`,
+      subjectType: "group",
+      entryType: "term",
+      crossMediaGroupId: groupedCrossMediaGroupId,
+      entryId: null,
+      cardId: null,
+      state: "review",
+      stability: 3,
+      difficulty: 2.2,
+      dueAt: "2026-03-09T10:00:00.000Z",
+      lastReviewedAt: "2026-03-09T10:00:00.000Z",
+      lastInteractionAt: "2026-03-09T10:00:00.000Z",
+      scheduledDays: 2,
+      learningSteps: 0,
+      lapses: 0,
+      reps: 2,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: true,
+      suspended: false,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+
+    const rows = await listEntryStudySignals(database, [
+      {
+        crossMediaGroupId: groupedCrossMediaGroupId,
+        entryId: groupedTermId,
+        entryType: "term"
+      }
+    ]);
+
+    expect(rows).toEqual([
+      {
+        entryId: groupedTermId,
+        entryType: "term",
+        manualOverride: true,
+        reviewState: "review"
+      }
+    ]);
   });
 
   it("keeps canonical glossary entries free of legacy status projections", async () => {
@@ -719,6 +870,69 @@ describe("database layer", () => {
         state: "learning"
       }
     ]);
+
+    const limitedPreviews = await listGlossaryPreviewEntries(
+      database,
+      [
+        {
+          id: developmentFixture.mediaId,
+          slug: developmentFixture.mediaSlug
+        },
+        {
+          id: groupedMediaId,
+          slug: groupedMediaSlug
+        }
+      ],
+      1
+    );
+
+    expect(
+      [...limitedPreviews].sort((left, right) =>
+        left.mediaId.localeCompare(right.mediaId)
+      )
+    ).toEqual([
+      {
+        kind: "term",
+        label: "共有語",
+        meaningIt: "termine condiviso",
+        mediaId: groupedMediaId,
+        mediaSlug: groupedMediaSlug,
+        reading: "きょうゆうご",
+        segmentTitle: null,
+        sourceId: "term_fixture_shared_grouped",
+        state: "review"
+      },
+      {
+        kind: "term",
+        label: "行く",
+        meaningIt: "andare",
+        mediaId: developmentFixture.mediaId,
+        mediaSlug: developmentFixture.mediaSlug,
+        reading: "いく",
+        segmentTitle: "Starter Core",
+        sourceId: developmentFixture.termId,
+        state: "learning"
+      }
+    ]);
+  });
+
+  it("returns no glossary preview entries for a zero per-media limit without querying", async () => {
+    const previews = await listGlossaryPreviewEntries(
+      {
+        all: vi.fn(() => {
+          throw new Error("Preview SQL should not run for a zero limit.");
+        })
+      } as unknown as DatabaseClient,
+      [
+        {
+          id: developmentFixture.mediaId,
+          slug: developmentFixture.mediaSlug
+        }
+      ],
+      0
+    );
+
+    expect(previews).toEqual([]);
   });
 
   it("keeps canonical concept cards aligned between TS and SQL", async () => {

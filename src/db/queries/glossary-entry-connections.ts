@@ -18,6 +18,10 @@ export type GlossaryEntryRef = {
   entryType: EntryType;
 };
 
+export type GlossaryStudySignalRef = GlossaryEntryRef & {
+  crossMediaGroupId: string | null;
+};
+
 function splitGlossaryEntryRefs(entries: GlossaryEntryRef[]) {
   const termIds = new Set<string>();
   const grammarIds = new Set<string>();
@@ -266,100 +270,73 @@ export async function listEntryCardCounts(
 
 export async function listEntryStudySignals(
   database: DatabaseClient,
-  entries: GlossaryEntryRef[]
+  entries: GlossaryStudySignalRef[]
 ) {
   if (entries.length === 0) {
     return [];
   }
 
-  const { grammarIds, termIds } = splitGlossaryEntryRefs(entries);
-  const filters = [];
+  const valuesSql = entries.map(() => "(?, ?, ?)").join(", ");
+  const args = entries.flatMap((entry) => [
+    entry.entryType,
+    entry.entryId,
+    entry.crossMediaGroupId
+  ]);
+  const result = await database.$client.execute({
+    sql: `
+      with requested(entryType, entryId, crossMediaGroupId) as (
+        values ${valuesSql}
+      ),
+      active_requested as (
+        select distinct
+          requested.entryType as entryType,
+          requested.entryId as entryId,
+          requested.crossMediaGroupId as crossMediaGroupId
+        from requested
+        inner join card_entry_link
+          on card_entry_link.entry_type = requested.entryType
+          and card_entry_link.entry_id = requested.entryId
+        inner join card
+          on card.id = card_entry_link.card_id
+          and card.status = 'active'
+      )
+      select distinct
+        active_requested.entryId as entryId,
+        active_requested.entryType as entryType,
+        review_subject_state.state as reviewState,
+        review_subject_state.manual_override as manualOverride
+      from active_requested
+      left join review_subject_state
+        on review_subject_state.entry_type = active_requested.entryType
+        and review_subject_state.cross_media_group_id =
+          active_requested.crossMediaGroupId
+      where active_requested.crossMediaGroupId is not null
+      union all
+      select distinct
+        active_requested.entryId as entryId,
+        active_requested.entryType as entryType,
+        review_subject_state.state as reviewState,
+        review_subject_state.manual_override as manualOverride
+      from active_requested
+      left join review_subject_state
+        on review_subject_state.entry_type = active_requested.entryType
+        and review_subject_state.cross_media_group_id is null
+        and review_subject_state.entry_id = active_requested.entryId
+      where active_requested.crossMediaGroupId is null
+    `,
+    args
+  });
 
-  if (termIds.length > 0) {
-    filters.push(
-      and(
-        eq(cardEntryLink.entryType, "term"),
-        inArray(cardEntryLink.entryId, termIds)
-      )
-    );
-  }
-
-  if (grammarIds.length > 0) {
-    filters.push(
-      and(
-        eq(cardEntryLink.entryType, "grammar"),
-        inArray(cardEntryLink.entryId, grammarIds)
-      )
-    );
-  }
-
-  if (filters.length === 0) {
-    return [];
-  }
-
-  return database
-    .select({
-      entryId: cardEntryLink.entryId,
-      entryType: cardEntryLink.entryType,
-      reviewState: reviewSubjectState.state,
-      manualOverride: reviewSubjectState.manualOverride
-    })
-    .from(cardEntryLink)
-    .innerJoin(card, eq(card.id, cardEntryLink.cardId))
-    .leftJoin(
-      term,
-      and(
-        eq(cardEntryLink.entryType, "term"),
-        eq(term.id, cardEntryLink.entryId)
-      )
-    )
-    .leftJoin(
-      grammarPattern,
-      and(
-        eq(cardEntryLink.entryType, "grammar"),
-        eq(grammarPattern.id, cardEntryLink.entryId)
-      )
-    )
-    .leftJoin(
-      reviewSubjectState,
-      sql`
-        ${reviewSubjectState.entryType} = ${cardEntryLink.entryType}
-        AND (
-          (
-            ${cardEntryLink.entryType} = 'term'
-            AND (
-              (
-                ${term.crossMediaGroupId} IS NOT NULL
-                AND ${reviewSubjectState.crossMediaGroupId} = ${term.crossMediaGroupId}
-              )
-              OR (
-                ${term.crossMediaGroupId} IS NULL
-                AND ${reviewSubjectState.entryId} = ${cardEntryLink.entryId}
-              )
-            )
-          )
-          OR (
-            ${cardEntryLink.entryType} = 'grammar'
-            AND (
-              (
-                ${grammarPattern.crossMediaGroupId} IS NOT NULL
-                AND ${reviewSubjectState.crossMediaGroupId} = ${grammarPattern.crossMediaGroupId}
-              )
-              OR (
-                ${grammarPattern.crossMediaGroupId} IS NULL
-                AND ${reviewSubjectState.entryId} = ${cardEntryLink.entryId}
-              )
-            )
-          )
-        )
-      `
-    )
-    .where(
-      and(
-        eq(card.status, "active"),
-        filters.length === 1 ? filters[0]! : or(...filters)
-      )
-    );
+  return result.rows.map((row) => ({
+    entryId: String(row.entryId),
+    entryType: row.entryType as EntryType,
+    manualOverride:
+      row.manualOverride === null || row.manualOverride === undefined
+        ? null
+        : Boolean(row.manualOverride),
+    reviewState:
+      typeof row.reviewState === "string" ? row.reviewState : null
+  }));
 }
 
 export type EntryLessonConnection = Awaited<

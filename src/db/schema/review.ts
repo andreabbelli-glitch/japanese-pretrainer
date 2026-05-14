@@ -176,6 +176,12 @@ export const reviewSubjectLog = sqliteTable(
       table.subjectKey,
       table.answeredAt
     ),
-    index("review_subject_log_card_answered_idx").on(table.cardId, table.answeredAt)
+    index("review_subject_log_card_answered_idx").on(table.cardId, table.answeredAt),
+    index("review_subject_log_introduced_day_idx").on(
+      table.previousState,
+      table.answeredAt,
+      table.subjectKey,
+      table.cardId
+    )
   ]
 );

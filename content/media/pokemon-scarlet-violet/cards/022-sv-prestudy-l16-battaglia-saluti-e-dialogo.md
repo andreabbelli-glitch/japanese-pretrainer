@@ -11,9 +11,12 @@ id: term-e027-sasete
 lemma: 〜させて
 reading: 〜させて
 romaji: ~ sasete
-meaning_it: lascia che io...
+meaning_it: lasciami... / fammi...
 notes_it: >-
-  Chiedere permesso di fare un'azione.
+  Forma in -te del causativo. Nelle battute informali chiede il permesso di fare
+  l'azione: "lasciami..." o "fammi...". Il causativo può anche voler dire "far
+  fare qualcosa a qualcuno", ma con 〜させて il focus è spesso sul permesso che chi
+  parla sta chiedendo per sé.
 :::
 :::card
 id: card-e027-sasete-recognition
@@ -22,11 +25,14 @@ entry_type: term
 entry_id: term-e027-sasete
 card_type: recognition
 front: '〜させて'
-back: lascia che io...
+back: lasciami... / fammi...
 example_jp: >-
   {{攻|こう}}{{撃|げき}}させて。
 example_it: >-
   Lasciami attaccare.
+notes_it: >-
+  In {{攻|こう}}{{撃|げき}}させて, させて non suona come "costringo qualcuno ad
+  attaccare": qui è una richiesta rapida, "dammi il permesso di attaccare io".
 :::
 :::term
 id: term-e028-omedetou

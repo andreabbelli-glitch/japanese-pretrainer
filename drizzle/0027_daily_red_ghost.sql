@@ -1,0 +1,1 @@
+CREATE INDEX `review_subject_log_introduced_day_idx` ON `review_subject_log` (`previous_state`,`answered_at`,`subject_key`,`card_id`);

@@ -281,6 +281,31 @@ describe("review system", () => {
       await cleanupReviewDatabase({ database, tempDir });
     });
 
+    it("creates a covering index for introduced-today review log counts", async () => {
+      const indexes = await database.all<{ name: string }>(`
+        SELECT name
+        FROM sqlite_master
+        WHERE type = 'index'
+          AND tbl_name = 'review_subject_log'
+          AND name = 'review_subject_log_introduced_day_idx'
+      `);
+      const indexColumns = await database.all<{ name: string; seqno: number }>(
+        "PRAGMA index_info('review_subject_log_introduced_day_idx')"
+      );
+
+      expect(indexes).toEqual([
+        {
+          name: "review_subject_log_introduced_day_idx"
+        }
+      ]);
+      expect(indexColumns.map((column) => column.name)).toEqual([
+        "previous_state",
+        "answered_at",
+        "subject_key",
+        "card_id"
+      ]);
+    });
+
     it("counts newly introduced cards against the local study day", async () => {
       await database.insert(media).values({
         id: "media_timezone_fixture",

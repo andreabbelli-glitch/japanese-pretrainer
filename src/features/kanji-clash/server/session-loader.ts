@@ -1,10 +1,10 @@
 import { db, type DatabaseClient } from "@/db";
 import {
   countKanjiClashAutomaticNewPairIntroductions,
-  listEligibleKanjiClashSubjects,
   listKanjiClashPairStatesByPairKeys
 } from "@/db/queries";
 
+import { listEligibleKanjiClashSubjectsCached } from "./eligibility-cache.ts";
 import {
   loadKanjiClashManualContrastCandidates,
   type KanjiClashManualContrastSeed
@@ -46,7 +46,7 @@ export async function loadKanjiClashQueueSnapshot(
       mediaIds: input.mediaIds
     });
   const [eligibleSubjects, manualContrastSeed] = await Promise.all([
-    listEligibleKanjiClashSubjects(database, {
+    listEligibleKanjiClashSubjectsCached(database, {
       mediaIds: input.mediaIds
     }),
     manualContrastSeedPromise
@@ -82,7 +82,9 @@ export async function loadKanjiClashQueueSnapshot(
 async function loadAutomaticKanjiClashQueueSnapshot(input: {
   dailyNewLimit?: number | null;
   database: DatabaseClient;
-  eligibleSubjects: Awaited<ReturnType<typeof listEligibleKanjiClashSubjects>>;
+  eligibleSubjects: Awaited<
+    ReturnType<typeof listEligibleKanjiClashSubjectsCached>
+  >;
   manualContrastSeed: KanjiClashManualContrastSeed;
   mode: KanjiClashSessionMode;
   now: Date;

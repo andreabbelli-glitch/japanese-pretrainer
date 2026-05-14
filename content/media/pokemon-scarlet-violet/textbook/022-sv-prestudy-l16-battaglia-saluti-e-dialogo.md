@@ -37,7 +37,7 @@ Qui compaiono parole che dicono subito che cosa sta succedendo: uno scambio, un 
 
 ## Espressioni ricorrenti
 
-- [〜させて](term:term-e027-sasete) — lascia che io...
+- [〜させて](term:term-e027-sasete) — lasciami... / fammi...
 - [おめでとう](term:term-e028-omedetou) — congratulazioni
 - [ようこそ](term:term-e029-youkoso) — benvenuto / ben arrivato
 
@@ -45,7 +45,7 @@ Qui compaiono parole che dicono subito che cosa sta succedendo: uno scambio, un 
 
 [交換](term:term-v151-koukan) vuol dire scambio: quando compare, il testo sta parlando di cambiare o scambiare qualcosa. [攻撃](term:term-v152-kougeki) è l'attacco, quindi segnala l'azione offensiva o la statistica legata all'attacco. [ただ](term:term-v153-tada) spesso introduce una limitazione o una correzione, con il senso di "solo" o "però".
 
-[いわ](term:term-v154-iwa) è la roccia, [本当](term:term-v155-hontou) significa "vero" o "davvero", e [授業](term:term-v156-jugyou) è la lezione scolastica. [〜させて](term:term-e027-sasete) chiede il permesso di fare un'azione, mentre [おめでとう](term:term-e028-omedetou) e [ようこそ](term:term-e029-youkoso) servono rispettivamente per congratularsi e per accogliere qualcuno.
+[いわ](term:term-v154-iwa) è la roccia, [本当](term:term-v155-hontou) significa "vero" o "davvero", e [授業](term:term-v156-jugyou) è la lezione scolastica. [〜させて](term:term-e027-sasete) è la forma in -te del causativo e nelle battute informali chiede il permesso di fare l'azione: "lasciami..." o "fammi...". Il causativo può anche indicare "far fare qualcosa a qualcuno", ma qui il punto è ricevere il permesso per agire. [おめでとう](term:term-e028-omedetou) e [ようこそ](term:term-e029-youkoso) servono rispettivamente per congratularsi e per accogliere qualcuno.
 
 ## Esempi guidati
 
@@ -79,4 +79,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri queste forme, leggi prima l'atto della battuta: 交換 scambia, 攻撃 attacca, 〜させて chiede permesso, おめでとう si congratula e ようこそ accoglie qualcuno in un luogo.
+Quando incontri queste forme, leggi prima l'atto della battuta: 交換 scambia, 攻撃 attacca, 〜させて chiede "lasciami fare questa azione", おめでとう si congratula e ようこそ accoglie qualcuno in un luogo.

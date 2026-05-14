@@ -860,6 +860,7 @@ async function buildGlossaryResolvedEntries(
   filters: GlossaryQueryState
 ) {
   const entryRefs = entries.map((entry) => ({
+    crossMediaGroupId: entry.crossMediaGroupId ?? null,
     entryId: entry.internalId,
     entryType: entry.kind
   }));
@@ -883,6 +884,7 @@ async function buildGlobalGlossaryResolvedEntries(
   filters: GlossaryQueryState
 ) {
   const entryRefs = entries.map((entry) => ({
+    crossMediaGroupId: entry.crossMediaGroupId ?? null,
     entryId: entry.internalId,
     entryType: entry.kind
   }));
@@ -903,7 +905,11 @@ async function buildGlobalGlossaryResolvedEntries(
 
 async function loadStudySignalsByEntry(
   database: DatabaseClient,
-  entries: Array<{ entryId: string; entryType: GlossaryKind }>
+  entries: Array<{
+    crossMediaGroupId: string | null;
+    entryId: string;
+    entryType: GlossaryKind;
+  }>
 ) {
   const rows = await listEntryStudySignals(database, entries);
 

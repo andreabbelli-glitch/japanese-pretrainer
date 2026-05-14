@@ -357,7 +357,7 @@ export async function listGlossaryPreviewEntries(
   }>,
   limitPerMedia = 6
 ): Promise<GlossaryPreviewEntryState[]> {
-  if (media.length === 0) {
+  if (media.length === 0 || limitPerMedia <= 0) {
     return [];
   }
 
@@ -368,6 +368,7 @@ export async function listGlossaryPreviewEntries(
 
   const rows = await database.all<{
     mediaId: string;
+    rn: number | string;
     sourceId: string;
     entryType: "term" | "grammar";
     label: string;
@@ -405,11 +406,44 @@ export async function listGlossaryPreviewEntries(
       LEFT JOIN segment s ON s.id = gp.segment_id
       WHERE gp.media_id IN (${mediaIdList})
     ),
+    ranked_entries AS (
+      SELECT
+        ae.entry_id,
+        ae.entry_type,
+        ae.media_id,
+        ae.cross_media_group_id,
+        ae.source_id,
+        ae.label,
+        ae.meaning_it,
+        ae.reading,
+        ae.segment_title,
+        ROW_NUMBER() OVER(
+          PARTITION BY ae.media_id
+          ORDER BY ae.entry_type DESC, ae.label ASC
+        ) AS rn
+      FROM all_entries ae
+    ),
+    preview_entries AS (
+      SELECT
+        re.entry_id,
+        re.entry_type,
+        re.media_id,
+        re.cross_media_group_id,
+        re.source_id,
+        re.label,
+        re.meaning_it,
+        re.reading,
+        re.segment_title,
+        re.rn
+      FROM ranked_entries re
+      WHERE re.rn <= ${limitPerMedia}
+    ),
     grouped_entry_state_matches AS (
       SELECT
         ae.entry_id,
         ae.entry_type,
         ae.media_id,
+        ae.rn,
         ae.source_id,
         ae.label,
         ae.meaning_it,
@@ -417,7 +451,7 @@ export async function listGlossaryPreviewEntries(
         ae.segment_title,
         COALESCE(rss.manual_override, 0) AS manual_override,
         rss.state AS state
-      FROM all_entries ae
+      FROM preview_entries ae
       LEFT JOIN review_subject_state rss
         ON rss.entry_type = ae.entry_type
         AND rss.cross_media_group_id = ae.cross_media_group_id
@@ -428,6 +462,7 @@ export async function listGlossaryPreviewEntries(
         ae.entry_id,
         ae.entry_type,
         ae.media_id,
+        ae.rn,
         ae.source_id,
         ae.label,
         ae.meaning_it,
@@ -435,7 +470,7 @@ export async function listGlossaryPreviewEntries(
         ae.segment_title,
         COALESCE(rss.manual_override, 0) AS manual_override,
         rss.state AS state
-      FROM all_entries ae
+      FROM preview_entries ae
       LEFT JOIN review_subject_state rss
         ON rss.entry_type = ae.entry_type
         AND rss.cross_media_group_id IS NULL
@@ -452,6 +487,7 @@ export async function listGlossaryPreviewEntries(
         esm.entry_id,
         esm.entry_type,
         esm.media_id,
+        esm.rn,
         esm.source_id,
         esm.label,
         esm.meaning_it,
@@ -486,6 +522,7 @@ export async function listGlossaryPreviewEntries(
         esm.entry_id,
         esm.entry_type,
         esm.media_id,
+        esm.rn,
         esm.source_id,
         esm.label,
         esm.meaning_it,
@@ -495,6 +532,7 @@ export async function listGlossaryPreviewEntries(
     entry_states AS (
       SELECT
         media_id,
+        rn,
         entry_type,
         source_id,
         label,
@@ -507,15 +545,12 @@ export async function listGlossaryPreviewEntries(
           WHEN is_review = 1 THEN 'review'
           WHEN is_new = 1 THEN 'new'
           ELSE 'available'
-        END AS state,
-        ROW_NUMBER() OVER(
-          PARTITION BY media_id
-          ORDER BY entry_type DESC, label ASC
-        ) as rn
+        END AS state
       FROM entry_signals
     )
     SELECT
       es.media_id AS mediaId,
+      es.rn AS rn,
       es.source_id AS sourceId,
       es.entry_type AS entryType,
       es.label AS label,
@@ -524,7 +559,6 @@ export async function listGlossaryPreviewEntries(
       es.segment_title AS segmentTitle,
       es.state AS state
     FROM entry_states es
-    WHERE es.rn <= ${limitPerMedia}
     ORDER BY es.media_id ASC, es.rn ASC
   `);
 
