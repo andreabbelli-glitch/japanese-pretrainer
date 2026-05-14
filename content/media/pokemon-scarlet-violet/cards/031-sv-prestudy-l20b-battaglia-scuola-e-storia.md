@@ -298,8 +298,8 @@ example_it: >-
 :::term
 id: term-v300-iru
 lemma: 入る
-reading: いる
-romaji: iru
+reading: はいる
+romaji: hairu
 meaning_it: entrare
 notes_it: >-
   入る indica entrare in un luogo, in un menu o in una modalità. Il soggetto passa
@@ -311,10 +311,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-031-sv-prestudy-l20b-battag
 entry_type: term
 entry_id: term-v300-iru
 card_type: recognition
-front: "{{入|い}}る"
+front: "{{入|はい}}る"
 back: entrare
 example_jp: >-
-  ジムに {{入|い}}る。
+  ジムに {{入|はい}}る。
 example_it: >-
   Entro nella palestra.
 :::
