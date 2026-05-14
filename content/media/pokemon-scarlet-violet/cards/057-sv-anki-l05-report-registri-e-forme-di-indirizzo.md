@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-tsukareru
 card_type: recognition
-front: '{{疲|つか}}れる / つかれる'
+front: '{{疲|つか}}れる'
 back: >-
   つかれる — stancarsi; verbo intransitivo, il soggetto che si stanca prende が. Si usa spesso al passato per indicare uno stato di stanchezza acquisito.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-houkoku
 card_type: recognition
-front: '{{報|ほう}}{{告|こく}} / ほうこく'
+front: '{{報|ほう}}{{告|こく}}'
 back: >-
   ほうこく — rapporto; segnalazione; sostantivo verbale (する) per resoconti formali. Il destinatario del rapporto prende に.
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-minasan
 card_type: recognition
-front: '{{皆|みな}}さん / みなさん'
+front: '{{皆|みな}}さん'
 back: >-
   みなさん — tutti; voi tutti; espressione formale per rivolgersi a un gruppo, marca distanza sociale e rispetto con il suffisso さん.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-manabu
 card_type: recognition
-front: '{{学|まな}}ぶ / まなぶ'
+front: '{{学|まな}}ぶ'
 back: >-
   まなぶ — imparare; studiare; verbo transitivo che sottolinea l'assimilazione di conoscenze. La materia di studio prende を.
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-kininaru
 card_type: recognition
-front: '{{気|き}}になる / きになる'
+front: '{{気|き}}になる'
 back: >-
   きになる — incuriosire; preoccupare; espressione idiomatica per un pensiero che si fissa in testa. La cosa che attira l'attenzione prende が.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-anata
 card_type: recognition
-front: '{{貴方|あなた}} / あなた'
+front: '{{貴方|あなた}}'
 back: >-
   あなた — tu (forma scritta/formale); pronome di seconda persona distaccato, usato in assenza di confidenza o in testi scritti formali.
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-kisama
 card_type: recognition
-front: '{{貴|き}}{{様|さま}} / きさま'
+front: '{{貴|き}}{{様|さま}}'
 back: >-
   きさま — tu (forma rude/offensiva); pronome estremamente ostile e dispregiativo. Si usa per esprimere rabbia e aggressività.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-wazawai
 card_type: recognition
-front: '{{災|わざわ}}い / わざわい'
+front: '{{災|わざわ}}い'
 back: >-
   わざわい — disgrazia; calamità; termine solenne legato a disastri su vasta scala, miti storici o rovine.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-shousei
 card_type: recognition
-front: '{{小|しょう}}{{生|せい}} / しょうせい'
+front: '{{小|しょう}}{{生|せい}}'
 back: >-
   しょうせい — io (umile/letterario); pronome di prima persona antiquato, usato solo da uomini per abbassarsi rispetto a chi ascolta.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-regi
 entry_type: term
 entry_id: term-anki-l05-tadashii
 card_type: recognition
-front: '{{正|ただ}}しい / ただしい'
+front: '{{正|ただ}}しい'
 back: >-
   ただしい — corretto; giusto; aggettivo い per indicare conformità alla verità, alle regole o a un comportamento morale.
 example_jp: >-

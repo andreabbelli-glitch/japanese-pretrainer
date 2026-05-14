@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-succes
 entry_type: term
 entry_id: term-anki-l17-nyuusatsu
 card_type: recognition
-front: '{{入|にゅう}}{{札|さつ}} / にゅうさつ'
+front: '{{入|にゅう}}{{札|さつ}}'
 back: >-
   にゅうさつ — offerta all'asta; indica l'atto formale di fare un'offerta di prezzo per un oggetto durante un'asta.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-succes
 entry_type: term
 entry_id: term-anki-l17-hakken
 card_type: recognition
-front: '{{発|はっ}}{{見|けん}} / はっけん'
+front: '{{発|はっ}}{{見|けん}}'
 back: >-
   はっけん — scoperta; si usa per indicare il ritrovamento di qualcosa che esisteva già ma era nascosto o sconosciuto.
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-succes
 entry_type: term
 entry_id: term-anki-l17-hokyuu
 card_type: recognition
-front: '{{補|ほ}}{{給|きゅう}} / ほきゅう'
+front: '{{補|ほ}}{{給|きゅう}}'
 back: >-
   ほきゅう — rifornimento; indica l'azione di reintegrare risorse esaurite o materiali necessari.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-succes
 entry_type: term
 entry_id: term-anki-l17-yuushuu
 card_type: recognition
-front: '{{優|ゆう}}{{秀|しゅう}} / ゆうしゅう'
+front: '{{優|ゆう}}{{秀|しゅう}}'
 back: >-
   ゆうしゅう — eccellente; si usa per descrivere qualcuno che spicca per qualità, talento o prestazioni superiori alla media.
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-succes
 entry_type: term
 entry_id: term-anki-l17-yuushou
 card_type: recognition
-front: '{{優|ゆう}}{{勝|しょう}} / ゆうしょう'
+front: '{{優|ゆう}}{{勝|しょう}}'
 back: >-
   ゆうしょう — vittoria, campionato; indica il trionfo finale in una competizione organizzata o in un torneo.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-succes
 entry_type: term
 entry_id: term-anki-l17-sasou
 card_type: recognition
-front: '{{誘|さそ}}う / さそう'
+front: '{{誘|さそ}}う'
 back: >-
   さそう — invitare; verbo usato per proporre a qualcuno di fare un'attività insieme o di andare da qualche parte.
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-succes
 entry_type: term
 entry_id: term-anki-l17-asobu
 card_type: recognition
-front: '{{遊|あそ}}ぶ / あそぶ'
+front: '{{遊|あそ}}ぶ'
 back: >-
   あそぶ — giocare, divertirsi; descrive il trascorrere del tempo in modo piacevole e spensierato.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-succes
 entry_type: term
 entry_id: term-anki-l17-ryuu
 card_type: recognition
-front: '{{竜|りゅう}} / りゅう'
+front: '{{竜|りゅう}}'
 back: >-
   りゅう — drago; termine per creature mitologiche draconiane, spesso usato in contesti narrativi epici.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-succes
 entry_type: term
 entry_id: term-anki-l17-yonin
 card_type: recognition
-front: '{{4人|よにん}} / よにん'
+front: '{{4人|よにん}}'
 back: >-
   よにん — quattro persone; contatore irregolare per indicare un gruppo composto da quattro esseri umani.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-succes
 entry_type: term
 entry_id: term-anki-l17-okashi
 card_type: recognition
-front: 'お{{菓|か}}{{子|し}} / おかし'
+front: 'お{{菓|か}}{{子|し}}'
 back: >-
   おかし — dolci, snack; termine generico per leccornie o spuntini leggeri, spesso consumati durante una pausa.
 example_jp: >-

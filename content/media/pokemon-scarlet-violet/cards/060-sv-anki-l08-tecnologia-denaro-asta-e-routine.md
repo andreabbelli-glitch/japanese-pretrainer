@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-
 entry_type: term
 entry_id: term-anki-l08-eeai
 card_type: recognition
-front: '{{Ａ|エー}}{{Ｉ|アイ}} / エーアイ'
+front: '{{Ａ|エー}}{{Ｉ|アイ}}'
 back: >-
   エーアイ — IA; intelligenza artificiale. Sigla inglese (AI) resa foneticamente in katakana.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-
 entry_type: term
 entry_id: term-anki-l08-okane
 card_type: recognition
-front: 'お{{金|かね}} / おかね'
+front: 'お{{金|かね}}'
 back: >-
   おかね — denaro; soldi. Indica i fondi fisici del giocatore, contrapposti spesso ad altre valute come i LP.
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-
 entry_type: term
 entry_id: term-anki-l08-konomae
 card_type: recognition
-front: 'この{{前|まえ}} / このまえ'
+front: 'この{{前|まえ}}'
 back: >-
   このまえ — l’altro giorno; recentemente. Espressione temporale per indicare un momento nel passato recente.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-
 entry_type: term
 entry_id: term-anki-l08-ossu
 card_type: recognition
-front: '{{押|おっ}}{{忍|す}} / おっす'
+front: '{{押|おっ}}{{忍|す}}'
 back: >-
   おっす — ossu / ehi (saluto energico). Saluto informale e vigoroso, tipico degli ambienti marziali o degli allenatori carichi di energia.
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-
 entry_type: term
 entry_id: term-anki-l08-tanoshimu
 card_type: recognition
-front: '{{楽|たの}}しむ / たのしむ'
+front: '{{楽|たの}}しむ'
 back: >-
   たのしむ — divertirsi; godersi. Verbo transitivo che esprime l'atto di trarre piacere o gioia da un'esperienza.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-
 entry_type: term
 entry_id: term-anki-l08-seri
 card_type: recognition
-front: '{{競|せ}}り / せり'
+front: '{{競|せ}}り'
 back: >-
   せり — asta; competizione. Indica una modalità di vendita basata su rilanci competitivi.
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-
 entry_type: term
 entry_id: term-anki-l08-geijutsu
 card_type: recognition
-front: '{{芸|げい}}{{術|じゅつ}} / げいじゅつ'
+front: '{{芸|げい}}{{術|じゅつ}}'
 back: >-
   げいじゅつ — arte. Sostantivo che raggruppa le forme espressive umane, includendo la materia scolastica.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-
 entry_type: term
 entry_id: term-anki-l08-imamade
 card_type: recognition
-front: '{{今|いま}}まで / いままで'
+front: '{{今|いま}}まで'
 back: >-
   いままで — fino ad ora; finora. Espressione temporale che copre il lasso di tempo dal passato al momento presente.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-
 entry_type: term
 entry_id: term-anki-l08-neru
 card_type: recognition
-front: '{{寝|ね}}る / ねる'
+front: '{{寝|ね}}る'
 back: >-
   ねる — dormire. Verbo intransitivo che indica l'azione di addormentarsi o riposare a letto.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-
 entry_type: term
 entry_id: term-anki-l08-kaeru
 card_type: recognition
-front: '{{変|か}}える / かえる'
+front: '{{変|か}}える'
 back: >-
   かえる — cambiare; trasformare. Verbo transitivo usato per alterare intenzionalmente uno stato, un'impostazione o l'aspetto.
 example_jp: >-

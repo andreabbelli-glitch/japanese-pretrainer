@@ -122,7 +122,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione
 entry_type: term
 entry_id: term-anki-l18-gozonji
 card_type: recognition
-front: 'ご{{存|ぞん}}{{知|じ}} / ごぞんじ'
+front: 'ご{{存|ぞん}}{{知|じ}}'
 back: >-
   ごぞんじ — sapere; conoscere, onorifico. È la forma di rispetto ({{尊|そん}}{{敬|けい}}{{語|ご}}) di {{知|し}}る; si usa esclusivamente per riferirsi alla conoscenza dell'interlocutore o di una terza persona di riguardo.
 example_jp: >-
@@ -139,7 +139,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione
 entry_type: term
 entry_id: term-anki-l18-yaruki
 card_type: recognition
-front: 'やる{{気|き}} / やるき'
+front: 'やる{{気|き}}'
 back: >-
   やるき — motivazione; voglia di fare. Unisce やる (fare) e {{気|き}} (spirito/mente) e descrive la spinta interiore; prende が per la sua presenza (やる{{気|き}}がある) e を per manifestarla (やる{{気|き}}を{{出|で}}す).
 example_jp: >-
@@ -156,7 +156,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione
 entry_type: term
 entry_id: term-anki-l18-kowareru
 card_type: recognition
-front: '{{壊|こわ}}れる / こわれる'
+front: '{{壊|こわ}}れる'
 back: >-
   こわれる — rompersi. Verbo intransitivo che indica un oggetto, un macchinario o una struttura che subisce un guasto o un danno fisico, prendendo が come soggetto.
 example_jp: >-
@@ -173,7 +173,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione
 entry_type: term
 entry_id: term-anki-l18-rakuen
 card_type: recognition
-front: '{{楽|らく}}{{園|えん}} / らくえん'
+front: '{{楽|らく}}{{園|えん}}'
 back: >-
   らくえん — paradiso. Si scrive unendo i concetti di 'piacevole/facile' ({{楽|たの}}) e 'giardino/parco' ({{園|えん}}) per indicare un luogo utopico e idilliaco.
 example_jp: >-
@@ -190,7 +190,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione
 entry_type: term
 entry_id: term-anki-l18-katsuyaku
 card_type: recognition
-front: '{{活|かつ}}{{躍|やく}} / かつやく'
+front: '{{活|かつ}}{{躍|やく}}'
 back: >-
   かつやく — attività; successo attivo. Utilizzato spesso come verbo する per indicare qualcuno che brilla per il suo contributo o ruolo sul campo; il soggetto prende が.
 example_jp: >-
@@ -207,7 +207,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione
 entry_type: term
 entry_id: term-anki-l18-kyoumibukai
 card_type: recognition
-front: '{{興|きょう}}{{味|み}}{{深|ぶか}}い / きょうみぶかい'
+front: '{{興|きょう}}{{味|み}}{{深|ぶか}}い'
 back: >-
   きょうみぶかい — molto interessante. Aggettivo in -i che combina {{興|きょう}}{{味|み}} (interesse) e {{深|ふか}}い (profondo), descrivendo una curiosita' intellettuale forte per un fenomeno.
 example_jp: >-
@@ -224,7 +224,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione
 entry_type: term
 entry_id: term-anki-l18-arawareru
 card_type: recognition
-front: '{{現|あらわ}}れる / あらわれる'
+front: '{{現|あらわ}}れる'
 back: >-
   あらわれる — apparire. Verbo intransitivo che segna l'emersione alla vista di qualcosa di atteso o inaspettato; l'entità che si palesa prende が.
 example_jp: >-
@@ -241,7 +241,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione
 entry_type: term
 entry_id: term-anki-l18-hikaru
 card_type: recognition
-front: '{{光|ひか}}る / ひかる'
+front: '{{光|ひか}}る'
 back: >-
   ひかる — brillare. Verbo intransitivo usato per descrivere un oggetto che emette o riflette direttamente luce visibile, prendendo が come soggetto dell'azione.
 example_jp: >-
@@ -258,7 +258,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione
 entry_type: term
 entry_id: term-anki-l18-goukakusha
 card_type: recognition
-front: '{{合|ごう}}{{格|かく}}{{者|しゃ}} / ごうかくしゃ'
+front: '{{合|ごう}}{{格|かく}}{{者|しゃ}}'
 back: >-
   ごうかくしゃ — persona promossa/ammessa. Combina 'superare un esame' ({{合|ごう}}{{格|かく}}) e il suffisso 'persona' ({{者|もの}}) per definire chi ha ottenuto formalmente un riconoscimento ufficiale.
 example_jp: >-
@@ -275,7 +275,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione
 entry_type: term
 entry_id: term-anki-l18-zaihou
 card_type: recognition
-front: '{{財|ざい}}{{宝|ほう}} / ざいほう'
+front: '{{財|ざい}}{{宝|ほう}}'
 back: >-
   ざいほう — tesoro. Composto da “ricchezza” e “gioiello/tesoro”, indica beni antichi, leggendari e preziosi rispetto al normale denaro contante.
 example_jp: >-
@@ -292,7 +292,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione
 entry_type: term
 entry_id: term-anki-l18-rikai
 card_type: recognition
-front: '{{理|り}}{{解|かい}} / りかい'
+front: '{{理|り}}{{解|かい}}'
 back: >-
   りかい — comprensione; capire. Come verbo suru ({{理|り}}{{解|かい}}する) identifica il processo intellettuale e razionale di afferrare un meccanismo, una regola o la prospettiva altrui (usando を).
 example_jp: >-

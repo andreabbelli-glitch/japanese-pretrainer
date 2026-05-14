@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-tariru
 card_type: recognition
-front: '{{足|た}}りる / たりる'
+front: '{{足|た}}りる'
 back: >-
   たりる — bastare; essere sufficiente. Indica che una quantità, una risorsa o una condizione copre il bisogno. La cosa che basta si marca di solito con が; il bisogno o lo scopo può comparire con に/には.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-ooi
 card_type: recognition
-front: '{{多|おお}}い / おおい'
+front: '{{多|おお}}い'
 back: >-
   おおい — molti; numeroso. Aggettivo in い che descrive un'alta quantità. Al contrario dell'italiano, non si usa quasi mai per modificare direttamente un nome, ma funge da predicato.
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-hajimete
 card_type: recognition
-front: '{{初|はじ}}めて / はじめて'
+front: '{{初|はじ}}めて'
 back: >-
   はじめて — per la prima volta. Indica la prima esperienza o il primo verificarsi di un'azione; può funzionare da avverbio o entrare in costruzioni nominali.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-kangaeru
 card_type: recognition
-front: '{{考|かんが}}える / かんがえる'
+front: '{{考|かんが}}える'
 back: >-
   かんがえる — pensare; riflettere. Esprime un ragionamento attivo o una valutazione. L'oggetto della riflessione si marca con を; l'argomento può essere introdotto da について.
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-touchan
 card_type: recognition
-front: '{{父|とう}}ちゃん / とうちゃん'
+front: '{{父|とう}}ちゃん'
 back: >-
   とうちゃん — papà. Modo informale e affettuoso per chiamare o nominare il proprio padre in famiglia.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-mukashi
 card_type: recognition
-front: '{{昔|むかし}} / むかし'
+front: '{{昔|むかし}}'
 back: >-
   むかし — tempo fa; il passato. Sostantivo che indica un tempo remoto o leggendario. Spesso contrapposto al presente ({{今|いま}}).
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-kaachan
 card_type: recognition
-front: '{{母|かあ}}ちゃん / かあちゃん'
+front: '{{母|かあ}}ちゃん'
 back: >-
   かあちゃん — mamma. Modo informale e affettuoso per chiamare o nominare la propria madre in famiglia.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-ippiki
 card_type: recognition
-front: '{{1匹|いっぴき}} / いっぴき'
+front: '{{1匹|いっぴき}}'
 back: >-
   いっぴき — una creatura/animale. Contatore universale per piccoli animali, insetti, pesci e per tutti i Pokémon, indipendentemente dalle loro dimensioni.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-warui
 card_type: recognition
-front: '{{悪|わる}}い / わるい'
+front: '{{悪|わる}}い'
 back: >-
   わるい — cattivo; negativo; sbagliato; mi dispiace. Aggettivo in い molto comune: può descrivere una qualità negativa o funzionare da scusa informale.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-qu
 entry_type: term
 entry_id: term-anki-l03-kaku
 card_type: recognition
-front: '{{書|か}}く / かく'
+front: '{{書|か}}く'
 back: >-
   かく — scrivere. Verbo del primo gruppo (godan) che indica l'azione di tracciare lettere o fissare dati su un supporto testuale o digitale.
 example_jp: >-

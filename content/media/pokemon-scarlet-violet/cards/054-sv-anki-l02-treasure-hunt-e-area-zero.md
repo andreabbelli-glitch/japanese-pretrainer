@@ -92,7 +92,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-054-sv-anki-l02-treasure-hu
 entry_type: term
 entry_id: term-anki-l02-nen
 card_type: recognition
-front: '{{年|ねん}} / ねん'
+front: '{{年|ねん}}'
 back: >-
   ねん — anno. Spesso usato come suffisso o contatore per gli anni solari e scolastici, a differenza di {{歳|さい}} (さい) che conta l'età delle persone.
 example_jp: >-
@@ -109,7 +109,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-054-sv-anki-l02-treasure-hu
 entry_type: term
 entry_id: term-anki-l02-sukoshi
 card_type: recognition
-front: '{{少|すこ}}し / すこし'
+front: '{{少|すこ}}し'
 back: >-
   すこし — un po'; poco. Avverbio per piccole quantità o brevi lassi di tempo; spesso usato per ammorbidire il tono di una richiesta.
 example_jp: >-
@@ -126,7 +126,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-054-sv-anki-l02-treasure-hu
 entry_type: term
 entry_id: term-v068-ooana
 card_type: recognition
-front: '{{大|おお}}{{穴|あな}} / おおあな'
+front: '{{大|おお}}{{穴|あな}}'
 back: >-
   おおあな — grande voragine. Termine geografico composto da {{大|おお}} (grande) e {{穴|あな}} (buco), usato specificamente per indicare il cratere al centro di Paldea.
 example_jp: >-
@@ -143,7 +143,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-054-sv-anki-l02-treasure-hu
 entry_type: term
 entry_id: term-anki-l02-kanjiru
 card_type: recognition
-front: '{{感|かん}}じる / かんじる'
+front: '{{感|かん}}じる'
 back: >-
   かんじる — sentire; percepire. Descrive la percezione sensoriale non uditiva/visiva, come le emozioni o l'aura ({{気|け}}{{配|はい}}) di un Pokémon. Prende を.
 example_jp: >-
@@ -160,7 +160,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-054-sv-anki-l02-treasure-hu
 entry_type: term
 entry_id: term-anki-l02-yobu
 card_type: recognition
-front: '{{呼|よ}}ぶ / よぶ'
+front: '{{呼|よ}}ぶ'
 back: >-
   よぶ — chiamare; invitare. Prende を per la persona o cosa chiamata. È comunissimo nella struttura AをBと{{呼|よ}}ぶ (chiamare A col nome B).
 example_jp: >-
@@ -177,7 +177,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-054-sv-anki-l02-treasure-hu
 entry_type: term
 entry_id: term-anki-l02-yomu
 card_type: recognition
-front: '{{読|よ}}む / よむ'
+front: '{{読|よ}}む'
 back: >-
   よむ — leggere. Azione rivolta a testi scritti (libri, cartelli). Prende を per il testo letto.
 example_jp: >-
@@ -194,7 +194,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-054-sv-anki-l02-treasure-hu
 entry_type: term
 entry_id: term-takara-sagashi
 card_type: recognition
-front: '{{宝|たから}}{{探|さが}}し / たからさがし'
+front: '{{宝|たから}}{{探|さが}}し'
 back: >-
   たからさがし — caccia al tesoro. Sostantivo composto da {{宝|たから}} (tesoro) e {{探|さが}}し (ricerca). Appare spesso con il verbo {{開|かい}}{{始|し}}する (iniziare) o {{出|で}}かける (partire).
 example_jp: >-
@@ -211,7 +211,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-054-sv-anki-l02-treasure-hu
 entry_type: term
 entry_id: term-anki-l02-hanashi
 card_type: recognition
-front: '{{話|はなし}} / はなし'
+front: '{{話|はなし}}'
 back: >-
   はなし — discorso; conversazione; storia. Sostantivo che indica il contenuto comunicato. Si usa in frasi fisse come {{話|はなし}}がある (ho qualcosa da dirti).
 example_jp: >-
@@ -228,7 +228,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-054-sv-anki-l02-treasure-hu
 entry_type: term
 entry_id: term-anki-l02-hanasu
 card_type: recognition
-front: '{{話|はな}}す / はなす'
+front: '{{話|はな}}す'
 back: >-
   はなす — parlare. Azione di comunicazione. Il partner di conversazione prende と (parlare con) o に (parlare a).
 example_jp: >-
@@ -245,7 +245,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-054-sv-anki-l02-treasure-hu
 entry_type: term
 entry_id: term-anki-l02-nanika
 card_type: recognition
-front: '{{何|なに}}か / なにか'
+front: '{{何|なに}}か'
 back: >-
   なにか — qualcosa. Pronome per un oggetto non specificato. Può essere seguito da particelle come が e を ({{何|なに}}かが), ma spesso vengono omesse.
 example_jp: >-

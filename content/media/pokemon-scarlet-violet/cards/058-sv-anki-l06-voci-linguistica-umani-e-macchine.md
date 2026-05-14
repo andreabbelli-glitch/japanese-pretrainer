@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-uwasa
 card_type: recognition
-front: '{{噂|うわさ}} / うわさ'
+front: '{{噂|うわさ}}'
 back: >-
   うわさ — voce; diceria. Si usa con particelle come が per indicare l'esistenza della voce ({{噂|うわさ}}がある) o を per riceverla/sentirla ({{噂|うわさ}}を{{聞|き}}く).
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-gengogaku
 card_type: recognition
-front: '{{言|げん}}{{語|ご}}{{学|がく}} / げんごがく'
+front: '{{言|げん}}{{語|ご}}{{学|がく}}'
 back: >-
   げんごがく — linguistica. È una materia di studio e si abbina a verbi come “studiare/imparare”; con la particella の modifica un nome, come in una “lezione di linguistica”.
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-shi
 card_type: recognition
-front: '{{氏|し}} / し'
+front: '{{氏|し}}'
 back: >-
   し — signor; sig. È un suffisso onorifico formale, spesso usato nei notiziari, nei documenti ufficiali o per indicare figure professionali autorevoli.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-agaru
 card_type: recognition
-front: '{{上|あ}}がる / あがる'
+front: '{{上|あ}}がる'
 back: >-
   あがる — salire; aumentare. Verbo intransitivo (prende が); indica un innalzamento di livello, posizione o stat. Contrasta con l'azione transitiva {{上|あ}}げる (alzare qualcosa).
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-kuu
 card_type: recognition
-front: '{{食|く}}う / くう'
+front: '{{食|く}}う'
 back: >-
   くう — mangiare. È una variante colloquiale e ruvida di {{食|た}}べる; si usa con を per l'oggetto consumato, come in サンドウィッチを{{食|く}}う.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-shinjiru
 card_type: recognition
-front: '{{信|しん}}じる / しんじる'
+front: '{{信|しん}}じる'
 back: >-
   しんじる — credere; fidarsi. Si usa con を per indicare la persona o la cosa in cui si ripone fiducia (ポケモンを{{信|しん}}じる).
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-ningen
 card_type: recognition
-front: '{{人|にん}}{{間|げん}} / にんげん'
+front: '{{人|にん}}{{間|げん}}'
 back: >-
   にんげん — essere umano. Spesso usato in contrapposizione ad altre specie, come i Pokémon ({{人|にん}}{{間|げん}}とポケモン).
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-kaisan
 card_type: recognition
-front: '{{解|かい}}{{散|さん}} / かいさん'
+front: '{{解|かい}}{{散|さん}}'
 back: >-
   かいさん — scioglimento; congedo. Usato per indicare la fine di una riunione o di un raggruppamento temporaneo (es. una classe o un team). Si usa spesso come esclamazione o col verbo する.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-tanoshimi
 card_type: recognition
-front: '{{楽|たの}}しみ / たのしみ'
+front: '{{楽|たの}}しみ'
 back: >-
   たのしみ — piacere; attesa gioiosa. Spesso si usa per esprimere entusiasmo per un evento futuro (バトルが{{楽|たの}}しみだ).
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-lingui
 entry_type: term
 entry_id: term-anki-l06-kikai
 card_type: recognition
-front: '{{機|き}}{{械|かい}} / きかい'
+front: '{{機|き}}{{械|かい}}'
 back: >-
   きかい — macchina; apparecchiatura meccanica. Si differenzia da {{道|どう}}{{具|ぐ}} (strumento manuale) perché implica componenti interni complessi e spesso alimentazione elettrica o futuristica.
 example_jp: >-

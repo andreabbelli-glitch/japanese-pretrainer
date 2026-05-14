@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-tsuzuku
 card_type: recognition
-front: '{{続|つづ}}く / つづく'
+front: '{{続|つづ}}く'
 back: >-
   つづく — continuare; durare Il soggetto che continua prende la particella が: {{冒|ぼう}}{{険|けん}}が{{続|つづ}}く.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-kamigata
 card_type: recognition
-front: '{{髪|かみ}}{{型|がた}} / かみがた'
+front: '{{髪|かみ}}{{型|がた}}'
 back: >-
   かみがた — acconciatura Si usa con il verbo する per indicare la scelta di un taglio: {{髪|かみ}}{{型|がた}}にする (farsi un'acconciatura).
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-kikoeru
 card_type: recognition
-front: '{{聞|き}}こえる / きこえる'
+front: '{{聞|き}}こえる'
 back: >-
   きこえる — sentirsi; essere udibile Descrive un suono che raggiunge le orecchie spontaneamente. Il suono percepito prende が: {{声|こえ}}が{{聞|き}}こえる.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-mikakunin
 card_type: recognition
-front: '{{未|み}}{{確|かく}}{{認|にん}} / みかくにん'
+front: '{{未|み}}{{確|かく}}{{認|にん}}'
 back: >-
   みかくにん — non confermato; non identificato Spesso usato come aggettivo tramite la particella の per descrivere entità misteriose.
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-yume
 card_type: recognition
-front: '{{夢|ゆめ}} / ゆめ'
+front: '{{夢|ゆめ}}'
 back: >-
   ゆめ — sogno Indica sia l'esperienza onirica sia un'ambizione di vita, come diventare Campione.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-mittsu
 card_type: recognition
-front: '{{3|みっ}}つ / みっつ'
+front: '{{3|みっ}}つ'
 back: >-
   みっつ — tre cose Sistema di conteggio tradizionale. Come avverbio di quantità, segue la particella dell'oggetto.
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-orei
 card_type: recognition
-front: 'お{{礼|れい}} / おれい'
+front: 'お{{礼|れい}}'
 back: >-
   おれい — ringraziamento Frequente nell'espressione お{{礼|れい}}に (come ringraziamento) per offrire ricompense.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-imushitsu
 card_type: recognition
-front: '{{医|い}}{{務|む}}{{室|しつ}} / いむしつ'
+front: '{{医|い}}{{務|む}}{{室|しつ}}'
 back: >-
   いむしつ — infermeria Luogo scolastico. L'ubicazione di persone o cose al suo interno prende la particella に.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-kazoku
 card_type: recognition
-front: '{{家|か}}{{族|ぞく}} / かぞく'
+front: '{{家|か}}{{族|ぞく}}'
 back: >-
   かぞく — famiglia Quando è l'argomento centrale di una conversazione, prende frequentemente のこと.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-
 entry_type: term
 entry_id: term-anki-l12-mitsukaru
 card_type: recognition
-front: '{{見|み}}つかる / みつかる'
+front: '{{見|み}}つかる'
 back: >-
   みつかる — essere trovato L'oggetto scoperto è il soggetto grammaticale e prende が: スパイスが{{見|み}}つかる.
 example_jp: >-

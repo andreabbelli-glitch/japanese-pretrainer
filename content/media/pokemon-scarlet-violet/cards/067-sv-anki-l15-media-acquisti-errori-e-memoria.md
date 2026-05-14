@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-douga
 card_type: recognition
-front: '{{動|どう}}{{画|が}} / どうが'
+front: '{{動|どう}}{{画|が}}'
 back: >-
   どうが — video. Indica video o filmati visualizzati su dispositivi come lo Smart Rotom, distinguendosi da immagini statiche.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-eru
 card_type: recognition
-front: '{{得|え}}る / える'
+front: '{{得|え}}る'
 back: >-
   える — ottenere. Verbo usato per il conseguimento di elementi intangibili (conoscenza, esperienza), prendendo la particella を.
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-kaimono
 card_type: recognition
-front: '{{買|か}}いもの / かいもの'
+front: '{{買|か}}いもの'
 back: >-
   かいもの — shopping; acquisti. Sostantivo derivato dal verbo {{買|か}}う, si combina con する per indicare l'azione di fare compere.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-fuseikai
 card_type: recognition
-front: '{{不|ふ}}{{正|せい}}{{解|かい}} / ふせいかい'
+front: '{{不|ふ}}{{正|せい}}{{解|かい}}'
 back: >-
   ふせいかい — risposta sbagliata. Parola composta con il prefisso negativo {{不|ふ}}, comune in contesti di test e verifiche.
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-yattsu
 card_type: recognition
-front: '{{8|やっ}}つ / やっつ'
+front: '{{8|やっ}}つ'
 back: >-
   やっつ — otto (cose). Contatore generico della serie nativa giapponese usato per quantificare oggetti senza un contatore specifico.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-intai
 card_type: recognition
-front: '{{引|いん}}{{退|たい}} / いんたい'
+front: '{{引|いん}}{{退|たい}}'
 back: >-
   いんたい — ritiro. Indica il ritirarsi da un ruolo attivo (es. allenatore); il ruolo abbandonato prende la particella を.
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-akeru
 card_type: recognition
-front: '{{開|あ}}ける / あける'
+front: '{{開|あ}}ける'
 back: >-
   あける — aprire. Verbo transitivo per aprire fisicamente qualcosa, come una porta, un coperchio o una borsa; l'oggetto prende を.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-kanji
 card_type: recognition
-front: '{{感|かん}}じ / かんじ'
+front: '{{感|かん}}じ'
 back: >-
   かんじ — sensazione; impressione. Sostantivo spesso abbinato al verbo する ({{感|かん}}じがする) per esprimere una percezione personale.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-kizuku
 card_type: recognition
-front: '{{気|き}}づく / きづく'
+front: '{{気|き}}づく'
 back: >-
   きづく — accorgersi; notare. Verbo che prende la particella に per l'oggetto notato; frequente nella forma passiva per i Pokémon.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acqui
 entry_type: term
 entry_id: term-anki-l15-kioku
 card_type: recognition
-front: '{{記|き}}{{憶|おく}} / きおく'
+front: '{{記|き}}{{憶|おく}}'
 back: >-
   きおく — memoria; ricordo. Sostantivo che indica il bagaglio dei ricordi, usato con する per l'atto di memorizzare.
 example_jp: >-

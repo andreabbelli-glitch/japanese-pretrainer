@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensi
 entry_type: term
 entry_id: term-anki-l16-kinniku
 card_type: recognition
-front: '{{筋|きん}}{{肉|にく}} / きんにく'
+front: '{{筋|きん}}{{肉|にく}}'
 back: >-
   きんにく — muscoli; forza fisica. Spesso usato in contesti di allenamento fisico per descrivere la preparazione atletica degli Allenatori o la possenza dei Pokémon.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensi
 entry_type: term
 entry_id: term-anki-l16-kinchou
 card_type: recognition
-front: '{{緊|きん}}{{張|ちょう}} / きんちょう'
+front: '{{緊|きん}}{{張|ちょう}}'
 back: >-
   きんちょう — tensione; nervosismo. È un sostantivo suru ({{緊|きん}}{{張|ちょう}}する) che descrive lo stato di chi è ansioso o in apprensione prima di un evento importante, come una sfida decisiva.
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensi
 entry_type: term
 entry_id: term-anki-l16-imakara
 card_type: recognition
-front: '{{今|いま}}から / いまから'
+front: '{{今|いま}}から'
 back: >-
   いまから — da ora; d'ora in poi; adesso. Segnala che un'azione o un evento inizierà esattamente nel momento in cui si parla, marcando un chiaro punto di partenza.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensi
 entry_type: term
 entry_id: term-anki-l16-shokun
 card_type: recognition
-front: '{{諸|しょ}}{{君|くん}} / しょくん'
+front: '{{諸|しょ}}{{君|くん}}'
 back: >-
   しょくん — voi tutti; signori. Termine formale e leggermente autorevole usato da chi è in posizione di guida per rivolgersi direttamente a un gruppo o a una platea (es. gli studenti).
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensi
 entry_type: term
 entry_id: term-anki-l16-shinrai
 card_type: recognition
-front: '{{信|しん}}{{頼|らい}} / しんらい'
+front: '{{信|しん}}{{頼|らい}}'
 back: >-
   しんらい — fiducia; affidabilità. Si usa per descrivere il legame di profonda fiducia emotiva e reciproca che si instaura tra individui o tra un Allenatore e i suoi Pokémon.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensi
 entry_type: term
 entry_id: term-anki-l16-fukai
 card_type: recognition
-front: '{{深|ふか}}い / ふかい'
+front: '{{深|ふか}}い'
 back: >-
   ふかい — profondo. Aggettivo in -i molto versatile: si applica sia per la profondità fisica (es. boschi o crateri) sia per quella figurata (un legame intenso, un pensiero complesso).
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensi
 entry_type: term
 entry_id: term-anki-l16-jinsei
 card_type: recognition
-front: '{{人|じん}}{{生|せい}} / じんせい'
+front: '{{人|じん}}{{生|せい}}'
 back: >-
   じんせい — vita (umana); il corso della vita. Riferito all'esistenza come narrazione personale, alle esperienze e alle scelte che definiscono il percorso di una persona.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensi
 entry_type: term
 entry_id: term-anki-l16-ooku
 card_type: recognition
-front: '{{多|おお}}く / おおく'
+front: '{{多|おお}}く'
 back: >-
   おおく — molti; gran parte. Viene regolarmente utilizzato come sostantivo modificatore assieme a の ({{多|おお}}くの) per descrivere una vasta quantità di entità collettive o elementi.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensi
 entry_type: term
 entry_id: term-anki-l16-taiken
 card_type: recognition
-front: '{{体|たい}}{{験|けん}} / たいけん'
+front: '{{体|たい}}{{験|けん}}'
 back: >-
   たいけん — esperienza (vissuta in prima persona). Enfatizza la partecipazione fisica o il vivere sul campo un evento, come succede durante un'escursione o una prova sul territorio.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensi
 entry_type: term
 entry_id: term-anki-l16-doushi
 card_type: recognition
-front: '{{同|どう}}{{士|し}} / どうし'
+front: '{{同|どう}}{{士|し}}'
 back: >-
   どうし — compagni; persone dello stesso gruppo o che condividono uno status. Si aggancia come suffisso a un sostantivo per marcare reciprocità e identità di ruoli (es. tra rivali o tra amici).
 example_jp: >-

@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-zasshi
 card_type: recognition
-front: '{{雑|ざっ}}{{誌|し}} / ざっし'
+front: '{{雑|ざっ}}{{誌|し}}'
 back: >-
   ざっし — rivista; usato per le pubblicazioni, come il magazine di occulto dell'Accademia.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-sakihodo
 card_type: recognition
-front: '{{先|さき}}ほど / さきほど'
+front: '{{先|さき}}ほど'
 back: >-
   さきほど — poco fa; forma più formale e cortese di さっき, usata in annunci e dialoghi educati.
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-hoshii
 card_type: recognition
-front: '{{欲|ほ}}しい / ほしい'
+front: '{{欲|ほ}}しい'
 back: >-
   ほしい — volere, desiderare; è un Aggettivo-I, la cosa desiderata prende la particella が.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-ochiru
 card_type: recognition
-front: '{{落|お}}ちる / おちる'
+front: '{{落|お}}ちる'
 back: >-
   おちる — cadere, scendere; verbo intransitivo, il soggetto che cade o scende prende が.
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-kaijou
 card_type: recognition
-front: '{{会|かい}}{{場|じょう}} / かいじょう'
+front: '{{会|かい}}{{場|じょう}}'
 back: >-
   かいじょう — luogo dell’evento, sede; si collega all'evento specifico tramite la particella の.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-takameru
 card_type: recognition
-front: '{{高|たか}}める / たかめる'
+front: '{{高|たか}}める'
 back: >-
   たかめる — aumentare, elevare; verbo transitivo, l'oggetto che viene incrementato prende を.
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-sakuhin
 card_type: recognition
-front: '{{作|さく}}{{品|ひん}} / さくひん'
+front: '{{作|さく}}{{品|ひん}}'
 back: >-
   さくひん — opera, lavoro artistico; racchiude quadri, sculture e compiti creativi degli studenti.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-kodomo
 card_type: recognition
-front: '{{子|こ}}{{供|ども}} / こども'
+front: '{{子|こ}}{{供|ども}}'
 back: >-
   こども — bambino, ragazzino; evidenzia la giovane età in contrasto con gli adulti ({{大人|おとな}}).
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-shijou
 card_type: recognition
-front: '{{市|し}}{{場|じょう}} / しじょう'
+front: '{{市|し}}{{場|じょう}}'
 back: >-
   しじょう — mercato; usato in senso economico generale. Il mercato fisico (come Marinada) spesso si legge いちば.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desi
 entry_type: term
 entry_id: term-anki-l10-nagai
 card_type: recognition
-front: '{{長|なが}}い / ながい'
+front: '{{長|なが}}い'
 back: >-
   ながい — lungo; aggettivo-i che descrive una grande estensione sia nello spazio sia nel tempo.
 example_jp: >-

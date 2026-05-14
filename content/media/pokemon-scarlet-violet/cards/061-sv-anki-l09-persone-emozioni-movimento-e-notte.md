@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-061-sv-anki-l09-persone-emo
 entry_type: term
 entry_id: term-anki-l09-kao
 card_type: recognition
-front: '{{顔|かお}} / かお'
+front: '{{顔|かお}}'
 back: >-
   かお — volto; faccia Sostantivo che indica il viso, ma spesso si riferisce all'espressione emotiva. Il viso prende が per le descrizioni o を per le azioni che lo coinvolgono.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-061-sv-anki-l09-persone-emo
 entry_type: term
 entry_id: term-anki-l09-jikai
 card_type: recognition
-front: '{{次|じ}}{{回|かい}} / じかい'
+front: '{{次|じ}}{{回|かい}}'
 back: >-
   じかい — prossima volta. Composto da “prossimo” e “volta”. Quando qualifica un altro nome, usa la particella の, come in {{次|じ}}{{回|かい}}の{{授業|じゅぎょう}}.
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-061-sv-anki-l09-persone-emo
 entry_type: term
 entry_id: term-anki-l09-dareka
 card_type: recognition
-front: '{{誰|だれ}}か / だれか'
+front: '{{誰|だれ}}か'
 back: >-
   だれか — qualcuno Formato dal pronome interrogativo {{誰|だれ}} (chi) e la particella か che lo rende indefinito. Può prendere le normali particelle di caso.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-061-sv-anki-l09-persone-emo
 entry_type: term
 entry_id: term-anki-l09-tsutaeru
 card_type: recognition
-front: '{{伝|つた}}える / つたえる'
+front: '{{伝|つた}}える'
 back: >-
   つたえる — comunicare; trasmettere Verbo transitivo usato per trasferire messaggi. Il destinatario della comunicazione prende la particella に, il contenuto prende を.
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-061-sv-anki-l09-persone-emo
 entry_type: term
 entry_id: term-anki-l09-okoru
 card_type: recognition
-front: '{{怒|おこ}}る / おこる'
+front: '{{怒|おこ}}る'
 back: >-
   おこる — arrabbiarsi Verbo che indica il provare rabbia. L'oggetto o la persona verso cui si è arrabbiati prende la particella に.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-061-sv-anki-l09-persone-emo
 entry_type: term
 entry_id: term-anki-l09-ugoku
 card_type: recognition
-front: '{{動|うご}}く / うごく'
+front: '{{動|うご}}く'
 back: >-
   うごく — muoversi; funzionare Verbo intransitivo che descrive il movimento fisico o il funzionamento di macchinari. Il soggetto che compie l'azione prende が.
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-061-sv-anki-l09-persone-emo
 entry_type: term
 entry_id: term-anki-l09-utsukushii
 card_type: recognition
-front: '{{美|うつく}}しい / うつくしい'
+front: '{{美|うつく}}しい'
 back: >-
   うつくしい — bello; splendido Aggettivo in -i dal tono formale o poetico, usato per descrivere una bellezza superiore o artistica, a differenza del colloquiale きれい.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-061-sv-anki-l09-persone-emo
 entry_type: term
 entry_id: term-anki-l09-buttai
 card_type: recognition
-front: '{{物|ぶっ}}{{体|たい}} / ぶったい'
+front: '{{物|ぶっ}}{{体|たい}}'
 back: >-
   ぶったい — oggetto; corpo Termine tecnico o scientifico per indicare un'entità fisica solida. Spesso usato in contesti di mistero o indagine scientifica.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-061-sv-anki-l09-persone-emo
 entry_type: term
 entry_id: term-anki-l09-yoru
 card_type: recognition
-front: '{{夜|よる}} / よる'
+front: '{{夜|よる}}'
 back: >-
   よる — notte Sostantivo temporale che indica le ore notturne. Per indicare che un'azione avviene di notte, si usa la particella に.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-061-sv-anki-l09-persone-emo
 entry_type: term
 entry_id: term-anki-l09-omise
 card_type: recognition
-front: 'お{{店|みせ}} / おみせ'
+front: 'お{{店|みせ}}'
 back: >-
   おみせ — negozio Forma abbellita e più colloquiale di {{店|みせ}} (negozio) grazie all'aggiunta del prefisso onorifico お-.
 example_jp: >-

@@ -102,7 +102,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-056-sv-anki-l04-scuola-arte
 entry_type: term
 entry_id: term-anki-l04-bijutsu
 card_type: recognition
-front: '{{美|び}}{{術|じゅつ}} / びじゅつ'
+front: '{{美|び}}{{術|じゅつ}}'
 back: >-
   びじゅつ — arte; belle arti. La materia scolastica di Arte ({{美|び}}{{術|じゅつ}}) e le opere artistiche in generale.
 example_jp: >-
@@ -119,7 +119,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-056-sv-anki-l04-scuola-arte
 entry_type: term
 entry_id: term-anki-l04-yasumu
 card_type: recognition
-front: '{{休|やす}}む / やすむ'
+front: '{{休|やす}}む'
 back: >-
   やすむ — riposare; assentarsi. Verbo intransitivo usato per fermarsi e recuperare le energie (come al Centro Pokémon) o mancare a un impegno.
 example_jp: >-
@@ -136,7 +136,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-056-sv-anki-l04-scuola-arte
 entry_type: term
 entry_id: term-anki-l04-miseru
 card_type: recognition
-front: '{{見|み}}せる / みせる'
+front: '{{見|み}}せる'
 back: >-
   みせる — mostrare. Verbo transitivo usato per far vedere qualcosa (come uno strumento, un Pokémon o la mappa) a qualcuno.
 example_jp: >-
@@ -153,7 +153,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-056-sv-anki-l04-scuola-arte
 entry_type: term
 entry_id: term-v279-hiden
 card_type: recognition
-front: '{{秘|ひ}}{{伝|でん}} / ひでん'
+front: '{{秘|ひ}}{{伝|でん}}'
 back: >-
   ひでん — segreto; ricetta segreta. Qualcosa tramandato di nascosto o una conoscenza speciale e riservata.
 example_jp: >-
@@ -170,7 +170,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-056-sv-anki-l04-scuola-arte
 entry_type: term
 entry_id: term-anki-l04-ookina
 card_type: recognition
-front: '{{大|おお}}きな / おおきな'
+front: '{{大|おお}}きな'
 back: >-
   おおきな — grande. Aggettivo prenominale che descrive dimensioni fisiche imponenti o l'impatto di un evento.
 example_jp: >-
@@ -187,7 +187,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-056-sv-anki-l04-scuola-arte
 entry_type: term
 entry_id: term-anki-l04-heya
 card_type: recognition
-front: '{{部屋|へや}} / へや'
+front: '{{部屋|へや}}'
 back: >-
   へや — stanza. Un ambiente chiuso, come la camera da letto o una stanza del dormitorio dell'Accademia.
 example_jp: >-
@@ -204,7 +204,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-056-sv-anki-l04-scuola-arte
 entry_type: term
 entry_id: term-anki-l04-dono
 card_type: recognition
-front: '{{殿|どの}} / どの'
+front: '{{殿|どの}}'
 back: >-
   どの — signore; onorifico -dono. Suffisso onorifico dal sapore arcaico e formale, che segue direttamente un nome.
 example_jp: >-
@@ -221,7 +221,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-056-sv-anki-l04-scuola-arte
 entry_type: term
 entry_id: term-anki-l04-subarashii
 card_type: recognition
-front: '{{素|す}}{{晴|ば}}らしい / すばらしい'
+front: '{{素|す}}{{晴|ば}}らしい'
 back: >-
   すばらしい — splendido; magnifico. Aggettivo in -i usato per lodare grandemente un'azione, una qualità o un risultato.
 example_jp: >-
@@ -238,7 +238,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-056-sv-anki-l04-scuola-arte
 entry_type: term
 entry_id: term-anki-l04-honjitsu
 card_type: recognition
-front: '{{本|ほん}}{{日|じつ}} / ほんじつ'
+front: '{{本|ほん}}{{日|じつ}}'
 back: >-
   ほんじつ — oggi, formale. Variante formale di {{今日|きょう}}, usata in annunci o comunicazioni ufficiali.
 example_jp: >-
@@ -255,7 +255,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-056-sv-anki-l04-scuola-arte
 entry_type: term
 entry_id: term-anki-l04-tatakai
 card_type: recognition
-front: '{{戦|たたか}}い / たたかい'
+front: '{{戦|たたか}}い'
 back: >-
   たたかい — battaglia; lotta. Sostantivo che indica lo scontro in sé, sia fisico che sportivo.
 example_jp: >-

@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-sainou
 card_type: recognition
-front: '{{才|さい}}{{能|のう}} / さいのう'
+front: '{{才|さい}}{{能|のう}}'
 back: >-
   さいのう — talento; capacità innata. Si usa tipicamente con ある o ない per indicarne la presenza.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-tsukaeru
 card_type: recognition
-front: '{{使|つか}}える / つかえる'
+front: '{{使|つか}}える'
 back: >-
   つかえる — essere usabile; essere utile. Forma potenziale di {{使|つか}}う (usare), si usa spesso per dire che un oggetto "torna utile".
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-niru
 card_type: recognition
-front: '{{似|に}}る / にる'
+front: '{{似|に}}る'
 back: >-
   にる — assomigliare. Prende に per indicare a chi o cosa si somiglia, spesso usato nello stato progressivo ({{似|に}}ている).
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-dankai
 card_type: recognition
-front: '{{段|だん}}{{階|かい}} / だんかい'
+front: '{{段|だん}}{{階|かい}}'
 back: >-
   だんかい — fase; stadio; livello. Si usa per descrivere un grado o lo step di un processo in evoluzione.
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-kotaeru
 card_type: recognition
-front: '{{答|こた}}える / こたえる'
+front: '{{答|こた}}える'
 back: >-
   こたえる — rispondere. L'elemento a cui si risponde (un test, una persona) è marcato dalla particella に.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-kare
 card_type: recognition
-front: '{{彼|かれ}} / かれ'
+front: '{{彼|かれ}}'
 back: >-
   かれ — lui; il suo ({{彼|かれ}}の). Pronome maschile di terza persona, usato per riferirsi a qualcuno non presente nella conversazione diretta.
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-mainichi
 card_type: recognition
-front: '{{毎|まい}}{{日|にち}} / まいにち'
+front: '{{毎|まい}}{{日|にち}}'
 back: >-
   まいにち — ogni giorno. Avverbio temporale che si posiziona liberamente senza richiedere particelle per agganciarsi al verbo.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-rakusatsu
 card_type: recognition
-front: '{{落|らく}}{{札|さつ}} / らくさつ'
+front: '{{落|らく}}{{札|さつ}}'
 back: >-
   らくさつ — aggiudicazione; asta vinta. Verbo suru o sostantivo che indica l'atto di essersi aggiudicati un oggetto all'asta.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-hokora
 card_type: recognition
-front: '{{祠|ほこら}} / ほこら'
+front: '{{祠|ほこら}}'
 back: >-
   ほこら — piccolo santuario; tempietto. Struttura in legno o pietra, usata a Paldea per i santuari dei Pokémon leggendari.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-ris
 entry_type: term
 entry_id: term-anki-l13-piipii
 card_type: recognition
-front: '{{Ｐ|ピー}}{{Ｐ|ピー}} / ピーピー'
+front: '{{Ｐ|ピー}}{{Ｐ|ピー}}'
 back: >-
   ピーピー — PP, Punti Potenza. Sigla dell'interfaccia usata per gestire gli utilizzi rimanenti delle mosse.
 example_jp: >-

@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-watasu
 card_type: recognition
-front: '{{渡|わた}}す / わたす'
+front: '{{渡|わた}}す'
 back: >-
   わたす — consegnare; passare Verbo transitivo (lo usi con を) per il passaggio fisico di un oggetto da una persona all'altra. Implica che chi riceve lo prenda in mano.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-ataru
 card_type: recognition
-front: '{{当|あ}}たる / あたる'
+front: '{{当|あ}}たる'
 back: >-
   あたる — colpire; indovinare Verbo intransitivo (prende に). Significa che qualcosa 'colpisce il bersaglio', letteralmente (una mossa in lotta) o metaforicamente (indovinare una risposta o vincere un premio).
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-kanojo
 card_type: recognition
-front: '{{彼|かの}}{{女|じょ}} / かのじょ'
+front: '{{彼|かの}}{{女|じょ}}'
 back: >-
   かのじょ — lei; fidanzata Pronome di terza persona femminile o 'fidanzata'. Nel parlato degli NPC, spesso usato per riferirsi a una ragazza di cui si sta parlando.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-kowai
 card_type: recognition
-front: '{{怖|こわ}}い / こわい'
+front: '{{怖|こわ}}い'
 back: >-
   こわい — spaventoso; pauroso Aggettivo in -i usato per esprimere paura. Definisce sia una qualità oggettiva ('quella cosa fa paura') sia una sensazione soggettiva ('io ho paura').
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-anoko
 card_type: recognition
-front: 'あの{{子|こ}} / あのこ'
+front: 'あの{{子|こ}}'
 back: >-
   あのこ — quel ragazzo/quella ragazza. Espressione affettuosa o colloquiale per indicare un giovane; unisce il dimostrativo あの e {{子|こ}}.
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-mouichido
 card_type: recognition
-front: 'もう{{一|いち}}{{度|ど}} / もういちど'
+front: 'もう{{一|いち}}{{度|ど}}'
 back: >-
   もういちど — ancora una volta Avverbio di tempo formato da もう (di nuovo/ancora) e {{一|いち}}{{度|ど}} (una volta). Si usa per ripetere un'azione appena successa o chiedere un'altra prova.
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-kisho
 card_type: recognition
-front: '{{奇|き}}{{書|しょ}} / きしょ'
+front: '{{奇|き}}{{書|しょ}}'
 back: >-
   きしょ — libro strano/insolito Sostantivo composto da {{奇|き}} (strano, bizzarro) e {{書|か}} (libro, testo). Si riferisce a tomi antichi dai contenuti dubbi o misteriosi.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-yobareru
 card_type: recognition
-front: '{{呼|よ}}ばれる / よばれる'
+front: '{{呼|よ}}ばれる'
 back: >-
   よばれる — essere chiamato Forma passiva di {{呼|よ}}ぶ (chiamare). Si usa per introdurre il nome proprio o il soprannome con cui qualcosa è noto al pubblico.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-saishinbu
 card_type: recognition
-front: '{{最|さい}}{{深|しん}}{{部|ぶ}} / さいしんぶ'
+front: '{{最|さい}}{{深|しん}}{{部|ぶ}}'
 back: >-
   さいしんぶ — parte più profonda Composto da {{最|さい}} (il più), {{深|ふか}} (profondo), e {{部|ぶ}} (sezione/area). Identifica il fondo geografico e inesplorato di un dungeon o cratere.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-pers
 entry_type: term
 entry_id: term-anki-l11-shigoto
 card_type: recognition
-front: '{{仕|し}}{{事|ごと}} / しごと'
+front: '{{仕|し}}{{事|ごと}}'
 back: >-
   しごと — lavoro Sostantivo generale per 'lavoro' come professione o 'incarico' temporaneo. Si applica sia al lavoro d'ufficio sia a compiti specifici nel gioco.
 example_jp: >-

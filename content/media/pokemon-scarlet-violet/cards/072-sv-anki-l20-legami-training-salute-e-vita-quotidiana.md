@@ -112,7 +112,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-douhou
 card_type: recognition
-front: '{{同|どう}}{{胞|ほう}} / どうほう'
+front: '{{同|どう}}{{胞|ほう}}'
 back: >-
   どうほう — compagno; fratello. Indica chi condivide la stessa origine o gruppo; ha un sapore solenne ed epico.
 example_jp: >-
@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-tokkun
 card_type: recognition
-front: '{{特|とっ}}{{訓|くん}} / とっくん'
+front: '{{特|とっ}}{{訓|くん}}'
 back: >-
   とっくん — allenamento speciale. Indica un addestramento intensivo per un obiettivo specifico; in forma verbale si usa con を する ({{特|とっ}}{{訓|くん}}をする).
 example_jp: >-
@@ -146,7 +146,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-totsuzen
 card_type: recognition
-front: '{{突|とつ}}{{然|ぜん}} / とつぜん'
+front: '{{突|とつ}}{{然|ぜん}}'
 back: >-
   とつぜん — improvviso; all'improvviso. Agisce tipicamente come avverbio all'inizio di frase per descrivere eventi subitanei che interrompono l'azione.
 example_jp: >-
@@ -163,7 +163,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-nayamu
 card_type: recognition
-front: '{{悩|なや}}む / なやむ'
+front: '{{悩|なや}}む'
 back: >-
   なやむ — preoccuparsi; essere indecisi. Esprime un dubbio che pesa o blocca, non un semplice ragionamento strategico.
 example_jp: >-
@@ -180,7 +180,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-hanbun
 card_type: recognition
-front: '{{半|はん}}{{分|ぶん}} / はんぶん'
+front: '{{半|はん}}{{分|ぶん}}'
 back: >-
   はんぶん — metà. Indica la frazione esatta di quantità, statistiche o risorse fisiche come i PS; si accompagna spesso a limiti come {{以|い}}{{下|か}} (meno di).
 example_jp: >-
@@ -197,7 +197,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-karera
 card_type: recognition
-front: '{{彼|かれ}}ら / かれら'
+front: '{{彼|かれ}}ら'
 back: >-
   かれら — loro. Pronome di terza persona plurale che crea una distanza oggettiva e formale tra il parlante e il gruppo di cui si parla.
 example_jp: >-
@@ -214,7 +214,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-kanashii
 card_type: recognition
-front: '{{悲|かな}}しい / かなしい'
+front: '{{悲|かな}}しい'
 back: >-
   かなしい — triste; doloroso. Aggettivo in い per una tristezza sentita o valutata dal parlante.
 example_jp: >-
@@ -231,7 +231,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-funbyou
 card_type: recognition
-front: '{{分|ふん}}{{秒|びょう}} / ふんびょう'
+front: '{{分|ふん}}{{秒|びょう}}'
 back: >-
   ふんびょう — minuti e secondi; ogni istante. Si usa per parlare del tempo misurato in modo preciso o, in espressioni come {{分|ふん}}{{秒|びょう}}を{{争|あらそ}}う, di urgenza.
 example_jp: >-
@@ -248,7 +248,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-hoken
 card_type: recognition
-front: '{{保|ほ}}{{健|けん}} / ほけん'
+front: '{{保|ほ}}{{健|けん}}'
 back: >-
   ほけん — salute; igiene; educazione sanitaria. In ambiente scolastico indica sia la materia sia, in {{保|ほ}}{{健|けん}}{{室|しつ}}, l'infermeria.
 example_jp: >-
@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-trai
 entry_type: term
 entry_id: term-anki-l20-kurasu
 card_type: recognition
-front: '{{暮|く}}らす / くらす'
+front: '{{暮|く}}らす'
 back: >-
   くらす — vivere; abitare; trascorrere la vita. Non indica la mera esistenza biologica, ma lo svolgimento delle abitudini quotidiane in un luogo (marcato con で).
 example_jp: >-
