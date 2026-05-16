@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 96
+order: 99
 segment_ref: keyword-bank
 difficulty: n3
 status: active
@@ -60,7 +60,7 @@ reveal_mode: sentence
 
 - Il numero fissa la soglia massima del costo che puoi usare con la keyword.
 - `その中から` restringe la scelta alle carte appena viste.
-- `コストを支払わずに使ってもよい` segnala che l'uso e` opzionale e gratuito.
+- `コストを支払わずに使ってもよい` segnala che l'uso è opzionale e gratuito.
 
 ### [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two)
 
@@ -437,6 +437,28 @@ reveal_mode: sentence
 - Il verbo chiave e [{{扱|あつか}}う](term:term-atsukau): il testo dice come la
   carta deve essere considerata per la giocata di evoluzione.
 
+### [スマッシュ・バースト](term:term-smash-burst)
+
+:::example_sentence
+jp: >-
+  [スマッシュ・バースト](term:term-smash-burst)（このクリーチャーが
+  [{{攻撃|こうげき}}](term:term-attack)する[{{時|とき}}](grammar:grammar-toki)、
+  このカードの[{{呪文側|じゅもんがわ}}](term:term-spell-side)を、
+  [バトルゾーンに{{置|お}}いたまま](grammar:grammar-battle-zone-ni-oita-mama)
+  コストを[{{支払|しはら}}わずに](grammar:grammar-zuni)
+  [{{唱|とな}}えて](term:term-tonaeru)もよい）
+translation_it: >-
+  Smash Burst: quando questa creatura attacca, puoi lanciare il lato spell di
+  questa carta senza pagarne il costo, lasciando la carta nel battle zone.
+reveal_mode: sentence
+:::
+
+- `{{呪文側|じゅもんがわ}}` segnala la metà spell della stessa carta Twinpact.
+- `バトルゾーンに{{置|お}}いたまま` chiarisce che la carta non lascia il campo
+  mentre usi lo spell side.
+- `コストを{{支払|しはら}}わずに{{唱|とな}}えてもよい` rende il lancio gratuito
+  ma facoltativo.
+
 ### [スピードアタッカー](term:term-speed-attacker)
 
 :::example_sentence
@@ -466,10 +488,10 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Il punto da fissare non e` il potere, ma il fatto che il battle porta alla
+- Il punto da fissare non è il potere, ma il fatto che il battle porta alla
   distruzione dell'altro lato.
 - Per questo `スレイヤー` rende pericoloso anche lo scontro contro creature
-  piu` grandi: il testo non parla di vincere il confronto numerico, ma di
+  più grandi: il testo non parla di vincere il confronto numerico, ma di
   distruggere il partner di battle.
 
 ### [スーパー・S・トリガー](term:term-super-s-trigger)

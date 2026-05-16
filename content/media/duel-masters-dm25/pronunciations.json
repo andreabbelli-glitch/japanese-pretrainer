@@ -17,6 +17,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-battle-zone-ni-oita-mama",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card",
       "pitch_accent_status": "miss"
     },
@@ -540,6 +545,11 @@
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%B8%AD",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-uramuki-ni-shite",
+      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
@@ -1378,6 +1388,14 @@
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A2%93%E5%9C%B0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-haika",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%85%8D%E4%B8%8B",
       "pitch_accent_status": "resolved"
     },
     {
@@ -2655,6 +2673,11 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-smash-burst",
+      "pitch_accent_status": "source_error"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-sofa-softysonia",
       "pitch_accent_status": "miss"
     },
@@ -2687,6 +2710,11 @@
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%91%AA%E6%96%87",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-spell-side",
+      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
