@@ -1,7 +1,7 @@
-import { and, asc, eq, inArray } from "drizzle-orm";
+import { and, asc, desc, eq, inArray } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
-import { lesson } from "../schema/index.ts";
+import { lesson, media, segment } from "../schema/index.ts";
 
 const lessonListColumns = {
   id: true,
@@ -99,6 +99,42 @@ export async function listLessonsByMediaIdsForShell(
   });
 }
 
+export async function listRecentLessonsForDashboard(
+  database: DatabaseClient,
+  limit = 3
+) {
+  const normalizedLimit = Math.max(0, Math.trunc(limit));
+
+  if (normalizedLimit === 0) {
+    return [];
+  }
+
+  return database
+    .select({
+      createdAt: lesson.createdAt,
+      id: lesson.id,
+      lessonSlug: lesson.slug,
+      mediaSlug: media.slug,
+      mediaTitle: media.title,
+      segmentTitle: segment.title,
+      summary: lesson.summary,
+      title: lesson.title
+    })
+    .from(lesson)
+    .innerJoin(media, eq(media.id, lesson.mediaId))
+    .leftJoin(segment, eq(segment.id, lesson.segmentId))
+    .where(and(eq(lesson.status, "active"), eq(media.status, "active")))
+    .orderBy(
+      desc(lesson.createdAt),
+      desc(lesson.updatedAt),
+      desc(lesson.orderIndex),
+      desc(lesson.slug),
+      asc(media.title),
+      asc(lesson.id)
+    )
+    .limit(normalizedLimit);
+}
+
 export async function getLessonBySlug(
   database: DatabaseClient,
   mediaId: string,
@@ -191,3 +227,7 @@ export type ShellLessonListItem = Omit<LessonListItem, "content"> & {
   content?: LessonListItem["content"];
   mediaId: string;
 };
+
+export type DashboardRecentLessonRow = Awaited<
+  ReturnType<typeof listRecentLessonsForDashboard>
+>[number];

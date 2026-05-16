@@ -21,6 +21,7 @@ describe("dashboard route data", () => {
       focusMedia: null,
       reviewMedia: null,
       media: [],
+      recentLessons: [],
       review: {
         activeReviewCards: 0,
         cardsDue: 0,

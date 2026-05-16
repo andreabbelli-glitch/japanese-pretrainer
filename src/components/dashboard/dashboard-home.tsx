@@ -20,7 +20,7 @@ type DashboardHomeProps = {
 };
 
 export function DashboardHome({ data }: DashboardHomeProps) {
-  const { focusMedia, media, review, reviewMedia } = data;
+  const { focusMedia, media, recentLessons, review, reviewMedia } = data;
 
   if (!focusMedia) {
     return (
@@ -133,6 +133,51 @@ export function DashboardHome({ data }: DashboardHomeProps) {
           </Link>
         </SurfaceCard>
       </section>
+
+      {recentLessons.length > 0 ? (
+        <Section
+          description="Le ultime tre lesson importate cronologicamente, pronte da aprire senza passare dalla libreria."
+          eyebrow="Nuove lesson"
+          title="Ultime lezioni aggiunte"
+        >
+          <div className="recent-lesson-grid">
+            {recentLessons.map((lesson) => (
+              <Link
+                key={lesson.id}
+                className="recent-lesson-card"
+                href={lesson.href}
+              >
+                <SurfaceCard
+                  className="recent-lesson-card__surface"
+                  variant="quiet"
+                >
+                  <div className="recent-lesson-card__top">
+                    <span className="chip">{lesson.mediaTitle}</span>
+                    <span className="meta-pill">
+                      {lesson.segmentTitle ?? "Textbook"}
+                    </span>
+                  </div>
+                  <div className="recent-lesson-card__copy">
+                    <h3 className="recent-lesson-card__title">
+                      {lesson.title}
+                    </h3>
+                    {lesson.summary ? (
+                      <p className="recent-lesson-card__summary">
+                        {renderFurigana(lesson.summary, {
+                          linkBehavior: "flatten"
+                        })}
+                      </p>
+                    ) : null}
+                  </div>
+                  <span className="text-link recent-lesson-card__action">
+                    Studia lesson
+                  </span>
+                </SurfaceCard>
+              </Link>
+            ))}
+          </div>
+        </Section>
+      ) : null}
 
       <Section
         description="Scegli rapidamente da dove riprendere, senza perdere il contesto."

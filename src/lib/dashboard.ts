@@ -1,4 +1,6 @@
 import { db, type DatabaseClient } from "@/db";
+import { listRecentLessonsForDashboard } from "@/db/queries";
+import type { Route } from "next";
 import {
   GLOSSARY_SUMMARY_TAG,
   MEDIA_LIST_TAG,
@@ -21,11 +23,26 @@ import {
 } from "@/lib/review";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { getReviewDailyLimit } from "@/lib/settings";
+import { mediaTextbookLessonHref } from "@/lib/site";
+
+const DASHBOARD_RECENT_LESSON_LIMIT = 3;
+
+export type DashboardRecentLesson = {
+  createdAt: string;
+  href: Route;
+  id: string;
+  mediaSlug: string;
+  mediaTitle: string;
+  segmentTitle: string | null;
+  summary: string | null;
+  title: string;
+};
 
 export type DashboardData = {
   focusMedia: MediaShellSnapshot | null;
   reviewMedia: MediaShellSnapshot | null;
   media: MediaShellSnapshot[];
+  recentLessons: DashboardRecentLesson[];
   review: {
     activeReviewCards: number;
     cardsDue: number;
@@ -71,6 +88,10 @@ async function loadDashboardData(
     database,
     now
   );
+  const recentLessonRowsPromise = listRecentLessonsForDashboard(
+    database,
+    DASHBOARD_RECENT_LESSON_LIMIT
+  );
   const reviewOverviewBundlePromise = Promise.all([
     mediaRowsPromise,
     dailyLimitPromise,
@@ -104,9 +125,10 @@ async function loadDashboardData(
         resolvedReviewSnapshots: reviewOverviewBundle.byMedia
       })
   );
-  const [media, reviewOverviewBundle] = await Promise.all([
+  const [media, reviewOverviewBundle, recentLessonRows] = await Promise.all([
     mediaPromise,
-    reviewOverviewBundlePromise
+    reviewOverviewBundlePromise,
+    recentLessonRowsPromise
   ]);
   const globalReviewOverview = reviewOverviewBundle.global;
   const focusMedia = pickFocusMedia(media);
@@ -116,6 +138,16 @@ async function loadDashboardData(
     focusMedia,
     reviewMedia,
     media,
+    recentLessons: recentLessonRows.map((row) => ({
+      createdAt: row.createdAt,
+      href: mediaTextbookLessonHref(row.mediaSlug, row.lessonSlug),
+      id: row.id,
+      mediaSlug: row.mediaSlug,
+      mediaTitle: row.mediaTitle,
+      segmentTitle: row.segmentTitle,
+      summary: row.summary,
+      title: row.title
+    })),
     review: {
       activeReviewCards: globalReviewOverview.activeCards,
       cardsDue: globalReviewOverview.dueCount,

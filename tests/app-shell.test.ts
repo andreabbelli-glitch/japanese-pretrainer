@@ -198,6 +198,106 @@ describe("app shell live data", () => {
     expect(duelMastersMedia?.reviewStatValue).toBe("1 da ripassare");
   });
 
+  it("surfaces the three most recently added active lessons on the dashboard", async () => {
+    await database.insert(lesson).values([
+      {
+        id: "lesson_dashboard_recent_older",
+        mediaId: developmentFixture.mediaId,
+        segmentId: developmentFixture.segmentId,
+        slug: "dashboard-recent-older",
+        title: "Dashboard Recent Older",
+        orderIndex: 2,
+        difficulty: "beginner",
+        summary: "Older dashboard lesson.",
+        status: "active",
+        sourceFile:
+          "content/media/fixture-tcg/textbook/002-dashboard-recent-older.md",
+        createdAt: "2026-03-10T09:00:00.000Z",
+        updatedAt: "2026-03-10T09:00:00.000Z"
+      },
+      {
+        id: "lesson_dashboard_recent_second",
+        mediaId: developmentFixture.mediaId,
+        segmentId: developmentFixture.segmentId,
+        slug: "dashboard-recent-second",
+        title: "Dashboard Recent Second",
+        orderIndex: 3,
+        difficulty: "beginner",
+        summary: "Second latest dashboard lesson.",
+        status: "active",
+        sourceFile:
+          "content/media/fixture-tcg/textbook/003-dashboard-recent-second.md",
+        createdAt: "2026-03-13T09:00:00.000Z",
+        updatedAt: "2026-03-13T09:00:00.000Z"
+      },
+      {
+        id: "lesson_dashboard_recent_latest",
+        mediaId: developmentFixture.mediaId,
+        segmentId: developmentFixture.segmentId,
+        slug: "dashboard-recent-latest",
+        title: "Dashboard Recent Latest",
+        orderIndex: 4,
+        difficulty: "beginner",
+        summary: "Latest dashboard lesson.",
+        status: "active",
+        sourceFile:
+          "content/media/fixture-tcg/textbook/004-dashboard-recent-latest.md",
+        createdAt: "2026-03-13T09:00:00.000Z",
+        updatedAt: "2026-03-13T09:00:00.000Z"
+      },
+      {
+        id: "lesson_dashboard_recent_archived",
+        mediaId: developmentFixture.mediaId,
+        segmentId: developmentFixture.segmentId,
+        slug: "dashboard-recent-archived",
+        title: "Dashboard Recent Archived",
+        orderIndex: 5,
+        difficulty: "beginner",
+        summary: "Archived dashboard lesson.",
+        status: "archived",
+        sourceFile:
+          "content/media/fixture-tcg/textbook/005-dashboard-recent-archived.md",
+        createdAt: "2026-03-14T09:00:00.000Z",
+        updatedAt: "2026-03-14T09:00:00.000Z"
+      }
+    ]);
+
+    const dashboard = await getDashboardData(database);
+
+    expect(dashboard.recentLessons).toEqual([
+      {
+        createdAt: "2026-03-13T09:00:00.000Z",
+        href: "/media/fixture-tcg/textbook/dashboard-recent-latest",
+        id: "lesson_dashboard_recent_latest",
+        mediaSlug: "fixture-tcg",
+        mediaTitle: "Fixture TCG",
+        segmentTitle: "Starter Core",
+        summary: "Latest dashboard lesson.",
+        title: "Dashboard Recent Latest"
+      },
+      {
+        createdAt: "2026-03-13T09:00:00.000Z",
+        href: "/media/fixture-tcg/textbook/dashboard-recent-second",
+        id: "lesson_dashboard_recent_second",
+        mediaSlug: "fixture-tcg",
+        mediaTitle: "Fixture TCG",
+        segmentTitle: "Starter Core",
+        summary: "Second latest dashboard lesson.",
+        title: "Dashboard Recent Second"
+      },
+      {
+        createdAt: "2026-03-10T09:00:00.000Z",
+        href: "/media/fixture-tcg/textbook/dashboard-recent-older",
+        id: "lesson_dashboard_recent_older",
+        mediaSlug: "fixture-tcg",
+        mediaTitle: "Fixture TCG",
+        segmentTitle: "Starter Core",
+        summary: "Older dashboard lesson.",
+        title: "Dashboard Recent Older"
+      }
+    ]);
+  });
+
   it("uses the deduplicated global review snapshot for dashboard review totals", async () => {
     const contentRoot = path.join(fixture.tempDir, "cross-media-content");
 

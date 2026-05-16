@@ -344,6 +344,7 @@ rt {
 .app-section__description,
 .dashboard-focus__note,
 .media-summary-card__description,
+.recent-lesson-card__summary,
 .cue-card__body,
 .segment-card__note,
 .entry-preview-card__meaning,
@@ -663,17 +664,25 @@ rt {
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
 }
 
+.recent-lesson-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+}
+
 .media-library-grid {
   grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
 }
 
 .media-summary-card,
+.recent-lesson-card,
 .library-card-link,
 .entry-point-link {
   display: block;
 }
 
 .media-summary-card__surface,
+.recent-lesson-card__surface,
 .library-card,
 .entry-point-card,
 .segment-card,
@@ -683,6 +692,7 @@ rt {
 }
 
 .media-summary-card__surface,
+.recent-lesson-card__surface,
 .library-card,
 .entry-point-card,
 .entry-preview-card,
@@ -697,6 +707,7 @@ rt {
 }
 
 .media-summary-card__top,
+.recent-lesson-card__top,
 .library-card__top,
 .entry-preview-card__top,
 .segment-card__top,
@@ -709,6 +720,7 @@ rt {
 }
 
 .media-summary-card__title,
+.recent-lesson-card__title,
 .entry-preview-card__title,
 .cue-card__title,
 .segment-card__title,
@@ -743,6 +755,16 @@ rt {
 .library-card__copy {
   display: grid;
   gap: var(--space-3);
+}
+
+.recent-lesson-card__surface {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.recent-lesson-card__copy {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
 }
 
 .library-card__labels {

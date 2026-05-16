@@ -7,6 +7,7 @@ describe("dashboard data", () => {
     vi.resetModules();
     vi.clearAllMocks();
     vi.doUnmock("@/db");
+    vi.doUnmock("@/db/queries");
     vi.doUnmock("@/lib/data-cache");
     vi.doUnmock("@/lib/local-date");
     vi.doUnmock("@/lib/media-shell");
@@ -37,9 +38,32 @@ describe("dashboard data", () => {
         title: "Media Two"
       })
     ];
+    const recentLessonRows = [
+      {
+        createdAt: "2026-03-12T09:00:00.000Z",
+        id: "lesson-recent-one",
+        lessonSlug: "recent-one",
+        mediaSlug: "media-one",
+        mediaTitle: "Media One",
+        segmentTitle: "Segment One",
+        summary: "Recent one summary.",
+        title: "Recent One"
+      },
+      {
+        createdAt: "2026-03-11T09:00:00.000Z",
+        id: "lesson-recent-two",
+        lessonSlug: "recent-two",
+        mediaSlug: "media-two",
+        mediaTitle: "Media Two",
+        segmentTitle: null,
+        summary: null,
+        title: "Recent Two"
+      }
+    ];
 
     mockDashboardDependencies({
-      mediaSnapshots
+      mediaSnapshots,
+      recentLessonRows
     });
 
     const { getDashboardData } = await import("@/lib/dashboard");
@@ -55,6 +79,28 @@ describe("dashboard data", () => {
       queueCount: 3,
       queueLabel: "3 card in coda"
     });
+    expect(dashboard.recentLessons).toEqual([
+      {
+        createdAt: "2026-03-12T09:00:00.000Z",
+        href: "/media/media-one/textbook/recent-one",
+        id: "lesson-recent-one",
+        mediaSlug: "media-one",
+        mediaTitle: "Media One",
+        segmentTitle: "Segment One",
+        summary: "Recent one summary.",
+        title: "Recent One"
+      },
+      {
+        createdAt: "2026-03-11T09:00:00.000Z",
+        href: "/media/media-two/textbook/recent-two",
+        id: "lesson-recent-two",
+        mediaSlug: "media-two",
+        mediaTitle: "Media Two",
+        segmentTitle: null,
+        summary: null,
+        title: "Recent Two"
+      }
+    ]);
     expect(dashboard.totals).toEqual({
       entriesKnown: 5,
       entriesTotal: 9,
@@ -122,9 +168,24 @@ describe("dashboard data", () => {
 
 function mockDashboardDependencies(input: {
   mediaSnapshots: MediaShellSnapshot[];
+  recentLessonRows?: Array<{
+    createdAt: string;
+    id: string;
+    lessonSlug: string;
+    mediaSlug: string;
+    mediaTitle: string;
+    segmentTitle: string | null;
+    summary: string | null;
+    title: string;
+  }>;
 }) {
   vi.doMock("@/db", () => ({
     db: {}
+  }));
+  vi.doMock("@/db/queries", () => ({
+    listRecentLessonsForDashboard: vi.fn(() =>
+      Promise.resolve(input.recentLessonRows ?? [])
+    )
   }));
   vi.doMock("@/lib/data-cache", () => ({
     GLOSSARY_SUMMARY_TAG: "glossary-summary",
