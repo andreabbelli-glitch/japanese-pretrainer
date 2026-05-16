@@ -197,6 +197,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-hetare",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2082810/1",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-hikinaoseru",
       "pitch_accent_status": "miss"
     },

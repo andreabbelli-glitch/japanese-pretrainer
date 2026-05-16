@@ -655,3 +655,35 @@ requests:
       katakana rende più meccanica la voce del personaggio.
     notes: >-
       Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: instagram-hetare-gundam-tobe
+    lesson_slug: 100-instagram-hetare-gundam-tobe
+    anchor: "La caption in basso dice 飛べ！へたれガンダム."
+    kind: social-video-screenshot
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il contesto, perché la foto rende chiaro il contrasto tra
+      l'incitamento `飛べ！` e l'aspetto volutamente goffo del Gundam.
+    visual_goal: >-
+      Mostrare il robot, il formato verticale da reel e la caption giapponese
+      in basso, così lo slang `へたれ` resta legato al tono visivo della scena.
+    source_preference: >-
+      Screenshot fornito dall'utente come allegato locale
+      /tmp/codex-remote-attachments/019e30ca-510e-7731-84b8-e1bf5dd62479/17B32347-884A-446D-95CF-30DC559D65CE/1-Foto-1.jpg.
+    capture_instructions: >-
+      Usa lo screenshot così com'è, senza crop: il formato verticale, il robot
+      intero e la caption in basso servono tutti alla lettura della battuta.
+    must_show: >-
+      Il Gundam artigianale, l'interfaccia verticale del reel e la caption
+      `飛べ！へたれガンダム`.
+    avoid: >-
+      Ritagli che perdono la caption, il volto del robot o il contrasto tra
+      corpo intero e testo in basso.
+    alt_it: >-
+      Screenshot Instagram con un Gundam artigianale in un prato e caption
+      giapponese in basso.
+    caption_it: >-
+      `{{飛|と}}べ！[へたれ](term:term-hetare)ガンダム` unisce l'imperativo
+      `{{飛|と}}べ` a uno slang scherzoso: il robot viene trattato come un eroe
+      mecha, ma chiamato anche “scrauso”.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.

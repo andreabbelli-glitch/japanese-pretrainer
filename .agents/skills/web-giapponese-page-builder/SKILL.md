@@ -77,6 +77,10 @@ Optional:
     `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`
 11. Treat the work as incomplete if pitch accent fetch, import, or cache
     revalidation fails.
+12. After a completed item/card workflow with passing required checks, commit
+    and push the relevant changes before closing the task. Stage only files
+    created or updated by this workflow, and leave unrelated worktree changes
+    unstaged.
 
 ## Editorial rules
 
@@ -194,3 +198,18 @@ If importer or DB sync code changed, run:
 Run `pnpm check` or `pnpm release:check` only if the task also changes app
 routing, DB schema, auth, cache revalidation, or user-facing UI outside this
 content-only workflow.
+
+## Publish
+
+At the end of every completed Giapponese random item/card workflow, commit and
+push the changes after validation, pitch-accent fetch, import, and cache
+revalidation have succeeded.
+
+- Do not commit or push if any required verification, import, or cache
+  revalidation step fails; report the blocker instead.
+- Use explicit `git add` paths for the lesson, cards, assets, workflow
+  manifests, pronunciation files, and any skill/documentation files touched by
+  the task.
+- Do not stage unrelated user changes from the working tree.
+- If currently on the default branch, create a task branch before committing.
+- Push the committed branch to `origin` before the final response.

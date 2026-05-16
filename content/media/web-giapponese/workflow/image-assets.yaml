@@ -334,3 +334,19 @@ assets:
       katakana rende più meccanica la voce del personaggio.
     notes: >-
       Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: instagram-hetare-gundam-tobe
+    src: assets/instagram-hetare-gundam-tobe.jpg
+    source_type: screenshot
+    width: 699
+    height: 1280
+    lesson_slug: 100-instagram-hetare-gundam-tobe
+    anchor: "La caption in basso dice 飛べ！へたれガンダム."
+    alt_it: >-
+      Screenshot Instagram con un Gundam artigianale in un prato e caption
+      giapponese in basso.
+    caption_it: >-
+      `{{飛|と}}べ！[へたれ](term:term-hetare)ガンダム` unisce l'imperativo
+      `{{飛|と}}べ` a uno slang scherzoso: il robot viene trattato come un eroe
+      mecha, ma chiamato anche “scrauso”.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.

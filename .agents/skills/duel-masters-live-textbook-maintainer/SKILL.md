@@ -384,6 +384,20 @@ Practical card-selection rules:
   pending manifest immediately reflects new entries that still lack local
   audio.
 
+9. Publish the completed card workflow.
+
+- After validation, targeted tests, pitch-accent fetch, real import, and cache
+  revalidation have succeeded, commit and push the relevant changes before
+  closing the task.
+- Do not commit or push if any required verification, import, or cache
+  revalidation step fails; report the blocker instead.
+- Use explicit `git add` paths for the lesson, cards, assets, workflow
+  manifests, pronunciation files, fixture/stat updates, and any
+  skill/documentation files touched by the task.
+- Do not stage unrelated user changes from the working tree.
+- If currently on the default branch, create a task branch before committing.
+- Push the committed branch to `origin` before the final response.
+
 ## Editorial rules
 
 - Explanations must focus on what is new in the current corpus, not repeat the
