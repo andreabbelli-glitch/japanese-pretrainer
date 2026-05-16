@@ -136,7 +136,7 @@ export function DashboardHome({ data }: DashboardHomeProps) {
 
       {recentLessons.length > 0 ? (
         <Section
-          description="Le ultime tre lesson importate cronologicamente, pronte da aprire senza passare dalla libreria."
+          description="Le ultime tre lesson importate cronologicamente che non hai ancora completato."
           eyebrow="Nuove lesson"
           title="Ultime lezioni aggiunte"
         >

@@ -1,7 +1,7 @@
-import { and, asc, desc, eq, inArray } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, isNull, ne, or } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
-import { lesson, media, segment } from "../schema/index.ts";
+import { lesson, lessonProgress, media, segment } from "../schema/index.ts";
 
 const lessonListColumns = {
   id: true,
@@ -123,7 +123,17 @@ export async function listRecentLessonsForDashboard(
     .from(lesson)
     .innerJoin(media, eq(media.id, lesson.mediaId))
     .leftJoin(segment, eq(segment.id, lesson.segmentId))
-    .where(and(eq(lesson.status, "active"), eq(media.status, "active")))
+    .leftJoin(lessonProgress, eq(lessonProgress.lessonId, lesson.id))
+    .where(
+      and(
+        eq(lesson.status, "active"),
+        eq(media.status, "active"),
+        or(
+          isNull(lessonProgress.lessonId),
+          ne(lessonProgress.status, "completed")
+        )
+      )
+    )
     .orderBy(
       desc(lesson.createdAt),
       desc(lesson.updatedAt),

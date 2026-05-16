@@ -23,6 +23,7 @@ describe("dashboard home", () => {
     );
 
     expect(markup).toContain("Ultime lezioni aggiunte");
+    expect(markup).toContain("non hai ancora completato");
     expect(markup).toContain("Seconda Lesson");
     expect(markup).toContain("Media Fixture");
     expect(markup).toContain('href="/media/media-fixture/textbook/seconda"');

@@ -198,7 +198,7 @@ describe("app shell live data", () => {
     expect(duelMastersMedia?.reviewStatValue).toBe("1 da ripassare");
   });
 
-  it("surfaces the three most recently added active lessons on the dashboard", async () => {
+  it("surfaces the three most recently added unfinished active lessons on the dashboard", async () => {
     await database.insert(lesson).values([
       {
         id: "lesson_dashboard_recent_older",
@@ -246,6 +246,21 @@ describe("app shell live data", () => {
         updatedAt: "2026-03-13T09:00:00.000Z"
       },
       {
+        id: "lesson_dashboard_recent_completed",
+        mediaId: developmentFixture.mediaId,
+        segmentId: developmentFixture.segmentId,
+        slug: "dashboard-recent-completed",
+        title: "Dashboard Recent Completed",
+        orderIndex: 6,
+        difficulty: "beginner",
+        summary: "Completed dashboard lesson.",
+        status: "active",
+        sourceFile:
+          "content/media/fixture-tcg/textbook/006-dashboard-recent-completed.md",
+        createdAt: "2026-03-14T09:00:00.000Z",
+        updatedAt: "2026-03-14T09:00:00.000Z"
+      },
+      {
         id: "lesson_dashboard_recent_archived",
         mediaId: developmentFixture.mediaId,
         segmentId: developmentFixture.segmentId,
@@ -261,6 +276,12 @@ describe("app shell live data", () => {
         updatedAt: "2026-03-14T09:00:00.000Z"
       }
     ]);
+    await database.insert(lessonProgress).values({
+      lessonId: "lesson_dashboard_recent_completed",
+      status: "completed",
+      completedAt: "2026-03-14T10:00:00.000Z",
+      lastOpenedAt: "2026-03-14T10:00:00.000Z"
+    });
 
     const dashboard = await getDashboardData(database);
 
