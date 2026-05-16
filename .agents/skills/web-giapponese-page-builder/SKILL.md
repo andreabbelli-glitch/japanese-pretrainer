@@ -78,9 +78,9 @@ Optional:
 11. Treat the work as incomplete if pitch accent fetch, import, or cache
     revalidation fails.
 12. After a completed item/card workflow with passing required checks, commit
-    and push the relevant changes before closing the task. Stage only files
-    created or updated by this workflow, and leave unrelated worktree changes
-    unstaged.
+    and push the relevant changes to `main` before closing the task. Stage only
+    files created or updated by this workflow, and leave unrelated worktree
+    changes unstaged.
 
 ## Editorial rules
 
@@ -211,5 +211,6 @@ revalidation have succeeded.
   manifests, pronunciation files, and any skill/documentation files touched by
   the task.
 - Do not stage unrelated user changes from the working tree.
-- If currently on the default branch, create a task branch before committing.
-- Push the committed branch to `origin` before the final response.
+- Do not create a task branch for normal item/card workflows. Commit on `main`
+  unless the user explicitly asks for a different branch.
+- Push `main` to `origin` before the final response.

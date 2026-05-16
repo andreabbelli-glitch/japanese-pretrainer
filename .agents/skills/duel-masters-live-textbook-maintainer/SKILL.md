@@ -395,8 +395,9 @@ Practical card-selection rules:
   manifests, pronunciation files, fixture/stat updates, and any
   skill/documentation files touched by the task.
 - Do not stage unrelated user changes from the working tree.
-- If currently on the default branch, create a task branch before committing.
-- Push the committed branch to `origin` before the final response.
+- Do not create a task branch for normal card workflows. Commit on `main`
+  unless the user explicitly asks for a different branch.
+- Push `main` to `origin` before the final response.
 
 ## Editorial rules
 
