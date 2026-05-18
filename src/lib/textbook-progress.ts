@@ -1,6 +1,6 @@
 import { eq, sql } from "drizzle-orm";
 
-import { db, type DatabaseClient } from "@/db";
+import { db, type DatabaseClient, type DatabaseQueryClient } from "@/db";
 import { lessonProgress } from "@/db/schema";
 import { updateStudySettings, type FuriganaMode } from "@/lib/settings";
 import {
@@ -18,6 +18,9 @@ type LessonOpenState = {
   startedAt: string;
   status: "in_progress" | "completed";
 };
+
+type LessonProgressMutationClient = DatabaseQueryClient &
+  Pick<DatabaseClient, "insert" | "update">;
 
 export async function recordLessonOpened(
   lessonId: string,
@@ -85,7 +88,7 @@ export async function settleLessonOpenedStateForRender(
 export async function setLessonCompletionState(
   lessonId: string,
   completed: boolean,
-  database: DatabaseClient = db
+  database: LessonProgressMutationClient = db
 ) {
   const nowIso = new Date().toISOString();
   const existing = await database.query.lessonProgress.findFirst({
@@ -94,7 +97,11 @@ export async function setLessonCompletionState(
 
   if (!existing) {
     if (!completed) {
-      return;
+      return {
+        completedNow: false,
+        previousStatus: "not_started" as const,
+        status: "not_started" as const
+      };
     }
 
     await database.insert(lessonProgress).values({
@@ -105,11 +112,19 @@ export async function setLessonCompletionState(
       lastOpenedAt: nowIso
     });
 
-    return;
+    return {
+      completedNow: true,
+      previousStatus: "not_started" as const,
+      status: "completed" as const
+    };
   }
 
   if (!completed && existing.status === "not_started") {
-    return;
+    return {
+      completedNow: false,
+      previousStatus: existing.status,
+      status: existing.status
+    };
   }
 
   await database
@@ -124,6 +139,14 @@ export async function setLessonCompletionState(
       lastOpenedAt: nowIso
     })
     .where(eq(lessonProgress.lessonId, lessonId));
+
+  const nextStatus = completed ? "completed" : "in_progress";
+
+  return {
+    completedNow: completed && existing.status !== "completed",
+    previousStatus: existing.status,
+    status: nextStatus
+  };
 }
 
 export async function setFuriganaMode(

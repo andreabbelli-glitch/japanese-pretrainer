@@ -44,6 +44,7 @@ import {
 } from "./review-card-hydration";
 import type { ReviewOverviewSnapshot } from "./review-types";
 import type { ReviewSearchState } from "./review-search-state";
+import { getPendingConsolidationSubjectKeySet } from "./consolidation";
 
 export type ReviewPageLoadOptions = {
   bypassCache?: boolean;
@@ -223,7 +224,19 @@ export async function loadReviewWorkspaceV2(input: {
         (value) => ({ subjectGroups: value.subjectGroups.length })
       );
 
-      return subjectGroups;
+      const pendingConsolidationSubjectKeys =
+        await getPendingConsolidationSubjectKeySet(
+          database,
+          subjectGroups.map((group) => group.identity.subjectKey)
+        );
+
+      if (pendingConsolidationSubjectKeys.size === 0) {
+        return subjectGroups;
+      }
+
+      return subjectGroups.filter(
+        (group) => !pendingConsolidationSubjectKeys.has(group.identity.subjectKey)
+      );
     }
   );
   const [stableWorkspace, dailyLimit, newIntroducedTodayCount, subjectGroups] =
@@ -248,7 +261,10 @@ export async function loadReviewWorkspaceV2(input: {
           ),
       subjectGroupsPromise
     ]);
-  const cards = stableWorkspace.cards;
+  const cards = filterReviewCardsBySubjectGroups(
+    stableWorkspace.cards,
+    subjectGroups
+  );
   input.profiler?.addMeta({
     cards: cards.length,
     mediaIds: input.mediaIds.length,
@@ -724,6 +740,17 @@ function buildEligibleReviewCardsByMedia(input: {
 
 function filterEligibleReviewCards(cards: ReviewCardListItem[]) {
   return cards.filter((card) => hasCompletedReviewLesson(card));
+}
+
+function filterReviewCardsBySubjectGroups(
+  cards: ReviewCardListItem[],
+  subjectGroups: ReviewSubjectGroup[]
+) {
+  const visibleCardIds = new Set(
+    subjectGroups.flatMap((group) => group.cards.map((card) => card.id))
+  );
+
+  return cards.filter((card) => visibleCardIds.has(card.id));
 }
 
 function scoreReviewLaunchCandidate(candidate: {

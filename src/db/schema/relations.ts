@@ -34,6 +34,7 @@ import {
 import {
   card,
   cardEntryLink,
+  preReviewConsolidationState,
   reviewSubjectLog,
   reviewSubjectState
 } from "./review.ts";
@@ -162,7 +163,8 @@ export const cardRelations = relations(card, ({ many, one }) => ({
     fields: [card.segmentId],
     references: [segment.id]
   }),
-  entryLinks: many(cardEntryLink)
+  entryLinks: many(cardEntryLink),
+  preReviewConsolidationStates: many(preReviewConsolidationState)
 }));
 
 export const cardEntryLinkRelations = relations(cardEntryLink, ({ one }) => ({
@@ -193,6 +195,24 @@ export const reviewSubjectLogRelations = relations(
     subjectState: one(reviewSubjectState, {
       fields: [reviewSubjectLog.subjectKey],
       references: [reviewSubjectState.subjectKey]
+    })
+  })
+);
+
+export const preReviewConsolidationStateRelations = relations(
+  preReviewConsolidationState,
+  ({ one }) => ({
+    lesson: one(lesson, {
+      fields: [preReviewConsolidationState.lessonId],
+      references: [lesson.id]
+    }),
+    media: one(media, {
+      fields: [preReviewConsolidationState.mediaId],
+      references: [media.id]
+    }),
+    representativeCard: one(card, {
+      fields: [preReviewConsolidationState.representativeCardId],
+      references: [card.id]
     })
   })
 );

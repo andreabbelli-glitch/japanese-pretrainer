@@ -581,10 +581,14 @@ async function loadReviewOverviewData(
         ON c.id = si.card_id
       LEFT JOIN review_subject_state rss
         ON rss.subject_key = si.subject_key
+      LEFT JOIN pre_review_consolidation_state prcs
+        ON prcs.subject_key = si.subject_key
+       AND prcs.status = 'pending'
       LEFT JOIN completed_lessons cl
         ON cl.id = si.lesson_id
       WHERE si.lesson_id IS NOT NULL
        AND cl.id IS NOT NULL
+       AND prcs.subject_key IS NULL
     ),
     ${subjectCandidatesCte} AS (
       SELECT
@@ -860,9 +864,13 @@ export async function getQueuedNewReviewSubjectSummaryByMediaId(
         ON c.id = si.card_id
       LEFT JOIN review_subject_state rss
         ON rss.subject_key = si.subject_key
+      LEFT JOIN pre_review_consolidation_state prcs
+        ON prcs.subject_key = si.subject_key
+       AND prcs.status = 'pending'
       INNER JOIN completed_lessons cl
         ON cl.id = si.lesson_id
       WHERE si.lesson_id IS NOT NULL
+        AND prcs.subject_key IS NULL
     ),
     global_subject_candidates AS (
       SELECT
@@ -1146,8 +1154,12 @@ export async function listDueCardsByMediaId(
         ON lp.lesson_id = l.id
       INNER JOIN review_subject_state rss
         ON rss.subject_key = si.subject_key
+      LEFT JOIN pre_review_consolidation_state prcs
+        ON prcs.subject_key = si.subject_key
+       AND prcs.status = 'pending'
       WHERE si.media_id = ${quoteSqlString(mediaId)}
         AND si.card_status = 'active'
+        AND prcs.subject_key IS NULL
         AND l.status = 'active'
         AND lp.status = 'completed'
         AND rss.due_at IS NOT NULL

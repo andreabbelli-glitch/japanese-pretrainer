@@ -13,6 +13,7 @@ import {
   cardRelationshipTypeValues,
   cardStatusValues,
   entryTypeValues,
+  preReviewConsolidationStatusValues,
   reviewRatingValues,
   reviewSchedulerVersionValues,
   reviewSubjectKindValues,
@@ -183,5 +184,49 @@ export const reviewSubjectLog = sqliteTable(
       table.subjectKey,
       table.cardId
     )
+  ]
+);
+
+export const preReviewConsolidationState = sqliteTable(
+  "pre_review_consolidation_state",
+  {
+    subjectKey: text("subject_key").primaryKey(),
+    subjectType: text("subject_type", { enum: reviewSubjectKindValues }).notNull(),
+    entryType: text("entry_type", { enum: entryTypeValues }),
+    crossMediaGroupId: text("cross_media_group_id"),
+    entryId: text("entry_id"),
+    representativeCardId: text("representative_card_id")
+      .notNull()
+      .references(() => card.id, { onDelete: "cascade" }),
+    lessonId: text("lesson_id")
+      .notNull()
+      .references(() => lesson.id, { onDelete: "cascade" }),
+    mediaId: text("media_id")
+      .notNull()
+      .references(() => media.id, { onDelete: "cascade" }),
+    status: text("status", { enum: preReviewConsolidationStatusValues })
+      .notNull()
+      .default("pending"),
+    attemptCount: integer("attempt_count").notNull().default(0),
+    lastAttemptAt: text("last_attempt_at"),
+    completedAt: text("completed_at"),
+    createdAt: text("created_at").notNull(),
+    updatedAt: text("updated_at").notNull()
+  },
+  (table) => [
+    index("pre_review_consolidation_status_media_idx").on(
+      table.status,
+      table.mediaId
+    ),
+    index("pre_review_consolidation_status_lesson_idx").on(
+      table.status,
+      table.lessonId
+    ),
+    index("pre_review_consolidation_media_lesson_status_idx").on(
+      table.mediaId,
+      table.lessonId,
+      table.status
+    ),
+    index("pre_review_consolidation_card_idx").on(table.representativeCardId)
   ]
 );

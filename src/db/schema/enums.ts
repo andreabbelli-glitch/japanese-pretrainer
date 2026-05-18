@@ -33,6 +33,11 @@ export const reviewStateValues = [
 export const reviewSubjectKindValues = ["group", "entry", "card"] as const;
 export const reviewRatingValues = ["again", "hard", "good", "easy"] as const;
 export const reviewSchedulerVersionValues = ["fsrs_v1"] as const;
+export const preReviewConsolidationStatusValues = [
+  "pending",
+  "passed",
+  "known_manual"
+] as const;
 export const kanjiClashPairStateValues = [
   "new",
   "learning",

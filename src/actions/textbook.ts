@@ -6,10 +6,8 @@ import {
 } from "@/lib/cache-invalidation-policy";
 import { db } from "@/db";
 import { getMediaBySlug } from "@/db/queries";
-import {
-  setFuriganaMode,
-  setLessonCompletionState
-} from "@/features/textbook/server";
+import { setFuriganaMode } from "@/features/textbook/server";
+import { setLessonCompletionWithConsolidation } from "@/lib/consolidation";
 import type { FuriganaMode } from "@/features/textbook/types";
 
 export async function setFuriganaModeAction(input: {
@@ -35,7 +33,10 @@ export async function setLessonCompletionAction(input: {
 }) {
   const mediaPromise = getMediaBySlug(db, input.mediaSlug);
 
-  await setLessonCompletionState(input.lessonId, input.completed);
+  await setLessonCompletionWithConsolidation({
+    completed: input.completed,
+    lessonId: input.lessonId
+  });
   const media = await mediaPromise;
 
   invalidateLessonCompletionChanged({

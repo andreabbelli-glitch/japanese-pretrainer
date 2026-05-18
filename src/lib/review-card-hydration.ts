@@ -66,6 +66,7 @@ import {
   type ReviewQueueStateSnapshot,
   resolveReviewQueueState
 } from "./review-queue-state";
+import { getPendingConsolidationSubjectKeySet } from "./consolidation";
 import {
   buildBucketDetail,
   formatBucketLabel,
@@ -227,6 +228,15 @@ export async function hydrateReviewCardUncached(input: {
     entryLinks: card.entryLinks,
     entryLookup: buildReviewSubjectEntryLookup({ grammar, terms })
   });
+  const pendingConsolidationSubjectKeys =
+    await getPendingConsolidationSubjectKeySet(database, [
+      subjectIdentity.subjectKey
+    ]);
+
+  if (pendingConsolidationSubjectKeys.has(subjectIdentity.subjectKey)) {
+    return null;
+  }
+
   const subjectState = await measureWith(
     input.profiler,
     "getReviewSubjectStateByKey",
