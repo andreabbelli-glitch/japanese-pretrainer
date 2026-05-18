@@ -13,6 +13,7 @@ import {
 } from "@/db/queries";
 import {
   card,
+  preReviewConsolidationState,
   reviewSubjectLog,
   reviewSubjectState,
   type EntryType
@@ -176,6 +177,11 @@ export async function gradeReviewCardInTransaction(input: {
     subjectContext.subjectState
   );
 
+  await assertSubjectNotPendingConsolidation(
+    input.transaction,
+    subjectContext.identity.subjectKey
+  );
+
   const effectiveState = resolveEffectiveReviewState({
     cardStatus: subjectContext.seedCard.status,
     reviewState: resolvedSubjectState
@@ -278,6 +284,25 @@ export async function gradeReviewCardInTransaction(input: {
     newState: scheduled.state,
     previousState
   };
+}
+
+async function assertSubjectNotPendingConsolidation(
+  transaction: ReviewMutationTransaction,
+  subjectKey: string
+) {
+  const row = await transaction.query.preReviewConsolidationState.findFirst({
+    columns: {
+      subjectKey: true
+    },
+    where: and(
+      eq(preReviewConsolidationState.subjectKey, subjectKey),
+      eq(preReviewConsolidationState.status, "pending")
+    )
+  });
+
+  if (row) {
+    throw new Error("Review card is pending consolidation.");
+  }
 }
 
 export async function resetReviewCardProgress(input: {
