@@ -61,15 +61,6 @@ export function ConsolidationSessionClient({
   }, []);
 
   useEffect(() => {
-    setSubjects(data.subjects);
-    setQueue(data.subjects.map((subject) => subject.subjectKey));
-    setStepIndex(0);
-    setPhase("retrieval");
-    setFeedback(null);
-    setIsSubmitting(false);
-  }, [data.subjects]);
-
-  useEffect(() => {
     clearSessionTimers();
 
     if (completed || phase !== "retrieval") {
@@ -140,7 +131,7 @@ export function ConsolidationSessionClient({
   };
 
   const handleMarkKnown = async () => {
-    if (!currentSubject || isSubmitting) {
+    if (!currentSubject || phase !== "answering" || isSubmitting) {
       return;
     }
 
@@ -314,14 +305,16 @@ export function ConsolidationSessionClient({
         <Link className="button button--ghost" href={data.hubHref}>
           Hub
         </Link>
-        <button
-          className="button button--secondary"
-          disabled={isSubmitting}
-          type="button"
-          onClick={() => void handleMarkKnown()}
-        >
-          Già nota
-        </button>
+        {phase !== "retrieval" ? (
+          <button
+            className="button button--secondary"
+            disabled={isSubmitting || phase !== "answering"}
+            type="button"
+            onClick={() => void handleMarkKnown()}
+          >
+            Già nota
+          </button>
+        ) : null}
       </footer>
     </section>
   );

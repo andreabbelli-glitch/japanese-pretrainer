@@ -22,5 +22,10 @@ export default async function ConsolidationLessonRoute({
     notFound();
   }
 
-  return <ConsolidationSessionClient data={data} />;
+  return (
+    <ConsolidationSessionClient
+      data={data}
+      key={`${data.media.id}:${data.lesson.id}`}
+    />
+  );
 }

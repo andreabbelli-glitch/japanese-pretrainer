@@ -673,10 +673,14 @@ export async function submitConsolidationAnswer(
       throw new Error("Reading step must be completed before meaning.");
     }
 
+    const attemptCount = row.attemptCount + 1;
+
     await transaction
       .update(preReviewConsolidationState)
       .set({
+        attemptCount,
         completedAt: nowIso,
+        lastAttemptAt: nowIso,
         readingPassedAt: row.readingPassedAt,
         status: "passed",
         updatedAt: nowIso
@@ -684,7 +688,7 @@ export async function submitConsolidationAnswer(
       .where(eq(preReviewConsolidationState.subjectKey, input.subjectKey));
 
     return {
-      attemptCount: row.attemptCount,
+      attemptCount,
       completed: true,
       correct: true,
       lessonId: row.lessonId,
@@ -1169,17 +1173,9 @@ async function subjectRequiresReadingStep(
   ]);
   const entry = entryLookup.get(buildEntryKey(row.entryType, row.entryId));
   const front = row.representativeCard.front;
-  const reading = entry?.reading?.trim() || extractReadingFromFurigana(front);
+  const reading = entry?.reading?.trim() || null;
 
   return reading ? readingAddsRetrievalValue(front, reading) : false;
-}
-
-function extractReadingFromFurigana(front: string) {
-  const readings = [...front.matchAll(/\{\{[^|{}]+\|([^{}]+)\}\}/gu)]
-    .map((match) => match[1]?.trim())
-    .filter((value): value is string => Boolean(value));
-
-  return readings.length > 0 ? readings.join("") : null;
 }
 
 function normalizeOptionLabel(label: string) {

@@ -14,6 +14,7 @@ import { runMigrations } from "@/db/migrate";
 import {
   card,
   cardEntryLink,
+  grammarPattern,
   lesson,
   lessonProgress,
   media,
@@ -521,6 +522,13 @@ describe("pre-FSRS consolidation service", () => {
       step: "meaning",
       subjectKey: "entry:term:term_consolidation_reading"
     });
+    const completedRow =
+      await database.query.preReviewConsolidationState.findFirst({
+        where: eq(
+          preReviewConsolidationState.subjectKey,
+          "entry:term:term_consolidation_reading"
+        )
+      });
 
     expect(readingResult).toMatchObject({
       completed: false,
@@ -530,6 +538,13 @@ describe("pre-FSRS consolidation service", () => {
     expect(meaningResult).toMatchObject({
       completed: true,
       correct: true,
+      attemptCount: 1,
+      status: "passed"
+    });
+    expect(completedRow).toMatchObject({
+      attemptCount: 1,
+      completedAt: "2026-04-01T10:04:00.000Z",
+      lastAttemptAt: "2026-04-01T10:04:00.000Z",
       status: "passed"
     });
   });
@@ -560,10 +575,50 @@ describe("pre-FSRS consolidation service", () => {
     expect(result).toMatchObject({
       completed: true,
       correct: true,
+      attemptCount: 1,
       status: "passed"
     });
     expect(row).toMatchObject({
+      attemptCount: 1,
       completedAt: "2026-04-01T10:03:00.000Z",
+      lastAttemptAt: "2026-04-01T10:03:00.000Z",
+      status: "passed"
+    });
+  });
+
+  it("lets a grammar card without structured reading pass as meaning-only even when the front has furigana", async () => {
+    await seedConsolidationLesson(database);
+    await seedGrammarWithoutReadingPendingCard(database);
+    await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+
+    const session = await getConsolidationSessionData({
+      database,
+      lessonSlug: "consolidation-intro",
+      mediaSlug: "media-consolidation"
+    });
+    const grammarSubject = session?.subjects.find(
+      (subject) =>
+        subject.subjectKey === "entry:grammar:grammar_consolidation_before"
+    );
+    const result = await submitConsolidationAnswer({
+      database,
+      now: new Date("2026-04-01T10:03:00.000Z"),
+      selectedSubjectKey: "entry:grammar:grammar_consolidation_before",
+      step: "meaning",
+      subjectKey: "entry:grammar:grammar_consolidation_before"
+    });
+
+    expect(grammarSubject?.steps.map((step) => step.step)).toEqual([
+      "meaning"
+    ]);
+    expect(result).toMatchObject({
+      attemptCount: 1,
+      completed: true,
+      correct: true,
       status: "passed"
     });
   });
@@ -917,6 +972,46 @@ async function seedKanaOnlyPendingCard(database: DatabaseClient) {
     cardId: "card_consolidation_kana",
     entryType: "term",
     entryId: "term_consolidation_kana",
+    relationshipType: "primary"
+  });
+}
+
+async function seedGrammarWithoutReadingPendingCard(database: DatabaseClient) {
+  await database.insert(grammarPattern).values({
+    id: "grammar_consolidation_before",
+    sourceId: "consolidation-before",
+    mediaId: "media_consolidation",
+    segmentId: null,
+    pattern: "～前に",
+    title: "Prima di",
+    reading: null,
+    meaningIt: "prima di",
+    notesIt: null,
+    levelHint: null,
+    searchPatternNorm: "前に",
+    searchRomajiNorm: "",
+    createdAt: "2026-04-01T09:03:00.000Z",
+    updatedAt: "2026-04-01T09:03:00.000Z"
+  });
+  await database.insert(card).values({
+    id: "card_consolidation_grammar_before",
+    mediaId: "media_consolidation",
+    lessonId: "lesson_consolidation",
+    segmentId: null,
+    sourceFile: "tests/consolidation/cards.md",
+    cardType: "recognition",
+    front: "～{{前|まえ}}に",
+    back: "prima di",
+    status: "active",
+    orderIndex: 4,
+    createdAt: "2026-04-01T09:03:00.000Z",
+    updatedAt: "2026-04-01T09:03:00.000Z"
+  });
+  await database.insert(cardEntryLink).values({
+    id: "card_consolidation_grammar_before_link",
+    cardId: "card_consolidation_grammar_before",
+    entryType: "grammar",
+    entryId: "grammar_consolidation_before",
     relationshipType: "primary"
   });
 }

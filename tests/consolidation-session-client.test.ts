@@ -66,6 +66,7 @@ describe("ConsolidationSessionClient", () => {
     });
 
     expect(container?.textContent).toContain("読む");
+    expect(container?.textContent).not.toContain("Già nota");
     expect(container?.textContent).not.toContain("よむ");
     expect(container?.textContent).not.toContain("かく");
     expect(container?.textContent).not.toContain("leggere");
@@ -85,6 +86,38 @@ describe("ConsolidationSessionClient", () => {
 
     expect(container?.textContent).toContain("よむ");
     expect(container?.textContent).toContain("かく");
+    expect(container?.textContent).toContain("Già nota");
+  });
+
+  it("resets the local queue when rerendered with another lesson session", async () => {
+    await act(async () => {
+      root!.render(
+        createElement(ConsolidationSessionClient, {
+          data: buildData(),
+          key: "lesson-001"
+        })
+      );
+    });
+
+    await act(async () => {
+      root!.render(
+        createElement(ConsolidationSessionClient, {
+          data: buildData({
+            front: "{{見|み}}る",
+            lessonId: "lesson-002",
+            lessonTitle: "Seconda lezione",
+            reading: "みる",
+            subjectKey: "entry:term:term-miru"
+          }),
+          key: "lesson-002"
+        })
+      );
+      await Promise.resolve();
+    });
+
+    expect(container?.textContent).toContain("Seconda lezione");
+    expect(container?.textContent).toContain("見る");
+    expect(container?.textContent).not.toContain("読む");
   });
 
   it("renders the review CTA when the consolidation session is empty", async () => {
@@ -104,13 +137,24 @@ describe("ConsolidationSessionClient", () => {
   });
 });
 
-function buildData(): ConsolidationSessionData {
+function buildData(
+  overrides: {
+    front?: string;
+    lessonId?: string;
+    lessonTitle?: string;
+    reading?: string;
+    subjectKey?: string;
+  } = {}
+): ConsolidationSessionData {
+  const subjectKey = overrides.subjectKey ?? "entry:term:term-yomu";
+  const reading = overrides.reading ?? "よむ";
+
   return {
     hubHref: "/consolidation" as never,
     lesson: {
-      id: "lesson-001",
+      id: overrides.lessonId ?? "lesson-001",
       slug: "intro",
-      title: "Intro"
+      title: overrides.lessonTitle ?? "Intro"
     },
     media: {
       id: "media-001",
@@ -122,17 +166,17 @@ function buildData(): ConsolidationSessionData {
       {
         attemptCount: 0,
         back: "leggere",
-        front: "{{読|よ}}む",
+        front: overrides.front ?? "{{読|よ}}む",
         representativeCardId: "card-001",
-        subjectKey: "entry:term:term-yomu",
+        subjectKey,
         steps: [
           {
-            answerLabel: "よむ",
+            answerLabel: reading,
             options: [
               {
                 kind: "term",
-                label: "よむ",
-                subjectKey: "entry:term:term-yomu"
+                label: reading,
+                subjectKey
               },
               {
                 kind: "term",
@@ -148,7 +192,7 @@ function buildData(): ConsolidationSessionData {
               {
                 kind: "term",
                 label: "leggere",
-                subjectKey: "entry:term:term-yomu"
+                subjectKey
               },
               {
                 kind: "term",

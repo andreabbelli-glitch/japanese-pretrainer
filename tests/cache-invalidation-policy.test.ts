@@ -24,6 +24,7 @@ import {
   invalidateStudySettingsSaved
 } from "@/lib/cache-invalidation-policy";
 import {
+  CONSOLIDATION_SUMMARY_TAG,
   GLOSSARY_SUMMARY_TAG,
   MEDIA_LIST_TAG,
   REVIEW_FIRST_CANDIDATE_TAG,
@@ -68,6 +69,9 @@ describe("cache invalidation policy", () => {
     expect(updateTagMock.mock.calls).toEqual([
       [MEDIA_LIST_TAG],
       [REVIEW_FIRST_CANDIDATE_TAG],
+      [CONSOLIDATION_SUMMARY_TAG],
+      [REVIEW_FIRST_CANDIDATE_TAG],
+      [`${CONSOLIDATION_SUMMARY_TAG}:media_dm`],
       [REVIEW_SUMMARY_TAG],
       [REVIEW_FIRST_CANDIDATE_TAG],
       [`${REVIEW_SUMMARY_TAG}:media_dm`]
@@ -122,8 +126,11 @@ describe("cache invalidation policy", () => {
       [MEDIA_LIST_TAG, "max"],
       [REVIEW_FIRST_CANDIDATE_TAG, "max"],
       [GLOSSARY_SUMMARY_TAG, "max"],
+      [CONSOLIDATION_SUMMARY_TAG, "max"],
       [`${GLOSSARY_SUMMARY_TAG}:media_dm`, "max"],
       [`${GLOSSARY_SUMMARY_TAG}:media_p5`, "max"],
+      [`${CONSOLIDATION_SUMMARY_TAG}:media_dm`, "max"],
+      [`${CONSOLIDATION_SUMMARY_TAG}:media_p5`, "max"],
       [REVIEW_SUMMARY_TAG, "max"],
       [`${REVIEW_SUMMARY_TAG}:media_dm`, "max"],
       [`${REVIEW_SUMMARY_TAG}:media_p5`, "max"],
