@@ -11,6 +11,8 @@ import {
 import type { TextbookLessonData } from "@/lib/textbook-types";
 
 const mocks = vi.hoisted(() => ({
+  latestToggleLessonCompletion: null as null | (() => void),
+  routerPush: vi.fn(),
   setFuriganaModeAction: vi.fn(),
   setLessonCompletionAction: vi.fn()
 }));
@@ -18,6 +20,12 @@ const mocks = vi.hoisted(() => ({
 vi.mock("@/actions/textbook", () => ({
   setFuriganaModeAction: mocks.setFuriganaModeAction,
   setLessonCompletionAction: mocks.setLessonCompletionAction
+}));
+
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: mocks.routerPush
+  })
 }));
 
 vi.mock("@/components/textbook/lesson-article", async () => {
@@ -37,8 +45,14 @@ vi.mock("@/components/textbook/lesson-reader-ui", async () => {
 
   return {
     LessonReaderFooter: () => React.createElement("div", null, "footer"),
-    LessonReaderHeader: (props: { lesson: { title: string } }) =>
-      React.createElement("div", null, props.lesson.title),
+    LessonReaderHeader: (props: {
+      lesson: { title: string };
+      onToggleLessonCompletion: () => void;
+    }) => {
+      mocks.latestToggleLessonCompletion = props.onToggleLessonCompletion;
+
+      return React.createElement("div", null, props.lesson.title);
+    },
     LessonReaderMobileStrip: () =>
       React.createElement("div", null, "mobile-strip"),
     MemoizedLessonRail: () => React.createElement("div", null, "rail"),
@@ -56,8 +70,15 @@ describe("LessonReaderClient prop sync", () => {
 
   beforeEach(() => {
     installMinimalDom();
+    mocks.latestToggleLessonCompletion = null;
+    mocks.routerPush.mockReset();
     mocks.setFuriganaModeAction.mockReset();
     mocks.setLessonCompletionAction.mockReset();
+    mocks.setLessonCompletionAction.mockResolvedValue({
+      consolidationHref: null,
+      ok: true,
+      status: "completed"
+    });
   });
 
   afterEach(async () => {
@@ -111,6 +132,45 @@ describe("LessonReaderClient prop sync", () => {
     );
     expect(container.textContent).toContain("Summary after refresh");
     expect(container.textContent).not.toContain("Summary before refresh");
+  });
+
+  it("navigates to consolidation after a newly completed lesson creates pending subjects", async () => {
+    container = document.createElement("div");
+    root = createRoot(container);
+    mocks.setLessonCompletionAction.mockResolvedValueOnce({
+      consolidationHref: "/consolidation/media/sample-media/lesson/intro",
+      ok: true,
+      status: "completed"
+    });
+
+    await act(async () => {
+      root!.render(
+        createElement(LessonReaderClient, {
+          data: buildLessonData({
+            furiganaMode: "hover",
+            status: "not_started",
+            statusLabel: "Da iniziare",
+            summary: "Summary before completion"
+          })
+        })
+      );
+    });
+
+    await act(async () => {
+      mocks.latestToggleLessonCompletion?.();
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+
+    expect(mocks.setLessonCompletionAction).toHaveBeenCalledWith({
+      completed: true,
+      lessonId: "lesson-001",
+      lessonSlug: "intro",
+      mediaSlug: "sample-media"
+    });
+    expect(mocks.routerPush).toHaveBeenCalledWith(
+      "/consolidation/media/sample-media/lesson/intro"
+    );
   });
 });
 

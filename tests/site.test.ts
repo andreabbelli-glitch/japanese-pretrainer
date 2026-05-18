@@ -55,6 +55,7 @@ describe("site helpers", () => {
       "Home",
       "Media",
       "Glossary",
+      "Consolidamento",
       "Review",
       "Kanji Clash",
       "Katakana",
@@ -64,6 +65,7 @@ describe("site helpers", () => {
       "/",
       "/media",
       "/glossary",
+      "/consolidation",
       "/review",
       "/kanji-clash",
       "/katakana-speed",
@@ -202,6 +204,14 @@ describe("site helpers", () => {
     expect(resolveActivePrimaryNavHref("/media/fixture-tcg")).toBe("/media");
     expect(resolveActivePrimaryNavHref("/glossary")).toBe("/glossary");
     expect(resolveActivePrimaryNavHref("/glossary/search")).toBe("/glossary");
+    expect(resolveActivePrimaryNavHref("/consolidation")).toBe(
+      "/consolidation"
+    );
+    expect(
+      resolveActivePrimaryNavHref(
+        "/consolidation/media/fixture-tcg/lesson/core-vocab"
+      )
+    ).toBe("/consolidation");
     expect(resolveActivePrimaryNavHref("/media/fixture-tcg/glossary")).toBe(
       "/glossary"
     );

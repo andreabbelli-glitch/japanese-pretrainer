@@ -1,0 +1,1 @@
+ALTER TABLE `pre_review_consolidation_state` ADD `reading_passed_at` text;

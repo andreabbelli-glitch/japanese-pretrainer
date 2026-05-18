@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const {
   getMediaBySlugMock,
+  updateConsolidationSummaryCacheMock,
   updateMediaListCacheMock,
   updateReviewSummaryCacheMock,
   updateSettingsCacheMock,
@@ -9,6 +10,7 @@ const {
   setLessonCompletionWithConsolidationMock
 } = vi.hoisted(() => ({
   getMediaBySlugMock: vi.fn(),
+  updateConsolidationSummaryCacheMock: vi.fn(),
   updateMediaListCacheMock: vi.fn(),
   updateReviewSummaryCacheMock: vi.fn(),
   updateSettingsCacheMock: vi.fn(),
@@ -25,6 +27,7 @@ vi.mock("@/db/queries", () => ({
 }));
 
 vi.mock("@/lib/data-cache", () => ({
+  updateConsolidationSummaryCache: updateConsolidationSummaryCacheMock,
   updateMediaListCache: updateMediaListCacheMock,
   updateReviewSummaryCache: updateReviewSummaryCacheMock,
   updateSettingsCache: updateSettingsCacheMock
@@ -47,6 +50,7 @@ describe("textbook actions", () => {
   beforeEach(() => {
     getMediaBySlugMock.mockReset();
     getMediaBySlugMock.mockResolvedValue({ id: "media_fixture" });
+    updateConsolidationSummaryCacheMock.mockReset();
     updateMediaListCacheMock.mockReset();
     updateReviewSummaryCacheMock.mockReset();
     updateSettingsCacheMock.mockReset();
@@ -72,6 +76,7 @@ describe("textbook actions", () => {
 
     expect(setFuriganaModeMock).toHaveBeenCalledWith("off");
     expect(updateSettingsCacheMock).toHaveBeenCalledTimes(1);
+    expect(updateConsolidationSummaryCacheMock).not.toHaveBeenCalled();
     expect(updateMediaListCacheMock).not.toHaveBeenCalled();
     expect(updateReviewSummaryCacheMock).not.toHaveBeenCalled();
   });
@@ -90,12 +95,15 @@ describe("textbook actions", () => {
     });
     expect(getMediaBySlugMock).toHaveBeenCalledWith({}, "fixture-media");
     expect(updateMediaListCacheMock).toHaveBeenCalledTimes(1);
+    expect(updateConsolidationSummaryCacheMock).toHaveBeenCalledWith(
+      "media_fixture"
+    );
     expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith("media_fixture");
     expect(updateSettingsCacheMock).not.toHaveBeenCalled();
   });
 
   it("enqueues pre-FSRS consolidation after newly completing a lesson", async () => {
-    await setLessonCompletionAction({
+    const result = await setLessonCompletionAction({
       completed: true,
       lessonId: "lesson_001",
       lessonSlug: "core-vocab",
@@ -105,11 +113,16 @@ describe("textbook actions", () => {
     expect(setLessonCompletionWithConsolidationMock).toHaveBeenCalledWith({
       completed: true,
       lessonId: "lesson_001"
+    });
+    expect(result).toMatchObject({
+      consolidationHref: "/consolidation/media/fixture-media/lesson/core-vocab",
+      ok: true,
+      status: "completed"
     });
   });
 
   it("does not enqueue pre-FSRS consolidation when reopening a lesson", async () => {
-    await setLessonCompletionAction({
+    const result = await setLessonCompletionAction({
       completed: false,
       lessonId: "lesson_001",
       lessonSlug: "core-vocab",
@@ -120,6 +133,7 @@ describe("textbook actions", () => {
       completed: false,
       lessonId: "lesson_001"
     });
+    expect(result.consolidationHref).toBeNull();
   });
 
   it("does not enqueue pre-FSRS consolidation when completion was already persisted", async () => {
@@ -133,7 +147,7 @@ describe("textbook actions", () => {
       status: "completed"
     });
 
-    await setLessonCompletionAction({
+    const result = await setLessonCompletionAction({
       completed: true,
       lessonId: "lesson_001",
       lessonSlug: "core-vocab",
@@ -144,5 +158,6 @@ describe("textbook actions", () => {
       completed: true,
       lessonId: "lesson_001"
     });
+    expect(result.consolidationHref).toBeNull();
   });
 });

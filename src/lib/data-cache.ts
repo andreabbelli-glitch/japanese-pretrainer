@@ -9,6 +9,7 @@ export const SETTINGS_TAG = "settings";
 export const GLOSSARY_SUMMARY_TAG = "glossary-summary";
 export const REVIEW_SUMMARY_TAG = "review-summary";
 export const REVIEW_FIRST_CANDIDATE_TAG = "review-first-candidate";
+export const CONSOLIDATION_SUMMARY_TAG = "consolidation-summary";
 export const TEXTBOOK_LESSON_BODY_TAG = "textbook-lesson-body";
 export const TEXTBOOK_TOOLTIP_TAG = "textbook-tooltips";
 
@@ -38,6 +39,13 @@ export function buildReviewSummaryTags(mediaIds: string[] = []) {
   return dedupeTags([
     REVIEW_SUMMARY_TAG,
     ...mediaIds.map((mediaId) => `${REVIEW_SUMMARY_TAG}:${mediaId}`)
+  ]);
+}
+
+export function buildConsolidationSummaryTags(mediaIds: string[] = []) {
+  return dedupeTags([
+    CONSOLIDATION_SUMMARY_TAG,
+    ...mediaIds.map((mediaId) => `${CONSOLIDATION_SUMMARY_TAG}:${mediaId}`)
   ]);
 }
 
@@ -230,6 +238,24 @@ export function updateReviewSummaryCache(mediaId?: string | null) {
 
   if (mediaId) {
     safeUpdateTag(`${REVIEW_SUMMARY_TAG}:${mediaId}`);
+  }
+}
+
+export function updateConsolidationSummaryCache(mediaId?: string | null) {
+  safeUpdateTag(CONSOLIDATION_SUMMARY_TAG);
+  safeUpdateTag(REVIEW_FIRST_CANDIDATE_TAG);
+
+  if (mediaId) {
+    safeUpdateTag(`${CONSOLIDATION_SUMMARY_TAG}:${mediaId}`);
+  }
+}
+
+export function revalidateConsolidationSummaryCache(mediaId?: string | null) {
+  safeRevalidateTag(CONSOLIDATION_SUMMARY_TAG);
+  safeRevalidateTag(REVIEW_FIRST_CANDIDATE_TAG);
+
+  if (mediaId) {
+    safeRevalidateTag(`${CONSOLIDATION_SUMMARY_TAG}:${mediaId}`);
   }
 }
 

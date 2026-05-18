@@ -4,17 +4,21 @@ import {
   GLOSSARY_SUMMARY_TAG,
   MEDIA_LIST_TAG,
   REVIEW_FIRST_CANDIDATE_TAG,
+  CONSOLIDATION_SUMMARY_TAG,
+  buildConsolidationSummaryTags,
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
   buildTextbookLessonBodyTags,
   buildTextbookTooltipTags,
   revalidateDataCacheTags,
+  updateConsolidationSummaryCache,
   updateGlossarySummaryCache,
   updateMediaListCache,
   updateReviewSummaryCache,
   updateSettingsCache
 } from "@/lib/data-cache";
 import {
+  consolidationHref,
   mediaHref,
   mediaStudyHref,
   mediaTextbookLessonHref,
@@ -41,7 +45,18 @@ export function invalidateLessonCompletionChanged(input: {
   mediaId?: string | null;
 }) {
   updateMediaListCache();
+  updateConsolidationSummaryCache(input.mediaId);
   updateReviewSummaryCache(input.mediaId);
+}
+
+export function invalidateConsolidationMutationCaches(input: {
+  mediaId?: string | null;
+}) {
+  updateConsolidationSummaryCache(input.mediaId);
+  updateReviewSummaryCache(input.mediaId);
+  updateMediaListCache();
+  revalidatePath(consolidationHref());
+  revalidatePath(reviewHref());
 }
 
 export function invalidateReviewMutationCaches(input: {
@@ -70,7 +85,9 @@ export function invalidateImportedContentCaches(input: {
     MEDIA_LIST_TAG,
     REVIEW_FIRST_CANDIDATE_TAG,
     GLOSSARY_SUMMARY_TAG,
+    CONSOLIDATION_SUMMARY_TAG,
     ...buildGlossarySummaryTags(input.mediaIds),
+    ...buildConsolidationSummaryTags(input.mediaIds),
     ...buildReviewSummaryTags(input.mediaIds),
     ...input.lessons.flatMap((lesson) => [
       ...buildTextbookLessonBodyTags(lesson),

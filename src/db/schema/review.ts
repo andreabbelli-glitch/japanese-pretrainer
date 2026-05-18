@@ -209,6 +209,7 @@ export const preReviewConsolidationState = sqliteTable(
       .default("pending"),
     attemptCount: integer("attempt_count").notNull().default(0),
     lastAttemptAt: text("last_attempt_at"),
+    readingPassedAt: text("reading_passed_at"),
     completedAt: text("completed_at"),
     createdAt: text("created_at").notNull(),
     updatedAt: text("updated_at").notNull()

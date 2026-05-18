@@ -18,6 +18,7 @@ import {
   lessonProgress,
   media,
   preReviewConsolidationState,
+  reviewSubjectLog,
   reviewSubjectState,
   term,
   userSetting
@@ -25,8 +26,12 @@ import {
 import { listDueCardsByMediaId } from "@/db/queries";
 import {
   enqueueLessonConsolidation,
+  getConsolidationHubData,
+  getConsolidationSessionData,
   setLessonCompletionWithConsolidation,
-  getPendingConsolidationSubjectKeys
+  getPendingConsolidationSubjectKeys,
+  markConsolidationKnown,
+  submitConsolidationAnswer
 } from "@/lib/consolidation";
 import { getGlobalReviewPageData, hydrateReviewCard } from "@/lib/review";
 import { applyReviewGrade } from "@/lib/review-service";
@@ -277,6 +282,342 @@ describe("pre-FSRS consolidation service", () => {
       []
     );
   });
+
+  it("groups the pending consolidation backlog by media and lesson", async () => {
+    await seedConsolidationLesson(database);
+    await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+
+    const hub = await getConsolidationHubData(database);
+
+    expect(hub.totalPending).toBe(2);
+    expect(hub.mediaGroups).toEqual([
+      {
+        mediaId: "media_consolidation",
+        mediaSlug: "media-consolidation",
+        mediaTitle: "Media Consolidation",
+        pendingCount: 2,
+        lessons: [
+          {
+            href:
+              "/consolidation/media/media-consolidation/lesson/consolidation-intro",
+            lessonId: "lesson_consolidation",
+            lessonSlug: "consolidation-intro",
+            lessonTitle: "Consolidation Intro",
+            pendingCount: 2
+          }
+        ]
+      }
+    ]);
+  });
+
+  it("builds lesson-scoped prompts with current-lesson choices first and same-media fallback choices", async () => {
+    await seedConsolidationLesson(database);
+    await seedSameMediaDistractors(database);
+    await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+
+    const session = await getConsolidationSessionData({
+      database,
+      lessonSlug: "consolidation-intro",
+      mediaSlug: "media-consolidation"
+    });
+    const readingSubject = session?.subjects.find(
+      (subject) =>
+        subject.subjectKey === "entry:term:term_consolidation_reading"
+    );
+    const readingStep = readingSubject?.steps.find(
+      (step) => step.step === "reading"
+    );
+    const meaningStep = readingSubject?.steps.find(
+      (step) => step.step === "meaning"
+    );
+
+    expect(session?.media.slug).toBe("media-consolidation");
+    expect(session?.lesson.slug).toBe("consolidation-intro");
+    expect(session?.subjects.map((subject) => subject.subjectKey)).toEqual([
+      "entry:term:term_consolidation_reading",
+      "entry:term:term_consolidation_meaning"
+    ]);
+    expect(readingStep?.answerLabel).toBe("よむ");
+    expect(readingStep?.options).toHaveLength(4);
+    expect(readingStep?.options.map((option) => option.label)).toEqual(
+      expect.arrayContaining(["よむ", "かく", "みる", "きく"])
+    );
+    expect(meaningStep?.answerLabel).toBe("leggere");
+    expect(meaningStep?.options.map((option) => option.label)).toEqual(
+      expect.arrayContaining(["leggere", "scrivere", "vedere", "ascoltare"])
+    );
+  });
+
+  it("keeps current-lesson pending distractors before same-media fallback choices", async () => {
+    await seedConsolidationLesson(database);
+    await seedManySameMediaDistractors(database);
+    await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+
+    const session = await getConsolidationSessionData({
+      database,
+      lessonSlug: "consolidation-intro",
+      mediaSlug: "media-consolidation"
+    });
+    const readingSubject = session?.subjects.find(
+      (subject) =>
+        subject.subjectKey === "entry:term:term_consolidation_reading"
+    );
+    const meaningOptions =
+      readingSubject?.steps.find((step) => step.step === "meaning")?.options ??
+      [];
+
+    expect(meaningOptions.map((option) => option.label)).toContain("scrivere");
+  });
+
+  it("skips the reading step when the reading does not add retrieval value", async () => {
+    await seedConsolidationLesson(database);
+    await seedKanaOnlyPendingCard(database);
+    await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+
+    const session = await getConsolidationSessionData({
+      database,
+      lessonSlug: "consolidation-intro",
+      mediaSlug: "media-consolidation"
+    });
+    const kanaOnlySubject = session?.subjects.find(
+      (subject) => subject.subjectKey === "entry:term:term_consolidation_kana"
+    );
+
+    expect(kanaOnlySubject?.steps.map((step) => step.step)).toEqual([
+      "meaning"
+    ]);
+  });
+
+  it("keeps wrong answers pending, increments the attempt, and returns a deterministic reinsertion index", async () => {
+    await seedConsolidationLesson(database);
+    await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+
+    const firstResult = await submitConsolidationAnswer({
+      database,
+      now: new Date("2026-04-01T10:02:00.000Z"),
+      selectedSubjectKey: "entry:term:term_consolidation_meaning",
+      step: "reading",
+      subjectKey: "entry:term:term_consolidation_reading"
+    });
+    const firstRow = await database.query.preReviewConsolidationState.findFirst({
+      where: eq(
+        preReviewConsolidationState.subjectKey,
+        "entry:term:term_consolidation_reading"
+      )
+    });
+
+    await database
+      .update(preReviewConsolidationState)
+      .set({
+        attemptCount: 0,
+        lastAttemptAt: null,
+        updatedAt: "2026-04-01T10:00:00.000Z"
+      })
+      .where(
+        eq(
+          preReviewConsolidationState.subjectKey,
+          "entry:term:term_consolidation_reading"
+        )
+      );
+
+    const secondResult = await submitConsolidationAnswer({
+      database,
+      now: new Date("2026-04-01T10:02:00.000Z"),
+      selectedSubjectKey: "entry:term:term_consolidation_meaning",
+      step: "reading",
+      subjectKey: "entry:term:term_consolidation_reading"
+    });
+
+    expect(firstResult).toMatchObject({
+      attemptCount: 1,
+      completed: false,
+      correct: false,
+      nextStep: "reading",
+      status: "pending"
+    });
+    expect(firstRow).toMatchObject({
+      attemptCount: 1,
+      completedAt: null,
+      lastAttemptAt: "2026-04-01T10:02:00.000Z",
+      status: "pending"
+    });
+    expect(secondResult.reinsertionIndex).toBe(firstResult.reinsertionIndex);
+  });
+
+  it("returns the meaning step after a wrong answer for subjects without a reading step", async () => {
+    await seedConsolidationLesson(database);
+    await seedKanaOnlyPendingCard(database);
+    await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+
+    const result = await submitConsolidationAnswer({
+      database,
+      now: new Date("2026-04-01T10:02:00.000Z"),
+      selectedSubjectKey: "entry:term:term_consolidation_reading",
+      step: "meaning",
+      subjectKey: "entry:term:term_consolidation_kana"
+    });
+
+    expect(result).toMatchObject({
+      completed: false,
+      correct: false,
+      nextStep: "meaning",
+      status: "pending"
+    });
+  });
+
+  it("requires the reading step before passing a subject that has reading retrieval", async () => {
+    await seedConsolidationLesson(database);
+    await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+
+    await expect(
+      submitConsolidationAnswer({
+        database,
+        now: new Date("2026-04-01T10:03:00.000Z"),
+        selectedSubjectKey: "entry:term:term_consolidation_reading",
+        step: "meaning",
+        subjectKey: "entry:term:term_consolidation_reading"
+      })
+    ).rejects.toThrow("Reading step must be completed before meaning.");
+
+    const readingResult = await submitConsolidationAnswer({
+      database,
+      now: new Date("2026-04-01T10:03:00.000Z"),
+      selectedSubjectKey: "entry:term:term_consolidation_reading",
+      step: "reading",
+      subjectKey: "entry:term:term_consolidation_reading"
+    });
+    const meaningResult = await submitConsolidationAnswer({
+      database,
+      now: new Date("2026-04-01T10:04:00.000Z"),
+      selectedSubjectKey: "entry:term:term_consolidation_reading",
+      step: "meaning",
+      subjectKey: "entry:term:term_consolidation_reading"
+    });
+
+    expect(readingResult).toMatchObject({
+      completed: false,
+      correct: true,
+      nextStep: "meaning"
+    });
+    expect(meaningResult).toMatchObject({
+      completed: true,
+      correct: true,
+      status: "passed"
+    });
+  });
+
+  it("marks a meaning-only subject passed after the correct meaning answer", async () => {
+    await seedConsolidationLesson(database);
+    await seedKanaOnlyPendingCard(database);
+    await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+
+    const result = await submitConsolidationAnswer({
+      database,
+      now: new Date("2026-04-01T10:03:00.000Z"),
+      selectedSubjectKey: "entry:term:term_consolidation_kana",
+      step: "meaning",
+      subjectKey: "entry:term:term_consolidation_kana"
+    });
+    const row = await database.query.preReviewConsolidationState.findFirst({
+      where: eq(
+        preReviewConsolidationState.subjectKey,
+        "entry:term:term_consolidation_kana"
+      )
+    });
+
+    expect(result).toMatchObject({
+      completed: true,
+      correct: true,
+      status: "passed"
+    });
+    expect(row).toMatchObject({
+      completedAt: "2026-04-01T10:03:00.000Z",
+      status: "passed"
+    });
+  });
+
+  it("marks a pending subject known manually without writing FSRS logs", async () => {
+    await seedConsolidationLesson(database);
+    await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+
+    const result = await markConsolidationKnown({
+      database,
+      now: new Date("2026-04-01T10:04:00.000Z"),
+      subjectKey: "entry:term:term_consolidation_reading"
+    });
+    const [consolidationRow, subjectState, logs] = await Promise.all([
+      database.query.preReviewConsolidationState.findFirst({
+        where: eq(
+          preReviewConsolidationState.subjectKey,
+          "entry:term:term_consolidation_reading"
+        )
+      }),
+      database.query.reviewSubjectState.findFirst({
+        where: eq(
+          reviewSubjectState.subjectKey,
+          "entry:term:term_consolidation_reading"
+        )
+      }),
+      database.query.reviewSubjectLog.findMany({
+        where: eq(
+          reviewSubjectLog.subjectKey,
+          "entry:term:term_consolidation_reading"
+        )
+      })
+    ]);
+
+    expect(result).toMatchObject({
+      completed: true,
+      status: "known_manual"
+    });
+    expect(consolidationRow).toMatchObject({
+      completedAt: "2026-04-01T10:04:00.000Z",
+      status: "known_manual"
+    });
+    expect(subjectState).toMatchObject({
+      cardId: "card_consolidation_reading",
+      manualOverride: true,
+      state: "known_manual",
+      subjectKey: "entry:term:term_consolidation_reading"
+    });
+    expect(logs).toEqual([]);
+  });
 });
 
 async function seedConsolidationLesson(
@@ -403,4 +744,179 @@ async function seedConsolidationLesson(
       relationshipType: "primary"
     }
   ]);
+}
+
+async function seedSameMediaDistractors(database: DatabaseClient) {
+  await database.insert(term).values([
+    {
+      id: "term_consolidation_see",
+      sourceId: "consolidation-see",
+      mediaId: "media_consolidation",
+      segmentId: null,
+      lemma: "見る",
+      reading: "みる",
+      romaji: "miru",
+      meaningIt: "vedere",
+      searchLemmaNorm: "見る",
+      searchReadingNorm: "みる",
+      searchRomajiNorm: "miru",
+      createdAt: "2026-04-01T09:02:00.000Z",
+      updatedAt: "2026-04-01T09:02:00.000Z"
+    },
+    {
+      id: "term_consolidation_listen",
+      sourceId: "consolidation-listen",
+      mediaId: "media_consolidation",
+      segmentId: null,
+      lemma: "聞く",
+      reading: "きく",
+      romaji: "kiku",
+      meaningIt: "ascoltare",
+      searchLemmaNorm: "聞く",
+      searchReadingNorm: "きく",
+      searchRomajiNorm: "kiku",
+      createdAt: "2026-04-01T09:03:00.000Z",
+      updatedAt: "2026-04-01T09:03:00.000Z"
+    }
+  ]);
+  await database.insert(card).values([
+    {
+      id: "card_consolidation_see",
+      mediaId: "media_consolidation",
+      lessonId: null,
+      segmentId: null,
+      sourceFile: "tests/consolidation/cards.md",
+      cardType: "recognition",
+      front: "{{見|み}}る",
+      back: "vedere",
+      status: "active",
+      orderIndex: 3,
+      createdAt: "2026-04-01T09:02:00.000Z",
+      updatedAt: "2026-04-01T09:02:00.000Z"
+    },
+    {
+      id: "card_consolidation_listen",
+      mediaId: "media_consolidation",
+      lessonId: null,
+      segmentId: null,
+      sourceFile: "tests/consolidation/cards.md",
+      cardType: "recognition",
+      front: "{{聞|き}}く",
+      back: "ascoltare",
+      status: "active",
+      orderIndex: 4,
+      createdAt: "2026-04-01T09:03:00.000Z",
+      updatedAt: "2026-04-01T09:03:00.000Z"
+    }
+  ]);
+  await database.insert(cardEntryLink).values([
+    {
+      id: "card_consolidation_see_link",
+      cardId: "card_consolidation_see",
+      entryType: "term",
+      entryId: "term_consolidation_see",
+      relationshipType: "primary"
+    },
+    {
+      id: "card_consolidation_listen_link",
+      cardId: "card_consolidation_listen",
+      entryType: "term",
+      entryId: "term_consolidation_listen",
+      relationshipType: "primary"
+    }
+  ]);
+}
+
+async function seedManySameMediaDistractors(database: DatabaseClient) {
+  const rows = Array.from({ length: 12 }, (_, index) => {
+    const suffix = String(index + 1).padStart(2, "0");
+
+    return {
+      id: `term_consolidation_distractor_${suffix}`,
+      sourceId: `consolidation-distractor-${suffix}`,
+      mediaId: "media_consolidation",
+      segmentId: null,
+      lemma: `語彙${suffix}`,
+      reading: `ごい${suffix}`,
+      romaji: `goi${suffix}`,
+      meaningIt: `distrattore ${suffix}`,
+      searchLemmaNorm: `語彙${suffix}`,
+      searchReadingNorm: `ごい${suffix}`,
+      searchRomajiNorm: `goi${suffix}`,
+      createdAt: `2026-04-01T09:${10 + index}:00.000Z`,
+      updatedAt: `2026-04-01T09:${10 + index}:00.000Z`
+    };
+  });
+
+  await database.insert(term).values(rows);
+  await database.insert(card).values(
+    rows.map((row, index) => ({
+      id: `card_consolidation_distractor_${String(index + 1).padStart(2, "0")}`,
+      mediaId: "media_consolidation",
+      lessonId: null,
+      segmentId: null,
+      sourceFile: "tests/consolidation/cards.md",
+      cardType: "recognition",
+      front: `{{語彙${String(index + 1).padStart(2, "0")}|${row.reading}}}`,
+      back: row.meaningIt,
+      status: "active" as const,
+      orderIndex: 20 + index,
+      createdAt: row.createdAt,
+      updatedAt: row.updatedAt
+    }))
+  );
+  await database.insert(cardEntryLink).values(
+    rows.map((row, index) => ({
+      id: `card_consolidation_distractor_${String(index + 1).padStart(
+        2,
+        "0"
+      )}_link`,
+      cardId: `card_consolidation_distractor_${String(index + 1).padStart(
+        2,
+        "0"
+      )}`,
+      entryType: "term" as const,
+      entryId: row.id,
+      relationshipType: "primary" as const
+    }))
+  );
+}
+
+async function seedKanaOnlyPendingCard(database: DatabaseClient) {
+  await database.insert(term).values({
+    id: "term_consolidation_kana",
+    sourceId: "consolidation-kana",
+    mediaId: "media_consolidation",
+    segmentId: null,
+    lemma: "かな",
+    reading: "かな",
+    romaji: "kana",
+    meaningIt: "scrittura sillabica",
+    searchLemmaNorm: "かな",
+    searchReadingNorm: "かな",
+    searchRomajiNorm: "kana",
+    createdAt: "2026-04-01T09:04:00.000Z",
+    updatedAt: "2026-04-01T09:04:00.000Z"
+  });
+  await database.insert(card).values({
+    id: "card_consolidation_kana",
+    mediaId: "media_consolidation",
+    lessonId: "lesson_consolidation",
+    segmentId: null,
+    sourceFile: "tests/consolidation/cards.md",
+    cardType: "recognition",
+    front: "かな",
+    back: "scrittura sillabica",
+    status: "active",
+    orderIndex: 3,
+    createdAt: "2026-04-01T09:04:00.000Z",
+    updatedAt: "2026-04-01T09:04:00.000Z"
+  });
+  await database.insert(cardEntryLink).values({
+    id: "card_consolidation_kana_link",
+    cardId: "card_consolidation_kana",
+    entryType: "term",
+    entryId: "term_consolidation_kana",
+    relationshipType: "primary"
+  });
 }

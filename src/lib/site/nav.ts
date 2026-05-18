@@ -3,6 +3,7 @@ export type NavItem = {
     | "/"
     | "/media"
     | "/glossary"
+    | "/consolidation"
     | "/review"
     | "/kanji-clash"
     | "/katakana-speed"
@@ -26,6 +27,11 @@ export const primaryNav: NavItem[] = [
     href: "/glossary",
     label: "Glossary",
     description: "Consulta le voci"
+  },
+  {
+    href: "/consolidation",
+    label: "Consolidamento",
+    description: "Prima della review"
   },
   {
     href: "/review",
@@ -52,6 +58,13 @@ export const primaryNav: NavItem[] = [
 export function resolveActivePrimaryNavHref(pathname: string): NavItem["href"] {
   if (pathname === "/" || pathname.length === 0) {
     return "/";
+  }
+
+  if (
+    pathname === "/consolidation" ||
+    pathname.startsWith("/consolidation/")
+  ) {
+    return "/consolidation";
   }
 
   if (

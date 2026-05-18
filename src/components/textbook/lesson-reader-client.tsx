@@ -8,6 +8,7 @@ import {
   useState,
   useTransition
 } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   setFuriganaModeAction,
@@ -86,6 +87,7 @@ function buildTooltipEntryMap(entries: TextbookTooltipEntry[]) {
 }
 
 export function LessonReaderClient({ data }: LessonReaderClientProps) {
+  const router = useRouter();
   const [readerData, setReaderData] = useState(data);
   const [furiganaMode, setFuriganaModeState] = useState<FuriganaMode>(
     data.furiganaMode
@@ -565,12 +567,16 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
 
     startSavingLesson(async () => {
       try {
-        await setLessonCompletionAction({
+        const result = await setLessonCompletionAction({
           lessonId: readerData.lesson.id,
           mediaSlug: readerData.media.slug,
           lessonSlug: readerData.lesson.slug,
           completed: markAsCompleted
         });
+
+        if (markAsCompleted && result.consolidationHref) {
+          router.push(result.consolidationHref);
+        }
       } catch {
         setReaderData((current) =>
           applyLessonCompletionState(current, wasCompleted)

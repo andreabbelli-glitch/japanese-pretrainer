@@ -61,6 +61,17 @@ export function reviewHref(): Route {
   return "/review" as Route;
 }
 
+export function consolidationHref(): Route {
+  return "/consolidation" as Route;
+}
+
+export function consolidationLessonHref(
+  mediaSlug: string,
+  lessonSlug: string
+): Route {
+  return `/consolidation/media/${mediaSlug}/lesson/${lessonSlug}` as Route;
+}
+
 export function kanjiClashHref(input: KanjiClashHrefInput = {}): Route {
   return buildHrefWithSearch("/kanji-clash", (params) => {
     setOptionalSearchParam(params, "mode", input.mode);

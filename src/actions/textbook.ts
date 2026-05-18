@@ -8,6 +8,7 @@ import { db } from "@/db";
 import { getMediaBySlug } from "@/db/queries";
 import { setFuriganaMode } from "@/features/textbook/server";
 import { setLessonCompletionWithConsolidation } from "@/lib/consolidation";
+import { consolidationLessonHref } from "@/lib/site";
 import type { FuriganaMode } from "@/features/textbook/types";
 
 export async function setFuriganaModeAction(input: {
@@ -33,7 +34,7 @@ export async function setLessonCompletionAction(input: {
 }) {
   const mediaPromise = getMediaBySlug(db, input.mediaSlug);
 
-  await setLessonCompletionWithConsolidation({
+  const completion = await setLessonCompletionWithConsolidation({
     completed: input.completed,
     lessonId: input.lessonId
   });
@@ -44,6 +45,10 @@ export async function setLessonCompletionAction(input: {
   });
 
   return {
+    consolidationHref:
+      input.completed && completion.consolidation.createdCount > 0
+        ? consolidationLessonHref(input.mediaSlug, input.lessonSlug)
+        : null,
     ok: true as const,
     status: input.completed ? "completed" : "in_progress"
   };
