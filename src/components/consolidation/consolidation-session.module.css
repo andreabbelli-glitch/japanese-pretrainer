@@ -1,0 +1,284 @@
+.shell {
+  width: min(100%, 920px);
+  min-height: calc(100svh - 150px);
+  margin: 0 auto;
+  padding: clamp(18px, 4vw, 36px) clamp(14px, 4vw, 28px) 28px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 18px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header h1,
+.completePanel h1 {
+  margin: 0;
+  font-size: clamp(1.55rem, 4vw, 2.4rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.eyebrow,
+.frontLabel {
+  margin: 0 0 8px;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.counter {
+  min-width: 48px;
+  min-height: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-card);
+  color: var(--color-text);
+  font-weight: 800;
+}
+
+.stage {
+  min-height: 560px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 18px;
+  padding: clamp(18px, 5vw, 34px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0)),
+    var(--surface-card);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  grid-template-rows: auto minmax(190px, auto) minmax(260px, 1fr);
+  gap: 22px;
+}
+
+.stageTopline {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--color-text-muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.frontPanel {
+  min-height: 190px;
+  display: grid;
+  align-content: center;
+  gap: 10px;
+}
+
+.frontText {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-family-jp);
+  font-size: clamp(2.55rem, 12vw, 5.3rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.retrievalPlaceholder,
+.optionsWrap {
+  min-height: 260px;
+}
+
+.retrievalPlaceholder {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  padding-top: 6px;
+}
+
+.progressTrack {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-border) 68%, transparent);
+}
+
+.progressFill {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  background: var(--color-accent);
+  transform-origin: left center;
+  animation: retrieval-progress 2s linear forwards;
+}
+
+.retrievalSurface {
+  min-height: 220px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--surface-card-muted) 72%, transparent),
+      color-mix(in srgb, var(--surface-card) 78%, transparent)
+    );
+}
+
+.optionsWrap {
+  display: grid;
+  grid-template-rows: 28px 1fr;
+  gap: 12px;
+  animation: options-enter 180ms ease-out both;
+}
+
+.feedback {
+  min-height: 28px;
+  color: var(--color-text-muted);
+  font-weight: 760;
+}
+
+.feedbackCorrect {
+  color: var(--color-success);
+}
+
+.feedbackWrong {
+  color: var(--color-danger);
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-height: 220px;
+  gap: 12px;
+}
+
+.optionButton {
+  min-height: 72px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 14px;
+  padding: 16px;
+  background: var(--surface-card-quiet);
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 760;
+  letter-spacing: 0;
+  line-height: 1.18;
+  overflow-wrap: anywhere;
+  text-align: center;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.optionButton:not(:disabled):hover,
+.optionButton:not(:disabled):focus-visible {
+  border-color: var(--color-accent);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
+}
+
+.optionButton:disabled {
+  cursor: default;
+}
+
+.optionCorrect {
+  border-color: var(--color-success);
+  background: color-mix(in srgb, var(--color-success) 16%, var(--surface-card));
+}
+
+.optionWrong {
+  border-color: var(--color-danger);
+  background: color-mix(in srgb, var(--color-danger) 12%, var(--surface-card));
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.actions > * {
+  min-height: 48px;
+}
+
+.completePanel {
+  align-self: center;
+  display: grid;
+  gap: 18px;
+  justify-items: start;
+  padding: clamp(24px, 6vw, 48px);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 18px;
+  background: var(--surface-card);
+  box-shadow: var(--shadow-soft);
+}
+
+@keyframes retrieval-progress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes options-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .shell {
+    min-height: calc(100svh - 104px);
+    padding-inline: 12px;
+  }
+
+  .header {
+    align-items: center;
+  }
+
+  .stage {
+    min-height: 560px;
+    border-radius: 16px;
+    grid-template-rows: auto minmax(180px, auto) minmax(300px, 1fr);
+  }
+
+  .optionsGrid {
+    grid-template-columns: 1fr;
+    min-height: 300px;
+  }
+
+  .retrievalSurface {
+    min-height: 300px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressFill,
+  .optionsWrap {
+    animation: none;
+  }
+
+  .optionButton {
+    transition: none;
+  }
+
+  .optionButton:not(:disabled):hover,
+  .optionButton:not(:disabled):focus-visible {
+    transform: none;
+  }
+}
