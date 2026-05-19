@@ -122,6 +122,71 @@ describe("pre-FSRS consolidation service", () => {
     expect(pendingKeys).toEqual(["entry:term:term_consolidation_meaning"]);
   });
 
+  it("enqueues subjects that only have importer-seeded new FSRS state", async () => {
+    await seedConsolidationLesson(database);
+    await database.insert(reviewSubjectState).values([
+      {
+        cardId: "card_consolidation_reading",
+        createdAt: "2026-04-01T09:00:00.000Z",
+        crossMediaGroupId: null,
+        difficulty: null,
+        dueAt: null,
+        entryId: "term_consolidation_reading",
+        entryType: "term",
+        lapses: 0,
+        lastInteractionAt: "2026-04-01T09:00:00.000Z",
+        lastReviewedAt: null,
+        learningSteps: 0,
+        manualOverride: false,
+        reps: 0,
+        scheduledDays: 0,
+        schedulerVersion: "fsrs_v1",
+        stability: null,
+        state: "new",
+        subjectKey: "entry:term:term_consolidation_reading",
+        subjectType: "entry",
+        suspended: false,
+        updatedAt: "2026-04-01T09:00:00.000Z"
+      },
+      {
+        cardId: "card_consolidation_meaning",
+        createdAt: "2026-04-01T09:01:00.000Z",
+        crossMediaGroupId: null,
+        difficulty: null,
+        dueAt: null,
+        entryId: "term_consolidation_meaning",
+        entryType: "term",
+        lapses: 0,
+        lastInteractionAt: "2026-04-01T09:01:00.000Z",
+        lastReviewedAt: null,
+        learningSteps: 0,
+        manualOverride: false,
+        reps: 0,
+        scheduledDays: 0,
+        schedulerVersion: "fsrs_v1",
+        stability: null,
+        state: "new",
+        subjectKey: "entry:term:term_consolidation_meaning",
+        subjectType: "entry",
+        suspended: false,
+        updatedAt: "2026-04-01T09:01:00.000Z"
+      }
+    ]);
+
+    const result = await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+    const pendingKeys = await getPendingConsolidationSubjectKeys(database);
+
+    expect(result.createdCount).toBe(2);
+    expect(pendingKeys).toEqual([
+      "entry:term:term_consolidation_meaning",
+      "entry:term:term_consolidation_reading"
+    ]);
+  });
+
   it("keeps pending subjects out of FSRS review until they pass consolidation", async () => {
     await seedTwoMediaGlobalQueueFixture(database);
     await database.insert(preReviewConsolidationState).values({

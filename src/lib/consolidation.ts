@@ -12,6 +12,7 @@ import {
   getMediaBySlug,
   listGrammarEntryReviewSummariesByIds,
   listReviewSubjectStatesByKeys,
+  type ReviewSubjectStateRecord,
   listTermEntryReviewSummariesByIds
 } from "@/db/queries";
 
@@ -80,9 +81,17 @@ export async function enqueueLessonConsolidation(
     existingConsolidationRows.map((row) => row.subjectKey)
   );
   const rowsToInsert = candidates.filter(
-    (candidate) =>
-      !existingReviewStates.has(candidate.identity.subjectKey) &&
-      !existingConsolidationKeys.has(candidate.identity.subjectKey)
+    (candidate) => {
+      const existingReviewState = existingReviewStates.get(
+        candidate.identity.subjectKey
+      );
+
+      return (
+        !existingConsolidationKeys.has(candidate.identity.subjectKey) &&
+        (!existingReviewState ||
+          isImporterSeededNewReviewSubjectState(existingReviewState))
+      );
+    }
   );
 
   if (rowsToInsert.length === 0) {
@@ -310,6 +319,24 @@ function isCardFromCompletedActiveLesson(
     Boolean(candidateCard.lessonId) &&
     candidateCard.lesson?.status === "active" &&
     candidateCard.lesson.progress?.status === "completed"
+  );
+}
+
+function isImporterSeededNewReviewSubjectState(
+  state: ReviewSubjectStateRecord
+) {
+  return (
+    state.state === "new" &&
+    state.reps === 0 &&
+    state.learningSteps === 0 &&
+    state.lapses === 0 &&
+    state.scheduledDays === 0 &&
+    state.lastReviewedAt === null &&
+    state.dueAt === null &&
+    state.stability === null &&
+    state.difficulty === null &&
+    !state.manualOverride &&
+    !state.suspended
   );
 }
 
