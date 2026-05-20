@@ -687,3 +687,94 @@ requests:
       mecha, ma chiamato anche “scrauso”.
     notes: >-
       Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: hong-kong-disneyland-ice-package
+    lesson_slug: 110-hong-kong-disneyland-ice-walk-and-monument
+    anchor: "Il testo si chiede che cosa voglia dire la scritta sulla confezione."
+    kind: travel-screenshot
+    priority: high
+    placement_rationale: >-
+      Va nel contesto iniziale, perché collega l'oggetto reale, la confezione
+      giapponese e le due ipotesi `なんだろう` / `だろうか`.
+    visual_goal: >-
+      Mostrare il gelato di Mickey, la confezione e il testo giapponese sotto,
+      così la domanda interiore resta legata alla scena osservata.
+    source_preference: >-
+      Screenshot fornito dall'utente come allegato locale
+      /tmp/codex-remote-attachments/019e447d-0427-76b2-b64b-3b14550b8bee/A8EA2818-37D1-4C6C-B2B1-D669DD2175FF/1-Foto-1.jpg.
+    capture_instructions: >-
+      Usa lo screenshot così com'è, senza crop: immagine e testo sotto servono
+      insieme per leggere l'ipotesi sulla confezione.
+    must_show: >-
+      Il gelato, la confezione con testo giapponese e le frasi
+      `パッケージに書いてある漢字の意味はなんだろう。` e
+      `「ミッキーのチョコレートアイス」だろうか。`.
+    avoid: >-
+      Ritagli che perdono la confezione, il gelato o le frasi sotto la foto.
+    alt_it: >-
+      Foto di un gelato di Mickey con confezione giapponese e testo sotto.
+    caption_it: >-
+      `パッケージに{{書|か}}いてある{{漢字|かんじ}}の{{意味|いみ}}は[なんだろう](grammar:grammar-nandarou)。`
+      apre una domanda interiore; subito dopo
+      `「ミッキーのチョコレートアイス」[だろうか](grammar:grammar-darou-ka)。`
+      prova una possibile lettura.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: hong-kong-disneyland-entrance-before
+    lesson_slug: 110-hong-kong-disneyland-ice-walk-and-monument
+    anchor: "La frase dice パークの中に入る直前."
+    kind: travel-screenshot
+    priority: high
+    placement_rationale: >-
+      Va accanto alla spiegazione di 直前, perché mostra fisicamente il momento
+      appena prima dell'ingresso nel parco.
+    visual_goal: >-
+      Mostrare l'arco di Hong Kong Disneyland e le persone che camminano verso
+      l'ingresso, mantenendo leggibile la didascalia giapponese.
+    source_preference: >-
+      Screenshot fornito dall'utente come allegato locale
+      /tmp/codex-remote-attachments/019e447d-0427-76b2-b64b-3b14550b8bee/A8EA2818-37D1-4C6C-B2B1-D669DD2175FF/2-Foto-2.jpg.
+    capture_instructions: >-
+      Usa lo screenshot così com'è: l'arco e la didascalia sotto devono restare
+      nello stesso frame.
+    must_show: >-
+      L'ingresso di Hong Kong Disneyland e la frase `パークの中に入る直前。`.
+    avoid: >-
+      Ritagli che perdono l'arco del parco o la frase sotto la foto.
+    alt_it: >-
+      Foto dell'ingresso di Hong Kong Disneyland con due persone che camminano
+      verso il parco.
+    caption_it: >-
+      `パークの{{中|なか}}に{{入|はい}}る[{{直前|ちょくぜん}}](term:term-chokuzen)。`
+      colloca la foto nel momento immediatamente precedente all'ingresso.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: hong-kong-disneyland-monument-recent-design
+    lesson_slug: 110-hong-kong-disneyland-ice-walk-and-monument
+    anchor: "Il testo descrive il monumento come 最近っぽいデザインだと感じる."
+    kind: travel-screenshot
+    priority: high
+    placement_rationale: >-
+      Va accanto alla spiegazione di 最近っぽい e だと感じる, perché il monumento
+      è l'oggetto che produce l'impressione visiva.
+    visual_goal: >-
+      Mostrare il monumento dorato e la frase sotto la foto, così
+      l'impressione di design moderno resta ancorata all'immagine.
+    source_preference: >-
+      Screenshot fornito dall'utente come allegato locale
+      /tmp/codex-remote-attachments/019e447d-0427-76b2-b64b-3b14550b8bee/A8EA2818-37D1-4C6C-B2B1-D669DD2175FF/3-Foto-3.jpg.
+    capture_instructions: >-
+      Usa lo screenshot così com'è: il monumento e la frase sotto devono
+      restare leggibili nello stesso frame.
+    must_show: >-
+      Il monumento dorato e la frase
+      `なんだろう、、、このモニュメントはすごく最近っぽいデザインだと感じる。`.
+    avoid: >-
+      Ritagli che perdono il monumento, i palloncini o la frase sotto la foto.
+    alt_it: >-
+      Foto di un monumento dorato celebrativo con palloncini colorati nel
+      parco.
+    caption_it: >-
+      `このモニュメントはすごく[{{最近|さいきん}}っぽい](term:term-saikin-ppoi)デザイン[だと{{感|かん}}じる](grammar:grammar-da-to-kanjiru)。`
+      trasforma l'impressione visiva in una frase di percezione.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.

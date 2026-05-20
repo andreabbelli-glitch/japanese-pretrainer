@@ -1,16 +1,58 @@
 {
   "version": 1,
   "media_slug": "web-giapponese",
-  "total_targets": 76,
+  "total_targets": 83,
   "audio_backed_count": 58,
   "known_missing_count": 17,
-  "pending_count": 1,
+  "pending_count": 8,
   "pending": [
     {
       "entry_type": "term",
       "entry_id": "term-hetare",
       "label": "へたれ",
       "reading": "へたれ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-chokuzen",
+      "label": "直前",
+      "reading": "ちょくぜん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-saikin-ppoi",
+      "label": "最近っぽい",
+      "reading": "さいきんっぽい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kanjiru",
+      "label": "感じる",
+      "reading": "かんじる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-nandarou",
+      "label": "なんだろう",
+      "reading": "なんだろう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-darou-ka",
+      "label": "～だろうか",
+      "reading": "だろうか"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-tabenagara",
+      "label": "{{食|た}}べながら",
+      "reading": "たべながら"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-da-to-kanjiru",
+      "label": "N / ナ{{形|けい}} + だと{{感|かん}}じる",
+      "reading": "だとかんじる"
     }
   ]
 }

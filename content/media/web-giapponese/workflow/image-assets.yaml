@@ -350,3 +350,49 @@ assets:
       mecha, ma chiamato anche “scrauso”.
     notes: >-
       Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: hong-kong-disneyland-ice-package
+    src: assets/hong-kong-disneyland-ice-package.jpg
+    source_type: screenshot
+    width: 708
+    height: 1281
+    lesson_slug: 110-hong-kong-disneyland-ice-walk-and-monument
+    anchor: "Il testo si chiede che cosa voglia dire la scritta sulla confezione."
+    alt_it: >-
+      Foto di un gelato di Mickey con confezione giapponese e testo sotto.
+    caption_it: >-
+      `パッケージに{{書|か}}いてある{{漢字|かんじ}}の{{意味|いみ}}は[なんだろう](grammar:grammar-nandarou)。`
+      apre una domanda interiore; subito dopo
+      `「ミッキーのチョコレートアイス」[だろうか](grammar:grammar-darou-ka)。`
+      prova una possibile lettura.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: hong-kong-disneyland-entrance-before
+    src: assets/hong-kong-disneyland-entrance-before.jpg
+    source_type: screenshot
+    width: 1095
+    height: 1280
+    lesson_slug: 110-hong-kong-disneyland-ice-walk-and-monument
+    anchor: "La frase dice パークの中に入る直前."
+    alt_it: >-
+      Foto dell'ingresso di Hong Kong Disneyland con due persone che camminano
+      verso il parco.
+    caption_it: >-
+      `パークの{{中|なか}}に{{入|はい}}る[{{直前|ちょくぜん}}](term:term-chokuzen)。`
+      colloca la foto nel momento immediatamente precedente all'ingresso.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.
+  - id: hong-kong-disneyland-monument-recent-design
+    src: assets/hong-kong-disneyland-monument-recent-design.jpg
+    source_type: screenshot
+    width: 1162
+    height: 1280
+    lesson_slug: 110-hong-kong-disneyland-ice-walk-and-monument
+    anchor: "Il testo descrive il monumento come 最近っぽいデザインだと感じる."
+    alt_it: >-
+      Foto di un monumento dorato celebrativo con palloncini colorati nel
+      parco.
+    caption_it: >-
+      `このモニュメントはすごく[{{最近|さいきん}}っぽい](term:term-saikin-ppoi)デザイン[だと{{感|かん}}じる](grammar:grammar-da-to-kanjiru)。`
+      trasforma l'impressione visiva in una frase di percezione.
+    notes: >-
+      Screenshot locale fornito dall'utente e salvato come asset del bundle.

@@ -3,6 +3,21 @@
   "entries": [
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-da-to-kanjiru",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-darou-ka",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-nandarou",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-noun-coordination",
       "audio_src": "assets/audio/grammar/grammar-noun-coordination/forvo-manual-めいしとめいし.mp3",
       "audio_source": "forvo",
@@ -21,6 +36,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-state-de",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-tabenagara",
       "pitch_accent_status": "miss"
     },
     {
@@ -95,6 +115,14 @@
       "pitch_accent": 3,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-chokuzen",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%9B%B4%E5%89%8D",
       "pitch_accent_status": "resolved"
     },
     {
@@ -269,6 +297,14 @@
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E8%80%83%E3%81%88%E6%96%B9/#ja",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kanjiru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%84%9F%E3%81%98%E3%82%8B",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -495,6 +531,11 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%83%A9%E3%83%B3%E3%82%AF%E6%88%A6/#ja",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-saikin-ppoi",
       "pitch_accent_status": "miss"
     },
     {
