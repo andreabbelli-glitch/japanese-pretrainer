@@ -21,6 +21,7 @@ export type ReviewSchedulerRuntimeConfig = {
 };
 
 const DAY = 24 * 60 * 60_000;
+const MAX_DAILY_INTERVAL_TRUNCATION_MS = DAY / 2;
 const MINIMUM_STABILITY = 0.1;
 
 export const reviewSchedulerConfig = {
@@ -53,7 +54,10 @@ type ScheduleReviewInput = {
   scheduler?: ReviewSchedulerRuntimeConfig;
 };
 
-type SchedulableReviewState = Exclude<ReviewState, "known_manual" | "suspended">;
+type SchedulableReviewState = Exclude<
+  ReviewState,
+  "known_manual" | "suspended"
+>;
 
 export type ScheduleReviewResult = {
   difficulty: number;
@@ -106,7 +110,7 @@ export function scheduleReview(
     mapReviewRating(input.rating)
   );
 
-  clampInternalCardDueDate(result.card);
+  clampInternalCardDueDate(result.card, input.now);
 
   return {
     difficulty: roundTo(result.card.difficulty, 3),
@@ -132,8 +136,12 @@ export function calculateElapsedDays(
     return null;
   }
 
-  const startMs = typeof lastReviewedAt === "string" ? new Date(lastReviewedAt).getTime() : lastReviewedAt.getTime();
-  const endMs = typeof nowIso === "string" ? new Date(nowIso).getTime() : nowIso.getTime();
+  const startMs =
+    typeof lastReviewedAt === "string"
+      ? new Date(lastReviewedAt).getTime()
+      : lastReviewedAt.getTime();
+  const endMs =
+    typeof nowIso === "string" ? new Date(nowIso).getTime() : nowIso.getTime();
   const elapsedMs = endMs - startMs;
 
   if (!Number.isFinite(elapsedMs) || elapsedMs <= 0) {
@@ -153,10 +161,7 @@ function buildFsrsCard(
     return createEmptyCard(now);
   }
 
-  const elapsedDays = calculateElapsedDays(
-    current.lastReviewedAt,
-    now
-  );
+  const elapsedDays = calculateElapsedDays(current.lastReviewedAt, now);
   const scheduledDays = normalizeCount(current.scheduledDays);
   const learningSteps = normalizeCount(current.learningSteps);
 
@@ -193,7 +198,9 @@ function normalizeStability(value: number | null, scheduledDays: number) {
   return roundTo(Math.max(MINIMUM_STABILITY, resolved), 3);
 }
 
-function normalizeSchedulableState(value: ReviewState | null): SchedulableReviewState {
+function normalizeSchedulableState(
+  value: ReviewState | null
+): SchedulableReviewState {
   if (value === "learning" || value === "review" || value === "relearning") {
     return value;
   }
@@ -252,7 +259,8 @@ export function replayReviewHistory(
 
   const orderedLogs = [...logs].sort((left, right) => {
     const answeredAtComparison =
-      new Date(left.answeredAt).getTime() - new Date(right.answeredAt).getTime();
+      new Date(left.answeredAt).getTime() -
+      new Date(right.answeredAt).getTime();
 
     if (answeredAtComparison !== 0) {
       return answeredAtComparison;
@@ -278,14 +286,14 @@ export function replayReviewHistory(
       reviewAt,
       mapReviewRating(log.rating)
     );
-    
-    clampInternalCardDueDate(result.card);
+
+    clampInternalCardDueDate(result.card, reviewAt);
 
     replayedLogs.push({
       answeredAt: log.answeredAt,
       elapsedDays: Number.isFinite(result.log.elapsed_days)
         ? result.log.elapsed_days
-        : calculateElapsedDays(card.last_review ?? null, reviewAt) ?? 0,
+        : (calculateElapsedDays(card.last_review ?? null, reviewAt) ?? 0),
       id: log.id,
       newState: mapFsrsState(result.card.state),
       previousState: mapFsrsState(result.log.state),
@@ -333,15 +341,28 @@ function roundTo(value: number, decimals: number) {
   return Math.round(value * factor) / factor;
 }
 
-function clampInternalCardDueDate(card: Pick<Card, "due" | "scheduled_days">) {
+function clampInternalCardDueDate(
+  card: Pick<Card, "due" | "scheduled_days">,
+  reviewedAt: Date
+) {
   if (card.scheduled_days >= 1) {
-    card.due = new Date(
+    const clampedDue = new Date(
       Date.UTC(
         card.due.getUTCFullYear(),
         card.due.getUTCMonth(),
         card.due.getUTCDate()
       )
     );
+    const earliestDue =
+      reviewedAt.getTime() +
+      card.scheduled_days * DAY -
+      MAX_DAILY_INTERVAL_TRUNCATION_MS;
+
+    if (clampedDue.getTime() < earliestDue) {
+      clampedDue.setUTCDate(clampedDue.getUTCDate() + 1);
+    }
+
+    card.due = clampedDue;
   }
 }
 
@@ -385,8 +406,13 @@ function normalizeDesiredRetention(value: number | null | undefined) {
   return Math.min(0.99, Math.max(0.7, roundTo(value!, 3)));
 }
 
-function normalizeWeights(value: number[] | readonly number[] | null | undefined) {
-  if (!Array.isArray(value) || value.length !== reviewSchedulerConfig.fsrs.w.length) {
+function normalizeWeights(
+  value: number[] | readonly number[] | null | undefined
+) {
+  if (
+    !Array.isArray(value) ||
+    value.length !== reviewSchedulerConfig.fsrs.w.length
+  ) {
     return null;
   }
 

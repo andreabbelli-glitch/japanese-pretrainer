@@ -42,7 +42,33 @@ describe("kanji clash scheduler", () => {
 
     expect(scheduled.schedulerVersion).toBe("kanji_clash_fsrs_v1");
     expect(scheduled.reps).toBe(1);
-    expect(scheduled.state === "learning" || scheduled.state === "review").toBe(true);
+    expect(scheduled.state === "learning" || scheduled.state === "review").toBe(
+      true
+    );
+  });
+
+  it("does not collapse a day-level correct answer near UTC midnight", () => {
+    const now = new Date("2026-05-19T23:58:00.000Z");
+    const scheduled = scheduleKanjiClashPair({
+      current: {
+        difficulty: 5,
+        dueAt: "2026-05-19T00:00:00.000Z",
+        lapses: 0,
+        lastReviewedAt: "2026-05-19T00:00:00.000Z",
+        learningSteps: 1,
+        reps: 1,
+        scheduledDays: 0,
+        stability: 0.1,
+        state: "learning"
+      },
+      now,
+      result: "good"
+    });
+
+    expect(scheduled.scheduledDays).toBe(1);
+    expect(new Date(scheduled.dueAt).getTime() - now.getTime()).toBeGreaterThan(
+      12 * 60 * 60_000
+    );
   });
 
   it("maps a wrong answer to again and records the transition snapshot", () => {
@@ -66,7 +92,9 @@ describe("kanji clash scheduler", () => {
     expect(afterAgain.previous.state).toBe(afterGood.next.state);
     expect(afterAgain.next.schedulerVersion).toBe("kanji_clash_fsrs_v1");
     expect(afterAgain.scheduled.elapsedDays).toBe(1);
-    expect(afterAgain.next.lapses).toBeGreaterThanOrEqual(afterGood.next.lapses);
+    expect(afterAgain.next.lapses).toBeGreaterThanOrEqual(
+      afterGood.next.lapses
+    );
   });
 
   it("keeps scheduler parameters isolated from the review scheduler namespace", () => {

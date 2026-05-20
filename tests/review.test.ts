@@ -248,6 +248,35 @@ describe("review system", () => {
       expect(scheduled[3]?.lapses).toBe(1);
     });
 
+    it("keeps day-level normalized intervals ordered near UTC midnight", () => {
+      const now = new Date("2026-05-19T23:58:00.000Z");
+      const scheduled = (["again", "hard", "good", "easy"] as const).map(
+        (rating) =>
+          scheduleReview({
+            current: {
+              difficulty: 5,
+              dueAt: "2026-05-19T00:00:00.000Z",
+              lapses: 0,
+              lastReviewedAt: "2026-05-19T00:00:00.000Z",
+              learningSteps: 1,
+              reps: 1,
+              scheduledDays: 0,
+              stability: 0.1,
+              state: "learning"
+            },
+            now,
+            rating
+          })
+      );
+      const dueTimes = scheduled.map((item) => new Date(item.dueAt).getTime());
+
+      expect(dueTimes[0]).toBeLessThanOrEqual(dueTimes[1]);
+      expect(dueTimes[1]).toBeLessThanOrEqual(dueTimes[2]);
+      expect(dueTimes[2]).toBeLessThanOrEqual(dueTimes[3]);
+      expect(scheduled[2]?.scheduledDays).toBe(1);
+      expect(scheduled[3]?.scheduledDays).toBe(1);
+    });
+
     it("derives study-day boundaries from the runtime local timezone", () => {
       const originalTimezone = process.env.TZ;
 
@@ -3010,12 +3039,18 @@ describe("review system", () => {
           crossMediaFixture.alpha.termSourceId
         )
       );
-      expect(betaDetail?.card.back).toContain(crossMediaFixture.alpha.termMeaning);
-      expect(betaDetail?.card.back).toContain(crossMediaFixture.beta.termMeaning);
+      expect(betaDetail?.card.back).toContain(
+        crossMediaFixture.alpha.termMeaning
+      );
+      expect(betaDetail?.card.back).toContain(
+        crossMediaFixture.beta.termMeaning
+      );
       expect(hydratedBetaCard?.back).toContain(
         crossMediaFixture.alpha.termMeaning
       );
-      expect(hydratedBetaCard?.back).toContain(crossMediaFixture.beta.termMeaning);
+      expect(hydratedBetaCard?.back).toContain(
+        crossMediaFixture.beta.termMeaning
+      );
 
       const markup = renderToStaticMarkup(
         ReviewCardDetailPage({ data: betaDetail! })

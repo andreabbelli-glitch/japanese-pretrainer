@@ -17,6 +17,7 @@ import type {
 } from "../types.ts";
 
 const DAY = 24 * 60 * 60_000;
+const MAX_DAILY_INTERVAL_TRUNCATION_MS = DAY / 2;
 const MINIMUM_STABILITY = 0.1;
 const DEFAULT_DIFFICULTY = 5;
 const MIN_DIFFICULTY = 1;
@@ -114,7 +115,7 @@ export function scheduleKanjiClashPair(
     mapKanjiClashResult(input.result)
   );
 
-  clampInternalCardDueDate(result.card);
+  clampInternalCardDueDate(result.card, input.now);
 
   return {
     difficulty: roundTo(result.card.difficulty, 3),
@@ -320,15 +321,28 @@ function clampDifficulty(value: number) {
   return roundTo(Math.min(MAX_DIFFICULTY, Math.max(MIN_DIFFICULTY, value)), 3);
 }
 
-function clampInternalCardDueDate(card: Pick<Card, "due" | "scheduled_days">) {
+function clampInternalCardDueDate(
+  card: Pick<Card, "due" | "scheduled_days">,
+  reviewedAt: Date
+) {
   if (card.scheduled_days >= 1) {
-    card.due = new Date(
+    const clampedDue = new Date(
       Date.UTC(
         card.due.getUTCFullYear(),
         card.due.getUTCMonth(),
         card.due.getUTCDate()
       )
     );
+    const earliestDue =
+      reviewedAt.getTime() +
+      card.scheduled_days * DAY -
+      MAX_DAILY_INTERVAL_TRUNCATION_MS;
+
+    if (clampedDue.getTime() < earliestDue) {
+      clampedDue.setUTCDate(clampedDue.getUTCDate() + 1);
+    }
+
+    card.due = clampedDue;
   }
 }
 
