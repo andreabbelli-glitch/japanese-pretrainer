@@ -1,4 +1,4 @@
-import { and, asc, eq, inArray } from "drizzle-orm";
+import { and, asc, eq, inArray, sql } from "drizzle-orm";
 
 import { db, type DatabaseClient, type DatabaseQueryClient } from "@/db";
 import {
@@ -23,7 +23,12 @@ import {
   normalizeReviewSubjectSurface,
   type ReviewSubjectIdentity
 } from "./review-subject";
-import { consolidationLessonHref, reviewHref, type AppHref } from "./site";
+import {
+  consolidationLessonHref,
+  consolidationRetrainingHref,
+  reviewHref,
+  type AppHref
+} from "./site";
 import { setLessonCompletionState } from "./textbook-progress";
 import type { ReviewRating } from "./review-scheduler";
 
@@ -444,8 +449,15 @@ export type ConsolidationHubMediaGroup = {
   pendingCount: number;
 };
 
+export type ConsolidationHubRetrainingQueue = {
+  href: AppHref;
+  pendingCount: number;
+  title: string;
+};
+
 export type ConsolidationHubData = {
   mediaGroups: ConsolidationHubMediaGroup[];
+  retrainingQueue: ConsolidationHubRetrainingQueue | null;
   totalPending: number;
 };
 
@@ -528,6 +540,7 @@ type ConsolidationSubjectPresentation = {
   attemptCount: number;
   back: string;
   canMarkKnown: boolean;
+  choiceGroupId: string | null;
   entryType: EntryType | null;
   front: string;
   kind: ConsolidationOptionKind;
@@ -548,41 +561,41 @@ type FallbackConsolidationCard = Awaited<
 >[number];
 
 export async function getConsolidationHubData(
-  database: Pick<DatabaseClient, "query"> = db
+  database: DatabaseQueryClient = db
 ): Promise<ConsolidationHubData> {
-  const rows = await database.query.preReviewConsolidationState.findMany({
-    columns: {
-      lessonId: true,
-      mediaId: true
-    },
-    where: inArray(
-      preReviewConsolidationState.status,
-      ACTIVE_CONSOLIDATION_STATUSES
-    ),
-    with: {
-      lesson: {
-        columns: {
-          slug: true,
-          title: true
+  const [pendingRows, retrainingCount] = await Promise.all([
+    database.query.preReviewConsolidationState.findMany({
+      columns: {
+        lessonId: true,
+        mediaId: true
+      },
+      where: eq(preReviewConsolidationState.status, "pending"),
+      with: {
+        lesson: {
+          columns: {
+            slug: true,
+            title: true
+          }
+        },
+        media: {
+          columns: {
+            slug: true,
+            title: true
+          }
         }
       },
-      media: {
-        columns: {
-          slug: true,
-          title: true
-        }
-      }
-    },
-    orderBy: [
-      asc(preReviewConsolidationState.mediaId),
-      asc(preReviewConsolidationState.lessonId),
-      asc(preReviewConsolidationState.createdAt),
-      asc(preReviewConsolidationState.subjectKey)
-    ]
-  });
+      orderBy: [
+        asc(preReviewConsolidationState.mediaId),
+        asc(preReviewConsolidationState.lessonId),
+        asc(preReviewConsolidationState.createdAt),
+        asc(preReviewConsolidationState.subjectKey)
+      ]
+    }),
+    countConsolidationRowsByStatus(database, "retraining")
+  ]);
   const groups = new Map<string, ConsolidationHubMediaGroup>();
 
-  for (const row of rows) {
+  for (const row of pendingRows) {
     const mediaGroup = groups.get(row.mediaId) ?? {
       lessons: [],
       mediaId: row.mediaId,
@@ -613,7 +626,15 @@ export async function getConsolidationHubData(
 
   return {
     mediaGroups: [...groups.values()],
-    totalPending: rows.length
+    retrainingQueue:
+      retrainingCount > 0
+        ? {
+            href: consolidationRetrainingHref(),
+            pendingCount: retrainingCount,
+            title: "Ripasso da review"
+          }
+        : null,
+    totalPending: pendingRows.length + retrainingCount
   };
 }
 
@@ -699,6 +720,52 @@ export async function getConsolidationSessionData(input: {
   };
 }
 
+export async function getRetrainingConsolidationSessionData(
+  database: DatabaseClient = db
+): Promise<ConsolidationSessionData> {
+  const retrainingRows = await listRetrainingConsolidationRows(database);
+  const fallbackCards = await listSameMediaFallbackCardsByMediaIds(database, [
+    ...new Set(retrainingRows.map((row) => row.mediaId))
+  ]);
+  const presentations = await buildConsolidationPresentations({
+    choiceGroupId: () => "retraining",
+    database,
+    fallbackCards,
+    pendingRows: retrainingRows
+  });
+  const pendingSubjectKeys = new Set(
+    retrainingRows.map((row) => row.subjectKey)
+  );
+  const pendingPresentations = presentations.filter((presentation) =>
+    pendingSubjectKeys.has(presentation.subjectKey)
+  );
+
+  return {
+    hubHref: "/consolidation" as AppHref,
+    lesson: {
+      id: "retraining",
+      slug: "retraining",
+      title: "Ripasso da review"
+    },
+    media: {
+      id: "retraining",
+      slug: "retraining",
+      title: "Consolidamento FSRS"
+    },
+    reviewHref: reviewHref(),
+    subjects: pendingPresentations.map((presentation) => ({
+      attemptCount: presentation.attemptCount,
+      back: presentation.back,
+      canMarkKnown: presentation.canMarkKnown,
+      front: presentation.front,
+      representativeCardId: presentation.representativeCardId,
+      steps: buildSessionSteps(presentation, presentations),
+      subjectKey: presentation.subjectKey
+    })),
+    totalPending: pendingPresentations.length
+  };
+}
+
 export async function submitConsolidationAnswer(
   input: SubmitConsolidationAnswerInput
 ): Promise<ConsolidationAnswerResult> {
@@ -717,17 +784,22 @@ export async function submitConsolidationAnswer(
 
     if (input.selectedSubjectKey !== input.subjectKey) {
       const attemptCount = row.attemptCount + 1;
-      const pendingCount = await countPendingRowsForLesson(
-        transaction,
-        row.lessonId
-      );
+      const pendingCount =
+        row.status === "retraining"
+          ? await countRetrainingRows(transaction)
+          : await countPendingRowsForLesson(transaction, row.lessonId);
       const nextStep = (await subjectRequiresReadingStep(transaction, row))
         ? "reading"
         : "meaning";
+      const reinsertionSeed =
+        row.status === "retraining" ? "retraining" : row.lessonId;
       const reinsertionIndex = getDeterministicIndex(
-        [row.lessonId, input.subjectKey, input.step, String(attemptCount)].join(
-          ":"
-        ),
+        [
+          reinsertionSeed,
+          input.subjectKey,
+          input.step,
+          String(attemptCount)
+        ].join(":"),
         Math.max(1, pendingCount)
       );
 
@@ -911,8 +983,45 @@ async function listPendingConsolidationRowsByLessonId(
   return database.query.preReviewConsolidationState.findMany({
     where: and(
       eq(preReviewConsolidationState.lessonId, lessonId),
-      inArray(preReviewConsolidationState.status, ACTIVE_CONSOLIDATION_STATUSES)
+      eq(preReviewConsolidationState.status, "pending")
     ),
+    with: {
+      representativeCard: {
+        columns: {
+          back: true,
+          cardType: true,
+          createdAt: true,
+          front: true,
+          id: true,
+          lessonId: true,
+          mediaId: true,
+          orderIndex: true,
+          status: true,
+          updatedAt: true
+        },
+        with: {
+          entryLinks: {
+            columns: {
+              entryId: true,
+              entryType: true,
+              relationshipType: true
+            }
+          }
+        }
+      }
+    },
+    orderBy: [
+      asc(preReviewConsolidationState.createdAt),
+      asc(preReviewConsolidationState.subjectKey)
+    ]
+  });
+}
+
+async function listRetrainingConsolidationRows(
+  database: Pick<DatabaseClient, "query">
+) {
+  return database.query.preReviewConsolidationState.findMany({
+    where: eq(preReviewConsolidationState.status, "retraining"),
     with: {
       representativeCard: {
         columns: {
@@ -949,8 +1058,24 @@ async function listSameMediaFallbackCards(
   database: Pick<DatabaseClient, "query">,
   mediaId: string
 ) {
+  return listSameMediaFallbackCardsByMediaIds(database, [mediaId]);
+}
+
+async function listSameMediaFallbackCardsByMediaIds(
+  database: Pick<DatabaseClient, "query">,
+  mediaIds: string[]
+) {
+  const uniqueMediaIds = [...new Set(mediaIds)];
+
+  if (uniqueMediaIds.length === 0) {
+    return [];
+  }
+
   return database.query.card.findMany({
-    where: and(eq(card.mediaId, mediaId), eq(card.status, "active")),
+    where: and(
+      inArray(card.mediaId, uniqueMediaIds),
+      eq(card.status, "active")
+    ),
     columns: {
       back: true,
       cardType: true,
@@ -972,8 +1097,13 @@ async function listSameMediaFallbackCards(
         }
       }
     },
-    orderBy: [asc(card.orderIndex), asc(card.createdAt), asc(card.id)],
-    limit: 80
+    orderBy: [
+      asc(card.mediaId),
+      asc(card.orderIndex),
+      asc(card.createdAt),
+      asc(card.id)
+    ],
+    limit: Math.min(240, uniqueMediaIds.length * 80)
   });
 }
 
@@ -1015,23 +1145,44 @@ async function loadPendingConsolidationRowBySubjectKey(
 }
 
 async function countPendingRowsForLesson(
-  database: Pick<DatabaseClient, "query">,
+  database: DatabaseQueryClient,
   lessonId: string
 ) {
-  const rows = await database.query.preReviewConsolidationState.findMany({
-    columns: {
-      subjectKey: true
-    },
-    where: and(
-      eq(preReviewConsolidationState.lessonId, lessonId),
-      inArray(preReviewConsolidationState.status, ACTIVE_CONSOLIDATION_STATUSES)
-    )
-  });
+  const [row] = await database
+    .select({
+      count: sql<number>`cast(count(*) as integer)`
+    })
+    .from(preReviewConsolidationState)
+    .where(
+      and(
+        eq(preReviewConsolidationState.lessonId, lessonId),
+        eq(preReviewConsolidationState.status, "pending")
+      )
+    );
 
-  return rows.length;
+  return Number(row?.count ?? 0);
+}
+
+async function countRetrainingRows(database: DatabaseQueryClient) {
+  return countConsolidationRowsByStatus(database, "retraining");
+}
+
+async function countConsolidationRowsByStatus(
+  database: DatabaseQueryClient,
+  status: PreReviewConsolidationStatus
+) {
+  const [row] = await database
+    .select({
+      count: sql<number>`cast(count(*) as integer)`
+    })
+    .from(preReviewConsolidationState)
+    .where(eq(preReviewConsolidationState.status, status));
+
+  return Number(row?.count ?? 0);
 }
 
 async function buildConsolidationPresentations(input: {
+  choiceGroupId?: (row: PendingConsolidationRow) => string | null;
   database: DatabaseQueryClient;
   fallbackCards: FallbackConsolidationCard[];
   pendingRows: PendingConsolidationRow[];
@@ -1049,7 +1200,9 @@ async function buildConsolidationPresentations(input: {
   for (const row of input.pendingRows) {
     presentations.set(
       row.subjectKey,
-      buildPendingRowPresentation(row, entryLookup)
+      buildPendingRowPresentation(row, entryLookup, {
+        choiceGroupId: input.choiceGroupId?.(row) ?? row.lessonId
+      })
     );
   }
 
@@ -1082,7 +1235,10 @@ async function buildConsolidationPresentations(input: {
 
 function buildPendingRowPresentation(
   row: PendingConsolidationRow,
-  entryLookup: Map<string, ConsolidationEntrySummary>
+  entryLookup: Map<string, ConsolidationEntrySummary>,
+  options: {
+    choiceGroupId?: string | null;
+  } = {}
 ): ConsolidationSubjectPresentation {
   return buildCardPresentation({
     attemptCount: row.attemptCount,
@@ -1098,6 +1254,7 @@ function buildPendingRowPresentation(
     },
     lessonId: row.lessonId,
     canMarkKnown: row.status === "pending",
+    choiceGroupId: options.choiceGroupId ?? row.lessonId,
     pending: true
   });
 }
@@ -1107,6 +1264,7 @@ function buildCardPresentation(input: {
   cardItem:
     | PendingConsolidationRow["representativeCard"]
     | FallbackConsolidationCard;
+  choiceGroupId?: string | null;
   entryLookup: Map<string, ConsolidationEntrySummary>;
   identity: ReviewSubjectIdentity;
   canMarkKnown?: boolean;
@@ -1124,6 +1282,8 @@ function buildCardPresentation(input: {
     attemptCount: input.attemptCount,
     back: input.cardItem.back,
     canMarkKnown: input.canMarkKnown ?? false,
+    choiceGroupId:
+      input.choiceGroupId ?? input.lessonId ?? input.cardItem.lessonId,
     entryType: input.identity.entryType,
     front: input.cardItem.front,
     kind: input.identity.entryType ?? "card",
@@ -1206,7 +1366,7 @@ function buildStepOptions(
   step: PreReviewConsolidationStep
 ): ConsolidationOption[] {
   const seed = [
-    target.lessonId ?? "media",
+    target.choiceGroupId ?? target.lessonId ?? "media",
     target.subjectKey,
     step,
     String(target.attemptCount)
@@ -1216,8 +1376,8 @@ function buildStepOptions(
       (candidate) =>
         candidate.subjectKey !== target.subjectKey &&
         candidate.pending &&
-        Boolean(target.lessonId) &&
-        candidate.lessonId === target.lessonId
+        Boolean(target.choiceGroupId) &&
+        candidate.choiceGroupId === target.choiceGroupId
     ),
     `${seed}:pending`
   );

@@ -29,6 +29,7 @@ import {
   enqueueLessonConsolidation,
   getConsolidationHubData,
   getConsolidationSessionData,
+  getRetrainingConsolidationSessionData,
   setLessonCompletionWithConsolidation,
   getPendingConsolidationSubjectKeys,
   markConsolidationKnown,
@@ -404,37 +405,62 @@ describe("pre-FSRS consolidation service", () => {
     expect(rows).toEqual([]);
   });
 
-  it("shows retraining consolidation in the hub and session without mark-known", async () => {
+  it("shows retraining consolidation in one global mixed queue without mark-known", async () => {
     await seedTwoMediaGlobalQueueFixture(database);
-    await database.insert(preReviewConsolidationState).values({
-      subjectKey: "card:card_a",
-      subjectType: "card",
-      representativeCardId: "card_a",
-      lessonId: "lesson_a",
-      mediaId: "media_a",
-      status: "retraining",
-      attemptCount: 0,
-      lastAttemptAt: null,
-      completedAt: null,
-      createdAt: "2026-04-01T10:00:00.000Z",
-      updatedAt: "2026-04-01T10:00:00.000Z"
+    await applyReviewGrade({
+      cardId: "card_a",
+      database,
+      now: new Date("2026-04-01T11:00:00.000Z"),
+      rating: "hard"
+    });
+    await applyReviewGrade({
+      cardId: "card_b",
+      database,
+      now: new Date("2026-04-01T11:01:00.000Z"),
+      rating: "again"
     });
 
-    const [hub, session] = await Promise.all([
+    const [hub, lessonSession, retrainingSession] = await Promise.all([
       getConsolidationHubData(database),
       getConsolidationSessionData({
         database,
         lessonSlug: "intro-a",
         mediaSlug: "media-a"
-      })
+      }),
+      getRetrainingConsolidationSessionData(database)
     ]);
 
-    expect(hub.totalPending).toBe(1);
-    expect(session?.subjects).toHaveLength(1);
-    expect(session?.subjects[0]).toMatchObject({
-      canMarkKnown: false,
-      subjectKey: "card:card_a"
+    expect(hub.totalPending).toBe(2);
+    expect(hub.retrainingQueue).toEqual({
+      href: "/consolidation/retraining",
+      pendingCount: 2,
+      title: "Ripasso da review"
     });
+    expect(hub.mediaGroups).toEqual([]);
+    expect(lessonSession?.subjects).toEqual([]);
+    expect(
+      retrainingSession?.subjects.map((subject) => subject.subjectKey)
+    ).toEqual(["card:card_a", "card:card_b"]);
+    expect(retrainingSession?.subjects).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          canMarkKnown: false,
+          subjectKey: "card:card_a"
+        }),
+        expect.objectContaining({
+          canMarkKnown: false,
+          subjectKey: "card:card_b"
+        })
+      ])
+    );
+    expect(retrainingSession?.lesson.title).toBe("Ripasso da review");
+    expect(retrainingSession?.media.title).toBe("Consolidamento FSRS");
+    expect(retrainingSession?.subjects[0]?.steps[0]?.options).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: "A back" }),
+        expect.objectContaining({ label: "B back" })
+      ])
+    );
   });
 
   it("rejects marking retraining consolidation known without changing FSRS history", async () => {

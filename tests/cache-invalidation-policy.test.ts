@@ -17,6 +17,7 @@ vi.mock("next/cache", () => ({
 
 import {
   invalidateFuriganaModeChanged,
+  invalidateConsolidationMutationCaches,
   invalidateImportedContentCaches,
   invalidateKanjiClashManualContrastChanged,
   invalidateLessonCompletionChanged,
@@ -108,6 +109,29 @@ describe("cache invalidation policy", () => {
       [GLOSSARY_SUMMARY_TAG],
       [REVIEW_FIRST_CANDIDATE_TAG],
       [`${GLOSSARY_SUMMARY_TAG}:media_dm`]
+    ]);
+    expect(revalidateTagMock).not.toHaveBeenCalled();
+  });
+
+  it("updates consolidation caches and revalidates the global retraining route", () => {
+    invalidateConsolidationMutationCaches({
+      mediaId: "media_dm"
+    });
+
+    expect(updateTagMock.mock.calls).toEqual([
+      [CONSOLIDATION_SUMMARY_TAG],
+      [REVIEW_FIRST_CANDIDATE_TAG],
+      [`${CONSOLIDATION_SUMMARY_TAG}:media_dm`],
+      [REVIEW_SUMMARY_TAG],
+      [REVIEW_FIRST_CANDIDATE_TAG],
+      [`${REVIEW_SUMMARY_TAG}:media_dm`],
+      [MEDIA_LIST_TAG],
+      [REVIEW_FIRST_CANDIDATE_TAG]
+    ]);
+    expect(revalidatePathMock.mock.calls).toEqual([
+      ["/consolidation"],
+      ["/consolidation/retraining"],
+      ["/review"]
     ]);
     expect(revalidateTagMock).not.toHaveBeenCalled();
   });

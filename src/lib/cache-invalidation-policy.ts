@@ -19,6 +19,7 @@ import {
 } from "@/lib/data-cache";
 import {
   consolidationHref,
+  consolidationRetrainingHref,
   mediaHref,
   mediaStudyHref,
   mediaTextbookLessonHref,
@@ -56,6 +57,7 @@ export function invalidateConsolidationMutationCaches(input: {
   updateReviewSummaryCache(input.mediaId);
   updateMediaListCache();
   revalidatePath(consolidationHref());
+  revalidatePath(consolidationRetrainingHref());
   revalidatePath(reviewHref());
 }
 

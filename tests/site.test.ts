@@ -7,6 +7,7 @@ import { SiteShellPrimaryNav } from "@/components/site-shell-primary-nav";
 import { TextbookIndexPage } from "@/components/textbook/textbook-index-page";
 import {
   buildGlossaryHref,
+  consolidationRetrainingHref,
   kanjiClashHref,
   buildReviewRedirectUrl,
   buildReviewSearchParams,
@@ -82,6 +83,7 @@ describe("site helpers", () => {
     ];
 
     expect(mediaHref("fixture-tcg")).toBe("/media/fixture-tcg");
+    expect(consolidationRetrainingHref()).toBe("/consolidation/retraining");
     expect(mediaTextbookLessonHref("fixture-tcg", "core-vocab")).toBe(
       "/media/fixture-tcg/textbook/core-vocab"
     );

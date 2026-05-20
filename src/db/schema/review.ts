@@ -92,7 +92,9 @@ export const reviewSubjectState = sqliteTable(
   "review_subject_state",
   {
     subjectKey: text("subject_key").primaryKey(),
-    subjectType: text("subject_type", { enum: reviewSubjectKindValues }).notNull(),
+    subjectType: text("subject_type", {
+      enum: reviewSubjectKindValues
+    }).notNull(),
     entryType: text("entry_type", { enum: entryTypeValues }),
     crossMediaGroupId: text("cross_media_group_id"),
     entryId: text("entry_id"),
@@ -145,7 +147,7 @@ export const reviewSubjectState = sqliteTable(
           and ${table.suspended} = 0
           and ${table.stability} >= 7
           and ${table.reps} >= 2`
-    )
+      )
   ]
 );
 
@@ -177,7 +179,10 @@ export const reviewSubjectLog = sqliteTable(
       table.subjectKey,
       table.answeredAt
     ),
-    index("review_subject_log_card_answered_idx").on(table.cardId, table.answeredAt),
+    index("review_subject_log_card_answered_idx").on(
+      table.cardId,
+      table.answeredAt
+    ),
     index("review_subject_log_introduced_day_idx").on(
       table.previousState,
       table.answeredAt,
@@ -191,7 +196,9 @@ export const preReviewConsolidationState = sqliteTable(
   "pre_review_consolidation_state",
   {
     subjectKey: text("subject_key").primaryKey(),
-    subjectType: text("subject_type", { enum: reviewSubjectKindValues }).notNull(),
+    subjectType: text("subject_type", {
+      enum: reviewSubjectKindValues
+    }).notNull(),
     entryType: text("entry_type", { enum: entryTypeValues }),
     crossMediaGroupId: text("cross_media_group_id"),
     entryId: text("entry_id"),
@@ -227,6 +234,11 @@ export const preReviewConsolidationState = sqliteTable(
       table.mediaId,
       table.lessonId,
       table.status
+    ),
+    index("pre_review_consolidation_status_created_idx").on(
+      table.status,
+      table.createdAt,
+      table.subjectKey
     ),
     index("pre_review_consolidation_card_idx").on(table.representativeCardId)
   ]

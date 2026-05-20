@@ -29,10 +29,30 @@ export default async function ConsolidationHubRoute() {
     <section className="dashboard-page" aria-labelledby="consolidation-title">
       <div className="page-heading">
         <p className="eyebrow">Consolidamento</p>
-        <h1 id="consolidation-title">Card pronte per il passaggio pre-review</h1>
+        <h1 id="consolidation-title">
+          Card pronte per il passaggio pre-review
+        </h1>
       </div>
 
       <div className="media-grid">
+        {data.retrainingQueue ? (
+          <article className="media-card">
+            <div className="media-card__body">
+              <p className="eyebrow">
+                {data.retrainingQueue.pendingCount} da rinforzare
+              </p>
+              <h2>{data.retrainingQueue.title}</h2>
+              <div className="stack-sm">
+                <Link
+                  className="button button--secondary"
+                  href={data.retrainingQueue.href}
+                >
+                  Avvia queue unica · {data.retrainingQueue.pendingCount}
+                </Link>
+              </div>
+            </div>
+          </article>
+        ) : null}
         {data.mediaGroups.map((group) => (
           <article className="media-card" key={group.mediaId}>
             <div className="media-card__body">

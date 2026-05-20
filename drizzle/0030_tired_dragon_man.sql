@@ -1,0 +1,1 @@
+CREATE INDEX `pre_review_consolidation_status_created_idx` ON `pre_review_consolidation_state` (`status`,`created_at`,`subject_key`);
