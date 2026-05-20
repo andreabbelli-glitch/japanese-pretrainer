@@ -22,13 +22,11 @@ const RETRIEVAL_MS = 2000;
 const FEEDBACK_MS = 650;
 
 type SessionPhase = "retrieval" | "answering" | "feedback";
-type FeedbackState =
-  | {
-      correct: boolean;
-      message: string;
-      selectedSubjectKey: string | null;
-    }
-  | null;
+type FeedbackState = {
+  correct: boolean;
+  message: string;
+  selectedSubjectKey: string | null;
+} | null;
 
 export function ConsolidationSessionClient({
   data
@@ -89,7 +87,12 @@ export function ConsolidationSessionClient({
   };
 
   const handleAnswer = async (option: ConsolidationOption) => {
-    if (!currentSubject || !currentStep || phase !== "answering" || isSubmitting) {
+    if (
+      !currentSubject ||
+      !currentStep ||
+      phase !== "answering" ||
+      isSubmitting
+    ) {
       return;
     }
 
@@ -131,7 +134,12 @@ export function ConsolidationSessionClient({
   };
 
   const handleMarkKnown = async () => {
-    if (!currentSubject || phase !== "answering" || isSubmitting) {
+    if (
+      !currentSubject ||
+      !currentSubject.canMarkKnown ||
+      phase !== "answering" ||
+      isSubmitting
+    ) {
       return;
     }
 
@@ -200,7 +208,10 @@ export function ConsolidationSessionClient({
 
   if (completed) {
     return (
-      <section className={styles.shell} aria-labelledby="consolidation-complete">
+      <section
+        className={styles.shell}
+        aria-labelledby="consolidation-complete"
+      >
         <div className={styles.completePanel}>
           <p className={styles.eyebrow}>{data.media.title}</p>
           <h1 id="consolidation-complete">Consolidamento completato</h1>
@@ -234,7 +245,9 @@ export function ConsolidationSessionClient({
         data-step={currentStep.step}
       >
         <div className={styles.stageTopline}>
-          <span>{currentStep.step === "reading" ? "Lettura" : "Significato"}</span>
+          <span>
+            {currentStep.step === "reading" ? "Lettura" : "Significato"}
+          </span>
           <span>
             {currentStepNumber}/{totalSteps}
           </span>
@@ -274,7 +287,8 @@ export function ConsolidationSessionClient({
               {currentStep.options.map((option) => {
                 const isSelected =
                   feedback?.selectedSubjectKey === option.subjectKey;
-                const isCorrect = option.subjectKey === currentSubject.subjectKey;
+                const isCorrect =
+                  option.subjectKey === currentSubject.subjectKey;
 
                 return (
                   <button
@@ -305,7 +319,7 @@ export function ConsolidationSessionClient({
         <Link className="button button--ghost" href={data.hubHref}>
           Hub
         </Link>
-        {phase !== "retrieval" ? (
+        {phase !== "retrieval" && currentSubject.canMarkKnown ? (
           <button
             className="button button--secondary"
             disabled={isSubmitting || phase !== "answering"}

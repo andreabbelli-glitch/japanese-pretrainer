@@ -25,6 +25,7 @@ import {
 } from "./review-subject";
 import { consolidationLessonHref, reviewHref, type AppHref } from "./site";
 import { setLessonCompletionState } from "./textbook-progress";
+import type { ReviewRating } from "./review-scheduler";
 
 type EnqueueLessonConsolidationInput = {
   database?: ConsolidationMutationClient;
@@ -51,7 +52,9 @@ type ConsolidationCard = Awaited<
 >[number];
 
 type ConsolidationMutationClient = DatabaseQueryClient &
-  Pick<DatabaseClient, "insert">;
+  Pick<DatabaseClient, "insert" | "update">;
+
+const ACTIVE_CONSOLIDATION_STATUSES = ["pending", "retraining"] as const;
 
 export async function enqueueLessonConsolidation(
   input: EnqueueLessonConsolidationInput
@@ -70,7 +73,9 @@ export async function enqueueLessonConsolidation(
     };
   }
 
-  const subjectKeys = candidates.map((candidate) => candidate.identity.subjectKey);
+  const subjectKeys = candidates.map(
+    (candidate) => candidate.identity.subjectKey
+  );
   const [existingReviewStates, existingConsolidationRows] = await Promise.all([
     listReviewSubjectStatesByKeys(database, subjectKeys),
     database.query.preReviewConsolidationState.findMany({
@@ -80,19 +85,17 @@ export async function enqueueLessonConsolidation(
   const existingConsolidationKeys = new Set(
     existingConsolidationRows.map((row) => row.subjectKey)
   );
-  const rowsToInsert = candidates.filter(
-    (candidate) => {
-      const existingReviewState = existingReviewStates.get(
-        candidate.identity.subjectKey
-      );
+  const rowsToInsert = candidates.filter((candidate) => {
+    const existingReviewState = existingReviewStates.get(
+      candidate.identity.subjectKey
+    );
 
-      return (
-        !existingConsolidationKeys.has(candidate.identity.subjectKey) &&
-        (!existingReviewState ||
-          isImporterSeededNewReviewSubjectState(existingReviewState))
-      );
-    }
-  );
+    return (
+      !existingConsolidationKeys.has(candidate.identity.subjectKey) &&
+      (!existingReviewState ||
+        isImporterSeededNewReviewSubjectState(existingReviewState))
+    );
+  });
 
   if (rowsToInsert.length === 0) {
     return {
@@ -128,6 +131,79 @@ export async function enqueueLessonConsolidation(
   return {
     createdCount: rowsToInsert.length,
     subjectKeys: rowsToInsert.map((candidate) => candidate.identity.subjectKey)
+  };
+}
+
+export async function enqueueReviewMistakeConsolidation(input: {
+  database?: ConsolidationMutationClient;
+  identity: ReviewSubjectIdentity;
+  lessonId: string;
+  mediaId: string;
+  now?: Date;
+  rating: ReviewRating;
+  representativeCardId: string;
+}) {
+  if (input.rating !== "again" && input.rating !== "hard") {
+    return {
+      queued: false as const,
+      subjectKey: input.identity.subjectKey
+    };
+  }
+
+  const database = input.database ?? db;
+  const nowIso = (input.now ?? new Date()).toISOString();
+  const existingRow =
+    await database.query.preReviewConsolidationState.findFirst({
+      where: eq(
+        preReviewConsolidationState.subjectKey,
+        input.identity.subjectKey
+      )
+    });
+
+  if (
+    existingRow?.status === "pending" ||
+    existingRow?.status === "retraining"
+  ) {
+    return {
+      queued: false as const,
+      subjectKey: input.identity.subjectKey
+    };
+  }
+
+  const rowValues = {
+    attemptCount: 0,
+    completedAt: null,
+    crossMediaGroupId: input.identity.crossMediaGroupId,
+    entryId: input.identity.entryId,
+    entryType: input.identity.entryType,
+    lastAttemptAt: null,
+    lessonId: input.lessonId,
+    mediaId: input.mediaId,
+    readingPassedAt: null,
+    representativeCardId: input.representativeCardId,
+    status: "retraining" as const,
+    subjectType: input.identity.subjectKind,
+    updatedAt: nowIso
+  };
+
+  if (existingRow) {
+    await database
+      .update(preReviewConsolidationState)
+      .set(rowValues)
+      .where(
+        eq(preReviewConsolidationState.subjectKey, input.identity.subjectKey)
+      );
+  } else {
+    await database.insert(preReviewConsolidationState).values({
+      ...rowValues,
+      createdAt: nowIso,
+      subjectKey: input.identity.subjectKey
+    });
+  }
+
+  return {
+    queued: true as const,
+    subjectKey: input.identity.subjectKey
   };
 }
 
@@ -193,7 +269,9 @@ export async function getPendingConsolidationSubjectKeySet(
   }
 
   return new Set(
-    await getPendingConsolidationSubjectKeys(database, [...new Set(subjectKeys)])
+    await getPendingConsolidationSubjectKeys(database, [
+      ...new Set(subjectKeys)
+    ])
   );
 }
 
@@ -201,7 +279,10 @@ async function buildLessonConsolidationCandidates(
   database: ConsolidationMutationClient,
   lessonId: string
 ): Promise<ConsolidationCandidate[]> {
-  const cards = await listActiveConsolidationCardsByLessonId(database, lessonId);
+  const cards = await listActiveConsolidationCardsByLessonId(
+    database,
+    lessonId
+  );
 
   if (cards.length === 0) {
     return [];
@@ -383,6 +464,7 @@ export type ConsolidationSessionStepData = {
 export type ConsolidationSessionSubject = {
   attemptCount: number;
   back: string;
+  canMarkKnown: boolean;
   front: string;
   representativeCardId: string;
   steps: ConsolidationSessionStepData[];
@@ -445,6 +527,7 @@ type ConsolidationEntrySummary = {
 type ConsolidationSubjectPresentation = {
   attemptCount: number;
   back: string;
+  canMarkKnown: boolean;
   entryType: EntryType | null;
   front: string;
   kind: ConsolidationOptionKind;
@@ -472,7 +555,10 @@ export async function getConsolidationHubData(
       lessonId: true,
       mediaId: true
     },
-    where: eq(preReviewConsolidationState.status, "pending"),
+    where: inArray(
+      preReviewConsolidationState.status,
+      ACTIVE_CONSOLIDATION_STATUSES
+    ),
     with: {
       lesson: {
         columns: {
@@ -497,27 +583,23 @@ export async function getConsolidationHubData(
   const groups = new Map<string, ConsolidationHubMediaGroup>();
 
   for (const row of rows) {
-    const mediaGroup =
-      groups.get(row.mediaId) ??
-      {
-        lessons: [],
-        mediaId: row.mediaId,
-        mediaSlug: row.media.slug,
-        mediaTitle: row.media.title,
-        pendingCount: 0
-      };
+    const mediaGroup = groups.get(row.mediaId) ?? {
+      lessons: [],
+      mediaId: row.mediaId,
+      mediaSlug: row.media.slug,
+      mediaTitle: row.media.title,
+      pendingCount: 0
+    };
     const existingLesson = mediaGroup.lessons.find(
       (lessonGroup) => lessonGroup.lessonId === row.lessonId
     );
-    const lessonGroup =
-      existingLesson ??
-      {
-        href: consolidationLessonHref(row.media.slug, row.lesson.slug),
-        lessonId: row.lessonId,
-        lessonSlug: row.lesson.slug,
-        lessonTitle: row.lesson.title,
-        pendingCount: 0
-      };
+    const lessonGroup = existingLesson ?? {
+      href: consolidationLessonHref(row.media.slug, row.lesson.slug),
+      lessonId: row.lessonId,
+      lessonSlug: row.lesson.slug,
+      lessonTitle: row.lesson.title,
+      pendingCount: 0
+    };
 
     lessonGroup.pendingCount += 1;
     mediaGroup.pendingCount += 1;
@@ -607,6 +689,7 @@ export async function getConsolidationSessionData(input: {
     subjects: pendingPresentations.map((presentation) => ({
       attemptCount: presentation.attemptCount,
       back: presentation.back,
+      canMarkKnown: presentation.canMarkKnown,
       front: presentation.front,
       representativeCardId: presentation.representativeCardId,
       steps: buildSessionSteps(presentation, presentations),
@@ -642,12 +725,9 @@ export async function submitConsolidationAnswer(
         ? "reading"
         : "meaning";
       const reinsertionIndex = getDeterministicIndex(
-        [
-          row.lessonId,
-          input.subjectKey,
-          input.step,
-          String(attemptCount)
-        ].join(":"),
+        [row.lessonId, input.subjectKey, input.step, String(attemptCount)].join(
+          ":"
+        ),
         Math.max(1, pendingCount)
       );
 
@@ -669,7 +749,7 @@ export async function submitConsolidationAnswer(
         mediaId: row.mediaId,
         nextStep,
         reinsertionIndex,
-        status: "pending",
+        status: row.status,
         subjectKey: input.subjectKey
       };
     }
@@ -691,12 +771,15 @@ export async function submitConsolidationAnswer(
         mediaId: row.mediaId,
         nextStep: "meaning",
         reinsertionIndex: null,
-        status: "pending",
+        status: row.status,
         subjectKey: input.subjectKey
       };
     }
 
-    if ((await subjectRequiresReadingStep(transaction, row)) && !row.readingPassedAt) {
+    if (
+      (await subjectRequiresReadingStep(transaction, row)) &&
+      !row.readingPassedAt
+    ) {
       throw new Error("Reading step must be completed before meaning.");
     }
 
@@ -742,6 +825,10 @@ export async function markConsolidationKnown(
 
     if (!row) {
       throw new Error("Consolidation subject is not pending.");
+    }
+
+    if (row.status !== "pending") {
+      throw new Error("Retraining consolidation cannot mark FSRS cards known.");
     }
 
     await transaction
@@ -824,7 +911,7 @@ async function listPendingConsolidationRowsByLessonId(
   return database.query.preReviewConsolidationState.findMany({
     where: and(
       eq(preReviewConsolidationState.lessonId, lessonId),
-      eq(preReviewConsolidationState.status, "pending")
+      inArray(preReviewConsolidationState.status, ACTIVE_CONSOLIDATION_STATUSES)
     ),
     with: {
       representativeCard: {
@@ -897,7 +984,7 @@ async function loadPendingConsolidationRowBySubjectKey(
   return database.query.preReviewConsolidationState.findFirst({
     where: and(
       eq(preReviewConsolidationState.subjectKey, subjectKey),
-      eq(preReviewConsolidationState.status, "pending")
+      inArray(preReviewConsolidationState.status, ACTIVE_CONSOLIDATION_STATUSES)
     ),
     with: {
       representativeCard: {
@@ -937,7 +1024,7 @@ async function countPendingRowsForLesson(
     },
     where: and(
       eq(preReviewConsolidationState.lessonId, lessonId),
-      eq(preReviewConsolidationState.status, "pending")
+      inArray(preReviewConsolidationState.status, ACTIVE_CONSOLIDATION_STATUSES)
     )
   });
 
@@ -1008,30 +1095,35 @@ function buildPendingRowPresentation(
       entryType: row.entryType,
       subjectKey: row.subjectKey,
       subjectKind: row.subjectType
-      },
+    },
     lessonId: row.lessonId,
+    canMarkKnown: row.status === "pending",
     pending: true
   });
 }
 
 function buildCardPresentation(input: {
   attemptCount: number;
-  cardItem: PendingConsolidationRow["representativeCard"] | FallbackConsolidationCard;
+  cardItem:
+    | PendingConsolidationRow["representativeCard"]
+    | FallbackConsolidationCard;
   entryLookup: Map<string, ConsolidationEntrySummary>;
   identity: ReviewSubjectIdentity;
+  canMarkKnown?: boolean;
   lessonId?: string | null;
   pending?: boolean;
 }): ConsolidationSubjectPresentation {
   const entry =
     input.identity.entryType && input.identity.entryId
-      ? input.entryLookup.get(
+      ? (input.entryLookup.get(
           buildEntryKey(input.identity.entryType, input.identity.entryId)
-        ) ?? null
+        ) ?? null)
       : null;
 
   return {
     attemptCount: input.attemptCount,
     back: input.cardItem.back,
+    canMarkKnown: input.canMarkKnown ?? false,
     entryType: input.identity.entryType,
     front: input.cardItem.front,
     kind: input.identity.entryType ?? "card",
@@ -1088,7 +1180,10 @@ function buildSessionSteps(
 ): ConsolidationSessionStepData[] {
   const steps: ConsolidationSessionStepData[] = [];
 
-  if (target.reading && readingAddsRetrievalValue(target.front, target.reading)) {
+  if (
+    target.reading &&
+    readingAddsRetrievalValue(target.front, target.reading)
+  ) {
     steps.push({
       answerLabel: target.reading,
       options: buildStepOptions(target, pool, "reading"),
@@ -1179,12 +1274,15 @@ function getStepAnswerLabel(
   step: PreReviewConsolidationStep
 ) {
   return step === "reading"
-    ? presentation.reading?.trim() ?? ""
+    ? (presentation.reading?.trim() ?? "")
     : presentation.meaning.trim();
 }
 
 function readingAddsRetrievalValue(front: string, reading: string) {
-  return normalizeReviewSubjectSurface(front) !== normalizeReviewSubjectSurface(reading);
+  return (
+    normalizeReviewSubjectSurface(front) !==
+    normalizeReviewSubjectSurface(reading)
+  );
 }
 
 async function subjectRequiresReadingStep(

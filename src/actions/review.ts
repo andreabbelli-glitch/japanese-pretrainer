@@ -56,7 +56,7 @@ export async function gradeReviewCardAction(formData: FormData) {
   );
   const mediaId = await requireMediaIdForSlug(mediaSlug);
 
-  await applyReviewGrade({
+  const gradeResult = await applyReviewGrade({
     cardId,
     expectedMediaId: mediaId,
     expectedUpdatedAt,
@@ -70,6 +70,7 @@ export async function gradeReviewCardAction(formData: FormData) {
   });
 
   applyReviewActionCachePolicy({
+    includeConsolidation: gradeResult.consolidationQueued,
     mediaId,
     policy: "review"
   });
@@ -118,8 +119,7 @@ export async function gradeReviewCardSessionAction(
   }
 ): Promise<ReviewPageData> {
   const media = await resolveReviewSessionMedia(input);
-  const forcedContrast =
-    input.forcedKanjiClashContrast ?? input.forcedContrast;
+  const forcedContrast = input.forcedKanjiClashContrast ?? input.forcedContrast;
 
   const gradeResult = await applyReviewGrade({
     cardId: input.cardId,
@@ -131,6 +131,7 @@ export async function gradeReviewCardSessionAction(
     rating: input.rating
   });
   applyReviewActionCachePolicy({
+    includeConsolidation: gradeResult.consolidationQueued,
     mediaId: gradeResult.mediaId,
     policy: "review"
   });
@@ -284,7 +285,6 @@ async function runReviewSessionMutationAction(
     }
   );
 }
-
 
 function readCount(formData: FormData, key: string) {
   const raw = formData.get(key);

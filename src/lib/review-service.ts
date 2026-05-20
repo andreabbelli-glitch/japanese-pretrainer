@@ -48,6 +48,7 @@ import type {
   ReviewScope
 } from "./review-types";
 import { buildEntryKey } from "./entry-id";
+import { enqueueReviewMistakeConsolidation } from "./consolidation";
 
 export type ReviewMutationTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]
@@ -95,6 +96,7 @@ type ReviewSubjectMemberCard = Awaited<
 
 export type ReviewGradeResult = {
   cardId: string;
+  consolidationQueued: boolean;
   dueAt: string;
   forcedContrast?: ReviewForcedContrastResolution;
   mediaId: string;
@@ -250,8 +252,10 @@ export async function gradeReviewCardInTransaction(input: {
     throw new Error(REVIEW_CARD_OUT_OF_DATE_ERROR_MESSAGE);
   }
 
+  const reviewLogId = `review_subject_log_${randomUUID()}`;
+
   await input.transaction.insert(reviewSubjectLog).values({
-    id: `review_subject_log_${randomUUID()}`,
+    id: reviewLogId,
     subjectKey: subjectContext.identity.subjectKey,
     cardId: loadedCard.id,
     answeredAt: nowIso,
@@ -262,6 +266,16 @@ export async function gradeReviewCardInTransaction(input: {
     elapsedDays: scheduled.elapsedDays,
     responseMs: input.responseMs ?? null,
     schedulerVersion: scheduled.schedulerVersion
+  });
+
+  const consolidationResult = await enqueueReviewMistakeConsolidation({
+    database: input.transaction,
+    identity: subjectContext.identity,
+    lessonId: loadedCard.lessonId!,
+    mediaId: loadedCard.mediaId,
+    now,
+    rating: input.rating,
+    representativeCardId: loadedCard.id
   });
 
   const forcedContrast = input.forcedContrast
@@ -278,6 +292,7 @@ export async function gradeReviewCardInTransaction(input: {
 
   return {
     cardId: loadedCard.id,
+    consolidationQueued: consolidationResult.queued,
     dueAt: scheduled.dueAt,
     forcedContrast,
     mediaId: loadedCard.mediaId,

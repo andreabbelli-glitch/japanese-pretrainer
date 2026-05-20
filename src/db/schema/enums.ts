@@ -35,6 +35,7 @@ export const reviewRatingValues = ["again", "hard", "good", "easy"] as const;
 export const reviewSchedulerVersionValues = ["fsrs_v1"] as const;
 export const preReviewConsolidationStatusValues = [
   "pending",
+  "retraining",
   "passed",
   "known_manual"
 ] as const;

@@ -2,10 +2,7 @@ import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-  installMinimalDom,
-  uninstallMinimalDom
-} from "./helpers/minimal-dom";
+import { installMinimalDom, uninstallMinimalDom } from "./helpers/minimal-dom";
 
 import type { ConsolidationSessionData } from "@/lib/consolidation";
 
@@ -62,7 +59,9 @@ describe("ConsolidationSessionClient", () => {
 
   it("does not render option text during the 2 second retrieval phase", async () => {
     await act(async () => {
-      root!.render(createElement(ConsolidationSessionClient, { data: buildData() }));
+      root!.render(
+        createElement(ConsolidationSessionClient, { data: buildData() })
+      );
     });
 
     expect(container?.textContent).toContain("読む");
@@ -135,10 +134,30 @@ describe("ConsolidationSessionClient", () => {
 
     expect(container?.textContent).toContain("Vai alla review");
   });
+
+  it("does not render mark-known for FSRS retraining sessions", async () => {
+    await act(async () => {
+      root!.render(
+        createElement(ConsolidationSessionClient, {
+          data: buildData({
+            canMarkKnown: false
+          })
+        })
+      );
+    });
+
+    await act(async () => {
+      vi.advanceTimersByTime(2000);
+      await Promise.resolve();
+    });
+
+    expect(container?.textContent).not.toContain("Già nota");
+  });
 });
 
 function buildData(
   overrides: {
+    canMarkKnown?: boolean;
     front?: string;
     lessonId?: string;
     lessonTitle?: string;
@@ -166,6 +185,7 @@ function buildData(
       {
         attemptCount: 0,
         back: "leggere",
+        canMarkKnown: overrides.canMarkKnown ?? true,
         front: overrides.front ?? "{{読|よ}}む",
         representativeCardId: "card-001",
         subjectKey,

@@ -269,6 +269,208 @@ describe("pre-FSRS consolidation service", () => {
     expect(logs).toEqual([]);
   });
 
+  it("queues non-blocking consolidation after a hard FSRS review grade", async () => {
+    await seedTwoMediaGlobalQueueFixture(database);
+
+    const result = await applyReviewGrade({
+      cardId: "card_a",
+      database,
+      now: new Date("2026-04-01T11:00:00.000Z"),
+      rating: "hard"
+    });
+    const [consolidationRow, subjectState, logs, pendingKeys, hydratedCard] =
+      await Promise.all([
+        database.query.preReviewConsolidationState.findFirst({
+          where: eq(preReviewConsolidationState.subjectKey, "card:card_a")
+        }),
+        database.query.reviewSubjectState.findFirst({
+          where: eq(reviewSubjectState.subjectKey, "card:card_a")
+        }),
+        database.query.reviewSubjectLog.findMany({
+          where: eq(reviewSubjectLog.subjectKey, "card:card_a")
+        }),
+        getPendingConsolidationSubjectKeys(database, ["card:card_a"]),
+        hydrateReviewCard({
+          cardId: "card_a",
+          database
+        })
+      ]);
+
+    expect(result.consolidationQueued).toBe(true);
+    expect(consolidationRow).toMatchObject({
+      attemptCount: 0,
+      completedAt: null,
+      lastAttemptAt: null,
+      lessonId: "lesson_a",
+      mediaId: "media_a",
+      readingPassedAt: null,
+      representativeCardId: "card_a",
+      status: "retraining",
+      subjectKey: "card:card_a"
+    });
+    expect(subjectState).toMatchObject({
+      cardId: "card_a",
+      reps: 1,
+      subjectKey: "card:card_a"
+    });
+    expect(logs).toHaveLength(1);
+    expect(logs[0]).toMatchObject({
+      cardId: "card_a",
+      rating: "hard",
+      subjectKey: "card:card_a"
+    });
+    expect(pendingKeys).toEqual([]);
+    expect(hydratedCard?.id).toBe("card_a");
+  });
+
+  it("queues non-blocking consolidation after an again FSRS review grade", async () => {
+    await seedTwoMediaGlobalQueueFixture(database);
+
+    const result = await applyReviewGrade({
+      cardId: "card_a",
+      database,
+      now: new Date("2026-04-01T11:00:00.000Z"),
+      rating: "again"
+    });
+    const consolidationRow =
+      await database.query.preReviewConsolidationState.findFirst({
+        where: eq(preReviewConsolidationState.subjectKey, "card:card_a")
+      });
+
+    expect(result.consolidationQueued).toBe(true);
+    expect(consolidationRow).toMatchObject({
+      status: "retraining",
+      subjectKey: "card:card_a"
+    });
+  });
+
+  it("reopens completed consolidation after a future hard FSRS review grade", async () => {
+    await seedTwoMediaGlobalQueueFixture(database);
+    await database.insert(preReviewConsolidationState).values({
+      subjectKey: "card:card_a",
+      subjectType: "card",
+      representativeCardId: "card_a",
+      lessonId: "lesson_a",
+      mediaId: "media_a",
+      status: "passed",
+      attemptCount: 3,
+      lastAttemptAt: "2026-04-01T10:02:00.000Z",
+      completedAt: "2026-04-01T10:03:00.000Z",
+      createdAt: "2026-04-01T10:00:00.000Z",
+      updatedAt: "2026-04-01T10:03:00.000Z"
+    });
+
+    const result = await applyReviewGrade({
+      cardId: "card_a",
+      database,
+      now: new Date("2026-04-02T11:00:00.000Z"),
+      rating: "hard"
+    });
+    const consolidationRow =
+      await database.query.preReviewConsolidationState.findFirst({
+        where: eq(preReviewConsolidationState.subjectKey, "card:card_a")
+      });
+
+    expect(result.consolidationQueued).toBe(true);
+    expect(consolidationRow).toMatchObject({
+      attemptCount: 0,
+      completedAt: null,
+      lastAttemptAt: null,
+      readingPassedAt: null,
+      status: "retraining",
+      subjectKey: "card:card_a"
+    });
+  });
+
+  it("does not queue consolidation after good or easy FSRS review grades", async () => {
+    await seedTwoMediaGlobalQueueFixture(database);
+
+    const goodResult = await applyReviewGrade({
+      cardId: "card_a",
+      database,
+      now: new Date("2026-04-01T11:00:00.000Z"),
+      rating: "good"
+    });
+    const easyResult = await applyReviewGrade({
+      cardId: "card_b",
+      database,
+      now: new Date("2026-04-01T11:01:00.000Z"),
+      rating: "easy"
+    });
+    const rows = await database.query.preReviewConsolidationState.findMany();
+
+    expect(goodResult.consolidationQueued).toBe(false);
+    expect(easyResult.consolidationQueued).toBe(false);
+    expect(rows).toEqual([]);
+  });
+
+  it("shows retraining consolidation in the hub and session without mark-known", async () => {
+    await seedTwoMediaGlobalQueueFixture(database);
+    await database.insert(preReviewConsolidationState).values({
+      subjectKey: "card:card_a",
+      subjectType: "card",
+      representativeCardId: "card_a",
+      lessonId: "lesson_a",
+      mediaId: "media_a",
+      status: "retraining",
+      attemptCount: 0,
+      lastAttemptAt: null,
+      completedAt: null,
+      createdAt: "2026-04-01T10:00:00.000Z",
+      updatedAt: "2026-04-01T10:00:00.000Z"
+    });
+
+    const [hub, session] = await Promise.all([
+      getConsolidationHubData(database),
+      getConsolidationSessionData({
+        database,
+        lessonSlug: "intro-a",
+        mediaSlug: "media-a"
+      })
+    ]);
+
+    expect(hub.totalPending).toBe(1);
+    expect(session?.subjects).toHaveLength(1);
+    expect(session?.subjects[0]).toMatchObject({
+      canMarkKnown: false,
+      subjectKey: "card:card_a"
+    });
+  });
+
+  it("rejects marking retraining consolidation known without changing FSRS history", async () => {
+    await seedTwoMediaGlobalQueueFixture(database);
+    await applyReviewGrade({
+      cardId: "card_a",
+      database,
+      now: new Date("2026-04-01T11:00:00.000Z"),
+      rating: "hard"
+    });
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, "card:card_a")
+    });
+    const beforeLogs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, "card:card_a")
+    });
+
+    await expect(
+      markConsolidationKnown({
+        database,
+        now: new Date("2026-04-01T11:05:00.000Z"),
+        subjectKey: "card:card_a"
+      })
+    ).rejects.toThrow("Retraining consolidation cannot mark FSRS cards known.");
+
+    const afterState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, "card:card_a")
+    });
+    const afterLogs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, "card:card_a")
+    });
+
+    expect(afterState).toEqual(beforeState);
+    expect(afterLogs).toEqual(beforeLogs);
+  });
+
   it("excludes pending consolidation subjects from legacy due-card queries", async () => {
     await seedTwoMediaGlobalQueueFixture(database);
     await database.insert(reviewSubjectState).values(
@@ -306,6 +508,45 @@ describe("pre-FSRS consolidation service", () => {
     );
 
     expect(dueCards).toEqual([]);
+  });
+
+  it("keeps retraining consolidation subjects in legacy due-card queries", async () => {
+    await seedTwoMediaGlobalQueueFixture(database);
+    await database.insert(reviewSubjectState).values(
+      buildReviewSubjectStateRow({
+        cardId: "card_a",
+        difficulty: 5,
+        dueAt: "2026-03-31T10:00:00.000Z",
+        learningSteps: 0,
+        lapses: 0,
+        reps: 1,
+        scheduledDays: 1,
+        stability: 1,
+        state: "review",
+        subjectKey: "card:card_a"
+      })
+    );
+    await database.insert(preReviewConsolidationState).values({
+      subjectKey: "card:card_a",
+      subjectType: "card",
+      representativeCardId: "card_a",
+      lessonId: "lesson_a",
+      mediaId: "media_a",
+      status: "retraining",
+      attemptCount: 0,
+      lastAttemptAt: null,
+      completedAt: null,
+      createdAt: "2026-04-01T10:00:00.000Z",
+      updatedAt: "2026-04-01T10:00:00.000Z"
+    });
+
+    const dueCards = await listDueCardsByMediaId(
+      database,
+      "media_a",
+      "2026-04-01T12:00:00.000Z"
+    );
+
+    expect(dueCards.map((dueCard) => dueCard.id)).toEqual(["card_a"]);
   });
 
   it("completes a lesson and enqueues consolidation in a single transaction", async () => {
@@ -368,8 +609,7 @@ describe("pre-FSRS consolidation service", () => {
         pendingCount: 2,
         lessons: [
           {
-            href:
-              "/consolidation/media/media-consolidation/lesson/consolidation-intro",
+            href: "/consolidation/media/media-consolidation/lesson/consolidation-intro",
             lessonId: "lesson_consolidation",
             lessonSlug: "consolidation-intro",
             lessonTitle: "Consolidation Intro",
@@ -485,12 +725,14 @@ describe("pre-FSRS consolidation service", () => {
       step: "reading",
       subjectKey: "entry:term:term_consolidation_reading"
     });
-    const firstRow = await database.query.preReviewConsolidationState.findFirst({
-      where: eq(
-        preReviewConsolidationState.subjectKey,
-        "entry:term:term_consolidation_reading"
-      )
-    });
+    const firstRow = await database.query.preReviewConsolidationState.findFirst(
+      {
+        where: eq(
+          preReviewConsolidationState.subjectKey,
+          "entry:term:term_consolidation_reading"
+        )
+      }
+    );
 
     await database
       .update(preReviewConsolidationState)
@@ -552,6 +794,63 @@ describe("pre-FSRS consolidation service", () => {
       correct: false,
       nextStep: "meaning",
       status: "pending"
+    });
+  });
+
+  it("keeps retraining status in answer results until the subject passes", async () => {
+    await seedConsolidationLesson(database);
+    await database.insert(preReviewConsolidationState).values({
+      subjectKey: "entry:term:term_consolidation_reading",
+      subjectType: "entry",
+      representativeCardId: "card_consolidation_reading",
+      lessonId: "lesson_consolidation",
+      mediaId: "media_consolidation",
+      entryType: "term",
+      entryId: "term_consolidation_reading",
+      status: "retraining",
+      attemptCount: 0,
+      lastAttemptAt: null,
+      completedAt: null,
+      createdAt: "2026-04-01T10:00:00.000Z",
+      updatedAt: "2026-04-01T10:00:00.000Z"
+    });
+
+    const wrongResult = await submitConsolidationAnswer({
+      database,
+      now: new Date("2026-04-01T10:02:00.000Z"),
+      selectedSubjectKey: "entry:term:term_consolidation_meaning",
+      step: "reading",
+      subjectKey: "entry:term:term_consolidation_reading"
+    });
+    const readingResult = await submitConsolidationAnswer({
+      database,
+      now: new Date("2026-04-01T10:03:00.000Z"),
+      selectedSubjectKey: "entry:term:term_consolidation_reading",
+      step: "reading",
+      subjectKey: "entry:term:term_consolidation_reading"
+    });
+    const row = await database.query.preReviewConsolidationState.findFirst({
+      where: eq(
+        preReviewConsolidationState.subjectKey,
+        "entry:term:term_consolidation_reading"
+      )
+    });
+
+    expect(wrongResult).toMatchObject({
+      completed: false,
+      correct: false,
+      nextStep: "reading",
+      status: "retraining"
+    });
+    expect(readingResult).toMatchObject({
+      completed: false,
+      correct: true,
+      nextStep: "meaning",
+      status: "retraining"
+    });
+    expect(row).toMatchObject({
+      readingPassedAt: "2026-04-01T10:03:00.000Z",
+      status: "retraining"
     });
   });
 
@@ -677,9 +976,7 @@ describe("pre-FSRS consolidation service", () => {
       subjectKey: "entry:grammar:grammar_consolidation_before"
     });
 
-    expect(grammarSubject?.steps.map((step) => step.step)).toEqual([
-      "meaning"
-    ]);
+    expect(grammarSubject?.steps.map((step) => step.step)).toEqual(["meaning"]);
     expect(result).toMatchObject({
       attemptCount: 1,
       completed: true,
