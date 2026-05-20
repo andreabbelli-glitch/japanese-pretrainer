@@ -2,7 +2,7 @@
 id: cards-crystal-hunters-book-1-l02-seeing-stopping-and-taking
 media_id: media-crystal-hunters
 slug: book-1-l02-seeing-stopping-and-taking
-title: Book 1 L02 - Vedere, fermarsi e prendere
+title: Book 1 L02 - Vedere, prendere e gruppi
 order: 20
 segment_ref: book-1
 ---

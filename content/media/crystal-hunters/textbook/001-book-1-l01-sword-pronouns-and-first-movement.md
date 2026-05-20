@@ -2,7 +2,7 @@
 id: lesson-crystal-hunters-book-1-l01-sword-pronouns-and-first-movement
 media_id: media-crystal-hunters
 slug: book-1-l01-sword-pronouns-and-first-movement
-title: Book 1 L01 - Particelle, set e frasi senza spazi
+title: Book 1 L01 - Particelle, set e prime azioni
 order: 10
 segment_ref: book-1
 difficulty: n5
@@ -10,26 +10,19 @@ status: active
 tags: [crystal-hunters, book-1, manga, fantasy]
 prerequisites: []
 summary: >-
-  Usare le frasi della guida per leggere particelle, set fraseologici e primi predicati senza dipendere dagli spazi.
+  Leggere le prime frasi distinguendo particelle, soggetto, oggetto, spada, pronomi e azioni fisiche.
 ---
 
-# Lezione 1 - Particelle e set
+# Particelle, set e prime azioni
 
-La guida non vuole farti "tradurre parola per parola". Il suo punto utile è
-questo: in Crystal Hunters leggi prima i blocchi parola + particella, poi guardi
-il verbo finale.
+Il giapponese di Crystal Hunters è costruito per essere letto a blocchi. Prima
+si trova la parola, poi la particella che la segue, poi il verbo che chiude la
+frase. Questo è il metodo più importante per non dipendere dagli spazi.
 
-Salto kana, pronuncia e definizioni da principiante assoluto. Qui teniamo le
-frasi che la guida usa per spiegare la grammatica.
+## は e を
 
-## は e を: chi fa cosa a cosa
-
-La guida parte da due particelle:
-
-- `は`, pronunciata `wa`, marca soggetto o topic.
-- `を`, pronunciata `o`, marca l'oggetto.
-
-Frase guida:
+`は`, pronunciato `wa`, marca il topic della frase. `を`, pronunciato `o`,
+marca l'oggetto su cui cade l'azione.
 
 :::example_sentence
 jp: >-
@@ -38,11 +31,9 @@ translation_it: >-
   Io vedo.
 :::
 
-La cosa importante non è "は = soggetto" in astratto. È che `{{私|わたし}}は`
-diventa un set. La particella descrive la parola appena prima, quindi quando
-vedi `Xは` sai che `X` è il topic su cui la frase sta lavorando.
-
-Poi la guida aggiunge l'oggetto:
+`{{私|わたし}}は` forma un blocco: il topic è "io". Il verbo
+`{{見|み}}る` non prende una particella, perché il verbo sta già facendo il
+lavoro principale della frase.
 
 :::example_sentence
 jp: >-
@@ -51,17 +42,18 @@ translation_it: >-
   Io vedo un cristallo / vedo cristalli.
 :::
 
-Qui hai due set:
+Qui i blocchi sono due:
 
-- `{{私|わたし}}は` = chi è il topic.
-- `クリスタルを` = cosa viene visto.
+- `{{私|わたし}}は` - chi è il topic.
+- `クリスタルを` - cosa viene visto.
 
-Il verbo `{{見|み}}る` non prende particella: sta alla fine e chiude la frase.
+Il giapponese spesso non distingue singolare e plurale nei nomi. `クリスタル`
+può essere "un cristallo" o "cristalli"; il contesto decide.
 
-## Ordine flessibile, non ordine inglese
+## I blocchi possono muoversi
 
-La guida insiste su una cosa pratica: siccome il significato lo portano le
-particelle, i set possono muoversi.
+L'ordine più normale è topic - oggetto - verbo, ma le particelle permettono di
+muovere i blocchi senza cambiare il rapporto grammaticale.
 
 :::example_sentence
 jp: >-
@@ -77,13 +69,13 @@ translation_it: >-
   Un cristallo, io vedo.
 :::
 
-La guida dice che la versione normale resta `soggetto - oggetto - verbo`, ma le
-altre non cambiano il significato grammaticale. Per leggere il manga, quindi,
-non cercare subito l'ordine italiano: cerca `は`, `を`, `に`, `が`.
+Queste frasi suonano marcate, ma restano leggibili perché `は` e `を` tengono i
+blocchi separati. Quando nel manga una battuta sembra avere un ordine strano,
+non rimetterla subito in italiano: prima trova le particelle.
 
-## Niente spazi: trovi le particelle
+## Niente spazi
 
-Quando la guida toglie gli spazi, usa questa frase:
+Quando gli spazi spariscono, le particelle diventano i punti di taglio.
 
 :::example_sentence
 jp: >-
@@ -92,19 +84,19 @@ translation_it: >-
   Io vedo un cristallo / vedo cristalli.
 :::
 
-Il metodo è:
+La frase si divide così:
 
-- individua `は`: `{{私|わたし}}は`.
-- individua `を`: `クリスタルを`.
-- lascia il verbo finale da solo: `{{見|み}}る`.
+- `{{私|わたし}}は`
+- `クリスタルを`
+- `{{見|み}}る`
 
-Questa è la ragione per cui le frasi brevi di Crystal Hunters sono leggibili
-anche quando mescolano kanji, kana e katakana.
+Lo stesso metodo funziona con le prime scene del manga. Se compare
+[{{剣|けん}}](term:term-ken), guarda subito la particella:
+`{{剣|けん}}を` indica la spada come oggetto di un'azione.
 
-## に: luogo e movimento
+## に: luogo o direzione
 
-La guida presenta `に` come particella per luogo o movimento. Può rendere "in",
-"a", "su", "verso", a seconda del predicato.
+`に` marca un punto, un luogo o una destinazione.
 
 :::example_sentence
 jp: >-
@@ -113,9 +105,7 @@ translation_it: >-
   Io sono nel truck.
 :::
 
-Qui `トラックに` è il luogo, e `いる` dice che lì c'è un essere vivente.
-
-Seconda frase guida:
+`トラックに` è il luogo. `いる` si usa perché il soggetto è un essere vivente.
 
 :::example_sentence
 jp: >-
@@ -124,17 +114,13 @@ translation_it: >-
   Io vado laggiù.
 :::
 
-Qui `あそこに` non è "dentro laggiù": è la destinazione del movimento. Nel manga
-la stessa struttura torna ogni volta che qualcuno va verso un posto, una scena o
-un obiettivo.
+Con un verbo di movimento, `に` indica la destinazione. La stessa particella può
+quindi rendere "in" o "verso"; bisogna leggere il verbo finale.
 
-## が con いる, 好きだ e 見える
+## が con いる, 好き e 見える
 
-La guida evita la spiegazione completa di `は` contro `が` e restringe il campo:
-in Crystal Hunters `が` funziona soprattutto con alcuni predicati, quasi come se
-sostituisse `を`.
-
-Primo caso: esistenza con `いる`.
+`が` può marcare il soggetto, ma in queste prime strutture conviene leggerlo
+come parte di un blocco con certi predicati.
 
 :::example_sentence
 jp: >-
@@ -150,10 +136,12 @@ translation_it: >-
   Laggiù c'è un mostro.
 :::
 
-La guida tratta `{{怪物|かいぶつ}}がいる` come un unico "が set". Poi puoi mettere
-`あそこに` prima o dopo per indicare dove.
+`{{怪物|かいぶつ}}がいる` funziona come un blocco di esistenza. Aggiungendo
+`あそこに`, si specifica dove si trova il mostro.
 
-Secondo caso: aggettivi che in inglese sembrano verbi.
+Con `{{好|す}}き`, il giapponese non usa un verbo "piacere" come l'italiano.
+`{{好|す}}き` si comporta come un aggettivo nominale, e l'oggetto che piace
+entra con `が`.
 
 :::example_sentence
 jp: >-
@@ -162,11 +150,8 @@ translation_it: >-
   Mi piacciono i cristalli.
 :::
 
-`{{好|す}}き` non è "to like" come verbo. È più vicino a "gradito". Per farlo
-funzionare come predicato, la guida lo combina con `だ`: `{{好|す}}きだ`.
-Per questo il set è `クリスタルが{{好|す}}きだ`.
-
-Terzo caso: `{{見|み}}える`.
+Anche [{{見|み}}える](term:term-mieru), che verrà studiato nella prossima
+sezione, usa spesso `が` quando c'è qualcosa che si riesce a vedere.
 
 :::example_sentence
 jp: >-
@@ -175,7 +160,7 @@ translation_it: >-
   Riesco a vedere un mostro.
 :::
 
-Se togli l'oggetto, la guida mostra che cambia la struttura:
+Se l'oggetto sparisce, resta una frase più generale:
 
 :::example_sentence
 jp: >-
@@ -184,28 +169,53 @@ translation_it: >-
   Riesco a vedere.
 :::
 
-Ma questa frase è strana con `が`:
+`{{私|わたし}}が{{見|み}}える`, invece, significa che "io" sono ciò che si vede:
+può voler dire "sono visibile" o "riesco a vedere me stesso".
+
+## Spada, pronomi e persone
+
+[{{剣|けん}}](term:term-ken) è una parola centrale fin dall'inizio: la spada è
+un oggetto che può essere visto, preso, usato o recuperato. Quando appare con
+`を`, aspettati un verbo d'azione.
+
+[{{俺|おれ}}](term:term-ore) e [{{僕|ぼく}}](term:term-boku) significano
+entrambi "io", ma non hanno lo stesso tono. [{{俺|おれ}}](term:term-ore) è più
+ruvido e diretto; [{{僕|ぼく}}](term:term-boku) è più morbido. [{{君|きみ}}](term:term-kimi)
+è "tu" e segnala chiaramente che una battuta è rivolta a qualcuno.
+
+[{{一人|ひとり}}](term:term-hitori) e [{{二人|ふたり}}](term:term-futari)
+contano persone. Non si leggono come `一` + classificatore generico: sono forme
+specifiche, "una persona / da solo" e "due persone / in due".
+
+[{{男|おとこ}}](term:term-otoko) significa uomo o maschio. Nel manga è una
+parola concreta per identificare una persona in scena; non porta da sola un
+tono particolare, ma può diventare più ruvida quando è combinata con parole
+come `{{野郎|やろう}}` più avanti.
+
+## Prime azioni fisiche
+
+[{{殴|なぐ}}る](term:term-naguru) è colpire con forza, spesso "prendere a
+pugni". In una frase con `を`, il blocco prima di `を` è chi o cosa viene
+colpito.
+
+[{{取|と}}り{{戻|もど}}す](term:term-torimodosu) combina l'idea di prendere con
+quella di riportare indietro. Se l'oggetto è [{{剣|けん}}](term:term-ken), la
+lettura naturale è "recuperare la spada" o "riprendersi la spada".
+
+[{{落|お}}ち{{込|こ}}む](term:term-ochikomu) descrive un calo emotivo:
+abbattersi, sentirsi giù. È utile perché il manga non presenta solo azioni di
+combattimento; presenta anche reazioni.
+
+[{{止|と}}まる](term:term-tomaru) è intransitivo: qualcosa o qualcuno si ferma.
+Non è "fermare qualcosa"; quello sarà `{{止|と}}める`. La differenza è:
 
 :::example_sentence
 jp: >-
-  {{私|わたし}}が{{見|み}}える。
+  トラックが{{止|と}}まる。
 translation_it: >-
-  Io sono visibile / riesco a vedere me stesso.
+  Il truck si ferma.
 :::
 
-Non devi trasformare ogni cosa in `が`. In Crystal Hunters, usa `が` quando il
-predicato lo richiede: `いる`, `ある`, `{{好|す}}きだ`, `ほしい`,
-`{{見|み}}える` e, più avanti, le forme potenziali.
-
-## Nel Book 1
-
-Per questa prima parte del manga, il lessico nuovo resta:
-
-- [{{剣|けん}}](term:term-ken), [{{取|と}}り{{戻|もど}}す](term:term-torimodosu): oggetto e azione principale.
-- [{{俺|おれ}}](term:term-ore), [{{僕|ぼく}}](term:term-boku), [{{君|きみ}}](term:term-kimi): pronomi che aiutano a riconoscere il tono del parlante.
-- [{{一人|ひとり}}](term:term-hitori), [{{二人|ふたり}}](term:term-futari): conteggio delle persone, non numeri generici.
-- [{{止|と}}まる](term:term-tomaru), [{{殴|なぐ}}る](term:term-naguru), [{{落|お}}ち{{込|こ}}む](term:term-ochikomu): reazioni fisiche o emotive della scena.
-
-Quando trovi una frase con la spada, leggila nello stesso modo della guida:
-`{{剣|けん}}を` è il blocco oggetto; il verbo finale ti dice se la spada viene
-vista, presa, recuperata o usata.
+Una prima lettura solida nasce da questi passaggi: trova le particelle, separa
+i blocchi, poi leggi il verbo. Se la spada è `{{剣|けん}}を`, il verbo finale
+decide se viene vista, presa, recuperata, usata o colpita.

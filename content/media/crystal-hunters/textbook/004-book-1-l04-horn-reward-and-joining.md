@@ -2,7 +2,7 @@
 id: lesson-crystal-hunters-book-1-l04-horn-reward-and-joining
 media_id: media-crystal-hunters
 slug: book-1-l04-horn-reward-and-joining
-title: Book 1 L04 - Volitivo, potenziale e particolarità utili
+title: Book 1 L04 - Potenziale, dimostrativi e caccia al corno
 order: 40
 segment_ref: book-1
 difficulty: n5
@@ -10,19 +10,18 @@ status: active
 tags: [crystal-hunters, book-1, manga, fantasy]
 prerequisites: [lesson-crystal-hunters-book-1-l03-bow-girl-chase-and-rescue]
 summary: >-
-  Chiudere la guida con forme in -ou, potenziale, dimostrativi, のところ, possesso e plurali.
+  Chiudere il volume con forma volitiva, potenziale, dimostrativi, possesso, plurali e lessico della caccia al corno.
 ---
 
-# Lezione 4 - Forme finali e "quirks" della guida
+# Potenziale, dimostrativi e caccia al corno
 
-Questa lezione chiude il tutorial del PDF. Sono punti meno "base" e più
-operativi: proposta, possibilità, dimostrativi, andare verso persone/cose,
-possedere, sapere/capire e plurali umani.
+L'ultima parte unisce forme verbali più flessibili e parole legate alla caccia:
+ricompensa, inseguimento, difesa, restituzione e appartenenza a un gruppo.
 
-## Forma "let's": -ou
+## Forma volitiva: facciamo
 
-La guida presenta questa forma come il modo per dire "facciamo...". È facile da
-riconoscere perché finisce in suono `ou`.
+La forma volitiva propone un'azione: "andiamo", "facciamo", "proviamo a".
+Molte forme finiscono con il suono `ou`.
 
 :::example_sentence
 jp: >-
@@ -31,7 +30,7 @@ translation_it: >-
   Andiamo laggiù.
 :::
 
-Con verbi in `える` / alcuni `いる`, la guida usa `よう`:
+Con molti verbi in `える` e alcuni in `いる`, si usa `よう`.
 
 :::example_sentence
 jp: >-
@@ -40,9 +39,7 @@ translation_it: >-
   Scappiamo!
 :::
 
-Il `よ` rende la proposta più spinta: non è solo grammatica, è tono.
-
-Se la forma è usata in domanda, diventa "shall we?":
+Se la forma volitiva è usata in domanda, diventa una proposta più aperta:
 
 :::example_sentence
 jp: >-
@@ -51,10 +48,10 @@ translation_it: >-
   Diventiamo compagni / alleati?
 :::
 
-## Potenziale: poter fare
+## Forma potenziale: poter fare
 
-La guida chiama questa forma "can" o "potential". Con un oggetto, rientra nei
-`が set` della prima lezione.
+La forma potenziale indica che qualcuno può fare qualcosa. Con un oggetto, la
+cosa che si può usare o vedere entra spesso con `が`.
 
 :::example_sentence
 jp: >-
@@ -63,7 +60,7 @@ translation_it: >-
   Posso usare macchine.
 :::
 
-Per verbi in `える` / alcuni `いる`, la guida usa `られる`:
+Con molti verbi in `える` e alcuni in `いる`, compare `られる`.
 
 :::example_sentence
 jp: >-
@@ -72,11 +69,7 @@ translation_it: >-
   Posso scappare!
 :::
 
-La difficoltà non è il significato, ma il riconoscimento: molte forme
-potenziali finiscono in `える`, e alcune forme dizionario finiscono già in
-`える`. Devi sapere la forma base.
-
-La guida fa anche vedere una catena di forme:
+La forma potenziale può impilarsi con altre forme.
 
 :::example_sentence
 jp: >-
@@ -106,13 +99,14 @@ translation_it: >-
   Sono stato felice di averti potuto incontrare.
 :::
 
-Questa è la parte più utile della guida sulle coniugazioni: non sono pezzi
-isolati, si impilano.
+`{{会|あ}}える` diventa `{{会|あ}}えて`, poi si collega a
+`{{嬉|うれ}}しい`, e infine `{{嬉|うれ}}しい` va al passato:
+`{{嬉|うれ}}しかった`.
 
-## この / これ, その / それ, あの / あれ
+## Questo, quello e quello laggiù
 
-La guida distingue i dimostrativi che specificano un nome da quelli che stanno
-da soli.
+`この`, `その`, `あの` stanno davanti a un nome. `これ`, `それ`, `あれ` stanno da
+soli.
 
 :::example_sentence
 jp: >-
@@ -128,10 +122,8 @@ translation_it: >-
   Mi piace questo.
 :::
 
-`この` richiede un nome dopo. `これ` sta da solo.
-
-Stesso schema per `その` / `それ`, vicino all'interlocutore o comunque non
-lontano:
+`その` e `それ` indicano "quello" vicino all'interlocutore o comunque non
+lontano.
 
 :::example_sentence
 jp: >-
@@ -147,13 +139,13 @@ translation_it: >-
   Voglio quello.
 :::
 
-Per qualcosa laggiù:
+`あの` indica qualcosa laggiù o distante.
 
 :::example_sentence
 jp: >-
-  あのところに{{行|い}}く。
+  あそこに{{行|い}}く。
 translation_it: >-
-  Andrò in quel posto laggiù.
+  Andrò laggiù.
 :::
 
 :::example_sentence
@@ -163,9 +155,9 @@ translation_it: >-
   Quella persona laggiù è triste.
 :::
 
-## の che unisce parole
+## の che crea parole
 
-La guida torna su `の` per evitare una lettura troppo letterale.
+`の` non indica sempre possesso. Può unire due nomi e creare una parola composta.
 
 :::example_sentence
 jp: >-
@@ -181,23 +173,22 @@ translation_it: >-
   ragazzo.
 :::
 
-Non leggere automaticamente "figlio della donna" o "figlio dell'uomo". Qui `の`
-lega due nomi per fare una parola composta.
-
-La guida segnala però l'ambiguità:
+Con un dimostrativo davanti, la frase può diventare ambigua.
 
 :::example_sentence
 jp: >-
   その{{男|おとこ}}の{{子|こ}}
 translation_it: >-
-  quel ragazzo / il figlio di quell'uomo, secondo contesto.
+  quel ragazzo / il figlio di quell'uomo.
 :::
 
-## Andare verso persone o cose: のところ
+La lettura dipende dal contesto.
 
-In inglese puoi dire "go to Kal" o "go to the monster". La guida dice che in
-giapponese `カルに{{行|い}}く` o `{{怪物|かいぶつ}}に{{行|い}}く` suonano strani,
-perché una persona o un mostro non sono un posto. Si aggiunge `のところ`.
+## Andare da qualcuno: のところ
+
+Una persona o un mostro non sono un luogo. Per dire che qualcuno va verso una
+persona, un nemico o una cosa, si usa spesso `のところ`: il posto di quella
+persona o cosa.
 
 :::example_sentence
 jp: >-
@@ -206,12 +197,12 @@ translation_it: >-
   Kal va dal mostro / verso il punto in cui si trova il mostro.
 :::
 
-Nel manga questa distinzione aiuta quando qualcuno si dirige verso un nemico,
-non verso un luogo geografico.
+`{{怪物|かいぶつ}}に{{行|い}}く` suonerebbe come se il mostro fosse un luogo.
+`{{怪物|かいぶつ}}のところに{{行|い}}く` risolve il problema.
 
-## Avere addosso vs avere in generale
+## Avere con sé e avere in generale
 
-La guida distingue `{{持|も}}っている` e `ある`.
+`{{持|も}}っている` significa avere addosso, avere con sé, tenere.
 
 :::example_sentence
 jp: >-
@@ -220,7 +211,7 @@ translation_it: >-
   Bansom ha una macchina con sé / sta tenendo una macchina.
 :::
 
-Per possesso generale:
+Per avere qualcosa in generale, si usa `ある`.
 
 :::example_sentence
 jp: >-
@@ -229,28 +220,23 @@ translation_it: >-
   Ho soldi.
 :::
 
-`{{持|も}}っている` implica che la cosa è con te, sulla tua persona. `ある` può
-essere possesso generale, anche se non ce l'hai fisicamente in mano.
+I soldi possono essere con te, a casa o in generale disponibili: `ある` non dice
+che li stai tenendo fisicamente.
 
 ## 分かる e 知る
 
-La guida traccia la distinzione così:
-
-- `{{分|わ}}かる`: qualcosa passa da non chiaro a chiaro.
-- `{{知|し}}る`: qualcosa passa da sconosciuto a conosciuto.
-
-Quindi:
+`{{分|わ}}かる` indica che qualcosa diventa chiaro. `{{知|し}}る` indica che una
+informazione entra nella conoscenza.
 
 - `{{分|わ}}からない` = non capisco / non sono sicuro.
-- `{{知|し}}らない` = non lo so / non ne ho informazione.
+- `{{知|し}}らない` = non lo so / non ho quell'informazione.
 
-È una distinzione importante nei dialoghi: uno può "non sapere" una cosa perché
-non l'ha mai sentita, oppure "non capire" ciò che qualcuno sta spiegando.
+Questa distinzione è utile nei dialoghi: non capire una spiegazione e non avere
+mai sentito una cosa non sono lo stesso stato mentale.
 
-## Plurali umani: たち e ら
+## Plurali umani
 
-La guida mostra due suffissi con lo stesso valore generale ma distribuzione
-diversa.
+`{{達|たち}}` crea gruppi di persone.
 
 :::example_sentence
 jp: >-
@@ -263,46 +249,144 @@ translation_it: >-
 jp: >-
   {{彼女|かのじょ}} + {{達|たち}} = {{彼女|かのじょ}}{{達|たち}}
 translation_it: >-
-  loro, gruppo di ragazze/donne.
+  loro, gruppo di ragazze o donne.
 :::
 
-Per `{{彼|かれ}}`, la guida usa `ら`:
+Con `{{彼|かれ}}`, il plurale più naturale è `ら`.
 
 :::example_sentence
 jp: >-
   {{彼|かれ}} + ら = {{彼|かれ}}ら
 translation_it: >-
-  loro, gruppo maschile o misto con almeno un maschio.
+  loro, gruppo maschile o misto.
 :::
 
-Se il gruppo è prevalentemente femminile ma con uno o due maschi, la guida
-consiglia una forma più neutra:
+Per un gruppo misto o non definito, `あの{{人|ひと}}{{達|たち}}` significa
+"quelle persone".
+
+## Vedere: 見える e 見られる
+
+`{{見|み}}える` è "si vede / riesco a vedere" nel momento. `{{見|み}}られる`
+è il potenziale di `{{見|み}}る`, quindi "posso vedere" in certe condizioni.
+Per questa parte basta riconoscere bene `{{見|み}}える`: quando qualcosa entra
+nel campo visivo, spesso appare con `が`.
+
+## Corno e ricompensa
+
+[{{角|つの}}](term:term-tsuno) è il corno. È l'oggetto concreto attorno a cui
+si muove la caccia.
+
+[{{懸賞金|けんしょうきん}}](term:term-kenshoukin) è la ricompensa o taglia. La
+parola contiene l'idea di denaro messo in palio per un obiettivo.
 
 :::example_sentence
 jp: >-
-  あの + {{人|ひと}} + {{達|たち}} = あの{{人|ひと}}{{達|たち}}
+  {{角|つの}}に{{懸賞金|けんしょうきん}}がある。
 translation_it: >-
-  quelle persone.
+  C'è una ricompensa sul corno.
 :::
 
-## 見える e 見られる
+[{{追|お}}う](term:term-ou) è inseguire. [{{追|お}}いつく](term:term-oitsuku),
+già studiato, è raggiungere dopo l'inseguimento. Uno descrive il processo,
+l'altro il risultato.
 
-La guida chiude chiarendo una possibile confusione: `{{見|み}}える` vuol dire
-"si vede / riesco a vedere" nel momento, mentre `{{見|み}}られる` è il
-potenziale di `{{見|み}}る`, quindi più vicino a "posso vedere in certe
-condizioni". Crystal Hunters non usa `{{見|み}}られる`, quindi per Book 1 basta
-riconoscere bene [{{見|み}}える](term:term-mieru).
+[{{引|ひ}}っかかる](term:term-hikkakaru) è restare impigliato o bloccato. Può
+essere fisico, come qualcosa che si incastra, o più figurato in altri contesti.
 
-## Nel Book 1
+[{{飛|と}}びかかる](term:term-tobikakaru) è balzare contro qualcuno. Come
+[{{切|き}}りかかる](term:term-kirikakaru), contiene `かかる`: l'azione parte
+verso un bersaglio.
 
-Il finale del volume usa lessico di obiettivo, pericolo e gruppo:
+:::example_sentence
+jp: >-
+  {{男|おとこ}}が{{飛|と}}びかかる。
+translation_it: >-
+  L'uomo balza addosso.
+:::
 
-- [{{角|つの}}](term:term-tsuno), [{{懸賞金|けんしょうきん}}](term:term-kenshoukin): ciò che motiva la caccia.
-- [{{追|お}}う](term:term-ou), [{{飛|と}}びかかる](term:term-tobikakaru), [{{引|ひ}}っかかる](term:term-hikkakaru): inseguimento e collisione.
-- [{{身|み}}を{{守|まも}}る](term:term-mi-o-mamoru), [{{返|かえ}}す](term:term-kaesu), [{{支|ささ}}える](term:term-sasaeru): difesa, restituzione e supporto.
-- [{{矢|や}}](term:term-ya-arrow), [{{野郎|やろう}}](term:term-yarou), [{{家|いえ}}](term:term-ie), [{{一員|いちいん}}](term:term-ichiin): oggetti e rapporti della chiusura.
+## Donna, difesa e restituzione
 
-Per leggere il finale, tieni insieme le due linee del PDF: forme verbali
-impilate (`{{会|あ}}える` -> `{{会|あ}}えて` -> `{{会|あ}}えて{{嬉|うれ}}しかった`)
-e piccoli connettori (`の`, `ところ`, `{{達|たち}}`) che cambiano molto la
-frase senza sembrare parole "importanti".
+[{{女|おんな}}](term:term-onna) è donna. È più generale di
+[{{女|おんな}}の{{子|こ}}](term:term-onna-no-ko), che indica ragazza o bambina.
+
+[{{身|み}}を{{守|まも}}る](term:term-mi-o-mamoru) significa difendersi,
+proteggere se stessi. `{{身|み}}` è il corpo, la propria persona; `{{守|まも}}る`
+è proteggere.
+
+:::example_sentence
+jp: >-
+  {{身|み}}を{{守|まも}}る。
+translation_it: >-
+  Mi difendo / proteggo me stesso.
+:::
+
+[{{返|かえ}}す](term:term-kaesu) è restituire, dare indietro. Se l'oggetto è
+un'arma o un oggetto preso, `{{返|かえ}}す` chiude l'azione riportandolo al
+proprietario o alla posizione precedente.
+
+:::example_sentence
+jp: >-
+  {{剣|けん}}を{{返|かえ}}す。
+translation_it: >-
+  Restituisco la spada.
+:::
+
+## Frecce, insulto, supporto e appartenenza
+
+[{{矢|や}}](term:term-ya-arrow) è la freccia. La differenza con
+[{{弓|ゆみ}}](term:term-yumi) è netta: [{{弓|ゆみ}}](term:term-yumi) è l'arma,
+[{{矢|や}}](term:term-ya-arrow) è ciò che viene scoccato.
+
+[{{野郎|やろう}}](term:term-yarou) è un modo ruvido di riferirsi a un uomo:
+tizio, tipo, bastardo, secondo tono e contesto. Non è una parola neutra.
+
+:::example_sentence
+jp: >-
+  あの{{野郎|やろう}}が{{逃|に}}げる。
+translation_it: >-
+  Quel tizio scappa.
+:::
+
+In una scena di scontro, [{{野郎|やろう}}](term:term-yarou) non serve solo a
+identificare un uomo: colora la battuta con irritazione o disprezzo.
+
+[{{支|ささ}}える](term:term-sasaeru) è sostenere, sorreggere. Può essere fisico,
+come reggere qualcuno, o più astratto in altri contesti.
+
+:::example_sentence
+jp: >-
+  {{女|おんな}}を{{支|ささ}}える。
+translation_it: >-
+  Sorreggo la donna.
+:::
+
+Qui `を` marca la persona sostenuta. Il verbo descrive il supporto fisico, non
+solo incoraggiamento.
+
+[{{家|いえ}}](term:term-ie) è casa. Quando compare con `に{{行|い}}く`, indica
+la destinazione; con `にある`, indica il luogo in cui qualcosa si trova.
+
+:::example_sentence
+jp: >-
+  {{家|いえ}}に{{行|い}}く。
+translation_it: >-
+  Vado a casa.
+:::
+
+[{{一員|いちいん}}](term:term-ichiin) significa membro di un gruppo. `{{一|いち}}`
+indica "uno", e `{{員|いん}}` indica una persona appartenente a un insieme.
+
+:::example_sentence
+jp: >-
+  {{私|わたし}}は{{一員|いちいん}}だ。
+translation_it: >-
+  Io sono un membro.
+:::
+
+La chiusura del volume mette insieme tre linee: il bersaglio della caccia
+([{{角|つの}}](term:term-tsuno) e [{{懸賞金|けんしょうきん}}](term:term-kenshoukin)),
+il pericolo fisico ([{{追|お}}う](term:term-ou),
+[{{飛|と}}びかかる](term:term-tobikakaru),
+[{{身|み}}を{{守|まも}}る](term:term-mi-o-mamoru)) e il rapporto tra personaggi
+([{{返|かえ}}す](term:term-kaesu), [{{支|ささ}}える](term:term-sasaeru),
+[{{一員|いちいん}}](term:term-ichiin)).
