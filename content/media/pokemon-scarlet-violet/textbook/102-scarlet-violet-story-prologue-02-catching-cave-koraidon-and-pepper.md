@@ -10,301 +10,384 @@ status: active
 tags: [pokemon, scarlet-violet, prologue, story, capture]
 prerequisites: []
 summary: >-
-  Preparare il giapponese del tutorial di cattura, della grotta sotto il faro,
-  del primo aiuto di Koraidon / Miraidon e del primo incontro con Pepper.
+  Leggere cattura, avvisi di percorso, grotta e Pepper distinguendo cattura,
+  stato indebolito, controllo e parlato ruvido.
 ---
 
-# Obiettivo
+# Dal tutorial di cattura alla grotta: pericolo, stato e tono
 
-Capire il giapponese del blocco che va dall'uscita da casa verso
-コサジの{{小道|こみち}} fino al faro: il
-primo tutorial di cattura, le avvertenze di Nemona sul percorso, la scena nella
-{{入|い}}り{{江|え}}の ほら{{穴|あな}}, l'intervento del
-Pokemon misterioso e il primo dialogo ruvido con Pepper.
+Dopo il primo incontro con lo starter, Scarlet / Violet smette di essere solo
+presentazione e diventa campo di gioco. Il tratto verso
+コサジの{{小道|こみち}} e il faro ti fa leggere istruzioni di cattura, avvisi di
+percorso, indizi sonori e spiegazioni sullo stato del Pokemon misterioso che
+compare nella grotta.
 
-## Contesto
-
-Questo capitolo è il vero ponte tra introduzione narrativa e gioco reale. Dopo
-la scelta dello starter e il primo match, Scarlet / Violet ti chiede di fare
-quello che farai per tutto il resto dell'avventura: affrontare
-[{{野生|やせい}}](term:term-yasei) Pokemon, capire quando
-[{{回復|かいふく}}](term:term-kaifuku), muoverti sul campo e leggere dialoghi che
-non spiegano solo la storia ma anche che cosa devi fare subito.
-
-Qui cambiano anche i registri. Nemona parla in modo amichevole e didattico,
-quasi da compagna che ti accompagna passo passo. Pepper, invece, entra con un
-parlato più spigoloso, contratto e sospettoso. Il risultato è utile da studiare
-perché il gioco ti mostra due tipi di giapponese molto frequenti: tutorial
-morbido e dialogo caratteriale.
+Il cambio di voce è netto. Nemona parla come una compagna che ti mette in mano
+strumenti e procedure; Pepper entra invece con frasi più tagliate, sospettose e
+ruvide. Per seguire bene la scena devi distinguere quando il giapponese ti sta
+dicendo "prova questa azione", quando ti segnala un pericolo reale, quando
+descrive uno stato fisico e quando lascia emergere il carattere del personaggio.
 
 ## Termini chiave
 
-- [{{捕獲|ほかく}}](term:term-hokaku)
-- [モンスターボール](term:term-monster-ball)
-- [{{弱|よわ}}らせる](term:term-yowaraseru)
-- [{{野生|やせい}}](term:term-yasei)
-- [{{気|き}}をつける](term:term-ki-o-tsukeru)
-- [{{生息|せいそく}}する](term:term-seisoku-suru)
-- [{{鳴|な}}き{{声|ごえ}}](term:term-nakigoe)
-- [わざマシン](term:term-waza-machine)
-- [{{姿|すがた}}](term:term-sugata)
-- [{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu)
-- [へたりこむ](term:term-hetarikomu)
-- [{{制御|せいぎょ}}する](term:term-seigyo-suru)
-- [{{災難|さいなん}}](term:term-sainan)
-- [{{思|おも}}いやられる](term:term-omoiyarareru)
+- [{{捕獲|ほかく}}](term:term-hokaku) — cattura come attività di gioco
+- [{{捕|つか}}まえる](term:term-tsukamaeru) — catturare / prendere
+- [モンスターボール](term:term-monster-ball) — Pokeball / Monster Ball
+- [{{弱|よわ}}らせる](term:term-yowaraseru) — indebolire senza arrivare per forza al KO
+- [{{野生|やせい}}](term:term-yasei) — selvatico / wild
+- [{{気|き}}をつける](term:term-ki-o-tsukeru) — fare attenzione
+- [{{生息|せいそく}}する](term:term-seisoku-suru) — vivere stabilmente in un habitat
+- [{{鳴|な}}き{{声|ごえ}}](term:term-nakigoe) — verso / richiamo
+- [{{姿|すがた}}](term:term-sugata) — aspetto, forma o stato visibile
+- [{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu) — esaurire tutte le forze
+- [へたりこむ](term:term-hetarikomu) — accasciarsi / crollare sul posto
+- [{{制御|せいぎょ}}する](term:term-seigyo-suru) — controllare / tenere sotto controllo
+- [{{災難|さいなん}}](term:term-sainan) — guaio / brutta sorte
+- [{{思|おも}}いやられる](term:term-omoiyarareru) — lasciare presagire male
+- [わざマシン](term:term-waza-machine) — MT / oggetto per insegnare una mossa
+
+## Espressioni ricorrenti
+
+- `{{戦|たたか}}ってみて` — prova a combattere e vedi come funziona
+- `{{入|はい}}らないように` — fai in modo di non entrare / non avvicinarti troppo
+- `この {{姿|すがた}}じゃ` — in questa forma, in questo stato
+- `{{見|み}}れば {{見|み}}るほど` — più guardi, più aumenta l'impressione
+- `{{戦|たたか}}えねえ` / `{{持|も}}ってけ` — parlato contratto e brusco
 
 ## Pattern grammaticali chiave
 
-- [～てあげる](grammar:grammar-te-ageru)
-- [～ないように](grammar:grammar-nai-you-ni)
-- [～ながら](grammar:grammar-nagara)
-- [～てみる](grammar:grammar-te-miru)
-- [～てしまう](grammar:grammar-te-shimau)
-- [～ば ～ほど](grammar:grammar-ba-hodo)
+- [～てあげる](grammar:grammar-te-ageru) — fare qualcosa a favore di qualcuno
+- [～てみる](grammar:grammar-te-miru) — provare a fare e vedere che succede
+- [～ないように](grammar:grammar-nai-you-ni) — fare in modo di non / stare attenti a non
+- [～ながら](grammar:grammar-nagara) — fare una cosa mentre se ne fa un'altra
+- [～てしまう](grammar:grammar-te-shimau) — finire per / completare, spesso con esito indesiderato
+- [～ば ～ほど](grammar:grammar-ba-hodo) — più X accade, più Y aumenta
 
-## Spiegazione
+## Etichette da riconoscere
 
-[{{捕獲|ほかく}}](term:term-hokaku) è la parola che trasforma il primo tratto di
-percorso in tutorial di cattura. Nel dialogo di Nemona non vuol dire
-semplicemente "prendere un Pokemon" nel senso vago del verbo: nomina proprio la
-pratica della cattura come attività di gioco. Quando ti chiede se la
-[{{捕獲|ほかく}}](term:term-hokaku) procede bene, il punto non è solo quanti
-combattimenti hai fatto, ma se stai davvero aggiungendo nuove specie alla
-squadra e alla [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan).
+- コサジの{{小道|こみち}} — il sentiero iniziale verso il faro
+- {{入|い}}り{{江|え}}の ほら{{穴|あな}} — la grotta sotto il faro
+- ペパー — Pepper nel dialogo giapponese
+- Koraidon / Miraidon — il Pokemon misterioso che appare nel prologo
 
-Per questo [モンスターボール](term:term-monster-ball) e
-[{{弱|よわ}}らせる](term:term-yowaraseru) vanno studiati insieme. Il primo è lo
-strumento centrale della scena; il secondo spiega la logica pratica del
-turno. Nel tutorial Pokemon non basta sapere che esiste la Ball: devi capire
-che il gioco vuole prima abbassare gli HP del bersaglio e solo dopo lanciare la
-Ball al momento giusto. [{{弱|よわ}}らせる](term:term-yowaraseru) qui non vuol
-mai dire "sconfiggere del tutto". Vuol dire portare il Pokemon in uno stato in
-cui la cattura diventa più probabile. Questa distinzione evita uno degli errori
-più comuni: leggere il tutorial come se il tuo unico obiettivo fosse vincere la
-lotta.
+---
+
+## 1. Catturare non è solo vincere la lotta
+
+Il primo tutorial di campo usa il lessico della cattura per cambiare il modo in
+cui leggi la battaglia. [{{野生|やせい}}](term:term-yasei) marca il Pokemon come
+incontro di campo, non come avversario narrativo unico; da lì il gioco può
+chiederti di combattere, ridurre gli HP e usare una
+[モンスターボール](term:term-monster-ball). Se leggi solo "vincere", perdi il
+passaggio centrale: il bersaglio deve restare prendibile.
+
+[{{弱|よわ}}らせる](term:term-yowaraseru) nasce da `{{弱|よわ}}い`, "debole", e
+aggiunge l'idea di far diventare debole. Nel tutorial non vuol dire
+"annientare". Vuol dire portare il Pokemon in una condizione in cui la Ball ha
+più senso. Per questo [{{捕獲|ほかく}}](term:term-hokaku) e
+[{{捕|つか}}まえる](term:term-tsukamaeru) lavorano su due livelli diversi:
+[{{捕獲|ほかく}}](term:term-hokaku) è l'attività o il risultato di cattura,
+mentre [{{捕|つか}}まえる](term:term-tsukamaeru) è il verbo dell'azione concreta.
+
+Nemona rende questa procedura più morbida con due pattern. Con
+[～てあげる](grammar:grammar-te-ageru), frasi come `わけてあげる` presentano
+l'azione come aiuto fatto per te: ti dà Ball, spiegazioni o spazio per
+provare. Con [～てみる](grammar:grammar-te-miru), un comando come
+`{{戦|たたか}}ってみて` non è una teoria futura, ma una prova guidata immediata:
+entra in lotta e verifica come funziona la cattura.
 
 :::image
 src: assets/ui/catch-tutorial-monster-ball.webp
 alt: "Tutorial iniziale di cattura con Pokemon selvatico indebolito e opzione di usare una Monster Ball."
 caption: >-
-  Il tutorial di cattura rende visibile la logica di [{{弱|よわ}}らせる](term:term-yowaraseru) prima di lanciare la [モンスターボール](term:term-monster-ball): non devi solo vincere, devi preparare la cattura.
+  Il tutorial mette in sequenza [{{弱|よわ}}らせる](term:term-yowaraseru) e [モンスターボール](term:term-monster-ball): prima rendi il Pokemon catturabile, poi passi dalla lotta alla [{{捕獲|ほかく}}](term:term-hokaku).
 :::
 
-Il tono di Nemona in questa sezione ruota spesso attorno a
-[～てあげる](grammar:grammar-te-ageru). Quando dice che ti insegna come
-catturare o che ti divide qualche [モンスターボール](term:term-monster-ball), il
-pattern aggiunge l'idea di azione fatta a tuo favore. Non stai leggendo un
-manuale impersonale: il gioco costruisce Nemona come compagna che ti sostiene,
-spiega e ti mette in mano gli strumenti minimi per partire. Lo stesso vale per
-[～てみる](grammar:grammar-te-miru): `{{戦|たたか}}ってみて` nel tutorial non è un
-invito astratto a provare un giorno, ma l'istruzione morbida per eseguire subito
-il tuo primo test guidato.
+:::example_sentence
+jp: >-
+  {{野生|やせい}}の ポケモンを {{弱|よわ}}らせてから モンスターボールを
+  {{投|な}}げてみて。
+translation_it: >-
+  Prova a lanciare una Monster Ball dopo aver indebolito il Pokemon selvatico.
+:::
 
-Durante la salita impariamo il linguaggio di allerta.
-[{{気|き}}をつける](term:term-ki-o-tsukeru) vuol dire "fare attenzione". Se
-vuoi ricordarlo bene, puoi pensarlo come "mettere attenzione" su qualcosa. Nei
-dialoghi segnala un pericolo concreto: bordi, dislivelli o Pokemon aggressivi.
+#### 🗺️ Anatomia della frase
 
-Questa espressione si lega bene a
-[～ないように](grammar:grammar-nai-you-ni), che esprime uno scopo al negativo:
-"in modo da non..." o "per evitare di...". Quando Nemona ti dice di non
-entrare nella caverna (`入らないように`), non sta solo parlando in modo prudente:
-ti sta indicando il comportamento corretto per restare nel percorso guidato.
+- `{{野生|やせい}}の ポケモンを` -> bersaglio dell'azione: il Pokemon è un incontro di campo e `を` lo marca come oggetto.
+- `{{弱|よわ}}らせてから` -> sequenza operativa: prima lo fai diventare debole, poi fai l'azione successiva.
+- `モンスターボールを {{投|な}}げてみて` -> invito pratico: `{{投|な}}げる` è lanciare, [～てみる](grammar:grammar-te-miru) trasforma l'ordine in prova guidata.
 
-Anche [{{生息|せいそく}}する](term:term-seisoku-suru) merita attenzione.
-Nel dialogo sulla grotta spiega che certi Pokemon vivono stabilmente in quel
-posto. Questo verbo torna spesso in guide, Pokedex e spiegazioni ambientali: se
-una specie `{{生息|せいそく}}している`, significa che quell'area è il suo habitat e
-quindi puoi aspettarti incontri, pericoli o materiali collegati a quella specie.
-Non è solo una descrizione naturalistica; ti prepara a leggere il territorio
-come spazio di gameplay.
+> [!NOTE]
+> **⚖️ Contrasto operativo:** [{{捕獲|ほかく}}](term:term-hokaku) è il nome della
+> cattura come attività, mentre [{{捕|つか}}まえる](term:term-tsukamaeru) è il verbo
+> "catturare". Se il dialogo parla di `ポケモンの {{捕獲|ほかく}}`, sta guardando
+> il risultato del tuo processo di cattura; se dice `{{捕|つか}}まえてみて`, ti sta
+> chiedendo di fare l'azione.
 
-Nello stesso blocco il suono conta quasi quanto l'immagine. Una
-[{{鳴|な}}き{{声|ごえ}}](term:term-nakigoe) sconosciuta non serve solo a creare
-atmosfera: nel prologo è l'indizio che ti spinge a investigare un punto preciso
-del percorso e ad associare un verso a una presenza reale. Questo dettaglio
-segna la transizione tra esplorazione libera e scena scriptata: il suono fa da
-bersaglio, poi il gioco sposta la visuale sul punto da investigare.
+> [!NOTE]
+> **🧠 Gancio cognitivo:** pensa a [{{弱|よわ}}らせる](term:term-yowaraseru) come a
+> "far diventare debole". Nel frame Pokemon, "debole" non significa per forza
+> "sconfitto": significa pronto per il lancio della Ball.
+
+## 2. Il percorso parla con avvisi, habitat e suoni
+
+Uscendo verso コサジの{{小道|こみち}}, il gioco non ti guida solo con indicatori
+visivi. Il giapponese comincia a segnalare rischio e direzione. Quando Nemona
+usa [{{気|き}}をつける](term:term-ki-o-tsukeru), la frase non è un saluto
+gentile: `{{足元|あしもと}}に {{気|き}}をつけて` ti fa guardare dove cammini, perché
+dirupi, dislivelli e zone non ancora sicure hanno conseguenze reali.
+
+Il pattern [～ないように](grammar:grammar-nai-you-ni) rafforza questo tipo di
+avviso. In una frase come `{{入|はい}}らないように`, `ように` costruisce lo scopo
+e la forma negativa dice quale evento devi evitare: "in modo da non entrare".
+Non è un divieto astratto da cartello; è una barriera linguistica che tiene il
+percorso dentro il tutorial.
+
+Quando il testo parla di Pokemon che
+[{{生息|せいそく}}する](term:term-seisoku-suru), cambia anche la lettura del luogo.
+`いる` direbbe soltanto che qualcosa c'è; [{{生息|せいそく}}する](term:term-seisoku-suru)
+dice che una specie vive stabilmente lì. In una grotta, questa differenza ti
+prepara a incontri coerenti con l'ambiente, non a presenze casuali.
+
+La [{{鳴|な}}き{{声|ごえ}}](term:term-nakigoe) porta lo stesso discorso nel suono.
+`{{鳴|な}}く` è emettere un verso, `{{声|ごえ}}` è la voce o il suono; insieme
+diventano il richiamo che ti spinge a guardare sotto il dirupo. Il gioco usa il
+suono come indizio narrativo, ma la parola ti dice anche come interpretarlo:
+non rumore generico, bensì traccia di una presenza viva.
 
 :::image
 src: assets/story/inlet-cave-houndour-warning.webp
 alt: "Area della grotta iniziale vicino al faro con ambiente roccioso e Pokemon selvatici del luogo."
 caption: >-
-  Un'immagine della grotta o dell'area vicina al faro rende [{{生息|せいそく}}する](term:term-seisoku-suru) un'informazione di gameplay: certe specie appartengono davvero a quel luogo.
+  La grotta rende concreto [{{生息|せいそく}}する](term:term-seisoku-suru): il testo non dice solo che ci sono Pokemon, ma che quell'area è il loro habitat.
 :::
 
-Il pattern [～ながら](grammar:grammar-nagara) entra bene nella frase in cui il
-percorso verso il faro continua combattendo e catturando. In Pokemon è molto
-produttivo perché il gioco fa spesso due cose insieme: esplori mentre alleni la
-squadra, avanzi mentre raccogli specie nuove, leggi una spiegazione mentre stai
-già facendo l'azione richiesta. Se capisci [～ながら](grammar:grammar-nagara),
-smetti di vedere il percorso come una serie di blocchi separati e leggi meglio
-la logica del campo aperto.
+:::example_sentence
+jp: >-
+  {{鳴|な}}き{{声|ごえ}}が {{聞|き}}こえても、{{危|あぶ}}ない ポケモンが
+  {{生息|せいそく}}している {{場所|ばしょ}}には {{入|はい}}らないように。
+translation_it: >-
+  Anche se senti un verso, fai in modo di non entrare in luoghi dove vivono
+  Pokemon pericolosi.
+:::
 
-La scena nella grotta sposta il focus dalla cattura al mistero. Qui
-[{{姿|すがた}}](term:term-sugata) è decisivo. Nel dialogo con Nemona e Pepper non
-indica solo l'aspetto esteriore del Pokemon misterioso: segnala il suo stato
-attuale, cioè la forma indebolita in cui si trova dopo avere consumato la sua
-forza. Per questo la frase `この {{姿|すがた}}じゃ {{戦|たたか}}えねえ` va letta come
-"in questo stato non può ancora combattere", non come un commento estetico.
-[{{姿|すがた}}](term:term-sugata) tornerà più avanti ogni volta che il gioco parla
-di forme, cambiamenti o condizioni speciali: qui introduce già una differenza di
-stato con conseguenze di battaglia.
+#### 🗺️ Anatomia della frase
 
-Per leggere fino in fondo questa scena conviene agganciare anche due espressioni
-molto concrete: [{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu)
-e [へたりこむ](term:term-hetarikomu). La prima spiega perché il leggendario è
-arrivato al limite; la seconda rende visibile il crollo subito dopo averti
-aiutato. Insieme a [{{姿|すがた}}](term:term-sugata), queste forme ti fanno leggere
-la scena come esaurimento reale di risorse, non come semplice posa drammatica.
+- `{{鳴|な}}き{{声|ごえ}}が {{聞|き}}こえても` -> concessione: anche se il suono si sente, non decide da solo l'azione corretta.
+- `{{危|あぶ}}ない ポケモンが {{生息|せいそく}}している {{場所|ばしょ}}` -> luogo qualificato: non è un posto qualunque, è un habitat di Pokemon pericolosi.
+- `{{入|はい}}らないように` -> prevenzione: [～ないように](grammar:grammar-nai-you-ni) indica il comportamento da evitare.
+
+> [!WARNING]
+> **⚖️ `いる` vs [{{生息|せいそく}}する](term:term-seisoku-suru):** `いる` segnala
+> semplice presenza. [{{生息|せいそく}}する](term:term-seisoku-suru) lega una specie a
+> un habitat. Se il gioco usa [{{生息|せいそく}}する](term:term-seisoku-suru), il
+> luogo diventa informazione di esplorazione: lì puoi aspettarti incontri e
+> rischi legati a quella specie.
+
+Il movimento verso il faro si legge bene anche con
+[～ながら](grammar:grammar-nagara). Una frase come
+`ポケモンを {{捕|つか}}まえながら {{進|すす}}む` non divide cattura e spostamento in
+due scene separate: dice che avanzi facendo catture lungo la strada. È una
+struttura che aderisce bene a Scarlet / Violet, dove esplorazione, raccolta e
+lotta si sovrappongono nello stesso tratto di campo.
+
+:::example_sentence
+jp: >-
+  ポケモンを {{捕|つか}}まえながら {{灯台|とうだい}}へ {{向|む}}かおう。
+translation_it: >-
+  Andiamo verso il faro catturando Pokemon lungo la strada.
+:::
+
+## 3. La grotta trasforma l'aspetto in stato
+
+Nella {{入|い}}り{{江|え}}の ほら{{穴|あな}}, il lessico smette di parlare solo di
+percorso e comincia a spiegare che cosa succede al Pokemon misterioso.
+[{{姿|すがた}}](term:term-sugata) è la parola che cambia la lettura: non indica
+solo "aspetto" come apparenza esterna, ma una forma o condizione visibile che
+cambia ciò che il Pokemon può fare.
+
+Quando Pepper dice qualcosa come `この {{姿|すがた}}じゃ {{戦|たたか}}えねえ`, il
+centro della frase è `この {{姿|すがた}}じゃ`, cioè "in questa forma / in questo
+stato". La negazione ruvida `{{戦|たたか}}えねえ` corrisponde allo standard
+`{{戦|たたか}}えない`: non può combattere. La difficoltà non è il contenuto
+grammaticale, ma il registro contratto con cui Pepper lo formula.
+
+La causa si legge in
+[{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu).
+`{{力|ちから}}` è la forza, `{{使|つか}}う` è usare, e `{{果|は}}たす` porta l'idea
+di arrivare fino in fondo. L'espressione non dice "è un po' stanco": dice che
+ha consumato la sua forza fino al limite. Subito dopo,
+[へたりこむ](term:term-hetarikomu) rende fisico il risultato: le forze cedono e
+il corpo si accascia sul posto.
 
 :::image
 src: assets/story/weakened-legendary-cave-scene.webp
 alt: "Koraidon in una forma speciale del prologo accanto al protagonista."
 caption: >-
-  Il leggendario appare qui in una [{{姿|すがた}}](term:term-sugata) diversa da quella di un Pokemon da battaglia normale: il visuale mostra un cambio di stato, non un semplice incontro casuale.
+  Qui [{{姿|すがた}}](term:term-sugata) va letto come stato operativo: la forma visibile del Pokemon spiega perché non può ancora combattere normalmente.
 :::
 
-Accanto a questo contrasto torna utile [～てしまう](grammar:grammar-te-shimau).
-Nella scena della caduta o quando si parla di un oggetto che si consuma, il
-pattern mantiene la sua doppia funzione: qualcosa accade fino in fondo oppure
-finisce in un esito non desiderato. Se senti forme contratte come `{{落|お}}ちちゃう`
-o `なくなっちゃう`, non serve tradurre parola per parola: basta capire che c'è un
-risultato ormai compiuto e spesso un leggero tono di dispiacere, guaio o
-inevitabilità.
+:::example_sentence
+jp: >-
+  {{力|ちから}}を {{使|つか}}い{{果|は}}たしちゃって、この {{姿|すがた}}じゃ
+  {{戦|たたか}}えねえ。
+translation_it: >-
+  Ha finito per esaurire tutte le sue forze; in questa forma non può combattere.
+:::
 
-L'ultimo nucleo importante è quello di Pepper.
-[{{制御|せいぎょ}}する](term:term-seigyo-suru) è più avanzato del livello base,
-ma in questa scena vale la pena includerlo perché spiega davvero che cos'è la
-Ball che ti consegna. Non è una semplice Pokeball trovata per caso: è l'oggetto
-che serve a gestire quel Pokemon specifico. [{{制御|せいぎょ}}する](term:term-seigyo-suru)
-definisce il rapporto tra Pepper e il leggendario: la Ball non serve a
-"possedere" un Pokemon qualunque, ma a gestire una creatura che non entra nel
-gioco come una normale cattura.
+#### 🗺️ Anatomia della frase
+
+- `{{力|ちから}}を` -> oggetto consumato: la forza è ciò che viene usato fino al limite.
+- `{{使|つか}}い{{果|は}}たしちゃって` -> verbo composto più [～てしまう](grammar:grammar-te-shimau): l'esaurimento è completo e ha un tono di guaio.
+- `この {{姿|すがた}}じゃ` -> condizione attuale: `じゃ` è la forma colloquiale di `では`.
+- `{{戦|たたか}}えねえ` -> potenziale negativo ruvido: equivale a `{{戦|たたか}}えない`, ma con voce brusca.
+
+> [!NOTE]
+> **⚖️ Contrasto operativo:** [{{姿|すがた}}](term:term-sugata) non va tradotto
+> automaticamente come "look". In Pokemon spesso è una forma con conseguenze:
+> se il testo dice `この {{姿|すがた}}じゃ`, sta parlando di ciò che quello stato
+> permette o impedisce.
+
+> [!NOTE]
+> **🧠 Gancio cognitivo:** in
+> [{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu),
+> immagina `{{果|は}}たす` come "andare fino alla fine". Non resta una riserva
+> nascosta: la frase presenta la forza come consumata fino al fondo.
+
+Anche [～てしまう](grammar:grammar-te-shimau) resta attivo in questa zona della
+scena. In forme contratte come `{{落|お}}ちちゃう`, `へたりこんじゃう` o
+`なくなっちゃう`, `ちゃう` conserva due sfumature: l'azione arriva a
+compimento e il risultato può essere indesiderato. Nel prologo questo colore si
+adatta a cadute, consumo di risorse e crolli di energia.
+
+## 4. Pepper legge la scena come controllo e cattivo presagio
+
+Con Pepper entra un altro lessico: non più solo catturare Pokemon selvatici, ma
+capire una Ball speciale e un rapporto di controllo. Il verbo
+[{{制御|せいぎょ}}する](term:term-seigyo-suru) non è sinonimo neutro di
+[{{捕獲|ほかく}}](term:term-hokaku). [{{制御|せいぎょ}}する](term:term-seigyo-suru)
+vuol dire tenere qualcosa sotto controllo, regolarne il comportamento o
+contenerne la forza. Se la Ball serve a `{{制御|せいぎょ}}するため`, il punto non è
+"ho appena preso un Pokemon normale", ma "questo oggetto gestisce una creatura
+fuori scala".
 
 :::image
 src: assets/story/pepper-control-ball.webp
 alt: "Pepper in primo piano con una Monster Ball tesa in avanti verso il giocatore."
 caption: >-
-  Pepper entra in scena con la Ball in mano: il visuale lega il suo tono ruvido a [{{制御|せいぎょ}}する](term:term-seigyo-suru), cioe l'idea che quell'oggetto serva a gestire il Pokemon misterioso.
-:::
-
-Pepper porta anche il primo giapponese marcatamente ruvido del percorso.
-Forme come `{{戦|たたか}}えねえ` al posto di `{{戦|たたか}}えない` o `{{持|も}}ってけ`
-al posto di `{{持|も}}っていけ` non vanno analizzate come grammatica nuova da manuale,
-ma riconosciute come parlato contratto e duro. In pratica ti basta sapere che il
-significato di base resta quello standard: il personaggio non è più difficile
-perché usa contenuti più astratti, ma perché li esprime con una voce più aspra
-ed emotiva.
-
-Dentro questo stesso registro entrano bene
-[{{災難|さいなん}}](term:term-sainan) e
-[{{思|おも}}いやられる](term:term-omoiyarareru). La prima etichetta la tua
-situazione come un guaio capitato addosso; la seconda proietta subito un
-presagio negativo sul futuro. E quando Pepper osserva il Pokemon misterioso con
-forme del tipo `{{見|み}}れば {{見|み}}るほど`, il pattern
-[～ば ～ほど](grammar:grammar-ba-hodo) dice che la sua impressione cresce man mano
-che continua a guardarlo.
-
-Infine [わざマシン](term:term-waza-machine) è la ricompensa di sistema che il
-capitolo mette in mano al giocatore prima di arrivare al Centro Pokemon del
-blocco successivo. In Scarlet / Violet una `わざマシン` insegna una mossa e si
-consuma quando la usi, anche se più avanti potrai ricrearla. Qui il valore
-pratico è doppio: capisci che la scena non ti sta dando un oggetto casuale ma
-una leva di personalizzazione del team, e inizi a collegare dialogo, premio e
-menu futuro.
-
-## Esempi guidati
-
-:::example_sentence
-jp: >-
-  {{野生|やせい}}の ポケモンを {{弱|よわ}}らせてから モンスターボールを
-  {{投|な}}げよう。
-translation_it: >-
-  Prima indebolisci il Pokemon selvatico e poi lancia una Monster Ball.
+  La Ball di Pepper porta la scena da [{{捕獲|ほかく}}](term:term-hokaku) a [{{制御|せいぎょ}}する](term:term-seigyo-suru): non una cattura standard, ma un oggetto che tiene sotto controllo il Pokemon misterioso.
 :::
 
 :::example_sentence
 jp: >-
-  ポケモンを {{捕|つか}}まえながら あの {{灯台|とうだい}}を {{目指|めざ}}そう。
+  この ボールは あの ポケモンを {{制御|せいぎょ}}するための ものだ。
 translation_it: >-
-  Andiamo verso quel faro catturando Pokemon lungo la strada.
+  Questa Ball è un oggetto usato per tenere sotto controllo quel Pokemon.
 :::
+
+#### 🗺️ Anatomia della frase
+
+- `この ボールは` -> tema: la frase spiega che cos'è quella Ball, non introduce una cattura qualunque.
+- `あの ポケモンを` -> bersaglio del controllo: l'oggetto agisce su quel Pokemon specifico.
+- `{{制御|せいぎょ}}するための もの` -> scopo nominalizzato: `ための` trasforma "controllare" nella funzione dell'oggetto.
+
+> [!WARNING]
+> **⚖️ [{{捕獲|ほかく}}](term:term-hokaku) vs [{{制御|せいぎょ}}する](term:term-seigyo-suru):**
+> [{{捕獲|ほかく}}](term:term-hokaku) appartiene al ciclo normale indebolire e
+> catturare. [{{制御|せいぎょ}}する](term:term-seigyo-suru) parla di gestione e
+> contenimento. Se li confondi, leggi la Ball di Pepper come un oggetto comune
+> invece che come chiave narrativa della scena.
+
+Il modo in cui Pepper commenta il protagonista è altrettanto marcato.
+[{{災難|さいなん}}](term:term-sainan) nomina un guaio capitato addosso: non una
+sfida nobile, ma una situazione sfortunata in cui sei finito. Con
+[{{思|おも}}いやられる](term:term-omoiyarareru), il giudizio si sposta in avanti:
+`{{先|さき}}が {{思|おも}}いやられる` dice che il futuro lascia presagire male, come
+se l'inizio fosse già abbastanza problematico da far dubitare del seguito.
+
+Il pattern [～ば ～ほど](grammar:grammar-ba-hodo) intensifica questa impressione.
+In `{{見|み}}れば {{見|み}}るほど`, la prima parte mette la condizione "se / quando
+guardi", la seconda dice che l'effetto cresce quanto più continui a guardare.
+La forma aderisce alla voce di Pepper: l'osservazione non calma il sospetto, lo
+fa aumentare.
 
 :::example_sentence
 jp: >-
-  このへんは {{危|あぶ}}ない ポケモンも いるから {{足元|あしもと}}に
-  {{気|き}}をつけてね。
+  {{見|み}}れば {{見|み}}るほど {{不思議|ふしぎ}}な ポケモンだし、{{先|さき}}が
+  {{思|おも}}いやられるな。
 translation_it: >-
-  Qui ci sono anche Pokemon pericolosi, quindi fai attenzione a dove metti i
-  piedi.
+  Più lo guardi, più sembra un Pokemon strano, e viene da pensare che ci
+  aspettino guai.
 :::
 
-:::example_sentence
-jp: >-
-  {{鳴|な}}き{{声|ごえ}}を {{追|お}}っていくと {{崖|がけ}}の {{下|した}}で
-  {{弱|よわ}}った ポケモンを {{見|み}}つけた。
-translation_it: >-
-  Seguendo il verso, abbiamo trovato in fondo al dirupo un Pokemon indebolito.
-:::
+#### 🗺️ Anatomia della frase
 
-:::example_sentence
-jp: >-
-  {{洞窟|どうくつ}}には デルビルが {{生息|せいそく}}しているから {{奥|おく}}へ
-  {{行|い}}きすぎないように。
-translation_it: >-
-  Nella grotta vivono dei Houndour, quindi non addentrarti troppo verso il fondo.
-:::
+- `{{見|み}}れば {{見|み}}るほど` -> correlazione crescente: più continua l'osservazione, più cresce l'impressione.
+- `{{不思議|ふしぎ}}な ポケモンだし` -> valutazione più collegamento: `し` aggiunge una ragione o un elemento alla constatazione.
+- `{{先|さき}}が {{思|おも}}いやられるな` -> giudizio sul futuro: non descrive un fatto già successo, ma il brutto presagio che Pepper ricava dalla scena.
 
-:::example_sentence
-jp: >-
-  {{力|ちから}}を {{使|つか}}い{{果|は}}たした みたいで この {{姿|すがた}}じゃ
-  まだ {{戦|たたか}}えないんだ。
-translation_it: >-
-  Sembra che abbia esaurito le sue forze, quindi in questa forma non può ancora
-  combattere.
-:::
-
-:::example_sentence
-jp: >-
-  {{助|たす}}けた あとで へたりこんだ {{姿|すがた}}を {{見|み}}ると {{先|さき}}が
-  {{思|おも}}いやられる。
-translation_it: >-
-  Quando lo vedi accasciarsi dopo il salvataggio, viene da pensare che quello
-  che ci aspetta non sarà semplice.
-:::
-
-:::example_sentence
-jp: >-
-  それは あの ポケモンを {{制御|せいぎょ}}するための モンスターボールらしい。
-translation_it: >-
-  Pare che quella sia la Monster Ball usata per controllare quel Pokemon.
-:::
+Accanto al dialogo, [わざマシン](term:term-waza-machine) riporta il blocco verso
+la progressione di sistema. Una `わざマシン` insegna una mossa, ma in Scarlet /
+Violet non è solo un premio da mettere in tasca: quando la usi, si consuma. Se
+il testo dice `{{1回|いっかい}} {{使|つか}}うと なくなっちゃう`, cerca prima che
+cosa sparisce; poi leggi `ちゃう` come consumo completo, con quella sfumatura di
+"attenzione, dopo non c'è più".
 
 :::example_sentence
 jp: >-
   わざマシンは {{1回|いっかい}} {{使|つか}}うと なくなっちゃうから
   {{使|つか}}いどころを {{考|かんが}}えよう。
 translation_it: >-
-  Le MT spariscono dopo un uso, quindi conviene scegliere bene quando usarle.
+  Le MT spariscono dopo un uso, quindi pensiamo bene al momento giusto per
+  usarle.
+:::
+
+## Esempi guidati di riepilogo
+
+Le frasi del prologo diventano più leggibili quando separi cattura, percorso,
+stato e voce del personaggio:
+
+:::example_sentence
+jp: >-
+  {{野生|やせい}}の ポケモンを {{弱|よわ}}らせてから {{捕獲|ほかく}}を
+  {{狙|ねら}}おう。
+translation_it: >-
+  Puntiamo alla cattura dopo aver indebolito il Pokemon selvatico.
 :::
 
 :::example_sentence
 jp: >-
-  {{見|み}}れば {{見|み}}るほど {{不思議|ふしぎ}}で {{災難|さいなん}}な {{出会|であ}}い
-  だったと わかる。
+  {{鳴|な}}き{{声|ごえ}}を {{聞|き}}きながら、{{足元|あしもと}}に
+  {{気|き}}をつけて {{進|すす}}む。
 translation_it: >-
-  Più la guardi, più capisci che è stato un incontro misterioso e pieno di guai.
+  Avanzi sentendo il verso e facendo attenzione a dove metti i piedi.
+:::
+
+:::example_sentence
+jp: >-
+  この {{洞窟|どうくつ}}には {{気性|きしょう}}の {{荒|あら}}い ポケモンが
+  {{生息|せいそく}}している。
+translation_it: >-
+  In questa grotta vivono Pokemon dal temperamento aggressivo.
+:::
+
+:::example_sentence
+jp: >-
+  {{力|ちから}}を {{使|つか}}い{{果|は}}たした {{姿|すがた}}を {{見|み}}れば
+  {{見|み}}るほど、{{先|さき}}が {{思|おも}}いやられる。
+translation_it: >-
+  Più guardi quella forma dopo che ha esaurito le forze, più il futuro lascia
+  presagire male.
 :::
 
 ## Nota finale
 
-Questo prologo va studiato come primo vero manuale narrativo di Scarlet /
-Violet. Se stabilizzi [{{捕獲|ほかく}}](term:term-hokaku),
-[{{弱|よわ}}らせる](term:term-yowaraseru),
-[{{気|き}}をつける](term:term-ki-o-tsukeru),
+Questo tratto del prologo mette in fila quattro sistemi di lettura: la cattura
+come procedura, il percorso come spazio di avvisi, la grotta come spiegazione
+di uno stato fisico e Pepper come voce ruvida che giudica ciò che vede. Se
+riconosci [{{弱|よわ}}らせる](term:term-yowaraseru),
+[{{生息|せいそく}}する](term:term-seisoku-suru),
 [{{姿|すがた}}](term:term-sugata) e
-[{{制御|せいぎょ}}する](term:term-seigyo-suru), entri nel capitolo successivo con
-una lettura molto più chiara di tutorial, premi di sistema e primi dialoghi
-seri del gioco.
+[{{制御|せいぎょ}}する](term:term-seigyo-suru) nel loro frame, la scena smette di
+essere una sequenza di eventi e diventa un passaggio leggibile tra tutorial,
+pericolo e mistero.
