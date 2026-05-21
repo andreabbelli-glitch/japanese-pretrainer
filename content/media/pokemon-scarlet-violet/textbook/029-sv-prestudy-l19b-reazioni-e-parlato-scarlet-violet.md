@@ -23,7 +23,7 @@ summary: >-
 
 Nel mondo di *Pokémon Scarlet & Violet*, le interazioni non si limitano a menu astratti. Ogni dialogo, lezione scolastica o evento di sistema allena la tua capacità di leggere al volo intenzioni, comandi e sfumature di tono.
 
-In questa lezione analizzeremo **tutti i 23 elementi chiave** presenti nel tuo deck di studio. Impareremo a riconoscerli non come parole isolate, ma come pezzi di un sistema linguistico vivo, sbloccando ganci mentali per ciascuno di essi.
+In questa lezione analizzeremo le parole e le formule che il gioco usa quando conferma una scelta, segnala un luogo, commenta una battaglia o lascia emergere il tono di un personaggio. L'obiettivo è riconoscerle non come parole isolate, ma come pezzi di un sistema linguistico vivo.
 
 ## Termini chiave
 
@@ -195,7 +195,7 @@ La parola [せっかく](term:term-v270-sekkaku) segnala un'occasione ottenuta c
 
 ## Esempi guidati di Riepilogo
 
-Assicuriamoci di consolidare l'uso integrato di queste parole con quattro frasi contestuali:
+Le stesse parole diventano più leggibili quando si combinano in frasi di scuola, battaglia, selezione e dialogo:
 
 :::example_sentence
 jp: >-
@@ -229,4 +229,4 @@ translation_it: >-
 
 ## Nota finale
 
-Questa lezione unisce l'esplorazione sul campo e le notifiche di sistema. Per padroneggiare queste 23 carte, non cercare di impararle separatamente: ricorda che [{{家庭科|かていか}}](term:term-v263-kateika) sblocca i [レシピ](term:term-v264-reshipi), che i comandi di sistema usano [〜を {{受|う}}けとりました！](term:term-e046-o-uketorimashita) e [〜を {{選|えら}}んでください](term:term-e047-o-erandekudasai), e che i personaggi esprimono i loro desideri personali con [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che) o ti consigliano prove amichevoli con [〜してみて](term:term-e053-shitemite). Buon viaggio a Paldea!
+Esplorazione sul campo, notifiche di sistema e parlato dei personaggi usano gli stessi segnali in modi diversi: [{{家庭科|かていか}}](term:term-v263-kateika) porta ai [レシピ](term:term-v264-reshipi), i comandi di sistema usano [〜を {{受|う}}けとりました！](term:term-e046-o-uketorimashita) e [〜を {{選|えら}}んでください](term:term-e047-o-erandekudasai), mentre i dialoghi esprimono desideri personali con [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che) o prove amichevoli con [〜してみて](term:term-e053-shitemite). Buon viaggio a Paldea!
