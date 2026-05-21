@@ -20,9 +20,9 @@ summary: >-
 ---
 # Muoversi, agire e reagire nell'esplorazione di Paldea
 
-Quando *Pokémon Scarlet & Violet* ti spinge verso un passaggio, una fuga, un aiuto o un bonus attivo, il giapponese non descrive solo "cosa c'è sullo schermo": ti dice quale direzione prendere, quale azione è permessa e quanto è urgente il tono del personaggio.
+Quando *Pokémon Scarlet & Violet* ti manda verso una grotta, chiude una lotta, ti consegna una ricetta o ti fa scegliere se spingerti oltre, il giapponese lavora come una piccola interfaccia di azione. Non descrive solo lo scenario: indica una direzione, assegna un bersaglio, segnala un effetto attivo o modula la voce di chi ti sta parlando.
 
-Nel gioco questi verbi operativi fanno lavori molto concreti. Alcuni puntano nello spazio, come `{{奥|おく}}へ`; altri chiudono o fanno avanzare un evento, come `{{終|お}}わる` e `{{進|すす}}める`; altri ancora cambiano il modo in cui senti una battuta, perché `{{早|はや}}く！` non ha lo stesso peso di `{{無理|むり}}しないで`.
+Molti di questi segnali sono brevi, ma hanno un peso pratico immediato. `{{奥|おく}}へ` ti spinge verso l'interno, `{{逃|に}}げるな` blocca una fuga, `{{無理|むり}}しないで` ammorbidisce il tono in una richiesta protettiva, mentre `{{発動|はつどう}}する` ti dice che un bonus è entrato davvero in funzione.
 
 ## Termini chiave
 
@@ -32,7 +32,7 @@ Nel gioco questi verbi operativi fanno lavori molto concreti. Alcuni puntano nel
 - [{{終|お}}わる](term:term-v418-owa-ru) — finire
 - [{{認|みと}}める](term:term-v420-mitome-ru) — riconoscere / ammettere
 - [あっという{{間|ま}}に](term:term-v421-attoiu-mani) — in un attimo
-- [{{受|う}}けとる](term:term-v422-uketoru) — ricevere
+- [{{受|う}}けとる](term:term-v422-uketoru) — ricevere / prendere in consegna
 - [{{進|すす}}める](term:term-v423-susume-ru) — portare avanti / far progredire
 - [ようやく](term:term-v424-youyaku) — finalmente
 - [{{立|た}}ち{{向|む}}かう](term:term-v425-tachi-muka-u) — fronteggiare
@@ -63,11 +63,13 @@ Nel gioco questi verbi operativi fanno lavori molto concreti. Alcuni puntano nel
 
 ---
 
-## 1. Direzione, fuga e aiuto sul campo
+## 1. Verso il fondo: direzione, fuga e aiuto
 
-Quando il gioco parla di esplorazione, la prima cosa da cercare è spesso la direzione. [{{奥|おく}}](term:term-v415-oku) indica il fondo o l'interno di uno spazio: non è un semplice "dietro", ma la parte più profonda di una stanza, grotta, percorso o area. In una formula come `{{奥|おく}}へ {{進|すす}}む`, `へ` marca la direzione e ti dice che l'azione punta verso l'interno.
+Sul campo, la prima informazione da leggere è spesso dove andare e che cosa fare quando qualcosa si mette di mezzo. I verbi operativi non sono decorazione: decidono se stai avanzando, scappando o intervenendo su qualcuno.
 
-[{{逃|に}}げる](term:term-v416-nige-ru) e [{{助|たす}}ける](term:term-v417-tasuke-ru) costruiscono due letture opposte dell'azione. Con [{{逃|に}}げる](term:term-v416-nige-ru), il soggetto esce da una situazione: in battaglia vuol dire abbandonare l'incontro, non solo "correre via". Con [{{助|たす}}ける](term:term-v417-tasuke-ru), invece, l'oggetto marcato da `を` è chi riceve aiuto: `{{味方|みかた}}を {{助|たす}}ける` mette il compagno come bersaglio dell'azione.
+*   [{{奥|おく}}](term:term-v415-oku) indica la parte profonda di un luogo: il fondo di una grotta, l'interno di una stanza, il punto più avanti di un passaggio. In `{{奥|おく}}へ`, la particella `へ` marca la direzione, quindi la frase non ti dice "sei nel fondo", ma "spostati verso l'interno". È una parola da leggere con la mappa in testa.
+*   [{{逃|に}}げる](term:term-v416-nige-ru) mette il soggetto fuori dalla situazione. In battaglia può voler dire abbandonare lo scontro; in un dialogo può evocare il gesto di tirarsi indietro. Quando diventa `{{逃|に}}げるな`, la grammatica non descrive una fuga: la proibisce.
+*   [{{助|たす}}ける](term:term-v417-tasuke-ru) richiede un bersaglio aiutato. Con `{{味方|みかた}}を {{助|たす}}ける`, `を` marca la persona o il Pokémon che riceve l'intervento. Il centro della frase non è la buona intenzione, ma l'azione concreta di salvare o supportare qualcuno.
 
 :::example_sentence
 jp: >-
@@ -78,23 +80,24 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{奥|おく}}へ` -> direzione verso il fondo o l'interno: `へ` non dice dove sei, ma dove stai andando.
-- `{{進|すす}}んで` -> forma in `-te`: collega l'avanzare all'azione successiva.
-- `{{味方|みかた}}を` -> oggetto diretto: l'alleato è chi viene aiutato.
-- `{{助|たす}}ける` -> azione di supporto o salvataggio, non semplice "essere gentili".
+*   `{{奥|おく}}へ` ➔ **Direzione verso l'interno** (`へ` marca il punto verso cui procede l'azione).
+*   `{{進|すす}}んで` ➔ **Forma in `-te` di collegamento** (l'avanzare prepara l'azione successiva).
+*   `{{味方|みかた}}を` ➔ **Oggetto diretto** (l'alleato è chi viene aiutato).
+*   `{{助|たす}}ける` ➔ **Azione di supporto** (aiutare o salvare qualcuno, non solo essere gentili).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{奥|おく}}` non equivale a `{{後|うし}}ろ`. `{{後|うし}}ろ` è il retro rispetto a un orientamento; `{{奥|おく}}` è la parte interna o profonda di un luogo. In una mappa, questo cambia il modo in cui immagini il percorso.
+#### ⚖️ Contrasto
 
-## 2. Progressione: finire, ricevere e portare avanti
+`{{奥|おく}}` non equivale a `{{後|うし}}ろ`. `{{後|うし}}ろ` è il retro rispetto a un orientamento; `{{奥|おく}}` è la parte interna o profonda di un luogo. Se un NPC ti manda `{{奥|おく}}へ`, non sta dicendo di guardarti alle spalle: ti sta spingendo più dentro lo spazio esplorabile.
 
-Nei messaggi di sistema e nei dialoghi di avanzamento, il giapponese distingue bene tra evento che si chiude, ricompensa che entra in mano e storia che viene portata avanti.
+## 2. Finire, ricevere e portare avanti
 
-- [{{終|お}}わる](term:term-v418-owa-ru) è intransitivo: `バトルが {{終|お}}わる` dice che la battaglia finisce. La battaglia è il soggetto marcato da `が`; non c'è qualcuno che "finisce la battaglia" come oggetto.
-- [{{受|う}}けとる](term:term-v422-uketoru) combina `{{受|う}}ける` e `{{取|と}}る`: il senso è ricevere prendendo in consegna. Con `レシピを {{受|う}}けとる`, `を` marca l'oggetto che entra nel tuo inventario o nel tuo possesso.
-- [{{進|すす}}める](term:term-v423-susume-ru) è transitivo: qualcuno porta avanti `ストーリーを`, una prova, una preparazione. Non va confuso con `{{進|すす}}む`, che descrive il soggetto che avanza.
+Quando un evento si chiude o una ricompensa entra nel tuo inventario, il gioco cambia tipo di verbo. Alcune forme descrivono ciò che accade da sé, altre dicono che qualcuno sta facendo progredire qualcosa.
 
-[{{認|みと}}める](term:term-v420-mitome-ru) sposta la progressione su un piano più sociale: vuol dire riconoscere o ammettere qualcosa come valido. Può riguardare un risultato, una capacità o una verità che un personaggio accetta. Quando compare vicino a una sfida, non indica solo "vedere": indica dare valore a ciò che è stato dimostrato.
+*   [{{終|お}}わる](term:term-v418-owa-ru) è intransitivo: `バトルが {{終|お}}わる` significa che la battaglia finisce. Il soggetto marcato da `が` è l'evento che arriva alla conclusione; non c'è un oggetto su cui qualcuno esercita l'azione.
+*   [あっという{{間|ま}}に](term:term-v421-attoiu-mani) comprime il tempo. Il senso è "nel tempo di dire ah", quindi in pratica "in un attimo". Davanti a un evento concluso rende la scena rapida, quasi improvvisa.
+*   [{{受|う}}けとる](term:term-v422-uketoru) unisce l'idea di ricevere e prendere in consegna. Con `レシピを {{受|う}}けとる`, `レシピ` è l'oggetto che passa a te: la particella `を` ti dice che non è la ricetta a fare qualcosa, sei tu a riceverla.
+*   [{{進|すす}}める](term:term-v423-susume-ru) è transitivo: puoi portare avanti una storia, una prova, una preparazione. Se vedi `ストーリーを {{進|すす}}める`, l'oggetto marcato da `を` è ciò che viene fatto avanzare, non il luogo in cui ti muovi.
+*   [{{認|みと}}める](term:term-v420-mitome-ru) sposta la progressione sul piano sociale. Un personaggio può riconoscere una capacità, ammettere un risultato o accettare che una prova sia valida. Non è un semplice "vedere": è concedere valore a ciò che è stato dimostrato.
 
 :::example_sentence
 jp: >-
@@ -105,19 +108,22 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `バトルが` -> soggetto dell'evento che finisce.
-- `あっという{{間|ま}}に` -> avverbio di rapidità: l'azione avviene "in un attimo".
-- `{{終|お}}わって` -> forma in `-te` di [{{終|お}}わる](term:term-v418-owa-ru): l'evento si chiude prima della ricezione.
-- `レシピを {{受|う}}けとる` -> `レシピ` è l'oggetto ricevuto, non il soggetto.
+*   `バトルが` ➔ **Soggetto dell'evento** (la battaglia è ciò che finisce).
+*   `あっという{{間|ま}}に` ➔ **Avverbio di rapidità** (l'azione si completa in pochissimo tempo).
+*   `{{終|お}}わって` ➔ **Evento concluso e collegato** (la forma in `-te` lega la fine della battaglia alla ricezione).
+*   `レシピを {{受|う}}けとる` ➔ **Oggetto ricevuto** (`レシピ` è ciò che entra in tuo possesso).
 
-> [!WARNING]
-> **⚠️ Attenzione a `{{進|すす}}む` / `{{進|すす}}める`:** `{{奥|おく}}へ {{進|すす}}む` vuol dire "avanzare verso il fondo"; `ストーリーを {{進|すす}}める` vuol dire "portare avanti la storia". La vocale finale cambia il ruolo della frase: movimento del soggetto contro azione esercitata su qualcosa.
+#### ⚖️ Contrasto
 
-## 3. Attesa, rischio e contatto
+`{{進|すす}}む` e [{{進|すす}}める](term:term-v423-susume-ru) sembrano vicini, ma cambiano il ruolo della frase. `{{奥|おく}}へ {{進|すす}}む` descrive il soggetto che avanza verso un luogo; `ストーリーを {{進|すす}}める` descrive qualcuno che porta avanti la storia come oggetto. La vocale finale non è un dettaglio: separa movimento autonomo e azione esercitata su qualcosa.
 
-[ようやく](term:term-v424-youyaku) segnala che un risultato arriva dopo attesa, fatica o ritardo. In `ようやく ゼロゲートに {{着|つ}}いた`, il focus non è solo "sono arrivato", ma "ci sono finalmente arrivato". È una parola che rende leggibile il sentimento di sblocco dopo una strada lunga.
+## 3. Arrivare dopo fatica, toccare e fronteggiare
 
-Quando l'arrivo porta a uno scontro o a un oggetto da esaminare, entrano in gioco [{{立|た}}ち{{向|む}}かう](term:term-v425-tachi-muka-u) e [{{触|ふ}}れる](term:term-v426-fureru). [{{立|た}}ち{{向|む}}かう](term:term-v425-tachi-muka-u) contiene `{{立|た}}つ` e `{{向|む}}かう`: l'immagine leggibile è "stare in piedi rivolti contro" qualcuno o qualcosa. Il bersaglio prende spesso `に`, come in `{{強|つよ}}い {{相手|あいて}}に {{立|た}}ち{{向|む}}かう`. [{{触|ふ}}れる](term:term-v426-fureru), invece, usa `に` per l'oggetto con cui entri in contatto: `ボールに {{触|ふ}}れる` è toccare la Poké Ball o attivare l'interazione con essa.
+Dopo una lunga strada, il giapponese spesso segnala non solo il fatto di arrivare, ma il sollievo o la tensione che arriva con quel punto della storia.
+
+*   [ようやく](term:term-v424-youyaku) vuol dire "finalmente" con una coda di attesa, fatica o ritardo. In `ようやく ゼロゲートに {{着|つ}}いた`, il focus non è solo l'arrivo: è l'arrivo dopo un tratto che pesava.
+*   [{{触|ふ}}れる](term:term-v426-fureru) usa spesso `に` per l'oggetto con cui entri in contatto. `ボールに {{触|ふ}}れる` può essere un tocco fisico, ma in una UI o in una scena di gioco può anche indicare l'interazione che fa partire qualcosa.
+*   [{{立|た}}ち{{向|む}}かう](term:term-v425-tachi-muka-u) combina l'immagine di alzarsi e orientarsi verso un ostacolo. Il bersaglio prende spesso `に`: `{{強|つよ}}い {{相手|あいて}}に {{立|た}}ち{{向|む}}かう` non è "andare da un avversario", ma affrontarlo.
 
 :::example_sentence
 jp: >-
@@ -128,21 +134,23 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `ようやく` -> risultato raggiunto dopo attesa o fatica.
-- `ゼロゲートに` -> destinazione dell'arrivo: `に` marca il punto raggiunto.
-- `{{強|つよ}}い {{相手|あいて}}に` -> bersaglio dello scontro: l'avversario forte è ciò contro cui ti dirigi.
-- `{{立|た}}ち{{向|む}}かう` -> fronteggiare, non semplicemente "andare verso".
+*   `ようやく` ➔ **Risultato dopo attesa** (colora l'arrivo come uno sblocco).
+*   `ゼロゲートに` ➔ **Punto raggiunto** (`に` marca la destinazione dell'arrivo).
+*   `{{強|つよ}}い {{相手|あいて}}に` ➔ **Bersaglio dello scontro** (l'avversario è ciò contro cui ti dirigi).
+*   `{{立|た}}ち{{向|む}}かう` ➔ **Fronteggiare** (stare davanti al problema, non solo muoversi verso di lui).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** per ricordare [{{立|た}}ち{{向|む}}かう](term:term-v425-tachi-muka-u), immagina il personaggio che si mette in piedi (`{{立|た}}ち`) e si orienta verso il problema (`{{向|む}}かう`). È un'immagine mnemonica, non una spiegazione etimologica completa.
+#### 🧠 Gancio
 
-## 4. Scelte ripetibili, cavalcatura e cura automatica
+Per ricordare [{{立|た}}ち{{向|む}}かう](term:term-v425-tachi-muka-u), immagina il personaggio che si mette in piedi (`{{立|た}}ち`) e si orienta verso il problema (`{{向|む}}かう`). È un trucco mnemonico, non una spiegazione etimologica completa.
 
-Nei menu e nelle funzioni di supporto, alcune parole ti dicono se puoi ripetere un'azione, delegarla al sistema o muoverti su un mezzo.
+## 4. Ripetere, cavalcare e delegare la cura
 
-[{{何度|なんど}}でも](term:term-v427-nando-demo) unisce `{{何度|なんど}}` ("quante volte") e `でも`, che apre la possibilità senza fissare un numero preciso. In una frase come `{{何度|なんど}}でも できます`, il testo non sta contando i tentativi: sta togliendo il limite. Se lo trovi vicino a una funzione di cura o a una prova ripetibile, puoi aspettarti che l'azione sia disponibile più volte.
+Nei menu di supporto, alcune parole ti dicono se una funzione ha un limite, se puoi montare sulla cavalcatura o se il sistema sta scegliendo per te.
 
-[{{乗|の}}る](term:term-v428-noru) prende il mezzo con `に`: `ライドポケモンに {{乗|の}}る` significa salire sul Pokémon cavalcatura. [おまかせ{{回復|かいふく}}](term:term-v429-omakasekaifuku) è diverso da una cura scelta manualmente: `おまかせ` dice che lasci la decisione al sistema, mentre `{{回復|かいふく}}` indica il recupero di salute o stato. [{{湖|みずうみ}}](term:term-v430-mizuumi) resta un landmark concreto: un'area d'acqua chiusa sulla mappa, diversa da mare o fiume.
+*   [{{何度|なんど}}でも](term:term-v427-nando-demo) unisce `{{何度|なんど}}`, "quante volte", e `でも`, che lascia aperta la possibilità. In `{{何度|なんど}}でも できます`, il testo non sta contando i tentativi: sta togliendo il limite. È un segnale molto concreto per funzioni ripetibili.
+*   [{{乗|の}}る](term:term-v428-noru) prende il mezzo con `に`: `ライドポケモンに {{乗|の}}る` significa salire sul Pokémon cavalcatura e iniziare a usarlo per muoversi. Non indica solo "essere sopra" qualcosa; indica l'azione di montare o prendere un mezzo.
+*   [おまかせ{{回復|かいふく}}](term:term-v429-omakasekaifuku) è una funzione delegata. `おまかせ` segnala che lasci la decisione al sistema; `{{回復|かいふく}}` è il recupero di salute o stato. La frase ti prepara a una cura automatica, non a una scelta manuale strumento per strumento.
+*   [{{湖|みずうみ}}](term:term-v430-mizuumi) resta un landmark leggibile nella mappa. È uno specchio d'acqua chiuso, diverso da mare o fiume, quindi aiuta a interpretare istruzioni di posizione come `{{湖|みずうみ}}の {{近|ちか}}く`.
 
 :::example_sentence
 jp: >-
@@ -153,18 +161,21 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{湖|みずうみ}}の {{近|ちか}}くで` -> luogo dell'azione: `で` marca dove avviene.
-- `ライドポケモンに` -> mezzo o cavalcatura su cui si sale.
-- `{{乗|の}}る` -> salire / cavalcare: non indica solo "stare sopra", ma iniziare a usare il mezzo.
+*   `{{湖|みずうみ}}の {{近|ちか}}くで` ➔ **Luogo dell'azione** (`で` marca dove avviene).
+*   `ライドポケモンに` ➔ **Mezzo o cavalcatura** (`に` marca ciò su cui si sale).
+*   `{{乗|の}}る` ➔ **Salire / cavalcare** (iniziare a usare il mezzo per muoversi).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [おまかせ{{回復|かいふく}}](term:term-v429-omakasekaifuku) non vuol dire "cura libera" in senso generico. `おまかせ` segnala che il sistema decide quali strumenti usare; `{{回復|かいふく}}` è il risultato, cioè il recupero.
+#### ⚖️ Contrasto
 
-## 5. Tono del parlato: urgenza, turno e protezione
+[おまかせ{{回復|かいふく}}](term:term-v429-omakasekaifuku) non significa "cura libera" in senso generico. `おまかせ` dice che l'azione viene affidata al sistema; `{{回復|かいふく}}` dice il risultato atteso. Se il gioco usa questa etichetta, non ti sta chiedendo di scegliere ogni oggetto: sta proponendo una procedura automatica.
 
-Il parlato breve nei dialoghi Pokémon è spesso più importante della sua lunghezza. [{{早|はや}}く！](term:term-e078-hayaku) è un avverbio trasformato in esclamazione: letteralmente "rapidamente!", quindi funziona come spinta immediata all'azione. [{{次|つぎ}}はだれ？](term:term-e079-tsugi-hadare) mette [{{次|つぎ}}](term:term-e079-tsugi-hadare) come tema con `は`: "quanto al prossimo, chi è?". È naturale in sequenze di sfide, turni o avversari.
+## 5. Parlato breve: urgenza, turno e protezione
 
-[{{無理|むり}}しないで](term:term-e080-muri-shinaide) ha un tono protettivo. `{{無理|むり}}` è ciò che è eccessivo o non sostenibile; `しないで` è una richiesta negativa morbida: "non fare l'eccesso", cioè non strafare. Non è il divieto secco di [{{辞書形|じしょけい}} + な](grammar:grammar-g083-non-fare-ordine-secco).
+Nei dialoghi Pokémon, una frase corta può cambiare molto il tono della scena. Qui non conta solo la traduzione: conta la pressione che la forma mette sull'interlocutore.
+
+*   [{{早|はや}}く！](term:term-e078-hayaku) è l'avverbio `{{早|はや}}く` trasformato in esclamazione. Letteralmente "rapidamente!", ma in scena funziona come "presto!". La forma è compressa perché il personaggio non sta spiegando: sta spingendo all'azione.
+*   [{{次|つぎ}}はだれ？](term:term-e079-tsugi-hadare) usa `は` per mettere a tema il prossimo turno o avversario: "quanto al prossimo, chi è?". È naturale in sequenze di sfide, turni, incontri o battute competitive.
+*   [{{無理|むり}}しないで](term:term-e080-muri-shinaide) combina `{{無理|むり}}`, ciò che è eccessivo o non sostenibile, con `しないで`, richiesta negativa morbida. Il risultato non è un divieto urlato: è un invito a non strafare.
 
 :::example_sentence
 jp: >-
@@ -175,20 +186,46 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{早|はや}}く！` -> urgenza compressa in una sola parola.
-- `でも` -> correzione o bilanciamento: aggiunge un limite alla fretta.
-- `{{無理|むり}}しないで` -> richiesta negativa: invita a non superare il limite.
+*   `{{早|はや}}く！` ➔ **Urgenza immediata** (una sola parola spinge l'interlocutore ad agire).
+*   `でも` ➔ **Correzione o bilanciamento** (aggiunge un limite alla fretta).
+*   `{{無理|むり}}しないで` ➔ **Richiesta protettiva** (non superare ciò che è sostenibile).
 
-> [!WARNING]
-> **⚠️ `しないで` e `Vるな` non hanno lo stesso peso:** `{{無理|むり}}しないで` suona come richiesta o consiglio protettivo. `{{逃|に}}げるな` usa la [{{辞書形|じしょけい}} + な](grammar:grammar-g083-non-fare-ordine-secco) e diventa un ordine brusco: "non fuggire!".
+#### ⚖️ Contrasto
 
-## 6. Non necessario, finali di frase e bonus che si attivano
+`しないで` e [{{辞書形|じしょけい}} + な](grammar:grammar-g083-non-fare-ordine-secco) non hanno lo stesso peso. [{{無理|むり}}しないで](term:term-e080-muri-shinaide) suona come richiesta o consiglio protettivo; `{{逃|に}}げるな` usa la forma del dizionario più `な` e diventa un ordine brusco: "non fuggire!".
 
-Il pattern [～なくてもいい](grammar:grammar-g082-non-e-necessario-fare) si legge come `V-なくても` + `いい`: anche se non fai l'azione, va bene. In `{{今日|きょう}}は {{行|い}}かなくてもいい`, il testo non vieta di andare; dice che non è necessario. Questa distinzione conta nei tutorial, perché lascia libertà invece di imporre una regola.
+## 6. Libertà, particelle finali e poteri attivi
 
-I [finali di frase よ / ね / な](grammar:grammar-g084-enfasi-conferma-tono-emotivo) colorano la stessa informazione in modi diversi. `ようやくだよ` spinge l'informazione verso l'interlocutore; `ようやくだね` cerca condivisione; `ようやくだな` suona più come constatazione ad alta voce. La base `ようやく` resta "finalmente", ma la particella finale cambia il rapporto con chi ascolta.
+Quando il testo passa dai dialoghi ai tutorial o ai bonus dei panini, compaiono forme che non comandano direttamente: danno permesso, colorano il tono o confermano che un effetto si è attivato.
 
-Nei menu legati ai panini e ai bonus, [{{発動|はつどう}}](term:term-v431-hatsudou) indica il momento in cui un effetto entra in funzione. [けいけんちパワー](term:term-v413-keikenchipawaa), [レイドパワー](term:term-v414-reidopawaa) e [タマゴパワー](term:term-v419-tamagopawaa) seguono lo stesso schema: la parte prima di `パワー` restringe il campo dell'effetto. `けいけんち` punta ai punti esperienza, `レイド` ai raid, `タマゴ` alle uova.
+### A. Quando non è necessario fare qualcosa
+
+Il pattern [～なくてもいい](grammar:grammar-g082-non-e-necessario-fare) si legge come `V-なくても` più `いい`: anche se non fai l'azione, va bene. In `{{今日|きょう}}は {{行|い}}かなくてもいい`, il testo non sta dicendo "non andare"; sta dicendo che andare non è necessario. Nei tutorial questa differenza conta, perché una frase può lasciare libertà invece di imporre un divieto.
+
+:::example_sentence
+jp: >-
+  {{今日|きょう}}は {{行|い}}かなくてもいい。{{無理|むり}}しないで。
+translation_it: >-
+  Oggi non è necessario andare. Non esagerare.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{今日|きょう}}は` ➔ **Tema temporale** (la frase vale per oggi).
+*   `{{行|い}}かなくてもいい` ➔ **Non necessario** (`{{行|い}}かない` passa a `{{行|い}}かなくても`, poi `いい` rende accettabile non andare).
+*   `{{無理|むり}}しないで` ➔ **Richiesta morbida** (aggiunge una cura per l'interlocutore).
+
+### B. Come cambia il tono con よ / ね / な
+
+I [finali di frase よ / ね / な](grammar:grammar-g084-enfasi-conferma-tono-emotivo) non cambiano il nucleo informativo, ma cambiano il rapporto con chi ascolta. `ようやくだよ` spinge l'informazione verso l'interlocutore; `ようやくだね` cerca condivisione; `ようやくだな` suona più come constatazione ad alta voce. La base [ようやく](term:term-v424-youyaku) resta "finalmente", ma la particella finale decide se la voce informa, condivide o commenta.
+
+#### ⚖️ Contrasto
+
+`な` dopo una frase nominale o aggettivale può essere osservativo, come in `ようやくだな`. Dopo un verbo in forma del dizionario, invece, può diventare proibitivo: `{{逃|に}}げるな` significa "non fuggire!". In testo scritto, la posizione di `な` è il primo indizio da controllare.
+
+### C. Quando un potere entra in funzione
+
+Nei menu legati ai panini, [{{発動|はつどう}}](term:term-v431-hatsudou) indica il momento in cui un effetto entra in funzione. Le etichette [けいけんちパワー](term:term-v413-keikenchipawaa), [レイドパワー](term:term-v414-reidopawaa) e [タマゴパワー](term:term-v419-tamagopawaa) seguono lo stesso schema: ciò che precede `パワー` restringe il campo dell'effetto. `けいけんち` punta ai punti esperienza, `レイド` ai raid, `タマゴ` alle uova.
 
 :::example_sentence
 jp: >-
@@ -199,16 +236,17 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{湖|みずうみ}}の {{近|ちか}}くで` -> luogo in cui si attiva l'effetto.
-- `タマゴパワーが` -> soggetto dell'attivazione: è quel bonus a entrare in funzione.
-- `{{発動|はつどう}}する` -> attivarsi / entrare in funzione, formula tipica per effetti e poteri.
+*   `{{湖|みずうみ}}の {{近|ちか}}くで` ➔ **Luogo dell'attivazione** (l'effetto viene localizzato vicino al lago).
+*   `タマゴパワーが` ➔ **Soggetto dell'effetto** (è quel bonus a entrare in funzione).
+*   `{{発動|はつどう}}する` ➔ **Attivarsi** (formula tipica per poteri, effetti e meccaniche).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `パワー` da solo è troppo generico. Nei menu conta il blocco completo: [けいけんちパワー](term:term-v413-keikenchipawaa) aumenta l'esperienza, [レイドパワー](term:term-v414-reidopawaa) riguarda i raid, [タマゴパワー](term:term-v419-tamagopawaa) riguarda le uova.
+#### ⚖️ Contrasto
+
+`パワー` da solo è troppo generico per capire l'effetto. Nei menu conta il blocco completo: [けいけんちパワー](term:term-v413-keikenchipawaa) riguarda l'esperienza, [レイドパワー](term:term-v414-reidopawaa) riguarda i raid, [タマゴパワー](term:term-v419-tamagopawaa) riguarda le uova.
 
 ## Esempi guidati di riepilogo
 
-Le frasi diventano più leggibili quando direzione, azione e tono lavorano insieme:
+Le frasi diventano più leggibili quando direzione, azione, limite e tono lavorano insieme:
 
 :::example_sentence
 jp: >-
@@ -233,13 +271,6 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{今日|きょう}}は {{行|い}}かなくてもいい。{{無理|むり}}しないで。
-translation_it: >-
-  Oggi non è necessario andare. Non esagerare.
-:::
-
-:::example_sentence
-jp: >-
   レイドパワーが {{発動|はつどう}}したから、{{次|つぎ}}はだれ？
 translation_it: >-
   Il Raid Power si è attivato, quindi chi è il prossimo?
@@ -247,4 +278,4 @@ translation_it: >-
 
 ## Nota finale
 
-Questi verbi e chunk sono segnali di controllo: [{{奥|おく}}](term:term-v415-oku) orienta nello spazio, [{{逃|に}}げる](term:term-v416-nige-ru), [{{助|たす}}ける](term:term-v417-tasuke-ru) e [{{進|すす}}める](term:term-v423-susume-ru) decidono l'azione, mentre [{{早|はや}}く！](term:term-e078-hayaku), [{{無理|むり}}しないで](term:term-e080-muri-shinaide) e i finali `よ / ね / な` ti fanno sentire la pressione o la cura nella voce del personaggio.
+Questi verbi e chunk sono segnali di controllo durante l'esplorazione: [{{奥|おく}}](term:term-v415-oku) orienta nello spazio, [{{逃|に}}げる](term:term-v416-nige-ru), [{{助|たす}}ける](term:term-v417-tasuke-ru) e [{{進|すす}}める](term:term-v423-susume-ru) decidono l'azione, [{{発動|はつどう}}](term:term-v431-hatsudou) conferma che un effetto è attivo, mentre [{{早|はや}}く！](term:term-e078-hayaku), [{{無理|むり}}しないで](term:term-e080-muri-shinaide) e i finali `よ / ね / な` fanno sentire quanto una voce stia spingendo, condividendo o proteggendo.

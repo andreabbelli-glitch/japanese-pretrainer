@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-036-sv-prestudy-l23a-verbi-operativi-sistema-e-menu
 media_id: media-pokemon-scarlet-violet
 slug: 036-sv-prestudy-l23a-verbi-operativi-sistema-e-menu
-title: "Verbi operativi: muoversi, aprire menu e leggere scelte di sistema"
+title: "Comandi di menu e movimento: leggere che cosa fare e dove andare"
 order: 66
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -15,14 +15,15 @@ tags:
 - lesson-23
 prerequisites: []
 summary: >-
-  Leggere comandi che aprono menu, spostano il personaggio, riordinano oggetti o
-  propongono una scelta, collegando particelle e nomi alla funzione visibile.
+  Riconoscere comandi di menu, movimento e dialogo collegando verbi, particelle
+  e nomi alla funzione visibile sullo schermo.
 ---
-# Verbi operativi: muoversi, aprire menu e leggere scelte di sistema
 
-In *Pokémon Scarlet & Violet* molte frasi importanti sono brevi perché devono farti agire subito: aprire un menu, controllare un punto brillante, tornare a scuola, scegliere il primo Pokémon della squadra o partire da una funzione specifica. In questi casi il verbo non lavora da solo. La particella accanto al nome dice se stai attraversando un percorso, puntando a una destinazione, aprendo un oggetto dell'interfaccia o interagendo con qualcuno.
+# Comandi di menu e movimento: leggere che cosa fare e dove andare
 
-Quando leggi messaggi come `メニューを{{開|ひら}}く`, `{{学校|がっこう}}に{{帰|かえ}}る` o `{{光|ひか}}っている{{場所|ばしょ}}を{{調|しら}}べる`, il valore pratico nasce dalla coppia forma + bersaglio: `を` marca ciò che manipoli o controlli, `に` e `へ` indicano dove vai, `と` introduce spesso la persona con cui fai qualcosa.
+In *Pokémon Scarlet & Violet* molte frasi importanti appaiono mentre hai già il dito sul comando: aprire un menu, controllare un punto brillante, tornare a scuola, scegliere chi sta in testa alla squadra o partire da una funzione di collegamento. Il testo è breve perché deve trasformarsi subito in azione.
+
+Il verbo, però, non lavora mai da solo. In messaggi come `メニューを{{開|ひら}}く`, `{{学校|がっこう}}に{{帰|かえ}}る` o `{{光|ひか}}っている{{場所|ばしょ}}を{{調|しら}}べる`, la particella accanto al nome decide la scena: `を` marca ciò che manipoli o controlli, `に` e `へ` orientano il movimento, `と` porta dentro la persona con cui fai qualcosa.
 
 ## Termini chiave
 
@@ -66,11 +67,24 @@ Quando leggi messaggi come `メニューを{{開|ひら}}く`, `{{学校|がっ�
 
 ## 1. Muoversi nella mappa: percorso, destinazione e ritorno
 
-[{{進|すす}}む](term:term-v394-susumu) descrive un avanzamento: il personaggio o il percorso va avanti. Nei comandi di esplorazione può comparire con `を` quando il nome indica il tragitto attraversato, come `この{{道|みち}}を{{進|すす}}む`, oppure con `へ` quando il testo guarda alla direzione successiva, come `{{先|さき}}へ{{進|すす}}む`. Non è un verbo di "scegliere": è il movimento che continua lungo una linea già aperta.
+La mappa di Paldea alterna due tipi di frase: quelle che ti fanno continuare lungo un percorso e quelle che ti spostano verso un punto preciso. La differenza si vede spesso prima del verbo, nella particella.
 
-[{{飛|と}}ぶ](term:term-v396-tobu) significa "volare", ma nei menu di viaggio rapido non racconta sempre un volo fisico visto in scena. Con una destinazione marcata da `へ`, come `ポケモンセンターへ{{飛|と}}ぶ`, diventa la formula compatta per spostarsi subito verso un luogo registrato. [{{帰|かえ}}る](term:term-v397-kaeru), invece, contiene l'idea di ritorno: `{{学校|がっこう}}に{{帰|かえ}}る` non vuol dire solo "andare a scuola", ma rientrare in un posto che funziona come base o punto di partenza.
+*   [{{進|すす}}む](term:term-v394-susumu) descrive l'avanzare: il personaggio, la camera o il percorso vanno avanti. Nei comandi di esplorazione può comparire con `を` quando il nome è il tragitto attraversato, come `この{{道|みち}}を{{進|すす}}む`, oppure con `へ` quando il testo guarda alla direzione successiva, come `{{先|さき}}へ{{進|すす}}む`. Non è un verbo di scelta da menu: ti dice che la linea davanti a te continua.
+*   [{{飛|と}}ぶ](term:term-v396-tobu) significa "volare", ma nel viaggio rapido non descrive sempre un volo fisico mostrato in scena. Con una destinazione marcata da `へ`, come `ポケモンセンターへ{{飛|と}}ぶ`, diventa la formula compatta per trasferirti subito verso un luogo registrato.
+*   [{{帰|かえ}}る](term:term-v397-kaeru) contiene l'idea di ritorno. `{{学校|がっこう}}に{{帰|かえ}}る` non è soltanto "andare a scuola": è rientrare in un luogo che il gioco tratta come base, origine o punto familiare.
+*   [まっすぐ](term:term-v409-massugu) aggiunge il modo del movimento: avanti dritto, senza deviazioni. [{{低|ひく}}い](term:term-v408-hikui), invece, non è un comando direzionale: descrive qualcosa di basso, come altezza, livello, probabilità o valore numerico. Se compare vicino a statistiche o percentuali, prepara una limitazione più che un movimento.
 
-[まっすぐ](term:term-v409-massugu) aggiunge il modo del movimento: avanti dritto, senza deviazioni. [{{低|ひく}}い](term:term-v408-hikui) non è un comando, ma un aggettivo che può descrivere altezza, livello, probabilità o valore numerico basso; quando appare vicino a statistiche o percentuali, ti prepara a leggere una limitazione, non una direzione.
+:::example_sentence
+jp: >-
+  ポケモンセンターへ {{飛|と}}びます。
+translation_it: >-
+  Mi sposto rapidamente al Centro Pokémon.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `ポケモンセンターへ` ➔ **Destinazione** (`へ` orienta il movimento verso il Centro Pokémon, cioè il punto d'arrivo del viaggio rapido).
+*   `{{飛|と}}びます` ➔ **Spostamento rapido** (forma cortese di [{{飛|と}}ぶ](term:term-v396-tobu): qui il senso pratico è "volare / trasferirsi", non semplicemente sbattere le ali).
 
 :::example_sentence
 jp: >-
@@ -81,18 +95,23 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `この{{道|みち}}を` -> `を` marca il tragitto attraversato: la strada è lo spazio lungo cui avanzi.
-- `まっすぐ` -> modifica il movimento e dice "senza girare".
-- `{{進|すす}}みます` -> forma cortese di [{{進|すす}}む](term:term-v394-susumu): l'azione è procedere, non scegliere una destinazione dal menu.
+*   `この{{道|みち}}を` ➔ **Tragitto attraversato** (`を` non marca una destinazione lontana: marca la strada come spazio lungo cui avanzi).
+*   `まっすぐ` ➔ **Modo del movimento** (dice che procedi dritto, senza girare o deviare).
+*   `{{進|すす}}みます` ➔ **Azione di avanzamento** (forma cortese di [{{進|すす}}む](term:term-v394-susumu): l'azione è procedere, non scegliere una destinazione dal menu).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{道|みち}}を{{進|すす}}む` guarda al percorso che percorri; `ポケモンセンターへ{{飛|と}}ぶ` guarda alla destinazione del viaggio rapido; `{{学校|がっこう}}に{{帰|かえ}}る` aggiunge l'idea di ritorno a un luogo familiare o funzionale.
+#### ⚖️ Contrasto
+
+*   `{{道|みち}}を{{進|すす}}む` guarda al percorso che attraversi.
+*   `ポケモンセンターへ{{飛|と}}ぶ` guarda alla destinazione del viaggio rapido.
+*   `{{学校|がっこう}}に{{帰|かえ}}る` aggiunge l'idea di ritorno a un luogo familiare o funzionale.
 
 ## 2. Aprire, controllare e incontrare: che cosa prende la particella
 
-[{{開|ひら}}く](term:term-v407-hiraku) e [{{調|しら}}べる](term:term-v403-shirabe-ru) sono verbi transitivi: cercano quasi sempre un oggetto marcato da `を`. In `メニューを{{開|ひら}}く`, il menu è ciò che apri. In `{{光|ひか}}っている{{場所|ばしょ}}を{{調|しら}}べる`, il punto brillante è ciò che controlli. Il gioco usa spesso queste frasi quando non serve una spiegazione lunga: ti basta individuare l'oggetto prima del verbo.
+Quando il gioco ti chiede di interagire con qualcosa, il giapponese sposta il peso sull'oggetto prima del verbo. Se riconosci quel bersaglio, capisci subito che cosa toccare, aprire o controllare.
 
-[{{出会|であ}}う](term:term-v410-deau) funziona diversamente. Non "apri" o "controlli" un Pokémon: ti imbatti in lui. Per questo l'incontro naturale usa `に` o `と`, come `めずらしいポケモンに{{出会|であ}}う`. La particella cambia la scena mentale: con `を` manipoli un bersaglio; con `に` arrivi a un contatto o a un incontro.
+*   [{{開|ひら}}く](term:term-v407-hiraku) prende come oggetto ciò che viene aperto. In `メニューを{{開|ひら}}く`, `メニュー` è il pannello dell'interfaccia che fai comparire. La particella `を` ti dice che il menu non è una destinazione: è l'oggetto dell'azione.
+*   [{{調|しら}}べる](term:term-v403-shirabe-ru) significa controllare, esaminare, investigare. In `{{光|ひか}}っている{{場所|ばしょ}}を{{調|しら}}べる`, il punto brillante è ciò che ispezioni. Il gioco usa spesso questa forma quando un elemento dello scenario nasconde un oggetto, un indizio o una reazione.
+*   [{{出会|であ}}う](term:term-v410-deau) funziona diversamente: non apri o controlli un Pokémon, ti imbatti in lui. Per questo l'incontro naturale usa `に` o `と`, come `めずらしいポケモンに{{出会|であ}}う`. La particella cambia la scena mentale: con `を` manipoli un bersaglio; con `に` arrivi a un contatto.
 
 :::example_sentence
 jp: >-
@@ -103,10 +122,10 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `メニューを` -> il menu è l'oggetto aperto da [{{開|ひら}}く](term:term-v407-hiraku).
-- `{{開|ひら}}いて` -> forma in `-て`: collega l'apertura del menu all'azione successiva.
-- `{{先頭|せんとう}}のポケモン` -> [{{先頭|せんとう}}](term:term-v411-sentou) indica il primo posto nella lista o nella squadra.
-- `{{確認|かくにん}}します` -> il verbo finale dice l'azione principale: controllare ciò che hai davanti dopo aver aperto il menu.
+*   `メニューを` ➔ **Oggetto aperto** (il menu è ciò che prende l'azione di [{{開|ひら}}く](term:term-v407-hiraku)).
+*   `{{開|ひら}}いて` ➔ **Azione preparatoria** (forma in `-て`: apri il menu e poi fai l'azione successiva).
+*   `{{先頭|せんとう}}のポケモン` ➔ **Elemento in prima posizione** ([{{先頭|せんとう}}](term:term-v411-sentou) indica il primo posto nella lista o nella squadra).
+*   `{{確認|かくにん}}します` ➔ **Controllo finale** (il verbo conclusivo dice che verifichi ciò che hai davanti dopo aver aperto il menu).
 
 :::example_sentence
 jp: >-
@@ -117,34 +136,63 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{光|ひか}}っている{{場所|ばしょ}}を` -> la relativa `{{光|ひか}}っている` restringe il luogo: controlli il punto che sta brillando.
-- `{{調|しら}}べます` -> verbo d'ispezione: esamini il punto, non lo attraversi.
+*   `{{光|ひか}}っている{{場所|ばしょ}}を` ➔ **Punto da ispezionare** (la relativa `{{光|ひか}}っている` restringe il luogo: controlli proprio il punto che sta brillando).
+*   `{{調|しら}}べます` ➔ **Verbo d'ispezione** (esamini il punto, non lo attraversi e non ti sposti verso di lui).
 
-> [!WARNING]
-> **⚠️ Non leggere tutti gli incontri come azioni su un oggetto.** `ポケモンを{{調|しら}}べる` può voler dire "controllare un Pokémon" in una schermata dati; `ポケモンに{{出会|であ}}う` dice invece che lo incontri nel mondo. La differenza tra `を` e `に` separa ispezione e incontro.
+#### ⚖️ Contrasto
+
+*   `ポケモンを{{調|しら}}べる` può voler dire "controllare un Pokémon" in una schermata dati.
+*   `ポケモンに{{出会|であ}}う` dice invece che lo incontri nel mondo.
+*   La differenza tra `を` e `に` separa ispezione e incontro: nel primo caso hai un oggetto davanti, nel secondo entri in contatto con qualcosa o qualcuno.
 
 ## 3. Menu, squadra e progressi: nomi che diventano azioni
 
-[{{整理|せいり}}](term:term-v393-seiri) è un nome: ordine, sistemazione, riordino. Nei menu diventa azione con `する`, come `ボックスのポケモンを{{整理|せいり}}する`: non stai "pulendo" la box, stai mettendo in ordine o organizzando i Pokémon. Lo stesso meccanismo appare in [{{通信|つうしん}}{{交換|こうかん}}](term:term-v400-tsuushinkoukan), dove [{{通信|つうしん}}](term:term-v267-tsuushin) porta l'idea di collegamento e [{{交換|こうかん}}](term:term-v400-tsuushinkoukan) quella di scambio. Con `{{友|とも}}だちと{{通信|つうしん}}{{交換|こうかん}}する`, `と` segnala la persona con cui fai lo scambio.
+Molte funzioni dell'interfaccia non partono da un verbo puro. Partono da un nome, poi diventano azione con `する` o con una costruzione di menu. È il caso di riordino, scambio, completamento e posizione in squadra.
 
-[{{先頭|せんとう}}](term:term-v411-sentou) è la posizione iniziale, la testa della fila. In un menu squadra, `ポケモンを{{先頭|せんとう}}にする` significa mettere quel Pokémon al primo posto, quindi renderlo quello che entra per primo in contesti dove l'ordine conta. [{{図鑑|ずかん}}{{完成|かんせい}}](term:term-v412-zukan-kansei) compatta un obiettivo di progresso: [{{図鑑|ずかん}}](term:term-v412-zukan-kansei) è il Pokédex come catalogo, [{{完成|かんせい}}](term:term-v412-zukan-kansei) è il completamento.
+*   [{{整理|せいり}}](term:term-v393-seiri) è un nome: ordine, sistemazione, riordino. Nei menu diventa azione con `する`, come `ボックスのポケモンを{{整理|せいり}}する`. Non stai "pulendo" la box: stai organizzando i Pokémon, spesso per renderli più facili da trovare o confrontare.
+*   [{{通信|つうしん}}{{交換|こうかん}}](term:term-v400-tsuushinkoukan) unisce collegamento e scambio. [{{通信|つうしん}}](term:term-v267-tsuushin) porta l'idea di comunicazione o connessione, mentre [{{交換|こうかん}}](term:term-v400-tsuushinkoukan) porta l'idea di scambio. Con `{{友|とも}}だちと{{通信|つうしん}}{{交換|こうかん}}する`, `と` segnala la persona con cui fai l'azione.
+*   [{{先頭|せんとう}}](term:term-v411-sentou) è la posizione di testa, il primo posto della fila. In un menu squadra, `ポケモンを{{先頭|せんとう}}にする` significa mettere quel Pokémon davanti a tutti, quindi renderlo quello che entra per primo quando l'ordine della squadra conta.
+*   [{{図鑑|ずかん}}{{完成|かんせい}}](term:term-v412-zukan-kansei) compatta un obiettivo di progresso: [{{図鑑|ずかん}}](term:term-v412-zukan-kansei) è il Pokédex come catalogo, [{{完成|かんせい}}](term:term-v412-zukan-kansei) è il completamento. Quando il gioco li accosta, non sta descrivendo una singola cattura: sta misurando il percorso verso un catalogo completo.
 
 [{{戦略|せんりゃく}}](term:term-v401-senryaku) e [{{手加減|てかげん}}](term:term-v406-tekagen) entrano più facilmente nei dialoghi che commentano una lotta. [{{戦略|せんりゃく}}](term:term-v401-senryaku) parla del piano, non della singola mossa; [{{手加減|てかげん}}](term:term-v406-tekagen) indica il dosare la forza, quindi trattenersi. Se un rivale dice di non fare [{{手加減|てかげん}}](term:term-v406-tekagen), il tono non è tecnico da menu: sta chiedendo una sfida vera.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** in [{{先頭|せんとう}}](term:term-v411-sentou), pensa alla "testa" della lista. Non è solo "prima opzione" in astratto: è il posto davanti, quello che il gioco userà prima quando l'ordine della squadra diventa operativo.
+:::example_sentence
+jp: >-
+  ポケモンを {{先頭|せんとう}}に します。
+translation_it: >-
+  Metto il Pokémon in prima posizione.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `ポケモンを` ➔ **Oggetto spostato** (il Pokémon è ciò che modifichi nella squadra).
+*   `{{先頭|せんとう}}に` ➔ **Risultato di posizione** (`に` indica lo stato o posto in cui lo metti: davanti, in testa).
+*   `します` ➔ **Azione causativa pratica** (`する` trasforma la configurazione in comando: fai sì che quel Pokémon sia in prima posizione).
+
+#### 🧠 Gancio
+
+Pensa a [{{先頭|せんとう}}](term:term-v411-sentou) come alla "testa" della lista. Non è solo "prima opzione" in astratto: è il posto davanti, quello che il gioco userà prima quando l'ordine della squadra diventa operativo.
 
 ## 4. Etichette compatte: poteri, risorse e categorie
 
-Le etichette come [かがやきパワー](term:term-v395-kagayakipawaa), [そうぐうパワー](term:term-v399-souguupawaa) e [おとしものパワー](term:term-v405-otoshimonopawaa) condividono una struttura leggibile: un nome prima di `パワー` specifica il tipo di bonus. `かがやき` rimanda allo scintillio dei Pokémon cromatici, `そうぐう` all'incontro con Pokémon selvatici, `おとしもの` agli oggetti lasciati cadere. Anche se sono label verticali del gioco, il meccanismo è trasparente: il nome davanti restringe la funzione del potere.
+I bonus dei panini e le risorse dell'interfaccia sono spesso label compatte. Sembrano nomi tecnici da memorizzare, ma molti si leggono bene se separi il pezzo descrittivo dal nome di categoria.
 
-[パラドックスポケモン](term:term-v398-paradokkusupokemon) e [リーグペイ](term:term-v402-riigupei) lavorano come nomi di categoria. Il primo etichetta un gruppo narrativo e meccanico di Pokémon; il secondo è una risorsa di pagamento, spesso abbreviata in LP nell'interfaccia. Quando li vedi in menu o ricompense, non cercare un verbo nascosto: sono sostantivi che definiscono che cosa stai guardando o usando.
+*   [かがやきパワー](term:term-v395-kagayakipawaa), [そうぐうパワー](term:term-v399-souguupawaa) e [おとしものパワー](term:term-v405-otoshimonopawaa) condividono una struttura: un nome prima di `パワー` specifica il tipo di bonus. `かがやき` rimanda allo scintillio dei Pokémon cromatici, `そうぐう` all'incontro con Pokémon selvatici, `おとしもの` agli oggetti lasciati cadere. Anche se sono label molto legate al gioco, il meccanismo è trasparente: il nome davanti restringe la funzione del potere.
+*   [パラドックスポケモン](term:term-v398-paradokkusupokemon) e [リーグペイ](term:term-v402-riigupei) lavorano come nomi di categoria. Il primo etichetta un gruppo narrativo e meccanico di Pokémon; il secondo è una risorsa di pagamento, spesso abbreviata in LP nell'interfaccia. Quando li vedi in menu o ricompense, non cercare un verbo nascosto: sono sostantivi che definiscono che cosa stai guardando o usando.
+
+#### ⚖️ Contrasto
+
+*   `かがやき`, `そうぐう` e `おとしもの` spiegano che tipo di `パワー` stai ottenendo.
+*   [リーグペイ](term:term-v402-riigupei) non descrive un effetto temporaneo: indica una valuta o risorsa.
+*   [パラドックスポケモン](term:term-v398-paradokkusupokemon) non è un comando: è una categoria di Pokémon, quindi nei testi tende a funzionare come nome del gruppo.
 
 ## 5. Formule rapide di dialogo: provare, affidare, partire
 
-[{{見|み}}てみよう](term:term-e075-mitemiyou) combina `{{見|み}}る` con `Vてみる`, il pattern del "provare a fare". La forma volitiva `みよう` rende la frase un invito morbido: "proviamo a vedere", "andiamo a controllare". Non è un ordine secco; è il modo in cui un personaggio o un tutorial apre un'azione esplorativa.
+Nei tutorial e nei dialoghi di accompagnamento, il gioco non usa solo comandi secchi. Usa formule che propongono un primo passo, distribuiscono responsabilità o restringono il campo d'azione.
 
-[あとは{{任|まか}}せて](term:term-e076-atoha-makase-te) separa `あと` dal resto dell'azione: "quanto rimane, lascialo a me". [まずはここから](term:term-e077-mazuhakokokara) imposta invece il punto di partenza. `まずは` mette in primo piano la prima mossa, `ここから` dice "da qui": insieme suonano come una guida che restringe il caos iniziale a un primo passo.
+### A. Provare a controllare: `{{見|み}}てみよう`
+
+[{{見|み}}てみよう](term:term-e075-mitemiyou) combina `{{見|み}}る` con `Vてみる`, il pattern del "provare a fare". La forma volitiva `みよう` rende la frase un invito morbido: "proviamo a vedere", "andiamo a controllare". Non è un ordine secco; è il modo in cui un personaggio o un tutorial apre un'azione esplorativa senza chiudere subito il risultato.
 
 :::example_sentence
 jp: >-
@@ -155,9 +203,13 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `バッグの{{中身|なかみ}}を` -> il contenuto della borsa è ciò che si va a guardare.
-- `{{見|み}}て` -> forma in `-て` di `{{見|み}}る`.
-- `みよう` -> volitivo di `みる` dentro `Vてみる`: l'azione diventa "proviamo a vedere / controllare".
+*   `バッグの{{中身|なかみ}}を` ➔ **Oggetto del controllo** (il contenuto della borsa è ciò che vai a guardare).
+*   `{{見|み}}て` ➔ **Forma in `-te`** (da `{{見|み}}る`, vedere / guardare).
+*   `みよう` ➔ **Invito al tentativo** (volitivo di `みる` dentro `Vてみる`: l'azione diventa "proviamo a vedere / controllare").
+
+### B. Lasciare il resto a qualcuno: `あとは{{任|まか}}せて`
+
+[あとは{{任|まか}}せて](term:term-e076-atoha-makase-te) separa `あと` dal resto dell'azione: "quanto rimane, lascialo a me". `{{任|まか}}せて` viene da `{{任|まか}}せる`, affidare, lasciare in carico. In dialogo suona come una rassicurazione operativa: tu fai la tua parte, il parlante prende su di sé ciò che resta.
 
 :::example_sentence
 jp: >-
@@ -168,18 +220,44 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `きみは{{先|さき}}に{{行|い}}って` -> separa il compito dell'interlocutore: andare avanti.
-- `あとは` -> "quanto al resto": sposta il tema su ciò che rimane da fare.
-- `{{任|まか}}せて` -> richiesta/assicurazione: "lascia fare a me".
+*   `きみは{{先|さき}}に{{行|い}}って` ➔ **Compito dell'interlocutore** (`きみは` marca "tu"; `{{先|さき}}に{{行|い}}って` chiede di andare avanti).
+*   `あとは` ➔ **Tema residuo** ("quanto al resto": sposta il focus su ciò che rimane da fare).
+*   `{{任|まか}}せて` ➔ **Affidamento** (lascia fare a me / lascia in carico a me).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{見|み}}てみよう](term:term-e075-mitemiyou) invita a fare una prova insieme; [あとは{{任|まか}}せて](term:term-e076-atoha-makase-te) sposta la responsabilità sul parlante; [まずはここから](term:term-e077-mazuhakokokara) indica da dove cominciare prima di aprire il resto delle opzioni.
+### C. Scegliere il punto di partenza: `まずはここから`
+
+[まずはここから](term:term-e077-mazuhakokokara) imposta il primo passo. `まずは` mette in primo piano ciò che viene prima del resto, `ここから` dice "da qui". Insieme suonano come una guida che restringe il caos iniziale a un punto d'avvio concreto: prima questo, poi il resto.
+
+#### ⚖️ Contrasto
+
+*   [{{見|み}}てみよう](term:term-e075-mitemiyou) invita a fare una prova insieme.
+*   [あとは{{任|まか}}せて](term:term-e076-atoha-makase-te) sposta la responsabilità sul parlante.
+*   [まずはここから](term:term-e077-mazuhakokokara) indica da dove cominciare prima di aprire il resto delle opzioni.
 
 ## 6. Consigli, divieti gentili e desideri osservati
 
+Alcune frasi operative non ti dicono solo che cosa fare: ti dicono che cosa evitare, quale opzione è preferibile o che cosa un personaggio sembra voler fare. Qui la forma grammaticale cambia il grado di comando.
+
+### A. Divieto cortese: `～ないでください`
+
 [～ないでください](grammar:grammar-g079-per-favore-non-fare) è la forma cortese per chiedere di non fare qualcosa: verbo in negativo con `ないで` + `ください`. In un messaggio di sistema può bloccare un'azione senza suonare brusco, come `ここではレポートを{{消|け}}さないでください`. La parte importante è `ないで`: non descrive una mancanza, ma trasforma il verbo in "senza fare / non fare".
 
-[～ほうがいい](grammar:grammar-g081-e-meglio-fare) introduce un consiglio pratico. In `{{先|さき}}にポケモンを{{回復|かいふく}}したほうがいい`, il parlante non impone un comando da menu: valuta l'opzione migliore prima di procedere. [～たがる](grammar:grammar-g080-sembrare-voler-fare-terza-persona), invece, serve quando osservi il desiderio di un'altra persona o creatura: non dici direttamente "io voglio", ma "sembra voler fare". È utile nei dialoghi in cui qualcuno interpreta intenzioni, esitazioni o voglia di lottare.
+:::example_sentence
+jp: >-
+  ここでは レポートを {{消|け}}さないでください。
+translation_it: >-
+  Qui non cancellare il report, per favore.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `ここでは` ➔ **Ambito del divieto** (`では` restringe la regola a "qui / in questa schermata").
+*   `レポートを` ➔ **Oggetto dell'azione vietata** (il report è ciò che non devi cancellare).
+*   `{{消|け}}さないでください` ➔ **Richiesta negativa cortese** (`{{消|け}}す` diventa `{{消|け}}さないで`, poi `ください` rende la proibizione più formale).
+
+### B. Consiglio pratico: `～ほうがいい`
+
+[～ほうがいい](grammar:grammar-g081-e-meglio-fare) introduce un consiglio pratico. In `{{先|さき}}にポケモンを{{回復|かいふく}}したほうがいい`, il parlante non impone un comando da menu: valuta l'opzione migliore prima di procedere. La forma prima di `ほうがいい` è spesso passata piana, ma dentro questo pattern non significa per forza che l'azione sia già successa.
 
 :::example_sentence
 jp: >-
@@ -190,12 +268,19 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{先|さき}}に` -> prima, in anticipo rispetto all'azione successiva.
-- `ポケモンを{{回復|かいふく}}した` -> forma passata piana usata prima di [～ほうがいい](grammar:grammar-g081-e-meglio-fare); in questo pattern non indica per forza un'azione già avvenuta.
-- `ほうがいい` -> presenta quell'azione come scelta migliore.
+*   `{{先|さき}}に` ➔ **Ordine temporale** (prima, in anticipo rispetto all'azione successiva).
+*   `ポケモンを{{回復|かいふく}}した` ➔ **Azione consigliata** (forma passata piana usata prima di [～ほうがいい](grammar:grammar-g081-e-meglio-fare); qui non indica per forza un'azione già avvenuta).
+*   `ほうがいい` ➔ **Valutazione pratica** (presenta quell'azione come scelta migliore).
 
-> [!WARNING]
-> **⚠️ `～たがる` non sostituisce `～たい` per parlare di te.** `{{行|い}}きたい` è "voglio andare"; `{{行|い}}きたがっている` è "sembra voler andare / sta mostrando voglia di andare" e guarda il desiderio dall'esterno.
+### C. Desiderio osservato: `～たがる`
+
+[～たがる](grammar:grammar-g080-sembrare-voler-fare-terza-persona) serve quando osservi il desiderio di un'altra persona o creatura: non dici direttamente "io voglio", ma "sembra voler fare". È utile nei dialoghi in cui qualcuno interpreta intenzioni, esitazioni o voglia di lottare.
+
+#### ⚖️ Contrasto
+
+*   `{{行|い}}きたい` è "voglio andare" e parla del desiderio del soggetto in modo diretto.
+*   `{{行|い}}きたがっている` è "sembra voler andare / sta mostrando voglia di andare" e guarda il desiderio dall'esterno.
+*   Per parlare di te, [～たがる](grammar:grammar-g080-sembrare-voler-fare-terza-persona) non sostituisce `～たい`: è una forma da osservazione, non da confessione diretta.
 
 ## Esempi guidati di riepilogo
 

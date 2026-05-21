@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi
 media_id: media-pokemon-scarlet-violet
 slug: 032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi
-title: "Verbi operativi nei menu: scegliere, tornare, cambiare, partecipare"
+title: "Menu e verbi operativi: scegliere, tornare, cambiare, partecipare"
 order: 62
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -15,15 +15,15 @@ tags:
 - lesson-21
 prerequisites: []
 summary: >-
-  Usare i verbi dei menu per capire apertura, selezione, spostamento, controllo
-  e conferma, così da sapere quale comando sta chiedendo la schermata.
+  Leggere i verbi dei menu e dei tutorial per capire scelta, modifica,
+  progressione, orientamento e partecipazione nelle schermate di Paldea.
 ---
 
-# Verbi operativi nei menu: scegliere, tornare, cambiare, partecipare
+# Menu e verbi operativi: scegliere, tornare, cambiare, partecipare
 
-Nei menu di *Pokémon Scarlet & Violet* il giapponese è spesso breve, ma non è generico: ogni verbo dice se stai aprendo una possibilità, tornando alla schermata precedente, modificando una scelta già fatta o entrando in un'attività. Leggere bene queste forme evita di trattare tutti i pulsanti come semplici "ok".
+Nei menu di *Pokémon Scarlet & Violet*, una riga breve può decidere se stai scegliendo un Pokémon, tornando indietro, cambiando un'impostazione già attiva o entrando davvero in un'attività. Il giapponese delle schermate è compatto, ma non è neutro: il verbo operativo ti dice quale tipo di azione il gioco si aspetta.
 
-Lo stesso lessico passa poi nei tutorial e nei dialoghi brevi. Un personaggio può darti un [{{目標|もくひょう}}](term:term-v328-mokuhyou), spiegarti un [{{方法|ほうほう}}](term:term-v330-houhou), aggiungere un [〜のヒント](term:term-e064-nohinto) o dichiarare che farà qualcosa [{{本気|ほんき}}で](term:term-v323-honki-de). Il sistema operativo del gioco e il parlato della storia usano quindi gli stessi segnali: azione, stato, possibilità, intenzione.
+Gli stessi segnali si allargano poi ai tutorial e ai dialoghi. Un personaggio può fissare un [{{目標|もくひょう}}](term:term-v328-mokuhyou), spiegare un [{{方法|ほうほう}}](term:term-v330-houhou), lasciarti un [〜のヒント](term:term-e064-nohinto) o dichiarare che parteciperà [{{本気|ほんき}}で](term:term-v323-honki-de). Se riconosci il verbo e il suo oggetto, la schermata smette di essere una lista di pulsanti e diventa una frase leggibile.
 
 ## Termini chiave
 
@@ -49,27 +49,28 @@ Lo stesso lessico passa poi nei tutorial e nei dialoghi brevi. Un personaggio pu
 
 ## Espressioni ricorrenti
 
-- [まとめて](term:term-e048-matomete) — tutto insieme / in totale
+- [まとめて](term:term-e048-matomete) — tutto insieme / in blocco
 - [{{作|つく}}れる](term:term-e049-tsukureru) — si può creare / craftare
-- [ちなみに](term:term-e060-chinamini) — tra l'altro
-- [どうかな](term:term-e061-doukana) — chissà / come sarà?
-- [〜のヒント](term:term-e064-nohinto) — indizio su…
+- [ちなみに](term:term-e060-chinamini) — tra l'altro / a proposito
+- [どうかな](term:term-e061-doukana) — chissà / che ne dici?
+- [〜のヒント](term:term-e064-nohinto) — indizio su...
 
 ## Pattern grammaticali chiave
 
-- [～かも](grammar:grammar-g064-contrazione-di) — contrazione di 〜かもしれない
+- [～かも](grammar:grammar-g064-contrazione-di) — forse / potrebbe darsi
 - [～にくい](grammar:grammar-g065-difficile-da-fare) — difficile da fare
 - [～つもりだ](grammar:grammar-g067-avere-intenzione-di) — avere intenzione di
 
 ---
 
-## 1. Comandi di menu: scegliere, tornare, modificare
+## 1. Muoversi nei menu: scegliere, tornare, cambiare
 
-[{{選|えら}}ぶ](term:term-v322-erabu) è il verbo base della decisione: una voce, un Pokémon, una destinazione o un oggetto diventano l'elemento marcato da `を` e il gioco aspetta che tu li scelga. In una schermata con più opzioni, `ポケモンを{{選|えら}}ぶ` non descrive il Pokémon: ti dice che il Pokémon è il bersaglio della selezione.
+Quando il gioco ti mette davanti una schermata di selezione, il verbo decide il tipo di movimento che stai compiendo nell'interfaccia. Non basta riconoscere un pulsante come "conferma": in giapponese la frase spesso dice se stai aprendo una scelta, annullando il passo corrente o modificando uno stato già registrato.
 
-[{{戻|もど}}る](term:term-v315-modoru) lavora nella direzione opposta. Non significa "ripetere" e non crea una nuova scelta: riporta indietro, alla schermata precedente o al punto da cui eri partito. Quando compare come comando, il suo valore pratico è uscire dal livello corrente dell'interfaccia senza confermare una nuova azione.
-
-[{{変更|へんこう}}](term:term-v331-henkou) è diverso da [{{選|えら}}ぶ](term:term-v322-erabu): una scelta esiste già, e ora viene cambiata. In menu di impostazioni, aspetto o configurazione, `{{変更|へんこう}}する` segnala che non stai solo indicando un'opzione, ma stai sostituendo lo stato attuale con un altro.
+*   [{{選|えら}}ぶ](term:term-v322-erabu) è il verbo base della selezione. Una voce del menu, un Pokémon, una destinazione o un oggetto vengono marcati da `を` e diventano il bersaglio della scelta: `ポケモンを{{選|えら}}ぶ` non sta descrivendo il Pokémon, ma ti sta dicendo che il Pokémon è l'elemento da selezionare. Nelle schermate di squadra o negli elenchi, questa forma ti orienta subito verso l'azione richiesta.
+*   [{{戻|もど}}る](term:term-v315-modoru) lavora nella direzione opposta. Non significa "ripetere" e non apre un nuovo ramo: riporta al punto precedente, spesso alla schermata da cui sei arrivato. Come comando di UI, [{{戻|もど}}る](term:term-v315-modoru) è il verbo dell'uscita controllata, non della conferma.
+*   [{{変更|へんこう}}](term:term-v331-henkou) entra in gioco quando una scelta o un'impostazione esiste già. In menu di aspetto, configurazione o preferenze, `{{変更|へんこう}}する` segnala che lo stato attuale verrà sostituito con un altro. Per questo è più forte di [{{選|えら}}ぶ](term:term-v322-erabu): non scegli soltanto una possibilità, cambi ciò che era impostato.
+*   [{{見|み}}た{{目|め}}](term:term-v321-mitame) significa "aspetto esteriore": `{{見|み}}た` viene da ciò che si vede, `{{目|め}}` è l'occhio o la vista. Quando questa parola compare accanto a [{{変更|へんこう}}](term:term-v331-henkou), la schermata non parla della forza del personaggio o del Pokémon, ma di ciò che appare visivamente.
 
 :::example_sentence
 jp: >-
@@ -80,20 +81,27 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{見|み}}た{{目|め}}を` -> oggetto della modifica: l'aspetto esteriore è ciò che cambia.
-- `{{変更|へんこう}}します` -> azione di modifica, non semplice scelta iniziale.
-- `か？` -> domanda di conferma: il gioco chiede se vuoi procedere con il cambio.
+*   `{{見|み}}た{{目|め}}を` ➔ **Oggetto della modifica** (`を` marca l'aspetto esteriore come ciò che verrà cambiato).
+*   `{{変更|へんこう}}します` ➔ **Azione di cambio** (forma cortese di `{{変更|へんこう}}する`, quindi modifica di uno stato già presente).
+*   `か？` ➔ **Domanda di conferma** (il gioco chiede se vuoi procedere prima di applicare il cambio).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{選|えら}}ぶ](term:term-v322-erabu) apre una selezione tra possibilità; [{{変更|へんこう}}](term:term-v331-henkou) interviene su qualcosa già impostato; [{{戻|もど}}る](term:term-v315-modoru) annulla il movimento in avanti e ti riporta al livello precedente del menu.
+#### ⚖️ Contrasto
 
-## 2. Possibilità e progressione: aumentare, creare, caricare
+*   [{{選|えら}}ぶ](term:term-v322-erabu) apre una selezione tra opzioni disponibili.
+*   [{{変更|へんこう}}](term:term-v331-henkou) interviene su qualcosa che ha già un valore.
+*   [{{戻|もど}}る](term:term-v315-modoru) non sceglie e non cambia: riporta indietro nel flusso della schermata.
 
-[{{増|ふ}}える](term:term-v314-fue-ru) è intransitivo: non dice "aggiungi tu", ma "qualcosa aumenta / viene aggiunto". Per questo in messaggi come `メニューが{{増|ふ}}える`, il soggetto marcato da `が` è ciò che cresce o compare nel sistema. Il focus non è il tuo gesto, ma il nuovo stato della UI.
+---
 
-[{{作|つく}}れる](term:term-e049-tsukureru) è la forma potenziale di `{{作|つく}}る`: il gioco non sta dicendo solo "creare", ma "si può creare". In *Scarlet & Violet* questo valore è molto concreto nelle schermate di craft, ricette e MT: se leggi [{{作|つく}}れる](term:term-e049-tsukureru), la possibilità è aperta perché hai materiali, condizioni o funzione disponibili.
+## 2. Funzioni che si sbloccano: aumentare, creare, caricare
 
-[まとめて](term:term-e048-matomete) concentra più elementi in una sola azione. In un acquisto o in una selezione multipla, non indica "molto" in modo vago: dice che le voci vengono trattate insieme, in blocco. [チャージ](term:term-v319-chaaji), invece, porta il lessico della ricarica: energia, funzione o risorsa torna pronta prima dell'uso successivo.
+Quando la UI parla di nuove funzioni, ricette, crafting o risorse, il soggetto della frase spesso non sei tu. Il giapponese mette al centro lo stato del sistema: una voce aumenta, una creazione diventa possibile, una risorsa si ricarica.
+
+*   [{{増|ふ}}える](term:term-v314-fue-ru) è intransitivo: non significa "aggiungere qualcosa con la mano", ma "qualcosa aumenta / compare". In `メニューが{{増|ふ}}える`, `メニュー` è marcato da `が` perché è il menu stesso a espandersi. Il focus è il nuovo stato della schermata, non un gesto manuale del giocatore.
+*   [{{作|つく}}れる](term:term-e049-tsukureru) è la forma potenziale di `{{作|つく}}る`: il gioco non dice semplicemente "creare", ma "si può creare". In *Scarlet & Violet* questo valore diventa concreto quando hai materiali, ricette o una funzione sbloccata per MT e oggetti.
+*   [まとめて](term:term-e048-matomete) comprime più elementi in un'unica azione. In acquisti, selezioni o conferme multiple, non vuol dire solo "molto": dice che gli elementi vengono trattati insieme, in blocco.
+*   [チャージ](term:term-v319-chaaji) porta nella UI il lessico della ricarica. Può riguardare energia, uso di una funzione o disponibilità di una risorsa: quando lo vedi, chiediti che cosa deve tornare pronto prima del prossimo utilizzo.
+*   [ちなみに](term:term-e060-chinamini) introduce un'informazione laterale, spesso utile ma non centrale. Se dopo compare [～かも](grammar:grammar-g064-contrazione-di), il tono resta ipotetico: il parlante aggiunge una possibilità, non una garanzia.
 
 :::example_sentence
 jp: >-
@@ -104,13 +112,14 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `ちなみに` -> nota laterale: il parlante aggiunge un'informazione senza cambiare argomento principale.
-- `{{新|あたら}}しい メニューが` -> ciò che potrebbe comparire; `が` marca il soggetto del cambiamento.
-- `{{増|ふ}}える` -> aumento / aggiunta che avviene al sistema.
-- `かも` -> forma breve di [〜かも](grammar:grammar-g064-contrazione-di): ipotesi, non promessa certa.
+*   `ちなみに` ➔ **Aggiunta laterale** (il parlante inserisce una nota senza cambiare del tutto argomento).
+*   `{{新|あたら}}しい メニューが` ➔ **Soggetto del cambiamento** (`が` marca ciò che potrebbe comparire).
+*   `{{増|ふ}}える` ➔ **Aumento intransitivo** (la voce aumenta nel sistema, non viene "scelta").
+*   `かも` ➔ **Ipotesi breve** ([～かも](grammar:grammar-g064-contrazione-di) lascia la frase nel campo del "forse").
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** per [{{増|ふ}}える](term:term-v314-fue-ru), immagina il menu che "si allarga" da solo: la nuova voce compare tra quelle disponibili. Se invece vuoi dire che qualcuno aggiunge qualcosa attivamente, serve un altro verbo, come `{{増|ふ}}やす`.
+#### 🧠 Gancio
+
+Per [{{増|ふ}}える](term:term-v314-fue-ru), immagina il menu che si allarga da solo: una nuova voce compare tra quelle disponibili. È un trucco di memoria, non un'etimologia. Se qualcuno aggiunge attivamente qualcosa, il giapponese userà un verbo diverso, come `{{増|ふ}}やす`.
 
 :::example_sentence
 jp: >-
@@ -121,30 +130,75 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `ここで` -> luogo operativo: è qui che la funzione è disponibile.
-- `わざマシンが` -> ciò che può essere creato.
-- `{{作|つく}}れる` -> possibilità di creare; la frase non descrive un oggetto già creato, ma una funzione sbloccata.
+*   `ここで` ➔ **Luogo operativo** (`で` indica dove la funzione è disponibile).
+*   `わざマシンが` ➔ **Cosa diventa producibile** (`が` marca l'oggetto rispetto alla possibilità).
+*   `{{作|つく}}れる` ➔ **Potenziale** ([{{作|つく}}れる](term:term-e049-tsukureru) segnala che la creazione è possibile, non che l'oggetto sia già stato creato).
 
-## 3. Percorsi, luoghi e orientamento
+#### ⚖️ Contrasto
 
-[{{目標|もくひょう}}](term:term-v328-mokuhyou) indica la meta: ciò verso cui il gioco ti sta spingendo. In tutorial, missioni e suggerimenti, una riga con [{{目標|もくひょう}}](term:term-v328-mokuhyou) risponde alla domanda "che cosa devo raggiungere o completare?". [{{方法|ほうほう}}](term:term-v330-houhou), invece, risponde a "come si fa?". Separarli aiuta molto: uno fissa il risultato, l'altro la procedura.
+*   `{{作|つく}}る` ➔ "creare / fabbricare": descrive l'azione.
+*   [{{作|つく}}れる](term:term-e049-tsukureru) ➔ "si può creare": descrive una possibilità aperta dal sistema.
+*   [まとめて](term:term-e048-matomete) ➔ non cambia il verbo principale, ma dice che l'azione avviene su più elementi insieme.
 
-[{{案内|あんない}}](term:term-v320-annai) unisce guida e accompagnamento. Può essere una spiegazione di percorso, una persona che ti porta da qualche parte o una funzione che orienta il giocatore. [〜のヒント](term:term-e064-nohinto) è più leggero: non dà tutto il percorso, ma un indizio su un elemento specifico.
+---
 
-I luoghi e le descrizioni ambientali portano altri segnali. [{{砂漠|さばく}}](term:term-v327-sabaku) nomina un'area sabbiosa concreta, [{{景色|けしき}}](term:term-v329-keshiki) commenta ciò che si vede, e [{{古|ふる}}い](term:term-v325-furui) descrive qualcosa che appartiene a un tempo precedente. In `{{古|ふる}}い{{記録|きろく}}`, "vecchio" non vuol dire automaticamente inutile: spesso una registrazione antica è proprio ciò che collega esplorazione, storia e prossimo passo.
+## 3. Orientarsi a Paldea: meta, metodo, indizio
 
-Le abilità di movimento seguono la stessa logica operativa. [がけのぼり](term:term-v318-gakenobori) combina `がけ` "parete / dirupo" e `のぼり` "salita": quando compare in tutorial, il testo non sta descrivendo un luogo bello da vedere, ma una capacità che permette di superare un ostacolo verticale.
+Fuori dai menu stretti, il gioco usa parole diverse per guidarti verso una destinazione, spiegarti una procedura o lasciarti solo un suggerimento. Separarle è importante perché una riga può dirti "dove arrivare", "come farlo" o "che indizio usare" senza usare la stessa parola italiana.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{目標|もくひょう}}](term:term-v328-mokuhyou) è la destinazione o il compito finale; [{{方法|ほうほう}}](term:term-v330-houhou) è la procedura; [〜のヒント](term:term-e064-nohinto) è un indizio parziale. Se li leggi come sinonimi di "informazione", perdi la differenza tra meta, istruzione e suggerimento.
+*   [{{目標|もくひょう}}](term:term-v328-mokuhyou) è la meta: il compito o il punto verso cui il gioco ti orienta. In tutorial e missioni, risponde alla domanda "che cosa devo raggiungere o completare?".
+*   [{{方法|ほうほう}}](term:term-v330-houhou) è il modo per farlo. Se [{{目標|もくひょう}}](term:term-v328-mokuhyou) punta al risultato, [{{方法|ほうほう}}](term:term-v330-houhou) apre la procedura: comandi, passaggi, condizioni o percorso.
+*   [{{案内|あんない}}](term:term-v320-annai) unisce guida e accompagnamento. Può essere una persona che ti porta da qualche parte, una spiegazione di percorso o una funzione della UI che ti orienta.
+*   [〜のヒント](term:term-e064-nohinto) è più leggero di [{{方法|ほうほう}}](term:term-v330-houhou): non consegna tutta la procedura, ma un indizio su un punto preciso. Il `の` lega il tema all'indizio, come in "un indizio su...".
+*   [{{砂漠|さばく}}](term:term-v327-sabaku), [{{景色|けしき}}](term:term-v329-keshiki) e [{{古|ふる}}い](term:term-v325-furui) portano la lingua dell'esplorazione: area, vista e tempo. In `{{古|ふる}}い{{記録|きろく}}`, "vecchio" non vuol dire per forza inutile; spesso un documento antico è proprio ciò che spiega un passo successivo.
+*   [がけのぼり](term:term-v318-gakenobori) combina `がけ` "parete / dirupo" e `のぼり` "salita". Quando compare in un tutorial, non sta elogiando un panorama: nomina una capacità di movimento che permette di superare un ostacolo verticale.
 
-## 4. Battaglia, stato e protezione
+:::example_sentence
+jp: >-
+  {{目的|もくてき}}{{地|ち}}まで {{案内|あんない}}します。
+translation_it: >-
+  Ti guiderò fino alla destinazione.
+:::
 
-[まひ](term:term-v316-mahi) è lo stato di paralisi: in battaglia segnala un limite imposto al Pokémon, non una semplice emozione o esitazione. Quando compare accanto a un messaggio di effetto, devi chiederti chi è stato colpito e quale azione diventa meno affidabile.
+#### 🗺️ Anatomia della frase
 
-[{{相性|あいしょう}}](term:term-v326-aishou) descrive la compatibilità tra tipi, mosse o avversari. In una frase come `{{相性|あいしょう}}を{{確認|かくにん}}する`, il gioco ti sta invitando a controllare il matchup prima di decidere: non è una valutazione estetica, ma un rapporto pratico tra elementi.
+*   `{{目的|もくてき}}{{地|ち}}まで` ➔ **Limite del percorso** (`まで` indica il punto fino a cui arriva la guida).
+*   `{{案内|あんない}}します` ➔ **Guida attiva** (qualcuno o qualcosa accompagna il giocatore verso la destinazione).
 
-[{{守|まも}}る](term:term-v324-mamoru) può indicare protezione fisica, difesa in battaglia o rispetto di una regola. Il suo oggetto cambia la lettura: `ポケモンを{{守|まも}}る` protegge un alleato, mentre `ルールを{{守|まも}}る` vuol dire rispettare le regole. Il verbo resta lo stesso, ma il tipo di oggetto decide se stai difendendo qualcuno o mantenendo un vincolo.
+#### ⚖️ Contrasto
+
+*   [{{目標|もくひょう}}](term:term-v328-mokuhyou) ➔ il risultato o la meta da raggiungere.
+*   [{{方法|ほうほう}}](term:term-v330-houhou) ➔ la procedura per arrivarci.
+*   [〜のヒント](term:term-e064-nohinto) ➔ un indizio parziale, non l'intero percorso.
+*   [{{案内|あんない}}](term:term-v320-annai) ➔ guida o accompagnamento verso un punto.
+
+:::example_sentence
+jp: >-
+  この {{砂漠|さばく}}は {{進|すす}}みにくいかも。
+translation_it: >-
+  Questo deserto potrebbe essere difficile da attraversare.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `この {{砂漠|さばく}}は` ➔ **Tema della frase** (`は` mette il deserto al centro del commento).
+*   `{{進|すす}}みにくい` ➔ **Difficoltà dell'azione** ([～にくい](grammar:grammar-g065-difficile-da-fare) si attacca alla radice del verbo e dice che avanzare è difficile).
+*   `かも` ➔ **Valutazione prudente** ([～かも](grammar:grammar-g064-contrazione-di) ammorbidisce la frase: potrebbe essere così, non è una sentenza assoluta).
+
+#### 🧠 Gancio
+
+Per [～にくい](grammar:grammar-g065-difficile-da-fare), pensa alla strada che "fa resistenza" al verbo. `{{進|すす}}む` è avanzare; `{{進|すす}}みにくい` è avanzare con attrito, quindi "difficile da attraversare / percorrere".
+
+---
+
+## 4. Battaglia e controllo: stato, matchup, protezione
+
+Nelle battaglie e nei tutorial di combattimento, i verbi operativi diventano ancora più concreti: qualcuno subisce uno stato, controlla un rapporto tra tipi, protegge un alleato o rispetta una regola. Qui l'oggetto del verbo cambia molto la lettura.
+
+*   [まひ](term:term-v316-mahi) è la paralisi come stato alterato. Non indica una semplice esitazione del personaggio: in battaglia è una condizione che limita l'affidabilità dell'azione del Pokémon. Quando compare in un messaggio di effetto, cerca chi è stato colpito e che cosa può diventare più difficile.
+*   [{{相性|あいしょう}}](term:term-v326-aishou) descrive la compatibilità tra tipi, mosse o avversari. In una riga come `{{相性|あいしょう}}を{{確認|かくにん}}する`, il gioco non ti sta chiedendo un giudizio estetico: ti invita a controllare il matchup prima di scegliere.
+*   [{{守|まも}}る](term:term-v324-mamoru) può significare proteggere fisicamente, difendere in battaglia o rispettare una regola. L'oggetto decide la lettura: `ポケモンを{{守|まも}}る` protegge un alleato, `ルールを{{守|まも}}る` significa rispettare le regole.
+*   [{{選|えら}}ぶ](term:term-v322-erabu), quando arriva dopo un controllo, non è più una scelta casuale. La frase può costruire una piccola sequenza: prima controlli [{{相性|あいしょう}}](term:term-v326-aishou), poi scegli l'opzione più adatta.
 
 :::example_sentence
 jp: >-
@@ -155,19 +209,32 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{相性|あいしょう}}を` -> oggetto del controllo: il matchup tra tipi o avversari.
-- `{{確認|かくにん}}してから` -> prima controlli; `〜てから` mette questa azione prima della scelta.
-- `{{選|えら}}んでください` -> istruzione cortese: il gioco attende una decisione dopo il controllo.
+*   `{{相性|あいしょう}}を` ➔ **Oggetto del controllo** (il matchup tra tipi, mosse o avversari).
+*   `{{確認|かくにん}}してから` ➔ **Sequenza temporale** (`〜てから` mette il controllo prima della scelta).
+*   `{{選|えら}}んでください` ➔ **Istruzione cortese** (il gioco chiede una selezione dopo la verifica).
 
-## 5. Parlato breve: abilità, intenzione e risposta morbida
+#### ⚖️ Contrasto
 
-[{{得意|とくい}}](term:term-v317-tokui) non significa solo "mi piace": indica ciò in cui qualcuno è bravo o ha un vantaggio. In dialogo scolastico o competitivo, `{{得意|とくい}}なタイプ` può indicare il tipo in cui un personaggio si sente forte, mentre `{{苦手|にがて}}` sarebbe il lato debole o scomodo.
+*   [{{相性|あいしょう}}](term:term-v326-aishou) è un rapporto pratico tra elementi, non una preferenza personale.
+*   [まひ](term:term-v316-mahi) è uno stato subito da un Pokémon, non un tono emotivo.
+*   [{{守|まも}}る](term:term-v324-mamoru) cambia sfumatura in base all'oggetto: proteggi un soggetto, ma rispetti una regola.
 
-[{{本気|ほんき}}で](term:term-v323-honki-de) cambia il peso dell'azione: il personaggio non sta solo partecipando o provando, sta facendo sul serio. Se compare con [{{参加|さんか}}する](term:term-v332-sanka-suru), la frase può suonare come impegno reale in una sfida, non come presenza casuale.
+---
 
-[{{参加|さんか}}する](term:term-v332-sanka-suru) significa prendere parte a un evento, raid, attività o gruppo. Non è un semplice "andare": il soggetto entra dentro una cornice condivisa. Nei menu online o nelle attività scolastiche, questa differenza conta perché decide se stai solo guardando un'opzione o entrando effettivamente nell'attività.
+## 5. Parlato breve: bravura, intenzione, partecipazione
 
-I finali più morbidi modulano il tono. [どうかな](term:term-e061-doukana) chiede una reazione senza imporre una risposta netta: "come sarà?", "che ne dici?". [ちなみに](term:term-e060-chinamini) aggiunge una nota laterale prima di tornare al filo principale. [〜つもりだ](grammar:grammar-g067-avere-intenzione-di) rende esplicito un piano, mentre [〜にくい](grammar:grammar-g065-difficile-da-fare) dice che un'azione è difficile da compiere, non semplicemente negativa.
+I dialoghi dei personaggi prendono gli stessi verbi operativi e li caricano di postura personale. Non ti dicono solo che cosa accadrà, ma se qualcuno si sente capace, se sta facendo sul serio, se vuole entrare in un'attività o se sta lasciando spazio alla tua reazione.
+
+### A. Punti forti e modo dell'azione
+
+*   [{{得意|とくい}}](term:term-v317-tokui) non significa semplicemente "mi piace": indica ciò in cui qualcuno è bravo o si sente forte. In un contesto scolastico o competitivo, `{{得意|とくい}}なタイプ` può essere il tipo in cui un personaggio ha confidenza; il contrario naturale sarebbe `{{苦手|にがて}}`, il lato debole o scomodo.
+*   [{{本気|ほんき}}で](term:term-v323-honki-de) cambia il peso dell'azione. Con `で`, [{{本気|ほんき}}](term:term-v323-honki-de) funziona come modo: non "la serietà" in astratto, ma "facendolo sul serio". Se accompagna [{{参加|さんか}}する](term:term-v332-sanka-suru), la partecipazione diventa un impegno reale.
+
+### B. Entrare in un'attività e dichiarare un piano
+
+*   [{{参加|さんか}}する](term:term-v332-sanka-suru) significa prendere parte a un evento, raid, attività, gruppo o iniziativa. Non è un semplice "andare": il soggetto entra in una cornice condivisa. Nei menu online e nelle attività scolastiche, questa differenza decide se stai guardando un'opzione o aderendo davvero.
+*   [～つもりだ](grammar:grammar-g067-avere-intenzione-di) rende esplicita l'intenzione del parlante. Non descrive un evento già completato: dichiara un piano. Per questo `{{参加|さんか}}するつもりだ` suona come "ho intenzione di partecipare", non "ho partecipato".
+*   [どうかな](term:term-e061-doukana) ammorbidisce la chiusura. Può voler dire "come sarà?", "che ne dici?", "può andare così?": non forza una risposta secca, ma lascia spazio alla valutazione dell'interlocutore.
 
 :::example_sentence
 jp: >-
@@ -178,35 +245,15 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{本気|ほんき}}で` -> modo dell'azione: con serietà, non per prova leggera.
-- `{{参加|さんか}}する` -> entrare come partecipante in un'attività.
-- `つもりだ` -> [〜つもりだ](grammar:grammar-g067-avere-intenzione-di): piano dichiarato dal parlante.
+*   `{{本気|ほんき}}で` ➔ **Modo dell'azione** (la partecipazione avviene con serietà, non come prova leggera).
+*   `{{参加|さんか}}する` ➔ **Ingresso nell'attività** (il soggetto prende parte a una cornice condivisa).
+*   `つもりだ` ➔ **Intenzione dichiarata** ([～つもりだ](grammar:grammar-g067-avere-intenzione-di) segnala un piano, non un risultato già avvenuto).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{参加|さんか}}する](term:term-v332-sanka-suru) dice che entri nell'attività; [{{本気|ほんき}}で](term:term-v323-honki-de) dice con quale postura lo fai; [〜つもりだ](grammar:grammar-g067-avere-intenzione-di) dice che è un'intenzione dichiarata, non un evento già completato.
+#### ⚖️ Contrasto
 
-## Esempi guidati di riepilogo
-
-:::example_sentence
-jp: >-
-  まとめて {{買|か}}います。
-translation_it: >-
-  Compro tutto insieme.
-:::
-
-:::example_sentence
-jp: >-
-  {{目的|もくてき}}{{地|ち}}まで {{案内|あんない}}します。
-translation_it: >-
-  Ti guiderò fino alla destinazione.
-:::
-
-:::example_sentence
-jp: >-
-  この {{砂漠|さばく}}は {{進|すす}}みにくいかも。
-translation_it: >-
-  Questo deserto potrebbe essere difficile da attraversare.
-:::
+*   [{{参加|さんか}}する](term:term-v332-sanka-suru) dice che entri nell'attività.
+*   [{{本気|ほんき}}で](term:term-v323-honki-de) dice con quale postura lo fai.
+*   [～つもりだ](grammar:grammar-g067-avere-intenzione-di) dice che l'azione è prevista o voluta, non ancora completata.
 
 :::example_sentence
 jp: >-
@@ -215,6 +262,43 @@ translation_it: >-
   Che ne dici di così?
 :::
 
+#### 🗺️ Anatomia della frase
+
+*   `これで` ➔ **Proposta di stato** (`で` presenta "con questo / così" come soluzione o configurazione).
+*   `どうかな` ➔ **Richiesta morbida di valutazione** ([どうかな](term:term-e061-doukana) lascia aperta la risposta dell'altro).
+
+## Esempi guidati di riepilogo
+
+Le stesse forme diventano più leggibili quando le ricombini come farebbe il gioco: prima una schermata chiede una scelta, poi una funzione si sblocca, poi il dialogo sposta il tono verso intenzione o suggerimento.
+
+:::example_sentence
+jp: >-
+  ポケモンを {{選|えら}}んで、 {{見|み}}た{{目|め}}を {{変更|へんこう}}します。
+translation_it: >-
+  Scegli un Pokémon e modifichi l'aspetto.
+:::
+
+:::example_sentence
+jp: >-
+  まとめて {{買|か}}うと、 チャージが {{早|はや}}くなるかも。
+translation_it: >-
+  Se compri tutto insieme, forse la ricarica diventerà più veloce.
+:::
+
+:::example_sentence
+jp: >-
+  {{目標|もくひょう}}までの {{方法|ほうほう}}は、 ヒントで {{確認|かくにん}}できます。
+translation_it: >-
+  Puoi controllare negli indizi il metodo per arrivare all'obiettivo.
+:::
+
+:::example_sentence
+jp: >-
+  {{得意|とくい}}な {{相性|あいしょう}}なら、 {{本気|ほんき}}で {{参加|さんか}}するつもりだ。
+translation_it: >-
+  Se il matchup è favorevole, ho intenzione di partecipare sul serio.
+:::
+
 ## Nota finale
 
-Nei menu brevi conviene sempre cercare prima il verbo operativo: [{{作|つく}}れる](term:term-e049-tsukureru) apre una possibilità, [{{増|ふ}}える](term:term-v314-fue-ru) segnala un'aggiunta, [{{戻|もど}}る](term:term-v315-modoru) porta indietro, [{{選|えら}}ぶ](term:term-v322-erabu) decide l'opzione e [{{変更|へんこう}}](term:term-v331-henkou) cambia qualcosa già impostato. Nei dialoghi, gli stessi segnali si allargano a intenzione, tono e partecipazione: non solo che cosa fare, ma con quale postura il personaggio lo propone.
+Nei menu di Paldea, il primo segnale da cercare è il verbo operativo: [{{選|えら}}ぶ](term:term-v322-erabu) seleziona, [{{戻|もど}}る](term:term-v315-modoru) torna indietro, [{{変更|へんこう}}](term:term-v331-henkou) sostituisce uno stato, [{{増|ふ}}える](term:term-v314-fue-ru) segnala un'aggiunta e [{{作|つく}}れる](term:term-e049-tsukureru) apre una possibilità. Nei dialoghi, quegli stessi meccanismi si allargano a guida, intenzione e partecipazione: capisci non solo quale pulsante premere, ma anche che tipo di decisione il testo ti sta chiedendo di prendere.
