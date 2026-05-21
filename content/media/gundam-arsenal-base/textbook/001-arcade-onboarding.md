@@ -2,7 +2,7 @@
 id: lesson-gundam-arsenal-base-arcade-onboarding
 media_id: media-gundam-arsenal-base
 slug: arcade-onboarding
-title: Onboarding arcade
+title: "Tessera, carte e primo avvio al cabinato"
 order: 10
 segment_ref: arcade-onboarding
 difficulty: n4
@@ -10,26 +10,26 @@ status: active
 tags: [arcade, onboarding, ui, account]
 prerequisites: []
 summary: >-
-  Riconosci il cabinato, distingui IC card, account e My Page, e segui il
-  flusso di una prima partita.
+  Separare tessera IC, lettore, slot carte, My Page e comandi di avvio per
+  leggere senza confondere profilo, deck fisico e ingresso in battaglia.
 ---
 
 # Dal cabinato alla partita: tessera, carte e primo avvio
 
-Davanti a un cabinato di *Gundam Arsenal Base*, il giapponese non descrive solo
-oggetti: ti dice dove appoggiare la tessera, dove mettere le carte, quale dato
-stai caricando e quale comando ti porta davvero in battaglia. La prima lettura
-da separare è fisica: [カードリーダー](term:term-card-reader) non è il
-[カードスロット](term:term-card-slot), e una
-[アミューズメントICカード](term:term-amusement-ic-card) non funziona come una
-[MSカード](term:term-ms-card).
+Davanti a un cabinato di *Gundam Arsenal Base*, il giapponese parte dagli
+oggetti fisici: la tessera da appoggiare, le carte da inserire, il pannello da
+toccare e il pulsante da premere. Se leggi subito questi nomi come una mappa di
+azioni, [カードリーダー](term:term-card-reader) e
+[カードスロット](term:term-card-slot) smettono di sembrare due "posti per carte"
+intercambiabili: il primo legge il profilo, il secondo costruisce il deck.
 
-Il flusso iniziale alterna tre livelli: profilo salvato, mazzo fisico e
-conferme sul [タッチパネル](term:term-touch-panel). Quando riconosci questi
-livelli, parole come [{{呼|よ}}び{{出|だ}}す](term:term-call-up),
-[デッキ](term:term-deck) e [{{出撃|しゅつげき}}](term:term-sortie) smettono di
-essere etichette sparse e diventano istruzioni in sequenza: carica i dati,
-prepara le unità, poi entra in partita.
+Il primo avvio alterna tre livelli. La
+[アミューズメントICカード](term:term-amusement-ic-card) richiama dati già
+salvati, il [デッキ](term:term-deck) mette insieme [MSカード](term:term-ms-card)
+e [PLカード](term:term-pl-card), e [{{出撃|しゅつげき}}](term:term-sortie)
+sposta la preparazione verso la battaglia. Tenere separati questi livelli
+evita l'errore più comune: cercare sullo schermo un'azione che il cabinato vuole
+farti compiere con una tessera o con una carta fisica.
 
 ## Termini chiave
 
@@ -67,46 +67,45 @@ prepara le unità, poi entra in partita.
 
 ---
 
-## 1. Profilo, tessera e dati: chi sei per il cabinato
+## 1. Tessera IC e dati salvati: quando il cabinato capisce chi sei
 
-La [アミューズメントICカード](term:term-amusement-ic-card) è la chiave fisica del
-profilo. `ICカード` segnala la tessera, mentre `アミューズメント` restringe il
-contesto alla sala giochi: quando la appoggi al [カードリーダー](term:term-card-reader),
-il cabinato non sta leggendo una carta del mazzo, ma sta identificando il
-giocatore e i dati di gioco collegati.
+La [アミューズメントICカード](term:term-amusement-ic-card) non appartiene al
+deck. `ICカード` segnala il supporto che salva e richiama dati, mentre
+`アミューズメント` colloca quel supporto nella sala giochi. Quando il testo ti
+manda al [カードリーダー](term:term-card-reader), il punto non è "giocare una
+carta": è far riconoscere al cabinato il profilo collegato alla tessera.
 
-[{{呼|よ}}び{{出|だ}}す](term:term-call-up) è il verbo giusto per questa azione:
-`{{呼|よ}}ぶ` richiama, `{{出|だ}}す` porta fuori. In una schermata di avvio,
-non significa "chiamare qualcuno" in senso narrativo, ma recuperare dati già
-registrati e renderli disponibili alla macchina. Per questo si combina
-naturalmente con parole come `プレイデータ` e con il gesto sul
-[カードリーダー](term:term-card-reader).
-
-[MY PAGE](term:term-mypage) appartiene invece al livello web. Mostra profilo,
-missioni, [{{戦績|せんせき}}](term:term-battle-record) e avanzamento fuori dalla
-sessione arcade, ma non sostituisce il gesto fisico della tessera sul cabinato.
-Se una schermata parla di registrazione o consultazione dati, chiediti prima se
-sta nominando il supporto fisico, il profilo salvato o la pagina web: sono tre
-cose collegate, ma non intercambiabili.
+Il verbo [{{呼|よ}}び{{出|だ}}す](term:term-call-up) rende visibile proprio quel
+movimento dei dati. `{{呼|よ}}ぶ` è "chiamare / richiamare"; `{{出|だ}}す` è
+"far uscire / portare fuori". In un dialogo narrativo potrebbe voler dire
+chiamare qualcuno, ma nel flusso arcade significa far riemergere dati già
+registrati, come il profilo o la sessione precedente.
 
 :::example_sentence
 jp: >-
-  アミューズメントICカードをタッチして、プレイデータを{{読|よ}}み{{込|こ}}みます。
+  アミューズメントICカードをカードリーダーにタッチすることで、プレイデータを{{呼|よ}}び{{出|だ}}せます。
 translation_it: >-
-  Tocca la carta IC e carica i dati di gioco.
+  Toccando la tessera IC sul lettore, puoi richiamare i dati di gioco.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `アミューズメントICカードを` -> `を` marca la tessera come oggetto dell'azione: è ciò che devi toccare, non il risultato che ottieni.
-- `タッチして` -> forma in `-te`: prima fai il contatto sul lettore, poi avviene l'azione successiva.
-- `プレイデータを{{読|よ}}み{{込|こ}}みます` -> `{{読|よ}}み{{込|こ}}む` dice "leggere dentro / caricare"; il dato entra nel sistema del cabinato.
+*   `アミューズメントICカードを` ➔ **Oggetto del tocco** (`を` marca la tessera: è l'oggetto che devi appoggiare o avvicinare).
+*   `カードリーダーに` ➔ **Destinazione fisica** (`に` indica il punto del cabinato verso cui porti la tessera).
+*   `タッチすることで` ➔ **Azione che produce un risultato** ([～することで](grammar:grammar-suru-koto-de) collega il gesto al payoff: facendo X, diventa possibile Y).
+*   `プレイデータを{{呼|よ}}び{{出|だ}}せます` ➔ **Recupero dati possibile** (`{{呼|よ}}び{{出|だ}}す` richiama fuori dati già salvati; `〜せます` dice che l'azione è possibile).
 
 > [!NOTE]
 > **⚖️ Contrasto operativo:** [カードリーダー](term:term-card-reader) legge la
 > tessera IC; [カードスロット](term:term-card-slot) riceve le carte MS e PL. Se
 > confondi `リーダー` e `スロット`, confondi identità del profilo e costruzione
-> del mazzo.
+> del deck.
+
+[MY PAGE](term:term-mypage) sposta lo stesso profilo fuori dal cabinato. Il
+nome è inglese, ma la funzione è giapponese da UI: una pagina personale dove
+rivedere missioni, avanzamento e [{{戦績|せんせき}}](term:term-battle-record).
+Non sostituisce la tessera durante la partita. Se compare in una guida, il
+testo sta passando dal gesto in sala giochi alla consultazione dei dati salvati.
 
 ## 2. Il cabinato come mappa di verbi operativi
 
@@ -121,94 +120,96 @@ caption: >-
   [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet).
 :::
 
-I nomi dei componenti sono quasi tutti composti trasparenti se li leggi come
-etichette d'azione. [タッチパネル](term:term-touch-panel) è il pannello che
-riceve `タッチする`; [カードスロット](term:term-card-slot) è lo spazio in cui
-`セットする` le carte; [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet)
-contiene già la forma `{{取|と}}り{{出|だ}}し`, "tirare fuori", e `{{口|ぐち}}`,
-"bocca / apertura". Il nome stesso ti dice che non è un comando da premere, ma
-l'apertura da controllare quando la macchina eroga una carta.
+Le parti del cabinato si leggono bene se associ ogni nome al verbo che lo
+attiva. [タッチパネル](term:term-touch-panel) riceve `タッチする`;
+[カードスロット](term:term-card-slot) riceve `セットする`;
+[ボタン](term:term-button) riceve `{{押|お}}す`. La differenza non è estetica:
+ti dice se il gioco vuole un tap su schermo, una carta infilata nello slot o un
+input fisico sul comando laterale.
 
-- [タッチパネル](term:term-touch-panel): qui leggi menu, tocchi opzioni e
-  confermi. In frasi con [～をタッチする](grammar:grammar-wo-tacchi-suru),
-  l'elemento prima di `を` è il bersaglio preciso del tocco.
-- [カードスロット](term:term-card-slot): qui metti le carte fisiche. In frasi
-  con [～をセットする](grammar:grammar-wo-setto-suru), `セットする` non significa
-  "impostare" in astratto: significa collocare la carta nello slot corretto.
-- [ボタン](term:term-button) e [イヤホンジャック](term:term-earphone-jack):
-  restano componenti fisici, non categorie del menu. Il primo si preme, il
-  secondo riceve le cuffie.
-- [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet): `{{口|ぐち}}`
-  segnala l'imboccatura di uscita; se il gioco ha stampato o erogato una carta,
-  questo è il punto da controllare prima di alzarti.
+*   [タッチパネル](term:term-touch-panel) è il pannello dove il bersaglio prima
+    di `を` viene toccato. In [～をタッチする](grammar:grammar-wo-tacchi-suru),
+    `を` non marca una scelta astratta: marca il punto preciso su cui fai tap.
+*   [カードスロット](term:term-card-slot) è lo spazio delle carte da gioco. In
+    [～をセットする](grammar:grammar-wo-setto-suru), `セットする` non è
+    "impostare" in senso generico: è mettere l'oggetto nella posizione prevista.
+*   [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet) contiene già
+    `{{取|と}}り{{出|だ}}し`, "estrazione / tirare fuori", e `{{口|ぐち}}`,
+    "apertura". Il nome non ti chiede di premere qualcosa: ti dice dove
+    recuperare la carta erogata.
+*   [イヤホンジャック](term:term-earphone-jack) è trasparente come prestito
+    tecnico. Non appartiene al menu: è il punto fisico per collegare le cuffie
+    quando la sala giochi copre l'audio.
 
 :::example_sentence
 jp: >-
-  タッチパネルの{{表示|ひょうじ}}を{{確認|かくにん}}して、ボタンを{{押|お}}します。
+  タッチパネルの{{表示|ひょうじ}}を{{確認|かくにん}}してから、ボタンを{{押|お}}します。
 translation_it: >-
-  Controlli ciò che appare sul touch panel e premi il pulsante.
+  Dopo aver controllato ciò che appare sul touch panel, premi il pulsante.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `タッチパネルの{{表示|ひょうじ}}を` -> `の` collega pannello e contenuto mostrato: non guardi il pannello come oggetto fisico, ma l'informazione visualizzata.
-- `{{確認|かくにん}}して` -> prima confermi mentalmente o visivamente il contenuto; la forma in `-te` prepara l'azione successiva.
-- `ボタンを{{押|お}}します` -> `{{押|お}}す` è il verbo fisico "premere"; il bersaglio è il [ボタン](term:term-button), non il [タッチパネル](term:term-touch-panel).
+*   `タッチパネルの{{表示|ひょうじ}}を` ➔ **Contenuto mostrato** (`の` collega il pannello alla visualizzazione: guardi l'informazione sullo schermo, non il pannello come oggetto).
+*   `{{確認|かくにん}}してから` ➔ **Prima conferma, poi azione** (`〜してから` ordina la sequenza: controllare precede premere).
+*   `ボタンを{{押|お}}します` ➔ **Input fisico** (`{{押|お}}す` è "premere"; il bersaglio è il [ボタン](term:term-button), non il [タッチパネル](term:term-touch-panel)).
 
 > [!NOTE]
-> **🧠 Gancio cognitivo:** in `カード{{取|と}}り{{出|だ}}し{{口|ぐち}}`, pensa a
-> `{{口|ぐち}}` come all'apertura da cui qualcosa "esce dalla bocca" della
-> macchina. È un trucco mnemonico, non una spiegazione tecnica del cabinato.
+> **🧠 Gancio cognitivo:** in
+> [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet), pensa a
+> `{{口|ぐち}}` come all'apertura da cui esce qualcosa. È un trucco di memoria:
+> il valore pratico è riconoscere l'uscita delle carte, non un altro slot di
+> inserimento.
 
-## 3. MS, PL e unit: come il mazzo diventa schierabile
+## 3. MS, PL e unità: quando due carte diventano un pezzo giocabile
 
-Nel [カードスロット](term:term-card-slot), le carte non sono solo archiviate:
-vengono lette come coppie. [MSカード](term:term-ms-card) nomina il Mobile Suit,
-[PLカード](term:term-pl-card) nomina il pilota, e la coppia verticale diventa
-un [ユニット](term:term-unit). Qui `ユニット` non indica una "unità" generica
-da menu gestionale, ma il blocco giocabile che può entrare in campo.
+Nel [カードスロット](term:term-card-slot), le carte non vengono lette come un
+mazzo da pescare. [MSカード](term:term-ms-card) nomina il Mobile Suit,
+[PLカード](term:term-pl-card) nomina il pilota, e la coppia costruisce una
+[ユニット](term:term-unit). Qui `ユニット` non è una parola generica da menu:
+è il blocco MS + PL che il gioco può mandare sul campo.
 
-[デッキ](term:term-deck) è il contenitore della composizione, mentre
-[スターターデッキ](term:term-starter-deck) è una composizione già pronta. Se sei
-alla prima partita, il valore linguistico di `スターター` è proprio "iniziale":
-non ti sta chiedendo di ottimizzare, ti sta offrendo una struttura completa per
-vedere subito la logica MS + PL.
+[デッキ](term:term-deck) è quindi la composizione preparata per la partita, non
+un pacchetto di carte da mescolare. [スターターデッキ](term:term-starter-deck)
+aggiunge `スターター`, cioè "iniziale": quando lo vedi durante il primo avvio,
+il gioco non ti sta chiedendo di ottimizzare subito, ma ti sta offrendo una
+struttura pronta per capire la logica delle coppie.
 
 :::example_sentence
 jp: >-
-  {{上|うえ}}の{{段|だん}}にMSカード、{{下|した}}の{{段|だん}}にPLカードをセットします。
+  {{上段|じょうだん}}にMSカード、{{下段|げだん}}にPLカードをセットします。
 translation_it: >-
   Metti le carte MS nella fila superiore e le carte PL in quella inferiore.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{上|うえ}}の{{段|だん}}に` -> `{{段|だん}}` è la fila/livello; `に` indica la posizione di destinazione.
-- `MSカード、{{下|した}}の{{段|だん}}にPLカードを` -> la frase mette in parallelo la fila alta e quella bassa: il contrasto spaziale è parte dell'istruzione.
-- `セットします` -> [～をセットする](grammar:grammar-wo-setto-suru) chiude la frase come azione di collocazione nello slot, non come scelta astratta nel menu.
+*   `{{上段|じょうだん}}にMSカード` ➔ **Posizione alta + carta MS** (`{{上段|じょうだん}}` è la fila superiore; `に` marca dove va collocata la carta).
+*   `{{下段|げだん}}にPLカードを` ➔ **Posizione bassa + carta PL** (`{{下段|げだん}}` crea il contrasto spaziale con la fila superiore).
+*   `セットします` ➔ **Collocazione nello slot** ([～をセットする](grammar:grammar-wo-setto-suru) chiude l'istruzione come azione fisica, non come scelta mentale del deck).
 
 > [!WARNING]
 > **⚖️ Contrasto operativo: carta singola vs unità**
-> [MSカード](term:term-ms-card) e [PLカード](term:term-pl-card) sono oggetti
-> separati, ma in battaglia leggi la coppia come [ユニット](term:term-unit).
-> Se guardi solo la carta singola, perdi il rapporto verticale che il cabinato
-> usa per costruire l'unità schierabile.
+> [MSカード](term:term-ms-card) e [PLカード](term:term-pl-card) restano oggetti
+> separati, ma il cabinato legge la coppia come [ユニット](term:term-unit).
+> Se guardi solo la carta singola, perdi il rapporto verticale che decide quale
+> Mobile Suit combatte con quale pilota.
 
-## 4. Sblocchi, slot tattici e uscita verso la battaglia
+## 4. Slot tattici e 出撃: dalla preparazione all'ingresso in battaglia
 
-Le [{{作戦|さくせん}}カード](term:term-tactics-card) aggiungono un livello
-tattico al [デッキ](term:term-deck). `{{作戦|さくせん}}` significa piano o
-operazione: non è una carta MS e non è una carta pilota, ma un effetto da
-equipaggiare in uno spazio dedicato. [メイン{{枠|わく}}](term:term-main-slot) e
+Le [{{作戦|さくせん}}カード](term:term-tactics-card) aggiungono un livello che
+non passa dagli slot MS e PL. `{{作戦|さくせん}}` significa piano, operazione,
+tattica; per questo la carta non rappresenta un Mobile Suit o un pilota, ma un
+effetto da equipaggiare. [メイン{{枠|わく}}](term:term-main-slot) e
 [サブ{{枠|わく}}](term:term-sub-slot) usano `{{枠|わく}}`, "cornice / slot":
-il nome ti dice che stai scegliendo dove inserire l'effetto, non chi mandare in
-campo.
+il testo sta parlando dello spazio in cui inserire l'effetto, non di un'altra
+unità da schierare.
 
-Quando compare [{{出撃|しゅつげき}}](term:term-sortie), il testo cambia fase.
-`{{出|しゅつ}}` porta l'idea di uscire, `{{撃|げき}}` quella dell'attacco:
-in contesto militare e arcade, [{{出撃|しゅつげき}}](term:term-sortie) è
-l'uscita operativa verso la battaglia. Non leggerlo come un semplice "avvia":
-è il comando che trasforma la preparazione del mazzo in ingresso sul campo.
+Quando compare [{{出撃|しゅつげき}}](term:term-sortie), il lessico cambia fase.
+`{{出|しゅつ}}` porta l'idea di uscire, `{{撃|げき}}` quella del colpire: nel
+registro militare di Gundam, [{{出撃|しゅつげき}}](term:term-sortie) è l'uscita
+operativa verso lo scontro. Non leggerlo come un semplice "start"; è il punto
+in cui ciò che hai preparato diventa presenza sul campo.
 
 :::example_sentence
 jp: >-
@@ -219,28 +220,43 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{作戦|さくせん}}カードが` -> `が` marca ciò di cui si controlla lo stato: la domanda è se quella funzione è disponibile.
-- `{{未解放|みかいほう}}なら` -> `{{未|み}}` nega/indica "non ancora", `{{解放|かいほう}}` è lo sblocco; `なら` trasforma lo stato in condizione.
-- `この{{手順|てじゅん}}は{{飛|と}}ばします` -> `{{手順|てじゅん}}` è il passaggio della procedura; `{{飛|と}}ばす` qui significa saltarlo, non farlo volare.
+*   `{{作戦|さくせん}}カードが` ➔ **Tema controllato dalla condizione** (`が` mette a fuoco lo stato delle carte tattiche).
+*   `{{未解放|みかいほう}}なら` ➔ **Condizione di non sblocco** (`{{未|み}}` segnala "non ancora"; `{{解放|かいほう}}` è lo sblocco; `なら` trasforma lo stato in una condizione pratica).
+*   `この{{手順|てじゅん}}は{{飛|と}}ばします` ➔ **Passaggio saltato** (`{{手順|てじゅん}}` è la procedura; `{{飛|と}}ばす` qui significa saltare, non far volare qualcosa).
 
 > [!NOTE]
 > **⚖️ Contrasto operativo:** `{{未解放|みかいほう}}` non vuol dire che la carta
-> è rotta o assente fisicamente. Vuol dire che quella funzione non è ancora
-> utilizzabile nel profilo o nel flusso corrente, quindi il passaggio va
-> ignorato finché il gioco non lo rende disponibile.
-
-## Esempi guidati di riepilogo
-
-Quando leggi una schermata di avvio, cerca prima il bersaglio marcato da `を`:
-se è [アミューズメントICカード](term:term-amusement-ic-card), l'azione riguarda
-il profilo; se è [MSカード](term:term-ms-card) o [PLカード](term:term-pl-card),
-riguarda la costruzione del [デッキ](term:term-deck).
+> fisica manca o che il cabinato è in errore. Vuol dire che quella funzione non
+> è ancora utilizzabile nel profilo o nel flusso corrente, quindi il passaggio
+> non va cercato negli slot MS/PL.
 
 :::example_sentence
 jp: >-
-  カードリーダーにアミューズメントICカードをタッチすることで、プレイデータを{{呼|よ}}び{{出|だ}}せます。
+  メイン{{枠|わく}}に{{作戦|さくせん}}カードをセットしてから、{{出撃|しゅつげき}}します。
 translation_it: >-
-  Toccando la carta IC sul lettore, puoi richiamare i dati di gioco.
+  Dopo aver messo una carta tattica nello slot principale, esci in battaglia.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `メイン{{枠|わく}}に` ➔ **Slot di destinazione** (`{{枠|わく}}` è lo spazio previsto; `メイン` lo distingue dal sub-slot).
+*   `{{作戦|さくせん}}カードをセットしてから` ➔ **Preparazione completata prima dell'azione** (`〜してから` dice che l'equipaggiamento precede la fase successiva).
+*   `{{出撃|しゅつげき}}します` ➔ **Ingresso operativo** (`{{出撃|しゅつげき}}する` porta la preparazione dentro la battaglia).
+
+## Esempi guidati di riepilogo
+
+Le schermate di avvio diventano più leggibili se segui il bersaglio marcato da
+`を` e la posizione marcata da `に`. Se il bersaglio è la
+[アミューズメントICカード](term:term-amusement-ic-card), stai lavorando sul
+profilo; se è [MSカード](term:term-ms-card), [PLカード](term:term-pl-card) o
+[{{作戦|さくせん}}カード](term:term-tactics-card), stai preparando il
+[デッキ](term:term-deck) o uno slot tattico.
+
+:::example_sentence
+jp: >-
+  カードリーダーにアミューズメントICカードをタッチして、{{前回|ぜんかい}}のデータを{{呼|よ}}び{{出|だ}}します。
+translation_it: >-
+  Tocchi la tessera IC sul lettore e richiami i dati della volta precedente.
 :::
 
 :::example_sentence
@@ -252,16 +268,25 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  メイン{{枠|わく}}に{{作戦|さくせん}}カードをセットしてから、{{出撃|しゅつげき}}します。
+  タッチパネルの{{表示|ひょうじ}}を{{確認|かくにん}}して、{{出撃|しゅつげき}}ボタンをタッチします。
 translation_it: >-
-  Dopo aver messo una carta tattica nello slot principale, esci in battaglia.
+  Controlli ciò che appare sul touch panel e tocchi il pulsante di sortita.
+:::
+
+:::example_sentence
+jp: >-
+  {{戦績|せんせき}}は、プレイ{{後|ご}}にMY PAGEで{{確認|かくにん}}できます。
+translation_it: >-
+  Dopo la partita, puoi controllare i risultati su MY PAGE.
 :::
 
 ## Nota finale
 
-Il primo onboarding si legge bene se separi tre domande: quale dato sto
-richiamando, quale carta sto collocando, quale comando mi manda in battaglia.
-[アミューズメントICカード](term:term-amusement-ic-card), [カードスロット](term:term-card-slot)
-e [{{出撃|しゅつげき}}](term:term-sortie) rispondono a domande diverse; tenerle
-separate ti evita di cercare sullo schermo ciò che in realtà va fatto con una
-tessera, una carta fisica o un pulsante.
+Il primo flusso arcade si legge come una catena di oggetti e verbi: tessera IC
+più [カードリーダー](term:term-card-reader) per richiamare dati, carte MS/PL più
+[カードスロット](term:term-card-slot) per costruire una
+[ユニット](term:term-unit), [タッチパネル](term:term-touch-panel) e
+[ボタン](term:term-button) per confermare, poi
+[{{出撃|しゅつげき}}](term:term-sortie) per entrare in battaglia. Quando separi
+profilo, deck e comando di sortita, il giapponese del cabinato smette di essere
+una sequenza di etichette e diventa un percorso operativo leggibile.
