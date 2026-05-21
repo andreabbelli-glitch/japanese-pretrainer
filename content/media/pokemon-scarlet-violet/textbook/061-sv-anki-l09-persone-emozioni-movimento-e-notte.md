@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-061-sv-anki-l09-persone-emozioni-movimento-e-notte
 media_id: media-pokemon-scarlet-violet
 slug: 061-sv-anki-l09-persone-emozioni-movimento-e-notte
-title: SV Anki L09 - Persone, emozioni, movimento e notte
+title: Volti, messaggi e movimento tra scuola, città e notte
 order: 91
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -10,14 +10,15 @@ status: active
 tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-09]
 prerequisites: []
 summary: >-
-  Volti, prossima volta, qualcuno, comunicare, rabbia, movimento, bellezza, oggetti e notte.
+  Leggere volti, messaggi, presenze, movimento e notte nei dialoghi e nelle
+  schermate di Paldea.
 ---
 
 # Volti, messaggi e movimento tra scuola, città e notte
 
-Nei dialoghi di *Pokémon Scarlet & Violet* una battuta può passare rapidamente da una faccia preoccupata a una richiesta da riferire, da un oggetto misterioso nell'Area Zero a una scena che cambia quando arriva la notte. Il lessico qui lavora per orientarti: chi c'è, che cosa prova, che cosa si muove e in quale momento della giornata succede.
+Nei dialoghi di *Pokémon Scarlet & Violet* una battuta può passare da una faccia preoccupata a un messaggio da riferire, da un oggetto misterioso nell'Area Zero a una città che cambia atmosfera quando arriva la notte. Il lessico non resta mai fermo: ti dice chi è presente, che cosa prova, che cosa si muove e quale momento della giornata sta guidando la scena.
 
-Molte parole sembrano semplici se tradotte da sole, ma diventano più precise quando guardi la particella accanto. [{{誰|だれ}}か](term:term-anki-l09-dareka) apre uno spazio indefinito, [{{伝|つた}}える](term:term-anki-l09-tsutaeru) richiede un contenuto da far arrivare a qualcuno, [{{動|うご}}く](term:term-anki-l09-ugoku) descrive il soggetto che si muove o funziona, e [{{夜|よる}}](term:term-anki-l09-yoru) può trasformare una descrizione ambientale in una condizione temporale.
+Molte parole sembrano trasparenti se le traduci da sole, ma diventano più precise quando le guardi insieme alla particella o alla forma verbale accanto. [{{誰|だれ}}か](term:term-anki-l09-dareka) non chiede un nome: lascia aperta una presenza. [{{伝|つた}}える](term:term-anki-l09-tsutaeru) non è parlare in generale: fa arrivare un contenuto a qualcuno. [{{動|うご}}く](term:term-anki-l09-ugoku) mette il soggetto al centro del movimento, mentre [{{夜|よる}}](term:term-anki-l09-yoru) può trasformare un fondale in una condizione temporale.
 
 ## Termini chiave
 
@@ -28,7 +29,7 @@ Molte parole sembrano semplici se tradotte da sole, ma diventano più precise qu
 - [{{怒|おこ}}る](term:term-anki-l09-okoru) — arrabbiarsi
 - [{{動|うご}}く](term:term-anki-l09-ugoku) — muoversi
 - [{{美|うつく}}しい](term:term-anki-l09-utsukushii) — bello; splendido
-- [{{物|ぶっ}}{{体|たい}}](term:term-anki-l09-buttai) — oggetto; corpo
+- [{{物|ぶっ}}{{体|たい}}](term:term-anki-l09-buttai) — oggetto; corpo fisico
 - [{{夜|よる}}](term:term-anki-l09-yoru) — notte
 - [お{{店|みせ}}](term:term-anki-l09-omise) — negozio
 
@@ -39,6 +40,13 @@ Molte parole sembrano semplici se tradotte da sole, ma diventano più precise qu
 - [{{誰|だれ}}か](term:term-anki-l09-dareka)いる — c'è qualcuno
 - [{{夜|よる}}](term:term-anki-l09-yoru)になる — farsi notte
 
+## Pattern grammaticali chiave
+
+- [を](grammar:grammar-g033-marca-l-oggetto-diretto) — marca ciò che viene espresso, comunicato, comprato o osservato
+- [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) — collega due nomi in un unico blocco leggibile
+- [～ている](grammar:grammar-g003-stato-in-corso-stato-risultante) — stato in corso o stato risultante già visibile
+- [～と](grammar:grammar-g085-quando-se-risultato-naturale) — quando una condizione si realizza, segue una conseguenza naturale
+
 ## Etichette da riconoscere
 
 - エリアゼロ — luogo di ricerca e mistero, dove parole come [{{物|ぶっ}}{{体|たい}}](term:term-anki-l09-buttai) suonano più tecniche
@@ -48,9 +56,11 @@ Molte parole sembrano semplici se tradotte da sole, ma diventano più precise qu
 
 ## 1. Volti, presenze e segnali emotivi
 
-Quando un personaggio guarda un Pokémon o commenta una reazione, [{{顔|かお}}](term:term-anki-l09-kao) non indica solo la parte fisica del corpo. In frasi come `どんな{{顔|かお}}をしてるの`, il blocco `{{顔|かお}}をする` significa "fare una faccia", cioè mostrare un'emozione sul volto. La particella `を` non rende il volto un oggetto da prendere: marca l'espressione che il soggetto sta assumendo.
+La scena emotiva in *Scarlet & Violet* spesso passa da dettagli piccoli: una faccia, una presenza non identificata, una reazione che il personaggio non nomina ancora apertamente. Qui il giapponese ti fa leggere ciò che è davanti agli occhi prima ancora che arrivi una spiegazione lunga.
 
-[{{誰|だれ}}か](term:term-anki-l09-dareka) nasce da `{{誰|だれ}}` più `か`: la domanda "chi?" diventa un indefinito, "qualcuno". Nei dialoghi esplorativi è un segnale forte perché il parlante non sta identificando una persona precisa; sta cercando una presenza, spesso con `いる`, oppure sospetta che nell'area ci sia una voce, un professore, un compagno o un'entità non ancora vista.
+*   [{{顔|かお}}](term:term-anki-l09-kao) non indica solo la parte fisica del corpo. In `どんな{{顔|かお}}をしてるの`, il blocco `{{顔|かお}}をする` significa "fare una faccia", cioè mostrare un'emozione sul volto. La particella [を](grammar:grammar-g033-marca-l-oggetto-diretto) non rende il volto un oggetto da prendere: marca l'espressione che il soggetto sta assumendo. Per questo la domanda non suona anatomica, ma affettiva: il parlante sta guardando un segnale emotivo.
+*   [{{誰|だれ}}か](term:term-anki-l09-dareka) nasce da `{{誰|だれ}}` più `か`: la domanda "chi?" diventa un indefinito, "qualcuno". Nei dialoghi esplorativi è un segnale forte perché il parlante non sta identificando una persona precisa; sta cercando una presenza. Con `いる`, il testo non ti consegna subito un nome: prima accende il sospetto che nell'area ci sia una voce, un professore, un compagno o un'entità non ancora vista.
+*   [{{怒|おこ}}る](term:term-anki-l09-okoru) descrive l'innesco della rabbia, ma `{{怒|おこ}}っている` usa [～ている](grammar:grammar-g003-stato-in-corso-stato-risultante) per fissare uno stato già riconoscibile. Se un personaggio ha il volto teso o il tono cambiato, la forma non dice solo "si arrabbia" in quell'istante: ti fa leggere "è arrabbiato" come condizione presente nella scena.
 
 :::example_sentence
 jp: >-
@@ -61,9 +71,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `どんな` -> chiede il tipo o la qualità: "che genere di...".
-- `{{顔|かお}}をしてる` -> letteralmente "sta facendo una faccia"; il valore reale è "sta mostrando un'espressione".
-- `の？` -> chiusura interrogativa morbida, adatta a una domanda rivolta con curiosità o preoccupazione.
+*   `どんな` ➔ **Tipo o qualità richiesta**: non chiede "quale faccia" come scelta da una lista, ma "che genere di espressione".
+*   `{{顔|かお}}をしてる` ➔ **Espressione assunta**: `{{顔|かお}}をする` vale "fare una faccia"; [～ている](grammar:grammar-g003-stato-in-corso-stato-risultante) mostra l'espressione mentre è visibile.
+*   `の？` ➔ **Domanda morbida**: chiude con curiosità o preoccupazione, non con tono da interrogatorio.
 
 :::example_sentence
 jp: >-
@@ -74,20 +84,22 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `エリアゼロに` -> `に` marca il luogo in cui si trova una presenza.
-- `{{誰|だれ}}か` -> non "chi?" ma "qualcuno"; il `か` trasforma l'interrogativo in indefinito.
-- `いる` -> esistenza di esseri animati o personaggi, non semplice possesso.
+*   `エリアゼロに` ➔ **Luogo della presenza**: `に` colloca qualcuno dentro l'Area Zero.
+*   `{{誰|だれ}}か` ➔ **Presenza indefinita**: non "chi?", ma "qualcuno"; il `か` lascia l'identità aperta.
+*   `いる` ➔ **Esistenza animata**: segnala persone, Pokémon o presenze vive, non semplice possesso.
+*   `のか？` ➔ **Domanda che cerca spiegazione**: il parlante non vuole solo sì/no, sta cercando di capire che cosa c'è lì.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{誰|だれ}}` chiede un'identità precisa: "chi?". [{{誰|だれ}}か](term:term-anki-l09-dareka) invece lascia l'identità aperta: "qualcuno". Se leggi `{{誰|だれ}}かいる`, non aspettarti subito un nome; il testo sta prima confermando una presenza.
+#### ⚖️ Contrasto operativo
 
-## 2. Comunicare, arrabbiarsi e rimandare alla prossima volta
+`{{誰|だれ}}` chiede un'identità precisa: "chi?". [{{誰|だれ}}か](term:term-anki-l09-dareka) invece lascia l'identità aperta: "qualcuno". Se leggi `{{誰|だれ}}かいる`, non aspettarti subito un nome; il testo sta prima confermando una presenza.
 
-Il lessico relazionale entra spesso nei dialoghi scolastici e nelle scene in cui un personaggio deve passare informazioni a un altro. [{{伝|つた}}える](term:term-anki-l09-tsutaeru) è transitivo: il messaggio prende `を`, mentre il destinatario prende `に`. In `クラベル{{校長|こうちょう}}に{{伝|つた}}えることがある`, la frase non dice solo "parlare con Clavel": dice che c'è qualcosa da far arrivare a lui come informazione.
+## 2. Comunicare, rimandare e leggere lo stato emotivo
 
-[{{次|じ}}{{回|かい}}](term:term-anki-l09-jikai) combina `{{次|じ}}` "prossimo" e `{{回|かい}}` "volta/episodio". Quando modifica un nome, di solito passa per `の`: `{{次|じ}}{{回|かい}}の{{授業|じゅぎょう}}` è "la lezione della prossima volta". Questo è il tipo di formula che l'Accademia usa per spostare l'attenzione dalla spiegazione attuale a ciò che verrà dopo.
+Nei dialoghi scolastici e nelle scene con Clavel, Nemona o gli altri compagni, il giapponese distingue bene tra parlare, riferire, rimandare al passo successivo e mostrare un'emozione. La relazione tra contenuto, destinatario e tempo è quasi sempre affidata a blocchi piccoli.
 
-[{{怒|おこ}}る](term:term-anki-l09-okoru) descrive l'innesco della rabbia. Con `{{怒|おこ}}っている`, invece, la forma in `ている` mette a fuoco lo stato che continua: qualcuno è arrabbiato, non solo "si arrabbia" nell'istante. Se compare `に`, quella particella può indicare la persona o la causa verso cui è diretta la rabbia.
+*   [{{伝|つた}}える](term:term-anki-l09-tsutaeru) è transitivo: il messaggio o il contenuto prende [を](grammar:grammar-g033-marca-l-oggetto-diretto), mentre il destinatario prende `に`. In `クラベル{{校長|こうちょう}}に{{伝|つた}}えることがある`, la frase non dice solo "parlare con il preside": dice che c'è qualcosa da far arrivare a lui come informazione. Il verbo ha quindi una direzione comunicativa, non solo un suono prodotto.
+*   [{{次|じ}}{{回|かい}}](term:term-anki-l09-jikai) combina `{{次|じ}}`, "prossimo", e `{{回|かい}}`, "volta/episodio". Quando modifica un nome, passa naturalmente per [の](grammar:grammar-g030-possesso-collegamento-tra-nomi): `{{次|じ}}{{回|かい}}の{{授業|じゅぎょう}}` è "la lezione della prossima volta". All'Accademia questa formula sposta lo sguardo dalla spiegazione attuale al prossimo appuntamento.
+*   [{{怒|おこ}}る](term:term-anki-l09-okoru) può comparire come reazione improvvisa o come stato. Con `{{怒|おこ}}った`, la rabbia è un evento che si è acceso; con `{{怒|おこ}}っている`, la scena ti mostra qualcuno già dentro quello stato. Se compare `に`, quella particella può indicare la persona o la causa verso cui la rabbia è diretta.
 
 :::example_sentence
 jp: >-
@@ -98,9 +110,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `クラベル{{校長|こうちょう}}に` -> destinatario del messaggio: l'informazione deve arrivare al preside.
-- `{{伝|つた}}えること` -> "cosa da comunicare"; il verbo diventa un nome tramite `こと`.
-- `がある` -> esistenza di quel contenuto: "c'è qualcosa da...".
+*   `クラベル{{校長|こうちょう}}に` ➔ **Destinatario del messaggio**: l'informazione deve arrivare al preside.
+*   `{{伝|つた}}えること` ➔ **Contenuto nominalizzato**: `こと` trasforma "comunicare" in "cosa da comunicare".
+*   `がある` ➔ **Esistenza del contenuto**: la frase dice che quel messaggio esiste ed è pronto da riferire.
 
 :::example_sentence
 jp: >-
@@ -111,23 +123,26 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{次|じ}}{{回|かい}}の{{授業|じゅぎょう}}で` -> `の` collega "prossima volta" a "lezione"; `で` marca il contesto in cui avviene l'osservazione.
-- `テラスタルを` -> oggetto dell'azione: ciò che verrà osservato.
-- `{{見|み}}ましょう` -> forma volitiva cortese: "osserviamo / guardiamo".
+*   `では` ➔ **Chiusura e passaggio**: segnala che il discorso si organizza verso il prossimo punto.
+*   `{{次|じ}}{{回|かい}}の{{授業|じゅぎょう}}で` ➔ **Cornice scolastica futura**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) collega "prossima volta" a "lezione"; `で` marca il contesto in cui avverrà l'osservazione.
+*   `テラスタルを` ➔ **Oggetto dell'azione**: ciò che verrà guardato o studiato.
+*   `{{見|み}}ましょう` ➔ **Invito cortese condiviso**: "osserviamo / guardiamo", con tono da insegnante che guida la classe.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** Per [{{伝|つた}}える](term:term-anki-l09-tsutaeru), immagina una freccia: contenuto `を` -> destinatario `に`. È un trucco mnemonico pratico, non una spiegazione etimologica.
+#### 🧠 Gancio cognitivo
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{怒|おこ}}る](term:term-anki-l09-okoru) è "arrabbiarsi"; `{{怒|おこ}}っている` è "essere arrabbiato". Quando il gioco descrive uno stato emotivo già visibile sul volto o nel tono, la seconda forma pesa di più della traduzione secca "si arrabbia".
+Per [{{伝|つた}}える](term:term-anki-l09-tsutaeru), immagina una freccia: contenuto `を` ➔ destinatario `に`. È un trucco mnemonico pratico, non una spiegazione etimologica.
+
+#### ⚖️ Contrasto operativo
+
+[{{怒|おこ}}る](term:term-anki-l09-okoru) è "arrabbiarsi"; `{{怒|おこ}}っている` è "essere arrabbiato". Quando il gioco descrive uno stato emotivo già visibile sul volto o nel tono, [～ている](grammar:grammar-g003-stato-in-corso-stato-risultante) pesa più della traduzione secca "si arrabbia".
 
 ## 3. Movimento, oggetti fisici e notte
 
-In battaglia e nell'esplorazione, [{{動|うご}}く](term:term-anki-l09-ugoku) mette in primo piano il soggetto che riesce o non riesce a muoversi. Essendo intransitivo, lavora naturalmente con `が`: `ポケモンが{{動|うご}}く`, "il Pokémon si muove". In una frase di stato come `{{動|うご}}くことができない`, `こと` trasforma l'azione in "il fatto di muoversi", e `できない` nega la possibilità.
+Quando la scena passa dall'aula all'esplorazione, il giapponese diventa più operativo: dice se qualcosa si muove, se un corpo sconosciuto può essere osservato, o se la notte cambia ciò che appare nel mondo. Qui le parole non servono solo a descrivere: ti fanno prevedere stato, possibilità e conseguenza.
 
-[{{物|ぶっ}}{{体|たい}}](term:term-anki-l09-buttai) è più tecnico di `もの`. Non serve per dire "cosa" in modo generico, ma per trattare qualcosa come corpo fisico osservabile: un oggetto sconosciuto, un reperto, una massa o una presenza da documentare. Per questo suona naturale in contesti di ricerca, Area Zero e descrizioni con tono scientifico.
-
-[{{夜|よる}}](term:term-anki-l09-yoru) può indicare il momento della giornata, ma diventa davvero operativo quando entra in frasi temporali. `{{夜|よる}}に` vuol dire "di notte"; `{{夜|よる}}になると` significa "quando si fa notte". Il blocco `〜になると` lega il cambiamento di stato a una conseguenza: quando arriva la notte, cambia ciò che appare o ciò che diventa più probabile.
+*   [{{動|うご}}く](term:term-anki-l09-ugoku) mette in primo piano il soggetto che riesce o non riesce a muoversi. Essendo intransitivo, lavora naturalmente con `が`: `ポケモンが{{動|うご}}く`, "il Pokémon si muove". In `{{動|うご}}くことができない`, `こと` trasforma l'azione in "il fatto di muoversi", e `できない` nega la possibilità. Il punto non è una scelta del Pokémon: la schermata segnala impossibilità.
+*   [{{物|ぶっ}}{{体|たい}}](term:term-anki-l09-buttai) è più tecnico di `もの`. Non serve per dire "cosa" in modo generico, ma per trattare qualcosa come corpo fisico osservabile: un oggetto sconosciuto, un reperto, una massa o una presenza da documentare. Per questo suona naturale in contesti di ricerca, Area Zero e descrizioni con tono scientifico.
+*   [{{夜|よる}}](term:term-anki-l09-yoru) può indicare il momento della giornata, ma diventa davvero operativo quando entra in frasi temporali. `{{夜|よる}}に` vuol dire "di notte"; `{{夜|よる}}になると` significa "quando si fa notte". Con [～と](grammar:grammar-g085-quando-se-risultato-naturale), il cambio di stato non è un dettaglio atmosferico: prepara una conseguenza regolare.
 
 :::example_sentence
 jp: >-
@@ -138,9 +153,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `まひして` -> condizione causale: "essendo paralizzato".
-- `{{動|うご}}くこと` -> l'azione "muoversi" trattata come cosa possibile o impossibile.
-- `ができない` -> nega la capacità: non è una scelta del Pokémon, è impossibilità.
+*   `まひして` ➔ **Condizione causale**: "essendo paralizzato", prepara il motivo dell'impossibilità.
+*   `{{動|うご}}くこと` ➔ **Azione trattata come cosa possibile**: "il muoversi" diventa il contenuto valutato dalla frase.
+*   `ができない` ➔ **Possibilità negata**: non è "non vuole muoversi", ma "non può muoversi".
 
 :::example_sentence
 jp: >-
@@ -151,9 +166,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `エリアゼロで` -> luogo dell'azione di scoperta.
-- `{{未知|みち}}の{{物|ぶっ}}{{体|たい}}を` -> "un corpo/oggetto sconosciuto"; `{{未知|みち}}` qualifica il referente come non identificato.
-- `{{発見|はっけん}}した` -> scoperta completata, con tono più da indagine che da semplice ritrovamento casuale.
+*   `エリアゼロで` ➔ **Luogo dell'azione**: `で` colloca la scoperta dentro l'Area Zero.
+*   `{{未知|みち}}の{{物|ぶっ}}{{体|たい}}を` ➔ **Oggetto non identificato**: `{{未知|みち}}` qualifica il referente come sconosciuto, [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) lo collega a [{{物|ぶっ}}{{体|たい}}](term:term-anki-l09-buttai), e [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene scoperto.
+*   `{{発見|はっけん}}した` ➔ **Scoperta completata**: tono più da indagine che da semplice ritrovamento casuale.
 
 :::example_sentence
 jp: >-
@@ -164,18 +179,20 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{夜|よる}}になると` -> "quando diventa notte"; `と` collega la condizione a una conseguenza regolare.
-- `ゴーストポケモンが` -> soggetto della comparsa.
-- `{{出|で}}やすくなる` -> "diventa facile che escano/appaiano"; non promette certezza, aumenta la probabilità.
+*   `{{夜|よる}}になると` ➔ **Condizione regolare**: "quando diventa notte"; [～と](grammar:grammar-g085-quando-se-risultato-naturale) collega il cambiamento a un effetto atteso.
+*   `ゴーストポケモンが` ➔ **Soggetto della comparsa**: sono i Pokémon Spettro a diventare più frequenti.
+*   `{{出|で}}やすくなる` ➔ **Probabilità aumentata**: "diventa facile che escano/appaiano"; non promette certezza, segnala una tendenza.
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** [{{動|うご}}く](term:term-anki-l09-ugoku) è intransitivo: il soggetto si muove o funziona. Per "muovere qualcosa" ti aspetteresti un altro verbo, come `{{動|うご}}かす`. Se traduci sempre "muovere", rischi di invertire chi agisce.
+#### ⚖️ Contrasto operativo
+
+[{{動|うご}}く](term:term-anki-l09-ugoku) è intransitivo: il soggetto si muove o funziona. Per "muovere qualcosa" ti aspetteresti un altro verbo, come `{{動|うご}}かす`. Se traduci sempre "muovere", rischi di invertire chi agisce.
 
 ## 4. Bellezza e negozi nella vita quotidiana
 
-[{{美|うつく}}しい](term:term-anki-l09-utsukushii) non è il "bello" più neutro della conversazione quotidiana. Ha un registro più elevato, adatto a lodare una scena, un Pokémon, un gesto o una composizione con un tono quasi artistico. Nei dialoghi di personaggi legati all'arte o all'insegnamento, questa parola fa capire che il giudizio non è solo pratico: sta valorizzando forma, eleganza o splendore.
+La vita quotidiana di Paldea cambia registro: dal mistero dell'Area Zero si passa a città, negozi, panini, giudizi estetici e battute più leggere. Le parole restano semplici in superficie, ma il tono decide molto.
 
-[お{{店|みせ}}](term:term-anki-l09-omise) parte da `{{店|みせ}}`, "negozio", con il prefisso cortese `お`. Non cambia il luogo in sé: cambia il tono della parola, rendendola più naturale nel parlato quotidiano. In città può indicare un negozio, un ristorante o una bancarella; il contesto ti dice se stai comprando ingredienti, guardando un menu o scegliendo dove entrare.
+*   [{{美|うつく}}しい](term:term-anki-l09-utsukushii) non è il "bello" più neutro della conversazione quotidiana. Ha un registro più alto, adatto a lodare una scena, un Pokémon, un gesto o una composizione con tono quasi artistico. Nei dialoghi di personaggi legati all'arte o all'insegnamento, questa parola fa capire che il giudizio non è solo pratico: sta valorizzando forma, eleganza o splendore.
+*   [お{{店|みせ}}](term:term-anki-l09-omise) parte da `{{店|みせ}}`, "negozio", con il prefisso cortese `お`. Non cambia il luogo in sé: cambia il tono della parola, rendendola più naturale nel parlato quotidiano. In città può indicare un negozio, un ristorante o una bancarella; il contesto ti dice se stai comprando ingredienti, guardando un menu o scegliendo dove entrare.
 
 :::example_sentence
 jp: >-
@@ -186,9 +203,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `なんて` -> apre un'esclamazione valutativa: "che...!".
-- `{{美|うつく}}しいポケモン` -> descrizione raffinata, più solenne di un semplice "carino" o "pulito".
-- `なの` -> chiusura emotiva che dà alla frase un tono di meraviglia.
+*   `なんて` ➔ **Esclamazione valutativa**: apre un "che...!" carico di meraviglia.
+*   `{{美|うつく}}しいポケモン` ➔ **Descrizione raffinata**: più solenne di un semplice "carino" o "pulito".
+*   `なの` ➔ **Chiusura emotiva**: dà alla frase un tono di sorpresa ammirata.
 
 :::example_sentence
 jp: >-
@@ -199,16 +216,21 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{新|あたら}}しいお{{店|みせ}}で` -> luogo dell'acquisto; `で` marca dove avviene l'azione.
-- `サンドウィッチの{{材料|ざいりょう}}を` -> oggetto comprato: gli ingredienti del panino.
-- `{{買|か}}おう` -> invito volitivo: "compriamo".
+*   `{{新|あたら}}しいお{{店|みせ}}で` ➔ **Luogo dell'acquisto**: `で` marca dove avviene l'azione.
+*   `サンドウィッチの{{材料|ざいりょう}}を` ➔ **Oggetto comprato**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) lega gli ingredienti al panino, [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che compri.
+*   `{{買|か}}おう` ➔ **Invito volitivo**: "compriamo", con tono pratico e condiviso.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{美|うつく}}しい](term:term-anki-l09-utsukushii) valuta la bellezza con tono più alto; `きれい` può voler dire sia "bello" sia "pulito" ed è molto più quotidiano. Se un insegnante o un artista usa [{{美|うつく}}しい](term:term-anki-l09-utsukushii), ascolta il registro, non solo la traduzione.
+#### ⚖️ Contrasto operativo
+
+[{{美|うつく}}しい](term:term-anki-l09-utsukushii) valuta la bellezza con tono più alto; `きれい` può voler dire sia "bello" sia "pulito" ed è molto più quotidiano. Se un insegnante o un artista usa [{{美|うつく}}しい](term:term-anki-l09-utsukushii), ascolta il registro, non solo la traduzione.
+
+#### 🧠 Gancio cognitivo
+
+In [お{{店|みせ}}](term:term-anki-l09-omise), pensa a `お` come a una piccola mano gentile davanti alla parola. È un trucco mnemonico per ricordare il tono cortese, non una spiegazione storica del prefisso.
 
 ## Esempi guidati di riepilogo
 
-Queste parole si leggono meglio quando le lasci lavorare insieme: una presenza indefinita può diventare un messaggio da riferire, un volto può mostrare rabbia, e il cambio verso la notte può modificare ciò che compare nel mondo.
+Le stesse parole diventano più leggibili quando le lasci lavorare insieme: una presenza indefinita può diventare un messaggio da riferire, un volto può mostrare rabbia, e il cambio verso la notte può modificare ciò che compare nel mondo.
 
 :::example_sentence
 jp: >-

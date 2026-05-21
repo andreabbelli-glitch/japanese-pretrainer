@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-denaro-asta-e-routine
 media_id: media-pokemon-scarlet-violet
 slug: 060-sv-anki-l08-tecnologia-denaro-asta-e-routine
-title: SV Anki L08 - Tecnologia, denaro, asta e routine
+title: Tecnologia, denaro e routine nelle scene di Paldea
 order: 90
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -10,34 +10,55 @@ status: active
 tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-08]
 prerequisites: []
 summary: >-
-  Leggere tecnologia, denaro, aste e routine: capire chi agisce, cosa cambia,
-  quale risorsa serve e che tono ha la scena.
+  Capire tecnologia, denaro, aste e routine nei dialoghi di Paldea: chi agisce,
+  quale risorsa serve e quale tono guida la scena.
 ---
 
 # Tecnologia, denaro e routine nelle scene di Paldea
 
-In *Pokémon Scarlet & Violet* parole molto diverse finiscono spesso nella stessa sequenza di gioco: un personaggio ricorda qualcosa successo [この{{前|まえ}}](term:term-anki-l08-konomae), una schermata ti chiede se pagare con [お{{金|かね}}](term:term-anki-l08-okane), un dialogo dell'Area Zero nomina [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai), e subito dopo devi capire se qualcuno sta cambiando, dormendo, salutando o godendosi la situazione.
+Paldea alterna molto in fretta registri diversi: una schermata di negozio parla di [お{{金|かね}}](term:term-anki-l08-okane), il mercato di Marinada sposta l'attenzione sulla [{{競|せ}}り](term:term-anki-l08-seri), l'Accademia nomina [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu), mentre l'Area Zero fa entrare in scena [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai). Non sono argomenti separati: sono segnali che ti dicono quale sistema sta parlando, quale risorsa conta e quale azione puoi aspettarti.
 
-Il filo comune non è l'argomento astratto, ma la funzione nella scena: distinguere risorse, attività, tono e azione volontaria. Quando questi pezzi sono leggibili, le battute smettono di essere etichette sparse e diventano istruzioni concrete su che cosa è successo, che cosa puoi fare e quale sfumatura emotiva sta usando il personaggio.
+Nei dialoghi più quotidiani, lo stesso principio vale per tempo, tono e routine. [この{{前|まえ}}](term:term-anki-l08-konomae) colloca un ricordo vicino, [{{押|おっ}}{{忍|す}}](term:term-anki-l08-ossu) fa sentire una voce energica, [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu), [{{寝|ね}}る](term:term-anki-l08-neru) e [{{変|か}}える](term:term-anki-l08-kaeru) chiariscono se qualcuno si gode, riposa o modifica qualcosa. La lettura diventa più stabile quando guardi prima particelle e funzione nella scena.
 
 ## Termini chiave
 
-- [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) — IA; intelligenza artificiale
-- [お{{金|かね}}](term:term-anki-l08-okane) — denaro; soldi
-- [この{{前|まえ}}](term:term-anki-l08-konomae) — l’altro giorno
-- [{{押|おっ}}{{忍|す}}](term:term-anki-l08-ossu) — ossu/yo, saluto energico
-- [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu) — divertirsi; godersi
-- [{{競|せ}}り](term:term-anki-l08-seri) — asta; competizione
-- [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu) — arte
-- [{{今|いま}}まで](term:term-anki-l08-imamade) — fino ad ora
-- [{{寝|ね}}る](term:term-anki-l08-neru) — dormire
-- [{{変|か}}える](term:term-anki-l08-kaeru) — cambiare; trasformare
+- [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) — IA / intelligenza artificiale
+- [お{{金|かね}}](term:term-anki-l08-okane) — denaro / soldi
+- [{{競|せ}}り](term:term-anki-l08-seri) — asta / vendita competitiva
+- [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu) — arte / disciplina artistica
+- [この{{前|まえ}}](term:term-anki-l08-konomae) — l'altro giorno / poco tempo fa
+- [{{今|いま}}まで](term:term-anki-l08-imamade) — fino ad ora / finora
+- [{{押|おっ}}{{忍|す}}](term:term-anki-l08-ossu) — saluto energico e informale
+- [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu) — divertirsi / godersi
+- [{{寝|ね}}る](term:term-anki-l08-neru) — dormire / coricarsi
+- [{{変|か}}える](term:term-anki-l08-kaeru) — cambiare qualcosa / modificare
+
+## Espressioni ricorrenti
+
+- `お{{金|かね}}で{{払|はら}}う` — pagare usando il denaro come mezzo
+- `バトルを{{楽|たの}}しむ` — godersi attivamente una lotta
+- `Xを{{変|か}}える` — cambiare intenzionalmente X
+
+## Pattern grammaticali chiave
+
+- `Nが V` — il nome prima di `が` è il soggetto che agisce o cambia stato
+- `Nを V` — il nome prima di `を` è l'oggetto comprato, goduto o modificato
+- `Nで V` — il nome prima di `で` può indicare il mezzo usato o il luogo dell'azione
+
+## Etichette da riconoscere
+
+- エリアゼロ — scenario in cui la tecnologia diventa un agente narrativo
+- マリナードタウン — mercato in cui l'acquisto passa attraverso l'asta
+- スマホロトム — oggetto quotidiano che può ricevere cover e impostazioni diverse
 
 ---
 
-## 1. Tecnologia e controllo: quando l'IA agisce
+## 1. Tecnologia e controllo: quando l'IA diventa soggetto
 
-[{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) è una sigla inglese resa nel testo giapponese come エーアイ. Il gioco non usa qui una parola giapponese lunga come `{{人|じん}}{{工|こう}}{{知|ち}}{{能|のう}}`; preferisce la sigla tecnica, fredda, riconoscibile subito come entità artificiale. Nelle scene legate all'Area Zero, questa scelta separa l'intelligenza sintetica dalle persone normali: se `{{Ａ|エー}}{{Ｉ|アイ}}が` apre la frase, il soggetto non è un professore in carne e ossa, ma un sistema che parla, decide o gestisce qualcosa.
+Nelle scene dell'Area Zero, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) non funziona come semplice parola fantascientifica. È una sigla inglese scritta nel testo giapponese con lettura エーアイ, e proprio questa forma fredda la distingue da un personaggio umano: quando la frase parte da `{{Ａ|エー}}{{Ｉ|アイ}}が`, il testo sta assegnando a un sistema artificiale il ruolo di soggetto.
+
+*   [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) compare bene dove il gioco vuole far sentire una presenza tecnica che parla, analizza o gestisce. Se il soggetto fosse una persona, ti aspetteresti un nome proprio, un titolo o una descrizione umana; con `{{Ａ|エー}}{{Ｉ|アイ}}`, invece, la battuta mette davanti un'entità costruita, capace di compiere azioni operative.
+*   Il punto da leggere non è solo "che cosa significa la sigla", ma che cosa fa nella frase. Con `が`, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) può controllare, spiegare, bloccare o guidare una procedura. In una scena tesa, questo cambia il peso della battuta: non stai ascoltando un commento neutro, stai leggendo il comportamento di un sistema.
 
 :::example_sentence
 jp: >-
@@ -48,20 +69,23 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{Ａ|エー}}{{Ｉ|アイ}}が` -> `が` marca il soggetto che compie l'azione: non è "riguardo all'IA", ma "l'IA fa qualcosa".
-- `エリアゼロを` -> `を` marca l'oggetto controllato; l'Area Zero è ciò su cui ricade l'azione.
-- `{{管理|かんり}}している` -> `{{管理|かんり}}する` significa gestire o amministrare; `している` descrive uno stato in corso, quindi il controllo non è un evento istantaneo ma una funzione attiva.
+*   `{{Ａ|エー}}{{Ｉ|アイ}}が` ➔ **Soggetto agente** (`が` marca chi compie l'azione: il sistema artificiale, non una persona sottintesa).
+*   `エリアゼロを` ➔ **Oggetto controllato** (`を` indica lo spazio su cui ricade la gestione).
+*   `{{管理|かんり}}している` ➔ **Funzione in corso** (`{{管理|かんり}}する` significa gestire; `している` lo presenta come stato operativo continuo).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) non va letto come decorazione fantascientifica. Quando diventa soggetto con `が`, il testo gli assegna un ruolo operativo: parla, controlla, analizza o interviene.
+#### ⚖️ Contrasto operativo
 
-## 2. Denaro, aste e arte: comprare non è sempre pagare un prezzo fisso
+[{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) non va letto come atmosfera tecnologica di sfondo. Quando entra con `が`, il testo gli dà responsabilità grammaticale: è l'agente che fa accadere qualcosa nella scena.
 
-[お{{金|かね}}](term:term-anki-l08-okane) indica i soldi ordinari del giocatore. Il prefisso `お` è parte dell'uso naturale: il giapponese quotidiano dice quasi sempre `お{{金|かね}}`, non semplicemente `{{金|かね}}`, quando parla di denaro in modo neutro. Nei negozi la costruzione da riconoscere è `お{{金|かね}}で{{払|はら}}う`: la particella `で` non indica il luogo, ma il mezzo con cui paghi.
+---
 
-[{{競|せ}}り](term:term-anki-l08-seri) sposta invece la lettura dal pagamento alla competizione. A マリナードタウン non stai solo comprando un oggetto: `{{競|せ}}り` implica rilanci, confronto con altri offerenti e prezzo che cambia. Il kanji `{{競|せ}}` porta l'idea di competere; per questo l'asta è più vicina a "vincere una contesa" che a scegliere un prodotto da uno scaffale.
+## 2. Denaro, asta e arte: risorse e luoghi sociali
 
-[{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu) appartiene allo stesso blocco di Paldea, ma cambia ambiente: all'Accademia indica l'arte come materia, mentre fuori dalla scuola può richiamare personaggi e Palestre legati all'espressione artistica. La parola non dice "bello" in generale; nomina un campo, una disciplina, un modo organizzato di guardare forme, colori e stile.
+I menu e le città di Paldea fanno passare il giapponese dal prezzo fisso alla competizione, poi dalla compravendita alla cultura dell'Accademia. [お{{金|かね}}](term:term-anki-l08-okane), [{{競|せ}}り](term:term-anki-l08-seri) e [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu) appartengono allo stesso blocco di lettura perché ti obbligano a chiederti che tipo di situazione hai davanti.
+
+*   [お{{金|かね}}](term:term-anki-l08-okane) indica i soldi ordinari del giocatore. Il prefisso `お` fa parte dell'uso naturale: in giapponese quotidiano si dice spesso `お{{金|かね}}`, non solo `{{金|かね}}`, quando si parla di denaro in modo neutro. In `お{{金|かね}}で{{払|はら}}う`, la particella `で` non indica il luogo, ma il mezzo: il denaro è lo strumento con cui paghi.
+*   [{{競|せ}}り](term:term-anki-l08-seri) sposta l'attenzione dal semplice pagare al competere. Il kanji `{{競|せ}}` porta l'idea di gara: al mercato di マリナードタウン, il prezzo non è solo una cifra scritta, ma il risultato di rilanci e offerte. Se leggi [{{競|せ}}り](term:term-anki-l08-seri), preparati a una dinamica in cui vincere l'oggetto significa superare altri offerenti.
+*   [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu) cambia ancora ambiente. All'Accademia non indica "qualcosa di bello" in generale, ma l'arte come disciplina, materia e pratica guidata. `{{術|じゅつ}}` suggerisce tecnica: forme, colori e stile diventano oggetti di insegnamento, non solo impressioni personali.
 
 :::example_sentence
 jp: >-
@@ -72,9 +96,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `お{{金|かね}}で` -> `で` marca il mezzo di pagamento: la frase dice con quale risorsa avviene l'acquisto.
-- `モンスターボールを` -> `を` marca l'oggetto comprato.
-- `{{買|か}}う` -> il verbo chiude l'azione normale di acquisto; se il testo usa [{{競|せ}}り](term:term-anki-l08-seri), invece, aspettati una dinamica di offerta e non un prezzo stabile.
+*   `お{{金|かね}}で` ➔ **Mezzo di pagamento** (`で` risponde alla domanda "con che cosa?").
+*   `モンスターボールを` ➔ **Oggetto comprato** (`を` marca ciò che entra nell'acquisto).
+*   `{{買|か}}う` ➔ **Acquisto ordinario** (il verbo chiude una compra-vendita normale, con un oggetto e una risorsa).
 
 :::example_sentence
 jp: >-
@@ -85,36 +109,40 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `マリナードタウンの` -> `の` collega il luogo all'evento: è l'asta del mercato di Marinada.
-- `{{競|せ}}りに` -> `に` marca il punto di ingresso dell'azione, cioè l'evento a cui partecipi.
-- `{{参加|さんか}}する` -> "partecipare": il soggetto entra nella competizione, non acquista ancora l'oggetto.
+*   `マリナードタウンの` ➔ **Luogo collegato all'evento** (`の` presenta l'asta come evento del mercato di Marinada).
+*   `{{競|せ}}りに` ➔ **Evento di ingresso** (`に` marca il punto verso cui entra l'azione).
+*   `{{参加|さんか}}する` ➔ **Partecipazione** (il soggetto entra nella competizione; l'acquisto non è ancora garantito).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{買|か}}い{{物|もの}}` è acquisto ordinario; [{{競|せ}}り](term:term-anki-l08-seri) è una vendita competitiva. Se leggi [お{{金|かね}}](term:term-anki-l08-okane), guarda la risorsa; se leggi [{{競|せ}}り](term:term-anki-l08-seri), guarda la contesa.
+#### ⚖️ Contrasto operativo
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** per [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu), pensa a `{{術|じゅつ}}` come "tecnica" o "arte praticata": non è solo un gusto personale, ma una disciplina con metodo, insegnanti e giudizi.
+`{{買|か}}い{{物|もの}}` è acquisto ordinario; [{{競|せ}}り](term:term-anki-l08-seri) è vendita competitiva. Se il testo usa [お{{金|かね}}](term:term-anki-l08-okane), guarda la risorsa disponibile; se usa [{{競|せ}}り](term:term-anki-l08-seri), guarda la contesa e il prezzo che può cambiare.
+
+#### 🧠 Gancio cognitivo
+
+Per [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu), pensa a `{{術|じゅつ}}` come "tecnica praticata". È un trucco mnemonico utile: l'arte qui non è soltanto gusto, ma una disciplina che si impara, si osserva e si valuta.
+
+---
 
 ## 3. Tempo vicino, saluto e piacere: il tono dei dialoghi
 
-[この{{前|まえ}}](term:term-anki-l08-konomae) mette una scena nel passato recente. Non è `{{昔|むかし}}`, che spinge il ricordo lontano; è "l'altro giorno", "poco tempo fa", qualcosa che nel dialogo resta ancora vicino a chi parla. Può aprire la frase senza particella: `この{{前|まえ}}、ネモと...` funziona già come cornice temporale.
+Le battute tra allenatori e compagni usano piccoli segnali per farti sentire distanza temporale, energia della voce e atteggiamento verso l'esperienza. [この{{前|まえ}}](term:term-anki-l08-konomae), [{{押|おっ}}{{忍|す}}](term:term-anki-l08-ossu) e [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu) sono utili perché non danno solo contenuto: danno anche temperatura alla scena.
 
-[{{押|おっ}}{{忍|す}}](term:term-anki-l08-ossu) è un saluto energico, ruvido e molto informale. Nei dialoghi di allenatori o ambienti sportivi non comunica solo "ciao": comunica postura, voce, entusiasmo competitivo. Se una battuta si apre con [{{押|おっ}}{{忍|す}}](term:term-anki-l08-ossu), aspettati un personaggio che entra in scena in modo diretto, non una formula cortese da insegnante o commesso.
-
-[{{楽|たの}}しむ](term:term-anki-l08-tanoshimu) è transitivo: l'esperienza goduta prende `を`. Questo è il punto da non perdere, perché `{{楽|たの}}しい` descrive una cosa come divertente, mentre [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu) descrive il soggetto che si gode attivamente quella cosa. `バトルを{{楽|たの}}しむ` non dice soltanto che la lotta è divertente; dice che qualcuno la vive come esperienza da assaporare.
+*   [この{{前|まえ}}](term:term-anki-l08-konomae) colloca l'evento in un passato recente. Non è `{{昔|むかし}}`, che spinge il ricordo lontano; è "l'altro giorno", qualcosa che nel dialogo resta ancora vicino al parlante. Può aprire la frase da solo, come cornice: `この{{前|まえ}}、ネモと...`.
+*   [{{押|おっ}}{{忍|す}}](term:term-anki-l08-ossu) è un saluto energico, ruvido e molto informale. In bocca a un allenatore o in un ambiente sportivo non significa solo "ciao": segnala postura, voce e desiderio di entrare subito nell'azione. Non aspettarti la distanza cortese di un commesso o di un insegnante.
+*   [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu) è transitivo: l'esperienza goduta prende `を`. Questo lo distingue da `{{楽|たの}}しい`, che descrive una cosa come divertente. `バトルを{{楽|たの}}しむ` dice che qualcuno vive la lotta come esperienza da assaporare, non solo che la lotta ha una qualità piacevole.
 
 :::example_sentence
 jp: >-
   この{{前|まえ}}、ネモと ポケモンバトルを した。
 translation_it: >-
-  L'altro giorno ho lottato con i Pokémon contro Nemona.
+  L'altro giorno ho fatto una lotta Pokémon con Nemona.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `この{{前|まえ}}` -> cornice temporale di passato recente; non richiede `に` per funzionare all'inizio della frase.
-- `ネモと` -> `と` marca la persona con cui avviene la lotta.
-- `ポケモンバトルを した` -> `を` collega l'evento al verbo `した`: la frase dice che la lotta è stata fatta, non solo nominata.
+*   `この{{前|まえ}}` ➔ **Cornice temporale vicina** (situa l'evento poco prima del presente narrativo).
+*   `ネモと` ➔ **Compagna dell'azione** (`と` indica con chi avviene la lotta).
+*   `ポケモンバトルを した` ➔ **Evento compiuto** (`を` collega la lotta al verbo `した`: la battaglia viene trattata come azione fatta).
 
 :::example_sentence
 jp: >-
@@ -125,19 +153,22 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `アカデミーの {{生活|せいかつ}}を` -> `を` marca l'esperienza che viene goduta.
-- `{{楽|たの}}しむ` -> verbo attivo: il soggetto trova piacere nella vita scolastica, non sta solo dicendo che essa è oggettivamente divertente.
+*   `アカデミーの {{生活|せいかつ}}を` ➔ **Esperienza goduta** (`を` marca ciò che il soggetto vive positivamente).
+*   `{{楽|たの}}しむ` ➔ **Piacere attivo** (il verbo descrive il soggetto che si gode qualcosa, non una qualità astratta della cosa).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{楽|たの}}しい` descrive una qualità; [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu) descrive un'azione. Se vedi `を{{楽|たの}}しむ`, cerca quale esperienza il personaggio sta scegliendo di vivere positivamente.
+#### ⚖️ Contrasto operativo
 
-## 4. Routine e modifica: dormire, arrivare fino a ora, cambiare qualcosa
+`{{楽|たの}}しい` descrive una qualità: "è divertente". [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu) descrive un'azione: "godersi qualcosa". Se vedi `を{{楽|たの}}しむ`, cerca quale esperienza viene scelta e vissuta positivamente.
 
-[{{今|いま}}まで](term:term-anki-l08-imamade) unisce `{{今|いま}}`, il momento presente, e `まで`, il limite fino a cui arriva una linea. Nei dialoghi di bilancio, il personaggio non parla di un singolo evento: tira una linea da un punto passato fino ad adesso. Per questo [{{今|いま}}まで](term:term-anki-l08-imamade) funziona bene con risultati accumulati, esperienze fatte, Pokémon catturati o progressi raggiunti.
+---
 
-[{{寝|ね}}る](term:term-anki-l08-neru) è intransitivo: il soggetto dorme o si corica, ma non "dorme qualcosa". Il luogo prende `で`, come in `ベッドで{{寝|ね}}る`, perché indica dove avviene l'azione. In Pokémon può descrivere sia il riposo del giocatore sia il sonno come condizione, ma la grammatica resta la stessa: guarda chi cade nel sonno e dove.
+## 4. Routine e modifica: finora, riposo e cambiamento intenzionale
 
-[{{変|か}}える](term:term-anki-l08-kaeru) è transitivo e richiede un oggetto con `を`: qualcuno cambia deliberatamente una cover, un'impostazione, un ordine o una scelta. È diverso da `{{変|か}}わる`, dove il soggetto cambia da solo o il cambiamento viene osservato senza indicare chi lo provoca.
+Il gioco passa spesso da grandi obiettivi a gesti piccoli: controllare quanto hai fatto, riposare nella stanza, cambiare una cover o un'impostazione. [{{今|いま}}まで](term:term-anki-l08-imamade), [{{寝|ね}}る](term:term-anki-l08-neru) e [{{変|か}}える](term:term-anki-l08-kaeru) ti aiutano a leggere proprio queste scene di routine.
+
+*   [{{今|いま}}まで](term:term-anki-l08-imamade) unisce `{{今|いま}}`, il momento presente, e `まで`, il limite fino a cui arriva una linea. Nei dialoghi di bilancio, il personaggio non parla di un evento isolato: tira una linea dal passato fino ad adesso. Per questo funziona bene con Pokémon catturati, progressi accumulati, esperienze fatte o risultati raggiunti.
+*   [{{寝|ね}}る](term:term-anki-l08-neru) è intransitivo: il soggetto dorme o si corica, ma non "dorme qualcosa". Il luogo prende `で`, come in `ベッドで{{寝|ね}}る`, perché indica dove avviene l'azione. In Paldea può descrivere il riposo del protagonista o il sonno come condizione, ma la grammatica resta semplice: guarda chi dorme e dove.
+*   [{{変|か}}える](term:term-anki-l08-kaeru) è transitivo e richiede un oggetto con `を`: qualcuno cambia deliberatamente una cover, una scelta, un ordine o un'impostazione. È diverso da `{{変|か}}わる`, dove qualcosa cambia da sé o il cambiamento viene osservato senza indicare chi lo provoca.
 
 :::example_sentence
 jp: >-
@@ -148,9 +179,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{今|いま}}まで` -> limite temporale: tutto ciò che segue viene contato fino al momento presente.
-- `たくさんの ポケモンを` -> `を` marca l'oggetto dell'azione accumulata.
-- `つかまえた` -> passato semplice: l'azione è avvenuta prima di adesso, ma [{{今|いま}}まで](term:term-anki-l08-imamade) la collega al bilancio presente.
+*   `{{今|いま}}まで` ➔ **Limite temporale** (tutto ciò che segue viene contato fino al momento presente).
+*   `たくさんの ポケモンを` ➔ **Oggetto accumulato** (`を` marca ciò che è stato catturato nel tempo).
+*   `つかまえた` ➔ **Azione passata** (il passato semplice viene letto come bilancio grazie alla cornice [{{今|いま}}まで](term:term-anki-l08-imamade)).
 
 :::example_sentence
 jp: >-
@@ -161,8 +192,8 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `じぶんの {{部屋|へや}}の ベッドで` -> `で` marca il luogo dell'azione; il letto non è oggetto diretto, è lo spazio dove si dorme.
-- `{{寝|ね}}る` -> verbo intransitivo: non cerca `を`, perché il soggetto compie l'azione su se stesso.
+*   `じぶんの {{部屋|へや}}の ベッドで` ➔ **Luogo dell'azione** (`で` indica dove avviene il dormire).
+*   `{{寝|ね}}る` ➔ **Verbo intransitivo** (non cerca `を`, perché non c'è un oggetto diretto da dormire).
 
 :::example_sentence
 jp: >-
@@ -173,15 +204,18 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `スマホロトムの カバーを` -> `を` marca l'oggetto modificato.
-- `{{変|か}}える` -> cambio intenzionale prodotto dal soggetto; la cover non cambia da sola.
+*   `スマホロトムの カバーを` ➔ **Oggetto modificato** (`を` marca la cover come cosa su cui agisce il soggetto).
+*   `{{変|か}}える` ➔ **Cambiamento intenzionale** (qualcuno produce il cambio; la cover non cambia da sola).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{変|か}}える](term:term-anki-l08-kaeru) = qualcuno cambia qualcosa; `{{変|か}}わる` = qualcosa cambia. La particella ti aiuta: `Xを{{変|か}}える` punta all'oggetto manipolato, `Xが{{変|か}}わる` punta al cambiamento osservato.
+#### ⚖️ Contrasto operativo
+
+[{{変|か}}える](term:term-anki-l08-kaeru) = qualcuno cambia qualcosa. `{{変|か}}わる` = qualcosa cambia. La particella ti aiuta subito: `Xを{{変|か}}える` punta all'oggetto manipolato, `Xが{{変|か}}わる` punta al cambiamento osservato.
+
+---
 
 ## Esempi guidati di riepilogo
 
-Le stesse forme diventano più facili da leggere quando guardi particelle e contesto: `が` ti dice chi agisce, `を` quale oggetto viene comprato, goduto o cambiato, `で` quale mezzo o luogo sostiene l'azione.
+Le stesse forme diventano più leggibili quando le ricombini come farebbe il gioco: una voce entra in scena, una risorsa viene controllata, un'esperienza viene vissuta o una routine viene modificata.
 
 :::example_sentence
 jp: >-
@@ -215,4 +249,4 @@ translation_it: >-
 
 ## Nota finale
 
-Questo gruppo di parole copre scene molto diverse, ma la lettura pratica resta stabile: [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) e [お{{金|かね}}](term:term-anki-l08-okane) nominano agenti o risorse, [この{{前|まえ}}](term:term-anki-l08-konomae) e [{{今|いま}}まで](term:term-anki-l08-imamade) fissano il tempo della battuta, [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu), [{{寝|ね}}る](term:term-anki-l08-neru) e [{{変|か}}える](term:term-anki-l08-kaeru) ti dicono quale azione sta avvenendo. Se guardi prima particelle e ruolo nella scena, il lessico smette di essere una lista e diventa una mappa leggibile di Paldea.
+Questo gruppo di parole copre tecnologia, mercato, scuola e vita quotidiana, ma il metodo di lettura resta lo stesso. [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) e [お{{金|かね}}](term:term-anki-l08-okane) mostrano agenti e risorse, [この{{前|まえ}}](term:term-anki-l08-konomae) e [{{今|いま}}まで](term:term-anki-l08-imamade) fissano il tempo della battuta, [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu), [{{寝|ね}}る](term:term-anki-l08-neru) e [{{変|か}}える](term:term-anki-l08-kaeru) indicano che tipo di azione sta avvenendo. Se segui particelle e ruolo nella scena, Paldea diventa meno una lista di parole e più una sequenza leggibile di scelte, voci e azioni.
