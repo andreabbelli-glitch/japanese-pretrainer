@@ -19,6 +19,7 @@ summary: >-
   riconoscere chi agisce, quale bersaglio cambia stato, quale risultato segue e
   quando la scena passa da meccanica a identità o disturbo sociale.
 ---
+
 # Leggere la battaglia: bersagli, stati e risultati
 
 In *Pokémon Scarlet & Violet* le frasi di battaglia sono brevi, ma hanno un
@@ -56,6 +57,13 @@ sta parlando di identità reale, apparenza sospetta o fastidio causato ad altri.
 ## Espressioni ricorrenti
 
 - [{{授業|じゅぎょう}}を{{思|おも}}い{{出|だ}}す](term:term-e100-jugyou-wo-omoidasu) — richiamare una lezione già vista
+
+## Pattern grammaticali chiave
+
+- `Nを + stato/effetto + させる` — il bersaglio marcato da `を` viene mandato in uno stato, come `{{相手|あいて}}を{{混乱|こんらん}}させる`
+- `Nが + {{上昇|じょうしょう}}する` — la statistica o il valore marcato da `が` aumenta
+- `Nが{{表示|ひょうじ}}される` — un'indicazione compare sullo schermo senza nominare chi la mostra
+- `Nに{{参加|さんか}}する / Nに{{招待|しょうたい}}する` — `に` marca evento, gruppo o destinatario dell'ingresso sociale
 
 ## Etichette da riconoscere
 

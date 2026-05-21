@@ -18,6 +18,7 @@ summary: >-
   Leggere conferme, shop, ruoli scolastici, luoghi della storia e lotte di
   gruppo distinguendo cornice, azione e bersaglio della frase.
 ---
+
 # Menu, Accademia e lotte: leggere la cornice prima dell'azione
 
 Una schermata di *Pokémon Scarlet & Violet* spesso decide tutto in poche parole: un ordine al ristorante, un ritiro dal menu, un ingresso all'Accademia, una registrazione a un raid. Il giapponese non nomina soltanto oggetti o luoghi; segnala se devi confermare, scegliere, muoverti, aspettare una risposta o preparare una squadra.

@@ -205,16 +205,16 @@ davanti a `の{{子|こ}}`.
 
 :::example_sentence
 jp: >-
-  {{女|おんな}} + の + {{子|こ}} = {{女|おんな}}の{{子|こ}}
+  {{女|おんな}}の{{子|こ}}は そのクリスタルを {{見|み}}ている。
 translation_it: >-
-  ragazza.
+  La ragazza sta guardando quel cristallo.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `{{女|おんな}}` ➔ **Primo nome del composto** (dà il tratto "femminile").
-*   `の` ➔ **Collegamento nominale** (qui non indica possesso concreto, ma unisce i due nomi).
-*   `{{子|こ}}` ➔ **Secondo nome del composto** ("bambino / ragazzo / figlio" ➔ con `{{女|おんな}}` diventa "ragazza").
+*   `{{女|おんな}}の{{子|こ}}は` ➔ **Tema della frase** (il blocco intero funziona come "ragazza", non come possesso concreto).
+*   `そのクリスタルを` ➔ **Oggetto osservato** (`その` lo colloca vicino all'altro personaggio o già nominato; `を` marca ciò che viene guardato).
+*   `{{見|み}}ている` ➔ **Azione in corso** (la forma `ている` mostra lo sguardo mentre continua nella vignetta).
 
 :::example_sentence
 jp: >-
@@ -297,21 +297,21 @@ gruppo attorno a una persona o a un pronome: `{{私|わたし}}{{達|たち}}` �
 
 :::example_sentence
 jp: >-
-  {{私|わたし}} + {{達|たち}} = {{私|わたし}}{{達|たち}}
+  {{私|わたし}}{{達|たち}}も {{角|つの}}を {{追|お}}う。
 translation_it: >-
-  noi.
+  Anche noi inseguiamo il corno.
 :::
 
 :::example_sentence
 jp: >-
-  {{彼|かれ}} + ら = {{彼|かれ}}ら
+  {{彼|かれ}}らは {{家|いえ}}に {{帰|かえ}}る。
 translation_it: >-
-  loro, gruppo maschile o misto.
+  Loro tornano a casa.
 :::
 
-Il finale usa questa logica con [{{一員|いちいん}}](term:term-ichiin). `{{一|いち}}`
-è "uno", `{{員|いん}}` indica una persona appartenente a un insieme: non una
-persona qualsiasi, ma un membro riconosciuto dentro una compagnia.
+Il finale usa questa logica con [{{一員|いちいん}}](term:term-ichiin). Come parola
+intera non indica una persona qualsiasi, ma un membro riconosciuto dentro una
+compagnia o una casa.
 
 :::example_sentence
 jp: >-
