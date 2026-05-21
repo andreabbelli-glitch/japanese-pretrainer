@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-040-sv-prestudy-l29a-dlc-e-contenuti-extra-sistema-e-menu
 media_id: media-pokemon-scarlet-violet
 slug: 040-sv-prestudy-l29a-dlc-e-contenuti-extra-sistema-e-menu
-title: SV Pre-study L29A - DLC e contenuti extra, sistema e menu
+title: "DLC, missioni e mappe extra: avvii, regole e luoghi"
 order: 70
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -18,11 +18,12 @@ summary: >-
   Orientarsi tra DLC, missioni e schermate extra: capire avvio, conferma,
   completamento, regole e luoghi prima di entrare in una funzione.
 ---
-# DLC, menu e missioni extra: leggere cosa si avvia, cosa si chiude e dove andare
 
-Nei contenuti extra di *Pokémon Scarlet & Violet* il giapponese passa spesso da un messaggio di menu molto corto a un nome di luogo molto specifico. Un testo come [クリア](term:term-v479-kuria) ti dice che una missione è chiusa, [{{開始|かいし}}](term:term-v506-kaishi) apre l'azione successiva, [{{確認|かくにん}}](term:term-v482-kakunin) mette una pausa di controllo prima di procedere.
+# DLC, missioni e mappe extra: avvii, regole e luoghi
 
-Accanto a queste parole operative compaiono etichette del DLC: [キタカミ](term:term-v476-kitakami), [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen), [テラリウムドーム](term:term-v486-terariumudoomu) e le aree interne. Quando le riconosci, capisci subito se il testo parla di una destinazione, di una missione, di una regola locale o di una schermata di ricompensa.
+Nei contenuti extra di *Pokémon Scarlet & Violet*, una schermata può passare in pochi caratteri da un comando di sistema a un nome di luogo. [{{開始|かいし}}](term:term-v506-kaishi) ti dice che qualcosa sta per partire, [{{確認|かくにん}}](term:term-v482-kakunin) rallenta l'azione per controllare dati o condizioni, [クリア](term:term-v479-kuria) segnala che l'obiettivo è ormai chiuso.
+
+Accanto a questi verbi da menu compaiono etichette molto concrete: [キタカミ](term:term-v476-kitakami), [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen), [テラリウムドーム](term:term-v486-terariumudoomu), le aree interne del Bioterarium, [ＢＰ](term:term-v481-biipii) e [ブルレク](term:term-v496-burureku). Riconoscerle cambia subito la lettura: non stai solo traducendo una parola, stai capendo se il gioco ti sta mandando in un luogo, aprendo una missione, proponendo una regola o consegnando una ricompensa.
 
 ## Termini chiave
 
@@ -53,7 +54,7 @@ Accanto a queste parole operative compaiono etichette del DLC: [キタカミ](te
 
 ## Pattern grammaticali chiave
 
-- [～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) — tipo…, e cose così / tra gli esempi
+- [～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) — tipo..., e cose così / tra gli esempi
 
 ## Etichette da riconoscere
 
@@ -72,43 +73,48 @@ Accanto a queste parole operative compaiono etichette del DLC: [キタカミ](te
 
 ---
 
-## 1. Azioni di sistema: avviare, controllare, completare
+## 1. Il ciclo del menu: avviare, controllare, completare
 
-[クリア](term:term-v479-kuria), [{{開始|かいし}}](term:term-v506-kaishi) e [{{確認|かくにん}}](term:term-v482-kakunin) formano una piccola catena da interfaccia. [{{開始|かいし}}](term:term-v506-kaishi) indica l'inizio di un'attività, quindi in `ミッションを {{開始|かいし}}する` il sistema non sta descrivendo una missione: la sta facendo partire. [{{確認|かくにん}}](term:term-v482-kakunin) aggiunge un controllo consapevole, spesso prima di accettare regole, guardare dati o confermare una scelta. [クリア](term:term-v479-kuria) arriva invece alla fine: segnala che l'obiettivo è stato soddisfatto.
+[ミッション](term:term-v499-misshon), [{{開始|かいし}}](term:term-v506-kaishi), [{{確認|かくにん}}](term:term-v482-kakunin) e [クリア](term:term-v479-kuria) leggono quasi come una barra di avanzamento. Prima il gioco nomina l'attività, poi può chiederti di controllare le condizioni, poi la fa partire; quando l'obiettivo è stato raggiunto, arriva [クリア](term:term-v479-kuria).
+
+Il punto da non perdere è il tempo dell'azione. [{{開始|かいし}}](term:term-v506-kaishi) è l'apertura: in `ミッションを {{開始|かいし}}する`, la missione non è ancora finita, sta iniziando. [{{確認|かくにん}}](term:term-v482-kakunin) è una pausa attiva: controlli regole, dati, dettagli o una scelta prima di procedere. [クリア](term:term-v479-kuria), invece, arriva dopo il risultato.
 
 :::example_sentence
 jp: >-
-  ミッションを クリアしました。
+  ミッションを {{開始|かいし}}する {{前|まえ}}に、ルールを {{確認|かくにん}}します。
 translation_it: >-
-  Ho completato la missione.
+  Prima di avviare la missione, controllo le regole.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `ミッションを` -> `ミッション` è l'oggetto marcato da `を`: è la cosa su cui cade il risultato.
-- `クリアしました` -> [クリア](term:term-v479-kuria) funziona come verbo con `する`; la forma in `ました` chiude l'azione come fatto già avvenuto.
+*   `ミッションを` ➔ **Oggetto dell'avvio** (`を` marca la cosa che viene fatta partire).
+*   `{{開始|かいし}}する {{前|まえ}}に` ➔ **Prima dell'azione** (`{{前|まえ}}に` colloca il controllo prima dell'avvio).
+*   `ルールを {{確認|かくにん}}します` ➔ **Controllo operativo** (non è ancora accettare: è verificare le condizioni).
 
 :::example_sentence
 jp: >-
-  {{観測|かんそく}}データを {{確認|かくにん}}してから、{{撮影|さつえい}}ミッションを {{開始|かいし}}します。
+  {{撮影|さつえい}}ミッションを クリアしました。
 translation_it: >-
-  Controllo i dati di osservazione e poi avvio la missione fotografica.
+  Ho completato la missione fotografica.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{観測|かんそく}}データを {{確認|かくにん}}してから` -> prima viene il controllo dei dati; `してから` mette quell'azione come passo precedente.
-- `{{撮影|さつえい}}ミッションを` -> [{{撮影|さつえい}}](term:term-v508-satsuei) specifica il tipo di missione: non una missione generica, ma una richiesta di foto o ripresa.
-- `{{開始|かいし}}します` -> il sistema entra nella missione; non sta ancora dicendo che è stata completata.
+*   `{{撮影|さつえい}}ミッションを` ➔ **Tipo di missione** ([{{撮影|さつえい}}](term:term-v508-satsuei) restringe il compito a foto o riprese).
+*   `クリアしました` ➔ **Stato concluso** ([クリア](term:term-v479-kuria) funziona come verbo con `する`; `ました` lo presenta come fatto già avvenuto).
 
 > [!NOTE]
-> **⚖️ Contrasto operativo:** [{{確認|かくにん}}](term:term-v482-kakunin) non è "confermare sì" in automatico. Prima di scegliere, può voler dire controllare contenuto, regole o dati. [クリア](term:term-v479-kuria), invece, è uno stato concluso: se lo leggi dopo `ミッション`, l'attività è già superata.
+> **⚖️ Contrasto operativo:** [{{確認|かくにん}}](term:term-v482-kakunin) non equivale sempre a premere "sì". In una UI può voler dire "controlla", "verifica", "guarda i dettagli". [クリア](term:term-v479-kuria) risponde a un'altra domanda: non "vuoi procedere?", ma "questo obiettivo è stato superato?".
 
-## 2. Regole, sfidanti e piani d'azione
+> [!NOTE]
+> **🧠 Gancio cognitivo:** quando vedi [{{開始|かいし}}](term:term-v506-kaishi), immagina il pulsante di partenza. Quando vedi [クリア](term:term-v479-kuria), immagina il timbro finale su una missione.
 
-[ルール](term:term-v480-ruuru) è la parola trasparente per le regole di una lotta, una prova o una funzione. Quando compare vicino a [いいよね](term:term-e089-iiyone), il testo non chiede una definizione astratta: propone una condizione e cerca assenso. [{{挑戦者|ちょうせんしゃ}}](term:term-v495-chousensha) nomina chi sfida o partecipa come challenger; il suffisso `{{者|しゃ}}` trasforma l'azione di sfidare in una persona legata a quel ruolo.
+## 2. Regole, sfidanti e piani: quando il gioco negozia una prova
 
-[{{作戦|さくせん}}](term:term-v497-sakusen) e [{{大作戦|だいさくせん}}](term:term-v493-daisakusen) spostano il registro verso piani e operazioni. [{{作戦|さくせん}}](term:term-v497-sakusen) può essere una strategia concreta; con `{{大|だい}}` davanti, [{{大作戦|だいさくせん}}](term:term-v493-daisakusen) suona più grande, marcato o narrativo, come un piano speciale lanciato da un personaggio o da un evento.
+[ルール](term:term-v480-ruuru) è trasparente, ma il suo comportamento in frase è importante. Con `で`, come in `この ルールで`, non indica solo "la regola" come oggetto: diventa il quadro operativo, cioè le condizioni con cui la prova si svolge. Se subito dopo compare [いいよね](term:term-e089-iiyone), il parlante sta cercando accordo su una condizione che considera già accettabile.
+
+[{{挑戦者|ちょうせんしゃ}}](term:term-v495-chousensha) nomina la persona che entra nel ruolo di challenger. [{{作戦|さくせん}}](term:term-v497-sakusen) e [{{大作戦|だいさくせん}}](term:term-v493-daisakusen) spostano il registro verso il piano d'azione: [{{作戦|さくせん}}](term:term-v497-sakusen) può essere una strategia concreta, mentre [{{大作戦|だいさくせん}}](term:term-v493-daisakusen) suona più marcato, quasi da "operazione speciale" annunciata da un personaggio o da un evento.
 
 :::example_sentence
 jp: >-
@@ -119,40 +125,70 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `この ルールで` -> `で` dà il quadro operativo: "con questa regola", "a queste condizioni".
-- `いい` -> valuta la condizione come accettabile.
-- `よね` -> [いいよね](term:term-e089-iiyone) cerca accordo su qualcosa che il parlante considera già ragionevole.
-
-> [!NOTE]
-> **🧠 Gancio cognitivo:** in [{{挑戦者|ちょうせんしゃ}}](term:term-v495-chousensha), pensa a `{{者|しゃ}}` come "persona di quel ruolo": chi fa `{{挑戦|ちょうせん}}` diventa lo sfidante. È un trucco di riconoscimento, non una spiegazione etimologica completa.
-
-## 3. Luoghi del DLC e segnali del Disco Indaco
-
-Le etichette di luogo servono a restringere subito la scena. [キタカミ](term:term-v476-kitakami) porta al contesto di Nordivia; [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen) sposta la lettura sull'Istituto Mirtillo. Dentro quel blocco, [テラリウムドーム](term:term-v486-terariumudoomu) è il grande spazio artificiale, mentre [コーストエリア](term:term-v488-koosutoeria), [サバンナエリア](term:term-v491-sabanaeria), [ポーラエリア](term:term-v492-pooraeria) e [キャニオンエリア](term:term-v498-kyanioneria) indicano settori della mappa.
-
-[ＢＰ](term:term-v481-biipii) e [ブルレク](term:term-v496-burureku) sono sigle di sistema: nei menu possono comparire come saldo, ricompensa, costo o elenco di attività. Se vedi [ブルレク](term:term-v496-burureku) accanto a [ミッション](term:term-v499-misshon), stai leggendo una missione locale del contesto Blueberry, non una quest generica dell'intera Paldea.
+*   `この ルールで` ➔ **Condizione di gioco** (`で` non marca un luogo: qui significa "con / secondo questa regola").
+*   `いい` ➔ **Valutazione** (la condizione viene trattata come accettabile).
+*   `よね` ➔ **Ricerca di accordo** ([いいよね](term:term-e089-iiyone) suona come "ci sta, vero?", non come una domanda neutra).
 
 :::example_sentence
 jp: >-
-  キタカミとか ブルーベリー{{学園|がくえん}}とかに いきます。
+  {{挑戦者|ちょうせんしゃ}}の ために {{大作戦|だいさくせん}}を {{考|かんが}}えます。
+translation_it: >-
+  Penso a una grande operazione per lo sfidante.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{挑戦者|ちょうせんしゃ}}の ために` ➔ **Beneficiario o scopo** (`ために` indica per chi o per quale fine nasce il piano).
+*   `{{大作戦|だいさくせん}}を` ➔ **Piano marcato** (`{{大|だい}}` dà peso all'operazione, non solo dimensione fisica).
+*   `{{考|かんが}}えます` ➔ **Elaborazione** (il piano viene pensato o preparato, non ancora eseguito).
+
+> [!NOTE]
+> **🧠 Gancio cognitivo:** in [{{挑戦者|ちょうせんしゃ}}](term:term-v495-chousensha), `{{者|しゃ}}` è il segnale "persona del ruolo": chi fa `{{挑戦|ちょうせん}}` diventa la persona-sfidante. È un appiglio di lettura, non una promessa sull'etimologia completa della parola.
+
+> [!WARNING]
+> **⚖️ `いいよね` non è un sì automatico**
+> [いいよね](term:term-e089-iiyone) porta dentro l'aspettativa del parlante. In un dialogo può suonare morbido, ma non è neutro come `いいですか`. Se il personaggio dice `この ルールで いいよね`, sta proponendo quel set di regole come già ragionevole.
+
+## 3. Geografia del DLC: nomi propri, settori e liste aperte
+
+I nomi del DLC funzionano come coordinate. [キタカミ](term:term-v476-kitakami) porta subito alla cornice di Nordivia; [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen) sposta la scena nell'Istituto Mirtillo; [テラリウムドーム](term:term-v486-terariumudoomu) restringe il campo al grande spazio artificiale del Bioterarium.
+
+Dentro quel blocco, [コーストエリア](term:term-v488-koosutoeria), [サバンナエリア](term:term-v491-sabanaeria), [ポーラエリア](term:term-v492-pooraeria) e [キャニオンエリア](term:term-v498-kyanioneria) ti dicono quale settore della mappa sta parlando. [ＢＰ](term:term-v481-biipii) e [ブルレク](term:term-v496-burureku) sono invece segnali da sistema Blueberry: possono comparire come saldo, ricompensa, costo o lista di attività.
+
+:::example_sentence
+jp: >-
+  キタカミとか ブルーベリー{{学園|がくえん}}とかに {{行|い}}きます。
 translation_it: >-
   Vado a Kitakami, all'Istituto Mirtillo e posti del genere.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `キタカミとか` -> il primo esempio della lista: Kitakami è nominato, ma non esaurisce le destinazioni possibili.
-- `ブルーベリー{{学園|がくえん}}とか` -> il secondo esempio amplia il campo al DLC scolastico.
-- `に いきます` -> `に` marca la destinazione; il verbo `いきます` conferma che il blocco precedente è una lista di luoghi.
+*   `キタカミとか` ➔ **Primo esempio** ([～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) presenta Kitakami come membro di un gruppo più ampio).
+*   `ブルーベリー{{学園|がくえん}}とか` ➔ **Secondo esempio** (aggiunge l'Istituto Mirtillo senza chiudere la lista).
+*   `に {{行|い}}きます` ➔ **Destinazione** (`に` conferma che i nomi precedenti sono luoghi verso cui ci si muove).
+
+:::example_sentence
+jp: >-
+  ブルレクを クリアして、ＢＰを {{受|う}}け{{取|と}}りました。
+translation_it: >-
+  Ho completato la Ricreattività Mirtillo e ho ricevuto BP.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `ブルレクを クリアして` ➔ **Attività completata** ([ブルレク](term:term-v496-burureku) è l'attività locale; [クリア](term:term-v479-kuria) la chiude).
+*   `ＢＰを` ➔ **Ricompensa o saldo** ([ＢＰ](term:term-v481-biipii) è ciò che entra nella lettura come punti).
+*   `{{受|う}}け{{取|と}}りました` ➔ **Ricezione conclusa** (`{{受|う}}け{{取|と}}る` combina "ricevere" e "prendere in consegna").
 
 > [!NOTE]
-> **⚖️ Contrasto operativo:** [～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) non chiude una lista come `と`. `キタカミとブルーベリー{{学園|がくえん}}` tende a elencare due luoghi specifici; `キタカミとかブルーベリー{{学園|がくえん}}とか` li presenta come esempi dentro un insieme più largo.
+> **⚖️ Contrasto operativo:** `キタカミとブルーベリー{{学園|がくえん}}` tende a elencare due luoghi specifici. `キタカミとかブルーベリー{{学園|がくえん}}とか` li tratta come esempi: "Kitakami, l'Istituto Mirtillo e posti di quel tipo". [～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) lascia la porta aperta.
 
-## 4. Cartelli, indizi e ricerca sul campo
+## 4. Cartelli, indizi e ricerca: leggere prove sul campo
 
-[{{看板|かんばん}}](term:term-v502-kanban) è una parola da scenario: un cartello può dare una direzione, una regola locale o un'informazione da usare subito. Se nella stessa frase compaiono [ヒント](term:term-v500-hinto) e [{{正解|せいかい}}](term:term-v489-seikai), la lettura diventa quella di una prova guidata: l'indizio orienta la scelta, la risposta corretta la chiude.
+[{{看板|かんばん}}](term:term-v502-kanban) è una parola da scenario, non da menu astratto: un cartello può dare una direzione, una regola locale o una pista. Quando vicino a [{{看板|かんばん}}](term:term-v502-kanban) compaiono [ヒント](term:term-v500-hinto) e [{{正解|せいかい}}](term:term-v489-seikai), la frase prende la forma di una prova guidata: l'indizio orienta, la risposta corretta chiude.
 
-[{{観測|かんそく}}](term:term-v505-kansoku) e [{{撮影|さつえい}}](term:term-v508-satsuei) appartengono invece al registro di ricerca. [{{観測|かんそく}}](term:term-v505-kansoku) riguarda qualcosa che viene osservato o rilevato come dato; [{{撮影|さつえい}}](term:term-v508-satsuei) richiede una foto, una ripresa o uno scatto. [{{知識|ちしき}}](term:term-v507-chishiki) è il contenuto informativo che ricavi da spiegazioni, lezioni o schede: non è un oggetto fisico, ma sapere accumulato.
+[{{観測|かんそく}}](term:term-v505-kansoku) e [{{撮影|さつえい}}](term:term-v508-satsuei) appartengono al registro di ricerca. [{{観測|かんそく}}](term:term-v505-kansoku) non è solo "guardare": porta l'idea di osservare per raccogliere un dato. [{{撮影|さつえい}}](term:term-v508-satsuei) invece richiede una foto, una ripresa o uno scatto. [{{知識|ちしき}}](term:term-v507-chishiki) è il sapere che ricavi da queste osservazioni, non un oggetto fisico nell'inventario.
 
 :::example_sentence
 jp: >-
@@ -163,24 +199,49 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{看板|かんばん}}の ヒントを` -> `の` collega il cartello all'indizio: il cartello è la fonte dell'informazione.
-- `{{読|よ}}んで` -> la forma in `て` lega la lettura dell'indizio all'azione successiva.
-- `{{正解|せいかい}}を {{選|えら}}びます` -> [{{正解|せいかい}}](term:term-v489-seikai) è il bersaglio della scelta: non "risposta" qualunque, ma quella corretta.
-
-## 5. Servizi, oggetti extra e parlato quotidiano
-
-[ありがとうございました](term:term-e088-arigatougozaimashita) chiude uno scambio già completato: una vendita, una cura, un servizio o una conversazione di sportello. In quel contesto, [{{受付|うけつけ}}](term:term-v504-uketsuke) indica il punto in cui qualcuno riceve richieste o procedure; [{{食堂|しょくどう}}](term:term-v487-shokudou) porta invece al frame della mensa o della sala da pranzo.
-
-[おまけ](term:term-v483-omake) segnala qualcosa in più rispetto all'elemento principale: un bonus, un extra, un'aggiunta omaggio. [ピック](term:term-v494-pikku) nel contesto dei panini non è il verbo inglese "pick", ma lo stecchino decorativo o accessorio che può comparire nella preparazione. [{{洞|どう}}くつ](term:term-v484-doukutsu) resta invece lessico di esplorazione: quando appare in un nome di luogo, prepara a leggere una grotta o un'area sotterranea.
-
-Quando il dialogo diventa personale, [{{大好|だいす}}き](term:term-v501-daisuki) indica una preferenza forte e affettiva. `オーガポンが {{大好|だいす}}きです` non sta dicendo che Ogerpon è utile o conveniente: il parlante lo adora. Se nella stessa frase compare [{{知識|ちしき}}](term:term-v507-chishiki), il sapere raccolto nasce da interesse o attaccamento, non solo da una necessità di sistema.
+*   `{{看板|かんばん}}の ヒントを` ➔ **Fonte dell'indizio** (`の` collega il cartello al suggerimento: l'informazione viene da lì).
+*   `{{読|よ}}んで` ➔ **Azione ponte** (la forma in `て` lega la lettura alla scelta successiva).
+*   `{{正解|せいかい}}を {{選|えら}}びます` ➔ **Scelta risolutiva** ([{{正解|せいかい}}](term:term-v489-seikai) non è una risposta qualunque: è quella corretta).
 
 :::example_sentence
 jp: >-
-  ありがとうございました。また きてください。
+  テラリウムドームで ポケモンを {{観測|かんそく}}して、{{撮影|さつえい}}します。
 translation_it: >-
-  Grazie mille. Torni presto.
+  Osservo i Pokémon nel Bioterarium e li fotografo.
 :::
+
+#### 🗺️ Anatomia della frase
+
+*   `テラリウムドームで` ➔ **Luogo dell'azione** (`で` marca il posto in cui avviene l'osservazione).
+*   `ポケモンを {{観測|かんそく}}して` ➔ **Rilevamento** (il Pokémon è l'oggetto osservato come dato).
+*   `{{撮影|さつえい}}します` ➔ **Scatto o ripresa** (dopo l'osservazione, l'azione diventa fotografica).
+
+> [!NOTE]
+> **🧠 Gancio cognitivo:** [{{観測|かんそく}}](term:term-v505-kansoku) contiene l'idea di osservare con uno scopo: non "vedo un Pokémon", ma "lo rilevo". [{{撮影|さつえい}}](term:term-v508-satsuei) è il momento in cui quell'osservazione diventa immagine.
+
+> [!NOTE]
+> **⚖️ Contrasto operativo:** [ヒント](term:term-v500-hinto) ti avvicina alla soluzione; [{{正解|せいかい}}](term:term-v489-seikai) è la soluzione già corretta. Se il menu chiede di scegliere, [ヒント](term:term-v500-hinto) è materiale da leggere prima, [{{正解|せいかい}}](term:term-v489-seikai) è ciò che vuoi selezionare alla fine.
+
+## 5. Servizi, bonus e parlato affettivo
+
+[{{受付|うけつけ}}](term:term-v504-uketsuke) è il punto in cui qualcuno riceve richieste, procedure o visitatori. In [{{食堂|しょくどう}}](term:term-v487-shokudou), questa parola porta al frame della mensa: ordini, scambi di servizio, oggetti legati ai panini. [ありがとうございました](term:term-e088-arigatougozaimashita) chiude lo scambio già concluso, come una vendita o un servizio completato.
+
+[おまけ](term:term-v483-omake) segnala qualcosa in più rispetto all'elemento principale: un bonus, un extra, un'aggiunta omaggio. [ピック](term:term-v494-pikku), nel contesto dei panini, non va letto come il verbo inglese "pick": è lo stecchino decorativo. [{{洞|どう}}くつ](term:term-v484-doukutsu) resta invece una parola da esplorazione; quando appare in un nome di luogo, prepara a una grotta o a un'area sotterranea.
+
+Quando la frase diventa personale, [{{大好|だいす}}き](term:term-v501-daisuki) porta affetto forte, non semplice utilità. `オーガポンが {{大好|だいす}}きです` non significa che Ogerpon conviene in battaglia: il parlante lo adora. Se nello stesso contesto compare [{{知識|ちしき}}](term:term-v507-chishiki), il sapere nasce da interesse o attaccamento, non solo da una richiesta del sistema.
+
+:::example_sentence
+jp: >-
+  {{食堂|しょくどう}}の {{受付|うけつけ}}で、おまけの ピックを もらいました。
+translation_it: >-
+  Alla reception della mensa ho ricevuto un pick bonus.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{食堂|しょくどう}}の {{受付|うけつけ}}で` ➔ **Punto di servizio** (`で` marca il luogo in cui avviene la ricezione).
+*   `おまけの ピックを` ➔ **Extra ricevuto** (`おまけの` dice che il pick è un bonus, non l'elemento principale).
+*   `もらいました` ➔ **Ricezione dal punto di vista del giocatore** (qualcuno dà, tu ricevi).
 
 :::example_sentence
 jp: >-
@@ -189,25 +250,24 @@ translation_it: >-
   Siccome adoro Ogerpon, raccolgo più conoscenze.
 :::
 
+#### 🗺️ Anatomia della frase
+
+*   `オーガポンが {{大好|だいす}}き` ➔ **Centro affettivo** (`が` marca ciò che piace moltissimo).
+*   `だから` ➔ **Motivo dichiarato** (la preferenza spiega l'azione successiva).
+*   `もっと {{知識|ちしき}}を {{集|あつ}}めます` ➔ **Accumulo di sapere** ([{{知識|ちしき}}](term:term-v507-chishiki) è informazione raccolta, non un premio materiale).
+
 > [!NOTE]
-> **⚖️ Contrasto operativo:** [おまけ](term:term-v483-omake) aggiunge qualcosa al pacchetto principale; [クリア](term:term-v479-kuria) chiude un obiettivo; [{{大好|だいす}}き](term:term-v501-daisuki) esprime affetto. Tutti e tre possono apparire in schermate brevi, ma rispondono a domande diverse: "che cosa ricevo in più?", "che cosa ho finito?", "che cosa piace al personaggio?".
+> **⚖️ Contrasto operativo:** [おまけ](term:term-v483-omake), [クリア](term:term-v479-kuria) e [{{大好|だいす}}き](term:term-v501-daisuki) possono apparire in schermate brevi, ma rispondono a domande diverse: "che cosa ricevo in più?", "che cosa ho finito?", "che cosa piace al personaggio?".
 
 ## Esempi guidati di riepilogo
 
-Le stesse forme si combinano in messaggi molto corti: prima identifica se il testo parla di stato, luogo, regola, indizio o preferenza; poi guarda quale particella marca l'oggetto o la destinazione.
+Quando una schermata del DLC è corta, prima identifica il tipo di segnale: stato, regola, luogo, indizio, servizio o preferenza. Poi guarda le particelle: `を` marca ciò che viene avviato, controllato, scelto o ricevuto; `に` porta verso una destinazione; `で` dà il luogo o le condizioni dell'azione.
 
 :::example_sentence
 jp: >-
-  ミッションを {{開始|かいし}}する {{前|まえ}}に、ルールを {{確認|かくにん}}します。
+  {{確認|かくにん}}してから、ミッションを {{開始|かいし}}します。
 translation_it: >-
-  Prima di avviare la missione, controllo le regole.
-:::
-
-:::example_sentence
-jp: >-
-  ブルレクを クリアして、ＢＰを {{受|う}}け{{取|と}}りました。
-translation_it: >-
-  Ho completato la Ricreattività Mirtillo e ho ricevuto BP.
+  Dopo aver controllato, avvio la missione.
 :::
 
 :::example_sentence
@@ -219,11 +279,20 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{食堂|しょくどう}}の {{受付|うけつけ}}で、おまけの ピックを もらいました。
+  {{看板|かんばん}}の ヒントで {{正解|せいかい}}が わかりました。
 translation_it: >-
-  Alla reception della mensa ho ricevuto un pick bonus.
+  Grazie all'indizio sul cartello ho capito la risposta corretta.
 :::
+
+:::example_sentence
+jp: >-
+  {{洞|どう}}くつの {{近|ちか}}くで オーガポンの {{知識|ちしき}}を {{集|あつ}}めます。
+translation_it: >-
+  Raccolgo conoscenze su Ogerpon vicino alla grotta.
+:::
+
+---
 
 ## Nota finale
 
-Nei contenuti extra, le parole operative dicono in che punto dell'azione ti trovi: [{{開始|かいし}}](term:term-v506-kaishi) apre, [{{確認|かくにん}}](term:term-v482-kakunin) controlla, [クリア](term:term-v479-kuria) chiude. Le etichette di luogo e sistema restringono invece il campo: [ブルレク](term:term-v496-burureku), [ＢＰ](term:term-v481-biipii), [キタカミ](term:term-v476-kitakami) e [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen) ti dicono subito quale parte del DLC sta parlando.
+Il DLC usa parole operative e nomi propri come segnaletica. [{{開始|かいし}}](term:term-v506-kaishi), [{{確認|かくにん}}](term:term-v482-kakunin) e [クリア](term:term-v479-kuria) ti dicono dove sei nel ciclo dell'azione; [キタカミ](term:term-v476-kitakami), [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen), [ブルレク](term:term-v496-burureku) e [ＢＰ](term:term-v481-biipii) ti dicono invece quale parte dei contenuti extra sta parlando. Se prima riconosci il segnale, la traduzione arriva con meno attrito.
