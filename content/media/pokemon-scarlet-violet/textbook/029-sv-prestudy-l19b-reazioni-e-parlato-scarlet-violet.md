@@ -31,7 +31,7 @@ In questa lezione analizzeremo **tutti i 23 elementi chiave** presenti nel tuo d
 - [フェアリー](term:term-v256-fearii) — folletto
 - [はがね](term:term-v257-hagane) — acciaio
 - [味方](term:term-v258-mikata) — alleato
-- [なみのり](term:term-v260-naminori) — nuoto / surf sull'acqua
+- [なみのり](term:term-v260-naminori) — surf / cavalcare le onde
 - [注意](term:term-v261-chuui) — attenzione / cautela
 - [受ける](term:term-v262-ukeru) — ricevere / sostenere
 - [家庭科](term:term-v263-kateika) — economia domestica
@@ -67,10 +67,10 @@ In questa lezione analizzeremo **tutti i 23 elementi chiave** presenti nel tuo d
 Il tuo viaggio a Paldea si divide tra i banchi dell'Accademia e l'esplorazione selvaggia.
 
 *   [家庭科](term:term-v263-kateika) (**Economia Domestica**): Composto da `家庭` (*katei*, famiglia/casa) e `科` (*ka*, corso/materia). All'Accademia, indica la classe in cui impari a preparare i panini e a gestire le risorse. Quando vedi [家庭科](term:term-v263-kateika), preparati a dialoghi legati a ingredienti, cibo e relazioni domestiche.
-*   [なみのり](term:term-v260-naminori) (**Surf / Nuoto sull'acqua**): Letteralmente "cavalcare le onde" (`波` *nami*, onda + `乗り` *nori*, cavalcare/salire a bordo). È il nome storico della mossa *Surf* e indica l'abilità della tua cavalcatura (Koraidon o Miraidon) di muoversi sull'acqua. Se leggi [なみのり](term:term-v260-naminori) in un tutorial, il gioco ti sta spiegando come superare fiumi o specchi di mare.
+*   [なみのり](term:term-v260-naminori) (**Surf / Cavalcare le onde**): Letteralmente "cavalcare le onde" (`波` *nami*, onda + `乗り` *nori*, cavalcare/salire a bordo). È il nome storico della mossa *Surf* e indica l'abilità della tua cavalcatura (Koraidon o Miraidon) di muoversi sull'acqua. Se leggi [なみのり](term:term-v260-naminori) in un tutorial, il gioco ti sta spiegando come superare fiumi o specchi di mare.
 *   [味方](term:term-v258-mikata) e [古代](term:term-v255-kodai):
     *   [味方](term:term-v258-mikata) (**Alleato / Compagno**): Indica chi combatte dalla tua parte (es. nei Raid Terastal).
-        *   🧠 **Gancio Cognitivo:** Pensa a `味` come "gusto/fazione" e `方` come "direzione/persona". Chi condivide la tua stessa direzione è il tuo [味方](term:term-v258-mikata) (alleato). Contrasta direttamente con `相手` (*aite*, avversario).
+        *   🧠 **Gancio Mnemonico:** Pensa a `味` come "gusto/fazione" e `方` come "direzione/persona". Chi condivide la tua stessa direzione è il tuo [味方](term:term-v258-mikata) (alleato). Contrasta direttamente con `相手` (*aite*, avversario). *(Nota: è un trucco di memoria, non l’etimologia reale — `味方` è probabilmente un ateji da `御方`.)*
     *   [古代](term:term-v255-kodai) (**Antichità / Passato remoto**): Composto da `古` (*vecchio*) e `代` (*era/generazione*). In *Pokémon Violet* sentirai parlare di futuro, ma in *Pokémon Scarlet* sentirai costantemente nominare i [古代](term:term-v255-kodai)のポケモン (i Pokémon del passato remoto, o Pokémon Paradosso del passato).
 
 ---
@@ -105,7 +105,7 @@ Quando navighi nei menu, configuri il multiplayer o raccogli oggetti, il gioco c
 *   [全部](term:term-v266-zenbu) (**Tutto**): Composto da `全` (*intero*) e `部` (*parte*). Indica la totalità senza esclusioni. Lo trovi nei menu di acquisto o di selezione multipla.
 *   [通信](term:term-v267-tsuushin) (**Connessione / Comunicazione**): Composto da `通` (*attraversare/trasmettere*) e `信` (*fiducia/informazione*). Qualsiasi funzione online (scambi, lotte in link, sblocchi wireless) è preceduta da questa parola.
 *   [結果](term:term-v269-kekka) (**Risultato / Esito**): Il responso finale dopo un test, una battaglia o una sessione all'Accademia.
-*   [テーブルシティ](term:term-v272-teeburushitei) (**Mesagoza / Mesapoli**): La grande metropoli al centro di Paldea, dove ha sede l'Accademia.
+*   [テーブルシティ](term:term-v272-teeburushitei) (**Mesapoli**): La grande metropoli al centro di Paldea, dove ha sede l'Accademia.
 
 Vediamo come si comportano queste parole nei messaggi operativi del sistema:
 
@@ -153,8 +153,8 @@ translation_it: >-
 *   `ほしい` ➔ **Desiderio** (*"voglio/desidero"*).
 *   *Senso letterale:* *"Riguardo a questo, l'uso da parte tua è desiderabile per me"*.
 
-### B. Suggerimenti gentili: `～してみて`
-Quando qualcuno ti invita calorosamente a fare un tentativo, usa [〜してみて](term:term-e053-shitemite). Deriva dal verbo `する` (*fare*) coniugato nella struttura `-te miru` (*provare a fare*), lasciata in forma piana ed esortativa.
+### B. Suggerimenti gentili: `～てみて`
+Quando qualcuno ti invita calorosamente a fare un tentativo, usa la struttura **Vて + みて**: si prende la forma in `-te` di qualsiasi verbo e si aggiunge `みて` (forma esortativa di `みる`, *provare a fare*). Con i verbi in `〜する` il risultato è [〜してみて](term:term-e053-shitemite), ma il pattern vale per ogni verbo (es. `使ってみて`, `食べてみて`).
 
 :::example_sentence
 jp: >-
@@ -165,7 +165,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della Frase
 *   `これも` ➔ **Focus Esteso** (`これ` questo + `も` anche ➔ *"anche questo"*).
-*   `{{使|つか}}ってみて` ➔ **Tentativo Esortativo** (Verbo `使う` *usare* + `てみる` *provare a* ➔ `使ってみる` *provare a usare* ➔ contratto in `-te` finale `使ってみて` *prova a usarlo, dai!*).
+*   `{{使|つか}}ってみて` ➔ **Tentativo Esortativo** (Verbo `使う` *usare* nella forma in `-te` `使って` + `みる` *provare a* nella sua forma in `-te` `みて`, usata qui come esortazione informale ➔ *prova a usarlo, dai!*).
 
 > [!NOTE]
 > **⚖️ Contrasto Grammaticale: `てほしい` (Voglio che tu...) vs `てみて` (Prova a...)**
@@ -186,6 +186,10 @@ La parola [せっかく](term:term-v270-sekkaku) è un tesoro della lingua giapp
 
 *   [約束](term:term-v271-yakusoku) (**Promessa / Appuntamento**): Molto comune nei dialoghi in cui i personaggi stringono un patto (es. *"Promettimi che verrai a テーブルシティ"*). `約束する` trasforma la parola in azione attiva.
 *   [～な / ～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) (**Eh / proprio... / vedo che...**): Finale colloquiale e riflessiva. Con i verbi e gli aggettivi in `い` si usa direttamente `な` (`このジムはむずかしいな` ➔ *"Questa palestra è proprio difficile, eh"*); dopo nomi e aggettivi in `な` compare spesso `だな` (`静かだな`, `先生だな`). Il parlante non sta facendo una domanda diretta: sta pensando ad alta voce o constatando un fatto evidente davanti a lui.
+
+> [!WARNING]
+> **⚠️ Attenzione: `Vるな` può essere proibitivo**
+> Quando `な` segue la forma del dizionario di un verbo (`行くな`, `食べるな`), il significato può essere completamente diverso: **"non fare V!"** (proibizione secca, tipica del parlato maschile brusco). In testo scritto senza audio, solo il contesto disambigua. Dopo aggettivi in `い` (`むずかしいな`) o dopo `だ` (`先生だな`) non c'è ambiguità: è sempre osservativo.
 
 ---
 

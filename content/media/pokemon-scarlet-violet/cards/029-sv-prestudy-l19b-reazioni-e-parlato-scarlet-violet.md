@@ -217,7 +217,7 @@ id: term-v260-naminori
 lemma: なみのり
 reading: なみのり
 romaji: naminori
-meaning_it: nuoto / surf sull'acqua
+meaning_it: surf / cavalcare le onde
 notes_it: >-
   なみのり nomina il movimento sull'acqua: nei comandi di esplorazione indica
   attraversamento di fiumi o mare, non il semplice verbo "nuotare".
@@ -229,7 +229,7 @@ entry_type: term
 entry_id: term-v260-naminori
 card_type: recognition
 front: 'なみのり'
-back: nuoto / surf sull'acqua
+back: surf / cavalcare le onde
 example_jp: >-
   なみのりで {{水上|すいじょう}}を {{進|すす}}む。
 example_it: >-
