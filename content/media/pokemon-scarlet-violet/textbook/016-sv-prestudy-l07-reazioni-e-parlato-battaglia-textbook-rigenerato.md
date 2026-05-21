@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-016-sv-prestudy-l07-reazioni-e-parlato-battaglia
 media_id: media-pokemon-scarlet-violet
 slug: 016-sv-prestudy-l07-reazioni-e-parlato-battaglia
-title: SV Pre-study L07 - reazioni e parlato, battaglia
+title: "Reazioni, priorità e battaglia nel parlato breve"
 order: 46
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -15,165 +15,47 @@ tags:
 - lesson-07
 prerequisites: []
 summary: >-
-  Capire reazioni, istruzioni e frasi di battaglia: riconoscere priorità,
-  ragioni, compagni, statistiche e obblighi prima di scegliere come rispondere.
+  Leggere frasi brevi di dialogo e battaglia: reazioni, priorità, ragioni,
+  compagni, statistiche e azioni possibili o necessarie.
 ---
-# Obiettivo
 
-Capire **che funzione svolge il giapponese** nelle frasi brevi di dialogo e di battaglia: esultare, chiedere una ragione, indicare priorità, parlare di compagni, statistiche e possibilità/obbligo di fare qualcosa.
+# Reazioni, priorità e battaglia nel parlato breve
 
-La lettura non procede parola per parola: やった！ reagisce a un risultato, まず ordina il primo passo, 特攻 nomina una statistica e 〜できる / 〜ないといけない dicono cosa è possibile o necessario fare.
+Nei dialoghi e nelle schermate di *Pokémon Scarlet & Violet* molte frasi durano un soffio: un'esclamazione dopo una riuscita, una domanda che chiede il motivo, un avverbio che mette ordine, una statistica che decide come leggere la battaglia. Proprio perché sono brevi, queste battute non si leggono come una lista di parole: ogni pezzo segnala una funzione nella scena.
 
-## Contesto
-
-Nel parlato dei giochi Pokémon molte frasi sono molto corte. Per questo alcune parole diventano importantissime:
-
-- un avverbio come [まず](term:term-v084-mazu) ti dice **l'ordine** delle azioni;
-- una parola come [しっかり](term:term-v077-shikkari) ti dice **come** fare qualcosa;
-- una domanda come [どうして](term:term-v079-doushite) ti segnala che sta arrivando **una spiegazione o una motivazione**;
-- termini come [特攻](term:term-v083-tokukou) e [ＨＰ](term:term-v085-eichipii) non sono grammatica, ma **lessico di interfaccia**: se li riconosci, capisci subito cosa sta cambiando nella battaglia.
+Quando riconosci [やった！](term:term-e016-yatta), capisci che qualcuno reagisce a un risultato. Quando vedi [まず](term:term-v084-mazu) o [しっかり](term:term-v077-shikkari), sai se il parlante sta ordinando i passi o chiedendo attenzione. In battaglia, invece, [{{特攻|とくこう}}](term:term-v083-tokukou) e [ＨＰ](term:term-v085-eichipii) non sono colore di frase: sono etichette operative che ti dicono che cosa sta cambiando sullo schermo.
 
 ## Termini chiave
 
-- [しっかり](term:term-v077-shikkari) — con attenzione / bene / in modo saldo
-- [戦う](term:term-v078-tatakau) — combattere
+- [しっかり](term:term-v077-shikkari) — con attenzione, saldamente, per bene
+- [{{戦|たたか}}う](term:term-v078-tatakau) — combattere
 - [どうして](term:term-v079-doushite) — perché / come mai
-- [仲間](term:term-v080-nakama) — compagno / alleato / membro del gruppo
-- [もちろん](term:term-v081-mochiron) — certo / ovviamente
-- [特攻](term:term-v083-tokukou) — Attacco Speciale
+- [{{仲間|なかま}}](term:term-v080-nakama) — compagno / alleato / membro del gruppo
+- [もちろん](term:term-v081-mochiron) — certo / naturalmente
 - [まず](term:term-v084-mazu) — prima di tutto / come prima cosa
-- [ＨＰ](term:term-v085-eichipii) — HP / punti salute
 
-## Espressione ricorrente
+## Espressioni ricorrenti
 
-- [やった！](term:term-e016-yatta) — evviva! / ce l'ho fatta!
+- [やった！](term:term-e016-yatta) — ce l'ho fatta! / grande!
 
 ## Pattern grammaticali chiave
 
 - [～なければならない / ～ないといけない](grammar:grammar-g019-dover-fare) — dovere / essere necessario fare
-- [可能形](grammar:grammar-g020-poter-fare) — forma potenziale: poter fare
-- [た形](grammar:grammar-g021-passato-completamento) — forma in た: azione completata / passato / base di altre strutture
+- [{{可能形|かのうけい}}](grammar:grammar-g020-poter-fare) — forma potenziale: poter fare
+- [た{{形|けい}}](grammar:grammar-g021-passato-completamento) — azione completata / passato
 
-## Spiegazione
+## Etichette da riconoscere
 
-### 1) Reazioni: il giapponese breve che esprime emozione
+- [{{特攻|とくこう}}](term:term-v083-tokukou) — Attacco Speciale
+- [ＨＰ](term:term-v085-eichipii) — HP / punti salute
 
-[やった！](term:term-e016-yatta) non è una frase "completa" nel senso scolastico, ma una **reazione spontanea**. Viene dal passato informale di やる, però in uso reale significa qualcosa come:
+---
 
-- "Sì!"
-- "Ce l'ho fatta!"
-- "Grande!"
+## 1. Reazioni e risposte: quando una battuta dice subito il tono
 
-Quindi qui non va studiato come semplice passato di un verbo, ma come **esclamazione fissa di successo**. Nei giochi compare spesso dopo una vittoria, una riuscita o una conferma positiva.
+Le frasi più corte sono spesso le più cariche di funzione. [やった！](term:term-e016-yatta) nasce dalla forma passata informale di `やる`, ma nel parlato di gioco non ti chiede di ricostruire "ha fatto": funziona come esclamazione di successo. Dopo una vittoria, una prova riuscita o una conferma positiva, suona come "sì!", "ce l'ho fatta!", "grande!".
 
-[もちろん](term:term-v081-mochiron) invece è una risposta di conferma. Non vuol dire solo "ovviamente" in senso logico: spesso nel dialogo suona come **"certo" / "ma certo"**.
-
-### 2) Avverbi che cambiano la lettura della frase
-
-[まず](term:term-v084-mazu) serve a organizzare il discorso. Quando compare, il parlante sta dicendo **qual è il primo passo**. In italiano spesso lo rendi con "prima di tutto" o "intanto".
-
-[しっかり](term:term-v077-shikkari) non significa semplicemente "bene" in modo vago. A seconda del contesto vuol dire:
-
-- in modo attento;
-- con fermezza;
-- in modo saldo / stabile;
-- seriamente, con sostanza;
-- senza distrarsi.
-
-Per esempio, in un'istruzione può significare "guarda bene", "tieni bene a mente", "preparati sul serio". È una parola che aggiunge l'idea di **solidità e affidabilità** all'azione. A differenza di [ちゃんと](term:term-v056-chanto), che richiama il fare qualcosa come previsto o come si deve, [しっかり](term:term-v077-shikkari) richiama soprattutto fermezza, tenuta e impegno.
-
-### 3) Domande: どうして non è solo una traduzione di "perché"
-
-[どうして](term:term-v079-doushite) chiede una ragione. Nella pratica del dialogo ti avvisa che subito dopo arriverà:
-
-- una spiegazione;
-- una giustificazione;
-- una reazione emotiva del personaggio.
-
-È vicino a なぜ e なんで, ma non suona identico in tutti i contesti:
-
-- **なぜ** tende a essere più neutro o formale;
-- **なんで** è spesso più colloquiale;
-- **どうして** è molto comune nel parlato e può suonare anche emotivo: "come mai?".
-
-Quando leggi [どうして](term:term-v079-doushite), la battuta sta chiedendo il motivo di una scelta o di un evento, non solo aprendo una domanda generica.
-
-### 4) Lessico relazionale: 仲間
-
-[仲間](term:term-v080-nakama) non è soltanto "amico". Indica una persona del tuo gruppo, della tua parte, della tua squadra. A seconda della scena può voler dire:
-
-- compagno;
-- alleato;
-- membro del team;
-- persona "dei nostri".
-
-Nel mondo Pokémon questa sfumatura distingue il semplice amico da chi combatte dalla tua parte: compagni di avventura, membri di squadra e alleati in raid rientrano tutti nel frame di [仲間](term:term-v080-nakama).
-
-### 5) Lessico di battaglia: 戦う, 特攻, ＨＰ
-
-[戦う](term:term-v078-tatakau) è il verbo generale "combattere". Non è un termine tecnico esclusivo dei Pokémon: è il verbo normale per la lotta o il combattimento. In Pokémon però diventa frequentissimo perché appare sia nel parlato sia nelle spiegazioni di gioco.
-
-[特攻](term:term-v083-tokukou) nel contesto Pokémon si legge **とくこう / tokukou** e indica **Attacco Speciale**. Fuori da Pokémon la parola 特攻 può avere un'altra lettura e un altro significato; nelle statistiche del gioco, invece, è l'abbreviazione di **特殊攻撃**, quindi la lettura da applicare è **とくこう**.
-
-[ＨＰ](term:term-v085-eichipii) è il prestito dall'inglese "HP" e in giapponese viene letto **えいちぴー**. Nelle schermate non va tradotto mentalmente lettera per lettera: va riconosciuto subito come **barra salute / punti vita**.
-
-## Grammatica spiegata bene
-
-### ～なければならない / ～ないといけない
-
-Questi pattern esprimono **necessità o obbligo**.
-
-#### Idea centrale
-
-Non descrivono un'azione che qualcuno sta facendo, ma il fatto che **quell'azione deve essere fatta**.
-
-#### Differenza pratica
-
-- **～なければならない**: più formale, più "da spiegazione" o da registro neutro-scritto;
-- **～ないといけない**: molto comune nel parlato, più naturale in dialogo.
-
-#### Come pensarli senza perdersi
-
-La logica storica della forma è complessa, ma per leggere bene basta questo:
-
-- verbo in negativo + struttura finale;
-- significato complessivo = **devo fare / bisogna fare**.
-
-Esempio:
-
-- {{行|い}}かないといけない = devo andare
-
-La lettura corretta prende la struttura intera: 行かないといけない vale "devo andare", non una somma letterale di "non andare" più "non va bene".
-
-### 可能形
-
-La **forma potenziale** serve a dire che qualcosa **si può fare** oppure che qualcuno **è capace di farlo**.
-
-Esempi tipici:
-
-- {{行|い}}く → {{行|い}}ける = andare → poter andare
-- {{戦|たたか}}う → {{戦|たたか}}える = combattere → poter combattere
-
-Nel videogioco spesso indica:
-
-- azioni sbloccate;
-- movimenti consentiti;
-- possibilità legate alla situazione attuale.
-
-Quindi una forma potenziale non va letta come un tempo verbale: segnala quale azione è disponibile adesso, per esempio salire, entrare, combattere o usare una funzione.
-
-### た形
-
-La forma in **た** viene spesso presentata come "passato", ma questa spiegazione da sola è troppo povera.
-
-Serve sì per dire che qualcosa è successo:
-
-- {{見|み}}た = ho visto
-- {{戦|たたか}}った = ho combattuto
-
-Ma soprattutto devi riconoscere che segnala **azione completata**. Per questo compare anche in strutture più grandi. Qui la cosa essenziale è: quando la vedi da sola in una frase semplice, molto spesso stai guardando un evento già concluso.
-
-## Esempi guidati
+[もちろん](term:term-v081-mochiron) lavora nello stesso spazio delle risposte rapide, ma con un valore diverso. Non è solo "ovviamente" come ragionamento logico: in dialogo spesso è un "certo", "ma certo", cioè una conferma piena verso l'interlocutore. La scena non sta aggiungendo un'informazione nuova; sta mostrando che il personaggio accetta, rassicura o conferma senza esitazione.
 
 :::example_sentence
 jp: >-
@@ -182,12 +64,115 @@ translation_it: >-
   Sì! Ce l'ho fatta!
 :::
 
-**Lettura concreta:**
+#### 🗺️ Anatomia della frase
 
-- やった！ = reazione di successo;
-- できた = "sono riuscito / è riuscito", cioè completamento con sfumatura di riuscita.
+*   `やった！` ➔ **Reazione di riuscita** (forma storicamente passata, ma qui usata come esclamazione fissa di successo).
+*   `できた` ➔ **Completamento riuscito** (`できる` "riuscire / poter fare" in forma in `た`, quindi "è riuscito / ce l'ho fatta").
 
----
+#### ⚖️ Contrasto
+
+[やった！](term:term-e016-yatta) non va letto come un normale "ho fatto" ogni volta che appare da solo con punto esclamativo. Se la frase è isolata dopo un risultato positivo, il valore pratico è emotivo: il personaggio reagisce al successo, non descrive con calma un'azione passata.
+
+#### 🧠 Gancio
+
+Pensa a [やった！](term:term-e016-yatta) come al testo che comparirebbe sopra un piccolo scatto di esultanza: non spiega il piano, registra il momento in cui qualcosa è andato bene.
+
+Quando il tono passa dalla reazione alla domanda, [どうして](term:term-v079-doushite) apre un'altra funzione: chiede la ragione. Nei dialoghi può suonare neutro o emotivo, a seconda della scena, ma prepara quasi sempre una spiegazione, una giustificazione o una sorpresa.
+
+:::example_sentence
+jp: >-
+  どうして {{戦|たたか}}うの？
+translation_it: >-
+  Perché combatti?
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `どうして` ➔ **Domanda di ragione** ("perché / come mai", con colore spesso parlato).
+*   `{{戦|たたか}}う` ➔ **Azione chiesta** (verbo al dizionario: "combattere").
+*   `の？` ➔ **Richiesta di spiegazione** (finale colloquiale che rende la domanda più orientata al motivo).
+
+#### ⚖️ Contrasto
+
+`なぜ`, `なんで` e [どうして](term:term-v079-doushite) possono tutti chiedere "perché", ma non hanno lo stesso sapore. `なぜ` tende a essere più neutro o formale, `なんで` più colloquiale e diretto, [どうして](term:term-v079-doushite) resta molto naturale nel parlato e può portare una sfumatura emotiva di "come mai?".
+
+## 2. Priorità e modo: prima cosa fare, poi come farla
+
+Nei tutorial, nelle istruzioni dei personaggi e nelle frasi da preparazione, [まず](term:term-v084-mazu) è il segnale che mette in fila le azioni. Non aggiunge intensità emotiva: stabilisce il primo passo. Se compare all'inizio della battuta, il gioco o il personaggio ti sta dicendo da dove partire prima di passare al resto.
+
+[しっかり](term:term-v077-shikkari) invece non ordina la sequenza, ma cambia il modo dell'azione. Può voler dire "bene", ma non nel senso vago di "in modo positivo": porta l'idea di fermezza, attenzione, solidità, impegno reale. In una frase come `しっかり見て`, non basta "guarda": il parlante chiede di guardare con attenzione, senza distrarsi.
+
+:::example_sentence
+jp: >-
+  まず、しっかり {{見|み}}てください。
+translation_it: >-
+  Prima di tutto, guarda con attenzione.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `まず` ➔ **Ordine operativo** (marca il primo passo, non il più importante in assoluto).
+*   `しっかり` ➔ **Modo dell'azione** (modifica `{{見|み}}てください`: guarda bene, con attenzione).
+*   `{{見|み}}てください` ➔ **Richiesta cortese** (`{{見|み}}る` in forma in `て` + `ください`).
+
+#### ⚖️ Contrasto
+
+[しっかり](term:term-v077-shikkari) e `ちゃんと` possono entrambi diventare "bene" in italiano, ma puntano a due immagini diverse. `ちゃんと` richiama il fare le cose come si deve, secondo ordine o aspettativa; [しっかり](term:term-v077-shikkari) richiama tenuta, concentrazione e affidabilità. In battaglia o in un tutorial, questa differenza decide se il tono è "fallo correttamente" o "fallo con attenzione e solidità".
+
+#### 🧠 Gancio
+
+Come trucco mnemonico, immagina [しっかり](term:term-v077-shikkari) come una presa salda sul controller: non descrive solo l'azione riuscita, ma il modo stabile e concentrato con cui la fai.
+
+## 3. Compagni e battaglia: chi sta dalla tua parte e che cosa cambia sullo schermo
+
+[{{仲間|なかま}}](term:term-v080-nakama) non è un semplice "amico". Indica qualcuno che appartiene al tuo gruppo, alla tua squadra, alla tua parte. Nel mondo Pokémon può essere un compagno di viaggio, un alleato in un raid o un membro del team: la parola guarda alla relazione operativa, non solo all'affetto.
+
+[{{戦|たたか}}う](term:term-v078-tatakau) è il verbo normale per "combattere". Non nasce come termine esclusivo dei Pokémon, ma nel gioco diventa una delle azioni più riconoscibili perché può apparire sia nel parlato sia nelle istruzioni. Quando entra in forma potenziale, `{{戦|たたか}}える`, la frase non dice che stai combattendo: dice che combattere è possibile in quella situazione.
+
+:::example_sentence
+jp: >-
+  {{仲間|なかま}}と いっしょに {{戦|たたか}}える。
+translation_it: >-
+  Puoi combattere insieme ai compagni.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{仲間|なかま}}と` ➔ **Compagnia / insieme a** (`と` marca la persona o il gruppo con cui si agisce).
+*   `いっしょに` ➔ **Modo cooperativo** ("insieme", rafforza il frame di gruppo).
+*   `{{戦|たたか}}える` ➔ **Possibilità** (forma potenziale di `{{戦|たたか}}う`: "poter combattere").
+
+#### ⚖️ Contrasto
+
+[{{仲間|なかま}}](term:term-v080-nakama) non coincide sempre con "amico". Un personaggio può essere tuo [{{仲間|なかま}}](term:term-v080-nakama) perché combatte dalla tua parte anche se la scena non sta parlando di amicizia personale. La domanda pratica è: "è dei nostri in questa situazione?".
+
+Quando la frase si sposta dalle persone alle statistiche, il giapponese cambia registro: compaiono label tecniche. [{{特攻|とくこう}}](term:term-v083-tokukou) nelle statistiche Pokémon si legge `とくこう` e indica l'Attacco Speciale, cioè l'abbreviazione di `{{特殊|とくしゅ}}{{攻撃|こうげき}}`. Fuori da questo contesto la stessa grafia può avere altri valori, ma nella schermata statistiche la lettura da applicare è quella di Pokémon.
+
+[ＨＰ](term:term-v085-eichipii) si legge `えいちぴー` e va riconosciuto come barra salute / punti vita. Non serve tradurre mentalmente le lettere: se [ＨＰ](term:term-v085-eichipii) sale, scende o viene controllato, la frase sta parlando della capacità del Pokémon di restare in campo.
+
+:::example_sentence
+jp: >-
+  {{特攻|とくこう}}が {{上|あ}}がった。 ＨＰが {{少|すく}}ない。
+translation_it: >-
+  L'Attacco Speciale è aumentato. Gli HP sono bassi.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{特攻|とくこう}}が` ➔ **Soggetto tecnico** (`が` marca la statistica che cambia).
+*   `{{上|あ}}がった` ➔ **Cambio completato verso l'alto** (forma in `た`: l'aumento è già avvenuto).
+*   `ＨＰが` ➔ **Stato controllato** (`が` marca la risorsa di cui si descrive la condizione).
+*   `{{少|すく}}ない` ➔ **Quantità bassa** ("pochi / non molti", qui "HP bassi").
+
+#### 🧠 Gancio
+
+Per [{{特攻|とくこう}}](term:term-v083-tokukou), aggancia `{{特|とく}}` a "speciale" e `{{攻|こう}}` ad "attacco": non è un'etimologia completa da manuale, ma ti aiuta a riconoscere subito la statistica come Attacco Speciale.
+
+## 4. Possibilità, obbligo e completamento: che cosa si può fare e che cosa va fatto
+
+Tre forme grammaticali cambiano spesso il valore pratico di una frase breve: il potenziale, l'obbligo e la forma in `た`. La [{{可能形|かのうけい}}](grammar:grammar-g020-poter-fare) segnala che un'azione è disponibile o realizzabile; [～なければならない / ～ないといけない](grammar:grammar-g019-dover-fare) segnala necessità; [た{{形|けい}}](grammar:grammar-g021-passato-completamento) presenta l'evento come già avvenuto o completato.
+
+Nel gioco questa distinzione è pratica. `{{戦|たたか}}える` non è una battaglia in corso: è una possibilità sbloccata o consentita. `{{行|い}}かないといけない` non dice "non vado": l'intera struttura vale "devo andare". `{{戦|たたか}}った` non apre un'azione futura: registra che il combattimento è già successo.
 
 :::example_sentence
 jp: >-
@@ -196,13 +181,15 @@ translation_it: >-
   Devo andarci entro domani.
 :::
 
-**Cosa impari davvero:**
+#### 🗺️ Anatomia della frase
 
-- までに = entro / non oltre;
-- {{行|い}}かないといけない = obbligo / necessità;
-- frase tipica da missione, programma o istruzione.
+*   `{{明日|あした}}までに` ➔ **Scadenza** (`までに` = entro / non oltre).
+*   `{{行|い}}かない` ➔ **Base negativa** del verbo `{{行|い}}く`.
+*   `といけない` ➔ **Chiusura di necessità** (insieme alla base negativa forma "devo / bisogna").
 
----
+#### ⚖️ Contrasto
+
+In [～ないといけない](grammar:grammar-g019-dover-fare), non fermarti alla parola negativa. La struttura completa non significa "se non vado, non va bene" come traduzione da seguire pezzo per pezzo durante il gioco; come valore di lettura vale "devo andare". La forma negativa è il materiale grammaticale, non il risultato italiano.
 
 :::example_sentence
 jp: >-
@@ -211,13 +198,15 @@ translation_it: >-
   Da qui si può salire.
 :::
 
-**Cosa impari davvero:**
+#### 🗺️ Anatomia della frase
 
-- ここから = da qui;
-- {{上|うえ}}へ = verso l'alto / di sopra;
-- {{行|い}}ける = forma potenziale di 行く, quindi "si può andare".
+*   `ここから` ➔ **Punto di partenza** ("da qui").
+*   `{{上|うえ}}へ` ➔ **Direzione** (`へ` marca la meta direzionale: verso l'alto / di sopra).
+*   `{{行|い}}ける` ➔ **Possibilità di movimento** (potenziale di `{{行|い}}く`, quindi "poter andare").
 
----
+#### 🧠 Gancio
+
+La [{{可能形|かのうけい}}](grammar:grammar-g020-poter-fare) è la forma che apre o chiude porte nella lettura: se vedi `〜える / 〜られる` nel punto giusto, chiediti quale azione è ora possibile, non quale azione sta già accadendo.
 
 :::example_sentence
 jp: >-
@@ -226,30 +215,49 @@ translation_it: >-
   Ho già combattuto.
 :::
 
-**Cosa impari davvero:**
+#### 🗺️ Anatomia della frase
 
-- もう = già;
-- {{戦|たたか}}った = forma in た di 戦う;
-- insieme danno l'idea di un'azione già completata.
+*   `もう` ➔ **Già** (segnala che l'evento è stato raggiunto prima del momento attuale).
+*   `{{戦|たたか}}った` ➔ **Azione completata** (`{{戦|たたか}}う` in [た{{形|けい}}](grammar:grammar-g021-passato-completamento)).
 
-## Come leggere più in fretta in gioco
+#### ⚖️ Contrasto
 
-Quando incontri una frase breve, chiediti subito quale di queste quattro funzioni ha:
+La [た{{形|けい}}](grammar:grammar-g021-passato-completamento) può essere "passato", ma la lettura più utile in gioco è spesso "azione completata". In `もう {{戦|たたか}}った`, non importa solo quando è successo: importa che la battaglia è già chiusa e la scena può andare avanti da lì.
 
-1. **Reazione** — per esempio [やった！](term:term-e016-yatta)
-2. **Priorità o modo** — per esempio [まず](term:term-v084-mazu), [しっかり](term:term-v077-shikkari)
-3. **Domanda o spiegazione** — per esempio [どうして](term:term-v079-doushite)
-4. **Stato tecnico di battaglia** — per esempio [特攻](term:term-v083-tokukou), [ＨＰ](term:term-v085-eichipii)
+## Esempi guidati di riepilogo
 
-Se riconosci subito la funzione, capisci il senso della scena molto prima di tradurre ogni parola.
+Le frasi brevi diventano più leggibili quando le guardi per funzione: reazione, ordine, domanda, relazione, statistica, possibilità o obbligo.
+
+:::example_sentence
+jp: >-
+  やった！ {{仲間|なかま}}と いっしょに {{戦|たたか}}えた！
+translation_it: >-
+  Grande! Sono riuscito a combattere insieme ai compagni!
+:::
+
+:::example_sentence
+jp: >-
+  まず ＨＰを {{見|み}}て、しっかり {{考|かんが}}えてください。
+translation_it: >-
+  Prima controlla gli HP e poi pensa bene.
+:::
+
+:::example_sentence
+jp: >-
+  どうして {{特攻|とくこう}}が {{上|あ}}がったの？
+translation_it: >-
+  Perché è aumentato l'Attacco Speciale?
+:::
+
+:::example_sentence
+jp: >-
+  {{明日|あした}}までに {{行|い}}かないといけない。もちろん、{{準備|じゅんび}}する。
+translation_it: >-
+  Devo andarci entro domani. Certo, mi preparo.
+:::
+
+---
 
 ## Nota finale
 
-In queste frasi brevi il giapponese non funziona come lista di vocaboli isolati: ogni forma dà una funzione leggibile nella scena.
-
-- chi sta reagendo;
-- cosa bisogna fare;
-- cosa è possibile fare;
-- quale statistica o condizione di battaglia è in gioco.
-
-È esattamente questo che rende più leggibili i testi brevi di Pokémon Scarlet/Violet.
+Nel parlato breve di *Pokémon Scarlet & Violet*, la forma conta perché orienta subito la risposta del lettore. [やった！](term:term-e016-yatta) registra una riuscita, [まず](term:term-v084-mazu) mette in fila i passi, [どうして](term:term-v079-doushite) chiede una ragione, [{{仲間|なかま}}](term:term-v080-nakama) definisce chi sta dalla tua parte, [{{特攻|とくこう}}](term:term-v083-tokukou) e [ＨＰ](term:term-v085-eichipii) trasformano la frase in informazione di battaglia. Se leggi prima la funzione, la traduzione arriva con molta meno fatica.
