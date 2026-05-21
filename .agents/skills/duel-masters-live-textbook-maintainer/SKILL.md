@@ -149,6 +149,9 @@ Primary target files:
 - Follow `docs/llm-kit/general/10-textbook-lesson-style-standard.md` for voice
   and explanation quality. The page should read like a tutor walking through
   the card text with the learner: natural, dense, concrete, and progressive.
+- Use the standard's expected body sequence and visual block grammar when the
+  material supports it: thematic cluster, dense explanation, example sentence,
+  anatomy, operational contrast, cognitive hook, recap.
 - Use one `:::image` block for the clean card asset.
 - Keep keyword labels in a compact list when they are already covered by the
   keyword bank.
@@ -177,6 +180,8 @@ Primary target files:
   already present vs state created by the effect.
 - Ganci cognitivi are allowed when they help recognition, but mark them as
   mnemonic aids when they are not real etymology.
+- Prefer the recognizable lesson markers from the standard when useful:
+  `🗺️` for anatomy, `⚖️` for operational contrasts, `🧠` for cognitive hooks.
 - Explain the game consequence only as support for reading the Japanese.
 - Do not write meta framing about the page, the workflow, the lesson strategy,
   or the fact that the card was imported from a screenshot.
@@ -424,6 +429,9 @@ Practical card-selection rules:
 - Textbook prose must follow the repo lesson style standard: tutor-like voice,
   thematic clusters, dense micro-explanations, anatomy of phrase, operational
   contrasts, and concise final synthesis.
+- Preserve the model lesson's page rhythm where it fits: long explanatory
+  bullets, A/B/C/D subsections for related grammar points, and visual markers
+  for anatomy, hooks, and contrasts.
 - Do not write the lesson as an outline of rulings or a list of definitions.
   Every paragraph should change how the learner reads a Japanese form on the
   card.

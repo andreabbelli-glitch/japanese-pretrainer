@@ -59,6 +59,11 @@ cluster deve raggruppare parole e pattern che lavorano insieme nella stessa
 scena, schermata, carta o porzione di dialogo. Usa riferimenti semantici quando
 richiami termini o grammar gia dichiarati.
 
+La sequenza attesa del body e: cluster tematico -> mini-spiegazioni dense in
+paragrafi o bullet lunghi -> esempi -> anatomia -> contrasto/gancio quando
+servono. Puoi usare sottosezioni A/B/C/D quando una parte grammaticale contiene
+sfumature distinte.
+
 Ogni blocco deve chiarire che cosa significa davvero l'elemento giapponese e
 che cosa ti fa capire o fare nel media. Quando serve, usa questa sequenza:
 forma giapponese -> significato letterale o tecnico -> effetto concreto nel
@@ -84,17 +89,17 @@ translation_it: >-
   <traduzione italiana>
 :::
 
-#### Anatomia della frase
+#### 🗺️ Anatomia della frase
 
 - `<pezzo-1>` -> <ruolo grammaticale e conseguenza di lettura>
 - `<pezzo-2>` -> <valore del verbo, particella, pattern o chunk>
 
 > [!NOTE]
-> **Contrasto operativo:** <differenza concreta che evita una lettura sbagliata>
+> **⚖️ Contrasto operativo:** <differenza concreta che evita una lettura sbagliata>
 
 > [!NOTE]
-> **Gancio cognitivo:** <trucco di memoria o immagine mentale utile. Se non e
-> etimologia reale, dichiaralo come trucco mnemonico, non come origine della
+> **🧠 Gancio cognitivo:** <trucco di memoria o immagine mentale utile. Se non
+> e etimologia reale, dichiaralo come trucco mnemonico, non come origine della
 > parola.>
 
 ## 2. <Secondo cluster tematico>

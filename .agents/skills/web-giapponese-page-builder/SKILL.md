@@ -93,6 +93,11 @@ Optional:
   textbook prose: tutor-like voice, concrete contextual opening, thematic
   clusters, dense micro-explanations, anatomy of phrase, operational contrasts,
   and ganci cognitivi when useful.
+- Use the standard's expected body sequence and visual block grammar when the
+  item supports it: cluster, dense explanation, example, anatomy, contrast,
+  cognitive hook, recap.
+- Prefer the recognizable lesson markers from the standard when useful: `🗺️`
+  for anatomy, `⚖️` for operational contrasts, `🧠` for cognitive hooks.
 - Do not write the item page as a screenshot inventory or UI outline. Every
   section should make the Japanese text more readable in the real item.
 - For learner-facing card text, keep the written Japanese surface, not a

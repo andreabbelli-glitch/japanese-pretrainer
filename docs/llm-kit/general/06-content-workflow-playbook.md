@@ -50,6 +50,13 @@ In aggiunta, passa sempre anche:
 - il brief media-specifico in `docs/llm-kit/media/<media-slug>/...`
 - l'eventuale prompt batch-specifico in `docs/llm-kit/media/<media-slug>/...`
 
+Per task che generano o riscrivono textbook, non usare mai solo il brief
+media-specifico. Devono essere presenti almeno standard, template e rubrica:
+
+- `docs/llm-kit/general/10-textbook-lesson-style-standard.md`
+- `docs/llm-kit/general/04-template-textbook-lesson.md`
+- `docs/llm-kit/general/09-editorial-quality-rubric.md`
+
 ## Regola chiave di contesto
 
 Se l'LLM deve creare il primo batch di un media nuovo, di solito bastano:
@@ -157,6 +164,8 @@ La richiesta deve esplicitare:
 - obbligo che la prosa sembri una spiegazione tutor-like e non un outline:
   apertura contestuale, inventario iniziale, cluster tematici, anatomia della
   frase, contrasti operativi e ganci cognitivi dichiarati quando aiutano;
+- obbligo di seguire la sequenza meccanica attesa del body e la grammatica
+  visiva dei blocchi quando il materiale lo permette;
 - obbligo che il contenuto finale non parli del proprio processo editoriale o
   di studio ("questa lesson", "qui facciamo review", "per questo batch",
   "conviene fissare");

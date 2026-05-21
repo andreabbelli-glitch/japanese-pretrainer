@@ -65,6 +65,12 @@ Regola pratica: una frase meta è ammessa solo se suona come un tutor che
 prepara l'attenzione del lettore. È da riscrivere se suona come un curatore che
 spiega il proprio lavoro.
 
+La frase del modello `elementi chiave presenti nel tuo deck di studio` è
+tollerata come residuo di promessa didattica, non come formula da riprodurre.
+Nelle nuove lesson preferisci riferimenti al testo reale: `elementi del
+capitolo`, `dialoghi della scena`, `messaggi della schermata`, `effetti della
+carta`.
+
 ### Qualità Della Spiegazione
 
 Una spiegazione forte non si ferma alla traduzione. Fa vedere perché quella
@@ -137,12 +143,15 @@ translation_it: >-
   <traduzione italiana>
 :::
 
-#### Anatomia della frase
+#### 🗺️ Anatomia della frase
 
 - `<pezzo>` -> <ruolo grammaticale e conseguenza di lettura>
 
 > [!NOTE]
-> **Contrasto:** <differenza che evita una lettura sbagliata>
+> **⚖️ Contrasto operativo:** <differenza che evita una lettura sbagliata>
+
+> [!NOTE]
+> **🧠 Gancio cognitivo:** <trucco mnemonico dichiarato come tale>
 
 ## Esempi guidati di riepilogo
 
@@ -153,6 +162,47 @@ translation_it: >-
 <Chiusura breve che collega i cluster e dice come riconoscere il sistema in
 contesto reale.>
 ```
+
+### Sequenza Meccanica Attesa
+
+Quando il materiale è abbastanza ricco, la sequenza del body dovrebbe essere
+questa:
+
+1. H1 naturale centrato sulla lettura reale.
+2. Apertura contestuale in 1-2 paragrafi.
+3. Inventario iniziale: `Termini chiave`, `Espressioni ricorrenti`,
+   `Pattern grammaticali chiave`, `Etichette da riconoscere` quando pertinenti.
+4. Separatore `---` prima del corpo didattico.
+5. Cluster tematici numerati.
+6. Dentro i cluster: mini-spiegazioni in bullet lunghi o sottosezioni A/B/C/D
+   quando il materiale contiene più sfumature.
+7. `:::example_sentence` per frasi che meritano traduzione e parsing.
+8. `#### 🗺️ Anatomia della frase` subito dopo gli esempi densi.
+9. Callout `⚖️ Contrasto operativo` o `WARNING` per errori probabili.
+10. Callout o bullet `🧠 Gancio cognitivo` per ancore mnemoniche utili.
+11. `Esempi guidati di riepilogo` con frasi che ricombinano i pezzi.
+12. `Nota finale` breve che collega i cluster.
+
+Questa sequenza è preferita, non cieca. Se una lesson è molto breve, puoi
+accorparla, ma non devi tornare a una lista di gloss.
+
+### Grammatica Visiva Dei Blocchi
+
+La 029 usa una grammatica visiva riconoscibile. Le nuove lesson dovrebbero
+imitare quel segnale visivo quando aiuta la scansione:
+
+- `#### 🗺️ Anatomia della frase` per parsing frase-per-frase;
+- `🧠 Gancio cognitivo` per immagini mentali o trucchi di memoria;
+- `⚖️ Contrasto operativo` per false piste, falsi amici o pattern simili;
+- `> [!WARNING]` per errori che cambiano davvero la lettura;
+- sottosezioni `A/B/C/D` quando una sezione grammaticale contiene sfumature
+  distinte;
+- bullet lunghi per spiegare un termine senza spezzare artificiosamente forma,
+  funzione e conseguenza.
+
+Gli emoji sono marker consigliati, non decorazione obbligatoria. Usali quando
+rendono immediatamente riconoscibile il tipo di blocco; omettili se il media o
+il tono della pagina ne risentono.
 
 ## Componenti Obbligatori
 
@@ -245,7 +295,19 @@ Evita:
 Quelle frasi possono comparire solo se sono subito seguite dal meccanismo
 linguistico che le rende vere.
 
-### 5. Ritmo E Transizioni
+### 5. Sottosezioni E Bullet Lunghi
+
+La lezione modello non riduce tutto a paragrafi uniformi. Usa anche:
+
+- bullet lunghi quando un termine richiede gloss, scomposizione, funzione e
+  gancio nello stesso punto;
+- sottosezioni `A/B/C/D` per sfumature grammaticali vicine ma distinte;
+- callout vicino al punto spiegato, non tutti raccolti in fondo.
+
+Questa varietà dà respiro alla pagina: il lettore vede subito se sta leggendo
+un termine, un pattern, un contrasto o un riepilogo.
+
+### 6. Ritmo E Transizioni
 
 Le lesson modello non saltano bruscamente da una definizione all'altra. Ogni
 sezione deve avere transizioni brevi che spiegano perché il gruppo successivo
@@ -263,7 +325,7 @@ Esempi da evitare:
 - `Vediamo altri esempi.`
 - `Questa sezione tratta la grammatica.`
 
-### 6. Anatomia Della Frase
+### 7. Anatomia Della Frase
 
 Quando compare una frase giapponese, aggiungi una mini-analisi subito dopo se
 la frase contiene grammatica, particelle o composizione utile.
@@ -271,7 +333,7 @@ la frase contiene grammatica, particelle o composizione utile.
 Usa il blocco:
 
 ```md
-#### Anatomia della frase
+#### 🗺️ Anatomia della frase
 
 - `レシピを` -> oggetto diretto: `レシピ` + `を`.
 - `{{受|う}}けとりました` -> azione conclusa: ricevere e prendere in consegna.
@@ -280,7 +342,7 @@ Usa il blocco:
 La funzione dell'anatomia è far vedere il parsing. Non deve limitarsi a ripetere
 la traduzione italiana.
 
-### 7. Contrasti Espliciti
+### 8. Contrasti Espliciti
 
 Usa callout `NOTE` o `WARNING` quando una distinzione evita un errore reale:
 
@@ -293,7 +355,7 @@ Usa callout `NOTE` o `WARNING` quando una distinzione evita un errore reale:
 Il contrasto deve essere operativo: dopo averlo letto, l'utente deve sapere
 come scegliere la lettura corretta.
 
-### 8. Esempi Di Riepilogo
+### 9. Esempi Di Riepilogo
 
 Chiudi con esempi guidati che ricombinano gli elementi principali in frasi
 nuove o reali. Il riepilogo non deve essere un elenco di definizioni: deve far
@@ -337,8 +399,11 @@ Una lesson segue questo standard solo se:
 
 - l'introduzione aggancia una situazione reale del media;
 - l'inventario iniziale espone termini, espressioni e pattern da riconoscere;
+- la sequenza del body segue il flusso atteso, salvo ragioni concrete;
 - il corpo è organizzato in cluster funzionali;
 - la voce è naturale, densa e tutor-like, non schematica;
+- la grammatica visiva dei blocchi rende riconoscibili anatomia, ganci e
+  contrasti quando presenti;
 - ogni spiegazione importante collega forma giapponese, significato e funzione;
 - ogni passaggio valutativo è sostenuto da parsing, collocazione o contrasto;
 - le frasi giapponesi più dense hanno anatomia esplicita;

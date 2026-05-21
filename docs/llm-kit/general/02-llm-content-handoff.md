@@ -181,6 +181,13 @@ Questo riduce duplicazioni e inconsistenze.
 Ogni nuova lesson o revisione sostanziale del textbook deve seguire
 `docs/llm-kit/general/10-textbook-lesson-style-standard.md`.
 
+Non basta passare all'LLM esterno il solo brief media-specifico. Per textbook
+nuovi o riscritture sostanziali, passa sempre anche:
+
+- `docs/llm-kit/general/10-textbook-lesson-style-standard.md`
+- `docs/llm-kit/general/04-template-textbook-lesson.md`
+- `docs/llm-kit/general/09-editorial-quality-rubric.md`
+
 Lo standard non riguarda solo la struttura delle sezioni. Riguarda soprattutto
 come scrivere:
 
@@ -190,6 +197,8 @@ come scrivere:
 - anatomia della frase per i passaggi grammaticalmente densi;
 - contrasti operativi che evitano letture sbagliate;
 - ganci cognitivi dichiarati come mnemonici quando non sono etimologia reale.
+- sequenza meccanica del body e grammatica visiva dei blocchi quando il
+  materiale lo permette.
 
 Il modello di riferimento e:
 

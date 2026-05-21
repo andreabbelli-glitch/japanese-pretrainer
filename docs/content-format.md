@@ -504,14 +504,14 @@ translation_it: >-
   Mangio il pane. Va tutto bene?
 :::
 
-#### Anatomia della frase
+#### 🗺️ Anatomia della frase
 
 - `パンを` -> oggetto diretto: il pane è ciò che viene mangiato.
 - `{{食|た}}べる` -> azione concreta, non semplice presenza di cibo.
 - `{{大丈夫|だいじょうぶ}}？` -> verifica dello stato: il tono è di controllo, non di descrizione.
 
 > [!NOTE]
-> **Contrasto operativo:** `{{大丈夫|だいじょうぶ}}` può rispondere "sì, tutto
+> **⚖️ Contrasto operativo:** `{{大丈夫|だいじょうぶ}}` può rispondere "sì, tutto
 > bene", ma come domanda serve a controllare una condizione. Non leggerlo come
 > un generico "buono".
 

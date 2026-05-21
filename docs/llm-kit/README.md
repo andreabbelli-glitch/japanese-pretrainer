@@ -90,6 +90,12 @@ Nota pratica:
 > operativi e ganci cognitivi dichiarati quando aiutano. La lezione modello e
 > `content/media/pokemon-scarlet-violet/textbook/029-sv-prestudy-l19b-reazioni-e-parlato-scarlet-violet.md`.
 
+> [!IMPORTANT]
+> Per generare o riscrivere lesson non basta il brief media-specifico. Passa
+> sempre almeno `general/10-textbook-lesson-style-standard.md`,
+> `general/04-template-textbook-lesson.md` e
+> `general/09-editorial-quality-rubric.md`, oltre al brief del media.
+
 ### Se vuoi dare contesto completo
 
 Passa:
