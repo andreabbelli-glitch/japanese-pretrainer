@@ -21,18 +21,21 @@ summary: >-
 
 # Aula, classi e regole dell'accademia
 
-Nell'accademia di *Pokémon Scarlet & Violet* il giapponese alterna due registri:
-quello pratico delle lezioni e quello formale delle regole scolastiche. Una
-spiegazione di lotta può parlare di [{{物理|ぶつり}}](term:term-v730-butsuri) e
-[{{分類|ぶんるい}}](term:term-v731-bunrui), mentre un annuncio di corridoio può
-passare subito a [{{始業|しぎょう}}](term:term-v738-shigyou),
-[{{急|いそ}}ぐ](term:term-v739-isogu) o
-[{{校則|こうそく}}](term:term-v741-kousoku).
+L'accademia di *Pokémon Scarlet & Violet* non è solo lo sfondo da cui parte il
+viaggio: è il luogo in cui il gioco ti insegna a leggere classificazioni,
+ruoli, spostamenti e regole. Una lezione di lotta può spiegare la differenza tra
+[{{物理|ぶつり}}](term:term-v730-butsuri) e
+[{{分類|ぶんるい}}](term:term-v731-bunrui); subito dopo, un avviso di corridoio può
+spingerti verso l'aula con [{{始業|しぎょう}}](term:term-v738-shigyou) e
+[{{急|いそ}}ぐ](term:term-v739-isogu).
 
-Il punto da riconoscere è la funzione della frase: sta classificando una
-meccanica, assegnando un ruolo, spostandoti in un luogo preciso o fissando un
-limite ufficiale. Quando leggi questi blocchi insieme, l'accademia smette di
-sembrare uno sfondo scolastico e diventa una rete di istruzioni leggibili.
+Il registro cambia in base a chi parla e a che cosa sta facendo la frase. Se la
+scuola sta spiegando una meccanica, cerca il criterio di classificazione. Se sta
+chiamando uno studente o citando il regolamento, guarda il tono istituzionale:
+[{{担当|たんとう}}](term:term-v733-tantou),
+[{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) e
+[{{校則|こうそく}}](term:term-v741-kousoku) ti dicono che non sei più in una
+battuta tra compagni, ma in una scena regolata dall'accademia.
 
 ## Termini chiave
 
@@ -42,7 +45,7 @@ sembrare uno sfondo scolastico e diventa una rete di istruzioni leggibili.
 - [{{担当|たんとう}}](term:term-v733-tantou) — responsabile / docente di materia
 - [{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) — numero di
   matricola
-- [{{敬語|けいご}}](term:term-v736-keigo) — linguaggio cortese / honorific speech
+- [{{敬語|けいご}}](term:term-v736-keigo) — linguaggio cortese / onorifico
 - [{{始業|しぎょう}}](term:term-v738-shigyou) — inizio delle lezioni / inizio
   attività
 - [{{急|いそ}}ぐ](term:term-v739-isogu) — affrettarsi / correre
@@ -64,6 +67,14 @@ sembrare uno sfondo scolastico e diventa una rete di istruzioni leggibili.
   [{{違反|いはん}}](term:term-v742-ihan)です — è una violazione del regolamento
   scolastico
 
+## Pattern grammaticali chiave
+
+- [～なければならない / ～ないといけない](grammar:grammar-g019-dover-fare) —
+  obbligo o necessità; in `{{急|いそ}}がなくては` resta ellittico ma leggibile
+  come "bisogna affrettarsi"
+- [ので](grammar:grammar-g036-siccome-dato-che) — causa spiegata: collega il
+  motivo a una conclusione, un avviso o una regola
+
 ## Etichette da riconoscere
 
 - [グラウンド](term:term-v735-guraundo) — campo sportivo dell'accademia, usato
@@ -73,61 +84,76 @@ sembrare uno sfondo scolastico e diventa una rete di istruzioni leggibili.
 
 ## 1. Quando la scuola spiega le mosse
 
-Nelle lezioni di lotta, [{{物理|ぶつり}}](term:term-v730-butsuri) non significa
-semplicemente "fisica" come materia scolastica. Dentro una frase sulle
-`{{技|わざ}}`, indica una mossa che usa l'Attacco come riferimento: il gioco sta
-dicendo quale statistica rende quella tecnica più forte. La coppia naturale è
-`{{特殊|とくしゅ}}`, "speciale", quindi quando vedi
-[{{物理|ぶつり}}](term:term-v730-butsuri)と{{特殊|とくしゅ}} devi aspettarti una
-divisione tecnica, non una descrizione narrativa.
+Le spiegazioni di lotta dell'accademia hanno spesso una forma molto ordinata:
+prima nominano l'oggetto, poi indicano in quale gruppo rientra. Qui il
+giapponese non sta raccontando una scena spettacolare, ma ti sta dando una
+griglia per leggere le mosse durante il gioco.
 
-[{{分類|ぶんるい}}](term:term-v731-bunrui) è il nome astratto di quella divisione:
-una categoria che mette cose simili nello stesso gruppo. In aula compare quando
-la frase non sta parlando di una mossa singola, ma del sistema che permette di
-leggere tutte le mosse. Questo cambia il modo di processare la frase: cerca i
-gruppi nominati prima o dopo [{{分類|ぶんるい}}](term:term-v731-bunrui), perché lì
-si trova il criterio.
+*   [{{物理|ぶつり}}](term:term-v730-butsuri) non va letto come "fisica" nel senso
+    di materia scolastica. Dentro una frase sulle `{{技|わざ}}`, indica la
+    categoria fisica della mossa: quella che si appoggia all'Attacco e al
+    contatto materiale. La coppia naturale è `{{特殊|とくしゅ}}`, "speciale"; quando
+    vedi [{{物理|ぶつり}}](term:term-v730-butsuri)と{{特殊|とくしゅ}}, preparati a una
+    divisione tecnica, non a una descrizione del mondo.
+*   [{{分類|ぶんるい}}](term:term-v731-bunrui) è il contenitore astratto di quella
+    divisione. `{{分|ぶん}}` richiama il separare, `{{類|るい}}` il tipo o gruppo:
+    il risultato è una classificazione. In aula, questa parola segnala che la
+    frase non sta commentando una mossa singola, ma il criterio con cui il gioco
+    organizza molte mosse insieme.
 
 :::example_sentence
 jp: >-
-  {{技|わざ}}には {{物理|ぶつり}}と {{特殊|とくしゅ}}の ふたつの
+  {{攻撃|こうげき}}{{技|わざ}}には {{物理|ぶつり}}と {{特殊|とくしゅ}}の
   {{分類|ぶんるい}}が ある。
 translation_it: >-
-  Le mosse hanno due categorie: fisiche e speciali.
+  Le mosse d'attacco hanno categorie fisiche e speciali.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{技|わざ}}には` -> `には` apre il tema: "quanto alle mosse".
-- `{{物理|ぶつり}}と{{特殊|とくしゅ}}の` -> `と` coordina le due categorie, `の`
-  le lega a [{{分類|ぶんるい}}](term:term-v731-bunrui).
-- `ふたつの{{分類|ぶんるい}}` -> la frase conta due gruppi, non due mosse
-  specifiche.
-- `がある` -> esistenza del sistema: "ci sono / esistono".
+*   `{{攻撃|こうげき}}{{技|わざ}}には` ➔ **Tema tecnico** (`には` restringe il discorso:
+    "quanto alle mosse d'attacco").
+*   `{{物理|ぶつり}}と{{特殊|とくしゅ}}の` ➔ **Coppia coordinata** (`と` mette fianco a
+    fianco fisico e speciale; `の` li aggancia alla classificazione).
+*   `{{分類|ぶんるい}}がある` ➔ **Esistenza del sistema** (non "una mossa è fisica",
+    ma "esiste una classificazione che userai per leggere le mosse").
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{物理|ぶつり}}](term:term-v730-butsuri) è una
-> categoria di mossa; [{{分類|ぶんるい}}](term:term-v731-bunrui) è l'atto o il
-> risultato del classificare. Se li leggi come sinonimi, perdi la struttura:
-> uno è il gruppo, l'altro è il contenitore.
+#### ⚖️ Contrasto
+
+[{{物理|ぶつり}}](term:term-v730-butsuri) è una categoria concreta dentro il
+sistema delle mosse; [{{分類|ぶんるい}}](term:term-v731-bunrui) è il nome del
+sistema che mette le mosse in categorie. Se li leggi come sinonimi, perdi la
+struttura della spiegazione: uno è il gruppo nominato, l'altro è il gesto di
+classificare.
+
+#### 🧠 Gancio
+
+Pensa a [{{分類|ぶんるい}}](term:term-v731-bunrui) come a una scheda con divisori:
+prima separi, poi metti ogni elemento nel gruppo giusto. È un'immagine mentale
+per leggere il composto, non un'etimologia completa.
 
 ## 2. Ruoli, matricole e tono d'aula
 
 Il registro scolastico diventa più formale quando il testo nomina chi ha una
-responsabilità o come viene identificato uno studente.
-[{{担当|たんとう}}](term:term-v733-tantou) vuol dire "responsabile di": non dice
-solo che un personaggio insegna, ma che una materia o un compito ricade sotto la
-sua competenza. In `バトル{{学|がく}}{{担当|たんとう}}`, la parte prima di
-[{{担当|たんとう}}](term:term-v733-tantou) è l'ambito, e
-[{{担当|たんとう}}](term:term-v733-tantou) assegna quell'ambito a una persona.
+responsabilità o come viene identificato uno studente. La stessa persona può
+parlare in modo amichevole fuori dall'aula, ma quando la frase usa termini da
+registro scolastico cambia la distanza.
 
-[{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) è più
-amministrativo: `{{学籍|がくせき}}` riguarda l'iscrizione scolastica e
-`{{番号|ばんごう}}` è il numero. Quando qualcuno viene chiamato con
-[{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou), la scena usa una
-voce da registro, non da amicizia. [{{敬語|けいご}}](term:term-v736-keigo)
-aggiunge proprio questo cambio di distanza: è il linguaggio cortese o
-onorifico che compare quando l'aula rende i rapporti più controllati.
+*   [{{担当|たんとう}}](term:term-v733-tantou) vuol dire "essere responsabile di".
+    Non dice solo che un personaggio insegna: assegna una materia, un compito o
+    un'area a una persona. In `バトル{{学|がく}}{{担当|たんとう}}`, la parte prima di
+    [{{担当|たんとう}}](term:term-v733-tantou) è l'ambito; il termine finale dice chi
+    lo ha in carico.
+*   [{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) è molto più
+    amministrativo di un nome proprio. `{{学籍|がくせき}}` riguarda lo status di
+    studente iscritto, `{{番号|ばんごう}}` è il numero: insieme formano il numero di
+    matricola. Quando qualcuno viene chiamato così, la scena suona da registro
+    o procedura, non da conversazione tra amici.
+*   [{{敬語|けいご}}](term:term-v736-keigo) è il linguaggio cortese o onorifico.
+    In aula non serve solo a "essere educati": marca distanza, ruolo e
+    controllo della situazione. Se appare accanto a professori, lezioni o
+    risposte formali, la frase ti sta dicendo come cambia il rapporto tra i
+    personaggi.
 
 :::example_sentence
 jp: >-
@@ -138,25 +164,32 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `バトル{{学|がく}}` -> nome della materia o area scolastica: studio della
-  lotta.
-- `{{担当|たんとう}}は` -> marca il ruolo di responsabilità come tema della
-  frase.
-- `キハダ{{先生|せんせい}}だ` -> identifica la persona che ricopre quel ruolo.
+*   `バトル{{学|がく}}` ➔ **Ambito scolastico** (la materia o area legata alla
+    lotta).
+*   `{{担当|たんとう}}は` ➔ **Ruolo come tema** (`は` mette al centro la persona
+    responsabile di quell'ambito).
+*   `キハダ{{先生|せんせい}}だ` ➔ **Identificazione** (il `だ` chiude la frase
+    collegando il ruolo alla professoressa Dendra).
 
 :::example_sentence
 jp: >-
-  {{学籍|がくせき}}{{番号|ばんごう}}を {{呼|よ}}ばれて びっくりした。
+  {{学籍|がくせき}}{{番号|ばんごう}}を {{呼|よ}}ばれて、{{敬語|けいご}}で
+  {{返事|へんじ}}した。
 translation_it: >-
-  Mi ha sorpreso essere chiamato con il numero di matricola.
+  Sono stato chiamato con il numero di matricola e ho risposto in linguaggio
+  cortese.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{学籍|がくせき}}{{番号|ばんごう}}を` -> l'oggetto è il numero identificativo, non il
-  nome personale.
-- `{{呼|よ}}ばれて` -> passivo in forma `-te`: "essendo stato chiamato".
-- `びっくりした` -> reazione emotiva causata da quel modo formale di chiamare.
+*   `{{学籍|がくせき}}{{番号|ばんごう}}を` ➔ **Oggetto della chiamata** (non il nome
+    personale, ma il codice amministrativo dello studente).
+*   `{{呼|よ}}ばれて` ➔ **Passivo collegato** (`呼ばれる` è "essere chiamato"; la
+    forma `-te` lega l'evento alla risposta successiva).
+*   `{{敬語|けいご}}で` ➔ **Mezzo o registro** (`で` indica il modo in cui avviene
+    la risposta).
+*   `{{返事|へんじ}}した` ➔ **Azione conseguente** (rispondere dentro il registro
+    formale aperto dalla matricola).
 
 :::example_sentence
 jp: >-
@@ -169,72 +202,111 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{授業中|じゅぎょうちゅう}}って` -> tema colloquiale: "quando sei durante la lezione".
-- `{{友達|ともだち}}にも` -> estende l'effetto perfino agli amici, non solo ai professori.
-- `{{敬語|けいご}}に なっちゃう` -> cambiamento involontario: finisci per passare al registro cortese.
+*   `{{授業中|じゅぎょうちゅう}}って` ➔ **Tema colloquiale** (`って` apre il discorso:
+    "quando sei durante una lezione...").
+*   `{{友達|ともだち}}にも` ➔ **Estensione inattesa** (`にも` porta l'effetto perfino
+    sugli amici, non solo sui professori).
+*   `{{敬語|けいご}}に なっちゃう` ➔ **Cambio involontario di registro** (`に
+    なる` descrive il passaggio di stato; `ちゃう` fa sentire che succede quasi
+    senza volerlo).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** pensa a [{{担当|たんとう}}](term:term-v733-tantou)
-> come a una targhetta di responsabilità: il nome della materia sta a sinistra,
-> la persona incaricata viene dopo. È un trucco mnemonico per leggere la
-> struttura, non un'etimologia.
+#### ⚖️ Contrasto
+
+[{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) identifica uno
+studente nel sistema scolastico; `{{名前|なまえ}}` lo identificherebbe come
+persona. [{{敬語|けいご}}](term:term-v736-keigo) aggiunge lo stesso tipo di
+distanza sul piano del parlato: non cambia solo la cortesia, cambia il rapporto
+che la frase sta mettendo in scena.
+
+#### 🧠 Gancio
+
+Pensa a [{{担当|たんとう}}](term:term-v733-tantou) come a una targhetta sulla porta
+di un'aula: a sinistra c'è la materia, sulla targhetta c'è chi se ne occupa. È
+un trucco mnemonico per riconoscere la struttura `ambito + 担当`, non
+un'etimologia.
 
 ## 3. Spostarsi nel campus quando il tempo stringe
 
 Le parole di movimento hanno un peso pratico immediato.
-[{{階段|かいだん}}](term:term-v732-kaidan) nomina una scala o scalinata, quindi
-porta la scena dentro uno spazio fisico: salire, scendere, raggiungere
-l'ingresso della scuola. [グラウンド](term:term-v735-guraundo), invece, è il
-campo sportivo dell'accademia; quando compare, la spiegazione lascia l'aula e
-si sposta in un luogo condiviso per prove e dimostrazioni.
+[{{階段|かいだん}}](term:term-v732-kaidan) e
+[グラウンド](term:term-v735-guraundo) ti orientano nello spazio;
+[{{始業|しぎょう}}](term:term-v738-shigyou) e
+[{{急|いそ}}ぐ](term:term-v739-isogu) ti dicono perché devi muoverti subito.
+Quando queste parole compaiono insieme, la frase non descrive solo un luogo: ti
+sta spingendo verso una destinazione prima che inizi qualcosa.
 
-[{{始業|しぎょう}}](term:term-v738-shigyou) unisce `{{始|し}}`, "iniziare", e
-`{{業|ぎょう}}`, "attività / lavoro scolastico": negli avvisi è l'inizio delle
-lezioni o della giornata attiva. [{{急|いそ}}ぐ](term:term-v739-isogu) completa
-il frame: non è "correre" come movimento atletico, ma affrettarsi perché un
-orario o una situazione richiede reazione. In `{{教室|きょうしつ}}に
-{{急|いそ}}がなくては`, il luogo con `に` è la destinazione verso cui bisogna
-sbrigarsi.
+*   [{{階段|かいだん}}](term:term-v732-kaidan) nomina scale o scalinata. In un
+    campus a piani, questo termine dà una coordinata fisica: salire, scendere,
+    raggiungere l'ingresso o uscire verso un'altra area.
+*   [グラウンド](term:term-v735-guraundo) è il campo sportivo dell'accademia. Il
+    katakana è trasparente, ma nel gioco funziona come label di luogo: quando
+    compare, la scena spesso lascia la classe e passa a dimostrazioni pratiche
+    o raduni all'aperto.
+*   [{{始業|しぎょう}}](term:term-v738-shigyou) unisce `{{始|し}}`, "iniziare", e
+    `{{業|ぎょう}}`, "attività / lavoro scolastico". In un avviso non è una
+    data generica: è il momento in cui la lezione o la giornata scolastica
+    entra in funzione.
+*   [{{急|いそ}}ぐ](term:term-v739-isogu) non è semplicemente "correre": è
+    affrettarsi perché un orario o una situazione crea pressione. Con una
+    destinazione marcata da `に`, come `{{教室|きょうしつ}}に`, il verbo ti dice
+    verso dove devi sbrigarti.
 
 :::example_sentence
 jp: >-
-  そろそろ {{始業|しぎょう}}{{時間|じかん}}です。 {{教室|きょうしつ}}に
-  {{急|いそ}}がなくては。
+  おふたりとも {{教室|きょうしつ}}に {{急|いそ}}がなくては。
 translation_it: >-
-  Sta per iniziare la lezione: dobbiamo sbrigarci verso l'aula.
+  Dovete sbrigarvi verso l'aula, entrambi.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `そろそろ` -> "ormai / tra poco": prepara un cambio di stato imminente.
-- `{{始業|しぎょう}}{{時間|じかん}}です` -> annuncia l'orario di inizio, non una
-  semplice ora sul calendario.
-- `{{教室|きょうしつ}}に` -> `に` marca la destinazione del movimento.
-- `{{急|いそ}}がなくては` -> forma ellittica di obbligo: "bisogna affrettarsi".
+*   `おふたりとも` ➔ **Destinatari cortesi** (il parlante si rivolge a due
+    persone con tono controllato).
+*   `{{教室|きょうしつ}}に` ➔ **Destinazione** (`に` marca il luogo verso cui bisogna
+    andare).
+*   `{{急|いそ}}がなくては` ➔ **Obbligo ellittico** (è una forma abbreviata del
+    dovere: resta sottinteso il finale tipo `いけない`, ma il valore pratico è
+    "bisogna affrettarsi").
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{階段|かいだん}}](term:term-v732-kaidan) e
-> [グラウンド](term:term-v735-guraundo) dicono dove si trova il corpo nella
-> scena; [{{始業|しぎょう}}](term:term-v738-shigyou) e
-> [{{急|いそ}}ぐ](term:term-v739-isogu) dicono perché quel movimento è urgente.
-> Uno orienta nello spazio, l'altro nel tempo.
+:::example_sentence
+jp: >-
+  そろそろ {{始業|しぎょう}}{{時間|じかん}}です。
+translation_it: >-
+  Tra poco è l'ora di inizio delle lezioni.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `そろそろ` ➔ **Imminenza** ("ormai / tra poco": prepara un cambio di stato).
+*   `{{始業|しぎょう}}{{時間|じかん}}` ➔ **Orario istituzionale** (non una semplice ora
+    sull'orologio, ma il momento in cui comincia l'attività scolastica).
+*   `です` ➔ **Chiusura cortese** (adatta ad avvisi e comunicazioni scolastiche).
+
+#### ⚖️ Contrasto
+
+[{{階段|かいだん}}](term:term-v732-kaidan) e
+[グラウンド](term:term-v735-guraundo) sono coordinate spaziali: ti dicono dove
+passare o dove radunarti. [{{始業|しぎょう}}](term:term-v738-shigyou) e
+[{{急|いそ}}ぐ](term:term-v739-isogu) sono segnali temporali e pragmatici: ti
+dicono perché il movimento non può aspettare.
 
 ## 4. Regole, accessi e infrazioni
 
 Quando l'accademia parla di divieti, il lessico diventa meno narrativo e più
-normativo. [{{立|た}}ち{{入|い}}り](term:term-v740-tachiiri) è l'accesso fisico a
-un'area: `{{立|た}}つ` qui non va tradotto come "stare in piedi", perché il
-composto indica l'atto di entrare in uno spazio delimitato. Se la frase dice
-`〜への{{立|た}}ち{{入|い}}り`, guarda prima il pezzo prima di `への`: quello è il
-luogo verso cui l'ingresso viene regolato.
+normativo. La frase non si limita a suggerire prudenza: nomina un accesso,
+spiega il motivo e poi applica una categoria ufficiale.
 
-[{{校則|こうそく}}](term:term-v741-kousoku) trasforma un consiglio in regolamento
-scolastico: `{{校|こう}}` richiama la scuola, `{{則|そく}}` la regola.
-[{{違反|いはん}}](term:term-v742-ihan) è lo sconfinamento rispetto a quella
-regola. Quando li trovi insieme in
-[{{校則|こうそく}}](term:term-v741-kousoku)
-[{{違反|いはん}}](term:term-v742-ihan), la frase non sta dicendo "meglio evitare":
-sta classificando l'azione come infrazione.
+*   [{{立|た}}ち{{入|い}}り](term:term-v740-tachiiri) è l'accesso fisico a un'area.
+    Non tradurre `{{立|た}}つ` da solo come "stare in piedi": dentro questo
+    composto il blocco intero indica l'atto di entrare in uno spazio delimitato.
+    Se leggi `〜への{{立|た}}ち{{入|い}}り`, guarda il pezzo prima di `への`: quello è
+    il luogo verso cui l'ingresso viene regolato.
+*   [{{校則|こうそく}}](term:term-v741-kousoku) trasforma la scena in regolamento
+    scolastico. `{{校|こう}}` richiama la scuola, `{{則|そく}}` la regola: non è
+    una preferenza personale di un professore, ma una norma dell'istituzione.
+*   [{{違反|いはん}}](term:term-v742-ihan) è il superamento della regola. Quando
+    compare insieme a [{{校則|こうそく}}](term:term-v741-kousoku), la frase non dice
+    "meglio evitare"; classifica l'azione come infrazione.
 
 :::example_sentence
 jp: >-
@@ -247,20 +319,34 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `パルデアの{{大穴|おおあな}}への` -> `への` marca la direzione verso il luogo
-  vietato.
-- `{{立|た}}ち{{入|い}}りは` -> l'accesso all'area diventa il tema della frase.
-- `{{危|あぶ}}ないので` -> `ので` dà la ragione: "poiché è pericoloso".
-- `{{校則|こうそく}}{{違反|いはん}}です` -> conclusione normativa: è una violazione
-  del regolamento scolastico.
+*   `パルデアの{{大穴|おおあな}}への` ➔ **Direzione regolata** (`への` punta verso il
+    luogo a cui l'accesso viene controllato).
+*   `{{立|た}}ち{{入|い}}りは` ➔ **Tema normativo** (l'atto di entrare diventa il
+    soggetto della valutazione).
+*   `{{危|あぶ}}ないので` ➔ **Causa spiegata** ([ので](grammar:grammar-g036-siccome-dato-che)
+    introduce il motivo: "dato che è pericoloso").
+*   `{{校則|こうそく}}{{違反|いはん}}です` ➔ **Conclusione ufficiale** (l'azione viene
+    etichettata come violazione del regolamento scolastico).
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** `{{危|あぶ}}ないので やめてください` chiede di
-> fermarsi perché qualcosa è pericoloso; `{{校則|こうそく}}{{違反|いはん}}です`
-> aggiunge un'etichetta ufficiale. La prima parte spiega il rischio, la seconda
-> dice che l'azione supera una regola dell'accademia.
+#### ⚖️ Contrasto
+
+`{{危|あぶ}}ないので やめてください` chiede di fermarsi perché qualcosa è
+pericoloso. `{{校則|こうそく}}{{違反|いはん}}です` aggiunge un'etichetta ufficiale:
+l'azione non è solo sconsigliata, supera una regola dell'accademia. La causa
+spiega il rischio, la conclusione stabilisce la norma.
+
+#### 🧠 Gancio
+
+In [{{校則|こうそく}}{{違反|いはん}}](term:term-v742-ihan), immagina due passaggi:
+prima compare la regola della scuola, poi l'azione la oltrepassa. È un gancio
+di lettura per ricordare il rapporto tra
+[{{校則|こうそく}}](term:term-v741-kousoku) e
+[{{違反|いはん}}](term:term-v742-ihan), non una scomposizione etimologica completa.
 
 ## Esempi guidati di riepilogo
+
+Le stesse parole diventano più facili da riconoscere quando le ricombini come
+le troveresti tra aula, corridoi e avvisi dell'accademia:
 
 :::example_sentence
 jp: >-
@@ -308,13 +394,16 @@ translation_it: >-
 
 ## Nota finale
 
-Nel campus, le parole non stanno isolate: [{{物理|ぶつり}}](term:term-v730-butsuri)
-e [{{分類|ぶんるい}}](term:term-v731-bunrui) organizzano le spiegazioni di lotta,
-[{{担当|たんとう}}](term:term-v733-tantou) e
-[{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) danno forma al registro
-scolastico, [{{始業|しぎょう}}](term:term-v738-shigyou) e
+Nel campus, leggi prima la funzione della frase.
+[{{物理|ぶつり}}](term:term-v730-butsuri) e
+[{{分類|ぶんるい}}](term:term-v731-bunrui) costruiscono una spiegazione tecnica,
+[{{担当|たんとう}}](term:term-v733-tantou),
+[{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) e
+[{{敬語|けいご}}](term:term-v736-keigo) alzano il registro scolastico,
+[{{始業|しぎょう}}](term:term-v738-shigyou) e
 [{{急|いそ}}ぐ](term:term-v739-isogu) mettono pressione al movimento, mentre
 [{{立|た}}ち{{入|い}}り](term:term-v740-tachiiri),
 [{{校則|こうそく}}](term:term-v741-kousoku) e
-[{{違反|いはん}}](term:term-v742-ihan) separano un semplice avviso da una regola
-ufficiale.
+[{{違反|いはん}}](term:term-v742-ihan) separano un avviso prudente da una regola
+ufficiale. Quando questi segnali compaiono, l'accademia diventa una sequenza di
+istruzioni leggibili, non solo un luogo da attraversare.

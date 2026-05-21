@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-048-sv-prestudy-l34a-luoghi-e-mappe-dlc-e-contenuti-extra
 media_id: media-pokemon-scarlet-violet
 slug: 048-sv-prestudy-l34a-luoghi-e-mappe-dlc-e-contenuti-extra
-title: SV Pre-study L34A - luoghi e mappe, DLC e contenuti extra
+title: "Mappe, basi e contenuti extra: leggere Paldea e i DLC"
 order: 78
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -15,14 +15,14 @@ tags:
 - lesson-34
 prerequisites: []
 summary: >-
-  Leggere mappe, luoghi, DLC e schermate extra: collegare nomi di zona,
-  missioni, consegne, basi e stati visivi alla funzione pratica mostrata.
+  Orientarsi tra mappa, basi, consegne, personalizzazioni e stati visivi usando
+  i segnali giapponesi della schermata.
 ---
-# Mappe, basi e schermate extra da leggere in gioco
+# Mappe, basi e contenuti extra: leggere Paldea e i DLC
 
-Quando apri la mappa di Paldea o entri nei contenuti extra, il giapponese spesso non racconta una scena: etichetta un luogo, una funzione o uno stato. Un nome di città ti dice dove andare, una parola come [{{拠点|きょてん}}](term:term-v704-kyoten) ti dice che lì c'è una base, mentre [サークルミッション](term:term-v699-saakurumisshon) sposta subito la lettura verso un obiettivo condiviso.
+Quando apri la mappa di Paldea, entri a Nordivia o passi alle schermate extra del DLC, il giapponese spesso non racconta una scena completa: mette etichette su luoghi, attività e stati visivi. Un nome di città ti aggancia a una destinazione, una parola come [{{拠点|きょてん}}](term:term-v704-kyoten) ti dice che quel punto funziona da base, mentre [サークルミッション](term:term-v699-saakurumisshon) sposta subito la lettura verso un obiettivo condiviso.
 
-Il lavoro pratico è separare tre livelli: coordinate della mappa, azioni da compiere e schermate di aspetto. Se riconosci quale livello sta parlando, una lista di nomi smette di sembrare rumore e diventa una serie di istruzioni: raggiungere un punto, controllare una consegna, cambiare un effetto visivo o tornare a una forma standard.
+La lettura diventa più semplice quando separi tre livelli: coordinate della mappa, azioni da compiere e resa visiva. Se riconosci quale livello sta parlando, una lista di nomi smette di sembrare rumore e diventa una sequenza pratica: raggiungere un punto, controllare una consegna, avviare una missione di gruppo, cambiare un effetto o tornare a una forma standard.
 
 ## Termini chiave
 
@@ -41,6 +41,13 @@ Il lavoro pratico è separare tre livelli: coordinate della mappa, azioni da com
 - [{{可能性|かのうせい}}がある](term:term-v693-kanousei) — c'è la possibilità che...
 - [{{配達|はいたつ}}の{{場所|ばしょ}}](term:term-v700-haitatsu) — luogo della consegna
 - [{{通常|つうじょう}}の{{姿|すがた}}](term:term-v701-tsuujou) — forma normale / aspetto standard
+
+## Pattern grammaticali chiave
+
+- `NのN` — collega un nome di luogo, gruppo o stato al nome che lo segue
+- `Nに{{出|で}}る` — segnala che un'informazione compare su una schermata o sulla mappa
+- `Nに{{戻|もど}}る` — indica il ritorno a uno stato, una forma o un punto di riferimento
+- `Vえる{{可能性|かのうせい}}がある` — trasforma un evento possibile in ipotesi, non in promessa
 
 ## Etichette da riconoscere sulla mappa e nei DLC
 
@@ -69,9 +76,10 @@ Il lavoro pratico è separare tre livelli: coordinate della mappa, azioni da com
 
 I nomi di città e aree funzionano come coordinate testuali. Quando leggi [ハッコウシティ](term:term-v689-hakkoushiti), [カラフシティ](term:term-v691-karafushiti) o [セルクルタウン](term:term-v694-serukurutaun), il gioco non sta spiegando che cos'è una città: sta agganciando l'informazione a un punto della mappa, spesso per volo rapido, destinazione, evento vicino o dialogo di percorso.
 
-- [ナッペ{{山|やま}}](term:term-v685-nappeyama) contiene `{{山|やま}}`, "montagna": anche se il nome proprio resta da riconoscere come blocco, quel kanji ti prepara a una zona in quota, neve, pendii o spostamenti montani.
-- [オージャの{{湖|みずうみ}}](term:term-v698-oojanomizuumi) usa `の` per legare il nome proprio `オージャ` a `{{湖|みずうみ}}`, "lago". Se la frase parla di Pokémon selvatici, percorso o obiettivo, il riferimento è a una zona d'acqua, non a una città.
-- [スイリョクタウン](term:term-v688-suiryokutaun) e [センタースクエア](term:term-v707-sentaasukuea) appartengono di più al contenuto extra: il primo è un villaggio di arrivo, il secondo suona come area hub o piazza centrale. In entrambi i casi il nome ti dice dove si concentra l'azione successiva.
+- [ナッペ{{山|やま}}](term:term-v685-nappeyama) contiene `{{山|やま}}`, "montagna": anche se il nome proprio resta da riconoscere come blocco, quel kanji ti prepara a una zona in quota, neve, pendii o spostamenti montani. Quando una destinazione o un dialogo cita questo nome, aspettati indicazioni su salita, visibilità sulla mappa o accesso a un'area fredda.
+- [オージャの{{湖|みずうみ}}](term:term-v698-oojanomizuumi) usa `の` per legare il nome proprio `オージャ` a `{{湖|みずうみ}}`, "lago". Se la frase parla di Pokémon selvatici, percorso o obiettivo, il riferimento è a una zona d'acqua, non a una città: la particella non aggiunge movimento, ma appartenenza nominale.
+- [スイリョクタウン](term:term-v688-suiryokutaun), [センタースクエア](term:term-v707-sentaasukuea) e [コサジタウン](term:term-v696-kosajitaun) sono etichette da leggere come luoghi interi. Non devi tradurre ogni katakana: devi riconoscere che il testo sta fissando dove torna la camera, dove si apre una funzione o dove si concentra l'azione successiva.
+- [ボウルタウン](term:term-v684-bourutaun), [チャンプルタウン](term:term-v687-chanpurutaun), [ベイクタウン](term:term-v690-beikutaun), [フリッジタウン](term:term-v695-furijjitaun), [プラトタウン](term:term-v702-puratotaun) e [ピケタウン](term:term-v710-piketaun) funzionano come segnaposti: in una lista, in un prompt di viaggio o in un dialogo, il loro valore pratico è dirti quale punto di Paldea va selezionato o raggiunto.
 
 :::example_sentence
 jp: >-
@@ -82,21 +90,22 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `マップで` -> `で` marca il luogo o mezzo dell'azione: la ricerca avviene sulla mappa.
-- `ナッペ{{山|やま}}の` -> il nome di area modifica ciò che segue; `の` lo collega alla zona vicina.
-- `{{近|ちか}}くを {{見|み}}ます` -> il focus non è entrare nella montagna, ma guardare l'area nei suoi dintorni.
+- `マップで` ➔ **Luogo/strumento della ricerca** (`で` dice che il controllo avviene dentro la schermata della mappa).
+- `ナッペ{{山|やま}}の` ➔ **Nome che modifica** (`の` collega la montagna alla zona vicina, senza indicare ancora movimento).
+- `{{近|ちか}}くを {{見|み}}ます` ➔ **Area osservata** (`を` marca ciò che guardi: non entri nella montagna, controlli i dintorni).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** i nomi in katakana come [ボウルタウン](term:term-v684-bourutaun) o [ピケタウン](term:term-v710-piketaun) vanno riconosciuti come etichette di luogo, non tradotti pezzo per pezzo. Quando invece compare un kanji trasparente come `{{山|やま}}` o `{{湖|みずうみ}}`, quel pezzo aggiunge subito tipo di terreno e aspettativa di navigazione.
+#### ⚖️ Contrasto
+
+I nomi in katakana come [ボウルタウン](term:term-v684-bourutaun) o [ピケタウン](term:term-v710-piketaun) vanno riconosciuti come etichette di luogo, non tradotti pezzo per pezzo. Quando invece compare un kanji trasparente come `{{山|やま}}` o `{{湖|みずうみ}}`, quel pezzo aggiunge subito tipo di terreno e aspettativa di navigazione.
 
 ## 2. Obiettivi, basi e consegne: parole che dicono cosa fare
 
 Dopo il nome del luogo, spesso arriva la funzione. [{{拠点|きょてん}}](term:term-v704-kyoten), [{{配達|はいたつ}}](term:term-v700-haitatsu) e [サークルミッション](term:term-v699-saakurumisshon) non sono coordinate neutre: ti dicono che cosa sta aspettando lì o quale attività si apre.
 
-- [{{拠点|きょてん}}](term:term-v704-kyoten) indica un punto d'appoggio operativo. Nei testi legati al Team Star o agli hub DLC, non leggere la parola come "luogo qualsiasi": è un posto controllato da un gruppo o usato come base per un'attività.
-- [{{配達|はいたつ}}](term:term-v700-haitatsu) è una consegna: qualcosa deve arrivare da qualche parte. Per questo si combina naturalmente con `{{場所|ばしょ}}`, destinazioni e controlli sulla mappa.
-- [サークルミッション](term:term-v699-saakurumisshon) unisce `サークル`, il gruppo/sessione, e `ミッション`, l'obiettivo. La parola ti prepara a un'attività condivisa, non a una missione solitaria della storia principale.
-- [{{鬼面衆|きめんしゅう}}](term:term-v686-kimenshuu) è un nome contestuale del DLC: `{{鬼|き}}` richiama l'orco, `{{面|めん}}` la maschera e `{{衆|しゅう}}` un gruppo di persone. Non serve trasformarlo in una definizione enciclopedica: nella frase segnala personaggi o sfide legati all'evento delle maschere.
+- [{{拠点|きょてん}}](term:term-v704-kyoten) indica un punto d'appoggio operativo. Nei testi legati al Team Star o agli hub del DLC, non leggerlo come "posto qualsiasi": è un luogo controllato da qualcuno, usato per partire, tornare, sfidare o organizzare un'attività.
+- [{{配達|はいたつ}}](term:term-v700-haitatsu) è una consegna: qualcosa deve arrivare da qualche parte. Per questo si combina naturalmente con `{{場所|ばしょ}}`, destinazioni e controlli sulla mappa; quando leggi [{{配達|はいたつ}}の{{場所|ばしょ}}](term:term-v700-haitatsu), il nome dopo `の` non è il contenuto del pacco, ma il punto da trovare.
+- [サークルミッション](term:term-v699-saakurumisshon) unisce `サークル`, il gruppo/sessione, e `ミッション`, l'obiettivo. La parola ti prepara a un'attività condivisa, non a una missione solitaria della storia principale: in UI, il valore operativo è "questa cosa si fa dentro il gruppo".
+- [{{鬼面衆|きめんしゅう}}](term:term-v686-kimenshuu) è un nome contestuale del DLC: `{{鬼|き}}` richiama l'orco, `{{面|めん}}` la maschera e `{{衆|しゅう}}` un gruppo di persone. Non serve trasformarlo in una definizione enciclopedica; nella frase segnala personaggi, prove o sfide legati all'evento delle maschere.
 
 :::example_sentence
 jp: >-
@@ -107,9 +116,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `スター{{団|だん}}の` -> `の` collega il gruppo alla base: non è una base generica, è del Team Star.
-- `{{拠点|きょてん}}が` -> `が` marca ciò che appare o diventa rilevante nella schermata.
-- `マップに {{出|で}}ます` -> `に` marca il punto di comparsa: la base entra come informazione visibile sulla mappa.
+- `スター{{団|だん}}の` ➔ **Possessore/funzione** (`の` collega il gruppo alla base: non è una base generica, è del Team Star).
+- `{{拠点|きょてん}}が` ➔ **Elemento che appare** (`が` marca ciò che diventa rilevante nella schermata).
+- `マップに {{出|で}}ます` ➔ **Punto di comparsa** (`に` indica dove l'informazione diventa visibile: sulla mappa).
 
 :::example_sentence
 jp: >-
@@ -120,12 +129,13 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{配達|はいたつ}}の {{場所|ばしょ}}` -> la consegna modifica il luogo: stai cercando il punto di arrivo, non l'oggetto consegnato.
-- `を` -> marca il dato da controllare.
-- `マップで {{確認|かくにん}}します` -> la mappa è lo strumento del controllo; il verbo conferma che stai verificando un'informazione già cercabile.
+- `{{配達|はいたつ}}の {{場所|ばしょ}}` ➔ **Luogo definito dalla funzione** (la consegna modifica il luogo: stai cercando il punto di arrivo, non l'oggetto consegnato).
+- `を` ➔ **Dato da controllare** (marca l'informazione che vuoi verificare).
+- `マップで {{確認|かくにん}}します` ➔ **Verifica tramite UI** (la mappa è lo strumento del controllo; il verbo conferma che stai verificando un dato già cercabile).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** per [{{配達|はいたつ}}](term:term-v700-haitatsu), immagina sempre una freccia che termina in un punto sulla mappa. Non è solo "delivery" come servizio: nel testo di gioco ti chiede di cercare destinazione, arrivo o persona a cui portare qualcosa.
+#### 🧠 Gancio
+
+Per [{{配達|はいたつ}}](term:term-v700-haitatsu), immagina una freccia che termina in un punto sulla mappa. È un trucco mnemonico: nel testo di gioco la parola non evoca solo "delivery" come servizio, ma ti chiede di cercare destinazione, arrivo o persona a cui portare qualcosa.
 
 ## 3. Possibilità e stati: quando la frase non promette ancora un evento
 
@@ -144,16 +154,17 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `この{{先|さき}}で` -> colloca l'ipotesi più avanti nello spazio o nel percorso.
-- `{{珍|めずら}}しい ポケモンに {{会|あ}}える` -> indica ciò che potrebbe accadere: poter incontrare un Pokémon raro.
-- `{{可能性|かのうせい}}が あります` -> trasforma l'evento in possibilità presente, non in promessa.
+- `この{{先|さき}}で` ➔ **Cornice spaziale** (colloca l'ipotesi più avanti nello spazio o nel percorso).
+- `{{珍|めずら}}しい ポケモンに {{会|あ}}える` ➔ **Evento possibile** (`会える` dice "poter incontrare", quindi l'incontro è già presentato come potenziale).
+- `{{可能性|かのうせい}}が あります` ➔ **Possibilità esplicita** (trasforma l'evento in possibilità presente, non in promessa).
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** `{{可能性|かのうせい}}がある` non significa "succederà". Se la mappa o un dialogo usa questa forma, devi leggere l'informazione come probabilità aperta: vale la pena controllare, ma il testo non garantisce il risultato.
+#### ⚖️ Contrasto
+
+`{{可能性|かのうせい}}がある` non significa "succederà". Se la mappa o un dialogo usa questa forma, l'informazione resta una probabilità aperta: vale la pena controllare, ma il testo non garantisce il risultato.
 
 ### B. `{{通常|つうじょう}}` e `{{変身|へんしん}}`: forma base e cambio di forma
 
-[{{通常|つうじょう}}](term:term-v701-tsuujou) contrasta con varianti, effetti speciali o stati alterati: in `{{通常|つうじょう}}の{{姿|すがた}}`, `の` lega "standard" a "aspetto". [{{変身|へんしん}}](term:term-v703-henshin), invece, nomina il passaggio a un'altra forma. Nei testi con Ditto, eventi o effetti visivi, questa parola ti dice che l'identità visibile cambia.
+[{{通常|つうじょう}}](term:term-v701-tsuujou) contrasta con varianti, effetti speciali o stati alterati: in [{{通常|つうじょう}}の{{姿|すがた}}](term:term-v701-tsuujou), `の` lega "standard" a "aspetto". [{{変身|へんしん}}](term:term-v703-henshin), invece, nomina il passaggio a un'altra forma. Nei testi con Ditto, eventi o effetti visivi, questa parola ti dice che l'identità visibile cambia.
 
 :::example_sentence
 jp: >-
@@ -164,22 +175,23 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{通常|つうじょう}}の {{姿|すがた}}` -> "aspetto standard": lo stato di riferimento prima di varianti o trasformazioni.
-- `に` -> marca il punto di arrivo del cambiamento.
-- `{{戻|もど}}ります` -> il movimento è di ritorno, quindi la frase annulla una deviazione precedente.
+- `{{通常|つうじょう}}の {{姿|すがた}}` ➔ **Stato di riferimento** (`の` lega "standard" ad "aspetto": la forma base prima di varianti o trasformazioni).
+- `に` ➔ **Punto di arrivo** (marca lo stato verso cui si torna).
+- `{{戻|もど}}ります` ➔ **Ritorno** (il movimento annulla una deviazione precedente e riporta alla forma normale).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{変身|へんしん}}](term:term-v703-henshin) guarda al cambio; [{{通常|つうじょう}}](term:term-v701-tsuujou) guarda allo stato di base. Se compaiono vicini, chiediti se il testo sta annunciando una trasformazione o il ritorno alla forma normale.
+#### ⚖️ Contrasto
+
+[{{変身|へんしん}}](term:term-v703-henshin) guarda al cambio; [{{通常|つうじょう}}](term:term-v701-tsuujou) guarda allo stato di base. Se compaiono vicini, chiediti se il testo sta annunciando una trasformazione o il ritorno alla forma normale.
 
 ## 4. Aspetto e personalizzazione: leggere ciò che si vede
 
 Le schermate di foto, Rotom Phone e stanze personalizzabili usano parole più visive. Qui il giapponese non ti manda in un luogo: ti fa distinguere superficie, cornice, effetto o atmosfera.
 
-- [{{模様|もよう}}](term:term-v692-moyou) indica un motivo visibile su Pokémon, abiti, icone o decorazioni. Non è "disegno" come azione di disegnare: è il pattern già presente su una superficie.
-- [スマホカバー](term:term-v697-sumahokabaa) è katakana trasparente ma funzionale: in gioco è l'accessorio del Rotom Phone, quindi compare dove cambi l'aspetto del dispositivo.
+- [{{模様|もよう}}](term:term-v692-moyou) indica un motivo visibile su Pokémon, abiti, icone o decorazioni. Non è "disegno" come azione di disegnare: è il pattern già presente su una superficie, quindi ti fa guardare ciò che cambia nell'aspetto, non un comando da eseguire.
+- [スマホカバー](term:term-v697-sumahokabaa) è katakana trasparente ma funzionale: in gioco è l'accessorio del Rotom Phone. Quando compare in una schermata, il testo si muove nel registro della personalizzazione, quindi ti aspetti scelta, equipaggiamento o anteprima estetica.
 - [あとのせエフェクト](term:term-v705-atonoseefekuto) contiene `あと` e `のせ`: come etichetta, suggerisce un effetto applicato dopo lo scatto o dopo la base visiva. Il valore operativo è "effetto aggiunto", non luogo né oggetto equipaggiabile.
-- [デコフレーム](term:term-v706-dekofureemu) è una cornice decorativa; [{{雰囲気|ふんいき}}](term:term-v708-funiki) invece parla del mood complessivo di una stanza o scena. Uno modifica il bordo, l'altro il tono percepito.
-- [きのみ{{台|だい}}](term:term-v709-kinomidai) unisce `きのみ`, bacca, e `{{台|だい}}`, supporto o banco: in un evento o minigioco segnala il punto fisico dove la risorsa viene raccolta, posata o usata.
+- [デコフレーム](term:term-v706-dekofureemu) è una cornice decorativa; [{{雰囲気|ふんいき}}](term:term-v708-funiki) invece parla del mood complessivo di una stanza o scena. Uno modifica il bordo o l'inquadratura, l'altro il tono percepito: luce, arredi, stile e impressione generale.
+- [きのみ{{台|だい}}](term:term-v709-kinomidai) unisce `きのみ`, bacca, e `{{台|だい}}`, supporto o banco. In un evento o minigioco segnala il punto fisico dove la risorsa viene raccolta, posata o usata; il kanji `{{台|だい}}` ti fa cercare un supporto concreto, non una bacca generica.
 
 :::example_sentence
 jp: >-
@@ -190,12 +202,17 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{部室|ぶしつ}}の` -> specifica il luogo interno: la stanza del club.
-- `{{雰囲気|ふんいき}}を` -> l'oggetto del cambiamento è il mood, non il layout fisico completo.
-- `{{変|か}}えます` -> verbo transitivo: qualcuno modifica attivamente quell'atmosfera.
+- `{{部室|ぶしつ}}の` ➔ **Luogo interno** (`の` specifica che il mood appartiene alla stanza del club).
+- `{{雰囲気|ふんいき}}を` ➔ **Oggetto del cambiamento** (`を` marca il mood, non il layout fisico completo).
+- `{{変|か}}えます` ➔ **Modifica attiva** (verbo transitivo: qualcuno cambia direttamente quell'atmosfera).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** per [{{雰囲気|ふんいき}}](term:term-v708-funiki), pensa a ciò che "si sente" guardando una stanza: luce, tono, impressione generale. È un gancio mnemonico pratico, non una spiegazione etimologica dei kanji.
+#### ⚖️ Contrasto
+
+[デコフレーム](term:term-v706-dekofureemu) e [あとのせエフェクト](term:term-v705-atonoseefekuto) agiscono sulla resa visiva di una foto o schermata; [{{雰囲気|ふんいき}}](term:term-v708-funiki) agisce sulla percezione complessiva di uno spazio. Se il testo parla di bordo o filtro, sei nel livello dell'effetto; se parla di tono della stanza, sei nel livello dell'atmosfera.
+
+#### 🧠 Gancio
+
+Per [{{雰囲気|ふんいき}}](term:term-v708-funiki), pensa a ciò che "si sente" guardando una stanza: luce, tono, impressione generale. È un trucco mnemonico pratico, non una spiegazione etimologica dei kanji.
 
 ## Esempi guidati di riepilogo
 

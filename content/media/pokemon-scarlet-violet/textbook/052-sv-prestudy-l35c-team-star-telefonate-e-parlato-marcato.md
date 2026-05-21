@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-052-sv-prestudy-l35c-team-star-telefonate-e-parlato-marcato
 media_id: media-pokemon-scarlet-violet
 slug: 052-sv-prestudy-l35c-team-star-telefonate-e-parlato-marcato
-title: SV Pre-study L35C - Team Star, telefonate e parlato marcato
+title: Telefonate, identità nascoste e parlato marcato
 order: 82
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -18,24 +18,24 @@ summary: >-
   Capire Team Star, telefonate e parlato marcato: riconoscere intrusione,
   controllo, tono brusco e richieste operative nelle scene di contatto.
 ---
+
 # Telefonate, identità nascoste e parlato marcato
 
-Nel filone Team Star, *Scarlet & Violet* cambia registro: il Rotom Phone diventa
-un canale controllato da qualcun altro, le telecamere trasformano la scena in
-sorveglianza e i personaggi scelgono parole che non sono mai neutre. Una
-chiamata può sembrare solo una consegna narrativa, ma il giapponese ti dice
-subito chi sta osservando, chi si nasconde e con quanta pressione sta parlando.
+Nel filone Team Star, *Pokémon Scarlet & Violet* cambia il modo in cui una
+conversazione comincia. Il Rotom Phone non è più solo un telefono comodo: può
+diventare un canale forzato, controllato da una voce che sa già dove ti trovi e
+che cosa stai facendo.
 
-Qui il tono fa parte dell'informazione. [オマエ](term:term-v765-omae) non vale
-come un semplice `キミ`, [おやおや](term:term-e113-oyaoya) non è sorpresa
-agitata, e [やるっきゃない](term:term-e114-yarukkyanai) non è un dovere freddo:
-sono segnali di voce, distanza e decisione.
+La scena si legge bene quando tieni insieme tre livelli: l'accesso tecnico al
+dispositivo, l'identità scelta da chi parla e il tono con cui quella voce si
+impone. [ハッキング](term:term-v762-hakkingu) non descrive una chiamata
+normale, [カシオペア](term:term-v764-kashiopea) non è solo un nome proprio, e
+[オマエ](term:term-v765-omae) non ha la stessa distanza di `キミ` o `あなた`.
 
 ## Termini chiave
 
 - [ハッキング](term:term-v762-hakkingu) — hacking / intrusione informatica
 - [{{監視|かんし}}カメラ](term:term-v763-kanshikamera) — telecamera di sorveglianza
-- [カシオペア](term:term-v764-kashiopea) — Cassiopeia
 - [オマエ](term:term-v765-omae) — tu, in tono brusco
 - [{{管理|かんり}}](term:term-v766-kanri) — gestione / controllo
 - [{{引|ひ}}き{{続|つづ}}き](term:term-v767-hikitsuzuki) — da qui in poi / continuando
@@ -53,20 +53,29 @@ sono segnali di voce, distanza e decisione.
 - [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che) — non è che...? / non sarà che...?
 - [～つもりはない](grammar:grammar-g114-non-ho-intenzione-di) — non ho intenzione di...
 
+## Etichette da riconoscere
+
+- [カシオペア](term:term-v764-kashiopea) — Cassiopeia, identità usata nella chiamata
+
 ---
 
-## 1. Chiamate forzate e scena sotto controllo
+## 1. Il contatto forzato: quando la voce prende il telefono
 
-[ハッキング](term:term-v762-hakkingu) entra quando una comunicazione non passa
-più per un canale normale. In una frase con `スマホを ハッキングして`, `を`
-marca lo smartphone come oggetto dell'intrusione e `して` collega il mezzo
-all'azione successiva: la chiamata sta avvenendo perché qualcuno ha forzato il
-dispositivo.
+La prima informazione importante non è solo "qualcuno ti chiama", ma "qualcuno
+ha ottenuto accesso al canale". Il giapponese lo segnala con parole tecniche
+molto dirette.
 
-[{{監視|かんし}}カメラ](term:term-v763-kanshikamera) aggiunge un secondo livello:
-non c'è solo una voce misteriosa, c'è anche osservazione a distanza. `{{監視|かんし}}`
-significa sorveglianza, `カメラ` resta trasparente in katakana, e insieme dicono
-che l'informazione arriva da un controllo visivo, non da intuizione o caso.
+*   [ハッキング](term:term-v762-hakkingu) resta katakana, quindi il valore
+    tecnico è immediato: hacking, intrusione, accesso non normale. In una frase
+    con `スマホを ハッキングして`, la particella `を` marca lo smartphone come
+    bersaglio dell'azione e la forma in `-te` collega l'intrusione alla chiamata
+    che segue. Il risultato pratico è chiaro: la comunicazione non è stata
+    accettata da chi riceve, è stata forzata da chi parla.
+*   [{{監視|かんし}}カメラ](term:term-v763-kanshikamera) aggiunge la prova visiva.
+    `{{監視|かんし}}` è sorveglianza, `カメラ` è il supporto fisico, e insieme
+    indicano una scena osservata a distanza. Quando la voce cita le telecamere,
+    non sta tirando a indovinare: sta dicendo che la tua presenza è già passata
+    dentro un sistema di controllo.
 
 :::example_sentence
 jp: >-
@@ -78,14 +87,14 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `この {{通話|つうわ}}は` -> mette a tema "questa chiamata": ciò che segue spiega
-  come sta avvenendo il contatto.
-- `あなたの スマホを` -> `を` marca lo smartphone come bersaglio tecnico
-  dell'intrusione.
-- `ハッキングして` -> forma in `-te`: "hackerando", cioè usando l'hacking come
-  mezzo dell'azione.
-- `おこなっている` -> progressivo formale: l'azione è in corso, non un evento già
-  concluso.
+*   `この {{通話|つうわ}}は` ➔ **Tema dichiarato**: la frase non parla in generale
+    di tecnologia, ma di questa chiamata precisa.
+*   `あなたの スマホを` ➔ **Bersaglio dell'intrusione**: `を` marca lo smartphone
+    come oggetto su cui agisce [ハッキング](term:term-v762-hakkingu).
+*   `ハッキングして` ➔ **Mezzo dell'azione**: la forma in `-te` spiega come
+    sta avvenendo la comunicazione.
+*   `おこなっている` ➔ **Azione in corso**: il progressivo presenta la chiamata
+    come qualcosa che sta succedendo adesso, non come un evento già chiuso.
 
 :::example_sentence
 jp: >-
@@ -97,32 +106,40 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `いくつもの {{監視|かんし}}カメラに` -> "su molte telecamere": `に` indica il
-  supporto o luogo dove l'immagine compare.
-- `キミの {{姿|すがた}}が` -> `{{姿|すがた}}` non è il corpo fisico in sé, ma la
-  figura visibile catturata dalla camera.
-- `{{映|うつ}}っていた` -> stato risultante nel passato: eri già apparso nelle
-  immagini quando la persona parla.
+*   `いくつもの {{監視|かんし}}カメラに` ➔ **Luogo di comparsa**: `に` indica il
+    supporto su cui l'immagine appare, cioè le telecamere.
+*   `キミの {{姿|すがた}}が` ➔ **Soggetto visibile**: `{{姿|すがた}}` è la figura
+    catturata, non la persona fisicamente presente davanti al parlante.
+*   `{{映|うつ}}っていた` ➔ **Stato registrato nel passato**: la tua immagine era
+    già comparsa nelle riprese quando la voce commenta la scena.
+*   `よ` ➔ **Conferma marcata**: il parlante non chiede se è successo; lo
+    comunica come informazione che possiede.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [ハッキング](term:term-v762-hakkingu) spiega
-> l'accesso forzato al canale; [{{監視|かんし}}カメラ](term:term-v763-kanshikamera)
-> spiega la prova visiva. Se compaiono vicini, il gioco sta costruendo una scena
-> di controllo remoto, non una semplice telefonata.
+#### ⚖️ Contrasto
 
-## 2. Nomi scelti, pronomi ruvidi e voce del personaggio
+*   [ハッキング](term:term-v762-hakkingu) spiega l'accesso forzato al canale;
+    [{{監視|かんし}}カメラ](term:term-v763-kanshikamera) spiega da dove arriva
+    l'informazione visiva. Se compaiono nella stessa scena, non leggere la
+    chiamata come semplice contatto remoto: il gioco sta costruendo un rapporto
+    sbilanciato, in cui una voce sa già più cose di te.
 
-[カシオペア](term:term-v764-kashiopea) funziona come identità dichiarata. Quando
-un personaggio dice `わたしの {{名|な}}は カシオペア`, non sta solo dando un nome:
-sta scegliendo quale maschera usare nella conversazione. Il nome proprio va
-riconosciuto come blocco narrativo, mentre `{{名|な}}` ti fa vedere la struttura
-"il mio nome è...".
+## 2. Nomi, maschere e distanza sociale
 
-[{{名乗|なの}}る](term:term-v769-nanoru) è più preciso di "dire il nome".
-Contiene l'idea di presentarsi, rivelarsi o assumere un'identità davanti a
-qualcuno. Per questo compare bene in scene dove la persona decide quanto mostrare
-di sé: `{{名乗|なの}}っておこうか` suona come "lascia che mi presenti / dichiari il
-mio nome per ora".
+Dopo il controllo tecnico arriva il controllo della voce. Chi parla decide come
+presentarsi, quanto rivelare e quanto tenere l'interlocutore a distanza.
+
+*   [カシオペア](term:term-v764-kashiopea) funziona come identità scelta. Quando
+    la frase dice `わたしの {{名|な}}は カシオペア`, non ti sta consegnando una
+    biografia completa: sta fissando il nome con cui quella voce vuole essere
+    riconosciuta dentro la chiamata.
+*   [{{名乗|なの}}る](term:term-v769-nanoru) è più specifico di "dire il nome".
+    Porta con sé l'atto sociale di presentarsi, dichiararsi o assumere un nome
+    davanti a qualcuno. In una scena con identità coperte, questo verbo conta
+    perché separa il nome pronunciato dalla persona reale dietro la voce.
+*   [オマエ](term:term-v765-omae) rende il "tu" molto più frontale. Può suonare
+    ruvido, dominante o aggressivamente familiare. In una richiesta come
+    `オマエの {{力|ちから}}を {{貸|か}}してほしい`, la grammatica resta una
+    richiesta di aiuto, ma il pronome cambia la temperatura della battuta.
 
 :::example_sentence
 jp: >-
@@ -133,15 +150,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `わたしの` -> possesso: "mio".
-- `{{名|な}}は` -> `は` mette a tema il nome, non l'intera identità della persona.
-- `カシオペア` -> nome scelto nella scena; non va tradotto, va riconosciuto come
-  firma del parlante.
-
-[オマエ](term:term-v765-omae), invece, agisce sulla distanza sociale. È un "tu"
-frontale, ruvido o dominante a seconda della voce. In `オマエの {{力|ちから}}を
-{{貸|か}}してほしい`, la richiesta è grammaticalmente un desiderio, ma il pronome
-le dà energia più brusca di `キミ` o `あなた`.
+*   `わたしの` ➔ **Possesso personale**: introduce ciò che appartiene al
+    parlante, qui il nome dichiarato.
+*   `{{名|な}}は` ➔ **Tema ristretto**: `は` mette a tema il nome, non tutta
+    l'identità della persona.
+*   `カシオペア` ➔ **Firma di scena**: il nome resta in katakana e va
+    riconosciuto come maschera narrativa, non tradotto.
 
 :::example_sentence
 jp: >-
@@ -152,33 +166,65 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `そこで！` -> "per questo / a questo punto": collega la richiesta alla
-  situazione appena spiegata.
-- `ぜひとも` -> rafforza il desiderio: "assolutamente", "proprio".
-- `オマエの {{力|ちから}}を` -> non chiede un oggetto, ma la forza o collaborazione
-  dell'interlocutore.
-- `{{貸|か}}してほしいんだ` -> `{{貸|か}}して` è "prestare"; `ほしい` esprime ciò
-  che il parlante vuole dall'altro; `んだ` dà tono esplicativo e insistente.
+*   `そこで！` ➔ **Snodo operativo**: collega la spiegazione precedente alla
+    richiesta che sta per arrivare.
+*   `ぜひとも` ➔ **Insistenza forte**: non è un semplice "per favore", ma un
+    rafforzatore del desiderio del parlante.
+*   `オマエの {{力|ちから}}を` ➔ **Collaborazione richiesta**: `{{力|ちから}}` è la
+    forza o l'aiuto dell'interlocutore, marcata da `を` come oggetto della
+    richiesta.
+*   `{{貸|か}}してほしいんだ` ➔ **Desiderio spiegato**: `{{貸|か}}して` è
+    "prestare", `ほしい` dice cosa il parlante vuole dall'altro, e `んだ`
+    aggiunge tono esplicativo e pressante.
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** `キミ` può suonare diretto ma relativamente neutro;
-> [オマエ](term:term-v765-omae) sposta la battuta verso rudezza, superiorità o
-> familiarità aggressiva. Non tradurlo sempre con un "tu" piatto: chiediti che
-> relazione sta costruendo chi parla.
+#### ⚖️ Contrasto
 
-## 3. Responsabilità, continuità e cura
+*   `キミ` può essere diretto ma relativamente neutro; [オマエ](term:term-v765-omae)
+    sposta la relazione verso rudezza, dominio o familiarità aggressiva. In
+    italiano non basta tradurlo sempre con "tu": serve ascoltare che tipo di
+    posizione si prende chi parla.
 
-[{{管理|かんり}}](term:term-v766-kanri) non è una "gestione" astratta quando si
-parla di un Pokémon o di un dispositivo. In `その ポケモンを {{管理|かんり}}できない`,
-`を` marca ciò che dovrebbe essere controllato, mentre `できない` dice che quella
-capacità manca nella situazione presente. La parola porta responsabilità: chi
-parla non può tenere sotto controllo ciò che dovrebbe seguire.
+#### 🧠 Gancio
 
-[{{引|ひ}}き{{続|つづ}}き](term:term-v767-hikitsuzuki) spinge l'azione oltre la
-scena attuale. Non significa solo "ancora": è "continuando da qui", spesso
-all'inizio di una richiesta o istruzione. Quando precede
-[かわいがる](term:term-v768-kawaigaru), la frase non chiede un gesto singolo, ma
-una cura che resta valida dopo la conversazione.
+*   Per [{{名乗|なの}}る](term:term-v769-nanoru), immagina una voce che mette un
+    cartellino davanti a sé. È un trucco mnemonico, non un'etimologia: aiuta a
+    ricordare che il verbo riguarda l'atto di presentarsi, non il semplice
+    fatto tecnico di pronunciare un nome.
+
+## 3. Responsabilità e continuità della cura
+
+Le telefonate del filone Team Star non servono solo a creare mistero. Spesso
+spostano un incarico su di te: gestire una situazione, continuare a proteggere
+un Pokémon, accettare che una responsabilità resti aperta dopo la scena.
+
+*   [{{管理|かんり}}](term:term-v766-kanri) è gestione, controllo, amministrazione
+    responsabile. Se compare con un Pokémon come oggetto, non indica affetto:
+    indica la capacità di tenere sotto controllo una situazione o una creatura
+    che richiede attenzione.
+*   [{{引|ひ}}き{{続|つづ}}き](term:term-v767-hikitsuzuki) spinge l'azione oltre
+    il momento della battuta. Non è un "ancora" generico: vuol dire "continuando
+    da qui", "da questo punto in avanti". Quando apre una richiesta, prepara il
+    lettore a un compito che non finisce con la conversazione.
+*   [かわいがる](term:term-v768-kawaigaru) cambia registro rispetto a
+    [{{管理|かんり}}](term:term-v766-kanri). Qui non si parla di controllo tecnico,
+    ma di trattare qualcuno con affetto, prendersene cura, mostrargli attenzione
+    benevola. Con un Pokémon, la parola porta la relazione sul piano del legame.
+
+:::example_sentence
+jp: >-
+  その ポケモンを {{管理|かんり}}できない {{状況|じょうきょう}}なんだ。
+translation_it: >-
+  È una situazione in cui non riesco a gestire quel Pokémon.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `その ポケモンを` ➔ **Oggetto del controllo**: `を` marca ciò che dovrebbe
+    essere gestito.
+*   `{{管理|かんり}}できない` ➔ **Capacità negata**: `できない` non nega il fatto che
+    il Pokémon esista, ma la capacità di tenerlo sotto controllo.
+*   `{{状況|じょうきょう}}なんだ` ➔ **Spiegazione della circostanza**: `んだ`
+    presenta il problema come ragione dietro ciò che il parlante chiederà.
 
 :::example_sentence
 jp: >-
@@ -189,61 +235,65 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{引|ひ}}き{{続|つづ}}き` -> avverbio di continuità: la richiesta prosegue da
-  quanto già sta accadendo.
-- `コライドンを` -> `を` marca il Pokémon come oggetto della cura.
-- `かわいがって` -> forma in `-te` di [かわいがる](term:term-v768-kawaigaru):
-  trattare con affetto, non solo amministrare.
-- `ほしい` -> desiderio del parlante rivolto all'azione dell'interlocutore.
+*   `{{引|ひ}}き{{続|つづ}}き` ➔ **Continuità dell'incarico**: la richiesta parte
+    da una cura già in corso e la proietta oltre la scena attuale.
+*   `コライドンを` ➔ **Oggetto della cura**: `を` marca il Pokémon verso cui va
+    diretta l'azione.
+*   `かわいがって` ➔ **Cura affettiva**: forma in `-te` di
+    [かわいがる](term:term-v768-kawaigaru), con valore di trattamento affettuoso.
+*   `ほしい` ➔ **Desiderio rivolto a te**: il parlante non descrive ciò che fa
+    lui, ma ciò che vorrebbe che facessi tu.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** per [{{引|ひ}}き{{続|つづ}}き](term:term-v767-hikitsuzuki),
-> immagina una linea che non si interrompe alla fine della scena. È un trucco
-> mnemonico: il punto pratico è riconoscere che l'incarico resta aperto.
+#### ⚖️ Contrasto
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{管理|かんり}}](term:term-v766-kanri) guarda al
-> controllo responsabile; [かわいがる](term:term-v768-kawaigaru) guarda al rapporto
-> affettivo. Se il testo passa dall'uno all'altro, sta cambiando da responsabilità
-> tecnica a cura personale.
+*   [{{管理|かんり}}](term:term-v766-kanri) guarda al controllo responsabile;
+    [かわいがる](term:term-v768-kawaigaru) guarda alla cura affettiva. Quando il
+    testo passa dall'uno all'altro, la scena si muove da "tenere la situazione
+    sotto controllo" a "continuare a trattare bene il Pokémon".
 
-## 4. Impressioni, ipotesi e negazioni difensive
+#### 🧠 Gancio
 
-[～っぽい](grammar:grammar-g112-sembra-ha-l-aria-di) attacca un'impressione a un
-nome o a una base: `モトトカゲっぽい` non dice "è Cyclizar", ma "ha l'aria di
-Cyclizar". È utile nei dialoghi in cui un personaggio riconosce somiglianze,
-stile o atmosfera senza formulare una diagnosi rigida.
+*   Per [{{引|ひ}}き{{続|つづ}}き](term:term-v767-hikitsuzuki), immagina una linea
+    che non si interrompe quando la chiamata finisce. È solo un'immagine mentale:
+    il valore reale da riconoscere è la continuità dell'azione.
 
-[～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che) ammorbidisce
-l'ipotesi. La parte `ん` comprime una spiegazione implicita, `じゃない？` la
-porta in forma interrogativa o confermativa: il risultato è "non sarà che...?",
-"forse è che...?". Nel parlato, spesso suona come una lettura della situazione
-offerta all'altro.
+## 4. Impressioni, ipotesi e intenzioni negate
+
+Molte battute non dicono la verità in modo frontale. Propongono un'impressione,
+formulano un'ipotesi o negano un'intenzione prima di arrivare alla richiesta.
+Queste forme sono piccole, ma cambiano quanto il parlante si sta esponendo.
+
+*   [～っぽい](grammar:grammar-g112-sembra-ha-l-aria-di) attacca un'impressione
+    a una base: `モトトカゲっぽい` non significa "è Cyclizar", ma "ha l'aria di
+    Cyclizar". È perfetto per somiglianze visive, atteggiamenti o atmosfere che
+    il personaggio percepisce senza dichiarare una certezza.
+*   [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che) trasforma una
+    lettura della situazione in ipotesi condivisibile. Il `ん` porta dentro una
+    spiegazione implicita, mentre `じゃない？` la offre come "non sarà che...?".
+    In dialogo suona meno rigido di una dichiarazione secca.
+*   [～つもりはない](grammar:grammar-g114-non-ho-intenzione-di) nega l'intenzione,
+    non necessariamente l'effetto. `{{責|せ}}める つもりはない` vuol dire "non ho
+    intenzione di rimproverarti", anche se la frase successiva può comunque
+    spingere l'altro a collaborare.
 
 :::example_sentence
 jp: >-
-  {{坂道|さかみち}}の トレーナーたちと {{戦|たたか}}って ポケモン
-  {{成長|せいちょう}}したんじゃない？
+  モトトカゲっぽい {{姿|すがた}}だけど、 {{正体|しょうたい}}は
+  {{別|べつ}}なんじゃない？
 translation_it: >-
-  Non è che i tuoi Pokémon sono cresciuti combattendo contro gli allenatori in salita?
+  Ha un aspetto da Cyclizar, ma non sarà che la sua vera identità è un'altra?
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{坂道|さかみち}}の トレーナーたちと` -> `と` marca gli allenatori come avversari
-  o partecipanti al combattimento.
-- `{{戦|たたか}}って` -> forma in `-te`: il combattimento è il mezzo o contesto
-  della crescita.
-- `ポケモン {{成長|せいちょう}}した` -> nucleo dell'ipotesi: i Pokémon sono
-  cresciuti.
-- `んじゃない？` -> il parlante non impone una certezza; propone una lettura
-  plausibile della scena.
-
-[～つもりはない](grammar:grammar-g114-non-ho-intenzione-di) nega l'intenzione, non
-per forza l'effetto. In `{{責|せ}}める つもりはない`, il parlante chiarisce che non
-vuole rimproverare; può comunque stare per chiedere qualcosa, correggere o
-spingere l'altro a collaborare. Il pattern è spesso difensivo: prima disinnesca,
-poi arriva la richiesta.
+*   `モトトカゲっぽい {{姿|すがた}}` ➔ **Impressione visiva**: `っぽい` indica
+    somiglianza percepita, non identificazione certa.
+*   `だけど` ➔ **Svolta contrastiva**: prepara il passaggio da ciò che sembra a
+    ciò che potrebbe essere davvero.
+*   `{{正体|しょうたい}}は {{別|べつ}}` ➔ **Ipotesi sull'identità**: `は` mette a
+    tema la vera natura del soggetto.
+*   `なんじゃない？` ➔ **Lettura proposta**: il parlante suggerisce una
+    spiegazione possibile invece di imporla come fatto.
 
 :::example_sentence
 jp: >-
@@ -255,56 +305,76 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `いやなに……` -> apertura esitante o rassicurante: prepara una correzione del
-  tono.
-- `{{責|せ}}める つもりはない` -> `{{責|せ}}める` è "rimproverare / accusare";
-  `つもり` è intenzione; `はない` nega proprio quell'intenzione.
-- `ただ` -> restringe il punto: "solo".
-- `{{協力|きょうりょく}}してほしいのだ` -> richiesta di collaborazione con tono
-  esplicativo e formale.
+*   `いやなに……` ➔ **Apertura disinnescante**: il parlante ammorbidisce il tono
+    prima di correggere l'impressione dell'altro.
+*   `{{責|せ}}める つもりはない` ➔ **Intenzione negata**: `つもり` è intenzione,
+    `はない` nega proprio quella intenzione.
+*   `ただ` ➔ **Restrizione del punto**: "solo", "semplicemente", con funzione di
+    restringere ciò che il parlante vuole davvero.
+*   `{{協力|きょうりょく}}してほしいのだ` ➔ **Richiesta spiegata**: `してほしい`
+    chiede collaborazione da parte dell'interlocutore; `のだ` dà tono
+    esplicativo e più formale.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [～っぽい](grammar:grammar-g112-sembra-ha-l-aria-di)
-> descrive una somiglianza percepita; [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che)
-> propone un'ipotesi sulla situazione; [～つもりはない](grammar:grammar-g114-non-ho-intenzione-di)
-> nega l'intenzione del parlante prima di continuare.
+#### ⚖️ Contrasto
 
-## 5. Interiezioni e decisioni senza via d'uscita
+*   [～っぽい](grammar:grammar-g112-sembra-ha-l-aria-di) descrive una somiglianza
+    percepita; [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che)
+    propone un'ipotesi sulla situazione; [～つもりはない](grammar:grammar-g114-non-ho-intenzione-di)
+    protegge il parlante da una lettura troppo aggressiva della sua intenzione.
+    Sono tre modi diversi di non dire "è così" in modo assoluto.
 
-[おやおや](term:term-e113-oyaoya) è una reazione composta. Non è un `えっ！？`
-di sorpresa improvvisa: suona più come un adulto che osserva qualcosa con calma,
-forse con ironia o superiorità leggera. Quando compare prima di una constatazione,
-preparati a una battuta che valuta la scena dall'alto.
+## 5. Reazioni controllate e decisioni senza via d'uscita
 
-[やるっきゃない](term:term-e114-yarukkyanai) concentra una decisione colloquiale:
-`やる` è "fare", `っきゃない` è la forma contratta di `しかない`, "non c'è altro
-che". Il risultato non è "devo" in senso burocratico, ma "a questo punto non
-resta che farlo", con energia da parlato.
+Il parlato marcato di queste scene si sente anche nelle piccole formule. Alcune
+non aggiungono informazioni nuove, ma cambiano il modo in cui la battuta arriva.
+
+*   [おやおや](term:term-e113-oyaoya) è una reazione osservativa, non uno scatto
+    di sorpresa. Non somiglia a `えっ！？`: suona più come una voce che nota
+    qualcosa con calma, magari con ironia o superiorità leggera. Quando arriva
+    prima di una constatazione, aspettati che il parlante stia valutando la
+    scena dall'alto.
+*   [やるっきゃない](term:term-e114-yarukkyanai) comprime una decisione colloquiale.
+    `やる` è "fare"; `っきゃない` viene da `しかない`, "non c'è altro che". Non è
+    un dovere burocratico, ma una formula da momento pratico: a questo punto le
+    alternative sono finite e bisogna agire.
 
 :::example_sentence
 jp: >-
-  {{迷|まよ}}ってるなら やるっきゃない！
+  おやおや、 まだ {{迷|まよ}}っているのか。 ここまで {{来|き}}たなら
+  やるっきゃない。
 translation_it: >-
-  Se stai ancora esitando, non resta che farlo!
+  Oh? Sei ancora indeciso? Se sei arrivato fin qui, non resta che farlo.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{迷|まよ}}ってるなら` -> "se stai esitando": condizione colloquiale costruita
-  su `{{迷|まよ}}っている`.
-- `やる` -> l'azione viene lasciata generica: il contesto dice cosa bisogna fare.
-- `っきゃない` -> contrazione parlata di `しかない`: non ci sono alternative
-  pratiche.
+*   `おやおや` ➔ **Reazione controllata**: il parlante osserva la scena con
+    distanza, non esplode in sorpresa.
+*   `まだ {{迷|まよ}}っているのか` ➔ **Constatazione interrogativa**: `まだ` segnala
+    che l'esitazione continua più del previsto.
+*   `ここまで {{来|き}}たなら` ➔ **Condizione pragmatica**: se sei arrivato fino a
+    questo punto, la scelta successiva cambia.
+*   `やるっきゃない` ➔ **Decisione chiusa**: l'espressione elimina le alternative
+    e spinge verso l'azione.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** [やるっきゃない](term:term-e114-yarukkyanai) è la frase
-> da leggere come una porta che si chiude dietro al personaggio: non è etimologia,
-> è un'immagine per ricordare il valore "ormai si va".
+#### ⚖️ Contrasto
+
+*   [おやおや](term:term-e113-oyaoya) guarda la scena con controllo; `えっ` o
+    `うわっ` marcano sorpresa più immediata. [やるっきゃない](term:term-e114-yarukkyanai)
+    non equivale a un obbligo imposto da una regola: è la conclusione pratica di
+    chi non vede più altre strade.
+
+#### 🧠 Gancio
+
+*   Per [やるっきゃない](term:term-e114-yarukkyanai), immagina una porta che si
+    chiude dietro al personaggio. Non è etimologia, è un gancio: aiuta a sentire
+    il valore "ormai si va".
 
 ## Esempi guidati di riepilogo
 
-Quando le stesse forme si ricombinano, cerca prima il tipo di frase: intrusione,
-identità, responsabilità, ipotesi o decisione colloquiale.
+Quando queste forme si combinano, cerca prima la funzione della battuta:
+intrusione tecnica, identità dichiarata, responsabilità, ipotesi o spinta
+all'azione.
 
 :::example_sentence
 jp: >-
@@ -332,19 +402,20 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  おやおや、 まだ {{迷|まよ}}っているのか。 ここまで {{来|き}}たなら
-  やるっきゃない。
+  {{引|ひ}}き{{続|つづ}}き かわいがってほしいなら、 もう
+  {{迷|まよ}}っている {{時間|じかん}}はない。 やるっきゃない。
 translation_it: >-
-  Oh? Sei ancora indeciso? Se sei arrivato fin qui, non resta che farlo.
+  Se vuoi che continui a prendersene cura, non c'è più tempo per esitare. Non resta che agire.
 :::
 
 ## Nota finale
 
-In queste scene non leggere solo "che cosa succede", ma "da dove arriva la
-voce". [ハッキング](term:term-v762-hakkingu) e
-[{{監視|かんし}}カメラ](term:term-v763-kanshikamera) costruiscono il controllo a
-distanza; [カシオペア](term:term-v764-kashiopea) e
-[{{名乗|なの}}る](term:term-v769-nanoru) regolano l'identità; [オマエ](term:term-v765-omae),
-[おやおや](term:term-e113-oyaoya) e [やるっきゃない](term:term-e114-yarukkyanai)
-danno colore alla voce. I pattern grammaticali completano il quadro: impressione,
-ipotesi e intenzione negata ti dicono quanto il parlante sta affermando davvero.
+Nel filone Team Star, le telefonate non sono mai solo dialoghi a distanza.
+[ハッキング](term:term-v762-hakkingu) e
+[{{監視|かんし}}カメラ](term:term-v763-kanshikamera) costruiscono il controllo,
+[カシオペア](term:term-v764-kashiopea) e
+[{{名乗|なの}}る](term:term-v769-nanoru) regolano l'identità, mentre
+[オマエ](term:term-v765-omae), [おやおや](term:term-e113-oyaoya) e
+[やるっきゃない](term:term-e114-yarukkyanai) danno peso alla voce. I pattern
+grammaticali completano la lettura: impressione, ipotesi e intenzione negata ti
+dicono quanto il parlante sta affermando davvero.

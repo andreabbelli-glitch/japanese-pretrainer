@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana
 media_id: media-pokemon-scarlet-violet
 slug: 051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana
-title: SV Pre-study L35B - esplorazione, campus e vita quotidiana
+title: "Esplorazione, campus e vita quotidiana a Paldea"
 order: 81
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -18,17 +18,12 @@ summary: >-
   Seguire esplorazione, campus e vita quotidiana: leggere consigli di direzione,
   piccoli dialoghi, sandwich e messaggi sul rapporto con i Pokémon.
 ---
-# Esplorazione, campus e vita quotidiana
 
-Nel viaggio a Paldea il giapponese non compare solo nelle lotte: lo incontri
-quando qualcuno ti suggerisce una meta provvisoria, quando una strada rischia di
-farti perdere, quando un panino diventa un piccolo gesto di condivisione o
-quando un NPC si presenta in modo fin troppo sospetto.
+# Esplorazione, campus e vita quotidiana a Paldea
 
-In quelle frasi brevi, le parole di orientamento dicono dove andare e quanto è
-stabile il piano, il lessico del picnic parla di risorse e cura quotidiana,
-mentre le espressioni sui compagni Pokémon mostrano affetto, sintonia e
-informazioni personali.
+A Paldea il giapponese quotidiano compare mentre lasci il campus, apri la mappa, prepari un sandwich o ascolti un NPC che si presenta con troppa sicurezza. Non sono frasi spettacolari: sono segnali brevi che ti dicono se una meta è solo provvisoria, se una strada rischia di confonderti, se una ricompensa è un regalo o una condivisione, e se un incontro va letto con fiducia o con cautela.
+
+Il gioco alterna tre registri molto riconoscibili. I consigli di esplorazione usano parole morbide come [とりあえず](term:term-e109-toriaezu) e [オススメ](term:term-e110-osusume); le descrizioni del mondo aperto trasformano [{{天気|てんき}}](term:term-v749-tenki), percorso e ritorno in condizioni pratiche; le scene di picnic e compagnia fanno emergere cura, affetto e piccoli scambi sociali.
 
 ## Termini chiave
 
@@ -59,30 +54,31 @@ informazioni personali.
 - [おいで](term:term-e111-oide) — vieni pure / passa pure
 - [なんということでしょう](term:term-e112-nantoiukotodeshou) — ma guarda! / incredibile
 
+## Pattern grammaticali chiave
+
+- [{{可能形|かのうけい}}](grammar:grammar-g020-poter-fare) — forma potenziale: poter fare / riuscire a fare
+- [～ておく](grammar:grammar-teoku) — fare in anticipo e lasciare pronto
+- [～によって](grammar:grammar-g101-a-seconda-di-in-base-a) — in base a / a seconda di
+- [～そうだ](grammar:grammar-g063-si-dice-che-pare-che) — si dice che / pare che
+- [～すぎる](grammar:grammar-g061-troppo) — fare troppo / eccedere
+- [～てあげる](grammar:grammar-te-ageru) — fare qualcosa a beneficio di qualcuno
+- [～たら](grammar:grammar-tara) — se / quando una condizione si realizza
+
+## Etichette da riconoscere
+
+- [ヌシ](term:term-v167-nushi) — Titan / presenza dominante indicata nella mappa
+- [テーブルシティ](term:term-v272-teeburushitei) — Mesapoli, riferimento urbano centrale di Paldea
+
 ---
 
-## 1. Direzione provvisoria e partenza
+## 1. Direzione provvisoria e partenza dal campus
 
-Quando il gioco apre una nuova porzione di mondo, spesso non dà un ordine
-rigido: usa parole che tengono insieme suggerimento, priorità provvisoria e
-invito a partire.
+Quando il gioco apre una nuova porzione di mondo, raramente ti spinge con un ordine secco. Il parlato dei personaggi preferisce suggerimenti, priorità temporanee e inviti a muoversi: devi capire se qualcuno ti sta dando una rotta definitiva, un primo appoggio o una chiamata personale.
 
-- [とりあえず](term:term-e109-toriaezu) sposta la frase su una soluzione "per
-  ora": non dice che quella sia la strategia definitiva, ma che è un primo passo
-  abbastanza buono da fare subito. In un consiglio di esplorazione, quindi, è il
-  segnale che la meta viene marcata come priorità iniziale, non come unico
-  percorso possibile.
-- [オススメ](term:term-e110-osusume) è la forma compatta di raccomandazione:
-  nei menu e nel parlato vale come "consigliato". Non descrive solo un gusto
-  personale; spesso ti dice quale posto, azione o opzione il gioco vuole rendere
-  più visibile.
-- [{{旅立|たびだ}}つ](term:term-v756-tabidatsu) mette insieme `{{旅|たび}}`
-  "viaggio" e `{{立|た}}つ` "alzarsi / partire": non è uscire per pochi passi,
-  ma mettersi davvero in cammino. Quando compare vicino a scuola o campus, il
-  contrasto è chiaro: lasci il punto sicuro e inizi l'esplorazione.
-- [おいで](term:term-e111-oide) è un invito morbido: "vieni", "passa pure",
-  "raggiungimi". In bocca a un personaggio non suona come un comando di sistema,
-  ma come una chiamata verso un luogo o una persona.
+*   [とりあえず](term:term-e109-toriaezu) mette la frase nel campo del "per ora". Non significa che il personaggio stia scegliendo a caso: significa che, con le informazioni disponibili, quella è la prima mossa sensata. In un consiglio di esplorazione, [とりあえず](term:term-e109-toriaezu) ti fa leggere la meta come punto di partenza provvisorio, non come percorso obbligatorio.
+*   [オススメ](term:term-e110-osusume) è la raccomandazione compatta che il gioco usa per rendere più visibile un'opzione. Nei menu può sembrare una semplice etichetta, ma nel parlato funziona come "questa è la scelta che ti conviene guardare adesso". Non descrive solo il gusto del personaggio: orienta la tua attenzione verso un luogo, un'azione o una funzione.
+*   [{{旅立|たびだ}}つ](term:term-v756-tabidatsu) unisce `{{旅|たび}}` "viaggio" e `{{立|た}}つ` "alzarsi / partire". Rispetto a un semplice "uscire", porta l'idea di mettersi davvero in cammino. Vicino alla scuola o al campus, il contrasto è netto: lasci il punto sicuro e trasformi l'ambiente in viaggio.
+*   [おいで](term:term-e111-oide) è una chiamata morbida: "vieni", "passa pure", "raggiungimi". Se la trovi in bocca a un personaggio, non leggerla come pulsante di sistema; è una voce che accorcia la distanza tra te, il luogo e la persona che ti sta invitando.
 
 :::example_sentence
 jp: >-
@@ -94,38 +90,25 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `とりあえず` -> limita il piano al primo passo pratico: "per ora faccio questo".
-- `ヌシが いそうな {{場所|ばしょ}}` -> `いそう` indica apparenza o probabilità:
-  posti dove "sembra possa esserci" un Titan.
-- `だけ` -> restringe il bersaglio: non tutta la mappa, solo quei luoghi.
-- `{{登録|とうろく}}しておく` -> `〜ておく` prepara qualcosa in anticipo; segnare la
-  posizione serve per dopo, non solo per l'istante presente.
+*   `とりあえず` ➔ **Piano provvisorio**: limita l'azione al primo passo pratico, non a una decisione definitiva.
+*   `ヌシが いそうな {{場所|ばしょ}}` ➔ **Luogo probabile**: `いそう` presenta una presenza come plausibile, "posti dove sembra che ci sia un Titan".
+*   `だけ` ➔ **Restrizione del bersaglio**: non tutta la mappa, solo quei luoghi.
+*   `マップアプリに` ➔ **Destinazione operativa**: `に` aggancia la registrazione all'app mappa, cioè al punto in cui l'informazione resta disponibile.
+*   `{{登録|とうろく}}しておく` ➔ **Preparazione lasciata pronta**: [～ておく](grammar:grammar-teoku) dice che la registrazione serve per dopo, non solo per l'istante presente.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [とりあえず](term:term-e109-toriaezu) non equivale
-> a "a caso". Dice che l'azione è provvisoria ma intenzionale: il personaggio
-> sceglie un primo appoggio leggibile prima di avere tutte le informazioni.
+#### ⚖️ Contrasto
+
+[とりあえず](term:term-e109-toriaezu) non equivale a "senza criterio". La sfumatura è "per cominciare facciamo questo": la frase resta intenzionale anche se il piano è provvisorio. Se lo traduci come casualità, perdi il modo in cui il personaggio ti costruisce una prima rotta leggibile.
+
+---
 
 ## 2. Mondo aperto, ritorno e terreno che confonde
 
-Fuori dal campus, il gioco parla dello spazio come di un ambiente attraversabile:
-si può tornare indietro, il meteo cambia le condizioni, una strada può essere
-troppo articolata e il personaggio può perdersi.
+Fuori dal campus, la lingua descrive lo spazio come qualcosa da attraversare: puoi tornare indietro, il meteo cambia le condizioni, una strada può intrecciarsi e la direzione può diventare incerta. Qui la forma giapponese ti dice se stai leggendo una possibilità, una proprietà del luogo o una conseguenza sul giocatore.
 
-[{{戻|もど}}れる](term:term-v746-modoreru) è la forma potenziale di
-`{{戻|もど}}る`: non significa semplicemente "torno", ma "posso tornare". Nei
-dialoghi di esplorazione questa differenza conta, perché la frase non descrive
-un movimento già avvenuto; segnala che il ritorno resta disponibile.
-
-[{{入|い}}り{{組|く}}む](term:term-v750-irikumu) descrive qualcosa che entra e si
-intreccia in modo complicato: strade, vicoli, interni o percorsi pieni di svolte.
-Quando è vicino a [{{迷|まよ}}う](term:term-v751-mayou), il testo passa dalla
-forma del luogo alla conseguenza sul giocatore: il posto è intricato, quindi ci
-si può perdere o esitare sulla direzione.
-
-[{{天気|てんき}}](term:term-v749-tenki) non è solo sfondo atmosferico. In frasi
-con `によって`, il meteo diventa una condizione che cambia comportamento,
-apparizioni o ritmo del campo.
+*   [{{戻|もど}}れる](term:term-v746-modoreru) è la forma potenziale di `{{戻|もど}}る`. Non racconta "torno", ma "posso tornare". Nei dialoghi di esplorazione questo cambia la lettura: il testo non descrive un movimento già iniziato, segnala che una via di ritorno resta aperta.
+*   [{{入|い}}り{{組|く}}む](term:term-v750-irikumu) descrive un percorso che entra, si intreccia e diventa complicato: vicoli, interni, grotte o strade piene di svolte. Quando compare vicino a [{{迷|まよ}}う](term:term-v751-mayou), il giapponese passa dalla forma del luogo alla tua esperienza: il posto è intricato, quindi puoi perderti o restare indeciso.
+*   [{{天気|てんき}}](term:term-v749-tenki) non è solo colore di sfondo. Con [～によって](grammar:grammar-g101-a-seconda-di-in-base-a), il meteo diventa una variabile: può cambiare comportamento dei Pokémon, apparizioni o ritmo del campo. La frase non dice "c'è tempo atmosferico", ma "il risultato dipende anche da questo fattore".
 
 :::example_sentence
 jp: >-
@@ -137,37 +120,28 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{時間|じかん}}や {{天気|てんき}}` -> `や` elenca esempi aperti: ora e meteo
-  sono fattori, non necessariamente gli unici.
-- `によって` -> marca la causa variabile: il cambiamento dipende da quel fattore.
-- `{{行動|こうどう}}が {{変|か}}わる` -> il soggetto che cambia è il comportamento
-  dei Pokémon selvatici, non il meteo in sé.
-- `そうじゃ` -> forma riportata / sentito dire con coloritura da parlante anziano:
-  il testo presenta l'informazione come conoscenza trasmessa.
+*   `{{時間|じかん}}や {{天気|てんき}}` ➔ **Elenco aperto di fattori**: `や` cita ora e meteo come esempi, senza chiudere per forza la lista.
+*   `によって` ➔ **Variabile che decide il risultato**: [～によって](grammar:grammar-g101-a-seconda-di-in-base-a) marca ciò da cui dipende il cambiamento.
+*   `{{野生|やせい}}ポケモンの {{行動|こうどう}}が` ➔ **Soggetto del cambiamento**: ciò che cambia è il comportamento dei Pokémon selvatici, non il meteo in sé.
+*   `{{変|か}}わるそうじゃ` ➔ **Informazione riportata**: [～そうだ](grammar:grammar-g063-si-dice-che-pare-che) presenta il contenuto come "pare che / si dice che", con `じゃ` a colorare la voce del parlante.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** pensa a `によって` come a una leva: quando cambia la
-> leva `{{時間|じかん}}` o `{{天気|てんき}}`, cambia anche ciò che i Pokémon fanno.
-> È un trucco di memoria, non un'etimologia.
+#### ⚖️ Contrasto
+
+[{{入|い}}り{{組|く}}む](term:term-v750-irikumu) descrive la struttura del luogo; [{{迷|まよ}}う](term:term-v751-mayou) descrive la conseguenza su chi lo attraversa. Una strada può essere intricata anche prima che tu ti perda, e puoi [{{迷|まよ}}う](term:term-v751-mayou) proprio perché la forma dello spazio non è lineare.
+
+#### 🧠 Gancio
+
+Per [～によって](grammar:grammar-g101-a-seconda-di-in-base-a), immagina una leva. Se cambia la leva `{{時間|じかん}}` o `{{天気|てんき}}`, cambia anche ciò che i Pokémon fanno. È un trucco di memoria, non un'etimologia: serve solo a ricordare che il pattern collega variabile e risultato.
+
+---
 
 ## 3. Aiuto, ricompense e sfide affrontabili
 
-Molti NPC trasformano azioni semplici in piccoli scambi sociali: aiuti qualcuno,
-ricevi qualcosa, senti che una sfida è alla tua portata o che puoi provarci.
-Qui il giapponese distingue bene tra gesto, premio e possibilità.
+Molti NPC trasformano azioni semplici in piccoli scambi sociali: aiuti qualcuno, ricevi qualcosa, scopri che una lotta è alla tua portata o che puoi finalmente provarci. Il punto non è solo tradurre il verbo: devi capire se la frase parla di gesto, premio, risultato possibile o accesso alla sfida.
 
-[{{人助|ひとだす}}け](term:term-v743-hitodasuke) unisce `{{人|ひと}}` "persona" e
-`{{助|たす}}け` "aiuto": non è un favore astratto, ma l'atto concreto di dare
-una mano a qualcuno. [プレゼント](term:term-v744-purezento) può essere un regalo
-affettuoso o una ricompensa consegnata dopo un gesto; il katakana non richiede
-furigana, ma il ruolo nella scena cambia in base a chi lo dà e perché.
-
-[{{勝|か}}てる](term:term-v745-kateru) e
-[{{挑|いど}}める](term:term-v757-idomeru) sono potenziali. Il primo dice che si
-può vincere, quindi guarda al risultato; il secondo dice che si può sfidare,
-quindi guarda all'accesso o al coraggio di iniziare. In una frase di palestra o
-arena, questa differenza separa "sei in grado di batterlo" da "hai i requisiti
-o l'occasione per provarci".
+*   [{{人助|ひとだす}}け](term:term-v743-hitodasuke) unisce `{{人|ひと}}` "persona" e `{{助|たす}}け` "aiuto". Non è un generico "essere buoni": è l'atto concreto di dare una mano a qualcuno. Se l'NPC lo usa dopo un problema risolto, il focus resta sul gesto sociale, non sulla meccanica del premio.
+*   [プレゼント](term:term-v744-purezento) può essere un regalo affettuoso o una ricompensa consegnata dopo un'azione. Il katakana è trasparente, ma la scena decide il valore: in un dialogo caldo è dono, in uno scambio operativo può essere premio.
+*   [{{勝|か}}てる](term:term-v745-kateru) e [{{挑|いど}}める](term:term-v757-idomeru) sono forme potenziali, ma guardano due momenti diversi. [{{勝|か}}てる](term:term-v745-kateru) guarda al risultato possibile: riuscire a vincere. [{{挑|いど}}める](term:term-v757-idomeru) guarda all'accesso o al coraggio di iniziare: poter sfidare. In una palestra, questa differenza separa "puoi batterlo" da "puoi affrontarlo".
 
 :::example_sentence
 jp: >-
@@ -178,38 +152,24 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{人助|ひとだす}}けは` -> `は` prende l'atto di aiutare come tema generale.
-- `いいことだけど` -> `けど` concede il lato positivo e prepara un limite.
-- `ワイルドは ほどほどに` -> `ほどほどに` vuol dire "con moderazione": non nega
-  l'aiuto, ma frena l'eccesso.
+*   `{{人助|ひとだす}}けは` ➔ **Tema generale**: `は` mette sul tavolo l'atto di aiutare come principio.
+*   `いいことだけど` ➔ **Concessione con limite in arrivo**: `けど` riconosce il lato positivo e prepara una correzione.
+*   `ワイルドは ほどほどに` ➔ **Moderazione richiesta**: `ほどほどに` non cancella l'aiuto, ma frena l'eccesso eccessivamente impulsivo.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{勝|か}}てる](term:term-v745-kateru) non è
-> [{{挑|いど}}める](term:term-v757-idomeru). Il primo valuta la riuscita della
-> lotta; il secondo apre la possibilità di affrontarla. Se li scambi, leggi come
-> promessa di vittoria ciò che magari era solo permesso di sfidare.
+#### ⚖️ Contrasto
+
+[{{勝|か}}てる](term:term-v745-kateru) non è [{{挑|いど}}める](term:term-v757-idomeru). Il primo valuta la riuscita della lotta; il secondo apre la possibilità di affrontarla. Se li scambi, puoi leggere come promessa di vittoria una frase che in realtà ti sta solo dicendo che la sfida è accessibile.
+
+---
 
 ## 4. Picnic, sandwich e cura quotidiana
 
-Le scene di picnic portano in primo piano un giapponese domestico: ingredienti,
-condimenti, riposo e piccole condivisioni. Non sono parole "minori": sono il
-modo in cui il gioco rende leggibili crafting leggero e cura del gruppo.
+Le scene di picnic portano in primo piano un giapponese domestico: ingredienti, condimenti, riposo e porzioni condivise. Sono parole piccole, ma fanno vedere come il gioco costruisce cura quotidiana attorno al team: non solo battaglie, ma preparazione, pausa e attenzione verso chi viaggia con te.
 
-[{{思|おも}}いつく](term:term-v747-omoitsuku) descrive l'idea che viene in mente:
-`{{思|おも}}い` richiama il pensare, `つく` aggiunge l'idea di attaccarsi o
-arrivare a un punto. In pratica, è il verbo per "mi è venuta un'idea" o "ho
-trovato una soluzione", non per conoscere già una ricetta.
-
-[{{調味料|ちょうみりょう}}](term:term-v748-choumiryou) è il condimento:
-`{{調|ちょう}}` rimanda al regolare o aggiustare, `{{味|み}}` al sapore,
-`{{料|りょう}}` al materiale. In un sandwich, quindi, non è l'ingrediente
-principale ma ciò che aggiusta il gusto.
-
-[おすそわけ](term:term-v758-osusowake) indica dare a qualcuno una parte di ciò
-che si ha. Il prefisso `お` ammorbidisce la parola, mentre `すそわけ` porta l'idea
-di distribuire un lembo, una porzione. È diverso da [プレゼント](term:term-v744-purezento):
-un regalo può essere preparato per te; `おすそわけ` nasce da qualcosa che il
-parlante aveva già e condivide.
+*   [{{思|おも}}いつく](term:term-v747-omoitsuku) descrive un'idea che viene in mente. `{{思|おも}}い` richiama il pensare, mentre `つく` aggiunge l'idea di arrivare e attaccarsi a un punto. In una scena di sandwich, non significa conoscere già tutto: significa che una soluzione o una combinazione ti viene in mente in quel momento.
+*   [{{調味料|ちょうみりょう}}](term:term-v748-choumiryou) è il condimento. `{{調|ちょう}}` rimanda al regolare o aggiustare, `{{味|み}}` al sapore, `{{料|りょう}}` al materiale. Nel sandwich, quindi, non è l'ingrediente principale: è ciò che regola il gusto e completa la preparazione.
+*   [おすそわけ](term:term-v758-osusowake) indica condividere una parte di ciò che si ha già. Il prefisso `お` ammorbidisce la parola, mentre `すそわけ` porta l'idea di distribuire una porzione. È diverso da [プレゼント](term:term-v744-purezento): un regalo può essere pensato apposta per te; [おすそわけ](term:term-v758-osusowake) nasce da qualcosa che il parlante possiede e divide.
+*   [{{休息|きゅうそく}}](term:term-v759-kyuusoku) è riposo come pausa recuperativa. Se compare in una scena di picnic, il testo non sta solo dicendo "fermarsi": sta dando valore al tempo in cui il gruppo si ricarica, mangia o torna in forma prima di ripartire.
 
 :::example_sentence
 jp: >-
@@ -221,40 +181,28 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `バッグに {{食材|しょくざい}}を` -> la borsa è il luogo di destinazione, gli
-  ingredienti sono l'oggetto inserito.
-- `つめすぎちゃった` -> `すぎる` segnala eccesso, `ちゃった` aggiunge
-  completamento con sfumatura di "ormai l'ho fatto".
-- `おすそわけして あげるね` -> `してあげる` presenta l'azione come favore verso
-  l'altro; `ね` cerca accordo o calore nel tono.
+*   `バッグに {{食材|しょくざい}}を` ➔ **Luogo e oggetto dell'azione**: la borsa è la destinazione, gli ingredienti sono ciò che viene inserito.
+*   `つめすぎちゃった` ➔ **Eccesso già avvenuto**: [～すぎる](grammar:grammar-g061-troppo) segnala "troppo", mentre `ちゃった` aggiunge una sfumatura di completamento ormai fatto.
+*   `おすそわけして` ➔ **Condivisione di una porzione**: il parlante non crea un regalo dal nulla, divide qualcosa che ha in più.
+*   `あげるね` ➔ **Favore verso l'altro**: [～てあげる](grammar:grammar-te-ageru) presenta l'azione come beneficio per chi riceve, e `ね` mantiene un tono caldo.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{休息|きゅうそく}}](term:term-v759-kyuusoku) è
-> riposo come pausa recuperativa; non è semplicemente "fermarsi". Se compare in
-> una scena di picnic, il focus è ricaricare il gruppo o prendersi tempo, non
-> bloccare l'avventura.
+#### ⚖️ Contrasto
+
+[おすそわけ](term:term-v758-osusowake) non è un semplice [プレゼント](term:term-v744-purezento). Con [おすそわけ](term:term-v758-osusowake) leggi una distribuzione da ciò che il parlante ha già; con [プレゼント](term:term-v744-purezento) leggi un dono o premio più autonomo. Il risultato può sembrare simile, ma il rapporto sociale cambia.
+
+#### 🧠 Gancio
+
+Per [{{調味料|ちょうみりょう}}](term:term-v748-choumiryou), pensa al condimento come alla "manopola del gusto": non sostituisce il panino, ne regola il sapore. È un'immagine mnemonica utile per non confonderlo con gli ingredienti principali.
+
+---
 
 ## 5. Compagni Pokémon e informazioni personali
 
-Quando il gioco parla del rapporto con il team, cambia registro: le parole
-tecniche lasciano spazio a compagnia, conoscenza reciproca e aggiornamenti su
-come stanno andando le cose.
+Quando il gioco parla del rapporto con il team, la frase si sposta dal sistema alla relazione. Le parole non dicono solo chi combatte: dicono chi viaggia con te, che cosa puoi scoprire e quanto la compagnia si sta trasformando in affiatamento.
 
-[{{相棒|あいぼう}}](term:term-v752-aibou) è più caldo di un generico "alleato":
-indica un partner fidato, qualcuno con cui si agisce fianco a fianco. In
-Scarlet/Violet si adatta bene al Pokémon che viaggia con te, perché non dice
-solo "combatte dalla tua parte"; dice "è il tuo compagno".
-
-[{{知|し}}れる](term:term-v753-shireru) è il potenziale di `{{知|し}}る`: "poter
-sapere", "riuscire a venire a conoscenza". Quando un personaggio parla di
-informazioni che `{{知|し}}れる`, non sta dicendo che le sai già; sta dicendo
-che quella situazione ti permette di scoprirle.
-
-[なかよし](term:term-v754-nakayoshi) descrive una relazione buona e affiatata.
-Con `なれる`, il giapponese non fotografa solo uno stato: mostra un passaggio,
-"si può diventare più in sintonia". [{{近況|きんきょう}}](term:term-v755-kinkyou),
-invece, raccoglie le informazioni recenti su una persona: "come stanno andando
-le cose ultimamente".
+*   [{{相棒|あいぼう}}](term:term-v752-aibou) è più caldo di un generico "alleato". Indica un partner fidato, qualcuno con cui agisci fianco a fianco. In *Scarlet & Violet* funziona bene per il Pokémon che ti accompagna perché non dice soltanto "è dalla tua parte": dice "è il tuo compagno di viaggio".
+*   [{{知|し}}れる](term:term-v753-shireru) è il potenziale di `{{知|し}}る`: "poter sapere", "riuscire a venire a conoscenza". Quando un personaggio dice che qualcosa `{{知|し}}れる`, non sta dicendo che lo sai già; sta dicendo che la situazione ti permette di scoprirlo.
+*   [なかよし](term:term-v754-nakayoshi) descrive una relazione buona e affiatata. Con `なれる`, la frase non fotografa solo uno stato: mostra il passaggio verso quello stato, "poter diventare più in sintonia". [{{近況|きんきょう}}](term:term-v755-kinkyou), invece, raccoglie aggiornamenti recenti: come stanno andando le cose in questo periodo, non la biografia completa.
 
 :::example_sentence
 jp: >-
@@ -266,35 +214,24 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{一緒|いっしょ}}に {{歩|ある}}いて` -> prima azione condivisa: camminare insieme.
-- `{{冒険|ぼうけん}}すると` -> `と` collega una condizione regolare al risultato:
-  quando si fa avventura insieme, succede questo.
-- `もっと なかよしさんに なれます` -> `もっと` aumenta il grado, `に なれます`
-  indica diventare capaci di raggiungere quello stato.
+*   `{{一緒|いっしょ}}に {{歩|ある}}いて` ➔ **Azione condivisa iniziale**: camminare insieme crea la cornice relazionale.
+*   `{{冒険|ぼうけん}}すると` ➔ **Condizione regolare**: `と` collega "fare avventura" a un risultato atteso.
+*   `もっと` ➔ **Aumento di grado**: non parte da zero, intensifica un rapporto già possibile.
+*   `なかよしさんに なれます` ➔ **Diventare capaci di raggiungere uno stato**: `に なる` indica passaggio, e la forma potenziale mostra che l'affiatamento è ottenibile.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** [{{相棒|あいぼう}}](term:term-v752-aibou) può essere
-> ricordato come "il bastone accanto", cioè qualcuno su cui ti appoggi. È solo
-> un'immagine mnemonica: la lettura da fissare resta `あいぼう`.
+#### 🧠 Gancio
+
+[{{相棒|あいぼう}}](term:term-v752-aibou) può essere ricordato come "il bastone accanto", cioè qualcuno su cui ti appoggi mentre cammini. È solo un trucco mnemonico: la lettura da fissare resta `あいぼう`, e il valore reale è partner fidato.
+
+---
 
 ## 6. NPC sospetti e tono da spettacolo
 
-Non tutti gli incontri quotidiani sono teneri o affidabili. Alcuni NPC usano
-formule che segnalano performance, auto-presentazione e poca credibilità.
+Non tutti gli incontri quotidiani sono teneri o affidabili. Alcuni NPC si presentano con formule teatrali, promesse troppo brillanti o etichette che il testo tiene a distanza. Qui il giapponese ti insegna a leggere non solo ciò che viene offerto, ma quanto quella presentazione merita fiducia.
 
-[{{自称|じしょう}}](term:term-v760-jishou) combina `{{自|じ}}` "sé" e
-`{{称|しょう}}` "chiamare / denominare": qualcuno si definisce da solo in un
-certo modo. In italiano "sedicente" rende bene il sospetto implicito, perché il
-testo non conferma davvero quell'identità.
-
-[あやしい](term:term-v761-ayashii) copre "sospetto", "losco", "poco chiaro".
-Può riferirsi a una persona, a un'offerta o a un servizio. Se appare vicino a
-un invito troppo entusiasta, prepara una lettura prudente della scena.
-
-[なんということでしょう](term:term-e112-nantoiukotodeshou) è una formula
-esclamativa teatrale: letteralmente qualcosa come "che cosa mai è questa cosa?".
-Nel parlato dà effetto da presentatore o da reazione esagerata, non una domanda
-normale a cui rispondere.
+*   [{{自称|じしょう}}](term:term-v760-jishou) combina `{{自|じ}}` "sé" e `{{称|しょう}}` "chiamare / denominare": qualcuno si definisce da solo in un certo modo. In italiano "sedicente" funziona bene perché contiene già un dubbio: il testo riporta l'etichetta, ma non la conferma.
+*   [あやしい](term:term-v761-ayashii) copre "sospetto", "losco", "poco chiaro". Può modificare una persona, un servizio o un'offerta. Se appare vicino a un invito troppo cortese o troppo entusiasta, prepara una lettura prudente della scena.
+*   [なんということでしょう](term:term-e112-nantoiukotodeshou) è una formula esclamativa teatrale: letteralmente suona come "che cosa mai è questa cosa?". Nel parlato dà effetto da presentatore o reazione esagerata; non è una domanda normale a cui il giocatore deve rispondere.
 
 :::example_sentence
 jp: >-
@@ -305,19 +242,20 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{自称|じしょう}}` -> mette distanza dall'etichetta: è così che l'NPC si
-  presenta, non necessariamente ciò che è davvero.
-- `スマホ{{占|うらな}}い` -> composto misto: smartphone + divinazione.
-- `いかがですか` -> invito cortese a valutare l'offerta, più morbido di un
-  comando.
+*   `{{自称|じしょう}}` ➔ **Etichetta presa con distanza**: l'NPC si presenta così, ma la frase non garantisce che sia affidabile.
+*   `スマホ{{占|うらな}}い` ➔ **Composto misto**: smartphone più divinazione, quindi un servizio presentato come moderno e un po' teatrale.
+*   `は` ➔ **Tema dell'offerta**: mette il servizio sul tavolo come proposta da valutare.
+*   `いかがですか` ➔ **Invito cortese**: chiede "che ne dici?" in modo morbido, più da venditore o presentatore che da comando di sistema.
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** [あやしい](term:term-v761-ayashii) non significa
-> solo "strano". Se modifica una persona o un servizio, aggiunge dubbio sulla
-> fiducia: puoi aspettarti che il testo giochi su ambiguità, truffa leggera o
-> presentazione poco credibile.
+#### ⚖️ Contrasto
+
+[あやしい](term:term-v761-ayashii) non significa solo "strano". Se modifica una persona o un servizio, aggiunge dubbio sulla fiducia: puoi aspettarti ambiguità, piccola truffa, esagerazione o una presentazione volutamente poco credibile.
+
+---
 
 ## Esempi guidati di riepilogo
+
+Le stesse forme diventano più solide quando si combinano: una rotta consigliata può restare provvisoria, un ritorno può essere solo possibile, un condimento può nascere da un'idea improvvisa e una proposta cortese può suonare sospetta.
 
 :::example_sentence
 jp: >-
@@ -352,10 +290,4 @@ translation_it: >-
 
 ## Nota finale
 
-Nelle scene quotidiane di Paldea, le parole piccole decidono il tono della
-lettura: [とりあえず](term:term-e109-toriaezu) rende provvisorio un piano,
-[{{戻|もど}}れる](term:term-v746-modoreru) apre una possibilità di ritorno,
-[おすそわけ](term:term-v758-osusowake) trasforma un eccesso in condivisione,
-[なかよし](term:term-v754-nakayoshi) misura la vicinanza con il team, mentre
-[{{自称|じしょう}}](term:term-v760-jishou) e [あやしい](term:term-v761-ayashii)
-ti avvisano che l'incontro va letto con cautela.
+Nelle scene quotidiane di Paldea, le parole piccole decidono il tono della lettura: [とりあえず](term:term-e109-toriaezu) rende provvisorio un piano, [{{戻|もど}}れる](term:term-v746-modoreru) apre una possibilità di ritorno, [おすそわけ](term:term-v758-osusowake) trasforma un eccesso in condivisione, [なかよし](term:term-v754-nakayoshi) misura la vicinanza con il team, mentre [{{自称|じしょう}}](term:term-v760-jishou) e [あやしい](term:term-v761-ayashii) ti avvisano che l'incontro va letto con cautela.
