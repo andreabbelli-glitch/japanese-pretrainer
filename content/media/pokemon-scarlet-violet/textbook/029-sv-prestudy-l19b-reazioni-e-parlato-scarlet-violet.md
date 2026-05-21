@@ -138,7 +138,7 @@ translation_it: >-
 Il bello del giapponese nei media sta nel saper cogliere le relazioni tra i personaggi attraverso la grammatica.
 
 ### A. Esprimere desideri personali: `～てほしい`
-Quando un personaggio (es. Nemona o Pepe) vuole che tu faccia qualcosa per lui, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in `-te` del verbo + `ほしい`** (desiderabile).
+Quando un personaggio (es. Nemona o Pepe) vuole che tu faccia qualcosa, o desidera che qualcuno faccia qualcosa, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in `-te` del verbo + `ほしい`** (desiderabile).
 
 :::example_sentence
 jp: >-
@@ -154,7 +154,7 @@ translation_it: >-
 *   *Senso letterale:* *"Riguardo a questo, l'uso da parte tua è desiderabile per me"*.
 
 ### B. Suggerimenti gentili: `～てみて`
-Quando qualcuno ti invita calorosamente a fare un tentativo, usa la struttura **Vて + みて**: si prende la forma in `-te` di qualsiasi verbo e si aggiunge `みて` (forma esortativa di `みる`, *provare a fare*). Con i verbi in `〜する` il risultato è [〜してみて](term:term-e053-shitemite), ma il pattern vale per ogni verbo (es. `使ってみて`, `食べてみて`).
+Quando qualcuno ti invita calorosamente a fare un tentativo, usa la struttura **Vて + みて**: si prende la forma in `-te` di qualsiasi verbo e si aggiunge `みて`, cioè la forma in `-te` di `みる` nel pattern `Vてみる` (*provare a fare V*). Quando chiude la frase, `Vてみて` funziona come invito o richiesta informale. Con i verbi in `〜する` il risultato è [〜してみて](term:term-e053-shitemite), ma il pattern vale per ogni verbo (es. `使ってみて`, `食べてみて`).
 
 :::example_sentence
 jp: >-
@@ -185,11 +185,11 @@ La parola [せっかく](term:term-v270-sekkaku) è un tesoro della lingua giapp
 ### D. Impegni e Constatazioni colloquiali
 
 *   [約束](term:term-v271-yakusoku) (**Promessa / Appuntamento**): Molto comune nei dialoghi in cui i personaggi stringono un patto (es. *"Promettimi che verrai a テーブルシティ"*). `約束する` trasforma la parola in azione attiva.
-*   [～な / ～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) (**Eh / proprio... / vedo che...**): Finale colloquiale e riflessiva. Con i verbi e gli aggettivi in `い` si usa direttamente `な` (`このジムはむずかしいな` ➔ *"Questa palestra è proprio difficile, eh"*); dopo nomi e aggettivi in `な` compare spesso `だな` (`静かだな`, `先生だな`). Il parlante non sta facendo una domanda diretta: sta pensando ad alta voce o constatando un fatto evidente davanti a lui.
+*   [～な / ～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) (**Eh / proprio... / vedo che...**): Finale colloquiale e riflessiva. Dopo aggettivi in `い` si usa direttamente `な` (`このジムはむずかしいな` ➔ *"Questa palestra è proprio difficile, eh"*); dopo nomi e aggettivi in `な` compare spesso `だな` (`静かだな`, `先生だな`). Con i verbi, invece, serve più attenzione: `な` può essere osservativo in certi contesti, ma dopo una forma del dizionario può anche diventare proibitivo. Il parlante non sta facendo una domanda diretta: sta pensando ad alta voce o constatando un fatto evidente davanti a lui.
 
 > [!WARNING]
 > **⚠️ Attenzione: `Vるな` può essere proibitivo**
-> Quando `な` segue la forma del dizionario di un verbo (`行くな`, `食べるな`), il significato può essere completamente diverso: **"non fare V!"** (proibizione secca, tipica del parlato maschile brusco). In testo scritto senza audio, solo il contesto disambigua. Dopo aggettivi in `い` (`むずかしいな`) o dopo `だ` (`先生だな`) non c'è ambiguità: è sempre osservativo.
+> Quando `な` segue la forma del dizionario di un verbo (`行くな`, `食べるな`), il significato può essere completamente diverso: **"non fare V!"** (proibizione secca, tipica del parlato maschile brusco). In testo scritto senza audio, solo il contesto disambigua. Dopo aggettivi in `い` (`むずかしいな`) o dopo `だ` (`先生だな`) la lettura è invece osservativa.
 
 ---
 

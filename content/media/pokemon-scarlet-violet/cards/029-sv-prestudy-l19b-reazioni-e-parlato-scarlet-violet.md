@@ -102,10 +102,11 @@ meaning_it: commento o constatazione colloquiale
 aliases:
 - finali di frase よ / ね / な
 notes_it: >-
-  Finale di frase colloquiale, spesso maschile. Con verbi e aggettivi in い si
-  usa な; dopo nomi e aggettivi in な compare spesso だな. Serve per commentare
-  ciò che si vede o si pensa in quel momento: "eh", "vedo che...", "proprio...".
-  Non è una domanda vera.
+  Finale di frase colloquiale, spesso maschile. Dopo aggettivi in い si usa な;
+  dopo nomi e aggettivi in な compare spesso だな. Con i verbi serve attenzione:
+  な può essere osservativo in certi contesti, ma dopo una forma del dizionario
+  può anche essere proibitivo. Serve per commentare ciò che si vede o si pensa in
+  quel momento: "eh", "vedo che...", "proprio...". Non è una domanda vera.
 :::
 :::card
 id: card-g056-finale-maschile-riflessiva-osservativa-concept
