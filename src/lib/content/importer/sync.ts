@@ -35,6 +35,8 @@ import type {
   MediaImportPlan
 } from "./types.ts";
 
+const LESSON_CONTENT_UPSERT_CHUNK_SIZE = 10;
+
 type DatabaseTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]
 >[0];
@@ -339,22 +341,26 @@ async function applyMediaImportPlan(
     const existingLessonContents = new Map(
       input.existingState.lessonContents.map((row) => [row.lessonId, row])
     );
+    const lessonContentRows = input.plan.lessonContents.map((plan) => ({
+      ...prepareLessonContentRow(
+        existingLessonContents.get(plan.row.lessonId) ?? null,
+        plan.row
+      ),
+      lastImportId: input.importId
+    }));
 
-    await transaction
-      .insert(lessonContent)
-      .values(
-        input.plan.lessonContents.map((plan) => ({
-          ...prepareLessonContentRow(
-            existingLessonContents.get(plan.row.lessonId) ?? null,
-            plan.row
-          ),
-          lastImportId: input.importId
-        }))
-      )
-      .onConflictDoUpdate({
-        target: lessonContent.lessonId,
-        set: lessonContentUpsertSet
-      });
+    for (const chunk of chunkRows(
+      lessonContentRows,
+      LESSON_CONTENT_UPSERT_CHUNK_SIZE
+    )) {
+      await transaction
+        .insert(lessonContent)
+        .values(chunk)
+        .onConflictDoUpdate({
+          target: lessonContent.lessonId,
+          set: lessonContentUpsertSet
+        });
+    }
   }
 
   if (currentLessonIds.length > 0) {
@@ -777,6 +783,16 @@ function dedupeSummary(summary: ImportSyncSummary): ImportSyncSummary {
     prunedGrammarIds: [...new Set(summary.prunedGrammarIds)],
     prunedTermIds: [...new Set(summary.prunedTermIds)]
   };
+}
+
+function chunkRows<T>(rows: T[], chunkSize: number): T[][] {
+  const chunks: T[][] = [];
+
+  for (let index = 0; index < rows.length; index += chunkSize) {
+    chunks.push(rows.slice(index, index + chunkSize));
+  }
+
+  return chunks;
 }
 
 function excluded(column: string) {
