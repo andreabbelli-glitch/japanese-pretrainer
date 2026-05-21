@@ -18,13 +18,12 @@ summary: >-
   Leggere parlato e reazioni quando il gioco conferma, contrasta o sposta il
   focus: distinguere tono, luogo, scelta e conseguenza nella scena.
 ---
-# Obiettivo
 
-Capire il giapponese che compare in reazioni e parlato in Scarlet/Violet: parole operative, formule di dialogo e strutture che indicano ricezione, scelta, cautela e richiesta personale.
+# Reazioni e Parlato in Viaggio: Scuola, Battaglie e Connessioni
 
-## Contesto
+Nel mondo di *Pokémon Scarlet & Violet*, le interazioni non si limitano a menu astratti. Ogni dialogo, lezione scolastica o evento di sistema allena la tua capacità di leggere al volo intenzioni, comandi e sfumature di tono.
 
-Le forme qui distinguono tipo, avvertimento, ricezione, scelta e richiesta personale: フェアリー e はがね classificano battaglie, 注意 avverte, 受けとりました conferma ricezione, 選んでください chiede una scelta. テーブルシティ funziona come destinazione o luogo citato; le altre parole ti orientano fra ricette, comunicazione, risultati e promesse.
+In questa lezione analizzeremo **tutti i 23 elementi chiave** presenti nel tuo deck di studio. Impareremo a riconoscerli non come parole isolate, ma come pezzi di un sistema linguistico vivo, sbloccando ganci mentali per ciascuno di essi.
 
 ## Termini chiave
 
@@ -48,38 +47,67 @@ Le forme qui distinguono tipo, avvertimento, ricezione, scelta e richiesta perso
 
 ## Espressioni ricorrenti
 
-- [〜を 受けとりました！](term:term-e046-o-uketorimashita) — hai ricevuto …!
-- [〜を 選んでください](term:term-e047-o-erandekudasai) — seleziona …
+- [〜を 受けとりました！](term:term-e046-o-uketorimashita) — hai ricevuto ...!
+- [〜を 選んでください](term:term-e047-o-erandekudasai) — seleziona ...
 - [〜してみて](term:term-e053-shitemite) — prova a...
 
 ## Pattern grammaticali chiave
 
-- [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che) — voglio che… / mi piacerebbe che…
-- [～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) — finale maschile riflessiva / osservativa
+- [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che) — voglio che... / mi piacerebbe che...
+- [～な / ～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) — finale colloquiale riflessiva / osservativa
 
 ## Etichette da riconoscere
 
 - [テーブルシティ](term:term-v272-teeburushitei) — città centrale di Paldea
 
-## Spiegazione
+---
 
-Parole come [古代](term:term-v255-kodai), [フェアリー](term:term-v256-fearii) e [はがね](term:term-v257-hagane) ti dicono subito se il testo sta parlando di passato remoto, tipo folletto o tipo acciaio. Nei menu e nei dialoghi questi segnali bastano a capire quale voce o quale tipo stai guardando.
+## 1. La Cornice Scolastica ed Esplorativa: Avventure a Paldea
 
-Nelle schermate di ricompensa o crafting, [レシピ](term:term-v264-reshipi) è la procedura che ricevi o sblocchi; [全部](term:term-v266-zenbu) allarga la scelta all'intero insieme. Se la riga dice 全部選んでください, il punto non è una descrizione generica: il menu ti sta chiedendo di selezionare tutto.
+Il tuo viaggio a Paldea si divide tra i banchi dell'Accademia e l'esplorazione selvaggia.
 
-Quando una scena passa a funzioni locali o online, [通信](term:term-v267-tsuushin) segnala comunicazione o connessione, mentre [約束](term:term-v271-yakusoku) indica un impegno preso in dialogo. Insieme a [テーブルシティ](term:term-v272-teeburushitei), questi termini ti dicono se la battuta parla di un luogo da raggiungere, di uno scambio fra giocatori o di una promessa fra personaggi.
+*   [家庭科](term:term-v263-kateika) (**Economia Domestica**): Composto da `家庭` (*katei*, famiglia/casa) e `科` (*ka*, corso/materia). All'Accademia, indica la classe in cui impari a preparare i panini e a gestire le risorse. Quando vedi [家庭科](term:term-v263-kateika), preparati a dialoghi legati a ingredienti, cibo e relazioni domestiche.
+*   [なみのり](term:term-v260-naminori) (**Surf / Nuoto sull'acqua**): Letteralmente "cavalcare le onde" (`波` *nami*, onda + `乗り` *nori*, cavalcare/salire a bordo). È il nome storico della mossa *Surf* e indica l'abilità della tua cavalcatura (Koraidon o Miraidon) di muoversi sull'acqua. Se leggi [なみのり](term:term-v260-naminori) in un tutorial, il gioco ti sta spiegando come superare fiumi o specchi di mare.
+*   [味方](term:term-v258-mikata) e [古代](term:term-v255-kodai):
+    *   [味方](term:term-v258-mikata) (**Alleato / Compagno**): Indica chi combatte dalla tua parte (es. nei Raid Terastal).
+        *   🧠 **Gancio Cognitivo:** Pensa a `味` come "gusto/fazione" e `方` come "direzione/persona". Chi condivide la tua stessa direzione è il tuo [味方](term:term-v258-mikata) (alleato). Contrasta direttamente con `相手` (*aite*, avversario).
+    *   [古代](term:term-v255-kodai) (**Antichità / Passato remoto**): Composto da `古` (*vecchio*) e `代` (*era/generazione*). In *Pokémon Violet* sentirai parlare di futuro, ma in *Pokémon Scarlet* sentirai costantemente nominare i [古代](term:term-v255-kodai)のポケモン (i Pokémon del passato remoto, o Pokémon Paradosso del passato).
 
-Per leggere conseguenze e tono della scelta, [結果](term:term-v269-kekka) è l'esito che viene mostrato dopo una prova, e [せっかく](term:term-v270-sekkaku) introduce l'idea di sfruttare un'occasione già ottenuta. せっかくなので prepara spesso una proposta: "già che ci siamo, proviamo a farlo".
+---
 
-Nei tipi di battaglia, [ひこう](term:term-v265-hikou) e [かくとう](term:term-v273-kakutou) funzionano come フェアリー e はがね: sono categorie tecniche. [普通](term:term-v268-futsuu), invece, è il "normale" del parlato o di una valutazione generale; non va confuso con il tipo ノーマル in katakana.
+## 2. I Tipi Elementali e la Cautela in Battaglia
 
-Le espressioni come [〜を 受けとりました！](term:term-e046-o-uketorimashita), [〜を 選んでください](term:term-e047-o-erandekudasai) e [〜してみて](term:term-e053-shitemite) indicano rispettivamente una ricezione, una selezione obbligata e una prova da fare. Qui non servono come formule astratte: ti dicono se la schermata ti sta consegnando qualcosa, ti sta chiedendo una scelta o ti sta invitando a tentare un'azione.
+Per trionfare nelle palestre, devi riconoscere al volo i tipi dei Pokémon e le condizioni delle mosse.
 
-Sul piano grammaticale, [〜てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che) esprime che il parlante vuole che qualcuno faccia qualcosa; [〜だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) chiude la frase con una constatazione o un commento colloquiale. Quando compaiono, il punto non è la regola in astratto ma il tono della frase: richiesta personale da una parte, riflessione o nota finale dall'altra.
+*   [フェアリー](term:term-v256-fearii) (**Folletto**): Traslitterazione in Katakana dell'inglese *Fairy*.
+*   [はがね](term:term-v257-hagane) (**Acciaio**): Scritto rigorosamente in Hiragana nei testi di gioco per renderlo accessibile ai lettori più giovani. Rappresenta una delle categorie difensive più forti.
+*   [ひこう](term:term-v265-hikou) (**Volo**): Il tipo Volante.
+*   [かくとう](term:term-v273-kakutou) (**Lotta**): Il tipo Lotta.
 
-[テーブルシティ](term:term-v272-teeburushitei) è un toponimo: テーブルシティ non va letto come descrizione di un tavolo, ma come nome della città centrale di Paldea. In una riga di destinazione o in un dialogo, segnala il luogo verso cui andare o di cui si sta parlando.
+Quando affronti sfide impegnative, il sistema o i personaggi ti daranno avvisi precisi usando:
 
-## Esempi guidati
+*   [注意](term:term-v261-chuui) (**Attenzione / Cautela**): Composto da `注` (*versare*) e `意` (*mente/intenzione*). Lo troverai spesso nei messaggi di pericolo o nelle istruzioni operative.
+    *   🧠 **Gancio Cognitivo:** Immagina di *"versare la propria mente su qualcosa"*: è un modo efficace per ricordare che [注意](term:term-v261-chuui) significa concentrare tutta l'attenzione su un punto preciso.
+*   [受ける](term:term-v262-ukeru) (**Ricevere / Sostenere**): È il verbo-base per descrivere chi subisce un'azione. In battaglia, non significa ricevere un regalo, ma subire un attacco o un effetto di stato (es. `はがねタイプのわざを受ける` ➔ subire una mossa di tipo Acciaio).
+
+> [!WARNING]
+> **⚖️ Contrasto Operativo: `普通` (Normale) vs `ノーマル` (Tipo Normale)**
+> *   [普通](term:term-v268-futsuu) significa "comune", "normale", "ordinario" nel linguaggio di tutti i giorni (es. *"Di solito le cose vanno così"*).
+> *   Per indicare il tipo elementale dei Pokémon, il gioco usa esclusivamente il Katakana **`ノーマル`**. Non confonderli!
+
+---
+
+## 3. Le Interfacce di Gioco: Ricevere, Selezionare e Connettersi
+
+Quando navighi nei menu, configuri il multiplayer o raccogli oggetti, il gioco comunica con formule stabili.
+
+*   [レシピ](term:term-v264-reshipi) (**Ricetta**): Le ricette dei panini che sblocchi durante il viaggio.
+*   [全部](term:term-v266-zenbu) (**Tutto**): Composto da `全` (*intero*) e `部` (*parte*). Indica la totalità senza esclusioni. Lo trovi nei menu di acquisto o di selezione multipla.
+*   [通信](term:term-v267-tsuushin) (**Connessione / Comunicazione**): Composto da `通` (*attraversare/trasmettere*) e `信` (*fiducia/informazione*). Qualsiasi funzione online (scambi, lotte in link, sblocchi wireless) è preceduta da questa parola.
+*   [結果](term:term-v269-kekka) (**Risultato / Esito**): Il responso finale dopo un test, una battaglia o una sessione all'Accademia.
+*   [テーブルシティ](term:term-v272-teeburushitei) (**Mesagoza / Mesapoli**): La grande metropoli al centro di Paldea, dove ha sede l'Accademia.
+
+Vediamo come si comportano queste parole nei messaggi operativi del sistema:
 
 :::example_sentence
 jp: >-
@@ -88,12 +116,29 @@ translation_it: >-
   Hai ricevuto la ricetta!
 :::
 
+#### 🗺️ Anatomia della Frase
+*   `レシピを` ➔ **Oggetto Diretto** (`レシピ` ricetta + `を` marca-oggetto ➔ *"...la ricetta..."*).
+*   `{{受|う}}けとりました` ➔ **Azione Conclusa** (Verbo composto da `受ける` *ricevere* + `取る` *prendere*, coniugato al passato cortese `～ました` ➔ *"...ha preso in consegna / ha ricevuto"*). Il sistema usa questa formula [〜を 受けとりました！](term:term-e046-o-uketorimashita) ogni volta che un oggetto o un panino entra nell'inventario.
+
 :::example_sentence
 jp: >-
   ポケモンを {{選|えら}}んでください。
 translation_it: >-
   Seleziona un Pokémon.
 :::
+
+#### 🗺️ Anatomia della Frase
+*   `ポケモンを` ➔ **Oggetto della Scelta** (`ポケモン` + `を`).
+*   `{{選|えら}}んでください` ➔ **Istruzione Cortese** (Verbo `選ぶ` *scegliere* nella forma in `-te` `選んで` + `ください` *per favore* ➔ *"...seleziona per favore"*). Questa espressione [〜を 選んでください](term:term-e047-o-erandekudasai) governa tutte le schermate in cui il gioco attende una tua selezione.
+
+---
+
+## 4. Le Sfumature del Parlato: Richieste ed Emozioni nei Dialoghi
+
+Il bello del giapponese nei media sta nel saper cogliere le relazioni tra i personaggi attraverso la grammatica.
+
+### A. Esprimere desideri personali: `～てほしい`
+Quando un personaggio (es. Nemona o Pepe) vuole che tu faccia qualcosa per lui, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in `-te` del verbo + `ほしい`** (desiderabile).
 
 :::example_sentence
 jp: >-
@@ -102,6 +147,15 @@ translation_it: >-
   Vorrei che usassi questo.
 :::
 
+#### 🗺️ Anatomia della Frase
+*   `これを` ➔ **Oggetto** (*"questo"* + `を`).
+*   `{{使|つか}}って` ➔ **Forma in `-te`** del verbo `使う` (*usare*).
+*   `ほしい` ➔ **Desiderio** (*"voglio/desidero"*).
+*   *Senso letterale:* *"Riguardo a questo, l'uso da parte tua è desiderabile per me"*.
+
+### B. Suggerimenti gentili: `～してみて`
+Quando qualcuno ti invita calorosamente a fare un tentativo, usa [〜してみて](term:term-e053-shitemite). Deriva dal verbo `する` (*fare*) coniugato nella struttura `-te miru` (*provare a fare*), lasciata in forma piana ed esortativa.
+
 :::example_sentence
 jp: >-
   これも {{使|つか}}ってみて。
@@ -109,6 +163,66 @@ translation_it: >-
   Prova anche a usarlo.
 :::
 
+#### 🗺️ Anatomia della Frase
+*   `これも` ➔ **Focus Esteso** (`これ` questo + `も` anche ➔ *"anche questo"*).
+*   `{{使|つか}}ってみて` ➔ **Tentativo Esortativo** (Verbo `使う` *usare* + `てみる` *provare a* ➔ `使ってみる` *provare a usare* ➔ contratto in `-te` finale `使ってみて` *prova a usarlo, dai!*).
+
+> [!NOTE]
+> **⚖️ Contrasto Grammaticale: `てほしい` (Voglio che tu...) vs `てみて` (Prova a...)**
+> *   `使ってほしい` ➔ Vorrei che tu usassi questo / voglio che tu lo usi (esprime un desiderio del parlante; l'intensità dipende dal contesto).
+> *   `使ってみて` ➔ È un consiglio amichevole nei tuoi confronti: *"dai, fai un tentativo e vedi come va!"*.
+
+---
+
+### C. La forza di un'occasione: `せっかく`
+La parola [せっかく](term:term-v270-sekkaku) è un tesoro della lingua giapponese. Esprime l'idea che, poiché è stato fatto un grande sforzo o si è presentata un'opportunità preziosa, **sarebbe un vero peccato sprecarla**.
+
+*   🧠 **Gancio Cognitivo:** Pensa a [せっかく](term:term-v270-sekkaku) come a un segnale che dice *"Visto che ci siamo adoperati così tanto / visto che ormai siamo qui..."*.
+    Nei dialoghi dei personaggi, sentirai spesso dire `せっかくなので` (*poiché si è presentata questa rara occasione...*) per proporre un'azione successiva (es. *"Visto che siamo arrivati fin qui, proviamo a fare una lotta!"*).
+
+---
+
+### D. Impegni e Constatazioni colloquiali
+
+*   [約束](term:term-v271-yakusoku) (**Promessa / Appuntamento**): Molto comune nei dialoghi in cui i personaggi stringono un patto (es. *"Promettimi che verrai a テーブルシティ"*). `約束する` trasforma la parola in azione attiva.
+*   [～な / ～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) (**Eh / proprio... / vedo che...**): Finale colloquiale e riflessiva. Con i verbi e gli aggettivi in `い` si usa direttamente `な` (`このジムはむずかしいな` ➔ *"Questa palestra è proprio difficile, eh"*); dopo nomi e aggettivi in `な` compare spesso `だな` (`静かだな`, `先生だな`). Il parlante non sta facendo una domanda diretta: sta pensando ad alta voce o constatando un fatto evidente davanti a lui.
+
+---
+
+## Esempi guidati di Riepilogo
+
+Assicuriamoci di consolidare l'uso integrato di queste parole con quattro frasi contestuali:
+
+:::example_sentence
+jp: >-
+  {{家庭科|かていか}}の {{授業|じゅぎょう}}で {{新|あたら}}しい レシピを {{受|う}}けとりました！
+translation_it: >-
+  Ho ricevuto una nuova ricetta nella lezione di economia domestica!
+:::
+
+:::example_sentence
+jp: >-
+  {{味方|みかた}}の ポケモンが はがねタイプの {{技|わざ}}を {{受|う}}ける。
+translation_it: >-
+  Il Pokémon alleato subisce una mossa di tipo Acciaio.
+:::
+
+:::example_sentence
+jp: >-
+  {{必要|ひつよう}}なものを {{全部|ぜんぶ}} {{選|えら}}んでください。
+translation_it: >-
+  Seleziona tutto ciò che serve.
+:::
+
+:::example_sentence
+jp: >-
+  せっかく テーブルシティに {{来|き}}たから、 {{通信|つうしん}}で {{対戦|たいせん}}してみて。
+translation_it: >-
+  Visto che sei arrivato fino a Mesapoli, prova a fare una lotta in connessione.
+:::
+
+---
+
 ## Nota finale
 
-Quando incontri queste schermate o battute, cerca il verbo: 受けとりました consegna qualcosa, 選んでください richiede una scelta, してみて invita a provare, てほしい formula una richiesta personale.
+Questa lezione unisce l'esplorazione sul campo e le notifiche di sistema. Per padroneggiare queste 23 carte, non cercare di impararle separatamente: ricorda che [家庭科](term:term-v263-kateika) sblocca i [レシピ](term:term-v264-reshipi), che i comandi di sistema usano [〜を 受けとりました！](term:term-e046-o-uketorimashita) e [〜を 選んでください](term:term-e047-o-erandekudasai), e che i personaggi esprimono i loro desideri personali con [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che) o ti consigliano prove amichevoli con [〜してみて](term:term-e053-shitemite). Buon viaggio a Paldea!

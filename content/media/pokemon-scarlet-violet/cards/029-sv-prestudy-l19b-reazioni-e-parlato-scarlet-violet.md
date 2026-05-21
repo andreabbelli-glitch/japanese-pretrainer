@@ -96,15 +96,16 @@ example_it: >-
 :::
 :::grammar
 id: grammar-g056-finale-maschile-riflessiva-osservativa
-pattern: ～だな
+pattern: ～な / ～だな
 title: Eh / vedo che... / proprio...
 meaning_it: commento o constatazione colloquiale
 aliases:
 - finali di frase よ / ね / な
 notes_it: >-
-  Finale di frase colloquiale, spesso maschile. Serve per commentare cio che si
-  vede o si pensa in quel momento: "eh", "vedo che...", "proprio...". Non e una
-  domanda vera.
+  Finale di frase colloquiale, spesso maschile. Con verbi e aggettivi in い si
+  usa な; dopo nomi e aggettivi in な compare spesso だな. Serve per commentare
+  ciò che si vede o si pensa in quel momento: "eh", "vedo che...", "proprio...".
+  Non è una domanda vera.
 :::
 :::card
 id: card-g056-finale-maschile-riflessiva-osservativa-concept
@@ -112,7 +113,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-029-sv-prestudy-l19b-reazio
 entry_type: grammar
 entry_id: grammar-g056-finale-maschile-riflessiva-osservativa
 card_type: concept
-front: '～だな'
+front: '～な / ～だな'
 back: commento o constatazione colloquiale
 example_jp: >-
   このジムは むずかしいな。
@@ -276,9 +277,9 @@ card_type: recognition
 front: '{{受|う}}ける'
 back: ricevere / sostenere
 example_jp: >-
-  {{注意|ちゅうい}}を {{受|う}}ける。
+  はがねタイプの わざを {{受|う}}ける。
 example_it: >-
-  Ricevere un avvertimento.
+  Subire una mossa di tipo Acciaio.
 :::
 :::term
 id: term-v263-kateika
@@ -296,7 +297,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-029-sv-prestudy-l19b-reazio
 entry_type: term
 entry_id: term-v263-kateika
 card_type: recognition
-front: '{{家庭科|か.てい.か}}'
+front: '{{家庭科|かていか}}'
 back: economia domestica
 example_jp: >-
   {{家庭科|かていか}}を {{受|う}}けます。
@@ -368,9 +369,9 @@ card_type: recognition
 front: '{{全部|ぜんぶ}}'
 back: tutto
 example_jp: >-
-  {{全部|ぜんぶ}} {{選|えら}}んでください。
+  {{必要|ひつよう}}なものを {{全部|ぜんぶ}} {{選|えら}}んでください。
 example_it: >-
-  Seleziona tutto.
+  Seleziona tutto ciò che serve.
 :::
 :::term
 id: term-v267-tsuushin
