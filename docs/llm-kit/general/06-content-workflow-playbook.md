@@ -166,6 +166,23 @@ La richiesta deve esplicitare:
   frase, contrasti operativi e ganci cognitivi dichiarati quando aiutano;
 - obbligo di seguire la sequenza meccanica attesa del body e la grammatica
   visiva dei blocchi quando il materiale lo permette;
+- obbligo di usare sentence case per H1 e heading italiani: non trasformare i
+  titoli in Title Case all'inglese;
+- obbligo di preservare i campi identitari del frontmatter (`id`, `media_id`,
+  `slug`, `order`, `segment_ref`, `difficulty`, `status`, `tags`,
+  `prerequisites`) durante una riscrittura editoriale, salvo richiesta
+  esplicita di migrazione;
+- obbligo di rendere learner-facing il `title` frontmatter se contiene label da
+  batch, seed o workflow;
+- obbligo di evitare furigana con puntini interni (`もく.てき.ち`) e ruby su
+  katakana puro; scomponi invece i composti in unita semantiche naturali e
+  lascia senza ruby parole come `ポケモン`, `デッキコード` o nomi katakana gia
+  leggibili;
+- obbligo di non spezzare kanji-per-kanji i composti lessicali naturali:
+  `{{言語|げんご}}{{学|がく}}`,
+  `{{課外|かがい}}{{授業|じゅぎょう}}`,
+  `{{興味|きょうみ}}{{深|ぶか}}い` sono piu reader-friendly di blocchi
+  sillabati kanji per kanji;
 - obbligo che il contenuto finale non parli del proprio processo editoriale o
   di studio ("questa lesson", "qui facciamo review", "per questo batch",
   "conviene fissare");
@@ -289,6 +306,16 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
   al posto del contenuto: niente "questa lesson", "per questo test", "cosa
   mandare in review", "conviene mettere in review", "corpus iniziale",
   "entry canonica", "card canoniche", "in questo seed";
+- non trattare pero come metadiscorso i termini reali del media: `デッキ`,
+  `デッキコード`, deckbuilder, review di una carta o UI simili sono ammessi se
+  appartengono alla scena o alla schermata;
+- verifica che H1 e heading italiani siano in sentence case, che il `title`
+  frontmatter non conservi label editoriali e che una riscrittura non abbia
+  cambiato i campi identitari del frontmatter;
+- verifica che i furigana non contengano letture puntinate, che i composti siano
+  segmentati in unita semantiche naturali e che il katakana puro non abbia ruby;
+- verifica anche che i composti lessicali non siano spezzati kanji-per-kanji
+  quando un blocco naturale sarebbe piu leggibile;
 - verifica che ogni `:::card` abbia `example_jp` e `example_it`, che
   `example_jp` sia una frase completa contestuale e che `example_it` traduca la
   stessa frase;
@@ -307,6 +334,10 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
   lista di definizioni, ma una spiegazione che accompagna il lettore nel media;
 - verifica che le frasi dense abbiano parsing o anatomia quando serve, e che i
   contrasti rischiosi siano espliciti;
+- se due esempi consecutivi insegnano pattern diversi, verifica che ciascuno
+  abbia la propria anatomia prima del contrasto o dell'esempio successivo;
+- se una lesson usa esempi didattici ricostruiti, verifica che siano naturali e
+  utili, ma non presentati come trascrizione esatta della scena se non lo sono;
 - verifica che i termini troppo verticali necessari alla comprensione o
   all'interazione corretta con il media siano spiegati nel textbook anche
   quando non diventano flashcard;
@@ -388,6 +419,8 @@ Dopo l'import verifica almeno:
 - che i link `term:` / `grammar:` verso entry con flashcard associata non
   lascino kanji nudi nei label, soprattutto in inventari, prime spiegazioni e
   riepiloghi.
+- che i furigana non usino letture puntinate e che il katakana puro resti senza
+  ruby anche nei blocchi immagine e nelle caption.
 
 ## Errori LLM piu comuni da aspettarsi
 

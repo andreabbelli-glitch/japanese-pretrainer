@@ -2,7 +2,7 @@
 id: lesson-web-giapponese-dmps-takaratomy-deckbuilder-create-or-code-input
 media_id: media-web-giapponese
 slug: 030-dmps-takaratomy-deckbuilder-create-or-code-input
-title: デッキ編成
+title: Creare o inserire un mazzo dal deckbuilder
 order: 30
 segment_ref: dmps-takaratomy-deckbuilder
 difficulty: n4
@@ -112,7 +112,7 @@ translation_it: >-
   Creare un mazzo nuovo da zero.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{新規|しんき}}で` -> modalità dell'azione: il mazzo nasce come elemento
   nuovo, non come recupero di una lista esistente.
@@ -162,7 +162,7 @@ translation_it: >-
   Inserire il codice del mazzo.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `デッキコードを` -> oggetto diretto: il valore da immettere è il codice del
   mazzo, non un nome libero.

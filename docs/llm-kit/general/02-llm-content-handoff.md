@@ -199,6 +199,11 @@ come scrivere:
 - ganci cognitivi dichiarati come mnemonici quando non sono etimologia reale.
 - sequenza meccanica del body e grammatica visiva dei blocchi quando il
   materiale lo permette.
+- H1 e heading italiani in sentence case, non Title Case all'inglese.
+- campi frontmatter identitari preservati nelle riscritture; `title` è invece
+  learner-facing e va reso naturale se contiene label da batch o workflow.
+- furigana senza puntini e senza ruby su katakana puro; composti spezzati in
+  blocchi semantici e letture verificate.
 
 Il modello di riferimento e:
 
@@ -236,6 +241,11 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
 - che ogni lesson textbook deve seguire lo standard di stile in
   `docs/llm-kit/general/10-textbook-lesson-style-standard.md`, con voce
   tutor-like, cluster tematici, anatomia della frase e contrasti operativi;
+- che gli H1 e heading italiani usano sentence case, non Title Case, salvo
+  nomi propri, acronimi e label ufficiali;
+- che nelle riscritture deve preservare `id`, `slug`, `order` e gli altri campi
+  identitari, ma deve rendere naturale il `title` frontmatter se contiene label
+  da batch, seed o workflow;
 - che le spiegazioni devono esplicitare significato reale + conseguenza concreta
   nel media;
 - che `notes_it` e paragrafi textbook non devono usare formule generiche come
@@ -293,7 +303,7 @@ Per ridurre i fallimenti di import:
 - `front` e `back` delle `:::card` non fanno eccezione: se contengono furigana
   o testo giapponese annotato, vanno serializzati in modo sicuro;
 - per lati flashcard corti e monoriga, il default consigliato e una stringa
-  quotata, per esempio `front: '{{手持ち|てもち}}'`;
+  quotata, per esempio `front: '{{手|て}}{{持|も}}ち'`;
 - non scrivere quindi `front: {{手持ち|てもち}}` o
   `front: ポケモン{{図鑑|ずかん}}` come plain scalar;
 - **i furigana `{{kanji|kana}}` e i term link funzionano anche dentro i blocchi di codice inline (i backtick ` `), usali e mappali sempre**: es. `` `{{相手|あいて}}のクリーチャー` `` anziché `` `相手のクリーチャー` ``.
@@ -320,6 +330,21 @@ Per ridurre i fallimenti di import:
   `{{受|う}}け{{取|と}}る`, `{{手|て}}{{持|も}}ち`, `メイン{{枠|わく}}`,
   `{{2|ふた}}つ`, non `{{受け取る|うけとる}}`, `{{手持ち|てもち}}`,
   `{{メイン枠|めいんわく}}`, `{{2つ|ふたつ}}`.
+- **non usare puntini dentro le letture dei ruby**: scrivi
+  `{{目的|もくてき}}{{地|ち}}`, `{{課外|かがい}}{{授業|じゅぎょう}}`,
+  `{{学生|がくせい}}{{寮|りょう}}`, non `{{目的地|もく.てき.ち}}`,
+  `{{課外授業|か.がい.じゅ.ぎょう}}` o
+  `{{学生寮|がく.せい.りょう}}`.
+- **non spezzare i composti lessicali kanji-per-kanji** quando il blocco
+  naturale e piu leggibile: scrivi `{{言語|げんご}}{{学|がく}}`,
+  `{{課外|かがい}}{{授業|じゅぎょう}}`,
+  `{{興味|きょうみ}}{{深|ぶか}}い`, non
+  `{{言|げん}}{{語|ご}}{{学|がく}}`,
+  `{{課|か}}{{外|がい}}{{授|じゅ}}{{業|ぎょう}}` o
+  `{{興|きょう}}{{味|み}}{{深|ぶか}}い`.
+- **non mettere furigana su katakana puro**: `ポケモン`,
+  `チャンピオンランク`, `デッキコード` e simili possono essere linkati se
+  hanno un'entry, ma restano senza ruby.
 - **i campi audio sono opzionali ma reali**: se non ricevi un asset locale gia
   esistente e metadata attendibili, non scriverli.
 
@@ -386,7 +411,8 @@ Evita quindi formule come:
   diventa l'archivio progressivo delle carte che incontro davvero durante il
   gioco.`
 - `Il punto piu importante non e la keyword offensiva in se, ma il blocco
-  タップ状態でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo
+  タップ{{状態|じょうたい}}でいたら: qui non basta sapere cos'e タップ,
+  bisogna riconoscere lo
   stato gia presente nel momento del controllo.`
 
 Se una fonte ufficiale serve, usala per confermare un testo o una regola, ma
@@ -497,10 +523,12 @@ Vincoli obbligatori:
   direttamente nel label: `[{{単語|たんご}}](term:term-id)`.
 - Se il link punta a una entry con flashcard associata, questa non e opzionale:
   il textbook deve mostrare la stessa leggibilita della review surface.
-- Quando c'e un numero con contatore o qualificatore (`以下`, `以上`, `未満`,
-  ecc.), annota il blocco completo con la pronuncia corretta del chunk intero:
-  `{{1枚|いちまい}}`, `{{1体|いったい}}`, `{{2つ|ふたつ}}`,
-  `{{2回|にかい}}`, `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`.
+- Annota tutti i numeri visibili con la lettura corretta. Quando c'e un numero
+  con contatore o qualificatore (`以下`, `以上`, `未満`, ecc.), annota i
+  segmenti necessari con la pronuncia corretta verificata:
+  `{{1枚|いちまい}}`, `{{1体|いったい}}`, `{{2|ふた}}つ`,
+  `{{2回|にかい}}`, `{{4以下|よんいか}}`,
+  `{{4|よっ}}つ{{以上|いじょう}}`.
 - Non scrivere `1{{枚|まい}}`, `4{{以下|いか}}` o
   `{{4つ|よっつ}}{{以上|いじょう}}`, e non indovinare le letture dei
   contatori per composizione.
@@ -552,6 +580,11 @@ Vincoli obbligatori:
 - Non scrivere meta-discorso nel contenuto finale: niente "questa lesson",
   "qui facciamo review", "per questo batch", "conviene fissare" o "verifica
   ufficiale" come contenuto principale della spiegazione.
+- Il divieto non riguarda termini reali del media: se la UI parla di deck,
+  deckbuilder o `デッキコード`, spiega quel testo. Evita invece deck di studio,
+  flashcard, review, batch e workflow come metadiscorso.
+- Gli esempi possono essere frasi didattiche costruite sul contesto, ma non
+  presentarli come transcript ufficiali se non sono citazioni puntuali.
 - Non scrivere nemmeno frasi come:
   `Da qui in poi questa pagina non e piu una monografia...`
   `Il punto piu importante non e la keyword offensiva in se...`

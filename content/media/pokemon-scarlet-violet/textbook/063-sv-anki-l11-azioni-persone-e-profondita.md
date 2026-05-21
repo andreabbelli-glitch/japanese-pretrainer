@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-persone-e-profondita
 media_id: media-pokemon-scarlet-violet
 slug: 063-sv-anki-l11-azioni-persone-e-profondita
-title: SV Anki L11 - Azioni, persone e profondità
+title: Azioni, persone e profondità nei dialoghi di Paldea
 order: 93
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -14,7 +14,7 @@ summary: >-
   chi viene nominato e quale scena diventa minacciosa o professionale.
 ---
 
-# Azioni, Persone e Profondità nei Dialoghi di Paldea
+# Azioni, persone e profondità nei dialoghi di Paldea
 
 In *Pokémon Scarlet & Violet* molte frasi brevi fanno più lavoro di quanto sembri: un oggetto passa di mano, una mossa va a segno, una persona viene indicata senza nome, una zona viene presentata come il punto più profondo dell'esplorazione.
 
@@ -24,7 +24,7 @@ Qui il giapponese non è una lista di parole isolate. [{{渡|わた}}す](term:t
 
 - [{{渡|わた}}す](term:term-anki-l11-watasu) — consegnare; passare
 - [{{当|あ}}たる](term:term-anki-l11-ataru) — colpire; indovinare
-- [{{彼|かの}}{{女|じょ}}](term:term-anki-l11-kanojo) — lei; fidanzata
+- [{{彼女|かのじょ}}](term:term-anki-l11-kanojo) — lei; fidanzata
 - [{{怖|こわ}}い](term:term-anki-l11-kowai) — spaventoso; pauroso
 - [あの{{子|こ}}](term:term-anki-l11-anoko) — quel ragazzo/quella ragazza
 - [もう{{一|いち}}{{度|ど}}](term:term-anki-l11-mouichido) — ancora una volta
@@ -75,20 +75,20 @@ translation_it: >-
 
 ## 2. Parlare di persone senza nominarle
 
-[{{彼|かの}}{{女|じょ}}](term:term-anki-l11-kanojo) può voler dire "lei" oppure "fidanzata", ma in giapponese non funziona come un pronome italiano da usare a ogni frase. Se il nome è noto, i personaggi tendono a ripetere il nome o usare un suffisso; [{{彼|かの}}{{女|じょ}}](term:term-anki-l11-kanojo) compare quando la frase prende un tono più narrativo, generico o quando la relazione "la ragazza / lei" conta più del nome.
+[{{彼女|かのじょ}}](term:term-anki-l11-kanojo) può voler dire "lei" oppure "fidanzata", ma in giapponese non funziona come un pronome italiano da usare a ogni frase. Se il nome è noto, i personaggi tendono a ripetere il nome o usare un suffisso; [{{彼女|かのじょ}}](term:term-anki-l11-kanojo) compare quando la frase prende un tono più narrativo, generico o quando la relazione "la ragazza / lei" conta più del nome.
 
 [あの{{子|こ}}](term:term-anki-l11-anoko) è più colloquiale e situazionale: `あの` indica "quella", `{{子|こ}}` letteralmente "bambino / ragazzo / ragazza", ma nel parlato può riferirsi a una persona giovane, a uno studente o a qualcuno verso cui il parlante guarda con familiarità. In una scuola o davanti a un Capopalestra, il tono non è neutro da scheda anagrafica: c'è distanza, affetto o benevola superiorità.
 
 :::example_sentence
 jp: >-
-  {{彼|かの}}{{女|じょ}}は いつも ポケモンバトルを したがっている。
+  {{彼女|かのじょ}}は いつも ポケモンバトルを したがっている。
 translation_it: >-
   Lei ha sempre voglia di lottare con i Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{彼|かの}}{{女|じょ}}は` -> stabilisce "lei" come tema della frase; il nome resta fuori perché il focus è sul suo comportamento.
+- `{{彼女|かのじょ}}は` -> stabilisce "lei" come tema della frase; il nome resta fuori perché il focus è sul suo comportamento.
 - `いつも` -> frequenza abituale, "sempre".
 - `ポケモンバトルを したがっている` -> descrive dall'esterno un desiderio osservabile: sembra volere continuamente una lotta.
 
@@ -100,7 +100,7 @@ translation_it: >-
 :::
 
 > [!NOTE]
-> **⚖️ Contrasto operativo:** [{{彼|かの}}{{女|じょ}}](term:term-anki-l11-kanojo) suona più pronominale o narrativo; [あの{{子|こ}}](term:term-anki-l11-anoko) punta una persona nella scena, spesso con tono colloquiale. Se un insegnante dice [あの{{子|こ}}](term:term-anki-l11-anoko), non sta necessariamente parlando di un bambino: sta trattando quella persona come "quel ragazzo / quella ragazza" nel proprio campo sociale.
+> **⚖️ Contrasto operativo:** [{{彼女|かのじょ}}](term:term-anki-l11-kanojo) suona più pronominale o narrativo; [あの{{子|こ}}](term:term-anki-l11-anoko) punta una persona nella scena, spesso con tono colloquiale. Se un insegnante dice [あの{{子|こ}}](term:term-anki-l11-anoko), non sta necessariamente parlando di un bambino: sta trattando quella persona come "quel ragazzo / quella ragazza" nel proprio campo sociale.
 
 ## 3. Ripetizione, libri strani e nomi stabiliti
 
@@ -183,7 +183,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  あの{{子|こ}}は {{彼|かの}}{{女|じょ}}の ことを よく {{知|し}}っている。
+  あの{{子|こ}}は {{彼女|かのじょ}}の ことを よく {{知|し}}っている。
 translation_it: >-
   Quel ragazzo conosce bene le cose che riguardano lei.
 :::
@@ -197,11 +197,11 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{怖|こわ}}い ポケモンに わざが {{当|あ}}たると、それも {{仕|し}}{{事|ごと}}の {{一|ひと}}つ だと {{言|い}}う。
+  {{怖|こわ}}い ポケモンにも わざが {{当|あ}}たった。ジムリーダーの {{仕|し}}{{事|ごと}}は まだ {{終|お}}わらない。
 translation_it: >-
-  Quando la mossa colpisce un Pokémon spaventoso, dice che anche quello è una parte del lavoro.
+  La mossa ha colpito anche un Pokémon spaventoso. Il lavoro del Capopalestra non è ancora finito.
 :::
 
 ## Nota finale
 
-[{{渡|わた}}す](term:term-anki-l11-watasu), [{{当|あ}}たる](term:term-anki-l11-ataru) e [{{呼|よ}}ばれる](term:term-anki-l11-yobareru) ti dicono che tipo di movimento sta facendo la frase: trasferire, centrare, nominare. [{{彼|かの}}{{女|じょ}}](term:term-anki-l11-kanojo) e [あの{{子|こ}}](term:term-anki-l11-anoko) regolano il modo in cui una persona entra nel dialogo; [{{怖|こわ}}い](term:term-anki-l11-kowai), [{{最|さい}}{{深|しん}}{{部|ぶ}}](term:term-anki-l11-saishinbu) e [{{仕|し}}{{事|ごと}}](term:term-anki-l11-shigoto) colorano la scena come minaccia, luogo finale o responsabilità quotidiana.
+[{{渡|わた}}す](term:term-anki-l11-watasu), [{{当|あ}}たる](term:term-anki-l11-ataru) e [{{呼|よ}}ばれる](term:term-anki-l11-yobareru) ti dicono che tipo di movimento sta facendo la frase: trasferire, centrare, nominare. [{{彼女|かのじょ}}](term:term-anki-l11-kanojo) e [あの{{子|こ}}](term:term-anki-l11-anoko) regolano il modo in cui una persona entra nel dialogo; [{{怖|こわ}}い](term:term-anki-l11-kowai), [{{最|さい}}{{深|しん}}{{部|ぶ}}](term:term-anki-l11-saishinbu) e [{{仕|し}}{{事|ごと}}](term:term-anki-l11-shigoto) colorano la scena come minaccia, luogo finale o responsabilità quotidiana.

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
 media_id: media-pokemon-scarlet-violet
 slug: 105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
-title: "Scarlet / Violet Story 105 - Prologo 5: dormitorio, Treasure Hunt e obiettivi di viaggio"
+title: "Dal dormitorio al Treasure Hunt: la scuola apre Paldea"
 order: 150
 segment_ref: scarlet-violet-story
 difficulty: custom
@@ -78,7 +78,7 @@ translation_it: >-
   Il giorno dopo aver riposato nel dormitorio, comincia la lezione sul campo.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{学生|がくせい}}{{寮|りょう}}で` -> luogo dell'azione: `で` marca il posto in cui avviene il riposo.
 - `{{休|やす}}んだ {{翌日|よくじつ}}` -> "il giorno seguente al riposo": il verbo al passato modifica `{{翌日|よくじつ}}`.
@@ -121,7 +121,7 @@ translation_it: >-
   solo dei forzieri.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{宝|たから}}{{探|さが}}しとは いっても` -> prende il nome appena introdotto e lo ridimensiona: "anche se lo chiamiamo così...".
 - `{{宝箱|たからばこ}}だけを` -> `だけ` restringe il bersaglio a "solo forzieri"; `を` lo marca come oggetto di `{{探|さが}}す`.
@@ -136,7 +136,7 @@ translation_it: >-
   in difficoltà.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{宝|たから}}{{探|さが}}しでは` -> `では` imposta il contesto: "nel quadro del Treasure Hunt".
 - `ジムに {{挑戦|ちょうせん}}したり` -> prima azione esemplificativa; `ジムに` marca il bersaglio della sfida.
@@ -170,7 +170,7 @@ translation_it: >-
   Lega Pokemon.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `チャンピオンランクってのは` -> definizione colloquiale: il termine viene messo a tema e poi spiegato.
 - `ポケモンリーグに {{認|みと}}められた` -> passivo: la Lega è l'ente che riconosce il trainer.
@@ -184,7 +184,7 @@ translation_it: >-
   Non basta frequentare le lezioni: devi anche raccogliere le Medaglie Palestra.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{授業|じゅぎょう}}を {{受|う}}けるだけ` -> "limitarsi a frequentare lezioni": `だけ` riduce l'azione a una sola condizione.
 - `じゃ ダメで` -> [～だけじゃ ダメ](grammar:grammar-dake-ja-dame) nega la sufficienza di quella condizione.
@@ -225,7 +225,7 @@ translation_it: >-
   Proviamo a registrare una destinazione sulla mappa del Rotom Phone.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `スマホロトムの マップで` -> `で` marca lo strumento o contesto operativo: la mappa dentro lo Smart Rotom.
 - `{{目的|もくてき}}{{地|ち}}を` -> oggetto dell'azione: il punto da fissare.
@@ -239,7 +239,7 @@ translation_it: >-
   Se decidi prima dove vuoi andare, diventa più facile esplorare.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{行|い}}きたい {{場所|ばしょ}}` -> `{{行|い}}きたい` modifica `{{場所|ばしょ}}`: è il luogo in cui vuoi andare.
 - `{{先|さき}}に {{決|き}}めておく` -> [～ておく](grammar:grammar-teoku) indica preparazione completata in anticipo.

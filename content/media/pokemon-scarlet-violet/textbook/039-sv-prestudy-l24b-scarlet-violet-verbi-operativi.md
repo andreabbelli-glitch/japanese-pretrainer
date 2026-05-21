@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-039-sv-prestudy-l24b-scarlet-violet-verbi-operativi
 media_id: media-pokemon-scarlet-violet
 slug: 039-sv-prestudy-l24b-scarlet-violet-verbi-operativi
-title: SV Pre-study L24B - Scarlet/Violet, verbi operativi
+title: "Verbi operativi e modalità di movimento a Paldea"
 order: 69
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -51,7 +51,7 @@ motivo.
 ## Espressioni ricorrenti
 
 - [{{秘密|ひみつ}}だよ](term:term-e085-himitsu-dayo) — è un segreto
-- [〜してもらえる？](term:term-e086-shitemoraeru) — potresti dare un'occhiata un attimo?
+- [〜してもらえる？](term:term-e086-shitemoraeru) — potresti fare ... per me?
 - [{{行|い}}ってきます](term:term-e087-itte-kimasu) — vado e torno
 
 ## Pattern grammaticali chiave

@@ -93,6 +93,15 @@ Optional:
   textbook prose: tutor-like voice, concrete contextual opening, thematic
   clusters, dense micro-explanations, anatomy of phrase, operational contrasts,
   and ganci cognitivi when useful.
+- For compact UI or web pages, keep the standard but scale the page to the real
+  item: fewer clusters, strong focus on the visible action, object, particles,
+  field, button, confirmation, and operational contrast.
+- Keep H1 and Italian headings in sentence case, not Title Case, except for
+  proper names, acronyms, and official UI labels.
+- Preserve identity frontmatter when revising an existing item: `id`, `slug`,
+  `order`, segment/status fields, and other routing fields. `title` is visible
+  to the learner: if it still reads like a batch or workflow label, rewrite it
+  as a natural sentence-case lesson title aligned with the H1.
 - Use the standard's expected body sequence and visual block grammar when the
   item supports it: cluster, dense explanation, example, anatomy, contrast,
   cognitive hook, recap.
@@ -109,6 +118,22 @@ Optional:
   furigana in inventories, first explanations, captions, and recaps. Do not
   rely on tooltips, the entry `reading`, or the card `front` to supply the
   reading.
+- Do not use dotted ruby readings or ruby on pure katakana. Prefer semantic
+  kanji chunks such as `{{目的|もくてき}}{{地|ち}}` over
+  `{{目的地|もく.てき.ち}}`; keep `デッキコード` as katakana text or a semantic
+  link without furigana.
+- Do not split lexical compounds kanji-by-kanji when a natural block is more
+  readable: use `{{言語|げんご}}{{学|がく}}`,
+  `{{課外|かがい}}{{授業|じゅぎょう}}`,
+  `{{興味|きょうみ}}{{深|ぶか}}い`, not
+  `{{言|げん}}{{語|ご}}{{学|がく}}`,
+  `{{課|か}}{{外|がい}}{{授|じゅ}}{{業|ぎょう}}`, or
+  `{{興|きょう}}{{味|み}}{{深|ぶか}}い`.
+- The ban on "deck/review/flashcard" language is about study-workflow
+  metadiscourse. If the source UI really says deck or `デッキコード`, explain it
+  as source text while using natural Italian like "mazzo" where appropriate.
+- Example sentences may be didactic recombinations, but do not present them as
+  exact screen text unless they are copied from the source.
 - Seed terms are mandatory.
 - Automatic extra flashcards are capped at `5`.
 - Automatic extras must be N5-N3 or extremely common and genuinely useful.

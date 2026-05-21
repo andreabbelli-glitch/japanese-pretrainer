@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-037-sv-prestudy-l23b-verbi-operativi-esplorazione-e-movimento
 media_id: media-pokemon-scarlet-violet
 slug: 037-sv-prestudy-l23b-verbi-operativi-esplorazione-e-movimento
-title: SV Pre-study L23B - verbi operativi, esplorazione e movimento
+title: "Muoversi, agire e reagire nell'esplorazione di Paldea"
 order: 67
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -22,7 +22,7 @@ summary: >-
 
 Quando *Pokémon Scarlet & Violet* ti spinge verso un passaggio, una fuga, un aiuto o un bonus attivo, il giapponese non descrive solo "cosa c'è sullo schermo": ti dice quale direzione prendere, quale azione è permessa e quanto è urgente il tono del personaggio.
 
-Questa parte del pre-studio serve a leggere verbi operativi molto concreti. Alcuni puntano nello spazio, come `{{奥|おく}}へ`; altri chiudono o fanno avanzare un evento, come `{{終|お}}わる` e `{{進|すす}}める`; altri ancora cambiano il modo in cui senti una battuta, perché `{{早|はや}}く！` non ha lo stesso peso di `{{無理|むり}}しないで`.
+Nel gioco questi verbi operativi fanno lavori molto concreti. Alcuni puntano nello spazio, come `{{奥|おく}}へ`; altri chiudono o fanno avanzare un evento, come `{{終|お}}わる` e `{{進|すす}}める`; altri ancora cambiano il modo in cui senti una battuta, perché `{{早|はや}}く！` non ha lo stesso peso di `{{無理|むり}}しないで`.
 
 ## Termini chiave
 

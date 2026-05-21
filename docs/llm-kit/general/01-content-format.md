@@ -163,6 +163,23 @@ kanji:
 - scrivi `{{読|よ}}み{{込|こ}}み{{中|ちゅう}}`, non
   `{{読み込み中|よみこみちゅう}}`.
 
+Non usare puntini per simulare la scomposizione di un composto dentro un solo
+ruby. Scrivi `{{目的|もくてき}}{{地|ち}}`, non
+`{{目的地|もく.てき.ち}}`; `{{課外|かがい}}{{授業|じゅぎょう}}`, non
+`{{課外授業|か.がい.じゅ.ぎょう}}`.
+
+Non spezzare neppure un composto kanji-per-kanji quando la parola si legge e si
+impara meglio per blocchi lessicali naturali. Scrivi
+`{{言語|げんご}}{{学|がく}}`, `{{課外|かがい}}{{授業|じゅぎょう}}`,
+`{{興味|きょうみ}}{{深|ぶか}}い`, non
+`{{言|げん}}{{語|ご}}{{学|がく}}`,
+`{{課|か}}{{外|がい}}{{授|じゅ}}{{業|ぎょう}}` o
+`{{興|きょう}}{{味|み}}{{深|ぶか}}い`.
+
+Non mettere furigana su katakana puro. `ポケモン`, `チャンピオンランク`,
+`デッキコード` e label simili possono essere link semantici quando esiste
+l'entry, ma non devono diventare `{{ポケモン|...}}` o `{{デッキコード|...}}`.
+
 ### 4.2 Regole di scrittura YAML sicura
 
 Per evitare errori di import, i campi testuali descrittivi dentro frontmatter o
@@ -301,7 +318,7 @@ Da evitare nel textbook e in `notes_it`:
   diventa l'archivio progressivo delle carte che incontro davvero durante il
   gioco.`
 - `Il punto piu importante non e la keyword offensiva in se, ma il blocco
-  タップ状態でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo
+  タップ{{状態|じょうたい}}でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo
   stato gia presente nel momento del controllo.`
 
 ### 4.6 Regola di correttezza dell'italiano
@@ -457,6 +474,15 @@ contrasti operativi, ganci cognitivi dichiarati quando aiutano e prosa naturale
 da tutor. Il riferimento positivo è
 `content/media/pokemon-scarlet-violet/textbook/029-sv-prestudy-l19b-reazioni-e-parlato-scarlet-violet.md`.
 
+Nelle riscritture, preserva i campi frontmatter identitari (`id`, `media_id`,
+`slug`, `order`, `segment_ref`, `difficulty`, `status`, `tags`,
+`prerequisites`) salvo richiesta esplicita o migrazione.
+
+Il campo `title` è learner-facing. Se contiene label da batch, seed o workflow
+(`SV Pre-study L20A`, `SV Anki L18`, `Keyword Effects Bank`), riscrivilo in un
+titolo naturale, sentence case e coerente con l'H1. Gli H1 e heading italiani
+devono usare sentence case, non Title Case all'inglese.
+
 Esempio:
 
 ```md
@@ -464,7 +490,7 @@ Esempio:
 id: lesson-sample-anime-ep01-intro
 media_id: media-sample-anime
 slug: ep01-intro
-title: Episodio 1 - Introduzione
+title: "Azioni e rassicurazioni in una scena fantasy"
 order: 10
 segment_ref: episode-01
 difficulty: n5
@@ -482,24 +508,24 @@ qualcosa, chiedendo se va tutto bene o spiegando la causa dell'evento.
 
 ## Termini chiave
 
-- [食べる](term:term-taberu) — mangiare
-- [大丈夫](term:term-daijoubu) — tutto bene / sotto controllo
+- [{{食|た}}べる](term:term-taberu) — mangiare
+- [{{大丈夫|だいじょうぶ}}](term:term-daijoubu) — tutto bene / sotto controllo
 - [{{魔法|まほう}}](term:term-mahou) — magia
 
 ## Espressioni ricorrenti
 
-- [大丈夫？](term:term-daijoubu) — va tutto bene?
+- [{{大丈夫|だいじょうぶ}}？](term:term-daijoubu) — va tutto bene?
 
 ---
 
 ## 1. Azione concreta e verifica dello stato
 
-[食べる](term:term-taberu) descrive un'azione fisica chiara: qualcuno consuma
+[{{食|た}}べる](term:term-taberu) descrive un'azione fisica chiara: qualcuno consuma
 cibo o sta per farlo. In una battuta come `パンを{{食|た}}べる`, `を` marca il
 cibo come oggetto dell'azione, quindi il focus non è l'esistenza del pane ma il
 gesto di mangiarlo.
 
-[大丈夫](term:term-daijoubu) non è un semplice "positivo". In dialogo funziona
+[{{大丈夫|だいじょうぶ}}](term:term-daijoubu) non è un semplice "positivo". In dialogo funziona
 spesso come controllo della situazione: il personaggio vuole sapere se qualcuno
 sta bene, se un danno è gestibile o se si può proseguire.
 
@@ -512,9 +538,10 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `パンを` -> oggetto diretto: il pane è ciò che viene mangiato.
-- `{{食|た}}べる` -> azione concreta, non semplice presenza di cibo.
-- `{{大丈夫|だいじょうぶ}}？` -> verifica dello stato: il tono è di controllo, non di descrizione.
+*   `パンを` ➔ **Oggetto diretto** (il pane è ciò che viene mangiato).
+*   `{{食|た}}べる` ➔ **Azione concreta** (non semplice presenza di cibo).
+*   `{{大丈夫|だいじょうぶ}}？` ➔ **Verifica dello stato** (il tono è di
+    controllo, non di descrizione).
 
 > [!NOTE]
 > **⚖️ Contrasto operativo:** `{{大丈夫|だいじょうぶ}}` può rispondere "sì, tutto
@@ -523,13 +550,13 @@ translation_it: >-
 
 ## 2. Cause soprannaturali
 
-{{魔法|まほう}} non va trattato come decorazione fantasy generica. Quando
-compare, di solito ti dice che la causa dell'evento non e fisica o ordinaria,
-ma soprannaturale.
+[{{魔法|まほう}}](term:term-mahou) non va trattato come decorazione fantasy
+generica. Quando compare, di solito ti dice che la causa dell'evento non è
+fisica o ordinaria, ma soprannaturale.
 
 ## Nota finale
 
-Quando [食べる](term:term-taberu), [大丈夫](term:term-daijoubu) e
+Quando [{{食|た}}べる](term:term-taberu), [{{大丈夫|だいじょうぶ}}](term:term-daijoubu) e
 [{{魔法|まほう}}](term:term-mahou) compaiono vicini, la scena passa da ciò che
 qualcuno fa, a come sta, fino alla causa che spiega perché la situazione non è
 normale.
@@ -668,6 +695,13 @@ Regola review obbligatoria per `:::card`:
   `{{4|よっ}}つ{{以上|いじょう}}`.
 - Non inferire in modo meccanico le letture dei contatori: vanno sempre
   verificate e scritte nella forma corretta.
+- Non spezzare kanji-per-kanji i composti lessicali naturali:
+  `{{言語|げんご}}{{学|がく}}`,
+  `{{課外|かがい}}{{授業|じゅぎょう}}`,
+  `{{興味|きょうみ}}{{深|ぶか}}い`, non
+  `{{言|げん}}{{語|ご}}{{学|がく}}`,
+  `{{課|か}}{{外|がい}}{{授|じゅ}}{{業|ぎょう}}` o
+  `{{興|きょう}}{{味|み}}{{深|ぶか}}い`.
 - Il valore review della card deve restare linguistico: la carta deve aiutare a
   leggere kanji, lessico o grammatica giapponese, non solo a ricordare una
   regola del gioco.
@@ -878,7 +912,7 @@ Per attivare tooltip e linking si usano link con schema custom.
 Sintassi:
 
 ```md
-[食べる](term:term-taberu)
+[{{食|た}}べる](term:term-taberu)
 [～ている](grammar:grammar-teiru)
 ```
 

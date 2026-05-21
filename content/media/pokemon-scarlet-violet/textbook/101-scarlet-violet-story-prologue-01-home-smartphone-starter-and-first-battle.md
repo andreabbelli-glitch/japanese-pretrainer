@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 media_id: media-pokemon-scarlet-violet
 slug: 101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
-title: "Scarlet / Violet Story 101 - Prologo 1: casa, uniforme, smartphone, starter e primo match"
+title: "Dal campanello al primo match: leggere il prologo di Paldea"
 order: 110
 segment_ref: scarlet-violet-story
 difficulty: custom
@@ -191,7 +191,7 @@ prima esperienza isolata: è una fase intera dominata da novità.
 
 ## 3. Starter e Nemona: da vicini a rivali
 
-Nemona cambia subito la velocità della pagina. Il suo parlato è meno formale,
+Nemona cambia subito la velocità della scena. Il suo parlato è meno formale,
 più diretto e pieno di agganci sociali. Quando ti chiama
 [ご{{近所|きんじょ}}](term:term-gokinjo), o `ご{{近所|きんじょ}}{{同士|どうし}}`, non
 sta solo dicendo che abitate vicini: sta trasformando la distanza geografica in
@@ -220,7 +220,7 @@ translation_it: >-
 - `{{下|した}}の ビーチへ {{来|き}}てね` -> direzione fisica più invito amichevole: il dialogo ti sposta verso il luogo della lotta.
 
 La scelta dello starter usa un giapponese più osservativo. Clavell commenta
-`この {{子|こ}}は きみに {{気|き}}に {{入|い}}った みたいですね`.
+`この {{子|こ}}は きみを {{気|き}}に {{入|い}}った みたいですね`.
 [～みたい](grammar:grammar-mitai) non certifica un fatto con tono assoluto:
 dice "sembra", "dà l'impressione". La scena lascia che il comportamento del
 Pokemon sembri una preferenza, e quella preferenza rende naturale la tua
@@ -228,7 +228,7 @@ scelta.
 
 :::example_sentence
 jp: >-
-  この {{子|こ}}は きみに {{気|き}}に {{入|い}}った みたいですね。
+  この {{子|こ}}は きみを {{気|き}}に {{入|い}}った みたいですね。
 translation_it: >-
   Sembra proprio che questo Pokemon abbia preso simpatia per te.
 :::
@@ -236,7 +236,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `この {{子|こ}}は` -> tema affettivo: il Pokemon viene trattato come "questo piccolo / questa creatura".
-- `きみに {{気|き}}に {{入|い}}った` -> `{{気|き}}に {{入|い}}る` significa piacere, andare a genio; qui il bersaglio sei tu.
+- `きみを {{気|き}}に {{入|い}}った` -> `{{気|き}}に {{入|い}}る` significa piacere, andare a genio; qui il bersaglio della simpatia sei tu.
 - `みたいですね` -> impressione condivisa in tono cortese: Clavell interpreta la scena senza suonare categorico.
 
 :::image

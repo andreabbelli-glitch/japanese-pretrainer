@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
 media_id: media-pokemon-scarlet-violet
 slug: 104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
-title: "Scarlet / Violet Story 104 - Prologo 4: accademia, aula e sale chiave"
+title: Aula, sale chiave e direzioni dell'Accademia
 order: 140
 segment_ref: scarlet-violet-story
 difficulty: custom
@@ -22,11 +22,11 @@ incarichi e dialoghi guidati. L'aula ti presenta il docente referente, la mensa
 apre un aggancio di storia più informale, gli uffici danno un tono
 istituzionale e il dormitorio trasforma l'arrivo a scuola in vita quotidiana.
 
-Il giapponese di questo blocco funziona come segnaletica narrativa. Quando
-leggi un nome di stanza, non stai solo riconoscendo un luogo: stai prevedendo
-quale tipo di scena sta per partire. Quando invece compare una formula come
-`～ように {{言|い}}われた`, il testo ti dice che un personaggio non sta
-improvvisando, ma sta eseguendo una consegna ricevuta da qualcuno della scuola.
+Questo giapponese funziona come segnaletica narrativa. Quando leggi un nome di
+stanza, non stai solo riconoscendo un luogo: stai prevedendo quale tipo di scena
+sta per partire. Quando invece compare una formula come `～ように {{言|い}}われた`,
+il testo ti dice che un personaggio non sta improvvisando, ma sta eseguendo una
+consegna ricevuta da qualcuno della scuola.
 
 :::image
 src: assets/story/academy-campus-exterior.webp
@@ -96,7 +96,7 @@ translation_it: >-
   L'insegnante referente Jinia ti fa delle domande in aula.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{担任|たんにん}}の ジニア{{先生|せんせい}}` -> il `の` collega ruolo e persona: Jinia non è solo un docente presente, ma il referente della classe.
 - `{{教室|きょうしつ}}で` -> `で` marca il luogo dell'azione: la domanda appartiene alla scena d'aula, non a un incontro libero nel campus.
@@ -109,7 +109,7 @@ translation_it: >-
   Ti hanno chiesto che tipo di Allenatore vuoi diventare in futuro.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{将来|しょうらい}}` -> mette la domanda sul futuro, quindi non parla della prossima azione di menu ma di una direzione più ampia.
 - `どんな トレーナーを` -> `どんな` chiede il tipo o profilo, mentre `を` marca ciò verso cui punta il verbo.
@@ -159,10 +159,10 @@ jp: >-
   {{学生食堂|がくせいしょくどう}}に {{行|い}}くと ペパーの {{話|はなし}}が
   {{進|すす}}みはじめる。
 translation_it: >-
-  Andando alla mensa studentesca, comincia ad avanzare il filone di Pepe.
+  Andando alla mensa studentesca, comincia ad avanzare il filone di Pepper.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{学生食堂|がくせいしょくどう}}に` -> `に` marca la destinazione: la scena parte perché raggiungi proprio quel luogo.
 - `{{行|い}}くと` -> `と` crea una condizione naturale: "quando ci vai, succede questo".
@@ -226,7 +226,7 @@ translation_it: >-
   Dicono che anche le strutture utili si possano usare liberamente!
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{役立|やくだ}}つ {{施設|しせつ}}` -> `{{役立|やくだ}}つ` modifica `{{施設|しせつ}}`: non sono luoghi decorativi, ma strutture che servono.
 - `も` -> aggiunge queste strutture a un insieme più ampio di vantaggi del campus.
@@ -277,11 +277,10 @@ jp: >-
   ジニア{{先生|せんせい}}に {{寮|りょう}}の {{部屋|へや}}を
   {{案内|あんない}}するように {{言|い}}われたの。
 translation_it: >-
-  La professoressa Jinia mi ha detto di accompagnarti alla tua stanza del
-  dormitorio.
+  Il professor Jinia mi ha detto di accompagnarti alla tua stanza del dormitorio.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `ジニア{{先生|せんせい}}に` -> `に` indica la fonte dell'istruzione: chi ha dato la consegna.
 - `{{寮|りょう}}の {{部屋|へや}}を` -> oggetto dell'azione di guida: non un luogo qualsiasi, ma la tua stanza nel dormitorio.
@@ -332,7 +331,7 @@ jp: >-
   {{学生食堂|がくせいしょくどう}}では ペパーの {{相談|そうだん}}が
   {{始|はじ}}まる。
 translation_it: >-
-  Nella mensa studentesca comincia la conversazione di Pepe.
+  Nella mensa studentesca comincia la conversazione di Pepper.
 :::
 
 :::example_sentence

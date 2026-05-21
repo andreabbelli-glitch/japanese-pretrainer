@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-044-sv-prestudy-l30b-sistema-e-menu-scarlet-violet
 media_id: media-pokemon-scarlet-violet
 slug: 044-sv-prestudy-l30b-sistema-e-menu-scarlet-violet
-title: SV Pre-study L30B - sistema e menu, Scarlet/Violet
+title: "Menu, connessioni e conferme da leggere prima di premere"
 order: 74
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -25,10 +25,10 @@ vedi: ti dice quale azione stai per avviare, se un dato diventa visibile, se una
 connessione parte davvero o se qualcosa verrà perso. Le parole di sistema sono
 brevi, ma cambiano la decisione pratica davanti al pulsante.
 
-Il nucleo di questa pagina è la lettura operativa: distinguere connessione,
-sfida, controllo, stato e perdita prima di confermare. Quando una schermata
-nomina un bonus o uno strumento specifico, il nome va letto come etichetta di
-funzione, non come puro nome decorativo.
+La lettura operativa distingue connessione, sfida, controllo, stato e perdita
+prima della conferma. Quando una schermata nomina un bonus o uno strumento
+specifico, il nome va letto come etichetta di funzione, non come puro nome
+decorativo.
 
 ## Termini chiave
 

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acquisti-errori-e-memoria
 media_id: media-pokemon-scarlet-violet
 slug: 067-sv-anki-l15-media-acquisti-errori-e-memoria
-title: SV Anki L15 - Media, acquisti, errori e memoria
+title: Video, acquisti e memoria nelle scene di Paldea
 order: 97
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -18,14 +18,14 @@ summary: >-
 
 In *Pokémon Scarlet & Violet* gli stessi testi passano rapidamente da una schermata dello Smart Rotom a un negozio, da una lezione dell'Accademia a un dialogo più personale. Qui il giapponese non nomina solo oggetti: dice che cosa stai guardando, che cosa ottieni, quante cose hai raccolto, dove hai sbagliato e che impressione lascia una scena.
 
-Il filo comune è operativo. [{{動|どう}}{{画|が}}](term:term-anki-l15-douga) rende visibile il supporto, [{{買|か}}いもの](term:term-anki-l15-kaimono) porta l'azione nel negozio, [{{不|ふ}}{{正|せい}}{{解|かい}}](term:term-anki-l15-fuseikai) chiude una risposta come errore, mentre [{{感|かん}}じ](term:term-anki-l15-kanji), [{{気|き}}づく](term:term-anki-l15-kizuku) e [{{記|き}}{{憶|おく}}](term:term-anki-l15-kioku) spostano la lettura dentro percezione e memoria.
+Il filo comune è operativo. [{{動画|どうが}}](term:term-anki-l15-douga) rende visibile il supporto, [{{買|か}}いもの](term:term-anki-l15-kaimono) porta l'azione nel negozio, [{{不|ふ}}{{正解|せいかい}}](term:term-anki-l15-fuseikai) chiude una risposta come errore, mentre [{{感|かん}}じ](term:term-anki-l15-kanji), [{{気|き}}づく](term:term-anki-l15-kizuku) e [{{記|き}}{{憶|おく}}](term:term-anki-l15-kioku) spostano la lettura dentro percezione e memoria.
 
 ## Termini chiave
 
-- [{{動|どう}}{{画|が}}](term:term-anki-l15-douga) — video / filmato
+- [{{動画|どうが}}](term:term-anki-l15-douga) — video / filmato
 - [{{得|え}}る](term:term-anki-l15-eru) — ottenere, conseguire
 - [{{買|か}}いもの](term:term-anki-l15-kaimono) — acquisti / fare compere
-- [{{不|ふ}}{{正|せい}}{{解|かい}}](term:term-anki-l15-fuseikai) — risposta sbagliata
+- [{{不|ふ}}{{正解|せいかい}}](term:term-anki-l15-fuseikai) — risposta sbagliata
 - [{{8|やっ}}つ](term:term-anki-l15-yattsu) — otto cose
 - [{{引|いん}}{{退|たい}}](term:term-anki-l15-intai) — ritiro da un ruolo
 - [{{開|あ}}ける](term:term-anki-l15-akeru) — aprire qualcosa di concreto
@@ -37,13 +37,13 @@ Il filo comune è operativo. [{{動|どう}}{{画|が}}](term:term-anki-l15-doug
 
 ## 1. Schermi, video e cose che si ottengono
 
-[{{動|どう}}{{画|が}}](term:term-anki-l15-douga) è formato da `{{動|どう}}`, movimento, e `{{画|が}}`, immagine: il risultato è l'idea di immagini in movimento, quindi video o filmato. Quando compare vicino a dispositivi come lo Smart Rotom, non indica una foto o una schermata statica, ma un contenuto da guardare nel tempo.
+[{{動画|どうが}}](term:term-anki-l15-douga) si legge come composto intero per "video / filmato". Quando compare vicino a dispositivi come lo Smart Rotom, non indica una foto o una schermata statica, ma un contenuto da guardare nel tempo.
 
 [{{得|え}}る](term:term-anki-l15-eru) è più selettivo di un generico "ricevere". La cosa ottenuta prende `を`, ma spesso è un risultato immateriale: `{{経|けい}}{{験|けん}}を{{得|え}}る`, ottenere esperienza, o `{{知|ち}}{{識|しき}}を{{得|え}}る`, acquisire conoscenza. Per uno strumento fisico entrato nella borsa, invece, il gioco tende a usare formule come `{{手|て}}に{{入|い}}れる` o もらう.
 
 :::example_sentence
 jp: >-
-  スマホロトムで {{動|どう}}{{画|が}}を {{見|み}}る。
+  スマホロトムで {{動画|どうが}}を {{見|み}}る。
 translation_it: >-
   Guardo un video sullo Smart Rotom.
 :::
@@ -51,7 +51,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `スマホロトムで` -> `で` marca il mezzo o dispositivo: il video viene visto tramite lo Smart Rotom.
-- `{{動|どう}}{{画|が}}を` -> `を` marca il contenuto guardato, non il luogo.
+- `{{動画|どうが}}を` -> `を` marca il contenuto guardato, non il luogo.
 - `{{見|み}}る` -> chiude l'azione percettiva: qui il video è qualcosa che si osserva, non qualcosa che si ottiene.
 
 :::example_sentence
@@ -119,13 +119,13 @@ translation_it: >-
 
 ## 3. Risposte, ruoli e fine di un'attività
 
-[{{不|ふ}}{{正|せい}}{{解|かい}}](term:term-anki-l15-fuseikai) si legge bene se vedi prima il nucleo `{{正|せい}}{{解|かい}}`: risposta corretta. Il prefisso `{{不|ふ}}` nega quel valore, quindi trasforma la risposta in "non corretta". Nelle lezioni e negli esami dell'Accademia, il termine non giudica la persona: classifica l'esito della risposta.
+[{{不|ふ}}{{正解|せいかい}}](term:term-anki-l15-fuseikai) si legge bene se vedi prima il nucleo `{{正解|せいかい}}`: risposta corretta. Il prefisso `{{不|ふ}}` nega quel valore, quindi trasforma la risposta in "non corretta". Nelle lezioni e negli esami dell'Accademia, il termine non giudica la persona: classifica l'esito della risposta.
 
 [{{引|いん}}{{退|たい}}](term:term-anki-l15-intai) indica il ritiro da un ruolo attivo, professionale o agonistico. Con する diventa azione, e il ruolo lasciato prende `を`: `トレーナーを{{引|いん}}{{退|たい}}する`. In un dialogo su Allenatori o Capipalestra, non significa "allontanarsi per un momento", ma smettere di occupare quella posizione.
 
 :::example_sentence
 jp: >-
-  テストの {{答|こた}}えが {{不|ふ}}{{正|せい}}{{解|かい}}だった。
+  テストの {{答|こた}}えが {{不|ふ}}{{正解|せいかい}}だった。
 translation_it: >-
   La risposta del test era sbagliata.
 :::
@@ -133,7 +133,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `テストの {{答|こた}}えが` -> `が` marca la risposta come soggetto valutato.
-- `{{不|ふ}}{{正|せい}}{{解|かい}}` -> `{{不|ふ}}` nega `{{正|せい}}{{解|かい}}`: non è la soluzione corretta.
+- `{{不|ふ}}{{正解|せいかい}}` -> `{{不|ふ}}` nega `{{正解|せいかい}}`: non è la soluzione corretta.
 - `だった` -> passato copulativo: il testo registra l'esito già deciso.
 
 :::example_sentence
@@ -149,7 +149,7 @@ translation_it: >-
 - `{{引|いん}}{{退|たい}}する` -> sostantivo più する: l'atto di ritirarsi da quella funzione.
 
 > [!NOTE]
-> **⚖️ Contrasto operativo:** [{{不|ふ}}{{正|せい}}{{解|かい}}](term:term-anki-l15-fuseikai) è l'etichetta dell'esito sbagliato; una frase come `{{間|ま}}{{違|ちが}}えた` descriverebbe invece l'azione di aver sbagliato. Uno è risultato classificato, l'altra è azione compiuta.
+> **⚖️ Contrasto operativo:** [{{不|ふ}}{{正解|せいかい}}](term:term-anki-l15-fuseikai) è l'etichetta dell'esito sbagliato; una frase come `{{間|ま}}{{違|ちが}}えた` descriverebbe invece l'azione di aver sbagliato. Uno è risultato classificato, l'altra è azione compiuta.
 
 ## 4. Impressioni, dettagli notati e ricordi
 
@@ -183,12 +183,12 @@ translation_it: >-
 jp: >-
   ペパーには むかしの {{記|き}}{{憶|おく}}が ある。
 translation_it: >-
-  Pepe ha ricordi del passato.
+  Pepper ha ricordi del passato.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `ペパーには` -> `には` presenta Pepe come possessore o punto di riferimento del ricordo.
+- `ペパーには` -> `には` presenta Pepper come possessore o punto di riferimento del ricordo.
 - `むかしの {{記|き}}{{憶|おく}}が` -> il ricordo viene marcato da `が` come cosa che esiste.
 - `ある` -> esistenza/possesso: il testo dice che quei ricordi sono presenti in lui.
 
@@ -199,7 +199,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  スマホロトムで {{動|どう}}{{画|が}}を {{見|み}}て、{{新|あたら}}しい {{知|ち}}{{識|しき}}を {{得|え}}た。
+  スマホロトムで {{動画|どうが}}を {{見|み}}て、{{新|あたら}}しい {{知|ち}}{{識|しき}}を {{得|え}}た。
 translation_it: >-
   Ho guardato un video sullo Smart Rotom e ho acquisito una nuova conoscenza.
 :::
@@ -213,7 +213,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{答|こた}}えが {{不|ふ}}{{正|せい}}{{解|かい}}だと {{気|き}}づいた。
+  {{答|こた}}えが {{不|ふ}}{{正解|せいかい}}だと {{気|き}}づいた。
 translation_it: >-
   Mi sono accorto che la risposta era sbagliata.
 :::
@@ -222,9 +222,9 @@ translation_it: >-
 jp: >-
   ペパーの {{記|き}}{{憶|おく}}には、ふしぎな {{感|かん}}じが ある。
 translation_it: >-
-  Nei ricordi di Pepe c'è una sensazione misteriosa.
+  Nei ricordi di Pepper c'è una sensazione misteriosa.
 :::
 
 ## Nota finale
 
-Quando il testo nomina uno schermo, guarda il supporto: [{{動|どう}}{{画|が}}](term:term-anki-l15-douga) si vede, [{{得|え}}る](term:term-anki-l15-eru) si consegue, [{{買|か}}いもの](term:term-anki-l15-kaimono) si fa in un luogo. Quando invece entrano [{{不|ふ}}{{正|せい}}{{解|かい}}](term:term-anki-l15-fuseikai), [{{感|かん}}じ](term:term-anki-l15-kanji), [{{気|き}}づく](term:term-anki-l15-kizuku) e [{{記|き}}{{憶|おく}}](term:term-anki-l15-kioku), la frase sta già dicendo se qualcosa è un errore, una percezione, una scoperta o un ricordo.
+Quando il testo nomina uno schermo, guarda il supporto: [{{動画|どうが}}](term:term-anki-l15-douga) si vede, [{{得|え}}る](term:term-anki-l15-eru) si consegue, [{{買|か}}いもの](term:term-anki-l15-kaimono) si fa in un luogo. Quando invece entrano [{{不|ふ}}{{正解|せいかい}}](term:term-anki-l15-fuseikai), [{{感|かん}}じ](term:term-anki-l15-kanji), [{{気|き}}づく](term:term-anki-l15-kizuku) e [{{記|き}}{{憶|おく}}](term:term-anki-l15-kioku), la frase sta già dicendo se qualcosa è un errore, una percezione, una scoperta o un ricordo.

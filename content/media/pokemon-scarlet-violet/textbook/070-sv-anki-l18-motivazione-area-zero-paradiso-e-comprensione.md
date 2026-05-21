@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione-area-zero-paradiso-e-comprensione
 media_id: media-pokemon-scarlet-violet
 slug: 070-sv-anki-l18-motivazione-area-zero-paradiso-e-comprensione
-title: SV Anki L18 - Motivazione, Area Zero, paradiso e comprensione
+title: "Motivazione, Area Zero e comprensione: parlato formale, prove e leggende"
 order: 100
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -22,29 +22,29 @@ Il passaggio dall'Accademia alle prove, dai guasti fisici alle apparizioni impro
 
 ## Termini chiave
 
-- [ご{{存|ぞん}}{{知|じ}}](term:term-anki-l18-gozonji) — sapere; conoscere, onorifico
+- [ご{{存知|ぞんじ}}](term:term-anki-l18-gozonji) — sapere; conoscere, onorifico
 - [やる{{気|き}}](term:term-anki-l18-yaruki) — motivazione; voglia di fare
 - [{{壊|こわ}}れる](term:term-anki-l18-kowareru) — rompersi
-- [{{楽|らく}}{{園|えん}}](term:term-anki-l18-rakuen) — paradiso
-- [{{活|かつ}}{{躍|やく}}](term:term-anki-l18-katsuyaku) — attività; successo attivo
-- [{{興|きょう}}{{味|み}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) — molto interessante / affascinante
+- [{{楽園|らくえん}}](term:term-anki-l18-rakuen) — paradiso
+- [{{活躍|かつやく}}](term:term-anki-l18-katsuyaku) — attività; successo attivo
+- [{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) — molto interessante / affascinante
 - [{{現|あらわ}}れる](term:term-anki-l18-arawareru) — apparire
 - [{{光|ひか}}る](term:term-anki-l18-hikaru) — brillare
-- [{{合|ごう}}{{格|かく}}{{者|しゃ}}](term:term-anki-l18-goukakusha) — persona promossa o ammessa
-- [{{財|ざい}}{{宝|ほう}}](term:term-anki-l18-zaihou) — tesoro
-- [{{理|り}}{{解|かい}}](term:term-anki-l18-rikai) — comprensione; capire
+- [{{合格者|ごうかくしゃ}}](term:term-anki-l18-goukakusha) — persona promossa o ammessa
+- [{{財宝|ざいほう}}](term:term-anki-l18-zaihou) — tesoro
+- [{{理解|りかい}}](term:term-anki-l18-rikai) — comprensione; capire
 
 ## Espressioni ricorrenti
 
-- [ご{{存|ぞん}}{{知|じ}}](term:term-anki-l18-gozonji)ですか — domanda formale: "conosce...?"
+- [ご{{存知|ぞんじ}}](term:term-anki-l18-gozonji)ですか — domanda formale: "conosce...?"
 - [やる{{気|き}}](term:term-anki-l18-yaruki)が{{出|で}}る — la motivazione compare / si accende
-- [{{活|かつ}}{{躍|やく}}](term:term-anki-l18-katsuyaku)を{{期|き}}{{待|たい}}している — formula di aspettativa o augurio su un ruolo futuro
-- [{{理|り}}{{解|かい}}](term:term-anki-l18-rikai)できたかな — verifica morbida: "sei riuscito a capire?"
+- [{{活躍|かつやく}}](term:term-anki-l18-katsuyaku)を{{期待|きたい}}している — formula di aspettativa o augurio su un ruolo futuro
+- [{{理解|りかい}}](term:term-anki-l18-rikai)できたかな — verifica morbida: "sei riuscito a capire?"
 
 ## Pattern grammaticali chiave
 
 - `Nが + verbo intransitivo` — il soggetto entra in uno stato o si manifesta: `Nが{{壊|こわ}}れる`, `Nが{{現|あらわ}}れる`, `Nが{{光|ひか}}る`
-- `Nを + {{理|り}}{{解|かい}}する / できる` — `を` marca ciò che viene compreso razionalmente
+- `Nを + {{理解|りかい}}する / できる` — `を` marca ciò che viene compreso razionalmente
 - `Nに{{向|む}}けて` — orienta l'azione verso una prova, un obiettivo o una scadenza
 
 ## Etichette da riconoscere
@@ -58,11 +58,11 @@ Il passaggio dall'Accademia alle prove, dai guasti fisici alle apparizioni impro
 
 ## 1. Sapere, capire e valutare con registro formale
 
-Quando la scena passa all'Accademia, ai professori o alle spiegazioni su [エリアゼロ](term:term-v022-eriazero), il registro diventa più controllato. [ご{{存|ぞん}}{{知|じ}}](term:term-anki-l18-gozonji) non è un semplice "sapere": è la forma rispettosa collegata a `{{知|し}}る`, usata per innalzare la conoscenza dell'interlocutore o di una persona di riguardo. Per questo una domanda come `ご{{存|ぞん}}{{知|じ}}ですか` suona adatta a un professore, a un preside o a una spiegazione istituzionale, non a qualcuno che parla della propria conoscenza.
+Quando la scena passa all'Accademia, ai professori o alle spiegazioni su [エリアゼロ](term:term-v022-eriazero), il registro diventa più controllato. [ご{{存知|ぞんじ}}](term:term-anki-l18-gozonji) non è un semplice "sapere": è la forma rispettosa collegata a `{{知|し}}る`, usata per innalzare la conoscenza dell'interlocutore o di una persona di riguardo. Per questo una domanda come `ご{{存知|ぞんじ}}ですか` suona adatta a un professore, a un preside o a una spiegazione istituzionale, non a qualcuno che parla della propria conoscenza.
 
 :::example_sentence
 jp: >-
-  エリアゼロの ことを ご{{存|ぞん}}{{知|じ}}ですか。
+  エリアゼロの ことを ご{{存知|ぞんじ}}ですか。
 translation_it: >-
   Conosce l'Area Zero?
 :::
@@ -70,37 +70,37 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `エリアゼロの ことを` -> `こと` trasforma il luogo in "la questione riguardante Area Zero"; `を` marca ciò che viene conosciuto.
-- `ご{{存|ぞん}}{{知|じ}}ですか` -> domanda cortese: il parlante eleva la conoscenza dell'interlocutore, non la propria.
+- `ご{{存知|ぞんじ}}ですか` -> domanda cortese: il parlante eleva la conoscenza dell'interlocutore, non la propria.
 
 > [!WARNING]
-> **⚖️ Contrasto operativo:** `ご{{存|ぞん}}{{知|じ}}` non sostituisce liberamente `{{知|し}}っている`. Se vuoi dire "lo so" di te stesso, `ご{{存|ぞん}}{{知|じ}}です` risulta fuori posto perché mette rispetto su un'azione propria.
+> **⚖️ Contrasto operativo:** `ご{{存知|ぞんじ}}` non sostituisce liberamente `{{知|し}}っている`. Se vuoi dire "lo so" di te stesso, `ご{{存知|ぞんじ}}です` risulta fuori posto perché mette rispetto su un'azione propria.
 
-Accanto al sapere formale, [{{理|り}}{{解|かい}}](term:term-anki-l18-rikai) sposta il fuoco sul processo mentale. `{{理|り}}` porta l'idea di ragione o principio, `{{解|かい}}` quella di sciogliere o spiegare: insieme indicano una comprensione articolata, adatta a lezioni, regole e punti di vista da assimilare. In una frase con `{{理|り}}{{解|かい}}できた`, non stai solo dicendo che qualcosa "ti è chiaro": stai verificando se il contenuto è stato afferrato in modo ragionato.
+Accanto al sapere formale, [{{理解|りかい}}](term:term-anki-l18-rikai) sposta il fuoco sul processo mentale. Come parola compatta indica una comprensione articolata, adatta a lezioni, regole e punti di vista da assimilare. In una frase con `{{理解|りかい}}できた`, non stai solo dicendo che qualcosa "ti è chiaro": stai verificando se il contenuto è stato afferrato in modo ragionato.
 
 :::example_sentence
 jp: >-
-  {{先|せん}}{{生|せい}}の {{言|い}}う ことを {{理|り}}{{解|かい}} できた かな？
+  {{先生|せんせい}}の {{言|い}}う ことを {{理解|りかい}} できた かな？
 translation_it: >-
   Siete riusciti a comprendere ciò che ha detto il professore?
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{先|せん}}{{生|せい}}の {{言|い}}う ことを` -> `こと` nominalizza "ciò che il professore dice"; `を` lo rende oggetto della comprensione.
-- `{{理|り}}{{解|かい}} できた` -> `できた` valuta il risultato: la comprensione è riuscita o no.
+- `{{先生|せんせい}}の {{言|い}}う ことを` -> `こと` nominalizza "ciò che il professore dice"; `を` lo rende oggetto della comprensione.
+- `{{理解|りかい}} できた` -> `できた` valuta il risultato: la comprensione è riuscita o no.
 - `かな` -> chiusura morbida e riflessiva: la domanda controlla lo stato del destinatario senza suonare come interrogatorio secco.
 
-[{{興|きょう}}{{味|み}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) appartiene allo stesso registro riflessivo. `{{興|きょう}}{{味|み}}` è l'interesse, `{{深|ぶか}}い` è "profondo": la scena non sta dicendo solo "che bello", ma "questa cosa merita indagine". È naturale nelle lezioni di storia, nelle leggende di Paldea e nei commenti di chi osserva un fenomeno da studioso.
+[{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) appartiene allo stesso registro riflessivo. `{{興味|きょうみ}}` è l'interesse, `{{深|ぶか}}い` è "profondo": la scena non sta dicendo solo "che bello", ma "questa cosa merita indagine". È naturale nelle lezioni di storia, nelle leggende di Paldea e nei commenti di chi osserva un fenomeno da studioso.
 
 :::example_sentence
 jp: >-
-  パルデアの {{伝|でん}}{{承|しょう}}は とても {{興|きょう}}{{味|み}}{{深|ぶか}}い ね。
+  パルデアの {{伝|でん}}{{承|しょう}}は とても {{興味|きょうみ}}{{深|ぶか}}い ね。
 translation_it: >-
   Il folklore di Paldea è davvero affascinante, vero?
 :::
 
 > [!NOTE]
-> **⚖️ Contrasto operativo:** `{{面|おも}}{{白|しろ}}い` può voler dire "divertente" o "interessante" in modo ampio; [{{興|きょう}}{{味|み}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) segnala invece interesse profondo, investigativo o accademico.
+> **⚖️ Contrasto operativo:** `{{面|おも}}{{白|しろ}}い` può voler dire "divertente" o "interessante" in modo ampio; [{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) segnala invece interesse profondo, investigativo o accademico.
 
 ## 2. Motivazione, prove e status riconosciuti
 
@@ -122,11 +122,11 @@ translation_it: >-
 > [!NOTE]
 > **🧠 Gancio cognitivo:** pensa a [やる{{気|き}}](term:term-anki-l18-yaruki) come a "spirito del fare". Non è etimologia nascosta: è proprio la combinazione leggibile di `やる` e `{{気|き}}`, utile per ricordare che la parola punta all'azione.
 
-Il passo successivo è [{{活|かつ}}{{躍|やく}}](term:term-anki-l18-katsuyaku). `{{活|かつ}}` richiama attività e vitalità, `{{躍|やく}}` il balzare in avanti: il composto non descrive un successo passivo, ma qualcuno che si distingue perché agisce in modo visibile. In formule come `{{活|かつ}}{{躍|やく}}を{{期|き}}{{待|たい}}している`, chi parla non sta solo facendo un complimento; sta proiettando su di te un ruolo futuro.
+Il passo successivo è [{{活躍|かつやく}}](term:term-anki-l18-katsuyaku). Il composto non descrive un successo passivo, ma qualcuno che si distingue perché agisce in modo visibile. In formule come `{{活躍|かつやく}}を{{期待|きたい}}している`, chi parla non sta solo facendo un complimento; sta proiettando su di te un ruolo futuro.
 
 :::example_sentence
 jp: >-
-  チャンピオンランクでの {{活|かつ}}{{躍|やく}}を {{期|き}}{{待|たい}}して いるよ。
+  チャンピオンランクでの {{活躍|かつやく}}を {{期待|きたい}}して いるよ。
 translation_it: >-
   Mi aspetto grandi cose da te nel rango Campione.
 :::
@@ -134,14 +134,14 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `チャンピオンランクでの` -> `での` trasforma il contesto del rango in modificatore del nome che segue.
-- `{{活|かつ}}{{躍|やく}}を` -> l'oggetto atteso non è una vittoria singola, ma il tuo contributo attivo in quel contesto.
-- `{{期|き}}{{待|たい}}して いる` -> aspettativa in corso: il parlante ti sta collocando dentro una prospettiva di crescita.
+- `{{活躍|かつやく}}を` -> l'oggetto atteso non è una vittoria singola, ma il tuo contributo attivo in quel contesto.
+- `{{期待|きたい}}して いる` -> aspettativa in corso: il parlante ti sta collocando dentro una prospettiva di crescita.
 
-[{{合|ごう}}{{格|かく}}{{者|しゃ}}](term:term-anki-l18-goukakusha) è più istituzionale. `{{合|ごう}}{{格|かく}}` è il superamento di una prova, mentre il suffisso `{{者|しゃ}}` trasforma il risultato in una categoria di persone: "chi è stato promosso / ammesso". In una schermata o in un dialogo di accesso, questa parola decide chi può entrare, continuare o ricevere il prossimo permesso.
+[{{合格者|ごうかくしゃ}}](term:term-anki-l18-goukakusha) è più istituzionale. Indica la persona che ha superato una prova e quindi possiede quello status: "chi è stato promosso / ammesso". In una schermata o in un dialogo di accesso, questa parola decide chi può entrare, continuare o ricevere il prossimo permesso.
 
 :::example_sentence
 jp: >-
-  ジムテストの {{合|ごう}}{{格|かく}}{{者|しゃ}}は {{中|なか}}に {{入|はい}}れるよ。
+  ジムテストの {{合格者|ごうかくしゃ}}は {{中|なか}}に {{入|はい}}れるよ。
 translation_it: >-
   Chi ha superato il test della palestra può entrare.
 :::
@@ -149,11 +149,11 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `ジムテストの` -> la promozione è relativa a quel test specifico.
-- `{{合|ごう}}{{格|かく}}{{者|しゃ}}は` -> `は` presenta la categoria autorizzata: i promossi.
+- `{{合格者|ごうかくしゃ}}は` -> `は` presenta la categoria autorizzata: i promossi.
 - `{{中|なか}}に {{入|はい}}れる` -> risultato pratico dello status: l'accesso all'interno diventa possibile.
 
 > [!NOTE]
-> **⚖️ Contrasto operativo:** `{{合|ごう}}{{格|かく}}` è il risultato "superamento"; [{{合|ごう}}{{格|かく}}{{者|しゃ}}](term:term-anki-l18-goukakusha) è la persona che possiede quello status. Se la frase deve dire chi può entrare, il suffisso `{{者|しゃ}}` è il pezzo decisivo.
+> **⚖️ Contrasto operativo:** `{{合格|ごうかく}}` è il risultato "superamento"; [{{合格者|ごうかくしゃ}}](term:term-anki-l18-goukakusha) è la persona che possiede quello status. Se la frase deve dire chi può entrare, il nome completo è il pezzo decisivo.
 
 ## 3. Area Zero: rotture, apparizioni e luce
 
@@ -210,11 +210,11 @@ translation_it: >-
 
 ## 4. Paradiso, tesori e lessico da leggenda
 
-L'Area Zero non viene descritta solo come un punto sulla mappa. [{{楽|らく}}{{園|えん}}](term:term-anki-l18-rakuen) unisce `{{楽|らく}}` e `{{園|えん}}`: letteralmente evoca un luogo piacevole, protetto, quasi ideale. Nel contesto narrativo, però, non è soltanto "bel posto"; suona come un paradiso promesso o immaginato per i Pokémon, con una sfumatura più malinconica e assoluta di una semplice area panoramica.
+L'Area Zero non viene descritta solo come un punto sulla mappa. [{{楽園|らくえん}}](term:term-anki-l18-rakuen) si legge come "paradiso", un luogo piacevole, protetto, quasi ideale. Nel contesto narrativo, però, non è soltanto "bel posto"; suona come un paradiso promesso o immaginato per i Pokémon, con una sfumatura più malinconica e assoluta di una semplice area panoramica.
 
 :::example_sentence
 jp: >-
-  ここは ポケモンたちの {{楽|らく}}{{園|えん}} なのよ。
+  ここは ポケモンたちの {{楽園|らくえん}} なのよ。
 translation_it: >-
   Questo posto è un paradiso per i Pokémon.
 :::
@@ -223,28 +223,28 @@ translation_it: >-
 
 - `ここは` -> il luogo davanti ai personaggi diventa tema della definizione.
 - `ポケモンたちの` -> `の` lega il paradiso ai Pokémon come gruppo.
-- `{{楽|らく}}{{園|えん}} なのよ` -> `なのよ` dà una spiegazione assertiva e coinvolta, come se il parlante stesse rivelando il vero valore del luogo.
+- `{{楽園|らくえん}} なのよ` -> `なのよ` dà una spiegazione assertiva e coinvolta, come se il parlante stesse rivelando il vero valore del luogo.
 
 > [!NOTE]
-> **⚖️ Contrasto operativo:** [{{楽|らく}}{{園|えん}}](term:term-anki-l18-rakuen) non è il "divertimento" di `{{楽|たの}}しい`. Qui `{{楽|らく}}` fa parte di un composto letto `らくえん` e costruisce l'idea di luogo ideale.
+> **⚖️ Contrasto operativo:** [{{楽園|らくえん}}](term:term-anki-l18-rakuen) non va confuso con `{{楽|たの}}しい`: come parola intera indica un paradiso o luogo ideale, non una cosa semplicemente divertente.
 
-[{{財|ざい}}{{宝|ほう}}](term:term-anki-l18-zaihou) appartiene invece alla lingua delle leggende. `{{財|ざい}}` richiama beni o ricchezze, `{{宝|ほう}}` tesori preziosi: insieme indicano oggetti di valore narrativo, spesso antichi o carichi di storia. In un racconto su re, rovine o Pokémon della Rovina, non leggerlo come denaro da spendere in negozio; è un tesoro che porta con sé memoria e maledizione.
+[{{財宝|ざいほう}}](term:term-anki-l18-zaihou) appartiene invece alla lingua delle leggende. Come parola compatta indica oggetti di valore narrativo, spesso antichi o carichi di storia. In un racconto su re, rovine o Pokémon della Rovina, non leggerlo come denaro da spendere in negozio; è un tesoro che porta con sé memoria e maledizione.
 
 :::example_sentence
 jp: >-
-  {{4|よっ}}つの {{災|さい}}{{厄|やく}}の ポケモンと {{王|おう}}の {{財|ざい}}{{宝|ほう}}の {{話|はなし}}だ。
+  {{4|よっ}}つの {{災厄|さいやく}}の ポケモンと {{王|おう}}の {{財宝|ざいほう}}の {{話|はなし}}だ。
 translation_it: >-
   È la storia dei Pokémon della Rovina e dei tesori del re.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{4|よっ}}つの {{災|さい}}{{厄|やく}}の ポケモン` -> `{{4|よっ}}つ` conta il gruppo; `{{災|さい}}{{厄|やく}}` dà una cornice di rovina o calamità.
-- `{{王|おう}}の {{財|ざい}}{{宝|ほう}}` -> `の` collega i tesori al re, rendendoli parte di una leggenda specifica.
+- `{{4|よっ}}つの {{災厄|さいやく}}の ポケモン` -> `{{4|よっ}}つ` conta il gruppo; `{{災厄|さいやく}}` dà una cornice di rovina o calamità.
+- `{{王|おう}}の {{財宝|ざいほう}}` -> `の` collega i tesori al re, rendendoli parte di una leggenda specifica.
 - `{{話|はなし}}だ` -> non è un comando né una descrizione di inventario: è una narrazione.
 
 > [!NOTE]
-> **🧠 Gancio cognitivo:** [{{財|ざい}}{{宝|ほう}}](term:term-anki-l18-zaihou) è "ricchezza + tesoro". Usalo come immagine mentale per distinguerlo da `お{{金|かね}}`, che indica il denaro comune.
+> **🧠 Gancio cognitivo:** per [{{財宝|ざいほう}}](term:term-anki-l18-zaihou), pensa a un tesoro da leggenda con una storia addosso. Usalo come immagine mentale per distinguerlo da `お{{金|かね}}`, che indica il denaro comune.
 
 ## Esempi guidati di riepilogo
 
@@ -252,14 +252,14 @@ Le stesse forme diventano più riconoscibili quando le leggi come piccoli sistem
 
 :::example_sentence
 jp: >-
-  {{先|せん}}{{生|せい}}は エリアゼロの ことを ご{{存|ぞん}}{{知|じ}}で、その {{説|せつ}}{{明|めい}}も {{理|り}}{{解|かい}} できた。
+  {{先生|せんせい}}は エリアゼロの ことを ご{{存知|ぞんじ}}で、その {{説明|せつめい}}も {{理解|りかい}} できた。
 translation_it: >-
   Il professore conosceva l'Area Zero, e sono riuscito a comprendere anche quella spiegazione.
 :::
 
 :::example_sentence
 jp: >-
-  ジムテストに {{向|む}}けて やる{{気|き}}を {{出|だ}}せば、{{合|ごう}}{{格|かく}}{{者|しゃ}}に なれるかも しれない。
+  ジムテストに {{向|む}}けて やる{{気|き}}を {{出|だ}}せば、{{合格者|ごうかくしゃ}}に なれるかも しれない。
 translation_it: >-
   Se tiri fuori la motivazione per il test della palestra, potresti diventare tra i promossi.
 :::
@@ -273,7 +273,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{王|おう}}の {{財|ざい}}{{宝|ほう}}と ポケモンたちの {{楽|らく}}{{園|えん}}の {{話|はなし}}は、とても {{興|きょう}}{{味|み}}{{深|ぶか}}い。
+  {{王|おう}}の {{財宝|ざいほう}}と ポケモンたちの {{楽園|らくえん}}の {{話|はなし}}は、とても {{興味|きょうみ}}{{深|ぶか}}い。
 translation_it: >-
   La storia dei tesori del re e del paradiso dei Pokémon è davvero affascinante.
 :::
@@ -282,4 +282,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando questi termini tornano in gioco, il filo da seguire è il ruolo della frase. [ご{{存|ぞん}}{{知|じ}}](term:term-anki-l18-gozonji) e [{{理|り}}{{解|かい}}](term:term-anki-l18-rikai) costruiscono registro e comprensione; [やる{{気|き}}](term:term-anki-l18-yaruki), [{{活|かつ}}{{躍|やく}}](term:term-anki-l18-katsuyaku) e [{{合|ごう}}{{格|かく}}{{者|しゃ}}](term:term-anki-l18-goukakusha) definiscono energia, aspettativa e accesso; [{{壊|こわ}}れる](term:term-anki-l18-kowareru), [{{現|あらわ}}れる](term:term-anki-l18-arawareru) e [{{光|ひか}}る](term:term-anki-l18-hikaru) ti dicono che cosa succede sullo schermo; [{{楽|らく}}{{園|えん}}](term:term-anki-l18-rakuen) e [{{財|ざい}}{{宝|ほう}}](term:term-anki-l18-zaihou) danno alla scena il peso di una leggenda.
+Quando questi termini tornano in gioco, il filo da seguire è il ruolo della frase. [ご{{存知|ぞんじ}}](term:term-anki-l18-gozonji) e [{{理解|りかい}}](term:term-anki-l18-rikai) costruiscono registro e comprensione; [やる{{気|き}}](term:term-anki-l18-yaruki), [{{活躍|かつやく}}](term:term-anki-l18-katsuyaku) e [{{合格者|ごうかくしゃ}}](term:term-anki-l18-goukakusha) definiscono energia, aspettativa e accesso; [{{壊|こわ}}れる](term:term-anki-l18-kowareru), [{{現|あらわ}}れる](term:term-anki-l18-arawareru) e [{{光|ひか}}る](term:term-anki-l18-hikaru) ti dicono che cosa succede sullo schermo; [{{楽園|らくえん}}](term:term-anki-l18-rakuen) e [{{財宝|ざいほう}}](term:term-anki-l18-zaihou) danno alla scena il peso di una leggenda.

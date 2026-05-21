@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-036-sv-prestudy-l23a-verbi-operativi-sistema-e-menu
 media_id: media-pokemon-scarlet-violet
 slug: 036-sv-prestudy-l23a-verbi-operativi-sistema-e-menu
-title: SV Pre-study L23A - verbi operativi, sistema e menu
+title: "Verbi operativi: muoversi, aprire menu e leggere scelte di sistema"
 order: 66
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -52,10 +52,10 @@ Quando leggi messaggi come `メニューを{{開|ひら}}く`, `{{学校|がっ�
 
 ## Etichette da riconoscere
 
-- [{{通信交換|つうしんこうかん}}](term:term-v400-tsuushinkoukan) — scambio in link / trade
+- [{{通信|つうしん}}{{交換|こうかん}}](term:term-v400-tsuushinkoukan) — scambio in link / trade
 - [{{戦略|せんりゃく}}](term:term-v401-senryaku) — strategia
 - [{{手加減|てかげん}}](term:term-v406-tekagen) — trattenersi / non andare al massimo
-- [{{図鑑完成|ずかんかんせい}}](term:term-v412-zukan-kansei) — completamento del Pokédex
+- [{{図鑑|ずかん}}{{完成|かんせい}}](term:term-v412-zukan-kansei) — completamento del Pokédex
 - [かがやきパワー](term:term-v395-kagayakipawaa) — Sparkling Power
 - [パラドックスポケモン](term:term-v398-paradokkusupokemon) — Pokémon Paradosso
 - [そうぐうパワー](term:term-v399-souguupawaa) — Encounter Power
@@ -115,14 +115,19 @@ translation_it: >-
   Controllo il punto che brilla.
 :::
 
+#### 🗺️ Anatomia della frase
+
+- `{{光|ひか}}っている{{場所|ばしょ}}を` -> la relativa `{{光|ひか}}っている` restringe il luogo: controlli il punto che sta brillando.
+- `{{調|しら}}べます` -> verbo d'ispezione: esamini il punto, non lo attraversi.
+
 > [!WARNING]
 > **⚠️ Non leggere tutti gli incontri come azioni su un oggetto.** `ポケモンを{{調|しら}}べる` può voler dire "controllare un Pokémon" in una schermata dati; `ポケモンに{{出会|であ}}う` dice invece che lo incontri nel mondo. La differenza tra `を` e `に` separa ispezione e incontro.
 
 ## 3. Menu, squadra e progressi: nomi che diventano azioni
 
-[{{整理|せいり}}](term:term-v393-seiri) è un nome: ordine, sistemazione, riordino. Nei menu diventa azione con `する`, come `ボックスのポケモンを{{整理|せいり}}する`: non stai "pulendo" la box, stai mettendo in ordine o organizzando i Pokémon. Lo stesso meccanismo appare in [{{通信交換|つうしんこうかん}}](term:term-v400-tsuushinkoukan), dove [{{通信|つうしん}}](term:term-v267-tsuushin) porta l'idea di collegamento e [{{交換|こうかん}}](term:term-v400-tsuushinkoukan) quella di scambio. Con `{{友|とも}}だちと{{通信交換|つうしんこうかん}}する`, `と` segnala la persona con cui fai lo scambio.
+[{{整理|せいり}}](term:term-v393-seiri) è un nome: ordine, sistemazione, riordino. Nei menu diventa azione con `する`, come `ボックスのポケモンを{{整理|せいり}}する`: non stai "pulendo" la box, stai mettendo in ordine o organizzando i Pokémon. Lo stesso meccanismo appare in [{{通信|つうしん}}{{交換|こうかん}}](term:term-v400-tsuushinkoukan), dove [{{通信|つうしん}}](term:term-v267-tsuushin) porta l'idea di collegamento e [{{交換|こうかん}}](term:term-v400-tsuushinkoukan) quella di scambio. Con `{{友|とも}}だちと{{通信|つうしん}}{{交換|こうかん}}する`, `と` segnala la persona con cui fai lo scambio.
 
-[{{先頭|せんとう}}](term:term-v411-sentou) è la posizione iniziale, la testa della fila. In un menu squadra, `ポケモンを{{先頭|せんとう}}にする` significa mettere quel Pokémon al primo posto, quindi renderlo quello che entra per primo in contesti dove l'ordine conta. [{{図鑑完成|ずかんかんせい}}](term:term-v412-zukan-kansei) compatta un obiettivo di progresso: [{{図鑑|ずかん}}](term:term-v412-zukan-kansei) è il Pokédex come catalogo, [{{完成|かんせい}}](term:term-v412-zukan-kansei) è il completamento.
+[{{先頭|せんとう}}](term:term-v411-sentou) è la posizione iniziale, la testa della fila. In un menu squadra, `ポケモンを{{先頭|せんとう}}にする` significa mettere quel Pokémon al primo posto, quindi renderlo quello che entra per primo in contesti dove l'ordine conta. [{{図鑑|ずかん}}{{完成|かんせい}}](term:term-v412-zukan-kansei) compatta un obiettivo di progresso: [{{図鑑|ずかん}}](term:term-v412-zukan-kansei) è il Pokédex come catalogo, [{{完成|かんせい}}](term:term-v412-zukan-kansei) è il completamento.
 
 [{{戦略|せんりゃく}}](term:term-v401-senryaku) e [{{手加減|てかげん}}](term:term-v406-tekagen) entrano più facilmente nei dialoghi che commentano una lotta. [{{戦略|せんりゃく}}](term:term-v401-senryaku) parla del piano, non della singola mossa; [{{手加減|てかげん}}](term:term-v406-tekagen) indica il dosare la forza, quindi trattenersi. Se un rivale dice di non fare [{{手加減|てかげん}}](term:term-v406-tekagen), il tono non è tecnico da menu: sta chiedendo una sfida vera.
 
@@ -160,6 +165,12 @@ jp: >-
 translation_it: >-
   Tu vai avanti. Al resto penso io.
 :::
+
+#### 🗺️ Anatomia della frase
+
+- `きみは{{先|さき}}に{{行|い}}って` -> separa il compito dell'interlocutore: andare avanti.
+- `あとは` -> "quanto al resto": sposta il tema su ciò che rimane da fare.
+- `{{任|まか}}せて` -> richiesta/assicurazione: "lascia fare a me".
 
 > [!NOTE]
 > **⚖️ Contrasto operativo:** [{{見|み}}てみよう](term:term-e075-mitemiyou) invita a fare una prova insieme; [あとは{{任|まか}}せて](term:term-e076-atoha-makase-te) sposta la responsabilità sul parlante; [まずはここから](term:term-e077-mazuhakokokara) indica da dove cominciare prima di aprire il resto delle opzioni.
@@ -206,7 +217,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{友|とも}}だちと {{通信交換|つうしんこうかん}}を します。
+  {{友|とも}}だちと {{通信|つうしん}}{{交換|こうかん}}を します。
 translation_it: >-
   Faccio uno scambio in link con un amico.
 :::

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-034-sv-prestudy-l22a-verbi-operativi-sistema-e-menu
 media_id: media-pokemon-scarlet-violet
 slug: 034-sv-prestudy-l22a-verbi-operativi-sistema-e-menu
-title: SV Pre-study L22A - verbi operativi, sistema e menu
+title: "Verbi operativi nei menu: controllare, tornare, muoversi, provare"
 order: 64
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -34,7 +34,7 @@ Lo stesso blocco di lingua passa nei dialoghi. Un personaggio può chiederti un 
 - [{{中央|ちゅうおう}}](term:term-v361-chuuou) — centro di un'area o schermata
 - [お{{気|き}}に{{入|い}}り](term:term-v362-okiniiri) — preferito / favorito
 - [{{途中|とちゅう}}](term:term-v364-tochuu) — durante il percorso / a metà
-- [{{制限時間|せいげんじかん}}](term:term-v366-seigenjikan) — tempo limite
+- [{{制限|せいげん}}{{時間|じかん}}](term:term-v366-seigenjikan) — tempo limite
 - [{{走|はし}}る](term:term-v367-hashiru) — correre
 - [{{選択|せんたく}}](term:term-v368-sentaku) — selezione / scelta
 - [ロックオン](term:term-v369-rokkuon) — lock-on / aggancio al bersaglio
@@ -164,7 +164,7 @@ translation_it: >-
 
 [{{歩|ある}}く](term:term-v360-aruku) e [{{走|はし}}る](term:term-v367-hashiru) distinguono il modo del movimento. Entrambi possono portarti verso lo stesso punto, ma [{{歩|ある}}く](term:term-v360-aruku) è movimento a piedi normale, mentre [{{走|はし}}る](term:term-v367-hashiru) aggiunge velocità e urgenza. [{{全力|ぜんりょく}}](term:term-v372-zenryoku) con `で` modifica il modo dell'azione: `{{全力|ぜんりょく}}で{{走|はし}}る` non è solo correre, è farlo con tutte le forze.
 
-[{{途中|とちゅう}}](term:term-v364-tochuu) sposta l'attenzione dal punto finale alla fase intermedia. In `バトルの{{途中|とちゅう}}`, la battaglia non è conclusa: sei dentro il suo svolgimento. Con [{{制限時間|せいげんじかん}}](term:term-v366-seigenjikan), il testo aggiunge un vincolo temporale: la prova o la lotta non dipende solo dall'obiettivo, ma anche dal timer.
+[{{途中|とちゅう}}](term:term-v364-tochuu) sposta l'attenzione dal punto finale alla fase intermedia. In `バトルの{{途中|とちゅう}}`, la battaglia non è conclusa: sei dentro il suo svolgimento. Con [{{制限|せいげん}}{{時間|じかん}}](term:term-v366-seigenjikan), il testo aggiunge un vincolo temporale: la prova o la lotta non dipende solo dall'obiettivo, ma anche dal timer.
 
 :::example_sentence
 jp: >-
@@ -256,7 +256,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  このバトルは {{制限時間|せいげんじかん}}が あります。
+  このバトルは {{制限|せいげん}}{{時間|じかん}}が あります。
 translation_it: >-
   Questa battaglia ha un tempo limite.
 :::

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarlet-violet-sistema-e-menu
 media_id: media-pokemon-scarlet-violet
 slug: 049-sv-prestudy-l34b-scarlet-violet-sistema-e-menu
-title: SV Pre-study L34B - Scarlet/Violet, sistema e menu
+title: "Sistema, scuola e menu quando il gioco cambia registro"
 order: 79
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -150,7 +150,7 @@ Quando la storia passa a basi, territori o sfide tra Allenatori, i nomi indicano
 - [{{一帯|いったい}}](term:term-v734-ittai) ha bisogno di un punto di riferimento: `この{{一帯|いったい}}`, `あたり{{一帯|いったい}}`, `{{湖|みずうみ}}の{{一帯|いったい}}`. Non significa solo "area" in astratto, ma la zona attorno a quel luogo.
 - [{{占拠|せんきょ}}](term:term-v735-senkyo) è più forte di "stare lì": `{{拠点|きょてん}}を{{占拠|せんきょ}}する` dice che un gruppo prende una base e la tiene sotto controllo. Con `{{占拠|せんきょ}}される`, invece, l'area è ciò che subisce l'occupazione.
 - [{{不良|ふりょう}}](term:term-v713-furyou) nella cornice scolastica indica studenti problematici o teppisti, come quando si parla del Team Star. Fuori da questo contesto può voler dire anche "difettoso", ma qui il referente sono persone.
-- [{{競|きそ}}い{{合|あ}}う](term:term-v732-seiau) è reciproco: `{{競|きそ}}う` è competere, `{{合|あ}}う` aggiunge l'idea di "tra loro". La lettura corretta è `きそいあう`, non una lettura costruita da `競` come `せい`.
+- [{{競|きそ}}い{{合|あ}}う](term:term-v732-seiau) è reciproco: `{{競|きそ}}う` è competere, `{{合|あ}}う` aggiunge l'idea di "tra loro". La lettura corretta è `きそいあう`, non una lettura costruita da `{{競|きそ}}` come `せい`.
 
 :::example_sentence
 jp: >-

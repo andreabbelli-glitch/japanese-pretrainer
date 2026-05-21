@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desideri-e-descrizioni
 media_id: media-pokemon-scarlet-violet
 slug: 062-sv-anki-l10-eventi-desideri-e-descrizioni
-title: SV Anki L10 - Eventi, desideri e descrizioni
+title: Eventi, desideri e descrizioni tra Accademia e viaggio
 order: 92
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -48,7 +48,7 @@ Il filo principale è concreto. [{{先|さき}}ほど](term:term-anki-l10-sakiho
 Quando una battuta nomina [{{雑|ざっ}}{{誌|し}}](term:term-anki-l10-zasshi), [{{作|さく}}{{品|ひん}}](term:term-anki-l10-sakuhin), [{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) o [{{市|し}}{{場|じょう}}](term:term-anki-l10-shijou), il testo sta delimitando il referente: non dice ancora che cosa fare, ma ti dice di quale oggetto, spazio o ambito si sta parlando.
 
 - [{{雑|ざっ}}{{誌|し}}](term:term-anki-l10-zasshi) è una rivista o pubblicazione periodica. In Accademia può comparire accanto a オカルト o ad altri temi di lettura: il punto non è "carta" in generale, ma una pubblicazione consultabile, esposta o citata come fonte.
-- [{{作|さく}}{{品|ひん}}](term:term-anki-l10-sakuhin) unisce `{{作|さく}}` "fare, produrre" e `{{品|ひん}}` "oggetto, prodotto". In una lezione d'arte o davanti alle sculture di コルサ, indica l'opera come risultato creativo, non solo l'atto di lavorare.
+- [{{作|さく}}{{品|ひん}}](term:term-anki-l10-sakuhin) si legge come composto intero: "opera / prodotto creativo". In una lezione d'arte o davanti alle sculture di コルサ, indica il risultato creativo, non solo l'atto di lavorare.
 - [{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) contiene `{{会|かい}}` "riunione, evento" e `{{場|じょう}}` "luogo". Se leggi `ジムテストの {{会|かい}}{{場|じょう}}`, la particella `の` lega la sede alla prova specifica: non è un posto qualunque della città, ma l'area in cui quell'evento si svolge.
 - [{{市|し}}{{場|じょう}}](term:term-anki-l10-shijou) può indicare il mercato come sistema di scambio, prezzi e circolazione di oggetti. Per il mercato fisico di una città, il giapponese può usare anche la lettura `いちば`; qui `{{市|し}}{{場|じょう}}` suona più generale o economico.
 
@@ -78,7 +78,7 @@ translation_it: >-
 Qui `オカルト{{雑|ざっ}}{{誌|し}}` non descrive un libro di testo: `{{雑|ざっ}}{{誌|し}}` restringe il tipo di oggetto a una rivista, mentre `{{置|お}}いてある` dice che l'oggetto è stato messo lì e si trova disponibile nello spazio. In una schermata o in un dialogo, questa combinazione sposta l'attenzione su ciò che puoi vedere o consultare.
 
 > [!NOTE]
-> **🧠 Gancio cognitivo:** per [{{作|さく}}{{品|ひん}}](term:term-anki-l10-sakuhin), pensa a "il prodotto di un fare". È un trucco mnemonico: ti aiuta a ricordare che la parola punta al risultato creativo, non alla fatica o al processo.
+> **🧠 Gancio cognitivo:** per [{{作|さく}}{{品|ひん}}](term:term-anki-l10-sakuhin), immagina un oggetto finito esposto con una targhetta da galleria. È un trucco mnemonico: ti aiuta a ricordare che la parola punta al risultato creativo, non alla fatica o al processo.
 
 ## 2. Tempo cortese e desiderio personale
 

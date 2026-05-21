@@ -115,9 +115,10 @@ Primary target files:
 
 - Do not append the new card to
   `textbook/021-live-duel-encounters-crash-hadou.md`.
-- Create a new textbook page for the card, using the same structural template
-  and editorial shape as
-  `textbook/021-live-duel-encounters-crash-hadou.md`.
+- Create a new textbook page for the card using the repo lesson style standard
+  (`docs/llm-kit/general/10-textbook-lesson-style-standard.md`) and the current
+  textbook template. Use older live encounter files only for sequence/naming
+  conventions, not as the editorial shape to copy.
 - The new lesson must stay in the `live-duel-encounters` sequence:
   - `segment_ref: live-duel-encounters`
   - a fresh `id`, `slug`, `title`, `summary`, and tags for the new card
@@ -149,6 +150,12 @@ Primary target files:
 - Follow `docs/llm-kit/general/10-textbook-lesson-style-standard.md` for voice
   and explanation quality. The page should read like a tutor walking through
   the card text with the learner: natural, dense, concrete, and progressive.
+- Keep H1 and Italian headings in sentence case, not Title Case, except for
+  proper names, acronyms, and official keyword labels.
+- Preserve identity frontmatter when revising an existing lesson: `id`, `slug`,
+  `order`, segment/status fields, and other routing fields. `title` is visible
+  to the learner: if it still reads like a batch or workflow label, rewrite it
+  as a natural sentence-case lesson title aligned with the H1.
 - Use the standard's expected body sequence and visual block grammar when the
   material supports it: thematic cluster, dense explanation, example sentence,
   anatomy, operational contrast, cognitive hook, recap.
@@ -182,6 +189,16 @@ Primary target files:
   mnemonic aids when they are not real etymology.
 - Prefer the recognizable lesson markers from the standard when useful:
   `🗺️` for anatomy, `⚖️` for operational contrasts, `🧠` for cognitive hooks.
+- Do not use dotted ruby readings or ruby on pure katakana. Prefer semantic
+  kanji chunks such as `{{目的|もくてき}}{{地|ち}}` over
+  `{{目的地|もく.てき.ち}}`; keep katakana-only labels without furigana.
+- Do not split lexical compounds kanji-by-kanji when a natural block is more
+  readable: use `{{言語|げんご}}{{学|がく}}`,
+  `{{課外|かがい}}{{授業|じゅぎょう}}`,
+  `{{興味|きょうみ}}{{深|ぶか}}い`, not
+  `{{言|げん}}{{語|ご}}{{学|がく}}`,
+  `{{課|か}}{{外|がい}}{{授|じゅ}}{{業|ぎょう}}`, or
+  `{{興|きょう}}{{味|み}}{{深|ぶか}}い`.
 - Explain the game consequence only as support for reading the Japanese.
 - Do not write meta framing about the page, the workflow, the lesson strategy,
   or the fact that the card was imported from a screenshot.
@@ -192,12 +209,13 @@ Primary target files:
   `textbook/*-keyword-effects-reference.md`, do not duplicate the section
   unless the new card introduces a genuinely new Japanese chunk worth
   preserving.
-- If the keyword is new, add one keyword section in alphabetical order.
-- Each keyword section should contain:
-  - heading with the keyword
-  - one `:::example_sentence` block with a compact Japanese operational
-    definition
-  - optionally one short note about the key chunk to recognize
+- If the keyword reference file already uses the cluster-driven textbook
+  structure, preserve that structure: add the new keyword to the relevant
+  inventory and cluster, then add an example/anatomy/contrast only where it
+  helps the reader. Do not append old-style per-keyword sections to a
+  cluster-driven page.
+- Use the legacy per-keyword section shape only when the target keyword bank is
+  still explicitly organized that way.
 
 7. Create all flashcards that satisfy the editorial criteria.
 
@@ -235,15 +253,16 @@ Primary target files:
 - Treat mixed kana+kanji patterns the same way: `それ以外なら`, `その中から`,
   and similar forms still need furigana in visible review text and a declared
   reading in the grammar entry.
-- For numbers, use one furigana block on the whole visible numeric chunk,
-  whether the number stands alone or comes with counters, qualifiers, signs, or
-  units: `{{4|よん}}`, `{{5000|ごせん}}`, `{{-3000|マイナスさんぜん}}`,
-  `{{1枚|いちまい}}`, `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`,
-  `{{2つ|ふたつ}}`.
+- For numbers, annotate the numeric/counter chunk with the verified reading,
+  but keep visible kana outside the ruby when they are already part of the
+  surface: `{{4|よん}}`, `{{5000|ごせん}}`,
+  `{{-3000|マイナスさんぜん}}`, `{{1枚|いちまい}}`,
+  `{{4以下|よんいか}}`, `{{4|よっ}}つ{{以上|いじょう}}`,
+  `{{2|ふた}}つ`.
 - When a number is paired with a counter, the reading must be the correct
   lexicalized reading of the full chunk, never a guessed composition. Check it
   explicitly before finishing, for example `{{1体|いったい}}`,
-  `{{2つ|ふたつ}}`, `{{2回|にかい}}`, `{{4枚|よんまい}}`.
+  `{{2|ふた}}つ`, `{{2回|にかい}}`, `{{4枚|よんまい}}`.
 - Do not leave review-facing Japanese like `無月の門`, `堕魔`, `4枚`,
   `コスト4以下`, or similar chunks without furigana in newly created cards.
 
@@ -429,6 +448,9 @@ Practical card-selection rules:
 - Textbook prose must follow the repo lesson style standard: tutor-like voice,
   thematic clusters, dense micro-explanations, anatomy of phrase, operational
   contrasts, and concise final synthesis.
+- H1 and Italian headings should use sentence case, not Title Case.
+- Preserve identity frontmatter on rewrites; make the `title` frontmatter
+  learner-facing if it still reads like a batch or workflow label.
 - Preserve the model lesson's page rhythm where it fits: long explanatory
   bullets, A/B/C/D subsections for related grammar points, and visual markers
   for anatomy, hooks, and contrasts.
@@ -458,6 +480,9 @@ Practical card-selection rules:
   contains kanji, annotate the link label itself with furigana everywhere it is
   learner-facing, especially inventories, first explanations, anatomy blocks,
   captions, and recaps.
+- Never use dotted ruby readings or ruby on katakana-only labels. Split
+  compounds into meaningful kanji chunks and verify readings instead of
+  reconstructing them.
 - If a new import introduces a high-risk shared-kanji contrast that might be
   useful for Kanji Clash later, keep the canonical lemma and reading stable and
   avoid creating a duplicate card just to mirror that contrast. See
@@ -468,7 +493,7 @@ Practical card-selection rules:
 Do not write meta or tautological explanations like these:
 
 - `Da qui in poi questa pagina non e piu una monografia su una sola carta: diventa l'archivio progressivo delle carte che incontro davvero durante il gioco.`
-- `Il punto piu importante non e la keyword offensiva in se, ma il blocco タップ状態でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo stato gia presente nel momento del controllo.`
+- `Il punto piu importante non e la keyword offensiva in se, ma il blocco タップ{{状態|じょうたい}}でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo stato gia presente nel momento del controllo.`
 
 Why these are wrong:
 
@@ -478,10 +503,10 @@ Why these are wrong:
 
 Replace that style with concrete analysis such as:
 
-- `タップ状態` = noun phrase meaning "tapped state"
+- `タップ{{状態|じょうたい}}` = noun phrase meaning "tapped state"
 - `でいる` = be in that state
 - `〜たら` = if/when
-- `このターンの後に` = after this turn
+- `このターンの{{後|あと}}に` = after this turn
 
 ## Templates
 
@@ -497,14 +522,14 @@ reveal_mode: sentence
 :::
 ```
 
-Keyword bank block:
+Legacy keyword bank block, only for files that still use per-keyword sections:
 
 ```md
-### [B・A・D 2](term:term-b-a-d-two)
+### [B・A・D {{2|ツー}}](term:term-b-a-d-two)
 
 :::example_sentence
 jp: >-
-[B・A・D 2](term:term-b-a-d-two)：...
+[B・A・D {{2|ツー}}](term:term-b-a-d-two)：...
 translation_it: >-
 B.A.D 2: ...
 reveal_mode: sentence

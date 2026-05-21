@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
-title: Keyword Effects Bank - reference unica delle keyword
+title: "Leggere le keyword: timing, costi e condizioni del rules text"
 order: 99
 segment_ref: keyword-bank
 difficulty: n3
@@ -27,11 +27,11 @@ chi o che cosa viene scelto, infine quale costo viene pagato, saltato o
 sostituito. Quando riconosci questi pezzi, una keyword smette di essere una
 definizione da memorizzare e diventa una procedura leggibile.
 
-Qui il focus non è imparare una lista di rulings. È leggere le frasi che
-accompagnano le keyword: `{{時|とき}}` apre una finestra, `〜てもよい` rende
-l'effetto facoltativo, `{{支払|しはら}}わずに` salta un costo, `{{上|うえ}}に`
-segnala sovrapposizione, `{{中|ちゅう}}` chiude il controllo dentro un turno o
-un attacco preciso.
+Le frasi che accompagnano le keyword hanno un valore più operativo della lista
+dei rulings: `{{時|とき}}` apre una finestra, `〜てもよい` rende l'effetto
+facoltativo, `{{支払|しはら}}わずに` salta un costo, `{{上|うえ}}に` segnala
+sovrapposizione, `{{中|ちゅう}}` chiude il controllo dentro un turno o un
+attacco preciso.
 
 ## Termini chiave
 
@@ -41,8 +41,8 @@ un attacco preciso.
   carta entro una soglia di costo
 - [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two) — costo ridotto ora,
   distruzione alla fine del turno
-- [ブロッカー](term:term-blocker) — blocco tramite tap al posto dell'attacco
-  normale
+- [ブロッカー](term:term-blocker) — cambio del bersaglio dell'attacco tramite
+  tap
 - [マッハファイター](term:term-mach-fighter) — attacco immediato contro creature
   tapped o untapped
 - [マナ{{進化|しんか}}GV](term:term-mana-evolution-gv) — evoluzione usando
@@ -242,18 +242,22 @@ reveal_mode: sentence
 
 [シビルカウント](term:term-civil-count) e [ラビリンス](term:term-labyrinth)
 lavorano invece sul conteggio. Nel primo caso `{{同|おな}}じ[{{文明|ぶんめい}}](term:term-civilization)`
-obbliga a guardare carte della stessa civiltà; nel secondo `{{相手|あいて}}より{{多|おお}}ければ`
-confronta il numero dei tuoi scudi con quello dell'avversario.
+obbliga a contare creature o Tamaseed nella battle zone che condividono la
+civiltà richiesta; nel secondo `{{相手|あいて}}より{{多|おお}}ければ` confronta il
+numero dei tuoi scudi con quello dell'avversario.
 
 :::example_sentence
 jp: >-
-  [シビルカウント](term:term-civil-count)：{{自分|じぶん}}の{{同|おな}}じ
-  [{{文明|ぶんめい}}](term:term-civilization)のカードが{{指定|してい}}された
-  {{数|かず}}あれば、このカードの{{条件|じょうけん}}や
+  [シビルカウント](term:term-civil-count)：{{自分|じぶん}}の
+  バトルゾーンに、このカードと{{同|おな}}じ
+  [{{文明|ぶんめい}}](term:term-civilization)を{{持|も}}つ
+  クリーチャーまたはタマシードが{{指定|してい}}された
+  {{数|かず}}{{以上|いじょう}}あれば、このカードの{{条件|じょうけん}}や
   [{{効果|こうか}}](term:term-effect)が{{有効|ゆうこう}}になる。
 translation_it: >-
-  Civil Count: se hai il numero richiesto di carte della stessa civiltà, la
-  condizione o l'effetto di questa carta diventa attivo.
+  Civil Count: se nella tua battle zone hai almeno il numero richiesto di
+  creature o Tamaseed della stessa civiltà di questa carta, la condizione o
+  l'effetto diventa attivo.
 reveal_mode: sentence
 :::
 
@@ -384,34 +388,35 @@ reveal_mode: sentence
 
 Le keyword difensive non dicono solo "proteggi" o "reagisci". Specificano chi
 può agire contro chi, quale risposta è permessa e da quale zona arriva la
-carta. [ブロッカー](term:term-blocker) contiene una restrizione offensiva e un
-rimpiazzo difensivo; [ジャストダイバー](term:term-justdiver) nega scelta e
+carta. [ブロッカー](term:term-blocker) è una risposta difensiva all'attacco di
+una creatura avversaria; [ジャストダイバー](term:term-justdiver) nega scelta e
 attacco fino a un limite temporale; [G・ストライク](term:term-g-strike) e
 [S・トリガー](term:term-s-trigger) leggono la difesa come uso immediato della
 carta.
 
 :::example_sentence
 jp: >-
-  [ブロッカー](term:term-blocker)：このクリーチャーは
-  [{{相手|あいて}}](term:term-opponent)プレイヤーを
-  [{{攻撃|こうげき}}](term:term-attack)できない。{{相手|あいて}}の
-  クリーチャーが{{攻撃|こうげき}}する{{時|とき}}、かわりにこの
-  クリーチャーを[タップ](term:term-tap)してもよい。
+  [ブロッカー](term:term-blocker)：{{相手|あいて}}の
+  クリーチャーが{{攻撃|こうげき}}する{{時|とき}}、このクリーチャーを
+  [タップ](term:term-tap)してもよい。そうしたら、その{{攻撃|こうげき}}の
+  {{攻撃先|こうげきさき}}をこのクリーチャーに{{変更|へんこう}}する。
 translation_it: >-
-  Blocker: questa creatura non può attaccare il giocatore avversario; quando
-  una creatura avversaria attacca, puoi tapparla al suo posto per bloccare.
+  Blocker: quando una creatura avversaria attacca, puoi tappare questa
+  creatura. Se lo fai, cambi il bersaglio di quell'attacco su questa creatura.
 reveal_mode: sentence
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `[{{相手|あいて}}](term:term-opponent)プレイヤーを[{{攻撃|こうげき}}](term:term-attack)できない`
-  -> la creatura non può attaccare direttamente il giocatore avversario.
 - `{{相手|あいて}}のクリーチャーが{{攻撃|こうげき}}する{{時|とき}}` -> la finestra si
   apre quando una creatura avversaria attacca.
-- `かわりにこのクリーチャーを[タップ](term:term-tap)してもよい` -> il tap è una
-  risposta facoltativa che si mette "al posto" del normale passaggio
-  dell'attacco.
+- `このクリーチャーを[タップ](term:term-tap)してもよい` -> il tap è una risposta
+  facoltativa: la keyword non obbliga a usarla ogni volta.
+- `そうしたら` -> apre la conseguenza: vale solo se hai davvero tappato questa
+  creatura.
+- `その{{攻撃|こうげき}}の{{攻撃先|こうげきさき}}をこのクリーチャーに{{変更|へんこう}}する`
+  -> il punto non è cancellare l'attacco, ma spostarne il bersaglio su questa
+  creatura.
 
 :::example_sentence
 jp: >-
@@ -435,12 +440,15 @@ reveal_mode: sentence
 
 :::example_sentence
 jp: >-
-  [G・ストライク](term:term-g-strike)：{{相手|あいて}}の{{攻|せ}}めに
-  {{対|たい}}して、このカードを{{守|まも}}りの{{切|き}}り{{返|かえ}}しとして
-  {{使|つか}}ってもよい。
+  [G・ストライク](term:term-g-strike)：このカードをシールドゾーンから
+  {{手札|てふだ}}に{{加|くわ}}える{{時|とき}}、
+  {{相手|あいて}}に{{見|み}}せてもよい。そうしたら、
+  {{相手|あいて}}のクリーチャーを{{1体|いったい}}{{選|えら}}ぶ。
+  このターン、そのクリーチャーは{{攻撃|こうげき}}できない。
 translation_it: >-
-  G-Strike: puoi usare questa carta come risposta difensiva contro la pressione
-  dell'avversario.
+  G-Strike: quando aggiungi questa carta dagli scudi alla mano, puoi mostrarla
+  all'avversario. Se lo fai, scegli una creatura avversaria; in questo turno
+  quella creatura non può attaccare.
 reveal_mode: sentence
 :::
 

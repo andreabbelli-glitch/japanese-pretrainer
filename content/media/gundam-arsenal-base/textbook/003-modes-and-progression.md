@@ -2,7 +2,7 @@
 id: lesson-gundam-arsenal-base-modes-and-progression
 media_id: media-gundam-arsenal-base
 slug: modes-and-progression
-title: Modalità e progressione
+title: "Modalità, profilo e deck: leggere il percorso fuori dalla battaglia"
 order: 30
 segment_ref: modes-and-progression
 difficulty: n4
@@ -66,15 +66,16 @@ allenarti contro CPU, rischiare punti rank, controllare una
 
 La selezione modalità è una schermata di orientamento, non una lista neutra di
 nomi. [ランクマッチ](term:term-rank-match), [チャレンジモード](term:term-challenge-mode),
-[カジュアルマッチ](term:term-casual-match) e [VEレイドバトル](term:term-ve-raid-battle)
-usano katakana e sigle, ma ognuna cambia il rischio della sessione: punti,
-allenamento, prova libera o cooperazione contro boss.
+[カジュアルマッチ](term:term-casual-match) usano katakana trasparente, mentre label
+evento come `リンクステージバトル` aggiungono un nome di contenuto specifico sopra
+la stessa area di selezione. Ognuna cambia il rischio della sessione: punti,
+allenamento, prova libera o battaglia evento.
 
 :::image
 src: assets/ui/mode-select-screen.webp
-alt: "Schermata ufficiale di selezione modalità con riquadri per Rank Match, Challenge Mode e Casual Match, più il pannello di selezione versus."
+alt: "Schermata ufficiale di selezione modalità con riquadri per Rank Match, Challenge Mode, Casual Match e Link Stage Battle, più il pannello di selezione versus."
 caption: >-
-  Schermata ufficiale di selezione modalità: riconosci [ランクマッチ](term:term-rank-match), [チャレンジモード](term:term-challenge-mode) e [カジュアルマッチ](term:term-casual-match), più il pannello `{{対戦|たいせん}}モード{{選択|せんたく}}` che decide come cercare l'avversario.
+  Schermata ufficiale di selezione modalità: riconosci [ランクマッチ](term:term-rank-match), [チャレンジモード](term:term-challenge-mode), [カジュアルマッチ](term:term-casual-match) e il label evento `リンクステージバトル`, più il pannello `{{対戦|たいせん}}モード{{選択|せんたく}}` che decide come cercare l'avversario.
 :::
 
 - [ランクマッチ](term:term-rank-match) contiene `ランク`, cioè rank, e `マッチ`,
@@ -204,7 +205,7 @@ obiettivi. Una distribuzione iniziale molto lineare è
 
 :::example_sentence
 jp: >-
-  {{最初|さいしょ}}のデッキは、{{殲滅|せんめつ}}{{2枚|にまい}}・{{制圧|せいあつ}}{{2枚|にまい}}・{{防衛|ぼうえい}}{{1枚|いちまい}}くらいだと[{{役割|やくわり}}](term:term-role)が{{見|み}}えやすいです。
+  {{最初|さいしょ}}のデッキは、{{殲滅|せんめつ}}{{2枚|にまい}}・{{制圧|せいあつ}}{{2枚|にまい}}・{{防衛|ぼうえい}}{{1枚|いちまい}}くらいだと{{役割|やくわり}}が{{見|み}}えやすいです。
 translation_it: >-
   In un primo deck, una ripartizione di circa 2 annientamenti, 2 pressioni e 1
   difesa rende le funzioni più leggibili.
@@ -216,7 +217,7 @@ translation_it: >-
   primo deck da cui partire.
 - `{{殲滅|せんめつ}}{{2枚|にまい}}・{{制圧|せいあつ}}{{2枚|にまい}}・{{防衛|ぼうえい}}{{1枚|いちまい}}くらい`
   -> `くらい` indica una misura approssimativa, non una legge fissa.
-- `[{{役割|やくわり}}](term:term-role)が{{見|み}}えやすい` -> letteralmente "i
+- `{{役割|やくわり}}が{{見|み}}えやすい` -> letteralmente "i
   ruoli sono facili da vedere": il criterio è leggibilità tattica, non rarità.
 
 > [!NOTE]
@@ -270,7 +271,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  ランクマッチの{{前|まえ}}に、カジュアルマッチでデッキの[{{役割|やくわり}}](term:term-role)を{{確認|かくにん}}します。
+  ランクマッチの{{前|まえ}}に、カジュアルマッチでデッキの{{役割|やくわり}}を{{確認|かくにん}}します。
 translation_it: >-
   Prima del Rank Match, controllo i ruoli del deck in Casual Match.
 :::

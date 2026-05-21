@@ -2,7 +2,7 @@
 id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 media_id: media-gundam-arsenal-base
 slug: special-starter-seed-freedom-gq
-title: Starter deck SEED FREEDOM & GQ
+title: "Leggere uno starter deck: frame, nomi e pairing MS + PL"
 order: 40
 segment_ref: special-starter-seed-freedom-gq
 difficulty: n4
@@ -35,7 +35,7 @@ blocchi ricorrenti del retro come [PLスキル](term:term-pl-skill) e
 - [イモータルジャスティスガンダム](term:term-immortal-justice-gundam) — MS mobile del lato SEED FREEDOM
 - [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom) — MS indicato come macchina dedicata a Lunamaria
 - [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu) — MS con nome latino e specificazione in katakana
-- [{{赤|あか}}いガンダム({{0085|ゼロゼロはちご}})](term:term-red-gundam-0085) — nome descrittivo con aggettivo giapponese e numero tra parentesi
+- [{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085) — nome descrittivo con aggettivo giapponese e numero tra parentesi
 - [キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne) — carta PL con due nomi uniti da `＆`
 - [シン・アスカ](term:term-shinn-asuka) — PL compatta, senza parentesi o doppio nome
 - [ルナマリア・ホーク](term:term-lunamaria-hawk) — PL che richiama direttamente la carta `{{専用機|せんようき}}`
@@ -84,7 +84,7 @@ Le {{5|ご}} MS sono
 [イモータルジャスティスガンダム](term:term-immortal-justice-gundam),
 [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom),
 [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu) e
-[{{赤|あか}}いガンダム({{0085|ゼロゼロはちご}})](term:term-red-gundam-0085).
+[{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085).
 Le {{5|ご}} PL sono
 [キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne),
 [シン・アスカ](term:term-shinn-asuka),
@@ -103,12 +103,12 @@ che non deve cedere.
 
 :::image
 src: assets/cards/starter-seed-freedom-gq-contact.webp
-alt: "Tavola con i retro delle 10 carte dello starter deck SPECIAL STARTER DECK SET [SEED FREEDOM & GQ], cinque MS sopra e cinque PL sotto."
+alt: "Tavola con i retro delle 10 carte dello starter deck SPECIAL STARTER DECK SET [SEED FREEDOM & GQ], disposte in due righe miste di MS e PL."
 caption: >-
   Tavola di riferimento del deck ufficiale `SPECIAL STARTER DECK SET [SEED
-  FREEDOM & GQ]`: sopra le {{5|ご}} MS, sotto le {{5|ご}} PL. La disposizione
-  permette di confrontare subito nomi, [コスト](term:term-cost), tipo MS e
-  ruolo PL.
+  FREEDOM & GQ]`: le {{10|じゅう}} carte sono disposte in due righe miste, con
+  MS e PL visibili nello stesso frame. La disposizione permette di confrontare
+  subito nomi, [コスト](term:term-cost), tipo MS e ruolo PL.
 :::
 
 #### 🗺️ Anatomia del frame
@@ -131,10 +131,10 @@ caption: >-
 
 ## 2. Nomi lunghi, parentesi e `＆`: dove tagliare la stringa
 
-Il deck è perfetto per allenare la lettura dei nomi non perché i nomi vadano
-memorizzati come blocchi opachi, ma perché mostrano tre meccanismi ricorrenti
-della UI giapponese: katakana composto, parentesi esplicativa e coordinazione
-con `＆`.
+I nomi lunghi del deck mostrano tre meccanismi ricorrenti della UI giapponese:
+katakana composto, parentesi esplicativa e coordinazione con `＆`. Non vanno
+letti come blocchi opachi: vanno tagliati nei punti in cui il testo segnala
+ruolo, variante o coppia.
 
 - [マイティーストライクフリーダムガンダム](term:term-mighty-strike-freedom-gundam)
   sembra una sola parola enorme, ma in pratica si taglia in
@@ -176,7 +176,7 @@ translation_it: >-
 > aggiunge una specificazione di sistema; in
 > [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu) aggiunge il nome con
 > cui il personaggio viene chiamato; in
-> [{{赤|あか}}いガンダム({{0085|ゼロゼロはちご}})](term:term-red-gundam-0085)
+> [{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085)
 > distingue una versione o un contesto numerico.
 
 ## 3. Pairing iniziali: leggere la coppia prima della singola carta
@@ -206,7 +206,7 @@ ha senso.
   il blocco GQ combina nome latino, katakana e parentesi; il ruolo
   [{{殲滅|せんめつ}}](term:term-role-shoumetsu) spinge a usarlo per togliere
   ostacoli dalla corsia.
-- [{{赤|あか}}いガンダム({{0085|ゼロゼロはちご}})](term:term-red-gundam-0085)
+- [{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085)
   + [シュウジ・イトウ](term:term-shuji-itou):
   la MS ha un nome giapponese semplice ma marcato da numero; la PL di
   [{{制圧|せいあつ}}](term:term-role-seiatsu) la trasforma in pezzo da obiettivo
@@ -317,18 +317,18 @@ verso il controllo a distanza. Con
 [{{殲滅|せんめつ}}](term:term-role-shoumetsu) conferma la funzione: togliere
 ostacoli dalla [{{前線|ぜんせん}}](term:term-frontline).
 
-### {{赤|あか}}いガンダム({{0085|ゼロゼロはちご}})
+### {{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})
 
 :::image
 src: assets/cards/starter-seed-freedom-gq/05-red-gundam-0085.webp
 alt: "Carta fronte e retro di あかいガンダム(0085) nello starter deck SEED FREEDOM & GQ."
 caption: >-
-  [{{赤|あか}}いガンダム({{0085|ゼロゼロはちご}})](term:term-red-gundam-0085):
+  [{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085):
   immagine completa fronte + retro.
 :::
 
 Qui il nome è più trasparente: `{{赤|あか}}い` è un aggettivo, quindi qualifica
-il Gundam come “rosso”. La parentesi numerica `({{0085|ゼロゼロはちご}})` non si
+il Gundam come “rosso”. La parentesi numerica `({{0085|ぜろぜろはちご}})` non si
 traduce: distingue versione o contesto. Con
 [{{近距離|きんきょり}}](term:term-ms-type-near-range) e
 [コスト](term:term-cost) {{5|ご}}, la carta sta nel mezzo tra pezzo economico e
@@ -445,8 +445,8 @@ translation_it: >-
 jp: >-
   {{制圧|せいあつ}}PLは、{{殲滅|せんめつ}}PLが{{前線|ぜんせん}}を{{開|ひら}}いたあとで{{拠点|きょてん}}を{{狙|ねら}}います。
 translation_it: >-
-  Una PL di soppressione punta alla base dopo che una PL di annientamento ha
-  aperto la prima linea.
+  Una PL di pressione sugli obiettivi punta alla base dopo che una PL di
+  annientamento ha aperto la prima linea.
 :::
 
 ## Nota finale

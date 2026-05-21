@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-031-sv-prestudy-l20b-battaglia-scuola-e-storia
 media_id: media-pokemon-scarlet-violet
 slug: 031-sv-prestudy-l20b-battaglia-scuola-e-storia
-title: SV Pre-study L20B - battaglia, scuola e storia
+title: "Battaglia, scuola e storia: quando la frase decide il passo successivo"
 order: 61
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -22,7 +22,7 @@ summary: >-
 
 In *Pokémon Scarlet & Violet* lo stesso blocco di gioco può passare da un tutorial di movimento a una lotta, poi a una frase di classe o a un dialogo di trama. Il giapponese ti dà segnali molto compatti: una parola dice che una funzione si è sbloccata, un tipo elementale prepara la scelta della mossa, una finale come `〜そうだ` cambia se stai vedendo un'impressione o ascoltando una voce riportata.
 
-Questo capitolo allena proprio quel cambio di marcia. Quando leggi un menu, devi capire che cosa puoi fare; quando leggi una battuta, devi capire se il personaggio propone, risponde, nomina qualcosa o sta solo facendo un commento troppo carico per essere neutro.
+Il cambio di marcia è continuo. Quando leggi un menu, devi capire che cosa puoi fare; quando leggi una battuta, devi capire se il personaggio propone, risponde, nomina qualcosa o sta solo facendo un commento troppo carico per essere neutro.
 
 ## Termini chiave
 
@@ -41,7 +41,7 @@ Questo capitolo allena proprio quel cambio di marcia. Quando leggi un menu, devi
 - [{{数学|すうがく}}](term:term-v307-suugaku) — matematica
 - [{{経験|けいけん}}](term:term-v309-keiken) — esperienza
 - [{{期待|きたい}}](term:term-v310-kitai) — attesa / aspettativa
-- [{{命中率|めいちゅうりつ}}](term:term-v311-meichuuritsu) — precisione
+- [{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) — precisione
 - [じめん](term:term-v312-jimen) — terra
 
 ## Espressioni ricorrenti
@@ -91,7 +91,7 @@ Nei blocchi di lotta, il giapponese compatto spesso decide se stai leggendo una 
 
 [{{対戦|たいせん}}](term:term-v297-taisen) indica un match contro qualcuno. È più mirato di una "battaglia" generica: in menu e dialoghi può distinguere lo scontro diretto con un avversario, anche online o in link, da un evento ambientale. [{{交換|こうかん}}する](term:term-v301-koukan-suru) è un altro verbo tecnico da UI: ciò che scegli passa a un altro giocatore, a un altro slot o a un altro stato di possesso.
 
-[{{命中率|めいちゅうりつ}}](term:term-v311-meichuuritsu) è formato da `{{命中|めいちゅう}}`, "colpire il bersaglio", e `{{率|りつ}}`, "percentuale/tasso". In battaglia non parla della potenza della mossa: parla della probabilità che la mossa vada a segno. Se leggi `{{命中率|めいちゅうりつ}}が{{高|たか}}い`, il vantaggio è affidabilità; se leggi `{{低|ひく}}い`, il rischio è mancare.
+[{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) è formato da `{{命中|めいちゅう}}`, "colpire il bersaglio", e `{{率|りつ}}`, "percentuale/tasso". In battaglia non parla della potenza della mossa: parla della probabilità che la mossa vada a segno. Se leggi `{{命中|めいちゅう}}{{率|りつ}}が{{高|たか}}い`, il vantaggio è affidabilità; se leggi `{{低|ひく}}い`, il rischio è mancare.
 
 :::example_sentence
 jp: >-
@@ -187,7 +187,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  じめんタイプの わざは {{命中率|めいちゅうりつ}}が {{高|たか}}いそうだ。
+  じめんタイプの わざは {{命中|めいちゅう}}{{率|りつ}}が {{高|たか}}いそうだ。
 translation_it: >-
   Pare che la mossa di tipo Terra abbia una precisione alta.
 :::
@@ -210,4 +210,4 @@ translation_it: >-
 
 ## Nota finale
 
-In questa parte del gioco conviene leggere prima la funzione della frase: [{{機能|きのう}}](term:term-v295-kinou), [{{設定|せってい}}](term:term-v305-settei) e [わざマシンマシン](term:term-v306-waza-mashinmashin) orientano la schermata; [{{対戦|たいせん}}](term:term-v297-taisen), [{{命中率|めいちゅうりつ}}](term:term-v311-meichuuritsu) e i tipi orientano la battaglia; [それなら](term:term-e058-sorenara), [～すぎる](grammar:grammar-g061-troppo) e `そうだ` decidono se il dialogo risponde, esagera, osserva o riporta.
+In questa parte del gioco conviene leggere prima la funzione della frase: [{{機能|きのう}}](term:term-v295-kinou), [{{設定|せってい}}](term:term-v305-settei) e [わざマシンマシン](term:term-v306-waza-mashinmashin) orientano la schermata; [{{対戦|たいせん}}](term:term-v297-taisen), [{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) e i tipi orientano la battaglia; [それなら](term:term-e058-sorenara), [～すぎる](grammar:grammar-g061-troppo) e `そうだ` decidono se il dialogo risponde, esagera, osserva o riporta.

@@ -104,14 +104,25 @@ spiegazione guidata da tutor:
 - micro-spiegazioni dense: forma giapponese, valore, funzione e contrasto;
 - anatomia della frase quando una frase contiene parsing utile;
 - contrasti operativi e ganci cognitivi dichiarati quando aiutano davvero.
+- H1 e heading italiani in sentence case, non Title Case all'inglese;
+- frontmatter identitario stabile nelle riscritture (`id`, `slug`, `order` e
+  campi di percorso); `title` è invece learner-facing e va reso naturale se
+  contiene label da batch o workflow;
+- furigana senza puntini, senza ruby su katakana puro e con letture verificate.
 
 Lo standard positivo è la lezione:
 
 - `content/media/pokemon-scarlet-violet/textbook/029-sv-prestudy-l19b-reazioni-e-parlato-scarlet-violet.md`
 
-Una lesson può avere metadiscorso didattico leggero se orienta il lettore
-(`in questa lezione analizziamo...`). Non può invece parlare di batch, review,
-workflow, curation o motivazione editoriale delle card.
+Una lesson deve preferire aperture contestuali dirette sul media. Frasi come
+`in questa lezione analizziamo...`, `questa pagina spiega...` o `qui vedremo...`
+vanno riscritte in termini di scena, schermata, carta o dialogo. Non può
+parlare di batch, review, workflow, curation o motivazione editoriale delle
+card.
+
+Il divieto non si applica ai termini reali del media: deck, deckbuilder,
+`デッキコード` o simili vanno spiegati se sono testo della schermata. Diventano
+problema solo quando parlano del sistema di studio o del processo editoriale.
 
 ### Flashcard
 
@@ -267,6 +278,18 @@ Rifiuta o riscrivi sempre questi casi:
 - letture ricostruite a intuito invece di verificate;
 - card su katakana trasparente o nome proprio trattate come memorization target
   senza spiegare quale riconoscimento concreto sblocchino.
+- titoli italiani in Title Case;
+- riscritture che cambiano `slug`, `order` o altri frontmatter identitari
+  senza richiesta;
+- `title` frontmatter lasciato come label editoriale (`SV Pre-study L20A`,
+  `SV Anki L18`, `Keyword Effects Bank`) invece di titolo naturale per l'utente;
+- furigana con puntini (`{{目的地|もく.てき.ち}}`) invece di blocchi semantici;
+- furigana kanji-per-kanji su composti lessicali naturali
+  (`{{言|げん}}{{語|ご}}{{学|がく}}`,
+  `{{課|か}}{{外|がい}}{{授|じゅ}}{{業|ぎょう}}`,
+  `{{興|きょう}}{{味|み}}{{深|ぶか}}い`);
+- ruby applicato a katakana puro;
+- esempi didattici costruiti presentati come citazioni reali della scena.
 
 ## 7. Checklist editoriale minima
 
@@ -277,8 +300,16 @@ Prima di chiudere un batch, verifica:
 - la lesson ha voce naturale, densa e progressiva, non stile da outline;
 - il corpo usa cluster funzionali quando il materiale lo permette;
 - le frasi grammaticalmente dense hanno anatomia o parsing esplicito;
+- esempi consecutivi che insegnano pattern diversi non condividono una sola
+  anatomia generica: ogni pattern denso riceve il proprio parsing;
 - i contrasti operativi e i ganci cognitivi sono usati quando migliorano il
   riconoscimento reale del giapponese;
+- H1 e heading sono in sentence case, salvo nomi propri e label ufficiali;
+- i frontmatter identitari sono rimasti invariati nelle riscritture;
+- il `title` frontmatter è learner-facing e non conserva label di batch;
+- i furigana non contengono puntini, non annotano katakana puro e hanno letture
+  verificate;
+- gli esempi costruiti restano naturali e non vengono presentati come transcript;
 - ogni paragrafo esplicativo contiene almeno due ancore verificabili tra forma,
   significato, collocazione, funzione, timing, target, risultato o contrasto;
 - i termini verticali necessari alla comprensione o all'interazione corretta
@@ -292,3 +323,5 @@ Prima di chiudere un batch, verifica:
   costruiscono literacy;
 - il contenuto spiega insieme giapponese e funzione nel media;
 - semplicità di forma non ha ridotto la quantità di concetti utili trasmessi.
+- i furigana usano blocchi semantici naturali, senza puntini, ruby su katakana
+  puro o spezzature kanji-per-kanji di composti lessicali.

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-047-sv-prestudy-l30e-sistema-e-menu-verbi-operativi
 media_id: media-pokemon-scarlet-violet
 slug: 047-sv-prestudy-l30e-sistema-e-menu-verbi-operativi
-title: SV Pre-study L30E - sistema e menu, verbi operativi
+title: "Menu, scuola e comandi: leggere che cosa il gioco ti lascia fare"
 order: 77
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -27,8 +27,8 @@ Il filo comune è operativo. [{{引|ひ}}き{{返|かえ}}す](term:term-v661-hi
 ## Termini chiave
 
 - [{{引|ひ}}き{{返|かえ}}す](term:term-v661-hikikaesu) — tornare indietro sui propri passi
-- [{{伝統行事|でんとうぎょうじ}}](term:term-v662-dentougyouji) — evento tramandato / tradizione scolastica
-- [{{課外活動|かがいかつどう}}](term:term-v663-kagaikatsudou) — attività fuori dalla lezione ordinaria
+- [{{伝統|でんとう}}{{行事|ぎょうじ}}](term:term-v662-dentougyouji) — evento tramandato / tradizione scolastica
+- [{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou) — attività fuori dalla lezione ordinaria
 - [まとめ{{売|う}}り](term:term-v664-matomeuri) — vendita in blocco
 - [{{全選択|ぜんせんたく}}](term:term-v665-zensentaku) — selezione di tutte le voci
 - [{{勝敗|しょうはい}}](term:term-v666-shouhai) — esito complessivo: vittoria o sconfitta
@@ -107,15 +107,15 @@ translation_it: >-
 
 ## 2. Scuola, regole e uscita nel mondo
 
-Quando il testo passa dall'interfaccia all'Accademia, le parole operative diventano cornice istituzionale. [{{伝統行事|でんとうぎょうじ}}](term:term-v662-dentougyouji) non indica una semplice festa: `{{伝統|でんとう}}` porta l'idea di qualcosa tramandato, `{{行事|ぎょうじ}}` è un evento organizzato. In *Scarlet & Violet* questa forma dà peso scolastico a un'attività come il viaggio fuori dall'aula.
+Quando il testo passa dall'interfaccia all'Accademia, le parole operative diventano cornice istituzionale. [{{伝統|でんとう}}{{行事|ぎょうじ}}](term:term-v662-dentougyouji) non indica una semplice festa: `{{伝統|でんとう}}` porta l'idea di qualcosa tramandato, `{{行事|ぎょうじ}}` è un evento organizzato. In *Scarlet & Violet* questa forma dà peso scolastico a un'attività come il viaggio fuori dall'aula.
 
-[{{課外活動|かがいかつどう}}](term:term-v663-kagaikatsudou) si legge per blocchi: `{{課外|かがい}}` è "fuori dal corso / fuori dalla lezione", `{{活動|かつどう}}` è attività. Non va ridotto a "club": nel contesto di Paldea può essere proprio l'uscita nel mondo aperto come estensione della scuola.
+[{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou) si legge per blocchi: `{{課外|かがい}}` è "fuori dal corso / fuori dalla lezione", `{{活動|かつどう}}` è attività. Non va ridotto a "club": nel contesto di Paldea può essere proprio l'uscita nel mondo aperto come estensione della scuola.
 
 Accanto a questa cornice, [{{風紀|ふうき}}](term:term-v667-fuuki) nomina disciplina, ordine e comportamento atteso. Se compare in bocca a personale scolastico o in una regola, il focus non è la battaglia ma il modo in cui gli studenti devono stare dentro lo spazio dell'Accademia.
 
 :::example_sentence
 jp: >-
-  {{宝|たから}}{{探|さが}}しは アカデミーの {{伝統行事|でんとうぎょうじ}}です。
+  {{宝|たから}}{{探|さが}}しは アカデミーの {{伝統|でんとう}}{{行事|ぎょうじ}}です。
 translation_it: >-
   Il Treasure Hunt è una tradizione dell'Accademia.
 :::
@@ -124,7 +124,7 @@ translation_it: >-
 
 - `{{宝|たから}}{{探|さが}}しは` -> il tema della frase: il Treasure Hunt.
 - `アカデミーの` -> possesso o appartenenza istituzionale: "dell'Accademia".
-- `{{伝統行事|でんとうぎょうじ}}です` -> classificazione: non evento casuale, ma rito scolastico riconosciuto.
+- `{{伝統|でんとう}}{{行事|ぎょうじ}}です` -> classificazione: non evento casuale, ma rito scolastico riconosciuto.
 
 Quando invece leggi [{{引|ひ}}き{{返|かえ}}す](term:term-v661-hikikaesu), la frase non sta descrivendo una tradizione ma un cambio di direzione. `{{引|ひ}}き` aggiunge l'idea di tirare indietro, `{{返|かえ}}す` quella di far tornare: insieme indicano tornare sui propri passi. In un percorso, è il verbo che blocca l'avanzamento o ti avvisa che proseguire non è la scelta prevista.
 
@@ -190,6 +190,12 @@ translation_it: >-
   Non è che mi dispiaccia / non significa che lo odi.
 :::
 
+#### 🗺️ Anatomia della frase
+
+- `きらいな` -> giudizio che l'interlocutore potrebbe attribuire al parlante.
+- `わけ` -> ragione o conclusione implicita: "il fatto è che...".
+- `じゃない` -> nega quella conclusione, senza trasformarla automaticamente nel contrario.
+
 > [!NOTE]
 > **⚖️ Contrasto operativo:** [～ってば](grammar:grammar-g109-ti-sto-dicendo-che) rafforza una dichiarazione; [～わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) impedisce una conclusione troppo forte. Uno aumenta la pressione, l'altro limita l'interpretazione.
 
@@ -254,7 +260,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{課外活動|かがいかつどう}}では、{{困難|こんなん}}な {{道|みち}}でも {{引|ひ}}き{{返|かえ}}すことができます。
+  {{課外|かがい}}{{活動|かつどう}}では、{{困難|こんなん}}な {{道|みち}}でも {{引|ひ}}き{{返|かえ}}すことができます。
 translation_it: >-
   Durante l'attività extrascolastica puoi tornare indietro anche su un percorso difficile.
 :::

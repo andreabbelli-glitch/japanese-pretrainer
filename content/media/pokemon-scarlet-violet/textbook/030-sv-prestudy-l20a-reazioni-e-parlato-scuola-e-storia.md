@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-030-sv-prestudy-l20a-reazioni-e-parlato-scuola-e-storia
 media_id: media-pokemon-scarlet-violet
 slug: 030-sv-prestudy-l20a-reazioni-e-parlato-scuola-e-storia
-title: SV Pre-study L20A - reazioni e parlato, scuola e storia
+title: "Reazioni e parlato di scuola: stati, dubbi e storia di Paldea"
 order: 60
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -18,7 +18,7 @@ summary: >-
   Seguire dialoghi scolastici e reazioni: riconoscere ruoli, dubbi, risultati e
   segnali di tempo per capire che cosa viene spiegato o richiesto.
 ---
-# Reazioni e Parlato di Scuola: Stati, Dubbi e Storia di Paldea
+# Reazioni e parlato di scuola: stati, dubbi e storia di Paldea
 
 Nei passaggi scolastici di *Pokémon Scarlet & Violet*, il giapponese alterna messaggi di sistema, battute brevi e parole più narrative. Una schermata può dirti che un effetto è stato rimosso; subito dopo un personaggio può chiedersi il motivo di un comportamento, ricordare un dettaglio o parlare di un tesoro personale.
 
@@ -65,7 +65,7 @@ Stato, chiusura, dubbio, contatto e memoria non sono liste separate: lavorano in
 
 ---
 
-## 1. Stati di Sistema: Condizione, Chiusura e Rimozione
+## 1. Stati di sistema: condizione, chiusura e rimozione
 
 Quando il testo è vicino a un menu o a una notifica, le parole diventano molto operative: non descrivono il mondo, ma lo stato esatto dell'azione appena avvenuta.
 
@@ -88,7 +88,7 @@ translation_it: >-
 > [!NOTE]
 > **⚖️ Contrasto operativo:** [{{終了|しゅうりょう}}](term:term-v275-shuuryou) chiude una fase o un comando; [{{解除|かいじょ}}](term:term-v276-kaijo) rimuove un vincolo, uno stato o un effetto ancora attivo. Se leggi `{{終了|しゅうりょう}}`, aspettati uscita o completamento. Se leggi `{{解除|かいじょ}}`, cerca che cosa era bloccato o applicato prima.
 
-## 2. Mappe ed Esplorazione: Dove Andare e Che Rischio C'è
+## 2. Mappe ed esplorazione: dove andare e che rischio c'è
 
 Fuori dall'aula, il gioco usa parole compatte per collegare luogo, strumento e pericolo. Qui la lettura corretta non è solo "capire la parola", ma capire se il testo ti sta orientando, abilitando un movimento o mettendo un limite.
 
@@ -114,7 +114,7 @@ translation_it: >-
 > [!WARNING]
 > **⚠️ Attenzione a [かっくう](term:term-v280-kakkuu):** non leggerlo come il tipo [ひこう](term:term-v265-hikou). `かっくう` descrive un movimento di esplorazione, mentre `ひこう` è la categoria elementale "Volante" nelle battaglie.
 
-## 3. Scuola, Storia e Tesori: Valore, Motivo e Capacità Reale
+## 3. Scuola, storia e tesori: valore, motivo e capacità reale
 
 Le lezioni dell'Accademia e i dialoghi sulla caccia al tesoro usano parole che sembrano astratte, ma nel gioco servono a distinguere valore personale, spiegazione di una scelta e prova concreta.
 
@@ -140,7 +140,7 @@ translation_it: >-
 > [!NOTE]
 > **🧠 Gancio cognitivo:** per [{{実力|じつりょく}}](term:term-v287-jitsuryoku), pensa a "forza reale": non la reputazione, non la promessa, ma ciò che si vede quando una prova o una lotta ti misura davvero. È un trucco di memoria, non una definizione etimologica completa.
 
-## 4. Contatti e Parlato Quotidiano: Riprendere, Salutare, Chiarire
+## 4. Contatti e parlato quotidiano: riprendere, salutare, chiarire
 
 Nei dialoghi brevi, il gioco spesso non spiega tutto da capo. Usa particelle e formule che riprendono ciò che è appena stato detto e lo trasformano in reazione, deduzione o saluto.
 
@@ -173,7 +173,7 @@ translation_it: >-
 > [!NOTE]
 > **⚖️ Contrasto operativo:** [{{苦手|にがて}}](term:term-v291-nigate) non è sempre rifiuto emotivo. `{{勉強|べんきょう}}が{{苦手|にがて}}` dice "non sono bravo nello studio" o "lo studio mi mette in difficoltà"; per "non mi piace" il giapponese può usare anche `{{好|す}}きじゃない`, che è più diretto sul gusto personale.
 
-## 5. Dubbi e Memoria: Mentre, Chissà, Com'era Già
+## 5. Dubbi e memoria: mentre, chissà, com'era già
 
 Queste forme grammaticali sono molto dialogiche: non danno solo informazioni, ma mostrano un personaggio che aspetta, ragiona, ricorda a metà o pensa ad alta voce.
 

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-050-sv-prestudy-l35a-scuola-classi-e-regole-accademia
 media_id: media-pokemon-scarlet-violet
 slug: 050-sv-prestudy-l35a-scuola-classi-e-regole-accademia
-title: SV Pre-study L35A - scuola, classi e regole d'accademia
+title: Aula, classi e regole dell'accademia
 order: 80
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -40,7 +40,7 @@ sembrare uno sfondo scolastico e diventa una rete di istruzioni leggibili.
 - [{{分類|ぶんるい}}](term:term-v731-bunrui) — categoria / classificazione
 - [{{階段|かいだん}}](term:term-v732-kaidan) — scala / scalinata
 - [{{担当|たんとう}}](term:term-v733-tantou) — responsabile / docente di materia
-- [{{学籍番号|がくせきばんごう}}](term:term-v734-gakusekibangou) — numero di
+- [{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) — numero di
   matricola
 - [{{敬語|けいご}}](term:term-v736-keigo) — linguaggio cortese / honorific speech
 - [{{始業|しぎょう}}](term:term-v738-shigyou) — inizio delle lezioni / inizio
@@ -56,7 +56,7 @@ sembrare uno sfondo scolastico e diventa una rete di istruzioni leggibili.
 - [{{物理|ぶつり}}](term:term-v730-butsuri)と{{特殊|とくしゅ}}の
   [{{分類|ぶんるい}}](term:term-v731-bunrui) — categorie fisica e speciale di una
   mossa
-- [{{学籍番号|がくせきばんごう}}](term:term-v734-gakusekibangou)を
+- [{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou)を
   {{呼|よ}}ばれる — essere chiamati tramite numero di matricola
 - [{{始業|しぎょう}}](term:term-v738-shigyou){{時間|じかん}}です — è l'ora di
   inizio delle lezioni
@@ -121,10 +121,10 @@ sua competenza. In `バトル{{学|がく}}{{担当|たんとう}}`, la parte pr
 [{{担当|たんとう}}](term:term-v733-tantou) è l'ambito, e
 [{{担当|たんとう}}](term:term-v733-tantou) assegna quell'ambito a una persona.
 
-[{{学籍番号|がくせきばんごう}}](term:term-v734-gakusekibangou) è più
+[{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) è più
 amministrativo: `{{学籍|がくせき}}` riguarda l'iscrizione scolastica e
 `{{番号|ばんごう}}` è il numero. Quando qualcuno viene chiamato con
-[{{学籍番号|がくせきばんごう}}](term:term-v734-gakusekibangou), la scena usa una
+[{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou), la scena usa una
 voce da registro, non da amicizia. [{{敬語|けいご}}](term:term-v736-keigo)
 aggiunge proprio questo cambio di distanza: è il linguaggio cortese o
 onorifico che compare quando l'aula rende i rapporti più controllati.
@@ -146,14 +146,14 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{学籍番号|がくせきばんごう}}を {{呼|よ}}ばれて びっくりした。
+  {{学籍|がくせき}}{{番号|ばんごう}}を {{呼|よ}}ばれて びっくりした。
 translation_it: >-
   Mi ha sorpreso essere chiamato con il numero di matricola.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{学籍番号|がくせきばんごう}}を` -> l'oggetto è il numero identificativo, non il
+- `{{学籍|がくせき}}{{番号|ばんごう}}を` -> l'oggetto è il numero identificativo, non il
   nome personale.
 - `{{呼|よ}}ばれて` -> passivo in forma `-te`: "essendo stato chiamato".
 - `びっくりした` -> reazione emotiva causata da quel modo formale di chiamare.
@@ -166,6 +166,12 @@ translation_it: >-
   Durante la lezione finisci per usare un linguaggio più cortese perfino con gli
   amici.
 :::
+
+#### 🗺️ Anatomia della frase
+
+- `{{授業中|じゅぎょうちゅう}}って` -> tema colloquiale: "quando sei durante la lezione".
+- `{{友達|ともだち}}にも` -> estende l'effetto perfino agli amici, non solo ai professori.
+- `{{敬語|けいご}}に なっちゃう` -> cambiamento involontario: finisci per passare al registro cortese.
 
 > [!NOTE]
 > **🧠 Gancio cognitivo:** pensa a [{{担当|たんとう}}](term:term-v733-tantou)
@@ -275,7 +281,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{学籍番号|がくせきばんごう}}で {{呼|よ}}ばれると、
+  {{学籍|がくせき}}{{番号|ばんごう}}で {{呼|よ}}ばれると、
   {{授業中|じゅぎょうちゅう}}の {{敬語|けいご}}っぽい {{空気|くうき}}に
   なる。
 translation_it: >-
@@ -305,7 +311,7 @@ translation_it: >-
 Nel campus, le parole non stanno isolate: [{{物理|ぶつり}}](term:term-v730-butsuri)
 e [{{分類|ぶんるい}}](term:term-v731-bunrui) organizzano le spiegazioni di lotta,
 [{{担当|たんとう}}](term:term-v733-tantou) e
-[{{学籍番号|がくせきばんごう}}](term:term-v734-gakusekibangou) danno forma al registro
+[{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) danno forma al registro
 scolastico, [{{始業|しぎょう}}](term:term-v738-shigyou) e
 [{{急|いそ}}ぐ](term:term-v739-isogu) mettono pressione al movimento, mentre
 [{{立|た}}ち{{入|い}}り](term:term-v740-tachiiri),

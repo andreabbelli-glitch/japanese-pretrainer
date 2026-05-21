@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-038-sv-prestudy-l24a-esplorazione-e-movimento-verbi-operativi
 media_id: media-pokemon-scarlet-violet
 slug: 038-sv-prestudy-l24a-esplorazione-e-movimento-verbi-operativi
-title: SV Pre-study L24A - esplorazione e movimento, verbi operativi
+title: "Uscire dalla città: scelta, preparazione e movimento nello spazio"
 order: 68
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -71,7 +71,7 @@ Qui le parole non descrivono solo oggetti. Dicono chi decide, che cosa viene imp
 
 ## 1. Prima del cancello: chi decide e in che modalità giochi
 
-[{{主人公|しゅじんこう}}](term:term-v442-shujinkou) è il personaggio attraverso cui la scena viene vissuta. `{{主|しゅ}}` porta l'idea di centro o principale, `{{人公|じんこう}}` completa il composto come figura protagonista: nei menu e nei riassunti di storia non indica un qualunque personaggio, ma la persona che controlli o segui nel percorso.
+[{{主人公|しゅじんこう}}](term:term-v442-shujinkou) è il personaggio attraverso cui la scena viene vissuta. Non conviene spezzarlo in un falso blocco `{{人公|じんこう}}`: il composto intero si legge `しゅじんこう` e funziona come "protagonista". Nei menu e nei riassunti di storia non indica un qualunque personaggio, ma la persona che controlli o segui nel percorso.
 
 Quando il dialogo arriva a [きみ{{次第|しだい}}](term:term-e081-kimi-shidai), la responsabilità passa al giocatore. `きみ` punta a "tu", mentre `{{次第|しだい}}` indica che l'esito dipende da una condizione o da una decisione. Non è un semplice complimento alla libertà del giocatore: è il punto in cui il testo smette di dare istruzioni chiuse e lascia aperta una scelta.
 
@@ -115,7 +115,7 @@ translation_it: >-
 jp: >-
   このポケモンに {{覚|おぼ}}えさせる。
 translation_it: >-
-  Faccio imparare una mossa a questo Pokémon.
+  Glielo faccio imparare a questo Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase

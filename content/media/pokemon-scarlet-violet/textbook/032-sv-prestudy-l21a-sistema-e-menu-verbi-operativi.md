@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi
 media_id: media-pokemon-scarlet-violet
 slug: 032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi
-title: SV Pre-study L21A - sistema e menu, verbi operativi
+title: "Verbi operativi nei menu: scegliere, tornare, cambiare, partecipare"
 order: 62
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -196,9 +196,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{目標|もくひょう}}までの {{方法|ほうほう}}を {{案内|あんない}}します。
+  {{目的|もくてき}}{{地|ち}}まで {{案内|あんない}}します。
 translation_it: >-
-  Ti guiderò nel metodo per arrivare all'obiettivo.
+  Ti guiderò fino alla destinazione.
 :::
 
 :::example_sentence

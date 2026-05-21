@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 media_id: media-pokemon-scarlet-violet
 slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
-title: "Scarlet / Violet Story 103 - Prologo 3: Pokemon Center, seconda sfida e primo Terastal"
+title: "Dal Pokemon Center al primo Terastal: servizi, campo e sfide guidate"
 order: 130
 segment_ref: scarlet-violet-story
 difficulty: custom
@@ -105,7 +105,7 @@ translation_it: >-
   Facciamoci curare la squadra al Pokemon Center.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `ポケモンセンターで` -> luogo dell'azione: il servizio avviene al centro.
 - `{{手|て}}{{持|も}}ちの ポケモンを` -> oggetto diretto: i Pokémon che hai con te.
@@ -143,7 +143,7 @@ translation_it: >-
   Per creare una MT servono LP e materiali lasciati dai Pokemon.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `わざマシンを {{作|つく}}るには` -> `には` trasforma "creare una MT" nel requisito di cui si sta parlando.
 - `LPと ポケモンの おとしものが` -> soggetto plurale del bisogno: valuta più materiali.
@@ -188,7 +188,7 @@ translation_it: >-
   Se usi Let's Go, a volte il Pokemon in testa va a raccoglierti degli oggetti.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `レッツゴーを {{使|つか}}うと` -> condizione automatica: quando usi quel comando.
 - `{{先頭|せんとう}}の ポケモンが` -> chi agisce è il Pokémon in prima posizione, non il protagonista.
@@ -237,7 +237,7 @@ translation_it: >-
   sei diventato forte.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{坂道|さかみち}}で {{戦|たたか}}ってきたなら` -> condizione basata sull'esperienza appena accumulata: hai combattuto lungo la salita e ora quel percorso conta.
 - `どれくらい {{強|つよ}}くなったか` -> domanda indiretta: "quanto sei diventato forte".
@@ -272,7 +272,7 @@ translation_it: >-
   Dopo aver fatto un giro per la città, ritroviamoci davanti alla scuola.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `{{町|まち}}を {{見|み}}てまわったら` -> [～たら](grammar:grammar-tara) aggancia la prossima istruzione al completamento del giro.
 - `{{学校|がっこう}}の {{前|まえ}}で` -> luogo di ritrovo: davanti alla scuola.
@@ -315,7 +315,7 @@ translation_it: >-
   ancora più forti.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 
 - `テラスタルすると` -> condizione: quando avviene la Terastalizzazione.
 - `テラスタイプと {{同|おな}}じ タイプの わざは` -> tema della frase: le mosse dello stesso tipo del Tera Type.

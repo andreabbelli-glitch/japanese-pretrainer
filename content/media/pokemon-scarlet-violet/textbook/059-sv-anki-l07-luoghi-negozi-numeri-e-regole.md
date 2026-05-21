@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-negozi-numeri-e-regole
 media_id: media-pokemon-scarlet-violet
 slug: 059-sv-anki-l07-luoghi-negozi-numeri-e-regole
-title: SV Anki L07 - Luoghi, negozi, numeri e regole
+title: Luoghi, regole e quantità tra Paldea e l'Accademia
 order: 89
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -16,54 +16,54 @@ summary: >-
 
 # Luoghi, regole e quantità tra Paldea e l'Accademia
 
-In *Pokémon Scarlet & Violet* lo stesso lessico passa da una schermata all'altra: una città ti manda verso un [{{店|みせ}}](term:term-anki-l07-mise), un dialogo dell'Accademia nomina un [{{教|きょう}}{{師|し}}](term:term-anki-l07-kyoushi), una regola del Team Star parla di [{{掟|おきて}}](term:term-anki-l07-okite), una lotta calcola un effetto in [{{2倍|にばい}}](term:term-anki-l07-nibai). La cosa importante non è memorizzare parole sparse, ma capire quale pezzo della scena stanno fissando: luogo, azione, ruolo, quantità o giudizio.
+In *Pokémon Scarlet & Violet* lo stesso lessico passa da una schermata all'altra: una città ti manda verso un [{{店|みせ}}](term:term-anki-l07-mise), un dialogo dell'Accademia nomina un [{{教師|きょうし}}](term:term-anki-l07-kyoushi), una regola del Team Star parla di [{{掟|おきて}}](term:term-anki-l07-okite), una lotta calcola un effetto in [{{2倍|にばい}}](term:term-anki-l07-nibai). La cosa importante non è memorizzare parole sparse, ma capire quale pezzo della scena stanno fissando: luogo, azione, ruolo, quantità o giudizio.
 
 Queste forme compaiono in punti molto concreti del viaggio: menu di acquisto, lezioni, messaggi di sistema, aree innevate, spiegazioni di battaglia e battute dei personaggi. Quando le riconosci insieme, una frase smette di essere una lista di sostantivi e diventa una mappa: dove sei, che cosa puoi fare, quale limite vale e quale tono sta usando chi parla.
 
 ## Termini chiave
 
 - [{{止|と}}める](term:term-anki-l07-tomeru) — fermare; smettere; spegnere
-- [{{雪|ゆき}}{{山|やま}}](term:term-anki-l07-yukiyama) — montagna innevata
+- [{{雪山|ゆきやま}}](term:term-anki-l07-yukiyama) — montagna innevata
 - [{{店|みせ}}](term:term-anki-l07-mise) — negozio
 - [{{倍|ばい}}](term:term-anki-l07-bai) — doppio; volte
 - [{{優|やさ}}しい](term:term-anki-l07-yasashii) — gentile
 - [{{2倍|にばい}}](term:term-anki-l07-nibai) — due volte; doppio
-- [{{教|きょう}}{{師|し}}](term:term-anki-l07-kyoushi) — insegnante
-- [{{広|ひろ}}{{場|ば}}](term:term-anki-l07-hiroba) — piazza
+- [{{教師|きょうし}}](term:term-anki-l07-kyoushi) — insegnante
+- [{{広場|ひろば}}](term:term-anki-l07-hiroba) — piazza
 - [{{掟|おきて}}](term:term-anki-l07-okite) — regola; codice
 - [{{4|よっ}}つ](term:term-anki-l07-yottsu) — quattro cose
 
 ## Etichette da riconoscere
 
-- [{{雪|ゆき}}{{山|やま}}](term:term-anki-l07-yukiyama) — area montuosa fredda, spesso legata ai Pokémon di tipo Ghiaccio
+- [{{雪山|ゆきやま}}](term:term-anki-l07-yukiyama) — area montuosa fredda, spesso legata ai Pokémon di tipo Ghiaccio
 - [{{店|みせ}}](term:term-anki-l07-mise) — punto commerciale dove comprare o raggiungere una risorsa
-- [{{広|ひろ}}{{場|ば}}](term:term-anki-l07-hiroba) — spazio pubblico o punto di ritrovo
-- [{{教|きょう}}{{師|し}}](term:term-anki-l07-kyoushi) — ruolo professionale dell'insegnante
+- [{{広場|ひろば}}](term:term-anki-l07-hiroba) — spazio pubblico o punto di ritrovo
+- [{{教師|きょうし}}](term:term-anki-l07-kyoushi) — ruolo professionale dell'insegnante
 - [{{掟|おきて}}](term:term-anki-l07-okite) — regola interna, più solenne e rigida di ルール
 
 ---
 
 ## 1. Luoghi che decidono dove agire
 
-[{{雪|ゆき}}{{山|やま}}](term:term-anki-l07-yukiyama), [{{店|みせ}}](term:term-anki-l07-mise) e [{{広|ひろ}}{{場|ば}}](term:term-anki-l07-hiroba) non indicano solo "posti". Nelle frasi di gioco diventano punti di orientamento: `に` li tratta come destinazione o luogo di esistenza, `で` li trasforma nel luogo in cui avviene un'azione. La differenza cambia la lettura pratica della frase: `{{店|みせ}}に{{行|い}}く` ti manda verso un negozio, mentre `{{店|みせ}}で{{買|か}}う` dice che l'acquisto avviene lì.
+[{{雪山|ゆきやま}}](term:term-anki-l07-yukiyama), [{{店|みせ}}](term:term-anki-l07-mise) e [{{広場|ひろば}}](term:term-anki-l07-hiroba) non indicano solo "posti". Nelle frasi di gioco diventano punti di orientamento: `に` li tratta come destinazione o luogo di esistenza, `で` li trasforma nel luogo in cui avviene un'azione. La differenza cambia la lettura pratica della frase: `{{店|みせ}}に{{行|い}}く` ti manda verso un negozio, mentre `{{店|みせ}}で{{買|か}}う` dice che l'acquisto avviene lì.
 
-[{{雪|ゆき}}{{山|やま}}](term:term-anki-l07-yukiyama) è trasparente se separi i due pezzi: `{{雪|ゆき}}` è la neve, `{{山|やま}}` è la montagna. In Paldea questa combinazione richiama aree fredde come ナッペ{{山|やま}}, quindi prepara a incontri con Pokémon di tipo Ghiaccio, indicazioni ambientali e descrizioni di percorso. [{{広|ひろ}}{{場|ば}}](term:term-anki-l07-hiroba) funziona in modo simile: `{{広|ひろ}}` dà l'idea di ampiezza, `{{場|ば}}` quella di luogo; insieme formano lo spazio pubblico dove ci si incontra, si aspetta o si riceve un'indicazione.
+[{{雪山|ゆきやま}}](term:term-anki-l07-yukiyama) si legge come un unico composto di luogo: una montagna innevata o area fredda. In Paldea richiama aree come ナッペ{{山|やま}}, quindi prepara a incontri con Pokémon di tipo Ghiaccio, indicazioni ambientali e descrizioni di percorso. [{{広場|ひろば}}](term:term-anki-l07-hiroba) è un altro composto di luogo: lo spazio pubblico dove ci si incontra, si aspetta o si riceve un'indicazione.
 
 :::example_sentence
 jp: >-
-  この {{雪|ゆき}}{{山|やま}}には こおりタイプの ポケモンが たくさん いる。
+  この {{雪山|ゆきやま}}には こおりタイプの ポケモンが たくさん いる。
 translation_it: >-
   Su questa montagna innevata ci sono molti Pokémon di tipo Ghiaccio.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `この {{雪|ゆき}}{{山|やま}}には` -> `この` restringe il luogo a "questa" montagna; `に` marca il luogo di esistenza e `は` lo mette come tema della frase.
+- `この {{雪山|ゆきやま}}には` -> `この` restringe il luogo a "questa" montagna; `に` marca il luogo di esistenza e `は` lo mette come tema della frase.
 - `こおりタイプの ポケモン` -> `の` collega il tipo al nome: non "ghiaccio" generico, ma Pokémon appartenenti al tipo Ghiaccio.
 - `たくさん いる` -> `いる` è il verbo di esistenza per esseri animati; con i Pokémon il gioco non usa `ある`, ma `いる`.
 
 > [!NOTE]
-> **⚖️ Contrasto operativo:** con i luoghi, `に` risponde spesso a "dove si trova / dove si va"; `で` risponde a "dove succede l'azione". In `{{雪|ゆき}}{{山|やま}}には ポケモンが いる`, il punto è l'esistenza dei Pokémon lì. In `{{店|みせ}}で {{買|か}}う`, il punto è l'azione di comprare dentro il negozio.
+> **⚖️ Contrasto operativo:** con i luoghi, `に` risponde spesso a "dove si trova / dove si va"; `で` risponde a "dove succede l'azione". In `{{雪山|ゆきやま}}には ポケモンが いる`, il punto è l'esistenza dei Pokémon lì. In `{{店|みせ}}で {{買|か}}う`, il punto è l'azione di comprare dentro il negozio.
 
 ## 2. Azioni di sistema: bloccare, comprare, scegliere un posto
 
@@ -119,7 +119,7 @@ translation_it: >-
 
 ## 4. Ruoli, regole e tono nei dialoghi
 
-[{{教|きょう}}{{師|し}}](term:term-anki-l07-kyoushi) nomina la professione dell'insegnante in modo formale. Nei dialoghi dell'Accademia sentirai spesso `{{先生|せんせい}}` come titolo rivolto alla persona; [{{教|きょう}}{{師|し}}](term:term-anki-l07-kyoushi), invece, descrive il ruolo istituzionale. Questa differenza aiuta a capire se la frase sta parlando direttamente a un professore o sta classificando qualcuno dentro la scuola.
+[{{教師|きょうし}}](term:term-anki-l07-kyoushi) nomina la professione dell'insegnante in modo formale. Nei dialoghi dell'Accademia sentirai spesso `{{先生|せんせい}}` come titolo rivolto alla persona; [{{教師|きょうし}}](term:term-anki-l07-kyoushi), invece, descrive il ruolo istituzionale. Questa differenza aiuta a capire se la frase sta parlando direttamente a un professore o sta classificando qualcuno dentro la scuola.
 
 [{{掟|おきて}}](term:term-anki-l07-okite) ha un peso diverso da ルール. ルール può essere una regola di gioco, un'impostazione o una norma generica; [{{掟|おきて}}](term:term-anki-l07-okite) suona come codice interno, qualcosa che un gruppo deve rispettare perché ne definisce l'identità. Per questo si adatta bene al Team Star: non è solo "una regola", ma una norma sentita come vincolo del gruppo.
 
@@ -140,7 +140,7 @@ translation_it: >-
 - `{{掟|おきて}}が ある` -> `ある` dice che esiste un codice; il peso della parola rende la norma più solenne di una semplice istruzione.
 
 > [!NOTE]
-> **⚖️ Contrasto operativo:** `{{先生|せんせい}}` è il titolo con cui chiami o menzioni un docente; [{{教|きょう}}{{師|し}}](term:term-anki-l07-kyoushi) è la categoria professionale. Allo stesso modo, ルール è una regola generica, mentre [{{掟|おきて}}](term:term-anki-l07-okite) suggerisce codice di condotta e appartenenza a un gruppo.
+> **⚖️ Contrasto operativo:** `{{先生|せんせい}}` è il titolo con cui chiami o menzioni un docente; [{{教師|きょうし}}](term:term-anki-l07-kyoushi) è la categoria professionale. Allo stesso modo, ルール è una regola generica, mentre [{{掟|おきて}}](term:term-anki-l07-okite) suggerisce codice di condotta e appartenenza a un gruppo.
 
 ## Esempi guidati di riepilogo
 
@@ -153,25 +153,25 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  テーブルシティの {{中|ちゅう}}{{央|おう}}{{広|ひろ}}{{場|ば}}で {{友|とも}}だちと {{待|ま}}ち{{合|あ}}わせを した。
+  テーブルシティの {{中央|ちゅうおう}}{{広場|ひろば}}で {{友|とも}}だちと {{待|ま}}ち{{合|あ}}わせを した。
 translation_it: >-
   Mi sono incontrato con un amico nella piazza centrale di Mesagoza.
 :::
 
 :::example_sentence
 jp: >-
-  アカデミーの {{教|きょう}}{{師|し}}たちは みんな {{個|こ}}{{性|せい}}が {{強|つよ}}い。
+  アカデミーの {{教師|きょうし}}たちは みんな {{個性|こせい}}が {{強|つよ}}い。
 translation_it: >-
   Gli insegnanti dell'Accademia hanno tutti una forte personalità.
 :::
 
 :::example_sentence
 jp: >-
-  ペパーは ぶっきらぼうに {{見|み}}えるけど、 {{本|ほん}}{{当|とう}}は とても {{優|やさ}}しい。
+  ペパーは ぶっきらぼうに {{見|み}}えるけど、 {{本当|ほんとう}}は とても {{優|やさ}}しい。
 translation_it: >-
-  Pepe sembra burbero, ma in realtà è molto gentile.
+  Pepper sembra burbero, ma in realtà è molto gentile.
 :::
 
 ## Nota finale
 
-Questo gruppo di parole rende leggibili quattro funzioni ricorrenti del viaggio: i luoghi orientano l'azione con `に` e `で`, [{{止|と}}める](term:term-anki-l07-tomeru) segnala un intervento attivo su qualcosa, [{{倍|ばい}}](term:term-anki-l07-bai) e [{{4|よっ}}つ](term:term-anki-l07-yottsu) trasformano numeri in effetti o limiti, mentre [{{教|きょう}}{{師|し}}](term:term-anki-l07-kyoushi), [{{掟|おきて}}](term:term-anki-l07-okite) e [{{優|やさ}}しい](term:term-anki-l07-yasashii) chiariscono ruoli, norme e tono umano della scena.
+Questo gruppo di parole rende leggibili quattro funzioni ricorrenti del viaggio: i luoghi orientano l'azione con `に` e `で`, [{{止|と}}める](term:term-anki-l07-tomeru) segnala un intervento attivo su qualcosa, [{{倍|ばい}}](term:term-anki-l07-bai) e [{{4|よっ}}つ](term:term-anki-l07-yottsu) trasformano numeri in effetti o limiti, mentre [{{教師|きょうし}}](term:term-anki-l07-kyoushi), [{{掟|おきて}}](term:term-anki-l07-okite) e [{{優|やさ}}しい](term:term-anki-l07-yasashii) chiariscono ruoli, norme e tono umano della scena.

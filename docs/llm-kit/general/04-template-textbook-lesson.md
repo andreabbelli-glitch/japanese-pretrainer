@@ -20,6 +20,18 @@ summary: >-
 
 # <Titolo naturale centrato sulla lettura reale>
 
+<!--
+Se stai riscrivendo una lesson esistente, preserva i campi identitari stabili
+del frontmatter: id, media_id, slug, order, segment_ref, difficulty, status,
+tags e prerequisites. Il campo title è visibile all'utente: se contiene label
+da batch o workflow, riscrivilo in un titolo naturale e sentence case,
+allineato all'H1.
+
+H1 e heading italiani vanno in sentence case, non Title Case all'inglese:
+`Dal dormitorio al Treasure Hunt: la scuola apre Paldea`, non
+`Dal Dormitorio al Treasure Hunt: la Scuola Apre Paldea`.
+-->
+
 <Apri con 1-2 paragrafi in italiano che portano subito il lettore dentro la
 scena, schermata, carta o dialogo. Non parlare della lesson come prodotto
 editoriale ("questa lesson inaugura...", "qui faremo review..."): spiega quale
@@ -27,9 +39,11 @@ tipo di giapponese diventa leggibile nel media e perché conta mentre lo si sta
 fruendo. La voce deve sembrare quella di un tutor che legge il media insieme
 all'utente: naturale, concreta, densa, non da outline.
 
-Una promessa didattica leggera come "In questa lezione..." è ammessa solo se
-orienta subito l'attenzione sul testo che l'utente leggerà. Resta vietato il
-metadiscorso editoriale su batch, review, fonti, workflow o scelte di curation.>
+Evita aperture meta come "In questa lezione...": apri invece direttamente su
+scena, schermata, carta o dialogo. Resta vietato il metadiscorso editoriale su
+batch, review, fonti, workflow o scelte di curation. Termini come deck,
+deckbuilder o `デッキコード` sono ammessi quando sono il testo reale del media;
+sono vietati quando parlano del sistema di studio.>
 
 ## Termini chiave
 
@@ -91,8 +105,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `<pezzo-1>` -> <ruolo grammaticale e conseguenza di lettura>
-- `<pezzo-2>` -> <valore del verbo, particella, pattern o chunk>
+*   `<pezzo-1>` ➔ **<Ruolo grammaticale>** (<conseguenza di lettura concreta>).
+*   `<pezzo-2>` ➔ **<Valore del chunk>** (<verbo, particella, pattern o effetto
+    pragmatico>).
 
 > [!NOTE]
 > **⚖️ Contrasto operativo:** <differenza concreta che evita una lettura sbagliata>
@@ -141,7 +156,7 @@ Anti-esempi da non usare mai:
 - `Lo starter deck e una buona base di lettura operativa...`
 - `Questo modulo usa tre schermate reali...`
 - `Da qui in poi questa pagina non e piu una monografia su una sola carta: diventa l'archivio progressivo delle carte che incontro davvero durante il gioco.`
-- `Il punto piu importante non e la keyword offensiva in se, ma il blocco タップ状態でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo stato gia presente nel momento del controllo.`
+- `Il punto piu importante non e la keyword offensiva in se, ma il blocco タップ{{状態|じょうたい}}でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo stato gia presente nel momento del controllo.`
 
 Perche sono sbagliati se restano cosi:
 
@@ -153,17 +168,17 @@ Perche sono sbagliati se restano cosi:
 Coppia di revisione:
 
 - Debole: `Il punto piu importante non e la keyword offensiva in se, ma il
-  blocco タップ状態でいたら.`
-- Corretta: `タップ状態` forma un sintagma nominale, `でいる` dice che la
+  blocco タップ{{状態|じょうたい}}でいたら.`
+- Corretta: `タップ{{状態|じょうたい}}` forma un sintagma nominale, `でいる` dice che la
   creatura resta in quello stato e `〜たら` trasforma quello stato nella
   condizione che fa partire l'effetto.
 
 Forma corretta attesa quando il testo parla di quello stesso chunk:
 
-- `タップ状態` = sintagma nominale, "stato tapped"`
+- `タップ{{状態|じょうたい}}` = sintagma nominale, "stato tapped"`
 - `でいる` = essere in quello stato
 - `〜たら` = se / quando
-- `このターンの後に` = dopo questo turno
+- `このターンの{{後|あと}}に` = dopo questo turno
 
 Puoi usare furigana inline con la sintassi `{{base|reading}}`, per esempio
 `{{<kanji>|<reading>}}`. Da ora anche i numeri vanno annotati sempre quando
@@ -185,6 +200,19 @@ in forma corretta sul chunk davvero annotato, non ricostruita a intuito: per
 esempio `{{1体|いったい}}`, `{{2|ふた}}つ`, `{{2回|にかい}}`,
 `{{4枚|よんまい}}`.
 
+Non usare letture con puntini dentro un singolo ruby:
+`{{目的地|もく.てき.ち}}`, `{{課外授業|か.がい.じゅ.ぎょう}}` e
+`{{学生寮|がく.せい.りょう}}` sono da correggere in blocchi semantici come
+`{{目的|もくてき}}{{地|ち}}`, `{{課外|かがい}}{{授業|じゅぎょう}}` e
+`{{学生|がくせい}}{{寮|りょう}}`. Non passare all'estremo opposto spezzando
+tutto kanji-per-kanji: per composti lessicali naturali usa blocchi come
+`{{言語|げんご}}{{学|がく}}`, `{{課外|かがい}}{{授業|じゅぎょう}}`,
+`{{興味|きょうみ}}{{深|ぶか}}い`, non
+`{{言|げん}}{{語|ご}}{{学|がく}}`,
+`{{課|か}}{{外|がい}}{{授|じゅ}}{{業|ぎょう}}` o
+`{{興|きょう}}{{味|み}}{{深|ぶか}}い`. Non mettere furigana su katakana puro:
+`ポケモン`, `チャンピオンランク`, `デッキコード` restano senza ruby.
+
 Se un riferimento semantico ha un label con kanji, annota anche il label:
 `[{{報酬|ほうしゅう}}](term:term-reward)`, non `[報酬](term:term-reward)`.
 Vale anche per inline code: `` `{{未解放|みかいほう}}` `` e non `` `未解放` ``.
@@ -197,7 +225,9 @@ riepilogo: non lasciare il target review come kanji nudo nel textbook.
 
 <Inserisci 2-4 esempi che ricombinano gli elementi principali. Non devono
 essere definizioni isolate: devono mostrare come lessico, grammatica e funzione
-nel media lavorano insieme.>
+nel media lavorano insieme. Possono essere esempi didattici costruiti sul
+contesto, ma non presentarli come citazioni ufficiali se non sono transcript
+puntuali.>
 
 Per una frase giapponese con traduzione italiana apribile a toggle, usa:
 
@@ -241,6 +271,10 @@ Usa la lezione modello
 `content/media/pokemon-scarlet-violet/textbook/029-sv-prestudy-l19b-reazioni-e-parlato-scarlet-violet.md`
 come esempio di densita, cluster tematici, anatomia della frase e contrasti
 operativi.
+
+Per lesson brevi di UI, web o schermata singola, applica lo standard senza
+gonfiare artificialmente il materiale: meno cluster, più focus su azione reale,
+oggetto, particella, conferma e pulsante.
 
 Usa blocchi :::term o :::grammar solo se devi introdurre una entry nuova non
 ancora dichiarata altrove. Se una entry esiste gia, referenzia il suo ID.

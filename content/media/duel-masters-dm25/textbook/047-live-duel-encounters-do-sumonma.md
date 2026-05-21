@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-live-duel-encounters-do-sumonma
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-do-sumonma
-title: Carte incontrate - Do:Sumonma
+title: "Do:Sumonma: scegliere una sola opzione fra cimitero e deck"
 order: 75
 segment_ref: live-duel-encounters
 difficulty: n3
@@ -28,8 +28,8 @@ caption: >-
   [ド:スモンマー](term:term-do-sumonma)。 Keyword:
   [ブロッカー](term:term-blocker) e
   [アビス・メクレイド](term:term-abyss-mekureido). Il blocco davvero utile
-  da fissare qui e`
-  `{{次|つぎ}}のうちいずれか{{1|ひと}}つを{{選|えら}}ぶ`, che spacchetta in
+  da leggere qui è
+  `{{次|つぎ}}のうちいずれか{{1|ひと}}つを{{選|えら}}ぶ`, che si apre in
   `{{次|つぎ}}の`, `のうち`, `いずれか`, `{{1|ひと}}つ` e
   [{{選|えら}}ぶ](term:term-erabu).
 :::
@@ -39,10 +39,11 @@ caption: >-
 - [ブロッカー](term:term-blocker)
 - [アビス・メクレイド](term:term-abyss-mekureido)
 
-Le keyword ora sono coperte. Il focus principale di questa carta resta pero`
-la formula di scelta `{{次|つぎ}}のうちいずれか{{1|ひと}}つを{{選|えら}}ぶ`,
-perche` ti insegna come il giapponese delimita un set di opzioni e ti obbliga
-a prenderne una sola.
+La carta non si limita a nominare due keyword: dopo l'ingresso in battle zone,
+il testo apre un set chiuso di opzioni con
+`{{次|つぎ}}のうちいずれか{{1|ひと}}つを{{選|えら}}ぶ`. Il giapponese prima delimita
+il gruppo, poi restringe la scelta a una sola alternativa, infine chiude con il
+verbo operativo [{{選|えら}}ぶ](term:term-erabu).
 
 ## Effetti da leggere
 
@@ -58,6 +59,13 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
+#### 🗺️ Anatomia della frase
+
+- `このクリーチャーが[{{出|で}}た{{時|とき}}](grammar:grammar-toki)` -> finestra di timing: la scelta si apre quando la creatura entra.
+- `[{{次|つぎ}}の](grammar:grammar-tsugi-no)[～のうち](grammar:grammar-no-uchi)` -> campo della scelta: le opzioni sono quelle elencate dopo.
+- `[いずれか](grammar:grammar-izureka){{1|ひと}}つを` -> quantità selezionabile: una qualsiasi, ma una sola.
+- `[{{選|えら}}ぶ](term:term-erabu)` -> verbo finale: l'effetto chiede una decisione attiva.
+
 :::example_sentence
 jp: >-
   カードを{{4枚|よんまい}}、{{自分|じぶん}}の
@@ -71,6 +79,14 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
+#### 🗺️ Anatomia della frase
+
+- `カードを{{4枚|よんまい}}` -> quantità dell'oggetto mosso: quattro carte.
+- `[{{墓地|ぼち}}](term:term-graveyard)から` -> zona di partenza: dal cimitero.
+- `{{好|す}}きな {{順序|じゅんじょ}}で` -> libertà sull'ordine, non sulla quantità.
+- `[{{山札|やまふだ}}](term:term-deck)の{{下|した}}に[{{置|お}}いてもよい](grammar:grammar-temoyoi)` -> destinazione e facoltatività: puoi metterle in fondo al deck.
+- `そうしたら` -> ponte condizionale: solo se lo fai, arriva il Mekureido.
+
 :::example_sentence
 jp: >-
   {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
@@ -80,50 +96,47 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-## Parsing grammaticale
+#### 🗺️ Anatomia della frase
 
-### 1. 次の
+- `{{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から` -> punto di partenza: dalla cima del tuo deck.
+- `{{4枚|よんまい}}を` -> oggetto contato: quattro carte.
+- `[{{墓地|ぼち}}](term:term-graveyard)に[{{置|お}}く](term:term-oku)` -> destinazione: metterle nel cimitero.
 
-- [{{次|つぎ}}の](grammar:grammar-tsugi-no) e` gia` nel corpus: punta in avanti
-  al testo che segue.
-- Qui prepara il lettore a una lista di opzioni, non a un singolo oggetto.
-- In pratica ti dice: `guarda le righe subito sotto, perche` la scelta va fatta
-  li``.
+## 1. Scegliere una sola opzione
 
-### 2. のうち
+[{{次|つぎ}}の](grammar:grammar-tsugi-no), [～のうち](grammar:grammar-no-uchi) e
+[いずれか](grammar:grammar-izureka) lavorano in sequenza. [{{次|つぎ}}の](grammar:grammar-tsugi-no)
+punta alle righe che arrivano subito dopo; [～のうち](grammar:grammar-no-uchi)
+trasforma quelle righe in un insieme chiuso; [いずれか](grammar:grammar-izureka)
+sceglie un elemento qualsiasi dentro quell'insieme. `{{1|ひと}}つ` impedisce la
+lettura "scegli quanti vuoi": l'effetto richiede una sola opzione.
 
-- [～のうち](grammar:grammar-no-uchi) restringe il campo: vuol dire `fra`,
-  `tra`, `all'interno di questo gruppo`.
-- In `{{次|つぎ}}のうち`, il gruppo e` proprio l'elenco che segue subito dopo.
-- Questo e` il pezzo che trasforma una sequenza di righe in un set chiuso di
-  candidati tra cui scegliere.
+> [!NOTE]
+> **⚖️ Contrasto operativo:** [～のうち](grammar:grammar-no-uchi) definisce il
+> gruppo; [いずれか](grammar:grammar-izureka) sceglie un elemento dentro quel
+> gruppo. Se salti uno dei due pezzi, rischi di leggere l'effetto come una
+> lista libera invece che come una scelta vincolata.
 
-### 3. いずれか1つ
+## 2. Rimettere carte sotto il deck
 
-- [いずれか](grammar:grammar-izureka) aggiunge l'idea di `uno qualsiasi dei
-  candidati`, senza preferenza implicita.
-- `{{1|ひと}}つ` e` la quantita`: non `quanti vuoi`, non `tutti`, ma
-  esattamente `uno`.
-- Insieme, `いずれか{{1|ひと}}つ` va letto come `uno dei seguenti / una sola
-  delle opzioni disponibili`.
+Il primo effetto lungo usa una catena tipica del rules text: quantità, zona di
+partenza, ordine, destinazione e condizione facoltativa. [{{墓地|ぼち}}](term:term-graveyard)
+e [{{山札|やまふだ}}](term:term-deck) non sono solo nomi di zona; con `から`,
+`の{{下|した}}に` e [{{置|お}}いてもよい](grammar:grammar-temoyoi) diventano
+istruzioni di movimento.
 
-### 4. 選ぶ
+## 3. Mandare carte al cimitero
 
-- [{{選|えら}}ぶ](term:term-erabu) e` gia` coperto, ma qui chiude l'istruzione:
-  il testo non descrive un risultato automatico, ti chiede una scelta attiva.
-- Messo insieme a tutto il blocco, il significato completo diventa:
-  `scegli una sola opzione fra quelle che seguono`.
+Il secondo effetto è più corto, ma la direzione è diversa: dal sopra del deck al
+cimitero. `{{上|うえ}}から` e `に[{{置|お}}く](term:term-oku)` sono i due cardini:
+prima guardi il punto da cui prendi le carte, poi la zona in cui finiscono.
 
-## Lessico utile in questa carta
+## Nota finale
 
-- [ド:スモンマー](term:term-do-sumonma) va collegata subito al blocco
-  `{{次|つぎ}}のうちいずれか{{1|ひと}}つを{{選|えら}}ぶ`.
-- [～のうち](grammar:grammar-no-uchi) e` il pezzo nuovo che significa `fra /
-  tra questo insieme`.
-- [いずれか](grammar:grammar-izureka) aggiunge il valore `uno qualsiasi tra le
-  alternative nominate`.
-- `{{1|ひと}}つ` qui non merita una flashcard isolata: il suo vero valore
-  didattico sta dentro `いずれか{{1|ひと}}つ`, dove fissa che la scelta e` una
-  sola.
-- [{{選|えら}}ぶ](term:term-erabu) resta il verbo finale che rende operativa la
-  selezione.
+[ド:スモンマー](term:term-do-sumonma) ruota intorno a un comando di scelta:
+[{{次|つぎ}}の](grammar:grammar-tsugi-no) apre l'elenco, [～のうち](grammar:grammar-no-uchi)
+lo chiude come insieme, [いずれか](grammar:grammar-izureka) lascia libera
+l'alternativa e `{{1|ひと}}つ` limita la quantità. Dopo quella scelta, il testo
+muove carte fra [{{墓地|ぼち}}](term:term-graveyard) e
+[{{山札|やまふだ}}](term:term-deck), quindi le particelle di direzione diventano
+decisive.

@@ -47,13 +47,14 @@ La spiegazione deve sembrare scritta per far scattare riconoscimento durante la
 fruizione reale del media. Evita sia il tono da manuale grammaticale astratto,
 sia il tono da scheda enciclopedica.
 
-### Metadiscorso Didattico E Metadiscorso Editoriale
+### Metadiscorso didattico e metadiscorso editoriale
 
-La lezione modello contiene una frase come "In questa lezione analizzeremo...".
-Quel tipo di promessa didattica leggera è accettabile quando serve a orientare
-il lettore e viene subito seguito dal valore concreto di lettura.
+La lezione deve aprire direttamente su scena, schermata, carta o dialogo. Non
+usare formule meta come "in questa lezione analizzeremo", "questa pagina
+spiega" o "qui vedremo": anche quando sono rivolte al learner, fanno sentire la
+lesson come un oggetto di corso invece che come una lettura guidata del media.
 
-Resta invece vietato il metadiscorso editoriale o di workflow:
+Resta vietato anche il metadiscorso editoriale o di workflow:
 
 - batch, seed, review, card canoniche, validazione, fonte come processo;
 - giustificazioni del tipo "questo elemento merita una flashcard";
@@ -61,17 +62,18 @@ Resta invece vietato il metadiscorso editoriale o di workflow:
 - frasi che spiegano perché il contenuto è stato scelto invece di aprire la
   forma giapponese.
 
-Regola pratica: una frase meta è ammessa solo se suona come un tutor che
-prepara l'attenzione del lettore. È da riscrivere se suona come un curatore che
-spiega il proprio lavoro.
+Regola pratica: se una frase parla della lesson, della pagina o del processo di
+studio, riscrivila come descrizione del testo reale. Preferisci riferimenti
+concreti al media: `dialoghi della scena`, `messaggi della schermata`, `effetti
+della carta`, `istruzioni del menu`, `battute del personaggio`.
 
-La frase del modello `elementi chiave presenti nel tuo deck di studio` è
-tollerata come residuo di promessa didattica, non come formula da riprodurre.
-Nelle nuove lesson preferisci riferimenti al testo reale: `elementi del
-capitolo`, `dialoghi della scena`, `messaggi della schermata`, `effetti della
-carta`.
+Questa regola non vieta termini reali del media. Se una UI parla davvero di
+`デッキコード`, deck, deckbuilder o simili, puoi e devi spiegare quel termine.
+Il divieto riguarda solo il metadiscorso sul sistema di studio: deck di studio,
+flashcard, review, batch, workflow, curation e motivazioni editoriali non
+devono entrare nella prosa learner-facing.
 
-### Qualità Della Spiegazione
+### Qualità della spiegazione
 
 Una spiegazione forte non si ferma alla traduzione. Fa vedere perché quella
 forma è costruita così e che cosa cambia quando la incontri.
@@ -87,7 +89,8 @@ Schema mentale da seguire:
 Esempio di qualità attesa:
 
 - `{{受|う}}ける` non è solo "ricevere": in battaglia descrive anche chi
-  subisce un attacco o un effetto. Quindi in una frase con `わざを受ける`, il
+  subisce un attacco o un effetto. Quindi in una frase con
+  `わざを{{受|う}}ける`, il
   focus non è ottenere qualcosa, ma essere il bersaglio dell'azione.
 
 Esempio debole:
@@ -103,6 +106,27 @@ Usa questa struttura come default per nuove lesson e riscritture sostanziali.
 Puoi adattare i titoli alle esigenze del media, ma non tornare alla forma
 sterile `Obiettivo / Contesto / Spiegazione` quando la lesson ha materiale
 abbastanza ricco da organizzare tematicamente.
+
+### Titoli, frontmatter e stabilità
+
+Quando riscrivi una lesson esistente, preserva i campi identitari stabili del
+frontmatter: `id`, `media_id`, `slug`, `order`, `segment_ref`, `difficulty`,
+`status`, `tags` e `prerequisites`, salvo richiesta esplicita o migrazione
+dedicata.
+
+Il campo `title` non è identità tecnica: è visibile all'utente. Se la lesson
+aveva un titolo da batch, seed o workflow (`SV Pre-study L20A`, `SV Anki L18`,
+`Keyword Effects Bank`), riscrivilo in un titolo naturale, sentence case e
+centrato sulla lettura reale, allineato all'H1 ma abbastanza breve per l'UI.
+
+Titoli H1 e heading italiani devono usare sentence case, non Title Case
+all'inglese. Mantieni maiuscoli solo nomi propri, acronimi, product label e
+termini ufficiali del media.
+
+- corretto: `# Dal dormitorio al Treasure Hunt: la scuola apre Paldea`
+- da correggere: `# Dal Dormitorio al Treasure Hunt: la Scuola Apre Paldea`
+- corretto: `## 3. Champion Rank: quando Nemona definisce una route`
+- da correggere: `## 3. Champion Rank: quando Nemona Definisce una Route`
 
 ```md
 # <Titolo naturale centrato sul tipo di lettura>
@@ -145,7 +169,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `<pezzo>` -> <ruolo grammaticale e conseguenza di lettura>
+*   `<pezzo>` ➔ **<Ruolo grammaticale>** (<conseguenza di lettura concreta>).
 
 > [!NOTE]
 > **⚖️ Contrasto operativo:** <differenza che evita una lettura sbagliata>
@@ -177,7 +201,9 @@ questa:
 6. Dentro i cluster: mini-spiegazioni in bullet lunghi o sottosezioni A/B/C/D
    quando il materiale contiene più sfumature.
 7. `:::example_sentence` per frasi che meritano traduzione e parsing.
-8. `#### 🗺️ Anatomia della frase` subito dopo gli esempi densi.
+8. `#### 🗺️ Anatomia della frase` subito dopo gli esempi densi; se due esempi
+   consecutivi introducono pattern diversi, ciascuno deve avere il proprio
+   parsing prima del contrasto o dell'esempio successivo.
 9. Callout `⚖️ Contrasto operativo` o `WARNING` per errori probabili.
 10. Callout o bullet `🧠 Gancio cognitivo` per ancore mnemoniche utili.
 11. `Esempi guidati di riepilogo` con frasi che ricombinano i pezzi.
@@ -208,11 +234,11 @@ il tono della pagina ne risentono.
 
 ### 1. Apertura Contestuale
 
-La prima sezione deve orientare il lettore dentro il media. Può usare una
-promessa didattica leggera, ma deve dire che cosa succede nel gioco, nella
-scena, nella carta o nell'interfaccia e quale tipo di giapponese diventa
-leggibile. L'effetto deve essere narrativo-pratico: il lettore capisce perché
-quei termini gli serviranno tra poco.
+La prima sezione deve orientare il lettore dentro il media senza parlare della
+lesson. Apri su ciò che succede nel gioco, nella scena, nella carta o
+nell'interfaccia e su quale tipo di giapponese diventa leggibile. L'effetto
+deve essere narrativo-pratico: il lettore capisce perché quei termini gli
+serviranno tra poco.
 
 Forma buona:
 
@@ -243,7 +269,26 @@ spiegazioni successive. Scrivi `[{{終了|しゅうりょう}}](term:...)`, non
 `[終了](term:...)`: il reader non deve dipendere dal tooltip o dalla card front
 per conoscere la lettura del target che sta imparando.
 
-### 3. Cluster Tematici
+I furigana devono essere reader-friendly, non solo validi per il parser:
+
+- non usare letture con puntini dentro un ruby, tipo
+  `{{目的地|もく.てき.ち}}`;
+- spezza i composti in blocchi semantici leggibili:
+  `{{目的|もくてき}}{{地|ち}}`, `{{課外|かがい}}{{授業|じゅぎょう}}`,
+  `{{学生|がくせい}}{{寮|りょう}}`;
+- non spezzare tutto kanji-per-kanji quando il composto naturale sarebbe piu
+  chiaro: `{{言語|げんご}}{{学|がく}}`,
+  `{{課外|かがい}}{{授業|じゅぎょう}}`,
+  `{{興味|きょうみ}}{{深|ぶか}}い`, non
+  `{{言|げん}}{{語|ご}}{{学|がく}}`,
+  `{{課|か}}{{外|がい}}{{授|じゅ}}{{業|ぎょう}}` o
+  `{{興|きょう}}{{味|み}}{{深|ぶか}}い`;
+- non mettere furigana su katakana puro: `ポケモン`, `チャンピオンランク`,
+  `デッキコード` restano testo normale o link semantico senza ruby;
+- verifica le letture invece di ricostruirle a intuito, soprattutto con forme
+  contestuali come `{{来|き}}た`, `{{待機中|たいきちゅう}}` o contatori.
+
+### 3. Cluster tematici
 
 Il corpo deve raggruppare gli elementi per funzione reale, non per tipo di
 entry o ordine casuale.
@@ -301,7 +346,7 @@ Evita:
 Quelle frasi possono comparire solo se sono subito seguite dal meccanismo
 linguistico che le rende vere.
 
-### 5. Sottosezioni E Bullet Lunghi
+### 5. Sottosezioni e bullet lunghi
 
 La lezione modello non riduce tutto a paragrafi uniformi. Usa anche:
 
@@ -313,7 +358,7 @@ La lezione modello non riduce tutto a paragrafi uniformi. Usa anche:
 Questa varietà dà respiro alla pagina: il lettore vede subito se sta leggendo
 un termine, un pattern, un contrasto o un riepilogo.
 
-### 6. Ritmo E Transizioni
+### 6. Ritmo e transizioni
 
 Le lesson modello non saltano bruscamente da una definizione all'altra. Ogni
 sezione deve avere transizioni brevi che spiegano perché il gruppo successivo
@@ -331,7 +376,7 @@ Esempi da evitare:
 - `Vediamo altri esempi.`
 - `Questa sezione tratta la grammatica.`
 
-### 7. Anatomia Della Frase
+### 7. Anatomia della frase
 
 Quando compare una frase giapponese, aggiungi una mini-analisi subito dopo se
 la frase contiene grammatica, particelle o composizione utile.
@@ -341,12 +386,18 @@ Usa il blocco:
 ```md
 #### 🗺️ Anatomia della frase
 
-- `レシピを` -> oggetto diretto: `レシピ` + `を`.
-- `{{受|う}}けとりました` -> azione conclusa: ricevere e prendere in consegna.
+*   `レシピを` ➔ **Oggetto diretto** (`レシピ` + `を`).
+*   `{{受|う}}けとりました` ➔ **Azione conclusa** (ricevere e prendere in
+    consegna).
 ```
 
 La funzione dell'anatomia è far vedere il parsing. Non deve limitarsi a ripetere
 la traduzione italiana.
+
+Ogni `:::example_sentence` che contiene un pattern grammaticale, una frase UI
+densa o un contrasto di lettura deve essere seguito da un'anatomia. Puoi
+ometterla solo per esempi di riepilogo molto brevi e trasparenti, oppure quando
+il punto e gia stato appena analizzato nello stesso cluster.
 
 ### 8. Contrasti Espliciti
 
@@ -361,7 +412,7 @@ Usa callout `NOTE` o `WARNING` quando una distinzione evita un errore reale:
 Il contrasto deve essere operativo: dopo averlo letto, l'utente deve sapere
 come scegliere la lettura corretta.
 
-### 9. Esempi Di Riepilogo
+### 9. Esempi di riepilogo
 
 Chiudi con esempi guidati che ricombinano gli elementi principali in frasi
 nuove o reali. Il riepilogo non deve essere un elenco di definizioni: deve far
@@ -382,15 +433,29 @@ Questo standard non cambia il workflow immagini.
   deve diventare il nuovo ideale quando screenshot, card art o crop UI
   renderebbero più concreta la spiegazione.
 
-## Cosa Non Fare
+## Esempi didattici e fedeltà al testo
+
+Gli esempi possono essere frasi reali, frasi lievemente normalizzate o frasi
+didattiche costruite sul contesto. Se non sono transcript puntuali, non
+presentarli come citazioni ufficiali della scena. Devono però restare
+linguisticamente naturali, contenere davvero il target che stai spiegando e
+non aggiungere lore, motivazioni o dettagli che il giapponese non sostiene.
+
+Per lesson molto compatte di UI, web o schermata singola, trasferisci lo
+standard senza gonfiare artificialmente il contenuto: meno cluster, più focus
+su azione reale, oggetto, particella, conferma, pulsante e contrasto operativo.
+La forma resta quella della lesson modello, ma il respiro deve rispettare la
+densità del materiale.
+
+## Cosa non fare
 
 - Non usare sezioni generiche `Obiettivo`, `Contesto`, `Spiegazione` come unico
   impianto quando il materiale permette cluster tematici.
 - Non scrivere una lista di termini seguita da paragrafi separati senza
   relazione.
 - Non dire che una parola è utile o importante senza aprire forma e funzione.
-- Non parlare del batch, del workflow, della review o della pagina come oggetto
-  editoriale; una promessa didattica breve è ammessa solo se orienta la lettura.
+- Non parlare del batch, del workflow, della review, della pagina o della
+  lesson come oggetto; apri direttamente sul media e sul giapponese leggibile.
 - Non trasformare il media in una guida al gioco separata dalla lingua.
 - Non creare esempi che definiscono la parola invece di usarla.
 - Non confondere ganci mnemonici con etimologia.
@@ -398,8 +463,15 @@ Questo standard non cambia il workflow immagini.
 - Non lasciare frasi valutative senza meccanismo linguistico.
 - Non appiattire tutto in sezioni brevi e isolate quando il materiale chiede
   una spiegazione progressiva.
+- Non lasciare nel `title` frontmatter etichette da batch, seed o workflow:
+  `title` è learner-facing e deve sembrare una lesson, non un job editoriale.
+- Non usare Title Case nei titoli italiani.
+- Non usare furigana con puntini o ruby su katakana puro.
+- Non spezzare kanji-per-kanji i composti lessicali naturali.
+- Non far sembrare gli esempi didattici citazioni reali quando sono frasi
+  costruite per insegnare il pattern.
 
-## Checklist Di Review
+## Checklist di review
 
 Una lesson segue questo standard solo se:
 
@@ -416,4 +488,11 @@ Una lesson segue questo standard solo se:
 - i contrasti più rischiosi sono dichiarati con esempi;
 - gli esempi finali ricombinano davvero il materiale;
 - eventuali immagini seguono il workflow asset esistente;
-- la pagina non contiene metadiscorso editoriale.
+- la pagina non contiene metadiscorso editoriale;
+- i campi frontmatter identitari sono rimasti invariati nelle riscritture;
+- il `title` frontmatter è naturale, learner-facing e non contiene label di
+  batch o workflow;
+- H1 e heading italiani sono in sentence case;
+- i furigana sono senza puntini, senza ruby su katakana puro e con letture
+  verificate;
+- gli esempi costruiti sono riconoscibili come didattici, non come transcript.

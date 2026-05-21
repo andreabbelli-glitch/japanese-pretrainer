@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-training-salute-e-vita-quotidiana
 media_id: media-pokemon-scarlet-violet
 slug: 072-sv-anki-l20-legami-training-salute-e-vita-quotidiana
-title: SV Anki L20 - Legami, training, salute e vita quotidiana
+title: Legami, training e vita quotidiana a Paldea
 order: 102
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -32,11 +32,11 @@ Pokémon.
 - [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun) — allenamento speciale
 - [{{突|とつ}}{{然|ぜん}}](term:term-anki-l20-totsuzen) — improvviso; all’improvviso
 - [{{悩|なや}}む](term:term-anki-l20-nayamu) — preoccuparsi; essere indecisi
-- [{{半|はん}}{{分|ぶん}}](term:term-anki-l20-hanbun) — metà
+- [{{半分|はんぶん}}](term:term-anki-l20-hanbun) — metà
 - [{{彼|かれ}}ら](term:term-anki-l20-karera) — loro
 - [{{悲|かな}}しい](term:term-anki-l20-kanashii) — triste
 - [{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou) — minuti e secondi; istante
-- [{{保|ほ}}{{健|けん}}](term:term-anki-l20-hoken) — salute; igiene; educazione sanitaria
+- [{{保健|ほけん}}](term:term-anki-l20-hoken) — salute; igiene; educazione sanitaria
 - [{{暮|く}}らす](term:term-anki-l20-kurasu) — vivere; abitare
 
 ## Espressioni ricorrenti
@@ -44,7 +44,7 @@ Pokémon.
 - [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun)をする — fare un allenamento speciale
 - [{{突|とつ}}{{然|ぜん}}](term:term-anki-l20-totsuzen)、... — apre un evento che interrompe la scena
 - [{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou)を{{争|あらそ}}う — agire con urgenza estrema
-- [{{保|ほ}}{{健|けん}}](term:term-anki-l20-hoken){{室|しつ}} — infermeria dell'Accademia
+- [{{保健|ほけん}}](term:term-anki-l20-hoken){{室|しつ}} — infermeria dell'Accademia
 
 ## Pattern grammaticali chiave
 
@@ -59,10 +59,9 @@ Pokémon.
 Quando il testo parla di gruppi come スター{{団|だん}}, la scelta del
 termine decide se il parlante sta includendo le persone in un legame interno o
 le sta guardando da fuori. [{{同|どう}}{{胞|ほう}}](term:term-anki-l20-douhou)
-unisce `{{同|どう}}` "stesso" e `{{胞|ほう}}` "grembo / sacca": non è il
-semplice "amico" quotidiano, ma un compagno percepito come parte dello stesso
-corpo simbolico. Nei discorsi solenni o nelle dichiarazioni di fedeltà, alza il
-registro e rende il gruppo più compatto.
+non è il semplice "amico" quotidiano, ma un compagno percepito come parte dello
+stesso corpo simbolico. Nei discorsi solenni o nelle dichiarazioni di fedeltà,
+alza il registro e rende il gruppo più compatto.
 
 [{{彼|かれ}}ら](term:term-anki-l20-karera), invece, usa il pronome
 `{{彼|かれ}}` con il plurale `ら`. In giapponese spesso basta nominare il ruolo
@@ -167,7 +166,7 @@ translation_it: >-
 - `{{悩|なや}}む トレーナー` -> il dubbio qualifica gli Allenatori: non stanno
   solo pensando, stanno esitando davanti a una scelta.
 
-In battaglia, [{{半|はん}}{{分|ぶん}}](term:term-anki-l20-hanbun) rende leggibili
+In battaglia, [{{半分|はんぶん}}](term:term-anki-l20-hanbun) rende leggibili
 le soglie. `{{半|はん}}` è "metà" e `{{分|ぶん}}` è "parte": quando si aggiunge
 `{{以下|いか}}`, la frase non parla di una quantità vaga, ma di "metà o meno".
 Questo cambia il timing degli effetti: una condizione può attivarsi solo dopo
@@ -175,7 +174,7 @@ che i PS scendono oltre quella linea.
 
 :::example_sentence
 jp: >-
-  ボスの ポケモンの ＨＰを {{半|はん}}{{分|ぶん}}{{以下|いか}}まで {{削|けず}}ったぞ！
+  ボスの ポケモンの ＨＰを {{半分|はんぶん}}{{以下|いか}}まで {{削|けず}}ったぞ！
 translation_it: >-
   Abbiamo ridotto i PS del Pokémon del boss fin sotto la metà!
 :::
@@ -183,7 +182,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `ＨＰを` -> la risorsa misurata è il bersaglio dell'azione.
-- `{{半|はん}}{{分|ぶん}}{{以下|いか}}まで` -> `まで` fissa il punto di arrivo:
+- `{{半分|はんぶん}}{{以下|いか}}まで` -> `まで` fissa il punto di arrivo:
   non "circa metà", ma fino alla soglia indicata.
 - `{{削|けず}}った` -> "raschiare / ridurre": in lotta descrive la perdita
   progressiva di PS.
@@ -191,7 +190,7 @@ translation_it: >-
 > [!NOTE]
 > **⚖️ Contrasto operativo:** [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun)
 > prepara una prova, [{{悩|なや}}む](term:term-anki-l20-nayamu) rallenta una
-> scelta, [{{半|はん}}{{分|ぶん}}](term:term-anki-l20-hanbun) misura una soglia.
+> scelta, [{{半分|はんぶん}}](term:term-anki-l20-hanbun) misura una soglia.
 > Sono tre modi diversi di leggere il tempo di gioco: prima dell'azione, durante
 > la decisione e nel momento in cui una condizione diventa vera.
 
@@ -218,23 +217,22 @@ translation_it: >-
 ## 3. Tempo, salute e vita quotidiana
 
 La vita scolastica di Paldea usa parole che sembrano tranquille, ma nei dialoghi
-marcano luoghi e priorità molto precise. [{{保|ほ}}{{健|けん}}](term:term-anki-l20-hoken)
-unisce `{{保|ほ}}` "proteggere / preservare" e `{{健|けん}}` "salute":
-nell'Accademia può indicare la materia di educazione sanitaria, mentre
-[{{保|ほ}}{{健|けん}}](term:term-anki-l20-hoken){{室|しつ}} indica fisicamente
+marcano luoghi e priorità molto precise. [{{保健|ほけん}}](term:term-anki-l20-hoken)
+può indicare salute pubblica o educazione sanitaria; nell'Accademia può indicare la materia di educazione sanitaria, mentre
+[{{保健|ほけん}}](term:term-anki-l20-hoken){{室|しつ}} indica fisicamente
 l'infermeria, cioè il luogo in cui salute e dialoghi con lo staff entrano nella
 stessa scena.
 
 :::example_sentence
 jp: >-
-  アカデミーの {{保|ほ}}{{健|けん}}の {{授業|じゅぎょう}}では、ポケモンと {{人|ひと}}の {{体|からだ}}の ことを {{学|まな}}ぶ。
+  アカデミーの {{保健|ほけん}}の {{授業|じゅぎょう}}では、ポケモンと {{人|ひと}}の {{体|からだ}}の ことを {{学|まな}}ぶ。
 translation_it: >-
   Nelle lezioni di educazione sanitaria dell'Accademia si studia il corpo delle persone e dei Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `アカデミーの {{保|ほ}}{{健|けん}}の {{授業|じゅぎょう}}では` -> `では`
+- `アカデミーの {{保健|ほけん}}の {{授業|じゅぎょう}}では` -> `では`
   incornicia il luogo-tema: "quanto alle lezioni di educazione sanitaria".
 - `ポケモンと {{人|ひと}}の {{体|からだ}}の ことを` -> l'oggetto dello studio è
   "le cose riguardanti il corpo" di Pokémon e persone.
@@ -274,7 +272,7 @@ conta e che l'azione deve procedere senza ritardo.
 jp: >-
   ペパーの ポケモンを {{助|たす}}けるため、{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}って {{秘|ひ}}{{伝|でん}}スパイスを {{探|さが}}した。
 translation_it: >-
-  Per aiutare il Pokémon di Pepe, abbiamo cercato le Spezie Segrete senza perdere un istante.
+  Per aiutare il Pokémon di Pepper, abbiamo cercato le Spezie Segrete senza perdere un istante.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -287,7 +285,7 @@ translation_it: >-
   `を`; il verbo descrive la ricerca concreta.
 
 > [!NOTE]
-> **🧠 Gancio cognitivo:** [{{保|ほ}}{{健|けん}}](term:term-anki-l20-hoken)
+> **🧠 Gancio cognitivo:** [{{保健|ほけん}}](term:term-anki-l20-hoken)
 > protegge la salute, [{{暮|く}}らす](term:term-anki-l20-kurasu) mostra come
 > quella salute entra nelle giornate, [{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou)
 > stringe la giornata fino all'urgenza di un singolo istante.
@@ -314,14 +312,14 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  ＨＰが {{半|はん}}{{分|ぶん}}{{以下|いか}}に なったら、{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}う {{状況|じょうきょう}}だ。
+  ＨＰが {{半分|はんぶん}}{{以下|いか}}に なったら、{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}う {{状況|じょうきょう}}だ。
 translation_it: >-
   Quando i PS scendono a metà o meno, è una situazione in cui ogni istante conta.
 :::
 
 :::example_sentence
 jp: >-
-  パルデア{{地方|ちほう}}で ポケモンと {{暮|く}}らしていると、アカデミーの {{保|ほ}}{{健|けん}}{{室|しつ}}の {{世話|せわ}}に なることも ある。
+  パルデア{{地方|ちほう}}で ポケモンと {{暮|く}}らしていると、アカデミーの {{保健|ほけん}}{{室|しつ}}の {{世話|せわ}}に なることも ある。
 translation_it: >-
   Vivendo con i Pokémon nella regione di Paldea, capita anche di finire sotto le cure dell'infermeria dell'Accademia.
 :::
@@ -332,8 +330,8 @@ translation_it: >-
 [{{彼|かれ}}ら](term:term-anki-l20-karera) ti dicono da quale distanza si guarda
 un gruppo; [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun),
 [{{悩|なや}}む](term:term-anki-l20-nayamu) e
-[{{半|はん}}{{分|ぶん}}](term:term-anki-l20-hanbun) organizzano preparazione,
-decisione e soglia; [{{保|ほ}}{{健|けん}}](term:term-anki-l20-hoken),
+[{{半分|はんぶん}}](term:term-anki-l20-hanbun) organizzano preparazione,
+decisione e soglia; [{{保健|ほけん}}](term:term-anki-l20-hoken),
 [{{暮|く}}らす](term:term-anki-l20-kurasu) e
 [{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou) collegano scuola, routine
 e urgenza. Quando questi segnali compaiono insieme, la frase non sta solo dando

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet
 media_id: media-pokemon-scarlet-violet
 slug: 045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet
-title: SV Pre-study L30C - sistema e menu, Scarlet/Violet
+title: "Menu, istruzioni e parlato quando il gioco ti chiede di agire"
 order: 75
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -22,7 +22,7 @@ summary: >-
 
 Nei menu e nelle scene scolastiche di *Pokémon Scarlet & Violet*, il testo giapponese non descrive soltanto oggetti o personaggi: spesso decide che cosa puoi fare adesso, chi ti sta parlando, dove devi andare e se una scelta resta aperta.
 
-Questo blocco allena tre letture pratiche: riconoscere le persone e i ruoli della scena, distinguere azioni di sistema come salvare o ritirarsi, e capire il tono colloquiale quando un personaggio lascia un'opzione, fa una supposizione o parla con sicurezza ruvida.
+Il testo richiede tre letture pratiche: riconoscere le persone e i ruoli della scena, distinguere azioni di sistema come salvare o ritirarsi, e capire il tono colloquiale quando un personaggio lascia un'opzione, fa una supposizione o parla con sicurezza ruvida.
 
 ## Termini chiave
 
@@ -201,12 +201,23 @@ translation_it: >-
   Pare che Nemona sia già arrivata.
 :::
 
+#### 🗺️ Anatomia della frase
+
+- `ネモは` -> tema della frase: la persona su cui circola l'informazione.
+- `もう {{来|き}}た` -> evento completato: Nemona è già arrivata.
+- `らしい` -> evidenza indiretta: il parlante non presenta il fatto come visto direttamente.
+
 :::example_sentence
 jp: >-
   {{忘|わす}}れないうちに {{書|か}}く。
 translation_it: >-
   Lo scrivo prima di dimenticarmene.
 :::
+
+#### 🗺️ Anatomia della frase
+
+- `{{忘|わす}}れないうちに` -> finestra temporale: l'azione va fatta prima che il ricordo sparisca.
+- `{{書|か}}く` -> azione principale: scrivere per fissare l'informazione.
 
 > [!NOTE]
 > **⚖️ Contrasto operativo:** [～らしい](grammar:grammar-g102-pare-che-tipico-di) lascia distanza dal fatto, come "pare che"; [～だぜ](grammar:grammar-g105-finale-ruvida-maschile) invece non rende il fatto incerto, rende più marcata la voce del personaggio.

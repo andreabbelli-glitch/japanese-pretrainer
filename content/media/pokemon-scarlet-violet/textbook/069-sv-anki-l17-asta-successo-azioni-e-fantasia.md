@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-successo-azioni-e-fantasia
 media_id: media-pokemon-scarlet-violet
 slug: 069-sv-anki-l17-asta-successo-azioni-e-fantasia
-title: SV Anki L17 - Asta, successo, azioni e fantasia
+title: "Aste, scoperte e inviti: azioni che fanno avanzare Paldea"
 order: 99
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -66,11 +66,8 @@ ti porta dentro un'asta, [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakke
 apre una scoperta, [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu)
 sposta l'attenzione sulle risorse da reintegrare.
 
-- [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) unisce `{{入|い}}れる`
-  "mettere dentro" e `{{札|さつ}}` "cartellino / offerta": nella [{{競|せ}}り](term:term-anki-l08-seri)
-  non indica l'asta in sé, ma l'atto di inserire la propria offerta. Se la frase
-  contiene `で`, come `セリで`, quel `で` marca il luogo o evento in cui fai il
-  rilancio.
+- [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) è il composto dell'offerta in asta. Nella [{{競|せ}}り](term:term-anki-l08-seri)
+  non indica l'asta in sé, ma l'atto di inserire la propria offerta. Se la frase contiene `で`, come `セリで`, quel `で` marca il luogo o evento in cui fai il rilancio.
 - [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken) contiene `{{見|み}}る`
   "vedere" e porta l'idea di far emergere qualcosa alla vista. L'oggetto
   scoperto prende `を`: in [エリアゼロ](term:term-v022-eriazero), una frase con
@@ -283,19 +280,16 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  ドラゴンタイプの ポケモンは {{竜|りゅう}}の ような すがたを している。
+  {{竜|りゅう}}の ような ポケモンが {{空|そら}}を {{飛|と}}んでいる。
 translation_it: >-
-  I Pokémon di tipo Drago hanno un aspetto simile a un drago.
+  Un Pokémon simile a un drago sta volando nel cielo.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `ドラゴンタイプの ポケモンは` -> `は` imposta il tema: si parla dei Pokémon di
-  tipo Drago.
-- `{{竜|りゅう}}の ような` -> `のような` crea una somiglianza: "simile a un
-  drago".
-- `すがたを している` -> costruzione descrittiva: letteralmente "ha / presenta
-  una forma".
+- `{{竜|りゅう}}の ような` -> `のような` crea una somiglianza concreta: "simile a un drago".
+- `ポケモンが` -> `が` introduce ciò che appare o si muove nella scena.
+- `{{空|そら}}を {{飛|と}}んでいる` -> `を` marca lo spazio attraversato: il Pokémon vola nel cielo.
 
 > [!WARNING]
 > **⚖️ Contrasto operativo: `お{{菓|か}}{{子|し}}` e `おかしい`**

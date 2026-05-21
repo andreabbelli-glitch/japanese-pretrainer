@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-029-sv-prestudy-l19b-reazioni-e-parlato-scarlet-violet
 media_id: media-pokemon-scarlet-violet
 slug: 029-sv-prestudy-l19b-reazioni-e-parlato-scarlet-violet
-title: SV Pre-study L19B - reazioni e parlato, Scarlet/Violet
+title: "Reazioni e parlato in viaggio: scuola, battaglie e connessioni"
 order: 59
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -19,11 +19,11 @@ summary: >-
   focus: distinguere tono, luogo, scelta e conseguenza nella scena.
 ---
 
-# Reazioni e Parlato in Viaggio: Scuola, Battaglie e Connessioni
+# Reazioni e parlato in viaggio: scuola, battaglie e connessioni
 
 Nel mondo di *Pokémon Scarlet & Violet*, le interazioni non si limitano a menu astratti. Ogni dialogo, lezione scolastica o evento di sistema allena la tua capacità di leggere al volo intenzioni, comandi e sfumature di tono.
 
-In questa lezione analizzeremo le parole e le formule che il gioco usa quando conferma una scelta, segnala un luogo, commenta una battaglia o lascia emergere il tono di un personaggio. L'obiettivo è riconoscerle non come parole isolate, ma come pezzi di un sistema linguistico vivo.
+Il gioco usa parole e formule riconoscibili quando conferma una scelta, segnala un luogo, commenta una battaglia o lascia emergere il tono di un personaggio. Non sono parole isolate: sono pezzi di un sistema linguistico vivo.
 
 ## Termini chiave
 
@@ -62,7 +62,7 @@ In questa lezione analizzeremo le parole e le formule che il gioco usa quando co
 
 ---
 
-## 1. La Cornice Scolastica ed Esplorativa: Avventure a Paldea
+## 1. La cornice scolastica ed esplorativa: avventure a Paldea
 
 Il tuo viaggio a Paldea si divide tra i banchi dell'Accademia e l'esplorazione selvaggia.
 
@@ -70,12 +70,12 @@ Il tuo viaggio a Paldea si divide tra i banchi dell'Accademia e l'esplorazione s
 *   [なみのり](term:term-v260-naminori) (**Surf / Cavalcare le onde**): Letteralmente "cavalcare le onde" (`{{波|なみ}}` *nami*, onda + `{{乗|の}}り` *nori*, cavalcare/salire a bordo). È il nome storico della mossa *Surf* e indica l'abilità della tua cavalcatura (Koraidon o Miraidon) di muoversi sull'acqua. Se leggi [なみのり](term:term-v260-naminori) in un tutorial, il gioco ti sta spiegando come superare fiumi o specchi di mare.
 *   [{{味方|みかた}}](term:term-v258-mikata) e [{{古代|こだい}}](term:term-v255-kodai):
     *   [{{味方|みかた}}](term:term-v258-mikata) (**Alleato / Compagno**): Indica chi combatte dalla tua parte (es. nei Raid Terastal).
-        *   🧠 **Gancio Mnemonico:** Pensa a `{{味|み}}` come "gusto/fazione" e `{{方|かた}}` come "direzione/persona". Chi condivide la tua stessa direzione è il tuo [{{味方|みかた}}](term:term-v258-mikata) (alleato). Contrasta direttamente con `{{相手|あいて}}` (*aite*, avversario). *(Nota: è un trucco di memoria, non l’etimologia reale — `{{味方|みかた}}` è probabilmente un ateji da `{{御方|みかた}}`.)*
+        *   🧠 **Gancio mnemonico:** Pensa a `{{味|み}}` come "gusto/fazione" e `{{方|かた}}` come "direzione/persona". Chi condivide la tua stessa direzione è il tuo [{{味方|みかた}}](term:term-v258-mikata) (alleato). Contrasta direttamente con `{{相手|あいて}}` (*aite*, avversario). *(Nota: è un trucco di memoria, non l’etimologia reale — `{{味方|みかた}}` è probabilmente un ateji da `{{御方|みかた}}`.)*
     *   [{{古代|こだい}}](term:term-v255-kodai) (**Antichità / Passato remoto**): Composto da `{{古|こ}}` (*vecchio*) e `{{代|だい}}` (*era/generazione*). In *Pokémon Violet* sentirai parlare di futuro, ma in *Pokémon Scarlet* sentirai costantemente nominare i [{{古代|こだい}}](term:term-v255-kodai)のポケモン (i Pokémon del passato remoto, o Pokémon Paradosso del passato).
 
 ---
 
-## 2. I Tipi Elementali e la Cautela in Battaglia
+## 2. I tipi elementali e la cautela in battaglia
 
 Per trionfare nelle palestre, devi riconoscere al volo i tipi dei Pokémon e le condizioni delle mosse.
 
@@ -87,7 +87,7 @@ Per trionfare nelle palestre, devi riconoscere al volo i tipi dei Pokémon e le 
 Quando affronti sfide impegnative, il sistema o i personaggi ti daranno avvisi precisi usando:
 
 *   [{{注意|ちゅうい}}](term:term-v261-chuui) (**Attenzione / Cautela**): Composto da `{{注|ちゅう}}` (*versare*) e `{{意|い}}` (*mente/intenzione*). Lo troverai spesso nei messaggi di pericolo o nelle istruzioni operative.
-    *   🧠 **Gancio Cognitivo:** Immagina di *"versare la propria mente su qualcosa"*: è un modo efficace per ricordare che [{{注意|ちゅうい}}](term:term-v261-chuui) significa concentrare tutta l'attenzione su un punto preciso.
+    *   🧠 **Gancio cognitivo:** Immagina di *"versare la propria mente su qualcosa"*: è un modo efficace per ricordare che [{{注意|ちゅうい}}](term:term-v261-chuui) significa concentrare tutta l'attenzione su un punto preciso.
 *   [{{受|う}}ける](term:term-v262-ukeru) (**Ricevere / Sostenere**): È il verbo-base per descrivere chi subisce un'azione. In battaglia, non significa ricevere un regalo, ma subire un attacco o un effetto di stato (es. `はがねタイプのわざを{{受|う}}ける` ➔ subire una mossa di tipo Acciaio).
 
 > [!WARNING]
@@ -97,7 +97,7 @@ Quando affronti sfide impegnative, il sistema o i personaggi ti daranno avvisi p
 
 ---
 
-## 3. Le Interfacce di Gioco: Ricevere, Selezionare e Connettersi
+## 3. Le interfacce di gioco: ricevere, selezionare e connettersi
 
 Quando navighi nei menu, configuri il multiplayer o raccogli oggetti, il gioco comunica con formule stabili.
 
@@ -116,7 +116,7 @@ translation_it: >-
   Hai ricevuto la ricetta!
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 *   `レシピを` ➔ **Oggetto Diretto** (`レシピ` ricetta + `を` marca-oggetto ➔ *"...la ricetta..."*).
 *   `{{受|う}}けとりました` ➔ **Azione Conclusa** (Verbo composto da `{{受|う}}ける` *ricevere* + `{{取|と}}る` *prendere*, coniugato al passato cortese `～ました` ➔ *"...ha preso in consegna / ha ricevuto"*). Il sistema usa questa formula [〜を {{受|う}}けとりました！](term:term-e046-o-uketorimashita) ogni volta che un oggetto o un panino entra nell'inventario.
 
@@ -127,18 +127,18 @@ translation_it: >-
   Seleziona un Pokémon.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 *   `ポケモンを` ➔ **Oggetto della Scelta** (`ポケモン` + `を`).
 *   `{{選|えら}}んでください` ➔ **Istruzione Cortese** (Verbo `{{選|えら}}ぶ` *scegliere* nella forma in `-te` `{{選|えら}}んで` + `ください` *per favore* ➔ *"...seleziona per favore"*). Questa espressione [〜を {{選|えら}}んでください](term:term-e047-o-erandekudasai) governa tutte le schermate in cui il gioco attende una tua selezione.
 
 ---
 
-## 4. Le Sfumature del Parlato: Richieste ed Emozioni nei Dialoghi
+## 4. Le sfumature del parlato: richieste ed emozioni nei dialoghi
 
 Il bello del giapponese nei media sta nel saper cogliere le relazioni tra i personaggi attraverso la grammatica.
 
 ### A. Esprimere desideri personali: `～てほしい`
-Quando un personaggio (es. Nemona o Pepe) vuole che tu faccia qualcosa, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in `-te` del verbo + `ほしい`** (desiderabile) ed esprime il desiderio dal punto di vista del parlante. Se si parla del desiderio di una terza persona, di solito serve una forma riportata o osservabile, come `～てほしいと{{思|おも}}っている` o `～てほしがっている`.
+Quando un personaggio (es. Nemona o Pepper) vuole che tu faccia qualcosa, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in `-te` del verbo + `ほしい`** (desiderabile) ed esprime il desiderio dal punto di vista del parlante. Se si parla del desiderio di una terza persona, di solito serve una forma riportata o osservabile, come `～てほしいと{{思|おも}}っている` o `～てほしがっている`.
 
 :::example_sentence
 jp: >-
@@ -147,7 +147,7 @@ translation_it: >-
   Vorrei che usassi questo.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 *   `これを` ➔ **Oggetto** (*"questo"* + `を`).
 *   `{{使|つか}}って` ➔ **Forma in `-te`** del verbo `{{使|つか}}う` (*usare*).
 *   `ほしい` ➔ **Desiderio** (*"voglio/desidero"*).
@@ -163,7 +163,7 @@ translation_it: >-
   Prova anche a usarlo.
 :::
 
-#### 🗺️ Anatomia della Frase
+#### 🗺️ Anatomia della frase
 *   `これも` ➔ **Focus Esteso** (`これ` questo + `も` anche ➔ *"anche questo"*).
 *   `{{使|つか}}ってみて` ➔ **Tentativo Esortativo** (Verbo `{{使|つか}}う` *usare* nella forma in `-te` `{{使|つか}}って` + `みる` *provare a* nella sua forma in `-te` `みて`, usata qui come esortazione informale ➔ *prova a usarlo, dai!*).
 
@@ -182,7 +182,7 @@ La parola [せっかく](term:term-v270-sekkaku) segnala un'occasione ottenuta c
 
 ---
 
-### D. Impegni e Constatazioni colloquiali
+### D. Impegni e constatazioni colloquiali
 
 *   [{{約束|やくそく}}](term:term-v271-yakusoku) (**Promessa / Appuntamento**): Molto comune nei dialoghi in cui i personaggi stringono un patto (es. *"Promettimi che verrai a テーブルシティ"*). `{{約束|やくそく}}する` trasforma la parola in azione attiva.
 *   [～な / ～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) (**Eh / proprio... / vedo che...**): Finale colloquiale e riflessiva, spesso ruvida o mascolina a seconda della voce del personaggio, ma non esclusivamente maschile. Dopo aggettivi in `い` si usa direttamente `な` (`このジムはむずかしいな` ➔ *"Questa palestra è proprio difficile, eh"*); dopo nomi e aggettivi in `な` compare spesso `だな` (`{{静|しず}}かだな`, `{{先生|せんせい}}だな`). Con i verbi, invece, serve più attenzione: `な` può essere osservativo in certi contesti, ma dopo una forma del dizionario può anche diventare proibitivo. Il parlante non sta facendo una domanda diretta: sta pensando ad alta voce o constatando un fatto evidente davanti a lui.
@@ -193,7 +193,7 @@ La parola [せっかく](term:term-v270-sekkaku) segnala un'occasione ottenuta c
 
 ---
 
-## Esempi guidati di Riepilogo
+## Esempi guidati di riepilogo
 
 Le stesse parole diventano più leggibili quando si combinano in frasi di scuola, battaglia, selezione e dialogo:
 

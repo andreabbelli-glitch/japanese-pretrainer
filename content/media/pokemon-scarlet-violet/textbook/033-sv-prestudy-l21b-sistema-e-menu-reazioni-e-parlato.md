@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato
 media_id: media-pokemon-scarlet-violet
 slug: 033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato
-title: SV Pre-study L21B - sistema e menu, reazioni e parlato
+title: "Sistema, menu e reazioni: quando la schermata cambia stato"
 order: 63
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -39,7 +39,7 @@ schermata, le seconde fanno sentire la voce di un personaggio.
 - [{{空|そら}}](term:term-v335-sora) — cielo / spazio aperto sopra di sé
 - [あいことば](term:term-v336-aikotoba) — codice link / password condivisa
 - [いきなり](term:term-v337-ikinari) — all'improvviso
-- [{{回避率|かいひりつ}}](term:term-v338-kaihiritsu) — tasso di evasione
+- [{{回避|かいひ}}{{率|りつ}}](term:term-v338-kaihiritsu) — tasso di evasione
 - [{{材料|ざいりょう}}](term:term-v339-zairyou) — ingredienti / materiali
 - [カメラアプリ](term:term-v340-kameraapuri) — app fotocamera
 - [{{自分|じぶん}}だけ](term:term-v344-jibun-dake) — solo io / solo per sé
@@ -160,15 +160,15 @@ particolarmente favorevole. `{{効果|こうか}}` è l'effetto, mentre `バツ�
 aggiunge l'idea colloquiale di "eccellente"; insieme non descrivono la potenza
 base della mossa, ma la riuscita rispetto al bersaglio.
 
-[{{回避率|かいひりつ}}](term:term-v338-kaihiritsu) appartiene a un altro piano:
+[{{回避|かいひ}}{{率|りつ}}](term:term-v338-kaihiritsu) appartiene a un altro piano:
 `{{回避|かいひ}}` è l'evitare, `{{率|りつ}}` è il tasso. Quando il testo parla di
-`{{回避率|かいひりつ}}`, sta regolando quanto è probabile schivare o mancare, non
+`{{回避|かいひ}}{{率|りつ}}`, sta regolando quanto è probabile schivare o mancare, non
 quanto danno farà una mossa già andata a segno. Per questo può stare vicino a
 messaggi di efficacia senza dire la stessa cosa.
 
 :::example_sentence
 jp: >-
-  {{相手|あいて}}の {{回避率|かいひりつ}}が あがっているので、
+  {{相手|あいて}}の {{回避|かいひ}}{{率|りつ}}が あがっているので、
   {{効果|こうか}}バツグンの {{技|わざ}}も はずれることがあります。
 translation_it: >-
   Poiché l'evasione dell'avversario è aumentata, anche una mossa super efficace
@@ -177,7 +177,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{回避率|かいひりつ}}が あがっている` -> stato già in corso: il parametro di
+- `{{回避|かいひ}}{{率|りつ}}が あがっている` -> stato già in corso: il parametro di
   evasione è aumentato e ora resta alto.
 - `ので` -> collega la causa alla conseguenza pratica.
 - `{{効果|こうか}}バツグンの {{技|わざ}}も` -> `も` include perfino una mossa
