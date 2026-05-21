@@ -499,6 +499,7 @@ Per workflow con LLM esterni, il punto di partenza operativo e
 - [Blueprint operativo](./docs/blueprint-operativo.md)
 - [Persistence layer](./docs/database.md)
 - [Specifica contenuti Markdown](./docs/content-format.md)
+- [Standard stile lesson textbook](./docs/llm-kit/general/10-textbook-lesson-style-standard.md)
 - [Content parser e validator](./docs/content-parser.md)
 - [Importer sync strategy](./docs/importer-sync-strategy.md)
 - [Kanji Clash](./docs/kanji-clash.md) - contratto tecnico e guardrail editoriali della feature

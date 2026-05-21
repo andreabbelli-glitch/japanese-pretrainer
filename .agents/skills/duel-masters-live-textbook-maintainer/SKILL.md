@@ -12,6 +12,11 @@ The screenshot is an identification aid. The final content should be built
 around a dedicated per-card lesson, a clean card asset, and verified Japanese
 text.
 
+Before writing or revising the textbook prose, read:
+
+- `docs/llm-kit/general/10-textbook-lesson-style-standard.md`
+- `docs/llm-kit/general/09-editorial-quality-rubric.md`
+
 ## Primary Objective
 
 The primary objective of this workflow is teaching the user Japanese.
@@ -141,6 +146,9 @@ Primary target files:
 
 5. Write the textbook lesson like a real card-reading page.
 
+- Follow `docs/llm-kit/general/10-textbook-lesson-style-standard.md` for voice
+  and explanation quality. The page should read like a tutor walking through
+  the card text with the learner: natural, dense, concrete, and progressive.
 - Use one `:::image` block for the clean card asset.
 - Keep keyword labels in a compact list when they are already covered by the
   keyword bank.
@@ -159,6 +167,16 @@ Primary target files:
   - timing windows
   - subject / target resolution
   - state expressions
+- Organize explanations into functional clusters such as cost/setup, condition,
+  target, timing, payoff, restriction, or contrast. Avoid a flat list of
+  independent glosses.
+- Add an anatomy-style breakdown after dense rules text when it helps the
+  learner parse the Japanese.
+- Use operational contrasts when a form could be misread, for example condition
+  vs timing, source zone vs destination, optionality vs obligation, or state
+  already present vs state created by the effect.
+- Ganci cognitivi are allowed when they help recognition, but mark them as
+  mnemonic aids when they are not real etymology.
 - Explain the game consequence only as support for reading the Japanese.
 - Do not write meta framing about the page, the workflow, the lesson strategy,
   or the fact that the card was imported from a screenshot.
@@ -403,6 +421,12 @@ Practical card-selection rules:
 
 - Explanations must focus on what is new in the current corpus, not repeat the
   whole base theory every time.
+- Textbook prose must follow the repo lesson style standard: tutor-like voice,
+  thematic clusters, dense micro-explanations, anatomy of phrase, operational
+  contrasts, and concise final synthesis.
+- Do not write the lesson as an outline of rulings or a list of definitions.
+  Every paragraph should change how the learner reads a Japanese form on the
+  card.
 - In associated card `notes_it`, prefer this shape when it fits the material:
   explain first the general Japanese meaning of the word or pattern, then
   explain how that same meaning narrows or specializes in the Duel Masters

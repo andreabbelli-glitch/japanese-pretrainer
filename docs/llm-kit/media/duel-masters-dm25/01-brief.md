@@ -110,6 +110,12 @@ Per ogni deck:
 `N5/N4` descrive il livello di partenza dell'utente, non il limite massimo dei
 contenuti.
 
+Le lesson textbook seguono
+`docs/llm-kit/general/10-textbook-lesson-style-standard.md`: voce naturale da
+tutor, spiegazioni dense, cluster tematici, anatomia della frase e contrasti
+operativi. Anche quando il media è tecnico, la pagina deve insegnare a leggere
+il giapponese del rules text, non presentare un outline di ruling.
+
 Quindi:
 
 - se un termine, kanji o pattern e piu avanzato ma compare spesso o e

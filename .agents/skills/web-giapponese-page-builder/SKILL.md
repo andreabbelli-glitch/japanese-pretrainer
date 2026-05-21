@@ -28,6 +28,8 @@ Before writing content, read:
 - `docs/llm-kit/general/04-template-textbook-lesson.md`
 - `docs/llm-kit/general/05-template-cards-file.md`
 - `docs/llm-kit/general/06-content-workflow-playbook.md`
+- `docs/llm-kit/general/09-editorial-quality-rubric.md`
+- `docs/llm-kit/general/10-textbook-lesson-style-standard.md`
 - `docs/llm-kit/media/web-giapponese/01-brief.md`
 - `docs/llm-kit/media/web-giapponese/02-batch-prompt.md`
 
@@ -87,6 +89,12 @@ Optional:
 - A real lesson maps to one real item, not to a source overview.
 - Keep the lesson focused on teaching Japanese, not on reviewing the website,
   game, app or card product.
+- Follow `docs/llm-kit/general/10-textbook-lesson-style-standard.md` for the
+  textbook prose: tutor-like voice, concrete contextual opening, thematic
+  clusters, dense micro-explanations, anatomy of phrase, operational contrasts,
+  and ganci cognitivi when useful.
+- Do not write the item page as a screenshot inventory or UI outline. Every
+  section should make the Japanese text more readable in the real item.
 - For learner-facing card text, keep the written Japanese surface, not a
   hiragana-only fallback. If a term is normally written with kanji, author the
   visible `front` with kanji plus furigana markup, because review surfaces show

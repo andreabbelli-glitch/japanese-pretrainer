@@ -54,6 +54,19 @@ Regola editoriale forte:
   `Xという言葉は...`: la spiegazione della composizione va in `notes_it`, non
   in `example_jp`.
 
+Le lesson textbook devono seguire lo standard nuovo:
+
+- voce naturale da tutor che accompagna il lettore nel gioco;
+- spiegazioni dense, non outline di definizioni;
+- cluster tematici come scuola, battaglia, UI, parlato, conseguenza;
+- anatomia della frase per prompt, formule e battute dense;
+- contrasti operativi tra letture simili o false piste;
+- ganci cognitivi dichiarati quando aiutano a ricordare senza inventare
+  etimologie.
+
+Il riferimento positivo è
+`content/media/pokemon-scarlet-violet/textbook/029-sv-prestudy-l19b-reazioni-e-parlato-scarlet-violet.md`.
+
 ## Struttura didattica consigliata
 
 ### Asse 1 - Pokemon Videogame Core
@@ -88,6 +101,9 @@ Ogni lesson verticale deve:
   blocco che il giocatore sta per affrontare;
 - aiutare a leggere i dialoghi, non solo le schermate;
 - restare fortemente ancorata a materiale testuale reale.
+- essere scritta secondo lo standard di stile in
+  `docs/llm-kit/general/10-textbook-lesson-style-standard.md`, non come elenco
+  di gloss.
 
 ## Regola chiave per la struttura verticale
 

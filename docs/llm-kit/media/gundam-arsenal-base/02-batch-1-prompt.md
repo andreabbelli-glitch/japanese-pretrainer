@@ -35,6 +35,12 @@ Creare il primo batch base del media, con focus su onboarding arcade,
 schermata di battaglia e progressione iniziale.
 
 Vincoli didattici obbligatori:
+- Le lesson textbook devono seguire
+  `docs/llm-kit/general/10-textbook-lesson-style-standard.md`: voce naturale da
+  tutor, apertura contestuale, inventario iniziale, cluster tematici, anatomia
+  della frase, contrasti operativi e ganci cognitivi dichiarati quando aiutano.
+- Non scrivere textbook come outline di UI o gloss: ogni sezione deve far
+  vedere come il giapponese orienta cabinato, schermata, ruolo o decisione.
 - `001-arcade-onboarding` deve spiegare il cabinato, i suoi componenti, la
   logica di IC card / account / My Page e il flusso di prima sessione;
 - `002-battle-screen-and-core-actions` deve spiegare cosa si vede sullo
@@ -161,6 +167,7 @@ Documenti da seguire:
 - docs/llm-kit/general/03-template-media.md
 - docs/llm-kit/general/04-template-textbook-lesson.md
 - docs/llm-kit/general/05-template-cards-file.md
+- docs/llm-kit/general/10-textbook-lesson-style-standard.md
 - docs/llm-kit/media/gundam-arsenal-base/01-brief.md
 
 Materiale di ricerca da considerare:

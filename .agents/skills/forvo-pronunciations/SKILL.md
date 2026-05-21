@@ -83,6 +83,11 @@ typically at:
     Pass multiple `--entry` flags as needed; use `--word` / `--words-file`
     only when the entry IDs are not available. Do not use a whole-media pitch
     accent fetch for normal content-creation follow-up.
+16. This skill does not define textbook prose. If a pronunciation request
+    expands into creating or revising lesson text, load the relevant
+    content-building workflow and follow
+    `docs/llm-kit/general/10-textbook-lesson-style-standard.md` for voice and
+    explanation quality.
 
 ## Input format
 

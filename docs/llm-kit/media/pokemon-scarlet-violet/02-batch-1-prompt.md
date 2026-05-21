@@ -38,6 +38,13 @@ Regola didattica importante:
 - Non scrivere spiegazioni valutative vuote del tipo "X e utile/importante":
   ogni spiegazione deve dire che cosa significa davvero X e che cosa ti fa
   capire o fare nel gioco.
+- Le lesson textbook devono seguire
+  `docs/llm-kit/general/10-textbook-lesson-style-standard.md`: voce naturale da
+  tutor, apertura contestuale, inventario iniziale, cluster tematici, anatomia
+  della frase, contrasti operativi e ganci cognitivi dichiarati quando aiutano.
+- Non scrivere textbook come outline di definizioni: ogni sezione deve
+  accompagnare il lettore dentro menu, battaglia o dialogo e far vedere come il
+  giapponese funziona lì.
 
 Obiettivo di questo batch:
 Creare solo il seed iniziale del media, cioe la base generale sui videogiochi
@@ -191,6 +198,7 @@ Documenti da seguire:
 - docs/llm-kit/general/03-template-media.md
 - docs/llm-kit/general/04-template-textbook-lesson.md
 - docs/llm-kit/general/05-template-cards-file.md
+- docs/llm-kit/general/10-textbook-lesson-style-standard.md
 - docs/llm-kit/media/pokemon-scarlet-violet/01-brief.md
 
 Checklist finale da emettere dopo i file, separata dai file stessi:

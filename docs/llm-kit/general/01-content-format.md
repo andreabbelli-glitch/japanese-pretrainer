@@ -443,6 +443,14 @@ Anche nel textbook la priorita resta insegnare il giapponese. Il media, il
 gioco o la scena servono come contesto per chiarire significato, funzione e
 conseguenza pratica del testo, non come obiettivo principale autonomo.
 
+Per la voce e la qualità delle spiegazioni, le nuove lesson e le revisioni
+sostanziali devono seguire
+`docs/llm-kit/general/10-textbook-lesson-style-standard.md`: apertura
+contestuale, inventario iniziale, cluster tematici, anatomia della frase,
+contrasti operativi, ganci cognitivi dichiarati quando aiutano e prosa naturale
+da tutor. Il riferimento positivo è
+`content/media/pokemon-scarlet-violet/textbook/029-sv-prestudy-l19b-reazioni-e-parlato-scarlet-violet.md`.
+
 Esempio:
 
 ```md
@@ -456,36 +464,58 @@ segment_ref: episode-01
 difficulty: n5
 status: active
 summary: >-
-  Riconoscere 食べる, 大丈夫 e 魔法 come lessico di azione, rassicurazione e causa in una scena
-  fantasy.
+  Leggere azioni, rassicurazioni e cause soprannaturali in una scena fantasy iniziale.
 ---
 
-# Obiettivo
+# Azioni e rassicurazioni in una scena fantasy
 
-Capire quando il dialogo parla di mangiare, rassicurare qualcuno o attribuire
-un evento alla magia.
-
-## Contesto
-
-In una scena fantasy iniziale questi tre elementi non stanno sullo stesso
-piano: [食べる](term:term-taberu) descrive l'azione concreta, [大丈夫](term:term-daijoubu)
-controlla se la situazione e sotto controllo, {{魔法|まほう}} spiega invece la
-causa soprannaturale di cio che succede.
+All'inizio di una scena fantasy, il dialogo può alternare gesti concreti,
+controlli sullo stato di qualcuno e spiegazioni soprannaturali. Non basta
+tradurre le singole parole: bisogna capire se il personaggio sta facendo
+qualcosa, chiedendo se va tutto bene o spiegando la causa dell'evento.
 
 ## Termini chiave
 
-- [食べる](term:term-taberu)
-- [大丈夫](term:term-daijoubu)
+- [食べる](term:term-taberu) — mangiare
+- [大丈夫](term:term-daijoubu) — tutto bene / sotto controllo
+- [{{魔法|まほう}}](term:term-mahou) — magia
 
-## Spiegazione
+## Espressioni ricorrenti
 
-[食べる](term:term-taberu) indica l'azione di mangiare. In dialogo non serve
-solo a nominare il cibo: spesso distingue cio che viene davvero consumato da
-un semplice invito o da un'offerta.
+- [大丈夫？](term:term-daijoubu) — va tutto bene?
 
-[大丈夫](term:term-daijoubu) qui non va letto come formula vaga positiva. Di
-solito segnala che qualcuno sta verificando se va tutto bene o se un problema e
-gestibile.
+---
+
+## 1. Azione concreta e verifica dello stato
+
+[食べる](term:term-taberu) descrive un'azione fisica chiara: qualcuno consuma
+cibo o sta per farlo. In una battuta come `パンを{{食|た}}べる`, `を` marca il
+cibo come oggetto dell'azione, quindi il focus non è l'esistenza del pane ma il
+gesto di mangiarlo.
+
+[大丈夫](term:term-daijoubu) non è un semplice "positivo". In dialogo funziona
+spesso come controllo della situazione: il personaggio vuole sapere se qualcuno
+sta bene, se un danno è gestibile o se si può proseguire.
+
+:::example_sentence
+jp: >-
+  パンを{{食|た}}べる。{{大丈夫|だいじょうぶ}}？
+translation_it: >-
+  Mangio il pane. Va tutto bene?
+:::
+
+#### Anatomia della frase
+
+- `パンを` -> oggetto diretto: il pane è ciò che viene mangiato.
+- `{{食|た}}べる` -> azione concreta, non semplice presenza di cibo.
+- `{{大丈夫|だいじょうぶ}}？` -> verifica dello stato: il tono è di controllo, non di descrizione.
+
+> [!NOTE]
+> **Contrasto operativo:** `{{大丈夫|だいじょうぶ}}` può rispondere "sì, tutto
+> bene", ma come domanda serve a controllare una condizione. Non leggerlo come
+> un generico "buono".
+
+## 2. Cause soprannaturali
 
 {{魔法|まほう}} non va trattato come decorazione fantasy generica. Quando
 compare, di solito ti dice che la causa dell'evento non e fisica o ordinaria,
@@ -493,13 +523,16 @@ ma soprannaturale.
 
 ## Nota finale
 
-Quando questi elementi compaiono vicini, la scena alterna spesso azione
-pratica, verifica dello stato e spiegazione della causa.
+Quando [食べる](term:term-taberu), [大丈夫](term:term-daijoubu) e
+[{{魔法|まほう}}](term:term-mahou) compaiono vicini, la scena passa da ciò che
+qualcuno fa, a come sta, fino alla causa che spiega perché la situazione non è
+normale.
 ```
 
-Questo esempio serve a mostrare il livello minimo di sostanza atteso: niente
-meta-discorso, niente frasi del tipo "e utile/importante", sempre significato +
-funzione concreta.
+Questo esempio serve a mostrare il livello minimo di sostanza atteso: apertura
+contestuale, gloss brevi, cluster tematico, anatomia della frase, contrasto
+operativo e niente frasi del tipo "e utile/importante" senza meccanismo
+linguistico.
 
 Campi obbligatori:
 

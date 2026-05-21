@@ -176,6 +176,25 @@ Per ridurre errori:
 
 Questo riduce duplicazioni e inconsistenze.
 
+### Convenzione di stile textbook
+
+Ogni nuova lesson o revisione sostanziale del textbook deve seguire
+`docs/llm-kit/general/10-textbook-lesson-style-standard.md`.
+
+Lo standard non riguarda solo la struttura delle sezioni. Riguarda soprattutto
+come scrivere:
+
+- voce naturale da tutor che legge il media insieme all'utente;
+- spiegazioni dense che aprono forma giapponese, funzione e conseguenza;
+- cluster tematici invece di liste di gloss scollegate;
+- anatomia della frase per i passaggi grammaticalmente densi;
+- contrasti operativi che evitano letture sbagliate;
+- ganci cognitivi dichiarati come mnemonici quando non sono etimologia reale.
+
+Il modello di riferimento e:
+
+- `content/media/pokemon-scarlet-violet/textbook/029-sv-prestudy-l19b-reazioni-e-parlato-scarlet-violet.md`
+
 ## 7. Regole da comunicare all'LLM esterno
 
 Quando gli chiedi contenuti, devi dirgli esplicitamente:
@@ -205,6 +224,9 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
 - che anche nel textbook l'obiettivo primario resta capire il giapponese:
   il gioco o il media vanno spiegati come contesto che chiarisce significato,
   funzione e conseguenza pratica, non come focus principale separato;
+- che ogni lesson textbook deve seguire lo standard di stile in
+  `docs/llm-kit/general/10-textbook-lesson-style-standard.md`, con voce
+  tutor-like, cluster tematici, anatomia della frase e contrasti operativi;
 - che le spiegazioni devono esplicitare significato reale + conseguenza concreta
   nel media;
 - che `notes_it` e paragrafi textbook non devono usare formule generiche come
@@ -508,6 +530,10 @@ Vincoli obbligatori:
   capire o fare nel media.
 - Non usare la semplicita come alibi per togliere informazione: il testo deve
   restare lineare ma denso di concetti utili.
+- Per i textbook, segui `10-textbook-lesson-style-standard.md`: voce naturale
+  da tutor, apertura contestuale, inventario iniziale, cluster tematici,
+  anatomia della frase per le frasi dense, contrasti operativi e ganci
+  cognitivi dichiarati quando aiutano.
 - Non scrivere meta-discorso nel contenuto finale: niente "questa lesson",
   "qui facciamo review", "per questo batch", "conviene fissare" o "verifica
   ufficiale" come contenuto principale della spiegazione.
@@ -582,6 +608,10 @@ Prima di accettare l'output, bisogna verificare:
 - gli esempi delle card sono frasi complete e contestuali, non placeholder o
   definizioni camuffate;
 - niente termini importanti lasciati solo nel testo libero;
+- textbook scritto con voce naturale e spiegazione progressiva, non come
+  outline o lista di definizioni;
+- cluster tematici, anatomia della frase e contrasti operativi presenti quando
+  il materiale li richiede;
 - niente spiegazioni tautologiche o solo valutative ("utile", "importante",
   "da fissare") senza contenuto semantico e operativo;
 - nessun campo YAML fragile, come `notes_it` o una frase completa in

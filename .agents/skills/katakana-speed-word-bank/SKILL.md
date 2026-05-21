@@ -26,6 +26,9 @@ when the user gives katakana terms to practice in Katakana Speed.
 5. Do not change scheduler priority just because terms were added. The terms
    become normal `word` catalog candidates; they are not preferred over the
    existing word bank.
+6. This skill does not author textbook lessons. If the user also asks to add or
+   revise lesson prose for media content, use the relevant content workflow and
+   follow `docs/llm-kit/general/10-textbook-lesson-style-standard.md`.
 
 ## Input
 

@@ -43,6 +43,7 @@ Per qualunque media, passa sempre il kit generale completo:
 - `docs/llm-kit/general/07-template-image-requests.yaml`
 - `docs/llm-kit/general/08-template-image-assets.yaml`
 - `docs/llm-kit/general/09-editorial-quality-rubric.md`
+- `docs/llm-kit/general/10-textbook-lesson-style-standard.md`
 
 In aggiunta, passa sempre anche:
 
@@ -151,6 +152,11 @@ La richiesta deve esplicitare:
 - obbligo che anche nel textbook il bersaglio primario resti il giapponese:
   il gioco o il media servono come contesto esplicativo, non come focus
   principale separato;
+- obbligo che le lesson textbook seguano lo standard di stile:
+  `docs/llm-kit/general/10-textbook-lesson-style-standard.md`;
+- obbligo che la prosa sembri una spiegazione tutor-like e non un outline:
+  apertura contestuale, inventario iniziale, cluster tematici, anatomia della
+  frase, contrasti operativi e ganci cognitivi dichiarati quando aiutano;
 - obbligo che il contenuto finale non parli del proprio processo editoriale o
   di studio ("questa lesson", "qui facciamo review", "per questo batch",
   "conviene fissare");
@@ -288,6 +294,10 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
 - verifica che la spiegazione non deragli in una guida al gioco: il focus
   principale deve restare il giapponese che quella scena, schermata o regola ti
   fa leggere;
+- verifica che la voce del textbook sia naturale, densa e progressiva: non una
+  lista di definizioni, ma una spiegazione che accompagna il lettore nel media;
+- verifica che le frasi dense abbiano parsing o anatomia quando serve, e che i
+  contrasti rischiosi siano espliciti;
 - verifica che i termini troppo verticali necessari alla comprensione o
   all'interazione corretta con il media siano spiegati nel textbook anche
   quando non diventano flashcard;

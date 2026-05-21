@@ -34,6 +34,13 @@ Regola didattica importante:
 - Quando spieghi un punto, preferisci questa sequenza: forma giapponese ->
   significato letterale o tecnico -> effetto concreto nel gioco -> contrasto
   con la lettura sbagliata piu probabile.
+- Le lesson textbook devono seguire
+  `docs/llm-kit/general/10-textbook-lesson-style-standard.md`: voce naturale da
+  tutor, apertura contestuale, inventario iniziale, cluster tematici, anatomia
+  della frase, contrasti operativi e ganci cognitivi dichiarati quando aiutano.
+- Non scrivere textbook come outline di ruling o gloss: ogni sezione deve far
+  vedere come la forma giapponese produce timing, bersaglio, condizione o
+  effetto.
 
 Obiettivo di questo batch:
 Creare solo il seed core del media. In questo batch non devi produrre lesson
@@ -165,6 +172,7 @@ Documenti da seguire:
 - 03-template-media.md
 - 04-template-textbook-lesson.md
 - 05-template-cards-file.md
+- 10-textbook-lesson-style-standard.md
 - 01-brief.md
 
 Checklist finale da emettere dopo i file, separata dai file stessi:

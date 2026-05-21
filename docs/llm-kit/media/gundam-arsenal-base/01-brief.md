@@ -62,6 +62,11 @@ Il bundle deve insegnare:
 
 ## Regole didattiche importanti
 
+- Le lesson textbook seguono
+  `docs/llm-kit/general/10-textbook-lesson-style-standard.md`: voce naturale da
+  tutor, spiegazioni dense, cluster tematici, anatomia della frase e contrasti
+  operativi. Anche quando si parla di UI arcade o battaglia, il testo deve far
+  vedere come il giapponese guida l'azione, non limitarsi a spiegare il sistema.
 - il focus iniziale e capire `cosa vedo`, `cosa significa`, `cosa devo fare`;
 - non riempire le lesson di lore Gundam o dettagli di meta non necessari;
 - i termini UI stabili valgono piu di copy promozionale o stagionale;

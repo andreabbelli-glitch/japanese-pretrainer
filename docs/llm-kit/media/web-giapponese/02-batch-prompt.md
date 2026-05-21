@@ -31,6 +31,12 @@ Input opzionali:
 Vincoli didattici obbligatori:
 - la lesson deve restare centrata su un item reale, non su una overview
   astratta della fonte;
+- la lesson deve seguire
+  `docs/llm-kit/general/10-textbook-lesson-style-standard.md`: voce naturale da
+  tutor, apertura contestuale, inventario iniziale, cluster tematici, anatomia
+  della frase, contrasti operativi e ganci cognitivi dichiarati quando aiutano;
+- non scrivere textbook come outline di UI o gloss: ogni sezione deve far
+  vedere come il giapponese orienta navigazione, scelta o interpretazione;
 - copri sempre i seed terms richiesti;
 - puoi aggiungere al massimo 5 flashcard extra automatiche;
 - le extra devono essere N5-N3 oppure estremamente comuni e davvero utili;
@@ -103,5 +109,6 @@ Documenti da seguire:
 - docs/llm-kit/general/06-content-workflow-playbook.md
 - docs/llm-kit/general/07-template-image-requests.yaml
 - docs/llm-kit/general/08-template-image-assets.yaml
+- docs/llm-kit/general/10-textbook-lesson-style-standard.md
 - docs/llm-kit/media/web-giapponese/01-brief.md
 ```

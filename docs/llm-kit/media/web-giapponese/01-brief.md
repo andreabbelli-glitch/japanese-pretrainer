@@ -59,6 +59,13 @@ Ogni item deve insegnare prima di tutto giapponese leggibile e riusabile:
 - parole estremamente comuni o fino a N3 che il learner puo reincontrare anche
   in altri media.
 
+Le lesson textbook seguono
+`docs/llm-kit/general/10-textbook-lesson-style-standard.md`: voce naturale da
+tutor, spiegazioni dense, cluster tematici, anatomia della frase e contrasti
+operativi. Anche per un singolo item web o screenshot, il testo deve far vedere
+come la forma giapponese guida navigazione, filtro, scelta o interpretazione
+dell'item.
+
 I termini molto verticali della singola fonte vanno trattati cosi:
 
 - textbook/glossary si, quando servono a capire davvero l'item;

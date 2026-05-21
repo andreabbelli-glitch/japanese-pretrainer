@@ -11,6 +11,10 @@ Serve soprattutto a evitare due errori ricorrenti:
 - flashcard sprecate su elementi troppo verticali, episodici o poco
   spendibili.
 
+Per la voce e la forma delle lesson textbook, questa rubrica lavora insieme a:
+
+- `docs/llm-kit/general/10-textbook-lesson-style-standard.md`
+
 ## 1. Principio base
 
 La semplicità non significa dire meno cose.
@@ -88,6 +92,26 @@ Ma anche in questi casi la priorita resta linguistica:
 
 - il media non va spiegato per se stesso;
 - va spiegato solo nella misura in cui aiuta a leggere meglio il giapponese.
+
+### Stile richiesto per il textbook
+
+Il textbook non deve sembrare un outline di definizioni. Deve sembrare una
+spiegazione guidata da tutor:
+
+- apertura contestuale che porta dentro scena, schermata o carta;
+- inventario iniziale di termini, espressioni e pattern;
+- cluster tematici che mostrano come gli elementi lavorano insieme;
+- micro-spiegazioni dense: forma giapponese, valore, funzione e contrasto;
+- anatomia della frase quando una frase contiene parsing utile;
+- contrasti operativi e ganci cognitivi dichiarati quando aiutano davvero.
+
+Lo standard positivo è la lezione:
+
+- `content/media/pokemon-scarlet-violet/textbook/029-sv-prestudy-l19b-reazioni-e-parlato-scarlet-violet.md`
+
+Una lesson può avere metadiscorso didattico leggero se orienta il lettore
+(`in questa lezione analizziamo...`). Non può invece parlare di batch, review,
+workflow, curation o motivazione editoriale delle card.
 
 ### Flashcard
 
@@ -250,6 +274,11 @@ Prima di chiudere un batch, verifica:
 
 - ogni paragrafo del textbook trasmette informazione concreta, non solo
   valutazione;
+- la lesson ha voce naturale, densa e progressiva, non stile da outline;
+- il corpo usa cluster funzionali quando il materiale lo permette;
+- le frasi grammaticalmente dense hanno anatomia o parsing esplicito;
+- i contrasti operativi e i ganci cognitivi sono usati quando migliorano il
+  riconoscimento reale del giapponese;
 - ogni paragrafo esplicativo contiene almeno due ancore verificabili tra forma,
   significato, collocazione, funzione, timing, target, risultato o contrasto;
 - i termini verticali necessari alla comprensione o all'interazione corretta

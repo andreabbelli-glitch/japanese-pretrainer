@@ -32,6 +32,7 @@ Da passare sempre:
 - `general/07-template-image-requests.yaml`
 - `general/08-template-image-assets.yaml`
 - `general/09-editorial-quality-rubric.md`
+- `general/10-textbook-lesson-style-standard.md`
 
 ## Kit media-specifico attuale
 
@@ -82,6 +83,13 @@ Nota pratica:
 > nomi servono al contesto, spiegali nel textbook e valuta semmai i componenti
 > giapponesi riusabili del nome.
 
+> [!IMPORTANT]
+> Le nuove lesson textbook devono seguire lo standard di stile in
+> `general/10-textbook-lesson-style-standard.md`: voce naturale da tutor,
+> spiegazioni dense, cluster tematici, anatomia della frase, contrasti
+> operativi e ganci cognitivi dichiarati quando aiutano. La lezione modello e
+> `content/media/pokemon-scarlet-violet/textbook/029-sv-prestudy-l19b-reazioni-e-parlato-scarlet-violet.md`.
+
 ### Se vuoi dare contesto completo
 
 Passa:
@@ -102,6 +110,7 @@ Passa almeno:
 - `general/07-template-image-requests.yaml`
 - `general/08-template-image-assets.yaml`
 - `general/09-editorial-quality-rubric.md`
+- `general/10-textbook-lesson-style-standard.md`
 - `media/duel-masters-dm25/01-brief.md`
 - `media/duel-masters-dm25/02-batch-1-prompt.md`
 
