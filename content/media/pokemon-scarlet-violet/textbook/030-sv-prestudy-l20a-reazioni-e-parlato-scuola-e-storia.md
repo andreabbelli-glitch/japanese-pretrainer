@@ -27,24 +27,24 @@ Stato, chiusura, dubbio, contatto e memoria non sono liste separate: lavorano in
 ## Termini chiave
 
 - [やけど](term:term-v274-yakedo) — scottatura
-- [終了](term:term-v275-shuuryou) — fine / chiusura
-- [解除](term:term-v276-kaijo) — annullamento / rimozione
-- [気分](term:term-v277-kibun) — umore / sensazione
-- [失礼](term:term-v278-shitsurei) — scortesia / con permesso
+- [{{終了|しゅうりょう}}](term:term-v275-shuuryou) — fine / chiusura
+- [{{解除|かいじょ}}](term:term-v276-kaijo) — annullamento / rimozione
+- [{{気分|きぶん}}](term:term-v277-kibun) — umore / sensazione
+- [{{失礼|しつれい}}](term:term-v278-shitsurei) — scortesia / con permesso
 - [かっくう](term:term-v280-kakkuu) — planata
-- [大切](term:term-v281-taisetsu) — importante / caro
-- [宝](term:term-v282-takara) — tesoro
-- [草原](term:term-v283-sougen) — prateria
-- [行動](term:term-v284-koudou) — azione
-- [理由](term:term-v285-riyuu) — motivo
-- [宝物](term:term-v286-takaramono) — tesoro personale
-- [実力](term:term-v287-jitsuryoku) — vera capacità / livello reale
+- [{{大切|たいせつ}}](term:term-v281-taisetsu) — importante / caro
+- [{{宝|たから}}](term:term-v282-takara) — tesoro
+- [{{草原|そうげん}}](term:term-v283-sougen) — prateria
+- [{{行動|こうどう}}](term:term-v284-koudou) — azione
+- [{{理由|りゆう}}](term:term-v285-riyuu) — motivo
+- [{{宝物|たからもの}}](term:term-v286-takaramono) — tesoro personale
+- [{{実力|じつりょく}}](term:term-v287-jitsuryoku) — vera capacità / livello reale
 - [マップアプリ](term:term-v288-mappuapuri) — app mappa
-- [持つ](term:term-v289-motsu) — avere / tenere
-- [連絡](term:term-v290-renraku) — contatto / chiamata / messaggio
-- [苦手](term:term-v291-nigate) — non essere bravo / non piacere
-- [危険](term:term-v292-kiken) — pericolo
-- [安心](term:term-v293-anshin) — sollievo / tranquillità
+- [{{持|も}}つ](term:term-v289-motsu) — avere / tenere
+- [{{連絡|れんらく}}](term:term-v290-renraku) — contatto / chiamata / messaggio
+- [{{苦手|にがて}}](term:term-v291-nigate) — non essere bravo / non piacere
+- [{{危険|きけん}}](term:term-v292-kiken) — pericolo
+- [{{安心|あんしん}}](term:term-v293-anshin) — sollievo / tranquillità
 
 ## Espressioni ricorrenti
 
@@ -54,14 +54,14 @@ Stato, chiusura, dubbio, contatto e memoria non sono liste separate: lavorano in
 
 ## Pattern grammaticali chiave
 
-- [～間 / ～間に](grammar:grammar-g054-durante-mentre) — durante / mentre
+- [～{{間|あいだ}} / ～{{間|あいだ}}に](grammar:grammar-g054-durante-mentre) — durante / mentre
 - [～かなあ](grammar:grammar-g055-mi-chiedo-proprio) — mi chiedo proprio...
 - [～かしら](grammar:grammar-g057-mi-chiedo-chissa) — mi chiedo… / chissà…
 - [～だっけ](grammar:grammar-g058-comera-gia-dovera) — com’era già…? / dov’era…?
 
 ## Etichette da riconoscere
 
-- [秘伝](term:term-v279-hiden) — segreto / Herba Mystica (come nome breve)
+- [{{秘伝|ひでん}}](term:term-v279-hiden) — segreto / Herba Mystica (come nome breve)
 
 ---
 
@@ -70,8 +70,8 @@ Stato, chiusura, dubbio, contatto e memoria non sono liste separate: lavorano in
 Quando il testo è vicino a un menu o a una notifica, le parole diventano molto operative: non descrivono il mondo, ma lo stato esatto dell'azione appena avvenuta.
 
 - [やけど](term:term-v274-yakedo) indica una **scottatura** come condizione di stato. Nel lessico Pokémon non è una bruciatura generica della scena: è l'etichetta che ti dice che un Pokémon è affetto da burn e che quel problema continuerà finché non viene curato o rimosso.
-- [終了](term:term-v275-shuuryou) unisce `終` (*fine*) e `了` (*completamento*): il valore è "terminare / chiudere". In una UI segnala che una sessione, una conversazione o una fase è arrivata al punto di uscita, non che qualcosa è solo "finito" in senso narrativo.
-- [解除](term:term-v276-kaijo) unisce `解` (*sciogliere*) e `除` (*rimuovere*). Quando compare dopo uno stato, un vincolo o un effetto, il testo non sta aggiungendo una nuova azione: sta dicendo che quel blocco viene annullato.
+- [{{終了|しゅうりょう}}](term:term-v275-shuuryou) unisce `{{終|しゅう}}` (*fine*) e `{{了|りょう}}` (*completamento*): il valore è "terminare / chiudere". In una UI segnala che una sessione, una conversazione o una fase è arrivata al punto di uscita, non che qualcosa è solo "finito" in senso narrativo.
+- [{{解除|かいじょ}}](term:term-v276-kaijo) unisce `{{解|かい}}` (*sciogliere*) e `{{除|じょ}}` (*rimuovere*). Quando compare dopo uno stato, un vincolo o un effetto, il testo non sta aggiungendo una nuova azione: sta dicendo che quel blocco viene annullato.
 
 :::example_sentence
 jp: >-
@@ -86,16 +86,16 @@ translation_it: >-
 - `{{解除|かいじょ}}されました` -> passivo cortese: l'effetto viene rimosso, quindi il focus è sul risultato visibile nella schermata.
 
 > [!NOTE]
-> **⚖️ Contrasto operativo:** [終了](term:term-v275-shuuryou) chiude una fase o un comando; [解除](term:term-v276-kaijo) rimuove un vincolo, uno stato o un effetto ancora attivo. Se leggi `終了`, aspettati uscita o completamento. Se leggi `解除`, cerca che cosa era bloccato o applicato prima.
+> **⚖️ Contrasto operativo:** [{{終了|しゅうりょう}}](term:term-v275-shuuryou) chiude una fase o un comando; [{{解除|かいじょ}}](term:term-v276-kaijo) rimuove un vincolo, uno stato o un effetto ancora attivo. Se leggi `{{終了|しゅうりょう}}`, aspettati uscita o completamento. Se leggi `{{解除|かいじょ}}`, cerca che cosa era bloccato o applicato prima.
 
 ## 2. Mappe ed Esplorazione: Dove Andare e Che Rischio C'è
 
 Fuori dall'aula, il gioco usa parole compatte per collegare luogo, strumento e pericolo. Qui la lettura corretta non è solo "capire la parola", ma capire se il testo ti sta orientando, abilitando un movimento o mettendo un limite.
 
-- [草原](term:term-v283-sougen) è formato da `草` (*erba*) e `原` (*piana / campo aperto*): indica una prateria o una zona erbosa aperta. In una descrizione di destinazione ti prepara a un ambiente esplorabile, non a un edificio o a una strada urbana.
+- [{{草原|そうげん}}](term:term-v283-sougen) è formato da `{{草|そう}}` (*erba*) e `{{原|げん}}` (*piana / campo aperto*): indica una prateria o una zona erbosa aperta. In una descrizione di destinazione ti prepara a un ambiente esplorabile, non a un edificio o a una strada urbana.
 - [マップアプリ](term:term-v288-mappuapuri) è katakana composto: `マップ` (*mappa*) + `アプリ` (*app*). In Scarlet/Violet è lo strumento con cui leggi posizione, destinazioni e segnalini; quando il testo lo nomina, il gioco sta spostando l'attenzione dal dialogo alla navigazione.
 - [かっくう](term:term-v280-kakkuu) indica la planata. È scritto in hiragana come molte abilità accessibili del gioco: il valore pratico è "muoversi in aria dopo un salto o da un punto alto", non semplicemente "volare" come tipo o mossa.
-- [危険](term:term-v292-kiken) unisce `危` (*pericoloso*) e `険` (*rischioso / ripido*). In un avviso non colora soltanto la scena: ti segnala che un'azione, un percorso o una zona può avere conseguenze negative.
+- [{{危険|きけん}}](term:term-v292-kiken) unisce `{{危|き}}` (*pericoloso*) e `{{険|けん}}` (*rischioso / ripido*). In un avviso non colora soltanto la scena: ti segnala che un'azione, un percorso o una zona può avere conseguenze negative.
 
 :::example_sentence
 jp: >-
@@ -118,11 +118,11 @@ translation_it: >-
 
 Le lezioni dell'Accademia e i dialoghi sulla caccia al tesoro usano parole che sembrano astratte, ma nel gioco servono a distinguere valore personale, spiegazione di una scelta e prova concreta.
 
-- [大切](term:term-v281-taisetsu) significa **importante / prezioso**. Non è solo "grande": `大` dà l'idea di rilievo e `切` qui partecipa al composto che indica ciò che va trattato con cura. Se un personaggio dice `大切な...`, sta marcando qualcosa come emotivamente o praticamente rilevante.
-- [宝](term:term-v282-takara) è il **tesoro** come oggetto o valore prezioso. [宝物](term:term-v286-takaramono) aggiunge `物` (*cosa*) e restringe il campo a "cosa preziosa / tesoro personale": in Scarlet/Violet si collega bene al tema della ricerca di ciò che per ciascuno vale davvero.
-- [理由](term:term-v285-riyuu) è il **motivo / ragione**. Quando compare in una domanda, il testo non chiede solo "che cosa è successo", ma perché qualcuno ha agito o scelto in quel modo.
-- [実力](term:term-v287-jitsuryoku) unisce `実` (*reale, effettivo*) e `力` (*forza, capacità*): indica il livello reale dimostrabile. In contesti scolastici, lotte o prove, non è autostima dichiarata: è capacità messa alla prova.
-- [行動](term:term-v284-koudou) è l'**azione / comportamento**. Se appare accanto a [理由](term:term-v285-riyuu), la frase sta legando ciò che qualcuno fa alla motivazione che lo spiega.
+- [{{大切|たいせつ}}](term:term-v281-taisetsu) significa **importante / prezioso**. Non è solo "grande": `{{大|たい}}` dà l'idea di rilievo e `{{切|せつ}}` qui partecipa al composto che indica ciò che va trattato con cura. Se un personaggio dice `{{大切|たいせつ}}な...`, sta marcando qualcosa come emotivamente o praticamente rilevante.
+- [{{宝|たから}}](term:term-v282-takara) è il **tesoro** come oggetto o valore prezioso. [{{宝物|たからもの}}](term:term-v286-takaramono) aggiunge `{{物|もの}}` (*cosa*) e restringe il campo a "cosa preziosa / tesoro personale": in Scarlet/Violet si collega bene al tema della ricerca di ciò che per ciascuno vale davvero.
+- [{{理由|りゆう}}](term:term-v285-riyuu) è il **motivo / ragione**. Quando compare in una domanda, il testo non chiede solo "che cosa è successo", ma perché qualcuno ha agito o scelto in quel modo.
+- [{{実力|じつりょく}}](term:term-v287-jitsuryoku) unisce `{{実|じつ}}` (*reale, effettivo*) e `{{力|りょく}}` (*forza, capacità*): indica il livello reale dimostrabile. In contesti scolastici, lotte o prove, non è autostima dichiarata: è capacità messa alla prova.
+- [{{行動|こうどう}}](term:term-v284-koudou) è l'**azione / comportamento**. Se appare accanto a [{{理由|りゆう}}](term:term-v285-riyuu), la frase sta legando ciò che qualcuno fa alla motivazione che lo spiega.
 
 :::example_sentence
 jp: >-
@@ -138,18 +138,18 @@ translation_it: >-
 - `のかしら` -> dubbio morbido e riflessivo: il parlante pensa ad alta voce più che interrogare direttamente l'interlocutore.
 
 > [!NOTE]
-> **🧠 Gancio cognitivo:** per [実力](term:term-v287-jitsuryoku), pensa a "forza reale": non la reputazione, non la promessa, ma ciò che si vede quando una prova o una lotta ti misura davvero. È un trucco di memoria, non una definizione etimologica completa.
+> **🧠 Gancio cognitivo:** per [{{実力|じつりょく}}](term:term-v287-jitsuryoku), pensa a "forza reale": non la reputazione, non la promessa, ma ciò che si vede quando una prova o una lotta ti misura davvero. È un trucco di memoria, non una definizione etimologica completa.
 
 ## 4. Contatti e Parlato Quotidiano: Riprendere, Salutare, Chiarire
 
 Nei dialoghi brevi, il gioco spesso non spiega tutto da capo. Usa particelle e formule che riprendono ciò che è appena stato detto e lo trasformano in reazione, deduzione o saluto.
 
-- [連絡](term:term-v290-renraku) indica un **contatto / messaggio / comunicazione**. In una chiamata o in una notifica, non significa solo "parlare": segnala che qualcuno si mette in contatto con qualcun altro attraverso il dispositivo o il sistema.
-- [持つ](term:term-v289-motsu) significa **avere / tenere con sé**. In frasi con oggetti, badge, app o strumenti, guarda che cosa è marcato da `を`: quello è ciò che il personaggio possiede, porta o tiene.
-- [気分](term:term-v277-kibun) è l'**umore / sensazione**. `気` richiama disposizione o energia mentale, `分` una parte o condizione: insieme descrivono come qualcuno si sente in quel momento.
-- [安心](term:term-v293-anshin) unisce `安` (*tranquillo, sicuro*) e `心` (*cuore, mente*): indica il sollievo che arriva quando un rischio o una preoccupazione si scioglie.
-- [失礼](term:term-v278-shitsurei) è la **scortesia** ma anche la formula cortese "con permesso / mi scusi". La lettura dipende dalla posizione: come sostantivo può parlare di comportamento inappropriato; come formula di entrata, uscita o interruzione attenua l'azione.
-- [苦手](term:term-v291-nigate) vuol dire **non essere bravo / non trovarsi bene con qualcosa**. Non equivale automaticamente a "odiare": spesso indica difficoltà, disagio o scarsa compatibilità.
+- [{{連絡|れんらく}}](term:term-v290-renraku) indica un **contatto / messaggio / comunicazione**. In una chiamata o in una notifica, non significa solo "parlare": segnala che qualcuno si mette in contatto con qualcun altro attraverso il dispositivo o il sistema.
+- [{{持|も}}つ](term:term-v289-motsu) significa **avere / tenere con sé**. In frasi con oggetti, badge, app o strumenti, guarda che cosa è marcato da `を`: quello è ciò che il personaggio possiede, porta o tiene.
+- [{{気分|きぶん}}](term:term-v277-kibun) è l'**umore / sensazione**. `{{気|き}}` richiama disposizione o energia mentale, `{{分|ぶん}}` una parte o condizione: insieme descrivono come qualcuno si sente in quel momento.
+- [{{安心|あんしん}}](term:term-v293-anshin) unisce `{{安|あん}}` (*tranquillo, sicuro*) e `{{心|しん}}` (*cuore, mente*): indica il sollievo che arriva quando un rischio o una preoccupazione si scioglie.
+- [{{失礼|しつれい}}](term:term-v278-shitsurei) è la **scortesia** ma anche la formula cortese "con permesso / mi scusi". La lettura dipende dalla posizione: come sostantivo può parlare di comportamento inappropriato; come formula di entrata, uscita o interruzione attenua l'azione.
+- [{{苦手|にがて}}](term:term-v291-nigate) vuol dire **non essere bravo / non trovarsi bene con qualcosa**. Non equivale automaticamente a "odiare": spesso indica difficoltà, disagio o scarsa compatibilità.
 
 Le espressioni ricorrenti danno forma a queste reazioni:
 
@@ -171,15 +171,15 @@ translation_it: >-
 - `ってことは` -> deduzione: il parlante prova a trasformare l'informazione in una conclusione.
 
 > [!NOTE]
-> **⚖️ Contrasto operativo:** [苦手](term:term-v291-nigate) non è sempre rifiuto emotivo. `勉強が苦手` dice "non sono bravo nello studio" o "lo studio mi mette in difficoltà"; per "non mi piace" il giapponese può usare anche `好きじゃない`, che è più diretto sul gusto personale.
+> **⚖️ Contrasto operativo:** [{{苦手|にがて}}](term:term-v291-nigate) non è sempre rifiuto emotivo. `{{勉強|べんきょう}}が{{苦手|にがて}}` dice "non sono bravo nello studio" o "lo studio mi mette in difficoltà"; per "non mi piace" il giapponese può usare anche `{{好|す}}きじゃない`, che è più diretto sul gusto personale.
 
 ## 5. Dubbi e Memoria: Mentre, Chissà, Com'era Già
 
 Queste forme grammaticali sono molto dialogiche: non danno solo informazioni, ma mostrano un personaggio che aspetta, ragiona, ricorda a metà o pensa ad alta voce.
 
-### A. Tempo in corso: [～間 / ～間に](grammar:grammar-g054-durante-mentre)
+### A. Tempo in corso: [～{{間|あいだ}} / ～{{間|あいだ}}に](grammar:grammar-g054-durante-mentre)
 
-[～間 / ～間に](grammar:grammar-g054-durante-mentre) usa `間` per indicare un intervallo. Senza `に`, `Vている間` descrive ciò che dura **mentre** un'altra situazione continua; con `間に`, la frase spesso segnala qualcosa che avviene **entro** quell'intervallo.
+[～{{間|あいだ}} / ～{{間|あいだ}}に](grammar:grammar-g054-durante-mentre) usa `{{間|あいだ}}` per indicare un intervallo. Senza `に`, `Vている{{間|あいだ}}` descrive ciò che dura **mentre** un'altra situazione continua; con `{{間|あいだ}}に`, la frase spesso segnala qualcosa che avviene **entro** quell'intervallo.
 
 :::example_sentence
 jp: >-

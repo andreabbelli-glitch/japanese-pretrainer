@@ -284,6 +284,9 @@ Quindi:
 
 - se un termine o pattern e importante e ricorrente, dichiaralo in `cards/`;
 - nel textbook, referenzialo via `[label](term:...)` o `[label](grammar:...)`;
+- se il label contiene kanji e l'entry ha o avra una flashcard, annota il label
+  direttamente nel link, per esempio `[{{終了|しゅうりょう}}](term:...)`, non
+  `[終了](term:...)`;
 - non creare troppe entry isolate per parole viste una sola volta;
 - i capitoli verticali devono nascere da materiale reale: walkthrough +
   risorsa dialogica del blocco;

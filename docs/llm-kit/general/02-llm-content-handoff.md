@@ -300,6 +300,10 @@ Per ridurre i fallimenti di import:
 - **se il testo visibile di un term link o grammar link contiene kanji, annota
   anche il label del link**: scrivi
   `[{{報酬|ほうしゅう}}](term:term-reward)` e non `[報酬](term:term-reward)`.
+- **se quel link punta a una entry con flashcard associata, il furigana nel
+  label e obbligatorio in inventari, prime spiegazioni e riepiloghi**: non
+  affidarti a tooltip, `reading` dell'entry o card front per insegnare la
+  lettura del target review.
 - **non assumere che la `reading` della entry basti nel reader**: il furigana va
   messo anche nelle spiegazioni, nelle note e in ogni altra stringa giapponese
   mostrata all'utente quando la lettura non e trasparente.
@@ -491,6 +495,8 @@ Vincoli obbligatori:
   ricevi un asset reale e metadata attendibili.
 - Se il label visibile di un link semantico contiene kanji, metti il furigana
   direttamente nel label: `[{{単語|たんご}}](term:term-id)`.
+- Se il link punta a una entry con flashcard associata, questa non e opzionale:
+  il textbook deve mostrare la stessa leggibilita della review surface.
 - Quando c'e un numero con contatore o qualificatore (`以下`, `以上`, `未満`,
   ecc.), annota il blocco completo con la pronuncia corretta del chunk intero:
   `{{1枚|いちまい}}`, `{{1体|いったい}}`, `{{2つ|ふたつ}}`,

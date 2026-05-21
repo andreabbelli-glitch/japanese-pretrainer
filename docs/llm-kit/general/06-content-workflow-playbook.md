@@ -385,6 +385,9 @@ Dopo l'import verifica almeno:
 - che nel reader compaiano davvero i nuovi blocchi `:::image`;
 - che `alt` non lasci kanji nudi e che `caption` annoti con furigana o link
   semantico ogni termine visibile che lo richiede.
+- che i link `term:` / `grammar:` verso entry con flashcard associata non
+  lascino kanji nudi nei label, soprattutto in inventari, prime spiegazioni e
+  riepiloghi.
 
 ## Errori LLM piu comuni da aspettarsi
 

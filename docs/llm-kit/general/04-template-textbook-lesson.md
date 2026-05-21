@@ -188,6 +188,9 @@ esempio `{{1体|いったい}}`, `{{2|ふた}}つ`, `{{2回|にかい}}`,
 Se un riferimento semantico ha un label con kanji, annota anche il label:
 `[{{報酬|ほうしゅう}}](term:term-reward)`, non `[報酬](term:term-reward)`.
 Vale anche per inline code: `` `{{未解放|みかいほう}}` `` e non `` `未解放` ``.
+Quando il riferimento punta a una entry con flashcard associata, questa regola
+e obbligatoria anche nell'inventario iniziale, nella prima spiegazione e nel
+riepilogo: non lasciare il target review come kanji nudo nel textbook.
 -->
 
 ## Esempi guidati di riepilogo

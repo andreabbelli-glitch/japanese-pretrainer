@@ -132,6 +132,12 @@ Quindi non basta che esista una `reading` nella entry glossary: se il testo
 mostrato al lettore contiene kanji, la forma visibile deve essere annotata con
 `{{base|reading}}` quando la lettura non e banale.
 
+Regola ancora piu stretta per entry con flashcard associata: se un termine o
+pattern viene allenato in review, ogni occorrenza learner-facing che lo linka
+deve mostrare la lettura nel label stesso, anche in inventari, prime
+spiegazioni e riepiloghi. Non scrivere `[終了](term:...)` contando su tooltip,
+`reading` o card front; scrivi `[{{終了|しゅうりょう}}](term:...)`.
+
 Nei composti misti, il blocco furigana non deve inglobare kana gia visibili.
 Annota solo i segmenti che richiedono davvero supporto di lettura, cioe kanji
 e numeri.

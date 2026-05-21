@@ -152,6 +152,8 @@ Regole pratiche:
   annotalo con furigana anche se esiste gia una `reading` nell'entry;
 - se usi un link semantico con label in kanji, annota il label:
   `[{{報酬|ほうしゅう}}](term:term-reward)`;
+- se quel link punta a una entry con flashcard associata, il label annotato e
+  obbligatorio anche nel textbook: inventario, prima spiegazione e riepilogo;
 - se usi inline code con giapponese non trasparente, annota anche li:
   `` `{{達成済み|たっせいずみ}}` ``;
 - per i numeri annota il chunk corretto senza inglobare kana gia visibili:

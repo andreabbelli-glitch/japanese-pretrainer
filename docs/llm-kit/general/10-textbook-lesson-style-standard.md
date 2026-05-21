@@ -237,6 +237,12 @@ Subito dopo l'introduzione, elenca le entry che verranno usate:
 Ogni riga deve avere gloss breve e link semantico quando l'entry esiste.
 Questo inventario è una mappa, non la spiegazione completa.
 
+Se l'entry ha una flashcard associata e il label contiene kanji, il label deve
+portare furigana direttamente nel link, sia nell'inventario sia nelle
+spiegazioni successive. Scrivi `[{{終了|しゅうりょう}}](term:...)`, non
+`[終了](term:...)`: il reader non deve dipendere dal tooltip o dalla card front
+per conoscere la lettura del target che sta imparando.
+
 ### 3. Cluster Tematici
 
 Il corpo deve raggruppare gli elementi per funzione reale, non per tipo di

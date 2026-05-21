@@ -104,6 +104,11 @@ Optional:
   hiragana-only fallback. If a term is normally written with kanji, author the
   visible `front` with kanji plus furigana markup, because review surfaces show
   the card `front` as authored.
+- When a textbook link points to a term or grammar entry that has a flashcard
+  and the visible label contains kanji, annotate the link label itself with
+  furigana in inventories, first explanations, captions, and recaps. Do not
+  rely on tooltips, the entry `reading`, or the card `front` to supply the
+  reading.
 - Seed terms are mandatory.
 - Automatic extra flashcards are capped at `5`.
 - Automatic extras must be N5-N3 or extremely common and genuinely useful.

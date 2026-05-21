@@ -454,6 +454,10 @@ Practical card-selection rules:
 - Prefer existing semantic links like `[...](term:...)` and `[...](grammar:...)`
   when the entry already exists in body prose, captions, and structured blocks,
   but not inside frontmatter fields like `summary`.
+- If a semantic link points to an entry with a flashcard and the visible label
+  contains kanji, annotate the link label itself with furigana everywhere it is
+  learner-facing, especially inventories, first explanations, anatomy blocks,
+  captions, and recaps.
 - If a new import introduces a high-risk shared-kanji contrast that might be
   useful for Kanji Clash later, keep the canonical lemma and reading stable and
   avoid creating a duplicate card just to mirror that contrast. See
