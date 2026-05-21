@@ -41,7 +41,7 @@ In questa lezione analizzeremo **tutti i 23 elementi chiave** presenti nel tuo d
 - [通信](term:term-v267-tsuushin) — connessione / comunicazione
 - [普通](term:term-v268-futsuu) — normale
 - [結果](term:term-v269-kekka) — risultato
-- [せっかく](term:term-v270-sekkaku) — visto che / già che
+- [せっかく](term:term-v270-sekkaku) — occasione da non sprecare / già che
 - [約束](term:term-v271-yakusoku) — promessa / appuntamento
 - [かくとう](term:term-v273-kakutou) — lotta
 
@@ -103,7 +103,7 @@ Quando navighi nei menu, configuri il multiplayer o raccogli oggetti, il gioco c
 
 *   [レシピ](term:term-v264-reshipi) (**Ricetta**): Le ricette dei panini che sblocchi durante il viaggio.
 *   [全部](term:term-v266-zenbu) (**Tutto**): Composto da `全` (*intero*) e `部` (*parte*). Indica la totalità senza esclusioni. Lo trovi nei menu di acquisto o di selezione multipla.
-*   [通信](term:term-v267-tsuushin) (**Connessione / Comunicazione**): Composto da `通` (*attraversare/trasmettere*) e `信` (*fiducia/informazione*). Qualsiasi funzione online (scambi, lotte in link, sblocchi wireless) è preceduta da questa parola.
+*   [通信](term:term-v267-tsuushin) (**Connessione / Comunicazione**): Composto da `通` (*attraversare/trasmettere*) e `信` (*messaggio/comunicazione*, con il valore di base di fiducia). Qualsiasi funzione online o locale di scambio dati (scambi, lotte in link, connessioni wireless) è introdotta da questa parola.
 *   [結果](term:term-v269-kekka) (**Risultato / Esito**): Il responso finale dopo un test, una battaglia o una sessione all'Accademia.
 *   [テーブルシティ](term:term-v272-teeburushitei) (**Mesapoli**): La grande metropoli al centro di Paldea, dove ha sede l'Accademia.
 
@@ -138,7 +138,7 @@ translation_it: >-
 Il bello del giapponese nei media sta nel saper cogliere le relazioni tra i personaggi attraverso la grammatica.
 
 ### A. Esprimere desideri personali: `～てほしい`
-Quando un personaggio (es. Nemona o Pepe) vuole che tu faccia qualcosa, o desidera che qualcuno faccia qualcosa, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in `-te` del verbo + `ほしい`** (desiderabile).
+Quando un personaggio (es. Nemona o Pepe) vuole che tu faccia qualcosa, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in `-te` del verbo + `ほしい`** (desiderabile) ed esprime il desiderio dal punto di vista del parlante. Se si parla del desiderio di una terza persona, di solito serve una forma riportata o osservabile, come `～てほしいと思っている` o `～てほしがっている`.
 
 :::example_sentence
 jp: >-
@@ -175,9 +175,9 @@ translation_it: >-
 ---
 
 ### C. La forza di un'occasione: `せっかく`
-La parola [せっかく](term:term-v270-sekkaku) è un tesoro della lingua giapponese. Esprime l'idea che, poiché è stato fatto un grande sforzo o si è presentata un'opportunità preziosa, **sarebbe un vero peccato sprecarla**.
+La parola [せっかく](term:term-v270-sekkaku) segnala un'occasione ottenuta con fatica, rara o comunque già presente. Il centro non è solo "visto che", ma l'idea che **sarebbe un vero peccato sprecarla**.
 
-*   🧠 **Gancio Cognitivo:** Pensa a [せっかく](term:term-v270-sekkaku) come a un segnale che dice *"Visto che ci siamo adoperati così tanto / visto che ormai siamo qui..."*.
+*   🧠 **Gancio Cognitivo:** Pensa a [せっかく](term:term-v270-sekkaku) come a un segnale che dice *"Visto che abbiamo questa occasione, non sprechiamola..."*.
     Nei dialoghi dei personaggi, sentirai spesso dire `せっかくなので` (*poiché si è presentata questa rara occasione...*) per proporre un'azione successiva (es. *"Visto che siamo arrivati fin qui, proviamo a fare una lotta!"*).
 
 ---
@@ -185,11 +185,11 @@ La parola [せっかく](term:term-v270-sekkaku) è un tesoro della lingua giapp
 ### D. Impegni e Constatazioni colloquiali
 
 *   [約束](term:term-v271-yakusoku) (**Promessa / Appuntamento**): Molto comune nei dialoghi in cui i personaggi stringono un patto (es. *"Promettimi che verrai a テーブルシティ"*). `約束する` trasforma la parola in azione attiva.
-*   [～な / ～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) (**Eh / proprio... / vedo che...**): Finale colloquiale e riflessiva. Dopo aggettivi in `い` si usa direttamente `な` (`このジムはむずかしいな` ➔ *"Questa palestra è proprio difficile, eh"*); dopo nomi e aggettivi in `な` compare spesso `だな` (`静かだな`, `先生だな`). Con i verbi, invece, serve più attenzione: `な` può essere osservativo in certi contesti, ma dopo una forma del dizionario può anche diventare proibitivo. Il parlante non sta facendo una domanda diretta: sta pensando ad alta voce o constatando un fatto evidente davanti a lui.
+*   [～な / ～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) (**Eh / proprio... / vedo che...**): Finale colloquiale e riflessiva, spesso ruvida o mascolina a seconda della voce del personaggio, ma non esclusivamente maschile. Dopo aggettivi in `い` si usa direttamente `な` (`このジムはむずかしいな` ➔ *"Questa palestra è proprio difficile, eh"*); dopo nomi e aggettivi in `な` compare spesso `だな` (`静かだな`, `先生だな`). Con i verbi, invece, serve più attenzione: `な` può essere osservativo in certi contesti, ma dopo una forma del dizionario può anche diventare proibitivo. Il parlante non sta facendo una domanda diretta: sta pensando ad alta voce o constatando un fatto evidente davanti a lui.
 
 > [!WARNING]
 > **⚠️ Attenzione: `Vるな` può essere proibitivo**
-> Quando `な` segue la forma del dizionario di un verbo (`行くな`, `食べるな`), il significato può essere completamente diverso: **"non fare V!"** (proibizione secca, tipica del parlato maschile brusco). In testo scritto senza audio, solo il contesto disambigua. Dopo aggettivi in `い` (`むずかしいな`) o dopo `だ` (`先生だな`) la lettura è invece osservativa.
+> Quando `な` segue la forma del dizionario di un verbo (`行くな`, `食べるな`), il significato può essere completamente diverso: **"non fare V!"**. È una proibizione secca, usata in comandi forti, avvisi urgenti, cartelli o parlato brusco. In testo scritto senza audio, solo il contesto disambigua. Dopo aggettivi in `い` (`むずかしいな`) o dopo `だ` (`先生だな`) la lettura è invece osservativa.
 
 ---
 

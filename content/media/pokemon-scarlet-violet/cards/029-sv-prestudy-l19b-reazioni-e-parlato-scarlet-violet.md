@@ -56,8 +56,9 @@ pattern: ～てほしい
 title: Voglio che… / mi piacerebbe che…
 meaning_it: voglio che… / mi piacerebbe che…
 notes_it: >-
-  Formazione: て-forma + ほしい. Utile nei dialoghi emotivi della trama e nelle
-  richieste personali.
+  Formazione: て-forma + ほしい. Esprime il desiderio dal punto di vista del
+  parlante; per il desiderio di una terza persona servono forme riportate o
+  osservabili come 〜てほしいと思っている o 〜てほしがっている.
 :::
 :::card
 id: card-g050-voglio-che-mi-piacerebbe-che-concept
@@ -102,11 +103,13 @@ meaning_it: commento o constatazione colloquiale
 aliases:
 - finali di frase よ / ね / な
 notes_it: >-
-  Finale di frase colloquiale, spesso maschile. Dopo aggettivi in い si usa な;
-  dopo nomi e aggettivi in な compare spesso だな. Con i verbi serve attenzione:
-  な può essere osservativo in certi contesti, ma dopo una forma del dizionario
-  può anche essere proibitivo. Serve per commentare ciò che si vede o si pensa in
-  quel momento: "eh", "vedo che...", "proprio...". Non è una domanda vera.
+  Finale di frase colloquiale e riflessiva, spesso ruvida o mascolina a seconda
+  della voce del personaggio, ma non esclusivamente maschile. Dopo aggettivi in い
+  si usa な; dopo nomi e aggettivi in な compare spesso だな. Con i verbi serve
+  attenzione: な può essere osservativo in certi contesti, ma dopo una forma del
+  dizionario può anche essere proibitivo ("non fare V!"). Serve per commentare
+  ciò che si vede o si pensa in quel momento: "eh", "vedo che...", "proprio...".
+  Non è una domanda vera.
 :::
 :::card
 id: card-g056-finale-maschile-riflessiva-osservativa-concept
@@ -448,10 +451,11 @@ id: term-v270-sekkaku
 lemma: せっかく
 reading: せっかく
 romaji: sekkaku
-meaning_it: visto che / già che
+meaning_it: occasione da non sprecare / già che
 notes_it: >-
-  せっかく introduce l'idea di sfruttare un'occasione già ottenuta: せっかくなので
-  spiega perché vale la pena fare il passo successivo.
+  せっかく introduce l'idea di sfruttare un'occasione già ottenuta, rara o costata
+  sforzo: せっかくなので spiega perché vale la pena fare il passo successivo invece
+  di sprecare l'occasione.
 :::
 :::card
 id: card-v270-sekkaku-recognition
@@ -460,7 +464,7 @@ entry_type: term
 entry_id: term-v270-sekkaku
 card_type: recognition
 front: 'せっかく'
-back: visto che / già che
+back: occasione da non sprecare / già che
 example_jp: >-
   せっかく なので、 {{使|つか}}ってみて。
 example_it: >-
