@@ -16,20 +16,20 @@ summary: >-
 
 # Aste, scoperte e inviti: azioni che fanno avanzare Paldea
 
-In *Pokémon Scarlet & Violet* la stessa giornata può passare da un'asta a
-Marinada a una scoperta nell'Area Zero, poi a un picnic con i Pokémon o a una
-sfida verso la Lega. Il giapponese cambia registro insieme alla scena: nei menu
-trovi azioni compatte con `する`, nei dialoghi compaiono inviti e valutazioni,
-mentre le descrizioni più narrative usano parole che danno colore fantastico.
+In *Pokémon Scarlet & Violet* una giornata a Paldea può cambiare scena molto in
+fretta: un rilancio al mercato di Marinada, una scoperta nell'Area Zero, una
+pausa al picnic, poi una sfida che punta alla Lega. Il giapponese segue questi
+spostamenti con forme compatte: molti nomi diventano azioni con `する`, i luoghi
+entrano con `で`, le persone coinvolte prendono `を`, e le valutazioni dicono se
+un risultato è solo buono o davvero decisivo.
 
-Questo gruppo di forme serve a leggere quando qualcuno sta facendo un'offerta,
-preparando risorse, portando alla luce qualcosa, invitando un'altra persona o
-valutando un risultato. Non sono gloss isolate: ciascuna parola decide chi
-agisce, su quale oggetto, in quale luogo e con quale effetto nella scena.
+Il punto non è memorizzare parole sparse. Quando riconosci questi blocchi, capisci
+chi sta agendo, dove si trova, che cosa viene ottenuto o reintegrato, e se la
+scena sta parlando di routine, invito, eccellenza o immaginario fantastico.
 
 ## Termini chiave
 
-- [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) — offerta all’asta
+- [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) — offerta all'asta
 - [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken) — scoperta
 - [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu) — rifornimento
 - [{{優|ゆう}}{{秀|しゅう}}](term:term-anki-l17-yuushuu) — eccellente
@@ -48,6 +48,13 @@ agisce, su quale oggetto, in quale luogo e con quale effetto nella scena.
 - [{{優|ゆう}}{{勝|しょう}}する](term:term-anki-l17-yuushou) — vincere una competizione intera
 - [{{誘|さそ}}われる](term:term-anki-l17-sasou) — essere invitati da qualcuno
 
+## Pattern grammaticali chiave
+
+- `N + する` — trasforma un nome d'azione in verbo operativo
+- `Nで` — marca luogo, evento o modalità in cui l'azione avviene
+- `Nを` — marca oggetto dell'azione o persona coinvolta
+- `Nのような` — crea una somiglianza descrittiva, non una categoria tecnica
+
 ## Etichette da riconoscere
 
 - [{{競|せ}}り](term:term-anki-l08-seri) / セリ — asta dinamica con rilanci
@@ -58,24 +65,28 @@ agisce, su quale oggetto, in quale luogo e con quale effetto nella scena.
 
 ---
 
-## 1. Aste, scoperte e rifornimenti: azioni con `する`
+## 1. Aste, scoperte e rifornimenti: quando un nome diventa azione
 
-Molte azioni operative del gioco nascono da un sostantivo più `する`. La forma
-sembra semplice, ma il sostantivo decide il tipo di scena: [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu)
-ti porta dentro un'asta, [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken)
-apre una scoperta, [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu)
+Nei menu e negli eventi di campo, il gioco usa spesso un sostantivo più `する`
+per costruire azioni precise. La struttura grammaticale è la stessa, ma il nome
+cambia completamente la scena: [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu)
+porta dentro un'asta, [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken)
+porta alla luce qualcosa, [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu)
 sposta l'attenzione sulle risorse da reintegrare.
 
-- [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) è il composto dell'offerta in asta. Nella [{{競|せ}}り](term:term-anki-l08-seri)
-  non indica l'asta in sé, ma l'atto di inserire la propria offerta. Se la frase contiene `で`, come `セリで`, quel `で` marca il luogo o evento in cui fai il rilancio.
-- [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken) contiene `{{見|み}}る`
-  "vedere" e porta l'idea di far emergere qualcosa alla vista. L'oggetto
-  scoperto prende `を`: in [エリアゼロ](term:term-v022-eriazero), una frase con
-  `ポケモンを{{発|はっ}}{{見|けん}}した` parla di qualcosa che c'era già, ma non
-  era ancora stato trovato.
-- [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu) combina "integrare" e
-  "fornire". Con `どうぐの{{補|ほ}}{{給|きゅう}}`, il focus non è curare subito un
-  Pokémon, ma ripristinare lo stock di strumenti prima di una tratta lunga.
+- [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) non è il mercato intero, ma
+  l'atto di fare la propria offerta. In una frase come `セリで{{入|にゅう}}{{札|さつ}}する`,
+  [{{競|せ}}り](term:term-anki-l08-seri) è l'evento dell'asta, `で` dà la
+  cornice dell'azione e [{{入|にゅう}}{{札|さつ}}する](term:term-anki-l17-nyuusatsu)
+  dice che il giocatore partecipa con un rilancio concreto.
+- [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken) contiene `{{見|み}}る`, "vedere",
+  e dà l'idea di far emergere qualcosa che era già lì. In [エリアゼロ](term:term-v022-eriazero),
+  `ポケモンを{{発|はっ}}{{見|けん}}した` non vuol dire "ho creato un Pokémon", ma
+  "l'ho trovato, l'ho scoperto, ora è entrato nel campo della conoscenza".
+- [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu) combina l'idea di integrare
+  con quella di fornire. Con `どうぐの{{補|ほ}}{{給|きゅう}}`, il focus non è una
+  cura immediata in battaglia: è lo stock di strumenti che torna pronto prima
+  di una tratta lunga, di una sfida o di un'esplorazione rischiosa.
 
 :::example_sentence
 jp: >-
@@ -86,12 +97,13 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `マリナードタウンの セリで` -> `の` collega il luogo all'evento, mentre `で`
-  marca la cornice in cui avviene l'azione: è all'asta di Marinada.
-- `{{入|にゅう}}{{札|さつ}}して` -> sostantivo + `する`, poi forma in `-te`: la
-  prima azione prepara la seconda.
-- `どうぐの {{補|ほ}}{{給|きゅう}}を します` -> `どうぐの` specifica la risorsa;
-  `をします` trasforma il rifornimento in azione compiuta.
+*   `マリナードタウンの セリで` ➔ **Cornice dell'evento** (`の` lega Marinada
+    all'asta, mentre `で` dice dove o in quale evento avviene l'azione).
+*   `{{入|にゅう}}{{札|さつ}}して` ➔ **Prima azione in sequenza** (nome d'azione
+    più `する`, poi forma in `-te`: fai l'offerta e passi all'azione successiva).
+*   `どうぐの {{補|ほ}}{{給|きゅう}}を します` ➔ **Azione nominale esplicita**
+    (`どうぐの` specifica la risorsa; `をします` rende il rifornimento un'azione
+    compiuta dal giocatore).
 
 :::example_sentence
 jp: >-
@@ -102,38 +114,47 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `エリアゼロで` -> `で` marca il luogo dell'azione: la scoperta avviene lì.
-- `{{新|あたら}}しい ポケモンを` -> `を` marca l'oggetto portato alla luce.
-- `{{発|はっ}}{{見|けん}}した` -> `{{発|はっ}}{{見|けん}}する` al passato: non
-  "ho inventato", ma "ho trovato / scoperto".
+*   `エリアゼロで` ➔ **Luogo dell'azione** (`で` colloca la scoperta dentro
+    l'Area Zero, non nel menu astratto).
+*   `{{新|あたら}}しい ポケモンを` ➔ **Oggetto portato alla luce** (`を` marca ciò
+    che viene scoperto).
+*   `{{発|はっ}}{{見|けん}}した` ➔ **Scoperta conclusa** (`{{発|はっ}}{{見|けん}}する`
+    al passato: qualcosa preesistente viene finalmente trovato).
 
-> [!WARNING]
-> **⚖️ Contrasto operativo: asta, scoperta e rifornimento**
-> [{{競|せ}}り](term:term-anki-l08-seri) è l'evento dell'asta; [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu)
-> è l'offerta che fai dentro quell'evento. [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken)
-> non è `{{発|はつ}}{{明|めい}}`: la scoperta riguarda qualcosa che preesisteva.
-> [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu) non coincide con
-> `{{回|かい}}{{復|ふく}}`: il primo reintegra risorse, il secondo descrive
-> recupero di salute, stato o energia.
+#### ⚖️ Contrasto
 
-## 2. Eccellenza e vittoria: valutare qualità o risultato
+[{{競|せ}}り](term:term-anki-l08-seri) è l'evento dell'asta; [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu)
+è l'offerta che fai dentro quell'evento. [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken)
+non è `{{発|はつ}}{{明|めい}}`, "invenzione": parla di qualcosa che esisteva già.
+[{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu) non coincide con
+`{{回|かい}}{{復|ふく}}`: il primo reintegra risorse, il secondo descrive
+recupero di salute, stato o energia.
 
-Quando la scena passa all'Accademia o alla Lega, il kanji `{{優|ゆう}}` diventa
-un segnale di superiorità riconosciuta. In [{{優|ゆう}}{{秀|しゅう}}](term:term-anki-l17-yuushuu)
-la superiorità è una qualità stabile; in [{{優|ゆう}}{{勝|しょう}}](term:term-anki-l17-yuushou)
+#### 🧠 Gancio
+
+Come trucco mnemonico, puoi leggere questi tre composti come tre movimenti:
+[{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) mette una proposta dentro
+l'asta, [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken) fa uscire qualcosa
+alla vista, [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu) rimette dentro
+risorse mancanti.
+
+## 2. Eccellenza e vittoria: qualità riconosciuta o trionfo finale
+
+Quando la scena passa dall'Accademia alla Lega, il kanji `{{優|ゆう}}` segnala
+una superiorità riconosciuta. In [{{優|ゆう}}{{秀|しゅう}}](term:term-anki-l17-yuushuu)
+quella superiorità è una qualità stabile; in [{{優|ゆう}}{{勝|しょう}}](term:term-anki-l17-yuushou)
 diventa il risultato finale di una competizione.
 
-[{{優|ゆう}}{{秀|しゅう}}](term:term-anki-l17-yuushuu) è un aggettivo in `な`:
-`{{優|ゆう}}{{秀|しゅう}}な{{生|せい}}{{徒|と}}` significa "studente eccellente".
-Suona naturale in bocca a insegnanti, superiori o personaggi che stanno
-valutando capacità reali. Non dice solo "bravo" in modo affettuoso: presenta la
-qualità come osservabile e riconosciuta.
-
-[{{優|ゆう}}{{勝|しょう}}](term:term-anki-l17-yuushou) contiene `{{勝|しょう}}`,
-la vittoria, ma non equivale a `{{勝|か}}つ` in una singola lotta. Con
-[ポケモンリーグ](term:term-v187-pokemonriigu), `で{{優|ゆう}}{{勝|しょう}}する`
-vuol dire vincere l'intera competizione o arrivare al trionfo finale di quel
-percorso.
+- [{{優|ゆう}}{{秀|しゅう}}](term:term-anki-l17-yuushuu) funziona come aggettivo
+  in `な`: `{{優|ゆう}}{{秀|しゅう}}な{{生|せい}}{{徒|と}}` significa "studente
+  eccellente". Non è solo un "bravo" affettuoso: suona come una valutazione
+  fondata su capacità osservabili, quindi è naturale in bocca a insegnanti,
+  superiori o personaggi che riconoscono un merito.
+- [{{優|ゆう}}{{勝|しょう}}](term:term-anki-l17-yuushou) contiene `{{勝|しょう}}`,
+  "vittoria", ma non equivale a `{{勝|か}}つ` in una singola lotta. Con
+  [ポケモンリーグ](term:term-v187-pokemonriigu), `で{{優|ゆう}}{{勝|しょう}}する`
+  punta a una cornice competitiva ampia: vincere il percorso, il torneo o la
+  competizione nel suo insieme.
 
 :::example_sentence
 jp: >-
@@ -144,11 +165,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `アカデミーで` -> `で` colloca la valutazione nel contesto scolastico.
-- `とても {{優|ゆう}}{{秀|しゅう}}な` -> `とても` intensifica; `な` collega
-  l'aggettivo al nome che segue.
-- `{{生|せい}}{{徒|と}}ですね` -> la frase chiude come constatazione cortese:
-  il parlante sta riconoscendo una qualità.
+*   `アカデミーで` ➔ **Contesto della valutazione** (`で` colloca il giudizio
+    nell'ambiente scolastico).
+*   `とても {{優|ゆう}}{{秀|しゅう}}な` ➔ **Aggettivo qualificante** (`とても`
+    intensifica; `な` collega l'aggettivo al nome che segue).
+*   `{{生|せい}}{{徒|と}}ですね` ➔ **Constatazione cortese** (`ですね` non chiede
+    una conferma forte: accompagna il riconoscimento della qualità).
 
 :::example_sentence
 jp: >-
@@ -159,43 +181,47 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `ポケモンリーグで` -> `で` marca il campo della competizione.
-- `{{優|ゆう}}{{勝|しょう}}して` -> `{{優|ゆう}}{{勝|しょう}}する` in forma in
-  `-te`: il trionfo apre la conseguenza successiva.
-- `チャンピオンになる` -> `になる` descrive il cambio di stato: dopo la vittoria,
-  si diventa Campione.
+*   `ポケモンリーグで` ➔ **Campo della competizione** (`で` non indica solo un
+    luogo fisico, ma la cornice in cui si conquista il risultato).
+*   `{{優|ゆう}}{{勝|しょう}}して` ➔ **Trionfo in sequenza** (`{{優|ゆう}}{{勝|しょう}}する`
+    in forma in `-te`: la vittoria apre la conseguenza successiva).
+*   `チャンピオンになる` ➔ **Cambio di stato** (`になる` dice che dopo il trionfo
+    si diventa Campione).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** come trucco di memoria, pensa a `{{優|ゆう}}` come a
-> "stare sopra la media". In [{{優|ゆう}}{{秀|しゅう}}](term:term-anki-l17-yuushuu)
-> quella superiorità descrive una persona; in [{{優|ゆう}}{{勝|しょう}}](term:term-anki-l17-yuushou)
-> descrive l'esito di una gara.
+#### ⚖️ Contrasto
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{勝|か}}つ` basta per una singola lotta:
-> `バトルに{{勝|か}}つ`. [{{優|ゆう}}{{勝|しょう}}する](term:term-anki-l17-yuushou)
-> invece richiede una cornice competitiva più larga, come torneo, Lega o percorso
-> con un vincitore finale.
+`{{勝|か}}つ` basta per una singola lotta: `バトルに{{勝|か}}つ`. [{{優|ゆう}}{{勝|しょう}}する](term:term-anki-l17-yuushou)
+richiede invece una cornice competitiva più larga, come una Lega, un torneo o
+un percorso con un vincitore finale. [{{優|ゆう}}{{秀|しゅう}}](term:term-anki-l17-yuushuu)
+non racconta un evento vinto: descrive una qualità che il parlante riconosce.
+
+#### 🧠 Gancio
+
+Come trucco di memoria, pensa a `{{優|ゆう}}` come a "stare sopra la media".
+Con `{{秀|しゅう}}` la superiorità resta addosso alla persona o alla prestazione;
+con `{{勝|しょう}}` diventa il risultato di una competizione.
 
 ## 3. Inviti, gioco e gruppi: chi entra nella scena
 
-I dialoghi di Paldea non dicono solo dove andare: spesso stabiliscono chi viene
-coinvolto. [{{誘|さそ}}う](term:term-anki-l17-sasou) introduce un invito,
-[{{遊|あそ}}ぶ](term:term-anki-l17-asobu) descrive il tempo condiviso, e
-[{{4人|よにん}}](term:term-anki-l17-yonin) restringe il gruppo a quattro
-persone.
+Molti dialoghi di Paldea non servono solo a mandarti verso un luogo: stabiliscono
+chi partecipa. [{{誘|さそ}}う](term:term-anki-l17-sasou) apre un invito,
+[{{遊|あそ}}ぶ](term:term-anki-l17-asobu) descrive tempo condiviso, e
+[{{4人|よにん}}](term:term-anki-l17-yonin) rende operativo il numero delle persone.
 
-[{{誘|さそ}}う](term:term-anki-l17-sasou) prende con `を` la persona invitata:
-`ネモを{{誘|さそ}}う`. L'attività o la destinazione può arrivare con `に`, come
-`ポケモンしょうぶに{{誘|さそ}}う`, "invitare a una lotta Pokémon". Nella forma
-passiva [{{誘|さそ}}われる](term:term-anki-l17-sasou), invece, sei tu a ricevere
-l'invito; la persona che invita viene marcata da `に`.
-
-[{{遊|あそ}}ぶ](term:term-anki-l17-asobu) è intransitivo: non ha bisogno di un
-oggetto diretto. In [ピクニック](term:term-v059-pikunikku), `ポケモンたちと{{遊|あそ}}ぶ`
-mette al centro la compagnia (`と`) e il tempo passato insieme. Per "giocare a
-un videogioco", invece, il giapponese usa spesso `ゲームをする`; [{{遊|あそ}}ぶ](term:term-anki-l17-asobu)
-punta più sul divertirsi, stare insieme o usare uno spazio di gioco.
+- [{{誘|さそ}}う](term:term-anki-l17-sasou) prende con `を` la persona invitata:
+  `ネモを{{誘|さそ}}う`. L'attività verso cui si invita può arrivare con `に`,
+  come in `ポケモンしょうぶに{{誘|さそ}}う`. Nella forma passiva
+  [{{誘|さそ}}われる](term:term-anki-l17-sasou), il punto di vista si ribalta:
+  sei tu a ricevere l'invito, e la persona che invita viene marcata da `に`.
+- [{{遊|あそ}}ぶ](term:term-anki-l17-asobu) è intransitivo: non ha bisogno di un
+  oggetto diretto. In [ピクニック](term:term-v059-pikunikku), `ポケモンたちと{{遊|あそ}}ぶ`
+  usa `と` per la compagnia e mette al centro il tempo passato insieme. Per
+  "giocare a un videogioco", invece, il giapponese usa spesso `ゲームをする`;
+  [{{遊|あそ}}ぶ](term:term-anki-l17-asobu) punta più sul divertirsi, stare con
+  qualcuno o usare uno spazio di gioco.
+- [{{4人|よにん}}](term:term-anki-l17-yonin) usa la lettura speciale `よにん`,
+  non `よんにん`. Nei contesti di multiplayer, il numero non è decorativo:
+  dice quante persone possono entrare nella stessa esperienza.
 
 :::example_sentence
 jp: >-
@@ -206,10 +232,11 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `ネモを` -> `を` marca la persona invitata.
-- `ポケモンしょうぶに` -> `に` indica l'attività verso cui l'invito porta.
-- `{{誘|さそ}}う` -> il verbo non descrive solo parlare a qualcuno: propone una
-  partecipazione.
+*   `ネモを` ➔ **Persona invitata** (`を` marca chi viene coinvolto dall'azione).
+*   `ポケモンしょうぶに` ➔ **Direzione dell'invito** (`に` indica l'attività verso
+    cui l'invito porta).
+*   `{{誘|さそ}}う` ➔ **Proposta di partecipazione** (non è solo parlare a
+    qualcuno: è farlo entrare in una scena condivisa).
 
 :::example_sentence
 jp: >-
@@ -220,10 +247,11 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `ピクニックで` -> `で` marca la scena in cui avviene l'attività.
-- `ポケモンたちと` -> `と` marca la compagnia, non l'oggetto del verbo.
-- `いっしょに {{遊|あそ}}ぶ` -> l'azione è condivisa: il focus è passare tempo
-  insieme.
+*   `ピクニックで` ➔ **Scena dell'attività** (`で` colloca il gioco nel picnic).
+*   `ポケモンたちと` ➔ **Compagnia** (`と` marca con chi si passa il tempo, non
+    un oggetto diretto).
+*   `いっしょに {{遊|あそ}}ぶ` ➔ **Azione condivisa** (`いっしょに` rende esplicito
+    che il focus è stare insieme).
 
 :::example_sentence
 jp: >-
@@ -234,34 +262,43 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `マルチプレイで` -> `で` dà il contesto funzionale: modalità multigiocatore.
-- `{{4人|よにん}}いっしょに` -> il numero agisce come quantità del gruppo; non
-  serve una particella dopo `{{4人|よにん}}`.
-- `{{冒|ぼう}}{{険|けん}}する` -> sostantivo + `する`: "fare un'avventura" diventa
-  "avventurarsi".
+*   `マルチプレイで` ➔ **Modalità funzionale** (`で` dà il contesto operativo).
+*   `{{4人|よにん}}いっしょに` ➔ **Quantità del gruppo** (il numero restringe i
+    partecipanti; non serve una particella dopo `{{4人|よにん}}`).
+*   `{{冒|ぼう}}{{険|けん}}する` ➔ **Nome più `する`** (`{{冒|ぼう}}{{険|けん}}`,
+    avventura, diventa "avventurarsi").
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** [{{4人|よにん}}](term:term-anki-l17-yonin) non si legge
-> `よんにん`. Il contatore delle persone ha forme speciali: `ひとり`,
-> `ふたり`, poi `{{3人|さんにん}}`, [{{4人|よにん}}](term:term-anki-l17-yonin).
-> Il quattro perde la `ん` di `よん`.
+#### ⚖️ Contrasto
 
-## 4. Snack e draghi: vita quotidiana e colore fantastico
+`ネモを{{誘|さそ}}う` mette Nemona come persona invitata. `ネモに{{誘|さそ}}われる`
+la mette invece come persona da cui arriva l'invito: la forma passiva cambia il
+punto di vista della scena. Con [{{遊|あそ}}ぶ](term:term-anki-l17-asobu), invece,
+non cercare per forza un `を`: la compagnia viene naturale con `と`.
 
-Accanto alle azioni di sistema, il gioco usa parole quotidiane e parole più
+#### 🧠 Gancio
+
+Per [{{4人|よにん}}](term:term-anki-l17-yonin), aggancia la sequenza delle persone:
+`ひとり`, `ふたり`, `{{3人|さんにん}}`, [{{4人|よにん}}](term:term-anki-l17-yonin).
+Il quattro perde la `ん` di `よん`, quindi la forma da riconoscere nei menu è
+`よにん`.
+
+## 4. Snack e draghi: pausa quotidiana e colore fantastico
+
+Accanto alle azioni operative, il gioco usa parole quotidiane e parole più
 narrative per cambiare tono. [お{{菓|か}}{{子|し}}](term:term-anki-l17-okashi)
-porta la scena verso cibo, pause e picnic; [{{竜|りゅう}}](term:term-anki-l17-ryuu)
+porta la scena verso pause, cibo e picnic; [{{竜|りゅう}}](term:term-anki-l17-ryuu)
 porta verso immaginario fantastico, aspetto e forza dei Pokémon.
 
-[お{{菓|か}}{{子|し}}](term:term-anki-l17-okashi) unisce il prefisso cortese `お`
-e `{{菓|か}}{{子|し}}`, "dolciumi / snack". In una frase con `を{{食|た}}べる`
-o `を{{買|か}}う`, `を` marca ciò che viene mangiato o comprato. Non indica solo
-un dessert elegante: può coprire caramelle, biscotti e spuntini.
-
-[{{竜|りゅう}}](term:term-anki-l17-ryuu) è il nome giapponese per "drago" e
-suona più narrativo di `ドラゴン`. Il tipo Pokémon rimane spesso `ドラゴンタイプ`;
-quando leggi `{{竜|りゅう}}のような すがた`, invece, il testo sta descrivendo un
-aspetto simile a un drago, non necessariamente una label di tipo.
+- [お{{菓|か}}{{子|し}}](term:term-anki-l17-okashi) unisce il prefisso cortese `お`
+  e `{{菓|か}}{{子|し}}`, "dolciumi / snack". Con `を{{食|た}}べる` o
+  `を{{買|か}}う`, `を` marca ciò che viene mangiato o comprato. Non pensarlo
+  solo come dessert elegante: può coprire caramelle, biscotti e spuntini da
+  picnic.
+- [{{竜|りゅう}}](term:term-anki-l17-ryuu) è il nome giapponese per "drago" e
+  ha un sapore più narrativo di `ドラゴン`. Il tipo Pokémon resta spesso
+  `ドラゴンタイプ`; quando leggi `{{竜|りゅう}}のような すがた`, invece, il testo sta
+  descrivendo un aspetto simile a un drago, non necessariamente una categoria
+  di tipo.
 
 :::example_sentence
 jp: >-
@@ -272,11 +309,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `サンドウィッチの あとに` -> `のあとに` colloca l'azione dopo il panino.
-- `あまい お{{菓|か}}{{子|し}}を` -> `あまい` descrive lo snack; `を` lo marca
-  come oggetto del verbo.
-- `{{食|た}}べる` -> azione di consumo: qui [お{{菓|か}}{{子|し}}](term:term-anki-l17-okashi)
-  è ciò che entra nella scena di pausa.
+*   `サンドウィッチの あとに` ➔ **Tempo relativo** (`のあとに` colloca l'azione
+    dopo il panino).
+*   `あまい お{{菓|か}}{{子|し}}を` ➔ **Oggetto del consumo** (`あまい` descrive lo
+    snack; `を` lo marca come oggetto del verbo).
+*   `{{食|た}}べる` ➔ **Azione concreta** (lo snack entra nella scena di pausa,
+    non in una descrizione astratta).
 
 :::example_sentence
 jp: >-
@@ -287,22 +325,35 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{竜|りゅう}}の ような` -> `のような` crea una somiglianza concreta: "simile a un drago".
-- `ポケモンが` -> `が` introduce ciò che appare o si muove nella scena.
-- `{{空|そら}}を {{飛|と}}んでいる` -> `を` marca lo spazio attraversato: il Pokémon vola nel cielo.
+*   `{{竜|りゅう}}の ような` ➔ **Somiglianza descrittiva** (`のような` significa
+    "simile a", non "appartenente al tipo").
+*   `ポケモンが` ➔ **Soggetto che appare nella scena** (`が` introduce ciò che
+    si muove o viene osservato).
+*   `{{空|そら}}を {{飛|と}}んでいる` ➔ **Spazio attraversato** (`を` marca il
+    cielo come spazio percorso; `ている` mostra l'azione in corso).
 
-> [!WARNING]
-> **⚖️ Contrasto operativo: `お{{菓|か}}{{子|し}}` e `おかしい`**
-> [お{{菓|か}}{{子|し}}](term:term-anki-l17-okashi) è "dolci / snack" e finisce
-> in `し`. `おかしい` è un aggettivo diverso: "strano" o "buffo". In testo senza
-> audio, la presenza di `{{菓|か}}{{子|し}}` e della particella `を` ti segnala che
-> il gioco sta parlando di cibo, non di qualcosa di strano.
+#### ⚖️ Contrasto
+
+[お{{菓|か}}{{子|し}}](term:term-anki-l17-okashi) è "dolci / snack" e finisce in
+`し`. `おかしい` è un aggettivo diverso: "strano" o "buffo". In testo senza
+audio, la presenza di `{{菓|か}}{{子|し}}` e della particella `を` ti segnala che
+la frase parla di cibo. Allo stesso modo, [{{竜|りゅう}}](term:term-anki-l17-ryuu)
+e `ドラゴンタイプ` non sono automaticamente intercambiabili: il primo può essere
+immagine narrativa, il secondo è una label di tipo.
+
+#### 🧠 Gancio
+
+Come trucco mnemonico, [お{{菓|か}}{{子|し}}](term:term-anki-l17-okashi) resta
+ancorato alla pausa: qualcosa che puoi comprare, mangiare o condividere.
+[{{竜|りゅう}}](term:term-anki-l17-ryuu), invece, alza subito il registro verso
+forme leggendarie, sagome e descrizioni da racconto.
 
 ## Esempi guidati di riepilogo
 
-Le stesse forme diventano più facili da riconoscere quando lavorano insieme:
-azioni con `する`, luoghi marcati da `で`, persone con `を` e quantità come
-[{{4人|よにん}}](term:term-anki-l17-yonin) che restringono il gruppo.
+Le stesse forme diventano facili da riconoscere quando lavorano insieme:
+`で` colloca la scena, `を` marca oggetti o persone, `する` rende operative le
+azioni, e parole come [{{4人|よにん}}](term:term-anki-l17-yonin) o
+[{{竜|りゅう}}](term:term-anki-l17-ryuu) restringono subito il tipo di lettura.
 
 :::example_sentence
 jp: >-
@@ -341,4 +392,5 @@ Quando il testo passa da `セリで{{入|にゅう}}{{札|さつ}}する` a
 struttura resta leggibile: `で` colloca la scena, `を` marca l'oggetto o la
 persona coinvolta, e `する` trasforma molti nomi in azioni. Da lì puoi
 distinguere una risorsa da rifornire, un invito da accettare, una qualità
-riconosciuta e una vittoria che chiude davvero un percorso.
+riconosciuta, una vittoria che chiude un percorso e una parola fantastica che
+cambia il colore della scena.
