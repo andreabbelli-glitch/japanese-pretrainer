@@ -90,10 +90,10 @@ Quando affronti sfide impegnative, il sistema o i personaggi ti daranno avvisi p
     *   🧠 **Gancio cognitivo:** Immagina di *"versare la propria mente su qualcosa"*: è un modo efficace per ricordare che [{{注意|ちゅうい}}](term:term-v261-chuui) significa concentrare tutta l'attenzione su un punto preciso.
 *   [{{受|う}}ける](term:term-v262-ukeru) (**Ricevere / Sostenere**): È il verbo-base per descrivere chi subisce un'azione. In battaglia, non significa ricevere un regalo, ma subire un attacco o un effetto di stato (es. `はがねタイプのわざを{{受|う}}ける` ➔ subire una mossa di tipo Acciaio).
 
-> [!WARNING]
-> **⚖️ Contrasto Operativo: `{{普通|ふつう}}` (Normale) vs `ノーマル` (Tipo Normale)**
-> *   [{{普通|ふつう}}](term:term-v268-futsuu) significa "comune", "normale", "ordinario" nel linguaggio di tutti i giorni (es. *"Di solito le cose vanno così"*).
-> *   Per indicare il tipo elementale dei Pokémon, il gioco usa esclusivamente il Katakana **`ノーマル`**. Non confonderli!
+#### ⚖️ Contrasto operativo: `{{普通|ふつう}}` (normale) vs `ノーマル` (tipo Normale)
+
+*   [{{普通|ふつう}}](term:term-v268-futsuu) significa "comune", "normale", "ordinario" nel linguaggio di tutti i giorni (es. *"Di solito le cose vanno così"*).
+*   Per indicare il tipo elementale dei Pokémon, il gioco usa esclusivamente il Katakana **`ノーマル`**. Non confonderli!
 
 ---
 
@@ -167,10 +167,10 @@ translation_it: >-
 *   `これも` ➔ **Focus Esteso** (`これ` questo + `も` anche ➔ *"anche questo"*).
 *   `{{使|つか}}ってみて` ➔ **Tentativo Esortativo** (Verbo `{{使|つか}}う` *usare* nella forma in `-te` `{{使|つか}}って` + `みる` *provare a* nella sua forma in `-te` `みて`, usata qui come esortazione informale ➔ *prova a usarlo, dai!*).
 
-> [!NOTE]
-> **⚖️ Contrasto Grammaticale: `てほしい` (Voglio che tu...) vs `てみて` (Prova a...)**
-> *   `{{使|つか}}ってほしい` ➔ Vorrei che tu usassi questo / voglio che tu lo usi (esprime un desiderio del parlante; l'intensità dipende dal contesto).
-> *   `{{使|つか}}ってみて` ➔ È un consiglio amichevole nei tuoi confronti: *"dai, fai un tentativo e vedi come va!"*.
+#### ⚖️ Contrasto grammaticale: `てほしい` (voglio che tu...) vs `てみて` (prova a...)
+
+*   `{{使|つか}}ってほしい` ➔ Vorrei che tu usassi questo / voglio che tu lo usi (esprime un desiderio del parlante; l'intensità dipende dal contesto).
+*   `{{使|つか}}ってみて` ➔ È un consiglio amichevole nei tuoi confronti: *"dai, fai un tentativo e vedi come va!"*.
 
 ---
 
@@ -187,9 +187,9 @@ La parola [せっかく](term:term-v270-sekkaku) segnala un'occasione ottenuta c
 *   [{{約束|やくそく}}](term:term-v271-yakusoku) (**Promessa / Appuntamento**): Molto comune nei dialoghi in cui i personaggi stringono un patto (es. *"Promettimi che verrai a テーブルシティ"*). `{{約束|やくそく}}する` trasforma la parola in azione attiva.
 *   [～な / ～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) (**Eh / proprio... / vedo che...**): Finale colloquiale e riflessiva, spesso ruvida o mascolina a seconda della voce del personaggio, ma non esclusivamente maschile. Dopo aggettivi in `い` si usa direttamente `な` (`このジムはむずかしいな` ➔ *"Questa palestra è proprio difficile, eh"*); dopo nomi e aggettivi in `な` compare spesso `だな` (`{{静|しず}}かだな`, `{{先生|せんせい}}だな`). Con i verbi, invece, serve più attenzione: `な` può essere osservativo in certi contesti, ma dopo una forma del dizionario può anche diventare proibitivo. Il parlante non sta facendo una domanda diretta: sta pensando ad alta voce o constatando un fatto evidente davanti a lui.
 
-> [!WARNING]
-> **⚠️ Attenzione: `Vるな` può essere proibitivo**
-> Quando `な` segue la forma del dizionario di un verbo (`{{行|い}}くな`, `{{食|た}}べるな`), il significato può essere completamente diverso: **"non fare V!"**. È una proibizione secca, usata in comandi forti, avvisi urgenti, cartelli o parlato brusco. In testo scritto senza audio, solo il contesto disambigua. Dopo aggettivi in `い` (`むずかしいな`) o dopo `だ` (`{{先生|せんせい}}だな`) la lettura è invece osservativa.
+#### ⚖️ Contrasto: `な` osservativo vs `Vるな` proibitivo
+
+Quando `な` segue la forma del dizionario di un verbo (`{{行|い}}くな`, `{{食|た}}べるな`), il significato può essere completamente diverso: **"non fare V!"**. È una proibizione secca, usata in comandi forti, avvisi urgenti, cartelli o parlato brusco. In testo scritto senza audio, solo il contesto disambigua. Dopo aggettivi in `い` (`むずかしいな`) o dopo `だ` (`{{先生|せんせい}}だな`) la lettura è invece osservativa.
 
 ---
 

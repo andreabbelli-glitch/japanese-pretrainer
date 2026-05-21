@@ -18,23 +18,24 @@ summary: >-
   Leggere battaglia e scuola insieme: separare mosse, stati e confronti dai
   ruoli accademici e dalle spiegazioni che guidano la scena.
 ---
+
 # Battaglia, scuola e storia: quando la frase decide il passo successivo
 
-In *Pokémon Scarlet & Violet* lo stesso blocco di gioco può passare da un tutorial di movimento a una lotta, poi a una frase di classe o a un dialogo di trama. Il giapponese ti dà segnali molto compatti: una parola dice che una funzione si è sbloccata, un tipo elementale prepara la scelta della mossa, una finale come `〜そうだ` cambia se stai vedendo un'impressione o ascoltando una voce riportata.
+In *Pokémon Scarlet & Violet* la schermata cambia registro in fretta: un menu sblocca una funzione, una lotta chiede di riconoscere tipo e probabilità, una lezione scolastica sposta il tono verso esperienza, aspettative o storia personale. Il giapponese non sempre lo annuncia con frasi lunghe. Spesso basta un nome tecnico, una particella o un finale come `そうだ` per capire che cosa puoi fare adesso.
 
-Il cambio di marcia è continuo. Quando leggi un menu, devi capire che cosa puoi fare; quando leggi una battuta, devi capire se il personaggio propone, risponde, nomina qualcosa o sta solo facendo un commento troppo carico per essere neutro.
+Il trucco è leggere ogni blocco come una piccola istruzione di scena. Se compare una parola da UI, chiediti quale azione diventa disponibile; se compare un tipo, chiediti quale rapporto di battaglia sta costruendo; se un personaggio usa `それなら` o [{{行|い}}ってみよう](term:term-e057-ittemiyou), la frase non sta solo informando: sta spingendo il dialogo verso il prossimo passo.
 
 ## Termini chiave
 
 - [ダッシュ](term:term-v294-dasshu) — scatto
 - [{{機能|きのう}}](term:term-v295-kinou) — funzione
-- [あく](term:term-v296-aku) — buio
+- [あく](term:term-v296-aku) — Buio
 - [{{対戦|たいせん}}](term:term-v297-taisen) — lotta / match
 - [{{出|で}}る](term:term-v298-deru) — uscire / comparire
-- [エスパー](term:term-v299-esupaa) — psico
+- [エスパー](term:term-v299-esupaa) — Psico
 - [{{入|はい}}る](term:term-v300-iru) — entrare
 - [{{交換|こうかん}}する](term:term-v301-koukan-suru) — scambiare
-- [{{出会|であ}}い](term:term-v302-deai) — incontri
+- [{{出会|であ}}い](term:term-v302-deai) — incontro significativo
 - [{{調子|ちょうし}}](term:term-v303-choushi) — condizione / forma
 - [{{秘密|ひみつ}}](term:term-v304-himitsu) — segreto
 - [{{設定|せってい}}](term:term-v305-settei) — impostazioni
@@ -42,20 +43,20 @@ Il cambio di marcia è continuo. Quando leggi un menu, devi capire che cosa puoi
 - [{{経験|けいけん}}](term:term-v309-keiken) — esperienza
 - [{{期待|きたい}}](term:term-v310-kitai) — attesa / aspettativa
 - [{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) — precisione
-- [じめん](term:term-v312-jimen) — terra
+- [じめん](term:term-v312-jimen) — Terra
 
 ## Espressioni ricorrenti
 
-- [{{行|い}}ってみよう](term:term-e057-ittemiyou) — andiamo a vedere / proviamo ad andarci
+- [{{行|い}}ってみよう](term:term-e057-ittemiyou) — proviamo ad andarci / andiamo a vedere
 - [それなら](term:term-e058-sorenara) — in quel caso / allora
 - [〜しておこう](term:term-e059-shiteokou) — facciamolo in anticipo
 
 ## Pattern grammaticali chiave
 
-- [～と{{言|い}}う / ～って{{言|い}}う](grammar:grammar-g059-dire-chiamarsi) — dire / chiamarsi
-- [～すぎる](grammar:grammar-g061-troppo) — troppo
-- [～そうだ (sembra)](grammar:grammar-g062-sembra-che) — sembra che
-- [～そうだ (si dice)](grammar:grammar-g063-si-dice-che-pare-che) — si dice che / pare che
+- [～と{{言|い}}う / ～って{{言|い}}う](grammar:grammar-g059-dire-chiamarsi) — dire / chiamare
+- [～すぎる](grammar:grammar-g061-troppo) — troppo / oltre misura
+- [～そうだ (sembra)](grammar:grammar-g062-sembra-che) — sembra che, da impressione diretta
+- [～そうだ (si dice)](grammar:grammar-g063-si-dice-che-pare-che) — si dice che / pare che, da informazione riportata
 
 ## Etichette da riconoscere
 
@@ -63,11 +64,14 @@ Il cambio di marcia è continuo. Quando leggi un menu, devi capire che cosa puoi
 
 ---
 
-## 1. Menu e movimento: funzioni che aprono nuove azioni
+## 1. Menu e movimento: quando una parola apre un'azione
 
-Quando il gioco parla di esplorazione, le parole operative non descrivono solo un oggetto sullo schermo: indicano quale azione diventa possibile. [ダッシュ](term:term-v294-dasshu) è lo scatto, quindi non è il semplice camminare ma un'accelerazione breve; nei tutorial di Koraidon o Miraidon ti prepara a leggere istruzioni di movimento. [{{機能|きのう}}](term:term-v295-kinou), invece, nomina una funzione disponibile in un menu, in un dispositivo o in una cavalcatura: se compare con verbi come `{{使|つか}}える`, il punto è che qualcosa ora può essere usato.
+Le schermate di esplorazione usano parole molto concrete. Non descrivono solo un oggetto del mondo: indicano che il giocatore può fare qualcosa, regolare qualcosa o vedere comparire una nuova voce.
 
-[{{設定|せってい}}](term:term-v305-settei) si legge come "impostazione", ma in una UI è soprattutto una cosa regolabile. Una frase con `{{設定|せってい}}を{{変|か}}える` non ti sta raccontando una configurazione astratta: ti porta nella zona in cui puoi cambiare opzioni. Allo stesso modo [わざマシンマシン](term:term-v306-waza-mashinmashin) ripete `マシン` perché nomina il dispositivo che crea le `わざマシン`: la prima parte indica le MT, la seconda indica la macchina che le produce.
+- [ダッシュ](term:term-v294-dasshu) è lo scatto, quindi porta con sé l'idea di accelerazione controllata. Quando il tutorial lo lega alla cavalcatura o a un comando, non va letto come un movimento generico: il testo sta dicendo che l'esplorazione ora ha un ritmo diverso, perché puoi coprire distanza più rapidamente o superare un tratto che prima sembrava lento.
+- [{{機能|きのう}}](term:term-v295-kinou) è la parola da riconoscere quando il gioco parla di una funzione disponibile. In una frase con `{{使|つか}}える`, `{{追加|ついか}}された` o [{{入|はい}}る](term:term-v300-iru), il centro non è la teoria della funzione: è il fatto che una possibilità entra nella UI o diventa utilizzabile.
+- [{{設定|せってい}}](term:term-v305-settei) indica una cosa configurabile. In una schermata di opzioni, `{{設定|せってい}}を{{変|か}}える` non significa "cambiare un'ambientazione" in senso narrativo: significa modificare un valore, una preferenza o un comportamento del gioco.
+- [わざマシンマシン](term:term-v306-waza-mashinmashin) è un'etichetta buffa ma leggibile: la prima parte, `わざマシン`, richiama le MT; la seconda, `マシン`, segnala il dispositivo che le produce. Quando compare, preparati a leggere una schermata di creazione o gestione, non una semplice descrizione di mossa.
 
 :::example_sentence
 jp: >-
@@ -78,20 +82,34 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `メニューに` -> `に` marca il luogo o contenitore in cui qualcosa entra: qui il menu.
-- `{{新|あたら}}しい {{機能|きのう}}が` -> `が` marca ciò che compare come soggetto della frase, cioè la nuova funzione.
-- `{{入|はい}}りました` -> [{{入|はい}}る](term:term-v300-iru) non indica sempre entrare in una stanza: con un menu o una modalità dice che una voce viene aggiunta dentro quel contesto.
+- `メニューに` ➔ `に` marca il luogo o contenitore in cui qualcosa entra: qui il menu.
+- `{{新|あたら}}しい {{機能|きのう}}が` ➔ `が` presenta ciò che compare, cioè la nuova funzione.
+- `{{入|はい}}りました` ➔ [{{入|はい}}る](term:term-v300-iru) non richiede una stanza fisica. Con un menu, una modalità o un sistema significa che una voce viene aggiunta dentro quel contesto.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{入|はい}}る](term:term-v300-iru) guarda il passaggio verso l'interno di un luogo, menu o gruppo; [{{出|で}}る](term:term-v298-deru) guarda il movimento opposto o la comparsa sulla scena. In `ポケモンが{{出|で}}る`, il Pokémon non "esce" per forza da un edificio: appare come incontro leggibile dal giocatore.
+#### ⚖️ Contrasto
 
-## 2. Battaglia: tipi, match e probabilità di colpire
+[{{入|はい}}る](term:term-v300-iru) guarda il movimento verso l'interno: una funzione entra nel menu, un personaggio entra in un luogo, un elemento entra in una lista. [{{出|で}}る](term:term-v298-deru) guarda invece l'uscita o la comparsa sulla scena. In `ポケモンが{{出|で}}る`, il Pokémon non "esce" per forza da un edificio: appare come incontro leggibile dal giocatore.
 
-Nei blocchi di lotta, il giapponese compatto spesso decide se stai leggendo una categoria, un'azione o un dato numerico. [あく](term:term-v296-aku), [エスパー](term:term-v299-esupaa) e [じめん](term:term-v312-jimen) diventano tipi quando precedono `タイプ`: `あくタイプ`, `エスパータイプ`, `じめんタイプ`. Non tradurli come aggettivi liberi dentro la frase; trattali come etichette tecniche che modificano mosse, Pokémon o avversari.
+:::example_sentence
+jp: >-
+  {{草|くさ}}むらから ポケモンが {{出|で}}た。
+translation_it: >-
+  Dall'erba alta è comparso un Pokémon.
+:::
 
-[{{対戦|たいせん}}](term:term-v297-taisen) indica un match contro qualcuno. È più mirato di una "battaglia" generica: in menu e dialoghi può distinguere lo scontro diretto con un avversario, anche online o in link, da un evento ambientale. [{{交換|こうかん}}する](term:term-v301-koukan-suru) è un altro verbo tecnico da UI: ciò che scegli passa a un altro giocatore, a un altro slot o a un altro stato di possesso.
+#### 🗺️ Anatomia della frase
 
-[{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) è formato da `{{命中|めいちゅう}}`, "colpire il bersaglio", e `{{率|りつ}}`, "percentuale/tasso". In battaglia non parla della potenza della mossa: parla della probabilità che la mossa vada a segno. Se leggi `{{命中|めいちゅう}}{{率|りつ}}が{{高|たか}}い`, il vantaggio è affidabilità; se leggi `{{低|ひく}}い`, il rischio è mancare.
+- `{{草|くさ}}むらから` ➔ `から` marca il punto di provenienza: l'erba alta è la zona da cui parte la comparsa.
+- `ポケモンが` ➔ `が` mette in primo piano ciò che appare.
+- `{{出|で}}た` ➔ passato di [{{出|で}}る](term:term-v298-deru): qui il valore naturale è "è comparso", perché la scena è un incontro.
+
+## 2. Battaglia: tipi, match e probabilità
+
+Nei messaggi di lotta, il giapponese è compatto perché molte parole funzionano come etichette tecniche. Un nome di tipo prima di `タイプ`, un sostantivo come [{{対戦|たいせん}}](term:term-v297-taisen) o un valore come [{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) cambia subito il modo in cui devi valutare la frase.
+
+### A. Tipi elementali come etichette tecniche
+
+[あく](term:term-v296-aku), [エスパー](term:term-v299-esupaa) e [じめん](term:term-v312-jimen) diventano tipi quando precedono `タイプ`: `あくタイプ`, `エスパータイプ`, `じめんタイプ`. In quel punto non stanno facendo da aggettivi liberi come "oscuro", "psichico" o "di terra" in una descrizione poetica. Stanno restringendo una mossa, un Pokémon o un avversario dentro il sistema di battaglia.
 
 :::example_sentence
 jp: >-
@@ -102,20 +120,57 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `あくタイプの わざ` -> il blocco prima di `の` restringe la mossa: è una mossa di tipo Buio.
-- `エスパータイプの {{相手|あいて}}に` -> `に` marca il bersaglio o riferimento contro cui la mossa viene valutata.
-- `{{強|つよ}}そうだ` -> [～そうだ (sembra)](grammar:grammar-g062-sembra-che) nasce da `{{強|つよ}}い` senza `い` + `そうだ`: il parlante giudica dall'impressione immediata, non riporta una notizia.
+- `あくタイプの わざ` ➔ `の` collega l'etichetta di tipo al nome: è una mossa di tipo Buio.
+- `エスパータイプの {{相手|あいて}}に` ➔ `に` marca il riferimento contro cui la mossa viene valutata.
+- `{{強|つよ}}そうだ` ➔ [～そうだ (sembra)](grammar:grammar-g062-sembra-che) nasce dallo stem di `{{強|つよ}}い`, senza `い`: il parlante sta dando un'impressione diretta, non riportando una notizia sentita altrove.
 
-> [!WARNING]
-> **⚖️ `そうだ` non ha sempre lo stesso valore:** `{{強|つよ}}そうだ` significa "sembra forte" perché parte da uno stem aggettivale. `{{強|つよ}}いそうだ`, invece, suona come "pare che sia forte / si dice che sia forte" perché segue una frase completa. La forma prima di `そうだ` decide se stai leggendo impressione diretta o voce riportata.
+### B. Azioni di lotta e scambio
 
-## 3. Scuola e storia: incontri, condizione e aspettative
+[{{対戦|たいせん}}](term:term-v297-taisen) indica un match contro qualcuno. È più mirato di "battaglia" in senso narrativo, perché nelle UI può distinguere la lotta diretta contro un avversario, anche in link o online, da un evento ambientale o da un semplice incontro selvatico. [{{交換|こうかん}}する](term:term-v301-koukan-suru), invece, mette al centro il passaggio da un possessore, slot o giocatore a un altro. Quando lo trovi in una schermata, cerca subito che cosa viene scambiato e con chi.
 
-Nella parte scolastica di Scarlet/Violet, parole come [{{数学|すうがく}}](term:term-v307-suugaku) e [{{経験|けいけん}}](term:term-v309-keiken) spostano la scena tra lezione e crescita. [{{数学|すうがく}}](term:term-v307-suugaku) non è "un calcolo" isolato: con `{{授業|じゅぎょう}}`, `{{習|なら}}う` o `{{先生|せんせい}}` diventa la materia scolastica. [{{経験|けいけん}}](term:term-v309-keiken) può essere esperienza accumulata in battaglia, ma nei dialoghi può anche indicare ciò che qualcuno ha vissuto.
+:::example_sentence
+jp: >-
+  {{友|とも}}だちと ポケモンを {{交換|こうかん}}してから、 {{対戦|たいせん}}してみよう。
+translation_it: >-
+  Dopo aver scambiato Pokémon con un amico, proviamo a fare una lotta.
+:::
 
-[{{出会|であ}}い](term:term-v302-deai) contiene l'idea di incontrarsi e spesso apre una relazione o una scena nuova. Non è soltanto "vedere qualcuno": in un racconto segnala che l'incontro conta. [{{調子|ちょうし}}](term:term-v303-choushi) descrive come sta andando una persona o una prestazione in quel momento; `{{調子|ちょうし}}がいい` può essere "essere in forma", mentre `{{調子|ちょうし}}が{{悪|わる}}い` segnala che qualcosa non gira bene.
+#### 🗺️ Anatomia della frase
 
-[{{秘密|ひみつ}}](term:term-v304-himitsu) e [{{期待|きたい}}](term:term-v310-kitai) lavorano sul tono del dialogo. `{{秘密|ひみつ}}だよ` crea complicità o riservatezza: l'informazione non va condivisa. `{{期待|きたい}}している` guarda avanti e mette pressione positiva sul futuro: qualcuno si aspetta qualcosa da te, da una sfida o da un risultato.
+- `{{友|とも}}だちと` ➔ `と` marca il partner dello scambio.
+- `ポケモンを {{交換|こうかん}}してから` ➔ `を` indica l'oggetto scambiato; `してから` crea la sequenza "dopo aver fatto".
+- `{{対戦|たいせん}}してみよう` ➔ [{{対戦|たいせん}}](term:term-v297-taisen) diventa verbo con `する`; `してみよう` aggiunge il tono di proposta: "proviamo a fare un match".
+
+### C. Precisione e informazione riportata
+
+[{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) è formato da `{{命中|めいちゅう}}`, "colpire il bersaglio", e `{{率|りつ}}`, "tasso / percentuale". In battaglia non misura la potenza della mossa: misura la probabilità che vada a segno. `{{命中|めいちゅう}}{{率|りつ}}が{{高|たか}}い` segnala affidabilità; `{{低|ひく}}い` segnala rischio di mancare.
+
+:::example_sentence
+jp: >-
+  じめんタイプの わざは {{命中|めいちゅう}}{{率|りつ}}が {{高|たか}}いそうだ。
+translation_it: >-
+  Pare che la mossa di tipo Terra abbia una precisione alta.
+:::
+
+#### 🗺️ Anatomia della frase
+
+- `じめんタイプの わざは` ➔ `は` mette come tema la mossa di tipo Terra: è ciò di cui si sta parlando.
+- `{{命中|めいちゅう}}{{率|りつ}}が {{高|たか}}い` ➔ frase completa con soggetto interno `{{命中|めいちゅう}}{{率|りつ}}が`: "la precisione è alta".
+- `そうだ` ➔ qui segue `{{高|たか}}い` con `い` ancora presente, quindi è [～そうだ (si dice)](grammar:grammar-g063-si-dice-che-pare-che): informazione riportata, non impressione visiva.
+
+#### ⚖️ Contrasto
+
+`{{強|つよ}}そうだ` e `{{強|つよ}}いそうだ` sembrano quasi uguali, ma leggono due situazioni diverse. Senza `い`, [～そうだ (sembra)](grammar:grammar-g062-sembra-che) si aggancia allo stem e dà un'impressione diretta: "sembra forte". Con `い` conservato, [～そうだ (si dice)](grammar:grammar-g063-si-dice-che-pare-che) segue una frase completa: "pare che sia forte / si dice che sia forte". Prima guarda la forma, poi scegli la traduzione.
+
+## 3. Scuola e storia: materie, incontri e tono emotivo
+
+La parte scolastica di Paldea non usa solo parole da aula. Le stesse frasi possono parlare di lezioni, esperienza personale, aspettative o segreti tra personaggi. Qui il valore pratico è capire se la frase sta collocando una materia, descrivendo lo stato di qualcuno o caricando una scena di importanza narrativa.
+
+- [{{数学|すうがく}}](term:term-v307-suugaku) è la materia "matematica". Con parole come `{{授業|じゅぎょう}}`, `{{先生|せんせい}}` o `{{習|なら}}う`, non indica un singolo calcolo: ti porta dentro l'ambiente dell'Accademia e prepara spiegazioni, domande o quiz.
+- [{{経験|けいけん}}](term:term-v309-keiken) può essere esperienza accumulata in senso da gioco, ma nei dialoghi può anche essere ciò che una persona ha vissuto. Se la frase parla di un personaggio, non ridurla automaticamente a "punti esperienza": può indicare maturità, storia personale o qualcosa imparato sul campo.
+- [{{出会|であ}}い](term:term-v302-deai) è più carico di un semplice "vedere qualcuno". Porta l'idea di incontro che conta, spesso l'inizio di una relazione, di un evento o di una scoperta. In una storia, `{{出会|であ}}い` segnala che quell'incontro ha peso.
+- [{{調子|ちょうし}}](term:term-v303-choushi) descrive come sta andando una persona, un corpo, una prestazione o una situazione. `{{調子|ちょうし}}がいい` non è "il tono è buono" in astratto: vuol dire essere in forma, andare bene, essere nel ritmo giusto.
+- [{{秘密|ひみつ}}](term:term-v304-himitsu) e [{{期待|きたい}}](term:term-v310-kitai) spostano il dialogo sul piano relazionale. `{{秘密|ひみつ}}だよ` crea riservatezza o complicità; `{{期待|きたい}}している` guarda avanti e mette una pressione positiva sul futuro: qualcuno si aspetta qualcosa da te, da una sfida o da un risultato.
 
 :::example_sentence
 jp: >-
@@ -126,19 +181,34 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{今日|きょう}}の {{数学|すうがく}}の {{授業|じゅぎょう}}` -> la catena di `の` restringe progressivamente il nome: lezione -> di matematica -> di oggi.
-- `{{楽|たの}}しすぎる` -> [～すぎる](grammar:grammar-g061-troppo) si aggancia allo stem dell'aggettivo `{{楽|たの}}しい` senza `い`: il significato non è solo "molto divertente", ma "troppo / eccessivamente divertente".
+- `{{今日|きょう}}の {{数学|すうがく}}の {{授業|じゅぎょう}}` ➔ la catena di `の` restringe progressivamente il nome: lezione ➔ di matematica ➔ di oggi.
+- `は` ➔ mette come tema l'intera lezione, non solo la materia.
+- `{{楽|たの}}しすぎる` ➔ [～すぎる](grammar:grammar-g061-troppo) si aggancia allo stem di `{{楽|たの}}しい`, senza `い`: la qualità supera il livello normale o atteso.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** pensa a `すぎる` come a una lancetta che supera la tacca normale. `{{強|つよ}}すぎる`, `{{早|はや}}すぎる`, `{{楽|たの}}しすぎる`: la qualità non è neutra, è andata oltre il punto atteso.
+#### 🧠 Gancio
 
-## 4. Parlato che spinge la scena: proposte, condizioni e nomi
+Pensa a `すぎる` come a una lancetta che supera la tacca. `{{強|つよ}}すぎる`, `{{早|はや}}すぎる`, `{{楽|たの}}しすぎる`: non stai leggendo solo "molto", ma "troppo / oltre misura". Il contesto decide se l'eccesso è un problema, una battuta o un entusiasmo esagerato.
 
-[{{行|い}}ってみよう](term:term-e057-ittemiyou) usa `Vてみる`, "provare a fare V", nella forma volitiva `みよう`: quando un personaggio lo dice davanti a una meta, non sta solo dicendo "andiamo", ma "proviamo ad andarci e vediamo". È perfetto per esplorazione e story beat, perché lascia aperta la scoperta.
+:::example_sentence
+jp: >-
+  {{珍|めずら}}しい ポケモンとの {{出会|であ}}いに {{期待|きたい}}しているよ。
+translation_it: >-
+  Ho grandi aspettative per l'incontro con un Pokémon raro.
+:::
 
-[それなら](term:term-e058-sorenara) risponde a una condizione appena emersa. `それ` riprende il fatto precedente, `なら` lo trasforma in base per la decisione successiva: "se è così, allora...". [〜しておこう](term:term-e059-shiteokou) aggiunge invece preparazione: `Vておく` significa fare qualcosa in anticipo perché servirà dopo, e `〜しておこう` lo rende una proposta del tipo "facciamolo ora, così siamo pronti".
+#### 🗺️ Anatomia della frase
 
-Il pattern [～と{{言|い}}う / ～って{{言|い}}う](grammar:grammar-g059-dire-chiamarsi) serve sia per dire parole sia per nominare cose. `ジムって{{言|い}}う` non significa che la palestra "parla": vuol dire "lo chiamano gym / palestra". Nei dialoghi di scuola e storia, questa struttura introduce soprannomi, nomi di luoghi, definizioni informali e cose che un personaggio sta spiegando al protagonista.
+- `{{珍|めずら}}しい ポケモンとの {{出会|であ}}い` ➔ `と` dentro `との` marca il Pokémon come persona o cosa con cui avviene l'incontro.
+- `に` ➔ indica il bersaglio dell'aspettativa: è quell'incontro che il parlante guarda con attesa.
+- `{{期待|きたい}}しているよ` ➔ [{{期待|きたい}}](term:term-v310-kitai) diventa verbo con `する`; `ている` mostra uno stato continuativo di aspettativa.
+
+## 4. Parlato che muove la scena: provare, reagire, prepararsi, nominare
+
+Molte battute di Scarlet/Violet non sono spiegazioni statiche. Sono frasi che fanno avanzare la situazione: una proposta verso una meta, una risposta a una condizione, una preparazione prima di agire o un nome introdotto in modo colloquiale.
+
+### A. [{{行|い}}ってみよう](term:term-e057-ittemiyou): proposta esplorativa
+
+[{{行|い}}ってみよう](term:term-e057-ittemiyou) combina `{{行|い}}く`, "andare", con `Vてみる`, "provare a fare V", nella forma volitiva `みよう`. Per questo non è un ordine secco. Quando un personaggio lo dice davanti a una meta, il tono è "andiamo a vedere / proviamo ad andarci": la frase apre la scoperta.
 
 :::example_sentence
 jp: >-
@@ -149,9 +219,13 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `ここへ` -> `へ` marca la direzione: il parlante guarda verso "qui" come meta da raggiungere.
-- `{{行|い}}って` -> forma in `-te` di `{{行|い}}く`, necessaria per legarsi a `みる`.
-- `みよう` -> volitivo di `みる` nel pattern `Vてみる`: proposta di fare un tentativo, non ordine secco.
+- `ここへ` ➔ `へ` marca la direzione, cioè la meta verso cui il parlante orienta l'azione.
+- `{{行|い}}って` ➔ forma in `-te` di `{{行|い}}く`, necessaria per legarsi a `みる`.
+- `みよう` ➔ volitivo di `みる` dentro il pattern `Vてみる`: proposta di tentare, non comando rigido.
+
+### B. [それなら](term:term-e058-sorenara): reazione a una condizione
+
+[それなら](term:term-e058-sorenara) riprende qualcosa appena emerso e lo trasforma nella base della decisione successiva. `それ` punta al fatto precedente; `なら` lo legge come condizione. In dialogo spesso corrisponde a "se è così, allora..." e ti segnala che la battuta seguente è una conseguenza, non un cambio casuale di argomento.
 
 :::example_sentence
 jp: >-
@@ -160,8 +234,31 @@ translation_it: >-
   Allora andiamo.
 :::
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{行|い}}ってみよう](term:term-e057-ittemiyou) apre una prova; [それなら](term:term-e058-sorenara) reagisce a una condizione; [〜しておこう](term:term-e059-shiteokou) prepara in anticipo. Tutte possono portare avanti la scena, ma il motivo grammaticale è diverso.
+#### 🗺️ Anatomia della frase
+
+- `それなら` ➔ "se è così / in quel caso": il parlante aggancia la decisione a ciò che è stato appena detto.
+- `{{行|い}}こう` ➔ volitivo di `{{行|い}}く`: proposta diretta di muoversi.
+
+### C. [〜しておこう](term:term-e059-shiteokou): preparazione in anticipo
+
+[〜しておこう](term:term-e059-shiteokou) viene da `Vておく`, cioè fare qualcosa e lasciarlo pronto per dopo. La forma volitiva `おこう` lo trasforma in una proposta: "facciamolo adesso, così ci torna utile". Nei menu e nei dialoghi prima di una sfida, questa forma spesso segnala acquisti, salvataggi, controlli o preparativi.
+
+:::example_sentence
+jp: >-
+  あとで {{使|つか}}うから {{買|か}}っておこう。
+translation_it: >-
+  Compriamolo adesso, perché lo useremo dopo.
+:::
+
+#### 🗺️ Anatomia della frase
+
+- `あとで {{使|つか}}うから` ➔ `から` dà la ragione: lo useremo più tardi.
+- `{{買|か}}って` ➔ forma in `-te` di `{{買|か}}う`, base per collegarsi a `おく`.
+- `おこう` ➔ volitivo di `おく` nel pattern `Vておく`: azione fatta in anticipo e lasciata pronta.
+
+### D. [～と{{言|い}}う / ～って{{言|い}}う](grammar:grammar-g059-dire-chiamarsi): parole dette e nomi dati
+
+[～と{{言|い}}う / ～って{{言|い}}う](grammar:grammar-g059-dire-chiamarsi) può introdurre parole pronunciate, ma nei dialoghi di gioco spesso serve anche a nominare cose. `ジムって{{言|い}}う` non significa che la palestra parla: significa "lo chiamano gym / palestra". La variante `って` è più colloquiale di `と`, quindi suona naturale quando un personaggio spiega un termine al protagonista.
 
 :::example_sentence
 jp: >-
@@ -172,31 +269,23 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `みんなは` -> il topic è "tutti / la gente".
-- `ジムって` -> `って` è una versione colloquiale di `と` per introdurre ciò che viene detto o chiamato.
-- `{{言|い}}う` -> qui non è "dire una frase" ma "chiamare con quel nome".
+- `みんなは` ➔ il topic è "tutti / la gente".
+- `ジムって` ➔ `って` introduce il nome usato, in modo colloquiale.
+- `{{言|い}}う` ➔ qui non significa "dire una frase" ma "chiamare con quel nome".
+
+#### ⚖️ Contrasto
+
+[{{行|い}}ってみよう](term:term-e057-ittemiyou) apre una prova verso una meta; [それなら](term:term-e058-sorenara) reagisce a una condizione già emersa; [〜しておこう](term:term-e059-shiteokou) prepara qualcosa in anticipo; [～と{{言|い}}う / ～って{{言|い}}う](grammar:grammar-g059-dire-chiamarsi) stabilisce parole, nomi o definizioni. Possono tutte far avanzare la scena, ma lo fanno da angoli grammaticali diversi.
 
 ## Esempi guidati di riepilogo
 
-:::example_sentence
-jp: >-
-  あとで {{使|つか}}うから {{買|か}}っておこう。
-translation_it: >-
-  Meglio comprarlo prima, così poi lo usiamo.
-:::
+Le frasi diventano più leggibili quando lessico, particelle e pattern lavorano insieme: prima riconosci il dominio, poi lasci che la grammatica dica se la scena sblocca, valuta, riporta o propone.
 
 :::example_sentence
 jp: >-
-  じめんタイプの わざは {{命中|めいちゅう}}{{率|りつ}}が {{高|たか}}いそうだ。
+  ダッシュの {{機能|きのう}}が {{入|はい}}ったから、 あの {{場所|ばしょ}}へ {{行|い}}ってみよう。
 translation_it: >-
-  Pare che la mossa di tipo Terra abbia una precisione alta.
-:::
-
-:::example_sentence
-jp: >-
-  {{珍|めずら}}しい ポケモンとの {{出会|であ}}いに {{期待|きたい}}しているよ。
-translation_it: >-
-  Ho aspettative per l'incontro con un Pokémon raro.
+  Ora che è entrata la funzione di scatto, proviamo ad andare in quel posto.
 :::
 
 :::example_sentence
@@ -206,8 +295,22 @@ translation_it: >-
   Se sei in forma, proviamo a fare una lotta.
 :::
 
+:::example_sentence
+jp: >-
+  これは {{秘密|ひみつ}}って {{言|い}}うより、 {{経験|けいけん}}から {{出|で}}た {{話|はなし}}だよ。
+translation_it: >-
+  Più che chiamarlo segreto, è una storia nata dall'esperienza.
+:::
+
+:::example_sentence
+jp: >-
+  じめんタイプの わざは {{命中|めいちゅう}}{{率|りつ}}が {{低|ひく}}そうだから、 {{設定|せってい}}を {{見|み}}ておこう。
+translation_it: >-
+  La mossa di tipo Terra sembra avere una precisione bassa, quindi controlliamo prima le impostazioni.
+:::
+
 ---
 
 ## Nota finale
 
-In questa parte del gioco conviene leggere prima la funzione della frase: [{{機能|きのう}}](term:term-v295-kinou), [{{設定|せってい}}](term:term-v305-settei) e [わざマシンマシン](term:term-v306-waza-mashinmashin) orientano la schermata; [{{対戦|たいせん}}](term:term-v297-taisen), [{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) e i tipi orientano la battaglia; [それなら](term:term-e058-sorenara), [～すぎる](grammar:grammar-g061-troppo) e `そうだ` decidono se il dialogo risponde, esagera, osserva o riporta.
+Quando il gioco passa da menu a battaglia e poi a scuola, non cambiare solo dizionario: cambia domanda di lettura. [{{機能|きのう}}](term:term-v295-kinou), [{{設定|せってい}}](term:term-v305-settei) e [わざマシンマシン](term:term-v306-waza-mashinmashin) ti dicono che cosa puoi usare o regolare; [あく](term:term-v296-aku), [エスパー](term:term-v299-esupaa), [じめん](term:term-v312-jimen) e [{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) ti fanno valutare la lotta; [それなら](term:term-e058-sorenara), [〜しておこう](term:term-e059-shiteokou) e `そうだ` decidono se la battuta reagisce, prepara, osserva o riporta.
