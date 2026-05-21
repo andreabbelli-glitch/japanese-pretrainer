@@ -19,38 +19,36 @@ summary: >-
   apprendimento, stato o risultato, così da orientare movimento e scelta di
   lotta.
 ---
-# Obiettivo
+# Movimento, conferme e sfide: leggere dove andare e che cosa sta succedendo
 
-Capire il giapponese che compare in esplorazione e movimento, battaglia. Qui contano le parole che descrivono azione, stato e conferma, più le frasi che ti dicono subito se stai leggendo una sfida, una richiesta o un tutorial.
+In *Pokémon Scarlet & Violet* il testo non ti accompagna solo nei dialoghi: spesso decide se stai per muoverti, entrare in una sfida, ricevere un consiglio o confermare un'azione delicata. Le parole di questa sezione sono piccole, ma cambiano subito il modo in cui leggi una schermata: direzione, distanza, pericolo, stato di battaglia e decisione vengono segnalati prima ancora che tu prema il pulsante.
 
-## Contesto
-
-In Scarlet / Violet alcune parole tornano come lessico riusabile, mentre nomi propri ed etichette di scena servono soprattutto a leggere la schermata senza doverla rimettere ogni volta in contesto.
+Il punto pratico è riconoscere chi sta chiedendo qualcosa, quale movimento viene descritto e se il gioco sta parlando di una scelta tua o di una situazione ormai stabilita. Quando queste forme compaiono insieme, la frase smette di essere una lista di parole e diventa una mappa operativa.
 
 ## Termini chiave
 
-- [謎](term:term-v376-nazo) — mistero
+- [{{謎|なぞ}}](term:term-v376-nazo) — mistero / cosa non ancora chiarita
 - [アドバイス](term:term-v377-adobaisu) — consiglio
 - [ねむり](term:term-v378-nemuri) — sonno
-- [周り](term:term-v379-mawari) — intorno
-- [近づく](term:term-v380-chikazu-ku) — avvicinarsi
-- [一瞬](term:term-v381-isshun) — un istante
-- [広い](term:term-v383-hiroi) — ampio / largo
-- [水上](term:term-v384-suijou) — sull'acqua
-- [一気に](term:term-v385-ikki-ni) — tutto d'un colpo
-- [強力](term:term-v386-kyouryoku) — potente
-- [大ジャンプ](term:term-v387-oojanpu) — super salto
-- [着く](term:term-v388-tsuku) — arrivare
-- [危ない](term:term-v389-abunai) — pericoloso
-- [結晶化](term:term-v390-kesshouka) — cristallizzazione
-- [育てる](term:term-v391-sodate-ru) — allenare / crescere
+- [{{周|まわ}}り](term:term-v379-mawari) — intorno / zona circostante
+- [{{近|ちか}}づく](term:term-v380-chikazu-ku) — avvicinarsi
+- [{{一瞬|いっしゅん}}](term:term-v381-isshun) — un istante
+- [{{広|ひろ}}い](term:term-v383-hiroi) — ampio / largo
+- [{{水上|すいじょう}}](term:term-v384-suijou) — sull'acqua
+- [{{一気|いっき}}に](term:term-v385-ikki-ni) — tutto d'un colpo
+- [{{強力|きょうりょく}}](term:term-v386-kyouryoku) — potente
+- [{{大|おお}}ジャンプ](term:term-v387-oojanpu) — super salto
+- [{{着|つ}}く](term:term-v388-tsuku) — arrivare
+- [{{危|あぶ}}ない](term:term-v389-abunai) — pericoloso
+- [{{結晶化|けっしょうか}}](term:term-v390-kesshouka) — cristallizzazione
+- [{{育|そだ}}てる](term:term-v391-sodate-ru) — allenare / far crescere
 
 ## Espressioni ricorrenti
 
-- [手加減しないよ](term:term-e071-tekagen-shinaiyo) — non mi tratterrò
+- [{{手加減|てかげん}}しないよ](term:term-e071-tekagen-shinaiyo) — non mi tratterrò
 - [〜してくれない？](term:term-e072-shitekurenai) — non è che potresti farlo?
-- [〜のやり方](term:term-e073-noyarikata) — come si fa
-- [本当に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) — sei davvero sicuro?
+- [〜のやり{{方|かた}}](term:term-e073-noyarikata) — come si fa / il modo di fare
+- [{{本当|ほんとう}}に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) — sei davvero sicuro?
 
 ## Pattern grammaticali chiave
 
@@ -62,23 +60,86 @@ In Scarlet / Violet alcune parole tornano come lessico riusabile, mentre nomi pr
 
 - [ほかくパワー](term:term-v374-hokakupawaa) — Catching Power
 - [ゼロゲート](term:term-v382-zerogeeto) — Zero Gate
-- [団ラッシュ](term:term-v392-danrasshu) — Team Star Barrage
+- [{{団|だん}}ラッシュ](term:term-v392-danrasshu) — Team Star Barrage
 
-## Spiegazione
+---
 
-[謎](term:term-v376-nazo) segnala un mistero o un punto non chiarito; [アドバイス](term:term-v377-adobaisu) ti avvisa che sta arrivando un consiglio o una dritta; [ねむり](term:term-v378-nemuri) indica la condizione di sonno in battaglia. Sono parole che non descrivono solo il tema generale: dicono che tipo di informazione stai leggendo.
+## 1. Movimento sul campo: distanza, area e arrivo
 
-Quando il testo guida il movimento, [周り](term:term-v379-mawari) ti fa controllare ciò che hai intorno, [近づく](term:term-v380-chikazu-ku) descrive l'avvicinamento, [一瞬](term:term-v381-isshun) o [一気に](term:term-v385-ikki-ni) indicano rapidità, [大ジャンプ](term:term-v387-oojanpu) nomina un salto potenziato e [着く](term:term-v388-tsuku) marca l'arrivo a destinazione. [広い](term:term-v383-hiroi), [水上](term:term-v384-suijou) e [危ない](term:term-v389-abunai) danno invece qualità della zona: ampia, sull'acqua o rischiosa.
+Quando il gioco guida l'esplorazione, molte frasi ruotano intorno a tre domande: dove guardare, come muoversi e quando l'azione è arrivata a destinazione. [{{周|まわ}}り](term:term-v379-mawari) non indica un luogo preciso come una città: apre la zona circostante, ciò che sta intorno al personaggio o al punto osservato. Per questo in un tutorial spinge a controllare l'ambiente vicino, non a cercare una meta lontana.
 
-In battaglia o gestione squadra, [強力](term:term-v386-kyouryoku) valuta la potenza di una mossa, [結晶化](term:term-v390-kesshouka) richiama la trasformazione cristallina della teracristallizzazione e [育てる](term:term-v391-sodate-ru) parla di far crescere un Pokémon nel tempo. Sono tre situazioni diverse: giudicare forza immediata, riconoscere una meccanica visiva, oppure investire nella crescita della squadra.
+[{{近|ちか}}づく](term:term-v380-chikazu-ku) aggiunge movimento verso qualcosa: `{{近|ちか}}い` è "vicino", mentre `づく` porta l'idea di diventare tale. Se una frase dice di [{{近|ちか}}づく](term:term-v380-chikazu-ku), il focus non è solo essere vicini, ma ridurre la distanza. [{{着|つ}}く](term:term-v388-tsuku), invece, marca il punto finale: il movimento è completo e il personaggio è arrivato.
 
-[手加減しないよ](term:term-e071-tekagen-shinaiyo) suona come una sfida diretta: "non avrò pietà". [〜してくれない？](term:term-e072-shitekurenai) è una richiesta morbida, più vicina a "non è che potresti...?". [本当に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) è la conferma forte che il gioco usa quando vuole sapere se sei davvero sicuro.
+[{{一瞬|いっしゅん}}](term:term-v381-isshun) e [{{一気|いっき}}に](term:term-v385-ikki-ni) parlano entrambi di rapidità, ma non nello stesso modo. [{{一瞬|いっしゅん}}](term:term-v381-isshun) è la durata brevissima, un momento quasi istantaneo; [{{一気|いっき}}に](term:term-v385-ikki-ni) è il modo dell'azione, fatta tutta insieme senza spezzarla in passaggi. In una frase di movimento, questa differenza decide se il testo insiste sul tempo breve o sullo slancio continuo.
 
-Sul piano grammaticale, [〜ことになる](grammar:grammar-g075-si-decide-che-finire-per) dice che qualcosa finisce per essere deciso o stabilito dall'esterno; [〜ことにする](grammar:grammar-g076-decidere-di-fare) dice che il parlante decide di farlo; [〜ようにする](grammar:grammar-g077-fare-in-modo-di) dice che cerca di fare in modo che succeda. Non sono formule astratte: cambiano il senso concreto tra decisione, conseguenza e intenzione.
+:::example_sentence
+jp: >-
+  {{一気|いっき}}に {{近|ちか}}づいて、ゼロゲートに {{着|つ}}く。
+translation_it: >-
+  Mi avvicino tutto d'un colpo e arrivo allo Zero Gate.
+:::
 
-[ほかくパワー](term:term-v374-hokakupawaa) nomina un bonus alla cattura, [ゼロゲート](term:term-v382-zerogeeto) un luogo specifico e [団ラッシュ](term:term-v392-danrasshu) una modalità di assalto legata al Team Star. Quando compaiono, distinguono bonus, luogo e sfida: tre funzioni diverse anche se tutte molto specifiche di Scarlet/Violet.
+#### 🗺️ Anatomia della frase
 
-## Esempi guidati
+- `{{一気|いっき}}に` -> modifica il modo dell'azione: non "per un istante", ma in un unico slancio.
+- `{{近|ちか}}づいて` -> forma in `-te`: l'avvicinamento prepara l'azione successiva.
+- `ゼロゲートに` -> `に` marca la destinazione dell'arrivo.
+- `{{着|つ}}く` -> chiude il movimento: il testo non descrive più il tragitto, ma il raggiungimento della meta.
+
+> [!NOTE]
+> **⚖️ Contrasto operativo:** [{{近|ちか}}づく](term:term-v380-chikazu-ku) è il processo di avvicinarsi; [{{着|つ}}く](term:term-v388-tsuku) è il risultato di essere arrivati. Se li confondi, leggi come conclusa un'azione che il gioco sta ancora chiedendo di fare.
+
+## 2. Terreno e rischio: ampiezza, acqua e salto
+
+Le parole che descrivono il terreno servono a decidere come attraversare l'area. [{{広|ひろ}}い](term:term-v383-hiroi) qualifica uno spazio ampio: non dice solo "grande", ma suggerisce una zona aperta, con distanza da coprire o elementi da cercare. [{{水上|すいじょう}}](term:term-v384-suijou) unisce `{{水|みず}}` e `{{上|じょう}}`: letteralmente è "sopra l'acqua", quindi in gioco punta a movimento o posizione su fiumi, laghi e mare.
+
+[{{大|おお}}ジャンプ](term:term-v387-oojanpu) combina il prefisso `{{大|おお}}` con `ジャンプ`: non è un salto qualsiasi, ma un salto potenziato o più alto del normale. [{{危|あぶ}}ない](term:term-v389-abunai) segnala il rischio collegato a quell'azione o a quella zona. Quando compare vicino a istruzioni di movimento, non è un commento emotivo generico: ti dice che una scelta può portare a cadere, entrare in pericolo o prendere una traiettoria sbagliata.
+
+:::example_sentence
+jp: >-
+  {{危|あぶ}}ないから {{大|おお}}ジャンプしない。
+translation_it: >-
+  Non faccio il super salto perché è pericoloso.
+:::
+
+#### 🗺️ Anatomia della frase
+
+- `{{危|あぶ}}ないから` -> `から` trasforma il pericolo nella ragione della scelta.
+- `{{大|おお}}ジャンプ` -> nome composto: il salto è potenziato, non un movimento base.
+- `しない` -> negazione di `する`: l'azione viene evitata.
+
+> [!NOTE]
+> **🧠 Gancio cognitivo:** Per [{{水上|すいじょう}}](term:term-v384-suijou), pensa alla mappa vista dall'alto: il personaggio non è "dentro l'acqua" come descrizione fisica, ma sopra una superficie d'acqua come zona attraversabile.
+
+## 3. Battaglia e squadra: stato, potenza e crescita
+
+In battaglia, [ねむり](term:term-v378-nemuri) indica lo stato di sonno: il Pokémon non sta solo "dormendo" nella scena, ma si trova in una condizione di combattimento che limita le azioni. [{{強力|きょうりょく}}](term:term-v386-kyouryoku) valuta invece la forza di una mossa, di un effetto o di un avversario; il kanji `{{強|きょう}}` porta l'idea di forza, `{{力|りょく}}` quella di potere o capacità.
+
+[{{結晶化|けっしょうか}}](term:term-v390-kesshouka) descrive il diventare cristallino: in *Scarlet & Violet* richiama subito la trasformazione visiva della Teracristallizzazione. La forma `〜{{化|か}}` è importante perché non nomina solo un oggetto cristallo, ma un cambiamento di stato. [{{育|そだ}}てる](term:term-v391-sodate-ru), invece, è un verbo di crescita causata: non "crescere" da solo, ma far crescere, allevare o allenare nel tempo.
+
+:::example_sentence
+jp: >-
+  {{強力|きょうりょく}}な わざで ポケモンが {{結晶化|けっしょうか}}する。
+translation_it: >-
+  Con una mossa potente il Pokémon si cristallizza.
+:::
+
+#### 🗺️ Anatomia della frase
+
+- `{{強力|きょうりょく}}な わざで` -> `な` collega l'aggettivo nominale al nome, mentre `で` indica il mezzo o la causa.
+- `ポケモンが` -> `が` marca il soggetto che subisce o manifesta il cambiamento.
+- `{{結晶化|けっしょうか}}する` -> `〜{{化|か}}する` trasforma un nome in verbo di cambiamento: "cristallizzarsi / diventare cristallino".
+
+> [!WARNING]
+> **⚖️ Contrasto operativo:** [{{育|そだ}}てる](term:term-v391-sodate-ru) è transitivo: il giocatore allena o fa crescere un Pokémon. Per "il Pokémon cresce" ti aspetteresti una forma come `{{育|そだ}}つ`. La particella ti aiuta: `ポケモンを{{育|そだ}}てる` mette il Pokémon come oggetto dell'allenamento.
+
+## 4. Sfide, richieste e conferme
+
+[{{手加減|てかげん}}しないよ](term:term-e071-tekagen-shinaiyo) è parlato da sfida. `{{手加減|てかげん}}` è il trattenersi, dosare la forza; `しない` lo nega, e `よ` spinge l'informazione verso l'interlocutore. La frase suona come "non mi tratterrò": chi parla annuncia che userà tutta la sua forza.
+
+[〜してくれない？](term:term-e072-shitekurenai) ha una postura quasi opposta. `くれる` presenta l'azione come qualcosa fatto per il parlante, e la forma negativa interrogativa ammorbidisce la richiesta: invece di ordinare, chiede se l'altro può fare quel favore. [〜のやり{{方|かた}}](term:term-e073-noyarikata) trasforma un'azione nel suo metodo: se prima c'è `{{回復|かいふく}}`, `{{回復|かいふく}}のやり{{方|かた}}` non è "il recupero", ma "come si fa il recupero".
+
+[{{本当|ほんとう}}に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) è la conferma forte. [{{本当|ほんとう}}に](term:term-e074-hontouni-yoroshiidesuka) aggiunge "davvero", `よろしいですか` è una forma cortese di "va bene?". In una UI appare quando l'azione potrebbe consumare una risorsa, cambiare stato o portarti oltre un punto di non ritorno.
 
 :::example_sentence
 jp: >-
@@ -87,12 +148,24 @@ translation_it: >-
   Non avrò pietà.
 :::
 
+#### 🗺️ Anatomia della frase
+
+- `{{手|て}}{{加減|かげん}}` -> letteralmente "regolazione della mano": in uso significa trattenersi o dosare la forza.
+- `しない` -> nega l'azione di trattenersi.
+- `よ` -> dà alla battuta un tono assertivo verso l'altro personaggio.
+
 :::example_sentence
 jp: >-
   {{少|すこ}}し {{近|ちか}}づいてくれない？
 translation_it: >-
   Puoi avvicinarti un po'?
 :::
+
+#### 🗺️ Anatomia della frase
+
+- `{{少|すこ}}し` -> attenua la richiesta: "un po'".
+- `{{近|ちか}}づいて` -> forma in `-te` dell'azione richiesta.
+- `くれない？` -> richiesta morbida: "non potresti farlo per me?".
 
 :::example_sentence
 jp: >-
@@ -108,34 +181,63 @@ translation_it: >-
   Sei davvero sicuro?
 :::
 
+> [!NOTE]
+> **⚖️ Contrasto operativo:** [{{手加減|てかげん}}しないよ](term:term-e071-tekagen-shinaiyo) spinge verso lo scontro; [〜してくれない？](term:term-e072-shitekurenai) apre una richiesta; [{{本当|ほんとう}}に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) ferma l'azione e chiede conferma. Tre frasi brevi, tre posture completamente diverse.
+
+## 5. Decisione grammaticale: cosa succede, cosa scegli, cosa fai in modo che accada
+
+I tre pattern con `こと` e `よう` separano decisione esterna, scelta personale e impegno pratico. [～ことになる](grammar:grammar-g075-si-decide-che-finire-per) presenta l'evento come risultato stabilito dalla situazione, da una regola o da qualcun altro: "si finisce per", "viene deciso che". [～ことにする](grammar:grammar-g076-decidere-di-fare) porta invece la decisione sul soggetto: qualcuno sceglie deliberatamente di fare quella cosa.
+
+[～ようにする](grammar:grammar-g077-fare-in-modo-di) non dice semplicemente "decido". Dice che organizzo il comportamento perché un risultato diventi possibile o abituale. In tutorial e dialoghi è il pattern naturale per "fai in modo di...", soprattutto quando il gioco vuole spingerti a controllare, ricordare o non dimenticare un'azione.
+
 :::example_sentence
 jp: >-
-  {{一気|いっき}}に {{近|ちか}}づいて、 ゼロゲートに {{着|つ}}く。
+  {{周|まわ}}りを {{見|み}}ることにする。
 translation_it: >-
-  Mi avvicino tutto d'un colpo e arrivo allo Zero Gate.
+  Decido di guardarmi intorno.
+:::
+
+#### 🗺️ Anatomia della frase
+
+- `{{周|まわ}}りを` -> oggetto dell'osservazione: la zona intorno a te.
+- `{{見|み}}る` -> verbo in forma dizionario prima di `こと`.
+- `ことにする` -> decisione del soggetto: scelgo di fare quell'azione.
+
+> [!NOTE]
+> **⚖️ Contrasto operativo:** `{{見|み}}ることになる` suona come "si finisce per guardare / viene stabilito che si guarderà"; `{{見|み}}ることにする` è "decido di guardare"; `{{見|み}}るようにする` è "faccio in modo di guardare", quindi costruisce un'abitudine o una cautela.
+
+## Esempi guidati di riepilogo
+
+Le stesse forme si combinano bene quando la scena passa da esplorazione a battaglia e poi a conferma:
+
+:::example_sentence
+jp: >-
+  {{広|ひろ}}い {{水上|すいじょう}}を {{一気|いっき}}に {{進|すす}}む。
+translation_it: >-
+  Avanzo tutto d'un colpo su un'ampia zona d'acqua.
 :::
 
 :::example_sentence
 jp: >-
-  {{危|あぶ}}ないから {{大|おお}}ジャンプしない。
+  ねむりの ポケモンを {{育|そだ}}てる。
 translation_it: >-
-  Non faccio il super salto perché è pericoloso.
+  Alleno un Pokémon in stato di sonno.
 :::
 
 :::example_sentence
 jp: >-
-  {{強力|きょうりょく}}な わざで ポケモンが {{結晶化|けっ.しょう.か}}する。
+  {{謎|なぞ}}の {{結晶化|けっしょうか}}について アドバイスを {{聞|き}}く。
 translation_it: >-
-  Con una mossa potente il Pokémon si cristallizza.
+  Ascolto un consiglio sulla misteriosa cristallizzazione.
 :::
 
 :::example_sentence
 jp: >-
-  ポケモンを {{育|そだ}}てる。
+  {{団|だん}}ラッシュの やり{{方|かた}}を {{見|み}}てから、{{本当|ほんとう}}に よろしいですか？
 translation_it: >-
-  Alleno un Pokémon.
+  Dopo aver visto come si fa il Team Star Barrage, sei davvero sicuro?
 :::
 
 ## Nota finale
 
-Quando incontri queste schermate o battute, controlla la funzione della frase: アドバイス introduce un consiglio, してくれない？ chiede un favore, 本当に よろしいですか？ ferma l'azione per conferma, ことにする marca una decisione.
+In questa parte del gioco il testo alterna coordinate e postura: [{{周|まわ}}り](term:term-v379-mawari), [{{近|ちか}}づく](term:term-v380-chikazu-ku) e [{{着|つ}}く](term:term-v388-tsuku) ti dicono come muoverti; [ねむり](term:term-v378-nemuri), [{{強力|きょうりょく}}](term:term-v386-kyouryoku) e [{{結晶化|けっしょうか}}](term:term-v390-kesshouka) leggono lo stato di battaglia; [〜してくれない？](term:term-e072-shitekurenai) e [{{本当|ほんとう}}に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) chiariscono se il testo sta chiedendo un favore o una conferma prima dell'azione.
