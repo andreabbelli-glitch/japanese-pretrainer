@@ -36,15 +36,6 @@ casi, particelle come `から`, `に` e l'espressione
 [{{置|お}}いてもよい](grammar:grammar-temoyoi) decidono che cosa è obbligatorio,
 che cosa è facoltativo e quale zona cambia.
 
-:::image
-src: assets/cards/live-duel/do-sumonma.jpg
-alt: "Do:Sumonma card."
-caption: >-
-  [ド:スモンマー](term:term-do-sumonma) combina le keyword
-  [ブロッカー](term:term-blocker) e
-  [アビス・メクレイド](term:term-abyss-mekureido) con una riga di scelta:
-  `{{次|つぎ}}のうちいずれか{{1|ひと}}つを{{選|えら}}ぶ`.
-:::
 
 ## Termini chiave
 
@@ -76,6 +67,16 @@ caption: >-
 
 ---
 
+:::image
+src: assets/cards/live-duel/do-sumonma.jpg
+alt: "Do:Sumonma card."
+caption: >-
+  [ド:スモンマー](term:term-do-sumonma) combina le keyword
+  [ブロッカー](term:term-blocker) e
+  [アビス・メクレイド](term:term-abyss-mekureido) con una riga di scelta:
+  `{{次|つぎ}}のうちいずれか{{1|ひと}}つを{{選|えら}}ぶ`.
+:::
+
 ## 1. La riga che apre la scelta
 
 La prima frase crea il telaio dell'effetto. `このクリーチャーが` mette
@@ -99,11 +100,11 @@ reveal_mode: sentence
 #### 🗺️ Anatomia della frase
 
 *   `このクリーチャーが` — soggetto della condizione: l'effetto parla di questa creatura, non di una creatura qualsiasi.
-*   `[{{出|で}}た{{時|とき}}](grammar:grammar-toki)` — timing di ingresso: la scelta si apre quando la creatura è entrata.
-*   `[{{次|つぎ}}の](grammar:grammar-tsugi-no)` — puntatore in avanti: il testo ti prepara a leggere le righe successive come opzioni.
-*   `[～のうち](grammar:grammar-no-uchi)` — confine del gruppo: quelle righe diventano l'insieme chiuso da cui scegliere.
-*   `[いずれか](grammar:grammar-izureka){{1|ひと}}つを` — quantità selezionabile: una qualsiasi tra le alternative, ma una sola.
-*   `[{{選|えら}}ぶ](term:term-erabu)` — verbo operativo finale: non osservi una lista, devi compiere una scelta.
+*   [{{出|で}}た{{時|とき}}](grammar:grammar-toki) — timing di ingresso: la scelta si apre quando la creatura è entrata.
+*   [{{次|つぎ}}の](grammar:grammar-tsugi-no) — puntatore in avanti: il testo ti prepara a leggere le righe successive come opzioni.
+*   [～のうち](grammar:grammar-no-uchi) — confine del gruppo: quelle righe diventano l'insieme chiuso da cui scegliere.
+*   [いずれか](grammar:grammar-izureka){{1|ひと}}つを — quantità selezionabile: una qualsiasi tra le alternative, ma una sola.
+*   [{{選|えら}}ぶ](term:term-erabu) — verbo operativo finale: non osservi una lista, devi compiere una scelta.
 
 #### ⚖️ Contrasto operativo: elenco aperto vs insieme chiuso
 
@@ -147,12 +148,12 @@ reveal_mode: sentence
 #### 🗺️ Anatomia della frase
 
 *   `カードを{{4枚|よんまい}}` — oggetto e quantità: sono quattro carte, non fino a quattro e non una carta nominata.
-*   `{{自分|じぶん}}の[{{墓地|ぼち}}](term:term-graveyard)から` — origine: le carte partono dal tuo cimitero, marcato da `から`.
+*   {{自分|じぶん}}の[{{墓地|ぼち}}](term:term-graveyard)から — origine: le carte partono dal tuo cimitero, marcato da から.
 *   `{{好|す}}きな{{順序|じゅんじょ}}で` — modo dell'azione: puoi decidere l'ordine in cui le carte vengono rimesse.
-*   `[{{山札|やまふだ}}](term:term-deck)の{{下|した}}に` — destinazione precisa: non semplicemente nel deck, ma sotto il deck.
-*   `[{{置|お}}いてもよい](grammar:grammar-temoyoi)` — permesso facoltativo: l'effetto ti autorizza a farlo, non ti obbliga.
+*   [{{山札|やまふだ}}](term:term-deck)の{{下|した}}に — destinazione precisa: non semplicemente nel deck, ma sotto il deck.
+*   [{{置|お}}いてもよい](grammar:grammar-temoyoi) — permesso facoltativo: l'effetto ti autorizza a farlo, non ti obbliga.
 *   `そうしたら` — ponte condizionale: solo se metti davvero le carte sotto il deck, arriva l'azione successiva.
-*   `[アビス・メクレイド](term:term-abyss-mekureido){{8|はち}}する` — payoff: la keyword si attiva con il numero {{8|はち}} come limite operativo.
+*   [アビス・メクレイド](term:term-abyss-mekureido){{8|はち}}する — payoff: la keyword si attiva con il numero {{8|はち}} come limite operativo.
 
 #### ⚖️ Contrasto operativo: libertà di ordine vs libertà di quantità
 
@@ -167,8 +168,8 @@ eseguire o non eseguire l'intero movimento.
 La seconda alternativa è più corta, ma cambia direzione. Invece di partire dal
 [{{墓地|ぼち}}](term:term-graveyard), parte dalla cima del
 [{{山札|やまふだ}}](term:term-deck). Il chunk
-`[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から` è il punto da cui prendi
-le carte; `[{{墓地|ぼち}}](term:term-graveyard)に` è il punto in cui finiscono.
+[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から è il punto da cui prendi
+le carte; [{{墓地|ぼち}}](term:term-graveyard)に è il punto in cui finiscono.
 La frase non contiene [{{置|お}}いてもよい](grammar:grammar-temoyoi), quindi il
 verbo [{{置|お}}く](term:term-oku) chiude l'azione come istruzione diretta.
 
@@ -183,18 +184,18 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `{{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から` — origine: dalla cima del tuo deck.
+*   {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から — origine: dalla cima del tuo deck.
 *   `{{4枚|よんまい}}を` — oggetto contato: quattro carte vengono trattate come il blocco da muovere.
-*   `[{{墓地|ぼち}}](term:term-graveyard)に` — destinazione: il cimitero è segnato da `に`.
-*   `[{{置|お}}く](term:term-oku)` — verbo di collocazione: il risultato è mettere quelle carte nella zona indicata.
+*   [{{墓地|ぼち}}](term:term-graveyard)に — destinazione: il cimitero è segnato da に.
+*   [{{置|お}}く](term:term-oku) — verbo di collocazione: il risultato è mettere quelle carte nella zona indicata.
 
 #### ⚖️ Contrasto operativo: `から` e `に` cambiano la freccia del movimento
 
-Nella prima alternativa, `[{{墓地|ぼち}}](term:term-graveyard)から` apre il
-movimento e `[{{山札|やまふだ}}](term:term-deck)の{{下|した}}に` lo chiude sotto
+Nella prima alternativa, [{{墓地|ぼち}}](term:term-graveyard)から apre il
+movimento e [{{山札|やまふだ}}](term:term-deck)の{{下|した}}に lo chiude sotto
 il deck. Nella seconda, il percorso si rovescia:
-`[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から` parte dalla cima del deck e
-`[{{墓地|ぼち}}](term:term-graveyard)に` chiude nel cimitero. Le zone sono le
+[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から parte dalla cima del deck e
+[{{墓地|ぼち}}](term:term-graveyard)に chiude nel cimitero. Le zone sono le
 stesse, ma le particelle ti dicono quale direzione sta prendendo l'effetto.
 
 ## 4. Keyword e numero: leggere il payoff senza perdere la grammatica
@@ -205,7 +206,7 @@ keyword di ruolo difensivo e non richiede una frase lunga da risolvere.
 una catena condizionale. Il numero {{8|はち}} non è un contatore di carte mosse:
 si lega alla keyword e definisce il limite operativo del Mekureido.
 
-Quando leggi `そうしたら、[アビス・メクレイド](term:term-abyss-mekureido){{8|はち}}する`,
+Quando leggi そうしたら、[アビス・メクレイド](term:term-abyss-mekureido){{8|はち}}する,
 il punto grammaticale è `そうしたら`. `そう` riprende l'azione appena descritta,
 mentre `したら` la tratta come condizione compiuta. Il payoff non parte perché
 hai scelto la prima opzione in astratto: parte se hai davvero messo le
@@ -267,10 +268,10 @@ reveal_mode: sentence
 ## Nota finale
 
 [ド:スモンマー](term:term-do-sumonma) si legge separando tre piani: la riga
-`[{{次|つぎ}}の](grammar:grammar-tsugi-no)[～のうち](grammar:grammar-no-uchi)[いずれか](grammar:grammar-izureka){{1|ひと}}つを[{{選|えら}}ぶ](term:term-erabu)`
+[{{次|つぎ}}の](grammar:grammar-tsugi-no)[～のうち](grammar:grammar-no-uchi)[いずれか](grammar:grammar-izureka){{1|ひと}}つを[{{選|えら}}ぶ](term:term-erabu)
 crea una scelta singola, [{{置|お}}いてもよい](grammar:grammar-temoyoi) rende
 facoltativo il movimento dal cimitero al fondo del deck, e
-`[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から` più
-`[{{墓地|ぼち}}](term:term-graveyard)に` rovesciano la direzione nell'altra
+[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から più
+[{{墓地|ぼち}}](term:term-graveyard)に rovesciano la direzione nell'altra
 opzione. Quando le particelle di origine e destinazione sono chiare, anche una
 carta con due alternative smette di sembrare una massa unica di testo.

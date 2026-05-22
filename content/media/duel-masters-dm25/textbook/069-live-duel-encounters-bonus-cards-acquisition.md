@@ -30,27 +30,18 @@ Il nodo di lettura è la differenza di ruolo tra i verbi. [{{入手|にゅうし
 e [{{生成|せいせい}}](term:term-craft) indicano due strade possibili; [{{獲得|かくとく}}](term:term-kakutoku)
 chiude la frase dicendo che il bonus viene effettivamente ottenuto.
 
-:::image
-src: assets/ui/bonus-cards-acquisition.png
-alt: "Testo UI acquisizione carte bonus."
-caption: >-
-  La schermata collega パックから{{入手|にゅうしゅ}} e {{生成|せいせい}}することで
-  al risultato finale: {{特典|とくてん}}カードを{{獲得|かくとく}}します.
-:::
 
 ## Termini chiave
 
 - [{{入手|にゅうしゅ}}](term:term-nyuushu) — ottenere / entrare in possesso
 - [{{生成|せいせい}}](term:term-craft) — generare, craftare una carta
 - [{{下記|かき}}](term:term-kaki) — quanto indicato qui sotto
-- [{{表示|ひょうじ}}](term:term-hyouji) — visualizzazione / mostrare a schermo
 - [{{表示|ひょうじ}}している](term:term-hyoujishiteiru) — è visualizzato / è mostrato a schermo
 - [{{特典|とくてん}}](term:term-tokuten) — bonus, ricompensa speciale
 - [{{獲得|かくとく}}](term:term-kakutoku) — ottenere come risultato registrato
 
 ## Espressioni ricorrenti
 
-- [パックから{{入手|にゅうしゅ}}](term:term-pack-kara-nyuushu) — ottenere da un pack
 - [{{下記|かき}}に{{表示|ひょうじ}}している](term:term-kaki-ni-hyoujishiteiru) — visualizzato qui sotto
 - [{{特典|とくてん}}カードを{{獲得|かくとく}}します](term:term-tokuten-card-wo-kakutoku-shimasu) — otterrai le carte bonus
 
@@ -68,6 +59,14 @@ caption: >-
 - {{勝利|しょうり}}のガイアール・カイザー — nome di una carta bonus mostrata nella fascia
 
 ---
+
+:::image
+src: assets/ui/bonus-cards-acquisition.png
+alt: "Testo UI acquisizione carte bonus."
+caption: >-
+  La schermata collega パックから{{入手|にゅうしゅ}} e {{生成|せいせい}}することで
+  al risultato finale: {{特典|とくてん}}カードを{{獲得|かくとく}}します.
+:::
 
 ## 1. Due strade verso lo stesso risultato
 
@@ -99,7 +98,7 @@ al gruppo di carte che sarà ottenuto.
 #### 🗺️ Anatomia della frase
 
 *   `パックから` — fonte di partenza: la carta arriva "da un pack".
-*   `[{{入手|にゅうしゅ}}](term:term-nyuushu)、または[{{生成|せいせい}}](term:term-craft)することで` — mezzo: due azioni alternative producono lo stesso esito.
+*   [{{入手|にゅうしゅ}}](term:term-nyuushu)、または[{{生成|せいせい}}](term:term-craft)することで — mezzo: due azioni alternative producono lo stesso esito.
 *   [または](grammar:grammar-matawa) — separa opzioni equivalenti, non due passaggi obbligatori.
 *   `することで` — prende il verbo prima di `こと` e lo trasforma in "tramite il fatto di...".
 
@@ -117,22 +116,22 @@ modifica direttamente [{{特典|とくてん}}](term:term-tokuten)カード. La 
 qui sotto". In giapponese, la descrizione viene prima del nome, quindi devi
 aspettare `カード` per capire qual è il sostantivo modificato.
 
-[{{下記|かき}}](term:term-kaki) è formale: `{{下|した}}` richiama il basso, `{{記|き}}`
+[{{下記|かき}}](term:term-kaki) è formale: {{下|した}} richiama il basso, {{記|き}}
 richiama ciò che è scritto o indicato. In una schermata non serve immaginarlo
 come una nota a piè di pagina: è semplicemente il riquadro sottostante, quello
 dove compaiono `{{勝利|しょうり}}のプリンプリン`,
 `{{勝利|しょうり}}のリュウセイ・カイザー` e
 `{{勝利|しょうり}}のガイアール・カイザー`.
 
-[{{表示|ひょうじ}}している](term:term-hyoujishiteiru) usa `している` in valore
+[{{表示|ひょうじ}}している](term:term-hyoujishiteiru) usa している in valore
 stativo. Non descrive l'animazione del mostrare, ma lo stato risultante: quelle
 carte sono già visibili a schermo mentre leggi il messaggio.
 
 #### 🗺️ Anatomia del gruppo nominale
 
-*   `[{{下記|かき}}](term:term-kaki)に` — luogo indicato: "nella parte qui sotto".
-*   `[{{表示|ひょうじ}}している](term:term-hyoujishiteiru)` — stato visibile: qualcosa si trova mostrato a schermo.
-*   `[{{特典|とくてん}}](term:term-tokuten)カード` — nome finale: il gruppo descritto è composto da carte bonus.
+*   [{{下記|かき}}](term:term-kaki)に — luogo indicato: "nella parte qui sotto".
+*   [{{表示|ひょうじ}}している](term:term-hyoujishiteiru) — stato visibile: qualcosa si trova mostrato a schermo.
+*   [{{特典|とくてん}}](term:term-tokuten)カード — nome finale: il gruppo descritto è composto da carte bonus.
 
 #### 🧠 Gancio cognitivo
 
@@ -158,9 +157,9 @@ del percorso, poi del premio ottenuto.
 
 #### ⚖️ Contrasto operativo: percorso e risultato
 
-*   `パックから[{{入手|にゅうしゅ}}](term:term-nyuushu)` — percorso da pack: la carta arriva dallo sbustamento.
-*   `[{{生成|せいせい}}](term:term-craft)することで` — percorso da crafting: la carta viene creata tramite risorse.
-*   `[{{特典|とくてん}}カードを{{獲得|かくとく}}します](term:term-tokuten-card-wo-kakutoku-shimasu)` — risultato: le carte bonus indicate diventano tue.
+*   パックから[{{入手|にゅうしゅ}}](term:term-nyuushu) — percorso da pack: la carta arriva dallo sbustamento.
+*   [{{生成|せいせい}}](term:term-craft)することで — percorso da crafting: la carta viene creata tramite risorse.
+*   [{{特典|とくてん}}カードを{{獲得|かくとく}}します](term:term-tokuten-card-wo-kakutoku-shimasu) — risultato: le carte bonus indicate diventano tue.
 
 ## Esempi guidati di riepilogo
 
@@ -196,7 +195,7 @@ reveal_mode: sentence
 ## Nota finale
 
 Questa schermata diventa leggibile se segui l'ordine della frase: `から` dà la
-fonte, [または](grammar:grammar-matawa) apre l'alternativa, `することで` trasforma
+fonte, [または](grammar:grammar-matawa) apre l'alternativa, することで trasforma
 l'azione in mezzo, [{{下記|かき}}に{{表示|ひょうじ}}している](term:term-kaki-ni-hyoujishiteiru)
 identifica le carte già visibili e [{{獲得|かくとく}}](term:term-kakutoku)します
 chiude con il risultato. Quando ritrovi una UI simile, separa percorso e premio:

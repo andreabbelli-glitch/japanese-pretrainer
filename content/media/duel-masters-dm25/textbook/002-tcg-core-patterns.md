@@ -42,6 +42,8 @@ condizione e che cosa resta vero anche se una carta si sposta.
   applicare l'azione.
 - [{{離|はな}}れる](term:term-hanareru) — lasciare una zona; il focus è sul fatto
   che la carta non si trova più dov'era.
+- [{{戻|もど}}す](term:term-modosu) — riportare una carta in una zona indicata,
+  spesso mano o mazzo.
 - [{{残|のこ}}る](term:term-nokoru) — restare nella zona o nello stato corrente
   nonostante un altro evento.
 - [{{扱|あつか}}う](term:term-atsukau) — trattare o contare qualcosa come una
@@ -49,6 +51,8 @@ condizione e che cosa resta vero anche se una carta si sposta.
 - [{{効果|こうか}}](term:term-effect) — il blocco operativo che produce il
   risultato; `この{{効果|こうか}}` punta a quell'effetto specifico, non alla carta
   intera.
+- [クリーチャー](term:term-creature) — corpo che resta in battle zone e può
+  attaccare, bloccare o essere scelto.
 
 ## Espressioni ricorrenti
 
@@ -68,17 +72,24 @@ condizione e che cosa resta vero anche se una carta si sposta.
 
 ## Pattern grammaticali chiave
 
-- [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki)
-- [～てもよい](grammar:grammar-temoyoi)
-- [～なければ ... ない](grammar:grammar-nakereba)
-- [～ていれば](grammar:grammar-teireba)
-- [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou)
-- [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing)
+- [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki) — momento in cui un
+  trigger controlla o fa partire un effetto
+- [～てもよい](grammar:grammar-temoyoi) — permesso: puoi fare l'azione, ma non
+  sei obbligato
+- [～なければ ... ない](grammar:grammar-nakereba) — condizione negativa forte:
+  se manca X, l'effetto non vale
+- [～ていれば](grammar:grammar-teireba) — stato già in corso preso come
+  condizione del testo
+- [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou) — soglia
+  numerica: al massimo / almeno
+- [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) — finestra
+  temporale all'inizio o alla fine di un turno
 
-## Etichette operative da riconoscere
+## Etichette da riconoscere
 
-- [{{山札|やまふだ}}](term:term-deck) — il mazzo; con `の{{上|うえ}}から` indica
+- [{{山札|やまふだ}}](term:term-deck) — il mazzo; con の{{上|うえ}}から indica
   la cima come punto di partenza.
+- [バトルゾーン](term:term-battle-zone) — zona in cui le creature sono in campo.
 - [{{墓地|ぼち}}](term:term-graveyard) — il cimitero; spesso è destinazione o
   fonte di recupero.
 - [{{手札|てふだ}}](term:term-hand) — la mano; quando qualcosa vi entra, il testo
@@ -91,8 +102,15 @@ condizione e che cosa resta vero anche se una carta si sposta.
 - [{{攻撃|こうげき}}](term:term-attack), [{{破壊|はかい}}](term:term-destroy) e
   [{{重|かさ}}ねる](term:term-kasaneru) — azioni che trasformano un timing in
   conseguenza concreta.
+- [アビス](term:term-abyss), [{{侵略|しんりゃく}}](term:term-invasion),
+  [W・ブレイカー](term:term-w-breaker) e [コマンド](term:term-command) —
+  keyword o famiglie che cambiano quali righe del rules text diventano operative.
+- [{{合計|ごうけい}}](term:term-goukei) — somma usata come soglia o criterio di
+  scelta.
 
 ---
+
+[{{効果|こうか}}](term:term-effect), [パワー](term:term-power), [タップ](term:term-tap) e [アンタップ](term:term-untap) sono i quattro segnali da tenere separati: effetto, valore numerico, stato ruotato e stato ripristinato non descrivono lo stesso livello della carta.
 
 ## 1. Trigger e timing: prima capisci quando parla la carta
 
@@ -108,8 +126,8 @@ procedura nel punto sbagliato della partita.
   leggere ciò che viene dopo.
 - [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) non parla di un
   evento qualunque, ma di una finestra del turno. `{{自分|じぶん}}のターンのはじめに`
-  sposta l'effetto all'inizio del tuo turno; `このクリーチャーの{{最初|さいしょ}}の
-  {{攻撃|こうげき}}の{{終|お}}わりに` lo colloca alla fine del primo attacco di
+  sposta l'effetto all'inizio del tuo turno; このクリーチャーの{{最初|さいしょ}}の
+  {{攻撃|こうげき}}の{{終|お}}わりに lo colloca alla fine del primo attacco di
   quella creatura. Il testo non ti sta dicendo solo "dopo", ma quale finestra
   della procedura usare.
 
@@ -130,15 +148,15 @@ reveal_mode: sentence
 
 *   `このクリーチャーが` ➔ **Soggetto del trigger**: è questa creatura, non una
     creatura qualsiasi, a produrre la finestra di attivazione.
-*   `[バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)` ➔
+*   [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru) ➔
     **Evento già avvenuto**: la creatura è entrata; il testo successivo parte
     da quel fatto.
-*   `[{{時|とき}}](grammar:grammar-toki)` ➔ **Cerniera temporale**: tutto ciò
+*   [{{時|とき}}](grammar:grammar-toki) ➔ **Cerniera temporale**: tutto ciò
     che segue va risolto quando quel momento si verifica.
-*   `[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{1枚目|いちまいめ}}を` ➔
+*   [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{1枚目|いちまいめ}}を ➔
     **Fonte e oggetto**: non una carta a scelta, ma la prima dalla cima del
     mazzo.
-*   `[{{墓地|ぼち}}](term:term-graveyard)に[{{置|お}}く](term:term-oku)` ➔
+*   [{{墓地|ぼち}}](term:term-graveyard)に[{{置|お}}く](term:term-oku) ➔
     **Destinazione e azione**: la carta viene messa nel cimitero.
 
 #### ⚖️ Contrasto operativo: trigger non vuol dire effetto già risolto
@@ -164,7 +182,7 @@ un seguito che dipende dal primo passo.
   fai A, poi leggi B.
 - [そうしたら](grammar:grammar-soushitara) è più vincolante: rimanda a
   "se hai fatto così". Quando il primo blocco è opzionale con
-  [～てもよい](grammar:grammar-temoyoi), `そうしたら` impedisce di prendere il
+  [～てもよい](grammar:grammar-temoyoi), そうしたら impedisce di prendere il
   secondo risultato se non hai eseguito davvero il primo passo.
 - [～てもよい](grammar:grammar-temoyoi) marca una possibilità concessa al
   giocatore. Non rende automaticamente opzionale tutto il resto della carta:
@@ -191,7 +209,7 @@ reveal_mode: sentence
     il testo prende quattro carte dalla cima del mazzo.
 *   `{{墓地|ぼち}}に{{置|お}}く` ➔ **Prima istruzione completa**: quelle carte
     vanno nel cimitero.
-*   `[その{{後|あと}}](grammar:grammar-sonoato)` ➔ **Sequenza ordinata**: il
+*   [その{{後|あと}}](grammar:grammar-sonoato) ➔ **Sequenza ordinata**: il
     blocco successivo parte dopo la prima istruzione.
 *   `コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}` ➔ **Filtro e quantità**:
     l'oggetto valido è un Abyss di costo 4 o inferiore, uno solo.
@@ -217,7 +235,7 @@ reveal_mode: sentence
 
 *   `{{置|お}}いてもよい` ➔ **Scelta locale**: il primo movimento di zona è
     permesso, non obbligatorio.
-*   `[そうしたら](grammar:grammar-soushitara)` ➔ **Dipendenza dal passo scelto**:
+*   [そうしたら](grammar:grammar-soushitara) ➔ **Dipendenza dal passo scelto**:
     il seguito si apre solo se hai davvero messo le carte nel cimitero.
 *   `アビスを{{1枚|いちまい}}` ➔ **Oggetto recuperabile**: il testo restringe il
     recupero a una carta Abyss.
@@ -303,7 +321,7 @@ reveal_mode: sentence
 
 *   `このクリーチャーが{{離|はな}}れる{{時|とき}}` ➔ **Evento minacciato**: la creatura
     sta per lasciare la zona.
-*   `[かわりに](grammar:grammar-kawarini)` ➔ **Sostituzione**: il testo prepara
+*   [かわりに](grammar:grammar-kawarini) ➔ **Sostituzione**: il testo prepara
     un'alternativa al movimento appena descritto.
 *   `{{手札|てふだ}}を{{2枚|にまい}}{{捨|す}}ててもよい` ➔ **Costo facoltativo**:
     puoi scartare due carte dalla mano per prendere il ramo sostitutivo.
@@ -350,7 +368,7 @@ reveal_mode: sentence
     il controllo ammette creature oscure oppure Tamashido oscuri.
 *   `{{合計|ごうけい}}{{4|よっ}}つ{{以上|いじょう}}` ➔ **Soglia aggregata**: il
     numero richiesto è il totale delle due categorie, non quattro per ciascuna.
-*   `[なければ](grammar:grammar-nakereba)` ➔ **Condizione negativa**: il blocco
+*   [なければ](grammar:grammar-nakereba) ➔ **Condizione negativa**: il blocco
     successivo vale quando la soglia non è raggiunta.
 *   `クリーチャーとして{{扱|あつか}}わない` ➔ **Risultato di status**: la carta non
     viene contata come creatura.
@@ -390,7 +408,7 @@ numeri sono spesso il confine tra target valido e target illegale.
   "meno di 4". `{{合計|ごうけい}}{{4|よっ}}つ{{以上|いじょう}}` comprende il
   totale 4; non richiede 5 o più.
 - [{{合計|ごうけい}}](term:term-goukei) aggrega il conteggio. Se due categorie
-  sono collegate da [または](grammar:grammar-matawa), `{{合計|ごうけい}}` ti dice
+  sono collegate da [または](grammar:grammar-matawa), {{合計|ごうけい}} ti dice
   di sommarle nello stesso controllo.
 - [～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de)
   esclude un mezzo, non un risultato. In
@@ -434,7 +452,7 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[ただし](grammar:grammar-tadashi)` ➔ **Limitazione finale**: il testo sta
+*   [ただし](grammar:grammar-tadashi) ➔ **Limitazione finale**: il testo sta
     correggendo il raggio dell'effetto precedente.
 *   `コストは` ➔ **Oggetto della restrizione**: il limite riguarda il costo, non
     la carta intera.
@@ -477,7 +495,7 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{侵略|しんりゃく}}](term:term-invasion)：{{火|ひ}}のコマンド` ➔ **Nome e
+*   [{{侵略|しんりゃく}}](term:term-invasion)：{{火|ひ}}のコマンド ➔ **Nome e
     requisito**: la keyword è Invasion, valida per un comando di fuoco.
 *   `{{自分|じぶん}}の{{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}` ➔
     **Timing della parentesi**: il momento è l'attacco del tuo comando di fuoco.

@@ -68,6 +68,8 @@ cadere.
 
 ---
 
+[～をタッチする](grammar:grammar-wo-tacchi-suru) è la formula tattile della UI: il nome prima di `を` è l'elemento da premere, non un luogo da raggiungere.
+
 ## 1. Gauge e minimappa: la battaglia come frase di stato
 
 La prima opposizione da leggere è
@@ -109,12 +111,13 @@ translation_it: >-
 *   `{{無理|むり}}に{{攻|せ}}めず` ➔ **Azione evitata** (`～ず` nega il forzare l'attacco e prepara la scelta alternativa).
 *   `{{戦艦|せんかん}}の{{防衛|ぼうえい}}を{{優先|ゆうせん}}します` ➔ **Priorità operativa** (`を` marca ciò che viene portato in cima: difendere la nave, non inseguire un duello locale).
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** la gauge non è "HP del Gundam che stai guardando".
-> Una unità può vincere il combattimento davanti a te mentre la
-> [{{戦艦|せんかん}}](term:term-warship) perde abbastanza resistenza da chiudere il
-> match. Quando la gauge è bassa, la schermata va letta dagli obiettivi verso le
-> unità, non il contrario.
+#### ⚖️ Contrasto operativo
+
+La gauge non è "HP del Gundam che stai guardando".
+Una unità può vincere il combattimento davanti a te mentre la
+[{{戦艦|せんかん}}](term:term-warship) perde abbastanza resistenza da chiudere il
+match. Quando la gauge è bassa, la schermata va letta dagli obiettivi verso le
+unità, non il contrario.
 
 ## 2. Pannelli unità: dal tocco alla posizione sulla mappa
 
@@ -129,7 +132,7 @@ Le tre azioni base non consumano tutte la stessa risorsa mentale.
 
 *   [{{出撃|しゅつげき}}](term:term-sortie) chiede posizione e [コスト](term:term-cost): paghi per mettere presenza reale sul campo. Se la corsia sbagliata è scoperta, una sortita corretta vale più di una unità forte nel punto morto.
 *   [アビリティ](term:term-ability) riguarda l'effetto della MS. Il katakana sembra trasparente, ma in questa UI non è una qualità passiva: è un comando che spesso richiede costo, bersaglio o timing.
-*   [{{作戦|さくせん}}カード](term:term-tactics-card) non è una carta MS o PL: è supporto digitale. `{{作戦|さくせん}}` porta l'idea di piano operativo, quindi va letta come intervento sul flusso della battaglia, non come nuova unità in campo.
+*   [{{作戦|さくせん}}カード](term:term-tactics-card) non è una carta MS o PL: è supporto digitale. {{作戦|さくせん}} porta l'idea di piano operativo, quindi va letta come intervento sul flusso della battaglia, non come nuova unità in campo.
 
 :::example_sentence
 jp: >-
@@ -145,16 +148,18 @@ translation_it: >-
 *   `タッチすると` ➔ **Trigger UI** (`～と` presenta la conseguenza prevedibile del tocco).
 *   `ユニットの{{配置|はいち}}{{先|さき}}を{{選|えら}}べます` ➔ **Risultato sbloccato** (`{{配置|はいち}}{{先|さき}}` è il punto di collocazione; dopo il tap scegli la destinazione, non solo confermi la carta).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** [{{出撃|しゅつげき}}](term:term-sortie) è "uscire per
-> colpire". È un trucco di memoria: immagina la carta che smette di essere
-> preparazione e diventa una presenza fisica nella corsia.
+#### 🧠 Gancio cognitivo
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [アビリティ](term:term-ability) non significa
-> semplicemente "questa MS è forte". Se lo leggi come stato passivo, perdi il
-> punto della UI: quando compare come comando, il gioco ti sta chiedendo se vuoi
-> spendere una risorsa per produrre un effetto adesso.
+[{{出撃|しゅつげき}}](term:term-sortie) è "uscire per
+colpire". È un trucco di memoria: immagina la carta che smette di essere
+preparazione e diventa una presenza fisica nella corsia.
+
+#### ⚖️ Contrasto operativo
+
+[アビリティ](term:term-ability) non significa
+semplicemente "questa MS è forte". Se lo leggi come stato passivo, perdi il
+punto della UI: quando compare come comando, il gioco ti sta chiedendo se vuoi
+spendere una risorsa per produrre un effetto adesso.
 
 ## 3. Tre ruoli, due bersagli: chi apre, chi passa, chi protegge
 
@@ -190,12 +195,13 @@ translation_it: >-
 *   `{{相手|あいて}}の{{制圧|せいあつ}}が` ➔ **Pressione avversaria come soggetto** (`が` mette in primo piano il ruolo che prova a passare).
 *   `{{通|とお}}りにくくなります` ➔ **Difficoltà aumentata** (`～にくくなる` non dice "impossibile", ma "diventa difficile": la difesa cambia la probabilità della corsia).
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** [{{制圧|せいあつ}}](term:term-role-seiatsu) non è
-> "attaccante generico". Il suo valore nasce quando arriva a
-> [{{拠点|きょてん}}](term:term-base) o [{{戦艦|せんかん}}](term:term-warship).
-> Contro una [{{防衛|ぼうえい}}](term:term-role-bouei) ben piazzata, prima serve
-> spesso una [{{殲滅|せんめつ}}](term:term-role-shoumetsu) che apra la corsia.
+#### ⚖️ Contrasto operativo
+
+[{{制圧|せいあつ}}](term:term-role-seiatsu) non è
+"attaccante generico". Il suo valore nasce quando arriva a
+[{{拠点|きょてん}}](term:term-base) o [{{戦艦|せんかん}}](term:term-warship).
+Contro una [{{防衛|ぼうえい}}](term:term-role-bouei) ben piazzata, prima serve
+spesso una [{{殲滅|せんめつ}}](term:term-role-shoumetsu) che apra la corsia.
 
 ## 4. Costo, SP e finale: quando la risorsa autorizza davvero il comando
 
@@ -215,6 +221,13 @@ all'informazione comparsa sullo schermo. Se la guida dice che un'indicazione
 viene visualizzata a destra, la decisione non è ancora "premi subito": prima
 devi leggere quale bersaglio rende sensata la spesa.
 
+[～することで](grammar:grammar-suru-koto-de) lavora invece sul rapporto
+mezzo-risultato: compiendo un'azione, ottieni una conseguenza tattica. In una
+frase come `コストを{{使|つか}}うことでユニットを{{出撃|しゅつげき}}できます`, il
+focus non è "il costo esiste", ma "usare il costo è il mezzo che rende possibile
+la sortita". Quando lo incontri in guide o tutorial, cerca prima l'azione prima
+di `ことで`, poi l'effetto che diventa disponibile dopo.
+
 :::example_sentence
 jp: >-
   {{条件|じょうけん}}を{{満|み}}たすと、{{画面|がめん}}{{右側|みぎがわ}}に{{戦術技|せんじゅつぎ}}の{{案内|あんない}}が{{表示|ひょうじ}}されます。
@@ -230,18 +243,19 @@ translation_it: >-
 *   `{{戦術技|せんじゅつぎ}}の{{案内|あんない}}が{{表示|ひょうじ}}されます` ➔ **Comparsa passiva** (`が` marca l'indicazione che appare; `されます` rende la UI il luogo in cui l'informazione viene mostrata).
 
 Nel finale, [クライマックスブースト](term:term-climax-boost) accelera il recupero
-del [コスト](term:term-cost). `クライマックス` segnala il punto culminante,
+del [コスト](term:term-cost). クライマックス segnala il punto culminante,
 `ブースト` il ritmo spinto in avanti. Le scelte diventano più ravvicinate: una
 [{{防衛|ぼうえい}}](term:term-role-bouei) in ritardo lascia passare danno, una
 [{{戦術技|せんじゅつぎ}}](term:term-special-attack) su una base protetta brucia
 valore, una [{{出撃|しゅつげき}}](term:term-sortie) nella corsia giusta può
 tenere aperta la partita.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [SPゲージ](term:term-sp-gauge) pronta e
-> [{{戦術技|せんじゅつぎ}}](term:term-special-attack) utile non sono la stessa
-> cosa. La prima è una condizione di risorsa; la seconda richiede bersaglio,
-> corsia e timing.
+#### ⚖️ Contrasto operativo
+
+[SPゲージ](term:term-sp-gauge) pronta e
+[{{戦術技|せんじゅつぎ}}](term:term-special-attack) utile non sono la stessa
+cosa. La prima è una condizione di risorsa; la seconda richiede bersaglio,
+corsia e timing.
 
 ## Esempi guidati di riepilogo
 

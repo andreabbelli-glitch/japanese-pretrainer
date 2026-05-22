@@ -39,14 +39,6 @@ trasforma lo scarto subito in timing, e `そのカード` tiene agganciata la ca
 appena vista. Se questi pezzi sono chiari, la carta si legge come una catena
 ordinata: condizione, controllo della cima del mazzo, scelta della zona finale.
 
-:::image
-src: assets/cards/live-duel/ryusei-the-earth.png
-alt: "Ryusei the Earth card."
-caption: >-
-  リュウセイ・ジ・アース. Le keyword brevi occupano la parte alta del testo; la
-  riga lunga usa [あるいは](term:term-aruiwa) per mettere sullo stesso piano
-  ingresso nel battle zone e scarto causato dall'avversario.
-:::
 
 ## Termini chiave
 
@@ -65,7 +57,7 @@ caption: >-
 
 - [あるいは](term:term-aruiwa) — oppure; introduce una seconda possibilità dello
   stesso peso della prima
-- `そのカードを...に` [{{加|くわ}}える](term:term-add) — prendi proprio la carta
+- そのカードを...に [{{加|くわ}}える](term:term-add) — prendi proprio la carta
   appena menzionata e la fai entrare in una destinazione esplicita
 
 ## Pattern grammaticali chiave
@@ -84,6 +76,15 @@ caption: >-
   appartenenze stampate sulla carta
 
 ---
+
+:::image
+src: assets/cards/live-duel/ryusei-the-earth.png
+alt: "Ryusei the Earth card."
+caption: >-
+  リュウセイ・ジ・アース. Le keyword brevi occupano la parte alta del testo; la
+  riga lunga usa [あるいは](term:term-aruiwa) per mettere sullo stesso piano
+  ingresso nel battle zone e scarto causato dall'avversario.
+:::
 
 ## 1. Keyword brevi e riga lunga: dove cambia il ritmo
 
@@ -107,10 +108,15 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
+#### 🗺️ Anatomia della frase
+
+*   [スピードアタッカー](term:term-speed-attacker) ➔ **Keyword chiusa**: la label dice già che la creatura può attaccare subito.
+*   [W・ブレイカー](term:term-w-breaker) ➔ **Keyword quantitativa**: W prepara la rottura di due scudi, senza una frase verbale da analizzare.
+
 - [スピードアタッカー](term:term-speed-attacker) funziona come una proprietà
   immediata della creatura: non aspetti una condizione nella frase successiva
   per sapere che può attaccare subito.
-- [W・ブレイカー](term:term-w-breaker) è un'altra etichetta chiusa: `W` è la
+- [W・ブレイカー](term:term-w-breaker) è un'altra etichetta chiusa: W è la
   forma stampata per "doppio", mentre `ブレイカー` resta katakana tecnico del
   gioco.
 - Dopo queste label cambia il ritmo: compaiono particelle, cause, zone e verbi.
@@ -120,7 +126,7 @@ reveal_mode: sentence
 ## 2. Due finestre alternative: entrare o essere scartata
 
 Il primo blocco non descrive due cose che devono succedere insieme. Ripete
-`{{時|とき}}` due volte e le collega con [あるいは](term:term-aruiwa): ogni
+{{時|とき}} due volte e le collega con [あるいは](term:term-aruiwa): ogni
 finestra può accendere lo stesso effetto.
 
 :::example_sentence
@@ -138,18 +144,18 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[バトルゾーン](term:term-battle-zone)に` — **luogo d'ingresso**: `に`
+*   [バトルゾーン](term:term-battle-zone)に — **luogo d'ingresso**: に
     marca la zona in cui la creatura arriva.
 *   `{{出|で}}た{{時|とき}}` — **prima finestra temporale**: il verbo è già al
     passato relativo, quindi il testo dice "quando è entrata".
-*   `[あるいは](term:term-aruiwa)` — **cerniera alternativa**: non somma due
+*   [あるいは](term:term-aruiwa) — **cerniera alternativa**: non somma due
     requisiti, apre una seconda strada equivalente.
-*   `[{{相手|あいて}}](term:term-opponent)のカードの
-    [{{効果|こうか}}](term:term-effect)によって` — **causa dell'evento**: lo scarto
+*   [{{相手|あいて}}](term:term-opponent)のカードの
+    [{{効果|こうか}}](term:term-effect)によって — **causa dell'evento**: lo scarto
     deve arrivare dall'effetto di una carta avversaria.
-*   `{{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)から` — **zona di partenza**:
+*   {{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)から — **zona di partenza**:
     la carta deve trovarsi nella tua mano prima di essere scartata.
-*   `[{{捨|す}}てられた{{時|とき}}](grammar:grammar-suterareta-toki)` — **passivo
+*   [{{捨|す}}てられた{{時|とき}}](grammar:grammar-suterareta-toki) — **passivo
     più timing**: non sei tu a "scartare"; la carta viene scartata e proprio
     quell'evento apre la finestra.
 
@@ -185,10 +191,10 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `{{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の` — **possessivo e
+*   {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の — **possessivo e
     zona**: `自分の` restringe il mazzo al tuo, il secondo `の` collega il mazzo
     alla posizione successiva.
-*   `[{{上|うえ}}から{{1枚目|いちまいめ}}](term:term-top-card-of-deck)` — **punto di
+*   [{{上|うえ}}から{{1枚目|いちまいめ}}](term:term-top-card-of-deck) — **punto di
     partenza più ordine**: `上から` parte dalla cima, `{{1枚目|いちまいめ}}`
     indica la prima carta in quell'ordine.
 *   `を{{見|み}}る` — **azione sul bersaglio**: `を` marca quella singola carta
@@ -220,10 +226,10 @@ reveal_mode: sentence
 *   `そのカードを` — **oggetto già identificato**: `その` riprende la carta vista
     nella frase precedente, non la creatura scartata e non una nuova scelta dal
     mazzo.
-*   `{{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)または
-    [マナゾーン](term:term-mana-zone)に` — **destinazioni alternative**:
+*   {{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)または
+    [マナゾーン](term:term-mana-zone)に — **destinazioni alternative**:
     `または` separa le due zone possibili, mentre `に` marca la destinazione.
-*   `[{{加|くわ}}える](term:term-add)` — **verbo di inserimento**: la carta entra
+*   [{{加|くわ}}える](term:term-add) — **verbo di inserimento**: la carta entra
     nella zona scelta come risorsa di mano o come mana.
 
 #### ⚖️ Contrasto operativo: due alternative diverse nella stessa carta
@@ -278,6 +284,15 @@ translation_it: >-
   Aggiungi quella carta alla mano oppure alla mana zone.
 reveal_mode: sentence
 :::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}を` ➔ **Bersaglio pescato dalla cima**: il testo isola una carta precisa, non una scelta libera.
+*   `そのカードを` ➔ **Ripresa stabile**: `その` mantiene come oggetto la carta appena vista.
+*   [{{手札|てふだ}}](term:term-hand)または[マナゾーン](term:term-mana-zone)に ➔ **Destinazioni alternative**: `または` mette mano e mana sullo stesso livello.
+*   [{{加|くわ}}える](term:term-add) ➔ **Aggiunta alla zona scelta**: il verbo finale chiude il movimento.
+
+---
 
 ## Nota finale
 

@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-dm25-sd2-overview
 media_id: media-duel-masters-dm25
 slug: dm25-sd2-overview
-title: DM25-SD2 力の王道 - gallery completa, invasione e chiusura
+title: "DM25-SD2 力の王道: invasione, setup e chiusura"
 order: 40
 segment_ref: analisi-mazzi
 difficulty: n4
@@ -23,7 +23,7 @@ la pressione di [{{侵略|しんりゃく}}](term:term-invasion) e
 carte segue lo stesso movimento: prima definisce condizioni e gruppi, poi
 segnala timing, scelta e risultato.
 
-Quando scorri la gallery, non leggere le righe come effetti isolati. Cerca la
+Quando passi da una carta all'altra, non leggere le righe come effetti isolati. Cerca la
 catena `condizione ➔ timing ➔ esito`: `{{出|で}}た{{時|とき}}` apre una finestra
 di ingresso, `その{{中|なか}}から` limita una scelta al gruppo appena rivelato,
 `そうしたら` collega un costo pagato a un payoff reale.
@@ -36,6 +36,10 @@ di ingresso, `その{{中|なか}}から` limita una scelta al gruppo appena riv
   il punto in cui setup ed evoluzione diventano chiusura.
 - [G・ストライク](term:term-g-strike) — risposta difensiva che alcune carte
   impediscono di usare in finestre precise.
+- [{{侵略|しんりゃく}}](term:term-invasion) — keyword offensiva che sposta una
+  creatura sopra un attaccante valido.
+- [{{攻撃|こうげき}}](term:term-attack) — finestra in cui partono invasioni,
+  divieti e payoff di chiusura.
 - [{{究極|きゅうきょく}}{{進化|しんか}}](term:term-ultimate-evolution) — evoluzione
   sopra una creatura che è già evoluzione.
 - [メテオバーン](term:term-meteorburn) — keyword che consuma carte sotto la
@@ -45,12 +49,20 @@ di ingresso, `その{{中|なか}}から` limita una scelta al gruppo appena riv
   parentesi.
 - [{{表向|おもてむ}}き](term:term-face-up) — stato face-up: le carte diventano
   informazione pubblica prima di essere scelte o spostate.
+- [アンタップ](term:term-untap) — ripristino dello stato non tapped.
 - [バトルさせる](term:term-battle-saseru) — far combattere due creature tramite
   effetto, non dichiarare un attacco normale.
 - [{{進化|しんか}}{{設計図|せっけいず}}](term:term-shinka-sekkeizu) — carta di setup
   che rivela e recupera creature evoluzione.
 - [{{未来|みらい}}{{設計図|せっけいず}}](term:term-mirai-sekkeizu) — carta di setup
   che usa un criterio numerico per preparare la mano.
+- [{{山札|やまふだ}}](term:term-deck) — mazzo come zona da cui rivelare o
+  prelevare carte.
+- [{{合計|ごうけい}}](term:term-goukei) — somma che deve raggiungere una soglia.
+- [{{能力|のうりょく}}](term:term-ability) e
+  [{{与|あた}}える](term:term-ataeru) — abilità conferita a una carta o creatura.
+- [{{破壊|はかい}}](term:term-destroy) e [{{捨|す}}てる](term:term-suteru) —
+  spostamenti verso cimitero o costo pagato.
 
 ## Espressioni ricorrenti
 
@@ -63,6 +75,9 @@ di ingresso, `その{{中|なか}}から` limita una scelta al gruppo appena riv
   alto, spesso la cima del mazzo.
 - `{{相手|あいて}}に{{見|み}}せてから` — mostrare all'avversario e solo dopo
   procedere.
+- [{{各|かく}}](term:term-kaku), [{{最初|さいしょ}}](term:term-saisho) e
+  [{{終|お}}わり](term:term-owari) — parole di distribuzione e timing: ogni
+  turno, primo evento, fine della finestra.
 
 ## Pattern grammaticali chiave
 
@@ -86,10 +101,17 @@ di ingresso, `その{{中|なか}}から` limita una scelta al gruppo appena riv
 - `{{超神羅星|ちょうしんらせい}}アポロヌス・ドラゲリオン` — finisher che usa
   [{{究極|きゅうきょく}}{{進化|しんか}}](term:term-ultimate-evolution) e
   [メテオバーン](term:term-meteorburn).
-- `SMAPON` — difesa con [スーパー・S・トリガー](term:term-super-s-trigger) e
+- SMAPON — difesa con [スーパー・S・トリガー](term:term-super-s-trigger) e
   due righe `{{出|で}}た{{時|とき}}` da separare.
 - `シンカライズ` — label che permette di trattare una carta come creatura in un
   frame specifico.
+- [T・ブレイカー](term:term-t-breaker), [ブレイク](term:term-break) e
+  [すべて](term:term-subete) — rottura di scudi, quantità coinvolta e totalità
+  del bersaglio.
+- [{{進化|しんか}}クリーチャー](term:term-evolution-creature),
+  [{{進化|しんか}}](term:term-evolution) e
+  [シンカライズ](term:term-shinkarize) — segnali che spostano la lettura sulle
+  pile evoluzione e sullo status di creatura.
 
 ---
 
@@ -146,17 +168,17 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-- [{{各|かく}}](term:term-kaku)`ターン` ➔ **Distribuzione per turno**: il controllo
+- [{{各|かく}}](term:term-kaku)ターン ➔ **Distribuzione per turno**: il controllo
   si ripete per ogni turno separato, non una volta sola per tutta la partita.
 - `このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}` ➔ **Evento filtrato**:
   [{{最初|さいしょ}}](term:term-saisho) seleziona solo il primo attacco di quella
   creatura.
-- `{{終|お}}わりに` ➔ **Timing conclusivo**: [{{終|お}}わり](term:term-owari) apre
+- {{終|お}}わりに ➔ **Timing conclusivo**: [{{終|お}}わり](term:term-owari) apre
   la finestra dopo che l'attacco è finito.
-- `このクリーチャーを[アンタップ](term:term-untap)し` ➔ **Primo risultato**: la
+- このクリーチャーを[アンタップ](term:term-untap)し ➔ **Primo risultato**: la
   forma in `し` collega questa azione alla successiva senza chiudere la
   procedura.
-- [{{一番上|いちばんうえ}}](term:term-ichiban-ue)`のカードを{{破壊|はかい}}する`
+- [{{一番上|いちばんうえ}}](term:term-ichiban-ue)のカードを{{破壊|はかい}}する
   ➔ **Bersaglio posizionale**: viene distrutta la carta in cima, non una carta
   qualsiasi.
 
@@ -245,15 +267,15 @@ reveal_mode: sentence
   il payoff non si apre.
 - [そうしたら](grammar:grammar-soushitara) ➔ **Ponte costo ➔ risultato**: "se
   hai fatto quello", allora la creatura rompe gli scudi.
-- `すべて[ブレイク](term:term-break)する` ➔ **Scope totale**:
+- すべて[ブレイク](term:term-break)する ➔ **Scope totale**:
   [すべて](term:term-subete) prende tutti gli scudi dell'avversario, non un
   numero scelto.
 
 #### 🧠 Gancio cognitivo
 
 Per [メテオバーン](term:term-meteorburn), pensa al materiale sotto la creatura
-come a carburante già impilato: il testo lo manda via (`{{墓地|ぼち}}に
-{{置|お}}く`) e solo dopo converte quel costo in pressione sugli scudi. È un
+come a carburante già impilato: il testo lo manda via ({{墓地|ぼち}}に
+{{置|お}}く) e solo dopo converte quel costo in pressione sugli scudi. È un
 trucco di memoria, non una spiegazione etimologica della keyword.
 
 ---
@@ -296,18 +318,18 @@ reveal_mode: sentence
 
 - `{{山札|やまふだ}}の{{上|うえ}}から{{6枚|ろくまい}}` ➔ **Fonte e quantità**:
   prendi le prime sei dalla cima del mazzo, non sei carte qualsiasi.
-- [{{表向|おもてむ}}き](term:term-face-up)`にする` ➔ **Cambio di stato**: le carte
+- [{{表向|おもてむ}}き](term:term-face-up)にする ➔ **Cambio di stato**: le carte
   diventano visibili prima del filtro.
 - `その{{中|なか}}から` ➔ **Gruppo chiuso**: puoi prendere solo da quelle sei carte
   appena rivelate.
-- `[{{進化|しんか}}クリーチャー](term:term-evolution-creature)をすべて` ➔
+- [{{進化|しんか}}クリーチャー](term:term-evolution-creature)をすべて ➔
   **Filtro totale**: tutte le creature evoluzione del gruppo vanno in mano.
 - `{{残|のこ}}りを...{{下|した}}に{{置|お}}く` ➔ **Pulizia del resto**: ciò che non
   è stato preso non resta in cima, ma viene mandato in fondo.
 
 #### ⚖️ Contrasto operativo: vedere non significa prendere
 
-- [{{表向|おもてむ}}き](term:term-face-up)`にする` rende le carte leggibili e
+- [{{表向|おもてむ}}き](term:term-face-up)にする rende le carte leggibili e
   verificabili.
 - `{{手札|てふだ}}に{{加|くわ}}える` è lo spostamento reale verso la mano.
 - [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de) riguarda
@@ -345,7 +367,7 @@ reveal_mode: sentence
 - `コスト{{表記|ひょうき}}にある{{数字|すうじ}}` ➔ **Numeri stampati nel costo**:
   il testo non guarda la potenza né il numero di carte, ma i numeri visibili nel
   costo.
-- [{{合計|ごうけい}}](term:term-goukei)`したもの` ➔ **Risultato della somma**:
+- [{{合計|ごうけい}}](term:term-goukei)したもの ➔ **Risultato della somma**:
   prima sommi, poi confronti il totale.
 - `{{5以上|ごいじょう}}になる` ➔ **Soglia minima**: `以上` include 5; non chiede
   di superare 5.
@@ -369,7 +391,7 @@ reveal_mode: sentence
   gruppo appena rivelato.
 - `{{1体|いったい}}{{選|えら}}び` ➔ **Scelta singola**: il contatore `体` marca
   una creatura, non una carta generica.
-- `{{相手|あいて}}に{{見|み}}せ[てから](grammar:grammar-te-kara)` ➔ **Ordine
+- {{相手|あいて}}に{{見|み}}せ[てから](grammar:grammar-te-kara) ➔ **Ordine
   obbligato**: prima mostri all'avversario.
 - `{{手札|てふだ}}に{{加|くわ}}えてもよい` ➔ **Aggiunta opzionale**:
   [～てもよい](grammar:grammar-temoyoi) dice che l'azione è permessa, non
@@ -396,7 +418,7 @@ caption: >-
 
 Qui non serve imparare un nome nuovo per capire la funzione. Cerca gli stessi
 segnali: una fonte (`{{山札|やまふだ}}`), un gruppo visibile
-([{{表向|おもてむ}}き](term:term-face-up)), una scelta interna (`その{{中|なか}}から`)
+([{{表向|おもてむ}}き](term:term-face-up)), una scelta interna (その{{中|なか}}から)
 e un trattamento del `{{残|のこ}}り`. Il pattern è quello delle carte di setup:
 prima crei il gruppo, poi estrai ciò che conta, poi sistemi ciò che rimane.
 
@@ -449,8 +471,8 @@ reveal_mode: sentence
   scudi si misura in quel momento.
 - `{{1|ひと}}つもなければ` ➔ **Zero scudi**: `1つもない` non significa "almeno uno",
   ma "nemmeno uno".
-- `このカードに[{{能力|のうりょく}}](term:term-ability)を
-  [{{与|あた}}える](term:term-ataeru)` ➔ **Abilità concessa**: prima il testo
+- このカードに[{{能力|のうりょく}}](term:term-ability)を
+  [{{与|あた}}える](term:term-ataeru) ➔ **Abilità concessa**: prima il testo
   assegna una capacità alla carta; poi quella capacità può produrre il suo
   effetto.
 
@@ -474,6 +496,21 @@ translation_it: >-
   partita.
 reveal_mode: sentence
 :::
+
+#### 🗺️ Anatomia della frase
+
+- `このクリーチャーが{{出|で}}た{{時|とき}}` ➔ **Trigger identico nei due
+  esempi**: l'effetto parte quando la creatura entra in campo.
+- `{{相手|あいて}}のパワー{{2000以下|にせんいか}}のクリーチャーを` ➔ **Bersaglio
+  numerico**: il primo esempio restringe le creature avversarie a quelle con
+  potenza 2000 o meno.
+- [すべて](term:term-subete)[{{破壊|はかい}}](term:term-destroy)する ➔ **Azione
+  totale**: non scegli una sola creatura, il testo distrugge tutto il gruppo
+  che rispetta la soglia.
+- `そのターン{{中|ちゅう}}` ➔ **Finestra di protezione**: il secondo esempio
+  limita l'effetto al turno in corso.
+- `{{自分|じぶん}}はゲームに{{負|ま}}けない` ➔ **Regola temporanea sul giocatore**:
+  il soggetto protetto sei tu, non una creatura specifica.
 
 #### ⚖️ Contrasto operativo: keyword base e abilità aggiunta
 
@@ -512,7 +549,7 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-- `タマシードから[{{進化|しんか}}](term:term-evolution)していれば` ➔
+- タマシードから[{{進化|しんか}}](term:term-evolution)していれば ➔
   **Condizione di provenienza**: [～ていれば](grammar:grammar-teireba) controlla
   se l'evoluzione da Tamaseed è lo stato vero di questa entrata.
 - `{{相手|あいて}}のクリーチャーを{{1体|いったい}}{{選|えら}}んでもよい` ➔
@@ -608,7 +645,7 @@ Quando leggi le undici carte insieme, il deck alterna tre registri linguistici.
 Le carte aggressive parlano di [{{侵略|しんりゃく}}](term:term-invasion),
 [{{攻撃|こうげき}}](term:term-attack), breaker e finestre di risposta; le carte di
 setup parlano di [{{山札|やまふだ}}](term:term-deck),
-[{{表向|おもてむ}}き](term:term-face-up), scelta e `{{残|のこ}}り`; le carte di
+[{{表向|おもてむ}}き](term:term-face-up), scelta e {{残|のこ}}り; le carte di
 supporto parlano di stato, opzionalità e timing.
 
 - {{覇帝|はてい}}なき{{侵略|しんりゃく}} レッドゾーンF e

@@ -71,7 +71,7 @@ alt: "Schermata Battle di デュエプレ con pannelli visibili per ランクマ
 caption: >-
   Nel tab `Battle` i pannelli grandi ti fanno leggere prima la famiglia di
   match e solo dopo il dettaglio: [ランクマッチ](term:term-ranked-match),
-  `カジュアルマッチ` e [ルームマッチ](term:term-room-match) non sono solo nomi,
+  カジュアルマッチ e [ルームマッチ](term:term-room-match) non sono solo nomi,
   ma ingressi a flussi diversi.
 :::
 
@@ -80,7 +80,7 @@ una mappa. Non ti dice soltanto "che cosa c'è scritto sul bottone": ti anticipa
 il tipo di avversario, il peso del risultato e il percorso che seguirà dopo il
 tap.
 
-*   [ランクマッチ](term:term-ranked-match) porta alla ladder competitiva. `ランク`
+*   [ランクマッチ](term:term-ranked-match) porta alla ladder competitiva. ランク
     restringe subito la lettura: non è una partita libera, ma un match in cui
     il risultato pesa sulla progressione classificata. Se accanto compare uno
     stato come [{{開催|かいさい}}{{中|ちゅう}}](term:term-ongoing), la schermata
@@ -136,7 +136,7 @@ i prefissi di stato sono piccoli, ma cambiano l'azione da compiere.
     stata raggiunta.
 *   [～{{済|ず}}み](grammar:grammar-zumi) guarda nella direzione opposta:
     qualcosa è già stato fatto, concluso, riscosso o elaborato. In
-    `{{達成|たっせい}}{{済|ず}}み`, [{{達成|たっせい}}](term:term-achievement)
+    {{達成|たっせい}}{{済|ず}}み, [{{達成|たっせい}}](term:term-achievement)
     nomina il completamento e [～{{済|ず}}み](grammar:grammar-zumi) aggiunge che
     quello stato è già acquisito.
 *   [～{{可能|かのう}}](grammar:grammar-kanou) non dice che l'azione è
@@ -154,11 +154,11 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `[ランクマッチ](term:term-ranked-match)が` ➔ **Soggetto di stato**: la
+*   [ランクマッチ](term:term-ranked-match)が ➔ **Soggetto di stato**: la
     modalità è l'elemento di cui si dichiara la disponibilità.
-*   `[{{開催|かいさい}}{{中|ちゅう}}](term:term-ongoing)なので` ➔ **Motivo operativo**:
+*   [{{開催|かいさい}}{{中|ちゅう}}](term:term-ongoing)なので ➔ **Motivo operativo**:
     `なので` trasforma lo stato "in corso" nella ragione per entrare ora.
-*   `{{新|あたら}}しい[デッキ](term:term-constructed-deck)で` ➔ **Mezzo / setup**:
+*   {{新|あたら}}しい[デッキ](term:term-constructed-deck)で ➔ **Mezzo / setup**:
     `で` lega l'azione al deck scelto, non al luogo del match.
 *   `マスターランクに{{挑戦|ちょうせん}}する` ➔ **Direzione dell'azione**:
     `に` marca il traguardo verso cui si prova a salire.
@@ -207,11 +207,11 @@ translation_it: >-
 
 *   `このミッションは` ➔ **Tema della schermata**: `は` mette la missione al
     centro del giudizio.
-*   `すでに[{{達成|たっせい}}](term:term-achievement)[{{済|ず}}み](grammar:grammar-zumi)なので`
-    ➔ **Motivo concluso**: `すでに` e [～{{済|ず}}み](grammar:grammar-zumi)
+*   すでに[{{達成|たっせい}}](term:term-achievement)[{{済|ず}}み](grammar:grammar-zumi)なので
+    ➔ **Motivo concluso**: すでに e [～{{済|ず}}み](grammar:grammar-zumi)
     puntano entrambi al "già"; `なので` usa quello stato come spiegazione del
     blocco successivo.
-*   `もう{{一度|いちど}}[{{報酬|ほうしゅう}}](term:term-reward)をもらうことはできない`
+*   もう{{一度|いちど}}[{{報酬|ほうしゅう}}](term:term-reward)をもらうことはできない
     ➔ **Risultato pratico**: `もう{{一度|いちど}}` prova a riaprire l'azione
     "un'altra volta", ma `できない` la chiude.
 
@@ -248,7 +248,7 @@ translation_it: >-
     condizione.
 *   `このイベントステージは` ➔ **Tema bloccato**: lo stage evento è ciò di cui
     viene dichiarato lo stato.
-*   `[{{未|み}}～](grammar:grammar-mi-prefix)[{{解放|かいほう}}](term:term-unlock)のままになる`
+*   [{{未|み}}～](grammar:grammar-mi-prefix)[{{解放|かいほう}}](term:term-unlock)のままになる
     ➔ **Stato mantenuto**: `のまま` indica che la situazione resta così; non è
     un blocco momentaneo, è lo stato che continua finché la condizione non
     cambia.
@@ -269,12 +269,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `[デッキ](term:term-constructed-deck)の{{準備|じゅんび}}が` ➔ **Soggetto pronto
+*   [デッキ](term:term-constructed-deck)の{{準備|じゅんび}}が ➔ **Soggetto pronto
     o non pronto**: non è il deck da solo a essere valutato, ma la sua
     preparazione.
 *   `すべて{{終|お}}わったら` ➔ **Condizione di ingresso**: `たら` aggancia il
     click al completamento; `すべて` chiude lo scope su tutta la preparazione.
-*   `[{{対戦|たいせん}}{{開始|かいし}}](term:term-start-match)のボタンをタップする`
+*   [{{対戦|たいせん}}{{開始|かいし}}](term:term-start-match)のボタンをタップする
     ➔ **Azione finale**: `のボタン` trasforma il composto in etichetta di UI, e
     `タップする` è il gesto che avvia davvero il match.
 

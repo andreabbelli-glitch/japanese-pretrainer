@@ -24,12 +24,6 @@ summary: >-
 
 # Diamond Sword: leggere i divieti d'attacco che diventano nulli
 
-:::image
-src: assets/cards/live-duel/diamond-sword.webp
-alt: "Diamond Sword card."
-caption: >-
-  ダイヤモンド・ソード。
-:::
 
 ダイヤモンド・ソード non aggiunge semplicemente “puoi attaccare” sopra la partita. La spell prende una famiglia precisa di divieti, quelli che impediscono alle tue creature di attaccare il player avversario, e li fa diventare [{{無効|むこう}}](term:term-mukou) per il turno in corso.
 
@@ -66,11 +60,18 @@ Il giapponese è lungo perché deve evitare due letture sbagliate: non sta rende
 
 ---
 
+:::image
+src: assets/cards/live-duel/diamond-sword.webp
+alt: "Diamond Sword card."
+caption: >-
+  ダイヤモンド・ソード。
+:::
+
 ## 1. Il gruppo annullato: gli effetti che bloccano l'attacco al player
 
 La frase principale comincia con このターン, quindi tutto ciò che segue resta dentro il turno attuale. Subito dopo, [{{自分|じぶん}}](term:term-self)のクリーチャーが costruisce il soggetto della restrizione: non tutte le creature in campo, ma le tue creature. Il bersaglio vietato arriva con [{{相手|あいて}}](term:term-opponent)プレイヤーを: l'oggetto di [{{攻撃|こうげき}}](term:term-attack)する è il player avversario, non una creatura.
 
-Il blocco più importante è [{{攻撃|こうげき}}](term:term-attack)することができない[{{効果|こうか}}](term:term-effect). Qui `こと` trasforma “attaccare” in una cosa grammaticale, `できない` la rende impossibile, e [{{効果|こうか}}](term:term-effect) dice che tutta quella descrizione sta modificando “effetti”. La spell non guarda una creatura isolata: guarda gli effetti che dicono a quelle creature di non poter attaccare il player.
+Il blocco più importante è [{{攻撃|こうげき}}](term:term-attack)することができない[{{効果|こうか}}](term:term-effect). Qui こと trasforma “attaccare” in una cosa grammaticale, できない la rende impossibile, e [{{効果|こうか}}](term:term-effect) dice che tutta quella descrizione sta modificando “effetti”. La spell non guarda una creatura isolata: guarda gli effetti che dicono a quelle creature di non poter attaccare il player.
 
 :::example_sentence
 jp: >-
@@ -87,21 +88,21 @@ reveal_mode: sentence
 #### 🗺️ Anatomia della frase
 
 *   `このターン`: cornice temporale. La lettura non è permanente: vale per questo turno.
-*   `[{{自分|じぶん}}](term:term-self)のクリーチャーが`: soggetto interno alla relativa. Sono le tue creature a trovarsi sotto un divieto di attacco.
-*   `[{{相手|あいて}}](term:term-opponent)プレイヤーを`: oggetto dell'attacco. Il bersaglio nominato è il player avversario.
-*   `[{{攻撃|こうげき}}](term:term-attack)することができない`: azione nominalizzata più impossibilità. Non vuol dire “non attaccano adesso”, ma “non sono in grado / non possono attaccare” per effetto di una regola.
-*   `[{{効果|こうか}}](term:term-effect)は[すべて](term:term-subete)`: topic più totalità. La spell prende tutto il gruppo di effetti appena definito.
-*   `[{{無効|むこう}}](term:term-mukou)になる`: risultato. Quegli effetti diventano non validi, quindi non bloccano più l'attacco al player.
+*   [{{自分|じぶん}}](term:term-self)のクリーチャーが: soggetto interno alla relativa. Sono le tue creature a trovarsi sotto un divieto di attacco.
+*   [{{相手|あいて}}](term:term-opponent)プレイヤーを: oggetto dell'attacco. Il bersaglio nominato è il player avversario.
+*   [{{攻撃|こうげき}}](term:term-attack)することができない: azione nominalizzata più impossibilità. Non vuol dire “non attaccano adesso”, ma “non sono in grado / non possono attaccare” per effetto di una regola.
+*   [{{効果|こうか}}](term:term-effect)は[すべて](term:term-subete): topic più totalità. La spell prende tutto il gruppo di effetti appena definito.
+*   [{{無効|むこう}}](term:term-mukou)になる: risultato. Quegli effetti diventano non validi, quindi non bloccano più l'attacco al player.
 
 #### ⚖️ Contrasto operativo: `{{攻撃|こうげき}}できない` e `{{攻撃|こうげき}}することができない`
 
-`{{攻撃|こうげき}}できない` è la forma più compatta: combina il nome verbale [{{攻撃|こうげき}}](term:term-attack) con `できない`. `{{攻撃|こうげき}}することができない` è più analitica: prende il verbo con `する`, lo nominalizza con `こと` e poi applica `できない`. Nel testo di ダイヤモンド・ソード questa forma lunga serve bene perché tutta la sequenza deve modificare [{{効果|こうか}}](term:term-effect): “gli effetti per cui attaccare non è possibile”.
+{{攻撃|こうげき}}できない è la forma più compatta: combina il nome verbale [{{攻撃|こうげき}}](term:term-attack) con できない. {{攻撃|こうげき}}することができない è più analitica: prende il verbo con する, lo nominalizza con こと e poi applica できない. Nel testo di ダイヤモンド・ソード questa forma lunga serve bene perché tutta la sequenza deve modificare [{{効果|こうか}}](term:term-effect): “gli effetti per cui attaccare non è possibile”.
 
 ## 2. Gli esempi tra parentesi: や, または e など delimitano il campo
 
-La parentesi non è una seconda spell nascosta. È una guida interna al rules text: mostra quali tipi di divieto rientrano nel gruppo appena nominato. [{{召喚|しょうかん}}{{酔|よ}}い](term:term-shoukan-yoi) apre la lista con `や`, quindi la carta sta dando un esempio forte ma non chiuso. Poi `または` mette in alternativa due formulazioni scritte tra virgolette: una dice semplicemente “questa creatura non può attaccare”, l'altra restringe il divieto a [{{相手|あいて}}](term:term-opponent)プレイヤー.
+La parentesi non è una seconda spell nascosta. È una guida interna al rules text: mostra quali tipi di divieto rientrano nel gruppo appena nominato. [{{召喚|しょうかん}}{{酔|よ}}い](term:term-shoukan-yoi) apre la lista con や, quindi la carta sta dando un esempio forte ma non chiuso. Poi または mette in alternativa due formulazioni scritte tra virgolette: una dice semplicemente “questa creatura non può attaccare”, l'altra restringe il divieto a [{{相手|あいて}}](term:term-opponent)プレイヤー.
 
-Il pezzo finale `などの[{{効果|こうか}}](term:term-effect)` è il cappello della lista: “effetti come questi”. Quando arrivi di nuovo a [{{無効|むこう}}](term:term-mukou)になる, non devi rileggere ogni citazione come effetto separato da scegliere; sono esempi del gruppo che la frase principale ha già preso con [すべて](term:term-subete).
+Il pezzo finale などの[{{効果|こうか}}](term:term-effect) è il cappello della lista: “effetti come questi”. Quando arrivi di nuovo a [{{無効|むこう}}](term:term-mukou)になる, non devi rileggere ogni citazione come effetto separato da scegliere; sono esempi del gruppo che la frase principale ha già preso con [すべて](term:term-subete).
 
 :::example_sentence
 jp: >-
@@ -118,12 +119,12 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{召喚|しょうかん}}{{酔|よ}}い](term:term-shoukan-yoi)や`: primo esempio, con `や` che lascia intendere altri casi simili.
-*   `「このクリーチャーは[{{攻撃|こうげき}}](term:term-attack)できない」`: formula corta di divieto assoluto per quella creatura.
+*   [{{召喚|しょうかん}}{{酔|よ}}い](term:term-shoukan-yoi)や: primo esempio, con や che lascia intendere altri casi simili.
+*   「このクリーチャーは[{{攻撃|こうげき}}](term:term-attack)できない」: formula corta di divieto assoluto per quella creatura.
 *   `または`: alternativa tra due formulazioni citate, non scelta del giocatore.
-*   `「このクリーチャーは、[{{相手|あいて}}](term:term-opponent)プレイヤーを[{{攻撃|こうげき}}](term:term-attack)できない」`: divieto più stretto, centrato sul player avversario.
-*   `などの[{{効果|こうか}}](term:term-effect)が`: categoria riassuntiva. Le citazioni diventano esempi di effetti, non frasi isolate.
-*   `[{{無効|むこう}}](term:term-mukou)になる`: stesso risultato della frase principale: il divieto smette di valere.
+*   「このクリーチャーは、[{{相手|あいて}}](term:term-opponent)プレイヤーを[{{攻撃|こうげき}}](term:term-attack)できない」: divieto più stretto, centrato sul player avversario.
+*   などの[{{効果|こうか}}](term:term-effect)が: categoria riassuntiva. Le citazioni diventano esempi di effetti, non frasi isolate.
+*   [{{無効|むこう}}](term:term-mukou)になる: stesso risultato della frase principale: il divieto smette di valere.
 
 #### 🧠 Gancio cognitivo
 
@@ -131,9 +132,9 @@ Come trucco mnemonico, immagina [{{無効|むこう}}](term:term-mukou) come un 
 
 ## 3. La clausola ただし: l'apertura non arriva fino alle creature
 
-L'ultima parte comincia con `ただし`, quindi corregge il perimetro prima che il lettore allarghi troppo l'effetto. La frase sposta il bersaglio da [{{相手|あいて}}](term:term-opponent)プレイヤーを a クリーチャーを: adesso non si parla più di attaccare il player, ma di attaccare una creatura.
+L'ultima parte comincia con ただし, quindi corregge il perimetro prima che il lettore allarghi troppo l'effetto. La frase sposta il bersaglio da [{{相手|あいて}}](term:term-opponent)プレイヤーを a クリーチャーを: adesso non si parla più di attaccare il player, ma di attaccare una creatura.
 
-`この[{{効果|こうか}}](term:term-effect)によって` indica il mezzo, cioè “grazie a questo effetto”. Subito dopo, `クリーチャーを[{{攻撃|こうげき}}](term:term-attack)することは` mette come topic l'azione di attaccare una creatura. Il finale `{{可能|かのう}}にならない` è negativo: quell'azione non diventa possibile solo perché ダイヤモンド・ソード ha annullato i divieti contro il player.
+この[{{効果|こうか}}](term:term-effect)によって indica il mezzo, cioè “grazie a questo effetto”. Subito dopo, クリーチャーを[{{攻撃|こうげき}}](term:term-attack)することは mette come topic l'azione di attaccare una creatura. Il finale {{可能|かのう}}にならない è negativo: quell'azione non diventa possibile solo perché ダイヤモンド・ソード ha annullato i divieti contro il player.
 
 :::example_sentence
 jp: >-
@@ -147,17 +148,17 @@ reveal_mode: sentence
 #### 🗺️ Anatomia della frase
 
 *   `ただし`: segnale di eccezione. La carta limita la lettura appena costruita.
-*   `この[{{効果|こうか}}](term:term-effect)によって`: mezzo o causa operativa. Il controllo riguarda ciò che questa spell rende possibile.
-*   `クリーチャーを[{{攻撃|こうげき}}](term:term-attack)することは`: azione nominalizzata come topic. L'azione in discussione è attaccare una creatura.
+*   この[{{効果|こうか}}](term:term-effect)によって: mezzo o causa operativa. Il controllo riguarda ciò che questa spell rende possibile.
+*   クリーチャーを[{{攻撃|こうげき}}](term:term-attack)することは: azione nominalizzata come topic. L'azione in discussione è attaccare una creatura.
 *   `{{可能|かのう}}にならない`: non “diventa possibile”. Il giapponese nega il cambio di stato, non l'esistenza delle creature.
 
 #### ⚖️ Contrasto operativo: player avversario vs creatura
 
-La frase principale annulla effetti che impediscono alle tue creature di attaccare [{{相手|あいて}}](term:term-opponent)プレイヤー. La clausola con `ただし` dice che questo non apre automaticamente l'attacco contro クリーチャー. Se un'altra regola decide quando una creatura può essere attaccata, ダイヤモンド・ソード non la trasforma in un bersaglio valido: toglie soltanto i divieti che bloccavano l'attacco al player.
+La frase principale annulla effetti che impediscono alle tue creature di attaccare [{{相手|あいて}}](term:term-opponent)プレイヤー. La clausola con ただし dice che questo non apre automaticamente l'attacco contro クリーチャー. Se un'altra regola decide quando una creatura può essere attaccata, ダイヤモンド・ソード non la trasforma in un bersaglio valido: toglie soltanto i divieti che bloccavano l'attacco al player.
 
 #### ⚖️ Contrasto operativo: `{{無効|むこう}}になる` vs `{{可能|かのう}}になる`
 
-[{{無効|むこう}}](term:term-mukou)になる guarda un effetto già esistente e lo rende non valido. `{{可能|かのう}}になる` guarda invece un'azione e dice che diventa possibile. ダイヤモンド・ソード fa la prima cosa sui divieti di attacco al player; la frase finale nega esplicitamente la seconda cosa per l'attacco alle creature.
+[{{無効|むこう}}](term:term-mukou)になる guarda un effetto già esistente e lo rende non valido. {{可能|かのう}}になる guarda invece un'azione e dice che diventa possibile. ダイヤモンド・ソード fa la prima cosa sui divieti di attacco al player; la frase finale nega esplicitamente la seconda cosa per l'attacco alle creature.
 
 ## Esempi guidati di riepilogo
 
@@ -196,4 +197,4 @@ reveal_mode: sentence
 
 ## Nota finale
 
-ダイヤモンド・ソード si legge bene quando tieni separati tre strati. Prima individui il gruppo: [{{自分|じぶん}}](term:term-self)のクリーチャーが[{{相手|あいて}}](term:term-opponent)プレイヤーを[{{攻撃|こうげき}}](term:term-attack)することができない[{{効果|こうか}}](term:term-effect). Poi leggi il risultato: quel gruppo è [すべて](term:term-subete) [{{無効|むこう}}](term:term-mukou)になる. Infine rispetti il limite di `ただし`: la spell apre l'attacco al player, ma non crea da sola il permesso di attaccare [クリーチャー](term:term-creature).
+ダイヤモンド・ソード si legge bene quando tieni separati tre strati. Prima individui il gruppo: [{{自分|じぶん}}](term:term-self)のクリーチャーが[{{相手|あいて}}](term:term-opponent)プレイヤーを[{{攻撃|こうげき}}](term:term-attack)することができない[{{効果|こうか}}](term:term-effect). Poi leggi il risultato: quel gruppo è [すべて](term:term-subete) [{{無効|むこう}}](term:term-mukou)になる. Infine rispetti il limite di ただし: la spell apre l'attacco al player, ma non crea da sola il permesso di attaccare [クリーチャー](term:term-creature).

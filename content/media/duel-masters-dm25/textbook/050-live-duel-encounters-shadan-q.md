@@ -30,16 +30,6 @@ La prima riga chiede di controllare se esiste un tuo ジョーカーズ abbastan
 costoso. La seconda riga guarda invece un attacco già dichiarato: se quel
 bersaglio sei tu, puoi tappare シャダンＱ e fermare proprio quell'attacco.
 
-:::image
-src: assets/cards/live-duel/shadan-q.jpg
-alt: "Shadan Q card."
-caption: >-
-  シャダンＱ。 Razza: ジョーカーズ. Prima riga: [G・ゼロ](term:term-g-zero)
-  controlla se hai già un Jokers di costo alto. Seconda riga: quando una
-  creatura attacca te, [タップ](term:term-tap) e
-  [{{中止|ちゅうし}}する](term:term-chuushi-suru) trasformano questa carta in
-  una risposta all'attacco.
-:::
 
 ## Termini chiave
 
@@ -70,6 +60,17 @@ caption: >-
 - コスト{{5以上|ごいじょう}} — soglia minima: 5 o più, non esattamente 5
 
 ---
+
+:::image
+src: assets/cards/live-duel/shadan-q.jpg
+alt: "Shadan Q card."
+caption: >-
+  シャダンＱ。 Razza: ジョーカーズ. Prima riga: [G・ゼロ](term:term-g-zero)
+  controlla se hai già un Jokers di costo alto. Seconda riga: quando una
+  creatura attacca te, [タップ](term:term-tap) e
+  [{{中止|ちゅうし}}する](term:term-chuushi-suru) trasformano questa carta in
+  una risposta all'attacco.
+:::
 
 ## 1. G・ゼロ: la condizione esiste prima dell'evocazione
 
@@ -129,7 +130,7 @@ pagamento di シャダンＱ, non il valore del Jokers controllato.
 La seconda riga cambia scena. Non parla più di evocare シャダンＱ, ma di
 rispondere a un attacco. Il soggetto è `クリーチャーが`: una creatura qualunque
 sta attaccando. Il bersaglio è
-[{{自分|じぶん}}](term:term-self)を: questa volta `自分` non indica "una tua
+[{{自分|じぶん}}](term:term-self)を: questa volta 自分 non indica "una tua
 carta", ma te come giocatore.
 
 :::example_sentence
@@ -148,14 +149,14 @@ reveal_mode: sentence
 
 *   `クリーチャーが` — soggetto del trigger. La frase non dice che シャダンＱ
     attacca; dice che una creatura dichiara un attacco.
-*   [{{自分|じぶん}}](term:term-self)を — bersaglio marcato da `を`. Qui il
+*   [{{自分|じぶん}}](term:term-self)を — bersaglio marcato da を. Qui il
     testo parla di un attacco contro il giocatore, non contro una tua creatura.
 *   [{{攻撃|こうげき}}](term:term-attack)する[{{時|とき}}](grammar:grammar-toki) — finestra
     temporale. `時` trasforma l'azione "attaccare te" nel momento in cui puoi
     intervenire.
 *   このクリーチャーを[タップ](term:term-tap)して — prima azione della risposta:
     tappi questa creatura, cioè シャダンＱ.
-*   その[{{攻撃|こうげき}}](term:term-attack)を — oggetto ripreso con `その`: il
+*   その[{{攻撃|こうげき}}](term:term-attack)を — oggetto ripreso con その: il
     testo punta all'attacco appena nominato, non sceglie un attacco nuovo.
 *   [{{中止|ちゅうし}}して](term:term-chuushi-suru)もよい — azione permessa:
     puoi interrompere quell'attacco, ma la decisione resta tua.
@@ -183,7 +184,7 @@ lo ferma.
     interrompere, sospendere o annullare qualcosa che era in programma o in
     corso. Sul testo della carta si restringe a una procedura precisa: l'attacco
     già dichiarato non prosegue.
-*   [タップ](term:term-tap)して usa la forma in `て` per collegare il costo
+*   [タップ](term:term-tap)して usa la forma in て per collegare il costo
     operativo alla conseguenza. Prima tappi questa creatura; poi il testo ti
     permette di fermare l'attacco richiamato da `その`.
 *   [～てもよい](grammar:grammar-temoyoi) chiude la riga come scelta, non come

@@ -20,19 +20,10 @@ summary: >-
 
 La frase non lascia le carte rivelate sospese. Dopo il conteggio, il testo le richiude dentro il deck con due scelte diverse: l'ordine interno delle carte e la destinazione unica, sopra oppure sotto.
 
-:::image
-src: assets/cards/live-duel/nothing-zero-secret-destruction.webp
-alt: "Nothing Zero, Secret Destruction card."
-caption: >-
-  {{破界秘伝|はかいひでん}}ナッシング・ゼロ. La keyword アタック・チャンス apre il cast
-  gratuito; il testo centrale lavora su reveal pubblico, conteggio per carta
-  mostrata e ritorno in cima o in fondo al deck.
-:::
 
 ## Termini chiave
 
-- [{{呪文|じゅもん}}](term:term-spell) — spell, carta che produce un effetto e poi si risolve.
-- [{{山札|やまふだ}}](term:term-deck) — deck fisico della partita; con `の{{上|うえ}}から` diventa la fonte dall'alto.
+- [{{山札|やまふだ}}](term:term-deck) — deck fisico della partita; con の{{上|うえ}}から diventa la fonte dall'alto.
 - [{{自分|じぶん}}](term:term-self) — il tuo lato di gioco, qui il tuo deck e le tue creature.
 - [バトルゾーン](term:term-battle-zone) — zona in cui le creature restano attive.
 - [クリーチャー](term:term-creature) — creatura che può ricevere il break extra.
@@ -49,7 +40,6 @@ caption: >-
 
 ## Pattern grammaticali chiave
 
-- [このようにして](grammar:grammar-konoyounishite) / `こうして` — ripresa procedurale: il testo rimanda al passaggio appena risolto.
 - `{{1枚|いちまい}}につき` — distribuzione per unità: il payoff si conta una carta alla volta.
 - [{{山札|やまふだ}}の{{上|うえ}}か{{下|した}}のどちらかに{{戻|もど}}す](grammar:grammar-yamafuda-no-ue-ka-shita-no-dochiraka-ni-modosu) — rimettere nel deck scegliendo una sola destinazione tra cima e fondo.
 
@@ -58,8 +48,18 @@ caption: >-
 - アタック・チャンス — keyword di cast gratuito legata a una condizione di attacco.
 - {{無色|むしょく}}カード — carta incolore; è il filtro che decide quanti break extra ottieni.
 - {{破界秘伝|はかいひでん}}ナッシング・ゼロ — nome della spell, con `{{破界|はかい}}` e `{{秘伝|ひでん}}` come blocchi del titolo.
+- [{{表向|おもてむ}}き](term:term-face-up) — a faccia in su / face-up
 
 ---
+
+:::image
+src: assets/cards/live-duel/nothing-zero-secret-destruction.webp
+alt: "Nothing Zero, Secret Destruction card."
+caption: >-
+  {{破界秘伝|はかいひでん}}ナッシング・ゼロ. La keyword アタック・チャンス apre il cast
+  gratuito; il testo centrale lavora su reveal pubblico, conteggio per carta
+  mostrata e ritorno in cima o in fondo al deck.
+:::
 
 ## 1. Dal deck alla rivelazione pubblica
 
@@ -75,14 +75,14 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{自分|じぶん}}](term:term-self)の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から` mette in fila possesso, zona e origine: non stai prendendo tre carte qualsiasi, ma tre carte dalla cima del tuo deck.
+*   [{{自分|じぶん}}](term:term-self)の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から mette in fila possesso, zona e origine: non stai prendendo tre carte qualsiasi, ma tre carte dalla cima del tuo deck.
 *   `{{3枚|さんまい}}を` marca l'oggetto dell'azione. `枚` è il contatore naturale per carte e fogli, quindi il numero è già integrato nel gruppo da mostrare.
 *   `すべてのプレイヤーに` usa `に` per indicare i destinatari della visibilità. Le carte non sono solo controllate da te: diventano informazione comune per tutti i player.
 *   `{{見|み}}せる` è transitivo e orientato verso qualcun altro. In questo rules text equivale a "mostrare / rivelare", non a una semplice occhiata privata.
 
 #### ⚖️ Contrasto operativo: `見せる` non è ancora `表向きにする`
 
-[{{表向|おもてむ}}き](term:term-face-up) descrive uno stato della carta sul tavolo; `{{見|み}}せる` descrive l'azione di farla vedere a qualcuno. Qui il testo non insiste sullo stato duraturo face-up: gli basta dire che il gruppo viene mostrato a tutti, perché quel gruppo sarà richiamato subito dopo da `こうして`.
+[{{表向|おもてむ}}き](term:term-face-up) descrive uno stato della carta sul tavolo; {{見|み}}せる descrive l'azione di farla vedere a qualcuno. Qui il testo non insiste sullo stato duraturo face-up: gli basta dire che il gruppo viene mostrato a tutti, perché quel gruppo sarà richiamato subito dopo da こうして.
 
 #### 🧠 Gancio cognitivo
 
@@ -105,10 +105,10 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[こうして{{見|み}}せた{{無色|むしょく}}カード{{1枚|いちまい}}につき](grammar:grammar-koushite-misetamushoku-card-1-nitsuki)` è il contatore dell'effetto. `こうして` riprende il reveal, `{{見|み}}せた` modifica `カード`, `{{無色|むしょく}}` filtra le carte valide e `{{1枚|いちまい}}につき` dice "per ogni singola carta".
+*   [こうして{{見|み}}せた{{無色|むしょく}}カード{{1枚|いちまい}}につき](grammar:grammar-koushite-misetamushoku-card-1-nitsuki) è il contatore dell'effetto. こうして riprende il reveal, {{見|み}}せた modifica カード, {{無色|むしょく}} filtra le carte valide e {{1枚|いちまい}}につき dice "per ogni singola carta".
 *   `このターン` limita la durata del bonus. Il break extra non diventa una qualità permanente della creatura: vive solo nel turno in corso.
-*   `[バトルゾーン](term:term-battle-zone)にある[{{自分|じぶん}}](term:term-self)の[クリーチャー](term:term-creature){{1体|いったい}}は` costruisce il beneficiario: una creatura tua che si trova nel battle zone. `{{1体|いったい}}` conta un corpo / unità creatura, non una carta qualsiasi.
-*   `シールドを[さらに](term:term-sarani){{1枚|いちまい}}[ブレイク](term:term-break)する` aggiunge un singolo scudo al break che quella creatura farebbe già. [さらに](term:term-sarani) è additivo: non sostituisce il break base, lo aumenta.
+*   [バトルゾーン](term:term-battle-zone)にある[{{自分|じぶん}}](term:term-self)の[クリーチャー](term:term-creature){{1体|いったい}}は costruisce il beneficiario: una creatura tua che si trova nel battle zone. {{1体|いったい}} conta un corpo / unità creatura, non una carta qualsiasi.
+*   シールドを[さらに](term:term-sarani){{1枚|いちまい}}[ブレイク](term:term-break)する aggiunge un singolo scudo al break che quella creatura farebbe già. [さらに](term:term-sarani) è additivo: non sostituisce il break base, lo aumenta.
 
 #### ⚖️ Contrasto operativo: distribuzione non somma indistinta
 
@@ -116,11 +116,11 @@ reveal_mode: sentence
 
 #### 🧠 Gancio cognitivo
 
-Immagina `につき` come un'etichetta prezzo attaccata a ogni carta valida: ogni `{{無色|むしょく}}カード` porta con sé un `シールドを[さらに](term:term-sarani){{1枚|いちまい}}[ブレイク](term:term-break)する`. È un'immagine mnemonica, non una spiegazione etimologica.
+Immagina につき come un'etichetta prezzo attaccata a ogni carta valida: ogni {{無色|むしょく}}カード porta con sé un シールドを[さらに](term:term-sarani){{1枚|いちまい}}[ブレイク](term:term-break)する. È un'immagine mnemonica, non una spiegazione etimologica.
 
 ## 3. Il gruppo rivelato resta lo stesso
 
-La terza riga cambia operazione, ma non cambia gruppo. `{{見|み}}せたカード` torna alle carte mostrate all'inizio; [すべて](term:term-subete) chiude l'intero insieme e impedisce di trattare solo le carte incolori, solo quelle utili o solo una parte del reveal.
+La terza riga cambia operazione, ma non cambia gruppo. {{見|み}}せたカード torna alle carte mostrate all'inizio; [すべて](term:term-subete) chiude l'intero insieme e impedisce di trattare solo le carte incolori, solo quelle utili o solo una parte del reveal.
 
 :::example_sentence
 jp: >-
@@ -134,18 +134,18 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{見|み}}せたカードはすべて](grammar:grammar-misetakado-wa-subete)` usa una relativa verbale: `{{見|み}}せた` modifica `カード`, quindi il topic è "le carte che hai mostrato". [すべて](term:term-subete) estende l'azione a tutto quel gruppo.
-*   `[{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de)` non sceglie la zona: sceglie l'ordine interno in cui rimetti le carte. Il testo ti dà controllo sulla prossima configurazione della pila.
-*   `[{{自分|じぶん}}](term:term-self)の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}か{{下|した}}のどちらかに` oppone due destinazioni: cima o fondo del tuo deck. `に` marca dove finisce il gruppo.
-*   `[{{戻|もど}}す](term:term-modosu)` chiude l'azione come ritorno nel deck. Non stai aggiungendo le carte alla mano, non le stai mettendo nel graveyard e non le stai lasciando rivelate.
+*   [{{見|み}}せたカードはすべて](grammar:grammar-misetakado-wa-subete) usa una relativa verbale: {{見|み}}せた modifica カード, quindi il topic è "le carte che hai mostrato". [すべて](term:term-subete) estende l'azione a tutto quel gruppo.
+*   [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de) non sceglie la zona: sceglie l'ordine interno in cui rimetti le carte. Il testo ti dà controllo sulla prossima configurazione della pila.
+*   [{{自分|じぶん}}](term:term-self)の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}か{{下|した}}のどちらかに oppone due destinazioni: cima o fondo del tuo deck. に marca dove finisce il gruppo.
+*   [{{戻|もど}}す](term:term-modosu) chiude l'azione come ritorno nel deck. Non stai aggiungendo le carte alla mano, non le stai mettendo nel graveyard e non le stai lasciando rivelate.
 
 #### ⚖️ Contrasto operativo: `すべて` non ripete il filtro `無色`
 
-Nel payoff, `{{無色|むしょく}}カード{{1枚|いちまい}}につき` conta solo le carte incolori. Nel cleanup, `[{{見|み}}せたカードはすべて](grammar:grammar-misetakado-wa-subete)` prende tutte le carte mostrate, anche quelle che non hanno prodotto break extra. Il filtro cambia: prima conta le carte valide, poi richiude tutto il gruppo rivelato.
+Nel payoff, {{無色|むしょく}}カード{{1枚|いちまい}}につき conta solo le carte incolori. Nel cleanup, [{{見|み}}せたカードはすべて](grammar:grammar-misetakado-wa-subete) prende tutte le carte mostrate, anche quelle che non hanno prodotto break extra. Il filtro cambia: prima conta le carte valide, poi richiude tutto il gruppo rivelato.
 
 ## 4. Cima o fondo: `か...どちらか` e l'ordine libero
 
-La parte finale contiene due libertà diverse. [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de) riguarda come disponi le carte tra loro; `{{上|うえ}}か{{下|した}}のどちらか` riguarda dove le metti nel deck. Se confondi questi due livelli, rischi di leggere la frase come se ogni carta potesse andare separatamente sopra o sotto, ma il giapponese stringe la destinazione a una sola delle due opzioni.
+La parte finale contiene due libertà diverse. [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de) riguarda come disponi le carte tra loro; {{上|うえ}}か{{下|した}}のどちらか riguarda dove le metti nel deck. Se confondi questi due livelli, rischi di leggere la frase come se ogni carta potesse andare separatamente sopra o sotto, ma il giapponese stringe la destinazione a una sola delle due opzioni.
 
 #### ⚖️ Contrasto operativo: ordine interno vs destinazione unica
 
@@ -190,4 +190,4 @@ reveal_mode: sentence
 
 ## Nota finale
 
-{{破界秘伝|はかいひでん}}ナッシング・ゼロ si legge bene se mantieni separati tre livelli: `{{見|み}}せる` rende pubblico il gruppo, `こうして...{{1枚|いちまい}}につき` conta solo le carte incolori mostrate, e [{{見|み}}せたカードはすべて](grammar:grammar-misetakado-wa-subete) richiude tutte le carte rivelate nel [{{山札|やまふだ}}](term:term-deck). Il risultato pratico nasce dalla grammatica: prima il testo crea un insieme visibile, poi ne filtra una parte, infine rimette l'intero insieme in una sola destinazione scelta.
+{{破界秘伝|はかいひでん}}ナッシング・ゼロ si legge bene se mantieni separati tre livelli: {{見|み}}せる rende pubblico il gruppo, こうして...{{1枚|いちまい}}につき conta solo le carte incolori mostrate, e [{{見|み}}せたカードはすべて](grammar:grammar-misetakado-wa-subete) richiude tutte le carte rivelate nel [{{山札|やまふだ}}](term:term-deck). Il risultato pratico nasce dalla grammatica: prima il testo crea un insieme visibile, poi ne filtra una parte, infine rimette l'intero insieme in una sola destinazione scelta.

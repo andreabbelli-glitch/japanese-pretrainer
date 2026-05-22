@@ -64,7 +64,6 @@ Accanto a questi verbi da menu compaiono etichette molto concrete: [キタカミ
 - [ＢＰ](term:term-v481-biipii) — BP / Punti Mirtillo
 - [テラリウムドーム](term:term-v486-terariumudoomu) — Bioterarium / Terarium Dome
 - [コーストエリア](term:term-v488-koosutoeria) — Settore Costa
-- [オモダカ](term:term-v490-omodaka) — Alisma / Geeta
 - [サバンナエリア](term:term-v491-sabanaeria) — Settore Savana
 - [ポーラエリア](term:term-v492-pooraeria) — Settore Ghiacciai / area polare
 - [ピック](term:term-v494-pikku) — pick / stecchino decorativo
@@ -77,7 +76,7 @@ Accanto a questi verbi da menu compaiono etichette molto concrete: [キタカミ
 
 [ミッション](term:term-v499-misshon), [{{開始|かいし}}](term:term-v506-kaishi), [{{確認|かくにん}}](term:term-v482-kakunin) e [クリア](term:term-v479-kuria) leggono quasi come una barra di avanzamento. Prima il gioco nomina l'attività, poi può chiederti di controllare le condizioni, poi la fa partire; quando l'obiettivo è stato raggiunto, arriva [クリア](term:term-v479-kuria).
 
-Il punto da non perdere è il tempo dell'azione. [{{開始|かいし}}](term:term-v506-kaishi) è l'apertura: in `ミッションを {{開始|かいし}}する`, la missione non è ancora finita, sta iniziando. [{{確認|かくにん}}](term:term-v482-kakunin) è una pausa attiva: controlli regole, dati, dettagli o una scelta prima di procedere. [クリア](term:term-v479-kuria), invece, arriva dopo il risultato.
+Il punto da non perdere è il tempo dell'azione. [{{開始|かいし}}](term:term-v506-kaishi) è l'apertura: in ミッションを {{開始|かいし}}する, la missione non è ancora finita, sta iniziando. [{{確認|かくにん}}](term:term-v482-kakunin) è una pausa attiva: controlli regole, dati, dettagli o una scelta prima di procedere. [クリア](term:term-v479-kuria), invece, arriva dopo il risultato.
 
 :::example_sentence
 jp: >-
@@ -101,18 +100,20 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{撮影|さつえい}}ミッションを` ➔ **Tipo di missione** ([{{撮影|さつえい}}](term:term-v508-satsuei) restringe il compito a foto o riprese).
-*   `クリアしました` ➔ **Stato concluso** ([クリア](term:term-v479-kuria) funziona come verbo con `する`; `ました` lo presenta come fatto già avvenuto).
+*   {{撮影|さつえい}}ミッションを ➔ **Tipo di missione** ([{{撮影|さつえい}}](term:term-v508-satsuei) restringe il compito a foto o riprese).
+*   クリアしました ➔ **Stato concluso** ([クリア](term:term-v479-kuria) funziona come verbo con する; ました lo presenta come fatto già avvenuto).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{確認|かくにん}}](term:term-v482-kakunin) non equivale sempre a premere "sì". In una UI può voler dire "controlla", "verifica", "guarda i dettagli". [クリア](term:term-v479-kuria) risponde a un'altra domanda: non "vuoi procedere?", ma "questo obiettivo è stato superato?".
+#### ⚖️ Contrasto operativo
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** quando vedi [{{開始|かいし}}](term:term-v506-kaishi), immagina il pulsante di partenza. Quando vedi [クリア](term:term-v479-kuria), immagina il timbro finale su una missione.
+[{{確認|かくにん}}](term:term-v482-kakunin) non equivale sempre a premere "sì". In una UI può voler dire "controlla", "verifica", "guarda i dettagli". [クリア](term:term-v479-kuria) risponde a un'altra domanda: non "vuoi procedere?", ma "questo obiettivo è stato superato?".
+
+#### 🧠 Gancio cognitivo
+
+Quando vedi [{{開始|かいし}}](term:term-v506-kaishi), immagina il pulsante di partenza. Quando vedi [クリア](term:term-v479-kuria), immagina il timbro finale su una missione.
 
 ## 2. Regole, sfidanti e piani: quando il gioco negozia una prova
 
-[ルール](term:term-v480-ruuru) è trasparente, ma il suo comportamento in frase è importante. Con `で`, come in `この ルールで`, non indica solo "la regola" come oggetto: diventa il quadro operativo, cioè le condizioni con cui la prova si svolge. Se subito dopo compare [いいよね](term:term-e089-iiyone), il parlante sta cercando accordo su una condizione che considera già accettabile.
+[ルール](term:term-v480-ruuru) è trasparente, ma il suo comportamento in frase è importante. Con で, come in この ルールで, non indica solo "la regola" come oggetto: diventa il quadro operativo, cioè le condizioni con cui la prova si svolge. Se subito dopo compare [いいよね](term:term-e089-iiyone), il parlante sta cercando accordo su una condizione che considera già accettabile.
 
 [{{挑戦者|ちょうせんしゃ}}](term:term-v495-chousensha) nomina la persona che entra nel ruolo di challenger. [{{作戦|さくせん}}](term:term-v497-sakusen) e [{{大作戦|だいさくせん}}](term:term-v493-daisakusen) spostano il registro verso il piano d'azione: [{{作戦|さくせん}}](term:term-v497-sakusen) può essere una strategia concreta, mentre [{{大作戦|だいさくせん}}](term:term-v493-daisakusen) suona più marcato, quasi da "operazione speciale" annunciata da un personaggio o da un evento.
 
@@ -127,7 +128,7 @@ translation_it: >-
 
 *   `この ルールで` ➔ **Condizione di gioco** (`で` non marca un luogo: qui significa "con / secondo questa regola").
 *   `いい` ➔ **Valutazione** (la condizione viene trattata come accettabile).
-*   `よね` ➔ **Ricerca di accordo** ([いいよね](term:term-e089-iiyone) suona come "ci sta, vero?", non come una domanda neutra).
+*   よね ➔ **Ricerca di accordo** ([いいよね](term:term-e089-iiyone) suona come "ci sta, vero?", non come una domanda neutra).
 
 :::example_sentence
 jp: >-
@@ -142,12 +143,13 @@ translation_it: >-
 *   `{{大作戦|だいさくせん}}を` ➔ **Piano marcato** (`{{大|だい}}` dà peso all'operazione, non solo dimensione fisica).
 *   `{{考|かんが}}えます` ➔ **Elaborazione** (il piano viene pensato o preparato, non ancora eseguito).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** in [{{挑戦者|ちょうせんしゃ}}](term:term-v495-chousensha), `{{者|しゃ}}` è il segnale "persona del ruolo": chi fa `{{挑戦|ちょうせん}}` diventa la persona-sfidante. È un appiglio di lettura, non una promessa sull'etimologia completa della parola.
+#### 🧠 Gancio cognitivo
 
-> [!WARNING]
-> **⚖️ `いいよね` non è un sì automatico**
-> [いいよね](term:term-e089-iiyone) porta dentro l'aspettativa del parlante. In un dialogo può suonare morbido, ma non è neutro come `いいですか`. Se il personaggio dice `この ルールで いいよね`, sta proponendo quel set di regole come già ragionevole.
+In [{{挑戦者|ちょうせんしゃ}}](term:term-v495-chousensha), {{者|しゃ}} è il segnale "persona del ruolo": chi fa {{挑戦|ちょうせん}} diventa la persona-sfidante. È un appiglio di lettura, non una promessa sull'etimologia completa della parola.
+
+#### ⚖️ Contrasto operativo: `いいよね` non è un sì automatico
+
+[いいよね](term:term-e089-iiyone) porta dentro l'aspettativa del parlante. In un dialogo può suonare morbido, ma non è neutro come いいですか. Se il personaggio dice この ルールで いいよね, sta proponendo quel set di regole come già ragionevole.
 
 ## 3. Geografia del DLC: nomi propri, settori e liste aperte
 
@@ -164,7 +166,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `キタカミとか` ➔ **Primo esempio** ([～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) presenta Kitakami come membro di un gruppo più ampio).
+*   キタカミとか ➔ **Primo esempio** ([～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) presenta Kitakami come membro di un gruppo più ampio).
 *   `ブルーベリー{{学園|がくえん}}とか` ➔ **Secondo esempio** (aggiunge l'Istituto Mirtillo senza chiudere la lista).
 *   `に {{行|い}}きます` ➔ **Destinazione** (`に` conferma che i nomi precedenti sono luoghi verso cui ci si muove).
 
@@ -177,12 +179,13 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `ブルレクを クリアして` ➔ **Attività completata** ([ブルレク](term:term-v496-burureku) è l'attività locale; [クリア](term:term-v479-kuria) la chiude).
-*   `ＢＰを` ➔ **Ricompensa o saldo** ([ＢＰ](term:term-v481-biipii) è ciò che entra nella lettura come punti).
+*   ブルレクを クリアして ➔ **Attività completata** ([ブルレク](term:term-v496-burureku) è l'attività locale; [クリア](term:term-v479-kuria) la chiude).
+*   ＢＰを ➔ **Ricompensa o saldo** ([ＢＰ](term:term-v481-biipii) è ciò che entra nella lettura come punti).
 *   `{{受|う}}け{{取|と}}りました` ➔ **Ricezione conclusa** (`{{受|う}}け{{取|と}}る` combina "ricevere" e "prendere in consegna").
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `キタカミとブルーベリー{{学園|がくえん}}` tende a elencare due luoghi specifici. `キタカミとかブルーベリー{{学園|がくえん}}とか` li tratta come esempi: "Kitakami, l'Istituto Mirtillo e posti di quel tipo". [～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) lascia la porta aperta.
+#### ⚖️ Contrasto operativo
+
+キタカミとブルーベリー{{学園|がくえん}} tende a elencare due luoghi specifici. キタカミとかブルーベリー{{学園|がくえん}}とか li tratta come esempi: "Kitakami, l'Istituto Mirtillo e posti di quel tipo". [～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) lascia la porta aperta.
 
 ## 4. Cartelli, indizi e ricerca: leggere prove sul campo
 
@@ -201,7 +204,7 @@ translation_it: >-
 
 *   `{{看板|かんばん}}の ヒントを` ➔ **Fonte dell'indizio** (`の` collega il cartello al suggerimento: l'informazione viene da lì).
 *   `{{読|よ}}んで` ➔ **Azione ponte** (la forma in `て` lega la lettura alla scelta successiva).
-*   `{{正解|せいかい}}を {{選|えら}}びます` ➔ **Scelta risolutiva** ([{{正解|せいかい}}](term:term-v489-seikai) non è una risposta qualunque: è quella corretta).
+*   {{正解|せいかい}}を {{選|えら}}びます ➔ **Scelta risolutiva** ([{{正解|せいかい}}](term:term-v489-seikai) non è una risposta qualunque: è quella corretta).
 
 :::example_sentence
 jp: >-
@@ -216,11 +219,13 @@ translation_it: >-
 *   `ポケモンを {{観測|かんそく}}して` ➔ **Rilevamento** (il Pokémon è l'oggetto osservato come dato).
 *   `{{撮影|さつえい}}します` ➔ **Scatto o ripresa** (dopo l'osservazione, l'azione diventa fotografica).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** [{{観測|かんそく}}](term:term-v505-kansoku) contiene l'idea di osservare con uno scopo: non "vedo un Pokémon", ma "lo rilevo". [{{撮影|さつえい}}](term:term-v508-satsuei) è il momento in cui quell'osservazione diventa immagine.
+#### 🧠 Gancio cognitivo
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [ヒント](term:term-v500-hinto) ti avvicina alla soluzione; [{{正解|せいかい}}](term:term-v489-seikai) è la soluzione già corretta. Se il menu chiede di scegliere, [ヒント](term:term-v500-hinto) è materiale da leggere prima, [{{正解|せいかい}}](term:term-v489-seikai) è ciò che vuoi selezionare alla fine.
+[{{観測|かんそく}}](term:term-v505-kansoku) contiene l'idea di osservare con uno scopo: non "vedo un Pokémon", ma "lo rilevo". [{{撮影|さつえい}}](term:term-v508-satsuei) è il momento in cui quell'osservazione diventa immagine.
+
+#### ⚖️ Contrasto operativo
+
+[ヒント](term:term-v500-hinto) ti avvicina alla soluzione; [{{正解|せいかい}}](term:term-v489-seikai) è la soluzione già corretta. Se il menu chiede di scegliere, [ヒント](term:term-v500-hinto) è materiale da leggere prima, [{{正解|せいかい}}](term:term-v489-seikai) è ciò che vuoi selezionare alla fine.
 
 ## 5. Servizi, bonus e parlato affettivo
 
@@ -228,7 +233,7 @@ translation_it: >-
 
 [おまけ](term:term-v483-omake) segnala qualcosa in più rispetto all'elemento principale: un bonus, un extra, un'aggiunta omaggio. [ピック](term:term-v494-pikku), nel contesto dei panini, non va letto come il verbo inglese "pick": è lo stecchino decorativo. [{{洞|どう}}くつ](term:term-v484-doukutsu) resta invece una parola da esplorazione; quando appare in un nome di luogo, prepara a una grotta o a un'area sotterranea.
 
-Quando la frase diventa personale, [{{大好|だいす}}き](term:term-v501-daisuki) porta affetto forte, non semplice utilità. `オーガポンが {{大好|だいす}}きです` non significa che Ogerpon conviene in battaglia: il parlante lo adora. Se nello stesso contesto compare [{{知識|ちしき}}](term:term-v507-chishiki), il sapere nasce da interesse o attaccamento, non solo da una richiesta del sistema.
+Quando la frase diventa personale, [{{大好|だいす}}き](term:term-v501-daisuki) porta affetto forte, non semplice utilità. [オーガポン](term:term-v478-oogapon)が {{大好|だいす}}きです non significa che Ogerpon conviene in battaglia: il parlante lo adora. Se nello stesso contesto compare [{{知識|ちしき}}](term:term-v507-chishiki), il sapere nasce da interesse o attaccamento, non solo da una richiesta del sistema.
 
 :::example_sentence
 jp: >-
@@ -254,10 +259,11 @@ translation_it: >-
 
 *   `オーガポンが {{大好|だいす}}き` ➔ **Centro affettivo** (`が` marca ciò che piace moltissimo).
 *   `だから` ➔ **Motivo dichiarato** (la preferenza spiega l'azione successiva).
-*   `もっと {{知識|ちしき}}を {{集|あつ}}めます` ➔ **Accumulo di sapere** ([{{知識|ちしき}}](term:term-v507-chishiki) è informazione raccolta, non un premio materiale).
+*   もっと {{知識|ちしき}}を {{集|あつ}}めます ➔ **Accumulo di sapere** ([{{知識|ちしき}}](term:term-v507-chishiki) è informazione raccolta, non un premio materiale).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [おまけ](term:term-v483-omake), [クリア](term:term-v479-kuria) e [{{大好|だいす}}き](term:term-v501-daisuki) possono apparire in schermate brevi, ma rispondono a domande diverse: "che cosa ricevo in più?", "che cosa ho finito?", "che cosa piace al personaggio?".
+#### ⚖️ Contrasto operativo
+
+[おまけ](term:term-v483-omake), [クリア](term:term-v479-kuria) e [{{大好|だいす}}き](term:term-v501-daisuki) possono apparire in schermate brevi, ma rispondono a domande diverse: "che cosa ricevo in più?", "che cosa ho finito?", "che cosa piace al personaggio?".
 
 ## Esempi guidati di riepilogo
 

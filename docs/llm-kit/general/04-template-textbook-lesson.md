@@ -66,6 +66,13 @@ sono vietati quando parlano del sistema di studio.>
 
 ---
 
+<!--
+Regole meccaniche inventario:
+- label, `—` e inizio gloss stanno sulla stessa riga della bullet;
+- ogni entry inventariata deve essere ripresa nel body con link semantico;
+- non mettere link `term:` / `grammar:` dentro code span Markdown.
+-->
+
 ## 1. <Cluster tematico orientato alla scena>
 
 <Organizza il corpo per cluster funzionali, non per ordine alfabetico. Ogni
@@ -219,6 +226,9 @@ Vale anche per inline code: `` `{{未解放|みかいほう}}` `` e non `` `未�
 Quando il riferimento punta a una entry con flashcard associata, questa regola
 e obbligatoria anche nell'inventario iniziale, nella prima spiegazione e nel
 riepilogo: non lasciare il target review come kanji nudo nel textbook.
+
+Non racchiudere un link semantico in backtick. Usa il link fuori dal code span,
+oppure usa il solo frammento giapponese in code span se non serve il link.
 -->
 
 ## Esempi guidati di riepilogo
@@ -291,6 +301,8 @@ Quella voce non deve essere una nota vaga: deve fissare posizione nel flow,
 immagine scelta, obiettivo visivo e criteri di recupero.
 Usa :::image solo se esiste gia un asset reale sotto `assets/`; non inventare
 path immagine.
+Non mettere :::image prima degli inventari e del separatore `---`; inseriscilo
+dopo il separatore, nel cluster che lo rende didatticamente utile.
 Non inventare campi audio nel testo editoriale: l'audio, se serve, viene
 arricchito in seguito dalla pipeline locale con asset e provenance reali.
 Se aggiungi campi descrittivi YAML nel frontmatter, come `summary`, usa `>-`.

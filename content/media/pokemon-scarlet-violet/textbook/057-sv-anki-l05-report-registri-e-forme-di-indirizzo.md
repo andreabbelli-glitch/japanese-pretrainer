@@ -50,22 +50,24 @@ Tra scuola, Area Zero e Team Star, parole come [{{報|ほう}}{{告|こく}}](te
 
 ## Etichette da riconoscere
 
-- アカデミー — cornice scolastica in cui annunci, lezioni e risposte corrette diventano naturali
+- [アカデミー](term:term-v020-akademii) — cornice scolastica in cui annunci, lezioni e risposte corrette diventano naturali
 - クラベル{{校長|こうちょう}} — destinatario tipico di resoconti formali
-- エリアゼロ — luogo narrativo in cui curiosità e mistero prendono peso
-- スター{{団|だん}} — gruppo legato a scontri verbali e tono aggressivo
+- [エリアゼロ](term:term-v022-eriazero) — luogo narrativo in cui curiosità e mistero prendono peso
+- [スター{{団|だん}}](term:term-v017-sutaa-dan) — gruppo legato a scontri verbali e tono aggressivo
 - ハッサク{{先生|せんせい}} — voce colta e compassata, utile per riconoscere registri elevati
 
 ---
+
+[アカデミー](term:term-v020-akademii) dà la cornice scolastica, [エリアゼロ](term:term-v022-eriazero) sposta verso mistero e trama, [スター{{団|だん}}](term:term-v017-sutaa-dan) porta invece il tono di gruppo rivale e scontro verbale.
 
 ## 1. Annunci, rapporti e risposte nell'Accademia
 
 Nel registro scolastico il giapponese tende a ordinare bene i ruoli: chi ascolta, che cosa si studia, a chi si fa rapporto e quale risposta viene considerata corretta. Qui [{{皆|みな}}さん](term:term-anki-l05-minasan), [{{学|まな}}ぶ](term:term-anki-l05-manabu), [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku) e [{{正|ただ}}しい](term:term-anki-l05-tadashii) lavorano insieme.
 
-*   [{{皆|みな}}さん](term:term-anki-l05-minasan) non è un semplice "tutti" neutro. `{{皆|みな}}` indica il gruppo, mentre `さん` aggiunge rispetto e distanza; per questo suona naturale in un annuncio a studenti, insegnanti o partecipanti a una lezione. Rispetto a `みんな`, che può sembrare più familiare, [{{皆|みな}}さん](term:term-anki-l05-minasan) mette subito la frase in una cornice pubblica o cortese.
+*   [{{皆|みな}}さん](term:term-anki-l05-minasan) non è un semplice "tutti" neutro. {{皆|みな}} indica il gruppo, mentre さん aggiunge rispetto e distanza; per questo suona naturale in un annuncio a studenti, insegnanti o partecipanti a una lezione. Rispetto a みんな, che può sembrare più familiare, [{{皆|みな}}さん](term:term-anki-l05-minasan) mette subito la frase in una cornice pubblica o cortese.
 *   [{{学|まな}}ぶ](term:term-anki-l05-manabu) prende spesso con [を](grammar:grammar-g033-marca-l-oggetto-diretto) il contenuto appreso: una materia, una regola, un fenomeno dei Pokémon. Non indica solo "studiare sui libri"; può voler dire assimilare qualcosa attraverso l'esperienza, una lezione o una spiegazione.
-*   [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku) è un resoconto che deve arrivare a qualcuno. Quando diventa [{{報|ほう}}{{告|こく}}する](term:term-anki-l05-houkoku), il destinatario tende a comparire con [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) o con una forma come `クラベル{{校長|こうちょう}}への{{報|ほう}}{{告|こく}}`, dove `へ` più [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) crea "il rapporto verso / per Clavel".
-*   [{{正|ただ}}しい](term:term-anki-l05-tadashii) è un aggettivo in `い`: può stare direttamente davanti al nome. `{{正|ただ}}しい{{答|こた}}え` è "la risposta corretta", senza bisogno di [の](grammar:grammar-g030-possesso-collegamento-tra-nomi). Nei test dell'Accademia e nelle spiegazioni dei professori, questa parola segnala conformità a una regola, non solo un'impressione positiva.
+*   [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku) è un resoconto che deve arrivare a qualcuno. Quando diventa [{{報|ほう}}{{告|こく}}する](term:term-anki-l05-houkoku), il destinatario tende a comparire con [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) o con una forma come クラベル{{校長|こうちょう}}への{{報|ほう}}{{告|こく}}, dove へ più [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) crea "il rapporto verso / per Clavel".
+*   [{{正|ただ}}しい](term:term-anki-l05-tadashii) è un aggettivo in い: può stare direttamente davanti al nome. {{正|ただ}}しい{{答|こた}}え è "la risposta corretta", senza bisogno di [の](grammar:grammar-g030-possesso-collegamento-tra-nomi). Nei test dell'Accademia e nelle spiegazioni dei professori, questa parola segnala conformità a una regola, non solo un'impressione positiva.
 
 :::example_sentence
 jp: >-
@@ -76,9 +78,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `アカデミーの{{皆|みな}}さん` ➔ **Gruppo interpellato con registro cortese**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) collega l'Accademia alle persone chiamate in causa, mentre `さん` alza il tono.
+*   アカデミーの{{皆|みな}}さん ➔ **Gruppo interpellato con registro cortese**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) collega l'Accademia alle persone chiamate in causa, mentre さん alza il tono.
 *   `{{今日|きょう}}は` ➔ **Cornice temporale tematizzata**: `は` mette "oggi" come sfondo del discorso.
-*   `ポケモンの{{生態|せいたい}}について` ➔ **Argomento della spiegazione**: [～について](grammar:grammar-g107-riguardo-a-su) indica "riguardo all'ecologia dei Pokémon".
+*   ポケモンの{{生態|せいたい}}について ➔ **Argomento della spiegazione**: [～について](grammar:grammar-g107-riguardo-a-su) indica "riguardo all'ecologia dei Pokémon".
 *   `{{学|まな}}びます` ➔ **Azione di apprendere in registro cortese**: la forma `ます` si adatta al parlato scolastico.
 
 :::example_sentence
@@ -90,15 +92,15 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `クラベル{{校長|こうちょう}}への{{報|ほう}}{{告|こく}}` ➔ **Resoconto orientato a un destinatario**: `へ` indica la direzione del rapporto, [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) lo lega al nome [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku).
-*   `{{正|ただ}}しい{{答|こた}}えを` ➔ **Oggetto scelto**: [{{正|ただ}}しい](term:term-anki-l05-tadashii) modifica direttamente `{{答|こた}}え`, poi [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene selezionato.
+*   クラベル{{校長|こうちょう}}への{{報|ほう}}{{告|こく}} ➔ **Resoconto orientato a un destinatario**: へ indica la direzione del rapporto, [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) lo lega al nome [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku).
+*   {{正|ただ}}しい{{答|こた}}えを ➔ **Oggetto scelto**: [{{正|ただ}}しい](term:term-anki-l05-tadashii) modifica direttamente {{答|こた}}え, poi [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene selezionato.
 *   `{{選|えら}}んでからです` ➔ **Sequenza temporale**: prima si sceglie, poi arriva il rapporto.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku) non è una chiacchierata qualsiasi. `{{話|はなし}}` può essere "discorso" o "storia"; `{{連絡|れんらく}}` è un contatto o una comunicazione; [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku) invece porta un tono di resoconto organizzato. Se compare con un preside, un professore o una missione, chiediti subito chi deve ricevere l'informazione.
+[{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku) non è una chiacchierata qualsiasi. {{話|はなし}} può essere "discorso" o "storia"; {{連絡|れんらく}} è un contatto o una comunicazione; [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku) invece porta un tono di resoconto organizzato. Se compare con un preside, un professore o una missione, chiediti subito chi deve ricevere l'informazione.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per ricordare [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku), immaginalo come un messaggio che deve salire di livello gerarchico: non resta nella testa del personaggio, ma viene consegnato a qualcuno che ha autorità o responsabilità nella scena.
 
@@ -106,7 +108,7 @@ Per ricordare [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku), immagi
 
 Fuori dall'aula, *Scarlet & Violet* usa spesso parole che non descrivono soltanto un fatto esterno. [{{疲|つか}}れる](term:term-anki-l05-tsukareru) mette in scena uno stato del soggetto, [{{気|き}}になる](term:term-anki-l05-kininaru) mostra un pensiero che non si stacca, e [{{災|わざわ}}い](term:term-anki-l05-wazawai) porta il tono verso mito, rovina o pericolo antico.
 
-*   [{{疲|つか}}れる](term:term-anki-l05-tsukareru) è intransitivo: il soggetto che si stanca prende [が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo). In italiano dici spesso "mi sono stancato", ma in giapponese la frase tende a mostrare lo stato che nasce nel soggetto. La forma passata `{{疲|つか}}れた` funziona molto bene come "sono stanco", cioè stanchezza già arrivata e ora visibile.
+*   [{{疲|つか}}れる](term:term-anki-l05-tsukareru) è intransitivo: il soggetto che si stanca prende [が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo). In italiano dici spesso "mi sono stancato", ma in giapponese la frase tende a mostrare lo stato che nasce nel soggetto. La forma passata {{疲|つか}}れた funziona molto bene come "sono stanco", cioè stanchezza già arrivata e ora visibile.
 *   [{{気|き}}になる](term:term-anki-l05-kininaru) non è un semplice "interessare" freddo. La cosa che cattura l'attenzione prende [が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo), mentre la persona che prova curiosità o apprensione può restare implicita. In Area Zero è perfetto per qualcosa che il personaggio non riesce a ignorare.
 *   [{{災|わざわ}}い](term:term-anki-l05-wazawai) suona più solenne di un normale problema. Non è "piccolo guaio quotidiano": richiama calamità, maledizioni, disastri storici o leggende. Quando il testo lo collega a Paldea antica o ai Pokémon Rovina, il registro diventa narrativo e pesante.
 
@@ -119,7 +121,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `エリアゼロの{{底|そこ}}にあるもの` ➔ **Cosa localizzata e misteriosa**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) lega Area Zero al "fondo", [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) colloca ciò che si trova lì.
+*   エリアゼロの{{底|そこ}}にあるもの ➔ **Cosa localizzata e misteriosa**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) lega Area Zero al "fondo", [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) colloca ciò che si trova lì.
 *   `が` ➔ **Ciò che emerge nella mente**: marca la cosa che attira l'attenzione.
 *   `どうしても{{気|き}}になる` ➔ **Curiosità insistente**: `どうしても` aggiunge "in ogni caso / proprio", quindi il pensiero resta anche se il personaggio prova a lasciarlo stare.
 
@@ -133,14 +135,14 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `バトルが{{長|なが}}くなると` ➔ **Condizione naturale**: quando la battaglia diventa lunga, si apre la conseguenza.
-*   `ポケモンが` ➔ **Soggetto dello stato**: [が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo) marca chi entra nella stanchezza.
+*   ポケモンが ➔ **Soggetto dello stato**: [が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo) marca chi entra nella stanchezza.
 *   `{{疲|つか}}れることがある` ➔ **Possibilità ricorrente**: `Vることがある` non dice che succede sempre, ma che può capitare.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{気|き}}になる](term:term-anki-l05-kininaru) può oscillare tra curiosità e preoccupazione. Se il contesto è una scoperta, un mistero o una domanda non risolta, spesso conviene leggerlo come "mi incuriosisce / mi resta in testa". Se invece la scena ha pericolo, tensione o qualcuno che non sta bene, la sfumatura di "mi preoccupa" diventa più forte.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{気|き}}になる](term:term-anki-l05-kininaru), pensa a una cosa che "diventa mente": non è solo davanti agli occhi, entra nel pensiero e continua a occupare spazio. È una scorciatoia mnemonica per ricordare il comportamento della frase, non una spiegazione etimologica.
 
@@ -161,7 +163,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{貴方|あなた}}のポケモン` ➔ **Possessore o riferimento personale**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) collega "tu" al Pokémon.
+*   {{貴方|あなた}}のポケモン ➔ **Possessore o riferimento personale**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) collega "tu" al Pokémon.
 *   `とても{{強|つよ}}そう` ➔ **Apparenza valutata**: `そう` presenta la forza come impressione visibile.
 *   `ですね` ➔ **Cortesia più conferma morbida**: il parlante cerca accordo senza abbassare troppo il registro.
 
@@ -179,7 +181,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{貴|き}}{{様|さま}}` ➔ **Interlocutore attaccato**: il pronome non identifica soltanto chi ascolta, ma lo colpisce verbalmente.
-*   `スター{{団|だん}}のジャマを` ➔ **Oggetto dell'intralcio**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) collega Team Star a `ジャマ`, [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene fatto.
+*   スター{{団|だん}}のジャマを ➔ **Oggetto dell'intralcio**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) collega Team Star a ジャマ, [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene fatto.
 *   `する{{気|き}}か` ➔ **Intenzione sfidata**: `{{気|き}}` qui vale "intenzione / disposizione", e `か` chiude come domanda ruvida.
 
 ### C. [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei): un "io" umile e teatrale
@@ -199,11 +201,11 @@ translation_it: >-
 *   `アカデミーで` ➔ **Luogo dell'azione**: `で` indica dove avviene l'insegnamento.
 *   `{{美術|びじゅつ}}を{{教|おし}}えております` ➔ **Azione cortese e continuativa**: `おります` è più umile e formale di `います`, quindi la frase suona compassata.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{貴方|あなた}}](term:term-anki-l05-anata) mantiene distanza, [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) aggredisce, [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) abbassa il parlante. Non tradurli tutti meccanicamente come "tu" o "io": prima chiediti quale relazione sta costruendo la battuta.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Immagina i pronomi come la posizione della camera. [{{貴方|あなた}}](term:term-anki-l05-anata) tiene l'interlocutore a distanza controllata, [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) gli punta addosso la rabbia, [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) abbassa la camera sul parlante stesso per renderlo umile.
 

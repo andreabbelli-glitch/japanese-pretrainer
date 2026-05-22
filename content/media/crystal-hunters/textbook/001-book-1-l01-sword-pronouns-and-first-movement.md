@@ -28,8 +28,11 @@ dove si trova qualcosa e quale elemento entra davvero nel campo della frase.
 ## Termini chiave
 
 - [{{剣|けん}}](term:term-ken) — spada, oggetto fisico attorno a cui ruotano le prime azioni
+- [{{見|み}}る](term:term-miru) — guardare / vedere come azione volontaria
+- [{{見|み}}える](term:term-mieru) — essere visibile, entrare nel campo visivo
+- [{{取|と}}る](term:term-toru) — prendere fisicamente o afferrare
 - [{{俺|おれ}}](term:term-ore) — io ruvido, diretto, spesso maschile
-- [{{僕|ぼく}}](term:term-boku) — io più morbido rispetto a `{{俺|おれ}}`
+- [{{僕|ぼく}}](term:term-boku) — io più morbido rispetto a {{俺|おれ}}
 - [{{君|きみ}}](term:term-kimi) — tu, interlocutore chiamato in causa
 - [{{男|おとこ}}](term:term-otoko) — uomo / figura maschile in scena
 - [{{一人|ひとり}}](term:term-hitori) — una persona / da solo
@@ -78,7 +81,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{私|わたし}}は` ➔ **Tema della battuta** (`は` mette "io" sul tavolo: quanto a me...).
-*   `{{見|み}}る` ➔ **Verbo finale** ([{{見|み}}る](term:term-miru) chiude la frase con l'azione del vedere / guardare).
+*   {{見|み}}る ➔ **Verbo finale** ([{{見|み}}る](term:term-miru) chiude la frase con l'azione del vedere / guardare).
 
 La frase è breve, ma il comportamento è già quello del manga: prima individui
 il blocco marcato, poi aspetti il verbo finale. In italiano dici "io vedo";
@@ -102,7 +105,7 @@ scena e il resto della battuta decidono se leggerlo come "un cristallo" o
 "cristalli". La particella, però, è già chiara: `クリスタルを` è la cosa colpita
 dall'azione del verbo.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Immagina ogni particella come un'etichetta appesa al blocco subito prima. Anche
 se l'ordine della battuta si muove, l'etichetta continua a dirti che ruolo ha
@@ -140,7 +143,7 @@ translation_it: >-
 *   `{{私|わたし}}は` ➔ **Tema** (il parlante viene marcato dopo, senza perdere ruolo).
 *   `{{見|み}}る` ➔ **Verbo finale** (conferma che il cristallo è ciò che viene visto).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 Non tradurre ogni ordine giapponese in un ordine italiano rigido mentre stai
 ancora leggendo. Prima trova `は`, `を`, `に` e `が`; poi decidi come rendere
@@ -206,7 +209,7 @@ translation_it: >-
 *   `あそこに` ➔ **Destinazione**: con un verbo di movimento, `に` indica il punto verso cui si va.
 *   `{{行|い}}く` ➔ **Movimento**: il verbo trasforma `に` da luogo statico a destinazione.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `トラックにいる` = essere nel truck; `あそこに{{行|い}}く` = andare laggiù. La
 particella è la stessa, ma il verbo finale decide se stai leggendo posizione o
@@ -258,7 +261,7 @@ translation_it: >-
 *   `クリスタルが` ➔ **Cosa gradita**: il cristallo è l'elemento che "risulta piacevole".
 *   `{{好|す}}きだ` ➔ **Predicato di preferenza**: non un verbo d'azione, ma una valutazione.
 
-Anche [{{見|み}}える](term:term-mieru) usa spesso `が`, perché il centro della
+Anche [{{見|み}}える](term:term-mieru) usa spesso が, perché il centro della
 frase è la cosa che diventa visibile o percepibile.
 
 :::example_sentence
@@ -283,12 +286,17 @@ translation_it: >-
   Riesco a vedere.
 :::
 
-#### ⚖️ Contrasto
+#### 🗺️ Anatomia della frase
+
+*   `{{私|わたし}}は` ➔ **Punto di vista lasciato in primo piano**: la frase parla della capacità percettiva del parlante.
+*   `{{見|み}}える` ➔ **Visibilità senza oggetto esplicito**: ciò che si vede va recuperato dalla scena.
+
+#### ⚖️ Contrasto operativo
 
 `{{私|わたし}}は{{見|み}}える` può funzionare come "riesco a vedere" dal mio punto
 di vista. `{{私|わたし}}が{{見|み}}える`, invece, mette `{{私|わたし}}` come cosa
 visibile: "io sono visibile" o "si vede me". Con
-[{{見|み}}える](term:term-mieru), il blocco con `が` è spesso ciò che appare,
+[{{見|み}}える](term:term-mieru), il blocco con が è spesso ciò che appare,
 non chi guarda attivamente.
 
 ## 3. Pronomi e persone: chi parla, a chi, con che tono
@@ -343,7 +351,7 @@ descrittivo: "un uomo", "il maschio", "la figura maschile". Il tono ruvido può
 arrivare dal contesto o da parole più marcate, non da [{{男|おとこ}}](term:term-otoko)
 da solo.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Quando vedi un pronome, chiediti due cose insieme: chi indica e che voce porta.
 `{{俺|おれ}}` e `{{僕|ぼく}}` possono entrambi diventare "io" in italiano, ma
@@ -367,13 +375,13 @@ translation_it: >-
 
 *   `{{僕|ぼく}}は` ➔ **Tema / parlante**: chi prende posizione nella battuta.
 *   `{{剣|けん}}を` ➔ **Oggetto diretto**: la spada è ciò che l'azione riguarda.
-*   `{{取|と}}り{{戻|もど}}す` ➔ **Recuperare**: [{{取|と}}り{{戻|もど}}す](term:term-torimodosu) combina l'idea di prendere con quella di riportare indietro.
+*   {{取|と}}り{{戻|もど}}す ➔ **Recuperare**: [{{取|と}}り{{戻|もど}}す](term:term-torimodosu) combina l'idea di prendere con quella di riportare indietro.
 
-`{{取|と}}り{{戻|もど}}す` non è [{{取|と}}る](term:term-toru) nel senso neutro di
+{{取|と}}り{{戻|もど}}す non è [{{取|と}}る](term:term-toru) nel senso neutro di
 "prendere". Dentro c'è `{{戻|もど}}す`, "far tornare indietro": la lettura
 naturale è riprendersi qualcosa che era stato perso, sottratto o portato via.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{剣|けん}}を{{取|と}}る` può essere "prendere la spada" per la prima volta;
 `{{剣|けん}}を{{取|と}}り{{戻|もど}}す` implica che la spada torna a chi la voleva
@@ -426,7 +434,7 @@ translation_it: >-
 *   `{{少|すこ}}し` ➔ **Intensità ridotta**: "un po'", non uno stato assoluto.
 *   `{{落|お}}ち{{込|こ}}む` ➔ **Movimento emotivo verso il basso**: l'immagine fisica di "cadere dentro" diventa abbattimento.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{止|と}}まる` non è `{{止|と}}める`: con `{{止|と}}まる`, il soggetto si ferma.
 Per "fermare qualcosa", il giapponese usa una forma transitiva come
@@ -471,7 +479,7 @@ translation_it: >-
 
 Nelle prime pagine di Crystal Hunters, una frase breve può già dire molto:
 `は` mette in primo piano la voce del personaggio, `を` aggancia la
-[{{剣|けん}}](term:term-ken) all'azione, `に` colloca o orienta il movimento e
+[{{剣|けん}}](term:term-ken) all'azione, に colloca o orienta il movimento e
 `が` fa apparire ciò che conta nella scena. Quando il verbo finale arriva,
 decide se stai leggendo visione, movimento, recupero, colpo, arresto o
 reazione emotiva.

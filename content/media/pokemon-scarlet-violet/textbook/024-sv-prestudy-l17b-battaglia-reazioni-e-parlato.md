@@ -52,7 +52,7 @@ Il filo da seguire è la funzione della frase. Alcune forme aprono il tono socia
 
 ## Pattern grammaticali chiave
 
-- [〜が あります](term:term-e035-ga-arimasu) — `が` presenta ciò che esiste o diventa disponibile
+- [〜が あります](term:term-e035-ga-arimasu) — が presenta ciò che esiste o diventa disponibile
 - `Nに {{参加|さんか}}する` — partecipare a N; `に` marca l'attività o evento a cui si entra
 - `Nの {{名前|なまえ}}` — il nome di N; `の` collega l'entità alla sua etichetta
 
@@ -80,21 +80,28 @@ translation_it: >-
 *   `なるほど` ➔ **Reazione di comprensione**: il parlante segnala che il quadro ora torna.
 *   `{{今回|こんかい}}は` ➔ **Tema temporale**: `は` mette in primo piano "questa volta" e contrasta implicitamente con altre occasioni.
 *   `{{調査|ちょうさ}}に` ➔ **Evento di destinazione**: `に` marca l'attività a cui si prende parte.
-*   `{{参加|さんか}}します` ➔ **Azione cortese**: il nome [{{参加|さんか}}](term:term-v195-sanka) si unisce a `する` e diventa "partecipare".
+*   {{参加|さんか}}します ➔ **Azione cortese**: il nome [{{参加|さんか}}](term:term-v195-sanka) si unisce a する e diventa "partecipare".
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{今回|こんかい}}](term:term-v192-konkai) non significa semplicemente "adesso": per "ora" il gioco può usare forme come `{{今|いま}}`. [{{今回|こんかい}}](term:term-v192-konkai) crea una cornice da episodio, "in questa specifica occasione". Allo stesso modo, [{{参加|さんか}}](term:term-v195-sanka) non descrive osservare una gara da fuori: dice che entri nell'attività.
+[{{今回|こんかい}}](term:term-v192-konkai) non significa semplicemente "adesso": per "ora" il gioco può usare forme come {{今|いま}}. [{{今回|こんかい}}](term:term-v192-konkai) crea una cornice da episodio, "in questa specifica occasione". Allo stesso modo, [{{参加|さんか}}](term:term-v195-sanka) non descrive osservare una gara da fuori: dice che entri nell'attività.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Quando vedi [もしかして](term:term-v191-moshikashite), immagina il personaggio che inclina la frase in avanti ma non la spinge fino all'affermazione piena: sta chiedendo conferma, non proclamando un fatto.
 
 ## 2. Presenza, nome e indagine: far comparire qualcosa nella scena
 
-Quando il testo passa dalle reazioni alla scoperta, la grammatica diventa più localizzante. [〜が あります](term:term-e035-ga-arimasu) fa comparire qualcosa: `が` marca l'elemento che entra nel campo visivo della frase, mentre `あります` dice che quell'elemento esiste, si trova lì o è disponibile.
+Quando il testo passa dalle reazioni alla scoperta, la grammatica diventa più localizzante. [〜が あります](term:term-e035-ga-arimasu) fa comparire qualcosa: が marca l'elemento che entra nel campo visivo della frase, mentre あります dice che quell'elemento esiste, si trova lì o è disponibile.
 
 Le parole di scuola e indagine specificano che tipo di scoperta stai leggendo. [{{研究|けんきゅう}}](term:term-v177-kenkyuu) è ricerca sistematica, naturale per professori, laboratori e argomenti accademici. [{{調査|ちょうさ}}](term:term-v190-chousa) suona più concreta: qualcuno va a verificare sul campo. [{{歴史|れきし}}](term:term-v186-rekishi) sposta il discorso verso il passato o la materia scolastica, mentre [{{名前|なまえ}}](term:term-v185-namae) identifica l'etichetta con cui una persona, un Pokémon, un luogo o un oggetto viene chiamato.
+
+[ポケモンリーグ](term:term-v187-pokemonriigu) appartiene a questa famiglia di
+nomi istituzionali: non è solo "una lega" generica, ma l'ente che dà cornice a
+palestre, sfide e riconoscimenti ufficiali. Quando compare vicino a
+[{{調査|ちょうさ}}](term:term-v190-chousa), [{{参加|さんか}}](term:term-v195-sanka)
+o [{{名前|なまえ}}](term:term-v185-namae), leggilo come riferimento al sistema
+organizzato della regione, non come semplice luogo da visitare.
 
 :::example_sentence
 jp: >-
@@ -110,17 +117,17 @@ translation_it: >-
 *   `{{名前|なまえ}}が` ➔ **Elemento presentato**: `が` accende il soggetto della presenza, cioè il nome che compare.
 *   `あります` ➔ **Esistenza cortese**: per un elemento non animato, segnala "c'è / si trova / è presente".
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[〜が あります](term:term-e035-ga-arimasu) non va letto automaticamente come possesso. In `ここに {{名前|なまえ}}が あります`, il centro è "qui c'è un nome". Se la frase fosse `{{私|わたし}}には {{名前|なまえ}}が あります`, il contesto potrebbe avvicinarsi a "io ho un nome"; la particella e la cornice decidono la lettura.
+[〜が あります](term:term-e035-ga-arimasu) non va letto automaticamente come possesso. In ここに {{名前|なまえ}}が あります, il centro è "qui c'è un nome". Se la frase fosse {{私|わたし}}には {{名前|なまえ}}が あります, il contesto potrebbe avvicinarsi a "io ho un nome"; la particella e la cornice decidono la lettura.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Pensa a `が` come a un riflettore: in una frase con [〜が あります](term:term-e035-ga-arimasu), il riflettore illumina proprio ciò che il gioco vuole farti notare nella scena o nella schermata.
+Pensa a が come a un riflettore: in una frase con [〜が あります](term:term-e035-ga-arimasu), il riflettore illumina proprio ciò che il gioco vuole farti notare nella scena o nella schermata.
 
 ## 3. Battaglia e Teracristal: tipo, potenza, funzione disponibile
 
-Nelle schermate di battaglia, i nomi dei tipi sono informazioni operative. [ドラゴン](term:term-v178-doragon) e [どく](term:term-v182-doku) non servono solo a colorare il Pokémon: in `ドラゴンタイプのわざ` o `どくタイプのわざ`, `タイプの` collega il tipo alla mossa e ti dice quale tabella di efficacia sta entrando in gioco.
+Nelle schermate di battaglia, i nomi dei tipi sono informazioni operative. [ドラゴン](term:term-v178-doragon) e [どく](term:term-v182-doku) non servono solo a colorare il Pokémon: in ドラゴンタイプのわざ o どくタイプのわざ, タイプの collega il tipo alla mossa e ti dice quale tabella di efficacia sta entrando in gioco.
 
 [{{威力|いりょく}}](term:term-v179-iryoku) misura quanto forte colpisce una mossa. [{{能力|のうりょく}}](term:term-v184-nouryoku) guarda invece il Pokémon o l'unità come insieme di capacità e statistiche. [{{結晶|けっしょう}}](term:term-v181-kesshou) richiama il lessico visivo dei cristalli Teracristal, mentre [{{可能|かのう}}](term:term-v189-kanou) segnala che una funzione è possibile adesso. Se una UI mostra [{{大事|だいじ}}](term:term-v183-daiji), il testo sta trattando l'oggetto o l'informazione come qualcosa da non perdere.
 
@@ -148,13 +155,13 @@ translation_it: >-
 
 *   `ここから` ➔ **Punto di partenza**: `から` indica da dove diventa valida l'azione.
 *   `ライドが` ➔ **Funzione presentata**: `が` mette a fuoco la funzione disponibile.
-*   `{{可能|かのう}}です` ➔ **Stato di disponibilità**: [{{可能|かのう}}](term:term-v189-kanou) non dice che stai già cavalcando, ma che puoi farlo.
+*   {{可能|かのう}}です ➔ **Stato di disponibilità**: [{{可能|かのう}}](term:term-v189-kanou) non dice che stai già cavalcando, ma che puoi farlo.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{威力|いりょく}}](term:term-v179-iryoku) e [{{能力|のうりょく}}](term:term-v184-nouryoku) non guardano lo stesso livello. La prima è una proprietà della mossa; la seconda descrive capacità o statistiche del Pokémon. Se leggi `{{威力|いりょく}}が{{高|たか}}い`, pensa al colpo. Se leggi [{{能力|のうりょく}}](term:term-v184-nouryoku), pensa ai parametri o al rendimento dell'unità.
+[{{威力|いりょく}}](term:term-v179-iryoku) e [{{能力|のうりょく}}](term:term-v184-nouryoku) non guardano lo stesso livello. La prima è una proprietà della mossa; la seconda descrive capacità o statistiche del Pokémon. Se leggi {{威力|いりょく}}が{{高|たか}}い, pensa al colpo. Se leggi [{{能力|のうりょく}}](term:term-v184-nouryoku), pensa ai parametri o al rendimento dell'unità.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 In `タイプのわざ`, il blocco `の` funziona come una targhetta: "mossa del tipo X". Prima leggi la targhetta, poi chiediti che cosa cambia nell'efficacia.
 
@@ -173,16 +180,16 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{成長|せいちょう}}した` ➔ **Modificatore completato**: [{{成長|せいちょう}}](term:term-v193-seichou) + `した` descrive il Pokémon come "cresciuto".
+*   {{成長|せいちょう}}した ➔ **Modificatore completato**: [{{成長|せいちょう}}](term:term-v193-seichou) + した descrive il Pokémon come "cresciuto".
 *   `ポケモンの {{能力|のうりょく}}` ➔ **Collegamento nominale**: `の` lega il Pokémon alle sue capacità o statistiche.
 *   `{{能力|のうりょく}}を` ➔ **Oggetto del controllo**: `を` marca ciò che viene guardato.
 *   `{{見|み}}ます` ➔ **Azione cortese**: qui "vedere" funziona come "controllare" in una schermata.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{成長|せいちょう}}](term:term-v193-seichou) parla di un processo che ha prodotto cambiamento; [{{最高|さいこう}}](term:term-v194-saikou) parla di una valutazione massima. Una frase con [{{成長|せいちょう}}した](term:term-v193-seichou) ti chiede di guardare che cosa è cambiato. Una battuta con [{{最高|さいこう}}](term:term-v194-saikou) ti fa sentire entusiasmo o giudizio al livello più alto.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{成長|せいちょう}}](term:term-v193-seichou), cerca la barra che sale nel tempo. Per [{{最高|さいこう}}](term:term-v194-saikou), cerca il punto più alto della scala: non "tanto" in generale, ma "il massimo".
 

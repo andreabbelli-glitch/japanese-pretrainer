@@ -39,19 +39,9 @@ Il rules text è compatto, ma non è vago. La prima riga si appoggia a
 [{{変更|へんこう}}](term:term-henkou) e [〜してもよい](grammar:grammar-temoyoi):
 ti dice che puoi cambiare qualcosa che esiste già. La seconda riga usa
 [ラビリンス](term:term-labyrinth), [{{数|かず}}](term:term-kazu),
-[より](grammar:grammar-yori) e `{{多|おお}}ければ`: non basta avere molti
+[より](grammar:grammar-yori) e {{多|おお}}ければ: non basta avere molti
 scudi in astratto, devi averne più dell'altro giocatore.
 
-:::image
-src: assets/cards/live-duel/seigi-no-kirameki-ooriria.jpg
-alt: "Orlilia, Flash of Justice card."
-caption: >-
-  {{正義|せいぎ}}の{{煌|きら}}き オーリリア。
-  La prima riga sposta
-  [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target); la seconda accende
-  [ラビリンス](term:term-labyrinth) quando il
-  [{{数|かず}}](term:term-kazu) dei tuoi scudi supera quello dell'avversario.
-:::
 
 ## Termini chiave
 
@@ -74,7 +64,6 @@ caption: >-
 
 ## Pattern grammaticali chiave
 
-- [〜してもよい](grammar:grammar-temoyoi) — possibilità concessa, non obbligo
 - [より](grammar:grammar-yori) — termine di paragone, "rispetto a"
 - [{{自分|じぶん}}のシールドの{{数|かず}}が{{相手|あいて}}より{{多|おお}}ければ](grammar:grammar-seigi-no-shield-count-yori-ookereba) —
   se il numero dei tuoi scudi è maggiore di quello dell'avversario
@@ -83,10 +72,25 @@ caption: >-
 
 - [ラビリンス](term:term-labyrinth) — keyword che controlla un vantaggio di
   scudi prima di rendere attivo il testo successivo
-- [メタリカ](term:term-metallica) — razza della creatura; qui aiuta a
-  riconoscere il frame Metallica della carta
+- [{{相手|あいて}}](term:term-opponent) — avversario
+- [クリーチャー](term:term-creature) — creatura
+- [アンタップ](term:term-untap) — stappare / untap
+- [{{自分|じぶん}}](term:term-self) — se stessi / il proprio lato
+- [タップ](term:term-tap) — tappare / mettere in posizione tapped
+- [コスト](term:term-cost) — costo
 
 ---
+
+:::image
+src: assets/cards/live-duel/seigi-no-kirameki-ooriria.jpg
+alt: "Orlilia, Flash of Justice card."
+caption: >-
+  {{正義|せいぎ}}の{{煌|きら}}き オーリリア。
+  La prima riga sposta
+  [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target); la seconda accende
+  [ラビリンス](term:term-labyrinth) quando il
+  [{{数|かず}}](term:term-kazu) dei tuoi scudi supera quello dell'avversario.
+:::
 
 ## 1. La prima riga: cambiare la destinazione di un attacco
 
@@ -119,12 +123,12 @@ reveal_mode: sentence
     movimento successivo. Non stai solo descrivendo uno stato: prima la carta
     diventa untapped, poi può diventare una nuova destinazione.
 *   [{{相手|あいて}}](term:term-opponent)[クリーチャー](term:term-creature)の
-    [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target)を: `の` collega la
+    [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target)を: の collega la
     creatura avversaria al suo bersaglio d'attacco, mentre `を` marca quel
     bersaglio come la cosa che verrà modificata.
 *   この[クリーチャー](term:term-creature)または
     [{{自分|じぶん}}](term:term-self)の[タップ](term:term-tap)している
-    [クリーチャー](term:term-creature)に: `または` apre due destinazioni valide e
+    [クリーチャー](term:term-creature)に: または apre due destinazioni valide e
     `に` marca dove l'attacco viene riassegnato.
 *   [{{変更|へんこう}}](term:term-henkou)してもよい: la modifica è permessa,
     non obbligatoria. Se il cambio non ti conviene, la grammatica ti lascia
@@ -141,7 +145,7 @@ in campo.
 
 #### 🧠 Gancio cognitivo
 
-In [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target), `{{先|さき}}` può
+In [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target), {{先|さき}} può
 funzionare come immagine mentale della "punta" o destinazione dell'attacco.
 È un trucco mnemonico, non una definizione tecnica: serve a ricordare che la
 parola guarda dove l'attacco va a finire, non chi lo sta compiendo.
@@ -178,7 +182,7 @@ reveal_mode: sentence
     successiva non è sempre attiva. Prima devi passare dal controllo sugli
     scudi.
 *   [{{自分|じぶん}}](term:term-self)のシールドの
-    [{{数|かず}}](term:term-kazu)が: `が` marca come soggetto il numero dei
+    [{{数|かず}}](term:term-kazu)が: が marca come soggetto il numero dei
     tuoi scudi. Il testo non guarda quali scudi sono, ma quanti scudi hai.
 *   [{{相手|あいて}}](term:term-opponent)[より](grammar:grammar-yori):
     `より` marca il benchmark del paragone. Qui la forma piena sottintesa è
@@ -225,11 +229,11 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   [{{相手|あいて}}](term:term-opponent)は: `は` presenta il giocatore su cui
+*   [{{相手|あいて}}](term:term-opponent)は: は presenta il giocatore su cui
     cade la restrizione. Non parla di te, anche se la condizione precedente
     partiva dai tuoi scudi.
 *   [コスト](term:term-cost){{5以下|ごいか}}の
-    [{{呪文|じゅもん}}](term:term-spell)を: `の` trasforma `コスト{{5以下|ごいか}}`
+    [{{呪文|じゅもん}}](term:term-spell)を: の trasforma コスト{{5以下|ごいか}}
     in filtro nominale. Il gruppo vietato è "spell di costo {{5以下|ごいか}}",
     non genericamente tutti gli spell.
 *   [{{唱|とな}}えられない](term:term-tonaeru): la forma potenziale negativa
@@ -254,11 +258,11 @@ con attenzione. I due pezzi sembrano vicini, ma usano grammatiche diverse.
     reindirizzamento. La forma in `て` non è un semplice "e" decorativo:
     concatena due azioni della stessa procedura.
 *   Nel blocco con
-    [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target), `を` e `に` ti danno
+    [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target), を e に ti danno
     la mappa del cambio. `を` marca ciò che viene modificato, `に` marca la
     nuova destinazione.
 *   Nella riga [ラビリンス](term:term-labyrinth), invece, la particella decisiva
-    è `が`: ti dice quale conteggio deve essere maggiore. [より](grammar:grammar-yori)
+    è が: ti dice quale conteggio deve essere maggiore. [より](grammar:grammar-yori)
     non sceglie il vincitore del confronto, sceglie solo il punto rispetto a
     cui misurarlo.
 *   Il payoff con

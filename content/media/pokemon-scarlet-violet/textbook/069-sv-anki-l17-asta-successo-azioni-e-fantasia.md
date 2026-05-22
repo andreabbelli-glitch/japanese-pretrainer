@@ -76,10 +76,10 @@ sposta l'attenzione sulle risorse da reintegrare.
 
 - [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) non è il mercato intero, ma
   l'atto di fare la propria offerta. In una frase come `セリで{{入|にゅう}}{{札|さつ}}する`,
-  [{{競|せ}}り](term:term-anki-l08-seri) è l'evento dell'asta, `で` dà la
+  [{{競|せ}}り](term:term-anki-l08-seri) è l'evento dell'asta, で dà la
   cornice dell'azione e [{{入|にゅう}}{{札|さつ}}する](term:term-anki-l17-nyuusatsu)
   dice che il giocatore partecipa con un rilancio concreto.
-- [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken) contiene `{{見|み}}る`, "vedere",
+- [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken) contiene {{見|み}}る, "vedere",
   e dà l'idea di far emergere qualcosa che era già lì. In [エリアゼロ](term:term-v022-eriazero),
   `ポケモンを{{発|はっ}}{{見|けん}}した` non vuol dire "ho creato un Pokémon", ma
   "l'ho trovato, l'ho scoperto, ora è entrato nel campo della conoscenza".
@@ -121,7 +121,7 @@ translation_it: >-
 *   `{{発|はっ}}{{見|けん}}した` ➔ **Scoperta conclusa** (`{{発|はっ}}{{見|けん}}する`
     al passato: qualcosa preesistente viene finalmente trovato).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{競|せ}}り](term:term-anki-l08-seri) è l'evento dell'asta; [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu)
 è l'offerta che fai dentro quell'evento. [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken)
@@ -130,7 +130,7 @@ non è `{{発|はつ}}{{明|めい}}`, "invenzione": parla di qualcosa che esist
 `{{回|かい}}{{復|ふく}}`: il primo reintegra risorse, il secondo descrive
 recupero di salute, stato o energia.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Come trucco mnemonico, puoi leggere questi tre composti come tre movimenti:
 [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) mette una proposta dentro
@@ -150,9 +150,9 @@ diventa il risultato finale di una competizione.
   eccellente". Non è solo un "bravo" affettuoso: suona come una valutazione
   fondata su capacità osservabili, quindi è naturale in bocca a insegnanti,
   superiori o personaggi che riconoscono un merito.
-- [{{優|ゆう}}{{勝|しょう}}](term:term-anki-l17-yuushou) contiene `{{勝|しょう}}`,
+- [{{優|ゆう}}{{勝|しょう}}](term:term-anki-l17-yuushou) contiene {{勝|しょう}},
   "vittoria", ma non equivale a `{{勝|か}}つ` in una singola lotta. Con
-  [ポケモンリーグ](term:term-v187-pokemonriigu), `で{{優|ゆう}}{{勝|しょう}}する`
+  [ポケモンリーグ](term:term-v187-pokemonriigu), で{{優|ゆう}}{{勝|しょう}}する
   punta a una cornice competitiva ampia: vincere il percorso, il torneo o la
   competizione nel suo insieme.
 
@@ -188,14 +188,14 @@ translation_it: >-
 *   `チャンピオンになる` ➔ **Cambio di stato** (`になる` dice che dopo il trionfo
     si diventa Campione).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`{{勝|か}}つ` basta per una singola lotta: `バトルに{{勝|か}}つ`. [{{優|ゆう}}{{勝|しょう}}する](term:term-anki-l17-yuushou)
+{{勝|か}}つ basta per una singola lotta: バトルに{{勝|か}}つ. [{{優|ゆう}}{{勝|しょう}}する](term:term-anki-l17-yuushou)
 richiede invece una cornice competitiva più larga, come una Lega, un torneo o
 un percorso con un vincitore finale. [{{優|ゆう}}{{秀|しゅう}}](term:term-anki-l17-yuushuu)
 non racconta un evento vinto: descrive una qualità che il parlante riconosce.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Come trucco di memoria, pensa a `{{優|ゆう}}` come a "stare sopra la media".
 Con `{{秀|しゅう}}` la superiorità resta addosso alla persona o alla prestazione;
@@ -208,18 +208,18 @@ chi partecipa. [{{誘|さそ}}う](term:term-anki-l17-sasou) apre un invito,
 [{{遊|あそ}}ぶ](term:term-anki-l17-asobu) descrive tempo condiviso, e
 [{{4人|よにん}}](term:term-anki-l17-yonin) rende operativo il numero delle persone.
 
-- [{{誘|さそ}}う](term:term-anki-l17-sasou) prende con `を` la persona invitata:
+- [{{誘|さそ}}う](term:term-anki-l17-sasou) prende con を la persona invitata:
   `ネモを{{誘|さそ}}う`. L'attività verso cui si invita può arrivare con `に`,
   come in `ポケモンしょうぶに{{誘|さそ}}う`. Nella forma passiva
   [{{誘|さそ}}われる](term:term-anki-l17-sasou), il punto di vista si ribalta:
   sei tu a ricevere l'invito, e la persona che invita viene marcata da `に`.
 - [{{遊|あそ}}ぶ](term:term-anki-l17-asobu) è intransitivo: non ha bisogno di un
-  oggetto diretto. In [ピクニック](term:term-v059-pikunikku), `ポケモンたちと{{遊|あそ}}ぶ`
+  oggetto diretto. In [ピクニック](term:term-v059-pikunikku), ポケモンたちと{{遊|あそ}}ぶ
   usa `と` per la compagnia e mette al centro il tempo passato insieme. Per
   "giocare a un videogioco", invece, il giapponese usa spesso `ゲームをする`;
   [{{遊|あそ}}ぶ](term:term-anki-l17-asobu) punta più sul divertirsi, stare con
   qualcuno o usare uno spazio di gioco.
-- [{{4人|よにん}}](term:term-anki-l17-yonin) usa la lettura speciale `よにん`,
+- [{{4人|よにん}}](term:term-anki-l17-yonin) usa la lettura speciale よにん,
   non `よんにん`. Nei contesti di multiplayer, il numero non è decorativo:
   dice quante persone possono entrare nella stessa esperienza.
 
@@ -268,17 +268,17 @@ translation_it: >-
 *   `{{冒|ぼう}}{{険|けん}}する` ➔ **Nome più `する`** (`{{冒|ぼう}}{{険|けん}}`,
     avventura, diventa "avventurarsi").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `ネモを{{誘|さそ}}う` mette Nemona come persona invitata. `ネモに{{誘|さそ}}われる`
 la mette invece come persona da cui arriva l'invito: la forma passiva cambia il
 punto di vista della scena. Con [{{遊|あそ}}ぶ](term:term-anki-l17-asobu), invece,
 non cercare per forza un `を`: la compagnia viene naturale con `と`.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{4人|よにん}}](term:term-anki-l17-yonin), aggancia la sequenza delle persone:
-`ひとり`, `ふたり`, `{{3人|さんにん}}`, [{{4人|よにん}}](term:term-anki-l17-yonin).
+ひとり, ふたり, {{3人|さんにん}}, [{{4人|よにん}}](term:term-anki-l17-yonin).
 Il quattro perde la `ん` di `よん`, quindi la forma da riconoscere nei menu è
 `よにん`.
 
@@ -289,7 +289,7 @@ narrative per cambiare tono. [お{{菓|か}}{{子|し}}](term:term-anki-l17-okas
 porta la scena verso pause, cibo e picnic; [{{竜|りゅう}}](term:term-anki-l17-ryuu)
 porta verso immaginario fantastico, aspetto e forza dei Pokémon.
 
-- [お{{菓|か}}{{子|し}}](term:term-anki-l17-okashi) unisce il prefisso cortese `お`
+- [お{{菓|か}}{{子|し}}](term:term-anki-l17-okashi) unisce il prefisso cortese お
   e `{{菓|か}}{{子|し}}`, "dolciumi / snack". Con `を{{食|た}}べる` o
   `を{{買|か}}う`, `を` marca ciò che viene mangiato o comprato. Non pensarlo
   solo come dessert elegante: può coprire caramelle, biscotti e spuntini da
@@ -332,7 +332,7 @@ translation_it: >-
 *   `{{空|そら}}を {{飛|と}}んでいる` ➔ **Spazio attraversato** (`を` marca il
     cielo come spazio percorso; `ている` mostra l'azione in corso).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [お{{菓|か}}{{子|し}}](term:term-anki-l17-okashi) è "dolci / snack" e finisce in
 `し`. `おかしい` è un aggettivo diverso: "strano" o "buffo". In testo senza
@@ -341,7 +341,7 @@ la frase parla di cibo. Allo stesso modo, [{{竜|りゅう}}](term:term-anki-l17
 e `ドラゴンタイプ` non sono automaticamente intercambiabili: il primo può essere
 immagine narrativa, il secondo è una label di tipo.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Come trucco mnemonico, [お{{菓|か}}{{子|し}}](term:term-anki-l17-okashi) resta
 ancorato alla pausa: qualcosa che puoi comprare, mangiare o condividere.

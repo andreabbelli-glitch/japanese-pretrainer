@@ -2,7 +2,7 @@
 id: lesson-web-giapponese-dragon-quest-smash-grow-auto-mode-and-new-legend
 media_id: media-web-giapponese
 slug: 090-dragon-quest-smash-grow-auto-mode-and-new-legend
-title: Dragon Quest Smash Grow - auto e nuova leggenda
+title: "Modalità Auto e nuova leggenda"
 order: 90
 segment_ref: dragon-quest-smash-grow
 difficulty: n4
@@ -51,7 +51,7 @@ Nel tutorial devi seguire una catena precisa: pulsante, condizione, azioni deleg
 
 ## 1. Il tutorial Auto: pulsante, condizione e cambio di modalità
 
-La finestra [オート{{機能|きのう}}](term:term-auto-kinou) non descrive un oggetto dell'inventario: nomina una feature. `オート` è il prestito riconoscibile da “auto”, mentre `{{機能|きのう}}` significa funzione. Quando questi due pezzi stanno nel titolo di una UI, preparati a una spiegazione di comportamento: il gioco sta dicendo che cosa farà il sistema al posto tuo.
+La finestra [オート{{機能|きのう}}](term:term-auto-kinou) non descrive un oggetto dell'inventario: nomina una feature. オート è il prestito riconoscibile da “auto”, mentre {{機能|きのう}} significa funzione. Quando questi due pezzi stanno nel titolo di una UI, preparati a una spiegazione di comportamento: il gioco sta dicendo che cosa farà il sistema al posto tuo.
 
 :::image
 src: assets/dragon-quest-smash-grow-auto-mode.jpg
@@ -59,13 +59,13 @@ alt: >-
   Schermata tutorial di Dragon Quest Smash Grow che spiega la funzione auto.
 caption: >-
   `オートボタンを{{押|お}}すと` imposta la condizione: quando premi il pulsante,
-  [{{移動|いどう}}](term:term-idou) e `{{攻撃|こうげき}}` passano a
+  [{{移動|いどう}}](term:term-idou) e {{攻撃|こうげき}} passano a
   [{{自動|じどう}}](term:term-jidou).
 :::
 
-Il blocco operativo parte da `オートボタンを{{押|お}}すと`. [{{押|お}}す](term:term-osu) è il verbo base per premere o spingere, e `を` marca `オートボタン` come oggetto diretto: l'azione richiesta non è “andare in Auto” in modo astratto, ma premere proprio quel bottone. Subito dopo, `と` aggancia una conseguenza quasi meccanica: quando succede A, il sistema fa B.
+Il blocco operativo parte da オートボタンを{{押|お}}すと. [{{押|お}}す](term:term-osu) è il verbo base per premere o spingere, e を marca オートボタン come oggetto diretto: l'azione richiesta non è “andare in Auto” in modo astratto, ma premere proprio quel bottone. Subito dopo, と aggancia una conseguenza quasi meccanica: quando succede A, il sistema fa B.
 
-La conseguenza è `{{移動|いどう}}と{{攻撃|こうげき}}を{{自動|じどう}}で{{行|おこな}}う`. [{{移動|いどう}}](term:term-idou) è lo spostamento del personaggio, `{{攻撃|こうげき}}` è l'attacco, e `と` li mette in coppia come azioni coordinate. [{{自動|じどう}}](term:term-jidou) non è solo il nome inglese della modalità: in `{{自動|じどう}}で{{行|おこな}}う` descrive il modo dell'azione, cioè “eseguire in automatico”.
+La conseguenza è {{移動|いどう}}と{{攻撃|こうげき}}を{{自動|じどう}}で{{行|おこな}}う. [{{移動|いどう}}](term:term-idou) è lo spostamento del personaggio, {{攻撃|こうげき}} è l'attacco, e と li mette in coppia come azioni coordinate. [{{自動|じどう}}](term:term-jidou) non è solo il nome inglese della modalità: in {{自動|じどう}}で{{行|おこな}}う descrive il modo dell'azione, cioè “eseguire in automatico”.
 
 :::example_sentence
 jp: >-
@@ -83,15 +83,15 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`オート` come prestito dice “Auto” nella label, ma [{{自動|じどう}}](term:term-jidou) è il giapponese che spiega davvero il comportamento. Se vedi entrambi, `オート` ti orienta nella UI, `{{自動|じどう}}で` ti dice come viene svolta l'azione.
+オート come prestito dice “Auto” nella label, ma [{{自動|じどう}}](term:term-jidou) è il giapponese che spiega davvero il comportamento. Se vedi entrambi, オート ti orienta nella UI, {{自動|じどう}}で ti dice come viene svolta l'azione.
 
 #### 🧠 Gancio cognitivo
 
-pensa a `と` nei tutorial come a un interruttore causa-effetto: `ボタンを{{押|お}}すと...` non sta raccontando una possibilità vaga, ma il risultato stabile dopo la pressione.
+Pensa a `と` nei tutorial come a un interruttore causa-effetto: `ボタンを{{押|お}}すと...` non sta raccontando una possibilità vaga, ma il risultato stabile dopo la pressione.
 
 ## 2. `{{切|き}}り{{替|か}}わる`: il sistema passa a un altro stato
 
-Dopo aver spiegato che cosa verrà automatizzato, la frase chiude con `オートモードに{{切|き}}り{{替|か}}わるぞ`. [{{切|き}}り{{替|か}}わる](term:term-kirikawaru) è intransitivo: non descrive il giocatore che “cambia qualcosa” con le mani, ma la modalità che cambia stato. Il punto di arrivo è segnato da `に`, quindi `オートモードに` significa “verso / in modalità Auto”.
+Dopo aver spiegato che cosa verrà automatizzato, la frase chiude con オートモードに{{切|き}}り{{替|か}}わるぞ. [{{切|き}}り{{替|か}}わる](term:term-kirikawaru) è intransitivo: non descrive il giocatore che “cambia qualcosa” con le mani, ma la modalità che cambia stato. Il punto di arrivo è segnato da に, quindi オートモードに significa “verso / in modalità Auto”.
 
 La finale `ぞ` dà alla spiegazione un tono energico, da mascotte o tutorial parlato. La grammatica resta procedurale, ma la voce non è fredda: il gioco ti sta guidando con un registro più vivace di un manuale tecnico.
 
@@ -110,11 +110,11 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{切|き}}り{{替|か}}わる](term:term-kirikawaru) e `{{切|き}}り{{替|か}}える` sono vicini ma non identici. `{{切|き}}り{{替|か}}わる` mette in primo piano il cambio che avviene; `{{切|き}}り{{替|か}}える` mette in primo piano qualcuno che cambia l'impostazione.
+[{{切|き}}り{{替|か}}わる](term:term-kirikawaru) e {{切|き}}り{{替|か}}える sono vicini ma non identici. {{切|き}}り{{替|か}}わる mette in primo piano il cambio che avviene; {{切|き}}り{{替|か}}える mette in primo piano qualcuno che cambia l'impostazione.
 
 ## 3. Dalla UI alla narrazione: una leggenda sta per nascere
 
-La seconda schermata cambia subito grammatica e temperatura emotiva. Non ci sono più pulsanti, oggetti marcati da `を` o azioni automatizzate: il robottino annuncia `{{今|いま}} {{新|あたら}}しい{{伝説|でんせつ}}が {{生|う}}まれようとしてイル！`. Qui [{{伝説|でんせつ}}](term:term-densetsu) porta il lessico dell'avventura, mentre [{{生|う}}まれる](term:term-umareru) trasforma l'inizio del gioco in una nascita simbolica.
+La seconda schermata cambia subito grammatica e temperatura emotiva. Non ci sono più pulsanti, oggetti marcati da を o azioni automatizzate: il robottino annuncia {{今|いま}} {{新|あたら}}しい{{伝説|でんせつ}}が {{生|う}}まれようとしてイル！. Qui [{{伝説|でんせつ}}](term:term-densetsu) porta il lessico dell'avventura, mentre [{{生|う}}まれる](term:term-umareru) trasforma l'inizio del gioco in una nascita simbolica.
 
 :::image
 src: assets/dragon-quest-smash-grow-new-legend-dialogue.jpg
@@ -124,13 +124,13 @@ alt: >-
 caption: >-
   `{{生|う}}まれようとしてイル` usa
   [〜ようとしている](grammar:grammar-you-to-shite-iru) per dire che la
-  [{{伝説|でんせつ}}](term:term-densetsu) è sul punto di nascere; `イル` in
+  [{{伝説|でんせつ}}](term:term-densetsu) è sul punto di nascere; イル in
   katakana rende più meccanica la voce del personaggio.
 :::
 
-[{{生|う}}まれる](term:term-umareru) non vale solo per esseri viventi. In giapponese può avere come soggetto una storia, un'idea, un'epoca o una [{{伝説|でんせつ}}](term:term-densetsu). Per questo `{{伝説|でんせつ}}が{{生|う}}まれる` non suona strano: la leggenda viene alla luce come evento narrativo.
+[{{生|う}}まれる](term:term-umareru) non vale solo per esseri viventi. In giapponese può avere come soggetto una storia, un'idea, un'epoca o una [{{伝説|でんせつ}}](term:term-densetsu). Per questo {{伝説|でんせつ}}が{{生|う}}まれる non suona strano: la leggenda viene alla luce come evento narrativo.
 
-[〜ようとしている](grammar:grammar-you-to-shite-iru) aggiunge il senso di imminenza. La base è la forma volitiva: `{{生|う}}まれる` diventa `{{生|う}}まれよう`, poi `としている` indica che il processo è proprio sul punto di compiersi. Nel testo della schermata `いる` diventa `イル`: la grammatica non cambia, ma il katakana rende la voce più artificiale e robotica.
+[〜ようとしている](grammar:grammar-you-to-shite-iru) aggiunge il senso di imminenza. La base è la forma volitiva: {{生|う}}まれる diventa {{生|う}}まれよう, poi としている indica che il processo è proprio sul punto di compiersi. Nel testo della schermata いる diventa イル: la grammatica non cambia, ma il katakana rende la voce più artificiale e robotica.
 
 :::example_sentence
 jp: >-
@@ -143,7 +143,7 @@ translation_it: >-
 
 *   `{{今|いま}}` ➔ **Tempo della scena** (colloca l'evento nel presente immediato).
 *   `{{新|あたら}}しい{{伝説|でんせつ}}が` ➔ **Soggetto narrativo** (`が` presenta ciò che sta emergendo).
-*   `{{生|う}}まれよう` ➔ **Forma volitiva** di [{{生|う}}まれる](term:term-umareru), qui usata dentro il pattern di imminenza.
+*   {{生|う}}まれよう ➔ **Forma volitiva** di [{{生|う}}まれる](term:term-umareru), qui usata dentro il pattern di imminenza.
 *   `としている / としてイル` ➔ **Essere sul punto di** (l'evento non è già completo, ma sta per accadere).
 
 #### ⚖️ Contrasto operativo
@@ -152,7 +152,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-in [〜ようとしている](grammar:grammar-you-to-shite-iru), immagina `よう` come il movimento interno “verso l'azione” e `としている` come il fermo immagine sul momento appena prima.
+In [〜ようとしている](grammar:grammar-you-to-shite-iru), immagina よう come il movimento interno “verso l'azione” e としている come il fermo immagine sul momento appena prima.
 
 ## Esempi guidati di riepilogo
 
@@ -181,4 +181,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando il gioco spiega [オート{{機能|きのう}}](term:term-auto-kinou), cerca la catena `ボタンを{{押|お}}すと` → azione automatica → stato di arrivo con `に`. Quando il robottino parla di [{{伝説|でんせつ}}](term:term-densetsu), invece, passa a un registro da avventura: [{{生|う}}まれる](term:term-umareru) rende l'evento una nascita, e [〜ようとしている](grammar:grammar-you-to-shite-iru) lo ferma nel momento in cui sta per cominciare.
+Quando il gioco spiega [オート{{機能|きのう}}](term:term-auto-kinou), cerca la catena ボタンを{{押|お}}すと → azione automatica → stato di arrivo con に. Quando il robottino parla di [{{伝説|でんせつ}}](term:term-densetsu), invece, passa a un registro da avventura: [{{生|う}}まれる](term:term-umareru) rende l'evento una nascita, e [〜ようとしている](grammar:grammar-you-to-shite-iru) lo ferma nel momento in cui sta per cominciare.

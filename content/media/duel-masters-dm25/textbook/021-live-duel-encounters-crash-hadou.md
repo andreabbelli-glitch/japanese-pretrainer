@@ -20,18 +20,10 @@ Quando 勝利龍装 クラッシュ覇道 arriva sul tavolo, la riga da leggere 
 
 La carta è un buon esempio di rules text che sembra lungo ma diventa stabile appena separi i ruoli: `が` marca chi subisce l’evento, `～された時` apre il timing, `～たら` controlla la condizione, `～の後に` colloca il risultato nella sequenza dei turni.
 
-:::image
-src: assets/cards/crash-hadou.png
-alt: "Crash Hadou card."
-caption: >-
-  [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)。
-  Razze: [ドラゴンギルド](term:term-dragonguild) /
-  [ビートジョッキー](term:term-beat-jockey)。 Riga centrale: turno extra se
-  viene distrutta da tappata.
-:::
 
 ## Termini chiave
 
+- [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou) — carta incontrata: il nome proprio va letto insieme a stato tapped e turno extra.
 - [{{破壊|はかい}}](term:term-destroy) — distruzione della creatura come evento che fa partire il controllo.
 - [タップ{{状態|じょうたい}}](term:term-tap-state) — stato tapped già presente al momento della distruzione.
 - [{{自分|じぶん}}](term:term-self) — prospettiva del giocatore che controlla l’effetto: il turno aggiunto è il tuo.
@@ -54,15 +46,31 @@ caption: >-
 
 ## Etichette da riconoscere
 
-- [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two)
-- [スピードアタッカー](term:term-speed-attacker)
-- [W・ブレイカー](term:term-w-breaker)
-- [ドラゴンギルド](term:term-dragonguild)
-- [ビートジョッキー](term:term-beat-jockey)
+- [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two) — keyword di costo
+  ridotto con distruzione a fine turno
+- [スピードアタッカー](term:term-speed-attacker) — keyword che permette di
+  attaccare subito
+- [W・ブレイカー](term:term-w-breaker) — keyword che rompe due scudi
+- [ドラゴンギルド](term:term-dragonguild) — razza Dragon Guild, utile per
+  sinergie e riferimenti di razza
+- [ビートジョッキー](term:term-beat-jockey) — razza Beat Jockey, famiglia di
+  creature aggressive Fire
 
 Le tre keyword sono etichette tecniche compatte: ti dicono come la creatura entra in pressione e come rompe gli scudi. Le due razze, invece, servono quando un altro effetto cerca o conta ドラゴンギルド o ビートジョッキー. La riga decisiva per la lettura, però, è quella che lega distruzione, stato tapped e turno extra.
 
 ---
+
+[～たら](grammar:grammar-tara) controlla se la condizione è vera; [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two), [スピードアタッカー](term:term-speed-attacker) e [W・ブレイカー](term:term-w-breaker) sono invece keyword già compatte, da riconoscere prima di seguire la frase lunga.
+
+:::image
+src: assets/cards/crash-hadou.png
+alt: "Crash Hadou card."
+caption: >-
+  [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)。
+  Razze: [ドラゴンギルド](term:term-dragonguild) /
+  [ビートジョッキー](term:term-beat-jockey)。 Riga centrale: turno extra se
+  viene distrutta da tappata.
+:::
 
 ## 1. Il trigger: evento subito, stato controllato, turno inserito
 

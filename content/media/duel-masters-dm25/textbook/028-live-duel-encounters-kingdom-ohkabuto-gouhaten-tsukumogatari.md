@@ -24,18 +24,6 @@ Questa [ツインパクトカード](term:term-twinpact-card) costringe a cambia
 
 La difficoltà non è solo ricordare che cosa fa la carta. Il giapponese alterna relativa, comparativo, trigger, quantità libera, doppia esclusione e causa. Se riconosci questi pezzi mentre leggi, la carta smette di essere un blocco lungo e diventa una sequenza ordinata di condizioni, gruppi e conseguenze.
 
-:::image
-src: assets/cards/live-duel/kingdom-ohkabuto-gouhaten-tsukumogatari.png
-alt: "Kingdom Ohkabuto / Gouhaten Tsukumogatari twinpact card."
-caption: >-
-  [キングダム・オウ{{禍武斗|かぶと}}](term:term-kingdom-ohkabuto) /
-  [{{轟破天九十九語|ごうはてんつくもがたり}}](term:term-gouhaten-tsukumogatari)。
-  Il lato creatura usa restrizione e trigger; il lato spell usa
-  [{{好|す}}きな{{数|かず}}](term:term-suki-na-kazu),
-  [{{上限|じょうげん}}](term:term-jougen), [これら](term:term-kore-ra) e
-  [{{無視|むし}}する](term:term-mushi-suru) per controllare quantità, gruppo e
-  conseguenze dell'ingresso.
-:::
 
 ## Termini chiave
 
@@ -69,17 +57,28 @@ caption: >-
 
 ## Etichette da riconoscere
 
-- [ツインパクトカード](term:term-twinpact-card) — una sola carta con lato creatura e lato spell.
-- [グランセクト](term:term-gransect) — razza naturale del lato creatura.
 - [マッハファイター](term:term-mach-fighter) — keyword che amplia il bersaglio d'attacco nel turno d'ingresso.
-- [T・ブレイカー](term:term-t-breaker) — keyword di rottura multipla degli scudi.
 - {{破天九語|はてんきゅうご}} — etichetta dell'effetto sul lato creatura, distinta dal nome del lato spell.
+- [{{無効|むこう}}](term:term-mukou) — nullo / non valido / inefficace
 
 ---
 
+:::image
+src: assets/cards/live-duel/kingdom-ohkabuto-gouhaten-tsukumogatari.png
+alt: "Kingdom Ohkabuto / Gouhaten Tsukumogatari twinpact card."
+caption: >-
+  [キングダム・オウ{{禍武斗|かぶと}}](term:term-kingdom-ohkabuto) /
+  [{{轟破天九十九語|ごうはてんつくもがたり}}](term:term-gouhaten-tsukumogatari)。
+  Il lato creatura usa restrizione e trigger; il lato spell usa
+  [{{好|す}}きな{{数|かず}}](term:term-suki-na-kazu),
+  [{{上限|じょうげん}}](term:term-jougen), [これら](term:term-kore-ra) e
+  [{{無視|むし}}する](term:term-mushi-suru) per controllare quantità, gruppo e
+  conseguenze dell'ingresso.
+:::
+
 ## 1. Il lato creatura: soglia di potere e bersaglio dell'attacco
 
-Sul lato [キングダム・オウ{{禍武斗|かぶと}}](term:term-kingdom-ohkabuto), la prima frase non dice "questa creatura è difficile da attaccare". Dice qualcosa di più specifico: alcune creature dell'avversario non possono attaccare **te**. La relativa prima del nome seleziona il gruppo proibito, poi `は` porta quel gruppo a tema e `できない` chiude la frase come impossibilità.
+Sul lato [キングダム・オウ{{禍武斗|かぶと}}](term:term-kingdom-ohkabuto), la prima frase non dice "questa creatura è difficile da attaccare". Dice qualcosa di più specifico: alcune creature dell'avversario non possono attaccare **te**. La relativa prima del nome seleziona il gruppo proibito, poi は porta quel gruppo a tema e できない chiude la frase come impossibilità.
 
 :::example_sentence
 jp: >-
@@ -100,7 +99,7 @@ reveal_mode: sentence
 
 #### ⚖️ Contrasto operativo: `{{自分|じぶん}}を` non è "questa creatura"
 
-In molte frasi di effetto `{{自分|じぶん}}` può far pensare a "sé stesso", ma qui non parla della creatura. Il verbo è [{{攻撃|こうげき}}](term:term-attack)する e l'oggetto marcato da `を` è il giocatore. La carta non sta proteggendo automaticamente ogni tuo bersaglio possibile: sta dicendo che le creature avversarie sotto soglia non possono scegliere te come bersaglio d'attacco.
+In molte frasi di effetto {{自分|じぶん}} può far pensare a "sé stesso", ma qui non parla della creatura. Il verbo è [{{攻撃|こうげき}}](term:term-attack)する e l'oggetto marcato da を è il giocatore. La carta non sta proteggendo automaticamente ogni tuo bersaglio possibile: sta dicendo che le creature avversarie sotto soglia non possono scegliere te come bersaglio d'attacco.
 
 #### 🧠 Gancio cognitivo
 
@@ -108,7 +107,7 @@ In molte frasi di effetto `{{自分|じぶん}}` può far pensare a "sé stesso"
 
 ## 2. Trigger di vittoria: quando il battle è già concluso
 
-La seconda riga del lato creatura cambia ritmo. {{破天九語|はてんきゅうご}} è un'etichetta di effetto, poi la frase mette subito il timing con `〜た` + [{{時|とき}}](grammar:grammar-toki). Non parte quando dichiari un attacco: parte quando questa creatura ha già vinto un [バトル](term:term-battle).
+La seconda riga del lato creatura cambia ritmo. {{破天九語|はてんきゅうご}} è un'etichetta di effetto, poi la frase mette subito il timing con 〜た + [{{時|とき}}](grammar:grammar-toki). Non parte quando dichiari un attacco: parte quando questa creatura ha già vinto un [バトル](term:term-battle).
 
 :::example_sentence
 jp: >-
@@ -125,17 +124,17 @@ reveal_mode: sentence
 
 *   `{{破天九語|はてんきゅうご}}：` — label dell'effetto: introduce una regola speciale del lato creatura.
 *   `このクリーチャーが` — soggetto marcato da `が`: proprio questa creatura deve compiere l'evento.
-*   [バトル](term:term-battle)に{{勝|か}}った — azione completata: `{{勝|か}}った` è passato, quindi la vittoria è già avvenuta.
+*   [バトル](term:term-battle)に{{勝|か}}った — azione completata: {{勝|か}}った è passato, quindi la vittoria è già avvenuta.
 *   [{{時|とき}}](grammar:grammar-toki) — aggancia il trigger al momento della vittoria.
 *   `{{相手|あいて}}のシールドを{{9|ここの}}つブレイクする` — payoff diretto: l'oggetto sono gli scudi dell'avversario e `{{9|ここの}}つ` specifica la quantità.
 
 #### ⚖️ Contrasto operativo: attacco, battle, vittoria
 
-Un attacco può portare a un battle, ma [バトル](term:term-battle)に{{勝|か}}った[{{時|とき}}](grammar:grammar-toki) non significa "quando attacca". La frase aspetta l'esito dello scontro. Se leggi solo [マッハファイター](term:term-mach-fighter) e pensi "attacca subito", perdi il vero punto grammaticale: la rottura da `{{9|ここの}}つ` scudi è legata alla vittoria, non alla dichiarazione dell'attacco.
+Un attacco può portare a un battle, ma [バトル](term:term-battle)に{{勝|か}}った[{{時|とき}}](grammar:grammar-toki) non significa "quando attacca". La frase aspetta l'esito dello scontro. Se leggi solo [マッハファイター](term:term-mach-fighter) e pensi "attacca subito", perdi il vero punto grammaticale: la rottura da {{9|ここの}}つ scudi è legata alla vittoria, non alla dichiarazione dell'attacco.
 
 ## 3. Il lato spell: scegliere quantità e spostare dalla mana zone
 
-Con [{{轟破天九十九語|ごうはてんつくもがたり}}](term:term-gouhaten-tsukumogatari) il testo smette di parlare di attacco e diventa una frase di movimento. `から` dà la zona sorgente, `を` marca il gruppo da muovere, [{{好|す}}きな{{数|かず}}](term:term-suki-na-kazu) apre la quantità e `に{{出|だ}}す` chiude con la destinazione.
+Con [{{轟破天九十九語|ごうはてんつくもがたり}}](term:term-gouhaten-tsukumogatari) il testo smette di parlare di attacco e diventa una frase di movimento. から dà la zona sorgente, を marca il gruppo da muovere, [{{好|す}}きな{{数|かず}}](term:term-suki-na-kazu) apre la quantità e に{{出|だ}}す chiude con la destinazione.
 
 :::example_sentence
 jp: >-
@@ -156,11 +155,11 @@ reveal_mode: sentence
 
 #### 🧠 Gancio cognitivo
 
-[{{好|す}}きな{{数|かず}}](term:term-suki-na-kazu) è letteralmente "numero che ti piace". Nel rules text non è tono emotivo: è libertà di quantità. Quando lo vedi dopo `クリーチャーを`, la domanda giusta non è solo "quali creature?", ma "quante ne voglio spostare?".
+[{{好|す}}きな{{数|かず}}](term:term-suki-na-kazu) è letteralmente "numero che ti piace". Nel rules text non è tono emotivo: è libertà di quantità. Quando lo vedi dopo クリーチャーを, la domanda giusta non è solo "quali creature?", ma "quante ne voglio spostare?".
 
 ## 4. Il lato avversario: doppio filtro, cap e casualità
 
-Dopo il tuo movimento, `その{{後|あと}}` apre una seconda risoluzione. La fonte diventa la [マナゾーン](term:term-mana-zone) dell'avversario, la scelta smette di essere libera e il testo impone tre controlli: esclusione di categorie, limite del battle zone e casualità.
+Dopo il tuo movimento, その{{後|あと}} apre una seconda risoluzione. La fonte diventa la [マナゾーン](term:term-mana-zone) dell'avversario, la scelta smette di essere libera e il testo impone tre controlli: esclusione di categorie, limite del battle zone e casualità.
 
 :::example_sentence
 jp: >-
@@ -189,7 +188,7 @@ reveal_mode: sentence
 
 #### ⚖️ Contrasto grammaticale: `でも` come esclusione, non come "anche"
 
-In [{{進化|しんか}}でもNEOでもない](grammar:grammar-demo-demo-nai), `でも` non aggiunge categorie: le esclude. La presenza finale di `ない` governa tutta la serie. La creatura deve quindi fallire entrambe le etichette, non "essere anche evoluzione o anche NEO".
+In [{{進化|しんか}}でもNEOでもない](grammar:grammar-demo-demo-nai), でも non aggiunge categorie: le esclude. La presenza finale di ない governa tutta la serie. La creatura deve quindi fallire entrambe le etichette, non "essere anche evoluzione o anche NEO".
 
 ## 5. Lo scope finale: quali effetti vengono ignorati
 
@@ -268,4 +267,4 @@ translation_it: >-
 
 ## Nota finale
 
-[キングダム・オウ{{禍武斗|かぶと}}](term:term-kingdom-ohkabuto) e [{{轟破天九十九語|ごうはてんつくもがたり}}](term:term-gouhaten-tsukumogatari) sembrano una coppia esplosiva, ma il testo è molto ordinato: soglia sotto `{{9000|きゅうせん}}`, trigger con [{{時|とき}}](grammar:grammar-toki), quantità libera con [{{好|す}}きな{{数|かず}}](term:term-suki-na-kazu), cap con [{{上限|じょうげん}}](term:term-jougen), scope con [これら](term:term-kore-ra) e chiusura con [{{無視|むし}}する](term:term-mushi-suru). Quando questi segnali sono chiari, la frase lunga dello spell diventa una catena leggibile invece di un muro di effetti.
+[キングダム・オウ{{禍武斗|かぶと}}](term:term-kingdom-ohkabuto) e [{{轟破天九十九語|ごうはてんつくもがたり}}](term:term-gouhaten-tsukumogatari) sembrano una coppia esplosiva, ma il testo è molto ordinato: soglia sotto {{9000|きゅうせん}}, trigger con [{{時|とき}}](grammar:grammar-toki), quantità libera con [{{好|す}}きな{{数|かず}}](term:term-suki-na-kazu), cap con [{{上限|じょうげん}}](term:term-jougen), scope con [これら](term:term-kore-ra) e chiusura con [{{無視|むし}}する](term:term-mushi-suru). Quando questi segnali sono chiari, la frase lunga dello spell diventa una catena leggibile invece di un muro di effetti.

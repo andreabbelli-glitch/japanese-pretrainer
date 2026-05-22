@@ -32,58 +32,67 @@ nella procedura.
 
 ## Termini chiave
 
-- [{{進化|しんか}}クリーチャー](term:term-evolution-creature) ➔ creatura che non
+- [{{進化|しんか}}クリーチャー](term:term-evolution-creature) — creatura che non
   entra da sola: il tipo contiene già l'idea di una base sotto.
-- [スター{{進化|しんか}}クリーチャー](term:term-star-evolution-creature) ➔ variante
+- [{{進化|しんか}}](term:term-evolution) — movimento di pila: una carta entra
+  sopra una base valida.
+- [スター{{進化|しんか}}クリーチャー](term:term-star-evolution-creature) — variante
   di evoluzione in cui la pila va letta anche pensando a che cosa resta sotto.
-- [NEOクリーチャー](term:term-neo-creature) ➔ creatura che può essere corpo
+- [NEOクリーチャー](term:term-neo-creature) — creatura che può essere corpo
   singolo o NEO evoluzione in base allo stato della pila.
-- [G-NEOクリーチャー](term:term-g-neo-creature) ➔ sottofamiglia NEO in cui la
+- [G-NEOクリーチャー](term:term-g-neo-creature) — sottofamiglia NEO in cui la
   gestione delle carte sotto cambia quando lascia il campo.
-- [タマシード/クリーチャー](term:term-tamaseed-creature) ➔ carta con due nature:
+- [タマシード/クリーチャー](term:term-tamaseed-creature) — carta con due nature:
   Tamaseed e creatura, da controllare nel contesto della frase.
-- [ツインパクトカード](term:term-twinpact-card) ➔ carta singola con due metà
+- [タマシード](term:term-tamaseed) — tipo non-creatura che può comunque portare
+  effetti persistenti.
+- [ツインパクトカード](term:term-twinpact-card) — carta singola con due metà
   operative, spesso creatura e [{{呪文|じゅもん}}](term:term-spell).
-- [サイキック・クリーチャー](term:term-psychic-creature) ➔ creatura a due facce,
+- [サイキック・クリーチャー](term:term-psychic-creature) — creatura a due facce,
   legata a provenienza e trasformazioni non standard.
-- [ドラグハート](term:term-dragheart) ➔ prefisso che apre tre ruoli possibili:
+- [ドラグハート](term:term-dragheart) — prefisso che apre tre ruoli possibili:
   creatura, weapon o fortress.
-- [クロスギア](term:term-crossgear) ➔ oggetto persistente che si aggancia a una
+- [クロスギア](term:term-crossgear) — oggetto persistente che si aggancia a una
   [クリーチャー](term:term-creature), non corpo autonomo.
-- [{{城|しろ}}](term:term-castle) ➔ tipo collegato alla
-  [シールドゾーン](term:term-shield-zone) e alla logica di `{{要塞化|ようさいか}}`.
-- [D{{2|ツー}}フィールド](term:term-d2-field) ➔ field con regola di famiglia: un altro
+- [{{城|しろ}}](term:term-castle) — tipo collegato alla
+  [シールドゾーン](term:term-shield-zone) e alla logica di {{要塞化|ようさいか}}.
+- [D{{2|ツー}}フィールド](term:term-d2-field) — field con regola di famiglia: un altro
   D2 Field può sostituire quello già presente.
+- [コスト](term:term-cost), [{{手札|てふだ}}](term:term-hand) e
+  [バトルゾーン](term:term-battle-zone) — numero, origine e destinazione che
+  completano la lettura del type line.
+- [{{時|とき}}](grammar:grammar-toki) — timing che aggancia un effetto al momento
+  in cui il tipo o lo stato diventa rilevante.
 
 ## Espressioni ricorrenti
 
-- `～の{{上|うえ}}に{{置|お}}く` ➔ mette la carta sopra una base, quindi crea o
+- `～の{{上|うえ}}に{{置|お}}く` — mette la carta sopra una base, quindi crea o
   modifica una pila.
-- `～として{{使|つか}}う` ➔ usa la carta come un certo lato o una certa natura,
+- `～として{{使|つか}}う` — usa la carta come un certo lato o una certa natura,
   non come tutto il pacchetto insieme.
-- `～であるかのように` ➔ tratta un oggetto come se fosse di un altro tipo, senza
+- `～であるかのように` — tratta un oggetto come se fosse di un altro tipo, senza
   dire che lo è in modo assoluto.
-- `{{別|べつ}}の～が{{出|で}}た{{時|とき}}` ➔ timing di sostituzione: l'arrivo
+- `{{別|べつ}}の～が{{出|で}}た{{時|とき}}` — timing di sostituzione: l'arrivo
   di un altro oggetto attiva il movimento del precedente.
 
 ## Pattern grammaticali chiave
 
-- [または](grammar:grammar-matawa) ➔ collega alternative valide nello stesso
+- [または](grammar:grammar-matawa) — collega alternative valide nello stesso
   requisito, come razza oppure civiltà.
-- [～ていれば](grammar:grammar-teireba) ➔ controlla uno stato già presente:
+- [～ていれば](grammar:grammar-teireba) — controlla uno stato già presente:
   se la carta si trova in quella condizione, la frase può proseguire.
-- [～なければ ... ない](grammar:grammar-nakereba) ➔ cancello negativo: senza la
+- [～なければ ... ない](grammar:grammar-nakereba) — cancello negativo: senza la
   condizione richiesta, l'azione non passa.
 
 ## Etichette da riconoscere
 
-- `{{進化|しんか}}`, `スター`, `NEO`, `G-NEO` ➔ prefissi che cambiano il modo in
+- `{{進化|しんか}}`, `スター`, `NEO`, `G-NEO` — prefissi che cambiano il modo in
   cui una creatura entra, resta impilata o lascia il campo.
-- `/` in `タマシード/クリーチャー` ➔ due nature possibili nella stessa riga, non un
+- `/` in `タマシード/クリーチャー` — due nature possibili nella stessa riga, non un
   semplice nome composto.
-- `・` in `ドラグハート・クリーチャー` ➔ divide famiglia e ruolo attuale della
+- `・` in `ドラグハート・クリーチャー` — divide famiglia e ruolo attuale della
   faccia.
-- `D2` in `D{{2|ツー}}フィールド` ➔ prefisso di famiglia, non decorazione grafica.
+- `D2` in `D{{2|ツー}}フィールド` — prefisso di famiglia, non decorazione grafica.
 
 ---
 
@@ -96,7 +105,7 @@ un corpo può attaccare e avere [コスト](term:term-cost), una spell viene usa
 e risolta, un field resta a modificare il board state.
 
 Il secondo strato è il prefisso o la forma speciale. Qui compaiono
-[{{進化|しんか}}](term:term-evolution), `スター`, `NEO`, `サイキック`,
+[{{進化|しんか}}](term:term-evolution), スター, NEO, サイキック,
 `ドラグハート`, `D2`. Questi pezzi non aggiungono solo colore: restringono la
 lettura del rules text. In `{{進化|しんか}}クリーチャー`,
 `{{進化|しんか}}` ti fa cercare subito una base sotto; in `D{{2|ツー}}フィールド`, `D2`
@@ -104,10 +113,10 @@ ti fa cercare che cosa succede quando un altro field della stessa famiglia
 entra.
 
 - [{{進化|しんか}}クリーチャー](term:term-evolution-creature) ➔
-  [クリーチャー](term:term-creature) è il corpo, `{{進化|しんか}}` è il modo di
+  [クリーチャー](term:term-creature) è il corpo, {{進化|しんか}} è il modo di
   ingresso. Se separi i due pezzi, capisci perché il rules text parlerà di
   mettere la carta `{{上|うえ}}に`, sopra qualcosa.
-- [D{{2|ツー}}フィールド](term:term-d2-field) ➔ `フィールド` dice che l'oggetto resta sul
+- [D{{2|ツー}}フィールド](term:term-d2-field) ➔ フィールド dice che l'oggetto resta sul
   campo, `D2` dice che non tutti i field convivono liberamente. La famiglia
   speciale prepara già il contrasto con `{{別|べつ}}のD{{2|ツー}}フィールド`.
 - [サイキック・クリーチャー](term:term-psychic-creature) ➔
@@ -117,8 +126,8 @@ entra.
 
 #### 🧠 Gancio cognitivo
 
-Leggi il type line come un indirizzo in quattro campi: `che cosa è`, `come
-entra`, `dove vive`, `in quale stato conta`. Non è etimologia: è un trucco di
+Leggi il type line come un indirizzo in quattro campi: che cosa è, come
+entra, dove vive, in quale stato conta. Non è etimologia: è un trucco di
 lettura per non fermarti al primo nome riconoscibile.
 
 #### ⚖️ Contrasto operativo
@@ -131,7 +140,7 @@ valida e una frase con `{{上|うえ}}に{{置|お}}く` o un verbo simile.
 ## 2. Famiglia evoluzione: stesso corpo, pile diverse
 
 La famiglia evoluzione usa quasi sempre lo stesso nucleo visivo:
-`{{進化|しんか}}` più [クリーチャー](term:term-creature). La differenza sta nel
+{{進化|しんか}} più [クリーチャー](term:term-creature). La differenza sta nel
 prefisso che precede o modifica quel nucleo. Qui il giapponese non ti chiede
 solo "che tipo di carta è?"; ti chiede "quale pila sto guardando e che cosa
 succede alle carte sotto?".
@@ -268,7 +277,7 @@ modificano una zona.
   `サイキック` avvisa che la carta può avere una faccia alternativa e non va
   interpretata come una creatura standard pescata dalla
   [{{手札|てふだ}}](term:term-hand).
-- [ドラグハート](term:term-dragheart) è il prefisso; la parola dopo `・` decide
+- [ドラグハート](term:term-dragheart) è il prefisso; la parola dopo ・ decide
   il ruolo effettivo. `ドラグハート・クリーチャー`, `ドラグハート・ウエポン` e
   `ドラグハート・フォートレス` condividono famiglia, ma non funzione.
 - [クロスギア](term:term-crossgear) entra come oggetto e poi si aggancia a una
@@ -333,7 +342,7 @@ reveal_mode: sentence
 
 #### 🧠 Gancio cognitivo
 
-Con [ドラグハート](term:term-dragheart), guarda sempre la parola dopo `・` come
+Con [ドラグハート](term:term-dragheart), guarda sempre la parola dopo ・ come
 se fosse il "verbo muto" della carta: `クリーチャー` combatte, `ウエポン` si
 equipaggia, `フォートレス` resta come struttura. Il prefisso dice famiglia; il
 pezzo finale dice che cosa fa adesso.
@@ -346,10 +355,10 @@ ordine in cui il rules text di solito risponde.
 
 1. Trova il tipo base: [クリーチャー](term:term-creature),
    [{{呪文|じゅもん}}](term:term-spell), [タマシード](term:term-tamaseed),
-   `フィールド`, [クロスギア](term:term-crossgear) o [{{城|しろ}}](term:term-castle).
+   フィールド, [クロスギア](term:term-crossgear) o [{{城|しろ}}](term:term-castle).
    Questo decide se aspettarti attacco, risoluzione, permanenza o zona speciale.
-2. Isola il prefisso: [{{進化|しんか}}](term:term-evolution), `スター`, `NEO`,
-   `G-NEO`, `サイキック`, [ドラグハート](term:term-dragheart), `D2`. Il prefisso
+2. Isola il prefisso: [{{進化|しんか}}](term:term-evolution), スター, NEO,
+   G-NEO, サイキック, [ドラグハート](term:term-dragheart), D2. Il prefisso
    ti dice quale regola extra portare nella frase successiva.
 3. Controlla la zona: [バトルゾーン](term:term-battle-zone),
    [シールドゾーン](term:term-shield-zone), [{{手札|てふだ}}](term:term-hand),
@@ -357,13 +366,13 @@ ordine in cui il rules text di solito risponde.
    ti dicono partenza, arrivo e posizione.
 4. Verifica lo stato: una carta con slash, una carta NEO o una TwinPact può
    contare in modo diverso a seconda della frase. Cerca `として`,
-   `であるかのように`, [～ていれば](grammar:grammar-teireba) o
+   であるかのように, [～ていれば](grammar:grammar-teireba) o
    [～なければ ... ない](grammar:grammar-nakereba).
 5. Solo dopo leggi il payoff: mettere sopra, usare come spell, trasformare,
    equipaggiare, mandare nel cimitero o sostituire un field. A quel punto il
    verbo finale non arriva più isolato: ha già tipo, zona e stato.
 
-## Recap guidato
+## Esempi guidati di riepilogo
 
 `スター{{進化|しんか}}：レクスターズまたは{{火|ひ}}のクリーチャー{{1体|いったい}}の{{上|うえ}}に{{置|お}}く`
 si legge partendo dalla pila: `スター{{進化|しんか}}` annuncia una forma speciale,

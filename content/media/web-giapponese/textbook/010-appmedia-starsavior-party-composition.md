@@ -2,12 +2,13 @@
 id: lesson-web-giapponese-appmedia-starsavior-party-composition
 media_id: media-web-giapponese
 slug: 010-appmedia-starsavior-party-composition
-title: 最強パーティー編成とおすすめ編成
+title: "Dalla build più forte alle alternative"
 order: 10
 segment_ref: appmedia-starsavior
 difficulty: n4
 status: active
 tags: [web, appmedia, starsavior, pve, pvp]
+prerequisites: []
 summary: >-
   Leggi il titolo della guida e riconosci come la pagina divide le
   composizioni di Star Savior per PVE, PVP, attributi e fase iniziale.
@@ -38,7 +39,7 @@ Subito dopo, il [{{目次|もくじ}}](term:term-mokuji) trasforma il titolo in 
 
 ## Pattern grammaticali chiave
 
-- [{{名詞|めいし}}と{{名詞|めいし}}](grammar:grammar-noun-coordination) — coordinare due blocchi nominali con `と`
+- [{{名詞|めいし}}と{{名詞|めいし}}](grammar:grammar-noun-coordination) — coordinare due blocchi nominali con と
 
 ## Etichette da riconoscere
 
@@ -57,7 +58,7 @@ Subito dopo, il [{{目次|もくじ}}](term:term-mokuji) trasforma il titolo in 
 
 ## 1. Il titolo: due blocchi nominali, non una frase lunga
 
-Il titolo [{{最強|さいきょう}}パーティー{{編成|へんせい}}](term:term-party-composition)と[おすすめ{{編成|へんせい}}](term:term-osusume-composition) va letto come un titolo da web guide: due sintagmi nominali affiancati, coordinati da `と`. Non c'è un verbo nascosto, non c'è un'azione da compiere; c'è una classificazione della pagina.
+Il titolo [{{最強|さいきょう}}パーティー{{編成|へんせい}}](term:term-party-composition)と[おすすめ{{編成|へんせい}}](term:term-osusume-composition) va letto come un titolo da web guide: due sintagmi nominali affiancati, coordinati da と. Non c'è un verbo nascosto, non c'è un'azione da compiere; c'è una classificazione della pagina.
 
 [{{最強|さいきょう}}](term:term-saikyo) letteralmente porta l'idea di "più forte", ma in una guida non funziona come un aggettivo teatrale. È una label di gerarchia: il sito sta dicendo "questa è la scelta più alta nella nostra valutazione". [パーティー{{編成|へんせい}}](term:term-party-composition), invece, è il blocco che indica il setup della squadra. [{{編成|へんせい}}](term:term-hensei) non è organizzazione astratta: in Star Savior diventa il modo concreto in cui metti insieme personaggi, posizioni e ruoli.
 
@@ -82,9 +83,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{最強|さいきょう}}パーティー{{編成|へんせい}}` ➔ **Primo sintagma nominale**: [{{最強|さいきょう}}](term:term-saikyo) qualifica [パーティー{{編成|へんせい}}](term:term-party-composition), quindi il blocco si legge come "party build più forte".
-*   `と` ➔ **Coordinazione tra nomi**: mette in parallelo due blocchi dello stesso tipo, secondo il pattern [{{名詞|めいし}}と{{名詞|めいし}}](grammar:grammar-noun-coordination).
-*   `おすすめ{{編成|へんせい}}` ➔ **Secondo sintagma nominale**: [おすすめ](term:term-osusume) modifica [{{編成|へんせい}}](term:term-hensei), creando "build consigliata".
+*   {{最強|さいきょう}}パーティー{{編成|へんせい}} ➔ **Primo sintagma nominale**: [{{最強|さいきょう}}](term:term-saikyo) qualifica [パーティー{{編成|へんせい}}](term:term-party-composition), quindi il blocco si legge come "party build più forte".
+*   と ➔ **Coordinazione tra nomi**: mette in parallelo due blocchi dello stesso tipo, secondo il pattern [{{名詞|めいし}}と{{名詞|めいし}}](grammar:grammar-noun-coordination).
+*   おすすめ{{編成|へんせい}} ➔ **Secondo sintagma nominale**: [おすすめ](term:term-osusume) modifica [{{編成|へんせい}}](term:term-hensei), creando "build consigliata".
 
 #### ⚖️ Contrasto operativo
 
@@ -92,15 +93,21 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-in una guida AppMedia, immagina `と` come una barra di menu: a sinistra il blocco "top", a destra il blocco "recommended". È un trucco di lettura, non un'etimologia.
+In una guida AppMedia, immagina `と` come una barra di menu: a sinistra il blocco "top", a destra il blocco "recommended". È un trucco di lettura, non un'etimologia.
 
 ## 2. Il sommario: la pagina si divide per uso, non per grammatica
 
-Il [{{目次|もくじ}}](term:term-mokuji) è il punto in cui il titolo diventa navigabile. La parola unisce `{{目|もく}}` come "occhi / punti" e `{{次|じ}}` come "ordine / sequenza": in pratica è la lista dei punti da seguire. Su una pagina web è un segnale operativo, perché ti dice quali sezioni puoi raggiungere senza leggere tutto in fila.
+Il [{{目次|もくじ}}](term:term-mokuji) è il punto in cui il titolo diventa navigabile. La parola unisce {{目|もく}} come "occhi / punti" e {{次|じ}} come "ordine / sequenza": in pratica è la lista dei punti da seguire. Su una pagina web è un segnale operativo, perché ti dice quali sezioni puoi raggiungere senza leggere tutto in fila.
 
-Nel sommario, [{{最強|さいきょう}}](term:term-saikyo) ricompare vicino a PVE e PVP: la pagina non sta definendo una sola build universale, ma sta separando contesti di gioco. Subito dopo arrivano [{{太陽属性|たいようぞくせい}}](term:term-sun-attribute), [{{月属性|つきぞくせい}}](term:term-moon-attribute) e [{{星属性|ほしぞくせい}}](term:term-star-attribute). Qui `{{属性|ぞくせい}}` va capito come "attributo" o "elemento", non come una qualità vaga del personaggio: organizza le composizioni in blocchi elementali.
+Nel sommario, [{{最強|さいきょう}}](term:term-saikyo) ricompare vicino a PVE e PVP: la pagina non sta definendo una sola build universale, ma sta separando contesti di gioco. Subito dopo arrivano [{{太陽属性|たいようぞくせい}}](term:term-sun-attribute), [{{月属性|つきぞくせい}}](term:term-moon-attribute) e [{{星属性|ほしぞくせい}}](term:term-star-attribute). Qui {{属性|ぞくせい}} va capito come "attributo" o "elemento", non come una qualità vaga del personaggio: organizza le composizioni in blocchi elementali.
 
-La parte finale del sommario cambia destinatario. [{{序盤|じょばん}}](term:term-shoban) parla della fase iniziale della progressione, [{{初心者|しょしんしゃ}}](term:term-shoshinsha) parla del lettore che comincia, e [{{考|かんが}}え{{方|かた}}](term:term-kangaekata) sposta l'attenzione dalle liste di squadre al criterio con cui costruirle. Questo passaggio è importante: quando leggi `{{考|かんが}}え{{方|かた}}`, non aspettarti solo "quale personaggio mettere", ma "come ragionare sulla composizione".
+La parte finale del sommario cambia destinatario. [{{序盤|じょばん}}](term:term-shoban) parla della fase iniziale della progressione, [{{初心者|しょしんしゃ}}](term:term-shoshinsha) parla del lettore che comincia, e [{{考|かんが}}え{{方|かた}}](term:term-kangaekata) sposta l'attenzione dalle liste di squadre al criterio con cui costruirle. Questo passaggio è importante: quando leggi {{考|かんが}}え{{方|かた}}, non aspettarti solo "quale personaggio mettere", ma "come ragionare sulla composizione".
+
+[コラボ{{開催|かいさい}}](term:term-collab) appartiene invece al registro da
+portale aggiornato: non descrive una build, ma un evento o una collaborazione
+in corso che può cambiare priorità, banner e personaggi disponibili. Se compare
+accanto al sommario, leggilo come segnale temporale della pagina, non come parte
+della grammatica della composizione.
 
 :::image
 src: assets/starsavior-79520369-toc.png
@@ -123,7 +130,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{目次|もくじ}}から` ➔ **Punto di partenza**: `から` marca il luogo o blocco da cui parte l'azione, qui l'indice cliccabile.
-*   `{{初心者|しょしんしゃ}}{{向|む}}けの{{記事|きじ}}` ➔ **Nome modificato**: `{{初心者|しょしんしゃ}}{{向|む}}け` significa "rivolto ai principianti" e modifica [{{記事|きじ}}](term:term-kiji).
+*   {{初心者|しょしんしゃ}}{{向|む}}けの{{記事|きじ}} ➔ **Nome modificato**: {{初心者|しょしんしゃ}}{{向|む}}け significa "rivolto ai principianti" e modifica [{{記事|きじ}}](term:term-kiji).
 *   `{{開|ひら}}く` ➔ **Azione web naturale**: aprire una pagina, un link o una sezione.
 
 #### ⚖️ Contrasto operativo
@@ -134,9 +141,9 @@ translation_it: >-
 
 La parte più pratica della guida usa [{{編成|へんせい}}](term:term-hensei) nel suo senso concreto: non solo "lista dei membri", ma disposizione funzionale. Quando compaiono [{{前衛|ぜんえい}}](term:term-frontline) e [{{後衛|こうえい}}](term:term-backline), il giapponese sta dividendo lo spazio della squadra.
 
-[{{前衛|ぜんえい}}](term:term-frontline) combina `{{前|ぜん}}` "davanti" e `{{衛|えい}}` "guardia / difesa". In una guida di party composition, diventa la prima linea: il posto dove ha senso mettere chi regge pressione e contatto. [{{後衛|こうえい}}](term:term-backline) usa `{{後|こう}}` "dietro" con lo stesso `{{衛|えい}}`: è la retroguardia, cioè la zona più protetta. Non sono decorazioni grafiche della tabella; cambiano il modo in cui leggi il ruolo del personaggio.
+[{{前衛|ぜんえい}}](term:term-frontline) combina {{前|ぜん}} "davanti" e {{衛|えい}} "guardia / difesa". In una guida di party composition, diventa la prima linea: il posto dove ha senso mettere chi regge pressione e contatto. [{{後衛|こうえい}}](term:term-backline) usa {{後|こう}} "dietro" con lo stesso {{衛|えい}}: è la retroguardia, cioè la zona più protetta. Non sono decorazioni grafiche della tabella; cambiano il modo in cui leggi il ruolo del personaggio.
 
-[{{代用|だいよう}}](term:term-substitute) completa questa logica. Il composto unisce `{{代|だい}}` "sostituzione / al posto di" e `{{用|よう}}` "uso": nella tabella non indica una scelta di ripiego qualsiasi, ma chi può essere usato al posto del personaggio ideale. Quando la pagina elenca alternative, [{{代用|だいよう}}](term:term-substitute) ti dice di non cercare il "migliore assoluto", ma un equivalente funzionale.
+[{{代用|だいよう}}](term:term-substitute) completa questa logica. Il composto unisce {{代|だい}} "sostituzione / al posto di" e {{用|よう}} "uso": nella tabella non indica una scelta di ripiego qualsiasi, ma chi può essere usato al posto del personaggio ideale. Quando la pagina elenca alternative, [{{代用|だいよう}}](term:term-substitute) ti dice di non cercare il "migliore assoluto", ma un equivalente funzionale.
 
 :::image
 src: assets/starsavior-79520369-front-back.png
@@ -176,13 +183,13 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-[{{前衛|ぜんえい}}](term:term-frontline) e [{{後衛|こうえい}}](term:term-backline) condividono `衛`: pensa a due guardie dello stesso sistema, una davanti e una dietro. È un'immagine utile per ricordare la coppia.
+[{{前衛|ぜんえい}}](term:term-frontline) e [{{後衛|こうえい}}](term:term-backline) condividono 衛: pensa a due guardie dello stesso sistema, una davanti e una dietro. È un'immagine utile per ricordare la coppia.
 
 ## 4. Modalità, attributi e fase iniziale: quando la guida cambia criterio
 
-Nel corpo della pagina, le composizioni non vengono ordinate solo per forza. [ストラテジー{{戦|せん}}](term:term-strategy-battle), [{{防衛戦|ぼうえいせん}}](term:term-defense-battle) e [ランク{{戦|せん}}](term:term-rank-battle) sono etichette di scenario: ti dicono in quale tipo di battaglia quella composizione ha senso. Il suffisso `{{戦|せん}}` porta l'idea di scontro o match, quindi fa da cerniera tra katakana di modalità e lessico giapponese di battaglia.
+Nel corpo della pagina, le composizioni non vengono ordinate solo per forza. [ストラテジー{{戦|せん}}](term:term-strategy-battle), [{{防衛戦|ぼうえいせん}}](term:term-defense-battle) e [ランク{{戦|せん}}](term:term-rank-battle) sono etichette di scenario: ti dicono in quale tipo di battaglia quella composizione ha senso. Il suffisso {{戦|せん}} porta l'idea di scontro o match, quindi fa da cerniera tra katakana di modalità e lessico giapponese di battaglia.
 
-Gli attributi funzionano in modo diverso. [{{太陽属性|たいようぞくせい}}](term:term-sun-attribute), [{{月属性|つきぞくせい}}](term:term-moon-attribute) e [{{星属性|ほしぞくせい}}](term:term-star-attribute) non sono modalità, ma filtri elementali. Il pezzo comune `{{属性|ぞくせい}}` ti avvisa che stai leggendo una categoria di affinità: sole, luna e stella cambiano il tipo di squadra da consultare.
+Gli attributi funzionano in modo diverso. [{{太陽属性|たいようぞくせい}}](term:term-sun-attribute), [{{月属性|つきぞくせい}}](term:term-moon-attribute) e [{{星属性|ほしぞくせい}}](term:term-star-attribute) non sono modalità, ma filtri elementali. Il pezzo comune {{属性|ぞくせい}} ti avvisa che stai leggendo una categoria di affinità: sole, luna e stella cambiano il tipo di squadra da consultare.
 
 Quando invece appare [{{序盤|じょばん}}おすすめ{{記事|きじ}}](term:term-shoban-osusume-kiji), la guida esce dalla tabella di party e apre un binario da portale web. [{{序盤|じょばん}}](term:term-shoban) indica la fase iniziale del gioco, [おすすめ](term:term-osusume) segnala raccomandazione, [{{記事|きじ}}](term:term-kiji) dice che il target è un articolo cliccabile. È un'etichetta di navigazione, non una composizione.
 
@@ -250,4 +257,4 @@ translation_it: >-
 
 ## Nota finale
 
-La chiave della pagina è leggere ogni blocco come una funzione di navigazione. Nel titolo, `と` affianca [{{最強|さいきょう}}パーティー{{編成|へんせい}}](term:term-party-composition) e [おすすめ{{編成|へんせい}}](term:term-osusume-composition); nel [{{目次|もくじ}}](term:term-mokuji), le sezioni separano PVE, PVP, attributi e fase iniziale; nelle tabelle, [{{前衛|ぜんえい}}](term:term-frontline), [{{後衛|こうえい}}](term:term-backline) e [{{代用|だいよう}}](term:term-substitute) trasformano la lista dei personaggi in una decisione di composizione. Quando questi segnali diventano familiari, la guida non appare più come un muro di label: diventa una mappa pratica della squadra.
+La chiave della pagina è leggere ogni blocco come una funzione di navigazione. Nel titolo, と affianca [{{最強|さいきょう}}パーティー{{編成|へんせい}}](term:term-party-composition) e [おすすめ{{編成|へんせい}}](term:term-osusume-composition); nel [{{目次|もくじ}}](term:term-mokuji), le sezioni separano PVE, PVP, attributi e fase iniziale; nelle tabelle, [{{前衛|ぜんえい}}](term:term-frontline), [{{後衛|こうえい}}](term:term-backline) e [{{代用|だいよう}}](term:term-substitute) trasformano la lista dei personaggi in una decisione di composizione. Quando questi segnali diventano familiari, la guida non appare più come un muro di label: diventa una mappa pratica della squadra.

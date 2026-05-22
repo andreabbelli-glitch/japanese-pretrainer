@@ -79,8 +79,6 @@ sta parlando di identità reale, apparenza sospetta o fastidio causato ad altri.
 - [{{購買部|こうばいぶ}}](term:term-v561-koubaibu) — negozio della scuola
 - [{{秘密|ひみつ}}のメニュー](term:term-v548-himitsunomenyuu) — indizio del test della palestra di Medali
 - [{{鬼退治|おにたいじ}}フェス](term:term-v558-onitaijifesu) — minigioco del DLC di Nordivia / Kitakami
-- [ポケモンウォッシュ](term:term-v543-pokemonwosshu) — funzione del picnic per lavare un Pokémon
-- [{{音楽|おんがく}}](term:term-v557-ongaku) — musica di scena o di battaglia
 - [かなり](term:term-v562-kanari) — parecchio, in modo considerevole
 - [{{迷子|まいご}}](term:term-v570-maigo) — persona o Pokémon smarrito
 
@@ -115,10 +113,11 @@ translation_it: >-
 *   `{{相手|あいて}}を` ➔ **Bersaglio marcato** (`を` segnala chi entra nello stato).
 *   `{{混乱|こんらん}}させる` ➔ **Causativo di stato** (`させる` fa leggere "provoca confusione", non "si confonde").
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{混乱|こんらん}}する` descrive il soggetto che va
-> in confusione; `{{混乱|こんらん}}させる` descrive una mossa, abilità o effetto
-> che manda qualcun altro in confusione.
+#### ⚖️ Contrasto operativo
+
+`{{混乱|こんらん}}する` descrive il soggetto che va
+in confusione; `{{混乱|こんらん}}させる` descrive una mossa, abilità o effetto
+che manda qualcun altro in confusione.
 
 [{{特殊|とくしゅ}}](term:term-v550-tokushu) è un'etichetta da battaglia, non un
 aggettivo vago. Se precede `の{{技|わざ}}`, restringe la frase alle mosse
@@ -139,10 +138,11 @@ translation_it: >-
 *   `{{特攻|とくこう}}の {{数値|すうち}}で` ➔ **Criterio di calcolo** (`で` indica il dato usato per determinare il danno).
 *   `ダメージが {{変|か}}わる` ➔ **Risultato variabile** (`が` marca il danno come elemento che cambia).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** qui "speciale" non vuol dire raro o sorprendente.
-> Leggi [{{特殊|とくしゅ}}](term:term-v550-tokushu) come un cartello che manda gli
-> occhi verso `{{特攻|とくこう}}` e `{{特防|とくぼう}}`.
+#### 🧠 Gancio cognitivo
+
+Qui "speciale" non vuol dire raro o sorprendente.
+Leggi [{{特殊|とくしゅ}}](term:term-v550-tokushu) come un cartello che manda gli
+occhi verso `{{特攻|とくこう}}` e `{{特防|とくぼう}}`.
 
 ## 2. Statistiche: quando un numero sale o l'azione fallisce
 
@@ -195,10 +195,11 @@ translation_it: >-
 *   `こちらの {{技|わざ}}は` ➔ **Tema del fallimento** (la mossa del tuo lato è ciò di cui parla la seconda metà).
 *   `{{失敗|しっぱい}}した` ➔ **Esito tecnico** (l'azione non è riuscita o non ha avuto effetto).
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** [{{失敗|しっぱい}}](term:term-v551-shippai) non
-> va letto automaticamente come "ho sbagliato". In battaglia spesso significa
-> "la mossa non si è risolta", anche se la scelta era valida.
+#### ⚖️ Contrasto operativo
+
+[{{失敗|しっぱい}}](term:term-v551-shippai) non
+va letto automaticamente come "ho sbagliato". In battaglia spesso significa
+"la mossa non si è risolta", anche se la scelta era valida.
 
 ## 3. Raid e interfaccia: prepararsi, sostenere, ricevere
 
@@ -223,10 +224,11 @@ translation_it: >-
 *   `{{用意|ようい}}が できているか` ➔ **Stato di prontezza** (`できている` indica preparazione già completata).
 *   `{{確認|かくにん}}してください` ➔ **Richiesta cortese di verifica** (`してください` trasforma il controllo in istruzione di sistema).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{用意|ようい}}](term:term-v545-youi) è
-> preparazione verificabile; `やる{{気|き}}` sarebbe voglia o motivazione. Se il
-> menu chiede `{{用意|ようい}}`, controlla condizioni concrete, non entusiasmo.
+#### ⚖️ Contrasto operativo
+
+[{{用意|ようい}}](term:term-v545-youi) è
+preparazione verificabile; `やる{{気|き}}` sarebbe voglia o motivazione. Se il
+menu chiede `{{用意|ようい}}`, controlla condizioni concrete, non entusiasmo.
 
 :::example_sentence
 jp: >-
@@ -250,11 +252,16 @@ giocatori, [シェア](term:term-v555-shiea) riguarda una condivisione, e
 [マジカル{{交換|こうかん}}](term:term-v567-majikarukoukan) è uno scambio in cui
 non scegli direttamente il risultato.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** in [マジカル{{交換|こうかん}}](term:term-v567-majikarukoukan),
-> `マジカル` dà il colore "magico", ma il cuore operativo è
-> `{{交換|こうかん}}`: qualcosa lascia la tua squadra o scatola e qualcosa arriva
-> in cambio.
+#### 🧠 Gancio cognitivo
+
+In [マジカル{{交換|こうかん}}](term:term-v567-majikarukoukan),
+`マジカル` dà il colore "magico", ma il cuore operativo è
+`{{交換|こうかん}}`: qualcosa lascia la tua squadra o scatola e qualcosa arriva
+in cambio.
+
+[{{授業|じゅぎょう}}を{{思|おも}}い{{出|だ}}す](term:term-e100-jugyou-wo-omoidasu)
+non è nostalgia generica: in una prova o in un indizio significa recuperare una
+spiegazione già ricevuta e usarla come chiave per risolvere il passo corrente.
 
 ## 4. Dalla lotta alla scena: identità, aspetto, disturbo
 
@@ -265,6 +272,13 @@ più "che effetto si attiva?", ma "che cosa sto vedendo davvero?".
 aspetto, comportamento, stato visibile. [{{正体|しょうたい}}](term:term-v546-shoutai)
 scende sotto la superficie e nomina la vera identità. [{{現象|げんしょう}}](term:term-v556-genshou)
 tratta invece l'evento come qualcosa da osservare e spiegare.
+
+[{{研究所|けんきゅうじょ}}](term:term-v549-kenkyuujo) mette subito la scena nel
+registro della scoperta: laboratorio, dati, identità nascoste. Se nello stesso
+frame appare un [{{侵入者|しんにゅうしゃ}}](term:term-v566-shinyuusha), il testo
+non sta solo nominando una persona, ma segnala una presenza entrata dove non
+doveva. [かなり](term:term-v562-kanari) intensifica la valutazione: non "un po'
+strano", ma "parecchio" fuori norma.
 
 :::example_sentence
 jp: >-
@@ -300,11 +314,12 @@ translation_it: >-
 *   `かなり` ➔ **Intensificatore** (spinge la valutazione verso "parecchio", non solo "un po'").
 *   `{{変|へん}}だった` ➔ **Constatazione al passato** (la scena registra un'anomalia già osservata).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{様子|ようす}}](term:term-v542-yousu) è ciò che
-> si vede dall'esterno; [{{正体|しょうたい}}](term:term-v546-shoutai) è ciò che
-> si scopre dietro l'apparenza; [{{現象|げんしょう}}](term:term-v556-genshou) è
-> l'evento osservabile che può richiedere una spiegazione.
+#### ⚖️ Contrasto operativo
+
+[{{様子|ようす}}](term:term-v542-yousu) è ciò che
+si vede dall'esterno; [{{正体|しょうたい}}](term:term-v546-shoutai) è ciò che
+si scopre dietro l'apparenza; [{{現象|げんしょう}}](term:term-v556-genshou) è
+l'evento osservabile che può richiedere una spiegazione.
 
 ## 5. Movimento e luoghi: esplorare, invitare, partecipare
 
@@ -324,6 +339,11 @@ tiene davvero. [{{購買部|こうばいぶ}}](term:term-v561-koubaibu) e
 [{{秘密|ひみつ}}のメニュー](term:term-v548-himitsunomenyuu) sono luoghi o indizi
 da leggere come parti della procedura: compri, prepari, risolvi, poi combatti.
 
+[{{鬼退治|おにたいじ}}フェス](term:term-v558-onitaijifesu) è un'etichetta di
+evento: prima riconosci il festival/minigioco, poi leggi quale verbo lo apre.
+[{{迷子|まいご}}](term:term-v570-maigo), invece, crea una micro-situazione di
+orientamento sociale: qualcuno è smarrito e va riportato dentro una relazione.
+
 :::example_sentence
 jp: >-
   {{購買部|こうばいぶ}}で {{用意|ようい}}を すませてから、
@@ -340,11 +360,12 @@ translation_it: >-
 *   `{{鬼退治|おにたいじ}}フェスに` ➔ **Destinazione evento** (`に` marca l'evento a cui si partecipa).
 *   `{{参加|さんか}}する` ➔ **Ingresso nell'attività** (partecipare, non solo guardare).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** [{{探索|たんさく}}](term:term-v554-tansaku) contiene
-> l'idea di cercare qualcosa; [{{探検|たんけん}}](term:term-v568-tanken) suona
-> come entrare in territorio da esplorare. È un trucco di lettura, non una
-> separazione rigida in ogni contesto.
+#### 🧠 Gancio cognitivo
+
+[{{探索|たんさく}}](term:term-v554-tansaku) contiene
+l'idea di cercare qualcosa; [{{探検|たんけん}}](term:term-v568-tanken) suona
+come entrare in territorio da esplorare. È un trucco di lettura, non una
+separazione rigida in ogni contesto.
 
 ## Esempi guidati di riepilogo
 
@@ -383,6 +404,14 @@ translation_it: >-
   Dopo aver controllato lo stato del Pokémon smarrito, lo presento
   all'allenatore.
 :::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{秘密|ひみつ}}のメニューを` ➔ **Indizio richiamato**: `の` lega "segreto" al menu come nome unitario della prova.
+*   `{{思|おも}}い{{出|だ}}して` ➔ **Recupero di conoscenza**: prima richiami ciò che sai, poi lo usi.
+*   `ジムの {{問題|もんだい}}を {{解|と}}く` ➔ **Problema risolto**: il bersaglio non è il menu, ma il quesito della palestra.
+*   [{{迷子|まいご}}](term:term-v570-maigo)の ポケモンの {{様子|ようす}}を ➔ **Stato da controllare**: la catena con `の` collega Pokémon smarrito e aspetto osservabile.
+*   `トレーナーに {{紹介|しょうかい}}する` ➔ **Destinatario sociale**: `に` dice a chi viene presentato il Pokémon.
 
 ## Nota finale
 

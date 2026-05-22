@@ -26,15 +26,6 @@ summary: >-
 
 Il lato spell è più breve e serve da conferma pratica: `{{2体|にたい}}まで` non obbliga a prendere due creature, ma mette un tetto massimo. Quando lo stesso pattern appare su entrambi i lati della Twinpact, puoi riconoscerlo come limite operativo stabile.
 
-:::image
-src: assets/cards/live-duel/sofa-softysonia.jpg
-alt: "Sofa = Softysonia card."
-caption: >-
-  [ソファ＝ソフティソニア](term:term-sofa-softysonia) / 「どんな{{夢|ゆめ}}がお{{望|のぞ}}みだ？」。
-  Il lato creatura combina [アビスラッシュ](term:term-abyss-rush),
-  [ブロッカー](term:term-blocker), [T・ブレイカー](term:term-t-breaker) e
-  una rimozione costruita su `{{合計|ごうけい}}`, `より`, `ように` e `まで`.
-:::
 
 ## Termini chiave
 
@@ -70,8 +61,21 @@ caption: >-
 - [T・ブレイカー](term:term-t-breaker) — keyword offensiva: questa creatura rompe tre scudi
 - `アビス・クリーチャー` — filtro del lato spell: il recupero non prende qualunque creatura
 - `どんな{{夢|ゆめ}}がお{{望|のぞ}}みだ？` — frase di tono della carta: "che genere di sogno desideri?"
+- [タップ](term:term-tap) — tappare / mettere in posizione tapped
+- [クリーチャー](term:term-creature) — creatura
+- [{{選|えら}}ぶ](term:term-erabu) — scegliere
 
 ---
+
+:::image
+src: assets/cards/live-duel/sofa-softysonia.jpg
+alt: "Sofa = Softysonia card."
+caption: >-
+  [ソファ＝ソフティソニア](term:term-sofa-softysonia) / 「どんな{{夢|ゆめ}}がお{{望|のぞ}}みだ？」。
+  Il lato creatura combina [アビスラッシュ](term:term-abyss-rush),
+  [ブロッカー](term:term-blocker), [T・ブレイカー](term:term-t-breaker) e
+  una rimozione costruita su `{{合計|ごうけい}}`, `より`, `ように` e `まで`.
+:::
 
 ## 1. Dal tap alla soglia: prima si crea il benchmark
 
@@ -246,4 +250,4 @@ reveal_mode: sentence
 
 ## Nota finale
 
-[ソファ＝ソフティソニア](term:term-sofa-softysonia) diventa leggibile quando separi tre movimenti: prima le due carte entrano nel `{{墓地|ぼち}}`, poi `{{合計|ごうけい}}より` costruisce la soglia, infine `ように` e `まで` regolano scelta e quantità. Se tieni insieme questi blocchi, il testo non sembra più una riga lunga: diventa una procedura ordinata.
+[ソファ＝ソフティソニア](term:term-sofa-softysonia) diventa leggibile quando separi tre movimenti: prima le due carte entrano nel {{墓地|ぼち}}, poi {{合計|ごうけい}}より costruisce la soglia, infine ように e まで regolano scelta e quantità. Se tieni insieme questi blocchi, il testo non sembra più una riga lunga: diventa una procedura ordinata.

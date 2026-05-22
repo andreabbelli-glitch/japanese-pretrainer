@@ -66,12 +66,12 @@ Il gioco usa parole e formule riconoscibili quando conferma una scelta, segnala 
 
 Il tuo viaggio a Paldea si divide tra i banchi dell'Accademia e l'esplorazione selvaggia.
 
-*   [{{家庭科|かていか}}](term:term-v263-kateika) (**Economia Domestica**): Composto da `{{家庭|かてい}}` (*katei*, famiglia/casa) e `{{科|か}}` (*ka*, corso/materia). All'Accademia, indica la classe in cui impari a preparare i panini e a gestire le risorse. Quando vedi [{{家庭科|かていか}}](term:term-v263-kateika), preparati a dialoghi legati a ingredienti, cibo e relazioni domestiche.
-*   [なみのり](term:term-v260-naminori) (**Surf / Cavalcare le onde**): Letteralmente "cavalcare le onde" (`{{波|なみ}}` *nami*, onda + `{{乗|の}}り` *nori*, cavalcare/salire a bordo). È il nome storico della mossa *Surf* e indica l'abilità della tua cavalcatura (Koraidon o Miraidon) di muoversi sull'acqua. Se leggi [なみのり](term:term-v260-naminori) in un tutorial, il gioco ti sta spiegando come superare fiumi o specchi di mare.
+*   [{{家庭科|かていか}}](term:term-v263-kateika) (**Economia Domestica**): Composto da {{家庭|かてい}} (*katei*, famiglia/casa) e {{科|か}} (*ka*, corso/materia). All'Accademia, indica la classe in cui impari a preparare i panini e a gestire le risorse. Quando vedi [{{家庭科|かていか}}](term:term-v263-kateika), preparati a dialoghi legati a ingredienti, cibo e relazioni domestiche.
+*   [なみのり](term:term-v260-naminori) (**Surf / Cavalcare le onde**): Letteralmente "cavalcare le onde" ({{波|なみ}} *nami*, onda + {{乗|の}}り *nori*, cavalcare/salire a bordo). È il nome storico della mossa *Surf* e indica l'abilità della tua cavalcatura (Koraidon o Miraidon) di muoversi sull'acqua. Se leggi [なみのり](term:term-v260-naminori) in un tutorial, il gioco ti sta spiegando come superare fiumi o specchi di mare.
 *   [{{味方|みかた}}](term:term-v258-mikata) e [{{古代|こだい}}](term:term-v255-kodai):
     *   [{{味方|みかた}}](term:term-v258-mikata) (**Alleato / Compagno**): Indica chi combatte dalla tua parte (es. nei Raid Terastal).
-        *   🧠 **Gancio mnemonico:** Pensa a `{{味|み}}` come "gusto/fazione" e `{{方|かた}}` come "direzione/persona". Chi condivide la tua stessa direzione è il tuo [{{味方|みかた}}](term:term-v258-mikata) (alleato). Contrasta direttamente con `{{相手|あいて}}` (*aite*, avversario). *(Nota: è un trucco di memoria, non l’etimologia reale — `{{味方|みかた}}` è probabilmente un ateji da `{{御方|みかた}}`.)*
-    *   [{{古代|こだい}}](term:term-v255-kodai) (**Antichità / Passato remoto**): Composto da `{{古|こ}}` (*vecchio*) e `{{代|だい}}` (*era/generazione*). In *Pokémon Violet* sentirai parlare di futuro, ma in *Pokémon Scarlet* sentirai costantemente nominare i [{{古代|こだい}}](term:term-v255-kodai)のポケモン (i Pokémon del passato remoto, o Pokémon Paradosso del passato).
+        *   🧠 **Gancio mnemonico:** Pensa a {{味|み}} come "gusto/fazione" e {{方|かた}} come "direzione/persona". Chi condivide la tua stessa direzione è il tuo [{{味方|みかた}}](term:term-v258-mikata) (alleato). Contrasta direttamente con {{相手|あいて}} (*aite*, avversario). *(Nota: è un trucco di memoria, non l’etimologia reale — {{味方|みかた}} è probabilmente un ateji da {{御方|みかた}}.)*
+    *   [{{古代|こだい}}](term:term-v255-kodai) (**Antichità / Passato remoto**): Composto da {{古|こ}} (*vecchio*) e {{代|だい}} (*era/generazione*). In *Pokémon Violet* sentirai parlare di futuro, ma in *Pokémon Scarlet* sentirai costantemente nominare i [{{古代|こだい}}](term:term-v255-kodai)のポケモン (i Pokémon del passato remoto, o Pokémon Paradosso del passato).
 
 ---
 
@@ -86,9 +86,9 @@ Per trionfare nelle palestre, devi riconoscere al volo i tipi dei Pokémon e le 
 
 Quando affronti sfide impegnative, il sistema o i personaggi ti daranno avvisi precisi usando:
 
-*   [{{注意|ちゅうい}}](term:term-v261-chuui) (**Attenzione / Cautela**): Composto da `{{注|ちゅう}}` (*versare*) e `{{意|い}}` (*mente/intenzione*). Lo troverai spesso nei messaggi di pericolo o nelle istruzioni operative.
+*   [{{注意|ちゅうい}}](term:term-v261-chuui) (**Attenzione / Cautela**): Composto da {{注|ちゅう}} (*versare*) e {{意|い}} (*mente/intenzione*). Lo troverai spesso nei messaggi di pericolo o nelle istruzioni operative.
     *   🧠 **Gancio cognitivo:** Immagina di *"versare la propria mente su qualcosa"*: è un modo efficace per ricordare che [{{注意|ちゅうい}}](term:term-v261-chuui) significa concentrare tutta l'attenzione su un punto preciso.
-*   [{{受|う}}ける](term:term-v262-ukeru) (**Ricevere / Sostenere**): È il verbo-base per descrivere chi subisce un'azione. In battaglia, non significa ricevere un regalo, ma subire un attacco o un effetto di stato (es. `はがねタイプのわざを{{受|う}}ける` ➔ subire una mossa di tipo Acciaio).
+*   [{{受|う}}ける](term:term-v262-ukeru) (**Ricevere / Sostenere**): È il verbo-base per descrivere chi subisce un'azione. In battaglia, non significa ricevere un regalo, ma subire un attacco o un effetto di stato (es. はがねタイプのわざを{{受|う}}ける ➔ subire una mossa di tipo Acciaio).
 
 #### ⚖️ Contrasto operativo: `{{普通|ふつう}}` (normale) vs `ノーマル` (tipo Normale)
 
@@ -102,8 +102,8 @@ Quando affronti sfide impegnative, il sistema o i personaggi ti daranno avvisi p
 Quando navighi nei menu, configuri il multiplayer o raccogli oggetti, il gioco comunica con formule stabili.
 
 *   [レシピ](term:term-v264-reshipi) (**Ricetta**): Le ricette dei panini che sblocchi durante il viaggio.
-*   [{{全部|ぜんぶ}}](term:term-v266-zenbu) (**Tutto**): Composto da `{{全|ぜん}}` (*intero*) e `{{部|ぶ}}` (*parte*). Indica la totalità senza esclusioni. Lo trovi nei menu di acquisto o di selezione multipla.
-*   [{{通信|つうしん}}](term:term-v267-tsuushin) (**Connessione / Comunicazione**): Composto da `{{通|つう}}` (*attraversare/trasmettere*) e `{{信|しん}}` (*messaggio/comunicazione*, con il valore di base di fiducia). Qualsiasi funzione online o locale di scambio dati (scambi, lotte in link, connessioni wireless) è introdotta da questa parola.
+*   [{{全部|ぜんぶ}}](term:term-v266-zenbu) (**Tutto**): Composto da {{全|ぜん}} (*intero*) e {{部|ぶ}} (*parte*). Indica la totalità senza esclusioni. Lo trovi nei menu di acquisto o di selezione multipla.
+*   [{{通信|つうしん}}](term:term-v267-tsuushin) (**Connessione / Comunicazione**): Composto da {{通|つう}} (*attraversare/trasmettere*) e {{信|しん}} (*messaggio/comunicazione*, con il valore di base di fiducia). Qualsiasi funzione online o locale di scambio dati (scambi, lotte in link, connessioni wireless) è introdotta da questa parola.
 *   [{{結果|けっか}}](term:term-v269-kekka) (**Risultato / Esito**): Il responso finale dopo un test, una battaglia o una sessione all'Accademia.
 *   [テーブルシティ](term:term-v272-teeburushitei) (**Mesapoli**): La grande metropoli al centro di Paldea, dove ha sede l'Accademia.
 
@@ -118,7 +118,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 *   `レシピを` ➔ **Oggetto Diretto** (`レシピ` ricetta + `を` marca-oggetto ➔ *"...la ricetta..."*).
-*   `{{受|う}}けとりました` ➔ **Azione Conclusa** (Verbo composto da `{{受|う}}ける` *ricevere* + `{{取|と}}る` *prendere*, coniugato al passato cortese `～ました` ➔ *"...ha preso in consegna / ha ricevuto"*). Il sistema usa questa formula [〜を {{受|う}}けとりました！](term:term-e046-o-uketorimashita) ogni volta che un oggetto o un panino entra nell'inventario.
+*   {{受|う}}けとりました ➔ **Azione Conclusa** (Verbo composto da {{受|う}}ける *ricevere* + {{取|と}}る *prendere*, coniugato al passato cortese ～ました ➔ *"...ha preso in consegna / ha ricevuto"*). Il sistema usa questa formula [〜を {{受|う}}けとりました！](term:term-e046-o-uketorimashita) ogni volta che un oggetto o un panino entra nell'inventario.
 
 :::example_sentence
 jp: >-
@@ -129,7 +129,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 *   `ポケモンを` ➔ **Oggetto della Scelta** (`ポケモン` + `を`).
-*   `{{選|えら}}んでください` ➔ **Istruzione Cortese** (Verbo `{{選|えら}}ぶ` *scegliere* nella forma in `-te` `{{選|えら}}んで` + `ください` *per favore* ➔ *"...seleziona per favore"*). Questa espressione [〜を {{選|えら}}んでください](term:term-e047-o-erandekudasai) governa tutte le schermate in cui il gioco attende una tua selezione.
+*   {{選|えら}}んでください ➔ **Istruzione Cortese** (Verbo {{選|えら}}ぶ *scegliere* nella forma in -te {{選|えら}}んで + ください *per favore* ➔ *"...seleziona per favore"*). Questa espressione [〜を {{選|えら}}んでください](term:term-e047-o-erandekudasai) governa tutte le schermate in cui il gioco attende una tua selezione.
 
 ---
 
@@ -138,7 +138,7 @@ translation_it: >-
 Il bello del giapponese nei media sta nel saper cogliere le relazioni tra i personaggi attraverso la grammatica.
 
 ### A. Esprimere desideri personali: `～てほしい`
-Quando un personaggio (es. Nemona o Pepper) vuole che tu faccia qualcosa, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in `-te` del verbo + `ほしい`** (desiderabile) ed esprime il desiderio dal punto di vista del parlante. Se si parla del desiderio di una terza persona, di solito serve una forma riportata o osservabile, come `～てほしいと{{思|おも}}っている` o `～てほしがっている`.
+Quando un personaggio (es. Nemona o Pepper) vuole che tu faccia qualcosa, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in -te del verbo + ほしい** (desiderabile) ed esprime il desiderio dal punto di vista del parlante. Se si parla del desiderio di una terza persona, di solito serve una forma riportata o osservabile, come ～てほしいと{{思|おも}}っている o ～てほしがっている.
 
 :::example_sentence
 jp: >-
@@ -154,7 +154,7 @@ translation_it: >-
 *   *Senso letterale:* *"Riguardo a questo, l'uso da parte tua è desiderabile per me"*.
 
 ### B. Suggerimenti gentili: `～てみて`
-Quando qualcuno ti invita calorosamente a fare un tentativo, usa la struttura **Vて + みて**: si prende la forma in `-te` di qualsiasi verbo e si aggiunge `みて`, cioè la forma in `-te` di `みる` nel pattern `Vてみる` (*provare a fare V*). Quando chiude la frase, `Vてみて` funziona come invito o richiesta informale. Con i verbi in `〜する` il risultato è [〜してみて](term:term-e053-shitemite), ma il pattern vale per ogni verbo (es. `{{使|つか}}ってみて`, `{{食|た}}べてみて`).
+Quando qualcuno ti invita calorosamente a fare un tentativo, usa la struttura **Vて + みて**: si prende la forma in -te di qualsiasi verbo e si aggiunge みて, cioè la forma in -te di みる nel pattern Vてみる (*provare a fare V*). Quando chiude la frase, Vてみて funziona come invito o richiesta informale. Con i verbi in 〜する il risultato è [〜してみて](term:term-e053-shitemite), ma il pattern vale per ogni verbo (es. {{使|つか}}ってみて, {{食|た}}べてみて).
 
 :::example_sentence
 jp: >-
@@ -184,8 +184,8 @@ La parola [せっかく](term:term-v270-sekkaku) segnala un'occasione ottenuta c
 
 ### D. Impegni e constatazioni colloquiali
 
-*   [{{約束|やくそく}}](term:term-v271-yakusoku) (**Promessa / Appuntamento**): Molto comune nei dialoghi in cui i personaggi stringono un patto (es. *"Promettimi che verrai a テーブルシティ"*). `{{約束|やくそく}}する` trasforma la parola in azione attiva.
-*   [～な / ～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) (**Eh / proprio... / vedo che...**): Finale colloquiale e riflessiva, spesso ruvida o mascolina a seconda della voce del personaggio, ma non esclusivamente maschile. Dopo aggettivi in `い` si usa direttamente `な` (`このジムはむずかしいな` ➔ *"Questa palestra è proprio difficile, eh"*); dopo nomi e aggettivi in `な` compare spesso `だな` (`{{静|しず}}かだな`, `{{先生|せんせい}}だな`). Con i verbi, invece, serve più attenzione: `な` può essere osservativo in certi contesti, ma dopo una forma del dizionario può anche diventare proibitivo. Il parlante non sta facendo una domanda diretta: sta pensando ad alta voce o constatando un fatto evidente davanti a lui.
+*   [{{約束|やくそく}}](term:term-v271-yakusoku) (**Promessa / Appuntamento**): Molto comune nei dialoghi in cui i personaggi stringono un patto (es. *"Promettimi che verrai a テーブルシティ"*). {{約束|やくそく}}する trasforma la parola in azione attiva.
+*   [～な / ～だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) (**Eh / proprio... / vedo che...**): Finale colloquiale e riflessiva, spesso ruvida o mascolina a seconda della voce del personaggio, ma non esclusivamente maschile. Dopo aggettivi in い si usa direttamente な (このジムはむずかしいな ➔ *"Questa palestra è proprio difficile, eh"*); dopo nomi e aggettivi in な compare spesso だな ({{静|しず}}かだな, {{先生|せんせい}}だな). Con i verbi, invece, serve più attenzione: な può essere osservativo in certi contesti, ma dopo una forma del dizionario può anche diventare proibitivo. Il parlante non sta facendo una domanda diretta: sta pensando ad alta voce o constatando un fatto evidente davanti a lui.
 
 #### ⚖️ Contrasto: `な` osservativo vs `Vるな` proibitivo
 

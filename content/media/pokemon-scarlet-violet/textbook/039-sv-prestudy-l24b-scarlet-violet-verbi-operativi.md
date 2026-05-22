@@ -22,7 +22,7 @@ summary: >-
 
 In *Pokémon Scarlet & Violet*, molte frasi ti dicono che cosa cambia nel mondo di gioco: una cavalcatura assume una forma, un Pokémon recupera energie, una lista viene riordinata, un personaggio ti chiede un favore. Non sono solo descrizioni: sono istruzioni mascherate da dialogo, tutorial o voce di menu.
 
-Il segnale più utile è il verbo operativo. Quando trovi `を`, cerca quale cosa viene allargata, curata, depositata o ritirata; quando trovi `で`, chiediti con quale modalità, forma o mezzo si sta agendo. Le particelle piccole come [だけ](grammar:grammar-g089-solo), [も](grammar:grammar-g090-anche), [や / など](grammar:grammar-g091-tra-gli-altri-eccetera) e [し](grammar:grammar-g092-e-inoltre-tra-l-altro) completano il quadro: restringono, aggiungono, aprono un elenco o accumulano motivi.
+Il segnale più utile è il verbo operativo. Quando trovi を, cerca quale cosa viene allargata, curata, depositata o ritirata; quando trovi で, chiediti con quale modalità, forma o mezzo si sta agendo. Le particelle piccole come [だけ](grammar:grammar-g089-solo), [も](grammar:grammar-g090-anche), [や / など](grammar:grammar-g091-tra-gli-altri-eccetera) e [し](grammar:grammar-g092-e-inoltre-tra-l-altro) completano il quadro: restringono, aggiungono, aprono un elenco o accumulano motivi.
 
 ## Termini chiave
 
@@ -38,6 +38,10 @@ Il segnale più utile è il verbo operativo. Quando trovi `を`, cerca quale cos
 - [{{手|て}}ごわい](term:term-v463-tegowai) — ostico / tosto
 - [ポケモンのおとしもの](term:term-v464-pokemon-nootoshimono) — materiali lasciati dai Pokémon
 - [{{預|あず}}ける](term:term-v465-azuke-ru) — depositare / affidare
+- [{{巡|めぐ}}る](term:term-v472-meguru) — girare / visitare più punti
+- [{{並|なら}}べかえ](term:term-v473-narabekae) — riordinare una lista
+- [{{入手|にゅうしゅ}}](term:term-v474-nyuushu) — ottenere / acquisire
+- [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru) — ritirare un Pokémon dalla lotta
 
 ## Espressioni ricorrenti
 
@@ -61,23 +65,21 @@ Il segnale più utile è il verbo operativo. Quando trovi `を`, cerca quale cos
 - [ドライブモード](term:term-v470-doraibumoodo) — Drive Mode
 - [フロートモード](term:term-v471-furootomoodo) — Float Mode
 
-## Comandi di menu e percorso
-
-- [{{巡|めぐ}}る](term:term-v472-meguru) — girare / visitare più punti
-- [{{並|なら}}べかえ](term:term-v473-narabekae) — riordinare una lista
-- [{{入手|にゅうしゅ}}](term:term-v474-nyuushu) — ottenere / acquisire
-- [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru) — ritirare un Pokémon dalla lotta
-
 ---
 
 ## 1. Verbi che cambiano stato: spazio, salute e squadra
 
-Quando il gioco usa verbi come [{{広|ひろ}}げる](term:term-v454-hiroge-ru), [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru), [{{預|あず}}ける](term:term-v465-azuke-ru) o [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru), la frase non resta descrittiva: qualcosa passa da uno stato a un altro. Il nome marcato da `を` è il bersaglio concreto dell'operazione.
+Quando il gioco usa verbi come [{{広|ひろ}}げる](term:term-v454-hiroge-ru), [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru), [{{預|あず}}ける](term:term-v465-azuke-ru) o [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru), la frase non resta descrittiva: qualcosa passa da uno stato a un altro. Il nome marcato da を è il bersaglio concreto dell'operazione.
 
 *   [{{広|ひろ}}げる](term:term-v454-hiroge-ru) significa allargare o espandere. In un tutorial di Paldea può riguardare lo spazio esplorabile, il raggio d'azione o una possibilità appena sbloccata: il punto non è "aprire" qualcosa in astratto, ma rendere più ampio ciò che prima era limitato.
-*   [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru) unisce `{{回復|かいふく}}` (*recupero*) e `させる`, forma causativa di `する`. In `ポケモンを {{回復|かいふく}}させる`, il Pokémon non decide da solo di guarire: tu fai sì che recuperi tramite un Centro Pokémon, uno strumento o una funzione del menu.
-*   [{{預|あず}}ける](term:term-v465-azuke-ru) vuol dire affidare qualcosa a un luogo o sistema che lo custodisce. Con `ポケモンを {{預|あず}}ける`, l'immagine naturale è il box: il Pokémon esce dalla squadra attiva, ma resta tuo.
-*   [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru) porta l'idea di tirare qualcosa indietro o verso l'interno. In battaglia, `ポケモンを {{引|ひ}}っ{{込|こ}}める` è il ritiro dalla lotta: non stai depositando il Pokémon, stai cambiando la situazione tattica dentro lo scontro.
+*   [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru) unisce {{回復|かいふく}} (*recupero*) e させる, forma causativa di する. In ポケモンを {{回復|かいふく}}させる, il Pokémon non decide da solo di guarire: tu fai sì che recuperi tramite un Centro Pokémon, uno strumento o una funzione del menu.
+*   [{{手|て}}ごわい](term:term-v463-tegowai) qualifica un avversario, un
+    percorso o una prova che richiede attenzione perché non si lascia gestire
+    facilmente. In `{{手|て}}ごわい {{相手|あいて}}`, non leggere solo "forte":
+    il testo sta preparando una sfida ostica, dove conviene curare, cambiare
+    squadra o scegliere meglio la mossa.
+*   [{{預|あず}}ける](term:term-v465-azuke-ru) vuol dire affidare qualcosa a un luogo o sistema che lo custodisce. Con ポケモンを {{預|あず}}ける, l'immagine naturale è il box: il Pokémon esce dalla squadra attiva, ma resta tuo.
+*   [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru) porta l'idea di tirare qualcosa indietro o verso l'interno. In battaglia, ポケモンを {{引|ひ}}っ{{込|こ}}める è il ritiro dalla lotta: non stai depositando il Pokémon, stai cambiando la situazione tattica dentro lo scontro.
 
 :::example_sentence
 jp: >-
@@ -93,7 +95,7 @@ translation_it: >-
 *   `{{手|て}}ごわい {{相手|あいて}}に` ➔ **Avversario di destinazione** (`{{手|て}}ごわい` non è solo "forte": segnala qualcuno difficile da gestire).
 *   `{{挑|いど}}みます` ➔ **Entrata nella sfida** (il verbo punta verso un confronto intenzionale).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{預|あず}}ける](term:term-v465-azuke-ru) è gestione fuori dalla scena attiva: affidi un Pokémon al box o a un deposito. [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru) è manovra dentro una scena attiva, soprattutto una lotta: richiami il Pokémon senza farlo uscire dal tuo possesso.
 
@@ -104,8 +106,8 @@ translation_it: >-
 Quando la frase passa dall'inventario al mondo aperto, i verbi diventano spaziali. Qui contano direzione, mezzo e percorso: il gioco ti fa salire verso l'alto, fermarti solo di passaggio, girare più punti o riconoscere un riferimento sulla mappa.
 
 *   [{{登|のぼ}}る](term:term-v458-noboru) è il verbo del movimento verso l'alto: montagne, pareti, scale, strutture. Con [はしご](term:term-v459-hashigo), la scala a pioli non è solo un oggetto: diventa il percorso fisico su cui avviene la salita.
-*   [{{立|た}}ち{{寄|よ}}る](term:term-v461-tachi-yoru) combina `{{立|た}}つ` (*stare in piedi / mettersi in un punto*) e `{{寄|よ}}る` (*avvicinarsi*). Il risultato non è "fermarsi per sempre", ma fare una sosta lungo il percorso: entrare in un Centro Pokémon, passare da un negozio, controllare un edificio e poi ripartire.
-*   [{{巡|めぐ}}る](term:term-v472-meguru) descrive un giro attraverso più luoghi. `{{町|まち}}を {{巡|めぐ}}る` non suona come visitare un singolo edificio: la città viene attraversata come insieme di punti.
+*   [{{立|た}}ち{{寄|よ}}る](term:term-v461-tachi-yoru) combina {{立|た}}つ (*stare in piedi / mettersi in un punto*) e {{寄|よ}}る (*avvicinarsi*). Il risultato non è "fermarsi per sempre", ma fare una sosta lungo il percorso: entrare in un Centro Pokémon, passare da un negozio, controllare un edificio e poi ripartire.
+*   [{{巡|めぐ}}る](term:term-v472-meguru) descrive un giro attraverso più luoghi. {{町|まち}}を {{巡|めぐ}}る non suona come visitare un singolo edificio: la città viene attraversata come insieme di punti.
 *   [{{目印|めじるし}}](term:term-v456-mejirushi) è il segno che orienta il movimento: un edificio riconoscibile, un simbolo sulla mappa, un dettaglio che un personaggio ti dice di cercare. Nei dialoghi di percorso, questa parola trasforma un "vai lì" generico in "segui quel riferimento".
 
 :::example_sentence
@@ -122,7 +124,7 @@ translation_it: >-
 *   `{{目印|めじるし}}の {{建物|たてもの}}` ➔ **Edificio con funzione di riferimento** (`の` specifica il ruolo del `{{建物|たてもの}}`).
 *   `{{立|た}}ち{{寄|よ}}ります` ➔ **Sosta di passaggio** (la destinazione è temporanea, non il punto finale del viaggio).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{立|た}}ち{{寄|よ}}る](term:term-v461-tachi-yoru), immagina una persona che "si mette in piedi vicino" a un posto prima di ripartire. È un trucco mnemonico per ricordare il valore di sosta breve, non una spiegazione etimologica completa.
 
@@ -132,9 +134,9 @@ Per [{{立|た}}ち{{寄|よ}}る](term:term-v461-tachi-yoru), immagina una pers
 
 Scarlet/Violet alterna hiragana e katakana quando descrive Koraidon o Miraidon. La distinzione più pratica è tra `けいたい`, cioè la forma assunta dalla cavalcatura, e `モード`, cioè la modalità trattata come etichetta di sistema.
 
-*   [かっくうけいたい](term:term-v466-kakkuukeitai), [しっそうけいたい](term:term-v467-shissoukeitai) e [ゆうえいけいたい](term:term-v468-yuueikeitai) descrivono come la cavalcatura si presenta o si muove: planata, corsa, nuoto. La parola `けいたい` ti fa guardare al corpo e al modo d'uso della cavalcatura, non a un semplice pulsante.
-*   [グライドモード](term:term-v469-guraidomoodo), [ドライブモード](term:term-v470-doraibumoodo) e [フロートモード](term:term-v471-furootomoodo) suonano invece da interfaccia. `モード` è katakana tecnico: ti dice quale funzione è attiva o selezionabile, soprattutto in testi di sistema e menu.
-*   [{{速|はや}}い](term:term-v457-hayai) entra naturalmente in questo gruppo perché qualifica il movimento. Se leggi `{{速|はや}}い しっそうけいたい`, non stai solo ricevendo un aggettivo: il gioco sta mettendo in evidenza la velocità come vantaggio pratico della forma corsa.
+*   [かっくうけいたい](term:term-v466-kakkuukeitai), [しっそうけいたい](term:term-v467-shissoukeitai) e [ゆうえいけいたい](term:term-v468-yuueikeitai) descrivono come la cavalcatura si presenta o si muove: planata, corsa, nuoto. La parola けいたい ti fa guardare al corpo e al modo d'uso della cavalcatura, non a un semplice pulsante.
+*   [グライドモード](term:term-v469-guraidomoodo), [ドライブモード](term:term-v470-doraibumoodo) e [フロートモード](term:term-v471-furootomoodo) suonano invece da interfaccia. モード è katakana tecnico: ti dice quale funzione è attiva o selezionabile, soprattutto in testi di sistema e menu.
+*   [{{速|はや}}い](term:term-v457-hayai) entra naturalmente in questo gruppo perché qualifica il movimento. Se leggi {{速|はや}}い しっそうけいたい, non stai solo ricevendo un aggettivo: il gioco sta mettendo in evidenza la velocità come vantaggio pratico della forma corsa.
 
 :::example_sentence
 jp: >-
@@ -150,7 +152,7 @@ translation_it: >-
 *   `ゆうえいけいたいで` ➔ **Seconda forma operativa** (la frase cambia modalità corporea della cavalcatura).
 *   `{{水上|すいじょう}}を {{進|すす}}みます` ➔ **Superficie di avanzamento** (`を` marca l'acqua come spazio percorso).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `けいたい` risponde a "in che forma si muove la cavalcatura?"; `モード` risponde a "quale modalità è attiva nel sistema?". Se la frase parla del corpo o del modo di spostarsi, aspettati `けいたい`; se sembra una voce di menu, un label tecnico o un'opzione, aspettati `モード`.
 
@@ -160,10 +162,10 @@ translation_it: >-
 
 Le schermate di gestione comprimono azioni diverse in parole molto brevi. Il trucco è non leggere tutte le voci come "prendere qualcosa": alcune indicano acquisizione reale, altre solo ordine, filtro o categoria.
 
-*   [ポケモンのおとしもの](term:term-v464-pokemon-nootoshimono) è costruito da `ポケモンの` più `おとしもの`, cioè "cosa lasciata cadere". Nel contesto di Scarlet/Violet non è un oggetto smarrito da restituire: sono materiali lasciati dai Pokémon, usati per crafting e MT.
+*   [ポケモンのおとしもの](term:term-v464-pokemon-nootoshimono) è costruito da ポケモンの più おとしもの, cioè "cosa lasciata cadere". Nel contesto di Scarlet/Violet non è un oggetto smarrito da restituire: sono materiali lasciati dai Pokémon, usati per crafting e MT.
 *   [{{入手|にゅうしゅ}}](term:term-v474-nyuushu) è il segnale forte di acquisizione. Quando compare dopo una lotta, una raccolta o una ricompensa, qualcosa entra davvero tra le tue risorse.
-*   [{{並|なら}}べかえ](term:term-v473-narabekae) cambia l'ordine, non il possesso. `{{並|なら}}べる` è disporre in fila, `かえ` rimanda al cambiare: una lista viene riorganizzata, ma gli oggetti non aumentano.
-*   [{{協力|きょうりょく}}する](term:term-v460-kyouryoku-suru) può apparire vicino a obiettivi condivisi o richieste di aiuto. `{{協|きょう}}` porta l'idea di fare insieme, `{{力|りょく}}` quella di forza: nel dialogo non è solo "essere gentili", ma mettere la propria azione dentro uno sforzo comune.
+*   [{{並|なら}}べかえ](term:term-v473-narabekae) cambia l'ordine, non il possesso. {{並|なら}}べる è disporre in fila, かえ rimanda al cambiare: una lista viene riorganizzata, ma gli oggetti non aumentano.
+*   [{{協力|きょうりょく}}する](term:term-v460-kyouryoku-suru) può apparire vicino a obiettivi condivisi o richieste di aiuto. {{協|きょう}} porta l'idea di fare insieme, {{力|りょく}} quella di forza: nel dialogo non è solo "essere gentili", ma mettere la propria azione dentro uno sforzo comune.
 
 :::example_sentence
 jp: >-
@@ -179,7 +181,7 @@ translation_it: >-
 *   `どうぐを` ➔ **Nuovo bersaglio di menu** (la frase passa dai materiali alla lista degli strumenti).
 *   `{{並|なら}}べかえます` ➔ **Cambio di ordine** (la lista viene riorganizzata, non arricchita).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{入手|にゅうしゅ}}](term:term-v474-nyuushu) aumenta o registra ciò che possiedi; [{{並|なら}}べかえ](term:term-v473-narabekae) cambia solo come lo vedi ordinato. Se confondi i due, una schermata di gestione sembra una ricompensa anche quando sta soltanto spostando voci in lista.
 
@@ -191,9 +193,9 @@ Nei dialoghi dei personaggi, l'operatività passa attraverso tono e particelle. 
 
 ### A. Informazione trattenuta e uscita temporanea
 
-[{{秘密|ひみつ}}だよ](term:term-e085-himitsu-dayo) combina [{{秘密|ひみつ}}](term:term-e085-himitsu-dayo), "segreto", con `だよ`, finale assertiva e colloquiale. Il personaggio non sta solo nominando una cosa segreta: ti sta dicendo che quell'informazione resta chiusa tra chi parla e chi ascolta, spesso con tono complice.
+[{{秘密|ひみつ}}だよ](term:term-e085-himitsu-dayo) combina [{{秘密|ひみつ}}](term:term-e085-himitsu-dayo), "segreto", con だよ, finale assertiva e colloquiale. Il personaggio non sta solo nominando una cosa segreta: ti sta dicendo che quell'informazione resta chiusa tra chi parla e chi ascolta, spesso con tono complice.
 
-[{{行|い}}ってきます](term:term-e087-itte-kimasu) è la formula di chi esce e prevede di tornare. `{{行|い}}って` dà il movimento in partenza, `きます` richiama il ritorno verso il punto del parlante o del gruppo. Nei dialoghi di Paldea, leggilo come andata temporanea, non come addio definitivo.
+[{{行|い}}ってきます](term:term-e087-itte-kimasu) è la formula di chi esce e prevede di tornare. {{行|い}}って dà il movimento in partenza, きます richiama il ritorno verso il punto del parlante o del gruppo. Nei dialoghi di Paldea, leggilo come andata temporanea, non come addio definitivo.
 
 :::example_sentence
 jp: >-
@@ -221,7 +223,7 @@ translation_it: >-
 
 ### B. Richiesta morbida: `〜してもらえる？`
 
-[〜してもらえる？](term:term-e086-shitemoraeru) usa `もらえる`, "poter ricevere". La costruzione ragiona dal punto di vista di chi chiede: "posso ricevere da te l'azione di fare X?". Per questo è più morbida di un ordine diretto e suona naturale quando un personaggio ti chiede collaborazione.
+[〜してもらえる？](term:term-e086-shitemoraeru) usa もらえる, "poter ricevere". La costruzione ragiona dal punto di vista di chi chiede: "posso ricevere da te l'azione di fare X?". Per questo è più morbida di un ordine diretto e suona naturale quando un personaggio ti chiede collaborazione.
 
 :::example_sentence
 jp: >-
@@ -252,9 +254,14 @@ translation_it: >-
 *   `{{今日|きょう}}は` ➔ **Tema temporale** (`は` stabilisce il perimetro: per oggi).
 *   `これだけ` ➔ **Limite chiuso** (`だけ` restringe il contenuto a "questo e basta").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[だけ](grammar:grammar-g089-solo) chiude il gruppo; [も](grammar:grammar-g090-anche) lo allarga. `これだけ` ti dice di non aspettarti altro incluso; `これも` aggiunge "anche questo" a un insieme già aperto. [や / など](grammar:grammar-g091-tra-gli-altri-eccetera) lascia invece intendere altri elementi simili, mentre [し](grammar:grammar-g092-e-inoltre-tra-l-altro) aggiunge un motivo o una qualità senza trasformarla in una lista completa.
+[だけ](grammar:grammar-g089-solo) chiude il gruppo; [も](grammar:grammar-g090-anche) lo allarga. これだけ ti dice di non aspettarti altro incluso; これも aggiunge "anche questo" a un insieme già aperto. [や / など](grammar:grammar-g091-tra-gli-altri-eccetera) lascia invece intendere altri elementi simili, mentre [し](grammar:grammar-g092-e-inoltre-tra-l-altro) aggiunge un motivo o una qualità senza trasformarla in una lista completa.
+
+[{{真剣|しんけん}}](term:term-v455-shinken) sposta il tono verso una cosa seria,
+non leggera o scherzosa. Quando qualifica `{{話|はなし}}`, il dialogo segnala
+che l'argomento va trattato con attenzione; con [し](grammar:grammar-g092-e-inoltre-tra-l-altro)
+può diventare uno dei motivi per mantenere il segreto o procedere con cautela.
 
 ---
 
@@ -294,4 +301,4 @@ translation_it: >-
 
 ## Nota finale
 
-I verbi operativi di Paldea diventano chiari quando segui bersaglio, mezzo e limite: `を` mostra che cosa viene curato, ottenuto, riordinato o ritirato; `で` mostra con quale forma o modalità ci si muove; [だけ](grammar:grammar-g089-solo), [も](grammar:grammar-g090-anche), [や / など](grammar:grammar-g091-tra-gli-altri-eccetera) e [し](grammar:grammar-g092-e-inoltre-tra-l-altro) dicono se il campo si chiude, si allarga o accumula motivi. Così [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru), [{{入手|にゅうしゅ}}](term:term-v474-nyuushu) e [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru) non restano gloss separate: diventano segnali pratici per capire che cosa il gioco ti sta facendo fare.
+I verbi operativi di Paldea diventano chiari quando segui bersaglio, mezzo e limite: を mostra che cosa viene curato, ottenuto, riordinato o ritirato; で mostra con quale forma o modalità ci si muove; [だけ](grammar:grammar-g089-solo), [も](grammar:grammar-g090-anche), [や / など](grammar:grammar-g091-tra-gli-altri-eccetera) e [し](grammar:grammar-g092-e-inoltre-tra-l-altro) dicono se il campo si chiude, si allarga o accumula motivi. Così [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru), [{{入手|にゅうしゅ}}](term:term-v474-nyuushu) e [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru) non restano gloss separate: diventano segnali pratici per capire che cosa il gioco ti sta facendo fare.

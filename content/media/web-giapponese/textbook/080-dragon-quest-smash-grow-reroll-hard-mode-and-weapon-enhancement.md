@@ -2,7 +2,7 @@
 id: lesson-web-giapponese-dragon-quest-smash-grow-reroll-hard-mode-and-weapon-enhancement
 media_id: media-web-giapponese
 slug: 080-dragon-quest-smash-grow-reroll-hard-mode-and-weapon-enhancement
-title: Dragon Quest Smash Grow - ふくびきとハードモード
+title: "Reroll, hard mode e potenziamento armi"
 order: 80
 segment_ref: dragon-quest-smash-grow
 difficulty: n4
@@ -25,6 +25,45 @@ Quando leggi questi messaggi, il punto è riconoscere tre movimenti: continuare
 a tirare finché non esce il risultato voluto, capire che una modalità è già
 disponibile, e distinguere il potenziamento di un'arma dalla semplice
 ottenimento di un oggetto nuovo.
+
+## Termini chiave
+
+- [ふくびき](term:term-fukubiki) — lotteria / gacha
+- [ぶき](term:term-buki) — arma
+- [{{好|す}}きな](term:term-sukina) — che piace / preferito
+- [{{何度|なんど}}でも](term:term-nando-demo) — quante volte vuoi
+- [{{引|ひ}}き{{直|なお}}せる](term:term-hikinaoseru) — puoi ritirare / rifare l'estrazione
+- [{{強力|きょうりょく}}](term:term-kyouryoku) — potente, più minaccioso o efficace
+- [{{出現|しゅつげん}}](term:term-shutsugen) — comparsa / apparizione
+- [ぶき{{強化|きょうか}}](term:term-buki-kyouka) — rafforzamento armi
+- [{{強化|きょうか}}](term:term-kyouka) — rafforzamento / potenziamento
+- [{{戦士|せんし}}](term:term-senshi) — guerriero
+- [{{魔法使|まほうつか}}い](term:term-mahoutsukai) — mago / utilizzatore di magia
+
+## Espressioni ricorrenti
+
+- [{{好|す}}きな{{★3|ほしさん}}ぶきが{{出|で}}るまで](term:term-sukina-hoshi-san-buki-ga-deru-made) — finché non esce un'arma a tre stelle che ti piace
+- [{{何度|なんど}}でも{{引|ひ}}き{{直|なお}}せる](term:term-nando-demo-hikinaoseru) — puoi rifare il pull quante volte vuoi
+- [{{引|ひ}}き{{直|なお}}し{{可能|かのう}}](term:term-hikinaoshi-kanou) — reroll possibile / ritirabile
+- [ハードモードが{{解放|かいほう}}されました](term:term-hard-mode-ga-kaihou-saremashita) — l'hard mode è stato sbloccato
+- [ハードモードではさらに{{強力|きょうりょく}}なモンスターが{{出現|しゅつげん}}](term:term-hard-mode-dewa-sarani-kyouryoku-na-monster-ga-shutsugen) — nell'hard mode compaiono mostri ancora più potenti
+
+## Pattern grammaticali chiave
+
+- `〜が{{出|で}}るまで` — finché ... non esce / non compare
+- `{{何度|なんど}}でも` + forma potenziale — puoi farlo quante volte vuoi
+- `Nでは` — quanto a N / nel contesto di N
+- `〜されました` — è stato fatto / è stato reso disponibile
+
+## Etichette da riconoscere
+
+- `{{1回|いっかい}} ふくびき` — un singolo tentativo di lotteria
+- `ハードモード` — modalità difficile
+- `ぶき{{強化|きょうか}}（かんたん）` — potenziamento armi in versione semplice
+
+---
+
+[{{引|ひ}}き{{直|なお}}せる](term:term-hikinaoseru) è potenziale: non dice che il reroll è già avvenuto, ma che puoi rifare l'estrazione.
 
 :::image
 src: assets/dragon-quest-smash-grow-star3-reroll-fukubiki.jpg
@@ -59,42 +98,6 @@ caption: >-
   [{{魔法使|まほうつか}}い](term:term-mahoutsukai) identificano le classi dei
   personaggi.
 :::
-
-## Termini chiave
-
-- [ふくびき](term:term-fukubiki) — lotteria / gacha
-- [ぶき](term:term-buki) — arma
-- [{{好|す}}きな](term:term-sukina) — che piace / preferito
-- [{{何度|なんど}}でも](term:term-nando-demo) — quante volte vuoi
-- [{{引|ひ}}き{{直|なお}}せる](term:term-hikinaoseru) — puoi ritirare / rifare l'estrazione
-- [{{出現|しゅつげん}}](term:term-shutsugen) — comparsa / apparizione
-- [ぶき{{強化|きょうか}}](term:term-buki-kyouka) — rafforzamento armi
-- [{{強化|きょうか}}](term:term-kyouka) — rafforzamento / potenziamento
-- [{{戦士|せんし}}](term:term-senshi) — guerriero
-- [{{魔法使|まほうつか}}い](term:term-mahoutsukai) — mago / utilizzatore di magia
-
-## Espressioni ricorrenti
-
-- [{{好|す}}きな{{★3|ほしさん}}ぶきが{{出|で}}るまで](term:term-sukina-hoshi-san-buki-ga-deru-made) — finché non esce un'arma a tre stelle che ti piace
-- [{{何度|なんど}}でも{{引|ひ}}き{{直|なお}}せる](term:term-nando-demo-hikinaoseru) — puoi rifare il pull quante volte vuoi
-- [{{引|ひ}}き{{直|なお}}し{{可能|かのう}}](term:term-hikinaoshi-kanou) — reroll possibile / ritirabile
-- [ハードモードが{{解放|かいほう}}されました](term:term-hard-mode-ga-kaihou-saremashita) — l'hard mode è stato sbloccato
-- [ハードモードではさらに{{強力|きょうりょく}}なモンスターが{{出現|しゅつげん}}](term:term-hard-mode-dewa-sarani-kyouryoku-na-monster-ga-shutsugen) — nell'hard mode compaiono mostri ancora più potenti
-
-## Pattern grammaticali chiave
-
-- `〜が{{出|で}}るまで` — finché ... non esce / non compare
-- `{{何度|なんど}}でも` + forma potenziale — puoi farlo quante volte vuoi
-- `Nでは` — quanto a N / nel contesto di N
-- `〜されました` — è stato fatto / è stato reso disponibile
-
-## Etichette da riconoscere
-
-- `{{1回|いっかい}} ふくびき` — un singolo tentativo di lotteria
-- `ハードモード` — modalità difficile
-- `ぶき{{強化|きょうか}}（かんたん）` — potenziamento armi in versione semplice
-
----
 
 ## 1. La ふくびき iniziale: tirare finché esce l'arma voluta
 
@@ -222,7 +225,7 @@ risorsa e [{{強化|きょうか}}](term:term-kyouka) è l'azione di renderla pi
 forte. La parentesi `（かんたん）` segnala una versione semplice o guidata della
 procedura, non un grado dell'arma.
 
-*   [{{強化|きょうか}}](term:term-kyouka) è diverso da `{{入手|にゅうしゅ}}`
+*   [{{強化|きょうか}}](term:term-kyouka) è diverso da {{入手|にゅうしゅ}}
     "ottenere" o da [ふくびき](term:term-fukubiki) "lotteria". Qui non stai
     aspettando che qualcosa esca: stai intervenendo su una cosa già posseduta.
 *   [{{戦士|せんし}}](term:term-senshi) e
@@ -259,7 +262,7 @@ prima schermata gira attorno a `{{出|で}}る`, la terza attorno a
 
 #### 🧠 Gancio cognitivo
 
-Per ricordare [{{戦士|せんし}}](term:term-senshi), aggancialo a `{{戦|せん}}`
+Per ricordare [{{戦士|せんし}}](term:term-senshi), aggancialo a {{戦|せん}}
 "guerra/battaglia": è il ruolo che sta in prima linea. Per
 [{{魔法使|まほうつか}}い](term:term-mahoutsukai), leggi letteralmente
 "chi usa magia". È un gancio semantico reale, non solo un trucco sonoro.

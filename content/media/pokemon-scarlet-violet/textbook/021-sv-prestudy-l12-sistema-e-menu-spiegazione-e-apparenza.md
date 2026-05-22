@@ -77,11 +77,11 @@ translation_it: >-
 *   `ように` ➔ **Nuovo assetto**: la situazione viene descritta come "in modo tale da poter...".
 *   `なった` ➔ **Cambio di stato concluso**: il gioco registra che la possibilità è stata sbloccata.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `ライドする` descrive l'azione di cavalcare. `ライドができるようになった` descrive invece il momento in cui l'azione diventa disponibile nel sistema. Se leggi solo "cavalcare", perdi il valore pratico della notifica: da quel punto in poi il menu o il movimento sulla mappa hanno una funzione in più.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Pensa a `ようになった` come a una porta che si apre: `できる` è ciò che c'è dietro la porta, `なった` è il clic che ti dice che la porta ora è aperta. È un'immagine mnemonica, non un'etimologia.
 
@@ -103,7 +103,7 @@ translation_it: >-
 *   `{{一回|いっかい}}だけ` ➔ **Limite dell'azione**: `だけ` restringe `{{一回|いっかい}}` a "solo una volta".
 *   `{{売|う}}る` ➔ **Verbo d'azione del menu**: l'operazione è vendere, non usare o consegnare.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{一回|いっかい}}](term:term-v141-ikkai) conta le volte in cui un'azione avviene. Non conta persone, Pokémon o oggetti. Per le persone il gioco usa [{{何人|なんにん}}](term:term-v139-nannin); per Pokémon e creature usa [{{何匹|なんびき}}](term:term-v145-nanbiki). Il contatore ti dice subito che tipo di cosa la frase sta misurando.
 
@@ -132,7 +132,7 @@ translation_it: >-
 *   `{{何匹|なんびき}}` ➔ **Conteggio di creature**: `匹` è il contatore naturale per animali e, nel gioco, per Pokémon.
 *   `いますか` ➔ **Esistenza animata in domanda**: `いる` si usa per esseri viventi; la forma cortese `いますか` chiede "ci sono?".
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 `人` guarda il gruppo come persone che partecipano; `匹` guarda i Pokémon come creature contabili; `回` guarda l'azione come evento ripetuto. Quando il kanji del contatore cambia, cambia anche la domanda che la schermata sta facendo.
 
@@ -155,7 +155,7 @@ translation_it: >-
 *   `{{地図|ちず}}で` ➔ **Strumento o luogo operativo**: `で` indica il mezzo/schermata con cui avviene il controllo, qui la mappa.
 *   `{{確認|かくにん}}します` ➔ **Verbo formale da interfaccia**: `{{確認|かくにん}}する` è "controllare / confermare"; la forma `します` mantiene registro neutro e cortese.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{生息|せいそく}}{{地|ち}}](term:term-v138-seisokuchi) risponde a "dove vive o compare questo Pokémon?". [{{行先|いきさき}}](term:term-v146-ikisaki) risponde a "dove sto andando / quale destinazione è selezionata?". Entrambe sono parole di luogo, ma la prima guarda la distribuzione di una specie, la seconda guarda il movimento del giocatore.
 
@@ -172,9 +172,9 @@ translation_it: >-
 *   `{{生息|せいそく}}{{地|ち}}は` ➔ **Tema informativo**: la frase parlerà dell'habitat.
 *   `{{川|かわ}}の {{近|ちか}}くです` ➔ **Posizione cortese**: `の` lega il fiume a `{{近|ちか}}く` ("vicinanza"), e `です` chiude in registro neutro da descrizione.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-In [{{生息|せいそく}}{{地|ち}}](term:term-v138-seisokuchi), `{{生|せい}}` richiama la vita, `{{息|そく}}` il vivere/respirare dentro un ambiente, `{{地|ち}}` il luogo. Come gancio pratico: è il "luogo di vita" del Pokémon, non semplicemente il posto in cui vuoi andare tu.
+In [{{生息|せいそく}}{{地|ち}}](term:term-v138-seisokuchi), {{生|せい}} richiama la vita, {{息|そく}} il vivere/respirare dentro un ambiente, {{地|ち}} il luogo. Come gancio pratico: è il "luogo di vita" del Pokémon, non semplicemente il posto in cui vuoi andare tu.
 
 ## 4. Spiegazioni, incertezza e risposte nel parlato
 
@@ -195,7 +195,7 @@ translation_it: >-
 *   `{{雨|あめ}}だから` ➔ **Causa diretta**: `だ` rende nominale la frase "è pioggia", `から` la trasforma nella ragione.
 *   `{{行|い}}かない` ➔ **Decisione negativa informale**: il verbo `{{行|い}}く` è negato in registro piano.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `から` può suonare più diretto: "perché piove". `ので` spesso presenta la causa come spiegazione più attenuata: "dato che piove". In un menu o in una frase di sistema, `ので` tende a sembrare meno personale; in una battuta tra personaggi, `から` può suonare più immediato.
 
@@ -212,7 +212,7 @@ translation_it: >-
 *   `たぶん` ➔ **Probabilità, non certezza assoluta**: il parlante non chiude la frase come fatto sicuro.
 *   `{{時間|じかん}}が ない` ➔ **Mancanza marcata da `が`**: il tempo è ciò che manca nella situazione.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 `けど` è come una mano sul freno: la frase parte in una direzione, poi rallenta e lascia entrare un problema, un limite o una sfumatura. `たぶん` abbassa ancora di più il tono: non è un muro, è una previsione.
 
@@ -225,13 +225,13 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{意味|いみ}}が` ➔ **Soggetto di ciò che diventa chiaro**: con [{{分|わ}}かる](term:term-v150-waka-ru), `が` marca la cosa capita.
+*   {{意味|いみ}}が ➔ **Soggetto di ciò che diventa chiaro**: con [{{分|わ}}かる](term:term-v150-waka-ru), が marca la cosa capita.
 *   `{{分|わ}}かるので` ➔ **Causa spiegata**: `ので` collega il fatto di capire alla risposta successiva.
 *   `{{任|まか}}せて` ➔ **Imperativo colloquiale mitigato dalla forma in `-te`**: non è un ordine duro; è "lascia fare a me".
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{分|わ}}かる](term:term-v150-waka-ru) non funziona come l'italiano "vedere" nel senso fisico. `{{意味|いみ}}が{{分|わ}}かる` vuol dire che il significato è chiaro a qualcuno. La cosa capita prende `が`, mentre la persona che capisce spesso resta implicita dal contesto.
+[{{分|わ}}かる](term:term-v150-waka-ru) non funziona come l'italiano "vedere" nel senso fisico. {{意味|いみ}}が{{分|わ}}かる vuol dire che il significato è chiaro a qualcuno. La cosa capita prende が, mentre la persona che capisce spesso resta implicita dal contesto.
 
 ## Esempi guidati di riepilogo
 

@@ -62,15 +62,30 @@ La cosa da seguire non è solo il significato delle singole parole. È il tipo d
 - [～わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) — non è che… / non significa che…
 - [{{使役|しえき}}](grammar:grammar-g111-far-fare-lasciar-fare) — far fare / lasciar fare
 
+## Etichette da riconoscere
+
+- [{{全選択|ぜんせんたく}}](term:term-v665-zensentaku) — comando che allarga
+  l'azione a tutte le voci disponibili
+- [{{受|う}}けとり{{可能|かのう}}](term:term-v668-uketorikanou) — stato ancora
+  aperto: il premio o contenuto si può ricevere
+- [{{受|う}}けとり{{済|ず}}み](term:term-v669-uketorizumi) — stato chiuso:
+  l'azione di ricezione è già stata completata
+- [まとめ{{売|う}}り](term:term-v664-matomeuri) — vendita in blocco, non scelta
+  qualitativa
+- [{{常設|じょうせつ}}](term:term-v677-jousetsu) — contenuto o funzione sempre
+  disponibile, non evento temporaneo
+- [{{最適解|さいてきかい}}](term:term-v679-saitekikai) — soluzione ottimale, diversa
+  da una selezione totale
+
 ---
 
 ## 1. Menu e stati: selezionare, ricevere, cambiare schermata
 
 Quando il gioco passa a una schermata di sistema, il giapponese si accorcia. Una parola indica la riga della lista, un suffisso dice se l'azione è ancora aperta, un verbo operativo decide se stai vendendo, ricevendo o cambiando vista. Qui il primo gesto utile è cercare il bersaglio dell'azione: la voce, il gruppo, il premio o la modalità.
 
-- [{{項目|こうもく}}](term:term-v670-koumoku) è l'elemento leggibile di una lista: una voce di menu, una riga di impostazione, una scelta tra opzioni. Non è un oggetto fisico nel mondo di Paldea. Se una frase dice `この{{項目|こうもく}}を{{選|えら}}ぶ`, il gioco non ti sta chiedendo di raccogliere qualcosa: ti sta dicendo di scegliere quella riga dell'interfaccia.
-- [{{全選択|ぜんせんたく}}](term:term-v665-zensentaku) unisce `{{全|ぜん}}`, "tutto", e `{{選択|せんたく}}`, "selezione". In una lista di strumenti o materiali sposta lo scope dell'azione: non agisci più sulla voce evidenziata, ma su tutto ciò che può essere selezionato in quel momento.
-- [まとめ{{売|う}}り](term:term-v664-matomeuri) e [{{買|か}}い{{取|と}}り](term:term-v678-kaitori) descrivono la stessa area del negozio da due angoli diversi. `まとめ` raccoglie più elementi in blocco, mentre `{{売|う}}り` mantiene il valore di vendere; [{{買|か}}い{{取|と}}り](term:term-v678-kaitori), invece, contiene `{{買|か}}う` ma lo guarda dal punto di vista del negozio, che compra da te ciò che stai cedendo.
+- [{{項目|こうもく}}](term:term-v670-koumoku) è l'elemento leggibile di una lista: una voce di menu, una riga di impostazione, una scelta tra opzioni. Non è un oggetto fisico nel mondo di Paldea. Se una frase dice この{{項目|こうもく}}を{{選|えら}}ぶ, il gioco non ti sta chiedendo di raccogliere qualcosa: ti sta dicendo di scegliere quella riga dell'interfaccia.
+- [{{全選択|ぜんせんたく}}](term:term-v665-zensentaku) unisce {{全|ぜん}}, "tutto", e {{選択|せんたく}}, "selezione". In una lista di strumenti o materiali sposta lo scope dell'azione: non agisci più sulla voce evidenziata, ma su tutto ciò che può essere selezionato in quel momento.
+- [まとめ{{売|う}}り](term:term-v664-matomeuri) e [{{買|か}}い{{取|と}}り](term:term-v678-kaitori) descrivono la stessa area del negozio da due angoli diversi. まとめ raccoglie più elementi in blocco, mentre {{売|う}}り mantiene il valore di vendere; [{{買|か}}い{{取|と}}り](term:term-v678-kaitori), invece, contiene {{買|か}}う ma lo guarda dal punto di vista del negozio, che compra da te ciò che stai cedendo.
 
 :::example_sentence
 jp: >-
@@ -84,7 +99,7 @@ translation_it: >-
 *   `リストの {{道具|どうぐ}}を` ➔ **Oggetto dell'azione** (`の` collega gli strumenti alla lista, `を` li marca come ciò che viene selezionato).
 *   `{{全選択|ぜんせんたく}}します` ➔ **Comando nominale reso azione** (`{{全選択|ぜんせんたく}}` è un nome operativo; `します` lo trasforma in "fare la selezione totale").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{全選択|ぜんせんたく}}](term:term-v665-zensentaku) non significa "scegliere la soluzione migliore". Parla di ampiezza, non di qualità: tutto ciò che rientra nella lista selezionabile viene incluso nell'azione successiva. Per la "soluzione migliore" il gioco usa un'altra logica, come [{{最適解|さいてきかい}}](term:term-v679-saitekikai), dove il punto è l'efficacia della scelta.
 
@@ -103,11 +118,11 @@ translation_it: >-
 *   `{{受|う}}けとり` ➔ **Nome d'azione** (da `{{受|う}}けとる`, ricevere prendendo in consegna).
 *   `{{可能|かのう}}です` ➔ **Stato di possibilità** (l'azione è aperta adesso, quindi il giocatore può ancora ricevere).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per distinguere [{{受|う}}けとり{{可能|かのう}}](term:term-v668-uketorikanou) e [{{受|う}}けとり{{済|ず}}み](term:term-v669-uketorizumi), immagina `{{可能|かのう}}` come una porta ancora aperta e `{{済|ず}}み` come un timbro di completamento. È un trucco mnemonico, non un'etimologia: serve a leggere velocemente lo stato della ricompensa mentre scorri la schermata.
+Per distinguere [{{受|う}}けとり{{可能|かのう}}](term:term-v668-uketorikanou) e [{{受|う}}けとり{{済|ず}}み](term:term-v669-uketorizumi), immagina {{可能|かのう}} come una porta ancora aperta e {{済|ず}}み come un timbro di completamento. È un trucco mnemonico, non un'etimologia: serve a leggere velocemente lo stato della ricompensa mentre scorri la schermata.
 
-[{{切|き}}り{{替|か}}える](term:term-v675-kirikaeru) chiude il gruppo dei menu perché descrive il passaggio da una modalità all'altra. `{{切|き}}る` porta l'idea di tagliare o staccare, `{{替|か}}える` quella di sostituire: insieme danno il valore di commutare visualizzazione, filtro o modalità attiva. Se compare vicino a [{{項目|こうもく}}](term:term-v670-koumoku), spesso la scelta di una voce non produce un premio, ma cambia il modo in cui la schermata viene mostrata.
+[{{切|き}}り{{替|か}}える](term:term-v675-kirikaeru) chiude il gruppo dei menu perché descrive il passaggio da una modalità all'altra. {{切|き}}る porta l'idea di tagliare o staccare, {{替|か}}える quella di sostituire: insieme danno il valore di commutare visualizzazione, filtro o modalità attiva. Se compare vicino a [{{項目|こうもく}}](term:term-v670-koumoku), spesso la scelta di una voce non produce un premio, ma cambia il modo in cui la schermata viene mostrata.
 
 :::example_sentence
 jp: >-
@@ -126,8 +141,8 @@ translation_it: >-
 
 Fuori dai menu, *Scarlet & Violet* usa parole scolastiche per dare forma all'esplorazione. L'Accademia non è solo uno sfondo: incornicia il viaggio, le regole di comportamento e l'uscita nel mondo aperto. Qui conviene leggere i composti per blocchi, perché ogni metà delimita il tipo di attività.
 
-- [{{伝統|でんとう}}{{行事|ぎょうじ}}](term:term-v662-dentougyouji) combina `{{伝統|でんとう}}`, ciò che viene tramandato, e `{{行事|ぎょうじ}}`, un evento organizzato. Nel contesto scolastico non indica una festa casuale: dà all'evento un peso istituzionale, come qualcosa che l'Accademia riconosce e ripete.
-- [{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou) si legge come `{{課外|かがい}}`, fuori dal corso o dalla lezione ordinaria, più `{{活動|かつどう}}`, attività. In Paldea non va ristretto automaticamente a "club": può indicare proprio l'uscita esplorativa che porta lo studente fuori dall'aula.
+- [{{伝統|でんとう}}{{行事|ぎょうじ}}](term:term-v662-dentougyouji) combina {{伝統|でんとう}}, ciò che viene tramandato, e {{行事|ぎょうじ}}, un evento organizzato. Nel contesto scolastico non indica una festa casuale: dà all'evento un peso istituzionale, come qualcosa che l'Accademia riconosce e ripete.
+- [{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou) si legge come {{課外|かがい}}, fuori dal corso o dalla lezione ordinaria, più {{活動|かつどう}}, attività. In Paldea non va ristretto automaticamente a "club": può indicare proprio l'uscita esplorativa che porta lo studente fuori dall'aula.
 - [{{風紀|ふうき}}](term:term-v667-fuuki) porta il focus su disciplina, ordine e comportamento atteso. Se compare in bocca a personale scolastico o dentro una regola, la frase non sta parlando di forza in battaglia, ma di come uno studente deve stare dentro gli spazi e le norme dell'Accademia.
 
 :::example_sentence
@@ -143,11 +158,11 @@ translation_it: >-
 *   `アカデミーの` ➔ **Appartenenza istituzionale** (`の` lega l'evento all'Accademia).
 *   `{{伝統|でんとう}}{{行事|ぎょうじ}}です` ➔ **Classificazione** (non semplice attività libera, ma evento tradizionale riconosciuto).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per ricordare [{{伝統|でんとう}}{{行事|ぎょうじ}}](term:term-v662-dentougyouji), pensa a due livelli: `{{伝統|でんとう}}` è la memoria che arriva dal passato, `{{行事|ぎょうじ}}` è l'evento messo in calendario. Il gancio funziona perché ti fa cercare insieme continuità e organizzazione, non solo l'idea generica di "evento".
+Per ricordare [{{伝統|でんとう}}{{行事|ぎょうじ}}](term:term-v662-dentougyouji), pensa a due livelli: {{伝統|でんとう}} è la memoria che arriva dal passato, {{行事|ぎょうじ}} è l'evento messo in calendario. Il gancio funziona perché ti fa cercare insieme continuità e organizzazione, non solo l'idea generica di "evento".
 
-Quando la frase passa dal quadro scolastico al movimento, [{{引|ひ}}き{{返|かえ}}す](term:term-v661-hikikaesu) cambia il tipo di lettura. `{{引|ひ}}き` aggiunge l'idea di tirare indietro, `{{返|かえ}}す` quella di far tornare: insieme descrivono l'inversione di marcia dopo che hai già preso una direzione. In un percorso, in una grotta o in un avviso di sistema, è il verbo che ti fa capire che proseguire non è l'azione prevista.
+Quando la frase passa dal quadro scolastico al movimento, [{{引|ひ}}き{{返|かえ}}す](term:term-v661-hikikaesu) cambia il tipo di lettura. {{引|ひ}}き aggiunge l'idea di tirare indietro, {{返|かえ}}す quella di far tornare: insieme descrivono l'inversione di marcia dopo che hai già preso una direzione. In un percorso, in una grotta o in un avviso di sistema, è il verbo che ti fa capire che proseguire non è l'azione prevista.
 
 :::example_sentence
 jp: >-
@@ -162,17 +177,17 @@ translation_it: >-
 *   `{{困難|こんなん}}な {{道|みち}}でも` ➔ **Concessione** (`でも` vale come "anche su", quindi include perfino un percorso difficile).
 *   `{{引|ひ}}き{{返|かえ}}すことができます` ➔ **Possibilità di ritorno** (`ことができます` presenta il tornare indietro come opzione disponibile).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`{{戻|もど}}る` può essere un ritorno generico: tornare a una schermata, a un luogo, a uno stato precedente. [{{引|ひ}}き{{返|かえ}}す](term:term-v661-hikikaesu) è più direzionale: suggerisce che eri già avanzato e ora inverti la marcia. Quando lo leggi in esplorazione, immagina un cambio di rotta, non solo un pulsante "indietro".
+{{戻|もど}}る può essere un ritorno generico: tornare a una schermata, a un luogo, a uno stato precedente. [{{引|ひ}}き{{返|かえ}}す](term:term-v661-hikikaesu) è più direzionale: suggerisce che eri già avanzato e ora inverti la marcia. Quando lo leggi in esplorazione, immagina un cambio di rotta, non solo un pulsante "indietro".
 
 ## 3. Parlato breve: permesso, insistenza e correzione
 
 Le frasi più corte dei personaggi spesso sono quelle che cambiano di più il tono. Una domanda di recupero mossa è pratica, [おつかれさま](term:term-e108-otsukaresama) riconosce uno sforzo, [〜してもいいからね](term:term-e107-shitemoiikarane) ammorbidisce un permesso, mentre [～ってば](grammar:grammar-g109-ti-sto-dicendo-che) e [～わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) regolano la pressione del parlante.
 
-- [どの {{技|わざ}}を {{回復|かいふく}}する？](term:term-e106-dono-wazao-kaifukusuru) è una domanda di selezione. `どの` chiede "quale" dentro un set, `{{技|わざ}}を` marca la mossa come oggetto, e `{{回復|かいふく}}する` non vuol dire "curare" in astratto: nel contesto delle mosse indica recuperare una risorsa o ripristinare l'uso.
-- [おつかれさま](term:term-e108-otsukaresama) contiene `つかれ`, fatica o stanchezza, ma nel parlato funziona come riconoscimento dello sforzo. Dopo una sfida, una lezione o un'attività, non è un semplice saluto neutro: dice che l'impegno è stato visto.
-- [〜してもいいからね](term:term-e107-shitemoiikarane) combina `〜してもいい`, "anche se fai così va bene", con `からね`, che aggiunge una spiegazione morbida e condivisa. Invece di dare un ordine, il personaggio crea spazio: ti sta dicendo che puoi fare quell'azione senza sentirla come una violazione.
+- [どの {{技|わざ}}を {{回復|かいふく}}する？](term:term-e106-dono-wazao-kaifukusuru) è una domanda di selezione. どの chiede "quale" dentro un set, {{技|わざ}}を marca la mossa come oggetto, e {{回復|かいふく}}する non vuol dire "curare" in astratto: nel contesto delle mosse indica recuperare una risorsa o ripristinare l'uso.
+- [おつかれさま](term:term-e108-otsukaresama) contiene つかれ, fatica o stanchezza, ma nel parlato funziona come riconoscimento dello sforzo. Dopo una sfida, una lezione o un'attività, non è un semplice saluto neutro: dice che l'impegno è stato visto.
+- [〜してもいいからね](term:term-e107-shitemoiikarane) combina 〜してもいい, "anche se fai così va bene", con からね, che aggiunge una spiegazione morbida e condivisa. Invece di dare un ordine, il personaggio crea spazio: ti sta dicendo che puoi fare quell'azione senza sentirla come una violazione.
 
 :::example_sentence
 jp: >-
@@ -227,11 +242,11 @@ translation_it: >-
 *   `わけ` ➔ **Conclusione o ragione implicita** ("il fatto è che...").
 *   `じゃない` ➔ **Negazione della conclusione** (non trasforma automaticamente la frase in "mi piace"; blocca solo la lettura troppo netta).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [～ってば](grammar:grammar-g109-ti-sto-dicendo-che) rafforza una dichiarazione già in campo: il parlante vuole essere ascoltato. [～わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) restringe una deduzione: il parlante impedisce all'altro di tirare una conclusione troppo forte. Uno alza la pressione, l'altro abbassa l'assolutezza.
 
-Il [{{使役|しえき}}](grammar:grammar-g111-far-fare-lasciar-fare) entra quando qualcuno fa compiere o lascia compiere un'azione a un altro. La forma concreta cambia con il verbo, ma il frame resta riconoscibile: chi controlla la situazione viene presentato come origine dell'azione, la persona coinvolta è marcata con `を` o `に`, e il verbo prende la forma causativa.
+Il [{{使役|しえき}}](grammar:grammar-g111-far-fare-lasciar-fare) entra quando qualcuno fa compiere o lascia compiere un'azione a un altro. La forma concreta cambia con il verbo, ma il frame resta riconoscibile: chi controlla la situazione viene presentato come origine dell'azione, la persona coinvolta è marcata con を o に, e il verbo prende la forma causativa.
 
 :::example_sentence
 jp: >-
@@ -246,7 +261,7 @@ translation_it: >-
 *   `{{生徒|せいと}}を` ➔ **Chi viene mosso verso l'azione** (`を` presenta gli studenti come partecipanti fatti agire).
 *   `{{座|すわ}}らせる` ➔ **Verbo causativo** (da `{{座|すわ}}る`, sedersi: far sedere o lasciare sedere, secondo contesto).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per riconoscere il [{{使役|しえき}}](grammar:grammar-g111-far-fare-lasciar-fare), cerca mentalmente una regia: chi apre la possibilità o impone l'azione? Se nella scena qualcuno "fa fare" o "lascia fare", il causativo di solito sta dando forma grammaticale proprio a quel controllo.
 
@@ -255,9 +270,9 @@ Per riconoscere il [{{使役|しえき}}](grammar:grammar-g111-far-fare-lasciar-
 Quando il testo parla di lotte, raid o attraversamento del campo, i termini non indicano solo "difficile" o "muoversi". Separano esito, cooperazione, sforzo richiesto, scelta efficace e libertà di movimento. Questa distinzione evita di leggere tutto come semplice flavor: spesso il gioco ti sta dicendo che cosa aspettarti dalla situazione.
 
 - [{{勝敗|しょうはい}}](term:term-v666-shouhai) unisce vittoria e sconfitta in un unico concetto: l'esito complessivo. Non parla del danno di un turno, ma del risultato della sfida quando viene tirata la linea finale.
-- [{{共闘|きょうとう}}](term:term-v671-kyoutou) combina `{{共|きょう}}`, insieme, e `{{闘|とう}}`, combattere. In un raid o in una missione non basta essere nello stesso luogo: il termine segnala che più partecipanti agiscono contro un avversario o un problema comune.
+- [{{共闘|きょうとう}}](term:term-v671-kyoutou) combina {{共|きょう}}, insieme, e {{闘|とう}}, combattere. In un raid o in una missione non basta essere nello stesso luogo: il termine segnala che più partecipanti agiscono contro un avversario o un problema comune.
 - [{{困難|こんなん}}](term:term-v672-konnan), [{{一苦労|ひとくろう}}](term:term-v681-hitokurou) e [{{最適解|さいてきかい}}](term:term-v679-saitekikai) misurano tre cose diverse. [{{困難|こんなん}}](term:term-v672-konnan) nomina un ostacolo serio o strutturale; [{{一苦労|ひとくろう}}](term:term-v681-hitokurou) suona come "sarà una bella fatica"; [{{最適解|さいてきかい}}](term:term-v679-saitekikai) indica la risposta più efficace dentro quelle condizioni.
-- [{{腕|うで}}を{{磨|みが}}く](term:term-v680-ude-wo-migaku) usa `{{腕|うで}}`, braccio o abilità pratica, e `{{磨|みが}}く`, lucidare o affinare. Nei dialoghi di allenamento non parla di pulire qualcosa: descrive il migliorare le proprie capacità con pratica e scontri.
+- [{{腕|うで}}を{{磨|みが}}く](term:term-v680-ude-wo-migaku) usa {{腕|うで}}, braccio o abilità pratica, e {{磨|みが}}く, lucidare o affinare. Nei dialoghi di allenamento non parla di pulire qualcosa: descrive il migliorare le proprie capacità con pratica e scontri.
 
 :::example_sentence
 jp: >-
@@ -272,7 +287,7 @@ translation_it: >-
 *   `でんきタイプが` ➔ **Candidato evidenziato** (`が` presenta il tipo Elettro come risposta rilevante).
 *   `{{最適解|さいてきかい}}です` ➔ **Classificazione strategica** (non una preferenza generica, ma la scelta più adatta alla situazione).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{困難|こんなん}}](term:term-v672-konnan) ti dice che l'ostacolo è difficile; [{{一苦労|ひとくろう}}](term:term-v681-hitokurou) ti prepara alla fatica necessaria per superarlo; [{{最適解|さいてきかい}}](term:term-v679-saitekikai) ti indica quale scelta funziona meglio. Se confondi questi tre segnali, rischi di leggere un consiglio strategico come semplice commento sulla difficoltà.
 
@@ -293,9 +308,9 @@ translation_it: >-
 
 [{{振|ふ}}る{{舞|ま}}う](term:term-v676-furu-mau) e [{{予感|よかん}}](term:term-v683-yokan) aggiungono due sfumature meno meccaniche. [{{振|ふ}}る{{舞|ま}}う](term:term-v676-furu-mau) può significare comportarsi, ma nei contesti di ospitalità o cibo prende il valore di offrire o servire qualcosa a qualcuno. [{{予感|よかん}}](term:term-v683-yokan) non è una prova e non è una profezia sicura: è il presentimento che qualcosa stia per succedere, spesso prima che il gioco o un personaggio lo confermino.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [{{縦横無尽|じゅうおうむじん}}](term:term-v682-juuoumujin), immagina una mappa senza griglia che ti blocchi: `{{縦|じゅう}}` è la direzione verticale, `{{横|おう}}` quella orizzontale, `{{無尽|むじん}}` toglie l'idea di limite. Non è una traduzione letterale da usare sempre, ma ti aiuta a riconoscere il senso di movimento libero quando il testo parla di esplorazione.
+Per [{{縦横無尽|じゅうおうむじん}}](term:term-v682-juuoumujin), immagina una mappa senza griglia che ti blocchi: {{縦|じゅう}} è la direzione verticale, {{横|おう}} quella orizzontale, {{無尽|むじん}} toglie l'idea di limite. Non è una traduzione letterale da usare sempre, ma ti aiuta a riconoscere il senso di movimento libero quando il testo parla di esplorazione.
 
 ## Esempi guidati di riepilogo
 

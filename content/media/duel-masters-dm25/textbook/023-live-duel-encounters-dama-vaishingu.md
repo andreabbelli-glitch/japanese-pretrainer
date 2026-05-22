@@ -20,16 +20,6 @@ summary: >-
 
 # [{{堕魔|だーま}}](term:term-dama) ヴァイシング
 
-:::image
-src: assets/cards/live-duel/dama-vaishingu.jpg
-alt: "Dama Vaishingu card."
-caption: >-
-  [{{堕魔|だーま}}](term:term-dama) ヴァイシング。 Razze:
-  [マフィ・ギャング](term:term-mafi-gang) /
-  [{{魔導具|まどうぐ}}](term:term-madougu)。 Riga centrale: scegli una
-  creatura nel tuo cimitero; se quella carta è un Magic Tool di costo 4 o meno,
-  entra nel battle zone, altrimenti va in mano.
-:::
 
 La riga di {{堕魔|だーま}} ヴァイシング sembra una semplice
 rianimazione dal {{墓地|ぼち}}, ma il giapponese non
@@ -55,6 +45,8 @@ sola carta.
   Magic Tool di costo 4 o meno.
 - [バトルゾーン](term:term-battle-zone) e [{{手札|てふだ}}](term:term-hand) —
   le due destinazioni possibili della stessa carta scelta.
+- [{{出|だ}}す](term:term-dasu) e [{{加|くわ}}える](term:term-add) — mettere in
+  campo oppure aggiungere alla mano, i due payoff alternativi.
 
 ## Espressioni ricorrenti
 
@@ -89,6 +81,17 @@ sola carta.
   alternativa.
 
 ---
+
+:::image
+src: assets/cards/live-duel/dama-vaishingu.jpg
+alt: "Dama Vaishingu card."
+caption: >-
+  [{{堕魔|だーま}}](term:term-dama) ヴァイシング。 Razze:
+  [マフィ・ギャング](term:term-mafi-gang) /
+  [{{魔導具|まどうぐ}}](term:term-madougu)。 Riga centrale: scegli una
+  creatura nel tuo cimitero; se quella carta è un Magic Tool di costo 4 o meno,
+  entra nel battle zone, altrimenti va in mano.
+:::
 
 ## 1. La scelta dal cimitero è più larga del filtro
 

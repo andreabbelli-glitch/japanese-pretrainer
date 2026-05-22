@@ -54,11 +54,11 @@ Nel giapponese dei primi menu la parte importante spesso non è un verbo lungo: 
 
 ## 1. Chi hai davanti: `{{相手|あいて}}`, タイプ e la logica della lotta
 
-La prima lettura utile in una battaglia Pokémon è capire da quale lato arriva l'informazione. [{{相手|あいて}}](term:term-v001-aite) non è semplicemente "un'altra persona": nel contesto di una lotta indica la parte opposta alla tua, cioè il Pokémon o l'allenatore contro cui stai agendo. Quando il gioco scrive `{{相手|あいて}}の`, la particella `の` aggancia ciò che segue a quel lato del campo.
+La prima lettura utile in una battaglia Pokémon è capire da quale lato arriva l'informazione. [{{相手|あいて}}](term:term-v001-aite) non è semplicemente "un'altra persona": nel contesto di una lotta indica la parte opposta alla tua, cioè il Pokémon o l'allenatore contro cui stai agendo. Quando il gioco scrive {{相手|あいて}}の, la particella の aggancia ciò che segue a quel lato del campo.
 
-[タイプ](term:term-v006-taipu) sembra trasparente perché viene dall'inglese, ma nel gioco non è un "tipo" generico. È il tipo elementale che decide compatibilità, resistenze e debolezze. Per questo `{{相手|あいて}}の タイプ` non è una descrizione estetica dell'avversario: è l'informazione che orienta la scelta della mossa.
+[タイプ](term:term-v006-taipu) sembra trasparente perché viene dall'inglese, ma nel gioco non è un "tipo" generico. È il tipo elementale che decide compatibilità, resistenze e debolezze. Per questo {{相手|あいて}}の タイプ non è una descrizione estetica dell'avversario: è l'informazione che orienta la scelta della mossa.
 
-[バトル](term:term-v011-batoru) segnala la scena in cui questa lettura diventa operativa. In `ジムバトル`, `ポケモンバトル` o `テラレイドバトル`, la parola ti avvisa che il testo parlerà di turni, mosse, bersagli e condizioni di vittoria.
+[バトル](term:term-v011-batoru) segnala la scena in cui questa lettura diventa operativa. In ジムバトル, ポケモンバトル o テラレイドバトル, la parola ti avvisa che il testo parlerà di turni, mosse, bersagli e condizioni di vittoria.
 
 :::example_sentence
 jp: >-
@@ -73,17 +73,17 @@ translation_it: >-
 *   `{{見|み}}てから` ➔ **Sequenza temporale** (forma in `-te` + `から`: prima guardi il tipo, poi scegli).
 *   `わざを {{選|えら}}ぼう` ➔ **Proposta / decisione** (`{{選|えら}}ぶ` diventa `{{選|えら}}ぼう`, "scegliamo / scelgo di scegliere", con tono deliberativo).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{相手|あいて}}](term:term-v001-aite) non va letto come un "partner" o una persona neutra. In battaglia è il lato contro cui misuri la tua azione. Se subito dopo compare [タイプ](term:term-v006-taipu), il testo sta già preparando la domanda pratica: quale mossa ha senso contro quel tipo?
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Immagina il campo diviso in due metà. Tutto ciò che parte dal tuo lato è "mio"; tutto ciò che il testo chiama [{{相手|あいて}}](term:term-v001-aite) appartiene alla metà opposta. Non è un'etimologia: è un trucco visivo per leggere rapidamente i messaggi di lotta.
 
 ## 2. Domande di menu: `どう`, `いつ` e il tono di `かな`
 
-Nei menu iniziali il gioco usa domande corte perché lo spazio è poco e la risposta deve essere immediata. [どう](term:term-v004-dou) significa "come", ma in `どう しますか` non sta chiedendo una spiegazione teorica: `する` porta la frase sul fare, quindi il senso diventa "che cosa fai?" o "come vuoi procedere?".
+Nei menu iniziali il gioco usa domande corte perché lo spazio è poco e la risposta deve essere immediata. [どう](term:term-v004-dou) significa "come", ma in どう しますか non sta chiedendo una spiegazione teorica: する porta la frase sul fare, quindi il senso diventa "che cosa fai?" o "come vuoi procedere?".
 
 [いつ](term:term-v010-itsu) cambia invece l'asse della domanda. Non chiede quale comando scegliere, ma il momento: quando inizia una lotta, quando partire, quando un evento diventa disponibile. In una schermata di progressione, riconoscere [いつ](term:term-v010-itsu) evita di confondere un'informazione di tempo con una scelta di azione.
 
@@ -134,15 +134,15 @@ translation_it: >-
 *   `{{行|い}}こう` ➔ **Volitivo** ("andiamo / potrei andare", forma deliberativa di `{{行|い}}く`).
 *   `かな` ➔ **Dubbio leggero** (il parlante pensa ad alta voce invece di dare un ordine).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `どう しますか` è una domanda di sistema: aspetta una scelta dal giocatore. `〜かな` è spesso una frase del personaggio: mostra esitazione, curiosità o auto-commento. Se le tratti entrambe come "domande uguali", perdi il registro della scena.
 
 ## 3. Quando il comando non parte: `できません` e `{{足|た}}りません`
 
-I messaggi negativi del menu non sono tutti uguali. [できません](term:term-e001-dekimasen) nasce da `できる`, "poter fare / essere possibile", in forma negativa cortese. Dice che l'azione selezionata non può partire nello stato corrente: il luogo è sbagliato, la funzione non è disponibile, oppure manca una condizione non espressa nella frase.
+I messaggi negativi del menu non sono tutti uguali. [できません](term:term-e001-dekimasen) nasce da できる, "poter fare / essere possibile", in forma negativa cortese. Dice che l'azione selezionata non può partire nello stato corrente: il luogo è sbagliato, la funzione non è disponibile, oppure manca una condizione non espressa nella frase.
 
-[{{足|た}}りない / {{足|た}}りません](term:term-e002-tarinai-tarimasen) usa invece il verbo `{{足|た}}りる`, "bastare". Qui il problema non è il permesso o lo stato del comando: è la quantità. La particella `が` marca ciò che non basta, quindi `お{{金|かね}}が {{足|た}}りません` punta proprio al denaro come risorsa insufficiente.
+[{{足|た}}りない / {{足|た}}りません](term:term-e002-tarinai-tarimasen) usa invece il verbo {{足|た}}りる, "bastare". Qui il problema non è il permesso o lo stato del comando: è la quantità. La particella が marca ciò che non basta, quindi お{{金|かね}}が {{足|た}}りません punta proprio al denaro come risorsa insufficiente.
 
 ### A. Il blocco di stato: `ここでは できません`
 
@@ -173,11 +173,11 @@ translation_it: >-
 *   `お{{金|かね}}が` ➔ **Risorsa che manca** (`が` identifica il punto del problema: i soldi).
 *   `{{足|た}}りません` ➔ **Insufficienza cortese** (non "manca" in modo vago, ma "non è abbastanza").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [できません](term:term-e001-dekimasen) risponde alla domanda "questa azione è possibile qui e ora?". [{{足|た}}りません](term:term-e002-tarinai-tarimasen) risponde alla domanda "la quantità richiesta basta?". Il primo blocca un comando; il secondo ti dice quale risorsa devi aumentare.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Quando vedi `Xが {{足|た}}りません`, guarda subito `X`. È l'indicatore della barra vuota: soldi, materiali, punti o ingredienti. La forma negativa alla fine spiega il blocco, ma `が` ti mostra che cosa lo causa.
 
@@ -217,11 +217,11 @@ translation_it: >-
 *   `{{勝|か}}たなきゃ いけない` ➔ **Necessità** (forma contratta di `{{勝|か}}たなければ いけない`: "devo vincere").
 *   `んだ` ➔ **Spiegazione / enfasi** (il parlante chiarisce il motivo o ribadisce ciò che conta davvero).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{勝|か}}たなきゃ いけない` comunica l'obbligo. `{{勝|か}}たなきゃ いけないんだ` aggiunge il tono: "è proprio questo il punto". Nei dialoghi di rivalità o di progressione, quella `んだ` fa sentire determinazione, giustificazione o urgenza.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Leggi `んだ` come una piccola lente messa davanti alla frase. Non cambia il fatto di base, ma ti dice che il parlante vuole farlo pesare: perché lo spiega, lo giustifica o lo sente importante.
 
@@ -254,4 +254,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando una schermata nuova mostra [{{相手|あいて}}](term:term-v001-aite), [どう](term:term-v004-dou), [できません](term:term-e001-dekimasen) o [{{足|た}}りません](term:term-e002-tarinai-tarimasen), parti dalla funzione: lato avversario, scelta richiesta, comando impossibile o risorsa insufficiente. Le frasi sono brevi, ma le particelle `の`, `を`, `は` e `が` ti dicono dove guardare prima di premere il prossimo pulsante.
+Quando una schermata nuova mostra [{{相手|あいて}}](term:term-v001-aite), [どう](term:term-v004-dou), [できません](term:term-e001-dekimasen) o [{{足|た}}りません](term:term-e002-tarinai-tarimasen), parti dalla funzione: lato avversario, scelta richiesta, comando impossibile o risorsa insufficiente. Le frasi sono brevi, ma le particelle の, を, は e が ti dicono dove guardare prima di premere il prossimo pulsante.

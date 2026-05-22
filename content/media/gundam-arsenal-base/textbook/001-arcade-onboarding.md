@@ -92,14 +92,15 @@ translation_it: >-
 
 *   `アミューズメントICカードを` ➔ **Oggetto del tocco** (`を` marca la tessera: è l'oggetto che devi appoggiare o avvicinare).
 *   `カードリーダーに` ➔ **Destinazione fisica** (`に` indica il punto del cabinato verso cui porti la tessera).
-*   `タッチすることで` ➔ **Azione che produce un risultato** ([～することで](grammar:grammar-suru-koto-de) collega il gesto al payoff: facendo X, diventa possibile Y).
+*   タッチすることで ➔ **Azione che produce un risultato** ([～することで](grammar:grammar-suru-koto-de) collega il gesto al payoff: facendo X, diventa possibile Y).
 *   `プレイデータを{{呼|よ}}び{{出|だ}}せます` ➔ **Recupero dati possibile** (`{{呼|よ}}び{{出|だ}}す` richiama fuori dati già salvati; `〜せます` dice che l'azione è possibile).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [カードリーダー](term:term-card-reader) legge la
-> tessera IC; [カードスロット](term:term-card-slot) riceve le carte MS e PL. Se
-> confondi `リーダー` e `スロット`, confondi identità del profilo e costruzione
-> del deck.
+#### ⚖️ Contrasto operativo
+
+[カードリーダー](term:term-card-reader) legge la
+tessera IC; [カードスロット](term:term-card-slot) riceve le carte MS e PL. Se
+confondi `リーダー` e `スロット`, confondi identità del profilo e costruzione
+del deck.
 
 [MY PAGE](term:term-mypage) sposta lo stesso profilo fuori dal cabinato. Il
 nome è inglese, ma la funzione è giapponese da UI: una pagina personale dove
@@ -121,17 +122,17 @@ caption: >-
 :::
 
 Le parti del cabinato si leggono bene se associ ogni nome al verbo che lo
-attiva. [タッチパネル](term:term-touch-panel) riceve `タッチする`;
-[カードスロット](term:term-card-slot) riceve `セットする`;
-[ボタン](term:term-button) riceve `{{押|お}}す`. La differenza non è estetica:
+attiva. [タッチパネル](term:term-touch-panel) riceve タッチする;
+[カードスロット](term:term-card-slot) riceve セットする;
+[ボタン](term:term-button) riceve {{押|お}}す. La differenza non è estetica:
 ti dice se il gioco vuole un tap su schermo, una carta infilata nello slot o un
 input fisico sul comando laterale.
 
 *   [タッチパネル](term:term-touch-panel) è il pannello dove il bersaglio prima
-    di `を` viene toccato. In [～をタッチする](grammar:grammar-wo-tacchi-suru),
+    di を viene toccato. In [～をタッチする](grammar:grammar-wo-tacchi-suru),
     `を` non marca una scelta astratta: marca il punto preciso su cui fai tap.
 *   [カードスロット](term:term-card-slot) è lo spazio delle carte da gioco. In
-    [～をセットする](grammar:grammar-wo-setto-suru), `セットする` non è
+    [～をセットする](grammar:grammar-wo-setto-suru), セットする non è
     "impostare" in senso generico: è mettere l'oggetto nella posizione prevista.
 *   [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet) contiene già
     `{{取|と}}り{{出|だ}}し`, "estrazione / tirare fuori", e `{{口|ぐち}}`,
@@ -152,21 +153,22 @@ translation_it: >-
 
 *   `タッチパネルの{{表示|ひょうじ}}を` ➔ **Contenuto mostrato** (`の` collega il pannello alla visualizzazione: guardi l'informazione sullo schermo, non il pannello come oggetto).
 *   `{{確認|かくにん}}してから` ➔ **Prima conferma, poi azione** (`〜してから` ordina la sequenza: controllare precede premere).
-*   `ボタンを{{押|お}}します` ➔ **Input fisico** (`{{押|お}}す` è "premere"; il bersaglio è il [ボタン](term:term-button), non il [タッチパネル](term:term-touch-panel)).
+*   ボタンを{{押|お}}します ➔ **Input fisico** ({{押|お}}す è "premere"; il bersaglio è il [ボタン](term:term-button), non il [タッチパネル](term:term-touch-panel)).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** in
-> [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet), pensa a
-> `{{口|ぐち}}` come all'apertura da cui esce qualcosa. È un trucco di memoria:
-> il valore pratico è riconoscere l'uscita delle carte, non un altro slot di
-> inserimento.
+#### 🧠 Gancio cognitivo
+
+In
+[カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet), pensa a
+`{{口|ぐち}}` come all'apertura da cui esce qualcosa. È un trucco di memoria:
+il valore pratico è riconoscere l'uscita delle carte, non un altro slot di
+inserimento.
 
 ## 3. MS, PL e unità: quando due carte diventano un pezzo giocabile
 
 Nel [カードスロット](term:term-card-slot), le carte non vengono lette come un
 mazzo da pescare. [MSカード](term:term-ms-card) nomina il Mobile Suit,
 [PLカード](term:term-pl-card) nomina il pilota, e la coppia costruisce una
-[ユニット](term:term-unit). Qui `ユニット` non è una parola generica da menu:
+[ユニット](term:term-unit). Qui ユニット non è una parola generica da menu:
 è il blocco MS + PL che il gioco può mandare sul campo.
 
 [デッキ](term:term-deck) è quindi la composizione preparata per la partita, non
@@ -186,14 +188,14 @@ translation_it: >-
 
 *   `{{上段|じょうだん}}にMSカード` ➔ **Posizione alta + carta MS** (`{{上段|じょうだん}}` è la fila superiore; `に` marca dove va collocata la carta).
 *   `{{下段|げだん}}にPLカードを` ➔ **Posizione bassa + carta PL** (`{{下段|げだん}}` crea il contrasto spaziale con la fila superiore).
-*   `セットします` ➔ **Collocazione nello slot** ([～をセットする](grammar:grammar-wo-setto-suru) chiude l'istruzione come azione fisica, non come scelta mentale del deck).
+*   セットします ➔ **Collocazione nello slot** ([～をセットする](grammar:grammar-wo-setto-suru) chiude l'istruzione come azione fisica, non come scelta mentale del deck).
 
-> [!WARNING]
-> **⚖️ Contrasto operativo: carta singola vs unità**
-> [MSカード](term:term-ms-card) e [PLカード](term:term-pl-card) restano oggetti
-> separati, ma il cabinato legge la coppia come [ユニット](term:term-unit).
-> Se guardi solo la carta singola, perdi il rapporto verticale che decide quale
-> Mobile Suit combatte con quale pilota.
+#### ⚖️ Contrasto operativo: carta singola vs unità
+
+[MSカード](term:term-ms-card) e [PLカード](term:term-pl-card) restano oggetti
+separati, ma il cabinato legge la coppia come [ユニット](term:term-unit).
+Se guardi solo la carta singola, perdi il rapporto verticale che decide quale
+Mobile Suit combatte con quale pilota.
 
 ## 4. Slot tattici e 出撃: dalla preparazione all'ingresso in battaglia
 
@@ -201,7 +203,7 @@ Le [{{作戦|さくせん}}カード](term:term-tactics-card) aggiungono un live
 non passa dagli slot MS e PL. `{{作戦|さくせん}}` significa piano, operazione,
 tattica; per questo la carta non rappresenta un Mobile Suit o un pilota, ma un
 effetto da equipaggiare. [メイン{{枠|わく}}](term:term-main-slot) e
-[サブ{{枠|わく}}](term:term-sub-slot) usano `{{枠|わく}}`, "cornice / slot":
+[サブ{{枠|わく}}](term:term-sub-slot) usano {{枠|わく}}, "cornice / slot":
 il testo sta parlando dello spazio in cui inserire l'effetto, non di un'altra
 unità da schierare.
 
@@ -224,11 +226,12 @@ translation_it: >-
 *   `{{未解放|みかいほう}}なら` ➔ **Condizione di non sblocco** (`{{未|み}}` segnala "non ancora"; `{{解放|かいほう}}` è lo sblocco; `なら` trasforma lo stato in una condizione pratica).
 *   `この{{手順|てじゅん}}は{{飛|と}}ばします` ➔ **Passaggio saltato** (`{{手順|てじゅん}}` è la procedura; `{{飛|と}}ばす` qui significa saltare, non far volare qualcosa).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{未解放|みかいほう}}` non vuol dire che la carta
-> fisica manca o che il cabinato è in errore. Vuol dire che quella funzione non
-> è ancora utilizzabile nel profilo o nel flusso corrente, quindi il passaggio
-> non va cercato negli slot MS/PL.
+#### ⚖️ Contrasto operativo
+
+`{{未解放|みかいほう}}` non vuol dire che la carta
+fisica manca o che il cabinato è in errore. Vuol dire che quella funzione non
+è ancora utilizzabile nel profilo o nel flusso corrente, quindi il passaggio
+non va cercato negli slot MS/PL.
 
 :::example_sentence
 jp: >-

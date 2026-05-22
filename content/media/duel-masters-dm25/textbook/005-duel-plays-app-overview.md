@@ -63,6 +63,8 @@ stai distinguendo se l'app informa, mostra uno stato o chiede un'azione.
 
 ---
 
+[ショップ](term:term-shop) va letto come area operativa stabile: quando appare, il testo passa da missioni e modalità alla gestione di acquisti, pack o risorse.
+
 ## 1. La home come mappa: sezione, stato, azione
 
 :::image
@@ -106,9 +108,9 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `ホーム{{画面|がめん}}から` ➔ **punto di partenza**: `から` non descrive il contenuto della home, ma la schermata da cui parte l'azione.
-- `ミッション{{一覧|いちらん}}を` ➔ **oggetto aperto**: [～{{一覧|いちらん}}](grammar:grammar-ichiran) trasforma `ミッション` in una vista elenco, quindi non stai entrando in una singola missione.
+- ミッション{{一覧|いちらん}}を ➔ **oggetto aperto**: [～{{一覧|いちらん}}](grammar:grammar-ichiran) trasforma ミッション in una vista elenco, quindi non stai entrando in una singola missione.
 - `{{開|ひら}}いて` ➔ **prima azione concatenata**: la forma in `-te` prepara l'azione successiva senza chiudere la frase.
-- `{{確認|かくにん}}する` ➔ **controllo informativo**: qui [{{確認|かくにん}}](term:term-confirm) significa verificare lo stato, non ritirare un premio.
+- {{確認|かくにん}}する ➔ **controllo informativo**: qui [{{確認|かくにん}}](term:term-confirm) significa verificare lo stato, non ritirare un premio.
 
 #### ⚖️ Contrasto operativo: aprire non è confermare
 
@@ -156,7 +158,7 @@ translation_it: >-
 - `クリアして` ➔ **sequenza**: la forma in `-te` collega completamento e passaggio successivo, quindi prima chiudi la missione e poi passi al claim.
 - `プレゼントボックスから` ➔ **origine del premio**: `から` dice da dove ritiri, non che il box sia la ricompensa.
 - `{{報酬|ほうしゅう}}を` ➔ **oggetto ricevuto**: la ricompensa è il contenuto che cambia stato.
-- `{{受|う}}け{{取|と}}る` ➔ **azione finale**: [{{受|う}}け{{取|と}}る](term:term-receive) combina ricezione e presa in carico, quindi chiude il flusso.
+- {{受|う}}け{{取|と}}る ➔ **azione finale**: [{{受|う}}け{{取|と}}る](term:term-receive) combina ricezione e presa in carico, quindi chiude il flusso.
 
 #### ⚖️ Contrasto operativo: contenitore, contenuto, azione
 
@@ -171,7 +173,7 @@ un piccolo percorso: deposito ➔ premio ➔ claim.
 La UI giapponese risparmia spazio usando marker corti. Sono piccoli, ma
 decidono se devi agire subito, aspettare o lasciare stare.
 
-- [{{開催|かいさい}}{{中|ちゅう}}](term:term-ongoing) combina `{{開催|かいさい}}`
+- [{{開催|かいさい}}{{中|ちゅう}}](term:term-ongoing) combina {{開催|かいさい}}
   "svolgimento / tenuta di un evento" con [～{{中|ちゅう}}](grammar:grammar-ui-chuu).
   In una schermata evento, non vuol dire "dentro l'evento" in senso spaziale:
   vuol dire che l'evento è attivo adesso.
@@ -180,7 +182,7 @@ decidono se devi agire subito, aspettare o lasciare stare.
   ti dice che la ricezione è già avvenuta.
 - [{{未|み}}～](grammar:grammar-mi-prefix) rovescia la lettura in negativo:
   non ancora completato, non ancora ricevuto, non ancora raggiunto. In parole
-  come `{{未達成|みたっせい}}`, il prefisso [{{未|み}}～](grammar:grammar-mi-prefix)
+  come {{未達成|みたっせい}}, il prefisso [{{未|み}}～](grammar:grammar-mi-prefix)
   blocca il claim perché la condizione non è chiusa.
 
 :::example_sentence
@@ -192,9 +194,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{開催|かいさい}}{{中|ちゅう}}のイベント` ➔ **evento attivo**: [～{{中|ちゅう}}](grammar:grammar-ui-chuu) modifica `イベント` attraverso `の`, quindi descrive lo stato dell'evento.
+- {{開催|かいさい}}{{中|ちゅう}}のイベント ➔ **evento attivo**: [～{{中|ちゅう}}](grammar:grammar-ui-chuu) modifica イベント attraverso の, quindi descrive lo stato dell'evento.
 - `{{参加|さんか}}できるが` ➔ **possibilità più contrasto**: `できる` indica che l'ingresso è possibile, mentre `が` prepara una limitazione.
-- `{{未達成|みたっせい}}のミッション` ➔ **missione non chiusa**: [{{未|み}}～](grammar:grammar-mi-prefix) mette il blocco prima ancora del verbo finale.
+- {{未達成|みたっせい}}のミッション ➔ **missione non chiusa**: [{{未|み}}～](grammar:grammar-mi-prefix) mette il blocco prima ancora del verbo finale.
 - `まだ{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}れない` ➔ **claim non disponibile**: `まだ` più il potenziale negativo `{{受|う}}け{{取|と}}れない` dice "non puoi ancora ritirare".
 
 #### ⚖️ Contrasto operativo: attivo non significa completato
@@ -217,7 +219,7 @@ il bottone, aspettati una condizione mancante.
 Non tutto ciò che appare nella home porta a una ricompensa. Alcune label servono
 a capire dove trovare informazioni, preferenze o funzioni laterali.
 
-- [お{{知|し}}らせ](term:term-news) nasce da `{{知|し}}る`, "sapere / venire a
+- [お{{知|し}}らせ](term:term-news) nasce da {{知|し}}る, "sapere / venire a
   sapere". Con `お` e la forma nominale, diventa l'area degli avvisi: eventi,
   campagne, manutenzioni e comunicazioni ufficiali. Se la apri, di solito stai
   leggendo contesto, non claim immediato.
@@ -226,7 +228,7 @@ a capire dove trovare informazioni, preferenze o funzioni laterali.
   usare verbi di cambio, salvataggio o conferma, non verbi di ricezione.
 - [その{{他|た}}](term:term-etc) significa "le altre cose". Nella UI può
   corrispondere a `Etc.` e raccogliere funzioni secondarie. Non va letto come
-  [{{設定|せってい}}](term:term-settings): `その{{他|た}}` è un contenitore
+  [{{設定|せってい}}](term:term-settings): その{{他|た}} è un contenitore
   eterogeneo, mentre `{{設定|せってい}}` punta alle impostazioni.
 
 :::example_sentence
@@ -238,8 +240,8 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `お{{知|し}}らせを{{開|ひら}}いて` ➔ **apertura di una sezione informativa**: il verbo è [{{開|ひら}}く](term:term-open), quindi la conseguenza immediata è entrare nella pagina.
-- `イベント{{情報|じょうほう}}を{{確認|かくにん}}する` ➔ **controllo del contenuto**: [{{確認|かくにん}}](term:term-confirm) qui vale "verificare / controllare".
+- お{{知|し}}らせを{{開|ひら}}いて ➔ **apertura di una sezione informativa**: il verbo è [{{開|ひら}}く](term:term-open), quindi la conseguenza immediata è entrare nella pagina.
+- イベント{{情報|じょうほう}}を{{確認|かくにん}}する ➔ **controllo del contenuto**: [{{確認|かくにん}}](term:term-confirm) qui vale "verificare / controllare".
 - `{{設定|せってい}}では` ➔ **cornice della schermata**: `では` restringe ciò che segue all'area impostazioni.
 - `{{通知|つうち}}や{{音量|おんりょう}}を{{変|か}}える` ➔ **oggetti modificabili**: `や` elenca esempi, mentre `{{変|か}}える` indica cambio di valore.
 

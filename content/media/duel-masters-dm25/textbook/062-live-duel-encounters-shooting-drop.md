@@ -29,17 +29,6 @@ nuovo pagamento. Ti dice di leggerla come una summon in cui il
 [コスト](term:term-cost) conta già come
 [{{支払|しはら}}った](term:term-harau).
 
-:::image
-src: assets/cards/live-duel/shooting-drop.jpg
-alt: "Shooting Drop card."
-caption: >-
-  「{{流星|りゅうせい}}の{{雫|しずく}}」。 Creature Water con ギャラクシールド:
-  la parentesi mette la carta [{{表向|おもてむ}}き](term:term-face-up) come
-  nuovo scudo, mentre la riga successiva fa leggere la
-  [{{召喚|しょうかん}}](term:term-summon) come se il
-  [コスト](term:term-cost) fosse già stato
-  [{{支払|しはら}}った](term:term-harau).
-:::
 
 ## Termini chiave
 
@@ -69,14 +58,28 @@ caption: >-
 - [あれば](grammar:grammar-areba) — condizione di esistenza o presenza in una
   zona
 - [ものとして](grammar:grammar-monotoshite) — trattando un fatto come valido
+- [～ずに](grammar:grammar-zuni) — senza fare
 
 ## Etichette da riconoscere
 
 - ギャラクシールド — keyword che permette di pagare un costo alternativo e mettere
   la carta come nuovo scudo face-up
 - 「{{流星|りゅうせい}}の{{雫|しずく}}」 — nome giapponese di Shooting Drop
+- [{{置|お}}く](term:term-oku) — mettere / porre
 
 ---
+
+:::image
+src: assets/cards/live-duel/shooting-drop.jpg
+alt: "Shooting Drop card."
+caption: >-
+  「{{流星|りゅうせい}}の{{雫|しずく}}」。 Creature Water con ギャラクシールド:
+  la parentesi mette la carta [{{表向|おもてむ}}き](term:term-face-up) come
+  nuovo scudo, mentre la riga successiva fa leggere la
+  [{{召喚|しょうかん}}](term:term-summon) come se il
+  [コスト](term:term-cost) fosse già stato
+  [{{支払|しはら}}った](term:term-harau).
+:::
 
 ## 1. La sostituzione di Galaxyshield: pagare Water 1 al posto del costo
 
@@ -104,20 +107,20 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `このカードを{{使|つか}}う[コスト](term:term-cost)の` indica il costo che
+*   このカードを{{使|つか}}う[コスト](term:term-cost)の indica il costo che
     normalmente sarebbe richiesto per usare la carta. Il nome finale è
     [コスト](term:term-cost); tutto ciò che lo precede specifica "il costo per
     usare questa carta".
-*   `[{{代|か}}わりに](grammar:grammar-kawarini)` cambia il binario della frase:
+*   [{{代|か}}わりに](grammar:grammar-kawarini) cambia il binario della frase:
     non aggiunge un secondo pagamento, ma introduce ciò che prende il posto del
     costo normale.
-*   `{{水|みず}}{{1|いち}}を[{{支払|しはら}}って](term:term-harau)もよい` combina il
+*   {{水|みず}}{{1|いち}}を[{{支払|しはら}}って](term:term-harau)もよい combina il
     pagamento con `てもよい`: puoi pagare Water 1, ma la forma non lo rende un
     obbligo automatico.
-*   `[そうしたら](grammar:grammar-soushitara)` riprende proprio quel pagamento.
+*   [そうしたら](grammar:grammar-soushitara) riprende proprio quel pagamento.
     Se lo fai, il testo passa alla conseguenza; se non lo fai, questa catena
     non procede.
-*   `このカードを[{{表向|おもてむ}}き](term:term-face-up)にし、{{新|あたら}}しいシールドとして...に[{{置|お}}く](term:term-oku)`
+*   このカードを[{{表向|おもてむ}}き](term:term-face-up)にし、{{新|あたら}}しいシールドとして...に[{{置|お}}く](term:term-oku)
     descrive il risultato fisico: la carta viene resa visibile e collocata come
     nuovo scudo, non ancora evocata.
 
@@ -161,15 +164,15 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{自分|じぶん}}](term:term-self)のターンのはじめに` fissa il timing. Non è
+*   [{{自分|じぶん}}](term:term-self)のターンのはじめに fissa il timing. Non è
     "durante il tuo turno" in generale: la finestra è l'inizio del turno.
-*   `この[クリーチャー](term:term-creature)が` marca il soggetto controllato. La
+*   この[クリーチャー](term:term-creature)が marca il soggetto controllato. La
     carta è nello scudo, ma il testo la chiama comunque "questa creatura" perché
     sta guardando il suo tipo di carta.
-*   `[{{表向|おもてむ}}き](term:term-face-up)で` descrive lo stato richiesto. Il
+*   [{{表向|おもてむ}}き](term:term-face-up)で descrive lo stato richiesto. Il
     `で` qui non indica uno strumento; collega la creatura alla condizione
     "essere face-up".
-*   `[{{自分|じぶん}}](term:term-self)の[シールドゾーン](term:term-shield-zone)に[あれば](grammar:grammar-areba)`
+*   [{{自分|じぶん}}](term:term-self)の[シールドゾーン](term:term-shield-zone)に[あれば](grammar:grammar-areba)
     controlla la posizione. `ある` è il verbo di esistenza per cose inanimate;
     con `あれば`, diventa "se si trova lì".
 *   La parte dopo la virgola è il payoff: solo se timing, stato e zona sono
@@ -210,7 +213,7 @@ fosse stato pagato".
 La frase non dice che il costo sparisce senza struttura grammaticale. Dice che
 la [{{召喚|しょうかん}}](term:term-summon) si risolve dentro una cornice in cui il
 [コスト](term:term-cost) è già considerato pagato. Per questo la coda
-`[ものとして](grammar:grammar-monotoshite)[{{召喚|しょうかん}}](term:term-summon)する`
+[ものとして](grammar:grammar-monotoshite)[{{召喚|しょうかん}}](term:term-summon)する
 va letta insieme, non come due pezzi indipendenti.
 
 :::example_sentence
@@ -225,21 +228,21 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[コスト](term:term-cost)を` marca l'oggetto del pagamento: ciò che risulta
+*   [コスト](term:term-cost)を marca l'oggetto del pagamento: ciò che risulta
     pagato è il costo.
-*   `[{{支払|しはら}}った](term:term-harau)` mette quel pagamento in forma
+*   [{{支払|しはら}}った](term:term-harau) mette quel pagamento in forma
     compiuta, quindi lo tratta come già avvenuto per la lettura della frase.
-*   `[ものとして](grammar:grammar-monotoshite)` trasforma il fatto "il costo è
+*   [ものとして](grammar:grammar-monotoshite) trasforma il fatto "il costo è
     stato pagato" nella cornice dell'azione seguente.
-*   `[{{召喚|しょうかん}}](term:term-summon)する` è il verbo principale: la carta
+*   [{{召喚|しょうかん}}](term:term-summon)する è il verbo principale: la carta
     non viene solo spostata, viene evocata.
 
 #### ⚖️ Contrasto operativo: 支払わずに vs 支払ったものとして
 
-`[コスト](term:term-cost)を[{{支払|しはら}}わずに](grammar:grammar-zuni)[{{召喚|しょうかん}}](term:term-summon)する`
+[コスト](term:term-cost)を[{{支払|しはら}}わずに](grammar:grammar-zuni)[{{召喚|しょうかん}}](term:term-summon)する
 significa "evocare senza pagare il costo": la frase mette in primo piano
 l'assenza del pagamento. Shooting Drop usa invece
-`[コスト](term:term-cost)を[{{支払|しはら}}った](term:term-harau)[ものとして](grammar:grammar-monotoshite)[{{召喚|しょうかん}}](term:term-summon)する`:
+[コスト](term:term-cost)を[{{支払|しはら}}った](term:term-harau)[ものとして](grammar:grammar-monotoshite)[{{召喚|しょうかん}}](term:term-summon)する:
 la summon viene trattata come se il pagamento fosse già valido.
 
 #### 🧠 Gancio cognitivo

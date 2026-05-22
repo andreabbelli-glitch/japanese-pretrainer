@@ -66,6 +66,8 @@ istruzioni di scena.
 
 ---
 
+[ポケモンセンター](term:term-pokemon-center) è un hub di servizi: quando lo incontri, aspettati cura, acquisti, spostamenti o procedure, non solo un luogo decorativo.
+
 ## 1. Parlare con qualcuno: ascoltare, chiedere, aspettare
 
 Nei primi incontri con Nemona, con il personale dell'Accademia o con i servizi
@@ -105,7 +107,7 @@ translation_it: >-
 - `{{聞|き}}く` ➔ **Ascoltare / chiedere** (il verbo resta lo stesso; sono le
   particelle a dirti se stai guardando la fonte, il contenuto o entrambi).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{聞|き}}く](term:term-anki-l01-kiku) cambia lettura in base al pezzo che lo
 accompagna. `{{先生|せんせい}}に{{聞|き}}く` punta alla persona consultata:
@@ -130,7 +132,7 @@ translation_it: >-
 - `{{待|ま}}っています` ➔ **Attesa in corso** (`{{待|ま}}つ` in forma progressiva
   cortese: la scena è ancora ferma su quell'attesa).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{聞|き}}く](term:term-anki-l01-kiku), immagina di avvicinarti a un NPC:
 puoi ascoltare il discorso che appare a schermo oppure chiedere a quella
@@ -172,17 +174,17 @@ translation_it: >-
   nel momento da cui parte la nuova fase).
 - `この {{町|まち}}に` ➔ **Destinazione** (`に` marca il luogo verso cui avviene
   l'ingresso).
-- `{{入|はい}}ります` ➔ **Entrare** (forma cortese di [{{入|はい}}る](term:term-v300-iru);
+- {{入|はい}}ります ➔ **Entrare** (forma cortese di [{{入|はい}}る](term:term-v300-iru);
   il soggetto si muove dentro il confine, non mette qualcosa dentro).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{入|はい}}る](term:term-v300-iru) è intransitivo: il soggetto entra. `{{入|い}}れる`
+[{{入|はい}}る](term:term-v300-iru) è intransitivo: il soggetto entra. {{入|い}}れる
 è transitivo: qualcuno inserisce qualcosa. `ポケモンセンターに{{入|はい}}る` significa
 "entrare nel Pokémon Center"; `バッグに{{入|い}}れる` significherebbe "mettere nella
 borsa". Se confondi i due verbi, scambi chi si muove con chi manipola un oggetto.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Con [{{入|はい}}る](term:term-v300-iru), cerca sempre il "contenitore" della scena:
 porta, città, menu, lista, schermata. Il `に` vicino al luogo ti mostra il bordo
@@ -241,7 +243,7 @@ translation_it: >-
 - `HPが {{回復|かいふく}}する` ➔ **Effetto** (`が` presenta i PS come ciò che
   recupera).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{円|えん}}](term:term-anki-l01-en) e [LP（リーグペイ）](term:term-lp) sono entrambe
 risorse, ma non sono intercambiabili. `{{200円|にひゃくえん}}` è un prezzo in
@@ -249,7 +251,7 @@ yen; `200 LP` è un costo in Punti Lega. Quando la schermata offre entrambe le
 opzioni, il giapponese non sta ripetendo lo stesso valore: sta distinguendo due
 conti diversi.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [LP（リーグペイ）](term:term-lp), leggi le lettere con l'orecchio giapponese:
 `エルピー`. È il segnale che una sigla latina è entrata nella frase come parola
@@ -290,7 +292,7 @@ translation_it: >-
 - `みたいね` ➔ **Impressione condivisa** ("sembra, eh": il parlante formula una
   lettura osservando la scena).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 Non trattare [{{違|ちが}}う](term:term-anki-l01-chigau) come se fosse un semplice
 aggettivo italiano. `これは{{違|ちが}}う` non è letteralmente "questo è diverso" in
@@ -298,7 +300,7 @@ ogni contesto: può voler dire "questo non è quello giusto" o "non è così". I
 dialogo decide se la frase sta confrontando due cose o correggendo una
 supposizione.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Quando senti [{{違|ちが}}う](term:term-anki-l01-chigau), immagina il testo che
 sposta una tessera fuori posto: qualcosa non combacia con il modello previsto.

@@ -30,6 +30,8 @@ La lettura utile non è tradurre ogni label in isolamento: è capire che tipo di
 - [{{接続|せつぞく}}](term:term-v592-setsuzoku) — connessione / collegamento
 - [{{同時|どうじ}}](term:term-v593-douji) — nello stesso momento
 - [{{通信対戦|つうしんたいせん}}](term:term-v594-tsuushintaisen) — lotta tramite comunicazione
+- [{{通信|つうしん}}](term:term-v267-tsuushin) — comunicazione o trasmissione dati
+  che precede lotte e scambi online
 - [{{公式|こうしき}}](term:term-v595-koushiki) — ufficiale
 - [シーズン](term:term-v596-shiizun) — stagione competitiva
 - [{{公開|こうかい}}](term:term-v597-koukai) — pubblicare / rendere visibile
@@ -73,9 +75,9 @@ La lettura utile non è tradurre ogni label in isolamento: è capire che tipo di
 
 Quando il gioco passa dalle schermate locali al [ポケポータル](term:term-v611-pokepootaru), il lessico cambia funzione: non descrive più solo un'opzione, ma prepara un cambio di stato. [{{接続|せつぞく}}](term:term-v592-setsuzoku) indica il collegamento a una rete, a un servizio o a un altro giocatore; vicino a un pulsante segnala che il gioco sta per uscire dalla modalità isolata e aprire una funzione comunicante.
 
-*   [{{同時|どうじ}}](term:term-v593-douji) unisce `{{同|どう}}`, "stesso", e `{{時|じ}}`, "tempo". In una UI non significa "insieme" in senso emotivo: mette a fuoco la simultaneità tecnica, come azioni o giocatori gestiti nello stesso momento.
-*   [{{通信対戦|つうしんたいせん}}](term:term-v594-tsuushintaisen) combina [{{通信|つうしん}}](term:term-v267-tsuushin), comunicazione o trasmissione di dati, con `{{対戦|たいせん}}`, sfida contro qualcuno. Il composto intero restringe il campo: non è una lotta qualsiasi, ma una lotta contro un altro giocatore raggiunto tramite connessione.
-*   [{{公式|こうしき}}](term:term-v595-koushiki) e [シーズン](term:term-v596-shiizun) spostano la lettura verso eventi, regole e classifiche riconosciute dal gioco. `{{公式|こうしき}}` marca ciò che è ufficiale; `シーズン` divide il tempo competitivo in periodi leggibili.
+*   [{{同時|どうじ}}](term:term-v593-douji) unisce {{同|どう}}, "stesso", e {{時|じ}}, "tempo". In una UI non significa "insieme" in senso emotivo: mette a fuoco la simultaneità tecnica, come azioni o giocatori gestiti nello stesso momento.
+*   [{{通信対戦|つうしんたいせん}}](term:term-v594-tsuushintaisen) combina [{{通信|つうしん}}](term:term-v267-tsuushin), comunicazione o trasmissione di dati, con {{対戦|たいせん}}, sfida contro qualcuno. Il composto intero restringe il campo: non è una lotta qualsiasi, ma una lotta contro un altro giocatore raggiunto tramite connessione.
+*   [{{公式|こうしき}}](term:term-v595-koushiki) e [シーズン](term:term-v596-shiizun) spostano la lettura verso eventi, regole e classifiche riconosciute dal gioco. {{公式|こうしき}} marca ciò che è ufficiale; シーズン divide il tempo competitivo in periodi leggibili.
 *   [{{公開|こうかい}}](term:term-v597-koukai) contiene l'idea di "aprire al pubblico". In profili, impostazioni e dati condivisi non è solo "mostrare": è rendere visibile qualcosa fuori dallo spazio privato del giocatore.
 
 :::example_sentence
@@ -92,21 +94,21 @@ translation_it: >-
 *   `{{通信対戦|つうしんたいせん}}のシーズンを` ➔ **Oggetto del controllo** (`の` lega la stagione al contesto competitivo online; `を` marca ciò che viene controllato).
 *   `{{確認|かくにん}}してみましょう` ➔ **Invito a verificare** (`してみる` aggiunge "provare a", `ましょう` coinvolge il lettore senza suonare come un ordine secco).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{通信|つうしん}}](term:term-v267-tsuushin) nomina la comunicazione o lo scambio di dati; [{{通信対戦|つうしんたいせん}}](term:term-v594-tsuushintaisen) aggiunge `{{対戦|たいせん}}` e quindi restringe tutto alla sfida contro un avversario. Se manca `{{対戦|たいせん}}`, non dare per scontato che la schermata stia avviando una lotta.
+[{{通信|つうしん}}](term:term-v267-tsuushin) nomina la comunicazione o lo scambio di dati; [{{通信対戦|つうしんたいせん}}](term:term-v594-tsuushintaisen) aggiunge {{対戦|たいせん}} e quindi restringe tutto alla sfida contro un avversario. Se manca {{対戦|たいせん}}, non dare per scontato che la schermata stia avviando una lotta.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Pensa a [{{接続|せつぞく}}](term:term-v592-setsuzoku) come a un cavo che chiude un circuito: prima il circuito è aperto, poi il gioco è collegato e può scambiare dati. È un'immagine mnemonica, non un'etimologia.
 
 ## 2. Controllare, aiutare e confermare una perdita
 
-Le finestre di sistema usano spesso forme cortesi perché devono guidarti prima di un'azione. [〜を {{確認|かくにん}}してみましょう！](term:term-e095-o-kakuninshitemimashou) mette l'oggetto davanti a `を`, poi usa `{{確認|かくにん}}する` in `してみましょう`: il gioco non dice solo "guarda", ma propone di fare una verifica.
+Le finestre di sistema usano spesso forme cortesi perché devono guidarti prima di un'azione. [〜を {{確認|かくにん}}してみましょう！](term:term-e095-o-kakuninshitemimashou) mette l'oggetto davanti a を, poi usa {{確認|かくにん}}する in してみましょう: il gioco non dice solo "guarda", ma propone di fare una verifica.
 
-[〜してあげましょう](term:term-e094-shiteagemashou) ha una sfumatura diversa. `あげる` aggiunge l'idea di fare qualcosa a beneficio di qualcun altro, mentre `ましょう` rende la frase una decisione o un'offerta cortese. In bocca a un personaggio, a un sistema di cura o a un aiutante, comunica "lo faccio per te" più che "fallo tu".
+[〜してあげましょう](term:term-e094-shiteagemashou) ha una sfumatura diversa. あげる aggiunge l'idea di fare qualcosa a beneficio di qualcun altro, mentre ましょう rende la frase una decisione o un'offerta cortese. In bocca a un personaggio, a un sistema di cura o a un aiutante, comunica "lo faccio per te" più che "fallo tu".
 
-La formula [なくなってしまいますが よろしいですか？](term:term-e097-nakunatteshimaimasuga-yoroshiidesuka) alza la soglia di attenzione. `なくなる` dice che qualcosa sparisce o non resta più disponibile; `しまいます` presenta il completamento, spesso con sfumatura indesiderata; `が` prepara il contrasto prima della domanda cortese `よろしいですか`. La schermata sta chiedendo consenso perché il risultato non è neutro.
+La formula [なくなってしまいますが よろしいですか？](term:term-e097-nakunatteshimaimasuga-yoroshiidesuka) alza la soglia di attenzione. なくなる dice che qualcosa sparisce o non resta più disponibile; しまいます presenta il completamento, spesso con sfumatura indesiderata; が prepara il contrasto prima della domanda cortese よろしいですか. La schermata sta chiedendo consenso perché il risultato non è neutro.
 
 :::example_sentence
 jp: >-
@@ -135,24 +137,24 @@ translation_it: >-
 *   `が` ➔ **Cerniera concessiva** (nonostante la perdita, vuoi procedere?).
 *   `よろしいですか` ➔ **Conferma cortese** (più formale e distante di `いいですか`).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{確認|かくにん}}してみましょう` ti invita a controllare prima di decidere; `なくなってしまいますが よろしいですか？` chiede consenso dopo averti mostrato una conseguenza scomoda o irreversibile. Non leggerle entrambe come semplici varianti di "OK".
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 In `なくなってしまいます`, il pezzo `しまう` è come la porta che si chiude dietro l'azione: il risultato è arrivato fino in fondo. È un trucco mnemonico per ricordare la sfumatura di completamento.
 
 ## 3. Stati, quantità e funzioni speciali dell'interfaccia
 
-Non tutte le etichette avviano un'azione online. Alcune descrivono lo stato di un oggetto, il totale di un risultato o il tipo di bonus applicato. [{{売|う}}り{{切|き}}れ](term:term-v609-urikire) unisce `{{売|う}}る`, vendere, e `{{切|き}}れる`, esaurirsi o interrompersi: in negozi, premi e menu di scambio segnala che l'elemento non è più disponibile.
+Non tutte le etichette avviano un'azione online. Alcune descrivono lo stato di un oggetto, il totale di un risultato o il tipo di bonus applicato. [{{売|う}}り{{切|き}}れ](term:term-v609-urikire) unisce {{売|う}}る, vendere, e {{切|き}}れる, esaurirsi o interrompersi: in negozi, premi e menu di scambio segnala che l'elemento non è più disponibile.
 
-*   [{{合計|ごうけい}}](term:term-v612-goukei) raccoglie più valori in un totale. Quando una schermata mostra statistiche, ingredienti o risultati, `{{合計|ごうけい}}` ti dice di leggere il numero come somma finale, non come voce singola.
-*   [{{大量|たいりょう}}{{発生|はっせい}}](term:term-v613-tairyouhassei) combina `{{大量|たいりょう}}`, grande quantità, e `{{発生|はっせい}}`, comparsa o insorgenza. Sulla mappa indica un evento con molte apparizioni della stessa specie, non una quantità qualsiasi.
-*   [{{入力|にゅうりょく}}](term:term-v614-nyuuryoku) appare quando devi inserire testo, numeri o codici. `{{入|にゅう}}` porta l'idea di entrare, mentre il composto tecnico `{{入力|にゅうりょく}}` segnala input: la schermata passa dalla lettura alla compilazione.
-*   [どうぐプリンター](term:term-v608-dougupurintaa) mette insieme `どうぐ`, oggetto o strumento, e `プリンター`. Nel gioco non è una stampante generica del mondo reale: è una macchina di sistema che produce oggetti.
+*   [{{合計|ごうけい}}](term:term-v612-goukei) raccoglie più valori in un totale. Quando una schermata mostra statistiche, ingredienti o risultati, {{合計|ごうけい}} ti dice di leggere il numero come somma finale, non come voce singola.
+*   [{{大量|たいりょう}}{{発生|はっせい}}](term:term-v613-tairyouhassei) combina {{大量|たいりょう}}, grande quantità, e {{発生|はっせい}}, comparsa o insorgenza. Sulla mappa indica un evento con molte apparizioni della stessa specie, non una quantità qualsiasi.
+*   [{{入力|にゅうりょく}}](term:term-v614-nyuuryoku) appare quando devi inserire testo, numeri o codici. {{入|にゅう}} porta l'idea di entrare, mentre il composto tecnico {{入力|にゅうりょく}} segnala input: la schermata passa dalla lettura alla compilazione.
+*   [どうぐプリンター](term:term-v608-dougupurintaa) mette insieme どうぐ, oggetto o strumento, e プリンター. Nel gioco non è una stampante generica del mondo reale: è una macchina di sistema che produce oggetti.
 
-Le etichette con `パワー` sono ancora più leggibili se le dividi in due parti. [ちびちびパワー](term:term-v600-chibichibipawaa) punta al piccolo, [でかでかパワー](term:term-v601-dekadekapawaa) al grande, [{{二|ふた}}つ{{名|な}}パワー](term:term-v602-nitsunapawaa) ai titoli o marchi speciali. `パワー` è il contenitore funzionale: ciò che sta prima dice quale tratto viene favorito.
+Le etichette con パワー sono ancora più leggibili se le dividi in due parti. [ちびちびパワー](term:term-v600-chibichibipawaa) punta al piccolo, [でかでかパワー](term:term-v601-dekadekapawaa) al grande, [{{二|ふた}}つ{{名|な}}パワー](term:term-v602-nitsunapawaa) ai titoli o marchi speciali. パワー è il contenitore funzionale: ciò che sta prima dice quale tratto viene favorito.
 
 :::example_sentence
 jp: >-
@@ -168,24 +170,27 @@ translation_it: >-
 *   `{{受|う}}け{{取|と}}れるどうぐが` ➔ **Soggetto potenziale** (`{{受|う}}け{{取|と}}れる` descrive lo strumento come "ricevibile").
 *   `{{変|か}}わります` ➔ **Cambio di risultato** (la ricompensa o lo strumento varia).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[～まま](grammar:grammar-g098-cosi-com-e-lasciando-come-sta) conserva uno stato già presente; [～によって](grammar:grammar-g101-a-seconda-di-in-base-a) sceglie tra risultati diversi in base a una variabile. `{{売|う}}り{{切|き}}れのまま` dice che l'esaurito resta tale; `コードによって{{変|か}}わります` dice che il codice cambia il risultato.
+[～まま](grammar:grammar-g098-cosi-com-e-lasciando-come-sta) conserva uno stato già presente; [～によって](grammar:grammar-g101-a-seconda-di-in-base-a) sceglie tra risultati diversi in base a una variabile. {{売|う}}り{{切|き}}れのまま dice che l'esaurito resta tale; コードによって{{変|か}}わります dice che il codice cambia il risultato.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per `パワー`, leggi prima la parola a sinistra e poi il contenitore: `ちびちび` ➔ piccolo, `でかでか` ➔ grande, `{{二|ふた}}つ{{名|な}}` ➔ titoli. Se ti abitui a questa scansione, il nome lungo diventa una formula funzionale.
 
 ## 4. Luoghi, distanza e parlato colloquiale
 
-Fuori dai menu online, le stesse schermate possono guidarti nello spazio o far emergere una voce più colloquiale. [{{研究|けんきゅう}}{{室|しつ}}](term:term-v599-kenkyuushitsu) combina `{{研究|けんきゅう}}`, ricerca, e `{{室|しつ}}`, stanza: in gioco non è solo un luogo generico, ma uno spazio associato a spiegazioni, scienziati e funzioni narrative. [{{壁|かべ}}](term:term-v598-kabe), invece, è concreto: una parete o barriera fisica, quindi in esplorazione segnala limite, ostacolo o superficie.
+Fuori dai menu online, le stesse schermate possono guidarti nello spazio o far emergere una voce più colloquiale. [{{研究|けんきゅう}}{{室|しつ}}](term:term-v599-kenkyuushitsu) combina {{研究|けんきゅう}}, ricerca, e {{室|しつ}}, stanza: in gioco non è solo un luogo generico, ma uno spazio associato a spiegazioni, scienziati e funzioni narrative. [{{壁|かべ}}](term:term-v598-kabe), invece, è concreto: una parete o barriera fisica, quindi in esplorazione segnala limite, ostacolo o superficie.
 
 *   [{{距離|きょり}}](term:term-v606-kyori) misura quanto due punti sono lontani. Se appare accanto a luoghi, icone o marker, ti sta facendo leggere una relazione spaziale.
-*   [{{山頂|さんちょう}}](term:term-v607-sanchou) restringe la meta alla cima di una montagna. Con `まで`, diventa il limite di arrivo del movimento.
+*   [～くらい / ～ぐらい](grammar:grammar-g100-circa-al-punto-da) introduce una
+    misura approssimata o un grado: `{{距離|きょり}}が これぐらい` non dà un
+    valore tecnico perfetto, ma una soglia sufficiente per orientarsi.
+*   [{{山頂|さんちょう}}](term:term-v607-sanchou) restringe la meta alla cima di una montagna. Con まで, diventa il limite di arrivo del movimento.
 *   [{{不意|ふい}}](term:term-v604-fui) porta l'idea di sorpresa o imprevedibilità. In battaglia e in esplorazione segnala qualcosa che avviene prima che l'altro sia pronto a reagire.
 *   [{{表情|ひょうじょう}}](term:term-v603-hyoujou) riguarda l'espressione del volto, utile in profili, foto o pose. Non è lo "stato" tecnico di una condizione persistente come [どく{{状態|じょうたい}}](term:term-v605-dokujoutai).
 
-Nel parlato, [〜してみようよ](term:term-e098-shitemiyouyo) e [～じゃん](grammar:grammar-g099-vero-che-ma-guarda) abbassano il tono rispetto alle formule di sistema. `してみよう` è "proviamo a fare"; `よ` spinge l'interlocutore verso l'azione. `じゃん` presenta l'informazione come condivisa, evidente o appena notata: non sta chiedendo conferma formale, sta invitando l'altro a riconoscere la stessa cosa.
+Nel parlato, [〜してみようよ](term:term-e098-shitemiyouyo) e [～じゃん](grammar:grammar-g099-vero-che-ma-guarda) abbassano il tono rispetto alle formule di sistema. してみよう è "proviamo a fare"; よ spinge l'interlocutore verso l'azione. じゃん presenta l'informazione come condivisa, evidente o appena notata: non sta chiedendo conferma formale, sta invitando l'altro a riconoscere la stessa cosa.
 
 :::example_sentence
 jp: >-
@@ -201,13 +206,13 @@ translation_it: >-
 *   `{{行|い}}ってみよう` ➔ **Proposta di tentativo** (`{{行|い}}く` in forma `-te` + `みよう`, "proviamo ad andare").
 *   `よ` ➔ **Spinta colloquiale** (porta la proposta verso l'interlocutore).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[～じゃん](grammar:grammar-g099-vero-che-ma-guarda) tratta l'informazione come condivisibile o evidente; `よろしいですか` chiede consenso cortese. Il primo appartiene al parlato tra personaggi, il secondo alle conferme di sistema o a un registro più formale.
+[～じゃん](grammar:grammar-g099-vero-che-ma-guarda) tratta l'informazione come condivisibile o evidente; よろしいですか chiede consenso cortese. Il primo appartiene al parlato tra personaggi, il secondo alle conferme di sistema o a un registro più formale.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [{{表情|ひょうじょう}}](term:term-v603-hyoujou), pensa alla "superficie del volto": non è una condizione interna o uno stato di battaglia, ma ciò che la faccia mostra all'esterno. È solo un appoggio mnemonico per non confonderlo con `{{状態|じょうたい}}`.
+Per [{{表情|ひょうじょう}}](term:term-v603-hyoujou), pensa alla "superficie del volto": non è una condizione interna o uno stato di battaglia, ma ciò che la faccia mostra all'esterno. È solo un appoggio mnemonico per non confonderlo con {{状態|じょうたい}}.
 
 ## Esempi guidati di riepilogo
 
@@ -245,4 +250,4 @@ translation_it: >-
 
 ## Nota finale
 
-Nei menu di *Pokémon Scarlet & Violet*, prima individua l'atto linguistico: [{{接続|せつぞく}}](term:term-v592-setsuzoku) collega, [〜を {{確認|かくにん}}してみましょう！](term:term-e095-o-kakuninshitemimashou) invita a controllare, [{{公開|こうかい}}](term:term-v597-koukai) rende visibile, [{{売|う}}り{{切|き}}れ](term:term-v609-urikire) blocca un acquisto e `なくなってしまいます` avvisa che qualcosa sparirà. Le etichette come [ちびちびパワー](term:term-v600-chibichibipawaa), [でかでかパワー](term:term-v601-dekadekapawaa) e [どうぐプリンター](term:term-v608-dougupurintaa) aggiungono il dettaglio operativo: quale bonus, strumento o funzione è coinvolto nella decisione.
+Nei menu di *Pokémon Scarlet & Violet*, prima individua l'atto linguistico: [{{接続|せつぞく}}](term:term-v592-setsuzoku) collega, [〜を {{確認|かくにん}}してみましょう！](term:term-e095-o-kakuninshitemimashou) invita a controllare, [{{公開|こうかい}}](term:term-v597-koukai) rende visibile, [{{売|う}}り{{切|き}}れ](term:term-v609-urikire) blocca un acquisto e なくなってしまいます avvisa che qualcosa sparirà. Le etichette come [ちびちびパワー](term:term-v600-chibichibipawaa), [でかでかパワー](term:term-v601-dekadekapawaa) e [どうぐプリンター](term:term-v608-dougupurintaa) aggiungono il dettaglio operativo: quale bonus, strumento o funzione è coinvolto nella decisione.

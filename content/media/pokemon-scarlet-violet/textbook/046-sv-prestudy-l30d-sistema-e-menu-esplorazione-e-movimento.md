@@ -68,14 +68,16 @@ Queste parole vanno lette come comandi di orientamento. [{{落下|らっか}}](t
 
 ---
 
+[とくに](term:term-v643-tokuni) restringe l'attenzione su ciò che conta di più; [どの ならびに かえますか？](term:term-e105-dono-narabini-kaemasuka) è invece una formula di riordino: chiede quale disposizione vuoi cambiare.
+
 ## 1. Movimento, pericolo e urgenza sul campo
 
 Fuori dall'Accademia, il testo breve serve spesso a trasformare il terreno in una scelta. Una parola può dirti che stai per cadere, che devi scendere, che qualcuno corre senza risparmio o che la situazione è diventata urgente.
 
-*   [{{落下|らっか}}](term:term-v638-rakka) (**Caduta**): il composto punta sull'evento pericoloso, non sul semplice movimento verso il basso. Se compare in un avviso vicino a `この{{先|さき}}`, il gioco non sta descrivendo una direzione neutra: sta segnalando che il tratto davanti a te può farti precipitare o perdere controllo.
-*   [{{下降|かこう}}](term:term-v650-kakou) (**Discesa / calo**): contiene `{{下|か}}` come direzione verso il basso e `{{降|こう}}` come movimento discendente. È più controllato di [{{落下|らっか}}](term:term-v638-rakka): può descrivere una discesa fisica, ma anche una statistica che scende o un valore che cala.
-*   [{{全速力|ぜんそくりょく}}](term:term-v657-zensokuryoku) (**Massima velocità**): `{{全|ぜん}}` è "tutto", `{{速力|そくりょく}}` è la forza/velocità del movimento. Con `で`, come in `{{全速力|ぜんそくりょく}}で`, il gruppo diventa il modo dell'azione: non "velocemente" in modo generico, ma "a tutta velocità".
-*   [{{緊急事態|きんきゅうじたい}}](term:term-v658-kinkyuujitai) (**Emergenza**): `{{事態|じたい}}` è una situazione, `{{緊急|きんきゅう}}` la rende urgente. Quando lo vedi vicino a `すぐに`, `{{今|いま}}すぐ` o comandi cortesi, il testo non sta solo informando: sta chiedendo reazione immediata.
+*   [{{落下|らっか}}](term:term-v638-rakka) (**Caduta**): il composto punta sull'evento pericoloso, non sul semplice movimento verso il basso. Se compare in un avviso vicino a この{{先|さき}}, il gioco non sta descrivendo una direzione neutra: sta segnalando che il tratto davanti a te può farti precipitare o perdere controllo.
+*   [{{下降|かこう}}](term:term-v650-kakou) (**Discesa / calo**): contiene {{下|か}} come direzione verso il basso e {{降|こう}} come movimento discendente. È più controllato di [{{落下|らっか}}](term:term-v638-rakka): può descrivere una discesa fisica, ma anche una statistica che scende o un valore che cala.
+*   [{{全速力|ぜんそくりょく}}](term:term-v657-zensokuryoku) (**Massima velocità**): {{全|ぜん}} è "tutto", {{速力|そくりょく}} è la forza/velocità del movimento. Con で, come in {{全速力|ぜんそくりょく}}で, il gruppo diventa il modo dell'azione: non "velocemente" in modo generico, ma "a tutta velocità".
+*   [{{緊急事態|きんきゅうじたい}}](term:term-v658-kinkyuujitai) (**Emergenza**): {{事態|じたい}} è una situazione, {{緊急|きんきゅう}} la rende urgente. Quando lo vedi vicino a すぐに, {{今|いま}}すぐ o comandi cortesi, il testo non sta solo informando: sta chiedendo reazione immediata.
 
 :::example_sentence
 jp: >-
@@ -90,20 +92,20 @@ translation_it: >-
 *   `{{落下|らっか}}に` ➔ **Bersaglio dell'attenzione** (`に` marca ciò verso cui va diretta la cautela: la caduta).
 *   `{{注意|ちゅうい}}してください` ➔ **Richiesta cortese** (`{{注意|ちゅうい}}する` prestare attenzione + `ください` ➔ il tono è da avviso/tutorial, non da rimprovero).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   [{{落下|らっか}}](term:term-v638-rakka) è la caduta come evento pericoloso: qualcosa cade o rischia di cadere.
 *   [{{下降|かこう}}](term:term-v650-kakou) è una discesa o diminuzione controllabile: qualcosa va verso il basso, fisicamente o come valore.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 *   Per ricordare la differenza, immagina [{{落下|らっか}}](term:term-v638-rakka) come il momento in cui perdi appoggio, mentre [{{下降|かこう}}](term:term-v650-kakou) è la freccia che scende. È un trucco mnemonico: il punto operativo è distinguere rischio improvviso e movimento/dato discendente.
 
 Quando il testo lascia il terreno e passa a battaglie o scene narrative, lo stesso blocco lessicale descrive l'esito dell'azione.
 
-*   [{{退|しりぞ}}ける](term:term-v651-shirizoke-ru) (**Respingere / sconfiggere**): con un oggetto marcato da `を`, come `{{相手|あいて}}を{{退|しりぞ}}ける`, il verbo non dice solo "evitare". L'avversario diventa bersaglio dell'azione e viene allontanato come minaccia.
-*   [{{勝|か}}ち{{負|ま}}け](term:term-v654-kachimake) (**Esito vittoria/sconfitta**): unisce `{{勝|か}}ち` e `{{負|ま}}け`, quindi non indica una sola vittoria. In schermate o dialoghi sulla prestazione, segnala il risultato complessivo: chi vince, chi perde, come finisce il confronto.
-*   [{{退場|たいじょう}}](term:term-v659-taijou) (**Uscita di scena**): `{{場|じょう}}` richiama il luogo/scena e `{{退|たい}}` l'uscita o il ritiro. Non stabilisce da solo chi ha vinto: dice che qualcuno lascia il campo, la sfida o la scena.
+*   [{{退|しりぞ}}ける](term:term-v651-shirizoke-ru) (**Respingere / sconfiggere**): con un oggetto marcato da を, come {{相手|あいて}}を{{退|しりぞ}}ける, il verbo non dice solo "evitare". L'avversario diventa bersaglio dell'azione e viene allontanato come minaccia.
+*   [{{勝|か}}ち{{負|ま}}け](term:term-v654-kachimake) (**Esito vittoria/sconfitta**): unisce {{勝|か}}ち e {{負|ま}}け, quindi non indica una sola vittoria. In schermate o dialoghi sulla prestazione, segnala il risultato complessivo: chi vince, chi perde, come finisce il confronto.
+*   [{{退場|たいじょう}}](term:term-v659-taijou) (**Uscita di scena**): {{場|じょう}} richiama il luogo/scena e {{退|たい}} l'uscita o il ritiro. Non stabilisce da solo chi ha vinto: dice che qualcuno lascia il campo, la sfida o la scena.
 
 :::example_sentence
 jp: >-
@@ -123,11 +125,11 @@ translation_it: >-
 
 Nei menu il giapponese spesso non è narrativo: è un'etichetta di stato. Devi capire se qualcosa è disponibile adesso, interrotto, visibile, nascosto o presentato come lista.
 
-*   [{{開催中|かいさいちゅう}}](term:term-v644-kaisaichuu) (**In corso**): `{{開催|かいさい}}` indica il tenere o svolgere un evento; `{{中|ちゅう}}` qui vale "nel mezzo di / in corso di". Un evento [{{開催中|かいさいちゅう}}](term:term-v644-kaisaichuu) è aperto adesso, non solo annunciato.
-*   [{{中止|ちゅうし}}](term:term-v645-chuushi) (**Interruzione / annullamento**): contiene `{{中|ちゅう}}`, ma non funziona come il `{{中|ちゅう}}` di [{{開催中|かいさいちゅう}}](term:term-v644-kaisaichuu). Qui il composto intero significa che qualcosa viene fermato o annullato: il valore operativo è "non procede".
+*   [{{開催中|かいさいちゅう}}](term:term-v644-kaisaichuu) (**In corso**): {{開催|かいさい}} indica il tenere o svolgere un evento; {{中|ちゅう}} qui vale "nel mezzo di / in corso di". Un evento [{{開催中|かいさいちゅう}}](term:term-v644-kaisaichuu) è aperto adesso, non solo annunciato.
+*   [{{中止|ちゅうし}}](term:term-v645-chuushi) (**Interruzione / annullamento**): contiene {{中|ちゅう}}, ma non funziona come il {{中|ちゅう}} di [{{開催中|かいさいちゅう}}](term:term-v644-kaisaichuu). Qui il composto intero significa che qualcosa viene fermato o annullato: il valore operativo è "non procede".
 *   [プロフィールアプリ](term:term-v642-purofiiruapuri) (**App del profilo**): katakana trasparente, ma con ruolo preciso nell'interfaccia. Se compare vicino a [{{通知|つうち}}](term:term-v648-tsuuchi), [{{非表示|ひひょうじ}}](term:term-v652-hihyouji) o [{{切|き}}りかえる](term:term-v641-kirikaeru), il gioco sta parlando di una funzione UI, non di una conversazione generica sul tuo profilo.
-*   [{{通知|つうち}}](term:term-v648-tsuuchi) (**Notifica**) e [{{非表示|ひひょうじ}}](term:term-v652-hihyouji) (**Non visualizzare / nascondi**): `{{通知|つうち}}` è il messaggio che arriva o viene mostrato; `{{非|ひ}}` nega e `{{表示|ひょうじ}}` è visualizzazione. Quindi [{{非表示|ひひょうじ}}](term:term-v652-hihyouji) non implica cancellazione del dato: lo toglie dalla vista.
-*   [{{切|き}}りかえる](term:term-v641-kirikaeru) (**Cambiare modalità / switchare**): `{{切|き}}る` porta l'idea del tagliare/separare, `かえる` quella del cambiare. Nei menu è il verbo che ti dice di passare da una modalità, scheda o stato di visualizzazione a un altro.
+*   [{{通知|つうち}}](term:term-v648-tsuuchi) (**Notifica**) e [{{非表示|ひひょうじ}}](term:term-v652-hihyouji) (**Non visualizzare / nascondi**): {{通知|つうち}} è il messaggio che arriva o viene mostrato; {{非|ひ}} nega e {{表示|ひょうじ}} è visualizzazione. Quindi [{{非表示|ひひょうじ}}](term:term-v652-hihyouji) non implica cancellazione del dato: lo toglie dalla vista.
+*   [{{切|き}}りかえる](term:term-v641-kirikaeru) (**Cambiare modalità / switchare**): {{切|き}}る porta l'idea del tagliare/separare, かえる quella del cambiare. Nei menu è il verbo che ti dice di passare da una modalità, scheda o stato di visualizzazione a un altro.
 
 :::example_sentence
 jp: >-
@@ -143,9 +145,9 @@ translation_it: >-
 *   `{{非表示|ひひょうじ}}に` ➔ **Stato risultante** (`に` indica lo stato verso cui porti l'oggetto: "in modalità non visualizzata").
 *   `します` ➔ **Azione di impostazione** (`する` rende operativo il cambio di stato nel menu).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-*   [{{開催中|かいさいちゅう}}](term:term-v644-kaisaichuu) usa `{{中|ちゅう}}` come "in corso".
+*   [{{開催中|かいさいちゅう}}](term:term-v644-kaisaichuu) usa {{中|ちゅう}} come "in corso".
 *   [{{中止|ちゅうし}}](term:term-v645-chuushi) è un composto diverso: non significa "dentro uno stop", ma "interruzione / annullamento".
 *   [{{非表示|ひひょうじ}}](term:term-v652-hihyouji) nasconde dalla visualizzazione; non dice automaticamente che la notifica o il dato siano stati eliminati.
 
@@ -153,7 +155,7 @@ Le schermate di elenco e negozio aggiungono un altro tipo di lettura: non chiedo
 
 *   [{{一覧|いちらん}}](term:term-v653-ichiran) (**Elenco**): è una vista ordinata di elementi consultabili. Quando lo vedi in una UI, aspettati una lista da scorrere, filtrare o controllare.
 *   [ラインナップ](term:term-v656-rainnappu) (**Lista disponibile / offerta**): katakana da *lineup*, ma in negozio o servizio indica ciò che è messo a disposizione. Non è solo una lista astratta: è l'assortimento disponibile.
-*   [まとめ{{買|か}}い](term:term-v655-matomekai) (**Acquisto in blocco**): `まとめ` raggruppa, `{{買|か}}い` è l'acquisto. Il focus non è il tipo di oggetto, ma il modo dell'azione: comprare più cose insieme.
+*   [まとめ{{買|か}}い](term:term-v655-matomekai) (**Acquisto in blocco**): まとめ raggruppa, {{買|か}}い è l'acquisto. Il focus non è il tipo di oggetto, ma il modo dell'azione: comprare più cose insieme.
 
 :::example_sentence
 jp: >-
@@ -168,19 +170,19 @@ translation_it: >-
 *   `ならびに` ➔ **Ordine della lista** (`ならび` è disposizione/ordine; `に` indica verso quale ordine si cambia).
 *   `かえますか` ➔ **Domanda di cambio** (`かえる` qui non cambia luogo: cambia criterio di ordinamento).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-*   Pensa a [{{一覧|いちらん}}](term:term-v653-ichiran) come alla schermata in cui "vedi tutto in fila" e a `ならび` come al modo in cui quella fila viene ordinata. È un trucco mnemonico, non un'etimologia.
+*   Pensa a [{{一覧|いちらん}}](term:term-v653-ichiran) come alla schermata in cui "vedi tutto in fila" e a ならび come al modo in cui quella fila viene ordinata. È un trucco mnemonico, non un'etimologia.
 
-[{{交換相手|こうかんあいて}}](term:term-v649-koukanaite) merita un'attenzione a parte nelle funzioni online. `{{交換|こうかん}}` è lo scambio, `{{相手|あいて}}` è l'altra persona o controparte: insieme indicano il partner della transazione. Se lo leggi accanto a [{{一覧|いちらん}}](term:term-v653-ichiran) o a una schermata di conferma, il gioco sta identificando con chi stai scambiando, non quale Pokémon riceverai.
+[{{交換相手|こうかんあいて}}](term:term-v649-koukanaite) merita un'attenzione a parte nelle funzioni online. {{交換|こうかん}} è lo scambio, {{相手|あいて}} è l'altra persona o controparte: insieme indicano il partner della transazione. Se lo leggi accanto a [{{一覧|いちらん}}](term:term-v653-ichiran) o a una schermata di conferma, il gioco sta identificando con chi stai scambiando, non quale Pokémon riceverai.
 
 ## 3. Scuola, supporto e pressione sociale
 
 Nell'Accademia, molte parole non descrivono solo oggetti: definiscono ruoli, servizi e rapporti. Capire questi segnali evita di leggere una richiesta istituzionale come se fosse una battuta generica.
 
-*   [{{支援|しえん}}ボード](term:term-v639-shienboodo) (**Bacheca dei supporti**): `{{支援|しえん}}` è supporto concreto e `ボード` è la bacheca. La combinazione ti porta verso richieste, aiuti o persone che hanno bisogno di qualcosa; non è una bacheca decorativa.
+*   [{{支援|しえん}}ボード](term:term-v639-shienboodo) (**Bacheca dei supporti**): {{支援|しえん}} è supporto concreto e ボード è la bacheca. La combinazione ti porta verso richieste, aiuti o persone che hanno bisogno di qualcosa; non è una bacheca decorativa.
 *   [{{教員|きょういん}}](term:term-v647-kyouin) (**Insegnante / corpo docente**): non è il nome proprio di un personaggio. È una categoria istituzionale: il testo colloca quella persona nel ruolo di docente, quindi le sue parole possono suonare come istruzioni, regolamenti o spiegazioni scolastiche.
-*   [{{借|か}}りる](term:term-v640-kariru) (**Prendere in prestito**): è diverso da `もらう` o `{{買|か}}う`. Porta con sé uso temporaneo e restituzione, quindi se un dialogo dice `これを{{借|か}}りる`, l'oggetto resta legato a una relazione, un permesso o una regola.
+*   [{{借|か}}りる](term:term-v640-kariru) (**Prendere in prestito**): è diverso da もらう o {{買|か}}う. Porta con sé uso temporaneo e restituzione, quindi se un dialogo dice これを{{借|か}}りる, l'oggetto resta legato a una relazione, un permesso o una regola.
 
 :::example_sentence
 jp: >-
@@ -195,16 +197,16 @@ translation_it: >-
 *   `{{困|こま}}っている {{人|ひと}}を` ➔ **Oggetto definito da uno stato** (`{{困|こま}}っている` descrive persone che si trovano in difficoltà adesso).
 *   `{{探|さが}}します` ➔ **Azione preliminare** (la frase parla del cercare, non dell'aiutare già).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   [{{借|か}}りる](term:term-v640-kariru) riguarda un oggetto che puoi usare temporaneamente.
 *   `もらう` direbbe che ricevi qualcosa come dono o passaggio di possesso.
-*   `{{買|か}}う` direbbe che lo compri. Se il gioco usa [{{借|か}}りる](term:term-v640-kariru), la proprietà non è il centro della frase.
+*   {{買|か}}う direbbe che lo compri. Se il gioco usa [{{借|か}}りる](term:term-v640-kariru), la proprietà non è il centro della frase.
 
 Nei dialoghi di gruppo, la scuola lascia spazio alla pressione sociale. [{{勧誘|かんゆう}}](term:term-v646-kanyuu) e [{{憧|あこが}}れ](term:term-v660-akogare) non descrivono un menu: descrivono come qualcuno viene attirato verso un gruppo o verso un modello.
 
 *   [{{勧誘|かんゆう}}](term:term-v646-kanyuu) (**Reclutamento / invito a unirsi**): non è un invito neutro come "vieni a vedere". È un'azione orientata a far entrare qualcuno in un'organizzazione o gruppo. In una scena con il Team Star, leggere [{{勧誘|かんゆう}}](term:term-v646-kanyuu) ti fa sentire subito la pressione del reclutamento.
-*   [{{憧|あこが}}れ](term:term-v660-akogare) (**Ammirazione / aspirazione**): non è una semplice preferenza. Se qualcuno prova `{{憧|あこが}}れ` verso una persona forte, la sta guardando come figura ideale o traguardo emotivo.
+*   [{{憧|あこが}}れ](term:term-v660-akogare) (**Ammirazione / aspirazione**): non è una semplice preferenza. Se qualcuno prova {{憧|あこが}}れ verso una persona forte, la sta guardando come figura ideale o traguardo emotivo.
 
 :::example_sentence
 jp: >-
@@ -226,8 +228,8 @@ Quando il testo esce dai menu e torna al parlato, poche sillabe possono bastare 
 
 ### A. Sorpresa e congedo
 
-*   [{{本気|ほんき}}で？](term:term-e103-honki-de) (**Sul serio?**): `{{本気|ほんき}}` è serietà reale, intenzione non scherzosa. Il `で？` lascia sottinteso qualcosa come "lo dici/fai davvero così?". Non è una domanda informativa neutra: marca sorpresa, incredulità o controllo della serietà dell'altro.
-*   [また{{来|き}}てくださいね](term:term-e104-matakitekudasaine) (**Torna a trovarci, mi raccomando**): `また` prepara il "di nuovo", `{{来|き}}てください` è richiesta cortese da `{{来|く}}る`, e `ね` crea vicinanza. In un negozio o davanti a un NPC, chiude l'interazione senza suonare brusco.
+*   [{{本気|ほんき}}で？](term:term-e103-honki-de) (**Sul serio?**): {{本気|ほんき}} è serietà reale, intenzione non scherzosa. Il で？ lascia sottinteso qualcosa come "lo dici/fai davvero così?". Non è una domanda informativa neutra: marca sorpresa, incredulità o controllo della serietà dell'altro.
+*   [また{{来|き}}てくださいね](term:term-e104-matakitekudasaine) (**Torna a trovarci, mi raccomando**): また prepara il "di nuovo", {{来|き}}てください è richiesta cortese da {{来|く}}る, e ね crea vicinanza. In un negozio o davanti a un NPC, chiude l'interazione senza suonare brusco.
 
 :::example_sentence
 jp: >-
@@ -242,7 +244,7 @@ translation_it: >-
 *   `{{来|き}}てください` ➔ **Richiesta cortese** (forma in `-te` di `{{来|く}}る` + `ください`).
 *   `ね` ➔ **Vicino all'interlocutore** (ammorbidisce il congedo e cerca accordo).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   [{{本気|ほんき}}で？](term:term-e103-honki-de) controlla la serietà di ciò che è appena successo.
 *   [また{{来|き}}てくださいね](term:term-e104-matakitekudasaine) non controlla nulla: è una formula di chiusura gentile, orientata al ritorno.
@@ -251,9 +253,9 @@ translation_it: >-
 
 I tre pattern grammaticali di questa schermata e dei dialoghi vicini lavorano su piani diversi: uno cambia la voce del personaggio, uno introduce un tema, uno restringe il comportamento a "solo quello".
 
-*   [～でござる](grammar:grammar-g106-registro-samurai-comico) (**Registro samurai / comico**): sostituisce una copula normale con un registro teatrale o arcaizzante. Il contenuto della frase resta prima di `でござる`; il pattern ti dice come suona chi parla.
-*   [～について](grammar:grammar-g107-riguardo-a-su) (**Riguardo a / su**): incornicia l'argomento di spiegazione, consultazione o tutorial. In `Xについて{{説明|せつめい}}する`, `X` non è oggetto diretto dell'azione: è il tema su cui verte la spiegazione.
-*   [～ばっかり](grammar:grammar-g108-solo-nientaltro-che) (**Solo... / nient'altro che...**): concentra la frase su una ripetizione e spesso porta sfumatura critica. `{{遊|あそ}}んでばっかりいる` non dice solo che qualcuno gioca: dice che non fa altro che giocare.
+*   [～でござる](grammar:grammar-g106-registro-samurai-comico) (**Registro samurai / comico**): sostituisce una copula normale con un registro teatrale o arcaizzante. Il contenuto della frase resta prima di でござる; il pattern ti dice come suona chi parla.
+*   [～について](grammar:grammar-g107-riguardo-a-su) (**Riguardo a / su**): incornicia l'argomento di spiegazione, consultazione o tutorial. In Xについて{{説明|せつめい}}する, X non è oggetto diretto dell'azione: è il tema su cui verte la spiegazione.
+*   [～ばっかり](grammar:grammar-g108-solo-nientaltro-che) (**Solo... / nient'altro che...**): concentra la frase su una ripetizione e spesso porta sfumatura critica. {{遊|あそ}}んでばっかりいる non dice solo che qualcuno gioca: dice che non fa altro che giocare.
 
 :::example_sentence
 jp: >-
@@ -269,7 +271,7 @@ translation_it: >-
 *   `{{説明|せつめい}}する` ➔ **Azione informativa** (spiegare, illustrare).
 *   `でござる` ➔ **Registro del parlante** (cambia il sapore della battuta, non il nucleo dell'informazione).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   [～でござる](grammar:grammar-g106-registro-samurai-comico) non aggiunge un nuovo fatto alla frase: segnala registro e caratterizzazione.
 *   [～について](grammar:grammar-g107-riguardo-a-su) aggiunge invece una cornice argomentale: "riguardo a X".
@@ -289,7 +291,7 @@ translation_it: >-
 *   `ラインナップについて` ➔ **Tema del controllo** (`について` introduce ciò su cui devi controllare).
 *   `{{確認|かくにん}}して` ➔ **Invito/comando informale** (controlla, verifica).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 *   Per [～ばっかり](grammar:grammar-g108-solo-nientaltro-che), immagina il parlante che punta il dito su un'abitudine ripetuta: "sempre quello, solo quello". È una scorciatoia di memoria per ricordare la sfumatura critica che spesso accompagna il pattern.
 

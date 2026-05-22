@@ -49,18 +49,20 @@ Il filo comune è pratico. [{{動画|どうが}}](term:term-anki-l15-douga) rend
 
 ## Etichette da riconoscere
 
-- スマホロトム — dispositivo attraverso cui arrivano chiamate, video e messaggi
-- テーブルシティ — grande città centrale di Paldea, piena di negozi e passaggi scolastici
-- ジムバッジ — Medaglia della Palestra, unità concreta da contare nel progresso
+- [スマホロトム](term:term-smartphone-rotom) — dispositivo attraverso cui arrivano chiamate, video e messaggi
+- [テーブルシティ](term:term-v272-teeburushitei) — grande città centrale di Paldea, piena di negozi e passaggi scolastici
+- [ジムバッジ](term:term-gym-badge) — Medaglia della Palestra, unità concreta da contare nel progresso
 
 ---
+
+[スマホロトム](term:term-smartphone-rotom) porta chiamate e media, [テーブルシティ](term:term-v272-teeburushitei) concentra negozi e percorsi urbani, [ジムバッジ](term:term-gym-badge) misura invece il progresso in unità concrete.
 
 ## 1. Smart Rotom e risultati: guardare non è ottenere
 
 Smart Rotom, chiamate e filmati creano un tipo di frase molto concreto: c'è un dispositivo, c'è un contenuto e c'è un'azione percettiva. Da lì il gioco può passare a un altro registro, quello dei risultati ottenuti dopo una battaglia o una spiegazione.
 
-*   [{{動画|どうが}}](term:term-anki-l15-douga) è un composto trasparente se lo leggi come "immagine in movimento": `{{動|どう}}` porta l'idea del movimento, `{{画|が}}` quella dell'immagine. Vicino allo スマホロトム non indica una foto né una schermata statica, ma un contenuto che si guarda nel tempo.
-*   [{{得|え}}る](term:term-anki-l15-eru) non è il verbo neutro per "ricevere qualunque cosa". La cosa ottenuta prende `を`, ma spesso è un risultato immateriale: `{{経験|けいけん}}を{{得|え}}る`, ottenere esperienza, o `{{知識|ちしき}}を{{得|え}}る`, acquisire conoscenza. Se entra nello zaino una Poké Ball, una MT o un oggetto concreto, il gioco tende invece a usare formule più fisiche, come `{{手|て}}に{{入|い}}れる` o もらう.
+*   [{{動画|どうが}}](term:term-anki-l15-douga) è un composto trasparente se lo leggi come "immagine in movimento": {{動|どう}} porta l'idea del movimento, {{画|が}} quella dell'immagine. Vicino allo スマホロトム non indica una foto né una schermata statica, ma un contenuto che si guarda nel tempo.
+*   [{{得|え}}る](term:term-anki-l15-eru) non è il verbo neutro per "ricevere qualunque cosa". La cosa ottenuta prende を, ma spesso è un risultato immateriale: {{経験|けいけん}}を{{得|え}}る, ottenere esperienza, o {{知識|ちしき}}を{{得|え}}る, acquisire conoscenza. Se entra nello zaino una Poké Ball, una MT o un oggetto concreto, il gioco tende invece a usare formule più fisiche, come {{手|て}}に{{入|い}}れる o もらう.
 
 :::example_sentence
 jp: >-
@@ -88,13 +90,13 @@ translation_it: >-
 *   `{{経験|けいけん}}を` ➔ **Risultato conseguito** (`を` marca ciò che viene acquisito: esperienza, non un oggetto fisico).
 *   `{{得|え}}る` ➔ **Conseguire / ottenere** (sposta il focus sul guadagno di esperienza o sapere, più che sulla consegna materiale di qualcosa).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   `{{動画|どうが}}を{{見|み}}る` ➔ il video è un contenuto da guardare. La frase descrive percezione, schermo e attenzione.
 *   `{{経験|けいけん}}を{{得|え}}る` ➔ l'esperienza è un risultato che si consegue. La frase descrive un guadagno, non una schermata.
 *   `どうぐを{{手|て}}に{{入|い}}れる` ➔ l'oggetto entra nel possesso concreto del giocatore. Se compare una borsa o una ricompensa fisica, aspettati un verbo più vicino a "mettere in mano / ricevere".
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 *   Per [{{動画|どうが}}](term:term-anki-l15-douga), pensa a "immagine che si muove": è un trucco mnemonico, non una definizione tecnica completa, ma aiuta a non confonderlo con una singola immagine.
 *   Per [{{得|え}}る](term:term-anki-l15-eru), immagina un risultato che "arriva in tasca alla mente": esperienza, conoscenza, vantaggio. Quando l'oggetto è fisico, il giapponese tende a scegliere un verbo più concreto.
@@ -103,9 +105,9 @@ translation_it: >-
 
 Nelle città di Paldea, la frase spesso descrive azioni fisiche: entri in un negozio, raccogli medaglie, apri porte. Qui le particelle ti aiutano a distinguere luogo, quantità e oggetto manipolato.
 
-*   [{{買|か}}いもの](term:term-anki-l15-kaimono) nasce da `{{買|か}}う`, comprare, più もの, cosa. Da solo può indicare gli acquisti; con する diventa l'azione `{{買|か}}いものをする`, fare compere. Davanti a un banco di Delibird Consegne o nelle vie di テーブルシティ, il punto non è solo il singolo oggetto comprato: la frase ti porta nel frame del negozio.
-*   [{{8|やっ}}つ](term:term-anki-l15-yattsu) appartiene alla serie nativa ひとつ, ふたつ, みっつ, fino a とお. Conta cose generiche quando non serve un classificatore più tecnico. Per le Medaglie della Palestra, `ジムバッジを{{8|やっ}}つ` è naturale perché il testo sta contando unità raccolte, non persone, Pokémon o turni.
-*   [{{開|あ}}ける](term:term-anki-l15-akeru) è transitivo: qualcuno apre volontariamente qualcosa e quell'oggetto prende `を`. Funziona con porte, coperchi, contenitori e accessi fisici. Per menu, mappe o finestre dell'interfaccia, il giapponese preferisce spesso `{{開|ひら}}く`, più adatto all'idea di far comparire una schermata.
+*   [{{買|か}}いもの](term:term-anki-l15-kaimono) nasce da {{買|か}}う, comprare, più もの, cosa. Da solo può indicare gli acquisti; con する diventa l'azione {{買|か}}いものをする, fare compere. Davanti a un banco di Delibird Consegne o nelle vie di テーブルシティ, il punto non è solo il singolo oggetto comprato: la frase ti porta nel frame del negozio.
+*   [{{8|やっ}}つ](term:term-anki-l15-yattsu) appartiene alla serie nativa ひとつ, ふたつ, みっつ, fino a とお. Conta cose generiche quando non serve un classificatore più tecnico. Per le Medaglie della Palestra, ジムバッジを{{8|やっ}}つ è naturale perché il testo sta contando unità raccolte, non persone, Pokémon o turni.
+*   [{{開|あ}}ける](term:term-anki-l15-akeru) è transitivo: qualcuno apre volontariamente qualcosa e quell'oggetto prende を. Funziona con porte, coperchi, contenitori e accessi fisici. Per menu, mappe o finestre dell'interfaccia, il giapponese preferisce spesso {{開|ひら}}く, più adatto all'idea di far comparire una schermata.
 
 :::example_sentence
 jp: >-
@@ -146,22 +148,22 @@ translation_it: >-
 *   `ドアを` ➔ **Oggetto fisico aperto** (`を` marca ciò che viene manipolato).
 *   `{{開|あ}}ける` ➔ **Apertura volontaria** (qualcuno apre concretamente la porta).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   `ドアを{{開|あ}}ける` ➔ apertura fisica: porta, contenitore, coperchio, accesso concreto.
 *   `メニューを{{開|ひら}}く` ➔ apertura di una schermata: non stai spostando un oggetto, stai facendo apparire una vista.
 *   `{{買|か}}いものをする` ➔ azione di negozio: non dice ancora che cosa hai comprato, ma ti colloca dentro l'attività.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-*   In [{{8|やっ}}つ](term:term-anki-l15-yattsu), la piccola っ ti avverte che non stai leggendo `はち` più un contatore regolare. È la serie nativa dei numeri generici: utile per quantità compatte, come oggetti raccolti o unità contate in modo non specialistico.
+*   In [{{8|やっ}}つ](term:term-anki-l15-yattsu), la piccola っ ti avverte che non stai leggendo はち più un contatore regolare. È la serie nativa dei numeri generici: utile per quantità compatte, come oggetti raccolti o unità contate in modo non specialistico.
 
 ## 3. Accademia e ruoli: quando il testo chiude un esito
 
 Le lezioni dell'Accademia e i dialoghi sui ruoli usano parole che chiudono uno stato: una risposta è corretta o no, una persona continua o si ritira. Il giapponese separa bene l'esito classificato dall'azione di sbagliare.
 
-*   [{{不正解|ふせいかい}}](term:term-anki-l15-fuseikai) si legge bene se vedi prima il nucleo `{{正解|せいかい}}`: risposta corretta. Il prefisso `{{不|ふ}}` nega quel valore, quindi trasforma la risposta in "non corretta". In una domanda dell'Accademia, il termine non giudica la persona: classifica l'esito della risposta.
-*   [{{引退|いんたい}}](term:term-anki-l15-intai) indica il ritiro da un ruolo attivo, professionale o agonistico. Con する diventa azione, e il ruolo lasciato può prendere `を`: `トレーナーを{{引退|いんたい}}する`. In un dialogo su Allenatori o Capipalestra, non significa "allontanarsi per un momento", ma smettere di occupare quella posizione.
+*   [{{不正解|ふせいかい}}](term:term-anki-l15-fuseikai) si legge bene se vedi prima il nucleo {{正解|せいかい}}: risposta corretta. Il prefisso {{不|ふ}} nega quel valore, quindi trasforma la risposta in "non corretta". In una domanda dell'Accademia, il termine non giudica la persona: classifica l'esito della risposta.
+*   [{{引退|いんたい}}](term:term-anki-l15-intai) indica il ritiro da un ruolo attivo, professionale o agonistico. Con する diventa azione, e il ruolo lasciato può prendere を: トレーナーを{{引退|いんたい}}する. In un dialogo su Allenatori o Capipalestra, non significa "allontanarsi per un momento", ma smettere di occupare quella posizione.
 
 :::example_sentence
 jp: >-
@@ -188,23 +190,23 @@ translation_it: >-
 *   `ポケモントレーナーを` ➔ **Ruolo lasciato** (`を` non marca un oggetto colpito, ma la funzione da cui ci si ritira).
 *   `{{引退|いんたい}}する` ➔ **Azione di ritiro** (sostantivo più する: smettere di ricoprire quel ruolo).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   [{{不正解|ふせいかい}}](term:term-anki-l15-fuseikai) ➔ etichetta dell'esito: la risposta viene classificata come non corretta.
 *   `{{間違|まちが}}えた` ➔ azione compiuta: qualcuno ha sbagliato.
 *   [{{引退|いんたい}}](term:term-anki-l15-intai) ➔ uscita da un ruolo: non è una pausa, ma la fine di una funzione attiva.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-*   In [{{不正解|ふせいかい}}](term:term-anki-l15-fuseikai), cerca prima `{{正解|せいかい}}`, la risposta corretta. Il prefisso `{{不|ふ}}` funziona come un cartello di negazione davanti al nucleo: non-corretta.
+*   In [{{不正解|ふせいかい}}](term:term-anki-l15-fuseikai), cerca prima {{正解|せいかい}}, la risposta corretta. Il prefisso {{不|ふ}} funziona come un cartello di negazione davanti al nucleo: non-corretta.
 
 ## 4. Impressioni, dettagli notati e ricordi
 
 Quando la scena diventa più personale, il giapponese passa da azioni visibili a stati mentali. Un Pokémon può dare una certa impressione, un personaggio può accorgersi di un dettaglio, un ricordo può essere presente anche prima di essere raccontato esplicitamente.
 
-*   [{{感|かん}}じ](term:term-anki-l15-kanji) non è il "sentire" fisico di un suono o di un dolore: è impressione, atmosfera, sensazione ricevuta da qualcosa. La collocazione più riconoscibile è `{{感|かん}}じがする`, "dare l'impressione / avere la sensazione". In un dialogo su un Pokémon misterioso, la frase non misura un dato oggettivo: racconta come quella presenza viene percepita.
-*   [{{気|き}}づく](term:term-anki-l15-kizuku) indica il momento in cui l'attenzione arriva su un dettaglio. L'elemento notato prende `に`: `{{野生|やせい}}のポケモンに{{気|き}}づく`, accorgersi di un Pokémon selvatico. Nell'overworld è importante anche la passiva `{{気|き}}づかれる`: essere notati da un Pokémon, quindi diventare il bersaglio della sua attenzione.
-*   [{{記憶|きおく}}](term:term-anki-l15-kioku) è memoria come contenuto conservato o facoltà di ricordare. Si distingue da `{{思|おも}}い{{出|で}}`, che spesso richiama un ricordo affettivo o un episodio che riaffiora. Con する può anche diventare "memorizzare", ma nei dialoghi narrativi è spesso il bagaglio di ciò che un personaggio porta con sé.
+*   [{{感|かん}}じ](term:term-anki-l15-kanji) non è il "sentire" fisico di un suono o di un dolore: è impressione, atmosfera, sensazione ricevuta da qualcosa. La collocazione più riconoscibile è {{感|かん}}じがする, "dare l'impressione / avere la sensazione". In un dialogo su un Pokémon misterioso, la frase non misura un dato oggettivo: racconta come quella presenza viene percepita.
+*   [{{気|き}}づく](term:term-anki-l15-kizuku) indica il momento in cui l'attenzione arriva su un dettaglio. L'elemento notato prende に: {{野生|やせい}}のポケモンに{{気|き}}づく, accorgersi di un Pokémon selvatico. Nell'overworld è importante anche la passiva {{気|き}}づかれる: essere notati da un Pokémon, quindi diventare il bersaglio della sua attenzione.
+*   [{{記憶|きおく}}](term:term-anki-l15-kioku) è memoria come contenuto conservato o facoltà di ricordare. Si distingue da {{思|おも}}い{{出|で}}, che spesso richiama un ricordo affettivo o un episodio che riaffiora. Con する può anche diventare "memorizzare", ma nei dialoghi narrativi è spesso il bagaglio di ciò che un personaggio porta con sé.
 
 :::example_sentence
 jp: >-
@@ -217,7 +219,7 @@ translation_it: >-
 
 *   `この ポケモンは` ➔ **Tema della percezione** (`は` mette il Pokémon al centro della frase).
 *   `ふしぎな {{感|かん}}じが` ➔ **Impressione che emerge** (`ふしぎな` qualifica la sensazione; `が` marca ciò che si manifesta).
-*   `する` ➔ **Dare impressione** (con [{{感|かん}}じ](term:term-anki-l15-kanji), non significa "fare", ma "sembrare / dare una certa sensazione").
+*   する ➔ **Dare impressione** (con [{{感|かん}}じ](term:term-anki-l15-kanji), non significa "fare", ma "sembrare / dare una certa sensazione").
 
 :::example_sentence
 jp: >-
@@ -244,13 +246,13 @@ translation_it: >-
 *   `むかしの {{記憶|きおく}}が` ➔ **Ricordo esistente** (`が` marca la memoria come cosa che c'è).
 *   `ある` ➔ **Esistenza / possesso** (la frase dice che quei ricordi sono presenti in lui, anche se non vengono ancora raccontati nel dettaglio).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   [{{感|かん}}じ](term:term-anki-l15-kanji) ➔ impressione immediata: qualcosa "sembra" misterioso, caldo, strano, familiare.
 *   [{{気|き}}づく](term:term-anki-l15-kizuku) ➔ momento dell'accorgersi: l'attenzione si aggancia a un dettaglio.
 *   [{{記憶|きおく}}](term:term-anki-l15-kioku) ➔ contenuto conservato: qualcosa resta nella memoria e può pesare sul dialogo.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 *   Puoi immaginare la sequenza come una piccola camera mentale: [{{感|かん}}じ](term:term-anki-l15-kanji) è l'atmosfera che entra, [{{気|き}}づく](term:term-anki-l15-kizuku) è la luce che si accende su un dettaglio, [{{記憶|きおく}}](term:term-anki-l15-kioku) è ciò che rimane conservato dopo la scena.
 

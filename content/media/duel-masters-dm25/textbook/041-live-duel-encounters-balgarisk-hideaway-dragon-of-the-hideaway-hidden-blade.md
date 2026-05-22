@@ -22,19 +22,8 @@ summary: >-
 
 [{{裏斬隠裏蒼頭|うらぎりがくれうらそうとう}}バルガリスク](term:term-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade) legge come una carta a due movimenti. Prima entra dalla mano quando l'attacco avversario apre una finestra di [ニンジャ・ストライク](term:term-ninja-strike); poi, una volta in campo, guarda la cima del [{{山札|やまふだ}}](term:term-deck) e decide se la carta rivelata passa in campo oppure finisce in [マナゾーン](term:term-mana-zone) tappata.
 
-La difficoltà è nella catena: `した{{時|とき}}`, `あり`, `{{使|つか}}っていなければ`, `なら` e [そうでなければ](grammar:grammar-soudenakereba) non sono pezzi separati. Ogni forma tiene aperto il controllo precedente finché il testo non arriva al risultato.
+La difficoltà è nella catena: した{{時|とき}}, あり, {{使|つか}}っていなければ, なら e [そうでなければ](grammar:grammar-soudenakereba) non sono pezzi separati. Ogni forma tiene aperto il controllo precedente finché il testo non arriva al risultato.
 
-:::image
-src: assets/cards/live-duel/balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade.jpg
-alt: "Balgarisk, Hideaway Dragon of the Hideaway Hidden Blade card."
-caption: >-
-  [{{裏斬隠裏蒼頭|うらぎりがくれうらそうとう}}バルガリスク](term:term-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade)。
-  Razze: アーマード・ドラゴン / シノビ. La riga di
-  [ニンジャ・ストライク](term:term-ninja-strike) {{8|はち}} costruisce una risposta
-  durante l'attacco avversario; l'effetto d'ingresso trasforma il topdeck in un
-  controllo su [コスト](term:term-cost), [{{持|も}}つ](term:term-motsu) e
-  [そうでなければ](grammar:grammar-soudenakereba).
-:::
 
 ## Termini chiave
 
@@ -76,14 +65,26 @@ caption: >-
 
 ---
 
+:::image
+src: assets/cards/live-duel/balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade.jpg
+alt: "Balgarisk, Hideaway Dragon of the Hideaway Hidden Blade card."
+caption: >-
+  [{{裏斬隠裏蒼頭|うらぎりがくれうらそうとう}}バルガリスク](term:term-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade)。
+  Razze: アーマード・ドラゴン / シノビ. La riga di
+  [ニンジャ・ストライク](term:term-ninja-strike) {{8|はち}} costruisce una risposta
+  durante l'attacco avversario; l'effetto d'ingresso trasforma il topdeck in un
+  controllo su [コスト](term:term-cost), [{{持|も}}つ](term:term-motsu) e
+  [そうでなければ](grammar:grammar-soudenakereba).
+:::
+
 ## 1. La finestra di Ninja Strike: evento, soglia e permesso
 
 La prima frase non descrive un effetto di ingresso: costruisce una finestra in cui Balgarisk può arrivare dalla mano. Il testo parte dall'azione dell'avversario, aggiunge la soglia di mana, controlla che la stessa abilità non sia già stata usata in quell'attacco e solo alla fine concede la [{{召喚|しょうかん}}](term:term-summon) gratuita.
 
-*   [ニンジャ・ストライク](term:term-ninja-strike) {{8|はち}} è la label della keyword più il numero-soglia. Il `{{8|はち}}` non è il costo della creatura: è il valore che verrà confrontato con le carte nella tua [マナゾーン](term:term-mana-zone).
-*   [{{相手|あいて}}](term:term-opponent)の[クリーチャー](term:term-creature)が[{{攻撃|こうげき}}](term:term-attack)またはブロックした[{{時|とき}}](grammar:grammar-toki) fissa il timing. Il soggetto è la creatura avversaria; `または` mette in alternativa attacco e blocco; [{{時|とき}}](grammar:grammar-toki) trasforma quell'evento nella finestra che permette di reagire.
-*   [マナゾーン](term:term-mana-zone)にカードが{{8枚以上|はちまいいじょう}}あり usa `あり` come forma di collegamento di `ある`. La frase non si chiude su "ci sono otto carte": resta aperta e continua ad accumulare condizioni prima del permesso finale.
-*   その{{攻撃中|こうげきちゅう}}に「[ニンジャ・ストライク](term:term-ninja-strike)」[{{能力|のうりょく}}](term:term-ability)を[{{使|つか}}っていなければ](grammar:grammar-te-inakereba) restringe il controllo a quello stesso attacco. `〜ている` guarda lo stato "aver già usato", `〜なければ` lo nega: se non sei già in quello stato, la finestra è ancora disponibile.
+*   [ニンジャ・ストライク](term:term-ninja-strike) {{8|はち}} è la label della keyword più il numero-soglia. Il {{8|はち}} non è il costo della creatura: è il valore che verrà confrontato con le carte nella tua [マナゾーン](term:term-mana-zone).
+*   [{{相手|あいて}}](term:term-opponent)の[クリーチャー](term:term-creature)が[{{攻撃|こうげき}}](term:term-attack)またはブロックした[{{時|とき}}](grammar:grammar-toki) fissa il timing. Il soggetto è la creatura avversaria; または mette in alternativa attacco e blocco; [{{時|とき}}](grammar:grammar-toki) trasforma quell'evento nella finestra che permette di reagire.
+*   [マナゾーン](term:term-mana-zone)にカードが{{8枚以上|はちまいいじょう}}あり usa あり come forma di collegamento di ある. La frase non si chiude su "ci sono otto carte": resta aperta e continua ad accumulare condizioni prima del permesso finale.
+*   その{{攻撃中|こうげきちゅう}}に「[ニンジャ・ストライク](term:term-ninja-strike)」[{{能力|のうりょく}}](term:term-ability)を[{{使|つか}}っていなければ](grammar:grammar-te-inakereba) restringe il controllo a quello stesso attacco. 〜ている guarda lo stato "aver già usato", 〜なければ lo nega: se non sei già in quello stato, la finestra è ancora disponibile.
 *   [コスト](term:term-cost)を[{{支払|しはら}}わずに](term:term-harau)[{{召喚|しょうかん}}](term:term-summon)してもよい è il risultato positivo. [〜してもよい](grammar:grammar-temoyoi) dice "puoi", quindi la carta autorizza l'azione ma non la impone.
 *   [そのターンの{{終|お}}わりに](grammar:grammar-turn-timing)、このシノビを[{{山札|やまふだ}}](term:term-deck)の{{下|した}}に[{{置|お}}く](term:term-oku) aggiunge una chiusura differita. Lo Shinobi non resta indefinitamente: alla fine di quel turno viene collocato in fondo al deck.
 
@@ -112,7 +113,7 @@ reveal_mode: sentence
 
 *   [ニンジャ・ストライク](term:term-ninja-strike) {{8|はち}} — **keyword con soglia**: il numero prepara il controllo su quante carte hai nel mana.
 *   [{{相手|あいて}}](term:term-opponent)の[クリーチャー](term:term-creature)が[{{攻撃|こうげき}}](term:term-attack)またはブロックした[{{時|とき}}](grammar:grammar-toki) — **evento di apertura**: l'attacco o il blocco avversario è ciò che accende la finestra.
-*   {{自分|じぶん}}の[マナゾーン](term:term-mana-zone)にカードが{{8枚以上|はちまいいじょう}}あり — **condizione connessa**: `あり` non chiude il periodo, ma lega la soglia alla condizione successiva.
+*   {{自分|じぶん}}の[マナゾーン](term:term-mana-zone)にカードが{{8枚以上|はちまいいじょう}}あり — **condizione connessa**: あり non chiude il periodo, ma lega la soglia alla condizione successiva.
 *   その{{攻撃中|こうげきちゅう}}に「[ニンジャ・ストライク](term:term-ninja-strike)」[{{能力|のうりょく}}](term:term-ability)を{{使|つか}}っていなければ — **stato negativo dentro la finestra**: il testo controlla che questa abilità non sia già stata usata durante quello stesso attacco.
 *   このシノビを[コスト](term:term-cost)を[{{支払|しはら}}わずに](term:term-harau)[{{召喚|しょうかん}}](term:term-summon)してもよい — **payoff opzionale**: puoi evocare questo Shinobi senza pagare.
 *   [そのターンの{{終|お}}わりに](grammar:grammar-turn-timing)、このシノビを[{{山札|やまふだ}}](term:term-deck)の{{下|した}}に[{{置|お}}く](term:term-oku) — **pulizia differita**: la destinazione finale è il fondo del deck, non la mano o il cimitero.
@@ -128,12 +129,12 @@ Immagina `あり、` come una virgola che tiene il cancello aperto: la soglia di
 
 ## 2. Il topdeck come filtro: rivelare, verificare, scegliere il ramo
 
-Quando Balgarisk entra, la sintassi cambia ritmo. Non c'è più una risposta durante l'attacco: c'è una carta presa dalla cima del [{{山札|やまふだ}}](term:term-deck), resa [{{表向|おもてむ}}き](term:term-face-up), poi confrontata con il numero di carte nella tua [マナゾーン](term:term-mana-zone). Il pronome `それ` tiene insieme tutta la seconda metà: ogni ramo parla della carta appena rivelata.
+Quando Balgarisk entra, la sintassi cambia ritmo. Non c'è più una risposta durante l'attacco: c'è una carta presa dalla cima del [{{山札|やまふだ}}](term:term-deck), resa [{{表向|おもてむ}}き](term:term-face-up), poi confrontata con il numero di carte nella tua [マナゾーン](term:term-mana-zone). Il pronome それ tiene insieme tutta la seconda metà: ogni ramo parla della carta appena rivelata.
 
 *   このクリーチャーが[{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki) usa [{{出|で}}る](term:term-deru) intransitivo. La creatura "entra"; il testo non dice ancora che tu stia mettendo in campo qualcos'altro.
-*   [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{1枚目|いちまいめ}}を[{{表向|おもてむ}}き](term:term-face-up)にしてもよい contiene due movimenti: `{{上|うえ}}から{{1枚目|いちまいめ}}` isola la prima carta dall'alto, mentre [{{表向|おもてむ}}き](term:term-face-up)にする cambia lo stato della carta in visibile. Anche qui [〜してもよい](grammar:grammar-temoyoi) lascia l'azione opzionale.
+*   [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{1枚目|いちまいめ}}を[{{表向|おもてむ}}き](term:term-face-up)にしてもよい contiene due movimenti: {{上|うえ}}から{{1枚目|いちまいめ}} isola la prima carta dall'alto, mentre [{{表向|おもてむ}}き](term:term-face-up)にする cambia lo stato della carta in visibile. Anche qui [〜してもよい](grammar:grammar-temoyoi) lascia l'azione opzionale.
 *   それが riprende la carta rivelata, non Balgarisk. Se perdi quel referente, il filtro successivo sembra applicarsi alla creatura in campo; invece controlla la carta appena mostrata.
-*   {{自分|じぶん}}の[マナゾーン](term:term-mana-zone)にあるカードの[{{枚数|まいすう}}{{以下|いか}}](grammar:grammar-ika-ijou)の[コスト](term:term-cost)を[{{持|も}}つ](term:term-motsu)ドラゴン・エレメントなら è una relativa lunga. [{{持|も}}つ](term:term-motsu) non significa "tenere in mano": trasforma `コスト` in una proprietà del nome finale, cioè "un Dragon Element che ha un costo pari o inferiore a quel numero".
+*   {{自分|じぶん}}の[マナゾーン](term:term-mana-zone)にあるカードの[{{枚数|まいすう}}{{以下|いか}}](grammar:grammar-ika-ijou)の[コスト](term:term-cost)を[{{持|も}}つ](term:term-motsu)ドラゴン・エレメントなら è una relativa lunga. [{{持|も}}つ](term:term-motsu) non significa "tenere in mano": trasforma コスト in una proprietà del nome finale, cioè "un Dragon Element che ha un costo pari o inferiore a quel numero".
 *   [{{出|だ}}す](term:term-dasu) è transitivo: l'effetto mette in campo la carta rivelata se il filtro passa. Se il filtro non passa, [そうでなければ](grammar:grammar-soudenakereba) riassume l'intera verifica e manda la carta nel ramo alternativo.
 *   [タップ](term:term-tap)して[マナゾーン](term:term-mana-zone)に[{{置|お}}く](term:term-oku) combina stato e destinazione. Prima la carta viene considerata tapped, poi [{{置|お}}く](term:term-oku) la colloca nella zona mana.
 
@@ -169,23 +170,23 @@ reveal_mode: sentence
 #### ⚖️ Contrasto operativo
 
 *   [{{出|で}}た](term:term-deru) e [{{出|だ}}す](term:term-dasu) non hanno lo stesso ruolo. [{{出|で}}た](term:term-deru) descrive Balgarisk che entra; [{{出|だ}}す](term:term-dasu) descrive l'effetto che mette in campo la carta rivelata.
-*   [{{表向|おもてむ}}き](term:term-face-up)にする non è ancora "mettere in campo". È solo il cambio di stato che rende leggibile la carta; il risultato arriva dopo il controllo con `なら`.
+*   [{{表向|おもてむ}}き](term:term-face-up)にする non è ancora "mettere in campo". È solo il cambio di stato che rende leggibile la carta; il risultato arriva dopo il controllo con なら.
 
 #### 🧠 Gancio cognitivo
 
-Pensa a [そうでなければ](grammar:grammar-soudenakereba) come a un'etichetta che richiude tutto il controllo precedente. `そう` contiene "la carta rivelata è un Dragon Element con costo abbastanza basso"; `でなければ` dice che quella proposizione non regge, quindi si passa al fallback.
+Pensa a [そうでなければ](grammar:grammar-soudenakereba) come a un'etichetta che richiude tutto il controllo precedente. そう contiene "la carta rivelata è un Dragon Element con costo abbastanza basso"; でなければ dice che quella proposizione non regge, quindi si passa al fallback.
 
 ## 3. Etichette brevi: nome, razze e keyword compatte
 
-La parte non discorsiva della carta resta importante perché il rules text la riprende con parole brevi. Il nome proprio [{{裏斬隠裏蒼頭|うらぎりがくれうらそうとう}}バルガリスク](term:term-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade) identifica la creatura, ma gli effetti interni preferiscono riferimenti funzionali: `このクリーチャー` quando parla dell'ingresso, `このシノビ` quando parla della creatura evocata con [ニンジャ・ストライク](term:term-ninja-strike).
+La parte non discorsiva della carta resta importante perché il rules text la riprende con parole brevi. Il nome proprio [{{裏斬隠裏蒼頭|うらぎりがくれうらそうとう}}バルガリスク](term:term-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade) identifica la creatura, ma gli effetti interni preferiscono riferimenti funzionali: このクリーチャー quando parla dell'ingresso, このシノビ quando parla della creatura evocata con [ニンジャ・ストライク](term:term-ninja-strike).
 
 *   アーマード・ドラゴン / シノビ sono razze, non effetti. Però `このシノビ` nella prima riga è leggibile solo se riconosci che シノビ è una delle identità della carta.
-*   ドラゴン・エレメント nel secondo effetto non richiama automaticamente Balgarisk: è il tipo richiesto alla carta rivelata. Il `なら` dopo ドラゴン・エレメント fa da cancello: se la carta mostrata appartiene a quella categoria e ha il costo giusto, il ramo positivo usa [{{出|だ}}す](term:term-dasu).
+*   ドラゴン・エレメント nel secondo effetto non richiama automaticamente Balgarisk: è il tipo richiesto alla carta rivelata. Il なら dopo ドラゴン・エレメント fa da cancello: se la carta mostrata appartiene a quella categoria e ha il costo giusto, il ramo positivo usa [{{出|だ}}す](term:term-dasu).
 *   [W・ブレイカー](term:term-w-breaker) è una keyword compatta e autonoma. Non partecipa alla catena di condizioni; quando la incontri, leggila come proprietà offensiva della creatura, separata sia dal topdeck sia dalla pulizia dello Shinobi.
 
 #### ⚖️ Contrasto operativo
 
-`このシノビ` e `このクリーチャー` possono riferirsi alla stessa carta, ma non fanno lo stesso lavoro nella frase. `このクリーチャーが{{出|で}}た{{時|とき}}` apre l'effetto di ingresso; `このシノビを[{{山札|やまふだ}}](term:term-deck)の{{下|した}}に[{{置|お}}く](term:term-oku)` chiude la durata speciale concessa da [ニンジャ・ストライク](term:term-ninja-strike).
+このシノビ e このクリーチャー possono riferirsi alla stessa carta, ma non fanno lo stesso lavoro nella frase. このクリーチャーが{{出|で}}た{{時|とき}} apre l'effetto di ingresso; このシノビを[{{山札|やまふだ}}](term:term-deck)の{{下|した}}に[{{置|お}}く](term:term-oku) chiude la durata speciale concessa da [ニンジャ・ストライク](term:term-ninja-strike).
 
 ## Esempi guidati di riepilogo
 
@@ -235,4 +236,4 @@ reveal_mode: sentence
 
 ## Nota finale
 
-Balgarisk diventa leggibile quando separi le due catene. [ニンジャ・ストライク](term:term-ninja-strike) controlla evento avversario, mana disponibile e abilità non ancora usata; l'effetto di ingresso controlla invece la carta rivelata con `それが`, [{{持|も}}つ](term:term-motsu), `なら` e [そうでなければ](grammar:grammar-soudenakereba). In entrambi i casi, il risultato arriva solo dopo che il giapponese ha chiuso tutti i suoi filtri.
+Balgarisk diventa leggibile quando separi le due catene. [ニンジャ・ストライク](term:term-ninja-strike) controlla evento avversario, mana disponibile e abilità non ancora usata; l'effetto di ingresso controlla invece la carta rivelata con それが, [{{持|も}}つ](term:term-motsu), なら e [そうでなければ](grammar:grammar-soudenakereba). In entrambi i casi, il risultato arriva solo dopo che il giapponese ha chiuso tutti i suoi filtri.

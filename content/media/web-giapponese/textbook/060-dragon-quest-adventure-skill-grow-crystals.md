@@ -2,7 +2,7 @@
 id: lesson-web-giapponese-dragon-quest-adventure-skill-grow-crystals
 media_id: media-web-giapponese
 slug: 060-dragon-quest-adventure-skill-grow-crystals
-title: Dragon Quest Smash Grow - 冒険スキルを手に入れよう
+title: "Cristalli Grow e skill"
 order: 60
 segment_ref: dragon-quest-smash-grow
 difficulty: n4
@@ -28,19 +28,6 @@ Quando riconosci quel `と` dopo il verbo piano, smetti di leggere la frase come
 una semplice descrizione e la tratti per quello che è: una regola del sistema,
 del tipo "fai A e B accade automaticamente".
 
-:::image
-src: assets/dragon-quest-adventure-skill-grow-crystals.jpg
-alt: >-
-  Schermata tutorial di Dragon Quest Smash Grow con banner su cristalli e skill
-  di avventura.
-caption: >-
-  Il focus è il testo del banner:
-  `{{敵|てき}}を{{倒|たお}}すとグロウ{{結晶|けっしょう}}を{{落|お}}とすぞ。`
-  e `グロウ{{結晶|けっしょう}}をたくさん
-  [{{手|て}}に{{入|い}}れる](term:term-te-ni-ireru)と
-  {{冒険|ぼうけん}}スキルを{{獲得|かくとく}}するぞ。`
-:::
-
 ## Termini chiave
 
 - [{{手|て}}に{{入|い}}れる](term:term-te-ni-ireru) — ottenere; mettere le mani su
@@ -50,9 +37,9 @@ caption: >-
 
 ## Espressioni ricorrenti
 
-- `{{冒険|ぼうけん}}スキルを[{{手|て}}に{{入|い}}れよう](term:term-te-ni-ireru)` — otteniamo una skill di avventura
+- {{冒険|ぼうけん}}スキルを[{{手|て}}に{{入|い}}れよう](term:term-te-ni-ireru) — otteniamo una skill di avventura
 - `{{敵|てき}}を{{倒|たお}}すとグロウ{{結晶|けっしょう}}を{{落|お}}とすぞ` — se sconfiggi un nemico, cadono cristalli Grow
-- `グロウ{{結晶|けっしょう}}をたくさん[{{手|て}}に{{入|い}}れる](term:term-te-ni-ireru)と` — quando ne accumuli molti
+- グロウ{{結晶|けっしょう}}をたくさん[{{手|て}}に{{入|い}}れる](term:term-te-ni-ireru)と — quando ne accumuli molti
 - [とじる](term:term-tojiru) — chiudere il popup, non risolvere la regola
 
 ## Pattern grammaticali chiave
@@ -67,6 +54,19 @@ caption: >-
 - `{{獲得|かくとく}}する` — acquisire formalmente una ricompensa o abilità
 
 ---
+
+:::image
+src: assets/dragon-quest-adventure-skill-grow-crystals.jpg
+alt: >-
+  Schermata tutorial di Dragon Quest Smash Grow con banner su cristalli e skill
+  di avventura.
+caption: >-
+  Il focus è il testo del banner:
+  `{{敵|てき}}を{{倒|たお}}すとグロウ{{結晶|けっしょう}}を{{落|お}}とすぞ。`
+  e グロウ{{結晶|けっしょう}}をたくさん
+  [{{手|て}}に{{入|い}}れる](term:term-te-ni-ireru)と
+  {{冒険|ぼうけん}}スキルを{{獲得|かくとく}}するぞ。
+:::
 
 ## 1. Il titolo del popup: ottenere una skill, non possederla già
 
@@ -104,7 +104,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-pensa a [{{手|て}}に{{入|い}}れる](term:term-te-ni-ireru)
+Pensa a [{{手|て}}に{{入|い}}れる](term:term-te-ni-ireru)
 come a "far entrare qualcosa nella tua mano". È un trucco mnemonico, non una
 traduzione parola per parola: il valore naturale è "ottenere".
 
@@ -117,12 +117,12 @@ rilasciato. Non serve cercare un soggetto esplicito: nel linguaggio dei giochi
 il soggetto sottinteso è il nemico appena sconfitto o il sistema che applica la
 regola.
 
-*   [{{敵|てき}}](term:term-teki) è marcato da `を`, quindi è ciò che viene
+*   [{{敵|てき}}](term:term-teki) è marcato da を, quindi è ciò che viene
     colpito dall'azione `{{倒|たお}}す`. La frase non dice "il nemico fa
     qualcosa" all'inizio; dice "quando sconfiggi un nemico". Questo è il trigger
     della regola.
 *   `{{倒|たお}}すと` combina il verbo piano `{{倒|たお}}す` con
-    [〜すると](grammar:grammar-plain-to-consequence). In questo uso, `と` non è
+    [〜すると](grammar:grammar-plain-to-consequence). In questo uso, と non è
     "e" e non è una scelta ipotetica debole: presenta B come conseguenza
     regolare di A.
 *   `グロウ{{結晶|けっしょう}}を{{落|お}}とす` usa
@@ -140,18 +140,18 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{敵|てき}}を` ➔ **Bersaglio dell'azione** ([{{敵|てき}}](term:term-teki) è
+*   {{敵|てき}}を ➔ **Bersaglio dell'azione** ([{{敵|てき}}](term:term-teki) è
     il nemico che viene sconfitto, non il soggetto che agisce).
 *   `{{倒|たお}}すと` ➔ **Condizione automatica** (verbo piano + `と`: "quando
     lo sconfiggi, allora...").
 *   `グロウ{{結晶|けっしょう}}を` ➔ **Oggetto rilasciato** (`を` marca ciò che
     viene fatto cadere).
-*   `{{落|お}}とすぞ` ➔ **Conseguenza assertiva** ([{{落|お}}とす](term:term-otosu)
+*   {{落|お}}とすぞ ➔ **Conseguenza assertiva** ([{{落|お}}とす](term:term-otosu)
     descrive il drop; `ぞ` dà il tono energico del tutorial).
 
 #### ⚖️ Contrasto operativo
 
-in `{{倒|たお}}すと`, `と` non collega due nomi e
+In `{{倒|たお}}すと`, `と` non collega due nomi e
 non significa "e poi" in modo narrativo. Dopo un verbo in forma piana, segnala
 una regola: appena la condizione A è vera, la conseguenza B si attiva.
 
@@ -188,7 +188,7 @@ translation_it: >-
 *   `グロウ{{結晶|けっしょう}}を` ➔ **Risorsa da accumulare** (i cristalli Grow
     sono l'oggetto dell'acquisizione).
 *   `たくさん{{手|て}}に{{入|い}}れると` ➔ **Soglia di accumulo** (`たくさん` indica
-    "molti"; [{{手|て}}に{{入|い}}れる](term:term-te-ni-ireru) + `と` trasforma
+    "molti"; [{{手|て}}に{{入|い}}れる](term:term-te-ni-ireru) + と trasforma
     l'accumulo nella condizione).
 *   `{{冒険|ぼうけん}}スキルを` ➔ **Ricompensa finale** (`を` marca la skill che
     entra nel risultato della regola).
@@ -227,12 +227,12 @@ translation_it: >-
 
 *   `このメニューを` ➔ **Oggetto da chiudere** (`この` indica "questo", `メニュー`
     è il menu o popup, `を` marca ciò che viene chiuso).
-*   `とじる` ➔ **Azione UI** ([とじる](term:term-tojiru) è il comando di chiusura,
+*   とじる ➔ **Azione UI** ([とじる](term:term-tojiru) è il comando di chiusura,
     non una ricompensa né un effetto di gioco).
 
 #### 🧠 Gancio cognitivo
 
-quando vedi un verbo breve in hiragana su un
+Quando vedi un verbo breve in hiragana su un
 pulsante, trattalo prima come azione di interfaccia. `とじる` non ti dice cosa
 succede nel sistema di skill; ti dice cosa farà il pulsante.
 

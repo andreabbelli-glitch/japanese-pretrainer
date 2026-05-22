@@ -16,7 +16,7 @@ summary: >-
 
 # Voci, persone e macchine tra Accademia e Area Zero
 
-In *Pokémon Scarlet & Violet* la lingua cambia volto appena ti sposti dai corridoi dell'Accademia ai racconti su Area Zero. Una [{{噂|うわさ}}](term:term-anki-l06-uwasa) non pesa come un fatto confermato, [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) non è una parola generica sulle lingue, e un nome seguito da [{{氏|し}}](term:term-anki-l06-shi) mette subito più distanza di un semplice `さん`.
+In *Pokémon Scarlet & Violet* la lingua cambia volto appena ti sposti dai corridoi dell'Accademia ai racconti su Area Zero. Una [{{噂|うわさ}}](term:term-anki-l06-uwasa) non pesa come un fatto confermato, [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) non è una parola generica sulle lingue, e un nome seguito da [{{氏|し}}](term:term-anki-l06-shi) mette subito più distanza di un semplice さん.
 
 Lo stesso vale per le scene più emotive o tecnologiche: un valore che [{{上|あ}}がる](term:term-anki-l06-agaru), un personaggio che [{{食|く}}う](term:term-anki-l06-kuu), qualcuno che [{{信|しん}}じる](term:term-anki-l06-shinjiru), oppure una [{{機械|きかい}}](term:term-anki-l06-kikai) legata alla trama. Queste forme ti dicono chi parla, quanto è ruvido o formale il tono, e se la frase sta guardando persone, gruppi o apparati troppo complessi per essere semplici strumenti.
 
@@ -50,18 +50,20 @@ Lo stesso vale per le scene più emotive o tecnologiche: un valore che [{{上|�
 ## Etichette da riconoscere
 
 - `セイジ{{先生|せんせい}}` — il professore associato alle lezioni di lingua
-- `クラベル{{氏|し}}` — Clavel citato con registro formale e distanziato
+- [クラベル](term:term-v069-kuraberu){{氏|し}} — Clavel citato con registro formale e distanziato
 - `タイムマシン` — la macchina del tempo legata alla tecnologia di Area Zero
 
 ---
+
+[クラベル](term:term-v069-kuraberu){{氏|し}} mostra come un nome proprio cambi tono con il suffisso: Clavell non viene avvicinato, viene citato in modo più formale.
 
 ## 1. Voci, lezioni e nomi: da dove arriva l'informazione
 
 All'Accademia e nelle città di Paldea molte battute ruotano intorno a informazioni ricevute da altri: qualcuno ha sentito parlare di un Pokémon, un professore introduce una materia, una comunicazione nomina una figura in modo ufficiale. Qui la grammatica non serve solo a tradurre: serve a capire quanto è solida l'informazione e che rapporto sociale sta mettendo in scena.
 
-*   [{{噂|うわさ}}](term:term-anki-l06-uwasa) indica una voce che circola prima di diventare certezza. Non è ancora `{{本当|ほんとう}}` di per sé: è ciò che qualcuno racconta, ripete o ha sentito. Per questo si combina bene con `{{聞|き}}く` quando la voce viene ascoltata, e con verbi come `{{流|なが}}れる` quando l'immagine è quella della diceria che passa di persona in persona. In una frase con `あの ポケモンの {{噂|うわさ}}`, il centro non è il Pokémon come creatura, ma quello che si dice su di lui.
-*   [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) porta la lettura dentro la scuola. Il composto si apre bene in due pezzi: `{{言語|げんご}}` è "lingua / linguaggio", mentre `{{学|がく}}` funziona come suffisso di disciplina, cioè "studio di". In un dialogo dell'Accademia, quindi, [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) non nomina semplicemente delle parole: identifica una materia, un'aula, un insegnante e un tipo di spiegazione.
-*   [{{氏|し}}](term:term-anki-l06-shi) dopo un nome proprio cambia il registro. `さん` resta quotidiano e relazionale; [{{氏|し}}](term:term-anki-l06-shi) suona più rigido, da comunicazione, rapporto o riferimento istituzionale. Se leggi `クラベル{{氏|し}}`, il testo non sta rendendo Clavel più vicino: lo sta nominando con una distanza formale.
+*   [{{噂|うわさ}}](term:term-anki-l06-uwasa) indica una voce che circola prima di diventare certezza. Non è ancora {{本当|ほんとう}} di per sé: è ciò che qualcuno racconta, ripete o ha sentito. Per questo si combina bene con {{聞|き}}く quando la voce viene ascoltata, e con verbi come {{流|なが}}れる quando l'immagine è quella della diceria che passa di persona in persona. In una frase con あの ポケモンの {{噂|うわさ}}, il centro non è il Pokémon come creatura, ma quello che si dice su di lui.
+*   [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) porta la lettura dentro la scuola. Il composto si apre bene in due pezzi: {{言語|げんご}} è "lingua / linguaggio", mentre {{学|がく}} funziona come suffisso di disciplina, cioè "studio di". In un dialogo dell'Accademia, quindi, [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) non nomina semplicemente delle parole: identifica una materia, un'aula, un insegnante e un tipo di spiegazione.
+*   [{{氏|し}}](term:term-anki-l06-shi) dopo un nome proprio cambia il registro. さん resta quotidiano e relazionale; [{{氏|し}}](term:term-anki-l06-shi) suona più rigido, da comunicazione, rapporto o riferimento istituzionale. Se leggi クラベル{{氏|し}}, il testo non sta rendendo Clavel più vicino: lo sta nominando con una distanza formale.
 
 :::example_sentence
 jp: >-
@@ -98,25 +100,25 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `クラベル{{氏|し}}から` ➔ **Origine formale** (`から` indica da chi arriva la comunicazione; [{{氏|し}}](term:term-anki-l06-shi) mantiene il nome in un registro da annuncio).
+*   クラベル{{氏|し}}から ➔ **Origine formale** (から indica da chi arriva la comunicazione; [{{氏|し}}](term:term-anki-l06-shi) mantiene il nome in un registro da annuncio).
 *   `{{連絡|れんらく}}が` ➔ **Evento ricevuto** (`が` presenta la comunicazione come ciò che è arrivato o si è verificato).
 *   `ありました` ➔ **Esistenza al passato** (non "qualcuno ha fatto" in modo diretto, ma "c'è stata / è arrivata" una comunicazione).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`さん` e [{{氏|し}}](term:term-anki-l06-shi) non sono due versioni equivalenti di "signor". `さん` lascia spazio a vicinanza, cortesia quotidiana e dialogo personale; [{{氏|し}}](term:term-anki-l06-shi) tende invece a nominare la persona da fuori, come in un comunicato o in un resoconto. Se la scena passa da `クラベルさん` a `クラベル{{氏|し}}`, il cambio di suffisso è già un cambio di distanza.
+さん e [{{氏|し}}](term:term-anki-l06-shi) non sono due versioni equivalenti di "signor". さん lascia spazio a vicinanza, cortesia quotidiana e dialogo personale; [{{氏|し}}](term:term-anki-l06-shi) tende invece a nominare la persona da fuori, come in un comunicato o in un resoconto. Se la scena passa da クラベルさん a クラベル{{氏|し}}, il cambio di suffisso è già un cambio di distanza.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Pensa a [{{噂|うわさ}}](term:term-anki-l06-uwasa) come a una voce senza ancora un volto. Finché la frase non aggiunge segnali come `{{本当|ほんとう}}`, `{{確|たし}}か` o una conferma esplicita, non leggerla come un fatto: leggila come informazione che sta ancora viaggiando tra persone.
+Pensa a [{{噂|うわさ}}](term:term-anki-l06-uwasa) come a una voce senza ancora un volto. Finché la frase non aggiunge segnali come {{本当|ほんとう}}, {{確|たし}}か o una conferma esplicita, non leggerla come un fatto: leggila come informazione che sta ancora viaggiando tra persone.
 
 ## 2. Azioni e tono: valori che salgono, fame ruvida e fiducia
 
 Le frasi di gioco non descrivono solo "cose che succedono". Spesso mostrano se un cambiamento avviene da sé, se un personaggio parla in modo ruvido, o se un'affermazione è semplice opinione oppure fiducia personale. In questa zona, la particella accanto al verbo pesa più della traduzione italiana.
 
-*   [{{上|あ}}がる](term:term-anki-l06-agaru) è intransitivo: la cosa che sale prende `が`. Questo dettaglio è pratico nei messaggi di battaglia o negli effetti degli strumenti, perché ti dice dove guardare. In `こうげきが {{上|あ}}がる`, il soggetto grammaticale è la statistica che aumenta; il giocatore o l'oggetto restano sullo sfondo come causa. Con `{{上|あ}}げる`, invece, qualcuno "alza" qualcosa e l'azione diventa transitiva.
-*   [{{食|く}}う](term:term-anki-l06-kuu) significa "mangiare", ma non è neutro come `{{食|た}}べる`. Suona più diretto, fisico, colloquiale, a volte perfino brusco. In una scena con panini, fame o dialogo informale, [{{食|く}}う](term:term-anki-l06-kuu) ti fa sentire il registro del personaggio: non sta scegliendo la forma più pulita da aula scolastica.
-*   [{{信|しん}}じる](term:term-anki-l06-shinjiru) entra nel campo della fiducia. Può significare credere che una cosa sia vera, ma nei dialoghi con persone e Pokémon spesso significa "metterci fiducia". Con `を`, il nome prima del verbo diventa il bersaglio di quella fiducia: una persona, un compagno, una scelta, una possibilità.
+*   [{{上|あ}}がる](term:term-anki-l06-agaru) è intransitivo: la cosa che sale prende が. Questo dettaglio è pratico nei messaggi di battaglia o negli effetti degli strumenti, perché ti dice dove guardare. In こうげきが {{上|あ}}がる, il soggetto grammaticale è la statistica che aumenta; il giocatore o l'oggetto restano sullo sfondo come causa. Con {{上|あ}}げる, invece, qualcuno "alza" qualcosa e l'azione diventa transitiva.
+*   [{{食|く}}う](term:term-anki-l06-kuu) significa "mangiare", ma non è neutro come {{食|た}}べる. Suona più diretto, fisico, colloquiale, a volte perfino brusco. In una scena con panini, fame o dialogo informale, [{{食|く}}う](term:term-anki-l06-kuu) ti fa sentire il registro del personaggio: non sta scegliendo la forma più pulita da aula scolastica.
+*   [{{信|しん}}じる](term:term-anki-l06-shinjiru) entra nel campo della fiducia. Può significare credere che una cosa sia vera, ma nei dialoghi con persone e Pokémon spesso significa "metterci fiducia". Con を, il nome prima del verbo diventa il bersaglio di quella fiducia: una persona, un compagno, una scelta, una possibilità.
 
 :::example_sentence
 jp: >-
@@ -142,7 +144,7 @@ translation_it: >-
 
 *   `おれも` ➔ **Voce informale** (`おれ` è un pronome personale ruvido o molto confidenziale; `も` aggiunge "anch'io").
 *   `その サンドウィッチ、` ➔ **Oggetto tematizzato** (nel parlato l'oggetto può essere messo davanti senza `を`, con una pausa che lo rende immediato).
-*   `{{食|く}}う ぞ` ➔ **Azione energica** ([{{食|く}}う](term:term-anki-l06-kuu) abbassa il registro; `ぞ` dà una spinta assertiva alla frase).
+*   {{食|く}}う ぞ ➔ **Azione energica** ([{{食|く}}う](term:term-anki-l06-kuu) abbassa il registro; ぞ dà una spinta assertiva alla frase).
 
 :::example_sentence
 jp: >-
@@ -157,21 +159,21 @@ translation_it: >-
 *   `{{自分|じぶん}}の ポケモンを` ➔ **Bersaglio della fiducia** (`を` marca ciò in cui si crede, non un oggetto fisico da manipolare).
 *   `{{信|しん}}じる` ➔ **Fiducia attiva** (non solo "penso che sia vero", ma "mi affido a loro / credo in loro").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`こうげきが {{上|あ}}がる` e `こうげきを {{上|あ}}げる` raccontano lo stesso aumento da due angoli diversi. Con `が` + [{{上|あ}}がる](term:term-anki-l06-agaru), la statistica è la protagonista del cambiamento; con `を` + `{{上|あ}}げる`, qualcuno o qualcosa la alza. Nei messaggi di sistema questa differenza ti aiuta a distinguere risultato automatico e azione esercitata.
+こうげきが {{上|あ}}がる e こうげきを {{上|あ}}げる raccontano lo stesso aumento da due angoli diversi. Con が + [{{上|あ}}がる](term:term-anki-l06-agaru), la statistica è la protagonista del cambiamento; con を + {{上|あ}}げる, qualcuno o qualcosa la alza. Nei messaggi di sistema questa differenza ti aiuta a distinguere risultato automatico e azione esercitata.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [{{信|しん}}じる](term:term-anki-l06-shinjiru), immagina che la frase chieda un investimento personale. `{{思|おも}}う` può restare un'opinione nella testa; [{{信|しん}}じる](term:term-anki-l06-shinjiru) mette il parlante in rapporto con ciò a cui decide di affidarsi.
+Per [{{信|しん}}じる](term:term-anki-l06-shinjiru), immagina che la frase chieda un investimento personale. {{思|おも}}う può restare un'opinione nella testa; [{{信|しん}}じる](term:term-anki-l06-shinjiru) mette il parlante in rapporto con ciò a cui decide di affidarsi.
 
 ## 3. Persone, gruppi e attese: il lato umano della scena
 
 Quando il gioco parla di persone, non usa sempre lo stesso livello di astrazione. A volte guarda un individuo qualunque, altre volte mette in scena gli esseri umani come categoria accanto ai Pokémon. Allo stesso modo, una classe può sciogliersi con una parola secca, mentre un evento futuro può diventare qualcosa che un personaggio tiene davanti a sé con entusiasmo.
 
-*   [{{人間|にんげん}}](term:term-anki-l06-ningen) non è semplicemente `{{人|ひと}}`. `{{人|ひと}}` può indicare una persona concreta o "qualcuno"; [{{人間|にんげん}}](term:term-anki-l06-ningen) guarda l'essere umano come categoria. In frasi con `ポケモンと`, crea spesso una coppia concettuale: Pokémon e umani, due gruppi che convivono, si aiutano o vengono messi a confronto.
+*   [{{人間|にんげん}}](term:term-anki-l06-ningen) non è semplicemente {{人|ひと}}. {{人|ひと}} può indicare una persona concreta o "qualcuno"; [{{人間|にんげん}}](term:term-anki-l06-ningen) guarda l'essere umano come categoria. In frasi con ポケモンと, crea spesso una coppia concettuale: Pokémon e umani, due gruppi che convivono, si aiutano o vengono messi a confronto.
 *   [{{解散|かいさん}}](term:term-anki-l06-kaisan) descrive un gruppo che smette di essere riunito. Non è una cosa che si rompe in pezzi: è una classe, una squadra, un incontro o un raduno che si scioglie. Per questo può funzionare quasi come comando alla fine di una lezione o di una comunicazione: la situazione comune è chiusa, ognuno può andare.
-*   [{{楽|たの}}しみ](term:term-anki-l06-tanoshimi) trasforma il piacere in attesa. Deriva dalla stessa famiglia di `{{楽|たの}}しい`, ma come nome può indicare "la cosa che aspetto con gioia". La formula [{{楽|たの}}しみ](term:term-anki-l06-tanoshimi)に している rende bene il senso di "non vedere l'ora", perché il parlante tiene quell'evento come fonte futura di entusiasmo.
+*   [{{楽|たの}}しみ](term:term-anki-l06-tanoshimi) trasforma il piacere in attesa. Deriva dalla stessa famiglia di {{楽|たの}}しい, ma come nome può indicare "la cosa che aspetto con gioia". La formula [{{楽|たの}}しみ](term:term-anki-l06-tanoshimi)に している rende bene il senso di "non vedere l'ora", perché il parlante tiene quell'evento come fonte futura di entusiasmo.
 
 :::example_sentence
 jp: >-
@@ -212,11 +214,11 @@ translation_it: >-
 *   `とても` ➔ **Intensità** (rafforza il grado dell'attesa).
 *   `{{楽|たの}}しみに しています` ➔ **Attesa coltivata** (non "è divertente" adesso, ma "lo sto aspettando con gioia").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{楽|たの}}しみ](term:term-anki-l06-tanoshimi) e `{{楽|たの}}しい` non occupano lo stesso posto. `{{楽|たの}}しい` descrive una qualità presente: una lezione, una lotta o una gita "è divertente". [{{楽|たの}}しみ](term:term-anki-l06-tanoshimi) può invece nominare l'attesa stessa: la cosa non è ancora accaduta, ma il parlante la guarda già con piacere.
+[{{楽|たの}}しみ](term:term-anki-l06-tanoshimi) e {{楽|たの}}しい non occupano lo stesso posto. {{楽|たの}}しい descrive una qualità presente: una lezione, una lotta o una gita "è divertente". [{{楽|たの}}しみ](term:term-anki-l06-tanoshimi) può invece nominare l'attesa stessa: la cosa non è ancora accaduta, ma il parlante la guarda già con piacere.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per ricordare [{{解散|かいさん}}](term:term-anki-l06-kaisan), immagina il momento in cui una classe smette di essere una classe riunita: le persone erano un gruppo, poi la parola le lascia disperdere. Il cuore non è "rompere", ma "sciogliere il raduno".
 
@@ -224,8 +226,8 @@ Per ricordare [{{解散|かいさん}}](term:term-anki-l06-kaisan), immagina il 
 
 Area Zero porta nel gioco un lessico diverso da quello dei corridoi scolastici. Qui non basta riconoscere un "oggetto": spesso la frase vuole dirti che c'è un apparato, un meccanismo, qualcosa con una struttura interna. [{{機械|きかい}}](term:term-anki-l06-kikai) è la parola che sposta la lettura in quella direzione.
 
-*   [{{機械|きかい}}](term:term-anki-l06-kikai) indica una macchina o apparecchiatura con meccanismi interni. È diverso da `{{道具|どうぐ}}`, che può essere uno strumento più generico, anche semplice. In *Scarlet & Violet* questa differenza si sente quando la tecnologia smette di essere un oggetto da usare e diventa parte della trama: `タイムマシン` nomina l'apparato specifico, mentre [{{機械|きかい}}](term:term-anki-l06-kikai) lo classifica come macchina complessa.
-*   Quando [{{機械|きかい}}](term:term-anki-l06-kikai) compare insieme ad aggettivi come `{{複雑|ふくざつ}}な`, la frase non sta descrivendo solo l'aspetto esterno. Sta dicendo che l'oggetto ha un funzionamento difficile da capire, quindi appartiene a un registro più tecnico: laboratorio, dati, dispositivi, tecnologia di Area Zero.
+*   [{{機械|きかい}}](term:term-anki-l06-kikai) indica una macchina o apparecchiatura con meccanismi interni. È diverso da {{道具|どうぐ}}, che può essere uno strumento più generico, anche semplice. In *Scarlet & Violet* questa differenza si sente quando la tecnologia smette di essere un oggetto da usare e diventa parte della trama: タイムマシン nomina l'apparato specifico, mentre [{{機械|きかい}}](term:term-anki-l06-kikai) lo classifica come macchina complessa.
+*   Quando [{{機械|きかい}}](term:term-anki-l06-kikai) compare insieme ad aggettivi come {{複雑|ふくざつ}}な, la frase non sta descrivendo solo l'aspetto esterno. Sta dicendo che l'oggetto ha un funzionamento difficile da capire, quindi appartiene a un registro più tecnico: laboratorio, dati, dispositivi, tecnologia di Area Zero.
 
 :::example_sentence
 jp: >-
@@ -253,11 +255,11 @@ translation_it: >-
 *   `データの {{数|かず}}が` ➔ **Valore misurabile** (`の` collega i dati al loro numero; `が` marca ciò che cambia).
 *   `{{上|あ}}がる` ➔ **Risultato automatico** (il numero sale come conseguenza dell'uso, senza bisogno di un agente espresso).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`{{道具|どうぐ}}` può essere lo strumento che prendi, usi e rimetti via; [{{機械|きかい}}](term:term-anki-l06-kikai) fa pensare a parti interne, funzionamento e tecnologia. Se una frase parla di Area Zero, dati o apparati, leggere [{{機械|きかい}}](term:term-anki-l06-kikai) come "semplice oggetto" rischia di togliere peso alla scena.
+{{道具|どうぐ}} può essere lo strumento che prendi, usi e rimetti via; [{{機械|きかい}}](term:term-anki-l06-kikai) fa pensare a parti interne, funzionamento e tecnologia. Se una frase parla di Area Zero, dati o apparati, leggere [{{機械|きかい}}](term:term-anki-l06-kikai) come "semplice oggetto" rischia di togliere peso alla scena.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Usa [{{機械|きかい}}](term:term-anki-l06-kikai) come segnale di meccanismo interno. Quando il testo vuole solo indicare una cosa utile, può scegliere parole più generiche; quando vuole evocare laboratorio, struttura e funzionamento, [{{機械|きかい}}](term:term-anki-l06-kikai) diventa naturale.
 

@@ -30,14 +30,6 @@ importante arriva spesso alla fine. Il numero davanti a `しか` prepara il
 tetto consentito, mentre la negazione chiude la frase e trasforma tutto in
 “non più di...”.
 
-:::image
-src: assets/cards/live-duel/2x2-4x5-plus-17-equals-1.jpg
-alt: "♪2×2-4×5+17=1 card."
-caption: >-
-  ♪2×2-4×5+17=1。 Razza: マジック・ソング. La riga dell'effetto limita
-  l'avversario durante il suo prossimo turno: può fare al massimo un attacco
-  con una creatura.
-:::
 
 ## Termini chiave
 
@@ -62,9 +54,18 @@ caption: >-
 
 ---
 
+:::image
+src: assets/cards/live-duel/2x2-4x5-plus-17-equals-1.jpg
+alt: "♪2×2-4×5+17=1 card."
+caption: >-
+  ♪2×2-4×5+17=1。 Razza: マジック・ソング. La riga dell'effetto limita
+  l'avversario durante il suo prossimo turno: può fare al massimo un attacco
+  con una creatura.
+:::
+
 ## 1. La finestra dell'effetto: prossimo turno, non blocco permanente
 
-La frase apre con [{{次|つぎ}}の](grammar:grammar-tsugi-no)[{{相手|あいて}}](term:term-opponent)のターン{{中|ちゅう}}. `{{次|つぎ}}の` prende il turno immediatamente successivo nella sequenza di gioco; non dice “un turno avversario qualsiasi” e non crea una regola permanente.
+La frase apre con [{{次|つぎ}}の](grammar:grammar-tsugi-no)[{{相手|あいて}}](term:term-opponent)のターン{{中|ちゅう}}. {{次|つぎ}}の prende il turno immediatamente successivo nella sequenza di gioco; non dice “un turno avversario qualsiasi” e non crea una regola permanente.
 
 `ターン{{中|ちゅう}}` trasforma quel turno in una finestra temporale. Tutto ciò che segue nella frase va letto dentro quel perimetro: quando il turno avversario finisce, anche la restrizione ha finito il suo lavoro.
 
@@ -83,13 +84,13 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{次|つぎ}}の](grammar:grammar-tsugi-no)` specifica il turno che viene subito dopo l'effetto, non una categoria abituale di turni futuri.
-*   `[{{相手|あいて}}](term:term-opponent)のターン{{中|ちゅう}}` mette il turno dell'avversario in funzione di cornice: la restrizione vive “durante” quel turno.
+*   [{{次|つぎ}}の](grammar:grammar-tsugi-no) specifica il turno che viene subito dopo l'effetto, non una categoria abituale di turni futuri.
+*   [{{相手|あいて}}](term:term-opponent)のターン{{中|ちゅう}} mette il turno dell'avversario in funzione di cornice: la restrizione vive “durante” quel turno.
 *   La virgola dopo `ターン{{中|ちゅう}}` separa la cornice temporale dal contenuto della regola: prima il quando, poi che cosa viene limitato.
 
 #### ⚖️ Contrasto operativo
 
-[{{次|つぎ}}の](grammar:grammar-tsugi-no)[{{相手|あいて}}](term:term-opponent)のターン{{中|ちゅう}} non equivale a [{{相手|あいて}}](term:term-opponent)のターン{{中|ちゅう}} da solo. Senza `{{次|つぎ}}の`, potresti leggere una regola più generale; con `{{次|つぎ}}の`, il giapponese restringe l'effetto al turno avversario immediatamente successivo.
+[{{次|つぎ}}の](grammar:grammar-tsugi-no)[{{相手|あいて}}](term:term-opponent)のターン{{中|ちゅう}} non equivale a [{{相手|あいて}}](term:term-opponent)のターン{{中|ちゅう}} da solo. Senza {{次|つぎ}}の, potresti leggere una regola più generale; con {{次|つぎ}}の, il giapponese restringe l'effetto al turno avversario immediatamente successivo.
 
 #### 🧠 Gancio cognitivo
 
@@ -114,13 +115,13 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{相手|あいて}}](term:term-opponent)は` stabilisce chi subisce la restrizione: l'avversario, non tu e non una creatura specifica.
-*   `[{{一度|いちど}}しか](grammar:grammar-shika)` mette davanti il limite numerico: una sola occorrenza resta dentro l'area consentita.
-*   `[{{攻撃|こうげき}}](term:term-attack)できない` è potenziale negativo: la regola parla di ciò che non è permesso fare, non di ciò che l'avversario sceglierà davvero di fare.
+*   [{{相手|あいて}}](term:term-opponent)は stabilisce chi subisce la restrizione: l'avversario, non tu e non una creatura specifica.
+*   [{{一度|いちど}}しか](grammar:grammar-shika) mette davanti il limite numerico: una sola occorrenza resta dentro l'area consentita.
+*   [{{攻撃|こうげき}}](term:term-attack)できない è potenziale negativo: la regola parla di ciò che non è permesso fare, non di ciò che l'avversario sceglierà davvero di fare.
 
 #### ⚖️ Contrasto operativo
 
-`[{{一度|いちど}}しか](grammar:grammar-shika)...できない` crea un massimo, non un obbligo. L'avversario può anche non attaccare; semplicemente non può superare un singolo attacco con una creatura durante quella finestra.
+[{{一度|いちど}}しか](grammar:grammar-shika)...できない crea un massimo, non un obbligo. L'avversario può anche non attaccare; semplicemente non può superare un singolo attacco con una creatura durante quella finestra.
 
 #### 🧠 Gancio cognitivo
 
@@ -128,7 +129,7 @@ Con `しか`, aspetta sempre la chiusura negativa: `{{一度|いちど}}しか` 
 
 ## 3. Il mezzo dell'azione: creature, non qualsiasi effetto
 
-Il blocco [クリーチャー](term:term-creature)で[{{攻撃|こうげき}}](term:term-attack)できない contiene un `で` strumentale. La creatura è il mezzo con cui avviene l'attacco: la frase non sta contando tutte le azioni del turno, ma gli attacchi effettuati usando creature.
+Il blocco [クリーチャー](term:term-creature)で[{{攻撃|こうげき}}](term:term-attack)できない contiene un で strumentale. La creatura è il mezzo con cui avviene l'attacco: la frase non sta contando tutte le azioni del turno, ma gli attacchi effettuati usando creature.
 
 Questo dettaglio evita una lettura troppo larga. La restrizione non dice che l'avversario può fare una sola cosa in tutto il turno; dice che, dentro quel turno, gli attacchi con creature non possono superare una singola occorrenza.
 
@@ -143,13 +144,13 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[クリーチャー](term:term-creature)で` indica il mezzo o lo strumento dell'azione: l'attacco passa attraverso una creatura.
-*   `[{{攻撃|こうげき}}](term:term-attack)できない` combina il nome verbale `{{攻撃|こうげき}}` con `できない`: “non poter attaccare”.
-*   Quando questo blocco segue `[{{一度|いちど}}しか](grammar:grammar-shika)`, il divieto non è totale: resta permesso un solo attacco di creatura.
+*   [クリーチャー](term:term-creature)で indica il mezzo o lo strumento dell'azione: l'attacco passa attraverso una creatura.
+*   [{{攻撃|こうげき}}](term:term-attack)できない combina il nome verbale {{攻撃|こうげき}} con できない: “non poter attaccare”.
+*   Quando questo blocco segue [{{一度|いちど}}しか](grammar:grammar-shika), il divieto non è totale: resta permesso un solo attacco di creatura.
 
 #### ⚖️ Contrasto operativo
 
-`[クリーチャー](term:term-creature)で[{{攻撃|こうげき}}](term:term-attack)` non significa “ogni creatura può attaccare una volta”. Il topic è `[{{相手|あいて}}](term:term-opponent)は`, quindi il limite ricade sul giocatore avversario nel suo complesso: una sola azione di attacco con una creatura.
+[クリーチャー](term:term-creature)で[{{攻撃|こうげき}}](term:term-attack) non significa “ogni creatura può attaccare una volta”. Il topic è [{{相手|あいて}}](term:term-opponent)は, quindi il limite ricade sul giocatore avversario nel suo complesso: una sola azione di attacco con una creatura.
 
 ## 4. Come tenere insieme l'intera riga
 
@@ -198,6 +199,8 @@ translation_it: >-
   L'avversario non può attaccare usando creature.
 reveal_mode: sentence
 :::
+
+---
 
 ## Nota finale
 

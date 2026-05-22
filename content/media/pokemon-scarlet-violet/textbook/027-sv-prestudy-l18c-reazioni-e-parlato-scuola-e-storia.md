@@ -35,34 +35,34 @@ dell'Accademia.
 
 ## Termini chiave
 
-- [{{今度|こんど}}](term:term-v228-kondo) - questa volta / la prossima volta
-- [{{残念|ざんねん}}](term:term-v232-zannen) - peccato / deludente
-- [{{向|む}}こう](term:term-e062-mukou) - di là / laggiù / dall'altra parte
-- [どっち？](term:term-e063-docchi) - quale dei due? / da che parte?
-- [{{自由|じゆう}}](term:term-v233-jiyuu) - libertà / libero
-- [{{種類|しゅるい}}](term:term-v224-shurui) - tipo / categoria / varietà
-- [{{食事|しょくじ}}](term:term-v225-shokuji) - pasto / mangiare come evento
-- [メニュー](term:term-v227-menyuu) - menu / lista di scelte
-- [{{色違|いろちが}}い](term:term-v229-irochigai) - Pokémon shiny / di colore diverso
-- [でんき](term:term-v231-denki) - elettricità / tipo Elettro
-- [{{意味|いみ}}](term:term-v230-imi) - significato
-- [{{勝利|しょうり}}](term:term-v234-shouri) - vittoria
+- [{{今度|こんど}}](term:term-v228-kondo) — questa volta / la prossima volta
+- [{{残念|ざんねん}}](term:term-v232-zannen) — peccato / deludente
+- [{{向|む}}こう](term:term-e062-mukou) — di là / laggiù / dall'altra parte
+- [どっち？](term:term-e063-docchi) — quale dei due? / da che parte?
+- [{{自由|じゆう}}](term:term-v233-jiyuu) — libertà / libero
+- [{{種類|しゅるい}}](term:term-v224-shurui) — tipo / categoria / varietà
+- [{{食事|しょくじ}}](term:term-v225-shokuji) — pasto / mangiare come evento
+- [メニュー](term:term-v227-menyuu) — menu / lista di scelte
+- [{{色違|いろちが}}い](term:term-v229-irochigai) — Pokémon shiny / di colore diverso
+- [でんき](term:term-v231-denki) — elettricità / tipo Elettro
+- [{{意味|いみ}}](term:term-v230-imi) — significato
+- [{{勝利|しょうり}}](term:term-v234-shouri) — vittoria
 
 ## Espressioni ricorrenti
 
-- [〜してあげる](term:term-e042-shiteageru) - fare qualcosa per qualcuno, come favore
-- [ライド{{技|わざ}}](term:term-v226-raidowaza) - abilità di movimento della cavalcatura
+- [〜してあげる](term:term-e042-shiteageru) — fare qualcosa per qualcuno, come favore
+- [ライド{{技|わざ}}](term:term-v226-raidowaza) — abilità di movimento della cavalcatura
 
 ## Pattern grammaticali chiave
 
-- [～ましょう / ～ましょ](grammar:grammar-g044-facciamo-andiamo-a) - proposta cortese o guida condivisa
-- [～よう](grammar:grammar-g045-facciamo-provero-a) - volitivo: facciamo / proverò a
-- [～のに](grammar:grammar-g043-anche-se-nonostante) - anche se / nonostante, con contrasto inatteso
+- [～ましょう / ～ましょ](grammar:grammar-g044-facciamo-andiamo-a) — proposta cortese o guida condivisa
+- [～よう](grammar:grammar-g045-facciamo-provero-a) — volitivo: facciamo / proverò a
+- [～のに](grammar:grammar-g043-anche-se-nonostante) — anche se / nonostante, con contrasto inatteso
 
 ## Etichette da riconoscere
 
-- [{{中間|ちゅうかん}}テスト](term:term-v342-chuukan-tesuto) - esame di metà corso
-- [{{期末|きまつ}}テスト](term:term-v343-kimatsu-tesuto) - esame finale
+- [{{中間|ちゅうかん}}テスト](term:term-v342-chuukan-tesuto) — esame di metà corso
+- [{{期末|きまつ}}テスト](term:term-v343-kimatsu-tesuto) — esame finale
 
 ---
 
@@ -110,7 +110,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{今度|こんど}}は` ➔ **cornice temporale** ([{{今度|こんど}}](term:term-v228-kondo)
+*   {{今度|こんど}}は ➔ **cornice temporale** ([{{今度|こんど}}](term:term-v228-kondo)
     restringe la promessa a "questa volta" o "la prossima volta"; `は` mette
     quella occasione a tema).
 *   `{{手伝|てつだ}}ってあげる` ➔ **favore offerto** (forma in `-te` +
@@ -119,7 +119,7 @@ translation_it: >-
 *   `{{一緒|いっしょ}}に {{行|い}}きましょう` ➔ **proposta guidata** (`～ましょう`
     invita a muoversi insieme, con tono cortese e collaborativo).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{手伝|てつだ}}う` descrive l'azione di aiutare. `{{手伝|てつだ}}ってあげる`
 aggiunge chi riceve il favore. `{{行|い}}きましょう` invece non offre un favore:
@@ -127,7 +127,7 @@ porta l'altra persona dentro una proposta condivisa. Se separi questi tre
 livelli, la battuta smette di essere una generica frase gentile e diventa una
 mini-sequenza: promessa, beneficio, invito.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Immagina `あげる` come una piccola freccia che parte dal parlante e va verso
 qualcun altro. Il verbo prima della freccia dice che cosa viene "dato" come
@@ -162,21 +162,21 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{勝利|しょうり}}した` ➔ **esito positivo** (il nome
-    [{{勝利|しょうり}}](term:term-v234-shouri) diventa azione con `する`: "ha
+    [{{勝利|しょうり}}](term:term-v234-shouri) diventa azione con する: "ha
     ottenuto la vittoria").
 *   `のに` ➔ **contrasto inatteso** (marca che la seconda parte non segue
     l'aspettativa normale: dopo una vittoria ti aspetteresti soddisfazione).
 *   `{{残念|ざんねん}}そうです` ➔ **aspetto osservato** (`そう` segnala come
     appare la persona: "sembra delusa", non necessariamente "dice di esserlo").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `でも` può introdurre un "però" abbastanza libero tra due frasi. `～のに` è più
 stretto: aggancia la seconda parte a un'aspettativa tradita dalla prima. Per
 questo `{{勝利|しょうり}}したのに` suona come "proprio nonostante la vittoria",
 non come un semplice "ha vinto, però...".
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Quando incontri `のに`, cerca la promessa nascosta nella prima metà della frase.
 Se quella promessa non si realizza, hai trovato il cuore emotivo del contrasto.
@@ -229,14 +229,14 @@ translation_it: >-
 *   `{{自由|じゆう}}だよ` ➔ **libertà dichiarata** (il parlante chiarisce che la
     scelta non è obbligata; `よ` aggiunge tono informativo o rassicurante).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{向|む}}こう](term:term-e062-mukou) punta un'area nello spazio. [どっち？](term:term-e063-docchi)
 chiede di scegliere tra opzioni. [{{自由|じゆう}}](term:term-v233-jiyuu) dice che
 la scelta è tua. Se li confondi, una frase che dovrebbe orientarti può sembrare
 un comando rigido o, al contrario, una domanda senza conseguenze.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{向|む}}こう](term:term-e062-mukou), pensa a una mano che indica oltre il
 bordo dello schermo. Non ti dà coordinate precise: ti dice "l'altra parte
@@ -299,7 +299,7 @@ translation_it: >-
 *   `{{確|たし}}かめよう` ➔ **volitivo pratico** (`～よう` invita a verificare o
     esprime la decisione di farlo).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{食事|しょくじ}}](term:term-v225-shokuji) è l'evento del mangiare; [メニュー](term:term-v227-menyuu)
 è la lista o la schermata; [{{種類|しゅるい}}](term:term-v224-shurui) è il modo
@@ -323,7 +323,7 @@ translation_it: >-
 *   `{{進|すす}}めるように なった` ➔ **nuova possibilità acquisita** (la frase
     segnala che da ora il movimento è possibile).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{種類|しゅるい}}](term:term-v224-shurui), immagina gli scaffali di un
 negozio: ogni scaffale separa una varietà diversa. Quando il gioco dice
@@ -383,14 +383,14 @@ translation_it: >-
     presenta l'azione come passo condiviso guidato dall'insegnante o dal
     sistema).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{中間|ちゅうかん}}テスト](term:term-v342-chuukan-tesuto) ti dice "sei a metà".
 [{{期末|きまつ}}テスト](term:term-v343-kimatsu-tesuto) ti dice "siamo alla
 fine". Non sono due sinonimi di "quiz": indicano due momenti diversi della
 vita scolastica e cambiano il peso della scena.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{意味|いみ}}](term:term-v230-imi), pensa a una freccia che va dalla
 parola al suo valore. La parola è il cartello; `{{意味|いみ}}` è ciò che quel

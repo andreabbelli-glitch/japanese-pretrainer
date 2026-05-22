@@ -34,17 +34,6 @@ chiude il movimento verso la [マナゾーン](term:term-mana-zone) del
 [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi). Se segui questi tre agganci, la
 rimozione simmetrica resta precisa anche quando il campo è pieno.
 
-:::image
-src: assets/cards/live-duel/hanasaki-gelgranos.jpg
-alt: "Hanasaki Gelgranos card."
-caption: >-
-  [ハナサキ・ゲルグラノス](term:term-hanasaki-gelgranos) mette sulla stessa carta
-  la keyword [S・トリガー](term:term-s-trigger), la razza
-  バルーン・マッシュルーム・ドラゴン e una frase d'ingresso in cui
-  [{{各|かく}}](term:term-kaku)プレイヤー sceglie una propria creatura da mettere
-  nella [マナゾーン](term:term-mana-zone) del
-  [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi).
-:::
 
 ## Termini chiave
 
@@ -68,11 +57,23 @@ caption: >-
 ## Etichette da riconoscere
 
 - [ハナサキ・ゲルグラノス](term:term-hanasaki-gelgranos) — creatura Nature con rimozione simmetrica verso il mana
-- [S・トリガー](term:term-s-trigger)
+- [S・トリガー](term:term-s-trigger) — uso gratuito quando la carta passa dallo scudo alla mano
 - バルーン・マッシュルーム・ドラゴン — razza della carta
 - [マナゾーン](term:term-mana-zone) — zona di destinazione dell'effetto
 
 ---
+
+:::image
+src: assets/cards/live-duel/hanasaki-gelgranos.jpg
+alt: "Hanasaki Gelgranos card."
+caption: >-
+  [ハナサキ・ゲルグラノス](term:term-hanasaki-gelgranos) mette sulla stessa carta
+  la keyword [S・トリガー](term:term-s-trigger), la razza
+  バルーン・マッシュルーム・ドラゴン e una frase d'ingresso in cui
+  [{{各|かく}}](term:term-kaku)プレイヤー sceglie una propria creatura da mettere
+  nella [マナゾーン](term:term-mana-zone) del
+  [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi).
+:::
 
 ## 1. Dalla keyword al trigger: quando l'effetto comincia
 
@@ -82,7 +83,7 @@ dopo, però, la grammatica cambia forma. Non stai più leggendo una keyword, ma
 una frase con soggetto, timing e azione.
 
 Il cuore del timing è
-`このクリーチャーが{{出|で}}た{{時|とき}}`. [{{出|で}}た](term:term-deru) è il
+このクリーチャーが{{出|で}}た{{時|とき}}. [{{出|で}}た](term:term-deru) è il
 verbo intransitivo di ingresso: la frase non specifica chi ha fatto entrare la
 carta, ma registra che questa creatura è entrata. [{{時|とき}}](grammar:grammar-toki)
 trasforma quell'evento nella finestra che fa partire il resto del testo.
@@ -106,20 +107,20 @@ reveal_mode: sentence
 *   `このクリーチャーが`: **soggetto dell'evento di ingresso**. `が` aggancia il
     trigger alla creatura che porta questo testo, non a una creatura qualsiasi
     sul campo.
-*   `[{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki)`:
+*   [{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki):
     **finestra temporale**. La forma in `た` descrive l'evento già avvenuto
     prima di [{{時|とき}}](grammar:grammar-toki): l'effetto si legge "quando è
     entrata".
-*   `[{{各|かく}}](term:term-kaku)プレイヤーは`: **scope distribuito**. Il testo
+*   [{{各|かく}}](term:term-kaku)プレイヤーは: **scope distribuito**. Il testo
     non apre un singolo decisore globale; crea lo stesso compito per ogni
     giocatore.
-*   `[{{自身|じしん}}](term:term-jishin)の[クリーチャー](term:term-creature)を{{1体|いったい}}`:
+*   [{{自身|じしん}}](term:term-jishin)の[クリーチャー](term:term-creature)を{{1体|いったい}}:
     **oggetto scelto**. Il riflessivo restringe la creatura al lato del
     giocatore che sta scegliendo.
-*   `[{{選|えら}}び](term:term-erabu)`: **scelta collegata al movimento
+*   [{{選|えら}}び](term:term-erabu): **scelta collegata al movimento
     successivo**. La forma continuativa non chiude l'effetto: prepara
     [{{置|お}}く](term:term-oku).
-*   `[{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の[マナゾーン](term:term-mana-zone)に[{{置|お}}く](term:term-oku)`:
+*   [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の[マナゾーン](term:term-mana-zone)に[{{置|お}}く](term:term-oku):
     **destinazione finale**. `に` marca il punto di arrivo e
     [{{置|お}}く](term:term-oku) chiude lo spostamento.
 
@@ -127,7 +128,7 @@ reveal_mode: sentence
 
 [S・トリガー](term:term-s-trigger) non ha particelle, soggetto o verbo
 coniugato: è una label. `このクリーチャーが{{出|で}}た{{時|とき}}`, invece, è una
-frase vera. Quando vedi `が`, [{{時|とき}}](grammar:grammar-toki), `を`, `に` e
+frase vera. Quando vedi が, [{{時|とき}}](grammar:grammar-toki), を, に e
 un verbo come [{{置|お}}く](term:term-oku), sei già dentro la risoluzione
 dell'effetto, non nella semplice etichetta della carta.
 
@@ -169,16 +170,16 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{各|かく}}](term:term-kaku)プレイヤーは`: **topic distribuito**. `は`
+*   [{{各|かく}}](term:term-kaku)プレイヤーは: **topic distribuito**. は
     mette ogni giocatore come referente dell'istruzione.
-*   `[{{自身|じしん}}](term:term-jishin)の`: **riflessivo locale**. Non significa
+*   [{{自身|じしん}}](term:term-jishin)の: **riflessivo locale**. Non significa
     automaticamente "tuo"; cambia referente insieme al giocatore considerato.
-*   `[クリーチャー](term:term-creature)を{{1体|いったい}}`: **oggetto più conteggio**.
+*   [クリーチャー](term:term-creature)を{{1体|いったい}}: **oggetto più conteggio**.
     `を` marca la creatura scelta, mentre `{{1体|いったい}}` conta un corpo
     creatura.
-*   `[{{選|えら}}び](term:term-erabu)`: **ponte verbale**. La virgola dopo
+*   [{{選|えら}}び](term:term-erabu): **ponte verbale**. La virgola dopo
     `選び` tiene aperta la catena verso la destinazione.
-*   `[{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の[マナゾーン](term:term-mana-zone)に[{{置|お}}く](term:term-oku)`:
+*   [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の[マナゾーン](term:term-mana-zone)に[{{置|お}}く](term:term-oku):
     **seconda metà dell'azione**. Dopo la scelta, il testo dice dove finisce la
     creatura scelta.
 
@@ -205,13 +206,13 @@ giocato [ハナサキ・ゲルグラノス](term:term-hanasaki-gelgranos). Usa
 [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の[マナゾーン](term:term-mana-zone),
 quindi la destinazione si risolve per la singola carta scelta.
 
-*   [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi) combina `{{持|も}}ち`
+*   [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi) combina {{持|も}}ち
     "possedere/tenere" e `{{主|ぬし}}` "proprietario principale". Nel rules text
     è più preciso di "chi la controlla adesso": guarda l'owner della carta come
     oggetto di gioco.
-*   `の[マナゾーン](term:term-mana-zone)` lega la zona al proprietario. Non basta
+*   の[マナゾーン](term:term-mana-zone) lega la zona al proprietario. Non basta
     leggere "nel mana"; bisogna chiedersi "nel mana di chi?".
-*   `に[{{置|お}}く](term:term-oku)` è un movimento verso una destinazione.
+*   に[{{置|お}}く](term:term-oku) è un movimento verso una destinazione.
     [{{置|お}}く](term:term-oku) non dice "distruggere" e non dice "riprendere in
     mano": dice collocare la creatura nella zona marcata da `に`.
 
@@ -226,12 +227,12 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の`: **possessore della zona**.
-    Il `の` non decora [マナゾーン](term:term-mana-zone): specifica quale mana
+*   [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の: **possessore della zona**.
+    Il の non decora [マナゾーン](term:term-mana-zone): specifica quale mana
     zone deve ricevere la creatura.
-*   `[マナゾーン](term:term-mana-zone)に`: **destinazione**. `に` indica il punto
+*   [マナゾーン](term:term-mana-zone)に: **destinazione**. に indica il punto
     di arrivo del movimento.
-*   `[{{置|お}}く](term:term-oku)`: **verbo di collocazione**. L'effetto si
+*   [{{置|お}}く](term:term-oku): **verbo di collocazione**. L'effetto si
     chiude quando la creatura viene messa nella zona corretta.
 
 #### ⚖️ Contrasto operativo: owner non è controller momentaneo

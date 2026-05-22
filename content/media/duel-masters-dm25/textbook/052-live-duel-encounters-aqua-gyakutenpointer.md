@@ -36,18 +36,6 @@ richiamare la procedura appena risolta e una relativa passiva lunga per dire
 chi continua. Se questi agganci restano separati, l'effetto smette di sembrare
 un blocco compatto e diventa una catena ordinata.
 
-:::image
-src: assets/cards/live-duel/aqua-gyakutenpointer.jpg
-alt: "Aqua Gyakutenpointer card."
-caption: >-
-  アクア・ギャクテンポインター unisce le keyword
-  [S・トリガー](term:term-s-trigger) e [ブロッカー](term:term-blocker) a una
-  riga d'ingresso molto densa: `{{最大|さいだい}}{{1体|いったい}}ずつ`
-  limita la scelta per giocatore, [このようにして](grammar:grammar-konoyounishite)
-  seleziona chi prosegue e
-  `クリーチャーが{{出|で}}るまで{{表向|おもてむ}}きにし` apre la rivelazione dal
-  [{{山札|やまふだ}}](term:term-deck).
-:::
 
 ## Termini chiave
 
@@ -75,6 +63,8 @@ caption: >-
 - [このようにして](grammar:grammar-konoyounishite) — in questo modo, tramite la procedura appena descritta
 - [{{自身|じしん}}のクリーチャーが{{選|えら}}ばれたプレイヤーは](grammar:grammar-erabareta-player) — quanto al giocatore di cui è stata scelta una propria creatura
 - [クリーチャーが{{出|で}}るまで{{表向|おもてむ}}きにし](grammar:grammar-deru-made-omotemuki-ni-shi) — girare carte a faccia in su finché non compare una creatura
+- [～まで](grammar:grammar-made) — fino a / al massimo
+- [その{{後|あと}}](grammar:grammar-sonoato) — dopo quello / poi
 
 ## Etichette da riconoscere
 
@@ -82,8 +72,22 @@ caption: >-
 - [ブロッカー](term:term-blocker) — keyword difensiva della creatura
 - リキッド・ピープル — razza della creatura
 - アクア・ギャクテンポインター — nome della creatura che porta l'effetto
+- [{{表向|おもてむ}}き](term:term-face-up) — a faccia in su / face-up
 
 ---
+
+:::image
+src: assets/cards/live-duel/aqua-gyakutenpointer.jpg
+alt: "Aqua Gyakutenpointer card."
+caption: >-
+  アクア・ギャクテンポインター unisce le keyword
+  [S・トリガー](term:term-s-trigger) e [ブロッカー](term:term-blocker) a una
+  riga d'ingresso molto densa: `{{最大|さいだい}}{{1体|いったい}}ずつ`
+  limita la scelta per giocatore, [このようにして](grammar:grammar-konoyounishite)
+  seleziona chi prosegue e
+  `クリーチャーが{{出|で}}るまで{{表向|おもてむ}}きにし` apre la rivelazione dal
+  [{{山札|やまふだ}}](term:term-deck).
+:::
 
 ## 1. Keyword compatte e trigger d'ingresso
 
@@ -123,7 +127,7 @@ scegliere fino a una creatura, e ogni carta scelta torna in fondo al
 [{{山札|やまふだ}}](term:term-deck) del proprio
 [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi).
 
-*   [{{最大|さいだい}}](term:term-saidai) davanti a `{{1体|いったい}}` non è il
+*   [{{最大|さいだい}}](term:term-saidai) davanti a {{1体|いったい}} non è il
     sostantivo astratto "il massimo": funziona come limite superiore. La
     quantità concessa arriva a una creatura, ma non obbliga sempre a riempire
     quel numero.
@@ -133,7 +137,7 @@ scegliere fino a una creatura, e ogni carta scelta torna in fondo al
     per ciascun giocatore, non due scelte concentrate su un solo lato.
 *   [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi) sposta l'attenzione dal
     controller momentaneo all'owner della carta. Quando il testo chiude con
-    `の{{下|した}}に[{{置|お}}く](term:term-oku)`, la destinazione è il fondo del
+    の{{下|した}}に[{{置|お}}く](term:term-oku), la destinazione è il fondo del
     deck del proprietario della creatura scelta.
 
 :::example_sentence
@@ -155,18 +159,18 @@ reveal_mode: sentence
 
 *   `このクリーチャーが`: **soggetto del trigger**. `が` lega l'evento alla
     creatura che porta questo testo.
-*   `[{{召喚|しょうかん}}](term:term-summon)によって[{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki)`:
+*   [{{召喚|しょうかん}}](term:term-summon)によって[{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki):
     **timing condizionato dal modo d'ingresso**. La carta deve essere entrata
     tramite summon perché questa finestra si apra.
-*   `[{{各|かく}}](term:term-kaku)プレイヤーの[クリーチャー](term:term-creature)を`:
+*   [{{各|かく}}](term:term-kaku)プレイヤーの[クリーチャー](term:term-creature)を:
     **campo dei possibili bersagli**. Il testo guarda le creature appartenenti
     a ciascun player, non una creatura qualunque.
-*   `[{{最大|さいだい}}](term:term-saidai){{1体|いったい}}[ずつ](grammar:grammar-zutsu)`:
+*   [{{最大|さいだい}}](term:term-saidai){{1体|いったい}}[ずつ](grammar:grammar-zutsu):
     **limite distribuito**. `{{最大|さいだい}}` dà il tetto, `ずつ` lo replica per
     ogni giocatore.
-*   `[{{選|えら}}び](term:term-erabu)`: **verbo ponte**. La forma continuativa
+*   [{{選|えら}}び](term:term-erabu): **verbo ponte**. La forma continuativa
     tiene aperta la frase verso il movimento successivo.
-*   `[{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の[{{山札|やまふだ}}](term:term-deck)の{{下|した}}に[{{置|お}}く](term:term-oku)`:
+*   [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の[{{山札|やまふだ}}](term:term-deck)の{{下|した}}に[{{置|お}}く](term:term-oku):
     **destinazione finale**. `に` marca il punto d'arrivo: il fondo del deck
     dell'owner.
 
@@ -190,7 +194,7 @@ creatura.
 
 ### A. La relativa passiva
 
-`{{選|えら}}ばれた` è il passivo di [{{選|えら}}ぶ](term:term-erabu). Dentro
+{{選|えら}}ばれた è il passivo di [{{選|えら}}ぶ](term:term-erabu). Dentro
 `{{自身|じしん}}のクリーチャーが{{選|えら}}ばれたプレイヤー`, il soggetto grammaticale
 della mini-frase è `{{自身|じしん}}のクリーチャー`: la creatura è stata scelta.
 `プレイヤー` arriva dopo e viene qualificato da tutta la relativa. In italiano
@@ -200,17 +204,17 @@ creatura".
 ### B. Dal deck alla prima creatura rivelata
 
 Dopo avere identificato chi prosegue, il testo torna sul
-[{{山札|やまふだ}}](term:term-deck): `の{{上|うえ}}から` indica la cima della pila.
+[{{山札|やまふだ}}](term:term-deck): の{{上|うえ}}から indica la cima della pila.
 [まで](grammar:grammar-made) non dà una durata vaga, ma il punto di arresto
 della procedura. Continui a rendere carte [{{表向|おもてむ}}き](term:term-face-up)
-finché `クリーチャーが[{{出|で}}る](term:term-deru)`, cioè finché compare una
+finché クリーチャーが[{{出|で}}る](term:term-deru), cioè finché compare una
 creatura.
 
 ### C. `表向きにし`: il `し` che collega il payoff
 
 [クリーチャーが{{出|で}}るまで{{表向|おもてむ}}きにし](grammar:grammar-deru-made-omotemuki-ni-shi)
 non finisce davvero su `し`. La forma viene da `{{表向|おもてむ}}きにする` e usa
-`し` come collegamento alla parte successiva: `そのクリーチャーを[{{出|だ}}す](term:term-dasu)`.
+し come collegamento alla parte successiva: そのクリーチャーを[{{出|だ}}す](term:term-dasu).
 [{{出|だ}}す](term:term-dasu) è transitivo, quindi il testo non dice più "una
 creatura appare", ma "metti in campo quella creatura".
 
@@ -233,27 +237,27 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[このようにして](grammar:grammar-konoyounishite)`: **ripresa procedurale**.
+*   [このようにして](grammar:grammar-konoyounishite): **ripresa procedurale**.
     Rimanda al modo appena descritto, non a una nuova condizione generica.
-*   `[{{自身|じしん}}](term:term-jishin)の[クリーチャー](term:term-creature)が[{{選|えら}}ばれたプレイヤーは](grammar:grammar-erabareta-player)`:
+*   [{{自身|じしん}}](term:term-jishin)の[クリーチャー](term:term-creature)が[{{選|えら}}ばれたプレイヤーは](grammar:grammar-erabareta-player):
     **topic ristretto da una relativa passiva**. Prosegue solo il player la cui
     creatura è stata scelta.
-*   `[{{自身|じしん}}](term:term-jishin)の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から`:
+*   [{{自身|じしん}}](term:term-jishin)の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から:
     **fonte della rivelazione**. `{{自身|じしん}}` richiude il deck sul player
     appena nominato.
-*   `[クリーチャー](term:term-creature)が[{{出|で}}る](term:term-deru)[まで](grammar:grammar-made)`:
+*   [クリーチャー](term:term-creature)が[{{出|で}}る](term:term-deru)[まで](grammar:grammar-made):
     **punto di arresto**. La procedura continua finché una creatura compare.
-*   `[{{表向|おもてむ}}きにし](grammar:grammar-deru-made-omotemuki-ni-shi)`:
+*   [{{表向|おもてむ}}きにし](grammar:grammar-deru-made-omotemuki-ni-shi):
     **azione connettiva**. Le carte vengono girate a faccia in su e il `し`
     prepara il passo successivo.
-*   `その[クリーチャー](term:term-creature)を[{{出|だ}}す](term:term-dasu)`:
+*   その[クリーチャー](term:term-creature)を[{{出|だ}}す](term:term-dasu):
     **payoff transitivo**. `その` riprende la creatura appena uscita, `を` la
     marca come oggetto e [{{出|だ}}す](term:term-dasu) la mette in campo.
 
 #### ⚖️ Contrasto operativo: `出る` e `出す`
 
 [{{出|で}}る](term:term-deru) descrive la creatura che appare nella rivelazione:
-`クリーチャーが{{出|で}}る`. [{{出|だ}}す](term:term-dasu) descrive l'azione di
+クリーチャーが{{出|で}}る. [{{出|だ}}す](term:term-dasu) descrive l'azione di
 mettere in campo quella creatura: `そのクリーチャーを{{出|だ}}す`. Il cambio da
 `が` a `を` ti segnala il cambio di prospettiva, da evento che accade a oggetto
 che viene messo in campo.
@@ -293,7 +297,7 @@ reveal_mode: sentence
     completata, non un momento qualsiasi del turno.
 *   `そのプレイヤーは`: **topic già identificato**. Il player è quello coinvolto
     dalla relativa passiva e dalla rivelazione.
-*   `[{{自身|じしん}}](term:term-jishin)の[{{山札|やまふだ}}](term:term-deck)を`:
+*   [{{自身|じしん}}](term:term-jishin)の[{{山札|やまふだ}}](term:term-deck)を:
     **oggetto posseduto dal topic locale**. Il deck da rimescolare è quello di
     quel player, non di chi controlla Aqua Gyakutenpointer.
 *   `シャッフルする`: **azione finale**. Il verbo chiude la procedura dopo la

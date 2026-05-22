@@ -57,11 +57,11 @@ La chiave è leggere insieme parola, particella e scena. `{{効果|こうか}}�
 
 ## 1. Effetti, registri e domande: quando il sistema spiega che cosa sta succedendo
 
-Quando una schermata di battaglia o un dialogo scolastico usa [{{効果|こうか}}](term:term-v051-kouka), il focus è il risultato prodotto da qualcosa: una mossa, un oggetto, un bonus, una spiegazione del professore. Non è l'azione in sé, ma quello che l'azione fa succedere. Per questo compare spesso in frasi con `がある`: il gioco ti sta dicendo che "c'è effetto", cioè che quella scelta produce un risultato riconoscibile.
+Quando una schermata di battaglia o un dialogo scolastico usa [{{効果|こうか}}](term:term-v051-kouka), il focus è il risultato prodotto da qualcosa: una mossa, un oggetto, un bonus, una spiegazione del professore. Non è l'azione in sé, ma quello che l'azione fa succedere. Per questo compare spesso in frasi con がある: il gioco ti sta dicendo che "c'è effetto", cioè che quella scelta produce un risultato riconoscibile.
 
-[{{博士|はかせ}}](term:term-v053-hakase) porta invece la scena verso spiegazioni e ricerca. In un gioco Pokémon, il professore non è solo un titolo scolastico: è la voce che collega il mondo dei Pokémon a strumenti come il [{{図鑑|ずかん}}](term:term-v054-zukan). Quando leggi `{{図鑑|ずかん}}に{{登録|とうろく}}する`, la particella `に` è decisiva: non stai semplicemente "guardando" il Pokédex, stai mandando un'informazione dentro quel registro.
+[{{博士|はかせ}}](term:term-v053-hakase) porta invece la scena verso spiegazioni e ricerca. In un gioco Pokémon, il professore non è solo un titolo scolastico: è la voce che collega il mondo dei Pokémon a strumenti come il [{{図鑑|ずかん}}](term:term-v054-zukan). Quando leggi {{図鑑|ずかん}}に{{登録|とうろく}}する, la particella に è decisiva: non stai semplicemente "guardando" il Pokédex, stai mandando un'informazione dentro quel registro.
 
-[どんな](term:term-v055-donna) apre domande sul tipo o sulla natura di qualcosa. `どんな ポケモン` non chiede "dove" sia il Pokémon e non chiede solo il nome: chiede che genere di Pokémon è, che caratteristiche ha, che cosa bisogna aspettarsi.
+[どんな](term:term-v055-donna) apre domande sul tipo o sulla natura di qualcosa. どんな ポケモン non chiede "dove" sia il Pokémon e non chiede solo il nome: chiede che genere di Pokémon è, che caratteristiche ha, che cosa bisogna aspettarsi.
 
 :::example_sentence
 jp: >-
@@ -76,11 +76,11 @@ translation_it: >-
 *   `{{効果|こうか}}が` ➔ **Soggetto grammaticale dell'esistenza** (`が` marca l'effetto come cosa presente).
 *   `ある` ➔ **Esistenza / disponibilità** (non "fare", ma "esserci": la mossa produce un risultato).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{効果|こうか}}がある` non si legge come "usa un effetto". Con `がある`, il gioco constata che l'effetto esiste; con un oggetto marcato da `を`, invece, cercheresti un'azione diretta su quel bersaglio. Qui non stai premendo un comando: stai leggendo una conseguenza.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Come trucco mnemonico, pensa a [{{効果|こうか}}](term:term-v051-kouka) come al "frutto visibile" di una scelta: se dopo la mossa succede qualcosa, quello è il suo effetto. Il gancio serve per ricordare la funzione, non come spiegazione etimologica completa.
 
@@ -98,7 +98,7 @@ translation_it: >-
 *   `ポケモンを` ➔ **Oggetto registrato** (`を` marca ciò che viene inserito nel registro).
 *   `{{登録|とうろく}}する` ➔ **Verbo d'azione con `する`** (trasforma il nome `{{登録|とうろく}}`, registrazione, in "registrare").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{図鑑|ずかん}}を{{見|み}}る` e `{{図鑑|ずかん}}に{{登録|とうろく}}する` non descrivono la stessa cosa. Con `を{{見|み}}る`, il Pokédex è ciò che guardi; con `に{{登録|とうろく}}する`, il Pokédex è il luogo astratto in cui entra un dato.
 
@@ -106,7 +106,7 @@ translation_it: >-
 
 Il [ピクニック](term:term-v059-pikunikku) in Scarlet/Violet è una funzione concreta di campo: tiri fuori i Pokémon, prepari panini, recuperi ritmo tra una tratta e l'altra. Dentro questa scena, [{{食材|しょくざい}}](term:term-v052-shokuzai) non significa genericamente "cibo"; è il materiale alimentare che puoi combinare per preparare qualcosa.
 
-[{{作|つく}}る](term:term-v058-tsukuru) è il verbo che chiude l'azione: creare, fare, preparare. Se la frase dice `{{食材|しょくざい}}を{{使|つか}}って サンドウィッチを{{作|つく}}る`, prima selezioni e usi gli ingredienti, poi il risultato è il sandwich. La forma in `て` di `{{使|つか}}う` collega le due azioni senza trasformarle in una lista separata.
+[{{作|つく}}る](term:term-v058-tsukuru) è il verbo che chiude l'azione: creare, fare, preparare. Se la frase dice {{食材|しょくざい}}を{{使|つか}}って サンドウィッチを{{作|つく}}る, prima selezioni e usi gli ingredienti, poi il risultato è il sandwich. La forma in て di {{使|つか}}う collega le due azioni senza trasformarle in una lista separata.
 
 [{{中|なか}}](term:term-v057-naka) localizza dentro un contenitore, uno spazio o un gruppo. Nei menu può essere il contenuto della borsa; in una scena può essere l'interno di un edificio o il mezzo di un'area. [ちゃんと](term:term-v056-chanto), invece, cambia il tono dell'azione: non basta guardare o fare, bisogna farlo "come si deve", con attenzione reale.
 
@@ -124,13 +124,13 @@ translation_it: >-
 *   `{{使|つか}}って` ➔ **Azione ponte** (forma in `て`: "usando...", collega mezzo e azione successiva).
 *   `サンドウィッチを {{作|つく}}る` ➔ **Risultato preparato** (`を` marca il sandwich come cosa che viene fatta).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{食材|しょくざい}}](term:term-v052-shokuzai) è più specifico di "cibo": è ciò che serve per preparare un piatto. In una schermata di picnic, leggere `{{食材|しょくざい}}` come "ingredienti" ti fa cercare selezione e combinazione; leggerlo solo come "mangiare" ti fa perdere la funzione del menu.
+[{{食材|しょくざい}}](term:term-v052-shokuzai) è più specifico di "cibo": è ciò che serve per preparare un piatto. In una schermata di picnic, leggere {{食材|しょくざい}} come "ingredienti" ti fa cercare selezione e combinazione; leggerlo solo come "mangiare" ti fa perdere la funzione del menu.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-`{{食|しょく}}` richiama il cibo e `{{材|ざい}}` il materiale: [{{食材|しょくざい}}](term:term-v052-shokuzai) è il "materiale da cucina". Qui la composizione aiuta davvero a ricordare perché la parola sta bene accanto a `{{使|つか}}う` e [{{作|つく}}る](term:term-v058-tsukuru).
+{{食|しょく}} richiama il cibo e {{材|ざい}} il materiale: [{{食材|しょくざい}}](term:term-v052-shokuzai) è il "materiale da cucina". Qui la composizione aiuta davvero a ricordare perché la parola sta bene accanto a {{使|つか}}う e [{{作|つく}}る](term:term-v058-tsukuru).
 
 :::example_sentence
 jp: >-
@@ -145,15 +145,15 @@ translation_it: >-
 *   `ちゃんと` ➔ **Qualità richiesta dell'azione** (non "un po'", ma "come si deve").
 *   `{{見|み}}て` ➔ **Richiesta informale** (forma in `て` usata come invito o comando leggero, naturale nel parlato).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `ちゃんと{{見|み}}て` è più forte di un semplice `{{見|み}}て`: il personaggio non chiede solo di guardare, ma di controllare con cura. In un tutorial o in una battuta prima di agire, questa parola segnala che la precisione conta.
 
 ## 3. Permesso e sequenza: cosa puoi fare adesso e cosa viene dopo
 
-[～てもいい](grammar:grammar-g014-si-puo-va-bene-fare) si costruisce con la forma in `て` più `も` e `いい`: letteralmente, "anche se fai questa cosa, va bene". In italiano naturale spesso diventa "puoi fare..." o "va bene se...". Il punto non è un ordine, ma un permesso o una concessione.
+[～てもいい](grammar:grammar-g014-si-puo-va-bene-fare) si costruisce con la forma in て più も e いい: letteralmente, "anche se fai questa cosa, va bene". In italiano naturale spesso diventa "puoi fare..." o "va bene se...". Il punto non è un ordine, ma un permesso o una concessione.
 
-[～{{後|あと}}で / ～あとで](grammar:grammar-g015-dopo) organizza la scena nel tempo. Dopo un nome, la forma tipica è `Nの{{後|あと}}で`: `バトルの{{後|あと}}で` significa "dopo la lotta". Dopo un verbo, il blocco parte dalla forma passata: `{{食|た}}べた{{後|あと}}で`, "dopo aver mangiato". [{{最後|さいご}}](term:term-v060-saigo) è diverso: non dice "dopo", ma identifica l'ultimo elemento di una serie.
+[～{{後|あと}}で / ～あとで](grammar:grammar-g015-dopo) organizza la scena nel tempo. Dopo un nome, la forma tipica è Nの{{後|あと}}で: バトルの{{後|あと}}で significa "dopo la lotta". Dopo un verbo, il blocco parte dalla forma passata: {{食|た}}べた{{後|あと}}で, "dopo aver mangiato". [{{最後|さいご}}](term:term-v060-saigo) è diverso: non dice "dopo", ma identifica l'ultimo elemento di una serie.
 
 :::example_sentence
 jp: >-
@@ -169,13 +169,13 @@ translation_it: >-
 *   `{{休|やす}}んでも` ➔ **Azione concessa** (forma in `て` + `も`: "anche se riposi...").
 *   `いい` ➔ **Valutazione positiva / permesso** ("va bene", quindi "puoi").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{休|やす}}んでもいい` non obbliga a riposare. Se una schermata o un personaggio vuole comandare, userà forme più direttive, come `{{休|やす}}んでください` o un imperativo contestuale. Con `てもいい`, il gioco apre una possibilità.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [～てもいい](grammar:grammar-g014-si-puo-va-bene-fare), tieni in mente la formula "anche se lo fai, va bene". Aiuta a non trasformare ogni frase con `いい` in un complimento: qui `いい` valuta l'azione come permessa.
+Per [～てもいい](grammar:grammar-g014-si-puo-va-bene-fare), tieni in mente la formula "anche se lo fai, va bene". Aiuta a non trasformare ogni frase con いい in un complimento: qui いい valuta l'azione come permessa.
 
 :::example_sentence
 jp: >-
@@ -190,17 +190,17 @@ translation_it: >-
 *   `{{最後|さいご}}の バッジも` ➔ **Elemento finale incluso** (`の` fa di `{{最後|さいご}}` un modificatore di "medaglia", `も` aggiunge "anche").
 *   `もらえる` ➔ **Possibilità di ricevere** (potenziale di `もらう`: riuscire a ottenere).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{最後|さいご}}](term:term-v060-saigo) non significa "recente". `{{最後|さいご}}のバッジ` è la medaglia finale della serie, mentre `バトルの{{後|あと}}で` è il momento successivo alla lotta. Uno ordina una lista; l'altro ordina il tempo.
+[{{最後|さいご}}](term:term-v060-saigo) non significa "recente". {{最後|さいご}}のバッジ è la medaglia finale della serie, mentre バトルの{{後|あと}}で è il momento successivo alla lotta. Uno ordina una lista; l'altro ordina il tempo.
 
 ## 4. Reazioni e parlato: avviso, sorpresa e tono del personaggio
 
-[{{気|き}}をつけて](term:term-e012-kiwo-tsukete) è una formula da viaggio, pericolo leggero o saluto premuroso. La struttura viene da `{{気|き}}をつける`: "mettere attenzione", "stare attenti". La forma in `て` la rende una richiesta o un'esortazione naturale, spesso più morbida se chiusa da `ね`.
+[{{気|き}}をつけて](term:term-e012-kiwo-tsukete) è una formula da viaggio, pericolo leggero o saluto premuroso. La struttura viene da {{気|き}}をつける: "mettere attenzione", "stare attenti". La forma in て la rende una richiesta o un'esortazione naturale, spesso più morbida se chiusa da ね.
 
 [すごい！](term:term-e013-sugoi) è una reazione immediata. Può descrivere qualcosa di notevole, ma da solo funziona anche come esclamazione: "forte!", "incredibile!". Nei dialoghi di Scarlet/Violet è il tipo di parola che fa sentire il personaggio presente nella scena, non un menu neutro.
 
-[きっと](term:term-v061-kitto) aggiunge fiducia, non prova oggettiva. Se un personaggio dice `きっと`, sta anticipando un risultato con convinzione. Il registro è naturale nel parlato: non è solenne, ma fa capire che chi parla crede davvero in quello che sta dicendo.
+[きっと](term:term-v061-kitto) aggiunge fiducia, non prova oggettiva. Se un personaggio dice きっと, sta anticipando un risultato con convinzione. Il registro è naturale nel parlato: non è solenne, ma fa capire che chi parla crede davvero in quello che sta dicendo.
 
 :::example_sentence
 jp: >-
@@ -215,11 +215,11 @@ translation_it: >-
 *   `{{行|い}}って` ➔ **Azione di movimento in forma `て`** (qui accompagna l'esortazione: "vai...").
 *   `ね` ➔ **Particella di coinvolgimento** (ammorbidisce e cerca accordo emotivo con l'interlocutore).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 Senza `ね`, `{{気|き}}をつけて` resta un invito chiaro. Con `ね`, suona più vicino e premuroso, come un personaggio che ti accompagna con la voce mentre parti. La grammatica non cambia il comando di base, ma cambia la distanza sociale.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 In [{{気|き}}をつけて](term:term-e012-kiwo-tsukete), immagina l'attenzione che viene "attaccata" all'azione prima di muoverti. È un'immagine utile per ricordare la formula, non una traduzione parola per parola da usare in italiano.
 
@@ -236,9 +236,9 @@ translation_it: >-
 *   `どんな {{効果|こうか}}が` ➔ **Domanda sul tipo di effetto** (`どんな` restringe la domanda alla natura o qualità dell'effetto).
 *   `あるの？` ➔ **Domanda esplicativa colloquiale** (`の` cerca spiegazione o conferma, non aggiunge un nuovo oggetto).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`どんな` non equivale a `なに`. Con `なに`, la domanda punta a "che cosa?"; con `どんな`, punta a "che tipo di cosa?". In una frase su [{{効果|こうか}}](term:term-v051-kouka), questo ti prepara a una spiegazione di qualità, tipo o funzione.
+どんな non equivale a なに. Con なに, la domanda punta a "che cosa?"; con どんな, punta a "che tipo di cosa?". In una frase su [{{効果|こうか}}](term:term-v051-kouka), questo ti prepara a una spiegazione di qualità, tipo o funzione.
 
 ---
 
@@ -276,4 +276,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando Paldea alterna scuola, battaglie, picnic e dialoghi, guarda prima le particelle: `がある` fa esistere un effetto, `を` marca ciò che usi o prepari, `に` porta l'informazione dentro un registro, `で` colloca l'azione e `の{{後|あと}}で` mette ordine nel tempo. A quel punto parole come [ちゃんと](term:term-v056-chanto), [きっと](term:term-v061-kitto), [{{気|き}}をつけて](term:term-e012-kiwo-tsukete) e [すごい！](term:term-e013-sugoi) non restano reazioni sparse: diventano segnali di tono, fiducia e attenzione nella scena.
+Quando Paldea alterna scuola, battaglie, picnic e dialoghi, guarda prima le particelle: がある fa esistere un effetto, を marca ciò che usi o prepari, に porta l'informazione dentro un registro, で colloca l'azione e の{{後|あと}}で mette ordine nel tempo. A quel punto parole come [ちゃんと](term:term-v056-chanto), [きっと](term:term-v061-kitto), [{{気|き}}をつけて](term:term-e012-kiwo-tsukete) e [すごい！](term:term-e013-sugoi) non restano reazioni sparse: diventano segnali di tono, fiducia e attenzione nella scena.

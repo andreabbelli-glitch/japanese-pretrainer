@@ -2,7 +2,7 @@
 id: lesson-web-giapponese-puzzle-dragons-tutorial-skill
 media_id: media-web-giapponese
 slug: 050-puzzle-dragons-tutorial-skill
-title: Puzzle & Dragons - スキルを試してみてね
+title: "Skill potenti e inviti morbidi nel tutorial di Puzzle & Dragons"
 order: 50
 segment_ref: puzzle-and-dragons
 difficulty: n4
@@ -27,16 +27,6 @@ spiegazione, ma morbido quando chiede di agire. Il testo non ordina
 semplicemente "usa una skill"; costruisce una piccola catena: questa cosa si
 chiama skill, ce ne sono tante e sono potenti, quindi prova a sperimentare.
 
-:::image
-src: assets/puzzle-dragons-tutorial-skill.png
-alt: >-
-  Schermata tutorial di Puzzle and Dragons con popup che spiega le skill.
-caption: >-
-  Il popup presenta `スキル`, motiva con
-  `{{強力|きょうりょく}}なスキルがたくさんあるから` e chiude con
-  `[{{色々|いろいろ}}{{試|ため}}してみてね](grammar:grammar-te-mite-ne)`.
-:::
-
 ## Termini chiave
 
 - [{{強力|きょうりょく}}](term:term-kyouryoku) — potente, con effetto incisivo
@@ -48,7 +38,7 @@ caption: >-
 
 - `これがスキルだよ！` — questa è la meccanica che devi riconoscere
 - `{{強力|きょうりょく}}なスキルがたくさんあるから` — siccome ci sono tante skill potenti
-- `[{{色々|いろいろ}}{{試|ため}}してみてね](grammar:grammar-te-mite-ne)` — provane varie con tono morbido
+- [{{色々|いろいろ}}{{試|ため}}してみてね](grammar:grammar-te-mite-ne) — provane varie con tono morbido
 - `このダンジョンも{{攻略|こうりゃく}}してみよう` — proviamo ad affrontare anche questo dungeon
 
 ## Pattern grammaticali chiave
@@ -66,6 +56,16 @@ caption: >-
 - `OK` — conferma di lettura del popup
 
 ---
+
+:::image
+src: assets/puzzle-dragons-tutorial-skill.png
+alt: >-
+  Schermata tutorial di Puzzle and Dragons con popup che spiega le skill.
+caption: >-
+  Il popup presenta `スキル`, motiva con
+  `{{強力|きょうりょく}}なスキルがたくさんあるから` e chiude con
+  [{{色々|いろいろ}}{{試|ため}}してみてね](grammar:grammar-te-mite-ne).
+:::
 
 ## 1. `これがスキルだよ！`: il tutorial mette a fuoco la meccanica
 
@@ -107,7 +107,7 @@ questa cosa, quella davanti a te, è la skill.
 
 #### 🧠 Gancio cognitivo
 
-pensa a `が` come al piccolo riflettore del popup.
+Pensa a `が` come al piccolo riflettore del popup.
 Non illumina tutto il sistema di gioco: illumina l'oggetto preciso che ora
 deve diventare riconoscibile.
 
@@ -115,12 +115,12 @@ deve diventare riconoscibile.
 
 La seconda riga non è una descrizione decorativa. Prepara la richiesta finale.
 Il tutorial non dice solo che le skill esistono: dice che ce ne sono tante, che
-molte sono [{{強力|きょうりょく}}](term:term-kyouryoku), e usa `から` per
+molte sono [{{強力|きょうりょく}}](term:term-kyouryoku), e usa から per
 trasformare questa informazione nel motivo per cui conviene provarle.
 
 ### A. `{{強力|きょうりょく}}なスキル`: un aggettivo in `な` davanti al nome
 
-[{{強力|きょうりょく}}](term:term-kyouryoku) è un aggettivo in `な`. Per
+[{{強力|きょうりょく}}](term:term-kyouryoku) è un aggettivo in な. Per
 modificare un nome, deve prendere `な`: `{{強力|きょうりょく}}なスキル`. La
 sfumatura non è "forte" in senso vago o estetico. In una schermata di gioco
 segnala una skill con un effetto abbastanza incisivo da cambiare la board, il
@@ -150,7 +150,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{強力|きょうりょく}}なスキル` ➔ **Nome qualificato**:
-    [{{強力|きょうりょく}}](term:term-kyouryoku) prende `な` e restringe il
+    [{{強力|きょうりょく}}](term:term-kyouryoku) prende な e restringe il
     tipo di skill a quelle potenti o incisive.
 *   `スキルが` ➔ **Soggetto dell'esistenza**: le skill sono ciò che "ci sono".
 *   `たくさんある` ➔ **Quantità + esistenza**: non una sola skill, ma molte
@@ -167,7 +167,7 @@ potenti".
 
 #### 🧠 Gancio cognitivo
 
-quando una frase finisce in `から、`, aspetta una
+Quando una frase finisce in `から、`, aspetta una
 conseguenza. Il testo ti sta dicendo "ecco il motivo; adesso arriva cosa fare
 con questa informazione".
 
@@ -182,7 +182,7 @@ capisci quando conviene usarle.
 [{{試|ため}}す](term:term-tamesu) porta il valore del test concreto. Non è
 "provare" come semplice tentativo mentale; è usare qualcosa per verificarne
 l'effetto. Davanti a `みて`, il verbo passa alla forma in `-te`:
-`{{試|ため}}して`. Il pattern [〜してみてね](grammar:grammar-te-mite-ne) aggiunge
+{{試|ため}}して. Il pattern [〜してみてね](grammar:grammar-te-mite-ne) aggiunge
 due strati: `〜てみる` significa "provare a fare per vedere come va", mentre
 `ね` ammorbidisce la richiesta e la rende più da tutor amichevole che da comando
 secco.
@@ -199,7 +199,7 @@ translation_it: >-
 *   `このスキルを` ➔ **Oggetto del test**: `を` marca la skill come ciò che viene
     provato.
 *   `{{試|ため}}して` ➔ **Forma in `-te` di
-    [{{試|ため}}す](term:term-tamesu)**: prepara il collegamento con `みて`.
+    [{{試|ため}}す](term:term-tamesu)**: prepara il collegamento con みて.
 *   `みて` ➔ **Tentativo esperienziale**: non "vedi" in senso letterale, ma
     "prova a fare e guarda che succede".
 *   `ね` ➔ **Ammorbidimento condiviso**: il prompt cerca accordo e
@@ -213,7 +213,7 @@ pezzo aggiunge l'idea di esperimento: fai la prova e osserva il risultato.
 
 #### 🧠 Gancio cognitivo
 
-in un tutorial, `〜てみてね` è il gesto della mano che
+In un tutorial, `〜てみてね` è il gesto della mano che
 accompagna il giocatore: "dai, prova tu". Se la frase fosse un comando più
 duro, useresti forme come `{{使|つか}}ってください` o `{{発動|はつどう}}しろ`
 in contesti molto diversi.

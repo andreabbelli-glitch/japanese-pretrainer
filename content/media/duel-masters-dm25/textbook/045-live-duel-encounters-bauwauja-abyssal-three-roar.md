@@ -25,21 +25,6 @@ summary: >-
 
 Il giapponese da leggere è quindi una catena di controlli: da dove prendi le carte, se l'azione è facoltativa, quando il Tamaseed viene trattato come creatura, quale bersaglio viene distrutto e quale verbo descrive l'uscita dal campo.
 
-:::image
-src: assets/cards/live-duel/bauwauja-abyssal-three-roar.jpg
-alt: "Bauwauja, Abyssal Three Roar card."
-caption: >-
-  [{{深淵|しんえん}}の{{三咆哮|さんほうこう}} バウワウジャ](term:term-bauwauja)
-  alterna il lato [タマシード](term:term-tamaseed) e il lato
-  [クリーチャー](term:term-creature). Le righe da leggere sono l'ingresso che
-  manda carte dal [{{山札|やまふだ}}](term:term-deck) al
-  [{{墓地|ぼち}}](term:term-graveyard), la soglia
-  [{{合計|ごうけい}}](term:term-goukei){{4|よっ}}つ{{以上|いじょう}},
-  l'attacco che sceglie e [{{破壊|はかい}}](term:term-destroy) una creatura
-  avversaria, e la protezione
-  [{{破壊|はかい}}{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de)
-  [{{離|はな}}れない](term:term-hanareru).
-:::
 
 ## Termini chiave
 
@@ -68,19 +53,40 @@ caption: >-
 - [または](grammar:grammar-matawa) — alternativa tra categorie valide
 - [～なければ ... ない](grammar:grammar-nakereba) — se il requisito non è soddisfatto, il risultato viene negato
 - [～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de) — con un metodo diverso da quello nominato
+- [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou) — al massimo / almeno
 
 ## Etichette da riconoscere
 
 - [タマシード](term:term-tamaseed) / [クリーチャー](term:term-creature) — doppio status della carta quando la soglia è soddisfatta
-- [アビスロイヤル](term:term-abyss-royal) / ACE — razza e label contestuale della carta
 - [ブロッカー](term:term-blocker) — keyword difensiva, separata dai blocchi condizionali
 - [T・ブレイカー](term:term-t-breaker) — keyword offensiva: rompe tre scudi
+- [{{置|お}}く](term:term-oku) — mettere / porre
+- [{{出|で}}る](term:term-deru) — uscire / entrare in gioco
+- [{{自分|じぶん}}](term:term-self) — se stessi / il proprio lato
+- [バトルゾーン](term:term-battle-zone) — zona di battaglia / campo
+- [{{相手|あいて}}](term:term-opponent) — avversario
 
 ---
 
+:::image
+src: assets/cards/live-duel/bauwauja-abyssal-three-roar.jpg
+alt: "Bauwauja, Abyssal Three Roar card."
+caption: >-
+  [{{深淵|しんえん}}の{{三咆哮|さんほうこう}} バウワウジャ](term:term-bauwauja)
+  alterna il lato [タマシード](term:term-tamaseed) e il lato
+  [クリーチャー](term:term-creature). Le righe da leggere sono l'ingresso che
+  manda carte dal [{{山札|やまふだ}}](term:term-deck) al
+  [{{墓地|ぼち}}](term:term-graveyard), la soglia
+  [{{合計|ごうけい}}](term:term-goukei){{4|よっ}}つ{{以上|いじょう}},
+  l'attacco che sceglie e [{{破壊|はかい}}](term:term-destroy) una creatura
+  avversaria, e la protezione
+  [{{破壊|はかい}}{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de)
+  [{{離|はな}}れない](term:term-hanareru).
+:::
+
 ## 1. Entrata in campo: dalla cima del deck al cimitero
 
-La prima riga di Bauwauja usa una struttura molto comune nel rules text: evento di ingresso, fonte ordinata, quantità e destinazione. Il verbo finale non è `{{破壊|はかい}}する`, ma [{{置|お}}く](term:term-oku): il testo non sta distruggendo carte del deck, le sta mettendo in una zona precisa.
+La prima riga di Bauwauja usa una struttura molto comune nel rules text: evento di ingresso, fonte ordinata, quantità e destinazione. Il verbo finale non è {{破壊|はかい}}する, ma [{{置|お}}く](term:term-oku): il testo non sta distruggendo carte del deck, le sta mettendo in una zona precisa.
 
 :::example_sentence
 jp: >-
@@ -103,11 +109,11 @@ reveal_mode: sentence
 
 #### ⚖️ Contrasto operativo: `{{置|お}}く` non è `{{破壊|はかい}}する`
 
-[{{置|お}}く](term:term-oku) è un verbo di posizionamento: guarda la destinazione scritta dopo `に`. [{{破壊|はかい}}する](term:term-destroy), invece, descrive un tipo di rimozione. In questa riga Bauwauja non "distrugge" carte dal deck; autorizza a spostarne {{4枚|よんまい}} dalla cima al [{{墓地|ぼち}}](term:term-graveyard).
+[{{置|お}}く](term:term-oku) è un verbo di posizionamento: guarda la destinazione scritta dopo に. [{{破壊|はかい}}する](term:term-destroy), invece, descrive un tipo di rimozione. In questa riga Bauwauja non "distrugge" carte dal deck; autorizza a spostarne {{4枚|よんまい}} dalla cima al [{{墓地|ぼち}}](term:term-graveyard).
 
 #### 🧠 Gancio cognitivo
 
-Pensa a [{{山札|やまふだ}}](term:term-deck) come a una pila fisica: `の{{上|うえ}}から` ti fa prendere dalla cima, non cercare dentro il deck. È un'immagine pratica per leggere la direzione della frase, non un'etimologia.
+Pensa a [{{山札|やまふだ}}](term:term-deck) come a una pila fisica: の{{上|うえ}}から ti fa prendere dalla cima, non cercare dentro il deck. È un'immagine pratica per leggere la direzione della frase, non un'etimologia.
 
 ## 2. La soglia Darkness: quando il Tamaseed diventa creatura
 
@@ -138,11 +144,11 @@ reveal_mode: sentence
 
 #### ⚖️ Contrasto operativo: `{{4|よっ}}つ{{以上|いじょう}}なければ` non significa "meno o uguale a 4"
 
-[～{{以上|いじょう}}](grammar:grammar-ika-ijou) include il numero nominato. `{{4|よっ}}つ{{以上|いじょう}}` passa già con quattro elementi. La negazione arriva dopo, con [なければ](grammar:grammar-nakereba): se non hai almeno quattro elementi validi in totale, allora la riga `クリーチャーとして[{{扱|あつか}}わない](term:term-atsukau)` tiene Bauwauja fuori dallo status di creatura.
+[～{{以上|いじょう}}](grammar:grammar-ika-ijou) include il numero nominato. {{4|よっ}}つ{{以上|いじょう}} passa già con quattro elementi. La negazione arriva dopo, con [なければ](grammar:grammar-nakereba): se non hai almeno quattro elementi validi in totale, allora la riga クリーチャーとして[{{扱|あつか}}わない](term:term-atsukau) tiene Bauwauja fuori dallo status di creatura.
 
 #### 🧠 Gancio cognitivo
 
-[{{合計|ごうけい}}](term:term-goukei) funziona come il totale scritto su un segnapunti: prima sommi creature e Tamaseed Darkness nello stesso numero, poi confronti quel numero con `{{4|よっ}}つ{{以上|いじょう}}`.
+[{{合計|ごうけい}}](term:term-goukei) funziona come il totale scritto su un segnapunti: prima sommi creature e Tamaseed Darkness nello stesso numero, poi confronti quel numero con {{4|よっ}}つ{{以上|いじょう}}.
 
 ## 3. Attacco e distruzione: il timing crea il bersaglio
 
@@ -165,12 +171,12 @@ reveal_mode: sentence
 
 *   `このクリーチャーが{{攻撃|こうげき}}する{{時|とき}}` — **Timing d'attacco**: l'effetto parte nel momento in cui questa carta sta attaccando come creatura.
 *   `{{相手|あいて}}のクリーチャーを` — **Gruppo bersaglio**: il bersaglio appartiene all'avversario, non al tuo lato del campo.
-*   `{{1体|いったい}}{{選|えら}}び` — **Selezione singola**: `{{1体|いったい}}` conta una creatura e [{{選|えら}}ぶ](term:term-erabu) rende la scelta esplicita.
+*   {{1体|いったい}}{{選|えら}}び — **Selezione singola**: {{1体|いったい}} conta una creatura e [{{選|えら}}ぶ](term:term-erabu) rende la scelta esplicita.
 *   `{{破壊|はかい}}する` — **Payoff finale**: dopo la scelta, il risultato è distruzione.
 
 #### ⚖️ Contrasto operativo: keyword statiche e frase d'attacco
 
-[ブロッカー](term:term-blocker) e [T・ブレイカー](term:term-t-breaker) dicono qualità della creatura. `{{攻撃|こうげき}}する{{時|とき}}`, invece, apre una finestra temporale: se la carta non è trattata come [クリーチャー](term:term-creature), non arrivi nemmeno al frame naturale in cui "questa creatura attacca".
+[ブロッカー](term:term-blocker) e [T・ブレイカー](term:term-t-breaker) dicono qualità della creatura. {{攻撃|こうげき}}する{{時|とき}}, invece, apre una finestra temporale: se la carta non è trattata come [クリーチャー](term:term-creature), non arrivi nemmeno al frame naturale in cui "questa creatura attacca".
 
 ## 4. Durante il tuo turno: lasciare il campo non coincide con essere distrutti
 
@@ -192,16 +198,16 @@ reveal_mode: sentence
 
 *   `{{自分|じぶん}}のターン{{中|ちゅう}}` — **Ambito temporale**: la protezione vale durante il tuo turno.
 *   `このタマシードは` — **Soggetto stabile**: anche quando può essere trattato come creatura, la riga protettiva parla di questo Tamaseed.
-*   `{{破壊|はかい}}{{以外|いがい}}の{{方法|ほうほう}}で` — **Metodo escluso**: [{{破壊|はかい}}](term:term-destroy) è il metodo nominato come eccezione; gli altri metodi vengono bloccati.
-*   `{{離|はな}}れない` — **Negazione dell'uscita**: [{{離|はな}}れる](term:term-hanareru) copre il fatto di lasciare la zona, non solo l'essere distrutto.
+*   {{破壊|はかい}}{{以外|いがい}}の{{方法|ほうほう}}で — **Metodo escluso**: [{{破壊|はかい}}](term:term-destroy) è il metodo nominato come eccezione; gli altri metodi vengono bloccati.
+*   {{離|はな}}れない — **Negazione dell'uscita**: [{{離|はな}}れる](term:term-hanareru) copre il fatto di lasciare la zona, non solo l'essere distrutto.
 
 #### ⚖️ Contrasto operativo: `{{破壊|はかい}}` resta possibile, gli altri modi no
 
-[{{破壊|はかい}}](term:term-destroy) è un canale specifico. [{{離|はな}}れる](term:term-hanareru) è il movimento più ampio: tornare in mano, andare in un'altra zona, essere messo altrove o uscire dal battle zone per un effetto diverso. Il blocco [～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de) non chiude il canale `{{破壊|はかい}}`; chiude i canali che non sono distruzione.
+[{{破壊|はかい}}](term:term-destroy) è un canale specifico. [{{離|はな}}れる](term:term-hanareru) è il movimento più ampio: tornare in mano, andare in un'altra zona, essere messo altrove o uscire dal battle zone per un effetto diverso. Il blocco [～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de) non chiude il canale {{破壊|はかい}}; chiude i canali che non sono distruzione.
 
 #### 🧠 Gancio cognitivo
 
-Immagina [{{離|はな}}れる](term:term-hanareru) come "uscire dalla stanza". Durante il tuo turno Bauwauja ha una sola porta aperta, etichettata `{{破壊|はかい}}`; le altre uscite non funzionano. È un trucco di memoria per distinguere metodo e movimento, non una spiegazione etimologica.
+Immagina [{{離|はな}}れる](term:term-hanareru) come "uscire dalla stanza". Durante il tuo turno Bauwauja ha una sola porta aperta, etichettata {{破壊|はかい}}; le altre uscite non funzionano. È un trucco di memoria per distinguere metodo e movimento, non una spiegazione etimologica.
 
 ## Esempi guidati di riepilogo
 

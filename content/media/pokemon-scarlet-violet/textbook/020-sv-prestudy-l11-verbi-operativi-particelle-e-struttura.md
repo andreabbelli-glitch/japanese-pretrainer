@@ -59,7 +59,7 @@ In queste frasi non basta tradurre il verbo. Devi vedere chi è il tema, che cos
 
 Nei menu e nei dialoghi brevi, il gioco non costruisce frasi lunghe: usa formule compatte che cambiano subito lo stato della scena. [ちょっと {{待|ま}}って](term:term-e023-chotto-matsu-te) blocca l'azione per un momento; [どの ポケモンに {{使|つか}}いますか？](term:term-e024-dono-pokemoni-tsukaimasuka) sposta invece il controllo su di te e ti chiede di scegliere un bersaglio.
 
-[ちょっと {{待|ま}}って](term:term-e023-chotto-matsu-te) è parlato informale. `ちょっと` ammorbidisce la richiesta, mentre `{{待|ま}}って` è la forma in `-te` di `{{待|ま}}つ`, usata qui come invito diretto: non è un ordine militaresco, ma un "fermati un secondo" da dialogo.
+[ちょっと {{待|ま}}って](term:term-e023-chotto-matsu-te) è parlato informale. ちょっと ammorbidisce la richiesta, mentre {{待|ま}}って è la forma in -te di {{待|ま}}つ, usata qui come invito diretto: non è un ordine militaresco, ma un "fermati un secondo" da dialogo.
 
 :::example_sentence
 jp: >-
@@ -73,15 +73,15 @@ translation_it: >-
 *   `ちょっと` ➔ **Ammorbidimento colloquiale** (rende la richiesta breve e naturale, non un comando secco).
 *   `{{待|ま}}って` ➔ **Forma in `-te` usata come richiesta** (il parlante ferma la scena e chiede all'altro di aspettare).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{待|ま}}って` da solo può già significare "aspetta"; `ちょっと` aggiunge il tono da interruzione leggera. Nei dialoghi di personaggi, questa combinazione suona più come "un attimo!" che come un comando di sistema.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Pensa a `ちょっと` come a una mano alzata prima della frase: non cambia il verbo, ma segnala che l'interruzione è piccola e immediata.
 
-Quando compare [どの ポケモンに {{使|つか}}いますか？](term:term-e024-dono-pokemoni-tsukaimasuka), il registro cambia: `{{使|つか}}いますか` è cortese, quindi il sistema sta formulando una domanda pulita da menu. La particella `に` marca il destinatario dell'uso: l'oggetto non viene semplicemente "usato", viene applicato a un Pokémon specifico.
+Quando compare [どの ポケモンに {{使|つか}}いますか？](term:term-e024-dono-pokemoni-tsukaimasuka), il registro cambia: {{使|つか}}いますか è cortese, quindi il sistema sta formulando una domanda pulita da menu. La particella に marca il destinatario dell'uso: l'oggetto non viene semplicemente "usato", viene applicato a un Pokémon specifico.
 
 :::example_sentence
 jp: >-
@@ -96,11 +96,11 @@ translation_it: >-
 *   `ポケモンに` ➔ **Bersaglio dell'applicazione** (`に` non indica movimento fisico: punta il Pokémon su cui agirà l'oggetto o l'effetto).
 *   `{{使|つか}}いますか` ➔ **Domanda cortese di menu** (`{{使|つか}}う` diventa `{{使|つか}}います`, poi `か` trasforma la frase in domanda).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `ポケモンを{{使|つか}}う` direbbe "usare un Pokémon" come oggetto diretto dell'azione. `ポケモンに{{使|つか}}う` dice invece "usare qualcosa su un Pokémon". Nei menu di oggetti, questa differenza evita di leggere il Pokémon come lo strumento: è il bersaglio.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per `に`, immagina un cursore che si posa sul bersaglio. Non racconta sempre "verso dove vai"; spesso dice "su chi/che cosa cade l'azione".
 
@@ -122,7 +122,7 @@ translation_it: >-
 *   `{{地図|ちず}}は` ➔ **Tema** (la frase parla della mappa; `は` non dice che la mappa subisce un'azione).
 *   `{{簡単|かんたん}}です` ➔ **Giudizio cortese** (`{{簡単|かんたん}}` è il contenuto, `です` dà registro neutro-cortese).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `は` non è una freccia d'azione. In `{{地図|ちず}}は {{簡単|かんたん}}です`, la mappa non "fa" qualcosa: viene presentata come argomento e poi descritta. Con `を`, invece, cercheresti o useresti qualcosa; con `へ`, ti muoveresti verso una destinazione.
 
@@ -140,7 +140,7 @@ translation_it: >-
 *   `アカデミーへ` ➔ **Direzione** (`へ` marca il luogo verso cui ti dirigi).
 *   `{{行|い}}く` ➔ **Movimento** (il verbo completa la freccia indicata da `へ`).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 `へ` è la freccia sulla mappa. Anche quando la traduci "a" o "verso", il suo lavoro è orientare la frase prima ancora di descrivere l'arrivo.
 
@@ -148,7 +148,7 @@ translation_it: >-
 
 Il viaggio a Paldea alterna ricerca, scoperta e scelta. [{{探|さが}}す](term:term-v129-sagasu) descrive la ricerca mentre è in corso; [{{見|み}}つける](term:term-v135-mitsu-keru) descrive il momento in cui il bersaglio emerge; [{{決|き}}める](term:term-v127-kime-ru) chiude l'incertezza e trasforma le opzioni in una decisione.
 
-Questi verbi lavorano spesso con [を](grammar:grammar-g033-marca-l-oggetto-diretto), perché il gioco deve dirti che cosa stai cercando, trovando o scegliendo. Se il bersaglio non è marcato bene, la frase resta vaga; con `を`, invece, il testo aggancia l'azione a un oggetto preciso.
+Questi verbi lavorano spesso con [を](grammar:grammar-g033-marca-l-oggetto-diretto), perché il gioco deve dirti che cosa stai cercando, trovando o scegliendo. Se il bersaglio non è marcato bene, la frase resta vaga; con を, invece, il testo aggancia l'azione a un oggetto preciso.
 
 :::example_sentence
 jp: >-
@@ -170,15 +170,15 @@ translation_it: >-
 *   `{{探|さが}}す` ➔ **Processo di ricerca** (sei ancora nella fase di cercare).
 *   `{{見|み}}つける` ➔ **Risultato della ricerca** (`{{見|み}}る` "vedere" + `つける` come aggancio di risultato: il bersaglio viene individuato).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{探|さが}}す](term:term-v129-sagasu) non garantisce che qualcosa sia stato trovato: descrive l'attività. [{{見|み}}つける](term:term-v135-mitsu-keru) cambia stato alla scena, perché il Pokémon, l'oggetto o il luogo è finalmente davanti a te.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per ricordare [{{見|み}}つける](term:term-v135-mitsu-keru), immagina che la ricerca finisca quando "lo vedi e lo agganci". È un trucco mnemonico, non una traduzione letterale completa, ma aiuta a sentire la differenza da [{{探|さが}}す](term:term-v129-sagasu).
 
-[{{旅|たび}}](term:term-v137-tabi) allarga questi verbi: non indica solo spostamento, ma il percorso che il personaggio sta costruendo. In `{{旅|たび}}に{{出|で}}る`, la particella `に` lega il viaggio alla partenza: si entra in una condizione nuova, quella del viaggiare.
+[{{旅|たび}}](term:term-v137-tabi) allarga questi verbi: non indica solo spostamento, ma il percorso che il personaggio sta costruendo. In {{旅|たび}}に{{出|で}}る, la particella に lega il viaggio alla partenza: si entra in una condizione nuova, quella del viaggiare.
 
 :::example_sentence
 jp: >-
@@ -192,7 +192,7 @@ translation_it: >-
 *   `{{旅|たび}}に` ➔ **Stato o percorso in cui si entra** (`に` aggancia la partenza al viaggio).
 *   `{{出|で}}る` ➔ **Uscire / partire** (il movimento non è solo fisico: apre una nuova fase della storia).
 
-Quando devi scegliere la prossima tappa, [{{決|き}}める](term:term-v127-kime-ru) segnala che il dubbio si chiude. La frase può avere un oggetto marcato da `を`, come `ルートを{{決|き}}める`: il percorso non viene percorso in quel momento, viene scelto.
+Quando devi scegliere la prossima tappa, [{{決|き}}める](term:term-v127-kime-ru) segnala che il dubbio si chiude. La frase può avere un oggetto marcato da を, come ルートを{{決|き}}める: il percorso non viene percorso in quel momento, viene scelto.
 
 :::example_sentence
 jp: >-
@@ -236,7 +236,7 @@ translation_it: >-
 *   `{{旅|たび}}に {{出|で}}る` ➔ **Evento spiegato** (partire per il viaggio è il fatto da giustificare).
 *   `のですか` ➔ **Domanda esplicativa in registro cortese** (suona come "qual è il motivo per cui...?").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [どうやって](term:term-v133-douyatte) porta verso una risposta procedurale: "apri la mappa", "segui questa strada", "usa questo comando". [なぜ](term:term-v136-naze) porta verso una risposta causale: "perché vuoi crescere", "perché la storia lo richiede", "perché c'è una prova da affrontare".
 
@@ -254,13 +254,13 @@ translation_it: >-
 *   `ヌシポケモンに` ➔ **Bersaglio della sfida** (`に` marca l'avversario o la prova verso cui ti rivolgi).
 *   `{{挑|いど}}む` ➔ **Affrontare una prova** (non è un incontro casuale: il verbo contiene tensione e intenzione).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`ポケモンに{{会|あ}}う` può descrivere un incontro. `ポケモンに{{挑|いど}}む` trasforma il Pokémon in una sfida. Se leggi [{{挑|いど}}む](term:term-v132-idomu), aspettati un confronto, non solo una comparsa sulla mappa.
+ポケモンに{{会|あ}}う può descrivere un incontro. ポケモンに{{挑|いど}}む trasforma il Pokémon in una sfida. Se leggi [{{挑|いど}}む](term:term-v132-idomu), aspettati un confronto, non solo una comparsa sulla mappa.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [{{挑|いど}}む](term:term-v132-idomu), immagina il personaggio che si avvicina volontariamente a un ostacolo. La direzione di `に` e la forza del verbo lavorano insieme: non "capita" una sfida, ci vai contro.
+Per [{{挑|いど}}む](term:term-v132-idomu), immagina il personaggio che si avvicina volontariamente a un ostacolo. La direzione di に e la forza del verbo lavorano insieme: non "capita" una sfida, ci vai contro.
 
 ## Esempi guidati di riepilogo
 
@@ -298,4 +298,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando una frase di *Scarlet & Violet* sembra breve, leggi prima la particella: [は](grammar:grammar-g031-marca-il-tema) apre il tema, [を](grammar:grammar-g033-marca-l-oggetto-diretto) aggancia l'oggetto dell'azione, [へ](grammar:grammar-g032-verso) disegna la direzione e `に` marca spesso il bersaglio. Poi guarda il verbo: [{{探|さが}}す](term:term-v129-sagasu) cerca, [{{見|み}}つける](term:term-v135-mitsu-keru) trova, [{{決|き}}める](term:term-v127-kime-ru) decide e [{{挑|いど}}む](term:term-v132-idomu) trasforma la prossima tappa in una sfida.
+Quando una frase di *Scarlet & Violet* sembra breve, leggi prima la particella: [は](grammar:grammar-g031-marca-il-tema) apre il tema, [を](grammar:grammar-g033-marca-l-oggetto-diretto) aggancia l'oggetto dell'azione, [へ](grammar:grammar-g032-verso) disegna la direzione e に marca spesso il bersaglio. Poi guarda il verbo: [{{探|さが}}す](term:term-v129-sagasu) cerca, [{{見|み}}つける](term:term-v135-mitsu-keru) trova, [{{決|き}}める](term:term-v127-kime-ru) decide e [{{挑|いど}}む](term:term-v132-idomu) trasforma la prossima tappa in una sfida.

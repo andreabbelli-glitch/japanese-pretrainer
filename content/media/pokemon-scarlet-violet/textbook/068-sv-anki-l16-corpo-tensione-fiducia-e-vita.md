@@ -53,6 +53,18 @@ quale legame viene chiamato in causa e quanto è profonda l'esperienza descritta
 - nome + [{{同士|どうし}}](term:term-anki-l16-doushi) — mette due o più
   persone sullo stesso piano
 
+## Pattern grammaticali chiave
+
+- nome + `する` — trasforma un nome come
+  [{{緊張|きんちょう}}](term:term-anki-l16-kinchou) o
+  [{{信頼|しんらい}}](term:term-anki-l16-shinrai) in azione o stato
+- [{{今|いま}}から](term:term-anki-l16-imakara) + evento — fissa il punto di
+  partenza immediato di una prova o spiegazione
+- [{{多|おお}}く](term:term-anki-l16-ooku)の + nome — crea un gruppo ampio prima
+  di dire che cosa gli succede
+- nome + [{{同士|どうし}}](term:term-anki-l16-doushi) — mette i partecipanti sullo
+  stesso piano, come compagni o pari
+
 ## Etichette da riconoscere
 
 - [{{諸君|しょくん}}](term:term-anki-l16-shokun) — allocuzione formale a un
@@ -96,14 +108,14 @@ translation_it: >-
 *   `{{緊張|きんちょう}}している` ➔ **Stato in corso**: sostantivo + `する` in
     forma `している`, quindi il nervosismo è attivo nel momento della frase.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{筋肉|きんにく}}](term:term-anki-l16-kinniku) riguarda il corpo allenabile;
 [{{緊張|きんちょう}}](term:term-anki-l16-kinchou) riguarda la pressione mentale.
 Se in italiano "tensione" può suonare fisica, in `{{緊張|きんちょう}}する` il
 bersaglio naturale è la persona che si sente nervosa davanti alla prova.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Come trucco mnemonico, pensa a [{{緊張|きんちょう}}](term:term-anki-l16-kinchou)
 come al momento in cui "ti irrigidisci" prima di parlare o combattere. Non è
@@ -117,7 +129,7 @@ registro. Non basta sapere "ora" o "voi": bisogna capire che una prova sta
 partendo e che il parlante sta inquadrando il gruppo come destinatario del
 discorso.
 
-*   [{{今|いま}}から](term:term-anki-l16-imakara) unisce `{{今|いま}}`, "ora",
+*   [{{今|いま}}から](term:term-anki-l16-imakara) unisce {{今|いま}}, "ora",
     e `から`, "da". In un annuncio non vale solo come "adesso": marca una linea
     di partenza. Se compare prima di un test, una lezione o una spiegazione, il
     testo sta dicendo che l'evento comincia da quel momento preciso.
@@ -160,16 +172,16 @@ translation_it: >-
 *   `{{見|み}}つけてください` ➔ **Richiesta cortese**: l'autorità non sta solo
     informando, sta assegnando una direzione.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`{{今|いま}}` da solo colloca la frase nel presente; [{{今|いま}}から](term:term-anki-l16-imakara)
+{{今|いま}} da solo colloca la frase nel presente; [{{今|いま}}から](term:term-anki-l16-imakara)
 aggiunge l'idea di partenza. Allo stesso modo, `みんな` può suonare familiare e
 orizzontale, mentre [{{諸君|しょくん}}](term:term-anki-l16-shokun) crea subito
 un tono da discorso rivolto a una platea.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-In [{{今|いま}}から](term:term-anki-l16-imakara), immagina `から` come la linea
+In [{{今|いま}}から](term:term-anki-l16-imakara), immagina から come la linea
 di partenza di una gara o di un test: tutto ciò che segue comincia "da qui",
 nel tempo della scena.
 
@@ -226,18 +238,18 @@ translation_it: >-
 *   `{{新|あたら}}しい {{体験|たいけん}}を` ➔ **Oggetto vissuto**:
     [{{体験|たいけん}}](term:term-anki-l16-taiken) indica qualcosa passato
     attraverso l'esperienza diretta.
-*   `した` ➔ **Verbo di realizzazione**: con [{{体験|たいけん}}](term:term-anki-l16-taiken),
+*   した ➔ **Verbo di realizzazione**: con [{{体験|たいけん}}](term:term-anki-l16-taiken),
     `する` trasforma il nome in "fare / vivere un'esperienza".
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{人生|じんせい}}](term:term-anki-l16-jinsei) non copre ogni uso italiano di
 "vita". Se la frase parla di sopravvivenza o vita biologica, cerca
 `{{命|いのち}}`; se parla di routine, abitare, scuola o abitudini quotidiane,
-aspettati `{{生|せい}}{{活|かつ}}`. [{{人生|じんせい}}](term:term-anki-l16-jinsei)
+aspettati {{生|せい}}{{活|かつ}}. [{{人生|じんせい}}](term:term-anki-l16-jinsei)
 suona più narrativo: il percorso di una persona.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{深|ふか}}い](term:term-anki-l16-fukai), immagina prima un luogo fisico
 che scende in profondità. Poi trasferisci la stessa immagine ai legami: un
@@ -255,7 +267,7 @@ diretta, quantità ampia e relazione tra persone dello stesso ruolo.
     in prima persona, con il corpo o sul campo. Il primo kanji `{{体|たい}}` ti
     orienta: non è solo sapere qualcosa, ma esserci passato. Per questo
     funziona bene con attività extracurricolari, esplorazione e prove pratiche.
-*   [{{多|おお}}く](term:term-anki-l16-ooku) nasce da `{{多|おお}}い`, ma nel
+*   [{{多|おお}}く](term:term-anki-l16-ooku) nasce da {{多|おお}}い, ma nel
     frame `{{多|おお}}くの + nome` prepara un referente plurale o ampio:
     `{{多|おお}}くのポケモン` non dice "i Pokémon sono molti" come predicato;
     dice "molti Pokémon" prima di continuare la frase. La posizione prima del
@@ -315,16 +327,16 @@ translation_it: >-
 *   `バトルしようぜ` ➔ **Invito energico**: `しよう` propone l'azione, `ぜ`
     aggiunge una spinta colloquiale e competitiva.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{多|おお}}く](term:term-anki-l16-ooku) in `{{多|おお}}くのポケモン` lavora prima
+[{{多|おお}}く](term:term-anki-l16-ooku) in {{多|おお}}くのポケモン lavora prima
 del nome; `ポケモンが{{多|おお}}い` mette invece `{{多|おお}}い` come predicato.
 La quantità è simile, ma il parsing cambia: modificatore nominale nel primo
 caso, giudizio sulla frase nel secondo. Anche [{{体験|たいけん}}](term:term-anki-l16-taiken)
 e `{{経験|けいけん}}` non sono identici: il primo mette più in primo piano il
 vissuto diretto, il secondo può indicare esperienza accumulata o competenza.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{同士|どうし}}](term:term-anki-l16-doushi), pensa a due personaggi sullo
 stesso lato di una relazione: rivali tra rivali, compagni tra compagni,

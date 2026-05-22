@@ -32,10 +32,12 @@ passato, `て` la collega a ciò che segue, e parole come
 ## Termini chiave
 
 - [{{車|くるま}}](term:term-kuruma) — veicolo, mezzo che può essere inseguito o raggiunto
+- [{{見|み}}る](term:term-miru) — guardare / vedere intenzionalmente qualcosa nella scena
+- [{{見|み}}える](term:term-mieru) — essere visibile, comparire davanti agli occhi
 - [{{追|お}}いつく](term:term-oitsuku) — raggiungere chi era davanti, recuperare la distanza
 - [{{悔|くや}}しい](term:term-kuyashii) — frustrazione bruciante dopo un esito sfavorevole
 - [{{無事|ぶじ}}](term:term-buji) — sano e salvo, senza danni dopo un rischio
-- [{{女|おんな}}の{{子|こ}}](term:term-onna-no-ko) — ragazza, parola composta con `の`
+- [{{女|おんな}}の{{子|こ}}](term:term-onna-no-ko) — ragazza, parola composta con の
 - [{{弓|ゆみ}}](term:term-yumi) — arco
 - [{{射|い}}る](term:term-iru-arrow) — scoccare, tirare con arco e freccia
 - [{{本当|ほんとう}}に](term:term-hontou-ni) — davvero, veramente
@@ -80,7 +82,7 @@ come interpretare quel movimento.
   truck. La forma `{{行|い}}く` non separa da sola presente e futuro; può
   voler dire "vado" o "andrò", e il ritmo della scena ti dice quale lettura
   funziona.
-- [{{車|くるま}}](term:term-kuruma) resta più generale di `トラック`: può
+- [{{車|くるま}}](term:term-kuruma) resta più generale di トラック: può
   indicare un veicolo, una macchina, un mezzo. In una scena di inseguimento il
   valore pratico è "la cosa che si muove e che bisogna raggiungere".
 - [{{追|お}}いつく](term:term-oitsuku) non è semplicemente "seguire". Dentro il
@@ -116,7 +118,7 @@ translation_it: >-
 *   `{{追|お}}いつく` ➔ **Inseguimento completato** (`{{追|お}}う`, inseguire, più
     l'idea di arrivare addosso al bersaglio).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{追|お}}う` guarda il movimento del seguire;
 [{{追|お}}いつく](term:term-oitsuku) guarda il momento in cui la distanza si
@@ -152,7 +154,7 @@ translation_it: >-
 *   `{{無事|ぶじ}}だった` ➔ **Stato passato** (`{{無事|ぶじ}}` più `だった`: la scena
     guarda indietro e verifica che il pericolo non abbia lasciato danni).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Leggi [{{無事|ぶじ}}](term:term-buji) come una spia verde dopo il rischio: non
 descrive un'emozione, ma l'esito fisico o situazionale. È un trucco di memoria,
@@ -170,7 +172,7 @@ movimento parte, non parte, è già partito o non è mai avvenuto.
 Con `ない`, il giapponese non aggiunge una particella equivalente al nostro
 "non": cambia la forma del verbo. `{{行|い}}く` diventa `{{行|い}}かない`,
 `{{使|つか}}う` diventa `{{使|つか}}わない`, e
-[{{見|み}}る](term:term-miru) diventa `{{見|み}}ない`. Per leggere velocemente
+[{{見|み}}る](term:term-miru) diventa {{見|み}}ない. Per leggere velocemente
 una vignetta, la cosa importante è riconoscere la base trasformata prima ancora
 di tradurre.
 
@@ -199,7 +201,7 @@ translation_it: >-
 *   `{{使|つか}}わない` ➔ **Negativo di `{{使|つか}}う`**: l'uso della macchina non
     avviene.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 Non cercare solo la forma dizionario. Se hai in mente `{{使|つか}}う` ma non
 riconosci `{{使|つか}}わない`, perdi proprio l'informazione principale: il
@@ -274,7 +276,7 @@ translation_it: >-
 *   `ない` ➔ **Assenza**: qui non è il negativo di un'azione, ma la forma che
     sostituisce `ある` quando qualcosa non esiste o non è presente.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Pensa a `た` come a una porta chiusa dietro l'azione. Non spiega l'etimologia
 della forma, ma aiuta a distinguere al volo `{{使|つか}}う`,
@@ -328,7 +330,7 @@ translation_it: >-
 *   `よ` ➔ **Spinta verso l'interlocutore**: rende la battuta più insistente o
     emotiva.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{見|み}}ない` può essere una semplice constatazione o scelta ("non guardo").
 `{{見|み}}ないで` chiama in causa l'altro: "non guardare". La `で` cambia la
@@ -356,7 +358,7 @@ translation_it: >-
 *   `{{持|も}}っている` ➔ **Stato risultante** (`{{持|も}}つ` più `ている`): non
     "sta prendendo" l'arco, ma "lo ha / lo tiene".
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{剣|けん}}を{{使|つか}}っている` mette in primo piano un'azione in corso;
 `{{弓|ゆみ}}を{{持|も}}っている` mette in primo piano lo stato attuale. Stessa
@@ -437,11 +439,11 @@ translation_it: >-
 *   `{{何者|なにもの}}だ？` ➔ **Domanda di identità/natura**: non solo nome, ma
     tipo di persona o ruolo nella scena.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `いる` senza kanji spesso significa "esserci" o "stare" per persone e animali.
-[{{射|い}}る](term:term-iru-arrow), con `射`, richiede arco, freccia o tiro. Se
-nella vignetta compaiono [{{弓|ゆみ}}](term:term-yumi) o `{{矢|や}}`, leggi
+[{{射|い}}る](term:term-iru-arrow), con 射, richiede arco, freccia o tiro. Se
+nella vignetta compaiono [{{弓|ゆみ}}](term:term-yumi) o {{矢|や}}, leggi
 l'azione di scoccare, non l'esistenza.
 
 La parte finale del blocco passa dall'azione fisica al possesso e al giudizio.
@@ -475,7 +477,7 @@ translation_it: >-
 *   `{{手|て}}に{{入|はい}}った` ➔ **Possesso risultante**: la cosa arriva nella
     disponibilità di qualcuno; il verbo è intransitivo.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{手|て}}に{{入|はい}}る](term:term-te-ni-hairu) legge il possesso dal lato della
 cosa ottenuta: "il cristallo entra in mano". Se vuoi mettere al centro chi

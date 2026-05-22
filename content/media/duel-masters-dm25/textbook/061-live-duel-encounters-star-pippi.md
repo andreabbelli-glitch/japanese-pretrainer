@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-live-duel-encounters-star-pippi
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-star-pippi
-title: Carte incontrate - スター・ピッピー / Star Pippi
+title: "Star Pippi: due riduzioni parallele e limite del costo"
 order: 89
 segment_ref: live-duel-encounters
 difficulty: n3
@@ -36,14 +36,6 @@ e il secondo riguarda le creature {{火|ひ}}, una creatura che appartiene a tut
 e due le civiltà viene presa da entrambi i rami. Poi [ただし](grammar:grammar-tadashi)
 chiude la frase e impedisce al [コスト](term:term-cost) di scendere fino a zero.
 
-:::image
-src: assets/cards/live-duel/star-pippi.jpg
-alt: "Star Pippi card."
-caption: >-
-  スター・ピッピー. La riga chiave coordina
-  [{{光|ひかり}}](term:term-light) e {{火|ひ}} come due rami paralleli:
-  `{{1|いち}}、` non chiude l'effetto, ma prepara il secondo costo da ridurre.
-:::
 
 ## Termini chiave
 
@@ -65,6 +57,7 @@ caption: >-
 - [{{自分|じぶん}}の{{光|ひかり}}のクリーチャーの{{召喚|しょうかん}}コストを{{1|いち}}、{{火|ひ}}のクリーチャーの{{召喚|しょうかん}}コストを{{1|いち}}{{少|すく}}なくしてもよい](grammar:grammar-star-pippi-double-cost-reduction) — due rami oggetto-valore condividono lo stesso verbo finale.
 - [〜してもよい](grammar:grammar-temoyoi) — possibilità concessa: puoi farlo, non sei obbligato.
 - [ただし](grammar:grammar-tadashi) — correzione restrittiva: l'effetto resta valido, ma entro un confine preciso.
+- [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou) — al massimo / almeno
 
 ## Etichette da riconoscere
 
@@ -72,6 +65,15 @@ caption: >-
 - [{{光|ひかり}}](term:term-light) / {{火|ひ}} — coppia di civiltà: qui non significa "scegline una", ma "leggi due filtri paralleli".
 
 ---
+
+:::image
+src: assets/cards/live-duel/star-pippi.jpg
+alt: "Star Pippi card."
+caption: >-
+  スター・ピッピー. La riga chiave coordina
+  [{{光|ひかり}}](term:term-light) e {{火|ひ}} come due rami paralleli:
+  `{{1|いち}}、` non chiude l'effetto, ma prepara il secondo costo da ridurre.
+:::
 
 ## 1. Il primo ramo: leggere il gruppo prima del verbo
 
@@ -82,7 +84,7 @@ Il nome finale è [コスト](term:term-cost); tutto ciò che lo precede restrin
 quale costo stai guardando.
 
 - [{{自分|じぶん}}](term:term-self)の non è un possessivo generico da tradurre lentamente come "di me stesso": nel rules text indica il tuo lato del campo e del turno. Il ramo non riduce tutte le creature Light possibili, ma quelle che appartengono al giocatore che controlla questo effetto.
-- [{{光|ひかり}}](term:term-light)の[クリーチャー](term:term-creature) restringe il gruppo per civiltà. `の` lega Light a creature come filtro di appartenenza: non stai leggendo "creature luminose" in senso narrativo, ma creature della civiltà Light.
+- [{{光|ひかり}}](term:term-light)の[クリーチャー](term:term-creature) restringe il gruppo per civiltà. の lega Light a creature come filtro di appartenenza: non stai leggendo "creature luminose" in senso narrativo, ma creature della civiltà Light.
 - [{{召喚|しょうかん}}](term:term-summon)[コスト](term:term-cost) è il bersaglio numerico della riduzione. La carta non abbassa il power, non cambia il tipo della creatura e non sposta una carta: modifica il costo richiesto per evocarla.
 
 :::example_sentence
@@ -100,11 +102,11 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{自分|じぶん}}](term:term-self)の` — **campo del controllore**: restringe l'effetto alle tue creature, non a ogni creatura in gioco.
-*   `[{{光|ひかり}}](term:term-light)の[クリーチャー](term:term-creature)の` — **filtro di civiltà più tipo**: la catena di `の` porta fino al costo delle creature Light.
-*   `[{{召喚|しょうかん}}](term:term-summon)[コスト](term:term-cost)を{{1|いち}}、` — **oggetto più quantità**: il costo di evocazione è ciò che viene ridotto; la virgola lascia il ramo in sospeso.
-*   `{{火|ひ}}の[クリーチャー](term:term-creature)の[{{召喚|しょうかん}}](term:term-summon)[コスト](term:term-cost)を{{1|いち}}` — **secondo ramo parallelo**: cambia la civiltà, ma la struttura rimane la stessa.
-*   `[{{少|すく}}なくしてもよい](grammar:grammar-star-pippi-double-cost-reduction)` — **verbo finale condiviso**: autorizza la riduzione per entrambi i rami.
+*   [{{自分|じぶん}}](term:term-self)の — **campo del controllore**: restringe l'effetto alle tue creature, non a ogni creatura in gioco.
+*   [{{光|ひかり}}](term:term-light)の[クリーチャー](term:term-creature)の — **filtro di civiltà più tipo**: la catena di の porta fino al costo delle creature Light.
+*   [{{召喚|しょうかん}}](term:term-summon)[コスト](term:term-cost)を{{1|いち}}、 — **oggetto più quantità**: il costo di evocazione è ciò che viene ridotto; la virgola lascia il ramo in sospeso.
+*   {{火|ひ}}の[クリーチャー](term:term-creature)の[{{召喚|しょうかん}}](term:term-summon)[コスト](term:term-cost)を{{1|いち}} — **secondo ramo parallelo**: cambia la civiltà, ma la struttura rimane la stessa.
+*   [{{少|すく}}なくしてもよい](grammar:grammar-star-pippi-double-cost-reduction) — **verbo finale condiviso**: autorizza la riduzione per entrambi i rami.
 
 #### ⚖️ Contrasto operativo
 
@@ -150,7 +152,7 @@ chiede se rientra in {{火|ひ}}の[クリーチャー](term:term-creature). Una
 Light/Fire risponde sì a tutti e due i filtri.
 
 - Il testo non usa `または` e non presenta una scelta alternativa. La coordinazione con virgola mette in fila due riduzioni parallele, ciascuna con il proprio gruppo nominale.
-- La ripetizione di `[{{召喚|しょうかん}}](term:term-summon)[コスト](term:term-cost)を{{1|いち}}` rende visibile il parallelismo. Se la carta volesse una singola riduzione comune, non avrebbe bisogno di costruire due oggetti completi in questo modo.
+- La ripetizione di [{{召喚|しょうかん}}](term:term-summon)[コスト](term:term-cost)を{{1|いち}} rende visibile il parallelismo. Se la carta volesse una singola riduzione comune, non avrebbe bisogno di costruire due oggetti completi in questo modo.
 - La conseguenza pratica nasce dalla grammatica: una creatura che è sia Light sia Fire viene letta una volta nel ramo Light e una volta nel ramo Fire.
 
 #### 🧠 Gancio cognitivo
@@ -178,14 +180,14 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[ただし](grammar:grammar-tadashi)、` — **restrizione correttiva**: quello che segue limita l'effetto appena letto.
-*   `[コスト](term:term-cost)は` — **tema della restrizione**: il valore controllato è il costo finale, non il numero della riduzione.
+*   [ただし](grammar:grammar-tadashi)、 — **restrizione correttiva**: quello che segue limita l'effetto appena letto.
+*   [コスト](term:term-cost)は — **tema della restrizione**: il valore controllato è il costo finale, non il numero della riduzione.
 *   `{{0以下|ゼロいか}}` — **soglia inclusiva**: include 0 e qualunque valore più basso.
 *   `にならない` — **stato vietato**: il costo non deve diventare quel valore.
 
 #### ⚖️ Contrasto operativo
 
-`{{0以下|ゼロいか}}` non significa "meno di 0". [{{以下|いか}}](grammar:grammar-ika-ijou)
+{{0以下|ゼロいか}} non significa "meno di 0". [{{以下|いか}}](grammar:grammar-ika-ijou)
 include il numero scritto, quindi 0 è già dentro il divieto. Il costo può
 scendere fino al minimo consentito dal testo, ma questa riga impedisce di
 trasformare le due riduzioni in un costo 0.

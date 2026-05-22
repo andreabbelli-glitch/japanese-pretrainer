@@ -56,6 +56,14 @@ soggetto esplicito resta leggibile.
 - `Xが{{好|す}}き / Xが{{嫌|きら}}い` — preferenza o avversione costruita come qualità, non come verbo italiano
 - Soggetto omesso — la scena decide se il riferimento naturale è "io", "tu" o un personaggio già attivo
 
+## Etichette da riconoscere
+
+- `{{剣|けん}}` — oggetto inanimato da collocare, prendere o recuperare nella scena
+- [{{木|き}}](term:term-ki-tree) — elemento fisico del quadro, spesso luogo o ostacolo
+- [{{目|め}}にする](term:term-me-ni-suru) — contatto visivo con qualcosa che entra nella scena
+- [{{手|て}}に{{取|と}}る](term:term-te-ni-toru) — presa concreta: l'oggetto passa alla mano
+- [〜{{達|たち}}](term:term-tachi-suffix) — gruppo di persone o figure personificate, non plurale universale per ogni nome
+
 ---
 
 ## 1. La spada come blocco: `の`, `は` e `ある`
@@ -142,6 +150,11 @@ translation_it: >-
   La mia spada è laggiù?
 :::
 
+#### 🗺️ Anatomia della frase
+
+*   `{{私|わたし}}の{{剣|けん}}は` ➔ **Topic posseduto**: la spada è l'oggetto di cui si sta controllando la posizione.
+*   `あそこにある？` ➔ **Esistenza localizzata in domanda**: `に` marca il luogo e il punto interrogativo sostituisce `か` nel parlato.
+
 Qui la punteggiatura e il tono della scena fanno il lavoro che `か` avrebbe reso
 grammaticalmente visibile.
 
@@ -160,7 +173,7 @@ translation_it: >-
 *   `よ` ➔ **Spinta pragmatica** (il parlante non aggiunge un fatto nuovo alla
     grammatica della frase; lo presenta con forza all'interlocutore).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Leggi l'ultima particella come il gesto finale della battuta: `か` alza la
 frase e chiede conferma, `よ` la spinge in avanti come informazione che l'altro
@@ -168,7 +181,7 @@ deve ricevere. È un trucco di lettura, non una spiegazione etimologica.
 
 ## 3. Preferire, detestare e recuperare il soggetto dalla scena
 
-Con `{{好|す}}き` e [{{嫌|きら}}い](term:term-kirai), l'italiano ti tenta con
+Con {{好|す}}き e [{{嫌|きら}}い](term:term-kirai), l'italiano ti tenta con
 verbi come "piacere" e "detestare". Il giapponese, però, costruisce queste
 frasi come stati o qualità: la cosa verso cui va il sentimento prende spesso
 `が`, mentre chi prova il sentimento può restare implicito o apparire come
@@ -216,6 +229,13 @@ jp: >-
 translation_it: >-
   Non mi piacciono i cristalli / detesto i cristalli.
 :::
+
+#### 🗺️ Anatomia della frase
+
+*   `クリスタルが` ➔ **Cosa valutata**: `が` marca il centro del sentimento, anche quando chi prova il sentimento resta implicito.
+*   `{{好|す}}き` ➔ **Preferenza**: senza soggetto esplicito, la scena decide se leggere "mi piace" o "ti piace".
+*   `{{好|す}}き？` ➔ **Stessa struttura in domanda**: il punto interrogativo sposta la frase verso l'interlocutore.
+*   `{{嫌|きら}}いだ` ➔ **Avversione dichiarata**: non serve aggiungere una negazione separata.
 
 #### ⚖️ Contrasto operativo
 
@@ -336,6 +356,11 @@ translation_it: >-
   Equipaggio la spada.
 :::
 
+#### 🗺️ Anatomia della frase
+
+*   `{{剣|けん}}を` ➔ **Oggetto equipaggiato**: `を` marca ciò che viene messo in posizione d'uso.
+*   `{{装着|そうちゃく}}する` ➔ **Azione tecnica**: il nome diventa verbo con `する`, quindi "indossare / equipaggiare".
+
 #### ⚖️ Contrasto operativo
 
 [{{取|と}}る](term:term-toru) risponde alla domanda "che cosa prende?",
@@ -388,6 +413,13 @@ translation_it: >-
   L'uomo assale con la spada.
 :::
 
+#### 🗺️ Anatomia della frase
+
+*   `{{木|き}}が` ➔ **Soggetto che cade**: nel secondo esempio l'albero è ciò che cambia stato.
+*   `{{倒|たお}}れる` ➔ **Caduta intransitiva**: non nomina chi causa la caduta.
+*   `{{男|おとこ}}が` ➔ **Agente dell'assalto**: qui l'uomo è chi parte all'attacco.
+*   `{{切|き}}りかかる` ➔ **Attacco che si avvia**: non è solo tagliare, ma lanciarsi contro qualcuno.
+
 #### ⚖️ Contrasto operativo
 
 `{{倒|たお}}れる` non è `{{倒|たお}}す`: il primo dice "cadere / essere
@@ -395,7 +427,7 @@ sconfitto", il secondo direbbe "far cadere / sconfiggere". Allo stesso modo,
 [{{切|き}}りかかる](term:term-kirikakaru) non è solo "tagliare": ti fa vedere il
 momento in cui qualcuno parte all'attacco con la lama.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{切|き}}りかかる](term:term-kirikakaru), immagina la battuta non come una
 foto del taglio, ma come il primo passo dell'assalto: il corpo va verso il

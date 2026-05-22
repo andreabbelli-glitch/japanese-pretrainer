@@ -2,7 +2,7 @@
 id: lesson-web-giapponese-puzzle-dragons-tutorial-kouryaku
 media_id: media-web-giapponese
 slug: 040-puzzle-dragons-tutorial-kouryaku
-title: Puzzle & Dragons - 攻略してみよう
+title: "Affrontare il dungeon nel tutorial di Puzzle & Dragons"
 order: 40
 segment_ref: puzzle-and-dragons
 difficulty: n4
@@ -18,24 +18,13 @@ summary: >-
 
 In questa schermata di *Puzzle & Dragons*, il tutorial non ti lascia davanti a
 un'etichetta isolata. Prima conferma che gli HP sono tornati a posto, poi usa
-quella stabilità come ponte verso l'azione successiva: `それじゃ、このダンジョンも
-[{{攻略|こうりゃく}}](term:term-kouryaku)してみよう！`.
+quella stabilità come ponte verso l'azione successiva: それじゃ、このダンジョンも
+[{{攻略|こうりゃく}}](term:term-kouryaku)してみよう！.
 
 Il giapponese qui è breve, ma molto operativo. `HPが{{回復|かいふく}}したよ`
 chiude un problema, `それじゃ` riapre il flusso, `このダンジョンも` indica il
-bersaglio visibile e `してみよう` trasforma [{{攻略|こうりゃく}}](term:term-kouryaku)
+bersaglio visibile e してみよう trasforma [{{攻略|こうりゃく}}](term:term-kouryaku)
 in una proposta: proviamo ad affrontare e completare anche questo dungeon.
-
-:::image
-src: assets/puzzle-dragons-tutorial-kouryaku.jpg
-alt: >-
-  Schermata tutorial di Puzzle and Dragons con dialogo su recupero HP e dungeon.
-caption: >-
-  Dopo `HPが{{回復|かいふく}}したよ！`, il tutorial dice
-  `それじゃ、このダンジョンも[{{攻略|こうりゃく}}](term:term-kouryaku)してみよう！`:
-  il recupero degli HP prepara il passaggio dalla sicurezza ritrovata alla
-  prossima sfida giocabile.
-:::
 
 ## Termini chiave
 
@@ -56,6 +45,17 @@ caption: >-
 - `ダンジョン` — area giocabile da attraversare, non pagina di guida
 
 ---
+
+:::image
+src: assets/puzzle-dragons-tutorial-kouryaku.jpg
+alt: >-
+  Schermata tutorial di Puzzle and Dragons con dialogo su recupero HP e dungeon.
+caption: >-
+  Dopo `HPが{{回復|かいふく}}したよ！`, il tutorial dice
+  それじゃ、このダンジョンも[{{攻略|こうりゃく}}](term:term-kouryaku)してみよう！:
+  il recupero degli HP prepara il passaggio dalla sicurezza ritrovata alla
+  prossima sfida giocabile.
+:::
 
 ## 1. Dal recupero HP alla prossima azione
 
@@ -118,13 +118,13 @@ translation_it: >-
 *   `このダンジョンも` ➔ **Oggetto incluso** (`この` indica il dungeon presente;
     `も` lo aggiunge alla serie degli obiettivi da provare).
 *   `{{攻略|こうりゃく}}して` ➔ **Azione in forma in `-te`**
-    ([{{攻略|こうりゃく}}](term:term-kouryaku) diventa verbo con `する`, poi si
+    ([{{攻略|こうりゃく}}](term:term-kouryaku) diventa verbo con する, poi si
     collega a `みる`).
 *   `みよう` ➔ **Proposta condivisa** ("proviamo", non "è già stato fatto").
 
 #### 🧠 Gancio cognitivo
 
-leggi `も` come una mano che aggiunge un altro
+Leggi `も` come una mano che aggiunge un altro
 tassello al percorso: non "solo questo dungeon", ma "anche questo, adesso che
 siamo pronti".
 
@@ -144,7 +144,7 @@ soluzione. La stessa parola cambia lettura perché cambia il nome a cui si
 aggancia.
 
 Nel popup di *Puzzle & Dragons*, il nome vicino è `ダンジョン`. Per questo
-`このダンジョンも[{{攻略|こうりゃく}}](term:term-kouryaku)する` non significa
+このダンジョンも[{{攻略|こうりゃく}}](term:term-kouryaku)する non significa
 "leggere la guida di questo dungeon": significa affrontarlo con l'idea di
 superarlo.
 
@@ -162,6 +162,13 @@ translation_it: >-
   Consultare un sito di guide.
 :::
 
+#### 🗺️ Anatomia della frase
+
+*   `ダンジョンを` ➔ **Bersaglio giocabile**: `を` marca ciò che provi a superare.
+*   `{{攻略|こうりゃく}}する` ➔ **Azione da nome tecnico**: il nome diventa verbo con `する`.
+*   `{{攻略|こうりゃく}}サイトを` ➔ **Contenuto strategico**: qui `攻略` modifica `サイト`, non il dungeon.
+*   `{{見|み}}る` ➔ **Consultare / guardare**: il verbo finale sposta la scena dalla sfida alla guida.
+
 #### ⚖️ Contrasto operativo: `ダンジョンを攻略する` vs `攻略サイト`
 
 *   `ダンジョンを{{攻略|こうりゃく}}する` ➔ il dungeon è il bersaglio giocabile:
@@ -171,7 +178,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-come trucco di memoria, pensa a
+Come trucco di memoria, pensa a
 [{{攻略|こうりゃく}}](term:term-kouryaku) come "mettere sotto controllo una
 sfida con un piano". Se l'oggetto è giocabile, il risultato è superarlo; se il
 nome è un contenuto, il risultato è una guida su come farlo.
@@ -179,7 +186,7 @@ nome è un contenuto, il risultato è una guida su come farlo.
 ## 4. `してみよう`: proposta, non comando secco
 
 `{{攻略|こうりゃく}}してみよう` combina tre livelli. Prima c'è
-[{{攻略|こうりゃく}}](term:term-kouryaku) con `する`: il nome diventa verbo,
+[{{攻略|こうりゃく}}](term:term-kouryaku) con する: il nome diventa verbo,
 cioè affrontare e superare una sfida. Poi c'è la forma in `-te`, `して`, che
 collega l'azione a `みる`. In questo pattern, `みる` non significa "guardare"
 con gli occhi: significa provare a fare qualcosa e vedere come va. Infine
@@ -206,7 +213,7 @@ translation_it: >-
 *   `みよう` ➔ **Tentativo condiviso** (`みる` come "provare a", `よう` come
     "facciamolo / proviamo").
 
-#### ⚖️ Contrasto grammaticale: `した`, `しよう`, `してみよう`
+#### ⚖️ Contrasto operativo: `した`, `しよう`, `してみよう`
 
 *   `{{攻略|こうりゃく}}した` ➔ la sfida è già stata superata.
 *   `{{攻略|こうりゃく}}しよう` ➔ "affrontiamola / superiamola", proposta diretta.
@@ -242,7 +249,7 @@ translation_it: >-
 
 ## Nota finale
 
-Quando [{{攻略|こうりゃく}}](term:term-kouryaku) modifica `サイト`,
+Quando [{{攻略|こうりゃく}}](term:term-kouryaku) modifica サイト,
 `{{情報|じょうほう}}` o `{{記事|きじ}}`, pensa a una guida o a contenuto
 strategico. Quando prende come oggetto un dungeon, uno stage, un boss o una
 quest, leggi invece il movimento pratico: entrare nella sfida e cercare di

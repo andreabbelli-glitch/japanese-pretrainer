@@ -68,8 +68,8 @@ La stessa lingua collega il campo aperto, il tutorial della cavalcatura, la batt
 Quando il gioco ti orienta sul campo, le parole non indicano solo "dove sei": dicono anche quale rapporto hai con lo spazio intorno a te. Paldea è piena di messaggi che ti chiedono di controllare l'area vicina, avvicinarti a un punto o capire se sei finalmente arrivato.
 
 *   [{{周|まわ}}り](term:term-v379-mawari) apre la zona circostante. Non è una meta precisa come una città o un edificio: è ciò che sta intorno al personaggio, alla telecamera o al punto segnalato. Quando un dialogo ti invita a guardare [{{周|まわ}}り](term:term-v379-mawari), la lettura giusta è "controlla l'ambiente vicino", non "raggiungi un luogo chiamato così".
-*   [{{近|ちか}}づく](term:term-v380-chikazu-ku) contiene l'idea di diventare vicino. La base `{{近|ちか}}い` dice "vicino", mentre `づく` porta il cambiamento di stato: ridurre la distanza. In gioco è un verbo molto pratico, perché spesso il testo non ti chiede di essere già accanto a qualcosa, ma di muoverti verso di esso.
-*   [{{着|つ}}く](term:term-v388-tsuku) chiude il movimento. Se [{{近|ちか}}づく](term:term-v380-chikazu-ku) è il processo, [{{着|つ}}く](term:term-v388-tsuku) è il punto finale: sei arrivato alla destinazione, al gate, alla città o al luogo richiesto. La particella `に` prima della destinazione rende questa chiusura ancora più chiara.
+*   [{{近|ちか}}づく](term:term-v380-chikazu-ku) contiene l'idea di diventare vicino. La base {{近|ちか}}い dice "vicino", mentre づく porta il cambiamento di stato: ridurre la distanza. In gioco è un verbo molto pratico, perché spesso il testo non ti chiede di essere già accanto a qualcosa, ma di muoverti verso di esso.
+*   [{{着|つ}}く](term:term-v388-tsuku) chiude il movimento. Se [{{近|ちか}}づく](term:term-v380-chikazu-ku) è il processo, [{{着|つ}}く](term:term-v388-tsuku) è il punto finale: sei arrivato alla destinazione, al gate, alla città o al luogo richiesto. La particella に prima della destinazione rende questa chiusura ancora più chiara.
 
 :::example_sentence
 jp: >-
@@ -82,25 +82,34 @@ translation_it: >-
 
 *   `{{周|まわ}}りを` ➔ **Oggetto dell'osservazione**: il testo restringe l'attenzione alla zona circostante.
 *   `{{見|み}}てから` ➔ **Sequenza temporale**: prima guardi, poi passi all'azione successiva.
-*   `ゼロゲートに` ➔ **Direzione o punto di riferimento**: `に` marca il luogo verso cui ti avvicini.
+*   [ゼロゲート](term:term-v382-zerogeeto)に ➔ **Direzione o punto di riferimento**: `に` marca il luogo verso cui ti avvicini.
 *   `{{近|ちか}}づく` ➔ **Movimento verso la vicinanza**: non dice ancora che sei arrivato, ma che stai riducendo la distanza.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{近|ちか}}づく](term:term-v380-chikazu-ku) e [{{着|つ}}く](term:term-v388-tsuku) non sono intercambiabili. `ゼロゲートに{{近|ちか}}づく` lascia il personaggio in movimento verso lo Zero Gate; `ゼロゲートに{{着|つ}}く` dice che l'arrivo è compiuto. In un tutorial questa differenza cambia l'azione attesa: muoversi ancora o riconoscere che la meta è stata raggiunta.
+[{{近|ちか}}づく](term:term-v380-chikazu-ku) e [{{着|つ}}く](term:term-v388-tsuku) non sono intercambiabili. ゼロゲートに{{近|ちか}}づく lascia il personaggio in movimento verso lo Zero Gate; ゼロゲートに{{着|つ}}く dice che l'arrivo è compiuto. In un tutorial questa differenza cambia l'azione attesa: muoversi ancora o riconoscere che la meta è stata raggiunta.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{周|まわ}}り](term:term-v379-mawari), immagina la telecamera che ruota attorno al personaggio. Non punta a una destinazione lontana: disegna un cerchio di attenzione intorno a te.
+
+[ほかくパワー](term:term-v374-hokakupawaa) appartiene alla stessa logica di
+interfaccia: non è una mossa e non è un luogo, ma un bonus che modifica la
+probabilità di cattura. Quando lo trovi vicino a panini, pasti o poteri attivi,
+leggilo come etichetta di effetto temporaneo.
+
+[ゼロゲート](term:term-v382-zerogeeto) è invece un landmark: il nome non chiede
+di interpretare "zero" in astratto, ma di riconoscere il punto fisso verso cui
+il testo ti sta guidando.
 
 ## 2. Attraversare Paldea: spazio aperto, acqua e slancio
 
 Le parole di movimento diventano ancora più concrete quando il terreno cambia. Zone ampie, superfici d'acqua e salti potenziati richiedono una lettura diversa da quella di un dialogo fermo: il testo ti sta dicendo quale tipo di attraversamento è possibile o rischioso.
 
 *   [{{広|ひろ}}い](term:term-v383-hiroi) qualifica uno spazio aperto e largo. Non è solo "grande" in senso generico: su una mappa suggerisce distanza da coprire, visuale più ampia e possibilità di perdere l'orientamento se non controlli bene i dintorni.
-*   [{{水上|すいじょう}}](term:term-v384-suijou) unisce `{{水|すい}}` e `{{上|じょう}}`: il punto non è "dentro l'acqua", ma "sopra l'acqua" come superficie attraversabile. In *Scarlet & Violet* questo è il linguaggio naturale per tutorial e istruzioni legate a fiumi, laghi e mare.
+*   [{{水上|すいじょう}}](term:term-v384-suijou) unisce {{水|すい}} e {{上|じょう}}: il punto non è "dentro l'acqua", ma "sopra l'acqua" come superficie attraversabile. In *Scarlet & Violet* questo è il linguaggio naturale per tutorial e istruzioni legate a fiumi, laghi e mare.
 *   [{{一気|いっき}}に](term:term-v385-ikki-ni) descrive il modo dell'azione: tutto d'un colpo, senza spezzare il movimento in più passaggi. [{{一瞬|いっしゅん}}](term:term-v381-isshun), invece, parla della durata brevissima. Uno segnala lo slancio continuo, l'altro il tempo quasi istantaneo.
-*   [{{大|おお}}ジャンプ](term:term-v387-oojanpu) è un salto potenziato. Il prefisso `{{大|おお}}` qui funziona come "grande" o "super", quindi il testo non sta nominando un salto normale. Quando compare vicino a [{{危|あぶ}}ない](term:term-v389-abunai), la schermata non sta facendo atmosfera: sta avvisando che quella traiettoria può diventare un problema.
+*   [{{大|おお}}ジャンプ](term:term-v387-oojanpu) è un salto potenziato. Il prefisso {{大|おお}} qui funziona come "grande" o "super", quindi il testo non sta nominando un salto normale. Quando compare vicino a [{{危|あぶ}}ない](term:term-v389-abunai), la schermata non sta facendo atmosfera: sta avvisando che quella traiettoria può diventare un problema.
 
 :::example_sentence
 jp: >-
@@ -128,11 +137,11 @@ translation_it: >-
 *   `ここで` ➔ **Luogo dell'azione**: la cautela vale in questo punto preciso, non in assoluto.
 *   `{{大|おお}}ジャンプしない` ➔ **Azione evitata**: `しない` nega il salto potenziato.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{一瞬|いっしゅん}}](term:term-v381-isshun) risponde alla domanda "per quanto tempo?"; [{{一気|いっき}}に](term:term-v385-ikki-ni) risponde alla domanda "in che modo?". `{{一瞬|いっしゅん}}で{{進|すす}}む` suona come un movimento completato in un istante; `{{一気|いっき}}に{{進|すす}}む` insiste sul procedere senza fermarsi.
+[{{一瞬|いっしゅん}}](term:term-v381-isshun) risponde alla domanda "per quanto tempo?"; [{{一気|いっき}}に](term:term-v385-ikki-ni) risponde alla domanda "in che modo?". {{一瞬|いっしゅん}}で{{進|すす}}む suona come un movimento completato in un istante; {{一気|いっき}}に{{進|すす}}む insiste sul procedere senza fermarsi.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{水上|すいじょう}}](term:term-v384-suijou), pensa alla cavalcatura vista sulla mappa: non sta diventando acqua e non sta affondando, sta passando sopra una superficie che il gioco ora tratta come percorso.
 
@@ -141,9 +150,9 @@ Per [{{水上|すいじょう}}](term:term-v384-suijou), pensa alla cavalcatura 
 In battaglia la stessa precisione serve per leggere lo stato dei Pokémon e il valore delle azioni. Alcune parole descrivono una condizione già attiva, altre indicano potenza, trasformazione o crescita costruita nel tempo.
 
 *   [ねむり](term:term-v378-nemuri) è lo stato di sonno. In una scena narrativa può sembrare solo "dormire", ma nel linguaggio di battaglia è una condizione tecnica: il Pokémon addormentato non agisce normalmente, e il testo spesso la tratta come stato da riconoscere prima di scegliere la mossa.
-*   [{{強力|きょうりょく}}](term:term-v386-kyouryoku) è potenza concentrata. `{{強|きょう}}` porta l'idea di forza, `{{力|りょく}}` quella di capacità o potere; con `な` davanti a un nome diventa "potente", come in `{{強力|きょうりょく}}なわざ`.
-*   [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka) non è solo "cristallo" come oggetto. Il suffisso `{{化|か}}` indica trasformazione in uno stato: qualcosa diventa cristallino. Nel contesto di *Scarlet & Violet*, il richiamo alla Teracristallizzazione è immediato.
-*   [{{育|そだ}}てる](term:term-v391-sodate-ru) è un verbo transitivo: il giocatore alleva, allena o fa crescere un Pokémon. La forma ti fa cercare un oggetto marcato da `を`, perché qualcuno sta facendo crescere qualcosa.
+*   [{{強力|きょうりょく}}](term:term-v386-kyouryoku) è potenza concentrata. {{強|きょう}} porta l'idea di forza, {{力|りょく}} quella di capacità o potere; con な davanti a un nome diventa "potente", come in {{強力|きょうりょく}}なわざ.
+*   [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka) non è solo "cristallo" come oggetto. Il suffisso {{化|か}} indica trasformazione in uno stato: qualcosa diventa cristallino. Nel contesto di *Scarlet & Violet*, il richiamo alla Teracristallizzazione è immediato.
+*   [{{育|そだ}}てる](term:term-v391-sodate-ru) è un verbo transitivo: il giocatore alleva, allena o fa crescere un Pokémon. La forma ti fa cercare un oggetto marcato da を, perché qualcuno sta facendo crescere qualcosa.
 
 :::example_sentence
 jp: >-
@@ -170,21 +179,21 @@ translation_it: >-
 *   `{{強力|きょうりょく}}な ポケモンを` ➔ **Bersaglio dell'allenamento**: `な` qualifica il Pokémon, `を` lo rende oggetto dell'azione.
 *   `{{育|そだ}}てる` ➔ **Crescita causata**: il soggetto non cresce da solo; qualcuno lo allena o lo fa crescere.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{育|そだ}}てる](term:term-v391-sodate-ru) e `{{育|そだ}}つ` si leggono in direzioni diverse. `ポケモンを{{育|そだ}}てる` significa "allenare/far crescere un Pokémon"; `ポケモンが{{育|そだ}}つ` significa "il Pokémon cresce". La particella è il primo segnale: `を` indica l'oggetto che viene fatto crescere, `が` il soggetto che cresce.
+[{{育|そだ}}てる](term:term-v391-sodate-ru) e {{育|そだ}}つ si leggono in direzioni diverse. ポケモンを{{育|そだ}}てる significa "allenare/far crescere un Pokémon"; ポケモンが{{育|そだ}}つ significa "il Pokémon cresce". La particella è il primo segnale: を indica l'oggetto che viene fatto crescere, が il soggetto che cresce.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka), guarda il suffisso `{{化|か}}` come una freccia di trasformazione: non nomina solo una cosa cristallina, ma il passaggio verso quello stato.
+Per [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka), guarda il suffisso {{化|か}} come una freccia di trasformazione: non nomina solo una cosa cristallina, ma il passaggio verso quello stato.
 
 ## 4. Sfide e richieste: tono del personaggio, favore e metodo
 
 Le battute dei personaggi cambiano postura con pochissime sillabe. Una frase può lanciare una sfida, chiedere un favore, offrire un consiglio o spiegare il metodo di un'azione. Qui il significato non sta solo nel vocabolario, ma anche nel modo in cui la forma si rivolge all'interlocutore.
 
-*   [{{手加減|てかげん}}しないよ](term:term-e071-tekagen-shinaiyo) è una dichiarazione da sfida. `{{手|て}}{{加減|かげん}}` è il dosare la mano, cioè trattenersi; `しない` lo nega, e `よ` porta l'affermazione verso l'altro personaggio. Il risultato non è "non farò qualcosa" in modo neutro, ma "non mi tratterrò".
-*   [〜してくれない？](term:term-e072-shitekurenai) costruisce una richiesta morbida. `くれる` presenta l'azione come fatta a beneficio del parlante, mentre la domanda negativa attenua il comando. Nei dialoghi suona più come "non è che potresti...?" che come un ordine secco.
-*   [〜のやり{{方|かた}}](term:term-e073-noyarikata) trasforma un'azione nel suo metodo. `やる` è "fare", `{{方|かた}}` è "modo": insieme diventano "come si fa". Se il gioco parla di `{{大|おお}}ジャンプのやり{{方|かた}}`, non sta nominando il salto come azione da eseguire subito, ma il modo per farlo.
+*   [{{手加減|てかげん}}しないよ](term:term-e071-tekagen-shinaiyo) è una dichiarazione da sfida. {{手|て}}{{加減|かげん}} è il dosare la mano, cioè trattenersi; しない lo nega, e よ porta l'affermazione verso l'altro personaggio. Il risultato non è "non farò qualcosa" in modo neutro, ma "non mi tratterrò".
+*   [〜してくれない？](term:term-e072-shitekurenai) costruisce una richiesta morbida. くれる presenta l'azione come fatta a beneficio del parlante, mentre la domanda negativa attenua il comando. Nei dialoghi suona più come "non è che potresti...?" che come un ordine secco.
+*   [〜のやり{{方|かた}}](term:term-e073-noyarikata) trasforma un'azione nel suo metodo. やる è "fare", {{方|かた}} è "modo": insieme diventano "come si fa". Se il gioco parla di {{大|おお}}ジャンプのやり{{方|かた}}, non sta nominando il salto come azione da eseguire subito, ma il modo per farlo.
 *   [アドバイス](term:term-v377-adobaisu) entra bene nei dialoghi di supporto: un personaggio non sta necessariamente dando un comando, ma una lettura utile della situazione. Accanto a [{{謎|なぞ}}](term:term-v376-nazo), può indicare una pista su qualcosa che non è ancora chiaro.
 
 :::example_sentence
@@ -213,11 +222,11 @@ translation_it: >-
 *   `やり{{方|かた}}を` ➔ **Oggetto della richiesta**: ciò che si vuole sapere è il modo di fare, non il salto già eseguito.
 *   `{{教|おし}}えてくれない？` ➔ **Richiesta attenuata**: il parlante chiede all'altro di fare qualcosa per lui.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{手加減|てかげん}}しないよ](term:term-e071-tekagen-shinaiyo) chiude la distanza e spinge verso lo scontro; [〜してくれない？](term:term-e072-shitekurenai) apre uno spazio di richiesta; [〜のやり{{方|かた}}](term:term-e073-noyarikata) sposta il focus dall'azione al metodo. Se li leggi tutti come semplici "frasi utili", perdi il tono: sfida, favore e spiegazione funzionano in modo diverso.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per `やり{{方|かた}}`, pensa a `{{方|かた}}` come "modo/direzione del fare". Non è il risultato dell'azione: è la strada pratica per arrivarci.
 
@@ -276,13 +285,17 @@ translation_it: >-
 *   `{{近|ちか}}づかない` ➔ **Azione negata**: non avvicinarsi.
 *   `ようにする` ➔ **Comportamento impostato**: il soggetto si regola per evitare quel risultato.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{見|み}}ることになる` dice che si finisce per guardare o viene stabilito che si guarderà. `{{見|み}}ることにする` dice che il soggetto decide di guardare. `{{見|み}}るようにする` dice che il soggetto fa in modo di guardare, quindi costruisce un'abitudine o una cautela.
 
 ### D. Quando il sistema blocca e chiede conferma
 
-[{{本当|ほんとう}}に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) è la formula da riconoscere quando la UI vuole una conferma forte. Dentro la formula, `{{本当|ほんとう}}に` aggiunge "davvero"; `よろしいですか` è una forma cortese di "va bene?". Se appare prima di una sfida o di un passaggio importante, il gioco non sta aggiungendo gentilezza gratuita: ti sta chiedendo consenso prima di procedere.
+[{{本当|ほんとう}}に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) è la formula da riconoscere quando la UI vuole una conferma forte. Dentro la formula, {{本当|ほんとう}}に aggiunge "davvero"; よろしいですか è una forma cortese di "va bene?". Se appare prima di una sfida o di un passaggio importante, il gioco non sta aggiungendo gentilezza gratuita: ti sta chiedendo consenso prima di procedere.
+
+[{{団|だん}}ラッシュ](term:term-v392-danrasshu) va letto come nome di modalità:
+il valore didattico non è nel singolo 団, ma nel riconoscere che la UI sta per
+avviare una procedura specifica del Team Star.
 
 :::example_sentence
 jp: >-
@@ -293,12 +306,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{団|だん}}ラッシュを` ➔ **Azione o modalità avviata**: `を` marca ciò che verrà iniziato.
+*   [{{団|だん}}ラッシュ](term:term-v392-danrasshu)を ➔ **Azione o modalità avviata**: `を` marca ciò che verrà iniziato.
 *   `{{始|はじ}}めます` ➔ **Avvio cortese**: il sistema annuncia l'azione in forma formale.
 *   `{{本当|ほんとう}}に` ➔ **Rafforzamento della conferma**: "davvero" segnala che la scelta conta.
 *   `よろしいですか？` ➔ **Richiesta di consenso**: la UI aspetta una risposta prima di procedere.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Quando vedi [{{本当|ほんとう}}に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka), leggi la schermata come una porta con maniglia: il gioco non ti sta più descrivendo il mondo, ti sta chiedendo se vuoi aprire quella porta.
 

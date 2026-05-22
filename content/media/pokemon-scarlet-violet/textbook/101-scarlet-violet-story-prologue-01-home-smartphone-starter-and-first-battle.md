@@ -11,12 +11,12 @@ tags: [pokemon, scarlet-violet, prologue, story]
 prerequisites: []
 summary: >-
   Leggere il prologo iniziale: cortesia domestica, smartphone, scelta dello
-  starter, primo match e Pokedex come segnali operativi.
+  starter, primo match e Pokédex come segnali operativi.
 ---
 
 # Dal campanello al primo match: leggere il prologo di Paldea
 
-Il primo tratto giocabile di *Pokemon Scarlet / Violet* non parte con una
+Il primo tratto giocabile di *Pokémon Scarlet / Violet* non parte con una
 grande missione, ma con segnali piccoli e molto leggibili: qualcuno bussa alla
 porta, un adulto parla in registro formale, la madre ti prepara per uscire, lo
 smartphone diventa interfaccia, Nemona trasforma una presentazione in una sfida.
@@ -44,7 +44,7 @@ quando una funzione entra stabilmente nel viaggio.
 - [{{素質|そしつ}}アリ](term:term-soshitsu-ari) — ha stoffa / mostra talento
 - [{{弱点|じゃくてん}}](term:term-jakuten) — debolezza, punto debole
 - [{{繰|く}}り{{出|だ}}す](term:term-kuridasu) — mandare in campo / far uscire
-- [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) — Pokedex
+- [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) — Pokédex
 - [{{手書|てが}}き](term:term-tegaki) — scritto o compilato a mano
 - [お{{弁当|べんとう}}](term:term-obentou) — bento / pranzo al sacco
 
@@ -62,9 +62,22 @@ quando una funzione entra stabilmente nel viaggio.
 - [～たら](grammar:grammar-tara) — se / quando una condizione si realizza
 - [～てね](grammar:grammar-te-ne) — richiesta amichevole, spesso con valore pratico
 - [～みたい](grammar:grammar-mitai) — sembra / dà l'impressione
-- [～てしまう](grammar:grammar-te-shimau) — finire per fare, spesso senza volerlo; nel parlato anche `～ちゃう`
+- [～てしまう](grammar:grammar-te-shimau) — finire per fare, spesso senza volerlo; nel parlato anche ～ちゃう
 - [～たばかり](grammar:grammar-ta-bakari) — aver appena fatto / appena iniziato
 - [～づくし](grammar:grammar-zukushi) — tutto pieno di..., una sequenza continua di...
+
+## Etichette da riconoscere
+
+- [スマホロトム](term:term-smartphone-rotom) — interfaccia personale che trasforma
+  una consegna narrativa in funzione di gioco
+- [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) — sistema di registrazione
+  stabile del viaggio
+- [デビュー{{戦|せん}}](term:term-debyuu-sen) — primo match letto come ingresso
+  ufficiale in una pratica
+- [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun) — formula di feedback
+  della battaglia, non commento libero
+- [お{{弁当|べんとう}}](term:term-obentou) — oggetto domestico che accompagna la
+  partenza e abbassa il registro della scena
 
 ---
 
@@ -197,7 +210,7 @@ La stessa uscita da casa conserva lessico domestico.
 [お{{弁当|べんとう}}](term:term-obentou) è il pranzo al sacco che la madre ti
 mette in mano: non sposta la missione, ma fa sentire che il viaggio scolastico
 parte da una cura concreta. In `{{初|はじ}}めてづくし`, invece,
-[～づくし](grammar:grammar-zukushi) si attacca a `{{初|はじ}}めて` per dire che il
+[～づくし](grammar:grammar-zukushi) si attacca a {{初|はじ}}めて per dire che il
 periodo è "pieno di prime volte". Non è una prima esperienza isolata: è una
 fase intera dominata da novità.
 
@@ -223,7 +236,7 @@ starter come partner e trasforma quasi subito la presentazione in lotta.
     con `する`; in `{{勝負|しょうぶ}}の {{準備|じゅんび}}は いい？`,
     [{{準備|じゅんび}}](term:term-junbi) controlla se puoi entrare nella fase
     successiva. La domanda non chiede se sei psicologicamente motivato: chiede
-    se hai scelto il Pokemon e puoi scendere verso il combattimento.
+    se hai scelto il Pokémon e puoi scendere verso il combattimento.
 
 :::example_sentence
 jp: >-
@@ -246,19 +259,19 @@ La scelta dello starter usa un giapponese più osservativo. Clavell commenta
 `この {{子|こ}}は きみを {{気|き}}に {{入|い}}った みたいですね`.
 [～みたい](grammar:grammar-mitai) non certifica un fatto con tono assoluto:
 dice "sembra", "dà l'impressione". La scena lascia che il comportamento del
-Pokemon sembri una preferenza, e quella preferenza rende naturale la tua
+Pokémon sembri una preferenza, e quella preferenza rende naturale la tua
 scelta.
 
 :::example_sentence
 jp: >-
   この {{子|こ}}は きみを {{気|き}}に {{入|い}}った みたいですね。
 translation_it: >-
-  Sembra proprio che questo Pokemon abbia preso simpatia per te.
+  Sembra proprio che questo Pokémon abbia preso simpatia per te.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `この {{子|こ}}は` ➔ **Tema affettivo** (il Pokemon viene trattato come
+*   `この {{子|こ}}は` ➔ **Tema affettivo** (il Pokémon viene trattato come
     "questo piccolo / questa creatura").
 *   `きみを {{気|き}}に {{入|い}}った` ➔ **Simpatia verso un bersaglio**
     (`{{気|き}}に {{入|い}}る` significa piacere, andare a genio; qui il bersaglio
@@ -268,10 +281,10 @@ translation_it: >-
 
 :::image
 src: assets/story/starter-choice-three-pokemon.webp
-alt: "Scena della scelta dello starter con i tre Pokemon iniziali presentati al protagonista."
+alt: "Scena della scelta dello starter con i tre Pokémon iniziali presentati al protagonista."
 caption: >-
   Nella scelta dello starter, [～みたい](grammar:grammar-mitai) aiuta a leggere
-  l'accettazione del Pokemon come impressione osservata dai personaggi.
+  l'accettazione del Pokémon come impressione osservata dai personaggi.
 :::
 
 #### ⚖️ Contrasto operativo
@@ -296,7 +309,7 @@ della battaglia. Qui il giapponese non descrive solo che cosa succede: ti fa
 leggere la catena tattica tra tipo, scelta della mossa e messaggio di sistema.
 
 *   [{{弱点|じゃくてん}}](term:term-jakuten) indica il punto debole, ma nel
-    contesto Pokemon il suo valore è molto concreto: è il rapporto di tipo che
+    contesto Pokémon il suo valore è molto concreto: è il rapporto di tipo che
     fa aumentare il danno. La parola ti serve prima del colpo, quando devi
     scegliere una mossa.
 *   [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun) arriva dopo l'azione:
@@ -323,7 +336,7 @@ translation_it: >-
 
 :::image
 src: assets/story/nemona-first-battle-beach.webp
-alt: "Primo combattimento tutorial contro Nemona sulla spiaggia con i Pokemon in campo e interfaccia di lotta visibile."
+alt: "Primo combattimento tutorial contro Nemona sulla spiaggia con i Pokémon in campo e interfaccia di lotta visibile."
 caption: >-
   Nel primo match, [{{弱点|じゃくてん}}](term:term-jakuten) e
   [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun) formano una catena leggibile:
@@ -339,8 +352,8 @@ in base alla debolezza, poi il gioco conferma l'effetto.
 
 La battuta di Nemona su `いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところでした`
 spiega il suo autocontrollo in lingua di battaglia. [{{繰|く}}り{{出|だ}}す](term:term-kuridasu)
-è il verbo per mandare fuori qualcosa in modo deciso; nei dialoghi Pokemon
-indica anche mandare in campo un Pokemon. La forma [～てしまう](grammar:grammar-te-shimau),
+è il verbo per mandare fuori qualcosa in modo deciso; nei dialoghi Pokémon
+indica anche mandare in campo un Pokémon. La forma [～てしまう](grammar:grammar-te-shimau),
 contratta in `～ちゃう`, aggiunge che l'azione stava per partire quasi per
 errore o per abitudine.
 
@@ -348,14 +361,14 @@ errore o per abitudine.
 jp: >-
   うっかり いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところでした。
 translation_it: >-
-  Per poco non mandavo in campo il mio solito Pokemon senza pensarci.
+  Per poco non mandavo in campo il mio solito Pokémon senza pensarci.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `うっかり` ➔ **Disattenzione** (prepara la lettura "senza volerlo").
 *   `いつもの ポケモンを` ➔ **Oggetto abituale** (non uno starter calibrato sul
-    tutorial, ma il Pokemon che userebbe di solito).
+    tutorial, ma il Pokémon che userebbe di solito).
 *   `{{繰|く}}り{{出|だ}}しちゃう` ➔ **Azione quasi sfuggita di mano**
     (`{{繰|く}}り{{出|だ}}してしまう` contratto: finire per mandarlo in campo).
 *   `ところでした` ➔ **Quasi-evento** (l'azione non è avvenuta, ma ci è mancato
@@ -367,19 +380,19 @@ In `{{繰|く}}り{{出|だ}}す`, immagina qualcosa che viene fatto uscire in s
 spinto fuori sul campo. È un'immagine per ricordare il valore operativo del
 verbo, non una spiegazione etimologica completa.
 
-## 5. Pokedex e registrazione: dal quaderno all'app
+## 5. Pokédex e registrazione: dal quaderno all'app
 
 Dopo la lotta, Nemona sposta il focus dal combattimento al sistema. La
-scena prende un oggetto familiare della serie, il Pokedex, e lo rilegge come
+scena prende un oggetto familiare della serie, il Pokédex, e lo rilegge come
 app nello [スマホロトム](term:term-smartphone-rotom): non più quaderno da
 riempire a mano, ma interfaccia che aggiorna dati.
 
-*   [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) contiene `{{図鑑|ずかん}}`,
+*   [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) contiene {{図鑑|ずかん}},
     "enciclopedia illustrata / catalogo". Nel gioco però non viene presentato
     come volume separato: vive dentro il telefono, quindi le sue frasi vanno
     lette come messaggi di app.
 *   [{{登録|とうろく}}](term:term-touroku) è il verbo chiave, perché dice che un
-    dato entra ufficialmente nel sistema. Quando un Pokemon catturato viene
+    dato entra ufficialmente nel sistema. Quando un Pokémon catturato viene
     `{{登録|とうろく}}される`, la frase non parla di scrivere una nota: parla di
     una registrazione automatica.
 
@@ -388,22 +401,22 @@ jp: >-
   {{捕|つか}}まえた ポケモンは ポケモン{{図鑑|ずかん}}に {{自動|じどう}}で
   {{登録|とうろく}}されるよ。
 translation_it: >-
-  I Pokemon che catturi vengono registrati automaticamente nel Pokedex.
+  I Pokémon che catturi vengono registrati automaticamente nel Pokédex.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `{{捕|つか}}まえた ポケモンは` ➔ **Tema definito da un'azione già compiuta**
-    (i Pokemon catturati).
+    (i Pokémon catturati).
 *   `ポケモン{{図鑑|ずかん}}に` ➔ **Destinazione della registrazione** (il dato
-    entra nel Pokedex).
+    entra nel Pokédex).
 *   `{{自動|じどう}}で` ➔ **Modalità** (non serve un inserimento manuale).
-*   `{{登録|とうろく}}される` ➔ **Passivo di sistema** (il Pokemon viene
+*   `{{登録|とうろく}}される` ➔ **Passivo di sistema** (il Pokémon viene
     registrato dal meccanismo dell'app).
 
 :::image
 src: assets/ui/pokedex-auto-registration-scene.webp
-alt: "Scena o schermata in cui il Pokedex viene introdotto sullo Smart Rotom."
+alt: "Scena o schermata in cui il Pokédex viene introdotto sullo Smart Rotom."
 caption: >-
   [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) e
   [{{登録|とうろく}}](term:term-touroku) entrano insieme: l'app non conserva solo
@@ -411,7 +424,7 @@ caption: >-
 :::
 
 Il contrasto con [{{手書|てが}}き](term:term-tegaki) rende più chiaro il salto.
-`{{手|て}}` è la mano, `{{書|が}}き` è lo scritto: un vecchio Pokedex compilato
+`{{手|て}}` è la mano, `{{書|が}}き` è lo scritto: un vecchio Pokédex compilato
 a mano richiederebbe annotazione manuale. Lo
 [スマホロトム](term:term-smartphone-rotom), invece, collega cattura,
 [{{登録|とうろく}}](term:term-touroku) e consultazione nella stessa interfaccia.
@@ -429,12 +442,12 @@ tono diventa colloquiale ma non perde funzione. `{{要|よう}}` qui vale "richi
 Allenatore, quella funzione è da guardare subito. Il pattern
 [～たばかり](grammar:grammar-ta-bakari) completa la situazione in frasi come
 `ポケモンを {{始|はじ}}めたばっかり`: hai appena iniziato, quindi il gioco può
-spiegarti Pokedex, tipi e match come basi legittime, non come cose già date.
+spiegarti Pokédex, tipi e match come basi legittime, non come cose già date.
 
 ## Esempi guidati di riepilogo
 
 Le frasi seguenti ricombinano il flusso del prologo: casa, uscita, scelta,
-battaglia e Pokedex.
+battaglia e Pokédex.
 
 :::example_sentence
 jp: >-
@@ -458,7 +471,7 @@ jp: >-
   この {{子|こ}}が きみを {{気|き}}に {{入|い}}った みたいなら、 デビュー{{戦|せん}}を
   {{見守|みまも}}ろう。
 translation_it: >-
-  Se sembra che questo Pokemon abbia preso simpatia per te, guardiamo con
+  Se sembra che questo Pokémon abbia preso simpatia per te, guardiamo con
   attenzione il suo match di debutto.
 :::
 
@@ -476,8 +489,8 @@ jp: >-
   {{捕|つか}}まえた ポケモンは {{手書|てが}}きではなく、
   ポケモン{{図鑑|ずかん}}に {{自動|じどう}}で {{登録|とうろく}}される。
 translation_it: >-
-  I Pokemon catturati non vengono scritti a mano: vengono registrati
-  automaticamente nel Pokedex.
+  I Pokémon catturati non vengono scritti a mano: vengono registrati
+  automaticamente nel Pokédex.
 :::
 
 ## Nota finale
@@ -486,6 +499,6 @@ Questo prologo insegna a leggere il passaggio da casa a viaggio come una serie
 di segnali linguistici: la cortesia apre la porta, [{{準備|じゅんび}}](term:term-junbi)
 marca i gate, [スマホロトム](term:term-smartphone-rotom) trasforma le battute in
 interfaccia, [{{勝負|しょうぶ}}](term:term-shoubu) porta Nemona sul campo e
-[{{登録|とうろく}}](term:term-touroku) collega cattura e Pokedex. Se riconosci
+[{{登録|とうろく}}](term:term-touroku) collega cattura e Pokédex. Se riconosci
 questi pezzi mentre compaiono, il tutorial smette di essere una sequenza di
 frasi isolate e diventa un sistema leggibile.

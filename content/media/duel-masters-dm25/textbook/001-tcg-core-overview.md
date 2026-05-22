@@ -70,12 +70,14 @@ leggibili.
 
 ## Etichette da riconoscere
 
-- [アビス](term:term-abyss) — famiglia meccanica molto presente in `DM25-SD1`
-- `DM25-SD1` — starter deck che insiste su [{{墓地|ぼち}}](term:term-graveyard), [アビス](term:term-abyss) e rianimazione
-- `DM25-SD2` — starter deck che insiste su [{{攻撃|こうげき}}](term:term-attack), [{{進化|しんか}}](term:term-evolution), [{{侵略|しんりゃく}}](term:term-invasion) e [{{重|かさ}}ねる](term:term-kasaneru)
+- [アビス](term:term-abyss) — famiglia meccanica molto presente in DM25-SD1
+- DM25-SD1 — starter deck che insiste su [{{墓地|ぼち}}](term:term-graveyard), [アビス](term:term-abyss) e rianimazione
+- DM25-SD2 — starter deck che insiste su [{{攻撃|こうげき}}](term:term-attack), [{{進化|しんか}}](term:term-evolution), [{{侵略|しんりゃく}}](term:term-invasion) e [{{重|かさ}}ねる](term:term-kasaneru)
 - [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei) — carta di riferimento per vedere insieme costo, tipo, razza, testo e potenza
 
 ---
+
+Prima degli esempi, tieni fisso [ブレイク](term:term-break): nel lessico di Duel Masters non è un danno generico, ma il gesto tecnico di rompere uno scudo.
 
 ## 1. La carta dall'esterno verso l'interno
 
@@ -100,9 +102,9 @@ caption: >-
 I campi principali lavorano insieme:
 
 - [クリーチャー](term:term-creature), [{{呪文|じゅもん}}](term:term-spell) e [タマシード](term:term-tamaseed) dicono che genere di carta stai leggendo. Una creatura resta in [バトルゾーン](term:term-battle-zone), può [{{攻撃|こうげき}}](term:term-attack) e può essere scelta o distrutta; una spell invece tende a produrre un [{{効果|こうか}}](term:term-effect) e poi non resta come presenza stabile.
-- [コスト](term:term-cost) ha due ruoli: sulla cornice della carta è ciò che paghi per giocarla, dentro il testo diventa spesso un filtro, come `コスト{{4以下|よんいか}}の...`. La stessa parola quindi può indicare spesa o selezione.
+- [コスト](term:term-cost) ha due ruoli: sulla cornice della carta è ciò che paghi per giocarla, dentro il testo diventa spesso un filtro, come コスト{{4以下|よんいか}}の.... La stessa parola quindi può indicare spesa o selezione.
 - [{{文明|ぶんめい}}](term:term-civilization) e [{{種族|しゅぞく}}](term:term-race) non sono dettagli decorativi. [{{文明|ぶんめい}}](term:term-civilization) colloca la carta in una famiglia di risorse e colori; [{{種族|しゅぞく}}](term:term-race) apre le sinergie, perché molte frasi cercano proprio un tipo di creatura o un gruppo come [アビス](term:term-abyss).
-- [{{効果|こうか}}](term:term-effect) è il nome tecnico del risultato. Quando leggi `この{{効果|こうか}}`, non devi cercare un oggetto chiamato "effetto": la frase sta rimandando al blocco di testo che si sta risolvendo.
+- [{{効果|こうか}}](term:term-effect) è il nome tecnico del risultato. Quando leggi この{{効果|こうか}}, non devi cercare un oggetto chiamato "effetto": la frase sta rimandando al blocco di testo che si sta risolvendo.
 
 :::example_sentence
 jp: >-
@@ -119,7 +121,7 @@ translation_it: >-
 *   `パワー{{5000|ごせん}}` ➔ **Valore di combattimento** (non è una quantità di carte, ma una statistica della creatura).
 *   `{{火|ひ}}{{文明|ぶんめい}}` ➔ **Civiltà** (`{{火|ひ}}` specifica il colore, `{{文明|ぶんめい}}` dice che stai leggendo la categoria di appartenenza).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `コスト` e `パワー` sono entrambi numeri stampati sulla carta, ma non fanno lo
 stesso lavoro. `コスト{{5|ご}}` risponde alla domanda "quanto costa giocarla?",
@@ -127,9 +129,9 @@ mentre `パワー{{5000|ごせん}}` risponde alla domanda "quanto è forte in
 combattimento?". Quando un effetto dice `コスト{{4以下|よんいか}}`, non sta
 confrontando la forza: sta filtrando le carte ammesse in base al costo.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [{{種族|しゅぞく}}](term:term-race), pensa a `{{種|しゅ}}` come "tipo/specie" e
+Per [{{種族|しゅぞく}}](term:term-race), pensa a {{種|しゅ}} come "tipo/specie" e
 `{{族|ぞく}}` come "gruppo/clan": è il punto della carta in cui il gioco ti
 dice a quale famiglia appartiene. È un gancio di riconoscimento, non una regola
 di rulings, ma aiuta a non leggere [{{種族|しゅぞく}}](term:term-race) come un semplice
@@ -143,10 +145,10 @@ parte. Il giapponese marca questa traiettoria con particelle molto stabili:
 `から` indica la provenienza, `に` indica la destinazione, `を` marca l'oggetto
 scelto o mosso.
 
-- [{{山札|やまふだ}}](term:term-deck) è il deck fisico della partita: nelle frasi con `から` diventa la fonte da cui prendi, riveli o aggiungi carte.
-- [{{手札|てふだ}}](term:term-hand) è la mano: quando compare con `に`, spesso è la destinazione finale di un'azione di ricerca, pesca o recupero.
-- [{{墓地|ぼち}}](term:term-graveyard) non è solo "dove finiscono le carte distrutte". In `DM25-SD1` è anche una zona da cui le creature possono tornare, quindi `{{墓地|ぼち}}から` è spesso un segnale di recupero o rianimazione.
-- [マナゾーン](term:term-mana-zone), [バトルゾーン](term:term-battle-zone) e [シールドゾーン](term:term-shield-zone) mostrano tre funzioni diverse: risorsa, presenza in campo, protezione. La parola `ゾーン` è trasparente, ma il nome prima di `ゾーン` decide che cosa sta succedendo alla carta.
+- [{{山札|やまふだ}}](term:term-deck) è il deck fisico della partita: nelle frasi con から diventa la fonte da cui prendi, riveli o aggiungi carte.
+- [{{手札|てふだ}}](term:term-hand) è la mano: quando compare con に, spesso è la destinazione finale di un'azione di ricerca, pesca o recupero.
+- [{{墓地|ぼち}}](term:term-graveyard) non è solo "dove finiscono le carte distrutte". In DM25-SD1 è anche una zona da cui le creature possono tornare, quindi {{墓地|ぼち}}から è spesso un segnale di recupero o rianimazione.
+- [マナゾーン](term:term-mana-zone), [バトルゾーン](term:term-battle-zone) e [シールドゾーン](term:term-shield-zone) mostrano tre funzioni diverse: risorsa, presenza in campo, protezione. La parola ゾーン è trasparente, ma il nome prima di ゾーン decide che cosa sta succedendo alla carta.
 
 :::example_sentence
 jp: >-
@@ -175,15 +177,15 @@ translation_it: >-
 *   `クリーチャーを{{1体|いったい}}` ➔ **Bersaglio contato** (`{{1体|いったい}}` conta esseri o creature, quindi conferma che l'oggetto è una creatura).
 *   `{{出|だ}}す` ➔ **Azione causativa pratica** (qualcuno mette la creatura in gioco; non è la creatura che "esce" da sola nella frase).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{山札|やまふだ}}から{{手札|てふだ}}に{{加|くわ}}える` sposta una carta verso la tua mano;
 `{{墓地|ぼち}}から{{出|だ}}す` sposta una creatura verso il campo. Entrambe le frasi
-usano `から`, ma il verbo finale decide la conseguenza: [{{加|くわ}}える](term:term-add)
+usano から, ma il verbo finale decide la conseguenza: [{{加|くわ}}える](term:term-add)
 crea disponibilità in mano, [{{出|だ}}す](term:term-dasu) crea presenza in battle
 zone.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Quando vedi una sequenza `AからBにV`, immaginala come una freccia di gioco:
 `A` ➔ `B` ➔ verbo finale. Il trucco non sostituisce la grammatica, ma ti
@@ -199,15 +201,15 @@ fa della carta stessa il soggetto della frase.
 
 ### A. `{{自分|じぶん}}`, `{{相手|あいて}}` e `このクリーチャー`
 
-- [{{自分|じぶん}}](term:term-self) in `{{自分|じぶん}}の{{山札|やまふだ}}` non significa "me stesso" in senso psicologico: è il possessivo tecnico che seleziona il tuo deck, la tua mano, il tuo graveyard o le tue creature.
-- [{{相手|あいて}}](term:term-opponent) in `{{相手|あいて}}のクリーチャー` stabilisce che il bersaglio sta dall'altro lato. Se poi arriva [{{選|えら}}ぶ](term:term-erabu), sai già che la scelta si farà tra permanenti avversari.
-- `このクリーチャー` è deittico: "questa creatura", cioè la carta che porta il testo. In frasi con [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki), spesso indica che l'effetto parte quando proprio quella carta entra, attacca o lascia la zona.
+- [{{自分|じぶん}}](term:term-self) in {{自分|じぶん}}の{{山札|やまふだ}} non significa "me stesso" in senso psicologico: è il possessivo tecnico che seleziona il tuo deck, la tua mano, il tuo graveyard o le tue creature.
+- [{{相手|あいて}}](term:term-opponent) in {{相手|あいて}}のクリーチャー stabilisce che il bersaglio sta dall'altro lato. Se poi arriva [{{選|えら}}ぶ](term:term-erabu), sai già che la scelta si farà tra permanenti avversari.
+- このクリーチャー è deittico: "questa creatura", cioè la carta che porta il testo. In frasi con [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki), spesso indica che l'effetto parte quando proprio quella carta entra, attacca o lascia la zona.
 
 ### B. [{{出|で}}る](term:term-deru) contro [{{出|だ}}す](term:term-dasu)
 
 La coppia [{{出|で}}る](term:term-deru) / [{{出|だ}}す](term:term-dasu) separa evento e
 azione causata. [{{出|で}}る](term:term-deru) descrive la carta che entra o compare:
-`このクリーチャーが{{出|で}}た{{時|とき}}`. [{{出|だ}}す](term:term-dasu) descrive invece
+このクリーチャーが{{出|で}}た{{時|とき}}. [{{出|だ}}す](term:term-dasu) descrive invece
 un giocatore o un effetto che mette qualcosa in gioco: `クリーチャーを{{出|だ}}す`.
 La differenza cambia chi controlla l'azione nella frase.
 
@@ -239,16 +241,16 @@ translation_it: >-
 *   `{{1体|いったい}}` ➔ **Quantità di creature** (il contatore `体` conferma che si sta contando un essere o una creatura).
 *   `{{破壊|はかい}}する` ➔ **Risultato** (la scelta si conclude con la distruzione).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{選|えら}}ぶ](term:term-erabu) e [{{破壊|はかい}}](term:term-destroy) non sono lo stesso
 passaggio. `{{選|えら}}んで{{破壊|はかい}}する` significa prima scegliere e poi
 distruggere; se leggi solo il verbo finale perdi il fatto che il testo chiede
 un bersaglio valido prima della risoluzione.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [{{効果|こうか}}](term:term-effect), pensa a `効` come "funzionare/avere effetto" e
+Per [{{効果|こうか}}](term:term-effect), pensa a 効 come "funzionare/avere effetto" e
 `果` come "risultato". Il gancio è utile perché `この{{効果|こうか}}で` non indica
 una zona o una carta: indica il risultato operativo che sta producendo la
 frase.
@@ -295,7 +297,7 @@ un consiglio generico sul ritmo della partita. Sta fissando una finestra di
 risoluzione. Il nome prima di `の` decide quale turno conta: `{{自分|じぶん}}のターン`
 punta al tuo turno, `{{相手|あいて}}のターン` a quello avversario.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{出|で}}た{{時|とき}}` dipende da un evento preciso: la creatura entra e il
 trigger si accende. `ターンのはじめに` dipende invece da una finestra del turno:
@@ -303,7 +305,7 @@ non serve che la carta sia appena entrata, serve che arrivi quel momento. Se
 confondi evento e finestra, leggerai come trigger immediato qualcosa che in
 realtà aspetta l'inizio o la fine del turno.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou), tieni il kanji
 centrale come bussola visiva: `{{下|か}}` guarda verso il basso, `{{上|じょう}}`
@@ -319,8 +321,8 @@ e verbi come [{{出|だ}}す](term:term-dasu); nell'altro diventano centrali
 [{{攻撃|こうげき}}](term:term-attack), [{{進化|しんか}}](term:term-evolution),
 [{{侵略|しんりゃく}}](term:term-invasion) e [{{重|かさ}}ねる](term:term-kasaneru).
 
-- In `DM25-SD1`, una frase con [{{墓地|ぼち}}](term:term-graveyard) non segnala solo perdita: spesso prepara recupero. Il pattern pratico è `{{墓地|ぼち}}から...{{出|だ}}す`, cioè una carta che rientra dalla zona degli scarti.
-- In `DM25-SD2`, una frase con [{{攻撃|こうげき}}](term:term-attack) apre spesso una finestra di azione. [{{侵略|しんりゃく}}](term:term-invasion) e [{{進化|しんか}}](term:term-evolution) usano molto il linguaggio del sovrapporre: [{{重|かさ}}ねる](term:term-kasaneru) ti dice fisicamente che una carta va sopra un'altra.
+- In DM25-SD1, una frase con [{{墓地|ぼち}}](term:term-graveyard) non segnala solo perdita: spesso prepara recupero. Il pattern pratico è {{墓地|ぼち}}から...{{出|だ}}す, cioè una carta che rientra dalla zona degli scarti.
+- In DM25-SD2, una frase con [{{攻撃|こうげき}}](term:term-attack) apre spesso una finestra di azione. [{{侵略|しんりゃく}}](term:term-invasion) e [{{進化|しんか}}](term:term-evolution) usano molto il linguaggio del sovrapporre: [{{重|かさ}}ねる](term:term-kasaneru) ti dice fisicamente che una carta va sopra un'altra.
 - Il metodo di lettura resta identico: cerca prima chi agisce, poi la zona o il bersaglio, poi il verbo, poi il timing. Il lessico cambia colore, ma la frase continua a essere una catena di condizioni e movimenti.
 
 :::example_sentence
@@ -335,7 +337,7 @@ translation_it: >-
 *   `クリーチャーの{{上|うえ}}に` ➔ **Destinazione fisica** (`の{{上|うえ}}` indica "sopra la creatura"; `に` marca il punto di arrivo).
 *   `{{重|かさ}}ねる` ➔ **Azione di sovrapporre** (il verbo non dice solo "mettere": specifica che una carta viene posta sopra un'altra).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{置|お}}く](term:term-oku) è il verbo generico per collocare qualcosa in una zona.
 [{{重|かさ}}ねる](term:term-kasaneru) è più specifico: crea una pila o una

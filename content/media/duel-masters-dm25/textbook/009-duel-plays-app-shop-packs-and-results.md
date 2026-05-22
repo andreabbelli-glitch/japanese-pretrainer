@@ -60,12 +60,12 @@ entrato nel tuo account.
 
 ## Espressioni ricorrenti
 
-- `ジェムで`[{{購入|こうにゅう}}](term:term-purchase) — comprare usando gemme;
+- ジェムで[{{購入|こうにゅう}}](term:term-purchase) — comprare usando gemme;
   `で` marca il mezzo di pagamento.
-- `ゴールドで`[{{購入|こうにゅう}}](term:term-purchase) — comprare usando oro.
-- [チケット](term:term-ticket)`で`[{{購入|こうにゅう}}](term:term-purchase) —
+- ゴールドで[{{購入|こうにゅう}}](term:term-purchase) — comprare usando oro.
+- [チケット](term:term-ticket)で[{{購入|こうにゅう}}](term:term-purchase) —
   comprare consumando ticket.
-- [{{獲得|かくとく}}](term:term-kakutoku)`カード{{一覧|いちらん}}` — lista delle
+- [{{獲得|かくとく}}](term:term-kakutoku)カード{{一覧|いちらん}} — lista delle
   carte ottenute dopo l'apertura.
 
 ## Pattern grammaticali chiave
@@ -79,7 +79,7 @@ entrato nel tuo account.
 
 - `ショップ` — hub dello shop.
 - `MAX` — scorciatoia che porta la quantità al limite consentito dallo stock.
-- `ジェム`, `ゴールド`, [チケット](term:term-ticket) — risorse alternative per
+- ジェム, ゴールド, [チケット](term:term-ticket) — risorse alternative per
   lo stesso tipo di acquisto.
 - `PLAY'S CHRONICLE PACK II` — nome del prodotto pack mostrato nel popup.
 
@@ -101,7 +101,7 @@ La prima schermata non usa un solo verbo generico per "ottenere carte". Divide
 lo shop in percorsi, e il nome del pannello ti dice quale tipo di scelta arriva
 dopo.
 
-*   [カード{{購入|こうにゅう}}](term:term-card-purchase) mette prima `カード` e
+*   [カード{{購入|こうにゅう}}](term:term-card-purchase) mette prima カード e
     poi [{{購入|こうにゅう}}](term:term-purchase): stai entrando nel lato
     acquisto carte in senso largo. Non sai ancora se spenderai gemme, oro o
     ticket; sai però che la logica sarà quella di comprare, non di scambiare.
@@ -166,11 +166,11 @@ l'acquisto.
 *   `ジェムで` e `ゴールドで` preparano una spesa diretta con valuta. Il verbo
     resta [{{購入|こうにゅう}}](term:term-purchase), quindi il punto non è
     "aprire un pack" in astratto, ma comprare usando quella risorsa.
-*   [チケット](term:term-ticket)`で`[{{購入|こうにゅう}}](term:term-purchase) usa
+*   [チケット](term:term-ticket)で[{{購入|こうにゅう}}](term:term-purchase) usa
     la stessa grammatica, ma il mezzo non è una valuta generica: è uno stock di
     ticket già posseduti.
 *   [カード{{一覧|いちらん}}](grammar:grammar-ichiran) non consuma nulla.
-    [～{{一覧|いちらん}}](grammar:grammar-ichiran) trasforma `カード` in una vista
+    [～{{一覧|いちらん}}](grammar:grammar-ichiran) trasforma カード in una vista
     elenco, quindi ti porta a controllare quali carte appartengono al pack.
 *   [{{提供|ていきょう}}{{割合|わりあい}}](term:term-offer-rate) apre il dato
     delle percentuali. `{{提供|ていきょう}}` è ciò che viene offerto dal pack,
@@ -198,7 +198,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo: lista carte vs percentuali
 
-`カード{{一覧|いちらん}}` ti dice che cosa può comparire nel pack; [{{提供|ていきょう}}{{割合|わりあい}}](term:term-offer-rate)
+カード{{一覧|いちらん}} ti dice che cosa può comparire nel pack; [{{提供|ていきょう}}{{割合|わりあい}}](term:term-offer-rate)
 ti dice con quale distribuzione. La prima schermata risponde a "quali carte?",
 la seconda a "con che probabilità?".
 
@@ -220,7 +220,7 @@ alt: >-
   posseduti e pulsanti meno, più e MAX.
 caption: >-
   Nel popup quantità il punto non è il banner del pack, ma il rapporto tra
-  [{{所持|しょじ}}チケット](term:term-owned-ticket), contatore e `MAX`.
+  [{{所持|しょじ}}チケット](term:term-owned-ticket), contatore e MAX.
 :::
 
 Il popup quantità sposta l'attenzione dal prodotto allo stock. Qui non basta
@@ -294,7 +294,7 @@ translation_it: >-
 
 *   `{{4枚|よんまい}}を` ➔ **Quantità marcata come oggetto**: il referente è la
     risorsa contata dal popup, non una previsione sulle carte che usciranno.
-*   `{{使用|しよう}}して` ➔ **Mezzo consumato**: [{{使用|しよう}}](term:term-use)
+*   {{使用|しよう}}して ➔ **Mezzo consumato**: [{{使用|しよう}}](term:term-use)
     dice che quella quantità verrà spesa.
 *   `パックを{{購入|こうにゅう}}しますか` ➔ **Domanda di acquisto**: `しますか`
     trasforma l'azione in richiesta di consenso.
@@ -337,7 +337,7 @@ leggibile.
 *   [{{獲得|かくとく}}](term:term-kakutoku) indica un'acquisizione già
     avvenuta. Non è il verbo del pagamento: descrive ciò che è entrato nel tuo
     account dopo l'apertura.
-*   `カード{{一覧|いちらん}}` usa [～{{一覧|いちらん}}](grammar:grammar-ichiran) per
+*   カード{{一覧|いちらん}} usa [～{{一覧|いちらん}}](grammar:grammar-ichiran) per
     trasformare le carte ottenute in una vista consultabile. Qui la schermata
     non serve a emozionare, ma a controllare nomi, quantità e rarità.
 *   I filtri per civiltà o categoria hanno senso proprio perché la lista è il

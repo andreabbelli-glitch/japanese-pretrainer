@@ -19,7 +19,7 @@ summary: >-
 Dopo il primo incontro con lo starter, Scarlet / Violet smette di essere solo
 presentazione e diventa campo di gioco. Il tratto verso
 コサジの{{小道|こみち}} e il faro ti fa leggere istruzioni di cattura, avvisi di
-percorso, indizi sonori e spiegazioni sullo stato del Pokemon misterioso che
+percorso, indizi sonori e spiegazioni sullo stato del Pokémon misterioso che
 compare nella grotta.
 
 Il cambio di voce è netto. Nemona parla come una compagna che ti mette in mano
@@ -32,7 +32,7 @@ descrive uno stato fisico e quando lascia emergere il carattere del personaggio.
 
 - [{{捕獲|ほかく}}](term:term-hokaku) — cattura come attività di gioco
 - [{{捕|つか}}まえる](term:term-tsukamaeru) — catturare / prendere
-- [モンスターボール](term:term-monster-ball) — Pokeball / Monster Ball
+- [モンスターボール](term:term-monster-ball) — Poké Ball / Monster Ball
 - [{{弱|よわ}}らせる](term:term-yowaraseru) — indebolire senza arrivare per forza al KO
 - [{{野生|やせい}}](term:term-yasei) — selvatico / wild
 - [{{気|き}}をつける](term:term-ki-o-tsukeru) — fare attenzione
@@ -67,30 +67,32 @@ descrive uno stato fisico e quando lascia emergere il carattere del personaggio.
 
 - コサジの{{小道|こみち}} — il sentiero iniziale verso il faro
 - {{入|い}}り{{江|え}}の ほら{{穴|あな}} — la grotta sotto il faro
-- ペパー — Pepper nel dialogo giapponese
-- Koraidon / Miraidon — il Pokemon misterioso che appare nel prologo
+- [ペパー](term:term-v048-pepaa) — Pepper nel dialogo giapponese
+- [コライドン](term:term-v096-koraidon) / [ミライドン](term:term-v097-miraidon) — il Pokémon misterioso che appare nel prologo
 
 ---
+
+[ペパー](term:term-v048-pepaa) dà la voce dell'interlocutore ruvido del prologo; [コライドン](term:term-v096-koraidon) e [ミライドン](term:term-v097-miraidon) sono il Pokémon misterioso letto nelle due versioni.
 
 ## 1. Catturare non è solo vincere la lotta
 
 Il primo tutorial di campo usa il lessico della cattura per cambiare il modo in
-cui leggi la battaglia. [{{野生|やせい}}](term:term-yasei) marca il Pokemon come
+cui leggi la battaglia. [{{野生|やせい}}](term:term-yasei) marca il Pokémon come
 incontro di campo, non come avversario narrativo unico; da lì il gioco può
 chiederti di combattere, ridurre gli HP e usare una
 [モンスターボール](term:term-monster-ball). Se leggi solo "vincere", perdi il
 passaggio centrale: il bersaglio deve restare prendibile.
 
-[{{弱|よわ}}らせる](term:term-yowaraseru) nasce da `{{弱|よわ}}い`, "debole", e
+[{{弱|よわ}}らせる](term:term-yowaraseru) nasce da {{弱|よわ}}い, "debole", e
 aggiunge l'idea di far diventare debole. Nel tutorial non vuol dire
-"annientare". Vuol dire portare il Pokemon in una condizione in cui la Ball ha
+"annientare". Vuol dire portare il Pokémon in una condizione in cui la Ball ha
 più senso. Per questo [{{捕獲|ほかく}}](term:term-hokaku) e
 [{{捕|つか}}まえる](term:term-tsukamaeru) lavorano su due livelli diversi:
 [{{捕獲|ほかく}}](term:term-hokaku) è l'attività o il risultato di cattura,
 mentre [{{捕|つか}}まえる](term:term-tsukamaeru) è il verbo dell'azione concreta.
 
 Nemona rende questa procedura più morbida con due pattern. Con
-[～てあげる](grammar:grammar-te-ageru), frasi come `わけてあげる` presentano
+[～てあげる](grammar:grammar-te-ageru), frasi come わけてあげる presentano
 l'azione come aiuto fatto per te: ti dà Ball, spiegazioni o spazio per
 provare. Con [～てみる](grammar:grammar-te-miru), un comando come
 `{{戦|たたか}}ってみて` non è una teoria futura, ma una prova guidata immediata:
@@ -98,9 +100,9 @@ entra in lotta e verifica come funziona la cattura.
 
 :::image
 src: assets/ui/catch-tutorial-monster-ball.webp
-alt: "Tutorial iniziale di cattura con Pokemon selvatico indebolito e opzione di usare una Monster Ball."
+alt: "Tutorial iniziale di cattura con Pokémon selvatico indebolito e opzione di usare una Monster Ball."
 caption: >-
-  Il tutorial mette in sequenza [{{弱|よわ}}らせる](term:term-yowaraseru) e [モンスターボール](term:term-monster-ball): prima rendi il Pokemon catturabile, poi passi dalla lotta alla [{{捕獲|ほかく}}](term:term-hokaku).
+  Il tutorial mette in sequenza [{{弱|よわ}}らせる](term:term-yowaraseru) e [モンスターボール](term:term-monster-ball): prima rendi il Pokémon catturabile, poi passi dalla lotta alla [{{捕獲|ほかく}}](term:term-hokaku).
 :::
 
 :::example_sentence
@@ -108,14 +110,14 @@ jp: >-
   {{野生|やせい}}の ポケモンを {{弱|よわ}}らせてから モンスターボールを
   {{投|な}}げてみて。
 translation_it: >-
-  Prova a lanciare una Monster Ball dopo aver indebolito il Pokemon selvatico.
+  Prova a lanciare una Monster Ball dopo aver indebolito il Pokémon selvatico.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{野生|やせい}}の ポケモンを` ➔ bersaglio dell'azione: il Pokemon è un incontro di campo e `を` lo marca come oggetto.
+- `{{野生|やせい}}の ポケモンを` ➔ bersaglio dell'azione: il Pokémon è un incontro di campo e `を` lo marca come oggetto.
 - `{{弱|よわ}}らせてから` ➔ sequenza operativa: prima lo fai diventare debole, poi fai l'azione successiva.
-- `モンスターボールを {{投|な}}げてみて` ➔ invito pratico: `{{投|な}}げる` è lanciare, [～てみる](grammar:grammar-te-miru) trasforma l'ordine in prova guidata.
+- モンスターボールを {{投|な}}げてみて ➔ invito pratico: {{投|な}}げる è lanciare, [～てみる](grammar:grammar-te-miru) trasforma l'ordine in prova guidata.
 
 #### ⚖️ Contrasto operativo: [{{捕獲|ほかく}}](term:term-hokaku) vs [{{捕|つか}}まえる](term:term-tsukamaeru)
 
@@ -128,7 +130,7 @@ l'azione.
 #### 🧠 Gancio cognitivo
 
 Pensa a [{{弱|よわ}}らせる](term:term-yowaraseru) come a "far diventare debole".
-Nel frame Pokemon, "debole" non significa per forza "sconfitto": significa
+Nel frame Pokémon, "debole" non significa per forza "sconfitto": significa
 pronto per il lancio della Ball.
 
 ## 2. Il percorso parla con avvisi, habitat e suoni
@@ -145,9 +147,9 @@ e la forma negativa dice quale evento devi evitare: "in modo da non entrare".
 Non è un divieto astratto da cartello; è una barriera linguistica che tiene il
 percorso dentro il tutorial.
 
-Quando il testo parla di Pokemon che
+Quando il testo parla di Pokémon che
 [{{生息|せいそく}}する](term:term-seisoku-suru), cambia anche la lettura del luogo.
-`いる` direbbe soltanto che qualcosa c'è; [{{生息|せいそく}}する](term:term-seisoku-suru)
+いる direbbe soltanto che qualcosa c'è; [{{生息|せいそく}}する](term:term-seisoku-suru)
 dice che una specie vive stabilmente lì. In una grotta, questa differenza ti
 prepara a incontri coerenti con l'ambiente, non a presenze casuali.
 
@@ -159,9 +161,9 @@ non rumore generico, bensì traccia di una presenza viva.
 
 :::image
 src: assets/story/inlet-cave-houndour-warning.webp
-alt: "Area della grotta iniziale vicino al faro con ambiente roccioso e Pokemon selvatici del luogo."
+alt: "Area della grotta iniziale vicino al faro con ambiente roccioso e Pokémon selvatici del luogo."
 caption: >-
-  La grotta rende concreto [{{生息|せいそく}}する](term:term-seisoku-suru): il testo non dice solo che ci sono Pokemon, ma che quell'area è il loro habitat.
+  La grotta rende concreto [{{生息|せいそく}}する](term:term-seisoku-suru): il testo non dice solo che ci sono Pokémon, ma che quell'area è il loro habitat.
 :::
 
 :::example_sentence
@@ -170,18 +172,18 @@ jp: >-
   {{生息|せいそく}}している {{場所|ばしょ}}には {{入|はい}}らないように。
 translation_it: >-
   Anche se senti un verso, fai in modo di non entrare in luoghi dove vivono
-  Pokemon pericolosi.
+  Pokémon pericolosi.
 :::
 
 #### 🗺️ Anatomia della frase
 
 - `{{鳴|な}}き{{声|ごえ}}が {{聞|き}}こえても` ➔ concessione: anche se il suono si sente, non decide da solo l'azione corretta.
-- `{{危|あぶ}}ない ポケモンが {{生息|せいそく}}している {{場所|ばしょ}}` ➔ luogo qualificato: non è un posto qualunque, è un habitat di Pokemon pericolosi.
-- `{{入|はい}}らないように` ➔ prevenzione: [～ないように](grammar:grammar-nai-you-ni) indica il comportamento da evitare.
+- `{{危|あぶ}}ない ポケモンが {{生息|せいそく}}している {{場所|ばしょ}}` ➔ luogo qualificato: non è un posto qualunque, è un habitat di Pokémon pericolosi.
+- {{入|はい}}らないように ➔ prevenzione: [～ないように](grammar:grammar-nai-you-ni) indica il comportamento da evitare.
 
-#### ⚖️ Contrasto operativo: `いる` vs [{{生息|せいそく}}する](term:term-seisoku-suru)
+#### ⚖️ Contrasto operativo: いる vs [{{生息|せいそく}}する](term:term-seisoku-suru)
 
-`いる` segnala semplice presenza. [{{生息|せいそく}}する](term:term-seisoku-suru)
+いる segnala semplice presenza. [{{生息|せいそく}}する](term:term-seisoku-suru)
 lega una specie a un habitat. Se il gioco usa
 [{{生息|せいそく}}する](term:term-seisoku-suru), il luogo diventa informazione di
 esplorazione: lì puoi aspettarti incontri e rischi legati a quella specie.
@@ -197,16 +199,26 @@ lotta si sovrappongono nello stesso tratto di campo.
 jp: >-
   ポケモンを {{捕|つか}}まえながら {{灯台|とうだい}}へ {{向|む}}かおう。
 translation_it: >-
-  Andiamo verso il faro catturando Pokemon lungo la strada.
+  Andiamo verso il faro catturando Pokémon lungo la strada.
 :::
+
+#### 🗺️ Anatomia della frase
+
+*   `ポケモンを` ➔ **Oggetto catturato** (`を` marca ciò che viene preso lungo il
+    percorso).
+*   {{捕|つか}}まえながら ➔ **Azione parallela** ([～ながら](grammar:grammar-nagara)
+    lega la cattura al movimento: non prima una scena e poi l'altra, ma due
+    azioni sovrapposte).
+*   `{{灯台|とうだい}}へ {{向|む}}かおう` ➔ **Direzione condivisa** (`へ` punta il
+    faro come meta; `{{向|む}}かおう` chiude con un invito a muoversi insieme).
 
 ## 3. La grotta trasforma l'aspetto in stato
 
 Nella {{入|い}}り{{江|え}}の ほら{{穴|あな}}, il lessico smette di parlare solo di
-percorso e comincia a spiegare che cosa succede al Pokemon misterioso.
+percorso e comincia a spiegare che cosa succede al Pokémon misterioso.
 [{{姿|すがた}}](term:term-sugata) è la parola che cambia la lettura: non indica
 solo "aspetto" come apparenza esterna, ma una forma o condizione visibile che
-cambia ciò che il Pokemon può fare.
+cambia ciò che il Pokémon può fare.
 
 Quando Pepper dice qualcosa come `この {{姿|すがた}}じゃ {{戦|たたか}}えねえ`, il
 centro della frase è `この {{姿|すがた}}じゃ`, cioè "in questa forma / in questo
@@ -226,7 +238,7 @@ il corpo si accascia sul posto.
 src: assets/story/weakened-legendary-cave-scene.webp
 alt: "Koraidon in una forma speciale del prologo accanto al protagonista."
 caption: >-
-  Qui [{{姿|すがた}}](term:term-sugata) va letto come stato operativo: la forma visibile del Pokemon spiega perché non può ancora combattere normalmente.
+  Qui [{{姿|すがた}}](term:term-sugata) va letto come stato operativo: la forma visibile del Pokémon spiega perché non può ancora combattere normalmente.
 :::
 
 :::example_sentence
@@ -240,14 +252,14 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `{{力|ちから}}を` ➔ oggetto consumato: la forza è ciò che viene usato fino al limite.
-- `{{使|つか}}い{{果|は}}たしちゃって` ➔ verbo composto più [～てしまう](grammar:grammar-te-shimau): l'esaurimento è completo e ha un tono di guaio.
+- {{使|つか}}い{{果|は}}たしちゃって ➔ verbo composto più [～てしまう](grammar:grammar-te-shimau): l'esaurimento è completo e ha un tono di guaio.
 - `この {{姿|すがた}}じゃ` ➔ condizione attuale: `じゃ` è la forma colloquiale di `では`.
 - `{{戦|たたか}}えねえ` ➔ potenziale negativo ruvido: equivale a `{{戦|たたか}}えない`, ma con voce brusca.
 
 #### ⚖️ Contrasto operativo: [{{姿|すがた}}](term:term-sugata) come stato visibile
 
 [{{姿|すがた}}](term:term-sugata) non va tradotto automaticamente come "look". In
-Pokemon spesso è una forma con conseguenze: se il testo dice
+Pokémon spesso è una forma con conseguenze: se il testo dice
 `この {{姿|すがた}}じゃ`, sta parlando di ciò che quello stato permette o
 impedisce.
 
@@ -265,33 +277,33 @@ adatta a cadute, consumo di risorse e crolli di energia.
 
 ## 4. Pepper legge la scena come controllo e cattivo presagio
 
-Con Pepper entra un altro lessico: non più solo catturare Pokemon selvatici, ma
+Con Pepper entra un altro lessico: non più solo catturare Pokémon selvatici, ma
 capire una Ball speciale e un rapporto di controllo. Il verbo
 [{{制御|せいぎょ}}する](term:term-seigyo-suru) non è sinonimo neutro di
 [{{捕獲|ほかく}}](term:term-hokaku). [{{制御|せいぎょ}}する](term:term-seigyo-suru)
 vuol dire tenere qualcosa sotto controllo, regolarne il comportamento o
 contenerne la forza. Se la Ball serve a `{{制御|せいぎょ}}するため`, il punto non è
-"ho appena preso un Pokemon normale", ma "questo oggetto gestisce una creatura
+"ho appena preso un Pokémon normale", ma "questo oggetto gestisce una creatura
 fuori scala".
 
 :::image
 src: assets/story/pepper-control-ball.webp
 alt: "Pepper in primo piano con una Monster Ball tesa in avanti verso il giocatore."
 caption: >-
-  La Ball di Pepper porta la scena da [{{捕獲|ほかく}}](term:term-hokaku) a [{{制御|せいぎょ}}する](term:term-seigyo-suru): non una cattura standard, ma un oggetto che tiene sotto controllo il Pokemon misterioso.
+  La Ball di Pepper porta la scena da [{{捕獲|ほかく}}](term:term-hokaku) a [{{制御|せいぎょ}}する](term:term-seigyo-suru): non una cattura standard, ma un oggetto che tiene sotto controllo il Pokémon misterioso.
 :::
 
 :::example_sentence
 jp: >-
   この ボールは あの ポケモンを {{制御|せいぎょ}}するための ものだ。
 translation_it: >-
-  Questa Ball è un oggetto usato per tenere sotto controllo quel Pokemon.
+  Questa Ball è un oggetto usato per tenere sotto controllo quel Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
 
 - `この ボールは` ➔ tema: la frase spiega che cos'è quella Ball, non introduce una cattura qualunque.
-- `あの ポケモンを` ➔ bersaglio del controllo: l'oggetto agisce su quel Pokemon specifico.
+- `あの ポケモンを` ➔ bersaglio del controllo: l'oggetto agisce su quel Pokémon specifico.
 - `{{制御|せいぎょ}}するための もの` ➔ scopo nominalizzato: `ための` trasforma "controllare" nella funzione dell'oggetto.
 
 #### ⚖️ Contrasto operativo: [{{捕獲|ほかく}}](term:term-hokaku) vs [{{制御|せいぎょ}}する](term:term-seigyo-suru)
@@ -319,7 +331,7 @@ jp: >-
   {{見|み}}れば {{見|み}}るほど {{不思議|ふしぎ}}な ポケモンだし、{{先|さき}}が
   {{思|おも}}いやられるな。
 translation_it: >-
-  Più lo guardi, più sembra un Pokemon strano, e viene da pensare che ci
+  Più lo guardi, più sembra un Pokémon strano, e viene da pensare che ci
   aspettino guai.
 :::
 
@@ -345,6 +357,18 @@ translation_it: >-
   usarle.
 :::
 
+#### 🗺️ Anatomia della frase
+
+*   `わざマシンは` ➔ **Tema della regola** (la frase non parla di tutte le mosse,
+    ma dell'oggetto MT).
+*   `{{1回|いっかい}} {{使|つか}}うと` ➔ **Condizione automatica** (`と` collega
+    un solo uso alla conseguenza che segue).
+*   `なくなっちゃうから` ➔ **Consumo completo più avvertimento** (`なくなる`
+    diventa "sparire / esaurirsi"; `ちゃう` aggiunge la sfumatura di risultato
+    compiuto e poco desiderabile).
+*   `{{使|つか}}いどころを {{考|かんが}}えよう` ➔ **Decisione strategica** (il
+    punto non è solo usare la MT, ma scegliere quando conviene farlo).
+
 ## Esempi guidati di riepilogo
 
 Le frasi del prologo diventano più leggibili quando separi cattura, percorso,
@@ -355,7 +379,7 @@ jp: >-
   {{野生|やせい}}の ポケモンを {{弱|よわ}}らせてから {{捕獲|ほかく}}を
   {{狙|ねら}}おう。
 translation_it: >-
-  Puntiamo alla cattura dopo aver indebolito il Pokemon selvatico.
+  Puntiamo alla cattura dopo aver indebolito il Pokémon selvatico.
 :::
 
 :::example_sentence
@@ -371,7 +395,7 @@ jp: >-
   この {{洞窟|どうくつ}}には {{気性|きしょう}}の {{荒|あら}}い ポケモンが
   {{生息|せいそく}}している。
 translation_it: >-
-  In questa grotta vivono Pokemon dal temperamento aggressivo.
+  In questa grotta vivono Pokémon dal temperamento aggressivo.
 :::
 
 :::example_sentence

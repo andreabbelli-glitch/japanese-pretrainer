@@ -26,17 +26,6 @@ Nel testo di {{電脳護聖|でんのうごせい}}ビョイト la difficoltà n
 
 La lettura funziona bene quando tieni separati tre strati: le carte scudo che entrano in [{{手札|てふだ}}](term:term-hand), il filtro 「ブロッカー」を{{持|も}}つ{{光|ひかり}}または{{水|みず}}の, e la chiusura [すべて](term:term-subete)に. L'italiano tende a partire dal risultato; il giapponese, invece, prepara con pazienza il gruppo che riceverà [S・トリガー](term:term-s-trigger).
 
-:::image
-src: assets/cards/live-duel/dennou-gosei-byoito.jpg
-alt: "Byoito, Holy Cyber Protector card."
-caption: >-
-  {{電脳護聖|でんのうごせい}}ビョイト. Razze: ガーディアン /
-  サイバーロード / アンノイズ. La carta mostra già
-  [ブロッカー](term:term-blocker) e [S・トリガー](term:term-s-trigger), ma
-  il cuore della riga è il passaggio da `シールドカード` a
-  [すべて](term:term-subete)に: tutto il gruppo filtrato diventa ricevente
-  di [{{与|あた}}える](term:term-ataeru).
-:::
 
 ## Termini chiave
 
@@ -56,9 +45,8 @@ caption: >-
 
 ## Pattern grammaticali chiave
 
-- [「ブロッカー」を{{持|も}}つ{{光|ひかり}}または{{水|みず}}のシールドカード](grammar:grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card) — una relativa lunga che modifica `シールドカード`
-- [すべてに「S・トリガー」を{{与|あた}}える](grammar:grammar-subete-ni-s-trigger-wo-ataeru) — `に` marca il ricevente, `を` marca ciò che viene conferito
-- [{{自分|じぶん}}の{{手札|てふだ}}に{{加|くわ}}える、「ブロッカー」を{{持|も}}つ{{光|ひかり}}または{{水|みず}}のシールドカードすべてに、「S・トリガー」を{{与|あた}}える](grammar:grammar-byoito-full-effect) — frase completa letta come costruzione progressiva del destinatario
+- [「ブロッカー」を{{持|も}}つ{{光|ひかり}}または{{水|みず}}のシールドカード](grammar:grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card) — una relativa lunga che modifica シールドカード
+- [すべてに「S・トリガー」を{{与|あた}}える](grammar:grammar-subete-ni-s-trigger-wo-ataeru) — に marca il ricevente, を marca ciò che viene conferito
 - [または](grammar:grammar-matawa) — oppure, alternativa tra categorie sullo stesso livello
 
 ## Etichette da riconoscere
@@ -66,8 +54,21 @@ caption: >-
 - `{{電脳護聖|でんのうごせい}}ビョイト` — nome della creatura; `{{電脳|でんのう}}` porta il lato Cyber, `{{護聖|ごせい}}` il lato protettivo / sacro
 - `ガーディアン / サイバーロード / アンノイズ` — razze della carta, utili per riconoscere sinergie senza confonderle con il rules text
 - `シールドカード` — carte scudo; qui è il nome vero del gruppo modificato da tutti i filtri precedenti
+- [{{能力|のうりょく}}](term:term-ability) — abilità / testo di effetto
 
 ---
+
+:::image
+src: assets/cards/live-duel/dennou-gosei-byoito.jpg
+alt: "Byoito, Holy Cyber Protector card."
+caption: >-
+  {{電脳護聖|でんのうごせい}}ビョイト. Razze: ガーディアン /
+  サイバーロード / アンノイズ. La carta mostra già
+  [ブロッカー](term:term-blocker) e [S・トリガー](term:term-s-trigger), ma
+  il cuore della riga è il passaggio da `シールドカード` a
+  [すべて](term:term-subete)に: tutto il gruppo filtrato diventa ricevente
+  di [{{与|あた}}える](term:term-ataeru).
+:::
 
 ## 1. La frase completa: il gruppo nasce prima del verbo
 
@@ -89,10 +90,10 @@ reveal_mode: sentence
 #### 🗺️ Anatomia della frase
 
 *   [{{自分|じぶん}}](term:term-self)の[{{手札|てふだ}}](term:term-hand)に[{{加|くわ}}える](term:term-add): cornice relativa. Non è ancora l'azione principale della frase; descrive quali shield card stai considerando, cioè quelle che finiscono nella tua mano.
-*   「[ブロッカー](term:term-blocker)」を[{{持|も}}つ](term:term-motsu): filtro di proprietà. `{{持|も}}つ` qui non significa "tenere in mano", ma "avere quella keyword stampata o concessa".
-*   [{{光|ひかり}}](term:term-light)または{{水|みず}}のシールドカード: nome del gruppo. `または` mette Luce e Acqua in parallelo, mentre `の` collega quelle civiltà al nome `シールドカード`.
+*   「[ブロッカー](term:term-blocker)」を[{{持|も}}つ](term:term-motsu): filtro di proprietà. {{持|も}}つ qui non significa "tenere in mano", ma "avere quella keyword stampata o concessa".
+*   [{{光|ひかり}}](term:term-light)または{{水|みず}}のシールドカード: nome del gruppo. または mette Luce e Acqua in parallelo, mentre の collega quelle civiltà al nome シールドカード.
 *   [すべて](term:term-subete)に: chiusura del destinatario. Tutte le carte che passano i filtri precedenti diventano il ricevente dell'effetto.
-*   「[S・トリガー](term:term-s-trigger)」を[{{与|あた}}える](term:term-ataeru): oggetto più verbo. La keyword è ciò che viene conferito; il gruppo prima di `に` è ciò che la riceve.
+*   「[S・トリガー](term:term-s-trigger)」を[{{与|あた}}える](term:term-ataeru): oggetto più verbo. La keyword è ciò che viene conferito; il gruppo prima di に è ciò che la riceve.
 
 #### ⚖️ Contrasto operativo
 
@@ -106,7 +107,7 @@ Pensa alla frase come a un imbuto, non come a una freccia. Entra un insieme larg
 
 ## 2. 「ブロッカー」を持つ光または水のシールドカード: lo scope del modificatore
 
-Il blocco [「ブロッカー」を{{持|も}}つ{{光|ひかり}}または{{水|みず}}のシールドカード](grammar:grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card) è il punto in cui la lettura può scivolare. La relativa `「ブロッカー」を{{持|も}}つ` viene prima di `{{光|ひかり}}または{{水|みず}}のシールドカード`, quindi modifica l'intero gruppo che culmina in `シールドカード`.
+Il blocco [「ブロッカー」を{{持|も}}つ{{光|ひかり}}または{{水|みず}}のシールドカード](grammar:grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card) è il punto in cui la lettura può scivolare. La relativa 「ブロッカー」を{{持|も}}つ viene prima di {{光|ひかり}}または{{水|みず}}のシールドカード, quindi modifica l'intero gruppo che culmina in シールドカード.
 
 Non sta dicendo "carte Luce con Blocker, oppure carte Acqua qualsiasi". Sta dicendo "carte scudo di Luce o Acqua che hanno Blocker". La prova è proprio la posizione del nome finale: finché non arrivi a `シールドカード`, il gruppo non è completo.
 
@@ -138,7 +139,7 @@ Quando una descrizione lunga arriva prima del nome, aspetta il nome prima di dec
 
 ## 3. すべてに「S・トリガー」を与える: destinatario e proprietà conferita
 
-Dopo il gruppo lungo arriva [すべてに「S・トリガー」を{{与|あた}}える](grammar:grammar-subete-ni-s-trigger-wo-ataeru). La parola [すべて](term:term-subete) non rimane sospesa come un generico "tutto": con `に` diventa "a tutto quel gruppo". Subito dopo, `「S・トリガー」を` marca la proprietà conferita.
+Dopo il gruppo lungo arriva [すべてに「S・トリガー」を{{与|あた}}える](grammar:grammar-subete-ni-s-trigger-wo-ataeru). La parola [すべて](term:term-subete) non rimane sospesa come un generico "tutto": con に diventa "a tutto quel gruppo". Subito dopo, 「S・トリガー」を marca la proprietà conferita.
 
 Il verbo [{{与|あた}}える](term:term-ataeru) è utile perché non descrive l'attivazione immediata di [S・トリガー](term:term-s-trigger). Dice che una keyword viene assegnata a certe carte. L'attivazione dipenderà poi dal normale funzionamento di quella keyword quando la carta viene aggiunta dalla shield zone alla mano.
 
@@ -153,8 +154,8 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   [すべて](term:term-subete)に: destinatario totale. `に` funziona come il punto di arrivo della proprietà data.
-*   「[S・トリガー](term:term-s-trigger)」を: oggetto conferito. `を` non marca il gruppo delle carte, ma la keyword che viene assegnata.
+*   [すべて](term:term-subete)に: destinatario totale. に funziona come il punto di arrivo della proprietà data.
+*   「[S・トリガー](term:term-s-trigger)」を: oggetto conferito. を non marca il gruppo delle carte, ma la keyword che viene assegnata.
 *   [{{与|あた}}える](term:term-ataeru): verbo di conferimento. Nei rules text spesso significa "dare una capacità", non "dare una carta fisica".
 
 #### ⚖️ Contrasto operativo

@@ -23,7 +23,7 @@ summary: >-
 
 Una schermata di *Pokémon Scarlet & Violet* spesso decide tutto in poche parole: un ordine al ristorante, un ritiro dal menu, un ingresso all'Accademia, una registrazione a un raid. Il giapponese non nomina soltanto oggetti o luoghi; segnala se devi confermare, scegliere, muoverti, aspettare una risposta o preparare una squadra.
 
-Quando incontri [これでＯＫ](term:term-e096-korede-okee), `{{注文|ちゅうもん}}する`, `{{受|う}}けとりを{{選|えら}}ぶ` o `{{教室|きょうしつ}}へ{{向|む}}かう`, parti dalla cornice. La stessa forma può sembrare semplice in traduzione, ma cambia funzione se appare in uno shop, in un corridoio scolastico, davanti al faro o nella lobby di un [レイドバトル](term:term-v511-reidobatoru).
+Quando incontri [これでＯＫ](term:term-e096-korede-okee), {{注文|ちゅうもん}}する, {{受|う}}けとりを{{選|えら}}ぶ o {{教室|きょうしつ}}へ{{向|む}}かう, parti dalla cornice. La stessa forma può sembrare semplice in traduzione, ma cambia funzione se appare in uno shop, in un corridoio scolastico, davanti al faro o nella lobby di un [レイドバトル](term:term-v511-reidobatoru).
 
 ## Termini chiave
 
@@ -82,11 +82,13 @@ Quando incontri [これでＯＫ](term:term-e096-korede-okee), `{{注文|ちゅ�
 
 ---
 
+[～なら](grammar:grammar-g072-se-e-cosi-se-parli-di) apre la condizione o il tema, [～される](grammar:grammar-g087-forma-passiva) segnala un risultato subito, mentre [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza), [へ](grammar:grammar-g032-verso), [で](grammar:grammar-g027-luogo-dell-azione-mezzo) e [を](grammar:grammar-g033-marca-l-oggetto-diretto) dividono bersaglio, direzione, luogo dell'azione e oggetto.
+
 ## 1. Confermare, ordinare, ritirare: la catena dei menu
 
-Nei menu la frase di solito procede per stati. Prima vedi il [{{商品|しょうひん}}](term:term-v512-shouhin), cioè la voce concreta in una lista; poi arrivi alla [{{注文|ちゅうもん}}](term:term-v529-chuumon), l'ordine come azione o risultato; infine [これでＯＫ](term:term-e096-korede-okee) chiude la scelta se la configurazione attuale va bene. In `これでＯＫ`, `これ` punta a ciò che hai impostato, `で` lo tratta come stato sufficiente e `ＯＫ` funziona da conferma, non da complimento.
+Nei menu la frase di solito procede per stati. Prima vedi il [{{商品|しょうひん}}](term:term-v512-shouhin), cioè la voce concreta in una lista; poi arrivi alla [{{注文|ちゅうもん}}](term:term-v529-chuumon), l'ordine come azione o risultato; infine [これでＯＫ](term:term-e096-korede-okee) chiude la scelta se la configurazione attuale va bene. In これでＯＫ, これ punta a ciò che hai impostato, で lo tratta come stato sufficiente e ＯＫ funziona da conferma, non da complimento.
 
-[{{受|う}}けとり](term:term-v532-uketori) segue un'altra logica: non stai creando un ordine, stai prendendo in consegna qualcosa che il sistema rende disponibile. [{{追加|ついか}}](term:term-v517-tsuika), invece, guarda al risultato dentro una lista. In `{{追加|ついか}}されました`, la forma passiva sposta il focus su ciò che ora risulta aggiunto, più che su chi ha premuto il comando.
+[{{受|う}}けとり](term:term-v532-uketori) segue un'altra logica: non stai creando un ordine, stai prendendo in consegna qualcosa che il sistema rende disponibile. [{{追加|ついか}}](term:term-v517-tsuika), invece, guarda al risultato dentro una lista. In {{追加|ついか}}されました, la forma passiva sposta il focus su ciò che ora risulta aggiunto, più che su chi ha premuto il comando.
 
 :::example_sentence
 jp: >-
@@ -101,8 +103,9 @@ translation_it: >-
 *   `{{注文|ちゅうもん}}を` ➔ **Oggetto diretto**: l'ordine è ciò che viene confermato, non il singolo prodotto.
 *   `{{確定|かくてい}}します` ➔ **Chiusura operativa**: la scelta passa da bozza modificabile a decisione fissata.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{商品|しょうひん}}](term:term-v512-shouhin) è ciò che scegli nella lista; [{{注文|ちゅうもん}}](term:term-v529-chuumon) è l'atto di ordinare o l'ordine risultante. `{{商品|しょうひん}}を{{選|えら}}ぶ` tiene aperta la scelta; `{{注文|ちゅうもん}}を{{確定|かくてい}}する` chiude la procedura.
+#### ⚖️ Contrasto operativo
+
+[{{商品|しょうひん}}](term:term-v512-shouhin) è ciò che scegli nella lista; [{{注文|ちゅうもん}}](term:term-v529-chuumon) è l'atto di ordinare o l'ordine risultante. {{商品|しょうひん}}を{{選|えら}}ぶ tiene aperta la scelta; {{注文|ちゅうもん}}を{{確定|かくてい}}する chiude la procedura.
 
 :::example_sentence
 jp: >-
@@ -117,14 +120,15 @@ translation_it: >-
 *   `プレゼントの {{受|う}}けとりを` ➔ **Funzione selezionata**: `の` lega il ritiro al regalo; non è il regalo in sé, ma l'opzione per riceverlo.
 *   `{{選|えら}}びます` ➔ **Selezione operativa**: la schermata aspetta una scelta, non una conferma finale.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** in [{{受|う}}けとり](term:term-v532-uketori), pensa a `{{受|う}}ける` come "ricevere" e a `とり` da `{{取|と}}る` come "prendere in mano". È un trucco di memoria: il menu non crea il premio, te lo fa prendere in consegna.
+#### 🧠 Gancio cognitivo
+
+In [{{受|う}}けとり](term:term-v532-uketori), pensa a {{受|う}}ける come "ricevere" e a とり da {{取|と}}る come "prendere in mano". È un trucco di memoria: il menu non crea il premio, te lo fa prendere in consegna.
 
 ## 2. Automatismi, comodità e denaro personale
 
-Quando il gioco parla di funzioni, [{{自動|じどう}}](term:term-v538-jidou) indica che un passaggio avviene senza un comando manuale ogni volta: `{{自動|じどう}}セーブ` salva da sé, `{{自動|じどう}}で{{並|なら}}べる` riordina automaticamente. [{{便利|べんり}}](term:term-v526-benri) valuta l'effetto pratico di una funzione: una mappa, un filtro o una scorciatoia è [{{便利|べんり}}](term:term-v526-benri) perché riduce attrito, non perché ha un aspetto piacevole.
+Quando il gioco parla di funzioni, [{{自動|じどう}}](term:term-v538-jidou) indica che un passaggio avviene senza un comando manuale ogni volta: {{自動|じどう}}セーブ salva da sé, {{自動|じどう}}で{{並|なら}}べる riordina automaticamente. [{{便利|べんり}}](term:term-v526-benri) valuta l'effetto pratico di una funzione: una mappa, un filtro o una scorciatoia è [{{便利|べんり}}](term:term-v526-benri) perché riduce attrito, non perché ha un aspetto piacevole.
 
-[おこづかい](term:term-v533-okozukai) porta invece il registro verso i soldi personali. Nel mondo Pokémon può indicare il denaro che ricevi dopo una lotta o che spendi negli acquisti. Se appare con `もらう`, `{{増|ふ}}える` o `{{使|つか}}う`, la frase parla della tua disponibilità economica, non di un oggetto fisico nello zaino.
+[おこづかい](term:term-v533-okozukai) porta invece il registro verso i soldi personali. Nel mondo Pokémon può indicare il denaro che ricevi dopo una lotta o che spendi negli acquisti. Se appare con もらう, {{増|ふ}}える o {{使|つか}}う, la frase parla della tua disponibilità economica, non di un oggetto fisico nello zaino.
 
 :::example_sentence
 jp: >-
@@ -152,12 +156,13 @@ translation_it: >-
 *   `は` ➔ **Tema valutato**: porta quella funzione davanti al giudizio.
 *   `とても {{便利|べんり}}です` ➔ **Valutazione pratica**: la funzione rende più facile trovare o gestire informazioni.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{便利|べんり}}](term:term-v526-benri) parla di comodità d'uso; [{{素敵|すてき}}](term:term-v522-suteki) parla di impressione positiva, bellezza o atmosfera. `{{便利|べんり}}な{{機能|きのう}}` è una funzione utile; `{{素敵|すてき}}な{{制服|せいふく}}` è un'uniforme bella o piacevole.
+#### ⚖️ Contrasto operativo
+
+[{{便利|べんり}}](term:term-v526-benri) parla di comodità d'uso; [{{素敵|すてき}}](term:term-v522-suteki) parla di impressione positiva, bellezza o atmosfera. {{便利|べんり}}な{{機能|きのう}} è una funzione utile; {{素敵|すてき}}な{{制服|せいふく}} è un'uniforme bella o piacevole.
 
 ## 3. Accademia: luoghi, ruoli e azioni naturali
 
-La vita scolastica si legge meglio quando abbini ogni nome al verbo che lo richiama. [グレープアカデミー](term:term-v513-gureepuakademii) è il luogo istituzionale; [{{入学|にゅうがく}}](term:term-v528-nyuugaku) è l'ingresso in quella istituzione, quindi `グレープアカデミーに{{入学|にゅうがく}}する` suona naturale. [{{教室|きょうしつ}}](term:term-v521-kyoushitsu) e [{{部室|ぶしつ}}](term:term-v520-bushitsu) sono entrambe stanze, ma non aprono la stessa scena: l'aula porta a lezioni e spiegazioni, la stanza del club porta a compagni, attese e attività dopo scuola.
+La vita scolastica si legge meglio quando abbini ogni nome al verbo che lo richiama. [グレープアカデミー](term:term-v513-gureepuakademii) è il luogo istituzionale; [{{入学|にゅうがく}}](term:term-v528-nyuugaku) è l'ingresso in quella istituzione, quindi グレープアカデミーに{{入学|にゅうがく}}する suona naturale. [{{教室|きょうしつ}}](term:term-v521-kyoushitsu) e [{{部室|ぶしつ}}](term:term-v520-bushitsu) sono entrambe stanze, ma non aprono la stessa scena: l'aula porta a lezioni e spiegazioni, la stanza del club porta a compagni, attese e attività dopo scuola.
 
 [{{制服|せいふく}}](term:term-v534-seifuku), [{{部活|ぶかつ}}](term:term-v535-bukatsu), [{{先輩|せんぱい}}](term:term-v531-senpai) e [{{生徒会長|せいとかいちょう}}](term:term-v519-seitokaichou) disegnano relazioni sociali. [{{先輩|せんぱい}}](term:term-v531-senpai) non è un amico generico: è qualcuno più avanti di te nella scuola o nell'esperienza. [{{生徒会長|せいとかいちょう}}](term:term-v519-seitokaichou) è un ruolo formale, quindi quando compare come soggetto aspettati guida, avvisi o responsabilità. [{{返事|へんじ}}](term:term-v537-henji) e [{{集中|しゅうちゅう}}](term:term-v516-shuuchuu) chiudono la cornice scolastica: puoi rispondere a una domanda, aspettare una risposta o concentrare l'attenzione su una spiegazione.
 
@@ -199,14 +204,15 @@ translation_it: >-
 
 *   `{{授業中|じゅぎょうちゅう}}は` ➔ **Cornice temporale come tema**: la frase vale durante la lezione.
 *   `{{先生|せんせい}}の {{説明|せつめい}}に` ➔ **Bersaglio dell'attenzione**: `に` indica verso cosa va la concentrazione.
-*   `{{集中|しゅうちゅう}}します` ➔ **Sostantivo trasformato in azione**: [{{集中|しゅうちゅう}}](term:term-v516-shuuchuu) diventa "concentrarsi" con `する`.
+*   {{集中|しゅうちゅう}}します ➔ **Sostantivo trasformato in azione**: [{{集中|しゅうちゅう}}](term:term-v516-shuuchuu) diventa "concentrarsi" con する.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{教室|きょうしつ}}](term:term-v521-kyoushitsu) richiama lezioni, professori e spiegazioni; [{{部室|ぶしつ}}](term:term-v520-bushitsu) richiama club, compagni e incontri dopo scuola. Entrambi sono luoghi scolastici, ma ti preparano a scene diverse.
+#### ⚖️ Contrasto operativo
+
+[{{教室|きょうしつ}}](term:term-v521-kyoushitsu) richiama lezioni, professori e spiegazioni; [{{部室|ぶしつ}}](term:term-v520-bushitsu) richiama club, compagni e incontri dopo scuola. Entrambi sono luoghi scolastici, ma ti preparano a scene diverse.
 
 ## 4. Luoghi della storia e gerarchie dei personaggi
 
-[{{宝食堂|たからしょくどう}}](term:term-v509-takarashokudou) e [{{灯台|とうだい}}](term:term-v524-toudai) sono luoghi, quindi vicino a `{{向|む}}かう`, `{{待|ま}}つ`, `{{注文|ちゅうもん}}する` o `{{写真|しゃしん}}を{{撮|と}}る` ti dicono dove si svolge l'azione. [{{記念|きねん}}](term:term-v525-kinen) aggiunge valore temporale: in `{{入学|にゅうがく}}の{{記念|きねん}}` o `{{記念|きねん}}{{写真|しゃしん}}`, l'oggetto conta perché conserva un momento.
+[{{宝食堂|たからしょくどう}}](term:term-v509-takarashokudou) e [{{灯台|とうだい}}](term:term-v524-toudai) sono luoghi, quindi vicino a {{向|む}}かう, {{待|ま}}つ, {{注文|ちゅうもん}}する o {{写真|しゃしん}}を{{撮|と}}る ti dicono dove si svolge l'azione. [{{記念|きねん}}](term:term-v525-kinen) aggiunge valore temporale: in {{入学|にゅうがく}}の{{記念|きねん}} o {{記念|きねん}}{{写真|しゃしん}}, l'oggetto conta perché conserva un momento.
 
 Le parole di ruolo cambiano tono. [したっぱ](term:term-v530-shitappa) è colloquiale e gerarchico: una recluta, un sottoposto, qualcuno in basso nella struttura di un gruppo. [{{助手|じょしゅ}}](term:term-v518-joshu) e [{{支援|しえん}}](term:term-v523-shien) sono più formali: [{{助手|じょしゅ}}](term:term-v518-joshu) nomina una persona che assiste professori o ricercatori, [{{支援|しえん}}](term:term-v523-shien) un supporto organizzato, non un aiuto casuale.
 
@@ -234,19 +240,21 @@ translation_it: >-
 
 *   `{{研究所|けんきゅうじょ}}の {{助手|じょしゅ}}が` ➔ **Soggetto con ruolo**: `の` collega l'assistente al laboratorio; `が` lo presenta come agente dell'azione.
 *   `{{新入生|しんにゅうせい}}を` ➔ **Persone supportate**: gli studenti nuovi sono l'oggetto del supporto.
-*   `{{支援|しえん}}します` ➔ **Supporto formale**: `する` trasforma [{{支援|しえん}}](term:term-v523-shien) in azione organizzata.
+*   {{支援|しえん}}します ➔ **Supporto formale**: する trasforma [{{支援|しえん}}](term:term-v523-shien) in azione organizzata.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** [{{記念|きねん}}](term:term-v525-kinen) è il segnale "questo momento lascia una traccia": foto, regalo, evento o frase commemorativa non sono oggetti qualsiasi, ma marcatori di memoria.
+#### 🧠 Gancio cognitivo
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [したっぱ](term:term-v530-shitappa) abbassa il registro e parla di posizione nella gerarchia; [{{助手|じょしゅ}}](term:term-v518-joshu) è un ruolo funzionale; [{{支援|しえん}}](term:term-v523-shien) descrive l'aiuto come sistema o attività organizzata.
+[{{記念|きねん}}](term:term-v525-kinen) è il segnale "questo momento lascia una traccia": foto, regalo, evento o frase commemorativa non sono oggetti qualsiasi, ma marcatori di memoria.
+
+#### ⚖️ Contrasto operativo
+
+[したっぱ](term:term-v530-shitappa) abbassa il registro e parla di posizione nella gerarchia; [{{助手|じょしゅ}}](term:term-v518-joshu) è un ruolo funzionale; [{{支援|しえん}}](term:term-v523-shien) descrive l'aiuto come sistema o attività organizzata.
 
 ## 5. Lotte di gruppo e parole che cambiano dominio
 
 Nel dominio Pokémon alcune parole cambiano valore appena cambia la schermata. [{{自然|しぜん}}](term:term-v514-shizen) è la natura come ambiente: paesaggi, fenomeni, territorio di Paldea. [{{性格|せいかく}}](term:term-v527-seikaku) è invece la natura o personalità del Pokémon: compare nelle schermate di stato e può avere conseguenze sulle statistiche. Tradurle entrambe con "natura" senza guardare la cornice cancella la differenza tra mondo esterno e attributo del singolo Pokémon.
 
-In battaglia, [{{与|あた}}える](term:term-v510-atae-ru) diventa molto concreto con `ダメージを{{与|あた}}える`: il soggetto infligge danni a un bersaglio. [{{応援|おうえん}}](term:term-v539-ouen) non è solo "fare il tifo" da fuori; in un [レイドバトル](term:term-v511-reidobatoru) può essere un'azione di supporto agli alleati. [エントリー](term:term-v536-entorii) e [バトルチーム](term:term-v515-batoruchiimu) completano il flusso: prima ti registri all'evento, poi controlli o registri la squadra che partecipa.
+In battaglia, [{{与|あた}}える](term:term-v510-atae-ru) diventa molto concreto con ダメージを{{与|あた}}える: il soggetto infligge danni a un bersaglio. [{{応援|おうえん}}](term:term-v539-ouen) non è solo "fare il tifo" da fuori; in un [レイドバトル](term:term-v511-reidobatoru) può essere un'azione di supporto agli alleati. [エントリー](term:term-v536-entorii) e [バトルチーム](term:term-v515-batoruchiimu) completano il flusso: prima ti registri all'evento, poi controlli o registri la squadra che partecipa.
 
 :::example_sentence
 jp: >-
@@ -272,13 +280,15 @@ translation_it: >-
 
 *   `このわざは` ➔ **Tema della spiegazione**: la frase parla dell'effetto di questa mossa.
 *   `{{相手|あいて}}に` ➔ **Bersaglio**: `に` indica chi riceve l'effetto.
-*   `ダメージを {{与|あた}}えます` ➔ **Effetto inflitto**: `を` marca il danno come oggetto; [{{与|あた}}える](term:term-v510-atae-ru) qui non è "dare" in senso gentile, ma applicare danni al bersaglio.
+*   ダメージを {{与|あた}}えます ➔ **Effetto inflitto**: を marca il danno come oggetto; [{{与|あた}}える](term:term-v510-atae-ru) qui non è "dare" in senso gentile, ma applicare danni al bersaglio.
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** [{{自然|しぜん}}](term:term-v514-shizen) riguarda ambiente, paesaggio e fenomeni naturali; [{{性格|せいかく}}](term:term-v527-seikaku) riguarda il carattere o la natura del Pokémon. `パルデアの{{自然|しぜん}}` ti porta fuori, nel territorio; `ポケモンの{{性格|せいかく}}` ti porta nella scheda del singolo Pokémon.
+#### ⚖️ Contrasto operativo
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** `ダメージを{{与|あた}}える` si legge come "consegnare un effetto al bersaglio". Il verbo base può essere neutro, ma il nome `ダメージ` decide il dominio: in lotta quel "dare" diventa infliggere.
+[{{自然|しぜん}}](term:term-v514-shizen) riguarda ambiente, paesaggio e fenomeni naturali; [{{性格|せいかく}}](term:term-v527-seikaku) riguarda il carattere o la natura del Pokémon. パルデアの{{自然|しぜん}} ti porta fuori, nel territorio; ポケモンの{{性格|せいかく}} ti porta nella scheda del singolo Pokémon.
+
+#### 🧠 Gancio cognitivo
+
+`ダメージを{{与|あた}}える` si legge come "consegnare un effetto al bersaglio". Il verbo base può essere neutro, ma il nome `ダメージ` decide il dominio: in lotta quel "dare" diventa infliggere.
 
 ## Esempi guidati di riepilogo
 

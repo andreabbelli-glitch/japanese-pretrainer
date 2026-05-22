@@ -29,15 +29,6 @@ partire. Una formula come `{{案内|あんない}}するように {{言|い}}わ
 semplice spiegazione di movimento: segnala che qualcuno sta agendo perché ha
 ricevuto un incarico dalla scuola.
 
-:::image
-src: assets/story/academy-campus-exterior.webp
-alt: "Edificio principale dell'accademia di Paldea visto dall'esterno."
-caption: >-
-  L'accademia entra qui come spazio reale del prologo: non è solo sfondo
-  scolastico, ma il nodo da cui partono aula, uffici, dormitorio e i primi
-  briefing della storia.
-:::
-
 ## Termini chiave
 
 - [{{施設|しせつ}}](term:term-shisetsu) — struttura funzionale / facility
@@ -70,6 +61,15 @@ caption: >-
 
 ---
 
+:::image
+src: assets/story/academy-campus-exterior.webp
+alt: "Edificio principale dell'accademia di Paldea visto dall'esterno."
+caption: >-
+  L'accademia entra qui come spazio reale del prologo: non è solo sfondo
+  scolastico, ma il nodo da cui partono aula, uffici, dormitorio e i primi
+  briefing della storia.
+:::
+
 ## 1. L'aula: il referente, la classe e il futuro che nomini
 
 La prima scena d'aula non presenta solo un insegnante simpatico: stabilisce chi
@@ -86,7 +86,7 @@ traiettoria.
   [{{担任|たんにん}}](term:term-tannin), il dialogo può fare domande ufficiali,
   spiegare procedure e spostarti al prossimo passo senza suonare come una
   chiacchiera casuale.
-- [{{目指|めざ}}す](term:term-mezasu) aggiunge direzione. `{{目|め}}` sono gli
+- [{{目指|めざ}}す](term:term-mezasu) aggiunge direzione. {{目|め}} sono gli
   occhi e `{{指|さ}}す` è "puntare / indicare"; nel verbo composto la lettura
   diventa [{{目指|めざ}}す](term:term-mezasu). In una domanda sul futuro, non
   significa soltanto "mi piacerebbe": dice che stai puntando verso un certo
@@ -130,7 +130,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{目指|めざ}}す](term:term-mezasu) non copre lo stesso spazio di `ほしい` o
+[{{目指|めざ}}す](term:term-mezasu) non copre lo stesso spazio di ほしい o
 `なりたい`. `ほしい` esprime desiderio, `なりたい` dice "voglio diventare",
 mentre [{{目指|めざ}}す](term:term-mezasu) aggiunge il bersaglio verso cui ti
 orienti. Nella scena scolastica, questa differenza rende la domanda meno
@@ -238,10 +238,10 @@ singola, ma una vita quotidiana dentro il campus.
   trasparente: `{{学生|がくせい}}` più `{{寮|りょう}}`, cioè il dormitorio degli
   studenti. Quando il prologo ti porta lì, la camera diventa un punto di
   riposo, cambio di giornata e ripartenza della storia.
-- [{{寮生活|りょうせいかつ}}](term:term-ryouseikatsu) aggiunge `{{生活|せいかつ}}`,
+- [{{寮生活|りょうせいかつ}}](term:term-ryouseikatsu) aggiunge {{生活|せいかつ}},
   "vita quotidiana". Il centro non è il letto o l'arredo, ma il fatto che il
   personaggio vive secondo un ritmo scolastico interno all'accademia.
-- [{{通学|つうがく}}](term:term-tsuugaku) è il contrasto naturale. `{{通|つう}}`
+- [{{通学|つうがく}}](term:term-tsuugaku) è il contrasto naturale. {{通|つう}}
   porta l'idea di passare o andare attraverso, `{{学|がく}}` richiama la
   scuola: il composto indica il tragitto regolare di chi va a scuola da casa.
   Se [{{寮生活|りょうせいかつ}}](term:term-ryouseikatsu) ti colloca dentro il
@@ -267,7 +267,7 @@ translation_it: >-
 *   `も` ➔ **Aggiunta a una lista di vantaggi** (anche queste strutture entrano
     nell'insieme delle risorse disponibili).
 *   `{{使|つか}}い{{放題|ほうだい}}` ➔ **Uso senza limite pratico** (radice in
-    `ます` + [～{{放題|ほうだい}}](grammar:grammar-houdai)).
+    ます + [～{{放題|ほうだい}}](grammar:grammar-houdai)).
 *   `だって` ➔ **Informazione riportata** (il parlante commenta qualcosa che ha
     sentito o ricevuto come spiegazione).
 
@@ -315,7 +315,7 @@ scena.
 - [～てください](grammar:grammar-te-kudasai) è l'istruzione cortese. In una
   frase come `こちらへ {{来|き}}てください`, non stai leggendo un consiglio
   libero: qualcuno ti sta invitando formalmente a spostarti dove serve.
-- [～てね](grammar:grammar-te-ne) attenua il tono. `{{休|やす}}んでね` suona più
+- [～てね](grammar:grammar-te-ne) attenua il tono. {{休|やす}}んでね suona più
   amichevole di `{{休|やす}}んでください`, ma nella sequenza del dormitorio
   resta un'istruzione pratica: riposare fa avanzare il tempo.
 - [～ように {{言|い}}われる](grammar:grammar-you-ni-iwareru) aggiunge una fonte

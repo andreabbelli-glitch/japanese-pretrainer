@@ -2,7 +2,7 @@
 id: lesson-web-giapponese-dragon-quest-smash-grow-rewards-and-joining
 media_id: media-web-giapponese
 slug: 070-dragon-quest-smash-grow-rewards-and-joining
-title: Dragon Quest Smash Grow - 報酬と仲間加入
+title: "Ricompense e nuovo alleato dopo lo stage"
 order: 70
 segment_ref: dragon-quest-smash-grow
 difficulty: n4
@@ -27,28 +27,6 @@ Il giapponese qui non procede per frasi lunghe. Lavora per label nominali:
 `{{仲間加入|なかまかにゅう}}`. Quando riconosci il pezzo centrale del composto,
 capisci se stai guardando un luogo, una variante dello stage, una ricompensa
 una tantum o un nuovo membro del gruppo.
-
-:::image
-src: assets/dragon-quest-smash-grow-stage-rewards.png
-alt: >-
-  Schermata ricompense di Dragon Quest Smash Grow dopo uno stage normale.
-caption: >-
-  In alto leggi `{{第1章|だいいっしょう}} ルイナ{{平原|へいげん}}
-  ステージ{{5|ご}}` e `{{難易度|なんいど}}: ノーマル`; nella griglia i nastri
-  distinguono [{{初回報酬|しょかいほうしゅう}}](term:term-shokai-houshuu),
-  [{{達成報酬|たっせいほうしゅう}}](term:term-tassei-houshuu) e
-  [キャンペーン](term:term-campaign).
-:::
-
-:::image
-src: assets/dragon-quest-smash-grow-companion-join.png
-alt: >-
-  Schermata di Dragon Quest Smash Grow con un nuovo personaggio entrato nel
-  gruppo.
-caption: >-
-  `{{仲間加入|なかまかにゅう}}！` è un annuncio di stato: il personaggio mostrato
-  non è solo ottenuto come item, ma entra tra i membri disponibili.
-:::
 
 ## Termini chiave
 
@@ -79,10 +57,32 @@ caption: >-
 
 ---
 
+:::image
+src: assets/dragon-quest-smash-grow-stage-rewards.png
+alt: >-
+  Schermata ricompense di Dragon Quest Smash Grow dopo uno stage normale.
+caption: >-
+  In alto leggi {{第1章|だいいっしょう}} ルイナ{{平原|へいげん}}
+  ステージ{{5|ご}} e {{難易度|なんいど}}: ノーマル; nella griglia i nastri
+  distinguono [{{初回報酬|しょかいほうしゅう}}](term:term-shokai-houshuu),
+  [{{達成報酬|たっせいほうしゅう}}](term:term-tassei-houshuu) e
+  [キャンペーン](term:term-campaign).
+:::
+
+:::image
+src: assets/dragon-quest-smash-grow-companion-join.png
+alt: >-
+  Schermata di Dragon Quest Smash Grow con un nuovo personaggio entrato nel
+  gruppo.
+caption: >-
+  `{{仲間加入|なかまかにゅう}}！` è un annuncio di stato: il personaggio mostrato
+  non è solo ottenuto come item, ma entra tra i membri disponibili.
+:::
+
 ## 1. Intestazione dello stage: dove sei e quale variante stai leggendo
 
 La riga alta della schermata non è decorativa: definisce il contesto delle
-ricompense. [{{第1章|だいいっしょう}}](term:term-dai-isshou) usa `第` per
+ricompense. [{{第1章|だいいっしょう}}](term:term-dai-isshou) usa 第 per
 trasformare il numero in ordinale e `章` per dire "capitolo". Subito dopo,
 `ルイナ{{平原|へいげん}}` combina un nome proprio, `ルイナ`, con
 [{{平原|へいげん}}](term:term-heigen), cioè "pianura". Il nome ti dice quale
@@ -119,7 +119,7 @@ nodo giocabile preciso dentro quella progressione.
 
 #### 🧠 Gancio cognitivo
 
-in [{{難易度|なんいど}}](term:term-nanido), immagina
+In [{{難易度|なんいど}}](term:term-nanido), immagina
 una scala che misura quanto qualcosa è difficile o facile. Non è un comando:
 è il quadrante che indica la variante dello stage.
 
@@ -164,7 +164,7 @@ domande diverse: "è la prima volta?" e "hai soddisfatto l'obiettivo?"
 
 #### 🧠 Gancio cognitivo
 
-quando vedi un nastro reward, leggi prima l'ultima
+Quando vedi un nastro reward, leggi prima l'ultima
 parte del composto: `{{報酬|ほうしゅう}}`. Poi guarda cosa lo precede:
 `{{初回|しょかい}}` limita il premio alla prima volta, `{{達成|たっせい}}` lo
 lega al completamento di un criterio.
@@ -173,7 +173,7 @@ lega al completamento di un criterio.
 
 La seconda schermata cambia registro: non elenca materiali, ma annuncia uno
 stato del roster. [{{仲間加入|なかまかにゅう}}](term:term-kanyu) combina
-`{{仲間|なかま}}`, compagno o alleato, con [{{加入|かにゅう}}](term:term-kanyu),
+{{仲間|なかま}}, compagno o alleato, con [{{加入|かにゅう}}](term:term-kanyu),
 ingresso in un gruppo. Il punto non è solo "hai ricevuto un personaggio": il
 personaggio entra tra i membri disponibili.
 
@@ -245,7 +245,7 @@ translation_it: >-
 
 Le schermate reward diventano leggibili quando separi tre piani: posizione,
 fonte e conseguenza. [{{第1章|だいいっしょう}}](term:term-dai-isshou),
-`ルイナ{{平原|へいげん}}` e [{{難易度|なんいど}}](term:term-nanido) collocano lo
+ルイナ{{平原|へいげん}} e [{{難易度|なんいど}}](term:term-nanido) collocano lo
 stage; [{{初回報酬|しょかいほうしゅう}}](term:term-shokai-houshuu),
 [{{達成報酬|たっせいほうしゅう}}](term:term-tassei-houshuu) e
 [キャンペーン](term:term-campaign) spiegano la provenienza dei premi; [{{仲間加入|なかまかにゅう}}](term:term-kanyu)

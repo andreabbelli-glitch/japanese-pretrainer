@@ -32,18 +32,6 @@ avversari a puntare Beethoven quando la regola lo permette; poi assegna
 [エターナル・Ω](term:term-eternal-omega) ai tuoi Draghi e Command, trasformando
 il "lasciare il campo" in un ritorno in mano.
 
-:::image
-src: assets/cards/live-duel/beethoven-zenith-of-horror.webp
-alt: "Beethoven, Zenith of Horror card."
-caption: >-
-  [{{戦慄|せんりつ}}の{{頂|いただき}} ベートーベン](term:term-beethoven-zenith-of-horror)。
-  Razze: キング・コマンド・ドラゴン / アンノウン / ゼニス. Il blocco centrale usa
-  [{{召喚|しょうかん}}によって](grammar:grammar-shoukan-ni-yotte) per limitare il
-  trigger all'ingresso tramite evocazione; il blocco difensivo usa
-  [{{可能|かのう}}なら](grammar:grammar-kanou-nara) per forzare il bersaglio
-  dell'attacco solo quando è legale; l'ultima riga concede
-  [エターナル・Ω](term:term-eternal-omega) ai tuoi Draghi e Command.
-:::
 
 ## Termini chiave
 
@@ -70,6 +58,19 @@ caption: >-
 - キング・コマンド・ドラゴン / アンノウン / ゼニス — razze stampate nella riga del tipo
 
 ---
+
+:::image
+src: assets/cards/live-duel/beethoven-zenith-of-horror.webp
+alt: "Beethoven, Zenith of Horror card."
+caption: >-
+  [{{戦慄|せんりつ}}の{{頂|いただき}} ベートーベン](term:term-beethoven-zenith-of-horror)。
+  Razze: キング・コマンド・ドラゴン / アンノウン / ゼニス. Il blocco centrale usa
+  [{{召喚|しょうかん}}によって](grammar:grammar-shoukan-ni-yotte) per limitare il
+  trigger all'ingresso tramite evocazione; il blocco difensivo usa
+  [{{可能|かのう}}なら](grammar:grammar-kanou-nara) per forzare il bersaglio
+  dell'attacco solo quando è legale; l'ultima riga concede
+  [エターナル・Ω](term:term-eternal-omega) ai tuoi Draghi e Command.
+:::
 
 ## 1. Nome e riga superiore: titolo, razze e keyword compatte
 
@@ -130,17 +131,17 @@ reveal_mode: sentence
 
 *   `このクリーチャーが`: Beethoven è il soggetto grammaticale del trigger; `が`
     marca proprio la creatura che è entrata.
-*   `[{{召喚|しょうかん}}によって](grammar:grammar-shoukan-ni-yotte)`: `によって`
+*   [{{召喚|しょうかん}}によって](grammar:grammar-shoukan-ni-yotte): によって
     introduce il mezzo. Qui il mezzo non è narrativo, ma una condizione di
     rules text.
-*   `[{{出|で}}た{{時|とき}}](grammar:grammar-toki)`: `{{時|とき}}` trasforma
+*   [{{出|で}}た{{時|とき}}](grammar:grammar-toki): {{時|とき}} trasforma
     l'ingresso già avvenuto nella finestra in cui l'effetto si accende.
-*   `ドラゴンまたは[{{無色|むしょく}}{{呪文|じゅもん}}](term:term-colorless-spell)を{{合計|ごうけい}}{{3枚|さんまい}}`:
+*   ドラゴンまたは[{{無色|むしょく}}{{呪文|じゅもん}}](term:term-colorless-spell)を{{合計|ごうけい}}{{3枚|さんまい}}:
     l'oggetto è scelto tra Draghi e spell incolori, ma `{{合計|ごうけい}}`
     impone un totale unico di tre carte.
 *   `{{墓地|ぼち}}またはマナゾーンから{{手札|てふだ}}に{{戻|もど}}す`: `から` apre le
     origini possibili, `に` chiude sulla destinazione in mano.
-*   `[その{{後|あと}}](grammar:grammar-sonoato)`: il testo segnala un secondo
+*   [その{{後|あと}}](grammar:grammar-sonoato): il testo segnala un secondo
     passo dopo il recupero; i due `てもよい` rendono facoltativi sia il mettere
     mana sia il tapparsi.
 
@@ -181,9 +182,9 @@ reveal_mode: sentence
 
 *   `{{相手|あいて}}のクリーチャーが`: la creatura avversaria è il soggetto che
     dichiara l'attacco.
-*   `{{攻撃|こうげき}}する[{{時|とき}}](grammar:grammar-toki)`: il trigger si apre
+*   {{攻撃|こうげき}}する[{{時|とき}}](grammar:grammar-toki): il trigger si apre
     nel momento dell'attacco, non durante il blocco precedente.
-*   `[{{可能|かのう}}なら](grammar:grammar-kanou-nara)`: `なら` prende la
+*   [{{可能|かのう}}なら](grammar:grammar-kanou-nara): なら prende la
     possibilità come condizione. Se la regola impedisce di attaccare Beethoven,
     il vincolo non si applica.
 *   `このクリーチャーを{{攻撃|こうげき}}する`: `を` marca Beethoven come bersaglio
@@ -191,7 +192,7 @@ reveal_mode: sentence
 
 #### ⚖️ Contrasto operativo
 
-[{{可能|かのう}}なら](grammar:grammar-kanou-nara) non assomiglia a `てもよい`.
+[{{可能|かのう}}なら](grammar:grammar-kanou-nara) non assomiglia a てもよい.
 `てもよい` permette al giocatore di scegliere; `{{可能|かのう}}なら` dice invece:
 se l'azione è possibile, allora quella è la direzione obbligata. La libertà
 rimane solo quando l'attacco a Beethoven non è un'opzione legale.
@@ -221,9 +222,9 @@ reveal_mode: sentence
 
 *   `{{自分|じぶん}}のドラゴンとコマンドすべてに`: `に` marca i destinatari della
     keyword; `すべて` impedisce di leggere il gruppo come una selezione parziale.
-*   `「[エターナル・Ω](term:term-eternal-omega)」を{{与|あた}}える`: `を` marca la
+*   「[エターナル・Ω](term:term-eternal-omega)」を{{与|あた}}える: を marca la
     cosa conferita. La cosa non è una carta fisica, ma una capacità.
-*   `{{持|も}}つクリーチャーが{{離|はな}}れる[{{時|とき}}](grammar:grammar-toki)`:
+*   {{持|も}}つクリーチャーが{{離|はな}}れる[{{時|とき}}](grammar:grammar-toki):
     la parentesi definisce quando la keyword si applica, cioè nel momento in
     cui una creatura con quella capacità sta lasciando il campo.
 *   `かわりに{{手札|てふだ}}に{{戻|もど}}す`: `かわりに` sostituisce l'uscita normale

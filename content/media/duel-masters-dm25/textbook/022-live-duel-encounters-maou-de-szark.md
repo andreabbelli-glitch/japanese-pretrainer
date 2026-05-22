@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-maou-de-szark
-title: Carte incontrate - Maou De Szark
+title: "Maou De Szark: materiali, referenti e costo saltato"
 order: 51
 segment_ref: live-duel-encounters
 difficulty: n2
@@ -32,17 +32,6 @@ dei referenti: chi fa scattare la keyword, da quali zone scegli, quante carte
 prendi per zona, dove viene messa la creatura, e per quanto dura il debuff
 finale.
 
-:::image
-src: assets/cards/live-duel/maou-de-szark.jpg
-alt: "Maou De Szark card."
-caption: >-
-  [{{魔凰|まおう}} デ・スザーク](term:term-maou-de-szark)。 Razze:
-  [マスター・ドルスザク](term:term-master-dolszak) /
-  [マフィ・ギャング](term:term-mafi-gang)。 Riga centrale:
-  [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon), due
-  [{{魔導具|まどうぐ}}](term:term-madougu) dal battle zone, due dal cimitero,
-  poi evocazione sopra quelle quattro carte senza pagare il costo.
-:::
 
 ## Termini chiave
 
@@ -50,6 +39,8 @@ caption: >-
   entra sopra quattro materiali scelti.
 - [{{魔導具|まどうぐ}}](term:term-madougu) — il filtro tribale che accende la
   keyword e definisce i materiali validi.
+- [{{自分|じぶん}}](term:term-self) e [{{相手|あいて}}](term:term-opponent) —
+  lati del testo: tuo setup, creature avversarie o bersagli opposti.
 - [バトルゾーン](term:term-battle-zone) — zona da cui parte il trigger e da
   cui scegli due Magic Tool.
 - [{{墓地|ぼち}}](term:term-graveyard) — seconda zona dei materiali e possibile
@@ -59,6 +50,9 @@ caption: >-
 - [コスト](term:term-cost) e [{{召喚|しょうかん}}](term:term-summon) — costo
   saltato e azione finale concessa.
 - [すべて](term:term-subete) — marcatore di totalità nel secondo effetto.
+- [{{選|えら}}ぶ](term:term-erabu) — scelta distribuita tra zone o bersagli.
+- [パワー](term:term-power) — valore numerico che può essere ridotto da un
+  effetto.
 
 ## Espressioni ricorrenti
 
@@ -98,6 +92,20 @@ caption: >-
 
 ---
 
+[～ずに](grammar:grammar-zuni) dice quale pagamento viene saltato; [W・ブレイカー](term:term-w-breaker) resta una keyword di pressione sugli scudi, separata dalla procedura di evocazione.
+
+:::image
+src: assets/cards/live-duel/maou-de-szark.jpg
+alt: "Maou De Szark card."
+caption: >-
+  [{{魔凰|まおう}} デ・スザーク](term:term-maou-de-szark)。 Razze:
+  [マスター・ドルスザク](term:term-master-dolszak) /
+  [マフィ・ギャング](term:term-mafi-gang)。 Riga centrale:
+  [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon), due
+  [{{魔導具|まどうぐ}}](term:term-madougu) dal battle zone, due dal cimitero,
+  poi evocazione sopra quelle quattro carte senza pagare il costo.
+:::
+
 ## 1. Il trigger: una porta che si apre quando entra un Magic Tool
 
 La frase di [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon) comincia
@@ -129,25 +137,25 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon)：` ➔ **Etichetta
+*   [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon)： ➔ **Etichetta
     della keyword**. I due punti aprono una procedura completa, non una semplice
     traduzione del nome.
-*   `[{{自分|じぶん}}](term:term-self)の[{{魔導具|まどうぐ}}](term:term-madougu)が`
+*   [{{自分|じぶん}}](term:term-self)の[{{魔導具|まどうぐ}}](term:term-madougu)が
     ➔ **Soggetto del trigger**. La particella `が` marca il Magic Tool che
     entra; De Szark non è ancora il soggetto dell'azione.
-*   `[バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
-    [{{時|とき}}](grammar:grammar-toki)` ➔ **Finestra temporale**. `に`
+*   [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
+    [{{時|とき}}](grammar:grammar-toki) ➔ **Finestra temporale**. に
     marca la zona di arrivo, `出た` è l'ingresso già avvenuto, `時` aggancia
     l'effetto a quel momento.
-*   `{{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)を` ➔ **Oggetto
+*   {{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)を ➔ **Oggetto
     della scelta**. Il testo restringe subito i materiali: non qualunque carta,
     ma i tuoi Magic Tool.
 
 #### ⚖️ Contrasto operativo: `自分の魔導具が出た時` vs `このクリーチャーが出た時`
 
-`{{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)が
+{{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)が
 [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
-[{{時|とき}}](grammar:grammar-toki)` non punta a De Szark. Punta a qualsiasi
+[{{時|とき}}](grammar:grammar-toki) non punta a De Szark. Punta a qualsiasi
 tuo Magic Tool che entra nel battle zone. Quando una carta vuole parlare di se
 stessa, usa di solito `このクリーチャーが...`; qui invece il soggetto è la
 famiglia `魔導具`.
@@ -166,23 +174,23 @@ Dopo il trigger, la carta costruisce i materiali con una frase compatta:
 `と` mette insieme due fonti, `から` marca l'origine della scelta, e
 [ずつ](grammar:grammar-zutsu) distribuisce la quantità su ciascuna fonte.
 
-*   `[バトルゾーン](term:term-battle-zone)と[{{墓地|ぼち}}](term:term-graveyard)から`
+*   [バトルゾーン](term:term-battle-zone)と[{{墓地|ぼち}}](term:term-graveyard)から
     ➔ il testo nomina due zone come origine dei materiali. Non sta dicendo
     "dal battle zone o dal cimitero"; la `と` coordina entrambe le zone prima
     di `から`.
-*   `{{2|ふた}}つ[ずつ](grammar:grammar-zutsu)` ➔ la quantità `2` non è un
+*   {{2|ふた}}つ[ずつ](grammar:grammar-zutsu) ➔ la quantità 2 non è un
     totale provvisorio: viene applicata a ciascun gruppo nominato. Il risultato
     reale è due Magic Tool dal battle zone e due Magic Tool dal cimitero.
-*   `[{{選|えら}}び](term:term-erabu)` ➔ forma continuativa: scegli i materiali
+*   [{{選|えら}}び](term:term-erabu) ➔ forma continuativa: scegli i materiali
     e poi la frase continua verso l'evocazione. In un rules text questa forma
     spesso tiene insieme più passi senza chiudere la procedura.
-*   `{{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)を` resta il
+*   {{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)を resta il
     filtro anche dopo `{{墓地|ぼち}}から`: la seconda zona non apre bersagli
     generici, ma solo Magic Tool tuoi nel cimitero.
 
 #### ⚖️ Contrasto operativo: `{{2|ふた}}つずつ` prima, `{{4枚|よんまい}}` dopo
 
-`{{2|ふた}}つ[ずつ](grammar:grammar-zutsu)` è la distribuzione; `それら{{4枚|よんまい}}`
+{{2|ふた}}つ[ずつ](grammar:grammar-zutsu) è la distribuzione; それら{{4枚|よんまい}}
 è il totale ottenuto dopo la distribuzione. Se parti da `{{4枚|よんまい}}` e
 lo leggi come "quattro da dove vuoi", perdi il vincolo grammaticale più forte:
 la carta vuole due materiali da una zona e due dall'altra.
@@ -198,16 +206,16 @@ con [ずつ](grammar:grammar-zutsu).
 
 *   `このクリーチャーを` ➔ **Oggetto che si muove**. `を` marca De Szark come
     cosa evocata, non come soggetto del trigger iniziale.
-*   `{{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)または
-    [{{墓地|ぼち}}](term:term-graveyard)から` ➔ **Zona di partenza**. `または`
+*   {{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)または
+    [{{墓地|ぼち}}](term:term-graveyard)から ➔ **Zona di partenza**. または
     apre due fonti possibili: mano o cimitero.
-*   `[それら](grammar:grammar-sorera){{4枚|よんまい}}の{{上|うえ}}に` ➔
+*   [それら](grammar:grammar-sorera){{4枚|よんまい}}の{{上|うえ}}に ➔
     **Destinazione sopra i materiali**. `それら` richiama le quattro carte
     appena scelte, `の上に` dice dove finisce la creatura.
-*   `[コスト](term:term-cost)を[{{払|はら}}わ](term:term-harau)ずに` ➔
+*   [コスト](term:term-cost)を[{{払|はら}}わ](term:term-harau)ずに ➔
     **Azione saltata**. Il costo è nominato con `を`, ma `ずに` dice che quel
     pagamento non viene eseguito.
-*   `[{{召喚|しょうかん}}](term:term-summon)してもよい` ➔ **Permesso
+*   [{{召喚|しょうかん}}](term:term-summon)してもよい ➔ **Permesso
     facoltativo**. [～てもよい](grammar:grammar-temoyoi) concede l'evocazione:
     puoi farla se la procedura è valida, ma la grammatica non la rende
     obbligatoria.
@@ -249,23 +257,23 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
-    [{{時|とき}}](grammar:grammar-toki)` ➔ **Trigger d'ingresso**. La zona
+*   [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
+    [{{時|とき}}](grammar:grammar-toki) ➔ **Trigger d'ingresso**. La zona
     di arrivo è marcata da `に`; `時` apre il momento in cui si applica
     l'effetto.
 *   `そのターン` ➔ **Durata**. `その` riprende il turno in corso, quindi il
     testo non descrive un cambiamento permanente.
-*   `[{{相手|あいて}}](term:term-opponent)のクリーチャー
-    [すべて](term:term-subete)の` ➔ **Gruppo completo**. `相手の` definisce il
+*   [{{相手|あいて}}](term:term-opponent)のクリーチャー
+    [すべて](term:term-subete)の ➔ **Gruppo completo**. 相手の definisce il
     lato avversario, `クリーチャー` dà il gruppo, `すべて` lo prende tutto.
-*   `[パワー](term:term-power)を{{-3000|マイナスさんぜん}}する` ➔ **Valore
+*   [パワー](term:term-power)を{{-3000|マイナスさんぜん}}する ➔ **Valore
     modificato**. `パワーを` è l'oggetto del cambiamento; `-3000する` applica
     la riduzione al gruppo già delimitato.
 
 #### ⚖️ Contrasto operativo: `すべて` non sceglie un bersaglio
 
-Quando il testo dice `[{{相手|あいて}}](term:term-opponent)のクリーチャー
-[すべて](term:term-subete)`, non ti sta chiedendo di scegliere una creatura.
+Quando il testo dice [{{相手|あいて}}](term:term-opponent)のクリーチャー
+[すべて](term:term-subete), non ti sta chiedendo di scegliere una creatura.
 Sta chiudendo lo scope sull'intero lato avversario. La scelta è assente; il
 limite reale è temporale, cioè `そのターン`.
 

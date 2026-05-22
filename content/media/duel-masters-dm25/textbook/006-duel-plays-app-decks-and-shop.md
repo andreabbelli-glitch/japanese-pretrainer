@@ -35,12 +35,19 @@ risorsa.
   partita
 - [デッキ{{編成|へんせい}}](term:term-deck-edit) — schermata di composizione /
   modifica del deck
+- [{{編成|へんせい}}](term:term-hensei) — organizzazione della lista, non acquisto
+  o semplice consultazione.
 - [レンタルデッキ](term:term-rental-deck) — deck in prestito pronto da usare
 - [{{所持|しょじ}}](term:term-owned) — possesso effettivo, quantità già in tuo
   stock
 - [DMポイント](term:term-dm-points) — risorsa usata per generare o ottenere
   carte
 - [チケット](term:term-ticket) — ticket spendibile in flussi dedicati
+- [{{確認|かくにん}}](term:term-confirm) — controllo prima di applicare o
+  confermare una scelta.
+- [{{購入|こうにゅう}}](term:term-purchase) e
+  [{{交換|こうかん}}](term:term-exchange) — comprare e scambiare: due flussi di
+  shop diversi.
 
 ## Espressioni ricorrenti
 
@@ -66,10 +73,12 @@ risorsa.
   nella collezione
 - `マイデッキ` — lista del deck che stai costruendo
 - `デッキ{{確認|かくにん}}` — controllo del deck prima di confermare
-- `デッキ` + [{{保存|ほぞん}}](term:term-save) — salvataggio della lista
+- デッキ + [{{保存|ほぞん}}](term:term-save) — salvataggio della lista
   attuale
 
 ---
+
+[{{選択|せんたく}}](term:term-selection) è il gesto di scegliere una voce precisa: nel menu non significa ancora confermare o comprare, ma portare un elemento al centro dell'azione.
 
 ## 1. デッキ non è sempre lo stesso “mazzo”
 
@@ -126,7 +135,7 @@ alt: >-
 caption: >-
   In [デッキ{{編成|へんせい}}](term:term-deck-edit) la parte sinistra mostra
   [カード{{一覧|いちらん}}](grammar:grammar-ichiran), filtri e
-  [{{所持|しょじ}}](term:term-owned); la parte destra mostra `マイデッキ`.
+  [{{所持|しょじ}}](term:term-owned); la parte destra mostra マイデッキ.
   I pulsanti di [{{確認|かくにん}}](term:term-confirm) e
   [{{保存|ほぞん}}](term:term-save) del deck separano controllo e salvataggio
   della lista.
@@ -145,7 +154,7 @@ soltanto guardarla.
   possiedi, ma il deck che stai costruendo o modificando. Quando una carta
   passa da sinistra a destra, il testo giapponese sta cambiando ruolo
   all'oggetto: da elemento della collezione a parte della lista.
-- `デッキ{{確認|かくにん}}` usa [{{確認|かくにん}}](term:term-confirm) nel senso di
+- デッキ{{確認|かくにん}} usa [{{確認|かくにん}}](term:term-confirm) nel senso di
   controllo: guardi se la lista è corretta. `デッキ` +
   [{{保存|ほぞん}}](term:term-save) usa invece
   [{{保存|ほぞん}}](term:term-save), quindi l'azione scrive lo stato corrente e
@@ -221,7 +230,7 @@ Ognuno definisce una direzione diversa dello scambio: denaro o valuta verso
 carte, risorsa verso carta specifica, carta verso risorsa.
 
 - [カード{{購入|こうにゅう}}](term:term-card-purchase) mette
-  [{{購入|こうにゅう}}](term:term-purchase) dopo `カード`: il centro è acquistare
+  [{{購入|こうにゅう}}](term:term-purchase) dopo カード: il centro è acquistare
   carte nello shop. Il verbo implica una transazione in entrata per te: spendi
   una risorsa e ricevi un prodotto.
 - [カード{{交換|こうかん}}](term:term-card-exchange) usa
@@ -377,7 +386,7 @@ translation_it: >-
 
 Deckbuilding e shop diventano leggibili quando separi tre domande: quale deck
 sto scegliendo o modificando, che cosa possiedo davvero, quale verbo mi sta
-facendo spendere o convertire una risorsa. In `デュエプレ`, [デッキ](term:term-constructed-deck),
+facendo spendere o convertire una risorsa. In デュエプレ, [デッキ](term:term-constructed-deck),
 [{{所持|しょじ}}](term:term-owned), [{{購入|こうにゅう}}](term:term-purchase),
 [{{交換|こうかん}}](term:term-exchange), [{{生成|せいせい}}](term:term-craft) e
 [{{分解|ぶんかい}}](term:term-disenchant) non sono un vocabolario separato

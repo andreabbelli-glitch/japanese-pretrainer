@@ -35,10 +35,10 @@ Il filo da seguire è il movimento della frase. [{{渡|わた}}す](term:term-an
 
 ## Espressioni ricorrenti
 
-- `XをYに` [{{渡|わた}}す](term:term-anki-l11-watasu) — consegnare X a Y
-- [もう{{一度|いちど}}](term:term-anki-l11-mouichido) `Vてください` — ripetere un'azione o tornare a parlare
-- `Xと` [{{呼|よ}}ばれる](term:term-anki-l11-yobareru) `Y` — un Y chiamato X
-- [{{仕事|しごと}}](term:term-anki-l11-shigoto) `は ... ことです` — definire un compito come ruolo
+- XをYに [{{渡|わた}}す](term:term-anki-l11-watasu) — consegnare X a Y
+- [もう{{一度|いちど}}](term:term-anki-l11-mouichido) Vてください — ripetere un'azione o tornare a parlare
+- Xと [{{呼|よ}}ばれる](term:term-anki-l11-yobareru) Y — un Y chiamato X
+- [{{仕事|しごと}}](term:term-anki-l11-shigoto) は ... ことです — definire un compito come ruolo
 
 ## Pattern grammaticali chiave
 
@@ -56,11 +56,13 @@ Il filo da seguire è il movimento della frase. [{{渡|わた}}す](term:term-an
 
 ---
 
+[frase relativa ({{連体|れんたい}}{{修飾|しゅうしょく}})](grammar:grammar-g086-frase-che-modifica-un-nome) serve a leggere i nomi caricati da una frase prima; [{{校長|こうちょう}}](term:term-v168-kouchou) e [{{大穴|おおあな}}](term:term-v068-ooana) fissano invece due poli narrativi, Accademia e voragine.
+
 ## 1. Passare oggetti e centrare bersagli
 
 Le richieste dell'Accademia e le schermate di battaglia separano due movimenti molto diversi: una consegna va da una persona a un'altra, mentre un attacco o una risposta arriva sul punto giusto. Il giapponese ti aiuta a non confonderli perché cambia particelle, verbo e punto di vista.
 
-*   [{{渡|わた}}す](term:term-anki-l11-watasu) è un verbo di trasferimento: qualcuno mette un oggetto nella sfera di qualcun altro. La struttura naturale è `XをYに{{渡|わた}}す`: `を` marca la cosa consegnata, `に` marca il destinatario. In un incarico scolastico, quindi, non basta pensare "passare": devi cercare che cosa cambia mano e verso quale persona si muove.
+*   [{{渡|わた}}す](term:term-anki-l11-watasu) è un verbo di trasferimento: qualcuno mette un oggetto nella sfera di qualcun altro. La struttura naturale è XをYに{{渡|わた}}す: を marca la cosa consegnata, に marca il destinatario. In un incarico scolastico, quindi, non basta pensare "passare": devi cercare che cosa cambia mano e verso quale persona si muove.
 *   [{{当|あ}}たる](term:term-anki-l11-ataru) guarda invece il risultato. Una mossa [{{当|あ}}たる](term:term-anki-l11-ataru) quando va a segno; una previsione [{{当|あ}}たる](term:term-anki-l11-ataru) quando si rivela giusta; un premio può [{{当|あ}}たる](term:term-anki-l11-ataru) quando "capita" a qualcuno. È un verbo intransitivo: il centro non è chi mira, ma il fatto che qualcosa abbia raggiunto il bersaglio.
 
 :::example_sentence
@@ -92,7 +94,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{渡|わた}}す](term:term-anki-l11-watasu) ha bisogno di un oggetto che passa da A a B; [{{当|あ}}たる](term:term-anki-l11-ataru) descrive un risultato che "centra" qualcosa. Se leggi `ボールを{{渡|わた}}す`, cerca oggetto e destinatario. Se leggi `わざが{{当|あ}}たる`, cerca invece che cosa è andato a segno.
+[{{渡|わた}}す](term:term-anki-l11-watasu) ha bisogno di un oggetto che passa da A a B; [{{当|あ}}たる](term:term-anki-l11-ataru) descrive un risultato che "centra" qualcosa. Se leggi ボールを{{渡|わた}}す, cerca oggetto e destinatario. Se leggi わざが{{当|あ}}たる, cerca invece che cosa è andato a segno.
 
 #### 🧠 Gancio cognitivo
 
@@ -103,7 +105,7 @@ Come trucco mnemonico, pensa a [{{当|あ}}たる](term:term-anki-l11-ataru) com
 Nelle scene scolastiche e nei dialoghi con adulti, il gioco spesso evita di nominare direttamente una persona. Questo non rende la frase vaga: il modo in cui la persona viene indicata dice che rapporto c'è tra chi parla, chi ascolta e chi viene osservato.
 
 *   [{{彼女|かのじょ}}](term:term-anki-l11-kanojo) può voler dire "lei" oppure "fidanzata", ma in giapponese non funziona come un pronome italiano da usare a ogni frase. Se il nome è noto, i personaggi tendono a ripeterlo o a usare un suffisso; [{{彼女|かのじょ}}](term:term-anki-l11-kanojo) compare quando la frase prende un tono più narrativo, generico o quando la relazione "lei / quella ragazza" conta più del nome proprio.
-*   [あの{{子|こ}}](term:term-anki-l11-anoko) è più situazionale. `あの` indica "quella", `{{子|こ}}` letteralmente "bambino / ragazzo / ragazza", ma nel parlato può riferirsi a una persona giovane, a uno studente o a qualcuno guardato con familiarità. In un'aula o davanti a un [ジムリーダー](term:term-v028-jimuriidaa), il tono non è neutro da registro anagrafico: può portare distanza, affetto o benevola superiorità.
+*   [あの{{子|こ}}](term:term-anki-l11-anoko) è più situazionale. あの indica "quella", {{子|こ}} letteralmente "bambino / ragazzo / ragazza", ma nel parlato può riferirsi a una persona giovane, a uno studente o a qualcuno guardato con familiarità. In un'aula o davanti a un [ジムリーダー](term:term-v028-jimuriidaa), il tono non è neutro da registro anagrafico: può portare distanza, affetto o benevola superiorità.
 
 :::example_sentence
 jp: >-
@@ -140,9 +142,9 @@ translation_it: >-
 
 Quando la trama si avvicina ai misteri di Paldea, il giapponese cambia ritmo: alcune frasi chiedono di ripetere un'azione, altre trattano un libro come fonte insolita, altre ancora fissano il nome con cui un luogo è conosciuto.
 
-*   [もう{{一度|いちど}}](term:term-anki-l11-mouichido) combina `もう`, "ancora / di nuovo", con `{{一度|いちど}}`, "una volta". Nei prompt e nei dialoghi non indica una ripetizione vaga: prepara un secondo tentativo, un nuovo ascolto, un ritorno a un'interazione appena disponibile.
-*   [{{奇書|きしょ}}](term:term-anki-l11-kisho) porta un tono narrativo più marcato. `{{奇|き}}` richiama anomalia o stranezza, `{{書|しょ}}` è "scritto / libro"; insieme indicano un testo insolito, difficile da trattare come fonte ordinaria. Quando la trama parla del Libro Scarlatto o Violetto come [{{奇書|きしょ}}](term:term-anki-l11-kisho), il giapponese suggerisce che quel contenuto è affascinante, sospetto o fuori scala rispetto alla conoscenza normale.
-*   [{{呼|よ}}ばれる](term:term-anki-l11-yobareru) usa la [{{受|う}}け{{身|み}}](grammar:grammar-g087-forma-passiva) di `{{呼|よ}}ぶ`: non importa chi chiama così quella cosa, importa che quel nome è stabilito nell'uso. Il frame da riconoscere è `Xと{{呼|よ}}ばれるY`, cioè "un Y chiamato X".
+*   [もう{{一度|いちど}}](term:term-anki-l11-mouichido) combina もう, "ancora / di nuovo", con {{一度|いちど}}, "una volta". Nei prompt e nei dialoghi non indica una ripetizione vaga: prepara un secondo tentativo, un nuovo ascolto, un ritorno a un'interazione appena disponibile.
+*   [{{奇書|きしょ}}](term:term-anki-l11-kisho) porta un tono narrativo più marcato. {{奇|き}} richiama anomalia o stranezza, {{書|しょ}} è "scritto / libro"; insieme indicano un testo insolito, difficile da trattare come fonte ordinaria. Quando la trama parla del Libro Scarlatto o Violetto come [{{奇書|きしょ}}](term:term-anki-l11-kisho), il giapponese suggerisce che quel contenuto è affascinante, sospetto o fuori scala rispetto alla conoscenza normale.
+*   [{{呼|よ}}ばれる](term:term-anki-l11-yobareru) usa la [{{受|う}}け{{身|み}}](grammar:grammar-g087-forma-passiva) di {{呼|よ}}ぶ: non importa chi chiama così quella cosa, importa che quel nome è stabilito nell'uso. Il frame da riconoscere è Xと{{呼|よ}}ばれるY, cioè "un Y chiamato X".
 
 :::example_sentence
 jp: >-
@@ -182,9 +184,9 @@ Per [{{呼|よ}}ばれる](term:term-anki-l11-yobareru), immagina il nome come u
 
 Area Zero e il percorso palestra usano parole molto concrete per cambiare atmosfera. Da una parte c'è la paura immediata davanti a Pokémon e luoghi minacciosi; dall'altra c'è il linguaggio del ruolo, del compito, della responsabilità quotidiana.
 
-*   [{{怖|こわ}}い](term:term-anki-l11-kowai) è l'aggettivo della paura diretta. Può descrivere un Pokémon, un luogo o una situazione, ma il punto è sempre la reazione davanti a qualcosa percepito come minaccioso. Non ha il tono solenne di `{{恐|おそ}}ろしい`: nei dialoghi, [{{怖|こわ}}い](term:term-anki-l11-kowai) suona più vicino alla voce di chi parla.
-*   [{{最深部|さいしんぶ}}](term:term-anki-l11-saishinbu) costruisce una geografia precisa. `{{最|さい}}` crea il superlativo, `{{深|しん}}` porta la profondità, `{{部|ぶ}}` la trasforma in "sezione / parte". In [エリアゼロ](term:term-v022-eriazero) non è solo "un posto profondo": è la zona finale, il fondo verso cui la trama fa scendere il giocatore.
-*   [{{仕事|しごと}}](term:term-anki-l11-shigoto) sposta il tono dal mistero alla responsabilità. È "lavoro" come mestiere, incarico o compito da svolgere; con `をする` diventa "fare il proprio lavoro". Quando un [ジムリーダー](term:term-v028-jimuriidaa) parla di lotte come [{{仕事|しごと}}](term:term-anki-l11-shigoto), il giapponese abbassa il dramma: la sfida è anche una mansione, non solo un evento eroico.
+*   [{{怖|こわ}}い](term:term-anki-l11-kowai) è l'aggettivo della paura diretta. Può descrivere un Pokémon, un luogo o una situazione, ma il punto è sempre la reazione davanti a qualcosa percepito come minaccioso. Non ha il tono solenne di {{恐|おそ}}ろしい: nei dialoghi, [{{怖|こわ}}い](term:term-anki-l11-kowai) suona più vicino alla voce di chi parla.
+*   [{{最深部|さいしんぶ}}](term:term-anki-l11-saishinbu) costruisce una geografia precisa. {{最|さい}} crea il superlativo, {{深|しん}} porta la profondità, {{部|ぶ}} la trasforma in "sezione / parte". In [エリアゼロ](term:term-v022-eriazero) non è solo "un posto profondo": è la zona finale, il fondo verso cui la trama fa scendere il giocatore.
+*   [{{仕事|しごと}}](term:term-anki-l11-shigoto) sposta il tono dal mistero alla responsabilità. È "lavoro" come mestiere, incarico o compito da svolgere; con をする diventa "fare il proprio lavoro". Quando un [ジムリーダー](term:term-v028-jimuriidaa) parla di lotte come [{{仕事|しごと}}](term:term-anki-l11-shigoto), il giapponese abbassa il dramma: la sfida è anche una mansione, non solo un evento eroico.
 
 :::example_sentence
 jp: >-
@@ -197,7 +199,7 @@ translation_it: >-
 
 *   `エリアゼロの {{最深部|さいしんぶ}}には` ➔ **Luogo ristretto**: `には` porta lo sguardo proprio su quel punto profondo.
 *   `{{怖|こわ}}い ポケモンが` ➔ **Presenza minacciosa**: `が` presenta i Pokémon spaventosi come ciò che esiste in quel luogo.
-*   `いる らしい` ➔ **Informazione indiretta**: [～らしい](grammar:grammar-g102-pare-che-tipico-di) fa suonare la frase come voce, deduzione o notizia riportata.
+*   いる らしい ➔ **Informazione indiretta**: [～らしい](grammar:grammar-g102-pare-che-tipico-di) fa suonare la frase come voce, deduzione o notizia riportata.
 
 :::example_sentence
 jp: >-

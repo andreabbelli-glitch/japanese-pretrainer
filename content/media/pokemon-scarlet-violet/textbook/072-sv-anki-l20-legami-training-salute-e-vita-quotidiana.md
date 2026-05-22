@@ -49,11 +49,26 @@ tempo resta.
 
 ## Pattern grammaticali chiave
 
-- domanda indiretta + `か` + [{{悩|なや}}む](term:term-anki-l20-nayamu) — essere indecisi su una scelta
-- luogo + `で` + [{{暮|く}}らす](term:term-anki-l20-kurasu) — vivere le proprie giornate in un luogo
-- Vる`のは` + [{{悲|かな}}しい](term:term-anki-l20-kanashii) — trasformare un evento in tema emotivo
+- domanda indiretta + か + [{{悩|なや}}む](term:term-anki-l20-nayamu) — essere indecisi su una scelta
+- luogo + で + [{{暮|く}}らす](term:term-anki-l20-kurasu) — vivere le proprie giornate in un luogo
+- Vるのは + [{{悲|かな}}しい](term:term-anki-l20-kanashii) — trasformare un evento in tema emotivo
+
+## Etichette da riconoscere
+
+- [スター{{団|だん}}](term:term-v017-sutaa-dan) — gruppo narrativo in cui appartenenza, compagni e distanza
+  emotiva cambiano il tono della frase
+- [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun) — segnale di preparazione
+  intensa prima di una prova
+- [{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou) — etichetta di urgenza:
+  la scena non sta contando minuti, sta stringendo il tempo
+- [{{保健|ほけん}}](term:term-anki-l20-hoken){{室|しつ}} — luogo scolastico legato
+  a salute, cura e routine dell'Accademia
+- [{{半分|はんぶん}}](term:term-anki-l20-hanbun) — soglia di quantità: metà del
+  tempo, del gruppo o di ciò che resta
 
 ---
+
+[スター{{団|だん}}](term:term-v017-sutaa-dan) non è solo un nome di gruppo: nelle frasi sui legami cambia tono, perché porta appartenenza, distanza e riconciliazione.
 
 ## 1. Legami di gruppo: parlare da dentro o da fuori
 
@@ -67,7 +82,7 @@ come parte del proprio cerchio oppure se le guarda da una certa distanza.
   "compagno del nostro stesso gruppo". Quando compare in un discorso su
   スター{{団|だん}}, non sta solo contando persone; sta difendendo un legame
   interno.
-- [{{彼|かれ}}ら](term:term-anki-l20-karera) parte da `{{彼|かれ}}`, "lui", e
+- [{{彼|かれ}}ら](term:term-anki-l20-karera) parte da {{彼|かれ}}, "lui", e
   aggiunge `ら`, plurale colloquiale. In giapponese spesso il soggetto resta
   implicito o viene sostituito dal nome del gruppo; se il testo sceglie proprio
   [{{彼|かれ}}ら](term:term-anki-l20-karera), mette "loro" davanti agli occhi

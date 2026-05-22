@@ -69,6 +69,8 @@ emerso.
 
 ---
 
+[{{世界|せかい}}](term:term-v244-sekai) allarga la frase oltre il singolo luogo: quando compare in dialogo, prepara una lettura più ampia di mondo, scenario o prospettiva.
+
 ## 1. Quando la battuta mette in moto la scena
 
 Scarlet/Violet usa spesso parole molto compatte per dire al giocatore che non
@@ -102,7 +104,7 @@ translation_it: >-
 
 *   `さっそく` ➔ **Avvio immediato** (la decisione è già presa: ora la scena si
     muove senza ulteriore attesa).
-*   `ゼロラボへ` ➔ **Direzione** ([ゼロラボ](term:term-v236-zerorabo) è il luogo
+*   ゼロラボへ ➔ **Direzione** ([ゼロラボ](term:term-v236-zerorabo) è il luogo
     verso cui ci si dirige; `へ` marca la meta).
 *   `{{行|い}}こう` ➔ **Proposta inclusiva** (forma volitiva di `{{行|い}}く`:
     *andiamo*).
@@ -121,7 +123,7 @@ translation_it: >-
 *   `{{来|き}}てください` ➔ **Richiesta cortese** (`{{来|く}}る` in forma `-te` +
     `ください`: *per favore vieni*).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [さっそく](term:term-v235-sassoku) guarda al ritmo dell'azione: *partiamo
 subito*. [ぜひ](term:term-v238-zehi) guarda invece alla volontà del parlante:
@@ -154,7 +156,7 @@ translation_it: >-
 
 *   `そうだね` ➔ **Eco di accordo** (il parlante accetta o riconosce ciò che è
     appena emerso).
-*   `{{強|つよ}}いよね` ➔ **Conferma condivisa** ([～よね](grammar:grammar-g047-vero-no)
+*   {{強|つよ}}いよね ➔ **Conferma condivisa** ([～よね](grammar:grammar-g047-vero-no)
     aggiunge *vero? / no?*, cioè cerca accordo senza trasformare la frase in un
     quiz formale).
 
@@ -185,7 +187,7 @@ personaggio si accorge di aver sbagliato, dimenticato qualcosa o provocato un
 problema. La forma viene dal verbo `しまう`, che in molti contesti dà l'idea di
 un'azione finita male o sfuggita di mano.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Immagina [しまった！](term:term-e045-shimatta) come il momento in cui il
 personaggio guarda la situazione e realizza: *ormai è successo*. Non è una
@@ -225,11 +227,11 @@ translation_it: >-
 
 *   `ライドポケモンなら` ➔ **Condizione di riferimento** (*se parliamo del Pokémon
     cavalcatura / con quello come opzione*).
-*   `{{進|すす}}みやすい` ➔ **Facilità concreta** ([～やすい](grammar:grammar-g048-facile-da-fare)
+*   {{進|すす}}みやすい ➔ **Facilità concreta** ([～やすい](grammar:grammar-g048-facile-da-fare)
     si attacca alla base del verbo e significa *facile da fare*: qui avanzare
     diventa più semplice).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [ノーマル](term:term-v249-noomaru) in katakana è il tipo Normale dei Pokémon.
 Non leggerlo come un semplice "normale" generico del parlato italiano: in una
@@ -275,7 +277,7 @@ translation_it: >-
     *in questo mondo, per quanto riguarda questo mondo...*).
 *   `{{特別|とくべつ}}な {{存在|そんざい}}が` ➔ **Soggetto scoperto** (*una presenza
     speciale*; `が` la mette in evidenza come informazione nuova).
-*   `いるようだ` ➔ **Deduzione osservativa** ([～ようだ](grammar:grammar-g046-sembra-che-sembra)
+*   いるようだ ➔ **Deduzione osservativa** ([～ようだ](grammar:grammar-g046-sembra-che-sembra)
     dice che il parlante conclude *sembra esserci* da indizi, dati o apparenze).
 
 :::example_sentence
@@ -294,7 +296,7 @@ translation_it: >-
 *   `{{変|か}}わっている` ➔ **Risultato presente** (`{{変|か}}わる` in forma
     `-ている`: il rapporto è in uno stato cambiato).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [すでに](term:term-v252-sudeni) e [そうだね](term:term-e043-soudane) possono
 entrambi finire tradotti con parole italiane brevi come "già", ma funzionano in
@@ -337,10 +339,10 @@ translation_it: >-
     sorpresa*).
 *   `{{心配|しんぱい}}している` ➔ **Stato emotivo in corso** (`{{心配|しんぱい}}する`
     diventa `{{心配|しんぱい}}している`: si sta preoccupando).
-*   `よね` ➔ **Richiesta di accordo** ([～よね](grammar:grammar-g047-vero-no)
+*   よね ➔ **Richiesta di accordo** ([～よね](grammar:grammar-g047-vero-no)
     cerca conferma dall'interlocutore).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per ricordare [{{意外|いがい}}](term:term-v242-igai), pensa a una reazione tipo:
 *non me lo aspettavo da lui*. Non sta dicendo che l'evento è assurdo; sta

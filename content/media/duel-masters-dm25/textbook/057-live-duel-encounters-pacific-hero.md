@@ -27,14 +27,6 @@ sposta su un'altra creatura. Per leggerla bene devi seguire tre riferimenti:
 `{{自分|じぶん}}の{{他|ほか}}のクリーチャー`, `そのクリーチャー` e la condizione sui
 [コスト](term:term-cost)が[{{異|こと}}なる](term:term-kotonaru) element.
 
-:::image
-src: assets/cards/live-duel/pacific-hero.jpg
-alt: "Pacific Hero card."
-caption: >-
-  パシフィック・ヒーロー. La carta affianca [ジャストダイバー](term:term-justdiver) e
-  バラバラエティ{{3|さん}}: prima protegge se stessa quando entra, poi può dare lo
-  stesso tipo di protezione a un'altra creatura.
-:::
 
 ## Termini chiave
 
@@ -66,8 +58,18 @@ caption: >-
 
 - パシフィック・ヒーロー — nome della creatura Water/Merfolk
 - バラバラエティ{{3|さん}} — keyword che controlla almeno tre element con costi diversi
+- [{{出|で}}る](term:term-deru) — uscire / entrare in gioco
 
 ---
+
+:::image
+src: assets/cards/live-duel/pacific-hero.jpg
+alt: "Pacific Hero card."
+caption: >-
+  パシフィック・ヒーロー. La carta affianca [ジャストダイバー](term:term-justdiver) e
+  バラバラエティ{{3|さん}}: prima protegge se stessa quando entra, poi può dare lo
+  stesso tipo di protezione a un'altra creatura.
+:::
 
 ## 1. ジャストダイバー: evento di ingresso e finestra di protezione
 
@@ -98,7 +100,7 @@ reveal_mode: sentence
 #### 🗺️ Anatomia della frase
 
 *   [ジャストダイバー](term:term-justdiver) — **etichetta della procedura**: il nome introduce tutto ciò che sta tra parentesi, non solo una parola da tradurre.
-*   この[クリーチャー](term:term-creature)が[{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki) — **trigger di ingresso**: `が` marca la creatura che entra e `{{時|とき}}` trasforma quell'evento nel momento di attivazione.
+*   この[クリーチャー](term:term-creature)が[{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki) — **trigger di ingresso**: が marca la creatura che entra e {{時|とき}} trasforma quell'evento nel momento di attivazione.
 *   {{次|つぎ}}の[{{自分|じぶん}}](term:term-self)のターンのはじめまで — **limite temporale**: la protezione dura fino all'inizio del tuo prossimo turno.
 *   この[クリーチャー](term:term-creature)は — **topic protetto**: la frase parla proprio della creatura che porta il testo.
 
@@ -126,7 +128,7 @@ conta perché [{{選|えら}}ぶ](term:term-erabu) indica una selezione mirata,
 mentre [{{攻撃|こうげき}}](term:term-attack) indica la dichiarazione di un
 attacco.
 
-*   [{{相手|あいて}}](term:term-opponent)に{{選|えら}}ばれず usa `に` per marcare l'agente del passivo: il lato che non può scegliere è l'avversario. `{{選|えら}}ばれず` viene da `{{選|えら}}ばれる` più [～ず](grammar:grammar-zu), quindi non vuol dire "senza scegliere", ma "senza essere scelto".
+*   [{{相手|あいて}}](term:term-opponent)に{{選|えら}}ばれず usa に per marcare l'agente del passivo: il lato che non può scegliere è l'avversario. {{選|えら}}ばれず viene da {{選|えら}}ばれる più [～ず](grammar:grammar-zu), quindi non vuol dire "senza scegliere", ma "senza essere scelto".
 *   [{{攻撃|こうげき}}](term:term-attack)されない usa la negativa passiva normale. Non parla di scelta come bersaglio di effetto: parla dell'attacco come azione di combattimento che non può puntare quella creatura.
 *   La virgola dopo `{{選|えら}}ばれず` non apre una nuova condizione. Tiene legate due conseguenze parallele sotto la stessa durata appena dichiarata.
 
@@ -148,7 +150,7 @@ reveal_mode: sentence
 
 #### ⚖️ Contrasto operativo
 
-`{{選|えら}}ばれず` e [{{攻撃|こうげき}}](term:term-attack)されない proteggono da
+{{選|えら}}ばれず e [{{攻撃|こうげき}}](term:term-attack)されない proteggono da
 due canali diversi. Il primo blocca gli effetti che chiedono di scegliere
 quella creatura; il secondo blocca gli attacchi. Se un testo non sceglie e non
 attacca, questa frase da sola non lo descrive automaticamente.
@@ -188,8 +190,8 @@ reveal_mode: sentence
 
 *   `バラバラエティ{{3|さん}}` — **etichetta della keyword**: il numero appartiene al nome dell'abilità e anticipa la soglia nella parentesi.
 *   [{{自分|じぶん}}](term:term-self)の{{他|ほか}}の[クリーチャー](term:term-creature)が[{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki) — **evento protetto**: entra una tua altra creatura, non questa creatura.
-*   その[クリーチャー](term:term-creature)は — **referente ripreso**: `その` punta alla creatura appena entrata.
-*   [{{相手|あいて}}](term:term-opponent)に{{選|えら}}ばれず、[{{攻撃|こうげき}}](term:term-attack)されない — **stesso risultato protettivo**: la doppia negazione passiva viene trasferita alla creatura indicata da `その`.
+*   その[クリーチャー](term:term-creature)は — **referente ripreso**: その punta alla creatura appena entrata.
+*   [{{相手|あいて}}](term:term-opponent)に{{選|えら}}ばれず、[{{攻撃|こうげき}}](term:term-attack)されない — **stesso risultato protettivo**: la doppia negazione passiva viene trasferita alla creatura indicata da その.
 
 #### ⚖️ Contrasto operativo
 
@@ -204,12 +206,12 @@ La parentesi di バラバラエティ{{3|さん}} spiega quando パシフィッ�
 questa abilità. Prima costruisce il gruppo valido con
 [コスト](term:term-cost)が[{{異|こと}}なる](term:term-kotonaru)
 [{{自分|じぶん}}](term:term-self)のエレメント, poi lo conta con
-`{{3|みっ}}つ{{以上|いじょう}}`, infine usa [あれば](grammar:grammar-areba) per
+{{3|みっ}}つ{{以上|いじょう}}, infine usa [あれば](grammar:grammar-areba) per
 aprire la conseguenza.
 
 *   [コスト](term:term-cost)が[{{異|こと}}なる](term:term-kotonaru) non significa "costi alti" o "costi speciali". Significa che i valori non coincidono tra loro.
 *   `{{3|みっ}}つ{{以上|いじょう}}` conta la soglia richiesta: almeno tre element validi dopo il filtro dei costi diversi.
-*   この[クリーチャー](term:term-creature)にこの[{{能力|のうりょく}}](term:term-ability)を[{{与|あた}}える](term:term-ataeru) usa `に` per il destinatario e `を` per l'abilità conferita. Il verbo [{{与|あた}}える](term:term-ataeru) non attiva subito un nuovo evento: assegna una capacità a questa creatura.
+*   この[クリーチャー](term:term-creature)にこの[{{能力|のうりょく}}](term:term-ability)を[{{与|あた}}える](term:term-ataeru) usa に per il destinatario e を per l'abilità conferita. Il verbo [{{与|あた}}える](term:term-ataeru) non attiva subito un nuovo evento: assegna una capacità a questa creatura.
 
 :::example_sentence
 jp: >-
@@ -287,7 +289,7 @@ reveal_mode: sentence
 パシフィック・ヒーロー si legge bene quando non schiacci tutto sulla parola
 "protezione". [ジャストダイバー](term:term-justdiver) apre con
 [{{出|で}}た{{時|とき}}](grammar:grammar-toki), la durata arriva fino al prossimo
-inizio turno, [～ず](grammar:grammar-zu) separa `{{選|えら}}ばれず` dalla
+inizio turno, [～ず](grammar:grammar-zu) separa {{選|えら}}ばれず dalla
 negativa normale [{{攻撃|こうげき}}](term:term-attack)されない, e
 バラバラエティ{{3|さん}} aggiunge il controllo su
 [コスト](term:term-cost)が[{{異|こと}}なる](term:term-kotonaru). Seguendo questi

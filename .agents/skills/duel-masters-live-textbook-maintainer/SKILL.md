@@ -476,6 +476,16 @@ Practical card-selection rules:
 - Prefer existing semantic links like `[...](term:...)` and `[...](grammar:...)`
   when the entry already exists in body prose, captions, and structured blocks,
   but not inside frontmatter fields like `summary`.
+- In textbook inventories, keep the label, `—`, and the start of the gloss on
+  the same bullet line. Do not leave bullets where the dash starts a continuation
+  line.
+- Every term or grammar pattern listed in the inventory must be developed or
+  reused in the body with the same semantic link. Remove purely contextual labels
+  that do not teach a Japanese reading behavior.
+- Never put a Markdown semantic link inside backticks. Use raw Japanese code
+  spans only for unlinked fragments, or keep the semantic link outside code
+  formatting.
+- Place `:::image` only after the four inventories and the `---` separator.
 - If a semantic link points to an entry with a flashcard and the visible label
   contains kanji, annotate the link label itself with furigana everywhere it is
   learner-facing, especially inventories, first explanations, anatomy blocks,

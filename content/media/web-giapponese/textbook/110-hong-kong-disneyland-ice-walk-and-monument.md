@@ -2,7 +2,7 @@
 id: lesson-web-giapponese-hong-kong-disneyland-ice-walk-and-monument
 media_id: media-web-giapponese
 slug: 110-hong-kong-disneyland-ice-walk-and-monument
-title: Hong Kong Disneyland - アイスを食べながら
+title: "Dal gelato al monumento"
 order: 110
 segment_ref: hong-kong-disneyland
 difficulty: n4
@@ -68,9 +68,9 @@ src: assets/hong-kong-disneyland-ice-package.jpg
 alt: >-
   Foto di un gelato di Mickey con confezione giapponese e testo sotto.
 caption: >-
-  `パッケージに{{書|か}}いてある{{漢字|かんじ}}の{{意味|いみ}}は[なんだろう](grammar:grammar-nandarou)。`
+  パッケージに{{書|か}}いてある{{漢字|かんじ}}の{{意味|いみ}}は[なんだろう](grammar:grammar-nandarou)。
   apre una domanda interiore; subito dopo
-  `「ミッキーのチョコレートアイス」[だろうか](grammar:grammar-darou-ka)。`
+  「ミッキーのチョコレートアイス」[だろうか](grammar:grammar-darou-ka)。
   prova una possibile lettura.
 :::
 
@@ -89,7 +89,7 @@ translation_it: >-
     `〜てある`: qualcuno l'ha scritto e ora la scritta resta lì da leggere).
 *   `{{漢字|かんじ}}の{{意味|いみ}}` ➔ **Nucleo nominale** (`の` collega "kanji"
     e "significato": non "kanji e significato", ma "il significato dei kanji").
-*   `[なんだろう](grammar:grammar-nandarou)` ➔ **Domanda interiore**: il dubbio
+*   [なんだろう](grammar:grammar-nandarou) ➔ **Domanda interiore**: il dubbio
     è formulato a sé stessi, senza chiamare un interlocutore a rispondere.
 
 #### ⚖️ Contrasto operativo
@@ -123,7 +123,7 @@ translation_it: >-
 
 *   `「ミッキーのチョコレートアイス」` ➔ **Ipotesi proposta**: il contenuto tra
     virgolette è la possibile lettura della scritta.
-*   `[だろうか](grammar:grammar-darou-ka)` ➔ **Domanda ipotetica**: `だろう`
+*   [だろうか](grammar:grammar-darou-ka) ➔ **Domanda ipotetica**: だろう
     attenua l'affermazione, `か` la chiude come domanda.
 
 #### ⚖️ Contrasto operativo
@@ -149,7 +149,7 @@ alt: >-
   Foto dell'ingresso di Hong Kong Disneyland con due persone che camminano
   verso il parco.
 caption: >-
-  `パークの{{中|なか}}に{{入|はい}}る[{{直前|ちょくぜん}}](term:term-chokuzen)。`
+  パークの{{中|なか}}に{{入|はい}}る[{{直前|ちょくぜん}}](term:term-chokuzen)。
   colloca la foto nel momento immediatamente precedente all'ingresso.
 :::
 
@@ -164,7 +164,7 @@ translation_it: >-
 
 *   `アイスを` ➔ **Oggetto dell'azione secondaria**: il gelato è ciò che viene
     mangiato.
-*   `[{{食|た}}べながら](grammar:grammar-tabenagara)` ➔ **Azione simultanea**:
+*   [{{食|た}}べながら](grammar:grammar-tabenagara) ➔ **Azione simultanea**:
     `ながら` dice che mangiare continua in parallelo.
 *   `パークの{{中|なか}}に` ➔ **Direzione verso l'interno**: `の{{中|なか}}`
     restringe il luogo al "dentro" del parco, `に` marca il punto di arrivo.
@@ -197,12 +197,12 @@ translation_it: >-
 
 *   `パークの{{中|なか}}に{{入|はい}}る` ➔ **Evento di riferimento**: la frase
     verbale specifica quale azione sta per avvenire.
-*   `[{{直前|ちょくぜん}}](term:term-chokuzen)` ➔ **Tempo immediatamente
+*   [{{直前|ちょくぜん}}](term:term-chokuzen) ➔ **Tempo immediatamente
     precedente**: comprime il "prima" fino al margine dell'evento.
 
 #### 🧠 Gancio cognitivo
 
-In [{{直前|ちょくぜん}}](term:term-chokuzen), `{{直|ちょく}}` richiama l'idea di
+In [{{直前|ちょくぜん}}](term:term-chokuzen), {{直|ちょく}} richiama l'idea di
 "diretto" e `{{前|ぜん}}` quella di "prima / davanti". Come trucco mnemonico,
 immagina di essere direttamente davanti alla porta dell'evento: ancora fuori,
 ma a un passo dall'entrare.
@@ -221,7 +221,7 @@ src: assets/hong-kong-disneyland-monument-recent-design.jpg
 alt: >-
   Foto di un monumento dorato celebrativo con palloncini colorati nel parco.
 caption: >-
-  `このモニュメントはすごく[{{最近|さいきん}}っぽい](term:term-saikin-ppoi)デザイン[だと{{感|かん}}じる](grammar:grammar-da-to-kanjiru)。`
+  このモニュメントはすごく[{{最近|さいきん}}っぽい](term:term-saikin-ppoi)デザイン[だと{{感|かん}}じる](grammar:grammar-da-to-kanjiru)。
   trasforma l'impressione visiva in una frase di percezione.
 :::
 
@@ -239,7 +239,7 @@ translation_it: >-
 *   `すごく{{最近|さいきん}}っぽいデザイン` ➔ **Impressione qualificata**: `すごく`
     intensifica, `{{最近|さいきん}}っぽい` dà l'aria moderna, `デザイン` è il nome
     che riceve quella qualità.
-*   `[だと{{感|かん}}じる](grammar:grammar-da-to-kanjiru)` ➔ **Percezione
+*   [だと{{感|かん}}じる](grammar:grammar-da-to-kanjiru) ➔ **Percezione
     riportata**: `だ` chiude il blocco nominale, `と` lo incornicia come
     contenuto percepito, [{{感|かん}}じる](term:term-kanjiru) dice "lo sento /
     lo percepisco così".

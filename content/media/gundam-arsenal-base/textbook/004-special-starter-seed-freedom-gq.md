@@ -35,13 +35,13 @@ e PL.
 ## Termini chiave
 
 - [マイティーストライクフリーダムガンダム](term:term-mighty-strike-freedom-gundam) — MS lunga del lato SEED FREEDOM, tutta in katakana
-- [イモータルジャスティスガンダム](term:term-immortal-justice-gundam) — MS mobile in cui `ジャスティス` è il frammento riconoscibile
+- [イモータルジャスティスガンダム](term:term-immortal-justice-gundam) — MS mobile in cui ジャスティス è il frammento riconoscibile
 - [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom) — MS con variante dedicata a Lunamaria
 - [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu) — nome misto latino + katakana in parentesi
 - [{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085) — nome descrittivo con aggettivo giapponese e numero di versione
 - [キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne) — PL con due nomi coordinati dentro una sola label
 - [シン・アスカ](term:term-shinn-asuka) — PL senza parentesi, alias o doppio nome
-- [ルナマリア・ホーク](term:term-lunamaria-hawk) — PL richiamata direttamente da `{{専用機|せんようき}}`
+- [ルナマリア・ホーク](term:term-lunamaria-hawk) — PL richiamata direttamente da {{専用機|せんようき}}
 - [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu) — nome completo più soprannome in parentesi
 - [シュウジ・イトウ](term:term-shuji-itou) — PL lineare del lato GQ
 - [{{専用機|せんようき}}](term:term-dedicated-machine) — macchina dedicata a un pilota specifico
@@ -57,6 +57,7 @@ e PL.
 - [コスト](term:term-cost) — numero che decide quando una carta entra realisticamente in partita
 - [PLスキル](term:term-pl-skill) — riquadro dell'effetto principale del pilota
 - [リンクアビリティ](term:term-link-ability) — bonus di collegamento tra carte compatibili
+- [{{役割|やくわり}}](term:term-role) — ruolo tattico assegnato alla carta PL
 
 ## Pattern grammaticali chiave
 
@@ -105,20 +106,20 @@ semplici.
 src: assets/cards/starter-seed-freedom-gq-contact.webp
 alt: "Tavola con i retro delle 10 carte dello starter deck SPECIAL STARTER DECK SET [SEED FREEDOM & GQ], disposte in due righe miste di MS e PL."
 caption: >-
-  Tavola di riferimento del deck ufficiale `SPECIAL STARTER DECK SET [SEED
-  FREEDOM & GQ]`: le {{10|じゅう}} carte sono disposte in due righe miste. Il
+  Tavola di riferimento del deck ufficiale SPECIAL STARTER DECK SET [SEED
+  FREEDOM & GQ]: le {{10|じゅう}} carte sono disposte in due righe miste. Il
   primo gesto di lettura è separare MS e PL, poi confrontare [コスト](term:term-cost),
   tipo MS, ruolo PL e riquadri effetto.
 :::
 
-#### 🗺️ Anatomia del frame
+#### 🗺️ Anatomia della frase
 
-- `[tipo MS]` ➔ **come sta in campo la macchina**: [{{近距離|きんきょり}}](term:term-ms-type-near-range) cerca lo scontro ravvicinato, [{{遠距離|えんきょり}}](term:term-ms-type-long-range) lavora da lontano, [{{機動|きどう}}](term:term-ms-type-mobility) ruota verso la corsia utile.
-- `[{{役割|やくわり}} PL]` ➔ **che compito porta il pilota**: [{{殲滅|せんめつ}}](term:term-role-shoumetsu) rimuove unità, [{{制圧|せいあつ}}](term:term-role-seiatsu) preme su [{{拠点|きょてん}}](term:term-base) e [{{戦艦|せんかん}}](term:term-warship), [{{防衛|ぼうえい}}](term:term-role-bouei) protegge.
-- `[コスト](term:term-cost)` ➔ **quando entra davvero**: un {{2|に}} o {{3|さん}} si legge come apertura o stabilizzazione precoce; un {{7|なな}} chiede una finestra più preparata.
-- `[PLスキル](term:term-pl-skill)` e `[リンクアビリティ](term:term-link-ability)` ➔ **cosa aggiunge il pairing**: il primo appartiene al pilota, il secondo ti fa controllare se MS e PL stanno lavorando insieme.
+- [tipo MS] ➔ **come sta in campo la macchina**: [{{近距離|きんきょり}}](term:term-ms-type-near-range) cerca lo scontro ravvicinato, [{{遠距離|えんきょり}}](term:term-ms-type-long-range) lavora da lontano, [{{機動|きどう}}](term:term-ms-type-mobility) ruota verso la corsia utile.
+- [{{役割|やくわり}} PL] ➔ **che compito porta il pilota**: [{{殲滅|せんめつ}}](term:term-role-shoumetsu) rimuove unità, [{{制圧|せいあつ}}](term:term-role-seiatsu) preme su [{{拠点|きょてん}}](term:term-base) e [{{戦艦|せんかん}}](term:term-warship), [{{防衛|ぼうえい}}](term:term-role-bouei) protegge.
+- [コスト](term:term-cost) ➔ **quando entra davvero**: un {{2|に}} o {{3|さん}} si legge come apertura o stabilizzazione precoce; un {{7|なな}} chiede una finestra più preparata.
+- [PLスキル](term:term-pl-skill) e [リンクアビリティ](term:term-link-ability) ➔ **cosa aggiunge il pairing**: il primo appartiene al pilota, il secondo ti fa controllare se MS e PL stanno lavorando insieme.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{近距離|きんきょり}}](term:term-ms-type-near-range),
 [{{遠距離|えんきょり}}](term:term-ms-type-long-range) e
@@ -128,7 +129,7 @@ MS. [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
 [{{防衛|ぼうえい}}](term:term-role-bouei) descrivono il lavoro della PL. Se li
 leggi come sinonimi di "tipo forte", perdi il primo filtro del frame.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Pensa al frame come a una frase senza verbo: "questa MS combatte così; questa
 PL lavora così; questo costo dice quando". Prima leggi la struttura, poi il
@@ -144,9 +145,9 @@ macchina associata a un pilota.
 
 ### A. Katakana lungo: non cercare una sola traduzione
 
-- [マイティーストライクフリーダムガンダム](term:term-mighty-strike-freedom-gundam) si legge meglio come `マイティー / ストライク / フリーダム / ガンダム`. Non serve "tradurre" tutto: devi riconoscere i segmenti e capire che il frame lo presenta come MS [{{遠距離|えんきょり}}](term:term-ms-type-long-range) a [コスト](term:term-cost) {{7|なな}}.
-- [イモータルジャスティスガンダム](term:term-immortal-justice-gundam) contiene `ジャスティス`, un blocco già riconoscibile se conosci SEED. Il frame lo sposta però dalla memoria del nome alla funzione: [{{機動|きどう}}](term:term-ms-type-mobility) e [コスト](term:term-cost) {{5|ご}} dicono "pezzo mobile intermedio", non "finisher".
-- [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu) alterna alfabeto latino e katakana. La parentesi `オメガ・サイコミュ` non è un commento esterno: è parte dell'identità da leggere insieme al nome base.
+- [マイティーストライクフリーダムガンダム](term:term-mighty-strike-freedom-gundam) si legge meglio come マイティー / ストライク / フリーダム / ガンダム. Non serve "tradurre" tutto: devi riconoscere i segmenti e capire che il frame lo presenta come MS [{{遠距離|えんきょり}}](term:term-ms-type-long-range) a [コスト](term:term-cost) {{7|なな}}.
+- [イモータルジャスティスガンダム](term:term-immortal-justice-gundam) contiene ジャスティス, un blocco già riconoscibile se conosci SEED. Il frame lo sposta però dalla memoria del nome alla funzione: [{{機動|きどう}}](term:term-ms-type-mobility) e [コスト](term:term-cost) {{5|ご}} dicono "pezzo mobile intermedio", non "finisher".
+- [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu) alterna alfabeto latino e katakana. La parentesi オメガ・サイコミュ non è un commento esterno: è parte dell'identità da leggere insieme al nome base.
 
 ### B. Parentesi: alias, versione o specificazione
 
@@ -176,7 +177,7 @@ translation_it: >-
 - `{{呼|よ}}び{{名|な}}を` ➔ **oggetto indicato**: `を` marca ciò che la parentesi comunica.
 - `{{示|しめ}}します` ➔ **verbo esplicativo cortese**: "indica / mostra", utile per leggere label e riquadri.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 La parentesi non significa sempre "variante". In `マチュ` è un alias, in
 `オメガ・サイコミュ` è una specificazione, in `{{0085|ぜろぜろはちご}}` è un
@@ -188,7 +189,7 @@ seconda del contenuto.
 [A＆B](grammar:grammar-a-and-b) e
 [～{{専用機|せんようき}}](grammar:grammar-senyouki) fanno entrambi vedere una
 relazione, ma non la costruiscono nello stesso modo.
-[キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne) usa `＆`
+[キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne) usa ＆
 per coordinare due nomi dentro una singola PL. Non occupa due slot: la label
 intera è una carta sola.
 [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom)
@@ -208,7 +209,7 @@ translation_it: >-
 - `{{対応|たいおう}}するPLを` ➔ **oggetto da cercare**: `{{対応|たいおう}}する` significa "corrispondente", non genericamente "forte".
 - `{{探|さが}}します` ➔ **azione pratica**: cerchi nel gruppo PL il pilota indicato dal nome della MS.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 `{{専用機|せんようき}}` è come una freccia scritta nel nome. Non ti dà solo lore:
 punta verso la PL che rende naturale il pairing.
@@ -242,7 +243,7 @@ translation_it: >-
 - `{{前線|ぜんせん}}で` ➔ **luogo operativo**: la funzione si vede nella zona dello scontro.
 - `{{敵|てき}}ユニットをどかす{{役|やく}}` ➔ **ruolo concreto**: togliere di mezzo unità nemiche, non solo "fare danno".
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{制圧|せいあつ}}](term:term-role-seiatsu) non è un modo elegante per dire
 "attacco". Il kanji `{{圧|あつ}}` porta l'idea di pressione: nel frame PL
@@ -255,7 +256,7 @@ lo nega proteggendo la linea.
 
 Una volta capita la grammatica del frame, le singole carte non sono dieci
 eccezioni. Ogni carta ti chiede lo stesso movimento: identifica il nome,
-separa parentesi o `＆`, controlla tipo o ruolo, poi guarda [コスト](term:term-cost),
+separa parentesi o ＆, controlla tipo o ruolo, poi guarda [コスト](term:term-cost),
 [PLスキル](term:term-pl-skill) e [リンクアビリティ](term:term-link-ability).
 
 ### マイティーストライクフリーダムガンダム
@@ -283,7 +284,7 @@ src: assets/cards/starter-seed-freedom-gq/02-immortal-justice.webp
 alt: "Carta fronte e retro di イモータルジャスティスガンダム nello starter deck SEED FREEDOM & GQ."
 caption: >-
   [イモータルジャスティスガンダム](term:term-immortal-justice-gundam):
-  il frame affianca `ジャスティス`, [{{機動|きどう}}](term:term-ms-type-mobility)
+  il frame affianca ジャスティス, [{{機動|きどう}}](term:term-ms-type-mobility)
   e [コスト](term:term-cost) medio.
 :::
 
@@ -361,7 +362,7 @@ caption: >-
   `＆` unisce due nomi dentro una singola PL.
 :::
 
-Il segno [A＆B](grammar:grammar-a-and-b) coordina `キラ・ヤマト` e
+Il segno [A＆B](grammar:grammar-a-and-b) coordina キラ・ヤマト e
 `ラクス・クライン`, ma la carta resta una sola PL. Questa distinzione conta
 perché il frame non duplica ruolo o costo: leggi una sola riga con
 [{{殲滅|せんめつ}}](term:term-role-shoumetsu) e
@@ -485,7 +486,7 @@ translation_it: >-
 
 Lo starter `SEED FREEDOM & GQ` diventa leggibile quando non insegui subito il
 nome più lungo. Prima separi MS e PL, poi leggi tipo, ruolo e
-[コスト](term:term-cost), infine interpreti parentesi, `＆` e
+[コスト](term:term-cost), infine interpreti parentesi, ＆ e
 [{{専用機|せんようき}}](term:term-dedicated-machine). A quel punto anche nomi
 molto diversi tra loro, da [マイティーストライクフリーダムガンダム](term:term-mighty-strike-freedom-gundam)
 a [{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085),

@@ -33,9 +33,9 @@ Il giapponese di queste scene alterna parole molto concrete: un anno scolastico,
 
 ## Espressioni ricorrenti
 
-- `[{{話|はなし}}](term:term-anki-l02-hanashi)がある` — c'è qualcosa da dire / devo parlarti
-- `AをBと[{{呼|よ}}ぶ](term:term-anki-l02-yobu)` — chiamare A con il nome B
-- `[{{何|なに}}か](term:term-anki-l02-nanika)が...` — qualcosa accade, appare o si muove
+- [{{話|はなし}}](term:term-anki-l02-hanashi)がある — c'è qualcosa da dire / devo parlarti
+- AをBと[{{呼|よ}}ぶ](term:term-anki-l02-yobu) — chiamare A con il nome B
+- [{{何|なに}}か](term:term-anki-l02-nanika)が... — qualcosa accade, appare o si muove
 
 ## Pattern grammaticali chiave
 
@@ -55,9 +55,9 @@ Il giapponese di queste scene alterna parole molto concrete: un anno scolastico,
 
 Quando l'Accademia parla di percorso scolastico, [{{年|ねん}}](term:term-anki-l02-nen) non indica l'età di qualcuno: mette la scena dentro un arco di tempo, un anno di scuola o un livello scolastico. È una parola piccola, ma cambia la cornice: non stai leggendo un compleanno, stai leggendo organizzazione, calendario e appartenenza all'Accademia.
 
-- [{{年|ねん}}](term:term-anki-l02-nen) può funzionare da nome semplice, "anno", oppure entrare in composti numerati come `{{1年|いちねん}}` e `{{2年|にねん}}`. Nel contesto scolastico di Paldea, `{{1年|いちねん}}` può suonare come "primo anno" o "studente del primo anno", a seconda della frase. Prima di tradurlo come durata, guarda se intorno ci sono parole scolastiche come `アカデミー`, `{{授業|じゅぎょう}}` o `{{課外|かがい}}{{授業|じゅぎょう}}`.
-- [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi) unisce `{{宝|たから}}` (tesoro) e `{{探|さが}}し`, forma nominale legata a `{{探|さが}}す` (cercare). Nel gioco non restringe il senso a uno scrigno o a un oggetto nascosto: è il nome della grande attività libera che trasforma Paldea in un percorso personale.
-- [{{読|よ}}む](term:term-anki-l02-yomu) entra naturalmente quando il gioco ti mette davanti a cartelli, libri, testi scolastici o spiegazioni. L'oggetto letto prende [を](grammar:grammar-g033-marca-l-oggetto-diretto): `{{本|ほん}}を{{読|よ}}む`, `{{説明|せつめい}}を{{読|よ}}む`, `{{掲示|けいじ}}を{{読|よ}}む`. Non è "capire" in astratto: è l'azione concreta di passare attraverso un testo scritto.
+- [{{年|ねん}}](term:term-anki-l02-nen) può funzionare da nome semplice, "anno", oppure entrare in composti numerati come {{1年|いちねん}} e {{2年|にねん}}. Nel contesto scolastico di Paldea, {{1年|いちねん}} può suonare come "primo anno" o "studente del primo anno", a seconda della frase. Prima di tradurlo come durata, guarda se intorno ci sono parole scolastiche come アカデミー, {{授業|じゅぎょう}} o {{課外|かがい}}{{授業|じゅぎょう}}.
+- [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi) unisce {{宝|たから}} (tesoro) e {{探|さが}}し, forma nominale legata a {{探|さが}}す (cercare). Nel gioco non restringe il senso a uno scrigno o a un oggetto nascosto: è il nome della grande attività libera che trasforma Paldea in un percorso personale.
+- [{{読|よ}}む](term:term-anki-l02-yomu) entra naturalmente quando il gioco ti mette davanti a cartelli, libri, testi scolastici o spiegazioni. L'oggetto letto prende [を](grammar:grammar-g033-marca-l-oggetto-diretto): {{本|ほん}}を{{読|よ}}む, {{説明|せつめい}}を{{読|よ}}む, {{掲示|けいじ}}を{{読|よ}}む. Non è "capire" in astratto: è l'azione concreta di passare attraverso un testo scritto.
 
 :::example_sentence
 jp: >-
@@ -73,23 +73,23 @@ translation_it: >-
 *   `{{宝|たから}}{{探|さが}}しが` ➔ **Soggetto che parte** (`が` marca ciò che comincia).
 *   `{{始|はじ}}まる` ➔ **Inizio intransitivo** (la cosa "inizia"; non c'è qualcuno che la avvia esplicitamente nella frase).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{年|ねん}}](term:term-anki-l02-nen) e `{{歳|さい}}` non coprono lo stesso campo. `{{歳|さい}}` conta l'età di persone o creature; [{{年|ねん}}](term:term-anki-l02-nen) parla di anni come unità di tempo, anni scolastici o periodi. Se leggi `{{1年|いちねん}}` accanto ad Accademia e lezioni, pensa prima al contesto scolastico, non alla domanda "quanti anni ha?".
+[{{年|ねん}}](term:term-anki-l02-nen) e {{歳|さい}} non coprono lo stesso campo. {{歳|さい}} conta l'età di persone o creature; [{{年|ねん}}](term:term-anki-l02-nen) parla di anni come unità di tempo, anni scolastici o periodi. Se leggi {{1年|いちねん}} accanto ad Accademia e lezioni, pensa prima al contesto scolastico, non alla domanda "quanti anni ha?".
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi), immagina due pezzi messi in fila: `{{宝|たから}}` è il tesoro, `{{探|さが}}し` è la ricerca. Il trucco utile è non fermarsi al "tesoro-oggetto": a Paldea il tesoro può essere un incontro, una route, una scelta o una scoperta personale.
+Per [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi), immagina due pezzi messi in fila: {{宝|たから}} è il tesoro, {{探|さが}}し è la ricerca. Il trucco utile è non fermarsi al "tesoro-oggetto": a Paldea il tesoro può essere un incontro, una route, una scelta o una scoperta personale.
 
 ---
 
 ## 2. Grande Voragine e Area Zero: quando un luogo diventa segnale narrativo
 
-La mappa di Paldea ha luoghi che funzionano come semplici destinazioni e luoghi che portano con sé una promessa narrativa. [{{大|おお}}{{穴|あな}}](term:term-v068-ooana) appartiene al secondo gruppo: `{{大|おお}}` dà la grandezza, `{{穴|あな}}` dà l'idea di buco o cavità, e insieme formano la "grande voragine" che domina il centro della regione.
+La mappa di Paldea ha luoghi che funzionano come semplici destinazioni e luoghi che portano con sé una promessa narrativa. [{{大|おお}}{{穴|あな}}](term:term-v068-ooana) appartiene al secondo gruppo: {{大|おお}} dà la grandezza, {{穴|あな}} dà l'idea di buco o cavità, e insieme formano la "grande voragine" che domina il centro della regione.
 
-- [{{大|おお}}{{穴|あな}}](term:term-v068-ooana) è leggibile anche prima di conoscere tutta la trama: il composto ti dice già che non è una città, una stanza o una route normale. Quando compare con `パルデアの`, il dialogo stringe il riferimento sulla Grande Voragine di Paldea, non su un qualunque cratere.
+- [{{大|おお}}{{穴|あな}}](term:term-v068-ooana) è leggibile anche prima di conoscere tutta la trama: il composto ti dice già che non è una città, una stanza o una route normale. Quando compare con パルデアの, il dialogo stringe il riferimento sulla Grande Voragine di Paldea, non su un qualunque cratere.
 - [エリアゼロ](term:term-v022-eriazero) è un nome in katakana e numeri, quindi sembra una semplice etichetta tecnica. Nel gioco, però, richiama la grande zona centrale della storia: quando appare, la scena si carica di mistero, ricerca e rivelazione.
-- [へ](grammar:grammar-g032-verso) trasforma questi luoghi in mete. In `エリアゼロへ`, la frase non sta ancora dicendo cosa succede lì: sta disegnando la direzione del movimento. Questo è molto diverso da `で`, che marcerebbe il luogo in cui un'azione avviene.
+- [へ](grammar:grammar-g032-verso) trasforma questi luoghi in mete. In エリアゼロへ, la frase non sta ancora dicendo cosa succede lì: sta disegnando la direzione del movimento. Questo è molto diverso da で, che marcerebbe il luogo in cui un'azione avviene.
 
 :::example_sentence
 jp: >-
@@ -101,12 +101,12 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `パルデアの` ➔ **Specificazione** (`の` restringe la voragine a quella di Paldea).
-*   `{{大|おお}}{{穴|あな}}へ` ➔ **Meta orientata** ([へ](grammar:grammar-g032-verso) indica la direzione verso il luogo).
+*   {{大|おお}}{{穴|あな}}へ ➔ **Meta orientata** ([へ](grammar:grammar-g032-verso) indica la direzione verso il luogo).
 *   `{{行|い}}く` ➔ **Movimento** (il verbo completa la freccia disegnata da `へ`).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`{{大|おお}}{{穴|あな}}へ{{行|い}}く` e `{{大|おお}}{{穴|あな}}で{{読|よ}}む` non raccontano lo stesso rapporto con il luogo. Con `へ`, la frase ti manda verso la meta; con `で`, collocherebbe un'azione dentro o presso quel luogo. Quando leggi una destinazione importante come [{{大|おお}}{{穴|あな}}](term:term-v068-ooana) o [エリアゼロ](term:term-v022-eriazero), la particella decide se sei in viaggio o se l'azione è già ambientata lì.
+{{大|おお}}{{穴|あな}}へ{{行|い}}く e {{大|おお}}{{穴|あな}}で{{読|よ}}む non raccontano lo stesso rapporto con il luogo. Con へ, la frase ti manda verso la meta; con で, collocherebbe un'azione dentro o presso quel luogo. Quando leggi una destinazione importante come [{{大|おお}}{{穴|あな}}](term:term-v068-ooana) o [エリアゼロ](term:term-v022-eriazero), la particella decide se sei in viaggio o se l'azione è già ambientata lì.
 
 ---
 
@@ -114,9 +114,9 @@ translation_it: >-
 
 Le scene di *Scarlet & Violet* non avanzano solo perché qualcuno combatte o si sposta. Avanzano anche perché qualcuno legge una spiegazione, chiama una persona con un nome, racconta una storia o chiede di parlare. Qui la differenza tra [{{話|はなし}}](term:term-anki-l02-hanashi) e [{{話|はな}}す](term:term-anki-l02-hanasu) è decisiva.
 
-- [{{呼|よ}}ぶ](term:term-anki-l02-yobu) può essere il semplice "chiamare" qualcuno, ma nei dialoghi serve spesso a dare o confermare un nome. La struttura `AをBと{{呼|よ}}ぶ` si legge "chiamare A B": `を` marca la persona o cosa chiamata, `と` introduce il nome usato.
-- [{{話|はなし}}](term:term-anki-l02-hanashi) è il contenuto: discorso, racconto, faccenda, cosa da dire. In `{{話|はなし}}がある`, il giapponese dice letteralmente "c'è un discorso", ma in scena suona come "devo parlarti" o "c'è una questione da affrontare".
-- [{{話|はな}}す](term:term-anki-l02-hanasu) è invece il verbo dell'atto comunicativo. Con `と` indica parlare con qualcuno in modo reciproco; con `に` può indicare parlare a qualcuno, rivolgersi a lui. Non è identico a `{{言|い}}う`, che mette più peso sul dire una frase o affermare un contenuto.
+- [{{呼|よ}}ぶ](term:term-anki-l02-yobu) può essere il semplice "chiamare" qualcuno, ma nei dialoghi serve spesso a dare o confermare un nome. La struttura AをBと{{呼|よ}}ぶ si legge "chiamare A B": を marca la persona o cosa chiamata, と introduce il nome usato.
+- [{{話|はなし}}](term:term-anki-l02-hanashi) è il contenuto: discorso, racconto, faccenda, cosa da dire. In {{話|はなし}}がある, il giapponese dice letteralmente "c'è un discorso", ma in scena suona come "devo parlarti" o "c'è una questione da affrontare".
+- [{{話|はな}}す](term:term-anki-l02-hanasu) è invece il verbo dell'atto comunicativo. Con と indica parlare con qualcuno in modo reciproco; con に può indicare parlare a qualcuno, rivolgersi a lui. Non è identico a {{言|い}}う, che mette più peso sul dire una frase o affermare un contenuto.
 - [{{読|よ}}む](term:term-anki-l02-yomu) completa il lato scritto del dialogo: quando una lavagna, un libro o un testo spiega la storia di Paldea, il gioco non ti chiede solo di "sapere" qualcosa, ma di leggere un oggetto testuale marcato da [を](grammar:grammar-g033-marca-l-oggetto-diretto).
 
 :::example_sentence
@@ -128,18 +128,18 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `みんなは` ➔ **Tema collettivo** ([は](grammar:grammar-g031-marca-il-tema) presenta "tutti" come punto di partenza della frase).
-*   `わたしの ことを` ➔ **Persona chiamata** (`こと` trasforma "io" in "la cosa/persona che mi riguarda"; [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che riceve il nome).
+*   みんなは ➔ **Tema collettivo** ([は](grammar:grammar-g031-marca-il-tema) presenta "tutti" come punto di partenza della frase).
+*   わたしの ことを ➔ **Persona chiamata** (こと trasforma "io" in "la cosa/persona che mi riguarda"; [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che riceve il nome).
 *   `ネモと` ➔ **Nome assegnato** (`と` introduce il nome con cui viene chiamata).
 *   `{{呼|よ}}ぶの` ➔ **Chiamare / denominare** (qui non è solo gridare verso qualcuno, ma chiamare una persona con un nome).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{話|はなし}}](term:term-anki-l02-hanashi) è una cosa che esiste o viene raccontata; [{{話|はな}}す](term:term-anki-l02-hanasu) è l'azione di parlare. `{{話|はなし}}がある` non significa "parlare esiste" in italiano naturale: significa che c'è un discorso da fare. `ネモと{{話|はな}}す`, invece, descrive l'atto di parlare con Nemona.
+[{{話|はなし}}](term:term-anki-l02-hanashi) è una cosa che esiste o viene raccontata; [{{話|はな}}す](term:term-anki-l02-hanasu) è l'azione di parlare. {{話|はなし}}がある non significa "parlare esiste" in italiano naturale: significa che c'è un discorso da fare. ネモと{{話|はな}}す, invece, descrive l'atto di parlare con Nemona.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per separare [{{話|はなし}}](term:term-anki-l02-hanashi) e [{{話|はな}}す](term:term-anki-l02-hanasu), pensa al finale: `-し` chiude il sostantivo, cioè "il discorso"; `-す` muove il verbo, cioè "parlare". È un trucco di memoria pratico, non una spiegazione etimologica completa.
+Per separare [{{話|はなし}}](term:term-anki-l02-hanashi) e [{{話|はな}}す](term:term-anki-l02-hanasu), pensa al finale: -し chiude il sostantivo, cioè "il discorso"; -す muove il verbo, cioè "parlare". È un trucco di memoria pratico, non una spiegazione etimologica completa.
 
 ---
 
@@ -147,9 +147,9 @@ Per separare [{{話|はなし}}](term:term-anki-l02-hanashi) e [{{話|はな}}�
 
 Quando la scena si fa meno scolastica e più misteriosa, il giapponese spesso smette di nominare subito tutto. Entra [{{何|なに}}か](term:term-anki-l02-nanika), "qualcosa", e il testo lascia che sia la percezione a guidare la lettura.
 
-- [{{何|なに}}か](term:term-anki-l02-nanika) si comporta come un sostantivo indefinito. Può prendere `が`, `を` o `の`, ma nel parlato certe particelle possono cadere quando il contesto è chiaro. In una scena d'esplorazione, `{{何|なに}}かが{{動|うご}}いた` non identifica ancora il soggetto: ti dice solo che qualcosa si è mosso.
-- [{{感|かん}}じる](term:term-anki-l02-kanjiru) non è il verbo normale per "sentire un suono". Per quello ti aspetteresti `{{聞|き}}く` o `{{聞|き}}こえる`. [{{感|かん}}じる](term:term-anki-l02-kanjiru) lavora meglio con impressioni, presenze, atmosfere e stati interiori: in Area Zero o davanti a un Pokémon misterioso, sposta il tono verso la percezione.
-- [{{少|すこ}}し](term:term-anki-l02-sukoshi) può indicare una quantità piccola, un breve tempo o una sfumatura attenuata. In `{{少|すこ}}し{{待|ま}}って`, ammorbidisce la richiesta; in `{{少|すこ}}し{{感|かん}}じる`, riduce l'intensità della percezione. Non è solo "poco": spesso è un modo per non rendere la frase troppo netta.
+- [{{何|なに}}か](term:term-anki-l02-nanika) si comporta come un sostantivo indefinito. Può prendere が, を o の, ma nel parlato certe particelle possono cadere quando il contesto è chiaro. In una scena d'esplorazione, {{何|なに}}かが{{動|うご}}いた non identifica ancora il soggetto: ti dice solo che qualcosa si è mosso.
+- [{{感|かん}}じる](term:term-anki-l02-kanjiru) non è il verbo normale per "sentire un suono". Per quello ti aspetteresti {{聞|き}}く o {{聞|き}}こえる. [{{感|かん}}じる](term:term-anki-l02-kanjiru) lavora meglio con impressioni, presenze, atmosfere e stati interiori: in Area Zero o davanti a un Pokémon misterioso, sposta il tono verso la percezione.
+- [{{少|すこ}}し](term:term-anki-l02-sukoshi) può indicare una quantità piccola, un breve tempo o una sfumatura attenuata. In {{少|すこ}}し{{待|ま}}って, ammorbidisce la richiesta; in {{少|すこ}}し{{感|かん}}じる, riduce l'intensità della percezione. Non è solo "poco": spesso è un modo per non rendere la frase troppo netta.
 
 :::example_sentence
 jp: >-
@@ -161,17 +161,17 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `この {{奥|おく}}から` ➔ **Origine della percezione** (`から` indica da dove arriva la sensazione).
-*   `{{何|なに}}かの {{気|け}}{{配|はい}}を` ➔ **Oggetto percepito** (`{{何|なに}}かの` rende la presenza indefinita; [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene percepito).
+*   {{何|なに}}かの {{気|け}}{{配|はい}}を ➔ **Oggetto percepito** ({{何|なに}}かの rende la presenza indefinita; [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene percepito).
 *   `{{少|すこ}}し` ➔ **Misura attenuata** (la percezione c'è, ma non viene presentata come piena o sicura).
 *   `{{感|かん}}じる` ➔ **Percezione interna** (non ascoltare o vedere: avvertire una presenza, un'atmosfera o una sensazione).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`{{音|おと}}を{{聞|き}}く` è sentire/ascoltare un suono; `{{姿|すがた}}を{{見|み}}る` è vedere una forma; `{{気|け}}{{配|はい}}を{{感|かん}}じる` è percepire una presenza. Se il gioco usa [{{感|かん}}じる](term:term-anki-l02-kanjiru), sta lasciando spazio a impressione, mistero o intuizione, non solo a un dato sensoriale diretto.
+{{音|おと}}を{{聞|き}}く è sentire/ascoltare un suono; {{姿|すがた}}を{{見|み}}る è vedere una forma; {{気|け}}{{配|はい}}を{{感|かん}}じる è percepire una presenza. Se il gioco usa [{{感|かん}}じる](term:term-anki-l02-kanjiru), sta lasciando spazio a impressione, mistero o intuizione, non solo a un dato sensoriale diretto.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [{{少|すこ}}し](term:term-anki-l02-sukoshi), immagina una mano che abbassa il volume della frase. `{{少|すこ}}し{{待|ま}}って` non è un ordine duro come "aspetta"; suona più come "aspetta un attimo". Lo stesso abbassamento funziona con emozioni e percezioni.
+Per [{{少|すこ}}し](term:term-anki-l02-sukoshi), immagina una mano che abbassa il volume della frase. {{少|すこ}}し{{待|ま}}って non è un ordine duro come "aspetta"; suona più come "aspetta un attimo". Lo stesso abbassamento funziona con emozioni e percezioni.
 
 ---
 

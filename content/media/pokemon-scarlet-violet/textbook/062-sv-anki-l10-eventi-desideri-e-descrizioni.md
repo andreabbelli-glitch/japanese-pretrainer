@@ -55,14 +55,16 @@ Il giapponese di queste situazioni non lavora per parole isolate. [{{先|さき}
 
 ---
 
+[ジムテスト](term:term-v038-jimutesuto) è una prova preliminare, non ancora la palestra in sé; [エリアゼロ](term:term-v022-eriazero) è invece il luogo narrativo che dà peso al viaggio.
+
 ## 1. Oggetti, luoghi e materiali che fissano la scena
 
 Quando una battuta nomina una rivista, un'opera, una sede o un mercato, il testo sta prima di tutto restringendo il campo. Prima ancora dell'azione, ti dice se devi immaginare un oggetto consultabile in Accademia, un risultato creativo, un'area allestita per una prova o un sistema di scambio.
 
-*   [{{雑|ざっ}}{{誌|し}}](term:term-anki-l10-zasshi) indica una rivista o pubblicazione periodica, non un libro qualunque. In Accademia può comparire insieme a オカルト o ad altri temi da consultare: `オカルト{{雑|ざっ}}{{誌|し}}` ti fa cercare mentalmente un periodico esposto, letto o citato, non una materia scolastica.
-*   [{{作|さく}}{{品|ひん}}](term:term-anki-l10-sakuhin) unisce `{{作|さく}}` "creazione" e `{{品|ひん}}` "oggetto, prodotto". Davanti alle opere di コルサ o nelle lezioni d'arte, la parola punta al risultato finito: una scultura, un lavoro degli studenti, qualcosa che può essere osservato e valutato.
-*   [{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) contiene `{{会|かい}}` "riunione, evento" e `{{場|じょう}}` "luogo". Con `[evento]の {{会|かい}}{{場|じょう}}`, la particella `の` non aggiunge solo possesso: aggancia la sede all'evento specifico. `ジムテストの {{会|かい}}{{場|じょう}}` è quindi l'area della prova, non un punto qualunque della città.
-*   [{{市|し}}{{場|じょう}}](term:term-anki-l10-shijou) legge il mercato come ambito generale: prezzi, circolazione, disponibilità di oggetti. Quando il gioco parla del mercato fisico di una località, può emergere la lettura `いちば`; [{{市|し}}{{場|じょう}}](term:term-anki-l10-shijou) suona più astratto o economico.
+*   [{{雑|ざっ}}{{誌|し}}](term:term-anki-l10-zasshi) indica una rivista o pubblicazione periodica, non un libro qualunque. In Accademia può comparire insieme a オカルト o ad altri temi da consultare: オカルト{{雑|ざっ}}{{誌|し}} ti fa cercare mentalmente un periodico esposto, letto o citato, non una materia scolastica.
+*   [{{作|さく}}{{品|ひん}}](term:term-anki-l10-sakuhin) unisce {{作|さく}} "creazione" e {{品|ひん}} "oggetto, prodotto". Davanti alle opere di コルサ o nelle lezioni d'arte, la parola punta al risultato finito: una scultura, un lavoro degli studenti, qualcosa che può essere osservato e valutato.
+*   [{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) contiene {{会|かい}} "riunione, evento" e {{場|じょう}} "luogo". Con [evento]の {{会|かい}}{{場|じょう}}, la particella の non aggiunge solo possesso: aggancia la sede all'evento specifico. ジムテストの {{会|かい}}{{場|じょう}} è quindi l'area della prova, non un punto qualunque della città.
+*   [{{市|し}}{{場|じょう}}](term:term-anki-l10-shijou) legge il mercato come ambito generale: prezzi, circolazione, disponibilità di oggetti. Quando il gioco parla del mercato fisico di una località, può emergere la lettura いちば; [{{市|し}}{{場|じょう}}](term:term-anki-l10-shijou) suona più astratto o economico.
 
 :::example_sentence
 jp: >-
@@ -79,7 +81,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) non equivale a `{{場|ば}}{{所|しょ}}` in modo neutro. `{{場|ば}}{{所|しょ}}` può essere qualunque posto; [{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) presuppone un evento, una prova o un raduno organizzato.
+[{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) non equivale a {{場|ば}}{{所|しょ}} in modo neutro. {{場|ば}}{{所|しょ}} può essere qualunque posto; [{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) presuppone un evento, una prova o un raduno organizzato.
 
 :::example_sentence
 jp: >-
@@ -102,8 +104,8 @@ Per [{{作|さく}}{{品|ひん}}](term:term-anki-l10-sakuhin), immagina un ogge
 
 Quando il dialogo passa da "dove siamo?" a "che cosa è appena successo?" o "che cosa vuole qualcuno?", cambiano i segnali grammaticali. [{{先|さき}}ほど](term:term-anki-l10-sakihodo) aggiunge registro al tempo; [{{欲|ほ}}しい](term:term-anki-l10-hoshii) aggiunge punto di vista al desiderio.
 
-*   [{{先|さき}}ほど](term:term-anki-l10-sakihodo) è la versione più educata di `さっき`: significa "poco fa", ma non ha il tono casuale di una battuta tra amici. In bocca a insegnanti, staff o annunci dell'Accademia, prepara un evento già avvenuto e mantiene la distanza cortese.
-*   [{{欲|ほ}}しい](term:term-anki-l10-hoshii) non si comporta come il verbo italiano "volere". È un aggettivo in `い`: la cosa desiderata diventa soggetto grammaticale e prende `が`. In `きのみが {{欲|ほ}}しい`, il giapponese non costruisce "io voglio la bacca" con un oggetto diretto; costruisce "la bacca è desiderabile" dal punto di vista del parlante.
+*   [{{先|さき}}ほど](term:term-anki-l10-sakihodo) è la versione più educata di さっき: significa "poco fa", ma non ha il tono casuale di una battuta tra amici. In bocca a insegnanti, staff o annunci dell'Accademia, prepara un evento già avvenuto e mantiene la distanza cortese.
+*   [{{欲|ほ}}しい](term:term-anki-l10-hoshii) non si comporta come il verbo italiano "volere". È un aggettivo in い: la cosa desiderata diventa soggetto grammaticale e prende が. In きのみが {{欲|ほ}}しい, il giapponese non costruisce "io voglio la bacca" con un oggetto diretto; costruisce "la bacca è desiderabile" dal punto di vista del parlante.
 
 :::example_sentence
 jp: >-
@@ -133,14 +135,14 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`きのみを {{欲|ほ}}しい` è la pista sbagliata. Con [{{欲|ほ}}しい](term:term-anki-l10-hoshii), la cosa desiderata prende `が`; `を` comparirebbe con un verbo d'azione come `{{探|さが}}す` o `{{買|か}}う`.
+きのみを {{欲|ほ}}しい è la pista sbagliata. Con [{{欲|ほ}}しい](term:term-anki-l10-hoshii), la cosa desiderata prende が; を comparirebbe con un verbo d'azione come {{探|さが}}す o {{買|か}}う.
 
 ## 3. Cadere da sé o aumentare intenzionalmente
 
-In battaglia, il verso del cambiamento è grammatica concreta. Una statistica può scendere come effetto osservato, oppure qualcuno può alzarla con una mossa, uno strumento o una scelta. La differenza tra [{{落|お}}ちる](term:term-anki-l10-ochiru) e [{{高|たか}}める](term:term-anki-l10-takameru) passa soprattutto da `が` e `を`.
+In battaglia, il verso del cambiamento è grammatica concreta. Una statistica può scendere come effetto osservato, oppure qualcuno può alzarla con una mossa, uno strumento o una scelta. La differenza tra [{{落|お}}ちる](term:term-anki-l10-ochiru) e [{{高|たか}}める](term:term-anki-l10-takameru) passa soprattutto da が e を.
 
-*   [{{落|お}}ちる](term:term-anki-l10-ochiru) è intransitivo: il soggetto cade, scende o si abbassa. In una lotta Pokémon, `すばやさが {{落|お}}ちる` guarda la velocità che cala; la frase non deve per forza dire chi l'ha fatta calare.
-*   [{{高|たか}}める](term:term-anki-l10-takameru) è transitivo: qualcuno o qualcosa rende più alto un valore. `こうげきを {{高|たか}}める` non significa soltanto "l'attacco diventa alto", ma "alzare l'attacco" tramite un'azione.
+*   [{{落|お}}ちる](term:term-anki-l10-ochiru) è intransitivo: il soggetto cade, scende o si abbassa. In una lotta Pokémon, すばやさが {{落|お}}ちる guarda la velocità che cala; la frase non deve per forza dire chi l'ha fatta calare.
+*   [{{高|たか}}める](term:term-anki-l10-takameru) è transitivo: qualcuno o qualcosa rende più alto un valore. こうげきを {{高|たか}}める non significa soltanto "l'attacco diventa alto", ma "alzare l'attacco" tramite un'azione.
 
 :::example_sentence
 jp: >-
@@ -174,14 +176,14 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-In [{{高|たか}}める](term:term-anki-l10-takameru) riconosci `{{高|たか}}い`, "alto". Il trucco è pensarlo come "rendere più alto": con `を`, il verbo cerca sempre un valore da sollevare.
+In [{{高|たか}}める](term:term-anki-l10-takameru) riconosci {{高|たか}}い, "alto". Il trucco è pensarlo come "rendere più alto": con を, il verbo cerca sempre un valore da sollevare.
 
 ## 4. Persone e descrizioni che cambiano il tono
 
 Alcune parole sembrano descrittive, ma nel gioco portano con sé tono e cornice sociale. [{{子|こ}}{{供|ども}}](term:term-anki-l10-kodomo) separa o supera la distinzione tra età diverse; [{{長|なが}}い](term:term-anki-l10-nagai) misura spazio o tempo e può far sentire il peso del viaggio.
 
-*   [{{子|こ}}{{供|ども}}](term:term-anki-l10-kodomo) non indica soltanto una persona giovane. In un'Accademia dove adulti e ragazzi studiano nello stesso spazio, il contrasto con `{{大人|おとな}}` può servire a dire che età, esperienza e ruolo sociale non decidono tutto.
-*   [{{長|なが}}い](term:term-anki-l10-nagai) è un aggettivo in `い` che si mette prima del nome: `{{長|なが}}い {{道|みち}}`, `{{長|なが}}い {{旅|たび}}`, `{{長|なが}}い {{冒|ぼう}}{{険|けん}}`. Se descrive una strada, misura estensione; se descrive un'avventura, misura durata e fatica narrativa.
+*   [{{子|こ}}{{供|ども}}](term:term-anki-l10-kodomo) non indica soltanto una persona giovane. In un'Accademia dove adulti e ragazzi studiano nello stesso spazio, il contrasto con {{大人|おとな}} può servire a dire che età, esperienza e ruolo sociale non decidono tutto.
+*   [{{長|なが}}い](term:term-anki-l10-nagai) è un aggettivo in い che si mette prima del nome: {{長|なが}}い {{道|みち}}, {{長|なが}}い {{旅|たび}}, {{長|なが}}い {{冒|ぼう}}{{険|けん}}. Se descrive una strada, misura estensione; se descrive un'avventura, misura durata e fatica narrativa.
 
 :::example_sentence
 jp: >-
@@ -212,7 +214,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{長|なが}}い](term:term-anki-l10-nagai) può descrivere sia spazio sia tempo. `{{長|なが}}い {{道|みち}}` ti fa immaginare estensione fisica; `{{長|なが}}い {{冒|ぼう}}{{険|けん}}` ti fa leggere una durata narrativa. Il nome che segue decide quale dimensione è attiva.
+[{{長|なが}}い](term:term-anki-l10-nagai) può descrivere sia spazio sia tempo. {{長|なが}}い {{道|みち}} ti fa immaginare estensione fisica; {{長|なが}}い {{冒|ぼう}}{{険|けん}} ti fa leggere una durata narrativa. Il nome che segue decide quale dimensione è attiva.
 
 ## Esempi guidati di riepilogo
 
@@ -248,4 +250,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri questi segnali a Paldea, leggi prima la funzione: [{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) aggancia un luogo a un evento, [{{先|さき}}ほど](term:term-anki-l10-sakihodo) mette un fatto nel passato immediato, [{{欲|ほ}}しい](term:term-anki-l10-hoshii) fa passare il desiderio da `が`, mentre [{{落|お}}ちる](term:term-anki-l10-ochiru) e [{{高|たか}}める](term:term-anki-l10-takameru) separano cambiamento osservato e cambiamento provocato.
+Quando incontri questi segnali a Paldea, leggi prima la funzione: [{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) aggancia un luogo a un evento, [{{先|さき}}ほど](term:term-anki-l10-sakihodo) mette un fatto nel passato immediato, [{{欲|ほ}}しい](term:term-anki-l10-hoshii) fa passare il desiderio da が, mentre [{{落|お}}ちる](term:term-anki-l10-ochiru) e [{{高|たか}}める](term:term-anki-l10-takameru) separano cambiamento osservato e cambiamento provocato.

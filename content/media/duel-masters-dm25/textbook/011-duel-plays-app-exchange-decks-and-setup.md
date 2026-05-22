@@ -46,6 +46,10 @@ preparazione.
 - [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
   — acquisto di deck già costruito
 - [{{不足|ふそく}}](term:term-shortage) — mancanza / insufficienza della risorsa
+- [{{所持|しょじ}}](term:term-owned) — quantità già posseduta, utile per capire
+  se un'azione è disponibile
+- [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt) — già costruito / già pronto,
+  non da assemblare manualmente
 - [デッキ{{一覧|いちらん}}](term:term-deck-list) — vista elenco dei deck
 - [{{概要|がいよう}}](term:term-overview) — panoramica rapida del deck o del
   contenuto
@@ -93,7 +97,7 @@ caption: >-
   In [カード{{交換|こうかん}}](term:term-card-exchange) la riga della carta va
   letta insieme a tab, filtri, valuta,
   [{{交換期間|こうかんきかん}}](term:term-exchange-period),
-  [{{所持|しょじ}}](term:term-owned) e `あと{{4回|よんかい}}{{交換|こうかん}}{{可能|かのう}}！`.
+  [{{所持|しょじ}}](term:term-owned) e あと{{4回|よんかい}}{{交換|こうかん}}{{可能|かのう}}！.
 :::
 
 La schermata [カード{{交換|こうかん}}](term:term-card-exchange) mette la carta al
@@ -107,10 +111,10 @@ di scambio con regole e risorse proprie.
   con [{{交換|こうかん}}](term:term-exchange) ti dice che la logica della schermata
   è conversione / scambio.
 - [{{交換期間|こうかんきかん}}](term:term-exchange-period) unisce
-  [{{交換|こうかん}}](term:term-exchange) e `{{期間|きかん}}`: il punto non è
+  [{{交換|こうかん}}](term:term-exchange) e {{期間|きかん}}: il punto non è
   "quanto costa", ma "fino a quando questa finestra resta aperta". È una label
   temporale, quindi va letta insieme alle date.
-- [{{所持|しょじ}}](term:term-owned) trasforma un numero in stock reale: `0` non
+- [{{所持|しょじ}}](term:term-owned) trasforma un numero in stock reale: 0 non
   vuol dire che la carta non esiste nel gioco, ma che tu non la possiedi in
   quel momento.
 - `あと{{4回|よんかい}}{{交換|こうかん}}{{可能|かのう}}！` aggiunge il conteggio
@@ -189,7 +193,7 @@ reveal_mode: sentence
 
 *   `DMポイントが` ➔ **Risorsa soggetto**: `が` mette a fuoco ciò che non basta,
     non la carta che volevi ottenere.
-*   [{{不足|ふそく}}](term:term-shortage)`しています` ➔ **Stato in corso**:
+*   [{{不足|ふそく}}](term:term-shortage)しています ➔ **Stato in corso**:
     la forma con `しています` presenta la carenza come condizione attuale della
     risorsa.
 *   `カード{{分解|ぶんかい}}しますか？` ➔ **Proposta di azione**:
@@ -198,7 +202,7 @@ reveal_mode: sentence
 
 #### ⚖️ Contrasto operativo: mancanza e possesso non sono la stessa lettura
 
-*   [{{所持|しょじ}}](term:term-owned)`: 0` ti dice che non possiedi qualcosa o
+*   [{{所持|しょじ}}](term:term-owned): 0 ti dice che non possiedi qualcosa o
     che lo stock mostrato è zero.
 *   [{{不足|ふそく}}](term:term-shortage) ti dice che una quantità necessaria non
     è sufficiente rispetto a un costo o requisito.
@@ -210,7 +214,7 @@ andare a buon fine.
 
 #### 🧠 Gancio cognitivo
 
-In [{{不足|ふそく}}](term:term-shortage), `{{不|ふ}}` nega e `{{足|そく}}` porta
+In [{{不足|ふそく}}](term:term-shortage), {{不|ふ}} nega e {{足|そく}} porta
 l'idea di bastare. Come gancio di memoria, leggilo come "non abbastanza": è
 esattamente la domanda che il popup sta risolvendo.
 
@@ -252,10 +256,10 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   [{{販売期間|はんばいきかん}}](term:term-sale-period)`を{{見|み}}てから` ➔
+*   [{{販売期間|はんばいきかん}}](term:term-sale-period)を{{見|み}}てから ➔
     **Controllo prima della scelta**: `てから` mette la verifica della finestra
     di vendita prima della decisione.
-*   [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt)`デッキ` ➔ **Deck già
+*   [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt)デッキ ➔ **Deck già
     preparato**: [～{{済|ず}}み](grammar:grammar-zumi) chiude l'azione di
     costruzione come già fatta.
 *   `{{購入|こうにゅう}}を{{決|き}}める` ➔ **Decisione d'acquisto**: il verbo
@@ -297,7 +301,7 @@ caption: >-
 :::
 
 [デッキ{{一覧|いちらん}}](term:term-deck-list) non nomina un mazzo singolo.
-[～{{一覧|いちらん}}](grammar:grammar-ichiran) trasforma `デッキ` in una vista
+[～{{一覧|いちらん}}](grammar:grammar-ichiran) trasforma デッキ in una vista
 elenco: il punto è confrontare opzioni, selezionare un deck e controllare che il
 setup sia quello giusto.
 
@@ -328,12 +332,12 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   [デッキ{{一覧|いちらん}}](term:term-deck-list)`で` ➔ **Luogo operativo**:
+*   [デッキ{{一覧|いちらん}}](term:term-deck-list)で ➔ **Luogo operativo**:
     `で` marca la schermata in cui avviene il controllo.
-*   [キーカード](term:term-key-card)`を{{確認|かくにん}}してから` ➔ **Verifica prima
+*   [キーカード](term:term-key-card)を{{確認|かくにん}}してから ➔ **Verifica prima
     dell'avvio**: [{{確認|かくにん}}](term:term-confirm) è controllo puntuale,
     mentre `てから` lo mette prima dell'azione successiva.
-*   [{{対戦開始|たいせんかいし}}](term:term-start-match)`を{{押|お}}す` ➔
+*   [{{対戦開始|たいせんかいし}}](term:term-start-match)を{{押|お}}す ➔
     **Comando finale**: il bottone non apre una panoramica; avvia il match.
 
 #### ⚖️ Contrasto operativo: 概要, 確認, 開始

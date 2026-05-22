@@ -30,7 +30,7 @@ La scena si legge bene quando tieni insieme tre livelli: l'accesso tecnico al
 dispositivo, l'identità scelta da chi parla e il tono con cui quella voce si
 impone. [ハッキング](term:term-v762-hakkingu) non descrive una chiamata
 normale, [カシオペア](term:term-v764-kashiopea) non è solo un nome proprio, e
-[オマエ](term:term-v765-omae) non ha la stessa distanza di `キミ` o `あなた`.
+[オマエ](term:term-v765-omae) non ha la stessa distanza di キミ o あなた.
 
 ## Termini chiave
 
@@ -115,7 +115,7 @@ translation_it: >-
 *   `よ` ➔ **Conferma marcata**: il parlante non chiede se è successo; lo
     comunica come informazione che possiede.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   [ハッキング](term:term-v762-hakkingu) spiega l'accesso forzato al canale;
     [{{監視|かんし}}カメラ](term:term-v763-kanshikamera) spiega da dove arriva
@@ -177,14 +177,14 @@ translation_it: >-
     "prestare", `ほしい` dice cosa il parlante vuole dall'altro, e `んだ`
     aggiunge tono esplicativo e pressante.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-*   `キミ` può essere diretto ma relativamente neutro; [オマエ](term:term-v765-omae)
+*   キミ può essere diretto ma relativamente neutro; [オマエ](term:term-v765-omae)
     sposta la relazione verso rudezza, dominio o familiarità aggressiva. In
     italiano non basta tradurlo sempre con "tu": serve ascoltare che tipo di
     posizione si prende chi parla.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 *   Per [{{名乗|なの}}る](term:term-v769-nanoru), immagina una voce che mette un
     cartellino davanti a sé. È un trucco mnemonico, non un'etimologia: aiuta a
@@ -244,14 +244,14 @@ translation_it: >-
 *   `ほしい` ➔ **Desiderio rivolto a te**: il parlante non descrive ciò che fa
     lui, ma ciò che vorrebbe che facessi tu.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   [{{管理|かんり}}](term:term-v766-kanri) guarda al controllo responsabile;
     [かわいがる](term:term-v768-kawaigaru) guarda alla cura affettiva. Quando il
     testo passa dall'uno all'altro, la scena si muove da "tenere la situazione
     sotto controllo" a "continuare a trattare bene il Pokémon".
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 *   Per [{{引|ひ}}き{{続|つづ}}き](term:term-v767-hikitsuzuki), immagina una linea
     che non si interrompe quando la chiamata finisce. È solo un'immagine mentale:
@@ -315,7 +315,7 @@ translation_it: >-
     chiede collaborazione da parte dell'interlocutore; `のだ` dà tono
     esplicativo e più formale.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   [～っぽい](grammar:grammar-g112-sembra-ha-l-aria-di) descrive una somiglianza
     percepita; [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che)
@@ -357,14 +357,14 @@ translation_it: >-
 *   `やるっきゃない` ➔ **Decisione chiusa**: l'espressione elimina le alternative
     e spinge verso l'azione.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-*   [おやおや](term:term-e113-oyaoya) guarda la scena con controllo; `えっ` o
-    `うわっ` marcano sorpresa più immediata. [やるっきゃない](term:term-e114-yarukkyanai)
+*   [おやおや](term:term-e113-oyaoya) guarda la scena con controllo; えっ o
+    うわっ marcano sorpresa più immediata. [やるっきゃない](term:term-e114-yarukkyanai)
     non equivale a un obbligo imposto da una regola: è la conclusione pratica di
     chi non vede più altre strade.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 *   Per [やるっきゃない](term:term-e114-yarukkyanai), immagina una porta che si
     chiude dietro al personaggio. Non è etimologia, è un gancio: aiuta a sentire

@@ -82,6 +82,8 @@ battuta tra compagni, ma in una scena regolata dall'accademia.
 
 ---
 
+[～なければならない / ～ないといけない](grammar:grammar-g019-dover-fare) dà la pressione dell'obbligo: anche quando la frase è ellittica, il lettore deve sentire "bisogna".
+
 ## 1. Quando la scuola spiega le mosse
 
 Le spiegazioni di lotta dell'accademia hanno spesso una forma molto ordinata:
@@ -118,7 +120,7 @@ translation_it: >-
 *   `{{分類|ぶんるい}}がある` ➔ **Esistenza del sistema** (non "una mossa è fisica",
     ma "esiste una classificazione che userai per leggere le mosse").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{物理|ぶつり}}](term:term-v730-butsuri) è una categoria concreta dentro il
 sistema delle mosse; [{{分類|ぶんるい}}](term:term-v731-bunrui) è il nome del
@@ -126,7 +128,7 @@ sistema che mette le mosse in categorie. Se li leggi come sinonimi, perdi la
 struttura della spiegazione: uno è il gruppo nominato, l'altro è il gesto di
 classificare.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Pensa a [{{分類|ぶんるい}}](term:term-v731-bunrui) come a una scheda con divisori:
 prima separi, poi metti ogni elemento nel gruppo giusto. È un'immagine mentale
@@ -206,11 +208,11 @@ translation_it: >-
     "quando sei durante una lezione...").
 *   `{{友達|ともだち}}にも` ➔ **Estensione inattesa** (`にも` porta l'effetto perfino
     sugli amici, non solo sui professori).
-*   `{{敬語|けいご}}に なっちゃう` ➔ **Cambio involontario di registro** (`に
-    なる` descrive il passaggio di stato; `ちゃう` fa sentire che succede quasi
+*   {{敬語|けいご}}に なっちゃう ➔ **Cambio involontario di registro** (に
+    なる descrive il passaggio di stato; ちゃう fa sentire che succede quasi
     senza volerlo).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) identifica uno
 studente nel sistema scolastico; `{{名前|なまえ}}` lo identificherebbe come
@@ -218,7 +220,7 @@ persona. [{{敬語|けいご}}](term:term-v736-keigo) aggiunge lo stesso tipo di
 distanza sul piano del parlato: non cambia solo la cortesia, cambia il rapporto
 che la frase sta mettendo in scena.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Pensa a [{{担当|たんとう}}](term:term-v733-tantou) come a una targhetta sulla porta
 di un'aula: a sinistra c'è la materia, sulla targhetta c'è chi se ne occupa. È
@@ -242,7 +244,7 @@ sta spingendo verso una destinazione prima che inizi qualcosa.
     katakana è trasparente, ma nel gioco funziona come label di luogo: quando
     compare, la scena spesso lascia la classe e passa a dimostrazioni pratiche
     o raduni all'aperto.
-*   [{{始業|しぎょう}}](term:term-v738-shigyou) unisce `{{始|し}}`, "iniziare", e
+*   [{{始業|しぎょう}}](term:term-v738-shigyou) unisce {{始|し}}, "iniziare", e
     `{{業|ぎょう}}`, "attività / lavoro scolastico". In un avviso non è una
     data generica: è il momento in cui la lezione o la giornata scolastica
     entra in funzione.
@@ -282,7 +284,7 @@ translation_it: >-
     sull'orologio, ma il momento in cui comincia l'attività scolastica).
 *   `です` ➔ **Chiusura cortese** (adatta ad avvisi e comunicazioni scolastiche).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{階段|かいだん}}](term:term-v732-kaidan) e
 [グラウンド](term:term-v735-guraundo) sono coordinate spaziali: ti dicono dove
@@ -323,19 +325,19 @@ translation_it: >-
     luogo a cui l'accesso viene controllato).
 *   `{{立|た}}ち{{入|い}}りは` ➔ **Tema normativo** (l'atto di entrare diventa il
     soggetto della valutazione).
-*   `{{危|あぶ}}ないので` ➔ **Causa spiegata** ([ので](grammar:grammar-g036-siccome-dato-che)
+*   {{危|あぶ}}ないので ➔ **Causa spiegata** ([ので](grammar:grammar-g036-siccome-dato-che)
     introduce il motivo: "dato che è pericoloso").
 *   `{{校則|こうそく}}{{違反|いはん}}です` ➔ **Conclusione ufficiale** (l'azione viene
     etichettata come violazione del regolamento scolastico).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{危|あぶ}}ないので やめてください` chiede di fermarsi perché qualcosa è
 pericoloso. `{{校則|こうそく}}{{違反|いはん}}です` aggiunge un'etichetta ufficiale:
 l'azione non è solo sconsigliata, supera una regola dell'accademia. La causa
 spiega il rischio, la conclusione stabilisce la norma.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 In [{{校則|こうそく}}{{違反|いはん}}](term:term-v742-ihan), immagina due passaggi:
 prima compare la regola della scuola, poi l'azione la oltrepassa. È un gancio

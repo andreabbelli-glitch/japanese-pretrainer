@@ -122,6 +122,13 @@ Optional:
   kanji chunks such as `{{目的|もくてき}}{{地|ち}}` over
   `{{目的地|もく.てき.ち}}`; keep `デッキコード` as katakana text or a semantic
   link without furigana.
+- In lesson inventories, keep the label, `—`, and the beginning of the gloss on
+  the same bullet line. Every inventoried term/pattern must reappear in the
+  body with a semantic link or be removed from the inventory.
+- Never wrap a Markdown semantic link in backticks. Put code spans only around
+  raw Japanese fragments, or use the semantic link outside code formatting.
+- Place `:::image` only after the inventory block and `---`, ideally inside the
+  cluster that explains the screenshot.
 - Do not split lexical compounds kanji-by-kanji when a natural block is more
   readable: use `{{言語|げんご}}{{学|がく}}`,
   `{{課外|かがい}}{{授業|じゅぎょう}}`,

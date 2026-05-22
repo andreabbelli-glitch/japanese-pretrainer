@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 media_id: media-pokemon-scarlet-violet
 slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
-title: "Dal Pokemon Center al primo Terastal: servizi, campo e sfide guidate"
+title: "Dal Pokémon Center al primo Terastal: servizi, campo e sfide guidate"
 order: 130
 segment_ref: scarlet-violet-story
 difficulty: custom
@@ -10,11 +10,11 @@ status: active
 tags: [pokemon, scarlet-violet, prologue, story]
 prerequisites: []
 summary: >-
-  Leggere il prologo da Platos Town al primo Terastal: servizi del Pokemon
+  Leggere il prologo da Platos Town al primo Terastal: servizi del Pokémon
   Center, LP, TM Machine, Let's Go, sfida con Nemona e Tera Orb.
 ---
 
-# Dal Pokemon Center al primo Terastal: servizi, campo e sfide guidate
+# Dal Pokémon Center al primo Terastal: servizi, campo e sfide guidate
 
 Da プラトタウン alla strada che porta a [テーブルシティ](term:term-v272-teeburushitei),
 Scarlet / Violet cambia passo: il viaggio non è più soltanto camminare verso
@@ -64,13 +64,15 @@ il tipo che decide quali [わざ](term:term-waza) conviene usare.
 
 ## Etichette da riconoscere
 
-- プラトタウン — villaggio prima del primo centro servizi
+- [プラトタウン](term:term-v702-puratotaun) — villaggio prima del primo centro servizi
 - {{南|みなみ}}{{1番|いちばん}}エリア — primo corridoio di esplorazione verso la scuola
 - [テーブルシティ](term:term-v272-teeburushitei) — città dell'Accademia
 
 ---
 
-## 1. Il Pokemon Center come hub: accoglienza, cura e risorse
+[プラトタウン](term:term-v702-puratotaun) funziona come primo villaggio di servizio: quando il nome appare, la scena sta uscendo dal tutorial puro e si avvicina al Centro Pokémon.
+
+## 1. Il Pokémon Center come hub: accoglienza, cura e risorse
 
 Il primo [ポケモンセンター](term:term-pokemon-center) all'aperto mette nello stesso
 spazio tre registri diversi: il parlato cortese del personale, le istruzioni
@@ -97,7 +99,7 @@ servono per trasformare materiali in [わざマシン](term:term-waza-machine).
 
 :::image
 src: assets/story/pokemon-center-service-counter.webp
-alt: "Bancone del Centro Pokemon con infermiera, shop e servizi allineati nello stesso hub esterno."
+alt: "Bancone del Centro Pokémon con infermiera, shop e servizi allineati nello stesso hub esterno."
 caption: >-
   Il [ポケモンセンター](term:term-pokemon-center) non è un solo sportello: cura,
   negozio e servizi condividono lo stesso spazio, quindi i dialoghi alternano
@@ -109,7 +111,7 @@ jp: >-
   ポケモンセンターで {{手|て}}{{持|も}}ちの ポケモンを
   {{回復|かいふく}}してもらおう。
 translation_it: >-
-  Facciamoci curare la squadra al Pokemon Center.
+  Facciamoci curare la squadra al Pokémon Center.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -118,7 +120,7 @@ translation_it: >-
     avviene l'azione, quindi il centro è la sede operativa della cura.
 *   `{{手|て}}{{持|も}}ちの ポケモンを` ➔ **oggetto diretto**: sono i Pokémon che
     hai con te, non i Pokémon in generale.
-*   `{{回復|かいふく}}してもらおう` ➔ **servizio ricevuto**: [～てもらう](grammar:grammar-te-morau)
+*   {{回復|かいふく}}してもらおう ➔ **servizio ricevuto**: [～てもらう](grammar:grammar-te-morau)
     guarda la cura dal tuo lato, cioè "facciamoci fare questa cosa".
 
 #### ⚖️ Contrasto operativo: `{{回復|かいふく}}` come cura di servizio e come effetto
@@ -147,7 +149,7 @@ mossa, devi leggere quali risorse vengono richieste.
     raccolta: materiali specifici dei Pokémon, non un portafoglio perso da un
     NPC.
 *   [わざマシン](term:term-waza-machine) lega il lessico delle mosse al lessico
-    del crafting. [わざ](term:term-waza) è la mossa; `マシン` segnala l'oggetto
+    del crafting. [わざ](term:term-waza) è la mossa; マシン segnala l'oggetto
     che la insegna. Nel menu, il nome diventa una categoria producibile.
 
 :::image
@@ -164,7 +166,7 @@ jp: >-
   わざマシンを {{作|つく}}るには LPと ポケモンの おとしものが
   {{必要|ひつよう}}だ。
 translation_it: >-
-  Per creare una MT servono LP e materiali lasciati dai Pokemon.
+  Per creare una MT servono LP e materiali lasciati dai Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -206,7 +208,7 @@ chi parte, che cosa fa e che cosa torna a te.
 
 :::image
 src: assets/story/lets-go-auto-battle-field.webp
-alt: "Pokemon partner sul campo dopo un'azione di Let's Go, con notifica di drop o vittoria automatica visibile."
+alt: "Pokémon partner sul campo dopo un'azione di Let's Go, con notifica di drop o vittoria automatica visibile."
 caption: >-
   [レッツゴー](term:term-lets-go) mostra il partner fuori dalla battaglia
   classica: il testo sul campo collega movimento, scontro rapido e raccolta di
@@ -218,7 +220,7 @@ jp: >-
   レッツゴーで {{先頭|せんとう}}の ポケモンを {{出|だ}}すと、
   {{道具|どうぐ}}を {{拾|ひろ}}ってきてくれる ことが ある。
 translation_it: >-
-  Quando mandi fuori il Pokemon in testa con Let's Go, a volte va a
+  Quando mandi fuori il Pokémon in testa con Let's Go, a volte va a
   raccoglierti degli oggetti.
 :::
 
@@ -367,7 +369,7 @@ cristallo", perdi il pezzo operativo del tutorial.
 
 :::image
 src: assets/ui/first-terastal-opponent-battle.webp
-alt: "Pokemon avversario terastallizzato in battaglia con cristallo e testo di azione visibili."
+alt: "Pokémon avversario terastallizzato in battaglia con cristallo e testo di azione visibili."
 caption: >-
   Il primo [テラスタル](term:term-terastal) visto in battaglia ti fa riconoscere
   l'effetto prima dell'uso diretto: il cristallo sul Pokémon prepara la
@@ -380,7 +382,7 @@ jp: >-
   テラスタルすると テラスタイプと {{同|おな}}じ タイプの わざは
   さらに {{強|つよ}}くなる。
 translation_it: >-
-  Quando un Pokemon terastalizza, le mosse dello stesso Tera Type diventano
+  Quando un Pokémon terastalizza, le mosse dello stesso Tera Type diventano
   ancora più forti.
 :::
 
@@ -419,7 +421,7 @@ jp: >-
   お{{疲|つか}}れさまです。ポケモンセンターで {{手|て}}{{持|も}}ちを
   {{回復|かいふく}}してもらいましょう。
 translation_it: >-
-  Benvenuto. Facciamoci curare la squadra al Pokemon Center.
+  Benvenuto. Facciamoci curare la squadra al Pokémon Center.
 :::
 
 :::example_sentence
@@ -435,7 +437,7 @@ jp: >-
   レッツゴーで ポケモンが {{戦|たたか}}ってきたら おとしものを
   {{集|あつ}}めて わざマシンを {{作|つく}}れる。
 translation_it: >-
-  Se un Pokemon combatte usando Let's Go, puoi raccogliere materiali e creare
+  Se un Pokémon combatte usando Let's Go, puoi raccogliere materiali e creare
   MT.
 :::
 

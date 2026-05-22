@@ -82,6 +82,8 @@ davvero nel rank.
 
 ---
 
+[{{帰宅後|きたくご}}](term:term-after-return-home) crea una cornice temporale pulita: prima avviene il rientro, poi il testo passa alle azioni disponibili dopo casa.
+
 ## 1. La schermata modalità: prima leggi il frame, poi scegli la partita
 
 La selezione modalità è una schermata di orientamento. Il gioco non ti chiede
@@ -96,12 +98,12 @@ azione base, cioè entrare in un match.
 src: assets/ui/mode-select-screen.webp
 alt: "Schermata ufficiale di selezione modalità con riquadri per Rank Match, Challenge Mode, Casual Match e Link Stage Battle, più il pannello di selezione versus."
 caption: >-
-  Schermata ufficiale di selezione modalità: riconosci [ランクマッチ](term:term-rank-match), [チャレンジモード](term:term-challenge-mode), [カジュアルマッチ](term:term-casual-match) e il label evento `リンクステージバトル`, più il pannello `{{対戦|たいせん}}モード{{選択|せんたく}}` che decide come cercare l'avversario.
+  Schermata ufficiale di selezione modalità: riconosci [ランクマッチ](term:term-rank-match), [チャレンジモード](term:term-challenge-mode), [カジュアルマッチ](term:term-casual-match) e il label evento リンクステージバトル, più il pannello {{対戦|たいせん}}モード{{選択|せんたく}} che decide come cercare l'avversario.
 :::
 
 ### A. `ランク` aggiunge classifica alla partita
 
-[ランクマッチ](term:term-rank-match) unisce `ランク`, rank, e `マッチ`, match. Il
+[ランクマッチ](term:term-rank-match) unisce ランク, rank, e マッチ, match. Il
 secondo pezzo ti dice che stai entrando in una partita; il primo ti avvisa che
 il risultato può toccare posizione e [ランクポイント](term:term-rank-point). In
 lettura pratica, quindi, non basta tradurre "ranked match": devi sentire che la
@@ -123,7 +125,7 @@ translation_it: >-
 - `{{増|ふ}}えたり{{減|へ}}ったりします` ➔ **Esiti alternati**: `〜たり〜たりする`
   non sceglie un solo risultato; apre la coppia "aumentare / diminuire".
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `マッチ` da solo promette una partita. `ランクマッチ` aggiunge classifica.
 [カジュアルマッチ](term:term-casual-match), invece, mantiene la partita ma toglie
@@ -132,7 +134,7 @@ sessione prima ancora che tu tocchi il pulsante di conferma.
 
 ### B. `チャレンジ` non è solo "difficile"
 
-[チャレンジモード](term:term-challenge-mode) mette davanti `チャレンジ`, ma nel
+[チャレンジモード](term:term-challenge-mode) mette davanti チャレンジ, ma nel
 percorso iniziale non va letto come "modalità punitiva". Qui la CPU e le
 [ミッション](term:term-mission) rendono più leggibili input, tempi e
 [{{役割|やくわり}}](term:term-role). Il nome suona come sfida, ma la funzione è
@@ -141,21 +143,21 @@ ladder.
 
 - Se stai ancora distinguendo [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
   [{{制圧|せいあつ}}](term:term-role-seiatsu) e
-  [{{防衛|ぼうえい}}](term:term-role-bouei), `チャレンジモード` è una parola di
+  [{{防衛|ぼうえい}}](term:term-role-bouei), チャレンジモード è una parola di
   allenamento, non di classifica.
-- Se una schermata collega `チャレンジ` a una [ミッション](term:term-mission), la
+- Se una schermata collega チャレンジ a una [ミッション](term:term-mission), la
   partita non è letta solo come vittoria o sconfitta: diventa un tentativo di
   completare una condizione visibile.
 
 ### C. `カジュアル` abbassa il rischio, non cambia il gioco
 
-[カジュアルマッチ](term:term-casual-match) usa `カジュアル` per togliere il peso
+[カジュアルマッチ](term:term-casual-match) usa カジュアル per togliere il peso
 del rank. Le regole base restano quelle del match, ma il sistema non ti sta
 dicendo "questa partita non conta"; ti sta dicendo che non muove la classifica.
 Questo dettaglio è importante perché il giapponese della UI separa due piani:
 il piano tecnico della partita e il piano amministrativo dei punti.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Pensa a `ランク` come a una bilancia appesa al match: dopo la partita qualcosa
 può salire o scendere. `カジュアル` toglie quella bilancia. È un trucco di
@@ -163,7 +165,7 @@ memoria operativo, non un'etimologia.
 
 ### D. `VEレイドバトル` cambia il bersaglio mentale
 
-[VEレイドバトル](term:term-ve-raid-battle) contiene `レイドバトル`, quindi il frame
+[VEレイドバトル](term:term-ve-raid-battle) contiene レイドバトル, quindi il frame
 non è la corsia uno contro uno del match standard. La parola ti prepara a uno
 scontro cooperativo contro boss: target, coordinazione e priorità dei ruoli
 pesano in modo diverso. Se arrivi da Rank o Casual, non leggere `バトル` come se
@@ -183,7 +185,7 @@ o [～が{{解放|かいほう}}される](grammar:grammar-ga-kaihou-sareru).
 src: assets/ui/missions-progress-screen.webp
 alt: "Schermata ufficiale delle missioni in MY PAGE con tab di categoria, stato CLEAR e riquadri ricompensa visibili."
 caption: >-
-  Schermata missioni di [MY PAGE](term:term-mypage): categorie, stato `CLEAR!!` e riquadri premio ti fanno rileggere con calma [ミッション](term:term-mission) e avanzamento del profilo fuori dalla sala giochi.
+  Schermata missioni di [MY PAGE](term:term-mypage): categorie, stato CLEAR!! e riquadri premio ti fanno rileggere con calma [ミッション](term:term-mission) e avanzamento del profilo fuori dalla sala giochi.
 :::
 
 ### A. `{{指揮官|しきかん}}レベル` misura il profilo, non una singola unità
@@ -216,14 +218,14 @@ translation_it: >-
 non occupa gli spazi delle [MSカード](term:term-ms-card) o delle
 [PLカード](term:term-pl-card), ma viene resa disponibile come carta digitale di
 effetto tattico. Quando il testo parla di [メイン{{枠|わく}}](term:term-main-slot)
-e [サブ{{枠|わく}}](term:term-sub-slot), `{{枠|わく}}` è il riquadro o slot:
+e [サブ{{枠|わく}}](term:term-sub-slot), {{枠|わく}} è il riquadro o slot:
 la UI sta distinguendo quale effetto è principale e quale resta di supporto.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [～が{{解放|かいほう}}される](grammar:grammar-ga-kaihou-sareru) non significa
 "compare sullo schermo". Quello è
-[～が{{表示|ひょうじ}}される](grammar:grammar-ga-hyouji-sareru). `{{解放|かいほう}}`
+[～が{{表示|ひょうじ}}される](grammar:grammar-ga-hyouji-sareru). {{解放|かいほう}}
 cambia la disponibilità di una funzione; `{{表示|ひょうじ}}` cambia la sua
 visibilità. Se confondi i due, rischi di leggere una notifica di sblocco come
 un semplice pannello informativo.
@@ -235,6 +237,12 @@ queste schermate è un obiettivo misurabile: il gioco può mostrarti categoria,
 progresso e stato finale. [{{進行|しんこう}}](term:term-progress) indica proprio
 quanto quell'obiettivo è avanzato; `CLEAR!!` chiude il ciclo e segnala che la
 condizione è stata soddisfatta.
+
+[～することで](grammar:grammar-suru-koto-de) è la forma che lega avanzamento e
+beneficio: facendo una cosa, ottieni un risultato leggibile. In ミッションを
+{{進|すす}}めることで, il blocco prima di ことで è il mezzo, non il risultato;
+la conseguenza arriva dopo, per esempio una schermata più chiara, un premio o
+uno sblocco.
 
 :::example_sentence
 jp: >-
@@ -255,11 +263,11 @@ translation_it: >-
 - `{{確認|かくにん}}できます` ➔ **Possibilità**: `できます` dice che il controllo è
   disponibile, non che accade automaticamente.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Leggi [MY PAGE](term:term-mypage) come una "scrivania" del profilo: non ci
 combatti, ci ricontrolli. Per questo parole come [{{戦績|せんせき}}](term:term-battle-record),
-[{{進行|しんこう}}](term:term-progress) e `{{確認|かくにん}}` suonano più da registro
+[{{進行|しんこう}}](term:term-progress) e {{確認|かくにん}} suonano più da registro
 amministrativo che da azione in tempo reale.
 
 ## 3. Deck iniziale: la struttura viene prima della rarità
@@ -307,14 +315,14 @@ translation_it: >-
   letteralmente "i ruoli sono facili da vedere"; il criterio è la leggibilità
   tattica, non il valore collezionistico.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [デッキ](term:term-deck) qui non funziona come un deck da pescare carta dopo
 carta. Se lo leggi con quella immagine, ti aspetti rotazione e mano; la UI di
 *Arsenal Base* invece ti chiede di preparare coppie MS + PL e ruoli prima del
 match. La parola è familiare, ma il comportamento nel gioco è diverso.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Tieni i tre ruoli come tre verbi impliciti:
 [{{殲滅|せんめつ}}](term:term-role-shoumetsu) "toglie di mezzo",
@@ -349,7 +357,7 @@ translation_it: >-
 - `{{別物|べつもの}}として{{読|よ}}んでください` ➔ **Ruolo di lettura**:
   `として` dice "trattalo come". Non ignorarlo, ma leggilo come cosa distinta.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 Un'etichetta riconoscibile non è automaticamente una priorità attuale. Qui la
 lingua non ti chiede solo "che cosa significa EXバトル?", ma "in quale epoca del

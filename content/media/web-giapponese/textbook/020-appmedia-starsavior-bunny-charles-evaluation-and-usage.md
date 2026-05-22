@@ -2,12 +2,13 @@
 id: lesson-web-giapponese-appmedia-starsavior-bunny-charles-evaluation-and-usage
 media_id: media-web-giapponese
 slug: 020-appmedia-starsavior-bunny-charles-evaluation-and-usage
-title: バニーシャルルの装備と旅育成おすすめ｜性能評価
+title: "Valutazione, kit e use case"
 order: 20
 segment_ref: appmedia-starsavior
 difficulty: n3
 status: active
 tags: [web, appmedia, starsavior, character-guide, rating]
+prerequisites: []
 summary: >-
   Leggi come una scheda personaggio separa giudizio, dati di kit e use case con
   le etichette hyoka, seino, kougekishu, tsuyosa e tsukaimichi.
@@ -29,19 +30,6 @@ compatti: [{{評価|ひょうか}}](term:term-hyoka),
 [{{強|つよ}}さ](term:term-tsuyosa) e
 [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi). Sono etichette brevi, però
 cambiano il tipo di informazione che stai leggendo.
-
-:::image
-src: assets/starsavior-79717421-overview.png
-alt: >-
-  Pagina AppMedia di Star Savior dedicata a Bunny Charles con titolo e immagine
-  iniziale.
-caption: >-
-  L'apertura mostra nome del personaggio, titolo lungo della guida e immagine
-  iniziale. [{{評価|ひょうか}}](term:term-hyoka),
-  [{{性能|せいのう}}](term:term-seino), [{{強|つよ}}さ](term:term-tsuyosa) e
-  [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi) sono sezioni interne di una
-  pagina più ampia, non l'unico titolo della schermata.
-:::
 
 ## Termini chiave
 
@@ -75,6 +63,19 @@ caption: >-
   uno dei contesti elementali citati nella parte d'uso
 
 ---
+
+:::image
+src: assets/starsavior-79717421-overview.png
+alt: >-
+  Pagina AppMedia di Star Savior dedicata a Bunny Charles con titolo e immagine
+  iniziale.
+caption: >-
+  L'apertura mostra nome del personaggio, titolo lungo della guida e immagine
+  iniziale. [{{評価|ひょうか}}](term:term-hyoka),
+  [{{性能|せいのう}}](term:term-seino), [{{強|つよ}}さ](term:term-tsuyosa) e
+  [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi) sono sezioni interne di una
+  pagina più ampia, non l'unico titolo della schermata.
+:::
 
 ## 1. Il sommario separa giudizio, domanda e uso pratico
 
@@ -133,7 +134,7 @@ Se li leggi come sinonimi, perdi la differenza tra verdetto e meccanica.
 
 #### 🧠 Gancio cognitivo
 
-pensa a `の` nei titoli web come a una cornice:
+Pensa a `の` nei titoli web come a una cornice:
 tutto ciò che segue è “il blocco su バニーシャルル”, non un oggetto posseduto
 dal personaggio.
 
@@ -244,7 +245,7 @@ ti dice se questo dato pesa contro boss, in auto battle o in squadre con più
 
 #### 🧠 Gancio cognitivo
 
-in [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi),
+In [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi),
 immagina `{{道|みち}}` come la “strada d'impiego”: non basta poter usare il
 personaggio, devi sapere quale percorso gli fa rendere.
 

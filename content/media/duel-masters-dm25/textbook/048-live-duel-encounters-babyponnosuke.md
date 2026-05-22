@@ -25,16 +25,6 @@ Nel testo di [ベイビーポンの{{助|すけ}}](term:term-babyponnosuke), l'i
 
 La carta non dice semplicemente "blocca una creatura grande". Usa [より](grammar:grammar-yori) per fissare una soglia numerica, [{{大|おお}}きい](term:term-ookii) per dire che il costo la supera, [{{出|で}}る](term:term-deru)[{{時|とき}}](grammar:grammar-toki) per agganciarsi alla finestra di ingresso e [かわりに](grammar:grammar-kawarini) per trasformare quell'ingresso in un movimento verso il fondo del mazzo.
 
-:::image
-src: assets/cards/live-duel/babyponnosuke.jpg
-alt: "Babyponnosuke card."
-caption: >-
-  [ベイビーポンの{{助|すけ}}](term:term-babyponnosuke) usa una sola frase lunga:
-  durante il turno avversario confronta il costo della creatura in ingresso con
-  le carte nella [マナゾーン](term:term-mana-zone), controlla i ジョーカーズ tra
-  [バトルゾーン](term:term-battle-zone) e mana, poi sostituisce l'ingresso con il
-  fondo della [{{山札|やまふだ}}](term:term-deck).
-:::
 
 ## Termini chiave
 
@@ -42,7 +32,7 @@ caption: >-
 - [{{相手|あいて}}](term:term-opponent) — avversario; qui è sia il possessore del turno sia il possessore della creatura
 - [マナゾーン](term:term-mana-zone) — zona da cui si conta il benchmark numerico
 - [コスト](term:term-cost) — costo della creatura, letto come valore confrontabile
-- [{{大|おお}}きい](term:term-ookii) — grande / alto; con `コスト` significa costo più alto
+- [{{大|おお}}きい](term:term-ookii) — grande / alto; con コスト significa costo più alto
 - [{{合計|ごうけい}}](term:term-goukei) — totale, somma tra più zone
 - [{{山札|やまふだ}}](term:term-deck) — mazzo; qui la destinazione è il fondo del mazzo
 
@@ -65,14 +55,27 @@ caption: >-
 - [バトルゾーン](term:term-battle-zone) — zona di campo in cui le creature sono presenti
 - [マナゾーン](term:term-mana-zone) — zona del mana, usata sia nel confronto sia nel conteggio dei ジョーカーズ
 - [{{山札|やまふだ}}](term:term-deck)の{{下|した}} — fondo del mazzo
+- [クリーチャー](term:term-creature) — creatura
+- [{{置|お}}く](term:term-oku) — mettere / porre
 
 ---
 
+:::image
+src: assets/cards/live-duel/babyponnosuke.jpg
+alt: "Babyponnosuke card."
+caption: >-
+  [ベイビーポンの{{助|すけ}}](term:term-babyponnosuke) usa una sola frase lunga:
+  durante il turno avversario confronta il costo della creatura in ingresso con
+  le carte nella [マナゾーン](term:term-mana-zone), controlla i ジョーカーズ tra
+  [バトルゾーン](term:term-battle-zone) e mana, poi sostituisce l'ingresso con il
+  fondo della [{{山札|やまふだ}}](term:term-deck).
+:::
+
 ## 1. La soglia: turno avversario, mana e costo più alto
 
-La prima metà della frase costruisce una soglia. `{{相手|あいて}}のターン{{中|ちゅう}}に` restringe il timing al turno dell'avversario; `{{相手|あいて}}のマナゾーンにあるカードの{{枚数|まいすう}}` prende il numero di carte nella sua mana zone; [より](grammar:grammar-yori) trasforma quel numero nel punto di riferimento del confronto.
+La prima metà della frase costruisce una soglia. {{相手|あいて}}のターン{{中|ちゅう}}に restringe il timing al turno dell'avversario; {{相手|あいて}}のマナゾーンにあるカードの{{枚数|まいすう}} prende il numero di carte nella sua mana zone; [より](grammar:grammar-yori) trasforma quel numero nel punto di riferimento del confronto.
 
-Il pezzo [コスト](term:term-cost)が[{{大|おお}}きい](term:term-ookii) non parla di dimensione fisica. Con `コスト`, [{{大|おお}}きい](term:term-ookii) vale "alto" in senso numerico: la creatura è rilevante solo se il suo costo supera il numero contato nel mana avversario.
+Il pezzo [コスト](term:term-cost)が[{{大|おお}}きい](term:term-ookii) non parla di dimensione fisica. Con コスト, [{{大|おお}}きい](term:term-ookii) vale "alto" in senso numerico: la creatura è rilevante solo se il suo costo supera il numero contato nel mana avversario.
 
 :::example_sentence
 jp: >-
@@ -103,7 +106,7 @@ reveal_mode: sentence
 
 *   `{{相手|あいて}}のターン{{中|ちゅう}}に`: cornice temporale. Il controllo non è sempre attivo; si apre solo durante il turno dell'avversario.
 *   `{{相手|あいて}}のマナゾーンにあるカード`: gruppo nominale. `にある` dice "che si trovano nella mana zone", quindi non stai contando tutto il mana possibile, ma le carte effettivamente presenti lì.
-*   `カードの{{枚数|まいすう}}より`: benchmark. `{{枚数|まいすう}}` trasforma le carte in un numero, e [より](grammar:grammar-yori) dice che il costo deve stare sopra quel numero.
+*   カードの{{枚数|まいすう}}より: benchmark. {{枚数|まいすう}} trasforma le carte in un numero, e [より](grammar:grammar-yori) dice che il costo deve stare sopra quel numero.
 *   `コストが{{大|おお}}きい{{相手|あいて}}のクリーチャー`: bersaglio della condizione. La creatura è avversaria e il suo costo è più alto del benchmark appena fissato.
 *   `{{出|で}}る{{時|とき}}`: finestra dell'evento. L'effetto guarda il momento in cui la creatura entra, non una creatura già rimasta stabilmente in campo.
 
@@ -113,11 +116,11 @@ reveal_mode: sentence
 
 #### 🧠 Gancio cognitivo
 
-Pensa a [より](grammar:grammar-yori) come a una linea di riferimento tracciata sul tavolo: tutto ciò che è sotto o uguale resta fuori dalla condizione, tutto ciò che la supera diventa leggibile come `コストが{{大|おお}}きい`. È un trucco mnemonico, non un'etimologia.
+Pensa a [より](grammar:grammar-yori) come a una linea di riferimento tracciata sul tavolo: tutto ciò che è sotto o uguale resta fuori dalla condizione, tutto ciò che la supera diventa leggibile come コストが{{大|おお}}きい. È un trucco mnemonico, non un'etimologia.
 
 ## 2. La finestra di ingresso: `{{出|で}}る{{時|とき}}`
 
-[{{出|で}}る](term:term-deru) è intransitivo: la creatura "esce fuori", "entra in campo", senza che la frase presenti un giocatore come agente diretto. Per questo `{{相手|あいて}}のクリーチャーが{{出|で}}る` usa `が`: il soggetto dell'evento è la creatura avversaria che sta entrando.
+[{{出|で}}る](term:term-deru) è intransitivo: la creatura "esce fuori", "entra in campo", senza che la frase presenti un giocatore come agente diretto. Per questo {{相手|あいて}}のクリーチャーが{{出|で}}る usa が: il soggetto dell'evento è la creatura avversaria che sta entrando.
 
 [{{時|とき}}](grammar:grammar-toki) aggancia l'effetto a quel momento. In un rules text, questa scelta cambia la lettura pratica: non stai aspettando "dopo che la creatura ha fatto qualcosa", stai guardando la finestra in cui l'ingresso viene intercettato.
 
@@ -139,13 +142,13 @@ reveal_mode: sentence
 
 #### ⚖️ Contrasto operativo
 
-`{{出|で}}る{{時|とき}}` non equivale a `{{出|で}}た{{後|あと}}`. Con `{{時|とき}}`, l'effetto si aggancia al momento dell'ingresso; con `{{後|あと}}`, leggeresti invece un evento successivo. La presenza di [かわりに](grammar:grammar-kawarini) più avanti conferma che qui la frase sta preparando una sostituzione, non una punizione ritardata.
+{{出|で}}る{{時|とき}} non equivale a {{出|で}}た{{後|あと}}. Con {{時|とき}}, l'effetto si aggancia al momento dell'ingresso; con {{後|あと}}, leggeresti invece un evento successivo. La presenza di [かわりに](grammar:grammar-kawarini) più avanti conferma che qui la frase sta preparando una sostituzione, non una punizione ritardata.
 
 ## 3. La condizione dei ジョーカーズ: sommare due zone
 
-Dopo il timing, la frase apre una condizione con `あれば`: se la quantità richiesta esiste, il resto dell'effetto procede. Il nome `ジョーカーズ` resta in katakana perché è una razza del gioco, mentre [{{合計|ごうけい}}](term:term-goukei) dice che il conteggio non va fatto zona per zona in modo separato.
+Dopo il timing, la frase apre una condizione con あれば: se la quantità richiesta esiste, il resto dell'effetto procede. Il nome ジョーカーズ resta in katakana perché è una razza del gioco, mentre [{{合計|ごうけい}}](term:term-goukei) dice che il conteggio non va fatto zona per zona in modo separato.
 
-Il blocco `バトルゾーンまたはマナゾーンに{{自分|じぶん}}のジョーカーズが{{合計|ごうけい}}{{3枚以上|さんまいいじょう}}あれば` chiede di guardare due luoghi, [バトルゾーン](term:term-battle-zone) e [マナゾーン](term:term-mana-zone), e sommare le tue carte ジョーカーズ presenti lì. `{{3枚以上|さんまいいじょう}}` include tre e qualsiasi numero superiore.
+Il blocco バトルゾーンまたはマナゾーンに{{自分|じぶん}}のジョーカーズが{{合計|ごうけい}}{{3枚以上|さんまいいじょう}}あれば chiede di guardare due luoghi, [バトルゾーン](term:term-battle-zone) e [マナゾーン](term:term-mana-zone), e sommare le tue carte ジョーカーズ presenti lì. {{3枚以上|さんまいいじょう}} include tre e qualsiasi numero superiore.
 
 :::example_sentence
 jp: >-
@@ -159,20 +162,20 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `バトルゾーンまたはマナゾーンに`: luogo della verifica. `または` significa "oppure", ma con [{{合計|ごうけい}}](term:term-goukei) il risultato pratico è un conteggio complessivo tra le due zone indicate.
+*   バトルゾーンまたはマナゾーンに: luogo della verifica. または significa "oppure", ma con [{{合計|ごうけい}}](term:term-goukei) il risultato pratico è un conteggio complessivo tra le due zone indicate.
 *   `{{自分|じぶん}}のジョーカーズ`: le tue carte o creature della razza ジョーカーズ. `{{自分|じぶん}}の` distingue subito il tuo lato da quello dell'avversario.
-*   `{{合計|ごうけい}}{{3枚以上|さんまいいじょう}}`: totale almeno tre. [{{合計|ごうけい}}](term:term-goukei) forza la somma, mentre `{{以上|いじょう}}` include il limite.
+*   {{合計|ごうけい}}{{3枚以上|さんまいいじょう}}: totale almeno tre. [{{合計|ごうけい}}](term:term-goukei) forza la somma, mentre {{以上|いじょう}} include il limite.
 *   `あれば`: condizione di esistenza. La frase non ti chiede di scegliere tre carte; controlla se quella quantità è presente.
 
 #### ⚖️ Contrasto operativo
 
-`または` da solo può farti pensare a "una zona o l'altra". Qui però [{{合計|ごうけい}}](term:term-goukei) cambia la lettura: il testo permette di sommare i ジョーカーズ in [バトルゾーン](term:term-battle-zone) e quelli in [マナゾーン](term:term-mana-zone). Non devi raggiungere tre in una singola zona.
+または da solo può farti pensare a "una zona o l'altra". Qui però [{{合計|ごうけい}}](term:term-goukei) cambia la lettura: il testo permette di sommare i ジョーカーズ in [バトルゾーン](term:term-battle-zone) e quelli in [マナゾーン](term:term-mana-zone). Non devi raggiungere tre in una singola zona.
 
 ## 4. La sostituzione: `かわりに`, `そのクリーチャー`, `その後`
 
-Quando la condizione è soddisfatta, [かわりに](grammar:grammar-kawarini) introduce l'effetto che prende il posto dell'ingresso normale. La creatura avversaria non resta semplicemente nel battle zone: `そのクリーチャーを{{山札|やまふだ}}の{{下|した}}に{{置|お}}き` la manda in fondo al mazzo.
+Quando la condizione è soddisfatta, [かわりに](grammar:grammar-kawarini) introduce l'effetto che prende il posto dell'ingresso normale. La creatura avversaria non resta semplicemente nel battle zone: そのクリーチャーを{{山札|やまふだ}}の{{下|した}}に{{置|お}}き la manda in fondo al mazzo.
 
-Poi arriva `その{{後|あと}}`: dopo quel primo movimento, anche `このクリーチャー`, cioè [ベイビーポンの{{助|すけ}}](term:term-babyponnosuke), viene messo in fondo alla [{{山札|やまふだ}}](term:term-deck). La differenza tra `そのクリーチャー` e `このクリーチャー` è decisiva: `その` riprende la creatura avversaria appena descritta, `この` punta alla carta che porta questo testo.
+Poi arriva その{{後|あと}}: dopo quel primo movimento, anche このクリーチャー, cioè [ベイビーポンの{{助|すけ}}](term:term-babyponnosuke), viene messo in fondo alla [{{山札|やまふだ}}](term:term-deck). La differenza tra そのクリーチャー e このクリーチャー è decisiva: その riprende la creatura avversaria appena descritta, この punta alla carta che porta questo testo.
 
 :::example_sentence
 jp: >-

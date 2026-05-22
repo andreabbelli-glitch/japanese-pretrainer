@@ -75,9 +75,11 @@ premio promesso, ritirabile o già ricevuto.
 
 ---
 
+[～{{済|ず}}み](grammar:grammar-zumi) e [～{{可能|かのう}}](grammar:grammar-kanou) separano due stati di UI: il primo dice che qualcosa è già concluso, il secondo che un'azione è disponibile.
+
 ## 1. プレゼントボックス divide coda aperta e storico
 
-Nel [プレゼントボックス](term:term-present-box), `プレゼント` non è solo "regalo"
+Nel [プレゼントボックス](term:term-present-box), プレゼント non è solo "regalo"
 in senso generico: dentro la UI diventa il contenitore dei premi assegnati ma
 non necessariamente già trasferiti nel tuo inventario. Per leggerlo bene devi
 separare tre cose: il premio, lo stato del claim e il bottone che esegue
@@ -120,12 +122,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed)の[{{報酬|ほうしゅう}}](term:term-reward)` ➔ **Nome modificato dallo stato**: `の` collega "non ancora ritirato" a "reward", quindi non descrive il tipo di premio ma il suo stato operativo.
+*   [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed)の[{{報酬|ほうしゅう}}](term:term-reward) ➔ **Nome modificato dallo stato**: の collega "non ancora ritirato" a "reward", quindi non descrive il tipo di premio ma il suo stato operativo.
 *   `{{2件|にけん}}あるので` ➔ **Motivo quantitativo**: il contatore `件` tratta le reward come pratiche o elementi di lista; `ので` trasforma quel numero nella ragione dell'azione successiva.
-*   `[{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim)で` ➔ **Mezzo dell'azione**: `で` indica lo strumento usato per ritirare.
-*   `まとめて[{{受|う}}け{{取|と}}る](term:term-receive)` ➔ **Azione finale**: `まとめて` rafforza l'idea di gruppo, mentre [{{受|う}}け{{取|と}}る](term:term-receive) chiude il claim.
+*   [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim)で ➔ **Mezzo dell'azione**: で indica lo strumento usato per ritirare.
+*   まとめて[{{受|う}}け{{取|と}}る](term:term-receive) ➔ **Azione finale**: まとめて rafforza l'idea di gruppo, mentre [{{受|う}}け{{取|と}}る](term:term-receive) chiude il claim.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed) non significa che la reward
 non esiste ancora. Significa che è già stata assegnata alla box, ma manca il
@@ -157,18 +159,18 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{獲得|かくとく}}](term:term-kakutoku)[{{日時|にちじ}}](term:term-datetime)を{{見|み}}てから` ➔ **Controllo preliminare**: `てから` mette la verifica temporale prima dell'azione principale.
-*   `[{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline)が{{切|き}}れる{{前|まえ}}に` ➔ **Limite prima della scadenza**: `が` marca la scadenza come soggetto di `{{切|き}}れる`, e `{{前|まえ}}に` impone di agire prima di quel momento.
-*   `[{{報酬|ほうしゅう}}](term:term-reward)を[{{受|う}}け{{取|と}}る](term:term-receive)` ➔ **Oggetto + azione**: `を` marca ciò che entra effettivamente in tuo possesso.
+*   [{{獲得|かくとく}}](term:term-kakutoku)[{{日時|にちじ}}](term:term-datetime)を{{見|み}}てから ➔ **Controllo preliminare**: てから mette la verifica temporale prima dell'azione principale.
+*   [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline)が{{切|き}}れる{{前|まえ}}に ➔ **Limite prima della scadenza**: が marca la scadenza come soggetto di {{切|き}}れる, e {{前|まえ}}に impone di agire prima di quel momento.
+*   [{{報酬|ほうしゅう}}](term:term-reward)を[{{受|う}}け{{取|と}}る](term:term-receive) ➔ **Oggetto + azione**: を marca ciò che entra effettivamente in tuo possesso.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{獲得|かくとく}}{{日時|にちじ}}` risponde a "quando è arrivato nella box?".
 [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline) risponde a
 "entro quando devo prenderlo?". Il primo guarda indietro, il secondo mette un
 timer davanti al bottone.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Come trucco mnemonico, leggi [{{獲得|かくとく}}](term:term-kakutoku) come il
 timbro d'ingresso e [{{期限|きげん}}](term:term-deadline) come il timer. Non è
@@ -222,12 +224,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{既読|きどく}}](term:term-read-already)のストーリーを` ➔ **Oggetto già letto**: `の` trasforma "già letto" in modificatore di `ストーリー`.
-*   `[スキップ](term:term-skip)して` ➔ **Prima azione collegata**: la forma in `-te` unisce lo skip all'azione successiva senza farne il risultato finale.
-*   `[{{中級|ちゅうきゅう}}](term:term-intermediate-class)のステージに` ➔ **Destinazione della sfida**: `に` marca lo stage verso cui entri.
-*   `チケット{{2枚|にまい}}で[{{挑戦|ちょうせん}}](term:term-challenge)する` ➔ **Mezzo / costo + azione**: `で` legge i due ticket come risorsa usata per affrontare lo stage.
+*   [{{既読|きどく}}](term:term-read-already)のストーリーを ➔ **Oggetto già letto**: の trasforma "già letto" in modificatore di ストーリー.
+*   [スキップ](term:term-skip)して ➔ **Prima azione collegata**: la forma in -te unisce lo skip all'azione successiva senza farne il risultato finale.
+*   [{{中級|ちゅうきゅう}}](term:term-intermediate-class)のステージに ➔ **Destinazione della sfida**: に marca lo stage verso cui entri.
+*   チケット{{2枚|にまい}}で[{{挑戦|ちょうせん}}](term:term-challenge)する ➔ **Mezzo / costo + azione**: で legge i due ticket come risorsa usata per affrontare lo stage.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `ステージ{{詳細|しょうさい}}` e `{{報酬|ほうしゅう}}{{確認|かくにん}}` aprono
 informazioni: dettagli e preview. [{{対戦|たいせん}}{{開始|かいし}}](term:term-start-match)
@@ -262,10 +264,10 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{以下|いか}}の[{{報酬|ほうしゅう}}](term:term-reward)を` ➔ **Oggetto elencato sotto**: `{{以下|いか}}の` prepara la lista che segue nel popup, e `を` marca quelle reward come oggetto ricevuto.
-*   `[{{受|う}}け{{取|と}}りました](term:term-receive)` ➔ **Azione conclusa**: il verbo composto [{{受|う}}け{{取|と}}る](term:term-receive) è al passato cortese `ました`, quindi l'app sta comunicando un esito, non chiedendo una scelta.
+*   {{以下|いか}}の[{{報酬|ほうしゅう}}](term:term-reward)を ➔ **Oggetto elencato sotto**: {{以下|いか}}の prepara la lista che segue nel popup, e を marca quelle reward come oggetto ricevuto.
+*   [{{受|う}}け{{取|と}}りました](term:term-receive) ➔ **Azione conclusa**: il verbo composto [{{受|う}}け{{取|と}}る](term:term-receive) è al passato cortese ました, quindi l'app sta comunicando un esito, non chiedendo una scelta.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{受|う}}け{{取|と}}る](term:term-receive) su un bottone è un invito
 all'azione: "ritira". `{{受|う}}け{{取|と}}りました` in una frase di popup è una
@@ -273,7 +275,7 @@ conferma: "hai ritirato". La differenza non sta nel sostantivo
 [{{報酬|ほうしゅう}}](term:term-reward), ma nella forma verbale che accompagna il
 claim.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Leggi il flusso come tre cartellini: [{{未|み}}～](grammar:grammar-mi-prefix)
 apre ciò che non è ancora completato, [{{期限|きげん}}](term:term-deadline) mette

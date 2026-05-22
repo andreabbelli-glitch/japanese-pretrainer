@@ -16,7 +16,7 @@ summary: >-
 
 # Dialoghi e tutorial: inviti, condizioni e sblocchi
 
-Nei giochi Pokemon, molte istruzioni non suonano come ordini. Nemona ti invita
+Nei giochi Pokémon, molte istruzioni non suonano come ordini. Nemona ti invita
 a provare, un familiare ti raccomanda di riposare, un messaggio di sistema ti
 dice che una funzione è ora disponibile. Il tono resta amichevole, ma la frase
 sta guidando un'azione concreta: scegliere una destinazione, salvare, curare la
@@ -31,13 +31,13 @@ stabile e preparazione.
 ## Termini chiave
 
 - [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) — destinazione / punto da raggiungere
-- [{{手|て}}{{持|も}}ち](term:term-te-mochi) — squadra attiva / Pokemon con te
-- [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru) — aprire il riepilogo del Pokemon
+- [{{手|て}}{{持|も}}ち](term:term-te-mochi) — squadra attiva / Pokémon con te
+- [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru) — aprire il riepilogo del Pokémon
 - [レポート](term:term-report) — salvataggio / registrazione della partita
 - [どうぐ](term:term-dougu) — strumento / oggetto usabile
 - [{{回復|かいふく}}](term:term-kaifuku) — recupero / cura
 - [{{状態|じょうたい}}{{異常|いじょう}}](term:term-joutai-ijou) — alterazione di stato
-- [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) — Pokedex / catalogo dei Pokemon
+- [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) — Pokédex / catalogo dei Pokémon
 
 ## Espressioni ricorrenti
 
@@ -60,10 +60,12 @@ stabile e preparazione.
 ## Etichette da riconoscere
 
 - [バッグ](term:term-bag) — borsa / inventario generale
-- [もちもの](term:term-mochimono) — strumento tenuto da un Pokemon
+- [もちもの](term:term-mochimono) — strumento tenuto da un Pokémon
 - `マップ` — mappa, spesso il luogo dove si registra la destinazione
 
 ---
+
+[ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) è il Pokédex: quando compare, la frase non parla solo di un menu, ma del registro che cataloga i Pokémon incontrati o catturati.
 
 ## 1. Il tutorial parla piano, ma spinge l'azione
 
@@ -72,7 +74,7 @@ dialoghi guida, un personaggio può formulare la prossima azione come
 "proviamo", "che ne dici di provare" o "mi raccomando". La frase sembra
 sociale, però nel flusso del gioco apre una procedura concreta.
 
-[～てみる](grammar:grammar-te-miru) nasce dalla forma in `-te` del verbo più
+[～てみる](grammar:grammar-te-miru) nasce dalla forma in -te del verbo più
 `みる`, "vedere". In un tutorial non significa soltanto "fare un esperimento
 astratto": vuol dire eseguire il comando e osservare subito l'effetto. Se leggi
 `{{登録|とうろく}}してみたら？`, il gioco non sta divagando; sta rendendo più
@@ -98,17 +100,17 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `{{目的|もくてき}}{{地|ち}}に` ➔ destinazione marcata da `に`: è il punto verso cui orientare l'azione.
-- `{{登録|とうろく}}してみたら？` ➔ `{{登録|とうろく}}する` in forma `-te` + [～てみる](grammar:grammar-te-miru) + `たら`: "se provassi a registrarla?".
+- {{登録|とうろく}}してみたら？ ➔ {{登録|とうろく}}する in forma -te + [～てみる](grammar:grammar-te-miru) + たら: "se provassi a registrarla?".
 - `{{次|つぎ}}に {{向|む}}かう {{場所|ばしょ}}が` ➔ soggetto della conseguenza: il luogo verso cui dirigerti dopo.
 - `すぐ わかるよ` ➔ risultato rassicurante: `よ` presenta l'informazione come qualcosa che il parlante ti consegna.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{登録|とうろく}}してみたら？` non ha la rigidità di `{{登録|とうろく}}してください`,
 "registra per favore". Però non è neanche una chiacchiera opzionale: in un
 tutorial, il suggerimento gentile indica quasi sempre la prossima azione utile.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi), pensa a
 `{{目的|もくてき}}` come allo scopo e a `{{地|ち}}` come al punto sulla mappa. È
@@ -137,7 +139,7 @@ translation_it: >-
 - `{{手|て}}{{持|も}}ちも` ➔ anche la squadra attiva entra nell'effetto, non solo il protagonista.
 - `{{回復|かいふく}}するよ` ➔ conseguenza dichiarata con `よ`: il riposo produce recupero.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [～てね](grammar:grammar-te-ne) non è un imperativo brusco, ma nemmeno semplice
 decorazione affettuosa. Se la frase contiene un'azione giocabile, leggila come
@@ -166,14 +168,14 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{道|みち}}に {{迷|まよ}}ったら` ➔ condizione con [～たら](grammar:grammar-tara): quando si realizza il problema del perdersi.
+- {{道|みち}}に {{迷|まよ}}ったら ➔ condizione con [～たら](grammar:grammar-tara): quando si realizza il problema del perdersi.
 - `マップを {{開|ひら}}いて` ➔ prima risposta operativa: aprire la mappa.
 - `{{現在|げんざい}}{{地|ち}}を` ➔ oggetto del controllo: il punto in cui ti trovi adesso.
 - `{{確認|かくにん}}しよう` ➔ volitivo pratico: "controlliamo", tipico di una guida che propone l'azione successiva.
 
 La stessa struttura torna in battaglia e nella gestione della squadra. Se la
 condizione è [{{状態|じょうたい}}{{異常|いじょう}}](term:term-joutai-ijou), il testo
-ti sta dicendo che il Pokemon non è più nel suo stato normale: può perdere
+ti sta dicendo che il Pokémon non è più nel suo stato normale: può perdere
 turni, HP o libertà d'azione. [{{回復|かいふく}}](term:term-kaifuku) allora va
 letto in modo largo, come ripristino: a volte riguarda solo HP, altre volte
 rimuove anche un problema di stato.
@@ -188,11 +190,11 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{状態|じょうたい}}{{異常|いじょう}}に なったら` ➔ condizione di cambiamento: il Pokemon entra in uno stato non normale.
+- `{{状態|じょうたい}}{{異常|いじょう}}に なったら` ➔ condizione di cambiamento: il Pokémon entra in uno stato non normale.
 - `{{回復|かいふく}}の どうぐを` ➔ `の` collega funzione e oggetto: uno strumento di recupero.
 - `{{使|つか}}おう` ➔ volitivo: proposta operativa, non semplice descrizione.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [～たら](grammar:grammar-tara) non ti dice sempre "se, forse, un giorno". Nei
 tutorial spesso vale "quando questa situazione si presenta, questa è la
@@ -202,13 +204,13 @@ procedura". Cerca quindi il confine: prima condizione, poi risposta.
 
 Un'altra zona tipica dei dialoghi guidati è l'aiuto. [～てくれる](grammar:grammar-te-kureru)
 aggiunge al verbo l'idea che l'azione arriva verso di te o a tuo beneficio. In
-Pokemon questo valore è molto concreto: un NPC cura la squadra, un servizio ti
+Pokémon questo valore è molto concreto: un NPC cura la squadra, un servizio ti
 sistema lo stato, un partner raccoglie un oggetto e il risultato entra nel tuo
 flusso.
 
 [{{手|て}}{{持|も}}ち](term:term-te-mochi) rende visibile chi riceve l'aiuto.
 Contiene `{{手|て}}`, mano, e `{{持|も}}ち`, ciò che tieni: nel gioco non indica
-tutti i Pokemon posseduti, ma il gruppo che hai con te adesso. Se il testo dice
+tutti i Pokémon posseduti, ma il gruppo che hai con te adesso. Se il testo dice
 che qualcuno cura la [{{手|て}}{{持|も}}ち](term:term-te-mochi), sta rimettendo in
 sesto la squadra attiva, cioè quella che può entrare subito in battaglia.
 
@@ -217,31 +219,31 @@ jp: >-
   ポケモンセンターの {{人|ひと}}が {{手|て}}{{持|も}}ちを
   {{回復|かいふく}}してくれる。
 translation_it: >-
-  La persona del Centro Pokemon ti cura la squadra.
+  La persona del Centro Pokémon ti cura la squadra.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `ポケモンセンターの {{人|ひと}}が` ➔ soggetto che agisce: la persona del Centro Pokemon.
+- `ポケモンセンターの {{人|ひと}}が` ➔ soggetto che agisce: la persona del Centro Pokémon.
 - `{{手|て}}{{持|も}}ちを` ➔ oggetto curato: la squadra attiva.
-- `{{回復|かいふく}}してくれる` ➔ verbo + [～てくれる](grammar:grammar-te-kureru): la cura avviene a tuo favore.
+- {{回復|かいふく}}してくれる ➔ verbo + [～てくれる](grammar:grammar-te-kureru): la cura avviene a tuo favore.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{回復|かいふく}}する` descrive l'azione di curare. `{{回復|かいふく}}してくれる`
 aggiunge l'angolo del beneficio: qualcuno o qualcosa lo fa per te. Nei dialoghi
 questo cambia il tono, perché il personaggio non presenta solo un effetto, ma
 un supporto.
 
-I messaggi di ottenimento usano un altro tipo di stabilità. `{{手|て}}に
+I messaggi di ottenimento usano un altro tipo di stabilità. {{手|て}}に
 {{入|い}}れた！` dice che qualcosa è entrato nelle tue mani; `バッグに
-しまった` dice che il gioco lo ha riposto nell'inventario. Non sono frasi da
+しまった dice che il gioco lo ha riposto nell'inventario. Non sono frasi da
 saltare: ti dicono se hai ricevuto un [どうぐ](term:term-dougu), dove è finito e
 se puoi recuperarlo dalla [バッグ](term:term-bag).
 
 :::image
 src: assets/story/lets-go-auto-battle-field.webp
-alt: "Pokemon partner sul campo con notifica laterale di vittoria automatica e oggetto ottenuto."
+alt: "Pokémon partner sul campo con notifica laterale di vittoria automatica e oggetto ottenuto."
 caption: >-
   Anche una piccola notifica sul campo può contenere il nucleo operativo:
   qualcuno ha agito, un [どうぐ](term:term-dougu) è stato ottenuto e il risultato
@@ -262,7 +264,7 @@ translation_it: >-
 - `バッグに` ➔ destinazione dell'archiviazione: la borsa / inventario.
 - `しまった` ➔ azione conclusa di riporre; qui non ha valore di "errore", ma di sistemazione completata.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per `{{手|て}}に {{入|い}}れた`, immagina l'oggetto che passa dal mondo di gioco
 alla tua mano. Subito dopo, `バッグに しまった` lo sposta dalla mano al posto
@@ -281,7 +283,7 @@ diventare tutte "puoi": [～ことができる](grammar:grammar-koto-ga-dekiru),
 "cosa / azione" con `こと` e aggiunge `ができる`, "è possibile". In una UI vale
 "da qui puoi fare questa azione". Se la frase parla di
 [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru), non sta commentando la
-forza in astratto: quel label apre il riepilogo del Pokemon, dove controlli
+forza in astratto: quel label apre il riepilogo del Pokémon, dove controlli
 mosse, abilità, tipo e [もちもの](term:term-mochimono).
 
 :::example_sentence
@@ -289,7 +291,7 @@ jp: >-
   この {{画面|がめん}}では ポケモンの もちものを {{変更|へんこう}}する
   ことができる。
 translation_it: >-
-  In questa schermata puoi cambiare l'oggetto tenuto da un Pokemon.
+  In questa schermata puoi cambiare l'oggetto tenuto da un Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -311,14 +313,14 @@ jp: >-
   ジムバッジが {{増|ふ}}えると {{高|たか}}い レベルの ポケモンも
   {{言|い}}うことを {{聞|き}}くようになる。
 translation_it: >-
-  Quando aumentano le Medaglie Palestra, anche i Pokemon di livello più alto
+  Quando aumentano le Medaglie Palestra, anche i Pokémon di livello più alto
   iniziano a obbedirti.
 :::
 
 #### 🗺️ Anatomia della frase
 
 - `ジムバッジが {{増|ふ}}えると` ➔ condizione automatica: quando aumentano le medaglie.
-- `{{高|たか}}い レベルの ポケモンも` ➔ anche i Pokemon di livello alto entrano nella nuova regola.
+- `{{高|たか}}い レベルの ポケモンも` ➔ anche i Pokémon di livello alto entrano nella nuova regola.
 - `{{言|い}}うことを {{聞|き}}く` ➔ espressione per "obbedire": ascoltare ciò che viene detto.
 - `ようになる` ➔ cambiamento stabile: da quel punto iniziano a obbedire.
 
@@ -344,7 +346,7 @@ translation_it: >-
 - `レポートして` ➔ fare il salvataggio.
 - `おこう` ➔ volitivo di `おく`: lasciamolo fatto, così resta pronto.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [～ことができる](grammar:grammar-koto-ga-dekiru) parla di una funzione aperta
 adesso. [～ようになる](grammar:grammar-you-ni-naru) parla di uno sblocco che
@@ -376,7 +378,7 @@ jp: >-
   ポケモンを {{選|えら}}んで 「{{強|つよ}}さを{{見|み}}る」を {{開|ひら}}くと、
   わざや もちものを {{確認|かくにん}}する ことができる。
 translation_it: >-
-  Se selezioni un Pokemon e apri "Controlla dati", puoi verificare mosse e
+  Se selezioni un Pokémon e apri "Controlla dati", puoi verificare mosse e
   oggetto tenuto.
 :::
 
@@ -385,12 +387,12 @@ jp: >-
   {{新|あたら}}しい ポケモンを {{捕|つか}}まえると
   ポケモン{{図鑑|ずかん}}で {{見|み}}られるようになる。
 translation_it: >-
-  Quando catturi un nuovo Pokemon, diventa consultabile nel Pokedex.
+  Quando catturi un nuovo Pokémon, diventa consultabile nel Pokédex.
 :::
 
 ## Nota finale
 
-I tutorial Pokemon sono gentili nella voce, ma regolari nella struttura. Quando
+I tutorial Pokémon sono gentili nella voce, ma regolari nella struttura. Quando
 vedi [～てみる](grammar:grammar-te-miru), cerca l'azione da provare; quando
 vedi [～たら](grammar:grammar-tara), separa condizione e risposta; quando vedi
 [～てくれる](grammar:grammar-te-kureru), chiediti chi sta facendo qualcosa a tuo

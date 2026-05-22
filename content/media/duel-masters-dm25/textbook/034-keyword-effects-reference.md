@@ -28,7 +28,7 @@ dopo. Il nome inglese o katakana dà un'etichetta rapida, ma il giapponese
 decide davvero timing, bersaglio e limite dell'effetto.
 
 Le keyword più dense riciclano sempre gli stessi segnali. `{{時|とき}}` apre la
-finestra temporale, `〜てもよい` lascia una scelta, [{{支払|しはら}}わずに](grammar:grammar-zuni)
+finestra temporale, 〜てもよい lascia una scelta, [{{支払|しはら}}わずに](grammar:grammar-zuni)
 annulla il pagamento, `{{上|うえ}}` e `{{下|した}}` regolano le carte sovrapposte,
 mentre `{{中|ちゅう}}`, `{{終|お}}わりに` e `{{場合|ばあい}}` impediscono di spostare
 mentalmente l'effetto nel momento sbagliato.
@@ -95,8 +95,7 @@ mentalmente l'effetto nel momento sbagliato.
 - [{{入|い}}れ{{替|か}}えてもよい](term:term-irekaeru) — puoi scambiare due
   creature tra zone diverse
 - [{{破壊|はかい}}](term:term-destroy)する — distruggere la creatura indicata
-- [{{呪文側|じゅもんがわ}}](term:term-spell-side)を[{{唱|とな}}えて](term:term-tonaeru)もよい
-  — puoi lanciare il lato spell
+- [{{呪文側|じゅもんがわ}}](term:term-spell-side)を[{{唱|とな}}えて](term:term-tonaeru)もよい — puoi lanciare il lato spell
 - [{{出|で}}た](term:term-deru)ターン — il turno in cui la creatura è entrata
 - [{{出|だ}}す](term:term-dasu) — mettere in gioco una carta o creatura
 
@@ -107,11 +106,11 @@ mentalmente l'effetto nel momento sbagliato.
 - [{{使|つか}}ってもよい](grammar:grammar-temoyoi) — puoi usare, ma non sei
   obbligato
 - [{{重|かさ}}ねつつ](grammar:grammar-tsutsu) — sovrapporre mentre metti in gioco
-- [その{{攻撃中|こうげきちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba)
-  — se ha rotto uno scudo durante quello stesso attacco
+- [その{{攻撃中|こうげきちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba) — se ha rotto uno scudo durante quello stesso attacco
 - [バトルゾーンに{{置|お}}いたまま](grammar:grammar-battle-zone-ni-oita-mama) —
   lasciando la carta nel battle zone
 - [ずつ](grammar:grammar-zutsu) — per ciascun gruppo, in quantità distribuita
+- [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki) — quando / nel momento in cui
 
 ## Etichette da riconoscere
 
@@ -124,6 +123,16 @@ mentalmente l'effetto nel momento sbagliato.
 - [{{召喚|しょうかん}}](term:term-summon) — evocazione
 - [{{攻撃|こうげき}}](term:term-attack) — attacco
 - [{{効果|こうか}}](term:term-effect) — effetto
+- [{{置|お}}く](term:term-oku) — mettere / porre
+- [{{自分|じぶん}}](term:term-self) — se stessi / il proprio lato
+- [{{文明|ぶんめい}}](term:term-civilization) — civiltà / civilization
+- [{{数|かず}}](term:term-kazu) — numero / quantità
+- [タップ](term:term-tap) — tappare / mettere in posizione tapped
+- [クリーチャー](term:term-creature) — creatura
+- [{{能力|のうりょく}}](term:term-ability) — abilità / testo di effetto
+- [{{魔導具|まどうぐ}}](term:term-madougu) — Magic Tool / famiglia di carte
+- [{{進化|しんか}}](term:term-evolution) — evoluzione
+- [バトル](term:term-battle) — battaglia / scontro diretto
 
 ---
 
@@ -136,7 +145,7 @@ opzione. Quando accanto compare `かわりに`, l'opzione sostituisce un evento;
 compare `そうした{{場合|ばあい}}`, la scelta appena fatta diventa la condizione
 per il prezzo successivo.
 
-- [アビスラッシュ](term:term-abyss-rush) usa `{{離|はな}}れるかわりに`: il testo
+- [アビスラッシュ](term:term-abyss-rush) usa {{離|はな}}れるかわりに: il testo
   non aspetta che la creatura sia già uscita, ma mette un recupero al posto
   dell'uscita normale. La particella `から` poi inchioda la fonte al
   [{{墓地|ぼち}}](term:term-graveyard), quindi il movimento leggibile è
@@ -144,7 +153,7 @@ per il prezzo successivo.
   battle zone.
 - [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two) separa vantaggio e
   conto finale. `{{少|すく}}なくしてもよい` permette di ridurre il
-  [{{召喚|しょうかん}}](term:term-summon)コスト adesso; `そうした{{場合|ばあい}}`
+  [{{召喚|しょうかん}}](term:term-summon)コスト adesso; そうした{{場合|ばあい}}
   controlla se hai scelto davvero quella riduzione; `このターン{{終了時|しゅうりょうじ}}に`
   sposta la [{{破壊|はかい}}](term:term-destroy) alla fine del turno.
 
@@ -166,9 +175,9 @@ reveal_mode: sentence
   indica l'uscita dalla zona in cui si trova.
 - `かわりに`: il recupero non viene dopo l'evento, ma prende il posto di
   quell'evento.
-- `[{{墓地|ぼち}}](term:term-graveyard)から`: `から` marca la fonte, quindi il
+- [{{墓地|ぼち}}](term:term-graveyard)から: から marca la fonte, quindi il
   cimitero è il punto di partenza della carta scelta.
-- `{{1体|いったい}}[{{手札|てふだ}}](term:term-hand)に{{戻|もど}}してもよい`: il numero
+- {{1体|いったい}}[{{手札|てふだ}}](term:term-hand)に{{戻|もど}}してもよい: il numero
   limita il bersaglio a una creatura e `〜てもよい` conserva la scelta.
 
 :::example_sentence
@@ -186,7 +195,7 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-- `[{{召喚|しょうかん}}](term:term-summon)コストを{{2|ふた}}つ{{少|すく}}なくしてもよい`:
+- [{{召喚|しょうかん}}](term:term-summon)コストを{{2|ふた}}つ{{少|すく}}なくしてもよい:
   il beneficio è una riduzione numerica del costo di evocazione, non una
   scorciatoia generica.
 - `そうした{{場合|ばあい}}`: la condizione riprende la scelta precedente, quindi il
@@ -228,15 +237,15 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-- `[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{3枚|さんまい}}{{見|み}}る`:
+- [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{3枚|さんまい}}{{見|み}}る:
   il punto di partenza è la cima del mazzo e il numero di carte viste è fisso.
 - `その{{中|なか}}から`: la scelta è interna alle carte appena guardate; non è una
   ricerca aperta in tutto il mazzo.
 - `コスト{{8以下|はちいか}}のアビスを{{1枚|いちまい}}`: il numero della keyword diventa
   una soglia massima, mentre `{{1枚|いちまい}}` limita il risultato a una carta.
-- `[{{支払|しはら}}わずに](grammar:grammar-zuni)[{{使|つか}}ってもよい](grammar:grammar-temoyoi)`:
+- [{{支払|しはら}}わずに](grammar:grammar-zuni)[{{使|つか}}ってもよい](grammar:grammar-temoyoi):
   il costo non viene pagato, ma l'uso resta facoltativo.
-- `{{残|のこ}}りを...{{下|した}}に[{{置|お}}く](term:term-oku)`: le carte non scelte
+- {{残|のこ}}りを...{{下|した}}に[{{置|お}}く](term:term-oku): le carte non scelte
   tornano in fondo al mazzo, quindi la procedura non le elimina.
 
 :::example_sentence
@@ -253,13 +262,13 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-- `[コスト](term:term-cost){{5以上|ごいじょう}}のジョーカーズがあれば`: `あれば`
+- [コスト](term:term-cost){{5以上|ごいじょう}}のジョーカーズがあれば: あれば
   controlla l'esistenza di almeno un Jokers che soddisfi la soglia.
 - `このクリーチャーを`: l'oggetto dell'azione è la creatura con G-Zero, non il
   Jokers che ha fatto rispettare la condizione.
-- `コストを[{{支払|しはら}}わずに](grammar:grammar-zuni)`: [～ずに](grammar:grammar-zuni)
+- コストを[{{支払|しはら}}わずに](grammar:grammar-zuni): [～ずに](grammar:grammar-zuni)
   indica l'azione saltata, cioè pagare.
-- `[{{召喚|しょうかん}}](term:term-summon)してもよい`: anche con costo zero, la
+- [{{召喚|しょうかん}}](term:term-summon)してもよい: anche con costo zero, la
   frase resta una scelta.
 
 [シビルカウント](term:term-civil-count) e [ラビリンス](term:term-labyrinth) non
@@ -294,6 +303,14 @@ translation_it: >-
   la condizione o l'effetto aggiuntivo di questa carta diventa attivo.
 reveal_mode: sentence
 :::
+
+#### 🗺️ Anatomia della frase
+
+- [シビルカウント](term:term-civil-count): la keyword apre un controllo numerico sul tuo battle zone.
+- このカードと{{同|おな}}じ + [{{文明|ぶんめい}}](term:term-civilization) + を{{持|も}}つ restringe il gruppo a carte della stessa civiltà.
+- `{{指定|してい}}された{{数|かず}}{{以上|いじょう}}あれば` chiude la soglia: il numero richiesto deve essere almeno raggiunto.
+- [ラビリンス](term:term-labyrinth): la keyword sposta il confronto sugli scudi.
+- `{{相手|あいて}}より{{多|おお}}ければ` non chiede pareggio: devi avere più scudi dell'avversario.
 
 #### ⚖️ Contrasto operativo
 
@@ -341,11 +358,11 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-- `[{{出|で}}た](term:term-deru)ターンに`: la finestra è il turno di ingresso, non
+- [{{出|で}}た](term:term-deru)ターンに: la finestra è il turno di ingresso, non
   un permesso indefinito per ogni turno futuro.
-- `すぐ[{{攻撃|こうげき}}](term:term-attack)できる`: Speed Attacker sblocca
+- すぐ[{{攻撃|こうげき}}](term:term-attack)できる: Speed Attacker sblocca
   l'attacco immediato.
-- `[タップ](term:term-tap)またはアンタップしているクリーチャー`: `または` presenta due
+- [タップ](term:term-tap)またはアンタップしているクリーチャー: または presenta due
   stati validi come alternative; Mach Fighter non richiede che la creatura
   bersaglio sia già tapped.
 
@@ -368,10 +385,10 @@ reveal_mode: sentence
 
 - `{{攻撃|こうげき}}の{{終|お}}わりに`: il controllo avviene dopo la conclusione
   dell'attacco.
-- `[その{{攻撃中|こうげきちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba)`:
+- [その{{攻撃中|こうげきちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba):
   `その` riprende proprio quell'attacco e `{{中|ちゅう}}` tiene la condizione
   dentro quella finestra.
-- `{{6|ろく}}[{{支払|しはら}}って](term:term-harau)`: qui il costo non viene
+- {{6|ろく}}[{{支払|しはら}}って](term:term-harau): qui il costo non viene
   saltato; paghi {{6|ろく}} per ottenere l'evocazione.
 
 [{{革命|かくめい}}チェンジ](term:term-kakumei-change) e
@@ -409,6 +426,14 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
+#### 🗺️ Anatomia della frase
+
+- [{{革命|かくめい}}チェンジ](term:term-kakumei-change): la finestra si apre quando una creatura valida attacca.
+- その + [クリーチャー](term:term-creature) + と + [{{手札|てふだ}}](term:term-hand) + にあるこの + [クリーチャー](term:term-creature) costruisce i due pezzi da scambiare.
+- [{{入|い}}れ{{替|か}}えてもよい](term:term-irekaeru) rende lo scambio permesso, non obbligatorio.
+- [ファイナル{{革命|かくめい}}](term:term-final-revolution): il trigger vale solo se questa creatura è entrata tramite Revolution Change.
+- `まだ{{使|つか}}っていなければ` blocca il secondo uso nello stesso turno.
+
 #### ⚖️ Contrasto operativo
 
 `{{攻撃|こうげき}}する{{時|とき}}` guarda il momento in cui l'attacco parte.
@@ -440,7 +465,7 @@ reveal_mode: sentence
 
 - `{{相手|あいて}}のクリーチャーが{{攻撃|こうげき}}する{{時|とき}}`: la finestra nasce da
   un attacco avversario.
-- `このクリーチャーを[タップ](term:term-tap)してもよい`: il tap è una risposta
+- このクリーチャーを[タップ](term:term-tap)してもよい: il tap è una risposta
   facoltativa, non un obbligo automatico.
 - `そうしたら`: la conseguenza vale solo se hai davvero tappato questa creatura.
 - `その{{攻撃|こうげき}}の{{攻撃先|こうげきさき}}をこのクリーチャーに{{変更|へんこう}}する`:
@@ -510,6 +535,14 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
+#### 🗺️ Anatomia della frase
+
+- [G・ストライク](term:term-g-strike): la carta passa dagli scudi alla mano e può essere mostrata.
+- `そうしたら` lega il blocco dell'attacco al fatto di averla mostrata.
+- [S・トリガー](term:term-s-trigger): la carta entra in mano da uno scudo rotto e può essere usata senza costo.
+- [スーパー・S・トリガー](term:term-super-s-trigger): mantiene lo stesso frame dagli scudi, ma aggiunge `すぐ{{実行|じっこう}}してもよい`.
+- `その{{後|あと}}の{{括弧|かっこ}}` segnala che condizioni o abilità extra arrivano dopo, non prima della finestra shield.
+
 #### ⚖️ Contrasto operativo
 
 [ブロッカー](term:term-blocker) sposta un attacco già dichiarato. [ジャストダイバー](term:term-justdiver)
@@ -544,9 +577,9 @@ reveal_mode: sentence
 
 - `ドラゴン{{3体|さんたい}}を`: il materiale richiesto è numerato e tipizzato:
   tre Draghi.
-- `[マナゾーン](term:term-mana-zone)から{{選|えら}}び`: la fonte dei materiali è la
+- [マナゾーン](term:term-mana-zone)から{{選|えら}}び: la fonte dei materiali è la
   mana zone, non il battle zone.
-- `その{{上|うえ}}に[{{重|かさ}}ねつつ](grammar:grammar-tsutsu)[{{出|だ}}す](term:term-dasu)`:
+- その{{上|うえ}}に[{{重|かさ}}ねつつ](grammar:grammar-tsutsu)[{{出|だ}}す](term:term-dasu):
   la creatura entra mentre viene sovrapposta ai materiali scelti.
 
 :::example_sentence
@@ -561,11 +594,18 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
+#### 🗺️ Anatomia della frase
+
+- [メテオバーン](term:term-meteorburn): la keyword guarda le carte già sotto la creatura.
+- `このクリーチャーの{{下|した}}にあるカードを` definisce il materiale consumato.
+- `{{指定|してい}}された{{枚数|まいすう}}` dice quante carte vanno mosse.
+- [{{墓地|ぼち}}](term:term-graveyard)に{{置|お}}いて chiude il costo operativo prima dell'effetto aggiuntivo.
+
 [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon) e
 [{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu)
 sembrano vicine perché entrambe mettono la creatura sopra materiali scelti da
 [バトルゾーン](term:term-battle-zone) e [{{墓地|ぼち}}](term:term-graveyard), ma
-la distribuzione numerica cambia. `{{2|ふた}}つ[ずつ](grammar:grammar-zutsu)`
+la distribuzione numerica cambia. {{2|ふた}}つ[ずつ](grammar:grammar-zutsu)
 chiede due materiali da ciascun gruppo; `{{合計6|ごうけいむっ}}つ` chiede invece
 sei materiali totali, con ripartizione libera tra le zone indicate.
 
@@ -631,6 +671,14 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
+#### 🗺️ Anatomia della frase
+
+- [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon): il trigger parte quando un Magic Tool entra e poi sceglie due materiali per zona.
+- [{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu): il timing diventa fine turno e il numero diventa totale sei.
+- `{{合計6|ごうけいむっ}}つ` è il punto che impedisce di leggere "due da ciascuna zona".
+- [シンカライズ](term:term-shinkarize): la carta viene trattata come ponte evolutivo.
+- [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution): il nuovo livello si mette sopra una creatura già evoluta.
+
 #### ⚖️ Contrasto operativo
 
 `{{進化元|しんかもと}}` e `{{進化先|しんかさき}}` parlano del ruolo che una carta può
@@ -673,14 +721,14 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-- `[{{攻撃|こうげき}}](term:term-attack)する[{{時|とき}}](grammar:grammar-toki)`:
+- [{{攻撃|こうげき}}](term:term-attack)する[{{時|とき}}](grammar:grammar-toki):
   la finestra si apre quando la creatura attacca.
-- `[{{呪文側|じゅもんがわ}}](term:term-spell-side)を`: l'oggetto è il lato spell,
+- [{{呪文側|じゅもんがわ}}](term:term-spell-side)を: l'oggetto è il lato spell,
   non tutta la carta come creatura.
-- `[バトルゾーンに{{置|お}}いたまま](grammar:grammar-battle-zone-ni-oita-mama)`:
+- [バトルゾーンに{{置|お}}いたまま](grammar:grammar-battle-zone-ni-oita-mama):
   `まま` conserva lo stato; la carta resta nel battle zone mentre lanci lo
   spell.
-- `コストを[{{支払|しはら}}わずに](grammar:grammar-zuni)[{{唱|とな}}えて](term:term-tonaeru)もよい`:
+- コストを[{{支払|しはら}}わずに](grammar:grammar-zuni)[{{唱|とな}}えて](term:term-tonaeru)もよい:
   il lancio è gratuito e facoltativo.
 
 :::example_sentence
@@ -712,8 +760,15 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-[ニンジャ・ストライク](term:term-ninja-strike) ricompone molti segnali della
-pagina: timing dell'avversario, soglia nella [マナゾーン](term:term-mana-zone),
+#### 🗺️ Anatomia della frase
+
+- [スレイヤー](term:term-slayer): il risultato del battle è distruggere la creatura avversaria che combatte.
+- [バトル](term:term-battle)する{{相手|あいて}}クリーチャーを marca il bersaglio distrutto.
+- [W・ブレイカー](term:term-w-breaker): `{{2|ふた}}つ` fissa due scudi.
+- [T・ブレイカー](term:term-t-breaker): `{{3|みっ}}つ` alza la quantità a tre scudi.
+
+[ニンジャ・ストライク](term:term-ninja-strike) ricompone molti segnali del rules
+text: timing dell'avversario, soglia nella [マナゾーン](term:term-mana-zone),
 limite dentro lo stesso attacco, costo saltato e scelta facoltativa.
 
 :::example_sentence
@@ -735,20 +790,20 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-- `{{相手|あいて}}の[クリーチャー](term:term-creature)が{{攻撃|こうげき}}またはブロックした{{時|とき}}`:
+- {{相手|あいて}}の[クリーチャー](term:term-creature)が{{攻撃|こうげき}}またはブロックした{{時|とき}}:
   la finestra nasce da un'azione dell'avversario, attacco o blocco.
-- `[マナゾーン](term:term-mana-zone)にカードが{{8枚以上|はちまいいじょう}}あり`: la
+- [マナゾーン](term:term-mana-zone)にカードが{{8枚以上|はちまいいじょう}}あり: la
   soglia controlla quante carte hai nella mana zone.
 - `その{{攻撃中|こうげきちゅう}}に...{{使|つか}}っていなければ`: dentro quello
   stesso attacco non devi aver già usato una abilità Ninja Strike.
-- `コストを[{{支払|しはら}}わずに](grammar:grammar-zuni)[{{召喚|しょうかん}}](term:term-summon)してもよい`:
+- コストを[{{支払|しはら}}わずに](grammar:grammar-zuni)[{{召喚|しょうかん}}](term:term-summon)してもよい:
   se le condizioni sono vere, l'evocazione è gratuita ma resta facoltativa.
 
 #### 🧠 Gancio cognitivo
 
 Per le keyword compatte, cerca il verbo finale prima di fissarti sul nome:
 `{{唱|とな}}える` lancia uno spell, `{{破壊|はかい}}する` distrugge,
-`ブレイクする` rompe scudi, [{{召喚|しょうかん}}](term:term-summon)する mette in
+ブレイクする rompe scudi, [{{召喚|しょうかん}}](term:term-summon)する mette in
 gioco una creatura. Il nome classifica l'effetto; il verbo ti dice che cosa
 succede davvero.
 
@@ -799,7 +854,7 @@ reveal_mode: sentence
 
 Le keyword diventano molto più leggibili quando parti dai blocchi della frase:
 timing con `{{時|とき}}`, `{{終|お}}わりに` o `{{中|ちゅう}}`; condizione con
-`あれば` o `いなければ`; costo con [{{支払|しはら}}わずに](grammar:grammar-zuni);
+あれば o いなければ; costo con [{{支払|しはら}}わずに](grammar:grammar-zuni);
 scelta con `〜てもよい`; materiali con `{{上|うえ}}`, `{{下|した}}` e
 [ずつ](grammar:grammar-zutsu). Il nome dell'effetto ti orienta, ma sono questi
 pezzi giapponesi a dirti se stai attaccando subito, pagando meno, saltando un

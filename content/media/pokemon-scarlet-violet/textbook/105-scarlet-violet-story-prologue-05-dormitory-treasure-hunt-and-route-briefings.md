@@ -39,10 +39,10 @@ passo in una [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) da fiss
 
 ## Espressioni ricorrenti
 
-- [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi)`とは いっても...` — anche se lo chiamiamo Treasure Hunt...
-- [チャンピオンランク](term:term-champion-rank)`ってのは...` — il Champion Rank sarebbe...
+- [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi)とは いっても... — anche se lo chiamiamo Treasure Hunt...
+- [チャンピオンランク](term:term-champion-rank)ってのは... — il Champion Rank sarebbe...
 - `{{授業|じゅぎょう}}を {{受|う}}けるだけじゃ ダメ` — non basta limitarsi a frequentare le lezioni
-- [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi)`を {{登録|とうろく}}してみよう` — proviamo a registrare una destinazione
+- [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi)を {{登録|とうろく}}してみよう — proviamo a registrare una destinazione
 
 ## Pattern grammaticali chiave
 
@@ -72,7 +72,7 @@ il gioco ti fa dormire lì, chiude il primo blocco di orientamento e prepara il
 momento in cui l'accademia smette di essere solo un edificio.
 
 - [{{学生|がくせい}}{{寮|りょう}}](term:term-gakusei-ryou) funziona come base narrativa: è il luogo sicuro in cui il protagonista entra davvero nella vita dell'accademia. Se lo leggi come semplice "camera", perdi il valore di passaggio: da qui il gioco può far partire un giorno nuovo, con regole nuove e scala più ampia.
-- [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) è la parola che spiega perché l'uscita in Paldea resta una cosa scolastica. `{{課外|かがい}}` porta l'idea di "fuori dal corso o dal perimetro ordinario"; `{{授業|じゅぎょう}}` resta "lezione". Insieme non dicono "vacanza", ma "lezione svolta fuori": l'avventura viene autorizzata dalla scuola, non separata dalla scuola.
+- [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) è la parola che spiega perché l'uscita in Paldea resta una cosa scolastica. {{課外|かがい}} porta l'idea di "fuori dal corso o dal perimetro ordinario"; {{授業|じゅぎょう}} resta "lezione". Insieme non dicono "vacanza", ma "lezione svolta fuori": l'avventura viene autorizzata dalla scuola, non separata dalla scuola.
 
 :::example_sentence
 jp: >-
@@ -116,8 +116,8 @@ caption: >-
 modo più largo. Non ti sta mandando verso un solo forziere o un solo premio; ti
 sta dando un nome comune per più percorsi possibili.
 
-- [～とはいっても](grammar:grammar-to-wa-itte-mo) è il freno che impedisce la lettura troppo letterale. In una frase come [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi)`とは いっても...`, il parlante riprende il nome appena pronunciato e lo ridimensiona: "anche se lo chiamiamo così...". Il valore non è contraddire il titolo, ma spiegare che il titolo copre più cose di quanto sembri.
-- [～たり ～たりする](grammar:grammar-tari-tari-suru) mostra questa ampiezza in azione. Quando il gioco elenca azioni come sfidare palestre o aiutare persone in difficoltà, `たり` non chiude una lista completa. Apre esempi rappresentativi: cose del tipo A, B e altre ancora, tutte possibili dentro lo stesso Treasure Hunt.
+- [～とはいっても](grammar:grammar-to-wa-itte-mo) è il freno che impedisce la lettura troppo letterale. In una frase come [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi)とは いっても..., il parlante riprende il nome appena pronunciato e lo ridimensiona: "anche se lo chiamiamo così...". Il valore non è contraddire il titolo, ma spiegare che il titolo copre più cose di quanto sembri.
+- [～たり ～たりする](grammar:grammar-tari-tari-suru) mostra questa ampiezza in azione. Quando il gioco elenca azioni come sfidare palestre o aiutare persone in difficoltà, たり non chiude una lista completa. Apre esempi rappresentativi: cose del tipo A, B e altre ancora, tutte possibili dentro lo stesso Treasure Hunt.
 
 :::example_sentence
 jp: >-
@@ -164,9 +164,9 @@ al protagonista. La forma [～ってのは](grammar:grammar-tte-no-wa) segnala p
 questa spiegazione parlata: `チャンピオンランクってのは...` suona come "il
 Champion Rank sarebbe...".
 
-- [チャンピオンランク](term:term-champion-rank) unisce una parola inglese riconoscibile a `ランク`, ma nel dialogo non basta tradurlo come "rango". La cosa decisiva è il riconoscimento: è uno status conferito dalla Lega a Trainer forti, quindi una meta istituzionale, non un soprannome.
+- [チャンピオンランク](term:term-champion-rank) unisce una parola inglese riconoscibile a ランク, ma nel dialogo non basta tradurlo come "rango". La cosa decisiva è il riconoscimento: è uno status conferito dalla Lega a Trainer forti, quindi una meta istituzionale, non un soprannome.
 - [ジムバッジ](term:term-gym-badge) dà corpo a quella meta. Il badge non è solo un oggetto da collezione: nella route palestre è la prova visibile che hai superato un passaggio e che ti stai avvicinando al rango spiegato da Nemona.
-- [{{目指|めざ}}す](term:term-mezasu) è il verbo che orienta tutto. `{{目|め}}` richiama l'occhio, `{{指|さ}}す` il puntare o indicare: come gancio visivo, puoi pensarlo come "puntare lo sguardo verso un obiettivo". Nel dialogo serve a trasformare il Champion Rank in qualcosa verso cui dirigere il viaggio.
+- [{{目指|めざ}}す](term:term-mezasu) è il verbo che orienta tutto. {{目|め}} richiama l'occhio, {{指|さ}}す il puntare o indicare: come gancio visivo, puoi pensarlo come "puntare lo sguardo verso un obiettivo". Nel dialogo serve a trasformare il Champion Rank in qualcosa verso cui dirigere il viaggio.
 
 :::example_sentence
 jp: >-
@@ -194,13 +194,13 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{授業|じゅぎょう}}を {{受|う}}けるだけ` ➔ **Azione limitata** (`だけ` restringe tutto al solo frequentare lezioni).
-*   `じゃ ダメで` ➔ **Insufficienza** ([～だけじゃ ダメ](grammar:grammar-dake-ja-dame) dice che quella condizione da sola non basta).
+*   じゃ ダメで ➔ **Insufficienza** ([～だけじゃ ダメ](grammar:grammar-dake-ja-dame) dice che quella condizione da sola non basta).
 *   `ジムバッジも {{集|あつ}}めないと いけない` ➔ **Requisito aggiunto** (`も` aggiunge i badge; `ないと いけない` li rende necessari).
 
 #### ⚖️ Contrasto operativo
 
-[チャンピオンランク](term:term-champion-rank) non coincide con `チャンピオン` come
-persona singola. `ランク` indica uno status riconosciuto; [ジムバッジ](term:term-gym-badge)
+[チャンピオンランク](term:term-champion-rank) non coincide con チャンピオン come
+persona singola. ランク indica uno status riconosciuto; [ジムバッジ](term:term-gym-badge)
 è una prova di avanzamento verso quello status, non un souvenir separato dalla
 route.
 
@@ -215,7 +215,7 @@ il tuo viaggio.
 src: assets/story/nemona-champion-rank-briefing.webp
 alt: "Nemona spiega al protagonista il Champion Rank e la raccolta dei Gym Badge."
 caption: >-
-  Il `ってのは` di Nemona segnala una definizione parlata: [チャンピオンランク](term:term-champion-rank) diventa un obiettivo spiegabile, mentre i [ジムバッジ](term:term-gym-badge) mostrano quale prova concreta sostiene quella route.
+  Il ってのは di Nemona segnala una definizione parlata: [チャンピオンランク](term:term-champion-rank) diventa un obiettivo spiegabile, mentre i [ジムバッジ](term:term-gym-badge) mostrano quale prova concreta sostiene quella route.
 :::
 
 ## 4. Smart Rotom: dalla libertà alla destinazione
@@ -225,9 +225,9 @@ annunciata dal Treasure Hunt diventa gesto operativo. Non basta sapere che puoi
 andare dove vuoi: il gioco ti fa scegliere un punto sulla mappa, registrarlo e
 partire con una direzione leggibile.
 
-- [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) è più specifico di "posto". `{{目的|もくてき}}` è lo scopo o obiettivo, `{{地|ち}}` è il luogo: il composto indica il luogo che diventa scopo del movimento. In una UI di mappa, questa parola ti dice che stai fissando una destinazione, non solo osservando una zona.
-- [～てみる](grammar:grammar-te-miru) è il pattern della prova. In `{{登録|とうろく}}してみよう`, il gioco non dà soltanto un comando tecnico: invita a provare la funzione e vedere che effetto ha sulla navigazione.
-- [～ておく](grammar:grammar-teoku) sposta invece l'azione nella preparazione. `{{決|き}}めておく` non significa "decidere e basta", ma "decidere in anticipo e lasciare deciso", così il movimento successivo parte più ordinato.
+- [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) è più specifico di "posto". {{目的|もくてき}} è lo scopo o obiettivo, {{地|ち}} è il luogo: il composto indica il luogo che diventa scopo del movimento. In una UI di mappa, questa parola ti dice che stai fissando una destinazione, non solo osservando una zona.
+- [～てみる](grammar:grammar-te-miru) è il pattern della prova. In {{登録|とうろく}}してみよう, il gioco non dà soltanto un comando tecnico: invita a provare la funzione e vedere che effetto ha sulla navigazione.
+- [～ておく](grammar:grammar-teoku) sposta invece l'azione nella preparazione. {{決|き}}めておく non significa "decidere e basta", ma "decidere in anticipo e lasciare deciso", così il movimento successivo parte più ordinato.
 
 :::example_sentence
 jp: >-
@@ -240,7 +240,7 @@ translation_it: >-
 
 *   `スマホロトムの マップで` ➔ **Strumento e contesto** (`で` marca il luogo operativo: la mappa dentro lo Smart Rotom).
 *   `{{目的|もくてき}}{{地|ち}}を` ➔ **Oggetto dell'azione** (la destinazione è ciò che viene registrato).
-*   `{{登録|とうろく}}してみよう` ➔ **Tentativo guidato** ([～てみる](grammar:grammar-te-miru) in forma volitiva: "proviamo a registrare").
+*   {{登録|とうろく}}してみよう ➔ **Tentativo guidato** ([～てみる](grammar:grammar-te-miru) in forma volitiva: "proviamo a registrare").
 
 :::example_sentence
 jp: >-
@@ -253,7 +253,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{行|い}}きたい {{場所|ばしょ}}` ➔ **Luogo desiderato** (`{{行|い}}きたい` modifica `{{場所|ばしょ}}`: è il posto in cui vuoi andare).
-*   `{{先|さき}}に {{決|き}}めておく` ➔ **Preparazione anticipata** ([～ておく](grammar:grammar-teoku) lascia la decisione pronta prima della partenza).
+*   {{先|さき}}に {{決|き}}めておく ➔ **Preparazione anticipata** ([～ておく](grammar:grammar-teoku) lascia la decisione pronta prima della partenza).
 *   `{{冒険|ぼうけん}}しやすい` ➔ **Conseguenza pratica** (`しやすい` dice che l'esplorazione diventa più facile da fare).
 
 #### ⚖️ Contrasto operativo

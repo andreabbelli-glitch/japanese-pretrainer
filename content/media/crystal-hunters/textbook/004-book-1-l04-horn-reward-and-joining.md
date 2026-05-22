@@ -37,11 +37,14 @@ persone.
 - [{{角|つの}}](term:term-tsuno) — corno, bersaglio fisico della caccia
 - [{{懸賞金|けんしょうきん}}](term:term-kenshoukin) — taglia / ricompensa su un obiettivo
 - [{{追|お}}う](term:term-ou) — inseguire un bersaglio ancora davanti
+- [{{追|お}}いつく](term:term-oitsuku) — raggiungere chi era davanti
 - [{{引|ひ}}っかかる](term:term-hikkakaru) — restare impigliato o bloccato
 - [{{飛|と}}びかかる](term:term-tobikakaru) — balzare addosso a qualcuno
 - [{{身|み}}を{{守|まも}}る](term:term-mi-o-mamoru) — difendersi, proteggere il proprio corpo
 - [{{返|かえ}}す](term:term-kaesu) — restituire qualcosa a qualcuno
 - [{{支|ささ}}える](term:term-sasaeru) — sorreggere, sostenere fisicamente
+- [{{女|おんな}}の{{子|こ}}](term:term-onna-no-ko) — ragazza, figura femminile giovane
+- [{{弓|ゆみ}}](term:term-yumi) — arco, arma della ragazza
 - [{{一員|いちいん}}](term:term-ichiin) — membro di un gruppo o di una casa
 
 ## Espressioni ricorrenti
@@ -88,8 +91,9 @@ translation_it: >-
 *   `あそこに` ➔ **Destinazione indicata** (`あそこ` punta a un luogo laggiù nella scena; `に` lo marca come punto verso cui muoversi).
 *   `{{行|い}}こう` ➔ **Volitivo condiviso** (da `{{行|い}}く`, "andare" ➔ non informa che qualcuno va, ma propone "andiamo").
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{行|い}}く` annuncia o descrive un movimento; `{{行|い}}こう` prova a portare l'altro personaggio dentro quel movimento. Nei dialoghi rapidi, questa differenza decide se la battuta osserva la scena o la mette in moto.
+#### ⚖️ Contrasto operativo
+
+`{{行|い}}く` annuncia o descrive un movimento; `{{行|い}}こう` prova a portare l'altro personaggio dentro quel movimento. Nei dialoghi rapidi, questa differenza decide se la battuta osserva la scena o la mette in moto.
 
 Il potenziale sposta invece la frase sulla possibilità. In
 `{{機械|きかい}}が{{使|つか}}える`, il centro non è una macchina usata adesso: è la
@@ -141,8 +145,9 @@ translation_it: >-
 *   `{{角|つの}}が` ➔ **Cosa che appare** (`が` presenta il corno come elemento visibile nella scena).
 *   `{{見|み}}える` ➔ **Percezione spontanea** ("si vede", "è visibile" ➔ il focus è l'apparire del corno, non lo sforzo di guardare).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{見|み}}える` dice che qualcosa è visibile; `{{見|み}}られる` dice che qualcuno può vedere in certe condizioni. Quando il disegno mostra improvvisamente un oggetto, `{{見|み}}える` è spesso la lettura più naturale.
+#### ⚖️ Contrasto operativo
+
+`{{見|み}}える` dice che qualcosa è visibile; `{{見|み}}られる` dice che qualcuno può vedere in certe condizioni. Quando il disegno mostra improvvisamente un oggetto, `{{見|み}}える` è spesso la lettura più naturale.
 
 ---
 
@@ -195,8 +200,16 @@ translation_it: >-
   Quella persona laggiù è triste.
 :::
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** `こ-` resta vicino al parlante, `そ-` va verso l'altro o verso ciò che è appena stato menzionato, `あ-` allunga il dito verso il fondo della scena.
+#### 🗺️ Anatomia della frase
+
+*   `そのクリスタルが` ➔ **Oggetto desiderato**: `その` punta a ciò che è vicino all'altro o appena nominato, `が` marca la cosa voluta.
+*   `{{欲|ほ}}しい` ➔ **Desiderio come stato**: non è un verbo di prendere, ma "volere".
+*   `あの{{人|ひと}}は` ➔ **Persona lontana messa a tema**: `あの` allunga la distanza nella scena.
+*   `{{悲|かな}}しい` ➔ **Stato emotivo osservato**: la frase descrive la persona, non un'azione.
+
+#### 🧠 Gancio cognitivo
+
+`こ-` resta vicino al parlante, `そ-` va verso l'altro o verso ciò che è appena stato menzionato, `あ-` allunga il dito verso il fondo della scena.
 
 `の` è piccolo, ma decide se stai leggendo possesso, relazione o parola composta.
 In [{{女|おんな}}の{{子|こ}}](term:term-onna-no-ko), il blocco intero significa
@@ -223,8 +236,14 @@ translation_it: >-
   quel ragazzo / il figlio di quell'uomo.
 :::
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** `その{{男|おとこ}}の{{子|こ}}` può essere "quel ragazzo" oppure "il figlio di quell'uomo". Se `その{{男|おとこ}}` punta a un adulto già identificato, `の{{子|こ}}` può diventare relazione familiare; se il blocco funziona come parola composta, la lettura naturale è "ragazzo".
+#### 🗺️ Anatomia della frase
+
+*   `その{{男|おとこ}}` ➔ **Referente già vicino al contesto**: può essere un uomo nominato o il primo pezzo della parola composta.
+*   `の{{子|こ}}` ➔ **Nodo ambiguo**: può chiudere la parola "ragazzo" oppure creare la relazione "figlio di".
+
+#### ⚖️ Contrasto operativo
+
+`その{{男|おとこ}}の{{子|こ}}` può essere "quel ragazzo" oppure "il figlio di quell'uomo". Se `その{{男|おとこ}}` punta a un adulto già identificato, `の{{子|こ}}` può diventare relazione familiare; se il blocco funziona come parola composta, la lettura naturale è "ragazzo".
 
 Quando la destinazione è una persona o un mostro, il giapponese usa spesso
 `のところ`. Un personaggio non è un luogo, quindi
@@ -278,8 +297,14 @@ translation_it: >-
   Ho soldi / Ci sono soldi disponibili.
 :::
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{持|も}}っている` tende verso "ce l'ho con me"; `ある` tende verso "esiste / è disponibile". Con una spada in mano, `{{持|も}}っている`; con una taglia o del denaro in palio, spesso `ある`.
+#### 🗺️ Anatomia della frase
+
+*   `お{{金|かね}}が` ➔ **Cosa disponibile**: `が` marca ciò che esiste o è a disposizione.
+*   `ある` ➔ **Esistenza / disponibilità**: non dice che qualcuno lo tiene in mano.
+
+#### ⚖️ Contrasto operativo
+
+`{{持|も}}っている` tende verso "ce l'ho con me"; `ある` tende verso "esiste / è disponibile". Con una spada in mano, `{{持|も}}っている`; con una taglia o del denaro in palio, spesso `ある`.
 
 Anche `{{分|わ}}かる` e `{{知|し}}る` separano due stati mentali. `{{分|わ}}かる`
 indica che qualcosa diventa chiaro: una spiegazione, un piano, il senso di una
@@ -287,8 +312,9 @@ scena. `{{知|し}}る` indica che un'informazione entra nel bagaglio di conosce
 Per questo `{{分|わ}}からない` è "non capisco / non mi è chiaro", mentre
 `{{知|し}}らない` è "non lo so / non ho quell'informazione".
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** se un personaggio non capisce perché il corno abbia una taglia, `{{分|わ}}からない` è naturale; se non ha mai sentito parlare della taglia, `{{知|し}}らない` è più preciso.
+#### ⚖️ Contrasto operativo
+
+Se un personaggio non capisce perché il corno abbia una taglia, `{{分|わ}}からない` è naturale; se non ha mai sentito parlare della taglia, `{{知|し}}らない` è più preciso.
 
 I gruppi umani si formano anche con suffissi piccoli. `{{達|たち}}` crea un
 gruppo attorno a una persona o a un pronome: `{{私|わたし}}{{達|たち}}` è "noi",
@@ -308,6 +334,13 @@ jp: >-
 translation_it: >-
   Loro tornano a casa.
 :::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{私|わたし}}{{達|たち}}も` ➔ **Gruppo con inclusione**: `達` crea "noi", `も` aggiunge il gruppo alla ricerca.
+*   `{{角|つの}}を {{追|お}}う` ➔ **Oggetto dell'inseguimento**: il corno è ciò che viene seguito.
+*   `{{彼|かれ}}らは` ➔ **Loro come topic**: `ら` costruisce il plurale attorno a `彼`.
+*   `{{家|いえ}}に {{帰|かえ}}る` ➔ **Ritorno verso casa**: `に` marca la meta del rientro.
 
 Il finale usa questa logica con [{{一員|いちいん}}](term:term-ichiin). Come parola
 intera non indica una persona qualsiasi, ma un membro riconosciuto dentro una
@@ -354,8 +387,9 @@ già familiare nella dinamica della corsa, descrive invece il risultato:
 raggiungere il bersaglio. Il primo verbo conserva la tensione; il secondo porta
 al contatto.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{追|お}}う](term:term-ou) è "inseguire"; [{{追|お}}いつく](term:term-oitsuku) è "raggiungere". Se il mostro è ancora lontano, il manga tende verso [{{追|お}}う](term:term-ou); se qualcuno lo riprende, la scena è passata a [{{追|お}}いつく](term:term-oitsuku).
+#### ⚖️ Contrasto operativo
+
+[{{追|お}}う](term:term-ou) è "inseguire"; [{{追|お}}いつく](term:term-oitsuku) è "raggiungere". Se il mostro è ancora lontano, il manga tende verso [{{追|お}}う](term:term-ou); se qualcuno lo riprende, la scena è passata a [{{追|お}}いつく](term:term-oitsuku).
 
 [{{引|ひ}}っかかる](term:term-hikkakaru) interrompe il movimento. Qualcosa resta
 preso, incastrato o bloccato a causa del contatto con un ostacolo. Non è un
@@ -373,7 +407,7 @@ translation_it: >-
 *   `{{木|き}}に` ➔ **Punto dell'impiglio** (`に` marca l'ostacolo su cui qualcosa si blocca).
 *   `{{引|ひ}}っかかる` ➔ **Blocco non volontario** (restare preso / incastrato, spesso per contatto fisico).
 
-[{{飛|と}}びかかる](term:term-tobikakaru) è più aggressivo di `{{飛|と}}ぶ`.
+[{{飛|と}}びかかる](term:term-tobikakaru) è più aggressivo di {{飛|と}}ぶ.
 `{{飛|と}}ぶ` può essere saltare o volare; `かかる` in questo composto aggiunge il
 movimento che parte verso un bersaglio. Per questo il verbo si legge come
 "balzare addosso".
@@ -391,8 +425,9 @@ translation_it: >-
 *   `カルに` ➔ **Bersaglio dell'assalto** (`に` indica la persona verso cui si dirige l'attacco).
 *   `{{飛|と}}びかかる` ➔ **Movimento aggressivo** (`{{飛|と}}ぶ` + `かかる` ➔ saltare addosso, lanciarsi contro).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** in composti come `{{飛|と}}びかかる` e `{{切|き}}りかかる`, tratta `かかる` come un segnale mnemonico di azione che si aggancia a un bersaglio. Non vale come definizione unica in ogni contesto, ma qui aiuta a separare un salto generico da un attacco.
+#### 🧠 Gancio cognitivo
+
+In composti come `{{飛|と}}びかかる` e `{{切|き}}りかかる`, tratta `かかる` come un segnale mnemonico di azione che si aggancia a un bersaglio. Non vale come definizione unica in ogni contesto, ma qui aiuta a separare un salto generico da un attacco.
 
 ---
 
@@ -454,8 +489,9 @@ translation_it: >-
 *   `{{剣|けん}}を` ➔ **Oggetto restituito** (la spada è ciò che viene dato indietro).
 *   `{{返|かえ}}す` ➔ **Restituzione transitiva** (qualcuno compie l'azione di restituire).
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** [{{返|かえ}}す](term:term-kaesu) è "restituire"; `{{帰|かえ}}る` è "tornare a casa / rientrare". Hanno la stessa lettura `かえる`, ma una frase con `を` e un oggetto concreto punta a [{{返|かえ}}す](term:term-kaesu).
+#### ⚖️ Contrasto operativo
+
+[{{返|かえ}}す](term:term-kaesu) è "restituire"; {{帰|かえ}}る è "tornare a casa / rientrare". Hanno la stessa lettura かえる, ma una frase con を e un oggetto concreto punta a [{{返|かえ}}す](term:term-kaesu).
 
 [{{野郎|やろう}}](term:term-yarou) colora la voce del parlante. Può essere
 "tizio", ma in una scena ostile suona facilmente come "bastardo". Non dice
@@ -467,6 +503,11 @@ jp: >-
 translation_it: >-
   Quel bastardo scappa.
 :::
+
+#### 🗺️ Anatomia della frase
+
+*   `あの{{野郎|やろう}}が` ➔ **Bersaglio ruvido della voce**: `あの` lo colloca lontano e `野郎` porta giudizio ostile.
+*   `{{逃|に}}げる` ➔ **Movimento di fuga**: la frase non dice solo "andare", ma scappare da una pressione.
 
 [{{支|ささ}}える](term:term-sasaeru) riporta il corpo dentro una relazione di
 aiuto. Con `を`, la persona sostenuta è il bersaglio dell'azione: in
@@ -487,7 +528,7 @@ translation_it: >-
 
 Infine [{{家|いえ}}](term:term-ie) e [{{一員|いちいん}}](term:term-ichiin)
 spostano la scena dal combattimento all'appartenenza. `{{家|いえ}}に{{行|い}}く`
-usa `に` per segnare la destinazione; [{{一員|いちいん}}](term:term-ichiin)
+usa に per segnare la destinazione; [{{一員|いちいん}}](term:term-ichiin)
 nomina invece il passaggio sociale: essere parte di un gruppo, non soltanto
 stare accanto a qualcuno.
 

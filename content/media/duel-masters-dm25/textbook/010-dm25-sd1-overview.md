@@ -36,6 +36,8 @@ nel parsing, anche una carta lunga diventa una procedura leggibile.
   rientri dal cimitero e attacchi ripetuti
 - [アビスロイヤル](term:term-abyss-royal) — sottofamiglia Abyss più selettiva,
   utile quando il testo filtra per razza
+- [コスト](term:term-cost) — numero che limita quale creatura puoi scegliere o
+  mettere in campo
 - [{{墓地|ぼち}}](term:term-graveyard) — cimitero, zona da cui il mazzo recupera
   risorse invece di archiviarle soltanto
 - [{{出|だ}}す](term:term-dasu) — mettere in campo o far uscire una carta da una
@@ -44,9 +46,24 @@ nel parsing, anche una carta lunga diventa una procedura leggibile.
   precedente o indicata dal testo
 - [{{破壊|はかい}}](term:term-destroy) — distruzione, cioè spostamento della
   creatura dal campo al cimitero
+- [{{離|はな}}れる](term:term-hanareru) — lasciare una zona, spesso come finestra
+  che attiva una sostituzione
 - [とばす](term:term-tobasu) — saltare una parte del turno, non "volare"
 - [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target) — bersaglio concreto di
   un attacco già dichiarato
+
+## Espressioni ricorrenti
+
+- `{{出|で}}た{{時|とき}}` — apre un trigger di ingresso: quando la creatura entra
+  nella battle zone, parte l'effetto
+- [その後](grammar:grammar-sonoato) — separa due passi della procedura: prima
+  risolvi il blocco precedente, poi passi all'azione successiva
+- [{{墓地|ぼち}}](term:term-graveyard)から[{{出|だ}}す](term:term-dasu) — mette in
+  campo una carta partendo dal cimitero, non dalla mano
+- [かわりに](grammar:grammar-kawarini) — introduce una sostituzione: invece di
+  lasciare accadere X, puoi pagare o fare Y
+- `{{2回|にかい}}{{行|おこな}}う` — ripete due volte l'azione appena definita dal
+  testo della carta
 
 ## Pattern grammaticali chiave
 
@@ -78,6 +95,8 @@ nel parsing, anche una carta lunga diventa una procedura leggibile.
 
 ---
 
+[コスト](term:term-cost) resta il numero che limita la scelta, mentre [かわりに](grammar:grammar-kawarini) apre una sostituzione: non sommare i due segnali, leggi prima il vincolo e poi l'evento sostitutivo.
+
 ## 1. Il motore Abyss: cimitero, uscita dal campo e sostituzione
 
 Nel cuore del deck, [{{墓地|ぼち}}](term:term-graveyard) non chiude la storia di
@@ -102,8 +121,8 @@ src: assets/cards/dm25-sd1/02-abyssbell-jashin-emperor.webp
 alt: Carta 2 del mazzo DM25-SD1, creatura centrale del pacchetto Abyss.
 card_id: card-abyssbell-jashintei-recognition
 caption: >-
-  `DM25-SD1 2/13`: [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei)。
-  [アビスラッシュ](term:term-abyss-rush) + `かわりに` trasformano l'uscita dal
+  DM25-SD1 2/13: [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei)。
+  [アビスラッシュ](term:term-abyss-rush) + かわりに trasformano l'uscita dal
   campo in una scelta di sostituzione pagata dalla mano.
 :::
 
@@ -150,8 +169,8 @@ translation_it: >-
 #### 🧠 Gancio cognitivo
 
 Pensa a `かわりに` come a un cartello di scambio: la freccia non è
-`lascia il campo ➔ scarta`, ma `stava per lasciare il campo ➔ puoi pagare
-scartando per sostituire quell'evento`. È un trucco di memoria, non una
+lascia il campo ➔ scarta, ma stava per lasciare il campo ➔ puoi pagare
+scartando per sostituire quell'evento. È un trucco di memoria, non una
 spiegazione etimologica.
 
 ## 2. Tempo difensivo: quel turno e il resto da saltare
@@ -231,7 +250,7 @@ translation_it: >-
 *   `` `{{-4000|マイナスよんせん}}`する `` ➔ **Azione numerica**. Il numero
     negativo è l'effetto applicato al parametro appena nominato.
 *   `これを{{2回|にかい}}{{行|おこな}}う` ➔ **Ripetizione del blocco precedente**.
-    [～を{{2回|にかい}}{{行|おこな}}う](grammar:grammar-nikai-okonau) usa `これ`
+    [～を{{2回|にかい}}{{行|おこな}}う](grammar:grammar-nikai-okonau) usa これ
     per riprendere l'azione appena detta; `{{2回|にかい}}` fissa quante volte;
     `{{行|おこな}}う` la tratta come procedura da eseguire.
 
@@ -345,8 +364,8 @@ quindi "quanto sommano?", non "quante sono?".
 
 La stessa precisione vale quando dopo un effetto compare
 [その後](grammar:grammar-sonoato): il testo sta segnando una sequenza, non una
-frase accessoria. Se la riga dice `{{墓地|ぼち}}に{{置|お}}く。その{{後|あと}}、
-...{{出|だ}}す`, prima risolvi il movimento verso il cimitero e solo dopo passi
+frase accessoria. Se la riga dice {{墓地|ぼち}}に{{置|お}}く。その{{後|あと}}、
+...{{出|だ}}す, prima risolvi il movimento verso il cimitero e solo dopo passi
 alla carta da mettere in campo.
 
 :::example_sentence
@@ -406,9 +425,9 @@ caption: >-
 #### 🧠 Gancio cognitivo
 
 Per leggere il pacchetto Abyss, immagina una procedura a tre caselle:
-`zona di partenza ➔ filtro ➔ destinazione`. [{{墓地|ぼち}}](term:term-graveyard)
+zona di partenza ➔ filtro ➔ destinazione. [{{墓地|ぼち}}](term:term-graveyard)
 ti dà spesso la casella iniziale, `コスト{{4以下|よんいか}}` o
-`アビスロイヤル` stringono il filtro, [{{出|だ}}す](term:term-dasu) o
+アビスロイヤル stringono il filtro, [{{出|だ}}す](term:term-dasu) o
 [{{戻|もど}}す](term:term-modosu) chiudono la destinazione. È un gancio di
 lettura: non sostituisce il rules text, ma ti dice dove cercare i pezzi.
 

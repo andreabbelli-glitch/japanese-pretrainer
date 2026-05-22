@@ -118,7 +118,7 @@ translation_it: >-
 *   `{{続|つづ}}けることが できません` ➔ **Possibilità negata**: la schermata non
     vieta il gioco in generale, vieta il proseguimento di questa procedura.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{無理|むり}}](term:term-v333-muri) chiude la porta in modo secco: "non è
 fattibile". [{{条件|じょうけん}}](term:term-v353-jouken), invece, lascia intuire
@@ -126,7 +126,7 @@ una porta con una serratura: se il requisito cambia, anche la risposta del menu
 può cambiare. [{{場合|ばあい}}](term:term-v350-baai) non è né blocco né requisito:
 è il riquadro in cui quella regola vale.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Pensa a [{{場合|ばあい}}](term:term-v350-baai) come a una cornice: tutto ciò che
 segue resta dentro quel caso. Pensa a [{{条件|じょうけん}}](term:term-v353-jouken)
@@ -173,14 +173,14 @@ translation_it: >-
     [～ませんか](grammar:grammar-g068-non-vuoi-ti-va-di) propone l'azione senza
     suonare come un comando duro.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [～ませんか](grammar:grammar-g068-non-vuoi-ti-va-di) contiene una forma negativa,
 ma in questo uso non significa "non iniziamo". È la forma cortese di un invito:
 `はじめませんか` si legge come "ti va di iniziare?" o "perché non iniziamo?".
 La negazione ammorbidisce, non blocca.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per ricordare [あいことば](term:term-v336-aikotoba), immagina due giocatori che
 si mettono d'accordo su una stessa parola prima di entrare nel cerchio. Non è
@@ -226,14 +226,14 @@ translation_it: >-
 *   `はずれることがあります` ➔ **Possibilità, non certezza**: il messaggio prepara
     il lettore a un esito possibile, non a un fallimento obbligatorio.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{効果|こうか}}バツグン](term:term-v346-koukabatsugun) risponde alla domanda
 "questa mossa è favorevole contro quel bersaglio?". [{{回避|かいひ}}{{率|りつ}}](term:term-v338-kaihiritsu)
 risponde a "quanto è facile evitare il colpo?". Sono due livelli diversi della
 stessa battaglia.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 `{{率|りつ}}` è la parte da riconoscere come "tasso" o "percentuale". Quando lo
 vedi in un parametro, immagina un numero dietro le quinte: non l'azione stessa,
@@ -284,7 +284,7 @@ translation_it: >-
 *   `{{自分|じぶん}}だけ？` ➔ **Restrizione del punto di vista**: `だけ` fa sentire
     "solo io?", escludendo gli altri.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [なんで？](term:term-e065-nande) punta al motivo con una spinta più immediata:
 "perché mai?". [どうして？](term:term-e067-doushite) chiede comunque la ragione,
@@ -292,9 +292,9 @@ ma può suonare più neutro o più aperto. In un testo senza audio, guarda la
 scena: sorpresa, irritazione e comicità spingono spesso verso `なんで？`; una
 richiesta più seria di spiegazione può rendere naturale `どうして？`.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [{{自分|じぶん}}だけ](term:term-v344-jibun-dake), immagina `だけ` come un
+Per [{{自分|じぶん}}だけ](term:term-v344-jibun-dake), immagina だけ come un
 cerchio stretto attorno al parlante: tutto ciò che resta fuori dal cerchio non
 partecipa alla frase.
 
@@ -368,10 +368,10 @@ translation_it: >-
     respiro da viaggio attraverso Paldea.
 *   `{{遠|とお}}くまで` ➔ **Limite distante**: `まで` spinge la lettura fino a un
     punto lontano.
-*   `{{進|すす}}んでいきましょう` ➔ **Avanzamento condiviso**: [～ていく](grammar:grammar-g069-andare-avanti-facendo-cambiare-nel-tempo)
+*   {{進|すす}}んでいきましょう ➔ **Avanzamento condiviso**: [～ていく](grammar:grammar-g069-andare-avanti-facendo-cambiare-nel-tempo)
     guarda il proseguire da ora in avanti.
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [～てある](grammar:grammar-g070-qualcosa-e-stato-fatto-intenzionalmente) guarda
 un risultato già lasciato pronto: `{{登録|とうろく}}してあります`, "è già stato
@@ -379,7 +379,7 @@ registrato". [～ていく](grammar:grammar-g069-andare-avanti-facendo-cambiare-
 guarda il processo che continua: `{{進|すす}}んでいく`, "andare avanti avanzando".
 Uno fotografa lo stato preparato; l'altro segue il movimento nel tempo.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Quando vedi `てある`, immagina un oggetto già sistemato sul tavolo prima che tu
 arrivi. Quando vedi `ていく`, immagina invece il personaggio che esce dalla

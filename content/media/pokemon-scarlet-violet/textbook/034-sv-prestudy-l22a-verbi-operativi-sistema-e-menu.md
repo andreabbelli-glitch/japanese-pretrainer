@@ -68,10 +68,10 @@ Questi verbi non sono intercambiabili. [{{確認|かくにん}}する](term:term
 
 Le schermate operative del gioco sono piene di verbi brevi perché devono ridurre l'incertezza. Prima ancora di tradurre tutta la frase, conviene chiedersi quale tipo di azione il verbo sta aprendo: controllo, ritorno, annullamento o completamento.
 
-*   [{{確認|かくにん}}する](term:term-e050-kakunin-suru) non significa solo "guardare". `{{確認|かくにん}}` contiene l'idea di accertarsi che qualcosa sia corretto, e `する` trasforma il nome in azione. In un menu, quindi, il gioco non ti sta invitando a osservare passivamente: ti rimette davanti una scelta, uno stato o un dettaglio da controllare prima di procedere.
-*   [もどる](term:term-e051-modoru) guarda nella direzione opposta. Il centro non è la scelta corrente, ma il movimento verso la schermata precedente, il punto di partenza o il livello superiore del menu. Se la frase contiene `{{前|まえ}}のメニューに`, `に` marca proprio il luogo a cui si torna.
+*   [{{確認|かくにん}}する](term:term-e050-kakunin-suru) non significa solo "guardare". {{確認|かくにん}} contiene l'idea di accertarsi che qualcosa sia corretto, e する trasforma il nome in azione. In un menu, quindi, il gioco non ti sta invitando a osservare passivamente: ti rimette davanti una scelta, uno stato o un dettaglio da controllare prima di procedere.
+*   [もどる](term:term-e051-modoru) guarda nella direzione opposta. Il centro non è la scelta corrente, ma il movimento verso la schermata precedente, il punto di partenza o il livello superiore del menu. Se la frase contiene {{前|まえ}}のメニューに, に marca proprio il luogo a cui si torna.
 *   [キャンセル](term:term-v371-kyanseru) interrompe l'azione in corso. È vicino a [もどる](term:term-e051-modoru) perché spesso ti porta fuori dalla schermata corrente, ma il suo valore è più netto: blocca la selezione prima che diventi effettiva.
-*   [クリアする](term:term-e052-kuria-suru) porta nel giapponese il valore videoludico di "superare" o "completare". In `ジムテストをクリアする`, `を` marca la prova come oggetto dell'azione: non stai solo partecipando al test, lo porti alla condizione di superato.
+*   [クリアする](term:term-e052-kuria-suru) porta nel giapponese il valore videoludico di "superare" o "completare". In ジムテストをクリアする, を marca la prova come oggetto dell'azione: non stai solo partecipando al test, lo porti alla condizione di superato.
 
 :::example_sentence
 jp: >-
@@ -109,11 +109,11 @@ translation_it: >-
 *   `ジムテストを` ➔ **Oggetto dell'azione** (`を` marca la prova da completare).
 *   `クリアする` ➔ **Completamento videoludico** (porta la prova allo stato di "superata").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{確認|かくにん}}する](term:term-e050-kakunin-suru) tiene la scelta davanti a te e la controlla; [もどる](term:term-e051-modoru) cambia livello tornando indietro; [キャンセル](term:term-v371-kyanseru) blocca l'azione prima della conferma; [クリアする](term:term-e052-kuria-suru) chiude una prova con esito positivo. Se li leggi tutti come "uscire" o "ok", perdi la differenza tra verifica, movimento, annullamento e successo.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Come trucco mnemonico, pensa alla schermata come a un tavolo di lavoro: [{{確認|かくにん}}する](term:term-e050-kakunin-suru) ricontrolla ciò che è sul tavolo, [もどる](term:term-e051-modoru) ti fa alzare e tornare al tavolo prima, [キャンセル](term:term-v371-kyanseru) ritira la mano prima di confermare, [クリアする](term:term-e052-kuria-suru) svuota il tavolo perché la prova è finita.
 
@@ -121,9 +121,9 @@ Come trucco mnemonico, pensa alla schermata come a un tavolo di lavoro: [{{確�
 
 Quando la UI passa dalla conferma alla scelta, il lessico cambia. Alcuni termini organizzano opzioni in lista; altri fissano un bersaglio nello spazio; altri ancora trasformano una scelta momentanea in preferenza stabile.
 
-*   [{{選択|せんたく}}](term:term-v368-sentaku) è il nome della scelta o dell'atto di scegliere. Da solo può indicare una voce evidenziata, un'opzione selezionabile o la categoria "selezione"; con `する` diventa il verbo "selezionare". Nei menu di battaglia o inventario, questo ti aiuta a separare la voce attiva dal comando finale.
+*   [{{選択|せんたく}}](term:term-v368-sentaku) è il nome della scelta o dell'atto di scegliere. Da solo può indicare una voce evidenziata, un'opzione selezionabile o la categoria "selezione"; con する diventa il verbo "selezionare". Nei menu di battaglia o inventario, questo ti aiuta a separare la voce attiva dal comando finale.
 *   [ロックオン](term:term-v369-rokkuon) non organizza una lista: aggancia un target. Il prestito dall'inglese suona tecnico perché appartiene a una logica di mira, distanza e bersaglio nel mondo di gioco. Un Pokémon vicino, un oggetto o un punto dello scenario può essere "lock-on" senza essere una voce di menu.
-*   [お{{気|き}}に{{入|い}}り](term:term-v362-okiniiri) porta la scelta nel campo del gradimento personale. `お` ammorbidisce la parola, `{{気|き}}に{{入|い}}る` significa letteralmente "entrare nel proprio gradimento", e il sostantivo risultante indica un preferito. Se un oggetto o un Pokémon entra negli [お{{気|き}}に{{入|い}}り](term:term-v362-okiniiri), non è solo selezionato una volta: resta marcato per ritrovarlo.
+*   [お{{気|き}}に{{入|い}}り](term:term-v362-okiniiri) porta la scelta nel campo del gradimento personale. お ammorbidisce la parola, {{気|き}}に{{入|い}}る significa letteralmente "entrare nel proprio gradimento", e il sostantivo risultante indica un preferito. Se un oggetto o un Pokémon entra negli [お{{気|き}}に{{入|い}}り](term:term-v362-okiniiri), non è solo selezionato una volta: resta marcato per ritrovarlo.
 
 :::example_sentence
 jp: >-
@@ -149,11 +149,11 @@ translation_it: >-
 *   `ポケモンを` ➔ **Bersaglio dell'azione** (`を` marca il Pokémon che viene agganciato).
 *   `ロックオンする` ➔ **Aggancio tecnico** (non scegliere da una lista, ma fissare un target).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{選択|せんたく}}](term:term-v368-sentaku) appartiene alla logica delle opzioni; [ロックオン](term:term-v369-rokkuon) appartiene alla logica del bersaglio; [お{{気|き}}に{{入|い}}り](term:term-v362-okiniiri) appartiene alla logica della preferenza salvata. Tutti e tre possono riguardare un Pokémon, ma non dicono la stessa cosa: scelta momentanea, aggancio spaziale e preferito stabile sono tre letture diverse.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [お{{気|き}}に{{入|い}}り](term:term-v362-okiniiri), usa l'immagine mentale di qualcosa che "entra nel tuo gradimento". È solo un trucco mnemonico, non un'etimologia completa, ma rende immediata la differenza tra una [{{選択|せんたく}}](term:term-v368-sentaku) fatta adesso e un preferito che resta segnato.
 
@@ -161,10 +161,10 @@ Per [お{{気|き}}に{{入|い}}り](term:term-v362-okiniiri), usa l'immagine m
 
 Fuori dai menu puri, gli stessi testi brevi si legano ai personaggi. Un NPC può chiederti materiali, affidarti un compito, spiegarti una procedura o comunicarti un'informazione. Qui il punto decisivo è capire da che lato scorre l'azione: verso un gruppo che si accumula, verso una responsabilità, verso chi riceve una spiegazione o verso chi viene a sapere qualcosa.
 
-*   [{{集|あつ}}める](term:term-v354-atsume-ru) prende con `を` ciò che viene raccolto e suggerisce un risultato più completo: materiali, dati, Pokémon, persone o oggetti sparsi diventano un insieme. In un obiettivo di gioco, `{{材料|ざいりょう}}を{{集|あつ}}める` non descrive materiali già pronti, ma ti assegna il compito di metterli insieme.
-*   [{{頼|たの}}む](term:term-v356-tanomu) non è un semplice "per favore". Può voler dire chiedere un favore, affidare qualcosa o contare su qualcuno. In un dialogo, `これを{{頼|たの}}むよ` mette una responsabilità nelle tue mani: il parlante non sta solo addolcendo una frase, ti sta chiedendo di occupartene.
-*   [{{教|おし}}える](term:term-v359-oshie-ru) copre sia "insegnare" sia "dire / spiegare". Nei tutorial, l'oggetto con `を` è spesso il contenuto trasmesso: `やり{{方|かた}}を{{教|おし}}える` significa spiegare il modo di fare qualcosa.
-*   [{{知|し}}る](term:term-v370-shiru) guarda dal lato opposto rispetto a [{{教|おし}}える](term:term-v359-oshie-ru). Non trasmette l'informazione: registra il momento in cui qualcuno la acquisisce. `{{情報|じょうほう}}を{{知|し}}る` è venire a sapere un fatto.
+*   [{{集|あつ}}める](term:term-v354-atsume-ru) prende con を ciò che viene raccolto e suggerisce un risultato più completo: materiali, dati, Pokémon, persone o oggetti sparsi diventano un insieme. In un obiettivo di gioco, {{材料|ざいりょう}}を{{集|あつ}}める non descrive materiali già pronti, ma ti assegna il compito di metterli insieme.
+*   [{{頼|たの}}む](term:term-v356-tanomu) non è un semplice "per favore". Può voler dire chiedere un favore, affidare qualcosa o contare su qualcuno. In un dialogo, これを{{頼|たの}}むよ mette una responsabilità nelle tue mani: il parlante non sta solo addolcendo una frase, ti sta chiedendo di occupartene.
+*   [{{教|おし}}える](term:term-v359-oshie-ru) copre sia "insegnare" sia "dire / spiegare". Nei tutorial, l'oggetto con を è spesso il contenuto trasmesso: やり{{方|かた}}を{{教|おし}}える significa spiegare il modo di fare qualcosa.
+*   [{{知|し}}る](term:term-v370-shiru) guarda dal lato opposto rispetto a [{{教|おし}}える](term:term-v359-oshie-ru). Non trasmette l'informazione: registra il momento in cui qualcuno la acquisisce. {{情報|じょうほう}}を{{知|し}}る è venire a sapere un fatto.
 *   [{{人々|ひとびと}}](term:term-v373-hitobito) allarga il soggetto. Non parla di una persona specifica, ma della gente coinvolta in un luogo, in una città o in una situazione. Quando compare in una frase narrativa, aspettati un commento sul gruppo e non su un singolo interlocutore.
 
 :::example_sentence
@@ -210,11 +210,18 @@ translation_it: >-
   Vengo a sapere una nuova informazione.
 :::
 
-#### ⚖️ Contrasto
+#### 🗺️ Anatomia della frase
+
+*   `{{新|あたら}}しい {{情報|じょうほう}}を` ➔ **Contenuto acquisito** (`を` marca
+    l'informazione come ciò che entra nella conoscenza).
+*   `{{知|し}}る` ➔ **Arrivare a sapere** (non insegna qualcosa a un altro:
+    descrive il momento in cui il soggetto acquisisce il dato).
+
+#### ⚖️ Contrasto operativo
 
 [{{教|おし}}える](term:term-v359-oshie-ru) parte da chi fornisce l'informazione; [{{知|し}}る](term:term-v370-shiru) arriva a chi la acquisisce. [{{頼|たの}}む](term:term-v356-tanomu) non trasmette dati, ma sposta una responsabilità; [{{集|あつ}}める](term:term-v354-atsume-ru) non riguarda il parlato, ma il passaggio da elementi sparsi a insieme raccolto.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Immagina quattro direzioni: [{{集|あつ}}める](term:term-v354-atsume-ru) porta cose verso un centro, [{{頼|たの}}む](term:term-v356-tanomu) porta un compito verso di te, [{{教|おし}}える](term:term-v359-oshie-ru) porta spiegazione verso qualcun altro, [{{知|し}}る](term:term-v370-shiru) porta informazione dentro chi ascolta.
 
@@ -222,11 +229,11 @@ Immagina quattro direzioni: [{{集|あつ}}める](term:term-v354-atsume-ru) por
 
 Le istruzioni di percorso separano quattro livelli: dove andare, in che direzione muoversi, con quale modo fisico e dentro quale fase o limite temporale. Quando li distingui, anche frasi molto corte diventano precise.
 
-*   [{{向|む}}かう](term:term-v358-muka-u) non è un generico "andare". Mette in primo piano l'orientamento verso una meta, spesso marcata da `へ` o `に`. Se leggi `{{中央|ちゅうおう}}へ{{向|む}}かう`, il centro non è solo nominato: è la direzione del movimento.
+*   [{{向|む}}かう](term:term-v358-muka-u) non è un generico "andare". Mette in primo piano l'orientamento verso una meta, spesso marcata da へ o に. Se leggi {{中央|ちゅうおう}}へ{{向|む}}かう, il centro non è solo nominato: è la direzione del movimento.
 *   [{{中央|ちゅうおう}}](term:term-v361-chuuou) indica il centro di un'area, di una stanza, di una piazza o anche di una schermata. Nelle istruzioni spaziali ti aiuta a capire il punto di riferimento; nei menu può indicare la parte centrale dell'interfaccia.
 *   [{{歩|ある}}く](term:term-v360-aruku) e [{{走|はし}}る](term:term-v367-hashiru) descrivono il modo del movimento. Entrambi possono portarti nella stessa direzione, ma [{{歩|ある}}く](term:term-v360-aruku) è camminare normalmente, mentre [{{走|はし}}る](term:term-v367-hashiru) aggiunge velocità, urgenza o energia.
-*   [{{全力|ぜんりょく}}](term:term-v372-zenryoku) con `で` modifica il modo dell'azione: `{{全力|ぜんりょく}}で{{走|はし}}る` non è solo correre, ma farlo con tutte le forze disponibili.
-*   [{{途中|とちゅう}}](term:term-v364-tochuu) blocca la scena nel mezzo del percorso o dello svolgimento. In `バトルの{{途中|とちゅう}}`, la battaglia non è chiusa: sei dentro la sua fase intermedia.
+*   [{{全力|ぜんりょく}}](term:term-v372-zenryoku) con で modifica il modo dell'azione: {{全力|ぜんりょく}}で{{走|はし}}る non è solo correre, ma farlo con tutte le forze disponibili.
+*   [{{途中|とちゅう}}](term:term-v364-tochuu) blocca la scena nel mezzo del percorso o dello svolgimento. In バトルの{{途中|とちゅう}}, la battaglia non è chiusa: sei dentro la sua fase intermedia.
 *   [{{制限|せいげん}}{{時間|じかん}}](term:term-v366-seigenjikan) aggiunge un vincolo esterno. La prova o la battaglia non dipende solo dal risultato, ma anche dal timer: c'è un tempo entro cui agire.
 
 :::example_sentence
@@ -266,11 +273,11 @@ translation_it: >-
 *   `{{制限|せいげん}}{{時間|じかん}}を` ➔ **Informazione acquisita** (il tempo limite è il dato che arriva al giocatore).
 *   `{{知|し}}る` ➔ **Venire a sapere** (la frase segnala acquisizione di un'informazione, non spiegazione da parte di qualcuno).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{中央|ちゅうおう}}](term:term-v361-chuuou) dice il punto, [{{向|む}}かう](term:term-v358-muka-u) dice l'orientamento verso quel punto, [{{歩|ある}}く](term:term-v360-aruku) e [{{走|はし}}る](term:term-v367-hashiru) dicono come ti muovi, [{{途中|とちゅう}}](term:term-v364-tochuu) dice in quale fase sei, [{{制限|せいげん}}{{時間|じかん}}](term:term-v366-seigenjikan) dice quale vincolo temporale pesa sull'azione.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per leggere un'istruzione di percorso, separa mentalmente quattro caselle: **dove** ([{{中央|ちゅうおう}}](term:term-v361-chuuou)), **verso dove** ([{{向|む}}かう](term:term-v358-muka-u)), **come** ([{{歩|ある}}く](term:term-v360-aruku), [{{走|はし}}る](term:term-v367-hashiru), [{{全力|ぜんりょく}}](term:term-v372-zenryoku)), **quando / entro cosa** ([{{途中|とちゅう}}](term:term-v364-tochuu), [{{制限|せいげん}}{{時間|じかん}}](term:term-v366-seigenjikan)).
 
@@ -279,11 +286,11 @@ Per leggere un'istruzione di percorso, separa mentalmente quattro caselle: **dov
 Alcuni blocchi non sono comandi immediati, ma cambiano il tipo di informazione che stai leggendo. Nei dialoghi e nei messaggi di sistema, una stessa riga può nominare una risorsa, classificare un Pokémon, proporre un'opzione o collocare un'azione nel programma.
 
 *   [テラスタルエネルギー](term:term-v355-terasutaruenerugii) è energia dentro la meccanica della teracristallizzazione. Quando compare, la domanda pratica è se la risorsa è disponibile, carica, consumata o necessaria per una trasformazione: non è "energia" in senso generico.
-*   [{{伝説|でんせつ}}のポケモン](term:term-v363-densetsunopokemon) usa `{{伝説|でんせつ}}`, "leggenda", per classificare un Pokémon come speciale sul piano narrativo e di sistema. La particella `の` lega la qualità "leggendaria" al nome `ポケモン`.
-*   [〜は どうだ？](term:term-e069-ha-douda) mette un tema davanti all'interlocutore e chiede una valutazione. `このポケモンはどうだ？` non domanda dove sia il Pokémon: lo propone e aspetta una reazione, come "che ne dici di questo?".
-*   [やってみよう](term:term-e070-yattemiyou) combina `やる` "fare", `〜てみる` "provare a fare" e `〜よう` volitivo. Il risultato è un invito a provare, spesso con tono condiviso: "proviamo a farlo".
-*   [～なら](grammar:grammar-g072-se-e-cosi-se-parli-di) riprende un tema già sul tavolo e lo usa come condizione discorsiva. `ジムなら あっちだ` significa "se parli della palestra, è di là": non è un "se" ipotetico complesso, ma una risposta agganciata a un argomento nominato.
-*   [～{{予定|よてい}}だ](grammar:grammar-g073-essere-previsto) colloca un'azione nel programma. L'evento non è ancora successo, ma è già previsto: `ジムへ{{行|い}}く{{予定|よてい}}だ` vuol dire che andare in palestra è nel piano.
+*   [{{伝説|でんせつ}}のポケモン](term:term-v363-densetsunopokemon) usa {{伝説|でんせつ}}, "leggenda", per classificare un Pokémon come speciale sul piano narrativo e di sistema. La particella の lega la qualità "leggendaria" al nome ポケモン.
+*   [〜は どうだ？](term:term-e069-ha-douda) mette un tema davanti all'interlocutore e chiede una valutazione. このポケモンはどうだ？ non domanda dove sia il Pokémon: lo propone e aspetta una reazione, come "che ne dici di questo?".
+*   [やってみよう](term:term-e070-yattemiyou) combina やる "fare", 〜てみる "provare a fare" e 〜よう volitivo. Il risultato è un invito a provare, spesso con tono condiviso: "proviamo a farlo".
+*   [～なら](grammar:grammar-g072-se-e-cosi-se-parli-di) riprende un tema già sul tavolo e lo usa come condizione discorsiva. ジムなら あっちだ significa "se parli della palestra, è di là": non è un "se" ipotetico complesso, ma una risposta agganciata a un argomento nominato.
+*   [～{{予定|よてい}}だ](grammar:grammar-g073-essere-previsto) colloca un'azione nel programma. L'evento non è ancora successo, ma è già previsto: ジムへ{{行|い}}く{{予定|よてい}}だ vuol dire che andare in palestra è nel piano.
 
 :::example_sentence
 jp: >-
@@ -334,11 +341,11 @@ translation_it: >-
 *   `ジムへ {{行|い}}く` ➔ **Azione prevista** (andare verso la palestra).
 *   `{{予定|よてい}}だ` ➔ **Programma** (l'azione è pianificata, non completata).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [〜は どうだ？](term:term-e069-ha-douda) apre una valutazione su una proposta; [やってみよう](term:term-e070-yattemiyou) spinge a provare l'azione; [～なら](grammar:grammar-g072-se-e-cosi-se-parli-di) reagisce a un tema già nominato; [～{{予定|よてい}}だ](grammar:grammar-g073-essere-previsto) mette un'azione in programma. Tutti possono comparire in dialoghi brevi, ma uno chiede opinione, uno invita al tentativo, uno aggancia un argomento e uno descrive un piano.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Quando trovi [～なら](grammar:grammar-g072-se-e-cosi-se-parli-di), immagina il parlante che prende una parola già detta e la mette sul tavolo: "se parli di quello...". Quando trovi [～{{予定|よてい}}だ](grammar:grammar-g073-essere-previsto), immagina invece un calendario: l'azione è scritta nel programma, anche se non è ancora avvenuta.
 

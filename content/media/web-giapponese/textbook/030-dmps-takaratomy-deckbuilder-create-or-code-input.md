@@ -2,12 +2,13 @@
 id: lesson-web-giapponese-dmps-takaratomy-deckbuilder-create-or-code-input
 media_id: media-web-giapponese
 slug: 030-dmps-takaratomy-deckbuilder-create-or-code-input
-title: Creare o inserire un mazzo dal deckbuilder
+title: "Creare o inserire: le due strade del deckbuilder"
 order: 30
 segment_ref: dmps-takaratomy-deckbuilder
 difficulty: n4
 status: active
 tags: [web, dmps, duel-masters-plays, deckbuilder, ui]
+prerequisites: []
 summary: >-
   Leggere la schermata di composizione mazzo: distinguere creazione da zero,
   codice già pronto e conferma finale.
@@ -68,6 +69,13 @@ scelta e `{{選択|せんたく}}する` chiude con il verbo tecnico "selezionar
 opzioni, ニュー・ディビジョン e オール・ディビジョン, sono le strade disponibili;
 la frase sopra di loro dice quale tipo di gesto la UI si aspetta.
 
+デッキ[{{編成|へんせい}}](term:term-hensei) è la cornice di tutto il flusso.
+[{{編成|へんせい}}](term:term-hensei) non significa solo "modifica": in una UI di
+Duel Masters indica la composizione concreta del mazzo, quindi scelta di carte,
+Division e formato di partenza. Se leggi `デッキ{{編成|へんせい}}` come titolo di
+sezione, preparati a una schermata di costruzione, non a una semplice lista
+informativa.
+
 Sotto questa cornice, la schermata passa a due azioni sul `デッキ`. A sinistra
 il mazzo viene creato con [{{作成|さくせい}}する](term:term-sakusei-suru); a
 destra il mazzo viene richiamato tramite [デッキコード](term:term-deck-code), e
@@ -118,11 +126,11 @@ Il blocco di sinistra parla come una frase guida completa:
 arrivato; indica lo stato iniziale dell'operazione, cioè una nuova voce creata
 nel sistema.
 
-Il `で` di [{{新規|しんき}}で〜する](grammar:grammar-state-de) non ti porta in un
+Il で di [{{新規|しんき}}で〜する](grammar:grammar-state-de) non ti porta in un
 luogo: marca la modalità con cui avviene l'azione. Prima la frase imposta
 "come" parte la creazione (`{{新規|しんき}}で`), poi dice "che cosa" viene creato
 (`デッキを`), infine chiude con il verbo tecnico
-[{{作成|さくせい}}する](term:term-sakusei-suru). In una UI, `{{作成|さくせい}}する`
+[{{作成|さくせい}}する](term:term-sakusei-suru). In una UI, {{作成|さくせい}}する
 non è un "fare" generico: è creare un oggetto che il sistema potrà salvare,
 modificare e riaprire.
 
@@ -144,7 +152,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-quando [{{新規|しんき}}](term:term-shinki) appare
+Quando [{{新規|しんき}}](term:term-shinki) appare
 prima di un'azione di sistema, leggilo come "nuova voce / nuovo elemento".
 Non è etimologia: è un trucco pratico per non scambiarlo con "recente".
 
@@ -221,7 +229,7 @@ l'avvio di una nuova composizione.
 
 #### 🧠 Gancio cognitivo
 
-in `{{入力|にゅうりょく}}`, il kanji `{{入|にゅう}}`
+In `{{入力|にゅうりょく}}`, il kanji `{{入|にゅう}}`
 richiama l'idea di "entrata". Usalo come ancora visiva: un dato entra nel
 campo. Il valore tecnico completo resta "input / immissione".
 
@@ -257,7 +265,7 @@ translation_it: >-
 #### ⚖️ Contrasto operativo
 
 `{{決定|けってい}}` non è il contrario di
-[{{入力|にゅうりょく}}する](term:term-nyuryoku-suru). `{{入力|にゅうりょく}}する`
+[{{入力|にゅうりょく}}する](term:term-nyuryoku-suru). {{入力|にゅうりょく}}する
 descrive l'immissione del codice; `{{決定|けってい}}` conferma il valore già
 immesso. Se li confondi, rischi di leggere il pulsante come "inserisci" quando
 in realtà significa "conferma".
@@ -268,7 +276,7 @@ La schermata alterna tre registri. Le frasi guida sono complete:
 `{{新規|しんき}}でデッキを{{作成|さくせい}}する` e
 `デッキコードを{{入力|にゅうりょく}}する`; qui cerchi particelle e verbo finale. Il
 campo è quasi muto: si capisce dal sostantivo che lo precede,
-[デッキコード](term:term-deck-code). I pulsanti comprimono: `{{新規|しんき}}デッキ{{作成|さくせい}}`
+[デッキコード](term:term-deck-code). I pulsanti comprimono: {{新規|しんき}}デッキ{{作成|さくせい}}
 nomina l'azione, `{{決定|けってい}}` nomina la conferma.
 
 Questo schema torna spesso nelle UI giapponesi. Quando una riga contiene `を` e
@@ -279,7 +287,7 @@ deve entrarci.
 
 #### 🧠 Gancio cognitivo
 
-pensa alla schermata come a tre corsie: frase guida =
+Pensa alla schermata come a tre corsie: frase guida =
 "che azione è", campo = "che dato serve", pulsante = "che cosa parte adesso".
 È un trucco di lettura, non una regola grammaticale assoluta.
 

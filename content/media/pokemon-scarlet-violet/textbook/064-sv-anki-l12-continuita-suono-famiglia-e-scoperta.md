@@ -62,8 +62,8 @@ Il filo comune è il soggetto visibile della frase. Con [{{続|つづ}}く](term
 
 Le transizioni di *Pokémon Scarlet & Violet* usano spesso verbi che non hanno un oggetto diretto. La scena non ti dice "qualcuno continua l'avventura" o "qualcuno ascolta una voce": mette davanti l'avventura o la voce e poi descrive il loro stato.
 
-*   [{{続|つづ}}く](term:term-anki-l12-tsuzuku) descrive una durata che resta aperta. In `{{冒険|ぼうけん}}が{{続|つづ}}く`, il centro è `{{冒険|ぼうけん}}`: il viaggio non si chiude con la scena appena vista, ma rimane in corso. Quando compare in un messaggio narrativo, preparati a una tappa successiva, a una promessa non ancora risolta o a un obiettivo che non è finito.
-*   [{{聞|き}}こえる](term:term-anki-l12-kikoeru) descrive un suono che diventa percepibile. Non è `{{聞|き}}く`, "ascoltare" con intenzione: è la voce, il verso o il rumore che arriva nella scena. In `{{声|こえ}}が{{聞|き}}こえる`, il soggetto grammaticale non sei tu, ma la voce; quindi la domanda di lettura diventa "che cosa si sente?" prima ancora di "chi lo sta ascoltando?".
+*   [{{続|つづ}}く](term:term-anki-l12-tsuzuku) descrive una durata che resta aperta. In {{冒険|ぼうけん}}が{{続|つづ}}く, il centro è {{冒険|ぼうけん}}: il viaggio non si chiude con la scena appena vista, ma rimane in corso. Quando compare in un messaggio narrativo, preparati a una tappa successiva, a una promessa non ancora risolta o a un obiettivo che non è finito.
+*   [{{聞|き}}こえる](term:term-anki-l12-kikoeru) descrive un suono che diventa percepibile. Non è {{聞|き}}く, "ascoltare" con intenzione: è la voce, il verso o il rumore che arriva nella scena. In {{声|こえ}}が{{聞|き}}こえる, il soggetto grammaticale non sei tu, ma la voce; quindi la domanda di lettura diventa "che cosa si sente?" prima ancora di "chi lo sta ascoltando?".
 
 :::example_sentence
 jp: >-
@@ -93,7 +93,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`{{聞|き}}く` mette a fuoco l'azione di ascoltare o chiedere; [{{聞|き}}こえる](term:term-anki-l12-kikoeru) mette a fuoco il suono che arriva. Se una scena dice `{{声|こえ}}が{{聞|き}}こえる`, cerca prima l'elemento percepito e solo dopo il personaggio che potrebbe reagire.
+{{聞|き}}く mette a fuoco l'azione di ascoltare o chiedere; [{{聞|き}}こえる](term:term-anki-l12-kikoeru) mette a fuoco il suono che arriva. Se una scena dice {{声|こえ}}が{{聞|き}}こえる, cerca prima l'elemento percepito e solo dopo il personaggio che potrebbe reagire.
 
 #### 🧠 Gancio cognitivo
 
@@ -103,8 +103,8 @@ Con [{{続|つづ}}く](term:term-anki-l12-tsuzuku), immagina una linea che non 
 
 Quando il testo lascia la narrazione e passa ai menu, la grammatica diventa più operativa. Il salone parla di risultato scelto; il negozio mette insieme oggetto, quantità e azione completata.
 
-*   [{{髪型|かみがた}}](term:term-anki-l12-kamigata) unisce `{{髪|かみ}}`, capelli, e `{{型|かた}}`, forma o modello; nella parola composta il secondo elemento si legge `がた`. Nei saloni di Paldea, `{{髪型|かみがた}}にする` non vuol dire "fare capelli" in astratto: `に` marca il risultato e `する` realizza la scelta. Il testo ti sta dicendo che l'aspetto viene portato a quel modello.
-*   [{{3|みっ}}つ](term:term-anki-l12-mittsu) appartiene al conteggio generico giapponese. Quando una frase parla di strumenti, Poké Ball o opzioni non specializzate, la quantità può comparire dopo l'oggetto marcato da `を`: `モンスターボールを{{3|みっ}}つ{{買|か}}う`. In italiano diciamo "comprare tre Poké Ball"; in giapponese la quantità può stare più vicina al verbo, come misura dell'azione.
+*   [{{髪型|かみがた}}](term:term-anki-l12-kamigata) unisce {{髪|かみ}}, capelli, e {{型|かた}}, forma o modello; nella parola composta il secondo elemento si legge がた. Nei saloni di Paldea, {{髪型|かみがた}}にする non vuol dire "fare capelli" in astratto: に marca il risultato e する realizza la scelta. Il testo ti sta dicendo che l'aspetto viene portato a quel modello.
+*   [{{3|みっ}}つ](term:term-anki-l12-mittsu) appartiene al conteggio generico giapponese. Quando una frase parla di strumenti, Poké Ball o opzioni non specializzate, la quantità può comparire dopo l'oggetto marcato da を: モンスターボールを{{3|みっ}}つ{{買|か}}う. In italiano diciamo "comprare tre Poké Ball"; in giapponese la quantità può stare più vicina al verbo, come misura dell'azione.
 
 :::example_sentence
 jp: >-
@@ -135,7 +135,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{髪型|かみがた}}](term:term-anki-l12-kamigata) non è solo `{{髪|かみ}}`. Se una schermata mostra `{{髪型|かみがた}}`, sta parlando del modello dell'acconciatura; se trovi `{{髪|かみ}}` da solo, il focus può essere semplicemente sui capelli.
+[{{髪型|かみがた}}](term:term-anki-l12-kamigata) non è solo {{髪|かみ}}. Se una schermata mostra {{髪型|かみがた}}, sta parlando del modello dell'acconciatura; se trovi {{髪|かみ}} da solo, il focus può essere semplicemente sui capelli.
 
 #### 🧠 Gancio cognitivo
 
@@ -145,10 +145,10 @@ In `Nにする`, pensa a `に` come a una freccia verso il risultato: non descri
 
 All'Accademia, le stesse particelle che nei menu indicano luogo o risultato entrano nei dialoghi personali. Una stanza diventa il punto in cui si trova qualcuno; una famiglia diventa un argomento delicato; un sogno diventa il futuro che un personaggio mette davanti a sé.
 
-*   [{{医務室|いむしつ}}](term:term-anki-l12-imushitsu) è un luogo istituzionale: `{{医務|いむ}}` richiama il servizio medico e `{{室|しつ}}` la stanza. In `{{医務室|いむしつ}}にいる`, `に` non indica movimento verso il luogo, ma presenza dentro quel luogo. La frase localizza una persona o un Pokémon: prima trovi il posto, poi capisci chi ci si trova.
-*   [{{家族|かぞく}}](term:term-anki-l12-kazoku) porta il discorso sulle relazioni personali. In `{{家族|かぞく}}のこと`, `こと` allarga il nome da "la famiglia" a "le questioni che riguardano la famiglia": ricordi, problemi, silenzi, decisioni. Nei dialoghi di Pepe o degli adulti, questa formula può segnalare un tema emotivo più ampio del semplice elenco dei parenti.
-*   [{{夢|ゆめ}}](term:term-anki-l12-yume) oscilla tra sogno notturno e aspirazione. In `チャンピオンになるのが{{夢|ゆめ}}だ`, il contenuto del sogno viene prima: `チャンピオンになるの` nominalizza "diventare Campione" e lo rende il soggetto. Il giapponese non dice solo "ho un sogno", ma mette in primo piano quale azione o futuro costituisce quel sogno.
-*   [お{{礼|れい}}](term:term-anki-l12-orei) parte da `{{礼|れい}}`, gratitudine o cortesia, con il prefisso onorifico `お`. Il chunk `お{{礼|れい}}に` significa "come ringraziamento" e spesso introduce ciò che un personaggio offre dopo un aiuto, una lotta o una richiesta completata. Non fermarti a "grazie": guarda cosa arriva dopo `に`, perché lì compare il gesto concreto di riconoscenza.
+*   [{{医務室|いむしつ}}](term:term-anki-l12-imushitsu) è un luogo istituzionale: {{医務|いむ}} richiama il servizio medico e {{室|しつ}} la stanza. In {{医務室|いむしつ}}にいる, に non indica movimento verso il luogo, ma presenza dentro quel luogo. La frase localizza una persona o un Pokémon: prima trovi il posto, poi capisci chi ci si trova.
+*   [{{家族|かぞく}}](term:term-anki-l12-kazoku) porta il discorso sulle relazioni personali. In {{家族|かぞく}}のこと, こと allarga il nome da "la famiglia" a "le questioni che riguardano la famiglia": ricordi, problemi, silenzi, decisioni. Nei dialoghi di Pepe o degli adulti, questa formula può segnalare un tema emotivo più ampio del semplice elenco dei parenti.
+*   [{{夢|ゆめ}}](term:term-anki-l12-yume) oscilla tra sogno notturno e aspirazione. In チャンピオンになるのが{{夢|ゆめ}}だ, il contenuto del sogno viene prima: チャンピオンになるの nominalizza "diventare Campione" e lo rende il soggetto. Il giapponese non dice solo "ho un sogno", ma mette in primo piano quale azione o futuro costituisce quel sogno.
+*   [お{{礼|れい}}](term:term-anki-l12-orei) parte da {{礼|れい}}, gratitudine o cortesia, con il prefisso onorifico お. Il chunk お{{礼|れい}}に significa "come ringraziamento" e spesso introduce ciò che un personaggio offre dopo un aiuto, una lotta o una richiesta completata. Non fermarti a "grazie": guarda cosa arriva dopo に, perché lì compare il gesto concreto di riconoscenza.
 
 :::example_sentence
 jp: >-
@@ -203,8 +203,8 @@ In `お{{礼|れい}}に`, pensa a `に` come al ponte verso il gesto successivo
 
 Nelle zone di ricerca e nelle informazioni su Pokémon insoliti, il testo cambia registro: non descrive più una scelta immediata, ma qualcosa che non è ancora verificato o che può emergere durante l'esplorazione.
 
-*   [{{未確認|みかくにん}}](term:term-anki-l12-mikakunin) è costruito in modo trasparente: `{{未|み}}` vale "non ancora" e [{{確認|かくにん}}](term:term-v482-kakunin) è conferma o verifica. In `{{未確認|みかくにん}}のポケモン`, il `の` trasforma tutto il blocco in una descrizione del nome successivo: non "un Pokémon conferma", ma "un Pokémon non ancora confermato / identificato".
-*   [{{見|み}}つかる](term:term-anki-l12-mitsukaru) descrive il venire alla luce di qualcosa. È intransitivo: `スパイスが{{見|み}}つかる` dice che la spezia viene trovata o salta fuori, non che qualcuno la trova attivamente. Se il testo vuole mettere davanti chi cerca e ciò che trova, il verbo naturale è `{{見|み}}つける`.
+*   [{{未確認|みかくにん}}](term:term-anki-l12-mikakunin) è costruito in modo trasparente: {{未|み}} vale "non ancora" e {{確認|かくにん}} è conferma o verifica. In {{未確認|みかくにん}}のポケモン, il の trasforma tutto il blocco in una descrizione del nome successivo: non "un Pokémon conferma", ma "un Pokémon non ancora confermato / identificato".
+*   [{{見|み}}つかる](term:term-anki-l12-mitsukaru) descrive il venire alla luce di qualcosa. È intransitivo: スパイスが{{見|み}}つかる dice che la spezia viene trovata o salta fuori, non che qualcuno la trova attivamente. Se il testo vuole mettere davanti chi cerca e ciò che trova, il verbo naturale è {{見|み}}つける.
 
 :::example_sentence
 jp: >-
@@ -235,11 +235,11 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{見|み}}つかる](term:term-anki-l12-mitsukaru) risponde a "che cosa viene trovato?"; `{{見|み}}つける` risponde a "chi trova che cosa?". Se nella frase il nome prende `が`, aspettati spesso una lettura intransitiva: l'oggetto della ricerca emerge come soggetto.
+[{{見|み}}つかる](term:term-anki-l12-mitsukaru) risponde a "che cosa viene trovato?"; {{見|み}}つける risponde a "chi trova che cosa?". Se nella frase il nome prende が, aspettati spesso una lettura intransitiva: l'oggetto della ricerca emerge come soggetto.
 
 #### 🧠 Gancio cognitivo
 
-Con [{{未確認|みかくにん}}](term:term-anki-l12-mikakunin), leggi `{{未|み}}` come un cartello "non ancora". Prima arriva lo stato provvisorio, poi [{{確認|かくにん}}](term:term-v482-kakunin) potrà chiuderlo con una verifica.
+Con [{{未確認|みかくにん}}](term:term-anki-l12-mikakunin), leggi {{未|み}} come un cartello "non ancora". Prima arriva lo stato provvisorio, poi {{確認|かくにん}} potrà chiuderlo con una verifica.
 
 ## Esempi guidati di riepilogo
 

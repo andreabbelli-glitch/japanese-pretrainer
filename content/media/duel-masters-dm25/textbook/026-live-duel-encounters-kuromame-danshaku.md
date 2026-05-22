@@ -26,26 +26,24 @@ un effetto "sembra" un trigger di ingresso, ma se comincia con una formula
 precisa. Il lato spell, invece, costruisce una sequenza di zone molto pulita:
 prima cima del mazzo verso mana, poi mana verso mano se vuoi.
 
-:::image
-src: assets/cards/live-duel/kuromame-danshaku.webp
-alt: "Kuromame Danshaku / Hakumai Danshaku card."
-caption: >-
-  [{{黒豆|くろまめ}}だんしゃく](term:term-kuromame-danshaku) /
-  {{白米|はくまい}}{{男|だん}}しゃく。
-  Twinpact naturale. Razze del lato creatura: グランセクト / スペシャルズ.
-  Riga centrale: filtra le abilità avversarie che iniziano con
-  「このクリーチャーが{{出|で}}た{{時|とき}}」; sotto,
-  {{白米|はくまい}}{{男|だん}}しゃく mette in mana la prima carta del mazzo e poi
-  può recuperare una carta dalla mana.
-:::
 
 ## Termini chiave
 
 - [{{黒豆|くろまめ}}だんしゃく](term:term-kuromame-danshaku) — lato creatura del Twinpact
 - [{{能力|のうりょく}}](term:term-ability) — abilità / blocco di effetto posseduto da una carta
+- [{{自分|じぶん}}](term:term-self) e [{{相手|あいて}}](term:term-opponent) — lato
+  che controlla l'effetto e lato avversario da filtrare.
+- [バトルゾーン](term:term-battle-zone) e [マナゾーン](term:term-mana-zone) —
+  zone tra cui si muovono creature e risorse.
+- [クリーチャー](term:term-creature) — corpo che può entrare, attivare abilità e
+  poi spostarsi in mana.
+- [このクリーチャーが{{出|で}}た](term:term-deru) — formula di ingresso letta come
+  trigger citato.
 - [{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}](term:term-top-card-of-deck) — la prima carta dalla cima del mazzo
 - [{{置|お}}く](term:term-oku) — mettere una carta in una zona indicata
 - [{{手札|てふだ}}](term:term-hand) — mano
+- [{{戻|もど}}す](term:term-modosu) — riportare una carta alla mano o alla zona
+  indicata.
 
 ## Espressioni ricorrenti
 
@@ -70,6 +68,19 @@ caption: >-
 - グランセクト / スペシャルズ — razze del lato creatura
 
 ---
+
+:::image
+src: assets/cards/live-duel/kuromame-danshaku.webp
+alt: "Kuromame Danshaku / Hakumai Danshaku card."
+caption: >-
+  [{{黒豆|くろまめ}}だんしゃく](term:term-kuromame-danshaku) /
+  {{白米|はくまい}}{{男|だん}}しゃく。
+  Twinpact naturale. Razze del lato creatura: グランセクト / スペシャルズ.
+  Riga centrale: filtra le abilità avversarie che iniziano con
+  「このクリーチャーが{{出|で}}た{{時|とき}}」; sotto,
+  {{白米|はくまい}}{{男|だん}}しゃく mette in mana la prima carta del mazzo e poi
+  può recuperare una carta dalla mana.
+:::
 
 ## 1. Il filtro: quando le virgolette diventano bersaglio
 
@@ -98,21 +109,21 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{相手|あいて}}](term:term-opponent)の` indica possesso o lato di controllo:
+*   [{{相手|あいて}}](term:term-opponent)の indica possesso o lato di controllo:
     la creatura filtrata è dell'avversario.
-*   `「[バトルゾーン](term:term-battle-zone)にこのクリーチャーが{{出|で}}た{{時|とき}}」で`
+*   「[バトルゾーン](term:term-battle-zone)にこのクリーチャーが{{出|で}}た{{時|とき}}」で
     è la formula citata. Il `で` non marca una zona, ma il criterio con cui
     comincia l'abilità.
-*   `[{{始|はじ}}まる](grammar:grammar-de-hajimaru)
+*   [{{始|はじ}}まる](grammar:grammar-de-hajimaru)
     [{{能力|のうりょく}}](term:term-ability)を{{持|も}}つ
-    [クリーチャー](term:term-creature)` è un blocco nominale unico: una
+    [クリーチャー](term:term-creature) è un blocco nominale unico: una
     creatura che possiede un'abilità fatta in quel modo.
-*   `[バトルゾーン](term:term-battle-zone)に
-    [{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki)` apre il
+*   [バトルゾーン](term:term-battle-zone)に
+    [{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki) apre il
     timing effettivo. Non è ancora il risultato: è il momento in cui il filtro
     viene controllato.
-*   `そのクリーチャーを[マナゾーン](term:term-mana-zone)に
-    [{{置|お}}く](term:term-oku)` richiama la stessa creatura appena entrata e
+*   そのクリーチャーを[マナゾーン](term:term-mana-zone)に
+    [{{置|お}}く](term:term-oku) richiama la stessa creatura appena entrata e
     ne fissa la destinazione.
 
 #### ⚖️ Contrasto operativo: trigger di ingresso vs inizio testuale
@@ -134,14 +145,14 @@ meno questo tema".
 ## 2. Il referente: dalla creatura filtrata a `そのクリーチャー`
 
 Il cuore della riga è `{{能力|のうりょく}}を{{持|も}}つクリーチャー`. Prima il testo
-costruisce il tipo di creatura, poi aggiunge l'evento `が{{出|で}}た
-{{時|とき}}`. Questo ordine evita un errore frequente: il soggetto che entra non
+costruisce il tipo di creatura, poi aggiunge l'evento が{{出|で}}た
+{{時|とき}}. Questo ordine evita un errore frequente: il soggetto che entra non
 è l'abilità, ma la creatura che possiede quell'abilità.
 
 Quando compare `そのクリーチャー`, `その` non apre un nuovo bersaglio. Riprende la
 creatura appena definita: avversaria, entrata nel battle zone, e dotata di una
 abilità che comincia con la formula citata. Il movimento finale
-`[マナゾーン](term:term-mana-zone)に[{{置|お}}く](term:term-oku)` dice dove finisce
+[マナゾーン](term:term-mana-zone)に[{{置|お}}く](term:term-oku) dice dove finisce
 quella carta; non la distrugge, non la rimanda in mano, la sposta nella zona
 mana.
 
@@ -177,19 +188,19 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{自分|じぶん}}](term:term-self)の
-    [{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}](term:term-top-card-of-deck)を`
+*   [{{自分|じぶん}}](term:term-self)の
+    [{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}](term:term-top-card-of-deck)を
     marca l'oggetto preso: la prima carta dalla cima del tuo mazzo.
-*   `[マナゾーン](term:term-mana-zone)に[{{置|お}}く](term:term-oku)` è il primo
+*   [マナゾーン](term:term-mana-zone)に[{{置|お}}く](term:term-oku) è il primo
     movimento. La destinazione viene prima di `{{置|お}}く`, quindi il verbo va
     letto insieme alla zona.
-*   `[その{{後|あと}}](grammar:grammar-sonoato)` ordina i due passi: il recupero
+*   [その{{後|あと}}](grammar:grammar-sonoato) ordina i due passi: il recupero
     arriva dopo che la carta è stata messa in mana.
 *   `カードを{{1枚|いちまい}}` introduce una carta singola, ma non dice
     `そのカード`. Il giapponese non obbliga a scegliere proprio la carta appena
     messa in mana.
-*   `[マナゾーン](term:term-mana-zone)から
-    [{{手札|てふだ}}](term:term-hand)に[{{戻|もど}}して](term:term-modosu)もよい`
+*   [マナゾーン](term:term-mana-zone)から
+    [{{手札|てふだ}}](term:term-hand)に[{{戻|もど}}して](term:term-modosu)もよい
     contiene origine, destinazione e facoltatività: dalla mana alla mano, se
     decidi di farlo.
 

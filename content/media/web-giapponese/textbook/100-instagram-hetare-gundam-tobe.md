@@ -2,7 +2,7 @@
 id: lesson-web-giapponese-instagram-hetare-gundam-tobe
 media_id: media-web-giapponese
 slug: 100-instagram-hetare-gundam-tobe
-title: Instagram - 飛べ！へたれガンダム
+title: "Vola, Gundam scrauso"
 order: 100
 segment_ref: instagram-reels
 difficulty: custom
@@ -52,19 +52,19 @@ irriverente l'etichetta messa davanti a `ガンダム`.
   caption prende in giro
 - `🤖` — emoji di robot; rinforza il frame mecha senza aggiungere grammatica
 
+---
+
+## 1. `{{飛|と}}べ！`: quando il comando fa partire la scena
+
 :::image
 src: assets/instagram-hetare-gundam-tobe.jpg
 alt: >-
   Screenshot Instagram con un Gundam artigianale in un prato e caption
   giapponese in basso.
 caption: >-
-  `{{飛|と}}べ！[へたれ](term:term-hetare)ガンダム` mette un comando eroico davanti
+  {{飛|と}}べ！[へたれ](term:term-hetare)ガンダム mette un comando eroico davanti
   a un soprannome volutamente poco eroico.
 :::
-
----
-
-## 1. `{{飛|と}}べ！`: quando il comando fa partire la scena
 
 `{{飛|と}}べ！` viene da `{{飛|と}}ぶ`, "volare". `{{飛|と}}ぶ` è un verbo godan:
 quando diventa imperativo, la sillaba finale `ぶ` non resta com'è e non diventa
@@ -117,7 +117,7 @@ o a un personaggio, diventa "scrauso", "sfigato", "poco impressionante". Non è
 una descrizione neutra di qualità tecnica: porta con sé una voce che prende in
 giro.
 
-Dentro `へたれガンダム`, [へたれ](term:term-hetare) sta davanti a `ガンダム` e lo
+Dentro へたれガンダム, [へたれ](term:term-hetare) sta davanti a ガンダム e lo
 modifica come un'etichetta nominale. Il giapponese non ha bisogno di "di" o
 "che è": il primo nome colora il secondo. Il risultato non è "il Gundam del
 へたれ" come possesso, ma "il Gundam scrauso / mollaccione" come soprannome.
@@ -141,9 +141,9 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[へたれ](term:term-hetare) non va letto come semplice `{{下手|へた}}`. `{{下手|へた}}`
-significa "scarso / non bravo" e può descrivere un'abilità: `{{絵|え}}が
-{{下手|へた}}` è "non essere bravo a disegnare". [へたれ](term:term-hetare)
+[へたれ](term:term-hetare) non va letto come semplice {{下手|へた}}. {{下手|へた}}
+significa "scarso / non bravo" e può descrivere un'abilità: {{絵|え}}が
+{{下手|へた}} è "non essere bravo a disegnare". [へたれ](term:term-hetare)
 invece giudica il tono complessivo di una persona, cosa o personaggio: sembra
 debole, poco coraggioso, poco convincente. In `へたれガンダム`, non stai misurando
 la precisione della costruzione; stai sentendo uno sfottò.
@@ -151,7 +151,7 @@ la precisione della costruzione; stai sentendo uno sfottò.
 #### 🧠 Gancio cognitivo
 
 Usa [へたれ](term:term-hetare) come etichetta da "eroe sgonfiato". Se il nome
-che segue dovrebbe suonare forte, come `ガンダム`, [へたれ](term:term-hetare)
+che segue dovrebbe suonare forte, come ガンダム, [へたれ](term:term-hetare)
 toglie pressione epica e produce comicità. È un trucco di lettura, non una
 spiegazione storica della parola.
 
@@ -222,7 +222,7 @@ translation_it: >-
 ## Nota finale
 
 `{{飛|と}}べ！へたれガンダム` è una mini-scena in una riga: l'imperativo
-`{{飛|と}}べ！` alza il volume, [へたれ](term:term-hetare) lo abbassa con uno
+{{飛|と}}べ！ alza il volume, [へたれ](term:term-hetare) lo abbassa con uno
 sfottò, `ガンダム` porta l'immaginario mecha e l'immagine del robot artigianale
 chiude la battuta. Quando incontri caption simili, cerca prima il verbo che
 spinge l'azione, poi il nome o l'aggettivo che decide il tono.

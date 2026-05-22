@@ -56,11 +56,13 @@ Le reazioni brevi servono a seguire il tono della scena: chi capisce, chi confer
 
 ---
 
+[{{一番|いちばん}}](term:term-v199-ichiban) non è solo "numero uno": nelle battute valuta il massimo grado, il punto più forte o la scelta principale.
+
 ## 1. Reazioni rapide: capire, confermare, restare increduli
 
-Nei dialoghi brevi, molte battute non aggiungono un nuovo evento: mostrano come il personaggio assorbe l'informazione appena ricevuta. [そうか](term:term-e036-souka) chiude un piccolo scatto mentale: `そう` punta a "così / in quel modo", mentre `か` dà il sapore di presa d'atto, come "ah, quindi è così". Non è una domanda da menu; è il parlante che registra il dato.
+Nei dialoghi brevi, molte battute non aggiungono un nuovo evento: mostrano come il personaggio assorbe l'informazione appena ricevuta. [そうか](term:term-e036-souka) chiude un piccolo scatto mentale: そう punta a "così / in quel modo", mentre か dà il sapore di presa d'atto, come "ah, quindi è così". Non è una domanda da menu; è il parlante che registra il dato.
 
-[たしかに](term:term-v206-tashikani) conferma con più peso. Viene da `{{確|たし}}か`, "certo / sicuro", e in frase funziona come "in effetti": il personaggio non sta solo dicendo sì, sta riconoscendo che l'osservazione dell'altro regge. [まさか](term:term-e038-masaka), invece, apre una reazione di incredulità: qualcosa è così improbabile che il parlante fatica ad accettarlo.
+[たしかに](term:term-v206-tashikani) conferma con più peso. Viene da {{確|たし}}か, "certo / sicuro", e in frase funziona come "in effetti": il personaggio non sta solo dicendo sì, sta riconoscendo che l'osservazione dell'altro regge. [まさか](term:term-e038-masaka), invece, apre una reazione di incredulità: qualcosa è così improbabile che il parlante fatica ad accettarlo.
 
 :::example_sentence
 jp: >-
@@ -75,21 +77,21 @@ translation_it: >-
 *   `たしかに` ➔ **conferma argomentativa** (non è solo "sì": segnala che la valutazione appena emersa è fondata).
 *   `{{大変|たいへん}}だった` ➔ **valutazione al passato** (`{{大変|たいへん}}` descrive una situazione pesante o impegnativa; `だった` la colloca come esperienza già vissuta).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{大変|たいへん}}](term:term-v207-taihen) non va letto come "molto grande" solo perché contiene `{{大|たい}}`. Nei dialoghi di gioco di solito valuta il carico della situazione: una prova difficile, un problema serio, una fatica reale. Se dopo una battaglia qualcuno dice `{{大変|たいへん}}だった`, sta dicendo che è stata dura, non che è stata "grande".
+[{{大変|たいへん}}](term:term-v207-taihen) non va letto come "molto grande" solo perché contiene {{大|たい}}. Nei dialoghi di gioco di solito valuta il carico della situazione: una prova difficile, un problema serio, una fatica reale. Se dopo una battaglia qualcuno dice {{大変|たいへん}}だった, sta dicendo che è stata dura, non che è stata "grande".
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [そうか](term:term-e036-souka), pensa alla testa del personaggio che fa clic: "così, eh". Per [まさか](term:term-e038-masaka), immagina invece un freno improvviso nella frase: "aspetta, non può essere...". È un trucco mnemonico sul tono, non un'etimologia.
 
-Quando entra [{{感謝|かんしゃ}}](term:term-v208-kansha), il registro si sposta ancora: non è più solo reazione, ma riconoscimento di un favore. `{{感謝|かんしゃ}}する` trasforma il sostantivo in verbo, "ringraziare / essere grati", ed è naturale dopo aiuto, collaborazione o salvataggio.
+Quando entra [{{感謝|かんしゃ}}](term:term-v208-kansha), il registro si sposta ancora: non è più solo reazione, ma riconoscimento di un favore. {{感謝|かんしゃ}}する trasforma il sostantivo in verbo, "ringraziare / essere grati", ed è naturale dopo aiuto, collaborazione o salvataggio.
 
 ## 2. Parlare di persone e parole: `って` mette il tema davanti
 
-Il parlato dei personaggi usa spesso [〜って](grammar:grammar-g037-citazione-tema-colloquiale) per agganciare qualcosa appena nominato. Può riprendere una citazione, ma in frasi come `ネモって...` funziona soprattutto da tema colloquiale: "quanto a Nemona...", "Nemona, dici?". È più leggero di `は` e dà alla frase un tono parlato, come se il personaggio stesse raccogliendo un nome dalla conversazione e lo mettesse sul tavolo.
+Il parlato dei personaggi usa spesso [〜って](grammar:grammar-g037-citazione-tema-colloquiale) per agganciare qualcosa appena nominato. Può riprendere una citazione, ma in frasi come ネモって... funziona soprattutto da tema colloquiale: "quanto a Nemona...", "Nemona, dici?". È più leggero di は e dà alla frase un tono parlato, come se il personaggio stesse raccogliendo un nome dalla conversazione e lo mettesse sul tavolo.
 
-[{{言葉|ことば}}](term:term-v198-kotoba) aiuta a leggere questo stesso territorio. Non indica solo una "parola" singola: può essere una frase, una scelta di parole o il modo in cui qualcuno si esprime. Nei dialoghi, quindi, `その{{言葉|ことば}}` può puntare a ciò che è stato detto, non a un vocabolo isolato da dizionario.
+[{{言葉|ことば}}](term:term-v198-kotoba) aiuta a leggere questo stesso territorio. Non indica solo una "parola" singola: può essere una frase, una scelta di parole o il modo in cui qualcuno si esprime. Nei dialoghi, quindi, その{{言葉|ことば}} può puntare a ciò che è stato detto, non a un vocabolo isolato da dizionario.
 
 :::example_sentence
 jp: >-
@@ -104,21 +106,21 @@ translation_it: >-
 *   `{{一番|いちばん}}` ➔ **massimo nella scala** (letteralmente "numero uno"; davanti a un aggettivo crea "la più / il più").
 *   `{{強|つよ}}いよね` ➔ **constatazione condivisa** (`よ` spinge l'informazione verso l'interlocutore, `ね` cerca accordo o conferma).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[〜って](grammar:grammar-g037-citazione-tema-colloquiale) non è sempre virgolette invisibili. Se dopo arriva un commento su una persona o un concetto, leggilo come tema: `ネモって` non significa "la parola Nemona", ma "quanto a Nemona". Se invece il blocco riprende una frase detta da qualcuno, allora la lettura da citazione torna possibile.
+[〜って](grammar:grammar-g037-citazione-tema-colloquiale) non è sempre virgolette invisibili. Se dopo arriva un commento su una persona o un concetto, leggilo come tema: ネモって non significa "la parola Nemona", ma "quanto a Nemona". Se invece il blocco riprende una frase detta da qualcuno, allora la lettura da citazione torna possibile.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Immagina `って` come un dito che indica qualcosa nella conversazione: "quello lì, parliamone". Funziona bene per ricordare perché appare spesso dopo nomi propri, parole appena sentite o frasi riportate.
 
 ## 3. Battaglia, tipi e oggetti tenuti
 
-Quando il testo entra nella lotta, il lessico diventa più operativo. [{{大会|たいかい}}](term:term-v196-taikai) è una competizione organizzata, un torneo con partecipanti e risultato; [{{戦闘|せんとう}}](term:term-v205-sentou) è il combattimento come evento o stato tecnico. In una UI o in una spiegazione di sistema, `{{戦闘|せんとう}}{{中|ちゅう}}` ti dice che qualcosa accade "durante il combattimento", non semplicemente in una scena d'azione.
+Quando il testo entra nella lotta, il lessico diventa più operativo. [{{大会|たいかい}}](term:term-v196-taikai) è una competizione organizzata, un torneo con partecipanti e risultato; [{{戦闘|せんとう}}](term:term-v205-sentou) è il combattimento come evento o stato tecnico. In una UI o in una spiegazione di sistema, {{戦闘|せんとう}}{{中|ちゅう}} ti dice che qualcosa accade "durante il combattimento", non semplicemente in una scena d'azione.
 
-Le etichette [むし](term:term-v200-mushi) e [こおり](term:term-v204-koori) sono tipi. Sono scritte in kana perché i nomi dei tipi in Pokémon tendono a restare leggibili e immediati sullo schermo. Il punto pratico è non cercare per forza kanji dietro ogni label: se vedi `むしタイプ` o `こおりタイプ`, il gioco sta classificando un Pokémon, una mossa o una relazione di efficacia.
+Le etichette [むし](term:term-v200-mushi) e [こおり](term:term-v204-koori) sono tipi. Sono scritte in kana perché i nomi dei tipi in Pokémon tendono a restare leggibili e immediati sullo schermo. Il punto pratico è non cercare per forza kanji dietro ogni label: se vedi むしタイプ o こおりタイプ, il gioco sta classificando un Pokémon, una mossa o una relazione di efficacia.
 
-[{{持|も}}たせる](term:term-v202-mota-seru) è il verbo che collega menu e squadra. Parte da `{{持|も}}つ`, "tenere / avere con sé", ma la forma causativa `{{持|も}}たせる` significa "far tenere": tu assegni un oggetto e il Pokémon diventa il possessore dell'oggetto tenuto.
+[{{持|も}}たせる](term:term-v202-mota-seru) è il verbo che collega menu e squadra. Parte da {{持|も}}つ, "tenere / avere con sé", ma la forma causativa {{持|も}}たせる significa "far tenere": tu assegni un oggetto e il Pokémon diventa il possessore dell'oggetto tenuto.
 
 :::example_sentence
 jp: >-
@@ -133,19 +135,19 @@ translation_it: >-
 *   `{{道具|どうぐ}}を` ➔ **oggetto assegnato** (`を` marca ciò che viene fatto tenere).
 *   `{{持|も}}たせる` ➔ **causativo pratico** (non "il Pokémon tiene" in modo spontaneo, ma "fargli tenere" dal menu).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`{{持|も}}つ` descrive il possesso: "tenere / avere". [{{持|も}}たせる](term:term-v202-mota-seru) descrive l'assegnazione: qualcuno fa sì che un altro tenga qualcosa. In gioco questa differenza è concreta, perché l'azione parte dal giocatore e finisce sul Pokémon.
+{{持|も}}つ descrive il possesso: "tenere / avere". [{{持|も}}たせる](term:term-v202-mota-seru) descrive l'assegnazione: qualcuno fa sì che un altro tenga qualcosa. In gioco questa differenza è concreta, perché l'azione parte dal giocatore e finisce sul Pokémon.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per ricordare [{{持|も}}たせる](term:term-v202-mota-seru), visualizza l'oggetto che passa dalla borsa allo slot del Pokémon. Il verbo non fotografa solo l'oggetto tenuto: fotografa il gesto di metterglielo addosso.
 
 ## 4. Confronti, intensità e condizioni
 
-Molte battute di battaglia non dicono solo cosa succede, ma quanto una cosa supera un'altra o a quale condizione parte l'effetto. [〜より / 〜ほど](grammar:grammar-g038-piu-di-al-punto-da) copre due movimenti diversi: `AよりB` mette A come punto di confronto e fa risaltare B, mentre `ほど` misura il grado, spesso in frasi come "non quanto pensavo" o "al punto da".
+Molte battute di battaglia non dicono solo cosa succede, ma quanto una cosa supera un'altra o a quale condizione parte l'effetto. [〜より / 〜ほど](grammar:grammar-g038-piu-di-al-punto-da) copre due movimenti diversi: AよりB mette A come punto di confronto e fa risaltare B, mentre ほど misura il grado, spesso in frasi come "non quanto pensavo" o "al punto da".
 
-[ずっと](term:term-v197-zutto) può indicare durata continuativa, "per tutto il tempo", ma nei confronti spesso intensifica: `ずっと{{強|つよ}}い` non vuol dire che è forte da sempre, ma "molto più forte". [{{全然|ぜんぜん}}](term:term-v203-zenzen) richiede attenzione simile: con una forma negativa è "per niente", mentre nel parlato moderno può rafforzare una valutazione positiva, come "assolutamente / davvero".
+[ずっと](term:term-v197-zutto) può indicare durata continuativa, "per tutto il tempo", ma nei confronti spesso intensifica: ずっと{{強|つよ}}い non vuol dire che è forte da sempre, ma "molto più forte". [{{全然|ぜんぜん}}](term:term-v203-zenzen) richiede attenzione simile: con una forma negativa è "per niente", mentre nel parlato moderno può rafforzare una valutazione positiva, come "assolutamente / davvero".
 
 :::example_sentence
 jp: >-
@@ -174,11 +176,11 @@ translation_it: >-
 *   `みんなが` ➔ **soggetto della conseguenza** (`が` introduce chi proverà o mostrerà gratitudine).
 *   `{{感謝|かんしゃ}}します` ➔ **azione cortese** (`{{感謝|かんしゃ}}` + `する`, in forma cortese `します`: "ringraziare / essere grati").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[〜ば](grammar:grammar-g039-se) ti chiede di leggere in due tempi: prima la condizione, poi la conseguenza. Non tradurre subito il verbo come azione già avvenuta. In `{{勝|か}}てば`, la vittoria non è ancora un fatto: è il requisito che apre ciò che segue.
+[〜ば](grammar:grammar-g039-se) ti chiede di leggere in due tempi: prima la condizione, poi la conseguenza. Non tradurre subito il verbo come azione già avvenuta. In {{勝|か}}てば, la vittoria non è ancora un fatto: è il requisito che apre ciò che segue.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per `より`, pensa a una linea di paragone: parti da A e guardi quanto B si stacca. Per `〜ば`, pensa a una porta: solo se la condizione si apre, puoi leggere la conseguenza dall'altra parte.
 

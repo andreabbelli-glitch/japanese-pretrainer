@@ -102,13 +102,13 @@ translation_it: >-
 - `たくさん {{倒|たお}}すんだ` ➔ **Azione richiesta** (`たくさん` alza la quantità,
   mentre `{{倒|たお}}す` dice che cosa devi fare).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{以|い}}{{内|ない}}](term:term-anki-l14-inai) include il limite. Se il testo dice
 `{{10分以内|じゅっぷんいない}}`, dieci minuti rientrano ancora nel margine; il
 problema nasce solo quando l'azione supera quel confine.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Pensa a [{{以|い}}{{内|ない}}](term:term-anki-l14-inai) come al bordo interno di
 un'area sulla mappa: finché resti dentro, sei ancora nel perimetro valido.
@@ -151,13 +151,13 @@ translation_it: >-
 - `はじめます` ➔ **Avvio cortese** (forma cortese di "iniziare", adatta ad
   annunci, istruzioni ufficiali e procedure guidate).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{試|し}}{{験|けん}}](term:term-anki-l14-shiken) non è sempre un compito scritto.
 Nel gioco può essere una prova pratica con giudizio finale: il verbo e la scena
 decidono se stai leggendo scuola, Lega o procedura di sistema.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Quando vedi [{{視|し}}{{察|さつ}}](term:term-anki-l14-shisatsu), immagina una visita
 con taccuino e responsabilità. È un trucco mnemonico, non un'etimologia: serve a
@@ -218,14 +218,14 @@ translation_it: >-
 - `いないようだ` ➔ **Negativo osservativo** (`いない` trasforma il blocco in
   "nessuno"; `ようだ` dà l'impressione o la deduzione).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{集|あつ}}まる](term:term-anki-l14-atsumaru) e `{{集|あつ}}める` non distribuiscono
+[{{集|あつ}}まる](term:term-anki-l14-atsumaru) e {{集|あつ}}める non distribuiscono
 i ruoli allo stesso modo. Con [{{集|あつ}}まる](term:term-anki-l14-atsumaru), il
 gruppo arriva o si forma; con `{{集|あつ}}める`, qualcuno raccoglie o raduna
 qualcosa.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{誰|だれ}}も](term:term-anki-l14-daremo), aspetta la fine della frase. Se
 arriva `ない`, il "chiunque" si chiude in "nessuno".
@@ -238,8 +238,8 @@ destinazione: il Pokémon non si sposta da solo, viene trasferito.
 
 - [{{送|おく}}る](term:term-anki-l14-okuru) è transitivo: qualcosa viene mandato,
   spedito o trasferito. Il frame più chiaro è `Nを Nに{{送|おく}}る`: `を` marca
-  ciò che viene inviato, `に` marca dove finisce. In `ポケモンを ボックスに
-  {{送|おく}}る`, la frase mette in primo piano l'atto di trasferimento.
+  ciò che viene inviato, に marca dove finisce. In ポケモンを ボックスに
+  {{送|おく}}る, la frase mette in primo piano l'atto di trasferimento.
 - `ボックスに{{送|おく}}る` è un blocco molto leggibile nei sistemi Pokémon:
   l'oggetto della frase lascia la posizione corrente e viene mandato nel Box.
   Il dettaglio importante non è solo la destinazione, ma il cambiamento di
@@ -263,16 +263,16 @@ translation_it: >-
   modifica `ポケモン`; `を` marca ciò che viene inviato).
 - `ボックスに` ➔ **Destinazione** (`に` indica dove arriva il trasferimento).
 - `{{送|おく}}るね` ➔ **Invio con tono di conferma**
-  ([{{送|おく}}る](term:term-anki-l14-okuru) descrive l'atto di mandare; `ね`
+  ([{{送|おく}}る](term:term-anki-l14-okuru) descrive l'atto di mandare; ね
   ammorbidisce la frase verso chi ascolta).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `ポケモンが ボックスに {{行|い}}く` direbbe che il Pokémon va nel Box.
 `ポケモンを ボックスに {{送|おく}}る` mette invece in primo piano chi o che cosa
 produce il trasferimento.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Con [{{送|おく}}る](term:term-anki-l14-okuru), cerca sempre due caselle: che cosa
 parte con `を` e dove arriva con `に`.

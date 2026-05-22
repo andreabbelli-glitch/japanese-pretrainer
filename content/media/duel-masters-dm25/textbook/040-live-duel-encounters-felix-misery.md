@@ -35,20 +35,6 @@ un cancello: `として` dice in quale ruolo avviene l'evocazione,
 [{{出|だ}}してもよい](grammar:grammar-temoyoi) lascia opzionale la rianimazione
 finale.
 
-:::image
-src: assets/cards/live-duel/felix-misery.webp
-alt: "Felix Misery card."
-caption: >-
-  [フェリックス・ミザリィ](term:term-felix-misery)。 Razza:
-  [マフィ・ギャング](term:term-mafi-gang). Tipo:
-  [NEOクリーチャー](term:term-neo-creature). La riga centrale collega
-  `NEO{{進化|しんか}}`, sconto in
-  [{{召喚|しょうかん}}](term:term-summon), soglia
-  `{{2体以上|にたいいじょう}}` di creature
-  [{{闇|やみ}}](term:term-darkness) e attacco che manda
-  `{{2枚|にまい}}` al cimitero prima di rimettere in campo una creatura
-  Darkness non evolution di costo `{{6以下|ろくいか}}`.
-:::
 
 ## Termini chiave
 
@@ -72,7 +58,7 @@ caption: >-
   ruolo preciso
 - [{{召喚|しょうかん}}する{{場合|ばあい}}](term:term-baai) — nel caso in cui venga
   evocata
-- `{{2体以上|にたいいじょう}}`[あれば](grammar:grammar-areba) — se ci sono
+- {{2体以上|にたいいじょう}}[あれば](grammar:grammar-areba) — se ci sono
   due o più unità valide
 - [その{{後|あと}}](grammar:grammar-sonoato) — dopo quel primo passaggio, si
   apre il passaggio successivo
@@ -97,8 +83,26 @@ caption: >-
 - [マフィ・ギャング](term:term-mafi-gang) — razza della creatura
 - [W・ブレイカー](term:term-w-breaker) — keyword offensiva compatta
 - [バトルゾーン](term:term-battle-zone) — destinazione della creatura rianimata
+- [{{自分|じぶん}}](term:term-self) — se stessi / il proprio lato
+- [クリーチャー](term:term-creature) — creatura
+- [{{攻撃|こうげき}}](term:term-attack) — attacco / attaccare
 
 ---
+
+:::image
+src: assets/cards/live-duel/felix-misery.webp
+alt: "Felix Misery card."
+caption: >-
+  [フェリックス・ミザリィ](term:term-felix-misery)。 Razza:
+  [マフィ・ギャング](term:term-mafi-gang). Tipo:
+  [NEOクリーチャー](term:term-neo-creature). La riga centrale collega
+  `NEO{{進化|しんか}}`, sconto in
+  [{{召喚|しょうかん}}](term:term-summon), soglia
+  `{{2体以上|にたいいじょう}}` di creature
+  [{{闇|やみ}}](term:term-darkness) e attacco che manda
+  `{{2枚|にまい}}` al cimitero prima di rimettere in campo una creatura
+  Darkness non evolution di costo `{{6以下|ろくいか}}`.
+:::
 
 ## 1. Entrare come NEO evolution: ruolo, caso e costo ridotto
 
@@ -130,10 +134,10 @@ mette mano al numero del costo.
     [{{場合|ばあい}}](term:term-baai) nominalizza lo scenario. Il testo non sta
     ancora dando il payoff; sta dicendo in quale caso la regola successiva si
     applica.
-*   [コスト](term:term-cost)`を{{2|ふた}}つ`:
+*   [コスト](term:term-cost)を{{2|ふた}}つ:
     `を` marca il costo come oggetto della modifica, mentre `{{2|ふた}}つ`
     quantifica di quanto cambia.
-*   [{{少|すく}}なくする](term:term-sukunaku-suru): parte da `少ない`, "poco /
+*   [{{少|すく}}なくする](term:term-sukunaku-suru): parte da 少ない, "poco /
     scarso", e con `する` diventa "rendere minore". Nel rules text il risultato
     naturale è "ridurre il costo".
 
@@ -144,7 +148,7 @@ mette mano al numero del costo.
     evocata.
 *   [{{召喚|しょうかん}}](term:term-summon)する[{{場合|ばあい}}](term:term-baai) —
     **cornice condizionale**: il caso viene definito prima dell'effetto.
-*   [コスト](term:term-cost)`を` — **oggetto della riduzione**: il testo non
+*   [コスト](term:term-cost)を — **oggetto della riduzione**: il testo non
     riduce la creatura, ma il numero da pagare.
 *   `{{2|ふた}}つ` — **misura della modifica**: la quantità è "di due", non
     "a costo due".
@@ -192,15 +196,15 @@ Questa è una struttura da leggere in blocco: gruppo filtrato, soglia minima,
 origine dell'evocazione, permesso.
 
 *   [{{自分|じぶん}}](term:term-self)の[{{闇|やみ}}](term:term-darkness)の
-    [クリーチャー](term:term-creature): i due `の` impilano appartenenza e
+    [クリーチャー](term:term-creature): i due の impilano appartenenza e
     categoria. Non conti tutte le creature, ma le tue creature Darkness.
 *   `が{{2体以上|にたいいじょう}}`:
     `が` mette quel gruppo come soggetto della condizione. `体` conta corpi /
     creature, mentre `以上` alza la soglia a "due o più".
-*   [あれば](grammar:grammar-areba): forma condizionale di `ある`. Il testo non
+*   [あれば](grammar:grammar-areba): forma condizionale di ある. Il testo non
     chiede di creare la soglia in quel momento; controlla se la soglia esiste
     già.
-*   [{{墓地|ぼち}}](term:term-graveyard)`からこのクリーチャーを`:
+*   [{{墓地|ぼち}}](term:term-graveyard)からこのクリーチャーを:
     `から` marca la zona di partenza. La carta non viene recuperata in mano:
     viene evocata direttamente da lì.
 *   [{{召喚|しょうかん}}](term:term-summon)してもよい:
@@ -210,14 +214,14 @@ origine dell'evocazione, permesso.
 #### 🗺️ Anatomia della frase
 
 *   [{{自分|じぶん}}](term:term-self)の[{{闇|やみ}}](term:term-darkness)の
-    [クリーチャー](term:term-creature)`が` — **gruppo controllato**: il soggetto
+    [クリーチャー](term:term-creature)が — **gruppo controllato**: il soggetto
     della condizione è già filtrato per tuo lato e civiltà Darkness.
 *   `{{2体以上|にたいいじょう}}` — **soglia minima**: due è il minimo valido,
     non il numero esatto obbligatorio.
 *   [あれば](grammar:grammar-areba) — **condizione di esistenza**: se quel
     gruppo esiste in quantità sufficiente, la frase dopo la virgola diventa
     disponibile.
-*   [{{墓地|ぼち}}](term:term-graveyard)`から` — **origine insolita
+*   [{{墓地|ぼち}}](term:term-graveyard)から — **origine insolita
     dell'evocazione**: il punto di partenza è il cimitero.
 *   `このクリーチャーを` — **oggetto evocato**: il dimostrativo `この` riporta alla
     stessa [フェリックス・ミザリィ](term:term-felix-misery).
@@ -229,7 +233,7 @@ origine dell'evocazione, permesso.
 `{{2体以上|にたいいじょう}}あれば` non dice di sacrificare due creature e non
 descrive un costo da pagare. Dice solo che devono esserci due o più creature
 Darkness dalla tua parte. Dopo quel controllo, la carta guarda un'altra zona
-con [{{墓地|ぼち}}](term:term-graveyard)`から` e permette
+con [{{墓地|ぼち}}](term:term-graveyard)から e permette
 [{{召喚|しょうかん}}](term:term-summon)してもよい.
 
 #### 🧠 Gancio cognitivo
@@ -269,7 +273,7 @@ reveal_mode: sentence
 *   `{{2枚|にまい}}を`: `枚` conta carte come oggetti piatti. La particella `を`
     fa di quelle due carte l'oggetto del movimento.
 *   [{{墓地|ぼち}}](term:term-graveyard)に
-    [{{置|お}}く](term:term-oku): `に` dà la destinazione, [{{置|お}}く](term:term-oku)
+    [{{置|お}}く](term:term-oku): に dà la destinazione, [{{置|お}}く](term:term-oku)
     chiude l'azione di collocarle lì.
 
 #### 🗺️ Anatomia della frase
@@ -291,7 +295,7 @@ reveal_mode: sentence
 `{{山札|やまふだ}}の{{上|うえ}}から{{2枚|にまい}}を{{墓地|ぼち}}に{{置|お}}く`
 sposta carte dal deck al cimitero. La scelta del bersaglio avviene solo dopo,
 quando il testo riparte con [その{{後|あと}}](grammar:grammar-sonoato) e guarda
-il [{{墓地|ぼち}}](term:term-graveyard)`から`. Se unisci i due passaggi, rischi
+il [{{墓地|ぼち}}](term:term-graveyard)から. Se unisci i due passaggi, rischi
 di leggere il self mill come parte della scelta, ma il giapponese li tiene
 ordinati.
 
@@ -320,10 +324,10 @@ reveal_mode: sentence
 *   [その{{後|あと}}](grammar:grammar-sonoato): riprende il self mill appena
     risolto e apre il passaggio successivo. Non significa "in un secondo tempo
     qualsiasi"; significa dopo quel passaggio.
-*   [{{墓地|ぼち}}](term:term-graveyard)`から`: l'origine della scelta è il tuo
+*   [{{墓地|ぼち}}](term:term-graveyard)から: l'origine della scelta è il tuo
     cimitero. Il bersaglio può includere anche una carta appena messa lì, se
     passa i filtri.
-*   [コスト](term:term-cost)`{{6以下|ろくいか}}の`:
+*   [コスト](term:term-cost){{6以下|ろくいか}}の:
     `以下` imposta un tetto massimo. Sei o meno è valido; sette o più esce dal
     gruppo.
 *   [{{進化|しんか}}](term:term-evolution)[でない](grammar:grammar-de-nai):
@@ -341,9 +345,9 @@ reveal_mode: sentence
 *   [その{{後|あと}}](grammar:grammar-sonoato) — **ordine procedurale**: prima
     il cimitero riceve due carte, poi si apre la rianimazione.
 *   [{{自分|じぶん}}](term:term-self)の
-    [{{墓地|ぼち}}](term:term-graveyard)`から` — **zona di partenza**: il
+    [{{墓地|ぼち}}](term:term-graveyard)から — **zona di partenza**: il
     bersaglio deve trovarsi nel tuo cimitero.
-*   [コスト](term:term-cost)`{{6以下|ろくいか}}の` — **filtro numerico**: il costo
+*   [コスト](term:term-cost){{6以下|ろくいか}}の — **filtro numerico**: il costo
     massimo ammesso è sei.
 *   [{{進化|しんか}}](term:term-evolution)[でない](grammar:grammar-de-nai) —
     **filtro di categoria**: le evolution creature sono escluse.
@@ -364,7 +368,7 @@ una creatura Darkness di costo `{{6以下|ろくいか}}`, ma anche non evolutio
 #### 🧠 Gancio cognitivo
 
 Immagina i filtri come cancelli allineati davanti al
-[バトルゾーン](term:term-battle-zone): costo `{{6以下|ろくいか}}`, poi
+[バトルゾーン](term:term-battle-zone): costo {{6以下|ろくいか}}, poi
 non-evolution, poi [{{闇|やみ}}](term:term-darkness), poi quantità
 `{{1枚|いちまい}}`. È un trucco di memoria per seguire la pila nominale; la
 grammatica reale è il `の` che continua a legare ogni filtro allo stesso
@@ -380,7 +384,7 @@ scudi. Nessuna di queste label contiene da sola soggetto, oggetto e verbo.
 
 Il rules text invece si riconosce dalle particelle e dai verbi: `コストを`,
 `{{墓地|ぼち}}から`, `{{山札|やまふだ}}の{{上|うえ}}から`,
-`バトルゾーンに`, [{{少|すく}}なくする](term:term-sukunaku-suru),
+バトルゾーンに, [{{少|すく}}なくする](term:term-sukunaku-suru),
 [{{置|お}}く](term:term-oku), [{{出|だ}}してもよい](grammar:grammar-temoyoi).
 Quando compaiono questi segnali, non stai più leggendo un'etichetta compatta:
 stai seguendo una procedura.
@@ -389,7 +393,7 @@ stai seguendo una procedura.
 
 Una label come [W・ブレイカー](term:term-w-breaker) resta un nome tecnico. Una
 frase come
-`[{{墓地|ぼち}}](term:term-graveyard)から[クリーチャー](term:term-creature)を[バトルゾーン](term:term-battle-zone)に[{{出|だ}}す](term:term-dasu)`
+[{{墓地|ぼち}}](term:term-graveyard)から[クリーチャー](term:term-creature)を[バトルゾーン](term:term-battle-zone)に[{{出|だ}}す](term:term-dasu)
 ha origine, oggetto, destinazione e verbo. Se cerchi particelle come `から`,
 `を` e `に`, sai subito se stai leggendo un'etichetta o una catena di azioni.
 

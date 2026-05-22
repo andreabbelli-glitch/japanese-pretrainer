@@ -56,9 +56,11 @@ Il passaggio dall'Accademia alle prove, dai guasti fisici alle apparizioni impro
 
 ---
 
+[ジムテスト](term:term-v038-jimutesuto) indica la prova prima della palestra; [チャンピオンランク](term:term-champion-rank) sposta la lettura sul traguardo istituzionale della Lega.
+
 ## 1. Sapere, capire e valutare con registro formale
 
-Quando la scena passa all'Accademia, ai professori o alle spiegazioni su [エリアゼロ](term:term-v022-eriazero), il registro diventa più controllato. [ご{{存知|ぞんじ}}](term:term-anki-l18-gozonji) non è un semplice "sapere": è la forma rispettosa collegata a `{{知|し}}る`, usata per innalzare la conoscenza dell'interlocutore o di una persona di riguardo. Per questo una domanda come `ご{{存知|ぞんじ}}ですか` suona adatta a un professore, a un preside o a una spiegazione istituzionale, non a qualcuno che parla della propria conoscenza.
+Quando la scena passa all'Accademia, ai professori o alle spiegazioni su [エリアゼロ](term:term-v022-eriazero), il registro diventa più controllato. [ご{{存知|ぞんじ}}](term:term-anki-l18-gozonji) non è un semplice "sapere": è la forma rispettosa collegata a {{知|し}}る, usata per innalzare la conoscenza dell'interlocutore o di una persona di riguardo. Per questo una domanda come ご{{存知|ぞんじ}}ですか suona adatta a un professore, a un preside o a una spiegazione istituzionale, non a qualcuno che parla della propria conoscenza.
 
 :::example_sentence
 jp: >-
@@ -72,11 +74,11 @@ translation_it: >-
 *   `エリアゼロの ことを` ➔ **Oggetto della conoscenza** (`こと` trasforma il luogo in "la questione riguardante Area Zero"; `を` marca ciò che viene conosciuto).
 *   `ご{{存知|ぞんじ}}ですか` ➔ **Domanda cortese** (il parlante eleva la conoscenza dell'interlocutore, non la propria).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `ご{{存知|ぞんじ}}` non sostituisce liberamente `{{知|し}}っている`. Se vuoi dire "lo so" di te stesso, `ご{{存知|ぞんじ}}です` risulta fuori posto perché mette rispetto su un'azione propria.
 
-Accanto al sapere formale, [{{理解|りかい}}](term:term-anki-l18-rikai) sposta il fuoco sul processo mentale. Come parola compatta indica una comprensione articolata, adatta a lezioni, regole e punti di vista da assimilare. In una frase con `{{理解|りかい}}できた`, non stai solo dicendo che qualcosa "ti è chiaro": stai verificando se il contenuto è stato afferrato in modo ragionato.
+Accanto al sapere formale, [{{理解|りかい}}](term:term-anki-l18-rikai) sposta il fuoco sul processo mentale. Come parola compatta indica una comprensione articolata, adatta a lezioni, regole e punti di vista da assimilare. In una frase con {{理解|りかい}}できた, non stai solo dicendo che qualcosa "ti è chiaro": stai verificando se il contenuto è stato afferrato in modo ragionato.
 
 :::example_sentence
 jp: >-
@@ -91,7 +93,7 @@ translation_it: >-
 *   `{{理解|りかい}} できた` ➔ **Comprensione riuscita** (`できた` valuta il risultato: la comprensione è riuscita o no).
 *   `かな` ➔ **Chiusura morbida** (la domanda controlla lo stato del destinatario senza suonare come interrogatorio secco).
 
-[{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) appartiene allo stesso registro riflessivo. `{{興味|きょうみ}}` è l'interesse, `{{深|ぶか}}い` è "profondo": la scena non sta dicendo solo "che bello", ma "questa cosa merita indagine". È naturale nelle lezioni di storia, nelle leggende di Paldea e nei commenti di chi osserva un fenomeno da studioso.
+[{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) appartiene allo stesso registro riflessivo. {{興味|きょうみ}} è l'interesse, {{深|ぶか}}い è "profondo": la scena non sta dicendo solo "che bello", ma "questa cosa merita indagine". È naturale nelle lezioni di storia, nelle leggende di Paldea e nei commenti di chi osserva un fenomeno da studioso.
 
 :::example_sentence
 jp: >-
@@ -100,13 +102,24 @@ translation_it: >-
   Il folklore di Paldea è davvero affascinante, vero?
 :::
 
-#### ⚖️ Contrasto
+#### 🗺️ Anatomia della frase
 
-`{{面|おも}}{{白|しろ}}い` può voler dire "divertente" o "interessante" in modo ampio; [{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) segnala invece interesse profondo, investigativo o accademico.
+*   `パルデアの {{伝|でん}}{{承|しょう}}は` ➔ **Tema di studio** (`の` collega
+    Paldea alla tradizione raccontata, poi `は` la mette come argomento della
+    valutazione).
+*   `とても` ➔ **Intensità** (rafforza la qualità senza cambiare il tipo di
+    giudizio).
+*   `{{興味|きょうみ}}{{深|ぶか}}い ね` ➔ **Interesse condiviso** (l'aggettivo
+    valuta la tradizione come degna di indagine; `ね` cerca accordo con chi
+    ascolta).
+
+#### ⚖️ Contrasto operativo
+
+{{面|おも}}{{白|しろ}}い può voler dire "divertente" o "interessante" in modo ampio; [{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) segnala invece interesse profondo, investigativo o accademico.
 
 ## 2. Motivazione, prove e status riconosciuti
 
-Nel percorso palestra e nella Lega, il testo non parla solo di emozioni: assegna obiettivi e status. [やる{{気|き}}](term:term-anki-l18-yaruki) unisce `やる` "fare" e `{{気|き}}` "spirito, disposizione mentale"; indica la spinta concreta a passare all'azione. Con `がある` quella spinta è presente, con `が{{出|で}}る` emerge, con `を{{出|だ}}す` viene tirata fuori intenzionalmente.
+Nel percorso palestra e nella Lega, il testo non parla solo di emozioni: assegna obiettivi e status. [やる{{気|き}}](term:term-anki-l18-yaruki) unisce やる "fare" e {{気|き}} "spirito, disposizione mentale"; indica la spinta concreta a passare all'azione. Con がある quella spinta è presente, con が{{出|で}}る emerge, con を{{出|だ}}す viene tirata fuori intenzionalmente.
 
 :::example_sentence
 jp: >-
@@ -121,11 +134,11 @@ translation_it: >-
 *   `やる{{気|き}}が` ➔ **Soggetto che emerge** (`が` presenta la motivazione come qualcosa che compare).
 *   `{{出|で}}てきた` ➔ **Comparsa progressiva** ("è venuta fuori": la motivazione non era solo posseduta, si è accesa poco a poco).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Pensa a [やる{{気|き}}](term:term-anki-l18-yaruki) come a "spirito del fare". Non è etimologia nascosta: è proprio la combinazione leggibile di `やる` e `{{気|き}}`, utile per ricordare che la parola punta all'azione.
+Pensa a [やる{{気|き}}](term:term-anki-l18-yaruki) come a "spirito del fare". Non è etimologia nascosta: è proprio la combinazione leggibile di やる e {{気|き}}, utile per ricordare che la parola punta all'azione.
 
-Il passo successivo è [{{活躍|かつやく}}](term:term-anki-l18-katsuyaku). Il composto non descrive un successo passivo, ma qualcuno che si distingue perché agisce in modo visibile. In formule come `{{活躍|かつやく}}を{{期待|きたい}}している`, chi parla non sta solo facendo un complimento; sta proiettando su di te un ruolo futuro.
+Il passo successivo è [{{活躍|かつやく}}](term:term-anki-l18-katsuyaku). Il composto non descrive un successo passivo, ma qualcuno che si distingue perché agisce in modo visibile. In formule come {{活躍|かつやく}}を{{期待|きたい}}している, chi parla non sta solo facendo un complimento; sta proiettando su di te un ruolo futuro.
 
 :::example_sentence
 jp: >-
@@ -155,13 +168,13 @@ translation_it: >-
 *   `{{合格者|ごうかくしゃ}}は` ➔ **Categoria autorizzata** (`は` presenta i promossi come gruppo che riceve una possibilità).
 *   `{{中|なか}}に {{入|はい}}れる` ➔ **Risultato pratico** (lo status permette l'accesso all'interno).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`{{合格|ごうかく}}` è il risultato "superamento"; [{{合格者|ごうかくしゃ}}](term:term-anki-l18-goukakusha) è la persona che possiede quello status. Se la frase deve dire chi può entrare, il nome completo è il pezzo decisivo.
+{{合格|ごうかく}} è il risultato "superamento"; [{{合格者|ごうかくしゃ}}](term:term-anki-l18-goukakusha) è la persona che possiede quello status. Se la frase deve dire chi può entrare, il nome completo è il pezzo decisivo.
 
 ## 3. Area Zero: rotture, apparizioni e luce
 
-Nelle zone di esplorazione e nelle scene più misteriose, il testo spesso descrive ciò che accade agli oggetti o ciò che entra nel campo visivo. [{{壊|こわ}}れる](term:term-anki-l18-kowareru) è intransitivo: il soggetto è la cosa che si rompe, non chi la rompe. Per questo una recinzione, un macchinario o una barriera prende `が` o `は`, e la frase si concentra sul guasto come stato risultante.
+Nelle zone di esplorazione e nelle scene più misteriose, il testo spesso descrive ciò che accade agli oggetti o ciò che entra nel campo visivo. [{{壊|こわ}}れる](term:term-anki-l18-kowareru) è intransitivo: il soggetto è la cosa che si rompe, non chi la rompe. Per questo una recinzione, un macchinario o una barriera prende が o は, e la frase si concentra sul guasto come stato risultante.
 
 :::example_sentence
 jp: >-
@@ -176,11 +189,11 @@ translation_it: >-
 *   `すぐに` ➔ **Timing ravvicinato** (la rottura è vicina o imminente).
 *   `{{壊|こわ}}れるかも しれない` ➔ **Possibilità di guasto** (il testo presenta un rischio, non un fatto già avvenuto).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{壊|こわ}}れる](term:term-anki-l18-kowareru) "si rompe" mette al centro l'oggetto danneggiato; `{{壊|こわ}}す` "rompere" richiederebbe invece un agente che causa la rottura.
+[{{壊|こわ}}れる](term:term-anki-l18-kowareru) "si rompe" mette al centro l'oggetto danneggiato; {{壊|こわ}}す "rompere" richiederebbe invece un agente che causa la rottura.
 
-Quando il mondo non si rompe ma rivela qualcosa, compare [{{現|あらわ}}れる](term:term-anki-l18-arawareru). Anche qui il soggetto prende spesso `が`, ma il valore è diverso: non c'è danno, c'è entrata in scena. È il verbo naturale per un Pokémon raro, una presenza inattesa o un fenomeno che diventa visibile.
+Quando il mondo non si rompe ma rivela qualcosa, compare [{{現|あらわ}}れる](term:term-anki-l18-arawareru). Anche qui il soggetto prende spesso が, ma il valore è diverso: non c'è danno, c'è entrata in scena. È il verbo naturale per un Pokémon raro, una presenza inattesa o un fenomeno che diventa visibile.
 
 :::example_sentence
 jp: >-
@@ -195,7 +208,7 @@ translation_it: >-
 *   `めずらしい ポケモンが` ➔ **Entità che entra in scena** (`が` marca ciò che appare).
 *   `{{現|あらわ}}れる` ➔ **Evento visivo** (l'evento è l'apparire alla vista, non il semplice esistere in quel luogo).
 
-[{{光|ひか}}る](term:term-anki-l18-hikaru) completa il gruppo visivo. Il soggetto non "diventa importante" in senso astratto: emette o riflette luce. In [テラスタル](term:term-terastal), un oggetto o una sfera che `{{光|ひか}}る` segnala un cambiamento percepibile prima o durante la trasformazione.
+[{{光|ひか}}る](term:term-anki-l18-hikaru) completa il gruppo visivo. Il soggetto non "diventa importante" in senso astratto: emette o riflette luce. In [テラスタル](term:term-terastal), un oggetto o una sfera che {{光|ひか}}る segnala un cambiamento percepibile prima o durante la trasformazione.
 
 :::example_sentence
 jp: >-
@@ -210,9 +223,9 @@ translation_it: >-
 *   `ボールが` ➔ **Soggetto visivo** (la sfera è ciò che fa partire la percezione).
 *   `{{光|ひか}}る` ➔ **Azione luminosa concreta** (la frase parla di ciò che si vede sullo schermo).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-In questo cluster cerca sempre il soggetto prima del verbo: che cosa si rompe, che cosa appare, che cosa brilla. Con [{{壊|こわ}}れる](term:term-anki-l18-kowareru), [{{現|あらわ}}れる](term:term-anki-l18-arawareru) e [{{光|ひか}}る](term:term-anki-l18-hikaru), la particella `が` o il tema `は` ti indicano il centro dell'evento.
+In questo cluster cerca sempre il soggetto prima del verbo: che cosa si rompe, che cosa appare, che cosa brilla. Con [{{壊|こわ}}れる](term:term-anki-l18-kowareru), [{{現|あらわ}}れる](term:term-anki-l18-arawareru) e [{{光|ひか}}る](term:term-anki-l18-hikaru), la particella が o il tema は ti indicano il centro dell'evento.
 
 ## 4. Paradiso, tesori e lessico da leggenda
 
@@ -231,9 +244,9 @@ translation_it: >-
 *   `ポケモンたちの` ➔ **Appartenenza o destinatari** (`の` lega il paradiso ai Pokémon come gruppo).
 *   `{{楽園|らくえん}} なのよ` ➔ **Spiegazione coinvolta** (`なのよ` suona assertivo e personale, come se il parlante stesse rivelando il vero valore del luogo).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-[{{楽園|らくえん}}](term:term-anki-l18-rakuen) non va confuso con `{{楽|たの}}しい`: come parola intera indica un paradiso o luogo ideale, non una cosa semplicemente divertente.
+[{{楽園|らくえん}}](term:term-anki-l18-rakuen) non va confuso con {{楽|たの}}しい: come parola intera indica un paradiso o luogo ideale, non una cosa semplicemente divertente.
 
 [{{財宝|ざいほう}}](term:term-anki-l18-zaihou) appartiene invece alla lingua delle leggende. Come parola compatta indica oggetti di valore narrativo, spesso antichi o carichi di storia. In un racconto su re, rovine o Pokémon della Rovina, non leggerlo come denaro da spendere in negozio; è un tesoro che porta con sé memoria e maledizione.
 
@@ -250,9 +263,9 @@ translation_it: >-
 *   `{{王|おう}}の {{財宝|ざいほう}}` ➔ **Tesori legati al re** (`の` collega i tesori a una figura narrativa precisa).
 *   `{{話|はなし}}だ` ➔ **Cornice di racconto** (non è un comando né una descrizione di inventario: è una narrazione).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-Per [{{財宝|ざいほう}}](term:term-anki-l18-zaihou), pensa a un tesoro da leggenda con una storia addosso. Usalo come immagine mentale per distinguerlo da `お{{金|かね}}`, che indica il denaro comune.
+Per [{{財宝|ざいほう}}](term:term-anki-l18-zaihou), pensa a un tesoro da leggenda con una storia addosso. Usalo come immagine mentale per distinguerlo da お{{金|かね}}, che indica il denaro comune.
 
 ## Esempi guidati di riepilogo
 

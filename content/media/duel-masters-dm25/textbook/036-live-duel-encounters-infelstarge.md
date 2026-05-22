@@ -33,17 +33,6 @@ Il rules text ti chiede quindi di seguire quattro segnali in ordine: il timing
 unico flusso, la carta diventa molto meno ambigua: prima sceglie cosa muovere,
 poi controlla se quel movimento accende la pesca.
 
-:::image
-src: assets/cards/live-duel/infelstarge.jpg
-alt: "Infelstarge card."
-caption: >-
-  [インフェル{{星樹|スタージュ}}](term:term-infelstarge) combina keyword compatte e
-  due frasi di movimento: rimozione dei non-creature nel mana del
-  [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi), poi pesca quando una carta viene
-  messa dal battle zone nel tuo mana. Keyword:
-  [G（ガード）・ストライク](term:term-g-strike), [W（ダブル）・ブレイカー](term:term-w-breaker),
-  razze ジャイアント・ドラゴン / レクスターズ.
-:::
 
 ## Termini chiave
 
@@ -76,6 +65,18 @@ caption: >-
 
 ---
 
+:::image
+src: assets/cards/live-duel/infelstarge.jpg
+alt: "Infelstarge card."
+caption: >-
+  [インフェル{{星樹|スタージュ}}](term:term-infelstarge) combina keyword compatte e
+  due frasi di movimento: rimozione dei non-creature nel mana del
+  [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi), poi pesca quando una carta viene
+  messa dal battle zone nel tuo mana. Keyword:
+  [G（ガード）・ストライク](term:term-g-strike), [W（ダブル）・ブレイカー](term:term-w-breaker),
+  razze ジャイアント・ドラゴン / レクスターズ.
+:::
+
 ## 1. Quando entra: prima restringi il gruppo, poi scegli
 
 :::example_sentence
@@ -101,7 +102,7 @@ decide quali carte possono essere considerate prima del limite numerico.
 *   `このクリーチャーが{{出|で}}た{{時|とき}}`: la forma `{{出|で}}た` modifica
     [{{時|とき}}](grammar:grammar-toki). Il timing è "quando questa creatura è
     entrata", non un effetto sempre attivo.
-*   [バトルゾーン](term:term-battle-zone)`にある`: `に` marca il luogo, `ある`
+*   [バトルゾーン](term:term-battle-zone)にある: に marca il luogo, ある
     descrive l'esistenza della carta in quella zona. Prima di scegliere, il
     testo ti dice dove deve trovarsi il candidato.
 *   `クリーチャーではないカードを`: `ではない` nega il nome prima di `カード`.
@@ -141,7 +142,7 @@ Dopo la scelta, il testo non dice semplicemente "mettile nel tuo mana". Usa
 quindi riprende tutte le carte scelte con `それら` e assegna a ciascuna la
 destinazione del proprio owner.
 
-*   [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi) nasce da `{{持|も}}つ`
+*   [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi) nasce da {{持|も}}つ
     "avere/tenere" e `{{主|ぬし}}` "principale proprietario". Nel rules text non
     indica chi sta usando la carta in quel momento, ma la persona a cui la
     carta appartiene come oggetto di gioco.
@@ -191,10 +192,10 @@ ingresso; osserva un evento: una carta passa dal
 lettura. Il testo non cerca chi ha messo la carta, ma registra che la carta è
 stata collocata nella zona giusta.
 
-*   [バトルゾーン](term:term-battle-zone)`から`: `から` marca la provenienza. Il
+*   [バトルゾーン](term:term-battle-zone)から: から marca la provenienza. Il
     trigger non riguarda qualsiasi carta che entra nel mana, ma una carta che
     parte da quella zona precisa.
-*   [{{自分|じぶん}}](term:term-self)の[マナゾーン](term:term-mana-zone)`に`:
+*   [{{自分|じぶん}}](term:term-self)の[マナゾーン](term:term-mana-zone)に:
     `{{自分|じぶん}}の` restringe la destinazione al tuo mana. La carta può essere
     qualunque carta, ma il punto di arrivo deve essere il tuo lato.
 *   `カードが`: `が` mette la carta come soggetto dell'evento passivo. Non c'è

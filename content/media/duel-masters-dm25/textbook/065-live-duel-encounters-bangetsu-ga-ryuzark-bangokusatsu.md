@@ -42,17 +42,6 @@ contare, [しか](grammar:grammar-shika) impone un tetto rigido, e
 [{{使用可能|しようかのう}}](term:term-shiyou-kanou) sposta la frase dal numero di
 carte mana presenti alla quantità di mana che resta davvero spendibile.
 
-:::image
-src: assets/cards/live-duel/bangetsu-ga-ryuzark-bangokusatsu.jpg
-alt: "Bangetsu Ga Ryuzark / Bangokusatsu card."
-caption: >-
-  Bangetsu Ga Ryuzark / Bangokusatsu. Twinpact di tenebra. Lato creatura:
-  [{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu),
-  [W・ブレイカー](term:term-w-breaker) e lock espresso nel wording vecchio come
-  recupero della mana utilizzabile avversaria. Lato spell: wipe totale delle
-  [クリーチャー](term:term-creature) e condizione che può aggiungere
-  [S・トリガー](term:term-s-trigger).
-:::
 
 ## Termini chiave
 
@@ -111,15 +100,33 @@ caption: >-
   condizione degli scudi e dei cimiteri è vera.
 - 卍・獄・殺 — nome del lato spell, collegato alla riga che distrugge tutte le
   creature.
+- [バトルゾーン](term:term-battle-zone) — zona di battaglia / campo
+- [{{相手|あいて}}](term:term-opponent) — avversario
+- [アンタップ](term:term-untap) — stappare / untap
+- [クリーチャー](term:term-creature) — creatura
+- [すべて](term:term-subete) — tutti / tutto l'insieme nominato
+- [{{呪文|じゅもん}}](term:term-spell) — magia / spell
 
 ---
+
+:::image
+src: assets/cards/live-duel/bangetsu-ga-ryuzark-bangokusatsu.jpg
+alt: "Bangetsu Ga Ryuzark / Bangokusatsu card."
+caption: >-
+  Bangetsu Ga Ryuzark / Bangokusatsu. Twinpact di tenebra. Lato creatura:
+  [{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu),
+  [W・ブレイカー](term:term-w-breaker) e lock espresso nel wording vecchio come
+  recupero della mana utilizzabile avversaria. Lato spell: wipe totale delle
+  [クリーチャー](term:term-creature) e condizione che può aggiungere
+  [S・トリガー](term:term-s-trigger).
+:::
 
 ## 1. La porta a fine turno: `各ターンの終わりに`
 
 [{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu) si
 riconosce prima dal timing che dal costo. La frase non parte da
-`{{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)が
-[バトルゾーン](term:term-battle-zone)に出た時`, come nella
+{{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)が
+[バトルゾーン](term:term-battle-zone)に出た時, come nella
 [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon) base; parte da
 `{{各|かく}}ターンの{{終|お}}わりに`. Prima viene il momento del controllo, poi
 arriva la scelta dei materiali.
@@ -161,16 +168,16 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu)：`
+*   [{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu)：
     apre una procedura completa. I due punti non traducono il nome: separano
     la label della keyword dal rules text che la rende operativa.
 *   `{{各|かく}}ターンの{{終|お}}わりに` è il timing. Il blocco risponde a
     "quando controllo la condizione?", non a "da dove scelgo le carte?".
-*   `{{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)を` è l'oggetto
+*   {{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)を è l'oggetto
     della scelta. La particella `を` dice che i Magic Tool sono le carte da
     selezionare, non la creatura che entra.
-*   `[バトルゾーン](term:term-battle-zone)または
-    [{{墓地|ぼち}}](term:term-graveyard)から` dà le zone fonte. `または`
+*   [バトルゾーン](term:term-battle-zone)または
+    [{{墓地|ぼち}}](term:term-graveyard)から dà le zone fonte. または
     presenta le zone ammesse, mentre `から` indica l'origine dei materiali.
 
 #### ⚖️ Contrasto operativo
@@ -202,7 +209,7 @@ numero finale sia sei.
 
 *   [{{合計|ごうけい}}](term:term-goukei) lavora come "totale complessivo".
     Non distribuisce da solo una quantità: chiude le fonti in un unico numero.
-*   [{{6|むっ}}つ](term:term-muttsu) usa il contatore generico `つ`, perché il
+*   [{{6|むっ}}つ](term:term-muttsu) usa il contatore generico つ, perché il
     testo sta contando elementi della procedura prima di richiamarli come
     carte con `{{6枚|ろくまい}}`.
 *   [{{選|えら}}び](term:term-erabu) è forma continuativa. Non chiude
@@ -215,19 +222,19 @@ numero finale sia sei.
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{合計|ごうけい}}](term:term-goukei)[{{6|むっ}}つ](term:term-muttsu)
-    [{{選|えら}}び](term:term-erabu)` è la fase di raccolta: sei in totale,
+*   [{{合計|ごうけい}}](term:term-goukei)[{{6|むっ}}つ](term:term-muttsu)
+    [{{選|えら}}び](term:term-erabu) è la fase di raccolta: sei in totale,
     scelti dalle zone indicate.
 *   `このクリーチャーを` introduce la carta che si muove. Qui `を` marca
     l'oggetto dell'evocazione, non i materiali.
-*   `{{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)または
-    [{{墓地|ぼち}}](term:term-graveyard)から` dà la zona di partenza della
+*   {{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)または
+    [{{墓地|ぼち}}](term:term-graveyard)から dà la zona di partenza della
     creatura. Mano e cimitero sono fonti della creatura, non fonti aggiuntive
     dei materiali.
-*   `[それら](grammar:grammar-sorera){{6枚|ろくまい}}の{{上|うえ}}に` è la
+*   [それら](grammar:grammar-sorera){{6枚|ろくまい}}の{{上|うえ}}に è la
     destinazione fisica: la creatura entra sopra le sei carte già scelte.
-*   `[コスト](term:term-cost)を[{{支払|しはら}}わずに](grammar:grammar-zuni)
-    [{{召喚|しょうかん}}](term:term-summon)してもよい` combina costo saltato e
+*   [コスト](term:term-cost)を[{{支払|しはら}}わずに](grammar:grammar-zuni)
+    [{{召喚|しょうかん}}](term:term-summon)してもよい combina costo saltato e
     permesso facoltativo. [～ずに](grammar:grammar-zuni) dice che non paghi;
     [～てもよい](grammar:grammar-temoyoi) dice che puoi evocare, non che sei
     obbligato.
@@ -235,7 +242,7 @@ numero finale sia sei.
 #### ⚖️ Contrasto operativo
 
 [ずつ](grammar:grammar-zutsu) distribuisce una quantità su ciascun gruppo:
-`{{2|ふた}}つ[ずつ](grammar:grammar-zutsu)` sarebbe due per fonte. Qui invece
+{{2|ふた}}つ[ずつ](grammar:grammar-zutsu) sarebbe due per fonte. Qui invece
 il testo usa [{{合計|ごうけい}}](term:term-goukei)[{{6|むっ}}つ](term:term-muttsu),
 quindi il vincolo è il totale finale. La lettura sbagliata è cercare
 automaticamente "tre da una zona e tre dall'altra" solo perché le zone sono
@@ -250,7 +257,7 @@ formulazioni moderne. Invece di dire subito
 usata dopo il recupero di inizio turno.
 
 [{{使用可能|しようかのう}}](term:term-shiyou-kanou) si apre bene in due pezzi:
-[{{使用|しよう}}](term:term-use) è "uso", `{{可能|かのう}}` è "possibile". Nel
+[{{使用|しよう}}](term:term-use) è "uso", {{可能|かのう}} è "possibile". Nel
 rules text non sta descrivendo quante carte sono nella mana zone, ma quanta
 mana diventa effettivamente disponibile per pagare costi.
 
@@ -268,22 +275,22 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[{{相手|あいて}}](term:term-opponent)のターン{{開始時|かいしじ}}` è il
+*   [{{相手|あいて}}](term:term-opponent)のターン{{開始時|かいしじ}} è il
     timing. `開始時` compatta "al momento dell'inizio" e restringe la finestra
     al turno avversario.
-*   `[{{相手|あいて}}](term:term-opponent)の
-    [{{使用可能|しようかのう}}](term:term-shiyou-kanou)マナは` è il tema della
+*   [{{相手|あいて}}](term:term-opponent)の
+    [{{使用可能|しようかのう}}](term:term-shiyou-kanou)マナは è il tema della
     frase. Il `は` prepara il limite: si parlerà di quanta mana utilizzabile
     recupera l'avversario.
-*   `[{{3|さん}}しか](grammar:grammar-shika){{回復|かいふく}}しない` chiude la
+*   [{{3|さん}}しか](grammar:grammar-shika){{回復|かいふく}}しない chiude la
     negazione. [しか](grammar:grammar-shika) da solo annuncia "solo"; il
     `しない` finale rende il limite effettivo.
 
 #### ⚖️ Contrasto operativo
 
-`[{{使用可能|しようかのう}}](term:term-shiyou-kanou)マナは
-[{{3|さん}}しか](grammar:grammar-shika){{回復|かいふく}}しない` e
-`{{3枚|さんまい}}までしか[アンタップ](term:term-untap)できない` puntano allo stesso
+[{{使用可能|しようかのう}}](term:term-shiyou-kanou)マナは
+[{{3|さん}}しか](grammar:grammar-shika){{回復|かいふく}}しない e
+{{3枚|さんまい}}までしか[アンタップ](term:term-untap)できない puntano allo stesso
 risultato pratico, ma non lo descrivono dallo stesso lato. La prima frase conta
 la mana che torna utilizzabile; la seconda conta le carte che possono
 stapparsi. Se leggi `{{回復|かいふく}}` come "curare" in senso generico, perdi
@@ -315,11 +322,11 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `[クリーチャー](term:term-creature)を` marca l'oggetto dell'azione. Il
+*   [クリーチャー](term:term-creature)を marca l'oggetto dell'azione. Il
     testo non sta nominando chi distrugge, ma che cosa viene distrutto.
-*   `[すべて](term:term-subete)` allarga il gruppo. Quando appare dopo
+*   [すべて](term:term-subete) allarga il gruppo. Quando appare dopo
     l'oggetto, impedisce di leggere la riga come scelta di una sola creatura.
-*   `[{{破壊|はかい}}する](term:term-destroy)` è l'azione finale: mandare le
+*   [{{破壊|はかい}}する](term:term-destroy) è l'azione finale: mandare le
     creature distrutte nel cimitero secondo le regole del gioco.
 
 La seconda riga del lato spell è più condizionale. Prima conta le carte in
@@ -342,19 +349,19 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-*   `すべての[{{墓地|ぼち}}](term:term-graveyard)にあるカードの
-    [{{合計|ごうけい}}](term:term-goukei)` costruisce il conteggio. `すべての`
+*   すべての[{{墓地|ぼち}}](term:term-graveyard)にあるカードの
+    [{{合計|ごうけい}}](term:term-goukei) costruisce il conteggio. すべての
     amplia i cimiteri, `にある` restringe le carte a quelle presenti lì, e
     [{{合計|ごうけい}}](term:term-goukei) le richiude in un totale unico.
 *   `{{13枚以上|じゅうさんまいいじょう}}で` dà la soglia e la collega alla
     condizione seguente. Il `で` qui non è luogo: funziona come ponte
     condizionale, "con il totale a tredici o più".
-*   `この[{{呪文|じゅもん}}](term:term-spell)が{{自分|じぶん}}のシールドゾーンにあれば`
+*   この[{{呪文|じゅもん}}](term:term-spell)が{{自分|じぶん}}のシールドゾーンにあれば
     aggiunge la seconda condizione. Il soggetto marcato da `が` è questo spell,
     non una carta qualunque nello shield zone.
-*   `この[{{呪文|じゅもん}}](term:term-spell)に
+*   この[{{呪文|じゅもん}}](term:term-spell)に
     [S・トリガー](term:term-s-trigger)を
-    [{{与|あた}}える](term:term-ataeru)` assegna la keyword. `に` marca il
+    [{{与|あた}}える](term:term-ataeru) assegna la keyword. に marca il
     destinatario, `を` marca ciò che viene dato.
 
 #### ⚖️ Contrasto operativo

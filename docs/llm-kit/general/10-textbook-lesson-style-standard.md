@@ -171,11 +171,13 @@ translation_it: >-
 
 *   `<pezzo>` ➔ **<Ruolo grammaticale>** (<conseguenza di lettura concreta>).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** <differenza che evita una lettura sbagliata>
+#### ⚖️ Contrasto operativo
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** <trucco mnemonico dichiarato come tale>
+<differenza che evita una lettura sbagliata>
+
+#### 🧠 Gancio cognitivo
+
+<trucco mnemonico dichiarato come tale>
 
 ## Esempi guidati di riepilogo
 
@@ -197,17 +199,19 @@ questa:
 3. Inventario iniziale: `Termini chiave`, `Espressioni ricorrenti`,
    `Pattern grammaticali chiave`, `Etichette da riconoscere` quando pertinenti.
 4. Separatore `---` prima del corpo didattico.
-5. Cluster tematici numerati.
-6. Dentro i cluster: mini-spiegazioni in bullet lunghi o sottosezioni A/B/C/D
+5. Eventuali `:::image` solo dopo il separatore, nel cluster in cui l'immagine
+   serve davvero.
+6. Cluster tematici numerati.
+7. Dentro i cluster: mini-spiegazioni in bullet lunghi o sottosezioni A/B/C/D
    quando il materiale contiene più sfumature.
-7. `:::example_sentence` per frasi che meritano traduzione e parsing.
-8. `#### 🗺️ Anatomia della frase` subito dopo gli esempi densi; se due esempi
+8. `:::example_sentence` per frasi che meritano traduzione e parsing.
+9. `#### 🗺️ Anatomia della frase` subito dopo gli esempi densi; se due esempi
    consecutivi introducono pattern diversi, ciascuno deve avere il proprio
    parsing prima del contrasto o dell'esempio successivo.
-9. Callout `⚖️ Contrasto operativo` o `WARNING` per errori probabili.
-10. Callout o bullet `🧠 Gancio cognitivo` per ancore mnemoniche utili.
-11. `Esempi guidati di riepilogo` con frasi che ricombinano i pezzi.
-12. `Nota finale` breve che collega i cluster.
+10. Blocco `#### ⚖️ Contrasto operativo` per errori probabili.
+11. Blocco o bullet `🧠 Gancio cognitivo` per ancore mnemoniche utili.
+12. `Esempi guidati di riepilogo` con frasi che ricombinano i pezzi.
+13. `Nota finale` breve che collega i cluster.
 
 Questa sequenza è preferita, non cieca. Se una lesson è molto breve, puoi
 accorparla, ma non devi tornare a una lista di gloss.
@@ -220,7 +224,6 @@ imitare quel segnale visivo quando aiuta la scansione:
 - `#### 🗺️ Anatomia della frase` per parsing frase-per-frase;
 - `🧠 Gancio cognitivo` per immagini mentali o trucchi di memoria;
 - `⚖️ Contrasto operativo` per false piste, falsi amici o pattern simili;
-- `> [!WARNING]` per errori che cambiano davvero la lettura;
 - sottosezioni `A/B/C/D` quando una sezione grammaticale contiene sfumature
   distinte;
 - bullet lunghi per spiegare un termine senza spezzare artificiosamente forma,
@@ -261,13 +264,27 @@ Subito dopo l'introduzione, elenca le entry che verranno usate:
   che servono a leggere la scena ma non sempre meritano una flashcard.
 
 Ogni riga deve avere gloss breve e link semantico quando l'entry esiste.
-Questo inventario è una mappa, non la spiegazione completa.
+Questo inventario è una mappa, non la spiegazione completa. La forma meccanica
+preferita è sempre `- [label](term:id) — gloss breve`: label, dash e inizio
+della gloss stanno sulla stessa riga della bullet. Se il testo va a capo, il
+wrap continua la gloss, non sposta il dash su una riga successiva.
+
+Ogni voce inventariata deve riapparire nel body come parte di una spiegazione,
+un esempio, un'anatomia o un riepilogo con lo stesso link semantico. Se una
+voce resta solo una label di contesto e non insegna un comportamento di lettura,
+eliminala dall'inventario invece di lasciarla come catalogo.
 
 Se l'entry ha una flashcard associata e il label contiene kanji, il label deve
 portare furigana direttamente nel link, sia nell'inventario sia nelle
 spiegazioni successive. Scrivi `[{{終了|しゅうりょう}}](term:...)`, non
 `[終了](term:...)`: il reader non deve dipendere dal tooltip o dalla card front
 per conoscere la lettura del target che sta imparando.
+
+Non mettere mai un link semantico Markdown dentro un code span. Sbagliato:
+`` `[{{報酬|ほうしゅう}}](term:term-reward)を` ``. Corretto:
+`[{{報酬|ほうしゅう}}](term:term-reward)を` oppure `{{報酬|ほうしゅう}}` in code
+span senza link quando non serve il riferimento. Se devi combinare code span e
+link, spezza la frase in pezzi adiacenti.
 
 I furigana devono essere reader-friendly, non solo validi per il parser:
 
@@ -424,6 +441,9 @@ Questo standard non cambia il workflow immagini.
 
 - Se un'immagine reale esiste già sotto `assets/`, inserisci un blocco
   `:::image` nel punto in cui aiuta davvero la spiegazione.
+- Non mettere mai `:::image` prima dell'introduzione, degli inventari e del
+  separatore `---`: il primo punto legale è dopo il separatore, idealmente
+  dentro il cluster che usa quella immagine.
 - Se l'immagine servirebbe ma non esiste ancora, non inventare `src`: crea o
   aggiorna `workflow/image-requests.yaml`.
 - Le caption seguono lo stesso standard del testo: spiegano quale label, stato

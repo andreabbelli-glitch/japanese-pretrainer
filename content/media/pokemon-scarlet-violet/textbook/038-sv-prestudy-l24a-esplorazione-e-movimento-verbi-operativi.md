@@ -73,8 +73,8 @@ Il punto non è memorizzare parole isolate. [きみ{{次第|しだい}}](term:te
 
 La scena di partenza mette insieme ruolo del giocatore e modalità di viaggio. Prima capisci chi sta vivendo l'azione, poi il testo apre una biforcazione: giocare connesso, restare nel locale, prendere una decisione e muoverti.
 
-*   [{{主人公|しゅじんこう}}](term:term-v442-shujinkou) (**protagonista**) è il personaggio attraverso cui il viaggio viene visto. Il composto si legge tutto insieme: `{{主人公|しゅじんこう}}`, non come un blocco inventato su `{{人公|じんこう}}`. Nei riassunti di storia o nei menu, questa parola non indica un NPC qualunque: indica la figura che controlli o segui.
-*   [きみ{{次第|しだい}}](term:term-e081-kimi-shidai) (**dipende da te**) sposta la responsabilità sul giocatore. `きみ` è "tu"; `{{次第|しだい}}` dice che l'esito cambia in base a una condizione o decisione. In una scena Pokémon, questa formula prepara una scelta pratica più che un incoraggiamento generico.
+*   [{{主人公|しゅじんこう}}](term:term-v442-shujinkou) (**protagonista**) è il personaggio attraverso cui il viaggio viene visto. Il composto si legge tutto insieme: {{主人公|しゅじんこう}}, non come un blocco inventato su {{人公|じんこう}}. Nei riassunti di storia o nei menu, questa parola non indica un NPC qualunque: indica la figura che controlli o segui.
+*   [きみ{{次第|しだい}}](term:term-e081-kimi-shidai) (**dipende da te**) sposta la responsabilità sul giocatore. きみ è "tu"; {{次第|しだい}} dice che l'esito cambia in base a una condizione o decisione. In una scena Pokémon, questa formula prepara una scelta pratica più che un incoraggiamento generico.
 *   [オンライン](term:term-v436-onrain) e [オフライン](term:term-v440-ofurain) sembrano katakana immediati, ma nella UI decidono il perimetro dell'azione. [オンライン](term:term-v436-onrain) apre connessioni, scambi e altri giocatori; [オフライン](term:term-v440-ofurain) riporta la scena al gioco locale. Quando compaiono accanto a un prompt, non stanno solo descrivendo uno stato tecnico: stanno dicendo che tipo di mondo verrà caricato dopo la scelta.
 
 :::example_sentence
@@ -90,11 +90,11 @@ translation_it: >-
 *   `きみ{{次第|しだい}}` ➔ **Condizione decisiva** (`きみ` è il referente personale; `{{次第|しだい}}` trasforma quel referente nel fattore da cui dipende il risultato).
 *   `だよ` ➔ **Chiusura colloquiale assertiva** (il personaggio non sta chiedendo conferma: ti sta consegnando la decisione).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-*   [きみ{{次第|しだい}}](term:term-e081-kimi-shidai) non equivale a un semplice "come vuoi". `{{次第|しだい}}` porta dentro l'idea di conseguenza: se scegli una strada, il risultato cambia. Per questo suona naturale prima di modalità, percorsi, obiettivi o decisioni di esplorazione.
+*   [きみ{{次第|しだい}}](term:term-e081-kimi-shidai) non equivale a un semplice "come vuoi". {{次第|しだい}} porta dentro l'idea di conseguenza: se scegli una strada, il risultato cambia. Per questo suona naturale prima di modalità, percorsi, obiettivi o decisioni di esplorazione.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 *   Pensa a `{{次第|しだい}}` come a un cardine: la scena gira nella direzione scelta da `きみ`. È un trucco mnemonico, non un'etimologia, ma aiuta a ricordare che la formula parla di dipendenza da una scelta.
 
@@ -104,8 +104,8 @@ translation_it: >-
 
 Prima di lasciare una zona sicura, il gioco parla spesso di mosse, allenamento e crescita. Qui i verbi di apprendimento non sono sinonimi: cambiano chi agisce, chi riceve l'effetto e quale tipo di preparazione sta avvenendo.
 
-*   [{{覚|おぼ}}える](term:term-v432-oboe-ru) (**imparare / ricordare**) guarda il Pokémon o la persona che acquisisce qualcosa. In un messaggio su una mossa, il focus è il repertorio che si arricchisce: una nuova `わざ` entra tra le possibilità disponibili.
-*   [{{覚|おぼ}}えさせる](term:term-v441-oboe-saseru) (**far imparare**) aggiunge il causativo `させる`. Non dice solo che il Pokémon impara: dice che qualcuno fa sì che impari. Se nella frase compare `このポケモンに`, il `に` marca il destinatario dell'apprendimento; se compare `わざを`, il `を` marca ciò che viene fatto imparare.
+*   [{{覚|おぼ}}える](term:term-v432-oboe-ru) (**imparare / ricordare**) guarda il Pokémon o la persona che acquisisce qualcosa. In un messaggio su una mossa, il focus è il repertorio che si arricchisce: una nuova わざ entra tra le possibilità disponibili.
+*   [{{覚|おぼ}}えさせる](term:term-v441-oboe-saseru) (**far imparare**) aggiunge il causativo させる. Non dice solo che il Pokémon impara: dice che qualcuno fa sì che impari. Se nella frase compare このポケモンに, il に marca il destinatario dell'apprendimento; se compare わざを, il を marca ciò che viene fatto imparare.
 *   [{{習|なら}}う](term:term-v446-narau) (**imparare da qualcuno**) mette l'apprendimento dentro un rapporto con una fonte: un insegnante, una lezione, una pratica guidata. È più "apprendere da" che "registrare una mossa".
 *   [{{鍛|きた}}える](term:term-v433-kitae-ru) (**allenare / temprare**) sposta il campo dallo studio alla resistenza. In Pokémon può riguardare corpo, statistiche, abilità o determinazione: il risultato atteso non è sapere una nozione, ma essere più pronti a reggere una lotta o un percorso.
 
@@ -132,11 +132,11 @@ translation_it: >-
 
 *   `このポケモンに` ➔ **Destinatario** (`に` indica a chi viene fatta imparare la mossa).
 *   `{{新|あたら}}しい わざを` ➔ **Contenuto appreso** (`を` marca la mossa come oggetto dell'apprendimento).
-*   `{{覚|おぼ}}えさせる` ➔ **Causativo** (da [{{覚|おぼ}}える](term:term-v432-oboe-ru): qualcuno interviene perché il Pokémon impari).
+*   {{覚|おぼ}}えさせる ➔ **Causativo** (da [{{覚|おぼ}}える](term:term-v432-oboe-ru): qualcuno interviene perché il Pokémon impari).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-*   [{{覚|おぼ}}える](term:term-v432-oboe-ru) mette al centro chi acquisisce la mossa; [{{覚|おぼ}}えさせる](term:term-v441-oboe-saseru) mette in primo piano l'intervento dell'allenatore o del sistema. Quando leggi `に`, cerca il Pokémon destinatario; quando leggi `を`, cerca la mossa o l'abilità da apprendere.
+*   [{{覚|おぼ}}える](term:term-v432-oboe-ru) mette al centro chi acquisisce la mossa; [{{覚|おぼ}}えさせる](term:term-v441-oboe-saseru) mette in primo piano l'intervento dell'allenatore o del sistema. Quando leggi に, cerca il Pokémon destinatario; quando leggi を, cerca la mossa o l'abilità da apprendere.
 
 ### Il focus della passiva
 
@@ -162,9 +162,9 @@ translation_it: >-
 Nei menu di *Scarlet & Violet*, il giapponese lavora spesso a blocchi brevi: nome dell'oggetto, azione da fare, risultato previsto. Questa è la zona in cui [{{検索|けんさく}}](term:term-v443-kensaku), [{{閉|と}}じる](term:term-v445-tojiru), [～と](grammar:grammar-g085-quando-se-risultato-naturale) e la [frase relativa ({{連体修飾|れんたいしゅうしょく}})](grammar:grammar-g086-frase-che-modifica-un-nome) diventano strumenti di lettura rapida.
 
 *   [{{検索|けんさく}}](term:term-v443-kensaku) (**ricerca**) in UI non è una ricerca astratta: di solito indica un filtro, una lista o un campo che restringe ciò che puoi vedere. Quando compare accanto a Pokémon, oggetti o mosse, aspettati una schermata che seleziona risultati.
-*   [{{閉|と}}じる](term:term-v445-tojiru) (**chiudere**) prende con `を` ciò che viene chiuso: menu, finestra, guida o anche un [{{門|もん}}](term:term-v439-mon) in senso concreto. `メニューを{{閉|と}}じる` non descrive uno stato vago: è l'azione di chiudere quella schermata.
-*   [～と](grammar:grammar-g085-quando-se-risultato-naturale) collega un'azione a un risultato naturale o meccanico. Dopo una forma piana, `と` dice "quando fai X, succede Y" con tono da istruzione di sistema: non una possibilità remota, ma il comportamento atteso.
-*   La [frase relativa ({{連体修飾|れんたいしゅうしょく}})](grammar:grammar-g086-frase-che-modifica-un-nome) lavora prima del nome. `ここで{{使|つか}}う わざ` non è "qui / usare / mossa" in fila: è "la mossa da usare qui".
+*   [{{閉|と}}じる](term:term-v445-tojiru) (**chiudere**) prende con を ciò che viene chiuso: menu, finestra, guida o anche un [{{門|もん}}](term:term-v439-mon) in senso concreto. メニューを{{閉|と}}じる non descrive uno stato vago: è l'azione di chiudere quella schermata.
+*   [～と](grammar:grammar-g085-quando-se-risultato-naturale) collega un'azione a un risultato naturale o meccanico. Dopo una forma piana, と dice "quando fai X, succede Y" con tono da istruzione di sistema: non una possibilità remota, ma il comportamento atteso.
+*   La [frase relativa ({{連体修飾|れんたいしゅうしょく}})](grammar:grammar-g086-frase-che-modifica-un-nome) lavora prima del nome. ここで{{使|つか}}う わざ non è "qui / usare / mossa" in fila: è "la mossa da usare qui".
 
 :::example_sentence
 jp: >-
@@ -193,7 +193,7 @@ translation_it: >-
 *   `わざを` ➔ **Nome modificato e oggetto** (`わざ` riceve la modifica precedente; `を` lo marca come oggetto della ricerca).
 *   `{{検索|けんさく}}する` ➔ **Azione di UI** (`{{検索|けんさく}}` diventa verbo con `する`: cercare / filtrare).
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 *   In una schermata, leggi `Vると` come una freccia funzionale: azione a sinistra, risultato a destra. `{{押|お}}すと{{開|ひら}}く` = premi ➔ si apre.
 
@@ -207,7 +207,7 @@ Appena il viaggio lascia la città, le parole smettono di essere solo comandi di
 *   [{{門|もん}}](term:term-v439-mon) (**cancello / porta monumentale**) segna spesso il confine tra città e strada. In una frase di esplorazione, non è solo un dettaglio scenico: è il punto di passaggio che organizza la prossima direzione.
 *   [{{崖|がけ}}](term:term-v444-gake) (**dirupo / parete rocciosa**) obbliga a leggere il terreno in verticale. Se compare insieme a verbi di movimento, chiediti se il personaggio deve scendere, aggirare, cadere o trovare un passaggio.
 *   [{{降|お}}りる](term:term-v434-ori-ru) (**scendere**) descrive il movimento verso il basso o l'uscita da qualcosa su cui eri sopra: un'altura, una cavalcatura, una piattaforma. Non sostituisce un generico "andare".
-*   [{{方角|ほうがく}}](term:term-v448-hougaku) (**direzione cardinale**) dà il criterio di orientamento. [{{北|きた}}](term:term-v449-kita), [{{南|みなみ}}](term:term-v450-minami), [{{西|にし}}](term:term-v451-nishi) e [{{東|ひがし}}](term:term-v452-higashi) sono brevi, ma su mappa e cartelli decidono la prossima azione. Con `へ`, diventano direzione di movimento: `{{東|ひがし}}へ` = verso est.
+*   [{{方角|ほうがく}}](term:term-v448-hougaku) (**direzione cardinale**) dà il criterio di orientamento. [{{北|きた}}](term:term-v449-kita), [{{南|みなみ}}](term:term-v450-minami), [{{西|にし}}](term:term-v451-nishi) e [{{東|ひがし}}](term:term-v452-higashi) sono brevi, ma su mappa e cartelli decidono la prossima azione. Con へ, diventano direzione di movimento: {{東|ひがし}}へ = verso est.
 
 :::example_sentence
 jp: >-
@@ -224,13 +224,13 @@ translation_it: >-
 *   `{{東|ひがし}}へ` ➔ **Direzione** (`へ` indica il verso del movimento, non un punto preciso di arrivo).
 *   `{{進|すす}}もう` ➔ **Volitivo operativo** ("procediamo", con tono da scelta condivisa).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   [{{降|お}}りる](term:term-v434-ori-ru) non significa semplicemente "muoversi". Se il testo parla di [{{崖|がけ}}](term:term-v444-gake), [{{降|お}}りる](term:term-v434-ori-ru) ti fa leggere il dislivello; se parla di cavalcatura o piattaforma, ti dice che lasci quella posizione.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
-*   Le quattro direzioni funzionano bene come rosa dei venti mentale: [{{北|きた}}](term:term-v449-kita) in alto, [{{南|みなみ}}](term:term-v450-minami) in basso, [{{西|にし}}](term:term-v451-nishi) a sinistra, [{{東|ひがし}}](term:term-v452-higashi) a destra. Quando vedi `へ`, immagina la freccia sulla mappa.
+*   Le quattro direzioni funzionano bene come rosa dei venti mentale: [{{北|きた}}](term:term-v449-kita) in alto, [{{南|みなみ}}](term:term-v450-minami) in basso, [{{西|にし}}](term:term-v451-nishi) a sinistra, [{{東|ひがし}}](term:term-v452-higashi) a destra. Quando vedi へ, immagina la freccia sulla mappa.
 
 ---
 
@@ -261,7 +261,7 @@ translation_it: >-
 
 ### La scelta stretta di `しか～ない`
 
-[しか～ない](grammar:grammar-g088-solo-e-nient-altro) è la grammatica dell'unica strada rimasta. `しか` si attacca all'elemento disponibile; `ない` chiude fuori tutte le alternative. Per questo `これしかない` non suona come una scelta tra tante: in una scena di crisi significa "non resta che questo".
+[しか～ない](grammar:grammar-g088-solo-e-nient-altro) è la grammatica dell'unica strada rimasta. しか si attacca all'elemento disponibile; ない chiude fuori tutte le alternative. Per questo これしかない non suona come una scelta tra tante: in una scena di crisi significa "non resta che questo".
 
 :::example_sentence
 jp: >-
@@ -277,10 +277,10 @@ translation_it: >-
 *   `まだ` ➔ **Ancora** (la chiusura non è completa).
 *   `{{終|お}}わりじゃない` ➔ **Fine negata** (la scena non è nello stato di "fine").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 *   `しか` ha bisogno della negazione. Se leggi `これしか`, non fermarti lì: cerca il `ない` più avanti. È quella negazione che trasforma "questo" nell'unica possibilità rimasta.
-*   [{{遅|おそ}}い](term:term-v438-osoi) non va tradotto automaticamente sempre allo stesso modo. `{{歩|ある}}くのが{{遅|おそ}}い` parla di lentezza; `{{来|く}}るのが{{遅|おそ}}い` può suonare come "arrivare tardi".
+*   [{{遅|おそ}}い](term:term-v438-osoi) non va tradotto automaticamente sempre allo stesso modo. {{歩|ある}}くのが{{遅|おそ}}い parla di lentezza; {{来|く}}るのが{{遅|おそ}}い può suonare come "arrivare tardi".
 
 ---
 

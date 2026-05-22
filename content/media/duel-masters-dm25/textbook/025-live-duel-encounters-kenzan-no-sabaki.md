@@ -21,18 +21,6 @@ summary: >-
 
 # [{{剣参|けんざん}}ノ{{裁|さば}}キ](term:term-kenzan-no-sabaki)
 
-:::image
-src: assets/cards/live-duel/kenzan-no-sabaki.webp
-alt: "Kenzan no Sabaki card."
-caption: >-
-  [{{剣参|けんざん}}ノ{{裁|さば}}キ](term:term-kenzan-no-sabaki)。 Razza:
-  [{{裁|さば}}きの{{紋章|もんしょう}}](term:term-judgment-emblem)。 Riga centrale:
-  guardi le prime tre carte del mazzo, puoi prendere uno
-  [{{呪文|じゅもん}}](term:term-spell) o un [メタリカ](term:term-metallica), poi
-  questo spell non va nel
-  [{{墓地|ぼち}}](term:term-graveyard) ma resta sopra uno scudo
-  [{{表|おもて}}{{向|む}}き](term:term-face-up).
-:::
 
 Lo spell ha due movimenti di lettura molto netti. Prima apre la cima del
 {{山札|やまふだ}}, restringe la scelta con `その{{中|なか}}から` e permette di
@@ -55,6 +43,10 @@ all'avversario, resto in fondo al mazzo, sostituzione della destinazione finale.
   sulla carta, collegata alla linea Sabaki.
 - [{{表|おもて}}{{向|む}}き](term:term-face-up) — stato scoperto che lo spell
   mantiene mentre viene messo sopra lo scudo.
+- [{{相手|あいて}}](term:term-opponent) — destinatario a cui viene mostrata la
+  carta prima di procedere.
+- [{{加|くわ}}える](term:term-add) e [{{置|お}}く](term:term-oku) — aggiungere
+  alla mano oppure mettere nella zona indicata.
 
 ## Espressioni ricorrenti
 
@@ -88,10 +80,23 @@ all'avversario, resto in fondo al mazzo, sostituzione della destinazione finale.
 
 ---
 
+:::image
+src: assets/cards/live-duel/kenzan-no-sabaki.webp
+alt: "Kenzan no Sabaki card."
+caption: >-
+  [{{剣参|けんざん}}ノ{{裁|さば}}キ](term:term-kenzan-no-sabaki)。 Razza:
+  [{{裁|さば}}きの{{紋章|もんしょう}}](term:term-judgment-emblem)。 Riga centrale:
+  guardi le prime tre carte del mazzo, puoi prendere uno
+  [{{呪文|じゅもん}}](term:term-spell) o un [メタリカ](term:term-metallica), poi
+  questo spell non va nel
+  [{{墓地|ぼち}}](term:term-graveyard) ma resta sopra uno scudo
+  [{{表|おもて}}{{向|む}}き](term:term-face-up).
+:::
+
 ## 1. Dalla cima del mazzo al gruppo chiuso
 
-Il primo effetto non parte da una pesca libera. `{{自分|じぶん}}の
-{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}` costruisce un gruppo
+Il primo effetto non parte da una pesca libera. {{自分|じぶん}}の
+{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}} costruisce un gruppo
 limitato: tre carte, prese dalla cima del tuo mazzo. Il verbo `{{見|み}}る`
 conferma che il gesto è guardare, non mettere subito in mano.
 
@@ -127,8 +132,8 @@ reveal_mode: sentence
 *   `{{相手|あいて}}に{{見|み}}せてから{{手札|てふだ}}に{{加|くわ}}えてもよい`:
     sequenza e opzionalità. `てから` mette la rivelazione prima dell'aggiunta,
     mentre `もよい` rende facoltativo prendere una carta.
-*   `{{残|のこ}}りを{{好|す}}きな{{順序|じゅんじょ}}で{{山札|やまふだ}}の
-    {{一番下|いちばんした}}に{{置|お}}く`: chiusura del gruppo. `{{残|のこ}}り`
+*   {{残|のこ}}りを{{好|す}}きな{{順序|じゅんじょ}}で{{山札|やまふだ}}の
+    {{一番下|いちばんした}}に{{置|お}}く: chiusura del gruppo. {{残|のこ}}り
     sono le carte non prese; `{{一番下|いちばんした}}` le sposta lontano dalla
     cima.
 
@@ -142,8 +147,8 @@ separa quindi informazione privata, rivelazione pubblica e spostamento finale.
 ## 2. または e てから: filtro doppio, ordine singolo
 
 La parte più facile da leggere male è la sequenza centrale:
-`{{呪文|じゅもん}}を{{1枚|いちまい}}またはメタリカを{{1体|いったい}}
-{{相手|あいて}}に{{見|み}}せてから{{手札|てふだ}}に{{加|くわ}}えてもよい`.
+{{呪文|じゅもん}}を{{1枚|いちまい}}またはメタリカを{{1体|いったい}}
+{{相手|あいて}}に{{見|み}}せてから{{手札|てふだ}}に{{加|くわ}}えてもよい.
 `または` decide quale tipo di carta può essere scelto; `てから` decide quando
 quella carta entra in mano. Sono due funzioni diverse nella stessa frase.
 
@@ -198,8 +203,8 @@ quantità.
 ## 4. かわりに: lo spell cambia destinazione
 
 Il secondo effetto descrive che cosa succede dopo il cast. La frase parte da
-`この{{呪文|じゅもん}}を{{自分|じぶん}}の{{手札|てふだ}}から
-{{唱|とな}}えた{{後|あと}}`: il timing è subito dopo aver lanciato questo spell
+この{{呪文|じゅもん}}を{{自分|じぶん}}の{{手札|てふだ}}から
+{{唱|とな}}えた{{後|あと}}: il timing è subito dopo aver lanciato questo spell
 dalla mano. Da lì, `かわりに` sostituisce il movimento normale verso il
 {{墓地|ぼち}}.
 
@@ -229,8 +234,8 @@ reveal_mode: sentence
     destinazione normale solo per rimpiazzarla.
 *   `{{表|おもて}}{{向|む}}きのまま`: stato mantenuto. `のまま` dice che la carta
     rimane scoperta mentre cambia collocazione.
-*   `{{自分|じぶん}}のシールド{{1|ひと}}つの{{上|うえ}}に
-    {{置|お}}く`: nuova destinazione. Lo spell non entra nello scudo come carta
+*   {{自分|じぶん}}のシールド{{1|ひと}}つの{{上|うえ}}に
+    {{置|お}}く: nuova destinazione. Lo spell non entra nello scudo come carta
     coperta; viene posto sopra uno dei tuoi scudi.
 
 #### ⚖️ Contrasto operativo

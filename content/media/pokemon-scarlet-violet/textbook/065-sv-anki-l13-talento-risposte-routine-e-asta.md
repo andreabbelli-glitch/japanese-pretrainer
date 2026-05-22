@@ -67,11 +67,13 @@ routine e conseguenze.
 
 ## Etichette da riconoscere
 
-- アカデミー — cornice scolastica di lezioni, quiz e docenti
+- [アカデミー](term:term-v020-akademii) — cornice scolastica di lezioni, quiz e docenti
 - パルデア — regione in cui esplorazione, santuario e routine si intrecciano
 - Porto Marinada — area delle aste, dove l'offerta diventa risultato
 
 ---
+
+[アカデミー](term:term-v020-akademii) resta la cornice che rende naturali quiz, docenti e routine: quando appare, leggi il registro come scolastico prima che avventuroso.
 
 ## 1. Talento, utilità e fasi: quando il testo valuta una possibilità
 
@@ -125,7 +127,7 @@ translation_it: >-
     il testo dice che cosa vale per quell'oggetto).
 *   `いろんなポケモンに` ➔ **Bersaglio dell'uso** (`に` indica su chi o su cosa lo
     strumento può funzionare).
-*   `{{使|つか}}える` ➔ **Possibilità d'uso** ([{{可能|かのう}}{{形|けい}}](grammar:grammar-g020-poter-fare):
+*   {{使|つか}}える ➔ **Possibilità d'uso** ([{{可能|かのう}}{{形|けい}}](grammar:grammar-g020-poter-fare):
     non "lo sto usando", ma "si può usare / è utilizzabile").
 *   `ね` ➔ **Conferma morbida** (il parlante presenta l'osservazione come
     condivisibile).
@@ -146,15 +148,15 @@ translation_it: >-
 *   `{{上|あ}}がった` ➔ **Risultato completato** (la statistica è già salita; la
     frase registra l'esito).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
-`{{使|つか}}う` e [{{使|つか}}える](term:term-anki-l13-tsukaeru) non leggono la
+{{使|つか}}う e [{{使|つか}}える](term:term-anki-l13-tsukaeru) non leggono la
 scena dallo stesso punto. Con `を{{使|つか}}う`, qualcuno compie l'azione di
 usare qualcosa; con `に{{使|つか}}える`, il testo valuta se quell'uso è possibile
 su un bersaglio. La prima forma racconta un'azione, la seconda descrive una
 proprietà pratica dell'opzione.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{段階|だんかい}}](term:term-anki-l13-dankai), immagina una scala a gradini.
 È solo un trucco mnemonico: serve a ricordare che il composto parla di stadi
@@ -170,7 +172,7 @@ domanda del quiz riceve una risposta. Qui la particella [に](grammar:grammar-g0
 *   [{{似|に}}る](term:term-anki-l13-niru) richiede il modello della somiglianza
     con `に`: `トレーナーに{{似|に}}る` significa "assomigliare all'Allenatore".
     Quando vuoi descrivere lo stato attuale, la forma più naturale è
-    `{{似|に}}ている`, con [～ている](grammar:grammar-g003-stato-in-corso-stato-risultante)
+    {{似|に}}ている, con [～ている](grammar:grammar-g003-stato-in-corso-stato-risultante)
     a trasformare il verbo in una condizione visibile.
 *   [{{答|こた}}える](term:term-anki-l13-kotaeru) non prende solo parole come
     "sì" o "no": prende anche il quiz, la domanda o la persona a cui si
@@ -220,7 +222,7 @@ translation_it: >-
 *   `ほめてくれる` ➔ **Azione favorevole verso di te** (`くれる` orienta il
     beneficio verso il giocatore o l'interlocutore).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{似|に}}る](term:term-anki-l13-niru) e [{{答|こた}}える](term:term-anki-l13-kotaeru)
 usano entrambi `に`, ma il valore non è identico. In
@@ -229,7 +231,7 @@ usano entrambi `に`, ma il valore non è identico. In
 La stessa particella non va tradotta a memoria: va letta dal verbo che la
 governa.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Quando incontri `に` con questi verbi, immagina una freccia verso il punto di
 aggancio. Con [{{似|に}}る](term:term-anki-l13-niru), la freccia punta al
@@ -250,7 +252,7 @@ come informazione riportata.
     abitudine, non un evento unico.
 *   [{{Ｐ|ピー}}{{Ｐ|ピー}}](term:term-anki-l13-piipii) è una sigla di
     interfaccia: i Punti Potenza indicano quanti usi restano a una mossa.
-    Quando appare con `たりない` o [{{使|つか}}える](term:term-anki-l13-tsukaeru)
+    Quando appare con たりない o [{{使|つか}}える](term:term-anki-l13-tsukaeru)
     al negativo, la frase non parla di danno subito e non parla dei PS: dice
     che l'opzione non può essere scelta perché la risorsa non basta.
 *   [{{祠|ほこら}}](term:term-anki-l13-hokora) porta la lettura verso luoghi
@@ -272,7 +274,7 @@ translation_it: >-
 *   `{{毎日|まいにち}}` ➔ **Frequenza abituale** (modifica direttamente il verbo:
     "ogni giorno").
 *   `ポケモンと` ➔ **Compagnia** (`と` indica con chi avviene l'azione).
-*   `あそんでいる` ➔ **Azione abituale o in corso** ([～ている](grammar:grammar-g003-stato-in-corso-stato-risultante)
+*   あそんでいる ➔ **Azione abituale o in corso** ([～ている](grammar:grammar-g003-stato-in-corso-stato-risultante)
     qui si legge come routine).
 
 :::example_sentence
@@ -288,7 +290,7 @@ translation_it: >-
     PP alla mossa, `が` presenta la risorsa come problema).
 *   `たりなくて` ➔ **Causa collegata** ("non bastando": spiega perché arriva la
     frase successiva).
-*   `{{使|つか}}えない` ➔ **Possibilità negata** ([{{可能|かのう}}{{形|けい}}](grammar:grammar-g020-poter-fare)
+*   {{使|つか}}えない ➔ **Possibilità negata** ([{{可能|かのう}}{{形|けい}}](grammar:grammar-g020-poter-fare)
     al negativo: l'uso non è disponibile).
 
 :::example_sentence
@@ -304,10 +306,10 @@ translation_it: >-
     preciso: dice "da qualche parte").
 *   `あやしい {{祠|ほこら}}が` ➔ **Cosa esiste** (`が` introduce il santuario come
     elemento presente in quel luogo).
-*   `あるらしい` ➔ **Esistenza riportata** (`ある` dice che c'è; [～らしい](grammar:grammar-g102-pare-che-tipico-di)
+*   あるらしい ➔ **Esistenza riportata** (ある dice che c'è; [～らしい](grammar:grammar-g102-pare-che-tipico-di)
     presenta l'informazione come "pare che").
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 [{{Ｐ|ピー}}{{Ｐ|ピー}}](term:term-anki-l13-piipii) non misura la salute e non è
 il nome della mossa. In una schermata di lotta indica gli utilizzi rimanenti.
@@ -315,7 +317,7 @@ Se il testo dice `{{Ｐ|ピー}}{{Ｐ|ピー}}がたりない`, il problema non 
 Pokémon è ferito: è che quella mossa non ha più risorsa sufficiente per essere
 usata.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 [{{毎日|まいにち}}](term:term-anki-l13-mainichi) è come un'etichetta temporale
 già completa: si appoggia al verbo senza bisogno di un gancio aggiuntivo.
@@ -350,14 +352,14 @@ translation_it: >-
 *   `{{落札|らくさつ}}した` ➔ **Aggiudicazione completata** (sostantivo + `した`:
     la gara di offerte è chiusa e l'oggetto è stato ottenuto).
 
-#### ⚖️ Contrasto
+#### ⚖️ Contrasto operativo
 
 `{{買|か}}った` direbbe soltanto "ho comprato". `{{落札|らくさつ}}した` racconta un
 risultato più specifico: hai partecipato a un'asta e la tua offerta ha vinto.
 Se il messaggio usa [{{落札|らくさつ}}](term:term-anki-l13-rakusatsu), leggi la
 scena come conferma di gara, non come acquisto da banco.
 
-#### 🧠 Gancio
+#### 🧠 Gancio cognitivo
 
 Per [{{落札|らくさつ}}](term:term-anki-l13-rakusatsu), pensa al martelletto
 dell'asta che "cade" sull'offerta vincente. È un'immagine mnemonica: non serve
@@ -408,7 +410,7 @@ In questo gruppo, la lettura parte sempre dalla funzione della frase:
 [{{才能|さいのう}}](term:term-anki-l13-sainou) valuta una qualità,
 [{{使|つか}}える](term:term-anki-l13-tsukaeru) controlla una possibilità,
 [{{似|に}}る](term:term-anki-l13-niru) e [{{答|こた}}える](term:term-anki-l13-kotaeru)
-dipendono dal bersaglio marcato da `に`, [{{毎日|まいにち}}](term:term-anki-l13-mainichi)
+dipendono dal bersaglio marcato da に, [{{毎日|まいにち}}](term:term-anki-l13-mainichi)
 stabilizza una routine, [{{Ｐ|ピー}}{{Ｐ|ピー}}](term:term-anki-l13-piipii)
 decide se una mossa è ancora disponibile, e
 [{{落札|らくさつ}}](term:term-anki-l13-rakusatsu) chiude l'asta come risultato.
