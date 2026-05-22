@@ -72,6 +72,24 @@ export function collectQueuedPrefetchCardIds(input: {
   return cardIdsToFetch;
 }
 
+export function collectReviewCardAudioSources(
+  cards: Iterable<Pick<ReviewQueueCard, "pronunciations">>
+) {
+  const sources = new Set<string>();
+
+  for (const card of cards) {
+    for (const pronunciation of card.pronunciations) {
+      const source = pronunciation.audio.src?.trim();
+
+      if (source) {
+        sources.add(source);
+      }
+    }
+  }
+
+  return [...sources];
+}
+
 export function pruneQueuedPrefetchedCardMap<T>(
   prefetchedCards: ReadonlyMap<string, T>,
   queueCardIds: ReadonlyArray<string>

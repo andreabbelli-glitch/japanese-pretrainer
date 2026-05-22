@@ -3,11 +3,13 @@
 import { useCallback, useEffect, useRef } from "react";
 
 import { prefetchReviewCardSessionAction } from "@/actions/review";
+import { preloadAudioSources } from "@/components/ui/audio-preload";
 import type { ReviewQueueCard } from "@/lib/review-types";
 
 import type { ReviewPageClientData } from "./review-page-state";
 import {
   collectQueuedPrefetchCardIds,
+  collectReviewCardAudioSources,
   pruneQueuedPrefetchedCardMap
 } from "./review-page-helpers";
 
@@ -97,6 +99,7 @@ export function useReviewQueuedCardPrefetch({
           }
 
           prefetchBufferRef.current.set(cardId, card);
+          preloadAudioSources(collectReviewCardAudioSources([card]));
         })
         .catch((error) => {
           console.error(error);

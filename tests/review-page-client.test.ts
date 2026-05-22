@@ -10,6 +10,7 @@ import {
 } from "@/components/review/review-page-client-utils";
 import {
   collectQueuedPrefetchCardIds,
+  collectReviewCardAudioSources,
   resolveReviewQueuePosition
 } from "@/components/review/review-page-helpers";
 import {
@@ -19,7 +20,7 @@ import {
 import { ReviewPageStage } from "@/components/review/review-page-stage";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
-import type { ReviewPageData } from "@/lib/review-types";
+import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
 
 describe("review page client hydration", () => {
   it("keeps an early reveal open when the first-candidate hydration catches up on the same card", () => {
@@ -109,6 +110,50 @@ describe("review page client hydration", () => {
         queueIndex: 0
       })
     ).toEqual([]);
+  });
+
+  it("collects deduped pronunciation audio sources from review cards", () => {
+    const first: Pick<ReviewQueueCard, "pronunciations"> = {
+      pronunciations: [
+        {
+          audio: { src: "/media/sample/assets/audio/a.mp3" as Route },
+          kind: "term",
+          label: "読む",
+          meaning: "leggere",
+          relationshipLabel: "Voce"
+        },
+        {
+          audio: { src: "/media/sample/assets/audio/a.mp3" as Route },
+          kind: "term",
+          label: "読む",
+          meaning: "leggere",
+          relationshipLabel: "Voce"
+        }
+      ]
+    };
+    const second: Pick<ReviewQueueCard, "pronunciations"> = {
+      pronunciations: [
+        {
+          audio: {},
+          kind: "term",
+          label: "書く",
+          meaning: "scrivere",
+          relationshipLabel: "Voce"
+        },
+        {
+          audio: { src: "/media/sample/assets/audio/b.mp3" as Route },
+          kind: "term",
+          label: "聞く",
+          meaning: "ascoltare",
+          relationshipLabel: "Voce"
+        }
+      ]
+    };
+
+    expect(collectReviewCardAudioSources([first, second])).toEqual([
+      "/media/sample/assets/audio/a.mp3",
+      "/media/sample/assets/audio/b.mp3"
+    ]);
   });
 
   it("resolves the selected queue position from the memoized optimistic lookup", () => {
