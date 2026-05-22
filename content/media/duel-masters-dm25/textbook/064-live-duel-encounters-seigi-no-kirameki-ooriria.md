@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-live-duel-encounters-seigi-no-kirameki-ooriria
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-seigi-no-kirameki-ooriria
-title: Carte incontrate - 正義の煌き オーリリア / Orlilia, Flash of Justice
+title: "正義の煌き オーリリア: cambiare bersaglio e leggere Labyrinth"
 order: 92
 segment_ref: live-duel-encounters
 difficulty: n3
@@ -23,38 +23,85 @@ prerequisites:
     lesson-duel-masters-dm25-dm25-sd1-overview
   ]
 summary: >-
-  Orlilia: reindirizza l'attacco con attack target e henkou, poi usa kazu e
-  yori per attivare Labyrinth solo se hai più scudi dell'avversario.
+  Leggere Orlilia: cambiare il bersaglio di un attacco e attivare Labyrinth
+  solo quando i tuoi scudi sono più di quelli avversari.
 ---
 
-# 正義の煌き オーリリア
+# 正義の煌き オーリリア: cambiare bersaglio e leggere Labyrinth
+
+{{正義|せいぎ}}の{{煌|きら}}き オーリリア legge il campo in due momenti
+molto diversi. Prima prende un attacco già dichiarato e ne sposta la
+destinazione; poi controlla se il tuo numero di scudi supera quello
+dell'avversario e trasforma quel vantaggio in un divieto sugli spell.
+
+Il rules text è compatto, ma non è vago. La prima riga si appoggia a
+[{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target),
+[{{変更|へんこう}}](term:term-henkou) e [〜してもよい](grammar:grammar-temoyoi):
+ti dice che puoi cambiare qualcosa che esiste già. La seconda riga usa
+[ラビリンス](term:term-labyrinth), [{{数|かず}}](term:term-kazu),
+[より](grammar:grammar-yori) e `{{多|おお}}ければ`: non basta avere molti
+scudi in astratto, devi averne più dell'altro giocatore.
 
 :::image
 src: assets/cards/live-duel/seigi-no-kirameki-ooriria.jpg
 alt: "Orlilia, Flash of Justice card."
 caption: >-
   {{正義|せいぎ}}の{{煌|きら}}き オーリリア。
-  Razza: [メタリカ](term:term-metallica). La prima riga sposta il bersaglio
-  dell'attacco su questa creatura o su una tua creatura tapped; la seconda
-  accende [ラビリンス](term:term-labyrinth) se i tuoi scudi sono più di quelli
-  dell'avversario e blocca gli spell a costo 5 o meno.
+  La prima riga sposta
+  [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target); la seconda accende
+  [ラビリンス](term:term-labyrinth) quando il
+  [{{数|かず}}](term:term-kazu) dei tuoi scudi supera quello dell'avversario.
 :::
 
-## Keyword presenti sulla carta
+## Termini chiave
 
-- [ラビリンス](term:term-labyrinth)
+- [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target) — bersaglio concreto
+  verso cui va un attacco già in corso
+- [{{変更|へんこう}}](term:term-henkou) — cambio / modifica di una destinazione
+  già definita
+- [{{数|かず}}](term:term-kazu) — numero, quantità, conteggio
+- [{{唱|とな}}える](term:term-tonaeru) — lanciare uno spell
+- [{{呪文|じゅもん}}](term:term-spell) — spell / carta magia
 
-La keyword è nuova e ora sta anche nella keyword bank. Qui il punto didattico
-più utile è come il testo esprime il confronto tra i due giocatori:
-`{{自分|じぶん}}のシールドの{{数|かず}}が{{相手|あいて}}より{{多|おお}}ければ`.
+## Espressioni ricorrenti
 
-## Effetti da leggere
+- [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target)を〜に
+  [{{変更|へんこう}}](term:term-henkou)してもよい — puoi cambiare il bersaglio
+  verso una nuova destinazione
+- コスト{{5以下|ごいか}}の[{{呪文|じゅもん}}](term:term-spell)を
+  [{{唱|とな}}えられない](term:term-tonaeru) — non può lanciare spell di costo
+  {{5以下|ごいか}}
+
+## Pattern grammaticali chiave
+
+- [〜してもよい](grammar:grammar-temoyoi) — possibilità concessa, non obbligo
+- [より](grammar:grammar-yori) — termine di paragone, "rispetto a"
+- [{{自分|じぶん}}のシールドの{{数|かず}}が{{相手|あいて}}より{{多|おお}}ければ](grammar:grammar-seigi-no-shield-count-yori-ookereba) —
+  se il numero dei tuoi scudi è maggiore di quello dell'avversario
+
+## Etichette da riconoscere
+
+- [ラビリンス](term:term-labyrinth) — keyword che controlla un vantaggio di
+  scudi prima di rendere attivo il testo successivo
+- [メタリカ](term:term-metallica) — razza della creatura; qui aiuta a
+  riconoscere il frame Metallica della carta
+
+---
+
+## 1. La prima riga: cambiare la destinazione di un attacco
+
+La prima abilità non crea un combattimento nuovo. Il giapponese parte da
+[{{相手|あいて}}](term:term-opponent)[クリーチャー](term:term-creature)の
+[{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target), cioè dalla destinazione
+dell'attacco di una creatura avversaria già definita, e solo dopo introduce il
+cambio con [{{変更|へんこう}}](term:term-henkou). Questo ordine è importante:
+prima identifichi quale attacco esiste, poi leggi dove può essere spostato.
 
 :::example_sentence
 jp: >-
   この[クリーチャー](term:term-creature)を[アンタップ](term:term-untap)して、
   [{{相手|あいて}}](term:term-opponent)[クリーチャー](term:term-creature)の
-  [{{攻撃先|こうげきさき}}](term:term-attack-target)をこの
+  [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target)をこの
   [クリーチャー](term:term-creature)または
   [{{自分|じぶん}}](term:term-self)の[タップ](term:term-tap)している
   [クリーチャー](term:term-creature)に
@@ -64,6 +111,50 @@ translation_it: >-
   creatura avversaria su questa creatura oppure su una tua creatura tapped.
 reveal_mode: sentence
 :::
+
+#### 🗺️ Anatomia della frase
+
+*   この[クリーチャー](term:term-creature)を[アンタップ](term:term-untap)して:
+    `を` marca Orlilia come oggetto dell'azione e `して` lega lo stappare al
+    movimento successivo. Non stai solo descrivendo uno stato: prima la carta
+    diventa untapped, poi può diventare una nuova destinazione.
+*   [{{相手|あいて}}](term:term-opponent)[クリーチャー](term:term-creature)の
+    [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target)を: `の` collega la
+    creatura avversaria al suo bersaglio d'attacco, mentre `を` marca quel
+    bersaglio come la cosa che verrà modificata.
+*   この[クリーチャー](term:term-creature)または
+    [{{自分|じぶん}}](term:term-self)の[タップ](term:term-tap)している
+    [クリーチャー](term:term-creature)に: `または` apre due destinazioni valide e
+    `に` marca dove l'attacco viene riassegnato.
+*   [{{変更|へんこう}}](term:term-henkou)してもよい: la modifica è permessa,
+    non obbligatoria. Se il cambio non ti conviene, la grammatica ti lascia
+    scegliere di non farlo.
+
+#### ⚖️ Contrasto operativo: cambiare bersaglio non è dichiarare un attacco
+
+[{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target) ti dice che l'attacco ha
+già una destinazione. [{{変更|へんこう}}](term:term-henkou) non apre una nuova
+fase di attacco e non fa scegliere un nuovo attaccante: riassegna il punto verso
+cui va l'attacco esistente. Se leggi `{{変更|へんこう}}する` come "iniziare da
+capo", perdi il valore più concreto del verbo, cioè modificare una scelta già
+in campo.
+
+#### 🧠 Gancio cognitivo
+
+In [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target), `{{先|さき}}` può
+funzionare come immagine mentale della "punta" o destinazione dell'attacco.
+È un trucco mnemonico, non una definizione tecnica: serve a ricordare che la
+parola guarda dove l'attacco va a finire, non chi lo sta compiendo.
+
+## 2. Labyrinth: il confronto tra i numeri degli scudi
+
+[ラビリンス](term:term-labyrinth) introduce una soglia relativa. Il testo non
+chiede se hai tanti scudi in assoluto: prende
+[{{自分|じぶん}}](term:term-self)のシールドの[{{数|かず}}](term:term-kazu) come
+soggetto della frase e lo confronta con
+[{{相手|あいて}}](term:term-opponent)[より](grammar:grammar-yori). Il pezzo che
+decide tutto è `{{多|おお}}ければ`, il condizionale di `{{多|おお}}い`: se il tuo
+conteggio è maggiore, il resto della riga si accende.
 
 :::example_sentence
 jp: >-
@@ -81,80 +172,140 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-## Parsing grammaticale
+#### 🗺️ Anatomia della frase
 
-### 1. このクリーチャーをアンタップして
+*   [ラビリンス](term:term-labyrinth): la keyword segnala che la frase
+    successiva non è sempre attiva. Prima devi passare dal controllo sugli
+    scudi.
+*   [{{自分|じぶん}}](term:term-self)のシールドの
+    [{{数|かず}}](term:term-kazu)が: `が` marca come soggetto il numero dei
+    tuoi scudi. Il testo non guarda quali scudi sono, ma quanti scudi hai.
+*   [{{相手|あいて}}](term:term-opponent)[より](grammar:grammar-yori):
+    `より` marca il benchmark del paragone. Qui la forma piena sottintesa è
+    `{{相手|あいて}}のシールドの{{数|かず}}より`, cioè "rispetto al numero degli
+    scudi dell'avversario".
+*   [{{多|おお}}ければ](grammar:grammar-seigi-no-shield-count-yori-ookereba):
+    `{{多|おお}}い` diventa condizionale. La riga seguente vale solo se il tuo
+    conteggio supera davvero quello avversario.
 
-- `アンタップして` usa la forma in `て` per legare il primo gesto al resto
-  dell'effetto: prima la creatura si stappa, poi diventa disponibile come nuova
-  destinazione dell'attacco.
-- Non è una descrizione vaga di stato. La carta ti fa eseguire un'azione
-  concreta che prepara il reindirizzamento subito dopo.
+#### ⚖️ Contrasto operativo: `{{相手|あいて}}より` non ribalta il confronto
 
-### 2. 相手クリーチャーの攻撃先をこのクリーチャーまたは自分のタップしているクリーチャーに変更してもよい
+La tentazione è fissarsi su [{{相手|あいて}}](term:term-opponent)[より](grammar:grammar-yori)
+e leggere la frase come se fossero gli scudi avversari a dover essere di più.
+La grammatica però punta altrove: chi porta `が` è
+[{{自分|じぶん}}](term:term-self)のシールドの[{{数|かず}}](term:term-kazu).
+`より` mette l'avversario sul lato del benchmark, non sul lato del soggetto.
+Se i conteggi sono pari, [ラビリンス](term:term-labyrinth) non ha superato la
+soglia.
 
-- [{{攻撃先|こうげきさき}}](term:term-attack-target) è il bersaglio effettivo
-  dell'attacco già dichiarato.
-- [{{変更|へんこう}}](term:term-henkou) dice che non stai creando un nuovo
-  attacco: stai riassegnando dove va quello che esiste già.
-- `または` apre due destinazioni valide: questa creatura oppure una tua
-  creatura che è già in stato tapped.
-- `してもよい` rende l'azione facoltativa: la finestra esiste, ma puoi anche
-  scegliere di non spostare l'attacco.
+#### 🧠 Gancio cognitivo
 
-### 3. 自分のシールドの数が相手より多ければ
+Immagina [より](grammar:grammar-yori) come una linea di confronto: da una parte
+c'è il soggetto con `が`, dall'altra il benchmark. Il lato che deve risultare
+`{{多|おお}}い` è quello del soggetto, quindi qui sono i tuoi scudi a dover
+stare sopra la linea.
 
-- [{{自分|じぶん}}](term:term-self)のシールドの
-  [{{数|かず}}](term:term-kazu) costruisce il numero che devi guardare dal tuo
-  lato del campo: non il contenuto degli scudi, ma quanti scudi hai.
-- [より](grammar:grammar-yori) qui è il comparativo più normale possibile:
-  `rispetto a / di`. Il punto non è un uso speciale di `より`, ma il fatto che
-  la frase è abbreviata.
-- Se il testo fosse completamente esplicito, qui leggeresti
-  `{{自分|じぶん}}のシールドの{{数|かず}}が{{相手|あいて}}のシールドの{{数|かず}}より{{多|おお}}ければ`:
-  il numero dei tuoi scudi confrontato con il numero degli scudi
-  dell'avversario.
-- La carta invece omette il secondo `シールドの数` e lascia solo
-  `{{相手|あいて}}より`. È un'ellissi molto naturale nei testi concisi: il
-  lettore ricostruisce mentalmente `rispetto al numero degli scudi
-  dell'avversario`, anche se sulla carta resta scritto solo `rispetto
-  all'avversario`.
-- Il dubbio più comune nasce qui: a prima vista sembra quasi che siano gli
-  scudi dell'avversario a dover essere più dei tuoi. In realtà non c'è nessun
-  ribaltamento grammaticale.
-- Il blocco `{{相手|あいて}}より` significa semplicemente `rispetto
-  all'avversario` ed è solo la base del paragone. Per capire chi ha davvero
-  `di più`, devi guardare il soggetto della frase, cioè ciò che porta `が`.
-- Qui il soggetto è
-  `{{自分|じぶん}}のシールドの{{数|かず}}が`: è il numero dei tuoi scudi quello a
-  cui si applica `{{多|おお}}ければ`. Quindi la carta dice che devi essere tu ad
-  avere più scudi.
-- Se il testo avesse voluto dire il contrario, avrebbe dovuto invertire i due
-  poli del confronto, mettendo come soggetto il lato avversario.
-- `{{多|おお}}ければ` è il condizionale di `{{多|おお}}い`: la carta controlla se
-  il tuo conteggio supera davvero quel benchmark.
-- La soglia quindi è relativa, non assoluta. Se avete lo stesso numero di
-  scudi, [ラビリンス](term:term-labyrinth) non si accende.
+## 3. Il divieto sugli spell: chi viene bloccato e quale gruppo è colpito
 
-### 4. 相手はコスト5以下の呪文を唱えられない
+Dopo la condizione, la frase cambia ritmo: non conta più gli scudi, ma impone
+una restrizione all'avversario. [{{相手|あいて}}](term:term-opponent)は marca il
+giocatore colpito dal divieto, mentre コスト{{5以下|ごいか}}の
+[{{呪文|じゅもん}}](term:term-spell) delimita il gruppo di carte che non può essere
+lanciato.
 
-- [{{相手|あいて}}](term:term-opponent)は marca il giocatore che subisce la
-  restrizione.
-- `コスト{{5以下|ごいか}}の[{{呪文|じゅもん}}](term:term-spell)` definisce il
-  gruppo proibito: tutti gli spell con costo 5 o meno.
-- [{{唱|とな}}えられない](term:term-tonaeru) qui vale `non può lanciare`, non
-  `non vuole lanciare` o `non conviene lanciare`.
-- Quindi la seconda riga si legge in due blocchi netti: prima controlli se hai
-  più scudi, poi imponi all'avversario il divieto di castare quel gruppo di
-  spell.
+:::example_sentence
+jp: >-
+  [{{相手|あいて}}](term:term-opponent)は[コスト](term:term-cost)
+  {{5以下|ごいか}}の[{{呪文|じゅもん}}](term:term-spell)を
+  [{{唱|とな}}えられない](term:term-tonaeru)。
+translation_it: >-
+  L'avversario non può lanciare spell di costo 5 o meno.
+reveal_mode: sentence
+:::
 
-## Lessico e chunk utili in questa carta
+#### 🗺️ Anatomia della frase
 
-- [{{数|かず}}](term:term-kazu) è il nome semplice del conteggio. Quando appare
-  dopo una zona o un gruppo, ti sta chiedendo di trasformare quel gruppo in un
-  numero.
-- `{{相手|あいて}}より{{多|おお}}ければ` non vuol dire genericamente `se sono
-  tanti`: vuol dire `se sono più di quelli dell'avversario`.
-- [ラビリンス](term:term-labyrinth) è una keyword di soglia: non ti insegna da
-  sola cosa fa la carta, ma ti avvisa subito che devi confrontare il tuo numero
-  di scudi con quello dell'altro giocatore.
+*   [{{相手|あいて}}](term:term-opponent)は: `は` presenta il giocatore su cui
+    cade la restrizione. Non parla di te, anche se la condizione precedente
+    partiva dai tuoi scudi.
+*   [コスト](term:term-cost){{5以下|ごいか}}の
+    [{{呪文|じゅもん}}](term:term-spell)を: `の` trasforma `コスト{{5以下|ごいか}}`
+    in filtro nominale. Il gruppo vietato è "spell di costo {{5以下|ごいか}}",
+    non genericamente tutti gli spell.
+*   [{{唱|とな}}えられない](term:term-tonaeru): la forma potenziale negativa
+    vale "non può lanciare". Non descrive una scelta psicologica
+    dell'avversario; blocca la possibilità di castare quel gruppo.
+
+#### ⚖️ Contrasto operativo: `{{唱|とな}}えない` e `{{唱|とな}}えられない`
+
+`{{唱|とな}}えない` direbbe semplicemente "non lancia". Con
+[{{唱|とな}}えられない](term:term-tonaeru), invece, il focus è sulla possibilità:
+l'avversario non ha accesso all'azione. In una carta, questa differenza cambia
+la lettura pratica della frase: non è una previsione sul comportamento
+dell'altro giocatore, è una restrizione imposta dal testo.
+
+## 4. Mettere insieme le due metà della carta
+
+Orlilia combina un effetto difensivo immediato e una soglia continua da leggere
+con attenzione. I due pezzi sembrano vicini, ma usano grammatiche diverse.
+
+*   Nella prima riga, この[クリーチャー](term:term-creature)を
+    [アンタップ](term:term-untap)して prepara il corpo che può ricevere il
+    reindirizzamento. La forma in `て` non è un semplice "e" decorativo:
+    concatena due azioni della stessa procedura.
+*   Nel blocco con
+    [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target), `を` e `に` ti danno
+    la mappa del cambio. `を` marca ciò che viene modificato, `に` marca la
+    nuova destinazione.
+*   Nella riga [ラビリンス](term:term-labyrinth), invece, la particella decisiva
+    è `が`: ti dice quale conteggio deve essere maggiore. [より](grammar:grammar-yori)
+    non sceglie il vincitore del confronto, sceglie solo il punto rispetto a
+    cui misurarlo.
+*   Il payoff con
+    [{{唱|とな}}えられない](term:term-tonaeru) non dipende da una decisione
+    dell'avversario. Una volta superata la soglia di scudi, la frase trasforma
+    gli spell di costo {{5以下|ごいか}} in un gruppo temporaneamente non
+    lanciabile.
+
+## Esempi guidati di riepilogo
+
+:::example_sentence
+jp: >-
+  [{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target)をこの
+  [クリーチャー](term:term-creature)に[{{変更|へんこう}}](term:term-henkou)してもよい。
+translation_it: >-
+  Puoi cambiare il bersaglio dell'attacco su questa creatura.
+reveal_mode: sentence
+:::
+
+:::example_sentence
+jp: >-
+  [{{自分|じぶん}}](term:term-self)のシールドの
+  [{{数|かず}}](term:term-kazu)が
+  [{{相手|あいて}}](term:term-opponent)[より](grammar:grammar-yori)
+  {{多|おお}}い。
+translation_it: >-
+  Il numero dei tuoi scudi è maggiore di quello dell'avversario.
+reveal_mode: sentence
+:::
+
+:::example_sentence
+jp: >-
+  [{{相手|あいて}}](term:term-opponent)は[コスト](term:term-cost)
+  {{5以下|ごいか}}の[{{呪文|じゅもん}}](term:term-spell)を
+  [{{唱|とな}}えられない](term:term-tonaeru)。
+translation_it: >-
+  L'avversario non può lanciare spell di costo 5 o meno.
+reveal_mode: sentence
+:::
+
+---
+
+## Nota finale
+
+La carta diventa molto più leggibile se separi i due lavori della grammatica:
+[{{変更|へんこう}}](term:term-henkou) riassegna un
+[{{攻撃|こうげき}}{{先|さき}}](term:term-attack-target) già esistente, mentre
+[ラビリンス](term:term-labyrinth) confronta il
+[{{数|かず}}](term:term-kazu) degli scudi e, solo se il tuo lato è più alto,
+blocca all'avversario gli spell di costo {{5以下|ごいか}}.
