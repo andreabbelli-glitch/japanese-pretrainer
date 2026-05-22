@@ -18,6 +18,7 @@ export async function importContentWorkspace(
   const importId = options.importId ?? `content_import_${randomUUID()}`;
   const startedAt = (options.now ?? new Date()).toISOString();
   const mediaSlugs = normalizeMediaSlugs(options.mediaSlugs);
+  const lessonSlugs = normalizeLessonSlugs(options.lessonSlugs);
 
   await database.insert(contentImport).values({
     id: importId,
@@ -30,6 +31,36 @@ export async function importContentWorkspace(
   });
 
   try {
+    const importScope = resolveImportScope({ lessonSlugs, mediaSlugs });
+
+    if (importScope.status === "failed") {
+      await updateImportRecord(database, {
+        id: importId,
+        filesScanned: 0,
+        filesChanged: 0,
+        finishedAt: new Date().toISOString(),
+        message: importScope.message,
+        status: "failed"
+      });
+
+      return {
+        filesChanged: 0,
+        filesScanned: 0,
+        importId,
+        issues: [],
+        message: importScope.message,
+        parseResult: {
+          data: {
+            contentRoot,
+            bundles: []
+          },
+          issues: [],
+          ok: false
+        },
+        status: "failed"
+      };
+    }
+
     const parseResult = await parseContentRoot(contentRoot);
     const filesScanned = countScannedFiles(parseResult.data);
 
@@ -56,10 +87,13 @@ export async function importContentWorkspace(
       };
     }
 
-    const scopedWorkspace = selectWorkspaceBundles(parseResult.data, mediaSlugs);
+    const scopedWorkspace = selectWorkspaceBundles(
+      parseResult.data,
+      importScope.scope
+    );
 
-    if (scopedWorkspace === null) {
-      const message = buildMissingMediaScopeMessage(mediaSlugs, parseResult.data);
+    if (scopedWorkspace.status === "failed") {
+      const message = scopedWorkspace.message;
 
       await updateImportRecord(database, {
         id: importId,
@@ -85,12 +119,16 @@ export async function importContentWorkspace(
       syncContentWorkspace(transaction, {
         contentRoot,
         importId,
+        lessonScopes: scopedWorkspace.lessonScopes,
         nowIso: startedAt,
-        syncMode: mediaSlugs.length > 0 ? "incremental" : "full",
-        workspace: scopedWorkspace
+        syncMode: importScope.scope.type,
+        workspace: scopedWorkspace.workspace
       })
     );
-    const message = buildSuccessMessage(scopedWorkspace.bundles.length, syncResult.summary);
+    const message = buildSuccessMessage(
+      scopedWorkspace.workspace.bundles.length,
+      syncResult.summary
+    );
 
     await updateImportRecord(database, {
       id: importId,
@@ -108,7 +146,7 @@ export async function importContentWorkspace(
       issues: [],
       parseResult: {
         ...parseResult,
-        data: scopedWorkspace
+        data: scopedWorkspace.workspace
       },
       status: "completed",
       summary: syncResult.summary
@@ -151,38 +189,172 @@ function countScannedFiles(workspace: {
   }>;
 }) {
   return workspace.bundles.reduce((total, bundle) => {
-    return total + (bundle.media ? 1 : 0) + bundle.lessons.length + bundle.cardFiles.length;
+    return (
+      total +
+      (bundle.media ? 1 : 0) +
+      bundle.lessons.length +
+      bundle.cardFiles.length
+    );
   }, 0);
 }
 
 function normalizeMediaSlugs(mediaSlugs: string[] | undefined) {
-  return [...new Set((mediaSlugs ?? []).map((slug) => slug.trim()).filter(Boolean))];
+  return [
+    ...new Set((mediaSlugs ?? []).map((slug) => slug.trim()).filter(Boolean))
+  ];
+}
+
+function normalizeLessonSlugs(lessonSlugs: string[] | undefined) {
+  return [
+    ...new Set((lessonSlugs ?? []).map((slug) => slug.trim()).filter(Boolean))
+  ];
+}
+
+type ImportScope =
+  | {
+      type: "full";
+    }
+  | {
+      mediaSlugs: string[];
+      type: "media";
+    }
+  | {
+      lessonSlugs: string[];
+      mediaSlug: string;
+      type: "lessons";
+    };
+
+type ResolvedImportScope =
+  | {
+      scope: ImportScope;
+      status: "ready";
+    }
+  | {
+      message: string;
+      status: "failed";
+    };
+
+function resolveImportScope(input: {
+  lessonSlugs: string[];
+  mediaSlugs: string[];
+}): ResolvedImportScope {
+  if (input.lessonSlugs.length === 0) {
+    return {
+      scope:
+        input.mediaSlugs.length > 0
+          ? {
+              mediaSlugs: input.mediaSlugs,
+              type: "media"
+            }
+          : {
+              type: "full"
+            },
+      status: "ready"
+    };
+  }
+
+  if (input.mediaSlugs.length !== 1) {
+    return {
+      message:
+        "Import aborted: lesson scope requires exactly one --media-slug.",
+      status: "failed"
+    };
+  }
+
+  return {
+    scope: {
+      lessonSlugs: input.lessonSlugs,
+      mediaSlug: input.mediaSlugs[0],
+      type: "lessons"
+    },
+    status: "ready"
+  };
 }
 
 function selectWorkspaceBundles<
   TWorkspace extends {
     bundles: Array<{
+      lessons: Array<{
+        frontmatter: {
+          slug: string;
+        };
+      }>;
       mediaSlug: string;
     }>;
   }
 >(
   workspace: TWorkspace,
-  mediaSlugs: string[]
-): TWorkspace | null {
-  if (mediaSlugs.length === 0) {
-    return workspace;
+  scope: ImportScope
+):
+  | {
+      lessonScopes: Array<{ lessonSlugs: string[]; mediaSlug: string }>;
+      status: "ready";
+      workspace: TWorkspace;
+    }
+  | {
+      message: string;
+      status: "failed";
+    } {
+  if (scope.type === "full") {
+    return {
+      lessonScopes: [],
+      status: "ready",
+      workspace
+    };
   }
 
+  const mediaSlugs =
+    scope.type === "lessons" ? [scope.mediaSlug] : scope.mediaSlugs;
   const requestedSlugs = new Set(mediaSlugs);
-  const bundles = workspace.bundles.filter((bundle) => requestedSlugs.has(bundle.mediaSlug));
+  const bundles = workspace.bundles.filter((bundle) =>
+    requestedSlugs.has(bundle.mediaSlug)
+  );
 
   if (bundles.length !== requestedSlugs.size) {
-    return null;
+    return {
+      message: buildMissingMediaScopeMessage(mediaSlugs, workspace),
+      status: "failed"
+    };
+  }
+
+  if (scope.type === "lessons") {
+    const bundle = bundles[0];
+    const availableLessonSlugs = new Set(
+      bundle.lessons.map((lesson) => lesson.frontmatter.slug)
+    );
+    const missingLessonSlugs = scope.lessonSlugs.filter(
+      (slug) => !availableLessonSlugs.has(slug)
+    );
+
+    if (missingLessonSlugs.length > 0) {
+      return {
+        message: `Import aborted: lesson scope not found for ${scope.mediaSlug}: ${missingLessonSlugs.join(", ")}.`,
+        status: "failed"
+      };
+    }
+
+    return {
+      lessonScopes: [
+        {
+          lessonSlugs: scope.lessonSlugs,
+          mediaSlug: scope.mediaSlug
+        }
+      ],
+      status: "ready",
+      workspace: {
+        ...workspace,
+        bundles
+      }
+    };
   }
 
   return {
-    ...workspace,
-    bundles
+    lessonScopes: [],
+    status: "ready",
+    workspace: {
+      ...workspace,
+      bundles
+    }
   };
 }
 
@@ -194,7 +366,9 @@ function buildMissingMediaScopeMessage(
     }>;
   }
 ) {
-  const availableSlugs = new Set(workspace.bundles.map((bundle) => bundle.mediaSlug));
+  const availableSlugs = new Set(
+    workspace.bundles.map((bundle) => bundle.mediaSlug)
+  );
   const missingSlugs = mediaSlugs.filter((slug) => !availableSlugs.has(slug));
 
   return `Import aborted: media scope not found for ${missingSlugs.join(", ")}.`;

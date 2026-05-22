@@ -125,6 +125,16 @@ Workflow immagini:
 
 `image:apply` aggiorna i markdown, ma il reader usa il contenuto importato nel
 DB locale. Dopo un apply reale serve quindi un nuovo `content:import`.
+Se l'apply o la revisione tocca solo una o poche lesson, puoi limitare il sync
+DB alle sole route textbook coinvolte:
+
+```sh
+./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug duel-masters-dm25 --lesson-slug <lesson-slug>
+```
+
+Ripeti `--lesson-slug` per piu lesson dello stesso media. Usa invece il solo
+`--media-slug` quando hai rinumerato lesson, spostato segmenti su larga scala o
+vuoi applicare archive/prune completi dentro quel media.
 
 Workflow pronunce:
 
@@ -212,6 +222,13 @@ Per un normale aggiornamento editoriale il gate tipico è:
 ```sh
 ./scripts/with-node.sh pnpm content:validate -- --media-slug <media-slug>
 ./scripts/with-node.sh pnpm content:import -- --media-slug <media-slug>
+```
+
+Se il cambio e limitato a una o piu lesson dello stesso media, l'import puo
+essere lesson-scoped:
+
+```sh
+./scripts/with-node.sh pnpm content:import -- --media-slug <media-slug> --lesson-slug <lesson-slug> [--lesson-slug <lesson-slug> ...]
 ```
 
 Se la skill crea o modifica card, pronunce o accenti, aggiunge i workflow

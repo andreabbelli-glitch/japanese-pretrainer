@@ -7,6 +7,8 @@
 - Eseguire `./scripts/with-node.sh pnpm db:migrate`
 - Eseguire `./scripts/with-node.sh pnpm content:validate`
 - Eseguire `./scripts/with-node.sh pnpm content:import -- --content-root ./content`
+  oppure, per un controllo mirato dopo una revisione contenuti,
+  `./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug <media-slug> --lesson-slug <lesson-slug>`
 - Avviare l'app con `./scripts/with-node.sh pnpm dev`
 
 ## Gate Finale

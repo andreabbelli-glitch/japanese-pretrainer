@@ -390,11 +390,22 @@ Formato minimo del correction batch:
 
 ### 6. Importa solo dopo validazione verde
 
-Import scoped al bundle:
+Import scoped al bundle, quando vuoi riallineare tutto il media:
 
 ```sh
 ./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug <media-slug>
 ```
+
+Import scoped a una o piu lesson dello stesso media, quando hai toccato solo
+quelle route textbook e le card collegate:
+
+```sh
+./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug <media-slug> --lesson-slug <lesson-slug> [--lesson-slug <lesson-slug> ...]
+```
+
+Usa lo slug della route textbook, non il nome del file. Il parser/validator
+controlla comunque il bundle, ma il sync DB aggiorna solo le lesson richieste,
+le card che puntano a quelle lesson e le entry collegate.
 
 Import completo:
 

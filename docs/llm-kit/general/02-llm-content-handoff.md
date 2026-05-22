@@ -746,4 +746,6 @@ Il playbook fissa il ciclo reale da seguire:
 3. validazione locale con `content:validate`;
 4. correzione iterativa sui file che falliscono;
 5. eventuale `image:apply` se hai risolto asset immagini;
-6. import con `content:import` per aggiornare il DB che alimenta la webapp.
+6. import con `content:import` per aggiornare il DB che alimenta la webapp,
+   preferendo `--media-slug <media-slug> --lesson-slug <lesson-slug>` quando
+   il batch tocca solo una o piu lesson specifiche dello stesso media.

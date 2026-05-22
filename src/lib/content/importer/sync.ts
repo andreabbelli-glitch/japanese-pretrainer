@@ -46,16 +46,32 @@ export interface ContentWorkspaceSyncPlan {
   mediaPlans: Array<{
     existingState: ExistingMediaState;
     plan: MediaImportPlan;
+    scope: MediaSyncScope;
   }>;
 }
+
+type WorkspaceSyncMode = "full" | "media" | "lessons";
+
+type MediaSyncScope =
+  | {
+      type: "media";
+    }
+  | {
+      currentMediaCardIds: ReadonlySet<string>;
+      currentMediaGrammarIds: ReadonlySet<string>;
+      currentMediaTermIds: ReadonlySet<string>;
+      lessonIds: ReadonlySet<string>;
+      type: "lessons";
+    };
 
 export async function syncContentWorkspace(
   transaction: DatabaseTransaction,
   input: {
     contentRoot: string;
     importId: string;
+    lessonScopes?: Array<{ lessonSlugs: string[]; mediaSlug: string }>;
     nowIso: string;
-    syncMode: "full" | "incremental";
+    syncMode: WorkspaceSyncMode;
     workspace: {
       bundles: Parameters<typeof buildMediaImportPlan>[0]["bundle"][];
     };
@@ -74,6 +90,7 @@ export async function buildContentWorkspaceSyncPlan(
   transaction: DatabaseTransaction,
   input: {
     contentRoot: string;
+    lessonScopes?: Array<{ lessonSlugs: string[]; mediaSlug: string }>;
     nowIso: string;
     workspace: {
       bundles: Parameters<typeof buildMediaImportPlan>[0]["bundle"][];
@@ -81,28 +98,58 @@ export async function buildContentWorkspaceSyncPlan(
   }
 ): Promise<ContentWorkspaceSyncPlan> {
   const mediaPlans: ContentWorkspaceSyncPlan["mediaPlans"] = [];
+  const lessonScopesByMediaSlug = new Map(
+    (input.lessonScopes ?? []).map((scope) => [scope.mediaSlug, scope])
+  );
 
   for (const bundle of input.workspace.bundles) {
-    const plan = buildMediaImportPlan({
+    const fullPlan = buildMediaImportPlan({
       bundle,
       contentRoot: input.contentRoot,
       nowIso: input.nowIso
     });
+    const lessonScope = lessonScopesByMediaSlug.get(bundle.mediaSlug);
+    const scopedPlan = lessonScope
+      ? scopeMediaImportPlanToLessons(fullPlan, lessonScope.lessonSlugs)
+      : null;
+    const plan = scopedPlan?.plan ?? fullPlan;
     const existingState = await loadExistingMediaState(
       transaction,
-      plan.media.row.id
+      fullPlan.media.row.id
     );
 
     mediaPlans.push({
       existingState,
-      plan
+      plan,
+      scope: scopedPlan
+        ? {
+            currentMediaCardIds: new Set(
+              fullPlan.cards.map((entry) => entry.row.id)
+            ),
+            currentMediaGrammarIds: new Set(
+              fullPlan.grammarPatterns.map((entry) => entry.row.id)
+            ),
+            currentMediaTermIds: new Set(
+              fullPlan.terms.map((entry) => entry.row.id)
+            ),
+            lessonIds: scopedPlan.lessonIds,
+            type: "lessons"
+          }
+        : {
+            type: "media"
+          }
     });
   }
 
   return {
     filesChanged: mediaPlans.reduce((total, entry) => {
       return (
-        total + countChangedSourceDocuments(entry.plan, entry.existingState)
+        total +
+        countChangedSourceDocuments(
+          entry.plan,
+          entry.existingState,
+          entry.scope
+        )
       );
     }, 0),
     mediaPlans
@@ -115,7 +162,7 @@ export async function executeContentWorkspaceSyncPlan(
     importId: string;
     nowIso: string;
     plan: ContentWorkspaceSyncPlan;
-    syncMode: "full" | "incremental";
+    syncMode: WorkspaceSyncMode;
   }
 ): Promise<{ filesChanged: number; summary: ImportSyncSummary }> {
   const summary: ImportSyncSummary = {
@@ -132,7 +179,8 @@ export async function executeContentWorkspaceSyncPlan(
       existingState: mediaPlan.existingState,
       importId: input.importId,
       nowIso: input.nowIso,
-      plan: mediaPlan.plan
+      plan: mediaPlan.plan,
+      scope: mediaPlan.scope
     });
 
     summary.archivedCardIds.push(...planSummary.archivedCardIds);
@@ -242,6 +290,148 @@ async function loadExistingMediaState(
   };
 }
 
+function scopeMediaImportPlanToLessons(
+  plan: MediaImportPlan,
+  lessonSlugs: string[]
+) {
+  const requestedLessonSlugs = new Set(lessonSlugs);
+  const lessons = plan.lessons.filter((entry) =>
+    requestedLessonSlugs.has(entry.row.slug)
+  );
+
+  if (lessons.length !== requestedLessonSlugs.size) {
+    const availableLessonSlugs = new Set(
+      plan.lessons.map((entry) => entry.row.slug)
+    );
+    const missingLessonSlugs = lessonSlugs.filter(
+      (slug) => !availableLessonSlugs.has(slug)
+    );
+
+    throw new Error(
+      `Cannot build lesson-scoped import plan for missing lesson slug(s): ${missingLessonSlugs.join(", ")}.`
+    );
+  }
+
+  const lessonIds = new Set(lessons.map((entry) => entry.row.id));
+  const lessonSourceIds = new Set(lessons.map((entry) => entry.row.id));
+  const cards = plan.cards.filter(
+    (entry) =>
+      typeof entry.row.lessonId === "string" &&
+      lessonIds.has(entry.row.lessonId)
+  );
+  const cardIds = new Set(cards.map((entry) => entry.row.id));
+  const selectedEntryIds = new Set<string>();
+
+  for (const link of plan.entryLinks) {
+    if (
+      (link.sourceType === "lesson" && lessonSourceIds.has(link.sourceId)) ||
+      (link.sourceType === "card" && cardIds.has(link.sourceId))
+    ) {
+      selectedEntryIds.add(link.entryId);
+    }
+  }
+
+  for (const cardPlan of cards) {
+    for (const link of cardPlan.termLinks) {
+      selectedEntryIds.add(link.entryId);
+    }
+  }
+
+  const terms = plan.terms.filter((entry) =>
+    selectedEntryIds.has(entry.row.id)
+  );
+  const grammarPatterns = plan.grammarPatterns.filter((entry) =>
+    selectedEntryIds.has(entry.row.id)
+  );
+  const termIds = new Set(terms.map((entry) => entry.row.id));
+  const grammarIds = new Set(grammarPatterns.map((entry) => entry.row.id));
+  const segmentIds = new Set(
+    [
+      ...lessons.map((entry) => entry.row.segmentId),
+      ...cards.map((entry) => entry.row.segmentId),
+      ...terms.map((entry) => entry.row.segmentId),
+      ...grammarPatterns.map((entry) => entry.row.segmentId)
+    ].filter((value): value is string => typeof value === "string")
+  );
+  const crossMediaGroupIds = new Set(
+    [
+      ...terms.map((entry) => entry.row.crossMediaGroupId),
+      ...grammarPatterns.map((entry) => entry.row.crossMediaGroupId)
+    ].filter((value): value is string => typeof value === "string")
+  );
+  const entryLinks = plan.entryLinks.filter(
+    (link) =>
+      (link.sourceType === "lesson" && lessonSourceIds.has(link.sourceId)) ||
+      (link.sourceType === "card" && cardIds.has(link.sourceId))
+  );
+
+  return {
+    lessonIds,
+    plan: {
+      ...plan,
+      cards,
+      crossMediaGroups: plan.crossMediaGroups.filter((entry) =>
+        crossMediaGroupIds.has(entry.id)
+      ),
+      entryLinks,
+      grammarPatterns,
+      lessonContents: plan.lessonContents.filter((entry) =>
+        lessonIds.has(entry.row.lessonId)
+      ),
+      lessons,
+      segments: plan.segments.filter((entry) => segmentIds.has(entry.id)),
+      sourceDocuments: scopeSourceDocuments(plan.sourceDocuments, {
+        cardIds,
+        grammarIds,
+        lessonIds,
+        termIds
+      }),
+      terms
+    } satisfies MediaImportPlan
+  };
+}
+
+function scopeSourceDocuments(
+  documents: MediaImportPlan["sourceDocuments"],
+  scope: {
+    cardIds: ReadonlySet<string>;
+    grammarIds: ReadonlySet<string>;
+    lessonIds: ReadonlySet<string>;
+    termIds: ReadonlySet<string>;
+  }
+) {
+  return documents.flatMap((document) => {
+    if (document.kind === "media") {
+      return [document];
+    }
+
+    const entityIds = {
+      cards: document.entityIds.cards.filter((id) => scope.cardIds.has(id)),
+      grammarPatterns: document.entityIds.grammarPatterns.filter((id) =>
+        scope.grammarIds.has(id)
+      ),
+      lessons: document.entityIds.lessons.filter((id) =>
+        scope.lessonIds.has(id)
+      ),
+      terms: document.entityIds.terms.filter((id) => scope.termIds.has(id))
+    };
+    const hasScopedEntities =
+      entityIds.cards.length > 0 ||
+      entityIds.grammarPatterns.length > 0 ||
+      entityIds.lessons.length > 0 ||
+      entityIds.terms.length > 0;
+
+    return hasScopedEntities
+      ? [
+          {
+            ...document,
+            entityIds
+          }
+        ]
+      : [];
+  });
+}
+
 async function applyMediaImportPlan(
   transaction: DatabaseTransaction,
   input: {
@@ -249,6 +439,7 @@ async function applyMediaImportPlan(
     importId: string;
     nowIso: string;
     plan: MediaImportPlan;
+    scope: MediaSyncScope;
   }
 ) {
   const currentLessonIds = input.plan.lessons.map((plan) => plan.row.id);
@@ -311,16 +502,45 @@ async function applyMediaImportPlan(
       });
   }
 
-  const archivedLessonIds = await archiveRemovedLessons(transaction, {
-    currentLessonIds: currentLessonIdSet,
-    mediaId: input.plan.media.row.id,
-    nowIso: input.nowIso
-  });
-  const archivedCardIds = await archiveRemovedCards(transaction, {
-    currentCardIds: currentCardIdSet,
-    mediaId: input.plan.media.row.id,
-    nowIso: input.nowIso
-  });
+  const archivedLessonIds =
+    input.scope.type === "media"
+      ? await archiveRemovedLessons(transaction, {
+          currentLessonIds: currentLessonIdSet,
+          mediaId: input.plan.media.row.id,
+          nowIso: input.nowIso
+        })
+      : [];
+  const scopedLessonIds =
+    input.scope.type === "lessons" ? input.scope.lessonIds : null;
+  const scopedExistingCardIds = scopedLessonIds
+    ? input.existingState.cards
+        .filter(
+          (row) =>
+            row.status !== "archived" &&
+            typeof row.lessonId === "string" &&
+            scopedLessonIds.has(row.lessonId)
+        )
+        .map((row) => row.id)
+    : null;
+  const scopedExistingEntryIds = scopedLessonIds
+    ? collectScopedExistingEntryIds(input.existingState, {
+        cardIds: new Set(scopedExistingCardIds ?? []),
+        lessonIds: scopedLessonIds
+      })
+    : null;
+  const archivedCardIds =
+    input.scope.type === "media"
+      ? await archiveRemovedCards(transaction, {
+          currentCardIds: currentCardIdSet,
+          mediaId: input.plan.media.row.id,
+          nowIso: input.nowIso
+        })
+      : await archiveRemovedScopedCards(transaction, {
+          currentMediaCardIds: input.scope.currentMediaCardIds,
+          currentCardIds: currentCardIdSet,
+          existingCardIds: scopedExistingCardIds ?? [],
+          nowIso: input.nowIso
+        });
 
   if (input.plan.lessons.length > 0) {
     const lessonRows = input.plan.lessons.map((plan) =>
@@ -353,13 +573,10 @@ async function applyMediaImportPlan(
       lessonContentRows,
       LESSON_CONTENT_UPSERT_CHUNK_SIZE
     )) {
-      await transaction
-        .insert(lessonContent)
-        .values(chunk)
-        .onConflictDoUpdate({
-          target: lessonContent.lessonId,
-          set: lessonContentUpsertSet
-        });
+      await transaction.insert(lessonContent).values(chunk).onConflictDoUpdate({
+        target: lessonContent.lessonId,
+        set: lessonContentUpsertSet
+      });
     }
   }
 
@@ -483,17 +700,32 @@ async function applyMediaImportPlan(
   }
 
   const prunedTermIds = await pruneRemovedTerms(transaction, {
-    currentTermIds: currentTermIdSet,
-    existingTermIds: input.existingState.terms.map((row) => row.id)
+    currentTermIds:
+      input.scope.type === "lessons"
+        ? input.scope.currentMediaTermIds
+        : currentTermIdSet,
+    existingTermIds:
+      input.scope.type === "lessons"
+        ? [...(scopedExistingEntryIds?.termIds ?? new Set<string>())]
+        : input.existingState.terms.map((row) => row.id)
   });
   const prunedGrammarIds = await pruneRemovedGrammarPatterns(transaction, {
-    currentGrammarIds: currentGrammarIdSet,
-    existingGrammarIds: input.existingState.grammarPatterns.map((row) => row.id)
+    currentGrammarIds:
+      input.scope.type === "lessons"
+        ? input.scope.currentMediaGrammarIds
+        : currentGrammarIdSet,
+    existingGrammarIds:
+      input.scope.type === "lessons"
+        ? [...(scopedExistingEntryIds?.grammarIds ?? new Set<string>())]
+        : input.existingState.grammarPatterns.map((row) => row.id)
   });
-  await pruneRemovedSegments(transaction, {
-    currentSegmentIds: currentSegmentIdSet,
-    existingSegmentIds: input.existingState.segments.map((row) => row.id)
-  });
+
+  if (input.scope.type === "media") {
+    await pruneRemovedSegments(transaction, {
+      currentSegmentIds: currentSegmentIdSet,
+      existingSegmentIds: input.existingState.segments.map((row) => row.id)
+    });
+  }
 
   return {
     archivedCardIds,
@@ -567,6 +799,82 @@ async function archiveRemovedCards(
     .where(inArray(card.id, removedIds));
 
   return removedIds;
+}
+
+async function archiveRemovedScopedCards(
+  transaction: DatabaseTransaction,
+  input: {
+    currentCardIds: ReadonlySet<string>;
+    currentMediaCardIds: ReadonlySet<string>;
+    existingCardIds: string[];
+    nowIso: string;
+  }
+) {
+  const removedIds = input.existingCardIds.filter(
+    (cardId) =>
+      !input.currentCardIds.has(cardId) &&
+      !input.currentMediaCardIds.has(cardId)
+  );
+
+  if (removedIds.length === 0) {
+    return [];
+  }
+
+  await transaction
+    .update(card)
+    .set({
+      status: "archived",
+      updatedAt: input.nowIso
+    })
+    .where(inArray(card.id, removedIds));
+
+  return removedIds;
+}
+
+function collectScopedExistingEntryIds(
+  existingState: ExistingMediaState,
+  input: {
+    cardIds: ReadonlySet<string>;
+    lessonIds: ReadonlySet<string>;
+  }
+) {
+  const termIds = new Set<string>();
+  const grammarIds = new Set<string>();
+
+  const register = (entry: { entryId: string; entryType: string }) => {
+    if (entry.entryType === "term") {
+      termIds.add(entry.entryId);
+      return;
+    }
+
+    if (entry.entryType === "grammar") {
+      grammarIds.add(entry.entryId);
+    }
+  };
+
+  for (const link of existingState.entryLinks) {
+    if (
+      (link.sourceType === "lesson" && input.lessonIds.has(link.sourceId)) ||
+      (link.sourceType === "card" && input.cardIds.has(link.sourceId))
+    ) {
+      register(link);
+    }
+  }
+
+  for (const scopedCard of existingState.cards) {
+    if (!input.cardIds.has(scopedCard.id)) {
+      continue;
+    }
+
+    for (const link of scopedCard.entryLinks) {
+      register(link);
+    }
+  }
+
+  return {
+    grammarIds,
+    termIds
+  };
 }
 
 async function pruneRemovedTerms(

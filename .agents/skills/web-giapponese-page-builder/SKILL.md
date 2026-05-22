@@ -75,8 +75,12 @@ Optional:
    `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`
    Pass multiple `--entry` flags for multiple new cards. Use `--word` or
    `--words-file` only when a reliable entry-id list is not available.
-10. Import the updated media into the configured target database with:
-    `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`
+10. Import the updated item into the configured target database with a
+    lesson-scoped import:
+    `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>`
+    Use the broader media-scoped import only when the task changed media-wide
+    ordering or other content that must apply archive/prune to all
+    `web-giapponese` lessons/cards.
 11. Treat the work as incomplete if pitch accent fetch, import, or cache
     revalidation fails.
 12. After a completed item/card workflow with passing required checks, commit
@@ -216,8 +220,13 @@ lesson into the configured target database:
 ```bash
 ./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
-./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese
+./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>
 ```
+
+Repeat `--lesson-slug` if the item update legitimately spans multiple
+textbook routes. Use
+`./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`
+only for media-wide cleanup or ordering changes.
 
 If `pitch-accents:fetch` creates or updates
 `content/media/web-giapponese/pronunciations.json`, keep that file in the same

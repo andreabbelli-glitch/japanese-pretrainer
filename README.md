@@ -350,6 +350,10 @@ DB ai media correnti e rimuove eventuali residui legacy non piu presenti nel
 workspace. L'importer esegue parser + validazione prima di sincronizzare il DB;
 puoi passare una content root diversa con
 `pnpm content:import -- --content-root /percorso/content`.
+Per sync mirati, usa `--media-slug <media-slug>`; se hai toccato solo una o
+piu route textbook dello stesso media, aggiungi uno o piu
+`--lesson-slug <lesson-slug>` per aggiornare solo quelle lesson, le card
+collegate e le entry referenziate.
 
 Dettagli operativi e schema: [Persistence layer](./docs/database.md)
 

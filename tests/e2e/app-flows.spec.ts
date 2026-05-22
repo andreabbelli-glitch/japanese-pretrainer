@@ -63,7 +63,9 @@ test("navigates the core study spine", async ({ page }) => {
 
   await expect(page).toHaveURL("/media/duel-masters-dm25/textbook");
   await expect(
-    page.getByRole("heading", { name: /TCG Core - Entrare nel gioco/ })
+    page.getByRole("heading", {
+      name: /Entrare nel gioco: zone, attori e testo della carta/
+    })
   ).toBeVisible();
 
   await page.goto("/media/duel-masters-dm25");

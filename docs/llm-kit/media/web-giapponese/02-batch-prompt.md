@@ -74,7 +74,7 @@ File da produrre di norma:
 Comandi operativi obbligatori dopo la scrittura:
 - esegui i controlli canonici del repo;
 - esegui `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>` per ogni entry flashcard appena creata o rivista;
-- esegui `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`;
+- esegui `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <page-slug>`;
 - considera il lavoro incompleto se pitch accent fetch, import o cache
   revalidation falliscono.
 

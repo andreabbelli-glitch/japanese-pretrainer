@@ -25,6 +25,7 @@ export interface ImportContentOptions {
   contentRoot: string;
   database?: DatabaseClient;
   importId?: string;
+  lessonSlugs?: string[];
   mediaSlugs?: string[];
   now?: Date;
 }

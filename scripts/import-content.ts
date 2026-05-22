@@ -15,6 +15,7 @@ try {
   assertRemoteFullImportIsAllowed(cliOptions);
   const result = await importContentWorkspace({
     contentRoot: cliOptions.contentRoot,
+    lessonSlugs: cliOptions.lessonSlugs,
     mediaSlugs: cliOptions.mediaSlugs,
     database: db
   });
@@ -23,6 +24,9 @@ try {
     console.error(
       [
         result.message,
+        cliOptions.lessonSlugs.length > 0
+          ? `Scope: lessons=${cliOptions.lessonSlugs.join(",")}.`
+          : null,
         cliOptions.mediaSlugs.length > 0
           ? `Scope: media=${cliOptions.mediaSlugs.join(",")}.`
           : null,
@@ -43,9 +47,7 @@ try {
     console.info(
       [
         `Imported ${result.parseResult.data.bundles.length} bundle(s) from ${cliOptions.contentRoot}.`,
-        cliOptions.mediaSlugs.length > 0
-          ? `Mode: incremental (${cliOptions.mediaSlugs.join(",")}).`
-          : "Mode: full.",
+        formatImportMode(cliOptions),
         `Import id: ${result.importId}.`,
         `Files scanned: ${result.filesScanned}.`,
         `Files changed: ${result.filesChanged}.`
@@ -92,12 +94,10 @@ try {
 
     const cacheRevalidationResult = await revalidateContentCache({
       importId: result.importId,
-      lessons: result.parseResult.data.bundles.flatMap((bundle) =>
-        bundle.lessons.map((lesson) => ({
-          lessonSlug: lesson.frontmatter.slug,
-          mediaSlug: bundle.mediaSlug
-        }))
-      ),
+      lessons: resolveRevalidatedLessons({
+        lessonSlugs: cliOptions.lessonSlugs,
+        parseBundles: result.parseResult.data.bundles
+      }),
       mediaSlugs: result.parseResult.data.bundles.map(
         (bundle) => bundle.mediaSlug
       )
@@ -119,6 +119,7 @@ try {
 
 function resolveCliOptions(args: string[]) {
   let contentRoot = path.resolve(process.cwd(), "content");
+  const lessonSlugs: string[] = [];
   const mediaSlugs: string[] = [];
 
   for (let index = 0; index < args.length; index += 1) {
@@ -142,11 +143,18 @@ function resolveCliOptions(args: string[]) {
       continue;
     }
 
+    if (value === "--lesson-slug") {
+      lessonSlugs.push(readOptionValue(args, index, "--lesson-slug"));
+      index += 1;
+      continue;
+    }
+
     throw new Error(`Unknown argument: ${value}`);
   }
 
   return {
     contentRoot,
+    lessonSlugs: [...new Set(lessonSlugs)],
     mediaSlugs: [...new Set(mediaSlugs)]
   };
 }
@@ -161,8 +169,15 @@ function readOptionValue(args: string[], index: number, flag: string) {
   return value;
 }
 
-function assertRemoteFullImportIsAllowed(input: { mediaSlugs: string[] }) {
-  if (input.mediaSlugs.length > 0 || !isRemoteDatabaseUrl()) {
+function assertRemoteFullImportIsAllowed(input: {
+  lessonSlugs: string[];
+  mediaSlugs: string[];
+}) {
+  if (
+    input.lessonSlugs.length > 0 ||
+    input.mediaSlugs.length > 0 ||
+    !isRemoteDatabaseUrl()
+  ) {
     return;
   }
 
@@ -176,6 +191,48 @@ function assertRemoteFullImportIsAllowed(input: { mediaSlugs: string[] }) {
       "Use --media-slug for scoped remote imports, or set",
       `${ALLOW_REMOTE_FULL_IMPORT_ENV}=1 when a full remote import is intentional.`
     ].join(" ")
+  );
+}
+
+function formatImportMode(input: {
+  lessonSlugs: string[];
+  mediaSlugs: string[];
+}) {
+  if (input.lessonSlugs.length > 0) {
+    const mediaLabel = input.mediaSlugs[0] ?? "unknown-media";
+
+    return `Mode: lesson (${mediaLabel}: ${input.lessonSlugs.join(",")}).`;
+  }
+
+  return input.mediaSlugs.length > 0
+    ? `Mode: incremental (${input.mediaSlugs.join(",")}).`
+    : "Mode: full.";
+}
+
+function resolveRevalidatedLessons(input: {
+  lessonSlugs: string[];
+  parseBundles: Array<{
+    lessons: Array<{
+      frontmatter: {
+        slug: string;
+      };
+    }>;
+    mediaSlug: string;
+  }>;
+}) {
+  const lessonSlugScope = new Set(input.lessonSlugs);
+
+  return input.parseBundles.flatMap((bundle) =>
+    bundle.lessons
+      .filter(
+        (lesson) =>
+          lessonSlugScope.size === 0 ||
+          lessonSlugScope.has(lesson.frontmatter.slug)
+      )
+      .map((lesson) => ({
+        lessonSlug: lesson.frontmatter.slug,
+        mediaSlug: bundle.mediaSlug
+      }))
   );
 }
 

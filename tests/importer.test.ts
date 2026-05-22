@@ -884,6 +884,386 @@ tags: [grammar, core]
     ).toBeGreaterThanOrEqual(2);
   }, 60_000);
 
+  it("supports lesson-scoped imports without applying unrelated media changes", async () => {
+    await writeRichContentFixture(contentRoot);
+
+    await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-10T09:00:00.000Z")
+    });
+
+    const introCardsPath = path.join(
+      contentRoot,
+      "media",
+      richContentFixture.mediaSlug,
+      "cards",
+      "001-core.md"
+    );
+    const followupLessonPath = path.join(
+      contentRoot,
+      "media",
+      richContentFixture.mediaSlug,
+      "textbook",
+      "002-followup.md"
+    );
+    const followupCardsPath = path.join(
+      contentRoot,
+      "media",
+      richContentFixture.mediaSlug,
+      "cards",
+      "002-bonus.md"
+    );
+
+    await writeFile(
+      introCardsPath,
+      (await readFile(introCardsPath, "utf8"))
+        .replace("meaning_it: luce; lanterna", "meaning_it: luce fuori scope")
+        .replace("back: luce; lanterna", "back: luce fuori scope")
+    );
+    await writeFile(
+      followupLessonPath,
+      (await readFile(followupLessonPath, "utf8")).replace(
+        "meaning_it: poiche; dato che",
+        "meaning_it: dato che; siccome"
+      )
+    );
+    await writeFile(
+      followupCardsPath,
+      (await readFile(followupCardsPath, "utf8"))
+        .replace("meaning_it: cena", "meaning_it: cena della scena")
+        .replace("back: cena", "back: cena della scena")
+    );
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database,
+      lessonSlugs: [richContentFixture.lessonFollowupSlug],
+      mediaSlugs: [richContentFixture.mediaSlug],
+      now: new Date("2026-03-10T10:00:00.000Z")
+    });
+
+    expect(result.status).toBe("completed");
+    if (result.status !== "completed") {
+      throw new Error("expected a completed import result");
+    }
+    expect(result.filesChanged).toBe(2);
+    expect(result.summary.archivedLessonIds).toEqual([]);
+    expect(result.summary.archivedCardIds).toEqual([]);
+    expect(result.summary.prunedTermIds).toEqual([]);
+    expect(result.summary.prunedGrammarIds).toEqual([]);
+
+    const introTerm = await database.query.term.findFirst({
+      where: eq(
+        term.id,
+        buildScopedEntryId(
+          "term",
+          richContentFixture.mediaId,
+          richContentFixture.termPrimaryId
+        )
+      )
+    });
+    const introCard = await database.query.card.findFirst({
+      where: eq(card.id, richContentFixture.termPrimaryCardId)
+    });
+    const followupTerm = await database.query.term.findFirst({
+      where: eq(
+        term.id,
+        buildScopedEntryId(
+          "term",
+          richContentFixture.mediaId,
+          richContentFixture.termSecondaryId
+        )
+      )
+    });
+    const followupGrammar = await database.query.grammarPattern.findFirst({
+      where: eq(
+        grammarPattern.id,
+        buildScopedEntryId(
+          "grammar",
+          richContentFixture.mediaId,
+          richContentFixture.grammarSecondaryId
+        )
+      )
+    });
+    const followupCard = await database.query.card.findFirst({
+      where: eq(card.id, richContentFixture.termSecondaryCardId)
+    });
+
+    expect(introTerm?.meaningIt).toBe("luce; lanterna");
+    expect(introCard?.back).toBe("luce; lanterna");
+    expect(followupTerm?.meaningIt).toBe("cena della scena");
+    expect(followupGrammar?.meaningIt).toBe("dato che; siccome");
+    expect(followupCard?.back).toBe("cena della scena");
+  }, 60_000);
+
+  it("updates multiple lesson slugs in a single lesson-scoped import", async () => {
+    await writeRichContentFixture(contentRoot);
+
+    await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-10T09:00:00.000Z")
+    });
+
+    const introCardsPath = path.join(
+      contentRoot,
+      "media",
+      richContentFixture.mediaSlug,
+      "cards",
+      "001-core.md"
+    );
+    const followupCardsPath = path.join(
+      contentRoot,
+      "media",
+      richContentFixture.mediaSlug,
+      "cards",
+      "002-bonus.md"
+    );
+
+    await writeFile(
+      introCardsPath,
+      (await readFile(introCardsPath, "utf8")).replace(
+        "meaning_it: luce; lanterna",
+        "meaning_it: luce calda"
+      )
+    );
+    await writeFile(
+      followupCardsPath,
+      (await readFile(followupCardsPath, "utf8")).replace(
+        "meaning_it: cena",
+        "meaning_it: cena serale"
+      )
+    );
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database,
+      lessonSlugs: [
+        richContentFixture.lessonIntroSlug,
+        richContentFixture.lessonFollowupSlug
+      ],
+      mediaSlugs: [richContentFixture.mediaSlug],
+      now: new Date("2026-03-10T10:00:00.000Z")
+    });
+
+    expect(result.status).toBe("completed");
+    if (result.status !== "completed") {
+      throw new Error("expected a completed import result");
+    }
+    expect(result.filesChanged).toBe(2);
+
+    const introTerm = await database.query.term.findFirst({
+      where: eq(
+        term.id,
+        buildScopedEntryId(
+          "term",
+          richContentFixture.mediaId,
+          richContentFixture.termPrimaryId
+        )
+      )
+    });
+    const followupTerm = await database.query.term.findFirst({
+      where: eq(
+        term.id,
+        buildScopedEntryId(
+          "term",
+          richContentFixture.mediaId,
+          richContentFixture.termSecondaryId
+        )
+      )
+    });
+
+    expect(introTerm?.meaningIt).toBe("luce calda");
+    expect(followupTerm?.meaningIt).toBe("cena serale");
+  }, 60_000);
+
+  it("does not archive a selected lesson card moved to an out-of-scope lesson in current content", async () => {
+    await writeRichContentFixture(contentRoot);
+
+    await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-10T09:00:00.000Z")
+    });
+
+    const introCardsPath = path.join(
+      contentRoot,
+      "media",
+      richContentFixture.mediaSlug,
+      "cards",
+      "001-core.md"
+    );
+
+    await writeFile(
+      introCardsPath,
+      (await readFile(introCardsPath, "utf8")).replace(
+        `id: ${richContentFixture.termPrimaryCardId}\nlesson_id: ${richContentFixture.lessonIntroId}`,
+        `id: ${richContentFixture.termPrimaryCardId}\nlesson_id: ${richContentFixture.lessonFollowupId}`
+      )
+    );
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database,
+      lessonSlugs: [richContentFixture.lessonIntroSlug],
+      mediaSlugs: [richContentFixture.mediaSlug],
+      now: new Date("2026-03-10T10:00:00.000Z")
+    });
+
+    expect(result.status).toBe("completed");
+    if (result.status !== "completed") {
+      throw new Error("expected a completed import result");
+    }
+    expect(result.summary.archivedCardIds).toEqual([]);
+
+    const movedOutOfScopeCard = await database.query.card.findFirst({
+      where: eq(card.id, richContentFixture.termPrimaryCardId)
+    });
+
+    expect(movedOutOfScopeCard?.status).toBe("active");
+    expect(movedOutOfScopeCard?.lessonId).toBe(
+      richContentFixture.lessonIntroId
+    );
+  }, 60_000);
+
+  it("limits lesson-scoped archival and pruning to cards and entries tied to the selected lessons", async () => {
+    await writeRichContentFixture(contentRoot);
+
+    await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-10T09:00:00.000Z")
+    });
+
+    const followupCardsPath = path.join(
+      contentRoot,
+      "media",
+      richContentFixture.mediaSlug,
+      "cards",
+      "002-bonus.md"
+    );
+    const followupLessonPath = path.join(
+      contentRoot,
+      "media",
+      richContentFixture.mediaSlug,
+      "textbook",
+      "002-followup.md"
+    );
+
+    await writeFile(
+      followupLessonPath,
+      (await readFile(followupLessonPath, "utf8")).replace(
+        `Colleghiamo [夕食](term:${richContentFixture.termSecondaryId}) a\n[～ので](grammar:${richContentFixture.grammarSecondaryId}).`,
+        `Colleghiamo la scena a [～ので](grammar:${richContentFixture.grammarSecondaryId}).`
+      )
+    );
+    await writeFile(
+      followupCardsPath,
+      `---
+id: ${richContentFixture.cardsBonusId}
+media_id: ${richContentFixture.mediaId}
+slug: bonus-cards
+title: Bonus cards
+order: 20
+segment_ref: ${richContentFixture.segmentSlug}
+---
+
+:::card
+id: ${richContentFixture.grammarSecondaryCardId}
+lesson_id: ${richContentFixture.lessonFollowupId}
+entry_type: grammar
+entry_id: ${richContentFixture.grammarSecondaryId}
+card_type: concept
+front: ～ので
+back: poiche; dato che
+example_jp: "{{夕食|ゆうしょく}}なので、あとで{{行|い}}く。"
+example_it: "Dato che e ora di cena, vado dopo."
+notes_it: "Si collega a [～ので](grammar:${richContentFixture.grammarSecondaryId})."
+tags: [grammar, bonus]
+:::
+`
+    );
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database,
+      lessonSlugs: [richContentFixture.lessonFollowupSlug],
+      mediaSlugs: [richContentFixture.mediaSlug],
+      now: new Date("2026-03-10T10:00:00.000Z")
+    });
+
+    expect(result.status).toBe("completed");
+    if (result.status !== "completed") {
+      throw new Error("expected a completed import result");
+    }
+    expect(result.summary.archivedCardIds).toEqual([
+      richContentFixture.termSecondaryCardId
+    ]);
+    expect(result.summary.archivedLessonIds).toEqual([]);
+    expect(result.summary.prunedTermIds).toEqual([
+      buildScopedEntryId(
+        "term",
+        richContentFixture.mediaId,
+        richContentFixture.termSecondaryId
+      )
+    ]);
+
+    const archivedFollowupCard = await database.query.card.findFirst({
+      where: eq(card.id, richContentFixture.termSecondaryCardId)
+    });
+    const removedFollowupTerm = await database.query.term.findFirst({
+      where: eq(
+        term.id,
+        buildScopedEntryId(
+          "term",
+          richContentFixture.mediaId,
+          richContentFixture.termSecondaryId
+        )
+      )
+    });
+    const preservedIntroCard = await database.query.card.findFirst({
+      where: eq(card.id, richContentFixture.termPrimaryCardId)
+    });
+    const preservedIntroTerm = await database.query.term.findFirst({
+      where: eq(
+        term.id,
+        buildScopedEntryId(
+          "term",
+          richContentFixture.mediaId,
+          richContentFixture.termPrimaryId
+        )
+      )
+    });
+
+    expect(archivedFollowupCard?.status).toBe("archived");
+    expect(removedFollowupTerm).toBeUndefined();
+    expect(preservedIntroCard?.status).toBe("active");
+    expect(preservedIntroTerm?.meaningIt).toBe("luce; lanterna");
+
+    const repeatResult = await importContentWorkspace({
+      contentRoot,
+      database,
+      lessonSlugs: [richContentFixture.lessonFollowupSlug],
+      mediaSlugs: [richContentFixture.mediaSlug],
+      now: new Date("2026-03-10T11:00:00.000Z")
+    });
+
+    expect(repeatResult.status).toBe("completed");
+    if (repeatResult.status !== "completed") {
+      throw new Error("expected a completed import result");
+    }
+    expect(repeatResult.summary.archivedCardIds).toEqual([]);
+
+    const repeatArchivedFollowupCard = await database.query.card.findFirst({
+      where: eq(card.id, richContentFixture.termSecondaryCardId)
+    });
+
+    expect(repeatArchivedFollowupCard?.updatedAt).toBe(
+      archivedFollowupCard?.updatedAt
+    );
+  }, 60_000);
+
   it("fails cleanly on invalid content without partially mutating imported tables", async () => {
     const result = await importContentWorkspace({
       contentRoot: invalidContentRoot,

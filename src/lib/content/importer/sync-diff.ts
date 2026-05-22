@@ -1,5 +1,14 @@
 import type { ExistingMediaState, MediaImportPlan } from "./types.ts";
 
+type ChangedDocumentScope =
+  | {
+      type: "media";
+    }
+  | {
+      lessonIds: ReadonlySet<string>;
+      type: "lessons";
+    };
+
 export const mediaComparisonKeys = [
   "id",
   "slug",
@@ -93,7 +102,11 @@ export const grammarComparisonKeys = [
   "searchRomajiNorm"
 ];
 
-export const grammarAliasComparisonKeys = ["grammarId", "aliasText", "aliasNorm"];
+export const grammarAliasComparisonKeys = [
+  "grammarId",
+  "aliasText",
+  "aliasNorm"
+];
 
 export const cardComparisonKeys = [
   "id",
@@ -115,7 +128,8 @@ export const crossMediaGroupComparisonKeys = ["id", "entryType", "groupKey"];
 
 export function countChangedSourceDocuments(
   plan: MediaImportPlan,
-  existingState: ExistingMediaState
+  existingState: ExistingMediaState,
+  scope: ChangedDocumentScope = { type: "media" }
 ) {
   const existingLessonsById = new Map(
     existingState.lessons.map((row) => [row.id, row])
@@ -132,9 +146,7 @@ export function countChangedSourceDocuments(
   const existingCardsById = new Map(
     existingState.cards.map((row) => [row.id, row])
   );
-  const planLessonsById = new Map(
-    plan.lessons.map((row) => [row.row.id, row])
-  );
+  const planLessonsById = new Map(plan.lessons.map((row) => [row.row.id, row]));
   const planLessonContentsByLessonId = new Map(
     plan.lessonContents.map((row) => [row.row.lessonId, row])
   );
@@ -146,15 +158,30 @@ export function countChangedSourceDocuments(
   const currentSourceFiles = new Set(
     plan.sourceDocuments.map((document) => document.sourceFile)
   );
+  const scopedExistingLessons =
+    scope.type === "lessons"
+      ? existingState.lessons.filter((row) => scope.lessonIds.has(row.id))
+      : existingState.lessons;
+  const scopedExistingCards =
+    scope.type === "lessons"
+      ? existingState.cards.filter(
+          (row) =>
+            typeof row.lessonId === "string" &&
+            scope.lessonIds.has(row.lessonId)
+        )
+      : existingState.cards;
   const activeLessonIdsBySourceFile = groupActiveEntityIdsBySourceFile(
-    existingState.lessons
+    scopedExistingLessons
   );
-  const activeCardIdsBySourceFile = groupActiveEntityIdsBySourceFile(
-    existingState.cards
-  );
+  const activeCardIdsBySourceFile =
+    groupActiveEntityIdsBySourceFile(scopedExistingCards);
   const changedDocuments = plan.sourceDocuments.filter((document) => {
     if (document.kind === "media") {
-      return !rowsMatch(existingState.media, plan.media.row, mediaComparisonKeys);
+      return !rowsMatch(
+        existingState.media,
+        plan.media.row,
+        mediaComparisonKeys
+      );
     }
 
     if (document.kind === "lesson") {
@@ -264,7 +291,7 @@ export function countChangedSourceDocuments(
     );
   });
   const removedLessonFiles = new Set(
-    existingState.lessons
+    scopedExistingLessons
       .filter(
         (row) =>
           row.status !== "archived" && !currentSourceFiles.has(row.sourceFile)
@@ -272,7 +299,7 @@ export function countChangedSourceDocuments(
       .map((row) => row.sourceFile)
   );
   const removedCardFiles = new Set(
-    existingState.cards
+    scopedExistingCards
       .filter(
         (row) =>
           row.status !== "archived" && !currentSourceFiles.has(row.sourceFile)

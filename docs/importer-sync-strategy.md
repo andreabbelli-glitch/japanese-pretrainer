@@ -159,7 +159,20 @@ Import incrementale scoped a uno o piu media slug:
 ./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25 --media-slug gundam-arsenal-base
 ```
 
-Comportamento della modalita incrementale:
+Import incrementale scoped a una o piu lesson dello stesso media:
+
+```sh
+./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25 --lesson-slug live-duel-encounters-example
+```
+
+```sh
+./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25 --lesson-slug live-duel-encounters-example --lesson-slug live-duel-encounters-followup
+```
+
+`--lesson-slug` richiede esattamente un `--media-slug`. Lo slug e quello della
+route textbook (`/media/<media-slug>/textbook/<lesson-slug>`), non il filename.
+
+Comportamento della modalita media incrementale:
 
 - il parser/validator continua a produrre il payload normalizzato standard;
 - il sync DB applica archive/prune solo ai media inclusi nello scope richiesto;
@@ -168,6 +181,25 @@ Comportamento della modalita incrementale:
 - dentro ogni media in scope continuano invece a valere le normali policy di
   sync: archive di lesson/card rimosse, prune di term/grammar rimosse e prune
   dei segment derivati non piu referenziati.
+
+Comportamento della modalita lesson incrementale:
+
+- parser e validator restano completi sul content root, cosi riferimenti,
+  asset e integrita del bundle continuano a essere controllati prima della
+  mutazione DB;
+- il piano DB viene filtrato alle lesson richieste, alle relative
+  `lesson_content`, alle card che puntano a quelle lesson e alle entry/link
+  effettivamente collegate;
+- il parent `media` e i `segment` necessari vengono comunque upsertati per
+  mantenere valide le FK;
+- le lesson fuori scope e le card di altre lesson non vengono aggiornate,
+  archiviate o considerate rimosse;
+- le card rimosse dalle lesson in scope vengono archiviate;
+- `term` e `grammar_pattern` vengono prunati solo se erano collegati alle
+  lesson/card in scope e non esistono piu nel payload corrente dell'intero
+  media;
+- i `segment` non vengono prunati in modalita lesson scoped. Il prune completo
+  dei segment resta responsabilita di un import media-scoped o full.
 
 ## Failure mode
 

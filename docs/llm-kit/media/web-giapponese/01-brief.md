@@ -133,5 +133,5 @@ Per un singolo item:
 - fetch dei pitch accent solo per le flashcard create o riviste, preferendo gli
   ID entry:
   `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`
-- import incrementale nel DB target con
-  `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`
+- import lesson-scoped nel DB target con
+  `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <page-slug>`

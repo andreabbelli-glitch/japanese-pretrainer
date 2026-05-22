@@ -141,6 +141,16 @@ only:
 ./scripts/with-node.sh pnpm content:import -- --media-slug <media-slug>
 ```
 
+If the pronunciation update is part of a known single-lesson content edit, you
+may use the narrower import form instead:
+
+```bash
+./scripts/with-node.sh pnpm content:import -- --media-slug <media-slug> --lesson-slug <lesson-slug> [--lesson-slug <lesson-slug> ...]
+```
+
+Keep the media-scoped import when the run touched entries across review,
+multiple unknown lessons, or a media-wide pending backlog.
+
 If the run only changed `data/forvo-known-missing.json` or
 `data/forvo-requested-word-add.json` and no content media file changed, no repo
 test is required; report the registry update.

@@ -62,7 +62,8 @@ workflow passa automaticamente solo gli slug interessati a `content:import`
 tramite `--media-slug`; un import remoto full va lanciato solo manualmente dal
 workflow dispatch impostando `full_import`. Anche il CLI locale blocca i full
 import quando `DATABASE_URL` punta a un host remoto: usa sempre `--media-slug`
-per gli import Turso ordinari, oppure imposta
+per gli import Turso ordinari, aggiungendo uno o piu `--lesson-slug` quando il
+sync deve toccare solo lesson specifiche dello stesso media, oppure imposta
 `ALLOW_REMOTE_FULL_CONTENT_IMPORT=1` solo per un full import intenzionale.
 
 Il backup Turso via GitHub Actions e manuale. `turso db export` legge l'intero

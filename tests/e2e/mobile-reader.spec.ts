@@ -40,7 +40,7 @@ test("keeps reader interactions usable on mobile", async ({ page }) => {
   await expect(page.getByRole("dialog")).toContainText("Percorso del media");
   await expect(
     page.getByRole("dialog").getByRole("link", {
-      name: /TCG Core - Montare il testo effetto/
+      name: /Montare il testo effetto delle carte/
     })
   ).toBeVisible();
 });

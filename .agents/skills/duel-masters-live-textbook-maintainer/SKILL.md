@@ -412,13 +412,17 @@ Practical card-selection rules:
 - Treat the pitch-accent fetch as part of completion, not as an optional extra:
   new card content is not done until this check has been run and the outcome is
   reported.
-- Run `./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25`
-  against the real workspace database before finishing, not only a temporary
-  test harness import.
+- Run a real workspace database import before finishing, not only a temporary
+  test harness import. Prefer a lesson-scoped import for ordinary per-card
+  updates:
+  `./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug> [--lesson-slug <additional-lesson-slug> ...]`
+- Use the broader media-scoped import only when the task changed media-wide
+  ordering, keyword-bank pages, shared card files, or other content that should
+  trigger the normal archive/prune policy for the whole DM25 media:
+  `./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25`
 - If the import fails because the database schema is missing, run
   `./scripts/with-node.sh pnpm db:migrate` for the configured database and then
-  rerun
-  `./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25`.
+  rerun the same lesson-scoped or media-scoped import command.
 - Do not consider the task complete until the real import succeeds.
 - Keep
   `content/media/duel-masters-dm25/workflow/pronunciation-pending.json`
