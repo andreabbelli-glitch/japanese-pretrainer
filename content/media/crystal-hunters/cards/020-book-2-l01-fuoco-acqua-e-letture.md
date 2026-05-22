@@ -174,7 +174,7 @@ level_hint: n5
 :::grammar
 id: grammar-ch-su-verbs-te-past
 pattern: "す-verbs: した／して"
-title: "Past e te-form dei verbi in su"
+title: "Passato e forma in て dei verbi in す"
 meaning_it: >-
   i verbi in す passano a した e して
 notes_it: >-
@@ -561,4 +561,3 @@ notes_it: >-
   Book 2 distingue il fuoco come elemento dalla parola da emergenza {{火事|かじ}}, utile quando la scena passa da magia/acqua a edificio in fiamme.
 tags: [crystal-hunters, book-2, grammar]
 :::
-

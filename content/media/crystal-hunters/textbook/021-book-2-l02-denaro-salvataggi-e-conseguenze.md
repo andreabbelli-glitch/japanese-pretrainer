@@ -37,11 +37,11 @@ Book 2 porta in primo piano incendi, acqua, famiglia e il primo vero contrasto f
 
 ## Pattern grammaticali e lettura
 
-- Nessun nuovo pattern grammaticale non duplicato in questa slice.
+- Nessun nuovo pattern grammaticale non duplicato in questa lezione.
 
 ## Come leggerli nel manga
 
-Leggi prima il finale della battuta: verbo, copula o particella finale decidono il peso della frase. Le parole nuove di questa slice sono state scelte perche cambiano cio che puoi capire in scena: oggetti concreti, stati, azioni fisiche, registro del parlante o connessioni logiche fra due battute.
+Leggi prima il finale della battuta: verbo, copula o particella finale decidono il peso della frase. Le parole nuove di questa lezione sono state scelte perche cambiano cio che puoi capire in scena: oggetti concreti, stati, azioni fisiche, registro del parlante o connessioni logiche fra due battute.
 
 Quando un termine ha kanji, non trattarlo come decorazione. Il kanji ti aiuta a distinguere omofoni e famiglie: {{金|かね}}, {{人達|ひとたち}}, {{飲|の}}む, お{{客様|きゃくさま}} vanno letti come pezzi di scena, non come traduzioni isolate.
 

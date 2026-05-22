@@ -39,7 +39,7 @@ Book 2 porta in primo piano incendi, acqua, famiglia e il primo vero contrasto f
 
 ## Come leggerli nel manga
 
-Leggi prima il finale della battuta: verbo, copula o particella finale decidono il peso della frase. Le parole nuove di questa slice sono state scelte perche cambiano cio che puoi capire in scena: oggetti concreti, stati, azioni fisiche, registro del parlante o connessioni logiche fra due battute.
+Leggi prima il finale della battuta: verbo, copula o particella finale decidono il peso della frase. Le parole nuove di questa lezione sono state scelte perche cambiano cio che puoi capire in scena: oggetti concreti, stati, azioni fisiche, registro del parlante o connessioni logiche fra due battute.
 
 Quando un termine ha kanji, non trattarlo come decorazione. Il kanji ti aiuta a distinguere omofoni e famiglie: {{我|われ}}, {{見|み}}つめる, {{襲|おそ}}う, {{弓矢|ゆみや}} vanno letti come pezzi di scena, non come traduzioni isolate.
 
