@@ -1,9 +1,279 @@
 {
   "version": 1,
   "media_slug": "crystal-hunters",
-  "total_targets": 47,
+  "total_targets": 94,
   "audio_backed_count": 46,
   "known_missing_count": 1,
-  "pending_count": 0,
-  "pending": []
+  "pending_count": 47,
+  "pending": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-hi-fire",
+      "label": "火",
+      "reading": "ひ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-mizu",
+      "label": "水",
+      "reading": "みず"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-hero",
+      "label": "ヒーロー",
+      "reading": "ヒーロー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-kaji",
+      "label": "火事",
+      "reading": "かじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-kesu",
+      "label": "消す",
+      "reading": "けす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-kieru",
+      "label": "消える",
+      "reading": "きえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-mahou",
+      "label": "魔法",
+      "reading": "まほう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-mazui",
+      "label": "まずい",
+      "reading": "まずい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-minna",
+      "label": "みんな",
+      "reading": "みんな"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-tatemono",
+      "label": "建物",
+      "reading": "たてもの"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-kane",
+      "label": "金",
+      "reading": "かね"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-hitotachi",
+      "label": "人達",
+      "reading": "ひとたち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-nomu",
+      "label": "飲む",
+      "reading": "のむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-okyakusama",
+      "label": "お客様",
+      "reading": "おきゃくさま"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-shikata-nai",
+      "label": "仕方ない",
+      "reading": "しかたない"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-tsureru",
+      "label": "連れる",
+      "reading": "つれる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-kakaeru",
+      "label": "抱える",
+      "reading": "かかえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-futari-tomo",
+      "label": "二人とも",
+      "reading": "ふたりとも"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-ima",
+      "label": "今",
+      "reading": "いま"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-kega",
+      "label": "怪我",
+      "reading": "けが"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-naoru",
+      "label": "治る",
+      "reading": "なおる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-sukuu",
+      "label": "救う",
+      "reading": "すくう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-ko-child",
+      "label": "子",
+      "reading": "こ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-nageru",
+      "label": "投げる",
+      "reading": "なげる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-meichuu",
+      "label": "命中",
+      "reading": "めいちゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-ware",
+      "label": "我",
+      "reading": "われ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-mitsumeru",
+      "label": "見つめる",
+      "reading": "みつめる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-osou",
+      "label": "襲う",
+      "reading": "おそう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-yumiya",
+      "label": "弓矢",
+      "reading": "ゆみや"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-hahaha",
+      "label": "ハハハ",
+      "reading": "ハハハ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-iru-need",
+      "label": "要る",
+      "reading": "いる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-okaasan",
+      "label": "お母さん",
+      "reading": "おかあさん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-otousan",
+      "label": "お父さん",
+      "reading": "おとうさん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-yoi",
+      "label": "良い",
+      "reading": "よい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-desu-copula",
+      "label": "です"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-particle-omission",
+      "label": "は／が／を omission"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-su-verbs-te-past",
+      "label": "す-verbs: した／して"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-te-iru-state",
+      "label": "ている as state"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-kun-on-readings",
+      "label": "訓読み／音読み"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-multiple-kun-readings",
+      "label": "消える／消す"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-kieru-kesu-pair",
+      "label": "消える vs 消す"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-fire-vs-fire-incident",
+      "label": "火 vs 火事"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-iru-homonyms",
+      "label": "いる vs 要る"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-ga-with-iru-need",
+      "label": "Nが要る"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-ga-implication",
+      "label": "Nが..."
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-da-yo-style",
+      "label": "だ／よ／だよ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-ii-yoi",
+      "label": "いい／良い"
+    }
+  ]
 }
