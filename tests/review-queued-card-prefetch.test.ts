@@ -89,6 +89,33 @@ describe("useReviewQueuedCardPrefetch", () => {
     ]);
   });
 
+  it("preloads audio from newly accepted prefetched cards", async () => {
+    const cardB = createDeferred<ReviewQueueCard | null>();
+    mocks.prefetchReviewCardSessionAction.mockReturnValue(cardB.promise);
+    const controller = await renderPrefetchHook({
+      activeQueueCardIds: ["card-a", "card-b"],
+      queueCardIds: ["card-a", "card-b"],
+      queueIndex: 0,
+      selectedCard: buildQueueCard("card-a")
+    });
+
+    expect(mocks.preloadAudioSources).not.toHaveBeenCalled();
+
+    await act(async () => {
+      cardB.resolve(
+        buildQueueCard("card-b", {
+          audioSrc: "/media/duel-masters-dm25/assets/audio/card-b.mp3"
+        })
+      );
+      await flushMicrotasks(3);
+    });
+
+    expect(controller().getPrefetchedCards().has("card-b")).toBe(true);
+    expect(mocks.preloadAudioSources).toHaveBeenCalledWith([
+      "/media/duel-masters-dm25/assets/audio/card-b.mp3"
+    ]);
+  });
+
   it("does not refetch cards that are already buffered or already in flight", async () => {
     const cardC = createDeferred<ReviewQueueCard | null>();
     const queueCardIds = ["card-a", "card-b", "card-c"];
@@ -246,11 +273,16 @@ describe("useReviewQueuedCardPrefetch", () => {
     });
 
     await act(async () => {
-      cardB.resolve(buildQueueCard("card-b"));
+      cardB.resolve(
+        buildQueueCard("card-b", {
+          audioSrc: "/media/duel-masters-dm25/assets/audio/card-b.mp3"
+        })
+      );
       await flushMicrotasks(3);
     });
 
     expect(controller().getPrefetchedCards().has("card-b")).toBe(false);
+    expect(mocks.preloadAudioSources).not.toHaveBeenCalled();
 
     await act(async () => {
       root?.unmount();
@@ -259,11 +291,16 @@ describe("useReviewQueuedCardPrefetch", () => {
     root = null;
 
     await act(async () => {
-      cardD.resolve(buildQueueCard("card-d"));
+      cardD.resolve(
+        buildQueueCard("card-d", {
+          audioSrc: "/media/duel-masters-dm25/assets/audio/card-d.mp3"
+        })
+      );
       await flushMicrotasks(3);
     });
 
     expect(controller().getPrefetchedCards().has("card-d")).toBe(false);
+    expect(mocks.preloadAudioSources).not.toHaveBeenCalled();
   });
 
   it("keeps the newest prefetch when an older card request resolves after re-entering the queue", async () => {

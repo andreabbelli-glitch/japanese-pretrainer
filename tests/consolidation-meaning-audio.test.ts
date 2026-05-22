@@ -87,18 +87,78 @@ describe("useConsolidationMeaningAudio", () => {
     expect(audio.play).toHaveBeenCalledTimes(1);
   });
 
-  async function renderProbe(props: AudioProbeProps) {
-    function Probe() {
-      useConsolidationMeaningAudio(props);
-      return null;
-    }
+  it("pauses audio when leaving meaning retrieval", async () => {
+    const audio = installAudioElementMock();
+
+    await renderProbe({
+      audioSrc: "/media/sample/assets/audio/yomu.mp3",
+      phase: "retrieval",
+      step: "meaning",
+      subjectKey: "entry:term:yomu"
+    });
+
+    await renderProbe({
+      audioSrc: "/media/sample/assets/audio/yomu.mp3",
+      phase: "answering",
+      step: "meaning",
+      subjectKey: "entry:term:yomu"
+    });
+
+    expect(audio.pause).toHaveBeenCalledTimes(1);
+  });
+
+  it("pauses current playback before replaying for a new subject", async () => {
+    const audio = installAudioElementMock();
+
+    await renderProbe({
+      audioSrc: "/media/sample/assets/audio/yomu.mp3",
+      phase: "retrieval",
+      step: "meaning",
+      subjectKey: "entry:term:yomu"
+    });
+
+    await renderProbe({
+      audioSrc: "/media/sample/assets/audio/yomu.mp3",
+      phase: "retrieval",
+      step: "meaning",
+      subjectKey: "entry:term:yomu-2"
+    });
+
+    expect(audio.pause).toHaveBeenCalledTimes(1);
+    expect(audio.play).toHaveBeenCalledTimes(2);
+  });
+
+  it("pauses active playback on unmount", async () => {
+    const audio = installAudioElementMock();
+
+    await renderProbe({
+      audioSrc: "/media/sample/assets/audio/yomu.mp3",
+      phase: "retrieval",
+      step: "meaning",
+      subjectKey: "entry:term:yomu"
+    });
 
     await act(async () => {
-      root!.render(createElement(Probe));
+      root!.unmount();
+      await Promise.resolve();
+    });
+    root = null;
+
+    expect(audio.pause).toHaveBeenCalled();
+  });
+
+  async function renderProbe(props: AudioProbeProps) {
+    await act(async () => {
+      root!.render(createElement(AudioProbe, props));
       await Promise.resolve();
     });
   }
 });
+
+function AudioProbe(props: AudioProbeProps) {
+  useConsolidationMeaningAudio(props);
+  return null;
+}
 
 function installAudioElementMock() {
   const originalCreateElement = document.createElement.bind(document);
