@@ -19,6 +19,7 @@ export type ReviewQueuedCardPrefetchInput = {
   queueCardIds: string[];
   queueIndex: number;
   selectedCard: ReviewPageClientData["selectedCard"];
+  serverAdvanceCards: ReadonlyArray<ReviewQueueCard>;
   serverAdvanceCardIds: ReadonlySet<string>;
 };
 
@@ -28,6 +29,7 @@ export function useReviewQueuedCardPrefetch({
   queueCardIds,
   queueIndex,
   selectedCard,
+  serverAdvanceCards,
   serverAdvanceCardIds
 }: ReviewQueuedCardPrefetchInput) {
   const prefetchBufferRef = useRef<Map<string, ReviewQueueCard>>(new Map());
@@ -64,6 +66,17 @@ export function useReviewQueuedCardPrefetch({
       }
     }
   }, [queueCardIds]);
+
+  useEffect(() => {
+    const serverAdvanceAudioSources =
+      collectReviewCardAudioSources(serverAdvanceCards);
+
+    if (serverAdvanceAudioSources.length === 0) {
+      return;
+    }
+
+    preloadAudioSources(serverAdvanceAudioSources);
+  }, [serverAdvanceCards]);
 
   useEffect(() => {
     if (!selectedCard || !isQueueCard) {

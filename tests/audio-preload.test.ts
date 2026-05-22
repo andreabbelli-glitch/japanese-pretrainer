@@ -54,4 +54,34 @@ describe("preloadAudioSources", () => {
     );
     expect(load).toHaveBeenCalledTimes(2);
   });
+
+  it("bounds the remembered source set so old URLs can be retried", () => {
+    const load = vi.fn();
+    const AudioMock = vi.fn(function (
+      this: {
+        load: () => void;
+        preload: string;
+        src: string;
+      },
+      src: string
+    ) {
+      this.load = load;
+      this.preload = "";
+      this.src = src;
+    });
+    vi.stubGlobal("Audio", AudioMock);
+
+    preloadAudioSources(
+      Array.from(
+        { length: 129 },
+        (_, index) => `/media/a/assets/audio/${index}.mp3`
+      )
+    );
+    preloadAudioSources(["/media/a/assets/audio/0.mp3"]);
+
+    expect(AudioMock).toHaveBeenCalledTimes(130);
+    expect(AudioMock).toHaveBeenLastCalledWith(
+      "/media/a/assets/audio/0.mp3"
+    );
+  });
 });

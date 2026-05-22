@@ -168,6 +168,7 @@ export function useReviewPageController(input: {
     remainingCount,
     requestedSelectedCardId,
     selectedCard,
+    serverAdvanceCards,
     serverAdvanceCardIds,
     sessionHref,
     showCompletionState,
@@ -203,6 +204,7 @@ export function useReviewPageController(input: {
     queueCardIds,
     queueIndex,
     selectedCard,
+    serverAdvanceCards,
     serverAdvanceCardIds
   });
 

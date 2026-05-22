@@ -1,4 +1,5 @@
 const preloadedAudioSources = new Set<string>();
+const MAX_PRELOADED_AUDIO_SOURCE_MARKERS = 128;
 
 export function preloadAudioSources(
   sources: readonly (string | null | undefined)[]
@@ -10,11 +11,9 @@ export function preloadAudioSources(
   for (const source of sources) {
     const normalizedSource = source?.trim();
 
-    if (!normalizedSource || preloadedAudioSources.has(normalizedSource)) {
+    if (!normalizedSource || !rememberAudioSource(normalizedSource)) {
       continue;
     }
-
-    preloadedAudioSources.add(normalizedSource);
 
     try {
       const audio = new Audio(normalizedSource);
@@ -24,6 +23,27 @@ export function preloadAudioSources(
       preloadedAudioSources.delete(normalizedSource);
     }
   }
+}
+
+function rememberAudioSource(source: string) {
+  if (preloadedAudioSources.has(source)) {
+    preloadedAudioSources.delete(source);
+    preloadedAudioSources.add(source);
+    return false;
+  }
+
+  while (preloadedAudioSources.size >= MAX_PRELOADED_AUDIO_SOURCE_MARKERS) {
+    const oldestSource = preloadedAudioSources.values().next().value;
+
+    if (!oldestSource) {
+      break;
+    }
+
+    preloadedAudioSources.delete(oldestSource);
+  }
+
+  preloadedAudioSources.add(source);
+  return true;
 }
 
 export function resetAudioPreloadCacheForTests() {

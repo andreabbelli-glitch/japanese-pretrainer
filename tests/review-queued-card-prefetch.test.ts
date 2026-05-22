@@ -9,11 +9,16 @@ import { installMinimalDom, uninstallMinimalDom } from "./helpers/minimal-dom";
 import type { ReviewQueueCard } from "@/lib/review-types";
 
 const mocks = vi.hoisted(() => ({
+  preloadAudioSources: vi.fn(),
   prefetchReviewCardSessionAction: vi.fn()
 }));
 
 vi.mock("@/actions/review", () => ({
   prefetchReviewCardSessionAction: mocks.prefetchReviewCardSessionAction
+}));
+
+vi.mock("@/components/ui/audio-preload", () => ({
+  preloadAudioSources: mocks.preloadAudioSources
 }));
 
 import {
@@ -29,6 +34,7 @@ let root: ReturnType<typeof createRoot> | null = null;
 describe("useReviewQueuedCardPrefetch", () => {
   beforeEach(() => {
     installMinimalDom();
+    mocks.preloadAudioSources.mockReset();
     mocks.prefetchReviewCardSessionAction.mockReset();
   });
 
@@ -57,6 +63,30 @@ describe("useReviewQueuedCardPrefetch", () => {
     });
 
     expect(prefetchedCardIds()).toEqual(["card-c", "card-d"]);
+  });
+
+  it("preloads audio from server advance cards without refetching them", async () => {
+    const serverAdvanceCard = buildQueueCard("card-b", {
+      audioSrc: "/media/duel-masters-dm25/assets/audio/card-b.mp3"
+    });
+    mocks.prefetchReviewCardSessionAction.mockImplementation(
+      ({ cardId }: { cardId: string }) =>
+        Promise.resolve(buildQueueCard(cardId))
+    );
+
+    await renderPrefetchHook({
+      activeQueueCardIds: ["card-a", "card-b", "card-c"],
+      queueCardIds: ["card-a", "card-b", "card-c"],
+      queueIndex: 0,
+      selectedCard: buildQueueCard("card-a"),
+      serverAdvanceCardIds: new Set(["card-b"]),
+      serverAdvanceCards: [serverAdvanceCard]
+    });
+
+    expect(prefetchedCardIds()).toEqual(["card-c"]);
+    expect(mocks.preloadAudioSources).toHaveBeenCalledWith([
+      "/media/duel-masters-dm25/assets/audio/card-b.mp3"
+    ]);
   });
 
   it("does not refetch cards that are already buffered or already in flight", async () => {
@@ -342,7 +372,8 @@ function Probe(props: Partial<ReviewQueuedCardPrefetchInput>) {
     queueIndex,
     selectedCard:
       props.selectedCard ?? buildQueueCard(activeQueueCardIds[queueIndex]!),
-    serverAdvanceCardIds: props.serverAdvanceCardIds ?? new Set()
+    serverAdvanceCardIds: props.serverAdvanceCardIds ?? new Set(),
+    serverAdvanceCards: props.serverAdvanceCards ?? []
   });
 
   useEffect(() => {
@@ -383,7 +414,12 @@ function prefetchedCardIds() {
   });
 }
 
-function buildQueueCard(id: string): ReviewQueueCard {
+function buildQueueCard(
+  id: string,
+  options: {
+    audioSrc?: string;
+  } = {}
+): ReviewQueueCard {
   return {
     back: `${id} back`,
     bucket: "due",
@@ -405,7 +441,19 @@ function buildQueueCard(id: string): ReviewQueueCard {
     mediaTitle: "Duel Masters",
     notes: undefined,
     orderIndex: 1,
-    pronunciations: [],
+    pronunciations: options.audioSrc
+      ? [
+          {
+            audio: {
+              src: options.audioSrc as ReviewQueueCard["pronunciations"][number]["audio"]["src"]
+            },
+            kind: "term",
+            label: id,
+            meaning: `${id} meaning`,
+            relationshipLabel: "Voce"
+          }
+        ]
+      : [],
     rawReviewLabel: "In review",
     reading: "yamafuda",
     reviewSeedState: {
