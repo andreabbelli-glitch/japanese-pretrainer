@@ -688,6 +688,39 @@ describe("pre-FSRS consolidation service", () => {
     );
   });
 
+  it("includes pronunciation audio on consolidation subjects when the linked entry has audio", async () => {
+    await seedConsolidationLesson(database);
+    await database
+      .update(term)
+      .set({
+        audioSource: "forvo",
+        audioSpeaker: "Native Speaker",
+        audioSrc: "assets/audio/term/term-yomu/yomu.mp3"
+      })
+      .where(eq(term.id, "term_consolidation_reading"));
+    await enqueueLessonConsolidation({
+      database,
+      lessonId: "lesson_consolidation",
+      now: new Date("2026-04-01T10:00:00.000Z")
+    });
+
+    const session = await getConsolidationSessionData({
+      database,
+      lessonSlug: "consolidation-intro",
+      mediaSlug: "media-consolidation"
+    });
+    const subject = session?.subjects.find(
+      (item) => item.subjectKey === "entry:term:term_consolidation_reading"
+    );
+
+    expect(subject?.pronunciation).toMatchObject({
+      label: "Native Speaker · forvo",
+      source: "forvo",
+      speaker: "Native Speaker",
+      src: "/media/media-consolidation/assets/audio/term/term-yomu/yomu.mp3"
+    });
+  });
+
   it("keeps current-lesson pending distractors before same-media fallback choices", async () => {
     await seedConsolidationLesson(database);
     await seedManySameMediaDistractors(database);

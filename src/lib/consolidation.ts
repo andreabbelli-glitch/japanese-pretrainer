@@ -31,6 +31,10 @@ import {
 } from "./site";
 import { setLessonCompletionState } from "./textbook-progress";
 import type { ReviewRating } from "./review-scheduler";
+import {
+  buildPronunciationData,
+  type PronunciationData
+} from "./pronunciation-data";
 
 type EnqueueLessonConsolidationInput = {
   database?: ConsolidationMutationClient;
@@ -478,6 +482,7 @@ export type ConsolidationSessionSubject = {
   back: string;
   canMarkKnown: boolean;
   front: string;
+  pronunciation?: PronunciationData;
   representativeCardId: string;
   steps: ConsolidationSessionStepData[];
   subjectKey: string;
@@ -533,6 +538,7 @@ type ConsolidationEntrySummary = {
   id: string;
   label: string;
   meaning: string;
+  pronunciation?: PronunciationData;
   reading: string | null;
 };
 
@@ -547,6 +553,7 @@ type ConsolidationSubjectPresentation = {
   lessonId: string | null;
   meaning: string;
   pending: boolean;
+  pronunciation?: PronunciationData;
   reading: string | null;
   representativeCardId: string;
   subjectKey: string;
@@ -712,6 +719,7 @@ export async function getConsolidationSessionData(input: {
       back: presentation.back,
       canMarkKnown: presentation.canMarkKnown,
       front: presentation.front,
+      pronunciation: presentation.pronunciation,
       representativeCardId: presentation.representativeCardId,
       steps: buildSessionSteps(presentation, presentations),
       subjectKey: presentation.subjectKey
@@ -758,6 +766,7 @@ export async function getRetrainingConsolidationSessionData(
       back: presentation.back,
       canMarkKnown: presentation.canMarkKnown,
       front: presentation.front,
+      pronunciation: presentation.pronunciation,
       representativeCardId: presentation.representativeCardId,
       steps: buildSessionSteps(presentation, presentations),
       subjectKey: presentation.subjectKey
@@ -1290,6 +1299,7 @@ function buildCardPresentation(input: {
     lessonId: input.lessonId ?? input.cardItem.lessonId,
     meaning: entry?.meaning ?? input.cardItem.back,
     pending: input.pending ?? false,
+    pronunciation: entry?.pronunciation,
     reading: entry?.reading?.trim() || null,
     representativeCardId: input.cardItem.id,
     subjectKey: input.identity.subjectKey
@@ -1315,6 +1325,19 @@ async function buildConsolidationEntrySummaryLookup(
       id: entry.id,
       label: entry.lemma,
       meaning: entry.meaningIt,
+      pronunciation:
+        buildPronunciationData(entry.mediaSlug, {
+          audioAttribution: entry.audioAttribution,
+          audioLicense: entry.audioLicense,
+          audioPageUrl: entry.audioPageUrl,
+          audioSource: entry.audioSource,
+          audioSpeaker: entry.audioSpeaker,
+          audioSrc: entry.audioSrc,
+          pitchAccent: entry.pitchAccent,
+          pitchAccentPageUrl: entry.pitchAccentPageUrl,
+          pitchAccentSource: entry.pitchAccentSource,
+          reading: entry.reading
+        }) ?? undefined,
       reading: entry.reading
     });
   }
@@ -1327,6 +1350,19 @@ async function buildConsolidationEntrySummaryLookup(
       id: entry.id,
       label: entry.pattern,
       meaning: entry.meaningIt,
+      pronunciation:
+        buildPronunciationData(entry.mediaSlug, {
+          audioAttribution: entry.audioAttribution,
+          audioLicense: entry.audioLicense,
+          audioPageUrl: entry.audioPageUrl,
+          audioSource: entry.audioSource,
+          audioSpeaker: entry.audioSpeaker,
+          audioSrc: entry.audioSrc,
+          pitchAccent: entry.pitchAccent,
+          pitchAccentPageUrl: entry.pitchAccentPageUrl,
+          pitchAccentSource: entry.pitchAccentSource,
+          reading: entry.reading
+        }) ?? undefined,
       reading: entry.reading ?? null
     });
   }
