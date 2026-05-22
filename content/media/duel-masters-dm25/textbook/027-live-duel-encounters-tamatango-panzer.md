@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-live-duel-encounters-tamatango-panzer
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-tamatango-panzer
-title: Carte incontrate - Tamatango Panzer
+title: Tamatango Panzer e il bersaglio obbligato
 order: 56
 segment_ref: live-duel-encounters
 difficulty: n3
@@ -14,33 +14,82 @@ prerequisites:
     lesson-duel-masters-dm25-live-duel-encounters-kuromame-danshaku
   ]
 summary: >-
-  Tamatango Panzer: ingresso tapped, attacchi reindirizzati se possibile e
-  condizione sul mana che le conferisce S-Trigger mentre si trova negli scudi.
+  Tamatango Panzer entra tapped, reindirizza gli attacchi avversari se possibile
+  e riceve S-Trigger negli scudi quando il mana supera una soglia di creature
+  enormi.
 ---
 
-# [タマタンゴ・パンツァー](term:term-tamatango-panzer)
+# [タマタンゴ・パンツァー](term:term-tamatango-panzer) e il bersaglio obbligato
+
+タマタンゴ・パンツァー non è scritto come una creatura che entra in campo e basta:
+il testo la appoggia già tapped, poi cambia il modo in cui gli attacchi
+avversari scelgono il bersaglio. La terza riga sposta invece lo sguardo negli
+scudi: se nel mana ci sono abbastanza creature enormi, la carta riceve
+`S・トリガー` proprio mentre si trova lì.
+
+Il giapponese della carta lavora su tre coppie molto leggibili: `{{置|お}}く`
+per lo stato di ingresso, `{{場合|ばあい}}` più `{{可能|かのう}}なら` per il vincolo
+di attacco, e `にある...に{{与|あた}}える` per dire dove si trova il bersaglio e
+quale abilità gli viene conferita.
 
 :::image
 src: assets/cards/live-duel/tamatango-panzer.webp
 alt: "Tamatango Panzer card."
 caption: >-
   [タマタンゴ・パンツァー](term:term-tamatango-panzer)。 Razza:
-  [グランセクト](term:term-gransect)。 Riga centrale: entra tapped, costringe
-  gli attaccanti avversari a colpirlo se possono e ottiene
-  [S・トリガー](term:term-s-trigger) mentre si trova nello shield zone se il mana
-  supera la soglia.
+  [グランセクト](term:term-gransect)。 Il testo centrale tiene insieme ingresso
+  tapped, attacco obbligato verso questa creatura e
+  [S・トリガー](term:term-s-trigger) condizionato dalla mana zone.
 :::
 
-## Keyword presenti sulla carta
+## Termini chiave
 
-- [T（トリプル）・ブレイカー](term:term-t-breaker)
-- [S・トリガー](term:term-s-trigger)
+- [グランセクト](term:term-gransect): razza naturale della creatura, letta sulla
+  riga di tipo.
+- [{{相手|あいて}}](term:term-opponent): l'avversario come controllore della
+  creatura che sta attaccando.
+- [{{攻撃|こうげき}}](term:term-attack): l'azione di attaccare, prima come
+  situazione avversaria e poi come bersaglio imposto.
+- [{{与|あた}}える](term:term-ataeru): conferire una keyword o proprietà a una
+  carta precisa.
 
-Le keyword sono gia coperte nella keyword bank. Qui conviene concentrarsi sul
-modo in cui il testo costruisce l'ingresso tapped, il vincolo `se possibile` e
-la condizione lunga che conferisce `S・トリガー` alla carta negli scudi.
+## Espressioni ricorrenti
 
-## Effetti da leggere
+- [タップして{{置|お}}く](term:term-enter-battle-zone-tapped): mettere una carta in
+  campo già tapped.
+- [{{可能|かのう}}なら](grammar:grammar-kanou-nara): se l'azione è legalmente
+  possibile, il vincolo va rispettato.
+- [S・トリガー](term:term-s-trigger): keyword ricevuta solo dentro la condizione
+  descritta dalla riga finale.
+
+## Pattern grammaticali chiave
+
+- [{{時|とき}}](grammar:grammar-toki): timing, il momento in cui la carta viene
+  collocata nel battle zone.
+- [{{場合|ばあい}}](term:term-baai): caso o situazione in cui una regola deve
+  essere controllata.
+- [あれば](grammar:grammar-areba): condizione di esistenza; se il gruppo richiesto
+  c'è, parte il payoff.
+
+## Etichette da riconoscere
+
+- [T（トリプル）・ブレイカー](term:term-t-breaker): keyword offensiva stampata
+  sulla carta.
+- [バトルゾーン](term:term-battle-zone): zona in cui la creatura viene messa
+  tapped.
+- [マナゾーン](term:term-mana-zone) e [シールドゾーン](term:term-shield-zone): le
+  due zone che la riga finale distingue con precisione.
+
+---
+
+## 1. Ingresso tapped: quando `置く` descrive anche lo stato
+
+La prima frase non usa solo un trigger di ingresso: ripete `{{置|お}}く` per
+dire prima il momento e poi il modo in cui la carta viene collocata. In
+`バトルゾーンに{{置|お}}く{{時|とき}}`, `に` marca la destinazione e `{{時|とき}}`
+trasforma l'atto di mettere la carta in un timing. Subito dopo, `このカードは`
+mette a tema proprio questa carta, e `タップして{{置|お}}く` specifica lo stato
+con cui arriva sul campo.
 
 :::example_sentence
 jp: >-
@@ -52,6 +101,41 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
+#### 🗺️ Anatomia della frase
+
+*   `[バトルゾーン](term:term-battle-zone)に`: destinazione della collocazione,
+    non fonte dell'effetto.
+*   `{{置|お}}く[{{時|とき}}](grammar:grammar-toki)`: timing costruito sul verbo
+    "mettere, collocare".
+*   `このカードは`: topic della seconda metà; il testo restringe l'effetto a
+    questa carta.
+*   `[タップして{{置|お}}く](term:term-enter-battle-zone-tapped)`: modo della
+    collocazione; la carta viene appoggiata già in stato tapped.
+
+#### ⚖️ Contrasto operativo
+
+`タップして{{置|お}}く` non descrive un ingresso normale seguito da un secondo
+evento di tap. Il `して` lega lo stato tapped al modo in cui la carta viene
+messa nel battle zone. Se un altro effetto controlla "quando entra", vede una
+carta che arriva già tappata, non una carta che entra untapped e poi viene
+tappata dopo.
+
+#### 🧠 Gancio cognitivo
+
+Come trucco di memoria, pensa a `{{置|お}}く` come al gesto di appoggiare la
+carta: il testo non racconta una corsa verso il campo, ma il modo in cui la
+carta viene posata. Non è etimologia speciale; serve solo a riconoscere perché
+`タップして` modifica direttamente la collocazione.
+
+## 2. Attacco obbligato: `場合` apre il caso, `可能なら` limita il vincolo
+
+La seconda frase parte dall'avversario e crea uno scenario: `{{相手|あいて}}の
+クリーチャーが{{攻撃|こうげき}}する{{場合|ばあい}}`. `{{場合|ばあい}}` non è un
+"quando" generico da tradurre in automatico; qui vuol dire "nel caso in cui si
+presenti questa situazione". Dentro quel caso, `{{可能|かのう}}なら` non rende
+l'attacco opzionale: restringe l'obbligo ai casi in cui questa creatura può
+essere davvero scelta come bersaglio.
+
 :::example_sentence
 jp: >-
   [{{相手|あいて}}](term:term-opponent)の
@@ -62,95 +146,109 @@ jp: >-
   [クリーチャー](term:term-creature)を
   [{{攻撃|こうげき}}](term:term-attack)する。
 translation_it: >-
-  Quando una creatura avversaria attacca, se puo farlo deve attaccare questa
-  creatura.
+  Nel caso in cui una creatura avversaria attacchi, se può farlo deve attaccare
+  questa creatura.
 reveal_mode: sentence
 :::
+
+#### 🗺️ Anatomia della frase
+
+*   `[{{相手|あいて}}](term:term-opponent)の[クリーチャー](term:term-creature)が`:
+    soggetto della situazione; l'attaccante appartiene all'avversario.
+*   `[{{攻撃|こうげき}}](term:term-attack)する[{{場合|ばあい}}](term:term-baai)`:
+    cornice condizionale, cioè il caso in cui si controlla il vincolo.
+*   `[{{可能|かのう}}なら](grammar:grammar-kanou-nara)`: filtro di legalità; vale
+    solo quando il bersaglio può essere scelto.
+*   `この[クリーチャー](term:term-creature)を[{{攻撃|こうげき}}](term:term-attack)する`:
+    effetto concreto; l'oggetto con `を` diventa il bersaglio dell'attacco.
+
+#### ⚖️ Contrasto operativo
+
+`{{可能|かのう}}なら` non significa "se vuoi" e non attenua l'obbligo. La frase
+mantiene la forma dichiarativa `このクリーチャーを{{攻撃|こうげき}}する`: se questa
+creatura è un bersaglio legale, l'attacco deve andare lì. Se invece non può
+essere attaccata, il vincolo non crea un bersaglio impossibile; semplicemente
+non si applica.
+
+## 3. Soglia nel mana: `5体以上` conta creature, non carte qualunque
+
+La riga finale mette una condizione lunga prima del verbo principale.
+`{{自分|じぶん}}のマナゾーンに` dice dove guardare, mentre
+`パワー{{12000以上|いちまんにせんいじょう}}のクリーチャーが
+{{5体以上|ごたいいじょう}}` costruisce il gruppo richiesto: creature, non carte
+qualsiasi, e solo quelle con potere almeno 12000. `あれば` chiude la condizione
+di esistenza; tutto ciò che segue è il risultato attivo solo se quel gruppo è
+presente.
 
 :::example_sentence
 jp: >-
   [{{自分|じぶん}}](term:term-self)の
   [マナゾーン](term:term-mana-zone)に
   [パワー](term:term-power){{12000以上|いちまんにせんいじょう}}の
-  [クリーチャー](term:term-creature)が{{5体以上|ご.たい.い.じょう}}あれば、
+  [クリーチャー](term:term-creature)が{{5体以上|ごたいいじょう}}あれば、
   [シールドゾーン](term:term-shield-zone)にあるこの
   [クリーチャー](term:term-creature)に
   「[S・トリガー](term:term-s-trigger)」を[{{与|あた}}える](term:term-ataeru)。
 translation_it: >-
-  Se nel tuo mana zone ci sono almeno cinque creature con potere 12000 o piu,
-  questa creatura nello shield zone ottiene S-Trigger.
+  Se nella tua mana zone ci sono almeno cinque creature con potere 12000 o più,
+  conferisce S-Trigger a questa creatura mentre si trova nello shield zone.
 reveal_mode: sentence
 :::
 
-## Parsing grammaticale
+#### 🗺️ Anatomia della frase
 
-### 1. バトルゾーンに置く時、このカードはタップして置く
+*   `[{{自分|じぶん}}](term:term-self)の[マナゾーン](term:term-mana-zone)に`:
+    luogo in cui viene controllata l'esistenza del gruppo.
+*   `[パワー](term:term-power){{12000以上|いちまんにせんいじょう}}の
+    [クリーチャー](term:term-creature)が{{5体以上|ごたいいじょう}}`: soggetto contato,
+    ristretto insieme da potere, tipo di carta e quantità minima.
+*   `[あれば](grammar:grammar-areba)`: condizione; se quel gruppo esiste, la
+    frase passa al risultato.
+*   `[シールドゾーン](term:term-shield-zone)にあるこの
+    [クリーチャー](term:term-creature)に`: destinatario del conferimento; è questa
+    creatura mentre si trova negli scudi.
+*   `「[S・トリガー](term:term-s-trigger)」を[{{与|あた}}える](term:term-ataeru)`:
+    oggetto e verbo; la keyword viene attribuita alla carta in quella
+    condizione.
 
-- `バトルゾーンに{{置|お}}く[{{時|とき}}](grammar:grammar-toki)` apre il timing:
-  il testo fissa il momento in cui la carta viene collocata nel battle zone.
-- Il verbo chiave qui non e `{{出|で}}る`, ma `{{置|お}}く`, ripetuto due volte.
-  La prima occorrenza definisce `quando`, la seconda definisce `come`: la carta
-  viene messa sul campo gia in stato tapped.
-- [タップして{{置|お}}く](term:term-enter-battle-zone-tapped) va quindi letto
-  come blocco operativo unico, non come ingresso normale seguito da un tap
-  separato.
+#### ⚖️ Contrasto operativo
 
-### 2. 相手のクリーチャーが攻撃する[場合](term:term-baai)、可能なら
+I due `に` della frase non fanno lo stesso lavoro. In `マナゾーンに`, `に` indica
+il posto in cui cercare le cinque creature. In `シールドゾーンにあるこの
+クリーチャーに`, il primo `に` appartiene a `にある` e descrive dove si trova la
+carta, mentre il secondo `に` marca il destinatario di `{{与|あた}}える`. Questa
+differenza evita una lettura confusa: la keyword non viene data alla mana zone,
+ma alla creatura che è nello shield zone.
 
-- `{{攻撃|こうげき}}する[{{場合|ばあい}}](term:term-baai)` costruisce il caso
-  preciso in cui controllare l'obbligo: prima delimita la situazione
-  rilevante, poi dice cosa deve succedere dentro quella situazione.
-- In giapponese generale `{{場合|ばあい}}` vuol dire `caso`, `situazione`,
-  `scenario di riferimento`. Qui la carta lo usa in modo tecnico: appena si
-  presenta il caso di un attacco avversario, il gioco controlla subito il
-  bersaglio legale.
-- [{{可能|かのう}}なら](grammar:grammar-kanou-nara) non rende l'effetto
-  facoltativo. Vuol dire invece `se il gioco lo permette davvero`: se
-  quell'attaccante puo scegliere questa creatura, deve farlo.
-- Il pezzo finale `このクリーチャーを{{攻撃|こうげき}}する` chiude il
-  reindirizzamento: non cambia il fatto che ci sia un attacco, cambia quale
-  bersaglio quell'attacco deve prendere.
+#### 🧠 Gancio cognitivo
 
-### 3. 自分のマナゾーンにパワー12000以上のクリーチャーが5体以上あれば
+`{{与|あた}}える` conserva l'immagine generale di "dare, conferire". Qui però
+l'oggetto dato non è una carta fisica: è la proprietà `S・トリガー`. Il gancio
+pratico è seguire la catena `Aに Bを{{与|あた}}える`: a chi viene dato qualcosa
+con `に`, che cosa viene dato con `を`.
 
-- Qui [あれば](grammar:grammar-areba) controlla una soglia precisa prima di
-  concedere il payoff successivo.
-- Il gruppo contato non e `qualsiasi carta nel mana`: sono solo le carte che
-  soddisfano insieme due filtri, cioe `クリーチャー` e
-  `パワー{{12000以上|いちまんにせんいじょう}}`.
-- La stampa usa proprio `{{5体以上|ご.たい.い.じょう}}`, non `5枚以上`: il testo
-  continua a contare `クリーチャー` come categoria di carta rilevante, anche se
-  in quel momento si trovano nella mana zone.
+## Esempi guidati di riepilogo
 
-### 4. シールドゾーンにあるこのクリーチャーに「S・トリガー」を[与える](term:term-ataeru)
+Quando leggi `バトルゾーンに{{置|お}}く{{時|とき}}`, preparati a un timing di
+ingresso; quando subito dopo arriva `タップして{{置|お}}く`, lo stato tapped fa
+parte della collocazione stessa. La carta non entra neutra: viene posata già
+tappata.
 
-- `シールドゾーンにあるこのクリーチャー` restringe con precisione il bersaglio:
-  non parla del momento in cui la carta esce dagli scudi, ma della carta mentre
-  si trova ancora nello shield zone.
-- In giapponese generale [{{与|あた}}える](term:term-ataeru) vuol dire `dare`,
-  `conferire`, `attribuire`. Qui il verbo conserva quell'idea di base, ma la
-  applica a una keyword di gioco: il testo sta dicendo che `S・トリガー` viene
-  assegnato a questa carta in questo stato.
-- `「S・トリガー」を[{{与|あた}}える](term:term-ataeru)` significa quindi che la
-  keyword viene concessa da questa condizione; non e una keyword sempre attiva
-  stampata in modo indipendente.
-- La lettura completa quindi e: `se la soglia nel mana c'e, allora questa carta
-  ha S-Trigger mentre si trova nei tuoi scudi, e quindi potra usarlo quando
-  verra rivelata da li`.
+In `{{相手|あいて}}のクリーチャーが{{攻撃|こうげき}}する{{場合|ばあい}}、
+{{可能|かのう}}ならこのクリーチャーを{{攻撃|こうげき}}する`, il primo
+`{{攻撃|こうげき}}する` apre il caso, il secondo indica il bersaglio richiesto.
+`{{可能|かのう}}なら` non aggiunge scelta al giocatore; aggiunge il limite legale
+del "se può farlo".
 
-## Lessico utile in questa carta
+Nella riga degli scudi, `パワー{{12000以上|いちまんにせんいじょう}}のクリーチャーが
+{{5体以上|ごたいいじょう}}あれば` è tutto il cancello condizionale. Solo dopo quel
+cancello il testo arriva a `「S・トリガー」を{{与|あた}}える`, cioè al conferimento
+della keyword.
 
-- [グランセクト](term:term-gransect) e la razza della carta: quando la rileggi
-  sulla riga `{{種族|しゅぞく}}`, sai che stai guardando un filtro tribale, non un
-  nome decorativo.
-- [タップして{{置|お}}く](term:term-enter-battle-zone-tapped) e un chunk utile
-  per tutte le carte che vengono messe sul campo gia tappate.
-- [{{場合|ばあい}}](term:term-baai) e una parola piccola ma molto ricorrente:
-  ti segnala il `caso` o la `situazione` in cui il gioco deve controllare una
-  regola, un vincolo o una conseguenza.
-- [{{与|あた}}える](term:term-ataeru) e un verbo utile da fissare bene: nei testi
-  di carta compare spesso quando un effetto concede a una carta una keyword,
-  un'abilita o un'altra proprieta.
-- [{{可能|かのう}}なら](grammar:grammar-kanou-nara) e piccolo ma decisivo: nei
-  testi di carta segnala spesso un obbligo che vale solo se la giocata resta
-  legalmente possibile.
+## Nota finale
+
+タマタンゴ・パンツァー si legge bene se separi stato, obbligo e conferimento.
+`タップして{{置|お}}く` decide come entra, `{{場合|ばあい}}` più
+`{{可能|かのう}}なら` decide quando l'attacco deve cambiare bersaglio, e
+`にある...に{{与|あた}}える` decide quale carta riceve `S・トリガー`
+mentre si trova negli scudi.

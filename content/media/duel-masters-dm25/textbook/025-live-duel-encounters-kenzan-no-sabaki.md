@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-live-duel-encounters-kenzan-no-sabaki
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-kenzan-no-sabaki
-title: Carte incontrate - Kenzan no Sabaki
+title: Kenzan no Sabaki e lo spell che resta sopra lo scudo
 order: 54
 segment_ref: live-duel-encounters
 difficulty: n3
@@ -34,16 +34,66 @@ caption: >-
   [{{表|おもて}}{{向|む}}き](term:term-face-up).
 :::
 
+Lo spell ha due movimenti di lettura molto netti. Prima apre la cima del
+{{山札|やまふだ}}, restringe la scelta con `その{{中|なか}}から` e permette di
+prendere solo uno {{呪文|じゅもん}} o un メタリカ. Poi cambia la destinazione
+normale dello spell: dopo averlo {{唱|とな}}えた, non lo metti nel
+{{墓地|ぼち}}, ma sopra uno scudo, ancora {{表|おもて}}{{向|む}}き.
+
+Il filo da seguire è quindi procedurale: gruppo iniziale, filtro, rivelazione
+all'avversario, resto in fondo al mazzo, sostituzione della destinazione finale.
+
+## Termini chiave
+
+- [{{剣参|けんざん}}ノ{{裁|さば}}キ](term:term-kenzan-no-sabaki) — lo spell
+  Sabaki che filtra la cima e poi rimane sopra uno scudo.
+- [{{呪文|じゅもん}}](term:term-spell) — tipo di carta che si
+  [{{唱|とな}}える](term:term-tonaeru), cioè si lancia come spell.
+- [メタリカ](term:term-metallica) — famiglia di creature luce usata qui come
+  seconda categoria valida del filtro.
+- [{{裁|さば}}きの{{紋章|もんしょう}}](term:term-judgment-emblem) — razza scritta
+  sulla carta, collegata alla linea Sabaki.
+- [{{表|おもて}}{{向|む}}き](term:term-face-up) — stato scoperto che lo spell
+  mantiene mentre viene messo sopra lo scudo.
+
+## Espressioni ricorrenti
+
+- `{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}{{見|み}}る` — guardare
+  un blocco chiuso di tre carte dalla cima del mazzo.
+- `その{{中|なか}}から` — scegliere solo dentro il gruppo appena visto.
+- [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de) — mettere
+  il resto nell'ordine preferito.
+- `{{表|おもて}}{{向|む}}きのまま` — lasciare la carta nello stato scoperto, non
+  solo mostrarla per un istante.
+
+## Pattern grammaticali chiave
+
+- [または](grammar:grammar-matawa) — collega due categorie alternative dentro
+  lo stesso filtro.
+- [てから](grammar:grammar-te-kara) — impone la sequenza: prima mostrare, poi
+  aggiungere alla mano.
+- [かわりに](grammar:grammar-kawarini) — sostituisce la destinazione normale
+  della carta con una nuova destinazione.
+
 ## Etichette da riconoscere
 
-- [{{裁|さば}}きの{{紋章|もんしょう}}](term:term-judgment-emblem)
-- [{{呪文|じゅもん}}](term:term-spell)
-- [メタリカ](term:term-metallica)
+- [{{裁|さば}}きの{{紋章|もんしょう}}](term:term-judgment-emblem) — razza della
+  linea Sabaki, da leggere come etichetta tecnica della carta.
+- [{{山札|やまふだ}}](term:term-deck) — zona da cui parte il primo blocco e su
+  cui torna il resto delle carte.
+- [{{手札|てふだ}}](term:term-hand) — destinazione della carta scelta solo dopo
+  rivelazione all'avversario.
+- [{{墓地|ぼち}}](term:term-graveyard) e lo scudo — destinazione normale
+  sostituita e nuova destinazione dello spell dopo il cast.
 
-Qui non ci sono keyword lunghe da banca effetti: la lettura utile sta tutta
-nella procedura del primo effetto e nella sostituzione del secondo.
+---
 
-## Effetti da leggere
+## 1. Dalla cima del mazzo al gruppo chiuso
+
+Il primo effetto non parte da una pesca libera. `{{自分|じぶん}}の
+{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}` costruisce un gruppo
+limitato: tre carte, prese dalla cima del tuo mazzo. Il verbo `{{見|み}}る`
+conferma che il gesto è guardare, non mettere subito in mano.
 
 :::example_sentence
 jp: >-
@@ -55,7 +105,7 @@ jp: >-
   [てから](grammar:grammar-te-kara)[{{手札|てふだ}}](term:term-hand)に
   [{{加|くわ}}えて](term:term-add)もよい。{{残|のこ}}りを
   [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de)
-  [{{山札|やまふだ}}](term:term-deck)の{{一番下|いち.ばん.した}}に
+  [{{山札|やまふだ}}](term:term-deck)の{{一番下|いちばんした}}に
   [{{置|お}}く](term:term-oku)。
 translation_it: >-
   Guarda le prime tre carte del tuo mazzo. Tra quelle, puoi mostrare
@@ -63,6 +113,95 @@ translation_it: >-
   Metti il resto sul fondo del mazzo nell'ordine che preferisci.
 reveal_mode: sentence
 :::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}`: origine
+    e quantità. `から` non indica una provenienza generica, ma il punto da cui
+    si conta il blocco.
+*   `その{{中|なか}}から`: campo della scelta. `その` riprende le tre carte appena
+    viste; `{{中|なか}}から` impedisce di cercare fuori da quel gruppo.
+*   `{{呪文|じゅもん}}を{{1枚|いちまい}}またはメタリカを{{1体|いったい}}`: due
+    filtri paralleli. Il contatore cambia perché lo spell si conta con
+    `{{1枚|いちまい}}`, la creatura con `{{1体|いったい}}`.
+*   `{{相手|あいて}}に{{見|み}}せてから{{手札|てふだ}}に{{加|くわ}}えてもよい`:
+    sequenza e opzionalità. `てから` mette la rivelazione prima dell'aggiunta,
+    mentre `もよい` rende facoltativo prendere una carta.
+*   `{{残|のこ}}りを{{好|す}}きな{{順序|じゅんじょ}}で{{山札|やまふだ}}の
+    {{一番下|いちばんした}}に{{置|お}}く`: chiusura del gruppo. `{{残|のこ}}り`
+    sono le carte non prese; `{{一番下|いちばんした}}` le sposta lontano dalla
+    cima.
+
+#### ⚖️ Contrasto operativo
+
+`{{見|み}}る` e `{{見|み}}せる` non fanno lo stesso lavoro. All'inizio guardi le
+carte tu; dopo la scelta, `{{相手|あいて}}に{{見|み}}せてから` obbliga a mostrare
+la carta scelta all'avversario prima di aggiungerla alla mano. Il giapponese
+separa quindi informazione privata, rivelazione pubblica e spostamento finale.
+
+## 2. または e てから: filtro doppio, ordine singolo
+
+La parte più facile da leggere male è la sequenza centrale:
+`{{呪文|じゅもん}}を{{1枚|いちまい}}またはメタリカを{{1体|いったい}}
+{{相手|あいて}}に{{見|み}}せてから{{手札|てふだ}}に{{加|くわ}}えてもよい`.
+`または` decide quale tipo di carta può essere scelto; `てから` decide quando
+quella carta entra in mano. Sono due funzioni diverse nella stessa frase.
+
+### A. Due categorie sotto lo stesso verbo
+
+`または` non crea due effetti indipendenti. Collega due oggetti possibili dello
+stesso gesto: `{{呪文|じゅもん}}を{{1枚|いちまい}}` oppure
+`メタリカを{{1体|いったい}}`. In entrambi i casi la carta scelta passa attraverso
+lo stesso seguito: la mostri all'avversario e poi puoi aggiungerla alla mano.
+
+### B. てから come blocco di timing
+
+`てから` lega `{{見|み}}せる` a `{{加|くわ}}える`: prima fai vedere la carta, poi
+la aggiungi. Senza quel `から`, la frase sarebbe solo una catena di azioni; con
+`てから`, l'ordine diventa parte del requisito.
+
+### C. もよい e la scelta di non prendere
+
+`{{加|くわ}}えてもよい` chiude il primo effetto in modo facoltativo. Il testo
+non dice che devi prendere una carta se ne trovi una: dice che puoi farlo,
+rispettando filtro e rivelazione. Se non prendi nulla, `{{残|のこ}}り` finisce
+per comprendere tutte e tre le carte viste.
+
+#### 🧠 Gancio cognitivo
+
+Come immagine mentale, leggi il centro della frase come un piccolo cancello:
+`または` decide quale carta può passare, `てから` decide in che ordine passa. Il
+cancello non cambia il gruppo iniziale: resta sempre `その{{中|なか}}`, le tre
+carte appena guardate.
+
+## 3. Resti, ordine e fondo del mazzo
+
+Dopo la scelta, `{{残|のこ}}り` riprende tutto ciò che non è entrato in mano.
+Non introduce un nuovo gruppo e non guarda di nuovo il mazzo. Per questo
+`{{好|す}}きな{{順序|じゅんじょ}}で` lavora solo sulle carte rimaste dal blocco
+iniziale.
+
+`{{山札|やまふだ}}の{{一番下|いちばんした}}に{{置|お}}く` chiude la procedura con
+una destinazione precisa. `{{一番下|いちばんした}}` è il fondo assoluto del mazzo,
+non una posizione qualsiasi sotto la cima; `{{置|お}}く` è il verbo neutro di
+collocazione, ma qui diventa molto concreto perché la zona e la posizione sono
+entrambe specificate.
+
+#### ⚖️ Contrasto operativo
+
+`{{残|のこ}}り` non significa "le carte peggiori" e non contiene per forza due
+carte. Significa solo "ciò che resta" dopo la scelta permessa da `もよい`.
+Se prendi una carta, restano due carte; se non ne prendi nessuna, restano tutte
+e tre. Il giapponese lascia che sia la procedura precedente a determinare la
+quantità.
+
+## 4. かわりに: lo spell cambia destinazione
+
+Il secondo effetto descrive che cosa succede dopo il cast. La frase parte da
+`この{{呪文|じゅもん}}を{{自分|じぶん}}の{{手札|てふだ}}から
+{{唱|とな}}えた{{後|あと}}`: il timing è subito dopo aver lanciato questo spell
+dalla mano. Da lì, `かわりに` sostituisce il movimento normale verso il
+{{墓地|ぼち}}.
 
 :::example_sentence
 jp: >-
@@ -79,58 +218,53 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-## Parsing grammaticale
+#### 🗺️ Anatomia della frase
 
-### 1. 自分の山札の上から3枚見る
+*   `この{{呪文|じゅもん}}を`: oggetto diretto. La frase parla proprio di questo
+    spell, non di una carta qualunque.
+*   `{{自分|じぶん}}の{{手札|てふだ}}から{{唱|とな}}えた{{後|あと}}`: timing.
+    `から` marca la zona di partenza, `{{唱|とな}}えた{{後|あと}}` marca il
+    momento successivo al cast.
+*   `{{墓地|ぼち}}に{{置|お}}くかわりに`: evento sostituito. Il testo nomina la
+    destinazione normale solo per rimpiazzarla.
+*   `{{表|おもて}}{{向|む}}きのまま`: stato mantenuto. `のまま` dice che la carta
+    rimane scoperta mentre cambia collocazione.
+*   `{{自分|じぶん}}のシールド{{1|ひと}}つの{{上|うえ}}に
+    {{置|お}}く`: nuova destinazione. Lo spell non entra nello scudo come carta
+    coperta; viene posto sopra uno dei tuoi scudi.
 
-- Il primo gesto non è pescare, ma guardare un piccolo blocco di carte in cima.
-- `{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}` delimita un gruppo chiuso:
-  l'effetto lavora solo su quelle tre carte appena viste.
-- `その{{中|なか}}から` chiude subito il campo della scelta: tutto quello che
-  viene dopo deve essere preso da quel gruppo e non dal mazzo in generale.
+#### ⚖️ Contrasto operativo
 
-### 2. 呪文を1枚またはメタリカを1体相手に見せてから手札に加えてもよい
+`かわりに` evita una lettura a due tappe. Non metti prima lo spell nel
+{{墓地|ぼち}} e poi lo recuperi: il movimento verso il cimitero viene
+sostituito. La destinazione effettiva è subito
+`シールド{{1|ひと}}つの{{上|うえ}}`.
 
-- [または](grammar:grammar-matawa) collega due categorie valide nello stesso
-  filtro: puoi prendere o uno spell o un Metallica.
-- I contatori cambiano con il tipo di carta: `{{1枚|いちまい}}` per lo spell,
-  `{{1体|いったい}}` per il Metallica creatura.
-- [～てから](grammar:grammar-te-kara) impone la sequenza: prima mostri la carta
-  all'avversario, poi la aggiungi alla mano.
-- `てもよい` mantiene il gesto facoltativo: puoi anche non prendere nulla e
-  lasciare che tutte e tre finiscano nel riordino finale.
+#### 🧠 Gancio cognitivo
 
-### 3. 残りを好きな順序で山札の一番下に置く
+Come immagine mentale, `のまま` è una graffetta grammaticale: tiene attaccato
+lo stato {{表|おもて}}{{向|む}}き alla carta mentre `かわりに` cambia la
+destinazione. Non è etimologia, ma aiuta a non perdere il fatto che la carta
+resta scoperta.
 
-- `{{残|のこ}}り` indica tutte le carte del gruppo iniziale che non hai appena
-  preso.
-- [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de) ti dà
-  controllo reale sull'ordine in cui rientrano nel mazzo.
-- `{{山札|やまふだ}}の{{一番下|いち.ばん.した}}に[{{置|お}}く](term:term-oku)`
-  completa quindi una procedura di filtro: scegli una carta utile e spingi il
-  resto lontano dalla cima.
+## Esempi guidati di riepilogo
 
-### 4. 墓地に置くかわりに、表向きのまま自分のシールド1つの上に置く
+`その{{中|なか}}から` punta sempre alle tre carte appena viste. Se leggi subito
+`または`, cerca due categorie alternative nello stesso gruppo:
+{{呪文|じゅもん}} con `{{1枚|いちまい}}` o メタリカ con `{{1体|いったい}}`.
 
-- [かわりに](grammar:grammar-kawarini) segnala un rimpiazzo vero: la carta non
-  fa due movimenti, ma sostituisce il normale arrivo al cimitero.
-- [{{唱|とな}}える](term:term-tonaeru) vale la pena di essere fissato come verbo:
-  in giapponese generale è `recitare / pronunciare`, mentre nel rules text
-  diventa il verbo tecnico per `lanciare` uno spell.
-- `{{表|おもて}}{{向|む}}きのまま` non vuol dire solo `visibile adesso`:
-  indica che la carta resta scoperta anche nella nuova posizione.
-- `シールド{{1|ひと}}つの{{上|うえ}}に[{{置|お}}く](term:term-oku)` descrive
-  una collocazione precisa, non una semplice aggiunta alla mano o al battle
-  zone.
-- Il giapponese quindi costruisce una seconda identità pratica per lo spell:
-  dopo il lancio non scompare nel cimitero, ma si trasforma in una risorsa
-  visibile sopra uno scudo.
+`{{相手|あいて}}に{{見|み}}せてから{{手札|てふだ}}に{{加|くわ}}える` separa
+rivelazione e guadagno. La carta scelta non entra in mano di nascosto: il
+pattern `てから` mette prima la conferma visibile.
 
-## Lessico utile in questa carta
+`{{墓地|ぼち}}に{{置|お}}くかわりに` è il punto in cui cambia la traiettoria
+dello spell. La carta non completa il percorso normale verso il cimitero:
+rimane {{表|おもて}}{{向|む}}き e finisce sopra uno scudo.
 
-- [メタリカ](term:term-metallica) è un filtro ricorrente della sfera luce: se
-  lo riconosci subito, il primo effetto si legge molto più in fretta.
-- [{{裁|さば}}きの{{紋章|もんしょう}}](term:term-judgment-emblem) non è sapore narrativo:
-  è la razza scritta sulla carta e segnala l'ecosistema dei Sabaki spell.
-- [{{表|おもて}}{{向|む}}き](term:term-face-up) qui non serve a rivelare una carta
-  dal mazzo ma a descrivere in che stato resta lo spell sopra lo scudo.
+## Nota finale
+
+[{{剣参|けんざん}}ノ{{裁|さば}}キ](term:term-kenzan-no-sabaki) si legge bene se
+mantieni separati i due blocchi. Nel primo, `その{{中|なか}}から`, `または`,
+`てから` e `{{残|のこ}}り` governano la scelta dalla cima del mazzo. Nel
+secondo, `かわりに` e `{{表|おもて}}{{向|む}}きのまま` governano la destinazione
+dello spell dopo il cast.

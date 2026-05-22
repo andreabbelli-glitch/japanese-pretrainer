@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-live-duel-encounters-bad-brand-first
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-bad-brand-first
-title: Carte incontrate - Bad Brand 1st
+title: Bad Brand 1st e il bivio della carta rivelata
 order: 53
 segment_ref: live-duel-encounters
 difficulty: n3
@@ -19,101 +19,202 @@ summary: >-
   mazzo.
 ---
 
-# [“{{罰怒|バッド}}”ブランド 1st](term:term-bad-brand-first)
+# [“{{罰怒|バッド}}”ブランド {{1st|ファースト}}](term:term-bad-brand-first)
+
+[“{{罰怒|バッド}}”ブランド {{1st|ファースト}}](term:term-bad-brand-first)
+legge la cima del mazzo come una piccola procedura a bivi. Le keyword iniziali
+lo rendono aggressivo, ma la riga decisiva arriva quando attacca: la prima
+carta viene girata [{{表向|おもてむ}}き](term:term-face-up), controllata come
+[ビートジョッキー](term:term-beat-jockey) non
+[{{進化|しんか}}](term:term-evolution), poi mandata in
+[バトルゾーン](term:term-battle-zone) oppure in fondo al
+[{{山札|やまふだ}}](term:term-deck).
+
+Il giapponese procede in ordine molto pulito: timing, posizione esatta,
+cambio di stato, filtro, destinazione. Se tieni fermo quel flusso, `それ` non si
+perde mai: riprende sempre la carta appena rivelata.
 
 :::image
 src: assets/cards/live-duel/bad-brand-first.png
 alt: "Bad Brand 1st card."
 caption: >-
-  [“{{罰怒|バッド}}”ブランド 1st](term:term-bad-brand-first)。 Razza:
-  [ビートジョッキー](term:term-beat-jockey)。 Riga centrale: quando attacca,
-  rivela la prima carta del mazzo; se è un Beat Jockey non evoluzione la mette
-  subito nel battle zone, altrimenti la manda in fondo al mazzo.
+  [“{{罰怒|バッド}}”ブランド {{1st|ファースト}}](term:term-bad-brand-first).
+  Razza: [ビートジョッキー](term:term-beat-jockey). La riga centrale parte
+  dall'attacco, rivela la prima carta del mazzo e decide se quella stessa
+  carta entra nel battle zone o scivola in fondo al mazzo.
 :::
 
-## Keyword presenti sulla carta
+## Termini chiave
 
-- [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two)
-- [スピードアタッカー](term:term-speed-attacker)
-- [W・ブレイカー](term:term-w-breaker)
+- [“{{罰怒|バッド}}”ブランド {{1st|ファースト}}](term:term-bad-brand-first) -
+  nome proprio della creatura che attiva il controllo durante l'attacco.
+- [{{攻撃|こうげき}}](term:term-attack) - l'azione che apre il timing
+  dell'effetto.
+- [{{山札|やまふだ}}](term:term-deck) - il mazzo, qui letto come pila con cima e
+  fondo.
+- [{{表向|おもてむ}}き](term:term-face-up) - stato scoperto: la carta diventa
+  informazione visibile prima del filtro.
+- [ビートジョッキー](term:term-beat-jockey) - razza richiesta dal ramo positivo.
+- [{{進化|しんか}}](term:term-evolution) - categoria esclusa da `でない`.
+- [バトルゾーン](term:term-battle-zone) - destinazione positiva della carta
+  rivelata.
 
-Le keyword stanno già nella keyword bank. Qui conviene concentrarsi sul trigger
-di attacco e sul doppio controllo che decide il destino della carta rivelata.
+## Espressioni ricorrenti
 
-## Effetti da leggere
+- [{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}](term:term-top-card-of-deck)
+  - non una carta qualsiasi: proprio la prima carta dalla cima.
+- [{{山札|やまふだ}}の{{一番下|いちばんした}}](term:term-bottom-of-deck) -
+  il punto meno immediato del mazzo.
+- [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara) - il ramo che raccoglie
+  tutto ciò che non ha passato il filtro precedente.
+
+## Pattern grammaticali chiave
+
+- [{{時|とき}}](grammar:grammar-toki) - aggancia l'effetto al momento
+  dell'attacco.
+- [それが...なら](grammar:grammar-sorega-nara) - riusa il referente appena
+  introdotto e apre una condizione.
+- [{{1枚目|いちまいめ}}](grammar:grammar-me-ordinal) - `{{目|め}}` trasforma il
+  conteggio in posizione nell'ordine.
+
+## Etichette da riconoscere
+
+- [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two) - costo ridotto ora,
+  distruzione a fine turno.
+- [スピードアタッカー](term:term-speed-attacker) - attacco immediato senza
+  aspettare il turno successivo.
+- [W・ブレイカー](term:term-w-breaker) - rottura di due scudi.
+
+---
+
+## 1. Il trigger di attacco sceglie una carta precisa
+
+La prima frase non pesca e non sposta ancora nulla. Costruisce il momento e
+l'oggetto: `{{攻撃|こうげき}}する{{時|とき}}` apre la finestra dell'effetto, mentre
+`{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}` restringe il campo alla
+carta che in quel momento sta in cima al mazzo.
 
 :::example_sentence
 jp: >-
-  このクリーチャーが[{{攻撃|こうげき}}](term:term-attack)する
+  [{{攻撃|こうげき}}](term:term-attack)する
   [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の
-  [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{1枚目|いちまいめ}}を
-  [{{表|おもて}}{{向|む}}き](term:term-face-up)にする。
+  [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
+  [{{1枚目|いちまいめ}}](grammar:grammar-me-ordinal)を
+  [{{表向|おもてむ}}き](term:term-face-up)にする。
 translation_it: >-
-  Quando questa creatura attacca, metti scoperta la prima carta del tuo mazzo.
+  Quando attacca, rende scoperta la prima carta dalla cima del proprio mazzo.
 reveal_mode: sentence
 :::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{攻撃|こうげき}}する{{時|とき}}` - **Timing**: il verbo in forma piana prima
+    di `{{時|とき}}` dice quando parte l'effetto, non quale carta viene scelta.
+*   `{{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から` - **Origine**: `の` lega
+    proprietario, mazzo e posizione; `から` fa partire il prelievo dalla cima.
+*   `{{1枚目|いちまいめ}}を` - **Oggetto diretto**: `{{目|め}}` non conta una
+    carta generica, ma marca la prima posizione della pila.
+*   `{{表向|おもてむ}}きにする` - **Cambio di stato**: `にする` rende la carta
+    scoperta; non la mette ancora in mano e non la mette ancora in campo.
+
+#### ⚖️ Contrasto operativo: rivelare non è pescare
+
+[{{表向|おもてむ}}き](term:term-face-up) descrive lo stato visibile della carta.
+Se il testo volesse farla entrare in mano, useresti una formula come
+[{{手札|てふだ}}](term:term-hand)に[{{加|くわ}}える](term:term-add). Qui invece
+la carta resta il referente della frase successiva: prima la vedi, poi il
+testo decide che cosa farne.
+
+#### 🧠 Gancio cognitivo: il `目` mette un segnaposto
+
+Come trucco di memoria, leggi `{{1枚目|いちまいめ}}` come una carta con un
+segnaposto sopra: non stai contando `una carta`, stai indicando `la carta
+numero uno` nella sequenza. Questo aiuta a non confondere
+`{{1枚|いちまい}}` con `{{1枚目|いちまいめ}}`.
+
+## 2. Il filtro ha due porte: non evoluzione e Beat Jockey
+
+La seconda frase parte da `それが`: il referente non cambia, e non viene
+introdotto un nuovo oggetto. `それ` è la carta appena resa
+[{{表向|おもてむ}}き](term:term-face-up). Su quella carta il testo applica un
+filtro doppio: deve essere un [ビートジョッキー](term:term-beat-jockey) e non
+deve essere [{{進化|しんか}}](term:term-evolution).
 
 :::example_sentence
 jp: >-
   それが[{{進化|しんか}}](term:term-evolution)でない
   [ビートジョッキー](term:term-beat-jockey)なら
   [バトルゾーン](term:term-battle-zone)に[{{出|だ}}し](term:term-dasu)、
-  [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara){{自分|じぶん}}の
-  [{{山札|やまふだ}}](term:term-deck)の{{一番下|いち.ばん.した}}に
+  [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara)
+  [{{山札|やまふだ}}](term:term-deck)の
+  [{{一番下|いちばんした}}](term:term-bottom-of-deck)に
   [{{置|お}}く](term:term-oku)。
 translation_it: >-
-  Se quella carta è un Beat Jockey non evoluzione, la metti nel battle zone;
-  altrimenti la metti sul fondo del tuo mazzo.
+  Se quella carta è un Beat Jockey non evoluzione, la mette nel battle zone;
+  altrimenti la mette sul fondo del mazzo.
 reveal_mode: sentence
 :::
 
-## Parsing grammaticale
+#### 🗺️ Anatomia della frase
 
-### 1. このクリーチャーが攻撃する時
+*   `それが` - **Referente mantenuto**: `それ` punta alla carta rivelata nella
+    frase precedente, non a Bad Brand 1st.
+*   `{{進化|しんか}}でないビートジョッキーなら` - **Condizione composta**:
+    `でない` nega la categoria `{{進化|しんか}}`; `なら` apre il ramo solo se la
+    carta resta comunque [ビートジョッキー](term:term-beat-jockey).
+*   `バトルゾーンに{{出|だ}}し` - **Ramo positivo**: `に` marca la destinazione,
+    `{{出|だ}}し` mette la carta in campo e collega la procedura al ramo
+    alternativo.
+*   `それ{{以外|いがい}}なら` - **Ramo alternativo**: tutto ciò che non è
+    `{{進化|しんか}}でないビートジョッキー` passa qui.
+*   `{{山札|やまふだ}}の{{一番下|いちばんした}}に{{置|お}}く` - **Destinazione
+    negativa**: `{{一番下|いちばんした}}` chiude la carta in fondo alla pila,
+    lontano dalla cima appena controllata.
 
-- Il trigger qui parte dall'attacco, non dall'ingresso nel battle zone.
-- [{{攻撃|こうげき}}](term:term-attack)する
-  [{{時|とき}}](grammar:grammar-toki) riusa il pattern base dei timing:
-  l'effetto si legge solo nel momento in cui questa creatura dichiara
-  l'attacco.
-- `このクリーチャーが` chiarisce che il soggetto del trigger resta la carta
-  stessa, mentre il bersaglio operativo arriverà soltanto dopo.
+#### ⚖️ Contrasto operativo: `でない` non annulla la razza
 
-### 2. 自分の山札の上から1枚目を表向きにする
+`{{進化|しんか}}でないビートジョッキー` non significa "non evoluzione oppure Beat
+Jockey". È un unico blocco nominale: un Beat Jockey che non è evoluzione. Una
+carta evoluzione con la razza giusta fallisce comunque il filtro, e una carta
+non evoluzione di un'altra razza fallisce allo stesso modo.
 
-- [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{1枚目|いちまいめ}}
-  fissa una carta molto precisa: proprio quella in cima in questo momento.
-- [{{表|おもて}}{{向|む}}き](term:term-face-up)にする non vuol dire pescare né
-  aggiungere alla mano: vuol dire rendere pubblica quell'informazione durante
-  la risoluzione.
-- Il giapponese quindi costruisce prima la rivelazione e solo dopo il filtro:
-  prima guardi quale carta è, poi leggi che cosa succede a quella carta.
+#### 🧠 Gancio cognitivo: due controlli, una sola carta
 
-### 3. それが進化でないビートジョッキーなら
+Immagina la carta rivelata con due timbri da ottenere: `non evoluzione` e
+`Beat Jockey`. Se mancano entrambi o ne manca uno solo, `それ以外なら` raccoglie
+quel caso e lo manda al fondo del mazzo.
 
-- `それが` riprende esattamente la carta appena rivelata dalla cima del mazzo.
-- `{{進化|しんか}}でない` esclude la categoria delle evoluzioni: non basta essere
-  un [ビートジョッキー](term:term-beat-jockey), bisogna anche non essere una
-  creatura evoluzione.
-- Il blocco intero è quindi un filtro doppio: tribù corretta e assenza della
-  proprietà `{{進化|しんか}}`.
+## 3. Le destinazioni cambiano il valore della stessa carta
 
-### 4. それ以外なら自分の山札の一番下に置く
+Il blocco finale usa due verbi semplici ma molto diversi.
+[{{出|だ}}す](term:term-dasu) porta una carta nel
+[バトルゾーン](term:term-battle-zone), quindi la rende presenza attiva sul
+tavolo. [{{置|お}}く](term:term-oku), con
+[{{山札|やまふだ}}の{{一番下|いちばんした}}](term:term-bottom-of-deck), invece la
+ricolloca dentro il mazzo nella posizione meno immediata.
 
-- [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara) apre il ramo alternativo sullo
-  stesso referente appena controllato.
-- `{{一番下|いち.ばん.した}}に[{{置|お}}く](term:term-oku)` non lascia la carta
-  dov'è: la sposta in fondo al mazzo, quindi fuori dalla pescata immediata.
-- Il testo chiude così un bivio completo: `passa il filtro -> battle zone`,
-  `non passa -> fondo del mazzo`.
+La particella `に` resta la stessa in entrambi i rami, ma la lettura cambia
+perché cambia il luogo: `バトルゾーンに` è ingresso in campo, mentre
+`{{山札|やまふだ}}の{{一番下|いちばんした}}に` è sepoltura temporanea nel mazzo. La
+frase non giudica se la carta è buona o cattiva: controlla una condizione e
+assegna una destinazione.
 
-## Lessico utile in questa carta
+## Esempi guidati di riepilogo
 
-- [ビートジョッキー](term:term-beat-jockey) è il filtro tribale decisivo:
-  quando compare nella seconda frase, stai controllando la famiglia della carta
-  rivelata.
-- [{{表|おもて}}{{向|む}}き](term:term-face-up) segnala informazione pubblica durante
-  la risoluzione, non movimento di zona.
-- `{{上|うえ}}から{{1枚目|いちまいめ}}` e `{{一番下|いち.ばん.した}}` sono due
-  chunk molto utili perché descrivono posizioni precise del mazzo, non carte
-  generiche.
+`{{攻撃|こうげき}}する{{時|とき}}` ti prepara a leggere un effetto che parte
+durante l'attacco, non all'ingresso nel battle zone. Subito dopo,
+`{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}` blocca la carta precisa:
+quella in cima, non una carta scelta dal mazzo.
+
+Quando compare `それが`, resta agganciato a quella carta rivelata. Se leggi
+`{{進化|しんか}}でないビートジョッキーなら`, controlla insieme le due condizioni;
+quando leggi `それ{{以外|いがい}}なら`, raccogli tutti i casi che non hanno
+superato quel controllo.
+
+## Nota finale
+
+[“{{罰怒|バッド}}”ブランド {{1st|ファースト}}](term:term-bad-brand-first) è un buon
+esempio di rules text procedurale: una frase rende visibile una carta precisa,
+l'altra usa `それ` per non cambiare referente e decide la destinazione. Il
+punto da riconoscere in partita è questa catena: attacco, cima del mazzo,
+stato scoperto, filtro doppio, battle zone o fondo.
