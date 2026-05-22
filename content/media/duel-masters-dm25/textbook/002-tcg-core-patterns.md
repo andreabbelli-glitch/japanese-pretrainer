@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-tcg-core-patterns
 media_id: media-duel-masters-dm25
 slug: tcg-core-patterns
-title: TCG Core - Montare il testo effetto
+title: Montare il testo effetto delle carte
 order: 20
 segment_ref: tcg-core
 difficulty: n4
@@ -14,443 +14,575 @@ prerequisites:
     lesson-duel-masters-dm25-tcg-card-types,
   ]
 summary: >-
-  Seconda lezione core più tecnica: trigger, sequenza, opzionalità,
-  sostituzione, controllo di stato e restrizioni del rules text di Duel
-  Masters.
+  Trigger, sequenze, opzionalità, sostituzioni, controlli di stato e
+  restrizioni che fanno funzionare il rules text di Duel Masters.
 ---
 
-# Obiettivo
+# Montare il testo effetto delle carte
 
-Questa sezione passa dal riconoscimento lessicale alla meccanica della frase.
-Il rules text monta le informazioni in ordine funzionale: primo il momento in cui
-l'effetto si attiva, poi l'azione, quindi eventuali dipendenze, eccezioni o
-limiti.
+Su una carta di Duel Masters il giapponese non racconta l'effetto come farebbe
+un dialogo. Lo compatta in una procedura: prima ti dà il momento in cui il
+testo si accende, poi l'azione, poi il bersaglio, la zona, il filtro numerico e
+le restrizioni che impediscono letture troppo larghe.
 
-## Contesto
-
-Il giapponese delle carte non suona come una conversazione normale. È più
-compatto, più tecnico e soprattutto più sequenziale. Le carte ti costringono a
-leggere in ordine: trigger, azione, bersaglio, filtro, eccezione.
-
-I pattern più utili da riconoscere sono
-[～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki), [その後](grammar:grammar-sonoato),
-[そうしたら](grammar:grammar-soushitara),
-[～てもよい](grammar:grammar-temoyoi), [かわりに](grammar:grammar-kawarini),
-[～なければ ... ない](grammar:grammar-nakereba),
-[～ていれば](grammar:grammar-teireba),
-[～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de),
-[または](grammar:grammar-matawa),
-[～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou),
-[～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) e
-[ただし](grammar:grammar-tadashi).
-
-[{{効果|こうか}}](term:term-effect) è il riferimento semantico del blocco operativo:
-indica il singolo effetto che produce un risultato o una restrizione. Con `この{{効果|こうか}}`,
-la frase indica quel blocco d'effetto specifico, non la carta in generale.
+Quando vedi una riga come `{{出|で}}た{{時|とき}}` o `その{{後|あと}}`,
+non stai solo traducendo parole isolate. Stai montando l'ordine di risoluzione:
+che cosa è già successo, che cosa puoi scegliere, che cosa dipende da una
+condizione e che cosa resta vero anche se una carta si sposta.
 
 ## Termini chiave
 
-- [{{出|で}}る](term:term-deru)
-- [{{出|だ}}す](term:term-dasu)
-- [{{置|お}}く](term:term-oku)
-- [{{選|えら}}ぶ](term:term-erabu)
-- [{{離|はな}}れる](term:term-hanareru)
-- [{{残|のこ}}る](term:term-nokoru)
-- [{{扱|あつか}}う](term:term-atsukau)
-- [{{攻撃|こうげき}}](term:term-attack)
-- [{{破壊|はかい}}](term:term-destroy)
-- [タップ](term:term-tap)
-- [アンタップ](term:term-untap)
-- [{{重|かさ}}ねる](term:term-kasaneru)
-- [コスト](term:term-cost)
-- [パワー](term:term-power)
-- [{{合計|ごうけい}}](term:term-goukei)
-- [{{効果|こうか}}](term:term-effect)
+- [{{出|で}}る](term:term-deru) — entrare o uscire come evento che accade alla
+  carta; nel rules text spesso segnala il punto da cui parte un trigger.
+- [{{出|だ}}す](term:term-dasu) — mettere in campo o far uscire qualcosa da una
+  zona; qui il testo presenta un'azione compiuta dal giocatore o dall'effetto.
+- [{{置|お}}く](term:term-oku) — mettere una carta in una zona precisa, spesso
+  dal mazzo al cimitero o in fondo al mazzo.
+- [{{選|えら}}ぶ](term:term-erabu) — scegliere un bersaglio valido prima di
+  applicare l'azione.
+- [{{離|はな}}れる](term:term-hanareru) — lasciare una zona; il focus è sul fatto
+  che la carta non si trova più dov'era.
+- [{{残|のこ}}る](term:term-nokoru) — restare nella zona o nello stato corrente
+  nonostante un altro evento.
+- [{{扱|あつか}}う](term:term-atsukau) — trattare o contare qualcosa come una
+  certa categoria di carta.
+- [{{効果|こうか}}](term:term-effect) — il blocco operativo che produce il
+  risultato; `この{{効果|こうか}}` punta a quell'effetto specifico, non alla carta
+  intera.
+
+## Espressioni ricorrenti
+
+- [その後](grammar:grammar-sonoato) — continua la procedura dopo il blocco
+  appena risolto.
+- [そうしたら](grammar:grammar-soushitara) — apre un seguito dipendente dal fatto
+  che il passo precedente sia stato davvero eseguito.
+- [かわりに](grammar:grammar-kawarini) — sostituisce un evento con un altro, senza
+  sommarli.
+- [{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de)
+  — esclude un metodo specifico e lascia validi gli altri modi di mettere in
+  campo.
+- [または](grammar:grammar-matawa) — unisce due categorie come alternative sotto
+  lo stesso filtro.
+- [ただし](grammar:grammar-tadashi) — aggiunge una limitazione finale al blocco
+  appena letto.
 
 ## Pattern grammaticali chiave
 
 - [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki)
-- [その後](grammar:grammar-sonoato)
-- [そうしたら](grammar:grammar-soushitara)
 - [～てもよい](grammar:grammar-temoyoi)
-- [かわりに](grammar:grammar-kawarini)
 - [～なければ ... ない](grammar:grammar-nakereba)
 - [～ていれば](grammar:grammar-teireba)
-- [～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de)
-- [または](grammar:grammar-matawa)
 - [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou)
 - [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing)
-- [ただし](grammar:grammar-tadashi)
 
-## Spiegazione
+## Etichette operative da riconoscere
 
-### 1. Trigger: prima il momento, poi l'effetto
+- [{{山札|やまふだ}}](term:term-deck) — il mazzo; con `の{{上|うえ}}から` indica
+  la cima come punto di partenza.
+- [{{墓地|ぼち}}](term:term-graveyard) — il cimitero; spesso è destinazione o
+  fonte di recupero.
+- [{{手札|てふだ}}](term:term-hand) — la mano; quando qualcosa vi entra, il testo
+  usa spesso `に{{加|くわ}}える` o `に{{戻|もど}}す`.
+- [コスト](term:term-cost) — filtro numerico su cosa puoi scegliere o mettere in
+  campo.
+- [パワー](term:term-power) — filtro numerico legato alla forza della creatura.
+- [タップ](term:term-tap) e [アンタップ](term:term-untap) — stato ruotato e
+  ripristino dello stato.
+- [{{攻撃|こうげき}}](term:term-attack), [{{破壊|はかい}}](term:term-destroy) e
+  [{{重|かさ}}ねる](term:term-kasaneru) — azioni che trasformano un timing in
+  conseguenza concreta.
 
-Il pattern più importante è [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki). Nelle carte lo
-trovi in forme come `{{出|で}}た{{時|とき}}`, `{{攻撃|こうげき}}する{{時|とき}}`,
-`{{離|はな}}れる{{時|とき}}`, `ブレイクされた{{時|とき}}`.
+---
 
-Quando la vedi, quella porzione definisce il *quando* dell'attivazione e non
-l'azione stessa.
+## 1. Trigger e timing: prima capisci quando parla la carta
 
-Anche [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) serve a questo:
-fissa il momento preciso del turno. Forme come `{{自分|じぶん}}のターンのはじめに` o
-`このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに` sono prima di tutto indicatori di
-timing.
+Il primo pezzo da isolare è quasi sempre il timing. Una carta può avere un
+effetto forte, ma se leggi male il momento in cui si accende, sposti tutta la
+procedura nel punto sbagliato della partita.
 
-Se il trigger non è identificato, il resto della frase non va letto come azione
-immediata.
-
-### 2. Sequenza: その{{後|あと}} e そうしたら non dicono la stessa cosa
-
-[その後](grammar:grammar-sonoato) significa "poi" o "dopo quello". Segnala che
-la frase continua con un secondo blocco.
-
-Esempio:
+- [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki) aggancia il blocco
+  successivo a un evento: `{{出|で}}た{{時|とき}}` significa "quando è entrata",
+  `{{攻撃|こうげき}}する{{時|とき}}` significa "quando attacca",
+  `{{離|はな}}れる{{時|とき}}` significa "quando lascia la zona". La parte prima
+  di `{{時|とき}}` non è ancora il payoff: è l'interruttore che decide quando
+  leggere ciò che viene dopo.
+- [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) non parla di un
+  evento qualunque, ma di una finestra del turno. `{{自分|じぶん}}のターンのはじめに`
+  sposta l'effetto all'inizio del tuo turno; `このクリーチャーの{{最初|さいしょ}}の
+  {{攻撃|こうげき}}の{{終|お}}わりに` lo colloca alla fine del primo attacco di
+  quella creatura. Il testo non ti sta dicendo solo "dopo", ma quale finestra
+  della procedura usare.
 
 :::example_sentence
 jp: >-
-  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{4枚|よんまい}}を{{墓地|ぼち}}に{{置|お}}く。その{{後|あと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。
+  このクリーチャーが[バトルゾーン](term:term-battle-zone)に
+  [{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki)、
+  {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
+  {{1枚目|いちまいめ}}を[{{墓地|ぼち}}](term:term-graveyard)に
+  [{{置|お}}く](term:term-oku)。
+translation_it: >-
+  Quando questa creatura entra nel battle zone, metti la prima carta dalla cima
+  del tuo mazzo nel cimitero.
+reveal_mode: sentence
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `このクリーチャーが` ➔ **Soggetto del trigger**: è questa creatura, non una
+    creatura qualsiasi, a produrre la finestra di attivazione.
+*   `[バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)` ➔
+    **Evento già avvenuto**: la creatura è entrata; il testo successivo parte
+    da quel fatto.
+*   `[{{時|とき}}](grammar:grammar-toki)` ➔ **Cerniera temporale**: tutto ciò
+    che segue va risolto quando quel momento si verifica.
+*   `[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{1枚目|いちまいめ}}を` ➔
+    **Fonte e oggetto**: non una carta a scelta, ma la prima dalla cima del
+    mazzo.
+*   `[{{墓地|ぼち}}](term:term-graveyard)に[{{置|お}}く](term:term-oku)` ➔
+    **Destinazione e azione**: la carta viene messa nel cimitero.
+
+#### ⚖️ Contrasto operativo: trigger non vuol dire effetto già risolto
+
+`{{出|で}}た{{時|とき}}` dice che l'ingresso è il momento che attiva la riga.
+Non dice che tutte le azioni successive sono già accadute. Prima riconosci
+l'evento, poi risolvi il blocco dopo la virgola.
+
+#### 🧠 Gancio cognitivo
+
+Come trucco di memoria, tratta `{{時|とき}}` come una cerniera: tutto ciò che
+sta a sinistra apre la porta, tutto ciò che sta a destra è la procedura che
+passa da quella porta.
+
+## 2. Sequenza e dipendenza: その後 continua, そうしたら aggancia
+
+Dopo il trigger, molte carte concatenano due istruzioni. Qui la differenza
+decisiva non è tra "poi" e "poi" in italiano, ma tra una sequenza ordinata e
+un seguito che dipende dal primo passo.
+
+- [その後](grammar:grammar-sonoato) significa "dopo quello": chiude il blocco
+  precedente e apre il blocco successivo. La frase resta procedurale; prima
+  fai A, poi leggi B.
+- [そうしたら](grammar:grammar-soushitara) è più vincolante: rimanda a
+  "se hai fatto così". Quando il primo blocco è opzionale con
+  [～てもよい](grammar:grammar-temoyoi), `そうしたら` impedisce di prendere il
+  secondo risultato se non hai eseguito davvero il primo passo.
+- [～てもよい](grammar:grammar-temoyoi) marca una possibilità concessa al
+  giocatore. Non rende automaticamente opzionale tutto il resto della carta:
+  bisogna guardare se il testo successivo è collegato da `そうしたら`, da
+  `その{{後|あと}}` o da un'altra struttura.
+
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
+  {{4枚|よんまい}}を[{{墓地|ぼち}}](term:term-graveyard)に
+  [{{置|お}}く](term:term-oku)。[その{{後|あと}}](grammar:grammar-sonoato)、
+  [コスト](term:term-cost){{4以下|よんいか}}の[アビス](term:term-abyss)を
+  {{1枚|いちまい}}、{{自分|じぶん}}の
+  [{{墓地|ぼち}}](term:term-graveyard)から[{{出|だ}}す](term:term-dasu)。
 translation_it: >-
   Metti le prime 4 carte del tuo mazzo nel cimitero. Poi metti in gioco 1
   Abyss di costo 4 o inferiore dal tuo cimitero.
+reveal_mode: sentence
 :::
 
-La forma impone una sequenza operativa: prima la prima istruzione, poi la
-successiva.
+#### 🗺️ Anatomia della frase
 
-[そうしたら](grammar:grammar-soushitara) è più stretto. Di solito vuol dire:
-"se fai davvero il primo passo, allora succede il secondo".
-
-Esempio:
+*   `{{山札|やまふだ}}の{{上|うえ}}から{{4枚|よんまい}}を` ➔ **Gruppo iniziale**:
+    il testo prende quattro carte dalla cima del mazzo.
+*   `{{墓地|ぼち}}に{{置|お}}く` ➔ **Prima istruzione completa**: quelle carte
+    vanno nel cimitero.
+*   `[その{{後|あと}}](grammar:grammar-sonoato)` ➔ **Sequenza ordinata**: il
+    blocco successivo parte dopo la prima istruzione.
+*   `コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}` ➔ **Filtro e quantità**:
+    l'oggetto valido è un Abyss di costo 4 o inferiore, uno solo.
+*   `{{墓地|ぼち}}から{{出|だ}}す` ➔ **Fonte e azione transitiva**: l'effetto fa
+    uscire quella carta dal cimitero e la mette in campo.
 
 :::example_sentence
 jp: >-
-  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}を{{墓地|ぼち}}に{{置|お}}いてもよい。そうしたら、...
+  {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
+  {{3枚|さんまい}}を[{{墓地|ぼち}}](term:term-graveyard)に
+  [{{置|お}}いてもよい](grammar:grammar-temoyoi)。
+  [そうしたら](grammar:grammar-soushitara)、[アビス](term:term-abyss)を
+  {{1枚|いちまい}}、{{自分|じぶん}}の
+  [{{墓地|ぼち}}](term:term-graveyard)から
+  [{{手札|てふだ}}](term:term-hand)に[{{戻|もど}}してもよい](term:term-modosu)。
 translation_it: >-
-  Puoi mettere le prime 3 carte del tuo mazzo nel cimitero. Se lo fai, ...
+  Puoi mettere le prime 3 carte del tuo mazzo nel cimitero. Se lo fai, puoi
+  riprendere 1 Abyss dal tuo cimitero nella tua mano.
+reveal_mode: sentence
 :::
 
-Nel parsing:
+#### 🗺️ Anatomia della frase
 
-- [その後](grammar:grammar-sonoato) = la frase continua;
-- [そうしたら](grammar:grammar-soushitara) = il seguito dipende dal primo passo.
+*   `{{置|お}}いてもよい` ➔ **Scelta locale**: il primo movimento di zona è
+    permesso, non obbligatorio.
+*   `[そうしたら](grammar:grammar-soushitara)` ➔ **Dipendenza dal passo scelto**:
+    il seguito si apre solo se hai davvero messo le carte nel cimitero.
+*   `アビスを{{1枚|いちまい}}` ➔ **Oggetto recuperabile**: il testo restringe il
+    recupero a una carta Abyss.
+*   `{{墓地|ぼち}}から{{手札|てふだ}}に{{戻|もど}}してもよい` ➔ **Seconda scelta**:
+    anche il recupero è facoltativo, ma arriva dentro il ramo creato da
+    `そうしたら`.
 
-La differenza influisce sulla risoluzione dell'effetto, non solo sulla grammatica.
+#### ⚖️ Contrasto operativo: その後 non controlla se hai scelto A
 
-### 3. Opzionalità: ～てもよい e dipendenze locali
+`その{{後|あと}}` ordina due blocchi; `そうしたら` lega il secondo al fatto che
+il primo sia stato eseguito. Se una riga contiene `てもよい` e poi
+`そうしたら`, la seconda parte non è un premio gratuito: è il ramo che segue la
+scelta appena fatta.
 
-[～てもよい](grammar:grammar-temoyoi) è il marcatore di azione opzionale: la
-scelta del giocatore deve essere confermata prima dell'esecuzione.
+## 3. Azione, bersaglio e zona: chi sposta che cosa
 
-Così il blocco risulta condizionato. L'effetto diventa una possibilità, non un
-vincolo automatico.
+Il testo effetto di Duel Masters usa molte frasi di movimento. Per leggerle
+bene, separa sempre il verbo dal percorso: da dove parte la carta, dove arriva,
+e chi o che cosa la sta muovendo.
 
-Separa esplicitamente la parte opzionale da quella fissa. In Duel Masters la
-scelta è spesso locale: il ramo scelto cambia un passaggio, ma le istruzioni
-esterne restano valide.
-
-### 4. Sostituzione: かわりに non aggiunge, rimpiazza
-
-[かわりに](grammar:grammar-kawarini) segnala spesso una sostituzione. In altre
-parole, non vuol dire "e poi fai anche questo". Vuol dire "invece di quello,
-fai quest'altro".
-
-Schema tipico:
+- [{{出|で}}る](term:term-deru) è intransitivo: la carta entra, esce o appare
+  come evento. In `バトルゾーンに{{出|で}}た{{時|とき}}`, il focus è "questa
+  creatura è entrata".
+- [{{出|だ}}す](term:term-dasu) è transitivo: qualcuno o qualcosa mette in
+  campo una carta. In `{{墓地|ぼち}}から{{出|だ}}す`, il testo ti fa cercare la
+  fonte e l'oggetto.
+- [{{置|お}}く](term:term-oku) non è un generico "lasciare": nel rules text
+  posiziona fisicamente o proceduralmente una carta in una zona. Per questo le
+  particelle sono decisive: `から` indica la fonte, `に` indica la destinazione,
+  `を` indica ciò che viene mosso.
+- [{{選|えら}}ぶ](term:term-erabu) crea un target prima dell'azione. Se leggi
+  prima il verbo finale e poi cerchi `を`, trovi che cosa viene scelto, distrutto,
+  aggiunto o spostato.
 
 :::example_sentence
 jp: >-
-  このクリーチャーが{{離|はな}}れる{{時|とき}}、かわりに{{自分|じぶん}}の{{手札|てふだ}}を{{2枚|にまい}}{{捨|す}}ててもよい。
+  {{自分|じぶん}}の[{{墓地|ぼち}}](term:term-graveyard)から
+  [クリーチャー](term:term-creature)を{{1体|いったい}}
+  [{{選|えら}}び](term:term-erabu)、[{{手札|てふだ}}](term:term-hand)に
+  [{{戻|もど}}す](term:term-modosu)。
+translation_it: >-
+  Scegli 1 creatura dal tuo cimitero e falla tornare nella tua mano.
+reveal_mode: sentence
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{自分|じぶん}}の{{墓地|ぼち}}から` ➔ **Fonte**: il target deve trovarsi nel tuo
+    cimitero.
+*   `クリーチャーを{{1体|いったい}}` ➔ **Tipo e quantità**: la scelta riguarda una
+    creatura, una sola.
+*   `{{選|えら}}び` ➔ **Selezione prima del risultato**: il testo stabilisce il
+    target valido.
+*   `{{手札|てふだ}}に{{戻|もど}}す` ➔ **Destinazione finale**: la carta scelta
+    torna in mano.
+
+#### 🧠 Gancio cognitivo
+
+Come trucco di memoria, leggi le particelle come coordinate: `から` è il punto
+di partenza, `に` è il punto di arrivo, `を` è la carta che stai seguendo con lo
+sguardo.
+
+## 4. Sostituzione e opzionalità: かわりに non aggiunge, rimpiazza
+
+Le carte spesso danno un modo per evitare un evento, pagare un costo alternativo
+o cambiare la conseguenza. Qui [かわりに](grammar:grammar-kawarini) è il segnale
+da non perdere: non introduce un secondo effetto dopo il primo, ma mette un ramo
+al posto dell'evento che stava per accadere.
+
+:::example_sentence
+jp: >-
+  このクリーチャーが[{{離|はな}}れる](term:term-hanareru)
+  [{{時|とき}}](grammar:grammar-toki)、
+  [かわりに](grammar:grammar-kawarini){{自分|じぶん}}の
+  [{{手札|てふだ}}](term:term-hand)を{{2枚|にまい}}{{捨|す}}ててもよい。
 translation_it: >-
   Quando questa creatura lascia il campo, al suo posto puoi scartare 2 carte
   dalla tua mano.
+reveal_mode: sentence
 :::
 
-In termini di esecuzione, `かわりに` sostituisce l'azione precedente con
-quella introdotta nel nuovo ramo.
+#### 🗺️ Anatomia della frase
 
-Se leggi `かわりに` come semplice "poi", sbagli la logica dell'effetto.
+*   `このクリーチャーが{{離|はな}}れる{{時|とき}}` ➔ **Evento minacciato**: la creatura
+    sta per lasciare la zona.
+*   `[かわりに](grammar:grammar-kawarini)` ➔ **Sostituzione**: il testo prepara
+    un'alternativa al movimento appena descritto.
+*   `{{手札|てふだ}}を{{2枚|にまい}}{{捨|す}}ててもよい` ➔ **Costo facoltativo**:
+    puoi scartare due carte dalla mano per prendere il ramo sostitutivo.
 
-### 5. Condizione negativa e controllo di stato
+#### ⚖️ Contrasto operativo: sostituire non significa fare entrambe le cose
 
-Un pattern centrale è [～なければ ... ない](grammar:grammar-nakereba). Nelle
-carte compare spesso in formule tecniche come:
+Se leggi `かわりに` come "poi", ottieni una risoluzione sbagliata: la creatura
+lascia il campo e in più scarti carte. Il giapponese invece dice "al posto di
+quell'evento, puoi fare questo".
+
+## 5. Condizioni negative e stati già presenti
+
+Non tutte le frasi effetto comandano una nuova azione. Alcune controllano se
+una carta conta come creatura, se una condizione era già vera o se una carta
+resta dov'è. Questi blocchi sembrano meno dinamici, ma decidono quali righe del
+rules text sono davvero attive.
+
+- [～なければ ... ない](grammar:grammar-nakereba) crea una condizione negativa:
+  se il requisito non è soddisfatto, il risultato non si applica. Nel rules
+  text spesso chiude uno status, per esempio "non viene trattata come creatura".
+- [～ていれば](grammar:grammar-teireba) controlla uno stato già raggiunto:
+  `{{進化|しんか}}していれば` non dice "evolvila adesso", ma "se si trova nello
+  stato di essersi evoluta".
+- [{{残|のこ}}る](term:term-nokoru) descrive continuità. Se un'altra carta
+  lascia la zona ma `このカードは{{残|のこ}}る`, il testo separa il destino della
+  carta rimasta dal movimento della carta uscita.
 
 :::example_sentence
 jp: >-
-  ...なければ、クリーチャーとして{{扱|あつか}}わない。
+  {{自分|じぶん}}の{{闇|やみ}}の[クリーチャー](term:term-creature)
+  [または](grammar:grammar-matawa){{闇|やみ}}のタマシードが
+  [{{合計|ごうけい}}](term:term-goukei){{4|よっ}}つ{{以上|いじょう}}
+  [なければ](grammar:grammar-nakereba)、[バトルゾーン](term:term-battle-zone)に
+  あるこのタマシードはクリーチャーとして[{{扱|あつか}}わない](term:term-atsukau)。
 translation_it: >-
-  ...altrimenti non viene trattata come una creatura.
+  Se non hai in totale almeno 4 creature oscure o Tamashido oscuri, questo
+  Tamashido nel battle zone non viene trattato come creatura.
+reveal_mode: sentence
 :::
 
-Se non riconosci [{{扱|あつか}}う](term:term-atsukau), la frase può sembrare oscura. Se la
-leggi a blocchi, invece, il senso è semplice: se la condizione non è soddisfatta,
-la carta non conta come creatura.
+#### 🗺️ Anatomia della frase
 
-Un altro pattern centrale è [～ていれば](grammar:grammar-teireba). Non introduce
-un'azione nuova: controlla uno stato già presente e decide se l'effetto può
-proseguire.
-
-Esempio:
+*   `{{闇|やみ}}のクリーチャーまたは{{闇|やみ}}のタマシード` ➔ **Due categorie valide**:
+    il controllo ammette creature oscure oppure Tamashido oscuri.
+*   `{{合計|ごうけい}}{{4|よっ}}つ{{以上|いじょう}}` ➔ **Soglia aggregata**: il
+    numero richiesto è il totale delle due categorie, non quattro per ciascuna.
+*   `[なければ](grammar:grammar-nakereba)` ➔ **Condizione negativa**: il blocco
+    successivo vale quando la soglia non è raggiunta.
+*   `クリーチャーとして{{扱|あつか}}わない` ➔ **Risultato di status**: la carta non
+    viene contata come creatura.
 
 :::example_sentence
 jp: >-
   タマシードから{{進化|しんか}}していれば、カードをもう{{1枚|いちまい}}{{引|ひ}}く。
 translation_it: >-
   Se si è evoluta da un Tamashido, pesca 1 carta in più.
+reveal_mode: sentence
 :::
 
-Il pattern verifica uno stato preesistente e solo dopo concede il bonus.
+#### 🗺️ Anatomia della frase
 
-[{{残|のこ}}る](term:term-nokoru) nel rules text descrive continuità di presenza di una
-carta nonostante cambi successivi in altra parte della situazione.
+*   `タマシードから` ➔ **Origine dello stato**: il controllo guarda da che cosa
+    arriva l'evoluzione.
+*   `{{進化|しんか}}していれば` ➔ **Stato già vero**: non ordina di evolvere ora,
+    verifica che l'evoluzione sia già avvenuta.
+*   `カードをもう{{1枚|いちまい}}{{引|ひ}}く` ➔ **Payoff condizionato**: la carta in
+    più arriva solo se il controllo di stato passa.
+
+#### ⚖️ Contrasto operativo: condizione e timing non sono la stessa cosa
+
+`{{時|とき}}` ti dice quando parte un effetto; `ていれば` ti dice se uno stato è
+vero nel momento del controllo. La prima forma apre una finestra, la seconda
+verifica una qualità già presente.
+
+## 6. Filtri, alternative e restrizioni: i numeri decidono i target
+
+Quando una carta dice `コスト{{4以下|よんいか}}` o
+`パワー{{2000以下|にせんいか}}`, non sta aggiungendo un dettaglio secondario:
+sta definendo quali oggetti possono essere scelti. Nei rules text moderni, i
+numeri sono spesso il confine tra target valido e target illegale.
+
+- [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou) include il
+  numero indicato. `コスト{{4以下|よんいか}}` comprende costo 4; non significa
+  "meno di 4". `{{合計|ごうけい}}{{4|よっ}}つ{{以上|いじょう}}` comprende il
+  totale 4; non richiede 5 o più.
+- [{{合計|ごうけい}}](term:term-goukei) aggrega il conteggio. Se due categorie
+  sono collegate da [または](grammar:grammar-matawa), `{{合計|ごうけい}}` ti dice
+  di sommarle nello stesso controllo.
+- [～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de)
+  esclude un mezzo, non un risultato. In
+  `{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}で{{出|だ}}した`, la creatura
+  è comunque entrata; il punto è che non è entrata tramite evocazione normale.
+- [ただし](grammar:grammar-tadashi) restringe il risultato appena costruito. Il
+  blocco prima di `ただし` rimane il corpo principale; il blocco dopo impone il
+  limite da applicare alla fine.
 
 :::example_sentence
 jp: >-
-  そのクリーチャーが{{離|はな}}れても、このカードは{{残|のこ}}る。
-translation_it: >-
-  Anche se quella creatura lascia il campo, questa carta resta.
-:::
-
-- [{{離|はな}}れる](term:term-hanareru) = una carta esce dalla zona.
-- [{{残|のこ}}る](term:term-nokoru) = un'altra carta continua a restare dov'è.
-
-Questi due pattern sono centrali perché non descrivono un'azione nuova:
-descrivono *quando un effetto conta davvero*.
-
-### 6. Mezzo escluso, alternative, filtri e restrizioni
-
-[～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de) è una formula tecnica molto
-comune. In frasi come
-`{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}でクリーチャーを{{出|だ}}した{{時|とき}}`, il punto non è il lessico difficile,
-ma la struttura: "con un metodo diverso dalla [{{召喚|しょうかん}}](term:term-summon)".
-
-[または](grammar:grammar-matawa) è il connettore di alternativa del rules text:
-due categorie o bersagli condividono lo stesso filtro per un'unica verifica.
-
-Esempio tipico:
-
-- `{{闇|やみ}}のクリーチャーまたは{{闇|やみ}}のタマシード`
-
-Il blocco applica un'unica selezione con due opzioni valide. Individua subito:
-
-- che cosa c'è a sinistra di [または](grammar:grammar-matawa);
-- che cosa c'è a destra;
-- quale numero, condizione o verbo si applica a entrambe le parti.
-
-Quando [または](grammar:grammar-matawa) compare insieme a
-[{{合計|ごうけい}}](term:term-goukei) o a un filtro numerico, le due categorie entrano nello
-stesso conteggio. Non sono due controlli separati.
-
-Con [ただし](grammar:grammar-tadashi), il testo successivo imposta una
-limitazione finale all'effetto principale.
-
-Esempi:
-
-- `ただし、コストは{{0以下|ぜろいか}}にはならない。`
-- `ただし、その「S・トリガー」は{{使|つか}}えない。`
-
-Ordine operativo: prima l'effetto principale, poi la restrizione finale.
-
-### 7. Numeri e filtri non sono dettagli secondari
-
-[～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou) compare ovunque:
-`コスト{{4以下|よんいか}}`, `パワー{{2000以下|にせんいか}}`,
-`{{合計|ごうけい}}{{4|よっ}}つ{{以上|いじょう}}`.
-
-Non è un dettaglio secondario. È il filtro che decide quali carte puoi
-scegliere, distruggere o mettere in campo.
-
-[{{合計|ごうけい}}](term:term-goukei) definisce come va aggregato il conteggio: la verifica non
-è per categoria separata, ma sul totale dei soggetti ammessi.
-
-Per identificare subito il tipo di controllo usa sempre questa lista:
-
-- [コスト](term:term-cost)
-- [パワー](term:term-power)
-- quantità
-- [{{合計|ごうけい}}](term:term-goukei), se presente
-- zona
-- bersaglio
-
-Quando compare [{{合計|ごうけい}}](term:term-goukei), la forma decide subito se il filtro è
-aggregato o separato. Questo punto influenza direttamente la validità dei target.
-
-### 8. Keyword, parentesi e frasi compatte
-
-Le carte moderne mettono spesso più azioni nella stessa frase. Inoltre molte
-keyword si aprono con una parentesi che spiega il funzionamento reale. Per
-esempio:
-
-:::example_sentence
-jp: >-
-  {{侵略|しんりゃく}}：{{火|ひ}}のコマンド（{{自分|じぶん}}の{{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}、{{自分|じぶん}}の{{手札|てふだ}}にあるこのクリーチャーをその{{上|うえ}}に{{重|かさ}}ねてもよい）
-translation_it: >-
-  Invasione: comando di fuoco (quando un tuo comando di fuoco attacca, puoi
-  sovrapporre su di esso questa creatura che hai in mano).
-:::
-
-La decomposizione della frase segue questo ordine:
-
-- [{{侵略|しんりゃく}}](term:term-invasion) = nome della keyword;
-- `{{火|ひ}}のコマンド` = requisito;
-- parentesi = istruzione concreta;
-- [{{攻撃|こうげき}}](term:term-attack) + [{{重|かさ}}ねる](term:term-kasaneru) =
-  finestra pratica in cui succede tutto.
-
-Poi ci sono frasi come questa:
-
-:::example_sentence
-jp: >-
-  {{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、このクリーチャーをアンタップし、{{一番上|いち.ばん.うえ}}のカードを{{破壊|はかい}}する。
-translation_it: >-
-  A ogni turno, alla fine del primo attacco di questa creatura, STAPpa questa
-  creatura e distruggi la carta in cima.
-:::
-
-La traduzione lineare può perdere priorità temporali; la separazione rende
-esplicito il flusso:
-
-- [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) = quando succede;
-- [アンタップ](term:term-untap) = prima azione;
-- [{{破壊|はかい}}](term:term-destroy) = seconda azione;
-- `{{一番上|いち.ばん.うえ}}` = quale carta viene colpita.
-
-Regola operativa: timing, poi azione, poi bersaglio.
-
-### 9. Una ricetta di parsing che puoi riusare subito
-
-Quando una frase è densa, applica sempre questo ordine:
-
-1. trova il trigger;
-2. trova il verbo principale;
-3. trova bersaglio e zona;
-4. controlla se c'è un'alternativa (`または`);
-5. controlla se c'è una sequenza (`その後`, `そうしたら`);
-6. controlla se c'è una scelta (`～てもよい`);
-7. leggi per ultime restrizioni e filtri (`ただし`, `～{{以下|いか}} / ～{{以上|いじょう}}`).
-
-È una procedura molto più affidabile della traduzione lineare.
-
-## Esempi guidati
-
-**Esempio 1**
-
-:::example_sentence
-jp: >-
-  このクリーチャーが{{出|で}}た{{時|とき}}、{{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}を{{墓地|ぼち}}に{{置|お}}く。
-translation_it: >-
-  Quando questa creatura entra, metti la prima carta del tuo mazzo nel
-  cimitero.
-:::
-
-- [{{出|で}}る](term:term-deru) + [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki) = trigger.
-- [{{山札|やまふだ}}](term:term-deck) + [{{墓地|ぼち}}](term:term-graveyard) + [{{置|お}}く](term:term-oku)
-  = movimento di zona.
-
-**Esempio 2**
-
-:::example_sentence
-jp: >-
-  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{4枚|よんまい}}を{{墓地|ぼち}}に{{置|お}}く。その{{後|あと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。
-translation_it: >-
-  Metti le prime 4 carte del tuo mazzo nel cimitero. Poi metti in gioco 1
-  Abyss di costo 4 o inferiore dal tuo cimitero.
-:::
-
-- [その後](grammar:grammar-sonoato) = la frase continua.
-- [アビス](term:term-abyss) + [{{墓地|ぼち}}](term:term-graveyard) + [{{出|だ}}す](term:term-dasu)
-  = recupero in campo.
-
-**Esempio 3**
-
-:::example_sentence
-jp: >-
-  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}を{{墓地|ぼち}}に{{置|お}}いてもよい。そうしたら、アビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{手札|てふだ}}に{{戻|もど}}してもよい。
-translation_it: >-
-  Puoi mettere le prime 3 carte del tuo mazzo nel cimitero. Se lo fai, puoi
-  riprendere 1 Abyss dal tuo cimitero nella tua mano.
-:::
-
-- [～てもよい](grammar:grammar-temoyoi) = scelta.
-- [そうしたら](grammar:grammar-soushitara) = il secondo effetto dipende dal primo.
-- [{{墓地|ぼち}}](term:term-graveyard) + [{{手札|てふだ}}](term:term-hand) + [{{戻|もど}}す](term:term-modosu)
-  = recupero in mano.
-
-**Esempio 4**
-
-:::example_sentence
-jp: >-
-  {{相手|あいて}}が{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}でクリーチャーを{{出|だ}}した{{時|とき}}、そのクリーチャーを{{破壊|はかい}}する。
+  {{相手|あいて}}が[{{召喚|しょうかん}}{{以外|いがい}}の
+  {{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de)
+  [クリーチャー](term:term-creature)を[{{出|だ}}した](term:term-dasu)
+  [{{時|とき}}](grammar:grammar-toki)、そのクリーチャーを
+  [{{破壊|はかい}}する](term:term-destroy)。
 translation_it: >-
   Quando il tuo avversario mette in gioco una creatura con un metodo diverso
   dall'evocazione, distruggi quella creatura.
+reveal_mode: sentence
 :::
 
-- [～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de) = esclusione di mezzo.
-- [{{出|だ}}す](term:term-dasu) e [{{破壊|はかい}}](term:term-destroy) sono le due azioni chiave.
+#### 🗺️ Anatomia della frase
 
-**Esempio 5**
+*   `{{相手|あいて}}が` ➔ **Attore del trigger**: è l'avversario a mettere in
+    campo la creatura.
+*   `{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}で` ➔ **Metodo escluso**:
+    l'evocazione normale non conta; gli altri metodi sì.
+*   `クリーチャーを{{出|だ}}した{{時|とき}}` ➔ **Evento controllato**: una creatura
+    è stata messa in campo in quel modo.
+*   `そのクリーチャーを{{破壊|はかい}}する` ➔ **Bersaglio ripreso**: `その` punta alla
+    creatura appena entrata.
 
 :::example_sentence
 jp: >-
-  {{自分|じぶん}}の{{闇|やみ}}のクリーチャーまたは{{闇|やみ}}のタマシードが{{合計|ごうけい}}{{4|よっ}}つ{{以上|いじょう}}なければ、バトルゾーンにあるこのタマシードはクリーチャーとして{{扱|あつか}}わない。
+  ただし、[コスト](term:term-cost)は{{0以下|ゼロいか}}にはならない。
 translation_it: >-
-  Se non hai in totale almeno 4 creature oscure o Tamashido oscuri, questo
-  Tamashido nel battle zone non viene trattato come creatura.
+  Tuttavia, il costo non può diventare 0 o inferiore.
+reveal_mode: sentence
 :::
 
-- [～なければ ... ない](grammar:grammar-nakereba) = condizione negativa.
-- [または](grammar:grammar-matawa) = le due categorie entrano nello stesso
-  filtro.
-- [{{合計|ごうけい}}](term:term-goukei) = il conteggio richiesto è totale, non separato.
-- [{{扱|あつか}}う](term:term-atsukau) qui significa "contare come".
+#### 🗺️ Anatomia della frase
 
-**Esempio 6**
+*   `[ただし](grammar:grammar-tadashi)` ➔ **Limitazione finale**: il testo sta
+    correggendo il raggio dell'effetto precedente.
+*   `コストは` ➔ **Oggetto della restrizione**: il limite riguarda il costo, non
+    la carta intera.
+*   `{{0以下|ゼロいか}}にはならない` ➔ **Soglia vietata**: il risultato non può
+    scendere fino a 0 o sotto 0.
+
+#### ⚖️ Contrasto operativo: filtro numerico e quantità scelta non coincidono
+
+`コスト{{4以下|よんいか}}のクリーチャーを{{1体|いったい}}` contiene due numeri con
+ruoli diversi: `{{4以下|よんいか}}` filtra quali creature sono valide,
+`{{1体|いったい}}` dice quante ne scegli. Mescolarli produce target sbagliati.
+
+## 7. Keyword e parentesi: la label dà il nome, la parentesi dà la procedura
+
+Molte keyword di Duel Masters funzionano come etichette compatte seguite da una
+parentesi esplicativa. La label ti dice quale meccanica stai vedendo; la
+parentesi ti dice esattamente quando, da dove e come si risolve.
+
+Keyword da riconoscere qui:
+
+- [{{侵略|しんりゃく}}](term:term-invasion) — keyword che permette una
+  sovrapposizione dalla mano su un attaccante valido.
+- [W・ブレイカー](term:term-w-breaker) — keyword di rottura multipla; il nome
+  è compatto, ma nel testo effetto resta separato dalle procedure di timing,
+  costo e bersaglio.
 
 :::example_sentence
 jp: >-
-  {{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、このクリーチャーをアンタップし、{{一番上|いち.ばん.うえ}}のカードを{{破壊|はかい}}する。
-translation_it: >-
-  A ogni turno, alla fine del primo attacco di questa creatura, STAPpa questa
-  creatura e distruggi la carta in cima.
-:::
-
-- [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) = timing.
-- [アンタップ](term:term-untap) e [{{破壊|はかい}}](term:term-destroy) sono azioni in
-  sequenza.
-
-**Esempio 7**
-
-:::example_sentence
-jp: >-
-  {{侵略|しんりゃく}}：{{火|ひ}}のコマンド（{{自分|じぶん}}の{{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}、{{自分|じぶん}}の{{手札|てふだ}}にあるこのクリーチャーをその{{上|うえ}}に{{重|かさ}}ねてもよい）
+  [{{侵略|しんりゃく}}](term:term-invasion)：{{火|ひ}}の
+  [コマンド](term:term-command)（{{自分|じぶん}}の{{火|ひ}}の
+  [コマンド](term:term-command)が[{{攻撃|こうげき}}する](term:term-attack)
+  [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の
+  [{{手札|てふだ}}](term:term-hand)にあるこのクリーチャーをその{{上|うえ}}に
+  [{{重|かさ}}ねてもよい](term:term-kasaneru)）
 translation_it: >-
   Invasione: comando di fuoco (quando un tuo comando di fuoco attacca, puoi
   sovrapporre su di esso questa creatura che hai in mano).
+reveal_mode: sentence
 :::
 
-- [{{侵略|しんりゃく}}](term:term-invasion) = keyword.
-- [コマンド](term:term-command) = requisito sul tipo di attaccante.
-- [{{重|かさ}}ねる](term:term-kasaneru) + [～てもよい](grammar:grammar-temoyoi) =
-  sovrapposizione opzionale.
+#### 🗺️ Anatomia della frase
 
-**Esempio 8**
+*   `[{{侵略|しんりゃく}}](term:term-invasion)：{{火|ひ}}のコマンド` ➔ **Nome e
+    requisito**: la keyword è Invasion, valida per un comando di fuoco.
+*   `{{自分|じぶん}}の{{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}` ➔
+    **Timing della parentesi**: il momento è l'attacco del tuo comando di fuoco.
+*   `{{手札|てふだ}}にあるこのクリーチャーを` ➔ **Fonte e oggetto**: la creatura da
+    sovrapporre deve essere nella tua mano.
+*   `その{{上|うえ}}に{{重|かさ}}ねてもよい` ➔ **Azione opzionale**: puoi metterla
+    sopra l'attaccante indicato da `その`.
+
+#### ⚖️ Contrasto operativo: la parentesi non è testo di colore
+
+In una keyword, la parentesi non è una spiegazione ornamentale. È la procedura:
+requisito, timing, fonte, oggetto e azione. Se salti la parentesi, conosci il
+nome della keyword ma non sai quando puoi usarla.
+
+## Esempi guidati di riepilogo
+
+Leggere il rules text diventa più stabile se applichi sempre la stessa
+sequenza: timing, azione, bersaglio, zona, condizione e restrizione.
+
+**Esempio 1: ingresso e movimento di zona**
 
 :::example_sentence
 jp: >-
-  この{{効果|こうか}}で{{相手|あいて}}のクリーチャーを{{1体|いったい}}{{破壊|はかい}}する。
+  このクリーチャーが[{{出|で}}た](term:term-deru)
+  [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の
+  [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{1枚目|いちまいめ}}を
+  [{{墓地|ぼち}}](term:term-graveyard)に[{{置|お}}く](term:term-oku)。
 translation_it: >-
-  Con questo effetto distruggi 1 creatura del tuo avversario.
+  Quando questa creatura entra, metti la prima carta del tuo mazzo nel
+  cimitero.
+reveal_mode: sentence
 :::
 
-- [{{効果|こうか}}](term:term-effect) = la carta punta al blocco di testo che risolve.
-- [{{相手|あいて}}](term:term-opponent) + [{{破壊|はかい}}](term:term-destroy) = bersaglio e risultato
-  concreto dell'effetto.
+- `{{出|で}}た{{時|とき}}` fissa il trigger.
+- `{{山札|やまふだ}}の{{上|うえ}}から` dà la fonte.
+- `{{墓地|ぼち}}に{{置|お}}く` dà destinazione e azione.
+
+**Esempio 2: scelta opzionale e ramo dipendente**
+
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
+  {{3枚|さんまい}}を[{{墓地|ぼち}}](term:term-graveyard)に
+  [{{置|お}}いてもよい](grammar:grammar-temoyoi)。
+  [そうしたら](grammar:grammar-soushitara)、[アビス](term:term-abyss)を
+  {{1枚|いちまい}}、{{自分|じぶん}}の[{{墓地|ぼち}}](term:term-graveyard)から
+  [{{手札|てふだ}}](term:term-hand)に[{{戻|もど}}してもよい](term:term-modosu)。
+translation_it: >-
+  Puoi mettere le prime 3 carte del tuo mazzo nel cimitero. Se lo fai, puoi
+  riprendere 1 Abyss dal tuo cimitero nella tua mano.
+reveal_mode: sentence
+:::
+
+- `{{置|お}}いてもよい` apre una scelta.
+- `そうしたら` rende il secondo passo dipendente dalla scelta precedente.
+- `{{墓地|ぼち}}から{{手札|てふだ}}に` chiarisce il percorso della carta recuperata.
+
+**Esempio 3: alternativa, totale e status**
+
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の{{闇|やみ}}の[クリーチャー](term:term-creature)
+  [または](grammar:grammar-matawa){{闇|やみ}}のタマシードが
+  [{{合計|ごうけい}}](term:term-goukei){{4|よっ}}つ{{以上|いじょう}}
+  [なければ](grammar:grammar-nakereba)、このタマシードはクリーチャーとして
+  [{{扱|あつか}}わない](term:term-atsukau)。
+translation_it: >-
+  Se non hai in totale almeno 4 creature oscure o Tamashido oscuri, questo
+  Tamashido non viene trattato come creatura.
+reveal_mode: sentence
+:::
+
+- `または` crea due categorie valide nello stesso controllo.
+- `{{合計|ごうけい}}{{4|よっ}}つ{{以上|いじょう}}` dice che il totale deve arrivare
+  almeno a quattro.
+- `{{扱|あつか}}わない` non distrugge né sposta la carta: cambia come viene
+  considerata.
+
+**Esempio 4: keyword con procedura interna**
+
+:::example_sentence
+jp: >-
+  [{{侵略|しんりゃく}}](term:term-invasion)：{{火|ひ}}の
+  [コマンド](term:term-command)（{{自分|じぶん}}の{{火|ひ}}の
+  [コマンド](term:term-command)が[{{攻撃|こうげき}}する](term:term-attack)
+  [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の
+  [{{手札|てふだ}}](term:term-hand)にあるこのクリーチャーをその{{上|うえ}}に
+  [{{重|かさ}}ねてもよい](term:term-kasaneru)）
+translation_it: >-
+  Invasione: comando di fuoco (quando un tuo comando di fuoco attacca, puoi
+  sovrapporre su di esso questa creatura che hai in mano).
+reveal_mode: sentence
+:::
+
+- `{{侵略|しんりゃく}}：{{火|ひ}}のコマンド` dà nome e requisito.
+- `{{攻撃|こうげき}}する{{時|とき}}` dà il timing.
+- `{{手札|てふだ}}にあるこのクリーチャーをその{{上|うえ}}に{{重|かさ}}ねてもよい`
+  dà fonte, oggetto, bersaglio implicito e opzionalità.
 
 ## Nota finale
 
-La difficoltà del testo effetto non sta tanto nel singolo vocabolo. Sta nel
-modo in cui la frase è montata. Se impari a separare trigger, sequenza,
-condizione, azione e restrizione, anche un testo denso smette di sembrare
-caotico.
+La difficoltà del testo effetto non sta nel singolo vocabolo raro, ma nel modo
+in cui i pezzi si agganciano. `{{時|とき}}` apre il timing,
+`その{{後|あと}}` ordina la sequenza, `そうしたら` crea dipendenza,
+`かわりに` sostituisce, `なければ ... ない` blocca lo status e
+`ただし` chiude con una restrizione. Quando questi segnali sono separati, anche
+una riga molto compressa smette di sembrare caos e diventa una procedura
+leggibile.
