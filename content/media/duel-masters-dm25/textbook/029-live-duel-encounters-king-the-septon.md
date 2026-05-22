@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-live-duel-encounters-king-the-septon
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-king-the-septon
-title: Carte incontrate - King the Septon e il filtro del topdeck
+title: "King the Septon: filtro Jokerz e costo uguale"
 order: 58
 segment_ref: live-duel-encounters
 difficulty: n3
@@ -14,11 +14,23 @@ prerequisites:
     lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
   ]
 summary: >-
-  King the Septon: rivelazione dei primi tre della cima, filtro su tutti i
-  Jokerz e recupero delle carte con lo stesso costo.
+  Leggere King the Septon: rivela tre carte, controlla che siano tutte Jokerz,
+  recupera quelle con lo stesso costo e rimette il resto in fondo.
 ---
 
-# キング・ザ・セプトン
+# King the Septon: filtro Jokerz e costo uguale
+
+キング・ザ・セプトン legge la cima del deck come una piccola procedura a stati:
+prima rende visibili tre carte, poi controlla se appartengono tutte ai
+ジョーカーズ, infine usa il costo della creatura scelta come criterio per
+recuperare altre carte.
+
+Il testo non è una semplice pescata. Le particelle e i dimostrativi tengono
+separati tre gruppi diversi: le carte appena rivelate, la creatura messa nel
+battle zone e ciò che rimane dopo quella scelta. Se perdi uno di questi
+referenti, `それら`, `その{{中|なか}}から`, `それと{{同|おな}}じ` e
+`{{残|のこ}}り` sembrano vaghi; letti in sequenza, invece, costruiscono una
+catena molto precisa.
 
 :::image
 src: assets/cards/live-duel/king-the-septon.png
@@ -30,14 +42,48 @@ caption: >-
   il resto in fondo al mazzo in ordine casuale.
 :::
 
-## Keyword presenti sulla carta
+## Termini chiave
 
-- [W・ブレイカー](term:term-w-breaker)
+- [{{山札|やまふだ}}](term:term-deck) — il deck fisico da cui si prendono le carte
+- [{{表向|おもてむ}}き](term:term-face-up) — scoperto / visibile per il controllo
+- [クリーチャー](term:term-creature) — tipo di carta che può essere messo nel battle zone
+- [コスト](term:term-cost) — numero usato qui come filtro sulle carte rimaste
+- [{{手札|てふだ}}](term:term-hand) — destinazione delle carte recuperate
+- [{{順番|じゅんばん}}](term:term-junban) — ordine / sequenza con cui il resto viene rimesso
+- [{{一番|いちばん}}{{下|した}}](term:term-bottom-of-deck) — fondo del deck, posizione opposta alla cima
 
-`W・ブレイカー` è già nel keyword bank. Qui il lavoro vero è leggere il
-blocco procedurale che rivela, filtra e riordina le carte pescate dalla cima.
+## Espressioni ricorrenti
 
-## Effetti da leggere
+- [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki) — trigger quando la creatura entra nel battle zone
+- [すべて](term:term-subete) — tutto / tutti, scope totale del controllo
+- [{{手札|てふだ}}](term:term-hand)に[{{加|くわ}}える](term:term-add) — aggiungere alla mano
+- [{{山札|やまふだ}}](term:term-deck)の[{{一番|いちばん}}{{下|した}}](term:term-bottom-of-deck)に[{{置|お}}く](term:term-oku) — mettere in fondo al deck
+
+## Pattern grammaticali chiave
+
+- [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki) — quando / nel momento in cui accade l'evento
+- [それら](grammar:grammar-sorera) — quelle cose, ripresa plurale del gruppo appena nominato
+- [それと{{同|おな}}じ](grammar:grammar-to-onaji) — uguale a quello, usato come filtro di equivalenza
+
+## Etichette da riconoscere
+
+- [W・ブレイカー](term:term-w-breaker) — keyword offensiva che rompe due shield
+- ジョーカーズ — razza che deve comparire su tutte le carte rivelate
+
+---
+
+## 1. Il trigger di entrata: rendere visibile la cima del deck
+
+La prima frase stabilisce il momento e il materiale iniziale. `バトルゾーンに
+{{出|で}}た{{時|とき}}` usa [{{出|で}}る](term:term-deru), verbo intransitivo:
+la creatura entra, quindi l'effetto parte. Subito dopo,
+`{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}` restringe la fonte: non tre
+carte qualsiasi, ma le prime tre dalla cima del tuo deck.
+
+Il finale `[{{表向|おもてむ}}き](term:term-face-up)にする` non sposta ancora le
+carte in mano o nel battle zone. Cambia il loro stato informativo: le carte
+diventano scoperte, quindi il testo può controllare razza, tipo e costo senza
+averle ancora assegnate a una destinazione finale.
 
 :::example_sentence
 jp: >-
@@ -51,10 +97,49 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
+#### 🗺️ Anatomia della frase
+
+*   `[バトルゾーン](term:term-battle-zone)に` marca la destinazione in cui la
+    creatura è appena entrata; il trigger non guarda mano, mana o graveyard.
+*   `[{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki)` costruisce
+    il momento di attivazione: "quando è entrata".
+*   `{{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から` impila due
+    possessivi: il tuo deck, e dentro quel deck la sua cima.
+*   `{{3枚|さんまい}}を[{{表向|おもてむ}}き](term:term-face-up)にする` prende un
+    conteggio preciso e lo porta nello stato "scoperto".
+
+#### ⚖️ Contrasto operativo
+
+[{{出|で}}る](term:term-deru) e [{{出|だ}}す](term:term-dasu) non fanno lo stesso
+lavoro. `バトルゾーンに{{出|で}}た{{時|とき}}` descrive King the Septon che entra e
+fa partire il trigger; più avanti `クリーチャー{{1枚|いちまい}}をバトルゾーンに
+{{出|だ}}す` descrive l'effetto che mette un'altra creatura nel battle zone.
+Il primo è evento, il secondo è azione causata.
+
+#### 🧠 Gancio cognitivo
+
+Come trucco mnemonico, immagina `{{山札|やまふだ}}の{{上|うえ}}から` come una pila
+verticale: `{{上|うえ}}` è il punto da cui sollevi le prime carte, mentre
+[{{一番|いちばん}}{{下|した}}](term:term-bottom-of-deck) sarà il punto in cui
+rimetterai ciò che resta.
+
+## 2. Il controllo totale: `それらがすべてジョーカーズなら`
+
+Dopo la rivelazione, il testo non ripete `le tre carte`. Usa
+[それら](grammar:grammar-sorera), cioè "quelle cose", per riprendere l'intero
+gruppo appena reso scoperto. La particella `が` mette quel gruppo come soggetto
+del controllo, mentre [すべて](term:term-subete) chiude lo scope: la condizione
+non passa se una sola carta rivelata non è ジョーカーズ.
+
+`なら` trasforma quel controllo in una soglia operativa: se il gruppo intero è
+Jokerz, allora puoi scegliere una [クリーチャー](term:term-creature)
+`その{{中|なか}}から`, da dentro quello stesso gruppo. La scelta non cerca nel
+deck, nella mano o nel battle zone: resta confinata alle carte appena rivelate.
+
 :::example_sentence
 jp: >-
-  [{{それら|それら}}](grammar:grammar-sorera)が
-  [{{すべて|すべて}}](term:term-subete)ジョーカーズなら、その{{中|なか}}から
+  [それら](grammar:grammar-sorera)が
+  [すべて](term:term-subete)ジョーカーズなら、その{{中|なか}}から
   [クリーチャー](term:term-creature){{1枚|いちまい}}を
   [バトルゾーン](term:term-battle-zone)に[{{出|だ}}す](term:term-dasu)。
 translation_it: >-
@@ -63,16 +148,55 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
+#### 🗺️ Anatomia della frase
+
+*   `[それら](grammar:grammar-sorera)が` riprende le tre carte rivelate e le
+    mette come gruppo da verificare.
+*   `[すべて](term:term-subete)ジョーカーズなら` dice "se sono tutte Jokerz": lo
+    scope è totale, non parziale.
+*   `その{{中|なか}}から` restringe la fonte della scelta: da dentro quel gruppo
+    già controllato.
+*   `[クリーチャー](term:term-creature){{1枚|いちまい}}を` fissa il bersaglio
+    singolo della selezione.
+*   `[バトルゾーン](term:term-battle-zone)に[{{出|だ}}す](term:term-dasu)` chiude
+    l'azione causata: l'effetto mette quella creatura in gioco.
+
+#### ⚖️ Contrasto operativo
+
+[すべて](term:term-subete) non significa "prendi tutto" in questa frase.
+Prima di [{{出|だ}}す](term:term-dasu), serve a controllare che tutto il gruppo
+sia Jokerz. La quantità scelta arriva dopo, in
+`クリーチャー{{1枚|いちまい}}`: anche se tutte e tre le carte passano il filtro,
+il testo mette nel battle zone una sola creatura da quel gruppo.
+
+#### 🧠 Gancio cognitivo
+
+`それら` funziona come un'etichetta appiccicata sul mucchietto appena rivelato.
+Finché il testo dice `それら`, `その{{中|なか}}` o `{{残|のこ}}り`, stai ancora
+lavorando su quel mucchietto, non su una nuova zona.
+
+## 3. Il costo uguale: dal pezzo scelto alle carte rimaste
+
+Una volta messa una creatura nel battle zone, il testo non abbandona le carte
+rimaste. `その{{後|あと}}` segnala che la seconda operazione arriva dopo la
+prima, e `{{残|のこ}}りの{{中|なか}}から` restringe il nuovo filtro alle carte che
+non sono state scelte come creatura.
+
+Il cuore grammaticale è [それと{{同|おな}}じ](grammar:grammar-to-onaji). `それ`
+non punta a King the Septon e non punta a tutte le carte rivelate: punta alla
+creatura appena messa nel battle zone. `と{{同|おな}}じコスト` copia quel costo
+e lo usa come condizione per decidere quali carte rimaste salgono in mano.
+
 :::example_sentence
 jp: >-
   その{{後|あと}}、{{残|のこ}}りの{{中|なか}}から、
   [それと{{同|おな}}じ](grammar:grammar-to-onaji)
   [コスト](term:term-cost)のカードを
-  [{{すべて|すべて}}](term:term-subete)[{{手札|てふだ}}](term:term-hand)に
+  [すべて](term:term-subete)[{{手札|てふだ}}](term:term-hand)に
   [{{加|くわ}}える](term:term-add)。{{残|のこ}}りをランダムな
   [{{順番|じゅんばん}}](term:term-junban)で
   [{{山札|やまふだ}}](term:term-deck)の
-  [{{一番下|いち.ばん.した}}](term:term-bottom-of-deck)に
+  [{{一番|いちばん}}{{下|した}}](term:term-bottom-of-deck)に
   [{{置|お}}く](term:term-oku)。
 translation_it: >-
   Poi aggiunge in mano tutte le carte dello stesso costo e mette il resto in
@@ -80,65 +204,132 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-## Parsing grammaticale
+#### 🗺️ Anatomia della frase
 
-### 1. バトルゾーンに出た時
+*   `その{{後|あと}}` collega questa frase al ramo precedente: prima scegli e
+    metti la creatura, poi lavori sulle carte rimaste.
+*   `{{残|のこ}}りの{{中|なか}}から` crea una fonte ridotta: non tutto il gruppo
+    iniziale, ma solo ciò che resta dopo la prima estrazione.
+*   `[それと{{同|おな}}じ](grammar:grammar-to-onaji)[コスト](term:term-cost)のカード`
+    forma il filtro nominale: carte il cui costo è uguale a quello della
+    creatura appena messa nel battle zone.
+*   `[すべて](term:term-subete)[{{手札|てふだ}}](term:term-hand)に
+    [{{加|くわ}}える](term:term-add)` sposta tutte le carte compatibili in mano;
+    qui [すべて](term:term-subete) torna a essere quantità recuperata.
+*   `{{残|のこ}}りをランダムな[{{順番|じゅんばん}}](term:term-junban)で` riapre il
+    gruppo non recuperato e specifica come deve essere ordinato.
+*   `[{{山札|やまふだ}}](term:term-deck)の
+    [{{一番|いちばん}}{{下|した}}](term:term-bottom-of-deck)に
+    [{{置|お}}く](term:term-oku)` chiude la procedura: il resto lascia la cima
+    e va in fondo al deck.
 
-- [{{出|で}}た](term:term-deru) + [{{時|とき}}](grammar:grammar-toki) è il trigger
-  base di ingresso: l'effetto parte nel momento in cui la creatura entra nel
-  battle zone.
-- [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{3枚|さんまい}} dice
-  esattamente quante carte prendere e da quale posizione: non "tre carte
-  qualsiasi", ma le prime tre della cima.
-- [{{表向|おもてむ}}き](term:term-face-up) significa rendere pubbliche quelle
-  carte durante la risoluzione, non spostarle ancora da nessuna parte.
+#### ⚖️ Contrasto operativo
 
-### 2. それらがすべてジョーカーズなら
+[それと{{同|おな}}じ](grammar:grammar-to-onaji) non significa "lo stesso costo
+di King the Septon" per default. In giapponese, `それ` riprende l'elemento più
+attivo nel contesto immediato: qui è la [クリーチャー](term:term-creature)
+appena messa nel battle zone. Se nessuna creatura è stata messa, questo filtro
+non ha quel referente operativo.
 
-- [{{それら|それら}}](grammar:grammar-sorera) riprende il gruppo appena
-  rivelato: le tre carte scoperte nella frase precedente.
-- [{{すべて|すべて}}](term:term-subete) chiude lo scope sul gruppo intero: il
-  ramo positivo si apre solo se tutte e tre le carte passano il filtro.
-- `ジョーカーズなら` è il controllo finale sulla tribù. Se una sola delle tre
-  carte non è Jokerz, il ramo positivo salta.
-- `その{{中|なか}}から` restringe la scelta al gruppo già verificato: la
-  creatura non arriva da fuori, ma da quelle carte appena controllate.
+## 4. Il resto in fondo: ordine casuale e destinazione finale
 
-### 3. その後、残りの中から
+L'ultima parte è piccola, ma evita una lettura troppo libera. Dopo il recupero
+in mano, un nuovo `{{残|のこ}}り` indica ciò che non è stato né messo nel battle
+zone né aggiunto alla mano. Quel resto non torna semplicemente "nel deck":
+`ランダムな[{{順番|じゅんばん}}](term:term-junban)で` toglie il controllo
+sull'ordine, e `[{{一番|いちばん}}{{下|した}}](term:term-bottom-of-deck)に
+[{{置|お}}く](term:term-oku)` fissa la destinazione sotto la pila.
 
-- `その後` segnala una sequenza precisa: il secondo controllo parte dopo la
-  risoluzione del primo ramo.
-- `{{残|のこ}}り` non è un nuovo gruppo: sono le carte che sono rimaste dopo
-  aver estratto la creatura.
-- [それと{{同|おな}}じ](grammar:grammar-to-onaji)[コスト](term:term-cost) punta
-  alla creatura appena messa in campo e usa il suo costo come filtro per il
-  recupero.
-- [{{すべて|すべて}}](term:term-subete)[{{手札|てふだ}}](term:term-hand)に
-  [{{加|くわ}}える](term:term-add) significa che tutte le carte compatibili
-  salgono in mano, non solo una.
-- [{{順番|じゅんばん}}](term:term-junban) non è un dettaglio ornamentale: ti
-  dice che anche l'ordine finale delle carte rimaste fa parte della procedura e
-  qui viene fissato come casuale.
-- [{{一番下|いち.ばん.した}}](term:term-bottom-of-deck)に[{{置|お}}く](term:term-oku)
-  chiude il resto della procedura: ciò che non è stato preso sparisce dalla
-  cima e va in fondo al mazzo.
+:::example_sentence
+jp: >-
+  {{残|のこ}}りをランダムな[{{順番|じゅんばん}}](term:term-junban)で
+  [{{山札|やまふだ}}](term:term-deck)の
+  [{{一番|いちばん}}{{下|した}}](term:term-bottom-of-deck)に
+  [{{置|お}}く](term:term-oku)。
+translation_it: >-
+  Mette il resto in fondo al mazzo in ordine casuale.
+reveal_mode: sentence
+:::
 
-## Lessico utile in questa carta
+#### 🗺️ Anatomia della frase
 
-- [{{すべて|すべて}}](term:term-subete) è il marcatore di scope decisivo qui:
-  prima filtra il gruppo intero, poi lascia partire il ramo positivo solo se il
-  gruppo passa tutto insieme.
-- [{{それら|それら}}](grammar:grammar-sorera) è il dimostrativo che riaggancia le
-  tre carte appena rivelate. È il ponte che ti impedisce di perdere il
-  referente nel mezzo della procedura.
-- [それと{{同|おな}}じ](grammar:grammar-to-onaji) è un chunk di giapponese molto
-  generale: vuol dire `uguale a quello`, ma qui si specializza e copia proprio
-  il costo della creatura appena messa in campo per filtrare il gruppo rimasto.
-- `その{{中|なか}}から` e `{{残|のこ}}りの{{中|なか}}から` sono i due punti di
-  selezione più importanti: prima scegli da un gruppo verificato, poi lavori
-  solo su ciò che è rimasto.
-- [{{順番|じゅんばん}}](term:term-junban) in giapponese generale è `ordine /
-  sequenza`; qui ti segnala che il testo non sta solo spostando carte, ma sta
-  anche imponendo in che tipo di ordine devono finire sotto al mazzo.
-- `ジョーカーズ` è la razza che decide il ramo positivo: la carta non cerca
-  "qualunque creatura", cerca una creatura del gruppo Jokerz.
+*   `{{残|のこ}}りを` marca l'oggetto finale: le carte rimaste dopo tutti i
+    filtri precedenti.
+*   `ランダムな[{{順番|じゅんばん}}](term:term-junban)で` descrive il modo in cui
+    vengono ordinate, non una zona.
+*   `[{{山札|やまふだ}}](term:term-deck)の
+    [{{一番|いちばん}}{{下|した}}](term:term-bottom-of-deck)に` indica la
+    destinazione precisa: fondo del deck.
+*   `[{{置|お}}く](term:term-oku)` è il verbo generico di collocazione in zona;
+    il significato pratico dipende da `に`, che qui punta al fondo del deck.
+
+#### ⚖️ Contrasto operativo
+
+[{{手札|てふだ}}](term:term-hand)に[{{加|くわ}}える](term:term-add) e
+[{{山札|やまふだ}}](term:term-deck)の[{{一番|いちばん}}{{下|した}}](term:term-bottom-of-deck)に
+[{{置|お}}く](term:term-oku) usano due verbi diversi perché producono due stati
+diversi. [{{加|くわ}}える](term:term-add) rende una carta disponibile in mano;
+[{{置|お}}く](term:term-oku) la colloca in una zona indicata senza implicare che
+tu possa usarla subito.
+
+## Esempi guidati di riepilogo
+
+Gli stessi pezzi tornano come una procedura compatta: trigger, gruppo
+rivelato, controllo totale, filtro sul costo e destinazione finale.
+
+:::example_sentence
+jp: >-
+  [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
+  [{{時|とき}}](grammar:grammar-toki)、
+  [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
+  {{3枚|さんまい}}を[{{表向|おもてむ}}き](term:term-face-up)にする。
+translation_it: >-
+  Quando entra nel battle zone, rende scoperte 3 carte dalla cima del mazzo.
+reveal_mode: sentence
+:::
+
+:::example_sentence
+jp: >-
+  [それら](grammar:grammar-sorera)が[すべて](term:term-subete)ジョーカーズなら、
+  その{{中|なか}}から[クリーチャー](term:term-creature){{1枚|いちまい}}を
+  [バトルゾーン](term:term-battle-zone)に[{{出|だ}}す](term:term-dasu)。
+translation_it: >-
+  Se quelle carte sono tutte Jokerz, mette nel battle zone 1 creatura da quel
+  gruppo.
+reveal_mode: sentence
+:::
+
+:::example_sentence
+jp: >-
+  {{残|のこ}}りの{{中|なか}}から、
+  [それと{{同|おな}}じ](grammar:grammar-to-onaji)[コスト](term:term-cost)のカードを
+  [すべて](term:term-subete)[{{手札|てふだ}}](term:term-hand)に
+  [{{加|くわ}}える](term:term-add)。
+translation_it: >-
+  Tra le carte rimaste, aggiunge in mano tutte le carte con lo stesso costo di
+  quella.
+reveal_mode: sentence
+:::
+
+:::example_sentence
+jp: >-
+  {{残|のこ}}りをランダムな[{{順番|じゅんばん}}](term:term-junban)で
+  [{{山札|やまふだ}}](term:term-deck)の
+  [{{一番|いちばん}}{{下|した}}](term:term-bottom-of-deck)に
+  [{{置|お}}く](term:term-oku)。
+translation_it: >-
+  Mette il resto in fondo al mazzo in ordine casuale.
+reveal_mode: sentence
+:::
+
+---
+
+## Nota finale
+
+King the Septon diventa leggibile quando segui i referenti uno dopo l'altro:
+[それら](grammar:grammar-sorera) guarda le tre carte rivelate, `その{{中|なか}}から`
+sceglie una creatura da quel gruppo, [それと{{同|おな}}じ](grammar:grammar-to-onaji)
+copia il costo della creatura scelta e `{{残|のこ}}り` raccoglie ciò che non è
+stato preso. La carta non chiede di ricordare una regola isolata: chiede di
+seguire come il giapponese sposta il focus da un gruppo al pezzo scelto, poi
+dal pezzo scelto al resto.
