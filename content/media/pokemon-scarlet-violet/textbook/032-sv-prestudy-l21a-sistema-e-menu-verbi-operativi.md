@@ -299,9 +299,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{目標|もくひょう}}までの {{方法|ほうほう}}は、 ヒントで {{確認|かくにん}}できます。
+  {{目標|もくひょう}}への {{行|い}}き{{方|かた}}は、 ヒントで {{確認|かくにん}}できます。
 translation_it: >-
-  Puoi controllare negli indizi il metodo per arrivare all'obiettivo.
+  Puoi controllare negli indizi come arrivare all'obiettivo.
 :::
 
 :::example_sentence
