@@ -17,6 +17,7 @@ import {
 import { stripInlineMarkdown } from "@/lib/render-furigana";
 
 import styles from "./consolidation-session.module.css";
+import { useConsolidationMeaningAudio } from "./use-consolidation-meaning-audio";
 
 const RETRIEVAL_MS = 2000;
 const FEEDBACK_MS = 650;
@@ -50,6 +51,14 @@ export function ConsolidationSessionClient({
   const currentSubject = subjectsByKey.get(queue[0] ?? "") ?? null;
   const currentStep = currentSubject?.steps[stepIndex] ?? null;
   const completed = queue.length === 0 || !currentSubject || !currentStep;
+
+  useConsolidationMeaningAudio({
+    audioSrc: currentSubject?.pronunciation?.src,
+    phase,
+    step: currentStep?.step ?? "reading",
+    subjectKey: currentSubject?.subjectKey ?? ""
+  });
+
   const clearSessionTimers = useCallback(() => {
     for (const timer of timersRef.current) {
       window.clearTimeout(timer);
