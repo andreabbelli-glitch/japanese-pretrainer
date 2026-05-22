@@ -15,14 +15,16 @@ summary: >-
 
 # Creare o inserire: le due strade di デッキ{{編成|へんせい}}
 
-La schermata デッキ{{編成|へんせい}} di *DUEL MASTERS PLAY'S* non ti porta subito
-alla lista delle carte. Prima imposta una cornice: scegli una Division, poi
-decidi se partire da una lista vuota o se richiamare una lista già codificata.
+La schermata デッキ{{編成|へんせい}} di *DUEL MASTERS PLAY'S* non apre subito la
+lista delle carte. Prima ti fa stabilire due cose: in quale Division lavorare e
+da dove deve nascere il mazzo. La UI separa quindi scelta preliminare, creazione
+da zero e recupero tramite codice.
 
-Il giapponese della UI è compatto ma molto regolare. A sinistra trovi una frase
-che costruisce un mazzo nuovo; a destra una frase che chiede di immettere un
-codice. Leggerle insieme fa vedere bene come una pagina web giapponese alterna
-frasi guida complete, pulsanti compressi e conferme finali.
+Il giapponese è breve, ma non è vago: `{{新規|しんき}}でデッキを{{作成|さくせい}}する`
+ti dice che il mazzo viene creato come nuova voce, mentre
+`デッキコードを{{入力|にゅうりょく}}する` ti dice che un valore già pronto va
+immesso in un campo. La differenza tra queste due frasi decide se clicchi per
+iniziare una composizione nuova o se incolli un codice e poi confermi.
 
 ## Termini chiave
 
@@ -36,12 +38,12 @@ frasi guida complete, pulsanti compressi e conferme finali.
 
 ## Espressioni ricorrenti
 
-- [{{新規|しんき}}](term:term-shinki)でデッキを[{{作成|さくせい}}する](term:term-sakusei-suru)
-  — creare un mazzo partendo da una lista nuova
-- [デッキコード](term:term-deck-code)を[{{入力|にゅうりょく}}する](term:term-nyuryoku-suru)
-  — inserire il codice del mazzo in un campo
-- `{{新規|しんき}}デッキ{{作成|さくせい}}` — pulsante nominale che comprime la
-  frase di creazione
+- [{{新規|しんき}}](term:term-shinki)でデッキを[{{作成|さくせい}}する](term:term-sakusei-suru) —
+  creare un mazzo come nuova voce del sistema
+- [デッキコード](term:term-deck-code)を[{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) —
+  immettere nel campo il codice di un mazzo già preparato
+- `{{新規|しんき}}デッキ{{作成|さくせい}}` — pulsante compatto per iniziare una
+  nuova composizione
 
 ## Pattern grammaticali chiave
 
@@ -54,22 +56,24 @@ frasi guida complete, pulsanti compressi e conferme finali.
   mazzo
 - `Divisionを{{選択|せんたく}}する` — istruzione preliminare: scegliere la
   Division
-- `{{決定|けってい}}` — conferma dopo l'immissione del codice
+- `{{決定|けってい}}` — conferma il valore immesso nel campo
 
 ---
 
 ## 1. La cornice: prima la Division, poi l'azione
 
-La schermata è divisa in due livelli. In alto, `Divisionを{{選択|せんたく}}する`
-usa `を` per marcare ciò che devi scegliere: la Division. Le due opzioni,
-ニュー・ディビジョン e オール・ディビジョン, sono label in katakana e inglese
-grafico; il punto grammaticale è il verbo `{{選択|せんたく}}する`, cioè
-"selezionare".
+La prima riga operativa è `Divisionを{{選択|せんたく}}する`. `Division` resta in
+inglese grafico, ma la grammatica è giapponese: `を` marca l'oggetto della
+scelta e `{{選択|せんたく}}する` chiude con il verbo tecnico "selezionare". Le due
+opzioni, ニュー・ディビジョン e オール・ディビジョン, sono le strade disponibili;
+la frase sopra di loro dice quale tipo di gesto la UI si aspetta.
 
-Sotto quella scelta preliminare, la UI passa a due azioni vere. Entrambe
-ruotano attorno a `デッキ`, ma il verbo cambia il gesto: con
-[{{作成|さくせい}}する](term:term-sakusei-suru) nasce una lista nuova, con
-[{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) entra un valore in un campo.
+Sotto questa cornice, la schermata passa a due azioni sul `デッキ`. A sinistra
+il mazzo viene creato con [{{作成|さくせい}}する](term:term-sakusei-suru); a
+destra il mazzo viene richiamato tramite [デッキコード](term:term-deck-code), e
+quindi il verbo diventa [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru). La
+UI non sta offrendo due sinonimi: sta distinguendo una nuova entità da un dato
+da immettere.
 
 :::image
 src: assets/dmps-deckbuilder-overview.png
@@ -84,26 +88,43 @@ caption: >-
   [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru).
 :::
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{選択|せんたく}}する` sceglie tra opzioni già
-> visibili, mentre [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) richiede
-> un dato che l'utente mette dentro un campo. In una UI web, questa differenza
-> spesso decide se devi cliccare un'opzione o digitare/incollare qualcosa.
+:::example_sentence
+jp: >-
+  Divisionを{{選択|せんたく}}する。
+translation_it: >-
+  Selezionare la Division.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `Divisionを` ➔ **oggetto della selezione**: `を` indica che la Division è la
+    cosa da scegliere, non il luogo in cui avviene l'azione.
+*   `{{選択|せんたく}}する` ➔ **verbo tecnico da UI**: trasforma il nome
+    `{{選択|せんたく}}` ("selezione") nell'azione "selezionare".
+
+#### ⚖️ Contrasto operativo
+
+`{{選択|せんたく}}する` sceglie tra opzioni già
+visibili, mentre [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) richiede
+un dato che l'utente mette dentro un campo. In una UI web, questa differenza
+spesso decide se devi cliccare un'opzione o digitare/incollare qualcosa.
 
 ## 2. Creare da zero: `{{新規|しんき}}でデッキを{{作成|さくせい}}する`
 
-Il blocco di sinistra è la via della creazione. In
+Il blocco di sinistra parla come una frase guida completa:
 [{{新規|しんき}}](term:term-shinki)でデッキを
-[{{作成|さくせい}}する](term:term-sakusei-suru),
-[{{新規|しんき}}](term:term-shinki) non descrive un mazzo "recente" o "ultimo":
-indica che l'azione parte come nuova registrazione, senza usare un codice
-preparato altrove.
+[{{作成|さくせい}}する](term:term-sakusei-suru). Qui
+[{{新規|しんき}}](term:term-shinki) non vuol dire "recente" nel senso di ultimo
+arrivato; indica lo stato iniziale dell'operazione, cioè una nuova voce creata
+nel sistema.
 
-Il `で` di [{{新規|しんき}}で〜する](grammar:grammar-state-de) non è il `で` di
-luogo. Qui marca la modalità dell'azione: "creare in stato nuovo", cioè
-avviare la composizione da una lista vuota. Poi `デッキを` dà l'oggetto
-dell'azione, e [{{作成|さくせい}}する](term:term-sakusei-suru) dà il verbo
-tecnico da UI: creare o generare un oggetto gestibile dal sistema.
+Il `で` di [{{新規|しんき}}で〜する](grammar:grammar-state-de) non ti porta in un
+luogo: marca la modalità con cui avviene l'azione. Prima la frase imposta
+"come" parte la creazione (`{{新規|しんき}}で`), poi dice "che cosa" viene creato
+(`デッキを`), infine chiude con il verbo tecnico
+[{{作成|さくせい}}する](term:term-sakusei-suru). In una UI, `{{作成|さくせい}}する`
+non è un "fare" generico: è creare un oggetto che il sistema potrà salvare,
+modificare e riaprire.
 
 :::example_sentence
 jp: >-
@@ -114,16 +135,18 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{新規|しんき}}で` -> modalità dell'azione: il mazzo nasce come elemento
-  nuovo, non come recupero di una lista esistente.
-- `デッキを` -> oggetto diretto: è il mazzo a essere creato.
-- `{{作成|さくせい}}する` -> verbo operativo: non "fare" in modo generico, ma
-  creare una nuova entità nella UI.
+*   `{{新規|しんき}}で` ➔ **modalità dell'azione**: il mazzo nasce come elemento
+    nuovo, non come recupero di una lista esistente.
+*   `デッキを` ➔ **oggetto diretto**: è il mazzo a ricevere l'azione di
+    creazione.
+*   `{{作成|さくせい}}する` ➔ **verbo operativo**: crea una nuova entità nella UI,
+    invece di limitarsi a descrivere una costruzione manuale.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** quando [{{新規|しんき}}](term:term-shinki) appare
-> prima di un'azione di sistema, leggilo come "nuova voce / nuovo elemento".
-> Non è etimologia: è un trucco pratico per non scambiarlo con "recente".
+#### 🧠 Gancio cognitivo
+
+quando [{{新規|しんき}}](term:term-shinki) appare
+prima di un'azione di sistema, leggilo come "nuova voce / nuovo elemento".
+Non è etimologia: è un trucco pratico per non scambiarlo con "recente".
 
 :::image
 src: assets/dmps-deckbuilder-create.png
@@ -136,24 +159,31 @@ caption: >-
   `{{新規|しんき}}デッキ{{作成|さくせい}}`.
 :::
 
-Nel pulsante `{{新規|しんき}}デッキ{{作成|さくせい}}`, la frase perde `で`, `を` e
+Nel pulsante `{{新規|しんき}}デッキ{{作成|さくせい}}`, la UI taglia `で`, `を` e
 `する`. Rimangono tre blocchi nominali: `{{新規|しんき}}`, `デッキ`,
-`{{作成|さくせい}}`. È una compressione tipica dei pulsanti: non serve una
-frase completa, basta nominare l'azione in modo leggibile a colpo d'occhio.
+`{{作成|さくせい}}`. È una compressione tipica dei pulsanti giapponesi: il
+testo non spiega più la frase, ma etichetta l'azione che parte al clic.
+
+#### ⚖️ Contrasto operativo
+
+`{{新規|しんき}}でデッキを{{作成|さくせい}}する` è una
+frase guida, quindi mostra particelle e verbo finale. `{{新規|しんき}}デッキ{{作成|さくせい}}`
+è una label da pulsante, quindi conserva solo i nomi funzionali. Non cercare
+un `を` nascosto: il ruolo dell'oggetto è implicito nella posizione del testo.
 
 ## 3. Inserire un codice: `デッキコードを{{入力|にゅうりょく}}する`
 
-Il blocco di destra cambia logica. Qui il mazzo non nasce nella schermata:
-arriva attraverso un [デッキコード](term:term-deck-code), cioè una stringa che
-rappresenta una lista già pronta. Per questo il verbo non è
-[{{作成|さくせい}}する](term:term-sakusei-suru), ma
-[{{入力|にゅうりょく}}する](term:term-nyuryoku-suru).
+Il blocco di destra parte da un oggetto diverso:
+[デッキコード](term:term-deck-code). La parola è in katakana perché viene dal
+lessico di prodotto, ma la frase intorno è ordinaria: `デッキコードを` marca il
+codice come oggetto e [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) dice che
+quel valore deve entrare nel campo.
 
-[{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) non significa semplicemente
-"scrivere" in senso libero. In una UI indica l'immissione di un valore in un
-campo: password, codice, numero, nome utente. La casella nera sotto
-`デッキコードを{{入力|にゅうりょく}}する` conferma il frame: prima metti dentro il
-codice, poi premi `{{決定|けってい}}`.
+[{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) non equivale a "scrivere" in
+senso libero. In una schermata web indica input controllato: password, codice,
+numero, nome utente. La casella nera sotto la frase conferma il frame
+linguistico: il testo chiede un valore preciso, non una scelta tra opzioni.
+Dopo l'immissione, `{{決定|けってい}}` chiude l'azione come conferma.
 
 :::example_sentence
 jp: >-
@@ -164,12 +194,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `デッキコードを` -> oggetto diretto: il valore da immettere è il codice del
-  mazzo, non un nome libero.
-- `{{入力|にゅうりょく}}する` -> azione di input: mettere un dato dentro un
-  campo della UI.
-- `{{決定|けってい}}` -> conferma successiva: chiude la scelta dopo
-  l'immissione, non sostituisce il verbo di inserimento.
+*   `デッキコードを` ➔ **oggetto diretto**: il valore da immettere è il codice
+    del mazzo, non un nome libero.
+*   `{{入力|にゅうりょく}}する` ➔ **azione di input**: mettere un dato dentro un
+    campo della UI.
+*   `{{決定|けってい}}` ➔ **conferma successiva**: chiude il valore già immesso,
+    non sostituisce il gesto di inserimento.
 
 :::image
 src: assets/dmps-deckbuilder-input.png
@@ -181,38 +211,77 @@ caption: >-
   `{{決定|けってい}}` arriva solo dopo l'immissione.
 :::
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{作成|さくせい}}する](term:term-sakusei-suru)
-> genera qualcosa di nuovo nel sistema; [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru)
-> mette nel sistema un valore che hai già. Se leggi `デッキコード`, aspettati un
-> campo; se leggi `{{新規|しんき}}デッキ{{作成|さくせい}}`, aspettati l'avvio di
-> una nuova composizione.
+#### ⚖️ Contrasto operativo
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** in `{{入力|にゅうりょく}}`, il kanji `{{入|にゅう}}`
-> richiama l'idea di "entrata". Usalo come ancora visiva: un dato entra nel
-> campo. Il valore tecnico completo resta "input / immissione".
+[{{作成|さくせい}}する](term:term-sakusei-suru)
+genera qualcosa di nuovo nel sistema; [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru)
+mette nel sistema un valore che hai già. Se leggi [デッキコード](term:term-deck-code),
+aspettati un campo; se leggi `{{新規|しんき}}デッキ{{作成|さくせい}}`, aspettati
+l'avvio di una nuova composizione.
 
-## 4. Dal testo guida al pulsante compatto
+#### 🧠 Gancio cognitivo
 
-La schermata mostra due registri della stessa UI. Le righe esplicative sono
-frasi verbali complete: `{{新規|しんき}}でデッキを{{作成|さくせい}}する` e
-`デッキコードを{{入力|にゅうりょく}}する`. I pulsanti invece preferiscono
-etichette dense: `{{新規|しんき}}デッキ{{作成|さくせい}}` e
-`{{決定|けってい}}`.
+in `{{入力|にゅうりょく}}`, il kanji `{{入|にゅう}}`
+richiama l'idea di "entrata". Usalo come ancora visiva: un dato entra nel
+campo. Il valore tecnico completo resta "input / immissione".
 
-Questa alternanza è molto trasferibile nelle pagine web giapponesi. Quando vedi
-una frase guida, cerca particelle e verbo finale: `で` marca la modalità, `を`
-marca l'oggetto, `する` chiude l'azione. Quando vedi un pulsante, aspettati un
-composto nominale o una parola di conferma: meno grammatica esplicita, più
-funzione immediata.
+## 4. Confermare non è inserire
 
-> [!WARNING]
-> `{{決定|けってい}}` non è il contrario di
-> [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru). `{{入力|にゅうりょく}}する`
-> descrive l'immissione del codice; `{{決定|けってい}}` conferma il valore già
-> immesso. Se li confondi, rischi di leggere il pulsante come "inserisci" quando
-> in realtà significa "conferma".
+`{{決定|けってい}}` è una parola breve, ma nella UI ha un ruolo preciso: decide
+o conferma ciò che è già stato scelto o immesso. Dopo
+`デッキコードを{{入力|にゅうりょく}}する`, il pulsante non ti chiede di digitare
+ancora; prende il codice presente nel campo e passa allo step successivo.
+
+Il contrasto con `{{選択|せんたく}}する` aiuta a non confondere i passaggi.
+`{{選択|せんたく}}する` nomina l'atto di scegliere tra opzioni; `{{決定|けってい}}`
+arriva quando quella scelta deve diventare definitiva. Nella schermata del
+codice, invece, [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) è il gesto di
+riempire il campo e `{{決定|けってい}}` è il clic che conferma il contenuto.
+
+:::example_sentence
+jp: >-
+  デッキコードを{{入力|にゅうりょく}}してから、{{決定|けってい}}を{{押|お}}す。
+translation_it: >-
+  Dopo aver inserito il codice del mazzo, premo Conferma.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `デッキコードを{{入力|にゅうりょく}}してから` ➔ **sequenza temporale**:
+    `〜してから` dice che prima inserisci il codice e solo dopo fai l'azione
+    successiva.
+*   `{{決定|けってい}}を` ➔ **oggetto del clic**: il target non è il codice, ma il
+    pulsante di conferma.
+*   `{{押|お}}す` ➔ **azione fisica sulla UI**: premere/cliccare il pulsante.
+
+#### ⚖️ Contrasto operativo
+
+`{{決定|けってい}}` non è il contrario di
+[{{入力|にゅうりょく}}する](term:term-nyuryoku-suru). `{{入力|にゅうりょく}}する`
+descrive l'immissione del codice; `{{決定|けってい}}` conferma il valore già
+immesso. Se li confondi, rischi di leggere il pulsante come "inserisci" quando
+in realtà significa "conferma".
+
+## 5. Leggere la UI per registri: frase guida, campo, pulsante
+
+La schermata alterna tre registri. Le frasi guida sono complete:
+`{{新規|しんき}}でデッキを{{作成|さくせい}}する` e
+`デッキコードを{{入力|にゅうりょく}}する`; qui cerchi particelle e verbo finale. Il
+campo è quasi muto: si capisce dal sostantivo che lo precede,
+[デッキコード](term:term-deck-code). I pulsanti comprimono: `{{新規|しんき}}デッキ{{作成|さくせい}}`
+nomina l'azione, `{{決定|けってい}}` nomina la conferma.
+
+Questo schema torna spesso nelle UI giapponesi. Quando una riga contiene `を` e
+`する`, stai leggendo un'azione esplicita. Quando il testo è un blocco nominale
+senza particelle, probabilmente sei davanti a un'etichetta o a un pulsante.
+Quando compare un campo, il sostantivo prima del campo ti dice che tipo di dato
+deve entrarci.
+
+#### 🧠 Gancio cognitivo
+
+pensa alla schermata come a tre corsie: frase guida =
+"che azione è", campo = "che dato serve", pulsante = "che cosa parte adesso".
+È un trucco di lettura, non una regola grammaticale assoluta.
 
 ## Esempi guidati di riepilogo
 
@@ -227,7 +296,7 @@ translation_it: >-
 jp: >-
   デッキコードを{{入力|にゅうりょく}}する。
 translation_it: >-
-  Inserisco il codice del mazzo.
+  Inserire il codice del mazzo.
 :::
 
 :::example_sentence
@@ -246,9 +315,10 @@ translation_it: >-
 
 ## Nota finale
 
-La schermata si legge bene se separi modalità, oggetto e azione. A sinistra
-[{{新規|しんき}}](term:term-shinki) + [{{作成|さくせい}}する](term:term-sakusei-suru)
+La schermata diventa prevedibile quando separi modalità, oggetto e azione. A
+sinistra [{{新規|しんき}}](term:term-shinki) + [{{作成|さくせい}}する](term:term-sakusei-suru)
 apre una composizione nuova; a destra [デッキコード](term:term-deck-code) +
-[{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) ti dice di immettere un
-valore già pronto. I pulsanti comprimono, ma non cambiano il sistema:
-creazione, immissione, conferma.
+[{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) chiede un valore già pronto;
+`{{決定|けってい}}` conferma solo dopo l'immissione. Le label dei pulsanti
+comprimono la grammatica, ma non cambiano il flusso: scegliere, creare,
+inserire, confermare.

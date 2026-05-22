@@ -14,23 +14,44 @@ summary: >-
   di una nuova leggenda.
 ---
 
-# Obiettivo
+# Modalità Auto e nuova leggenda: dal comando al tono epico
 
-Capire due schermate di Dragon Quest Smash Grow: il pannello
-[オート{{機能|きのう}}](term:term-auto-kinou), che spiega cosa succede quando
-premi il tasto Auto, e una battuta del robottino in cui una
-[{{新|あたら}}しい{{伝説|でんせつ}}](term:term-densetsu) sta per
-[{{生|う}}まれる](term:term-umareru).
+Dragon Quest Smash Grow alterna due registri molto riconoscibili: prima una finestra tutorial spiega che cosa cambia quando tocchi il pulsante Auto, poi un robottino trasforma l'avvio dell'avventura in un annuncio solenne. La stessa schermata passa così dalla lingua procedurale della UI alla lingua narrativa da RPG.
 
-## Contesto
+Nel tutorial devi seguire una catena precisa: pulsante, condizione, azioni delegate al sistema, cambio di modalità. Nel dialogo successivo il centro non è più che cosa devi premere, ma che cosa sta per accadere: una [{{新|あたら}}しい{{伝説|でんせつ}}](term:term-densetsu) è sul punto di [{{生|う}}まれる](term:term-umareru).
 
-La prima schermata è un tutorial operativo. Il titolo
-`オート{{機能|きのう}}` introduce la funzione, poi la frase principale dice:
-`オートボタンを{{押|お}}すと、{{移動|いどう}}と{{攻撃|こうげき}}を
-{{自動|じどう}}で{{行|おこな}}う、オートモードに
-{{切|き}}り{{替|か}}わるぞ。` La seconda schermata cambia tono: non dà un
-comando di UI, ma annuncia `{{今|いま}} {{新|あたら}}しい
-{{伝説|でんせつ}}が {{生|う}}まれようとしてイル！`.
+## Termini chiave
+
+- [オート{{機能|きのう}}](term:term-auto-kinou) — funzione Auto, cioè la feature che automatizza alcune azioni.
+- [{{押|お}}す](term:term-osu) — premere un pulsante o un comando touch.
+- [{{移動|いどう}}](term:term-idou) — movimento / spostamento del personaggio.
+- [{{自動|じどう}}](term:term-jidou) — automatico, eseguito dal sistema.
+- [{{切|き}}り{{替|か}}わる](term:term-kirikawaru) — passare a un altro stato o modo.
+- [{{伝説|でんせつ}}](term:term-densetsu) — leggenda, con tono narrativo solenne.
+- [{{生|う}}まれる](term:term-umareru) — nascere / venire alla luce, anche per eventi astratti.
+
+## Espressioni ricorrenti
+
+- `オートボタンを{{押|お}}すと` — quando premi il pulsante Auto.
+- `{{移動|いどう}}と{{攻撃|こうげき}}を{{自動|じどう}}で{{行|おこな}}う` — movimento e attacco vengono eseguiti automaticamente.
+- `オートモードに{{切|き}}り{{替|か}}わる` — il sistema passa alla modalità Auto.
+- `{{新|あたら}}しい{{伝説|でんせつ}}が{{生|う}}まれようとしてイル` — una nuova leggenda sta per nascere.
+
+## Pattern grammaticali chiave
+
+- [〜ようとしている](grammar:grammar-you-to-shite-iru) — stare per / essere sul punto di fare o accadere.
+
+## Etichette da riconoscere
+
+- `オートボタン` — il pulsante Auto come oggetto da premere.
+- `オートモード` — la modalità Auto come stato di arrivo.
+- `イル` — `いる` scritto in katakana per colorare la voce del robottino.
+
+---
+
+## 1. Il tutorial Auto: pulsante, condizione e cambio di modalità
+
+La finestra [オート{{機能|きのう}}](term:term-auto-kinou) non descrive un oggetto dell'inventario: nomina una feature. `オート` è il prestito riconoscibile da “auto”, mentre `{{機能|きのう}}` significa funzione. Quando questi due pezzi stanno nel titolo di una UI, preparati a una spiegazione di comportamento: il gioco sta dicendo che cosa farà il sistema al posto tuo.
 
 :::image
 src: assets/dragon-quest-smash-grow-auto-mode.jpg
@@ -41,6 +62,59 @@ caption: >-
   [{{移動|いどう}}](term:term-idou) e `{{攻撃|こうげき}}` passano a
   [{{自動|じどう}}](term:term-jidou).
 :::
+
+Il blocco operativo parte da `オートボタンを{{押|お}}すと`. [{{押|お}}す](term:term-osu) è il verbo base per premere o spingere, e `を` marca `オートボタン` come oggetto diretto: l'azione richiesta non è “andare in Auto” in modo astratto, ma premere proprio quel bottone. Subito dopo, `と` aggancia una conseguenza quasi meccanica: quando succede A, il sistema fa B.
+
+La conseguenza è `{{移動|いどう}}と{{攻撃|こうげき}}を{{自動|じどう}}で{{行|おこな}}う`. [{{移動|いどう}}](term:term-idou) è lo spostamento del personaggio, `{{攻撃|こうげき}}` è l'attacco, e `と` li mette in coppia come azioni coordinate. [{{自動|じどう}}](term:term-jidou) non è solo il nome inglese della modalità: in `{{自動|じどう}}で{{行|おこな}}う` descrive il modo dell'azione, cioè “eseguire in automatico”.
+
+:::example_sentence
+jp: >-
+  オートボタンを{{押|お}}すと、{{移動|いどう}}と{{攻撃|こうげき}}を{{自動|じどう}}で{{行|おこな}}う。
+translation_it: >-
+  Quando premi il pulsante Auto, esegue movimento e attacco automaticamente.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `オートボタンを` ➔ **Oggetto dell'azione** (`を` dice che il pulsante è ciò che viene premuto).
+*   `{{押|お}}すと` ➔ **Condizione automatica** (`と` collega la pressione del pulsante a una conseguenza prevedibile).
+*   `{{移動|いどう}}と{{攻撃|こうげき}}を` ➔ **Azioni delegate** (`と` unisce movimento e attacco; `を` le rende oggetto di `{{行|おこな}}う`).
+*   `{{自動|じどう}}で{{行|おこな}}う` ➔ **Modo di esecuzione** (`で` qui vale “in modo automatico”).
+
+#### ⚖️ Contrasto operativo
+
+`オート` come prestito dice “Auto” nella label, ma [{{自動|じどう}}](term:term-jidou) è il giapponese che spiega davvero il comportamento. Se vedi entrambi, `オート` ti orienta nella UI, `{{自動|じどう}}で` ti dice come viene svolta l'azione.
+
+#### 🧠 Gancio cognitivo
+
+pensa a `と` nei tutorial come a un interruttore causa-effetto: `ボタンを{{押|お}}すと...` non sta raccontando una possibilità vaga, ma il risultato stabile dopo la pressione.
+
+## 2. `{{切|き}}り{{替|か}}わる`: il sistema passa a un altro stato
+
+Dopo aver spiegato che cosa verrà automatizzato, la frase chiude con `オートモードに{{切|き}}り{{替|か}}わるぞ`. [{{切|き}}り{{替|か}}わる](term:term-kirikawaru) è intransitivo: non descrive il giocatore che “cambia qualcosa” con le mani, ma la modalità che cambia stato. Il punto di arrivo è segnato da `に`, quindi `オートモードに` significa “verso / in modalità Auto”.
+
+La finale `ぞ` dà alla spiegazione un tono energico, da mascotte o tutorial parlato. La grammatica resta procedurale, ma la voce non è fredda: il gioco ti sta guidando con un registro più vivace di un manuale tecnico.
+
+:::example_sentence
+jp: >-
+  オートボタンを{{押|お}}すと、オートモードに{{切|き}}り{{替|か}}わる。
+translation_it: >-
+  Quando premi il pulsante Auto, passa alla modalità Auto.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `オートボタンを{{押|お}}すと` ➔ **Trigger** (la pressione del pulsante crea la condizione).
+*   `オートモードに` ➔ **Stato di arrivo** (`に` marca la modalità in cui si entra).
+*   `{{切|き}}り{{替|か}}わる` ➔ **Cambio intransitivo** (è il sistema o la modalità a passare di stato).
+
+#### ⚖️ Contrasto operativo
+
+[{{切|き}}り{{替|か}}わる](term:term-kirikawaru) e `{{切|き}}り{{替|か}}える` sono vicini ma non identici. `{{切|き}}り{{替|か}}わる` mette in primo piano il cambio che avviene; `{{切|き}}り{{替|か}}える` mette in primo piano qualcuno che cambia l'impostazione.
+
+## 3. Dalla UI alla narrazione: una leggenda sta per nascere
+
+La seconda schermata cambia subito grammatica e temperatura emotiva. Non ci sono più pulsanti, oggetti marcati da `を` o azioni automatizzate: il robottino annuncia `{{今|いま}} {{新|あたら}}しい{{伝説|でんせつ}}が {{生|う}}まれようとしてイル！`. Qui [{{伝説|でんせつ}}](term:term-densetsu) porta il lessico dell'avventura, mentre [{{生|う}}まれる](term:term-umareru) trasforma l'inizio del gioco in una nascita simbolica.
 
 :::image
 src: assets/dragon-quest-smash-grow-new-legend-dialogue.jpg
@@ -54,65 +128,42 @@ caption: >-
   katakana rende più meccanica la voce del personaggio.
 :::
 
-## Termini chiave
+[{{生|う}}まれる](term:term-umareru) non vale solo per esseri viventi. In giapponese può avere come soggetto una storia, un'idea, un'epoca o una [{{伝説|でんせつ}}](term:term-densetsu). Per questo `{{伝説|でんせつ}}が{{生|う}}まれる` non suona strano: la leggenda viene alla luce come evento narrativo.
 
-- [オート{{機能|きのう}}](term:term-auto-kinou)
-- [{{押|お}}す](term:term-osu)
-- [{{移動|いどう}}](term:term-idou)
-- [{{自動|じどう}}](term:term-jidou)
-- [{{切|き}}り{{替|か}}わる](term:term-kirikawaru)
-- [{{伝説|でんせつ}}](term:term-densetsu)
-- [{{生|う}}まれる](term:term-umareru)
+[〜ようとしている](grammar:grammar-you-to-shite-iru) aggiunge il senso di imminenza. La base è la forma volitiva: `{{生|う}}まれる` diventa `{{生|う}}まれよう`, poi `としている` indica che il processo è proprio sul punto di compiersi. Nel testo della schermata `いる` diventa `イル`: la grammatica non cambia, ma il katakana rende la voce più artificiale e robotica.
 
-## Pattern grammaticali chiave
+:::example_sentence
+jp: >-
+  {{今|いま}}、{{新|あたら}}しい{{伝説|でんせつ}}が{{生|う}}まれようとしている。
+translation_it: >-
+  Ora sta per nascere una nuova leggenda.
+:::
 
-- [〜ようとしている](grammar:grammar-you-to-shite-iru)
+#### 🗺️ Anatomia della frase
 
-## Spiegazione
+*   `{{今|いま}}` ➔ **Tempo della scena** (colloca l'evento nel presente immediato).
+*   `{{新|あたら}}しい{{伝説|でんせつ}}が` ➔ **Soggetto narrativo** (`が` presenta ciò che sta emergendo).
+*   `{{生|う}}まれよう` ➔ **Forma volitiva** di [{{生|う}}まれる](term:term-umareru), qui usata dentro il pattern di imminenza.
+*   `としている / としてイル` ➔ **Essere sul punto di** (l'evento non è già completo, ma sta per accadere).
 
-[オート{{機能|きのう}}](term:term-auto-kinou) è una parola composta: `オート`
-viene dall'inglese “auto”, mentre [{{機能|きのう}}](term:term-auto-kinou) è
-“funzione”. In una UI di gioco indica una modalità in cui il sistema prende in
-carico azioni ripetitive o tattiche. Non sta descrivendo un oggetto: è il nome
-della feature.
+#### ⚖️ Contrasto operativo
 
-`オートボタンを[{{押|お}}す](term:term-osu)と` usa il verbo
-[{{押|お}}す](term:term-osu), “premere”. La particella `を` marca
-`オートボタン` come oggetto dell'azione: premi proprio quel pulsante. Subito
-dopo, `と` introduce il risultato automatico che segue.
+`{{生|う}}まれる` dice semplicemente “nasce”; `{{生|う}}まれようとしている` mette la camera un attimo prima della nascita. È la differenza tra un evento già avvenuto e un evento imminente.
 
-Nel blocco [{{移動|いどう}}](term:term-idou)と`{{攻撃|こうげき}}`,
-[{{移動|いどう}}](term:term-idou) è lo spostamento del personaggio, mentre
-`{{攻撃|こうげき}}` è l'attacco. Sono le due azioni che il tutorial promette di
-far eseguire al sistema quando la modalità auto è attiva.
+#### 🧠 Gancio cognitivo
 
-[{{自動|じどう}}](term:term-jidou) è la parola giapponese per “automatico”.
-Qui appare come `{{自動|じどう}}で{{行|おこな}}う`: il gioco non dice solo che
-la modalità si chiama Auto, ma che movimento e attacco vengono eseguiti
-automaticamente.
+in [〜ようとしている](grammar:grammar-you-to-shite-iru), immagina `よう` come il movimento interno “verso l'azione” e `としている` come il fermo immagine sul momento appena prima.
 
-[{{切|き}}り{{替|か}}わる](term:term-kirikawaru) è intransitivo: descrive la
-modalità che cambia stato. In `オートモードに
-{{切|き}}り{{替|か}}わるぞ`, il punto d'arrivo è segnato da `に`: il sistema
-passa alla modalità Auto.
+## Esempi guidati di riepilogo
 
-Nella battuta narrativa, [{{伝説|でんせつ}}](term:term-densetsu) crea un tono
-epico. Non è una voce di menu, ma una parola da storia d'avventura:
-`{{新|あたら}}しい{{伝説|でんせつ}}` fa sentire che l'evento in corso è qualcosa
-di memorabile.
+Le due schermate diventano più facili da leggere quando separi la catena da tutorial e la frase da annuncio narrativo:
 
-[{{生|う}}まれる](term:term-umareru) non si usa solo per bambini o animali.
-Può indicare anche la nascita di un concetto, una storia o un'epoca. Per questo
-`{{伝説|でんせつ}}が{{生|う}}まれる` suona naturale: la leggenda viene alla luce.
-
-[〜ようとしている](grammar:grammar-you-to-shite-iru) si costruisce con la forma
-volitiva del verbo più `としている`. In
-`{{生|う}}まれようとしてイル`, la forma volitiva è
-`{{生|う}}まれよう`: la leggenda non è già completa, è sul punto di nascere. La
-scrittura `イル` in katakana conserva la grammatica di `いる`, ma dà alla voce
-un colore meccanico.
-
-## Esempi guidati
+:::example_sentence
+jp: >-
+  オート{{機能|きのう}}では、{{移動|いどう}}と{{攻撃|こうげき}}を{{自動|じどう}}で{{行|おこな}}う。
+translation_it: >-
+  Nella funzione Auto, movimento e attacco vengono eseguiti automaticamente.
+:::
 
 :::example_sentence
 jp: >-
@@ -123,21 +174,11 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{移動|いどう}}と{{攻撃|こうげき}}を{{自動|じどう}}で{{行|おこな}}う。
+  {{新|あたら}}しい{{伝説|でんせつ}}が{{生|う}}まれようとしてイル。
 translation_it: >-
-  Esegue movimento e attacco automaticamente.
-:::
-
-:::example_sentence
-jp: >-
-  {{今|いま}}、{{新|あたら}}しい{{伝説|でんせつ}}が{{生|う}}まれようとしている。
-translation_it: >-
-  Ora sta per nascere una nuova leggenda.
+  Una nuova leggenda sta per nascere.
 :::
 
 ## Nota finale
 
-Le due schermate mostrano due registri molto diversi dello stesso gioco:
-`オートボタンを{{押|お}}すと` è lingua da tutorial, concreta e procedurale;
-`{{伝説|でんせつ}}が{{生|う}}まれようとしてイル` è lingua da avventura, costruita per
-dare solennità a ciò che sta iniziando.
+Quando il gioco spiega [オート{{機能|きのう}}](term:term-auto-kinou), cerca la catena `ボタンを{{押|お}}すと` → azione automatica → stato di arrivo con `に`. Quando il robottino parla di [{{伝説|でんせつ}}](term:term-densetsu), invece, passa a un registro da avventura: [{{生|う}}まれる](term:term-umareru) rende l'evento una nascita, e [〜ようとしている](grammar:grammar-you-to-shite-iru) lo ferma nel momento in cui sta per cominciare.
