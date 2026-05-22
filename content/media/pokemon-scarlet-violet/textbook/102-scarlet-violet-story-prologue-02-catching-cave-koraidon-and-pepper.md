@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 media_id: media-pokemon-scarlet-violet
 slug: 102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
-title: "Scarlet / Violet Story 102 - Prologo 2: cattura, grotta, Koraidon / Miraidon e Pepper"
+title: "Dal tutorial di cattura alla grotta: pericolo, stato e tono"
 order: 120
 segment_ref: scarlet-violet-story
 difficulty: custom
@@ -113,21 +113,23 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{野生|やせい}}の ポケモンを` -> bersaglio dell'azione: il Pokemon è un incontro di campo e `を` lo marca come oggetto.
-- `{{弱|よわ}}らせてから` -> sequenza operativa: prima lo fai diventare debole, poi fai l'azione successiva.
-- `モンスターボールを {{投|な}}げてみて` -> invito pratico: `{{投|な}}げる` è lanciare, [～てみる](grammar:grammar-te-miru) trasforma l'ordine in prova guidata.
+- `{{野生|やせい}}の ポケモンを` ➔ bersaglio dell'azione: il Pokemon è un incontro di campo e `を` lo marca come oggetto.
+- `{{弱|よわ}}らせてから` ➔ sequenza operativa: prima lo fai diventare debole, poi fai l'azione successiva.
+- `モンスターボールを {{投|な}}げてみて` ➔ invito pratico: `{{投|な}}げる` è lanciare, [～てみる](grammar:grammar-te-miru) trasforma l'ordine in prova guidata.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{捕獲|ほかく}}](term:term-hokaku) è il nome della
-> cattura come attività, mentre [{{捕|つか}}まえる](term:term-tsukamaeru) è il verbo
-> "catturare". Se il dialogo parla di `ポケモンの {{捕獲|ほかく}}`, sta guardando
-> il risultato del tuo processo di cattura; se dice `{{捕|つか}}まえてみて`, ti sta
-> chiedendo di fare l'azione.
+#### ⚖️ Contrasto operativo: [{{捕獲|ほかく}}](term:term-hokaku) vs [{{捕|つか}}まえる](term:term-tsukamaeru)
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** pensa a [{{弱|よわ}}らせる](term:term-yowaraseru) come a
-> "far diventare debole". Nel frame Pokemon, "debole" non significa per forza
-> "sconfitto": significa pronto per il lancio della Ball.
+[{{捕獲|ほかく}}](term:term-hokaku) è il nome della cattura come attività,
+mentre [{{捕|つか}}まえる](term:term-tsukamaeru) è il verbo "catturare". Se il
+dialogo parla di `ポケモンの {{捕獲|ほかく}}`, sta guardando il risultato del tuo
+processo di cattura; se dice `{{捕|つか}}まえてみて`, ti sta chiedendo di fare
+l'azione.
+
+#### 🧠 Gancio cognitivo
+
+Pensa a [{{弱|よわ}}らせる](term:term-yowaraseru) come a "far diventare debole".
+Nel frame Pokemon, "debole" non significa per forza "sconfitto": significa
+pronto per il lancio della Ball.
 
 ## 2. Il percorso parla con avvisi, habitat e suoni
 
@@ -173,16 +175,16 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{鳴|な}}き{{声|ごえ}}が {{聞|き}}こえても` -> concessione: anche se il suono si sente, non decide da solo l'azione corretta.
-- `{{危|あぶ}}ない ポケモンが {{生息|せいそく}}している {{場所|ばしょ}}` -> luogo qualificato: non è un posto qualunque, è un habitat di Pokemon pericolosi.
-- `{{入|はい}}らないように` -> prevenzione: [～ないように](grammar:grammar-nai-you-ni) indica il comportamento da evitare.
+- `{{鳴|な}}き{{声|ごえ}}が {{聞|き}}こえても` ➔ concessione: anche se il suono si sente, non decide da solo l'azione corretta.
+- `{{危|あぶ}}ない ポケモンが {{生息|せいそく}}している {{場所|ばしょ}}` ➔ luogo qualificato: non è un posto qualunque, è un habitat di Pokemon pericolosi.
+- `{{入|はい}}らないように` ➔ prevenzione: [～ないように](grammar:grammar-nai-you-ni) indica il comportamento da evitare.
 
-> [!WARNING]
-> **⚖️ `いる` vs [{{生息|せいそく}}する](term:term-seisoku-suru):** `いる` segnala
-> semplice presenza. [{{生息|せいそく}}する](term:term-seisoku-suru) lega una specie a
-> un habitat. Se il gioco usa [{{生息|せいそく}}する](term:term-seisoku-suru), il
-> luogo diventa informazione di esplorazione: lì puoi aspettarti incontri e
-> rischi legati a quella specie.
+#### ⚖️ Contrasto operativo: `いる` vs [{{生息|せいそく}}する](term:term-seisoku-suru)
+
+`いる` segnala semplice presenza. [{{生息|せいそく}}する](term:term-seisoku-suru)
+lega una specie a un habitat. Se il gioco usa
+[{{生息|せいそく}}する](term:term-seisoku-suru), il luogo diventa informazione di
+esplorazione: lì puoi aspettarti incontri e rischi legati a quella specie.
 
 Il movimento verso il faro si legge bene anche con
 [～ながら](grammar:grammar-nagara). Una frase come
@@ -237,22 +239,23 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{力|ちから}}を` -> oggetto consumato: la forza è ciò che viene usato fino al limite.
-- `{{使|つか}}い{{果|は}}たしちゃって` -> verbo composto più [～てしまう](grammar:grammar-te-shimau): l'esaurimento è completo e ha un tono di guaio.
-- `この {{姿|すがた}}じゃ` -> condizione attuale: `じゃ` è la forma colloquiale di `では`.
-- `{{戦|たたか}}えねえ` -> potenziale negativo ruvido: equivale a `{{戦|たたか}}えない`, ma con voce brusca.
+- `{{力|ちから}}を` ➔ oggetto consumato: la forza è ciò che viene usato fino al limite.
+- `{{使|つか}}い{{果|は}}たしちゃって` ➔ verbo composto più [～てしまう](grammar:grammar-te-shimau): l'esaurimento è completo e ha un tono di guaio.
+- `この {{姿|すがた}}じゃ` ➔ condizione attuale: `じゃ` è la forma colloquiale di `では`.
+- `{{戦|たたか}}えねえ` ➔ potenziale negativo ruvido: equivale a `{{戦|たたか}}えない`, ma con voce brusca.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{姿|すがた}}](term:term-sugata) non va tradotto
-> automaticamente come "look". In Pokemon spesso è una forma con conseguenze:
-> se il testo dice `この {{姿|すがた}}じゃ`, sta parlando di ciò che quello stato
-> permette o impedisce.
+#### ⚖️ Contrasto operativo: [{{姿|すがた}}](term:term-sugata) come stato visibile
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** in
-> [{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu),
-> immagina `{{果|は}}たす` come "andare fino alla fine". Non resta una riserva
-> nascosta: la frase presenta la forza come consumata fino al fondo.
+[{{姿|すがた}}](term:term-sugata) non va tradotto automaticamente come "look". In
+Pokemon spesso è una forma con conseguenze: se il testo dice
+`この {{姿|すがた}}じゃ`, sta parlando di ciò che quello stato permette o
+impedisce.
+
+#### 🧠 Gancio cognitivo
+
+In [{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu),
+immagina `{{果|は}}たす` come "andare fino alla fine". Non resta una riserva
+nascosta: la frase presenta la forza come consumata fino al fondo.
 
 Anche [～てしまう](grammar:grammar-te-shimau) resta attivo in questa zona della
 scena. In forme contratte come `{{落|お}}ちちゃう`, `へたりこんじゃう` o
@@ -287,16 +290,16 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `この ボールは` -> tema: la frase spiega che cos'è quella Ball, non introduce una cattura qualunque.
-- `あの ポケモンを` -> bersaglio del controllo: l'oggetto agisce su quel Pokemon specifico.
-- `{{制御|せいぎょ}}するための もの` -> scopo nominalizzato: `ための` trasforma "controllare" nella funzione dell'oggetto.
+- `この ボールは` ➔ tema: la frase spiega che cos'è quella Ball, non introduce una cattura qualunque.
+- `あの ポケモンを` ➔ bersaglio del controllo: l'oggetto agisce su quel Pokemon specifico.
+- `{{制御|せいぎょ}}するための もの` ➔ scopo nominalizzato: `ための` trasforma "controllare" nella funzione dell'oggetto.
 
-> [!WARNING]
-> **⚖️ [{{捕獲|ほかく}}](term:term-hokaku) vs [{{制御|せいぎょ}}する](term:term-seigyo-suru):**
-> [{{捕獲|ほかく}}](term:term-hokaku) appartiene al ciclo normale indebolire e
-> catturare. [{{制御|せいぎょ}}する](term:term-seigyo-suru) parla di gestione e
-> contenimento. Se li confondi, leggi la Ball di Pepper come un oggetto comune
-> invece che come chiave narrativa della scena.
+#### ⚖️ Contrasto operativo: [{{捕獲|ほかく}}](term:term-hokaku) vs [{{制御|せいぎょ}}する](term:term-seigyo-suru)
+
+[{{捕獲|ほかく}}](term:term-hokaku) appartiene al ciclo normale indebolire e
+catturare. [{{制御|せいぎょ}}する](term:term-seigyo-suru) parla di gestione e
+contenimento. Se li confondi, leggi la Ball di Pepper come un oggetto comune
+invece che come chiave narrativa della scena.
 
 Il modo in cui Pepper commenta il protagonista è altrettanto marcato.
 [{{災難|さいなん}}](term:term-sainan) nomina un guaio capitato addosso: non una
@@ -322,9 +325,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{見|み}}れば {{見|み}}るほど` -> correlazione crescente: più continua l'osservazione, più cresce l'impressione.
-- `{{不思議|ふしぎ}}な ポケモンだし` -> valutazione più collegamento: `し` aggiunge una ragione o un elemento alla constatazione.
-- `{{先|さき}}が {{思|おも}}いやられるな` -> giudizio sul futuro: non descrive un fatto già successo, ma il brutto presagio che Pepper ricava dalla scena.
+- `{{見|み}}れば {{見|み}}るほど` ➔ correlazione crescente: più continua l'osservazione, più cresce l'impressione.
+- `{{不思議|ふしぎ}}な ポケモンだし` ➔ valutazione più collegamento: `し` aggiunge una ragione o un elemento alla constatazione.
+- `{{先|さき}}が {{思|おも}}いやられるな` ➔ giudizio sul futuro: non descrive un fatto già successo, ma il brutto presagio che Pepper ricava dalla scena.
 
 Accanto al dialogo, [わざマシン](term:term-waza-machine) riporta il blocco verso
 la progressione di sistema. Una `わざマシン` insegna una mossa, ma in Scarlet /

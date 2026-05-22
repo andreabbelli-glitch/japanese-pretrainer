@@ -15,152 +15,167 @@ summary: >-
 
 # Accademia, aiuto e squadra: leggere chi fa cosa a Paldea
 
-In *Pokémon Scarlet & Violet*, l'Accademia non è solo uno sfondo narrativo: è il luogo in cui il gioco alterna lezioni, discorsi ufficiali, richieste di aiuto e rapporti tra gruppi. Le stesse parole che compaiono in classe tornano quando un personaggio commenta una situazione, ringrazia perché qualcosa gli ha risparmiato un problema, o parla di una squadra che agisce insieme.
+Dentro l'Accademia di *Pokémon Scarlet & Violet*, il giapponese cambia registro senza avvisare troppo: una frase può suonare come discorso ufficiale del preside, come battuta pratica tra compagni o come report su ciò che sta succedendo fuori dal campus. La stessa scena può nominare una lezione, una difficoltà, un gruppo di studenti o una squadra del Team Star.
 
-Questo gruppo di termini ti serve a separare tre domande pratiche: chi sta partecipando alla scena, quale quadro generale viene descritto, e quanto è ampio il gruppo coinvolto. Quando riconosci [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru), [{{助|たす}}かる](term:term-anki-l19-tasukaru) o [{{全員|ぜんいん}}](term:term-anki-l19-zenin), non stai solo traducendo una parola: stai decidendo il ruolo del personaggio dentro la frase.
+Le parole di questo blocco servono a fare tre letture in tempo reale: chi riceve l'insegnamento, chi viene sollevato da un problema, e quanto è ampio il gruppo coinvolto. Quando riconosci [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru), [{{助|たす}}かる](term:term-anki-l19-tasukaru) o [{{全員|ぜんいん}}](term:term-anki-l19-zenin), non stai solo traducendo una gloss: stai decidendo da quale lato della scena guardare l'azione.
 
 ## Termini chiave
 
-- [{{若|わか}}い](term:term-anki-l19-wakai) — giovane; inesperto a seconda del contesto
-- [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) — seguire una lezione
-- [{{助|たす}}かる](term:term-anki-l19-tasukaru) — salvarsi; essere d'aiuto
-- [{{状況|じょうきょう}}](term:term-anki-l19-joukyou) — situazione; quadro delle circostanze
-- [{{親愛|しんあい}}](term:term-anki-l19-shinai) — affetto; caro in formule formali
-- [{{正直|しょうじき}}](term:term-anki-l19-shoujiki) — onesto; francamente
-- [{{生|い}}きる](term:term-anki-l19-ikiru) — vivere; essere vivo
+- [{{若|わか}}い](term:term-anki-l19-wakai) — giovane / ancora inesperto
+- [{{助|たす}}かる](term:term-anki-l19-tasukaru) — salvarsi / essere sollevato da un problema
+- [{{状況|じょうきょう}}](term:term-anki-l19-joukyou) — situazione / quadro delle circostanze
+- [{{親愛|しんあい}}](term:term-anki-l19-shinai) — affetto / caro in formule solenni
+- [{{正直|しょうじき}}](term:term-anki-l19-shoujiki) — onesto / francamente
+- [{{生|い}}きる](term:term-anki-l19-ikiru) — vivere / restare vivo
 - [{{全員|ぜんいん}}](term:term-anki-l19-zenin) — tutti i membri di un gruppo
-- [{{隊|たい}}](term:term-anki-l19-tai) — squadra; unità organizzata
-- [{{団員|だんいん}}](term:term-anki-l19-danin) — membro di un gruppo, team o fazione
-- [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu) — specialità locale; prodotto famoso
+- [{{隊|たい}}](term:term-anki-l19-tai) — squadra / unità operativa
+- [{{団員|だんいん}}](term:term-anki-l19-danin) — membro di una fazione o di un gruppo
+- [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu) — specialità locale / cosa famosa di un luogo
+
+## Espressioni ricorrenti
+
+- [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) — seguire o frequentare una lezione
+- [{{親愛|しんあい}}](term:term-anki-l19-shinai)なる — caro / amato, in indirizzi formali
+- [{{正直|しょうじき}}](term:term-anki-l19-shoujiki)に{{言|い}}うと — a dire il vero / francamente
 
 ---
 
-## 1. L'Accademia: età, lezioni e discorsi ufficiali
+## 1. Accademia: età, lezioni e tono pubblico
 
-Quando la scena entra nell'Accademia, il giapponese distingue subito chi studia, chi insegna e con quale tono qualcuno si rivolge al gruppo.
+Quando la scena entra in aula, il giapponese separa subito tre cose: l'impressione sulle persone, il ruolo dello studente e il tono con cui un adulto si rivolge al gruppo. L'Accademia non è solo un luogo: è una cornice linguistica in cui le battute diventano più scolastiche, istituzionali o cerimoniali.
 
-- [{{若|わか}}い](term:term-anki-l19-wakai) descrive l'età o l'impressione di giovinezza di una persona. Può essere neutro, come in `{{若|わか}}い{{先生|せんせい}}` ("insegnante giovane"), ma può anche suggerire inesperienza se il dialogo sta valutando una scelta impulsiva. Non usarlo per oggetti nuovi: una città appena visitata, una ricetta appena ricevuta o una mossa appena imparata richiedono di norma `{{新|あたら}}しい`, non [{{若|わか}}い](term:term-anki-l19-wakai).
-- [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) mette lo studente al centro. `{{授業|じゅぎょう}}` è la lezione, `を` marca ciò che viene "ricevuto", e `{{受|う}}ける` qui non significa prendere un oggetto, ma partecipare come destinatario dell'insegnamento. Se il soggetto è il professore, la frase cambia: `{{授業|じゅぎょう}}をする` è "fare lezione".
-- [{{親愛|しんあい}}](term:term-anki-l19-shinai) compare bene nella formula `{{親愛|しんあい}}なる`, "caro / amato", tipica di lettere, discorsi ufficiali e indirizzi solenni. In bocca a un preside o a una figura adulta, non è un semplice "mi piaci": costruisce una distanza formale e teatrale verso gli studenti.
+*   [{{若|わか}}い](term:term-anki-l19-wakai) descrive una persona giovane, o una persona che agli occhi del parlante sembra ancora inesperta. In `{{若|わか}}い{{先生|せんせい}}`, il focus è sull'età o sull'impressione del docente; in una battuta più valutativa può suggerire "ancora acerbo". Non usarlo per oggetti appena ottenuti: una ricetta nuova, una mossa nuova o una città appena scoperta richiedono normalmente `{{新|あたら}}しい`, non [{{若|わか}}い](term:term-anki-l19-wakai).
+*   [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) mette lo studente dal lato di chi riceve l'insegnamento. `{{授業|じゅぎょう}}` è la lezione, `を` marca ciò che arriva verso il soggetto, e `{{受|う}}ける` qui non è "prendere un oggetto": è partecipare come destinatario. Se la frase parla del professore, la costruzione cambia: chi tiene la lezione fa `{{授業|じゅぎょう}}をする` o insegna qualcosa, non la "riceve".
+*   [{{親愛|しんあい}}](term:term-anki-l19-shinai) diventa naturale in formule come `{{親愛|しんあい}}なる`, "cari / amati", tipiche di lettere, annunci e discorsi solenni. In bocca a Clavel o a una figura adulta non è una confessione personale: dà al discorso un tono ufficiale, affettuoso ma distante, come se il parlante stesse aprendo un indirizzo formale agli studenti.
 
 :::example_sentence
 jp: >-
-  アカデミーには {{若|わか}}い {{先生|せんせい}}も {{多|おお}}い。
+  {{親愛|しんあい}}なる {{生徒|せいと}}たちよ、きょうも アカデミーで {{授業|じゅぎょう}}を{{受|う}}けよう。
 translation_it: >-
-  All'Accademia ci sono anche molti insegnanti giovani.
+  Cari studenti, anche oggi seguiamo le lezioni all'Accademia.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `アカデミーには` -> cornice di luogo e topic: "quanto all'Accademia".
-- `{{若|わか}}い {{先生|せんせい}}も` -> gruppo incluso con `も`: non solo studenti, ma anche insegnanti giovani.
-- `{{多|おお}}い` -> predicato di quantità: dice che quel tipo di persona è numeroso.
+*   `{{親愛|しんあい}}なる` ➔ **Indirizzo formale**: apre la frase con un tono solenne, non con una semplice emozione privata.
+*   `{{生徒|せいと}}たちよ` ➔ **Gruppo chiamato in causa**: `たち` pluralizza il gruppo, `よ` dà il sapore di appello diretto.
+*   `アカデミーで` ➔ **Luogo dell'azione**: `で` colloca la lezione dentro l'Accademia.
+*   `{{授業|じゅぎょう}}を{{受|う}}けよう` ➔ **Invito a partecipare**: `を{{受|う}}ける` guarda la lezione dal lato dello studente; `よう` la trasforma in proposta condivisa.
 
 :::example_sentence
 jp: >-
-  アカデミーで {{歴史|れきし}}の {{授業|じゅぎょう}}を{{受|う}}けると、パルデアの ことが よく わかる。
+  {{若|わか}}い {{先生|せんせい}}の {{授業|じゅぎょう}}を{{受|う}}けると、パルデアの ことが よく わかる。
 translation_it: >-
-  Se segui una lezione di storia all'Accademia, capisci meglio Paldea.
+  Se segui la lezione di un insegnante giovane, capisci meglio Paldea.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `{{歴史|れきし}}の {{授業|じゅぎょう}}を` -> oggetto della partecipazione: non "ricevi storia" in astratto, ma segui una lezione di storia.
-- `{{受|う}}けると` -> condizione naturale: "quando/se segui".
-- `パルデアの ことが よく わかる` -> risultato cognitivo: capisci meglio le cose di Paldea.
+*   `{{若|わか}}い {{先生|せんせい}}の` ➔ **Persona qualificata**: [{{若|わか}}い](term:term-anki-l19-wakai) descrive il docente, non la lezione come cosa nuova.
+*   `{{授業|じゅぎょう}}を{{受|う}}けると` ➔ **Condizione scolastica**: "quando/se segui la lezione", dal lato di chi partecipa.
+*   `パルデアの ことが よく わかる` ➔ **Risultato di comprensione**: la lezione produce una lettura migliore del mondo di gioco.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) è la prospettiva dello studente. `{{授業|じゅぎょう}}をする` è la prospettiva di chi tiene la lezione. Se leggi `を{{受|う}}ける`, cerca chi riceve l'insegnamento; se leggi `をする`, cerca chi lo eroga.
+#### ⚖️ Contrasto operativo: ricevere una lezione o tenerla
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** in [{{若|わか}}い](term:term-anki-l19-wakai), immagina una persona ancora "verde", non un oggetto nuovo di fabbrica. È un trucco mnemonico, non un'etimologia: serve solo a ricordare il confine con `{{新|あたら}}しい`.
+[{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) è la prospettiva dello studente. `{{授業|じゅぎょう}}をする` è la prospettiva di chi tiene la lezione. Quando leggi `を{{受|う}}ける`, cerca chi riceve l'insegnamento; quando leggi `をする`, cerca chi lo eroga.
+
+#### 🧠 Gancio cognitivo: una persona ancora verde
+
+Per [{{若|わか}}い](term:term-anki-l19-wakai), immagina una persona ancora "verde", non un oggetto appena fabbricato. È un trucco mnemonico, non un'etimologia: serve solo a ricordare il confine con `{{新|あたら}}しい`.
 
 ## 2. Aiuto e quadro generale: cosa sta succedendo davvero
 
-Fuori dalla classe, i dialoghi devono spesso chiarire se qualcuno è in difficoltà, se un'informazione cambia il quadro, o se una scelta riguarda la sopravvivenza e non solo lo spostamento sulla mappa.
+Fuori dall'aula, le battute cominciano a misurare il peso della situazione: c'è qualcuno nei guai, un'informazione da riferire, una condizione che rende più facile andare avanti. Qui il giapponese non chiede solo "che cosa succede?", ma anche chi viene aiutato e che tipo di quadro stai guardando.
 
-- [{{助|たす}}かる](term:term-anki-l19-tasukaru) è intransitivo: non dice "io salvo qualcuno", ma "io vengo salvato / mi si risparmia un problema". Per questo in frasi come `ポケモンセンターが あると {{助|たす}}かる`, il Centro Pokémon è ciò che rende la situazione più facile, mentre il sollievo ricade sul parlante.
-- [{{状況|じょうきょう}}](term:term-anki-l19-joukyou) guarda al quadro delle circostanze: chi è presente, che cosa è successo, quali condizioni rendono urgente una decisione. È diverso da `{{状|じょう}}{{態|たい}}`, che descrive più spesso lo stato di una singola entità, come la condizione fisica di un Pokémon.
-- [{{生|い}}きる](term:term-anki-l19-ikiru) indica vivere, essere vivi o condurre una vita in un certo modo. Se il punto è abitare in un luogo, il verbo più normale è `{{住|す}}む`; se il punto è restare vivi, condividere la vita con i Pokémon o parlare del proprio modo di vivere, [{{生|い}}きる](term:term-anki-l19-ikiru) è la scelta giusta.
+*   [{{助|たす}}かる](term:term-anki-l19-tasukaru) è intransitivo: non dice "salvo qualcuno", ma "mi salvo / mi si risparmia un problema". In `ポケモンセンターが あると {{助|たす}}かる`, il Centro Pokémon è la condizione che rende tutto più gestibile; il sollievo ricade su chi parla o sul gruppo in difficoltà.
+*   [{{状況|じょうきょう}}](term:term-anki-l19-joukyou) guarda al quadro complessivo: chi è presente, che cosa è successo, quali condizioni rendono urgente una decisione. Non è solo lo stato fisico di un Pokémon o di una persona; è la fotografia della scena, abbastanza ampia da poter essere comunicata a un preside, a un compagno o a una squadra.
+*   [{{生|い}}きる](term:term-anki-l19-ikiru) indica vivere, restare vivo o condurre una vita in un certo modo. Se il punto è abitare in una città, il verbo più naturale è `{{住|す}}む`; se il punto è sopravvivere, vivere insieme ai Pokémon o parlare del proprio modo di stare al mondo, [{{生|い}}きる](term:term-anki-l19-ikiru) è il verbo da riconoscere.
 
 :::example_sentence
 jp: >-
-  ピンチの ときに ポケモンセンターが あると {{助|たす}}かる。
+  いまの {{状況|じょうきょう}}なら、ポケモンセンターが あると {{助|たす}}かる。
 translation_it: >-
-  Quando sei nei guai, avere un Centro Pokémon ti salva davvero.
+  Con la situazione attuale, avere un Centro Pokémon sarebbe davvero d'aiuto.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `ピンチの ときに` -> momento critico: la frase parte da una difficoltà concreta.
-- `ポケモンセンターが あると` -> condizione con `と`: se c'è un Centro Pokémon.
-- `{{助|たす}}かる` -> sollievo ricevuto: il parlante non salva qualcuno, ma viene aiutato dalla presenza del centro.
+*   `いまの {{状況|じょうきょう}}なら` ➔ **Cornice delle circostanze**: `なら` prende il quadro attuale come condizione di lettura.
+*   `ポケモンセンターが あると` ➔ **Condizione concreta**: `と` collega la presenza del Centro Pokémon al risultato.
+*   `{{助|たす}}かる` ➔ **Sollievo ricevuto**: nessuno sta "salvando qualcuno" in modo attivo; la presenza del centro rende la situazione più facile.
 
 :::example_sentence
 jp: >-
-  いまの {{状況|じょうきょう}}を クラベル{{校|こう}}{{長|ちょう}}に {{伝|つた}}えよう。
+  ポケモンと いっしょに {{生|い}}きることを アカデミーで {{学|まな}}ぶ。
 translation_it: >-
-  Comunichiamo la situazione attuale al preside Clavel.
+  All'Accademia si impara a vivere insieme ai Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `いまの {{状況|じょうきょう}}を` -> oggetto del report: non un singolo stato, ma il quadro attuale.
-- `クラベル{{校|こう}}{{長|ちょう}}に` -> destinatario dell'informazione, marcato da `に`.
-- `{{伝|つた}}えよう` -> proposta volitiva: "comunichiamolo / facciamoglielo sapere".
+*   `ポケモンと いっしょに` ➔ **Compagnia di vita**: `と` lega il vivere alla presenza dei Pokémon.
+*   `{{生|い}}きることを` ➔ **Azione nominalizzata**: `こと` trasforma "vivere" in qualcosa che può essere imparato.
+*   `アカデミーで {{学|まな}}ぶ` ➔ **Luogo dell'apprendimento**: l'Accademia non insegna solo nozioni, ma un modo di vivere nel mondo di Paldea.
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** [{{助|たす}}かる](term:term-anki-l19-tasukaru) e `{{助|たす}}ける` non hanno lo stesso punto di vista. `{{助|たす}}ける` prende qualcuno come bersaglio da salvare; [{{助|たす}}かる](term:term-anki-l19-tasukaru) descrive il risultato dal lato di chi viene sollevato dal problema.
+#### ⚖️ Contrasto operativo: problema risolto, persona salvata, stato descritto
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{状況|じょうきょう}}](term:term-anki-l19-joukyou) è la situazione complessiva; `{{状|じょう}}{{態|たい}}` è lo stato di qualcosa. In un dialogo investigativo cerca [{{状況|じょうきょう}}](term:term-anki-l19-joukyou); in una schermata di condizioni o salute aspettati più facilmente `{{状|じょう}}{{態|たい}}`.
+*   [{{助|たす}}かる](term:term-anki-l19-tasukaru) descrive il risultato dal lato di chi viene sollevato dal problema; `{{助|たす}}ける` prende invece qualcuno come bersaglio da salvare.
+*   [{{状況|じょうきょう}}](term:term-anki-l19-joukyou) è la situazione complessiva; `{{状|じょう}}{{態|たい}}` è più spesso lo stato di una singola cosa, come una condizione fisica o tecnica.
+*   [{{生|い}}きる](term:term-anki-l19-ikiru) parla di vita o sopravvivenza; `{{住|す}}む` parla di abitare in un luogo. In una città si può `{{住|す}}む`, ma un'avventura con i Pokémon si può [{{生|い}}きる](term:term-anki-l19-ikiru).
+
+#### 🧠 Gancio cognitivo: [{{助|たす}}かる](term:term-anki-l19-tasukaru) parte dal sospiro di sollievo
+
+Per ricordare [{{助|たす}}かる](term:term-anki-l19-tasukaru), non immaginare un eroe che salva qualcuno. Immagina il momento dopo, quando il problema si alleggerisce e il personaggio può dire "mi è andata bene". È un gancio di lettura, non una spiegazione etimologica.
 
 ## 3. Gruppi, squadre e perimetro dell'azione
 
-Molte frasi di Paldea cambiano significato in base a quanto è grande il gruppo coinvolto. Una cosa è parlare di tutti i presenti; un'altra è parlare di una fazione, dei suoi membri o di una squadra organizzata per un compito.
+Paldea è piena di gruppi: classi, team, basi, compagni convocati, squadre che si muovono per uno scopo. In queste frasi la domanda decisiva è "tutti chi?". Il giapponese ti dice se stai guardando l'intero gruppo, una fazione, o una unità organizzata per agire.
 
-- [{{全員|ぜんいん}}](term:term-anki-l19-zenin) significa "tutti i membri" e contiene già l'idea di persone incluse in un gruppo. Va bene per studenti, capi, membri di una squadra o personaggi convocati in una scena; per oggetti, ricette o elementi selezionabili, il giapponese usa più naturalmente `{{全|ぜん}}{{部|ぶ}}` o `すべて`.
-- [{{隊|たい}}](term:term-anki-l19-tai) indica un'unità organizzata con uno scopo: esplorare, soccorrere, pattugliare, cercare qualcosa. Come suffisso, rende il gruppo più operativo di un semplice insieme di persone: `{{探|たん}}{{検|けん}}{{隊|たい}}` è una squadra d'esplorazione, non solo amici che camminano insieme.
-- [{{団員|だんいん}}](term:term-anki-l19-danin) nomina il membro di un gruppo o fazione. In Paldea è naturale incontrarlo accanto a スター{{団|だん}}: non descrive una funzione militare precisa, ma l'affiliazione a quel team.
+*   [{{全員|ぜんいん}}](term:term-anki-l19-zenin) significa "tutti i membri" e porta già dentro l'idea di persone incluse in un gruppo. Funziona con studenti, capi, membri del Team Star o personaggi convocati in una scena. Per oggetti, ricette o elementi selezionabili, il giapponese tende a usare `{{全|ぜん}}{{部|ぶ}}` o `すべて`, non [{{全員|ぜんいん}}](term:term-anki-l19-zenin).
+*   [{{隊|たい}}](term:term-anki-l19-tai) indica una squadra come unità operativa: esplora, pattuglia, soccorre, cerca qualcosa. Come suffisso rende il gruppo più funzionale di un semplice insieme di persone; `{{調査|ちょうさ}}{{隊|たい}}` è una squadra d'indagine, non solo gente che si trova nello stesso posto.
+*   [{{団員|だんいん}}](term:term-anki-l19-danin) nomina chi appartiene a una fazione o organizzazione. In Paldea il collegamento naturale è スター{{団|だん}}: [{{団員|だんいん}}](term:term-anki-l19-danin) non spiega il ruolo preciso nella base, ma dice che la persona è un membro di quel gruppo.
 
 :::example_sentence
 jp: >-
-  スター{{団|だん}}の ボス {{全員|ぜんいん}}を {{倒|たお}}すのだ。
+  スター{{団|だん}}の {{団員|だんいん}} {{全員|ぜんいん}}が、テントの {{前|まえ}}に {{集|あつ}}まっている。
 translation_it: >-
-  Devi sconfiggere tutti i capi del Team Star.
+  Tutti i membri del Team Star si sono radunati davanti alla tenda.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `スター{{団|だん}}の ボス` -> gruppo ristretto: i capi appartenenti al Team Star.
-- `{{全員|ぜんいん}}を` -> totalità dei membri di quel gruppo, marcata come oggetto.
-- `{{倒|たお}}すのだ` -> comando o dichiarazione forte: l'azione richiesta copre l'intero gruppo, non un capo qualunque.
+*   `スター{{団|だん}}の {{団員|だんいん}}` ➔ **Affiliazione**: `の` lega i membri alla fazione Team Star.
+*   `{{全員|ぜんいん}}が` ➔ **Totalità del gruppo umano**: il soggetto non è un membro qualsiasi, ma l'intero insieme delle persone coinvolte.
+*   `テントの {{前|まえ}}に` ➔ **Luogo della presenza**: `に` fissa il punto in cui il gruppo si trova.
+*   `{{集|あつ}}まっている` ➔ **Stato risultante**: il gruppo è radunato, quindi la scena è già pronta o in corso.
 
 :::example_sentence
 jp: >-
-  あの テントの {{前|まえ}}に スター{{団|だん}}の {{団員|だんいん}}が いる。
+  {{調査|ちょうさ}}{{隊|たい}}の {{全員|ぜんいん}}で、いまの {{状況|じょうきょう}}を {{調|しら}}べよう。
 translation_it: >-
-  Ci sono dei membri del Team Star davanti a quella tenda.
+  Indaghiamo sulla situazione attuale con tutta la squadra d'indagine.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `あの テントの {{前|まえ}}に` -> luogo specifico in cui guardare.
-- `スター{{団|だん}}の {{団員|だんいん}}が` -> soggetto individuato per affiliazione: membri del Team Star.
-- `いる` -> esistenza di esseri animati: la frase segnala persone presenti, non oggetti piazzati lì.
+*   `{{調査|ちょうさ}}{{隊|たい}}の {{全員|ぜんいん}}で` ➔ **Mezzo umano collettivo**: `で` indica che l'azione avviene usando tutta la squadra come forza operativa.
+*   `いまの {{状況|じょうきょう}}を` ➔ **Oggetto dell'indagine**: non un singolo dettaglio, ma il quadro attuale.
+*   `{{調|しら}}べよう` ➔ **Proposta di azione**: il parlante invita il gruppo a verificare la situazione.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{隊|たい}}](term:term-anki-l19-tai) mette in primo piano l'unità operativa; `{{団|だん}}` mette in primo piano l'organizzazione o la fazione. Un [{{団員|だんいん}}](term:term-anki-l19-danin) appartiene a un gruppo, ma una [{{隊|たい}}](term:term-anki-l19-tai) agisce come squadra con un compito.
+#### ⚖️ Contrasto operativo: [{{全員|ぜんいん}}](term:term-anki-l19-zenin), [{{隊|たい}}](term:term-anki-l19-tai), [{{団員|だんいん}}](term:term-anki-l19-danin)
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** [{{全員|ぜんいん}}](term:term-anki-l19-zenin) contiene `{{員|いん}}`, "membro/persona". Quando lo vedi, chiediti: "tutti chi?". Se la risposta sono oggetti o quantità generiche, probabilmente non è il termine giusto.
+[{{全員|ぜんいん}}](term:term-anki-l19-zenin) misura il perimetro del gruppo: tutti i membri, nessuno escluso. [{{隊|たい}}](term:term-anki-l19-tai) mette in primo piano l'unità operativa, cioè il gruppo come squadra che agisce. [{{団員|だんいん}}](term:term-anki-l19-danin) mette invece in primo piano l'appartenenza: sei membro di un `{{団|だん}}`, non necessariamente parte di una squadra in missione.
+
+#### 🧠 Gancio cognitivo: `{{員|いん}}` ti fa cercare persone
+
+[{{全員|ぜんいん}}](term:term-anki-l19-zenin) contiene `{{員|いん}}`, "membro/persona". Quando lo vedi, chiediti: "tutti chi?". Se la risposta sono ricette, oggetti o quantità generiche, probabilmente il termine giusto è un altro.
 
 ## 4. Tono personale e colore locale
 
-Accanto a lezioni e gruppi, i dialoghi di Scarlet & Violet usano parole che cambiano il tono della battuta: una confessione diventa più diretta, una città acquista un sapore locale, e una frase smette di essere solo informazione.
+Accanto a scuola, aiuto e gruppi, i dialoghi usano parole che cambiano il sapore della battuta. Una frase può diventare più scoperta con [{{正直|しょうじき}}](term:term-anki-l19-shoujiki), oppure più legata a una città con [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu). Qui il punto non è solo capire "che cosa", ma riconoscere il tono con cui il personaggio lo dice.
 
-- [{{正直|しょうじき}}](term:term-anki-l19-shoujiki) può funzionare come aggettivo in `{{正直|しょうじき}}な{{人|ひと}}`, "persona onesta", oppure come avverbio in `{{正直|しょうじき}}に{{言|い}}うと`, "a dire il vero". Nel secondo uso prepara una confessione, una lamentela o un giudizio personale: il parlante sta abbassando il filtro sociale.
-- [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu) indica ciò per cui un luogo è conosciuto: un piatto, un dolce, una specialità o un'attrazione. In un dialogo con NPC o in una città, [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu) ti dice che il focus non è un oggetto qualunque, ma qualcosa che rappresenta quel posto.
+*   [{{正直|しょうじき}}](term:term-anki-l19-shoujiki) può descrivere una persona onesta in `{{正直|しょうじき}}な{{人|ひと}}`, ma in `{{正直|しょうじき}}に{{言|い}}うと` diventa una cornice di parlato: "a dire il vero". Dopo questa formula aspettati un giudizio più personale, una confessione o una frase meno filtrata del solito.
+*   [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu) indica ciò per cui un luogo è noto: un piatto, un dolce, una specialità, una cosa che fa pensare subito a quella città. In un dialogo con un NPC, [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu) ti dice che l'oggetto non è casuale: porta addosso il colore locale del posto.
 
 :::example_sentence
 jp: >-
@@ -171,9 +186,9 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{正直|しょうじき}}に {{言|い}}うと` -> cornice confessionale: "se lo dico onestamente".
-- `ネモの バトルへの {{情|じょう}}{{熱|ねつ}}には` -> tema marcato con `には`: quanto alla passione di Nemona per le lotte.
-- `ついていけない` -> incapacità di seguire il ritmo: non è disaccordo puro, ma difficoltà a starle dietro.
+*   `{{正直|しょうじき}}に {{言|い}}うと` ➔ **Cornice confessionale**: il parlante abbassa il filtro e prepara un giudizio personale.
+*   `ネモの バトルへの {{情|じょう}}{{熱|ねつ}}には` ➔ **Tema marcato con limite**: `には` mette a tema proprio la passione di Nemona per le lotte.
+*   `ついていけない` ➔ **Difficoltà a reggere il ritmo**: non è un rifiuto assoluto, ma l'idea di non riuscire a starle dietro.
 
 :::example_sentence
 jp: >-
@@ -184,22 +199,27 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `ハッコウシティの {{名物|めいぶつ}}を` -> oggetto legato a un luogo: ciò per cui la città è nota.
-- `{{食|た}}べに` -> scopo del movimento: andare "per mangiare".
-- `{{行|い}}こう` -> invito volitivo: il parlante propone un'azione condivisa.
+*   `ハッコウシティの {{名物|めいぶつ}}を` ➔ **Oggetto legato al luogo**: `の` collega la specialità alla città, non a un inventario generico.
+*   `{{食|た}}べに` ➔ **Scopo del movimento**: la forma in `に` spiega perché si va.
+*   `{{行|い}}こう` ➔ **Invito condiviso**: il parlante propone di trasformare il colore locale in un'azione.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{正直|しょうじき}}](term:term-anki-l19-shoujiki) come tratto personale descrive chi non mente; `{{正直|しょうじき}}に{{言|い}}うと` invece cambia la cornice della frase successiva. Dopo questa formula aspettati un'opinione più scoperta del normale.
+#### ⚖️ Contrasto operativo: qualità personale o cornice di parlato
+
+[{{正直|しょうじき}}](term:term-anki-l19-shoujiki) come tratto personale descrive chi non mente. `{{正直|しょうじき}}に{{言|い}}うと` invece cambia la cornice della frase successiva: dopo questa formula, il personaggio sta per parlare in modo più diretto. [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu), al contrario, non cambia il tono psicologico: aggancia la battuta a un luogo e a ciò che lo rappresenta.
+
+#### 🧠 Gancio cognitivo: [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu) porta il nome del posto
+
+Per ricordare [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu), pensa a una cosa che porta il nome della città con sé: non un cibo qualunque, ma qualcosa che un abitante consiglierebbe proprio perché "qui è famoso". È un gancio mnemonico, non una definizione storica del composto.
 
 ## Esempi guidati di riepilogo
 
-Le stesse parole diventano più facili da leggere quando le vedi lavorare insieme: scuola, aiuto, gruppo e tono non sono blocchi separati, ma modi diversi di fissare il ruolo dei personaggi nella scena.
+Le stesse parole diventano più leggibili quando lavorano insieme: scuola, aiuto, gruppo e tono personale non sono blocchi separati, ma modi diversi di fissare il ruolo dei personaggi nella scena.
 
 :::example_sentence
 jp: >-
-  {{親愛|しんあい}}なる {{生徒|せいと}}たちよ、きょうも アカデミーで {{授業|じゅぎょう}}を{{受|う}}けよう。
+  {{若|わか}}い {{先生|せんせい}}の {{授業|じゅぎょう}}を{{受|う}}けて、パルデアでの {{生|い}}き{{方|かた}}を {{学|まな}}ぶ。
 translation_it: >-
-  Miei cari studenti, anche oggi seguiamo le lezioni all'Accademia.
+  Seguo la lezione di un insegnante giovane e imparo un modo di vivere a Paldea.
 :::
 
 :::example_sentence
@@ -211,9 +231,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  スター{{団|だん}}の {{団員|だんいん}}は、{{隊|たい}}の ように {{動|うご}}いている。
+  スター{{団|だん}}の {{団員|だんいん}} {{全員|ぜんいん}}が、ひとつの {{隊|たい}}の ように {{動|うご}}いている。
 translation_it: >-
-  I membri del Team Star si stanno muovendo come una squadra organizzata.
+  Tutti i membri del Team Star si stanno muovendo come una squadra organizzata.
 :::
 
 :::example_sentence
@@ -227,4 +247,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando il testo parla dell'Accademia, cerca chi riceve la lezione; quando parla di una difficoltà, cerca che cosa rende la scena più gestibile; quando nomina un gruppo, controlla se include tutti, solo una fazione o una squadra operativa. [{{若|わか}}い](term:term-anki-l19-wakai), [{{状況|じょうきょう}}](term:term-anki-l19-joukyou), [{{全員|ぜんいん}}](term:term-anki-l19-zenin) e [{{正直|しょうじき}}](term:term-anki-l19-shoujiki) funzionano proprio così: non aggiungono solo glossario, ma ti dicono come leggere il ruolo della frase dentro la scena.
+Quando il testo torna all'Accademia, cerca chi riceve la lezione e con quale tono qualcuno si rivolge al gruppo. Quando compare una difficoltà, guarda se [{{助|たす}}かる](term:term-anki-l19-tasukaru) descrive il sollievo di chi viene aiutato o se [{{状況|じょうきょう}}](term:term-anki-l19-joukyou) allarga il quadro. Quando la battuta nomina una fazione, controlla se parla di [{{全員|ぜんいん}}](term:term-anki-l19-zenin), di una [{{隊|たい}}](term:term-anki-l19-tai) o di singoli [{{団員|だんいん}}](term:term-anki-l19-danin). Così parole come [{{若|わか}}い](term:term-anki-l19-wakai), [{{正直|しょうじき}}](term:term-anki-l19-shoujiki) e [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu) smettono di essere definizioni isolate e diventano segnali pratici per leggere Paldea.

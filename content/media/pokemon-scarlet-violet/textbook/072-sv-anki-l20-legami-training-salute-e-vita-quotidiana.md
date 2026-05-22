@@ -16,15 +16,16 @@ summary: >-
 
 # Legami, training e vita quotidiana a Paldea
 
-In *Pokémon Scarlet & Violet* i dialoghi passano spesso dalla sfida alla
-relazione: un personaggio parla dei propri compagni, qualcuno si allena per una
-prova, una decisione pesa abbastanza da far esitare, una scena urgente costringe
-a misurare il tempo in minuti e secondi.
+In *Pokémon Scarlet & Violet* molte frasi non parlano solo di lotta. Parlano di
+gruppi che si proteggono, allenamenti prima di una prova, dubbi davanti a una
+scelta, salute scolastica e giornate passate insieme ai Pokémon.
 
-Questo gruppo di parole rende leggibili tre strati molto concreti del gioco:
-chi appartiene a un gruppo, che cosa si sta preparando o scegliendo, e come la
-vita quotidiana dell'Accademia collega salute, abitudini e convivenza con i
-Pokémon.
+Il giapponese cambia registro a seconda della scena: quando il testo guarda un
+gruppo da dentro usa parole di appartenenza; quando la sfida si avvicina passa a
+preparazione, soglie e urgenza; quando la scena torna all'Accademia usa parole
+più quotidiane, ma sempre precise. Leggere questi segnali ti aiuta a capire se
+una frase sta stringendo un legame, preparando un'azione o misurando quanto
+tempo resta.
 
 ## Termini chiave
 
@@ -42,32 +43,35 @@ Pokémon.
 ## Espressioni ricorrenti
 
 - [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun)をする — fare un allenamento speciale
-- [{{突|とつ}}{{然|ぜん}}](term:term-anki-l20-totsuzen)、... — apre un evento che interrompe la scena
+- [{{突|とつ}}{{然|ぜん}}](term:term-anki-l20-totsuzen)、... — aprire un evento che interrompe la scena
 - [{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou)を{{争|あらそ}}う — agire con urgenza estrema
 - [{{保健|ほけん}}](term:term-anki-l20-hoken){{室|しつ}} — infermeria dell'Accademia
 
 ## Pattern grammaticali chiave
 
-- domanda indiretta + か + [{{悩|なや}}む](term:term-anki-l20-nayamu) — essere indecisi su una scelta
-- luogo + で + [{{暮|く}}らす](term:term-anki-l20-kurasu) — vivere le proprie giornate in un luogo
-- Vるのは + [{{悲|かな}}しい](term:term-anki-l20-kanashii) — trasformare un evento in cosa emotivamente triste
+- domanda indiretta + `か` + [{{悩|なや}}む](term:term-anki-l20-nayamu) — essere indecisi su una scelta
+- luogo + `で` + [{{暮|く}}らす](term:term-anki-l20-kurasu) — vivere le proprie giornate in un luogo
+- Vる`のは` + [{{悲|かな}}しい](term:term-anki-l20-kanashii) — trasformare un evento in tema emotivo
 
 ---
 
-## 1. Appartenenza, distanza e tristezza nei dialoghi
+## 1. Legami di gruppo: parlare da dentro o da fuori
 
-Quando il testo parla di gruppi come スター{{団|だん}}, la scelta del
-termine decide se il parlante sta includendo le persone in un legame interno o
-le sta guardando da fuori. [{{同|どう}}{{胞|ほう}}](term:term-anki-l20-douhou)
-non è il semplice "amico" quotidiano, ma un compagno percepito come parte dello
-stesso corpo simbolico. Nei discorsi solenni o nelle dichiarazioni di fedeltà,
-alza il registro e rende il gruppo più compatto.
+Quando la storia tocca gruppi come スター{{団|だん}}, il giapponese non sceglie
+un pronome a caso. La parola usata ti dice se il parlante sente quelle persone
+come parte del proprio cerchio oppure se le guarda da una certa distanza.
 
-[{{彼|かれ}}ら](term:term-anki-l20-karera), invece, usa il pronome
-`{{彼|かれ}}` con il plurale `ら`. In giapponese spesso basta nominare il ruolo
-o il gruppo; quando compare [{{彼|かれ}}ら](term:term-anki-l20-karera), il
-testo mette quel gruppo a distanza, come "loro" osservati o giudicati da una
-voce esterna.
+- [{{同|どう}}{{胞|ほう}}](term:term-anki-l20-douhou) porta un registro più solenne
+  di un semplice "amico". `{{同|どう}}` dà l'idea di qualcosa condiviso,
+  `{{胞|ほう}}` richiama un corpo o una stessa origine: nel gioco funziona come
+  "compagno del nostro stesso gruppo". Quando compare in un discorso su
+  スター{{団|だん}}, non sta solo contando persone; sta difendendo un legame
+  interno.
+- [{{彼|かれ}}ら](term:term-anki-l20-karera) parte da `{{彼|かれ}}`, "lui", e
+  aggiunge `ら`, plurale colloquiale. In giapponese spesso il soggetto resta
+  implicito o viene sostituito dal nome del gruppo; se il testo sceglie proprio
+  [{{彼|かれ}}ら](term:term-anki-l20-karera), mette "loro" davanti agli occhi
+  come gruppo osservato, raccontato o giudicato da fuori.
 
 :::example_sentence
 jp: >-
@@ -78,20 +82,21 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `スター{{団|だん}}の` -> il gruppo di appartenenza: il の collega i compagni
-  a スター{{団|だん}}.
-- `{{同|どう}}{{胞|ほう}}たちを` -> l'oggetto colpito dall'azione, con `たち` che
-  rende esplicito il gruppo.
-- `{{見|み}}{{捨|す}}てる` -> "vedere e lasciare", cioè abbandonare qualcuno che
-  si riconosce in difficoltà.
-- `わけにはいかない` -> formula di impossibilità morale: non è "non riesco" in
-  senso fisico, ma "non posso permettermi di farlo".
+- `スター{{団|だん}}の` ➔ **Gruppo di appartenenza** (`の` collega i compagni a
+  スター{{団|だん}}: non sono persone casuali, sono membri di quel cerchio).
+- `{{同|どう}}{{胞|ほう}}たちを` ➔ **Oggetto protetto** (`たち` rende esplicito il
+  gruppo, mentre `を` lo mette come bersaglio dell'azione successiva).
+- `{{見|み}}{{捨|す}}てる` ➔ **Abbandono consapevole** ("vedere e lasciare":
+  qualcuno viene riconosciuto in difficoltà e poi lasciato indietro).
+- `わけにはいかない` ➔ **Impossibilità morale** (non è "non riesco" in
+  senso fisico, ma "non posso permettermi di farlo").
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{同|どう}}{{胞|ほう}}](term:term-anki-l20-douhou)
-> parla da dentro il legame; [{{彼|かれ}}ら](term:term-anki-l20-karera) parla di
-> un gruppo da fuori. Se li traduci entrambi come un generico "loro", perdi il
-> cambio di prospettiva.
+#### ⚖️ Contrasto operativo
+
+[{{同|どう}}{{胞|ほう}}](term:term-anki-l20-douhou) parla da dentro il legame;
+[{{彼|かれ}}ら](term:term-anki-l20-karera) parla di un gruppo da fuori. Se li
+appiattisci entrambi su "loro", perdi il movimento della scena: prima c'è
+appartenenza, poi c'è distanza.
 
 L'aggettivo [{{悲|かな}}しい](term:term-anki-l20-kanashii) aggiunge il lato
 emotivo di queste separazioni. Essendo un aggettivo in `い`, può chiudere una
@@ -109,25 +114,41 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{別|わか}}れるのは` -> il verbo "separarsi" viene nominalizzato da `の`; poi
-  `は` lo mette come tema della valutazione.
-- `やっぱり` -> conferma una sensazione già prevista: "alla fine / come pensavo".
-- `{{悲|かな}}しいよ` -> giudizio emotivo del parlante, rafforzato da `よ` come
-  constatazione condivisa.
+- `{{別|わか}}れるのは` ➔ **Evento trasformato in tema** (`の` nominalizza
+  "separarsi", poi `は` lo presenta come ciò di cui si dà una valutazione).
+- `やっぱり` ➔ **Conferma emotiva** (la tristezza non arriva dal nulla: conferma
+  una sensazione già prevista).
+- `{{悲|かな}}しいよ` ➔ **Giudizio del parlante** (l'aggettivo chiude la frase
+  direttamente e `よ` lo spinge verso l'ascoltatore come constatazione
+  condivisa).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** usa [{{同|どう}}{{胞|ほう}}](term:term-anki-l20-douhou)
-> come "stesso cerchio"; usa [{{彼|かれ}}ら](term:term-anki-l20-karera) come
-> "quel gruppo laggiù". È un'immagine mnemonica, non un'etimologia completa.
+#### 🧠 Gancio cognitivo
+
+Usa [{{同|どう}}{{胞|ほう}}](term:term-anki-l20-douhou) come "stesso cerchio" e
+[{{彼|かれ}}ら](term:term-anki-l20-karera) come "quel gruppo laggiù". È
+un'immagine mnemonica: serve a ricordare il cambio di prospettiva, non a
+sostituire la storia reale delle parole.
 
 ## 2. Allenamento, scelta e soglie in battaglia
 
-Quando la scena passa alla preparazione, [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun)
-non indica una pratica qualunque. `{{特|とく}}` porta l'idea di speciale e
-`{{訓|くん}}` quella di addestramento: insieme formano un training intensivo,
-di solito orientato a una prova, a un avversario o a un salto di livello. La
-collocazione più naturale è [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun)をする,
-"fare allenamento speciale".
+Dopo il legame viene la preparazione. Nei dialoghi di Paldea un allenatore può
+allenarsi in vista di una prova, bloccarsi davanti a una scelta di squadra,
+oppure leggere una soglia di PS come punto in cui la battaglia cambia ritmo.
+
+- [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun) non indica pratica generica.
+  `{{特|とく}}` porta l'idea di speciale e `{{訓|くん}}` quella di addestramento:
+  insieme formano un training intensivo, spesso orientato a una prova concreta.
+  La collocazione più naturale è
+  [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun)をする, "fare allenamento
+  speciale".
+- [{{悩|なや}}む](term:term-anki-l20-nayamu) entra quando il pensiero pesa. Non
+  è solo `{{考|かんが}}える`, "pensare / valutare": contiene esitazione,
+  preoccupazione o fatica mentale. Con una domanda indiretta, il `か` chiude
+  ciò su cui il personaggio è indeciso.
+- [{{半分|はんぶん}}](term:term-anki-l20-hanbun) rende leggibili le soglie.
+  `{{半|はん}}` è "metà", `{{分|ぶん}}` è "parte"; con `{{以下|いか}}` non hai una
+  quantità vaga, ma "metà o meno". In battaglia questo può decidere quando una
+  condizione diventa vera.
 
 :::example_sentence
 jp: >-
@@ -138,18 +159,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `ジムテストに {{向|む}}けて` -> il training ha una direzione: "verso / in
-  vista del test della Palestra".
-- `ポケモンたちと` -> il `と` non marca l'oggetto, ma i compagni con cui si fa
-  l'azione.
-- `{{特|とっ}}{{訓|くん}}をしている` -> nome + `をする`: il nome diventa attività
-  in corso.
-
-[{{悩|なや}}む](term:term-anki-l20-nayamu) entra quando la scelta non è solo
-un calcolo. Rispetto a `{{考|かんが}}える`, "pensare / valutare",
-[{{悩|なや}}む](term:term-anki-l20-nayamu) contiene fatica mentale: il dubbio
-pesa, blocca o consuma tempo. Può legarsi a un tema con `に`, come
-`{{進路|しんろ}}に{{悩|なや}}む`, oppure a una domanda indiretta con `か`.
+- `ジムテストに {{向|む}}けて` ➔ **Direzione della preparazione** (`に向けて`
+  guarda verso un obiettivo futuro: il training non è casuale, prepara il test).
+- `ポケモンたちと` ➔ **Compagni dell'azione** (`と` non marca l'oggetto, ma chi
+  partecipa insieme al parlante).
+- `{{特|とっ}}{{訓|くん}}をしている` ➔ **Attività in corso** (nome + `をする`;
+  `している` mostra che l'allenamento è già in corso).
 
 :::example_sentence
 jp: >-
@@ -160,17 +175,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `どの ポケモンを` -> "quale Pokémon" è l'oggetto della scelta.
-- `パーティに {{入|い}}れるか` -> il `か` chiude una domanda indiretta: "se /
-  quale mettere in squadra".
-- `{{悩|なや}}む トレーナー` -> il dubbio qualifica gli Allenatori: non stanno
-  solo pensando, stanno esitando davanti a una scelta.
-
-In battaglia, [{{半分|はんぶん}}](term:term-anki-l20-hanbun) rende leggibili
-le soglie. `{{半|はん}}` è "metà" e `{{分|ぶん}}` è "parte": quando si aggiunge
-`{{以下|いか}}`, la frase non parla di una quantità vaga, ma di "metà o meno".
-Questo cambia il timing degli effetti: una condizione può attivarsi solo dopo
-che i PS scendono oltre quella linea.
+- `どの ポケモンを` ➔ **Oggetto della scelta** (`どの` apre "quale", `を` marca
+  il Pokémon che potrebbe essere scelto).
+- `パーティに {{入|い}}れるか` ➔ **Domanda indiretta** (`か` chiude il dubbio:
+  "quale mettere in squadra").
+- `{{悩|なや}}む トレーナー` ➔ **Dubbio che qualifica il soggetto** (gli Allenatori
+  non stanno solo facendo un calcolo; la scelta li fa esitare).
 
 :::example_sentence
 jp: >-
@@ -181,22 +191,26 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `ＨＰを` -> la risorsa misurata è il bersaglio dell'azione.
-- `{{半分|はんぶん}}{{以下|いか}}まで` -> `まで` fissa il punto di arrivo:
-  non "circa metà", ma fino alla soglia indicata.
-- `{{削|けず}}った` -> "raschiare / ridurre": in lotta descrive la perdita
-  progressiva di PS.
+- `ＨＰを` ➔ **Risorsa bersaglio** (i PS sono ciò che viene ridotto).
+- `{{半分|はんぶん}}{{以下|いか}}まで` ➔ **Soglia raggiunta** (`まで` fissa il punto
+  di arrivo: fino a metà o meno, non "più o meno a metà").
+- `{{削|けず}}った` ➔ **Riduzione progressiva** ("raschiare / limare"; in lotta
+  descrive il calo dei PS fino alla soglia).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun)
-> prepara una prova, [{{悩|なや}}む](term:term-anki-l20-nayamu) rallenta una
-> scelta, [{{半分|はんぶん}}](term:term-anki-l20-hanbun) misura una soglia.
-> Sono tre modi diversi di leggere il tempo di gioco: prima dell'azione, durante
-> la decisione e nel momento in cui una condizione diventa vera.
+#### ⚖️ Contrasto operativo
 
-[{{突|とつ}}{{然|ぜん}}](term:term-anki-l20-totsuzen) cambia il ritmo della
-frase. Davanti a un verbo funziona come avverbio: l'evento arriva di colpo e
-interrompe ciò che stava succedendo. Se invece modifica un nome, prende の:
+[{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun) prepara una prova,
+[{{悩|なや}}む](term:term-anki-l20-nayamu) rallenta una scelta,
+[{{半分|はんぶん}}](term:term-anki-l20-hanbun) misura il punto in cui una
+condizione diventa leggibile. Sono tre tempi diversi della stessa esperienza:
+prima ti prepari, poi scegli, poi guardi se la battaglia ha superato una soglia.
+
+## 3. Eventi improvvisi e tempo che stringe
+
+Quando una scena si interrompe, il testo spesso lo segnala prima ancora di dire
+che cosa succede. [{{突|とつ}}{{然|ぜん}}](term:term-anki-l20-totsuzen) apre
+quell'interruzione: come avverbio arriva davanti al verbo e sposta il ritmo su
+"all'improvviso"; se modifica un nome, prende `の`, come in
 `{{突|とつ}}{{然|ぜん}}の{{出来事|できごと}}`, "un evento improvviso".
 
 :::example_sentence
@@ -208,20 +222,54 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{草|くさ}}むらから` -> origine dell'evento: da dove arriva il movimento.
-- `{{突|とつ}}{{然|ぜん}}、` -> avverbio di rottura: prepara un'azione inattesa.
-- `{{野生|やせい}}の ポケモンが` -> il soggetto che emerge.
-- `とびだしてきた` -> "è saltato fuori venendo verso la scena": `きた` dà il
-  movimento di avvicinamento al punto di vista del giocatore.
+- `{{草|くさ}}むらから` ➔ **Origine dell'evento** (`から` indica da dove parte il
+  movimento).
+- `{{突|とつ}}{{然|ぜん}}、` ➔ **Rottura del ritmo** (prepara un evento inatteso,
+  non una semplice informazione aggiunta).
+- `{{野生|やせい}}の ポケモンが` ➔ **Soggetto che emerge** (`が` introduce chi
+  appare nella scena).
+- `とびだしてきた` ➔ **Movimento verso il punto di vista** (`とびだす` è saltare
+  fuori; `きた` porta l'azione verso il giocatore).
 
-## 3. Tempo, salute e vita quotidiana
+Quando l'interruzione diventa pericolo o corsa contro il tempo,
+[{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou) restringe la scena fino
+alle unità minime. L'espressione
+[{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou)を{{争|あらそ}}う non vuol
+dire litigare con minuti e secondi: tratta il tempo come qualcosa da contendere,
+perché ogni istante può cambiare l'esito.
 
-La vita scolastica di Paldea usa parole che sembrano tranquille, ma nei dialoghi
-marcano luoghi e priorità molto precise. [{{保健|ほけん}}](term:term-anki-l20-hoken)
-può indicare salute pubblica o educazione sanitaria; nell'Accademia può indicare la materia di educazione sanitaria, mentre
-[{{保健|ほけん}}](term:term-anki-l20-hoken){{室|しつ}} indica fisicamente
-l'infermeria, cioè il luogo in cui salute e dialoghi con lo staff entrano nella
-stessa scena.
+:::example_sentence
+jp: >-
+  ペパーの ポケモンを {{助|たす}}けるため、{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}って {{秘|ひ}}{{伝|でん}}スパイスを {{探|さが}}した。
+translation_it: >-
+  Per aiutare il Pokémon di Pepper, abbiamo cercato le Spezie Segrete senza perdere un istante.
+:::
+
+#### 🗺️ Anatomia della frase
+
+- `ペパーの ポケモンを {{助|たす}}けるため` ➔ **Scopo dell'urgenza** (`ため`
+  chiarisce perché il tempo conta: l'azione serve ad aiutare).
+- `{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}って` ➔ **Urgenza idiomatica** (il tempo
+  è l'oggetto conteso; la frase significa agire senza ritardo).
+- `{{秘|ひ}}{{伝|でん}}スパイスを {{探|さが}}した` ➔ **Ricerca concreta**
+  (`を` marca ciò che si cerca, non il luogo in cui si cerca).
+
+#### 🧠 Gancio cognitivo
+
+Pensa a [{{突|とつ}}{{然|ぜん}}](term:term-anki-l20-totsuzen) come al taglio
+improvviso della scena e a
+[{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou) come allo zoom sul timer:
+prima il gioco interrompe la routine, poi ti fa sentire che il tempo si è
+ristretto.
+
+## 4. Salute, scuola e giornate vissute con i Pokémon
+
+La vita scolastica di Paldea usa parole più tranquille, ma non meno precise.
+[{{保健|ほけん}}](term:term-anki-l20-hoken) può indicare salute pubblica,
+igiene o educazione sanitaria. Nell'Accademia entra sia come materia sia come
+luogo concreto: [{{保健|ほけん}}](term:term-anki-l20-hoken){{室|しつ}} è
+l'infermeria, lo spazio in cui salute, cura e dialoghi con lo staff si
+incontrano.
 
 :::example_sentence
 jp: >-
@@ -232,12 +280,13 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `アカデミーの {{保健|ほけん}}の {{授業|じゅぎょう}}では` -> `では`
-  incornicia il luogo-tema: "quanto alle lezioni di educazione sanitaria".
-- `ポケモンと {{人|ひと}}の {{体|からだ}}の ことを` -> l'oggetto dello studio è
-  "le cose riguardanti il corpo" di Pokémon e persone.
-- `{{学|まな}}ぶ` -> verbo base per "imparare / studiare", più ampio di una
-  semplice lettura di testo.
+- `アカデミーの {{保健|ほけん}}の {{授業|じゅぎょう}}では` ➔ **Cornice scolastica**
+  (`では` presenta il contesto-tema: "quanto alle lezioni di educazione
+  sanitaria dell'Accademia").
+- `ポケモンと {{人|ひと}}の {{体|からだ}}の ことを` ➔ **Oggetto dello studio**
+  (`のこと` allarga il bersaglio a "le cose riguardanti" il corpo).
+- `{{学|まな}}ぶ` ➔ **Studio strutturato** (non è solo leggere un messaggio:
+  è imparare dentro una cornice scolastica).
 
 [{{暮|く}}らす](term:term-anki-l20-kurasu) non è soltanto "abitare". Rispetto a
 `{{住|す}}む`, che indica il luogo di residenza, e a `{{生|い}}きる`, che può
@@ -254,47 +303,27 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `パルデア{{地方|ちほう}}で` -> il `で` marca il teatro della vita quotidiana,
-  non solo un indirizzo.
-- `ポケモンと {{暮|く}}らす` -> il `と` presenta i Pokémon come compagni di
-  vita, non come oggetto posseduto.
-- `まいにちは` -> "ogni giorno" diventa tema della frase.
-- `{{発見|はっけん}}で いっぱいだ` -> "pieno di scoperte": `で` qui introduce
-  il contenuto che riempie la quotidianità.
+- `パルデア{{地方|ちほう}}で` ➔ **Teatro della quotidianità** (`で` non è solo un
+  indirizzo: marca il luogo in cui si svolge la vita).
+- `ポケモンと {{暮|く}}らす` ➔ **Convivenza** (`と` presenta i Pokémon come
+  compagni di vita, non come oggetto posseduto).
+- `まいにちは` ➔ **Tema abituale** ("ogni giorno" diventa ciò di cui si parla).
+- `{{発見|はっけん}}で いっぱいだ` ➔ **Contenuto che riempie** (`で` indica di
+  che cosa è piena la quotidianità).
 
-Quando la salute diventa urgente, [{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou)
-restringe il tempo fino alle unità minime. L'espressione
-[{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou)を{{争|あらそ}}う non vuol
-dire che qualcuno "litiga con i minuti e i secondi": significa che ogni istante
-conta e che l'azione deve procedere senza ritardo.
+#### ⚖️ Contrasto operativo
 
-:::example_sentence
-jp: >-
-  ペパーの ポケモンを {{助|たす}}けるため、{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}って {{秘|ひ}}{{伝|でん}}スパイスを {{探|さが}}した。
-translation_it: >-
-  Per aiutare il Pokémon di Pepper, abbiamo cercato le Spezie Segrete senza perdere un istante.
-:::
-
-#### 🗺️ Anatomia della frase
-
-- `ペパーの ポケモンを {{助|たす}}けるため` -> `ため` esplicita lo scopo:
-  l'urgenza nasce dal bisogno di aiutare.
-- `{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}って` -> espressione idiomatica di
-  urgenza; il tempo è trattato come qualcosa da contendere.
-- `{{秘|ひ}}{{伝|でん}}スパイスを {{探|さが}}した` -> l'oggetto cercato entra con
-  `を`; il verbo descrive la ricerca concreta.
-
-> [!NOTE]
-> **🧠 Gancio cognitivo:** [{{保健|ほけん}}](term:term-anki-l20-hoken)
-> protegge la salute, [{{暮|く}}らす](term:term-anki-l20-kurasu) mostra come
-> quella salute entra nelle giornate, [{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou)
-> stringe la giornata fino all'urgenza di un singolo istante.
+[{{保健|ほけん}}](term:term-anki-l20-hoken) organizza la cura e la salute;
+[{{暮|く}}らす](term:term-anki-l20-kurasu) organizza il modo in cui si vive nel
+tempo. Se traduci entrambi in modo troppo generico, perdi la differenza tra una
+scena di scuola o infermeria e una frase sulle giornate condivise a Paldea.
 
 ## Esempi guidati di riepilogo
 
-Le stesse forme si leggono meglio quando restano agganciate alla scena: chi è
-dentro il gruppo, quale scelta blocca il parlante, quale soglia o quale luogo
-rende concreta l'azione.
+Quando questi segnali si combinano, la frase mostra insieme prospettiva,
+decisione, tempo e luogo. Leggi prima il rapporto tra i partecipanti, poi guarda
+se la scena sta preparando una scelta, interrompendo la routine o tornando alla
+vita quotidiana.
 
 :::example_sentence
 jp: >-
@@ -331,9 +360,9 @@ translation_it: >-
 un gruppo; [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun),
 [{{悩|なや}}む](term:term-anki-l20-nayamu) e
 [{{半分|はんぶん}}](term:term-anki-l20-hanbun) organizzano preparazione,
-decisione e soglia; [{{保健|ほけん}}](term:term-anki-l20-hoken),
-[{{暮|く}}らす](term:term-anki-l20-kurasu) e
-[{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou) collegano scuola, routine
-e urgenza. Quando questi segnali compaiono insieme, la frase non sta solo dando
-informazioni: sta mostrando in che rapporto persone, luoghi e tempo entrano
-nella scena.
+decisione e soglia; [{{突|とつ}}{{然|ぜん}}](term:term-anki-l20-totsuzen) e
+[{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou) cambiano il ritmo della
+scena; [{{保健|ほけん}}](term:term-anki-l20-hoken) e
+[{{暮|く}}らす](term:term-anki-l20-kurasu) riportano tutto nella vita quotidiana
+di Paldea. Quando riconosci questi blocchi, il testo non è più una lista di
+parole: diventa una mappa di relazioni, scelte e tempo in movimento.

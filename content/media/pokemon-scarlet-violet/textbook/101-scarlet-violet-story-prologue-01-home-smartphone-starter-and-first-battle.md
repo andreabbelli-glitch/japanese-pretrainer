@@ -71,18 +71,22 @@ quando una funzione entra stabilmente nel viaggio.
 ## 1. Casa e Accademia: la cortesia che muove la scena
 
 La prima lingua da riconoscere è quella dell'ingresso domestico. Clavell non
-compare come "personaggio qualunque": la madre lo introduce come
-[{{校長|こうちょう}}{{先生|せんせい}}](term:term-kouchou-sensei), cioè `{{校長|こうちょう}}`
-più `{{先生|せんせい}}`. Il composto mette insieme ruolo istituzionale e rispetto
-personale: prima ancora di parlare di battaglie, la scena ti dice che
-l'Accademia entra in casa.
+compare come "personaggio qualunque": la scena lo fa entrare attraverso titoli,
+formule di soglia e scuse formali. Prima ancora di parlare di battaglie,
+l'Accademia si presenta come istituzione che bussa alla porta di casa.
 
-La parola [{{転入|てんにゅう}}](term:term-tennyuu) dà il motivo narrativo di quel
-tono. `{{転|てん}}` porta l'idea di spostamento o trasferimento, mentre
-`{{入|にゅう}}` indica ingresso: non sei semplicemente uno studente nuovo in
-astratto, stai entrando in un'istituzione già organizzata. Per questo le frasi
-su `{{学校|がっこう}}の {{準備|じゅんび}}` non sono colore domestico: trasformano
-l'arrivo del preside nel primo passaggio obbligato verso la scuola.
+*   [{{校長|こうちょう}}{{先生|せんせい}}](term:term-kouchou-sensei) unisce
+    `{{校長|こうちょう}}`, il ruolo di preside, e `{{先生|せんせい}}`, il titolo
+    rispettoso. La madre non sta solo identificando un adulto: ti sta dicendo
+    che davanti a te c'è l'autorità scolastica, quindi il registro del dialogo
+    sale subito.
+*   [{{転入|てんにゅう}}](term:term-tennyuu) dà il motivo narrativo di quel tono.
+    `{{転|てん}}` porta l'idea di spostamento o trasferimento, mentre
+    `{{入|にゅう}}` indica ingresso: non sei semplicemente uno studente nuovo in
+    astratto, stai entrando in un'istituzione già organizzata. Per questo le
+    frasi su `{{学校|がっこう}}の {{準備|じゅんび}}` non sono colore domestico:
+    trasformano l'arrivo del preside nel primo passaggio obbligato verso la
+    scuola.
 
 :::example_sentence
 jp: >-
@@ -95,9 +99,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{校長|こうちょう}}{{先生|せんせい}}が` -> soggetto rispettoso: non indica solo una persona, ma il suo ruolo scolastico.
-- `{{転入|てんにゅう}}の {{案内|あんない}}を` -> oggetto consegnato: le informazioni riguardano il tuo ingresso nell'Accademia.
-- `{{届|とど}}けに {{来|き}}てくれた` -> azione a tuo favore: qualcuno è venuto apposta per portarti qualcosa.
+*   `{{校長|こうちょう}}{{先生|せんせい}}が` ➔ **Soggetto rispettoso** (non indica
+    solo una persona, ma il suo ruolo scolastico).
+*   `{{転入|てんにゅう}}の {{案内|あんない}}を` ➔ **Oggetto consegnato** (le
+    informazioni riguardano il tuo ingresso nell'Accademia).
+*   `{{届|とど}}けに {{来|き}}てくれた` ➔ **Azione a tuo favore** (qualcuno è
+    venuto apposta per portarti qualcosa).
 
 Il registro di Clavell conferma la stessa cornice. [ごめんください](term:term-gomen-kudasai)
 è una formula da soglia: si dice da fuori, prima di invadere lo spazio
@@ -108,12 +115,12 @@ nega che ce ne sia una sufficiente. Quando il preside parla di
 [{{不手際|ふてぎわ}}](term:term-futegiwa), il ritardo non è più una sfortuna vaga:
 è un disguido attribuito all'organizzazione.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [ごめんください](term:term-gomen-kudasai) apre il
-> contatto in modo educato; [{{申|もう}}し{{訳|わけ}}ありません](term:term-moushiwake-arimasen)
-> ripara un problema già avvenuto. Se li leggi entrambi come "scusa", perdi il
-> cambio di funzione: il primo permette l'ingresso, il secondo assume
-> responsabilità.
+#### ⚖️ Contrasto operativo
+
+[ごめんください](term:term-gomen-kudasai) apre il contatto in modo educato;
+[{{申|もう}}し{{訳|わけ}}ありません](term:term-moushiwake-arimasen) ripara un
+problema già avvenuto. Se li leggi entrambi come "scusa", perdi il cambio di
+funzione: il primo permette l'ingresso, il secondo assume responsabilità.
 
 La formula [お{{言葉|ことば}}に {{甘|あま}}えて](term:term-okotoba-ni-amaete) chiude
 il piccolo rituale domestico. `お{{言葉|ことば}}` è la proposta gentile
@@ -135,9 +142,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `もう {{少|すこ}}し` -> quantità temporale minima: "ancora un poco", non un'attesa lunga e indefinita.
-- `{{家|いえ}}で` -> luogo dell'azione: l'attesa deve avvenire dentro casa.
-- `{{待|ま}}っててください` -> `{{待|ま}}っていてください` contratto: richiesta cortese che funziona come blocco temporaneo.
+*   `もう {{少|すこ}}し` ➔ **Quantità temporale minima** ("ancora un poco", non
+    un'attesa lunga e indefinita).
+*   `{{家|いえ}}で` ➔ **Luogo dell'azione** (l'attesa deve avvenire dentro
+    casa).
+*   `{{待|ま}}っててください` ➔ **Richiesta cortese contratta**
+    (`{{待|ま}}っていてください`, usata qui come blocco temporaneo).
 
 ## 2. Smartphone, bento e uscita: il tutorial entra nella vita quotidiana
 
@@ -157,16 +167,22 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{道|みち}}に {{迷|まよ}}ったら` -> condizione con [～たら](grammar:grammar-tara): quando si realizza il problema "perdersi".
-- `スマホロトムで` -> mezzo o interfaccia: il dispositivo è lo strumento con cui risolvi il problema.
-- `マップを {{開|ひら}}いてね` -> azione consigliata con [～てね](grammar:grammar-te-ne): tono familiare, ma funzione operativa reale.
+*   `{{道|みち}}に {{迷|まよ}}ったら` ➔ **Condizione con
+    [～たら](grammar:grammar-tara)** (quando si realizza il problema
+    "perdersi").
+*   `スマホロトムで` ➔ **Mezzo o interfaccia** (il dispositivo è lo strumento
+    con cui risolvi il problema).
+*   `マップを {{開|ひら}}いてね` ➔ **Azione consigliata con
+    [～てね](grammar:grammar-te-ne)** (tono familiare, ma funzione operativa
+    reale).
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [～てください](grammar:grammar-te-kudasai) e
-> [～てね](grammar:grammar-te-ne) possono entrambi chiederti di fare qualcosa.
-> Qui però `{{待|ま}}っててください` suona come istruzione adulta e controlla il
-> passaggio di scena; `{{開|ひら}}いてね` è una raccomandazione affettuosa che ti
-> insegna una funzione utile senza irrigidire il tono.
+#### ⚖️ Contrasto operativo
+
+[～てください](grammar:grammar-te-kudasai) e [～てね](grammar:grammar-te-ne)
+possono entrambi chiederti di fare qualcosa. Qui però
+`{{待|ま}}っててください` suona come istruzione adulta e controlla il passaggio di
+scena; `{{開|ひら}}いてね` è una raccomandazione affettuosa che ti insegna una
+funzione utile senza irrigidire il tono.
 
 :::image
 src: assets/story/smart-rotom-field.webp
@@ -177,33 +193,37 @@ caption: >-
   ricevuto in casa.
 :::
 
-La stessa uscita da casa conserva lessico domestico. [お{{弁当|べんとう}}](term:term-obentou)
-è il pranzo al sacco che la madre ti mette in mano: non sposta la missione, ma
-fa sentire che il viaggio scolastico parte da una cura concreta. In
-`{{初|はじ}}めてづくし`, invece, [～づくし](grammar:grammar-zukushi) si attacca a
-`{{初|はじ}}めて` per dire che il periodo è "pieno di prime volte". Non è una
-prima esperienza isolata: è una fase intera dominata da novità.
+La stessa uscita da casa conserva lessico domestico.
+[お{{弁当|べんとう}}](term:term-obentou) è il pranzo al sacco che la madre ti
+mette in mano: non sposta la missione, ma fa sentire che il viaggio scolastico
+parte da una cura concreta. In `{{初|はじ}}めてづくし`, invece,
+[～づくし](grammar:grammar-zukushi) si attacca a `{{初|はじ}}めて` per dire che il
+periodo è "pieno di prime volte". Non è una prima esperienza isolata: è una
+fase intera dominata da novità.
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** pensa a `～づくし` come a un tavolo coperto tutto
-> dallo stesso tipo di cosa. `{{初|はじ}}めてづくし` è quindi una giornata
-> apparecchiata di "prime volte". È un trucco mnemonico, non un'etimologia.
+#### 🧠 Gancio cognitivo
+
+Pensa a `～づくし` come a un tavolo coperto tutto dallo stesso tipo di cosa.
+`{{初|はじ}}めてづくし` è quindi una giornata apparecchiata di "prime volte". È
+un trucco mnemonico, non un'etimologia.
 
 ## 3. Starter e Nemona: da vicini a rivali
 
 Nemona cambia subito la velocità della scena. Il suo parlato è meno formale,
-più diretto e pieno di agganci sociali. Quando ti chiama
-[ご{{近所|きんじょ}}](term:term-gokinjo), o `ご{{近所|きんじょ}}{{同士|どうし}}`, non
-sta solo dicendo che abitate vicini: sta trasformando la distanza geografica in
-familiarità. Quel rapporto le permette di passare quasi subito da saluto a
-[{{勝負|しょうぶ}}](term:term-shoubu).
+più diretto e pieno di agganci sociali: ti colloca come vicino, interpreta lo
+starter come partner e trasforma quasi subito la presentazione in lotta.
 
-[{{勝負|しょうぶ}}](term:term-shoubu) va letto come match concreto, non come
-"competizione" astratta. In `{{勝負|しょうぶ}}しよう` la parola diventa verbo con
-`する`; in `{{勝負|しょうぶ}}の {{準備|じゅんび}}は いい？`,
-[{{準備|じゅんび}}](term:term-junbi) controlla se puoi entrare nella fase
-successiva. La domanda non chiede se sei psicologicamente motivato: chiede se
-hai scelto il Pokemon e puoi scendere verso il combattimento.
+*   [ご{{近所|きんじょ}}](term:term-gokinjo), o
+    `ご{{近所|きんじょ}}{{同士|どうし}}`, non dice soltanto che abitate vicino.
+    `{{近所|きんじょ}}` crea una relazione di quartiere e il prefisso `ご` la
+    rende socialmente morbida: Nemona usa la geografia per accorciare la
+    distanza tra voi.
+*   [{{勝負|しょうぶ}}](term:term-shoubu) va letto come match concreto, non come
+    "competizione" astratta. In `{{勝負|しょうぶ}}しよう` la parola diventa verbo
+    con `する`; in `{{勝負|しょうぶ}}の {{準備|じゅんび}}は いい？`,
+    [{{準備|じゅんび}}](term:term-junbi) controlla se puoi entrare nella fase
+    successiva. La domanda non chiede se sei psicologicamente motivato: chiede
+    se hai scelto il Pokemon e puoi scendere verso il combattimento.
 
 :::example_sentence
 jp: >-
@@ -215,9 +235,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{勝負|しょうぶ}}の {{準備|じゅんび}}が` -> il soggetto non è una persona, ma lo stato di preparazione al match.
-- `できたら` -> condizione completata: quando la preparazione è fatta, scatta il passaggio successivo.
-- `{{下|した}}の ビーチへ {{来|き}}てね` -> direzione fisica più invito amichevole: il dialogo ti sposta verso il luogo della lotta.
+*   `{{勝負|しょうぶ}}の {{準備|じゅんび}}が` ➔ **Stato di preparazione** (il
+    soggetto non è una persona, ma l'essere pronti per il match).
+*   `できたら` ➔ **Condizione completata** (quando la preparazione è fatta,
+    scatta il passaggio successivo).
+*   `{{下|した}}の ビーチへ {{来|き}}てね` ➔ **Direzione più invito amichevole**
+    (il dialogo ti sposta verso il luogo della lotta).
 
 La scelta dello starter usa un giapponese più osservativo. Clavell commenta
 `この {{子|こ}}は きみを {{気|き}}に {{入|い}}った みたいですね`.
@@ -235,9 +258,13 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `この {{子|こ}}は` -> tema affettivo: il Pokemon viene trattato come "questo piccolo / questa creatura".
-- `きみを {{気|き}}に {{入|い}}った` -> `{{気|き}}に {{入|い}}る` significa piacere, andare a genio; qui il bersaglio della simpatia sei tu.
-- `みたいですね` -> impressione condivisa in tono cortese: Clavell interpreta la scena senza suonare categorico.
+*   `この {{子|こ}}は` ➔ **Tema affettivo** (il Pokemon viene trattato come
+    "questo piccolo / questa creatura").
+*   `きみを {{気|き}}に {{入|い}}った` ➔ **Simpatia verso un bersaglio**
+    (`{{気|き}}に {{入|い}}る` significa piacere, andare a genio; qui il bersaglio
+    sei tu).
+*   `みたいですね` ➔ **Impressione condivisa in tono cortese** (Clavell
+    interpreta la scena senza suonare categorico).
 
 :::image
 src: assets/story/starter-choice-three-pokemon.webp
@@ -247,28 +274,34 @@ caption: >-
   l'accettazione del Pokemon come impressione osservata dai personaggi.
 :::
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** `{{気|き}}に {{入|い}}った` riguarda il piacere o
-> la simpatia verso qualcuno; [～みたい](grammar:grammar-mitai) indica che il
-> parlante lo deduce da ciò che vede. Non leggere la frase come una decisione
-> fredda del sistema: è un'osservazione messa in bocca al personaggio.
+#### ⚖️ Contrasto operativo
+
+`{{気|き}}に {{入|い}}った` riguarda il piacere o la simpatia verso qualcuno;
+[～みたい](grammar:grammar-mitai) indica che il parlante lo deduce da ciò che
+vede. Non leggere la frase come una decisione fredda del sistema: è
+un'osservazione messa in bocca al personaggio.
 
 Nemona carica poi il primo match come [デビュー{{戦|せん}}](term:term-debyuu-sen).
 `デビュー` resta katakana trasparente, ma `{{戦|せん}}` lo trasforma in una prova
 di battaglia: non è solo "il debutto" del partner, è la sua prima sfida in
-campo. Dopo il match, `{{素質|そしつ}}アリ` compatta il giudizio di Nemona:
-`{{素質|そしつ}}` è la predisposizione, `アリ` è il "c'è / presente" colloquiale.
-La frase non dice che sei già forte; dice che nel modo in cui combatti si vede
-potenziale.
+campo. Dopo il match, [{{素質|そしつ}}アリ](term:term-soshitsu-ari) compatta il
+giudizio di Nemona: `{{素質|そしつ}}` è la predisposizione, `アリ` è il "c'è /
+presente" colloquiale. La frase non dice che sei già forte; dice che nel modo
+in cui combatti si vede potenziale.
 
 ## 4. Spiaggia e tipi: debolezza, superefficacia e autocontrollo
 
 Sulla spiaggia il prologo passa dal parlato di relazione al lessico tecnico
-della battaglia. [{{弱点|じゃくてん}}](term:term-jakuten) indica il punto debole,
-ma nel contesto Pokemon il suo valore è molto concreto: è il rapporto di tipo
-che fa aumentare il danno. Quando il colpo segue quel rapporto, il messaggio
-[こうかは ばつぐんだ！](term:term-kouka-wa-batsugun) conferma che hai letto bene
-la situazione.
+della battaglia. Qui il giapponese non descrive solo che cosa succede: ti fa
+leggere la catena tattica tra tipo, scelta della mossa e messaggio di sistema.
+
+*   [{{弱点|じゃくてん}}](term:term-jakuten) indica il punto debole, ma nel
+    contesto Pokemon il suo valore è molto concreto: è il rapporto di tipo che
+    fa aumentare il danno. La parola ti serve prima del colpo, quando devi
+    scegliere una mossa.
+*   [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun) arriva dopo l'azione:
+    `こうか` è l'effetto, `ばつぐん` segnala che quell'effetto è eccezionale. Il
+    gioco conferma a schermo che la scelta ha intercettato la debolezza.
 
 :::example_sentence
 jp: >-
@@ -281,9 +314,12 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{相手|あいて}}の {{弱点|じゃくてん}}を` -> bersaglio concettuale: la debolezza appartiene all'avversario.
-- `{{突|つ}}ける わざなら` -> condizione sul tipo di mossa: se la mossa può "colpire" quel punto debole.
-- `こうかは ばつぐんだ！` -> conferma di sistema: l'effetto non è buono in generale, è amplificato dal rapporto tra tipi.
+*   `{{相手|あいて}}の {{弱点|じゃくてん}}を` ➔ **Bersaglio concettuale** (la
+    debolezza appartiene all'avversario).
+*   `{{突|つ}}ける わざなら` ➔ **Condizione sul tipo di mossa** (se la mossa può
+    "colpire" quel punto debole).
+*   `こうかは ばつぐんだ！` ➔ **Conferma di sistema** (l'effetto non è buono in
+    generale, è amplificato dal rapporto tra tipi).
 
 :::image
 src: assets/story/nemona-first-battle-beach.webp
@@ -294,11 +330,12 @@ caption: >-
   tipo corretto, danno aumentato, conferma a schermo.
 :::
 
-> [!WARNING]
-> **⚖️ Contrasto operativo:** [{{弱点|じゃくてん}}](term:term-jakuten) è la causa
-> tattica; [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun) è il messaggio che
-> appare dopo il colpo. Se li fondi in una sola idea, perdi il timing: prima
-> scegli la mossa in base alla debolezza, poi il gioco conferma l'effetto.
+#### ⚖️ Contrasto operativo
+
+[{{弱点|じゃくてん}}](term:term-jakuten) è la causa tattica;
+[こうかは ばつぐんだ！](term:term-kouka-wa-batsugun) è il messaggio che appare dopo
+il colpo. Se li fondi in una sola idea, perdi il timing: prima scegli la mossa
+in base alla debolezza, poi il gioco conferma l'effetto.
 
 La battuta di Nemona su `いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところでした`
 spiega il suo autocontrollo in lingua di battaglia. [{{繰|く}}り{{出|だ}}す](term:term-kuridasu)
@@ -316,25 +353,35 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `うっかり` -> disattenzione: prepara la lettura "senza volerlo".
-- `いつもの ポケモンを` -> oggetto abituale: non uno starter calibrato sul tutorial, ma il Pokemon che userebbe di solito.
-- `{{繰|く}}り{{出|だ}}しちゃう` -> `{{繰|く}}り{{出|だ}}してしまう` contratto: finire per mandarlo in campo.
-- `ところでした` -> quasi-evento: l'azione non è avvenuta, ma ci è mancato poco.
+*   `うっかり` ➔ **Disattenzione** (prepara la lettura "senza volerlo").
+*   `いつもの ポケモンを` ➔ **Oggetto abituale** (non uno starter calibrato sul
+    tutorial, ma il Pokemon che userebbe di solito).
+*   `{{繰|く}}り{{出|だ}}しちゃう` ➔ **Azione quasi sfuggita di mano**
+    (`{{繰|く}}り{{出|だ}}してしまう` contratto: finire per mandarlo in campo).
+*   `ところでした` ➔ **Quasi-evento** (l'azione non è avvenuta, ma ci è mancato
+    poco).
 
-> [!NOTE]
-> **🧠 Gancio cognitivo:** in `{{繰|く}}り{{出|だ}}す`, immagina qualcosa che viene
-> fatto uscire in serie o spinto fuori sul campo. È un'immagine per ricordare
-> il valore operativo del verbo, non una spiegazione etimologica completa.
+#### 🧠 Gancio cognitivo
+
+In `{{繰|く}}り{{出|だ}}す`, immagina qualcosa che viene fatto uscire in serie o
+spinto fuori sul campo. È un'immagine per ricordare il valore operativo del
+verbo, non una spiegazione etimologica completa.
 
 ## 5. Pokedex e registrazione: dal quaderno all'app
 
 Dopo la lotta, Nemona sposta il focus dal combattimento al sistema. La
-[ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) non viene presentata come un
-libro separato: è un'app nello [スマホロトム](term:term-smartphone-rotom). Il verbo
-[{{登録|とうろく}}](term:term-touroku) è il pezzo chiave, perché dice che un dato
-entra ufficialmente nel sistema. Quando un Pokemon catturato viene
-`{{登録|とうろく}}される`, la frase non parla di scrivere una nota: parla di una
-registrazione automatica.
+scena prende un oggetto familiare della serie, il Pokedex, e lo rilegge come
+app nello [スマホロトム](term:term-smartphone-rotom): non più quaderno da
+riempire a mano, ma interfaccia che aggiorna dati.
+
+*   [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) contiene `{{図鑑|ずかん}}`,
+    "enciclopedia illustrata / catalogo". Nel gioco però non viene presentato
+    come volume separato: vive dentro il telefono, quindi le sue frasi vanno
+    lette come messaggi di app.
+*   [{{登録|とうろく}}](term:term-touroku) è il verbo chiave, perché dice che un
+    dato entra ufficialmente nel sistema. Quando un Pokemon catturato viene
+    `{{登録|とうろく}}される`, la frase non parla di scrivere una nota: parla di
+    una registrazione automatica.
 
 :::example_sentence
 jp: >-
@@ -346,10 +393,13 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `{{捕|つか}}まえた ポケモンは` -> tema definito da un'azione già compiuta: i Pokemon catturati.
-- `ポケモン{{図鑑|ずかん}}に` -> destinazione della registrazione: il dato entra nel Pokedex.
-- `{{自動|じどう}}で` -> modalità: non serve un inserimento manuale.
-- `{{登録|とうろく}}される` -> passivo di sistema: il Pokemon viene registrato dal meccanismo dell'app.
+*   `{{捕|つか}}まえた ポケモンは` ➔ **Tema definito da un'azione già compiuta**
+    (i Pokemon catturati).
+*   `ポケモン{{図鑑|ずかん}}に` ➔ **Destinazione della registrazione** (il dato
+    entra nel Pokedex).
+*   `{{自動|じどう}}で` ➔ **Modalità** (non serve un inserimento manuale).
+*   `{{登録|とうろく}}される` ➔ **Passivo di sistema** (il Pokemon viene
+    registrato dal meccanismo dell'app).
 
 :::image
 src: assets/ui/pokedex-auto-registration-scene.webp
@@ -366,11 +416,12 @@ a mano richiederebbe annotazione manuale. Lo
 [スマホロトム](term:term-smartphone-rotom), invece, collega cattura,
 [{{登録|とうろく}}](term:term-touroku) e consultazione nella stessa interfaccia.
 
-> [!NOTE]
-> **⚖️ Contrasto operativo:** [{{手書|てが}}き](term:term-tegaki) descrive il
-> metodo di compilazione; [{{登録|とうろく}}](term:term-touroku) descrive
-> l'inserimento ufficiale del dato. Il primo ti fa immaginare una nota scritta,
-> il secondo un sistema che aggiorna una voce.
+#### ⚖️ Contrasto operativo
+
+[{{手書|てが}}き](term:term-tegaki) descrive il metodo di compilazione;
+[{{登録|とうろく}}](term:term-touroku) descrive l'inserimento ufficiale del dato.
+Il primo ti fa immaginare una nota scritta, il secondo un sistema che aggiorna
+una voce.
 
 Quando Nemona definisce l'app [{{要|よう}}チェック](term:term-you-check), il
 tono diventa colloquiale ma non perde funzione. `{{要|よう}}` qui vale "richiede
