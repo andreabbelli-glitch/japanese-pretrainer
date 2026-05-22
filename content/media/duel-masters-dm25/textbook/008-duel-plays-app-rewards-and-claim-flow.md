@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 media_id: media-duel-masters-dm25
 slug: duel-plays-app-rewards-and-claim-flow
-title: デュエプレ App 4 - Present box, stage select e popup reward
+title: Premi, scadenze e stage event in デュエプレ
 order: 18
 segment_ref: duel-plays-app
 difficulty: n4
@@ -10,64 +10,78 @@ status: active
 tags: [app, ui, rewards, progression, duel-plays]
 prerequisites: [lesson-duel-masters-dm25-duel-plays-app-modes-and-progression]
 summary: >-
-  Approfondimento guidato su present box, stage select evento e popup reward:
-  come leggere stato di riscossione, scadenze, livelli, preview delle reward e
-  risultato finale direttamente nella UI di Duel Plays.
+  Leggere present box, stage select e popup reward in Duel Plays distinguendo
+  claim aperti, scadenze, livelli, preview delle reward e risultato finale.
 ---
 
-# Obiettivo
+# Premi, scadenze e stage event in デュエプレ
 
-- distinguere ciò che è ancora da riscuotere da ciò che è già stato incassato;
-- leggere date, livelli e costo d'ingresso senza perdere il senso pratico;
-- capire quando un popup richiede ancora un'azione e quando certifica un risultato
-  già registrato.
+Quando `デュエプレ` assegna premi da login, missioni o eventi, la UI non dice
+solo "hai ottenuto qualcosa". Separa il contenitore, lo stato del claim, la
+scadenza, lo stage da affrontare e il popup che certifica la ricezione finale.
 
-## Contesto
-
-Nell'interfaccia di `デュエプレ`, i claim sono comunicati da label compatte:
-
-- stato della reward;
-- storico;
-- scadenza;
-- livello dello stage;
-- bottone finale di riscossione o avvio.
-
-Questi elementi vanno letti in sequenza:
-
-1. vedi che cosa è pronto;
-2. controlli se scade;
-3. scegli dove entrare;
-4. incassi davvero.
+La sequenza è molto leggibile se guardi i label come una catena: prima
+[プレゼントボックス](term:term-present-box) ti mostra che cosa resta aperto,
+poi [ステージ{{選択|せんたく}}](term:term-stage-select) ti fa scegliere dove
+entrare, infine [{{報酬|ほうしゅう}}](term:term-reward) +
+[{{受|う}}け{{取|と}}る](term:term-receive) chiudono il flusso. Il punto non è
+memorizzare tutti i pulsanti, ma riconoscere se la schermata sta parlando di un
+premio promesso, ritirabile o già ricevuto.
 
 ## Termini chiave
 
-- [プレゼントボックス](term:term-present-box)
-- [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed)
-- [{{受|う}}け{{取|と}}り{{履歴|りれき}}](term:term-claim-history)
-- [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim)
-- [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline)
-- [{{期限|きげん}}](term:term-deadline)
-- [{{獲得|かくとく}}](term:term-kakutoku)
-- [{{日時|にちじ}}](term:term-datetime)
-- [ステージ{{選択|せんたく}}](term:term-stage-select)
-- [{{初級|しょきゅう}}](term:term-beginner-class)
-- [{{中級|ちゅうきゅう}}](term:term-intermediate-class)
-- [{{挑戦|ちょうせん}}](term:term-challenge)
-- [{{既読|きどく}}](term:term-read-already)
-- [スキップ](term:term-skip)
-- [レジェンドスキル](term:term-legend-skill)
-- [{{報酬|ほうしゅう}}](term:term-reward)
-- [{{受|う}}け{{取|と}}る](term:term-receive)
+- [プレゼントボックス](term:term-present-box) — contenitore dei premi assegnati
+  all'account
+- [{{報酬|ほうしゅう}}](term:term-reward) — reward, premio ottenibile o già
+  ricevuto
+- [{{受|う}}け{{取|と}}る](term:term-receive) — ritirare, prendere in consegna
+  il premio
+- [{{獲得|かくとく}}](term:term-kakutoku) — ottenimento registrato dal sistema
+- [{{日時|にちじ}}](term:term-datetime) — data e ora di un evento registrato
+- [{{期限|きげん}}](term:term-deadline) — limite temporale, scadenza
+- [ステージ{{選択|せんたく}}](term:term-stage-select) — schermata di scelta dello
+  stage
+- [{{挑戦|ちょうせん}}](term:term-challenge) — tentativo / ingresso nella sfida
+
+## Espressioni ricorrenti
+
+- [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed) — premio non ancora
+  ritirato
+- [{{受|う}}け{{取|と}}り{{履歴|りれき}}](term:term-claim-history) — storico dei
+  claim completati
+- [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim) — ritiro
+  cumulativo
+- [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline) — scadenza del
+  ritiro
+- [{{既読|きどく}}](term:term-read-already) + [スキップ](term:term-skip) — storia
+  già letta e quindi saltabile
 
 ## Pattern grammaticali chiave
 
-- [{{未|み}}～](grammar:grammar-mi-prefix)
-- [～{{済|ず}}み](grammar:grammar-zumi)
-- [～{{可能|かのう}}](grammar:grammar-kanou)
+- [{{未|み}}～](grammar:grammar-mi-prefix) — prefisso "non ancora"
+- [～{{済|ず}}み](grammar:grammar-zumi) — stato già concluso o elaborato
+- [～{{可能|かのう}}](grammar:grammar-kanou) — azione disponibile / possibile
 
-## Spiegazione
+## Etichette da riconoscere
 
-### 1. Il present box è una coda di claim, non un semplice archivio
+- [{{初級|しょきゅう}}](term:term-beginner-class) — livello base dello stage
+- [{{中級|ちゅうきゅう}}](term:term-intermediate-class) — livello intermedio dello
+  stage
+- [レジェンドスキル](term:term-legend-skill) — abilità speciale mostrata nel
+  setup del confronto
+- [{{対戦|たいせん}}{{開始|かいし}}](term:term-start-match) — avvio effettivo della
+  partita
+- `あと13日` — tempo residuo espresso come "ancora 13 giorni"
+
+---
+
+## 1. プレゼントボックス divide coda aperta e storico
+
+Nel [プレゼントボックス](term:term-present-box), `プレゼント` non è solo "regalo"
+in senso generico: dentro la UI diventa il contenitore dei premi assegnati ma
+non necessariamente già trasferiti nel tuo inventario. Per leggerlo bene devi
+separare tre cose: il premio, lo stato del claim e il bottone che esegue
+l'azione.
 
 :::image
 src: assets/ui/present-box-unclaimed.png
@@ -77,53 +91,91 @@ alt: >-
   scadenza claim e bottone di riscossione.
 caption: >-
   Ogni riga del `プレゼントボックス` combina nome reward,
-  `{{獲得日時|かく.とく.にち.じ}}`, `{{受|う}}け{{取|と}}り{{期限|きげん}}` e bottone
+  `{{獲得|かくとく}}{{日時|にちじ}}`, `{{受|う}}け{{取|と}}り{{期限|きげん}}` e bottone
   `{{受|う}}け{{取|と}}る`: è una schermata di claim, non un semplice deposito
   di premi.
 :::
 
-[プレゼントボックス](term:term-present-box) mostra lo stato operativo della
-reward:
-- nella coda dei claim da completare;
-- nello storico delle reward già completate.
+- [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed) combina il prefisso
+  [{{未|み}}～](grammar:grammar-mi-prefix) con
+  `{{受|う}}け{{取|と}}り`: il premio esiste già nella box, ma l'azione di
+  prenderlo non è ancora stata completata. La lettura pratica è "coda aperta",
+  non "premio mancante".
+- [{{受|う}}け{{取|と}}り{{履歴|りれき}}](term:term-claim-history) guarda nella
+  direzione opposta. `{{履歴|りれき}}` segnala storico: stai consultando claim
+  già registrati, quindi non devi cercare un bottone di incasso sulla stessa
+  riga.
+- [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim) non cambia il
+  significato di [{{受|う}}け{{取|と}}る](term:term-receive), ma cambia la scala
+  dell'azione. `{{一括|いっかつ}}` ti dice che l'app può trattare più righe
+  aperte come un blocco unico, invece di farti premere
+  [{{受|う}}け{{取|と}}る](term:term-receive) una reward alla volta.
 
-Ogni riga espone tutti i dati operativi della singola reward:
+:::example_sentence
+jp: >-
+  {{未|み}}{{受|う}}け{{取|と}}りの{{報酬|ほうしゅう}}が{{2件|にけん}}あるので、{{一括|いっかつ}}{{受|う}}け{{取|と}}りでまとめて{{受|う}}け{{取|と}}る。
+translation_it: >-
+  Ci sono due reward non ancora ritirate, quindi le ritiro tutte assieme con il claim cumulativo.
+:::
 
-- che premio è;
-- da dove arriva;
-- quando è stato ottenuto (`{{獲得|かくとく}}{{日時|にちじ}}`);
-- fino a quando puoi ritirarlo (`{{受|う}}け{{取|と}}り{{期限|きげん}}`);
-- quale bottone chiude la singola azione (`{{受|う}}け{{取|と}}る`).
+#### 🗺️ Anatomia della frase
 
-Qui i due label da separare subito sono:
+*   `[{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed)の[{{報酬|ほうしゅう}}](term:term-reward)` ➔ **Nome modificato dallo stato**: `の` collega "non ancora ritirato" a "reward", quindi non descrive il tipo di premio ma il suo stato operativo.
+*   `{{2件|にけん}}あるので` ➔ **Motivo quantitativo**: il contatore `件` tratta le reward come pratiche o elementi di lista; `ので` trasforma quel numero nella ragione dell'azione successiva.
+*   `[{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim)で` ➔ **Mezzo dell'azione**: `で` indica lo strumento usato per ritirare.
+*   `まとめて[{{受|う}}け{{取|と}}る](term:term-receive)` ➔ **Azione finale**: `まとめて` rafforza l'idea di gruppo, mentre [{{受|う}}け{{取|と}}る](term:term-receive) chiude il claim.
 
-- [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed): la reward è dentro la box ma
-  devi ancora incassarla;
-- [{{受|う}}け{{取|と}}り{{履歴|りれき}}](term:term-claim-history): l'incasso è già
-  stato registrato e stai guardando lo storico, non il residuo aperto.
+#### ⚖️ Contrasto
 
-Anche [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim) è più
-operativo di quanto sembri. Il label ti dice che l'app può elaborare più reward
-insieme, non una alla volta.
+[{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed) non significa che la reward
+non esiste ancora. Significa che è già stata assegnata alla box, ma manca il
+passaggio di ritiro. [{{受|う}}け{{取|と}}り{{履歴|りれき}}](term:term-claim-history)
+invece non promette nuove reward: registra quello che è già stato preso.
 
-### 2. `{{受|う}}け{{取|と}}り{{期限|きげん}}` e `獲得日時` ti dicono quanto è urgente il claim
+## 2. 獲得日時 e 受け取り期限 separano passato e urgenza
 
-Nella stessa schermata compaiono due informazioni temporali diverse:
+La stessa riga del present box contiene due tempi diversi. Se li leggi entrambi
+come "data del premio", perdi la funzione della schermata.
 
-- [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline) = fino a quando
-  puoi ancora ritirare quel premio;
-- `{{獲得|かくとく}}{{日時|にちじ}}` = quando quella reward è entrata nella box.
+- [{{獲得|かくとく}}](term:term-kakutoku) dice che il sistema ha registrato
+  l'ottenimento. Quando si unisce a [{{日時|にちじ}}](term:term-datetime), forma
+  `{{獲得|かくとく}}{{日時|にちじ}}`: il momento in cui quella reward è entrata
+  nella tua coda.
+- [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline) guarda al
+  limite futuro. [{{期限|きげん}}](term:term-deadline) non racconta da dove viene
+  il premio; ti dice fino a quando puoi ancora completare il claim.
+- [{{日時|にちじ}}](term:term-datetime) è neutro e cronologico: data + ora.
+  [{{期限|きげん}}](term:term-deadline) è operativo: se passa quel limite,
+  l'azione può non essere più disponibile.
 
-Qui [{{獲得|かくとく}}](term:term-kakutoku) marca l'ora di registrazione del
-premio; [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline) marca
-l'ultima ora valida per reclamare. Le due etichette sono usate per decidere se la
-reward è ancora recuperabile.
+:::example_sentence
+jp: >-
+  {{獲得|かくとく}}{{日時|にちじ}}を{{見|み}}てから、{{受|う}}け{{取|と}}り{{期限|きげん}}が{{切|き}}れる{{前|まえ}}に{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
+translation_it: >-
+  Dopo aver controllato data e ora di ottenimento, ritiro la reward prima che scada il limite di claim.
+:::
 
-In pratica, [{{期限|きげん}}](term:term-deadline) ti parla di urgenza.
-[{{日時|にちじ}}](term:term-datetime) ti parla di provenienza e
-cronologia.
+#### 🗺️ Anatomia della frase
 
-### 3. La stage select comprime livello, costo e reward preview
+*   `[{{獲得|かくとく}}](term:term-kakutoku)[{{日時|にちじ}}](term:term-datetime)を{{見|み}}てから` ➔ **Controllo preliminare**: `てから` mette la verifica temporale prima dell'azione principale.
+*   `[{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline)が{{切|き}}れる{{前|まえ}}に` ➔ **Limite prima della scadenza**: `が` marca la scadenza come soggetto di `{{切|き}}れる`, e `{{前|まえ}}に` impone di agire prima di quel momento.
+*   `[{{報酬|ほうしゅう}}](term:term-reward)を[{{受|う}}け{{取|と}}る](term:term-receive)` ➔ **Oggetto + azione**: `を` marca ciò che entra effettivamente in tuo possesso.
+
+#### ⚖️ Contrasto
+
+`{{獲得|かくとく}}{{日時|にちじ}}` risponde a "quando è arrivato nella box?".
+[{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline) risponde a
+"entro quando devo prenderlo?". Il primo guarda indietro, il secondo mette un
+timer davanti al bottone.
+
+#### 🧠 Gancio
+
+Come trucco mnemonico, leggi [{{獲得|かくとく}}](term:term-kakutoku) come il
+timbro d'ingresso e [{{期限|きげん}}](term:term-deadline) come il timer. Non è
+un'etimologia: è un modo pratico per ricordare quale data descrive il passato e
+quale data crea urgenza.
+
+## 3. ステージ選択 comprime difficoltà, costo e reward preview
 
 :::image
 src: assets/ui/stage-select-collab-event.png
@@ -135,41 +187,55 @@ caption: >-
   In [ステージ{{選択|せんたく}}](term:term-stage-select) scegli lo stage a
   sinistra e, a destra, controlli avversario, reward, opzioni di skip e
   pulsanti come `{{報酬|ほうしゅう}}{{確認|かくにん}}` e
-  [{{対戦開始|たい.せん.かい.し}}](term:term-start-match).
+  [{{対戦|たいせん}}{{開始|かいし}}](term:term-start-match).
 :::
 
-In [ステージ{{選択|せんたく}}](term:term-stage-select) la UI concentra molte
-decisioni nello stesso spazio.
-
-La schermata ti fa leggere tre blocchi insieme:
-
-- la colonna sinistra, che contiene stage e difficoltà;
-- il pannello destro alto, che riassume avversario e condizioni del contenuto;
-- il pannello destro basso, che mostra `NEXT REWARD`, punti attuali e opzioni
-  di avanzamento.
-
-Le etichette operative da distinguere sono:
+In [ステージ{{選択|せんたく}}](term:term-stage-select), la UI cambia registro:
+non stai più guardando premi già assegnati, ma un contenuto da scegliere e
+affrontare. Il giapponese qui deve farti capire livello, costo, reward futura e
+stato della storia.
 
 - [{{初級|しょきゅう}}](term:term-beginner-class) e
-  [{{中級|ちゅうきゅう}}](term:term-intermediate-class): non indicano un corso
-  di lingua, ma il livello previsto dello stage;
-- [{{挑戦|ちょうせん}}](term:term-challenge): è l'atto di entrare davvero nello
-  stage, spesso con un costo espresso in ticket;
-- [{{既読|きどく}}](term:term-read-already) + [スキップ](term:term-skip): la
-  coppia ti dice che il contenuto di storia è già stato letto e che puoi
-  saltarlo;
-- [レジェンドスキル](term:term-legend-skill): qui compare come informazione di
-  setup del confronto, non come testo decorativo.
+  [{{中級|ちゅうきゅう}}](term:term-intermediate-class) sono classi di
+  difficoltà dello stage. Non indicano "lezione base/intermedia" in senso
+  scolastico: nella schermata funzionano come filtri di sfida.
+- [{{挑戦|ちょうせん}}](term:term-challenge) porta l'idea di affrontare un
+  tentativo. Se compare accanto a ticket o costo, la parola ti dice che non
+  stai solo aprendo un dettaglio: stai spendendo l'ingresso per entrare nello
+  stage.
+- [{{既読|きどく}}](term:term-read-already) + [スキップ](term:term-skip) separa
+  storia e battaglia. [{{既読|きどく}}](term:term-read-already) dice che il testo
+  narrativo è già stato letto; [スキップ](term:term-skip) è l'azione resa
+  possibile da quello stato.
+- [レジェンドスキル](term:term-legend-skill) non è una decorazione del pannello:
+  è informazione di setup. Quando appare vicino all'avversario o allo stage,
+  prepara la lettura della partita che stai per iniziare.
+- `あと13日` usa `あと` come "ancora / rimanenti": è tempo residuo dell'evento,
+  non una data assoluta da calendario.
 
-`あと13日` indica tempo residuo (`13 giorni rimasti`) e non una data assoluta.
+:::example_sentence
+jp: >-
+  {{既読|きどく}}のストーリーをスキップして、{{中級|ちゅうきゅう}}のステージにチケット{{2枚|にまい}}で{{挑戦|ちょうせん}}する。
+translation_it: >-
+  Salto la storia già letta e sfido lo stage intermedio usando due ticket.
+:::
 
-Anche i pulsanti in basso fanno lavori diversi:
+#### 🗺️ Anatomia della frase
 
-- `ステージ詳細` ti spiega meglio lo stage;
-- `報酬確認` ti fa controllare le reward;
-- [{{対戦開始|たい.せん.かい.し}}](term:term-start-match) avvia davvero la sfida.
+*   `[{{既読|きどく}}](term:term-read-already)のストーリーを` ➔ **Oggetto già letto**: `の` trasforma "già letto" in modificatore di `ストーリー`.
+*   `[スキップ](term:term-skip)して` ➔ **Prima azione collegata**: la forma in `-te` unisce lo skip all'azione successiva senza farne il risultato finale.
+*   `[{{中級|ちゅうきゅう}}](term:term-intermediate-class)のステージに` ➔ **Destinazione della sfida**: `に` marca lo stage verso cui entri.
+*   `チケット{{2枚|にまい}}で[{{挑戦|ちょうせん}}](term:term-challenge)する` ➔ **Mezzo / costo + azione**: `で` legge i due ticket come risorsa usata per affrontare lo stage.
 
-### 4. Il popup finale conferma che il claim è già avvenuto
+#### ⚖️ Contrasto
+
+`ステージ{{詳細|しょうさい}}` e `{{報酬|ほうしゅう}}{{確認|かくにん}}` aprono
+informazioni: dettagli e preview. [{{対戦|たいせん}}{{開始|かいし}}](term:term-start-match)
+chiude invece la preparazione e fa partire la partita. [{{挑戦|ちょうせん}}](term:term-challenge)
+sta dalla stessa parte operativa dell'ingresso: non è semplice lettura, è il
+tentativo che consuma il costo mostrato.
+
+## 4. Il popup 報酬受け取り certifica un claim già riuscito
 
 :::image
 src: assets/ui/reward-claim-popup.png
@@ -182,22 +248,40 @@ caption: >-
   conferma che l'incasso è già stato registrato.
 :::
 
-Questo popup non richiede conferma utente: certifica che il claim è già stato
-eseguito.
+Il popup finale cambia ancora il tempo della frase. Il titolo
+`{{報酬|ほうしゅう}}{{受|う}}け{{取|と}}り` nomina il flusso, ma la frase centrale
+usa il passato cortese: `{{受|う}}け{{取|と}}りました`. Quando vedi `ました`, il
+claim non è una richiesta futura; è un risultato già registrato.
 
-Quando leggi `{{以下|いか}}の{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}りました`,
-la spia decisiva è il passato `ました`: l'azione è già avvenuta e i premi sono
-già entrati nell'account. L'app ti mostra *quali* reward hai incassato, non ti
-chiede *se* vuoi incassarle.
+:::example_sentence
+jp: >-
+  {{以下|いか}}の{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}りました。
+translation_it: >-
+  Hai ricevuto le reward seguenti.
+:::
 
-Regola operativa:
+#### 🗺️ Anatomia della frase
 
-- [{{受|う}}け{{取|と}}る](term:term-receive) come verbo in etichetta/interfaccia = azione ancora da fare;
-- `{{受|う}}け{{取|と}}りました` come forma già coniugata = azione già completata.
+*   `{{以下|いか}}の[{{報酬|ほうしゅう}}](term:term-reward)を` ➔ **Oggetto elencato sotto**: `{{以下|いか}}の` prepara la lista che segue nel popup, e `を` marca quelle reward come oggetto ricevuto.
+*   `[{{受|う}}け{{取|と}}りました](term:term-receive)` ➔ **Azione conclusa**: il verbo composto [{{受|う}}け{{取|と}}る](term:term-receive) è al passato cortese `ました`, quindi l'app sta comunicando un esito, non chiedendo una scelta.
 
-## Esempi guidati
+#### ⚖️ Contrasto
 
-**Esempio 1**
+[{{受|う}}け{{取|と}}る](term:term-receive) su un bottone è un invito
+all'azione: "ritira". `{{受|う}}け{{取|と}}りました` in una frase di popup è una
+conferma: "hai ritirato". La differenza non sta nel sostantivo
+[{{報酬|ほうしゅう}}](term:term-reward), ma nella forma verbale che accompagna il
+claim.
+
+#### 🧠 Gancio
+
+Leggi il flusso come tre cartellini: [{{未|み}}～](grammar:grammar-mi-prefix)
+apre ciò che non è ancora completato, [{{期限|きげん}}](term:term-deadline) mette
+un limite, `ました` timbra l'azione conclusa. È un gancio mnemonico per la UI:
+non sostituisce il parsing, ma ti aiuta a riconoscere subito in quale fase del
+claim ti trovi.
+
+## Esempi guidati di riepilogo
 
 :::example_sentence
 jp: >-
@@ -206,26 +290,12 @@ translation_it: >-
   Ci sono 2 ricompense non ritirate, quindi premo il bottone prima che scada il periodo per il ritiro.
 :::
 
-- [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed) ti dice subito che
-  l'incasso non è stato ancora completato.
-- Qui il contrasto non è il tipo di premio, ma lo stato del claim: la reward è
-  già presente nella box, però non è ancora stata trasferita al tuo inventario.
-
-**Esempio 2**
-
 :::example_sentence
 jp: >-
   アイテムが{{多|おお}}すぎる{{時|とき}}は、{{一括|いっかつ}}{{受|う}}け{{取|と}}りボタンで{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
 translation_it: >-
   Quando ci sono troppi item, ricevo tutto assieme cliccando sul tasto del ritiro cumulativo.
 :::
-
-- [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim) non descrive lo
-  stato della reward, ma la modalità del claim.
-- `{{一括|いっかつ}}` ti dice che il bottone applica la stessa riscossione a
-  tutte le reward aperte, invece di fartene ritirare una per una.
-
-**Esempio 3**
 
 :::example_sentence
 jp: >-
@@ -234,13 +304,6 @@ translation_it: >-
   Sfido il livello intermedio della storia consumando 2 ticket e sconfiggo il boss.
 :::
 
-- [{{中級|ちゅうきゅう}}](term:term-intermediate-class) definisce il livello.
-- [{{挑戦|ちょうせん}}](term:term-challenge) è il verbo che fa partire davvero lo
-  stage: conferma il livello scelto e consuma il costo in ticket mostrato
-  accanto.
-
-**Esempio 4**
-
 :::example_sentence
 jp: >-
   {{時間|じかん}}がない{{時|とき}}は、{{既読|きどく}}ストーリーをスキップしてバトルだけ{{楽|たの}}しむ。
@@ -248,14 +311,20 @@ translation_it: >-
   Quando non si ha tempo, si salta la storia già letta per godersi solamente il combattimento.
 :::
 
-- [{{既読|きどく}}](term:term-read-already) ti dice che quel contenuto non è
-  nuovo per l'account.
-- [スキップ](term:term-skip) è l'azione che questa condizione ti sblocca.
+In queste frasi, i pezzi lavorano insieme: [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed)
+dice che il claim è aperto, [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline)
+dà urgenza, [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim)
+cambia la scala dell'azione, [{{中級|ちゅうきゅう}}](term:term-intermediate-class)
+e [{{挑戦|ちょうせん}}](term:term-challenge) portano nello stage, mentre
+[{{既読|きどく}}](term:term-read-already) + [スキップ](term:term-skip) separano
+la storia già letta dalla battaglia.
 
 ## Nota finale
 
-Questa sequenza di schermate separa quattro stati operativi:
-- reward presenti in coda ma non ancora riscossa;
-- reward con scadenza monitorata;
-- stage scelto con costo, livello e reward preview;
-- popup di conferma dopo claim completato.
+Le schermate reward di `デュエプレ` diventano chiare quando leggi ogni label
+come stato del flusso: [プレゼントボックス](term:term-present-box) contiene ciò
+che è stato assegnato, [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed)
+marca ciò che resta da ritirare, [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline)
+mette il limite, [ステージ{{選択|せんたく}}](term:term-stage-select) sposta la
+lettura verso la sfida, e `{{受|う}}け{{取|と}}りました` chiude il percorso come
+risultato già registrato.

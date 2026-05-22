@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-duel-plays-app-shop-packs-and-results
 media_id: media-duel-masters-dm25
 slug: duel-plays-app-shop-packs-and-results
-title: デュエプレ App 5 - Shop, pack opening e verifica del risultato
+title: "Shop e pack opening: risorse, conferme e risultati"
 order: 19
 segment_ref: duel-plays-app
 difficulty: n4
@@ -10,63 +10,82 @@ status: active
 tags: [app, ui, shop, packs, results, duel-plays]
 prerequisites: [lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow]
 summary: >-
-  Approfondimento sulle schermate shop e pack opening: scelta del flusso giusto,
-  consumo di ticket, popup di conferma e differenza tra reveal spettacolare e
-  lista finale delle carte ottenute.
+  Lo shop di デュエプレ si legge come un flusso: tipo di acquisto, risorsa,
+  quantità, conferma del consumo e lista finale delle carte ottenute.
 ---
 
-# Obiettivo
+# Shop e pack opening: risorse, conferme e risultati
 
-La schermata shop va letta dal primo pannello fino alla lista finale
-dell'apertura pack: tipo di acquisto, risorsa consumata, quantità confermata e
-risultato ottenuto.
+Nello shop di `デュエプレ` il banner del pack attira l'occhio, ma le decisioni
+vere stanno nelle label più piccole: quale flusso stai aprendo, quale risorsa
+verrà consumata, quante unità hai selezionato e dove controlli il risultato
+dopo il reveal.
 
-Alla fine dovresti riuscire a:
-
-- capire quale tipo di acquisizione stai aprendo nello shop;
-- leggere bene risorse, quantità e conferma prima di consumare ticket;
-- distinguere schermata "spettacolo" e schermata "inventario".
-
-## Contesto
-
-Lo shop di `デュエプレ` mostra banner grandi, ma le decisioni dipendono da label
-più piccoli:
-
-- che cosa stai comprando;
-- con quale risorsa;
-- quante unità stai consumando;
-- dove controlli il risultato in modo leggibile.
-
-Per esempio `ジェムで{{購入|こうにゅう}}` nomina la valuta prima del verbo,
-`{{所持|しょじ}}チケット` indica lo stock disponibile e
-`{{提供割合|てい.きょう.わり.あい}}` apre le percentuali prima della spesa.
+Il giapponese della UI separa bene questi passaggi. [{{購入|こうにゅう}}](term:term-purchase)
+nomina l'acquisto, [{{使用|しよう}}](term:term-use) segnala la risorsa che
+esce dallo stock, [{{確認|かくにん}}](term:term-confirm) blocca il momento di
+controllo e [{{獲得|かくとく}}](term:term-kakutoku) descrive ciò che è già
+entrato nel tuo account.
 
 ## Termini chiave
 
-- [カード{{購入|こうにゅう}}](term:term-card-purchase)
-- [{{購入|こうにゅう}}](term:term-purchase)
-- [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase)
-- [カード{{交換|こうかん}}](term:term-card-exchange)
-- [{{交換|こうかん}}](term:term-exchange)
-- [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
-- [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt)
-- [{{所持|しょじ}}チケット](term:term-owned-ticket)
-- [{{購入個数|こう.にゅう.こ.すう}}](term:term-purchase-quantity)
-- [{{使用|しよう}}](term:term-use)
-- [{{獲得|かくとく}}](term:term-kakutoku)
-- [{{提供割合|てい.きょう.わり.あい}}](term:term-offer-rate)
-- [{{確認|かくにん}}](term:term-confirm)
-- [チケット](term:term-ticket)
-- [{{所持|しょじ}}](term:term-owned)
+- [カード{{購入|こうにゅう}}](term:term-card-purchase) — ingresso generale
+  all'acquisto carte.
+- [{{購入|こうにゅう}}](term:term-purchase) — acquistare; nella UI è il verbo
+  che chiude la spesa.
+- [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) — acquisto dei
+  pack, quindi flusso specifico per le buste.
+- [カード{{交換|こうかん}}](term:term-card-exchange) — scambio carte con una
+  risorsa dedicata, non acquisto diretto.
+- [{{交換|こうかん}}](term:term-exchange) — scambiare; cambia la logica rispetto
+  a comprare.
+- [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase) —
+  acquisto di un deck già costruito.
+- [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt) — già assemblato / già
+  costruito.
+- [{{所持|しょじ}}チケット](term:term-owned-ticket) — ticket posseduti al
+  momento.
+- [{{購入|こうにゅう}}{{個数|こすう}}](term:term-purchase-quantity) — quantità
+  selezionata per l'acquisto.
+- [{{使用|しよう}}](term:term-use) — usare / consumare una risorsa.
+- [{{獲得|かくとく}}](term:term-kakutoku) — ottenere come risultato già
+  acquisito.
+- [{{提供|ていきょう}}{{割合|わりあい}}](term:term-offer-rate) — percentuali di
+  offerta / drop rate.
+- [{{確認|かくにん}}](term:term-confirm) — verifica o conferma prima di
+  procedere.
+- [チケット](term:term-ticket) — ticket come risorsa spendibile.
+- [{{所持|しょじ}}](term:term-owned) — possesso attuale, ciò che hai davvero
+  in stock.
+
+## Espressioni ricorrenti
+
+- `ジェムで`[{{購入|こうにゅう}}](term:term-purchase) — comprare usando gemme;
+  `で` marca il mezzo di pagamento.
+- `ゴールドで`[{{購入|こうにゅう}}](term:term-purchase) — comprare usando oro.
+- [チケット](term:term-ticket)`で`[{{購入|こうにゅう}}](term:term-purchase) —
+  comprare consumando ticket.
+- [{{獲得|かくとく}}](term:term-kakutoku)`カード{{一覧|いちらん}}` — lista delle
+  carte ottenute dopo l'apertura.
 
 ## Pattern grammaticali chiave
 
-- [～{{一覧|いちらん}}](grammar:grammar-ichiran)
-- [～{{可能|かのう}}](grammar:grammar-kanou)
+- [～{{一覧|いちらん}}](grammar:grammar-ichiran) — il nome prima di
+  `{{一覧|いちらん}}` diventa una lista consultabile.
+- [～{{可能|かのう}}](grammar:grammar-kanou) — azione disponibile o possibile
+  nelle condizioni attuali.
 
-## Spiegazione
+## Etichette da riconoscere
 
-### 1. La schermata shop classifica subito il tipo di acquisizione
+- `ショップ` — hub dello shop.
+- `MAX` — scorciatoia che porta la quantità al limite consentito dallo stock.
+- `ジェム`, `ゴールド`, [チケット](term:term-ticket) — risorse alternative per
+  lo stesso tipo di acquisto.
+- `PLAY'S CHRONICLE PACK II` — nome del prodotto pack mostrato nel popup.
+
+---
+
+## 1. Dai pannelli dello shop al tipo di acquisizione
 
 :::image
 src: assets/ui/shop-menu-panels.png
@@ -78,30 +97,52 @@ caption: >-
   exchange: capire il pannello giusto evita di entrare nel flusso sbagliato.
 :::
 
-In questa schermata lo shop separa i tipi di acquisizione: non si tratta di un
-unico verbo "ottenere", ma di flussi diversi.
+La prima schermata non usa un solo verbo generico per "ottenere carte". Divide
+lo shop in percorsi, e il nome del pannello ti dice quale tipo di scelta arriva
+dopo.
 
-I quattro pannelli principali ti portano verso flussi diversi:
+*   [カード{{購入|こうにゅう}}](term:term-card-purchase) mette prima `カード` e
+    poi [{{購入|こうにゅう}}](term:term-purchase): stai entrando nel lato
+    acquisto carte in senso largo. Non sai ancora se spenderai gemme, oro o
+    ticket; sai però che la logica sarà quella di comprare, non di scambiare.
+*   [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) restringe
+    subito l'oggetto a `カードパック`. La UI non sta parlando della collezione
+    intera, ma del flusso di apertura delle buste: banner del pack, risorse,
+    quantità e conferma.
+*   [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
+    è più lungo perché contiene lo stato del prodotto. [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt)
+    significa "già costruito": `済み` non descrive un'azione che devi fare tu,
+    ma una costruzione già completata prima della vendita del deck.
+*   [カード{{交換|こうかん}}](term:term-card-exchange) cambia verbo e quindi
+    cambia logica. [{{交換|こうかん}}](term:term-exchange) non è "comprare a
+    prezzo diverso"; è ottenere una carta dando in cambio una risorsa prevista
+    da quel menu.
 
-- [カード{{購入|こうにゅう}}](term:term-card-purchase) = entri nel lato acquisto
-  generale;
-- [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) = entri
-  direttamente nella schermata dei pack;
-- [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
-  = stai guardando deck prebuilt venduti come prodotto;
-- [カード{{交換|こうかん}}](term:term-card-exchange) = apri lo scambio con
-  risorse dedicate.
+:::example_sentence
+jp: >-
+  ショップでカードパック{{購入|こうにゅう}}を{{選|えら}}ぶ。
+translation_it: >-
+  Nello shop scelgo l'acquisto dei pack.
+:::
 
-La classificazione iniziale indica subito quale percorso prendere. Se capisci il
-nome del pannello, capisci anche quale tipo di decisione ti aspetta.
+#### 🗺️ Anatomia della frase
 
-I due ingressi principali nello shop sono:
+*   `ショップで` ➔ **Luogo operativo**: `で` indica dove avviene la scelta.
+*   `カードパック{{購入|こうにゅう}}を` ➔ **Oggetto selezionato**: il blocco intero
+    è ciò che scegli, non una singola carta.
+*   `{{選|えら}}ぶ` ➔ **Azione di scelta**: la UI aspetta che tu entri in un
+    percorso preciso.
 
-- [カード{{購入|こうにゅう}}](term:term-card-purchase) = percorso acquisto generale;
-- [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) = percorso
-  specifico per l'apertura pack.
+#### ⚖️ Contrasto operativo: `{{購入|こうにゅう}}` non è `{{交換|こうかん}}`
 
-### 2. La schermata principale dei pack va letta come un menu di risorse
+[{{購入|こうにゅう}}](term:term-purchase) porta verso una spesa; [{{交換|こうかん}}](term:term-exchange)
+porta verso una conversione. In italiano possono sembrare entrambi "prendere
+carte", ma in giapponese il verbo ti dice già quale tipo di risorsa verrà
+coinvolta.
+
+---
+
+## 2. La schermata pack è una tabella di risorse
 
 :::image
 src: assets/ui/card-pack-purchase-main.png
@@ -112,30 +153,65 @@ caption: >-
   [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) va letto come
   menu di risorse e controlli: bottoni di acquisto, stock ticket,
   `カード{{一覧|いちらん}}` e
-  [{{提供割合|てい.きょう.わり.あい}}](term:term-offer-rate).
+  [{{提供|ていきょう}}{{割合|わりあい}}](term:term-offer-rate).
 :::
 
-Quando entri in [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase),
-non devi lasciarti trascinare solo dal banner del set. La schermata va letta
-come tabella di accesso:
+Dentro [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase), il banner
+del set dice che cosa è in vendita; le label operative dicono come stai per
+agire. La particella `で` è il pezzo piccolo che regge tutta la frase: in
+`ジェムで{{購入|こうにゅう}}`, `ゴールドで{{購入|こうにゅう}}` e
+`チケットで{{購入|こうにゅう}}`, marca la risorsa usata per completare
+l'acquisto.
 
-- quali valute esistono;
-- quale pacchetto o bundle è in evidenza;
-- quanti [{{所持|しょじ}}チケット](term:term-owned-ticket) hai;
-- dove puoi aprire `カード{{一覧|いちらん}}` o `{{提供割合|てい.きょう.わり.あい}}`.
+*   `ジェムで` e `ゴールドで` preparano una spesa diretta con valuta. Il verbo
+    resta [{{購入|こうにゅう}}](term:term-purchase), quindi il punto non è
+    "aprire un pack" in astratto, ma comprare usando quella risorsa.
+*   [チケット](term:term-ticket)`で`[{{購入|こうにゅう}}](term:term-purchase) usa
+    la stessa grammatica, ma il mezzo non è una valuta generica: è uno stock di
+    ticket già posseduti.
+*   [カード{{一覧|いちらん}}](grammar:grammar-ichiran) non consuma nulla.
+    [～{{一覧|いちらん}}](grammar:grammar-ichiran) trasforma `カード` in una vista
+    elenco, quindi ti porta a controllare quali carte appartengono al pack.
+*   [{{提供|ていきょう}}{{割合|わりあい}}](term:term-offer-rate) apre il dato
+    delle percentuali. `{{提供|ていきょう}}` è ciò che viene offerto dal pack,
+    `{{割合|わりあい}}` è il rapporto: insieme ti dicono la distribuzione prima
+    della spesa, non il risultato che otterrai.
 
-In altre parole, il layout ti dice se stai usando gemme, oro o ticket e ti evita
-errori di acquisto.
+:::example_sentence
+jp: >-
+  パックを{{購入|こうにゅう}}する{{前|まえ}}に、カード{{一覧|いちらん}}と
+  {{提供|ていきょう}}{{割合|わりあい}}を{{確認|かくにん}}する。
+translation_it: >-
+  Prima di comprare un pack, controllo la lista carte e le percentuali di
+  offerta.
+:::
 
-Separa i bottoni per funzione:
+#### 🗺️ Anatomia della frase
 
-- `ジェムで{{購入|こうにゅう}}`, `ゴールドで{{購入|こうにゅう}}`,
-  `チケットで{{購入|こうにゅう}}` consumano una risorsa;
-- `カード{{一覧|いちらん}}` e
-  [{{提供割合|てい.きょう.わり.あい}}](term:term-offer-rate) ti fanno
-  controllare contenuto e rates prima di spendere.
+*   `パックを{{購入|こうにゅう}}する{{前|まえ}}に` ➔ **Prima dell'azione**:
+    `{{前|まえ}}に` colloca il controllo prima della spesa.
+*   `カード{{一覧|いちらん}}と{{提供|ていきょう}}{{割合|わりあい}}を` ➔ **Due oggetti
+    da controllare**: lista contenuti e percentuali non sono la stessa
+    schermata.
+*   `{{確認|かくにん}}する` ➔ **Verifica attiva**: non stai confermando un
+    acquisto, stai controllando informazioni prima di procedere.
 
-### 3. Il popup quantità mette al centro stock e numero di pack
+#### ⚖️ Contrasto operativo: lista carte vs percentuali
+
+`カード{{一覧|いちらん}}` ti dice che cosa può comparire nel pack; [{{提供|ていきょう}}{{割合|わりあい}}](term:term-offer-rate)
+ti dice con quale distribuzione. La prima schermata risponde a "quali carte?",
+la seconda a "con che probabilità?".
+
+#### 🧠 Gancio cognitivo
+
+Per [{{提供|ていきょう}}{{割合|わりあい}}](term:term-offer-rate), pensa a
+"offerta + rapporto": il pack mette un insieme di carte a disposizione, ma la
+UI ti sta mostrando il rapporto tra le rarità, non una promessa sul singolo
+pack che aprirai.
+
+---
+
+## 3. Quantità e stock: il popup conta prima di spendere
 
 :::image
 src: assets/ui/card-pack-purchase-count.png
@@ -147,23 +223,50 @@ caption: >-
   [{{所持|しょじ}}チケット](term:term-owned-ticket), contatore e `MAX`.
 :::
 
-Nel popup quantità, il testo operativo non è il logo del pack. È questo:
+Il popup quantità sposta l'attenzione dal prodotto allo stock. Qui non basta
+riconoscere `チケット`: devi leggere se la UI parla di ticket posseduti,
+quantità selezionata o scorciatoia di massimo consumo.
 
-- [{{所持|しょじ}}チケット](term:term-owned-ticket) = quanti ingressi
-  spendibili hai davvero in quel momento;
-- [{{購入個数|こう.にゅう.こ.すう}}](term:term-purchase-quantity) = quante unità
-  stai per comprare;
-- `MAX` = scorciatoia che porta il numero al limite consentito dalla risorsa
-  attuale.
+*   [{{所持|しょじ}}チケット](term:term-owned-ticket) combina
+    [{{所持|しょじ}}](term:term-owned) e [チケット](term:term-ticket). Il
+    risultato non è "ticket in generale", ma ticket che il tuo account possiede
+    adesso e che possono limitare la scelta.
+*   [{{購入|こうにゅう}}{{個数|こすう}}](term:term-purchase-quantity) è la
+    quantità dell'acquisto. `{{個数|こすう}}` conta unità; attaccato a
+    [{{購入|こうにゅう}}](term:term-purchase), ti dice quante unità stai per
+    comprare, non quante carte usciranno dal pack.
+*   `MAX` non è una rarità e non è una garanzia di risultato. È un comando UI:
+    porta il contatore al massimo consentito dalla risorsa disponibile.
+*   [～{{可能|かのう}}](grammar:grammar-kanou), quando compare in messaggi di
+    disponibilità, funziona con la stessa logica: non promette un risultato
+    migliore, dice solo che l'azione è eseguibile nelle condizioni attuali.
 
-Qui la UI non ti chiede un'opinione sul pack. Ti chiede di impostare con
-precisione una quantità.
+:::example_sentence
+jp: >-
+  {{所持|しょじ}}チケットを{{確認|かくにん}}して、
+  {{購入|こうにゅう}}{{個数|こすう}}を{{4|よん}}にする。
+translation_it: >-
+  Controllo i ticket posseduti e imposto la quantità di acquisto a 4.
+:::
 
-La frase in alto collega `チケット`, [{{購入個数|こう.にゅう.こ.すう}}](term:term-purchase-quantity)
-e [{{購入|こうにゅう}}](term:term-purchase): stai impostando quante buste comprare
-con lo stock ticket visibile.
+#### 🗺️ Anatomia della frase
 
-### 4. Il popup conferma imposta quantità, risorsa e acquisto in una riga
+*   `{{所持|しょじ}}チケットを` ➔ **Stock controllato**: `を` marca il dato che
+    stai verificando.
+*   `{{確認|かくにん}}して` ➔ **Azione preparatoria**: la forma in `-te`
+    collega il controllo al passo successivo.
+*   `{{購入|こうにゅう}}{{個数|こすう}}を{{4|よん}}にする` ➔ **Impostazione di
+    quantità**: `にする` trasforma il valore del contatore in `4`.
+
+#### ⚖️ Contrasto operativo: `{{所持|しょじ}}` vs `{{使用|しよう}}`
+
+[{{所持|しょじ}}](term:term-owned) fotografa ciò che hai; [{{使用|しよう}}](term:term-use)
+descrive ciò che consumi. Nel popup quantità sei ancora nel controllo dello
+stock, mentre nel popup successivo la UI ti chiede se vuoi davvero usarlo.
+
+---
+
+## 4. La conferma lega risorsa consumata e acquisto
 
 :::image
 src: assets/ui/card-pack-purchase-confirm.png
@@ -175,24 +278,37 @@ caption: >-
   mentre la riga in basso ti fa controllare la risorsa consumata.
 :::
 
-Il popup di conferma riassume i dati chiave dell'operazione in una riga:
+Il popup di conferma mette nella stessa frase il numero, la risorsa e il verbo
+di acquisto. Questo è il punto in cui [{{確認|かくにん}}](term:term-confirm)
+diventa una decisione pratica: prima eri nel menu, ora stai autorizzando il
+consumo.
 
-- quante unità stai spendendo;
-- quale risorsa stai usando;
-- che cosa stai per comprare.
+:::example_sentence
+jp: >-
+  {{4枚|よんまい}}を{{使用|しよう}}してパックを{{購入|こうにゅう}}しますか。
+translation_it: >-
+  Vuoi usare 4 ticket per comprare i pack?
+:::
 
-Qui [{{使用|しよう}}](term:term-use) è il verbo decisivo. Non stai più solo
-guardando uno stock: stai per consumarlo.
+#### 🗺️ Anatomia della frase
 
-Quando leggi `{{4枚|よんまい}}を{{使用|しよう}}して...{{購入|こうにゅう}}しますか`,
-la schermata ti sta chiedendo un consenso operativo completo, non una semplice
-conferma generica.
+*   `{{4枚|よんまい}}を` ➔ **Quantità marcata come oggetto**: il referente è la
+    risorsa contata dal popup, non una previsione sulle carte che usciranno.
+*   `{{使用|しよう}}して` ➔ **Mezzo consumato**: [{{使用|しよう}}](term:term-use)
+    dice che quella quantità verrà spesa.
+*   `パックを{{購入|こうにゅう}}しますか` ➔ **Domanda di acquisto**: `しますか`
+    trasforma l'azione in richiesta di consenso.
 
-`{{使用|しよう}}` descrive la risorsa che si consuma,
-[{{購入|こうにゅう}}](term:term-purchase) descrive il risultato atteso.
-Insieme indicano cosa esce dallo stock e cosa entra nel risultato.
+#### ⚖️ Contrasto operativo: confermare non significa avere già ottenuto
 
-### 5. I risultati alternano reveal spettacolare e lista leggibile
+[{{確認|かくにん}}](term:term-confirm) controlla e chiede consenso;
+[{{使用|しよう}}](term:term-use) consuma la risorsa; [{{購入|こうにゅう}}](term:term-purchase)
+esegue l'acquisto. Il risultato non è ancora [{{獲得|かくとく}}](term:term-kakutoku):
+quella parola diventa centrale solo dopo l'apertura.
+
+---
+
+## 5. Reveal e lista finale non fanno lo stesso lavoro
 
 :::image
 src: assets/ui/card-pack-card-reveal.png
@@ -214,47 +330,75 @@ caption: >-
   filtri e griglia delle carte ottenute.
 :::
 
-Queste due schermate fanno due lavori diversi:
+L'apertura del pack alterna spettacolo e verifica. Il reveal mette in primo
+piano la carta appena comparsa; la lista finale organizza il risultato in modo
+leggibile.
 
-- il reveal mostra una carta appena uscita;
-- `{{獲得|かくとく}}`カード{{一覧|いちらん}} raccoglie tutte le carte ottenute in una
-  lista verificabile.
-
-La riga `{{獲得|かくとく}}カード{{一覧|いちらん}}` è quella da usare per
-verificare l'esito reale con filtri e confronto diretto.
-Il reveal è una schermata di presentazione; la lista finale è la schermata da
-leggere quando vuoi controllare quantità, rarità e carte ricevute.
-
-## Esempi guidati
-
-**Esempio 1**
-
-:::example_sentence
-jp: >-
-  カードパック{{購入|こうにゅう}}でチケットを{{使|つか}}う。
-translation_it: >-
-  Usa un ticket nella schermata acquisto pack.
-:::
-
-- [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) ti dice dove
-  sei.
-- Il passo successivo è leggere quale risorsa verrà consumata.
-
-**Esempio 2**
+*   [{{獲得|かくとく}}](term:term-kakutoku) indica un'acquisizione già
+    avvenuta. Non è il verbo del pagamento: descrive ciò che è entrato nel tuo
+    account dopo l'apertura.
+*   `カード{{一覧|いちらん}}` usa [～{{一覧|いちらん}}](grammar:grammar-ichiran) per
+    trasformare le carte ottenute in una vista consultabile. Qui la schermata
+    non serve a emozionare, ma a controllare nomi, quantità e rarità.
+*   I filtri per civiltà o categoria hanno senso proprio perché la lista è il
+    luogo della verifica. Nel reveal leggi il colpo singolo; in
+    `{{獲得|かくとく}}カード{{一覧|いちらん}}` leggi il risultato completo.
 
 :::example_sentence
 jp: >-
-  スーパーレアが{{出|で}}るまで、{{所持|しょじ}}している{{4枚|よんまい}}のチケットをすべて{{使|つか}}う。
+  パックを{{引|ひ}}いた{{後|あと}}、{{獲得|かくとく}}カード{{一覧|いちらん}}で
+  {{結果|けっか}}を{{確認|かくにん}}する。
 translation_it: >-
-  Uso tutti e 4 i ticket posseduti finché non esce una carta Super Rara.
+  Dopo aver aperto il pack, controllo il risultato nella lista delle carte
+  ottenute.
 :::
 
-- [{{所持|しょじ}}チケット](term:term-owned-ticket) non parla di ciò
-  che esiste nel gioco, ma dello stock attuale del tuo account.
-- La forma `{{所持|しょじ}}している{{4枚|よんまい}}のチケット` lega il numero allo
-  stock effettivo, non alla lista generale dei ticket esistenti.
+#### 🗺️ Anatomia della frase
 
-**Esempio 3**
+*   `パックを{{引|ひ}}いた{{後|あと}}` ➔ **Sequenza temporale**: prima avviene
+    l'apertura, poi il controllo.
+*   `{{獲得|かくとく}}カード{{一覧|いちらん}}で` ➔ **Luogo funzionale**: `で` marca
+    la schermata in cui avviene la verifica.
+*   `{{結果|けっか}}を{{確認|かくにん}}する` ➔ **Controllo dell'esito**: il focus
+    non è più spendere, ma leggere cosa hai ottenuto.
+
+#### 🧠 Gancio cognitivo
+
+Per `{{獲得|かくとく}}カード{{一覧|いちらん}}`, tieni insieme i tre pezzi:
+`{{獲得|かくとく}}` dice "ottenute", `カード` dice l'oggetto, `{{一覧|いちらん}}`
+dice il formato lista. Se manca uno di questi pezzi, stai probabilmente
+guardando un'altra schermata.
+
+---
+
+## Esempi guidati di riepilogo
+
+Le stesse forme diventano più solide quando ricostruisci l'intero flusso dello
+shop: ingresso, controllo, quantità, conferma e verifica finale.
+
+:::example_sentence
+jp: >-
+  ショップでカードパック{{購入|こうにゅう}}を{{開|ひら}}いて、
+  チケットで{{購入|こうにゅう}}する。
+translation_it: >-
+  Apro l'acquisto dei pack nello shop e compro usando ticket.
+:::
+
+:::example_sentence
+jp: >-
+  {{購入|こうにゅう}}する{{前|まえ}}に、カード{{一覧|いちらん}}と
+  {{提供|ていきょう}}{{割合|わりあい}}を{{確認|かくにん}}する。
+translation_it: >-
+  Prima di comprare, controllo la lista carte e le percentuali di offerta.
+:::
+
+:::example_sentence
+jp: >-
+  {{所持|しょじ}}チケットが{{4枚|よんまい}}あるので、
+  {{購入|こうにゅう}}{{個数|こすう}}を{{4|よん}}にする。
+translation_it: >-
+  Poiché ho 4 ticket, imposto la quantità di acquisto a 4.
+:::
 
 :::example_sentence
 jp: >-
@@ -263,26 +407,23 @@ translation_it: >-
   Vuoi usare 4 ticket per comprare i pack?
 :::
 
-- [{{使用|しよう}}](term:term-use) e `{{購入|こうにゅう}}` vanno letti insieme:
-  stai consumando una risorsa per ottenere un prodotto.
-- Questo è il momento in cui la UI ti chiede davvero di impegnarti.
-
-**Esempio 4**
-
 :::example_sentence
 jp: >-
-  パックを{{引|ひ}}いた{{後|あと}}、{{獲得|かくとく}}カード{{一覧|いちらん}}でスクリーンショットを{{撮|と}}る。
+  パックを{{引|ひ}}いた{{後|あと}}、{{獲得|かくとく}}カード{{一覧|いちらん}}で
+  カードを{{確認|かくにん}}する。
 translation_it: >-
-  Dopo aver aperto un pack, faccio uno screenshot nella lista delle carte ottenute.
+  Dopo aver aperto il pack, controllo le carte nella lista delle carte
+  ottenute.
 :::
 
-- [{{獲得|かくとく}}](term:term-kakutoku) spiega che quelle carte sono già state
-  ottenute.
-- [～{{一覧|いちらん}}](grammar:grammar-ichiran) ti dice che la schermata è
-  una lista consultabile, non un singolo popup.
+---
 
 ## Nota finale
 
-Quando apri un pack, segui sempre lo stesso controllo: entrata nello shop, risorsa
-consumata, conferma esplicita e verifica finale del risultato nella lista
-`{{獲得|かくとく}}カード{{一覧|いちらん}}`.
+Il pack opening diventa leggibile quando segui i verbi nell'ordine giusto:
+[{{購入|こうにゅう}}](term:term-purchase) apre la spesa,
+[{{所持|しょじ}}](term:term-owned) mostra lo stock,
+[{{使用|しよう}}](term:term-use) consuma la risorsa e
+[{{獲得|かくとく}}](term:term-kakutoku) porta alla lista finale. Il reveal è la
+parte spettacolare; `{{獲得|かくとく}}カード{{一覧|いちらん}}` è la schermata che ti
+permette di leggere davvero il risultato.
