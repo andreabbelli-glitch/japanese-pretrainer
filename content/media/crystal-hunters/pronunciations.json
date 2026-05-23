@@ -541,11 +541,6 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-fire-vs-fire-incident",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-ga-implication",
       "pitch_accent_status": "miss"
     },
@@ -569,32 +564,12 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-ii-yoi",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-iru-homonyms",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-kieru-kesu-pair",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-kun-on-readings",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-mo-multiple-negative",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-multiple-kun-readings",
       "pitch_accent_status": "miss"
     },
     {
@@ -3815,19 +3790,6 @@
       "pitch_accent": 2,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/2002880/1",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-hahaha",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-hero",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1103620/0",
       "pitch_accent_status": "resolved"
     },
     {
