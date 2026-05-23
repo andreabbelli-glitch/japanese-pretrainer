@@ -3,17 +3,7 @@
   "entries": [
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-advanced-katakana-w",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-b10-causativo-con-5",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-citazione-incassata-4",
       "pitch_accent_status": "miss"
     },
     {
@@ -51,22 +41,7 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-spostato-in-fondo-10",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-verbo-prima-del-nome-8",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-b10-zaruonai-11",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b4-come-godan-8",
       "pitch_accent_status": "miss"
     },
     {
@@ -91,17 +66,7 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b4-nena-4",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-b4-radice-verbale-1",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b4-radice-verbale-come-nome-di-agente-9",
       "pitch_accent_status": "miss"
     },
     {
@@ -111,75 +76,7 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-bakabakabaaka-18",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-e-16",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-entry-13",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1416220/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-entry-3",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-guida-crystal-hunters-6",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-koresorearede-14",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-b5-n-5",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-nome-7",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-nome-aggettivo-in-9",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-radice-verbale-10",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-rerusu-17",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-rui-2",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-soggetto-con-12",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-tou-4",
       "pitch_accent_status": "miss"
     },
     {
@@ -209,172 +106,12 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-aggettivo-in-nome-11",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-come-con-9",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-con-19",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-entry-17",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-esplicativo-a-fine-frase-6",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-interrogativo-15",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-mousugusugu-18",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-ndakara-8",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-ndananda-4",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-negazione-16",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-nome-14",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-nome-con-13",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-sore-3",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-taitakunai-12",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-v-5",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-v-7",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-b6-verbi-in-1",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ch-b6-verbi-in-2",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-a-b-6",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-a-fine-frase-13",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-aggettivo-in-14",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-citazione-senza-virgolette-2",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-di-notizia-e-esclusivo-12",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-dou-4",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-e-16",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-esclusivo-11",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-essere-pronto-5",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-interrogativo-7",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-interrogativo-8",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-noka-15",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-pronome-dimostrativo-3",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-v-1",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-v-10",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-v-n-9",
       "pitch_accent_status": "miss"
     },
     {
@@ -407,17 +144,7 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-e-16",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-b8-garu-3",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-nanda-7",
       "pitch_accent_status": "miss"
     },
     {
@@ -427,22 +154,7 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-puntini-di-enfasi-17",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-b8-shimasumasu-11",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-tterasshai-1",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-varianti-di-onomatopee-18",
       "pitch_accent_status": "miss"
     },
     {
@@ -457,25 +169,7 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-verbo-14",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-b8-verbo-aggettivo-13",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-yoshi-2",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2607690/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-a-b-c-7",
       "pitch_accent_status": "miss"
     },
     {
@@ -491,16 +185,6 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ch-b9-doushitaraii-3",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-e-10",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-forma-potenziale-2",
       "pitch_accent_status": "miss"
     },
     {
@@ -538,11 +222,6 @@
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1628500/0",
       "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-ga-implication",
-      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
@@ -587,11 +266,6 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-rendaku-compounds",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-su-verbs-te-past",
       "pitch_accent_status": "miss"
     },
@@ -612,16 +286,6 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-verb-stem-noun",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-vowel-stretch-yelling",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-wo-with-potential-exceptions",
       "pitch_accent_status": "miss"
     },
@@ -632,74 +296,10 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-boku",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2228350/2",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-boku/forvo-manual-ほ-く.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%83%95/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-buji",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1530030/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-buji/forvo-manual-ふ-し.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%84%A1%E4%BA%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-amber",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1020540/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b10-e-36",
       "pitch_accent": 0,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1604400/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-e-9",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1202270/2",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-11",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1585310/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-12",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1585310/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-14",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1579470/0",
       "pitch_accent_status": "resolved"
     },
     {
@@ -777,14 +377,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-ch-b10-entry-37",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1508740/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-38",
       "pitch_accent": 1,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1508740/0",
@@ -999,11 +591,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-kachi-10",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b10-ki-76",
       "pitch_accent": 0,
       "pitch_accent_source": "Jiten",
@@ -1160,14 +747,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-saa-13",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1005110/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b10-shi-24",
       "pitch_accent": 1,
       "pitch_accent_source": "Jiten",
@@ -1239,14 +818,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-yaa-18",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2089490/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b10-yari-30",
       "pitch_accent": 0,
       "pitch_accent_source": "Jiten",
@@ -1255,17 +826,7 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b4-bashaan-9",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b4-chigeru-28",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-doka-1",
       "pitch_accent_status": "miss"
     },
     {
@@ -1457,14 +1018,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b4-san-5",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1005340/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b4-shiburi-22",
       "pitch_accent_status": "miss"
     },
@@ -1508,14 +1061,6 @@
       "pitch_accent": 0,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1172660/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b5-entry-14",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1156640/0",
       "pitch_accent_status": "resolved"
     },
     {
@@ -1588,11 +1133,6 @@
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1450320/0",
       "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b5-gusha-5",
-      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
@@ -1675,14 +1215,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b5-u-15",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1319750/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b5-u-2",
       "pitch_accent": 0,
       "pitch_accent_source": "Jiten",
@@ -1707,21 +1239,11 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b6-bashi-1",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b6-bimu-34",
       "pitch_accent": 3,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1598890/0",
       "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-boki-9",
-      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
@@ -1745,14 +1267,6 @@
       "pitch_accent": 2,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1260490/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-entry-18",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1579350/0",
       "pitch_accent_status": "resolved"
     },
     {
@@ -1789,26 +1303,10 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b6-entry-6",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1200330/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b6-gu-11",
       "pitch_accent": 2,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1174340/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-i-2",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1404975/0",
       "pitch_accent_status": "resolved"
     },
     {
@@ -1827,14 +1325,6 @@
       "pitch_accent": 0,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1591100/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-ku-3",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1400150/0",
       "pitch_accent_status": "resolved"
     },
     {
@@ -1947,22 +1437,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b6-sai-13",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1347750/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-sana-14",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2136180/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b6-sonori-40",
       "pitch_accent": 3,
       "pitch_accent_source": "Jiten",
@@ -1995,14 +1469,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b6-umaku-8",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1310490/4",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b6-waru-37",
       "pitch_accent": 0,
       "pitch_accent_source": "Jiten",
@@ -2011,578 +1477,7 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b7-ageru-2",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1352320/2",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-aitsura-3",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1985390/3",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-10",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-13",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1553310/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-16",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1451330/1",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-17",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1451330/1",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-18",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/5620651/5",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-19",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1211630/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-22",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1323500/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-23",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1323500/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-28",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1429110/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-30",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1152310/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-31",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1152310/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-36",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1350990/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-39",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1298000/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-4",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1255060/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-40",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1415190/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-41",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1386240/1",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-42",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1380810/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-43",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1447300/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-44",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1614110/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-45",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1614110/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-47",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1512160/1",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-49",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1164510/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-53",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1157760/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-6",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1604890/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-65",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1502860/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-66",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1556150/1",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-68",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1211490/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-70",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1571650/1",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-72",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2230010/1",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-73",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1162290/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-9",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-i-60",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1215320/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-i-69",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1432680/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ii-26",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-imeru-24",
-      "pitch_accent": 4,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1432300/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-imu-33",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1228230/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-isu-20",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1432390/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-jimeru-34",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ka-55",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1596930/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ke-21",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-keru-27",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1457210/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-keru-32",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1330280/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-keru-48",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1444840/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-keru-75",
-      "pitch_accent": 4,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1511790/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ki-35",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1591070/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-kiru-62",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1168960/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-kore-67",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-kuwasu-14",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-maru-29",
-      "pitch_accent": 4,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1360180/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-moku-11",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-mu-63",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1433650/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ni-37",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ni-76",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-niwanai-59",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-oyasuminasai-7",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-rasu-56",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1383780/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-rasu-64",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1281480/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-reru-5",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1465610/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ri-52",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1260990/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ri-74",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1304480/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-roshii-38",
-      "pitch_accent": 4,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1236690/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-rowan-8",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ru-61",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1289590/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ru-71",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1350780/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-shii-15",
-      "pitch_accent": 4,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1414190/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-su-25",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1232870/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-suru-51",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1186740/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-te-57",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1595730/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-toka-50",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1188420/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-tsu-46",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1456970/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-tsu-58",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-u-12",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1406110/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-wa-1",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1555710/2",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-zu-54",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1487400/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b8-ari-32",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-basha-16",
       "pitch_accent_status": "miss"
     },
     {
@@ -2610,19 +1505,6 @@
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1634110/0",
       "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-doa-17",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1087820/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-doga-2",
-      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
@@ -2958,16 +1840,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-gakin-20",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-gakon-21",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b8-i-24",
       "pitch_accent": 3,
       "pitch_accent_source": "Jiten",
@@ -2997,11 +1869,6 @@
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1333310/1",
       "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-itokku-5",
-      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
@@ -3149,19 +2016,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-ruchera-9",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ryukku-8",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1925310/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b8-shigeru-45",
       "pitch_accent_status": "miss"
     },
@@ -3180,14 +2034,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-suraimu-28",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1649160/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b8-suru-71",
       "pitch_accent": 3,
       "pitch_accent_source": "Jiten",
@@ -3201,21 +2047,11 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-suuroshu-29",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b8-ta-37",
       "pitch_accent": 1,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1361510/0",
       "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-takka-10",
-      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
@@ -3273,11 +2109,6 @@
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1598860/0",
       "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-don-2",
-      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
@@ -3650,14 +2481,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b9-saseru-8",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1005160/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b9-shienakereba-26",
       "pitch_accent_status": "miss"
     },
@@ -3765,14 +2588,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-dokaan",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2150830/1",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-douitashimashite",
       "pitch_accent": 1,
       "pitch_accent_source": "Jiten",
@@ -3783,14 +2598,6 @@
       "entry_type": "term",
       "entry_id": "term-ch-futari-tomo",
       "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-gashaan",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2002880/1",
-      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -3839,11 +2646,6 @@
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1546640/0",
       "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-irwin",
-      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
@@ -3979,14 +2781,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-monster",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1136110/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-moyasu",
       "pitch_accent": 0,
       "pitch_accent_source": "Jiten",
@@ -4070,14 +2864,6 @@
       "pitch_accent": 2,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1002590/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-potion",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2036790/0",
       "pitch_accent_status": "resolved"
     },
     {
@@ -4172,503 +2958,6 @@
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1228550/0",
       "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-futari",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-futari/forvo-manual-ふたり.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E4%BA%8C%E4%BA%BA/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-hikkakaru",
-      "pitch_accent": 4,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1169350/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-hikkakaru/forvo-manual-ひっかかる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%BC%95%E3%81%A3%E3%81%8B%E3%81%8B%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-hitori",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1576150/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-hitori/forvo-manual-ひとり.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E4%B8%80%E4%BA%BA/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-hontou-ni",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-hontou-ni/forvo-manual-ほんとうに.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%9C%AC%E5%BD%93%E3%81%AB/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ichiin",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1161080/1",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-ichiin/forvo-manual-いちいん.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E4%B8%80%E5%93%A1/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ie",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1191730/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-ie/forvo-manual-いえ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%AE%B6/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-iru-arrow",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1322180/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-iru-arrow/forvo-manual-いる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%B0%84%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kaesu",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1512130/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-kaesu/forvo-manual-かえす.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%BF%94%E3%81%99/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ken",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1256750/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-ken/forvo-manual-けん.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%89%A3/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kenshoukin",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-kenshoukin/forvo-manual-けんしょうきん.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%87%B8%E8%B3%9E%E9%87%91/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ki-ni-iru",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1221740/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-ki-ni-iru/forvo-manual-きにいる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%B0%97%E3%81%AB%E5%85%A5%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ki-tree",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1534520/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-ki-tree/forvo-manual-き.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%9C%A8/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kimi",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1247250/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-kimi/forvo-manual-きみ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%90%9B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kirai",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1257240/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-kirai/forvo-manual-きらい.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%AB%8C%E3%81%84/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kirikakaru",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-kirikakaru/forvo-manual-きりかかる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%88%87%E3%82%8A%E3%81%8B%E3%81%8B%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kiritsukeru",
-      "pitch_accent_status": "miss"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kuruma",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1323080/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-kuruma/forvo-manual-くるま.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%BB%8A/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kuyashii",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1592350/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-kuyashii/forvo-manual-くやしい.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%82%94%E3%81%97%E3%81%84/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-me-ni-suru",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-me-ni-suru/forvo-manual-めにする.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%9B%AE%E3%81%AB%E3%81%99%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-mi-o-mamoru",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-mi-o-mamoru/forvo-manual-みをまもる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%BA%AB%E3%82%92%E5%AE%88%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-mieru",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1259140/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-mieru/forvo-manual-みえる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%A6%8B%E3%81%88%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-miru",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1259290/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-miru/forvo-manual-みる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%A6%8B%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-naguru",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1181390/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-naguru/forvo-manual-なく-る.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%AE%B4%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-nanimono",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1188980/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-nanimono/forvo-manual-なにもの.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E4%BD%95%E8%80%85/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ochikomu",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-ochikomu/forvo-manual-おちこむ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%90%BD%E3%81%A1%E8%BE%BC%E3%82%80/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-oitsuku",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1588810/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-oitsuku/forvo-manual-おいつく.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%BF%BD%E3%81%84%E3%81%A4%E3%81%8F/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-onna",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2742880/1",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-onna/forvo-manual-おんな.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%A5%B3/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-onna-no-ko",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1344970/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-onna-no-ko/forvo-manual-おんなのこ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%A5%B3%E3%81%AE%E5%AD%90/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ore",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1576870/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-ore/forvo-manual-おれ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E4%BF%BA/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-otoko",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1419990/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-otoko/forvo-manual-おとこ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%94%B7/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ou",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1432410/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-ou/forvo-manual-おう.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%BF%BD%E3%81%86/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-sasaeru",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-sasaeru/forvo-manual-ささえる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%94%AF%E3%81%88%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-souchaku-suru",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-souchaku-suru/forvo-manual-そうちゃくする.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%A3%85%E7%9D%80%E3%81%99%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-tachi-suffix",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1416220/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-tachi-suffix/forvo-manual-たち.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E9%81%94/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-taoreru",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1445790/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-taoreru/forvo-manual-たおれる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%80%92%E3%82%8C%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-te-ni-hairu",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-te-ni-hairu/forvo-manual-てにはいる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%89%8B%E3%81%AB%E5%85%A5%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-te-ni-toru",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-te-ni-toru/forvo-manual-てにとる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%89%8B%E3%81%AB%E5%8F%96%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-tobikakaru",
-      "pitch_accent": 4,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1485280/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-tobikakaru/forvo-manual-とひ-かかる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E9%A3%9B%E3%81%B3%E3%81%8B%E3%81%8B%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-tomaru",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1310620/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-tomaru/forvo-manual-とまる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%AD%A2%E3%81%BE%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-torimodosu",
-      "pitch_accent_status": "miss",
-      "audio_src": "assets/audio/term/term-torimodosu/forvo-manual-とりもと-す.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%8F%96%E3%82%8A%E6%88%BB%E3%81%99/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-toru",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1326980/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-toru/forvo-manual-とる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%8F%96%E3%82%8B/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-tsuno",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1246440/1",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-tsuno/forvo-manual-つの.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%A7%92/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ya-arrow",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1537760/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-ya-arrow/forvo-manual-や.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%9F%A2/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-yarou",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2264910/2",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-yarou/forvo-manual-やろう.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E9%87%8E%E9%83%8E/#ja"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-yumi",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1228490/0",
-      "pitch_accent_status": "resolved",
-      "audio_src": "assets/audio/term/term-yumi/forvo-manual-ゆみ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%BC%93/#ja"
     }
   ]
 }
