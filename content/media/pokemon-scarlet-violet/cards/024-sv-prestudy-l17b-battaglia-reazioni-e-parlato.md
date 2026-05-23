@@ -232,7 +232,7 @@ back: statistica / capacità
 example_jp: >-
   {{能力|のうりょく}}を {{見|み}}ます。
 example_it: >-
-  Controllo la statistica.
+  Controllo le statistiche.
 :::
 :::term
 id: term-v185-namae
@@ -311,7 +311,7 @@ back: possibile
 example_jp: >-
   ここから ライドが {{可能|かのう}}です。
 example_it: >-
-  Da qui la cavalcata è possibile.
+  Da qui e' possibile usare la cavalcatura.
 :::
 :::term
 id: term-v190-chousa
@@ -357,7 +357,7 @@ back: forse per caso
 example_jp: >-
   もしかして、 あれは ヌシですか。
 example_it: >-
-  Per caso quello è il Titan?
+  Per caso quello e' il Dominante?
 :::
 :::term
 id: term-v192-konkai

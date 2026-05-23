@@ -81,7 +81,7 @@ back: keyword che sblocca un'evocazione dopo un attacco che ha rotto uno scudo
 example_jp: >-
   {{自分|じぶん}}のクリーチャーがシールドをブレイクした{{時|とき}}、キリフダッシュを{{使|つか}}う。
 example_it: >-
-  Quando una tua creatura ha distrutto uno scudo, usa Kirifudash.
+  Quando una tua creatura ha rotto uno scudo, usa Kirifudash.
 notes_it: >-
   La parola chiave è il vero target di memoria: non basta riconoscere il costo
   `6`, bisogna collegarlo alla finestra `攻撃の終わりに` e alla condizione già

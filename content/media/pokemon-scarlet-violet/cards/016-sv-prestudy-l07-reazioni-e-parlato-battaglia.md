@@ -330,5 +330,5 @@ back: HP / punti salute
 example_jp: >-
   ＨＰを {{回復|かいふく}} します。
 example_it: >-
-  Recupero HP.
+  Recupero i PS.
 :::

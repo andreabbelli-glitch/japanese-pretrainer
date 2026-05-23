@@ -245,7 +245,8 @@ id: term-v201-terapiisu
 lemma: テラピース
 reading: テラピース
 romaji: terapiisu
-meaning_it: Tera Shards
+meaning_it: >-
+  Teraliti
 notes_it: >-
   テラピース è il nome dei frammenti legati alla Teracristal. La label indica una
   risorsa da ottenere, consumare o controllare nel menu.

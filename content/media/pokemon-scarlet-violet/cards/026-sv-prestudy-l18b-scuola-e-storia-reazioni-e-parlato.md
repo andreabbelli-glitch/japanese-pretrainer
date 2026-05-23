@@ -48,7 +48,7 @@ back: a proposito
 example_jp: >-
   ところで、 {{問題|もんだい}}は？
 example_it: >-
-  A proposito, ci sono problemi?
+  A proposito, qual è il problema?
 :::
 :::grammar
 id: grammar-g040-quando-nel-momento-in-cui
@@ -70,7 +70,7 @@ back: quando / nel momento in cui
 example_jp: >-
   {{困|こま}}ったときは マップを {{見|み}}る。
 example_it: >-
-  Quando sei in difficoltà, guardi la mappa.
+  Quando sei in difficoltà, guarda la mappa.
 :::
 :::term
 id: term-e041-ittai
@@ -310,7 +310,8 @@ id: term-v217-mondai
 lemma: 問題
 reading: もんだい
 romaji: mondai
-meaning_it: problema
+meaning_it: >-
+  problema; domanda / quesito
 notes_it: >-
   {{問題|もんだい}} può essere una domanda di test o un problema da risolvere. In
   classe il contesto decide se leggerlo come quesito o difficoltà.
@@ -322,11 +323,12 @@ entry_type: term
 entry_id: term-v217-mondai
 card_type: recognition
 front: '{{問題|もんだい}}'
-back: problema
+back: >-
+  problema; domanda / quesito
 example_jp: >-
   この {{問題|もんだい}}は むずかしいです。
 example_it: >-
-  Questo problema è difficile.
+  Questa domanda è difficile.
 :::
 :::term
 id: term-v218-mirai
@@ -418,7 +420,7 @@ back: pozione
 example_jp: >-
   キズぐすりで ＨＰを {{回復|かいふく}}します。
 example_it: >-
-  Recupero HP con una Pozione.
+  Recupero i PS con una Pozione.
 :::
 :::term
 id: term-v223-bougyo

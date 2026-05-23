@@ -136,8 +136,8 @@ example_jp: >-
   {{他|ほか}}の{{各|かく}}[{{相手|あいて}}](term:term-opponent)のシールドも
   {{1|ひと}}つずつブレイクする。
 example_it: >-
-  Ogni turno, quando questa creatura rompe per la prima volta gli scudi di un
-  avversario, rompe anche gli altri scudi di ogni altro avversario uno a uno.
+  Ogni turno, la prima volta che rompe uno scudo di un avversario, rompe anche uno scudo
+  di ciascun altro avversario.
 notes_it: >-
   Il punto non è il semplice `quando`, ma il fatto che l'effetto scatta solo
   alla prima occorrenza del turno. Questa è una forma molto utile da
@@ -152,14 +152,15 @@ entry_type: grammar
 entry_id: grammar-hoka-no-kaku-aite
 card_type: concept
 front: '{{他|ほか}}の{{各|かく}}[{{相手|あいて}}](term:term-opponent)'
-back: gli altri avversari, uno per uno
+back: >-
+  ciascun altro avversario
 example_jp: >-
   {{各|かく}}ターン、このクリーチャーがはじめて[{{相手|あいて}}](term:term-opponent)の
   シールドをブレイクした{{時|とき}}、{{他|ほか}}の{{各|かく}}
   [{{相手|あいて}}](term:term-opponent)のシールドも{{1|ひと}}つずつブレイクする。
 example_it: >-
-  Ogni turno, quando questa creatura rompe per la prima volta gli scudi di un
-  avversario, rompe anche gli scudi degli altri avversari uno per uno.
+  Ogni turno, quando questa creatura rompe per la prima volta uno scudo di un avversario,
+  rompe anche uno scudo di ciascun altro avversario.
 notes_it: >-
   `他の` toglie di mezzo il primo avversario già coinvolto nel trigger,
   mentre `各` distribuisce l'effetto sui rimanenti. È il chunk che impedisce di
@@ -179,7 +180,7 @@ example_jp: >-
   {{他|ほか}}の{{各|かく}}[{{相手|あいて}}](term:term-opponent)のシールドも
   {{1|ひと}}つずつブレイクする。
 example_it: >-
-  Gli scudi degli altri avversari vengono rotti uno per uno.
+  Rompe anche uno scudo di ciascun altro avversario.
 notes_it: >-
   Qui `1つ` non è un semplice conteggio: è il modo in cui il testo serializza
   il risultato, un pezzo alla volta per ciascun avversario restante.

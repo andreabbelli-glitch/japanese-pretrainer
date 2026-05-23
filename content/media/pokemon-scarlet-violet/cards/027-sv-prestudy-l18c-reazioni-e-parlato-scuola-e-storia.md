@@ -11,7 +11,8 @@ id: term-e042-shiteageru
 lemma: 〜してあげる
 reading: 〜してあげる
 romaji: ~ shiteageru
-meaning_it: te lo faccio io
+meaning_it: >-
+  fare qualcosa per qualcuno; fare un favore a qualcuno
 notes_it: >-
   Offerta di aiuto.
 :::
@@ -22,7 +23,8 @@ entry_type: term
 entry_id: term-e042-shiteageru
 card_type: recognition
 front: '〜してあげる'
-back: te lo faccio io
+back: >-
+  fare qualcosa per qualcuno; fare un favore a qualcuno
 example_jp: >-
   あとで {{教|おし}}えてあげる。
 example_it: >-
@@ -206,7 +208,8 @@ id: term-v226-raidowaza
 lemma: ライド技
 reading: ライドわざ
 romaji: raidowaza
-meaning_it: abilità di ride
+meaning_it: >-
+  abilità di cavalcata
 notes_it: >-
   ライド{{技|わざ}} è un'abilità usata durante la cavalcata. 技 resta "mossa /
   tecnica", qui applicata al movimento fuori dalla battaglia.
@@ -218,7 +221,8 @@ entry_type: term
 entry_id: term-v226-raidowaza
 card_type: recognition
 front: 'ライド{{技|わざ}}'
-back: abilità di ride
+back: >-
+  abilità di cavalcata
 example_jp: >-
   ライド{{技|わざ}}が {{使|つか}}えるようになった。
 example_it: >-
@@ -245,7 +249,7 @@ back: menu
 example_jp: >-
   メニューを {{開|ひら}}いて {{道具|どうぐ}}を {{選|えら}}びます。
 example_it: >-
-  Apro il menu e scelgo uno strumento.
+  Apro il menu e scelgo Strumenti.
 :::
 :::term
 id: term-v228-kondo

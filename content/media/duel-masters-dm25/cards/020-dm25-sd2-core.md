@@ -483,14 +483,12 @@ card_type: concept
 front: >-
   {{進化|しんか}}しているクリーチャーの{{上|うえ}}に、さらに{{重|かさ}}ねて{{出|だ}}す。
 back: >-
-  La metti sopra una creatura che è già evoluzione, aggiungendo un altro
-  livello di evoluzione.
+  La metti sopra una creatura già evoluta, sovrapponendo un ulteriore livello.
 example_jp: >-
   {{究極進化|きゅう.きょく.しん.か}}では、{{進化|しんか}}しているクリーチャーの
   {{上|うえ}}にさらに{{重|かさ}}ねて{{出|だ}}す。
 example_it: >-
-  Con Ultimate Evolution la metti sopra una creatura già evoluzione,
-  sovrapponendola ancora.
+  Con Ultimate Evolution la metti sopra una creatura già evoluta, sovrapponendola ancora.
 notes_it: >-
   Qui il pezzo importante è la relativa `進化しているクリーチャー` più
   `～の上に`, che insieme dicono quale base è legalmente valida.
@@ -644,7 +642,7 @@ back: far combattere / forzare un battle
 example_jp: >-
   その{{選|えら}}んだクリーチャーとこのクリーチャーをバトルさせる。
 example_it: >-
-  Fai combattere quella creatura scelta con questa creatura.
+  Fai combattere questa creatura con quella scelta.
 notes_it: >-
   Formula che condensa un'operazione di combattimento in un verbo misto. Quando
   compare, la carta non sta solo attaccando: impone uno scontro diretto tra i

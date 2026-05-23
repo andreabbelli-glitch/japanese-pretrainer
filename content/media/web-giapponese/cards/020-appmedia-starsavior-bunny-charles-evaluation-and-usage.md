@@ -110,7 +110,7 @@ back: 'valutazione; giudizio'
 example_jp: >-
   このページで{{評価|ひょうか}}をみる。
 example_it: >-
-  In questa pagina guardo la valutazione.
+  In questa pagina consulto la valutazione.
 notes_it: >-
   In una guida [{{評価|ひょうか}}](term:term-hyoka) è il giudizio sintetico,
   non la spiegazione dettagliata di tutto il kit.
@@ -183,7 +183,7 @@ back: 'forza; impatto reale'
 example_jp: >-
   バニーシャルルの{{強|つよ}}さがわかる。
 example_it: >-
-  Capisco i punti di forza di Bunny Charles.
+  Capisco quanto è forte Bunny Charles.
 notes_it: >-
   [{{強|つよ}}さ](term:term-tsuyosa) riassume il peso pratico del personaggio:
   danno, pressione offensiva, tenuta o vantaggio tattico concreto.
@@ -201,7 +201,7 @@ back: 'uso; use case; impiego'
 example_jp: >-
   このサポートキャラは、{{高難易度|こう.なん.い.ど}}クエストでの{{使|つか}}い{{道|みち}}がとても{{広|ひろ}}い。
 example_it: >-
-  Questo personaggio di supporto ha un raggio di utilizzo vastissimo nelle missioni ad alta difficoltà.
+  Questo personaggio di supporto ha molti impieghi nelle missioni ad alta difficoltà.
 notes_it: >-
   [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi) indica dove e come il kit
   rende bene, non solo il fatto che “si può usare”.
@@ -219,7 +219,7 @@ back: 'punti di forza e use case di Bunny Charles'
 example_jp: >-
   バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}をみる。
 example_it: >-
-  Guardo la sezione sui punti di forza e sugli use case di Bunny Charles.
+  Guardo la sezione su forza e utilizzi di Bunny Charles.
 notes_it: >-
   Questo heading apre la parte in cui la guida trasforma dati e skill in lettura
   pratica di combattimento.

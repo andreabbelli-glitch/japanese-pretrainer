@@ -103,7 +103,7 @@ example_jp: >-
   {{自分|じぶん}}の{{超次元|ちょう.じ.げん}}ゾーンから
   サイキック・クリーチャー{{1枚|いちまい}}を{{出|だ}}す。
 example_it: >-
-  Metti 1 Psychic Creature dalla tua zona superdimensionale.
+  Metti in gioco 1 Psychic Creature dalla tua zona superdimensionale.
 notes_it: >-
   Qui `{{超次元|ちょう.じ.げん}}ゾーン` indica la fonte dell'effetto. Non stai
   giocando una carta dalla mano: l'effetto prende una carta da una zona
@@ -122,7 +122,7 @@ back: super- / ultra- / oltre
 example_jp: >-
   {{超|ちょう}}{{次元|じ.げん}}ゾーンからカードを{{出|だ}}す。
 example_it: >-
-  Metti una carta dalla zona superdimensionale.
+  Metti in gioco una carta dalla zona superdimensionale.
 notes_it: >-
   `{{超|ちょう}}` è produttivo in molti composti. In questa carta serve a
   leggere `{{超次元|ちょう.じ.げん}}` come qualcosa che va oltre le zone
@@ -142,7 +142,7 @@ example_jp: >-
   サイキック・クリーチャーは{{超|ちょう}}{{次元|じ.げん}}ゾーンから
   {{出|で}}た。
 example_it: >-
-  La Psychic Creature è entrata dalla zona superdimensionale.
+  La Psychic Creature è entrata in gioco dalla zona superdimensionale.
 notes_it: >-
   `{{次元|じ.げん}}` dà la base semantica del composto
   `{{超次元|ちょう.じ.げん}}ゾーン`: una zona pensata come piano separato da cui

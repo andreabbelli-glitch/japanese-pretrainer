@@ -96,8 +96,7 @@ example_jp: >-
   `{{2人以上|ふたり.い.じょう}}の{{相手|あいて}}がいる{{状態|じょうたい}}`は、
   その{{場面|ばめん}}を{{1|ひと}}まとまりにしている。
 example_it: >-
-  `Lo stato in cui ci sono due o più avversari` compatta quella scena in un
-  unico blocco.
+  La condizione con due o più avversari tratta quella situazione come un unico blocco.
 notes_it: >-
   Il punto importante non è un generico `situazione`: qui `{{状態|じょうたい}}`
   prende un'intera configurazione del tavolo e la trasforma nel contesto dentro
@@ -140,8 +139,8 @@ example_jp: >-
   この{{条件|じょうけん}}は、いまの{{人数|にんずう}}より
   {{開始時|かい.し.じ}}の{{設定|せってい}}を{{見|み}}る。
 example_it: >-
-  Questa condizione guarda il setup iniziale della partita più che il numero di
-  persone osservato genericamente adesso.
+  Questa condizione considera l'impostazione iniziale più che il numero attuale di
+  giocatori.
 notes_it: >-
   Il chunk va letto come blocco unico. `{{状態|じょうたい}}` nominalizza la
   situazione, `で` la collega a `{{始|はじ}}まる`, e `{{始|はじ}}まっていて`

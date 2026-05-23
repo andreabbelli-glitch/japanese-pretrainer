@@ -163,7 +163,7 @@ back: 'そうちゃくする — equipaggiare; indossare'
 example_jp: >-
   {{機械|きかい}}を{{装着|そうちゃく}}する。
 example_it: >-
-  Equipaggio la macchina.
+  Indosso il dispositivo.
 notes_it: >-
   {{装着|そうちゃく}}する indica mettere qualcosa addosso o montarlo per usarlo:
   il risultato è un oggetto pronto all'azione.
@@ -253,7 +253,7 @@ back: 'きりかかる — assalire con la spada'
 example_jp: >-
   {{男|おとこ}}が{{切|き}}りかかる。
 example_it: >-
-  L'uomo assale con la spada.
+  L'uomo attacca con la spada.
 notes_it: >-
   In {{切|き}}りかかる, l'attacco è già iniziato verso qualcuno: non è solo il
   risultato del taglio, ma il movimento aggressivo.

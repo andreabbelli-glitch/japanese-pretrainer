@@ -112,7 +112,7 @@ example_jp: >-
   `{{2枚|にまい}}まで`だから、{{0枚|ぜろまい}}でも{{1枚|いちまい}}でも
   {{2枚|にまい}}でもよい。
 example_it: >-
-  Siccome c'e` `fino a 2`, puoi sceglierne 0, 1 oppure 2.
+  Dato che è 'fino a 2', puoi sceglierne 0, 1 oppure 2.
 notes_it: >-
   Il punto da fissare non e` il verbo `{{選|えら}}ぶ`, che esiste gia`, ma il
   modo in cui `まで` trasforma il numero in un tetto massimo. La carta non ti
@@ -133,8 +133,8 @@ example_jp: >-
   `{{持|も}}ち{{主|ぬし}}のマナゾーン`だから、{{相手|あいて}}のカードなら
   {{相手|あいて}}のマナに{{戻|もど}}る。
 example_it: >-
-  Siccome c'e` `mana zone del proprietario`, se la carta e` avversaria torna
-  nel mana dell'avversario.
+  Dato che è la mana zone del proprietario, se la carta è dell'avversario torna nella mana
+  zone dell'avversario.
 notes_it: >-
   Questo chunk unisce due cose utili: il referente di `それら` e il valore
   preciso di `{{持|も}}ち{{主|ぬし}}`. La frase non parla di un mana generico:

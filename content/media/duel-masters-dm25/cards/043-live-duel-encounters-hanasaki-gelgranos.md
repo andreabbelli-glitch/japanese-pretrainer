@@ -59,8 +59,8 @@ example_jp: >-
   {{各|かく}}プレイヤーは{{自身|じしん}}のクリーチャーを{{1体|いったい}}{{選|えら}}び、
   {{持|も}}ち{{主|ぬし}}のマナゾーンに{{置|お}}く。
 example_it: >-
-  Ogni giocatore sceglie una creatura che appartiene al proprio lato del
-  soggetto appena aperto, non una creatura comune a tutti.
+  Ogni giocatore sceglie una propria creatura e la mette nella mana zone del suo
+  proprietario.
 notes_it: >-
   Questa card non duplica la recognition di `{{自身|じしん}}`: qui il punto da
   fissare e` come il riflessivo cambia quando entra nello scope di

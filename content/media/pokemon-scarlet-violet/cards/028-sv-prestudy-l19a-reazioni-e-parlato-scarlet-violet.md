@@ -163,7 +163,8 @@ id: term-v236-zerorabo
 lemma: ゼロラボ
 reading: ゼロラボ
 romaji: zerorabo
-meaning_it: Zero Lab
+meaning_it: >-
+  Laboratorio Zero
 notes_it: >-
   ゼロラボ è un nome proprio di struttura: nei dialoghi indica un luogo specifico
   legato alla trama, non un laboratorio qualsiasi.
@@ -189,7 +190,7 @@ back: assolutamente / ti prego
 example_jp: >-
   ぜひ {{来|き}}てください。
 example_it: >-
-  Vieni, ti prego.
+  Vieni assolutamente, per favore.
 :::
 :::term
 id: term-v239-raidopokemon
@@ -337,7 +338,7 @@ back: record / registrazione
 example_jp: >-
   バトルの {{記録|きろく}}を {{見|み}}る。
 example_it: >-
-  Guardo il record della battaglia.
+  Guardo il registro delle lotte.
 :::
 :::term
 id: term-v247-pointo

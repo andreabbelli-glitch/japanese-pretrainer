@@ -219,7 +219,7 @@ back: domanda
 example_jp: >-
   {{質問|しつもん}}が あります。
 example_it: >-
-  C'è una domanda.
+  Ho una domanda.
 :::
 :::term
 id: term-v094-shokujipawaa

@@ -54,8 +54,8 @@ example_jp: >-
   {{枚数|まいすう}}よりコストが{{大|おお}}きいクリーチャーが
   {{出|で}}る{{時|とき}}に{{止|と}}められる。
 example_it: >-
-  Se c'è Babyponnosuke, una creatura che supera la soglia può essere fermata
-  nel momento in cui entra.
+  Se c'è Babyponnosuke, puoi fermare una creatura quando entra se il suo costo è maggiore
+  del numero di carte.
 notes_it: >-
   Il nome va legato subito al suo chunk distintivo: `より` fissa la soglia,
   `{{大|おお}}きい` segnala il superamento e `{{出|で}}る{{時|とき}}` apre la
@@ -117,7 +117,9 @@ front: >-
   {{相手|あいて}}のターン{{中|ちゅう}}に、
   {{相手|あいて}}のマナゾーンにあるカードの{{枚数|まいすう}}よりコストが
   {{大|おお}}きい{{相手|あいて}}のクリーチャーが{{出|で}}る{{時|とき}}
-back: quando, nel turno avversario, sta per entrare una creatura avversaria che supera quella soglia
+back: >-
+  quando, nel turno avversario, sta per entrare una creatura avversaria il cui costo è
+  maggiore del numero di carte nella zona mana dell'avversario
 example_jp: >-
   `{{出|で}}る{{時|とき}}`だから、
   {{入|はい}}ってからではなく{{入|はい}}る{{瞬間|しゅんかん}}に

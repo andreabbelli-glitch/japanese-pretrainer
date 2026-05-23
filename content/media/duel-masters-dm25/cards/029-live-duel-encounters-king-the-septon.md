@@ -54,7 +54,7 @@ example_jp: >-
   クリーチャー{{1枚|いちまい}}を[バトルゾーン](term:term-battle-zone)に
   {{出|だ}}す。
 example_it: >-
-  Se tutte quelle carte sono Jokerz, ne mette una creatura nel battle zone.
+  Se tutte quelle carte sono Jokerz, metti una creatura tra quelle nel battle zone.
 notes_it: >-
   `それら` richiama il gruppo appena rivelato; `すべて` impone un controllo
   totale. Basta un solo non-Jokerz per far saltare questo ramo.
@@ -73,7 +73,7 @@ example_jp: >-
   その{{中|なか}}からクリーチャー{{1枚|いちまい}}を
   [バトルゾーン](term:term-battle-zone)に[{{出|だ}}す](term:term-dasu)。
 example_it: >-
-  Da quel gruppo mette una creatura nel battle zone.
+  Metti una creatura tra quelle nel battle zone.
 notes_it: >-
   `その中から` restringe la scelta al gruppo appena passato nel filtro. Qui è
   il ponte tra il controllo totale e la scelta del singolo pezzo.

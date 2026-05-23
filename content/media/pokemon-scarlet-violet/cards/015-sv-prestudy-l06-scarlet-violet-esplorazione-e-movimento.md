@@ -140,7 +140,7 @@ back: non bisogna fare... / non si deve fare...
 example_jp: >-
   この{{先|さき}}に {{入|はい}}ってはいけない。
 example_it: >-
-  Non si deve entrare più avanti.
+  Non si può entrare oltre questo punto.
 :::
 :::term
 id: term-v063-bouken

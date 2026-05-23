@@ -44,8 +44,9 @@ example_jp: >-
   ただし、この[{{効果|こうか}}](term:term-effect)によってクリーチャーを
   [{{攻撃|こうげき}}](term:term-attack)することは{{可能|かのう}}にならない）
 example_it: >-
-  In questo turno, tutti gli effetti che impediscono alle tue creature di
-  attaccare il giocatore avversario diventano nulli.
+  In questo turno, tutti gli effetti che impediscono alle tue creature di attaccare il
+  giocatore avversario vengono annullati: inclusi mal di evocazione e testi come "questa
+  creatura non può attaccare". Però questo effetto non permette di attaccare le creature.
 notes_it: >-
   Nello screenshot la frase principale usa la forma analitica
   `{{攻撃|こうげき}}することができない`, non la versione corta

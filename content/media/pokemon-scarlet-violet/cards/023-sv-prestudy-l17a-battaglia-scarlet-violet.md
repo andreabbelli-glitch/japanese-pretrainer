@@ -406,7 +406,7 @@ back: mandare fuori / far entrare in campo
 example_jp: >-
   ポケモンを {{出|だ}}す。
 example_it: >-
-  Mando fuori un Pokémon.
+  Mando in campo un Pokémon.
 :::
 :::term
 id: term-v173-mizu

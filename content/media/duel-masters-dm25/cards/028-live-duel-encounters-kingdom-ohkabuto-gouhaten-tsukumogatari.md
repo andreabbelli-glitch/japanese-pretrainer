@@ -289,7 +289,7 @@ back: ignorare / fare come se non ci fosse
 example_jp: >-
   {{相手|あいて}}の{{効果|こうか}}を{{無視|むし}}して、そのまま{{攻撃|こうげき}}した。
 example_it: >-
-  Ho ignorato l'effetto dell'avversario e ho attaccato direttamente.
+  Ho ignorato l'effetto dell'avversario e ho attaccato comunque.
 notes_it: >-
   Significato base: scegliere di proposito di non considerare qualcosa. Nel TCG
   il verbo funziona allo stesso modo — il gioco ti dice di saltare certi effetti

@@ -443,7 +443,7 @@ back: casella premi / present box
 example_jp: >-
   プレゼントボックスで{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
 example_it: >-
-  Riscuoti una reward nella present box.
+  Ritiro una ricompensa dal Present Box.
 notes_it: >-
   È l'inbox concreta dei premi. Se la riconosci, sai subito dove controllare
   reward in attesa, storico dei claim e scadenze di riscossione.
@@ -496,7 +496,7 @@ back: riscuoti tutto insieme / bulk claim
 example_jp: >-
   {{一括|いっかつ}}{{受|う}}け{{取|と}}りでミッションの{{報酬|ほうしゅう}}をすべて{{受|う}}け{{取|と}}る。
 example_it: >-
-  Riscuoto tutte le ricompense delle missioni tramite riscossione globale.
+  Ritiro tutte le ricompense delle missioni in un colpo solo.
 notes_it: >-
   È un comando di velocità: ti evita il claim ripetuto voce per voce.
 tags: [duel-plays, app, ui, action]
@@ -657,7 +657,7 @@ back: ticket posseduti / owned tickets
 example_jp: >-
   パックチケットの{{所持|しょじ}}{{数|すう}}が{{不足|ふそく}}しているので、ジェムで{{買|か}}う。
 example_it: >-
-  Siccome la quantità di ticket posseduti è insufficiente, compro con le gemme.
+  Siccome i pack ticket non bastano, li compro con le gemme.
 notes_it: >-
   È lo stock immediato che il popup userà per decidere fino a dove puoi arrivare.
   Non è il nome della valuta in astratto, ma il numero spendibile adesso.
@@ -675,7 +675,7 @@ back: quantità da acquistare / purchase quantity
 example_jp: >-
   {{購入個数|こう.にゅう.こ.すう}}を{{10|じゅう}}にセットして、パックを{{引|ひ}}く。
 example_it: >-
-  Imposto la quantità di acquisto a 10 e sbusto i pacchetti.
+  Imposto la quantità da acquistare a 10 e sbusto i pacchetti.
 notes_it: >-
   Non è il costo: è il numero di unità che stai per comprare.
 tags: [duel-plays, app, ui, shop]
@@ -744,7 +744,7 @@ back: acquisto deck prebuilt / constructed deck purchase
 example_jp: >-
   {{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}でコラボデッキを{{買|か}}う。
 example_it: >-
-  Compra un deck collaborazione nella schermata deck prebuilt.
+  Compro un deck collab nella schermata dei deck prebuilt.
 notes_it: >-
   `{{構築|こうちく}}{{済|ず}}み` indica che il mazzo è già pronto, non da
   costruire pezzo per pezzo. Questa schermata va letta come prodotto shop, non
@@ -799,7 +799,7 @@ back: insufficienza / mancanza
 example_jp: >-
   カードを{{生成|せいせい}}するためのDMポイントが{{不足|ふそく}}している。
 example_it: >-
-  I DM points per generare la carta sono insufficienti.
+  I punti DM necessari per generare carte sono insufficienti.
 notes_it: >-
   Nei popup di blocco segnala che il problema è la risorsa disponibile.
 tags: [duel-plays, app, ui, status, kanji]

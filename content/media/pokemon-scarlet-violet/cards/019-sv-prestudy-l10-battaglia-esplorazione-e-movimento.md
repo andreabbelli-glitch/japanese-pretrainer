@@ -34,7 +34,8 @@ id: term-e022-shitekureru
 lemma: 〜してくれる？
 reading: 〜してくれる？
 romaji: ~ shitekureru？
-meaning_it: me lo fai?
+meaning_it: >-
+  puoi farlo per me? / mi fai...?
 notes_it: >-
   Richiesta colloquiale ma morbida.
 :::
@@ -45,7 +46,8 @@ entry_type: term
 entry_id: term-e022-shitekureru
 card_type: recognition
 front: '〜してくれる？'
-back: me lo fai?
+back: >-
+  puoi farlo per me? / mi fai...?
 example_jp: >-
   {{少|すこ}}し {{待|ま}}ってくれる？
 example_it: >-

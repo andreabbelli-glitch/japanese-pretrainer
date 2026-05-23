@@ -117,7 +117,7 @@ back: effetto
 example_jp: >-
   この わざは みずタイプに {{効果|こうか}}が あります。
 example_it: >-
-  Questa mossa ha effetto sul tipo Acqua.
+  Questa mossa è efficace contro il tipo Acqua.
 :::
 :::term
 id: term-v052-shokuzai

@@ -143,7 +143,7 @@ back: già / ormai
 example_jp: >-
   もう {{行|い}}こう、 ネモが {{待|ま}}ってる。
 example_it: >-
-  Andiamo ormai, Nemona sta aspettando.
+  Andiamo, Nemona sta aspettando.
 :::
 :::term
 id: term-v014-raido

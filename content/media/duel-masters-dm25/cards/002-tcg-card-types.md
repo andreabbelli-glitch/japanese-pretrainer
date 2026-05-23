@@ -346,7 +346,7 @@ back: prefisso speciale Dragheart
 example_jp: >-
   ドラグハート・フォートレスが{{龍解|りゅうかい}}して、ドラグハート・クリーチャーになる。
 example_it: >-
-  Un Dragheart Fortress si libera e diventa un Dragheart Creature.
+  Un Dragheart Fortress si trasforma e diventa una creatura Dragheart.
 notes_it: >-
   `ドラグハート` indica una famiglia a due facce. Il termine dopo il punto
   mediano determina la funzione concreta della faccia attuale e quindi la
@@ -384,7 +384,7 @@ back: Castle / carta fortezza sugli scudi
 example_jp: >-
   {{城|しろ}}はシールドに{{付|つ}}けて{{要塞化|よう.さい.か}}する。
 example_it: >-
-  Una Castle si mette su uno scudo e lo fortifica.
+  Una carta Castle si attacca a uno scudo e lo fortifica.
 notes_it: >-
   Qui il kanji [{{城|しろ}}](term:term-castle) va collegato subito alla zona
   scudi. La carta entra in `要塞化` sugli scudi, non come permanente standard

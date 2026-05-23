@@ -67,8 +67,7 @@ example_jp: >-
   ドアノッカ＝ノアドッカは、このクリーチャーが{{出|で}}た{{時|とき}}
   {{次|つぎ}}の{{能力|のうりょく}}を{{2回|にかい}}{{行|おこな}}う。
 example_it: >-
-  Doorknocker Nordocker, quando entra, fa eseguire due volte l'abilita
-  successiva.
+  Quando Doorknocker Nordocker entra in gioco, esegue due volte l'abilità seguente.
 notes_it: >-
   Il nome va associato subito al suo pattern testuale distintivo: `next
   ability` + `{{2回|にかい}}{{行|おこな}}う`.

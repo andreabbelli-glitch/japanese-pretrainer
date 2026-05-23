@@ -130,7 +130,7 @@ back: 'ingresso; adesione'
 example_jp: >-
   {{仲間加入|なかまかにゅう}}で、あたらしい{{仲間|なかま}}がふえた。
 example_it: >-
-  Con l'ingresso nel gruppo, è aumentato il numero di compagni.
+  Con l'arrivo di un nuovo compagno, il gruppo si e' allargato.
 notes_it: >-
   [{{加入|かにゅう}}](term:term-kanyu) non è un semplice “ottenere”: indica
   l'entrata in un gruppo. Per questo `{{仲間加入|なかまかにゅう}}` comunica che il

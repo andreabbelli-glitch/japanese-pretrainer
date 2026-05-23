@@ -44,7 +44,8 @@ id: term-enter-battle-zone-tapped
 lemma: タップして置く
 reading: たっぷしておく
 romaji: tappu shite oku
-meaning_it: viene messo nel battle zone gia tapped
+meaning_it: >-
+  mettere nella battle zone già tapped
 pos: verb-phrase
 aliases: [タップして置く, タップしてバトルゾーンに出る]
 notes_it: >-
@@ -159,11 +160,12 @@ entry_id: term-enter-battle-zone-tapped
 card_type: recognition
 front: >-
   タップして{{置|お}}く
-back: viene messo nel battle zone gia tapped
+back: >-
+  mettere nella battle zone già tapped
 example_jp: >-
   バトルゾーンに{{置|お}}く{{時|とき}}、このカードはタップして{{置|お}}く。
 example_it: >-
-  Quando viene messa nel battle zone, questa carta viene messa tapped.
+  Quando viene messa nella battle zone, questa carta entra già tapped.
 notes_it: >-
   Il valore utile sta nel blocco intero: il testo non aggiunge un tap dopo la
   messa in campo, ma descrive una collocazione che avviene gia in quello stato.

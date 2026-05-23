@@ -215,7 +215,7 @@ back: 'おちこむ — abbattersi; sentirsi giù'
 example_jp: >-
   {{僕|ぼく}}は{{少|すこ}}し{{落|お}}ち{{込|こ}}む。
 example_it: >-
-  Io mi abbatto un po'.
+  Io mi sento un po' giù.
 notes_it: >-
   Qui {{落|お}}ち{{込|こ}}む non indica cadere a terra: descrive uno stato
   emotivo che scende verso lo sconforto.
@@ -323,7 +323,7 @@ back: 'ふたり — due persone; in due'
 example_jp: >-
   {{二人|ふたり}}であそこに{{向|む}}かう。
 example_it: >-
-  I due vanno verso quel posto.
+  Ci dirigiamo lì in due.
 notes_it: >-
   {{二人|ふたり}} conta persone e può descrivere anche il gruppo che compie
   insieme un'azione.

@@ -296,7 +296,7 @@ back: bersaglio dell'attacco
 example_jp: >-
   そのクリーチャーに{{攻撃先|こう.げき.さき}}を{{変更|へんこう}}する。
 example_it: >-
-  Cambia il bersaglio dell'attacco a quella creatura.
+  Sposta il bersaglio dell'attacco su quella creatura.
 notes_it: >-
   `{{攻撃先|こう.げき.さき}}を{{変更|へんこう}}する` riassegna un attacco già
   dichiarato a un nuovo bersaglio. In combattimento cambia direttamente quale
@@ -315,7 +315,7 @@ back: modifica / cambiamento
 example_jp: >-
   そのクリーチャーに{{攻撃先|こう.げき.さき}}を{{変更|へんこう}}する。
 example_it: >-
-  Cambia il bersaglio dell'attacco a quella creatura.
+  Sposta il bersaglio dell'attacco su quella creatura.
 notes_it: >-
   In questa lezione `{{変更|へんこう}}する` non vuol dire "ritoccare" qualcosa in
   modo vago: ordina un cambio concreto di stato. Con

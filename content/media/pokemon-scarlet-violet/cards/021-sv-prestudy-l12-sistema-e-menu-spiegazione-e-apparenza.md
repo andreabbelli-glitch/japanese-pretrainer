@@ -26,7 +26,7 @@ back: ora puoi farlo
 example_jp: >-
   ライド できるようになった。
 example_it: >-
-  Ora puoi usare la cavalcata.
+  Ora puoi cavalcare.
 :::
 :::term
 id: term-e026-makase-te
@@ -114,7 +114,7 @@ back: siccome / dato che
 example_jp: >-
   {{時間|じかん}}が ないので {{先|さき}}に {{行|い}}く。
 example_it: >-
-  Dato che non ho tempo, vado prima.
+  Dato che non ho tempo, vado avanti.
 :::
 :::term
 id: term-v138-seisokuchi

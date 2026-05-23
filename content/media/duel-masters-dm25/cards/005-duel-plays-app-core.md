@@ -918,7 +918,7 @@ back: salvataggio / save
 example_jp: >-
   デッキ{{確認|かくにん}}の{{後|あと}}にデッキ{{保存|ほぞん}}を{{押|お}}す。
 example_it: >-
-  Dopo la deck confirmation, premi deck save.
+  Dopo aver controllato il mazzo, premi "Salva mazzo".
 notes_it: >-
   Qui il punto è il passaggio finale: la schermata non ti fa solo controllare il
   deck, ma registra la configurazione nel profilo.
@@ -1069,7 +1069,7 @@ back: scambio / exchange
 example_jp: >-
   DMポイントを{{使|つか}}って、{{必要|ひつよう}}なカードを{{交換|こうかん}}する。
 example_it: >-
-  Uso i DM points per scambiare la carta necessaria.
+  Uso i punti DM per ottenere la carta necessaria tramite scambio.
 notes_it: >-
   Va letto come azione autonoma, così i composti più lunghi come
   `カード{{交換|こうかん}}` o `{{交換期間|こう.かん.き.かん}}` smettono di sembrare
@@ -1126,7 +1126,7 @@ back: smontare / convertire in risorsa
 example_jp: >-
   {{不要|ふよう}}なカードを{{分解|ぶんかい}}する。
 example_it: >-
-  Smonta una carta non necessaria.
+  Smantella una carta non necessaria.
 notes_it: >-
   È l'opposto operativo di [{{生成|せいせい}}](term:term-craft). Questa coppia
   compare spesso in sequenza: `{{分解|ぶんかい}}` converte una carta in risorsa, `{{生成|せいせい}}` usa la
@@ -1145,7 +1145,7 @@ back: posseduto / in possesso
 example_jp: >-
   {{現在|げんざい}}のカードの{{所持|しょじ}}{{枚数|まいすう}}を{{確認|かくにん}}する。
 example_it: >-
-  Controllo la quantità di copie possedute di base.
+  Controllo il numero attuale di copie possedute della carta.
 notes_it: >-
   `{{所持|しょじ}}` indica quante copie sono già presenti nel tuo account. In
   shop e collezione quel numero decide se devi ancora comprare, craftare o
@@ -1519,7 +1519,8 @@ back: seleziona X
 example_jp: >-
   デッキの{{切|き}}り{{札|ふだ}}にするため、{{交換所|こう.かん.じょ}}でこのスーパーレアを{{選択|せんたく}}して{{手|て}}に{{入|い}}れる。
 example_it: >-
-  Poiché sarà l’asso nella manica del deck, seleziono e ricevo questa Super Rara al centro di scambio.
+  Per farne la carta vincente del mazzo, seleziona questa Super Rara nel negozio di
+  scambio e ottienila.
 notes_it: >-
   Formula di istruzione diretta: il nome prima di `を` è l'oggetto da scegliere,
   [{{選択|せんたく}}](term:term-selection) è l'azione richiesta prima di

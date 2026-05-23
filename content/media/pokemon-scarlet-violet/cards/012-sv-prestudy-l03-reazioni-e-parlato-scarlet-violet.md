@@ -351,5 +351,5 @@ back: in forma / energico
 example_jp: >-
   ポケモンが {{元気|げんき}}なら、 もう {{行|い}}こう。
 example_it: >-
-  Se il Pokémon è in forma, andiamo ormai.
+  Se il Pokémon è in forma, andiamo.
 :::

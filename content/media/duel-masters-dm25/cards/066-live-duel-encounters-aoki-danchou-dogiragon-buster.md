@@ -262,8 +262,8 @@ example_jp: >-
   そのターン{{中|ちゅう}}に{{他|ほか}}の「ファイナル{{革命|かくめい}}」をまだ
   {{使|つか}}っていなければ、{{手札|てふだ}}からクリーチャーを{{出|だ}}せる。
 example_it: >-
-  Se in quel turno non hai ancora usato un'altra Final Revolution, puoi mettere
-  una creatura dalla mano.
+  Se in quel turno non hai ancora usato un'altra Final Revolution, puoi mettere in campo
+  una creatura dalla tua mano.
 notes_it: >-
   La struttura ha tre pezzi: `そのターン{{中|ちゅう}}に` delimita il turno,
   `{{他|ほか}}の` controlla le altre Final Revolution, e

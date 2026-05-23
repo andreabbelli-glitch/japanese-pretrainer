@@ -104,8 +104,8 @@ example_jp: >-
   ニンジャ・ストライク{{8|はち}}だから、{{相手|あいて}}の{{攻撃|こうげき}}に
   {{割|わ}}り{{込|こ}}むようにこのシノビを{{出|だ}}せる。
 example_it: >-
-  Siccome ha Ninja Strike 8, puoi far entrare questo Shinobi dentro l'attacco
-  avversario.
+  Siccome ha Ninja Strike 8, puoi mettere in campo questo Shinobi durante l'attacco
+  dell'avversario.
 notes_it: >-
   Non fermarti alla traduzione rapida `entra gratis`. Questa keyword va letta
   insieme alla condizione che la segue: il giapponese ti dice esattamente
@@ -128,8 +128,8 @@ example_jp: >-
   {{続|つづ}}ける。{{次|つぎ}}に`{{使|つか}}っていなければ`で{{二|ふた}}つ{{目|め}}の
   {{門|もん}}がかかる。
 example_it: >-
-  `Ari` è la forma che collega di `aru` e lascia aperta la condizione; poi
-  `tsukatte inakereba` aggiunge il secondo cancello.
+  `あり` e' la forma di collegamento di `ある` e mantiene aperta la condizione; poi `使っていなければ`
+  aggiunge il secondo requisito.
 notes_it: >-
   Questo è il punto più importante della finestra di Ninja Strike. `あり` tiene
   aperta la catena delle condizioni; `{{使|つか}}っていなければ` è invece il
@@ -150,7 +150,7 @@ back: avere / possedere
 example_jp: >-
   コストを{{持|も}}つドラゴン・エレメントなら、{{出|だ}}す。
 example_it: >-
-  Se è un Dragon Element che ha quel costo, lo metti in gioco.
+  Se e' un Dragon Element con un costo, lo metti in gioco.
 notes_it: >-
   `{{持|も}}つ` da solo è giapponese molto generale. Il punto utile qui è come
   si comporta davanti a un nome: `〜を{{持|も}}つX` = `X che ha 〜`. Quindi il

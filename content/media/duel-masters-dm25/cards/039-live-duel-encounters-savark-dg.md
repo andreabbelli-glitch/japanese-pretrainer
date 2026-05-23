@@ -112,8 +112,8 @@ example_jp: >-
   {{自分|じぶん}}のターン{{終了時|しゅう.りょう.じ}}なら、
   そのターンのしめくくりで{{効果|こうか}}を{{見|み}}る。
 example_it: >-
-  Se c'è `fine del tuo turno`, l'effetto viene controllato al momento in cui
-  quel turno si chiude.
+  Se dice 'alla fine del tuo turno', l'effetto viene controllato quando quel turno si
+  chiude.
 notes_it: >-
   Vale la pena fissarlo perche` `{{終|お}}わり` da solo puo` sembrare vago,
   mentre `{{終了時|しゅう.りょう.じ}}` nel rules text e` un timing preciso e
@@ -153,8 +153,8 @@ example_jp: >-
   `{{光|ひかり}}のドラゴン`だから、ドラゴンなら{{何|なん}}でもよいのではなく、
   {{文明|ぶんめい}}まで{{一致|いっち}}しないといけない。
 example_it: >-
-  Siccome c'e` `Drago Luce`, non basta che sia un Drago qualsiasi: deve
-  corrispondere anche la civiltà.
+  Siccome è un Drago di Luce, non basta che sia un Drago qualsiasi: deve corrispondere
+  anche la civiltà.
 notes_it: >-
   Il punto da fissare e` che `{{光|ひかり}}` qui vale come civiltà. E` proprio
   questa parola a restringere davvero quale Drago sia valido nell'ultimo
@@ -244,7 +244,9 @@ front: >-
   {{自分|じぶん}}の{{手札|てふだ}}から{{光|ひかり}}の
   ドラゴン{{1枚|いちまい}}を
   バトルゾーンに{{出|だ}}す
-back: puoi distruggere questa creatura; se lo fai, metti nel battle zone 1 Drago di Luce dalla mano
+back: >-
+  puoi distruggere questa creatura; se lo fai, metti nella battle zone 1 Drago di Luce
+  dalla mano
 example_jp: >-
   `そうしたら`だから、{{前|まえ}}の{{破壊|はかい}}をほんとうにやった
   {{後|あと}}だけ、ドラゴンを{{出|だ}}せる。

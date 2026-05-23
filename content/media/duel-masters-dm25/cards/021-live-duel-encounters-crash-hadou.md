@@ -170,7 +170,7 @@ example_jp: >-
   タップ{{状態|じょうたい}}で{{破壊|はかい}}されると、
   {{追加|ついか}}ターンが{{入|はい}}る。
 example_it: >-
-  Se Crash Hadou viene distrutto da tappato, entra un turno extra.
+  Se Crash Hadou viene distrutto mentre è tappato, ottieni un turno extra.
 notes_it: >-
   `クラッシュ“覇道”` va riconosciuto come nome proprio; su questa carta quel nome
   coincide con un finisher che può convertire una distruzione da tappato in
@@ -309,7 +309,7 @@ back: battle / scontro diretto
 example_jp: >-
   バトル{{中|ちゅう}}は、このクリーチャーのパワーが{{上|あ}}がる。
 example_it: >-
-  Durante il battle, il potere di questa creatura sale.
+  Durante il combattimento, il potere di questa creatura aumenta.
 notes_it: >-
   In `バトル中` bonus e modifiche valgono solo nella finestra dello scontro.
   Fuori da quel momento, lo stesso testo non cambia il combattimento.

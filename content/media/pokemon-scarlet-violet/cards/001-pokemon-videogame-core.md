@@ -388,7 +388,7 @@ back: compatibilità tra tipi
 example_jp: >-
   タイプ{{相性|あいしょう}}を {{見|み}}ると {{有利|ゆうり}}な わざが わかる。
 example_it: >-
-  Guardando il rapporto tra tipi capisci quali mosse ti favoriscono.
+  Guardando la compatibilità tra tipi capisci quali mosse sono più vantaggiose.
 :::
 :::term
 id: term-joutai-ijou
@@ -607,7 +607,7 @@ back: colpo critico / punto vitale
 example_jp: >-
   {{急所|きゅうしょ}}に あたって {{大|おお}}きな ダメージが {{出|で}}た。
 example_it: >-
-  È andato a segno un colpo critico e sono usciti grossi danni.
+  È andato a segno un colpo critico e ha inflitto molti danni.
 :::
 :::grammar
 id: grammar-te-miru
@@ -728,7 +728,7 @@ back: fare qualcosa per te
 example_jp: >-
   ポケモンセンターの {{人|ひと}}が {{手|て}}{{持|も}}ちを {{回復|かいふく}}してくれる。
 example_it: >-
-  La persona del Centro Pokemon ti cura la squadra.
+  Il personale del Centro Pokémon ti cura la squadra.
 :::
 :::grammar
 id: grammar-te-ne

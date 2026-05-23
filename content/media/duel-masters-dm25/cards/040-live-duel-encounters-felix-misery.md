@@ -123,8 +123,8 @@ example_jp: >-
   `{{場合|ばあい}}`だから、どんな{{召喚|しょうかん}}でもよいのではなく、
   NEO{{進化|しんか}}として{{出|だ}}す{{時|とき}}だけを{{指|さ}}している。
 example_it: >-
-  Siccome c'è `baai`, non vale per ogni evocazione: indica solo il caso in cui
-  la metti come NEO evolution.
+  Siccome c'è baai, non vale per ogni evocazione: indica solo il caso in cui la evochi
+  come creatura NEO Evolution.
 notes_it: >-
   Il punto da allenare è proprio la cornice. `{{場合|ばあい}}` fissa lo
   scenario, `として` dice `in quel ruolo`, e solo dentro quella finestra si

@@ -135,7 +135,7 @@ example_jp: >-
   {{召喚|しょうかん}}{{酔|よ}}いがあると、そのターンはまだ
   {{攻撃|こうげき}}できない。
 example_it: >-
-  Se c'e` summoning sickness, in quel turno non puo` ancora attaccare.
+  Se una creatura ha summoning sickness, in quel turno non può ancora attaccare.
 notes_it: >-
   Il kanji `{{酔|よ}}い` qui non parla di alcol: nel linguaggio delle carte
   indica uno stato di stordimento temporaneo applicato alla creatura appena

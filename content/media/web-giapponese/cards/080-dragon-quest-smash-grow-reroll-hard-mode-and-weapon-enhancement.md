@@ -59,7 +59,8 @@ id: term-nando-demo-hikinaoseru
 lemma: 何度でも引き直せる
 reading: なんどでもひきなおせる
 romaji: nando demo hikinaoseru
-meaning_it: puoi ritirare quante volte vuoi
+meaning_it: >-
+  puoi rifare l'estrazione quante volte vuoi
 pos: phrase
 aliases: []
 notes_it: >-
@@ -90,7 +91,8 @@ id: term-hikinaoseru
 lemma: 引き直せる
 reading: ひきなおせる
 romaji: hikinaoseru
-meaning_it: può essere tirato di nuovo; puoi rifare l'estrazione
+meaning_it: >-
+  puoi rifare l'estrazione / riprovare
 pos: verb
 aliases: [引き直す, 引き直せる]
 notes_it: >-
@@ -105,7 +107,8 @@ id: term-hikinaoshi-kanou
 lemma: 引き直し可能
 reading: ひきなおしかのう
 romaji: hikinaoshi kanou
-meaning_it: reroll possibile; ritirabile
+meaning_it: >-
+  reroll disponibile; estrazione ripetibile
 pos: noun
 aliases: []
 notes_it: >-
@@ -301,11 +304,12 @@ entry_type: term
 entry_id: term-nando-demo-hikinaoseru
 card_type: recognition
 front: '{{何度|なんど}}でも{{引|ひ}}き{{直|なお}}せる'
-back: 'puoi ritirare quante volte vuoi'
+back: >-
+  puoi rifare l'estrazione quante volte vuoi
 example_jp: >-
   このふくびきは{{何度|なんど}}でも{{引|ひ}}き{{直|なお}}せる。
 example_it: >-
-  Questa lotteria può essere ritirata quante volte vuoi.
+  Questa lotteria può essere ripetuta quante volte vuoi.
 notes_it: >-
   Il chunk combina assenza di limite e possibilità di reroll: la UI promette che
   il tentativo può essere rifatto.
@@ -341,7 +345,7 @@ back: "puoi rifare l'estrazione; può essere ritirato"
 example_jp: >-
   {{好|す}}きなぶきが{{出|で}}るまで{{引|ひ}}き{{直|なお}}せる。
 example_it: >-
-  Puoi ritirare finché non esce l'arma che ti piace.
+  Puoi rifare l'estrazione finché non esce l'arma che preferisci.
 notes_it: >-
   [{{引|ひ}}き{{直|なお}}せる](term:term-hikinaoseru) è potenziale: non descrive
   solo il rifare, ma il fatto che il sistema lo permette.
@@ -355,11 +359,12 @@ entry_type: term
 entry_id: term-hikinaoshi-kanou
 card_type: recognition
 front: '{{引|ひ}}き{{直|なお}}し{{可能|かのう}}'
-back: 'reroll possibile; ritirabile'
+back: >-
+  reroll disponibile; estrazione ripetibile
 example_jp: >-
   このふくびきは{{引|ひ}}き{{直|なお}}し{{可能|かのう}}だ。
 example_it: >-
-  Questa lotteria è ritirabile.
+  Questa lotteria può essere ripetuta.
 notes_it: >-
   [{{可能|かのう}}](term:term-hikinaoshi-kanou) trasforma l'azione in stato UI:
   il reroll è disponibile.
@@ -449,7 +454,7 @@ back: 'rafforzamento armi; potenziamento arma'
 example_jp: >-
   ぶき{{強化|きょうか}}で{{戦士|せんし}}がつよくなる。
 example_it: >-
-  Con il rafforzamento armi, il guerriero diventa più forte.
+  Con il potenziamento dell'arma, il guerriero diventa più forte.
 notes_it: >-
   [ぶき{{強化|きょうか}}](term:term-buki-kyouka) riguarda il potenziamento di
   un'arma, non una nuovaふくびき.

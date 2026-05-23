@@ -48,7 +48,7 @@ back: numero di persone / numero di giocatori coinvolti
 example_jp: >-
   バトルに{{参加|さんか}}しているプレイヤーの{{人数|にんずう}}だけ、カードを{{引|ひ}}く。
 example_it: >-
-  Peschi carte per quant'è il numero dei giocatori partecipanti alla lotta.
+  Pesca un numero di carte pari al numero di giocatori che partecipano alla battaglia.
 notes_it: >-
   Qui `{{人数|にんずう}}` non conta permanenti o carte: conta proprio quante
   persone sono avversarie in questa partita. E quel numero diventa subito il
