@@ -311,7 +311,7 @@ back: possibile
 example_jp: >-
   ここから ライドが {{可能|かのう}}です。
 example_it: >-
-  Da qui e' possibile usare la cavalcatura.
+  Da qui è possibile usare la cavalcatura.
 :::
 :::term
 id: term-v190-chousa
@@ -357,7 +357,7 @@ back: forse per caso
 example_jp: >-
   もしかして、 あれは ヌシですか。
 example_it: >-
-  Per caso quello e' il Dominante?
+  Per caso quello è il Dominante?
 :::
 :::term
 id: term-v192-konkai

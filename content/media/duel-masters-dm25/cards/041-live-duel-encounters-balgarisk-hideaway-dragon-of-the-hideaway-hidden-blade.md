@@ -128,7 +128,7 @@ example_jp: >-
   {{続|つづ}}ける。{{次|つぎ}}に`{{使|つか}}っていなければ`で{{二|ふた}}つ{{目|め}}の
   {{門|もん}}がかかる。
 example_it: >-
-  `あり` e' la forma di collegamento di `ある` e mantiene aperta la condizione; poi `使っていなければ`
+  `あり` è la forma di collegamento di `ある` e mantiene aperta la condizione; poi `使っていなければ`
   aggiunge il secondo requisito.
 notes_it: >-
   Questo è il punto più importante della finestra di Ninja Strike. `あり` tiene
@@ -150,7 +150,7 @@ back: avere / possedere
 example_jp: >-
   コストを{{持|も}}つドラゴン・エレメントなら、{{出|だ}}す。
 example_it: >-
-  Se e' un Dragon Element con un costo, lo metti in gioco.
+  Se è un Dragon Element con un costo, lo metti in gioco.
 notes_it: >-
   `{{持|も}}つ` da solo è giapponese molto generale. Il punto utile qui è come
   si comporta davanti a un nome: `〜を{{持|も}}つX` = `X che ha 〜`. Quindi il

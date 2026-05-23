@@ -264,7 +264,7 @@ back: >-
 example_jp: >-
   ジムテストの {{合|ごう}}{{格|かく}}{{者|しゃ}}は {{中|なか}}に {{入|はい}}れるよ。
 example_it: >-
-  Chi ha superato il test della palestra puo' entrare.
+  Chi ha superato il test della palestra può entrare.
 notes_it: >-
   Il suffisso {{者|もの}} (sha) eleva il termine da un semplice risultato personale a uno status istituzionale. Identifica un gruppo riconosciuto (promossi, ammessi a un'area) ed è usato dallo staff della Lega Pokémon per concedere l'accesso agli step successivi.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-18]

@@ -195,7 +195,7 @@ lemma: "愛顧"
 reading: "あいこ"
 romaji: "aiko"
 meaning_it: >-
-  fedelta'; sostegno continuativo; favore accordato
+  fedeltà; sostegno continuativo; favore accordato
 pos: suru-noun
 notes_it: >-
   Nel Book 9, {{愛顧|あいこ}} entra come fedeltà; sostegno continuativo; favore accordato. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
@@ -572,7 +572,7 @@ back: >-
 example_jp: >-
   ご{{愛顧|あいこ}}ありがとうございます。
 example_it: >-
-  Grazie per la vostra fedelta'.
+  Grazie per la vostra fedeltà.
 notes_it: >-
   Riconosci {{愛顧|あいこ}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-03]

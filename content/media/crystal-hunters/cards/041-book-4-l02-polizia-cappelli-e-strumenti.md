@@ -411,7 +411,7 @@ card_type: recognition
 front: >-
   ご{{購入|こうにゅう}}
 back: >-
-  ごこうにゅう - ごこうにゅう - acquisto; acquisto in forma onorifica
+  ごこうにゅう - acquisto; acquisto in forma onorifica
 example_jp: >-
   これは「ご{{購入|こうにゅう}}」です。
 example_it: >-

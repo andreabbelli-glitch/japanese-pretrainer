@@ -179,7 +179,7 @@ back: 'build consigliata'
 example_jp: >-
   {{攻略|こうりゃく}}サイトのおすすめ{{編成|へんせい}}を{{真似|まね}}して、{{高難易度|こう.なん.い.ど}}をためしてみる。
 example_it: >-
-  Copio la build consigliata dal sito di guide e provo una difficolta' elevata.
+  Copio la build consigliata dal sito di guide e provo una difficoltà elevata.
 notes_it: >-
   Il blocco va letto tutto insieme: [おすすめ](term:term-osusume)
   + [{{編成|へんせい}}](term:term-hensei). La struttura è la stessa che vedi
@@ -211,7 +211,7 @@ back: 'annuncio di collaborazione; evento collab'
 example_jp: >-
   {{期間限定|き.かん.げん.てい}}のコラボイベントが{{開催|かいさい}}されたので、{{忘|わす}}れずにログインする。
 example_it: >-
-  E' in corso un evento collab a tempo limitato, quindi non dimentico di fare login.
+  È in corso un evento collab a tempo limitato, quindi non dimentico di fare login.
 notes_it: >-
   In una pagina di wiki/guide [コラボ開催](term:term-collab)
   spesso appare come banner o notizia, non come parte della spiegazione delle
@@ -242,7 +242,7 @@ back: 'fase iniziale; early game'
 example_jp: >-
   ゲームの{{序盤|じょばん}}は、{{育成素材|いく.せい.そ.ざい}}が{{足|た}}りなくてレベル{{上|あ}}げが{{本当|ほんとう}}にむずかしい。
 example_it: >-
-  All'inizio del gioco mancano i materiali di potenziamento, quindi salire di livello e'
+  All'inizio del gioco mancano i materiali di potenziamento, quindi salire di livello è
   davvero difficile.
 notes_it: >-
   [{{序盤|じょばん}}](term:term-shoban) non è una parola vaga: nei consigli di
@@ -304,7 +304,7 @@ back: "articoli consigliati per l'inizio"
 example_jp: >-
   {{序盤|じょばん}}におすすめの{{進|すす}}め{{方|かた}}が{{書|か}}かれた{{記事|きじ}}を{{読|よ}}んで、{{無駄|むだ}}なくプレイする。
 example_it: >-
-  Leggo un articolo che spiega come procedere all'inizio, cosi' gioco senza sprechi.
+  Leggo un articolo che spiega come procedere all'inizio, così gioco senza sprechi.
 notes_it: >-
   Questa etichetta è molto tipica dei portali guida: unisce l'idea di
   [{{序盤|じょばん}}](term:term-shoban) con quella di
@@ -337,7 +337,7 @@ example_jp: >-
   ページの{{目次|もくじ}}を{{見|み}}て、{{一番|いちばん}}{{知|し}}りたい{{攻略情報|こう.りゃく.じょう.ほう}}のところに{{直接|ちょくせつ}}ジャンプする。
 example_it: >-
   Guardo l'indice della pagina e salto direttamente alla sezione con le informazioni di
-  guida che mi interessano di piu'.
+  guida che mi interessano di più.
 notes_it: >-
   [{{目次|もくじ}}](term:term-mokuji) è la parola che ti dice dove inizia la
   struttura cliccabile della guida.
@@ -369,7 +369,7 @@ back: 'riassunto; riepilogo; raccolta ordinata'
 example_jp: >-
   イベントの{{効率|こうりつ}}の{{良|よ}}い{{周回|しゅうかい}}{{方法|ほうほう}}は、ページの{{一番下|いち.ばん.した}}にあるまとめを{{読|よ}}むとわかる。
 example_it: >-
-  Per capire il metodo piu' efficiente per farmare l'evento, leggi il riepilogo in fondo
+  Per capire il metodo più efficiente per farmare l'evento, leggi il riepilogo in fondo
   alla pagina.
 notes_it: >-
   Qui il punto importante non è un “riassunto scolastico” in senso stretto:
@@ -495,7 +495,7 @@ back: 'attributo sole; elemento solare'
 example_jp: >-
   {{敵|てき}}が{{月属性|つきぞくせい}}のボスなので、{{有利|ゆうり}}に{{戦|たたか}}える{{太陽属性|たいようぞくせい}}のキャラをえらぶ。
 example_it: >-
-  Siccome il boss nemico e' di attributo Luna, scelgo un personaggio di attributo Sole per
+  Siccome il boss nemico è di attributo Luna, scelgo un personaggio di attributo Sole per
   combattere in vantaggio.
 notes_it: >-
   In questa guida [{{太陽属性|たいようぞくせい}}](term:term-sun-attribute) è uno
@@ -589,8 +589,8 @@ back: 'battaglia strategica; strategy battle'
 example_jp: >-
   ユニットの{{配置|はいち}}がいちばん{{大切|たいせつ}}になるストラテジー{{戦|せん}}で、{{最後|さいご}}まで{{勝|か}}ち{{残|のこ}}る。
 example_it: >-
-  Sopravvivo fino alla fine in una battaglia strategica, dove la disposizione delle unita'
-  e' fondamentale.
+  Sopravvivo fino alla fine in una battaglia strategica, dove la disposizione delle unità
+  è fondamentale.
 notes_it: >-
   Qui [ストラテジー{{戦|せん}}](term:term-strategy-battle) è il
   contenitore competitivo da cui la guida fa partire le versioni di attacco e
@@ -653,7 +653,7 @@ back: 'ranked match; battaglia rank'
 example_jp: >-
   {{強|つよ}}いプレイヤーと{{戦|たたか}}って{{自分|じぶん}}の{{実力|じつりょく}}を{{試|ため}}すために、ランク{{戦|せん}}にでることにした。
 example_it: >-
-  Ho deciso di partecipare alle ranked per mettere alla prova la mia abilita' contro
+  Ho deciso di partecipare alle ranked per mettere alla prova la mia abilità contro
   giocatori forti.
 notes_it: >-
   [ランク{{戦|せん}}](term:term-rank-battle) è il contesto competitivo

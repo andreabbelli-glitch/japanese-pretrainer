@@ -458,7 +458,7 @@ back: >-
 example_jp: >-
   {{最低|さいてい}}だ。
 example_it: >-
-  E' terribile.
+  È terribile.
 notes_it: >-
   Riconosci {{最低|さいてい}} come elemento operativo del Book 10: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-10, lesson-02]

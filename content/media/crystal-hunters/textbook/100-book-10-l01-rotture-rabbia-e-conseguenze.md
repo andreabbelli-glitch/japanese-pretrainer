@@ -27,7 +27,7 @@ Il punto pratico e partire da [ほら](term:term-ch-b10-hora-1) e dagli altri bl
 - [{{耳|みみ}}](term:term-ch-b10-entry-4) - orecchio.
 - [{{起|お}}きる](term:term-ch-b10-kiru-5) - alzarsi; svegliarsi.
 - [{{目|め}}が{{覚|さ}}める](term:term-ch-b10-gameru-6) - svegliarsi; riprendere coscienza.
-- [しまう](term:term-ch-b10-shimau-7) - finire per; fare purtroppo/contro voglia; completare.
+- [しまう](term:term-ch-b10-shimau-7) - finire per; completare; fare qualcosa purtroppo/con rammarico.
 - [{{後|あと}}](term:term-ch-b10-entry-8) - dopo; rimanente.
 - [え](term:term-ch-b10-e-9) - eh; uh.
 - [カチッ](term:term-ch-b10-kachi-10) - clic; scatto.

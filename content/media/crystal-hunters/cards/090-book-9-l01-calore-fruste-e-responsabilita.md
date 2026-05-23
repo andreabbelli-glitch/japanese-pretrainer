@@ -325,7 +325,7 @@ back: >-
 example_jp: >-
   ドンッとおとがした。
 example_it: >-
-  Si e' sentito un tonfo.
+  Si è sentito un tonfo.
 notes_it: >-
   Riconosci ドンッ come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-01]

@@ -161,11 +161,13 @@ id: term-otsukaresama-desu
 lemma: お疲れさまです
 reading: おつかれさまです
 romaji: otsukaresama desu
-meaning_it: ben arrivati / grazie per l'impegno
+meaning_it: grazie per l'impegno / buon lavoro; formula dopo una fatica
 notes_it: >-
-  Formula di contatto molto comune nei servizi e sul lavoro. Al Pokemon Center
-  la senti anche allungata colloquialmente come `お{{疲|つか}}れさまでーす`, ma la forma
-  canonica resta `お{{疲|つか}}れさまです`.
+  Formula di contatto molto comune nei servizi e sul lavoro: riconosce lo
+  sforzo o la fatica dell'interlocutore. Il kanji 疲 richiama fatica/stanchezza,
+  anche quando in scena suona come una formula di accoglienza. Al Pokemon Center
+  la senti anche allungata colloquialmente come `お{{疲|つか}}れさまでーす`, ma la
+  forma canonica resta `お{{疲|つか}}れさまです`.
 :::
 :::card
 id: card-otsukaresama-desu-recognition
@@ -174,7 +176,7 @@ entry_type: term
 entry_id: term-otsukaresama-desu
 card_type: recognition
 front: "お{{疲|つか}}れさまです"
-back: ben arrivati / grazie per l'impegno
+back: grazie per l'impegno / buon lavoro; formula dopo una fatica
 example_jp: >-
   お{{疲|つか}}れさまです。 {{今日|きょう}} がんばった ポケモンを {{休|やす}}ませましょうか。
 example_it: >-

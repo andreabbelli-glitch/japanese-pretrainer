@@ -325,7 +325,7 @@ back: >-
 example_jp: >-
   「{{出来|でき}}る」はどうしです。
 example_it: >-
-  「できる」 e' un verbo: significa saper fare / poter fare.
+  「できる」 è un verbo: significa saper fare / poter fare.
 notes_it: >-
   Riconosci {{出来|でき}}る come elemento operativo del Book 4: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-4, lesson-01]
@@ -686,7 +686,7 @@ back: >-
 example_jp: >-
   「{{儲|もう}}かる」はどうしです。
 example_it: >-
-  「もうかる」 e' un verbo: significa rendere / essere redditizio.
+  「もうかる」 è un verbo: significa rendere / essere redditizio.
 notes_it: >-
   Riconosci {{儲|もう}}かる come elemento operativo del Book 4: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-4, lesson-01]
