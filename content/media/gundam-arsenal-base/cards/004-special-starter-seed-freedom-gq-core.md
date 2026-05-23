@@ -279,8 +279,8 @@ back: MS top-end del blocco SEED FREEDOM
 example_jp: >-
   {{高|たか}}コストなので、マイティーストライクフリーダムガンダムは{{終盤|しゅうばん}}の{{押|お}}し{{込|こ}}みまで{{温存|おんぞん}}しやすいです。
 example_it: >-
-  Siccome costa molto, il Mighty Strike Freedom Gundam si conserva bene per la
-  spinta nella fase finale della partita.
+  Siccome costa molto, è facile tenere in serbo il Mighty Strike Freedom Gundam
+  fino alla spinta finale della partita.
 notes_it: >-
   Nome lungo + [コスト](term:term-cost) `7` segnano subito un top-end.
   In partita questo indica una carta da finestra finale: entra quando la corsia
@@ -457,8 +457,8 @@ back: PL Shuji Ito
 example_jp: >-
   シュウジ・イトウは、[{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085)の{{相方|あいかた}}として{{見|み}}ておくと{{整理|せいり}}しやすいです。
 example_it: >-
-  Trattare Shuji Ito come partner naturale di Red Gundam (0085) rende piu
-  chiaro l'ordine delle coppie durante la lettura del board.
+  Se tieni Shuji Ito come partner naturale di Red Gundam (0085), diventa più
+  facile organizzare la lettura del board.
 notes_it: >-
   Serve come etichetta della seconda coppia lineare del lato `GQ`: quando lo
   vedi vicino a [{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085), sai già
@@ -478,7 +478,7 @@ example_jp: >-
   {{近距離|きん.きょ.り}}と{{見|み}}えたら、まず{{前線|ぜんせん}}での{{戦闘|せんとう}}を{{想像|そうぞう}}します。
 example_it: >-
   Quando leggi "ravvicinato", la prima immagine mentale deve essere il
-  combattimento più avanti sulla linea.
+  combattimento in prima linea.
 notes_it: >-
   [{{近距離|きん.きょ.り}}](term:term-ms-type-near-range) ti dice che la MS vuole
   stare sulla linea di scontro: leggerla come pezzo di pressione da lontano

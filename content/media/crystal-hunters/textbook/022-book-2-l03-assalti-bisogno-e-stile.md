@@ -74,7 +74,7 @@ Qui [Nが...](grammar:grammar-ch-ga-implication) vale: が lascia sospesa una co
 jp: >-
   {{私|わたし}}の{{名前|なまえ}}はカルだよ。
 translation_it: >-
-  Il mio nome e Kal.
+  Mi chiamo Kal.
 :::
 
 Qui [だ／よ／だよ](grammar:grammar-ch-da-yo-style) vale: la stessa informazione cambia tono con だ, よ o だよ. La guida mostra quattro finali: よ solo puo suonare femminile ma anche assertivo secondo consegna e contesto, だ e piu secco/maschile, la frase nuda resta piu leggera, e だよ bilancia i due poli risultando piu gender-neutral, pur non cancellando del tutto il colore di だ.

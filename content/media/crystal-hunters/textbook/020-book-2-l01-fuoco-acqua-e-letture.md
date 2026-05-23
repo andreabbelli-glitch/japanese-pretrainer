@@ -26,13 +26,13 @@ Book 2 porta in primo piano incendi, acqua, famiglia e il primo vero contrasto f
 - [{{消|け}}す](term:term-ch-kesu) - spegnere; cancellare. Nel Book 2, 消す vale 'spegnere; cancellare' ed e un azione che muove la vignetta. La flashcard serve a riconoscerlo nel contesto del manga, non a memorizzarlo come traduzione isolata.
 - [{{消|き}}える](term:term-ch-kieru) - sparire; spegnersi. Nel Book 2, 消える vale 'sparire; spegnersi' ed e un azione che muove la vignetta. La flashcard serve a riconoscerlo nel contesto del manga, non a memorizzarlo come traduzione isolata.
 - [{{魔法|まほう}}](term:term-ch-mahou) - magia. Nel Book 2, 魔法 vale 'magia' ed e un pezzo di lessico da collegare alla scena. La flashcard serve a riconoscerlo nel contesto del manga, non a memorizzarlo come traduzione isolata.
-- [まずい](term:term-ch-mazui) - non buono; problematico. Nel Book 2, まずい vale 'non buono; problematico' ed e un qualita che cambia il tono della descrizione. La flashcard serve a riconoscerlo nel contesto del manga, non a memorizzarlo come traduzione isolata.
+- [まずい](term:term-ch-mazui) - brutto; è un guaio; si mette male. Nel Book 2, まずい vale 'brutto; è un guaio; si mette male' ed e un qualita che cambia il tono della descrizione. La flashcard serve a riconoscerlo nel contesto del manga, non a memorizzarlo come traduzione isolata.
 - [みんな](term:term-ch-minna) - tutti. Nel Book 2, みんな vale 'tutti' ed e un scelta di voce e registro del parlante. La flashcard serve a riconoscerlo nel contesto del manga, non a memorizzarlo come traduzione isolata.
 - [{{建物|たてもの}}](term:term-ch-tatemono) - edificio. Nel Book 2, 建物 vale 'edificio' ed e un pezzo di lessico da collegare alla scena. La flashcard serve a riconoscerlo nel contesto del manga, non a memorizzarlo come traduzione isolata.
 
 ## Pattern grammaticali e lettura
 
-- [です](grammar:grammar-ch-desu-copula) - forma polite per dichiarare o identificare qualcosa. Book 2 presenta です come primo passo verso le frasi dichiarative polite: non aggiunge un oggetto, chiude la frase come 'essere/e'.
+- [です](grammar:grammar-ch-desu-copula) - forma cortese per dichiarare o identificare qualcosa. Book 2 presenta です come primo passo verso le frasi dichiarative polite: non aggiunge un oggetto, chiude la frase come 'essere/e'.
 - [は／が／を omission](grammar:grammar-ch-particle-omission) - tema, focus e oggetto possono sparire quando il contesto e chiaro. La guida sottolinea che il manga puo tagliare は, が e を. Il lettore deve ricostruire il ruolo dal contesto e dal verbo finale.
 - [す-verbs: した／して](grammar:grammar-ch-su-verbs-te-past) - i verbi in す passano a した e して. Con {{消|け}}す la guida mostra il primo schema: togli す e tieni il suono s con し, poi aggiungi た o て.
 - [ている as state](grammar:grammar-ch-te-iru-state) - non solo azione in corso, ma stato che resta visibile. {{倒|たお}}れている non significa sempre 'sta cadendo': puo descrivere lo stato 'e a terra / e caduto'.
@@ -54,7 +54,7 @@ translation_it: >-
   Questa e acqua.
 :::
 
-Qui [です](grammar:grammar-ch-desu-copula) vale: forma polite per dichiarare o identificare qualcosa. Book 2 presenta です come primo passo verso le frasi dichiarative polite: non aggiunge un oggetto, chiude la frase come 'essere/e'.
+Qui [です](grammar:grammar-ch-desu-copula) vale: forma cortese per dichiarare o identificare qualcosa. Book 2 presenta です come primo passo verso le frasi dichiarative polite: non aggiunge un oggetto, chiude la frase come 'essere/e'.
 
 :::example_sentence
 jp: >-

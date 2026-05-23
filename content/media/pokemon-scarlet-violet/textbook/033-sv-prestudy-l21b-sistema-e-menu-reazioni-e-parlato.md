@@ -357,7 +357,7 @@ jp: >-
   きっと{{大丈夫|だいじょうぶ}}。{{空|そら}}の {{下|した}}を
   {{遠|とお}}くまで {{進|すす}}んでいきましょう。
 translation_it: >-
-  Andrà sicuramente tutto bene. Continuiamo ad avanzare lontano sotto il cielo.
+  Andrà sicuramente tutto bene. Continuiamo ad avanzare fin lontano sotto il cielo.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -427,7 +427,7 @@ jp: >-
   きっと{{大丈夫|だいじょうぶ}}。ライバルと {{遠|とお}}くまで
   {{続|つづ}}けていきましょう。
 translation_it: >-
-  Andrà sicuramente tutto bene. Continuiamo ad andare lontano con il rivale.
+  Andrà sicuramente tutto bene. Continuiamo ad andare avanti fin lontano con il rivale.
 :::
 
 ## Nota finale

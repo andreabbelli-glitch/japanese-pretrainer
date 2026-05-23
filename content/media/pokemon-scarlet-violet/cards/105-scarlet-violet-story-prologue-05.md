@@ -38,9 +38,9 @@ id: term-takara-sagashi
 lemma: 宝探し
 reading: たからさがし
 romaji: takara sagashi
-meaning_it: Treasure Hunt / caccia al proprio tesoro
+meaning_it: caccia al tesoro
 notes_it: >-
-  E l'etichetta della fase di esplorazione libera. `{{宝|たから}}{{探|さが}}し` non
+  È l'etichetta della fase di esplorazione libera. `{{宝|たから}}{{探|さが}}し` non
   restringe l'obiettivo a un oggetto: nel gioco copre incontri, prove e rotte
   alternative che avanzano la storia attraverso scelte del giocatore.
 :::
@@ -49,7 +49,7 @@ id: term-champion-rank
 lemma: チャンピオンランク
 reading: チャンピオンランク
 romaji: chanpion ranku
-meaning_it: Champion Rank / rango Campione
+meaning_it: rango Campione
 notes_it: >-
   In Paldea indica un rango ufficiale riconosciuto dalla Lega Pokemon dopo il
   percorso Gym e il test finale. Quando il dialogo usa `チャンピオンランク` o
@@ -63,7 +63,7 @@ reading: ジムバッジ
 romaji: jimu bajji
 meaning_it: Medaglia Palestra
 notes_it: >-
-  Segna il superamento di un Gym, non un semplice souvenir. Nel flusso di
+  Segna il superamento di una Palestra, non un semplice souvenir. Nel flusso di
   Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemona e, piu avanti,
   incidono anche su quali Pokemon forti ti obbediscono senza problemi.
 :::
@@ -90,7 +90,7 @@ meaning_it: X sarebbe... / quanto a X...
 aliases: [～っていうのは]
 notes_it: >-
   Introduce una definizione in registro parlato. Dopo `Xってのは` arriva spesso la
-  spiegazione pratica del termine: che cos'e, come funziona o che ruolo ha.
+  spiegazione pratica del termine: che cos'è, come funziona o che ruolo ha.
 :::
 :::card
 id: card-tte-no-wa-concept
@@ -104,14 +104,14 @@ example_jp: >-
   チャンピオンランクってのは ポケモンリーグに {{認|みと}}められた
   {{強|つよ}}い トレーナーの ことだよ。
 example_it: >-
-  Il Champion Rank sarebbe il rango degli Allenatori forti riconosciuti dalla
+  Il rango Campione sarebbe il rango degli Allenatori forti riconosciuti dalla
   Lega Pokemon.
 :::
 :::grammar
 id: grammar-dake-ja-dame
 pattern: ～だけじゃ ダメ
 title: Non basta solo...
-meaning_it: non e sufficiente limitarsi a...
+meaning_it: non è sufficiente limitarsi a...
 aliases: [～だけではダメ]
 notes_it: >-
   Questo pattern segnala che una condizione da sola non basta. Nei dialoghi
@@ -153,17 +153,17 @@ example_jp: >-
   {{宝|たから}}{{探|さが}}しでは ジムに {{挑戦|ちょうせん}}したり
   {{困|こま}}っている {{人|ひと}}を {{助|たす}}けたり する。
 example_it: >-
-  Nel Treasure Hunt puoi per esempio sfidare i Gym oppure aiutare chi e in
-  difficolta.
+  Nella caccia al tesoro puoi per esempio sfidare le Palestre oppure aiutare chi
+  è in difficoltà.
 :::
 :::grammar
 id: grammar-to-wa-itte-mo
 pattern: ～とはいっても
 title: Anche se si chiama / anche se si dice
-meaning_it: anche se si dice X, in realta...
+meaning_it: anche se si dice X, in realtà...
 notes_it: >-
   Corregge una lettura troppo letterale di quello che e stato appena detto:
-  "anche se si dice X, in realta...". Serve a precisare o ridimensionare un
+  "anche se si dice X, in realtà...". Serve a precisare o ridimensionare un
   termine precedente.
 :::
 :::card

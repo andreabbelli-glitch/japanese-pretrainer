@@ -24,7 +24,7 @@ Il punto pratico e partire da [{{番|ばん}}](term:term-ch-b8-entry-1) e dagli 
 - [{{番|ばん}}](term:term-ch-b8-entry-1) - numero; suffisso/contatore ordinale.
 - [ドガッ](term:term-ch-b8-doga-2) - crac; botta forte.
 - [{{本|ほん}}](term:term-ch-b8-entry-3) - libro.
-- [{{行|い}}ってらっしゃい](term:term-ch-b8-tterasshai-4) - vai e torna sano; a dopo.
+- [{{行|い}}ってらっしゃい](term:term-ch-b8-tterasshai-4) - vai e torna; a dopo.
 - [イトック](term:term-ch-b8-itokku-5) - Itok.
 - [{{女王|じょうおう}}](term:term-ch-b8-entry-6) - regina.
 - [お{{兄|にい}}さん](term:term-ch-b8-osan-7) - fratello maggiore; giovane uomo.

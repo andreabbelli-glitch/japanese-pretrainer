@@ -76,7 +76,7 @@ example_it: >-
 id: grammar-g059-dire-chiamarsi
 pattern: ～{{言|い}}う / ～って{{言|い}}う
 title: Dire / chiamarsi
-meaning_it: dire / chiamarsi
+meaning_it: dire / chiamare
 notes_it: >-
   Formazione: frase + と言う. Per citazioni e per introdurre nomi/termini.
 :::
@@ -87,7 +87,7 @@ entry_type: grammar
 entry_id: grammar-g059-dire-chiamarsi
 card_type: concept
 front: "～{{言|い}}う / ～って{{言|い}}う"
-back: dire / chiamarsi
+back: dire / chiamare
 example_jp: >-
   みんなは ジムって{{言|い}}う。
 example_it: >-
@@ -346,7 +346,7 @@ id: term-v302-deai
 lemma: 出会い
 reading: であい
 romaji: deai
-meaning_it: incontri
+meaning_it: incontro significativo
 notes_it: >-
   出会い è un incontro significativo o nuovo. In frasi narrative può segnalare
   l'inizio di un rapporto o di una scena.
@@ -358,7 +358,7 @@ entry_type: term
 entry_id: term-v302-deai
 card_type: recognition
 front: "{{出会|であ}}い"
-back: incontri
+back: incontro significativo
 example_jp: >-
   {{新|あたら}}しい {{出会|であ}}いが ある。
 example_it: >-

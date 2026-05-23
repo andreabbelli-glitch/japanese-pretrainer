@@ -55,7 +55,7 @@ La lettura diventa più semplice quando separi tre livelli: coordinate della map
 - [ナッペ{{山|やま}}](term:term-v685-nappeyama) — Glaseado Mountain
 - [{{鬼面衆|きめんしゅう}}](term:term-v686-kimenshuu) — gruppo delle maschere dell'orco
 - [チャンプルタウン](term:term-v687-chanpurutaun) — Medali
-- [スイリョクタウン](term:term-v688-suiryokutaun) — Mossui Town
+- [スイリョクタウン](term:term-v688-suiryokutaun) — Verdegiada
 - [ハッコウシティ](term:term-v689-hakkoushiti) — Levincia
 - [ベイクタウン](term:term-v690-beikutaun) — Alfornada
 - [カラフシティ](term:term-v691-karafushiti) — Cascarrafa
@@ -66,7 +66,7 @@ La lettura diventa più semplice quando separi tre livelli: coordinate della map
 - [プラトタウン](term:term-v702-puratotaun) — Los Platos
 - [あとのせエフェクト](term:term-v705-atonoseefekuto) — effetto aggiunto dopo lo scatto
 - [デコフレーム](term:term-v706-dekofureemu) — cornice decorativa
-- [センタースクエア](term:term-v707-sentaasukuea) — Center Square
+- [センタースクエア](term:term-v707-sentaasukuea) — Piazza Centrale
 - [きのみ{{台|だい}}](term:term-v709-kinomidai) — supporto per bacche
 - [ピケタウン](term:term-v710-piketaun) — Zapapico
 
@@ -236,7 +236,7 @@ translation_it: >-
 jp: >-
   ユニオンサークルで サークルミッションを {{始|はじ}}めます。
 translation_it: >-
-  Nel Cerchio Unione avvio una missione di gruppo.
+  Nella Cerchia contatto avvio una missione di gruppo.
 :::
 
 :::example_sentence

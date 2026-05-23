@@ -91,10 +91,10 @@ lemma: "化する"
 reading: "かする"
 romaji: "kasuru"
 meaning_it: >-
-  trasformarsi in; rendere tale
+  diventare; trasformarsi in
 pos: suru-verb
 notes_it: >-
-  Nel Book 7, {{化|か}}する entra come trasformarsi in; rendere tale. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 7, {{化|か}}する entra come diventare; trasformarsi in. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -416,11 +416,11 @@ card_type: recognition
 front: >-
   {{化|か}}する
 back: >-
-  かする - trasformarsi in; rendere tale
+  かする - diventare; trasformarsi in
 example_jp: >-
   {{怪物|かいぶつ}}{{化|か}}する。
 example_it: >-
-  Si trasforma in mostro.
+  Si trasforma in un mostro.
 notes_it: >-
   Riconosci {{化|か}}する come elemento operativo del Book 7: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-7, lesson-03]
@@ -686,7 +686,7 @@ back: >-
 example_jp: >-
   カルの{{分|ぶん}}もある。
 example_it: >-
-  C'e anche la parte di Kal.
+  C'e anche la porzione per Kal.
 notes_it: >-
   Riconosci {{分|ぶん}} come elemento operativo del Book 7: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-7, lesson-03]

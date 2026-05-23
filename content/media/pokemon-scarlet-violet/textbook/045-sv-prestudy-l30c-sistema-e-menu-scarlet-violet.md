@@ -303,7 +303,7 @@ translation_it: >-
 jp: >-
   {{岩山|いわやま}}の {{近|ちか}}くでは、{{障害物|しょうがいぶつ}}の {{背後|はいご}}に {{注意|ちゅうい}}する。
 translation_it: >-
-  Vicino alla montagna rocciosa, faccio attenzione al retro degli ostacoli.
+  Vicino alla montagna rocciosa, faccio attenzione a ciò che c'è dietro gli ostacoli.
 :::
 
 :::example_sentence
@@ -317,7 +317,7 @@ translation_it: >-
 jp: >-
   {{順位|じゅんい}}を {{確認|かくにん}}したら、{{有利|ゆうり}}な レンタルチームを {{選|えら}}ぶぜ。
 translation_it: >-
-  Dopo aver controllato la posizione, scelgo un team a noleggio vantaggioso.
+  Dopo aver controllato la posizione, scelgo un team a noleggio vantaggioso, vedrai.
 :::
 
 ---

@@ -135,7 +135,7 @@ back: >-
 example_jp: >-
   このどうぐは いろんなポケモンに {{使|つか}}えるね。
 example_it: >-
-  Questo strumento può essere usato su vari Pokémon, vero.
+  Questo strumento si può usare su vari Pokémon, vero?
 notes_it: >-
   {{使|つか}}える è la forma potenziale di {{使|つか}}う, ma nel parlato informale può anche voler dire “essere utile”. Con に si marca il bersaglio o destinatario dell'uso, come in ポケモンに{{使|つか}}える.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
@@ -199,7 +199,7 @@ entry_id: term-anki-l13-kare
 card_type: recognition
 front: '{{彼|かれ}}'
 back: >-
-  かれ — lui; il suo ({{彼|かれ}}の). Pronome maschile di terza persona, usato per riferirsi a qualcuno non presente nella conversazione diretta.
+  かれ — lui; fidanzato in certi contesti. Pronome maschile di terza persona; {{彼|かれ}}の significa 'suo/di lui'.
 example_jp: >-
   {{彼|かれ}}は アカデミーの {{先|せん}}{{生|せい}}だ。
 example_it: >-

@@ -11,7 +11,7 @@ id: term-anki-l06-uwasa
 lemma: 噂
 reading: うわさ
 romaji: uwasa
-meaning_it: voce; rumor
+meaning_it: voce; diceria
 notes_it: >-
   La parola {{噂|うわさ}} indica una diceria, una voce che circola. Si associa frequentemente al verbo {{聞|き}}く per "sentire una voce" o {{流|なが}}れる per una voce che "gira".
 level_hint: custom
@@ -23,7 +23,7 @@ reading: げんごがく
 romaji: gengogaku
 meaning_it: linguistica
 notes_it: >-
-  Composto da {{言|げん}}{{語|ご}} (lingua/linguaggio) e il suffisso {{学|まな}} (studio/scienza). Nel contesto dell'Accademia, indica le lezioni di lingue impartite da professori come セイジ (Zim).
+  Composto da {{言|げん}}{{語|ご}} (lingua/linguaggio) e il suffisso {{学|まな}} (studio/scienza). Nel contesto dell'Accademia, richiama la materia di linguistica insegnata da professori come セイジ (Zim).
 level_hint: custom
 :::
 :::term
@@ -137,7 +137,7 @@ example_jp: >-
 example_it: >-
   Le lezioni di linguistica del professor Zim sono interessanti.
 notes_it: >-
-  Composto da {{言|げん}}{{語|ご}} (lingua/linguaggio) e il suffisso {{学|まな}} (studio/scienza). Nel contesto dell'Accademia, indica le lezioni di lingue impartite da professori come セイジ (Zim).
+  Composto da {{言|げん}}{{語|ご}} (lingua/linguaggio) e il suffisso {{学|まな}} (studio/scienza). Nel contesto dell'Accademia, richiama la materia di linguistica insegnata da professori come セイジ (Zim).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::
 :::card
@@ -267,7 +267,7 @@ entry_id: term-anki-l06-kikai
 card_type: recognition
 front: '{{機|き}}{{械|かい}}'
 back: >-
-  きかい — macchina; apparecchiatura meccanica. Si differenzia da {{道|どう}}{{具|ぐ}} (strumento manuale) perché implica componenti interni complessi e spesso alimentazione elettrica o futuristica.
+  きかい — macchina; apparecchiatura meccanica. Si differenzia da {{道|どう}}{{具|ぐ}} (strumento/utensile) perché rimanda a una macchina o apparecchiatura con meccanismi interni.
 example_jp: >-
   タイムマシンは とても {{複|ふく}}{{雑|ざつ}}な {{機|き}}{{械|かい}} です。
 example_it: >-

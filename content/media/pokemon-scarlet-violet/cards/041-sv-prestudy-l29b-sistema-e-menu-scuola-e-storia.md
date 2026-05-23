@@ -364,7 +364,7 @@ back: ricordo / commemorazione
 example_jp: >-
   {{入学|にゅうがく}}の {{記念|きねん}}に {{写真|しゃしん}}を {{撮|と}}ります。
 example_it: >-
-  Per ricordo dell'ingresso a scuola scatto una foto.
+  Come ricordo dell'ingresso a scuola, scatto una foto.
 :::
 :::term
 id: term-v526-benri
@@ -569,7 +569,7 @@ back: uniforme
 example_jp: >-
   {{制服|せいふく}}に {{着替|きが}}えて {{登校|とうこう}}します。
 example_it: >-
-  Mi cambio nell'uniforme e vado a scuola.
+  Indosso l'uniforme e vado a scuola.
 :::
 :::term
 id: term-v535-bukatsu

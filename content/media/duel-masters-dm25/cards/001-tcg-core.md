@@ -992,7 +992,7 @@ front: >-
   クリーチャーをタップしてもよい。
 back: >-
   Non può attaccare il giocatore avversario; quando una creatura avversaria
-  attacca, puoi tapparla al suo posto per bloccare.
+  attacca, puoi invece tappare questa creatura per bloccare.
 example_jp: >-
   ブロッカーを{{持|も}}つクリーチャーは、
   {{相手|あいて}}プレイヤーを{{直接|ちょくせつ}}{{攻撃|こうげき}}できない。

@@ -24,7 +24,7 @@ Il punto pratico e partire da [{{容赦|ようしゃ}}](term:term-ch-b7-entry-23
 - [{{容赦|ようしゃ}}](term:term-ch-b7-entry-23) - clemenza; andarci piano.
 - [{{追|お}}い{{詰|つ}}める](term:term-ch-b7-imeru-24) - mettere alle strette.
 - [{{許|ゆる}}す](term:term-ch-b7-su-25) - perdonare; permettere.
-- [いい{{加減|かげん}}](term:term-ch-b7-ii-26) - basta; approssimativo.
+- [いい{{加減|かげん}}](term:term-ch-b7-ii-26) - approssimativo; irresponsabile; quanto basta / moderato.
 - [{{届|とど}}ける](term:term-ch-b7-keru-27) - consegnare.
 - [{{調合|ちょうごう}}](term:term-ch-b7-entry-28) - miscela; preparazione.
 - [{{寝静|ねしず}}まる](term:term-ch-b7-maru-29) - calare il silenzio dopo che tutti dormono.

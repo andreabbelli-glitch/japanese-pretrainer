@@ -178,7 +178,7 @@ Qui [わ／わよ a fine frase](grammar:grammar-ch-b7-a-fine-frase-13) vale: agg
 jp: >-
   {{楽|たの}}しくていい。
 translation_it: >-
-  E divertente e va bene.
+  È bello perché è divertente.
 :::
 
 Qui [aggettivo in い + くて](grammar:grammar-ch-b7-aggettivo-in-14) vale: gli aggettivi in い usano la forma avverbiale piu て.

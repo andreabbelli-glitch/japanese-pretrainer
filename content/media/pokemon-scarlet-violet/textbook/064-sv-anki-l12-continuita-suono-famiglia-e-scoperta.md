@@ -123,7 +123,7 @@ translation_it: >-
 jp: >-
   フレンドリィショップで モンスターボールを {{3|みっ}}つ {{買|か}}った。
 translation_it: >-
-  Ho comprato tre Poké Ball al Pokémon Market.
+  Ho comprato tre Poké Ball al banco del negozio del Centro Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -223,7 +223,7 @@ translation_it: >-
 jp: >-
   ここに {{探|さが}}していた スパイスが {{見|み}}つかる はずだ。
 translation_it: >-
-  Qui dovrebbe trovarsi la spezia che stavamo cercando.
+  Qui dovrebbe saltare fuori la spezia che stavamo cercando.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -256,7 +256,7 @@ translation_it: >-
 jp: >-
   サロンで {{髪型|かみがた}}を {{変|か}}えてから、フレンドリィショップで モンスターボールを {{3|みっ}}つ {{買|か}}った。
 translation_it: >-
-  Dopo aver cambiato acconciatura al salone, ho comprato tre Poké Ball al Pokémon Market.
+  Dopo aver cambiato acconciatura al salone, ho comprato tre Poké Ball al banco del negozio del Centro Pokémon.
 :::
 
 :::example_sentence
@@ -270,7 +270,7 @@ translation_it: >-
 jp: >-
   エリアゼロで {{未確認|みかくにん}}の ポケモンが {{見|み}}つかるかもしれない。
 translation_it: >-
-  Nell'Area Zero potrebbe venire trovato un Pokémon non identificato.
+  Nell'Area Zero potrebbe saltare fuori un Pokémon non identificato.
 :::
 
 ## Nota finale

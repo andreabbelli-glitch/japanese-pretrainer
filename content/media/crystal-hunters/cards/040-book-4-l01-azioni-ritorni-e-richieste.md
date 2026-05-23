@@ -325,7 +325,7 @@ back: >-
 example_jp: >-
   「{{出来|でき}}る」はどうしです。
 example_it: >-
-  Questa forma esprime l'azione: saper fare.
+  「できる」 e' un verbo: significa saper fare / poter fare.
 notes_it: >-
   Riconosci {{出来|でき}}る come elemento operativo del Book 4: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-4, lesson-01]
@@ -572,7 +572,7 @@ back: >-
 example_jp: >-
   ここで{{換金|かんきん}}できる。
 example_it: >-
-  Qui si puo cambiare in denaro.
+  Qui si puo convertire in denaro / incassare.
 notes_it: >-
   Riconosci {{換金|かんきん}} come elemento operativo del Book 4: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-4, lesson-01]
@@ -606,7 +606,7 @@ card_type: recognition
 front: >-
   ご{{覧|らん}}ください
 back: >-
-  ごらんください - per favore guarda/guardi
+  ごらんください - la prego di guardare; guardi
 example_jp: >-
   ご{{覧|らん}}ください。
 example_it: >-
@@ -667,7 +667,7 @@ back: >-
 example_jp: >-
   {{気|き}}に{{召|め}}す。
 example_it: >-
-  piacere
+  essere di suo gradimento / piacerle
 notes_it: >-
   Riconosci {{気|き}}に{{召|め}}す come elemento operativo del Book 4: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-4, lesson-01]
@@ -686,7 +686,7 @@ back: >-
 example_jp: >-
   「{{儲|もう}}かる」はどうしです。
 example_it: >-
-  Questa forma esprime l'azione: essere redditizio.
+  「もうかる」 e' un verbo: significa rendere / essere redditizio.
 notes_it: >-
   Riconosci {{儲|もう}}かる come elemento operativo del Book 4: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-4, lesson-01]

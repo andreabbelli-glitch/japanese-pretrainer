@@ -301,14 +301,14 @@ translation_it: >-
 jp: >-
   {{目標|もくひょう}}への {{行|い}}き{{方|かた}}は、 ヒントで {{確認|かくにん}}できます。
 translation_it: >-
-  Puoi controllare negli indizi come arrivare all'obiettivo.
+  Puoi verificare con gli indizi come arrivare all'obiettivo.
 :::
 
 :::example_sentence
 jp: >-
   {{得意|とくい}}な {{相性|あいしょう}}なら、 {{本気|ほんき}}で {{参加|さんか}}するつもりだ。
 translation_it: >-
-  Se il matchup è favorevole, ho intenzione di partecipare sul serio.
+  Se è un matchup in cui sono forte, ho intenzione di partecipare sul serio.
 :::
 
 ## Nota finale

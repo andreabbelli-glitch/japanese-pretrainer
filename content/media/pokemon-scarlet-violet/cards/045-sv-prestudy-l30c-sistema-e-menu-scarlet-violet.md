@@ -150,7 +150,7 @@ back: finale ruvida / maschile
 example_jp: >-
   {{次|つぎ}}は ぜったい {{勝|か}}つだぜ。
 example_it: >-
-  La prossima volta vinco di sicuro, amico.
+  La prossima volta vinco di sicuro, vedrai.
 :::
 :::term
 id: term-v615-doukyuusei
@@ -461,7 +461,7 @@ back: vantaggioso
 example_jp: >-
   こちらが {{有利|ゆうり}}です。
 example_it: >-
-  Qui siamo avvantaggiati.
+  Siamo noi ad essere avvantaggiati.
 :::
 :::term
 id: term-v629-koudai

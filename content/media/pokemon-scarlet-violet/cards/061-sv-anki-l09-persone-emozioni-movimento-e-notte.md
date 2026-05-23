@@ -13,7 +13,7 @@ reading: かお
 romaji: kao
 meaning_it: volto; faccia
 notes_it: >-
-  {{顔|かお}} indica il "volto" o la "faccia". Oltre alla sua valenza puramente fisica, in giapponese è comunemente usato per descrivere le emozioni visibili sul volto di qualcuno, come nell'espressione どんな{{顔|かお}}をする (letteralmente "che faccia fare").
+  {{顔|かお}} indica il "volto" o la "faccia". Oltre alla sua valenza puramente fisica, in giapponese è comunemente usato per descrivere le emozioni visibili sul volto di qualcuno, come nell'espressione どんな{{顔|かお}}をする (letteralmente "fare che tipo di faccia").
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: つたえる
 romaji: tsutaeru
 meaning_it: comunicare; trasmettere
 notes_it: >-
-  Il verbo {{伝|つた}}える racchiude l'idea di far arrivare un'informazione da una fonte a un destinatario. La persona a cui si riferisce il messaggio prende に, mentre il contenuto del messaggio prende を.
+  Il verbo {{伝|つた}}える racchiude l'idea di far arrivare un'informazione da una fonte a un destinatario. La persona a cui si comunica il messaggio prende に, mentre il contenuto del messaggio prende を.
 level_hint: custom
 :::
 :::term
@@ -120,7 +120,7 @@ example_jp: >-
 example_it: >-
   Koraidon, che faccia stai facendo?
 notes_it: >-
-  {{顔|かお}} indica il "volto" o la "faccia". Oltre alla sua valenza puramente fisica, in giapponese è comunemente usato per descrivere le emozioni visibili sul volto di qualcuno, come nell'espressione どんな{{顔|かお}}をする (letteralmente "che faccia fare").
+  {{顔|かお}} indica il "volto" o la "faccia". Oltre alla sua valenza puramente fisica, in giapponese è comunemente usato per descrivere le emozioni visibili sul volto di qualcuno, come nell'espressione どんな{{顔|かお}}をする (letteralmente "fare che tipo di faccia").
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-09]
 :::
 :::card
@@ -171,7 +171,7 @@ example_jp: >-
 example_it: >-
   Ho qualcosa da riferire al preside Clavel.
 notes_it: >-
-  Il verbo {{伝|つた}}える racchiude l'idea di far arrivare un'informazione da una fonte a un destinatario. La persona a cui si riferisce il messaggio prende に, mentre il contenuto del messaggio prende を.
+  Il verbo {{伝|つた}}える racchiude l'idea di far arrivare un'informazione da una fonte a un destinatario. La persona a cui si comunica il messaggio prende に, mentre il contenuto del messaggio prende を.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-09]
 :::
 :::card
@@ -267,7 +267,7 @@ entry_id: term-anki-l09-omise
 card_type: recognition
 front: 'お{{店|みせ}}'
 back: >-
-  おみせ — negozio Forma abbellita e più colloquiale di {{店|みせ}} (negozio) grazie all'aggiunta del prefisso onorifico お-.
+  おみせ — negozio. Forma più cortese e naturale di {{店|みせ}} (negozio) grazie all'aggiunta del prefisso onorifico お-.
 example_jp: >-
   {{新|あたら}}しいお{{店|みせ}}でサンドウィッチの{{材料|ざいりょう}}を{{買|か}}おう。
 example_it: >-

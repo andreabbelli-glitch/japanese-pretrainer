@@ -35,7 +35,7 @@ Il punto pratico e partire da [{{力|ちから}}になる](term:term-ch-b9-ninar
 - [に{{加|くわ}}え](term:term-ch-b9-nie-56) - in aggiunta a; oltre a.
 - [{{景品|けいひん}}](term:term-ch-b9-entry-57) - premio; omaggio.
 - [{{上手|じょうず}}](term:term-ch-b9-entry-58) - abile; bravo.
-- [{{愛顧|あいこ}}](term:term-ch-b9-entry-59) - patronato; favore continuato.
+- [{{愛顧|あいこ}}](term:term-ch-b9-entry-59) - fedelta'; sostegno continuativo; favore accordato.
 - [{{奢|おご}}り](term:term-ch-b9-ri-60) - offerta; trattare qualcuno.
 - [{{脱走|だっそう}}](term:term-ch-b9-entry-61) - fuga; evasione.
 - [{{兄|あに}}](term:term-ch-b9-entry-62) - fratello maggiore.

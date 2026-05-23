@@ -338,7 +338,7 @@ back: >-
 example_jp: >-
   カルに{{手|て}}を{{貸|か}}す。
 example_it: >-
-  Do una mano a Kal.
+  Do' una mano a Kal.
 notes_it: >-
   Riconosci {{手|て}}を{{貸|か}}す come elemento operativo del Book 6: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-6, lesson-02]
@@ -471,7 +471,7 @@ back: >-
 example_jp: >-
   {{何度|なんど}}も{{来|く}}る。
 example_it: >-
-  Torna molte volte.
+  Viene molte volte.
 notes_it: >-
   Riconosci {{何度|なんど}}も come elemento operativo del Book 6: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-6, lesson-02]

@@ -201,7 +201,7 @@ translation_it: >-
 jp: >-
   ボスの ポケモンの ＨＰを {{半分|はんぶん}}{{以下|いか}}まで {{削|けず}}ったぞ！
 translation_it: >-
-  Abbiamo ridotto i PS del Pokémon del boss fin sotto la metà!
+  Abbiamo ridotto i PS del Pokémon del boss fino a metà o meno!
 :::
 
 #### 🗺️ Anatomia della frase
@@ -257,7 +257,7 @@ perché ogni istante può cambiare l'esito.
 jp: >-
   ペパーの ポケモンを {{助|たす}}けるため、{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}って {{秘|ひ}}{{伝|でん}}スパイスを {{探|さが}}した。
 translation_it: >-
-  Per aiutare il Pokémon di Pepper, abbiamo cercato le Spezie Segrete senza perdere un istante.
+  Per aiutare il Pokémon di Pepe, abbiamo cercato le Spezie Segrete senza perdere un istante.
 :::
 
 #### 🗺️ Anatomia della frase

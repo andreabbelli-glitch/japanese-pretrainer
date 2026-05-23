@@ -135,7 +135,7 @@ Nei menu il giapponese spesso non è narrativo: è un'etichetta di stato. Devi c
 jp: >-
   プロフィールアプリの {{通知|つうち}}を {{非表示|ひひょうじ}}に します。
 translation_it: >-
-  Rendo nascoste le notifiche dell'app del profilo.
+  Nascondo le notifiche dell'app del profilo.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -261,7 +261,7 @@ I tre pattern grammaticali di questa schermata e dei dialoghi vicini lavorano su
 jp: >-
   {{拙者|せっしゃ}}は {{道具|どうぐ}}について {{説明|せつめい}}するでござる。
 translation_it: >-
-  Io spiegherò gli strumenti, in registro samurai.
+  Io, in stile samurai, spiegherò gli strumenti.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -281,7 +281,7 @@ translation_it: >-
 jp: >-
   {{買|か}}い{{物|もの}}ばっかり していないで、ラインナップについて {{確認|かくにん}}して。
 translation_it: >-
-  Non stare solo a comprare: controlla il lineup.
+  Non stare solo a comprare: controlla l'assortimento.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -308,7 +308,7 @@ translation_it: >-
 jp: >-
   プロフィールアプリの {{通知|つうち}}を {{非表示|ひひょうじ}}に します。
 translation_it: >-
-  Rendo nascoste le notifiche dell'app del profilo.
+  Nascondo le notifiche dell'app del profilo.
 :::
 
 :::example_sentence

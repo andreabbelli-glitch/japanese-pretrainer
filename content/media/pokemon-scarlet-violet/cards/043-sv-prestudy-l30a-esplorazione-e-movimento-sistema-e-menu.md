@@ -26,7 +26,7 @@ back: che rabbia, però…
 example_jp: >-
   くやしいけど、 {{次|つぎ}}は {{勝|か}}つ。
 example_it: >-
-  Che rabbia, però….
+  Che rabbia, però la prossima volta vinco.
 :::
 :::term
 id: term-e091-shitemimashou
@@ -48,7 +48,7 @@ back: proviamo a…
 example_jp: >-
   {{一回|いっかい}} {{見|み}}てみましょう。
 example_it: >-
-  Proviamo a….
+  Proviamo a dare un'occhiata.
 :::
 :::term
 id: term-e092-okaeri
@@ -211,7 +211,7 @@ back: passare attraverso / uscire da
 example_jp: >-
   この {{道|みち}}を {{抜|ぬ}}ける。
 example_it: >-
-  Passo attraverso questa strada.
+  Percorro questa strada fino in fondo.
 :::
 :::term
 id: term-v503-nukemichi
@@ -477,7 +477,7 @@ back: arrivo
 example_jp: >-
   まもなく {{到着|とうちゃく}} します。
 example_it: >-
-  Arrivo tra poco.
+  L'arrivo è previsto a breve.
 :::
 :::term
 id: term-v582-tokubetsukoushi

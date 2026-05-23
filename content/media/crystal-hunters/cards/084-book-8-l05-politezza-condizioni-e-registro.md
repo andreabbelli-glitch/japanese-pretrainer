@@ -474,7 +474,7 @@ back: >-
 example_jp: >-
   {{行|い}}ってらっしゃい。
 example_it: >-
-  Vai e torna sano.
+  Vai, ci vediamo dopo.
 notes_it: >-
   Nel Book 8, questo pattern e un punto di lettura: non tradurlo da solo, usalo per decidere funzione, tono o rapporto fra due battute.
 tags: [crystal-hunters, book-8, grammar]
@@ -778,7 +778,7 @@ back: >-
 example_jp: >-
   お̇れ̇のバッジだ。
 example_it: >-
-  Questo e il mio badge, con puntini di enfasi sopra 'ore'.
+  È il mio badge.
 notes_it: >-
   Nel Book 8, questo pattern e un punto di lettura: non tradurlo da solo, usalo per decidere funzione, tono o rapporto fra due battute.
 tags: [crystal-hunters, book-8, grammar]

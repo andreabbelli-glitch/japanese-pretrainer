@@ -52,7 +52,7 @@ Quando un termine ha kanji, non trattarlo come decorazione. Il kanji ti aiuta a 
 jp: >-
   {{行|い}}くぞ！
 translation_it: >-
-  Vado! / Arrivo! / Eccomi!
+  Andiamo! / Si parte!
 :::
 
 Qui [ぞ](grammar:grammar-ch-zo-emphasis) vale: aggiunge decisione o tono maschile alla battuta. La guida collega ぞ a parlanti da {{俺|おれ}}: non cambia il contenuto, ma rende l'uscita piu dura e assertiva.

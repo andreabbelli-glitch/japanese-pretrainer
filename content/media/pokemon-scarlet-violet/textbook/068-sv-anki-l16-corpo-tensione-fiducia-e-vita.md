@@ -216,8 +216,8 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `ポケモンを` ➔ **Bersaglio della fiducia**: `を` marca chi viene affidato
-    alla fiducia del parlante.
+*   `ポケモンを` ➔ **Bersaglio della fiducia**: `を` marca la persona o il
+    Pokémon verso cui è rivolta la fiducia, cioè su cui si fa affidamento.
 *   `{{信頼|しんらい}}していれば` ➔ **Condizione**: "se stai facendo
     affidamento su...".
 *   `きっと かてるよ` ➔ **Previsione incoraggiante**: la fiducia viene
@@ -315,7 +315,7 @@ translation_it: >-
 jp: >-
   ライバル{{同士|どうし}}、{{全力|ぜんりょく}}で バトルしようぜ！
 translation_it: >-
-  Sfidiamoci con tutte le nostre forze tra rivali!
+  Da rivali, sfidiamoci con tutte le nostre forze!
 :::
 
 #### 🗺️ Anatomia della frase

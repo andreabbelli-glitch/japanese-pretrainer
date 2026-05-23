@@ -33,7 +33,7 @@ id: term-e086-shitemoraeru
 lemma: 〜してもらえる？
 reading: 〜してもらえる？
 romaji: ~ shitemoraeru？
-meaning_it: potresti dare un'occhiata un attimo?
+meaning_it: potresti fare ... per me?
 notes_it: >-
   Richiesta comune nei dialoghi amichevoli.
 :::
@@ -44,7 +44,7 @@ entry_type: term
 entry_id: term-e086-shitemoraeru
 card_type: recognition
 front: "〜してもらえる？"
-back: potresti dare un'occhiata un attimo?
+back: potresti fare ... per me?
 example_jp: >-
   {{少|すこ}}し {{見|み}}てもらえる？
 example_it: >-
@@ -291,7 +291,7 @@ back: scala a pioli / ladder
 example_jp: >-
   はしごを のぼります。
 example_it: >-
-  Sali la scala a pioli.
+  Salgo la scala a pioli.
 :::
 :::term
 id: term-v460-kyouryoku-suru
@@ -360,7 +360,7 @@ back: curare / far recuperare
 example_jp: >-
   ポケモンを {{回復|かいふく}}させる。
 example_it: >-
-  Faccio recuperare il Pokémon.
+  Faccio recuperare energie al Pokémon.
 :::
 :::term
 id: term-v463-tegowai

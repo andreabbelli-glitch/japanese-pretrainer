@@ -101,7 +101,7 @@ translation_it: >-
 jp: >-
   ジムテストを クリアする。
 translation_it: >-
-  Supera la prova palestra.
+  Supera il test della palestra.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -264,7 +264,7 @@ translation_it: >-
 jp: >-
   バトルの {{途中|とちゅう}}で {{制限|せいげん}}{{時間|じかん}}を {{知|し}}る。
 translation_it: >-
-  Durante la battaglia vengo a sapere il tempo limite.
+  Durante la battaglia scopro qual è il tempo limite.
 :::
 
 #### 🗺️ Anatomia della frase

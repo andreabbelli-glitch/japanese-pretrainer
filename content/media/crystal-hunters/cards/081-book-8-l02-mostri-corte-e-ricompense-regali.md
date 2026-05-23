@@ -496,7 +496,7 @@ back: >-
 example_jp: >-
   バッジを{{拝見|はいけん}}します。
 example_it: >-
-  Guardo il badge con registro umile.
+  Do un'occhiata al badge.
 notes_it: >-
   Riconosci {{拝見|はいけん}} come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-02]
@@ -648,7 +648,7 @@ back: >-
 example_jp: >-
   {{準備|じゅんび}}{{万端|ばんたん}}だ。
 example_it: >-
-  I preparativi sono perfetti.
+  È tutto pronto.
 notes_it: >-
   Riconosci {{万端|ばんたん}} come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-02]

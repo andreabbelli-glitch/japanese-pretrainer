@@ -238,7 +238,7 @@ translation_it: >-
 jp: >-
   {{子|こ}}{{供|ども}}でも {{長|なが}}い {{道|みち}}を {{歩|ある}}けば、たくさんの ポケモンに {{出|で}}{{会|あ}}う。
 translation_it: >-
-  Anche un bambino, se cammina lungo una strada lunga, incontra molti Pokémon.
+  Anche un bambino, se percorre una lunga strada, incontra molti Pokémon.
 :::
 
 :::example_sentence

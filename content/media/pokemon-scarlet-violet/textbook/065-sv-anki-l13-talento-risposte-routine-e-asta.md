@@ -118,7 +118,7 @@ translation_it: >-
 jp: >-
   このどうぐは いろんなポケモンに {{使|つか}}えるね。
 translation_it: >-
-  Questo strumento può essere usato su vari Pokémon, vero.
+  Questo strumento si può usare su vari Pokémon, vero?
 :::
 
 #### 🗺️ Anatomia della frase

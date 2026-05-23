@@ -220,7 +220,7 @@ Le parole di ruolo cambiano tono. [したっぱ](term:term-v530-shitappa) è col
 jp: >-
   {{入学|にゅうがく}}の {{記念|きねん}}に、{{宝食堂|たからしょくどう}}で {{写真|しゃしん}}を {{撮|と}}ります。
 translation_it: >-
-  Per ricordo dell'ingresso a scuola scatto una foto alla Treasure Eatery.
+  Come ricordo dell'ingresso a scuola, scatto una foto alla Treasure Eatery.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -310,7 +310,7 @@ translation_it: >-
 jp: >-
   {{制服|せいふく}}に {{着替|きが}}えて、{{生徒会長|せいとかいちょう}}からの {{連絡|れんらく}}に {{返事|へんじ}}を します。
 translation_it: >-
-  Mi cambio nell'uniforme e rispondo all'avviso del presidente del consiglio studentesco.
+  Indosso l'uniforme e rispondo alla comunicazione del presidente del consiglio studentesco.
 :::
 
 :::example_sentence

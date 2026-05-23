@@ -463,7 +463,7 @@ jp: >-
   アマテ・ユズリハ(マチュ)のように{{括弧|かっこ}}がある{{名前|なまえ}}は、{{本名|ほんみょう}}と{{呼|よ}}び{{名|な}}を{{分|わ}}けて{{読|よ}}みます。
 translation_it: >-
   In un nome con parentesi come Amate Yuzuriha (Machu), leggi separatamente
-  nome proprio e soprannome.
+  nome reale e soprannome.
 :::
 
 :::example_sentence

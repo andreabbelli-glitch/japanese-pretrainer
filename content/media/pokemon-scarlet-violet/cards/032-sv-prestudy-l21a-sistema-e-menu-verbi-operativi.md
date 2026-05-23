@@ -318,7 +318,7 @@ back: ricarica
 example_jp: >-
   テラスタルエネルギーを チャージします。
 example_it: >-
-  Ricarico l'energia Terastal.
+  Ricarico l'energia Teracristal.
 :::
 :::term
 id: term-v320-annai
@@ -341,7 +341,7 @@ back: guida / accompagnamento
 example_jp: >-
   {{町|まち}}を {{案内|あんない}}する。
 example_it: >-
-  Faccio da guida in città.
+  Faccio da guida per la città.
 :::
 :::term
 id: term-v321-mitame
@@ -456,7 +456,7 @@ back: vecchio
 example_jp: >-
   {{古|ふる}}い {{記録|きろく}}を {{見|み}}る。
 example_it: >-
-  Guardo un vecchio record.
+  Guardo una vecchia registrazione.
 :::
 :::term
 id: term-v326-aishou

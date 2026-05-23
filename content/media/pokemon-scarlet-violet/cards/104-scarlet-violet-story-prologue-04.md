@@ -79,8 +79,8 @@ example_jp: >-
   {{校長室|こう.ちょう.しつ}}に {{呼|よ}}ばれると {{大事|だいじ}}な
   {{話|はなし}}が {{始|はじ}}まる ことが {{多|おお}}い。
 example_it: >-
-  Quando vieni chiamato nell'ufficio del preside, in genere parte una scena che
-  aggiorna istruzioni o obiettivo.
+  Quando vieni chiamato nell'ufficio del preside, spesso comincia una
+  conversazione importante.
 :::
 :::term
 id: term-gakusei-ryou
@@ -251,7 +251,7 @@ example_jp: >-
   ジニア{{先生|せんせい}}に {{寮|りょう}}の {{部屋|へや}}を {{案内|あんない}}する
   ように {{言|い}}われたの。
 example_it: >-
-  La docente mi ha detto di accompagnarti alla tua stanza del dormitorio.
+  Il professor Jinia mi ha detto di accompagnarti alla tua stanza del dormitorio.
 :::
 :::grammar
 id: grammar-houdai
@@ -275,5 +275,5 @@ back: a volontà / illimitato / quanto vuoi
 example_jp: >-
   {{役立|やくだ}}つ {{施設|しせつ}}も {{使|つか}}い{{放題|ほうだい}} だって！
 example_it: >-
-  Dicono che le strutture utili si possano usare liberamente!
+  Dicono che anche le strutture utili si possano usare liberamente!
 :::

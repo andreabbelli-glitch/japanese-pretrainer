@@ -49,7 +49,7 @@ Quando un termine ha kanji, non trattarlo come decorazione. Il kanji ti aiuta a 
 jp: >-
   {{金|かね}}がある。
 translation_it: >-
-  C'e denaro.
+  Ci sono soldi.
 :::
 
 ## Esempi di ancoraggio
@@ -65,7 +65,7 @@ translation_it: >-
 jp: >-
   {{子|こ}}を{{抱|かか}}える。
 translation_it: >-
-  Tengo il bambino tra le braccia.
+  Tengo un bambino in braccio.
 :::
 
 :::example_sentence

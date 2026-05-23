@@ -158,7 +158,7 @@ Qui [Vていく／Vてくる](grammar:grammar-ch-b5-v-v-11) vale: puo indicare s
 jp: >-
   {{建物|たてもの}}が{{倒|たお}}れる。
 translation_it: >-
-  L'edificio sta per cadere.
+  L'edificio cade.
 :::
 
 Qui [soggetto con が](grammar:grammar-ch-b5-soggetto-con-12) vale: marca un soggetto appena notato o rilevante.

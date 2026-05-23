@@ -429,7 +429,7 @@ jp: >-
   フレンドリィショップでは モンスターボールや キズぐすりを LPで
   {{買|か}}える。
 translation_it: >-
-  Al Friendly Shop puoi comprare Monster Ball e medicine usando gli LP.
+  Al Friendly Shop puoi comprare Poké Ball e Pozioni usando gli LP.
 :::
 
 :::example_sentence
@@ -446,7 +446,7 @@ jp: >-
   テラスタルオーブを チャージしておくと {{次|つぎ}}の バトルで
   {{困|こま}}らない。
 translation_it: >-
-  Se tieni carico il Tera Orb, non hai problemi nel prossimo match.
+  Se tieni carico il Tera Orb, non ti troverai in difficoltà nel prossimo match.
 :::
 
 ---

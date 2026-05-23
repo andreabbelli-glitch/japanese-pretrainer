@@ -52,7 +52,7 @@ Quando un termine ha kanji, usa la lettura della parola intera. Crystal Hunters 
 jp: >-
   クリスタル・ハンターなんだ。
 translation_it: >-
-  Sono un Crystal Hunter, ecco perche.
+  Sono un Crystal Hunter.
 :::
 
 Qui [〜んだ／〜なんだ](grammar:grammar-ch-b6-ndananda-4) vale: spiega, conferma, chiede spiegazioni o da enfasi.
@@ -97,7 +97,7 @@ Qui [んだから](grammar:grammar-ch-b6-ndakara-8) vale: combina enfasi di ん�
 jp: >-
   {{怪物|かいぶつ}}と{{戦|たたか}}う。
 translation_it: >-
-  Combatto con un mostro.
+  Combatto contro un mostro.
 :::
 
 Qui [と come con](grammar:grammar-ch-b6-come-con-9) vale: marca compagnia o avversario.

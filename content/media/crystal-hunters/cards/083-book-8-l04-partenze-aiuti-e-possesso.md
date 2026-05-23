@@ -344,7 +344,7 @@ back: >-
 example_jp: >-
   お{{邪魔|じゃま}}します。
 example_it: >-
-  Permesso / disturbo entrando.
+  Permesso, scusate il disturbo.
 notes_it: >-
   Riconosci お{{邪魔|じゃま}}する come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-04]
@@ -401,7 +401,7 @@ back: >-
 example_jp: >-
   {{怪物|かいぶつ}}が{{襲|おそ}}い{{掛|か}}かる。
 example_it: >-
-  Il mostro si avventa.
+  Il mostro attacca.
 notes_it: >-
   Riconosci {{襲|おそ}}い{{掛|か}}かる come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-04]
@@ -477,7 +477,7 @@ back: >-
 example_jp: >-
   カルに{{加勢|かせい}}する。
 example_it: >-
-  Do rinforzo a Kal.
+  Vado in aiuto di Kal.
 notes_it: >-
   Riconosci {{加勢|かせい}} come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-04]
@@ -496,7 +496,7 @@ back: >-
 example_jp: >-
   お{{腹|なか}}が{{空|す}}く。
 example_it: >-
-  avere fame
+  Ho fame.
 notes_it: >-
   Riconosci お{{腹|なか}}が{{空|す}}く come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-04]
@@ -610,7 +610,7 @@ back: >-
 example_jp: >-
   もう{{潮時|しおどき}}だ。
 example_it: >-
-  E il momento di smettere / muoversi.
+  È ora di smettere.
 notes_it: >-
   Riconosci {{潮時|しおどき}} come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-04]

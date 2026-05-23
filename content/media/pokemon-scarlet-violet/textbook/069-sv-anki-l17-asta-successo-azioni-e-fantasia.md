@@ -33,7 +33,7 @@ scena sta parlando di routine, invito, eccellenza o immaginario fantastico.
 - [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken) — scoperta
 - [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu) — rifornimento
 - [{{優|ゆう}}{{秀|しゅう}}](term:term-anki-l17-yuushuu) — eccellente
-- [{{優|ゆう}}{{勝|しょう}}](term:term-anki-l17-yuushou) — vittoria; campionato
+- [{{優|ゆう}}{{勝|しょう}}](term:term-anki-l17-yuushou) — vittoria finale; trionfo in una competizione
 - [{{誘|さそ}}う](term:term-anki-l17-sasou) — invitare
 - [{{遊|あそ}}ぶ](term:term-anki-l17-asobu) — giocare; divertirsi
 - [{{竜|りゅう}}](term:term-anki-l17-ryuu) — drago

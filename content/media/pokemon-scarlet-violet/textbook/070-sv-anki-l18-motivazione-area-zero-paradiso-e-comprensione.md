@@ -26,7 +26,7 @@ Il passaggio dall'Accademia alle prove, dai guasti fisici alle apparizioni impro
 - [やる{{気|き}}](term:term-anki-l18-yaruki) — motivazione; voglia di fare
 - [{{壊|こわ}}れる](term:term-anki-l18-kowareru) — rompersi
 - [{{楽園|らくえん}}](term:term-anki-l18-rakuen) — paradiso
-- [{{活躍|かつやく}}](term:term-anki-l18-katsuyaku) — attività; successo attivo
+- [{{活躍|かつやく}}](term:term-anki-l18-katsuyaku) — distinguersi; avere un ruolo attivo; successo/prestazione notevole
 - [{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) — molto interessante / affascinante
 - [{{現|あらわ}}れる](term:term-anki-l18-arawareru) — apparire
 - [{{光|ひか}}る](term:term-anki-l18-hikaru) — brillare
@@ -282,7 +282,7 @@ translation_it: >-
 jp: >-
   ジムテストに {{向|む}}けて やる{{気|き}}を {{出|だ}}せば、{{合格者|ごうかくしゃ}}に なれるかも しれない。
 translation_it: >-
-  Se tiri fuori la motivazione per il test della palestra, potresti diventare tra i promossi.
+  Se tiri fuori la motivazione per il test della palestra, potresti diventare uno dei promossi.
 :::
 
 :::example_sentence

@@ -203,7 +203,7 @@ back: >-
 example_jp: >-
   フレンドリィショップで モンスターボールを {{3|みっ}}つ {{買|か}}った。
 example_it: >-
-  Ho comprato tre Poké Ball al Pokémon Market.
+  Ho comprato tre Poké Ball al banco del negozio del Centro Pokémon.
 notes_it: >-
   {{3|みっ}}つ fa parte del sistema di conteggio tradizionale giapponese. Si usa per contare oggetti generici (come le Poké Ball o gli strumenti) fino a dieci. Quando modifica un verbo (es. {{買|か}}う), di solito segue la particella dell'oggetto agendo da avverbio di quantità: ボールを{{3|みっ}}つ{{買|か}}う.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
@@ -271,7 +271,7 @@ back: >-
 example_jp: >-
   ここに {{探|さが}}していた スパイスが {{見|み}}つかる はずだ。
 example_it: >-
-  Qui dovrebbe trovarsi la spezia che stavamo cercando.
+  Qui dovrebbe saltare fuori la spezia che stavamo cercando.
 notes_it: >-
   Il verbo intransitivo {{見|み}}つかる indica la scoperta spontanea o accidentale di qualcosa ("farsi trovare", "venire alla luce"). L'oggetto scoperto è il soggetto grammaticale e prende が: スパイスが{{見|み}}つかる. Se indica l'essere stati scoperti da qualcuno (es. un Pokémon selvatico), la persona/creatura che scopre prende に.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]

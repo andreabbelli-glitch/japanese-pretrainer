@@ -125,7 +125,7 @@ translation_it: >-
 jp: >-
   あの{{子|こ}}の ポケモン、とても {{珍|めずら}}しい わね。
 translation_it: >-
-  Il Pokémon di quel ragazzo è davvero raro, vero?
+  Il Pokémon di quella persona è davvero raro, vero?
 :::
 
 #### 🗺️ Anatomia della frase
@@ -155,7 +155,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{準備|じゅんび}}が できたら` ➔ **Condizione**: "quando la preparazione sarà pronta".
+*   `{{準備|じゅんび}}が できたら` ➔ **Condizione**: "quando sarai pronto".
 *   `もう{{一度|いちど}}` ➔ **Secondo giro**: riapre la stessa azione, non introduce un evento scollegato.
 *   `{{話|はな}}しかけて くれ` ➔ **Richiesta informale**: "rivolgimi la parola / parlami".
 
@@ -227,21 +227,21 @@ Le stesse forme diventano più leggibili quando separi movimento, persona, denom
 jp: >-
   {{先生|せんせい}}に {{書類|しょるい}}を {{渡|わた}}してから、もう{{一度|いちど}} {{来|き}}て ください。
 translation_it: >-
-  Dopo aver consegnato i documenti all'insegnante, torna ancora una volta.
+  Dopo aver consegnato i documenti all'insegnante, torna di nuovo.
 :::
 
 :::example_sentence
 jp: >-
   あの{{子|こ}}は {{彼女|かのじょ}}の ことを よく {{知|し}}っている。
 translation_it: >-
-  Quel ragazzo conosce bene le cose che riguardano lei.
+  Quel ragazzo/quella ragazza la conosce bene.
 :::
 
 :::example_sentence
 jp: >-
   エリアゼロの {{最深部|さいしんぶ}}は、{{奇書|きしょ}}に {{書|か}}かれた {{場所|ばしょ}}と {{呼|よ}}ばれている。
 translation_it: >-
-  La parte più profonda dell'Area Zero viene chiamata il luogo descritto nel libro insolito.
+  La parte più profonda dell'Area Zero è nota come il luogo descritto in quello strano libro.
 :::
 
 :::example_sentence

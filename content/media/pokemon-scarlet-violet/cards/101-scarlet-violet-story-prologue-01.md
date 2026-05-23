@@ -28,7 +28,7 @@ back: preside / il preside
 example_jp: >-
   {{校長先生|こう.ちょう.せん.せい}}が {{家|いえ}}まで {{来|き}}てくれた。
 example_it: >-
-  Il preside è venuto fin davanti a casa.
+  Il preside è venuto fino a casa.
 :::
 :::term
 id: term-tennyuu
@@ -99,7 +99,7 @@ back: mi dispiace molto / non ho scuse
 example_jp: >-
   {{案内|あんない}}が {{遅|おく}}れてしまい {{申|もう}}し{{訳|わけ}}ありません。
 example_it: >-
-  Mi dispiace molto che i documenti siano arrivati in ritardo.
+  Mi dispiace molto per il ritardo nelle informazioni.
 :::
 :::term
 id: term-futegiwa
@@ -307,7 +307,7 @@ back: vicinato / persona del quartiere
 example_jp: >-
   {{向|む}}こうの お{{家|うち}}の ご{{近所|きんじょ}}さん だったんだね。
 example_it: >-
-  Quindi eri il vicino della casa qui davanti.
+  Quindi sei del vicinato della casa laggiù.
 :::
 :::term
 id: term-debyuu-sen

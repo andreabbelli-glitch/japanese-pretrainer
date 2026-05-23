@@ -29,7 +29,7 @@ example_jp: >-
   とりあえず ヌシが いそうな {{場所|ばしょ}}だけ マップアプリに
   {{登録|とうろく}}しておくな。
 example_it: >-
-  Intanto segno sulla mappa solo i luoghi dove potrebbe esserci un Titan.
+  Intanto segno sulla mappa solo i luoghi dove potrebbe esserci un Dominante.
 :::
 :::term
 id: term-e110-osusume
@@ -53,7 +53,7 @@ example_jp: >-
   わたしの オススメは ポケモンに {{持|も}}たせて {{便利|べんり}}な
   どうぐを {{売|う}}ってる デリバードポーチかなー！
 example_it: >-
-  Il mio consiglio e il Delibird Presents, che vende oggetti utili da far tenere ai Pokemon.
+  Il mio consiglio è Sacchi Delibird: vende strumenti utili da far tenere ai Pokémon.
 :::
 :::term
 id: term-e111-oide
@@ -146,7 +146,7 @@ back: regalo / premio dato
 example_jp: >-
   {{勝負|しょうぶ}}の お{{礼|れい}}！ に げんきのかけらを プレゼント！
 example_it: >-
-  Come ricompensa della sfida, ti regalo un Revive.
+  Per ringraziarti della sfida, ti regalo un Revitalizzante!
 :::
 :::term
 id: term-v745-kateru
@@ -193,7 +193,7 @@ example_jp: >-
   いちど {{行|い}}った ポケモンセンターには そらとぶタクシーで すぐに
   {{戻|もど}}れるわよ。
 example_it: >-
-  In un Pokemon Center gia visitato puoi tornare subito col Flying Taxi.
+  Puoi tornare subito in un Centro Pokémon già visitato con il Taxi Volante.
 :::
 :::term
 id: term-v747-omoitsuku
@@ -223,7 +223,7 @@ id: term-v748-choumiryou
 lemma: 調味料
 reading: ちょうみりょう
 romaji: choumiryou
-meaning_it: condimento / seasoning
+meaning_it: condimento / spezia per insaporire
 notes_it: >-
   Nelle scene di sandwich lega ingredienti e preparazione al gameplay, non solo
   a una chiacchiera sul cibo.
@@ -235,7 +235,7 @@ entry_type: term
 entry_id: term-v748-choumiryou
 card_type: recognition
 front: "{{調味料|ちょう.み.りょう}}"
-back: condimento / seasoning
+back: condimento / spezia per insaporire
 example_jp: >-
   {{具材|ぐざい}}を こうして…… {{調味料|ちょう.み.りょう}}を ああすれば……。
 example_it: >-
@@ -449,7 +449,7 @@ back: poter sfidare
 example_jp: >-
   むしタイプの ジムが あるから ジムリーダーに {{挑|いど}}めるね。
 example_it: >-
-  Li c'e un Gym di tipo Coleottero, quindi puoi sfidare il Gym Leader.
+  Lì c'è una Palestra di tipo Coleottero, quindi puoi sfidare il Capopalestra.
 :::
 :::term
 id: term-v758-osusowake
@@ -521,7 +521,7 @@ example_jp: >-
   {{前世|ぜんせ}}の {{記憶|きおく}}を スマホで {{占|うらな}}う
   {{自称|じしょう}} スマホ{{占|うらな}}いは いかがですか？
 example_it: >-
-  Che ne dici di una sedicente divinazione via smartphone sulle vite passate?
+  Che ne dici di una lettura via smartphone, sedicente divinazione dei ricordi delle vite precedenti?
 :::
 :::term
 id: term-v761-ayashii

@@ -55,7 +55,7 @@ id: term-e108-otsukaresama
 lemma: おつかれさま
 reading: おつかれさま
 romaji: otsukaresama
-meaning_it: bel lavoro / ti sei stancato
+meaning_it: bel lavoro / grazie per l'impegno
 notes_it: >-
   Si usa dopo una fatica o a fine attività.
 :::
@@ -66,7 +66,7 @@ entry_type: term
 entry_id: term-e108-otsukaresama
 card_type: recognition
 front: "おつかれさま"
-back: bel lavoro / ti sei stancato
+back: bel lavoro / grazie per l'impegno
 example_jp: >-
   おつかれさま。
 example_it: >-
@@ -116,7 +116,7 @@ back: non è che… / non significa che…
 example_jp: >-
   きらいな わけじゃない。
 example_it: >-
-  Non è che mi dispiaccia.
+  Non è che lo odi.
 :::
 :::grammar
 id: grammar-g111-far-fare-lasciar-fare
@@ -513,7 +513,7 @@ id: term-v677-jousetsu
 lemma: 常設
 reading: じょうせつ
 romaji: jousetsu
-meaning_it: installato stabilmente
+meaning_it: sempre disponibile / permanente
 notes_it: >-
   Indica una funzione o servizio disponibile stabilmente. Contrasta con eventi
   temporanei, campagne limitate o bonus di stagione.
@@ -525,7 +525,7 @@ entry_type: term
 entry_id: term-v677-jousetsu
 card_type: recognition
 front: "{{常設|じょうせつ}}"
-back: installato stabilmente
+back: sempre disponibile / permanente
 example_jp: >-
   この サービスは {{常設|じょうせつ}}です。
 example_it: >-

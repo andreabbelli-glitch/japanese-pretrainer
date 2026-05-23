@@ -70,7 +70,7 @@ back: come si fa
 example_jp: >-
   {{回復|かいふく}}の やり{{方|かた}}を {{見|み}}る。
 example_it: >-
-  Guardo come si fa il recupero.
+  Guardo come recuperare.
 :::
 :::term
 id: term-e074-hontouni-yoroshiidesuka
@@ -238,7 +238,7 @@ back: sonno
 example_jp: >-
   バトルで ねむりに なる。
 example_it: >-
-  In battaglia si addormenta.
+  In battaglia entra in stato di sonno.
 :::
 :::term
 id: term-v379-mawari

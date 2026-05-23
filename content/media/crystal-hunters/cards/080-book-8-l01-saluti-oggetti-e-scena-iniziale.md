@@ -52,10 +52,10 @@ lemma: "行ってらっしゃい"
 reading: "いってらっしゃい"
 romaji: "itterasshai"
 meaning_it: >-
-  vai e torna sano; a dopo
+  vai e torna; a dopo
 pos: greeting
 notes_it: >-
-  Nel Book 8, {{行|い}}ってらっしゃい entra come vai e torna sano; a dopo. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 8, {{行|い}}ってらっしゃい entra come vai e torna; a dopo. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -273,10 +273,10 @@ lemma: "ガコンッ"
 reading: "ガコンッ"
 romaji: "gakon'"
 meaning_it: >-
-  slam
+  clac pesante; tonfo secco
 pos: sfx
 notes_it: >-
-  Nel Book 8, ガコンッ entra come slam. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 8, ガコンッ entra come clac pesante; tonfo secco. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -306,7 +306,7 @@ back: >-
 example_jp: >-
   {{一番|いちばん}}だ。
 example_it: >-
-  E il numero uno.
+  È il numero uno.
 notes_it: >-
   Riconosci {{番|ばん}} come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-01]
@@ -359,11 +359,11 @@ card_type: recognition
 front: >-
   {{行|い}}ってらっしゃい
 back: >-
-  いってらっしゃい - vai e torna sano; a dopo
+  いってらっしゃい - vai e torna; a dopo
 example_jp: >-
   {{行|い}}ってらっしゃい。
 example_it: >-
-  Vai e torna sano.
+  Vai e torna presto.
 notes_it: >-
   Riconosci {{行|い}}ってらっしゃい come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-01]
@@ -420,7 +420,7 @@ back: >-
 example_jp: >-
   お{{兄|にい}}さんが{{来|く}}る。
 example_it: >-
-  Arriva il fratello maggiore / giovane uomo.
+  Arriva il fratello maggiore.
 notes_it: >-
   Riconosci お{{兄|にい}}さん come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-01]
@@ -682,11 +682,11 @@ card_type: recognition
 front: >-
   ガコンッ
 back: >-
-  ガコンッ - slam
+  ガコンッ - clac pesante; tonfo secco
 example_jp: >-
   ガコンッとおとがした。
 example_it: >-
-  Si sente un effetto sonoro: slam.
+  Si sentì un tonfo secco.
 notes_it: >-
   Riconosci ガコンッ come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-01]

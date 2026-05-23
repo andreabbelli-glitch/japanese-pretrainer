@@ -77,7 +77,7 @@ Le schermate di esplorazione usano parole molto concrete. Non descrivono solo un
 jp: >-
   メニューに {{新|あたら}}しい {{機能|きのう}}が {{入|はい}}りました。
 translation_it: >-
-  Nel menu è entrata una nuova funzione.
+  Nel menu è stata aggiunta una nuova funzione.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -285,7 +285,7 @@ Le frasi diventano più leggibili quando lessico, particelle e pattern lavorano 
 jp: >-
   ダッシュの {{機能|きのう}}が {{入|はい}}ったから、 あの {{場所|ばしょ}}へ {{行|い}}ってみよう。
 translation_it: >-
-  Ora che è entrata la funzione di scatto, proviamo ad andare in quel posto.
+  Ora che è stata aggiunta la funzione di scatto, proviamo ad andare in quel posto.
 :::
 
 :::example_sentence

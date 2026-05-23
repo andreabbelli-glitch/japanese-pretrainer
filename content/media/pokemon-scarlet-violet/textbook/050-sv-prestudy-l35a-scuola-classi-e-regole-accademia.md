@@ -257,7 +257,7 @@ sta spingendo verso una destinazione prima che inizi qualcosa.
 jp: >-
   おふたりとも {{教室|きょうしつ}}に {{急|いそ}}がなくては。
 translation_it: >-
-  Dovete sbrigarvi verso l'aula, entrambi.
+  Dovete sbrigarvi ad andare in aula, tutti e due.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -355,7 +355,7 @@ jp: >-
   {{物理|ぶつり}}の {{分類|ぶんるい}}なら {{攻撃|こうげき}}の
   {{高|たか}}い ポケモンが {{強|つよ}}い。
 translation_it: >-
-  Se la categoria è fisica, è forte un Pokémon con Attacco alto.
+  Se la categoria è fisica, un Pokémon con Attacco alto è forte.
 :::
 
 :::example_sentence
@@ -382,7 +382,7 @@ jp: >-
   {{始業|しぎょう}}{{時間|じかん}}が {{近|ちか}}いので、
   {{教室|きょうしつ}}まで {{急|いそ}}いでください。
 translation_it: >-
-  L'inizio delle lezioni è vicino, quindi sbrigatevi fino all'aula.
+  Sta per iniziare la lezione, quindi affrettatevi a raggiungere l'aula.
 :::
 
 :::example_sentence
@@ -390,7 +390,7 @@ jp: >-
   {{立|た}}ち{{入|い}}り{{禁止|きんし}}の {{場所|ばしょ}}に
   {{入|はい}}ると、{{校則|こうそく}}{{違反|いはん}}に なる。
 translation_it: >-
-  Se entri in un luogo ad accesso vietato, diventa una violazione del
+  Se entri in un luogo ad accesso vietato, commetti una violazione del
   regolamento scolastico.
 :::
 

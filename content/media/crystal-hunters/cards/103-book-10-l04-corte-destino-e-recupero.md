@@ -336,7 +336,7 @@ back: >-
 example_jp: >-
   {{手|て}}を{{離|はな}}す。
 example_it: >-
-  Lascia la mano.
+  Lascia andare la mano.
 notes_it: >-
   Riconosci {{離|はな}}す come elemento operativo del Book 10: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-10, lesson-04]
@@ -488,7 +488,7 @@ back: >-
 example_jp: >-
   {{危険|きけん}}を{{辞|じ}}さない。
 example_it: >-
-  Non esita davanti al pericolo.
+  Non si tira indietro davanti al pericolo.
 notes_it: >-
   Riconosci {{辞|じ}}す come elemento operativo del Book 10: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-10, lesson-04]
@@ -526,7 +526,7 @@ back: >-
 example_jp: >-
   お{{姉|ねえ}}ちゃんが{{来|く}}る。
 example_it: >-
-  Arriva la sorella maggiore.
+  Arriva mia sorella maggiore.
 notes_it: >-
   Riconosci お{{姉|ねえ}}ちゃん come elemento operativo del Book 10: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-10, lesson-04]

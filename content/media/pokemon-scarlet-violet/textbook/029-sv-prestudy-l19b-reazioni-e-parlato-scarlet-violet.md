@@ -222,7 +222,7 @@ translation_it: >-
 jp: >-
   せっかく テーブルシティに {{来|き}}たから、 {{通信|つうしん}}で {{対戦|たいせん}}してみて。
 translation_it: >-
-  Visto che sei arrivato fino a Mesapoli, prova a fare una lotta in connessione.
+  Visto che sei arrivato fino a Mesapoli, prova a fare una lotta via connessione.
 :::
 
 ---

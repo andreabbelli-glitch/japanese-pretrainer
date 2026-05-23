@@ -321,7 +321,7 @@ jp: >-
   {{相手|あいて}}の {{弱点|じゃくてん}}を {{突|つ}}ける わざなら こうかは
   ばつぐんだ！
 translation_it: >-
-  Se è una mossa capace di colpire la debolezza dell'avversario, è
+  Se è una mossa capace di sfruttare il punto debole dell'avversario, è
   superefficace.
 :::
 

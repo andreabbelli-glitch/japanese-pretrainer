@@ -215,7 +215,7 @@ jp: >-
   レイドに {{参加|さんか}}する まえに、{{用意|ようい}}が できているか
   {{確認|かくにん}}してください。
 translation_it: >-
-  Prima di partecipare al raid, controlla se i preparativi sono pronti.
+  Prima di partecipare al raid, controlla che sia tutto pronto.
 :::
 
 #### 🗺️ Anatomia della frase

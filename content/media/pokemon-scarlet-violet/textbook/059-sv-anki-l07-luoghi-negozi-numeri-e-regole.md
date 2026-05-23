@@ -174,7 +174,7 @@ Quando il testo passa dai menu ai dialoghi, le parole non servono solo a comanda
 
 - [{{教師|きょうし}}](term:term-anki-l07-kyoushi) nomina l'insegnante come professione. Nei dialoghi dell'Accademia sentirai spesso {{先生|せんせい}} come titolo rivolto a una persona; [{{教師|きょうし}}](term:term-anki-l07-kyoushi), invece, classifica il ruolo istituzionale. La differenza è utile: {{先生|せんせい}} può suonare come "professore!", mentre [{{教師|きょうし}}](term:term-anki-l07-kyoushi) parla della categoria.
 - [{{掟|おきて}}](term:term-anki-l07-okite) pesa più di ルール. ルール può essere una regola tecnica, una norma di gioco o un'impostazione; [{{掟|おきて}}](term:term-anki-l07-okite) suona come un codice interno che il gruppo sente come vincolante. Per il Team Star, questo tono è naturale: la parola non descrive solo una procedura, ma un'appartenenza.
-- [{{優|やさ}}しい](term:term-anki-l07-yasashii) descrive gentilezza o premura. Non confonderlo con {{易|やさ}}しい, che si legge allo stesso modo ma significa "facile". Se Pepper viene descritto come [{{優|やさ}}しい](term:term-anki-l07-yasashii), la frase non dice che è facile da battere o da capire: dice che sotto il tono brusco c'è attenzione per gli altri.
+- [{{優|やさ}}しい](term:term-anki-l07-yasashii) descrive gentilezza o premura. Non confonderlo con {{易|やさ}}しい, che si legge allo stesso modo ma significa "facile". Se Pepe viene descritto come [{{優|やさ}}しい](term:term-anki-l07-yasashii), la frase non dice che è facile da battere o da capire: dice che sotto il tono brusco c'è attenzione per gli altri.
 
 :::example_sentence
 jp: >-
@@ -227,7 +227,7 @@ translation_it: >-
 jp: >-
   ペパーは ぶっきらぼうに {{見|み}}えるけど、 {{本当|ほんとう}}は とても {{優|やさ}}しい。
 translation_it: >-
-  Pepper sembra brusco, ma in realtà è molto gentile.
+  Pepe sembra brusco, ma in realtà è molto gentile.
 :::
 
 ## Nota finale

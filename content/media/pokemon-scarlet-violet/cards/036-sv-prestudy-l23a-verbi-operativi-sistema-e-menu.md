@@ -218,7 +218,7 @@ back: volare
 example_jp: >-
   ポケモンセンターへ {{飛|と}}びます。
 example_it: >-
-  Volo fino al Centro Pokémon.
+  Mi sposto rapidamente al Centro Pokémon.
 :::
 :::term
 id: term-v397-kaeru
@@ -488,7 +488,7 @@ back: imbattersi in / incontrare
 example_jp: >-
   {{草|くさ}}むらで {{珍|めずら}}しい ポケモンに {{出会|であ}}います。
 example_it: >-
-  Nel prato incontro un Pokémon raro.
+  Nell'erba alta incontro un Pokémon raro.
 :::
 :::term
 id: term-v411-sentou

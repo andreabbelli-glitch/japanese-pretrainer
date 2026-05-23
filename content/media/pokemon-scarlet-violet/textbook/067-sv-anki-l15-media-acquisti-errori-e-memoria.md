@@ -237,7 +237,7 @@ translation_it: >-
 jp: >-
   ペパーには むかしの {{記憶|きおく}}が ある。
 translation_it: >-
-  Pepper ha ricordi del passato.
+  Pepe ha ricordi del passato.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -262,7 +262,7 @@ translation_it: >-
 jp: >-
   スマホロトムで {{動画|どうが}}を {{見|み}}て、{{新|あたら}}しい {{知識|ちしき}}を {{得|え}}た。
 translation_it: >-
-  Ho guardato un video sullo Smart Rotom e ho acquisito una nuova conoscenza.
+  Ho guardato un video sullo Smart Rotom e ho acquisito nuove conoscenze.
 :::
 
 :::example_sentence
@@ -283,7 +283,7 @@ translation_it: >-
 jp: >-
   ペパーの {{記憶|きおく}}には、ふしぎな {{感|かん}}じが ある。
 translation_it: >-
-  Nei ricordi di Pepper c'è una sensazione misteriosa.
+  Nei ricordi di Pepe c'è una sensazione misteriosa.
 :::
 
 ## Nota finale

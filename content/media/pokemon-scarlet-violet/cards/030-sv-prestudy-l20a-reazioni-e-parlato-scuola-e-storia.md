@@ -26,7 +26,7 @@ back: e quello allora...?
 example_jp: >-
   それって {{本当|ほんとう}}？
 example_it: >-
-  E quello, è vero?
+  Quella cosa è vera?
 :::
 :::grammar
 id: grammar-g054-durante-mentre

@@ -410,7 +410,7 @@ back: >-
 example_jp: >-
   {{私|わたし}}の{{名前|なまえ}}はカルだよ。
 example_it: >-
-  Il mio nome e Kal.
+  Mi chiamo Kal.
 notes_it: >-
   La guida mostra quattro finali: よ solo puo suonare femminile ma anche assertivo secondo consegna e contesto, だ e piu secco/maschile, la frase nuda resta piu leggera, e だよ bilancia i due poli risultando piu gender-neutral, pur non cancellando del tutto il colore di だ.
 tags: [crystal-hunters, book-2, grammar]

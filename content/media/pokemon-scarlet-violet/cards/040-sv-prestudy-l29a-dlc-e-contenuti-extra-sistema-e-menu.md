@@ -206,7 +206,7 @@ back: bonus / extra omaggio
 example_jp: >-
   おまけに ピックが つきます。
 example_it: >-
-  Come bonus viene incluso un pick.
+  Come omaggio viene incluso uno stecchino decorativo.
 :::
 :::term
 id: term-v484-doukutsu
@@ -621,7 +621,7 @@ back: conoscenza
 example_jp: >-
   ポケモンの {{知識|ちしき}}が ふえます。
 example_it: >-
-  Le conoscenze sui Pokémon aumentano.
+  Aumentano le mie conoscenze sui Pokémon.
 :::
 :::term
 id: term-v508-satsuei

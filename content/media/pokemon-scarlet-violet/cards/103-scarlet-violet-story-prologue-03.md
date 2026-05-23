@@ -125,7 +125,7 @@ id: term-tera-type
 lemma: テラスタイプ
 reading: テラスタイプ
 romaji: tera taipu
-meaning_it: Tera tipo / tipo Terastal
+meaning_it: Teratipo / tipo Terastal
 notes_it: >-
   E il tipo che conta dopo la trasformazione, non per forza il tipo originale
   del Pokemon. Quando il tutorial parla di mosse piu forti o di strategia
@@ -161,7 +161,7 @@ id: term-otsukaresama-desu
 lemma: お疲れさまです
 reading: おつかれさまです
 romaji: otsukaresama desu
-meaning_it: ben fatto / vi vedo stanchi
+meaning_it: ben arrivati / grazie per l'impegno
 notes_it: >-
   Formula di contatto molto comune nei servizi e sul lavoro. Al Pokemon Center
   la senti anche allungata colloquialmente come `お{{疲|つか}}れさまでーす`, ma la forma
@@ -174,11 +174,11 @@ entry_type: term
 entry_id: term-otsukaresama-desu
 card_type: recognition
 front: "お{{疲|つか}}れさまです"
-back: ben fatto / vi vedo stanchi
+back: ben arrivati / grazie per l'impegno
 example_jp: >-
   お{{疲|つか}}れさまです。 {{今日|きょう}} がんばった ポケモンを {{休|やす}}ませましょうか。
 example_it: >-
-  Ben fatto. Vogliamo far riposare i Pokemon che oggi hanno dato tutto?
+  Dev'essere stata una giornata impegnativa. Vuoi far riposare i Pokémon che oggi si sono dati da fare?
 :::
 :::grammar
 id: grammar-te-morau
@@ -275,7 +275,7 @@ back: sfida / match / confronto di battaglia
 example_jp: >-
   どれくらい {{強|つよ}}くなったか {{勝負|しょうぶ}}して {{確|たし}}かめよう！
 example_it: >-
-  Una sfida permette di verificare quanto e aumentata la forza del team.
+  Facciamo una sfida e vediamo quanto sei diventato forte!
 notes_it: >-
   In questo capitolo Nemona usa `{{勝負|しょうぶ}}` per misurare la tua crescita
   dopo il tratto di strada, non solo per proporti un'altra lotta qualsiasi.
@@ -324,7 +324,7 @@ back: 'provare a fare e vedere che succede'
 example_jp: >-
   {{今|いま}}の チームで どこまで {{戦|たたか}}えるか {{試|ため}}してみよう。
 example_it: >-
-  Con la squadra attuale puoi testare fin dove riesci ad arrivare.
+  Proviamo a vedere fin dove riesci a combattere con la squadra attuale.
 notes_it: >-
   In questo capitolo la forma marca un test pratico: provare sul campo e vedere
   fino a dove arriva davvero la squadra attuale.

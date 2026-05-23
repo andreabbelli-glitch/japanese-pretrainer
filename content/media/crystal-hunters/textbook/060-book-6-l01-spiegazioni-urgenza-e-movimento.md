@@ -34,7 +34,7 @@ Il punto pratico e partire da [バシッ](term:term-ch-b6-bashi-1) e dagli altri
 - [{{泳|およ}}ぐ](term:term-ch-b6-gu-11) - nuotare.
 - [{{手|て}}](term:term-ch-b6-entry-12) - mano.
 - [{{小|ちい}}さい](term:term-ch-b6-sai-13) - piccolo.
-- [{{小|ちい}}さな](term:term-ch-b6-sana-14) - piccolo; piccola forma prenominale.
+- [{{小|ちい}}さな](term:term-ch-b6-sana-14) - piccolo; forma prenominale di "piccolo".
 - [{{命|いのち}}](term:term-ch-b6-entry-15) - vita.
 - [{{鍵|かぎ}}](term:term-ch-b6-entry-16) - chiave.
 - [もらう](term:term-ch-b6-morau-17) - ricevere.

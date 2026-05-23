@@ -464,7 +464,7 @@ back: >-
 example_jp: >-
   {{行|い}}くぞ！
 example_it: >-
-  Vado! / Arrivo! / Eccomi!
+  Andiamo! / Si parte!
 notes_it: >-
   La guida collega ぞ a parlanti da {{俺|おれ}}: non cambia il contenuto, ma rende l'uscita piu dura e assertiva.
 tags: [crystal-hunters, book-3, grammar]

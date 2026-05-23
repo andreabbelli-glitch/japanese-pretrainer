@@ -165,7 +165,7 @@ back: caduta
 example_jp: >-
   この{{先|さき}}に {{落下|らっか}}が あります。
 example_it: >-
-  Più avanti c'è una caduta.
+  Più avanti c'è rischio di caduta.
 :::
 :::term
 id: term-v639-shienboodo
@@ -671,5 +671,5 @@ back: ammirazione / aspirazione
 example_jp: >-
   ネモは みんなの {{憧|あこが}}れです。
 example_it: >-
-  Nemona è l'ammirazione di tutti.
+  Nemona è un modello per tutti.
 :::

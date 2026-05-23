@@ -254,7 +254,7 @@ back: >-
 example_jp: >-
   この {{地|ち}}{{方|ほう}}の {{市|し}}{{場|じょう}}には たくさんの アイテムが {{出|で}}{{回|まわ}}っている。
 example_it: >-
-  Nel mercato di questa regione circolano tantissimi strumenti.
+  Sul mercato di questa regione circolano tantissimi strumenti.
 notes_it: >-
   {{市|し}}{{場|じょう}} indica il mercato in senso più astratto o generale (es. il mercato dei beni o le dinamiche di scambio). Attenzione: quando ci si riferisce a un mercato fisico rionale, i personaggi usano solitamente la lettura いちば (come per il mercato di Marinada).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]

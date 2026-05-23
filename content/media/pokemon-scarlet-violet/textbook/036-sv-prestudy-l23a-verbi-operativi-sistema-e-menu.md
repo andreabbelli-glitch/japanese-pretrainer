@@ -59,11 +59,11 @@ Il verbo, però, non lavora mai da solo. In messaggi come `メニューを{{開|
 - [{{戦略|せんりゃく}}](term:term-v401-senryaku) — strategia
 - [{{手加減|てかげん}}](term:term-v406-tekagen) — trattenersi / non andare al massimo
 - [{{図鑑|ずかん}}{{完成|かんせい}}](term:term-v412-zukan-kansei) — completamento del Pokédex
-- [かがやきパワー](term:term-v395-kagayakipawaa) — Sparkling Power
+- [かがやきパワー](term:term-v395-kagayakipawaa) — Potere cromatico
 - [パラドックスポケモン](term:term-v398-paradokkusupokemon) — Pokémon Paradosso
-- [そうぐうパワー](term:term-v399-souguupawaa) — Encounter Power
-- [リーグペイ](term:term-v402-riigupei) — League Pay (LP)
-- [おとしものパワー](term:term-v405-otoshimonopawaa) — Item Drop Power
+- [そうぐうパワー](term:term-v399-souguupawaa) — Potere incontro
+- [リーグペイ](term:term-v402-riigupei) — Punti Lega (LP)
+- [おとしものパワー](term:term-v405-otoshimonopawaa) — Potere oggetti
 
 ---
 
@@ -253,7 +253,7 @@ Alcune frasi operative non ti dicono solo che cosa fare: ti dicono che cosa evit
 jp: >-
   ここでは レポートを {{消|け}}さないでください。
 translation_it: >-
-  Qui non cancellare il report, per favore.
+  Qui non cancellare il salvataggio, per favore.
 :::
 
 #### 🗺️ Anatomia della frase

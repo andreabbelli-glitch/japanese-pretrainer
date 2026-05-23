@@ -31,7 +31,7 @@ Il punto pratico e partire da [かもしれない](term:term-ch-b8-kamoshirenai-
 - [{{食|た}}べ{{物|もの}}](term:term-ch-b8-be-30) - cibo.
 - [{{入用|いりよう}}](term:term-ch-b8-entry-31) - necessario; richiesto.
 - [{{毎度|まいど}}あり](term:term-ch-b8-ari-32) - grazie come sempre.
-- [{{拝見|はいけん}}](term:term-ch-b8-entry-33) - guardare umilmente.
+- [{{拝見|はいけん}}](term:term-ch-b8-entry-33) - vedere/consultare (forma umile).
 - [{{様|さま}}](term:term-ch-b8-entry-34) - suffisso onorifico elevato.
 - [{{民|たみ}}](term:term-ch-b8-entry-35) - popolo; sudditi.
 - [{{我|われ}}ら](term:term-ch-b8-ra-36) - noi.

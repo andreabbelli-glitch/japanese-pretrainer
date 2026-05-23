@@ -42,7 +42,7 @@ Il punto pratico e partire da [{{限界|げんかい}}](term:term-ch-b10-entry-2
 - [{{面会|めんかい}}](term:term-ch-b10-entry-41) - incontro faccia a faccia.
 - [{{嫌|いや}}がる](term:term-ch-b10-garu-42) - mostrare disgusto; non voler fare.
 - [{{連行|れんこう}}](term:term-ch-b10-entry-43) - portare via un prigioniero.
-- [{{浴場|よくじょう}}](term:term-ch-b10-entry-44) - area bagno.
+- [{{浴場|よくじょう}}](term:term-ch-b10-entry-44) - bagni; sala da bagno.
 
 ## Pattern grammaticali e lettura
 

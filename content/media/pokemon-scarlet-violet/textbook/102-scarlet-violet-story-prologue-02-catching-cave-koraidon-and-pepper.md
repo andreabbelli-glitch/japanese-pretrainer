@@ -246,7 +246,7 @@ jp: >-
   {{力|ちから}}を {{使|つか}}い{{果|は}}たしちゃって、この {{姿|すがた}}じゃ
   {{戦|たたか}}えねえ。
 translation_it: >-
-  Ha finito per esaurire tutte le sue forze; in questa forma non può combattere.
+  Ha esaurito tutte le sue forze; in questa forma non può combattere.
 :::
 
 #### 🗺️ Anatomia della frase

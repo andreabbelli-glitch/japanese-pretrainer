@@ -31,7 +31,7 @@ id: term-anki-l19-tasukaru
 lemma: 助かる
 reading: たすかる
 romaji: tasukaru
-meaning_it: salvarsi; essere d’aiuto
+meaning_it: salvarsi; essere aiutato / essere sollevato da un problema
 notes_it: >-
   {{助|たす}}かる è un verbo intransitivo che significa "essere salvato" o "risparmiarsi un fastidio". È la frase standard per esprimere sollievo e gratitudine quando qualcuno o qualcosa ci facilita il compito, simile a "mi sei stato d'aiuto". Il transitivo "salvare qualcuno" è {{助|たす}}ける.
 level_hint: custom
@@ -162,7 +162,7 @@ back: >-
 example_jp: >-
   ピンチの ときに ポケモンセンターが あると {{助|たす}}かる。
 example_it: >-
-  Quando sei nei guai, avere un Centro Pokémon ti salva davvero.
+  Quando sei nei guai, avere un Centro Pokémon è davvero d'aiuto.
 notes_it: >-
   {{助|たす}}かる è un verbo intransitivo che significa "essere salvato" o "risparmiarsi un fastidio". È la frase standard per esprimere sollievo e gratitudine quando qualcuno o qualcosa ci facilita il compito, simile a "mi sei stato d'aiuto". Il transitivo "salvare qualcuno" è {{助|たす}}ける.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-19]

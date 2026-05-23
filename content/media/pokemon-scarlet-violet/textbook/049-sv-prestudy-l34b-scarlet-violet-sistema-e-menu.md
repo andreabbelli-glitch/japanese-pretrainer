@@ -142,7 +142,7 @@ La parte scolastica di Paldea usa parole amministrative, ma dentro il gioco hann
 jp: >-
   {{決|き}}められた{{数|かず}}の ポケモンを {{選|えら}}ぶ。
 translation_it: >-
-  Scegli il numero prestabilito di Pokémon.
+  Seleziona il numero prestabilito di Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase

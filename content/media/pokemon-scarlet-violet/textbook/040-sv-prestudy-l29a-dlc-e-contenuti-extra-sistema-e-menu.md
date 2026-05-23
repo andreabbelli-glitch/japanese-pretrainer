@@ -134,7 +134,7 @@ translation_it: >-
 jp: >-
   {{挑戦者|ちょうせんしゃ}}の ために {{大作戦|だいさくせん}}を {{考|かんが}}えます。
 translation_it: >-
-  Penso a una grande operazione per lo sfidante.
+  Preparo un grande piano per lo sfidante.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -239,7 +239,7 @@ Quando la frase diventa personale, [{{大好|だいす}}き](term:term-v501-dais
 jp: >-
   {{食堂|しょくどう}}の {{受付|うけつけ}}で、おまけの ピックを もらいました。
 translation_it: >-
-  Alla reception della mensa ho ricevuto un pick bonus.
+  Al banco della mensa ho ricevuto uno stecchino decorativo in omaggio.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -252,7 +252,7 @@ translation_it: >-
 jp: >-
   オーガポンが {{大好|だいす}}き だから、もっと {{知識|ちしき}}を {{集|あつ}}めます。
 translation_it: >-
-  Siccome adoro Ogerpon, raccolgo più conoscenze.
+  Siccome adoro Ogerpon, raccolgo altre informazioni.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -294,7 +294,7 @@ translation_it: >-
 jp: >-
   {{洞|どう}}くつの {{近|ちか}}くで オーガポンの {{知識|ちしき}}を {{集|あつ}}めます。
 translation_it: >-
-  Raccolgo conoscenze su Ogerpon vicino alla grotta.
+  Raccolgo informazioni su Ogerpon vicino alla grotta.
 :::
 
 ---

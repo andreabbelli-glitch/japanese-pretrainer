@@ -189,7 +189,7 @@ scena attraverso presenza, luogo e polarità della frase.
 jp: >-
   アカデミーには、たくさんの {{子|こ}}{{供|ども}}たちが いるよ。
 translation_it: >-
-  All'Accademia ci sono tantissimi bambini.
+  All'Accademia ci sono tantissimi ragazzi.
 :::
 
 #### 🗺️ Anatomia della frase

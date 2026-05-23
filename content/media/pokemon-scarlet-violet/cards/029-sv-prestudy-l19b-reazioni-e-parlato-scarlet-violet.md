@@ -444,7 +444,7 @@ back: risultato
 example_jp: >-
   {{結果|けっか}}が {{出|で}}る。
 example_it: >-
-  Esce il risultato.
+  Viene mostrato il risultato.
 :::
 :::term
 id: term-v270-sekkaku

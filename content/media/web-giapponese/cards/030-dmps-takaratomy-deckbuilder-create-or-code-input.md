@@ -46,7 +46,7 @@ back: 'nuovo; da zero'
 example_jp: >-
   {{新規|しんき}}プレイヤーは、まず{{無料|むりょう}}で{{配|くば}}られるデッキを{{作成|さくせい}}するのがおすすめだ。
 example_it: >-
-  Ai nuovi giocatori si consiglia, come prima cosa, di impostare il mazzo distribuito gratuitamente.
+  Ai nuovi giocatori si consiglia, come prima cosa, di creare il mazzo dato gratuitamente.
 notes_it: >-
   In questo contesto [{{新規|しんき}}](term:term-shinki) non è “ultimo” o
   “appena arrivato”: indica il fatto che la lista nasce nuova.
@@ -80,8 +80,9 @@ example_it: >-
   Uso le carte ottenute per creare un mio mazzo personalizzato ed originale.
 notes_it: >-
   [{{作成|さくせい}}する](term:term-sakusei-suru) è il verbo della creazione
-  da zero. In questa schermata si oppone bene al flusso di
-  [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) un codice già esistente.
+  da zero. In questa schermata si oppone bene al flusso in cui si
+  [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru), cioè si inserisce, un
+  codice già esistente.
 tags: [web, ui, create]
 :::
 
@@ -90,7 +91,7 @@ id: term-deck-code
 lemma: デッキコード
 reading: でっきこーど
 romaji: dekki koodo
-meaning_it: codice del deck; deck code
+meaning_it: codice del mazzo; codice deck
 notes_it: >-
   È il codice testuale che rappresenta una lista già costruita. In questa
   pagina serve per richiamare o condividere un deck senza ricrearlo carta per
@@ -105,7 +106,7 @@ entry_type: term
 entry_id: term-deck-code
 card_type: recognition
 front: 'デッキコード'
-back: 'codice del deck; deck code'
+back: 'codice del mazzo; codice deck'
 example_jp: >-
   サイトに{{載|の}}っている{{強|つよ}}いデッキコードをコピーして、ゲームに{{入力|にゅうりょく}}する。
 example_it: >-

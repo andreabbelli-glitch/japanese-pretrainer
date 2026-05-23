@@ -204,7 +204,7 @@ Accanto a scuola, aiuto e gruppi, i dialoghi usano parole che cambiano il sapore
 jp: >-
   {{正直|しょうじき}}に {{言|い}}うと、ネモの バトルへの {{情|じょう}}{{熱|ねつ}}には ついていけない。
 translation_it: >-
-  A dire il vero, non riesco a stare dietro alla passione di Nemona per le lotte.
+  A dire il vero, non riesco a stare dietro alla passione di Nemi per le lotte.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -242,7 +242,7 @@ Le stesse parole diventano più leggibili quando lavorano insieme: scuola, aiuto
 jp: >-
   {{若|わか}}い {{先生|せんせい}}の {{授業|じゅぎょう}}を{{受|う}}けて、パルデアでの {{生|い}}き{{方|かた}}を {{学|まな}}ぶ。
 translation_it: >-
-  Seguo la lezione di un insegnante giovane e imparo un modo di vivere a Paldea.
+  Seguo la lezione di un insegnante giovane e imparo come vivere a Paldea.
 :::
 
 :::example_sentence

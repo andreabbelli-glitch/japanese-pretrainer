@@ -93,7 +93,7 @@ I menu e le città di Paldea fanno passare il giapponese dal prezzo fisso alla c
 jp: >-
   お{{金|かね}}で モンスターボールを {{買|か}}う。
 translation_it: >-
-  Compro delle Poké Ball con il denaro.
+  Compro delle Poké Ball con i soldi.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -237,7 +237,7 @@ translation_it: >-
 jp: >-
   {{競|せ}}りの {{前|まえ}}に、お{{金|かね}}を {{確認|かくにん}}する。
 translation_it: >-
-  Prima dell'asta controllo il denaro.
+  Prima dell'asta controllo quanti soldi ho.
 :::
 
 :::example_sentence

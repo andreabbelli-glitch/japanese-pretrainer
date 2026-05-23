@@ -91,10 +91,10 @@ lemma: "しまう"
 reading: "しまう"
 romaji: "shimau"
 meaning_it: >-
-  finire per; fare purtroppo
+  finire per; fare purtroppo/contro voglia; completare/contro voglia; completare
 pos: auxiliary verb
 notes_it: >-
-  Nel Book 10, しまう entra come finire per; fare purtroppo. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 10, しまう entra come finire per; fare purtroppo/contro voglia; completare. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -416,7 +416,7 @@ card_type: recognition
 front: >-
   しまう
 back: >-
-  しまう - finire per; fare purtroppo
+  しまう - finire per; fare purtroppo/contro voglia; completare
 example_jp: >-
   {{本|ほん}}を{{燃|も}}やしてしまう。
 example_it: >-
@@ -477,7 +477,7 @@ back: >-
 example_jp: >-
   カチッとおとがした。
 example_it: >-
-  Si sente un effetto sonoro: clic.
+  Si senti' un clic.
 notes_it: >-
   Riconosci カチッ come elemento operativo del Book 10: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-10, lesson-01]
@@ -591,7 +591,7 @@ back: >-
 example_jp: >-
   お{{風呂|ふろ}}に{{入|はい}}る。
 example_it: >-
-  Entro nel bagno / faccio il bagno.
+  Faccio il bagno.
 notes_it: >-
   Riconosci お{{風呂|ふろ}} come elemento operativo del Book 10: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-10, lesson-01]

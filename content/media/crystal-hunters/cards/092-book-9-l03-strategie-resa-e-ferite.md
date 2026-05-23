@@ -195,10 +195,10 @@ lemma: "愛顧"
 reading: "あいこ"
 romaji: "aiko"
 meaning_it: >-
-  patronato; favore continuato
+  fedelta'; sostegno continuativo; favore accordato
 pos: suru-noun
 notes_it: >-
-  Nel Book 9, {{愛顧|あいこ}} entra come patronato; favore continuato. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 9, {{愛顧|あいこ}} entra come fedeltà; sostegno continuativo; favore accordato. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -344,7 +344,7 @@ back: >-
 example_jp: >-
   {{力一杯|ちからいっぱい}}{{走|はし}}る。
 example_it: >-
-  Corre con tutta la forza.
+  Corre con tutte le forze.
 notes_it: >-
   Riconosci {{力一杯|ちからいっぱい}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-03]
@@ -534,7 +534,7 @@ back: >-
 example_jp: >-
   {{景品|けいひん}}を{{差|さ}}し{{上|あ}}げる。
 example_it: >-
-  Offre un premio.
+  Le offriamo un premio.
 notes_it: >-
   Riconosci {{景品|けいひん}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-03]
@@ -568,11 +568,11 @@ card_type: recognition
 front: >-
   {{愛顧|あいこ}}
 back: >-
-  あいこ - patronato; favore continuato
+  あいこ - fedeltà; sostegno continuativo; favore accordato
 example_jp: >-
   ご{{愛顧|あいこ}}ありがとうございます。
 example_it: >-
-  Grazie per il vostro continuo favore.
+  Grazie per la vostra fedelta'.
 notes_it: >-
   Riconosci {{愛顧|あいこ}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-03]

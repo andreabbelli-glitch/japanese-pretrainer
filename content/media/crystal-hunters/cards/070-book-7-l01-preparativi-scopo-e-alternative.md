@@ -439,7 +439,7 @@ back: >-
 example_jp: >-
   ロワンが{{来|く}}る。
 example_it: >-
-  ロワン arriva.
+  Rowan arriva.
 notes_it: >-
   Riconosci ロワン come elemento operativo del Book 7: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-7, lesson-01]

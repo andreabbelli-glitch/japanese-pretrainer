@@ -182,10 +182,10 @@ lemma: "小さな"
 reading: "ちいさな"
 romaji: "chiisana"
 meaning_it: >-
-  piccolo; piccola forma prenominale
+  piccolo; forma prenominale di "piccolo"
 pos: prenominal adjective
 notes_it: >-
-  Nel Book 6, {{小|ちい}}さな entra come piccolo; piccola forma prenominale. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 6, {{小|ちい}}さな entra come piccolo; forma prenominale di "piccolo". La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -306,7 +306,7 @@ back: >-
 example_jp: >-
   バシッとおとがした。
 example_it: >-
-  Si sente un effetto sonoro: schiaffo.
+  Si sentì un colpo secco.
 notes_it: >-
   Riconosci バシッ come elemento operativo del Book 6: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-6, lesson-01]
@@ -325,7 +325,7 @@ back: >-
 example_jp: >-
   {{早|はや}}い！
 example_it: >-
-  E veloce / presto.
+  È veloce!
 notes_it: >-
   Riconosci {{早|はや}}い come elemento operativo del Book 6: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-6, lesson-01]
@@ -458,7 +458,7 @@ back: >-
 example_jp: >-
   ボキッとおとがした。
 example_it: >-
-  Si sente un effetto sonoro: crac.
+  Si sentì un crac secco.
 notes_it: >-
   Riconosci ボキッ come elemento operativo del Book 6: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-6, lesson-01]
@@ -549,7 +549,7 @@ card_type: recognition
 front: >-
   {{小|ちい}}さな
 back: >-
-  ちいさな - piccolo; piccola forma prenominale
+  ちいさな - piccolo; forma prenominale di "piccolo"
 example_jp: >-
   {{小|ちい}}さな{{鍵|かぎ}}がある。
 example_it: >-

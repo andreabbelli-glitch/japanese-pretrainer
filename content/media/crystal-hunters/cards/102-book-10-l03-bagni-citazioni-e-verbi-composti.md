@@ -610,7 +610,7 @@ back: >-
 example_jp: >-
   {{機嫌|きげん}}を{{損|そこ}}ねる。
 example_it: >-
-  Offende / guasta l'umore.
+  Fa irritare qualcuno / lo mette di cattivo umore.
 notes_it: >-
   Riconosci {{損|そこ}}ねる come elemento operativo del Book 10: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-10, lesson-03]

@@ -51,7 +51,7 @@ id: term-anki-l17-yuushou
 lemma: 優勝
 reading: ゆうしょう
 romaji: yuushou
-meaning_it: vittoria; campionato
+meaning_it: vittoria finale; trionfo in una competizione
 notes_it: >-
   A differenza del semplice verbo {{勝|か}}つ, “vincere una singola lotta”, {{優|ゆう}}{{勝|しょう}} descrive la vittoria assoluta di un'intera competizione. Il luogo o l'evento in cui si trionfa si marca con で.
 level_hint: custom
@@ -182,7 +182,7 @@ entry_id: term-anki-l17-yuushou
 card_type: recognition
 front: '{{優|ゆう}}{{勝|しょう}}'
 back: >-
-  ゆうしょう — vittoria, campionato; indica il trionfo finale in una competizione organizzata o in un torneo.
+  ゆうしょう — ゆうしょう — vittoria finale, trionfo; indica il primo posto complessivo in una competizione organizzata o in un torneo.
 example_jp: >-
   ポケモンリーグで {{優|ゆう}}{{勝|しょう}}して、チャンピオンになる。
 example_it: >-
@@ -233,7 +233,7 @@ entry_id: term-anki-l17-ryuu
 card_type: recognition
 front: '{{竜|りゅう}}'
 back: >-
-  りゅう — drago; termine per creature mitologiche draconiane, spesso usato in contesti narrativi epici.
+  りゅう — drago; termine dal tono più narrativo o mitologico, spesso usato per descrivere aspetto, forza o atmosfera.
 example_jp: >-
   ドラゴンタイプの ポケモンは {{竜|りゅう}}の ような すがたを している。
 example_it: >-
@@ -250,7 +250,7 @@ entry_id: term-anki-l17-yonin
 card_type: recognition
 front: '{{4人|よにん}}'
 back: >-
-  よにん — quattro persone; contatore irregolare per indicare un gruppo composto da quattro esseri umani.
+  よにん — quattro persone; contatore speciale per indicare un gruppo di quattro persone o partecipanti.
 example_jp: >-
   マルチプレイで {{4人|よにん}}いっしょに ぼうけんする。
 example_it: >-

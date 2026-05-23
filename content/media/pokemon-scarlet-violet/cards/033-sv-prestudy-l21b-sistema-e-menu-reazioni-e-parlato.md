@@ -167,7 +167,7 @@ id: term-v333-muri
 lemma: 無理
 reading: むり
 romaji: muri
-meaning_it: impossibile / non esagerare
+meaning_it: impossibile / non fattibile
 notes_it: >-
   無理 indica impossibilità o eccesso. Da solo può voler dire "non si può"; in
   無理しないで diventa "non strafare".
@@ -179,7 +179,7 @@ entry_type: term
 entry_id: term-v333-muri
 card_type: recognition
 front: "{{無理|むり}}"
-back: impossibile / non esagerare
+back: impossibile / non fattibile
 example_jp: >-
   {{無理|むり}}しないで。
 example_it: >-

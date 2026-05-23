@@ -186,7 +186,7 @@ back: >-
 example_jp: >-
   アカデミーには、たくさんの {{子|こ}}{{供|ども}}たちが いるよ。
 example_it: >-
-  All'Accademia ci sono tantissimi bambini.
+  All'Accademia ci sono tantissimi ragazzi.
 notes_it: >-
   Il suffisso たち si aggiunge a sostantivi riferiti a persone per formare un gruppo o un plurale. {{子|こ}}{{供|ども}}たち si riferisce a un gruppo di bambini o ragazzini in senso generale. Gli adulti (come professori o residenti) lo usano spesso per rivolgersi o riferirsi agli studenti dell'Accademia in blocco.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]

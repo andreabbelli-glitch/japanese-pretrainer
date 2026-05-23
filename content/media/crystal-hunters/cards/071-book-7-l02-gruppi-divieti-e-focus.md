@@ -359,7 +359,7 @@ card_type: recognition
 front: >-
   いい{{加減|かげん}}
 back: >-
-  いいかげん - basta; approssimativo
+  いいかげん - approssimativo; irresponsabile; quanto basta / moderato
 example_jp: >-
   いい{{加減|かげん}}にしろ。
 example_it: >-
@@ -572,7 +572,7 @@ back: >-
 example_jp: >-
   {{安易|あんい}}に{{考|かんが}}えるな。
 example_it: >-
-  Non pensarla alla leggera.
+  Non pensarci in modo superficiale.
 notes_it: >-
   Riconosci {{安易|あんい}}に come elemento operativo del Book 7: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-7, lesson-02]

@@ -423,7 +423,7 @@ back: >-
 example_jp: >-
   {{女王|じょうおう}}はハンター{{達|たち}}に{{準備|じゅんび}}をさせた。
 example_it: >-
-  La regina ha fatto preparare i cacciatori.
+  La regina ha fatto fare i preparativi ai cacciatori.
 notes_it: >-
   Nel Book 9, questo pattern e un punto di lettura: non tradurlo da solo, usalo per decidere funzione, tono o rapporto fra due battute.
 tags: [crystal-hunters, book-9, grammar]

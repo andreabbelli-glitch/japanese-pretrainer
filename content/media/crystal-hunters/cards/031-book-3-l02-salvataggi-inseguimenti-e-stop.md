@@ -510,7 +510,7 @@ back: >-
 example_jp: >-
   クリスタル{{投|な}}げ！
 example_it: >-
-  Lancio di cristallo!
+  Lancio del cristallo!
 notes_it: >-
   Book 3 usa la stessa logica del comando duro, ma con vocale i per i godan: {{行|い}}く -> {{行|い}}き, {{走|はし}}る -> {{走|はし}}り. Gli ichidan come {{止|と}}める invece tolgono る: {{止|と}}め. Cosi il verbo diventa parte di un nome.
 tags: [crystal-hunters, book-3, grammar]

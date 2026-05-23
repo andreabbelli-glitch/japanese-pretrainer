@@ -288,7 +288,7 @@ translation_it: >-
 jp: >-
   {{実力|じつりょく}}を {{持|も}}つ トレーナーには、ちゃんと {{理由|りゆう}}が ある。
 translation_it: >-
-  Un Allenatore con vera capacità ha sempre un motivo preciso.
+  Per un Allenatore dotato di vera capacità c'è una ragione ben precisa.
 :::
 
 :::example_sentence

@@ -54,7 +54,7 @@ La cosa da seguire non è solo il significato delle singole parole. È il tipo d
 
 - [どの {{技|わざ}}を {{回復|かいふく}}する？](term:term-e106-dono-wazao-kaifukusuru) — quale mossa vuoi recuperare?
 - [〜してもいいからね](term:term-e107-shitemoiikarane) — va bene anche se…
-- [おつかれさま](term:term-e108-otsukaresama) — bel lavoro / ti sei stancato
+- [おつかれさま](term:term-e108-otsukaresama) — bel lavoro / grazie per l'impegno
 
 ## Pattern grammaticali chiave
 
@@ -233,7 +233,7 @@ translation_it: >-
 jp: >-
   きらいな わけじゃない。
 translation_it: >-
-  Non è che mi dispiaccia / non significa che lo odi.
+  Non è che lo odi / non è che non mi piaccia.
 :::
 
 #### 🗺️ Anatomia della frase

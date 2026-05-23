@@ -440,7 +440,7 @@ back: quante volte vuoi
 example_jp: >-
   {{何度|なんど}}でも できます。
 example_it: >-
-  Si può fare quante volte vuoi.
+  Si può fare quante volte si vuole.
 :::
 :::term
 id: term-v428-noru

@@ -182,10 +182,10 @@ lemma: "本望"
 reading: "ほんもう"
 romaji: "honmou"
 meaning_it: >-
-  vero desiderio; soddisfazione profonda
+  soddisfazione piena; ciò che si desiderava
 pos: noun
 notes_it: >-
-  Nel Book 9, {{本望|ほんもう}} entra come vero desiderio; soddisfazione profonda. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 9, {{本望|ほんもう}} entra come soddisfazione piena; ciò che si desiderava. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -247,10 +247,10 @@ lemma: "打つ"
 reading: "うつ"
 romaji: "utsu"
 meaning_it: >-
-  colpire; eseguire
+  colpire; battere; assestare
 pos: verb
 notes_it: >-
-  Nel Book 9, {{打|う}}つ entra come colpire; eseguire. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 9, {{打|う}}つ entra come colpire; battere; assestare. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -286,10 +286,10 @@ lemma: "手を下す"
 reading: "てをくだす"
 romaji: "teokudasu"
 meaning_it: >-
-  intervenire di persona; fare con le proprie mani
+  agire di persona; mettere mano direttamente; compiere personalmente l'atto
 pos: expression
 notes_it: >-
-  Nel Book 9, {{手|て}}を{{下|くだ}}す entra come intervenire di persona; fare con le proprie mani. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 9, {{手|て}}を{{下|くだ}}す entra come agire di persona; mettere mano direttamente; compiere personalmente l'atto. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -549,11 +549,11 @@ card_type: recognition
 front: >-
   {{本望|ほんもう}}
 back: >-
-  ほんもう - vero desiderio; soddisfazione profonda
+  ほんもう - soddisfazione piena; cio che si desiderava
 example_jp: >-
   {{仲間|なかま}}を{{守|まも}}れるなら{{本望|ほんもう}}だ。
 example_it: >-
-  Se posso proteggere i compagni, e cio che desidero davvero.
+  Se posso proteggere i compagni, non potrei chiedere di meglio.
 notes_it: >-
   Riconosci {{本望|ほんもう}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-02]
@@ -644,11 +644,11 @@ card_type: recognition
 front: >-
   {{打|う}}つ
 back: >-
-  うつ - colpire; eseguire
+  うつ - colpire; battere; assestare
 example_jp: >-
   {{鞭|むち}}を{{打|う}}つ。
 example_it: >-
-  Colpisce con la frusta.
+  Frusta. / Sferza con la frusta.
 notes_it: >-
   Riconosci {{打|う}}つ come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-02]
@@ -701,11 +701,11 @@ card_type: recognition
 front: >-
   {{手|て}}を{{下|くだ}}す
 back: >-
-  てをくだす - intervenire di persona; fare con le proprie mani
+  てをくだす - agire di persona; mettere mano direttamente; compiere personalmente l'atto
 example_jp: >-
   {{自分|じぶん}}で{{手|て}}を{{下|くだ}}す。
 example_it: >-
-  Interviene con le proprie mani.
+  Agisce personalmente. / Lo fa con le proprie mani.
 notes_it: >-
   Riconosci {{手|て}}を{{下|くだ}}す come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-02]

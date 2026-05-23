@@ -61,7 +61,7 @@ Quando un termine ha kanji, usa la lettura della parola intera. Crystal Hunters 
 jp: >-
   {{行|い}}ってらっしゃい。
 translation_it: >-
-  Vai e torna sano.
+  Vai, ci vediamo dopo.
 :::
 
 Qui [{{行|い}}ってらっしゃい](grammar:grammar-ch-b8-tterasshai-1) vale: formula detta a chi va via ma tornera.
@@ -205,7 +205,7 @@ Qui [{{皆|みんな}} e {{皆|みな}}さん](grammar:grammar-ch-b8-e-16) vale:
 jp: >-
   お̇れ̇のバッジだ。
 translation_it: >-
-  Questo e il mio badge, con puntini di enfasi sopra 'ore'.
+  È il mio badge.
 :::
 
 Qui [puntini di enfasi](grammar:grammar-ch-b8-puntini-di-enfasi-17) vale: i puntini sopra kana marcano enfasi.

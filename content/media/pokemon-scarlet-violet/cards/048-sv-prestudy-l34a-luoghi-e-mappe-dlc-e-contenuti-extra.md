@@ -52,7 +52,7 @@ id: term-v688-suiryokutaun
 lemma: スイリョクタウン
 reading: スイリョクタウン
 romaji: suiryokutaun
-meaning_it: Mossui Town
+meaning_it: Verdegiada
 notes_it: >-
   Villaggio principale dell'area DLC; compare come punto di arrivo per eventi,
   dialoghi locali e spostamenti nella regione del contenuto extra.
@@ -217,7 +217,7 @@ back: missione di gruppo
 example_jp: >-
   ユニオンサークルで サークルミッションを {{始|はじ}}めます。
 example_it: >-
-  Nel Cerchio Unione avvio una missione di gruppo.
+  Nella Cerchia contatto avvio una missione di gruppo.
 :::
 :::term
 id: term-v700-haitatsu
@@ -346,7 +346,7 @@ id: term-v707-sentaasukuea
 lemma: センタースクエア
 reading: センタースクエア
 romaji: sentaasukuea
-meaning_it: Center Square
+meaning_it: Piazza Centrale
 notes_it: >-
   Piazza centrale o area hub; nel DLC può indicare un punto di ritrovo sulla
   mappa dell'istituto o della zona.

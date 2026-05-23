@@ -70,7 +70,7 @@ back: completare / superare
 example_jp: >-
   ジムテストを クリアする。
 example_it: >-
-  Supera la prova palestra.
+  Supera il test della palestra.
 :::
 :::term
 id: term-e069-ha-douda
@@ -328,7 +328,7 @@ back: preferito / favorito
 example_jp: >-
   お{{気|き}}に{{入|い}}りの ポケモンを {{登録|とうろく}}します。
 example_it: >-
-  Registro un Pokémon tra i preferiti.
+  Registro un Pokémon preferito.
 :::
 :::term
 id: term-v363-densetsunopokemon
@@ -361,7 +361,7 @@ back: durante il percorso / a metà
 example_jp: >-
   バトルの {{途中|とちゅう}}です。
 example_it: >-
-  Siamo a metà della battaglia.
+  Siamo nel mezzo della battaglia.
 :::
 :::term
 id: term-v366-seigenjikan

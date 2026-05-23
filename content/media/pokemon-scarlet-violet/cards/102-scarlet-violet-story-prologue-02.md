@@ -29,14 +29,14 @@ example_jp: >-
   ポケモンの {{捕獲|ほかく}}に {{慣|な}}れると {{冒険|ぼうけん}}が ぐっと
   {{広|ひろ}}がる。
 example_it: >-
-  Quando ti abitui alla cattura dei Pokemon, l'avventura si amplia molto.
+  Quando prendi confidenza con la cattura dei Pokémon, l'avventura si apre molto di più.
 :::
 :::term
 id: term-monster-ball
 lemma: モンスターボール
 reading: モンスターボール
 romaji: monsutaa booru
-meaning_it: Pokeball / Monster Ball
+meaning_it: Poké Ball / Monster Ball
 notes_it: >-
   È il nome giapponese standard della Pokeball. Nel tutorial e nei dialoghi di
   viaggio segnala lo strumento concreto con cui puoi passare dalla semplice
@@ -49,7 +49,7 @@ entry_type: term
 entry_id: term-monster-ball
 card_type: recognition
 front: モンスターボール
-back: Pokeball / Monster Ball
+back: Poké Ball / Monster Ball
 example_jp: >-
   {{弱|よわ}}った タイミングで モンスターボールを {{投|な}}げると
   {{捕|つか}}まえやすい。
@@ -110,7 +110,7 @@ id: term-seisoku-suru
 lemma: 生息する
 reading: せいそくする
 romaji: seisoku suru
-meaning_it: vivere in una zona / essere stanziato in un habitat
+meaning_it: vivere in una zona / abitare un habitat
 notes_it: >-
   Descrive la presenza naturale di una specie in un'area. Quando compare in
   dialoghi o Pokedex, quel luogo e marcato come habitat effettivo: li sono
@@ -123,7 +123,7 @@ entry_type: term
 entry_id: term-seisoku-suru
 card_type: recognition
 front: "{{生息|せいそく}}する"
-back: vivere in una zona / essere stanziato in un habitat
+back: vivere in una zona / abitare un habitat
 example_jp: >-
   この {{洞窟|どうくつ}}には {{気性|きしょう}}の {{荒|あら}}い ポケモンが
   {{生息|せいそく}}している。
@@ -347,7 +347,7 @@ back: fare qualcosa per qualcuno
 example_jp: >-
   モンスターボールを {{少|すこ}}し わけてあげるね。
 example_it: >-
-  Ti do un po' di Monster Ball, così puoi usarle.
+  Ti do qualche Poké Ball, così puoi usarle.
 :::
 :::grammar
 id: grammar-nai-you-ni
@@ -446,7 +446,7 @@ back: catturare
 example_jp: >-
   {{相手|あいて}}が {{弱|よわ}}ったら そのまま {{捕|つか}}まえてみよう。
 example_it: >-
-  Quando l'avversario si è indebolito, puoi passare subito alla cattura.
+  Quando l'avversario si è indebolito, prova a catturarlo così com'è.
 notes_it: >-
   `{{捕|つか}}まえる` indica un obiettivo diverso dal semplice KO. In pratica il
   combattimento passa da riduzione HP a lancio Ball per aggiungere la specie al

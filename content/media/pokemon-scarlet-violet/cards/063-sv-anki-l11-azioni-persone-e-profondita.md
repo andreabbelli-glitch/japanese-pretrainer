@@ -103,7 +103,7 @@ reading: しごと
 romaji: shigoto
 meaning_it: lavoro
 notes_it: >-
-  Composto da {{仕|し}} (servire, fare) e {{事|ごと}} (faccenda, cosa). In giapponese le mansioni lavorative si 'fanno' usando il verbo する ({{仕|し}}{{事|ごと}}をする). Viene usato spessissimo da personaggi (come il Capopalestra Ubaldo/Larry) che concepiscono la lotta come un semplice impiego.
+  Composto da {{仕|し}} (servire, fare) e {{事|ごと}} (faccenda, cosa). In giapponese le mansioni lavorative si 'fanno' usando il verbo する ({{仕|し}}{{事|ごと}}をする). Viene usato spessissimo da personaggi come il Capopalestra Ubaldo, che concepiscono la lotta come un semplice impiego.
 level_hint: custom
 :::
 :::card
@@ -186,7 +186,7 @@ back: >-
 example_jp: >-
   あの{{子|こ}}の ポケモン、とても {{珍|めずら}}しい わね。
 example_it: >-
-  Il Pokémon di quel ragazzo è davvero raro, vero?
+  Il Pokémon di quella persona è davvero raro, vero?
 notes_it: >-
   Viene usato spesso dagli insegnanti o dai capopalestra per riferirsi agli studenti senza usare pronomi rigidi come {{彼|かれ}}/{{彼|かれ}}{{女|おんな}}, mantenendo un tono accogliente e informale (o di benevola superiorità) nella scena.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
@@ -254,7 +254,7 @@ back: >-
 example_jp: >-
   {{最|さい}}{{深|しん}}{{部|ぶ}}には タイムマシンが {{隠|かく}}されて いた。
 example_it: >-
-  Nella parte più profonda era nascosta una macchina del tempo.
+  Nella parte più profonda era nascosta la macchina del tempo.
 notes_it: >-
   L'uso del prefisso {{最|さい}}- (sai) crea dei superlativi assoluti naturali (es. {{最|さい}}{{高|こう}} il migliore, {{最|さい}}{{終|しゅう}} l'ultimo). Aggiungendo il suffisso -{{部|ぶ}} si identifica la zona ultima e irraggiungibile di un'area.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
@@ -273,6 +273,6 @@ example_jp: >-
 example_it: >-
   Il lavoro di un Capopalestra è mettere alla prova le capacità degli sfidanti.
 notes_it: >-
-  Composto da {{仕|し}} (servire, fare) e {{事|ごと}} (faccenda, cosa). In giapponese le mansioni lavorative si 'fanno' usando il verbo する ({{仕|し}}{{事|ごと}}をする). Viene usato spessissimo da personaggi (come il Capopalestra Ubaldo/Larry) che concepiscono la lotta come un semplice impiego.
+  Composto da {{仕|し}} (servire, fare) e {{事|ごと}} (faccenda, cosa). In giapponese le mansioni lavorative si 'fanno' usando il verbo する ({{仕|し}}{{事|ごと}}をする). Viene usato spessissimo da personaggi come il Capopalestra Ubaldo, che concepiscono la lotta come un semplice impiego.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::

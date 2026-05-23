@@ -27,8 +27,8 @@ Il punto pratico e partire da [お{{巡|まわ}}りさん](term:term-ch-b4-orisa
 - [{{汲|く}}む](term:term-ch-b4-mu-26) - attingere acqua.
 - [{{付|つ}}いてくる](term:term-ch-b4-itekuru-27) - seguire; venire dietro.
 - [{{持|も}}ち{{上|あ}}げる](term:term-ch-b4-chigeru-28) - sollevare; alzare.
-- [ご{{購入|こうにゅう}}](term:term-ch-b4-go-29) - acquisto cortese.
-- [{{求|もと}}め](term:term-ch-b4-me-30) - richiesta; acquisto.
+- [ご{{購入|こうにゅう}}](term:term-ch-b4-go-29) - acquisto; acquisto in forma onorifica.
+- [{{求|もと}}め](term:term-ch-b4-me-30) - richiesta; ricerca; desiderio.
 - [{{気|き}}を{{失|うしな}}う](term:term-ch-b4-ou-31) - perdere conoscenza.
 - [{{治|なお}}す](term:term-ch-b4-su-32) - curare; guarire qualcuno.
 - [{{覚悟|かくご}}](term:term-ch-b4-entry-33) - preparazione mentale; risolutezza.

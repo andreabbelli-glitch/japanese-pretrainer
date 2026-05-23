@@ -461,7 +461,7 @@ id: term-v444-gake
 lemma: 崖
 reading: がけ
 romaji: gake
-meaning_it: scogliera / precipizio
+meaning_it: dirupo / precipizio
 notes_it: >-
   崖 è una parete rocciosa o precipizio. In esplorazione può essere ostacolo,
   punto da scalare o pericolo.
@@ -473,11 +473,11 @@ entry_type: term
 entry_id: term-v444-gake
 card_type: recognition
 front: "{{崖|がけ}}"
-back: scogliera / precipizio
+back: dirupo / precipizio
 example_jp: >-
   この{{先|さき}}に {{崖|がけ}}が あります。
 example_it: >-
-  Più avanti c'è la scogliera.
+  Più avanti c'è un dirupo.
 :::
 :::term
 id: term-v445-tojiru

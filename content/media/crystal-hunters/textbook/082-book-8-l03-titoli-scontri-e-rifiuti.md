@@ -36,7 +36,7 @@ Il punto pratico e partire da [{{差|さ}}し{{上|あ}}げる](term:term-ch-b8-
 - [{{以外|いがい}}](term:term-ch-b8-entry-57) - tranne; oltre a.
 - [{{興味|きょうみ}}](term:term-ch-b8-entry-58) - interesse.
 - [{{共|とも}}に](term:term-ch-b8-ni-59) - insieme; congiuntamente.
-- [{{落|お}}ち{{着|つ}}ける](term:term-ch-b8-chikeru-60) - calmarsi; calmare.
+- [{{落|お}}ち{{着|つ}}ける](term:term-ch-b8-chikeru-60) - calmare; mettere a proprio agio.
 - [{{立派|りっぱ}}](term:term-ch-b8-entry-61) - splendido; ammirevole.
 - [{{話|はなし}}にならない](term:term-ch-b8-ninaranai-62) - non se ne parla; non ha senso.
 - [{{賛成|さんせい}}](term:term-ch-b8-entry-63) - accordo; approvazione.

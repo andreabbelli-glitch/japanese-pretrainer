@@ -34,15 +34,15 @@ Il punto pratico e partire da [{{起|お}}き{{上|あ}}がる](term:term-ch-b9-
 - [{{所望|しょもう}}](term:term-ch-b9-entry-33) - desiderio; richiesta.
 - [{{言葉|ことば}}に{{甘|あま}}える](term:term-ch-b9-nieru-34) - accettare la gentile offerta di qualcuno.
 - [{{痛|いた}}くも{{痒|かゆ}}くもない](term:term-ch-b9-kumokumonai-35) - non scalfire; non dare alcun fastidio.
-- [{{本望|ほんもう}}](term:term-ch-b9-entry-36) - vero desiderio; soddisfazione profonda.
+- [{{本望|ほんもう}}](term:term-ch-b9-entry-36) - soddisfazione piena; cio che si desiderava.
 - [{{間|ま}}に{{合|あ}}う](term:term-ch-b9-niu-37) - fare in tempo; arrivare in tempo.
 - [{{加|くわ}}わる](term:term-ch-b9-waru-38) - aggiungersi; unirsi.
 - [{{案|あん}}](term:term-ch-b9-entry-39) - piano; idea.
 - [{{痛|いた}}む](term:term-ch-b9-mu-40) - fare male; dolere.
-- [{{打|う}}つ](term:term-ch-b9-tsu-41) - colpire; eseguire.
+- [{{打|う}}つ](term:term-ch-b9-tsu-41) - colpire; battere; assestare.
 - [{{恐|おそ}}れ{{入|い}}る](term:term-ch-b9-reru-42) - essere sorpreso; essere grato o intimorito.
 - [{{直々|じきじき}}](term:term-ch-b9-entry-43) - personalmente; direttamente.
-- [{{手|て}}を{{下|くだ}}す](term:term-ch-b9-osu-44) - intervenire di persona; fare con le proprie mani.
+- [{{手|て}}を{{下|くだ}}す](term:term-ch-b9-osu-44) - agire di persona; mettere mano direttamente; compiere personalmente l'atto.
 
 ## Pattern grammaticali e lettura
 

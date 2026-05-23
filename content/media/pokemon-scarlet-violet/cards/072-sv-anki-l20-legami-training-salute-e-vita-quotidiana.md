@@ -53,7 +53,7 @@ reading: はんぶん
 romaji: hanbun
 meaning_it: metà
 notes_it: >-
-  La lettura はんぶん è composta da {{半|はん}} (metà) e {{分|ふん}} (parte/frazione). Nelle lotte, determina spesso soglie di attivazione cruciali: abilità o strumenti che reagiscono quando i PS scendono 'sotto la metà' ({{半|はん}}{{分|ぶん}}{{以|い}}{{下|か}}).
+  La lettura はんぶん è composta da {{半|はん}} (metà) e {{分|ふん}} (parte/frazione). Nelle lotte, determina spesso soglie di attivazione cruciali: abilità o strumenti che reagiscono quando i PS scendono 'metà o meno' ({{半|はん}}{{分|ぶん}}{{以|い}}{{下|か}}).
 level_hint: custom
 :::
 :::term
@@ -182,13 +182,13 @@ entry_id: term-anki-l20-hanbun
 card_type: recognition
 front: '{{半|はん}}{{分|ぶん}}'
 back: >-
-  はんぶん — metà. Indica la frazione esatta di quantità, statistiche o risorse fisiche come i PS; si accompagna spesso a limiti come {{以|い}}{{下|か}} (meno di).
+  はんぶん — metà. Indica la frazione esatta di quantità, statistiche o risorse fisiche come i PS; si accompagna spesso a limiti come {{以|い}}{{下|か}} (pari o inferiore a).
 example_jp: >-
   ボスの ポケモンの ＨＰを {{半|はん}}{{分|ぶん}} {{以|い}}{{下|か}}まで {{削|けず}}ったぞ！
 example_it: >-
-  Abbiamo ridotto i PS del Pokémon del boss fin sotto la metà!
+  Abbiamo ridotto i PS del Pokémon del boss fino a metà o meno!
 notes_it: >-
-  La lettura はんぶん è composta da {{半|はん}} (metà) e {{分|ふん}} (parte/frazione). Nelle lotte, determina spesso soglie di attivazione cruciali: abilità o strumenti che reagiscono quando i PS scendono 'sotto la metà' ({{半|はん}}{{分|ぶん}}{{以|い}}{{下|か}}).
+  La lettura はんぶん è composta da {{半|はん}} (metà) e {{分|ふん}} (parte/frazione). Nelle lotte, determina spesso soglie di attivazione cruciali: abilità o strumenti che reagiscono quando i PS scendono 'metà o meno' ({{半|はん}}{{分|ぶん}}{{以|い}}{{下|か}}).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
 :::card

@@ -345,7 +345,7 @@ back: >-
 example_jp: >-
   ポーションが{{完成|かんせい}}する。
 example_it: >-
-  La pozione e completata.
+  La pozione è pronta.
 notes_it: >-
   Riconosci {{完成|かんせい}} come elemento operativo del Book 7: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-7, lesson-04]
@@ -459,7 +459,7 @@ back: >-
 example_jp: >-
   {{残|のこ}}りは{{一個|いっこ}}だ。
 example_it: >-
-  Il resto e un pezzo.
+  Ne resta uno.
 notes_it: >-
   Riconosci {{残|のこ}}り come elemento operativo del Book 7: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-7, lesson-04]
@@ -478,7 +478,7 @@ back: >-
 example_jp: >-
   {{問題|もんだい}}を{{片付|かたづ}}ける。
 example_it: >-
-  Sistema il problema / chiude la faccenda.
+  Risolve il problema.
 notes_it: >-
   Riconosci {{片付|かたづ}}ける come elemento operativo del Book 7: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-7, lesson-04]
@@ -763,7 +763,7 @@ back: >-
 example_jp: >-
   {{楽|たの}}しくていい。
 example_it: >-
-  E divertente e va bene.
+  È bello perché è divertente.
 notes_it: >-
   Nel Book 7, questo pattern e un punto di lettura: non tradurlo da solo, usalo per decidere funzione, tono o rapporto fra due battute.
 tags: [crystal-hunters, book-7, grammar]

@@ -91,10 +91,10 @@ lemma: "ご購入"
 reading: "ごこうにゅう"
 romaji: "gokounyuu"
 meaning_it: >-
-  acquisto cortese
+  acquisto; acquisto in forma onorifica
 pos: noun
 notes_it: >-
-  Nel Book 4, ご{{購入|こうにゅう}} entra come acquisto cortese. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 4, ご{{購入|こうにゅう}} entra come acquisto; acquisto in forma onorifica. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -104,10 +104,10 @@ lemma: "求め"
 reading: "もとめ"
 romaji: "motome"
 meaning_it: >-
-  richiesta; acquisto
+  richiesta; ricerca; desiderio
 pos: noun
 notes_it: >-
-  Nel Book 4, {{求|もと}}め entra come richiesta; acquisto. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 4, {{求|もと}}め entra come richiesta; ricerca; desiderio. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -411,11 +411,11 @@ card_type: recognition
 front: >-
   ご{{購入|こうにゅう}}
 back: >-
-  ごこうにゅう - acquisto cortese
+  ごこうにゅう - ごこうにゅう - acquisto; acquisto in forma onorifica
 example_jp: >-
   これは「ご{{購入|こうにゅう}}」です。
 example_it: >-
-  Questa forma significa: acquisto cortese.
+  Questa forma significa: acquisto in forma onorifica.
 notes_it: >-
   Riconosci ご{{購入|こうにゅう}} come elemento operativo del Book 4: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-4, lesson-02]
@@ -430,7 +430,7 @@ card_type: recognition
 front: >-
   {{求|もと}}め
 back: >-
-  もとめ - richiesta; acquisto
+  もとめ - richiesta; ricerca; desiderio
 example_jp: >-
   これは「{{求|もと}}め」です。
 example_it: >-

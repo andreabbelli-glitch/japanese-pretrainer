@@ -22,7 +22,7 @@ Il punto pratico e partire da [{{熱|あつ}}い](term:term-ch-b9-i-1) e dagli a
 ## Termini chiave
 
 - [{{熱|あつ}}い](term:term-ch-b9-i-1) - caldo; rovente.
-- [ドンッ](term:term-ch-b9-don-2) - thump; wham; colpo sordo.
+- [ドンッ](term:term-ch-b9-don-2) - tonfo; botto; colpo sordo.
 - [どの](term:term-ch-b9-dono-3) - quale.
 - [やる](term:term-ch-b9-yaru-4) - fare; occuparsi di fare.
 - [{{蹴|け}}る](term:term-ch-b9-ru-5) - calciare.

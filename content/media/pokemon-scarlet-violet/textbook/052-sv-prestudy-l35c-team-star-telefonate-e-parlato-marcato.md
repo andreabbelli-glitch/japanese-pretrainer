@@ -161,7 +161,7 @@ translation_it: >-
 jp: >-
   そこで！ ぜひとも オマエの {{力|ちから}}を {{貸|か}}してほしいんだ！
 translation_it: >-
-  Per questo voglio assolutamente che tu mi dia una mano!
+  Ecco perché ho proprio bisogno che tu mi dia una mano!
 :::
 
 #### 🗺️ Anatomia della frase
@@ -381,7 +381,7 @@ jp: >-
   カシオペアと {{名乗|なの}}る {{人物|じんぶつ}}が スマホを ハッキングして
   {{通話|つうわ}}している。
 translation_it: >-
-  Una persona che si presenta come Cassiopeia sta telefonando hackerando lo smartphone.
+  Una persona che si presenta come Cassiopeia sta chiamando dopo aver hackerato lo smartphone.
 :::
 
 :::example_sentence
@@ -405,7 +405,7 @@ jp: >-
   {{引|ひ}}き{{続|つづ}}き かわいがってほしいなら、 もう
   {{迷|まよ}}っている {{時間|じかん}}はない。 やるっきゃない。
 translation_it: >-
-  Se vuoi che continui a prendersene cura, non c'è più tempo per esitare. Non resta che agire.
+  Se vuoi che continui a trattarlo con affetto, non c'è più tempo per esitare. Non resta che agire.
 :::
 
 ## Nota finale

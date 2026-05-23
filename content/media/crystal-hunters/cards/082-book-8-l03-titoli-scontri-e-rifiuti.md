@@ -344,7 +344,7 @@ back: >-
 example_jp: >-
   {{名乗|なの}}りを{{上|あ}}げる。
 example_it: >-
-  Si presenta dichiarando il nome.
+  Si fa avanti.
 notes_it: >-
   Riconosci {{名乗|なの}}り come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-03]
@@ -363,7 +363,7 @@ back: >-
 example_jp: >-
   バッジを{{横取|よこど}}りする。
 example_it: >-
-  Gli ruba il badge / il merito.
+  Gli ruba il badge.
 notes_it: >-
   Riconosci {{横取|よこど}}り come elemento operativo del Book 8: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-8, lesson-03]
@@ -587,7 +587,7 @@ card_type: recognition
 front: >-
   {{落|お}}ち{{着|つ}}ける
 back: >-
-  おちつける - calmarsi; calmare
+  おちつける - calmare; mettere a proprio agio
 example_jp: >-
   カルを{{落|お}}ち{{着|つ}}ける。
 example_it: >-

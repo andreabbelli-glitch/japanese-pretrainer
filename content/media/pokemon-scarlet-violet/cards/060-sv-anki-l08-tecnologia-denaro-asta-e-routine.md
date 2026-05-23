@@ -23,7 +23,7 @@ reading: おかね
 romaji: okane
 meaning_it: denaro; soldi
 notes_it: >-
-  Il sostantivo お{{金|かね}} indica il denaro fisico o i fondi base del giocatore. Nei negozi (フレンドリィショップ), il metodo di pagamento prende la particella で: お{{金|かね}}で{{払|はら}}う (pagare con i soldi) si contrappone all'uso dei LP (Lega Points). Il prefisso onorifico お- è quasi obbligatorio nell'uso comune.
+  Il sostantivo お{{金|かね}} indica i soldi o il denaro disponibile del giocatore. Nei negozi (フレンドリィショップ), il metodo di pagamento prende la particella で: お{{金|かね}}で{{払|はら}}う (pagare con i soldi) si contrappone all'uso dei LP (Lega Points). Il prefisso onorifico お- è quasi obbligatorio nell'uso comune.
 level_hint: custom
 :::
 :::term
@@ -41,7 +41,7 @@ id: term-anki-l08-ossu
 lemma: 押忍
 reading: おっす
 romaji: ossu
-meaning_it: ossu/yo, saluto energico
+meaning_it: ehi!/ciao!, saluto energico e informale
 notes_it: >-
   Il saluto {{押|おっ}}{{忍|す}} nasce in contesti di arti marziali e club sportivi come contrazione gergale di おはようございます. Nell'Accademia o nelle Palestre, definisce il carattere esuberante o competitivo di un allenatore appena incrocia il tuo sguardo, impostando un tono molto informale.
 level_hint: custom
@@ -131,13 +131,13 @@ entry_id: term-anki-l08-okane
 card_type: recognition
 front: 'お{{金|かね}}'
 back: >-
-  おかね — denaro; soldi. Indica i fondi fisici del giocatore, contrapposti spesso ad altre valute come i LP.
+  おかね — denaro; soldi. Indica i soldi disponibili del giocatore, spesso contrapposti ad altre valute come i LP.
 example_jp: >-
   お{{金|かね}}で モンスターボールを {{買|か}}う。
 example_it: >-
-  Compro delle Poké Ball con il denaro.
+  Compro delle Poké Ball con i soldi.
 notes_it: >-
-  Il sostantivo お{{金|かね}} indica il denaro fisico o i fondi base del giocatore. Nei negozi (フレンドリィショップ), il metodo di pagamento prende la particella で: お{{金|かね}}で{{払|はら}}う (pagare con i soldi) si contrappone all'uso dei LP (Lega Points). Il prefisso onorifico お- è quasi obbligatorio nell'uso comune.
+  Il sostantivo お{{金|かね}} indica i soldi o il denaro disponibile del giocatore. Nei negozi (フレンドリィショップ), il metodo di pagamento prende la particella で: お{{金|かね}}で{{払|はら}}う (pagare con i soldi) si contrappone all'uso dei LP (Lega Points). Il prefisso onorifico お- è quasi obbligatorio nell'uso comune.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-08]
 :::
 :::card
@@ -152,7 +152,7 @@ back: >-
 example_jp: >-
   この{{前|まえ}}、ネモと ポケモンバトルを した。
 example_it: >-
-  L'altro giorno ho lottato con i Pokémon contro Nemona.
+  L'altro giorno ho fatto una lotta Pokémon con Nemona.
 notes_it: >-
   L'espressione temporale この{{前|まえ}} ("prima di questo momento") si usa come avverbio di tempo per riferirsi a un evento accaduto "l'altro giorno" o "recentemente". A differenza di {{昔|むかし}} (molto tempo fa), indica un passato ancora vivido e vicino. Non richiede particelle specifiche per essere inserita nella frase.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-08]

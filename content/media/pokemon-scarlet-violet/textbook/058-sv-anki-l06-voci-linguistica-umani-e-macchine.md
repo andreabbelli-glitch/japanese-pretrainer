@@ -55,7 +55,7 @@ Lo stesso vale per le scene più emotive o tecnologiche: un valore che [{{上|�
 
 ---
 
-[クラベル](term:term-v069-kuraberu){{氏|し}} mostra come un nome proprio cambi tono con il suffisso: Clavell non viene avvicinato, viene citato in modo più formale.
+[クラベル](term:term-v069-kuraberu){{氏|し}} mostra come un nome proprio cambi tono con il suffisso: Clavel non viene avvicinato, viene citato in modo più formale.
 
 ## 1. Voci, lezioni e nomi: da dove arriva l'informazione
 
@@ -246,7 +246,7 @@ translation_it: >-
 jp: >-
   この {{機械|きかい}}を {{使|つか}}うと、 データの {{数|かず}}が {{上|あ}}がる。
 translation_it: >-
-  Se usi questa macchina, il numero dei dati aumenta.
+  Se usi questa macchina, la quantità di dati aumenta.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -278,7 +278,7 @@ translation_it: >-
 jp: >-
   {{言語|げんご}}{{学|がく}}の {{授業|じゅぎょう}}が {{終|お}}わったら、 すぐ {{解散|かいさん}}です。
 translation_it: >-
-  Quando finisce la lezione di linguistica, ci si scioglie subito.
+  Quando finisce la lezione di linguistica, tutti liberi subito.
 :::
 
 :::example_sentence
@@ -292,7 +292,7 @@ translation_it: >-
 jp: >-
   この {{機械|きかい}}を {{使|つか}}うと、 データの {{数|かず}}が {{上|あ}}がる。
 translation_it: >-
-  Se usi questa macchina, il numero dei dati aumenta.
+  Se usi questa macchina, la quantità di dati aumenta.
 :::
 
 ## Nota finale

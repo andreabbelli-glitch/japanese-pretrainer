@@ -87,7 +87,7 @@ jp: >-
   とりあえず ヌシが いそうな {{場所|ばしょ}}だけ マップアプリに
   {{登録|とうろく}}しておくな。
 translation_it: >-
-  Intanto ti segno sulla mappa solo i posti dove potrebbe esserci un Titan.
+  Intanto ti segno sulla mappa solo i posti dove potrebbe esserci un Dominante.
 :::
 
 #### 🗺️ Anatomia della frase

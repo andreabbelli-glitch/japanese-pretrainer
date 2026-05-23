@@ -83,7 +83,7 @@ reading: おおく
 romaji: ooku
 meaning_it: molti; molto
 notes_it: >-
-  {{多|おお}}くは {{多|おお}}いの{{形|かたち}}からできた、{{量|りょう}}を{{表|あらわ}}す{{形|かたち}}です。Per dire “molti X” si usa {{多|おお}}くの + nome, come {{多|おお}}くのポケモン. {{多|おお}}い invece funziona soprattutto come predicato o in altre costruzioni, per esempio ポケモンが{{多|おお}}い.
+  {{多|おお}}く è una forma derivata da {{多|おお}}い e serve a esprimere quantità. Per dire “molti X” si usa {{多|おお}}くの + nome, come {{多|おお}}くのポケモン. {{多|おお}}い invece funziona soprattutto come predicato o in altre costruzioni, per esempio ポケモンが{{多|おお}}い.
 level_hint: custom
 :::
 :::term
@@ -182,7 +182,7 @@ entry_id: term-anki-l16-shinrai
 card_type: recognition
 front: '{{信|しん}}{{頼|らい}}'
 back: >-
-  しんらい — fiducia; affidabilità. Si usa per descrivere il legame di profonda fiducia emotiva e reciproca che si instaura tra individui o tra un Allenatore e i suoi Pokémon.
+  しんらい — fiducia; affidamento. Si usa per descrivere il legame di profonda fiducia emotiva e reciproca che si instaura tra individui o tra un Allenatore e i suoi Pokémon.
 example_jp: >-
   ポケモンを {{信|しん}}{{頼|らい}}していれば、きっと かてるよ。
 example_it: >-
@@ -239,7 +239,7 @@ example_jp: >-
 example_it: >-
   Nella regione di Paldea ci sono tantissimi Pokémon.
 notes_it: >-
-  {{多|おお}}くは {{多|おお}}いの{{形|かたち}}からできた、{{量|りょう}}を{{表|あらわ}}す{{形|かたち}}です。Per dire “molti X” si usa {{多|おお}}くの + nome, come {{多|おお}}くのポケモン. {{多|おお}}い invece funziona soprattutto come predicato o in altre costruzioni, per esempio ポケモンが{{多|おお}}い.
+  {{多|おお}}く è una forma derivata da {{多|おお}}い e serve a esprimere quantità. Per dire “molti X” si usa {{多|おお}}くの + nome, come {{多|おお}}くのポケモン. {{多|おお}}い invece funziona soprattutto come predicato o in altre costruzioni, per esempio ポケモンが{{多|おお}}い.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-16]
 :::
 :::card
@@ -271,7 +271,7 @@ back: >-
 example_jp: >-
   ライバル{{同|どう}}{{士|し}}、{{全|ぜん}}{{力|りょく}}で バトルしようぜ！
 example_it: >-
-  Sfidiamoci con tutte le nostre forze tra rivali!
+  Da rivali, sfidiamoci con tutte le nostre forze!
 notes_it: >-
   {{同|どう}}{{士|し}} (どうし) si unisce ad altri nomi per esprimere una condizione orizzontale condivisa. Le combinazioni più comuni includono {{友|とも}}{{達|だち}}{{同|どう}}{{士|し}} (tra amici) o ライバル{{同|どう}}{{士|し}} (tra rivali). Indica chiaramente che l'azione descritta coinvolge soggetti messi sullo stesso piano.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-16]

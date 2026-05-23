@@ -26,7 +26,7 @@ back: lascia che ti aiuti / farò io per te
 example_jp: >-
   こちらで {{回復|かいふく}}してあげましょう。
 example_it: >-
-  Lascia che ti dia una mano.
+  Te lo curiamo qui noi.
 :::
 :::term
 id: term-e095-o-kakuninshitemimashou
@@ -48,7 +48,7 @@ back: proviamo a controllare …!
 example_jp: >-
   {{持|も}}ちものを {{確認|かくにん}}してみましょう！
 example_it: >-
-  Proviamo a controllare gli oggetti!
+  Proviamo a controllare gli oggetti tenuti!
 :::
 :::term
 id: term-e097-nakunatteshimaimasuga-yoroshiidesuka
@@ -607,7 +607,7 @@ id: term-v613-tairyouhassei
 lemma: 大量発生
 reading: たいりょうはっせい
 romaji: tairyouhassei
-meaning_it: mass outbreak
+meaning_it: apparizione massiccia
 notes_it: >-
   Indica un'apparizione massiccia di Pokemon selvatici. In mappa segnala un
   evento localizzato con molte occorrenze della stessa specie.
@@ -619,11 +619,11 @@ entry_type: term
 entry_id: term-v613-tairyouhassei
 card_type: recognition
 front: "{{大量発生|たい.りょう.はっ.せい}}"
-back: mass outbreak
+back: apparizione massiccia
 example_jp: >-
   {{大量発生|たい.りょう.はっ.せい}}が {{起|お}}きています。
 example_it: >-
-  È in corso una mass outbreak.
+  È in corso un'apparizione massiccia.
 :::
 :::term
 id: term-v614-nyuuryoku

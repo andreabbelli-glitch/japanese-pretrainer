@@ -26,10 +26,10 @@ lemma: "ドンッ"
 reading: "ドンッ"
 romaji: "don'"
 meaning_it: >-
-  thump; wham; colpo sordo
+  tonfo; botto; colpo sordo
 pos: sfx
 notes_it: >-
-  Nel Book 9, ドンッ entra come thump; wham; colpo sordo. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 9, ドンッ entra come tonfo; botto; colpo sordo. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -221,10 +221,10 @@ lemma: "降伏"
 reading: "こうふく"
 romaji: "koufuku"
 meaning_it: >-
-  resa; arrendersi
+  resa; capitolazione
 pos: suru-noun
 notes_it: >-
-  Nel Book 9, {{降伏|こうふく}} entra come resa; arrendersi. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 9, {{降伏|こうふく}} entra come resa; capitolazione. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -321,11 +321,11 @@ card_type: recognition
 front: >-
   ドンッ
 back: >-
-  ドンッ - thump; wham; colpo sordo
+  ドンッ - tonfo; botto; colpo sordo
 example_jp: >-
   ドンッとおとがした。
 example_it: >-
-  Si sente un effetto sonoro: thump.
+  Si e' sentito un tonfo.
 notes_it: >-
   Riconosci ドンッ come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-01]
@@ -420,7 +420,7 @@ back: >-
 example_jp: >-
   お{{姉|ねえ}}さんが{{怒|おこ}}る。
 example_it: >-
-  La sorella maggiore / signorina si arrabbia.
+  La signorina si arrabbia.
 notes_it: >-
   Riconosci お{{姉|ねえ}}さん come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-01]
@@ -591,7 +591,7 @@ back: >-
 example_jp: >-
   {{戦闘不能|せんとうふのう}}になる。
 example_it: >-
-  Diventa fuori combattimento.
+  Finisce fuori combattimento.
 notes_it: >-
   Riconosci {{戦闘不能|せんとうふのう}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-01]
@@ -606,7 +606,7 @@ card_type: recognition
 front: >-
   {{降伏|こうふく}}
 back: >-
-  こうふく - resa; arrendersi
+  こうふく - resa; capitolazione
 example_jp: >-
   {{降伏|こうふく}}するな。
 example_it: >-
@@ -667,7 +667,7 @@ back: >-
 example_jp: >-
   クリスタルを{{体|からだ}}に{{埋|う}}め{{込|こ}}む。
 example_it: >-
-  Incastona il cristallo nel corpo.
+  Impianta il cristallo nel corpo.
 notes_it: >-
   Riconosci {{埋|う}}め{{込|こ}}む come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-9, lesson-01]

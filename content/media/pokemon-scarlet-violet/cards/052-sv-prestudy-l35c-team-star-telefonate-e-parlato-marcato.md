@@ -28,7 +28,7 @@ back: oh? ma guarda...
 example_jp: >-
   おやおや？ {{大冒険|だいぼうけん}}だったのですね。
 example_it: >-
-  Oh? Ma guarda, e stata una vera grande avventura.
+  Oh? Ma guarda, è stata proprio una grande avventura.
 :::
 :::term
 id: term-e114-yarukkyanai
@@ -146,7 +146,7 @@ back: tu, in tono brusco
 example_jp: >-
   そこで！ ぜひとも オマエの {{力|ちから}}を {{貸|か}}してほしいんだ！
 example_it: >-
-  Per questo voglio proprio il tuo aiuto!
+  Ecco perché ho proprio bisogno che tu mi dia una mano!
 :::
 :::term
 id: term-v766-kanri
@@ -286,7 +286,7 @@ example_jp: >-
   {{坂道|さかみち}}の トレーナーたちと {{戦|たたか}}って ポケモン
   {{成長|せいちょう}}したんじゃない？
 example_it: >-
-  Non e che i tuoi Pokemon sono cresciuti combattendo contro gli allenatori in salita?
+  Non è che i tuoi Pokémon sono cresciuti combattendo contro gli allenatori lungo la salita?
 :::
 :::grammar
 id: grammar-g114-non-ho-intenzione-di

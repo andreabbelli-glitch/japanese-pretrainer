@@ -196,7 +196,7 @@ back: >-
 example_jp: >-
   クリスタル・ハンターなんだ。
 example_it: >-
-  Sono un Crystal Hunter, ecco perche.
+  Sono un Crystal Hunter.
 notes_it: >-
   Nel Book 6, questo pattern e un punto di lettura: non tradurlo da solo, usalo per decidere funzione, tono o rapporto fra due battute.
 tags: [crystal-hunters, book-6, grammar]
@@ -291,7 +291,7 @@ back: >-
 example_jp: >-
   {{怪物|かいぶつ}}と{{戦|たたか}}う。
 example_it: >-
-  Combatto con un mostro.
+  Combatto contro un mostro.
 notes_it: >-
   Nel Book 6, questo pattern e un punto di lettura: non tradurlo da solo, usalo per decidere funzione, tono o rapporto fra due battute.
 tags: [crystal-hunters, book-6, grammar]

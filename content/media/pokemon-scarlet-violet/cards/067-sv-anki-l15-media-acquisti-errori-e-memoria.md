@@ -203,7 +203,7 @@ back: >-
 example_jp: >-
   ポケモントレーナーを {{引|いん}}{{退|たい}}する。
 example_it: >-
-  Ritirarsi dall'essere un Allenatore di Pokémon.
+  Ritirarsi dal ruolo di Allenatore di Pokémon.
 notes_it: >-
   {{引|いん}}{{退|たい}} (いんたい) descrive il momento in cui qualcuno si ritira dalla propria professione o dal proprio ruolo agonistico (come un Allenatore o un Capopalestra). L'azione richiede il verbo する e la particella を per indicare il ruolo lasciato: トレーナーを{{引|いん}}{{退|たい}}する.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]

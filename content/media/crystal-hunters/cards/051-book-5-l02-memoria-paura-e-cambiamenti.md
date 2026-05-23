@@ -619,7 +619,7 @@ back: >-
 example_jp: >-
   {{建物|たてもの}}が{{倒|たお}}れる。
 example_it: >-
-  L'edificio sta per cadere.
+  L'edificio cade.
 notes_it: >-
   Nel Book 5, questo pattern e un punto di lettura: non tradurlo da solo, usalo per decidere funzione, tono o rapporto fra due battute.
 tags: [crystal-hunters, book-5, grammar]

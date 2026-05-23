@@ -27,7 +27,7 @@ Il punto pratico e partire da [{{完治|かんち}}](term:term-ch-b7-entry-45) e
 - [{{賭|か}}ける](term:term-ch-b7-keru-48) - scommettere; rischiare.
 - [{{一体|いったい}}](term:term-ch-b7-entry-49) - che diavolo; davvero.
 - [{{何|なん}}とか](term:term-ch-b7-toka-50) - in qualche modo.
-- [{{化|か}}する](term:term-ch-b7-suru-51) - trasformarsi in; rendere tale.
+- [{{化|か}}する](term:term-ch-b7-suru-51) - diventare; trasformarsi in.
 - [{{元通|もとどお}}り](term:term-ch-b7-ri-52) - come prima.
 - [{{異常|いじょう}}](term:term-ch-b7-entry-53) - anomalia; anormale.
 - [{{必|かなら}}ず](term:term-ch-b7-zu-54) - sicuramente; senza fallo.

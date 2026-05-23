@@ -135,7 +135,7 @@ back: numero prestabilito
 example_jp: >-
   {{決|き}}められた{{数|かず}}の ポケモンを {{選|えら}}ぶ。
 example_it: >-
-  Scegli il numero prestabilito di Pokémon.
+  Seleziona il numero prestabilito di Pokémon.
 :::
 :::term
 id: term-v717-tani
@@ -346,7 +346,7 @@ back: modo di muoversi
 example_jp: >-
   ライドポケモンの {{動|うご}}き{{方|かた}}を {{覚|おぼ}}える。
 example_it: >-
-  Imparo il modo di muoversi del Pokémon da monta.
+  Imparo come si muove il Pokémon da monta.
 :::
 :::term
 id: term-v726-koutokuten
@@ -497,7 +497,7 @@ back: competere
 example_jp: >-
   トレーナーどうしで {{強|つよ}}さを {{競|きそ}}い{{合|あ}}う。
 example_it: >-
-  Gli Allenatori competono tra loro sulla forza.
+  Gli Allenatori competono tra loro per stabilire chi è più forte.
 :::
 :::term
 id: term-v733-koukankanryou
@@ -521,7 +521,7 @@ back: scambio completato
 example_jp: >-
   {{通信交換|つうしんこうかん}}の {{画面|がめん}}に {{交換完了|こうかんかんりょう}}！と {{出|で}}た。
 example_it: >-
-  Nella schermata dello scambio via comunicazione è apparso "scambio completato!".
+  Nella schermata dello scambio in link è apparso "Scambio completato!".
 :::
 :::term
 id: term-v734-ittai

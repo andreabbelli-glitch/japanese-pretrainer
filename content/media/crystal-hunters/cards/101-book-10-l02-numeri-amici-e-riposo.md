@@ -286,10 +286,10 @@ lemma: "浴場"
 reading: "よくじょう"
 romaji: "yokujou"
 meaning_it: >-
-  area bagno
+  bagni; sala da bagno
 pos: noun
 notes_it: >-
-  Nel Book 10, {{浴場|よくじょう}} entra come area bagno. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
+  Nel Book 10, {{浴場|よくじょう}} entra come bagni; sala da bagno. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
 level_hint: custom
 :::
 
@@ -458,7 +458,7 @@ back: >-
 example_jp: >-
   {{最低|さいてい}}だ。
 example_it: >-
-  Descrive qualcosa come: il peggiore.
+  E' terribile.
 notes_it: >-
   Riconosci {{最低|さいてい}} come elemento operativo del Book 10: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-10, lesson-02]
@@ -701,11 +701,11 @@ card_type: recognition
 front: >-
   {{浴場|よくじょう}}
 back: >-
-  よくじょう - area bagno
+  よくじょう - bagni; sala da bagno
 example_jp: >-
   {{浴場|よくじょう}}へ{{案内|あんない}}する。
 example_it: >-
-  Lo accompagna all'area bagno.
+  Lo accompagna ai bagni.
 notes_it: >-
   Riconosci {{浴場|よくじょう}} come elemento operativo del Book 10: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
 tags: [crystal-hunters, book-10, lesson-02]

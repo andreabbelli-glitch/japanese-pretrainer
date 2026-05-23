@@ -149,7 +149,7 @@ example_jp: >-
   {{説明|せつめい}}を いたしますので グラウンドに {{集合|しゅうごう}}して
   ください。
 example_it: >-
-  Ci raduneremo nel campo sportivo per la spiegazione.
+  Faremo la spiegazione nel campo sportivo, quindi radunatevi lì.
 :::
 :::term
 id: term-v736-keigo

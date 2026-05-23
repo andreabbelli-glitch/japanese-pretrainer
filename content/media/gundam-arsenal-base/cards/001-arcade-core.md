@@ -615,7 +615,7 @@ back: >-
 example_jp: >-
   プレイ{{前|まえ}}にアミューズメントICカードをカードリーダーへタッチすると、{{前回|ぜんかい}}のデータを{{呼|よ}}び{{出|だ}}せます。
 example_it: >-
-  Se tocchi la carta IC sul lettore prima di giocare, puoi richiamare i dati
+  Se tocchi la tessera IC sul lettore prima di giocare, puoi richiamare i dati
   della sessione precedente.
 notes_it: >-
   Nel flusso arcade non è una carta del deck: è la tessera che identifica il profilo al cabinato e permette di caricare o salvare i dati di gioco.
@@ -773,7 +773,7 @@ back: >-
 example_jp: >-
   ミッション{{進行|しんこう}}をまとめて{{確認|かくにん}}する。
 example_it: >-
-  Controlla insieme l'avanzamento delle missioni.
+  Controllare in blocco l'avanzamento delle missioni.
 notes_it: >-
   In [MY PAGE](term:term-mypage) non descrive il contenuto della missione: ti
   dice a che punto sei nel completamento. Va letto come stato di avanzamento,
@@ -895,8 +895,8 @@ back: >-
 example_jp: >-
   コストが{{足|た}}りたら、{{右|みぎ}}レーンへ{{制圧|せいあつ}}ユニットを{{出撃|しゅつげき}}させます。
 example_it: >-
-  Quando hai costo sufficiente, fai uscire una unità di pressione nella corsia
-  di destra.
+  Quando hai costo sufficiente, schieri una unità di pressione nella corsia di
+  destra.
 notes_it: >-
   In pratica significa scegliere quando e dove far comparire un'unità sulla mappa pagando costo. È l'azione che trasforma una carta preparata in presenza reale sul campo.
 tags: [term, battle]
@@ -915,7 +915,7 @@ back: >-
 example_jp: >-
   {{敵|てき}}{{防衛|ぼうえい}}を{{崩|くず}}したいので、このMSのアビリティを{{先|さき}}に{{使|つか}}います。
 example_it: >-
-  Siccome voglio rompere la difesa nemica, uso prima l'ability di questa MS.
+  Siccome voglio sfondare la difesa nemica, uso prima l'abilità di questa MS.
 notes_it: >-
   Consuma costo e applica un effetto del Mobile Suit. Alcune abilità richiedono anche un bersaglio o una coordinata, quindi collegano testo e posizione sulla mappa.
 tags: [term, battle]
@@ -1035,8 +1035,8 @@ back: >-
 example_jp: >-
   {{制圧|せいあつ}}を{{左|ひだり}}から{{通|とお}}せば、{{拠点|きょてん}}と{{戦艦|せんかん}}のゲージをまとめて{{削|けず}}れます。
 example_it: >-
-  Se riesci a far passare la pressione da sinistra, puoi consumare sia la gauge
-  della base sia quella della nave.
+  Se riesci a far passare la pressione da sinistra, puoi ridurre insieme sia la
+  gauge della base sia quella della nave.
 notes_it: >-
   Va letto come pressione sugli obiettivi. È il ruolo che converte una corsia aperta in danno reale alla gauge avversaria.
 tags: [term, battle]

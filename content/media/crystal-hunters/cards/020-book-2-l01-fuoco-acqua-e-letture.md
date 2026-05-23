@@ -111,10 +111,10 @@ lemma: "まずい"
 reading: "まずい"
 romaji: "ma-zu-i"
 meaning_it: >-
-  non buono; problematico
+  brutto; è un guaio; si mette male
 pos: i-adjective
 notes_it: >-
-  Nel Book 2, まずい vale 'non buono; problematico' ed e un qualita che cambia il tono della descrizione. La flashcard serve a riconoscerlo nel contesto del manga, non a memorizzarlo come traduzione isolata.
+  Nel Book 2, まずい vale 'brutto; è un guaio; si mette male' ed e un qualita che cambia il tono della descrizione. La flashcard serve a riconoscerlo nel contesto del manga, non a memorizzarlo come traduzione isolata.
 level_hint: n4
 :::
 
@@ -152,7 +152,7 @@ id: grammar-ch-desu-copula
 pattern: "です"
 title: "Copula polite base"
 meaning_it: >-
-  forma polite per dichiarare o identificare qualcosa
+  forma cortese per dichiarare o identificare qualcosa
 notes_it: >-
   Book 2 presenta です come primo passo verso le frasi dichiarative polite: non aggiunge un oggetto, chiude la frase come 'essere/e'.
 level_hint: n5
@@ -364,9 +364,9 @@ card_type: recognition
 front: >-
   まずい
 back: >-
-  まずい - non buono; problematico
+  まずい - brutto; è un guaio; si mette male
 notes_it: >-
-  Nel Book 2, まずい vale 'non buono; problematico' ed e un qualita che cambia il tono della descrizione. La flashcard serve a riconoscerlo nel contesto del manga, non a memorizzarlo come traduzione isolata.
+  Nel Book 2, まずい vale 'brutto; è un guaio; si mette male' ed e un qualita che cambia il tono della descrizione. La flashcard serve a riconoscerlo nel contesto del manga, non a memorizzarlo come traduzione isolata.
 tags: [crystal-hunters, book-2, lesson-01]
 :::
 
@@ -412,7 +412,7 @@ card_type: concept
 front: >-
   です
 back: >-
-  forma polite per dichiarare o identificare qualcosa
+  forma cortese per dichiarare o identificare qualcosa
 example_jp: >-
   これは{{水|みず}}です。
 example_it: >-

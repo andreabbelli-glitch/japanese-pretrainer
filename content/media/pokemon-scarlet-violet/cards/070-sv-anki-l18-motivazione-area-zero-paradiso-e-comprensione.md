@@ -51,7 +51,7 @@ id: term-anki-l18-katsuyaku
 lemma: 活躍
 reading: かつやく
 romaji: katsuyaku
-meaning_it: attività; successo attivo
+meaning_it: distinguersi; avere un ruolo attivo; successo/prestazione notevole
 notes_it: >-
   Non indica semplicemente un 'fare bene', ma un 'distinguersi attivamente' svolgendo un ruolo decisivo e visibile. Il termine è spesso impiegato da presidi, professori e leader per augurare o lodare l'impatto positivo di un alunno nel mondo pokemon.
 level_hint: custom
@@ -175,7 +175,7 @@ entry_id: term-anki-l18-rakuen
 card_type: recognition
 front: '{{楽|らく}}{{園|えん}}'
 back: >-
-  らくえん — paradiso. Si scrive unendo i concetti di 'piacevole/facile' ({{楽|たの}}) e 'giardino/parco' ({{園|えん}}) per indicare un luogo utopico e idilliaco.
+  らくえん — paradiso. Si scrive con 楽 (らく: agio, piacere) e 園 (えん: giardino/parco), e indica un luogo utopico e idilliaco.
 example_jp: >-
   ここは ポケモンたちの {{楽|らく}}{{園|えん}} なのよ。
 example_it: >-
@@ -192,7 +192,7 @@ entry_id: term-anki-l18-katsuyaku
 card_type: recognition
 front: '{{活|かつ}}{{躍|やく}}'
 back: >-
-  かつやく — attività; successo attivo. Utilizzato spesso come verbo する per indicare qualcuno che brilla per il suo contributo o ruolo sul campo; il soggetto prende が.
+  かつやく — distinguersi; avere un ruolo attivo. Si usa spesso come verbo する per indicare qualcuno che si distingue grazie al suo contributo o al suo ruolo sul campo; il soggetto prende が.
 example_jp: >-
   チャンピオンランクでの {{活|かつ}}{{躍|やく}}を {{期|き}}{{待|たい}}して いるよ。
 example_it: >-

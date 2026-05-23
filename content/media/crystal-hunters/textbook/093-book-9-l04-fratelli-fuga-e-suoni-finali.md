@@ -113,7 +113,7 @@ Qui [AはBはC](grammar:grammar-ch-b9-a-b-c-7) vale: un は puo marcare topic ge
 jp: >-
   {{女王|じょうおう}}はハンター{{達|たち}}に{{準備|じゅんび}}をさせた。
 translation_it: >-
-  La regina ha fatto preparare i cacciatori.
+  La regina ha fatto fare i preparativi ai cacciatori.
 :::
 
 Qui [させる](grammar:grammar-ch-b9-saseru-8) vale: esercita potere, forza o permesso sull'azione.

@@ -121,8 +121,7 @@ example_jp: >-
   {{他|ほか}}の トレーナーの {{迷惑|めいわく}}に なるから、
   バトルの {{前|まえ}}に {{用意|ようい}}しておく。
 example_it: >-
-  È un disturbo per gli altri allenatori, quindi mi preparo prima della
-  battaglia.
+  Per non dare fastidio agli altri allenatori, mi preparo prima della battaglia.
 :::
 :::term
 id: term-v545-youi
@@ -301,7 +300,7 @@ example_jp: >-
   HPが {{回復|かいふく}}する。
 example_it: >-
   In un Raid Teracristal, usando il supporto, gli HP degli alleati si
-  recuperano.
+  ripristinano.
 :::
 :::term
 id: term-v553-houshuu
@@ -325,7 +324,7 @@ example_jp: >-
   レイドバトルに {{勝|か}}つと、{{報酬|ほうしゅう}}として
   テラピースを もらえる。
 example_it: >-
-  Se vinci un raid, ricevi Tera Shard come ricompensa.
+  Se vinci un raid, ricevi Teraliti come ricompensa.
 :::
 :::term
 id: term-v554-tansaku
@@ -485,7 +484,7 @@ id: term-v561-koubaibu
 lemma: 購買部
 reading: こうばいぶ
 romaji: koubaibu
-meaning_it: spaccio scolastico
+meaning_it: negozio della scuola
 notes_it: >-
   Negozio interno dell'accademia: luogo dove si comprano oggetti utili prima di
   lezioni, esplorazione o lotte.
@@ -497,12 +496,12 @@ entry_type: term
 entry_id: term-v561-koubaibu
 card_type: recognition
 front: "{{購買部|こう.ばい.ぶ}}"
-back: spaccio scolastico
+back: negozio della scuola
 example_jp: >-
   {{購買部|こう.ばい.ぶ}}で キズぐすりを {{買|か}}ってから
   バトルに {{行|い}}く。
 example_it: >-
-  Compri una Pozione allo spaccio scolastico e poi vai alla battaglia.
+  Compri una Pozione allo negozio della scuola e poi vai alla battaglia.
 :::
 :::term
 id: term-v562-kanari

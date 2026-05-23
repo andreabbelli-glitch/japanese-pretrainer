@@ -146,7 +146,7 @@ Il [{{受|う}}け{{身|み}}](grammar:grammar-g087-forma-passiva) serve quando 
 jp: >-
   {{選|えら}}ばれた ポケモンが {{前|まえ}}に {{出|で}}る。
 translation_it: >-
-  Il Pokémon scelto esce davanti.
+  Il Pokémon scelto si fa avanti.
 :::
 
 #### 🗺️ Anatomia della frase

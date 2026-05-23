@@ -406,7 +406,7 @@ jp: >-
   {{学生|がくせい}}{{食堂|しょくどう}}では ペパーの {{相談|そうだん}}が
   {{始|はじ}}まる。
 translation_it: >-
-  Nella mensa studentesca comincia la conversazione di Pepper.
+  Nella mensa studentesca comincia la richiesta di aiuto di Pepper.
 :::
 
 :::example_sentence
