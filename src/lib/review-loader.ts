@@ -75,6 +75,7 @@ type CachedReviewWorkspaceV2 = {
 
 export type LoadedGlobalReviewPageWorkspace = {
   mediaRows: MediaListItem[];
+  reviewAutoplayAudioOnReveal: boolean;
   reviewFrontFurigana: boolean;
   searchState: ReviewSearchState;
 } & LoadedReviewWorkspaceV2;
@@ -306,7 +307,12 @@ export async function loadGlobalReviewWorkspace(
   database: DatabaseClient = db,
   options: ReviewPageLoadOptions = {},
   resolvedDailyLimit?: number | Promise<number>
-): Promise<Omit<LoadedGlobalReviewPageWorkspace, "reviewFrontFurigana">> {
+): Promise<
+  Omit<
+    LoadedGlobalReviewPageWorkspace,
+    "reviewAutoplayAudioOnReveal" | "reviewFrontFurigana"
+  >
+> {
   const now = new Date();
   const mediaRows =
     options.resolvedMediaRows ??
@@ -366,6 +372,7 @@ export async function loadGlobalReviewPageWorkspace(
 
   return {
     ...mediaWorkspace,
+    reviewAutoplayAudioOnReveal: settings.reviewAutoplayAudioOnReveal,
     reviewFrontFurigana: settings.reviewFrontFurigana
   };
 }

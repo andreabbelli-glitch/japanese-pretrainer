@@ -2,7 +2,7 @@
 
 import type { Route } from "next";
 import { useSearchParams } from "next/navigation";
-import { useMemo, useRef, useState, type RefObject } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 
 import {
   markLinkedEntryKnownSessionAction,
@@ -10,6 +10,10 @@ import {
   setLinkedEntryLearningSessionAction,
   setReviewCardSuspendedSessionAction
 } from "@/actions/review";
+import {
+  playPreloadedAudioSource,
+  preloadAudioSources
+} from "@/components/ui/audio-preload";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
 
@@ -19,7 +23,11 @@ import {
   type ReviewForcedContrastSelection,
   type ReviewPageClientData
 } from "./review-page-state";
-import { isReviewPageData, type ReviewGradeValue } from "./review-page-helpers";
+import {
+  collectReviewCardAudioSources,
+  isReviewPageData,
+  type ReviewGradeValue
+} from "./review-page-helpers";
 import { buildReviewControllerSnapshot } from "./review-page-controller-snapshot";
 import {
   buildReviewSessionActionInput,
@@ -208,6 +216,14 @@ export function useReviewPageController(input: {
     serverAdvanceCardIds
   });
 
+  useEffect(() => {
+    if (!selectedCard) {
+      return;
+    }
+
+    preloadAudioSources(collectReviewCardAudioSources([selectedCard]));
+  }, [selectedCard]);
+
   useReviewPageDataSync({
     currentSearchParams,
     data,
@@ -246,6 +262,14 @@ export function useReviewPageController(input: {
   function handleRevealAnswer() {
     if (!selectedCard) {
       return;
+    }
+
+    if (viewData.settings.reviewAutoplayAudioOnReveal) {
+      const firstAudioSource = collectReviewCardAudioSources([selectedCard])[0];
+
+      if (firstAudioSource) {
+        playPreloadedAudioSource(firstAudioSource);
+      }
     }
 
     setRevealedCardId(selectedCard.id);

@@ -64,6 +64,7 @@ describe("settings route", () => {
       kanjiClashDailyNewLimit: 5,
       kanjiClashDefaultScope: "global",
       kanjiClashManualDefaultSize: 20,
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true,
       reviewDailyLimit: 20
     });

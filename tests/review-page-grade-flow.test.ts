@@ -274,6 +274,7 @@ function buildFullReviewPageData(
       showAnswer: true
     },
     settings: {
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true
     },
     session: {
@@ -320,6 +321,7 @@ function buildFirstCandidateReviewPageData(
       showAnswer: true
     },
     settings: {
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true
     },
     session: {

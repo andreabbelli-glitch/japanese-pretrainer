@@ -143,6 +143,7 @@ export type ReviewPageData = {
     title: string;
   };
   settings: {
+    reviewAutoplayAudioOnReveal: boolean;
     reviewFrontFurigana: boolean;
   };
   queue: ReviewQueueSnapshot & {
@@ -191,6 +192,7 @@ export type ReviewFirstCandidateCard = {
   mediaTitle: string;
   notes?: string;
   orderIndex: number | null;
+  pronunciations: ReviewCardPronunciation[];
   rawReviewLabel: string;
   reading?: string;
   reviewSeedState: ReviewSeedState;

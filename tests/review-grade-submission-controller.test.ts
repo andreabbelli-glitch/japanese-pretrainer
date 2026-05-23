@@ -409,6 +409,7 @@ function buildReviewPageData(
       showAnswer: true
     },
     settings: {
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true
     },
     session: {

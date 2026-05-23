@@ -20,6 +20,7 @@ export type StudySettings = {
   kanjiClashDailyNewLimit: number;
   kanjiClashDefaultScope: KanjiClashDefaultScope;
   kanjiClashManualDefaultSize: number;
+  reviewAutoplayAudioOnReveal: boolean;
   reviewFrontFurigana: boolean;
   reviewDailyLimit: number;
 };
@@ -34,6 +35,7 @@ export const defaultStudySettings: StudySettings = {
   kanjiClashDailyNewLimit: 5,
   kanjiClashDefaultScope: "global",
   kanjiClashManualDefaultSize: 20,
+  reviewAutoplayAudioOnReveal: true,
   reviewFrontFurigana: true,
   reviewDailyLimit: reviewSchedulerConfig.defaultDailyLimit
 };
@@ -44,6 +46,7 @@ const studySettingKeys = [
   "kanji_clash_daily_new_limit",
   "kanji_clash_default_scope",
   "kanji_clash_manual_default_size",
+  "review_autoplay_audio_on_reveal",
   "review_front_furigana",
   "review_daily_limit"
 ] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
@@ -126,6 +129,11 @@ function buildStudySettingsSnapshot(rows: StudySettingRow[]): StudySettings {
       normalizeKanjiClashManualDefaultSize,
       defaultStudySettings.kanjiClashManualDefaultSize
     ),
+    reviewAutoplayAudioOnReveal: parseSettingValue(
+      valuesByKey.get("review_autoplay_audio_on_reveal"),
+      normalizeReviewAutoplayAudioOnReveal,
+      defaultStudySettings.reviewAutoplayAudioOnReveal
+    ),
     reviewFrontFurigana: parseSettingValue(
       valuesByKey.get("review_front_furigana"),
       normalizeReviewFrontFurigana,
@@ -196,6 +204,12 @@ export async function updateStudySettings(
         : normalizeKanjiClashManualDefaultSize(
             input.kanjiClashManualDefaultSize
           ),
+    reviewAutoplayAudioOnReveal:
+      input.reviewAutoplayAudioOnReveal === undefined
+        ? current.reviewAutoplayAudioOnReveal
+        : normalizeReviewAutoplayAudioOnReveal(
+            input.reviewAutoplayAudioOnReveal
+          ),
     reviewFrontFurigana:
       input.reviewFrontFurigana === undefined
         ? current.reviewFrontFurigana
@@ -227,6 +241,11 @@ export async function updateStudySettings(
       "kanji_clash_manual_default_size",
       current.kanjiClashManualDefaultSize,
       next.kanjiClashManualDefaultSize
+    ],
+    [
+      "review_autoplay_audio_on_reveal",
+      current.reviewAutoplayAudioOnReveal,
+      next.reviewAutoplayAudioOnReveal
     ],
     [
       "review_front_furigana",
@@ -331,6 +350,20 @@ export function normalizeReviewFrontFurigana(value: boolean | string) {
     : value === "true"
       ? true
       : defaultStudySettings.reviewFrontFurigana;
+}
+
+export function normalizeReviewAutoplayAudioOnReveal(
+  value: boolean | string
+) {
+  if (typeof value === "boolean") {
+    return value;
+  }
+
+  return value === "false"
+    ? false
+    : value === "true"
+      ? true
+      : defaultStudySettings.reviewAutoplayAudioOnReveal;
 }
 
 export function normalizeReviewDailyLimit(value: number | string) {

@@ -11,6 +11,7 @@ import {
   normalizeKanjiClashDailyNewLimit,
   normalizeKanjiClashDefaultScope,
   normalizeKanjiClashManualDefaultSize,
+  normalizeReviewAutoplayAudioOnReveal,
   normalizeReviewFrontFurigana,
   normalizeReviewDailyLimit,
   updateStudySettings
@@ -34,6 +35,9 @@ export async function saveStudySettingsAction(formData: FormData) {
     ),
     kanjiClashManualDefaultSize: normalizeKanjiClashManualDefaultSize(
       readRequiredInteger(formData, "kanjiClashManualDefaultSize")
+    ),
+    reviewAutoplayAudioOnReveal: normalizeReviewAutoplayAudioOnReveal(
+      readRequiredString(formData, "reviewAutoplayAudioOnReveal")
     ),
     reviewFrontFurigana: normalizeReviewFrontFurigana(
       readRequiredString(formData, "reviewFrontFurigana")

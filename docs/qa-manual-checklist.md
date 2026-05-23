@@ -150,6 +150,9 @@
   superficie compare in piu media, la pagina mostra le sfaccettature
   cross-media in un unico posto.
 - Review: il toggle `Furigana sul fronte` rispetta sia la modalita immediata sia quella solo dopo risposta.
+- Review: se `Settings -> Audio alla risposta` e` attivo, cliccare
+  `Mostra risposta` su una card con pronuncia fa partire l'audio subito; se il
+  toggle e` disattivo resta solo il player manuale.
 - Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione subito, senza flash di pagina completa, e in caso di errore ripristina la card precedente con messaggio chiaro.
 - Review: dopo `Mostra risposta` compare il controllo compatto `+ Contrasto`;
   `C` apre/chiude il picker e `Esc` lo chiude senza rompere il flusso.
@@ -200,7 +203,7 @@
 - Progress e media detail: i numeri marcati come review globale coincidono con
   `/review`; i numeri del media restano chiaramente etichettati come locali.
 - Progress: mostra textbook, coverage, review e setting persistiti.
-- Settings: salvare furigana reader, furigana review e ordine glossary aggiorna le viste collegate.
+- Settings: salvare furigana reader, furigana review, autoplay audio review e ordine glossary aggiorna le viste collegate.
 - Settings: la sezione `FSRS optimizer` mostra stato read-only coerente con i
   dati salvati in `user_setting`, senza esporre pulsanti manuali di retrain.
 - Media secondario: aprendo `Mobile Suit Gundam Arsenal Base`, textbook,

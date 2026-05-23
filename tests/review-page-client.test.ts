@@ -506,6 +506,7 @@ function buildCurrentReviewPageClientData(input: {
       showAnswer: input.showAnswer
     },
     settings: {
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true
     },
     session: {
@@ -621,6 +622,7 @@ function buildFirstCandidateReviewPageData(input: {
       showAnswer: input.showAnswer ?? false
     },
     settings: {
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true
     },
     session: {
@@ -704,6 +706,7 @@ function buildFullReviewPageData(input: {
       showAnswer: input.showAnswer ?? false
     },
     settings: {
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true
     },
     session: {

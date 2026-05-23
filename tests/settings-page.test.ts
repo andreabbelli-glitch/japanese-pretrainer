@@ -46,6 +46,7 @@ describe("settings page", () => {
           kanjiClashDailyNewLimit: 5,
           kanjiClashDefaultScope: "global",
           kanjiClashManualDefaultSize: 20,
+          reviewAutoplayAudioOnReveal: true,
           reviewFrontFurigana: true,
           reviewDailyLimit: 20
         }
@@ -54,6 +55,8 @@ describe("settings page", () => {
 
     expect(markup).toContain("Preferenze di studio");
     expect(markup).toContain("Salva preferenze");
+    expect(markup).toContain("Audio alla risposta");
+    expect(markup).toContain("Riproduci subito");
     expect(markup).toContain("Furigana sul fronte");
     expect(markup).toContain("Solo dopo risposta");
     expect(markup).toContain("Kanji Clash");
@@ -81,6 +84,7 @@ describe("settings page", () => {
           kanjiClashDailyNewLimit: 5,
           kanjiClashDefaultScope: "global",
           kanjiClashManualDefaultSize: 20,
+          reviewAutoplayAudioOnReveal: true,
           reviewFrontFurigana: true,
           reviewDailyLimit: 20
         }
@@ -106,6 +110,7 @@ describe("settings page", () => {
           kanjiClashDailyNewLimit: 5,
           kanjiClashDefaultScope: "global",
           kanjiClashManualDefaultSize: 20,
+          reviewAutoplayAudioOnReveal: true,
           reviewFrontFurigana: true,
           reviewDailyLimit: 20
         }
@@ -130,6 +135,7 @@ describe("settings page", () => {
           kanjiClashDailyNewLimit: 5,
           kanjiClashDefaultScope: "global",
           kanjiClashManualDefaultSize: 20,
+          reviewAutoplayAudioOnReveal: true,
           reviewFrontFurigana: true,
           reviewDailyLimit: 7
         }

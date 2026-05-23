@@ -24,6 +24,7 @@ describe("progress query scheduling", () => {
       kanjiClashDailyNewLimit: 5,
       kanjiClashDefaultScope: "global" as const,
       kanjiClashManualDefaultSize: 20,
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true,
       reviewDailyLimit: 7
     };
@@ -137,6 +138,7 @@ describe("progress query scheduling", () => {
       kanjiClashDailyNewLimit: 5,
       kanjiClashDefaultScope: "global" as const,
       kanjiClashManualDefaultSize: 20,
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true,
       reviewDailyLimit: 7
     };
@@ -207,6 +209,7 @@ describe("progress query scheduling", () => {
       kanjiClashDailyNewLimit: 5,
       kanjiClashDefaultScope: "global" as const,
       kanjiClashManualDefaultSize: 20,
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true,
       reviewDailyLimit: 7
     };

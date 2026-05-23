@@ -22,6 +22,8 @@ const mocks = vi.hoisted(() => ({
   gradeReviewCardSessionAction: vi.fn(),
   loadReviewPageDataSessionAction: vi.fn(),
   markLinkedEntryKnownSessionAction: vi.fn(),
+  playPreloadedAudioSource: vi.fn(),
+  preloadAudioSources: vi.fn(),
   prefetchReviewCardSessionAction: vi.fn(),
   resetReviewCardSessionAction: vi.fn(),
   setLinkedEntryLearningSessionAction: vi.fn(),
@@ -43,6 +45,11 @@ vi.mock("@/actions/review", () => ({
   setLinkedEntryLearningSessionAction:
     mocks.setLinkedEntryLearningSessionAction,
   setReviewCardSuspendedSessionAction: mocks.setReviewCardSuspendedSessionAction
+}));
+
+vi.mock("@/components/ui/audio-preload", () => ({
+  playPreloadedAudioSource: mocks.playPreloadedAudioSource,
+  preloadAudioSources: mocks.preloadAudioSources
 }));
 
 vi.mock("@/components/glossary/use-glossary-autocomplete", () => ({
@@ -90,6 +97,8 @@ describe("useReviewPageController first-candidate grading", () => {
     mocks.gradeReviewCardSessionAction.mockReset();
     mocks.loadReviewPageDataSessionAction.mockReset();
     mocks.markLinkedEntryKnownSessionAction.mockReset();
+    mocks.playPreloadedAudioSource.mockReset();
+    mocks.preloadAudioSources.mockReset();
     mocks.prefetchReviewCardSessionAction.mockReset();
     mocks.resetReviewCardSessionAction.mockReset();
     mocks.setLinkedEntryLearningSessionAction.mockReset();
@@ -451,6 +460,205 @@ describe("useReviewPageController first-candidate grading", () => {
 
     expect(controller().isFullReviewPageData).toBe(true);
     expect(mocks.loadReviewPageDataSessionAction).not.toHaveBeenCalled();
+  });
+
+  it("plays the first pronunciation audio when revealing a full review card", async () => {
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFullReviewPageData("card-a", {
+            audioSrc: "/media/duel-masters-dm25/assets/audio/card-a.mp3"
+          }),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+      await Promise.resolve();
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+
+    expect(mocks.playPreloadedAudioSource).toHaveBeenCalledTimes(1);
+    expect(mocks.playPreloadedAudioSource).toHaveBeenCalledWith(
+      "/media/duel-masters-dm25/assets/audio/card-a.mp3"
+    );
+    expect(controller().isAnswerRevealed).toBe(true);
+  });
+
+  it("does not autoplay pronunciation audio when the review setting is disabled", async () => {
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFullReviewPageData("card-a", {
+            audioSrc: "/media/duel-masters-dm25/assets/audio/card-a.mp3",
+            reviewAutoplayAudioOnReveal: false
+          }),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+      await Promise.resolve();
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+
+    expect(mocks.playPreloadedAudioSource).not.toHaveBeenCalled();
+    expect(controller().isAnswerRevealed).toBe(true);
+  });
+
+  it("does not call autoplay when revealing a full review card without audio", async () => {
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFullReviewPageData("card-a"),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+      await Promise.resolve();
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+
+    expect(mocks.playPreloadedAudioSource).not.toHaveBeenCalled();
+    expect(controller().isAnswerRevealed).toBe(true);
+  });
+
+  it("plays first-candidate audio before full hydration completes", async () => {
+    mocks.loadReviewPageDataSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Keep hydration pending so reveal uses the first-candidate payload.
+        })
+    );
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFirstCandidateReviewPageData({
+            audioSrc: "/media/duel-masters-dm25/assets/audio/card-a.mp3"
+          }),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+      await Promise.resolve();
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+
+    expect(mocks.playPreloadedAudioSource).toHaveBeenCalledTimes(1);
+    expect(mocks.playPreloadedAudioSource).toHaveBeenCalledWith(
+      "/media/duel-masters-dm25/assets/audio/card-a.mp3"
+    );
+    expect(controller().isAnswerRevealed).toBe(true);
   });
 
   it("passes the selected forced contrast payload and disables optimistic advance", async () => {
@@ -890,7 +1098,11 @@ describe("useReviewPageController first-candidate grading", () => {
   });
 });
 
-function buildFirstCandidateReviewPageData(): ReviewFirstCandidatePageData {
+function buildFirstCandidateReviewPageData(
+  options: {
+    audioSrc?: string;
+  } = {}
+): ReviewFirstCandidatePageData {
   return {
     media: {
       glossaryHref: "/glossary",
@@ -918,7 +1130,10 @@ function buildFirstCandidateReviewPageData(): ReviewFirstCandidatePageData {
     },
     scope: "global",
     selectedCard: buildQueueCard(
-      "card-a"
+      "card-a",
+      {
+        audioSrc: options.audioSrc
+      }
     ) as ReviewFirstCandidatePageData["selectedCard"],
     selectedCardContext: {
       bucket: "due",
@@ -928,9 +1143,7 @@ function buildFirstCandidateReviewPageData(): ReviewFirstCandidatePageData {
       reviewStateUpdatedAt: "2026-04-02T11:00:00.000Z",
       showAnswer: false
     },
-    settings: {
-      reviewFrontFurigana: true
-    },
+    settings: buildReviewSettings(),
     session: {
       answeredCount: 0,
       extraNewCount: 0,
@@ -939,10 +1152,18 @@ function buildFirstCandidateReviewPageData(): ReviewFirstCandidatePageData {
   };
 }
 
-function buildFullReviewPageData(cardId: string): ReviewPageData {
+function buildFullReviewPageData(
+  cardId: string,
+  options: {
+    audioSrc?: string;
+    reviewAutoplayAudioOnReveal?: boolean;
+  } = {}
+): ReviewPageData {
   const data = buildFirstCandidateReviewPageData();
   const queue = data.queue;
-  const selectedCard = buildQueueCard(cardId);
+  const selectedCard = buildQueueCard(cardId, {
+    audioSrc: options.audioSrc
+  });
 
   return {
     media: data.media,
@@ -965,7 +1186,9 @@ function buildFullReviewPageData(cardId: string): ReviewPageData {
       reviewStateUpdatedAt: "2026-04-02T11:00:00.000Z",
       showAnswer: false
     },
-    settings: data.settings,
+    settings: buildReviewSettings({
+      reviewAutoplayAudioOnReveal: options.reviewAutoplayAudioOnReveal
+    }),
     session: data.session
   };
 }
@@ -1010,7 +1233,10 @@ function buildPersistedGradeReviewPageData(input: {
 }
 
 function buildQueueCard(
-  id: string
+  id: string,
+  options: {
+    audioSrc?: string;
+  } = {}
 ): ReviewQueueCard & { reviewStateUpdatedAt?: string | null } {
   const reviewStateUpdatedAtByCardId = new Map([
     ["card-a", "2026-04-02T11:00:00.000Z"],
@@ -1039,7 +1265,19 @@ function buildQueueCard(
     mediaTitle: "Duel Masters",
     notes: undefined,
     orderIndex: 1,
-    pronunciations: [],
+    pronunciations: options.audioSrc
+      ? [
+          {
+            audio: {
+              src: options.audioSrc as ReviewQueueCard["pronunciations"][number]["audio"]["src"]
+            },
+            kind: "term",
+            label: id,
+            meaning: `${id} meaning`,
+            relationshipLabel: "Voce"
+          }
+        ]
+      : [],
     rawReviewLabel: "In review",
     reading: "やまふだ",
     reviewStateUpdatedAt: reviewStateUpdatedAtByCardId.get(id) ?? null,
@@ -1058,5 +1296,17 @@ function buildQueueCard(
     },
     segmentTitle: "Tcg Core",
     typeLabel: "Recognition"
+  };
+}
+
+function buildReviewSettings(
+  overrides: {
+    reviewAutoplayAudioOnReveal?: boolean;
+  } = {}
+): ReviewPageData["settings"] {
+  return {
+    reviewAutoplayAudioOnReveal:
+      overrides.reviewAutoplayAudioOnReveal ?? true,
+    reviewFrontFurigana: true
   };
 }

@@ -364,6 +364,7 @@ function buildFirstCandidateReviewPageData(input: {
       showAnswer: input.showAnswer ?? false
     },
     settings: {
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true
     },
     session: {
@@ -419,6 +420,7 @@ function buildFullReviewPageData(input: {
       showAnswer: input.showAnswer ?? false
     },
     settings: {
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true
     },
     session: {
@@ -461,6 +463,7 @@ function buildFirstCandidateCard(id: string): ReviewFirstCandidateCard {
     mediaTitle: fullCard.mediaTitle,
     notes: fullCard.notes,
     orderIndex: fullCard.orderIndex,
+    pronunciations: fullCard.pronunciations,
     rawReviewLabel: fullCard.rawReviewLabel,
     reading: fullCard.reading,
     reviewSeedState: fullCard.reviewSeedState,

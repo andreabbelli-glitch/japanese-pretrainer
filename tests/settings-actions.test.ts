@@ -43,6 +43,7 @@ describe("settings actions", () => {
     formData.set("kanjiClashDailyNewLimit", "8abc");
     formData.set("kanjiClashDefaultScope", "global");
     formData.set("kanjiClashManualDefaultSize", "40px");
+    formData.set("reviewAutoplayAudioOnReveal", "true");
     formData.set("reviewFrontFurigana", "true");
     formData.set("reviewDailyLimit", "12abc");
 
@@ -57,6 +58,7 @@ describe("settings actions", () => {
       kanjiClashDefaultScope: "global",
       kanjiClashManualDefaultSize:
         defaultStudySettings.kanjiClashManualDefaultSize,
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true,
       reviewDailyLimit: defaultStudySettings.reviewDailyLimit
     });
@@ -70,6 +72,7 @@ describe("settings actions", () => {
     formData.set("kanjiClashDailyNewLimit", "5");
     formData.set("kanjiClashDefaultScope", "global");
     formData.set("kanjiClashManualDefaultSize", "20");
+    formData.set("reviewAutoplayAudioOnReveal", "false");
     formData.set("reviewFrontFurigana", "true");
     formData.set("reviewDailyLimit", "20");
     formData.append("returnTo", "https://evil.test/review");
@@ -80,5 +83,10 @@ describe("settings actions", () => {
     );
 
     expect(updateSettingsCacheMock).toHaveBeenCalledTimes(1);
+    expect(updateStudySettingsMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        reviewAutoplayAudioOnReveal: false
+      })
+    );
   });
 });

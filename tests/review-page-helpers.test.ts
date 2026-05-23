@@ -347,6 +347,7 @@ describe("resolveReviewQueuePosition", () => {
           showAnswer: false
         },
         settings: {
+          reviewAutoplayAudioOnReveal: true,
           reviewFrontFurigana: true
         },
         session: {
@@ -437,6 +438,7 @@ describe("resolveReviewQueuePosition", () => {
           showAnswer: false
         },
         settings: {
+          reviewAutoplayAudioOnReveal: true,
           reviewFrontFurigana: true
         },
         session: {

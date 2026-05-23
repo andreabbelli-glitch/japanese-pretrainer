@@ -58,6 +58,7 @@ function mockGlossarySettings(
       kanjiClashDefaultScope: "global",
       kanjiClashManualDefaultSize: 20,
       reviewDailyLimit: 20,
+      reviewAutoplayAudioOnReveal: true,
       reviewFrontFurigana: true
     },
     getGlossaryDefaultSort: vi.fn(getGlossaryDefaultSort)

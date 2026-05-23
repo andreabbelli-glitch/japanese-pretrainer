@@ -69,6 +69,21 @@ const reviewFrontFuriganaOptions = [
   }
 ] as const;
 
+const reviewAutoplayAudioOptions = [
+  {
+    description:
+      "Quando riveli una card con pronuncia, prova a far partire subito l'audio.",
+    label: "Riproduci subito",
+    value: "true"
+  },
+  {
+    description:
+      "Lascia l'audio manuale: userai il player della card quando ti serve.",
+    label: "Solo manuale",
+    value: "false"
+  }
+] as const;
+
 const reviewLimitOptions = [10, 20, 30, 40, 60] as const;
 
 export function SettingsPage({
@@ -104,7 +119,7 @@ export function SettingsPage({
       <Section
         eyebrow="Preferenze"
         title="Impostazioni"
-        description="Quattro controlli, effetto immediato."
+        description="Cinque controlli, effetto immediato."
       >
         <form action={saveStudySettingsAction} className="settings-form">
           {returnTo ? (
@@ -132,6 +147,40 @@ export function SettingsPage({
                   <input
                     defaultChecked={settings.furiganaMode === option.value}
                     name="furiganaMode"
+                    type="radio"
+                    value={option.value}
+                  />
+                  <span className="settings-choice-card__title">
+                    {option.label}
+                  </span>
+                  <span className="settings-choice-card__body">
+                    {option.description}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </SurfaceCard>
+
+          <SurfaceCard className="settings-panel">
+            <div className="settings-panel__header">
+              <div>
+                <p className="eyebrow">Review</p>
+                <h3 className="settings-panel__title">Audio alla risposta</h3>
+              </div>
+              <p className="settings-panel__body">
+                Decide se la review prova a riprodurre la pronuncia appena
+                riveli il retro della card.
+              </p>
+            </div>
+            <div className="settings-choice-grid settings-choice-grid--compact">
+              {reviewAutoplayAudioOptions.map((option) => (
+                <label key={option.value} className="settings-choice-card">
+                  <input
+                    defaultChecked={
+                      settings.reviewAutoplayAudioOnReveal ===
+                      (option.value === "true")
+                    }
+                    name="reviewAutoplayAudioOnReveal"
                     type="radio"
                     value={option.value}
                   />

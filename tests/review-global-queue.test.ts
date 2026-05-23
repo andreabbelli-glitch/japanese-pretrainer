@@ -512,6 +512,16 @@ describe("global review queue filtering", () => {
         completedAt: "2026-03-10T09:00:00.000Z"
       }
     ]);
+    await database.insert(term).values(
+      buildReviewTerm({
+        audioSrc: "assets/audio/term/a-term/a-term.mp3",
+        crossMediaGroupId: null,
+        id: "term_a",
+        lemma: "A",
+        mediaId: "media_a",
+        sourceId: "a"
+      })
+    );
     await database.insert(card).values([
       {
         id: "card_a",
@@ -548,6 +558,9 @@ describe("global review queue filtering", () => {
         updatedAt: "2026-03-10T09:00:00.000Z"
       }
     ]);
+    await database.insert(cardEntryLink).values(
+      buildReviewCardEntryLink("card_a_term_a", "card_a", "term_a")
+    );
     await database
       .insert(userSetting)
       .values(buildReviewDailyLimitSetting("2026-03-10T11:00:00.000Z"));
@@ -566,6 +579,9 @@ describe("global review queue filtering", () => {
 
     expect(firstCandidate.data.selectedCard?.id).toBe(
       fullPage.selectedCard?.id
+    );
+    expect(firstCandidate.data.selectedCard?.pronunciations).toEqual(
+      fullPage.selectedCard?.pronunciations
     );
     expect(firstCandidate.data.selectedCard?.bucket).toBe(
       fullPage.selectedCard?.bucket
@@ -588,7 +604,6 @@ describe("global review queue filtering", () => {
       fullPage.queueCardIds[1] ?? null
     );
     expect("entries" in firstCandidate.data.selectedCard!).toBe(false);
-    expect("pronunciations" in firstCandidate.data.selectedCard!).toBe(false);
     expect("contexts" in firstCandidate.data.selectedCard!).toBe(false);
     expect("gradePreviews" in firstCandidate.data.selectedCard!).toBe(false);
   });
@@ -1116,6 +1131,7 @@ async function seedCrossMediaDueOrderingFixture(database: DatabaseClient) {
 }
 
 function buildReviewTerm(input: {
+  audioSrc?: string;
   crossMediaGroupId: string | null;
   id: string;
   lemma: string;
@@ -1135,6 +1151,12 @@ function buildReviewTerm(input: {
     meaningIt: input.lemma,
     meaningLiteralIt: null,
     notesIt: null,
+    audioSrc: input.audioSrc ?? null,
+    audioSource: input.audioSrc ? "fixture" : null,
+    audioSpeaker: input.audioSrc ? "Fixture Speaker" : null,
+    audioLicense: input.audioSrc ? "Fixture License" : null,
+    audioAttribution: input.audioSrc ? "Fixture Attribution" : null,
+    audioPageUrl: input.audioSrc ? "https://example.test/audio" : null,
     levelHint: null,
     searchLemmaNorm: input.lemma,
     searchReadingNorm: input.lemma,

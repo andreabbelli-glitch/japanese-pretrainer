@@ -33,9 +33,10 @@ describe("study settings", () => {
   });
 
   it("loads kanji clash defaults from an empty database", async () => {
-    expect(await getStudySettings(database)).toMatchObject(
-      defaultStudySettings
-    );
+    const settings = await getStudySettings(database);
+
+    expect(settings).toMatchObject(defaultStudySettings);
+    expect(settings.reviewAutoplayAudioOnReveal).toBe(true);
   });
 
   it("persists kanji clash settings alongside the existing study settings", async () => {
@@ -52,6 +53,19 @@ describe("study settings", () => {
       kanjiClashDailyNewLimit: 8,
       kanjiClashDefaultScope: "media",
       kanjiClashManualDefaultSize: 40
+    });
+  });
+
+  it("persists the review audio autoplay setting", async () => {
+    await updateStudySettings(
+      {
+        reviewAutoplayAudioOnReveal: false
+      },
+      database
+    );
+
+    expect(await getStudySettings(database)).toMatchObject({
+      reviewAutoplayAudioOnReveal: false
     });
   });
 

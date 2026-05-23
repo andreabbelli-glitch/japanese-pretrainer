@@ -43,6 +43,7 @@ import { type ReviewSubjectModel } from "./review-queue-types";
 import type { ReviewSubjectGroup } from "./review-subject";
 import {
   buildReviewMediaLookup,
+  buildReviewCardPronunciations,
   loadReviewCardPronunciations,
   mapQueueCard,
   resolveReviewCardMedia,
@@ -234,6 +235,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
   mediaById: ReviewMediaLookup;
   newIntroducedTodayCount: number;
   now: Date;
+  reviewAutoplayAudioOnReveal: boolean;
   reviewFrontFurigana: boolean;
   scope: ReviewScope;
   searchState: ReviewSearchState;
@@ -326,6 +328,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
     scope: input.scope,
     media: input.media,
     settings: {
+      reviewAutoplayAudioOnReveal: input.reviewAutoplayAudioOnReveal,
       reviewFrontFurigana: input.reviewFrontFurigana
     },
     queue: {
@@ -459,6 +462,7 @@ export async function getReviewPageData(
       newIntroducedTodayCount: workspace.newIntroducedTodayCount,
       now,
       profiler: options.profiler,
+      reviewAutoplayAudioOnReveal: settings.reviewAutoplayAudioOnReveal,
       reviewFrontFurigana: settings.reviewFrontFurigana,
       scope: "media",
       searchState,
@@ -528,6 +532,7 @@ export async function buildGlobalReviewPageData(
       newIntroducedTodayCount: input.newIntroducedTodayCount,
       now: input.now,
       profiler,
+      reviewAutoplayAudioOnReveal: input.reviewAutoplayAudioOnReveal,
       reviewFrontFurigana: input.reviewFrontFurigana,
       scope: "global",
       searchState: input.searchState,
@@ -581,6 +586,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   mediaById: ReviewMediaLookup;
   newIntroducedTodayCount: number;
   now: Date;
+  reviewAutoplayAudioOnReveal: boolean;
   reviewFrontFurigana: boolean;
   scope: ReviewScope;
   searchState: ReviewSearchState;
@@ -676,6 +682,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
         selection.selectedModel?.group.subjectState?.updatedAt ?? null
     },
     settings: {
+      reviewAutoplayAudioOnReveal: input.reviewAutoplayAudioOnReveal,
       reviewFrontFurigana: input.reviewFrontFurigana
     },
     session: {
@@ -744,6 +751,8 @@ export async function getGlobalReviewFirstCandidateLoadResult(
         newIntroducedTodayCount: workspace.newIntroducedTodayCount,
         now: workspace.now,
         profiler: options.profiler,
+        reviewAutoplayAudioOnReveal:
+          workspace.reviewAutoplayAudioOnReveal,
         reviewFrontFurigana: workspace.reviewFrontFurigana,
         scope: "global",
         searchState: workspace.searchState,
@@ -876,6 +885,10 @@ export function mapReviewQueueSubjectCardPreview(input: {
     mediaTitle: cardMedia.title,
     notes: input.card.notesIt ?? undefined,
     orderIndex: input.card.orderIndex,
+    pronunciations: buildReviewCardPronunciations(
+      input.card,
+      input.entryLookup
+    ),
     rawReviewLabel: input.queueStateSnapshot.rawReviewLabel,
     reading: resolveReviewCardReading(input.card, input.entryLookup),
     reviewSeedState: buildReviewSeedStateWithFsrsPreset(

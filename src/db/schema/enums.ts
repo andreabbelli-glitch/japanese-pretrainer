@@ -100,6 +100,7 @@ export const contentImportStatusValues = [
 ] as const;
 export const userSettingKeys = [
   "furigana_mode",
+  "review_autoplay_audio_on_reveal",
   "review_front_furigana",
   "review_daily_limit",
   "glossary_default_sort",
