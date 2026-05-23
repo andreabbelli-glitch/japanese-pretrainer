@@ -31,10 +31,10 @@ In questa scena ad alta tensione, l'uso di [〜てくる](grammar:grammar-ch-b5-
 ## Traduzione e lettura dei kanji
 
 - Vignetta in alto (I cattivi):
-  - 「{{行|い}}け！やっちまえ！」
+  - 「{{行|い}}け！[やっちまえ](term:term-ch-ad-hoc-yacchimae)！」
   - Lettura: Ike! Yacchimae!
   - Traduzione: "Vai! Fagli la festa!" (o "Fallo fuori!").
-  - Nota Nerd: "Yacchimae" è la forma imperativa di やっちまう (yacchimau), che a sua volta è la contrazione colloquiale e un po' grezza di やってしまう (yatte shimau), ovvero "fare qualcosa irrimediabilmente" o, nel gergo dei combattimenti, "sconfiggere/uccidere".
+  - Nota Nerd: "[Yacchimae](term:term-ch-ad-hoc-yacchimae)" è la forma imperativa di やっちまう (yacchimau), che a sua volta è la contrazione colloquiale e un po' grezza di やってしまう (yatte shimau), ovvero "fare qualcosa irrimediabilmente" o, nel gergo dei combattimenti, "sconfiggere/uccidere".
 
 - Vignetta al centro (L'assalto):
   - 「{{男|おとこ}}がナイツに{{向|む}}かってくる！」
