@@ -180,6 +180,38 @@ term-taberu
 - `--profile-dir` permette di isolare un profilo browser diverso;
 - `--keep-browser-open` lascia Chrome aperto a fine batch per debug.
 
+## Esperimento Anki addon 1784714388
+
+Il 2026-05-24 e' stato testato l'addon AnkiWeb `1784714388` in un profilo Anki
+temporaneo (`ANKI_BASE=/tmp/anki-forvo-test`) con target `食べる` e lingua `ja`.
+L'addon scarica effettivamente audio: il test ha prodotto
+`/tmp/anki-forvo-test/User 1/collection.media/pronunciation_ja_食べる.mp3`, un
+MP3 mono 44.1 kHz, e ha lasciato anche la copia temporanea in
+`/tmp/anki-forvo-test/addons21/1784714388/temp/pronunciation_ja_食べる.mp3`.
+
+La logica utile da replicare e' in `src/Forvo.py` dell'addon:
+
+- apre `https://forvo.com/word/<word>` dentro `QWebEngineView`;
+- aspetta l'HTML renderizzato con JavaScript e poi lo passa al parser;
+- legge i blocchi `language-container-...`, estrae utente, origine e voti;
+- decodifica dal gestore `Play(...)` il token base64 dell'audio;
+- costruisce URL diretti `https://audio00.forvo.com/audios/mp3/...` o fallback
+  OGG;
+- scarica il file con `urllib.request.urlopen()` e lo importa nella media
+  collection Anki.
+
+Questo non e' un vero bypass Cloudflare: l'addon si appoggia a un browser Qt
+headed, quindi JavaScript e cookie funzionano meglio di una richiesta HTTP
+diretta. Se Forvo presenta una challenge, va comunque risolta nella finestra
+browser. Nel test del 2026-05-24 la pagina `食べる` non ha mostrato challenge e
+l'estrazione e' arrivata fino al download.
+
+L'addon non ha una preferenza configurabile per speaker specifici, ma il parser
+espone gia `user`, `origin`, `votes`, `download_url` e `id` per ogni candidato.
+Per il workflow del repo si puo quindi inserire un ranking prima dei voti, ad
+esempio privilegiando una lista locale di utenti affidabili quando presenti e
+poi ricadendo su voti/origine/ordine Forvo.
+
 ## Batch one-shot per il backlog known missing
 
 Quando vuoi coprire in blocco il backlog gia segnato come `not_found_on_forvo`,
