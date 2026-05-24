@@ -171,7 +171,7 @@ entry_id: grammar-ch-b9-saseru
 card_type: concept
 front: せる／させる
 back: far fare / lasciare fare
-example_jp: '{{女王|じょうおう}}が{{奴隷|どれい}}たちを{{働|はたら}}かせる。'
+example_jp: '{{女王|じょおう}}が{{奴隷|どれい}}たちを{{働|はたら}}かせる。'
 example_it: La regina fa lavorare gli schiavi.
 notes_it: >-
   I godan prendono せる, i verbi in する diventano させる.

@@ -308,7 +308,7 @@ entry_id: term-ch-b8-nanori
 card_type: recognition
 front: '{{名乗|なの}}り'
 back: 'なのり — presentazione del proprio nome'
-example_jp: '{{女王|じょうおう}}の{{前|まえ}}で{{名乗|なの}}りを{{上|あ}}げる。'
+example_jp: '{{女王|じょおう}}の{{前|まえ}}で{{名乗|なの}}りを{{上|あ}}げる。'
 example_it: Dichiaro il mio nome davanti alla regina.
 notes_it: >-
   In una scena pubblica non e' solo "dire il nome": e' dichiararsi.
@@ -369,7 +369,7 @@ entry_id: term-ch-b8-mitomeru
 card_type: recognition
 front: '{{認|みと}}める'
 back: 'みとめる — riconoscere; ammettere; approvare'
-example_jp: '{{女王|じょうおう}}が{{彼|かれ}}を{{認|みと}}める。'
+example_jp: '{{女王|じょおう}}が{{彼|かれ}}を{{認|みと}}める。'
 example_it: La regina lo riconosce.
 notes_it: >-
   Nel contesto dei titoli, {{認|みと}}める vale riconoscere ufficialmente.

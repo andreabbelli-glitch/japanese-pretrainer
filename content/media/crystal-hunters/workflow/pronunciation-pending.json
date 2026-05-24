@@ -1,11 +1,287 @@
 {
   "version": 1,
   "media_slug": "crystal-hunters",
-  "total_targets": 661,
-  "audio_backed_count": 46,
+  "total_targets": 543,
+  "audio_backed_count": 0,
   "known_missing_count": 1,
-  "pending_count": 614,
+  "pending_count": 542,
   "pending": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-ken",
+      "label": "剣",
+      "reading": "けん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-naguru",
+      "label": "殴る",
+      "reading": "なぐる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ore",
+      "label": "俺",
+      "reading": "おれ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ochikomu",
+      "label": "落ち込む",
+      "reading": "おちこむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-otoko",
+      "label": "男",
+      "reading": "おとこ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-hitori",
+      "label": "一人",
+      "reading": "ひとり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-torimodosu",
+      "label": "取り戻す",
+      "reading": "とりもどす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-boku",
+      "label": "僕",
+      "reading": "ぼく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kimi",
+      "label": "君",
+      "reading": "きみ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-futari",
+      "label": "二人",
+      "reading": "ふたり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tomaru",
+      "label": "止まる",
+      "reading": "とまる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-souchaku-suru",
+      "label": "装着する",
+      "reading": "そうちゃくする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-mieru",
+      "label": "見える",
+      "reading": "みえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-me-ni-suru",
+      "label": "目にする",
+      "reading": "めにする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-miru",
+      "label": "見る",
+      "reading": "みる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ki-tree",
+      "label": "木",
+      "reading": "き"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kirikakaru",
+      "label": "切りかかる",
+      "reading": "きりかかる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-taoreru",
+      "label": "倒れる",
+      "reading": "たおれる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kirai",
+      "label": "嫌い",
+      "reading": "きらい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-te-ni-toru",
+      "label": "手に取る",
+      "reading": "てにとる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-toru",
+      "label": "取る",
+      "reading": "とる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tachi-suffix",
+      "label": "達",
+      "reading": "たち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kuruma",
+      "label": "車",
+      "reading": "くるま"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-oitsuku",
+      "label": "追いつく",
+      "reading": "おいつく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kuyashii",
+      "label": "悔しい",
+      "reading": "くやしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-buji",
+      "label": "無事",
+      "reading": "ぶじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-onna-no-ko",
+      "label": "女の子",
+      "reading": "おんなのこ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-yumi",
+      "label": "弓",
+      "reading": "ゆみ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-hontou-ni",
+      "label": "本当に",
+      "reading": "ほんとうに"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-iru-arrow",
+      "label": "射る",
+      "reading": "いる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-nanimono",
+      "label": "何者",
+      "reading": "なにもの"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ki-ni-iru",
+      "label": "気に入る",
+      "reading": "きにいる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-te-ni-hairu",
+      "label": "手に入る",
+      "reading": "てにはいる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tsuno",
+      "label": "角",
+      "reading": "つの"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kenshoukin",
+      "label": "懸賞金",
+      "reading": "けんしょうきん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-hikkakaru",
+      "label": "引っかかる",
+      "reading": "ひっかかる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ou",
+      "label": "追う",
+      "reading": "おう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tobikakaru",
+      "label": "飛びかかる",
+      "reading": "とびかかる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-onna",
+      "label": "女",
+      "reading": "おんな"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-mi-o-mamoru",
+      "label": "身を守る",
+      "reading": "みをまもる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kaesu",
+      "label": "返す",
+      "reading": "かえす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-yarou",
+      "label": "野郎",
+      "reading": "やろう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ya-arrow",
+      "label": "矢",
+      "reading": "や"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-sasaeru",
+      "label": "支える",
+      "reading": "ささえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ie",
+      "label": "家",
+      "reading": "いえ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ichiin",
+      "label": "一員",
+      "reading": "いちいん"
+    },
     {
       "entry_type": "term",
       "entry_id": "term-ch-hi-fire",
@@ -17,12 +293,6 @@
       "entry_id": "term-ch-mizu",
       "label": "水",
       "reading": "みず"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-hero",
-      "label": "ヒーロー",
-      "reading": "ヒーロー"
     },
     {
       "entry_type": "term",
@@ -47,6 +317,12 @@
       "entry_id": "term-ch-mahou",
       "label": "魔法",
       "reading": "まほう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-matsu",
+      "label": "待つ",
+      "reading": "まつ"
     },
     {
       "entry_type": "term",
@@ -182,15 +458,15 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-hahaha",
-      "label": "ハハハ",
-      "reading": "ハハハ"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-iru-need",
       "label": "要る",
       "reading": "いる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-kazoku",
+      "label": "家族",
+      "reading": "かぞく"
     },
     {
       "entry_type": "term",
@@ -212,15 +488,9 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-irwin",
-      "label": "アーウィン",
-      "reading": "アーウィン"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-dokaan",
-      "label": "ドカーン",
-      "reading": "ドカーン"
+      "entry_id": "term-ch-mou",
+      "label": "もう",
+      "reading": "もう"
     },
     {
       "entry_type": "term",
@@ -236,21 +506,9 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-monster",
-      "label": "モンスター",
-      "reading": "モンスター"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-omae",
       "label": "お前",
       "reading": "おまえ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-potion",
-      "label": "ポーション",
-      "reading": "ポーション"
     },
     {
       "entry_type": "term",
@@ -326,18 +584,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-amber",
-      "label": "アンバー",
-      "reading": "アンバー"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-gashaan",
-      "label": "ガシャーン",
-      "reading": "ガシャーン"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-imouto",
       "label": "妹",
       "reading": "いもうと"
@@ -362,15 +608,21 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b4-doka-1",
-      "label": "ドカッ",
-      "reading": "ドカッ"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b4-ru-2",
       "label": "出来る",
       "reading": "できる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-mukeru",
+      "label": "向ける",
+      "reading": "むける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-suru-6",
+      "label": "する",
+      "reading": "する"
     },
     {
       "entry_type": "term",
@@ -386,33 +638,9 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b4-san-5",
-      "label": "さん",
-      "reading": "さん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-suru-6",
-      "label": "する",
-      "reading": "する"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b4-takusan-7",
       "label": "たくさん",
       "reading": "たくさん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-entry-8",
-      "label": "警察",
-      "reading": "けいさつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-bashaan-9",
-      "label": "バシャーン",
-      "reading": "バシャーン"
     },
     {
       "entry_type": "term",
@@ -428,15 +656,81 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-ch-b4-ii-13",
+      "label": "格好いい",
+      "reading": "かっこういい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-shiburi-22",
+      "label": "久しぶり",
+      "reading": "ひさしぶり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-entry-8",
+      "label": "警察",
+      "reading": "けいさつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-orisan-23",
+      "label": "お巡りさん",
+      "reading": "おまわりさん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-entry-24",
+      "label": "喧嘩",
+      "reading": "けんか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-entry-25",
+      "label": "薪",
+      "reading": "まき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-mu-26",
+      "label": "汲む",
+      "reading": "くむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-itekuru-27",
+      "label": "付いてくる",
+      "reading": "ついてくる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-chigeru-28",
+      "label": "持ち上げる",
+      "reading": "もちあげる"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-ch-b4-gegeru-12",
       "label": "投げ上げる",
       "reading": "なげあげる"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b4-ii-13",
-      "label": "格好いい",
-      "reading": "かっこういい"
+      "entry_id": "term-ch-b4-ou-31",
+      "label": "気を失う",
+      "reading": "きをうしなう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-su-32",
+      "label": "治す",
+      "reading": "なおす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b4-ryoukai",
+      "label": "了解",
+      "reading": "りょうかい"
     },
     {
       "entry_type": "term",
@@ -488,48 +782,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b4-shiburi-22",
-      "label": "久しぶり",
-      "reading": "ひさしぶり"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-orisan-23",
-      "label": "お巡りさん",
-      "reading": "おまわりさん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-entry-24",
-      "label": "喧嘩",
-      "reading": "けんか"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-entry-25",
-      "label": "薪",
-      "reading": "まき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-mu-26",
-      "label": "汲む",
-      "reading": "くむ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-itekuru-27",
-      "label": "付いてくる",
-      "reading": "ついてくる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-chigeru-28",
-      "label": "持ち上げる",
-      "reading": "もちあげる"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-b4-go-29",
       "label": "ご購入",
       "reading": "ごこうにゅう"
@@ -537,20 +789,8 @@
     {
       "entry_type": "term",
       "entry_id": "term-ch-b4-me-30",
-      "label": "求め",
-      "reading": "もとめ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-ou-31",
-      "label": "気を失う",
-      "reading": "きをうしなう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b4-su-32",
-      "label": "治す",
-      "reading": "なおす"
+      "label": "求める",
+      "reading": "もとめる"
     },
     {
       "entry_type": "term",
@@ -578,6 +818,18 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-ch-b4-ato",
+      "label": "後",
+      "reading": "あと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b5-dake",
+      "label": "だけ",
+      "reading": "だけ"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-ch-b5-bu-1",
       "label": "運ぶ",
       "reading": "はこぶ"
@@ -599,12 +851,6 @@
       "entry_id": "term-ch-b5-entry-4",
       "label": "馬鹿",
       "reading": "ばか"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b5-gusha-5",
-      "label": "グシャ",
-      "reading": "グシャ"
     },
     {
       "entry_type": "term",
@@ -656,15 +902,9 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b5-entry-14",
-      "label": "意識",
-      "reading": "いしき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b5-u-15",
-      "label": "失う",
-      "reading": "うしなう"
+      "entry_id": "term-ch-b5-ishiki-wo-ushinau",
+      "label": "意識を失う",
+      "reading": "いしきをうしなう"
     },
     {
       "entry_type": "term",
@@ -746,111 +986,9 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b6-bashi-1",
-      "label": "バシッ",
-      "reading": "バシッ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-i-2",
-      "label": "早い",
-      "reading": "はやい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-ku-3",
-      "label": "早く",
-      "reading": "はやく"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-nu-4",
-      "label": "死ぬ",
-      "reading": "しぬ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-sugu-5",
-      "label": "すぐ",
-      "reading": "すぐ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-entry-6",
+      "entry_id": "term-ch-b6-kaibutsu",
       "label": "怪物",
       "reading": "かいぶつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-umai-7",
-      "label": "うまい",
-      "reading": "うまい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-umaku-8",
-      "label": "うまく",
-      "reading": "うまく"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-boki-9",
-      "label": "ボキッ",
-      "reading": "ボキッ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-ru-10",
-      "label": "頑張る",
-      "reading": "がんばる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-gu-11",
-      "label": "泳ぐ",
-      "reading": "およぐ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-entry-12",
-      "label": "手",
-      "reading": "て"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-sai-13",
-      "label": "小さい",
-      "reading": "ちいさい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-sana-14",
-      "label": "小さな",
-      "reading": "ちいさな"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-entry-15",
-      "label": "命",
-      "reading": "いのち"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-entry-16",
-      "label": "鍵",
-      "reading": "かぎ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-morau-17",
-      "label": "もらう",
-      "reading": "もらう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b6-entry-18",
-      "label": "三",
-      "reading": "さん"
     },
     {
       "entry_type": "term",
@@ -872,6 +1010,96 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-ch-b6-nu-4",
+      "label": "死ぬ",
+      "reading": "しぬ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-hayai",
+      "label": "早い",
+      "reading": "はやい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-sugu-5",
+      "label": "すぐ",
+      "reading": "すぐ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-tobu",
+      "label": "飛ぶ",
+      "reading": "とぶ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-umai-7",
+      "label": "うまい",
+      "reading": "うまい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-ru-10",
+      "label": "頑張る",
+      "reading": "がんばる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-gu-11",
+      "label": "泳ぐ",
+      "reading": "およぐ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-entry-12",
+      "label": "手",
+      "reading": "て"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-sannin",
+      "label": "三人",
+      "reading": "さんにん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-entry-15",
+      "label": "命",
+      "reading": "いのち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-entry-16",
+      "label": "鍵",
+      "reading": "かぎ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-morau-17",
+      "label": "もらう",
+      "reading": "もらう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-niru",
+      "label": "似る",
+      "reading": "にる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-shinpai",
+      "label": "心配",
+      "reading": "しんぱい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-tsuku-arrive",
+      "label": "着く",
+      "reading": "つく"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-ch-b6-entry-22",
       "label": "辛抱",
       "reading": "しんぼう"
@@ -881,6 +1109,18 @@
       "entry_id": "term-ch-b6-entry-23",
       "label": "隙",
       "reading": "すき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-kiken",
+      "label": "危険",
+      "reading": "きけん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-isogu",
+      "label": "急ぐ",
+      "reading": "いそぐ"
     },
     {
       "entry_type": "term",
@@ -932,15 +1172,33 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b6-mo-32",
-      "label": "何度も",
-      "reading": "なんども"
+      "entry_id": "term-ch-b6-okiru",
+      "label": "起きる",
+      "reading": "おきる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-ikiru",
+      "label": "生きる",
+      "reading": "いきる"
     },
     {
       "entry_type": "term",
       "entry_id": "term-ch-b6-kiru-33",
       "label": "生き返る",
       "reading": "いきかえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-mo-32",
+      "label": "何度も",
+      "reading": "なんども"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-anshin",
+      "label": "安心",
+      "reading": "あんしん"
     },
     {
       "entry_type": "term",
@@ -986,1953 +1244,1551 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-ch-b6-haha",
+      "label": "母",
+      "reading": "はは"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b6-shiru",
+      "label": "知る",
+      "reading": "しる"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-ch-b6-entry-41",
       "label": "声",
       "reading": "こえ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b7-wa-1",
-      "label": "わ",
-      "reading": "わ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ageru-2",
-      "label": "あげる",
-      "reading": "あげる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-aitsura-3",
-      "label": "あいつら",
-      "reading": "あいつら"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-4",
-      "label": "血",
-      "reading": "ち"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-reru-5",
-      "label": "入れる",
-      "reading": "いれる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-6",
-      "label": "目",
-      "reading": "め"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-oyasuminasai-7",
-      "label": "おやすみなさい",
-      "reading": "おやすみなさい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-rowan-8",
-      "label": "ロワン",
-      "reading": "ロワン"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-9",
+      "entry_id": "term-ch-b7-mahousui",
       "label": "魔法水",
       "reading": "まほうすい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-10",
+      "entry_id": "term-ch-b7-choutatsu",
       "label": "調達",
       "reading": "ちょうたつ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b7-moku-11",
-      "label": "一刻も早く",
-      "reading": "いっこくもはやく"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-u-12",
-      "label": "揃う",
-      "reading": "そろう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-13",
-      "label": "了解",
-      "reading": "りょうかい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-kuwasu-14",
-      "label": "出くわす",
-      "reading": "でくわす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-shii-15",
-      "label": "大人しい",
-      "reading": "おとなしい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-16",
-      "label": "同行",
-      "reading": "どうこう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-17",
-      "label": "無用",
-      "reading": "むよう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-18",
-      "label": "完了",
-      "reading": "かんりょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-19",
-      "label": "出発",
-      "reading": "しゅっぱつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-isu-20",
-      "label": "追い返す",
-      "reading": "おいかえす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ke-21",
-      "label": "腰抜け",
-      "reading": "こしぬけ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-22",
-      "label": "邪魔",
-      "reading": "じゃま"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-23",
-      "label": "容赦",
-      "reading": "ようしゃ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-imeru-24",
-      "label": "追い詰める",
-      "reading": "おいつめる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-su-25",
-      "label": "許す",
-      "reading": "ゆるす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ii-26",
-      "label": "いい加減",
-      "reading": "いいかげん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-keru-27",
-      "label": "届ける",
-      "reading": "とどける"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-28",
-      "label": "調合",
-      "reading": "ちょうごう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-maru-29",
-      "label": "寝静まる",
-      "reading": "ねしずまる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-30",
-      "label": "悪党",
-      "reading": "あくとう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-31",
-      "label": "下準備",
-      "reading": "したじゅんび"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-keru-32",
-      "label": "授ける",
-      "reading": "さずける"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-imu-33",
-      "label": "吸い込む",
-      "reading": "すいこむ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-jimeru-34",
-      "label": "閉じ込める",
-      "reading": "とじこめる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ki-35",
-      "label": "効き目",
-      "reading": "ききめ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-36",
-      "label": "照明",
-      "reading": "しょうめい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ni-37",
-      "label": "安易に",
-      "reading": "あんいに"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-roshii-38",
-      "label": "恐ろしい",
-      "reading": "おそろしい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-39",
-      "label": "作用",
-      "reading": "さよう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-40",
-      "label": "大量",
-      "reading": "たいりょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-41",
-      "label": "少量",
-      "reading": "しょうりょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-42",
-      "label": "摂取",
-      "reading": "せっしゅ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-43",
-      "label": "製法",
-      "reading": "せいほう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-44",
-      "label": "投入",
-      "reading": "とうにゅう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-45",
-      "label": "完治",
-      "reading": "かんち"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-tsu-46",
-      "label": "突っ立つ",
-      "reading": "つったつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-47",
-      "label": "変化",
-      "reading": "へんか"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-keru-48",
-      "label": "賭ける",
-      "reading": "かける"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-49",
-      "label": "一体",
-      "reading": "いったい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-toka-50",
-      "label": "何とか",
-      "reading": "なんとか"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-suru-51",
-      "label": "化する",
-      "reading": "かする"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ri-52",
-      "label": "元通り",
-      "reading": "もとどおり"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-53",
-      "label": "異常",
-      "reading": "いじょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-zu-54",
-      "label": "必ず",
-      "reading": "かならず"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ka-55",
-      "label": "確か",
-      "reading": "たしか"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-rasu-56",
-      "label": "切らす",
-      "reading": "きらす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-te-57",
-      "label": "全て",
-      "reading": "すべて"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-tsu-58",
-      "label": "三つ",
-      "reading": "みっつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-niwanai-59",
-      "label": "気に食わない",
-      "reading": "きにくわない"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-i-60",
-      "label": "間違い",
-      "reading": "まちがい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ru-61",
-      "label": "困る",
-      "reading": "こまる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-kiru-62",
-      "label": "引き取る",
-      "reading": "ひきとる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-mu-63",
-      "label": "掴む",
-      "reading": "つかむ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-rasu-64",
-      "label": "荒らす",
-      "reading": "あらす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-65",
-      "label": "分",
-      "reading": "ぶん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-66",
-      "label": "礼",
-      "reading": "れい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-kore-67",
-      "label": "これ以上",
-      "reading": "これいじょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-68",
-      "label": "完成",
-      "reading": "かんせい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-i-69",
-      "label": "痛い",
-      "reading": "いたい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-70",
-      "label": "暇",
-      "reading": "ひま"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ru-71",
-      "label": "焦る",
-      "reading": "あせる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-72",
-      "label": "二個",
-      "reading": "にこ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-entry-73",
-      "label": "一個",
-      "reading": "いっこ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b7-ri-74",
+      "entry_id": "term-ch-b7-nokori",
       "label": "残り",
       "reading": "のこり"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b7-keru-75",
-      "label": "片付ける",
-      "reading": "かたづける"
+      "entry_id": "term-ch-b7-ikkoku-mo-hayaku",
+      "label": "一刻も早く",
+      "reading": "いっこくもはやく"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b7-ni-76",
-      "label": "先に",
-      "reading": "さきに"
+      "entry_id": "term-ch-b7-kirasu",
+      "label": "切らす",
+      "reading": "きらす"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-1",
-      "label": "番",
-      "reading": "ばん"
+      "entry_id": "term-ch-b7-subete",
+      "label": "全て",
+      "reading": "すべて"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-doga-2",
-      "label": "ドガッ",
-      "reading": "ドガッ"
+      "entry_id": "term-ch-b7-sorou",
+      "label": "揃う",
+      "reading": "そろう"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-3",
-      "label": "本",
-      "reading": "ほん"
+      "entry_id": "term-ch-b7-kanryou",
+      "label": "完了",
+      "reading": "かんりょう"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-tterasshai-4",
+      "entry_id": "term-ch-b7-shuppatsu",
+      "label": "出発",
+      "reading": "しゅっぱつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-hikitoru",
+      "label": "引き取る",
+      "reading": "ひきとる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-dekuwasu",
+      "label": "出くわす",
+      "reading": "でくわす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-kini-kuwanai",
+      "label": "気に食わない",
+      "reading": "きにくわない"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-otonashii",
+      "label": "大人しい",
+      "reading": "おとなしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-doukou",
+      "label": "同行",
+      "reading": "どうこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-muyou",
+      "label": "無用",
+      "reading": "むよう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-ageru",
+      "label": "あげる",
+      "reading": "あげる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-aitsura",
+      "label": "あいつら",
+      "reading": "あいつら"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-oikaesu",
+      "label": "追い返す",
+      "reading": "おいかえす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-koshinuke",
+      "label": "腰抜け",
+      "reading": "こしぬけ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-machigai",
+      "label": "間違い",
+      "reading": "まちがい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-jama",
+      "label": "邪魔",
+      "reading": "じゃま"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-komaru",
+      "label": "困る",
+      "reading": "こまる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-yousha",
+      "label": "容赦",
+      "reading": "ようしゃ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-oitsumeru",
+      "label": "追い詰める",
+      "reading": "おいつめる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-yurusu",
+      "label": "許す",
+      "reading": "ゆるす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-ii-kagen",
+      "label": "いい加減",
+      "reading": "いいかげん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-todokeru",
+      "label": "届ける",
+      "reading": "とどける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-tsukamu",
+      "label": "掴む",
+      "reading": "つかむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-arasu",
+      "label": "荒らす",
+      "reading": "あらす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-chi",
+      "label": "血",
+      "reading": "ち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-me",
+      "label": "目",
+      "reading": "め"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-ireru",
+      "label": "入れる",
+      "reading": "いれる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-chougou",
+      "label": "調合",
+      "reading": "ちょうごう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-kikime",
+      "label": "効き目",
+      "reading": "ききめ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-itai",
+      "label": "痛い",
+      "reading": "いたい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-kore-ijou",
+      "label": "これ以上",
+      "reading": "これいじょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-kansei",
+      "label": "完成",
+      "reading": "かんせい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-neshizumaru",
+      "label": "寝静まる",
+      "reading": "ねしずまる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-shitajunbi",
+      "label": "下準備",
+      "reading": "したじゅんび"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-akutou",
+      "label": "悪党",
+      "reading": "あくとう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-kawari-ni",
+      "label": "代わりに",
+      "reading": "かわりに"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-sazukeru",
+      "label": "授ける",
+      "reading": "さずける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-suikomu",
+      "label": "吸い込む",
+      "reading": "すいこむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-tojikomeru",
+      "label": "閉じ込める",
+      "reading": "とじこめる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-tsuttatsu",
+      "label": "突っ立つ",
+      "reading": "つったつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-shouryou",
+      "label": "少量",
+      "reading": "しょうりょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-an-i-ni",
+      "label": "安易に",
+      "reading": "あんいに"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-osoroshii",
+      "label": "恐ろしい",
+      "reading": "おそろしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-sayou",
+      "label": "作用",
+      "reading": "さよう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-sesshu",
+      "label": "摂取",
+      "reading": "せっしゅ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-seihou",
+      "label": "製法",
+      "reading": "せいほう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-tounyuu",
+      "label": "投入",
+      "reading": "とうにゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-henka",
+      "label": "変化",
+      "reading": "へんか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b7-aseru",
+      "label": "焦る",
+      "reading": "あせる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-itterasshai",
       "label": "行ってらっしゃい",
       "reading": "いってらっしゃい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-itokku-5",
-      "label": "イトック",
-      "reading": "イトック"
+      "entry_id": "term-ch-b8-ban-counter",
+      "label": "〜番",
+      "reading": "〜ばん"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-6",
-      "label": "女王",
-      "reading": "じょうおう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-osan-7",
-      "label": "お兄さん",
-      "reading": "おにいさん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ryukku-8",
-      "label": "リュック",
-      "reading": "リュック"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ruchera-9",
-      "label": "ルチェラ",
-      "reading": "ルチェラ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-takka-10",
-      "label": "タッカ",
-      "reading": "タッカ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-11",
-      "label": "時計",
-      "reading": "とけい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-yoshi-12",
+      "entry_id": "term-ch-b8-yoshi",
       "label": "よし",
       "reading": "よし"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-13",
-      "label": "雨",
-      "reading": "あめ"
+      "entry_id": "term-ch-b8-joou",
+      "label": "女王",
+      "reading": "じょおう"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-14",
-      "label": "足",
-      "reading": "あし"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-15",
-      "label": "明日",
-      "reading": "あした"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-basha-16",
-      "label": "バシャッ",
-      "reading": "バシャッ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-doa-17",
-      "label": "ドア",
-      "reading": "ドア"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-18",
-      "label": "奴隷",
-      "reading": "どれい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ru-19",
-      "label": "降る",
-      "reading": "ふる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-gakin-20",
-      "label": "ガキン",
-      "reading": "ガキン"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-gakon-21",
-      "label": "ガコンッ",
-      "reading": "ガコンッ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-22",
-      "label": "羽",
-      "reading": "はね"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-kamoshirenai-23",
-      "label": "かもしれない",
-      "reading": "かもしれない"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-i-24",
-      "label": "汚い",
-      "reading": "きたない"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-su-25",
-      "label": "殺す",
-      "reading": "ころす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-26",
-      "label": "口",
-      "reading": "くち"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-eru-27",
-      "label": "燃える",
-      "reading": "もえる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-suraimu-28",
-      "label": "スライム",
-      "reading": "スライム"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-suuroshu-29",
-      "label": "スーロシュ",
-      "reading": "スーロシュ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-be-30",
-      "label": "食べ物",
-      "reading": "たべもの"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-31",
-      "label": "入用",
-      "reading": "いりよう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ari-32",
-      "label": "毎度あり",
-      "reading": "まいどあり"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-33",
+      "entry_id": "term-ch-b8-haiken",
       "label": "拝見",
       "reading": "はいけん"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-34",
-      "label": "様",
-      "reading": "さま"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-35",
+      "entry_id": "term-ch-b8-tami",
       "label": "民",
       "reading": "たみ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-ra-36",
+      "entry_id": "term-ch-b8-warera",
       "label": "我ら",
       "reading": "われら"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-ta-37",
-      "label": "新た",
-      "reading": "あらた"
+      "entry_id": "term-ch-b8-minamina-sama",
+      "label": "皆々様",
+      "reading": "みなみなさま"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-38",
+      "entry_id": "term-ch-b8-tokeidai",
       "label": "時計台",
       "reading": "とけいだい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-nisuru-39",
-      "label": "手にする",
-      "reading": "てにする"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-40",
+      "entry_id": "term-ch-b8-banzai",
       "label": "万歳",
       "reading": "ばんざい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-41",
+      "entry_id": "term-ch-b8-bantan",
       "label": "万端",
       "reading": "ばんたん"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-kasu-42",
-      "label": "動かす",
-      "reading": "うごかす"
+      "entry_id": "term-ch-b8-uketoru",
+      "label": "受け取る",
+      "reading": "うけとる"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-43",
-      "label": "褒美",
-      "reading": "ほうび"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-44",
+      "entry_id": "term-ch-b8-kenjou",
       "label": "献上",
       "reading": "けんじょう"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-shigeru-45",
+      "entry_id": "term-ch-b8-sashiageru",
       "label": "差し上げる",
       "reading": "さしあげる"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-46",
-      "label": "兄貴",
-      "reading": "あにき"
+      "entry_id": "term-ch-b8-ittai",
+      "label": "一体",
+      "reading": "いったい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-ri-47",
-      "label": "名乗り",
-      "reading": "なのり"
+      "entry_id": "term-ch-b8-te-ni-suru",
+      "label": "手にする",
+      "reading": "てにする"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-ri-48",
-      "label": "横取り",
-      "reading": "よこどり"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-49",
-      "label": "称号",
-      "reading": "しょうごう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-50",
-      "label": "大型",
-      "reading": "おおがた"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-51",
-      "label": "討伐",
-      "reading": "とうばつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-52",
-      "label": "突撃",
-      "reading": "とつげき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-kasu-53",
-      "label": "溶かす",
-      "reading": "とかす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-keru-54",
-      "label": "溶ける",
-      "reading": "とける"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-oru-55",
-      "label": "意地を張る",
-      "reading": "いじをはる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ige-56",
-      "label": "願い下げ",
-      "reading": "ねがいさげ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-57",
-      "label": "以外",
-      "reading": "いがい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-58",
-      "label": "興味",
-      "reading": "きょうみ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ni-59",
-      "label": "共に",
-      "reading": "ともに"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-chikeru-60",
-      "label": "落ち着ける",
-      "reading": "おちつける"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-61",
-      "label": "立派",
-      "reading": "りっぱ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ninaranai-62",
-      "label": "話にならない",
-      "reading": "はなしにならない"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-63",
-      "label": "賛成",
-      "reading": "さんせい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ke-64",
-      "label": "手助け",
-      "reading": "てだすけ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-su-65",
-      "label": "出直す",
-      "reading": "でなおす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-66",
-      "label": "呑気",
-      "reading": "のんき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-tsu-67",
-      "label": "発つ",
-      "reading": "たつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-68",
-      "label": "住人",
-      "reading": "じゅうにん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-osuru-69",
-      "label": "お邪魔する",
-      "reading": "おじゃまする"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ni-70",
-      "label": "勝手に",
-      "reading": "かってに"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-suru-71",
-      "label": "臆する",
-      "reading": "おくする"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ikaru-72",
-      "label": "襲い掛かる",
-      "reading": "おそいかかる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-73",
-      "label": "撃退",
-      "reading": "げきたい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-keru-74",
-      "label": "仕掛ける",
-      "reading": "しかける"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-75",
-      "label": "無力",
-      "reading": "むりょく"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-76",
-      "label": "加勢",
-      "reading": "かせい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ogaku-77",
-      "label": "お腹が空く",
-      "reading": "おなかがすく"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-bekirenai-78",
-      "label": "食べきれない",
-      "reading": "たべきれない"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-79",
-      "label": "成功",
-      "reading": "せいこう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-rikiru-80",
-      "label": "頼りきる",
-      "reading": "たよりきる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-81",
-      "label": "正真正銘",
-      "reading": "しょうしんしょうめい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-tsu-82",
-      "label": "何一つ",
-      "reading": "なにひとつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-83",
-      "label": "潮時",
-      "reading": "しおどき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-84",
-      "label": "間一髪",
-      "reading": "かんいっぱつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-85",
-      "label": "挨拶",
-      "reading": "あいさつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-86",
-      "label": "新参",
-      "reading": "しんざん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-o-87",
-      "label": "お代",
-      "reading": "おだい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-ikakeru-88",
-      "label": "言いかける",
-      "reading": "いいかける"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-suru-89",
+      "entry_id": "term-ch-b8-hossuru",
       "label": "欲する",
       "reading": "ほっする"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-90",
-      "label": "皆々",
-      "reading": "みなみな"
+      "entry_id": "term-ch-b8-honmono",
+      "label": "本物",
+      "reading": "ほんもの"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-zuru-91",
+      "entry_id": "term-ch-b8-mitsukeru",
+      "label": "見つける",
+      "reading": "みつける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-aniki",
+      "label": "兄貴",
+      "reading": "あにき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-kansha",
+      "label": "感謝",
+      "reading": "かんしゃ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-nanori",
+      "label": "名乗り",
+      "reading": "なのり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-yokodori",
+      "label": "横取り",
+      "reading": "よこどり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-saikyou",
+      "label": "最強",
+      "reading": "さいきょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-shougou",
+      "label": "称号",
+      "reading": "しょうごう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-mitomeru",
+      "label": "認める",
+      "reading": "みとめる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-totsugeki",
+      "label": "突撃",
+      "reading": "とつげき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-ame",
+      "label": "雨",
+      "reading": "あめ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-furu-weather",
+      "label": "降る",
+      "reading": "ふる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-hane",
+      "label": "羽",
+      "reading": "はね"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-kamoshirenai",
+      "label": "かもしれない",
+      "reading": "かもしれない"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-kitanai",
+      "label": "汚い",
+      "reading": "きたない"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-korosu",
+      "label": "殺す",
+      "reading": "ころす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-kuchi",
+      "label": "口",
+      "reading": "くち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-moeru",
+      "label": "燃える",
+      "reading": "もえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-tokasu",
+      "label": "溶かす",
+      "reading": "とかす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-tokeru",
+      "label": "溶ける",
+      "reading": "とける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b8-anzuru",
       "label": "案ずる",
       "reading": "あんずる"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-92",
-      "label": "投擲",
-      "reading": "とうてき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-kasu-93",
-      "label": "抜かす",
-      "reading": "ぬかす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-bocchi-94",
-      "label": "一人ぼっち",
-      "reading": "ひとりぼっち"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-entry-95",
-      "label": "当然",
-      "reading": "とうぜん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b8-teke-96",
-      "label": "出て行け",
-      "reading": "でていけ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-i-1",
-      "label": "熱い",
-      "reading": "あつい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-don-2",
-      "label": "ドンッ",
-      "reading": "ドンッ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-dono-3",
-      "label": "どの",
-      "reading": "どの"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-yaru-4",
-      "label": "やる",
-      "reading": "やる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-ru-5",
-      "label": "蹴る",
-      "reading": "ける"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-6",
-      "label": "鞭",
-      "reading": "むち"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-osan-7",
-      "label": "お姉さん",
-      "reading": "おねえさん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-saseru-8",
-      "label": "させる",
-      "reading": "させる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-ku-9",
-      "label": "働く",
-      "reading": "はたらく"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-ri-10",
-      "label": "怒り",
-      "reading": "いかり"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-shimu-11",
-      "label": "悲しむ",
-      "reading": "かなしむ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-moushi-12",
-      "label": "もう少し",
-      "reading": "もうすこし"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-e-13",
-      "label": "考え",
-      "reading": "かんがえ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-bi-14",
-      "label": "遊び",
-      "reading": "あそび"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-otsukeru-15",
-      "label": "決着をつける",
-      "reading": "けっちゃくをつける"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-16",
-      "label": "戦闘不能",
-      "reading": "せんとうふのう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-17",
-      "label": "降伏",
-      "reading": "こうふく"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-tsukeru-18",
-      "label": "傷つける",
-      "reading": "きずつける"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-suru-19",
-      "label": "油断する",
-      "reading": "ゆだんする"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-memu-20",
-      "label": "埋め込む",
-      "reading": "うめこむ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-21",
-      "label": "戦況",
-      "reading": "せんきょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-22",
-      "label": "策",
-      "reading": "さく"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-kigaru-23",
-      "label": "起き上がる",
-      "reading": "おきあがる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-suru-24",
-      "label": "観念する",
-      "reading": "かんねんする"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-iru-25",
-      "label": "思い知る",
-      "reading": "おもいしる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-shienakereba-26",
-      "label": "差し支えなければ",
-      "reading": "さしつかえなければ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-shigaru-27",
-      "label": "欲しがる",
-      "reading": "ほしがる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-28",
-      "label": "娯楽",
-      "reading": "ごらく"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-29",
-      "label": "刺激的",
-      "reading": "しげきてき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-no-30",
-      "label": "負の感情",
-      "reading": "ふのかんじょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-mu-31",
-      "label": "苛む",
-      "reading": "さいなむ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-32",
-      "label": "屈強",
-      "reading": "くっきょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-33",
-      "label": "所望",
-      "reading": "しょもう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-nieru-34",
-      "label": "言葉に甘える",
-      "reading": "ことばにあまえる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-kumokumonai-35",
-      "label": "痛くも痒くもない",
-      "reading": "いたくもかゆくもない"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-36",
-      "label": "本望",
-      "reading": "ほんもう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-niu-37",
-      "label": "間に合う",
-      "reading": "まにあう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-waru-38",
-      "label": "加わる",
-      "reading": "くわわる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-39",
-      "label": "案",
-      "reading": "あん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-mu-40",
-      "label": "痛む",
-      "reading": "いたむ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-tsu-41",
-      "label": "打つ",
-      "reading": "うつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-reru-42",
-      "label": "恐れ入る",
-      "reading": "おそれいる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-43",
-      "label": "直々",
-      "reading": "じきじき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-osu-44",
-      "label": "手を下す",
-      "reading": "てをくだす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-ninaru-45",
-      "label": "力になる",
-      "reading": "ちからになる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-u-46",
-      "label": "敵う",
-      "reading": "かなう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-47",
-      "label": "力一杯",
-      "reading": "ちからいっぱい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-keru-48",
-      "label": "怠ける",
-      "reading": "なまける"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-49",
-      "label": "坊主",
-      "reading": "ぼうず"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-u-50",
-      "label": "構う",
-      "reading": "かまう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-mu-51",
-      "label": "盗む",
-      "reading": "ぬすむ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-suru-52",
-      "label": "始末する",
-      "reading": "しまつする"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-ano-53",
-      "label": "あの世",
-      "reading": "あのよ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-54",
-      "label": "懺悔",
-      "reading": "ざんげ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-55",
-      "label": "方々",
-      "reading": "かたがた"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-nie-56",
-      "label": "に加え",
-      "reading": "にくわえ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-57",
-      "label": "景品",
-      "reading": "けいひん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-58",
-      "label": "上手",
-      "reading": "じょうず"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-59",
-      "label": "愛顧",
-      "reading": "あいこ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-ri-60",
-      "label": "奢り",
-      "reading": "おごり"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-61",
-      "label": "脱走",
-      "reading": "だっそう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-62",
-      "label": "兄",
-      "reading": "あに"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-ya-63",
-      "label": "坊や",
-      "reading": "ぼうや"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-ra-64",
-      "label": "奴ら",
-      "reading": "やつら"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-shite-65",
-      "label": "決して",
-      "reading": "けっして"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-66",
-      "label": "船",
-      "reading": "ふね"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-67",
-      "label": "少年",
-      "reading": "しょうねん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-i-68",
-      "label": "可愛い",
-      "reading": "かわいい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-entry-69",
-      "label": "音",
-      "reading": "おと"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-shimi-70",
-      "label": "悲しみ",
-      "reading": "かなしみ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b9-biriru-71",
-      "label": "飛び降りる",
-      "reading": "とびおりる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-hora-1",
-      "label": "ほら",
-      "reading": "ほら"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-2",
-      "label": "事",
-      "reading": "こと"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-su-3",
-      "label": "壊す",
-      "reading": "こわす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-4",
-      "label": "耳",
-      "reading": "みみ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-kiru-5",
-      "label": "起きる",
-      "reading": "おきる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-gameru-6",
-      "label": "目が覚める",
-      "reading": "めがさめる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-shimau-7",
-      "label": "しまう",
-      "reading": "しまう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-8",
-      "label": "後",
-      "reading": "あと"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-e-9",
-      "label": "え",
-      "reading": "え"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-kachi-10",
-      "label": "カチッ",
-      "reading": "カチッ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-11",
-      "label": "五",
-      "reading": "ご"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-12",
-      "label": "六",
-      "reading": "ろく"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-saa-13",
-      "label": "さあ",
-      "reading": "さあ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-14",
-      "label": "四",
-      "reading": "し"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-soshite-15",
-      "label": "そして",
-      "reading": "そして"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-o-16",
-      "label": "お風呂",
-      "reading": "おふろ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-17",
-      "label": "隣",
-      "reading": "となり"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-yaa-18",
-      "label": "やあ",
-      "reading": "やあ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-kinomesu-19",
-      "label": "叩きのめす",
-      "reading": "たたきのめす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-20",
-      "label": "尻尾",
-      "reading": "しっぽ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-raseru-21",
-      "label": "怒らせる",
-      "reading": "おこらせる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-ka-22",
-      "label": "愚か",
-      "reading": "おろか"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-23",
-      "label": "限界",
-      "reading": "げんかい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-shi-24",
-      "label": "手出し",
-      "reading": "てだし"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-25",
-      "label": "運命",
-      "reading": "うんめい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-26",
-      "label": "気絶",
-      "reading": "きぜつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-27",
-      "label": "一心",
-      "reading": "いっしん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-28",
-      "label": "失格",
-      "reading": "しっかく"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ch-b10-maru-29",
+      "entry_id": "term-ch-b8-tsukamaru",
       "label": "捕まる",
       "reading": "つかまる"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-yari-30",
-      "label": "無理やり",
-      "reading": "むりやり"
+      "entry_id": "term-ch-b8-iji-o-haru",
+      "label": "意地を張る",
+      "reading": "いじをはる"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-31",
-      "label": "最低",
-      "reading": "さいてい"
+      "entry_id": "term-ch-b8-negaisage",
+      "label": "願い下げ",
+      "reading": "ねがいさげ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-nimu-32",
-      "label": "気に病む",
-      "reading": "きにやむ"
+      "entry_id": "term-ch-b8-ochitsuku",
+      "label": "落ち着く",
+      "reading": "おちつく"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-ru-33",
-      "label": "口走る",
-      "reading": "くちばしる"
+      "entry_id": "term-ch-b8-yatsu",
+      "label": "奴",
+      "reading": "やつ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-metsukeru-34",
-      "label": "痛めつける",
-      "reading": "いためつける"
+      "entry_id": "term-ch-b8-rippa",
+      "label": "立派",
+      "reading": "りっぱ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-me-35",
-      "label": "足止め",
-      "reading": "あしどめ"
+      "entry_id": "term-ch-b8-kokoro-hareru",
+      "label": "心が晴れる",
+      "reading": "こころがはれる"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-e-36",
-      "label": "見覚え",
-      "reading": "みおぼえ"
+      "entry_id": "term-ch-b8-hanashi-ni-naranai",
+      "label": "話にならない",
+      "reading": "はなしにならない"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-37",
-      "label": "英雄",
-      "reading": "えいゆう"
+      "entry_id": "term-ch-b8-sansei",
+      "label": "賛成",
+      "reading": "さんせい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-38",
-      "label": "陛下",
-      "reading": "へいか"
+      "entry_id": "term-ch-b8-tedasuke",
+      "label": "手助け",
+      "reading": "てだすけ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-shigeru-39",
-      "label": "申し上げる",
-      "reading": "もうしあげる"
+      "entry_id": "term-ch-b8-genkai",
+      "label": "限界",
+      "reading": "げんかい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-40",
-      "label": "凱旋",
-      "reading": "がいせん"
+      "entry_id": "term-ch-b8-saki-o-kosu",
+      "label": "先を越す",
+      "reading": "さきをこす"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-41",
-      "label": "面会",
-      "reading": "めんかい"
+      "entry_id": "term-ch-b8-denaosu",
+      "label": "出直す",
+      "reading": "でなおす"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-garu-42",
-      "label": "嫌がる",
-      "reading": "いやがる"
+      "entry_id": "term-ch-b8-ojama-suru",
+      "label": "お邪魔する",
+      "reading": "おじゃまする"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-43",
-      "label": "連行",
-      "reading": "れんこう"
+      "entry_id": "term-ch-b8-katteni",
+      "label": "勝手に",
+      "reading": "かってに"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-44",
-      "label": "浴場",
-      "reading": "よくじょう"
+      "entry_id": "term-ch-b8-osoi-kakaru",
+      "label": "襲い掛かる",
+      "reading": "おそいかかる"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-o-45",
-      "label": "お城",
-      "reading": "おしろ"
+      "entry_id": "term-ch-b8-gekitai",
+      "label": "撃退",
+      "reading": "げきたい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-46",
-      "label": "余裕",
-      "reading": "よゆう"
+      "entry_id": "term-ch-b8-tabemono",
+      "label": "食べ物",
+      "reading": "たべもの"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-risu-47",
-      "label": "取り出す",
-      "reading": "とりだす"
+      "entry_id": "term-ch-b8-harau",
+      "label": "払う",
+      "reading": "はらう"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-wau-48",
-      "label": "味わう",
-      "reading": "あじわう"
+      "entry_id": "term-ch-b8-hara",
+      "label": "腹",
+      "reading": "はら"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-49",
-      "label": "賞金",
-      "reading": "しょうきん"
+      "entry_id": "term-ch-b8-hitoribocchi",
+      "label": "一人ぼっち",
+      "reading": "ひとりぼっち"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-gaku-50",
-      "label": "気が付く",
-      "reading": "きがつく"
+      "entry_id": "term-ch-b8-onaka-ga-suku",
+      "label": "お腹が空く",
+      "reading": "おなかがすく"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-51",
-      "label": "頭",
-      "reading": "あたま"
+      "entry_id": "term-ch-b8-touzen",
+      "label": "当然",
+      "reading": "とうぜん"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-52",
-      "label": "停止",
-      "reading": "ていし"
+      "entry_id": "term-ch-b8-shokuji",
+      "label": "食事",
+      "reading": "しょくじ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-ru-53",
-      "label": "被る",
-      "reading": "かぶる"
+      "entry_id": "term-ch-b8-tabekirenai",
+      "label": "食べきれない",
+      "reading": "たべきれない"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-54",
-      "label": "二度",
-      "reading": "にど"
+      "entry_id": "term-ch-b8-seikou",
+      "label": "成功",
+      "reading": "せいこう"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-ri-55",
-      "label": "限り",
-      "reading": "かぎり"
+      "entry_id": "term-ch-b8-mochinushi",
+      "label": "持ち主",
+      "reading": "もちぬし"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-56",
-      "label": "友人",
-      "reading": "ゆうじん"
+      "entry_id": "term-ch-b8-tayorikiru",
+      "label": "頼りきる",
+      "reading": "たよりきる"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-su-57",
-      "label": "外す",
-      "reading": "はずす"
+      "entry_id": "term-ch-b8-umekomu",
+      "label": "埋め込む",
+      "reading": "うめこむ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-58",
-      "label": "四人",
-      "reading": "よにん"
+      "entry_id": "term-ch-b8-kowasu",
+      "label": "壊す",
+      "reading": "こわす"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-ru-59",
-      "label": "謝る",
-      "reading": "あやまる"
+      "entry_id": "term-ch-b8-dorei",
+      "label": "奴隷",
+      "reading": "どれい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-60",
-      "label": "謝罪",
-      "reading": "しゃざい"
+      "entry_id": "term-ch-b8-nukasu",
+      "label": "抜かす",
+      "reading": "ぬかす"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-neru-61",
-      "label": "損ねる",
-      "reading": "そこねる"
+      "entry_id": "term-ch-b8-shikakeru",
+      "label": "仕掛ける",
+      "reading": "しかける"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-giru-62",
-      "label": "過ぎる",
-      "reading": "すぎる"
+      "entry_id": "term-ch-b8-muryoku",
+      "label": "無力",
+      "reading": "むりょく"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-ku-63",
-      "label": "全く",
-      "reading": "まったく"
+      "entry_id": "term-ch-b8-kasei",
+      "label": "加勢",
+      "reading": "かせい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-64",
-      "label": "数人",
-      "reading": "すうにん"
+      "entry_id": "term-ch-b8-shoushin-shoumei",
+      "label": "正真正銘",
+      "reading": "しょうしんしょうめい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-reru-65",
-      "label": "慣れる",
-      "reading": "なれる"
+      "entry_id": "term-ch-b8-nani-hitotsu",
+      "label": "何一つ",
+      "reading": "なにひとつ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-66",
-      "label": "以前",
-      "reading": "いぜん"
+      "entry_id": "term-ch-b8-shiodoki",
+      "label": "潮時",
+      "reading": "しおどき"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-su-67",
-      "label": "離す",
-      "reading": "はなす"
+      "entry_id": "term-ch-b8-kanippatsu",
+      "label": "間一髪",
+      "reading": "かんいっぱつ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-omeru-68",
-      "label": "足を止める",
-      "reading": "あしをとめる"
+      "entry_id": "term-ch-b8-touchaku",
+      "label": "到着",
+      "reading": "とうちゃく"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-69",
-      "label": "盛大",
-      "reading": "せいだい"
+      "entry_id": "term-ch-b8-aisatsu",
+      "label": "挨拶",
+      "reading": "あいさつ"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-su-70",
-      "label": "催す",
-      "reading": "もよおす"
+      "entry_id": "term-ch-b8-shinzan",
+      "label": "新参",
+      "reading": "しんざん"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-reru-71",
-      "label": "汚れる",
-      "reading": "よごれる"
+      "entry_id": "term-ch-b8-yuushuu",
+      "label": "優秀",
+      "reading": "ゆうしゅう"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-eru-72",
-      "label": "備える",
-      "reading": "そなえる"
+      "entry_id": "term-ch-b9-atsui",
+      "label": "熱い",
+      "reading": "あつい"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-moru-73",
-      "label": "積もる",
-      "reading": "つもる"
+      "entry_id": "term-ch-b9-dono",
+      "label": "どの",
+      "reading": "どの"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-74",
-      "label": "実際",
-      "reading": "じっさい"
+      "entry_id": "term-ch-b9-muchi",
+      "label": "鞭",
+      "reading": "むち"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-su-75",
-      "label": "辞す",
-      "reading": "じす"
+      "entry_id": "term-ch-b9-keru",
+      "label": "蹴る",
+      "reading": "ける"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-ki-76",
-      "label": "仕置き",
-      "reading": "しおき"
+      "entry_id": "term-ch-b9-itakumo-kayukumo-nai",
+      "label": "痛くも痒くもない",
+      "reading": "いたくもかゆくもない"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-ochan-77",
+      "entry_id": "term-ch-b9-honmou",
+      "label": "本望",
+      "reading": "ほんもう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-yudan-suru",
+      "label": "油断する",
+      "reading": "ゆだんする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-ma-ni-au",
+      "label": "間に合う",
+      "reading": "まにあう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-osugiru",
+      "label": "遅すぎる",
+      "reading": "おそすぎる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-yowasugiru",
+      "label": "弱すぎる",
+      "reading": "よわすぎる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-sentou-funou",
+      "label": "戦闘不能",
+      "reading": "せんとうふのう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-koufuku",
+      "label": "降伏",
+      "reading": "こうふく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-kannen-suru",
+      "label": "観念する",
+      "reading": "かんねんする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-mou-sukoshi",
+      "label": "もう少し",
+      "reading": "もうすこし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-kangae",
+      "label": "考え",
+      "reading": "かんがえ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-asobi",
+      "label": "遊び",
+      "reading": "あそび"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-ikari",
+      "label": "怒り",
+      "reading": "いかり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-kanashimu",
+      "label": "悲しむ",
+      "reading": "かなしむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-kanashimi",
+      "label": "悲しみ",
+      "reading": "かなしみ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-kecchaku-o-tsukeru",
+      "label": "決着をつける",
+      "reading": "けっちゃくをつける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-senkyou",
+      "label": "戦況",
+      "reading": "せんきょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-saku",
+      "label": "策",
+      "reading": "さく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-saku-o-utsu",
+      "label": "策を打つ",
+      "reading": "さくをうつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-oogata",
+      "label": "大型",
+      "reading": "おおがた"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-tairyou",
+      "label": "大量",
+      "reading": "たいりょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-jikijiki",
+      "label": "直々",
+      "reading": "じきじき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-te-o-kudasu",
+      "label": "手を下す",
+      "reading": "てをくだす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-kizutsukeru",
+      "label": "傷つける",
+      "reading": "きずつける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-kanau",
+      "label": "敵う",
+      "reading": "かなう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-omoishiru",
+      "label": "思い知る",
+      "reading": "おもいしる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-yaru",
+      "label": "やる",
+      "reading": "やる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-hataraku",
+      "label": "働く",
+      "reading": "はたらく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-oneesan",
+      "label": "お姉さん",
+      "reading": "おねえさん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-oneechan",
       "label": "お姉ちゃん",
       "reading": "おねえちゃん"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-78",
-      "label": "入浴",
-      "reading": "にゅうよく"
+      "entry_id": "term-ch-b9-chikara-ni-naru",
+      "label": "力になる",
+      "reading": "ちからになる"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-ni-79",
-      "label": "実に",
-      "reading": "じつに"
+      "entry_id": "term-ch-b9-kuwawaru",
+      "label": "加わる",
+      "reading": "くわわる"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-entry-80",
+      "entry_id": "term-ch-b9-namakeru",
+      "label": "怠ける",
+      "reading": "なまける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-kamau",
+      "label": "構う",
+      "reading": "かまう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-sashitsukaenakereba",
+      "label": "差し支えなければ",
+      "reading": "さしつかえなければ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-goraku",
+      "label": "娯楽",
+      "reading": "ごらく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-shigekiteki",
+      "label": "刺激的",
+      "reading": "しげきてき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-fu-no-kanjou",
+      "label": "負の感情",
+      "reading": "ふのかんじょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-sainamu",
+      "label": "苛む",
+      "reading": "さいなむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-shounen",
+      "label": "少年",
+      "reading": "しょうねん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-keihin",
+      "label": "景品",
+      "reading": "けいひん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-shomou",
+      "label": "所望",
+      "reading": "しょもう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-kukkyou",
+      "label": "屈強",
+      "reading": "くっきょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-maido-ari",
+      "label": "毎度あり",
+      "reading": "まいどあり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-hoshigaru",
+      "label": "欲しがる",
+      "reading": "ほしがる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-nusumu",
+      "label": "盗む",
+      "reading": "ぬすむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-shimatsu-suru",
+      "label": "始末する",
+      "reading": "しまつする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-anoyo",
+      "label": "あの世",
+      "reading": "あのよ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-zange",
+      "label": "懺悔",
+      "reading": "ざんげ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-temochi",
+      "label": "手持ち",
+      "reading": "てもち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-ogori",
+      "label": "奢り",
+      "reading": "おごり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-dassou",
+      "label": "脱走",
+      "reading": "だっそう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-tobioriru",
+      "label": "飛び降りる",
+      "reading": "とびおりる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-nantoka",
+      "label": "何とか",
+      "reading": "なんとか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b9-mata-ashita",
+      "label": "また明日",
+      "reading": "またあした"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-hora",
+      "label": "ほら",
+      "reading": "ほら"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-koto",
+      "label": "事",
+      "reading": "こと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-mimi",
+      "label": "耳",
+      "reading": "みみ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-ishiki",
+      "label": "意識",
+      "reading": "いしき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-kizetsu",
+      "label": "気絶",
+      "reading": "きぜつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-okiagaru",
+      "label": "起き上がる",
+      "reading": "おきあがる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-tatakinomesu",
+      "label": "叩きのめす",
+      "reading": "たたきのめす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-shippo",
+      "label": "尻尾",
+      "reading": "しっぽ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-okoraseru",
+      "label": "怒らせる",
+      "reading": "おこらせる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-teishi",
+      "label": "停止",
+      "reading": "ていし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-nido",
+      "label": "二度",
+      "reading": "にど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-hazusu",
+      "label": "外す",
+      "reading": "はずす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-tedashi",
+      "label": "手出し",
+      "reading": "てだし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-unmei",
+      "label": "運命",
+      "reading": "うんめい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-kagiri",
+      "label": "限り",
+      "reading": "かぎり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-isshin",
+      "label": "一心",
+      "reading": "いっしん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-yuujin",
+      "label": "友人",
+      "reading": "ゆうじん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-shikkaku",
+      "label": "失格",
+      "reading": "しっかく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-tadashii",
+      "label": "正しい",
+      "reading": "ただしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-tanomu",
+      "label": "頼む",
+      "reading": "たのむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-muriyari",
+      "label": "無理やり",
+      "reading": "むりやり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-saitei",
+      "label": "最低",
+      "reading": "さいてい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-ki-ni-yamu",
+      "label": "気に病む",
+      "reading": "きにやむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-ayamaru",
+      "label": "謝る",
+      "reading": "あやまる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-sokoneru",
+      "label": "損ねる",
+      "reading": "そこねる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-kuchibashiru",
+      "label": "口走る",
+      "reading": "くちばしる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-mattaku",
+      "label": "全く",
+      "reading": "まったく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-suunin",
+      "label": "数人",
+      "reading": "すうにん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-itametsukeru",
+      "label": "痛めつける",
+      "reading": "いためつける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-nareru",
+      "label": "慣れる",
+      "reading": "なれる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-ashidome",
+      "label": "足止め",
+      "reading": "あしどめ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-mioboe",
+      "label": "見覚え",
+      "reading": "みおぼえ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-izen",
+      "label": "以前",
+      "reading": "いぜん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-tousan",
+      "label": "父さん",
+      "reading": "とうさん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-eiyuu",
+      "label": "英雄",
+      "reading": "えいゆう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-hanasu",
+      "label": "離す",
+      "reading": "はなす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-ashi-o-tomeru",
+      "label": "足を止める",
+      "reading": "あしをとめる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-heika",
+      "label": "陛下",
+      "reading": "へいか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-moushiageru",
+      "label": "申し上げる",
+      "reading": "もうしあげる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-gaisen",
+      "label": "凱旋",
+      "reading": "がいせん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-menkai",
+      "label": "面会",
+      "reading": "めんかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-iyagaru",
+      "label": "嫌がる",
+      "reading": "いやがる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-renkou",
+      "label": "連行",
+      "reading": "れんこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-seidai",
+      "label": "盛大",
+      "reading": "せいだい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-moyoosu",
+      "label": "催す",
+      "reading": "もよおす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-yogoreru",
+      "label": "汚れる",
+      "reading": "よごれる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-ofuro",
+      "label": "お風呂",
+      "reading": "おふろ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-sonaeru",
+      "label": "備える",
+      "reading": "そなえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-tsumoru",
+      "label": "積もる",
+      "reading": "つもる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-yokujou",
+      "label": "浴場",
+      "reading": "よくじょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-tonari",
+      "label": "隣",
+      "reading": "となり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-onaji",
+      "label": "同じ",
+      "reading": "おなじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-mono",
       "label": "物",
       "reading": "もの"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-b10-memareru-81",
-      "label": "埋め込まれる",
-      "reading": "うめこまれる"
+      "entry_id": "term-ch-b10-yoyuu",
+      "label": "余裕",
+      "reading": "よゆう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-jisu",
+      "label": "辞す",
+      "reading": "じす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-shioki",
+      "label": "仕置き",
+      "reading": "しおき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-toridasu",
+      "label": "取り出す",
+      "reading": "とりだす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-ajiwau",
+      "label": "味わう",
+      "reading": "あじわう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-owaru",
+      "label": "終わる",
+      "reading": "おわる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-b10-yasumu",
+      "label": "休む",
+      "reading": "やすむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ch-ad-hoc-yacchimae",
+      "label": "やっちまえ",
+      "reading": "やっちまえ"
     },
     {
       "entry_type": "grammar",
@@ -2942,27 +2798,23 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ch-particle-omission",
-      "label": "は／が／を omission"
+      "label": "は／が／をの省略",
+      "reading": "はがをのしょうりゃく"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-ga-implication",
+      "label": "Nが！"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ch-su-verbs-te-past",
-      "label": "す-verbs: した／して"
+      "label": "〜す -> 〜して／〜した"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ch-te-iru-state",
-      "label": "ている as state"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-kun-on-readings",
-      "label": "訓読み／音読み"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-multiple-kun-readings",
-      "label": "消える／消す"
+      "label": "〜ている"
     },
     {
       "entry_type": "grammar",
@@ -2971,33 +2823,13 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-fire-vs-fire-incident",
-      "label": "火 vs 火事"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-iru-homonyms",
-      "label": "いる vs 要る"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-ga-with-iru-need",
       "label": "Nが要る"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-ga-implication",
-      "label": "Nが..."
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-da-yo-style",
       "label": "だ／よ／だよ"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-ii-yoi",
-      "label": "いい／良い"
     },
     {
       "entry_type": "grammar",
@@ -3012,17 +2844,7 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ch-te-command-vs-hard-command",
-      "label": "comando in て e 命令形"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-vowel-stretch-yelling",
-      "label": "母音のばし"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-advanced-katakana-w",
-      "label": "ワ／ウィ／ウェ／ウォ／ウ; ヲ come caso speciale"
+      "label": "〜て vs 命令形"
     },
     {
       "entry_type": "grammar",
@@ -3032,7 +2854,7 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ch-wo-with-potential-exceptions",
-      "label": "を con 止められる"
+      "label": "を + 止められる"
     },
     {
       "entry_type": "grammar",
@@ -3046,18 +2868,13 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-verb-stem-noun",
-      "label": "連用形 in funzione nominale"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-mo-multiple-negative",
       "label": "NもNも"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-rendaku-compounds",
-      "label": "連濁 nei composti"
+      "entry_id": "grammar-ch-verb-stem-as-noun",
+      "label": "Vます-stem come nome"
     },
     {
       "entry_type": "grammar",
@@ -3076,11 +2893,6 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b4-nena-4",
-      "label": "ね／な"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-ch-b4-n-5",
       "label": "たくさん／たくさんのN"
     },
@@ -3096,13 +2908,8 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b4-come-godan-8",
-      "label": "帰る come godan"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b4-radice-verbale-come-nome-di-agente-9",
-      "label": "radice verbale come nome di agente"
+      "entry_id": "grammar-ch-b4-ne-na-social",
+      "label": "ね／な"
     },
     {
       "entry_type": "grammar",
@@ -3111,18 +2918,8 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-rui-2",
-      "label": "来る -> 来い"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-entry-3",
-      "label": "「...」"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-tou-4",
-      "label": "「...」と言う"
+      "entry_id": "grammar-ch-b5-su-past-te",
+      "label": "verbi in す: した／して"
     },
     {
       "entry_type": "grammar",
@@ -3131,28 +2928,8 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-guida-crystal-hunters-6",
-      "label": "一矢／二矢 (guida Crystal Hunters)"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-nome-7",
-      "label": "nome + する"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-verbo-aggettivo-in-8",
-      "label": "verbo／aggettivo in い + の？"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-nome-aggettivo-in-9",
-      "label": "nome／aggettivo in な + なの？"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-radice-verbale-10",
-      "label": "radice verbale + たい"
+      "entry_id": "grammar-ch-b5-sorede-cause",
+      "label": "それで"
     },
     {
       "entry_type": "grammar",
@@ -3161,18 +2938,13 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-soggetto-con-12",
-      "label": "soggetto con が"
+      "entry_id": "grammar-ch-b5-new-noteworthy-ga",
+      "label": "Nが + verbo"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-entry-13",
-      "label": "〜達"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-koresorearede-14",
-      "label": "これ／それ／あれ + で"
+      "entry_id": "grammar-ch-b5-verbo-aggettivo-in-8",
+      "label": "verbo／aggettivo in い + の？"
     },
     {
       "entry_type": "grammar",
@@ -3181,388 +2953,237 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-e-16",
-      "label": "お願い e ください"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-rerusu-17",
+      "entry_id": "grammar-ch-b5-taoreru-taosu-pair",
       "label": "倒れる／倒す"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b5-bakabakabaaka-18",
-      "label": "馬鹿／バカ／ば〜か／バーカ"
+      "entry_id": "grammar-ch-b5-name-tachi",
+      "label": "nome + 達"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ch-b6-verbi-in-1",
-      "label": "verbi in ぬ: んだ／んで"
+      "label": "Vぬ: 死ぬ -> 死んだ／死んで"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ch-b6-verbi-in-2",
-      "label": "verbi in ぐ: いだ／いで"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-sore-3",
-      "label": "それ！"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-ndananda-4",
-      "label": "〜んだ／〜なんだ"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-v-5",
-      "label": "Vるんだ!"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-esplicativo-a-fine-frase-6",
-      "label": "の esplicativo a fine frase"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-v-7",
-      "label": "Vるのよ"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-ndakara-8",
-      "label": "んだから"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-come-con-9",
-      "label": "と come con"
+      "label": "Vぐ: 泳ぐ -> 泳いだ／泳いで"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ch-b6-aggettivi-in-10",
-      "label": "aggettivi in い: い -> く"
+      "label": "aggettivo in い -> く"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-aggettivo-in-nome-11",
-      "label": "aggettivo in な／nome + に"
+      "entry_id": "grammar-ch-b7-ra-plural",
+      "label": "N／pronome + ら"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-taitakunai-12",
-      "label": "〜たい -> 〜たくない"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-nome-con-13",
-      "label": "nome con が／を + たい"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-nome-14",
-      "label": "nome + を!"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-interrogativo-15",
-      "label": "interrogativo + が"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-negazione-16",
-      "label": "何も + negazione"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-entry-17",
-      "label": "三人／一人／二人"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-mousugusugu-18",
-      "label": "もうすぐ／今すぐ"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b6-con-19",
-      "label": "を con 止められる／救える"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-v-1",
-      "label": "Vむ: のむ→のんだ／のんで"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-citazione-senza-virgolette-2",
-      "label": "citazione + と言う senza virgolette"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-pronome-dimostrativo-3",
-      "label": "pronome／dimostrativo + ら"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-dou-4",
-      "label": "どう？"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-essere-pronto-5",
-      "label": "できる = essere pronto"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-a-b-6",
+      "entry_id": "grammar-ch-b7-a-ka-b-choice",
       "label": "AかB"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-interrogativo-7",
-      "label": "interrogativo + か"
+      "entry_id": "grammar-ch-b7-mu-conjugation",
+      "label": "Vむ -> Vんだ／Vんで"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-interrogativo-8",
-      "label": "interrogativo + でも"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-v-n-9",
-      "label": "V辞書形／Nの + ために／ためだ"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-v-10",
+      "entry_id": "grammar-ch-b7-tewa-dame",
       "label": "Vてはだめ"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-esclusivo-11",
-      "label": "が esclusivo"
+      "entry_id": "grammar-ch-b7-question-word-ka",
+      "label": "interrogativo + か"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-di-notizia-e-esclusivo-12",
-      "label": "が di notizia e が esclusivo"
+      "entry_id": "grammar-ch-b7-question-word-demo",
+      "label": "interrogativo + でも"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-a-fine-frase-13",
-      "label": "わ／わよ a fine frase"
+      "entry_id": "grammar-ch-b7-final-wa",
+      "label": "わ／わよ"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-aggettivo-in-14",
-      "label": "aggettivo in い + くて"
+      "entry_id": "grammar-ch-b7-i-adjective-te-form",
+      "label": "aggettivo in い -> くて"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-noka-15",
+      "entry_id": "grammar-ch-b7-nani-mo-negative",
+      "label": "何も + negativo"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-b7-noka-question",
       "label": "のか"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b7-e-16",
-      "label": "少し待って e 待っていて"
+      "entry_id": "grammar-ch-b8-masu-politeness",
+      "label": "Vます／Vました"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-tterasshai-1",
-      "label": "行ってらっしゃい"
+      "entry_id": "grammar-ch-b8-masen-politeness",
+      "label": "Vません／Vませんでした"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-yoshi-2",
-      "label": "よし"
+      "entry_id": "grammar-ch-b8-dewa-arimasen",
+      "label": "Nではありません"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-garu-3",
-      "label": "雨／雪が降る"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-doushita-4",
-      "label": "どうした"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-dounaru-5",
-      "label": "どうなる"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-nome-6",
-      "label": "nome + 持ち"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-nanda-7",
+      "entry_id": "grammar-ch-b8-nan-nanda",
       "label": "何なんだ"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-a-inizio-frase-8",
-      "label": "だから a inizio frase"
+      "entry_id": "grammar-ch-b8-n-mochi",
+      "label": "N + 持ち"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-come-scusa-9",
-      "label": "悪い come scusa"
+      "entry_id": "grammar-ch-b8-dakara-front",
+      "label": "だから + frase"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-verbo-10",
-      "label": "verbo + なきゃだめ"
+      "entry_id": "grammar-ch-b8-nakya-dame-question",
+      "label": "Vなきゃだめなの？"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-shimasumasu-11",
-      "label": "します／来ます"
+      "entry_id": "grammar-ch-b8-doushiyou",
+      "label": "どうしよう"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-verbo-12",
-      "label": "verbo + ました"
+      "entry_id": "grammar-ch-b8-doushita",
+      "label": "どうした"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-verbo-aggettivo-13",
-      "label": "verbo + ません／aggettivo + くありません"
+      "entry_id": "grammar-ch-b8-dou-naru",
+      "label": "どうなる"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-verbo-14",
-      "label": "verbo + ませんでした"
+      "entry_id": "grammar-ch-b8-tara-if",
+      "label": "Vたら"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-dehaarimasen-15",
-      "label": "ではありません"
+      "entry_id": "grammar-ch-b9-mou-sukoshi-de",
+      "label": "もう少しで"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-e-16",
-      "label": "皆 e 皆さん"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-puntini-di-enfasi-17",
-      "label": "puntini di enfasi"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b8-varianti-di-onomatopee-18",
-      "label": "varianti di onomatopee"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-moushimoushide-1",
-      "label": "もう少し／もう少しで"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-forma-potenziale-2",
-      "label": "forma potenziale + たら"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-doushitaraii-3",
+      "entry_id": "grammar-ch-b9-doushitara-ii",
       "label": "どうしたらいい"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-oshitaraii-4",
+      "entry_id": "grammar-ch-b9-nani-o-shitara-ii",
       "label": "何をしたらいい"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-aggettivo-emotivo-senza-5",
-      "label": "aggettivo emotivo senza い + む"
+      "entry_id": "grammar-ch-b9-potential-tara",
+      "label": "potential + たら"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-contrastivo-6",
+      "entry_id": "grammar-ch-b9-contrastive-wa",
       "label": "は contrastivo"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-a-b-c-7",
-      "label": "AはBはC"
+      "entry_id": "grammar-ch-b9-saseru",
+      "label": "せる／させる"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-saseru-8",
-      "label": "させる"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-sasetekudasai-9",
+      "entry_id": "grammar-ch-b9-sasete-kudasai",
       "label": "させてください"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b9-e-10",
-      "label": "する e やる"
+      "entry_id": "grammar-ch-b9-ni-kuwae",
+      "label": "Nに加え"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-sousurusouu-1",
-      "label": "そうする／そう言う"
+      "entry_id": "grammar-ch-b10-zaru-o-enai",
+      "label": "～ざるを得ない",
+      "reading": "〜ざるをえない"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-mashou-2",
-      "label": "ましょう"
+      "entry_id": "grammar-ch-b10-sou-suru-sou-iu",
+      "label": "そうする／そう言う",
+      "reading": "そうする／そういう"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-dato-3",
+      "entry_id": "grammar-ch-b10-te-shimau",
+      "label": "Vてしまう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-b10-mashou",
+      "label": "Vます-stem + ましょう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ch-b10-da-to",
       "label": "だと"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-citazione-incassata-4",
-      "label": "citazione incassata"
+      "entry_id": "grammar-ch-b10-embedded-quote",
+      "label": "XはYは...だと言う",
+      "reading": "XはYは...だという"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-causativo-con-5",
-      "label": "causativo con せる／させる"
+      "entry_id": "grammar-ch-b10-verb-before-noun",
+      "label": "forma piana + nome"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-forma-in-6",
-      "label": "forma in て + しまう"
+      "entry_id": "grammar-ch-b10-verb-stem-compounds",
+      "label": "V-stem + 降りる／出す",
+      "reading": "V-stem + おりる／だす"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-e-7",
-      "label": "こと e もの"
+      "entry_id": "grammar-ch-b10-wandering-te",
+      "label": "よかった、Vて／いいな、Vて"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-verbo-prima-del-nome-8",
-      "label": "verbo prima del nome"
+      "entry_id": "grammar-ch-b10-koto-vs-mono",
+      "label": "こと vs もの"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-radice-verbale-9",
-      "label": "radice verbale + 降りる／出す"
+      "entry_id": "grammar-ch-ad-hoc-nanka",
+      "label": "Nなんか"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-spostato-in-fondo-10",
-      "label": "て spostato in fondo"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-ch-b10-zaruonai-11",
-      "label": "ざるを得ない"
+      "entry_id": "grammar-ch-ad-hoc-ari-nashi-labels",
+      "label": "Nあり／Nなし"
     }
   ]
 }

@@ -17,7 +17,7 @@ summary: >-
 
 Il Book 8 alza il registro. I personaggi non parlano solo tra compagni:
 entrano citta', corte, sudditi, oggetti da presentare e forme cortesi. Per
-questo parole come [{{女王|じょうおう}}](term:term-ch-b8-joou),
+questo parole come [{{女王|じょおう}}](term:term-ch-b8-joou),
 [{{民|たみ}}](term:term-ch-b8-tami), [{{拝見|はいけん}}](term:term-ch-b8-haiken),
 [{{献上|けんじょう}}](term:term-ch-b8-kenjou) e
 [{{差|さ}}し{{上|あ}}げる](term:term-ch-b8-sashiageru) pesano molto nella lettura.
@@ -31,7 +31,7 @@ capire tono, cerimonia e politezza.
 - [{{行|い}}ってらっしゃい](term:term-ch-b8-itterasshai) — formula detta a chi esce e tornera'
 - [〜{{番|ばん}}](term:term-ch-b8-ban-counter) — numero / posizione
 - [よし](term:term-ch-b8-yoshi) — bene, ok, ci siamo
-- [{{女王|じょうおう}}](term:term-ch-b8-joou) — regina
+- [{{女王|じょおう}}](term:term-ch-b8-joou) — regina
 - [{{拝見|はいけん}}](term:term-ch-b8-haiken) — vedere con umilta'
 - [{{民|たみ}}](term:term-ch-b8-tami) — popolo, sudditi
 - [{{我|われ}}ら](term:term-ch-b8-warera) — noi, in registro solenne
@@ -43,7 +43,7 @@ capire tono, cerimonia e politezza.
 - [{{献上|けんじょう}}](term:term-ch-b8-kenjou) — offerta a un superiore
 - [{{差|さ}}し{{上|あ}}げる](term:term-ch-b8-sashiageru) — dare con umilta'
 - [{{一体|いったい}}](term:term-ch-b8-ittai) — mai, in assoluto; rafforza domande
-- [{{何者|なにもの}}](term:term-ch-b8-nanimono) — chi / che razza di persona
+- [{{何者|なにもの}}](term:term-nanimono) — chi / che razza di persona
 
 ## Pattern grammaticali chiave
 
@@ -86,14 +86,14 @@ translation_it: >-
 
 ## 2. La regina e il popolo
 
-[{{女王|じょうおう}}](term:term-ch-b8-joou) porta il discorso in una cornice
+[{{女王|じょおう}}](term:term-ch-b8-joou) porta il discorso in una cornice
 pubblica. Con lei compaiono [{{民|たみ}}](term:term-ch-b8-tami), "popolo /
 sudditi", e [{{我|われ}}ら](term:term-ch-b8-warera), un "noi" piu' solenne di
 {{私|わたし}}たち.
 
 :::example_sentence
 jp: >-
-  {{我|われ}}らの{{女王|じょうおう}}が{{来|く}}る。
+  {{我|われ}}らの{{女王|じょおう}}が{{来|く}}る。
 translation_it: >-
   Arriva la nostra regina.
 :::
@@ -101,14 +101,14 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{我|われ}}らの` -> **Possesso solenne**: nostro.
-*   `{{女王|じょうおう}}が` -> **Figura messa a fuoco**.
+*   `{{女王|じょおう}}が` -> **Figura messa a fuoco**.
 *   `{{来|く}}る` -> **Movimento verso la scena**.
 
 [{{万歳|ばんざい}}](term:term-ch-b8-banzai) e' il grido pubblico:
 
 :::example_sentence
 jp: >-
-  {{女王|じょうおう}}{{万歳|ばんざい}}！
+  {{女王|じょおう}}{{万歳|ばんざい}}！
 translation_it: >-
   Lunga vita alla regina!
 :::
@@ -119,7 +119,7 @@ presenti.
 
 :::example_sentence
 jp: >-
-  {{皆々様|みなみなさま}}、{{女王|じょうおう}}{{万歳|ばんざい}}。
+  {{皆々様|みなみなさま}}、{{女王|じょおう}}{{万歳|ばんざい}}。
 translation_it: >-
   Signore e signori, lunga vita alla regina.
 :::
@@ -131,14 +131,14 @@ Quando il parlante si abbassa davanti a qualcuno di status alto, entra
 
 :::example_sentence
 jp: >-
-  {{女王|じょうおう}}のお{{姿|すがた}}を{{拝見|はいけん}}します。
+  {{女王|じょおう}}のお{{姿|すがた}}を{{拝見|はいけん}}します。
 translation_it: >-
   Vedro' la figura della regina.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `{{女王|じょうおう}}のお{{姿|すがた}}を` -> **Cio' che viene visto con rispetto**.
+*   `{{女王|じょおう}}のお{{姿|すがた}}を` -> **Cio' che viene visto con rispetto**.
 *   `{{拝見|はいけん}}します` -> **Verbo umile in forma cortese**.
 
 La stessa logica vale per [{{差|さ}}し{{上|あ}}げる](term:term-ch-b8-sashiageru),
@@ -147,14 +147,14 @@ formale verso l'alto.
 
 :::example_sentence
 jp: >-
-  {{女王|じょうおう}}に{{時計|とけい}}を{{献上|けんじょう}}する。
+  {{女王|じょおう}}に{{時計|とけい}}を{{献上|けんじょう}}する。
 translation_it: >-
   Offro l'orologio alla regina.
 :::
 
 :::example_sentence
 jp: >-
-  {{女王|じょうおう}}に{{本|ほん}}を{{差|さ}}し{{上|あ}}げる。
+  {{女王|じょおう}}に{{本|ほん}}を{{差|さ}}し{{上|あ}}げる。
 translation_it: >-
   Offro un libro alla regina.
 :::
@@ -259,14 +259,14 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{我|われ}}らの{{女王|じょうおう}}に{{時計台|とけいだい}}を{{献上|けんじょう}}します。
+  {{我|われ}}らの{{女王|じょおう}}に{{時計台|とけいだい}}を{{献上|けんじょう}}します。
 translation_it: >-
   Offriamo la torre dell'orologio alla nostra regina.
 :::
 
 :::example_sentence
 jp: >-
-  {{準備|じゅんび}}{{万端|ばんたん}}です。{{女王|じょうおう}}{{万歳|ばんざい}}！
+  {{準備|じゅんび}}{{万端|ばんたん}}です。{{女王|じょおう}}{{万歳|ばんざい}}！
 translation_it: >-
   I preparativi sono perfetti. Lunga vita alla regina!
 :::

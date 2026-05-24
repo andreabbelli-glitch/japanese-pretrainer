@@ -248,7 +248,7 @@ entry_id: term-ch-b9-jikijiki
 card_type: recognition
 front: '{{直々|じきじき}}'
 back: 'じきじき — di persona; direttamente'
-example_jp: '{{女王|じょうおう}}が{{直々|じきじき}}に{{来|く}}る。'
+example_jp: '{{女王|じょおう}}が{{直々|じきじき}}に{{来|く}}る。'
 example_it: La regina viene di persona.
 notes_it: >-
   Sottolinea che interviene proprio quella persona.

@@ -106,7 +106,7 @@ subordinato: arriva proprio la persona importante.
 
 :::example_sentence
 jp: >-
-  {{女王|じょうおう}}が{{直々|じきじき}}に{{来|く}}る。
+  {{女王|じょおう}}が{{直々|じきじき}}に{{来|く}}る。
 translation_it: >-
   La regina viene di persona.
 :::
@@ -178,7 +178,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{女王|じょうおう}}が{{直々|じきじき}}に{{手|て}}を{{下|くだ}}す。
+  {{女王|じょおう}}が{{直々|じきじき}}に{{手|て}}を{{下|くだ}}す。
 translation_it: >-
   La regina interviene direttamente di persona.
 :::

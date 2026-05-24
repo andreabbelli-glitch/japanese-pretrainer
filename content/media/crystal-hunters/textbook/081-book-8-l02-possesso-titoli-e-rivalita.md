@@ -114,14 +114,14 @@ solo se qualcuno lo riconosce.
 
 :::example_sentence
 jp: >-
-  {{女王|じょうおう}}が{{最強|さいきょう}}の{{称号|しょうごう}}を{{認|みと}}める。
+  {{女王|じょおう}}が{{最強|さいきょう}}の{{称号|しょうごう}}を{{認|みと}}める。
 translation_it: >-
   La regina riconosce il titolo di piu' forte.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `{{女王|じょうおう}}が` -> **Autorita' che riconosce**.
+*   `{{女王|じょおう}}が` -> **Autorita' che riconosce**.
 *   `{{最強|さいきょう}}の{{称号|しょうごう}}を` -> **Titolo riconosciuto**.
 *   `{{認|みと}}める` -> **Atto di approvazione**.
 
@@ -150,7 +150,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{女王|じょうおう}}の{{前|まえ}}で{{名乗|なの}}りを{{上|あ}}げる。
+  {{女王|じょおう}}の{{前|まえ}}で{{名乗|なの}}りを{{上|あ}}げる。
 translation_it: >-
   Dichiaro il mio nome davanti alla regina.
 :::

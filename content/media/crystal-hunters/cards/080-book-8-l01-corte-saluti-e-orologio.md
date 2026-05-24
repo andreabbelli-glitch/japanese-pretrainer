@@ -50,12 +50,12 @@ level_hint: n5
 :::term
 id: term-ch-b8-joou
 lemma: 女王
-reading: じょうおう
+reading: じょおう
 romaji: joou
 meaning_it: regina
 pos: noun
 notes_it: >-
-  {{女王|じょうおう}} e' la regina. Nel Book 8 porta con se' registro pubblico,
+  {{女王|じょおう}} e' la regina. Nel Book 8 porta con se' registro pubblico,
   corte, sudditi e formule piu' solenni.
 level_hint: n3
 :::
@@ -133,7 +133,7 @@ romaji: banzai
 meaning_it: evviva; lunga vita
 pos: interjection
 notes_it: >-
-  {{万歳|ばんざい}} e' un grido celebrativo. Con {{女王|じょうおう}}, puo' rendere
+  {{万歳|ばんざい}} e' un grido celebrativo. Con {{女王|じょおう}}, puo' rendere
   "lunga vita alla regina".
 level_hint: n2
 :::
@@ -200,19 +200,6 @@ pos: adverb
 notes_it: >-
   {{一体|いったい}} rafforza una domanda: {{一体|いったい}}{{何者|なにもの}}だ significa
   "chi diavolo sei?" o "chi sei mai?".
-level_hint: n3
-:::
-
-:::term
-id: term-ch-b8-nanimono
-lemma: 何者
-reading: なにもの
-romaji: nanimono
-meaning_it: chi; che razza di persona
-pos: noun
-notes_it: >-
-  {{何者|なにもの}} chiede l'identita' o la natura di qualcuno. Con
-  {{一体|いったい}} diventa piu' forte e sospettoso.
 level_hint: n3
 :::
 
@@ -300,12 +287,12 @@ lesson_id: lesson-crystal-hunters-book-8-l01-corte-saluti-e-orologio
 entry_type: term
 entry_id: term-ch-b8-joou
 card_type: recognition
-front: '{{女王|じょうおう}}'
-back: 'じょうおう — regina'
-example_jp: '{{女王|じょうおう}}が{{来|く}}る。'
+front: '{{女王|じょおう}}'
+back: 'じょおう — regina'
+example_jp: '{{女王|じょおう}}が{{来|く}}る。'
 example_it: Arriva la regina.
 notes_it: >-
-  Con {{女王|じょうおう}} entrano spesso onorifici, discorsi pubblici e parole da
+  Con {{女王|じょおう}} entrano spesso onorifici, discorsi pubblici e parole da
   corte.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
@@ -318,7 +305,7 @@ entry_id: term-ch-b8-haiken
 card_type: recognition
 front: '{{拝見|はいけん}}'
 back: 'はいけん — vedere; guardare con umilta'''
-example_jp: '{{女王|じょうおう}}のお{{姿|すがた}}を{{拝見|はいけん}}します。'
+example_jp: '{{女王|じょおう}}のお{{姿|すがた}}を{{拝見|はいけん}}します。'
 example_it: Vedro' la figura della regina.
 notes_it: >-
   Il verbo e' umile: il parlante mostra rispetto abbassando se stesso.
@@ -333,7 +320,7 @@ entry_id: term-ch-b8-tami
 card_type: recognition
 front: '{{民|たみ}}'
 back: 'たみ — popolo; sudditi'
-example_jp: '{{民|たみ}}が{{女王|じょうおう}}を{{待|ま}}つ。'
+example_jp: '{{民|たみ}}が{{女王|じょおう}}を{{待|ま}}つ。'
 example_it: Il popolo aspetta la regina.
 notes_it: >-
   Non e' "persona" generica: guarda una comunita' rispetto a chi governa.
@@ -363,7 +350,7 @@ entry_id: term-ch-b8-minamina-sama
 card_type: recognition
 front: '{{皆々様|みなみなさま}}'
 back: 'みなみなさま — tutti voi; signore e signori'
-example_jp: '{{皆々様|みなみなさま}}、{{女王|じょうおう}}{{万歳|ばんざい}}。'
+example_jp: '{{皆々様|みなみなさま}}、{{女王|じょおう}}{{万歳|ばんざい}}。'
 example_it: Signore e signori, lunga vita alla regina.
 notes_it: >-
   E' un modo cerimoniale di rivolgersi a tutti i presenti.
@@ -393,7 +380,7 @@ entry_id: term-ch-b8-banzai
 card_type: recognition
 front: '{{万歳|ばんざい}}'
 back: 'ばんざい — evviva; lunga vita'
-example_jp: '{{女王|じょうおう}}{{万歳|ばんざい}}！'
+example_jp: '{{女王|じょおう}}{{万歳|ばんざい}}！'
 example_it: Lunga vita alla regina!
 notes_it: >-
   E' un grido celebrativo. Il tono dipende da chi lo urla e da quanto e'
@@ -440,7 +427,7 @@ entry_id: term-ch-b8-kenjou
 card_type: recognition
 front: '{{献上|けんじょう}}'
 back: 'けんじょう — offerta a un superiore'
-example_jp: '{{女王|じょうおう}}に{{時計|とけい}}を{{献上|けんじょう}}する。'
+example_jp: '{{女王|じょおう}}に{{時計|とけい}}を{{献上|けんじょう}}する。'
 example_it: Offro l'orologio alla regina.
 notes_it: >-
   E' una parola formale: l'oggetto viene presentato verso l'alto, a qualcuno di
@@ -456,7 +443,7 @@ entry_id: term-ch-b8-sashiageru
 card_type: recognition
 front: '{{差|さ}}し{{上|あ}}げる'
 back: 'さしあげる — dare; offrire con umilta'''
-example_jp: '{{女王|じょうおう}}に{{本|ほん}}を{{差|さ}}し{{上|あ}}げる。'
+example_jp: '{{女王|じょおう}}に{{本|ほん}}を{{差|さ}}し{{上|あ}}げる。'
 example_it: Offro un libro alla regina.
 notes_it: >-
   E' la versione umile di あげる: il destinatario sta piu' in alto nel rapporto.
@@ -475,21 +462,6 @@ example_jp: '{{一体|いったい}}{{何者|なにもの}}だ？'
 example_it: Chi diavolo sei?
 notes_it: >-
   Rafforza la domanda. Non e' il "corpo" 一体, ma un avverbio interrogativo.
-tags: [crystal-hunters, book-8, lesson-01]
-:::
-
-:::card
-id: card-crystal-hunters-book-8-l01-nanimono-recognition
-lesson_id: lesson-crystal-hunters-book-8-l01-corte-saluti-e-orologio
-entry_type: term
-entry_id: term-ch-b8-nanimono
-card_type: recognition
-front: '{{何者|なにもの}}'
-back: 'なにもの — chi; che razza di persona'
-example_jp: 'お{{前|まえ}}は{{何者|なにもの}}だ？'
-example_it: Chi sei tu?
-notes_it: >-
-  Chiede identita' o natura di qualcuno, spesso con sospetto.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
 

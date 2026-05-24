@@ -78,14 +78,14 @@ suona costrizione o permesso. Con un godan come {{働|はたら}}く ottieni
 
 :::example_sentence
 jp: >-
-  {{女王|じょうおう}}が{{奴隷|どれい}}たちを{{働|はたら}}かせる。
+  {{女王|じょおう}}が{{奴隷|どれい}}たちを{{働|はたら}}かせる。
 translation_it: >-
   La regina fa lavorare gli schiavi.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `{{女王|じょうおう}}が` ➔ **Chi esercita potere**.
+*   `{{女王|じょおう}}が` ➔ **Chi esercita potere**.
 *   `{{奴隷|どれい}}たちを` ➔ **Chi viene fatto agire**.
 *   `{{働|はたら}}かせる` ➔ **Azione imposta**: far lavorare.
 
@@ -221,7 +221,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{女王|じょうおう}}が{{奴隷|どれい}}たちを{{働|はたら}}かせる。
+  {{女王|じょおう}}が{{奴隷|どれい}}たちを{{働|はたら}}かせる。
 translation_it: >-
   La regina fa lavorare gli schiavi.
 :::
