@@ -143,22 +143,25 @@ Workflow pronunce:
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
-./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --entry term-cost
+./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --entry term-cost
 ./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
 ```
 
 `pronunciations:resolve` e il percorso operativo standard: seleziona i target
 da review, prossima lesson o pagina textbook, filtra le entry gia coperte,
-prova il riuso cross-media e manda a Forvo manuale solo il residuo. Aggiorna
-anche lo storico
+prova il riuso cross-media e manda il residuo al fetch Forvo Anki-style
+(sessione browser valida, player `Play(...)`, ranking speaker, download diretto,
+conversione OGG -> MP3). Aggiorna anche lo storico
 `data/forvo-requested-word-add.json`, marcando come `resolved` le entry per cui
 e' stato trovato un audio. `pronunciations:forvo` resta il comando low-level
-per batch mirati o debug del solo fallback manuale.
+per target espliciti del fetcher, debug e fallback manuale estremo.
 
-Il fallback Forvo manuale richiede un TTY interattivo: in Codex va lanciato con
-`tty: true`, cosi il comando espone anche `http://127.0.0.1:3210/skip`. Gli
-skip aprono sempre la richiesta `word-add/...` precompilata e la registrano in
-`data/forvo-requested-word-add.json`.
+Se Forvo non espone una pronuncia, il workflow deve aprire la richiesta
+`word-add/...` precompilata e registrarla in
+`data/forvo-requested-word-add.json` / `data/forvo-known-missing.json`. Il
+download manuale dal browser normale e' solo extrema ratio per casi singoli in
+cui la logica Anki-style o l'import diretto falliscono; non e' il percorso
+standard e non va usato per batch ordinari.
 
 Quando una richiesta storica e' stata soddisfatta su Forvo, importa l'indice
 audio estratto dalla pagina account autenticata con

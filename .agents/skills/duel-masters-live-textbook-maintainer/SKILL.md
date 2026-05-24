@@ -416,8 +416,12 @@ Practical card-selection rules:
   same touched entries before finishing:
   `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media duel-masters-dm25 --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]`
 - A new card entry is not complete until it has local audio in Markdown or
-  `pronunciations.json`, or until the Forvo manual flow has opened and recorded
-  a `word-add` request because no pronunciation exists yet.
+  `pronunciations.json`, or until the Forvo workflow has opened and recorded a
+  `word-add` request because no pronunciation exists yet. Forvo audio must be
+  attempted through the Anki/addon-style flow first: valid browser session,
+  `Play(...)` candidates, speaker ranking, direct audio download, and OGG -> MP3
+  conversion when needed. Manual download is only an extreme fallback for a
+  specific blocked item.
 - After adding or revising cards, regenerate
   `content/media/duel-masters-dm25/workflow/pronunciation-pending.json`
   with:

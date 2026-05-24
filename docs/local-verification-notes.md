@@ -122,7 +122,8 @@ non sostituisce un audit completo e aggiornato del codice.
   seleziona i target attesi, esclude le entry gia coperte e non propone Forvo
   per voci gia marcate come `known missing`.
 - Aggiungendo `--retry-known-missing` allo stesso comando, quelle entry
-  tornano eleggibili per il passaggio manuale Forvo.
+  tornano eleggibili per il fetch Forvo Anki-style o, se ancora assenti su Forvo,
+  per la richiesta `word-add` registrata.
 - Dopo una run reale che trova audio, `data/forvo-requested-word-add.json`
   mantiene lo storico delle richieste ma marca come `resolved` le entry ormai
   coperte.

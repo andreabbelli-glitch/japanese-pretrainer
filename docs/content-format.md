@@ -802,9 +802,14 @@ Regole audio:
 - i campi audio restano strutturalmente opzionali per compatibilita con contenuti
   legacy, entry non ancora review-backed e manifest costruiti per step;
 - per ogni entry collegata a una nuova card o card revisionata, pero, il
-  workflow editoriale deve sempre provare a risolvere la pronuncia: prima audio
-  locale/riuso cross-media, poi Forvo; se Forvo non ha la parola, deve aprire la
-  richiesta `word-add` e registrarla nello storico richieste;
+  workflow editoriale deve sempre risolvere la pronuncia: prima audio locale o
+  riuso cross-media; poi fetch Forvo Anki-style con sessione browser valida,
+  candidati `Play(...)`, ranking speaker e conversione OGG -> MP3; se Forvo non
+  espone la pronuncia, deve aprire la richiesta `word-add` e registrarla nello
+  storico richieste;
+- il download manuale Forvo non e un'alternativa normale per una nuova card: e'
+  ammesso solo come fallback estremo quando il fetch Anki-style o l'import diretto
+  falliscono su un caso specifico;
 - se presente, `audio_src` deve puntare a un file locale sotto `assets/`;
 - sono ammessi `mp3`, `ogg`, `wav`, `m4a`;
 - `audio_source`, `audio_speaker`, `audio_license`, `audio_attribution` e

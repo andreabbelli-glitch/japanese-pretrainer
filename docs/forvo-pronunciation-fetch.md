@@ -1,25 +1,28 @@
 # Pronunce da Forvo
 
-Lo script `pnpm pronunciations:forvo` scarica pronunce MP3 da Forvo e le
-inserisce nel bundle locale. Nel flusso operativo standard usa `--manual` nel
-browser normale; il percorso browser dedicato resta per debug o manutenzione
-del fetcher.
+Lo script `pnpm pronunciations:forvo` e il layer low-level per recuperare
+pronunce da Forvo e inserirle nel bundle locale. Il percorso operativo standard
+non e il download manuale dal browser: replica la logica dell'addon Anki Forvo,
+legge la pagina Forvo in una sessione browser valida, estrae i candidati audio
+dal player `Play(...)`, scarica l'audio diretto e converte OGG -> MP3 quando
+serve.
 
-La modalita manuale richiede un TTY interattivo. In Codex il comando va avviato
-con `tty: true`, altrimenti viene rifiutato prima di aprire Forvo: senza TTY non
-puo esporre in modo affidabile il controllo browser `/skip`.
+Il download manuale dal browser normale e' solo un fallback estremo per casi
+singoli in cui la logica Anki-style o l'import diretto falliscono pur avendo una
+pronuncia visibile su Forvo. Non usarlo come normale alternativa e non usarlo per
+batch reali.
 
 Per richieste operative ad alto livello come `review`, `next-lesson` o
 `lesson-url`, l'entry point standard e ora
 `pnpm pronunciations:resolve`. `pnpm pronunciations:forvo` resta il comando
-low-level per batch espliciti di fallback manuale e debug.
+low-level per target espliciti del fetcher, debug e fallback manuale estremo.
 
 ## Ruolo nel workflow
 
-Forvo manuale e' l'unico recupero esterno effettivo delle pronunce audio. Prima
-di aprire Forvo il workflow deve comunque filtrare gli audio gia locali e
-riusare eventuali audio compatibili presenti in altri media. La source of truth
-del processo completo e' `docs/pronunciation-workflow.md`.
+Il fetch Forvo Anki-style e' l'unico recupero esterno standard delle pronunce
+audio. Prima di aprire Forvo il workflow deve comunque filtrare gli audio gia
+locali e riusare eventuali audio compatibili presenti in altri media. La source
+of truth del processo completo e' `docs/pronunciation-workflow.md`.
 
 Quando un workflow editoriale crea o revisiona flashcard, questo passaggio non e
 opzionale: ogni entry toccata deve ottenere audio locale oppure una richiesta
@@ -29,7 +32,7 @@ Forvo `word-add` registrata se la pronuncia non esiste ancora.
 
 - hai gia lasciato che il workflow filtrasse gli audio locali e riusasse gli
   audio compatibili presenti in altri media;
-- hai un account Forvo e puoi scaricare manualmente gli MP3 dal browser;
+- hai una sessione Forvo valida nel browser/profilo usato dal fetcher;
 - vuoi passare una lista mirata di parole o entry invece di processare tutto il
   bundle.
 
@@ -41,11 +44,18 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 - legge `content/` con lo stesso parser/validator dell'import;
 - prima di aprire Forvo prova automaticamente a riusare audio gia presenti in
   altri media con stessa entry type, stesso label e stessa reading;
-- nel flusso operativo standard apre l'URL Forvo nel browser normale e osserva
-  il download locale del file scelto;
-- quando marchi una entry come missing (`s` o `/skip`), apre anche l'URL
+- nel flusso operativo standard apre la pagina Forvo in una sessione browser
+  valida e attende l'HTML renderizzato;
+- estrae i candidati giapponesi dal player `Play(...)`, inclusi speaker, origine,
+  voti e URL audio diretti;
+- sceglie il candidato privilegiando gli speaker configurati, oggi
+  `strawberrybrown` e poi `mezashi`, quindi voti/origine/ordine Forvo;
+- scarica l'audio diretto, usa il fallback OGG quando l'MP3 diretto non e'
+  disponibile e converte OGG -> MP3 prima di salvare l'asset;
+- quando il fetcher classifica una entry come miss, apre anche l'URL
   `word-add/...` nel browser normale per chiedere la pronuncia e registra la
-  richiesta in `data/forvo-requested-word-add.json`;
+  richiesta in `data/forvo-requested-word-add.json` /
+  `data/forvo-known-missing.json`;
 - il registry `data/forvo-requested-word-add.json` e' storico: quando una entry
   ottiene poi un audio locale, il workflow la marca automaticamente come
   `resolved` nello stesso file, senza rimuovere la traccia della richiesta;
@@ -58,12 +68,10 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 - quando il label contiene varianti separate da slash ASCII (`/`), l'URL
   `word-add` lo normalizza in `・` per evitare che Forvo prenda solo la prima
   meta' della stringa;
-- il profilo browser dedicato in `data/forvo-profile/` resta disponibile per il
-  percorso Playwright di debug o manutenzione del fetcher;
+- il profilo browser dedicato in `data/forvo-profile/` resta disponibile per
+  mantenere cookie/login del fetcher;
 - se Cloudflare o il login richiedono intervento, ti lascia completare la
   pagina nel browser e poi riprende il batch;
-- per ogni parola sceglie il candidato con ranking migliore, privilegiando:
-  speaker dal Giappone, voto migliore e risultato piu alto nella lista;
 - salva l'audio in `content/media/<slug>/assets/audio/...`;
 - aggiorna `content/media/<slug>/pronunciations.json` con `audio_source: "forvo"`.
 - aggiorna anche `content/media/<slug>/workflow/pronunciation-pending.json`
@@ -75,27 +83,21 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
-./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --dry-run
-./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media gundam-arsenal-base --word 専用機 --word 戦艦
-./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --entry term-cost
-./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --words-file tmp/forvo-list.tsv
+./scripts/with-node.sh pnpm pronunciations:forvo -- --media gundam-arsenal-base --word 専用機 --word 戦艦
+./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --entry term-cost
+./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --words-file tmp/forvo-list.tsv
 ./scripts/with-node.sh pnpm pronunciations:forvo:request
 ./scripts/with-node.sh pnpm pronunciations:forvo:request -- --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
 ```
 
-## Modalita manuale consigliata
+## Miss e richiesta word-add
 
-Per i batch reali usa sempre `--manual`:
+Quando Forvo non espone una pronuncia giapponese per la parola/frase:
 
-- il comando apre l'URL Forvo nel browser normale;
-- tu scarichi il file migliore dal tuo account;
-- il comando osserva `~/Downloads`, prende l'ultimo audio nuovo e lo importa nel
-  bundle corretto;
-- se la parola non esiste su Forvo, puoi digitare `s` e premere Enter per
-  marcarla come missing e saltarla nelle run future;
-- subito dopo lo skip apre anche la pagina `word-add/...` della stessa entry,
+- il workflow registra il miss in `data/forvo-known-missing.json`;
+- apre anche la pagina `word-add/...` della stessa entry,
   cosi puoi chiedere la pronuncia dal browser normale senza cercarla a mano;
 - se hai installato lo userscript locale
   `scripts/forvo-word-add-helper.user.js`, la pagina `word-add` seleziona in
@@ -105,18 +107,13 @@ Per i batch reali usa sempre `--manual`:
   debba portare in primo piano la tab;
 - se Forvo mostra che la voce e' gia definita in `Japanese [ja]`, lo script non
   forza il submit e segnala `Already in Japanese`.
-- mentre aspetta espone anche un URL locale, di default
-  `http://127.0.0.1:3210/skip`, che puoi richiamare da browser per saltare senza
-  tornare al terminale.
-- il prefill `word-add` e obbligatorio: gli skip devono sempre aprire la
+- il prefill `word-add` e obbligatorio: i miss devono sempre aprire la
   richiesta gia precompilata e registrarla nello storico.
 
 Opzioni utili:
 
-- `--downloads-dir /path`: cartella download diversa;
-- `--control-port 3210`: porta del comando locale `/skip`;
 - `--no-open`: non apre automaticamente l'URL nel browser;
-- `--known-missing-file /path`: file JSON dove salvare gli skip persistenti;
+- `--known-missing-file /path`: file JSON dove salvare i miss persistenti;
 - `--request-registry-file /path`: file JSON dove salvare le richieste
   `word-add` gia aperte;
 - `--retry-known-missing`: riprova anche le voci gia marcate come missing; vale
@@ -124,6 +121,16 @@ Opzioni utili:
 
 Il vecchio flag `--no-open-word-add-on-skip` non e piu un flusso valido: se
 viene passato, il comando fallisce invece di saltare il prefill della richiesta.
+
+## Fallback manuale estremo
+
+Usa il download manuale solo quando un caso specifico resta bloccato dopo il
+fetch Anki-style o l'import diretto, ma Forvo mostra una pronuncia utile. Il
+fallback manuale puo osservare `~/Downloads` e importare il file scelto, ma non e
+un percorso standard e non va proposto per batch ordinari. Nel riepilogo indica
+sempre perche e' stato necessario. Opzioni come `--downloads-dir` e
+`--control-port` appartengono a questo fallback o a debug locali, non al flusso
+standard.
 
 ## Import richieste Forvo gia soddisfatte
 
@@ -203,17 +210,19 @@ term-taberu
 ## Note operative
 
 - `pnpm pronunciations:resolve` e il percorso standard per richieste orientate
-  al prodotto; `pnpm pronunciations:forvo` resta il low-level manuale;
-- default: browser headed, perche Forvo passa da Cloudflare e sessione login;
-- `--headless` esiste ma non e consigliato per il flusso reale;
-- `--manual` e la modalita operativa standard per questo repo; usa il browser Playwright solo per debug mirato o manutenzione del fetcher;
-- `--manual` richiede stdin/stdout TTY; in Codex usare `exec_command` con
-  `tty: true` e verificare che l'output mostri `browser skip URL:`;
+  al prodotto; `pnpm pronunciations:forvo` resta il low-level per target espliciti
+  del fetcher;
+- il fetch Forvo standard deve usare una sessione browser valida e candidati
+  estratti da `Play(...)`, non `curl` o scraping HTTP puro;
+- Playwright/browser automation non e il percorso standard per batch reali; puo
+  restare solo come debug mirato o manutenzione del fetcher;
+- `--manual` non e la modalita operativa standard: usala solo come fallback
+  estremo per un caso specifico;
 - se una voce esiste gia in un altro media compatibile, il comando deve
   collegarla e non proportela su Forvo;
 - nessun batch implicito: `--limit` va passato solo quando l'utente chiede
   esplicitamente un numero massimo o uno smoke test;
-- gli skip persistenti finiscono di default in `data/forvo-known-missing.json`;
+- i miss persistenti finiscono di default in `data/forvo-known-missing.json`;
 - le richieste `word-add` gia aperte finiscono di default in
   `data/forvo-requested-word-add.json`; le entry risolte restano nello storico
   ma vengono annotate con `resolvedAt` e metadata dell'audio trovato;
@@ -224,7 +233,7 @@ term-taberu
   `content/media/<slug>/workflow/pronunciation-pending.json`;
 - `--refresh` forza il rimpiazzo anche se l'entry ha gia audio locale;
 - `--profile-dir` permette di isolare un profilo browser diverso;
-- `--keep-browser-open` lascia Chrome aperto a fine batch per debug.
+- `--keep-browser-open` lascia il browser aperto a fine batch per debug.
 
 ## Esperimento Anki addon 1784714388
 
@@ -315,11 +324,11 @@ serve solo a rendere piu stabile la richiesta `word-add`; il fetch Anki-style no
 deve dipendere da Tampermonkey.
 
 Il formato OGG non rompe la validazione del repo: `.ogg` e `.oga` sono asset
-audio supportati e vengono serviti come `audio/ogg`. Il compromesso operativo e'
-di ranking: a parita' di speaker preferito/voti e' meglio MP3 per compatibilita'
-browser piu ampia; se pero' lo speaker preferito esiste solo in OGG, il workflow
-puo accettarlo. Browser moderni recenti supportano OGG/Vorbis meglio che in
-passato, ma MP3 resta il formato meno rischioso.
+audio supportati e vengono serviti come `audio/ogg`. Operativamente pero il
+fetcher deve normalizzare a MP3 quando possibile: se lo speaker migliore esiste
+solo in OGG, scarica quell'audio e convertilo automaticamente in MP3 prima di
+salvarlo nel bundle. MP3 resta il formato meno rischioso per compatibilita e per
+coerenza degli asset nuovi.
 
 ## Batch one-shot per il backlog known missing
 

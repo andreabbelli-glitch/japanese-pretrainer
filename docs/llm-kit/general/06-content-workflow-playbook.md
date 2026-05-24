@@ -262,14 +262,19 @@ Regole pratiche:
 
 - non chiedere all'LLM di inventare file audio o metadata di provenance;
 - non chiedere all'LLM di popolare `audio_src` se l'asset non esiste davvero;
-- dopo il batch editoriale, usa il workflow locale di pronunce per cercare
-  audio mancanti;
+- dopo il batch editoriale, ogni nuova card o card revisionata deve passare dal
+  workflow locale di pronunce: audio locale/riuso cross-media, poi fetch Forvo
+  Anki-style con sessione browser valida, candidati `Play(...)`, ranking speaker
+  e conversione OGG -> MP3; se Forvo non espone pronuncia, apri e registra la
+  richiesta `word-add`;
+- il download manuale Forvo e solo fallback estremo per casi singoli in cui il
+  fetch Anki-style o l'import diretto falliscono, non un percorso standard;
 - se il batch crea o rivede flashcard, cerca anche il pitch accent solo per le
   entry appena create o aggiornate con
   `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --entry <new-term-or-grammar-id>`;
 - passa piu `--entry` per piu card nuove; usa `--word` o `--words-file` solo
   se non hai una lista affidabile di ID;
-- usa il workflow Forvo locale solo dopo aver creato asset e metadata reali.
+- salva metadata Forvo solo dopo aver creato asset e provenance reali.
 
 ### 4. Valida localmente prima dell'import
 

@@ -67,7 +67,11 @@ Optional:
 7. Resolve pronunciation audio for every new or revised card entry with:
    `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media web-giapponese --entry <new-term-or-grammar-id>`
    Pass multiple `--entry` flags for multiple new cards. If Forvo has no audio,
-   the manual flow must open and record the `word-add` request.
+   the workflow must open and record the `word-add` request. Forvo audio must be
+   attempted through the Anki/addon-style flow first: valid browser session,
+   `Play(...)` candidates, speaker ranking, direct audio download, and OGG -> MP3
+   conversion when needed. Manual download is only an extreme fallback for a
+   specific blocked item.
 8. Regenerate
    `content/media/web-giapponese/workflow/pronunciation-pending.json` with:
    `./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese`
@@ -255,8 +259,10 @@ media backlog.
 
 Every new or revised card entry must go through pronunciation resolution before
 completion. Finish with local audio in Markdown or `pronunciations.json`; if
-Forvo has no pronunciation yet, the manual flow must open and record the
-`word-add` request instead of leaving the entry silently missing audio.
+Forvo has no pronunciation yet, the workflow must open and record the `word-add`
+request instead of leaving the entry silently missing audio. Forvo audio is
+retrieved through the Anki/addon-style flow, not as a normal manual download; use
+manual import only as an extreme fallback for a specific blocked item.
 
 Keep
 `content/media/web-giapponese/workflow/pronunciation-pending.json`
