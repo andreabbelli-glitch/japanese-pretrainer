@@ -80,7 +80,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{燃|も}}える](term:term-ch-b8-eru-27) è "bruciare / prendere fuoco" dal
+[{{燃|も}}える](term:term-ch-b8-moeru) è "bruciare / prendere fuoco" dal
 punto di vista della cosa che brucia; [{{燃|も}}やす](term:term-ch-moyasu) è
 "bruciare qualcosa" come azione compiuta da qualcuno.
 
