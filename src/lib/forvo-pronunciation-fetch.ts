@@ -1,11 +1,19 @@
 import { createInterface } from "node:readline/promises";
-import { copyFile, mkdir, readdir, stat } from "node:fs/promises";
+import {
+  copyFile,
+  mkdir,
+  mkdtemp,
+  readdir,
+  readFile,
+  rm,
+  stat,
+  writeFile
+} from "node:fs/promises";
 import path from "node:path";
 import { spawn } from "node:child_process";
 import { createServer } from "node:http";
 import type { Socket } from "node:net";
-
-import { chromium, type Download, type Page } from "@playwright/test";
+import { tmpdir } from "node:os";
 
 import type { NormalizedMediaBundle } from "./content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
@@ -18,11 +26,14 @@ import {
 import {
   buildForvoAudioAssetPath,
   buildForvoAttribution,
+  buildForvoSearchQueries,
   buildForvoWordUrls,
   doesManualDownloadMatchEntry,
   resolveRequestedTargets,
   selectBestForvoCandidate,
-  slugifyForvoSegment
+  slugifyForvoSegment,
+  type ForvoAudioCandidate,
+  type ForvoCandidate
 } from "./forvo-pronunciation-helpers.ts";
 import {
   collectPronunciationTargets,
@@ -56,12 +67,17 @@ export {
 } from "./forvo-pronunciation-helpers.ts";
 
 export type ForvoBrowserOptions = {
+  ankiAppPath?: string;
+  ankiBaseDir?: string;
+  ankiRunRoot?: string;
   browserTimeoutMs?: number;
   entryDelayMs?: number;
   headless?: boolean;
   keepBrowserOpen?: boolean;
   knownMissingPath?: string;
-  profileDir: string;
+  openWordAddOnMiss?: boolean;
+  profileDir?: string;
+  requestRegistryPath?: string;
   retryKnownMissing?: boolean;
 };
 
@@ -98,6 +114,61 @@ type ManualForvoCaptureResult =
       status: "skipped_known_missing";
     };
 
+type ForvoAnkiBatchTarget = {
+  entryId: string;
+  entryKind: "grammar" | "term";
+  label: string;
+  mediaSlug: string;
+  queries: string[];
+  reading?: string;
+};
+
+type ForvoAnkiBatchCandidate = ForvoCandidate & {
+  audioCandidates: ForvoAudioCandidate[];
+};
+
+type ForvoAnkiBatchEntryResult = {
+  candidates?: ForvoAnkiBatchCandidate[];
+  entryId: string;
+  entryKind: "grammar" | "term";
+  error?: string;
+  label: string;
+  mediaSlug: string;
+  pageUrl?: string;
+  queries: string[];
+  query?: string;
+  reading?: string;
+  selected?: ForvoAnkiBatchCandidate | null;
+  status:
+    | "downloaded"
+    | "no_queries"
+    | "no_results"
+    | "query_error"
+    | "startup_error";
+};
+
+type ForvoAnkiBatchResult = {
+  language: string;
+  processed: number;
+  results: ForvoAnkiBatchEntryResult[];
+  status: "done" | "error" | "running";
+  total: number;
+};
+
+type ForvoFetchResult =
+  | {
+      entryId: string;
+      kind: "grammar" | "term";
+      speaker?: string;
+      status: "matched";
+      votes?: number;
+    }
+  | {
+      entryId: string;
+      kind: "grammar" | "term";
+      status: "miss" | "skipped_known_missing";
+    };
+
 const skipControlState: {
   currentSkipHandler: null | (() => void);
   pendingSkip: boolean;
@@ -124,6 +195,12 @@ export async function fetchForvoPronunciationsForBundle(input: {
   words?: string[];
   entryIds?: string[];
 }) {
+  if (input.browser.openWordAddOnMiss === false) {
+    throw new Error(
+      "Forvo pronunciation workflow must keep word-add request prefill enabled so missing entries open the prefilled Forvo request tab and are recorded in data/forvo-requested-word-add.json."
+    );
+  }
+
   const preparedRun = await prepareForvoPronunciationRun({
     bundle: input.bundle,
     dryRun: input.dryRun,
@@ -131,12 +208,15 @@ export async function fetchForvoPronunciationsForBundle(input: {
     knownMissingPath: input.browser.knownMissingPath,
     limit: input.limit,
     refresh: input.refresh,
+    requestRegistryPath: input.browser.requestRegistryPath,
     retryKnownMissing: input.browser.retryKnownMissing,
     wordListSource: input.wordListSource,
     words: input.words
   });
   const {
     manifestEntries,
+    knownMissingRegistry,
+    requestRegistry,
     knownMissingSkipped,
     requestedUnresolved,
     runnableTargets
@@ -156,86 +236,174 @@ export async function fetchForvoPronunciationsForBundle(input: {
     };
   }
 
-  const context = await chromium.launchPersistentContext(
-    input.browser.profileDir,
-    {
-      acceptDownloads: true,
-      channel: "chrome",
-      headless: input.browser.headless ?? false
-    }
+  const results: ForvoFetchResult[] = [];
+  const ankiResult = await runForvoAnkiBatch({
+    ankiAppPath: input.browser.ankiAppPath,
+    ankiBaseDir:
+      input.browser.ankiBaseDir ??
+      input.browser.profileDir ??
+      "data/forvo-anki-profile",
+    entryDelayMs: input.browser.entryDelayMs,
+    keepAnkiOpen: input.browser.keepBrowserOpen,
+    runRoot: input.browser.ankiRunRoot,
+    targets: runnableTargets.map(buildForvoAnkiBatchTarget),
+    timeoutMs: input.browser.browserTimeoutMs
+  });
+  const ankiResultByKey = new Map(
+    ankiResult.results.map((result) => [
+      buildEntryKey(result.entryKind, result.entryId),
+      result
+    ])
   );
-  const page = context.pages()[0] ?? (await context.newPage());
-  const results = [];
+  const newlyKnownMissing: ForvoFetchResult[] = [];
 
-  try {
-    for (const [index, entry] of runnableTargets.entries()) {
-      const resolved = await downloadForvoPronunciation({
-        browserTimeoutMs: input.browser.browserTimeoutMs,
-        dryRun: input.dryRun,
-        entry,
-        page
-      });
+  for (const [index, entry] of runnableTargets.entries()) {
+    const batchResult = ankiResultByKey.get(
+      buildEntryKey(entry.kind, entry.id)
+    );
+    const selected = batchResult?.selected ?? null;
 
-      if (!resolved) {
-        results.push({
-          entryId: entry.id,
-          kind: entry.kind,
-          status: "miss"
-        });
-        continue;
-      }
-
-      const entryKey = buildEntryKey(entry.kind, entry.id);
-      manifestEntries.set(
-        entryKey,
-        mergePronunciationAudioManifestEntry({
-          audio: {
-            audioAttribution: resolved.audioAttribution,
-            audioLicense: resolved.audioLicense,
-            audioPageUrl: resolved.audioPageUrl,
-            audioSource: "forvo",
-            audioSpeaker: resolved.audioSpeaker,
-            audioSrc: resolved.audioSrc
-          },
-          entryId: entry.id,
-          entryType: entry.kind,
-          existing: manifestEntries.get(entryKey)
-        })
-      );
-
-      if (!input.dryRun) {
-        await persistManifestEntries(
-          input.bundle.mediaDirectory,
-          manifestEntries
+    if (!selected) {
+      if (
+        !batchResult ||
+        (batchResult.status !== "no_results" &&
+          batchResult.status !== "no_queries")
+      ) {
+        throw new Error(
+          `Anki Forvo helper did not return usable candidates for ${buildEntryKey(entry.kind, entry.id)} (status=${batchResult?.status ?? "missing_result"}).`
         );
       }
 
-      results.push({
+      addForvoKnownMissingEntry(knownMissingRegistry, {
+        entry,
+        mediaSlug: input.bundle.mediaSlug
+      });
+
+      if (!input.dryRun) {
+        await persistForvoKnownMissingRegistry(
+          input.browser.knownMissingPath,
+          knownMissingRegistry
+        );
+        await handleWordAddRequestAfterSkip({
+          entry,
+          mediaSlug: input.bundle.mediaSlug,
+          openWordAddOnSkip: input.browser.openWordAddOnMiss ?? true,
+          requestRegistry,
+          requestRegistryPath: input.browser.requestRegistryPath
+        });
+      }
+
+      const skipped = {
         entryId: entry.id,
         kind: entry.kind,
-        speaker: resolved.audioSpeaker,
-        status: "matched",
-        votes: resolved.votes
-      });
+        status: "skipped_known_missing" as const
+      };
+
+      newlyKnownMissing.push(skipped);
+      results.push(skipped);
 
       if (index < runnableTargets.length - 1) {
         await sleep(input.browser.entryDelayMs ?? 2500);
       }
+
+      continue;
     }
-  } finally {
-    if (!input.browser.keepBrowserOpen) {
-      await context.close();
+
+    const entryKey = buildEntryKey(entry.kind, entry.id);
+    const localAssetPath = buildForvoAudioAssetPath(entry, selected);
+    const pageUrl =
+      selected.pageUrl ??
+      batchResult?.pageUrl ??
+      buildForvoWordUrls(entry)[0] ??
+      "https://forvo.com/";
+
+    if (!input.dryRun) {
+      const absoluteAssetPath = path.join(entry.mediaDirectory, localAssetPath);
+
+      await downloadAndStoreForvoAudio({
+        candidates: selected.audioCandidates,
+        pageUrl,
+        targetPath: absoluteAssetPath
+      });
+    }
+
+    manifestEntries.set(
+      entryKey,
+      mergePronunciationAudioManifestEntry({
+        audio: {
+          audioAttribution: buildForvoAttribution(selected),
+          audioLicense: undefined,
+          audioPageUrl: pageUrl,
+          audioSource: "forvo",
+          audioSpeaker: selected.speaker,
+          audioSrc: localAssetPath
+        },
+        entryId: entry.id,
+        entryType: entry.kind,
+        existing: manifestEntries.get(entryKey)
+      })
+    );
+
+    if (!input.dryRun) {
+      await persistManifestEntries(
+        input.bundle.mediaDirectory,
+        manifestEntries
+      );
+
+      const knownMissingChanged = removeForvoKnownMissingEntry({
+        entry,
+        knownMissingRegistry,
+        mediaSlug: input.bundle.mediaSlug
+      });
+      const requestRegistryChanged = markForvoWordAddRequestResolved({
+        audioSrc: localAssetPath,
+        entry,
+        mediaSlug: input.bundle.mediaSlug,
+        requestRegistry
+      });
+
+      if (knownMissingChanged) {
+        await persistForvoKnownMissingRegistry(
+          input.browser.knownMissingPath,
+          knownMissingRegistry
+        );
+      }
+
+      if (requestRegistryChanged) {
+        await persistForvoWordAddRequestRegistry(
+          input.browser.requestRegistryPath,
+          requestRegistry
+        );
+      }
+    }
+
+    results.push({
+      entryId: entry.id,
+      kind: entry.kind,
+      speaker: selected.speaker,
+      status: "matched",
+      votes: selected.votes
+    });
+
+    if (index < runnableTargets.length - 1) {
+      await sleep(input.browser.entryDelayMs ?? 2500);
     }
   }
 
   return {
     matched: results.filter((result) => result.status === "matched").length,
-    missed: results.filter((result) => result.status === "miss").length,
-    knownMissingSkipped: knownMissingSkipped.map((entry) => ({
-      entryId: entry.id,
-      kind: entry.kind,
-      status: "skipped_known_missing"
-    })),
+    missed: results.filter(
+      (result) =>
+        result.status === "miss" || result.status === "skipped_known_missing"
+    ).length,
+    knownMissingSkipped: [
+      ...knownMissingSkipped.map((entry) => ({
+        entryId: entry.id,
+        kind: entry.kind,
+        status: "skipped_known_missing"
+      })),
+      ...newlyKnownMissing
+    ],
     requestedUnresolved,
     results
   };
@@ -517,7 +685,7 @@ export function assertForvoManualRunCanStart(
 
   if (input.openWordAddOnSkip === false) {
     issues.push(
-      "Manual Forvo mode must keep word-add request prefill enabled so skipped entries open the prefilled Forvo request tab and are recorded in data/forvo-requested-word-add.json. Remove --no-open-word-add-on-skip."
+      "Forvo pronunciation workflow must keep word-add request prefill enabled so missing entries open the prefilled Forvo request tab and are recorded in data/forvo-requested-word-add.json. Remove --no-open-word-add-on-skip."
     );
   }
 
@@ -537,74 +705,350 @@ export function assertForvoManualRunCanStart(
   }
 }
 
-async function downloadForvoPronunciation(input: {
-  browserTimeoutMs?: number;
-  dryRun?: boolean;
-  entry: PronunciationTargetEntry;
-  page: Page;
+function buildForvoAnkiBatchTarget(
+  entry: PronunciationTargetEntry
+): ForvoAnkiBatchTarget {
+  return {
+    entryId: entry.id,
+    entryKind: entry.kind,
+    label: entry.label,
+    mediaSlug: entry.mediaSlug,
+    queries: buildForvoSearchQueries(entry),
+    reading: entry.reading
+  };
+}
+
+async function runForvoAnkiBatch(input: {
+  ankiAppPath?: string;
+  ankiBaseDir: string;
+  entryDelayMs?: number;
+  keepAnkiOpen?: boolean;
+  runRoot?: string;
+  targets: ForvoAnkiBatchTarget[];
+  timeoutMs?: number;
+}): Promise<ForvoAnkiBatchResult> {
+  const ankiAppPath =
+    input.ankiAppPath ?? "/Applications/Anki.app/Contents/MacOS/launcher";
+  const ankiBaseDir = path.resolve(input.ankiBaseDir);
+  const runRoot = path.resolve(
+    input.runRoot ?? path.join("data", "forvo-anki-runs")
+  );
+
+  await mkdir(runRoot, { recursive: true });
+  await installForvoAnkiHelperAddon(ankiBaseDir);
+
+  const runDir = await mkdtemp(path.join(runRoot, "run-"));
+  const targetsPath = path.join(runDir, "targets.json");
+  const resultPath = path.join(runDir, "result.json");
+
+  await writeFile(
+    targetsPath,
+    JSON.stringify({ targets: input.targets }, null, 2),
+    "utf8"
+  );
+
+  const child = spawn(ankiAppPath, [], {
+    env: {
+      ...process.env,
+      ANKI_BASE: ankiBaseDir,
+      JCS_FORVO_ENTRY_DELAY_MS: String(input.entryDelayMs ?? 2500),
+      JCS_FORVO_KEEP_OPEN: input.keepAnkiOpen ? "1" : "0",
+      JCS_FORVO_LANGUAGE: "ja",
+      JCS_FORVO_RESULT_PATH: resultPath,
+      JCS_FORVO_TARGETS_PATH: targetsPath
+    },
+    stdio: ["ignore", "ignore", "pipe"]
+  });
+  let stderr = "";
+
+  child.stderr.on("data", (chunk: Buffer) => {
+    stderr += chunk.toString("utf8");
+  });
+
+  return waitForForvoAnkiResult({
+    child,
+    resultPath,
+    stderr: () => stderr,
+    timeoutMs: input.timeoutMs ?? 120000
+  });
+}
+
+async function installForvoAnkiHelperAddon(ankiBaseDir: string) {
+  const addonDir = path.join(ankiBaseDir, "addons21", "jcs_forvo_batch");
+
+  await mkdir(addonDir, { recursive: true });
+  await writeFile(
+    path.join(addonDir, "__init__.py"),
+    forvoAnkiHelperAddonSource,
+    "utf8"
+  );
+}
+
+async function waitForForvoAnkiResult(input: {
+  child: ReturnType<typeof spawn>;
+  resultPath: string;
+  stderr: () => string;
+  timeoutMs: number;
 }) {
-  const attempts = 2;
+  const startedAt = Date.now();
+  const childExit: {
+    value: { code: number | null; signal: NodeJS.Signals | null } | null;
+  } = {
+    value: null
+  };
 
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    const candidates = await loadForvoCandidatesForEntry({
-      browserTimeoutMs: input.browserTimeoutMs,
-      entry: input.entry,
-      page: input.page
-    });
-    const selected = selectBestForvoCandidate(candidates);
+  input.child.on("exit", (code, signal) => {
+    childExit.value = { code, signal };
+  });
 
-    if (!selected) {
+  while (Date.now() - startedAt < input.timeoutMs) {
+    const result = await readForvoAnkiResult(input.resultPath);
+
+    if (result?.status === "done") {
+      return result;
+    }
+
+    if (result?.status === "error") {
+      throw new Error(
+        `Anki Forvo helper failed: ${JSON.stringify(result.results.at(-1) ?? result)}`
+      );
+    }
+
+    if (childExit.value && !result) {
+      throw new Error(
+        `Anki exited before producing a Forvo result (code=${childExit.value.code ?? "null"} signal=${childExit.value.signal ?? "null"}). ${input.stderr()}`
+      );
+    }
+
+    await sleep(500);
+  }
+
+  input.child.kill();
+  throw new Error(
+    `Timed out waiting for Anki Forvo helper after ${input.timeoutMs} ms. ${input.stderr()}`
+  );
+}
+
+async function readForvoAnkiResult(resultPath: string) {
+  try {
+    const parsed = JSON.parse(await readFile(resultPath, "utf8")) as unknown;
+
+    return normalizeForvoAnkiBatchResult(parsed);
+  } catch (error) {
+    if (
+      error &&
+      typeof error === "object" &&
+      "code" in error &&
+      error.code === "ENOENT"
+    ) {
       return null;
     }
 
-    const pageUrl = input.page.url();
-    const localAssetPath = buildForvoAudioAssetPath(input.entry, selected);
+    return null;
+  }
+}
 
-    if (input.dryRun) {
-      return {
-        audioAttribution: buildForvoAttribution(selected),
-        audioLicense: undefined,
-        audioPageUrl: pageUrl,
-        audioSpeaker: selected.speaker,
-        audioSrc: localAssetPath,
-        votes: selected.votes
-      };
-    }
+function normalizeForvoAnkiBatchResult(
+  value: unknown
+): ForvoAnkiBatchResult | null {
+  if (!value || typeof value !== "object") {
+    return null;
+  }
 
-    const absoluteAssetPath = path.join(
-      input.entry.mediaDirectory,
-      localAssetPath.replace(/^assets\//u, "assets/")
-    );
-
-    await mkdir(path.dirname(absoluteAssetPath), { recursive: true });
-
-    try {
-      const download = await triggerForvoDownload(
-        input.page,
-        selected.candidateIndex
+  const candidate = value as Partial<ForvoAnkiBatchResult>;
+  const rawResults = Array.isArray(candidate.results) ? candidate.results : [];
+  const results = rawResults
+    .filter(isForvoAnkiBatchEntryResult)
+    .map((result) => {
+      const candidates = (result.candidates ?? []).filter(
+        isForvoAnkiBatchCandidate
       );
-      await download.saveAs(absoluteAssetPath);
 
       return {
-        audioAttribution: buildForvoAttribution(selected),
-        audioLicense: undefined,
-        audioPageUrl: pageUrl,
-        audioSpeaker: selected.speaker,
-        audioSrc: localAssetPath,
-        votes: selected.votes
+        ...result,
+        candidates,
+        selected:
+          candidates.length > 0
+            ? (selectBestForvoCandidate(candidates) as ForvoAnkiBatchCandidate)
+            : null
       };
-    } catch (error) {
-      if (attempt + 1 >= attempts) {
-        throw error;
+    });
+
+  if (
+    candidate.status !== "done" &&
+    candidate.status !== "error" &&
+    candidate.status !== "running"
+  ) {
+    return null;
+  }
+
+  return {
+    language:
+      typeof candidate.language === "string" ? candidate.language : "ja",
+    processed:
+      typeof candidate.processed === "number"
+        ? candidate.processed
+        : results.length,
+    results,
+    status: candidate.status,
+    total:
+      typeof candidate.total === "number" ? candidate.total : results.length
+  };
+}
+
+function isForvoAnkiBatchEntryResult(
+  value: unknown
+): value is ForvoAnkiBatchEntryResult {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const candidate = value as Partial<ForvoAnkiBatchEntryResult>;
+
+  return (
+    (candidate.entryKind === "grammar" || candidate.entryKind === "term") &&
+    typeof candidate.entryId === "string" &&
+    typeof candidate.label === "string" &&
+    typeof candidate.mediaSlug === "string" &&
+    Array.isArray(candidate.queries) &&
+    typeof candidate.status === "string"
+  );
+}
+
+function isForvoAnkiBatchCandidate(
+  value: unknown
+): value is ForvoAnkiBatchCandidate {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const candidate = value as Partial<ForvoAnkiBatchCandidate>;
+
+  return (
+    Array.isArray(candidate.audioCandidates) &&
+    candidate.audioCandidates.length > 0 &&
+    candidate.audioCandidates.every(isForvoAudioCandidate) &&
+    typeof candidate.candidateIndex === "number" &&
+    typeof candidate.pageUrl === "string" &&
+    typeof candidate.sectionIndex === "number" &&
+    typeof candidate.text === "string"
+  );
+}
+
+function isForvoAudioCandidate(value: unknown): value is ForvoAudioCandidate {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const candidate = value as Partial<ForvoAudioCandidate>;
+
+  return (
+    (candidate.format === "mp3" || candidate.format === "ogg") &&
+    candidate.source === "anki-play" &&
+    typeof candidate.url === "string"
+  );
+}
+
+async function downloadAndStoreForvoAudio(input: {
+  candidates: ForvoAudioCandidate[];
+  pageUrl?: string;
+  targetPath: string;
+}) {
+  const errors: string[] = [];
+
+  await mkdir(path.dirname(input.targetPath), { recursive: true });
+
+  for (const candidate of input.candidates) {
+    try {
+      const buffer = await downloadForvoAudio(candidate.url, input.pageUrl);
+
+      if (candidate.format === "mp3") {
+        await writeFile(input.targetPath, buffer);
+        return;
       }
 
-      await promptForManualIntervention(
-        "Forvo did not start the download automatically. Complete login or Cloudflare verification in the opened browser, then press Enter to retry."
+      await convertForvoAudioBufferToMp3({
+        buffer,
+        format: candidate.format,
+        targetPath: input.targetPath
+      });
+      return;
+    } catch (error) {
+      errors.push(
+        `${candidate.url}: ${error instanceof Error ? error.message : String(error)}`
       );
     }
   }
 
-  return null;
+  throw new Error(
+    `No downloadable Forvo audio candidate worked for '${input.targetPath}'. ${errors.join("; ")}`
+  );
+}
+
+async function downloadForvoAudio(url: string, pageUrl?: string) {
+  const response = await fetch(url, {
+    headers: {
+      Referer: pageUrl ?? "https://forvo.com/",
+      "User-Agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0 Safari/537.36"
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+
+  return Buffer.from(await response.arrayBuffer());
+}
+
+async function convertForvoAudioBufferToMp3(input: {
+  buffer: Buffer;
+  format: string;
+  targetPath: string;
+}) {
+  const tempDir = await mkdtemp(path.join(tmpdir(), "forvo-audio-"));
+  const sourcePath = path.join(tempDir, `source.${input.format}`);
+
+  try {
+    await writeFile(sourcePath, input.buffer);
+    await runFfmpeg([
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-y",
+      "-i",
+      sourcePath,
+      "-codec:a",
+      "libmp3lame",
+      "-q:a",
+      "2",
+      input.targetPath
+    ]);
+  } finally {
+    await rm(tempDir, { force: true, recursive: true });
+  }
+}
+
+function runFfmpeg(args: string[]) {
+  return new Promise<void>((resolve, reject) => {
+    const child = spawn("ffmpeg", args, {
+      stdio: ["ignore", "ignore", "pipe"]
+    });
+    let stderr = "";
+
+    child.stderr.on("data", (chunk: Buffer) => {
+      stderr += chunk.toString("utf8");
+    });
+    child.on("error", reject);
+    child.on("close", (code) => {
+      if (code === 0) {
+        resolve();
+        return;
+      }
+
+      reject(new Error(stderr.trim() || `ffmpeg exited with code ${code}`));
+    });
+  });
 }
 
 async function captureManualForvoPronunciation(input: {
@@ -733,235 +1177,50 @@ async function handleWordAddRequestAfterSkip(input: {
   }
 }
 
-async function loadForvoCandidatesForEntry(input: {
-  browserTimeoutMs?: number;
+function removeForvoKnownMissingEntry(input: {
   entry: PronunciationTargetEntry;
-  page: Page;
+  knownMissingRegistry: Awaited<
+    ReturnType<typeof loadForvoKnownMissingRegistry>
+  >;
+  mediaSlug: string;
 }) {
-  const timeoutMs = input.browserTimeoutMs ?? 45000;
-  const wordUrls = buildForvoWordUrls(input.entry);
+  const initialLength = input.knownMissingRegistry.entries.length;
 
-  for (const wordUrl of wordUrls) {
-    await input.page.goto(wordUrl, {
-      timeout: timeoutMs,
-      waitUntil: "domcontentloaded"
-    });
-    await input.page.waitForTimeout(2500);
-
-    for (let attempt = 0; attempt < 3; attempt += 1) {
-      const candidates = await extractForvoCandidates(input.page, "ja");
-
-      if (candidates.length > 0) {
-        return candidates;
-      }
-
-      const bodyText = await safeReadBodyText(input.page);
-
-      if (looksLikeChallengePage(bodyText) || looksLikeLoginGate(bodyText)) {
-        await promptForManualIntervention(
-          `Forvo needs manual verification for '${input.entry.label}'. Finish the page in the opened browser, then press Enter to continue.`
-        );
-        await input.page.waitForTimeout(1500);
-        continue;
-      }
-
-      break;
-    }
-  }
-
-  return [];
-}
-
-async function extractForvoCandidates(page: Page, languageCode: string) {
-  return page.evaluate((lang) => {
-    const attributeName = "data-codex-forvo-download";
-    const elements = Array.from(
-      document.querySelectorAll<HTMLElement>("body *")
+  input.knownMissingRegistry.entries =
+    input.knownMissingRegistry.entries.filter(
+      (candidate) =>
+        !(
+          candidate.mediaSlug === input.mediaSlug &&
+          candidate.entryKind === input.entry.kind &&
+          candidate.entryId === input.entry.id
+        )
     );
-    const isVisible = (element: HTMLElement) => {
-      const style = window.getComputedStyle(element);
-      const rect = element.getBoundingClientRect();
 
-      return (
-        style.display !== "none" &&
-        style.visibility !== "hidden" &&
-        rect.width >= 0 &&
-        rect.height >= 0
-      );
-    };
-    const collectDownloadButtons = (root: ParentNode) =>
-      Array.from(
-        root.querySelectorAll<HTMLElement>("a, button, [role='button']")
-      ).filter((element) => {
-        const label = (element.innerText || element.textContent || "")
-          .replace(/\s+/g, " ")
-          .trim();
-
-        return label === "Download MP3" && isVisible(element);
-      });
-    const findHeading = () =>
-      elements.find((element) => {
-        const text = (element.innerText || "").replace(/\s+/g, " ").trim();
-        return (
-          text.length > 0 &&
-          text.length < 180 &&
-          text.includes(`[${lang}]`) &&
-          /pronunciation/iu.test(text)
-        );
-      }) ?? null;
-    const heading = findHeading();
-    let scopedButtons: HTMLElement[] = [];
-
-    document
-      .querySelectorAll<HTMLElement>(`[${attributeName}]`)
-      .forEach((element) => element.removeAttribute(attributeName));
-
-    if (heading) {
-      for (
-        let current: HTMLElement | null = heading;
-        current;
-        current = current.parentElement
-      ) {
-        const found = collectDownloadButtons(current);
-
-        if (found.length > 0 && found.length <= 24) {
-          scopedButtons = found;
-          break;
-        }
-      }
-    }
-
-    if (scopedButtons.length === 0) {
-      scopedButtons = collectDownloadButtons(document);
-    }
-
-    const candidates = scopedButtons.map((button, index) => {
-      button.setAttribute(attributeName, String(index));
-
-      let container: HTMLElement | null = button;
-
-      while (container) {
-        const text = (container.innerText || "").replace(/\s+/g, " ").trim();
-        const pronunciationCount = (text.match(/Pronunciation by/giu) ?? [])
-          .length;
-
-        if (
-          /Pronunciation by/iu.test(text) &&
-          /Download MP3/iu.test(text) &&
-          pronunciationCount <= 2
-        ) {
-          break;
-        }
-
-        container = container.parentElement;
-      }
-
-      const text = (
-        container?.innerText ||
-        button.parentElement?.innerText ||
-        button.innerText ||
-        ""
-      )
-        .replace(/\s+/g, " ")
-        .trim();
-      const speakerMatch =
-        text.match(
-          /Pronunciation by\s+(.+?)\s+\((Male|Female)(?: from ([^)]+))?\)/iu
-        ) ?? text.match(/Pronunciation by\s+(.+?)(?:\s{2,}|$)/iu);
-      const votesMatch = text.match(/(-?\d+)\s+votes?\s+Good\s+Bad/iu);
-      const accentMatch = text.match(
-        /Accent:\s+(.+?)(?:\s{2,}|Pronunciation by|Download MP3|$)/iu
-      );
-
-      return {
-        accent: accentMatch?.[1]?.trim(),
-        candidateIndex: index,
-        pageUrl: location.href,
-        sectionIndex: index,
-        speaker: speakerMatch?.[1]?.trim(),
-        speakerCountry: speakerMatch?.[3]?.trim(),
-        speakerGender: speakerMatch?.[2]?.trim(),
-        text,
-        votes:
-          typeof votesMatch?.[1] === "string"
-            ? Number.parseInt(votesMatch[1], 10)
-            : undefined
-      };
-    });
-
-    if (heading && scopedButtons.length > 0) {
-      const headingRootText = (
-        heading.parentElement?.innerText ||
-        heading.innerText ||
-        ""
-      )
-        .replace(/\s+/g, " ")
-        .trim();
-
-      if (!headingRootText.includes(`[${lang}]`)) {
-        return [];
-      }
-    }
-
-    return candidates.filter((candidate) => candidate.text.length > 0);
-  }, languageCode);
+  return input.knownMissingRegistry.entries.length !== initialLength;
 }
 
-async function triggerForvoDownload(
-  page: Page,
-  candidateIndex: number
-): Promise<Download> {
-  const locator = page.locator(
-    `[data-codex-forvo-download="${String(candidateIndex)}"]`
+function markForvoWordAddRequestResolved(input: {
+  audioSrc: string;
+  entry: PronunciationTargetEntry;
+  mediaSlug: string;
+  requestRegistry: ForvoWordAddRequestRegistry;
+}) {
+  const match = input.requestRegistry.entries.find(
+    (candidate) =>
+      candidate.mediaSlug === input.mediaSlug &&
+      candidate.entryKind === input.entry.kind &&
+      candidate.entryId === input.entry.id
   );
-  const downloadPromise = page.waitForEvent("download", {
-    timeout: 12000
-  });
 
-  await locator.first().scrollIntoViewIfNeeded();
-  await locator.first().click();
-
-  return downloadPromise;
-}
-
-async function promptForManualIntervention(message: string) {
-  if (!process.stdin.isTTY || !process.stdout.isTTY) {
-    throw new Error(
-      `${message} Interactive input is required, but this session is not attached to a TTY.`
-    );
+  if (!match) {
+    return false;
   }
 
-  const readline = createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
+  match.resolvedAt = match.resolvedAt ?? new Date().toISOString();
+  match.resolvedAudioSource = "forvo";
+  match.resolvedAudioSrc = input.audioSrc;
 
-  try {
-    await readline.question(
-      `${message}\nPress Enter when the browser is ready. `
-    );
-  } finally {
-    closeInteractiveReadline(readline);
-  }
-}
-
-function looksLikeChallengePage(bodyText: string) {
-  return /security verification|just a moment|enable javascript and cookies/iu.test(
-    bodyText
-  );
-}
-
-function looksLikeLoginGate(bodyText: string) {
-  return /\blog in\b|\bsign in\b/iu.test(bodyText) && /forvo/iu.test(bodyText);
-}
-
-async function safeReadBodyText(page: Page) {
-  try {
-    const body = page.locator("body");
-    return (await body.innerText()).replace(/\s+/g, " ").trim();
-  } catch {
-    return "";
-  }
+  return true;
 }
 
 async function waitForManualDownloadOrSkip(input: {
@@ -1256,3 +1515,414 @@ async function openUrlInDefaultBrowser(url: string) {
     });
   });
 }
+
+const forvoAnkiHelperAddonSource = String.raw`
+import base64
+import json
+import os
+import re
+import traceback
+from pathlib import Path
+from urllib.parse import quote
+
+from aqt import gui_hooks, mw
+from aqt.qt import QTimer, QUrl
+
+try:
+    from PyQt6.QtWebEngineWidgets import QWebEngineView
+except Exception:
+    from PyQt5.QtWebEngineWidgets import QWebEngineView
+
+
+TARGETS_PATH = os.environ.get("JCS_FORVO_TARGETS_PATH")
+RESULT_PATH = os.environ.get("JCS_FORVO_RESULT_PATH")
+TARGET_LANGUAGE = os.environ.get("JCS_FORVO_LANGUAGE", "ja")
+ENTRY_DELAY_MS = int(os.environ.get("JCS_FORVO_ENTRY_DELAY_MS", "2500"))
+KEEP_OPEN = os.environ.get("JCS_FORVO_KEEP_OPEN") == "1"
+PREFERRED_USERS = ["strawberrybrown", "mezashi"]
+
+state = {
+    "index": 0,
+    "results": [],
+    "targets": [],
+    "query_token": 0,
+    "view": None,
+}
+
+
+def normalize_text(value):
+    return re.sub(r"\s+", " ", str(value or "")).strip()
+
+
+def write_result(status="running"):
+    if not RESULT_PATH:
+        return
+
+    payload = {
+        "language": TARGET_LANGUAGE,
+        "processed": len(state["results"]),
+        "results": state["results"],
+        "status": status,
+        "total": len(state["targets"]),
+    }
+    Path(os.path.dirname(RESULT_PATH)).mkdir(parents=True, exist_ok=True)
+    with open(RESULT_PATH, "w", encoding="utf8") as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=2)
+
+
+def read_targets():
+    with open(TARGETS_PATH, encoding="utf8") as handle:
+        payload = json.load(handle)
+
+    if isinstance(payload, dict):
+        return payload.get("targets", [])
+
+    return payload
+
+
+def finish(status="done"):
+    write_result(status)
+
+    if KEEP_OPEN:
+        return
+
+    QTimer.singleShot(1500, mw.close)
+
+
+def close_view():
+    view = state.get("view")
+
+    if view:
+        try:
+            view.close()
+        except Exception:
+            pass
+
+    state["view"] = None
+
+
+def decode_audio_candidates(onclick):
+    candidates = []
+    text = str(onclick or "")
+    mp3_match = re.search(r"Play\(\d+,'.+','.+',\w+,'([^']+)", text)
+
+    if mp3_match:
+        append_audio_candidate(candidates, "mp3", mp3_match.group(1))
+
+    ogg_match = re.search(r"Play\(\d+,'[^']+','([^']+)", text)
+
+    if ogg_match:
+        append_audio_candidate(candidates, "ogg", ogg_match.group(1))
+
+    return candidates
+
+
+def append_audio_candidate(candidates, fmt, token):
+    try:
+        decoded = base64.b64decode(token).decode("utf8")
+    except Exception:
+        return
+
+    base_url = (
+        "https://audio00.forvo.com/audios/mp3/"
+        if fmt == "mp3"
+        else "https://audio00.forvo.com/ogg/"
+    )
+    url = base_url + decoded
+
+    if any(candidate.get("url") == url for candidate in candidates):
+        return
+
+    candidates.append(
+        {
+            "decodedPath": decoded,
+            "format": fmt,
+            "source": "anki-play",
+            "url": url,
+        }
+    )
+
+
+def enrich_candidate(raw, query, section_index):
+    audio_candidates = decode_audio_candidates(raw.get("onclick"))
+
+    if not audio_candidates:
+        return None
+
+    origin = normalize_text(raw.get("origin"))
+    speaker_country = raw.get("speakerCountry")
+    speaker_gender = raw.get("speakerGender")
+
+    if (not speaker_country or not speaker_gender) and origin:
+        match = re.search(r"(Male|Female)(?:\s+from\s+([^)]+))?", origin)
+
+        if match:
+            speaker_gender = speaker_gender or match.group(1)
+            speaker_country = speaker_country or match.group(2)
+
+    return {
+        "audioCandidates": audio_candidates,
+        "candidateIndex": int(raw.get("candidateIndex") or section_index),
+        "downloadUrl": audio_candidates[0]["url"],
+        "forvoId": raw.get("forvoId"),
+        "pageUrl": raw.get("pageUrl"),
+        "query": query,
+        "sectionIndex": section_index,
+        "speaker": raw.get("speaker"),
+        "speakerCountry": speaker_country,
+        "speakerGender": speaker_gender,
+        "text": normalize_text(raw.get("text")),
+        "votes": raw.get("votes"),
+    }
+
+
+def preferred_rank(candidate):
+    speaker = normalize_text(candidate.get("speaker")).lower()
+
+    try:
+        return PREFERRED_USERS.index(speaker)
+    except ValueError:
+        return len(PREFERRED_USERS)
+
+
+def select_candidate(candidates):
+    if not candidates:
+        return None
+
+    def sort_key(candidate):
+        country = normalize_text(candidate.get("speakerCountry")).lower()
+        gender = normalize_text(candidate.get("speakerGender"))
+        votes = int(candidate.get("votes") or 0)
+        native_bonus = 80 if "japan" in country else 0
+        gender_bonus = 4 if gender else 0
+        section_score = max(0, 40 - int(candidate.get("sectionIndex") or 0) * 2)
+        score = native_bonus + gender_bonus + section_score + votes * 18
+
+        return (
+            preferred_rank(candidate),
+            -score,
+            int(candidate.get("sectionIndex") or 0),
+        )
+
+    return sorted(candidates, key=sort_key)[0]
+
+
+EXTRACT_JS = """
+(function(lang) {
+  const normalize = function(value) {
+    return String(value || "").replace(/\\s+/g, " ").trim();
+  };
+  const containers = Array.from(document.querySelectorAll('[id^="language-container-"]'));
+  const container = containers.find(function(element) {
+    return String(element.id || "").replace(/^language-container-/, "").replace(/_/g, "") === lang;
+  });
+
+  if (!container) {
+    return [];
+  }
+
+  const rows = Array.from(container.querySelectorAll(".pronunciations-list li"));
+
+  return rows.map(function(row, index) {
+    const play = row.querySelector('[id^="play_"]');
+    const onclick = play ? play.getAttribute("onclick") || "" : "";
+    const text = normalize(row.innerText || row.textContent || "");
+    const infoNode = row.querySelector(".info");
+    const infoText = normalize((infoNode && (infoNode.innerText || infoNode.textContent)) || text);
+    const originNode = row.querySelector(".from");
+    const origin = normalize(originNode && (originNode.innerText || originNode.textContent));
+    const speakerMatch =
+      infoText.match(/Pronunciation by\\s+(.+?)(?:\\s+\\((?:Male|Female)|$)/i) ||
+      text.match(/Pronunciation by\\s+(.+?)(?:\\s+\\((?:Male|Female)|$)/i);
+    const genderCountryMatch = (origin || text).match(/(Male|Female)(?:\\s+from\\s+([^)]+))?/i);
+    const voteNode = row.querySelector(".num_votes span") || row.querySelector(".num_votes");
+    const voteText = normalize(voteNode && (voteNode.innerText || voteNode.textContent));
+    const voteMatch = voteText.match(/-?\\d+/) || text.match(/(-?\\d+)\\s+votes?/i);
+    const idLink = Array.from(row.querySelectorAll(".ofLink")).find(function(link) {
+      return Array.from(link.attributes).some(function(attribute) {
+        return /^data-p\\d+$/.test(attribute.name) && /^\\d+$/.test(attribute.value);
+      });
+    });
+    let forvoId = null;
+
+    if (idLink) {
+      const idAttribute = Array.from(idLink.attributes).find(function(attribute) {
+        return /^data-p\\d+$/.test(attribute.name) && /^\\d+$/.test(attribute.value);
+      });
+      forvoId = idAttribute ? Number.parseInt(idAttribute.value, 10) : null;
+    }
+
+    return {
+      candidateIndex: index,
+      forvoId: Number.isFinite(forvoId) ? forvoId : null,
+      onclick: onclick,
+      origin: origin,
+      pageUrl: location.href,
+      speaker: speakerMatch ? normalize(speakerMatch[1]) : undefined,
+      speakerCountry: genderCountryMatch ? normalize(genderCountryMatch[2]) : undefined,
+      speakerGender: genderCountryMatch ? normalize(genderCountryMatch[1]) : undefined,
+      text: text,
+      votes: voteMatch ? Number.parseInt(voteMatch[0], 10) : undefined
+    };
+  }).filter(function(row) {
+    return row.onclick;
+  });
+})("__LANG__");
+"""
+
+
+def append_result(result):
+    state["results"].append(result)
+    write_result("running")
+
+
+def run_next():
+    close_view()
+
+    if state["index"] >= len(state["targets"]):
+        finish("done")
+        return
+
+    target = state["targets"][state["index"]]
+    state["index"] += 1
+    queries = [
+        normalize_text(query)
+        for query in target.get("queries", [])
+        if normalize_text(query)
+    ]
+
+    if not queries:
+        append_result({**target, "queries": queries, "status": "no_queries"})
+        QTimer.singleShot(ENTRY_DELAY_MS, run_next)
+        return
+
+    run_query(target, queries, 0)
+
+
+def run_query(target, queries, query_index):
+    if query_index >= len(queries):
+        append_result(
+            {
+                **target,
+                "candidates": [],
+                "queries": queries,
+                "status": "no_results",
+            }
+        )
+        QTimer.singleShot(ENTRY_DELAY_MS, run_next)
+        return
+
+    query = queries[query_index]
+    state["query_token"] += 1
+    token = state["query_token"]
+    finished = {"value": False}
+    view = QWebEngineView()
+    state["view"] = view
+    page = view.page()
+
+    try:
+        page.profile().setHttpUserAgent(
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0 Safari/537.36"
+        )
+    except Exception:
+        pass
+
+    def try_next_query():
+        if token != state["query_token"]:
+            return
+
+        close_view()
+        QTimer.singleShot(500, lambda: run_query(target, queries, query_index + 1))
+
+    def on_timeout():
+        if finished["value"] or token != state["query_token"]:
+            return
+
+        finished["value"] = True
+        try_next_query()
+
+    def on_extracted(raw_rows):
+        if finished["value"] or token != state["query_token"]:
+            return
+
+        finished["value"] = True
+        candidates = []
+
+        try:
+            if isinstance(raw_rows, list):
+                for index, raw in enumerate(raw_rows):
+                    if isinstance(raw, dict):
+                        candidate = enrich_candidate(raw, query, index)
+
+                        if candidate:
+                            candidates.append(candidate)
+        except Exception:
+            traceback.print_exc()
+            append_result(
+                {
+                    **target,
+                    "error": traceback.format_exc(),
+                    "queries": queries,
+                    "query": query,
+                    "status": "query_error",
+                }
+            )
+            QTimer.singleShot(ENTRY_DELAY_MS, run_next)
+            return
+
+        if not candidates:
+            try_next_query()
+            return
+
+        selected = select_candidate(candidates)
+        append_result(
+            {
+                **target,
+                "candidates": candidates,
+                "pageUrl": candidates[0].get("pageUrl"),
+                "queries": queries,
+                "query": query,
+                "selected": selected,
+                "status": "downloaded",
+            }
+        )
+        QTimer.singleShot(ENTRY_DELAY_MS, run_next)
+
+    def on_loaded(success):
+        if finished["value"] or token != state["query_token"]:
+            return
+
+        if not success:
+            finished["value"] = True
+            try_next_query()
+            return
+
+        script = EXTRACT_JS.replace("__LANG__", TARGET_LANGUAGE)
+        QTimer.singleShot(1200, lambda: page.runJavaScript(script, on_extracted))
+
+    view.loadFinished.connect(on_loaded)
+    view.setWindowTitle("JCS Forvo Anki fetch")
+    view.resize(980, 720)
+    view.show()
+    view.load(QUrl("https://forvo.com/word/" + quote(query) + "/#ja"))
+    QTimer.singleShot(30000, on_timeout)
+
+
+def start_batch():
+    if not TARGETS_PATH or not RESULT_PATH:
+        return
+
+    try:
+        state["targets"] = read_targets()
+        write_result("running")
+        run_next()
+    except Exception:
+        traceback.print_exc()
+        append_result({"error": traceback.format_exc(), "status": "startup_error"})
+        finish("error")
+
+
+if TARGETS_PATH and RESULT_PATH:
+    gui_hooks.main_window_did_init.append(lambda: QTimer.singleShot(2000, start_batch))
+`;

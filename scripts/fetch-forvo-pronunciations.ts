@@ -14,6 +14,8 @@ import {
 } from "../src/lib/pronunciation.ts";
 
 type CliOptions = {
+  ankiAppPath?: string;
+  ankiBaseDir: string;
   browserTimeoutMs?: number;
   controlPort: number;
   contentRoot: string;
@@ -28,7 +30,6 @@ type CliOptions = {
   mediaSlugs: string[];
   knownMissingPath: string;
   openWordAddOnSkip: boolean;
-  profileDir: string;
   refresh: boolean;
   requestRegistryPath: string;
   retryKnownMissing: boolean;
@@ -162,11 +163,14 @@ if (!parseResult.ok) {
           })
         : await fetchForvoPronunciationsForBundle({
             browser: {
+              ankiAppPath: options.ankiAppPath,
+              ankiBaseDir: path.resolve(options.ankiBaseDir),
               browserTimeoutMs: options.browserTimeoutMs,
               headless: options.headless,
               knownMissingPath: path.resolve(options.knownMissingPath),
               keepBrowserOpen: options.keepBrowserOpen,
-              profileDir: path.resolve(options.profileDir),
+              openWordAddOnMiss: options.openWordAddOnSkip,
+              requestRegistryPath: path.resolve(options.requestRegistryPath),
               retryKnownMissing: options.retryKnownMissing
             },
             bundle: currentBundle,
@@ -229,6 +233,7 @@ if (!parseResult.ok) {
 function parseCliOptions(argv: string[]): CliOptions {
   const normalizedArgv = expandEqualsOptions(argv);
   const options: CliOptions = {
+    ankiBaseDir: path.join("data", "forvo-anki-profile"),
     controlPort: 3210,
     contentRoot: "content",
     dryRun: false,
@@ -240,7 +245,6 @@ function parseCliOptions(argv: string[]): CliOptions {
     manualDownloadsDir: path.join(os.homedir(), "Downloads"),
     manualOpenUrls: true,
     mediaSlugs: [],
-    profileDir: path.join("data", "forvo-profile"),
     openWordAddOnSkip: true,
     refresh: false,
     requestRegistryPath: path.join("data", "forvo-requested-word-add.json"),
@@ -365,12 +369,18 @@ function parseCliOptions(argv: string[]): CliOptions {
       continue;
     }
 
-    if (argument === "--profile-dir") {
-      options.profileDir = readOptionValue(
+    if (argument === "--anki-app") {
+      options.ankiAppPath = readOptionValue(
         normalizedArgv,
         index,
-        "--profile-dir"
+        "--anki-app"
       );
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--anki-base-dir" || argument === "--profile-dir") {
+      options.ankiBaseDir = readOptionValue(normalizedArgv, index, argument);
       index += 1;
       continue;
     }

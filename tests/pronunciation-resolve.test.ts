@@ -492,7 +492,7 @@ describe("pronunciation resolve", () => {
       const summary = await executePronunciationResolveForBundle({
         bundle,
         dryRun: false,
-        fetchForvoManual: forvoSpy,
+        fetchForvo: forvoSpy,
         knownMissingEntryIds: new Set(),
         refreshBundleState: refreshSpy,
         reuseCrossMedia: reuseSpy,
@@ -541,7 +541,7 @@ describe("pronunciation resolve", () => {
       await executePronunciationResolveForBundle({
         bundle,
         dryRun: true,
-        fetchForvoManual: vi.fn(async () => ({
+        fetchForvo: vi.fn(async () => ({
           knownMissingSkipped: [],
           matched: 0,
           missed: 1,
@@ -604,7 +604,7 @@ describe("pronunciation resolve", () => {
       const summary = await executePronunciationResolveForBundle({
         bundle,
         dryRun: false,
-        fetchForvoManual: forvoSpy,
+        fetchForvo: forvoSpy,
         knownMissingEntryIds: new Set(),
         refreshBundleState: vi.fn(async () => bundle),
         reuseCrossMedia: reuseSpy,
@@ -646,7 +646,7 @@ describe("pronunciation resolve", () => {
       const summary = await executePronunciationResolveForBundle({
         bundle,
         dryRun: false,
-        fetchForvoManual: forvoSpy,
+        fetchForvo: forvoSpy,
         knownMissingEntryIds: new Set(["term:term-yomu"]),
         refreshBundleState: vi.fn(async () => bundle),
         reuseCrossMedia: vi.fn(async () => ({
@@ -697,7 +697,7 @@ describe("pronunciation resolve", () => {
       const summary = await executePronunciationResolveForBundle({
         bundle,
         dryRun: false,
-        fetchForvoManual: forvoSpy,
+        fetchForvo: forvoSpy,
         knownMissingEntryIds: new Set(["term:term-yomu"]),
         limit: 1,
         refreshBundleState: vi.fn(async () => bundle),
@@ -756,7 +756,7 @@ describe("pronunciation resolve", () => {
       const summary = await executePronunciationResolveForBundle({
         bundle,
         dryRun: false,
-        fetchForvoManual: forvoSpy,
+        fetchForvo: forvoSpy,
         knownMissingEntryIds: new Set(["term:term-yomu"]),
         refreshBundleState: vi.fn(async () => bundle),
         reuseCrossMedia: vi.fn(async () => ({

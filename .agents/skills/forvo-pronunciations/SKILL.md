@@ -128,7 +128,7 @@ typically at:
 
 ## Guardrails
 
-- Keep the browser profile under `data/forvo-profile` unless the user asks otherwise.
+- Keep the Anki/QWebEngine profile under `data/forvo-anki-profile` unless the user asks otherwise.
 - Keep the known-missing registry under `data/forvo-known-missing.json` unless the user asks otherwise.
 - For `review`, support both the global scope and the filtered `--media <slug>`
   scope; the default without `--media` is global. Review mode must not impose

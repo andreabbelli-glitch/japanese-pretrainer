@@ -1,6 +1,13 @@
 import path from "node:path";
 import { execFile } from "node:child_process";
-import { chmod, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import {
+  chmod,
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  writeFile
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
@@ -34,7 +41,7 @@ describe("forvo pronunciations skill wrapper", () => {
       [
         "#!/usr/bin/env bash",
         "set -euo pipefail",
-        "printf '%s\\n' \"$@\" > \"$CAPTURED_ARGS_PATH\""
+        'printf \'%s\\n\' "$@" > "$CAPTURED_ARGS_PATH"'
       ].join("\n")
     );
     await chmod(path.join(tempRepo, "scripts", "with-node.sh"), 0o755);
@@ -70,14 +77,13 @@ describe("forvo pronunciations skill wrapper", () => {
     ]);
   });
 
-  it("routes targeted fallback runs through manual Forvo without an implicit batch limit", async () => {
+  it("routes targeted runs through Anki-style Forvo without an implicit batch limit", async () => {
     await runWrapper("--media", "sample-game", "--entry", "term-yomu");
 
     await expectCapturedArgs([
       "pnpm",
       "pronunciations:forvo",
       "--",
-      "--manual",
       "--media",
       "sample-game",
       "--entry",

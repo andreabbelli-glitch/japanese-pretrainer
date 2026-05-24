@@ -115,6 +115,48 @@ describe("forvo pronunciation helpers", () => {
     expect(selectBestForvoCandidate(candidates)?.speaker).toBe("o_mizu");
   });
 
+  it("prefers configured Forvo speakers before falling back to vote count", () => {
+    const candidates = [
+      {
+        candidateIndex: 0,
+        pageUrl: "https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%82%8B/#ja",
+        sectionIndex: 0,
+        speaker: "o_mizu",
+        speakerCountry: "Japan",
+        speakerGender: "Female",
+        text: "Pronunciation by o_mizu (Female from Japan)",
+        votes: 99
+      },
+      {
+        candidateIndex: 1,
+        pageUrl: "https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%82%8B/#ja",
+        sectionIndex: 1,
+        speaker: "mezashi",
+        speakerCountry: "Japan",
+        speakerGender: "Female",
+        text: "Pronunciation by mezashi (Female from Japan)",
+        votes: 0
+      },
+      {
+        candidateIndex: 2,
+        pageUrl: "https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%82%8B/#ja",
+        sectionIndex: 2,
+        speaker: "strawberrybrown",
+        speakerCountry: "Japan",
+        speakerGender: "Female",
+        text: "Pronunciation by strawberrybrown (Female from Japan)",
+        votes: 0
+      }
+    ];
+
+    expect(selectBestForvoCandidate(candidates)?.speaker).toBe(
+      "strawberrybrown"
+    );
+    expect(selectBestForvoCandidate(candidates.slice(0, 2))?.speaker).toBe(
+      "mezashi"
+    );
+  });
+
   it("rejects manual Forvo runs without an interactive TTY", () => {
     expect(() =>
       assertForvoManualRunCanStart({

@@ -17,7 +17,7 @@ import { buildEntryKey } from "./entry-id.ts";
 import { loadValidatedManifest } from "./manifest-helpers.ts";
 import {
   createPronunciationReuseContext,
-  fetchForvoPronunciationsForBundleManual,
+  fetchForvoPronunciationsForBundle,
   loadForvoKnownMissingRegistry,
   loadForvoWordAddRequestRegistry,
   persistForvoWordAddRequestRegistry,
@@ -26,7 +26,7 @@ import {
   reuseCrossMediaPronunciationsForBundle,
   summarizeBundlePronunciationPending,
   writeBundlePronunciationPendingSummary,
-  type ForvoManualOptions,
+  type ForvoBrowserOptions,
   type PronunciationReuseContext
 } from "./pronunciation.ts";
 import {
@@ -53,7 +53,7 @@ export type BundleResolveExecutionSummary = {
   currentBundle: NormalizedMediaBundle;
   finalEntryIds: string[];
   forvoSummary: Awaited<
-    ReturnType<typeof fetchForvoPronunciationsForBundleManual>
+    ReturnType<typeof fetchForvoPronunciationsForBundle>
   > | null;
   knownMissingSkipped: string[];
   pendingSummary: Awaited<
@@ -67,16 +67,14 @@ export type BundleResolveExecutionSummary = {
 type ExecutePronunciationResolveForBundleInput = {
   bundle: NormalizedMediaBundle;
   dryRun?: boolean;
-  fetchForvoManual: (input: {
+  fetchForvo: (input: {
     bundle: NormalizedMediaBundle;
     dryRun?: boolean;
     entryIds?: string[];
-    manual: ForvoManualOptions;
+    browser: ForvoBrowserOptions;
     refresh?: boolean;
-  }) => Promise<
-    Awaited<ReturnType<typeof fetchForvoPronunciationsForBundleManual>>
-  >;
-  forvoManualOptions?: ForvoManualOptions;
+  }) => Promise<Awaited<ReturnType<typeof fetchForvoPronunciationsForBundle>>>;
+  forvoOptions?: ForvoBrowserOptions;
   knownMissingEntryIds: Set<string>;
   limit?: number;
   retryKnownMissing?: boolean;
@@ -273,15 +271,15 @@ export async function executePronunciationResolveForBundle(
   }
 
   let forvoSummary: Awaited<
-    ReturnType<typeof fetchForvoPronunciationsForBundleManual>
+    ReturnType<typeof fetchForvoPronunciationsForBundle>
   > | null = null;
 
   if (forvoTargets.length > 0) {
-    forvoSummary = await input.fetchForvoManual({
+    forvoSummary = await input.fetchForvo({
       bundle: currentBundle,
+      browser: input.forvoOptions ?? buildDefaultForvoOptions(),
       dryRun: input.dryRun,
       entryIds: forvoTargets.map((target) => target.id),
-      manual: input.forvoManualOptions ?? buildDefaultForvoManualOptions(),
       refresh: input.refresh
     });
 
@@ -293,8 +291,7 @@ export async function executePronunciationResolveForBundle(
   if (!input.dryRun) {
     await syncResolvedForvoRequests(
       currentBundle,
-      (input.forvoManualOptions ?? buildDefaultForvoManualOptions())
-        .requestRegistryPath
+      (input.forvoOptions ?? buildDefaultForvoOptions()).requestRegistryPath
     );
   }
 
@@ -317,7 +314,7 @@ export async function resolvePronunciations(input: {
   contentRoot: string;
   database: DatabaseClient;
   dryRun?: boolean;
-  forvoManualOptions?: ForvoManualOptions;
+  forvoOptions?: ForvoBrowserOptions;
   knownMissingPath?: string;
   lessonUrl?: string;
   limit?: number;
@@ -353,15 +350,15 @@ export async function resolvePronunciations(input: {
     const execution = await executePronunciationResolveForBundle({
       bundle: bundleSelection.bundle,
       dryRun: input.dryRun,
-      fetchForvoManual: (params) =>
-        fetchForvoPronunciationsForBundleManual({
+      fetchForvo: (params) =>
+        fetchForvoPronunciationsForBundle({
+          browser: params.browser,
           bundle: params.bundle,
           dryRun: params.dryRun,
           entryIds: params.entryIds,
-          manual: params.manual,
           refresh: params.refresh
         }),
-      forvoManualOptions: input.forvoManualOptions,
+      forvoOptions: input.forvoOptions,
       knownMissingEntryIds,
       limit: input.limit,
       retryKnownMissing: input.retryKnownMissing,
@@ -608,13 +605,11 @@ function removeTargetsByEntryIds(
   );
 }
 
-function buildDefaultForvoManualOptions(): ForvoManualOptions {
+function buildDefaultForvoOptions(): ForvoBrowserOptions {
   return {
-    controlPort: 3210,
-    downloadsDir: path.join(process.env.HOME ?? process.cwd(), "Downloads"),
+    ankiBaseDir: path.join("data", "forvo-anki-profile"),
     knownMissingPath: path.join("data", "forvo-known-missing.json"),
-    openUrls: true,
-    openWordAddOnSkip: true,
+    openWordAddOnMiss: true,
     requestRegistryPath: path.join("data", "forvo-requested-word-add.json"),
     retryKnownMissing: false
   };

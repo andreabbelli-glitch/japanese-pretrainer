@@ -19,8 +19,12 @@ type WordListRequest = {
 
 export type ForvoCandidate = {
   accent?: string;
+  audioCandidates?: ForvoAudioCandidate[];
   candidateIndex: number;
+  downloadUrl?: string;
+  forvoId?: number;
   pageUrl: string;
+  query?: string;
   sectionIndex: number;
   speaker?: string;
   speakerCountry?: string;
@@ -28,6 +32,15 @@ export type ForvoCandidate = {
   text: string;
   votes?: number;
 };
+
+export type ForvoAudioCandidate = {
+  decodedPath?: string;
+  format: "mp3" | "ogg";
+  source: "anki-play";
+  url: string;
+};
+
+const preferredForvoSpeakers = ["strawberrybrown", "mezashi"] as const;
 
 export function parseForvoWordList(source: string) {
   return source
@@ -102,6 +115,14 @@ export function scoreForvoCandidate(candidate: ForvoCandidate) {
 export function selectBestForvoCandidate(candidates: ForvoCandidate[]) {
   return [...candidates]
     .sort((left, right) => {
+      const speakerPreferenceDelta =
+        getForvoSpeakerPreferenceRank(left) -
+        getForvoSpeakerPreferenceRank(right);
+
+      if (speakerPreferenceDelta !== 0) {
+        return speakerPreferenceDelta;
+      }
+
       const scoreDelta = scoreForvoCandidate(right) - scoreForvoCandidate(left);
 
       if (scoreDelta !== 0) {
@@ -174,11 +195,17 @@ export function resolveRequestedTargets(input: {
 }
 
 export function buildForvoWordUrls(entry: PronunciationTargetEntry) {
+  return buildForvoSearchQueries(entry).map(
+    (query) => `https://forvo.com/word/${encodeURIComponent(query)}/#ja`
+  );
+}
+
+export function buildForvoSearchQueries(entry: PronunciationTargetEntry) {
   return [
     ...new Set(
       expandForvoSearchVariants([entry.label, entry.reading, ...entry.aliases])
     )
-  ].map((query) => `https://forvo.com/word/${encodeURIComponent(query)}/#ja`);
+  ];
 }
 
 export function buildForvoAudioAssetPath(
@@ -241,6 +268,20 @@ export function expandForvoSearchVariants(values: Array<string | undefined>) {
 
 function isEntryIdLike(value: string) {
   return /^(term|grammar)-/u.test(value);
+}
+
+function getForvoSpeakerPreferenceRank(candidate: ForvoCandidate) {
+  const speaker = candidate.speaker?.trim().toLowerCase();
+
+  if (!speaker) {
+    return Number.POSITIVE_INFINITY;
+  }
+
+  const rank = preferredForvoSpeakers.indexOf(
+    speaker as (typeof preferredForvoSpeakers)[number]
+  );
+
+  return rank === -1 ? Number.POSITIVE_INFINITY : rank;
 }
 
 export function normalizeForvoLookupText(value: string) {

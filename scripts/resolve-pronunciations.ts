@@ -11,6 +11,9 @@ import {
 } from "../src/lib/pronunciation-resolve.ts";
 
 type CliOptions = {
+  ankiAppPath?: string;
+  ankiBaseDir: string;
+  browserTimeoutMs?: number;
   contentRoot: string;
   controlPort: number;
   dryRun: boolean;
@@ -54,12 +57,12 @@ if (!options.openWordAddOnSkip) {
       contentRoot: path.resolve(options.contentRoot),
       database: db,
       dryRun: options.dryRun,
-      forvoManualOptions: {
-        controlPort: options.controlPort,
-        downloadsDir: path.resolve(options.manualDownloadsDir),
+      forvoOptions: {
+        ankiAppPath: options.ankiAppPath,
+        ankiBaseDir: path.resolve(options.ankiBaseDir),
+        browserTimeoutMs: options.browserTimeoutMs,
         knownMissingPath: path.resolve(options.knownMissingPath),
-        openUrls: options.manualOpenUrls,
-        openWordAddOnSkip: options.openWordAddOnSkip,
+        openWordAddOnMiss: options.openWordAddOnSkip,
         requestRegistryPath: path.resolve(options.requestRegistryPath),
         retryKnownMissing: options.retryKnownMissing
       },
@@ -106,6 +109,7 @@ if (!options.openWordAddOnSkip) {
 function parseCliOptions(argv: string[]): CliOptions {
   const normalizedArgv = expandEqualsOptions(argv);
   const options: CliOptions = {
+    ankiBaseDir: path.join("data", "forvo-anki-profile"),
     contentRoot: "content",
     controlPort: 3210,
     dryRun: false,
@@ -203,6 +207,32 @@ function parseCliOptions(argv: string[]): CliOptions {
         normalizedArgv,
         index,
         "--control-port"
+      );
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--anki-app") {
+      options.ankiAppPath = readOptionValue(
+        normalizedArgv,
+        index,
+        "--anki-app"
+      );
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--anki-base-dir" || argument === "--profile-dir") {
+      options.ankiBaseDir = readOptionValue(normalizedArgv, index, argument);
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--browser-timeout-ms") {
+      options.browserTimeoutMs = readPositiveIntegerOption(
+        normalizedArgv,
+        index,
+        "--browser-timeout-ms"
       );
       index += 1;
       continue;

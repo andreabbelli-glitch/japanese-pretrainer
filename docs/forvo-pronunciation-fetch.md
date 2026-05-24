@@ -68,10 +68,10 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 - quando il label contiene varianti separate da slash ASCII (`/`), l'URL
   `word-add` lo normalizza in `・` per evitare che Forvo prenda solo la prima
   meta' della stringa;
-- il profilo browser dedicato in `data/forvo-profile/` resta disponibile per
-  mantenere cookie/login del fetcher;
-- se Cloudflare o il login richiedono intervento, ti lascia completare la
-  pagina nel browser e poi riprende il batch;
+- il profilo Anki/QWebEngine dedicato in `data/forvo-anki-profile/` mantiene
+  cookie e stato della sessione usata dal fetcher;
+- se Cloudflare o il login richiedono intervento, la finestra Anki/QWebEngine
+  resta disponibile per completare la pagina e poi il batch riprende;
 - salva l'audio in `content/media/<slug>/assets/audio/...`;
 - aggiorna `content/media/<slug>/pronunciations.json` con `audio_source: "forvo"`.
 - aggiorna anche `content/media/<slug>/workflow/pronunciation-pending.json`
@@ -112,7 +112,11 @@ Quando Forvo non espone una pronuncia giapponese per la parola/frase:
 
 Opzioni utili:
 
-- `--no-open`: non apre automaticamente l'URL nel browser;
+- `--anki-base-dir /path`: isola il profilo Anki/QWebEngine che mantiene cookie
+  e stato Forvo;
+- `--anki-app /path/to/launcher`: usa un launcher Anki diverso dal default
+  `/Applications/Anki.app/Contents/MacOS/launcher`;
+- `--browser-timeout-ms 120000`: cambia il timeout massimo del batch Anki;
 - `--known-missing-file /path`: file JSON dove salvare i miss persistenti;
 - `--request-registry-file /path`: file JSON dove salvare le richieste
   `word-add` gia aperte;
@@ -232,8 +236,9 @@ term-taberu
 - il residuo operativo corrente vive in
   `content/media/<slug>/workflow/pronunciation-pending.json`;
 - `--refresh` forza il rimpiazzo anche se l'entry ha gia audio locale;
-- `--profile-dir` permette di isolare un profilo browser diverso;
-- `--keep-browser-open` lascia il browser aperto a fine batch per debug.
+- `--anki-base-dir` permette di isolare un profilo Anki/QWebEngine diverso;
+- `--profile-dir` resta solo alias legacy di `--anki-base-dir`;
+- `--keep-browser-open` lascia Anki aperto a fine batch per debug.
 
 ## Esperimento Anki addon 1784714388
 

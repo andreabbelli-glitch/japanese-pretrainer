@@ -58,5 +58,5 @@ done
 if [[ "$has_mode" -eq 1 ]]; then
   ./scripts/with-node.sh pnpm pronunciations:resolve -- "${args[@]}"
 else
-  ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual "${args[@]}"
+  ./scripts/with-node.sh pnpm pronunciations:forvo -- "${args[@]}"
 fi
