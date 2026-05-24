@@ -45,6 +45,10 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 - il registry `data/forvo-requested-word-add.json` e' storico: quando una entry
   ottiene poi un audio locale, il workflow la marca automaticamente come
   `resolved` nello stesso file, senza rimuovere la traccia della richiesta;
+- quando Forvo ha poi soddisfatto richieste storiche, l'importer
+  `pnpm pronunciations:forvo:import-requested` puo importare un indice audio
+  estratto da una sessione browser autenticata, scaricare il file diretto e
+  aggiornare lo stesso storico;
 - gli URL `word-add` includono anche hint di prefill (`jcs_lang`, `jcs_phrase`,
   `jcs_person_name`, `jcs_autosubmit`) per lo userscript Tampermonkey locale;
 - quando il label contiene varianti separate da slash ASCII (`/`), l'URL
@@ -74,6 +78,7 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --words-file tmp/forvo-list.tsv
 ./scripts/with-node.sh pnpm pronunciations:forvo:request
 ./scripts/with-node.sh pnpm pronunciations:forvo:request -- --media duel-masters-dm25
+./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
 ```
 
 ## Modalita manuale consigliata
@@ -115,6 +120,40 @@ Opzioni utili:
 
 Il vecchio flag `--no-open-word-add-on-skip` non e piu un flusso valido: se
 viene passato, il comando fallisce invece di saltare il prefill della richiesta.
+
+## Import richieste Forvo gia soddisfatte
+
+Quando vuoi riallineare il repo con la pagina account Forvo
+`/account-info/pronunciations/requested-pronunciations/`, usa una sessione
+browser autenticata per scandire la lista richieste e creare un indice audio
+locale con le entry disponibili. L'indice deve contenere, per ogni entry, il
+target locale (`mediaSlug`, `entryKind`, `entryId`) e il candidato Forvo scelto
+con `audioCandidates` diretti.
+
+Poi importa l'indice:
+
+```bash
+./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
+```
+
+L'importer:
+
+- salta le entry che hanno gia audio locale, salvo `--refresh`;
+- prova i candidati audio diretti in ordine;
+- se il download disponibile e' OGG, lo converte automaticamente in MP3 con
+  `ffmpeg`;
+- salva il file come `forvo-<speaker>-<reading-or-label>.mp3`;
+- aggiorna `pronunciations.json`, rimuove le entry risolte da
+  `data/forvo-known-missing.json`, marca le richieste in
+  `data/forvo-requested-word-add.json` con `resolvedAt` e aggiorna
+  `workflow/pronunciation-pending.json`.
+
+Usa prima `--dry-run` quando l'indice e' nuovo o costruito con euristiche
+diverse:
+
+```bash
+./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json --dry-run
+```
 
 ## Userscript Tampermonkey
 
@@ -174,6 +213,9 @@ term-taberu
 - le richieste `word-add` gia aperte finiscono di default in
   `data/forvo-requested-word-add.json`; le entry risolte restano nello storico
   ma vengono annotate con `resolvedAt` e metadata dell'audio trovato;
+- le richieste storiche soddisfatte possono essere importate in batch con
+  `pnpm pronunciations:forvo:import-requested` dopo aver estratto un indice
+  dalla pagina account Forvo autenticata;
 - il residuo operativo corrente vive in
   `content/media/<slug>/workflow/pronunciation-pending.json`;
 - `--refresh` forza il rimpiazzo anche se l'entry ha gia audio locale;

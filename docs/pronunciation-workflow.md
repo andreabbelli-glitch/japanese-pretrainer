@@ -14,10 +14,17 @@ usa il resolver del repo. Il workflow effettivo e':
    `pronunciations.json`;
 3. riusare audio gia presenti in altri media compatibili;
 4. mandare a Forvo manuale solo il residuo senza audio e non known-missing;
-5. aggiornare manifest, asset locali, pending list e storico word-add.
+5. importare periodicamente le richieste Forvo storiche che sono state
+   soddisfatte;
+6. aggiornare manifest, asset locali, pending list e storico word-add.
 
 Forvo manuale e' l'unico meccanismo di recupero esterno delle pronunce audio.
 Il riuso interno resta obbligatorio prima di aprire Forvo.
+
+Il backfill da richieste Forvo gia soddisfatte passa invece da un indice audio
+estratto da una sessione browser autenticata e importato con
+`pnpm pronunciations:forvo:import-requested`. Non sostituisce il resolver: serve
+solo a chiudere in massa entry gia passate da `word-add`.
 
 ## Entry point standard
 
@@ -77,6 +84,25 @@ Durante il batch:
 
 La documentazione operativa dettagliata di Forvo e' in
 `docs/forvo-pronunciation-fetch.md`.
+
+## Richieste Forvo soddisfatte
+
+Quando il backlog `word-add` e' stato pronunciato da altri utenti Forvo:
+
+1. apri la pagina account Forvo delle requested pronunciations in una sessione
+   autenticata;
+2. scandisci tutte le pagine e incrocia le righe disponibili con
+   `data/forvo-requested-word-add.json`;
+3. costruisci un indice audio locale con il candidato scelto per ogni entry;
+4. importa l'indice:
+
+```bash
+./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
+```
+
+L'importer scarica direttamente l'audio Forvo indicizzato, converte OGG in MP3,
+aggiorna i manifest e marca risolte le richieste storiche. Usa `--dry-run`
+prima di una nuova euristica di matching.
 
 ## Guardrail
 

@@ -4,16 +4,31 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-a-and-b",
+      "audio_src": "assets/audio/grammar/grammar-a-and-b/forvo-mezashi-a-b.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/a%EF%BC%86b/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ga-hyouji-sareru",
+      "audio_src": "assets/audio/grammar/grammar-ga-hyouji-sareru/forvo-mezashi-ひょうし-される.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%81%8C%E8%A1%A8%E7%A4%BA%E3%81%95%E3%82%8C%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-ga-kaihou-sareru",
+      "audio_src": "assets/audio/grammar/grammar-ga-kaihou-sareru/forvo-mezashi-かいほうされる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%81%8C%E8%A7%A3%E6%94%BE%E3%81%95%E3%82%8C%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -34,11 +49,21 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-wo-setto-suru",
+      "audio_src": "assets/audio/grammar/grammar-wo-setto-suru/forvo-mezashi-をセットする.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%82%92%E3%82%BB%E3%83%83%E3%83%88%E3%81%99%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-wo-tacchi-suru",
+      "audio_src": "assets/audio/grammar/grammar-wo-tacchi-suru/forvo-mezashi-をタッチする.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%82%92%E3%82%BF%E3%83%83%E3%83%81%E3%81%99%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -307,6 +332,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-gquuuuuux-omega-psycommu",
+      "audio_src": "assets/audio/term/term-gquuuuuux-omega-psycommu/forvo-mezashi-し-ーくあくす-おめか-さいこみゅ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/gquuuuuux_%28%E3%82%AA%E3%83%A1%E3%82%AC%E3%83%BB%E3%82%B5%E3%82%A4%E3%82%B3%E3%83%9F%E3%83%A5%29/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -554,6 +584,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-shuji-itou",
+      "audio_src": "assets/audio/term/term-shuji-itou/forvo-mezashi-しゅうし-いとう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B7%E3%83%A5%E3%82%A6%E3%82%B8%E3%83%BB%E3%82%A4%E3%83%88%E3%82%A6/#ja",
       "pitch_accent_status": "miss"
     },
     {

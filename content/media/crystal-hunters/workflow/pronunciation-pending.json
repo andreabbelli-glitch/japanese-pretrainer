@@ -2,8 +2,8 @@
   "version": 1,
   "media_slug": "crystal-hunters",
   "total_targets": 543,
-  "audio_backed_count": 0,
-  "known_missing_count": 1,
+  "audio_backed_count": 1,
+  "known_missing_count": 0,
   "pending_count": 542,
   "pending": [
     {

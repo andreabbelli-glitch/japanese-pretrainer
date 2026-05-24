@@ -11,6 +11,8 @@ Use this skill for the Japanese Custom Study repo when the user wants Codex to:
 - add missing pronunciation audio to flashcards or media bundles;
 - inspect and refresh the pending pronunciation backlog;
 - fetch Japanese pronunciation audio from Forvo;
+- import historically requested Forvo pronunciations once they have been
+  fulfilled;
 - use a real logged-in browser/manual session;
 - process a list of words or entry ids;
 - write audio files into `content/media/<slug>/assets/audio/...`;
@@ -75,7 +77,18 @@ typically at:
     command for explicit fallback batches and debug. Only use the raw automated
     Playwright path without `--manual` when the user explicitly wants to test
     or debug the browser fetcher.
-15. This skill normally updates pronunciation audio artifacts only. If the same
+15. For Forvo requests that were already submitted through `word-add` and later
+    fulfilled, scan the authenticated Forvo account requested-pronunciations
+    page, build an audio index, then import it with:
+
+```bash
+./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
+```
+
+    The importer downloads the indexed direct audio, converts OGG to MP3, marks
+    matching `data/forvo-requested-word-add.json` entries as resolved, removes
+    matching known-missing rows, and refreshes pending summaries.
+16. This skill normally updates pronunciation audio artifacts only. If the same
     task also creates or revises local flashcard entries, run the pitch accent
     workflow after the content edit and before import, targeted to those new
     entries:
@@ -83,7 +96,7 @@ typically at:
     Pass multiple `--entry` flags as needed; use `--word` / `--words-file`
     only when the entry IDs are not available. Do not use a whole-media pitch
     accent fetch for normal content-creation follow-up.
-16. This skill does not define textbook prose. If a pronunciation request
+17. This skill does not define textbook prose. If a pronunciation request
     expands into creating or revising lesson text, load the relevant
     content-building workflow and follow
     `docs/llm-kit/general/10-textbook-lesson-style-standard.md` for voice and
@@ -117,6 +130,9 @@ typically at:
 - Use only the unresolved remainder as Forvo input; do not run Forvo blindly on
   the whole bundle by default.
 - For normal user-facing runs, manual mode is mandatory. If you need the Playwright path, state clearly that you are switching to a debug flow.
+- For account requested-pronunciation backfills, only import entries that can be
+  matched to local `word-add` history and have a concrete audio candidate in the
+  extracted index.
 - Never launch manual Forvo from a non-TTY Codex command. Use `tty: true`, then
   confirm the output includes the browser skip URL before asking the user to
   download or skip entries.

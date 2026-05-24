@@ -3562,6 +3562,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-kiritsukeru",
+      "audio_src": "assets/audio/term/term-kiritsukeru/forvo-lisanaka3-きりつける.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "lisanaka3",
+      "audio_attribution": "lisanaka3 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%88%87%E3%82%8A%E3%81%A4%E3%81%91%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {

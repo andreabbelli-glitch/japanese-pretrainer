@@ -144,6 +144,7 @@ Workflow pronunce:
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --entry term-cost
+./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
 ```
 
 `pronunciations:resolve` e il percorso operativo standard: seleziona i target
@@ -158,6 +159,11 @@ Il fallback Forvo manuale richiede un TTY interattivo: in Codex va lanciato con
 `tty: true`, cosi il comando espone anche `http://127.0.0.1:3210/skip`. Gli
 skip aprono sempre la richiesta `word-add/...` precompilata e la registrano in
 `data/forvo-requested-word-add.json`.
+
+Quando una richiesta storica e' stata soddisfatta su Forvo, importa l'indice
+audio estratto dalla pagina account autenticata con
+`pronunciations:forvo:import-requested`; il comando scarica il file diretto,
+converte OGG in MP3 e aggiorna manifest, registri Forvo e pending summary.
 
 Workflow optimizer FSRS:
 

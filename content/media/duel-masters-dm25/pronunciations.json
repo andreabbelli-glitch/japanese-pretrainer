@@ -43,6 +43,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-deck-empty-demo-makenai",
+      "audio_src": "assets/audio/grammar/grammar-deck-empty-demo-makenai/forvo-mezashi-し-ふ-んのやまふた-にかーと-か-なくなっても-し-ふ-んはけ-ーむにまけない.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%87%AA%E5%88%86%E3%81%AE%E5%B1%B1%E6%9C%AD%E3%81%AB%E3%82%AB%E3%83%BC%E3%83%89%E3%81%8C%E3%81%AA%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%A6%E3%82%82%E3%80%81%E8%87%AA%E5%88%86%E3%81%AF%E3%82%B2%E3%83%BC%E3%83%A0%E3%81%AB%E8%B2%A0%E3%81%91%E3%81%AA%E3%81%84/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -106,6 +111,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-hitotsu-demo",
+      "audio_src": "assets/audio/grammar/grammar-hitotsu-demo/forvo-mezashi-ひとつて-も.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/1%E3%81%A4%E3%81%A7%E3%82%82/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -225,6 +235,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-koushite-misetamushoku-card-1-nitsuki",
+      "audio_src": "assets/audio/grammar/grammar-koushite-misetamushoku-card-1-nitsuki/forvo-mezashi-こうしてみせたむしょくかーと-いちまいにつき.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%93%E3%81%86%E3%81%97%E3%81%A6%E8%A6%8B%E3%81%9B%E3%81%9F%E7%84%A1%E8%89%B2%E3%82%AB%E3%83%BC%E3%83%891%E6%9E%9A%E3%81%AB%E3%81%A4%E3%81%8D/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -266,6 +281,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-misetakado-wa-subete",
+      "audio_src": "assets/audio/grammar/grammar-misetakado-wa-subete/forvo-mezashi-みせたかーと-はすへ-て.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A6%8B%E3%81%9B%E3%81%9F%E3%82%AB%E3%83%BC%E3%83%89%E3%81%AF%E3%81%99%E3%81%B9%E3%81%A6/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -311,6 +331,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-nokori-no-game-chuu",
+      "audio_src": "assets/audio/grammar/grammar-nokori-no-game-chuu/forvo-mezashi-のこりのけ-ーむちゅう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%AE%8B%E3%82%8A%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E4%B8%AD/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -450,6 +475,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-suterareta-toki",
+      "audio_src": "assets/audio/grammar/grammar-suterareta-toki/forvo-mezashi-すてられたとき.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%8D%A8%E3%81%A6%E3%82%89%E3%82%8C%E3%81%9F%E6%99%82/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -554,6 +584,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-uramuki-no-mama",
+      "audio_src": "assets/audio/grammar/grammar-uramuki-no-mama/forvo-mezashi-うらむきのまま.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A3%8F%E5%90%91%E3%81%8D%E3%81%AE%E3%81%BE%E3%81%BE/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -568,6 +603,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-yamafuda-no-ue-ka-shita-no-dochiraka-ni-modosu",
+      "audio_src": "assets/audio/grammar/grammar-yamafuda-no-ue-ka-shita-no-dochiraka-ni-modosu/forvo-mezashi-やまふた-のうえかしたのと-ちらかにもと-す.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%B1%B1%E6%9C%AD%E3%81%AE%E4%B8%8A%E3%81%8B%E4%B8%8B%E3%81%AE%E3%81%A9%E3%81%A1%E3%82%89%E3%81%8B%E3%81%AB%E6%88%BB%E3%81%99/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -650,16 +690,31 @@
     {
       "entry_type": "term",
       "entry_id": "term-abyss-royal",
+      "audio_src": "assets/audio/term/term-abyss-royal/forvo-mezashi-あひ-すろいやる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A2%E3%83%93%E3%82%B9%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%AB/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-abyss-rush",
+      "audio_src": "assets/audio/term/term-abyss-rush/forvo-mezashi-あひ-すらっしゅ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A2%E3%83%93%E3%82%B9%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-abyssbell-jashintei",
+      "audio_src": "assets/audio/term/term-abyssbell-jashintei/forvo-mezashi-あひ-すへ-るし-ゃしんてい.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A2%E3%83%93%E3%82%B9%E3%83%99%E3%83%AB%3D%E3%82%B8%E3%83%A3%E3%82%B7%E3%83%B3%E5%B8%9D/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -689,11 +744,21 @@
     {
       "entry_type": "term",
       "entry_id": "term-add-turn",
+      "audio_src": "assets/audio/term/term-add-turn/forvo-mezashi-たーんをついかする.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-apollonus-dragelion",
+      "audio_src": "assets/audio/term/term-apollonus-dragelion/forvo-mezashi-あほ-ろぬす-と-らけ-りおん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A2%E3%83%9D%E3%83%AD%E3%83%8C%E3%82%B9%E3%83%BB%E3%83%89%E3%83%A9%E3%82%B2%E3%83%AA%E3%82%AA%E3%83%B3/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -747,6 +812,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-attack-target",
+      "audio_src": "assets/audio/term/term-attack-target/forvo-mezashi-こうけ-きさき.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%94%BB%E6%92%83%E5%85%88/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -769,21 +839,41 @@
     {
       "entry_type": "term",
       "entry_id": "term-babyponnosuke",
+      "audio_src": "assets/audio/term/term-babyponnosuke/forvo-mezashi-へ-いひ-ーほ-んのすけ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%99%E3%82%A4%E3%83%93%E3%83%BC%E3%83%9D%E3%83%B3%E3%81%AE%E5%8A%A9/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-bad-brand-first",
+      "audio_src": "assets/audio/term/term-bad-brand-first/forvo-mezashi-は-っと-ふ-らんと-ふぁーすと.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E2%80%9C%E7%BD%B0%E6%80%92%E2%80%9D%E3%83%96%E3%83%A9%E3%83%B3%E3%83%89_1st/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-balga-raizou-super-heavenly-nova",
+      "audio_src": "assets/audio/term/term-balga-raizou-super-heavenly-nova/forvo-mezashi-ちょうてんせい-は-るか-らいそ-う.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%B6%85%E5%A4%A9%E6%98%9F%E3%83%90%E3%83%AB%E3%82%AC%E3%83%A9%E3%82%A4%E3%82%BE%E3%82%A6/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade",
+      "audio_src": "assets/audio/term/term-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade/forvo-mezashi-うらき-りか-くれうらそうとう-は-るか-りすく.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A3%8F%E6%96%AC%E9%9A%A0%E8%A3%8F%E8%92%BC%E9%A0%AD%E3%83%90%E3%83%AB%E3%82%AC%E3%83%AA%E3%82%B9%E3%82%AF/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -801,26 +891,51 @@
     {
       "entry_type": "term",
       "entry_id": "term-battle-saseru",
+      "audio_src": "assets/audio/term/term-battle-saseru/forvo-mezashi-は-とるさせる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%90%E3%83%88%E3%83%AB%E3%81%95%E3%81%9B%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-battle-zone",
+      "audio_src": "assets/audio/term/term-battle-zone/forvo-mezashi-は-とるそ-ーん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%90%E3%83%88%E3%83%AB%E3%82%BE%E3%83%BC%E3%83%B3/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-bauwauja",
+      "audio_src": "assets/audio/term/term-bauwauja/forvo-mezashi-しんえんのさんほうこう-は-うわうし-ゃ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%B7%B1%E6%B7%B5%E3%81%AE%E4%B8%89%E5%92%86%E5%93%AE_%E3%83%90%E3%82%A6%E3%83%AF%E3%82%A6%E3%82%B8%E3%83%A3/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-beat-jockey",
+      "audio_src": "assets/audio/term/term-beat-jockey/forvo-mezashi-ひ-ーとし-ょっきー.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%93%E3%83%BC%E3%83%88%E3%82%B8%E3%83%A7%E3%83%83%E3%82%AD%E3%83%BC/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-beethoven-zenith-of-horror",
+      "audio_src": "assets/audio/term/term-beethoven-zenith-of-horror/forvo-mezashi-せんりつ-の-いたた-き-へ-ーとーへ-ん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%80%8C%E6%88%A6%E6%85%84%E3%80%8D%E3%81%AE%E9%A0%82_%E3%83%99%E3%83%BC%E3%83%88%E3%83%BC%E3%83%99%E3%83%B3/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -846,11 +961,21 @@
     {
       "entry_type": "term",
       "entry_id": "term-bolzard-superhero",
+      "audio_src": "assets/audio/term/term-bolzard-superhero/forvo-mezashi-ほ-るさ-ーと-すーは-ーひーろー.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%9C%E3%83%AB%E3%82%B6%E3%83%BC%E3%83%89%E3%83%BB%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%92%E3%83%BC%E3%83%AD%E3%83%BC/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-bottom-of-deck",
+      "audio_src": "assets/audio/term/term-bottom-of-deck/forvo-mezashi-やまふた-のいちは-んした.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%B1%B1%E6%9C%AD%E3%81%AE%E4%B8%80%E7%95%AA%E4%B8%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -868,21 +993,41 @@
     {
       "entry_type": "term",
       "entry_id": "term-bulk-claim",
+      "audio_src": "assets/audio/term/term-bulk-claim/forvo-mezashi-いっかつうけとり.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%B8%80%E6%8B%AC%E5%8F%97%E3%81%91%E5%8F%96%E3%82%8A/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-card-exchange",
+      "audio_src": "assets/audio/term/term-card-exchange/forvo-mezashi-かーと-こうかん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AB%E3%83%BC%E3%83%89%E4%BA%A4%E6%8F%9B/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-card-pack-purchase",
+      "audio_src": "assets/audio/term/term-card-pack-purchase/forvo-mezashi-かーと-は-っくこうにゅう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AB%E3%83%BC%E3%83%89%E3%83%91%E3%83%83%E3%82%AF%E8%B3%BC%E5%85%A5/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-card-purchase",
+      "audio_src": "assets/audio/term/term-card-purchase/forvo-mezashi-かーと-こうにゅう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AB%E3%83%BC%E3%83%89%E8%B3%BC%E5%85%A5/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -936,6 +1081,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-civil-count",
+      "audio_src": "assets/audio/term/term-civil-count/forvo-mezashi-しひ-るかうんと.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B7%E3%83%93%E3%83%AB%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -953,16 +1103,31 @@
     {
       "entry_type": "term",
       "entry_id": "term-claim-deadline",
+      "audio_src": "assets/audio/term/term-claim-deadline/forvo-mezashi-うけとりきけ-ん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8F%97%E3%81%91%E5%8F%96%E3%82%8A%E6%9C%9F%E9%99%90/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-claim-history",
+      "audio_src": "assets/audio/term/term-claim-history/forvo-mezashi-うけとりりれき.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8F%97%E3%81%91%E5%8F%96%E3%82%8A%E5%B1%A5%E6%AD%B4/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-colorless-spell",
+      "audio_src": "assets/audio/term/term-colorless-spell/forvo-mezashi-むしょく-し-ゅもん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%84%A1%E8%89%B2%E5%91%AA%E6%96%87/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1004,6 +1169,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-constructed-deck-purchase",
+      "audio_src": "assets/audio/term/term-constructed-deck-purchase/forvo-mezashi-こうちくす-みて-っきこうにゅう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%A7%8B%E7%AF%89%E6%B8%88%E3%81%BF%E3%83%87%E3%83%83%E3%82%AD%E8%B3%BC%E5%85%A5/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1033,6 +1203,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-crash-hadou",
+      "audio_src": "assets/audio/term/term-crash-hadou/forvo-mezashi-しょうりりゅうそう-くらっしゅはと-う.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8B%9D%E5%88%A9%E9%BE%8D%E8%A3%85_%E3%82%AF%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E2%80%9C%E8%A6%87%E9%81%93%E2%80%9D/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1047,11 +1222,21 @@
     {
       "entry_type": "term",
       "entry_id": "term-crossgear",
+      "audio_src": "assets/audio/term/term-crossgear/forvo-mezashi-くろすき-あ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%AE%E3%82%A2/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-d2-field",
+      "audio_src": "assets/audio/term/term-d2-field/forvo-mezashi-て-ぃーつーふぃーると.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/d2%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1128,6 +1313,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-death-puppet",
+      "audio_src": "assets/audio/term/term-death-puppet/forvo-mezashi-て-すは-へ-っと.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%87%E3%82%B9%E3%83%91%E3%83%9A%E3%83%83%E3%83%88/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1145,11 +1335,21 @@
     {
       "entry_type": "term",
       "entry_id": "term-deck-edit",
+      "audio_src": "assets/audio/term/term-deck-edit/forvo-mezashi-て-っきへんせい.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%87%E3%83%83%E3%82%AD%E7%B7%A8%E6%88%90/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-deck-list",
+      "audio_src": "assets/audio/term/term-deck-list/forvo-mezashi-て-っきいちらん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%87%E3%83%83%E3%82%AD%E4%B8%80%E8%A6%A7/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1191,6 +1391,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-dm-points",
+      "audio_src": "assets/audio/term/term-dm-points/forvo-mezashi-て-ぃーえむほ-いんと.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/dm%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1201,16 +1406,31 @@
     {
       "entry_type": "term",
       "entry_id": "term-doorknocker-nordocker",
+      "audio_src": "assets/audio/term/term-doorknocker-nordocker/forvo-mezashi-と-あのっか-のあと-っか.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%89%E3%82%A2%E3%83%8E%E3%83%83%E3%82%AB%EF%BC%9D%E3%83%8E%E3%82%A2%E3%83%89%E3%83%83%E3%82%AB/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-dragheart",
+      "audio_src": "assets/audio/term/term-dragheart/forvo-mezashi-と-らく-はーと.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%89%E3%83%A9%E3%82%B0%E3%83%8F%E3%83%BC%E3%83%88/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-dragocalypse-day",
+      "audio_src": "assets/audio/term/term-dragocalypse-day/forvo-mezashi-と-らこ-かりふ-す-て-い.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%89%E3%83%A9%E3%82%B4%E3%82%AB%E3%83%AA%E3%83%97%E3%82%B9%E3%83%BB%E3%83%87%E3%82%A4/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1228,6 +1448,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-dragonguild",
+      "audio_src": "assets/audio/term/term-dragonguild/forvo-mezashi-と-らこ-んき-ると.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%AE%E3%83%AB%E3%83%89/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1245,6 +1470,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-enter-battle-zone-tapped",
+      "audio_src": "assets/audio/term/term-enter-battle-zone-tapped/forvo-mezashi-たっふ-しておく.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%BF%E3%83%83%E3%83%97%E3%81%97%E3%81%A6%E7%BD%AE%E3%81%8F/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1274,6 +1504,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-eternal-omega",
+      "audio_src": "assets/audio/term/term-eternal-omega/forvo-mezashi-えたーなる-おめか.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A8%E3%82%BF%E3%83%BC%E3%83%8A%E3%83%AB%E3%83%BB%CF%89/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1291,6 +1526,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-evolution-creature",
+      "audio_src": "assets/audio/term/term-evolution-creature/forvo-mezashi-しんかくりーちゃー.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%80%B2%E5%8C%96%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1308,6 +1548,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-exchange-period",
+      "audio_src": "assets/audio/term/term-exchange-period/forvo-mezashi-こうかんきかん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BA%A4%E6%8F%9B%E6%9C%9F%E9%96%93/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1334,6 +1579,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-felix-misery",
+      "audio_src": "assets/audio/term/term-felix-misery/forvo-mezashi-ふぇりっくす-みさ-りぃ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%95%E3%82%A7%E3%83%AA%E3%83%83%E3%82%AF%E3%82%B9%E3%83%BB%E3%83%9F%E3%82%B6%E3%83%AA%E3%82%A3/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1344,21 +1594,41 @@
     {
       "entry_type": "term",
       "entry_id": "term-g-neo-creature",
+      "audio_src": "assets/audio/term/term-g-neo-creature/forvo-mezashi-し-ーねおくりーちゃー.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/g-neo%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-g-strike",
+      "audio_src": "assets/audio/term/term-g-strike/forvo-mezashi-か-ーと-すとらいく.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/g%E3%83%BB%E3%82%B9%E3%83%88%E3%83%A9%E3%82%A4%E3%82%AF/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-g-zero",
+      "audio_src": "assets/audio/term/term-g-zero/forvo-mezashi-し-ーせ-ろ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/g%E3%83%BB%E3%82%BC%E3%83%AD/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-gouhaten-tsukumogatari",
+      "audio_src": "assets/audio/term/term-gouhaten-tsukumogatari/forvo-mezashi-こ-うはてんつくもか-たり.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%BD%9F%E7%A0%B4%E5%A4%A9%E4%B9%9D%E5%8D%81%E4%B9%9D%E8%AA%9E/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1376,6 +1646,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-gransect",
+      "audio_src": "assets/audio/term/term-gransect/forvo-mezashi-く-らんせくと.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B0%E3%83%A9%E3%83%B3%E3%82%BB%E3%82%AF%E3%83%88/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1413,6 +1688,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-hanasaki-gelgranos",
+      "audio_src": "assets/audio/term/term-hanasaki-gelgranos/forvo-mezashi-はなさき-け-るく-らのす.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%8F%E3%83%8A%E3%82%B5%E3%82%AD%E3%83%BB%E3%82%B2%E3%83%AB%E3%82%B0%E3%83%A9%E3%83%8E%E3%82%B9/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1502,6 +1782,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-hyoujishiteiru",
+      "audio_src": "assets/audio/term/term-hyoujishiteiru/forvo-mezashi-ひょうし-している.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1537,6 +1822,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-infelstarge",
+      "audio_src": "assets/audio/term/term-infelstarge/forvo-mezashi-いんふぇるすたーし-ゅ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A4%E3%83%B3%E3%83%95%E3%82%A7%E3%83%AB%E6%98%9F%E6%A8%B9/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1578,16 +1868,31 @@
     {
       "entry_type": "term",
       "entry_id": "term-jablood",
+      "audio_src": "assets/audio/term/term-jablood/forvo-mezashi-し-ゃふ-らっと.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B8%E3%83%A3%E3%83%96%E3%83%A9%E3%83%83%E3%83%89/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-jashinnyuu",
+      "audio_src": "assets/audio/term/term-jashinnyuu/forvo-mezashi-し-ゃしんにゅう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%82%AA%E4%BE%B5%E5%85%A5/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-jenny-jane",
+      "audio_src": "assets/audio/term/term-jenny-jane/forvo-mezashi-こくかいにんき-ょう-し-ぇにー-し-ぇーん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%88%BB%E8%A7%A3%E4%BA%BA%E5%BD%A2%E3%82%B8%E3%82%A7%E3%83%8B%E3%83%BC%E3%83%BB%E3%82%B8%E3%82%A7%E3%83%BC%E3%83%B3/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1629,6 +1934,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-judgment-emblem",
+      "audio_src": "assets/audio/term/term-judgment-emblem/forvo-mezashi-さは-きのもんしょう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A3%81%E3%81%8D%E3%81%AE%E7%B4%8B%E7%AB%A0/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1646,6 +1956,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-justdiver",
+      "audio_src": "assets/audio/term/term-justdiver/forvo-mezashi-し-ゃすとた-いは-ー.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B8%E3%83%A3%E3%82%B9%E3%83%88%E3%83%80%E3%82%A4%E3%83%90%E3%83%BC/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1663,6 +1978,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-kaki-ni-hyoujishiteiru",
+      "audio_src": "assets/audio/term/term-kaki-ni-hyoujishiteiru/forvo-mezashi-かきにひょうし-している.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%B8%8B%E8%A8%98%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1692,6 +2012,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-kakumei-change",
+      "audio_src": "assets/audio/term/term-kakumei-change/forvo-mezashi-かくめいチェンシ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%9D%A9%E5%91%BD%E3%83%81%E3%82%A7%E3%83%B3%E3%82%B8/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1745,21 +2070,41 @@
     {
       "entry_type": "term",
       "entry_id": "term-kenzan-no-sabaki",
+      "audio_src": "assets/audio/term/term-kenzan-no-sabaki/forvo-mezashi-けんさ-んのさは-き.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%89%A3%E5%8F%82%E3%83%8E%E8%A3%81%E3%82%AD/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-key-card",
+      "audio_src": "assets/audio/term/term-key-card/forvo-mezashi-きーかーと.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AD%E3%83%BC%E3%82%AB%E3%83%BC%E3%83%89/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-kingdom-ohkabuto",
+      "audio_src": "assets/audio/term/term-kingdom-ohkabuto/forvo-mezashi-きんく-た-む-おうかふ-と.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AD%E3%83%B3%E3%82%B0%E3%83%80%E3%83%A0%E3%83%BB%E3%82%AA%E3%82%A6%E7%A6%8D%E6%AD%A6%E6%96%97/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-kirifudash",
+      "audio_src": "assets/audio/term/term-kirifudash/forvo-mezashi-きりふた-っしゅ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AD%E3%83%AA%E3%83%95%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1801,6 +2146,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-kuromame-danshaku",
+      "audio_src": "assets/audio/term/term-kuromame-danshaku/forvo-mezashi-くろまめた-んしゃく.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%BB%92%E8%B1%86%E3%81%A0%E3%82%93%E3%81%97%E3%82%83%E3%81%8F/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1818,11 +2168,21 @@
     {
       "entry_type": "term",
       "entry_id": "term-legend-battle",
+      "audio_src": "assets/audio/term/term-legend-battle/forvo-mezashi-れし-ぇんと-は-とる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%AC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%89%E3%83%90%E3%83%88%E3%83%AB/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-legend-skill",
+      "audio_src": "assets/audio/term/term-legend-skill/forvo-mezashi-れし-ぇんと-すきる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%AC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%89%E3%82%B9%E3%82%AD%E3%83%AB/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1840,21 +2200,41 @@
     {
       "entry_type": "term",
       "entry_id": "term-login-bonus",
+      "audio_src": "assets/audio/term/term-login-bonus/forvo-mezashi-ろく-いんほ-ーなす.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%8A%E3%82%B9/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-mach-fighter",
+      "audio_src": "assets/audio/term/term-mach-fighter/forvo-mezashi-まっはふぁいたー.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%9E%E3%83%83%E3%83%8F%E3%83%95%E3%82%A1%E3%82%A4%E3%82%BF%E3%83%BC/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-madougu",
+      "audio_src": "assets/audio/term/term-madougu/forvo-mezashi-まと-うく.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%AD%94%E5%B0%8E%E5%85%B7/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-mafi-gang",
+      "audio_src": "assets/audio/term/term-mafi-gang/forvo-mezashi-まふぃ-き-ゃんく.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%9E%E3%83%95%E3%82%A3%E3%83%BB%E3%82%AE%E3%83%A3%E3%83%B3%E3%82%B0/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1878,6 +2258,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-maou-de-szark",
+      "audio_src": "assets/audio/term/term-maou-de-szark/forvo-mezashi-まおう-て-すさ-ーく.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%AD%94%E5%87%B0_%E3%83%87%E3%83%BB%E3%82%B9%E3%82%B6%E3%83%BC%E3%82%AF/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -2006,6 +2391,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-mugestsu-no-mon-zetsu",
+      "audio_src": "assets/audio/term/term-mugestsu-no-mon-zetsu/forvo-mezashi-むけ-つのもんせ-つ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%84%A1%E6%9C%88%E3%81%AE%E9%96%80%E3%83%BB%E7%B5%B6/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -2269,6 +2659,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-pack-kara-nyuushu",
+      "audio_src": "assets/audio/term/term-pack-kara-nyuushu/forvo-mezashi-ハ-ックからにゅうしゅ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%91%E3%83%83%E3%82%AF%E3%81%8B%E3%82%89%E5%85%A5%E6%89%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -2606,6 +3001,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-shiyou-kanou",
+      "audio_src": "assets/audio/term/term-shiyou-kanou/forvo-mezashi-しようかのう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%83%BD/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -2679,6 +3079,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-sofa-softysonia",
+      "audio_src": "assets/audio/term/term-sofa-softysonia/forvo-mezashi-そふぁ-そふてぃそにあ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%BD%E3%83%95%E3%82%A1%EF%BC%9D%E3%82%BD%E3%83%95%E3%83%86%E3%82%A3%E3%82%BD%E3%83%8B%E3%82%A2/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -2832,6 +3237,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-superdimension-zone",
+      "audio_src": "assets/audio/term/term-superdimension-zone/forvo-mezashi-ちょうし-け-んそ-ーん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%B6%85%E6%AC%A1%E5%85%83%E3%82%BE%E3%83%BC%E3%83%B3/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -2867,6 +3277,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-tamaseed-creature",
+      "audio_src": "assets/audio/term/term-tamaseed-creature/forvo-mezashi-たましーと-くりーちゃー.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%BF%E3%83%9E%E3%82%B7%E3%83%BC%E3%83%89%E3%83%BB%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -2935,6 +3350,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-tokuten-card-wo-kakutoku-shimasu",
+      "audio_src": "assets/audio/term/term-tokuten-card-wo-kakutoku-shimasu/forvo-mezashi-とくてんカート-をかくとくします.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%89%B9%E5%85%B8%E3%82%AB%E3%83%BC%E3%83%89%E3%82%92%E7%8D%B2%E5%BE%97%E3%81%97%E3%81%BE%E3%81%99/#ja",
       "pitch_accent_status": "miss"
     },
     {

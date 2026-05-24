@@ -273,6 +273,7 @@ pnpm pronunciations:pending
 pnpm pronunciations:reuse
 pnpm pronunciations:forvo
 pnpm pronunciations:forvo:request
+pnpm pronunciations:forvo:import-requested
 pnpm pitch-accents:fetch
 pnpm image:status
 pnpm image:apply
@@ -302,6 +303,10 @@ cross-media e manda a Forvo manuale solo il residuo.
 `pnpm pronunciations:forvo` resta disponibile come comando low-level per batch
 mirati di fallback o debug del fetcher. La source of truth operativa e
 [`docs/pronunciation-workflow.md`](./docs/pronunciation-workflow.md).
+
+Per importare pronunce richieste su Forvo e poi soddisfatte da altri utenti,
+usa `pnpm pronunciations:forvo:import-requested` con un indice audio estratto
+dalla pagina account Forvo autenticata.
 
 ## Workflow pitch accent
 
