@@ -2,7 +2,7 @@
 id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 media_id: media-crystal-hunters
 slug: book-9-l03-strategie-resa-e-ferite
-title: "Strategie, resa e ferite"
+title: "Strategie, ferite e intervento diretto"
 order: 920
 segment_ref: book-9
 difficulty: n5
@@ -10,53 +10,182 @@ status: active
 tags: [crystal-hunters, book-9, manga, fantasy]
 prerequisites: []
 summary: >-
-  Copre Book 9 con 22 termini e 0 pattern nuovi, filtrati contro gli altri media del workspace.
+  Leggere il cambio dello scontro: situazione di battaglia, strategie, ferite, inutilità e interventi diretti.
 ---
 
-# Strategie, resa e ferite
+# Strategie, ferite e intervento diretto
 
-Book 9 aggiunge materiale che serve a leggere il manga con piu precisione: lessico di scena, forme verbali e segnali di registro. Questa lezione mantiene solo voci non gia dichiarate nei media locali al momento della generazione.
-
-Il punto pratico e partire da [{{力|ちから}}になる](term:term-ch-b9-ninaru-45) e dagli altri blocchi sotto: ogni card e pensata per preparare una battuta reale, non per studiare una lista astratta.
+Quando lo scontro cresce, il testo smette di parlare solo di colpi. Compaiono
+parole da valutazione tattica: [{{戦況|せんきょう}}](term:term-ch-b9-senkyou),
+[{{策|さく}}](term:term-ch-b9-saku), [{{大量|たいりょう}}](term:term-ch-b9-tairyou).
+Compaiono anche frasi che misurano il prezzo dello scontro: ferire, non essere
+all'altezza, capire una sconfitta a proprie spese.
 
 ## Termini chiave
 
-- [{{力|ちから}}になる](term:term-ch-b9-ninaru-45) - essere d'aiuto; dare una mano.
-- [{{敵|かな}}う](term:term-ch-b9-u-46) - essere all'altezza; competere con.
-- [{{力一杯|ちからいっぱい}}](term:term-ch-b9-entry-47) - con tutta la forza.
-- [{{怠|なま}}ける](term:term-ch-b9-keru-48) - essere pigro; battere la fiacca.
-- [{{坊主|ぼうず}}](term:term-ch-b9-entry-49) - ragazzo; moccioso; testa rasata.
-- [{{構|かま}}う](term:term-ch-b9-u-50) - importare; badare a; curarsi di.
-- [{{盗|ぬす}}む](term:term-ch-b9-mu-51) - rubare.
-- [{{始末|しまつ}}する](term:term-ch-b9-suru-52) - sistemare; occuparsi di una faccenda.
-- [あの{{世|よ}}](term:term-ch-b9-ano-53) - aldila; altro mondo.
-- [{{懺悔|ざんげ}}](term:term-ch-b9-entry-54) - confessione; pentimento.
-- [{{方々|かたがた}}](term:term-ch-b9-entry-55) - persone; signori.
-- [に{{加|くわ}}え](term:term-ch-b9-nie-56) - in aggiunta a; oltre a.
-- [{{景品|けいひん}}](term:term-ch-b9-entry-57) - premio; omaggio.
-- [{{上手|じょうず}}](term:term-ch-b9-entry-58) - abile; bravo.
-- [{{愛顧|あいこ}}](term:term-ch-b9-entry-59) - fedeltà; sostegno continuativo; favore accordato.
-- [{{奢|おご}}り](term:term-ch-b9-ri-60) - offerta; trattare qualcuno.
-- [{{脱走|だっそう}}](term:term-ch-b9-entry-61) - fuga; evasione.
-- [{{兄|あに}}](term:term-ch-b9-entry-62) - fratello maggiore.
-- [{{坊|ぼう}}や](term:term-ch-b9-ya-63) - ragazzo; ragazzino.
-- [{{奴|やつ}}ら](term:term-ch-b9-ra-64) - quei tipi; loro in modo ruvido.
-- [{{決|けっ}}して](term:term-ch-b9-shite-65) - mai; assolutamente non.
-- [{{船|ふね}}](term:term-ch-b9-entry-66) - nave; barca.
+- [{{決着|けっちゃく}}をつける](term:term-ch-b9-kecchaku-o-tsukeru) — chiudere i conti
+- [{{戦況|せんきょう}}](term:term-ch-b9-senkyou) — situazione della battaglia
+- [{{策|さく}}](term:term-ch-b9-saku) — piano, strategia
+- [{{策|さく}}を{{打|う}}つ](term:term-ch-b9-saku-o-utsu) — mettere in atto una strategia
+- [{{大型|おおがた}}](term:term-ch-b9-oogata) — di grandi dimensioni
+- [{{大量|たいりょう}}](term:term-ch-b9-tairyou) — grande quantità
+- [{{直々|じきじき}}](term:term-ch-b9-jikijiki) — di persona
+- [{{手|て}}を{{下|くだ}}す](term:term-ch-b9-te-o-kudasu) — intervenire direttamente
+- [{{傷|きず}}つける](term:term-ch-b9-kizutsukeru) — ferire
+- [{{敵|かな}}う](term:term-ch-b9-kanau) — competere con, essere all'altezza
+- [{{思|おも}}い{{知|し}}る](term:term-ch-b9-omoishiru) — rendersi conto a proprie spese
 
-## Pattern grammaticali e lettura
+---
 
-- Nessun pattern nuovo in questa lezione dopo la deduplica.
+## 1. Lo stato della battaglia
 
-## Come leggerli nel manga
+[{{戦況|せんきょう}}](term:term-ch-b9-senkyou) guarda lo scontro dall'alto: non
+un singolo colpo, ma la situazione complessiva.
 
-Leggi prima il finale della battuta: verbo, copula o particella finale decidono il peso della frase. Poi torna sui blocchi marcati da particelle e collega il lessico alla vignetta: oggetti, corpi, movimento, status sociale o conseguenza emotiva.
+:::example_sentence
+jp: >-
+  {{戦況|せんきょう}}が{{変|か}}わる。
+translation_it: >-
+  La situazione della battaglia cambia.
+:::
 
-Quando un termine ha kanji, usa la lettura della parola intera. Crystal Hunters ripete spesso famiglie visive simili, ma una card conta solo se aggiunge una lettura, una funzione o un uso non gia coperto altrove.
+Se la situazione non si risolve, [{{決着|けっちゃく}}をつける](term:term-ch-b9-kecchaku-o-tsukeru)
+porta l'idea di chiusura definitiva.
 
-## Checklist di lettura
+:::example_sentence
+jp: >-
+  {{兄貴|あにき}}と{{決着|けっちゃく}}をつける。
+translation_it: >-
+  Chiudo i conti con mio fratello maggiore.
+:::
 
-- Se la forma e un verbo, chiediti chi agisce e se l'oggetto e espresso o omesso.
-- Se la forma e un nome, collega subito la parola alla scena fisica o al ruolo sociale.
-- Se compare un pattern, separa significato grammaticale e tono della battuta.
-- Se una parola sembra gia nota, controlla se qui cambia lettura, funzione o registro.
+#### 🗺️ Anatomia della frase
+
+*   `{{兄貴|あにき}}と` ➔ **Con chi si chiude la questione**.
+*   `{{決着|けっちゃく}}をつける` ➔ **Portare a conclusione**.
+
+## 2. Strategie e scala
+
+[{{策|さく}}](term:term-ch-b9-saku) è un piano pratico. Con
+[{{策|さく}}を{{打|う}}つ](term:term-ch-b9-saku-o-utsu), il piano diventa una
+mossa messa in atto.
+
+:::example_sentence
+jp: >-
+  {{何|なに}}か{{策|さく}}がある。
+translation_it: >-
+  C'è qualche piano.
+:::
+
+:::example_sentence
+jp: >-
+  {{大型|おおがた}}の{{怪物|かいぶつ}}に{{対|たい}}して{{策|さく}}を{{打|う}}つ。
+translation_it: >-
+  Metto in atto una strategia contro il mostro di grandi dimensioni.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `{{大型|おおがた}}の{{怪物|かいぶつ}}に{{対|たい}}して` ➔ **Avversario contro cui si agisce**.
+*   `{{策|さく}}を{{打|う}}つ` ➔ **Mossa tattica**: non colpire il piano, ma giocarlo.
+
+[{{大型|おおがた}}](term:term-ch-b9-oogata) parla di scala; [{{大量|たいりょう}}](term:term-ch-b9-tairyou)
+parla di quantità.
+
+:::example_sentence
+jp: >-
+  {{大量|たいりょう}}の{{水|みず}}を{{使|つか}}う。
+translation_it: >-
+  Uso una grande quantità d'acqua.
+:::
+
+## 3. Intervenire di persona
+
+[{{直々|じきじき}}](term:term-ch-b9-jikijiki) segnala che non arriva un
+subordinato: arriva proprio la persona importante.
+
+:::example_sentence
+jp: >-
+  {{女王|じょうおう}}が{{直々|じきじき}}に{{来|く}}る。
+translation_it: >-
+  La regina viene di persona.
+:::
+
+[{{手|て}}を{{下|くだ}}す](term:term-ch-b9-te-o-kudasu) è ancora più duro:
+mettere mano direttamente a una faccenda, spesso contro qualcuno.
+
+:::example_sentence
+jp: >-
+  {{私|わたし}}が{{直々|じきじき}}に{{手|て}}を{{下|くだ}}す。
+translation_it: >-
+  Metto mano alla faccenda di persona.
+:::
+
+#### ⚖️ Contrasto operativo
+
+`{{来|く}}る` dice solo che qualcuno arriva. `{{直々|じきじき}}に{{来|く}}る`
+insiste sul fatto che arrivi proprio quella persona. `{{手|て}}を{{下|くだ}}す`
+aggiunge che agisce direttamente.
+
+## 4. Ferire, fallire, imparare
+
+[{{傷|きず}}つける](term:term-ch-b9-kizutsukeru) può essere fisico o emotivo.
+Nel Book 9, con `{{仲間|なかま}}を`, la minaccia è concreta.
+
+:::example_sentence
+jp: >-
+  {{仲間|なかま}}を{{傷|きず}}つけるな。
+translation_it: >-
+  Non ferire i compagni.
+:::
+
+Se un attacco non serve, {{無駄|むだ}} lo stronca:
+
+:::example_sentence
+jp: >-
+  {{攻撃|こうげき}}しても{{無駄|むだ}}だ。
+translation_it: >-
+  Anche attaccando, è inutile.
+:::
+
+[{{敵|かな}}う](term:term-ch-b9-kanau) appare spesso in negativo:
+
+:::example_sentence
+jp: >-
+  {{私|わたし}}では{{奴|やつ}}に{{敵|かな}}わない。
+translation_it: >-
+  Io non sono all'altezza di quel tipo.
+:::
+
+Quando la sconfitta insegna qualcosa, [{{思|おも}}い{{知|し}}る](term:term-ch-b9-omoishiru)
+porta il senso di una lezione imparata a proprie spese.
+
+:::example_sentence
+jp: >-
+  {{弱|よわ}}さを{{思|おも}}い{{知|し}}る。
+translation_it: >-
+  Mi rendo conto della mia debolezza a mie spese.
+:::
+
+## Esempi guidati di riepilogo
+
+:::example_sentence
+jp: >-
+  {{戦況|せんきょう}}が{{変|か}}わる。{{何|なに}}か{{策|さく}}がある。
+translation_it: >-
+  La situazione della battaglia cambia. C'è una qualche strategia.
+:::
+
+:::example_sentence
+jp: >-
+  {{女王|じょうおう}}が{{直々|じきじき}}に{{手|て}}を{{下|くだ}}す。
+translation_it: >-
+  La regina interviene direttamente di persona.
+:::
+
+:::example_sentence
+jp: >-
+  {{攻撃|こうげき}}しても{{無駄|むだ}}だ。{{弱|よわ}}さを{{思|おも}}い{{知|し}}る。
+translation_it: >-
+  Anche attaccando, è inutile. Mi rendo conto della mia debolezza a mie spese.
+:::

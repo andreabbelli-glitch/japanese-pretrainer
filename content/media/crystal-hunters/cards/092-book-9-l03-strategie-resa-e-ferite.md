@@ -2,711 +2,315 @@
 id: cards-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 media_id: media-crystal-hunters
 slug: book-9-l03-strategie-resa-e-ferite
-title: "Book 9 L03 - Strategie, resa e ferite"
+title: "Book 9 L03 - Strategie, ferite e intervento diretto"
 order: 920
 segment_ref: book-9
 ---
 
 :::term
-id: term-ch-b9-ninaru-45
-lemma: "力になる"
-reading: "ちからになる"
-romaji: "chikaraninaru"
-meaning_it: >-
-  essere d'aiuto; dare una mano
+id: term-ch-b9-kecchaku-o-tsukeru
+lemma: 決着をつける
+reading: けっちゃくをつける
+romaji: kecchaku o tsukeru
+meaning_it: chiudere i conti; risolvere definitivamente
 pos: expression
 notes_it: >-
-  Nel Book 9, {{力|ちから}}になる entra come essere d'aiuto; dare una mano. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
+  {{決着|けっちゃく}}をつける significa portare una questione o uno scontro a una
+  conclusione chiara.
+level_hint: n2
 :::
 
 :::term
-id: term-ch-b9-u-46
-lemma: "敵う"
-reading: "かなう"
-romaji: "kanau"
-meaning_it: >-
-  essere all'altezza; competere con
-pos: verb
-notes_it: >-
-  Nel Book 9, {{敵|かな}}う entra come essere all'altezza; competere con. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-entry-47
-lemma: "力一杯"
-reading: "ちからいっぱい"
-romaji: "chikaraippai"
-meaning_it: >-
-  con tutta la forza
-pos: adverbial expression
-notes_it: >-
-  Nel Book 9, {{力一杯|ちからいっぱい}} entra come con tutta la forza. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-keru-48
-lemma: "怠ける"
-reading: "なまける"
-romaji: "namakeru"
-meaning_it: >-
-  essere pigro; battere la fiacca
-pos: verb
-notes_it: >-
-  Nel Book 9, {{怠|なま}}ける entra come essere pigro; battere la fiacca. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-entry-49
-lemma: "坊主"
-reading: "ぼうず"
-romaji: "bouzu"
-meaning_it: >-
-  ragazzo; moccioso; testa rasata
+id: term-ch-b9-senkyou
+lemma: 戦況
+reading: せんきょう
+romaji: senkyou
+meaning_it: situazione della battaglia
 pos: noun
 notes_it: >-
-  Nel Book 9, {{坊主|ぼうず}} entra come ragazzo; moccioso; testa rasata. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
+  {{戦況|せんきょう}} è lo stato complessivo dello scontro: chi sta vincendo,
+  chi è in pericolo, cosa sta cambiando.
+level_hint: n1
 :::
 
 :::term
-id: term-ch-b9-u-50
-lemma: "構う"
-reading: "かまう"
-romaji: "kamau"
-meaning_it: >-
-  importare; badare a; curarsi di
-pos: verb
-notes_it: >-
-  Nel Book 9, {{構|かま}}う entra come importare; badare a; curarsi di. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-mu-51
-lemma: "盗む"
-reading: "ぬすむ"
-romaji: "nusumu"
-meaning_it: >-
-  rubare
-pos: verb
-notes_it: >-
-  Nel Book 9, {{盗|ぬす}}む entra come rubare. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-suru-52
-lemma: "始末する"
-reading: "しまつする"
-romaji: "shimatsusuru"
-meaning_it: >-
-  sistemare; occuparsi di una faccenda
-pos: suru-verb
-notes_it: >-
-  Nel Book 9, {{始末|しまつ}}する entra come sistemare; occuparsi di una faccenda. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-ano-53
-lemma: "あの世"
-reading: "あのよ"
-romaji: "anoyo"
-meaning_it: >-
-  aldila; altro mondo
+id: term-ch-b9-saku
+lemma: 策
+reading: さく
+romaji: saku
+meaning_it: piano; strategia; espediente
 pos: noun
 notes_it: >-
-  Nel Book 9, あの{{世|よ}} entra come aldila; altro mondo. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
+  {{策|さく}} è un piano pratico, spesso pensato per ribaltare una situazione
+  difficile.
+level_hint: n2
 :::
 
 :::term
-id: term-ch-b9-entry-54
-lemma: "懺悔"
-reading: "ざんげ"
-romaji: "zange"
-meaning_it: >-
-  confessione; pentimento
-pos: suru-noun
-notes_it: >-
-  Nel Book 9, {{懺悔|ざんげ}} entra come confessione; pentimento. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-entry-55
-lemma: "方々"
-reading: "かたがた"
-romaji: "katagata"
-meaning_it: >-
-  persone; signori
-pos: noun
-notes_it: >-
-  Nel Book 9, {{方々|かたがた}} entra come persone; signori. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-nie-56
-lemma: "に加え"
-reading: "にくわえ"
-romaji: "nikuwae"
-meaning_it: >-
-  in aggiunta a; oltre a
+id: term-ch-b9-saku-o-utsu
+lemma: 策を打つ
+reading: さくをうつ
+romaji: saku o utsu
+meaning_it: mettere in atto una strategia
 pos: expression
 notes_it: >-
-  Nel Book 9, に{{加|くわ}}え entra come in aggiunta a; oltre a. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
+  {{策|さく}}を{{打|う}}つ è "giocare" o mettere in atto una mossa strategica,
+  non colpire fisicamente un piano.
+level_hint: n1
 :::
 
 :::term
-id: term-ch-b9-entry-57
-lemma: "景品"
-reading: "けいひん"
-romaji: "keihin"
-meaning_it: >-
-  premio; omaggio
+id: term-ch-b9-oogata
+lemma: 大型
+reading: おおがた
+romaji: oogata
+meaning_it: di grandi dimensioni; grande formato
 pos: noun
 notes_it: >-
-  Nel Book 9, {{景品|けいひん}} entra come premio; omaggio. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
+  {{大型|おおがた}} indica grande formato o grande scala. Davanti a un nome si
+  lega spesso con の: {{大型|おおがた}}の{{怪物|かいぶつ}}.
+level_hint: n2
 :::
 
 :::term
-id: term-ch-b9-entry-58
-lemma: "上手"
-reading: "じょうず"
-romaji: "jouzu"
-meaning_it: >-
-  abile; bravo
-pos: na-adjective/noun
-notes_it: >-
-  Nel Book 9, {{上手|じょうず}} entra come abile; bravo. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-entry-59
-lemma: "愛顧"
-reading: "あいこ"
-romaji: "aiko"
-meaning_it: >-
-  fedeltà; sostegno continuativo; favore accordato
-pos: suru-noun
-notes_it: >-
-  Nel Book 9, {{愛顧|あいこ}} entra come fedeltà; sostegno continuativo; favore accordato. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-ri-60
-lemma: "奢り"
-reading: "おごり"
-romaji: "ogori"
-meaning_it: >-
-  offerta; trattare qualcuno
+id: term-ch-b9-tairyou
+lemma: 大量
+reading: たいりょう
+romaji: tairyou
+meaning_it: grande quantità
 pos: noun
 notes_it: >-
-  Nel Book 9, {{奢|おご}}り entra come offerta; trattare qualcuno. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
+  {{大量|たいりょう}} indica quantità massiccia: molta acqua, molti nemici, molte
+  risorse.
+level_hint: n3
 :::
 
 :::term
-id: term-ch-b9-entry-61
-lemma: "脱走"
-reading: "だっそう"
-romaji: "dassou"
-meaning_it: >-
-  fuga; evasione
-pos: suru-noun
-notes_it: >-
-  Nel Book 9, {{脱走|だっそう}} entra come fuga; evasione. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-entry-62
-lemma: "兄"
-reading: "あに"
-romaji: "ani"
-meaning_it: >-
-  fratello maggiore
-pos: noun
-notes_it: >-
-  Nel Book 9, {{兄|あに}} entra come fratello maggiore. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-ya-63
-lemma: "坊や"
-reading: "ぼうや"
-romaji: "bouya"
-meaning_it: >-
-  ragazzo; ragazzino
-pos: noun
-notes_it: >-
-  Nel Book 9, {{坊|ぼう}}や entra come ragazzo; ragazzino. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-ra-64
-lemma: "奴ら"
-reading: "やつら"
-romaji: "yatsura"
-meaning_it: >-
-  quei tipi; loro in modo ruvido
-pos: pronoun
-notes_it: >-
-  Nel Book 9, {{奴|やつ}}ら entra come quei tipi; loro in modo ruvido. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
-:::
-
-:::term
-id: term-ch-b9-shite-65
-lemma: "決して"
-reading: "けっして"
-romaji: "kesshite"
-meaning_it: >-
-  mai; assolutamente non
+id: term-ch-b9-jikijiki
+lemma: 直々
+reading: じきじき
+romaji: jikijiki
+meaning_it: di persona; direttamente
 pos: adverb
 notes_it: >-
-  Nel Book 9, {{決|けっ}}して entra come mai; assolutamente non. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
+  {{直々|じきじき}} segnala che una persona importante interviene direttamente,
+  non tramite subordinati.
+level_hint: n2
 :::
 
 :::term
-id: term-ch-b9-entry-66
-lemma: "船"
-reading: "ふね"
-romaji: "fune"
-meaning_it: >-
-  nave; barca
-pos: noun
+id: term-ch-b9-te-o-kudasu
+lemma: 手を下す
+reading: てをくだす
+romaji: te o kudasu
+meaning_it: mettere mano direttamente; agire di persona contro qualcuno
+pos: expression
 notes_it: >-
-  Nel Book 9, {{船|ふね}} entra come nave; barca. La card lo ancora al contesto fantasy di Crystal Hunters, non a una traduzione isolata.
-level_hint: custom
+  {{手|て}}を{{下|くだ}}す significa compiere personalmente un'azione, spesso
+  dura o violenta.
+level_hint: n1
+:::
+
+:::term
+id: term-ch-b9-kizutsukeru
+lemma: 傷つける
+reading: きずつける
+romaji: kizutsukeru
+meaning_it: ferire; fare del male
+pos: verb
+notes_it: >-
+  {{傷|きず}}つける può ferire fisicamente o emotivamente. Con `を`, indica chi
+  viene ferito.
+level_hint: n3
+:::
+
+:::term
+id: term-ch-b9-kanau
+lemma: 敵う
+reading: かなう
+romaji: kanau
+meaning_it: competere con; essere all'altezza di
+pos: verb
+notes_it: >-
+  {{敵|かな}}う si usa spesso in negativo: {{敵|かな}}わない, "non sono
+  all'altezza / non posso competere".
+level_hint: n2
+:::
+
+:::term
+id: term-ch-b9-omoishiru
+lemma: 思い知る
+reading: おもいしる
+romaji: omoishiru
+meaning_it: rendersi conto fino in fondo; imparare a proprie spese
+pos: verb
+notes_it: >-
+  {{思|おも}}い{{知|し}}る è capire una cosa in modo duro, spesso dopo una
+  sconfitta o una lezione dolorosa.
+level_hint: n2
 :::
 
 :::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-ninaru-1
+id: card-crystal-hunters-book-9-l03-kecchaku-o-tsukeru-recognition
 lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 entry_type: term
-entry_id: term-ch-b9-ninaru-45
+entry_id: term-ch-b9-kecchaku-o-tsukeru
 card_type: recognition
-front: >-
-  {{力|ちから}}になる
-back: >-
-  ちからになる - essere d'aiuto; dare una mano
-example_jp: >-
-  カルの{{力|ちから}}になる。
-example_it: >-
-  Da una mano a Kal.
+front: '{{決着|けっちゃく}}をつける'
+back: 'けっちゃくをつける — chiudere i conti'
+example_jp: '{{兄貴|あにき}}と{{決着|けっちゃく}}をつける。'
+example_it: Chiudo i conti con mio fratello maggiore.
 notes_it: >-
-  Riconosci {{力|ちから}}になる come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
+  La questione arriva a una conclusione chiara.
 tags: [crystal-hunters, book-9, lesson-03]
 :::
 
 :::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-u-2
+id: card-crystal-hunters-book-9-l03-senkyou-recognition
 lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 entry_type: term
-entry_id: term-ch-b9-u-46
+entry_id: term-ch-b9-senkyou
 card_type: recognition
-front: >-
-  {{敵|かな}}う
-back: >-
-  かなう - essere all'altezza; competere con
-example_jp: >-
-  あいつには{{敵|かな}}わない。
-example_it: >-
-  Non riesco a competere con quello.
+front: '{{戦況|せんきょう}}'
+back: 'せんきょう — situazione della battaglia'
+example_jp: '{{戦況|せんきょう}}が{{変|か}}わる。'
+example_it: La situazione della battaglia cambia.
 notes_it: >-
-  Riconosci {{敵|かな}}う come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
+  Guarda lo stato complessivo dello scontro.
 tags: [crystal-hunters, book-9, lesson-03]
 :::
 
 :::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-entry-3
+id: card-crystal-hunters-book-9-l03-saku-recognition
 lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 entry_type: term
-entry_id: term-ch-b9-entry-47
+entry_id: term-ch-b9-saku
 card_type: recognition
-front: >-
-  {{力一杯|ちからいっぱい}}
-back: >-
-  ちからいっぱい - con tutta la forza
-example_jp: >-
-  {{力一杯|ちからいっぱい}}{{走|はし}}る。
-example_it: >-
-  Corre con tutte le forze.
+front: '{{策|さく}}'
+back: 'さく — piano; strategia'
+example_jp: '{{何|なに}}か{{策|さく}}がある。'
+example_it: C'è qualche piano.
 notes_it: >-
-  Riconosci {{力一杯|ちからいっぱい}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
+  Spesso appare quando serve ribaltare una situazione sfavorevole.
 tags: [crystal-hunters, book-9, lesson-03]
 :::
 
 :::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-keru-4
+id: card-crystal-hunters-book-9-l03-saku-o-utsu-recognition
 lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 entry_type: term
-entry_id: term-ch-b9-keru-48
+entry_id: term-ch-b9-saku-o-utsu
 card_type: recognition
-front: >-
-  {{怠|なま}}ける
-back: >-
-  なまける - essere pigro; battere la fiacca
-example_jp: >-
-  {{怠|なま}}けるな。
-example_it: >-
-  Non battere la fiacca.
+front: '{{策|さく}}を{{打|う}}つ'
+back: 'さくをうつ — mettere in atto una strategia'
+example_jp: '{{大型|おおがた}}の{{怪物|かいぶつ}}に{{対|たい}}して{{策|さく}}を{{打|う}}つ。'
+example_it: Metto in atto una strategia contro il mostro di grandi dimensioni.
 notes_it: >-
-  Riconosci {{怠|なま}}ける come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
+  {{打|う}}つ qui è "giocare una mossa", non colpire fisicamente.
 tags: [crystal-hunters, book-9, lesson-03]
 :::
 
 :::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-entry-5
+id: card-crystal-hunters-book-9-l03-oogata-recognition
 lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 entry_type: term
-entry_id: term-ch-b9-entry-49
+entry_id: term-ch-b9-oogata
 card_type: recognition
-front: >-
-  {{坊主|ぼうず}}
-back: >-
-  ぼうず - ragazzo; moccioso; testa rasata
-example_jp: >-
-  この{{坊主|ぼうず}}は{{強|つよ}}い。
-example_it: >-
-  Questo ragazzo e forte.
+front: '{{大型|おおがた}}'
+back: 'おおがた — di grandi dimensioni'
+example_jp: '{{大型|おおがた}}の{{怪物|かいぶつ}}が{{来|く}}る。'
+example_it: Arriva un mostro di grandi dimensioni.
 notes_it: >-
-  Riconosci {{坊主|ぼうず}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
+  Grande per scala o formato, non solo "alto".
 tags: [crystal-hunters, book-9, lesson-03]
 :::
 
 :::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-u-6
+id: card-crystal-hunters-book-9-l03-tairyou-recognition
 lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 entry_type: term
-entry_id: term-ch-b9-u-50
+entry_id: term-ch-b9-tairyou
 card_type: recognition
-front: >-
-  {{構|かま}}う
-back: >-
-  かまう - importare; badare a; curarsi di
-example_jp: >-
-  {{俺|おれ}}は{{構|かま}}わない。
-example_it: >-
-  A me non importa.
+front: '{{大量|たいりょう}}'
+back: 'たいりょう — grande quantità'
+example_jp: '{{大量|たいりょう}}の{{水|みず}}を{{使|つか}}う。'
+example_it: Uso una grande quantità d'acqua.
 notes_it: >-
-  Riconosci {{構|かま}}う come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
+  Conta la massa o quantità complessiva.
 tags: [crystal-hunters, book-9, lesson-03]
 :::
 
 :::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-mu-7
+id: card-crystal-hunters-book-9-l03-jikijiki-recognition
 lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 entry_type: term
-entry_id: term-ch-b9-mu-51
+entry_id: term-ch-b9-jikijiki
 card_type: recognition
-front: >-
-  {{盗|ぬす}}む
-back: >-
-  ぬすむ - rubare
-example_jp: >-
-  バッジを{{盗|ぬす}}むな。
-example_it: >-
-  Non rubare il badge.
+front: '{{直々|じきじき}}'
+back: 'じきじき — di persona; direttamente'
+example_jp: '{{女王|じょうおう}}が{{直々|じきじき}}に{{来|く}}る。'
+example_it: La regina viene di persona.
 notes_it: >-
-  Riconosci {{盗|ぬす}}む come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
+  Sottolinea che interviene proprio quella persona.
 tags: [crystal-hunters, book-9, lesson-03]
 :::
 
 :::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-suru-8
+id: card-crystal-hunters-book-9-l03-te-o-kudasu-recognition
 lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 entry_type: term
-entry_id: term-ch-b9-suru-52
+entry_id: term-ch-b9-te-o-kudasu
 card_type: recognition
-front: >-
-  {{始末|しまつ}}する
-back: >-
-  しまつする - sistemare; occuparsi di una faccenda
-example_jp: >-
-  {{問題|もんだい}}を{{始末|しまつ}}する。
-example_it: >-
-  Sistema la faccenda.
+front: '{{手|て}}を{{下|くだ}}す'
+back: 'てをくだす — mettere mano direttamente'
+example_jp: '{{私|わたし}}が{{直々|じきじき}}に{{手|て}}を{{下|くだ}}す。'
+example_it: Metto mano alla faccenda di persona.
 notes_it: >-
-  Riconosci {{始末|しまつ}}する come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
+  Spesso ha tono duro: mettere mano direttamente a un'azione grave.
 tags: [crystal-hunters, book-9, lesson-03]
 :::
 
 :::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-ano-9
+id: card-crystal-hunters-book-9-l03-kizutsukeru-recognition
 lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 entry_type: term
-entry_id: term-ch-b9-ano-53
+entry_id: term-ch-b9-kizutsukeru
 card_type: recognition
-front: >-
-  あの{{世|よ}}
-back: >-
-  あのよ - aldila; altro mondo
-example_jp: >-
-  あの{{世|よ}}で{{懺悔|ざんげ}}しろ。
-example_it: >-
-  Confessati nell'altro mondo.
+front: '{{傷|きず}}つける'
+back: 'きずつける — ferire'
+example_jp: '{{仲間|なかま}}を{{傷|きず}}つけるな。'
+example_it: Non ferire i compagni.
 notes_it: >-
-  Riconosci あの{{世|よ}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
+  Può essere ferita fisica o emotiva.
 tags: [crystal-hunters, book-9, lesson-03]
 :::
 
 :::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-entry-10
+id: card-crystal-hunters-book-9-l03-kanau-recognition
 lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 entry_type: term
-entry_id: term-ch-b9-entry-54
+entry_id: term-ch-b9-kanau
 card_type: recognition
-front: >-
-  {{懺悔|ざんげ}}
-back: >-
-  ざんげ - confessione; pentimento
-example_jp: >-
-  {{懺悔|ざんげ}}しろ。
-example_it: >-
-  Confessati / pentiti.
+front: '{{敵|かな}}う'
+back: 'かなう — competere con; essere all''altezza'
+example_jp: '{{私|わたし}}では{{奴|やつ}}に{{敵|かな}}わない。'
+example_it: Io non sono all'altezza di quel tipo.
 notes_it: >-
-  Riconosci {{懺悔|ざんげ}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
+  Molto comune in negativo: {{敵|かな}}わない.
 tags: [crystal-hunters, book-9, lesson-03]
 :::
 
 :::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-entry-11
+id: card-crystal-hunters-book-9-l03-omoishiru-recognition
 lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
 entry_type: term
-entry_id: term-ch-b9-entry-55
+entry_id: term-ch-b9-omoishiru
 card_type: recognition
-front: >-
-  {{方々|かたがた}}
-back: >-
-  かたがた - persone; signori
-example_jp: >-
-  {{方々|かたがた}}がいらっしゃる。
-example_it: >-
-  Arrivano quelle persone / quei signori.
+front: '{{思|おも}}い{{知|し}}る'
+back: 'おもいしる — rendersi conto a proprie spese'
+example_jp: '{{弱|よわ}}さを{{思|おも}}い{{知|し}}る。'
+example_it: Mi rendo conto della mia debolezza a mie spese.
 notes_it: >-
-  Riconosci {{方々|かたがた}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
-tags: [crystal-hunters, book-9, lesson-03]
-:::
-
-:::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-nie-12
-lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
-entry_type: term
-entry_id: term-ch-b9-nie-56
-card_type: recognition
-front: >-
-  に{{加|くわ}}え
-back: >-
-  にくわえ - in aggiunta a; oltre a
-example_jp: >-
-  {{鞭|むち}}に{{加|くわ}}え、{{魔法|まほう}}もある。
-example_it: >-
-  Oltre alla frusta, c'e anche la magia.
-notes_it: >-
-  Riconosci に{{加|くわ}}え come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
-tags: [crystal-hunters, book-9, lesson-03]
-:::
-
-:::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-entry-13
-lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
-entry_type: term
-entry_id: term-ch-b9-entry-57
-card_type: recognition
-front: >-
-  {{景品|けいひん}}
-back: >-
-  けいひん - premio; omaggio
-example_jp: >-
-  {{景品|けいひん}}を{{差|さ}}し{{上|あ}}げる。
-example_it: >-
-  Le offriamo un premio.
-notes_it: >-
-  Riconosci {{景品|けいひん}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
-tags: [crystal-hunters, book-9, lesson-03]
-:::
-
-:::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-entry-14
-lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
-entry_type: term
-entry_id: term-ch-b9-entry-58
-card_type: recognition
-front: >-
-  {{上手|じょうず}}
-back: >-
-  じょうず - abile; bravo
-example_jp: >-
-  {{鞭|むち}}を{{打|う}}つのが{{上手|じょうず}}だ。
-example_it: >-
-  E bravo a usare la frusta.
-notes_it: >-
-  Riconosci {{上手|じょうず}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
-tags: [crystal-hunters, book-9, lesson-03]
-:::
-
-:::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-entry-15
-lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
-entry_type: term
-entry_id: term-ch-b9-entry-59
-card_type: recognition
-front: >-
-  {{愛顧|あいこ}}
-back: >-
-  あいこ - fedeltà; sostegno continuativo; favore accordato
-example_jp: >-
-  ご{{愛顧|あいこ}}ありがとうございます。
-example_it: >-
-  Grazie per la vostra fedeltà.
-notes_it: >-
-  Riconosci {{愛顧|あいこ}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
-tags: [crystal-hunters, book-9, lesson-03]
-:::
-
-:::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-ri-16
-lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
-entry_type: term
-entry_id: term-ch-b9-ri-60
-card_type: recognition
-front: >-
-  {{奢|おご}}り
-back: >-
-  おごり - offerta; trattare qualcuno
-example_jp: >-
-  これは{{俺|おれ}}の{{奢|おご}}りだ。
-example_it: >-
-  Questo lo offro io.
-notes_it: >-
-  Riconosci {{奢|おご}}り come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
-tags: [crystal-hunters, book-9, lesson-03]
-:::
-
-:::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-entry-17
-lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
-entry_type: term
-entry_id: term-ch-b9-entry-61
-card_type: recognition
-front: >-
-  {{脱走|だっそう}}
-back: >-
-  だっそう - fuga; evasione
-example_jp: >-
-  {{奴隷|どれい}}が{{脱走|だっそう}}する。
-example_it: >-
-  Gli schiavi scappano.
-notes_it: >-
-  Riconosci {{脱走|だっそう}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
-tags: [crystal-hunters, book-9, lesson-03]
-:::
-
-:::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-entry-18
-lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
-entry_type: term
-entry_id: term-ch-b9-entry-62
-card_type: recognition
-front: >-
-  {{兄|あに}}
-back: >-
-  あに - fratello maggiore
-example_jp: >-
-  {{兄|あに}}が{{戦|たたか}}う。
-example_it: >-
-  Il fratello maggiore combatte.
-notes_it: >-
-  Riconosci {{兄|あに}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
-tags: [crystal-hunters, book-9, lesson-03]
-:::
-
-:::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-ya-19
-lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
-entry_type: term
-entry_id: term-ch-b9-ya-63
-card_type: recognition
-front: >-
-  {{坊|ぼう}}や
-back: >-
-  ぼうや - ragazzo; ragazzino
-example_jp: >-
-  {{坊|ぼう}}や、{{逃|に}}げろ。
-example_it: >-
-  Ragazzo, scappa.
-notes_it: >-
-  Riconosci {{坊|ぼう}}や come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
-tags: [crystal-hunters, book-9, lesson-03]
-:::
-
-:::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-ra-20
-lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
-entry_type: term
-entry_id: term-ch-b9-ra-64
-card_type: recognition
-front: >-
-  {{奴|やつ}}ら
-back: >-
-  やつら - quei tipi; loro in modo ruvido
-example_jp: >-
-  {{奴|やつ}}らを{{止|と}}める。
-example_it: >-
-  Ferma quei tipi.
-notes_it: >-
-  Riconosci {{奴|やつ}}ら come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
-tags: [crystal-hunters, book-9, lesson-03]
-:::
-
-:::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-shite-21
-lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
-entry_type: term
-entry_id: term-ch-b9-shite-65
-card_type: recognition
-front: >-
-  {{決|けっ}}して
-back: >-
-  けっして - mai; assolutamente non
-example_jp: >-
-  {{決|けっ}}して{{諦|あきら}}めない。
-example_it: >-
-  Non si arrende mai.
-notes_it: >-
-  Riconosci {{決|けっ}}して come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
-tags: [crystal-hunters, book-9, lesson-03]
-:::
-
-:::card
-id: card-crystal-hunters-book-9-l03-strategie-resa-e-ferite-entry-22
-lesson_id: lesson-crystal-hunters-book-9-l03-strategie-resa-e-ferite
-entry_type: term
-entry_id: term-ch-b9-entry-66
-card_type: recognition
-front: >-
-  {{船|ふね}}
-back: >-
-  ふね - nave; barca
-example_jp: >-
-  {{船|ふね}}に{{乗|の}}る。
-example_it: >-
-  Sale sulla nave.
-notes_it: >-
-  Riconosci {{船|ふね}} come elemento operativo del Book 9: cambia chi agisce, che cosa e in scena o quale tono ha la battuta.
+  Capire dopo una lezione dura.
 tags: [crystal-hunters, book-9, lesson-03]
 :::
