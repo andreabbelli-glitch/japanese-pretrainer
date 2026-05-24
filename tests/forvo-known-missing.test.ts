@@ -95,6 +95,53 @@ describe("forvo known-missing registry", () => {
     });
   });
 
+  it("preserves Forvo word-add blocked metadata", async () => {
+    const registryPath = path.join(tempDir, "forvo-known-missing.json");
+
+    await writeFile(
+      registryPath,
+      `${JSON.stringify(
+        {
+          version: 1,
+          entries: [
+            {
+              entryId: "grammar-naide",
+              entryKind: "grammar",
+              label: "～ないで",
+              mediaSlug: "sample-game",
+              reason: "not_found_on_forvo",
+              updatedAt: "2026-05-24T18:00:00.000Z",
+              wordAddBlockedAt: "2026-05-24T18:10:00.000Z",
+              wordAddBlockedDetail:
+                '"ないで" is not allowed in Forvo.Please check the word\'s spelling or language.',
+              wordAddBlockedReason: "forvo_rejected"
+            }
+          ]
+        },
+        null,
+        2
+      )}\n`
+    );
+
+    await expect(loadForvoKnownMissingRegistry(registryPath)).resolves.toEqual({
+      entries: [
+        {
+          entryId: "grammar-naide",
+          entryKind: "grammar",
+          label: "～ないで",
+          mediaSlug: "sample-game",
+          reason: "not_found_on_forvo",
+          updatedAt: "2026-05-24T18:00:00.000Z",
+          wordAddBlockedAt: "2026-05-24T18:10:00.000Z",
+          wordAddBlockedDetail:
+            '"ないで" is not allowed in Forvo.Please check the word\'s spelling or language.',
+          wordAddBlockedReason: "forvo_rejected"
+        }
+      ],
+      version: 1
+    });
+  });
+
   it("persists registry entries sorted by media, kind, and entry id", async () => {
     const registryPath = path.join(
       tempDir,

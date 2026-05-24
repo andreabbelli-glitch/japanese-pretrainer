@@ -145,15 +145,6 @@
       "updatedAt": "2026-05-24T14:52:37.765Z"
     },
     {
-      "entryId": "grammar-areba",
-      "entryKind": "grammar",
-      "label": "あれば / ～であれば",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "あれば / であれば",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-19T22:30:46.116Z"
-    },
-    {
       "entryId": "grammar-battle-zone-ni-oita-mama",
       "entryKind": "grammar",
       "label": "バトルゾーンに置いたまま",
@@ -208,15 +199,6 @@
       "updatedAt": "2026-03-19T22:27:38.081Z"
     },
     {
-      "entryId": "grammar-dewanai",
-      "entryKind": "grammar",
-      "label": "～ではない",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ではない",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-23T23:52:59.135Z"
-    },
-    {
       "entryId": "grammar-hoka-no-kaku-aite",
       "entryKind": "grammar",
       "label": "他の各相手",
@@ -226,15 +208,6 @@
       "updatedAt": "2026-03-23T23:52:52.358Z"
     },
     {
-      "entryId": "grammar-ichiran",
-      "entryKind": "grammar",
-      "label": "～一覧",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "いちらん",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T19:55:39.386Z"
-    },
-    {
       "entryId": "grammar-igai-no-houhou-de",
       "entryKind": "grammar",
       "label": "～以外の方法で",
@@ -242,86 +215,6 @@
       "reading": "いがいのほうほうで",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-03-12T19:55:12.140Z"
-    },
-    {
-      "entryId": "grammar-ika-ijou",
-      "entryKind": "grammar",
-      "label": "～以下 / ～以上",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "いか / いじょう",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T19:55:25.721Z"
-    },
-    {
-      "entryId": "grammar-kanou",
-      "entryKind": "grammar",
-      "label": "～可能",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "かのう",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T19:55:44.929Z"
-    },
-    {
-      "entryId": "grammar-koto-ni-yotte",
-      "entryKind": "grammar",
-      "label": "～ことによって",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ことによって",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-19T22:27:38.960Z"
-    },
-    {
-      "entryId": "grammar-made",
-      "entryKind": "grammar",
-      "label": "～まで",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "まで",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-23T23:52:58.197Z"
-    },
-    {
-      "entryId": "grammar-me-ordinal",
-      "entryKind": "grammar",
-      "label": "～目",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "め",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-19T22:25:53.387Z"
-    },
-    {
-      "entryId": "grammar-mi-prefix",
-      "entryKind": "grammar",
-      "label": "未～",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "み",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T19:55:43.508Z"
-    },
-    {
-      "entryId": "grammar-monotoshite",
-      "entryKind": "grammar",
-      "label": "～ものとして",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ものとして",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T14:40:22.205Z"
-    },
-    {
-      "entryId": "grammar-nakereba",
-      "entryKind": "grammar",
-      "label": "～なければ ... ない",
-      "mediaSlug": "duel-masters-dm25",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T19:55:08.198Z"
-    },
-    {
-      "entryId": "grammar-nara",
-      "entryKind": "grammar",
-      "label": "～なら",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "なら",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-23T23:53:36.701Z"
     },
     {
       "entryId": "grammar-no-ato-ni",
@@ -360,15 +253,6 @@
       "updatedAt": "2026-03-16T22:19:18.248Z"
     },
     {
-      "entryId": "grammar-sareteiru",
-      "entryKind": "grammar",
-      "label": "～されている",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "されている",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-12T13:44:54.448Z"
-    },
-    {
       "entryId": "grammar-seigi-no-shield-count-yori-ookereba",
       "entryKind": "grammar",
       "label": "自分のシールドの数が相手より多ければ",
@@ -378,22 +262,16 @@
       "updatedAt": "2026-04-25T15:09:32.005Z"
     },
     {
-      "entryId": "grammar-shika",
-      "entryKind": "grammar",
-      "label": "～しか ... ない",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "しか",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-10T20:28:36.440Z"
-    },
-    {
       "entryId": "grammar-sono-card-to-onaji-bunmei-hitotsu-demo-motsu",
       "entryKind": "grammar",
       "label": "そのカードと同じ文明を1つでも持つ",
       "mediaSlug": "duel-masters-dm25",
       "reading": "そのカードとおなじぶんめいをひとつでももつ",
       "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T21:49:08.777Z"
+      "updatedAt": "2026-05-24T18:53:04.184Z",
+      "wordAddBlockedAt": "2026-05-24T18:53:04.184Z",
+      "wordAddBlockedReason": "forvo_rejected",
+      "wordAddBlockedDetail": "\"そのカードと同じ文明を1つでも持つ\" is not allowed in Forvo.Please check the word's spelling or language."
     },
     {
       "entryId": "grammar-sonoturnchuu-hoka-final-kakumei-mada-tsukatte-inakereba",
@@ -402,7 +280,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "そのターンちゅうにほかのファイナルかくめいをまだつかっていなければ",
       "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T21:26:38.023Z"
+      "updatedAt": "2026-05-24T18:53:04.184Z",
+      "wordAddBlockedAt": "2026-05-24T18:53:04.184Z",
+      "wordAddBlockedReason": "forvo_rejected",
+      "wordAddBlockedDetail": "\"そのターン中に他の「ファイナル革命」をまだ使っていなければ\" is not allowed in Forvo.Please check the word's spelling or language."
     },
     {
       "entryId": "grammar-sorega-nara",
@@ -420,7 +301,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "じぶんのひかりのくりーちゃーのしょうかんこすとをいち、ひのくりーちゃーのしょうかんこすとをいちすくなくしてもよい",
       "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T15:09:40.170Z"
+      "updatedAt": "2026-05-24T18:53:04.184Z",
+      "wordAddBlockedAt": "2026-05-24T18:53:04.184Z",
+      "wordAddBlockedReason": "max_length",
+      "wordAddBlockedDetail": "Max. length exceeded (40 characters max.); \"自分の光のクリーチャーの召喚コストを1、火のクリーチャーの召喚コストを1少なくしてもよい\" is not allowed in Forvo.Please check the word's spelling or language."
     },
     {
       "entryId": "grammar-subete-ni-s-trigger-wo-ataeru",
@@ -432,14 +316,6 @@
       "updatedAt": "2026-04-25T15:09:41.670Z"
     },
     {
-      "entryId": "grammar-tara",
-      "entryKind": "grammar",
-      "label": "～たら",
-      "mediaSlug": "duel-masters-dm25",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-19T22:30:44.873Z"
-    },
-    {
       "entryId": "grammar-te-inakereba",
       "entryKind": "grammar",
       "label": "～ていなければ",
@@ -449,65 +325,12 @@
       "updatedAt": "2026-03-23T23:53:21.010Z"
     },
     {
-      "entryId": "grammar-te-kara",
-      "entryKind": "grammar",
-      "label": "～てから",
-      "mediaSlug": "duel-masters-dm25",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-15T19:37:49.434Z"
-    },
-    {
       "entryId": "grammar-teireba",
       "entryKind": "grammar",
       "label": "～ていれば",
       "mediaSlug": "duel-masters-dm25",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-03-12T19:55:10.512Z"
-    },
-    {
-      "entryId": "grammar-to-onaji",
-      "entryKind": "grammar",
-      "label": "～と同じ",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "とおなじ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-23T23:52:28.506Z"
-    },
-    {
-      "entryId": "grammar-toki",
-      "entryKind": "grammar",
-      "label": "～時 / ～た時",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "とき / たとき",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T19:43:33.598Z"
-    },
-    {
-      "entryId": "grammar-toshite",
-      "entryKind": "grammar",
-      "label": "～として",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "として",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-23T23:53:20.243Z"
-    },
-    {
-      "entryId": "grammar-tsugi-no",
-      "entryKind": "grammar",
-      "label": "次の～",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "つぎの",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-23T23:53:40.100Z"
-    },
-    {
-      "entryId": "grammar-tsutsu",
-      "entryKind": "grammar",
-      "label": "～つつ",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "つつ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-22T11:18:31.131Z"
     },
     {
       "entryId": "grammar-turn-timing",
@@ -519,15 +342,6 @@
       "updatedAt": "2026-03-12T19:55:27.048Z"
     },
     {
-      "entryId": "grammar-ui-chuu",
-      "entryKind": "grammar",
-      "label": "～中",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ちゅう",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T19:55:40.750Z"
-    },
-    {
       "entryId": "grammar-uramuki-ni-shite",
       "entryKind": "grammar",
       "label": "裏向きにして",
@@ -535,59 +349,6 @@
       "reading": "うらむきにして",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-05-24T15:16:09.768Z"
-    },
-    {
-      "entryId": "grammar-yori",
-      "entryKind": "grammar",
-      "label": "～より",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "より",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-23T23:53:37.836Z"
-    },
-    {
-      "entryId": "grammar-youni",
-      "entryKind": "grammar",
-      "label": "～ように",
-      "mediaSlug": "duel-masters-dm25",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-19T22:30:47.178Z"
-    },
-    {
-      "entryId": "grammar-zu",
-      "entryKind": "grammar",
-      "label": "～ず",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ず",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-12T13:44:56.835Z"
-    },
-    {
-      "entryId": "grammar-zumi",
-      "entryKind": "grammar",
-      "label": "～済み",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ずみ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T19:55:42.073Z"
-    },
-    {
-      "entryId": "grammar-zuni",
-      "entryKind": "grammar",
-      "label": "～ずに",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ずに",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:19:17.333Z"
-    },
-    {
-      "entryId": "grammar-zutsu",
-      "entryKind": "grammar",
-      "label": "～ずつ",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ずつ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-19T22:25:25.833Z"
     },
     {
       "entryId": "term-b-a-d-two",
@@ -652,29 +413,12 @@
       "updatedAt": "2026-03-14T09:13:42.973Z"
     },
     {
-      "entryId": "grammar-senyouki",
-      "entryKind": "grammar",
-      "label": "～専用機",
-      "mediaSlug": "gundam-arsenal-base",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-14T09:13:41.739Z"
-    },
-    {
       "entryId": "grammar-suru-koto-de",
       "entryKind": "grammar",
       "label": "～することで",
       "mediaSlug": "gundam-arsenal-base",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-03-14T09:13:37.481Z"
-    },
-    {
-      "entryId": "term-mypage",
-      "entryKind": "term",
-      "label": "MY PAGE",
-      "mediaSlug": "gundam-arsenal-base",
-      "reading": "まいぺーじ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T20:04:03.932Z"
     },
     {
       "entryId": "grammar-ba-hodo",
@@ -693,52 +437,15 @@
       "updatedAt": "2026-03-16T22:27:36.116Z"
     },
     {
-      "entryId": "grammar-g001-spiegazione-enfasi",
-      "entryKind": "grammar",
-      "label": "～のだ / ～んだ",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T14:43:24.433Z"
-    },
-    {
-      "entryId": "grammar-g002-mi-chiedo-se",
-      "entryKind": "grammar",
-      "label": "～かな",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T14:43:26.184Z"
-    },
-    {
       "entryId": "grammar-g005-senza-fare-non-fare-e",
       "entryKind": "grammar",
       "label": "～ないで",
       "mediaSlug": "pokemon-scarlet-violet",
       "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T15:17:05.290Z"
-    },
-    {
-      "entryId": "grammar-g006-contrazione-colloquiale-di",
-      "entryKind": "grammar",
-      "label": "～てる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T15:17:07.258Z"
-    },
-    {
-      "entryId": "grammar-g010-prima-di",
-      "entryKind": "grammar",
-      "label": "～前に",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T15:17:20.294Z"
-    },
-    {
-      "entryId": "grammar-g011-voler-fare",
-      "entryKind": "grammar",
-      "label": "～たい",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T15:17:22.429Z"
+      "updatedAt": "2026-05-24T18:53:04.184Z",
+      "wordAddBlockedAt": "2026-05-24T18:53:04.184Z",
+      "wordAddBlockedReason": "forvo_rejected",
+      "wordAddBlockedDetail": "\"ないで\" is not allowed in Forvo.Please check the word's spelling or language."
     },
     {
       "entryId": "grammar-g014-si-puo-va-bene-fare",
@@ -749,124 +456,12 @@
       "updatedAt": "2026-04-25T15:17:23.917Z"
     },
     {
-      "entryId": "grammar-g015-dopo",
-      "entryKind": "grammar",
-      "label": "～後で / ～あとで",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T15:17:25.340Z"
-    },
-    {
-      "entryId": "grammar-g018-non-si-deve",
-      "entryKind": "grammar",
-      "label": "～てはいけない / ～ちゃいけない",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T15:17:28.217Z"
-    },
-    {
-      "entryId": "grammar-g019-dover-fare",
-      "entryKind": "grammar",
-      "label": "～なければならない / ～ないといけない",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T15:17:30.436Z"
-    },
-    {
-      "entryId": "grammar-g037-citazione-tema-colloquiale",
-      "entryKind": "grammar",
-      "label": "～って",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-04T12:41:13.255Z"
-    },
-    {
-      "entryId": "grammar-g038-piu-di-al-punto-da",
-      "entryKind": "grammar",
-      "label": "～より / ～ほど",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-04T12:41:24.187Z"
-    },
-    {
-      "entryId": "grammar-g039-se",
-      "entryKind": "grammar",
-      "label": "～ば",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-04T12:41:28.537Z"
-    },
-    {
-      "entryId": "grammar-g040-quando-nel-momento-in-cui",
-      "entryKind": "grammar",
-      "label": "～とき",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-04T12:44:01.678Z"
-    },
-    {
-      "entryId": "grammar-g043-anche-se-nonostante",
-      "entryKind": "grammar",
-      "label": "～のに",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-04T12:47:45.044Z"
-    },
-    {
-      "entryId": "grammar-g044-facciamo-andiamo-a",
-      "entryKind": "grammar",
-      "label": "～ましょう / ～ましょ",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-04T12:47:47.160Z"
-    },
-    {
-      "entryId": "grammar-g045-facciamo-provero-a",
-      "entryKind": "grammar",
-      "label": "～よう",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-04T12:47:52.099Z"
-    },
-    {
-      "entryId": "grammar-g046-sembra-che-sembra",
-      "entryKind": "grammar",
-      "label": "～ようだ / ～ように見える",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-04T12:50:34.057Z"
-    },
-    {
-      "entryId": "grammar-g048-facile-da-fare",
-      "entryKind": "grammar",
-      "label": "～やすい",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-04T12:50:47.199Z"
-    },
-    {
-      "entryId": "grammar-g050-voglio-che-mi-piacerebbe-che",
-      "entryKind": "grammar",
-      "label": "～てほしい",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-04T12:53:38.483Z"
-    },
-    {
       "entryId": "grammar-g055-mi-chiedo-proprio",
       "entryKind": "grammar",
       "label": "～かなあ",
       "mediaSlug": "pokemon-scarlet-violet",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-05-24T16:33:48.731Z"
-    },
-    {
-      "entryId": "grammar-g056-finale-maschile-riflessiva-osservativa",
-      "entryKind": "grammar",
-      "label": "～だな",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-04T12:53:40.188Z"
     },
     {
       "entryId": "grammar-g065-difficile-da-fare",
@@ -933,30 +528,6 @@
       "updatedAt": "2026-05-24T16:36:35.478Z"
     },
     {
-      "entryId": "grammar-koto-ga-dekiru",
-      "entryKind": "grammar",
-      "label": "～ことができる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:26:40.741Z"
-    },
-    {
-      "entryId": "grammar-mitai",
-      "entryKind": "grammar",
-      "label": "～みたい",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:26:58.148Z"
-    },
-    {
-      "entryId": "grammar-nagara",
-      "entryKind": "grammar",
-      "label": "～ながら",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:27:19.502Z"
-    },
-    {
       "entryId": "grammar-nai-you-ni",
       "entryKind": "grammar",
       "label": "～ないように",
@@ -971,14 +542,6 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-03-16T22:27:03.790Z"
-    },
-    {
-      "entryId": "grammar-tara",
-      "entryKind": "grammar",
-      "label": "～たら",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:26:42.754Z"
     },
     {
       "entryId": "grammar-tari-tari-suru",
@@ -1005,84 +568,12 @@
       "updatedAt": "2026-05-24T16:36:41.122Z"
     },
     {
-      "entryId": "grammar-te-kureru",
-      "entryKind": "grammar",
-      "label": "～てくれる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:26:43.614Z"
-    },
-    {
-      "entryId": "grammar-te-kuru",
-      "entryKind": "grammar",
-      "label": "～てくる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:27:21.621Z"
-    },
-    {
-      "entryId": "grammar-te-miru",
-      "entryKind": "grammar",
-      "label": "～てみる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:26:39.620Z"
-    },
-    {
-      "entryId": "grammar-te-morau",
-      "entryKind": "grammar",
-      "label": "～てもらう",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:27:20.596Z"
-    },
-    {
       "entryId": "grammar-te-ne",
       "entryKind": "grammar",
       "label": "～てね",
       "mediaSlug": "pokemon-scarlet-violet",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-03-16T22:26:44.474Z"
-    },
-    {
-      "entryId": "grammar-te-shimau",
-      "entryKind": "grammar",
-      "label": "～てしまう / ～ちゃう",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:27:02.751Z"
-    },
-    {
-      "entryId": "grammar-teoku",
-      "entryKind": "grammar",
-      "label": "～ておく",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:26:45.257Z"
-    },
-    {
-      "entryId": "grammar-to-wa-itte-mo",
-      "entryKind": "grammar",
-      "label": "～とはいっても",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:27:37.793Z"
-    },
-    {
-      "entryId": "grammar-you-ni-iwareru",
-      "entryKind": "grammar",
-      "label": "～ように言われる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:27:22.486Z"
-    },
-    {
-      "entryId": "grammar-you-ni-naru",
-      "entryKind": "grammar",
-      "label": "～ようになる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:26:41.791Z"
     },
     {
       "entryId": "grammar-zukushi",
@@ -1147,15 +638,6 @@
       "updatedAt": "2026-05-24T16:32:52.482Z"
     },
     {
-      "entryId": "term-e003-mochikirenai-mochikiremasen",
-      "entryKind": "term",
-      "label": "持ちきれない / 持ちきれません",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "もちきれない / もちきれません",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-29T11:35:24.149Z"
-    },
-    {
       "entryId": "term-e021-shitemitara",
       "entryKind": "term",
       "label": "〜してみたら？",
@@ -1190,15 +672,6 @@
       "reading": "〜させて",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-04-25T14:42:02.022Z"
-    },
-    {
-      "entryId": "term-e035-ga-arimasu",
-      "entryKind": "term",
-      "label": "〜が あります",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "〜が あります",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T14:43:22.430Z"
     },
     {
       "entryId": "term-e037-otsukaresamadesutaa",
@@ -2686,15 +2159,6 @@
       "updatedAt": "2026-05-24T16:20:18.223Z"
     },
     {
-      "entryId": "term-v729-chiimuid",
-      "entryKind": "term",
-      "label": "チームＩＤ",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "チームＩＤ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-24T16:20:29.420Z"
-    },
-    {
       "entryId": "term-v730-katsudoumenbaa",
       "entryKind": "term",
       "label": "活動メンバー",
@@ -2747,15 +2211,6 @@
       "reading": "だとかんじる",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-05-24T16:37:16.782Z"
-    },
-    {
-      "entryId": "grammar-plain-to-consequence",
-      "entryKind": "grammar",
-      "label": "〜すると",
-      "mediaSlug": "web-giapponese",
-      "reading": "すると",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-29T18:13:46.256Z"
     },
     {
       "entryId": "grammar-tabenagara",

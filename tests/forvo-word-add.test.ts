@@ -124,6 +124,130 @@ describe("forvo word-add helpers", () => {
     }
   });
 
+  it("skips Forvo word-add blocked entries unless explicitly retried", async () => {
+    const tempDir = await mkdtemp(
+      path.join(os.tmpdir(), "jcs-forvo-word-add-")
+    );
+    const knownMissingPath = path.join(tempDir, "forvo-known-missing.json");
+    const requestRegistryPath = path.join(
+      tempDir,
+      "forvo-requested-word-add.json"
+    );
+
+    try {
+      await writeFile(
+        knownMissingPath,
+        `${JSON.stringify({
+          version: 1,
+          entries: [
+            {
+              entryId: "grammar-naide",
+              entryKind: "grammar",
+              label: "～ないで",
+              mediaSlug: "sample-game",
+              wordAddBlockedReason: "forvo_rejected"
+            }
+          ]
+        })}\n`
+      );
+
+      const baseArgs = [
+        "--experimental-strip-types",
+        path.join(process.cwd(), "scripts", "request-forvo-word-add.ts"),
+        "--dry-run",
+        "--known-missing-file",
+        knownMissingPath,
+        "--request-registry-file",
+        requestRegistryPath
+      ];
+      const skipped = await execFileAsync(process.execPath, baseArgs, {
+        cwd: process.cwd()
+      });
+
+      expect(skipped.stdout).toContain(
+        "grammar-naide -> skipped (Forvo word-add blocked: forvo_rejected)"
+      );
+      expect(skipped.stdout).not.toContain("https://forvo.com/word-add/");
+
+      const retried = await execFileAsync(
+        process.execPath,
+        [...baseArgs, "--retry-blocked"],
+        {
+          cwd: process.cwd()
+        }
+      );
+
+      expect(retried.stdout).toContain("grammar-naide -> https://forvo.com/");
+    } finally {
+      await rm(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it("counts only requestable word-add URLs toward the batch limit", async () => {
+    const tempDir = await mkdtemp(
+      path.join(os.tmpdir(), "jcs-forvo-word-add-")
+    );
+    const knownMissingPath = path.join(tempDir, "forvo-known-missing.json");
+    const requestRegistryPath = path.join(
+      tempDir,
+      "forvo-requested-word-add.json"
+    );
+
+    try {
+      await writeFile(
+        knownMissingPath,
+        `${JSON.stringify({
+          version: 1,
+          entries: [
+            {
+              entryId: "grammar-naide",
+              entryKind: "grammar",
+              label: "～ないで",
+              mediaSlug: "sample-game",
+              wordAddBlockedReason: "forvo_rejected"
+            },
+            {
+              entryId: "term-a",
+              entryKind: "term",
+              label: "攻撃先",
+              mediaSlug: "sample-game",
+              reading: "こうげきさき"
+            },
+            {
+              entryId: "term-b",
+              entryKind: "term",
+              label: "防御",
+              mediaSlug: "sample-game",
+              reading: "ぼうぎょ"
+            }
+          ]
+        })}\n`
+      );
+
+      const { stdout } = await execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          path.join(process.cwd(), "scripts", "request-forvo-word-add.ts"),
+          "--dry-run",
+          "--known-missing-file",
+          knownMissingPath,
+          "--request-registry-file",
+          requestRegistryPath,
+          "--limit",
+          "1"
+        ],
+        { cwd: process.cwd() }
+      );
+
+      expect(stdout).toContain("grammar-naide -> skipped");
+      expect(stdout).toContain("term-a -> https://forvo.com/word-add/");
+      expect(stdout).not.toContain("term-b -> https://forvo.com/word-add/");
+    } finally {
+      await rm(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it("builds the expected word-add URL for a label", () => {
     expect(
       buildForvoWordAddUrl({

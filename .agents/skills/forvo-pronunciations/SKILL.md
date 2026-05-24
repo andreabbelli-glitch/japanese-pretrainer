@@ -85,6 +85,11 @@ typically at:
     Only Japanese lookup text is requestable: if a grammar label has no
     pronounceable Japanese query after markup/placeholder cleanup, record it as
     missing but do not open a garbage `word-add` request.
+    If the authenticated Forvo `word-add` form rejects the canonical Japanese
+    query after selecting Japanese, do not mark the entry as requested. Keep it
+    in `data/forvo-known-missing.json` with `wordAddBlockedReason` /
+    `wordAddBlockedDetail` so future ordinary batches skip it until the query is
+    corrected or an explicit blocked retry is requested.
 14. `./scripts/with-node.sh pnpm pronunciations:forvo` remains the low-level
     command for explicit fetcher targets, debug, and extreme manual fallback.
     Only mention Playwright when the user explicitly wants to test or debug
@@ -165,6 +170,10 @@ typically at:
 - A historical `word-add` row whose URL no longer matches the current
   normalization is not a valid current request. Let the request workflow reopen
   the canonical URL and update `data/forvo-requested-word-add.json`.
+- A `word-add` row that Forvo rejected in the form is not a valid request.
+  Remove it from `data/forvo-requested-word-add.json`, keep the known-missing
+  row, and set `wordAddBlockedReason` so the batch request command does not
+  loop on it.
 - Before opening a large `word-add` batch, make sure the local Tampermonkey
   helper is version 0.11 or newer so autosubmitted `/word-add-success/<word>/`
   tabs close themselves.

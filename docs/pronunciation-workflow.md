@@ -114,6 +114,9 @@ Durante il batch:
   Tampermonkey e aggiorna `data/forvo-requested-word-add.json`;
 - lo userscript deve chiudere automaticamente le tab autosubmitted dopo la
   conferma Forvo, cosi i batch grandi non lasciano centinaia di tab aperte;
+- se Forvo rifiuta il termine nel form `word-add` dopo la selezione di
+  `Japanese`, non considerarlo richiesto: rimuovilo dallo storico richieste e
+  mantienilo in `data/forvo-known-missing.json` con `wordAddBlockedReason`;
 - le richieste `word-add` devono usare solo testo giapponese pulito. Se una
   grammar card contiene solo descrizioni italiane/inglesi o placeholder non
   pronunciabili, il workflow la marca missing ma non apre una richiesta
@@ -169,6 +172,9 @@ prima di una nuova euristica di matching.
   solo fallback estremo per casi singoli.
 - Le entry gia marcate in `data/forvo-known-missing.json` vanno escluse di
   default; usa `--retry-known-missing` solo quando vuoi riprovarle.
+- Le entry con `wordAddBlockedReason` non vanno riaperte dal batch request
+  ordinario; usa `--retry-blocked` solo per debug mirato o dopo avere corretto
+  il testo giapponese da inviare a Forvo.
 - Una richiesta `word-add` storica con URL non piu canonico non blocca il batch:
   va riaperta con l'URL prodotto dalla normalizzazione corrente e poi aggiornata
   in `data/forvo-requested-word-add.json`.

@@ -38,6 +38,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-plain-to-consequence",
+      "audio_src": "assets/audio/grammar/grammar-plain-to-consequence/forvo-mezashi-すると.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%99%E3%82%8B%E3%81%A8/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%99%E3%82%8B%E3%81%A8",

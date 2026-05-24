@@ -20,6 +20,7 @@ type CliOptions = {
   openUrls: boolean;
   requestDelayMs: number;
   requestRegistryPath: string;
+  retryBlocked: boolean;
   retryRequested: boolean;
 };
 
@@ -67,15 +68,37 @@ const filteredEntries = knownMissingRegistry.entries.filter((entry) => {
   }
 >;
 
-const entries =
-  typeof options.limit === "number" && options.limit >= 0
-    ? filteredEntries.slice(0, options.limit)
-    : filteredEntries;
-
-if (entries.length === 0) {
+if (filteredEntries.length === 0) {
   console.info("No known-missing entries matched the requested filters.");
 } else {
-  for (const [index, entry] of entries.entries()) {
+  const requestableEntryCount = filteredEntries.filter((entry) => {
+    if (entry.wordAddBlockedReason && !options.retryBlocked) {
+      return false;
+    }
+
+    return Boolean(
+      buildForvoWordAddUrl({
+        entryId: entry.entryId,
+        entryKind: entry.entryKind,
+        label: entry.label,
+        reading: entry.reading
+      })
+    );
+  }).length;
+  const openedLimit =
+    typeof options.limit === "number"
+      ? Math.min(options.limit, requestableEntryCount)
+      : requestableEntryCount;
+  let openedCount = 0;
+
+  for (const entry of filteredEntries) {
+    if (entry.wordAddBlockedReason && !options.retryBlocked) {
+      console.info(
+        `${entry.mediaSlug}:${entry.entryKind}:${entry.entryId} -> skipped (Forvo word-add blocked: ${entry.wordAddBlockedReason})`
+      );
+      continue;
+    }
+
     const requestUrl = buildForvoWordAddUrl({
       entryId: entry.entryId,
       entryKind: entry.entryKind,
@@ -88,6 +111,10 @@ if (entries.length === 0) {
         `${entry.mediaSlug}:${entry.entryKind}:${entry.entryId} -> skipped (no Japanese Forvo query)`
       );
       continue;
+    }
+
+    if (typeof options.limit === "number" && openedCount >= options.limit) {
+      break;
     }
 
     console.info(
@@ -113,7 +140,9 @@ if (entries.length === 0) {
       );
     }
 
-    if (index < entries.length - 1 && options.openUrls && !options.dryRun) {
+    openedCount += 1;
+
+    if (openedCount < openedLimit && options.openUrls && !options.dryRun) {
       await sleep(options.requestDelayMs);
     }
   }
@@ -128,6 +157,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     openUrls: true,
     requestDelayMs: 3000,
     requestRegistryPath: path.join("data", "forvo-requested-word-add.json"),
+    retryBlocked: false,
     retryRequested: false
   };
 
@@ -188,6 +218,11 @@ function parseCliOptions(argv: string[]): CliOptions {
 
     if (argument === "--retry-requested") {
       options.retryRequested = true;
+      continue;
+    }
+
+    if (argument === "--retry-blocked") {
+      options.retryBlocked = true;
       continue;
     }
 

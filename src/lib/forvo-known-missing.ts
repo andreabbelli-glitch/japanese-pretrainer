@@ -15,6 +15,9 @@ export type ForvoKnownMissingEntry = {
   reading?: string;
   reason?: "not_found_on_forvo";
   updatedAt?: string;
+  wordAddBlockedAt?: string;
+  wordAddBlockedDetail?: string;
+  wordAddBlockedReason?: "forvo_rejected" | "max_length";
 };
 
 export type ForvoKnownMissingRegistry = {

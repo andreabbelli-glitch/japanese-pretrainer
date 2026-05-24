@@ -14,11 +14,21 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g001-spiegazione-enfasi",
+      "audio_src": "assets/audio/grammar/grammar-g001-spiegazione-enfasi/forvo-usako_usagiclub-のた-んた.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "usako_usagiclub",
+      "audio_attribution": "usako_usagiclub via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AE%E3%81%A0/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g002-mi-chiedo-se",
+      "audio_src": "assets/audio/grammar/grammar-g002-mi-chiedo-se/forvo-pitounechan-かな.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "pitounechan",
+      "audio_attribution": "pitounechan via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%8B%E3%81%AA/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8B%E3%81%AA",
@@ -42,6 +52,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g006-contrazione-colloquiale-di",
+      "audio_src": "assets/audio/grammar/grammar-g006-contrazione-colloquiale-di/forvo-strawberrybrown-てる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%82%8B/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%A6%E3%82%8B",
@@ -59,11 +74,21 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g010-prima-di",
+      "audio_src": "assets/audio/grammar/grammar-g010-prima-di/forvo-ruby8823-前に.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "Ruby8823",
+      "audio_attribution": "Ruby8823 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%89%8D%E3%81%AB/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g011-voler-fare",
+      "audio_src": "assets/audio/grammar/grammar-g011-voler-fare/forvo-strawberrybrown-たい.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9F%E3%81%84/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%9F%E3%81%84",
@@ -77,6 +102,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g015-dopo",
+      "audio_src": "assets/audio/grammar/grammar-g015-dopo/forvo-kiiro-後て-あとて.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "kiiro",
+      "audio_attribution": "kiiro via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%BE%8C%E3%81%A7/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -92,11 +122,21 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g018-non-si-deve",
+      "audio_src": "assets/audio/grammar/grammar-g018-non-si-deve/forvo-pantera3-てはいけない-ちゃいけない.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "Pantera3",
+      "audio_attribution": "Pantera3 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A1%E3%82%83%E3%81%84%E3%81%91%E3%81%AA%E3%81%84/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g019-dover-fare",
+      "audio_src": "assets/audio/grammar/grammar-g019-dover-fare/forvo-mezashi-なけれは-ならない-ないといけない.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -283,16 +323,31 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g037-citazione-tema-colloquiale",
+      "audio_src": "assets/audio/grammar/grammar-g037-citazione-tema-colloquiale/forvo-kaoring-って.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "kaoring",
+      "audio_attribution": "kaoring via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A3%E3%81%A6/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g038-piu-di-al-punto-da",
+      "audio_src": "assets/audio/grammar/grammar-g038-piu-di-al-punto-da/forvo-strawberrybrown-より-ほと.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%88%E3%82%8A/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g039-se",
+      "audio_src": "assets/audio/grammar/grammar-g039-se/forvo-strawberrybrown-は.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%B0/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/1355790/1",
@@ -301,6 +356,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g040-quando-nel-momento-in-cui",
+      "audio_src": "assets/audio/grammar/grammar-g040-quando-nel-momento-in-cui/forvo-strawberrybrown-とき.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A8%E3%81%8D/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%A8%E3%81%8D",
@@ -328,16 +388,31 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g043-anche-se-nonostante",
+      "audio_src": "assets/audio/grammar/grammar-g043-anche-se-nonostante/forvo-kaoring-のに.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "kaoring",
+      "audio_attribution": "kaoring via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AE%E3%81%AB/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g044-facciamo-andiamo-a",
+      "audio_src": "assets/audio/grammar/grammar-g044-facciamo-andiamo-a/forvo-mezashi-ましょう-ましょ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%88%E3%81%86/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g045-facciamo-provero-a",
+      "audio_src": "assets/audio/grammar/grammar-g045-facciamo-provero-a/forvo-mezashi-よう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%88%E3%81%86/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%82%88%E3%81%86",
@@ -346,6 +421,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g046-sembra-che-sembra",
+      "audio_src": "assets/audio/grammar/grammar-g046-sembra-che-sembra/forvo-kaoring-ようた-ように見える.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "kaoring",
+      "audio_attribution": "kaoring via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%88%E3%81%86%E3%81%A0/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -363,6 +443,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g048-facile-da-fare",
+      "audio_src": "assets/audio/grammar/grammar-g048-facile-da-fare/forvo-strawberrybrown-やすい.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%84%E3%81%99%E3%81%84/#ja",
       "pitch_accent": 2,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%82%84%E3%81%99%E3%81%84",
@@ -371,6 +456,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g050-voglio-che-mi-piacerebbe-che",
+      "audio_src": "assets/audio/grammar/grammar-g050-voglio-che-mi-piacerebbe-che/forvo-poyotan-てほしい.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "poyotan",
+      "audio_attribution": "poyotan via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%81%BB%E3%81%97%E3%81%84/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -394,6 +484,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g056-finale-maschile-riflessiva-osservativa",
+      "audio_src": "assets/audio/grammar/grammar-g056-finale-maschile-riflessiva-osservativa/forvo-mezashi-な-た-な.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AA/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -959,16 +1054,31 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-koto-ga-dekiru",
+      "audio_src": "assets/audio/grammar/grammar-koto-ga-dekiru/forvo-poyotan-ことか-て-きる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "poyotan",
+      "audio_attribution": "poyotan via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%93%E3%81%A8%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-mitai",
+      "audio_src": "assets/audio/grammar/grammar-mitai/forvo-strawberrybrown-みたい.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%BF%E3%81%9F%E3%81%84/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-nagara",
+      "audio_src": "assets/audio/grammar/grammar-nagara/forvo-strawberrybrown-なか-ら.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AA%E3%81%8C%E3%82%89/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -984,6 +1094,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-tara",
+      "audio_src": "assets/audio/grammar/grammar-tara/forvo-yasuo-たら.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "yasuo",
+      "audio_attribution": "yasuo via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9F%E3%82%89/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%9F%E3%82%89",
@@ -1007,21 +1122,41 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-te-kureru",
+      "audio_src": "assets/audio/grammar/grammar-te-kureru/forvo-strawberrybrown-てくれる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%81%8F%E3%82%8C%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-te-kuru",
+      "audio_src": "assets/audio/grammar/grammar-te-kuru/forvo-usako_usagiclub-てくる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "usako_usagiclub",
+      "audio_attribution": "usako_usagiclub via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%81%8F%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-te-miru",
+      "audio_src": "assets/audio/grammar/grammar-te-miru/forvo-strawberrybrown-てみる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%81%BF%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-te-morau",
+      "audio_src": "assets/audio/grammar/grammar-te-morau/forvo-strawberrybrown-てもらう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%82%82%E3%82%89%E3%81%86/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1032,16 +1167,31 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-te-shimau",
+      "audio_src": "assets/audio/grammar/grammar-te-shimau/forvo-strawberrybrown-てしまう-ちゃう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-teoku",
+      "audio_src": "assets/audio/grammar/grammar-teoku/forvo-strawberrybrown-ておく.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%81%8A%E3%81%8F/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-to-wa-itte-mo",
+      "audio_src": "assets/audio/grammar/grammar-to-wa-itte-mo/forvo-skent-とはいっても.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "skent",
+      "audio_attribution": "skent via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A8%E3%81%AF%E3%81%84%E3%81%A3%E3%81%A6%E3%82%82/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1056,11 +1206,21 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-you-ni-iwareru",
+      "audio_src": "assets/audio/grammar/grammar-you-ni-iwareru/forvo-usako_usagiclub-ように言われる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "usako_usagiclub",
+      "audio_attribution": "usako_usagiclub via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%88%E3%81%86%E3%81%AB%E8%A8%80%E3%81%86/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-you-ni-naru",
+      "audio_src": "assets/audio/grammar/grammar-you-ni-naru/forvo-usako_usagiclub-ようになる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "usako_usagiclub",
+      "audio_attribution": "usako_usagiclub via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -3648,6 +3808,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-e003-mochikirenai-mochikiremasen",
+      "audio_src": "assets/audio/term/term-e003-mochikirenai-mochikiremasen/forvo-mezashi-もちきれない-もちきれません.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%8C%81%E3%81%A1%E3%81%8D%E3%82%8C%E3%81%AA%E3%81%84/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -3959,6 +4124,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-e035-ga-arimasu",
+      "audio_src": "assets/audio/term/term-e035-ga-arimasu/forvo-mezashi-か-あります.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%8C%20%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -13092,6 +13262,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-v729-chiimuid",
+      "audio_src": "assets/audio/term/term-v729-chiimuid/forvo-usako_usagiclub-チームid.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "usako_usagiclub",
+      "audio_attribution": "usako_usagiclub via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%81%E3%83%BC%E3%83%A0/#ja",
       "pitch_accent_status": "miss"
     },
     {

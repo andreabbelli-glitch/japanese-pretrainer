@@ -153,6 +153,18 @@
       "resolvedAudioSrc": "assets/audio/grammar/grammar-aite-hitori-nitsuki/forvo-manual-あいてひとりにつき.mp3"
     },
     {
+      "entryId": "grammar-areba",
+      "entryKind": "grammar",
+      "label": "あれば / ～であれば",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "あれば / であれば",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%82%E3%82%8C%E3%81%B0/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T17:55:25.773Z",
+      "resolvedAt": "2026-05-24T17:57:27.345Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-areba/forvo-mezashi-あれは-て-あれは.mp3"
+    },
+    {
       "entryId": "grammar-battle-zone-ni-oita-mama",
       "entryKind": "grammar",
       "label": "バトルゾーンに置いたまま",
@@ -160,6 +172,42 @@
       "reading": "バトルゾーンにおいたまま",
       "requestUrl": "https://forvo.com/word-add/%E3%83%90%E3%83%88%E3%83%AB%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AB%E7%BD%AE%E3%81%84%E3%81%9F%E3%81%BE%E3%81%BE/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
       "requestedAt": "2026-05-24T15:16:07.053Z"
+    },
+    {
+      "entryId": "grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card",
+      "entryKind": "grammar",
+      "label": "「ブロッカー」を持つ光または水のシールドカード",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ぶろっかーをもつひかりまたはみずのしーるどかーど",
+      "requestUrl": "https://forvo.com/word-add/%E3%80%8C%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC%E3%80%8D%E3%82%92%E6%8C%81%E3%81%A4%E5%85%89%E3%81%BE%E3%81%9F%E3%81%AF%E6%B0%B4%E3%81%AE%E3%82%B7%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%BC%E3%83%89/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T17:55:33.946Z"
+    },
+    {
+      "entryId": "grammar-byoito-full-effect",
+      "entryKind": "grammar",
+      "label": "自分の手札に加える、「ブロッカー」を持つ光または水のシールドカードすべてに、「S・トリガー」を与える",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "じぶんのてふだにくわえる ぶろっかーをもつひかりまたはみずのしーるどかーどすべてに えすとりがーをあたえる",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%98%E3%81%B6%E3%82%93%E3%81%AE%E3%81%A6%E3%81%B5%E3%81%A0%E3%81%AB%E3%81%8F%E3%82%8F%E3%81%88%E3%82%8B%20%E3%81%B6%E3%82%8D%E3%81%A3%E3%81%8B%E3%83%BC%E3%82%92%E3%82%82%E3%81%A4%E3%81%B2%E3%81%8B%E3%82%8A%E3%81%BE%E3%81%9F%E3%81%AF%E3%81%BF%E3%81%9A%E3%81%AE%E3%81%97%E3%83%BC%E3%82%8B%E3%81%A9%E3%81%8B%E3%83%BC%E3%81%A9%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AB%20%E3%81%88%E3%81%99%E3%81%A8%E3%82%8A%E3%81%8C%E3%83%BC%E3%82%92%E3%81%82%E3%81%9F%E3%81%88%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T17:55:42.099Z"
+    },
+    {
+      "entryId": "grammar-de-hajimaru",
+      "entryKind": "grammar",
+      "label": "～で始まる",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ではじまる",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%A7%E5%A7%8B%E3%81%BE%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:22:55.603Z"
+    },
+    {
+      "entryId": "grammar-de-nai",
+      "entryKind": "grammar",
+      "label": "～でない",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "でない",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%A7%E3%81%AA%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:23:03.744Z"
     },
     {
       "entryId": "grammar-deck-empty-demo-makenai",
@@ -172,6 +220,15 @@
       "resolvedAt": "2026-05-24T12:19:59.185Z",
       "resolvedAudioSource": "forvo",
       "resolvedAudioSrc": "assets/audio/grammar/grammar-deck-empty-demo-makenai/forvo-mezashi-し-ふ-んのやまふた-にかーと-か-なくなっても-し-ふ-んはけ-ーむにまけない.mp3"
+    },
+    {
+      "entryId": "grammar-demo-demo-nai",
+      "entryKind": "grammar",
+      "label": "～でも～でもない",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "でも でも ない",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%A7%E3%82%82%E3%81%A7%E3%82%82%E3%81%AA%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:23:11.906Z"
     },
     {
       "entryId": "grammar-deru-made-omotemuki-ni-shi",
@@ -253,6 +310,15 @@
       "reading": "ほかのかくあいて",
       "requestUrl": "https://forvo.com/word-add/%E4%BB%96%E3%81%AE%E5%90%84%E7%9B%B8%E6%89%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
       "requestedAt": "2026-04-11T22:03:09.554Z"
+    },
+    {
+      "entryId": "grammar-igai-no-houhou-de",
+      "entryKind": "grammar",
+      "label": "～以外の方法で",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "いがいのほうほうで",
+      "requestUrl": "https://forvo.com/word-add/%E4%BB%A5%E5%A4%96%E3%81%AE%E6%96%B9%E6%B3%95%E3%81%A7/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:23:20.037Z"
     },
     {
       "entryId": "grammar-kaku-turn-hajimete-attack",
@@ -339,6 +405,24 @@
       "resolvedAudioSrc": "assets/audio/grammar/grammar-nikai-okonau/forvo-manual-にかいおこなう.mp3"
     },
     {
+      "entryId": "grammar-no-ato-ni",
+      "entryKind": "grammar",
+      "label": "～の後に",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "のあとに",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%AE%E5%BE%8C%E3%81%AB/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:23:28.174Z"
+    },
+    {
+      "entryId": "grammar-no-uchi",
+      "entryKind": "grammar",
+      "label": "～のうち",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "のうち",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%AE%E3%81%86%E3%81%A1/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:23:36.339Z"
+    },
+    {
       "entryId": "grammar-nokori-no-game-chuu",
       "entryKind": "grammar",
       "label": "残りのゲーム中",
@@ -349,6 +433,33 @@
       "resolvedAt": "2026-05-24T12:20:00.160Z",
       "resolvedAudioSource": "forvo",
       "resolvedAudioSrc": "assets/audio/grammar/grammar-nokori-no-game-chuu/forvo-mezashi-のこりのけ-ーむちゅう.mp3"
+    },
+    {
+      "entryId": "grammar-sarenakatta",
+      "entryKind": "grammar",
+      "label": "～されなかった",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "されなかった",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%95%E3%82%8C%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:23:44.502Z"
+    },
+    {
+      "entryId": "grammar-sareta-toki",
+      "entryKind": "grammar",
+      "label": "～された時",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "されたとき",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%95%E3%82%8C%E3%81%9F%E6%99%82/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:23:52.667Z"
+    },
+    {
+      "entryId": "grammar-seigi-no-shield-count-yori-ookereba",
+      "entryKind": "grammar",
+      "label": "自分のシールドの数が相手より多ければ",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "じぶんのしーるどのかずがあいてよりおおければ",
+      "requestUrl": "https://forvo.com/word-add/%E8%87%AA%E5%88%86%E3%81%AE%E3%82%B7%E3%83%BC%E3%83%AB%E3%83%89%E3%81%AE%E6%95%B0%E3%81%8C%E7%9B%B8%E6%89%8B%E3%82%88%E3%82%8A%E5%A4%9A%E3%81%91%E3%82%8C%E3%81%B0/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:24:00.823Z"
     },
     {
       "entryId": "grammar-shoukan-ni-yotte",
@@ -375,6 +486,15 @@
       "resolvedAudioSrc": "assets/audio/grammar/grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba/forvo-manual-そのこうけ-きちゅうにしーると-をふ-れいくしていれは.mp3"
     },
     {
+      "entryId": "grammar-sorega-nara",
+      "entryKind": "grammar",
+      "label": "それが～なら",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "それがなら",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%9D%E3%82%8C%E3%81%8C%E3%81%AA%E3%82%89/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:24:25.284Z"
+    },
+    {
       "entryId": "grammar-soreigai-nara",
       "entryKind": "grammar",
       "label": "それ以外なら",
@@ -385,6 +505,15 @@
       "resolvedAt": "2026-04-25T22:18:21.854Z",
       "resolvedAudioSource": "forvo",
       "resolvedAudioSrc": "assets/audio/grammar/grammar-soreigai-nara/forvo-manual-それいか-いなら.mp3"
+    },
+    {
+      "entryId": "grammar-subete-ni-s-trigger-wo-ataeru",
+      "entryKind": "grammar",
+      "label": "すべてに「S・トリガー」を与える",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "すべてにえすとりがーをあたえる",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AB%E3%81%88%E3%81%99%E3%81%A8%E3%82%8A%E3%81%8C%E3%83%BC%E3%82%92%E3%81%82%E3%81%9F%E3%81%88%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:24:41.593Z"
     },
     {
       "entryId": "grammar-sukina-junjo-de",
@@ -411,6 +540,23 @@
       "resolvedAudioSrc": "assets/audio/grammar/grammar-suterareta-toki/forvo-mezashi-すてられたとき.mp3"
     },
     {
+      "entryId": "grammar-te-inakereba",
+      "entryKind": "grammar",
+      "label": "～ていなければ",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ていなければ",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%A6%E3%81%84%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:24:49.748Z"
+    },
+    {
+      "entryId": "grammar-teireba",
+      "entryKind": "grammar",
+      "label": "～ていれば",
+      "mediaSlug": "duel-masters-dm25",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%A6%E3%81%84%E3%82%8C%E3%81%B0/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:24:57.898Z"
+    },
+    {
       "entryId": "grammar-to-onaji-maisuu",
       "entryKind": "grammar",
       "label": "～と同じ枚数",
@@ -421,6 +567,15 @@
       "resolvedAt": "2026-04-25T22:18:21.854Z",
       "resolvedAudioSource": "forvo",
       "resolvedAudioSrc": "assets/audio/grammar/grammar-to-onaji-maisuu/forvo-manual-とおなし-まいすう.mp3"
+    },
+    {
+      "entryId": "grammar-turn-timing",
+      "entryKind": "grammar",
+      "label": "～のはじめに / ～の終わりに",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "のはじめに / のおわりに",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%AE%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:25:06.053Z"
     },
     {
       "entryId": "grammar-uramuki-ni-shite",
@@ -550,6 +705,15 @@
       "resolvedAt": "2026-05-24T12:20:01.920Z",
       "resolvedAudioSource": "forvo",
       "resolvedAudioSrc": "assets/audio/term/term-attack-target/forvo-mezashi-こうけ-きさき.mp3"
+    },
+    {
+      "entryId": "term-b-a-d-two",
+      "entryKind": "term",
+      "label": "B・A・D 2",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "びーえーでぃーつー",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%B3%E3%83%BC%E3%81%88%E3%83%BC%E3%81%A7%E3%81%83%E3%83%BC%E3%81%A4%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:25:14.208Z"
     },
     {
       "entryId": "term-babyponnosuke",
@@ -885,6 +1049,15 @@
       "resolvedAudioSrc": "assets/audio/term/term-dm-points/forvo-mezashi-て-ぃーえむほ-いんと.mp3"
     },
     {
+      "entryId": "term-do-sumonma",
+      "entryKind": "term",
+      "label": "ド:スモンマー",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ど すもんまー",
+      "requestUrl": "https://forvo.com/word-add/%E3%83%89%3A%E3%82%B9%E3%83%A2%E3%83%B3%E3%83%9E%E3%83%BC/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:25:22.369Z"
+    },
+    {
       "entryId": "term-doorknocker-nordocker",
       "entryKind": "term",
       "label": "ドアノッカ＝ノアドッカ",
@@ -991,6 +1164,15 @@
       "resolvedAt": "2026-05-24T12:20:09.510Z",
       "resolvedAudioSource": "forvo",
       "resolvedAudioSrc": "assets/audio/term/term-felix-misery/forvo-mezashi-ふぇりっくす-みさ-りぃ.mp3"
+    },
+    {
+      "entryId": "term-final-revolution",
+      "entryKind": "term",
+      "label": "ファイナル革命",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ファイナルかくめい",
+      "requestUrl": "https://forvo.com/word-add/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E9%9D%A9%E5%91%BD/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:25:30.520Z"
     },
     {
       "entryId": "term-g-neo-creature",
@@ -2054,12 +2236,12 @@
       "resolvedAudioSrc": "assets/audio/grammar/grammar-ga-kaihou-sareru/forvo-mezashi-かいほうされる.mp3"
     },
     {
-      "entryId": "grammar-parenthetical-label",
+      "entryId": "grammar-suru-koto-de",
       "entryKind": "grammar",
-      "label": "～(～)",
+      "label": "～することで",
       "mediaSlug": "gundam-arsenal-base",
-      "requestUrl": "https://forvo.com/word-add/%EF%BD%9E(%EF%BD%9E)/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-04-11T22:17:26.683Z"
+      "requestUrl": "https://forvo.com/word-add/%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%A7/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:25:38.673Z"
     },
     {
       "entryId": "grammar-wo-setto-suru",
@@ -2536,6 +2718,14 @@
       "requestedAt": "2026-05-24T16:36:49.822Z"
     },
     {
+      "entryId": "grammar-dake-ja-dame",
+      "entryKind": "grammar",
+      "label": "～だけじゃ ダメ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%A0%E3%81%91%E3%81%98%E3%82%83%20%E3%83%80%E3%83%A1/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:25:46.831Z"
+    },
+    {
       "entryId": "grammar-g003-stato-in-corso-stato-risultante",
       "entryKind": "grammar",
       "label": "～ている",
@@ -2545,6 +2735,14 @@
       "resolvedAt": "2026-05-24T15:16:14.748Z",
       "resolvedAudioSource": "forvo",
       "resolvedAudioSrc": "assets/audio/grammar/grammar-g003-stato-in-corso-stato-risultante/forvo-poyotan-ている.mp3"
+    },
+    {
+      "entryId": "grammar-g014-si-puo-va-bene-fare",
+      "entryKind": "grammar",
+      "label": "～てもいい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%A6%E3%82%82%E3%81%84%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:26:03.163Z"
     },
     {
       "entryId": "grammar-g017-pensare-che",
@@ -2631,6 +2829,14 @@
       "requestedAt": "2026-05-24T16:35:30.009Z"
     },
     {
+      "entryId": "grammar-g103-mentre-finche",
+      "entryKind": "grammar",
+      "label": "～うちに",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%86%E3%81%A1%E3%81%AB/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:26:11.318Z"
+    },
+    {
       "entryId": "grammar-g105-finale-ruvida-maschile",
       "entryKind": "grammar",
       "label": "～だぜ",
@@ -2655,6 +2861,30 @@
       "requestedAt": "2026-05-24T16:36:35.502Z"
     },
     {
+      "entryId": "grammar-nai-you-ni",
+      "entryKind": "grammar",
+      "label": "～ないように",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%AA%E3%81%84%E3%82%88%E3%81%86%E3%81%AB/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:26:19.470Z"
+    },
+    {
+      "entryId": "grammar-ta-bakari",
+      "entryKind": "grammar",
+      "label": "～たばかり / ～たばっかり",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%9F%E3%81%B0%E3%81%8B%E3%82%8A/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:26:27.634Z"
+    },
+    {
+      "entryId": "grammar-tari-tari-suru",
+      "entryKind": "grammar",
+      "label": "～たり ～たりする",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%9F%E3%82%8A%20%E3%81%9F%E3%82%8A%E3%81%99%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:26:35.787Z"
+    },
+    {
       "entryId": "grammar-te-ageru",
       "entryKind": "grammar",
       "label": "～てあげる",
@@ -2669,6 +2899,14 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
       "requestedAt": "2026-05-24T16:36:41.139Z"
+    },
+    {
+      "entryId": "grammar-te-ne",
+      "entryKind": "grammar",
+      "label": "～てね",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%A6%E3%81%AD/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:26:43.946Z"
     },
     {
       "entryId": "grammar-tte-no-wa",
@@ -2804,6 +3042,24 @@
       "resolvedAudioSrc": "assets/audio/term/term-e018-doushitano/forvo-mezashi-と-うしたの.mp3"
     },
     {
+      "entryId": "term-e021-shitemitara",
+      "entryKind": "term",
+      "label": "〜してみたら？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してみたら？",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%E3%82%89%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:26:52.097Z"
+    },
+    {
+      "entryId": "term-e022-shitekureru",
+      "entryKind": "term",
+      "label": "〜してくれる？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してくれる？",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%82%8B%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:27:00.259Z"
+    },
+    {
       "entryId": "term-e024-dono-pokemoni-tsukaimasuka",
       "entryKind": "term",
       "label": "どの ポケモンに 使いますか？",
@@ -2816,6 +3072,24 @@
       "resolvedAudioSrc": "assets/audio/term/term-e024-dono-pokemoni-tsukaimasuka/forvo-mezashi-と-の-ホ-ケモンに-つかいますか.mp3"
     },
     {
+      "entryId": "term-e025-dekiruyouninatta",
+      "entryKind": "term",
+      "label": "〜できるようになった",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜できるようになった",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:27:08.410Z"
+    },
+    {
+      "entryId": "term-e027-sasete",
+      "entryKind": "term",
+      "label": "〜させて",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜させて",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%95%E3%81%9B%E3%81%A6/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:27:16.564Z"
+    },
+    {
       "entryId": "term-e037-otsukaresamadesutaa",
       "entryKind": "term",
       "label": "お疲れさまでスター",
@@ -2823,6 +3097,15 @@
       "reading": "おつかれさまでスター",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8A%E7%96%B2%E3%82%8C%E3%81%95%E3%81%BE%E3%81%A7%E3%82%B9%E3%82%BF%E3%83%BC/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
       "requestedAt": "2026-05-24T15:59:12.538Z"
+    },
+    {
+      "entryId": "term-e042-shiteageru",
+      "entryKind": "term",
+      "label": "〜してあげる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してあげる",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%82%E3%81%92%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:27:24.720Z"
     },
     {
       "entryId": "term-e045-shimatta",
@@ -2859,6 +3142,15 @@
       "resolvedAt": "2026-05-24T12:20:20.706Z",
       "resolvedAudioSource": "forvo",
       "resolvedAudioSrc": "assets/audio/term/term-e047-o-erandekudasai/forvo-mezashi-を-えらんて-くた-さい.mp3"
+    },
+    {
+      "entryId": "term-e053-shitemite",
+      "entryKind": "term",
+      "label": "〜してみて",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してみて",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%BF%E3%81%A6/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:27:32.878Z"
     },
     {
       "entryId": "term-e054-sorette",
@@ -3087,6 +3379,15 @@
       "reading": "〜を かくにんしてみましょう！",
       "requestUrl": "https://forvo.com/word-add/%E3%82%92%20%E7%A2%BA%E8%AA%8D%E3%81%97%E3%81%A6%E3%81%BF%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%EF%BC%81/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
       "requestedAt": "2026-05-24T16:13:59.189Z"
+    },
+    {
+      "entryId": "term-e096-korede-okee",
+      "entryKind": "term",
+      "label": "これでＯＫ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "これでおーけー",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%93%E3%82%8C%E3%81%A7%E3%81%8A%E3%83%BC%E3%81%91%E3%83%BC/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:27:41.021Z"
     },
     {
       "entryId": "term-e097-nakunatteshimaimasuga-yoroshiidesuka",
@@ -3510,6 +3811,15 @@
       "resolvedAt": "2026-05-24T12:20:24.879Z",
       "resolvedAudioSource": "forvo",
       "resolvedAudioSrc": "assets/audio/term/term-v069-kuraberu/forvo-mezashi-くらへ-る.mp3"
+    },
+    {
+      "entryId": "term-v085-eichipii",
+      "entryKind": "term",
+      "label": "ＨＰ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "えいちぴー",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%88%E3%81%84%E3%81%A1%E3%81%B4%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:27:49.181Z"
     },
     {
       "entryId": "term-v088-tokubou",
@@ -4814,6 +5124,15 @@
       "resolvedAudioSrc": "assets/audio/term/term-yowaraseru/forvo-mezashi-よわらせる.mp3"
     },
     {
+      "entryId": "grammar-da-to-kanjiru",
+      "entryKind": "grammar",
+      "label": "N / ナ{{形|けい}} + だと{{感|かん}}じる",
+      "mediaSlug": "web-giapponese",
+      "reading": "だとかんじる",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%A0%E3%81%A8%E3%81%8B%E3%82%93%E3%81%98%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:27:57.344Z"
+    },
+    {
       "entryId": "grammar-noun-coordination",
       "entryKind": "grammar",
       "label": "名詞と名詞",
@@ -4845,6 +5164,24 @@
       "reading": "たべながら",
       "requestUrl": "https://forvo.com/word-add/%E9%A3%9F%E3%81%B9%E3%81%AA%E3%81%8C%E3%82%89/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
       "requestedAt": "2026-05-24T10:48:27.070Z"
+    },
+    {
+      "entryId": "grammar-te-mite-ne",
+      "entryKind": "grammar",
+      "label": "〜してみてね",
+      "mediaSlug": "web-giapponese",
+      "reading": "してみてね",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%BF%E3%81%A6%E3%81%AD/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:28:05.501Z"
+    },
+    {
+      "entryId": "grammar-you-to-shite-iru",
+      "entryKind": "grammar",
+      "label": "〜ようとしている",
+      "mediaSlug": "web-giapponese",
+      "reading": "ようとしている",
+      "requestUrl": "https://forvo.com/word-add/%E3%82%88%E3%81%86%E3%81%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:28:13.657Z"
     },
     {
       "entryId": "term-auto-kinou",
@@ -4950,6 +5287,15 @@
       "reading": "ハードモードではさらにきょうりょくなモンスターがしゅつげん",
       "requestUrl": "https://forvo.com/word-add/%E3%83%8F%E3%83%BC%E3%83%89%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E3%81%AF%E3%81%95%E3%82%89%E3%81%AB%E5%BC%B7%E5%8A%9B%E3%81%AA%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%8C%E5%87%BA%E7%8F%BE/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
       "requestedAt": "2026-05-02T13:36:51.893Z"
+    },
+    {
+      "entryId": "term-hard-mode-ga-kaihou-saremashita",
+      "entryKind": "term",
+      "label": "ハードモードが解放されました",
+      "mediaSlug": "web-giapponese",
+      "reading": "ハードモードがかいほうされました",
+      "requestUrl": "https://forvo.com/word-add/%E3%83%8F%E3%83%BC%E3%83%89%E3%83%A2%E3%83%BC%E3%83%89%E3%81%8C%E8%A7%A3%E6%94%BE%E3%81%95%E3%82%8C%E3%81%BE%E3%81%97%E3%81%9F/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-24T18:28:21.810Z"
     },
     {
       "entryId": "term-hikinaoseru",

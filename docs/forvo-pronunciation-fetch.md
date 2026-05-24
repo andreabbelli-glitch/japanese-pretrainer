@@ -104,6 +104,10 @@ Quando Forvo non espone una pronuncia giapponese per la parola/frase:
   cosi puoi chiedere la pronuncia dal browser normale senza cercarla a mano;
 - se una entry non produce nessuna query giapponese pronunciabile, il workflow
   la marca missing ma non apre una richiesta `word-add` spazzatura;
+- se la pagina `word-add` rifiuta esplicitamente il termine dopo la selezione di
+  `Japanese` (per esempio `not allowed` o limite 40 caratteri), la entry resta
+  in `data/forvo-known-missing.json` con metadata `wordAddBlocked*` e non va
+  marcata come richiesta in `data/forvo-requested-word-add.json`;
 - se hai installato lo userscript locale
   `scripts/forvo-word-add-helper.user.js`, la pagina `word-add` seleziona in
   automatico `Japanese`, decide `phrase yes/no` dagli hint del repo e lascia
@@ -369,6 +373,8 @@ Questo comando:
 - legge `data/forvo-known-missing.json`;
 - esclude di default le voci gia richieste e registrate in
   `data/forvo-requested-word-add.json`;
+- salta di default le voci che Forvo ha gia rifiutato nel form `word-add`
+  (`wordAddBlockedReason`);
 - apre gli URL `https://forvo.com/word-add/...` nel browser normale;
 - salva subito nel registry quali richieste sono gia state lanciate.
 
@@ -379,6 +385,8 @@ Opzioni utili:
 - `--limit N`: quante tab aprire;
 - `--no-open`: stampa/registra senza aprire il browser;
 - `--retry-requested`: include anche le voci gia richieste in passato;
+- `--retry-blocked`: include anche le voci marcate come rifiutate dal form
+  `word-add`, da usare solo per debug o dopo una modifica esplicita del termine;
 - `--request-delay-ms 3000`: pausa tra le tab aperte. Questo e' ora il default
   prudente consigliato per non aprire troppe richieste in sequenza troppo
   aggressiva.

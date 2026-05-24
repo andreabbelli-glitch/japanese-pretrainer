@@ -39,6 +39,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-senyouki",
+      "audio_src": "assets/audio/grammar/grammar-senyouki/forvo-renad-専用機.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "renad",
+      "audio_attribution": "renad via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%B0%82%E7%94%A8%E6%A9%9F/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -462,6 +467,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-mypage",
+      "audio_src": "assets/audio/term/term-mypage/forvo-chamy_cha-まいへ-ーし.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "chamy_cha",
+      "audio_attribution": "chamy_cha via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%9E%E3%82%A4%E3%83%9A%E3%83%BC%E3%82%B8/#ja",
       "pitch_accent": 3,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%9E%E3%82%A4%E3%83%9A%E3%83%BC%E3%82%B8",
