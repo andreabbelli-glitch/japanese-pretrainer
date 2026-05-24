@@ -23,13 +23,12 @@ chiare come [{{連|つ}}れる](term:term-ch-tsureru), [{{抱|かか}}える](te
 e [{{救|すく}}う](term:term-ch-sukuu).
 
 La scena usa parole comuni, ma non tutte si comportano nello stesso modo. Le
-persone "ci sono" con `いる`; le cose come [{{金|かね}}](term:term-ch-kane) si
-presentano naturalmente con `ある`; i verbi di salvataggio prendono spesso una
-persona come oggetto con `を`.
+persone "ci sono" con `いる`; le cose come {{金|かね}} si presentano
+naturalmente con `ある`; i verbi di salvataggio prendono spesso una persona come
+oggetto con `を`.
 
 ## Termini chiave
 
-- [{{金|かね}}](term:term-ch-kane) - denaro
 - [{{人達|ひとたち}}](term:term-ch-hitotachi) - persone
 - [お{{客様|きゃくさま}}](term:term-ch-okyakusama) - cliente; ospite
 - [{{飲|の}}む](term:term-ch-nomu) - bere
@@ -52,9 +51,9 @@ persona come oggetto con `を`.
 
 ## 1. Persone, denaro e presenza nella scena
 
-[{{金|かね}}](term:term-ch-kane) e [{{人達|ひとたち}}](term:term-ch-hitotachi)
-possono stare nella stessa sequenza narrativa, ma il verbo di esistenza cambia:
-`ある` per cose e denaro, `いる` per persone.
+{{金|かね}} e [{{人達|ひとたち}}](term:term-ch-hitotachi) possono stare nella
+stessa sequenza narrativa, ma il verbo di esistenza cambia: `ある` per cose e
+denaro, `いる` per persone.
 
 :::example_sentence
 jp: >-

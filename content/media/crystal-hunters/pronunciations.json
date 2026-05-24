@@ -5340,19 +5340,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-ch-kane",
-      "audio_src": "assets/audio/term/term-ch-kane/forvo-strawberrybrown-かね.mp3",
-      "audio_source": "forvo",
-      "audio_speaker": "strawberrybrown",
-      "audio_attribution": "strawberrybrown via Forvo",
-      "audio_page_url": "https://forvo.com/word/%E9%87%91/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1242590/0",
-      "pitch_accent_status": "resolved"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-ch-kazoku",
       "audio_src": "assets/audio/term/term-ch-kazoku/forvo-strawberrybrown-かそ-く.mp3",
       "audio_source": "forvo",

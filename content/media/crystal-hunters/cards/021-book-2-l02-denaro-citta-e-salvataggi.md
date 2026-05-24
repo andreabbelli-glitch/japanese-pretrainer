@@ -8,19 +8,6 @@ segment_ref: book-2
 ---
 
 :::term
-id: term-ch-kane
-lemma: '金'
-reading: 'かね'
-romaji: ka-ne
-meaning_it: denaro
-pos: noun
-notes_it: >-
-  {{金|かね}} indica il denaro come risorsa disponibile o richiesta. Con
-  `{{金|かね}}がある`, la frase dice semplicemente che i soldi ci sono.
-level_hint: n5
-:::
-
-:::term
 id: term-ch-hitotachi
 lemma: '人達'
 reading: 'ひとたち'
@@ -200,22 +187,6 @@ notes_it: >-
   {{命中|めいちゅう}} è il colpo che centra il bersaglio. Con `する` diventa
   l'azione di andare a segno: {{矢|や}}が{{命中|めいちゅう}}する.
 level_hint: n2
-:::
-
-:::card
-id: card-crystal-hunters-book-2-l02-denaro-citta-e-salvataggi-ch-kane-recognition
-lesson_id: lesson-crystal-hunters-book-2-l02-denaro-citta-e-salvataggi
-entry_type: term
-entry_id: term-ch-kane
-card_type: recognition
-front: '{{金|かね}}'
-back: 'かね — denaro'
-example_jp: '{{金|かね}}がある。'
-example_it: 'C''è denaro.'
-notes_it: >-
-  {{金|かね}} indica il denaro come risorsa disponibile o richiesta. Con
-  `{{金|かね}}がある`, la frase dice semplicemente che i soldi ci sono.
-tags: [crystal-hunters, book-2, lesson-02]
 :::
 
 :::card
