@@ -14,6 +14,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-nandarou",
+      "audio_src": "assets/audio/grammar/grammar-nandarou/forvo-mezashi-なんだろう.ogg",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AA%E3%82%93%E3%81%A0%E3%82%8D%E3%81%86/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -120,6 +125,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-chokuzen",
+      "audio_src": "assets/audio/term/term-chokuzen/forvo-usako_usagiclub-ちょくぜん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "usako_usagiclub",
+      "audio_attribution": "usako_usagiclub via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%9B%B4%E5%89%8D/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%9B%B4%E5%89%8D",
@@ -226,6 +236,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-hetare",
+      "audio_src": "assets/audio/term/term-hetare/forvo-strawberrybrown-へたれ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%B8%E3%81%9F%E3%82%8C/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Jiten",
       "pitch_accent_page_url": "https://jiten.moe/vocabulary/2082810/1",
@@ -301,6 +316,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-kanjiru",
+      "audio_src": "assets/audio/term/term-kanjiru/forvo-strawberrybrown-かんじる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%84%9F%E3%81%98%E3%82%8B/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%84%9F%E3%81%98%E3%82%8B",

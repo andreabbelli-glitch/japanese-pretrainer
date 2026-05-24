@@ -212,6 +212,29 @@ Per il workflow del repo si puo quindi inserire un ranking prima dei voti, ad
 esempio privilegiando una lista locale di utenti affidabili quando presenti e
 poi ricadendo su voti/origine/ordine Forvo.
 
+Nel batch sperimentale successivo sul media `web-giapponese`, la lista speaker
+preferita e' stata:
+
+1. `strawberrybrown`
+2. `mezashi`
+
+Il ranking ha scaricato e importato:
+
+- `直前`: `usako_usagiclub`, fallback per voti perche nessuno speaker preferito
+  era presente;
+- `感じる`: `strawberrybrown`;
+- `なんだろう`: `mezashi` in formato OGG;
+- `へたれ`: `strawberrybrown`.
+
+Il primo miss osservato e' stato `最近っぽい`. In questo caso l'addon non ha
+restituito subito `NoResultsException`: `QWebEngineView.loadFinished` e'
+arrivato con `success=false`, l'addon ha stampato l'errore ma non ha invocato la
+callback. Per replicare la logica in modo robusto serve quindi un timeout per
+query; allo scadere si prova la variante successiva (`reading`) e, se anche
+quella scade o non ha risultati, si registra il miss. Per il miss e' stato aperto
+l'URL `word-add` precompilato e registrata la voce nei registry locali
+`data/forvo-known-missing.json` e `data/forvo-requested-word-add.json`.
+
 ## Batch one-shot per il backlog known missing
 
 Quando vuoi coprire in blocco il backlog gia segnato come `not_found_on_forvo`,
