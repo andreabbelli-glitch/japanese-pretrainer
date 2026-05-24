@@ -88,7 +88,13 @@ typically at:
     The importer downloads the indexed direct audio, converts OGG to MP3, marks
     matching `data/forvo-requested-word-add.json` entries as resolved, removes
     matching known-missing rows, and refreshes pending summaries.
-16. This skill normally updates pronunciation audio artifacts only. If the same
+
+16. If a task creates or revises flashcards, pronunciation resolution is
+    mandatory before completion for every touched card entry. Each entry must end
+    with local audio in Markdown or `pronunciations.json`, or with a recorded
+    Forvo `word-add` request when Forvo does not yet have the pronunciation.
+    Do not leave newly created card entries silently missing audio.
+17. This skill normally updates pronunciation audio artifacts only. If the same
     task also creates or revises local flashcard entries, run the pitch accent
     workflow after the content edit and before import, targeted to those new
     entries:
@@ -96,7 +102,7 @@ typically at:
     Pass multiple `--entry` flags as needed; use `--word` / `--words-file`
     only when the entry IDs are not available. Do not use a whole-media pitch
     accent fetch for normal content-creation follow-up.
-17. This skill does not define textbook prose. If a pronunciation request
+18. This skill does not define textbook prose. If a pronunciation request
     expands into creating or revising lesson text, load the relevant
     content-building workflow and follow
     `docs/llm-kit/general/10-textbook-lesson-style-standard.md` for voice and

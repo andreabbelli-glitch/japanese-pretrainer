@@ -64,26 +64,31 @@ Optional:
 6. Update:
    - `content/media/web-giapponese/workflow/image-requests.yaml`
    - `content/media/web-giapponese/workflow/image-assets.yaml`
-7. Regenerate
+7. Resolve pronunciation audio for every new or revised card entry with:
+   `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media web-giapponese --entry <new-term-or-grammar-id>`
+   Pass multiple `--entry` flags for multiple new cards. If Forvo has no audio,
+   the manual flow must open and record the `word-add` request.
+8. Regenerate
    `content/media/web-giapponese/workflow/pronunciation-pending.json` with:
    `./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese`
    so every newly added card without local audio is recorded in the pending
-   manifest.
-8. Run the repo validation flow before closing.
-9. Fetch pitch accents only for the flashcard entries created or revised in
-   this task. Prefer entry IDs:
-   `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`
-   Pass multiple `--entry` flags for multiple new cards. Use `--word` or
-   `--words-file` only when a reliable entry-id list is not available.
-10. Import the updated item into the configured target database with a
+   manifest after the request path has run.
+9. Run the repo validation flow before closing.
+10. Fetch pitch accents only for the flashcard entries created or revised in
+    this task. Prefer entry IDs:
+    `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`
+    Pass multiple `--entry` flags for multiple new cards. Use `--word` or
+    `--words-file` only when a reliable entry-id list is not available.
+11. Import the updated item into the configured target database with a
     lesson-scoped import:
     `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>`
     Use the broader media-scoped import only when the task changed media-wide
     ordering or other content that must apply archive/prune to all
     `web-giapponese` lessons/cards.
-11. Treat the work as incomplete if pitch accent fetch, import, or cache
+12. Treat the work as incomplete if pronunciation resolution, pitch accent fetch,
+    import, or cache
     revalidation fails.
-12. After a completed item/card workflow with passing required checks, commit
+13. After a completed item/card workflow with passing required checks, commit
     and push the relevant changes to `main` before closing the task. Stage only
     files created or updated by this workflow, and leave unrelated worktree
     changes unstaged.
@@ -230,6 +235,7 @@ lesson into the configured target database:
 
 ```bash
 ./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese
+.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
 ./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>
 ```
@@ -246,6 +252,11 @@ change set as the lesson and cards.
 Do not run a whole-media pitch accent fetch for normal item-builder batches.
 Use the whole-media form only when the user explicitly asks to backfill the
 media backlog.
+
+Every new or revised card entry must go through pronunciation resolution before
+completion. Finish with local audio in Markdown or `pronunciations.json`; if
+Forvo has no pronunciation yet, the manual flow must open and record the
+`word-add` request instead of leaving the entry silently missing audio.
 
 Keep
 `content/media/web-giapponese/workflow/pronunciation-pending.json`

@@ -3,6 +3,12 @@
 Questo documento e' la source of truth del flusso operativo per aggiungere audio
 alle flashcard che non hanno ancora una pronuncia locale.
 
+Ogni workflow editoriale che crea o revisiona flashcard deve chiudere anche il
+workflow pronunce sulle entry toccate. Una nuova card non e completa finche la
+sua entry non ha un audio locale nel Markdown o in `pronunciations.json`, oppure
+una richiesta Forvo `word-add` registrata in `data/forvo-requested-word-add.json`
+quando Forvo non espone ancora la pronuncia.
+
 ## Obiettivo
 
 Quando arriva una richiesta del tipo "aggiungi le pronunce mancanti",
@@ -17,6 +23,11 @@ usa il resolver del repo. Il workflow effettivo e':
 5. importare periodicamente le richieste Forvo storiche che sono state
    soddisfatte;
 6. aggiornare manifest, asset locali, pending list e storico word-add.
+
+Per card appena create o revisionate, lo stesso ordine e obbligatorio ma lo
+scope deve essere limitato alle entry toccate o alla lesson appena modificata.
+Gli skip manuali non sono uno stato finale silenzioso: devono aprire `word-add`
+e lasciare una traccia nello storico richieste.
 
 Forvo manuale e' l'unico meccanismo di recupero esterno delle pronunce audio.
 Il riuso interno resta obbligatorio prima di aprire Forvo.

@@ -677,6 +677,10 @@ Regola review obbligatoria per `:::card`:
 - `example_jp` deve mostrare uso vivo, non spiegazione della parola: niente
   frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
   `Xという言葉は...` o simili;
+- ogni nuova card o card revisionata deve chiudere il workflow con una pronuncia
+  locale per la sua entry oppure con una richiesta Forvo `word-add` registrata;
+  non lasciare entry nuove semplicemente mute senza passare dal workflow
+  pronunce;
 - `example_jp` non deve contenere kanji che non hanno una flashcard associata nel
   corpus di studio (indipendentemente dal media e dallo stato di studio della
   card); anticipare leggermente e ammesso, usare kanji completamente fuori dal
@@ -795,7 +799,12 @@ Campi opzionali:
 
 Regole audio:
 
-- l'audio e opzionale;
+- i campi audio restano strutturalmente opzionali per compatibilita con contenuti
+  legacy, entry non ancora review-backed e manifest costruiti per step;
+- per ogni entry collegata a una nuova card o card revisionata, pero, il
+  workflow editoriale deve sempre provare a risolvere la pronuncia: prima audio
+  locale/riuso cross-media, poi Forvo; se Forvo non ha la parola, deve aprire la
+  richiesta `word-add` e registrarla nello storico richieste;
 - se presente, `audio_src` deve puntare a un file locale sotto `assets/`;
 - sono ammessi `mp3`, `ogg`, `wav`, `m4a`;
 - `audio_source`, `audio_speaker`, `audio_license`, `audio_attribution` e

@@ -21,6 +21,10 @@ di aprire Forvo il workflow deve comunque filtrare gli audio gia locali e
 riusare eventuali audio compatibili presenti in altri media. La source of truth
 del processo completo e' `docs/pronunciation-workflow.md`.
 
+Quando un workflow editoriale crea o revisiona flashcard, questo passaggio non e
+opzionale: ogni entry toccata deve ottenere audio locale oppure una richiesta
+Forvo `word-add` registrata se la pronuncia non esiste ancora.
+
 ## Quando usarlo
 
 - hai gia lasciato che il workflow filtrasse gli audio locali e riusasse gli

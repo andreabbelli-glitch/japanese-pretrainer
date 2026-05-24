@@ -300,6 +300,10 @@ parte piu dal low-level Forvo, ma dal resolver smart:
 Il resolver seleziona i target, esclude le entry gia coperte, prova il riuso
 cross-media e manda a Forvo manuale solo il residuo.
 
+Ogni workflow che crea o modifica flashcard deve anche risolvere le pronunce
+delle entry toccate: audio locale quando disponibile, altrimenti richiesta Forvo
+`word-add` registrata. Una nuova card non va lasciata muta senza questo passaggio.
+
 `pnpm pronunciations:forvo` resta disponibile come comando low-level per batch
 mirati di fallback o debug del fetcher. La source of truth operativa e
 [`docs/pronunciation-workflow.md`](./docs/pronunciation-workflow.md).
