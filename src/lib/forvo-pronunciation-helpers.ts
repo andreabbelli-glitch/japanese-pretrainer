@@ -2,6 +2,7 @@ import path from "node:path";
 
 import type { NormalizedMediaBundle } from "./content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
+import { stripInlineMarkdown } from "./inline-markdown.ts";
 import {
   collectPronunciationTargets,
   normalizePronunciationText,
@@ -226,17 +227,27 @@ export function doesManualDownloadMatchEntry(
 export function expandForvoSearchVariants(values: Array<string | undefined>) {
   return values
     .filter((value): value is string => typeof value === "string")
+    .map(normalizeForvoLookupText)
+    .filter(Boolean)
     .flatMap((value) => [
       value,
       ...value
         .split(/\s*[\/|]\s*/u)
         .map((segment) => segment.trim())
         .filter(Boolean)
-    ]);
+    ])
+    .filter(Boolean);
 }
 
 function isEntryIdLike(value: string) {
   return /^(term|grammar)-/u.test(value);
+}
+
+export function normalizeForvoLookupText(value: string) {
+  return stripInlineMarkdown(value)
+    .replace(/[〜～~]/gu, "")
+    .replace(/\s+/gu, " ")
+    .trim();
 }
 
 function resolveWordListRow(input: {

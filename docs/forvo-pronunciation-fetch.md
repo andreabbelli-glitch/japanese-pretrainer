@@ -250,6 +250,24 @@ Forvo: preferire `reading` quando disponibile, rimuovere markup editoriale
 fallback. La stessa normalizzazione serve per `word-add`: non bisogna inviare a
 Forvo label editoriali con markup.
 
+Per il caso `{{食|た}}べながら`, la normalizzazione corretta per Forvo e'
+`食べながら`, non solo `たべながら`: la richiesta deve preservare la surface con
+kanji per poter poi recuperare correttamente la pronuncia quando viene aggiunta.
+
+Il blocco osservato su `word-add` era compatibile con interferenza del banner
+cookie/CMP. Quando Forvo ha gia una sessione cookie valida nel browser, lo
+userscript Tampermonkey `Forvo Word Add Helper` 0.9 applica correttamente i
+parametri `jcs_*`, incluso `jcs_lang=ja`; quindi non e' necessario cambiare lo
+userscript solo per questo caso. Nel workflow definitivo bisogna riusare profili
+persistenti: browser normale per `word-add` e profilo Qt WebEngine dedicato per
+il fetch Anki-style, senza cancellare cookie/cache tra run.
+
+Lo userscript 0.10 aggiunge comunque un tentativo best-effort prima del fill:
+se trova una banner CMP/cookie visibile, clicca il pulsante di consenso
+riconoscibile e poi continua con lingua, phrase/person-name e autosubmit. Questo
+serve solo a rendere piu stabile la richiesta `word-add`; il fetch Anki-style non
+deve dipendere da Tampermonkey.
+
 Il formato OGG non rompe la validazione del repo: `.ogg` e `.oga` sono asset
 audio supportati e vengono serviti come `audio/ogg`. Il compromesso operativo e'
 di ranking: a parita' di speaker preferito/voti e' meglio MP3 per compatibilita'

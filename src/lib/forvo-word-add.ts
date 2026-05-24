@@ -1,11 +1,14 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+import { stripInlineMarkdown } from "./inline-markdown.ts";
+
 const forvoWordAddLanguageCode = "ja";
 const phraseMarkerPattern = /[〜～~]/u;
 const phrasePunctuationPattern = /[!?！？。]/u;
 const phraseWhitespacePattern = /\s/u;
 const forvoWordAddSlashPattern = /\s*\/\s*/gu;
+const forvoWordAddMarkerPattern = /[〜～~]/gu;
 
 export type ForvoWordAddRequestEntry = {
   entryId: string;
@@ -69,7 +72,11 @@ export function buildForvoWordAddUrl(input: ForvoWordAddEntryLike) {
 }
 
 export function normalizeForvoWordAddLabel(label: string) {
-  return label.replace(forvoWordAddSlashPattern, "・").trim();
+  return stripInlineMarkdown(label)
+    .replace(forvoWordAddMarkerPattern, "")
+    .replace(forvoWordAddSlashPattern, "・")
+    .replace(/\s+/gu, " ")
+    .trim();
 }
 
 export async function loadForvoWordAddRequestRegistry(filePath?: string) {

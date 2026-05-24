@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   assertForvoManualRunCanStart,
+  buildForvoWordUrls,
   parseForvoCandidateText,
   parseForvoWordList,
   scoreForvoCandidate,
@@ -65,6 +66,23 @@ describe("forvo pronunciation helpers", () => {
       text: "Pronunciation by o_mizu (Female from Japan) 8 votes Good Bad Accent: Tokyo Download MP3",
       votes: 8
     });
+  });
+
+  it("normalizes furigana markup before building Forvo search URLs", () => {
+    expect(
+      buildForvoWordUrls({
+        aliases: [],
+        id: "grammar-tabenagara",
+        kind: "grammar",
+        label: "{{食|た}}べながら",
+        mediaDirectory: "/tmp/media",
+        mediaSlug: "sample",
+        reading: "たべながら"
+      })
+    ).toEqual([
+      "https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%81%AA%E3%81%8C%E3%82%89/#ja",
+      "https://forvo.com/word/%E3%81%9F%E3%81%B9%E3%81%AA%E3%81%8C%E3%82%89/#ja"
+    ]);
   });
 
   it("prefers the most likely native and highly rated candidate", () => {

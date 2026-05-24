@@ -77,6 +77,24 @@ describe("forvo word-add helpers", () => {
     );
   });
 
+  it("normalizes furigana markup and phrase markers for Forvo word-add URLs", () => {
+    expect(normalizeForvoWordAddLabel("{{食|た}}べながら")).toBe(
+      "食べながら"
+    );
+    expect(normalizeForvoWordAddLabel("～だろうか")).toBe("だろうか");
+
+    expect(
+      buildForvoWordAddUrl({
+        entryId: "grammar-tabenagara",
+        entryKind: "grammar",
+        label: "{{食|た}}べながら",
+        reading: "たべながら"
+      })
+    ).toBe(
+      "https://forvo.com/word-add/%E9%A3%9F%E3%81%B9%E3%81%AA%E3%81%8C%E3%82%89/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0"
+    );
+  });
+
   it("marks phrase-like entries with a phrase prefill", () => {
     expect(
       buildForvoWordAddPrefill({

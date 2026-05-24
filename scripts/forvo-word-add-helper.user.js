@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Forvo Word Add Helper
 // @namespace    https://forvo.com/
-// @version      0.9
+// @version      0.10
 // @description  Fill and optionally submit the Forvo word-add form from Japanese Custom Study URL hints.
 // @match        https://forvo.com/word-add/*
 // @match        https://*.forvo.com/word-add/*
@@ -55,6 +55,105 @@
         : tone === "success"
           ? "#166534"
           : "#4b5563";
+  }
+
+  function getElementText(element) {
+    if (element instanceof HTMLInputElement) {
+      return `${element.value || ""} ${element.getAttribute("aria-label") || ""}`;
+    }
+
+    return `${element.textContent || ""} ${element.getAttribute("aria-label") || ""}`;
+  }
+
+  function isCookieConsentText(text) {
+    return /\b(cookie|cookies|consent|privacy|gdpr|partners|vendors|purposes|legitimate interest)\b/iu.test(
+      text
+    );
+  }
+
+  function isCookieAcceptText(text) {
+    const normalized = text.replace(/\s+/gu, " ").trim();
+
+    if (
+      /\b(reject|decline|deny|disagree|manage|settings|preferences|customi[sz]e|more)\b/iu.test(
+        normalized
+      )
+    ) {
+      return false;
+    }
+
+    return /\b(accept all|accept|agree|i agree|allow all|consent|accepter|aceptar|accetta|accetto)\b/iu.test(
+      normalized
+    );
+  }
+
+  function findCookieConsentRoots() {
+    const selectors = [
+      "#onetrust-banner-sdk",
+      "#qc-cmp2-ui",
+      ".qc-cmp2-container",
+      ".fc-consent-root",
+      "[id*='consent' i]",
+      "[class*='consent' i]",
+      "[id*='cookie' i]",
+      "[class*='cookie' i]",
+      "[id*='cmp' i]",
+      "[class*='cmp' i]"
+    ];
+    const roots = [];
+
+    for (const selector of selectors) {
+      for (const element of document.querySelectorAll(selector)) {
+        if (isVisible(element) && isCookieConsentText(element.textContent || "")) {
+          roots.push(element);
+        }
+      }
+    }
+
+    return roots;
+  }
+
+  function findCookieAcceptButton() {
+    const candidatesSelector =
+      "button, [role='button'], input[type='button'], input[type='submit'], a";
+    const roots = findCookieConsentRoots();
+
+    for (const root of roots) {
+      for (const candidate of root.querySelectorAll(candidatesSelector)) {
+        if (isVisible(candidate) && isCookieAcceptText(getElementText(candidate))) {
+          return candidate;
+        }
+      }
+    }
+
+    if (!isCookieConsentText(document.body?.innerText || "")) {
+      return null;
+    }
+
+    for (const candidate of document.querySelectorAll(candidatesSelector)) {
+      if (isVisible(candidate) && isCookieAcceptText(getElementText(candidate))) {
+        return candidate;
+      }
+    }
+
+    return null;
+  }
+
+  async function dismissCookieConsentIfPresent() {
+    for (let attempt = 0; attempt < 20; attempt += 1) {
+      const button = findCookieAcceptButton();
+
+      if (button instanceof HTMLElement) {
+        button.click();
+        setStatus("Cookie consent accepted", "success");
+        await wait(700);
+        return true;
+      }
+
+      await wait(150);
+    }
+
+    return false;
   }
 
   function buildButton(label, onClick) {
@@ -325,6 +424,7 @@
       return false;
     }
 
+    await dismissCookieConsentIfPresent();
     primeWordField();
 
     await waitFor(

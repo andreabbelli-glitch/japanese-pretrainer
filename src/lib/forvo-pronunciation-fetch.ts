@@ -47,6 +47,7 @@ import {
 export type { ForvoCandidate } from "./forvo-pronunciation-helpers.ts";
 
 export {
+  buildForvoWordUrls,
   parseForvoCandidateText,
   parseForvoWordList,
   resolveRequestedTargets,
