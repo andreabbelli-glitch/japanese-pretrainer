@@ -248,6 +248,16 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
   da batch, seed o workflow;
 - che le spiegazioni devono esplicitare significato reale + conseguenza concreta
   nel media;
+- che tutti i campi importabili sono learner-facing salvo eccezione tecnica
+  esplicita: `summary`, `meaning_it`, `notes_it`, `back`, `example_it`, caption,
+  alt text e corpo textbook non devono contenere note da autore, audit,
+  reviewer, workflow o curation;
+- che se c'e dubbio sulla naturalezza italiana o sulla fedelta di una resa
+  JP->IT, l'agente deve chiedere una seconda opinione con DeepL MCP: usa
+  `mcp__deepl__translate_text` sulla frase giapponese plain per una traduzione
+  di confronto, oppure `mcp__deepl__rephrase_text` sull'italiano quando il dubbio
+  e solo di naturalezza; il risultato e supporto decisionale e non va mai citato
+  nei file importabili;
 - che `notes_it` e paragrafi textbook non devono usare formule generiche come
   "Termine tipico di...", "Parola-cerniera utile", "Verbo ad alta frequenza",
   "ti aiuta a leggere" o "ti orienta" senza spiegare collocazione e funzione
@@ -385,35 +395,18 @@ Forme consigliate:
 ### 7.3 Regola anti-meta-editoriale
 
 Il contenuto finale non deve descrivere il proprio processo editoriale o il
-workflow di studio.
+workflow di studio. Evita quindi:
 
-Evita quindi formule come:
-
-- "questa lesson";
-- "qui il punto e";
-- "conviene fissare / mettere in review";
-- "per questo batch / per questo test";
-- "corpus iniziale", "seed", "entry canonica", "card canoniche";
-- "la fonte ufficiale dice..." come intera spiegazione.
-- `Media dedicato al giapponese di Duel Masters. Il corpus iniziale combina una
-  base minima di lettura del TCG, un asse operativo su デュエプレ e due
-  verticali sugli starter deck...`
-- `Pacchetto di studio sul giapponese dei videogiochi Pokemon: costruisce prima
-  una base comune su UI, battaglie e tutorial, poi sviluppa un percorso
-  verticale di pre-training...`
-- `Non servono ancora come card canoniche in questo seed...`
-- `[レッツゴー] e un ottimo esempio di katakana che qui merita una entry
-  canonica.`
-- `Qui il valore didattico sta nel doppio blocco giapponese...`
-- `Questa card unisce nello stesso chunk tre cose che vale la pena leggere...`
-- `## Flashcard utile`
-- `Da qui in poi questa pagina non e piu una monografia su una sola carta:
-  diventa l'archivio progressivo delle carte che incontro davvero durante il
-  gioco.`
-- `Il punto piu importante non e la keyword offensiva in se, ma il blocco
-  タップ{{状態|じょうたい}}でいたら: qui non basta sapere cos'e タップ,
-  bisogna riconoscere lo
-  stato gia presente nel momento del controllo.`
+- frasi che nominano la lesson, la pagina, la card o la entry come oggetto di
+  curation;
+- decisioni interne su cosa creare, non creare, deduplicare, rendere canonico o
+  mandare in review;
+- riferimenti a batch, seed, corpus iniziale, workflow, validazione, audit,
+  reviewer, DeepL o tool usati per decidere;
+- heading o note che classificano un pezzo come materiale utile invece di
+  spiegare il giapponese;
+- anti-esempi testuali completi: se devi ricordare un errore, descrivi la
+  categoria dell'errore senza fornire una frase pronta da copiare.
 
 Se una fonte ufficiale serve, usala per confermare un testo o una regola, ma
 fai emergere nel contenuto finale soprattutto:
@@ -585,11 +578,10 @@ Vincoli obbligatori:
   flashcard, review, batch e workflow come metadiscorso.
 - Gli esempi possono essere frasi didattiche costruite sul contesto, ma non
   presentarli come transcript ufficiali se non sono citazioni puntuali.
-- Non scrivere nemmeno frasi come:
-  `Da qui in poi questa pagina non e piu una monografia...`
-  `Il punto piu importante non e la keyword offensiva in se...`
-  Queste formule sono sbagliate perche parlano della pagina o dell'importanza
-  del punto, ma non spiegano il giapponese.
+- Non scrivere formule che raccontano la storia editoriale della pagina o che
+  dichiarano l'importanza di un blocco senza analizzarlo. Sono sbagliate perche
+  parlano della pagina o dell'importanza del punto, ma non spiegano il
+  giapponese.
 - Quando spieghi un punto, preferisci questa sequenza: forma giapponese ->
   significato letterale o tecnico -> effetto concreto nel gioco /
   nell'interfaccia -> contrasto con la lettura sbagliata piu probabile.

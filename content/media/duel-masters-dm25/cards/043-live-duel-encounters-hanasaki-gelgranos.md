@@ -17,8 +17,8 @@ pos: proper-noun
 aliases:
   [ハナサキ・ゲルグラノス, Hanasaki Gelgranos, hanasaki gelgranos]
 notes_it: >-
-  E` il nome proprio della carta. Il valore didattico da collegargli non e`
-  solo `S・トリガー`, ma soprattutto il blocco
+  E` il nome proprio della carta. La lettura lo collega a `S・トリガー` e al
+  blocco
   `{{各|かく}}プレイヤーは{{自身|じしん}}のクリーチャーを{{1体|いったい}}{{選|えら}}び` +
   `{{持|も}}ち{{主|ぬし}}のマナゾーンに{{置|お}}く`, cioe` una rimozione in
   mana distribuita separatamente su ogni giocatore.
@@ -62,9 +62,8 @@ example_it: >-
   Ogni giocatore sceglie una propria creatura e la mette nella mana zone del suo
   proprietario.
 notes_it: >-
-  Questa card non duplica la recognition di `{{自身|じしん}}`: qui il punto da
-  fissare e` come il riflessivo cambia quando entra nello scope di
-  `{{各|かく}}プレイヤー`. `自身` non punta a te in astratto; si riallinea a
-  ciascun giocatore separatamente.
+  Nel perimetro di `{{各|かく}}プレイヤー`, `{{自身|じしん}}` cambia referente:
+  non punta a te in astratto, ma si riallinea a ciascun giocatore
+  separatamente.
 tags: [live-duel, concept, reflexive, scope]
 :::

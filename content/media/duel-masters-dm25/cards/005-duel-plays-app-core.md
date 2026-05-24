@@ -920,8 +920,8 @@ example_jp: >-
 example_it: >-
   Dopo aver controllato il mazzo, premi "Salva mazzo".
 notes_it: >-
-  Qui il punto è il passaggio finale: la schermata non ti fa solo controllare il
-  deck, ma registra la configurazione nel profilo.
+  `{{保存|ほぞん}}` chiude il passaggio finale: la schermata non ti fa solo
+  controllare il deck, ma registra la configurazione nel profilo.
 tags: [duel-plays, app, action, kanji]
 :::
 

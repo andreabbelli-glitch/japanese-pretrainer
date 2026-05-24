@@ -36,6 +36,13 @@ Una frase è insufficiente se fa solo una di queste cose:
 - giustifica perché una lesson, una card o una entry esiste;
 - commenta il percorso editoriale invece di spiegare il giapponese.
 
+Tutti i campi importabili sono learner-facing salvo eccezione tecnica esplicita:
+`summary`, `meaning_it`, `notes_it`, `back`, `example_it`, caption, alt text e
+corpo textbook devono poter comparire nel sito senza note da autore/reviewer.
+Una spiegazione non deve mai contenere il motivo per cui una card e stata creata
+o non creata, come e stata deduplicata, quale tool l'ha revisionata o quale
+workflow l'ha prodotta.
+
 Una spiegazione passa il controllo solo se chiarisce almeno due livelli:
 
 1. che cosa sta dicendo davvero il giapponese;
@@ -109,6 +116,11 @@ spiegazione guidata da tutor:
   campi di percorso); `title` è invece learner-facing e va reso naturale se
   contiene label da batch o workflow;
 - furigana senza puntini, senza ruby su katakana puro e con letture verificate.
+
+I contrasti operativi servono solo quando correggono una lettura sbagliata
+probabile. Se non c'e un falso amico o un'ambiguita reale, scrivi direttamente
+che cosa significa la forma giapponese, dove si aggancia e che conseguenza ha
+nel media.
 
 Lo standard positivo è la lezione:
 

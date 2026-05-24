@@ -22,8 +22,8 @@ aliases:
     kokukai ningyou jenny jane
   ]
 notes_it: >-
-  E` il nome proprio della carta. Il valore didattico del nome non sta solo
-  nel trigger di entrata, ma nel collegarlo subito a tre blocchi di lingua:
+  E` il nome proprio della carta. La lettura lo collega subito a tre blocchi di
+  lingua: il trigger di entrata,
   `{{最|もっと}}もコストの{{大|おお}}きい / {{小|ちい}}さい`,
   `{{自身|じしん}}の{{手札|てふだ}}` e
   `{{終了時|しゅう.りょう.じ}} ... {{13枚以下|じゅうさん.まい.い.か}}なら`.

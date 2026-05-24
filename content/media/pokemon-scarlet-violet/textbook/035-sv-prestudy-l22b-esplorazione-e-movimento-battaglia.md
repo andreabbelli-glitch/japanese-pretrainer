@@ -294,8 +294,8 @@ translation_it: >-
 [{{本当|ほんとう}}に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) è la formula da riconoscere quando la UI vuole una conferma forte. Dentro la formula, {{本当|ほんとう}}に aggiunge "davvero"; よろしいですか è una forma cortese di "va bene?". Se appare prima di una sfida o di un passaggio importante, il gioco non sta aggiungendo gentilezza gratuita: ti sta chiedendo consenso prima di procedere.
 
 [{{団|だん}}ラッシュ](term:term-v392-danrasshu) va letto come nome di modalità:
-il valore didattico non è nel singolo 団, ma nel riconoscere che la UI sta per
-avviare una procedura specifica del Team Star.
+non serve isolare il singolo 団, perché la UI sta per avviare una procedura
+specifica del Team Star.
 
 :::example_sentence
 jp: >-

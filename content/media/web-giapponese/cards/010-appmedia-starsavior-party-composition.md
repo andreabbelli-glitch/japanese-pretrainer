@@ -372,10 +372,9 @@ example_it: >-
   Per capire il metodo più efficiente per farmare l'evento, leggi il riepilogo in fondo
   alla pagina.
 notes_it: >-
-  Qui il punto importante non è un “riassunto scolastico” in senso stretto:
-  [まとめ](term:term-matome) è una parola ampia che in siti, guide e articoli
-  indica la parte dove il contenuto viene raccolto in modo sintetico e
-  consultabile.
+  [まとめ](term:term-matome) non è solo un "riassunto scolastico": in siti,
+  guide e articoli indica la parte dove il contenuto viene raccolto in modo
+  sintetico e consultabile.
 tags: [navigation, summary, web]
 :::
 

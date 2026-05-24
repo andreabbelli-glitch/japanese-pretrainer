@@ -37,8 +37,9 @@ example_jp: >-
 example_it: >-
   Ricompensa disponibile.
 notes_it: >-
-  Nei cartelli, あり abbrevia una frase completa con ある / あります. Qui non serve
-  creare una nuova card su {{懸賞金|けんしょうきん}}, già presente: il punto nuovo è
-  il valore compatto di あり.
+  Nei cartelli, あり abbrevia una frase completa con ある / あります. In
+  `{{懸賞金|けんしょうきん}}あり`, il focus è la presenza della ricompensa: あり
+  porta il valore compatto di "presente / disponibile" senza ripetere l'intera
+  frase.
 tags: [crystal-hunters, ad-hoc]
 :::

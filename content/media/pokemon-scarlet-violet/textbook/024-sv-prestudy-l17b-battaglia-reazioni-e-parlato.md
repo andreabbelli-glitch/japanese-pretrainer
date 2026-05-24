@@ -169,7 +169,7 @@ In `タイプのわざ`, il blocco `の` funziona come una targhetta: "mossa del
 
 Dopo una lotta o una fase di allenamento, il lessico può spostarsi sul risultato del percorso. [{{成長|せいちょう}}](term:term-v193-seichou) descrive una crescita nel tempo: non è un singolo numero isolato, ma il cambiamento maturato attraverso esperienza, allenamento o avanzamento. [{{最高|さいこう}}](term:term-v194-saikou) è invece una valutazione di vertice: qualcosa è al massimo della scala o viene lodato come "il migliore".
 
-[{{能力|のうりょく}}](term:term-v184-nouryoku) torna qui con una sfumatura diversa rispetto alla mossa. In un menu Pokémon può indicare i valori da controllare dopo la crescita; non è automaticamente il nome della "abilità speciale" del Pokémon, che nei giochi viene trattata con altri termini. Qui il punto è leggere il parametro che il testo ti invita a osservare.
+[{{能力|のうりょく}}](term:term-v184-nouryoku) torna qui con una sfumatura diversa rispetto alla mossa. In un menu Pokémon può indicare i valori da controllare dopo la crescita; non è automaticamente il nome della "abilità speciale" del Pokémon, che nei giochi viene trattata con altri termini. La lettura utile è il parametro che il testo ti invita a osservare.
 
 :::example_sentence
 jp: >-

@@ -78,6 +78,16 @@ tags: [<tag-1>, <tag-2>]
 Regole pratiche:
 - definisci qui le occorrenze locali che alimentano glossary/review globali;
 - se una entry esiste gia, non ridefinirla: crea solo la :::card che la usa;
+- tutto cio che scrivi nei blocchi importabili e learner-facing: `meaning_it`,
+  `notes_it`, `back` ed `example_it` devono essere leggibili nel sito senza note
+  da autore, reviewer, audit o workflow;
+- non annotare perche una card viene creata, non creata, deduplicata o
+  canonizzata; se l'informazione non aiuta il learner a leggere il giapponese,
+  non deve stare in questo file;
+- se hai un dubbio reale sulla naturalezza italiana o sulla fedelta di una resa
+  JP->IT, usa DeepL MCP come seconda opinione prima di salvare: traduci il
+  giapponese plain con `mcp__deepl__translate_text` oppure riformula l'italiano
+  con `mcp__deepl__rephrase_text`; non citare DeepL nel contenuto;
 - ogni `:::card` deve dichiarare un `lesson_id` esplicito e stabile;
 - `cross_media_group` e solo metadata documentativo opzionale: l'importer crea
   la voce globale e il subject review dalla superficie normalizzata;

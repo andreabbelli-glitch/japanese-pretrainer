@@ -61,6 +61,7 @@ Resta vietato anche il metadiscorso editoriale o di workflow:
 - commenti sulla pagina come oggetto invece che sul giapponese;
 - frasi che spiegano perché il contenuto è stato scelto invece di aprire la
   forma giapponese.
+- note su tool, audit, reviewer o controlli esterni usati durante la stesura.
 
 Regola pratica: se una frase parla della lesson, della pagina o del processo di
 studio, riscrivila come descrizione del testo reale. Preferisci riferimenti
@@ -72,6 +73,10 @@ Questa regola non vieta termini reali del media. Se una UI parla davvero di
 Il divieto riguarda solo il metadiscorso sul sistema di studio: deck di studio,
 flashcard, review, batch, workflow, curation e motivazioni editoriali non
 devono entrare nella prosa learner-facing.
+
+Il contrasto operativo non e una formula obbligatoria. Usalo quando una lettura
+sbagliata e davvero probabile; negli altri casi evita la posa "non e X, e Y" e
+scrivi direttamente significato, aggancio grammaticale e conseguenza pratica.
 
 ### Qualità della spiegazione
 

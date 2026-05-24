@@ -32,6 +32,7 @@ import {
   runValidationRules,
   type MediaBundleValidationInput
 } from "./validator-rules.ts";
+import { validateLearnerFacingEditorialText } from "./validator-editorial.ts";
 
 export async function parseMediaDirectory(
   mediaDirectory: string
@@ -188,6 +189,8 @@ export async function parseMediaDirectory(
     cards: cards.map((record) => record.value),
     references
   };
+
+  validateLearnerFacingEditorialText(bundle, issues);
 
   return {
     ok: issues.length === 0,

@@ -162,6 +162,17 @@ Primary target files:
 - Use one `:::image` block for the clean card asset.
 - Keep keyword labels in a compact list when they are already covered by the
   keyword bank.
+- Treat every importable field as learner-facing unless the content format says
+  otherwise. This includes `summary`, textbook body, image captions, `meaning_it`,
+  `notes_it`, `back`, and `example_it`.
+- Never write author/reviewer notes into importable content: no rationale about
+  creating, not creating, deduplicating, canonizing, auditing, validating, or
+  sending a card/entry to review. Do not move those notes to another field; omit
+  them.
+- If Italian naturalness or JP->IT fidelity is uncertain, ask DeepL MCP for a
+  second opinion before finalizing: use `mcp__deepl__translate_text` on plain
+  Japanese for translation doubts, or `mcp__deepl__rephrase_text` on Italian for
+  naturalness doubts. Do not mention DeepL or the check in the saved content.
 - Use `:::example_sentence` for the effect lines that genuinely need parsing or
   translation support.
 - For each effect line you keep, use:
@@ -504,10 +515,14 @@ Practical card-selection rules:
 
 ## Never Do This
 
-Do not write meta or tautological explanations like these:
+Do not write meta or tautological explanations. The banned shape is:
 
-- `Da qui in poi questa pagina non e piu una monografia su una sola carta: diventa l'archivio progressivo delle carte che incontro davvero durante il gioco.`
-- `Il punto piu importante non e la keyword offensiva in se, ma il blocco タップ{{状態|じょうたい}}でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo stato gia presente nel momento del controllo.`
+- explaining the page, lesson, batch, or progressive archive instead of the
+  Japanese;
+- saying that an element is important, useful, canonical, duplicated, or worth a
+  card instead of parsing the phrase;
+- using an automatic "not X but Y" contrast when no real likely misreading is
+  being corrected.
 
 Why these are wrong:
 

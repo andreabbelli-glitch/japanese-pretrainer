@@ -72,9 +72,8 @@ example_jp: >-
 example_it: >-
   Metto in gioco Balga Raizou con Mana Evolution GV.
 notes_it: >-
-  Il nome va fissato come blocco unico. In questa lezione il valore didattico
-  del nome e` il collegamento immediato con `マナ進化GV` e con la formula
-  `{{重|かさ}}ねつつ{{出|だ}}す`.
+  Il nome va fissato come blocco unico. La lettura lo collega subito a
+  `マナ進化GV` e alla formula `{{重|かさ}}ねつつ{{出|だ}}す`.
 tags: [live-duel, proper-name, evolution]
 :::
 

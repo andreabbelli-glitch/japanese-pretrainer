@@ -56,8 +56,8 @@ meaning_it: utilizzabile / disponibile all'uso
 pos: na-adjective
 aliases: [使用可能, しようかのう, shiyou kanou]
 notes_it: >-
-  In giapponese generale vuol dire `utilizzabile`, `che si può usare`. In
-  questa lesson compare nel wording vecchio
+  In giapponese generale vuol dire `utilizzabile`, `che si può usare`. Nel
+  wording vecchio della carta compare
   `{{使用可能|しようかのう}}マナ`, dove il punto non è quanta mana esiste in
   totale, ma quanta mana resta davvero spendibile in quel turno. Il blocco
   riusa [{{使用|しよう}}](term:term-use) già noto e lo restringe con

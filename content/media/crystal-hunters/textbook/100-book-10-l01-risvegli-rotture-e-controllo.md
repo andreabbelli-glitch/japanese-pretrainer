@@ -45,8 +45,8 @@ corpo fisico, [{{意識|いしき}}](term:term-ch-b10-ishiki) e' coscienza, e
 
 Il libro usa anche forme gia' familiari come {{嫌|いや}}, {{起|お}}きる,
 {{帽子|ぼうし}}, {{効|き}}く, {{壊|こわ}}す, {{怒|おこ}}る, {{降|お}}りる e
-{{終|お}}わる. Qui il punto e' come queste parole entrano in una scena di corpo,
-controllo e conseguenze.
+{{終|お}}わる. Queste parole entrano in una scena di corpo, controllo e
+conseguenze invece di restare gloss isolate.
 
 ---
 

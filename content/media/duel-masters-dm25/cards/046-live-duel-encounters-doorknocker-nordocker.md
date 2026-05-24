@@ -107,9 +107,8 @@ example_it: >-
   Se leggi `la seguente abilita`, il testo sta indicando proprio l'abilita
   scritta immediatamente sotto.
 notes_it: >-
-  Questa card non duplica `{{能力|のうりょく}}` da sola. Il punto nuovo e` il
-  modo in cui `{{次|つぎ}}の` crea una referenza in avanti verso il testo che
-  segue.
+  `{{次|つぎ}}の` crea una referenza in avanti verso il testo che segue e
+  prepara l'abilità indicata subito dopo.
 tags: [live-duel, grammar, reference, rules-text]
 :::
 

@@ -93,6 +93,17 @@ Optional:
 - A real lesson maps to one real item, not to a source overview.
 - Keep the lesson focused on teaching Japanese, not on reviewing the website,
   game, app or card product.
+- Treat every importable field as learner-facing unless the content format says
+  otherwise. This includes `summary`, textbook body, image captions, `meaning_it`,
+  `notes_it`, `back`, and `example_it`.
+- Never write author/reviewer notes into importable content: no rationale about
+  creating, not creating, deduplicating, canonizing, auditing, validating, or
+  sending a card/entry to review. Do not move those notes to another field; omit
+  them.
+- If Italian naturalness or JP->IT fidelity is uncertain, ask DeepL MCP for a
+  second opinion before finalizing: use `mcp__deepl__translate_text` on plain
+  Japanese for translation doubts, or `mcp__deepl__rephrase_text` on Italian for
+  naturalness doubts. Do not mention DeepL or the check in the saved content.
 - Follow `docs/llm-kit/general/10-textbook-lesson-style-standard.md` for the
   textbook prose: tutor-like voice, concrete contextual opening, thematic
   clusters, dense micro-explanations, anatomy of phrase, operational contrasts,

@@ -1,5 +1,13 @@
 import path from "node:path";
-import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import {
+  cp,
+  mkdir,
+  mkdtemp,
+  readFile,
+  readdir,
+  rm,
+  writeFile
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
 
 import { describe, expect, it } from "vitest";
@@ -16,6 +24,7 @@ import {
   unsafeYamlMediaDirectory,
   validContentRoot,
   validMediaDirectory,
+  repositoryRoot,
   writeCardsDocument,
   writeLessonDocument,
   writeMediaDocument
@@ -149,6 +158,223 @@ describe("content validator and issue reporting", () => {
     expect(result.data.media?.frontmatter.id).toBe("media-bad");
     expect(result.data.lessons).toHaveLength(1);
     expect(result.data.cardFiles).toHaveLength(1);
+  });
+
+  it("rejects internal authoring notes from learner-facing content fields", async () => {
+    const mediaRoot = await mkdtemp(path.join(tmpdir(), "jcs-editorial-meta-"));
+    const mediaDirectory = path.join(mediaRoot, "meta-demo");
+    const textbookDirectory = path.join(mediaDirectory, "textbook");
+    const cardsDirectory = path.join(mediaDirectory, "cards");
+
+    try {
+      await mkdir(textbookDirectory, { recursive: true });
+      await mkdir(cardsDirectory, { recursive: true });
+      await writeFile(
+        path.join(mediaDirectory, "media.md"),
+        `---
+id: media-meta-demo
+slug: meta-demo
+title: Meta Demo
+media_type: game
+segment_kind: lesson
+language: ja
+base_explanation_language: it
+---
+`
+      );
+      await writeFile(
+        path.join(textbookDirectory, "001-intro.md"),
+        `---
+id: lesson-meta-demo
+media_id: media-meta-demo
+slug: intro
+title: Intro
+order: 1
+summary: >-
+  Questa lesson serve a decidere cosa mandare in review.
+---
+
+# Intro
+
+Qui il punto è cosa conviene fissare nel corpus, non la scena.
+`
+      );
+      await writeFile(
+        path.join(cardsDirectory, "001-core.md"),
+        `---
+id: cards-meta-demo
+media_id: media-meta-demo
+slug: core
+title: Core cards
+order: 1
+---
+
+:::term
+id: term-ari
+lemma: あり
+reading: あり
+romaji: ari
+meaning_it: presente / incluso
+notes_it: >-
+  Entry già presente nel corpus; il valore didattico sta nel decidere se tenerla.
+:::
+
+:::card
+id: card-ari
+lesson_id: lesson-meta-demo
+entry_type: term
+entry_id: term-ari
+card_type: recognition
+front: 'あり'
+back: >-
+  Non serve creare una nuova card su premio.
+example_jp: >-
+  あり
+example_it: >-
+  DeepL ha suggerito una resa migliore per questa card.
+notes_it: >-
+  Questa nota spiega la curation invece del giapponese.
+:::
+`
+      );
+
+      const result = await parseMediaDirectory(mediaDirectory);
+      const editorialIssues = result.issues.filter(
+        (issue) => issue.code === "editorial.internal-authoring-note"
+      );
+
+      expect(result.ok).toBe(false);
+      expect(editorialIssues).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ path: "frontmatter.summary" }),
+          expect.objectContaining({ path: "body.blocks[1]" }),
+          expect.objectContaining({ path: "body.blocks[0].notes_it" }),
+          expect.objectContaining({ path: "body.blocks[1].back" }),
+          expect.objectContaining({ path: "body.blocks[1].example_it" }),
+          expect.objectContaining({ path: "body.blocks[1].notes_it" })
+        ])
+      );
+    } finally {
+      await rm(mediaRoot, { recursive: true, force: true });
+    }
+  });
+
+  it("allows deck and review wording when it belongs to the source media", async () => {
+    const mediaRoot = await mkdtemp(path.join(tmpdir(), "jcs-editorial-source-"));
+    const mediaDirectory = path.join(mediaRoot, "source-demo");
+    const textbookDirectory = path.join(mediaDirectory, "textbook");
+    const cardsDirectory = path.join(mediaDirectory, "cards");
+
+    try {
+      await mkdir(textbookDirectory, { recursive: true });
+      await mkdir(cardsDirectory, { recursive: true });
+      await writeFile(
+        path.join(mediaDirectory, "media.md"),
+        `---
+id: media-source-demo
+slug: source-demo
+title: Source Demo
+media_type: game
+segment_kind: lesson
+language: ja
+base_explanation_language: it
+---
+`
+      );
+      await writeFile(
+        path.join(textbookDirectory, "001-intro.md"),
+        `---
+id: lesson-source-demo
+media_id: media-source-demo
+slug: intro
+title: Intro
+order: 1
+---
+
+# Intro
+
+La schermata del deckbuilder mostra デッキコード e una tab review della carta.
+`
+      );
+      await writeFile(
+        path.join(cardsDirectory, "001-core.md"),
+        `---
+id: cards-source-demo
+media_id: media-source-demo
+slug: core
+title: Core cards
+order: 1
+---
+
+:::term
+id: term-deck-code
+lemma: デッキコード
+reading: でっきこーど
+romaji: dekki koodo
+meaning_it: codice deck
+notes_it: >-
+  Nel menu deckbuilder, デッキコード è il codice da copiare per condividere il mazzo.
+:::
+
+:::card
+id: card-deck-code
+lesson_id: lesson-source-demo
+entry_type: term
+entry_id: term-deck-code
+card_type: recognition
+front: 'デッキコード'
+back: 'codice deck'
+example_jp: >-
+  デッキコードをコピーする。
+example_it: >-
+  Copio il codice deck.
+:::
+`
+      );
+
+      const result = await parseMediaDirectory(mediaDirectory);
+
+      expect(result.issues).not.toContainEqual(
+        expect.objectContaining({
+          code: "editorial.internal-authoring-note"
+        })
+      );
+    } finally {
+      await rm(mediaRoot, { recursive: true, force: true });
+    }
+  });
+
+  it("keeps exact toxic authoring examples out of content instructions", async () => {
+    const roots = [
+      path.join(repositoryRoot, "content"),
+      path.join(repositoryRoot, "docs", "llm-kit"),
+      path.join(repositoryRoot, ".agents", "skills")
+    ];
+    const toxicPhrases = [
+      "Qui non serve creare una nuova card",
+      "Da qui in poi questa pagina non e piu una monografia",
+      "Da qui in poi questa pagina non è più una monografia",
+      "Il punto piu importante non e la keyword offensiva",
+      "Il punto più importante non è la keyword offensiva",
+      "Non servono ancora come card canoniche in questo seed",
+      "Qui il valore didattico sta nel doppio blocco giapponese"
+    ];
+    const files = (
+      await Promise.all(roots.map((root) => listTextFiles(root)))
+    ).flat();
+    const offenders: string[] = [];
+
+    for (const filePath of files) {
+      const text = await readFile(filePath, "utf8");
+      for (const phrase of toxicPhrases) {
+        if (text.includes(phrase)) {
+          offenders.push(path.relative(repositoryRoot, filePath));
+          break;
+        }
+      }
+    }
+
+    expect(offenders).toEqual([]);
   });
 
   it("flags fragile plain YAML scalars that an LLM can emit inside structured blocks", async () => {
@@ -914,3 +1140,33 @@ base_explanation_language: it
     }
   });
 });
+
+async function listTextFiles(root: string): Promise<string[]> {
+  const entries = await readdir(root, { withFileTypes: true });
+  const nested = await Promise.all(
+    entries.map(async (entry) => {
+      const entryPath = path.join(root, entry.name);
+
+      if (entry.isDirectory()) {
+        return listTextFiles(entryPath);
+      }
+
+      if (!entry.isFile() || !isScannedTextFile(entry.name)) {
+        return [];
+      }
+
+      return [entryPath];
+    })
+  );
+
+  return nested.flat();
+}
+
+function isScannedTextFile(fileName: string) {
+  return (
+    fileName.endsWith(".md") ||
+    fileName.endsWith(".yaml") ||
+    fileName.endsWith(".yml") ||
+    fileName.endsWith(".txt")
+  );
+}

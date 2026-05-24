@@ -277,8 +277,8 @@ example_it: >-
   Gate of Moonless Night usa l'ingresso di un Magic Tool come innesco per
   chiamare il boss.
 notes_it: >-
-  Il valore didattico del chunk sta nel montaggio: trigger d'ingresso,
-  materiale distribuito con `ずつ` e payoff finale
+  Il chunk monta trigger d'ingresso, materiale distribuito con `ずつ` e payoff
+  finale
   `{{払|はら}}わずに{{召喚|しょうかん}}してもよい`.
 tags: [live-duel, chunk, keyword, summon]
 :::

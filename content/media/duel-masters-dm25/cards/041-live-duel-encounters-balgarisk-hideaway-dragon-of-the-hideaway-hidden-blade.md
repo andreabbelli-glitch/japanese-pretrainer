@@ -22,10 +22,9 @@ aliases:
     Balgarisk, Hideaway Dragon of the Hideaway Hidden Blade
   ]
 notes_it: >-
-  È il nome proprio della carta. In questa lezione il valore didattico del nome
-  sta soprattutto nel collegarlo subito a tre punti di lingua: la catena
-  condizionale di `ニンジャ・ストライク {{8|はち}}`, il filtro con
-  `コストを{{持|も}}つ` e il ramo alternativo `そうでなければ`.
+  È il nome proprio della carta. La lettura lo collega subito a tre punti di
+  lingua: la catena condizionale di `ニンジャ・ストライク {{8|はち}}`, il filtro
+  con `コストを{{持|も}}つ` e il ramo alternativo `そうでなければ`.
 level_hint: custom
 :::
 

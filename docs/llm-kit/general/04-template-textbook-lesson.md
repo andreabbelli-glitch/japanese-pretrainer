@@ -156,14 +156,14 @@ Evita anche card di puro katakana se non c'e un motivo forte di lettura:
 vanno bene solo quando il termine e davvero ricorrente, opaco o rilevante nel
 corpus, non quando e soltanto facilmente traslitterabile.
 
-Anti-esempi da non usare mai:
+Anti-pattern da non lasciare mai nel contenuto finale:
 
-- `Tre schermate reali mostrano in modo operativo il flusso di reclamo reward.`
-- `In DM25-SD1 il testo Abyss mostra bene una sequenza tipica...`
-- `Lo starter deck e una buona base di lettura operativa...`
-- `Questo modulo usa tre schermate reali...`
-- `Da qui in poi questa pagina non e piu una monografia su una sola carta: diventa l'archivio progressivo delle carte che incontro davvero durante il gioco.`
-- `Il punto piu importante non e la keyword offensiva in se, ma il blocco タップ{{状態|じょうたい}}でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo stato gia presente nel momento del controllo.`
+- overview del materiale scelto invece di apertura sulla scena o sul testo;
+- frasi che spiegano la pagina, la lesson o la raccolta invece del giapponese;
+- motivazioni interne su cosa fissare, deduplicare o trasformare in card;
+- contrasti automatici che dicono "non e X" senza una lettura sbagliata reale
+  da correggere;
+- qualunque riferimento a batch, workflow, review, curation, audit o reviewer.
 
 Perche sono sbagliati se restano cosi:
 
@@ -174,8 +174,8 @@ Perche sono sbagliati se restano cosi:
 
 Coppia di revisione:
 
-- Debole: `Il punto piu importante non e la keyword offensiva in se, ma il
-  blocco タップ{{状態|じょうたい}}でいたら.`
+- Debole: una frase che dichiara l'importanza di un blocco senza aprirne la
+  grammatica.
 - Corretta: `タップ{{状態|じょうたい}}` forma un sintagma nominale, `でいる` dice che la
   creatura resta in quello stato e `〜たら` trasforma quello stato nella
   condizione che fa partire l'effetto.
@@ -312,9 +312,8 @@ Una spiegazione debole del tipo "X e utile da fissare" non basta: scrivi
   "questa lesson", "qui facciamo review", "per questo test", "conviene mettere
   in review" o "verifichiamo la fonte": se una fonte serve, usala solo per
   sostenere una spiegazione sul testo o sulla regola.
-- Anti-esempi aggiuntivi da evitare sempre:
-  `Da qui in poi questa pagina non e piu una monografia...`
-  `Il punto piu importante non e la keyword offensiva in se...`
-  Se un testo somiglia a questi esempi, riscrivilo come analisi di grammatica,
-  timing, condizione, target o funzione nel rules text.
+- Anti-pattern aggiuntivi da evitare sempre: pagine che spiegano la propria
+  evoluzione editoriale, o frasi che dichiarano l'importanza di un blocco senza
+  analizzarlo. Se un testo somiglia a questi pattern, riscrivilo come analisi di
+  grammatica, timing, condizione, target o funzione nel rules text.
 -->

@@ -74,9 +74,9 @@ example_jp: >-
 example_it: >-
   Quando entra Infelstarge, scegli fino a 2 carte non creatura.
 notes_it: >-
-  Il nome va fissato come blocco unico. In questa lezione il valore didattico
-  del nome e` il collegamento immediato con `{{持|も}}ち{{主|ぬし}}`,
-  `{{2枚|にまい}}まで` e `{{置|お}}かれた{{時|とき}}`.
+  Il nome va fissato come blocco unico. La lettura lo collega subito a
+  `{{持|も}}ち{{主|ぬし}}`, `{{2枚|にまい}}まで` e
+  `{{置|お}}かれた{{時|とき}}`.
 tags: [live-duel, proper-name, nature]
 :::
 

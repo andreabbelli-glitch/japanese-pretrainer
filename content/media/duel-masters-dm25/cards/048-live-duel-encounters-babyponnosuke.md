@@ -16,8 +16,7 @@ meaning_it: Babyponnosuke / Joker che rimpiazza l'ingresso di creature avversari
 pos: proper-noun
 aliases: [ベイビーポンの助, Babyponnosuke, babyponnosuke]
 notes_it: >-
-  È il nome proprio della carta. Il valore didattico del nome non sta nel body
-  da costo `{{1|いち}}`, ma nel collegarlo subito al blocco
+  È il nome proprio della carta. La lettura lo collega subito al blocco
   `{{枚数|まいすう}}よりコストが{{大|おお}}きい` e alla finestra
   `{{出|で}}る{{時|とき}}`, dove una soglia numerica diventa una sostituzione
   d'ingresso.

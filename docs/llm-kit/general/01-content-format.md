@@ -305,21 +305,23 @@ Regola pratica:
 ### 4.5 Regola anti-meta-editoriale
 
 Il contenuto finale non deve parlare del proprio processo di produzione,
-revisione o studio.
+revisione o studio. Tutti i campi importabili sono learner-facing salvo
+eccezione tecnica esplicita: `summary`, `meaning_it`, `notes_it`, `back`,
+`example_it`, caption, alt text e corpo textbook devono contenere solo testo che
+ha senso mostrare nel sito.
 
 Da evitare nel textbook e in `notes_it`:
 
-- "questa lesson";
-- "qui il punto e";
-- "conviene fissare / mettere in review";
-- "per questo batch / per questo test";
-- "la fonte ufficiale dice..." come frase principale della spiegazione.
-- `Da qui in poi questa pagina non e piu una monografia su una sola carta:
-  diventa l'archivio progressivo delle carte che incontro davvero durante il
-  gioco.`
-- `Il punto piu importante non e la keyword offensiva in se, ma il blocco
-  タップ{{状態|じょうたい}}でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo
-  stato gia presente nel momento del controllo.`
+- riferimenti alla lesson, alla pagina o alla card come oggetto editoriale;
+- decisioni di curation, duplicazione, riuso o mancata creazione di card/entry;
+- commenti su batch, seed, workflow, review, audit, reviewer o validazione;
+- provenance editoriale su tool o fonti come frase principale della spiegazione;
+- formule contrastive automatiche del tipo "non e X, e Y" quando non correggono
+  una lettura sbagliata reale.
+
+Se una nota interna servirebbe solo all'autore, non va spostata in un altro
+campo importabile: va eliminata. Il contenuto finale deve dire direttamente che
+cosa significa il giapponese, dove si aggancia e che cosa cambia nella lettura.
 
 ### 4.6 Regola di correttezza dell'italiano
 

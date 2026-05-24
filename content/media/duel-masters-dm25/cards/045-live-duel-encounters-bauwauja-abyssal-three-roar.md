@@ -17,9 +17,8 @@ pos: proper-noun
 aliases:
   [深淵の三咆哮 バウワウジャ, バウワウジャ, Bauwauja, bauwauja]
 notes_it: >-
-  E` il nome proprio della carta. Il valore didattico da fissare non e` solo il
-  lato `{{13000|いちまんさんぜん}}` con `ブロッカー` e `T・ブレイカー`, ma
-  soprattutto il chunk
+  E` il nome proprio della carta. La lettura tiene insieme il lato
+  `{{13000|いちまんさんぜん}}` con `ブロッカー` e `T・ブレイカー` e il chunk
   `{{破壊|はかい}}{{以外|いがい}}の{{方法|ほうほう}}で{{離|はな}}れない`,
   che definisce una protezione sul modo in cui la carta puo` lasciare il campo
   durante il tuo turno.
@@ -63,9 +62,8 @@ example_it: >-
   Durante il tuo turno, questo Tamaseed non lascia il battle zone con mezzi
   diversi dalla distruzione.
 notes_it: >-
-  Questa card non duplica il semplice `～{{以外|いがい}}の{{方法|ほうほう}}で`: qui il
-  punto nuovo e` il blocco completo con `{{離|はな}}れない`. Il testo non
-  protegge solo dalla distruzione o solo dal bounce: protegge da ogni uscita
-  che non passi per `{{破壊|はかい}}`.
+  Il blocco completo con `{{離|はな}}れない` aggiunge la permanenza sul campo.
+  Il testo non protegge solo dalla distruzione o solo dal bounce: protegge da
+  ogni uscita che non passi per `{{破壊|はかい}}`.
 tags: [live-duel, concept, protection, restriction]
 :::
