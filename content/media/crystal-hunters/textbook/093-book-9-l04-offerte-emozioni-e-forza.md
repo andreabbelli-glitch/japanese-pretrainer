@@ -197,7 +197,7 @@ il senso è "non mi importa / non mi disturba".
 jp: >-
   {{別|べつ}}に{{構|かま}}わない。
 translation_it: >-
-  Non mi importa particolarmente / va bene.
+  A me va bene / non mi dà fastidio.
 :::
 
 {{戻|もど}}る chiude il movimento verso un luogo o

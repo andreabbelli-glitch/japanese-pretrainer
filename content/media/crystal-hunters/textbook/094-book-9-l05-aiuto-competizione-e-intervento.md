@@ -142,7 +142,7 @@ alto. [{{屈強|くっきょう}}](term:term-ch-b9-kukkyou) descrive un corpo ro
 jp: >-
   {{屈強|くっきょう}}な{{方|かた}}をご{{所望|しょもう}}ですか。
 translation_it: >-
-  Desidera una persona robusta?
+  Desidera qualcuno di robusto?
 :::
 
 #### 🗺️ Anatomia della frase
@@ -192,5 +192,5 @@ translation_it: >-
 jp: >-
   {{屈強|くっきょう}}な{{方|かた}}をご{{所望|しょもう}}ですか。{{景品|けいひん}}はこちらです。
 translation_it: >-
-  Desidera una persona robusta? Il premio è qui.
+  Desidera qualcuno di robusto? Il premio è qui.
 :::

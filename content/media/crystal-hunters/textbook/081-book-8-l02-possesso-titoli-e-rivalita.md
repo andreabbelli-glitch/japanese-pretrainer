@@ -88,7 +88,7 @@ forte.
 jp: >-
   {{力|ちから}}{{持|も}}ちの{{兄貴|あにき}}だ。
 translation_it: >-
-  E' un fratellone forte / dotato di forza.
+  E' il fratellone forzuto.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -165,7 +165,7 @@ parola da rivalita'.
 jp: >-
   {{褒美|ほうび}}を{{横取|よこど}}りする。
 translation_it: >-
-  Si appropria della ricompensa.
+  Soffia la ricompensa a qualcun altro.
 :::
 
 Quando la rivalita' diventa azione, [{{突撃|とつげき}}](term:term-ch-b8-totsugeki)

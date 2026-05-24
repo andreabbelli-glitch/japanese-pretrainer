@@ -223,7 +223,7 @@ card_type: recognition
 front: '{{物|もの}}'
 back: 'もの - cosa fisica; oggetto'
 example_jp: 'この{{物|もの}}に{{触|ふ}}れるな。'
-example_it: Non toccare questa cosa / questo oggetto.
+example_it: Non toccare questo oggetto.
 notes_it: >-
   Se la cosa esiste fisicamente, {{物|もの}} e' spesso la scelta giusta.
 tags: [crystal-hunters, book-10, lesson-06]
@@ -464,7 +464,7 @@ card_type: concept
 front: '{{事|こと}} vs {{物|もの}}'
 back: こと = fatto/azione; もの = oggetto concreto
 example_jp: '{{悪|わる}}い{{事|こと}}をした。{{悪|わる}}い{{物|もの}}を{{食|た}}べた。'
-example_it: Ho fatto una cosa sbagliata. Ho mangiato una cosa cattiva.
+example_it: Ho fatto qualcosa di sbagliato. Ho mangiato qualcosa di cattivo.
 notes_it: >-
   {{事|こと}} non si afferra; {{物|もの}} puo' essere un oggetto o una cosa fisica.
 tags: [crystal-hunters, book-10, lesson-06]

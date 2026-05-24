@@ -198,7 +198,7 @@ card_type: recognition
 front: どの
 back: 'どの — quale'
 example_jp: 'どの{{奴|やつ}}が{{来|く}}る？'
-example_it: Quale tizio arriva?
+example_it: Quale di quei tizi viene?
 notes_it: >-
   どの va davanti al nome che stai scegliendo.
 tags: [crystal-hunters, book-9, lesson-01]
@@ -228,7 +228,7 @@ card_type: recognition
 front: '{{蹴|け}}る'
 back: 'ける — calciare'
 example_jp: '{{鞭|むち}}を{{蹴|け}}る。'
-example_it: Calcio la frusta.
+example_it: Do un calcio alla frusta.
 notes_it: >-
   `を` marca ciò che riceve il calcio.
 tags: [crystal-hunters, book-9, lesson-01]

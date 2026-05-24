@@ -94,7 +94,7 @@ cristallo.
 jp: >-
   {{悪|わる}}い{{事|こと}}をした。
 translation_it: >-
-  Ho fatto una cosa brutta.
+  Ho fatto qualcosa di sbagliato.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -157,7 +157,7 @@ translation_it: >-
 jp: >-
   {{敵|てき}}を{{叩|たた}}きのめす。
 translation_it: >-
-  Pesto il nemico / lo riduco male.
+  Metto il nemico al tappeto.
 :::
 
 [{{怒|おこ}}らせる](term:term-ch-b10-okoraseru) usa la forma causativa: non

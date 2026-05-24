@@ -103,7 +103,7 @@ id: term-ch-b8-yokodori
 lemma: 横取り
 reading: よこどり
 romaji: yokodori
-meaning_it: appropriazione indebita; soffiare qualcosa a qualcuno
+meaning_it: soffiare qualcosa a qualcuno; prenderselo indebitamente
 pos: suru-noun
 notes_it: >-
   {{横取|よこど}}り e' prendere qualcosa tagliando la strada a chi lo stava
@@ -322,9 +322,9 @@ entry_type: term
 entry_id: term-ch-b8-yokodori
 card_type: recognition
 front: '{{横取|よこど}}り'
-back: 'よこどり — appropriazione indebita; soffiare qualcosa'
+back: 'よこどり — soffiare qualcosa; prenderselo indebitamente'
 example_jp: '{{褒美|ほうび}}を{{横取|よこど}}りする。'
-example_it: Si appropria della ricompensa.
+example_it: Soffia la ricompensa a qualcun altro.
 notes_it: >-
   L'immagine e' prendere da lato, tagliando la strada a chi aveva diritto.
 tags: [crystal-hunters, book-8, lesson-02]
@@ -415,7 +415,7 @@ card_type: concept
 front: 'N + {{持|も}}ち'
 back: persona che ha N
 example_jp: '{{力|ちから}}{{持|も}}ちの{{兄貴|あにき}}だ。'
-example_it: E' un fratellone forte / dotato di forza.
+example_it: E' il fratellone forzuto.
 notes_it: >-
   {{持|も}}ち non e' qui il proprietario: descrive una persona che possiede una
   qualita' o risorsa.

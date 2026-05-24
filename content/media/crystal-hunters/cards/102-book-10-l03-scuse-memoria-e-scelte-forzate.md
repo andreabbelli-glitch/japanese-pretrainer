@@ -173,7 +173,7 @@ card_type: recognition
 front: '{{最低|さいてい}}'
 back: 'さいてい - pessimo; il peggiore'
 example_jp: '{{私|わたし}}は{{最低|さいてい}}だ。'
-example_it: Sono pessimo / sono la peggiore.
+example_it: Sono una pessima persona / sono il peggio.
 notes_it: >-
   Giudizio emotivo forte, non solo una posizione bassa.
 tags: [crystal-hunters, book-10, lesson-03]

@@ -289,7 +289,7 @@ card_type: recognition
 front: '{{所望|しょもう}}'
 back: 'しょもう — desiderio; richiesta'
 example_jp: '{{屈強|くっきょう}}な{{方|かた}}をご{{所望|しょもう}}ですか。'
-example_it: Desidera una persona robusta?
+example_it: Desidera qualcuno di robusto?
 notes_it: >-
   Registro alto: una richiesta formulata con distanza.
 tags: [crystal-hunters, book-9, lesson-05]

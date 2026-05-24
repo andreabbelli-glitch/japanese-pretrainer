@@ -146,7 +146,7 @@ translation_it: >-
 jp: >-
   {{浴場|よくじょう}}へ{{案内|あんない}}する。
 translation_it: >-
-  Guida qualcuno alla sala da bagno.
+  Accompagno qualcuno alla zona bagno.
 :::
 
 [{{隣|となり}}](term:term-ch-b10-tonari) indica cio' che sta accanto. Con `に`

@@ -308,7 +308,7 @@ card_type: recognition
 front: '{{浴場|よくじょう}}'
 back: 'よくじょう - sala da bagno; bagno pubblico'
 example_jp: '{{浴場|よくじょう}}へ{{案内|あんない}}する。'
-example_it: Guida qualcuno alla sala da bagno.
+example_it: Accompagno qualcuno alla zona bagno.
 notes_it: >-
   Indica il luogo del bagno, non solo la vasca.
 tags: [crystal-hunters, book-10, lesson-05]

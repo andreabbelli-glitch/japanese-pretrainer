@@ -51,7 +51,7 @@ id: term-ch-b8-muryoku
 lemma: 無力
 reading: むりょく
 romaji: muryoku
-meaning_it: impotenza; senza potere
+meaning_it: senza potere; inefficace
 pos: na-adjective
 notes_it: >-
   {{無力|むりょく}} indica mancanza di forza o potere. Puo' descrivere una
@@ -228,9 +228,9 @@ entry_type: term
 entry_id: term-ch-b8-muryoku
 card_type: recognition
 front: '{{無力|むりょく}}'
-back: 'むりょく — impotenza; senza potere'
+back: 'むりょく — senza potere; inefficace'
 example_jp: '{{攻撃|こうげき}}が{{無力|むりょく}}だ。'
-example_it: L'attacco e' impotente / inefficace.
+example_it: L'attacco e' inefficace.
 notes_it: >-
   {{無|む}} nega la forza: manca potere reale.
 tags: [crystal-hunters, book-8, lesson-06]
@@ -290,7 +290,7 @@ card_type: recognition
 front: '{{潮時|しおどき}}'
 back: 'しおどき — momento giusto; ora di smettere'
 example_jp: 'もう{{潮時|しおどき}}だ。'
-example_it: Ormai e' il momento giusto / e' ora di chiudere.
+example_it: E' arrivato il momento / e' ora di chiudere.
 notes_it: >-
   Non indica solo l'ora: indica il punto opportuno per cambiare azione.
 tags: [crystal-hunters, book-8, lesson-06]

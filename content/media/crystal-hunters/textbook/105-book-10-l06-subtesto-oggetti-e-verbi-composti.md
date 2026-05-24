@@ -74,7 +74,7 @@ fatto, situazione o azione astratta.
 jp: >-
   この{{物|もの}}に{{触|ふ}}れるな。
 translation_it: >-
-  Non toccare questa cosa / questo oggetto.
+  Non toccare questo oggetto.
 :::
 
 #### ⚖️ Contrasto operativo

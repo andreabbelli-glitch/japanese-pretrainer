@@ -85,7 +85,7 @@ translation_it: >-
 jp: >-
   どの{{奴|やつ}}が{{来|く}}る？
 translation_it: >-
-  Quale tizio arriva?
+  Quale di quei tizi viene?
 :::
 
 [{{蹴|け}}る](term:term-ch-b9-keru) marca un colpo con il piede. Con `を`, vedi
@@ -95,7 +95,7 @@ subito cosa riceve il calcio.
 jp: >-
   {{鞭|むち}}を{{蹴|け}}る。
 translation_it: >-
-  Calcio la frusta.
+  Do un calcio alla frusta.
 :::
 
 [{{間|ま}}に{{合|あ}}う](term:term-ch-b9-ma-ni-au) guarda invece il limite di

@@ -30,7 +30,7 @@ chi viene classificato dentro una nuova gerarchia.
 - [{{奴隷|どれい}}](term:term-ch-b8-dorei) — schiavo
 - [{{抜|ぬ}}かす](term:term-ch-b8-nukasu) — saltare, omettere, dire a sproposito
 - [{{仕掛|しか}}ける](term:term-ch-b8-shikakeru) — iniziare, tendere, provocare
-- [{{無力|むりょく}}](term:term-ch-b8-muryoku) — impotenza, senza potere
+- [{{無力|むりょく}}](term:term-ch-b8-muryoku) — senza potere, inefficace
 - [{{加勢|かせい}}](term:term-ch-b8-kasei) — rinforzi, supporto in combattimento
 - [{{正真正銘|しょうしんしょうめい}}](term:term-ch-b8-shoushin-shoumei) — autentico
 - [{{何一|なにひと}}つ](term:term-ch-b8-nani-hitotsu) — nulla, nemmeno una cosa
@@ -61,7 +61,7 @@ translation_it: >-
 jp: >-
   {{攻撃|こうげき}}が{{無力|むりょく}}だ。
 translation_it: >-
-  L'attacco e' impotente / inefficace.
+  L'attacco e' inefficace.
 :::
 
 #### ⚖️ Contrasto operativo
@@ -147,7 +147,7 @@ momento opportuno per smettere, cambiare piano o agire.
 jp: >-
   もう{{潮時|しおどき}}だ。
 translation_it: >-
-  Ormai e' il momento giusto / e' ora di chiudere.
+  E' arrivato il momento / e' ora di chiudere.
 :::
 
 [{{間一髪|かんいっぱつ}}](term:term-ch-b8-kanippatsu) segnala un salvataggio per

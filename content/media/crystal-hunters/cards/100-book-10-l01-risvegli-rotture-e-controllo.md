@@ -160,7 +160,7 @@ card_type: recognition
 front: '{{事|こと}}'
 back: 'こと - cosa astratta; fatto; questione'
 example_jp: '{{悪|わる}}い{{事|こと}}をした。'
-example_it: Ho fatto una cosa brutta.
+example_it: Ho fatto qualcosa di sbagliato.
 notes_it: >-
   Qui la "cosa" e' un'azione o un fatto, non un oggetto fisico.
 tags: [crystal-hunters, book-10, lesson-01]
@@ -235,7 +235,7 @@ card_type: recognition
 front: '{{叩|たた}}きのめす'
 back: 'たたきのめす - pestare; ridurre male'
 example_jp: '{{敵|てき}}を{{叩|たた}}きのめす。'
-example_it: Pesto il nemico / lo riduco male.
+example_it: Metto il nemico al tappeto.
 notes_it: >-
   Il verbo porta gia' dentro il risultato violento: l'altro non regge piu'.
 tags: [crystal-hunters, book-10, lesson-01]

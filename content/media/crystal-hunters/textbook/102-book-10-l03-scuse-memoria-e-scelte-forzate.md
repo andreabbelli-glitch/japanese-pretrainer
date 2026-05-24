@@ -49,7 +49,7 @@ basso", ma nel parlato giudica qualcuno o qualcosa come pessimo.
 jp: >-
   {{私|わたし}}は{{最低|さいてい}}だ。
 translation_it: >-
-  Sono una persona pessima / sono il peggiore o la peggiore.
+  Sono una pessima persona / sono il peggio.
 :::
 
 [{{謝|あやま}}る](term:term-ch-b10-ayamaru) e' l'azione di scusarsi.
