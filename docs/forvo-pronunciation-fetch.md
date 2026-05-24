@@ -235,6 +235,28 @@ quella scade o non ha risultati, si registra il miss. Per il miss e' stato apert
 l'URL `word-add` precompilato e registrata la voce nei registry locali
 `data/forvo-known-missing.json` e `data/forvo-requested-word-add.json`.
 
+Nel batch successivo:
+
+- `～だろうか` ha fallito sulla label con marker `～`, poi ha scaricato
+  `だろうか` da `poyotan` in OGG;
+- `{{食|た}}べながら` e' stato il secondo miss. Il runner sperimentale ha
+  mostrato un difetto da non portare nel workflow definitivo: la label con ruby
+  markup e separatore `|` e' stata spezzata in query inutili (`{{食` e
+  `た}}べながら`) prima di arrivare alla reading `たべながら`.
+
+Quindi il fetcher Anki definitivo deve normalizzare le query prima di aprire
+Forvo: preferire `reading` quando disponibile, rimuovere markup editoriale
+`{{...|...}}`, eliminare marker come `～`, e usare la label pulita solo come
+fallback. La stessa normalizzazione serve per `word-add`: non bisogna inviare a
+Forvo label editoriali con markup.
+
+Il formato OGG non rompe la validazione del repo: `.ogg` e `.oga` sono asset
+audio supportati e vengono serviti come `audio/ogg`. Il compromesso operativo e'
+di ranking: a parita' di speaker preferito/voti e' meglio MP3 per compatibilita'
+browser piu ampia; se pero' lo speaker preferito esiste solo in OGG, il workflow
+puo accettarlo. Browser moderni recenti supportano OGG/Vorbis meglio che in
+passato, ma MP3 resta il formato meno rischioso.
+
 ## Batch one-shot per il backlog known missing
 
 Quando vuoi coprire in blocco il backlog gia segnato come `not_found_on_forvo`,

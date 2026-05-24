@@ -9,6 +9,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-darou-ka",
+      "audio_src": "assets/audio/grammar/grammar-darou-ka/forvo-poyotan-だろうか.ogg",
+      "audio_source": "forvo",
+      "audio_speaker": "poyotan",
+      "audio_attribution": "poyotan via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A0%E3%82%8D%E3%81%86%E3%81%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
