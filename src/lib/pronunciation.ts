@@ -50,8 +50,10 @@ export type {
 
 export {
   addForvoWordAddRequestEntry,
+  buildForvoWordAddRequestLabel,
   buildForvoWordAddPrefill,
   buildForvoWordAddUrl,
+  hasCurrentForvoWordAddRequestForEntry,
   hasForvoWordAddRequestForEntry,
   loadForvoWordAddRequestRegistry,
   normalizeForvoWordAddLabel,

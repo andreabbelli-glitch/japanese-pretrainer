@@ -1,12 +1,17 @@
 // ==UserScript==
 // @name         Forvo Word Add Helper
 // @namespace    https://forvo.com/
-// @version      0.10
+// @version      0.11
 // @description  Fill and optionally submit the Forvo word-add form from Japanese Custom Study URL hints.
-// @match        https://forvo.com/word-add/*
-// @match        https://*.forvo.com/word-add/*
-// @grant        none
+// @match        https://forvo.com/word-add*
+// @match        https://*.forvo.com/word-add*
+// @match        https://forvo.com/word-add-success/*
+// @match        https://*.forvo.com/word-add-success/*
+// @grant        window.close
+// @grant        unsafeWindow
 // ==/UserScript==
+
+/* global unsafeWindow */
 
 (function () {
   "use strict";
@@ -14,19 +19,20 @@
   const LANGUAGE_VALUES = {
     ja: "76"
   };
+  const AUTO_CLOSE_DELAY_MS = 5000;
+  const AUTO_CLOSE_MARKER_TTL_MS = 10 * 60 * 1000;
+  const SUBMIT_MARKER_KEY = "jcsForvoWordAddAutoClose";
 
   const params = new URLSearchParams(window.location.search);
-  const requestedAutoSubmit = parseBooleanParam(
-    params.get("jcs_autosubmit")
-  );
+  const requestedAutoSubmit = parseBooleanParam(params.get("jcs_autosubmit"));
+  const requestedAutoClose = parseBooleanParam(params.get("jcs_autoclose"));
   const requestedLanguage = params.get("jcs_lang") || "ja";
   const requestedPhrase = parseBooleanParam(params.get("jcs_phrase"));
-  const requestedPersonName = parseBooleanParam(
-    params.get("jcs_person_name")
-  );
+  const requestedPersonName = parseBooleanParam(params.get("jcs_person_name"));
 
   let helperBar = null;
   let statusNode = null;
+  let autoCloseScheduled = false;
 
   function parseBooleanParam(value) {
     if (value === "1" || value === "true" || value === "yes") {
@@ -50,11 +56,162 @@
     statusNode.textContent = message;
     statusNode.dataset.tone = tone || "neutral";
     statusNode.style.color =
-      tone === "error"
-        ? "#b91c1c"
-        : tone === "success"
-          ? "#166534"
-          : "#4b5563";
+      tone === "error" ? "#b91c1c" : tone === "success" ? "#166534" : "#4b5563";
+  }
+
+  function shouldAutoCloseThisTab() {
+    if (requestedAutoClose !== null) {
+      return requestedAutoClose;
+    }
+
+    return requestedAutoSubmit === true || hasRecentAutoCloseMarker();
+  }
+
+  function getPageJQuery() {
+    try {
+      const pageWindow =
+        typeof unsafeWindow === "undefined" ? window : unsafeWindow;
+
+      return pageWindow.jQuery || window.jQuery;
+    } catch (error) {
+      void error;
+      return window.jQuery;
+    }
+  }
+
+  function readAutoCloseMarker() {
+    try {
+      const rawValue = window.sessionStorage.getItem(SUBMIT_MARKER_KEY);
+
+      if (!rawValue) {
+        return null;
+      }
+
+      const marker = JSON.parse(rawValue);
+
+      if (
+        typeof marker !== "object" ||
+        marker === null ||
+        typeof marker.expiresAt !== "number"
+      ) {
+        window.sessionStorage.removeItem(SUBMIT_MARKER_KEY);
+        return null;
+      }
+
+      if (marker.expiresAt < Date.now()) {
+        window.sessionStorage.removeItem(SUBMIT_MARKER_KEY);
+        return null;
+      }
+
+      return marker;
+    } catch (error) {
+      void error;
+      window.sessionStorage.removeItem(SUBMIT_MARKER_KEY);
+      return null;
+    }
+  }
+
+  function hasRecentAutoCloseMarker() {
+    return readAutoCloseMarker() !== null;
+  }
+
+  function recordAutoCloseMarker() {
+    if (!shouldAutoCloseThisTab()) {
+      return;
+    }
+
+    try {
+      window.sessionStorage.setItem(
+        SUBMIT_MARKER_KEY,
+        JSON.stringify({
+          expiresAt: Date.now() + AUTO_CLOSE_MARKER_TTL_MS,
+          pathname: window.location.pathname,
+          submittedAt: Date.now()
+        })
+      );
+    } catch (error) {
+      void error;
+    }
+  }
+
+  function clearAutoCloseMarker() {
+    try {
+      window.sessionStorage.removeItem(SUBMIT_MARKER_KEY);
+    } catch (error) {
+      void error;
+    }
+  }
+
+  function isConfirmationUrl() {
+    const pathname = window.location.pathname.replace(/\/+$/u, "");
+
+    return (
+      pathname.startsWith("/word-add-success/") ||
+      /\/word-add\/[^/]+\/(?:added|success|ok|thanks|thank-you|confirm|confirmed|confirmation)$/iu.test(
+        pathname
+      )
+    );
+  }
+
+  function isConfirmationText(text) {
+    const normalized = text.replace(/\s+/gu, " ").trim();
+
+    return (
+      /\b(?:word|phrase|request)\b.{0,80}\b(?:added|submitted|requested|sent|received)\b/iu.test(
+        normalized
+      ) ||
+      /\b(?:added|submitted|requested|sent|received)\b.{0,80}\b(?:word|phrase|request|pronunciation)\b/iu.test(
+        normalized
+      ) ||
+      /\bthanks?\b.{0,80}\b(?:adding|requesting|contributing|request)\b/iu.test(
+        normalized
+      )
+    );
+  }
+
+  function isConfirmationPage() {
+    if (
+      document.querySelector("#formWordAdd") ||
+      document.querySelector("#addBtn") ||
+      document.querySelector("#word")
+    ) {
+      return false;
+    }
+
+    if (isConfirmationUrl()) {
+      return true;
+    }
+
+    return isConfirmationText(document.body?.innerText || "");
+  }
+
+  function scheduleAutoClose(reason) {
+    if (autoCloseScheduled || !shouldAutoCloseThisTab()) {
+      return;
+    }
+
+    autoCloseScheduled = true;
+    setStatus(`Closing tab after ${reason}...`, "success");
+
+    window.setTimeout(() => {
+      clearAutoCloseMarker();
+      window.close();
+    }, AUTO_CLOSE_DELAY_MS);
+  }
+
+  function maybeScheduleAutoClose() {
+    if (!shouldAutoCloseThisTab()) {
+      return;
+    }
+
+    if (isAlreadyDefinedInJapanese()) {
+      scheduleAutoClose("existing Japanese entry");
+      return;
+    }
+
+    if (isConfirmationPage()) {
+      scheduleAutoClose("Forvo confirmation");
+    }
   }
 
   function getElementText(element) {
@@ -104,7 +261,10 @@
 
     for (const selector of selectors) {
       for (const element of document.querySelectorAll(selector)) {
-        if (isVisible(element) && isCookieConsentText(element.textContent || "")) {
+        if (
+          isVisible(element) &&
+          isCookieConsentText(element.textContent || "")
+        ) {
           roots.push(element);
         }
       }
@@ -120,7 +280,10 @@
 
     for (const root of roots) {
       for (const candidate of root.querySelectorAll(candidatesSelector)) {
-        if (isVisible(candidate) && isCookieAcceptText(getElementText(candidate))) {
+        if (
+          isVisible(candidate) &&
+          isCookieAcceptText(getElementText(candidate))
+        ) {
           return candidate;
         }
       }
@@ -131,7 +294,10 @@
     }
 
     for (const candidate of document.querySelectorAll(candidatesSelector)) {
-      if (isVisible(candidate) && isCookieAcceptText(getElementText(candidate))) {
+      if (
+        isVisible(candidate) &&
+        isCookieAcceptText(getElementText(candidate))
+      ) {
         return candidate;
       }
     }
@@ -220,12 +386,14 @@
   }
 
   function refreshSelectmenu(select) {
-    if (!window.jQuery) {
+    const jQuery = getPageJQuery();
+
+    if (!jQuery) {
       return;
     }
 
     try {
-      const $select = window.jQuery(select);
+      const $select = jQuery(select);
 
       if (typeof $select.selectmenu === "function") {
         $select.selectmenu("refresh");
@@ -239,12 +407,14 @@
   }
 
   function triggerSelectmenuChange(select, desiredValue) {
-    if (!window.jQuery) {
+    const jQuery = getPageJQuery();
+
+    if (!jQuery) {
       return;
     }
 
     try {
-      const $select = window.jQuery(select);
+      const $select = jQuery(select);
       const instance = $select.data("ui-selectmenu");
       const option = select.querySelector(`option[value="${desiredValue}"]`);
 
@@ -252,17 +422,13 @@
         return;
       }
 
-      instance._trigger(
-        "change",
-        window.jQuery.Event("selectmenuchange"),
-        {
-          item: {
-            value: desiredValue,
-            label: option.textContent?.trim() || "",
-            element: option
-          }
+      instance._trigger("change", jQuery.Event("selectmenuchange"), {
+        item: {
+          value: desiredValue,
+          label: option.textContent?.trim() || "",
+          element: option
         }
-      );
+      });
     } catch (error) {
       void error;
     }
@@ -490,6 +656,7 @@
 
     if (isAlreadyDefinedInJapanese()) {
       setStatus("Already in Japanese", "neutral");
+      scheduleAutoClose("existing Japanese entry");
       return;
     }
 
@@ -510,12 +677,14 @@
       return;
     }
 
+    recordAutoCloseMarker();
     addButton.click();
     setStatus("Submitting...", "success");
   }
 
   const observer = new MutationObserver(() => {
     ensureHelperBar();
+    maybeScheduleAutoClose();
   });
 
   observer.observe(document.documentElement, {
@@ -524,6 +693,7 @@
   });
 
   ensureHelperBar();
+  maybeScheduleAutoClose();
 
   if (
     requestedLanguage in LANGUAGE_VALUES &&

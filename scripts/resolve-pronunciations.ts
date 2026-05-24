@@ -13,6 +13,7 @@ import {
 type CliOptions = {
   ankiAppPath?: string;
   ankiBaseDir: string;
+  ankiPythonPath?: string;
   browserTimeoutMs?: number;
   contentRoot: string;
   controlPort: number;
@@ -60,6 +61,7 @@ if (!options.openWordAddOnSkip) {
       forvoOptions: {
         ankiAppPath: options.ankiAppPath,
         ankiBaseDir: path.resolve(options.ankiBaseDir),
+        ankiPythonPath: options.ankiPythonPath,
         browserTimeoutMs: options.browserTimeoutMs,
         knownMissingPath: path.resolve(options.knownMissingPath),
         openWordAddOnMiss: options.openWordAddOnSkip,
@@ -217,6 +219,16 @@ function parseCliOptions(argv: string[]): CliOptions {
         normalizedArgv,
         index,
         "--anki-app"
+      );
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--anki-python") {
+      options.ankiPythonPath = readOptionValue(
+        normalizedArgv,
+        index,
+        "--anki-python"
       );
       index += 1;
       continue;

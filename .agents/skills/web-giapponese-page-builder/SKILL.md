@@ -68,7 +68,7 @@ Optional:
    `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media web-giapponese --entry <new-term-or-grammar-id>`
    Pass multiple `--entry` flags for multiple new cards. If Forvo has no audio,
    the workflow must open and record the `word-add` request. Forvo audio must be
-   attempted through the Anki/addon-style flow first: valid browser session,
+   attempted through the Anki/addon-style flow first: dedicated Anki helper,
    `Play(...)` candidates, speaker ranking, direct audio download, and OGG -> MP3
    conversion when needed. Manual download is only an extreme fallback for a
    specific blocked item.

@@ -9,7 +9,7 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-darou-ka",
-      "audio_src": "assets/audio/grammar/grammar-darou-ka/forvo-poyotan-だろうか.ogg",
+      "audio_src": "assets/audio/grammar/grammar-darou-ka/forvo-poyotan-だろうか.mp3",
       "audio_source": "forvo",
       "audio_speaker": "poyotan",
       "audio_attribution": "poyotan via Forvo",
@@ -19,7 +19,7 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-nandarou",
-      "audio_src": "assets/audio/grammar/grammar-nandarou/forvo-mezashi-なんだろう.ogg",
+      "audio_src": "assets/audio/grammar/grammar-nandarou/forvo-mezashi-なんだろう.mp3",
       "audio_source": "forvo",
       "audio_speaker": "mezashi",
       "audio_attribution": "mezashi via Forvo",

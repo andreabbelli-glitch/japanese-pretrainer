@@ -298,9 +298,9 @@ parte piu dal low-level Forvo, ma dal resolver smart:
 ```
 
 Il resolver seleziona i target, esclude le entry gia coperte, prova il riuso
-cross-media e manda il residuo al fetch Forvo Anki-style: pagina Forvo renderizzata
-in una sessione browser valida, candidati audio estratti da `Play(...)`, ranking
-speaker, download diretto e conversione OGG -> MP3 quando serve.
+cross-media e manda il residuo al fetch Forvo Anki-style: helper Anki dedicato,
+candidati audio estratti da `Play(...)`, ranking speaker, download diretto e
+conversione OGG -> MP3 quando serve.
 
 Ogni workflow che crea o modifica flashcard deve anche risolvere le pronunce
 delle entry toccate: audio locale quando disponibile, altrimenti richiesta Forvo

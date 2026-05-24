@@ -1,5 +1,6 @@
 import { createInterface } from "node:readline/promises";
 import {
+  access,
   copyFile,
   mkdir,
   mkdtemp,
@@ -13,7 +14,7 @@ import path from "node:path";
 import { spawn } from "node:child_process";
 import { createServer } from "node:http";
 import type { Socket } from "node:net";
-import { tmpdir } from "node:os";
+import { homedir, tmpdir } from "node:os";
 
 import type { NormalizedMediaBundle } from "./content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
@@ -58,6 +59,7 @@ import {
 export type { ForvoCandidate } from "./forvo-pronunciation-helpers.ts";
 
 export {
+  buildForvoSearchQueries,
   buildForvoWordUrls,
   parseForvoCandidateText,
   parseForvoWordList,
@@ -69,6 +71,7 @@ export {
 export type ForvoBrowserOptions = {
   ankiAppPath?: string;
   ankiBaseDir?: string;
+  ankiPythonPath?: string;
   ankiRunRoot?: string;
   browserTimeoutMs?: number;
   entryDelayMs?: number;
@@ -243,6 +246,7 @@ export async function fetchForvoPronunciationsForBundle(input: {
       input.browser.ankiBaseDir ??
       input.browser.profileDir ??
       "data/forvo-anki-profile",
+    ankiPythonPath: input.browser.ankiPythonPath,
     entryDelayMs: input.browser.entryDelayMs,
     keepAnkiOpen: input.browser.keepBrowserOpen,
     runRoot: input.browser.ankiRunRoot,
@@ -721,20 +725,25 @@ function buildForvoAnkiBatchTarget(
 async function runForvoAnkiBatch(input: {
   ankiAppPath?: string;
   ankiBaseDir: string;
+  ankiPythonPath?: string;
   entryDelayMs?: number;
   keepAnkiOpen?: boolean;
   runRoot?: string;
   targets: ForvoAnkiBatchTarget[];
   timeoutMs?: number;
 }): Promise<ForvoAnkiBatchResult> {
-  const ankiAppPath =
-    input.ankiAppPath ?? "/Applications/Anki.app/Contents/MacOS/launcher";
   const ankiBaseDir = path.resolve(input.ankiBaseDir);
   const runRoot = path.resolve(
     input.runRoot ?? path.join("data", "forvo-anki-runs")
   );
+  const ankiPythonPath = await resolveAnkiPythonPath(input.ankiPythonPath);
+  const ankiCommandPath = await resolveAnkiCommandPath(input.ankiAppPath);
 
   await mkdir(runRoot, { recursive: true });
+  await ensureForvoAnkiProfileReady({
+    ankiBaseDir,
+    ankiPythonPath: ankiPythonPath ?? undefined
+  });
   await installForvoAnkiHelperAddon(ankiBaseDir);
 
   const runDir = await mkdtemp(path.join(runRoot, "run-"));
@@ -747,16 +756,14 @@ async function runForvoAnkiBatch(input: {
     "utf8"
   );
 
-  const child = spawn(ankiAppPath, [], {
-    env: {
-      ...process.env,
-      ANKI_BASE: ankiBaseDir,
-      JCS_FORVO_ENTRY_DELAY_MS: String(input.entryDelayMs ?? 2500),
-      JCS_FORVO_KEEP_OPEN: input.keepAnkiOpen ? "1" : "0",
-      JCS_FORVO_LANGUAGE: "ja",
-      JCS_FORVO_RESULT_PATH: resultPath,
-      JCS_FORVO_TARGETS_PATH: targetsPath
-    },
+  const child = spawn(ankiCommandPath, [], {
+    env: buildForvoAnkiBatchEnvironment({
+      ankiBaseDir,
+      entryDelayMs: input.entryDelayMs,
+      keepAnkiOpen: input.keepAnkiOpen,
+      resultPath,
+      targetsPath
+    }),
     stdio: ["ignore", "ignore", "pipe"]
   });
   let stderr = "";
@@ -773,6 +780,53 @@ async function runForvoAnkiBatch(input: {
   });
 }
 
+async function resolveAnkiCommandPath(explicitPath?: string) {
+  const candidates = [
+    explicitPath,
+    process.env.ANKI_APP,
+    path.join(
+      homedir(),
+      "Library",
+      "Application Support",
+      "AnkiProgramFiles",
+      ".venv",
+      "bin",
+      "anki"
+    ),
+    "/Applications/Anki.app/Contents/MacOS/launcher"
+  ].filter((candidate): candidate is string => Boolean(candidate));
+
+  for (const candidate of candidates) {
+    if (await pathExists(candidate)) {
+      return candidate;
+    }
+  }
+
+  throw new Error(
+    "Anki executable not found. Install Anki or pass --anki-app with the launcher/script path."
+  );
+}
+
+function buildForvoAnkiBatchEnvironment(input: {
+  ankiBaseDir: string;
+  entryDelayMs?: number;
+  keepAnkiOpen?: boolean;
+  resultPath: string;
+  targetsPath: string;
+}) {
+  return {
+    env: {
+      ...process.env,
+      ANKI_BASE: input.ankiBaseDir,
+      JCS_FORVO_ENTRY_DELAY_MS: String(input.entryDelayMs ?? 2500),
+      JCS_FORVO_KEEP_OPEN: input.keepAnkiOpen ? "1" : "0",
+      JCS_FORVO_LANGUAGE: "ja",
+      JCS_FORVO_RESULT_PATH: input.resultPath,
+      JCS_FORVO_TARGETS_PATH: input.targetsPath
+    }
+  }.env;
+}
+
 async function installForvoAnkiHelperAddon(ankiBaseDir: string) {
   const addonDir = path.join(ankiBaseDir, "addons21", "jcs_forvo_batch");
 
@@ -782,6 +836,148 @@ async function installForvoAnkiHelperAddon(ankiBaseDir: string) {
     forvoAnkiHelperAddonSource,
     "utf8"
   );
+}
+
+async function ensureForvoAnkiProfileReady(input: {
+  ankiBaseDir: string;
+  ankiPythonPath?: string;
+}) {
+  const prefsPath = path.join(input.ankiBaseDir, "prefs21.db");
+  const collectionPath = path.join(
+    input.ankiBaseDir,
+    "User 1",
+    "collection.anki2"
+  );
+
+  if ((await pathExists(prefsPath)) && (await pathExists(collectionPath))) {
+    return;
+  }
+
+  const ankiPythonPath = await resolveAnkiPythonPath(input.ankiPythonPath);
+
+  if (!ankiPythonPath) {
+    throw new Error(
+      `Anki profile '${input.ankiBaseDir}' is not initialized and the Anki Python runtime was not found. Open Anki once with this base directory or pass --anki-python.`
+    );
+  }
+
+  await mkdir(input.ankiBaseDir, { recursive: true });
+  await runAnkiProfileBootstrap({
+    ankiBaseDir: input.ankiBaseDir,
+    ankiPythonPath
+  });
+}
+
+async function resolveAnkiPythonPath(explicitPath?: string) {
+  const candidates = [
+    explicitPath,
+    process.env.ANKI_PYTHON,
+    path.join(
+      homedir(),
+      "Library",
+      "Application Support",
+      "AnkiProgramFiles",
+      ".venv",
+      "bin",
+      "python"
+    )
+  ].filter((candidate): candidate is string => Boolean(candidate));
+
+  for (const candidate of candidates) {
+    if (await pathExists(candidate)) {
+      return candidate;
+    }
+  }
+
+  return null;
+}
+
+function runAnkiProfileBootstrap(input: {
+  ankiBaseDir: string;
+  ankiPythonPath: string;
+}) {
+  const source = String.raw`
+import os
+import pathlib
+import pickle
+import sqlite3
+import sys
+
+from anki.collection import Collection
+from aqt.profiles import metaConf, profileConf
+
+base = pathlib.Path(sys.argv[1])
+profile_dir = base / "User 1"
+collection_path = profile_dir / "collection.anki2"
+prefs_path = base / "prefs21.db"
+
+base.mkdir(parents=True, exist_ok=True)
+profile_dir.mkdir(parents=True, exist_ok=True)
+(profile_dir / "collection.media").mkdir(parents=True, exist_ok=True)
+
+meta = dict(metaConf)
+meta["firstRun"] = False
+meta["defaultLang"] = meta.get("defaultLang") or "en"
+profile = dict(profileConf)
+
+connection = sqlite3.connect(prefs_path)
+try:
+    connection.execute(
+        "create table if not exists profiles (name text primary key collate nocase, data blob not null)"
+    )
+    connection.execute(
+        "insert or replace into profiles values (?, ?)",
+        ("_global", pickle.dumps(meta, protocol=4)),
+    )
+    connection.execute(
+        "insert or ignore into profiles values (?, ?)",
+        ("User 1", pickle.dumps(profile, protocol=4)),
+    )
+    connection.commit()
+finally:
+    connection.close()
+
+if not collection_path.exists():
+    collection = Collection(str(collection_path))
+    collection.close(downgrade=True)
+`;
+
+  return new Promise<void>((resolve, reject) => {
+    const child = spawn(
+      input.ankiPythonPath,
+      ["-c", source, input.ankiBaseDir],
+      {
+        stdio: ["ignore", "ignore", "pipe"]
+      }
+    );
+    let stderr = "";
+
+    child.stderr.on("data", (chunk: Buffer) => {
+      stderr += chunk.toString("utf8");
+    });
+    child.on("error", reject);
+    child.on("close", (code) => {
+      if (code === 0) {
+        resolve();
+        return;
+      }
+
+      reject(
+        new Error(
+          stderr.trim() || `Anki profile bootstrap exited with code ${code}`
+        )
+      );
+    });
+  });
+}
+
+async function pathExists(filePath: string) {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 async function waitForForvoAnkiResult(input: {
@@ -814,9 +1010,9 @@ async function waitForForvoAnkiResult(input: {
       );
     }
 
-    if (childExit.value && !result) {
+    if (childExit.value) {
       throw new Error(
-        `Anki exited before producing a Forvo result (code=${childExit.value.code ?? "null"} signal=${childExit.value.signal ?? "null"}). ${input.stderr()}`
+        `Anki exited before producing a completed Forvo result (code=${childExit.value.code ?? "null"} signal=${childExit.value.signal ?? "null"} status=${result?.status ?? "missing_result"}). ${input.stderr()}`
       );
     }
 
@@ -1113,10 +1309,11 @@ async function captureManualForvoPronunciation(input: {
   }
 
   const extension = path.extname(downloadedFile).toLowerCase() || ".mp3";
+  const shouldConvertToMp3 = extension === ".ogg" || extension === ".oga";
   const safeLabel = slugifyForvoSegment(
     input.entry.reading ?? input.entry.label
   );
-  const localAssetPath = `assets/audio/${input.entry.kind}/${input.entry.id}/forvo-manual-${safeLabel}${extension}`;
+  const localAssetPath = `assets/audio/${input.entry.kind}/${input.entry.id}/forvo-manual-${safeLabel}${shouldConvertToMp3 ? ".mp3" : extension}`;
 
   if (!input.dryRun) {
     const absoluteAssetPath = path.join(
@@ -1125,7 +1322,16 @@ async function captureManualForvoPronunciation(input: {
     );
 
     await mkdir(path.dirname(absoluteAssetPath), { recursive: true });
-    await copyFile(downloadedFile, absoluteAssetPath);
+
+    if (shouldConvertToMp3) {
+      await convertForvoAudioBufferToMp3({
+        buffer: await readFile(downloadedFile),
+        format: extension.slice(1),
+        targetPath: absoluteAssetPath
+      });
+    } else {
+      await copyFile(downloadedFile, absoluteAssetPath);
+    }
   }
 
   return {
@@ -1145,17 +1351,25 @@ async function handleWordAddRequestAfterSkip(input: {
   requestRegistry: ForvoWordAddRequestRegistry;
   requestRegistryPath?: string;
 }) {
+  const requestUrl = buildForvoWordAddUrl({
+    entryId: input.entry.id,
+    entryKind: input.entry.kind,
+    label: input.entry.label,
+    reading: input.entry.reading
+  });
+
+  if (!requestUrl) {
+    console.info(
+      `  skipped word-add request for ${input.mediaSlug}:${input.entry.kind}:${input.entry.id} because no Japanese Forvo query could be derived`
+    );
+    return;
+  }
+
   const requestAdded = addForvoWordAddRequestEntry(input.requestRegistry, {
     entryId: input.entry.id,
     entryKind: input.entry.kind,
     label: input.entry.label,
     mediaSlug: input.mediaSlug,
-    reading: input.entry.reading
-  });
-  const requestUrl = buildForvoWordAddUrl({
-    entryId: input.entry.id,
-    entryKind: input.entry.kind,
-    label: input.entry.label,
     reading: input.entry.reading
   });
 
@@ -1522,16 +1736,14 @@ import json
 import os
 import re
 import traceback
+import urllib.parse
+import urllib.request
 from pathlib import Path
-from urllib.parse import quote
+from urllib.error import HTTPError
 
 from aqt import gui_hooks, mw
-from aqt.qt import QTimer, QUrl
-
-try:
-    from PyQt6.QtWebEngineWidgets import QWebEngineView
-except Exception:
-    from PyQt5.QtWebEngineWidgets import QWebEngineView
+from aqt.qt import QTimer
+from bs4 import BeautifulSoup
 
 
 TARGETS_PATH = os.environ.get("JCS_FORVO_TARGETS_PATH")
@@ -1545,8 +1757,6 @@ state = {
     "index": 0,
     "results": [],
     "targets": [],
-    "query_token": 0,
-    "view": None,
 }
 
 
@@ -1587,18 +1797,6 @@ def finish(status="done"):
         return
 
     QTimer.singleShot(1500, mw.close)
-
-
-def close_view():
-    view = state.get("view")
-
-    if view:
-        try:
-            view.close()
-        except Exception:
-            pass
-
-    state["view"] = None
 
 
 def decode_audio_candidates(onclick):
@@ -1707,78 +1905,132 @@ def select_candidate(candidates):
     return sorted(candidates, key=sort_key)[0]
 
 
-EXTRACT_JS = """
-(function(lang) {
-  const normalize = function(value) {
-    return String(value || "").replace(/\\s+/g, " ").trim();
-  };
-  const containers = Array.from(document.querySelectorAll('[id^="language-container-"]'));
-  const container = containers.find(function(element) {
-    return String(element.id || "").replace(/^language-container-/, "").replace(/_/g, "") === lang;
-  });
-
-  if (!container) {
-    return [];
-  }
-
-  const rows = Array.from(container.querySelectorAll(".pronunciations-list li"));
-
-  return rows.map(function(row, index) {
-    const play = row.querySelector('[id^="play_"]');
-    const onclick = play ? play.getAttribute("onclick") || "" : "";
-    const text = normalize(row.innerText || row.textContent || "");
-    const infoNode = row.querySelector(".info");
-    const infoText = normalize((infoNode && (infoNode.innerText || infoNode.textContent)) || text);
-    const originNode = row.querySelector(".from");
-    const origin = normalize(originNode && (originNode.innerText || originNode.textContent));
-    const speakerMatch =
-      infoText.match(/Pronunciation by\\s+(.+?)(?:\\s+\\((?:Male|Female)|$)/i) ||
-      text.match(/Pronunciation by\\s+(.+?)(?:\\s+\\((?:Male|Female)|$)/i);
-    const genderCountryMatch = (origin || text).match(/(Male|Female)(?:\\s+from\\s+([^)]+))?/i);
-    const voteNode = row.querySelector(".num_votes span") || row.querySelector(".num_votes");
-    const voteText = normalize(voteNode && (voteNode.innerText || voteNode.textContent));
-    const voteMatch = voteText.match(/-?\\d+/) || text.match(/(-?\\d+)\\s+votes?/i);
-    const idLink = Array.from(row.querySelectorAll(".ofLink")).find(function(link) {
-      return Array.from(link.attributes).some(function(attribute) {
-        return /^data-p\\d+$/.test(attribute.name) && /^\\d+$/.test(attribute.value);
-      });
-    });
-    let forvoId = null;
-
-    if (idLink) {
-      const idAttribute = Array.from(idLink.attributes).find(function(attribute) {
-        return /^data-p\\d+$/.test(attribute.name) && /^\\d+$/.test(attribute.value);
-      });
-      forvoId = idAttribute ? Number.parseInt(idAttribute.value, 10) : null;
-    }
-
-    return {
-      candidateIndex: index,
-      forvoId: Number.isFinite(forvoId) ? forvoId : null,
-      onclick: onclick,
-      origin: origin,
-      pageUrl: location.href,
-      speaker: speakerMatch ? normalize(speakerMatch[1]) : undefined,
-      speakerCountry: genderCountryMatch ? normalize(genderCountryMatch[2]) : undefined,
-      speakerGender: genderCountryMatch ? normalize(genderCountryMatch[1]) : undefined,
-      text: text,
-      votes: voteMatch ? Number.parseInt(voteMatch[0], 10) : undefined
-    };
-  }).filter(function(row) {
-    return row.onclick;
-  });
-})("__LANG__");
-"""
-
-
 def append_result(result):
     state["results"].append(result)
     write_result("running")
 
 
-def run_next():
-    close_view()
+def build_page_url(query):
+    return "https://forvo.com/word/" + urllib.parse.quote(query, safe="") + "/#ja"
 
+
+def load_forvo_soup(query):
+    request = urllib.request.Request(
+        build_page_url(query),
+        headers={
+            "Accept-Language": "ja,en-US;q=0.9,en;q=0.8",
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0 Safari/537.36"
+            ),
+        },
+    )
+
+    with urllib.request.urlopen(request, timeout=30) as response:
+        html = response.read()
+
+    text = html.decode("utf8", errors="ignore")
+    lowered = text.lower()
+
+    if "cf-browser-verification" in lowered or "just a moment" in lowered:
+        raise RuntimeError("Forvo returned a Cloudflare challenge page")
+
+    return BeautifulSoup(text, "html.parser")
+
+
+def extract_raw_candidates(soup, query):
+    containers = soup.find_all(id=re.compile(r"^language-container-\w{2,4}$"))
+    container = None
+
+    for candidate in containers:
+        language = re.sub(r"^language-container-", "", candidate.get("id", ""))
+        language = language.replace("_", "")
+
+        if language == TARGET_LANGUAGE:
+            container = candidate
+            break
+
+    if container is None:
+        return []
+
+    rows = container.select(".pronunciations-list li")
+    raw_candidates = []
+
+    for index, row in enumerate(rows):
+        play = row.find(id=re.compile(r"^play_\d+"))
+        onclick = play.get("onclick", "") if play else ""
+
+        if not onclick:
+            continue
+
+        text = normalize_text(row.get_text(" ", strip=True))
+        info_node = row.select_one(".info")
+        info_text = normalize_text(
+            info_node.get_text(" ", strip=True) if info_node else text
+        )
+        origin_node = row.select_one(".from")
+        origin = normalize_text(
+            origin_node.get_text(" ", strip=True) if origin_node else ""
+        )
+        speaker_match = re.search(
+            r"Pronunciation by\s+(.+?)(?:\s+\((?:Male|Female)|$)",
+            info_text,
+            flags=re.I,
+        ) or re.search(
+            r"Pronunciation by\s+(.+?)(?:\s+\((?:Male|Female)|$)",
+            text,
+            flags=re.I,
+        )
+        gender_country_match = re.search(
+            r"(Male|Female)(?:\s+from\s+([^)]+))?",
+            origin or text,
+            flags=re.I,
+        )
+        vote_node = row.select_one(".num_votes span") or row.select_one(".num_votes")
+        vote_text = normalize_text(
+            vote_node.get_text(" ", strip=True) if vote_node else ""
+        )
+        vote_match = re.search(r"-?\d+", vote_text) or re.search(
+            r"(-?\d+)\s+votes?",
+            text,
+            flags=re.I,
+        )
+        forvo_id = None
+
+        for link in row.select(".ofLink"):
+            for name, value in link.attrs.items():
+                if re.match(r"^data-p\d+$", name) and re.match(r"^\d+$", str(value)):
+                    forvo_id = int(value)
+                    break
+
+            if forvo_id is not None:
+                break
+
+        raw_candidates.append(
+            {
+                "candidateIndex": index,
+                "forvoId": forvo_id,
+                "onclick": onclick,
+                "origin": origin,
+                "pageUrl": build_page_url(query),
+                "speaker": normalize_text(speaker_match.group(1))
+                if speaker_match
+                else None,
+                "speakerCountry": normalize_text(gender_country_match.group(2))
+                if gender_country_match
+                else None,
+                "speakerGender": normalize_text(gender_country_match.group(1))
+                if gender_country_match
+                else None,
+                "text": text,
+                "votes": int(vote_match.group(0)) if vote_match else None,
+            }
+        )
+
+    return raw_candidates
+
+
+def run_next():
     if state["index"] >= len(state["targets"]):
         finish("done")
         return
@@ -1813,100 +2065,65 @@ def run_query(target, queries, query_index):
         return
 
     query = queries[query_index]
-    state["query_token"] += 1
-    token = state["query_token"]
-    finished = {"value": False}
-    view = QWebEngineView()
-    state["view"] = view
-    page = view.page()
 
     try:
-        page.profile().setHttpUserAgent(
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0 Safari/537.36"
-        )
-    except Exception:
-        pass
-
-    def try_next_query():
-        if token != state["query_token"]:
-            return
-
-        close_view()
-        QTimer.singleShot(500, lambda: run_query(target, queries, query_index + 1))
-
-    def on_timeout():
-        if finished["value"] or token != state["query_token"]:
-            return
-
-        finished["value"] = True
-        try_next_query()
-
-    def on_extracted(raw_rows):
-        if finished["value"] or token != state["query_token"]:
-            return
-
-        finished["value"] = True
+        soup = load_forvo_soup(query)
+        raw_rows = extract_raw_candidates(soup, query)
         candidates = []
 
-        try:
-            if isinstance(raw_rows, list):
-                for index, raw in enumerate(raw_rows):
-                    if isinstance(raw, dict):
-                        candidate = enrich_candidate(raw, query, index)
+        for index, raw in enumerate(raw_rows):
+            candidate = enrich_candidate(raw, query, index)
 
-                        if candidate:
-                            candidates.append(candidate)
-        except Exception:
-            traceback.print_exc()
-            append_result(
-                {
-                    **target,
-                    "error": traceback.format_exc(),
-                    "queries": queries,
-                    "query": query,
-                    "status": "query_error",
-                }
-            )
-            QTimer.singleShot(ENTRY_DELAY_MS, run_next)
+            if candidate:
+                candidates.append(candidate)
+    except HTTPError as error:
+        if error.code == 404:
+            QTimer.singleShot(500, lambda: run_query(target, queries, query_index + 1))
             return
 
-        if not candidates:
-            try_next_query()
-            return
-
-        selected = select_candidate(candidates)
+        traceback.print_exc()
         append_result(
             {
                 **target,
-                "candidates": candidates,
-                "pageUrl": candidates[0].get("pageUrl"),
+                "error": traceback.format_exc(),
                 "queries": queries,
                 "query": query,
-                "selected": selected,
-                "status": "downloaded",
+                "status": "query_error",
             }
         )
         QTimer.singleShot(ENTRY_DELAY_MS, run_next)
+        return
+    except Exception:
+        traceback.print_exc()
+        append_result(
+            {
+                **target,
+                "error": traceback.format_exc(),
+                "queries": queries,
+                "query": query,
+                "status": "query_error",
+            }
+        )
+        QTimer.singleShot(ENTRY_DELAY_MS, run_next)
+        return
 
-    def on_loaded(success):
-        if finished["value"] or token != state["query_token"]:
-            return
+    if not candidates:
+        QTimer.singleShot(500, lambda: run_query(target, queries, query_index + 1))
+        return
 
-        if not success:
-            finished["value"] = True
-            try_next_query()
-            return
-
-        script = EXTRACT_JS.replace("__LANG__", TARGET_LANGUAGE)
-        QTimer.singleShot(1200, lambda: page.runJavaScript(script, on_extracted))
-
-    view.loadFinished.connect(on_loaded)
-    view.setWindowTitle("JCS Forvo Anki fetch")
-    view.resize(980, 720)
-    view.show()
-    view.load(QUrl("https://forvo.com/word/" + quote(query) + "/#ja"))
-    QTimer.singleShot(30000, on_timeout)
+    selected = select_candidate(candidates)
+    append_result(
+        {
+            **target,
+            "candidates": candidates,
+            "pageUrl": candidates[0].get("pageUrl"),
+            "queries": queries,
+            "query": query,
+            "selected": selected,
+            "status": "downloaded",
+        }
+    )
+    QTimer.singleShot(ENTRY_DELAY_MS, run_next)
 
 
 def start_batch():

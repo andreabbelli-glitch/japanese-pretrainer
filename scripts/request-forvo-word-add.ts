@@ -5,7 +5,7 @@ import { MAX_TIMER_DELAY_MS } from "../src/lib/fetch-throttle.ts";
 import {
   addForvoWordAddRequestEntry,
   buildForvoWordAddUrl,
-  hasForvoWordAddRequestForEntry,
+  hasCurrentForvoWordAddRequestForEntry,
   loadForvoKnownMissingRegistry,
   loadForvoWordAddRequestRegistry,
   persistForvoWordAddRequestRegistry
@@ -54,10 +54,12 @@ const filteredEntries = knownMissingRegistry.entries.filter((entry) => {
     return true;
   }
 
-  return !hasForvoWordAddRequestForEntry(requestRegistry, {
+  return !hasCurrentForvoWordAddRequestForEntry(requestRegistry, {
     entryId: entry.entryId,
     entryKind: entry.entryKind,
-    mediaSlug: entry.mediaSlug
+    label: entry.label,
+    mediaSlug: entry.mediaSlug,
+    reading: entry.reading
   });
 }) as Array<
   (typeof knownMissingRegistry.entries)[number] & {
@@ -80,6 +82,13 @@ if (entries.length === 0) {
       label: entry.label,
       reading: entry.reading
     });
+
+    if (!requestUrl) {
+      console.info(
+        `${entry.mediaSlug}:${entry.entryKind}:${entry.entryId} -> skipped (no Japanese Forvo query)`
+      );
+      continue;
+    }
 
     console.info(
       `${entry.mediaSlug}:${entry.entryKind}:${entry.entryId} -> ${requestUrl}`
@@ -104,7 +113,7 @@ if (entries.length === 0) {
       );
     }
 
-    if (index < entries.length - 1 && options.openUrls) {
+    if (index < entries.length - 1 && options.openUrls && !options.dryRun) {
       await sleep(options.requestDelayMs);
     }
   }

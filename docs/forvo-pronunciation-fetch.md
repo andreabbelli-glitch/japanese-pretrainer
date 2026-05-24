@@ -3,9 +3,8 @@
 Lo script `pnpm pronunciations:forvo` e il layer low-level per recuperare
 pronunce da Forvo e inserirle nel bundle locale. Il percorso operativo standard
 non e il download manuale dal browser: replica la logica dell'addon Anki Forvo,
-legge la pagina Forvo in una sessione browser valida, estrae i candidati audio
-dal player `Play(...)`, scarica l'audio diretto e converte OGG -> MP3 quando
-serve.
+legge la pagina Forvo tramite un helper Anki, estrae i candidati audio dal
+player `Play(...)`, scarica l'audio diretto e converte OGG -> MP3 quando serve.
 
 Il download manuale dal browser normale e' solo un fallback estremo per casi
 singoli in cui la logica Anki-style o l'import diretto falliscono pur avendo una
@@ -32,7 +31,8 @@ Forvo `word-add` registrata se la pronuncia non esiste ancora.
 
 - hai gia lasciato che il workflow filtrasse gli audio locali e riusasse gli
   audio compatibili presenti in altri media;
-- hai una sessione Forvo valida nel browser/profilo usato dal fetcher;
+- Anki e' installato e il profilo helper in `data/forvo-anki-profile/` puo
+  avviarsi;
 - vuoi passare una lista mirata di parole o entry invece di processare tutto il
   bundle.
 
@@ -44,8 +44,9 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 - legge `content/` con lo stesso parser/validator dell'import;
 - prima di aprire Forvo prova automaticamente a riusare audio gia presenti in
   altri media con stessa entry type, stesso label e stessa reading;
-- nel flusso operativo standard apre la pagina Forvo in una sessione browser
-  valida e attende l'HTML renderizzato;
+- nel flusso operativo standard avvia un helper Anki dedicato e applica la
+  logica dell'addon: richiesta Forvo con user-agent browser, parse HTML e
+  decodifica dei candidati `Play(...)`;
 - estrae i candidati giapponesi dal player `Play(...)`, inclusi speaker, origine,
   voti e URL audio diretti;
 - sceglie il candidato privilegiando gli speaker configurati, oggi
@@ -65,13 +66,15 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
   aggiornare lo stesso storico;
 - gli URL `word-add` includono anche hint di prefill (`jcs_lang`, `jcs_phrase`,
   `jcs_person_name`, `jcs_autosubmit`) per lo userscript Tampermonkey locale;
+- le query Forvo e le richieste `word-add` vengono derivate solo da testo
+  giapponese pulito: markup editoriale, placeholder grammaticali e descrizioni
+  italiane/inglesi vengono scartati o ridotti alla parte giapponese
+  pronunciabile;
 - quando il label contiene varianti separate da slash ASCII (`/`), l'URL
   `word-add` lo normalizza in `・` per evitare che Forvo prenda solo la prima
   meta' della stringa;
-- il profilo Anki/QWebEngine dedicato in `data/forvo-anki-profile/` mantiene
-  cookie e stato della sessione usata dal fetcher;
-- se Cloudflare o il login richiedono intervento, la finestra Anki/QWebEngine
-  resta disponibile per completare la pagina e poi il batch riprende;
+- il profilo Anki dedicato in `data/forvo-anki-profile/` contiene l'add-on
+  helper e una collection minima isolata dal profilo Anki personale;
 - salva l'audio in `content/media/<slug>/assets/audio/...`;
 - aggiorna `content/media/<slug>/pronunciations.json` con `audio_source: "forvo"`.
 - aggiorna anche `content/media/<slug>/workflow/pronunciation-pending.json`
@@ -99,6 +102,8 @@ Quando Forvo non espone una pronuncia giapponese per la parola/frase:
 - il workflow registra il miss in `data/forvo-known-missing.json`;
 - apre anche la pagina `word-add/...` della stessa entry,
   cosi puoi chiedere la pronuncia dal browser normale senza cercarla a mano;
+- se una entry non produce nessuna query giapponese pronunciabile, il workflow
+  la marca missing ma non apre una richiesta `word-add` spazzatura;
 - se hai installato lo userscript locale
   `scripts/forvo-word-add-helper.user.js`, la pagina `word-add` seleziona in
   automatico `Japanese`, decide `phrase yes/no` dagli hint del repo e lascia
@@ -112,10 +117,11 @@ Quando Forvo non espone una pronuncia giapponese per la parola/frase:
 
 Opzioni utili:
 
-- `--anki-base-dir /path`: isola il profilo Anki/QWebEngine che mantiene cookie
-  e stato Forvo;
+- `--anki-base-dir /path`: isola il profilo Anki helper;
 - `--anki-app /path/to/launcher`: usa un launcher Anki diverso dal default
   `/Applications/Anki.app/Contents/MacOS/launcher`;
+- `--anki-python /path/to/python`: usa un runtime Python Anki diverso dal
+  default locale per inizializzare il profilo quando e' vuoto;
 - `--browser-timeout-ms 120000`: cambia il timeout massimo del batch Anki;
 - `--known-missing-file /path`: file JSON dove salvare i miss persistenti;
 - `--request-registry-file /path`: file JSON dove salvare le richieste
@@ -189,6 +195,9 @@ Comportamento:
 - se l'URL contiene i parametri del repo (`jcs_lang=ja`, `jcs_phrase=0/1`,
   `jcs_person_name=0/1`, `jcs_autosubmit=0/1`), prova anche un auto-fill
   iniziale;
+- quando `jcs_autosubmit=1`, registra un marker temporaneo prima del submit e,
+  quando Forvo naviga su `/word-add-success/<word>/`, chiude la tab dopo 5
+  secondi con il grant Tampermonkey `window.close`;
 - usa una regola esplicita del workflow per `phrase yes/no`:
   grammatica => frase, pattern con `〜`, spazi o punteggiatura => frase,
   termini semplici => parola.
@@ -216,8 +225,8 @@ term-taberu
 - `pnpm pronunciations:resolve` e il percorso standard per richieste orientate
   al prodotto; `pnpm pronunciations:forvo` resta il low-level per target espliciti
   del fetcher;
-- il fetch Forvo standard deve usare una sessione browser valida e candidati
-  estratti da `Play(...)`, non `curl` o scraping HTTP puro;
+- il fetch Forvo standard deve usare l'helper Anki/addon-style e candidati
+  estratti da `Play(...)`, non `curl` o script HTTP ad hoc fuori dall'helper;
 - Playwright/browser automation non e il percorso standard per batch reali; puo
   restare solo come debug mirato o manutenzione del fetcher;
 - `--manual` non e la modalita operativa standard: usala solo come fallback
@@ -230,13 +239,16 @@ term-taberu
 - le richieste `word-add` gia aperte finiscono di default in
   `data/forvo-requested-word-add.json`; le entry risolte restano nello storico
   ma vengono annotate con `resolvedAt` e metadata dell'audio trovato;
+- se la normalizzazione corrente produce un URL diverso da quello registrato in
+  storico, `pnpm pronunciations:forvo:request` non considera quella entry gia
+  richiesta: la riapre con l'URL canonico e aggiorna il registry;
 - le richieste storiche soddisfatte possono essere importate in batch con
   `pnpm pronunciations:forvo:import-requested` dopo aver estratto un indice
   dalla pagina account Forvo autenticata;
 - il residuo operativo corrente vive in
   `content/media/<slug>/workflow/pronunciation-pending.json`;
 - `--refresh` forza il rimpiazzo anche se l'entry ha gia audio locale;
-- `--anki-base-dir` permette di isolare un profilo Anki/QWebEngine diverso;
+- `--anki-base-dir` permette di isolare un profilo Anki helper diverso;
 - `--profile-dir` resta solo alias legacy di `--anki-base-dir`;
 - `--keep-browser-open` lascia Anki aperto a fine batch per debug.
 
@@ -283,7 +295,8 @@ Il ranking ha scaricato e importato:
 - `直前`: `usako_usagiclub`, fallback per voti perche nessuno speaker preferito
   era presente;
 - `感じる`: `strawberrybrown`;
-- `なんだろう`: `mezashi` in formato OGG;
+- `なんだろう`: `mezashi`, originariamente esposto in OGG e poi normalizzato a
+  MP3 nel bundle;
 - `へたれ`: `strawberrybrown`.
 
 Il primo miss osservato e' stato `最近っぽい`. In questo caso l'addon non ha
@@ -298,17 +311,18 @@ l'URL `word-add` precompilato e registrata la voce nei registry locali
 Nel batch successivo:
 
 - `～だろうか` ha fallito sulla label con marker `～`, poi ha scaricato
-  `だろうか` da `poyotan` in OGG;
+  `だろうか` da `poyotan`, originariamente in OGG e poi normalizzato a MP3;
 - `{{食|た}}べながら` e' stato il secondo miss. Il runner sperimentale ha
   mostrato un difetto da non portare nel workflow definitivo: la label con ruby
   markup e separatore `|` e' stata spezzata in query inutili (`{{食` e
   `た}}べながら`) prima di arrivare alla reading `たべながら`.
 
 Quindi il fetcher Anki definitivo deve normalizzare le query prima di aprire
-Forvo: preferire `reading` quando disponibile, rimuovere markup editoriale
-`{{...|...}}`, eliminare marker come `～`, e usare la label pulita solo come
-fallback. La stessa normalizzazione serve per `word-add`: non bisogna inviare a
-Forvo label editoriali con markup.
+Forvo: usare prima la surface giapponese pulita della label, rimuovere markup
+editoriale `{{...|...}}`, eliminare marker come `～`, spezzare pattern
+editoriali in varianti giapponesi pronunciabili e usare `reading` come fallback.
+La stessa normalizzazione serve per `word-add`: non bisogna inviare a Forvo
+label editoriali con markup, placeholder o descrizioni italiane/inglesi.
 
 Per il caso `{{食|た}}べながら`, la normalizzazione corretta per Forvo e'
 `食べながら`, non solo `たべながら`: la richiesta deve preservare la surface con
@@ -318,15 +332,21 @@ Il blocco osservato su `word-add` era compatibile con interferenza del banner
 cookie/CMP. Quando Forvo ha gia una sessione cookie valida nel browser, lo
 userscript Tampermonkey `Forvo Word Add Helper` 0.9 applica correttamente i
 parametri `jcs_*`, incluso `jcs_lang=ja`; quindi non e' necessario cambiare lo
-userscript solo per questo caso. Nel workflow definitivo bisogna riusare profili
-persistenti: browser normale per `word-add` e profilo Qt WebEngine dedicato per
-il fetch Anki-style, senza cancellare cookie/cache tra run.
+userscript solo per questo caso. Nel workflow definitivo bisogna mantenere
+separati i profili operativi: browser normale persistente per `word-add` e
+profilo Anki helper dedicato per il fetch Anki-style.
 
 Lo userscript 0.10 aggiunge comunque un tentativo best-effort prima del fill:
 se trova una banner CMP/cookie visibile, clicca il pulsante di consenso
 riconoscibile e poi continua con lingua, phrase/person-name e autosubmit. Questo
 serve solo a rendere piu stabile la richiesta `word-add`; il fetch Anki-style non
 deve dipendere da Tampermonkey.
+
+Lo userscript 0.11 aggiunge la chiusura automatica per-tab: dopo un submit
+automatico registra un marker in `sessionStorage` e, quando la stessa tab arriva
+su `/word-add-success/<word>/`, la chiude dopo pochi secondi. Non usa un marker
+globale condiviso tra tab, cosi i batch grandi non lasciano tab aperte e una
+navigazione manuale non correlata non viene chiusa.
 
 Il formato OGG non rompe la validazione del repo: `.ogg` e `.oga` sono asset
 audio supportati e vengono serviti come `audio/ogg`. Operativamente pero il

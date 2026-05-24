@@ -1,0 +1,2815 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "entryId": "grammar-ch-b10-verb-before-noun",
+      "entryKind": "grammar",
+      "label": "forma piana + nome",
+      "mediaSlug": "crystal-hunters",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:15:21.334Z"
+    },
+    {
+      "entryId": "grammar-ch-b4-domanda-negativa-6",
+      "entryKind": "grammar",
+      "label": "domanda negativa",
+      "mediaSlug": "crystal-hunters",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:13:33.470Z"
+    },
+    {
+      "entryId": "grammar-ch-b5-v-15",
+      "entryKind": "grammar",
+      "label": "Vてごめんなさい",
+      "mediaSlug": "crystal-hunters",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:13:56.744Z"
+    },
+    {
+      "entryId": "grammar-ch-b7-tewa-dame",
+      "entryKind": "grammar",
+      "label": "Vてはだめ",
+      "mediaSlug": "crystal-hunters",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:14:20.328Z"
+    },
+    {
+      "entryId": "grammar-ch-b8-nakya-dame-question",
+      "entryKind": "grammar",
+      "label": "Vなきゃだめなの？",
+      "mediaSlug": "crystal-hunters",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:14:52.128Z"
+    },
+    {
+      "entryId": "grammar-ch-b8-nan-nanda",
+      "entryKind": "grammar",
+      "label": "何なんだ",
+      "mediaSlug": "crystal-hunters",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:14:44.199Z"
+    },
+    {
+      "entryId": "grammar-ch-b9-nani-o-shitara-ii",
+      "entryKind": "grammar",
+      "label": "何をしたらいい",
+      "mediaSlug": "crystal-hunters",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:14:57.451Z"
+    },
+    {
+      "entryId": "grammar-ch-b9-ni-kuwae",
+      "entryKind": "grammar",
+      "label": "Nに加え",
+      "mediaSlug": "crystal-hunters",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:15:08.129Z"
+    },
+    {
+      "entryId": "grammar-ch-ga-with-iru-need",
+      "entryKind": "grammar",
+      "label": "Nが要る",
+      "mediaSlug": "crystal-hunters",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:13:04.460Z"
+    },
+    {
+      "entryId": "grammar-ch-honorary-topic-ima-wa",
+      "entryKind": "grammar",
+      "label": "今は",
+      "mediaSlug": "crystal-hunters",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:13:17.515Z"
+    },
+    {
+      "entryId": "term-ch-b4-entry-14",
+      "entryKind": "term",
+      "label": "魔法学校",
+      "mediaSlug": "crystal-hunters",
+      "reading": "まほうがっこう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T14:42:46.896Z"
+    },
+    {
+      "entryId": "term-ch-b7-an-i-ni",
+      "entryKind": "term",
+      "label": "安易に",
+      "mediaSlug": "crystal-hunters",
+      "reading": "あんいに",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T14:48:37.536Z"
+    },
+    {
+      "entryId": "term-ch-b7-mahousui",
+      "entryKind": "term",
+      "label": "魔法水",
+      "mediaSlug": "crystal-hunters",
+      "reading": "まほうすい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T14:46:36.425Z"
+    },
+    {
+      "entryId": "term-ch-b8-osoi-kakaru",
+      "entryKind": "term",
+      "label": "襲い掛かる",
+      "mediaSlug": "crystal-hunters",
+      "reading": "おそいかかる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T14:51:07.623Z"
+    },
+    {
+      "entryId": "term-ch-b8-tayorikiru",
+      "entryKind": "term",
+      "label": "頼りきる",
+      "mediaSlug": "crystal-hunters",
+      "reading": "たよりきる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T14:51:31.397Z"
+    },
+    {
+      "entryId": "term-ch-b9-saku-o-utsu",
+      "entryKind": "term",
+      "label": "策を打つ",
+      "mediaSlug": "crystal-hunters",
+      "reading": "さくをうつ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T14:53:12.693Z"
+    },
+    {
+      "entryId": "term-ch-b9-yowasugiru",
+      "entryKind": "term",
+      "label": "弱すぎる",
+      "mediaSlug": "crystal-hunters",
+      "reading": "よわすぎる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T14:52:37.765Z"
+    },
+    {
+      "entryId": "grammar-areba",
+      "entryKind": "grammar",
+      "label": "あれば / ～であれば",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "あれば / であれば",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-19T22:30:46.116Z"
+    },
+    {
+      "entryId": "grammar-battle-zone-ni-oita-mama",
+      "entryKind": "grammar",
+      "label": "バトルゾーンに置いたまま",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "バトルゾーンにおいたまま",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:16:07.050Z"
+    },
+    {
+      "entryId": "grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card",
+      "entryKind": "grammar",
+      "label": "「ブロッカー」を持つ光または水のシールドカード",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ぶろっかーをもつひかりまたはみずのしーるどかーど",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T14:40:14.141Z"
+    },
+    {
+      "entryId": "grammar-byoito-full-effect",
+      "entryKind": "grammar",
+      "label": "自分の手札に加える、「ブロッカー」を持つ光または水のシールドカードすべてに、「S・トリガー」を与える",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "じぶんのてふだにくわえる ぶろっかーをもつひかりまたはみずのしーるどかーどすべてに えすとりがーをあたえる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T14:40:17.899Z"
+    },
+    {
+      "entryId": "grammar-de-hajimaru",
+      "entryKind": "grammar",
+      "label": "～で始まる",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ではじまる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-19T22:26:09.790Z"
+    },
+    {
+      "entryId": "grammar-de-nai",
+      "entryKind": "grammar",
+      "label": "～でない",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "でない",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:53:17.758Z"
+    },
+    {
+      "entryId": "grammar-demo-demo-nai",
+      "entryKind": "grammar",
+      "label": "～でも～でもない",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "でも でも ない",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-19T22:27:38.081Z"
+    },
+    {
+      "entryId": "grammar-dewanai",
+      "entryKind": "grammar",
+      "label": "～ではない",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ではない",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:52:59.135Z"
+    },
+    {
+      "entryId": "grammar-hoka-no-kaku-aite",
+      "entryKind": "grammar",
+      "label": "他の各相手",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ほかのかくあいて",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:52:52.358Z"
+    },
+    {
+      "entryId": "grammar-ichiran",
+      "entryKind": "grammar",
+      "label": "～一覧",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "いちらん",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T19:55:39.386Z"
+    },
+    {
+      "entryId": "grammar-igai-no-houhou-de",
+      "entryKind": "grammar",
+      "label": "～以外の方法で",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "いがいのほうほうで",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T19:55:12.140Z"
+    },
+    {
+      "entryId": "grammar-ika-ijou",
+      "entryKind": "grammar",
+      "label": "～以下 / ～以上",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "いか / いじょう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T19:55:25.721Z"
+    },
+    {
+      "entryId": "grammar-kanou",
+      "entryKind": "grammar",
+      "label": "～可能",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "かのう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T19:55:44.929Z"
+    },
+    {
+      "entryId": "grammar-koto-ni-yotte",
+      "entryKind": "grammar",
+      "label": "～ことによって",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ことによって",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-19T22:27:38.960Z"
+    },
+    {
+      "entryId": "grammar-made",
+      "entryKind": "grammar",
+      "label": "～まで",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "まで",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:52:58.197Z"
+    },
+    {
+      "entryId": "grammar-me-ordinal",
+      "entryKind": "grammar",
+      "label": "～目",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "め",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-19T22:25:53.387Z"
+    },
+    {
+      "entryId": "grammar-mi-prefix",
+      "entryKind": "grammar",
+      "label": "未～",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "み",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T19:55:43.508Z"
+    },
+    {
+      "entryId": "grammar-monotoshite",
+      "entryKind": "grammar",
+      "label": "～ものとして",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ものとして",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T14:40:22.205Z"
+    },
+    {
+      "entryId": "grammar-nakereba",
+      "entryKind": "grammar",
+      "label": "～なければ ... ない",
+      "mediaSlug": "duel-masters-dm25",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T19:55:08.198Z"
+    },
+    {
+      "entryId": "grammar-nara",
+      "entryKind": "grammar",
+      "label": "～なら",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "なら",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:53:36.701Z"
+    },
+    {
+      "entryId": "grammar-no-ato-ni",
+      "entryKind": "grammar",
+      "label": "～の後に",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "のあとに",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:19:19.092Z"
+    },
+    {
+      "entryId": "grammar-no-uchi",
+      "entryKind": "grammar",
+      "label": "～のうち",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "のうち",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:53:41.173Z"
+    },
+    {
+      "entryId": "grammar-sarenakatta",
+      "entryKind": "grammar",
+      "label": "～されなかった",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "されなかった",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-12T13:44:51.291Z"
+    },
+    {
+      "entryId": "grammar-sareta-toki",
+      "entryKind": "grammar",
+      "label": "～された時",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "されたとき",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:19:18.248Z"
+    },
+    {
+      "entryId": "grammar-sareteiru",
+      "entryKind": "grammar",
+      "label": "～されている",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "されている",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-12T13:44:54.448Z"
+    },
+    {
+      "entryId": "grammar-seigi-no-shield-count-yori-ookereba",
+      "entryKind": "grammar",
+      "label": "自分のシールドの数が相手より多ければ",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "じぶんのしーるどのかずがあいてよりおおければ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T15:09:32.005Z"
+    },
+    {
+      "entryId": "grammar-shika",
+      "entryKind": "grammar",
+      "label": "～しか ... ない",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "しか",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-10T20:28:36.440Z"
+    },
+    {
+      "entryId": "grammar-sono-card-to-onaji-bunmei-hitotsu-demo-motsu",
+      "entryKind": "grammar",
+      "label": "そのカードと同じ文明を1つでも持つ",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "そのカードとおなじぶんめいをひとつでももつ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T21:49:08.777Z"
+    },
+    {
+      "entryId": "grammar-sonoturnchuu-hoka-final-kakumei-mada-tsukatte-inakereba",
+      "entryKind": "grammar",
+      "label": "そのターン中に他の「ファイナル革命」をまだ使っていなければ",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "そのターンちゅうにほかのファイナルかくめいをまだつかっていなければ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T21:26:38.023Z"
+    },
+    {
+      "entryId": "grammar-sorega-nara",
+      "entryKind": "grammar",
+      "label": "それが～なら",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "それがなら",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-19T22:25:36.890Z"
+    },
+    {
+      "entryId": "grammar-star-pippi-double-cost-reduction",
+      "entryKind": "grammar",
+      "label": "自分の光のクリーチャーの召喚コストを1、火のクリーチャーの召喚コストを1少なくしてもよい",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "じぶんのひかりのくりーちゃーのしょうかんこすとをいち、ひのくりーちゃーのしょうかんこすとをいちすくなくしてもよい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T15:09:40.170Z"
+    },
+    {
+      "entryId": "grammar-subete-ni-s-trigger-wo-ataeru",
+      "entryKind": "grammar",
+      "label": "すべてに「S・トリガー」を与える",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "すべてにえすとりがーをあたえる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T15:09:41.670Z"
+    },
+    {
+      "entryId": "grammar-tara",
+      "entryKind": "grammar",
+      "label": "～たら",
+      "mediaSlug": "duel-masters-dm25",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-19T22:30:44.873Z"
+    },
+    {
+      "entryId": "grammar-te-inakereba",
+      "entryKind": "grammar",
+      "label": "～ていなければ",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ていなければ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:53:21.010Z"
+    },
+    {
+      "entryId": "grammar-te-kara",
+      "entryKind": "grammar",
+      "label": "～てから",
+      "mediaSlug": "duel-masters-dm25",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-15T19:37:49.434Z"
+    },
+    {
+      "entryId": "grammar-teireba",
+      "entryKind": "grammar",
+      "label": "～ていれば",
+      "mediaSlug": "duel-masters-dm25",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T19:55:10.512Z"
+    },
+    {
+      "entryId": "grammar-to-onaji",
+      "entryKind": "grammar",
+      "label": "～と同じ",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "とおなじ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:52:28.506Z"
+    },
+    {
+      "entryId": "grammar-toki",
+      "entryKind": "grammar",
+      "label": "～時 / ～た時",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "とき / たとき",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T19:43:33.598Z"
+    },
+    {
+      "entryId": "grammar-toshite",
+      "entryKind": "grammar",
+      "label": "～として",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "として",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:53:20.243Z"
+    },
+    {
+      "entryId": "grammar-tsugi-no",
+      "entryKind": "grammar",
+      "label": "次の～",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "つぎの",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:53:40.100Z"
+    },
+    {
+      "entryId": "grammar-tsutsu",
+      "entryKind": "grammar",
+      "label": "～つつ",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "つつ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-22T11:18:31.131Z"
+    },
+    {
+      "entryId": "grammar-turn-timing",
+      "entryKind": "grammar",
+      "label": "～のはじめに / ～の終わりに",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "のはじめに / のおわりに",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T19:55:27.048Z"
+    },
+    {
+      "entryId": "grammar-ui-chuu",
+      "entryKind": "grammar",
+      "label": "～中",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ちゅう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T19:55:40.750Z"
+    },
+    {
+      "entryId": "grammar-uramuki-ni-shite",
+      "entryKind": "grammar",
+      "label": "裏向きにして",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "うらむきにして",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:16:09.768Z"
+    },
+    {
+      "entryId": "grammar-yori",
+      "entryKind": "grammar",
+      "label": "～より",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "より",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:53:37.836Z"
+    },
+    {
+      "entryId": "grammar-youni",
+      "entryKind": "grammar",
+      "label": "～ように",
+      "mediaSlug": "duel-masters-dm25",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-19T22:30:47.178Z"
+    },
+    {
+      "entryId": "grammar-zu",
+      "entryKind": "grammar",
+      "label": "～ず",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ず",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-12T13:44:56.835Z"
+    },
+    {
+      "entryId": "grammar-zumi",
+      "entryKind": "grammar",
+      "label": "～済み",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ずみ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T19:55:42.073Z"
+    },
+    {
+      "entryId": "grammar-zuni",
+      "entryKind": "grammar",
+      "label": "～ずに",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ずに",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:19:17.333Z"
+    },
+    {
+      "entryId": "grammar-zutsu",
+      "entryKind": "grammar",
+      "label": "～ずつ",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ずつ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-19T22:25:25.833Z"
+    },
+    {
+      "entryId": "term-b-a-d-two",
+      "entryKind": "term",
+      "label": "B・A・D 2",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "びーえーでぃーつー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:19:00.042Z"
+    },
+    {
+      "entryId": "term-blocker",
+      "entryKind": "term",
+      "label": "ブロッカー",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ぶろっかー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T13:18:00.000Z"
+    },
+    {
+      "entryId": "term-do-sumonma",
+      "entryKind": "term",
+      "label": "ド:スモンマー",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ど すもんまー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-23T23:52:26.328Z"
+    },
+    {
+      "entryId": "term-final-revolution",
+      "entryKind": "term",
+      "label": "ファイナル革命",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "ファイナルかくめい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T21:25:39.110Z"
+    },
+    {
+      "entryId": "term-smash-burst",
+      "entryKind": "term",
+      "label": "スマッシュ・バースト",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "すまっしゅばーすと",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:15:58.170Z"
+    },
+    {
+      "entryId": "term-spell-side",
+      "entryKind": "term",
+      "label": "呪文側",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "じゅもんがわ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:16:00.972Z"
+    },
+    {
+      "entryId": "grammar-parenthetical-label",
+      "entryKind": "grammar",
+      "label": "～(～)",
+      "mediaSlug": "gundam-arsenal-base",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-14T09:13:42.973Z"
+    },
+    {
+      "entryId": "grammar-senyouki",
+      "entryKind": "grammar",
+      "label": "～専用機",
+      "mediaSlug": "gundam-arsenal-base",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-14T09:13:41.739Z"
+    },
+    {
+      "entryId": "grammar-suru-koto-de",
+      "entryKind": "grammar",
+      "label": "～することで",
+      "mediaSlug": "gundam-arsenal-base",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-14T09:13:37.481Z"
+    },
+    {
+      "entryId": "term-mypage",
+      "entryKind": "term",
+      "label": "MY PAGE",
+      "mediaSlug": "gundam-arsenal-base",
+      "reading": "まいぺーじ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-12T20:04:03.932Z"
+    },
+    {
+      "entryId": "grammar-ba-hodo",
+      "entryKind": "grammar",
+      "label": "～ば ～ほど",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:36:49.812Z"
+    },
+    {
+      "entryId": "grammar-dake-ja-dame",
+      "entryKind": "grammar",
+      "label": "～だけじゃ ダメ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:27:36.116Z"
+    },
+    {
+      "entryId": "grammar-g001-spiegazione-enfasi",
+      "entryKind": "grammar",
+      "label": "～のだ / ～んだ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T14:43:24.433Z"
+    },
+    {
+      "entryId": "grammar-g002-mi-chiedo-se",
+      "entryKind": "grammar",
+      "label": "～かな",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T14:43:26.184Z"
+    },
+    {
+      "entryId": "grammar-g005-senza-fare-non-fare-e",
+      "entryKind": "grammar",
+      "label": "～ないで",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T15:17:05.290Z"
+    },
+    {
+      "entryId": "grammar-g006-contrazione-colloquiale-di",
+      "entryKind": "grammar",
+      "label": "～てる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T15:17:07.258Z"
+    },
+    {
+      "entryId": "grammar-g010-prima-di",
+      "entryKind": "grammar",
+      "label": "～前に",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T15:17:20.294Z"
+    },
+    {
+      "entryId": "grammar-g011-voler-fare",
+      "entryKind": "grammar",
+      "label": "～たい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T15:17:22.429Z"
+    },
+    {
+      "entryId": "grammar-g014-si-puo-va-bene-fare",
+      "entryKind": "grammar",
+      "label": "～てもいい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T15:17:23.917Z"
+    },
+    {
+      "entryId": "grammar-g015-dopo",
+      "entryKind": "grammar",
+      "label": "～後で / ～あとで",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T15:17:25.340Z"
+    },
+    {
+      "entryId": "grammar-g018-non-si-deve",
+      "entryKind": "grammar",
+      "label": "～てはいけない / ～ちゃいけない",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T15:17:28.217Z"
+    },
+    {
+      "entryId": "grammar-g019-dover-fare",
+      "entryKind": "grammar",
+      "label": "～なければならない / ～ないといけない",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T15:17:30.436Z"
+    },
+    {
+      "entryId": "grammar-g037-citazione-tema-colloquiale",
+      "entryKind": "grammar",
+      "label": "～って",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:41:13.255Z"
+    },
+    {
+      "entryId": "grammar-g038-piu-di-al-punto-da",
+      "entryKind": "grammar",
+      "label": "～より / ～ほど",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:41:24.187Z"
+    },
+    {
+      "entryId": "grammar-g039-se",
+      "entryKind": "grammar",
+      "label": "～ば",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:41:28.537Z"
+    },
+    {
+      "entryId": "grammar-g040-quando-nel-momento-in-cui",
+      "entryKind": "grammar",
+      "label": "～とき",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:44:01.678Z"
+    },
+    {
+      "entryId": "grammar-g043-anche-se-nonostante",
+      "entryKind": "grammar",
+      "label": "～のに",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:47:45.044Z"
+    },
+    {
+      "entryId": "grammar-g044-facciamo-andiamo-a",
+      "entryKind": "grammar",
+      "label": "～ましょう / ～ましょ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:47:47.160Z"
+    },
+    {
+      "entryId": "grammar-g045-facciamo-provero-a",
+      "entryKind": "grammar",
+      "label": "～よう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:47:52.099Z"
+    },
+    {
+      "entryId": "grammar-g046-sembra-che-sembra",
+      "entryKind": "grammar",
+      "label": "～ようだ / ～ように見える",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:50:34.057Z"
+    },
+    {
+      "entryId": "grammar-g048-facile-da-fare",
+      "entryKind": "grammar",
+      "label": "～やすい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:50:47.199Z"
+    },
+    {
+      "entryId": "grammar-g050-voglio-che-mi-piacerebbe-che",
+      "entryKind": "grammar",
+      "label": "～てほしい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:53:38.483Z"
+    },
+    {
+      "entryId": "grammar-g055-mi-chiedo-proprio",
+      "entryKind": "grammar",
+      "label": "～かなあ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:33:48.731Z"
+    },
+    {
+      "entryId": "grammar-g056-finale-maschile-riflessiva-osservativa",
+      "entryKind": "grammar",
+      "label": "～だな",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:53:40.188Z"
+    },
+    {
+      "entryId": "grammar-g065-difficile-da-fare",
+      "entryKind": "grammar",
+      "label": "～にくい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:34:14.195Z"
+    },
+    {
+      "entryId": "grammar-g070-qualcosa-e-stato-fatto-intenzionalmente",
+      "entryKind": "grammar",
+      "label": "～てある",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:34:25.847Z"
+    },
+    {
+      "entryId": "grammar-g073-essere-previsto",
+      "entryKind": "grammar",
+      "label": "～予定だ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:34:31.811Z"
+    },
+    {
+      "entryId": "grammar-g097-per-allo-scopo-di",
+      "entryKind": "grammar",
+      "label": "～ために",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:35:29.998Z"
+    },
+    {
+      "entryId": "grammar-g103-mentre-finche",
+      "entryKind": "grammar",
+      "label": "～うちに",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:35:47.478Z"
+    },
+    {
+      "entryId": "grammar-g105-finale-ruvida-maschile",
+      "entryKind": "grammar",
+      "label": "～だぜ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:35:53.252Z"
+    },
+    {
+      "entryId": "grammar-g106-registro-samurai-comico",
+      "entryKind": "grammar",
+      "label": "～でござる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:36:05.049Z"
+    },
+    {
+      "entryId": "grammar-g113-non-e-che-non-sara-che",
+      "entryKind": "grammar",
+      "label": "～んじゃない？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:36:35.478Z"
+    },
+    {
+      "entryId": "grammar-koto-ga-dekiru",
+      "entryKind": "grammar",
+      "label": "～ことができる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:26:40.741Z"
+    },
+    {
+      "entryId": "grammar-mitai",
+      "entryKind": "grammar",
+      "label": "～みたい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:26:58.148Z"
+    },
+    {
+      "entryId": "grammar-nagara",
+      "entryKind": "grammar",
+      "label": "～ながら",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:27:19.502Z"
+    },
+    {
+      "entryId": "grammar-nai-you-ni",
+      "entryKind": "grammar",
+      "label": "～ないように",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:27:18.459Z"
+    },
+    {
+      "entryId": "grammar-ta-bakari",
+      "entryKind": "grammar",
+      "label": "～たばかり / ～たばっかり",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:27:03.790Z"
+    },
+    {
+      "entryId": "grammar-tara",
+      "entryKind": "grammar",
+      "label": "～たら",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:26:42.754Z"
+    },
+    {
+      "entryId": "grammar-tari-tari-suru",
+      "entryKind": "grammar",
+      "label": "～たり ～たりする",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:27:36.966Z"
+    },
+    {
+      "entryId": "grammar-te-ageru",
+      "entryKind": "grammar",
+      "label": "～てあげる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:36:47.106Z"
+    },
+    {
+      "entryId": "grammar-te-kudasai",
+      "entryKind": "grammar",
+      "label": "～てください",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:36:41.122Z"
+    },
+    {
+      "entryId": "grammar-te-kureru",
+      "entryKind": "grammar",
+      "label": "～てくれる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:26:43.614Z"
+    },
+    {
+      "entryId": "grammar-te-kuru",
+      "entryKind": "grammar",
+      "label": "～てくる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:27:21.621Z"
+    },
+    {
+      "entryId": "grammar-te-miru",
+      "entryKind": "grammar",
+      "label": "～てみる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:26:39.620Z"
+    },
+    {
+      "entryId": "grammar-te-morau",
+      "entryKind": "grammar",
+      "label": "～てもらう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:27:20.596Z"
+    },
+    {
+      "entryId": "grammar-te-ne",
+      "entryKind": "grammar",
+      "label": "～てね",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:26:44.474Z"
+    },
+    {
+      "entryId": "grammar-te-shimau",
+      "entryKind": "grammar",
+      "label": "～てしまう / ～ちゃう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:27:02.751Z"
+    },
+    {
+      "entryId": "grammar-teoku",
+      "entryKind": "grammar",
+      "label": "～ておく",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:26:45.257Z"
+    },
+    {
+      "entryId": "grammar-to-wa-itte-mo",
+      "entryKind": "grammar",
+      "label": "～とはいっても",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:27:37.793Z"
+    },
+    {
+      "entryId": "grammar-you-ni-iwareru",
+      "entryKind": "grammar",
+      "label": "～ように言われる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:27:22.486Z"
+    },
+    {
+      "entryId": "grammar-you-ni-naru",
+      "entryKind": "grammar",
+      "label": "～ようになる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:26:41.791Z"
+    },
+    {
+      "entryId": "grammar-zukushi",
+      "entryKind": "grammar",
+      "label": "～づくし",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:36:44.382Z"
+    },
+    {
+      "entryId": "term-anki-l07-nibai",
+      "entryKind": "term",
+      "label": "2倍",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "にばい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:25:38.565Z"
+    },
+    {
+      "entryId": "term-anki-l08-eeai",
+      "entryKind": "term",
+      "label": "AI",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "エーアイ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:25:55.532Z"
+    },
+    {
+      "entryId": "term-anki-l09-omise",
+      "entryKind": "term",
+      "label": "お店",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "おみせ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:26:45.651Z"
+    },
+    {
+      "entryId": "term-anki-l11-kisho",
+      "entryKind": "term",
+      "label": "奇書",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "きしょ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:27:33.060Z"
+    },
+    {
+      "entryId": "term-anki-l20-funbyou",
+      "entryKind": "term",
+      "label": "分秒",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ふんびょう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:31:37.680Z"
+    },
+    {
+      "entryId": "term-chikara-o-tsukai-hatasu",
+      "entryKind": "term",
+      "label": "力を使い果たす",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ちからをつかいはたす",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:32:52.482Z"
+    },
+    {
+      "entryId": "term-e003-mochikirenai-mochikiremasen",
+      "entryKind": "term",
+      "label": "持ちきれない / 持ちきれません",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "もちきれない / もちきれません",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-29T11:35:24.149Z"
+    },
+    {
+      "entryId": "term-e021-shitemitara",
+      "entryKind": "term",
+      "label": "〜してみたら？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してみたら？",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-29T11:54:45.405Z"
+    },
+    {
+      "entryId": "term-e022-shitekureru",
+      "entryKind": "term",
+      "label": "〜してくれる？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してくれる？",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-29T11:54:46.391Z"
+    },
+    {
+      "entryId": "term-e025-dekiruyouninatta",
+      "entryKind": "term",
+      "label": "〜できるようになった",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜できるようになった",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-11T17:42:18.869Z"
+    },
+    {
+      "entryId": "term-e027-sasete",
+      "entryKind": "term",
+      "label": "〜させて",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜させて",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T14:42:02.022Z"
+    },
+    {
+      "entryId": "term-e035-ga-arimasu",
+      "entryKind": "term",
+      "label": "〜が あります",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜が あります",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-25T14:43:22.430Z"
+    },
+    {
+      "entryId": "term-e037-otsukaresamadesutaa",
+      "entryKind": "term",
+      "label": "お疲れさまでスター",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "おつかれさまでスター",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:59:12.536Z"
+    },
+    {
+      "entryId": "term-e042-shiteageru",
+      "entryKind": "term",
+      "label": "〜してあげる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してあげる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:47:24.043Z"
+    },
+    {
+      "entryId": "term-e053-shitemite",
+      "entryKind": "term",
+      "label": "〜してみて",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してみて",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:53:36.287Z"
+    },
+    {
+      "entryId": "term-e054-sorette",
+      "entryKind": "term",
+      "label": "それって",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "それって",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:59:25.974Z"
+    },
+    {
+      "entryId": "term-e059-shiteokou",
+      "entryKind": "term",
+      "label": "〜しておこう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜しておこう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:00:24.905Z"
+    },
+    {
+      "entryId": "term-e064-nohinto",
+      "entryKind": "term",
+      "label": "〜のヒント",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜のヒント",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:01:18.099Z"
+    },
+    {
+      "entryId": "term-e065-nande",
+      "entryKind": "term",
+      "label": "なんで？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "なんで？",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:02:06.260Z"
+    },
+    {
+      "entryId": "term-e066-shibaraku-omachikudasai",
+      "entryKind": "term",
+      "label": "しばらく お待ちください",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "しばらく おまちください",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:02:08.938Z"
+    },
+    {
+      "entryId": "term-e068-kitto-daijoubu",
+      "entryKind": "term",
+      "label": "きっと大丈夫",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "きっとだいじょうぶ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:02:14.311Z"
+    },
+    {
+      "entryId": "term-e069-ha-douda",
+      "entryKind": "term",
+      "label": "〜は どうだ？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜は どうだ？",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:03:13.374Z"
+    },
+    {
+      "entryId": "term-e071-tekagen-shinaiyo",
+      "entryKind": "term",
+      "label": "手加減しないよ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "てかげんしないよ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:03:59.961Z"
+    },
+    {
+      "entryId": "term-e073-noyarikata",
+      "entryKind": "term",
+      "label": "〜のやり方",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜のやりかた",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:04:05.547Z"
+    },
+    {
+      "entryId": "term-e074-hontouni-yoroshiidesuka",
+      "entryKind": "term",
+      "label": "本当に よろしいですか？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ほんとうに よろしいですか",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:04:08.349Z"
+    },
+    {
+      "entryId": "term-e075-mitemiyou",
+      "entryKind": "term",
+      "label": "見てみよう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "みてみよう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:04:54.258Z"
+    },
+    {
+      "entryId": "term-e076-atoha-makase-te",
+      "entryKind": "term",
+      "label": "あとは任せて",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "あとはまかせて",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:04:56.926Z"
+    },
+    {
+      "entryId": "term-e077-mazuhakokokara",
+      "entryKind": "term",
+      "label": "まずはここから",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "まずはここから",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:04:59.601Z"
+    },
+    {
+      "entryId": "term-e078-hayaku",
+      "entryKind": "term",
+      "label": "早く！",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "はやく！",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:05:50.548Z"
+    },
+    {
+      "entryId": "term-e079-tsugi-hadare",
+      "entryKind": "term",
+      "label": "次はだれ？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "つぎはだれ？",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:05:53.230Z"
+    },
+    {
+      "entryId": "term-e081-kimi-shidai",
+      "entryKind": "term",
+      "label": "きみ次第",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "きみしだい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:06:42.005Z"
+    },
+    {
+      "entryId": "term-e083-zenryoku-deikou",
+      "entryKind": "term",
+      "label": "全力でいこう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ぜんりょくでいこう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:06:47.536Z"
+    },
+    {
+      "entryId": "term-e084-mada-owari-janai",
+      "entryKind": "term",
+      "label": "まだ終わりじゃない",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "まだおわりじゃない",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:06:50.258Z"
+    },
+    {
+      "entryId": "term-e085-himitsu-dayo",
+      "entryKind": "term",
+      "label": "秘密だよ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ひみつだよ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:07:50.483Z"
+    },
+    {
+      "entryId": "term-e086-shitemoraeru",
+      "entryKind": "term",
+      "label": "〜してもらえる？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してもらえる？",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:07:53.169Z"
+    },
+    {
+      "entryId": "term-e090-kuyashiikedo",
+      "entryKind": "term",
+      "label": "くやしいけど",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "くやしいけど",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:12:57.772Z"
+    },
+    {
+      "entryId": "term-e091-shitemimashou",
+      "entryKind": "term",
+      "label": "〜してみましょう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してみましょう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:13:00.458Z"
+    },
+    {
+      "entryId": "term-e094-shiteagemashou",
+      "entryKind": "term",
+      "label": "〜してあげましょう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してあげましょう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:13:56.462Z"
+    },
+    {
+      "entryId": "term-e095-o-kakuninshitemimashou",
+      "entryKind": "term",
+      "label": "〜を 確認してみましょう！",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜を かくにんしてみましょう！",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:13:59.180Z"
+    },
+    {
+      "entryId": "term-e096-korede-okee",
+      "entryKind": "term",
+      "label": "これでＯＫ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "これでおーけー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:10:17.485Z"
+    },
+    {
+      "entryId": "term-e097-nakunatteshimaimasuga-yoroshiidesuka",
+      "entryKind": "term",
+      "label": "なくなってしまいますが よろしいですか？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "なくなってしまいますが よろしいですか",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:14:01.914Z"
+    },
+    {
+      "entryId": "term-e098-shitemiyouyo",
+      "entryKind": "term",
+      "label": "〜してみようよ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してみようよ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:14:04.661Z"
+    },
+    {
+      "entryId": "term-e099-kigakawattara-yoroshikune",
+      "entryKind": "term",
+      "label": "気が変わったら よろしくね",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "きがかわったら よろしくね",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:15:04.001Z"
+    },
+    {
+      "entryId": "term-e100-jugyou-wo-omoidasu",
+      "entryKind": "term",
+      "label": "授業を思い出す",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "じゅぎょうを おもいだす",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:11:37.954Z"
+    },
+    {
+      "entryId": "term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai",
+      "entryKind": "term",
+      "label": "指定の教室へ 向かってください",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "していの きょうしつへ むかってください",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:15:06.732Z"
+    },
+    {
+      "entryId": "term-e102-shitemo-iishi",
+      "entryKind": "term",
+      "label": "〜しても いいし",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜しても いいし",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:15:09.453Z"
+    },
+    {
+      "entryId": "term-e103-honki-de",
+      "entryKind": "term",
+      "label": "本気で？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ほんきで？",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:16:11.135Z"
+    },
+    {
+      "entryId": "term-e105-dono-narabini-kaemasuka",
+      "entryKind": "term",
+      "label": "どの ならびに かえますか？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "どの ならびに かえますか",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:16:16.764Z"
+    },
+    {
+      "entryId": "term-e106-dono-wazao-kaifukusuru",
+      "entryKind": "term",
+      "label": "どの 技を 回復する？",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "どの わざを かいふくする",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:17:20.384Z"
+    },
+    {
+      "entryId": "term-e107-shitemoiikarane",
+      "entryKind": "term",
+      "label": "〜してもいいからね",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "〜してもいいからね",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:17:23.078Z"
+    },
+    {
+      "entryId": "term-e112-nantoiukotodeshou",
+      "entryKind": "term",
+      "label": "なんということでしょう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "なんということでしょう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:21:42.799Z"
+    },
+    {
+      "entryId": "term-hetarikomu",
+      "entryKind": "term",
+      "label": "へたりこむ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "へたりこむ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:32:55.203Z"
+    },
+    {
+      "entryId": "term-lp",
+      "entryKind": "term",
+      "label": "LP",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "リーグペイ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-16T22:23:53.395Z"
+    },
+    {
+      "entryId": "term-soshitsu-ari",
+      "entryKind": "term",
+      "label": "素質アリ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "そしつあり",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:32:24.940Z"
+    },
+    {
+      "entryId": "term-v022-eriazero",
+      "entryKind": "term",
+      "label": "エリアゼロ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "エリアゼロ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-29T11:37:27.240Z"
+    },
+    {
+      "entryId": "term-v085-eichipii",
+      "entryKind": "term",
+      "label": "ＨＰ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "えいちぴー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-03-29T11:51:44.044Z"
+    },
+    {
+      "entryId": "term-v147-sutaadasutosutoriito",
+      "entryKind": "term",
+      "label": "スターダスト★ストリート",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "すたーだすと★すとりーと",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:58:59.204Z"
+    },
+    {
+      "entryId": "term-v148-chanpionroodo",
+      "entryKind": "term",
+      "label": "チャンピオンロード",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ちゃんぴおんろーど",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:59:01.908Z"
+    },
+    {
+      "entryId": "term-v149-rejiendoruuto",
+      "entryKind": "term",
+      "label": "レジェンドルート",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "れじぇんどるーと",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:59:04.566Z"
+    },
+    {
+      "entryId": "term-v167-nushi",
+      "entryKind": "term",
+      "label": "ヌシ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ヌシ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:59:07.222Z"
+    },
+    {
+      "entryId": "term-v187-pokemonriigu",
+      "entryKind": "term",
+      "label": "ポケモンリーグ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ぽけもんりーぐ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:59:09.874Z"
+    },
+    {
+      "entryId": "term-v201-terapiisu",
+      "entryKind": "term",
+      "label": "テラピース",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "テラピース",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:59:15.220Z"
+    },
+    {
+      "entryId": "term-v226-raidowaza",
+      "entryKind": "term",
+      "label": "ライド技",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ライドわざ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:48:16.824Z"
+    },
+    {
+      "entryId": "term-v236-zerorabo",
+      "entryKind": "term",
+      "label": "ゼロラボ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ゼロラボ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:59:17.881Z"
+    },
+    {
+      "entryId": "term-v239-raidopokemon",
+      "entryKind": "term",
+      "label": "ライドポケモン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ライドポケモン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:59:20.564Z"
+    },
+    {
+      "entryId": "term-v265-hikou",
+      "entryKind": "term",
+      "label": "ひこう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ひこう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:56:02.278Z"
+    },
+    {
+      "entryId": "term-v272-teeburushitei",
+      "entryKind": "term",
+      "label": "テーブルシティ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "てーぶるしてぃ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:59:23.229Z"
+    },
+    {
+      "entryId": "term-v273-kakutou",
+      "entryKind": "term",
+      "label": "かくとう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "かくとう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-04T12:57:14.914Z"
+    },
+    {
+      "entryId": "term-v280-kakkuu",
+      "entryKind": "term",
+      "label": "かっくう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "かっくう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T15:59:50.299Z"
+    },
+    {
+      "entryId": "term-v288-mappuapuri",
+      "entryKind": "term",
+      "label": "マップアプリ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "マップアプリ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:00:11.544Z"
+    },
+    {
+      "entryId": "term-v306-waza-mashinmashin",
+      "entryKind": "term",
+      "label": "わざマシンマシン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "わざましんましん",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:00:51.842Z"
+    },
+    {
+      "entryId": "term-v316-mahi",
+      "entryKind": "term",
+      "label": "まひ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "まひ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:01:26.189Z"
+    },
+    {
+      "entryId": "term-v318-gakenobori",
+      "entryKind": "term",
+      "label": "がけのぼり",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "がけのぼり",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:01:31.590Z"
+    },
+    {
+      "entryId": "term-v336-aikotoba",
+      "entryKind": "term",
+      "label": "あいことば",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "あいことば",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:02:25.219Z"
+    },
+    {
+      "entryId": "term-v340-kameraapuri",
+      "entryKind": "term",
+      "label": "カメラアプリ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "カメラアプリ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:02:36.208Z"
+    },
+    {
+      "entryId": "term-v341-chanpiontesuto",
+      "entryKind": "term",
+      "label": "チャンピオンテスト",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ちゃんぴおんてすと",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:02:38.896Z"
+    },
+    {
+      "entryId": "term-v344-jibun-dake",
+      "entryKind": "term",
+      "label": "自分だけ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "じぶんだけ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:02:41.629Z"
+    },
+    {
+      "entryId": "term-v346-koukabatsugun",
+      "entryKind": "term",
+      "label": "効果バツグン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "こうかバツグン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:02:47.050Z"
+    },
+    {
+      "entryId": "term-v352-yunionsaakuru",
+      "entryKind": "term",
+      "label": "ユニオンサークル",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ユニオンサークル",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:03:00.280Z"
+    },
+    {
+      "entryId": "term-v355-terasutaruenerugii",
+      "entryKind": "term",
+      "label": "テラスタルエネルギー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "てらすたるえねるぎー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:03:22.030Z"
+    },
+    {
+      "entryId": "term-v363-densetsunopokemon",
+      "entryKind": "term",
+      "label": "伝説のポケモン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "でんせつのポケモン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:03:38.424Z"
+    },
+    {
+      "entryId": "term-v374-hokakupawaa",
+      "entryKind": "term",
+      "label": "ほかくパワー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ほかくパワー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:04:11.024Z"
+    },
+    {
+      "entryId": "term-v378-nemuri",
+      "entryKind": "term",
+      "label": "ねむり",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ねむり",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:04:18.906Z"
+    },
+    {
+      "entryId": "term-v382-zerogeeto",
+      "entryKind": "term",
+      "label": "ゼロゲート",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ゼロゲート",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:04:29.945Z"
+    },
+    {
+      "entryId": "term-v392-danrasshu",
+      "entryKind": "term",
+      "label": "団ラッシュ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "だんラッシュ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:04:51.556Z"
+    },
+    {
+      "entryId": "term-v395-kagayakipawaa",
+      "entryKind": "term",
+      "label": "かがやきパワー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "かがやきパワー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:05:07.702Z"
+    },
+    {
+      "entryId": "term-v398-paradokkusupokemon",
+      "entryKind": "term",
+      "label": "パラドックスポケモン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "パラドックスポケモン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:05:13.173Z"
+    },
+    {
+      "entryId": "term-v399-souguupawaa",
+      "entryKind": "term",
+      "label": "そうぐうパワー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "そうぐうパワー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:05:15.907Z"
+    },
+    {
+      "entryId": "term-v400-tsuushinkoukan",
+      "entryKind": "term",
+      "label": "通信交換",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "つうしんこうかん",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:05:18.567Z"
+    },
+    {
+      "entryId": "term-v402-riigupei",
+      "entryKind": "term",
+      "label": "リーグペイ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "りーぐぺい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:05:23.881Z"
+    },
+    {
+      "entryId": "term-v405-otoshimonopawaa",
+      "entryKind": "term",
+      "label": "おとしものパワー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "おとしものパワー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:05:31.932Z"
+    },
+    {
+      "entryId": "term-v412-zukan-kansei",
+      "entryKind": "term",
+      "label": "図鑑完成",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ずかんかんせい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:05:47.840Z"
+    },
+    {
+      "entryId": "term-v413-keikenchipawaa",
+      "entryKind": "term",
+      "label": "けいけんちパワー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "けいけんちパワー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:05:59.043Z"
+    },
+    {
+      "entryId": "term-v414-reidopawaa",
+      "entryKind": "term",
+      "label": "レイドパワー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "レイドパワー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:06:01.719Z"
+    },
+    {
+      "entryId": "term-v419-tamagopawaa",
+      "entryKind": "term",
+      "label": "タマゴパワー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "タマゴパワー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:06:12.342Z"
+    },
+    {
+      "entryId": "term-v429-omakasekaifuku",
+      "entryKind": "term",
+      "label": "おまかせ回復",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "おまかせかいふく",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:06:33.729Z"
+    },
+    {
+      "entryId": "term-v462-kaifuku-saseru",
+      "entryKind": "term",
+      "label": "回復させる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "かいふくさせる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:08:19.611Z"
+    },
+    {
+      "entryId": "term-v464-pokemon-nootoshimono",
+      "entryKind": "term",
+      "label": "ポケモンのおとしもの",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ぽけもんのおとしもの",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:08:24.999Z"
+    },
+    {
+      "entryId": "term-v466-kakkuukeitai",
+      "entryKind": "term",
+      "label": "かっくうけいたい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "かっくうけいたい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:08:30.321Z"
+    },
+    {
+      "entryId": "term-v467-shissoukeitai",
+      "entryKind": "term",
+      "label": "しっそうけいたい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "しっそうけいたい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:08:32.995Z"
+    },
+    {
+      "entryId": "term-v468-yuueikeitai",
+      "entryKind": "term",
+      "label": "ゆうえいけいたい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ゆうえいけいたい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:08:35.678Z"
+    },
+    {
+      "entryId": "term-v469-guraidomoodo",
+      "entryKind": "term",
+      "label": "グライドモード",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ぐらいどもーど",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:08:38.443Z"
+    },
+    {
+      "entryId": "term-v470-doraibumoodo",
+      "entryKind": "term",
+      "label": "ドライブモード",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "どらいぶもーど",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:08:41.116Z"
+    },
+    {
+      "entryId": "term-v471-furootomoodo",
+      "entryKind": "term",
+      "label": "フロートモード",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ふろーともーど",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:08:43.794Z"
+    },
+    {
+      "entryId": "term-v473-narabekae",
+      "entryKind": "term",
+      "label": "並べかえ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ならべかえ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:08:49.161Z"
+    },
+    {
+      "entryId": "term-v476-kitakami",
+      "entryKind": "term",
+      "label": "キタカミ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "キタカミ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:08:59.664Z"
+    },
+    {
+      "entryId": "term-v477-buruuberiigakuen",
+      "entryKind": "term",
+      "label": "ブルーベリー学園",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ブルーベリーがくえん",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:09:02.354Z"
+    },
+    {
+      "entryId": "term-v478-oogapon",
+      "entryKind": "term",
+      "label": "オーガポン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "オーガポン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:09:04.999Z"
+    },
+    {
+      "entryId": "term-v481-biipii",
+      "entryKind": "term",
+      "label": "ＢＰ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "びーぴー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:09:13.117Z"
+    },
+    {
+      "entryId": "term-v486-terariumudoomu",
+      "entryKind": "term",
+      "label": "テラリウムドーム",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "テラリウムドーム",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:09:21.337Z"
+    },
+    {
+      "entryId": "term-v488-koosutoeria",
+      "entryKind": "term",
+      "label": "コーストエリア",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "コーストエリア",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:09:26.689Z"
+    },
+    {
+      "entryId": "term-v490-omodaka",
+      "entryKind": "term",
+      "label": "オモダカ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "おもだか",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:09:32.095Z"
+    },
+    {
+      "entryId": "term-v491-sabanaeria",
+      "entryKind": "term",
+      "label": "サバンナエリア",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "サバンナエリア",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:09:34.769Z"
+    },
+    {
+      "entryId": "term-v492-pooraeria",
+      "entryKind": "term",
+      "label": "ポーラエリア",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ポーラエリア",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:09:37.444Z"
+    },
+    {
+      "entryId": "term-v496-burureku",
+      "entryKind": "term",
+      "label": "ブルレク",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ブルレク",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:09:48.311Z"
+    },
+    {
+      "entryId": "term-v498-kyanioneria",
+      "entryKind": "term",
+      "label": "キャニオンエリア",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "キャニオンエリア",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:09:53.675Z"
+    },
+    {
+      "entryId": "term-v509-takarashokudou",
+      "entryKind": "term",
+      "label": "宝食堂",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "たからしょくどう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:10:20.175Z"
+    },
+    {
+      "entryId": "term-v511-reidobatoru",
+      "entryKind": "term",
+      "label": "レイドバトル",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "レイドバトル",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:10:22.866Z"
+    },
+    {
+      "entryId": "term-v513-gureepuakademii",
+      "entryKind": "term",
+      "label": "グレープアカデミー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ぐれーぷあかでみー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:10:28.430Z"
+    },
+    {
+      "entryId": "term-v515-batoruchiimu",
+      "entryKind": "term",
+      "label": "バトルチーム",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "バトルチーム",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:10:33.853Z"
+    },
+    {
+      "entryId": "term-v530-shitappa",
+      "entryKind": "term",
+      "label": "したっぱ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "したっぱ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:11:14.097Z"
+    },
+    {
+      "entryId": "term-v532-uketori",
+      "entryKind": "term",
+      "label": "受けとり",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "うけとり",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:11:19.488Z"
+    },
+    {
+      "entryId": "term-v543-pokemonwosshu",
+      "entryKind": "term",
+      "label": "ポケモンウォッシュ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ポケモンウォッシュ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:11:45.903Z"
+    },
+    {
+      "entryId": "term-v548-himitsunomenyuu",
+      "entryKind": "term",
+      "label": "秘密のメニュー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ひみつのメニュー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:11:59.308Z"
+    },
+    {
+      "entryId": "term-v552-ouen",
+      "entryKind": "term",
+      "label": "おうえん",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "おうえん",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:12:10.042Z"
+    },
+    {
+      "entryId": "term-v558-onitaijifesu",
+      "entryKind": "term",
+      "label": "鬼退治フェス",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "おにたいじフェス",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:12:23.202Z"
+    },
+    {
+      "entryId": "term-v565-nouryokuhenka",
+      "entryKind": "term",
+      "label": "能力変化",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "のうりょくへんか",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:12:41.893Z"
+    },
+    {
+      "entryId": "term-v567-majikarukoukan",
+      "entryKind": "term",
+      "label": "マジカル交換",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "マジカルこうかん",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:12:47.273Z"
+    },
+    {
+      "entryId": "term-v573-deribaadopoochi",
+      "entryKind": "term",
+      "label": "デリバードポーチ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "デリバードポーチ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:13:19.164Z"
+    },
+    {
+      "entryId": "term-v582-tokubetsukoushi",
+      "entryKind": "term",
+      "label": "特別講師",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "とくべつこうし",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:13:40.415Z"
+    },
+    {
+      "entryId": "term-v589-shinkuromashin",
+      "entryKind": "term",
+      "label": "シンクロマシン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "シンクロマシン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:13:53.769Z"
+    },
+    {
+      "entryId": "term-v594-tsuushintaisen",
+      "entryKind": "term",
+      "label": "通信対戦",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "つうしんたいせん",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:14:12.738Z"
+    },
+    {
+      "entryId": "term-v600-chibichibipawaa",
+      "entryKind": "term",
+      "label": "ちびちびパワー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ちびちびパワー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:14:26.402Z"
+    },
+    {
+      "entryId": "term-v601-dekadekapawaa",
+      "entryKind": "term",
+      "label": "でかでかパワー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "でかでかパワー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:14:29.090Z"
+    },
+    {
+      "entryId": "term-v602-nitsunapawaa",
+      "entryKind": "term",
+      "label": "二つ名パワー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "につなパワー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:14:31.786Z"
+    },
+    {
+      "entryId": "term-v605-dokujoutai",
+      "entryKind": "term",
+      "label": "どく状態",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "どくじょうたい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:14:39.824Z"
+    },
+    {
+      "entryId": "term-v608-dougupurintaa",
+      "entryKind": "term",
+      "label": "どうぐプリンター",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "どうぐプリンター",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:14:47.830Z"
+    },
+    {
+      "entryId": "term-v610-kitae-ta",
+      "entryKind": "term",
+      "label": "鍛えた",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "きたえた",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:14:53.204Z"
+    },
+    {
+      "entryId": "term-v611-pokepootaru",
+      "entryKind": "term",
+      "label": "ポケポータル",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ポケポータル",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:14:55.908Z"
+    },
+    {
+      "entryId": "term-v613-tairyouhassei",
+      "entryKind": "term",
+      "label": "大量発生",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "たいりょうはっせい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:14:58.626Z"
+    },
+    {
+      "entryId": "term-v623-rentaruchiimu",
+      "entryKind": "term",
+      "label": "レンタルチーム",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "レンタルチーム",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:15:30.837Z"
+    },
+    {
+      "entryId": "term-v636-honkou",
+      "entryKind": "term",
+      "label": "本校",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ほんこう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:16:05.578Z"
+    },
+    {
+      "entryId": "term-v639-shienboodo",
+      "entryKind": "term",
+      "label": "支援ボード",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "しえんボード",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:16:22.462Z"
+    },
+    {
+      "entryId": "term-v641-kirikaeru",
+      "entryKind": "term",
+      "label": "切りかえる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "きりかえる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:16:27.940Z"
+    },
+    {
+      "entryId": "term-v642-purofiiruapuri",
+      "entryKind": "term",
+      "label": "プロフィールアプリ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "プロフィールアプリ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:16:30.664Z"
+    },
+    {
+      "entryId": "term-v649-koukanaite",
+      "entryKind": "term",
+      "label": "交換相手",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "こうかんあいて",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:16:46.845Z"
+    },
+    {
+      "entryId": "term-v662-dentougyouji",
+      "entryKind": "term",
+      "label": "伝統行事",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "でんとうぎょうじ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:17:31.276Z"
+    },
+    {
+      "entryId": "term-v664-matomeuri",
+      "entryKind": "term",
+      "label": "まとめ売り",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "まとめうり",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:17:36.618Z"
+    },
+    {
+      "entryId": "term-v665-zensentaku",
+      "entryKind": "term",
+      "label": "全選択",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ぜんせんたく",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:17:39.335Z"
+    },
+    {
+      "entryId": "term-v668-uketorikanou",
+      "entryKind": "term",
+      "label": "受けとり可能",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "うけとりかのう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:17:47.574Z"
+    },
+    {
+      "entryId": "term-v669-uketorizumi",
+      "entryKind": "term",
+      "label": "受けとり済み",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "うけとりずみ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:17:50.272Z"
+    },
+    {
+      "entryId": "term-v674-oiharau",
+      "entryKind": "term",
+      "label": "追いはらう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "おいはらう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:18:03.640Z"
+    },
+    {
+      "entryId": "term-v684-bourutaun",
+      "entryKind": "term",
+      "label": "ボウルタウン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ボウルタウン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:18:30.204Z"
+    },
+    {
+      "entryId": "term-v685-nappeyama",
+      "entryKind": "term",
+      "label": "ナッペ山",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ナッペやま",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:18:32.891Z"
+    },
+    {
+      "entryId": "term-v686-kimenshuu",
+      "entryKind": "term",
+      "label": "鬼面衆",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "きめんしゅう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:18:35.637Z"
+    },
+    {
+      "entryId": "term-v687-chanpurutaun",
+      "entryKind": "term",
+      "label": "チャンプルタウン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "チャンプルタウン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:18:38.366Z"
+    },
+    {
+      "entryId": "term-v688-suiryokutaun",
+      "entryKind": "term",
+      "label": "スイリョクタウン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "スイリョクタウン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:18:41.099Z"
+    },
+    {
+      "entryId": "term-v689-hakkoushiti",
+      "entryKind": "term",
+      "label": "ハッコウシティ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ハッコウシティ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:18:43.850Z"
+    },
+    {
+      "entryId": "term-v690-beikutaun",
+      "entryKind": "term",
+      "label": "ベイクタウン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ベイクタウン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:18:46.554Z"
+    },
+    {
+      "entryId": "term-v691-karafushiti",
+      "entryKind": "term",
+      "label": "カラフシティ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "カラフシティ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:18:49.280Z"
+    },
+    {
+      "entryId": "term-v694-serukurutaun",
+      "entryKind": "term",
+      "label": "セルクルタウン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "セルクルタウン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:18:57.236Z"
+    },
+    {
+      "entryId": "term-v695-furijjitaun",
+      "entryKind": "term",
+      "label": "フリッジタウン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "フリッジタウン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:18:59.925Z"
+    },
+    {
+      "entryId": "term-v696-kosajitaun",
+      "entryKind": "term",
+      "label": "コサジタウン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "コサジタウン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:02.655Z"
+    },
+    {
+      "entryId": "term-v697-sumahokabaa",
+      "entryKind": "term",
+      "label": "スマホカバー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "スマホカバー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:05.399Z"
+    },
+    {
+      "entryId": "term-v698-oojanomizuumi",
+      "entryKind": "term",
+      "label": "オージャの湖",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "オージャのみずうみ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:08.105Z"
+    },
+    {
+      "entryId": "term-v699-saakurumisshon",
+      "entryKind": "term",
+      "label": "サークルミッション",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "サークルミッション",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:10.790Z"
+    },
+    {
+      "entryId": "term-v702-puratotaun",
+      "entryKind": "term",
+      "label": "プラトタウン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "プラトタウン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:18.752Z"
+    },
+    {
+      "entryId": "term-v705-atonoseefekuto",
+      "entryKind": "term",
+      "label": "あとのせエフェクト",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "あとのせエフェクト",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:24.093Z"
+    },
+    {
+      "entryId": "term-v706-dekofureemu",
+      "entryKind": "term",
+      "label": "デコフレーム",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "デコフレーム",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:26.802Z"
+    },
+    {
+      "entryId": "term-v707-sentaasukuea",
+      "entryKind": "term",
+      "label": "センタースクエア",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "センタースクエア",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:29.519Z"
+    },
+    {
+      "entryId": "term-v709-kinomidai",
+      "entryKind": "term",
+      "label": "きのみ台",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "きのみだい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:34.936Z"
+    },
+    {
+      "entryId": "term-v710-piketaun",
+      "entryKind": "term",
+      "label": "ピケタウン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ピケタウン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:37.644Z"
+    },
+    {
+      "entryId": "term-v711-rotoribou",
+      "entryKind": "term",
+      "label": "ロトりぼう",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ロトりぼう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:40.354Z"
+    },
+    {
+      "entryId": "term-v716-kimeraretakazu",
+      "entryKind": "term",
+      "label": "決められた数",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "きめられたかず",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:19:54.122Z"
+    },
+    {
+      "entryId": "term-v720-okotowaririsuto",
+      "entryKind": "term",
+      "label": "おことわりリスト",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "おことわりリスト",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:20:04.723Z"
+    },
+    {
+      "entryId": "term-v722-boonasumisshon",
+      "entryKind": "term",
+      "label": "ボーナスミッション",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ボーナスミッション",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:20:10.085Z"
+    },
+    {
+      "entryId": "term-v725-ugokikata",
+      "entryKind": "term",
+      "label": "動き方",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "うごきかた",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:20:18.223Z"
+    },
+    {
+      "entryId": "term-v729-chiimuid",
+      "entryKind": "term",
+      "label": "チームＩＤ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "チームＩＤ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:20:29.420Z"
+    },
+    {
+      "entryId": "term-v730-katsudoumenbaa",
+      "entryKind": "term",
+      "label": "活動メンバー",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "かつどうメンバー",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:20:32.086Z"
+    },
+    {
+      "entryId": "term-v733-koukankanryou",
+      "entryKind": "term",
+      "label": "交換完了",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "こうかんかんりょう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:20:40.069Z"
+    },
+    {
+      "entryId": "term-v734-gakusekibangou",
+      "entryKind": "term",
+      "label": "学籍番号",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "がくせきばんごう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:21:13.251Z"
+    },
+    {
+      "entryId": "term-v761-ayashii",
+      "entryKind": "term",
+      "label": "あやしい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "あやしい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:22:33.392Z"
+    },
+    {
+      "entryId": "term-v765-omae",
+      "entryKind": "term",
+      "label": "オマエ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "オマエ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:22:57.068Z"
+    },
+    {
+      "entryId": "grammar-da-to-kanjiru",
+      "entryKind": "grammar",
+      "label": "N / ナ{{形|けい}} + だと{{感|かん}}じる",
+      "mediaSlug": "web-giapponese",
+      "reading": "だとかんじる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T16:37:16.782Z"
+    },
+    {
+      "entryId": "grammar-plain-to-consequence",
+      "entryKind": "grammar",
+      "label": "〜すると",
+      "mediaSlug": "web-giapponese",
+      "reading": "すると",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-29T18:13:46.256Z"
+    },
+    {
+      "entryId": "grammar-tabenagara",
+      "entryKind": "grammar",
+      "label": "食べながら",
+      "mediaSlug": "web-giapponese",
+      "reading": "たべながら",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T10:48:27.066Z"
+    },
+    {
+      "entryId": "grammar-te-mite-ne",
+      "entryKind": "grammar",
+      "label": "〜してみてね",
+      "mediaSlug": "web-giapponese",
+      "reading": "してみてね",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-04-28T22:39:29.425Z"
+    },
+    {
+      "entryId": "grammar-you-to-shite-iru",
+      "entryKind": "grammar",
+      "label": "〜ようとしている",
+      "mediaSlug": "web-giapponese",
+      "reading": "ようとしている",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-03T20:23:11.220Z"
+    },
+    {
+      "entryId": "term-hard-mode-dewa-sarani-kyouryoku-na-monster-ga-shutsugen",
+      "entryKind": "term",
+      "label": "ハードモードではさらに強力なモンスターが出現",
+      "mediaSlug": "web-giapponese",
+      "reading": "ハードモードではさらにきょうりょくなモンスターがしゅつげん",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-02T13:36:51.889Z"
+    },
+    {
+      "entryId": "term-hard-mode-ga-kaihou-saremashita",
+      "entryKind": "term",
+      "label": "ハードモードが解放されました",
+      "mediaSlug": "web-giapponese",
+      "reading": "ハードモードがかいほうされました",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-02T13:36:50.067Z"
+    },
+    {
+      "entryId": "term-saikin-ppoi",
+      "entryKind": "term",
+      "label": "最近っぽい",
+      "mediaSlug": "web-giapponese",
+      "reading": "さいきんっぽい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-24T10:04:24.075Z"
+    }
+  ]
+}

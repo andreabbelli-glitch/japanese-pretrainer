@@ -41,6 +41,8 @@ export type ForvoAudioCandidate = {
 };
 
 const preferredForvoSpeakers = ["strawberrybrown", "mezashi"] as const;
+const japaneseScriptPattern = /[ぁ-ゟ゠-ヿ一-龯々〆ヶ]/u;
+const latinLetterPattern = /[a-z]/iu;
 
 export function parseForvoWordList(source: string) {
   return source
@@ -203,9 +205,30 @@ export function buildForvoWordUrls(entry: PronunciationTargetEntry) {
 export function buildForvoSearchQueries(entry: PronunciationTargetEntry) {
   return [
     ...new Set(
-      expandForvoSearchVariants([entry.label, entry.reading, ...entry.aliases])
+      expandForvoSearchVariants(buildForvoSearchInputValues(entry))
+        .flatMap((variant) => extractForvoLookupVariants(variant, entry.kind))
+        .filter(Boolean)
     )
   ];
+}
+
+function buildForvoSearchInputValues(entry: PronunciationTargetEntry) {
+  const normalizedLabel = normalizeForvoLookupText(entry.label);
+  const normalizedReading = entry.reading
+    ? normalizeForvoLookupText(entry.reading)
+    : "";
+
+  if (
+    hasLatinLetters(normalizedLabel) &&
+    japaneseScriptPattern.test(normalizedReading)
+  ) {
+    return [
+      entry.reading,
+      ...entry.aliases.filter((alias) => !hasLatinLetters(alias))
+    ];
+  }
+
+  return [entry.label, entry.reading, ...entry.aliases];
 }
 
 export function buildForvoAudioAssetPath(
@@ -264,6 +287,49 @@ export function expandForvoSearchVariants(values: Array<string | undefined>) {
         .filter(Boolean)
     ])
     .filter(Boolean);
+}
+
+function extractForvoLookupVariants(
+  value: string,
+  entryKind: PronunciationTargetEntry["kind"]
+) {
+  const normalized = normalizeForvoLookupText(value);
+
+  if (!japaneseScriptPattern.test(normalized)) {
+    return [];
+  }
+
+  if (
+    entryKind === "term" &&
+    !hasForvoPatternSyntax(normalized) &&
+    !hasLatinLetters(normalized)
+  ) {
+    return [normalized];
+  }
+
+  if (
+    entryKind === "grammar" &&
+    !hasForvoPatternSyntax(normalized) &&
+    !hasLatinLetters(normalized)
+  ) {
+    return [normalized];
+  }
+
+  const runs = normalized.match(/[0-9０-９]*[ぁ-ゟ゠-ヿ一-龯々〆ヶ]+/gu) ?? [];
+  const minRunLength = entryKind === "term" ? 1 : 1;
+
+  return runs
+    .map((run) => run.replace(/[〜～~]/gu, "").trim())
+    .filter((run) => run.length >= minRunLength)
+    .filter((run) => japaneseScriptPattern.test(run));
+}
+
+function hasForvoPatternSyntax(value: string) {
+  return /(?:\bvs\b|->|→|=>|⇒|\+|[\/|／])/iu.test(value);
+}
+
+function hasLatinLetters(value: string) {
+  return latinLetterPattern.test(value.normalize("NFKC"));
 }
 
 function isEntryIdLike(value: string) {

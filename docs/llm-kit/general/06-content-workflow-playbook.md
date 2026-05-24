@@ -264,7 +264,7 @@ Regole pratiche:
 - non chiedere all'LLM di popolare `audio_src` se l'asset non esiste davvero;
 - dopo il batch editoriale, ogni nuova card o card revisionata deve passare dal
   workflow locale di pronunce: audio locale/riuso cross-media, poi fetch Forvo
-  Anki-style con sessione browser valida, candidati `Play(...)`, ranking speaker
+  Anki-style tramite helper Anki dedicato, candidati `Play(...)`, ranking speaker
   e conversione OGG -> MP3; se Forvo non espone pronuncia, apri e registra la
   richiesta `word-add`;
 - il download manuale Forvo e solo fallback estremo per casi singoli in cui il

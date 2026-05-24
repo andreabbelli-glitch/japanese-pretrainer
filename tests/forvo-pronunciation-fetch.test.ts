@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   assertForvoManualRunCanStart,
+  buildForvoSearchQueries,
   buildForvoWordUrls,
   parseForvoCandidateText,
   parseForvoWordList,
@@ -83,6 +84,69 @@ describe("forvo pronunciation helpers", () => {
       "https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%81%AA%E3%81%8C%E3%82%89/#ja",
       "https://forvo.com/word/%E3%81%9F%E3%81%B9%E3%81%AA%E3%81%8C%E3%82%89/#ja"
     ]);
+  });
+
+  it("derives only Japanese lookup text from grammar patterns", () => {
+    const base = {
+      aliases: [],
+      id: "grammar-sample",
+      kind: "grammar" as const,
+      mediaDirectory: "/tmp/media",
+      mediaSlug: "sample"
+    };
+
+    expect(
+      buildForvoSearchQueries({
+        ...base,
+        label: "radice verbale + に行く／に来る"
+      })
+    ).toEqual(["に行く", "に来る"]);
+    expect(
+      buildForvoSearchQueries({
+        ...base,
+        label: "消える vs 消す"
+      })
+    ).toEqual(["消える", "消す"]);
+    expect(
+      buildForvoSearchQueries({
+        ...base,
+        label: "domanda negativa"
+      })
+    ).toEqual([]);
+  });
+
+  it("prefers readings for mixed Latin and Japanese labels", () => {
+    const base = {
+      aliases: [],
+      kind: "term" as const,
+      mediaDirectory: "/tmp/media",
+      mediaSlug: "sample"
+    };
+
+    expect(
+      buildForvoSearchQueries({
+        ...base,
+        id: "term-d2-field",
+        label: "D2フィールド",
+        reading: "ディーツーフィールド"
+      })
+    ).toEqual(["ディーツーフィールド"]);
+    expect(
+      buildForvoSearchQueries({
+        ...base,
+        id: "term-dm-point",
+        label: "DMポイント",
+        reading: "ディーエムポイント"
+      })
+    ).toEqual(["ディーエムポイント"]);
+    expect(
+      buildForvoSearchQueries({
+        ...base,
+        id: "term-g-neo-creature",
+        label: "G-NEOクリーチャー",
+        reading: "ジーネオクリーチャー"
+      })
+    ).toEqual(["ジーネオクリーチャー"]);
   });
 
   it("prefers the most likely native and highly rated candidate", () => {

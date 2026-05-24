@@ -16,6 +16,7 @@ import {
 type CliOptions = {
   ankiAppPath?: string;
   ankiBaseDir: string;
+  ankiPythonPath?: string;
   browserTimeoutMs?: number;
   controlPort: number;
   contentRoot: string;
@@ -165,6 +166,7 @@ if (!parseResult.ok) {
             browser: {
               ankiAppPath: options.ankiAppPath,
               ankiBaseDir: path.resolve(options.ankiBaseDir),
+              ankiPythonPath: options.ankiPythonPath,
               browserTimeoutMs: options.browserTimeoutMs,
               headless: options.headless,
               knownMissingPath: path.resolve(options.knownMissingPath),
@@ -374,6 +376,16 @@ function parseCliOptions(argv: string[]): CliOptions {
         normalizedArgv,
         index,
         "--anki-app"
+      );
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--anki-python") {
+      options.ankiPythonPath = readOptionValue(
+        normalizedArgv,
+        index,
+        "--anki-python"
       );
       index += 1;
       continue;

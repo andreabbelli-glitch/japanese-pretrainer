@@ -1,6 +1,6 @@
 ---
 name: forvo-pronunciations
-description: Use when the task is to run the smart pronunciation workflow or Forvo Anki-style retrieval for unresolved Japanese pronunciation audio in the Japanese Custom Study repo. It supports review-scoped, next-lesson, and textbook-page driven batches, always reuses existing audio first, fetches Forvo audio through a valid browser-session/player extraction flow, and opens word-add requests for true misses.
+description: Use when the task is to run the smart pronunciation workflow or Forvo Anki-style retrieval for unresolved Japanese pronunciation audio in the Japanese Custom Study repo. It supports review-scoped, next-lesson, and textbook-page driven batches, always reuses existing audio first, fetches Forvo audio through the Anki/addon-style player extraction flow, and opens word-add requests for true misses.
 ---
 
 # Forvo Pronunciations
@@ -13,7 +13,7 @@ Use this skill for the Japanese Custom Study repo when the user wants Codex to:
 - fetch Japanese pronunciation audio from Forvo;
 - import historically requested Forvo pronunciations once they have been
   fulfilled;
-- use a real logged-in browser/profile session for Forvo;
+- use the Anki/addon-style Forvo helper and the normal browser for word-add;
 - process a list of words or entry ids;
 - write audio files into `content/media/<slug>/assets/audio/...`;
 - update `content/media/<slug>/pronunciations.json`.
@@ -41,13 +41,13 @@ typically at:
    already has a matching audio-backed card with the same entry type, label,
    and reading. If it exists, reuse/link that audio instead of fetching a new
    one from Forvo.
-4. For real downloads, use the Anki/addon logic: load the Forvo word page in a
-   valid browser/profile session, parse the rendered player `Play(...)`
-   candidates, prefer configured speakers, download the direct audio candidate,
-   and convert OGG to MP3 when needed.
-5. Do not use `curl`, plain HTTP scraping, or Playwright/headless browser
-   automation as the normal batch path. Playwright may be mentioned only for
-   targeted debug or fetcher maintenance.
+4. For real downloads, use the Anki/addon logic: run the dedicated Anki helper,
+   parse the Forvo page/player `Play(...)` candidates, prefer configured
+   speakers, download the direct audio candidate, and convert OGG to MP3 when
+   needed.
+5. Do not use `curl`, ad hoc HTTP scripts outside the Anki helper, or
+   Playwright/headless browser automation as the normal batch path. Playwright
+   may be mentioned only for targeted debug or fetcher maintenance.
 6. Prefer the repo-scoped wrapper script, which auto-detects
    the repo root from `JAPANESE_CUSTOM_STUDY_ROOT`, the current working tree, or
    known local defaults:
@@ -82,6 +82,9 @@ typically at:
     must record it in `data/forvo-requested-word-add.json` and open the
     prefilled `word-add/...` URL with the repo `jcs_*` hints for the
     Tampermonkey helper.
+    Only Japanese lookup text is requestable: if a grammar label has no
+    pronounceable Japanese query after markup/placeholder cleanup, record it as
+    missing but do not open a garbage `word-add` request.
 14. `./scripts/with-node.sh pnpm pronunciations:forvo` remains the low-level
     command for explicit fetcher targets, debug, and extreme manual fallback.
     Only mention Playwright when the user explicitly wants to test or debug
@@ -128,7 +131,7 @@ typically at:
 
 ## Guardrails
 
-- Keep the Anki/QWebEngine profile under `data/forvo-anki-profile` unless the user asks otherwise.
+- Keep the Anki helper profile under `data/forvo-anki-profile` unless the user asks otherwise.
 - Keep the known-missing registry under `data/forvo-known-missing.json` unless the user asks otherwise.
 - For `review`, support both the global scope and the filtered `--media <slug>`
   scope; the default without `--media` is global. Review mode must not impose
@@ -145,11 +148,11 @@ typically at:
 - Use only the unresolved remainder as Forvo input; do not run Forvo blindly on
   the whole bundle by default.
 - For normal user-facing runs, Anki-style retrieval is mandatory for Forvo audio:
-  valid browser/profile session, `Play(...)` candidates, speaker ranking, direct
+  helper profile, `Play(...)` candidates, speaker ranking, direct
   audio download, and OGG -> MP3 conversion when needed.
 - Manual mode is not a normal path. Use it only as an extreme fallback for a
   single blocked item, and state why the standard fetch failed.
-- Never propose `curl` or plain HTTP scraping as a workflow.
+- Never propose `curl` or ad hoc HTTP scraping outside the Anki helper as a workflow.
 - If you need Playwright, state clearly that you are switching to a debug or
   maintenance flow, not a normal batch fetch.
 - For account requested-pronunciation backfills, only import entries that can be
@@ -159,6 +162,12 @@ typically at:
 - Do not invent new asset locations or manifest formats; use the repo conventions already implemented by the command.
 - If Forvo returns no candidate for a word, record it as a miss, open/register
   `word-add`, and continue.
+- A historical `word-add` row whose URL no longer matches the current
+  normalization is not a valid current request. Let the request workflow reopen
+  the canonical URL and update `data/forvo-requested-word-add.json`.
+- Before opening a large `word-add` batch, make sure the local Tampermonkey
+  helper is version 0.11 or newer so autosubmitted `/word-add-success/<word>/`
+  tabs close themselves.
 - If matching a word list to glossary entries is ambiguous, report the skipped rows instead of forcing a guess.
 
 ## Verification

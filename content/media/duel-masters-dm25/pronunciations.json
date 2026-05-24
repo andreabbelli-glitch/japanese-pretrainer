@@ -1668,6 +1668,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-haika",
+      "audio_src": "assets/audio/term/term-haika/forvo-le_temps_perdu-はいか.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "le_temps_perdu",
+      "audio_attribution": "le_temps_perdu via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%85%8D%E4%B8%8B/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%85%8D%E4%B8%8B",

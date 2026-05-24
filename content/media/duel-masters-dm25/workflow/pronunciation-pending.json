@@ -2,39 +2,8 @@
   "version": 1,
   "media_slug": "duel-masters-dm25",
   "total_targets": 350,
-  "audio_backed_count": 293,
-  "known_missing_count": 52,
-  "pending_count": 5,
-  "pending": [
-    {
-      "entry_type": "term",
-      "entry_id": "term-smash-burst",
-      "label": "スマッシュ・バースト",
-      "reading": "すまっしゅばーすと"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-spell-side",
-      "label": "呪文側",
-      "reading": "じゅもんがわ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-haika",
-      "label": "配下",
-      "reading": "はいか"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-battle-zone-ni-oita-mama",
-      "label": "バトルゾーンに置いたまま",
-      "reading": "バトルゾーンにおいたまま"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-uramuki-ni-shite",
-      "label": "裏向きにして",
-      "reading": "うらむきにして"
-    }
-  ]
+  "audio_backed_count": 294,
+  "known_missing_count": 56,
+  "pending_count": 0,
+  "pending": []
 }

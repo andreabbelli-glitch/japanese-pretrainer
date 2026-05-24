@@ -150,7 +150,7 @@ Workflow pronunce:
 `pronunciations:resolve` e il percorso operativo standard: seleziona i target
 da review, prossima lesson o pagina textbook, filtra le entry gia coperte,
 prova il riuso cross-media e manda il residuo al fetch Forvo Anki-style
-(sessione browser valida, player `Play(...)`, ranking speaker, download diretto,
+(helper Anki dedicato, player `Play(...)`, ranking speaker, download diretto,
 conversione OGG -> MP3). Aggiorna anche lo storico
 `data/forvo-requested-word-add.json`, marcando come `resolved` le entry per cui
 e' stato trovato un audio. `pronunciations:forvo` resta il comando low-level

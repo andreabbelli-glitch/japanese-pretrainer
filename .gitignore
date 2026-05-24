@@ -6,7 +6,9 @@ node_modules
 .env
 .env.local
 .env.production
-data
+data/*
+!data/forvo-known-missing.json
+!data/forvo-requested-word-add.json
 .playwright-cli
 .tmp
 *.db

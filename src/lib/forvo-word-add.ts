@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+import { buildForvoSearchQueries } from "./forvo-pronunciation-helpers.ts";
 import { stripInlineMarkdown } from "./inline-markdown.ts";
 
 const forvoWordAddLanguageCode = "ja";
@@ -9,6 +10,8 @@ const phrasePunctuationPattern = /[!?！？。]/u;
 const phraseWhitespacePattern = /\s/u;
 const forvoWordAddSlashPattern = /\s*\/\s*/gu;
 const forvoWordAddMarkerPattern = /[〜～~]/gu;
+const japaneseScriptPattern = /[ぁ-ゟ゠-ヿ一-龯々〆ヶ]/u;
+const latinLetterPattern = /[a-z]/iu;
 
 export type ForvoWordAddRequestEntry = {
   entryId: string;
@@ -45,30 +48,68 @@ type ForvoWordAddEntryLike = {
 export function buildForvoWordAddPrefill(
   input: ForvoWordAddEntryLike
 ): ForvoWordAddPrefill {
+  const requestLabel = buildForvoWordAddRequestLabel(input);
+  const phraseInput =
+    requestLabel && hasLatinLetters(input.label)
+      ? {
+          ...input,
+          label: requestLabel,
+          reading: requestLabel
+        }
+      : input;
+
   return {
     autoSubmit: true,
     isPersonalName: false,
-    isPhrase: inferForvoWordAddPhrase(input),
+    isPhrase: inferForvoWordAddPhrase(phraseInput),
     languageCode: forvoWordAddLanguageCode
   };
 }
 
 export function buildForvoWordAddUrl(input: ForvoWordAddEntryLike) {
+  const requestLabel = buildForvoWordAddRequestLabel(input);
+
+  if (!requestLabel) {
+    return null;
+  }
+
   const prefill = buildForvoWordAddPrefill(input);
   const url = new URL(
-    `/word-add/${encodeURIComponent(normalizeForvoWordAddLabel(input.label))}/`,
+    `/word-add/${encodeURIComponent(requestLabel)}/`,
     "https://forvo.com"
   );
 
   url.searchParams.set("jcs_lang", prefill.languageCode);
   url.searchParams.set("jcs_phrase", prefill.isPhrase ? "1" : "0");
   url.searchParams.set("jcs_autosubmit", prefill.autoSubmit ? "1" : "0");
-  url.searchParams.set(
-    "jcs_person_name",
-    prefill.isPersonalName ? "1" : "0"
-  );
+  url.searchParams.set("jcs_person_name", prefill.isPersonalName ? "1" : "0");
 
   return url.toString();
+}
+
+export function buildForvoWordAddRequestLabel(input: ForvoWordAddEntryLike) {
+  const normalizedLabel = normalizeForvoWordAddLabel(input.label);
+
+  if (
+    normalizedLabel &&
+    japaneseScriptPattern.test(normalizedLabel) &&
+    !hasLatinLetters(normalizedLabel) &&
+    input.entryKind !== "grammar"
+  ) {
+    return normalizedLabel;
+  }
+
+  const requestLabel = buildForvoSearchQueries({
+    aliases: [],
+    id: input.entryId ?? "",
+    kind: input.entryKind ?? "term",
+    label: input.label,
+    mediaDirectory: "",
+    mediaSlug: "",
+    reading: input.reading
+  }).at(0);
+
+  return requestLabel ? normalizeForvoWordAddLabel(requestLabel) : null;
 }
 
 export function normalizeForvoWordAddLabel(label: string) {
@@ -165,6 +206,31 @@ export function hasForvoWordAddRequestForEntry(
   );
 }
 
+export function hasCurrentForvoWordAddRequestForEntry(
+  registry: ForvoWordAddRequestRegistry,
+  input: {
+    entryId: string;
+    entryKind: "term" | "grammar";
+    label: string;
+    mediaSlug: string;
+    reading?: string;
+  }
+) {
+  const requestUrl = buildForvoWordAddUrl(input);
+
+  if (!requestUrl) {
+    return false;
+  }
+
+  return registry.entries.some(
+    (candidate) =>
+      candidate.mediaSlug === input.mediaSlug &&
+      candidate.entryKind === input.entryKind &&
+      candidate.entryId === input.entryId &&
+      candidate.requestUrl === requestUrl
+  );
+}
+
 export function addForvoWordAddRequestEntry(
   registry: ForvoWordAddRequestRegistry,
   input: {
@@ -175,14 +241,34 @@ export function addForvoWordAddRequestEntry(
     reading?: string;
   }
 ) {
-  if (
-    hasForvoWordAddRequestForEntry(registry, {
-      entryId: input.entryId,
-      entryKind: input.entryKind,
-      mediaSlug: input.mediaSlug
-    })
-  ) {
+  const requestUrl = buildForvoWordAddUrl({
+    entryId: input.entryId,
+    entryKind: input.entryKind,
+    label: input.label,
+    reading: input.reading
+  });
+
+  if (!requestUrl) {
     return false;
+  }
+
+  const existing = registry.entries.find(
+    (candidate) =>
+      candidate.mediaSlug === input.mediaSlug &&
+      candidate.entryKind === input.entryKind &&
+      candidate.entryId === input.entryId
+  );
+
+  if (existing) {
+    if (existing.resolvedAt || existing.requestUrl === requestUrl) {
+      return false;
+    }
+
+    existing.label = input.label;
+    existing.reading = input.reading;
+    existing.requestUrl = requestUrl;
+    existing.requestedAt = new Date().toISOString();
+    return true;
   }
 
   registry.entries.push({
@@ -191,12 +277,7 @@ export function addForvoWordAddRequestEntry(
     label: input.label,
     mediaSlug: input.mediaSlug,
     reading: input.reading,
-    requestUrl: buildForvoWordAddUrl({
-      entryId: input.entryId,
-      entryKind: input.entryKind,
-      label: input.label,
-      reading: input.reading
-    }),
+    requestUrl,
     requestedAt: new Date().toISOString()
   });
 
@@ -235,7 +316,8 @@ export function reconcileForvoWordAddRequestRegistry(
     const nextResolvedAt = match.resolvedAt ?? resolvedAt;
     const nextResolvedAudioSource =
       resolvedEntry.audioSource ?? match.resolvedAudioSource;
-    const nextResolvedAudioSrc = resolvedEntry.audioSrc ?? match.resolvedAudioSrc;
+    const nextResolvedAudioSrc =
+      resolvedEntry.audioSrc ?? match.resolvedAudioSrc;
 
     if (
       match.resolvedAt === nextResolvedAt &&
@@ -278,6 +360,10 @@ function inferForvoWordAddPhrase(input: ForvoWordAddEntryLike) {
   }
 
   return false;
+}
+
+function hasLatinLetters(value: string) {
+  return latinLetterPattern.test(value.normalize("NFKC"));
 }
 
 function normalizeForvoWordAddRequestEntry(

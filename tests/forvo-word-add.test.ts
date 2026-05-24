@@ -15,8 +15,10 @@ import { describe, expect, it } from "vitest";
 
 import {
   addForvoWordAddRequestEntry,
+  buildForvoWordAddRequestLabel,
   buildForvoWordAddPrefill,
   buildForvoWordAddUrl,
+  hasCurrentForvoWordAddRequestForEntry,
   hasForvoWordAddRequestForEntry,
   loadForvoWordAddRequestRegistry,
   normalizeForvoWordAddLabel,
@@ -28,6 +30,24 @@ import {
 const execFileAsync = promisify(execFile);
 
 describe("forvo word-add helpers", () => {
+  it("keeps the Tampermonkey helper able to close autosubmitted confirmation tabs", async () => {
+    const script = await readFile(
+      path.join(process.cwd(), "scripts", "forvo-word-add-helper.user.js"),
+      "utf8"
+    );
+
+    expect(script).toContain("// @grant        window.close");
+    expect(script).toContain(
+      "// @match        https://forvo.com/word-add-success/*"
+    );
+    expect(script).toContain("const AUTO_CLOSE_DELAY_MS = 5000");
+    expect(script).toContain("window.sessionStorage.setItem");
+    expect(script).toContain("window.sessionStorage.removeItem");
+    expect(script).toContain('pathname.startsWith("/word-add-success/")');
+    expect(script).toContain("recordAutoCloseMarker();");
+    expect(script).toContain('scheduleAutoClose("Forvo confirmation")');
+  });
+
   it("rejects request delay values above Node's maximum timer delay before opening URLs", async () => {
     await expect(
       execFileAsync(
@@ -45,6 +65,63 @@ describe("forvo word-add helpers", () => {
         "--request-delay-ms must be at most 2147483647 ms."
       )
     });
+  });
+
+  it("does not wait between word-add URLs during dry-run", async () => {
+    const tempDir = await mkdtemp(
+      path.join(os.tmpdir(), "jcs-forvo-word-add-")
+    );
+    const knownMissingPath = path.join(tempDir, "forvo-known-missing.json");
+    const requestRegistryPath = path.join(
+      tempDir,
+      "forvo-requested-word-add.json"
+    );
+
+    try {
+      await writeFile(
+        knownMissingPath,
+        `${JSON.stringify({
+          version: 1,
+          entries: [
+            {
+              entryId: "term-a",
+              entryKind: "term",
+              label: "攻撃先",
+              mediaSlug: "sample-game",
+              reading: "こうげきさき"
+            },
+            {
+              entryId: "term-b",
+              entryKind: "term",
+              label: "防御",
+              mediaSlug: "sample-game",
+              reading: "ぼうぎょ"
+            }
+          ]
+        })}\n`
+      );
+
+      const { stdout } = await execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          path.join(process.cwd(), "scripts", "request-forvo-word-add.ts"),
+          "--dry-run",
+          "--known-missing-file",
+          knownMissingPath,
+          "--request-registry-file",
+          requestRegistryPath,
+          "--request-delay-ms",
+          "5000"
+        ],
+        { cwd: process.cwd(), timeout: 2000 }
+      );
+
+      expect(stdout).toContain("term-a");
+      expect(stdout).toContain("term-b");
+    } finally {
+      await rm(tempDir, { recursive: true, force: true });
+    }
   });
 
   it("builds the expected word-add URL for a label", () => {
@@ -78,9 +155,7 @@ describe("forvo word-add helpers", () => {
   });
 
   it("normalizes furigana markup and phrase markers for Forvo word-add URLs", () => {
-    expect(normalizeForvoWordAddLabel("{{食|た}}べながら")).toBe(
-      "食べながら"
-    );
+    expect(normalizeForvoWordAddLabel("{{食|た}}べながら")).toBe("食べながら");
     expect(normalizeForvoWordAddLabel("～だろうか")).toBe("だろうか");
 
     expect(
@@ -93,6 +168,50 @@ describe("forvo word-add helpers", () => {
     ).toBe(
       "https://forvo.com/word-add/%E9%A3%9F%E3%81%B9%E3%81%AA%E3%81%8C%E3%82%89/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0"
     );
+  });
+
+  it("uses a Japanese request label and rejects non-Japanese grammar descriptions", () => {
+    expect(
+      buildForvoWordAddRequestLabel({
+        entryId: "grammar-ch-b4-radice-verbale-1",
+        entryKind: "grammar",
+        label: "radice verbale + に行く／に来る"
+      })
+    ).toBe("に行く");
+    expect(
+      buildForvoWordAddUrl({
+        entryId: "grammar-ch-b4-domanda-negativa-6",
+        entryKind: "grammar",
+        label: "domanda negativa"
+      })
+    ).toBeNull();
+  });
+
+  it("prefers reading over partial Japanese runs for mixed Latin labels", () => {
+    expect(
+      buildForvoWordAddRequestLabel({
+        entryId: "term-d2-field",
+        entryKind: "term",
+        label: "D2フィールド",
+        reading: "ディーツーフィールド"
+      })
+    ).toBe("ディーツーフィールド");
+    expect(
+      buildForvoWordAddRequestLabel({
+        entryId: "term-dm-point",
+        entryKind: "term",
+        label: "DMポイント",
+        reading: "ディーエムポイント"
+      })
+    ).toBe("ディーエムポイント");
+    expect(
+      buildForvoWordAddRequestLabel({
+        entryId: "term-hp",
+        entryKind: "term",
+        label: "ＨＰ",
+        reading: "エイチピー"
+      })
+    ).toBe("エイチピー");
   });
 
   it("marks phrase-like entries with a phrase prefill", () => {
@@ -175,8 +294,66 @@ describe("forvo word-add helpers", () => {
     );
   });
 
+  it("does not let stale request URLs block the current canonical request", () => {
+    const registry: ForvoWordAddRequestRegistry = {
+      entries: [
+        {
+          entryId: "term-my-page",
+          entryKind: "term",
+          label: "MY PAGE",
+          mediaSlug: "pokemon-scarlet-violet",
+          reading: "マイページ",
+          requestUrl:
+            "https://forvo.com/word-add/MY%20PAGE/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+          requestedAt: "2026-05-24T10:00:00.000Z"
+        }
+      ],
+      version: 1
+    };
+
+    expect(
+      hasForvoWordAddRequestForEntry(registry, {
+        entryId: "term-my-page",
+        entryKind: "term",
+        mediaSlug: "pokemon-scarlet-violet"
+      })
+    ).toBe(true);
+    expect(
+      hasCurrentForvoWordAddRequestForEntry(registry, {
+        entryId: "term-my-page",
+        entryKind: "term",
+        label: "MY PAGE",
+        mediaSlug: "pokemon-scarlet-violet",
+        reading: "マイページ"
+      })
+    ).toBe(false);
+    expect(
+      addForvoWordAddRequestEntry(registry, {
+        entryId: "term-my-page",
+        entryKind: "term",
+        label: "MY PAGE",
+        mediaSlug: "pokemon-scarlet-violet",
+        reading: "マイページ"
+      })
+    ).toBe(true);
+    expect(registry.entries[0]?.requestUrl).toBe(
+      "https://forvo.com/word-add/%E3%83%9E%E3%82%A4%E3%83%9A%E3%83%BC%E3%82%B8/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0"
+    );
+    expect(
+      hasCurrentForvoWordAddRequestForEntry(registry, {
+        entryId: "term-my-page",
+        entryKind: "term",
+        label: "MY PAGE",
+        mediaSlug: "pokemon-scarlet-violet",
+        reading: "マイページ"
+      })
+    ).toBe(true);
+  });
+
   it("persists requested word-add entries sorted without mutating the registry", async () => {
-    const tempDir = await mkdtemp(path.join(os.tmpdir(), "jcs-forvo-word-add-"));
+    const tempDir = await mkdtemp(
+      path.join(os.tmpdir(), "jcs-forvo-word-add-")
+    );
     const registryPath = path.join(tempDir, "forvo-requested-word-add.json");
     const registry: ForvoWordAddRequestRegistry = {
       entries: [
@@ -248,8 +425,7 @@ describe("forvo word-add helpers", () => {
     expect(registry.entries[0]).toMatchObject({
       entryId: "term-kougekisaki",
       resolvedAudioSource: "forvo",
-      resolvedAudioSrc:
-        "assets/audio/term/term-kougekisaki/forvo-speaker.mp3"
+      resolvedAudioSrc: "assets/audio/term/term-kougekisaki/forvo-speaker.mp3"
     });
     expect(registry.entries[0]?.resolvedAt).toEqual(expect.any(String));
   });
@@ -316,7 +492,9 @@ describe("forvo word-add helpers", () => {
   });
 
   it("loads legacy registries without resolved metadata", async () => {
-    const tempDir = await mkdtemp(path.join(os.tmpdir(), "jcs-forvo-word-add-"));
+    const tempDir = await mkdtemp(
+      path.join(os.tmpdir(), "jcs-forvo-word-add-")
+    );
     const registryPath = path.join(tempDir, "forvo-requested-word-add.json");
 
     await writeFile(

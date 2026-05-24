@@ -418,7 +418,7 @@ Practical card-selection rules:
 - A new card entry is not complete until it has local audio in Markdown or
   `pronunciations.json`, or until the Forvo workflow has opened and recorded a
   `word-add` request because no pronunciation exists yet. Forvo audio must be
-  attempted through the Anki/addon-style flow first: valid browser session,
+  attempted through the Anki/addon-style flow first: dedicated Anki helper,
   `Play(...)` candidates, speaker ranking, direct audio download, and OGG -> MP3
   conversion when needed. Manual download is only an extreme fallback for a
   specific blocked item.

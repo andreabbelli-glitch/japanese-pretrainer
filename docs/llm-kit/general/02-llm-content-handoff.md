@@ -139,7 +139,7 @@ Workflow consigliato:
    reale con provenance nota;
 3. per ogni flashcard creata o revisionata, la pipeline locale deve chiudere il
    workflow pronunce: audio locale/riuso cross-media, poi fetch Forvo Anki-style
-   con sessione browser valida e conversione OGG -> MP3, oppure richiesta
+   tramite helper Anki dedicato e conversione OGG -> MP3, oppure richiesta
    `word-add` registrata quando Forvo non espone ancora la pronuncia;
 4. il download manuale Forvo resta solo fallback estremo per casi singoli in cui
    il fetch Anki-style o l'import diretto falliscono;

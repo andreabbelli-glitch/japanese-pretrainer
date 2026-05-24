@@ -754,7 +754,7 @@ notes_it: >-
   Verbo di base molto frequente.
 level_hint: n5
 aliases: [たべる, taberu]
-audio_src: assets/audio/term/term-taberu/term-taberu.ogg
+audio_src: assets/audio/term/term-taberu/forvo-example-taberu.mp3
 audio_source: forvo
 audio_speaker: Example Speaker
 audio_license: Forvo terms
@@ -799,7 +799,7 @@ Regole audio:
   legacy, entry non ancora review-backed e manifest costruiti per step;
 - per ogni entry collegata a una nuova card o card revisionata, pero, il
   workflow editoriale deve sempre risolvere la pronuncia: prima audio locale o
-  riuso cross-media; poi fetch Forvo Anki-style con sessione browser valida,
+  riuso cross-media; poi fetch Forvo Anki-style tramite helper Anki dedicato,
   candidati `Play(...)`, ranking speaker e conversione OGG -> MP3; se Forvo non
   espone la pronuncia, deve aprire la richiesta `word-add` e registrarla nello
   storico richieste;
