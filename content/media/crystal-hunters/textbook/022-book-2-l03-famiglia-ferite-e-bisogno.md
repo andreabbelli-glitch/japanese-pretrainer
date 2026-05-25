@@ -29,7 +29,7 @@ suona come `いる`, ma non significa "esserci".
 - [{{見|み}}つめる](term:term-ch-mitsumeru) - fissare; guardare intensamente
 - [{{襲|おそ}}う](term:term-ch-osou) - assalire; attaccare
 - [{{弓矢|ゆみや}}](term:term-ch-yumiya) - arco e frecce
-- [{{要|い}}る](term:term-ch-iru-need) - servire; avere bisogno
+- [{{要|い}}る](term:term-ch-iru-need) - essere necessario; avere bisogno
 - [{{家族|かぞく}}](term:term-ch-kazoku) - famiglia
 - [お{{母|かあ}}さん](term:term-ch-okaasan) - madre; mamma
 - [お{{父|とう}}さん](term:term-ch-otousan) - padre; papà
@@ -43,30 +43,30 @@ suona come `いる`, ma non significa "esserci".
 
 ---
 
-## 1. `いる` e `{{要|い}}る`: esserci o servire
+## 1. `いる` e `{{要|い}}る`: esserci o essere necessario
 
 Il manga scrive normalmente `いる` in kana quando parla di persone presenti.
 Quando compare [{{要|い}}る](term:term-ch-iru-need), invece, la frase parla di
-qualcosa che serve.
+qualcosa che è necessario.
 
 :::example_sentence
 jp: >-
   カルがいる。{{水|みず}}が{{要|い}}る。
 translation_it: >-
-  Kal c'è. Serve acqua.
+  Kal c'è. L'acqua è necessaria.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `カルがいる` -> **Presenza animata**: Kal è una persona presente nella scena.
-*   `{{水|みず}}が` -> **Cosa necessaria**: `が` marca ciò che serve.
-*   `{{要|い}}る` -> **Bisogno**: non significa "essere in un luogo", ma "servire".
+*   `{{水|みず}}が` -> **Cosa necessaria**: `が` marca ciò che è necessario.
+*   `{{要|い}}る` -> **Bisogno**: non significa "essere in un luogo", ma "essere necessario".
 
 #### ⚖️ Contrasto operativo
 
-`お{{母|かあ}}さんがいる` = c'è la mamma. `{{水|みず}}が{{要|い}}る` = serve
-acqua. Il suono `いる` è identico, ma il kanji e la natura del soggetto cambiano
-la lettura.
+`お{{母|かあ}}さんがいる` = c'è la mamma. `{{水|みず}}が{{要|い}}る` = l'acqua
+è necessaria. Il suono `いる` è identico, ma il kanji e la natura del soggetto
+cambiano la lettura.
 
 :::example_sentence
 jp: >-
@@ -214,7 +214,7 @@ ascolta, spesso con una sfumatura rassicurante.
 jp: >-
   {{水|みず}}が{{要|い}}る。
 translation_it: >-
-  Serve acqua.
+  L'acqua è necessaria.
 :::
 
 :::example_sentence

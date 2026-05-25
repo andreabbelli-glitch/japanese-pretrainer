@@ -64,10 +64,10 @@ id: term-ch-iru-need
 lemma: '要る'
 reading: 'いる'
 romaji: i-ru
-meaning_it: 'servire; avere bisogno'
+meaning_it: 'essere necessario; avere bisogno'
 pos: stative-verb
 notes_it: >-
-  {{要|い}}る significa servire o essere necessario. La cosa necessaria prende
+  {{要|い}}る significa essere necessario o avere bisogno. La cosa necessaria prende
   spesso `が`, come in {{水|みず}}が{{要|い}}る.
 level_hint: n5
 :::
@@ -143,8 +143,8 @@ pattern: 'Nが要る'
 title: 'Bisogno con が'
 meaning_it: 'la cosa necessaria è marcata con が'
 notes_it: >-
-  Con {{要|い}}る, `が` marca ciò che serve: {{水|みず}}が{{要|い}}る significa
-  che l'acqua è la cosa necessaria.
+  Con {{要|い}}る, `が` marca ciò che è necessario: {{水|みず}}が{{要|い}}る
+  significa che l'acqua è la cosa necessaria.
 level_hint: n5
 :::
 
@@ -230,11 +230,11 @@ entry_type: term
 entry_id: term-ch-iru-need
 card_type: recognition
 front: '{{要|い}}る'
-back: 'いる — servire; avere bisogno'
+back: 'いる — essere necessario; avere bisogno'
 example_jp: '{{水|みず}}が{{要|い}}る。'
-example_it: 'Serve acqua.'
+example_it: "L'acqua è necessaria."
 notes_it: >-
-  {{要|い}}る significa servire o essere necessario. La cosa necessaria prende
+  {{要|い}}る significa essere necessario o avere bisogno. La cosa necessaria prende
   spesso `が`, come in {{水|みず}}が{{要|い}}る.
 tags: [crystal-hunters, book-2, lesson-03]
 :::
@@ -328,10 +328,10 @@ card_type: concept
 front: 'Nが{{要|い}}る'
 back: 'la cosa necessaria è marcata con が'
 example_jp: '{{水|みず}}が{{要|い}}る。'
-example_it: 'Serve acqua.'
+example_it: "L'acqua è necessaria."
 notes_it: >-
-  Con {{要|い}}る, `が` marca ciò che serve: {{水|みず}}が{{要|い}}る significa
-  che l'acqua è la cosa necessaria.
+  Con {{要|い}}る, `が` marca ciò che è necessario: {{水|みず}}が{{要|い}}る
+  significa che l'acqua è la cosa necessaria.
 tags: [crystal-hunters, book-2, lesson-03]
 :::
 
