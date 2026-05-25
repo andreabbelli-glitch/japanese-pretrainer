@@ -20,8 +20,19 @@ import {
   type EntryKind,
   type PronunciationFetchNetworkOptions
 } from "./pronunciation-shared.ts";
+import {
+  lookupKanjiumPitchAccents,
+  lookupShirabePitchAccents,
+  type LocalPitchAccentCandidate,
+  type PitchAccentMatchType
+} from "./pitch-accent-local-sources.ts";
 
-type PitchAccentSourceKey = "wiktionary" | "ojad" | "jiten";
+type PitchAccentSourceKey =
+  | "kanjium"
+  | "shirabe"
+  | "jiten"
+  | "wiktionary"
+  | "ojad";
 
 type PitchAccentFetchTarget = {
   aliases: string[];
@@ -45,6 +56,27 @@ type PitchAccentLookup = {
   sourceLabel: string;
 };
 
+type PitchAccentCandidate = {
+  matchType: PitchAccentMatchType;
+  pageUrl: string;
+  pitchAccents: number[];
+  query: string;
+  reading: string;
+  sourceKey: PitchAccentSourceKey;
+  sourceLabel: string;
+  surface: string;
+};
+
+export type PitchAccentReviewCandidate = {
+  matchType: PitchAccentMatchType;
+  pageUrl: string;
+  pitchAccents: number[];
+  reading: string;
+  sourceKey: PitchAccentSourceKey;
+  sourceLabel: string;
+  surface: string;
+};
+
 export type PitchAccentResult =
   | {
       entryId: string;
@@ -58,6 +90,13 @@ export type PitchAccentResult =
       kind: EntryKind;
       status: "miss" | "skipped_existing" | "source_error";
       detail?: string;
+    }
+  | {
+      candidates: PitchAccentReviewCandidate[];
+      detail?: string;
+      entryId: string;
+      kind: EntryKind;
+      status: "review_required";
     };
 
 type PitchAccentWordListRequest = {
@@ -120,10 +159,12 @@ export async function fetchPitchAccentsForBundle(input: {
   dryRun?: boolean;
   entryIds?: string[];
   entryDelayMs?: number;
+  kanjiumDataPath?: string;
   limit?: number;
   network?: PronunciationFetchNetworkOptions;
   refresh?: boolean;
   retryMisses?: boolean;
+  shirabeAppPath?: string;
   sources?: PitchAccentSourceKey[];
   wordListSource?: string;
   words?: string[];
@@ -164,10 +205,16 @@ export async function fetchPitchAccentsForBundle(input: {
 
     const resolved = await resolvePitchAccentForEntry({
       entry,
+      kanjiumDataPath: input.kanjiumDataPath,
       network: input.network,
+      shirabeAppPath: input.shirabeAppPath,
       sources: input.sources
     });
     results.push(resolved);
+
+    if (resolved.status === "review_required") {
+      continue;
+    }
 
     const manifestKey = buildEntryKey(entry.kind, entry.id);
     const manifestEntry =
@@ -192,6 +239,9 @@ export async function fetchPitchAccentsForBundle(input: {
     requestedUnresolved: requestedTargets.unresolved,
     resolved: results.filter((result) => result.status === "resolved").length,
     results,
+    reviewRequired: results.filter(
+      (result) => result.status === "review_required"
+    ).length,
     skipped: selectedTargets.length - targets.length
   };
 }
@@ -285,73 +335,83 @@ export function resolvePitchAccentRequestedTargets(input: {
 
 export async function resolvePitchAccentForEntry(input: {
   entry: PitchAccentFetchTarget;
+  kanjiumDataPath?: string;
   network?: PronunciationFetchNetworkOptions;
+  shirabeAppPath?: string;
   sources?: PitchAccentSourceKey[];
 }): Promise<PitchAccentResult> {
   const errors: string[] = [];
+  const reviewCandidates: PitchAccentCandidate[] = [];
+  const ambiguousExactCandidates: PitchAccentCandidate[] = [];
   const sources = resolvePitchAccentSources(input.sources);
 
-  if (sources.has("wiktionary")) {
+  for (const source of sources) {
     try {
-      const wiktionary = await lookupWiktionaryPitchAccent({
+      const candidates = await lookupPitchAccentCandidatesForSource({
         entry: input.entry,
-        network: input.network
+        kanjiumDataPath: input.kanjiumDataPath,
+        network: input.network,
+        shirabeAppPath: input.shirabeAppPath,
+        source
       });
 
-      if (wiktionary) {
-        return {
-          entryId: input.entry.id,
-          kind: input.entry.kind,
-          pitchAccent: wiktionary.pitchAccent,
-          source: wiktionary,
-          status: "resolved"
-        };
+      if (candidates.length === 0) {
+        continue;
       }
+
+      const exactCandidates = candidates.filter(
+        (candidate) => candidate.matchType === "exact"
+      );
+      const fuzzyCandidates = candidates.filter(
+        (candidate) => candidate.matchType === "fuzzy"
+      );
+
+      reviewCandidates.push(...fuzzyCandidates);
+
+      if (exactCandidates.length === 0) {
+        continue;
+      }
+
+      const exactValues = uniquePitchAccentValues(exactCandidates);
+
+      if (exactValues.length === 1) {
+        const pitchAccent = exactValues[0]!;
+        const priorValues = uniquePitchAccentValues(ambiguousExactCandidates);
+
+        if (priorValues.length === 0 || priorValues.includes(pitchAccent)) {
+          return {
+            entryId: input.entry.id,
+            kind: input.entry.kind,
+            pitchAccent,
+            source: buildResolvedPitchAccentLookup({
+              currentCandidates: exactCandidates,
+              pitchAccent,
+              priorCandidates: ambiguousExactCandidates
+            }),
+            status: "resolved"
+          };
+        }
+      }
+
+      ambiguousExactCandidates.push(...exactCandidates);
     } catch (error) {
       errors.push(error instanceof Error ? error.message : String(error));
     }
   }
 
-  if (sources.has("ojad")) {
-    try {
-      const ojad = await lookupOjadPitchAccent({
-        entry: input.entry,
-        network: input.network
-      });
+  if (ambiguousExactCandidates.length > 0 || reviewCandidates.length > 0) {
+    const candidates = dedupeReviewCandidates([
+      ...ambiguousExactCandidates,
+      ...reviewCandidates
+    ]);
 
-      if (ojad) {
-        return {
-          entryId: input.entry.id,
-          kind: input.entry.kind,
-          pitchAccent: ojad.pitchAccent,
-          source: ojad,
-          status: "resolved"
-        };
-      }
-    } catch (error) {
-      errors.push(error instanceof Error ? error.message : String(error));
-    }
-  }
-
-  if (sources.has("jiten")) {
-    try {
-      const jiten = await lookupJitenPitchAccent({
-        entry: input.entry,
-        network: input.network
-      });
-
-      if (jiten) {
-        return {
-          entryId: input.entry.id,
-          kind: input.entry.kind,
-          pitchAccent: jiten.pitchAccent,
-          source: jiten,
-          status: "resolved"
-        };
-      }
-    } catch (error) {
-      errors.push(error instanceof Error ? error.message : String(error));
-    }
+    return {
+      candidates,
+      detail: formatReviewRequiredDetail(candidates),
+      entryId: input.entry.id,
+      kind: input.entry.kind,
+      status: "review_required"
+    };
   }
 
   if (errors.length > 0) {
@@ -368,6 +428,159 @@ export async function resolvePitchAccentForEntry(input: {
     kind: input.entry.kind,
     status: "miss"
   };
+}
+
+async function lookupPitchAccentCandidatesForSource(input: {
+  entry: PitchAccentFetchTarget;
+  kanjiumDataPath?: string;
+  network?: PronunciationFetchNetworkOptions;
+  shirabeAppPath?: string;
+  source: PitchAccentSourceKey;
+}): Promise<PitchAccentCandidate[]> {
+  if (input.source === "kanjium") {
+    return localCandidatesToPitchAccentCandidates(
+      await lookupKanjiumPitchAccents({
+        dataPath: input.kanjiumDataPath,
+        entry: input.entry
+      })
+    );
+  }
+
+  if (input.source === "shirabe") {
+    return localCandidatesToPitchAccentCandidates(
+      await lookupShirabePitchAccents({
+        appPath: input.shirabeAppPath,
+        entry: input.entry
+      })
+    );
+  }
+
+  const lookup =
+    input.source === "jiten"
+      ? await lookupJitenPitchAccent({
+          entry: input.entry,
+          network: input.network
+        })
+      : input.source === "wiktionary"
+        ? await lookupWiktionaryPitchAccent({
+            entry: input.entry,
+            network: input.network
+          })
+        : await lookupOjadPitchAccent({
+            entry: input.entry,
+            network: input.network
+          });
+
+  return lookup ? [lookupToExactCandidate(input.entry, lookup)] : [];
+}
+
+function localCandidatesToPitchAccentCandidates(
+  candidates: LocalPitchAccentCandidate[]
+): PitchAccentCandidate[] {
+  return candidates.map((candidate) => ({
+    matchType: candidate.matchType,
+    pageUrl: candidate.pageUrl,
+    pitchAccents: candidate.pitchAccents,
+    query: candidate.query,
+    reading: candidate.reading,
+    sourceKey: candidate.sourceKey,
+    sourceLabel: candidate.sourceLabel,
+    surface: candidate.surface
+  }));
+}
+
+function lookupToExactCandidate(
+  entry: PitchAccentFetchTarget,
+  lookup: PitchAccentLookup
+): PitchAccentCandidate {
+  return {
+    matchType: "exact",
+    pageUrl: lookup.pageUrl,
+    pitchAccents: [lookup.pitchAccent],
+    query: lookup.query,
+    reading: entry.reading ?? lookup.query,
+    sourceKey: lookup.sourceKey,
+    sourceLabel: lookup.sourceLabel,
+    surface: entry.label
+  };
+}
+
+function uniquePitchAccentValues(candidates: PitchAccentCandidate[]) {
+  return [
+    ...new Set(candidates.flatMap((candidate) => candidate.pitchAccents))
+  ].sort((left, right) => left - right);
+}
+
+function buildResolvedPitchAccentLookup(input: {
+  currentCandidates: PitchAccentCandidate[];
+  pitchAccent: number;
+  priorCandidates: PitchAccentCandidate[];
+}): PitchAccentLookup {
+  const current =
+    input.currentCandidates.find((candidate) =>
+      candidate.pitchAccents.includes(input.pitchAccent)
+    ) ?? input.currentCandidates[0]!;
+  const supportingCandidates = input.priorCandidates.filter((candidate) =>
+    candidate.pitchAccents.includes(input.pitchAccent)
+  );
+  const sourceLabel = [
+    ...new Set(
+      [...supportingCandidates, current].map(
+        (candidate) => candidate.sourceLabel
+      )
+    )
+  ].join(" + ");
+
+  return {
+    pageUrl: current.pageUrl,
+    pitchAccent: input.pitchAccent,
+    query: current.query,
+    sourceKey: current.sourceKey,
+    sourceLabel
+  };
+}
+
+function dedupeReviewCandidates(
+  candidates: PitchAccentCandidate[]
+): PitchAccentReviewCandidate[] {
+  const seen = new Set<string>();
+  const deduped: PitchAccentReviewCandidate[] = [];
+
+  for (const candidate of candidates) {
+    const key = [
+      candidate.sourceKey,
+      candidate.matchType,
+      normalizePronunciationText(candidate.surface),
+      normalizePronunciationText(candidate.reading),
+      candidate.pitchAccents.join(",")
+    ].join("\t");
+
+    if (seen.has(key)) {
+      continue;
+    }
+
+    seen.add(key);
+    deduped.push({
+      matchType: candidate.matchType,
+      pageUrl: candidate.pageUrl,
+      pitchAccents: candidate.pitchAccents,
+      reading: candidate.reading,
+      sourceKey: candidate.sourceKey,
+      sourceLabel: candidate.sourceLabel,
+      surface: candidate.surface
+    });
+  }
+
+  return deduped;
+}
+
+function formatReviewRequiredDetail(candidates: PitchAccentReviewCandidate[]) {
+  return candidates
+    .map(
+      (candidate) =>
+        `${candidate.sourceLabel} ${candidate.matchType} ${candidate.surface}/${candidate.reading} -> ${candidate.pitchAccents.join(",")}`
+    )
+    .join(" | ");
 }
 
 export async function lookupJitenPitchAccent(input: {
@@ -1027,6 +1240,10 @@ function updateManifestEntryWithPitchAccentResult(
     };
   }
 
+  if (result.status === "review_required") {
+    return manifestEntry;
+  }
+
   return {
     ...manifestEntry,
     pitchAccent: undefined,
@@ -1039,13 +1256,13 @@ function updateManifestEntryWithPitchAccentResult(
 function mapResultStatusToPitchAccentCheckStatus(
   status: PitchAccentResult["status"]
 ): PitchAccentCheckStatus {
-  if (status === "skipped_existing") {
-    throw new Error(
-      "Unexpected skipped_existing status while persisting pitch accent results."
-    );
+  if (status === "miss" || status === "source_error") {
+    return status;
   }
 
-  return status;
+  throw new Error(
+    `Unexpected ${status} status while persisting pitch accent results.`
+  );
 }
 
 function matchesPitchAccentTarget(
@@ -1081,9 +1298,19 @@ function parsePitchAccentValue(value: string | undefined) {
 function resolvePitchAccentSources(
   sources: PitchAccentSourceKey[] | undefined
 ) {
-  return new Set<PitchAccentSourceKey>(
-    sources && sources.length > 0 ? sources : ["wiktionary", "ojad", "jiten"]
-  );
+  const defaultOrder: PitchAccentSourceKey[] = [
+    "kanjium",
+    "shirabe",
+    "jiten",
+    "wiktionary",
+    "ojad"
+  ];
+
+  if (!sources || sources.length === 0) {
+    return defaultOrder;
+  }
+
+  return [...new Set(sources)];
 }
 
 function extractReadingFromJitenRuby(value: string | undefined) {

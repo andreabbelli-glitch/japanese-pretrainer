@@ -119,6 +119,10 @@ typically at:
     Pass multiple `--entry` flags as needed; use `--word` / `--words-file`
     only when the entry IDs are not available. Do not use a whole-media pitch
     accent fetch for normal content-creation follow-up.
+    The pitch accent workflow tries Kanjium, optional local Shirabe Jisho,
+    Jiten, Wiktionary, then OJAD. If it prints `review_required`, inspect the
+    candidates and consult another source before manually saving an accent; do
+    not treat that output as an automatic resolution.
 18. This skill does not define textbook prose. If a pronunciation request
     expands into creating or revising lesson text, load the relevant
     content-building workflow and follow

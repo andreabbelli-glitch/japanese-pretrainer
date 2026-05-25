@@ -407,6 +407,10 @@ Practical card-selection rules:
 - Use the targeted repo workflow, preferring entry IDs and passing one
   `--entry` per new term or grammar entry:
   `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media duel-masters-dm25 --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]`
+- The fetch order is Kanjium, optional local Shirabe Jisho, Jiten, Wiktionary,
+  then OJAD. If the command prints `review_required`, inspect the candidates,
+  consult another source if needed, and only manually save `pitch_accent` when
+  the value is justified; do not count `review_required` as a completed fetch.
 - Use `--word` or `--words-file` only when a reliable entry-id list is not
   available. Do not run a whole-media pitch accent fetch for normal live-card
   imports unless the user explicitly asks to backfill the media backlog.

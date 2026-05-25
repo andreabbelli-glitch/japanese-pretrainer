@@ -6,18 +6,25 @@ import { MAX_TIMER_DELAY_MS } from "../src/lib/fetch-throttle.ts";
 import { fetchPitchAccentsForBundle } from "../src/lib/pitch-accent-fetch.ts";
 import type { PronunciationFetchNetworkOptions } from "../src/lib/pronunciation-shared.ts";
 
-type PitchAccentSourceOption = "wiktionary" | "ojad" | "jiten";
+type PitchAccentSourceOption =
+  | "kanjium"
+  | "shirabe"
+  | "jiten"
+  | "wiktionary"
+  | "ojad";
 
 type CliOptions = {
   contentRoot: string;
   dryRun: boolean;
   entryIds: string[];
   entryDelayMs?: number;
+  kanjiumDataPath?: string;
   limit?: number;
   mediaSlugs: string[];
   network: PronunciationFetchNetworkOptions;
   refresh: boolean;
   retryMisses: boolean;
+  shirabeAppPath?: string;
   sources: PitchAccentSourceOption[];
   wordListPath?: string;
   words: string[];
@@ -57,17 +64,19 @@ if (!parseResult.ok) {
         dryRun: options.dryRun,
         entryDelayMs: options.entryDelayMs,
         entryIds: options.entryIds,
+        kanjiumDataPath: options.kanjiumDataPath,
         limit: options.limit,
         network: options.network,
         refresh: options.refresh,
         retryMisses: options.retryMisses,
+        shirabeAppPath: options.shirabeAppPath,
         sources: options.sources,
         wordListSource,
         words: options.words
       });
 
       console.info(
-        `${bundle.mediaSlug}: ${summary.resolved} resolved, ${summary.missed} misses, ${summary.errors} errors, ${summary.skipped} skipped`
+        `${bundle.mediaSlug}: ${summary.resolved} resolved, ${summary.missed} misses, ${summary.errors} errors, ${summary.reviewRequired} review required, ${summary.skipped} skipped`
       );
 
       for (const unresolved of summary.requestedUnresolved) {
@@ -170,6 +179,26 @@ function parseCliOptions(argv: string[]): CliOptions {
       continue;
     }
 
+    if (argument === "--kanjium-data-path") {
+      options.kanjiumDataPath = readOptionValue(
+        normalizedArgv,
+        index,
+        "--kanjium-data-path"
+      );
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--shirabe-app-path") {
+      options.shirabeAppPath = readOptionValue(
+        normalizedArgv,
+        index,
+        "--shirabe-app-path"
+      );
+      index += 1;
+      continue;
+    }
+
     if (argument === "--dry-run") {
       options.dryRun = true;
       continue;
@@ -242,11 +271,19 @@ function parseCliOptions(argv: string[]): CliOptions {
 }
 
 function readPitchAccentSourceOption(value: string): PitchAccentSourceOption {
-  if (value === "wiktionary" || value === "ojad" || value === "jiten") {
+  if (
+    value === "kanjium" ||
+    value === "shirabe" ||
+    value === "jiten" ||
+    value === "wiktionary" ||
+    value === "ojad"
+  ) {
     return value;
   }
 
-  throw new Error("--source must be one of: wiktionary, ojad, jiten.");
+  throw new Error(
+    "--source must be one of: kanjium, shirabe, jiten, wiktionary, ojad."
+  );
 }
 
 function readOptionValue(argv: string[], index: number, flag: string) {

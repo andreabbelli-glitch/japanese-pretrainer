@@ -1,4 +1,4 @@
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { execFile } from "node:child_process";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -146,6 +146,266 @@ describe("pitch accent fetch helpers", () => {
     ]);
   });
 
+  it("resolves a unique Kanjium match before network sources", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-kanjium-"));
+    const kanjiumDataPath = path.join(tempDir, "kanjium-accents.txt");
+    await writeFile(
+      kanjiumDataPath,
+      ["二人\tふたり\t3", "取り戻す\tとりもどす\t4,0"].join("\n")
+    );
+    const fetchMock = vi.fn(async () => {
+      throw new Error("Network sources should not be queried.");
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    try {
+      const result = await resolvePitchAccentForEntry({
+        entry: {
+          aliases: [],
+          id: "term-futari",
+          kind: "term",
+          label: "二人",
+          mediaDirectory: "/tmp/fixture",
+          mediaSlug: "fixture",
+          reading: "ふたり"
+        },
+        kanjiumDataPath,
+        network: {
+          maxRetries: 0,
+          requestDelayMs: 0
+        },
+        sources: ["kanjium", "jiten"]
+      });
+
+      expect(result).toMatchObject({
+        pitchAccent: 3,
+        source: {
+          pageUrl:
+            "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+          sourceLabel: "Kanjium"
+        },
+        status: "resolved"
+      });
+      expect(fetchMock).not.toHaveBeenCalled();
+    } finally {
+      await rm(tempDir, { force: true, recursive: true });
+    }
+  });
+
+  it("uses Jiten to disambiguate a multi-accent Kanjium match", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-kanjium-jiten-"));
+    const kanjiumDataPath = path.join(tempDir, "kanjium-accents.txt");
+    await writeFile(kanjiumDataPath, "取り戻す\tとりもどす\t4,0\n");
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.includes("api.jiten.moe/api/vocabulary/search")) {
+        return new Response(
+          JSON.stringify({
+            results: [
+              {
+                wordId: 1713890,
+                readingIndex: 0,
+                text: "取り戻す",
+                rubyText: "取[と]り戻[もど]す"
+              }
+            ]
+          }),
+          { status: 200 }
+        );
+      }
+
+      if (url.includes("api.jiten.moe/api/vocabulary/1713890/0/info")) {
+        return new Response(
+          JSON.stringify({
+            mainReading: {
+              text: "取[と]り戻[もど]す",
+              readingIndex: 0
+            },
+            pitchAccents: [4]
+          }),
+          { status: 200 }
+        );
+      }
+
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    try {
+      const result = await resolvePitchAccentForEntry({
+        entry: {
+          aliases: [],
+          id: "term-torimodosu",
+          kind: "term",
+          label: "取り戻す",
+          mediaDirectory: "/tmp/fixture",
+          mediaSlug: "fixture",
+          reading: "とりもどす"
+        },
+        kanjiumDataPath,
+        network: {
+          maxRetries: 0,
+          requestDelayMs: 0
+        },
+        sources: ["kanjium", "jiten"]
+      });
+
+      expect(result).toMatchObject({
+        pitchAccent: 4,
+        source: {
+          sourceLabel: "Kanjium + Jiten"
+        },
+        status: "resolved"
+      });
+      expect(fetchMock).toHaveBeenCalledTimes(2);
+    } finally {
+      await rm(tempDir, { force: true, recursive: true });
+    }
+  });
+
+  it("reports fuzzy Kanjium candidates as review_required without writing a miss", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-kanjium-review-"));
+    const mediaDirectory = path.join(tempDir, "media", "fixture");
+    const kanjiumDataPath = path.join(tempDir, "kanjium-accents.txt");
+    await writeFile(kanjiumDataPath, "切り替える\tきりかえる\t4,3,0\n");
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.includes("api.jiten.moe")) {
+        return new Response("Not Found", {
+          status: 404,
+          statusText: "Not Found"
+        });
+      }
+
+      if (url.includes("wiktionary")) {
+        return new Response(
+          JSON.stringify({
+            query: {
+              pages: [
+                {
+                  missing: true,
+                  title: "切りかえる"
+                }
+              ]
+            }
+          }),
+          { status: 200 }
+        );
+      }
+
+      if (url.includes("ojad")) {
+        return new Response("Not Found", {
+          status: 404,
+          statusText: "Not Found"
+        });
+      }
+
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    try {
+      const summary = await fetchPitchAccentsForBundle({
+        bundle: {
+          cardFiles: [],
+          cards: [],
+          grammarPatterns: [],
+          lessons: [],
+          media: null,
+          mediaDirectory,
+          mediaSlug: "fixture",
+          references: [],
+          terms: [
+            {
+              aliases: [],
+              id: "term-kirikaeru",
+              kind: "term",
+              lemma: "切りかえる",
+              meaningIt: "cambiare",
+              pitchAccent: undefined,
+              reading: "きりかえる",
+              romaji: "kirikaeru",
+              source: {
+                documentKind: "cards",
+                filePath: "fixture.md",
+                sequence: 0
+              }
+            }
+          ]
+        },
+        kanjiumDataPath,
+        network: {
+          requestDelayMs: 0
+        },
+        sources: ["kanjium"]
+      });
+
+      expect(summary.reviewRequired).toBe(1);
+      expect(summary.missed).toBe(0);
+      expect(summary.results[0]).toMatchObject({
+        candidates: [
+          {
+            matchType: "fuzzy",
+            pitchAccents: [4, 3, 0],
+            reading: "きりかえる",
+            sourceLabel: "Kanjium",
+            surface: "切り替える"
+          }
+        ],
+        entryId: "term-kirikaeru",
+        status: "review_required"
+      });
+
+      await expect(
+        readFile(path.join(mediaDirectory, "pronunciations.json"), "utf8")
+      ).rejects.toMatchObject({
+        code: "ENOENT"
+      });
+    } finally {
+      await rm(tempDir, { force: true, recursive: true });
+    }
+  });
+
+  it("reads pitch accents from a minimal Shirabe dictionary fixture", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-shirabe-"));
+    const shirabeAppPath = path.join(tempDir, "Shirabe Jisho.app");
+    const dictPath = path.join(shirabeAppPath, "Wrapper", "jisho.app", "dict");
+    await mkdir(path.dirname(dictPath), { recursive: true });
+    await writeFile(dictPath, buildMinimalShirabeDictFixture());
+    const fetchMock = vi.fn(async () => {
+      throw new Error("Network sources should not be queried.");
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    try {
+      const result = await resolvePitchAccentForEntry({
+        entry: {
+          aliases: [],
+          id: "term-futari",
+          kind: "term",
+          label: "二人",
+          mediaDirectory: "/tmp/fixture",
+          mediaSlug: "fixture",
+          reading: "ふたり"
+        },
+        network: {
+          requestDelayMs: 0
+        },
+        shirabeAppPath,
+        sources: ["shirabe"]
+      });
+
+      expect(result).toMatchObject({
+        pitchAccent: 3,
+        source: {
+          sourceLabel: "Shirabe Jisho"
+        },
+        status: "resolved"
+      });
+      expect(fetchMock).not.toHaveBeenCalled();
+    } finally {
+      await rm(tempDir, { force: true, recursive: true });
+    }
+  });
+
   it("parses pitch accent word lists from tab-separated rows and JSON arrays", () => {
     expect(
       parsePitchAccentWordList(
@@ -247,7 +507,8 @@ describe("pitch accent fetch helpers", () => {
       },
       network: {
         requestDelayMs: 0
-      }
+      },
+      sources: ["wiktionary", "ojad", "jiten"]
     });
 
     expect(result).toMatchObject({
@@ -303,7 +564,8 @@ describe("pitch accent fetch helpers", () => {
       },
       network: {
         requestDelayMs: 0
-      }
+      },
+      sources: ["wiktionary", "ojad"]
     });
 
     expect(result).toMatchObject({
@@ -360,7 +622,8 @@ describe("pitch accent fetch helpers", () => {
       },
       network: {
         requestDelayMs: 0
-      }
+      },
+      sources: ["wiktionary", "ojad"]
     });
 
     expect(result).toEqual({
@@ -457,7 +720,8 @@ describe("pitch accent fetch helpers", () => {
       },
       network: {
         requestDelayMs: 0
-      }
+      },
+      sources: ["wiktionary", "ojad", "jiten"]
     });
 
     expect(result).toMatchObject({
@@ -547,9 +811,28 @@ describe("pitch accent fetch helpers", () => {
       )
     ).rejects.toMatchObject({
       stderr: expect.stringContaining(
-        "--source must be one of: wiktionary, ojad, jiten."
+        "--source must be one of: kanjium, shirabe, jiten, wiktionary, ojad."
       )
     });
+  }, 60_000);
+
+  it("accepts offline source filters and a Shirabe app path in the CLI", async () => {
+    const result = await runPitchAccentCli(
+      "--content-root",
+      validContentRoot,
+      "--dry-run",
+      "--limit=0",
+      "--source",
+      "kanjium",
+      "--source",
+      "shirabe",
+      "--shirabe-app-path",
+      "/tmp/missing-shirabe.app"
+    );
+
+    expect(result.stdout).toContain(
+      "0 resolved, 0 misses, 0 errors, 0 review required"
+    );
   }, 60_000);
 
   it("writes pronunciations.json with pitch accent source metadata", async () => {
@@ -613,7 +896,8 @@ describe("pitch accent fetch helpers", () => {
         },
         network: {
           requestDelayMs: 0
-        }
+        },
+        sources: ["wiktionary"]
       });
 
       const manifest = JSON.parse(
@@ -719,6 +1003,7 @@ describe("pitch accent fetch helpers", () => {
         network: {
           requestDelayMs: 0
         },
+        sources: ["wiktionary"],
         words: ["進化"]
       });
 
@@ -940,7 +1225,8 @@ describe("pitch accent fetch helpers", () => {
         network: {
           maxRetries: 0,
           requestDelayMs: 0
-        }
+        },
+        sources: ["wiktionary", "ojad", "jiten"]
       });
 
       const firstManifest = JSON.parse(
@@ -995,7 +1281,8 @@ describe("pitch accent fetch helpers", () => {
         network: {
           maxRetries: 0,
           requestDelayMs: 0
-        }
+        },
+        sources: ["wiktionary", "ojad", "jiten"]
       });
 
       const requestedUrls = secondFetchMock.mock.calls.map(([url]) =>
@@ -1108,7 +1395,8 @@ describe("pitch accent fetch helpers", () => {
         network: {
           maxRetries: 0,
           requestDelayMs: 0
-        }
+        },
+        sources: ["wiktionary", "ojad", "jiten"]
       });
 
       const skippedFetchMock = vi.fn(
@@ -1121,7 +1409,8 @@ describe("pitch accent fetch helpers", () => {
         network: {
           maxRetries: 0,
           requestDelayMs: 0
-        }
+        },
+        sources: ["wiktionary", "ojad", "jiten"]
       });
 
       expect(skippedSummary.results).toEqual([]);
@@ -1207,7 +1496,8 @@ describe("pitch accent fetch helpers", () => {
           maxRetries: 0,
           requestDelayMs: 0
         },
-        retryMisses: true
+        retryMisses: true,
+        sources: ["wiktionary", "ojad", "jiten"]
       });
 
       expect(retriedSummary.results).toHaveLength(1);
@@ -1249,4 +1539,25 @@ function runPitchAccentCli(...args: string[]) {
       cwd: repoRoot
     }
   );
+}
+
+function buildMinimalShirabeDictFixture() {
+  return Buffer.concat([
+    Buffer.from([0x00, 0x07, 0x4e, 0x26, 0x18, 0x00]),
+    buildShirabeUtf16Field(0x01, "二人"),
+    buildShirabeUtf16Field(0x01, "２人"),
+    buildShirabeUtf16Field(0x02, "ふたり"),
+    Buffer.from([0x09, 0x03]),
+    buildShirabeUtf16Field(0x02, "ににん"),
+    Buffer.from([0x09, 0x02, 0x05])
+  ]);
+}
+
+function buildShirabeUtf16Field(tag: number, value: string) {
+  const text = Buffer.from(value, "utf16le");
+  const header = Buffer.alloc(4);
+  header[0] = tag;
+  header[1] = 0x80;
+  header.writeUInt16LE(text.length, 2);
+  return Buffer.concat([header, text]);
 }

@@ -6,11 +6,16 @@ Questo documento descrive il flusso automatico per popolare `pitch_accent`.
 
 Popolare `pitch_accent` in modo semplice e sequenziale:
 
-- si prova prima `Wiktionary`;
-- se non risolve, si prova `OJAD`;
+- si prova prima lo snapshot locale `Kanjium`;
+- se Kanjium non risolve o e ambiguo, si prova `Shirabe Jisho` se installato;
+- poi si prova `Jiten`;
+- poi `Wiktionary`;
+- infine `OJAD`;
 - ogni check viene salvato subito su `pronunciations.json`;
 - quando una fonte risolve, si salva subito il valore;
 - insieme al valore si salvano anche `fonte` e `link` della pagina usata.
+- i casi ambigui o fuzzy vengono stampati come `review_required` e non vengono
+  salvati nel manifest.
 
 ## Comando
 
@@ -26,6 +31,8 @@ Comandi utili:
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --refresh
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --retry-misses
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --retry-misses --source jiten
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --source kanjium --source shirabe
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --shirabe-app-path /Applications/Shirabe\ Jisho.app
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --entry term-taberu
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --word 食べる --word 設定
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --words-file tmp/pitch-accent-targets.tsv
@@ -66,23 +73,41 @@ Se non hai ancora una lista affidabile di ID, puoi passare le parole:
   "entry_id": "..." }`.
 
 Nel riepilogo, righe non risolte contro il glossary del bundle vengono
-stampate come `skipped <raw> (...)` e non interrogano Wiktionary o OJAD.
+stampate come `skipped <raw> (...)` e non interrogano le fonti. Le righe
+`review_required` indicano candidati plausibili ma non abbastanza sicuri per un
+salvataggio automatico.
 
 ## Ordine delle fonti
 
 Per ogni entry:
 
-1. si prova `Wiktionary`;
-2. se non c'e un `acc=` univoco e coerente con la reading, si prova `OJAD`;
-3. se anche OJAD non risolve, si prova `Jiten`;
-4. se una fonte risolve, si aggiorna `pronunciations.json`.
+1. si prova `Kanjium` da `data/pitch-accents/kanjium-accents.txt`;
+2. se Kanjium non risolve o restituisce piu accenti, si prova `Shirabe Jisho`;
+3. se serve ancora una fonte, si prova `Jiten`;
+4. poi `Wiktionary`;
+5. infine `OJAD`;
+6. se una fonte risolve in modo univoco, si aggiorna `pronunciations.json`.
+
+Kanjium e Shirabe usano lookup offline/locali. Shirabe e opzionale: se l'app non
+e presente viene saltato senza errore. Puoi indicare un bundle specifico con
+`--shirabe-app-path` o con `SHIRABE_JISHO_APP_PATH`.
 
 Il fallback Jiten usa solo le API vocabulary per leggere `pitchAccents`; non
 scarica o genera audio.
 
 `--source` limita le fonti da interrogare e puo essere passato piu volte. I
-valori supportati sono `wiktionary`, `ojad` e `jiten`. Senza `--source`, il
-comando usa l'ordine completo sopra.
+valori supportati sono `kanjium`, `shirabe`, `jiten`, `wiktionary` e `ojad`.
+Senza `--source`, il comando usa l'ordine completo sopra.
+
+Se Kanjium trova piu valori e una fonte successiva converge su uno di quei
+valori, il fetch salva quel valore con una fonte composita, per esempio
+`Kanjium + Jiten`. Se invece il match e fuzzy, per esempio una variante grafica
+non presente come alias locale, il risultato resta `review_required`.
+
+Quando compare `review_required`, l'LLM deve valutare i candidati stampati,
+consultare un'altra fonte se c'e dubbio, e salvare manualmente `pitch_accent`
+solo quando il valore e giustificato. Il comando non scrive `miss` per questi
+casi, quindi restano ritentabili.
 
 ## Stati possibili
 
@@ -90,6 +115,8 @@ comando usa l'ordine completo sopra.
 - `miss`: la entry e stata controllata ma nessuna fonte ha risolto il valore.
 - `source_error`: il check non e conclusivo per problemi di rete o risposta; la
   entry va ritentata.
+- `review_required`: il comando ha trovato candidati plausibili ma ambigui o
+  fuzzy; non viene persistito in `pronunciations.json`.
 - `skipped_existing`: l'entry ha gia un `pitch_accent` e non si e usato
   `--refresh`.
 
@@ -111,4 +138,4 @@ Quando il fetch riparte senza `--refresh`:
 - le entry `source_error` vengono ritentate.
 
 Usa `--retry-misses` quando vuoi riprovare le entry gia marcate `miss`, per
-esempio dopo l'aggiunta di una nuova fonte come Jiten.
+esempio dopo l'aggiunta o l'aggiornamento di una fonte offline o online.

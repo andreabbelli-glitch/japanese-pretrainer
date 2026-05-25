@@ -7,6 +7,8 @@ node_modules
 .env.local
 .env.production
 data/*
+!data/pitch-accents/
+!data/pitch-accents/**
 !data/forvo-known-missing.json
 !data/forvo-requested-word-add.json
 .playwright-cli

@@ -244,6 +244,12 @@ lesson into the configured target database:
 ./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>
 ```
 
+`pitch-accents:fetch` tries Kanjium, optional local Shirabe Jisho, Jiten,
+Wiktionary, then OJAD. If it prints `review_required`, do not treat it as a
+resolved accent or a miss: inspect the printed candidates, consult another
+source if needed, and only then add `pitch_accent` manually when the value is
+well supported.
+
 Repeat `--lesson-slug` if the item update legitimately spans multiple
 textbook routes. Use
 `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`
