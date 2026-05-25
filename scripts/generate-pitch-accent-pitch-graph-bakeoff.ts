@@ -11,6 +11,7 @@ async function main() {
 
 function parseCliOptions(argv: readonly string[]) {
   const options: {
+    enableExternalExtractors: boolean;
     kotuBaselineCachePath?: string;
     limit: number;
     manifestPath: string;
@@ -20,6 +21,7 @@ function parseCliOptions(argv: readonly string[]) {
     requiredAudioSrcPrefix: string;
     sampleRate: number;
   } = {
+    enableExternalExtractors: true,
     limit: 30,
     manifestPath: "public/vendor/minimal-pairs/manifest.json",
     outDir: ".tmp/pitch-graph-bakeoff",
@@ -44,6 +46,9 @@ function parseCliOptions(argv: readonly string[]) {
       case "--limit":
         options.limit = readPositiveInteger(argv, index, argument);
         index += 1;
+        break;
+      case "--no-external-extractors":
+        options.enableExternalExtractors = false;
         break;
       case "--manifest":
         options.manifestPath = readValue(argv, index, argument);

@@ -186,6 +186,7 @@ describe("pitch accent pitch graph generator", () => {
     );
 
     const result = await generatePitchGraphBakeoffReportForCorpus({
+      enableExternalExtractors: false,
       limit: 1,
       manifestPath,
       outDir,

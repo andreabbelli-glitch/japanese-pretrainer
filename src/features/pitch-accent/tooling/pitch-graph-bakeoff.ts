@@ -1,8 +1,11 @@
 import { createHash } from "node:crypto";
+import { execFile } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { promisify } from "node:util";
 
 import {
+  buildExpectedPitchAccentOverlay,
   buildPitchGraphV2FromRawValues,
   computePitchGraphDisplayDomain,
   estimatePitchGraphFromPcm,
@@ -30,6 +33,7 @@ export type GeneratePitchGraphBakeoffReportResult = {
 export type GeneratePitchGraphBakeoffReportInput = {
   readonly kotuBaselineCache?: KotuPitchBaselineCache | null;
   readonly kotuBaselineCachePath?: string;
+  readonly enableExternalExtractors?: boolean;
   readonly limit?: number;
   readonly manifestPath: string;
   readonly outDir: string;
@@ -37,6 +41,15 @@ export type GeneratePitchGraphBakeoffReportInput = {
   readonly publicDir?: string;
   readonly requiredAudioSrcPrefix?: string;
   readonly sampleRate?: number;
+};
+
+type ExternalPitchExtractorOutput = {
+  readonly durationMs: number;
+  readonly errors?: Readonly<Record<string, string>>;
+  readonly extractors: Readonly<
+    Record<string, { readonly rawValues: readonly number[] } | undefined>
+  >;
+  readonly sampleIntervalMs: number;
 };
 
 type BakeoffTarget = {
@@ -69,6 +82,7 @@ type BakeoffAuditTarget = BakeoffTarget & {
 const defaultProblematicPairIds = ["1z", "qb", "31", "94"] as const;
 const defaultBakeoffPairLimit = 30;
 const defaultSampleRate = 16_000;
+const execFileAsync = promisify(execFile);
 
 const columnDefinitions = [
   {
@@ -132,13 +146,31 @@ export async function generatePitchGraphBakeoffReportForCorpus(
     const samples = await decodeAudioToFloat32Pcm(audioPath, sampleRate);
     const currentStrict = estimatePitchGraphFromPcm(samples, sampleRate);
     const pcmFingerprint = buildPcmFingerprint(samples);
+    const externalOutput =
+      input.enableExternalExtractors === false
+        ? null
+        : await extractExternalPitchGraphs({
+            audioPath,
+            hopMs: currentStrict.sampleIntervalMs,
+            sampleRate
+          });
+    const worldRawValues =
+      externalOutput?.extractors.worldHarvest?.rawValues ?? null;
+    const baseRawValues = worldRawValues ?? currentStrict.values;
+    const baseExtractor = worldRawValues
+      ? ("world-harvest" as const)
+      : ("autocorrelation-v1" as const);
+    const baseDurationMs =
+      externalOutput?.durationMs ?? currentStrict.durationMs;
+    const baseSampleIntervalMs =
+      externalOutput?.sampleIntervalMs ?? currentStrict.sampleIntervalMs;
     const baseGraphInput = {
-      durationMs: currentStrict.durationMs,
-      extractor: "autocorrelation-v1" as const,
+      durationMs: baseDurationMs,
+      extractor: baseExtractor,
       moraCount: target.option.moraCount,
       pitchAccent: target.option.pitchAccent,
-      rawValues: currentStrict.values,
-      sampleIntervalMs: currentStrict.sampleIntervalMs
+      rawValues: baseRawValues,
+      sampleIntervalMs: baseSampleIntervalMs
     };
     const columns: Record<string, BakeoffColumn> = {
       currentStrict: {
@@ -158,7 +190,7 @@ export async function generatePitchGraphBakeoffReportForCorpus(
           strategy: "local-improved"
         }),
         status: "available",
-        summary: "Compressed-baseline V2 render with short-gap interpolation."
+        summary: `${baseExtractor === "world-harvest" ? "WORLD-based" : "Autocorrelation-based"} compressed-baseline V2 render with short-gap interpolation.`
       },
       localKotuLike: {
         graph: buildPitchGraphV2FromRawValues({
@@ -166,13 +198,54 @@ export async function generatePitchGraphBakeoffReportForCorpus(
           strategy: "local-kotu-like"
         }),
         status: "available",
-        summary:
-          "Uniform timeline render using baseline continuity for non-voiced frames."
+        summary: `${baseExtractor === "world-harvest" ? "WORLD-based" : "Autocorrelation-based"} uniform timeline render using baseline continuity for non-voiced frames.`
       },
-      praatRaw: unavailableExternalExtractor("Praat"),
-      pyinRaw: unavailableExternalExtractor("pYIN"),
-      worldCleanup: unavailableExternalExtractor("WORLD cleanup"),
-      worldHarvest: unavailableExternalExtractor("WORLD Harvest")
+      praatRaw: buildExternalRawColumn({
+        durationMs: externalOutput?.durationMs ?? currentStrict.durationMs,
+        error: externalOutput?.errors?.praatRaw,
+        extractor: "praat",
+        option: target.option,
+        rawValues: externalOutput?.extractors.praatRaw?.rawValues,
+        sampleIntervalMs:
+          externalOutput?.sampleIntervalMs ?? currentStrict.sampleIntervalMs
+      }),
+      pyinRaw: buildExternalRawColumn({
+        durationMs: externalOutput?.durationMs ?? currentStrict.durationMs,
+        error: externalOutput?.errors?.pyinRaw,
+        extractor: "pyin",
+        option: target.option,
+        rawValues: externalOutput?.extractors.pyinRaw?.rawValues,
+        sampleIntervalMs:
+          externalOutput?.sampleIntervalMs ?? currentStrict.sampleIntervalMs
+      }),
+      worldCleanup: worldRawValues
+        ? {
+            graph: buildPitchGraphV2FromRawValues({
+              durationMs: baseDurationMs,
+              extractor: "world-harvest",
+              moraCount: target.option.moraCount,
+              pitchAccent: target.option.pitchAccent,
+              rawValues: worldRawValues,
+              sampleIntervalMs: baseSampleIntervalMs,
+              strategy: "local-improved"
+            }),
+            status: "available",
+            summary:
+              "WORLD Harvest + StoneMask with the standard compressed-baseline cleanup."
+          }
+        : unavailableExternalExtractor(
+            "WORLD cleanup",
+            externalOutput?.errors?.worldHarvest
+          ),
+      worldHarvest: buildExternalRawColumn({
+        durationMs: externalOutput?.durationMs ?? currentStrict.durationMs,
+        error: externalOutput?.errors?.worldHarvest,
+        extractor: "world-harvest",
+        option: target.option,
+        rawValues: worldRawValues ?? undefined,
+        sampleIntervalMs:
+          externalOutput?.sampleIntervalMs ?? currentStrict.sampleIntervalMs
+      })
     };
 
     auditTargets.push({
@@ -306,11 +379,139 @@ function buildKotuApiBaselineColumn(input: {
   };
 }
 
-function unavailableExternalExtractor(name: string): BakeoffColumn {
+function buildExternalRawColumn(input: {
+  readonly durationMs: number;
+  readonly error?: string;
+  readonly extractor: "praat" | "pyin" | "world-harvest";
+  readonly option: PitchAccentPairOption;
+  readonly rawValues?: readonly number[];
+  readonly sampleIntervalMs: number;
+}): BakeoffColumn {
+  if (!input.rawValues) {
+    return unavailableExternalExtractor(
+      input.extractor,
+      input.error ?? "external extractor output was not produced"
+    );
+  }
+
   return {
-    reason: `${name} is not configured in this local bake-off run.`,
+    graph: buildStrictExternalPitchGraph({
+      durationMs: input.durationMs,
+      extractor: input.extractor,
+      option: input.option,
+      rawValues: input.rawValues,
+      sampleIntervalMs: input.sampleIntervalMs
+    }),
+    status: "available",
+    summary: `${input.extractor} raw F0 trace; zero/unvoiced frames are preserved in rawValues and rendered as gaps.`
+  };
+}
+
+function buildStrictExternalPitchGraph(input: {
+  readonly durationMs: number;
+  readonly extractor: "praat" | "pyin" | "world-harvest";
+  readonly option: PitchAccentPairOption;
+  readonly rawValues: readonly number[];
+  readonly sampleIntervalMs: number;
+}): PitchAccentAudioPitchGraph {
+  const rawValues = input.rawValues.map((value) =>
+    typeof value === "number" && Number.isFinite(value) && value >= 0
+      ? roundPitchValue(value)
+      : 0
+  );
+  const values = rawValues.map((value) => (value > 0 ? value : null));
+
+  return {
+    durationMs: input.durationMs,
+    expectedAccentOverlay: buildExpectedPitchAccentOverlay({
+      durationMs: input.durationMs,
+      moraCount: input.option.moraCount,
+      pitchAccent: input.option.pitchAccent,
+      sampleCount: rawValues.length,
+      sampleIntervalMs: input.sampleIntervalMs
+    }),
+    extractor: input.extractor,
+    qualityScore: computeRawExtractorQualityScore(rawValues),
+    rawValues,
+    renderStrategy: "strict-v1",
+    sampleIntervalMs: input.sampleIntervalMs,
+    values,
+    version: 2
+  };
+}
+
+function unavailableExternalExtractor(
+  name: string,
+  error?: string
+): BakeoffColumn {
+  return {
+    reason: error
+      ? `${name} did not produce a usable trace: ${error}`
+      : `${name} is not configured in this local bake-off run.`,
     status: "unavailable"
   };
+}
+
+async function extractExternalPitchGraphs(input: {
+  readonly audioPath: string;
+  readonly hopMs: number;
+  readonly sampleRate: number;
+}): Promise<ExternalPitchExtractorOutput | null> {
+  try {
+    const { stdout } = await execFileAsync(
+      "uv",
+      [
+        "run",
+        "--python",
+        "3.12",
+        "--with",
+        "numpy",
+        "--with",
+        "scipy",
+        "--with",
+        "librosa",
+        "--with",
+        "pyworld",
+        "--with",
+        "praat-parselmouth",
+        "--with",
+        "setuptools<80",
+        "python",
+        path.join(process.cwd(), "scripts", "extract-pitch-graph-bakeoff.py"),
+        "--audio",
+        input.audioPath,
+        "--sample-rate",
+        String(input.sampleRate),
+        "--hop-ms",
+        String(input.hopMs)
+      ],
+      {
+        encoding: "utf8",
+        maxBuffer: 16 * 1024 * 1024
+      }
+    );
+
+    return JSON.parse(stdout) as ExternalPitchExtractorOutput;
+  } catch (error) {
+    return {
+      durationMs: 0,
+      errors: {
+        praatRaw: formatExternalExtractorError(error),
+        pyinRaw: formatExternalExtractorError(error),
+        worldHarvest: formatExternalExtractorError(error)
+      },
+      extractors: {},
+      sampleIntervalMs: input.hopMs
+    };
+  }
+}
+
+function formatExternalExtractorError(error: unknown) {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return String(error);
 }
 
 function buildPcmFingerprint(samples: Float32Array) {
@@ -428,14 +629,12 @@ function renderBakeoffHtml(targets: readonly BakeoffAuditTarget[]) {
 }
 
 function renderBakeoffTargetHtml(target: BakeoffAuditTarget) {
-  const primaryColumnKeys = [
-    "currentStrict",
-    "localKotuLike",
-    "localImproved",
-    ...(target.columns.kotuApiBaseline?.status === "available"
-      ? ["kotuApiBaseline"]
-      : [])
-  ];
+  const primaryColumnKeys = columnDefinitions
+    .map((definition) => definition.key)
+    .filter(
+      (key) =>
+        key === "currentStrict" || target.columns[key]?.status === "available"
+    );
   const diagnosticColumnKeys = columnDefinitions
     .map((definition) => definition.key)
     .filter((key) => !primaryColumnKeys.includes(key));
@@ -582,6 +781,47 @@ function buildReportAudioHref(input: {
   const relativePath = path.relative(input.outDir, audioPath);
 
   return relativePath.split(path.sep).join("/");
+}
+
+function computeRawExtractorQualityScore(values: readonly number[]) {
+  if (values.length === 0) {
+    return 0;
+  }
+
+  const voicedValues = values.filter(
+    (value) => Number.isFinite(value) && value > 0
+  );
+
+  if (voicedValues.length === 0) {
+    return 0;
+  }
+
+  const coverage = voicedValues.length / values.length;
+  const jumps = voicedValues
+    .slice(1)
+    .map((value, index) => Math.abs(value - voicedValues[index]!));
+  const averageJump =
+    jumps.length > 0
+      ? jumps.reduce((total, value) => total + value, 0) / jumps.length
+      : 0;
+  const range = Math.max(
+    Math.max(...voicedValues) - Math.min(...voicedValues),
+    1
+  );
+  const smoothness =
+    1 - clampNumber(averageJump / Math.max(45, range * 0.9), 0, 1);
+
+  return Number.parseFloat(
+    clampNumber(coverage * 0.72 + smoothness * 0.28, 0, 1).toFixed(2)
+  );
+}
+
+function roundPitchValue(value: number) {
+  return Number.parseFloat(value.toFixed(1));
+}
+
+function clampNumber(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value));
 }
 
 function roundSvgCoordinate(value: number) {
