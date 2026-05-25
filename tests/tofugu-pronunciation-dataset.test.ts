@@ -165,6 +165,54 @@ describe("Tofugu pronunciation dataset", () => {
     ).toBe("not_found");
   });
 
+  it("requires exact readings for reading-bearing grammar targets", async () => {
+    await seedDatasetFile("上.mp3");
+    await seedDatasetFile("上【じょう】.mp3");
+    await seedDatasetFile("上【うえ】.mp3");
+    const index = await buildTofuguPronunciationIndex(datasetDir);
+
+    const match = findTofuguMatchForTarget(
+      createTarget({
+        kind: "grammar",
+        label: "上",
+        reading: "うえ"
+      }),
+      index
+    );
+
+    expect(match).toMatchObject({
+      status: "matched",
+      entry: expect.objectContaining({
+        reading: "うえ",
+        surface: "上"
+      })
+    });
+  });
+
+  it("does not delete grammar wave markers during exact matching", async () => {
+    await seedDatasetFile("〜丁目.mp3");
+    const index = await buildTofuguPronunciationIndex(datasetDir);
+
+    expect(
+      findTofuguMatchForTarget(
+        createTarget({
+          kind: "grammar",
+          label: "丁目"
+        }),
+        index
+      ).status
+    ).toBe("not_found");
+    expect(
+      findTofuguMatchForTarget(
+        createTarget({
+          kind: "grammar",
+          label: "～丁目"
+        }),
+        index
+      ).status
+    ).toBe("matched");
+  });
+
   it("imports matched MP3 files into the media bundle manifest", async () => {
     await seedDatasetFile("食べる【たべる】.mp3", "audio");
     await writeFile(

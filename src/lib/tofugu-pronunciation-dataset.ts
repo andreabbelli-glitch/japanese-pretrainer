@@ -39,7 +39,7 @@ const mp3ExtensionPattern = /\.mp3$/iu;
 const finalReadingPattern = /^(?<surface>[^【】]+)【(?<reading>[^【】]+)】$/u;
 const japaneseScriptPattern = /[ぁ-ゟ゠-ヿ一-龯々〆ヶ]/u;
 const latinLetterPattern = /[a-z]/iu;
-const markerPattern = /[〜～~]/gu;
+const waveMarkerPattern = /[〜～~]/gu;
 const whitespacePattern = /\s+/gu;
 
 export type TofuguPronunciationDatasetEntry = {
@@ -403,7 +403,20 @@ function findGrammarCandidates(
   target: PronunciationTargetEntry,
   index: TofuguPronunciationIndex
 ) {
-  return buildJapaneseSurfaceValues([target.label, ...target.aliases]).flatMap(
+  const surfaceValues = buildJapaneseSurfaceValues([
+    target.label,
+    ...target.aliases
+  ]);
+  const reading = target.reading;
+
+  if (reading) {
+    return surfaceValues.flatMap((surface) =>
+      index.bySurfaceAndReading.get(buildSurfaceReadingKey(surface, reading)) ??
+      []
+    );
+  }
+
+  return surfaceValues.flatMap(
     (surface) => index.bySurface.get(normalizeExactJapaneseText(surface)) ?? []
   );
 }
@@ -428,7 +441,7 @@ function buildSurfaceReadingKey(surface: string, reading: string) {
 function normalizeExactJapaneseText(value: string) {
   return stripInlineMarkdown(value)
     .normalize("NFKC")
-    .replace(markerPattern, "")
+    .replace(waveMarkerPattern, "〜")
     .replace(whitespacePattern, " ")
     .trim();
 }
