@@ -119,11 +119,14 @@ Bake-off locale su 20-30 pair, senza modificare i manifest vendorizzati:
 ```
 
 Il report viene scritto di default in `.tmp/pitch-graph-bakeoff/` e include
-colonne fisse per current strict, WORLD/Praat/pYIN, cleanup WORLD, render
-Kotu-like locale, render improved locale e baseline Kotu. Di default il comando
-usa `uv` per eseguire gli estrattori Python esterni (`pyworld`,
-`praat-parselmouth`, `librosa.pyin`) su Python 3.12; passa
+colonne fisse per current strict, WORLD/Praat/pYIN, Onsei-style Praat, cleanup
+WORLD, render Kotu-like locale, render improved locale e baseline Kotu. Di
+default il comando usa `uv` per eseguire gli estrattori Python esterni
+(`pyworld`, `praat-parselmouth`, `librosa.pyin`) su Python 3.12; passa
 `--no-external-extractors` solo per smoke/test veloci senza dipendenze esterne.
+La colonna Onsei replica la logica F0 della repo `itsupera/onsei` senza
+vendorizarla: Parselmouth `to_pitch(time_step=0.005)`, `kill_octave_jumps()` e
+`smooth()`.
 
 La baseline Kotu e autorizzata ma opt-in. La documentazione pubblica
 [Kotu API](https://docs.kotu.io/) dichiara una superficie v2 limitata a status,

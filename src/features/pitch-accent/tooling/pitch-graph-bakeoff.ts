@@ -53,7 +53,14 @@ type ExternalPitchExtractorOutput = {
   readonly durationMs: number;
   readonly errors?: Readonly<Record<string, string>>;
   readonly extractors: Readonly<
-    Record<string, { readonly rawValues: readonly number[] } | undefined>
+    Record<
+      string,
+      | {
+          readonly rawValues: readonly number[];
+          readonly sampleIntervalMs?: number;
+        }
+      | undefined
+    >
   >;
   readonly sampleIntervalMs: number;
 };
@@ -106,6 +113,10 @@ const columnDefinitions = [
   {
     key: "praatRaw",
     label: "Praat raw"
+  },
+  {
+    key: "onseiPraat",
+    label: "Onsei Praat smooth"
   },
   {
     key: "pyinRaw",
@@ -224,6 +235,19 @@ export async function generatePitchGraphBakeoffReportForCorpus(
         status: "available",
         summary: `${baseExtractor === "world-harvest" ? "WORLD-based" : "Autocorrelation-based"} uniform timeline render using baseline continuity for non-voiced frames.`
       },
+      onseiPraat: buildExternalRawColumn({
+        durationMs: externalOutput?.durationMs ?? currentStrict.durationMs,
+        error: externalOutput?.errors?.onseiPraat,
+        extractor: "onsei-praat",
+        option: target.option,
+        rawValues: externalOutput?.extractors.onseiPraat?.rawValues,
+        sampleIntervalMs:
+          externalOutput?.extractors.onseiPraat?.sampleIntervalMs ??
+          externalOutput?.sampleIntervalMs ??
+          currentStrict.sampleIntervalMs,
+        summary:
+          "Onsei-style Parselmouth trace: to_pitch(time_step=5ms), kill_octave_jumps(), smooth()."
+      }),
       praatRaw: buildExternalRawColumn({
         durationMs: externalOutput?.durationMs ?? currentStrict.durationMs,
         error: externalOutput?.errors?.praatRaw,
@@ -492,10 +516,11 @@ function buildKotuApiBaselineColumn(input: {
 function buildExternalRawColumn(input: {
   readonly durationMs: number;
   readonly error?: string;
-  readonly extractor: "praat" | "pyin" | "world-harvest";
+  readonly extractor: "onsei-praat" | "praat" | "pyin" | "world-harvest";
   readonly option: PitchAccentPairOption;
   readonly rawValues?: readonly number[];
   readonly sampleIntervalMs: number;
+  readonly summary?: string;
 }): BakeoffColumn {
   if (!input.rawValues) {
     return unavailableExternalExtractor(
@@ -513,13 +538,15 @@ function buildExternalRawColumn(input: {
       sampleIntervalMs: input.sampleIntervalMs
     }),
     status: "available",
-    summary: `${input.extractor} raw F0 trace; zero/unvoiced frames are preserved in rawValues and rendered as gaps.`
+    summary:
+      input.summary ??
+      `${input.extractor} raw F0 trace; zero/unvoiced frames are preserved in rawValues and rendered as gaps.`
   };
 }
 
 function buildStrictExternalPitchGraph(input: {
   readonly durationMs: number;
-  readonly extractor: "praat" | "pyin" | "world-harvest";
+  readonly extractor: "onsei-praat" | "praat" | "pyin" | "world-harvest";
   readonly option: PitchAccentPairOption;
   readonly rawValues: readonly number[];
   readonly sampleIntervalMs: number;
@@ -606,6 +633,7 @@ async function extractExternalPitchGraphs(input: {
     return {
       durationMs: 0,
       errors: {
+        onseiPraat: formatExternalExtractorError(error),
         praatRaw: formatExternalExtractorError(error),
         pyinRaw: formatExternalExtractorError(error),
         worldHarvest: formatExternalExtractorError(error)
@@ -740,7 +768,7 @@ function renderBakeoffHtml(targets: readonly BakeoffAuditTarget[]) {
 </head>
 <body>
   <h1>Pitch Graph V2 Bake-off</h1>
-  <h2>WORLD/Praat/pYIN raw columns are included as explicit extractor slots; Kotu API baseline is cache-backed and opt-in.</h2>
+  <h2>WORLD/Praat/pYIN/Onsei raw columns are included as explicit extractor slots; Kotu API baseline is cache-backed and opt-in.</h2>
   ${targets.map(renderBakeoffTargetHtml).join("\n")}
 </body>
 </html>

@@ -35,6 +35,7 @@ export type PitchAccentPairOption = {
 export type PitchAccentPitchGraphExtractor =
   | "autocorrelation-v1"
   | "kotu-api"
+  | "onsei-praat"
   | "praat"
   | "pyin"
   | "world-harvest";

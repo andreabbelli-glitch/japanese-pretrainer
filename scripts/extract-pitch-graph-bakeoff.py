@@ -29,6 +29,12 @@ def main() -> None:
         "sampleIntervalMs": round(args.hop_ms),
     }
 
+    run_extractor(
+        result,
+        "onseiPraat",
+        lambda: extract_onsei_praat(y, sample_rate),
+        sample_interval_ms=5,
+    )
     run_extractor(result, "worldHarvest", lambda: extract_world(y, sample_rate, args.hop_ms))
     run_extractor(
         result, "praatRaw", lambda: extract_praat(y, sample_rate, args.hop_ms)
@@ -38,9 +44,14 @@ def main() -> None:
     print(json.dumps(result, ensure_ascii=False))
 
 
-def run_extractor(result: dict[str, Any], key: str, extractor) -> None:
+def run_extractor(
+    result: dict[str, Any], key: str, extractor, sample_interval_ms: float | None = None
+) -> None:
     try:
-        result["extractors"][key] = {"rawValues": clean_values(extractor())}
+        output = {"rawValues": clean_values(extractor())}
+        if sample_interval_ms is not None:
+            output["sampleIntervalMs"] = round(sample_interval_ms)
+        result["extractors"][key] = output
     except Exception as error:  # pragma: no cover - surfaced in the JSON report.
         result["errors"][key] = str(error)
 
@@ -57,6 +68,31 @@ def extract_world(y: np.ndarray, sample_rate: int, hop_ms: float) -> np.ndarray:
 
 
 def extract_praat(y: np.ndarray, sample_rate: int, hop_ms: float) -> np.ndarray:
+    return extract_praat_from_temp_wav(
+        y,
+        sample_rate,
+        lambda sound: sound.to_pitch(
+            time_step=hop_ms / 1000,
+            pitch_floor=50.0,
+            pitch_ceiling=500.0,
+        ).selected_array["frequency"],
+    )
+
+
+def extract_onsei_praat(y: np.ndarray, sample_rate: int) -> np.ndarray:
+    # Mirrors itsupera/onsei's SpeechRecord pitch path:
+    # Sound.to_pitch(time_step=0.005).kill_octave_jumps().smooth().
+    return extract_praat_from_temp_wav(
+        y,
+        sample_rate,
+        lambda sound: sound.to_pitch(time_step=0.005)
+        .kill_octave_jumps()
+        .smooth()
+        .selected_array["frequency"],
+    )
+
+
+def extract_praat_from_temp_wav(y: np.ndarray, sample_rate: int, extractor) -> np.ndarray:
     pcm = np.clip(y, -1.0, 1.0)
     pcm = (pcm * 32767).astype(np.int16)
     temp_path = ""
@@ -67,13 +103,7 @@ def extract_praat(y: np.ndarray, sample_rate: int, hop_ms: float) -> np.ndarray:
 
         wavfile.write(temp_path, sample_rate, pcm)
         sound = parselmouth.Sound(temp_path)
-        pitch = sound.to_pitch(
-            time_step=hop_ms / 1000,
-            pitch_floor=50.0,
-            pitch_ceiling=500.0,
-        )
-
-        return pitch.selected_array["frequency"]
+        return extractor(sound)
     finally:
         if temp_path:
             try:
