@@ -206,11 +206,21 @@ describe("pitch accent pitch graph generator", () => {
     expect(audit.targets[0]?.columns.currentStrict.status).toBe("available");
     expect(audit.targets[0]?.columns.localImproved.status).toBe("available");
     expect(audit.targets[0]?.columns.onseiPraat.status).toBe("unavailable");
+    expect(audit.targets[0]?.columns.swiftF0Normalized.status).toBe(
+      "unavailable"
+    );
+    expect(audit.targets[0]?.columns.swiftF0Raw.status).toBe("unavailable");
+    expect(audit.targets[0]?.columns.swiftF0Smoothed.status).toBe(
+      "unavailable"
+    );
     expect(audit.targets[0]?.columns.worldHarvest.status).toBe("unavailable");
     expect(html).toContain("<audio controls");
     expect(html).toContain("frames:");
     expect(html).toContain("Onsei Praat smooth");
-    expect(html).toContain("WORLD/Praat/pYIN/Onsei raw");
+    expect(html).toContain("SwiftF0 normalized");
+    expect(html).toContain("SwiftF0 raw");
+    expect(html).toContain("SwiftF0 smoothed");
+    expect(html).toContain("WORLD/Praat/pYIN/Onsei/SwiftF0");
     expect(html).toContain("Kotu API baseline");
   });
 });

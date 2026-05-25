@@ -38,6 +38,9 @@ export type PitchAccentPitchGraphExtractor =
   | "onsei-praat"
   | "praat"
   | "pyin"
+  | "swift-f0-normalized"
+  | "swift-f0-raw"
+  | "swift-f0-smoothed"
   | "world-harvest";
 
 export type PitchAccentPitchGraphRenderStrategy =

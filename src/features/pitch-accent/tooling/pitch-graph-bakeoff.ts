@@ -123,6 +123,18 @@ const columnDefinitions = [
     label: "pYIN raw"
   },
   {
+    key: "swiftF0Raw",
+    label: "SwiftF0 raw"
+  },
+  {
+    key: "swiftF0Normalized",
+    label: "SwiftF0 normalized"
+  },
+  {
+    key: "swiftF0Smoothed",
+    label: "SwiftF0 smoothed"
+  },
+  {
     key: "worldCleanup",
     label: "WORLD cleanup standard"
   },
@@ -265,6 +277,45 @@ export async function generatePitchGraphBakeoffReportForCorpus(
         rawValues: externalOutput?.extractors.pyinRaw?.rawValues,
         sampleIntervalMs:
           externalOutput?.sampleIntervalMs ?? currentStrict.sampleIntervalMs
+      }),
+      swiftF0Normalized: buildExternalRawColumn({
+        durationMs: externalOutput?.durationMs ?? currentStrict.durationMs,
+        error: externalOutput?.errors?.swiftF0Normalized,
+        extractor: "swift-f0-normalized",
+        option: target.option,
+        rawValues: externalOutput?.extractors.swiftF0Normalized?.rawValues,
+        sampleIntervalMs:
+          externalOutput?.extractors.swiftF0Normalized?.sampleIntervalMs ??
+          externalOutput?.sampleIntervalMs ??
+          currentStrict.sampleIntervalMs,
+        summary:
+          "SwiftF0 pitch with speech-range voicing mask: confidence > 0.9, 65-400 Hz."
+      }),
+      swiftF0Raw: buildExternalRawColumn({
+        durationMs: externalOutput?.durationMs ?? currentStrict.durationMs,
+        error: externalOutput?.errors?.swiftF0Raw,
+        extractor: "swift-f0-raw",
+        option: target.option,
+        rawValues: externalOutput?.extractors.swiftF0Raw?.rawValues,
+        sampleIntervalMs:
+          externalOutput?.extractors.swiftF0Raw?.sampleIntervalMs ??
+          externalOutput?.sampleIntervalMs ??
+          currentStrict.sampleIntervalMs,
+        summary:
+          "SwiftF0 model pitch_hz output without applying the voicing mask."
+      }),
+      swiftF0Smoothed: buildExternalRawColumn({
+        durationMs: externalOutput?.durationMs ?? currentStrict.durationMs,
+        error: externalOutput?.errors?.swiftF0Smoothed,
+        extractor: "swift-f0-smoothed",
+        option: target.option,
+        rawValues: externalOutput?.extractors.swiftF0Smoothed?.rawValues,
+        sampleIntervalMs:
+          externalOutput?.extractors.swiftF0Smoothed?.sampleIntervalMs ??
+          externalOutput?.sampleIntervalMs ??
+          currentStrict.sampleIntervalMs,
+        summary:
+          "SwiftF0 normalized trace with short-gap interpolation and light moving-average smoothing."
       }),
       worldCleanup: worldRawValues
         ? {
@@ -516,7 +567,14 @@ function buildKotuApiBaselineColumn(input: {
 function buildExternalRawColumn(input: {
   readonly durationMs: number;
   readonly error?: string;
-  readonly extractor: "onsei-praat" | "praat" | "pyin" | "world-harvest";
+  readonly extractor:
+    | "onsei-praat"
+    | "praat"
+    | "pyin"
+    | "swift-f0-normalized"
+    | "swift-f0-raw"
+    | "swift-f0-smoothed"
+    | "world-harvest";
   readonly option: PitchAccentPairOption;
   readonly rawValues?: readonly number[];
   readonly sampleIntervalMs: number;
@@ -546,7 +604,14 @@ function buildExternalRawColumn(input: {
 
 function buildStrictExternalPitchGraph(input: {
   readonly durationMs: number;
-  readonly extractor: "onsei-praat" | "praat" | "pyin" | "world-harvest";
+  readonly extractor:
+    | "onsei-praat"
+    | "praat"
+    | "pyin"
+    | "swift-f0-normalized"
+    | "swift-f0-raw"
+    | "swift-f0-smoothed"
+    | "world-harvest";
   readonly option: PitchAccentPairOption;
   readonly rawValues: readonly number[];
   readonly sampleIntervalMs: number;
@@ -612,6 +677,8 @@ async function extractExternalPitchGraphs(input: {
         "--with",
         "praat-parselmouth",
         "--with",
+        "swift-f0[audio]",
+        "--with",
         "setuptools<80",
         "python",
         path.join(process.cwd(), "scripts", "extract-pitch-graph-bakeoff.py"),
@@ -636,6 +703,9 @@ async function extractExternalPitchGraphs(input: {
         onseiPraat: formatExternalExtractorError(error),
         praatRaw: formatExternalExtractorError(error),
         pyinRaw: formatExternalExtractorError(error),
+        swiftF0Normalized: formatExternalExtractorError(error),
+        swiftF0Raw: formatExternalExtractorError(error),
+        swiftF0Smoothed: formatExternalExtractorError(error),
         worldHarvest: formatExternalExtractorError(error)
       },
       extractors: {},
@@ -768,7 +838,7 @@ function renderBakeoffHtml(targets: readonly BakeoffAuditTarget[]) {
 </head>
 <body>
   <h1>Pitch Graph V2 Bake-off</h1>
-  <h2>WORLD/Praat/pYIN/Onsei raw columns are included as explicit extractor slots; Kotu API baseline is cache-backed and opt-in.</h2>
+  <h2>WORLD/Praat/pYIN/Onsei/SwiftF0 columns are included as explicit extractor slots; Kotu API baseline is cache-backed and opt-in.</h2>
   ${targets.map(renderBakeoffTargetHtml).join("\n")}
 </body>
 </html>

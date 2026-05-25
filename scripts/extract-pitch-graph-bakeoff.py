@@ -35,6 +35,7 @@ def main() -> None:
         lambda: extract_onsei_praat(y, sample_rate),
         sample_interval_ms=5,
     )
+    run_swift_f0_extractors(result, y, sample_rate)
     run_extractor(result, "worldHarvest", lambda: extract_world(y, sample_rate, args.hop_ms))
     run_extractor(
         result, "praatRaw", lambda: extract_praat(y, sample_rate, args.hop_ms)
@@ -123,6 +124,138 @@ def extract_pyin(y: np.ndarray, sample_rate: int, hop_ms: float) -> np.ndarray:
         sr=sample_rate,
     )
     return f0
+
+
+def run_swift_f0_extractors(
+    result: dict[str, Any], y: np.ndarray, sample_rate: int
+) -> None:
+    try:
+        from swift_f0 import SwiftF0
+
+        detector = SwiftF0(
+            confidence_threshold=0.9,
+            fmin=65.0,
+            fmax=400.0,
+        )
+        detection = detector.detect_from_array(y.astype(np.float32), sample_rate)
+        sample_interval_ms = calculate_swift_sample_interval_ms(detection.timestamps)
+        raw_values = clean_values(detection.pitch_hz)
+        normalized_values = normalize_swift_values(
+            detection.pitch_hz,
+            detection.voicing,
+        )
+        smoothed_values = smooth_pitch_values(normalized_values)
+
+        result["extractors"]["swiftF0Raw"] = {
+            "rawValues": raw_values,
+            "sampleIntervalMs": sample_interval_ms,
+        }
+        result["extractors"]["swiftF0Normalized"] = {
+            "rawValues": normalized_values,
+            "sampleIntervalMs": sample_interval_ms,
+        }
+        result["extractors"]["swiftF0Smoothed"] = {
+            "rawValues": smoothed_values,
+            "sampleIntervalMs": sample_interval_ms,
+        }
+    except Exception as error:  # pragma: no cover - surfaced in the JSON report.
+        message = str(error)
+        result["errors"]["swiftF0Raw"] = message
+        result["errors"]["swiftF0Normalized"] = message
+        result["errors"]["swiftF0Smoothed"] = message
+
+
+def calculate_swift_sample_interval_ms(timestamps: np.ndarray) -> int:
+    if len(timestamps) > 1:
+        return max(1, round(float(np.median(np.diff(timestamps))) * 1000))
+
+    return 16
+
+
+def normalize_swift_values(
+    pitch_hz: np.ndarray, voicing: np.ndarray
+) -> list[float]:
+    normalized: list[float] = []
+
+    for pitch, voiced in zip(pitch_hz, voicing):
+        number = float(pitch)
+        if voiced and math.isfinite(number) and number > 0:
+            normalized.append(round(number, 1))
+        else:
+            normalized.append(0)
+
+    return normalized
+
+
+def smooth_pitch_values(values: list[float]) -> list[float]:
+    if not values:
+        return []
+
+    interpolated = interpolate_short_gaps(np.array(values, dtype=np.float64), max_gap=3)
+    smoothed = np.zeros_like(interpolated)
+    index = 0
+
+    while index < len(interpolated):
+        if interpolated[index] <= 0:
+            index += 1
+            continue
+
+        start = index
+        while index < len(interpolated) and interpolated[index] > 0:
+            index += 1
+
+        segment = interpolated[start:index]
+        smoothed[start:index] = smooth_segment(segment)
+
+    return clean_values(smoothed)
+
+
+def interpolate_short_gaps(values: np.ndarray, max_gap: int) -> np.ndarray:
+    output = values.copy()
+    index = 0
+
+    while index < len(output):
+        if output[index] > 0:
+            index += 1
+            continue
+
+        start = index
+        while index < len(output) and output[index] <= 0:
+            index += 1
+
+        end = index
+        gap_length = end - start
+        if (
+            0 < start
+            and end < len(output)
+            and output[start - 1] > 0
+            and output[end] > 0
+            and gap_length <= max_gap
+        ):
+            output[start:end] = np.linspace(
+                output[start - 1],
+                output[end],
+                gap_length + 2,
+            )[1:-1]
+
+    return output
+
+
+def smooth_segment(segment: np.ndarray) -> np.ndarray:
+    if len(segment) < 3:
+        return segment
+
+    window_size = min(5, len(segment))
+    if window_size % 2 == 0:
+        window_size -= 1
+    if window_size < 3:
+        return segment
+
+    kernel = np.ones(window_size, dtype=np.float64) / window_size
+    padding = window_size // 2
+    padded = np.pad(segment, (padding, padding), mode="edge")
+
+    return np.convolve(padded, kernel, mode="valid")
 
 
 def clean_values(values: np.ndarray) -> list[float]:
