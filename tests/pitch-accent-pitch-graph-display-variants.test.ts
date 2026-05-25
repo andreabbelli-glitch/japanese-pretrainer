@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  buildMoraRatioPitchDisplay,
   buildPedagogicalPitchDisplay,
   buildTheoryShapedContinuousPitchDisplay,
   selectDisplayVariantPairs
@@ -55,6 +56,30 @@ describe("pitch accent display variant benchmark", () => {
       max: 190,
       min: -190,
       ticks: [190, 0, -190]
+    });
+  });
+
+  it("compresses a continuous pitch curve into mora ratios", () => {
+    const display = buildMoraRatioPitchDisplay({
+      continuousValues: [
+        -120, -100, -80, 120, 140, 150, -130, -120, -110, -150, -140, -130
+      ],
+      moraCount: 4
+    });
+
+    expect(display.moraSemitones).toHaveLength(4);
+    expect(display.deltaSemitones).toHaveLength(3);
+    expect(display.deltaSemitones[0]).toBeGreaterThan(2);
+    expect(display.strongestDrop).toEqual({
+      fromMora: 2,
+      semitones: display.deltaSemitones[1],
+      toMora: 3
+    });
+    expect(display.values).toHaveLength(12);
+    expect(display.domain).toEqual({
+      max: 4,
+      min: -4,
+      ticks: [4, 0, -4]
     });
   });
 

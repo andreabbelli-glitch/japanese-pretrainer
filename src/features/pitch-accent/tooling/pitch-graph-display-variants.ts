@@ -36,6 +36,7 @@ type DisplayVariantKind =
   | "base"
   | "continuous"
   | "ideas1to5"
+  | "moraRatio"
   | "overlay"
   | "theoryShaped";
 
@@ -73,6 +74,20 @@ export type TheoryShapedPitchDisplayResult = {
   readonly values: readonly number[];
 };
 
+export type MoraRatioPitchDisplayResult = {
+  readonly deltaSemitones: readonly number[];
+  readonly domain: DisplayPitchDomain;
+  readonly finalTransitionSemitones: number | null;
+  readonly firstRiseSemitones: number | null;
+  readonly moraSemitones: readonly number[];
+  readonly strongestDrop: {
+    readonly fromMora: number;
+    readonly semitones: number;
+    readonly toMora: number;
+  } | null;
+  readonly values: readonly number[];
+};
+
 type DisplayVariantPair = {
   readonly id: string;
   readonly kana: string;
@@ -95,7 +110,7 @@ type DisplayVariantColumn = {
   readonly summary: string;
   readonly timestampsMs?: readonly number[];
   readonly title: string;
-  readonly unit: "Hz" | "cents";
+  readonly unit: "Hz" | "cents" | "st";
   readonly values: readonly (number | null)[];
 };
 
@@ -110,6 +125,7 @@ const displayVariantLabels = {
   base: "SwiftF0 voiced-gated smoothed",
   continuous: "1-5 continuous interpolation",
   ideas1to5: "1-5 display curve",
+  moraRatio: "Ishi mora-ratio diagnostic + playhead",
   overlay: "1-5 + expected overlay",
   theoryShaped: "theory-shaped continuous + playhead"
 } as const satisfies Record<DisplayVariantKind, string>;
@@ -353,6 +369,75 @@ export function buildTheoryShapedContinuousPitchDisplay(input: {
   };
 }
 
+export function buildMoraRatioPitchDisplay(input: {
+  readonly continuousValues: readonly number[];
+  readonly moraCount: number;
+}): MoraRatioPitchDisplayResult {
+  const sampleCount = input.continuousValues.length;
+  const moraCount = Math.max(1, Math.floor(input.moraCount));
+  const domain = buildDomain(-4, 4, 1);
+
+  if (sampleCount === 0) {
+    return {
+      deltaSemitones: [],
+      domain,
+      finalTransitionSemitones: null,
+      firstRiseSemitones: null,
+      moraSemitones: [],
+      strongestDrop: null,
+      values: []
+    };
+  }
+
+  const moraSemitones = Array.from({ length: moraCount }, (_, moraIndex) =>
+    buildTailWeightedMoraSemitone({
+      moraCount,
+      moraIndex,
+      values: input.continuousValues
+    })
+  );
+  const deltaSemitones = moraSemitones
+    .slice(1)
+    .map((value, index) => roundNumber(value - moraSemitones[index]!, 2));
+  const strongestDropIndex = deltaSemitones.reduce<number | null>(
+    (bestIndex, value, index) =>
+      bestIndex === null || value < deltaSemitones[bestIndex]!
+        ? index
+        : bestIndex,
+    null
+  );
+  const strongestDrop =
+    strongestDropIndex !== null && deltaSemitones[strongestDropIndex]! < 0
+      ? {
+          fromMora: strongestDropIndex + 1,
+          semitones: deltaSemitones[strongestDropIndex]!,
+          toMora: strongestDropIndex + 2
+        }
+      : null;
+  const values = Array.from({ length: sampleCount }, (_, index) => {
+    const moraIndex = Math.min(
+      moraCount - 1,
+      Math.floor((index / Math.max(sampleCount, 1)) * moraCount)
+    );
+
+    return roundNumber(
+      clampNumber(moraSemitones[moraIndex] ?? 0, domain.min, domain.max),
+      2
+    );
+  });
+
+  return {
+    deltaSemitones,
+    domain,
+    finalTransitionSemitones:
+      deltaSemitones.length > 0 ? deltaSemitones.at(-1)! : null,
+    firstRiseSemitones: deltaSemitones[0] ?? null,
+    moraSemitones,
+    strongestDrop,
+    values
+  };
+}
+
 function scoreDisplayVariantPair(
   pair: PitchAccentMinimalPair,
   remainingCoverage: ReadonlyMap<number, number>
@@ -407,6 +492,10 @@ function buildDisplayVariantColumns(input: {
     continuousValues: display.continuousValues,
     moraCount: input.option.moraCount,
     pitchAccent: input.option.pitchAccent
+  });
+  const moraRatioDisplay = buildMoraRatioPitchDisplay({
+    continuousValues: display.continuousValues,
+    moraCount: input.option.moraCount
   });
 
   return [
@@ -466,6 +555,16 @@ function buildDisplayVariantColumns(input: {
       title: displayVariantLabels.theoryShaped,
       unit: "cents",
       values: theoryShapedDisplay.values
+    },
+    {
+      domain: moraRatioDisplay.domain,
+      kind: "moraRatio",
+      sampleIntervalMs: input.sampleIntervalMs,
+      summary: renderMoraRatioSummary(moraRatioDisplay),
+      timestampsMs: input.timestampsMs,
+      title: displayVariantLabels.moraRatio,
+      unit: "st",
+      values: moraRatioDisplay.values
     }
   ];
 }
@@ -633,6 +732,30 @@ function buildTheoreticalContinuousValues(input: {
     rawValues,
     Math.max(1, Math.round(input.sampleCount / Math.max(levels.length * 8, 1)))
   );
+}
+
+function buildTailWeightedMoraSemitone(input: {
+  readonly moraCount: number;
+  readonly moraIndex: number;
+  readonly values: readonly number[];
+}) {
+  const sampleCount = input.values.length;
+  const start = Math.floor((input.moraIndex / input.moraCount) * sampleCount);
+  const end = Math.max(
+    start + 1,
+    Math.floor(((input.moraIndex + 1) / input.moraCount) * sampleCount)
+  );
+  let total = 0;
+  let weightTotal = 0;
+
+  for (let index = start; index < Math.min(end, sampleCount); index += 1) {
+    const segmentProgress = (index - start + 1) / Math.max(end - start, 1);
+    const weight = 0.35 + segmentProgress * 0.65;
+    total += (input.values[index] ?? 0) * weight;
+    weightTotal += weight;
+  }
+
+  return roundNumber(total / Math.max(weightTotal, 1) / 100, 2);
 }
 
 function normalizeAcousticResidual(values: readonly number[]) {
@@ -898,7 +1021,7 @@ function renderDisplayVariantReportHtml(input: {
 </head>
 <body>
   <h1>SwiftF0 Display Variant Benchmark</h1>
-  <p class="lead">Confronto didattico su ${input.pairs.length} pair (${targetCount} audio): base SwiftF0 voiced-gated smoothed, display 1-5, display + overlay teorico, display continuo interpolato, display continuo theory-shaped con playhead.</p>
+  <p class="lead">Confronto didattico su ${input.pairs.length} pair (${targetCount} audio): base SwiftF0 voiced-gated smoothed, display 1-5, display + overlay teorico, display continuo interpolato, display continuo theory-shaped con playhead, diagnostica Ishi-style mora-ratio.</p>
   <p class="lead">Copertura pitch selezionata: ${escapeHtml(coverage)}. Generato: ${escapeHtml(input.generatedAt)}.</p>
   ${input.pairs.map(renderDisplayVariantPairHtml).join("\n")}
   ${renderPlayheadScript()}
@@ -984,7 +1107,7 @@ function renderDisplayVariantSvg(
         })
       : "";
   const playhead =
-    column.kind === "theoryShaped"
+    column.kind === "theoryShaped" || column.kind === "moraRatio"
       ? renderPlayhead({
           bounds,
           key: target.option.id
@@ -1018,7 +1141,10 @@ function renderDisplayVariantSvg(
 }
 
 function renderDisplayVariantLegend(column: DisplayVariantColumn) {
-  const items = [`<span><span class="swatch pitch-swatch"></span>F0</span>`];
+  const pitchLabel = column.kind === "moraRatio" ? "mora F0_st" : "F0";
+  const items = [
+    `<span><span class="swatch pitch-swatch"></span>${pitchLabel}</span>`
+  ];
 
   if (column.kind === "overlay") {
     items.push(
@@ -1140,6 +1266,28 @@ function renderPlayheadScript() {
 </script>`;
 }
 
+function renderMoraRatioSummary(display: MoraRatioPitchDisplayResult) {
+  const deltas =
+    display.deltaSemitones.length > 0
+      ? display.deltaSemitones
+          .map((value) => `${value >= 0 ? "+" : ""}${value.toFixed(2)}`)
+          .join(", ")
+      : "none";
+  const strongestDrop = display.strongestDrop
+    ? `strongest fall mora ${display.strongestDrop.fromMora}->${display.strongestDrop.toMora} (${display.strongestDrop.semitones.toFixed(2)}st)`
+    : "no falling mora transition";
+  const firstRise =
+    display.firstRiseSemitones === null
+      ? "first rise n/a"
+      : `first transition ${display.firstRiseSemitones >= 0 ? "+" : ""}${display.firstRiseSemitones.toFixed(2)}st`;
+  const finalTransition =
+    display.finalTransitionSemitones === null
+      ? "final transition n/a"
+      : `final transition ${display.finalTransitionSemitones >= 0 ? "+" : ""}${display.finalTransitionSemitones.toFixed(2)}st`;
+
+  return `Ishi-style mora unit diagnostic: tail-weighted representative F0 per uniform mora bin, then adjacent mora ratios in semitones. Delta st: ${deltas}. ${strongestDrop}; ${firstRise}; ${finalTransition}. Uniform bins approximate true mora boundaries.`;
+}
+
 function seriesToSvgPaths(input: {
   readonly bounds: { readonly left: number; readonly right: number };
   readonly durationMs: number;
@@ -1237,8 +1385,15 @@ function buildReportAudioHref(input: {
   return relativePath.split(path.sep).join("/");
 }
 
-function formatAxisTick(value: number, unit: "Hz" | "cents") {
-  return unit === "Hz" ? value.toFixed(1) : `${Math.round(value)}`;
+function formatAxisTick(value: number, unit: "Hz" | "cents" | "st") {
+  if (unit === "Hz") {
+    return value.toFixed(1);
+  }
+  if (unit === "st") {
+    return value.toFixed(1);
+  }
+
+  return `${Math.round(value)}`;
 }
 
 function quantile(values: readonly number[], q: number) {

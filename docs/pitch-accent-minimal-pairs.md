@@ -160,7 +160,11 @@ scala log relativa alla mediana, asse robusto e smoothing leggero, poi la stessa
 curva con overlay teorico e una variante continua dove tutti i gap sono
 interpolati. Include anche una variante continua `theory-shaped` con dominio e
 blend orientati al pattern teorico, piu playhead verticale sincronizzata
-all'audio del report.
+all'audio del report. Il report include inoltre una diagnostica Ishi-style:
+comprime la curva continua in valori rappresentativi per mora, calcola i
+rapporti tra more adiacenti in semitoni e riporta il calo relativo piu forte.
+Questa e una approssimazione locale: usa bin moraici uniformi perche il corpus
+non contiene boundary CV/VC allineati.
 
 La baseline Kotu e autorizzata ma opt-in. La documentazione pubblica
 [Kotu API](https://docs.kotu.io/) dichiara una superficie v2 limitata a status,
