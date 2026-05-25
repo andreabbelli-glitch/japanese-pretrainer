@@ -49,12 +49,25 @@ def run_extractor(
     result: dict[str, Any], key: str, extractor, sample_interval_ms: float | None = None
 ) -> None:
     try:
-        output = {"rawValues": clean_values(extractor())}
+        extractor_output = normalize_extractor_output(extractor())
+        output = {"rawValues": clean_values(extractor_output["values"])}
+        if extractor_output["timestamps_ms"] is not None:
+            output["timestampsMs"] = clean_timestamps(
+                extractor_output["timestamps_ms"]
+            )
         if sample_interval_ms is not None:
             output["sampleIntervalMs"] = round(sample_interval_ms)
         result["extractors"][key] = output
     except Exception as error:  # pragma: no cover - surfaced in the JSON report.
         result["errors"][key] = str(error)
+
+
+def normalize_extractor_output(output) -> dict[str, Any]:
+    if isinstance(output, tuple):
+        values, timestamps = output
+        return {"values": values, "timestamps_ms": np.asarray(timestamps) * 1000}
+
+    return {"values": output, "timestamps_ms": None}
 
 
 def extract_world(y: np.ndarray, sample_rate: int, hop_ms: float) -> np.ndarray:
@@ -65,7 +78,10 @@ def extract_world(y: np.ndarray, sample_rate: int, hop_ms: float) -> np.ndarray:
         f0_ceil=500.0,
         frame_period=hop_ms,
     )
-    return pyworld.stonemask(y.astype(np.float64), f0, time_axis, sample_rate)
+    return (
+        pyworld.stonemask(y.astype(np.float64), f0, time_axis, sample_rate),
+        time_axis,
+    )
 
 
 def extract_praat(y: np.ndarray, sample_rate: int, hop_ms: float) -> np.ndarray:
@@ -76,7 +92,7 @@ def extract_praat(y: np.ndarray, sample_rate: int, hop_ms: float) -> np.ndarray:
             time_step=hop_ms / 1000,
             pitch_floor=50.0,
             pitch_ceiling=500.0,
-        ).selected_array["frequency"],
+        ),
     )
 
 
@@ -88,8 +104,7 @@ def extract_onsei_praat(y: np.ndarray, sample_rate: int) -> np.ndarray:
         sample_rate,
         lambda sound: sound.to_pitch(time_step=0.005)
         .kill_octave_jumps()
-        .smooth()
-        .selected_array["frequency"],
+        .smooth(),
     )
 
 
@@ -104,7 +119,8 @@ def extract_praat_from_temp_wav(y: np.ndarray, sample_rate: int, extractor) -> n
 
         wavfile.write(temp_path, sample_rate, pcm)
         sound = parselmouth.Sound(temp_path)
-        return extractor(sound)
+        pitch = extractor(sound)
+        return pitch.selected_array["frequency"], pitch.xs()
     finally:
         if temp_path:
             try:
@@ -123,7 +139,11 @@ def extract_pyin(y: np.ndarray, sample_rate: int, hop_ms: float) -> np.ndarray:
         hop_length=hop_length,
         sr=sample_rate,
     )
-    return f0
+    timestamps = librosa.frames_to_time(
+        np.arange(len(f0)), sr=sample_rate, hop_length=hop_length
+    )
+
+    return f0, timestamps
 
 
 def run_swift_f0_extractors(
@@ -149,14 +169,17 @@ def run_swift_f0_extractors(
         result["extractors"]["swiftF0Raw"] = {
             "rawValues": raw_values,
             "sampleIntervalMs": sample_interval_ms,
+            "timestampsMs": clean_timestamps(detection.timestamps * 1000),
         }
         result["extractors"]["swiftF0Normalized"] = {
             "rawValues": normalized_values,
             "sampleIntervalMs": sample_interval_ms,
+            "timestampsMs": clean_timestamps(detection.timestamps * 1000),
         }
         result["extractors"]["swiftF0Smoothed"] = {
             "rawValues": smoothed_values,
             "sampleIntervalMs": sample_interval_ms,
+            "timestampsMs": clean_timestamps(detection.timestamps * 1000),
         }
     except Exception as error:  # pragma: no cover - surfaced in the JSON report.
         message = str(error)
@@ -267,6 +290,17 @@ def clean_values(values: np.ndarray) -> list[float]:
             cleaned.append(round(number, 1))
         else:
             cleaned.append(0)
+
+    return cleaned
+
+
+def clean_timestamps(values: np.ndarray) -> list[float]:
+    cleaned: list[float] = []
+
+    for value in values:
+        number = float(value)
+        if math.isfinite(number):
+            cleaned.append(round(number * 10) / 10)
 
     return cleaned
 

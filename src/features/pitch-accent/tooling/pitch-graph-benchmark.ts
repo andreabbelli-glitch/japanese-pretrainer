@@ -1,6 +1,7 @@
 export type PitchBenchmarkSeries = {
   readonly label: string;
   readonly sampleIntervalMs: number;
+  readonly timestampsMs?: readonly number[];
   readonly values: readonly number[];
 };
 
@@ -52,8 +53,8 @@ export function computePitchBenchmarkMetrics(input: {
   for (let index = 0; index < frameCount; index += 1) {
     const referenceValue = input.reference.values[index] ?? 0;
     const candidateValue = sampleSeriesAtReferenceIndex({
+      reference: input.reference,
       referenceIndex: index,
-      referenceSampleIntervalMs: input.reference.sampleIntervalMs,
       series: input.candidate
     });
     const referenceVoiced = isVoicedPitch(referenceValue);
@@ -251,7 +252,8 @@ export function renderPitchBenchmarkReportHtml(input: {
 </head>
 <body>
   <h1>PTDB-TUG F0 Benchmark</h1>
-  <p class="lead">Five microphone recordings are compared against PTDB-TUG reference F0 extracted from laryngograph data. Similarity combines voiced-frame F1 and pitch closeness in cents; higher is better.</p>
+  <p class="lead">Five microphone recordings are compared against PTDB-TUG reference F0 extracted from laryngograph data. Similarity is our review index: voiced-frame F1 multiplied by pitch closeness in cents; higher is better.</p>
+  <p class="lead">The overlay and metrics use extractor timestamps when available, so model outputs with non-10ms frame centers are not forced onto index zero.</p>
   <p class="lead">Generated at ${escapeHtml(input.generatedAt)}.</p>
   ${input.samples.map(renderBenchmarkSampleHtml).join("\n")}
 </body>
@@ -366,9 +368,8 @@ function renderPitchOverlaySvg(input: {
   };
   const height = bounds.bottom - bounds.top;
   const durationMs = Math.max(
-    input.reference.values.length * input.reference.sampleIntervalMs,
-    (input.candidate?.values.length ?? 0) *
-      (input.candidate?.sampleIntervalMs ?? input.reference.sampleIntervalMs)
+    getSeriesDurationMs(input.reference),
+    input.candidate ? getSeriesDurationMs(input.candidate) : 0
   );
   const valueToY = (value: number) =>
     bounds.bottom - ((value - minValue) / (maxValue - minValue)) * height;
@@ -434,7 +435,7 @@ function seriesToSvgPaths(input: {
 
     const x = roundSvgCoordinate(
       input.bounds.left +
-        ((index * input.series.sampleIntervalMs) / input.durationMs) * width
+        (getSeriesTimeMs(input.series, index) / input.durationMs) * width
     );
     const y = roundSvgCoordinate(input.valueToY(value));
     currentPath = currentPath ? `${currentPath} L ${x} ${y}` : `M ${x} ${y}`;
@@ -450,14 +451,104 @@ function seriesToSvgPaths(input: {
 }
 
 function sampleSeriesAtReferenceIndex(input: {
+  readonly reference: PitchBenchmarkSeries;
   readonly referenceIndex: number;
-  readonly referenceSampleIntervalMs: number;
   readonly series: PitchBenchmarkSeries;
 }) {
-  const timeMs = input.referenceIndex * input.referenceSampleIntervalMs;
+  const timeMs = getSeriesTimeMs(input.reference, input.referenceIndex);
+
+  if (hasTimestamps(input.series)) {
+    return sampleSeriesAtTimeMs(input.series, timeMs);
+  }
+
   const candidateIndex = Math.round(timeMs / input.series.sampleIntervalMs);
 
   return input.series.values[candidateIndex] ?? 0;
+}
+
+function sampleSeriesAtTimeMs(series: PitchBenchmarkSeries, timeMs: number) {
+  if (!hasTimestamps(series)) {
+    const candidateIndex = Math.round(timeMs / series.sampleIntervalMs);
+
+    return series.values[candidateIndex] ?? 0;
+  }
+
+  const timestamps = series.timestampsMs;
+  const intervalMs = getSeriesIntervalMs(series);
+  const firstTimestamp = timestamps[0] ?? 0;
+  const lastTimestamp = timestamps[timestamps.length - 1] ?? 0;
+
+  if (
+    timeMs < firstTimestamp - intervalMs / 2 ||
+    timeMs > lastTimestamp + intervalMs / 2
+  ) {
+    return 0;
+  }
+
+  const index = findNearestTimestampIndex(timestamps, timeMs);
+
+  return series.values[index] ?? 0;
+}
+
+function findNearestTimestampIndex(
+  timestampsMs: readonly number[],
+  timeMs: number
+) {
+  let low = 0;
+  let high = timestampsMs.length - 1;
+
+  while (low < high) {
+    const middle = Math.floor((low + high) / 2);
+
+    if ((timestampsMs[middle] ?? 0) < timeMs) {
+      low = middle + 1;
+    } else {
+      high = middle;
+    }
+  }
+
+  const rightIndex = low;
+  const leftIndex = Math.max(0, rightIndex - 1);
+  const leftDistance = Math.abs((timestampsMs[leftIndex] ?? 0) - timeMs);
+  const rightDistance = Math.abs((timestampsMs[rightIndex] ?? 0) - timeMs);
+
+  return leftDistance <= rightDistance ? leftIndex : rightIndex;
+}
+
+function getSeriesTimeMs(series: PitchBenchmarkSeries, index: number) {
+  return hasTimestamps(series)
+    ? (series.timestampsMs[index] ?? index * series.sampleIntervalMs)
+    : index * series.sampleIntervalMs;
+}
+
+function getSeriesDurationMs(series: PitchBenchmarkSeries) {
+  if (!hasTimestamps(series)) {
+    return series.values.length * series.sampleIntervalMs;
+  }
+
+  const lastTimestamp = series.timestampsMs[series.timestampsMs.length - 1] ?? 0;
+
+  return lastTimestamp + getSeriesIntervalMs(series);
+}
+
+function getSeriesIntervalMs(series: PitchBenchmarkSeries) {
+  if (!hasTimestamps(series) || series.timestampsMs.length < 2) {
+    return series.sampleIntervalMs;
+  }
+
+  const diffs = series.timestampsMs
+    .slice(1)
+    .map((timestamp, index) => timestamp - (series.timestampsMs?.[index] ?? 0))
+    .filter((diff) => Number.isFinite(diff) && diff > 0)
+    .sort((left, right) => left - right);
+
+  return diffs[Math.floor(diffs.length / 2)] ?? series.sampleIntervalMs;
+}
+
+function hasTimestamps(
+  series: PitchBenchmarkSeries
+): series is PitchBenchmarkSeries & { readonly timestampsMs: readonly number[] } {
+  return series.timestampsMs?.length === series.values.length;
 }
 
 function isVoicedPitch(value: number) {

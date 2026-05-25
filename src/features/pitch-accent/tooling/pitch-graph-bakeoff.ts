@@ -128,11 +128,11 @@ const columnDefinitions = [
   },
   {
     key: "swiftF0Normalized",
-    label: "SwiftF0 normalized"
+    label: "SwiftF0 voiced-gated"
   },
   {
     key: "swiftF0Smoothed",
-    label: "SwiftF0 smoothed"
+    label: "SwiftF0 voiced-gated smoothed"
   },
   {
     key: "worldCleanup",
@@ -289,7 +289,7 @@ export async function generatePitchGraphBakeoffReportForCorpus(
           externalOutput?.sampleIntervalMs ??
           currentStrict.sampleIntervalMs,
         summary:
-          "SwiftF0 pitch with speech-range voicing mask: confidence > 0.9, 65-400 Hz."
+          "SwiftF0 pitch_hz after the library voicing mask: confidence > 0.9, 65-400 Hz. This is gating, not pitch-scale normalization."
       }),
       swiftF0Raw: buildExternalRawColumn({
         durationMs: externalOutput?.durationMs ?? currentStrict.durationMs,
@@ -315,7 +315,7 @@ export async function generatePitchGraphBakeoffReportForCorpus(
           externalOutput?.sampleIntervalMs ??
           currentStrict.sampleIntervalMs,
         summary:
-          "SwiftF0 normalized trace with short-gap interpolation and light moving-average smoothing."
+          "SwiftF0 voiced-gated trace with short-gap interpolation and light moving-average smoothing; longer unvoiced spans stay as gaps."
       }),
       worldCleanup: worldRawValues
         ? {

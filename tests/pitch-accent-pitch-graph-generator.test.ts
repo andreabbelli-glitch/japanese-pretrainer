@@ -217,9 +217,9 @@ describe("pitch accent pitch graph generator", () => {
     expect(html).toContain("<audio controls");
     expect(html).toContain("frames:");
     expect(html).toContain("Onsei Praat smooth");
-    expect(html).toContain("SwiftF0 normalized");
+    expect(html).toContain("SwiftF0 voiced-gated");
     expect(html).toContain("SwiftF0 raw");
-    expect(html).toContain("SwiftF0 smoothed");
+    expect(html).toContain("SwiftF0 voiced-gated smoothed");
     expect(html).toContain("WORLD/Praat/pYIN/Onsei/SwiftF0");
     expect(html).toContain("Kotu API baseline");
   });

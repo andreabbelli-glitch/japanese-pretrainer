@@ -19,6 +19,7 @@ type ExternalPitchExtractorOutput = {
       | {
           readonly rawValues: readonly number[];
           readonly sampleIntervalMs?: number;
+          readonly timestampsMs?: readonly number[];
         }
       | undefined
     >
@@ -74,13 +75,14 @@ const extractorDefinitions = [
   },
   {
     key: "swiftF0Normalized",
-    label: "SwiftF0 normalized",
+    label: "SwiftF0 voiced-gated",
     summary: "SwiftF0 confidence > 0.9 and speech range 65-400 Hz."
   },
   {
     key: "swiftF0Smoothed",
-    label: "SwiftF0 smoothed",
-    summary: "SwiftF0 normalized plus short-gap interpolation and smoothing."
+    label: "SwiftF0 voiced-gated smoothed",
+    summary:
+      "SwiftF0 voiced-gated trace plus short-gap interpolation and smoothing; longer unvoiced spans stay as gaps."
   }
 ] as const;
 
@@ -129,6 +131,7 @@ async function main() {
           label: definition.label,
           sampleIntervalMs:
             output.sampleIntervalMs ?? externalOutput.sampleIntervalMs,
+          timestampsMs: output.timestampsMs,
           values: output.rawValues
         };
 
@@ -241,22 +244,24 @@ async function readPtdbTugReferenceF0(
   refPath: string
 ): Promise<PitchBenchmarkSeries> {
   const source = await readFile(refPath, "utf8");
+  const rows = source
+    .split(/\r?\n/u)
+    .map((line) => line.trim())
+    .filter(Boolean);
 
   return {
     label: "Validated PTDB-TUG F0",
     sampleIntervalMs: referenceSampleIntervalMs,
-    values: source
-      .split(/\r?\n/u)
-      .map((line) => line.trim())
-      .filter(Boolean)
-      .map((line) => {
-        const [f0] = line.split(/\s+/u);
-        const value = Number.parseFloat(f0 ?? "0");
+    timestampsMs: rows.map((_, index) => index * referenceSampleIntervalMs),
+    values: rows.map((line) => {
+      const [f0, voicingDecision] = line.split(/\s+/u);
+      const value = Number.parseFloat(f0 ?? "0");
+      const voiced = Number.parseFloat(voicingDecision ?? "0");
 
-        return Number.isFinite(value) && value > 0
-          ? Math.round(value * 10) / 10
-          : 0;
-      })
+      return Number.isFinite(value) && value > 0 && voiced > 0.5
+        ? Math.round(value * 10) / 10
+        : 0;
+    })
   };
 }
 

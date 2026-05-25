@@ -120,7 +120,7 @@ Bake-off locale su 20-30 pair, senza modificare i manifest vendorizzati:
 
 Il report viene scritto di default in `.tmp/pitch-graph-bakeoff/` e include
 colonne fisse per current strict, WORLD/Praat/pYIN, Onsei-style Praat, SwiftF0
-raw/normalized/smoothed, cleanup WORLD, render Kotu-like locale, render
+raw/voiced-gated/smoothed, cleanup WORLD, render Kotu-like locale, render
 improved locale e baseline Kotu. Di default il comando usa `uv` per eseguire
 gli estrattori Python esterni (`pyworld`, `praat-parselmouth`, `librosa.pyin`,
 `swift-f0`) su Python 3.12; passa `--no-external-extractors` solo per
@@ -129,9 +129,10 @@ La colonna Onsei replica la logica F0 della repo `itsupera/onsei` senza
 vendorizarla: Parselmouth `to_pitch(time_step=0.005)`, `kill_octave_jumps()` e
 `smooth()`.
 Le colonne SwiftF0 usano il pacchetto della repo `lars76/swift-f0`: raw espone
-`pitch_hz` del modello ONNX, normalized applica la maschera voiced speech
-`confidence > 0.9` e `65-400 Hz`, smoothed aggiunge interpolazione di gap brevi
-e smoothing leggero.
+`pitch_hz` del modello ONNX, voiced-gated applica la maschera voiced speech
+`confidence > 0.9` e `65-400 Hz` senza normalizzare la scala pitch, smoothed
+aggiunge interpolazione di gap brevi e smoothing leggero preservando come gap i
+tratti unvoiced lunghi.
 
 Benchmark scientifico contro PTDB-TUG, con 5 audio microfonici e F0 reference
 da laryngograph scaricati dall'hosting ufficiale solo in `.tmp`:
@@ -142,7 +143,9 @@ da laryngograph scaricati dall'hosting ufficiale solo in `.tmp`:
 
 Il report confronta ogni extractor contro la F0 validata e calcola una
 similarita 0-100 basata su F1 voiced/unvoiced e vicinanza pitch in cents, oltre
-a MAE/RMSE, Gross Pitch Error e octave error.
+a MAE/RMSE, Gross Pitch Error e octave error. Quando disponibili, il confronto
+e il render usano i timestamp reali degli extractor invece di assumere che ogni
+curva inizi a `t=0`.
 
 La baseline Kotu e autorizzata ma opt-in. La documentazione pubblica
 [Kotu API](https://docs.kotu.io/) dichiara una superficie v2 limitata a status,

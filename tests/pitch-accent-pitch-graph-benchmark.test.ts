@@ -48,6 +48,31 @@ describe("pitch accent PTDB-TUG pitch benchmark", () => {
     expect(wrongVoicing.octaveErrorRate).toBe(1);
   });
 
+  it("uses extractor timestamps when scoring non-aligned frames", () => {
+    const metrics = computePitchBenchmarkMetrics({
+      candidate: {
+        label: "timestamped",
+        sampleIntervalMs: 100,
+        timestampsMs: [10, 20, 30],
+        values: [100, 110, 120]
+      },
+      reference: {
+        label: "reference",
+        sampleIntervalMs: 10,
+        timestampsMs: [0, 10, 20, 30],
+        values: [0, 100, 110, 120]
+      }
+    });
+
+    expect(metrics).toMatchObject({
+      maeCents: 0,
+      matchedVoicedFrameCount: 3,
+      referenceVoicedFrameCount: 3,
+      similarityScore: 100,
+      voicingF1: 1
+    });
+  });
+
   it("renders a reference-first benchmark report with extractor rankings", () => {
     const reference = {
       label: "Validated PTDB-TUG F0",
@@ -61,14 +86,14 @@ describe("pitch accent PTDB-TUG pitch benchmark", () => {
         {
           metrics: computePitchBenchmarkMetrics({
             candidate: {
-              label: "SwiftF0 smoothed",
+              label: "SwiftF0 voiced-gated smoothed",
               sampleIntervalMs: 10,
               values: [0, 181, 189, 199, 0]
             },
             reference
           }),
           series: {
-            label: "SwiftF0 smoothed",
+            label: "SwiftF0 voiced-gated smoothed",
             sampleIntervalMs: 10,
             values: [0, 181, 189, 199, 0]
           },
@@ -88,7 +113,7 @@ describe("pitch accent PTDB-TUG pitch benchmark", () => {
 
     expect(html).toContain("PTDB-TUG F0 Benchmark");
     expect(html).toContain("Validated PTDB-TUG F0");
-    expect(html).toContain("SwiftF0 smoothed");
+    expect(html).toContain("SwiftF0 voiced-gated smoothed");
     expect(html).toContain("Similarity");
     expect(html).toContain("validated F0");
   });
