@@ -15,6 +15,18 @@ describe("site shell layout css", () => {
     const brandRule = readRule(css, ".brand");
     const navRule = readRule(css, ".site-nav");
     const navLinkRule = readRule(css, ".site-nav__link");
+    const compactDesktopCss = readMediaBlock(
+      css,
+      "@media (min-width: 1200px) and (max-width: 1239px)"
+    );
+    const compactDesktopNavLinkRule = readRule(
+      compactDesktopCss,
+      ".site-nav__link"
+    );
+    const compactDesktopNavDescriptionRule = readRule(
+      compactDesktopCss,
+      ".site-nav__link small"
+    );
     const tabletCss = readMediaBlock(
       css,
       "@media (min-width: 768px) and (max-width: 1199px)"
@@ -30,12 +42,18 @@ describe("site shell layout css", () => {
     expect(headerInnerRule).toContain(
       "grid-template-columns: max-content minmax(0, 1fr)"
     );
+    expect(headerInnerRule).toContain("max-width: min(100%, 90rem)");
     expect(brandRule).toContain("inline-size: clamp");
     expect(navRule).toContain("min-width: 0");
     expect(navRule).toContain("justify-content: flex-end");
-    expect(navLinkRule).toContain("flex: 0 0 auto");
-    expect(navLinkRule).toContain("min-width: 7rem");
+    expect(navRule).toContain("gap: clamp");
+    expect(navLinkRule).toContain("flex: 0 1 auto");
+    expect(navLinkRule).toContain("min-width: clamp(6rem, 6.4vw, 7rem)");
     expect(navLinkRule).toContain("overflow-wrap: normal");
+    expect(compactDesktopNavLinkRule).toContain(
+      "min-height: var(--touch-target-min)"
+    );
+    expect(compactDesktopNavDescriptionRule).toContain("display: none");
     expect(tabletHeaderInnerRule).toContain("grid-template-columns: 1fr");
     expect(tabletNavRule).toContain("display: grid");
     expect(tabletNavRule).toContain(
