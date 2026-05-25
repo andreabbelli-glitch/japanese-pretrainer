@@ -97,8 +97,7 @@ jobs:
             echo "Changed files:"
             printf '%s\n' "$changed_files"
 
-            if printf '%s\n' "$changed_files" |
-              grep -Eq '^(drizzle/|scripts/db-migrate\.ts$|src/db/migrate\.ts$|src/db/schema/)'; then
+            if grep -Eq '^(drizzle/|scripts/db-migrate\.ts$|src/db/migrate\.ts$|src/db/schema/)' <<< "$changed_files"; then
               run_migrations=true
             fi
 

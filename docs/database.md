@@ -65,6 +65,9 @@ import quando `DATABASE_URL` punta a un host remoto: usa sempre `--media-slug`
 per gli import Turso ordinari, aggiungendo uno o piu `--lesson-slug` quando il
 sync deve toccare solo lesson specifiche dello stesso media, oppure imposta
 `ALLOW_REMOTE_FULL_CONTENT_IMPORT=1` solo per un full import intenzionale.
+Il resolver del workflow deve evitare pipeline con producer soggetti a SIGPIPE
+sotto `pipefail`, cosi' i push con molti asset vendorizzati non possono falsare
+il rilevamento delle migrazioni e lasciare `run_migrations=false`.
 
 Il backup Turso via GitHub Actions e manuale. `turso db export` legge l'intero
 database remoto e puo consumare una quota `Rows Read` sproporzionata rispetto
