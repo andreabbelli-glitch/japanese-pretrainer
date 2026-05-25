@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   buildPedagogicalPitchDisplay,
+  buildTheoryShapedContinuousPitchDisplay,
   selectDisplayVariantPairs
 } from "@/features/pitch-accent/tooling";
 import type {
@@ -34,6 +35,27 @@ describe("pitch accent display variant benchmark", () => {
     ).toBe(true);
     expect(display.domain.min).toBeLessThan(0);
     expect(display.domain.max).toBeGreaterThan(0);
+  });
+
+  it("biases the continuous curve toward the expected accent shape", () => {
+    const atamadaka = buildTheoryShapedContinuousPitchDisplay({
+      continuousValues: Array.from({ length: 12 }, () => 0),
+      moraCount: 4,
+      pitchAccent: 1
+    });
+    const heiban = buildTheoryShapedContinuousPitchDisplay({
+      continuousValues: Array.from({ length: 12 }, () => 0),
+      moraCount: 4,
+      pitchAccent: 0
+    });
+
+    expect(atamadaka.values[0]).toBeGreaterThan(atamadaka.values.at(-1)!);
+    expect(heiban.values[0]).toBeLessThan(heiban.values.at(-1)!);
+    expect(atamadaka.domain).toEqual({
+      max: 190,
+      min: -190,
+      ticks: [190, 0, -190]
+    });
   });
 
   it("selects at least ten pairs while covering pitch0 through pitch4 repeatedly", () => {

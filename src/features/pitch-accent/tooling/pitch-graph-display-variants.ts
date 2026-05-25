@@ -32,7 +32,12 @@ type ExternalPitchExtractorOutput = {
   readonly sampleIntervalMs: number;
 };
 
-type DisplayVariantKind = "base" | "continuous" | "ideas1to5" | "overlay";
+type DisplayVariantKind =
+  | "base"
+  | "continuous"
+  | "ideas1to5"
+  | "overlay"
+  | "theoryShaped";
 
 export type GeneratePitchGraphDisplayVariantReportInput = {
   readonly concurrency?: number;
@@ -59,6 +64,13 @@ export type PedagogicalPitchDisplayResult = {
   readonly medianHz: number;
   readonly smoothingWindowMs: number;
   readonly values: readonly (number | null)[];
+};
+
+export type TheoryShapedPitchDisplayResult = {
+  readonly acousticResidualScale: number;
+  readonly domain: DisplayPitchDomain;
+  readonly theoryWeight: number;
+  readonly values: readonly number[];
 };
 
 type DisplayVariantPair = {
@@ -98,7 +110,8 @@ const displayVariantLabels = {
   base: "SwiftF0 voiced-gated smoothed",
   continuous: "1-5 continuous interpolation",
   ideas1to5: "1-5 display curve",
-  overlay: "1-5 + expected overlay"
+  overlay: "1-5 + expected overlay",
+  theoryShaped: "theory-shaped continuous + playhead"
 } as const satisfies Record<DisplayVariantKind, string>;
 const execFileAsync = promisify(execFile);
 const coveredPitchAccents = [0, 1, 2, 3, 4] as const;
@@ -311,6 +324,35 @@ export function buildPedagogicalPitchDisplay(input: {
   };
 }
 
+export function buildTheoryShapedContinuousPitchDisplay(input: {
+  readonly continuousValues: readonly number[];
+  readonly moraCount: number;
+  readonly pitchAccent: number;
+}): TheoryShapedPitchDisplayResult {
+  const theoryWeight = 0.72;
+  const acousticResidualScale = 0.28;
+  const theoreticalValues = buildTheoreticalContinuousValues({
+    moraCount: input.moraCount,
+    pitchAccent: input.pitchAccent,
+    sampleCount: input.continuousValues.length
+  });
+  const acousticValues = normalizeAcousticResidual(input.continuousValues);
+  const values = theoreticalValues.map((theoreticalValue, index) =>
+    roundNumber(
+      theoreticalValue * theoryWeight +
+        (acousticValues[index] ?? 0) * acousticResidualScale,
+      1
+    )
+  );
+
+  return {
+    acousticResidualScale,
+    domain: buildDomain(-190, 190, 0),
+    theoryWeight,
+    values
+  };
+}
+
 function scoreDisplayVariantPair(
   pair: PitchAccentMinimalPair,
   remainingCoverage: ReadonlyMap<number, number>
@@ -361,6 +403,11 @@ function buildDisplayVariantColumns(input: {
     rawValues: input.rawValues,
     sampleIntervalMs: input.sampleIntervalMs
   });
+  const theoryShapedDisplay = buildTheoryShapedContinuousPitchDisplay({
+    continuousValues: display.continuousValues,
+    moraCount: input.option.moraCount,
+    pitchAccent: input.option.pitchAccent
+  });
 
   return [
     {
@@ -405,6 +452,20 @@ function buildDisplayVariantColumns(input: {
       title: displayVariantLabels.continuous,
       unit: "cents",
       values: display.continuousValues
+    },
+    {
+      domain: theoryShapedDisplay.domain,
+      kind: "theoryShaped",
+      sampleIntervalMs: input.sampleIntervalMs,
+      summary: `Continuous curve re-scaled toward the theoretical accent skeleton: ${Math.round(
+        theoryShapedDisplay.theoryWeight * 100
+      )}% theory, ${Math.round(
+        theoryShapedDisplay.acousticResidualScale * 100
+      )}% acoustic residual, fixed didactic axis.`,
+      timestampsMs: input.timestampsMs,
+      title: displayVariantLabels.theoryShaped,
+      unit: "cents",
+      values: theoryShapedDisplay.values
     }
   ];
 }
@@ -541,6 +602,52 @@ function interpolateAllNullGaps(values: readonly (number | null)[]) {
   }
 
   return output.map((value) => (isFiniteNumber(value) ? value : 0));
+}
+
+function buildTheoreticalContinuousValues(input: {
+  readonly moraCount: number;
+  readonly pitchAccent: number;
+  readonly sampleCount: number;
+}) {
+  const levels = buildExpectedAccentMoraLevels({
+    moraCount: input.moraCount,
+    pitchAccent: input.pitchAccent
+  });
+
+  if (levels.length === 0 || input.sampleCount <= 0) {
+    return Array.from({ length: Math.max(0, input.sampleCount) }, () => 0);
+  }
+
+  const low = -125;
+  const high = 125;
+  const rawValues = Array.from({ length: input.sampleCount }, (_, index) => {
+    const moraIndex = Math.min(
+      levels.length - 1,
+      Math.floor((index / Math.max(input.sampleCount, 1)) * levels.length)
+    );
+
+    return levels[moraIndex] === 1 ? high : low;
+  });
+
+  return smoothContinuousValues(
+    rawValues,
+    Math.max(1, Math.round(input.sampleCount / Math.max(levels.length * 8, 1)))
+  );
+}
+
+function normalizeAcousticResidual(values: readonly number[]) {
+  if (values.length === 0) {
+    return [];
+  }
+
+  const low = quantile(values, 0.08);
+  const high = quantile(values, 0.92);
+  const center = quantile(values, 0.5);
+  const range = Math.max(high - low, 80);
+
+  return values.map((value) =>
+    roundNumber(clampNumber(((value - center) / range) * 150, -90, 90), 1)
+  );
 }
 
 function smoothContiguousSegments(
@@ -764,6 +871,11 @@ function renderDisplayVariantReportHtml(input: {
       stroke-width: 2.4;
       stroke-dasharray: 8 6;
     }
+    .playhead {
+      stroke: #ff6868;
+      stroke-linecap: round;
+      stroke-width: 2.8;
+    }
     .legend {
       display: flex;
       flex-wrap: wrap;
@@ -786,9 +898,10 @@ function renderDisplayVariantReportHtml(input: {
 </head>
 <body>
   <h1>SwiftF0 Display Variant Benchmark</h1>
-  <p class="lead">Confronto didattico su ${input.pairs.length} pair (${targetCount} audio): base SwiftF0 voiced-gated smoothed, display 1-5, display + overlay teorico, display continuo interpolato.</p>
+  <p class="lead">Confronto didattico su ${input.pairs.length} pair (${targetCount} audio): base SwiftF0 voiced-gated smoothed, display 1-5, display + overlay teorico, display continuo interpolato, display continuo theory-shaped con playhead.</p>
   <p class="lead">Copertura pitch selezionata: ${escapeHtml(coverage)}. Generato: ${escapeHtml(input.generatedAt)}.</p>
   ${input.pairs.map(renderDisplayVariantPairHtml).join("\n")}
+  ${renderPlayheadScript()}
 </body>
 </html>
 `;
@@ -809,7 +922,7 @@ function renderDisplayVariantTargetHtml(
   return `<article class="target">
   <h3>${escapeHtml(target.option.rawPronunciation)} pitch ${target.option.pitchAccent}</h3>
   <p class="target-meta">${escapeHtml(target.option.id)} · morae ${target.option.moraCount} · ${escapeHtml(target.audioSrc)} · ${target.durationMs}ms</p>
-  <audio controls preload="metadata" src="${escapeHtml(target.audioHref)}"></audio>
+  <audio controls preload="metadata" data-pitch-audio-key="${escapeHtml(target.option.id)}" src="${escapeHtml(target.audioHref)}"></audio>
   <div class="grid">
     ${target.columns
       .map((column) => renderDisplayVariantColumnHtml(pair, target, column))
@@ -870,6 +983,13 @@ function renderDisplayVariantSvg(
           progressToX
         })
       : "";
+  const playhead =
+    column.kind === "theoryShaped"
+      ? renderPlayhead({
+          bounds,
+          key: target.option.id
+        })
+      : "";
 
   return `<svg viewBox="0 0 640 252" role="img" aria-label="${escapeHtml(
     pair.kana
@@ -893,6 +1013,7 @@ function renderDisplayVariantSvg(
     .join("\n")}
   ${pitchPaths.map((path) => `<path class="pitch" d="${path}" />`).join("\n")}
   ${overlayPath}
+  ${playhead}
 </svg>`;
 }
 
@@ -961,6 +1082,62 @@ function renderExpectedOverlayPath(input: {
   });
 
   return `<path class="overlay" d="${path}" />`;
+}
+
+function renderPlayhead(input: {
+  readonly bounds: {
+    readonly bottom: number;
+    readonly left: number;
+    readonly right: number;
+    readonly top: number;
+  };
+  readonly key: string;
+}) {
+  return `<line class="playhead" data-playhead-key="${escapeHtml(input.key)}" data-left="${input.bounds.left}" data-right="${input.bounds.right}" x1="${input.bounds.left}" x2="${input.bounds.left}" y1="${input.bounds.top}" y2="${input.bounds.bottom}" />`;
+}
+
+function renderPlayheadScript() {
+  return `<script>
+(() => {
+  const frameByAudio = new WeakMap();
+  const clamp = (value) => Math.min(1, Math.max(0, value));
+  const getPlayheads = (audio) => {
+    const key = audio.getAttribute("data-pitch-audio-key");
+    return Array.from(document.querySelectorAll(".playhead")).filter((line) => line.getAttribute("data-playhead-key") === key);
+  };
+  const updatePlayheads = (audio) => {
+    const duration = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : 0;
+    const progress = duration > 0 ? clamp(audio.currentTime / duration) : 0;
+    for (const line of getPlayheads(audio)) {
+      const left = Number.parseFloat(line.getAttribute("data-left") || "60");
+      const right = Number.parseFloat(line.getAttribute("data-right") || "612");
+      const x = left + (right - left) * progress;
+      line.setAttribute("x1", x.toFixed(2));
+      line.setAttribute("x2", x.toFixed(2));
+    }
+  };
+  const startLoop = (audio) => {
+    const previousFrame = frameByAudio.get(audio);
+    if (previousFrame) window.cancelAnimationFrame(previousFrame);
+    const tick = () => {
+      updatePlayheads(audio);
+      if (!audio.paused && !audio.ended) {
+        frameByAudio.set(audio, window.requestAnimationFrame(tick));
+      }
+    };
+    frameByAudio.set(audio, window.requestAnimationFrame(tick));
+  };
+  for (const audio of document.querySelectorAll("audio[data-pitch-audio-key]")) {
+    audio.addEventListener("loadedmetadata", () => updatePlayheads(audio));
+    audio.addEventListener("timeupdate", () => updatePlayheads(audio));
+    audio.addEventListener("seeked", () => updatePlayheads(audio));
+    audio.addEventListener("play", () => startLoop(audio));
+    audio.addEventListener("pause", () => updatePlayheads(audio));
+    audio.addEventListener("ended", () => updatePlayheads(audio));
+    updatePlayheads(audio);
+  }
+})();
+</script>`;
 }
 
 function seriesToSvgPaths(input: {
