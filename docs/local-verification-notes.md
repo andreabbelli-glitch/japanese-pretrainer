@@ -119,8 +119,11 @@ non sostituisce un audit completo e aggiornato del codice.
 - Le schermate di studio secondarie non ereditano più il loading generico “Caricamento media”, ma comunicano cosa si sta preparando.
 - `content:import` non esplode più con stacktrace SQL opaco quando manca lo schema: ora indica di eseguire `db:migrate`.
 - `pronunciations:resolve -- --mode review|next-lesson|lesson-url --dry-run`
-  seleziona i target attesi, esclude le entry gia coperte e non propone Forvo
-  per voci gia marcate come `known missing`.
+  seleziona i target attesi, esclude le entry gia coperte, prova riuso
+  cross-media e dataset Tofugu/WaniKani se gia presente, ma non scarica o copia
+  file.
+- Le voci gia marcate come `known missing` restano eleggibili per riuso
+  cross-media e Tofugu/WaniKani; vengono escluse solo dal passaggio Forvo.
 - Aggiungendo `--retry-known-missing` allo stesso comando, quelle entry
   tornano eleggibili per il fetch Forvo Anki-style o, se ancora assenti su Forvo,
   per la richiesta `word-add` registrata.

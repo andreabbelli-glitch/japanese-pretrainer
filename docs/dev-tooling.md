@@ -143,18 +143,25 @@ Workflow pronunce:
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
+./scripts/with-node.sh pnpm pronunciations:tofugu:sync
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --entry term-cost
 ./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
 ```
 
 `pronunciations:resolve` e il percorso operativo standard: seleziona i target
 da review, prossima lesson o pagina textbook, filtra le entry gia coperte,
-prova il riuso cross-media e manda il residuo al fetch Forvo Anki-style
-(helper Anki dedicato, player `Play(...)`, ranking speaker, download diretto,
-conversione OGG -> MP3). Aggiorna anche lo storico
+prova il riuso cross-media, importa eventuali match esatti dal dataset locale
+Tofugu/WaniKani e manda solo il residuo al fetch Forvo Anki-style (helper Anki
+dedicato, player `Play(...)`, ranking speaker, download diretto, conversione
+OGG -> MP3). Aggiorna anche lo storico
 `data/forvo-requested-word-add.json`, marcando come `resolved` le entry per cui
 e' stato trovato un audio. `pronunciations:forvo` resta il comando low-level
 per target espliciti del fetcher, debug e fallback manuale estremo.
+
+Il dataset Tofugu/WaniKani completo resta locale e ignorato da git sotto
+`data/tofugu-japanese-vocabulary-pronunciation-audio`; `pronunciations:tofugu:sync`
+lo clona o aggiorna. Durante `pronunciations:resolve -- --dry-run` il resolver
+non scarica e non copia file, ma usa il dataset se e' gia presente.
 
 Se Forvo non espone una pronuncia, il workflow deve aprire la richiesta
 `word-add/...` precompilata e registrarla in

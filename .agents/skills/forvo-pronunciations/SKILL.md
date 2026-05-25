@@ -35,20 +35,26 @@ typically at:
    `./scripts/with-node.sh pnpm pronunciations:resolve` for normal user
    requests. It is the standard path for `review`, `next-lesson`, and
    `lesson-url`, and it already performs selection, audio-backed filtering,
-   cross-media reuse, and then Forvo Anki-style retrieval for the unresolved
-   remainder.
+   cross-media reuse, Tofugu/WaniKani local dataset import, and then Forvo
+   Anki-style retrieval for the unresolved remainder.
 3. Before opening Forvo for any entry, always check whether another media
    already has a matching audio-backed card with the same entry type, label,
    and reading. If it exists, reuse/link that audio instead of fetching a new
    one from Forvo.
-4. For real downloads, use the Anki/addon logic: run the dedicated Anki helper,
+4. Before opening Forvo, let the resolver import exact matches from the local
+   Tofugu/WaniKani dataset under
+   `data/tofugu-japanese-vocabulary-pronunciation-audio`. Sync it with
+   `./scripts/with-node.sh pnpm pronunciations:tofugu:sync` when needed. In
+   `--dry-run`, do not clone or copy files; use the dataset only if already
+   present.
+5. For real Forvo downloads, use the Anki/addon logic: run the dedicated Anki helper,
    parse the Forvo page/player `Play(...)` candidates, prefer configured
    speakers, download the direct audio candidate, and convert OGG to MP3 when
    needed.
-5. Do not use `curl`, ad hoc HTTP scripts outside the Anki helper, or
+6. Do not use `curl`, ad hoc HTTP scripts outside the Anki helper, or
    Playwright/headless browser automation as the normal batch path. Playwright
    may be mentioned only for targeted debug or fetcher maintenance.
-6. Prefer the repo-scoped wrapper script, which auto-detects
+7. Prefer the repo-scoped wrapper script, which auto-detects
    the repo root from `JAPANESE_CUSTOM_STUDY_ROOT`, the current working tree, or
    known local defaults:
 
@@ -56,7 +62,7 @@ typically at:
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode review --media <media-slug>
 ```
 
-7. For targeted runs, use one of:
+8. For targeted runs, use one of:
 
 ```bash
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode review
@@ -67,18 +73,21 @@ typically at:
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media <media-slug> --words-file /absolute/path/list.tsv
 ```
 
-8. Do not add a default batch limit. Process every selected entry after audio-backed, reuse, known-missing, and requested-entry filtering. Pass `--limit` only when the user explicitly asks for a numeric cap or a smoke test.
-9. If the browser pauses for manual verification or login, tell the user exactly that and then continue the batch.
-10. Prefer `--dry-run` first when the user wants a preview or when selectors may have drifted.
-11. If a term is not present on Forvo, open the prefilled `word-add` URL and
+9. Do not add a default batch limit. Process every selected entry through
+   audio-backed filtering, reuse, and Tofugu/WaniKani local import. Pass
+   `--limit` only when the user explicitly asks for a numeric cap or a smoke
+   test; it limits the final Forvo residual, not the local steps.
+10. If the browser pauses for manual verification or login, tell the user exactly that and then continue the batch.
+11. Prefer `--dry-run` first when the user wants a preview or when selectors may have drifted.
+12. If a term is not present on Forvo, open the prefilled `word-add` URL and
     record the miss in `data/forvo-known-missing.json` and
     `data/forvo-requested-word-add.json`; this is the normal outcome for true
     misses.
-12. Manual download mode is an extreme fallback only. Use it for a specific item
+13. Manual download mode is an extreme fallback only. Use it for a specific item
     only when Anki-style retrieval or direct import fails but the Forvo page
     visibly has usable audio. Do not use it for ordinary batches, and report why
     the fallback was needed.
-13. Keep the word-add prefill enabled. When an entry is a true miss, the command
+14. Keep the word-add prefill enabled. When an entry is a true miss, the command
     must record it in `data/forvo-requested-word-add.json` and open the
     prefilled `word-add/...` URL with the repo `jcs_*` hints for the
     Tampermonkey helper.
@@ -90,11 +99,11 @@ typically at:
     in `data/forvo-known-missing.json` with `wordAddBlockedReason` /
     `wordAddBlockedDetail` so future ordinary batches skip it until the query is
     corrected or an explicit blocked retry is requested.
-14. `./scripts/with-node.sh pnpm pronunciations:forvo` remains the low-level
+15. `./scripts/with-node.sh pnpm pronunciations:forvo` remains the low-level
     command for explicit fetcher targets, debug, and extreme manual fallback.
     Only mention Playwright when the user explicitly wants to test or debug
     fetcher internals.
-15. For Forvo requests that were already submitted through `word-add` and later
+16. For Forvo requests that were already submitted through `word-add` and later
     fulfilled, scan the authenticated Forvo account requested-pronunciations
     page, build an audio index, then import it with:
 
@@ -106,12 +115,12 @@ typically at:
     matching `data/forvo-requested-word-add.json` entries as resolved, removes
     matching known-missing rows, and refreshes pending summaries.
 
-16. If a task creates or revises flashcards, pronunciation resolution is
+17. If a task creates or revises flashcards, pronunciation resolution is
     mandatory before completion for every touched card entry. Each entry must end
     with local audio in Markdown or `pronunciations.json`, or with a recorded
     Forvo `word-add` request when Forvo does not yet have the pronunciation.
     Do not leave newly created card entries silently missing audio.
-17. This skill normally updates pronunciation audio artifacts only. If the same
+18. This skill normally updates pronunciation audio artifacts only. If the same
     task also creates or revises local flashcard entries, run the pitch accent
     workflow after the content edit and before import, targeted to those new
     entries:
@@ -123,7 +132,7 @@ typically at:
     Jiten, Wiktionary, then OJAD. If it prints `review_required`, inspect the
     candidates and consult another source before manually saving an accent; do
     not treat that output as an automatic resolution.
-18. This skill does not define textbook prose. If a pronunciation request
+19. This skill does not define textbook prose. If a pronunciation request
     expands into creating or revising lesson text, load the relevant
     content-building workflow and follow
     `docs/llm-kit/general/10-textbook-lesson-style-standard.md` for voice and
@@ -142,6 +151,9 @@ typically at:
 
 - Keep the Anki helper profile under `data/forvo-anki-profile` unless the user asks otherwise.
 - Keep the known-missing registry under `data/forvo-known-missing.json` unless the user asks otherwise.
+- Keep the Tofugu/WaniKani dataset under
+  `data/tofugu-japanese-vocabulary-pronunciation-audio` unless the user passes
+  `--tofugu-dataset-dir`.
 - For `review`, support both the global scope and the filtered `--media <slug>`
   scope; the default without `--media` is global. Review mode must not impose
   an implicit `--limit`; it should cover every active review card in scope.
@@ -154,6 +166,9 @@ typically at:
 - Cross-media reuse is mandatory before Forvo. If another media already has a
   matching audio-backed entry, reuse/link it and do not ask the user to fetch a
   new Forvo MP3 for that item.
+- Tofugu/WaniKani exact local import is mandatory before Forvo unless the user
+  passes `--no-tofugu`. Known Forvo misses do not block reuse or Tofugu import;
+  they only block the Forvo step unless `--retry-known-missing` is passed.
 - Use only the unresolved remainder as Forvo input; do not run Forvo blindly on
   the whole bundle by default.
 - For normal user-facing runs, Anki-style retrieval is mandatory for Forvo audio:
@@ -217,7 +232,7 @@ If you edit pronunciation or Forvo implementation code, wrapper scripts, or the
 selection workflow, run the targeted subsystem tests instead of the full suite:
 
 ```bash
-./scripts/with-node.sh pnpm test -- tests/pronunciation-resolve.test.ts tests/pronunciation-workflow.test.ts tests/pronunciation-reuse.test.ts tests/forvo-pronunciation-fetch.test.ts tests/forvo-known-missing.test.ts tests/forvo-word-add.test.ts tests/forvo-pronunciations-wrapper.test.ts tests/pronunciation-runtime-boundary.test.ts
+./scripts/with-node.sh pnpm test -- tests/tofugu-pronunciation-dataset.test.ts tests/pronunciation-resolve.test.ts tests/pronunciation-workflow.test.ts tests/pronunciation-reuse.test.ts tests/forvo-pronunciation-fetch.test.ts tests/forvo-known-missing.test.ts tests/forvo-word-add.test.ts tests/forvo-pronunciations-wrapper.test.ts tests/pronunciation-runtime-boundary.test.ts
 ```
 
 Run `pnpm check` or `pnpm release:check` only if the task also changes app

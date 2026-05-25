@@ -18,17 +18,19 @@ usa il resolver del repo. Il workflow effettivo e':
 1. selezionare i target dallo scope richiesto;
 2. escludere le entry gia coperte da audio locale nel Markdown o in
    `pronunciations.json`;
-3. riusare audio gia presenti in altri media compatibili;
-4. mandare a Forvo solo il residuo tramite la logica Anki/addon: helper Anki
+3. riusare audio gia presenti in altri media compatibili: questo e' sempre il
+   primo recupero effettivo e non viene bloccato dai miss Forvo noti;
+4. importare dal dataset locale Tofugu/WaniKani quando esiste un match esatto;
+5. mandare a Forvo solo il residuo tramite la logica Anki/addon: helper Anki
    dedicato, pagina Forvo letta con user-agent browser, candidati audio estratti
    da `Play(...)`, ranking speaker, download diretto e conversione OGG -> MP3
    quando serve;
-5. per ogni entry senza pronuncia Forvo, aprire la richiesta `word-add`
+6. per ogni entry senza pronuncia Forvo, aprire la richiesta `word-add`
    precompilata e registrarla in `data/forvo-requested-word-add.json` /
    `data/forvo-known-missing.json`;
-6. importare periodicamente le richieste Forvo storiche che sono state
+7. importare periodicamente le richieste Forvo storiche che sono state
    soddisfatte;
-7. aggiornare manifest, asset locali, pending list e storico word-add.
+8. aggiornare manifest, asset locali, pending list e storico word-add.
 
 Per card appena create o revisionate, lo stesso ordine e obbligatorio ma lo
 scope deve essere limitato alle entry toccate o alla lesson appena modificata.
@@ -38,7 +40,19 @@ una traccia nello storico richieste.
 Il fetch Forvo standard non parte da `curl` o da script HTTP improvvisati: segue
 la logica osservata nell'addon Anki dentro un helper dedicato, legge i candidati
 dal player `Play(...)` e poi scarica l'audio diretto scelto. Il riuso interno
-resta obbligatorio prima di aprire Forvo.
+resta obbligatorio prima di qualsiasi recupero esterno.
+
+Il dataset Tofugu/WaniKani vive localmente in
+`data/tofugu-japanese-vocabulary-pronunciation-audio` e viene sincronizzato con:
+
+```bash
+./scripts/with-node.sh pnpm pronunciations:tofugu:sync
+```
+
+Il resolver puo anche clonarlo automaticamente durante una run reale, salvo
+`--no-tofugu-download`. In `--dry-run` non clona e non copia file: usa il dataset
+solo se e' gia presente. Il dataset completo resta sotto `data/` e non viene
+versionato; nei bundle media finiscono solo gli MP3 effettivamente importati.
 
 Il backfill da richieste Forvo gia soddisfatte passa invece da un indice audio
 estratto da una sessione browser autenticata e importato con
@@ -61,16 +75,24 @@ Il resolver:
 - seleziona card da review, prossima lesson o pagina textbook;
 - deduplica le entry tramite `card_entry_link`;
 - filtra le entry gia audio-backed;
-- esclude le entry in `data/forvo-known-missing.json`, salvo
-  `--retry-known-missing`;
 - prova il riuso cross-media su stesso tipo entry, label e reading;
-- usa il fetch Forvo Anki-style per il residuo;
+- importa dal dataset locale Tofugu/WaniKani sul residuo del riuso;
+- esclude dal solo passaggio Forvo le entry in `data/forvo-known-missing.json`,
+  salvo `--retry-known-missing`;
+- usa il fetch Forvo Anki-style solo per il residuo finale;
 - aggiorna `content/media/<slug>/workflow/pronunciation-pending.json`;
 - sincronizza `data/forvo-requested-word-add.json` marcando come `resolved` le
   richieste storiche che ora hanno audio locale.
 
 Non aggiungere mai un limite batch implicito. Usa `--limit` solo quando l'utente
-chiede esplicitamente un numero massimo o uno smoke test.
+chiede esplicitamente un numero massimo o uno smoke test; il limite si applica
+al residuo Forvo, non al riuso cross-media o al dataset Tofugu/WaniKani.
+
+Opzioni Tofugu utili:
+
+- `--tofugu-dataset-dir /path`: usa un clone locale diverso;
+- `--no-tofugu`: salta il dataset locale e passa dal riuso direttamente a Forvo;
+- `--no-tofugu-download`: non clonare o aggiornare il dataset durante la run.
 
 Per debug mirati del solo riuso interno, senza aprire Forvo, usa il comando
 scopato e in dry-run:
@@ -157,7 +179,7 @@ prima di una nuova euristica di matching.
 ## Guardrail
 
 - Non aprire Forvo per entry che possono riusare audio gia presente in un altro
-  media compatibile.
+  media compatibile o importare un match esatto dal dataset Tofugu/WaniKani.
 - I flag con valore (`--media`, `--media-slug`, `--known-missing-file` e
   simili) devono avere sempre un valore esplicito: il workflow deve fermarsi
   prima di partire se il valore manca o se al suo posto arriva un altro flag.
@@ -171,7 +193,8 @@ prima di una nuova euristica di matching.
 - Non usare il download manuale come alternativa normale al fetch Anki-style: e'
   solo fallback estremo per casi singoli.
 - Le entry gia marcate in `data/forvo-known-missing.json` vanno escluse di
-  default; usa `--retry-known-missing` solo quando vuoi riprovarle.
+  default solo dal passaggio Forvo; riuso cross-media e Tofugu/WaniKani restano
+  eleggibili. Usa `--retry-known-missing` solo quando vuoi riprovarle su Forvo.
 - Le entry con `wordAddBlockedReason` non vanno riaperte dal batch request
   ordinario; usa `--retry-blocked` solo per debug mirato o dopo avere corretto
   il testo giapponese da inviare a Forvo.

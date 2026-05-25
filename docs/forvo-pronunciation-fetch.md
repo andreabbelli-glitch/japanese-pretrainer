@@ -18,10 +18,11 @@ low-level per target espliciti del fetcher, debug e fallback manuale estremo.
 
 ## Ruolo nel workflow
 
-Il fetch Forvo Anki-style e' l'unico recupero esterno standard delle pronunce
-audio. Prima di aprire Forvo il workflow deve comunque filtrare gli audio gia
-locali e riusare eventuali audio compatibili presenti in altri media. La source
-of truth del processo completo e' `docs/pronunciation-workflow.md`.
+Il fetch Forvo Anki-style e' il fallback di rete standard delle pronunce audio.
+Prima di aprire Forvo il workflow deve comunque filtrare gli audio gia locali,
+riusare eventuali audio compatibili presenti in altri media e provare il dataset
+locale Tofugu/WaniKani. La source of truth del processo completo e'
+`docs/pronunciation-workflow.md`.
 
 Quando un workflow editoriale crea o revisiona flashcard, questo passaggio non e
 opzionale: ogni entry toccata deve ottenere audio locale oppure una richiesta
@@ -44,6 +45,9 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 - legge `content/` con lo stesso parser/validator dell'import;
 - prima di aprire Forvo prova automaticamente a riusare audio gia presenti in
   altri media con stessa entry type, stesso label e stessa reading;
+- poi prova il dataset locale Tofugu/WaniKani in
+  `data/tofugu-japanese-vocabulary-pronunciation-audio`, importando nei bundle
+  solo i match esatti effettivamente usati;
 - nel flusso operativo standard avvia un helper Anki dedicato e applica la
   logica dell'addon: richiesta Forvo con user-agent browser, parse HTML e
   decodifica dei candidati `Play(...)`;
@@ -86,6 +90,7 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
+./scripts/with-node.sh pnpm pronunciations:tofugu:sync
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --dry-run
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --media gundam-arsenal-base --word 専用機 --word 戦艦
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --entry term-cost
@@ -128,6 +133,11 @@ Opzioni utili:
   default locale per inizializzare il profilo quando e' vuoto;
 - `--browser-timeout-ms 120000`: cambia il timeout massimo del batch Anki;
 - `--known-missing-file /path`: file JSON dove salvare i miss persistenti;
+- `--tofugu-dataset-dir /path`: clone locale Tofugu/WaniKani alternativo per
+  `pnpm pronunciations:resolve`;
+- `--no-tofugu`: salta il dataset locale nel resolver;
+- `--no-tofugu-download`: non clonare o aggiornare il dataset durante una run
+  reale del resolver;
 - `--request-registry-file /path`: file JSON dove salvare le richieste
   `word-add` gia aperte;
 - `--retry-known-missing`: riprova anche le voci gia marcate come missing; vale
@@ -229,6 +239,8 @@ term-taberu
 - `pnpm pronunciations:resolve` e il percorso standard per richieste orientate
   al prodotto; `pnpm pronunciations:forvo` resta il low-level per target espliciti
   del fetcher;
+- il resolver prova Forvo solo dopo audio locale, riuso cross-media e dataset
+  Tofugu/WaniKani;
 - il fetch Forvo standard deve usare l'helper Anki/addon-style e candidati
   estratti da `Play(...)`, non `curl` o script HTTP ad hoc fuori dall'helper;
 - Playwright/browser automation non e il percorso standard per batch reali; puo
@@ -237,9 +249,13 @@ term-taberu
   estremo per un caso specifico;
 - se una voce esiste gia in un altro media compatibile, il comando deve
   collegarla e non proportela su Forvo;
+- se una voce ha un match esatto nel dataset Tofugu/WaniKani, il comando deve
+  importare quell'MP3 locale e non proportela su Forvo;
 - nessun batch implicito: `--limit` va passato solo quando l'utente chiede
   esplicitamente un numero massimo o uno smoke test;
-- i miss persistenti finiscono di default in `data/forvo-known-missing.json`;
+- i miss persistenti finiscono di default in `data/forvo-known-missing.json` e
+  bloccano solo il passaggio Forvo: riuso cross-media e dataset Tofugu/WaniKani
+  restano eleggibili;
 - le richieste `word-add` gia aperte finiscono di default in
   `data/forvo-requested-word-add.json`; le entry risolte restano nello storico
   ma vengono annotate con `resolvedAt` e metadata dell'audio trovato;
