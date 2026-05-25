@@ -59,6 +59,7 @@ type BakeoffColumn =
     };
 
 type BakeoffAuditTarget = BakeoffTarget & {
+  readonly audioHref: string;
   readonly audioSrc: string;
   readonly columns: Record<string, BakeoffColumn>;
   readonly durationMs: number;
@@ -176,6 +177,11 @@ export async function generatePitchGraphBakeoffReportForCorpus(
 
     auditTargets.push({
       ...target,
+      audioHref: buildReportAudioHref({
+        audioSrc: target.option.audioSrc,
+        outDir,
+        publicDir
+      }),
       audioSrc: target.option.audioSrc,
       columns,
       durationMs: currentStrict.durationMs,
@@ -334,21 +340,26 @@ function renderBakeoffHtml(targets: readonly BakeoffAuditTarget[]) {
     h2 { margin-top: 10px; color: #b6aea4; font-size: 16px; font-weight: 600; }
     .target {
       margin-top: 24px;
-      padding: 18px;
+      padding: 22px;
       border: 1px solid rgba(255, 250, 242, 0.16);
       border-radius: 10px;
       background: #222426;
     }
     .meta { margin-top: 6px; color: #b6aea4; }
+    audio {
+      width: min(100%, 520px);
+      margin-top: 14px;
+      display: block;
+    }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 14px;
-      margin-top: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr));
+      gap: 18px;
+      margin-top: 18px;
     }
     .column {
       min-width: 0;
-      padding: 12px;
+      padding: 16px;
       border: 1px solid rgba(255, 250, 242, 0.14);
       border-radius: 8px;
       background: #1b1d1f;
@@ -362,6 +373,26 @@ function renderBakeoffHtml(targets: readonly BakeoffAuditTarget[]) {
       color: #b6aea4;
       font-size: 13px;
       line-height: 1.4;
+    }
+    details {
+      margin-top: 16px;
+      color: #b6aea4;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .diagnostics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .diagnostic {
+      padding: 10px;
+      border: 1px solid rgba(255, 250, 242, 0.11);
+      border-radius: 6px;
+      background: rgba(255, 250, 242, 0.03);
     }
     svg {
       width: 100%;
@@ -397,19 +428,46 @@ function renderBakeoffHtml(targets: readonly BakeoffAuditTarget[]) {
 }
 
 function renderBakeoffTargetHtml(target: BakeoffAuditTarget) {
+  const primaryColumnKeys = [
+    "currentStrict",
+    "localKotuLike",
+    "localImproved",
+    ...(target.columns.kotuApiBaseline?.status === "available"
+      ? ["kotuApiBaseline"]
+      : [])
+  ];
+  const diagnosticColumnKeys = columnDefinitions
+    .map((definition) => definition.key)
+    .filter((key) => !primaryColumnKeys.includes(key));
+
   return `<section class="target">
   <h2>${escapeHtml(target.kana)} / ${escapeHtml(target.option.rawPronunciation)} pitch ${target.option.pitchAccent}</h2>
   <p class="meta">${escapeHtml(target.pairId)} · ${escapeHtml(target.option.id)} · ${escapeHtml(target.audioSrc)} · ${target.durationMs}ms</p>
+  <audio controls preload="metadata" src="${escapeHtml(target.audioHref)}"></audio>
   <div class="grid">
-    ${columnDefinitions
-      .map((definition) =>
+    ${primaryColumnKeys
+      .map((key) =>
         renderBakeoffColumnHtml(
-          definition.label,
-          target.columns[definition.key]
+          columnDefinitions.find((definition) => definition.key === key)!.label,
+          target.columns[key]
         )
       )
       .join("\n")}
   </div>
+  <details>
+    <summary>Extractor non disponibili / baseline non matchata</summary>
+    <div class="diagnostics">
+      ${diagnosticColumnKeys
+        .map((key) =>
+          renderDiagnosticColumnHtml(
+            columnDefinitions.find((definition) => definition.key === key)!
+              .label,
+            target.columns[key]
+          )
+        )
+        .join("\n")}
+    </div>
+  </details>
 </section>`;
 }
 
@@ -421,7 +479,19 @@ function renderBakeoffColumnHtml(label: string, column: BakeoffColumn) {
       ? renderGraphSvg(column.graph)
       : `<p class="status">${escapeHtml(column.reason)}</p>`
   }
+  ${column.status === "available" ? renderGraphMetrics(column.graph) : ""}
   ${column.summary ? `<p class="status">${escapeHtml(column.summary)}</p>` : ""}
+</article>`;
+}
+
+function renderDiagnosticColumnHtml(label: string, column: BakeoffColumn) {
+  return `<article class="diagnostic">
+  <h3>${escapeHtml(label)}</h3>
+  <p class="status">${
+    column.status === "available"
+      ? "Available; shown in the primary comparison."
+      : escapeHtml(column.reason)
+  }</p>
 </article>`;
 }
 
@@ -433,10 +503,10 @@ function renderGraphSvg(graph: PitchAccentAudioPitchGraph) {
   }
 
   const bounds = {
-    bottom: 112,
-    left: 36,
-    right: 276,
-    top: 12
+    bottom: 194,
+    left: 58,
+    right: 612,
+    top: 18
   };
   const width = bounds.right - bounds.left;
   const height = bounds.bottom - bounds.top;
@@ -467,7 +537,7 @@ function renderGraphSvg(graph: PitchAccentAudioPitchGraph) {
     paths.push(currentPath);
   }
 
-  return `<svg viewBox="0 0 300 140" role="img" aria-label="pitch graph">
+  return `<svg viewBox="0 0 640 230" role="img" aria-label="pitch graph">
   ${domain.ticks
     .map(
       (tick) =>
@@ -486,6 +556,32 @@ function renderGraphSvg(graph: PitchAccentAudioPitchGraph) {
     .join("\n")}
   ${paths.map((line) => `<path class="pitch" d="${line}" />`).join("\n")}
 </svg>`;
+}
+
+function renderGraphMetrics(graph: PitchAccentAudioPitchGraph) {
+  const voicedCount = graph.values.filter(
+    (value) => typeof value === "number" && Number.isFinite(value) && value > 0
+  ).length;
+  const totalCount = graph.values.length;
+  const coverage =
+    totalCount > 0 ? Math.round((voicedCount / totalCount) * 100) : 0;
+  const quality =
+    graph.qualityScore === undefined
+      ? "n/a"
+      : `${Math.round(graph.qualityScore * 100)}%`;
+
+  return `<p class="status">frames: ${voicedCount}/${totalCount} (${coverage}%) · quality: ${quality}</p>`;
+}
+
+function buildReportAudioHref(input: {
+  readonly audioSrc: string;
+  readonly outDir: string;
+  readonly publicDir: string;
+}) {
+  const audioPath = path.join(input.publicDir, input.audioSrc.slice(1));
+  const relativePath = path.relative(input.outDir, audioPath);
+
+  return relativePath.split(path.sep).join("/");
 }
 
 function roundSvgCoordinate(value: number) {

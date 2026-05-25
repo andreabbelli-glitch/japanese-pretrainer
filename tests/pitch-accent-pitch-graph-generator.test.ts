@@ -205,6 +205,8 @@ describe("pitch accent pitch graph generator", () => {
     expect(audit.targets[0]?.columns.currentStrict.status).toBe("available");
     expect(audit.targets[0]?.columns.localImproved.status).toBe("available");
     expect(audit.targets[0]?.columns.worldHarvest.status).toBe("unavailable");
+    expect(html).toContain("<audio controls");
+    expect(html).toContain("frames:");
     expect(html).toContain("WORLD/Praat/pYIN raw");
     expect(html).toContain("Kotu API baseline");
   });
