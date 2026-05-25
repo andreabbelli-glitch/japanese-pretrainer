@@ -356,7 +356,10 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E8%80%83%E3%81%88%E6%96%B9/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 5,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",

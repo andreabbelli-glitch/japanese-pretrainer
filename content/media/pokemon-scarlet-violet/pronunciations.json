@@ -1691,7 +1691,10 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E8%B2%B4%E6%96%B9/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 2,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -1737,7 +1740,10 @@
       "audio_speaker": "gordon3155",
       "audio_attribution": "gordon3155 via Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%AD%A6%E3%81%B6/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -2028,7 +2034,10 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%84%AA%E3%81%97%E3%81%84/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -2038,7 +2047,10 @@
       "audio_speaker": "bnkyk",
       "audio_attribution": "bnkyk via Forvo",
       "audio_page_url": "https://forvo.com/word/4%E3%81%A4/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -2069,7 +2081,10 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E8%8A%B8%E8%A1%93/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -2739,7 +2754,10 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E6%AF%8E%E6%97%A5/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -2827,7 +2845,10 @@
       "audio_speaker": "yasuo",
       "audio_attribution": "yasuo via Forvo",
       "audio_page_url": "https://forvo.com/word/%E8%AA%B0%E3%82%82/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -3341,7 +3362,10 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%90%88%E6%A0%BC%E8%80%85/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 4,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -5021,7 +5045,10 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E7%B9%B0%E3%82%8A%E5%87%BA%E3%81%99/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -10006,7 +10033,10 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%86%E3%81%91%E3%81%A8%E3%82%8B/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -10513,7 +10543,10 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E6%89%8B%E3%81%94%E3%82%8F%E3%81%84/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -12373,7 +12406,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-v636-honkou",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -12419,7 +12455,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-v641-kirikaeru",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 4,
+      "pitch_accent_source": "Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -12601,7 +12640,10 @@
       "audio_speaker": "sorechaude",
       "audio_attribution": "sorechaude via Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%85%A8%E9%80%9F%E5%8A%9B/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 4,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -12856,7 +12898,10 @@
       "audio_speaker": "skent",
       "audio_attribution": "skent via Forvo",
       "audio_page_url": "https://forvo.com/word/%E4%B8%80%E8%8B%A6%E5%8A%B4/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 2,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -13497,7 +13542,10 @@
       "audio_speaker": "mezashi",
       "audio_attribution": "mezashi via Forvo",
       "audio_page_url": "https://forvo.com/word/%E4%BA%BA%E5%8A%A9%E3%81%91/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
