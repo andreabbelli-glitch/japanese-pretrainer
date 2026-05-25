@@ -66,6 +66,7 @@ describe("pitch accent corpus loader", () => {
 
       expect(corpus.pairs.map((pair) => pair.id)).toEqual([
         "kuuuube-pair",
+        "ze",
         "tofugu-pair"
       ]);
       expect(corpus.source.repository).toBe("merged-static-corpora");

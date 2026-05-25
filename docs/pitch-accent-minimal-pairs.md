@@ -42,10 +42,9 @@ particolare normalizza l'handakuten combinante erroneo sulla riga K
 (`カ゚/キ゚/ク゚/ケ゚/コ゚`) in kana sonori (`ガ/ギ/グ/ゲ/ゴ`), cosi grafi e
 label non contano il segno combinante come una mora separata.
 
-Il loader puo inoltre escludere singoli pair vendorizzati se risultano ambigui
-o fuorvianti nel drill. Il pair Kuuuube `ze` (`しのぶ`, contrasto 1/2) e
-escluso a runtime perche la lettura e lessicalmente ambigua e ha prodotto
-risposte percepite come non affidabili.
+Il loader conserva i pair del manifest vendorizzato senza esclusioni runtime
+per singolo item. Anche il pair Kuuuube `ze` (`しのぶ`, contrasto 1/2) resta
+disponibile nel drill.
 
 Un secondo corpus statico opzionale puo vivere in:
 
