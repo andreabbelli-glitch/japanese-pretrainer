@@ -129,7 +129,17 @@ La baseline Kotu e autorizzata ma opt-in. La documentazione pubblica
 [Kotu API](https://docs.kotu.io/) dichiara una superficie v2 limitata a status,
 pronunciation search e text parsing; per questo il runtime non dipende da
 endpoint audio/pitch. Se serve confrontare una curva Kotu, popola una cache
-locale rate-limited con consenso esplicito:
+locale rate-limited con consenso esplicito. Il bake-off puo farlo
+automaticamente dietro flag: scansiona `questions/next`, associa
+`rawPronunciation + pitchAccent`, scarica `raw-pitch` per i `pronunciationID`
+matched e salva `.tmp/pitch-graph-bakeoff/kotu-baseline-cache.json`.
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:generate-pitch-graph-bakeoff -- --allow-kotu-api --kotu-api-scan-limit 400
+```
+
+Per fetch mirati da ID Kotu gia noto, resta disponibile anche il comando
+manuale:
 
 ```sh
 ./scripts/with-node.sh pnpm pitch-accent:fetch-kotu-pitch-baseline -- --allow-kotu-api --pronunciation-id <kotu-id> --raw-pronunciation スル --pitch-accent 1

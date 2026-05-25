@@ -14,6 +14,7 @@ import {
   type PitchAccentPairOption
 } from "../model/index.ts";
 import {
+  fetchKotuPitchBaselineCacheForOptions,
   matchKotuPitchBaselineCache,
   parseKotuPitchBaselineCache,
   type KotuPitchBaselineCache
@@ -31,6 +32,11 @@ export type GeneratePitchGraphBakeoffReportResult = {
 };
 
 export type GeneratePitchGraphBakeoffReportInput = {
+  readonly allowKotuApi?: boolean;
+  readonly kotuApiBaseUrl?: string;
+  readonly kotuApiDelayMs?: number;
+  readonly kotuApiScanLimit?: number;
+  readonly kotuApiSeed?: number;
   readonly kotuBaselineCache?: KotuPitchBaselineCache | null;
   readonly kotuBaselineCachePath?: string;
   readonly enableExternalExtractors?: boolean;
@@ -81,6 +87,10 @@ type BakeoffAuditTarget = BakeoffTarget & {
 
 const defaultProblematicPairIds = ["1z", "qb", "31", "94"] as const;
 const defaultBakeoffPairLimit = 30;
+const defaultKotuApiBaseUrl = "https://api.kotu.io/v2";
+const defaultKotuApiDelayMs = 250;
+const defaultKotuApiScanLimit = 1_000;
+const defaultKotuApiSeed = 2_012_583_632;
 const defaultSampleRate = 16_000;
 const execFileAsync = promisify(execFile);
 
@@ -128,17 +138,31 @@ export async function generatePitchGraphBakeoffReportForCorpus(
   const corpus = await readPitchAccentCorpusManifest(input.manifestPath, {
     requiredAudioSrcPrefix: input.requiredAudioSrcPrefix
   });
-  const kotuBaselineCache =
-    input.kotuBaselineCache ??
-    (input.kotuBaselineCachePath
-      ? parseKotuPitchBaselineCache(
-          await readFile(input.kotuBaselineCachePath, "utf8")
-        )
-      : null);
   const targets = selectBakeoffTargets(corpus, {
     limit: input.limit ?? defaultBakeoffPairLimit,
     pairIds: input.pairIds
   });
+  const kotuBaselineCachePath =
+    input.kotuBaselineCachePath ??
+    (input.allowKotuApi
+      ? path.join(outDir, "kotu-baseline-cache.json")
+      : undefined);
+  let kotuBaselineCache =
+    input.kotuBaselineCache ??
+    (kotuBaselineCachePath
+      ? await readOptionalKotuPitchBaselineCache(kotuBaselineCachePath)
+      : null);
+  const kotuApiAudit = await prepareKotuBaselineCache({
+    allowKotuApi: input.allowKotuApi === true,
+    baseUrl: input.kotuApiBaseUrl ?? defaultKotuApiBaseUrl,
+    cache: kotuBaselineCache,
+    cachePath: kotuBaselineCachePath,
+    delayMs: input.kotuApiDelayMs ?? defaultKotuApiDelayMs,
+    options: targets.map((target) => target.option),
+    scanLimit: input.kotuApiScanLimit ?? defaultKotuApiScanLimit,
+    seed: input.kotuApiSeed ?? defaultKotuApiSeed
+  });
+  kotuBaselineCache = kotuApiAudit.cache;
   const auditTargets: BakeoffAuditTarget[] = [];
 
   for (const target of targets) {
@@ -268,6 +292,15 @@ export async function generatePitchGraphBakeoffReportForCorpus(
   const htmlPath = path.join(outDir, "report.html");
   const audit = {
     generatedAt: new Date().toISOString(),
+    kotuApi: {
+      cachePath: kotuApiAudit.cachePath,
+      enabled: kotuApiAudit.enabled,
+      fetchedCount: kotuApiAudit.fetchedCount,
+      matchedCount: kotuApiAudit.matchedCount,
+      scannedQuestionCount: kotuApiAudit.scannedQuestionCount,
+      scanLimit: kotuApiAudit.scanLimit,
+      seed: kotuApiAudit.seed
+    },
     manifestPath: input.manifestPath,
     problematicSeedPairIds: defaultProblematicPairIds,
     targetCount: auditTargets.length,
@@ -281,6 +314,83 @@ export async function generatePitchGraphBakeoffReportForCorpus(
     auditPath,
     htmlPath,
     targetCount: auditTargets.length
+  };
+}
+
+async function readOptionalKotuPitchBaselineCache(
+  cachePath: string
+): Promise<KotuPitchBaselineCache | null> {
+  try {
+    return parseKotuPitchBaselineCache(await readFile(cachePath, "utf8"));
+  } catch (error) {
+    if (isMissingFileError(error)) {
+      return null;
+    }
+
+    throw error;
+  }
+}
+
+async function prepareKotuBaselineCache(input: {
+  readonly allowKotuApi: boolean;
+  readonly baseUrl: string;
+  readonly cache: KotuPitchBaselineCache | null;
+  readonly cachePath?: string;
+  readonly delayMs: number;
+  readonly options: readonly PitchAccentPairOption[];
+  readonly scanLimit: number;
+  readonly seed: number;
+}): Promise<{
+  readonly cache: KotuPitchBaselineCache | null;
+  readonly cachePath: string | null;
+  readonly enabled: boolean;
+  readonly fetchedCount: number;
+  readonly matchedCount: number;
+  readonly scannedQuestionCount: number;
+  readonly scanLimit: number;
+  readonly seed: number;
+}> {
+  if (!input.allowKotuApi) {
+    return {
+      cache: input.cache,
+      cachePath: input.cachePath ?? null,
+      enabled: false,
+      fetchedCount: 0,
+      matchedCount: 0,
+      scannedQuestionCount: 0,
+      scanLimit: input.scanLimit,
+      seed: input.seed
+    };
+  }
+
+  if (!input.cachePath) {
+    throw new Error("Kotu API fetch requires a cache path.");
+  }
+
+  const fetchResult = await fetchKotuPitchBaselineCacheForOptions({
+    baseUrl: input.baseUrl,
+    cache: input.cache ?? { entries: [], version: 1 },
+    delayMs: input.delayMs,
+    options: input.options,
+    scanLimit: input.scanLimit,
+    seed: input.seed
+  });
+
+  await mkdir(path.dirname(input.cachePath), { recursive: true });
+  await writeFile(
+    input.cachePath,
+    `${JSON.stringify(fetchResult.cache, null, 2)}\n`
+  );
+
+  return {
+    cache: fetchResult.cache,
+    cachePath: input.cachePath,
+    enabled: true,
+    fetchedCount: fetchResult.fetchedCount,
+    matchedCount: fetchResult.matchedCount,
+    scannedQuestionCount: fetchResult.scannedQuestionCount,
+    scanLimit: input.scanLimit,
+    seed: input.seed
   };
 }
 
@@ -374,7 +484,7 @@ function buildKotuApiBaselineColumn(input: {
 
   return {
     reason:
-      "No authorized Kotu baseline cache entry matched this audio. Pass --kotu-cache after an opt-in fetch.",
+      "No authorized Kotu baseline cache entry matched this audio. Pass --allow-kotu-api to fetch/cache Kotu baseline data, or --kotu-cache with an existing cache.",
     status: "unmatched"
   };
 }
@@ -518,6 +628,15 @@ function buildPcmFingerprint(samples: Float32Array) {
   return createHash("sha256")
     .update(Buffer.from(samples.buffer, samples.byteOffset, samples.byteLength))
     .digest("hex");
+}
+
+function isMissingFileError(error: unknown) {
+  return (
+    error !== null &&
+    typeof error === "object" &&
+    "code" in error &&
+    error.code === "ENOENT"
+  );
 }
 
 function renderBakeoffHtml(targets: readonly BakeoffAuditTarget[]) {

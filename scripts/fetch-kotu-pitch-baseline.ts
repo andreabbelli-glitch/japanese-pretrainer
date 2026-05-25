@@ -66,7 +66,7 @@ function parseCliOptions(argv: readonly string[]) {
     rawPronunciation?: string;
   } = {
     allowKotuApi: false,
-    baseUrl: "https://kotu.io",
+    baseUrl: "https://api.kotu.io/v2",
     cachePath: ".tmp/pitch-graph-bakeoff/kotu-baseline-cache.json",
     delayMs: 2_000,
     pronunciationIds: []

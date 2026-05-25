@@ -11,7 +11,12 @@ async function main() {
 
 function parseCliOptions(argv: readonly string[]) {
   const options: {
+    allowKotuApi: boolean;
     enableExternalExtractors: boolean;
+    kotuApiBaseUrl: string;
+    kotuApiDelayMs: number;
+    kotuApiScanLimit: number;
+    kotuApiSeed: number;
     kotuBaselineCachePath?: string;
     limit: number;
     manifestPath: string;
@@ -21,7 +26,12 @@ function parseCliOptions(argv: readonly string[]) {
     requiredAudioSrcPrefix: string;
     sampleRate: number;
   } = {
+    allowKotuApi: false,
     enableExternalExtractors: true,
+    kotuApiBaseUrl: "https://api.kotu.io/v2",
+    kotuApiDelayMs: 250,
+    kotuApiScanLimit: 1_000,
+    kotuApiSeed: 2_012_583_632,
     limit: 30,
     manifestPath: "public/vendor/minimal-pairs/manifest.json",
     outDir: ".tmp/pitch-graph-bakeoff",
@@ -39,6 +49,25 @@ function parseCliOptions(argv: readonly string[]) {
     }
 
     switch (argument) {
+      case "--allow-kotu-api":
+        options.allowKotuApi = true;
+        break;
+      case "--kotu-api-base-url":
+        options.kotuApiBaseUrl = readValue(argv, index, argument);
+        index += 1;
+        break;
+      case "--kotu-api-delay-ms":
+        options.kotuApiDelayMs = readNonNegativeInteger(argv, index, argument);
+        index += 1;
+        break;
+      case "--kotu-api-scan-limit":
+        options.kotuApiScanLimit = readPositiveInteger(argv, index, argument);
+        index += 1;
+        break;
+      case "--kotu-api-seed":
+        options.kotuApiSeed = readNonNegativeInteger(argv, index, argument);
+        index += 1;
+        break;
       case "--kotu-cache":
         options.kotuBaselineCachePath = readValue(argv, index, argument);
         index += 1;
@@ -90,6 +119,20 @@ function readValue(argv: readonly string[], index: number, flag: string) {
 
   if (!value || value.startsWith("--")) {
     throw new Error(`Missing value for ${flag}.`);
+  }
+
+  return value;
+}
+
+function readNonNegativeInteger(
+  argv: readonly string[],
+  index: number,
+  flag: string
+) {
+  const value = Number.parseInt(readValue(argv, index, flag), 10);
+
+  if (!Number.isInteger(value) || value < 0) {
+    throw new Error(`${flag} must be a non-negative integer.`);
   }
 
   return value;
