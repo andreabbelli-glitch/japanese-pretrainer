@@ -72,6 +72,8 @@ describe("pitch accent session controller interactions", () => {
     let now = 1_000;
     vi.spyOn(performance, "now").mockImplementation(() => now);
     mocks.submitPitchAccentAnswerAction.mockResolvedValue({
+      chosenOptionId: "pair-a:1",
+      correctOptionId: "pair-a:1",
       idempotent: false,
       isCorrect: true
     });
@@ -106,9 +108,35 @@ describe("pitch accent session controller interactions", () => {
     expect(controller().currentTrial?.trialId).toBe("trial-2");
   });
 
+  it("uses persisted attempt state returned by idempotent submissions", async () => {
+    mocks.submitPitchAccentAnswerAction.mockResolvedValue({
+      chosenOptionId: "pair-a:0",
+      correctOptionId: "pair-a:1",
+      idempotent: true,
+      isCorrect: false
+    });
+    const { controller } = await renderController({
+      audioElement: createAudioElementStub(),
+      pauseAfterCorrect: true
+    });
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("2");
+      await Promise.resolve();
+    });
+
+    expect(controller().feedback).toMatchObject({
+      chosenOptionId: "pair-a:0",
+      correctOptionId: "pair-a:1",
+      isCorrect: false
+    });
+  });
+
   it("auto-advances correct answers when pause-after-correct is disabled", async () => {
     vi.useFakeTimers();
     mocks.submitPitchAccentAnswerAction.mockResolvedValue({
+      chosenOptionId: "pair-a:1",
+      correctOptionId: "pair-a:1",
       idempotent: false,
       isCorrect: true
     });

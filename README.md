@@ -233,6 +233,7 @@ Il comando `release:check` copre l'intero set di controlli locali:
 - preparazione di un DB SQLite locale dedicato in `.tmp/release-check/`
 - build di produzione
 - validazione contenuti su tutti i bundle reali presenti in `content/media`
+- validazione completa del corpus vendorizzato Pitch Accent Minimal Pairs
 - E2E su browser Playwright di default
 
 Anche se `.env.local` punta a un database Turso remoto, `release:check` forza

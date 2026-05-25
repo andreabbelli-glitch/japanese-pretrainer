@@ -249,7 +249,7 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
           </div>
           <button
             className="button button--ghost"
-            disabled={isSessionFinalizing}
+            disabled={isSessionFinalizing || controller.isSubmitting}
             onClick={abandonSession}
             type="button"
           >

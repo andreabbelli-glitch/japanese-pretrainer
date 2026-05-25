@@ -4,7 +4,8 @@ import { db, type DatabaseClient } from "@/db";
 import {
   getPitchAccentSessionRow,
   insertPitchAccentSession,
-  insertPitchAccentTrials
+  insertPitchAccentTrials,
+  listPitchAccentTrialRowsBySession
 } from "@/db/queries";
 
 import {
@@ -19,7 +20,6 @@ import type { StartPitchAccentSessionResult } from "./contracts";
 import { refreshPitchAccentSessionRollup } from "./rollups";
 
 const DEFAULT_SESSION_COUNT = 20;
-
 export async function startPitchAccentSession(
   input: {
     readonly corpus?: PitchAccentMinimalPairsCorpus;
@@ -128,24 +128,44 @@ async function finalizePitchAccentSession(input: {
 }) {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
-  const session = await getPitchAccentSessionRow(database, input.sessionId);
 
-  if (!session) {
-    throw new Error("Pitch accent session was not found.");
-  }
-  if (session.status !== "active") {
-    return;
-  }
+  await database.transaction(async (transaction) => {
+    const session = await getPitchAccentSessionRow(
+      transaction,
+      input.sessionId
+    );
 
-  await refreshPitchAccentSessionRollup(database, {
-    durationMs: Math.max(
-      0,
-      now.getTime() - new Date(session.startedAt).getTime()
-    ),
-    endedAt: now.toISOString(),
-    expectedStatus: "active",
-    sessionId: input.sessionId,
-    status: input.status,
-    updatedAt: now.toISOString()
+    if (!session) {
+      throw new Error("Pitch accent session was not found.");
+    }
+    if (session.status !== "active") {
+      return;
+    }
+
+    if (input.status === "completed") {
+      const trials = await listPitchAccentTrialRowsBySession(
+        transaction,
+        input.sessionId
+      );
+      const answeredCount = trials.filter(
+        (trial) => trial.status === "answered"
+      ).length;
+
+      if (answeredCount < session.totalTrials) {
+        throw new Error("Pitch accent session is not complete.");
+      }
+    }
+
+    await refreshPitchAccentSessionRollup(transaction, {
+      durationMs: Math.max(
+        0,
+        now.getTime() - new Date(session.startedAt).getTime()
+      ),
+      endedAt: now.toISOString(),
+      expectedStatus: "active",
+      sessionId: input.sessionId,
+      status: input.status,
+      updatedAt: now.toISOString()
+    });
   });
 }

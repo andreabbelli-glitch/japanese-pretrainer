@@ -179,6 +179,7 @@ Il gate canonico copre nell'ordine:
 - preparazione di un DB SQLite locale dedicato in `.tmp/release-check/`;
 - `pnpm build`;
 - `pnpm content:validate`;
+- `pnpm pitch-accent:validate-corpus`;
 - runner E2E Playwright sul setup locale dedicato.
 
 Il DB locale del release gate viene passato esplicitamente come `DATABASE_URL` e

@@ -49,6 +49,9 @@ run_step "Build di produzione" \
 run_step "Validazione contenuti su tutti i bundle reali" \
   ./scripts/with-node.sh pnpm content:validate
 
+run_step "Validazione corpus Pitch Accent Minimal Pairs" \
+  ./scripts/with-node.sh pnpm pitch-accent:validate-corpus
+
 run_step "Test end-to-end" \
   run_with_release_database ./scripts/with-node.sh pnpm test:e2e:runner
 

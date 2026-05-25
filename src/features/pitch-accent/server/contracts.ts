@@ -11,6 +11,8 @@ export type StartPitchAccentSessionResult = {
 };
 
 export type SubmitPitchAccentAnswerResult = {
+  readonly chosenOptionId: string;
+  readonly correctOptionId: string;
   readonly idempotent: boolean;
   readonly isCorrect: boolean;
 };

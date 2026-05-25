@@ -157,8 +157,8 @@ export function usePitchAccentSessionController(
       })
         .then((result) => {
           setFeedback({
-            chosenOptionId: optionId,
-            correctOptionId: currentTrial.correctOptionId,
+            chosenOptionId: result.chosenOptionId,
+            correctOptionId: result.correctOptionId,
             isCorrect: result.isCorrect,
             responseMs,
             trialId: currentTrial.trialId

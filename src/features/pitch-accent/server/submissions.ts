@@ -49,6 +49,8 @@ export async function submitPitchAccentAnswer(input: {
     );
     if (existingAttempt) {
       return {
+        chosenOptionId: existingAttempt.chosenOptionId,
+        correctOptionId: existingAttempt.correctOptionId,
         idempotent: true,
         isCorrect: existingAttempt.isCorrect === 1
       };
@@ -56,6 +58,9 @@ export async function submitPitchAccentAnswer(input: {
 
     if (trial.status !== "planned") {
       throw new Error("Pitch accent trial is not answerable.");
+    }
+    if (!trialIncludesOption(trial.optionsJson, input.chosenOptionId)) {
+      throw new Error("Pitch accent answer is not one of the trial options.");
     }
 
     const isCorrect = input.chosenOptionId === trial.correctOptionId;
@@ -80,10 +85,15 @@ export async function submitPitchAccentAnswer(input: {
         transaction,
         input.trialId
       );
+      if (!attempt) {
+        throw new Error("Pitch accent attempt could not be read.");
+      }
 
       return {
+        chosenOptionId: attempt.chosenOptionId,
+        correctOptionId: attempt.correctOptionId,
         idempotent: true,
-        isCorrect: attempt?.isCorrect === 1
+        isCorrect: attempt.isCorrect === 1
       };
     }
 
@@ -91,15 +101,40 @@ export async function submitPitchAccentAnswer(input: {
       answeredAt: nowIso,
       trialId: input.trialId
     });
-    await refreshPitchAccentSessionRollup(transaction, {
+    const refreshed = await refreshPitchAccentSessionRollup(transaction, {
+      expectedStatus: "active",
       sessionId: input.sessionId,
       status: "active",
       updatedAt: nowIso
     });
+    if (!refreshed) {
+      throw new Error("Pitch accent session is not active.");
+    }
 
     return {
+      chosenOptionId: input.chosenOptionId,
+      correctOptionId: trial.correctOptionId,
       idempotent: false,
       isCorrect
     };
   });
+}
+
+function trialIncludesOption(optionsJson: string, optionId: string) {
+  try {
+    const parsed = JSON.parse(optionsJson) as unknown;
+
+    return (
+      Array.isArray(parsed) &&
+      parsed.some((option) => {
+        if (!option || typeof option !== "object") {
+          return false;
+        }
+
+        return (option as { id?: unknown }).id === optionId;
+      })
+    );
+  } catch {
+    return false;
+  }
 }
