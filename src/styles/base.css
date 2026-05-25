@@ -3936,8 +3936,10 @@ button.katakana-speed-ran-cell:disabled {
     transform var(--motion-fast) var(--ease-emphasized);
 }
 
-.pitch-accent-option:hover:not(:disabled),
-.pitch-accent-option:focus-visible:not(:disabled) {
+.pitch-accent-option:hover:not(:disabled):not(.pitch-accent-option--review),
+.pitch-accent-option:focus-visible:not(:disabled):not(
+    .pitch-accent-option--review
+  ) {
   border-color: rgba(45, 110, 185, 0.68);
   box-shadow:
     var(--shadow-card),
@@ -3947,6 +3949,16 @@ button.katakana-speed-ran-cell:disabled {
 
 .pitch-accent-option:disabled {
   cursor: default;
+}
+
+.pitch-accent-option--review {
+  cursor: default;
+}
+
+.pitch-accent-option--with-play {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  justify-items: stretch;
 }
 
 .pitch-accent-option--correct {
@@ -3959,12 +3971,39 @@ button.katakana-speed-ran-cell:disabled {
   background: rgba(241, 221, 214, 0.86);
 }
 
+.pitch-accent-option__content {
+  min-width: 0;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+}
+
 .pitch-accent-option__key {
   color: var(--color-ink-soft);
   font-size: var(--text-micro);
   font-weight: var(--font-weight-semibold);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.pitch-accent-option__play {
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(45, 110, 185, 0.36);
+  border-radius: 999px;
+  background: rgba(255, 250, 242, 0.9);
+  color: var(--color-ink-strong);
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.pitch-accent-option__play:hover,
+.pitch-accent-option__play:focus-visible {
+  border-color: rgba(45, 110, 185, 0.72);
+  box-shadow: 0 0 0 3px rgba(45, 110, 185, 0.14);
 }
 
 .pitch-accent-feedback {

@@ -47,6 +47,7 @@ export type PitchAccentSessionControllerResult = {
   ) => void;
   readonly handleContinue: () => void;
   readonly isSubmitting: boolean;
+  readonly playOptionAudio: (optionId: string) => void;
   readonly progressPercent: number;
   readonly replayCurrentAudio: () => void;
   readonly totalTrials: number;
@@ -82,6 +83,7 @@ export function usePitchAccentSessionController(
   const nextCorrectAudio = session.trials[currentIndex + 1]?.options.find(
     (option) => option.id === session.trials[currentIndex + 1]?.correctOptionId
   )?.audioSrc;
+  const { muffle, noise } = input.audioModifiers;
 
   useEffect(() => {
     clearAutoAdvanceTimeout(autoAdvanceTimeoutRef);
@@ -105,6 +107,47 @@ export function usePitchAccentSessionController(
     audio.preload = "auto";
   }, [nextCorrectAudio]);
 
+  const playCurrentAudioOption = useCallback(
+    (option: PitchAccentPairOption | null | undefined) => {
+      const audioElement = input.audioElement;
+
+      if (!audioElement || !option) {
+        return;
+      }
+
+      void playAudioElementOption(
+        audioElement,
+        option,
+        { muffle, noise },
+        modifiedAudioUrlRef
+      ).catch(() => {
+        playRawAudio(audioElement, option, modifiedAudioUrlRef);
+      });
+    },
+    [input.audioElement, muffle, noise]
+  );
+
+  useEffect(() => {
+    const correctOption = currentTrial
+      ? currentTrial.options.find(
+          (option) => option.id === currentTrial.correctOptionId
+        )
+      : null;
+
+    playCurrentAudioOption(correctOption);
+  }, [currentTrial, playCurrentAudioOption]);
+
+  const playOptionAudio = useCallback(
+    (optionId: string) => {
+      const option = currentTrial?.options.find(
+        (candidate) => candidate.id === optionId
+      );
+
+      playCurrentAudioOption(option);
+    },
+    [currentTrial, playCurrentAudioOption]
+  );
+
   const replayCurrentAudio = useCallback(() => {
     const audioElement = input.audioElement;
     const correctOption = currentTrial
@@ -117,15 +160,15 @@ export function usePitchAccentSessionController(
       return;
     }
 
-    void playOptionAudio(
+    void playAudioElementOption(
       audioElement,
       correctOption,
-      input.audioModifiers,
+      { muffle, noise },
       modifiedAudioUrlRef
     ).catch(() => {
       playRawAudio(audioElement, correctOption, modifiedAudioUrlRef);
     });
-  }, [currentTrial, input.audioElement, input.audioModifiers]);
+  }, [currentTrial, input.audioElement, muffle, noise]);
 
   const handleContinue = useCallback(() => {
     clearAutoAdvanceTimeout(autoAdvanceTimeoutRef);
@@ -249,6 +292,7 @@ export function usePitchAccentSessionController(
       handleChooseOption,
       handleContinue,
       isSubmitting,
+      playOptionAudio,
       progressPercent:
         totalTrials > 0
           ? Math.round(
@@ -268,13 +312,14 @@ export function usePitchAccentSessionController(
       handleChooseOption,
       handleContinue,
       isSubmitting,
+      playOptionAudio,
       replayCurrentAudio,
       totalTrials
     ]
   );
 }
 
-async function playOptionAudio(
+async function playAudioElementOption(
   audioElement: HTMLAudioElement,
   option: PitchAccentPairOption,
   modifiers: PitchAccentAudioModifiers,

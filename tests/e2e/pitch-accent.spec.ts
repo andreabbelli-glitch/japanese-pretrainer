@@ -34,14 +34,6 @@ test("starts a Pitch Accent session and persists a recap", async ({ page }) => {
   );
   expect(audioResponse.status()).toBe(200);
   expect((await audioResponse.body()).length).toBeGreaterThan(0);
-
-  await page.getByLabel("Pausa dopo corretto").check();
-  await page.evaluate(() => {
-    if (document.activeElement instanceof HTMLElement) {
-      document.activeElement.blur();
-    }
-  });
-  await page.keyboard.press("r");
   await expect
     .poll(() =>
       page.evaluate(
@@ -51,6 +43,28 @@ test("starts a Pitch Accent session and persists a recap", async ({ page }) => {
       )
     )
     .toBeGreaterThanOrEqual(1);
+
+  await page.getByLabel("Pausa dopo corretto").check();
+  await page.evaluate(() => {
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  });
+  const playCountAfterAutoplay = await page.evaluate(
+    () =>
+      (window as Window & { __pitchAccentPlayCount?: number })
+        .__pitchAccentPlayCount ?? 0
+  );
+  await page.keyboard.press("r");
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as Window & { __pitchAccentPlayCount?: number })
+            .__pitchAccentPlayCount ?? 0
+      )
+    )
+    .toBeGreaterThan(playCountAfterAutoplay);
 
   await page.keyboard.press("1");
   await expect(page.getByRole("status")).toContainText(/Corretto|Da rifare/u);

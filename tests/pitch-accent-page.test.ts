@@ -3,7 +3,10 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 
 import { PitchAccentPage } from "@/components/pitch-accent/pitch-accent-page";
-import { PitchAccentSessionPage } from "@/components/pitch-accent/pitch-accent-session-page";
+import {
+  PitchAccentOptionButton,
+  PitchAccentSessionPage
+} from "@/components/pitch-accent/pitch-accent-session-page";
 import type {
   PitchAccentPageData,
   PitchAccentSessionPageData
@@ -90,5 +93,27 @@ describe("pitch accent pages", () => {
     expect(markup).toContain('<span class="pitch-accent__mora">グ</span>');
     expect(markup).not.toContain("ハク゚");
     expect(markup).not.toContain('<span class="pitch-accent__mora">゚</span>');
+  });
+
+  it("renders per-option play controls after an incorrect answer", () => {
+    const markup = renderToStaticMarkup(
+      createElement(PitchAccentOptionButton, {
+        disabled: true,
+        feedback: {
+          chosenOptionId: "pair-a:0",
+          correctOptionId: "pair-a:1",
+          isCorrect: false,
+          responseMs: 200,
+          trialId: "pitch-accent-session-fixture:trial-1"
+        },
+        index: 0,
+        onChoose() {},
+        onPlay() {},
+        option: sessionData.trials[0]!.options[0]!
+      })
+    );
+
+    expect(markup).toContain('aria-label="Riproduci opzione 1"');
+    expect(markup).toContain("pitch-accent-option__play");
   });
 });

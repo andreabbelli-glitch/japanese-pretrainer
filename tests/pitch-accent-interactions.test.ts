@@ -56,6 +56,10 @@ describe("pitch accent session controller interactions", () => {
       pauseAfterCorrect: false
     });
 
+    vi.mocked(audio.load).mockClear();
+    vi.mocked(audio.pause).mockClear();
+    vi.mocked(audio.play).mockClear();
+
     await act(async () => {
       dispatchWindowKeyboardEvent("r");
       await Promise.resolve();
@@ -66,6 +70,45 @@ describe("pitch accent session controller interactions", () => {
     expect(audio.load).toHaveBeenCalled();
     expect(audio.play).toHaveBeenCalled();
     expect(controller().currentTrial?.trialId).toBe("trial-1");
+  });
+
+  it("autoplays the correct audio when each trial loads", async () => {
+    const audio = createAudioElementStub();
+    const { controller } = await renderController({
+      audioElement: audio,
+      pauseAfterCorrect: true
+    });
+
+    expect(audio.src).toBe("/vendor/minimal-pairs/audio/pair-a/1.aac");
+    expect(audio.play).toHaveBeenCalledTimes(1);
+
+    vi.mocked(audio.play).mockClear();
+
+    await act(async () => {
+      controller().handleContinue();
+      await Promise.resolve();
+    });
+
+    expect(audio.src).toBe("/vendor/minimal-pairs/audio/pair-b/0.aac");
+    expect(audio.play).toHaveBeenCalledTimes(1);
+  });
+
+  it("plays any current option audio for feedback comparison", async () => {
+    const audio = createAudioElementStub();
+    const { controller } = await renderController({
+      audioElement: audio,
+      pauseAfterCorrect: true
+    });
+
+    vi.mocked(audio.play).mockClear();
+
+    await act(async () => {
+      controller().playOptionAudio("pair-a:0");
+      await Promise.resolve();
+    });
+
+    expect(audio.src).toBe("/vendor/minimal-pairs/audio/pair-a/0.aac");
+    expect(audio.play).toHaveBeenCalledTimes(1);
   });
 
   it("submits keyboard answers and advances with Space when paused", async () => {

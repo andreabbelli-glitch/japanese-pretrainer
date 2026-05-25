@@ -19,7 +19,10 @@ import {
   buildPitchAccentOptionData,
   formatPitchAccentOptionLabel
 } from "./pitch-accent-shared";
-import { usePitchAccentSessionController } from "./use-pitch-accent-session-controller";
+import {
+  usePitchAccentSessionController,
+  type PitchAccentFeedback
+} from "./use-pitch-accent-session-controller";
 
 type PitchAccentSessionPageProps = {
   data: PitchAccentSessionPageData;
@@ -173,6 +176,7 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
                     onChoose={() =>
                       controller.handleChooseOption(option.id, "pointer")
                     }
+                    onPlay={() => controller.playOptionAudio(option.id)}
                     option={option}
                   />
                 ))}
@@ -261,44 +265,68 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
   );
 }
 
-function PitchAccentOptionButton({
+export function PitchAccentOptionButton({
   disabled,
   feedback,
   index,
   onChoose,
+  onPlay,
   option
 }: {
   readonly disabled: boolean;
-  readonly feedback: {
-    readonly chosenOptionId: string;
-    readonly correctOptionId: string;
-  } | null;
+  readonly feedback: PitchAccentFeedback | null;
   readonly index: number;
   readonly onChoose: () => void;
+  readonly onPlay: () => void;
   readonly option: PitchAccentPairOption;
 }) {
   const pitchAccent = buildPitchAccentOptionData(option);
   const isCorrect = feedback?.correctOptionId === option.id;
   const isChosen = feedback?.chosenOptionId === option.id;
-
-  return (
-    <button
-      className={cx(
-        "pitch-accent-option",
-        feedback && isCorrect && "pitch-accent-option--correct",
-        feedback && isChosen && !isCorrect && "pitch-accent-option--incorrect"
-      )}
-      data-testid="pitch-accent-option"
-      disabled={disabled}
-      onClick={onChoose}
-      type="button"
-    >
+  const showAudioReplay = feedback !== null && !feedback.isCorrect;
+  const optionClassName = cx(
+    "pitch-accent-option",
+    showAudioReplay && "pitch-accent-option--review",
+    showAudioReplay && "pitch-accent-option--with-play",
+    feedback && isCorrect && "pitch-accent-option--correct",
+    feedback && isChosen && !isCorrect && "pitch-accent-option--incorrect"
+  );
+  const content = (
+    <div className="pitch-accent-option__content">
       <span className="pitch-accent-option__key">{index + 1}</span>
       {pitchAccent ? (
         <PitchAccentNotation compact pitchAccent={pitchAccent} />
       ) : (
         <span>{formatPitchAccentOptionLabel(option)}</span>
       )}
+    </div>
+  );
+
+  if (showAudioReplay) {
+    return (
+      <div className={optionClassName} data-testid="pitch-accent-option">
+        {content}
+        <button
+          aria-label={`Riproduci opzione ${index + 1}`}
+          className="pitch-accent-option__play"
+          onClick={onPlay}
+          type="button"
+        >
+          <span aria-hidden="true">▶</span>
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <button
+      className={optionClassName}
+      data-testid="pitch-accent-option"
+      disabled={disabled}
+      onClick={onChoose}
+      type="button"
+    >
+      {content}
     </button>
   );
 }
