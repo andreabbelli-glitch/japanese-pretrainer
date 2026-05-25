@@ -43,7 +43,7 @@ const sessionData: PitchAccentSessionPageData = {
           id: "pair-a:0",
           moraCount: 2,
           pitchAccent: 0,
-          rawPronunciation: "ハシ",
+          rawPronunciation: "ハク゚",
           silencedMoras: []
         },
         {
@@ -53,7 +53,7 @@ const sessionData: PitchAccentSessionPageData = {
           id: "pair-a:1",
           moraCount: 2,
           pitchAccent: 1,
-          rawPronunciation: "ハシ",
+          rawPronunciation: "ハク゚",
           silencedMoras: []
         }
       ],
@@ -87,5 +87,8 @@ describe("pitch accent pages", () => {
     expect(markup).toContain("/vendor/minimal-pairs/audio/pair-a/1.aac");
     expect(markup).toContain("pitch-accent__graph");
     expect(markup).toContain('data-testid="pitch-accent-option"');
+    expect(markup).toContain('<span class="pitch-accent__mora">グ</span>');
+    expect(markup).not.toContain("ハク゚");
+    expect(markup).not.toContain('<span class="pitch-accent__mora">゚</span>');
   });
 });

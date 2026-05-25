@@ -1,4 +1,7 @@
-import { buildPitchAccentData } from "@/lib/pitch-accent";
+import {
+  buildPitchAccentData,
+  normalizePitchAccentReading
+} from "@/lib/pitch-accent";
 
 import type { PitchAccentPairOption } from "@/features/pitch-accent/model";
 
@@ -20,11 +23,16 @@ export function formatPitchAccentCount(value: number): string {
 }
 
 export function buildPitchAccentOptionData(option: PitchAccentPairOption) {
-  return buildPitchAccentData(option.rawPronunciation, option.pitchAccent);
+  return buildPitchAccentData(
+    normalizePitchAccentReading(option.rawPronunciation),
+    option.pitchAccent
+  );
 }
 
 export function formatPitchAccentOptionLabel(option: PitchAccentPairOption) {
-  return `${option.rawPronunciation} ${formatAccentDrop(option)}`;
+  return `${normalizePitchAccentReading(
+    option.rawPronunciation
+  )} ${formatAccentDrop(option)}`;
 }
 
 function formatAccentDrop(option: PitchAccentPairOption) {

@@ -3,9 +3,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 
-import {
-  readPitchAccentMinimalPairCorpusSpecs
-} from "@/features/pitch-accent/server/corpus";
+import { readPitchAccentMinimalPairCorpusSpecs } from "@/features/pitch-accent/server/corpus";
 
 describe("pitch accent corpus loader", () => {
   it("merges Kuuuube and optional Tofugu static corpora with separate audio prefixes", async () => {
@@ -19,21 +17,30 @@ describe("pitch accent corpus loader", () => {
       await writeFile(
         kuuuubeManifest,
         JSON.stringify(
-          buildFixtureCorpus({
-            audioPrefix: "/vendor/minimal-pairs/audio/",
-            id: "kuuuube-pair",
-            kana: "かい"
-          })
+          buildFixtureCorpus([
+            {
+              audioPrefix: "/vendor/minimal-pairs/audio/",
+              id: "kuuuube-pair",
+              kana: "かい"
+            },
+            {
+              audioPrefix: "/vendor/minimal-pairs/audio/",
+              id: "ze",
+              kana: "しのぶ"
+            }
+          ])
         )
       );
       await writeFile(
         tofuguManifest,
         JSON.stringify(
-          buildFixtureCorpus({
-            audioPrefix: "/vendor/tofugu-pitch-minimal-pairs/audio/",
-            id: "tofugu-pair",
-            kana: "はし"
-          })
+          buildFixtureCorpus([
+            {
+              audioPrefix: "/vendor/tofugu-pitch-minimal-pairs/audio/",
+              id: "tofugu-pair",
+              kana: "はし"
+            }
+          ])
         )
       );
 
@@ -69,30 +76,30 @@ describe("pitch accent corpus loader", () => {
   });
 });
 
-function buildFixtureCorpus(input: {
-  readonly audioPrefix: string;
-  readonly id: string;
-  readonly kana: string;
-}) {
+function buildFixtureCorpus(
+  pairs: Array<{
+    readonly audioPrefix: string;
+    readonly id: string;
+    readonly kana: string;
+  }>
+) {
   return {
-    pairs: [
-      {
-        hasDevoiced: false,
-        id: input.id,
-        kana: input.kana,
-        optionCount: 2,
-        options: [0, 1].map((pitch) => ({
-          accentedMora: pitch,
-          audioSrc: `${input.audioPrefix}${input.id}/${pitch}.mp3`,
-          id: `${input.id}:${pitch}`,
-          moraCount: 2,
-          pitchAccent: pitch,
-          rawPronunciation: input.kana,
-          silencedMoras: []
-        })),
-        patternKeys: ["pitch0", "pitch1"]
-      }
-    ],
+    pairs: pairs.map((input) => ({
+      hasDevoiced: false,
+      id: input.id,
+      kana: input.kana,
+      optionCount: 2,
+      options: [0, 1].map((pitch) => ({
+        accentedMora: pitch,
+        audioSrc: `${input.audioPrefix}${input.id}/${pitch}.mp3`,
+        id: `${input.id}:${pitch}`,
+        moraCount: 2,
+        pitchAccent: pitch,
+        rawPronunciation: input.kana,
+        silencedMoras: []
+      })),
+      patternKeys: ["pitch0", "pitch1"]
+    })),
     source: {
       importedAt: "2026-05-25T00:00:00.000Z",
       license: "fixture",

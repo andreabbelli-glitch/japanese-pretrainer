@@ -36,6 +36,17 @@ JS/CSS upstream: usa solo manifest normalizzato, metadata e audio decodificato.
 Gli asset audio reali del corpus sono AAC anche quando l'upstream li dichiara
 come data URL OGG; l'importer sniffa i magic bytes e salva estensioni/MIME reali.
 
+Il manifest vendor resta fedele al commit upstream per audit e checksum. A
+runtime l'app puo applicare correzioni conservative prima del rendering: in
+particolare normalizza l'handakuten combinante erroneo sulla riga K
+(`カ゚/キ゚/ク゚/ケ゚/コ゚`) in kana sonori (`ガ/ギ/グ/ゲ/ゴ`), cosi grafi e
+label non contano il segno combinante come una mora separata.
+
+Il loader puo inoltre escludere singoli pair vendorizzati se risultano ambigui
+o fuorvianti nel drill. Il pair Kuuuube `ze` (`しのぶ`, contrasto 1/2) e
+escluso a runtime perche la lettura e lessicalmente ambigua e ha prodotto
+risposte percepite come non affidabili.
+
 Un secondo corpus statico opzionale puo vivere in:
 
 ```text

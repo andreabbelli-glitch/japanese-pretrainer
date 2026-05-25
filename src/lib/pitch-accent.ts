@@ -1,10 +1,6 @@
 export type PitchLevel = "high" | "low";
 
-export type PitchAccentShape =
-  | "heiban"
-  | "atamadaka"
-  | "nakadaka"
-  | "odaka";
+export type PitchAccentShape = "heiban" | "atamadaka" | "nakadaka" | "odaka";
 
 export type PitchAccentData = {
   downstep: number;
@@ -37,6 +33,19 @@ const combinableSmallKana = new Set([
   "ヶ"
 ]);
 
+const kaRowSemiVoicedReadingReplacements: Readonly<Record<string, string>> = {
+  か゚: "が",
+  き゚: "ぎ",
+  く゚: "ぐ",
+  け゚: "げ",
+  こ゚: "ご",
+  カ゚: "ガ",
+  キ゚: "ギ",
+  ク゚: "グ",
+  ケ゚: "ゲ",
+  コ゚: "ゴ"
+};
+
 export function buildPitchAccentData(
   reading: string | null | undefined,
   downstep: number | null | undefined
@@ -67,8 +76,20 @@ export function buildPitchAccentData(
   };
 }
 
+export function normalizePitchAccentReading(reading: string): string {
+  return reading
+    .replace(
+      /[かきくけこカキクケコ]\u309a/gu,
+      (match) => kaRowSemiVoicedReadingReplacements[match] ?? match
+    )
+    .normalize("NFC");
+}
+
 export function splitJapaneseMorae(reading: string): string[] {
-  const normalized = reading.replace(/[\s～〜・･]+/gu, "");
+  const normalized = normalizePitchAccentReading(reading).replace(
+    /[\s～〜・･]+/gu,
+    ""
+  );
   const morae: string[] = [];
 
   for (const char of normalized) {
@@ -105,7 +126,9 @@ function canCombineWithPreviousMora(previousMora: string) {
 
   const previousChar = previousMora.at(-1);
 
-  return previousChar !== undefined && previousChar !== "っ" && previousChar !== "ッ";
+  return (
+    previousChar !== undefined && previousChar !== "っ" && previousChar !== "ッ"
+  );
 }
 
 function resolvePitchAccentShape(

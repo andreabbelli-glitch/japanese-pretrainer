@@ -37,6 +37,12 @@ const corpusSpecs: readonly PitchAccentCorpusSpec[] = [
   }
 ];
 
+const runtimeExcludedPairIds = new Set([
+  // Kuuuube ze is the しのぶ pitch1/pitch2 pair; it is lexically ambiguous
+  // with 忍ぶ/偲ぶ and has produced unreliable drill answers in practice.
+  "ze"
+]);
+
 let corpusCache: Promise<PitchAccentMinimalPairsCorpus> | null = null;
 
 export async function loadPitchAccentMinimalPairsCorpus() {
@@ -63,10 +69,12 @@ export async function readPitchAccentMinimalPairCorpusSpecs(
   }
 
   if (corpora.length === 1) {
-    return corpora[0]!;
+    return excludeRuntimePitchAccentPairs(corpora[0]!);
   }
 
-  return mergePitchAccentMinimalPairsCorpora(corpora);
+  return excludeRuntimePitchAccentPairs(
+    mergePitchAccentMinimalPairsCorpora(corpora)
+  );
 }
 
 export async function readPitchAccentMinimalPairsCorpus(
@@ -126,6 +134,16 @@ function mergePitchAccentMinimalPairsCorpora(
     },
     version: 1
   };
+}
+
+function excludeRuntimePitchAccentPairs(
+  corpus: PitchAccentMinimalPairsCorpus
+): PitchAccentMinimalPairsCorpus {
+  const pairs = corpus.pairs.filter(
+    (pair) => !runtimeExcludedPairIds.has(pair.id)
+  );
+
+  return pairs.length === corpus.pairs.length ? corpus : { ...corpus, pairs };
 }
 
 function isMissingFileError(error: unknown) {

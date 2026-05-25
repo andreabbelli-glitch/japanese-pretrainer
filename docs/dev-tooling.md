@@ -338,6 +338,15 @@ generato offline. A runtime persiste solo sessioni nelle tabelle
 `pitch_accent_*`. Non usa FSRS, non modifica `/review` e non scrive in
 `content/`.
 
+Il loader runtime puo escludere singoli pair vendorizzati che risultano
+ambigui o fuorvianti in pratica, mantenendo invariati manifest e audio vendor
+per audit e validazione.
+
+La UI normalizza anche le letture Kuuuube con handakuten combinante sulla riga
+K (`カ゚`, `キ゚`, `ク゚`, `ケ゚`, `コ゚`) in kana sonori (`ガ`, `ギ`, `グ`,
+`ゲ`, `ゴ`). I dati upstream restano invariati, ma label e grafi pitch-accent
+non devono mostrare il segno combinante come mora separata.
+
 Import o refresh del vendor corpus:
 
 ```sh
