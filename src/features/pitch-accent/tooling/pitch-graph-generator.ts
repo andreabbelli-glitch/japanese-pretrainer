@@ -4,9 +4,11 @@ import path from "node:path";
 import { promisify } from "node:util";
 
 import {
+  buildPitchGraphV2FromRawValues,
   estimatePitchGraphFromPcm,
   validatePitchAccentMinimalPairsCorpus,
   type PitchAccentMinimalPairsCorpus,
+  type PitchAccentPairOption,
   type PitchAccentPitchGraphManifest
 } from "../model/index.ts";
 
@@ -21,6 +23,7 @@ export type GeneratePitchGraphManifestResult = {
 
 export async function generatePitchGraphManifestForCorpus(input: {
   readonly concurrency?: number;
+  readonly graphVersion?: 1 | 2;
   readonly manifestPath: string;
   readonly outPath: string;
   readonly publicDir?: string;
@@ -33,20 +36,34 @@ export async function generatePitchGraphManifestForCorpus(input: {
   const publicDir = path.resolve(input.publicDir ?? "public");
   const sampleRate = input.sampleRate ?? defaultSampleRate;
   const audioSources = collectCorpusAudioSources(corpus);
+  const optionByAudioSrc = collectFirstOptionByAudioSource(corpus);
   const entries = await mapWithConcurrency(
     audioSources,
     input.concurrency ?? 4,
     async (audioSrc) => {
       const audioPath = resolvePublicAudioPath(publicDir, audioSrc);
       const samples = await decodeAudioToFloat32Pcm(audioPath, sampleRate);
-      const graph = estimatePitchGraphFromPcm(samples, sampleRate);
+      const strictGraph = estimatePitchGraphFromPcm(samples, sampleRate);
+      const option = optionByAudioSrc.get(audioSrc);
+      const graph =
+        input.graphVersion === 2
+          ? buildPitchGraphV2FromRawValues({
+              durationMs: strictGraph.durationMs,
+              extractor: "autocorrelation-v1",
+              moraCount: option?.moraCount,
+              pitchAccent: option?.pitchAccent,
+              rawValues: strictGraph.values,
+              sampleIntervalMs: strictGraph.sampleIntervalMs,
+              strategy: "local-improved"
+            })
+          : strictGraph;
 
       return [audioSrc, graph] as const;
     }
   );
   const manifest: PitchAccentPitchGraphManifest = {
     graphs: Object.fromEntries(entries),
-    version: 1
+    version: input.graphVersion ?? 1
   };
 
   await mkdir(path.dirname(input.outPath), { recursive: true });
@@ -59,7 +76,7 @@ export async function generatePitchGraphManifestForCorpus(input: {
   };
 }
 
-async function readPitchAccentCorpusManifest(
+export async function readPitchAccentCorpusManifest(
   manifestPath: string,
   options: {
     readonly requiredAudioSrcPrefix?: string;
@@ -82,7 +99,9 @@ async function readPitchAccentCorpusManifest(
   return corpus;
 }
 
-function collectCorpusAudioSources(corpus: PitchAccentMinimalPairsCorpus) {
+export function collectCorpusAudioSources(
+  corpus: PitchAccentMinimalPairsCorpus
+) {
   return [
     ...new Set(
       corpus.pairs.flatMap((pair) =>
@@ -92,7 +111,23 @@ function collectCorpusAudioSources(corpus: PitchAccentMinimalPairsCorpus) {
   ].sort((left, right) => left.localeCompare(right));
 }
 
-function resolvePublicAudioPath(publicDir: string, audioSrc: string) {
+function collectFirstOptionByAudioSource(
+  corpus: PitchAccentMinimalPairsCorpus
+) {
+  const optionsByAudioSrc = new Map<string, PitchAccentPairOption>();
+
+  for (const pair of corpus.pairs) {
+    for (const option of pair.options) {
+      if (!optionsByAudioSrc.has(option.audioSrc)) {
+        optionsByAudioSrc.set(option.audioSrc, option);
+      }
+    }
+  }
+
+  return optionsByAudioSrc;
+}
+
+export function resolvePublicAudioPath(publicDir: string, audioSrc: string) {
   if (!audioSrc.startsWith("/")) {
     throw new Error(`${audioSrc} must be an absolute public audio source.`);
   }
@@ -106,7 +141,10 @@ function resolvePublicAudioPath(publicDir: string, audioSrc: string) {
   return resolvedPath;
 }
 
-async function decodeAudioToFloat32Pcm(audioPath: string, sampleRate: number) {
+export async function decodeAudioToFloat32Pcm(
+  audioPath: string,
+  sampleRate: number
+) {
   const { stdout } = (await execFileAsync(
     "ffmpeg",
     [
@@ -137,7 +175,7 @@ async function decodeAudioToFloat32Pcm(audioPath: string, sampleRate: number) {
   return new Float32Array(pcmBytes);
 }
 
-async function mapWithConcurrency<T, U>(
+export async function mapWithConcurrency<T, U>(
   items: readonly T[],
   concurrency: number,
   worker: (item: T) => Promise<U>

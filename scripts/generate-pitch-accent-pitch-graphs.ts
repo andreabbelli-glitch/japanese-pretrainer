@@ -39,6 +39,7 @@ async function main() {
 
     const result = await generatePitchGraphManifestForCorpus({
       concurrency: options.concurrency,
+      graphVersion: options.graphVersion,
       manifestPath,
       outPath,
       requiredAudioSrcPrefix: target.requiredAudioSrcPrefix
@@ -65,11 +66,16 @@ async function shouldGenerateTarget(manifestPath: string, required: boolean) {
 
 function parseCliOptions(argv: readonly string[]) {
   const options = {
-    concurrency: 4
+    concurrency: 4,
+    graphVersion: 1 as 1 | 2
   };
 
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
+
+    if (argument === "--") {
+      continue;
+    }
 
     if (argument === "--concurrency") {
       const value = argv[index + 1];
@@ -82,6 +88,21 @@ function parseCliOptions(argv: readonly string[]) {
         throw new Error("--concurrency must be a positive integer.");
       }
 
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--graph-version") {
+      const value = argv[index + 1];
+      if (!value || value.startsWith("--")) {
+        throw new Error("Missing value for --graph-version.");
+      }
+
+      if (value !== "1" && value !== "2") {
+        throw new Error("--graph-version must be 1 or 2.");
+      }
+
+      options.graphVersion = Number.parseInt(value, 10) as 1 | 2;
       index += 1;
       continue;
     }

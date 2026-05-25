@@ -71,12 +71,19 @@ statici gia generati. Se il corpus Tofugu non esiste, `/pitch-accent` usa solo
 il corpus Kuuuube.
 
 I file `pitch-graphs.json` sono manifest statici generati dagli audio
-vendorizzati. Sono keyed by `audioSrc` e contengono durata, intervallo campioni
-e una traccia F0 in Hz con `null` per frame non voiced/silenzio. Il runtime li
-usa solo nella review dopo errore: il graph resta nascosto finche non si tocca
-una risposta, poi mostra la singola pronuncia selezionata e sincronizza la
-playhead con l'audio originale. Effetti di ascolto come `Muffle` e rumore non
-modificano i dati del graph.
+vendorizzati e keyed by `audioSrc`. Il formato storico `version: 1` conserva
+durata, intervallo campioni e una traccia F0 in Hz con `null` per frame non
+voiced/silenzio. Il formato `version: 2` aggiunge `rawValues`, `extractor`,
+`qualityScore` e una curva didattica `values` gia renderizzabile: i frame non
+voiced restano nella timeline, ma vengono compressi su una baseline visuale
+invece di essere trattati come `0 Hz` reale.
+
+Il runtime usa `values` nella review dopo errore: il graph resta nascosto
+finche non si tocca una risposta, poi mostra la singola pronuncia selezionata e
+sincronizza la playhead con l'audio originale. Effetti di ascolto come
+`Muffle` e rumore non modificano i dati del graph. L'overlay teorico derivato
+da `pitchAccent/moraCount` e persistibile in V2 come audit separato, ma non e
+forzato nella UI iniziale.
 
 ## Workflow operativo
 
@@ -96,6 +103,36 @@ Rigenerazione pitch graph statici dagli audio vendorizzati:
 
 ```sh
 ./scripts/with-node.sh pnpm pitch-accent:generate-pitch-graphs
+```
+
+Rigenerazione esplicita in formato V2 local-improved, da fare solo dopo
+approvazione visiva del bake-off:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:generate-pitch-graphs -- --graph-version 2
+```
+
+Bake-off locale su 20-30 pair, senza modificare i manifest vendorizzati:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:generate-pitch-graph-bakeoff
+```
+
+Il report viene scritto di default in `.tmp/pitch-graph-bakeoff/` e include
+colonne fisse per current strict, WORLD/Praat/pYIN, cleanup WORLD, render
+Kotu-like locale, render improved locale e baseline Kotu. Le colonne
+WORLD/Praat/pYIN restano `unavailable` finche non viene configurato un estrattore
+esterno: lo slot e intenzionalmente stabile per confronti futuri.
+
+La baseline Kotu e autorizzata ma opt-in. La documentazione pubblica
+[Kotu API](https://docs.kotu.io/) dichiara una superficie v2 limitata a status,
+pronunciation search e text parsing; per questo il runtime non dipende da
+endpoint audio/pitch. Se serve confrontare una curva Kotu, popola una cache
+locale rate-limited con consenso esplicito:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:fetch-kotu-pitch-baseline -- --allow-kotu-api --pronunciation-id <kotu-id> --raw-pronunciation スル --pitch-accent 1
+./scripts/with-node.sh pnpm pitch-accent:generate-pitch-graph-bakeoff -- --kotu-cache .tmp/pitch-graph-bakeoff/kotu-baseline-cache.json
 ```
 
 Generazione del corpus statico Tofugu/Jaydar:

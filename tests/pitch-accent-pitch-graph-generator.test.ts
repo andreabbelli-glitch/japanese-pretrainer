@@ -4,7 +4,10 @@ import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 
-import { generatePitchGraphManifestForCorpus } from "@/features/pitch-accent/tooling";
+import {
+  generatePitchGraphBakeoffReportForCorpus,
+  generatePitchGraphManifestForCorpus
+} from "@/features/pitch-accent/tooling";
 
 describe("pitch accent pitch graph generator", () => {
   it("generates a static graph manifest from fixture audio", async () => {
@@ -94,10 +97,116 @@ describe("pitch accent pitch graph generator", () => {
       >;
     };
     const values =
-      manifest.graphs["/vendor/minimal-pairs/audio/pair-a/0.wav"]?.values ??
-      [];
+      manifest.graphs["/vendor/minimal-pairs/audio/pair-a/0.wav"]?.values ?? [];
 
     expect(values.some((value) => typeof value === "number")).toBe(true);
+  });
+
+  it("generates a V2 bake-off audit report without writing corpus manifests", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pitch-bakeoff-"));
+    const publicDir = path.join(tempDir, "public");
+    const firstAudioPath = path.join(
+      publicDir,
+      "vendor",
+      "minimal-pairs",
+      "audio",
+      "1z",
+      "0.wav"
+    );
+    const secondAudioPath = path.join(
+      publicDir,
+      "vendor",
+      "minimal-pairs",
+      "audio",
+      "1z",
+      "1.wav"
+    );
+    const manifestPath = path.join(tempDir, "manifest.json");
+    const outDir = path.join(tempDir, "report");
+
+    await mkdir(path.dirname(firstAudioPath), { recursive: true });
+    await writeFile(
+      firstAudioPath,
+      buildWavSineWave({
+        durationSeconds: 0.2,
+        frequencyHz: 180,
+        sampleRate: 16_000
+      })
+    );
+    await writeFile(
+      secondAudioPath,
+      buildWavSineWave({
+        durationSeconds: 0.2,
+        frequencyHz: 220,
+        sampleRate: 16_000
+      })
+    );
+    await writeFile(
+      manifestPath,
+      JSON.stringify({
+        pairs: [
+          {
+            hasDevoiced: false,
+            id: "1z",
+            kana: "する",
+            optionCount: 2,
+            options: [
+              {
+                accentedMora: 1,
+                audioMime: "audio/wav",
+                audioSrc: "/vendor/minimal-pairs/audio/1z/0.wav",
+                id: "1z:0",
+                moraCount: 2,
+                pitchAccent: 1,
+                rawPronunciation: "スル",
+                silencedMoras: []
+              },
+              {
+                accentedMora: 0,
+                audioMime: "audio/wav",
+                audioSrc: "/vendor/minimal-pairs/audio/1z/1.wav",
+                id: "1z:1",
+                moraCount: 2,
+                pitchAccent: 0,
+                rawPronunciation: "スル",
+                silencedMoras: []
+              }
+            ],
+            patternKeys: ["pitch1", "pitch0"]
+          }
+        ],
+        source: {
+          importedAt: "2026-05-25T00:00:00.000Z",
+          license: "fixture",
+          repository: "fixture",
+          revision: "fixture"
+        },
+        version: 1
+      })
+    );
+
+    const result = await generatePitchGraphBakeoffReportForCorpus({
+      limit: 1,
+      manifestPath,
+      outDir,
+      publicDir,
+      requiredAudioSrcPrefix: "/vendor/minimal-pairs/audio/",
+      sampleRate: 16_000
+    });
+
+    const audit = JSON.parse(await readFile(result.auditPath, "utf8")) as {
+      readonly targets: readonly {
+        readonly columns: Record<string, { readonly status: string }>;
+      }[];
+    };
+    const html = await readFile(result.htmlPath, "utf8");
+
+    expect(result.targetCount).toBe(2);
+    expect(audit.targets[0]?.columns.currentStrict.status).toBe("available");
+    expect(audit.targets[0]?.columns.localImproved.status).toBe("available");
+    expect(audit.targets[0]?.columns.worldHarvest.status).toBe("unavailable");
+    expect(html).toContain("WORLD/Praat/pYIN raw");
+    expect(html).toContain("Kotu API baseline");
   });
 });
 
@@ -126,9 +235,8 @@ function buildWavSineWave(input: {
 
   for (let index = 0; index < sampleCount; index += 1) {
     const sample = Math.round(
-      Math.sin(
-        (index / input.sampleRate) * input.frequencyHz * Math.PI * 2
-      ) * 0x3fff
+      Math.sin((index / input.sampleRate) * input.frequencyHz * Math.PI * 2) *
+        0x3fff
     );
     buffer.writeInt16LE(sample, 44 + index * 2);
   }

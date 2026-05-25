@@ -9,6 +9,7 @@ import {
   abandonPitchAccentSessionAction,
   completePitchAccentSessionAction
 } from "@/actions/pitch-accent";
+import { computePitchGraphDisplayDomain } from "@/features/pitch-accent/model";
 import type {
   PitchAccentAudioPitchGraph,
   PitchAccentPairOption
@@ -461,19 +462,18 @@ export function PitchAccentReviewGraph({
 }
 
 function buildReviewGraphData(graph: PitchAccentAudioPitchGraph | null) {
+  const displayDomain = computePitchGraphDisplayDomain(graph);
   const voicedValues = graph?.values.filter(
-    (value): value is number => typeof value === "number" && Number.isFinite(value)
+    (value): value is number =>
+      typeof value === "number" && Number.isFinite(value)
   );
 
-  if (!graph || !voicedValues || voicedValues.length === 0) {
+  if (!graph || !displayDomain || !voicedValues || voicedValues.length === 0) {
     return null;
   }
 
-  const minPitch = Math.min(...voicedValues);
-  const maxPitch = Math.max(...voicedValues);
-  const padding = Math.max(12, (maxPitch - minPitch) * 0.16);
-  const minYValue = Math.max(0, minPitch - padding);
-  const maxYValue = maxPitch + padding;
+  const minYValue = displayDomain.minYValue;
+  const maxYValue = displayDomain.maxYValue;
   const range = Math.max(maxYValue - minYValue, 1);
   const durationSeconds = Math.max(graph.durationMs / 1000, 0.01);
   const bounds = {
@@ -518,12 +518,10 @@ function buildReviewGraphData(graph: PitchAccentAudioPitchGraph | null) {
       value,
       x: bounds.left + (value / durationSeconds) * width
     })),
-    yTicks: [maxYValue, (minYValue + maxYValue) / 2, minYValue].map(
-      (value) => ({
-        value,
-        y: valueToY(value)
-      })
-    )
+    yTicks: displayDomain.ticks.map((value) => ({
+      value,
+      y: valueToY(value)
+    }))
   };
 }
 

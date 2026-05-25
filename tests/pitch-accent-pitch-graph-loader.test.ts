@@ -40,11 +40,15 @@ describe("pitch accent pitch graph loader", () => {
         graphs: {
           "/vendor/tofugu-pitch-minimal-pairs/audio/pair-b/0.mp3": {
             durationMs: 520,
+            extractor: "autocorrelation-v1",
+            qualityScore: 0.82,
+            rawValues: [180, 0, 172],
             sampleIntervalMs: 10,
-            values: [180, null, 172]
+            values: [180, 150, 172],
+            version: 2
           }
         },
-        version: 1
+        version: 2
       })
     );
 
@@ -70,8 +74,12 @@ describe("pitch accent pitch graph loader", () => {
       },
       "/vendor/tofugu-pitch-minimal-pairs/audio/pair-b/0.mp3": {
         durationMs: 520,
+        extractor: "autocorrelation-v1",
+        qualityScore: 0.82,
+        rawValues: [180, 0, 172],
         sampleIntervalMs: 10,
-        values: [180, null, 172]
+        values: [180, 150, 172],
+        version: 2
       }
     });
   });
