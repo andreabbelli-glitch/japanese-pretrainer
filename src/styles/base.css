@@ -3907,6 +3907,10 @@ button.katakana-speed-ran-cell:disabled {
   width: min(100%, 26rem);
 }
 
+.pitch-accent-review-audio {
+  display: none;
+}
+
 .pitch-accent-options {
   width: min(100%, 44rem);
   display: grid;

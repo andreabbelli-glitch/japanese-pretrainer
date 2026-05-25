@@ -95,11 +95,14 @@ describe("pitch accent session controller interactions", () => {
 
   it("plays any current option audio for feedback comparison", async () => {
     const audio = createAudioElementStub();
+    const reviewAudio = createAudioElementStub();
     const { controller } = await renderController({
       audioElement: audio,
+      reviewAudioElement: reviewAudio,
       pauseAfterCorrect: true
     });
 
+    vi.mocked(reviewAudio.play).mockClear();
     vi.mocked(audio.play).mockClear();
 
     await act(async () => {
@@ -107,8 +110,10 @@ describe("pitch accent session controller interactions", () => {
       await Promise.resolve();
     });
 
-    expect(audio.src).toBe("/vendor/minimal-pairs/audio/pair-a/0.aac");
-    expect(audio.play).toHaveBeenCalledTimes(1);
+    expect(reviewAudio.src).toBe("/vendor/minimal-pairs/audio/pair-a/0.aac");
+    expect(reviewAudio.play).toHaveBeenCalledTimes(1);
+    expect(audio.src).toBe("/vendor/minimal-pairs/audio/pair-a/1.aac");
+    expect(audio.play).not.toHaveBeenCalled();
   });
 
   it("keeps the review graph hidden until an incorrect option is selected for review", async () => {
@@ -119,8 +124,10 @@ describe("pitch accent session controller interactions", () => {
       isCorrect: false
     });
     const audio = createAudioElementStub();
+    const reviewAudio = createAudioElementStub();
     const { controller } = await renderController({
       audioElement: audio,
+      reviewAudioElement: reviewAudio,
       pauseAfterCorrect: true
     });
 
@@ -133,6 +140,7 @@ describe("pitch accent session controller interactions", () => {
     expect(controller().activeReviewGraph).toBeNull();
 
     vi.mocked(audio.play).mockClear();
+    vi.mocked(reviewAudio.play).mockClear();
 
     await act(async () => {
       controller().selectReviewGraphOption("pair-a:0");
@@ -145,8 +153,10 @@ describe("pitch accent session controller interactions", () => {
       sampleIntervalMs: 10,
       values: [120, 132, null, 140]
     });
-    expect(audio.src).toBe("/vendor/minimal-pairs/audio/pair-a/0.aac");
-    expect(audio.play).toHaveBeenCalledTimes(1);
+    expect(reviewAudio.src).toBe("/vendor/minimal-pairs/audio/pair-a/0.aac");
+    expect(reviewAudio.play).toHaveBeenCalledTimes(1);
+    expect(audio.src).toBe("/vendor/minimal-pairs/audio/pair-a/1.aac");
+    expect(audio.play).not.toHaveBeenCalled();
   });
 
   it("tracks review graph playhead time from the active audio element", async () => {
@@ -157,8 +167,10 @@ describe("pitch accent session controller interactions", () => {
       isCorrect: false
     });
     const audio = createAudioElementStub();
+    const reviewAudio = createAudioElementStub();
     const { controller } = await renderController({
       audioElement: audio,
+      reviewAudioElement: reviewAudio,
       pauseAfterCorrect: true
     });
 
@@ -170,14 +182,52 @@ describe("pitch accent session controller interactions", () => {
     });
 
     await act(async () => {
-      (audio as HTMLAudioElement & { duration: number }).duration = 0.5;
-      audio.currentTime = 0.25;
-      dispatchAudioElementEvent(audio, "timeupdate");
+      (reviewAudio as HTMLAudioElement & { duration: number }).duration = 0.5;
+      reviewAudio.currentTime = 0.25;
+      dispatchAudioElementEvent(reviewAudio, "timeupdate");
       await Promise.resolve();
     });
 
     expect(controller().reviewPlayback.currentTimeSeconds).toBe(0.25);
     expect(controller().reviewPlayback.durationSeconds).toBe(0.5);
+  });
+
+  it("shows answer feedback before the submission roundtrip finishes", async () => {
+    const pendingSubmission = createDeferred<
+      Awaited<ReturnType<typeof mocks.submitPitchAccentAnswerAction>>
+    >();
+    mocks.submitPitchAccentAnswerAction.mockReturnValue(pendingSubmission.promise);
+    const { controller } = await renderController({
+      audioElement: createAudioElementStub(),
+      reviewAudioElement: createAudioElementStub(),
+      pauseAfterCorrect: true
+    });
+
+    await act(async () => {
+      controller().handleChooseOption("pair-a:0", "pointer");
+      await Promise.resolve();
+    });
+
+    expect(controller().feedback).toMatchObject({
+      chosenOptionId: "pair-a:0",
+      correctOptionId: "pair-a:1",
+      isCorrect: false,
+      trialId: "trial-1"
+    });
+    expect(controller().awaitingContinue).toBe(true);
+    expect(controller().isSubmitting).toBe(true);
+
+    await act(async () => {
+      pendingSubmission.resolve({
+        chosenOptionId: "pair-a:0",
+        correctOptionId: "pair-a:1",
+        idempotent: false,
+        isCorrect: false
+      });
+      await pendingSubmission.promise;
+    });
+
+    expect(controller().isSubmitting).toBe(false);
   });
 
   it("submits keyboard answers and advances with Space when paused", async () => {
@@ -300,6 +350,7 @@ describe("pitch accent session controller interactions", () => {
       readonly noise: boolean;
     };
     readonly pauseAfterCorrect: boolean;
+    readonly reviewAudioElement?: HTMLAudioElement;
   }) {
     let latestController: PitchAccentSessionControllerResult | null = null;
 
@@ -310,7 +361,8 @@ describe("pitch accent session controller interactions", () => {
           muffle: false,
           noise: false
         },
-        pauseAfterCorrect: input.pauseAfterCorrect
+        pauseAfterCorrect: input.pauseAfterCorrect,
+        reviewAudioElement: input.reviewAudioElement ?? null
       });
 
       useEffect(() => {
@@ -364,6 +416,21 @@ function createAudioElementStub() {
     }),
     src: ""
   } as unknown as HTMLAudioElement;
+}
+
+function createDeferred<T>() {
+  let resolve!: (value: T) => void;
+  let reject!: (error?: unknown) => void;
+  const promise = new Promise<T>((resolvePromise, rejectPromise) => {
+    resolve = resolvePromise;
+    reject = rejectPromise;
+  });
+
+  return {
+    promise,
+    reject,
+    resolve
+  };
 }
 
 function dispatchAudioElementEvent(audio: HTMLAudioElement, type: string) {

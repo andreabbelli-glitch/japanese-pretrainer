@@ -75,6 +75,7 @@ export function usePitchAccentSessionController(
     readonly audioElement: HTMLAudioElement | null;
     readonly audioModifiers: PitchAccentAudioModifiers;
     readonly pauseAfterCorrect: boolean;
+    readonly reviewAudioElement?: HTMLAudioElement | null;
   }
 ): PitchAccentSessionControllerResult {
   const initialIndex = Math.min(
@@ -94,7 +95,8 @@ export function usePitchAccentSessionController(
   const autoAdvanceTimeoutRef = useRef<number | null>(null);
   const autoplayedTrialIdRef = useRef<string | null>(null);
   const reviewAnimationFrameRef = useRef<number | null>(null);
-  const modifiedAudioUrlRef = useRef<string | null>(null);
+  const primaryModifiedAudioUrlRef = useRef<string | null>(null);
+  const reviewModifiedAudioUrlRef = useRef<string | null>(null);
   const presentedAtRef = useRef(0);
   const submittingRef = useRef(false);
   const currentTrial = session.trials[currentIndex] ?? null;
@@ -141,7 +143,8 @@ export function usePitchAccentSessionController(
     () => () => {
       clearAutoAdvanceTimeout(autoAdvanceTimeoutRef);
       cancelReviewAnimationFrame(reviewAnimationFrameRef);
-      revokeModifiedAudioUrl(modifiedAudioUrlRef);
+      revokeModifiedAudioUrl(primaryModifiedAudioUrlRef);
+      revokeModifiedAudioUrl(reviewModifiedAudioUrlRef);
     },
     []
   );
@@ -155,7 +158,7 @@ export function usePitchAccentSessionController(
     audio.preload = "auto";
   }, [nextCorrectAudio]);
 
-  const playCurrentAudioOption = useCallback(
+  const playPrimaryAudioOption = useCallback(
     (option: PitchAccentPairOption | null | undefined) => {
       const audioElement = input.audioElement;
 
@@ -167,12 +170,40 @@ export function usePitchAccentSessionController(
         audioElement,
         option,
         { muffle, noise },
-        modifiedAudioUrlRef
+        primaryModifiedAudioUrlRef
       ).catch(() => {
-        playRawAudio(audioElement, option, modifiedAudioUrlRef);
+        void playRawAudio(
+          audioElement,
+          option,
+          primaryModifiedAudioUrlRef
+        ).catch(() => {});
       });
     },
     [input.audioElement, muffle, noise]
+  );
+
+  const playReviewAudioOption = useCallback(
+    (option: PitchAccentPairOption | null | undefined) => {
+      const audioElement = input.reviewAudioElement;
+
+      if (!audioElement || !option) {
+        return;
+      }
+
+      void playAudioElementOption(
+        audioElement,
+        option,
+        { muffle, noise },
+        reviewModifiedAudioUrlRef
+      ).catch(() => {
+        void playRawAudio(
+          audioElement,
+          option,
+          reviewModifiedAudioUrlRef
+        ).catch(() => {});
+      });
+    },
+    [input.reviewAudioElement, muffle, noise]
   );
 
   useEffect(() => {
@@ -194,8 +225,8 @@ export function usePitchAccentSessionController(
     }
 
     autoplayedTrialIdRef.current = currentTrial.trialId;
-    playCurrentAudioOption(correctOption);
-  }, [currentTrial, input.audioElement, playCurrentAudioOption]);
+    playPrimaryAudioOption(correctOption);
+  }, [currentTrial, input.audioElement, playPrimaryAudioOption]);
 
   const playOptionAudio = useCallback(
     (optionId: string) => {
@@ -203,9 +234,9 @@ export function usePitchAccentSessionController(
         (candidate) => candidate.id === optionId
       );
 
-      playCurrentAudioOption(option);
+      playReviewAudioOption(option);
     },
-    [currentTrial, playCurrentAudioOption]
+    [currentTrial, playReviewAudioOption]
   );
 
   const replayCurrentAudio = useCallback(() => {
@@ -224,9 +255,13 @@ export function usePitchAccentSessionController(
       audioElement,
       correctOption,
       { muffle, noise },
-      modifiedAudioUrlRef
+      primaryModifiedAudioUrlRef
     ).catch(() => {
-      playRawAudio(audioElement, correctOption, modifiedAudioUrlRef);
+      void playRawAudio(
+        audioElement,
+        correctOption,
+        primaryModifiedAudioUrlRef
+      ).catch(() => {});
     });
   }, [currentTrial, input.audioElement, muffle, noise]);
 
@@ -245,20 +280,43 @@ export function usePitchAccentSessionController(
 
       setActiveReviewGraphOptionId(option.id);
       setReviewPlayback(emptyReviewPlayback);
-      playCurrentAudioOption(option);
+      playReviewAudioOption(option);
     },
-    [activeFeedback, currentTrial, playCurrentAudioOption]
+    [activeFeedback, currentTrial, playReviewAudioOption]
   );
 
   const handleContinue = useCallback(() => {
+    if (submittingRef.current) {
+      return;
+    }
+
     clearAutoAdvanceTimeout(autoAdvanceTimeoutRef);
     cancelReviewAnimationFrame(reviewAnimationFrameRef);
+    stopAudioElement(input.reviewAudioElement ?? null);
     setFeedback(null);
     setAwaitingContinue(false);
     setActiveReviewGraphOptionId(null);
     setReviewPlayback(emptyReviewPlayback);
+    const nextTrial = session.trials[currentIndex + 1] ?? null;
+    const nextCorrectOption = nextTrial
+      ? nextTrial.options.find(
+          (option) => option.id === nextTrial.correctOptionId
+        )
+      : null;
+
+    if (nextTrial && nextCorrectOption && input.audioElement) {
+      autoplayedTrialIdRef.current = nextTrial.trialId;
+      playPrimaryAudioOption(nextCorrectOption);
+    }
+
     setCurrentIndex((current) => current + 1);
-  }, []);
+  }, [
+    currentIndex,
+    input.audioElement,
+    input.reviewAudioElement,
+    playPrimaryAudioOption,
+    session.trials
+  ]);
 
   const handleChooseOption = useCallback(
     (optionId: string, inputMethod: "keyboard" | "pointer" | "touch") => {
@@ -272,6 +330,20 @@ export function usePitchAccentSessionController(
       const responseMs = Math.max(
         0,
         Math.round(performance.now() - presentedAtRef.current)
+      );
+      const optimisticFeedback: PitchAccentFeedback = {
+        chosenOptionId: optionId,
+        correctOptionId: currentTrial.correctOptionId,
+        isCorrect: optionId === currentTrial.correctOptionId,
+        responseMs,
+        trialId: currentTrial.trialId
+      };
+
+      setFeedback(optimisticFeedback);
+      setActiveReviewGraphOptionId(null);
+      setReviewPlayback(emptyReviewPlayback);
+      setAwaitingContinue(
+        !optimisticFeedback.isCorrect || input.pauseAfterCorrect
       );
 
       void submitPitchAccentAnswerAction({
@@ -291,17 +363,20 @@ export function usePitchAccentSessionController(
           });
           setActiveReviewGraphOptionId(null);
           setReviewPlayback(emptyReviewPlayback);
-          if (result.isCorrect && !input.pauseAfterCorrect) {
+          const shouldAwaitContinue =
+            !result.isCorrect || input.pauseAfterCorrect;
+          setAwaitingContinue(shouldAwaitContinue);
+          if (!shouldAwaitContinue) {
             clearAutoAdvanceTimeout(autoAdvanceTimeoutRef);
             autoAdvanceTimeoutRef.current = window.setTimeout(
               handleContinue,
               750
             );
-          } else {
-            setAwaitingContinue(true);
           }
         })
         .catch((error: unknown) => {
+          setFeedback(null);
+          setAwaitingContinue(false);
           setClientError(
             error instanceof Error
               ? error.message
@@ -367,7 +442,7 @@ export function usePitchAccentSessionController(
   ]);
 
   useEffect(() => {
-    const audioElement = input.audioElement;
+    const audioElement = input.reviewAudioElement;
 
     if (!audioElement) {
       return;
@@ -418,7 +493,7 @@ export function usePitchAccentSessionController(
       audioElement.removeEventListener("ended", stopAnimationFrame);
       cancelReviewAnimationFrame(reviewAnimationFrameRef);
     };
-  }, [activeReviewGraph?.graph, input.audioElement]);
+  }, [activeReviewGraph?.graph, input.reviewAudioElement]);
 
   return useMemo(
     () => ({
@@ -476,11 +551,10 @@ async function playAudioElementOption(
   modifiers: PitchAccentAudioModifiers,
   modifiedAudioUrlRef: MutableRefObject<string | null>
 ) {
-  audioElement.pause();
-  audioElement.currentTime = 0;
+  stopAudioElement(audioElement);
 
   if (!modifiers.noise && !modifiers.muffle) {
-    playRawAudio(audioElement, option, modifiedAudioUrlRef);
+    await playRawAudio(audioElement, option, modifiedAudioUrlRef);
     return;
   }
 
@@ -488,19 +562,45 @@ async function playAudioElementOption(
   revokeModifiedAudioUrl(modifiedAudioUrlRef);
   modifiedAudioUrlRef.current = url;
   audioElement.src = url;
-  audioElement.load();
+  loadAudioElement(audioElement);
   await audioElement.play();
 }
 
-function playRawAudio(
+async function playRawAudio(
   audioElement: HTMLAudioElement,
   option: PitchAccentPairOption,
   modifiedAudioUrlRef: MutableRefObject<string | null>
 ) {
   revokeModifiedAudioUrl(modifiedAudioUrlRef);
   audioElement.src = option.audioSrc;
-  audioElement.load();
-  void audioElement.play();
+  loadAudioElement(audioElement);
+  await audioElement.play();
+}
+
+function stopAudioElement(audioElement: HTMLAudioElement | null) {
+  if (!audioElement) {
+    return;
+  }
+
+  try {
+    audioElement.pause();
+  } catch {
+    // Ignore browser-specific media state failures.
+  }
+
+  try {
+    audioElement.currentTime = 0;
+  } catch {
+    // Safari can reject seeking before metadata is ready.
+  }
+}
+
+function loadAudioElement(audioElement: HTMLAudioElement) {
+  try {
+    audioElement.load();
+  } catch {
+    // Ignore browser-specific media loading failures; play() reports the outcome.
+  }
 }
 
 async function buildModifiedAudioUrl(

@@ -38,6 +38,8 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(
     null
   );
+  const [reviewAudioElement, setReviewAudioElement] =
+    useState<HTMLAudioElement | null>(null);
   const [pauseAfterCorrect, setPauseAfterCorrect] = useState(false);
   const [noise, setNoise] = useState(false);
   const [muffle, setMuffle] = useState(false);
@@ -49,7 +51,8 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
       muffle,
       noise
     },
-    pauseAfterCorrect
+    pauseAfterCorrect,
+    reviewAudioElement
   });
   const currentTrial = controller.currentTrial;
   const correctOption = currentTrial
@@ -150,7 +153,6 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
                   {currentTrial.kana}
                 </p>
                 <audio
-                  key={currentTrial.trialId}
                   ref={setAudioElement}
                   className="pitch-accent-audio"
                   controls
@@ -164,14 +166,22 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
                 >
                   Replay
                 </button>
+                <audio
+                  aria-hidden="true"
+                  className="pitch-accent-review-audio"
+                  preload="auto"
+                  ref={setReviewAudioElement}
+                />
               </div>
 
               <div className="pitch-accent-options">
                 {currentTrial.options.map((option, index) => (
                   <PitchAccentOptionButton
-                    activeReview={controller.activeReviewGraph?.optionId === option.id}
+                    activeReview={
+                      controller.activeReviewGraph?.optionId === option.id
+                    }
                     disabled={
-                      controller.isSubmitting ||
+                      (!controller.feedback && controller.isSubmitting) ||
                       Boolean(controller.feedback?.isCorrect) ||
                       isSessionFinalizing
                     }
@@ -198,6 +208,7 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
               {controller.awaitingContinue ? (
                 <button
                   className="button button--primary pitch-accent-continue"
+                  disabled={controller.isSubmitting || isSessionFinalizing}
                   onClick={controller.handleContinue}
                   type="button"
                 >

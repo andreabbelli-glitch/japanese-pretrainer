@@ -31,7 +31,9 @@ test("starts a Pitch Accent session and persists a recap", async ({ page }) => {
     "1 / 20"
   );
 
-  const audioSrc = await page.locator("audio").getAttribute("src");
+  const audioSrc = await page
+    .locator("audio.pitch-accent-audio")
+    .getAttribute("src");
   expect(audioSrc).toBeTruthy();
   const audioResponse = await page.request.get(
     new URL(audioSrc!, page.url()).toString()
@@ -72,7 +74,9 @@ test("starts a Pitch Accent session and persists a recap", async ({ page }) => {
 
   await page.keyboard.press("1");
   await expect(page.getByRole("status")).toContainText(/Corretto|Da rifare/u);
-  await page.keyboard.press("Space");
+  const continueButton = page.getByRole("button", { name: "Continua" });
+  await expect(continueButton).toBeEnabled();
+  await continueButton.click();
   await expect(page.getByTestId(testIds.pitchAccentTop)).toContainText(
     "2 / 20"
   );
@@ -146,6 +150,8 @@ test("shows interactive review pitch graphs after a wrong answer on mobile", asy
 
   const wrongOptionButton = optionButtonById(page, wrongOption!.id);
   const correctOptionButton = optionButtonById(page, correctOption!.id);
+  const promptAudio = page.locator("audio.pitch-accent-audio");
+  const promptAudioSrcBeforeReview = await promptAudio.getAttribute("src");
 
   await wrongOptionButton.click();
   await expect(page.getByRole("status")).toContainText("Da rifare");
@@ -156,6 +162,7 @@ test("shows interactive review pitch graphs after a wrong answer on mobile", asy
 
   const graph = page.getByTestId(testIds.pitchAccentReviewGraph);
   await expect(graph).toBeVisible();
+  await expect(promptAudio).toHaveAttribute("src", promptAudioSrcBeforeReview!);
   await expect(
     graph.locator(".pitch-accent-review-graph__playhead")
   ).toBeVisible();
