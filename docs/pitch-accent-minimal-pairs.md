@@ -26,6 +26,7 @@ Il vendor output principale vive in:
 ```text
 public/vendor/minimal-pairs/
   manifest.json
+  pitch-graphs.json
   LICENSE-GPL-3.0.txt
   NOTICE.md
   audio/<pairId>/<variant>.<codec>
@@ -51,6 +52,7 @@ Un secondo corpus statico opzionale puo vivere in:
 ```text
 public/vendor/tofugu-pitch-minimal-pairs/
   manifest.json
+  pitch-graphs.json
   NOTICE.md
   audit.json
   audio/<pairId>/<variant>.mp3
@@ -68,6 +70,14 @@ Jaydar non e una dipendenza runtime dell'app. Il runtime legge solo i manifest
 statici gia generati. Se il corpus Tofugu non esiste, `/pitch-accent` usa solo
 il corpus Kuuuube.
 
+I file `pitch-graphs.json` sono manifest statici generati dagli audio
+vendorizzati. Sono keyed by `audioSrc` e contengono durata, intervallo campioni
+e una traccia F0 in Hz con `null` per frame non voiced/silenzio. Il runtime li
+usa solo nella review dopo errore: il graph resta nascosto finche non si tocca
+una risposta, poi mostra la singola pronuncia selezionata e sincronizza la
+playhead con l'audio originale. Effetti di ascolto come `Muffle` e rumore non
+modificano i dati del graph.
+
 ## Workflow operativo
 
 Import o refresh del corpus:
@@ -80,6 +90,12 @@ Validazione vendor:
 
 ```sh
 ./scripts/with-node.sh pnpm pitch-accent:validate-corpus
+```
+
+Rigenerazione pitch graph statici dagli audio vendorizzati:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:generate-pitch-graphs
 ```
 
 Generazione del corpus statico Tofugu/Jaydar:
@@ -138,7 +154,7 @@ salvato.
 ## Verifica mirata
 
 ```sh
-./scripts/with-node.sh pnpm exec vitest run tests/pitch-accent-corpus.test.ts tests/pitch-accent-importer.test.ts tests/pitch-accent-session-persistence.test.ts tests/pitch-accent-interactions.test.ts tests/pitch-accent-route.test.ts tests/pitch-accent-page.test.ts
+./scripts/with-node.sh pnpm exec vitest run tests/pitch-accent-corpus.test.ts tests/pitch-accent-importer.test.ts tests/pitch-accent-session-persistence.test.ts tests/pitch-accent-interactions.test.ts tests/pitch-accent-route.test.ts tests/pitch-accent-page.test.ts tests/pitch-accent-pitch-graph.test.ts tests/pitch-accent-pitch-graph-loader.test.ts tests/pitch-accent-pitch-graph-generator.test.ts
 ./scripts/with-node.sh pnpm exec playwright test tests/e2e/pitch-accent.spec.ts
 ```
 

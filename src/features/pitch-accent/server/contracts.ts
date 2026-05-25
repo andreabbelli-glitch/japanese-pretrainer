@@ -1,4 +1,5 @@
 import type {
+  PitchAccentAudioPitchGraph,
   PitchAccentPairOption,
   PitchAccentPatternFilter,
   PitchAccentPatternKey,
@@ -45,6 +46,9 @@ export type PitchAccentPageData = {
 export type PitchAccentSessionPageData = StartPitchAccentSessionResult & {
   readonly answeredCount: number;
   readonly filters: PitchAccentPatternFilter;
+  readonly pitchGraphsByAudioSrc: Readonly<
+    Record<string, PitchAccentAudioPitchGraph>
+  >;
   readonly startedAt: string;
   readonly status: "active" | "completed" | "abandoned";
 };

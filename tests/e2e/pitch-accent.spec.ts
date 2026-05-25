@@ -5,7 +5,11 @@ import {
   closeDatabaseClient,
   createDatabaseClient
 } from "../../src/db/index.ts";
-import { pitchAccentSession } from "../../src/db/schema/index.ts";
+import {
+  pitchAccentSession,
+  pitchAccentTrial
+} from "../../src/db/schema/index.ts";
+import type { PitchAccentPairOption } from "../../src/features/pitch-accent/model/index.ts";
 import { testIds } from "./helpers/selectors";
 
 test("starts a Pitch Accent session and persists a recap", async ({ page }) => {
@@ -114,6 +118,77 @@ test("stores selected Pitch Accent filters when starting a session", async ({
   }
 });
 
+test("shows interactive review pitch graphs after a wrong answer on mobile", async ({
+  page
+}) => {
+  await page.setViewportSize({ width: 393, height: 852 });
+  await installMediaStubs(page);
+  await page.goto("/pitch-accent");
+
+  await page.getByRole("button", { name: "Avvia sessione" }).click();
+  await expect(page).toHaveURL(/\/pitch-accent\/session\/[^/]+$/);
+
+  const sessionId = new URL(page.url()).pathname.split("/").at(-1);
+  expect(sessionId).toBeTruthy();
+  const firstTrial = await readFirstPitchAccentTrial(sessionId!);
+  const options = JSON.parse(
+    firstTrial.optionsJson
+  ) as readonly PitchAccentPairOption[];
+  const wrongOption = options.find(
+    (option) => option.id !== firstTrial.correctOptionId
+  );
+  const correctOption = options.find(
+    (option) => option.id === firstTrial.correctOptionId
+  );
+
+  expect(wrongOption).toBeTruthy();
+  expect(correctOption).toBeTruthy();
+
+  const wrongOptionButton = optionButtonById(page, wrongOption!.id);
+  const correctOptionButton = optionButtonById(page, correctOption!.id);
+
+  await wrongOptionButton.click();
+  await expect(page.getByRole("status")).toContainText("Da rifare");
+  await expect(page.getByTestId(testIds.pitchAccentReviewGraph)).toHaveCount(0);
+
+  const playCountBeforeReview = await readPitchAccentPlayCount(page);
+  await wrongOptionButton.click();
+
+  const graph = page.getByTestId(testIds.pitchAccentReviewGraph);
+  await expect(graph).toBeVisible();
+  await expect(
+    graph.locator(".pitch-accent-review-graph__playhead")
+  ).toBeVisible();
+  await expect
+    .poll(() => readPitchAccentPlayCount(page))
+    .toBeGreaterThan(playCountBeforeReview);
+
+  const playCountBeforeSwitch = await readPitchAccentPlayCount(page);
+  await correctOptionButton.click();
+  await expect(graph).toContainText("Pitch Graph");
+  await expect
+    .poll(() => readPitchAccentPlayCount(page))
+    .toBeGreaterThan(playCountBeforeSwitch);
+
+  await expect(page.getByRole("button", { name: "Continua" })).toBeVisible();
+  const continueIsInViewport = await page
+    .getByRole("button", { name: "Continua" })
+    .evaluate((element) => {
+      const rect = element.getBoundingClientRect();
+
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    });
+  expect(continueIsInViewport).toBe(true);
+
+  const noHorizontalOverflow = await page.evaluate(
+    () => document.documentElement.scrollWidth <= window.innerWidth + 1
+  );
+  expect(noHorizontalOverflow).toBe(true);
+
+  const wrongOptionBox = await wrongOptionButton.boundingBox();
+  expect(wrongOptionBox?.height).toBeGreaterThanOrEqual(44);
+});
+
 async function installMediaStubs(page: Page) {
   await page.addInitScript(() => {
     Object.defineProperty(HTMLMediaElement.prototype, "play", {
@@ -133,4 +208,42 @@ async function installMediaStubs(page: Page) {
       value() {}
     });
   });
+}
+
+async function readFirstPitchAccentTrial(sessionId: string) {
+  const database = createDatabaseClient({
+    databaseUrl: process.env.E2E_DATABASE_URL
+  });
+
+  try {
+    const trials = await database
+      .select()
+      .from(pitchAccentTrial)
+      .where(eq(pitchAccentTrial.sessionId, sessionId));
+    const firstTrial = trials.sort(
+      (left, right) => left.sortOrder - right.sortOrder
+    )[0];
+
+    if (!firstTrial) {
+      throw new Error(`No Pitch Accent trial found for ${sessionId}.`);
+    }
+
+    return firstTrial;
+  } finally {
+    closeDatabaseClient(database);
+  }
+}
+
+function optionButtonById(page: Page, optionId: string) {
+  return page.locator(
+    `[data-testid="${testIds.pitchAccentOption}"][data-option-id="${optionId}"]`
+  );
+}
+
+async function readPitchAccentPlayCount(page: Page) {
+  return page.evaluate(
+    () =>
+      (window as Window & { __pitchAccentPlayCount?: number })
+        .__pitchAccentPlayCount ?? 0
+  );
 }

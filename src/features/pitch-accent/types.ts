@@ -32,6 +32,17 @@ export type PitchAccentPairOption = {
   readonly surface?: string;
 };
 
+export type PitchAccentAudioPitchGraph = {
+  readonly durationMs: number;
+  readonly sampleIntervalMs: number;
+  readonly values: readonly (number | null)[];
+};
+
+export type PitchAccentPitchGraphManifest = {
+  readonly graphs: Readonly<Record<string, PitchAccentAudioPitchGraph>>;
+  readonly version: 1;
+};
+
 export type PitchAccentMinimalPair = {
   readonly hasDevoiced: boolean;
   readonly id: string;

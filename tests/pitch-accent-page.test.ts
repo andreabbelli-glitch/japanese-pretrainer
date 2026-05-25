@@ -5,9 +5,11 @@ import { describe, expect, it, vi } from "vitest";
 import { PitchAccentPage } from "@/components/pitch-accent/pitch-accent-page";
 import {
   PitchAccentOptionButton,
+  PitchAccentReviewGraph,
   PitchAccentSessionPage
 } from "@/components/pitch-accent/pitch-accent-session-page";
 import type {
+  PitchAccentAudioPitchGraph,
   PitchAccentPageData,
   PitchAccentSessionPageData
 } from "@/features/pitch-accent/server";
@@ -33,6 +35,18 @@ const sessionData: PitchAccentSessionPageData = {
   sessionId: "pitch-accent-session-fixture",
   startedAt: "2026-05-25T08:00:00.000Z",
   status: "active",
+  pitchGraphsByAudioSrc: {
+    "/vendor/minimal-pairs/audio/pair-a/0.aac": {
+      durationMs: 500,
+      sampleIntervalMs: 10,
+      values: [120, 130, null, 145]
+    },
+    "/vendor/minimal-pairs/audio/pair-a/1.aac": {
+      durationMs: 500,
+      sampleIntervalMs: 10,
+      values: [170, 150, null, 132]
+    }
+  },
   trials: [
     {
       correctOptionId: "pair-a:1",
@@ -115,5 +129,29 @@ describe("pitch accent pages", () => {
 
     expect(markup).toContain('aria-label="Riproduci opzione 1"');
     expect(markup).toContain("pitch-accent-option__play");
+  });
+
+  it("renders the review graph card with a synchronized playhead", () => {
+    const graph: PitchAccentAudioPitchGraph = {
+      durationMs: 500,
+      sampleIntervalMs: 10,
+      values: [120, 130, null, 145]
+    };
+    const markup = renderToStaticMarkup(
+      createElement(PitchAccentReviewGraph, {
+        graph,
+        option: sessionData.trials[0]!.options[0]!,
+        playback: {
+          currentTimeSeconds: 0.25,
+          durationSeconds: 0.5,
+          isPlaying: true
+        }
+      })
+    );
+
+    expect(markup).toContain("Pitch Graph");
+    expect(markup).toContain("pitch-accent-review-graph__playhead");
+    expect(markup).toContain("left:50%");
+    expect(markup).toContain("Pitch");
   });
 });

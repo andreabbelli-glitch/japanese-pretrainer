@@ -111,6 +111,75 @@ describe("pitch accent session controller interactions", () => {
     expect(audio.play).toHaveBeenCalledTimes(1);
   });
 
+  it("keeps the review graph hidden until an incorrect option is selected for review", async () => {
+    mocks.submitPitchAccentAnswerAction.mockResolvedValue({
+      chosenOptionId: "pair-a:0",
+      correctOptionId: "pair-a:1",
+      idempotent: false,
+      isCorrect: false
+    });
+    const audio = createAudioElementStub();
+    const { controller } = await renderController({
+      audioElement: audio,
+      pauseAfterCorrect: true
+    });
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("1");
+      await Promise.resolve();
+    });
+
+    expect(controller().feedback?.isCorrect).toBe(false);
+    expect(controller().activeReviewGraph).toBeNull();
+
+    vi.mocked(audio.play).mockClear();
+
+    await act(async () => {
+      controller().selectReviewGraphOption("pair-a:0");
+      await Promise.resolve();
+    });
+
+    expect(controller().activeReviewGraph?.optionId).toBe("pair-a:0");
+    expect(controller().activeReviewGraph?.graph).toMatchObject({
+      durationMs: 500,
+      sampleIntervalMs: 10,
+      values: [120, 132, null, 140]
+    });
+    expect(audio.src).toBe("/vendor/minimal-pairs/audio/pair-a/0.aac");
+    expect(audio.play).toHaveBeenCalledTimes(1);
+  });
+
+  it("tracks review graph playhead time from the active audio element", async () => {
+    mocks.submitPitchAccentAnswerAction.mockResolvedValue({
+      chosenOptionId: "pair-a:0",
+      correctOptionId: "pair-a:1",
+      idempotent: false,
+      isCorrect: false
+    });
+    const audio = createAudioElementStub();
+    const { controller } = await renderController({
+      audioElement: audio,
+      pauseAfterCorrect: true
+    });
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("1");
+      await Promise.resolve();
+      controller().selectReviewGraphOption("pair-a:1");
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      (audio as HTMLAudioElement & { duration: number }).duration = 0.5;
+      audio.currentTime = 0.25;
+      dispatchAudioElementEvent(audio, "timeupdate");
+      await Promise.resolve();
+    });
+
+    expect(controller().reviewPlayback.currentTimeSeconds).toBe(0.25);
+    expect(controller().reviewPlayback.durationSeconds).toBe(0.5);
+  });
+
   it("submits keyboard answers and advances with Space when paused", async () => {
     let now = 1_000;
     vi.spyOn(performance, "now").mockImplementation(() => now);
@@ -272,13 +341,37 @@ describe("pitch accent session controller interactions", () => {
 });
 
 function createAudioElementStub() {
+  const listeners = new Map<string, Set<() => void>>();
+
   return {
     currentTime: 0,
+    duration: 0,
+    addEventListener: vi.fn((type: string, listener: () => void) => {
+      const listenersForType = listeners.get(type) ?? new Set();
+      listenersForType.add(listener);
+      listeners.set(type, listenersForType);
+    }),
+    dispatchPitchAccentTestEvent(type: string) {
+      for (const listener of listeners.get(type) ?? []) {
+        listener();
+      }
+    },
     load: vi.fn(),
     pause: vi.fn(),
     play: vi.fn(() => Promise.resolve()),
+    removeEventListener: vi.fn((type: string, listener: () => void) => {
+      listeners.get(type)?.delete(listener);
+    }),
     src: ""
   } as unknown as HTMLAudioElement;
+}
+
+function dispatchAudioElementEvent(audio: HTMLAudioElement, type: string) {
+  (
+    audio as HTMLAudioElement & {
+      dispatchPitchAccentTestEvent: (type: string) => void;
+    }
+  ).dispatchPitchAccentTestEvent(type);
 }
 
 function buildSession(): PitchAccentSessionPageData {
@@ -292,6 +385,18 @@ function buildSession(): PitchAccentSessionPageData {
     sessionId: "pitch-accent-session-ui",
     startedAt: "2026-05-25T08:00:00.000Z",
     status: "active",
+    pitchGraphsByAudioSrc: {
+      "/vendor/minimal-pairs/audio/pair-a/0.aac": {
+        durationMs: 500,
+        sampleIntervalMs: 10,
+        values: [120, 132, null, 140]
+      },
+      "/vendor/minimal-pairs/audio/pair-a/1.aac": {
+        durationMs: 500,
+        sampleIntervalMs: 10,
+        values: [170, 150, null, 130]
+      }
+    },
     trials: [
       {
         correctOptionId: "pair-a:1",

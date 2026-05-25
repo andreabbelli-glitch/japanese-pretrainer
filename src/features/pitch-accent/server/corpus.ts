@@ -2,12 +2,19 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import {
+  validatePitchAccentPitchGraphManifest,
   validatePitchAccentMinimalPairsCorpus,
+  type PitchAccentAudioPitchGraph,
   type PitchAccentMinimalPairsCorpus
 } from "../model";
 
 type PitchAccentCorpusSpec = {
   readonly allowedAudioSrcPrefixes: readonly string[];
+  readonly manifestPath: string;
+  readonly required: boolean;
+};
+
+type PitchAccentPitchGraphManifestSpec = {
   readonly manifestPath: string;
   readonly required: boolean;
 };
@@ -37,12 +44,46 @@ const corpusSpecs: readonly PitchAccentCorpusSpec[] = [
   }
 ];
 
+const pitchGraphManifestSpecs: readonly PitchAccentPitchGraphManifestSpec[] = [
+  {
+    manifestPath: path.join(
+      process.cwd(),
+      "public",
+      "vendor",
+      "minimal-pairs",
+      "pitch-graphs.json"
+    ),
+    required: false
+  },
+  {
+    manifestPath: path.join(
+      process.cwd(),
+      "public",
+      "vendor",
+      "tofugu-pitch-minimal-pairs",
+      "pitch-graphs.json"
+    ),
+    required: false
+  }
+];
+
 let corpusCache: Promise<PitchAccentMinimalPairsCorpus> | null = null;
+let pitchGraphCache: Promise<
+  Readonly<Record<string, PitchAccentAudioPitchGraph>>
+> | null = null;
 
 export async function loadPitchAccentMinimalPairsCorpus() {
   corpusCache ??= readPitchAccentMinimalPairCorpusSpecs(corpusSpecs);
 
   return corpusCache;
+}
+
+export async function loadPitchAccentPitchGraphs() {
+  pitchGraphCache ??= readPitchAccentPitchGraphManifests(
+    pitchGraphManifestSpecs
+  );
+
+  return pitchGraphCache;
 }
 
 export async function readPitchAccentMinimalPairCorpusSpecs(
@@ -90,6 +131,45 @@ export async function readPitchAccentMinimalPairsCorpus(
   }
 
   return corpus;
+}
+
+export async function readPitchAccentPitchGraphManifest(sourcePath: string) {
+  const source = await readFile(sourcePath, "utf8");
+  const manifest = JSON.parse(source);
+  const validation = validatePitchAccentPitchGraphManifest(manifest);
+
+  if (!validation.ok) {
+    throw new Error(
+      `Pitch accent pitch graph manifest is invalid: ${validation.errors.join(
+        "; "
+      )}`
+    );
+  }
+
+  return manifest;
+}
+
+export async function readPitchAccentPitchGraphManifests(
+  specs: readonly PitchAccentPitchGraphManifestSpec[]
+) {
+  const graphs: Record<string, PitchAccentAudioPitchGraph> = {};
+
+  for (const spec of specs) {
+    try {
+      const manifest = await readPitchAccentPitchGraphManifest(
+        spec.manifestPath
+      );
+      Object.assign(graphs, manifest.graphs);
+    } catch (error) {
+      if (!spec.required && isMissingFileError(error)) {
+        continue;
+      }
+
+      throw error;
+    }
+  }
+
+  return graphs;
 }
 
 async function readOptionalPitchAccentMinimalPairsCorpus(
