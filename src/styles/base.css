@@ -3755,6 +3755,286 @@ button.katakana-speed-ran-cell:disabled {
   font-size: 1.16rem;
 }
 
+.pitch-accent-page,
+.pitch-accent-session-page,
+.pitch-accent-recap-page {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.pitch-accent-hero,
+.pitch-accent-panel,
+.pitch-accent-stage,
+.pitch-accent-session-aside {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.pitch-accent-hero,
+.pitch-accent-grid,
+.pitch-accent-session-layout,
+.pitch-accent-recap-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.pitch-accent-copy {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.pitch-accent-eyebrow {
+  margin: 0;
+  color: var(--color-accent-ink);
+  font-size: var(--text-micro);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pitch-accent-title {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-family: var(--font-family-display);
+  font-size: var(--text-display);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.05;
+}
+
+.pitch-accent-summary,
+.pitch-accent-muted {
+  margin: 0;
+  color: var(--color-ink-muted);
+}
+
+.pitch-accent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.pitch-accent-panel--wide {
+  grid-column: 1 / -1;
+}
+
+.pitch-accent-filter-grid,
+.pitch-accent-toggle-stack {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.pitch-accent-filter-grid {
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+}
+
+.pitch-accent-check {
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid rgba(210, 197, 177, 0.76);
+  border-radius: var(--radius-md);
+  background: rgba(255, 250, 242, 0.74);
+  color: var(--color-ink-strong);
+  cursor: pointer;
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+}
+
+.pitch-accent-check input {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+  margin-top: 0.12rem;
+  accent-color: var(--color-accent-ink);
+}
+
+.pitch-accent-session-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.pitch-accent-progress {
+  width: 100%;
+  height: 0.55rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(210, 197, 177, 0.38);
+}
+
+.pitch-accent-progress__bar {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #2d6eb9, #7e926c);
+  transition: width var(--motion-base) var(--ease-standard);
+}
+
+.pitch-accent-stage {
+  min-height: min(70vh, 42rem);
+  align-content: center;
+  justify-items: center;
+  overflow-anchor: none;
+  text-align: center;
+  touch-action: manipulation;
+}
+
+.pitch-accent-audio-box {
+  width: min(100%, 34rem);
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+}
+
+.pitch-accent-kana {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-family: var(--font-family-japanese);
+  font-size: clamp(3rem, 2.4rem + 2vw, 5rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.pitch-accent-audio {
+  width: min(100%, 26rem);
+}
+
+.pitch-accent-options {
+  width: min(100%, 44rem);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.pitch-accent-option {
+  min-width: 0;
+  min-height: 7rem;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  appearance: none;
+  border: 1px solid rgba(210, 197, 177, 0.84);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 250, 242, 0.92);
+  color: var(--color-ink-strong);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    background-color var(--motion-base) var(--ease-standard),
+    border-color var(--motion-base) var(--ease-standard),
+    box-shadow var(--motion-base) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-emphasized);
+}
+
+.pitch-accent-option:hover:not(:disabled),
+.pitch-accent-option:focus-visible:not(:disabled) {
+  border-color: rgba(45, 110, 185, 0.68);
+  box-shadow:
+    var(--shadow-card),
+    0 0 0 1px rgba(45, 110, 185, 0.14);
+  transform: translateY(-2px);
+}
+
+.pitch-accent-option:disabled {
+  cursor: default;
+}
+
+.pitch-accent-option--correct {
+  border-color: rgba(90, 140, 96, 0.88);
+  background: rgba(237, 247, 236, 0.94);
+}
+
+.pitch-accent-option--incorrect {
+  border-color: rgba(182, 92, 68, 0.72);
+  background: rgba(241, 221, 214, 0.86);
+}
+
+.pitch-accent-option__key {
+  color: var(--color-ink-soft);
+  font-size: var(--text-micro);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pitch-accent-feedback {
+  min-height: 4.25rem;
+  width: min(100%, 44rem);
+  display: grid;
+  gap: var(--space-1);
+  align-content: center;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid rgba(210, 197, 177, 0.72);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 250, 242, 0.76);
+  text-align: left;
+}
+
+.pitch-accent-feedback strong {
+  color: var(--color-ink-strong);
+}
+
+.pitch-accent-feedback span {
+  color: var(--color-ink-muted);
+  font-size: var(--text-small);
+}
+
+.pitch-accent-feedback--correct {
+  border-color: rgba(90, 140, 96, 0.42);
+  background: rgba(237, 247, 236, 0.92);
+}
+
+.pitch-accent-feedback--incorrect {
+  border-color: rgba(182, 92, 68, 0.42);
+  background: rgba(241, 221, 214, 0.92);
+}
+
+.pitch-accent-recap-row,
+.pitch-accent-attempt-row {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid rgba(210, 197, 177, 0.58);
+}
+
+.pitch-accent-recap-row:last-child,
+.pitch-accent-attempt-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.pitch-accent-attempt-list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.pitch-accent-attempt-row strong,
+.pitch-accent-recap-row strong {
+  color: var(--color-ink-strong);
+}
+
+.pitch-accent-attempt-row span,
+.pitch-accent-attempt-row small,
+.pitch-accent-recap-row span {
+  color: var(--color-ink-muted);
+}
+
 .pronunciation-audio__meta {
   margin: 0;
 }
@@ -4146,12 +4426,16 @@ button.katakana-speed-ran-cell:disabled {
 
   .katakana-speed-hero,
   .katakana-speed-grid,
-  .katakana-speed-session-layout {
+  .katakana-speed-session-layout,
+  .pitch-accent-hero,
+  .pitch-accent-grid,
+  .pitch-accent-session-layout {
     grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
     align-items: start;
   }
 
-  .katakana-speed-stage {
+  .katakana-speed-stage,
+  .pitch-accent-stage {
     min-height: 34rem;
   }
 }
@@ -4298,7 +4582,8 @@ button.katakana-speed-ran-cell:disabled {
     padding: var(--space-4);
   }
 
-  .katakana-speed-actions {
+  .katakana-speed-actions,
+  .pitch-accent-actions {
     flex-direction: column;
     align-items: stretch;
   }
@@ -4313,7 +4598,8 @@ button.katakana-speed-ran-cell:disabled {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .katakana-speed-options {
+  .katakana-speed-options,
+  .pitch-accent-options {
     grid-template-columns: 1fr;
   }
 
@@ -4325,7 +4611,8 @@ button.katakana-speed-ran-cell:disabled {
     min-height: 4.8rem;
   }
 
-  .katakana-speed-stage {
+  .katakana-speed-stage,
+  .pitch-accent-stage {
     min-height: auto;
   }
 }

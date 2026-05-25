@@ -32,6 +32,11 @@ import {
   katakanaTrial
 } from "./katakana-speed.ts";
 import {
+  pitchAccentAttemptLog,
+  pitchAccentSession,
+  pitchAccentTrial
+} from "./pitch-accent.ts";
+import {
   card,
   cardEntryLink,
   preReviewConsolidationState,
@@ -223,6 +228,39 @@ export const lessonProgressRelations = relations(lessonProgress, ({ one }) => ({
     references: [lesson.id]
   })
 }));
+
+export const pitchAccentSessionRelations = relations(
+  pitchAccentSession,
+  ({ many }) => ({
+    attempts: many(pitchAccentAttemptLog),
+    trials: many(pitchAccentTrial)
+  })
+);
+
+export const pitchAccentTrialRelations = relations(
+  pitchAccentTrial,
+  ({ many, one }) => ({
+    attempts: many(pitchAccentAttemptLog),
+    session: one(pitchAccentSession, {
+      fields: [pitchAccentTrial.sessionId],
+      references: [pitchAccentSession.id]
+    })
+  })
+);
+
+export const pitchAccentAttemptLogRelations = relations(
+  pitchAccentAttemptLog,
+  ({ one }) => ({
+    session: one(pitchAccentSession, {
+      fields: [pitchAccentAttemptLog.sessionId],
+      references: [pitchAccentSession.id]
+    }),
+    trial: one(pitchAccentTrial, {
+      fields: [pitchAccentAttemptLog.trialId],
+      references: [pitchAccentTrial.trialId]
+    })
+  })
+);
 
 export const kanjiClashPairStateRelations = relations(
   kanjiClashPairState,

@@ -86,6 +86,23 @@
   primo trial non ancora risposto, non dal primo trial gia loggato.
 - `Katakana Speed`: una sessione completata o parziale non altera numeri, log o
   coda di `/review`, non scrive in Kanji Clash e non modifica `content/media`.
+- `Pitch Accent` `/pitch-accent`: apre il dashboard con totale corpus,
+  attribution GPL-3.0 e filtri `Solo devoicing`, `Strict pair finding` e pattern
+  selezionabili.
+- `Pitch Accent`: `Avvia sessione` crea una sessione da 20 trial e porta a
+  `/pitch-accent/session/[sessionId]`; la route sessione non mostra la sticky
+  global header.
+- `Pitch Accent`: l'audio del trial e servito da
+  `public/vendor/minimal-pairs`, il replay `r` usa l'audio corrente e non resta
+  bloccato sul trial precedente dopo modifier o avanzamento.
+- `Pitch Accent`: tasti `1`-`3` e click sulle opzioni salvano il tentativo; se
+  `Pausa dopo corretto` e attivo, `Space` avanza dopo feedback.
+- `Pitch Accent`: `Abbandona e salva recap` e il completamento naturale portano
+  a `/pitch-accent/recap/[sessionId]`, con attempt log persistito anche dopo
+  reload.
+- `Pitch Accent`: i filtri selezionati sono salvati in `pitch_accent_session`
+  e una sessione completata o parziale non altera numeri, log o coda di
+  `/review`, non scrive in Katakana/Kanji Clash e non modifica `content/media`.
 - `Kanji Clash`: con `media=<slug>` valido il workspace filtra il pool al media
   scelto; senza slug esplicito il runtime resta globale anche se il default in
   settings e` `media`.

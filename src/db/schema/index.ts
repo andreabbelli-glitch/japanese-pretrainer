@@ -1,6 +1,7 @@
 export * from "./content.ts";
 export * from "./kanji-clash.ts";
 export * from "./katakana-speed.ts";
+export * from "./pitch-accent.ts";
 export * from "./enums.ts";
 export * from "./glossary.ts";
 export * from "./progress.ts";

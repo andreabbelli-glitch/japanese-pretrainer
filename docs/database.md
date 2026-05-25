@@ -86,12 +86,13 @@ Apri Drizzle Studio:
 ## Struttura implementata
 
 - `src/db/schema/*`: schema tipizzato per i domini content, glossary, review,
-  Kanji Clash, Katakana Speed e progress
+  Kanji Clash, Katakana Speed, Pitch Accent e progress
 - `src/db/client.ts`: client Drizzle condiviso e factory per DB custom
 - `src/db/migrate.ts`: wrapper applicativo per eseguire le migrazioni versionate
 - `src/db/seed.ts`: fixture tecnica minima usata dai test unitari
 - `src/db/queries/*`: helper tipizzati per media, lessons, glossary,
-  cards/review, sessioni Kanji Clash e sessioni Katakana Speed
+  cards/review, sessioni Kanji Clash, sessioni Katakana Speed e sessioni Pitch
+  Accent
 - `src/instrumentation.ts`: warm-up best-effort e non bloccante delle cache
   dati piu pesanti dopo l'avvio del runtime
 - Per confrontare cold vs warm in pratica, avvia `pnpm start`, misura la
@@ -131,6 +132,9 @@ Tabelle incluse nel perimetro del task:
 - `katakana_attempt_log`
 - `katakana_exercise_result`
 - `katakana_confusion_edge`
+- `pitch_accent_session`
+- `pitch_accent_trial`
+- `pitch_accent_attempt_log`
 - `lesson_progress`
 - `user_setting`
 - `content_import`
@@ -208,6 +212,14 @@ Tabelle incluse nel perimetro del task:
   e `katakana_confusion_edge` per confusioni direzionali.
   Nessuna tabella Katakana Speed referenzia `review_subject_state` o le tabelle
   Kanji Clash.
+- Pitch Accent Minimal Pairs e un workspace runtime separato da review, media,
+  Kanji Clash e Katakana Speed. Il corpus Kuuuube/minimal-pairs resta
+  vendorizzato in `public/vendor/minimal-pairs`; il DB conserva solo stato
+  utente/runtime: `pitch_accent_session` per filtri, stato e rollup,
+  `pitch_accent_trial` per il piano persistito e snapshot delle opzioni,
+  `pitch_accent_attempt_log` per il tentativo idempotente per trial. Nessuna
+  tabella Pitch Accent referenzia `review_subject_state`, `content/media` o
+  tabelle Kanji/Katakana.
 
 ## Seed locale
 

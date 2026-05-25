@@ -15,6 +15,9 @@ non sostituisce un audit completo e aggiornato del codice.
 - Copertura dei flussi chiave: dashboard, media detail, textbook reader, tooltip, lightbox immagini, glossary, review, progress, settings.
 - Copertura dedicata di `Kanji Clash` su `/kanji-clash` con filtro media,
   sessione manuale e interazioni click/tastiera/touch.
+- Copertura dedicata di `Pitch Accent` su `/pitch-accent` con avvio sessione,
+  asset audio vendor verificato via HTTP, replay stubbed, risposta, recap
+  persistito e smoke dei filtri salvati nel DB E2E.
 - Smoke parametrica sulle route chiave di ogni media attivo presente in `content/media`.
 - Verifica mobile del reader con sheet touch per termini e rail lesson.
 - Le immagini del textbook restano plain media: click/tap apre il lightbox
@@ -91,6 +94,11 @@ non sostituisce un audit completo e aggiornato del codice.
   e fermarsi finche l'utente non conferma `Continua`.
 - Una sessione `Kanji Clash` non deve cambiare queue, log o contatori
   giornalieri della review standard.
+- Una sessione `Pitch Accent` non deve cambiare queue, log o contatori
+  giornalieri della review standard, e non deve scrivere in `content/media`.
+- Il vendor corpus `public/vendor/minimal-pairs` deve restare validabile con
+  `./scripts/with-node.sh pnpm pitch-accent:validate-corpus`; manifest,
+  `NOTICE.md`, licenza GPL-3.0 e audio statici devono essere coerenti.
 - Con un contrasto selezionato in Review, grading e inserimento in `Kanji
   Clash` devono essere transazionali: se l'upsert fallisce, la Review non deve
   avanzare silenziosamente.
@@ -187,6 +195,8 @@ specifico, ma non conta come matrice ufficiale di verifica.
 ## Limiti Residui
 
 - La suite E2E è intenzionalmente piccola: copre i flussi ad alto valore, non ogni variante di filtro o ogni card.
+- La suite E2E Pitch Accent copre il flow principale e uno smoke filtri, non
+  ogni combinazione di pattern o modifier audio.
 - I flussi E2E restano concentrati sul media di focus per textbook; per review
   conviene coprire sia il workspace globale sia il filtro verticale sul media.
 - `Kanji Clash` ha una suite E2E mirata, ma resta focalizzata sul round flow

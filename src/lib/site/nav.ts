@@ -7,6 +7,7 @@ export type NavItem = {
     | "/review"
     | "/kanji-clash"
     | "/katakana-speed"
+    | "/pitch-accent"
     | "/settings";
   label: string;
   description: string;
@@ -49,6 +50,11 @@ export const primaryNav: NavItem[] = [
     description: "Velocità kana"
   },
   {
+    href: "/pitch-accent",
+    label: "Pitch",
+    description: "Minimal pairs"
+  },
+  {
     href: "/settings",
     label: "Settings",
     description: "Preferenze"
@@ -60,10 +66,7 @@ export function resolveActivePrimaryNavHref(pathname: string): NavItem["href"] {
     return "/";
   }
 
-  if (
-    pathname === "/consolidation" ||
-    pathname.startsWith("/consolidation/")
-  ) {
+  if (pathname === "/consolidation" || pathname.startsWith("/consolidation/")) {
     return "/consolidation";
   }
 
@@ -84,6 +87,10 @@ export function resolveActivePrimaryNavHref(pathname: string): NavItem["href"] {
     pathname.startsWith("/katakana-speed/")
   ) {
     return "/katakana-speed";
+  }
+
+  if (pathname === "/pitch-accent" || pathname.startsWith("/pitch-accent/")) {
+    return "/pitch-accent";
   }
 
   if (

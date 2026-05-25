@@ -329,6 +329,34 @@ Quando aggiungi o cambi tabelle `katakana_*`, genera sempre la migrazione con:
 ./scripts/with-node.sh pnpm db:generate
 ```
 
+## Pitch Accent Minimal Pairs
+
+Pitch Accent usa il corpus GPL-3.0 di `Kuuuube/minimal-pairs` come vendor
+statico sotto `public/vendor/minimal-pairs` e persiste solo sessioni runtime
+nelle tabelle `pitch_accent_*`. Non usa FSRS, non modifica `/review` e non
+scrive in `content/`.
+
+Import o refresh del vendor corpus:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:import-minimal-pairs
+./scripts/with-node.sh pnpm pitch-accent:validate-corpus
+```
+
+Per test mirati:
+
+```sh
+./scripts/with-node.sh pnpm exec vitest run tests/pitch-accent-corpus.test.ts tests/pitch-accent-importer.test.ts tests/pitch-accent-session-persistence.test.ts tests/pitch-accent-interactions.test.ts
+./scripts/with-node.sh pnpm exec playwright test tests/e2e/pitch-accent.spec.ts
+```
+
+Quando aggiungi o cambi tabelle `pitch_accent_*`, genera sempre la migrazione
+con:
+
+```sh
+./scripts/with-node.sh pnpm db:generate
+```
+
 ## Tool da avere pronti
 
 - browser Playwright per test E2E;

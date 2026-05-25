@@ -60,6 +60,7 @@ describe("site helpers", () => {
       "Review",
       "Kanji Clash",
       "Katakana",
+      "Pitch",
       "Settings"
     ]);
     expect(hrefs).toEqual([
@@ -70,6 +71,7 @@ describe("site helpers", () => {
       "/review",
       "/kanji-clash",
       "/katakana-speed",
+      "/pitch-accent",
       "/settings"
     ]);
   });
@@ -242,6 +244,10 @@ describe("site helpers", () => {
     ).toBe("/katakana-speed");
     expect(resolveActivePrimaryNavHref("/katakana-speed/recap/session-1")).toBe(
       "/katakana-speed"
+    );
+    expect(resolveActivePrimaryNavHref("/pitch-accent")).toBe("/pitch-accent");
+    expect(resolveActivePrimaryNavHref("/pitch-accent/session/session-1")).toBe(
+      "/pitch-accent"
     );
     expect(resolveActivePrimaryNavHref("/settings")).toBe("/settings");
   });

@@ -31,6 +31,8 @@
     "pronunciations:pending": "node --experimental-strip-types ./scripts/update-pronunciation-pending.ts",
     "pronunciations:reuse": "node --experimental-strip-types ./scripts/reuse-pronunciations.ts",
     "pitch-accents:fetch": "node --experimental-strip-types ./scripts/fetch-pitch-accents.ts",
+    "pitch-accent:import-minimal-pairs": "node --experimental-strip-types ./scripts/import-minimal-pairs.ts",
+    "pitch-accent:validate-corpus": "node --experimental-strip-types ./scripts/validate-minimal-pairs-corpus.ts",
     "pronunciations:forvo": "node --experimental-strip-types ./scripts/fetch-forvo-pronunciations.ts",
     "pronunciations:forvo:request": "node --experimental-strip-types ./scripts/request-forvo-word-add.ts",
     "pronunciations:forvo:import-requested": "node --experimental-strip-types ./scripts/import-forvo-requested-audio-index.ts",

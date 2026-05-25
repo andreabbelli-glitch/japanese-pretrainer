@@ -80,6 +80,16 @@ export const katakanaTrialStatusValues = [
   "answered",
   "skipped"
 ] as const;
+export const pitchAccentSessionStatusValues = [
+  "active",
+  "completed",
+  "abandoned"
+] as const;
+export const pitchAccentTrialStatusValues = [
+  "planned",
+  "answered",
+  "skipped"
+] as const;
 export const katakanaTrialModeValues = [
   "minimal_pair",
   "blink",

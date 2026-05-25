@@ -3,6 +3,7 @@ export * from "./kanji-clash.ts";
 export * from "./kanji-clash-manual-contrast.ts";
 export * from "./kanji-clash-session.ts";
 export * from "./katakana-speed.ts";
+export * from "./pitch-accent.ts";
 export * from "./lessons.ts";
 export * from "./media.ts";
 export * from "./pronunciation-resolve.ts";
