@@ -133,6 +133,17 @@ Le colonne SwiftF0 usano il pacchetto della repo `lars76/swift-f0`: raw espone
 `confidence > 0.9` e `65-400 Hz`, smoothed aggiunge interpolazione di gap brevi
 e smoothing leggero.
 
+Benchmark scientifico contro PTDB-TUG, con 5 audio microfonici e F0 reference
+da laryngograph scaricati dall'hosting ufficiale solo in `.tmp`:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:benchmark-ptdb-tug
+```
+
+Il report confronta ogni extractor contro la F0 validata e calcola una
+similarita 0-100 basata su F1 voiced/unvoiced e vicinanza pitch in cents, oltre
+a MAE/RMSE, Gross Pitch Error e octave error.
+
 La baseline Kotu e autorizzata ma opt-in. La documentazione pubblica
 [Kotu API](https://docs.kotu.io/) dichiara una superficie v2 limitata a status,
 pronunciation search e text parsing; per questo il runtime non dipende da
