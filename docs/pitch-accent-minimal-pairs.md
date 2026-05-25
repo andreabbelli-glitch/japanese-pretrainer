@@ -157,7 +157,8 @@ Il report viene scritto in `.tmp/pitch-graph-display-variants/` e seleziona
 almeno 10 pair coprendo piu volte `pitch0`-`pitch4`. Per ogni audio mostra:
 SwiftF0 voiced-gated smoothed raw, una curva display con micro-gap bridging,
 scala log relativa alla mediana, asse robusto e smoothing leggero, poi la stessa
-curva con overlay teorico e infine con marker del drop atteso.
+curva con overlay teorico e una variante continua dove tutti i gap sono
+interpolati.
 
 La baseline Kotu e autorizzata ma opt-in. La documentazione pubblica
 [Kotu API](https://docs.kotu.io/) dichiara una superficie v2 limitata a status,

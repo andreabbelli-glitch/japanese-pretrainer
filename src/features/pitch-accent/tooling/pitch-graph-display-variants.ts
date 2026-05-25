@@ -32,7 +32,7 @@ type ExternalPitchExtractorOutput = {
   readonly sampleIntervalMs: number;
 };
 
-type DisplayVariantKind = "base" | "ideas1to5" | "overlay" | "markers";
+type DisplayVariantKind = "base" | "continuous" | "ideas1to5" | "overlay";
 
 export type GeneratePitchGraphDisplayVariantReportInput = {
   readonly concurrency?: number;
@@ -53,6 +53,8 @@ export type GeneratePitchGraphDisplayVariantReportResult = {
 
 export type PedagogicalPitchDisplayResult = {
   readonly bridgedGapMaxMs: number;
+  readonly continuousDomain: DisplayPitchDomain;
+  readonly continuousValues: readonly number[];
   readonly domain: DisplayPitchDomain;
   readonly medianHz: number;
   readonly smoothingWindowMs: number;
@@ -94,8 +96,8 @@ type DisplayPitchDomain = {
 const defaultSampleRate = 16_000;
 const displayVariantLabels = {
   base: "SwiftF0 voiced-gated smoothed",
+  continuous: "1-5 continuous interpolation",
   ideas1to5: "1-5 display curve",
-  markers: "1-5 + overlay + drop marker",
   overlay: "1-5 + expected overlay"
 } as const satisfies Record<DisplayVariantKind, string>;
 const execFileAsync = promisify(execFile);
@@ -266,6 +268,8 @@ export function buildPedagogicalPitchDisplay(input: {
   if (!Number.isFinite(medianHz) || medianHz <= 0) {
     return {
       bridgedGapMaxMs,
+      continuousDomain: { max: 100, min: -100, ticks: [100, 0, -100] },
+      continuousValues: rawHzValues.map(() => 0),
       domain: { max: 100, min: -100, ticks: [100, 0, -100] },
       medianHz: 0,
       smoothingWindowMs,
@@ -289,10 +293,17 @@ export function buildPedagogicalPitchDisplay(input: {
     Math.round(smoothingWindowMs / sampleIntervalMs / 2)
   );
   const values = smoothContiguousSegments(clampedValues, smoothingRadius);
+  const continuousValues = smoothContinuousValues(
+    interpolateAllNullGaps(clampedValues),
+    smoothingRadius
+  );
   const domain = buildCentsDomain(values);
+  const continuousDomain = buildCentsDomain(continuousValues);
 
   return {
     bridgedGapMaxMs,
+    continuousDomain,
+    continuousValues,
     domain,
     medianHz: roundNumber(medianHz, 1),
     smoothingWindowMs,
@@ -385,15 +396,15 @@ function buildDisplayVariantColumns(input: {
       values: display.values
     },
     {
-      domain: display.domain,
-      kind: "markers",
+      domain: display.continuousDomain,
+      kind: "continuous",
       sampleIntervalMs: input.sampleIntervalMs,
       summary:
-        "Same display curve plus overlay and expected downstep marker when the pattern has a drop.",
+        "Same display transform, but every gap is linearly interpolated in cents; leading/trailing gaps hold the nearest voiced value.",
       timestampsMs: input.timestampsMs,
-      title: displayVariantLabels.markers,
+      title: displayVariantLabels.continuous,
       unit: "cents",
-      values: display.values
+      values: display.continuousValues
     }
   ];
 }
@@ -480,6 +491,58 @@ function interpolateShortNullGaps(
   return output;
 }
 
+function interpolateAllNullGaps(values: readonly (number | null)[]) {
+  const output = values.slice();
+  const voicedIndexes = output
+    .map((value, index) => (isFiniteNumber(value) ? index : -1))
+    .filter((index) => index >= 0);
+
+  if (voicedIndexes.length === 0) {
+    return output.map(() => 0);
+  }
+
+  const firstVoicedIndex = voicedIndexes[0]!;
+  const lastVoicedIndex = voicedIndexes[voicedIndexes.length - 1]!;
+
+  for (let index = 0; index < firstVoicedIndex; index += 1) {
+    output[index] = output[firstVoicedIndex]!;
+  }
+  for (let index = lastVoicedIndex + 1; index < output.length; index += 1) {
+    output[index] = output[lastVoicedIndex]!;
+  }
+
+  let index = firstVoicedIndex;
+  while (index <= lastVoicedIndex) {
+    if (isFiniteNumber(output[index])) {
+      index += 1;
+      continue;
+    }
+
+    const start = index;
+    while (index <= lastVoicedIndex && !isFiniteNumber(output[index])) {
+      index += 1;
+    }
+
+    const end = index;
+    const previous = output[start - 1];
+    const next = output[end];
+
+    if (isFiniteNumber(previous) && isFiniteNumber(next)) {
+      const gapLength = end - start;
+
+      for (let gapIndex = start; gapIndex < end; gapIndex += 1) {
+        const progress = (gapIndex - start + 1) / (gapLength + 1);
+        output[gapIndex] = roundNumber(
+          previous + (next - previous) * progress,
+          1
+        );
+      }
+    }
+  }
+
+  return output.map((value) => (isFiniteNumber(value) ? value : 0));
+}
+
 function smoothContiguousSegments(
   values: readonly (number | null)[],
   radius: number
@@ -525,6 +588,24 @@ function smoothContiguousSegments(
   }
 
   return output;
+}
+
+function smoothContinuousValues(values: readonly number[], radius: number) {
+  return values.map((_, index) => {
+    let total = 0;
+    let count = 0;
+
+    for (
+      let candidateIndex = Math.max(0, index - radius);
+      candidateIndex <= Math.min(values.length - 1, index + radius);
+      candidateIndex += 1
+    ) {
+      total += values[candidateIndex]!;
+      count += 1;
+    }
+
+    return roundNumber(total / count, 1);
+  });
 }
 
 function buildHzDomain(values: readonly (number | null)[]) {
@@ -683,17 +764,6 @@ function renderDisplayVariantReportHtml(input: {
       stroke-width: 2.4;
       stroke-dasharray: 8 6;
     }
-    .drop-marker {
-      stroke: #ff6868;
-      stroke-linecap: round;
-      stroke-width: 2.6;
-    }
-    .drop-label {
-      fill: #ff8a8a;
-      font-size: 11px;
-      font-weight: 800;
-      text-anchor: middle;
-    }
     .legend {
       display: flex;
       flex-wrap: wrap;
@@ -712,12 +782,11 @@ function renderDisplayVariantReportHtml(input: {
     }
     .pitch-swatch { background: #d19848; }
     .overlay-swatch { background: #7dc45a; }
-    .drop-swatch { background: #ff6868; }
   </style>
 </head>
 <body>
   <h1>SwiftF0 Display Variant Benchmark</h1>
-  <p class="lead">Confronto didattico su ${input.pairs.length} pair (${targetCount} audio): base SwiftF0 voiced-gated smoothed, display 1-5, display + overlay teorico, display + overlay + marker del drop.</p>
+  <p class="lead">Confronto didattico su ${input.pairs.length} pair (${targetCount} audio): base SwiftF0 voiced-gated smoothed, display 1-5, display + overlay teorico, display continuo interpolato.</p>
   <p class="lead">Copertura pitch selezionata: ${escapeHtml(coverage)}. Generato: ${escapeHtml(input.generatedAt)}.</p>
   ${input.pairs.map(renderDisplayVariantPairHtml).join("\n")}
 </body>
@@ -793,17 +862,8 @@ function renderDisplayVariantSvg(
     valueToY
   });
   const overlayPath =
-    column.kind === "overlay" || column.kind === "markers"
+    column.kind === "overlay"
       ? renderExpectedOverlayPath({
-          bounds,
-          moraCount: target.option.moraCount,
-          pitchAccent: target.option.pitchAccent,
-          progressToX
-        })
-      : "";
-  const dropMarker =
-    column.kind === "markers"
-      ? renderDropMarker({
           bounds,
           moraCount: target.option.moraCount,
           pitchAccent: target.option.pitchAccent,
@@ -833,20 +893,16 @@ function renderDisplayVariantSvg(
     .join("\n")}
   ${pitchPaths.map((path) => `<path class="pitch" d="${path}" />`).join("\n")}
   ${overlayPath}
-  ${dropMarker}
 </svg>`;
 }
 
 function renderDisplayVariantLegend(column: DisplayVariantColumn) {
   const items = [`<span><span class="swatch pitch-swatch"></span>F0</span>`];
 
-  if (column.kind === "overlay" || column.kind === "markers") {
+  if (column.kind === "overlay") {
     items.push(
       `<span><span class="swatch overlay-swatch"></span>expected</span>`
     );
-  }
-  if (column.kind === "markers") {
-    items.push(`<span><span class="swatch drop-swatch"></span>drop</span>`);
   }
 
   return `<div class="legend">${items.join("\n")}</div>`;
@@ -905,25 +961,6 @@ function renderExpectedOverlayPath(input: {
   });
 
   return `<path class="overlay" d="${path}" />`;
-}
-
-function renderDropMarker(input: {
-  readonly bounds: { readonly bottom: number; readonly top: number };
-  readonly moraCount: number;
-  readonly pitchAccent: number;
-  readonly progressToX: (progress: number) => number;
-}) {
-  if (input.pitchAccent <= 0 || input.pitchAccent > input.moraCount) {
-    return "";
-  }
-
-  const x = roundNumber(
-    input.progressToX(input.pitchAccent / input.moraCount),
-    2
-  );
-
-  return `<line class="drop-marker" x1="${x}" x2="${x}" y1="${input.bounds.top}" y2="${input.bounds.bottom}" />
-  <text class="drop-label" x="${x}" y="${input.bounds.top + 12}">drop</text>`;
 }
 
 function seriesToSvgPaths(input: {

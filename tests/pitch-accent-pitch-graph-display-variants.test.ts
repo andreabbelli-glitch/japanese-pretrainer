@@ -19,6 +19,13 @@ describe("pitch accent display variant benchmark", () => {
     expect(display.medianHz).toBeGreaterThan(0);
     expect(display.values[2]).not.toBeNull();
     expect(display.values.slice(4, 9)).toEqual([null, null, null, null, null]);
+    expect(display.continuousValues).toHaveLength(display.values.length);
+    expect(
+      display.continuousValues.every((value) => Number.isFinite(value))
+    ).toBe(true);
+    expect(display.continuousValues.slice(4, 9).every(Number.isFinite)).toBe(
+      true
+    );
     expect(
       display.values.some((value) => typeof value === "number" && value < 0)
     ).toBe(true);
