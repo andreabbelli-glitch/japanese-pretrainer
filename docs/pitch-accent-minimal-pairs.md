@@ -21,7 +21,7 @@ queue, `review_subject_state`, Kanji Clash o `content/media`.
 Il corpus v1 deriva da `Kuuuube/minimal-pairs`, pin:
 `774a17422a6baadce5877c10069a1d40648e20a9`.
 
-Il vendor output vive in:
+Il vendor output principale vive in:
 
 ```text
 public/vendor/minimal-pairs/
@@ -35,6 +35,28 @@ La licenza upstream e GPL-3.0-only. La UI/runtime dell'app non importa codice
 JS/CSS upstream: usa solo manifest normalizzato, metadata e audio decodificato.
 Gli asset audio reali del corpus sono AAC anche quando l'upstream li dichiara
 come data URL OGG; l'importer sniffa i magic bytes e salva estensioni/MIME reali.
+
+Un secondo corpus statico opzionale puo vivere in:
+
+```text
+public/vendor/tofugu-pitch-minimal-pairs/
+  manifest.json
+  NOTICE.md
+  audit.json
+  audio/<pairId>/<variant>.mp3
+```
+
+Questo corpus e generato una tantum da:
+
+- tutti gli MP3 locali Tofugu/WaniKani, indicizzati come `surface + reading`;
+- un export Jaydar/JMDict completo per tutte le reading Tofugu candidate;
+- Kanjium come fonte persistita del pitch accent;
+- il manifest Kuuuube, usato per escludere contrasti gia coperti come
+  `normalizedKana + unorderedPitchContrast`.
+
+Jaydar non e una dipendenza runtime dell'app. Il runtime legge solo i manifest
+statici gia generati. Se il corpus Tofugu non esiste, `/pitch-accent` usa solo
+il corpus Kuuuube.
 
 ## Workflow operativo
 
@@ -50,11 +72,45 @@ Validazione vendor:
 ./scripts/with-node.sh pnpm pitch-accent:validate-corpus
 ```
 
+Generazione del corpus statico Tofugu/Jaydar:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:generate-tofugu-pairs -- --jaydar-export tmp/jaydar-tofugu-homophones.jsonl
+```
+
+Validazione del corpus Tofugu/Jaydar:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:validate-tofugu-pairs -- --kuuuube-manifest public/vendor/minimal-pairs/manifest.json
+```
+
+L'export Jaydar e un prerequisito esplicito. Deve contenere una riga JSONL per
+ogni reading Tofugu candidata, con questa forma:
+
+```json
+{"reading":"はし","homophones":[{"surface":"橋","reading":"はし","jaydarPitchAccents":[2],"isCommon":true}]}
+```
+
+`jaydarPitchAccents` e opzionale per membership omofona, ma se presente e non
+include il pitch singleton Kanjium, la parola viene esclusa e riportata in
+`audit.json` come `jaydar_kanjium_pitch_mismatch`. Se l'export non copre una
+reading Tofugu candidata, la generazione fallisce: il corpus deve essere
+prodotto con un controllo batch completo, non campionato.
+
+In questa macchina `cargo`/`rustc` possono non essere installati. In quel caso
+genera l'export Jaydar in un ambiente Rust esterno, oppure installa il toolchain
+Rust prima di creare `tmp/jaydar-tofugu-homophones.jsonl`.
+
 L'importer cancella e rigenera solo la directory vendor standard
 `public/vendor/minimal-pairs`. Un output path custom richiede il flag esplicito
 `--allow-non-vendor-out-dir` ed e accettato solo se non esiste, e vuoto, oppure
 contiene il marker `.minimal-pairs-vendor-generated`; path pericolosi come la
 root del repo restano sempre bloccati.
+
+Il generator Tofugu rigenera solo `public/vendor/tofugu-pitch-minimal-pairs`.
+Un output path custom richiede `--allow-non-vendor-out-dir` ed e accettato solo
+se non esiste, e vuoto, oppure contiene il marker
+`.tofugu-pitch-minimal-pairs-generated`.
 
 ## Persistenza
 

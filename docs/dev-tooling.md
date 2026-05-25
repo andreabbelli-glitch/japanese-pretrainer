@@ -111,8 +111,9 @@ Action repo-shared consigliate nell'app Codex:
 ```
 
 `./scripts/with-node.sh pnpm release:check` prepara un DB SQLite locale dedicato
-in `.tmp/release-check/` e forza build/E2E su quel database. Questo evita che un
-`.env.local` puntato a Turso consumi quota remota durante i gate locali.
+in `.tmp/release-check/`, valida i corpus Pitch Accent vendorizzati e forza
+build/E2E su quel database. Questo evita che un `.env.local` puntato a Turso
+consumi quota remota durante i gate locali.
 
 Workflow immagini:
 
@@ -331,16 +332,18 @@ Quando aggiungi o cambi tabelle `katakana_*`, genera sempre la migrazione con:
 
 ## Pitch Accent Minimal Pairs
 
-Pitch Accent usa il corpus GPL-3.0 di `Kuuuube/minimal-pairs` come vendor
-statico sotto `public/vendor/minimal-pairs` e persiste solo sessioni runtime
-nelle tabelle `pitch_accent_*`. Non usa FSRS, non modifica `/review` e non
-scrive in `content/`.
+Pitch Accent usa corpus statici vendorizzati sotto `public/vendor/`: il corpus
+base GPL-3.0 di `Kuuuube/minimal-pairs` e il corpus aggiuntivo Tofugu/Jaydar
+generato offline. A runtime persiste solo sessioni nelle tabelle
+`pitch_accent_*`. Non usa FSRS, non modifica `/review` e non scrive in
+`content/`.
 
 Import o refresh del vendor corpus:
 
 ```sh
 ./scripts/with-node.sh pnpm pitch-accent:import-minimal-pairs
 ./scripts/with-node.sh pnpm pitch-accent:validate-corpus
+./scripts/with-node.sh pnpm pitch-accent:validate-tofugu-pairs
 ```
 
 Per test mirati:

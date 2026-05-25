@@ -226,4 +226,36 @@ describe("pitch accent minimal pairs corpus", () => {
       }).errors
     ).toContain("../escape has an unsafe pair id.");
   });
+
+  it("accepts all runtime vendor audio prefixes by default", () => {
+    const mixedVendorCorpus: PitchAccentMinimalPairsCorpus = {
+      ...fixtureCorpus,
+      pairs: [
+        fixtureCorpus.pairs[0]!,
+        {
+          ...fixtureCorpus.pairs[1]!,
+          id: "tofugu-pair",
+          options: fixtureCorpus.pairs[1]!.options.map((option, index) => ({
+            ...option,
+            audioSrc: `/vendor/tofugu-pitch-minimal-pairs/audio/tofugu-pair/${index}.mp3`,
+            id: `tofugu-pair:${index}`
+          }))
+        }
+      ]
+    };
+
+    expect(validatePitchAccentMinimalPairsCorpus(mixedVendorCorpus)).toEqual({
+      errors: [],
+      ok: true
+    });
+    expect(
+      validatePitchAccentMinimalPairsCorpus(mixedVendorCorpus, {
+        allowedAudioSrcPrefixes: ["/vendor/minimal-pairs/audio/"]
+      }).errors
+    ).toEqual(
+      expect.arrayContaining([
+        "tofugu-pair:0 audioSrc must point to the vendor audio path."
+      ])
+    );
+  });
 });

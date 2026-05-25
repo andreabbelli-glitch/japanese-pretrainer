@@ -233,7 +233,8 @@ Il comando `release:check` copre l'intero set di controlli locali:
 - preparazione di un DB SQLite locale dedicato in `.tmp/release-check/`
 - build di produzione
 - validazione contenuti su tutti i bundle reali presenti in `content/media`
-- validazione completa del corpus vendorizzato Pitch Accent Minimal Pairs
+- validazione completa dei corpus vendorizzati Pitch Accent, inclusi Kuuuube e
+  Tofugu/Jaydar quando presenti
 - E2E su browser Playwright di default
 
 Anche se `.env.local` punta a un database Turso remoto, `release:check` forza
@@ -276,6 +277,10 @@ pnpm pronunciations:forvo
 pnpm pronunciations:forvo:request
 pnpm pronunciations:forvo:import-requested
 pnpm pitch-accents:fetch
+pnpm pitch-accent:import-minimal-pairs
+pnpm pitch-accent:generate-tofugu-pairs
+pnpm pitch-accent:validate-corpus
+pnpm pitch-accent:validate-tofugu-pairs
 pnpm image:status
 pnpm image:apply
 pnpm kanji-clash:generate-similar-kanji
@@ -336,6 +341,25 @@ fetch mirato sulle entry appena toccate:
 
 La procedura dettagliata e in
 [`docs/pitch-accent-workflow.md`](./docs/pitch-accent-workflow.md).
+
+Il training `/pitch-accent` usa corpus statici sotto `public/vendor/`. Il
+corpus base Kuuuube si aggiorna con:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:import-minimal-pairs
+./scripts/with-node.sh pnpm pitch-accent:validate-corpus
+```
+
+Il corpus aggiuntivo Tofugu/Jaydar richiede prima un export Jaydar completo
+degli omofoni per tutte le reading Tofugu candidate:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:generate-tofugu-pairs -- --jaydar-export tmp/jaydar-tofugu-homophones.jsonl
+./scripts/with-node.sh pnpm pitch-accent:validate-tofugu-pairs -- --kuuuube-manifest public/vendor/minimal-pairs/manifest.json
+```
+
+La procedura e i vincoli dell'export Jaydar sono documentati in
+[`docs/pitch-accent-minimal-pairs.md`](./docs/pitch-accent-minimal-pairs.md).
 
 ## Database locale
 

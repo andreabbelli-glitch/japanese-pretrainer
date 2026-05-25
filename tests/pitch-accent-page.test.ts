@@ -74,7 +74,8 @@ describe("pitch accent pages", () => {
     expect(markup).toContain("Pitch Accent");
     expect(markup).toContain("1.882");
     expect(markup).toContain("Avvia sessione");
-    expect(markup).toContain("GPL-3.0");
+    expect(markup).toContain("Corpus statici");
+    expect(markup).toContain("licenze nei NOTICE locali");
   });
 
   it("renders the session workspace with audio and accent choices", () => {

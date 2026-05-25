@@ -20,6 +20,11 @@ export const defaultPitchAccentFilters: PitchAccentPatternFilter = {
   strictPairFinding: false
 };
 
+export const runtimePitchAccentAudioSrcPrefixes = [
+  "/vendor/minimal-pairs/audio/",
+  "/vendor/tofugu-pitch-minimal-pairs/audio/"
+] as const;
+
 export function getPitchAccentPatternKey(
   input: Pick<PitchAccentPairOption, "moraCount" | "pitchAccent">
 ): PitchAccentPatternKey {
@@ -85,10 +90,15 @@ export function filterPitchAccentMinimalPairs(
 }
 
 export function validatePitchAccentMinimalPairsCorpus(
-  corpus: PitchAccentMinimalPairsCorpus
+  corpus: PitchAccentMinimalPairsCorpus,
+  options: {
+    readonly allowedAudioSrcPrefixes?: readonly string[];
+  } = {}
 ): { readonly errors: readonly string[]; readonly ok: boolean } {
   const errors: string[] = [];
   const pairIds = new Set<string>();
+  const allowedAudioSrcPrefixes =
+    options.allowedAudioSrcPrefixes ?? runtimePitchAccentAudioSrcPrefixes;
 
   if (corpus.version !== 1) {
     errors.push("Corpus version must be 1.");
@@ -124,7 +134,11 @@ export function validatePitchAccentMinimalPairsCorpus(
       }
       optionIds.add(option.id);
 
-      if (!option.audioSrc.startsWith("/vendor/minimal-pairs/audio/")) {
+      if (
+        !allowedAudioSrcPrefixes.some((prefix) =>
+          option.audioSrc.startsWith(prefix)
+        )
+      ) {
         errors.push(
           `${option.id} audioSrc must point to the vendor audio path.`
         );

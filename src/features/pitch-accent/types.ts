@@ -13,15 +13,23 @@ export type PitchAccentPatternFilter = {
 
 export type PitchAccentPairOption = {
   readonly accentedMora: number;
+  readonly audioAttribution?: string;
+  readonly audioLicense?: string;
   readonly audioMime?: string;
+  readonly audioPageUrl?: string;
   readonly audioSha256?: string;
   readonly audioSrc: string;
   readonly byteLength?: number;
+  readonly homophoneSource?: string;
   readonly id: string;
   readonly moraCount: number;
   readonly pitchAccent: number;
+  readonly pitchAccentSource?: string;
   readonly rawPronunciation: string;
+  readonly reading?: string;
   readonly silencedMoras: readonly number[];
+  readonly sourceCorpus?: string;
+  readonly surface?: string;
 };
 
 export type PitchAccentMinimalPair = {

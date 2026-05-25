@@ -96,9 +96,10 @@ non sostituisce un audit completo e aggiornato del codice.
   giornalieri della review standard.
 - Una sessione `Pitch Accent` non deve cambiare queue, log o contatori
   giornalieri della review standard, e non deve scrivere in `content/media`.
-- Il vendor corpus `public/vendor/minimal-pairs` deve restare validabile con
-  `./scripts/with-node.sh pnpm pitch-accent:validate-corpus`; manifest,
-  `NOTICE.md`, licenza GPL-3.0 e audio statici devono essere coerenti.
+- I vendor corpus Pitch Accent devono restare validabili con
+  `./scripts/with-node.sh pnpm pitch-accent:validate-corpus` e
+  `./scripts/with-node.sh pnpm pitch-accent:validate-tofugu-pairs`; manifest,
+  `NOTICE.md`, audit/licenze e audio statici devono essere coerenti.
 - Con un contrasto selezionato in Review, grading e inserimento in `Kanji
   Clash` devono essere transazionali: se l'upsert fallisce, la Review non deve
   avanzare silenziosamente.
@@ -180,6 +181,7 @@ Il gate canonico copre nell'ordine:
 - `pnpm build`;
 - `pnpm content:validate`;
 - `pnpm pitch-accent:validate-corpus`;
+- `pnpm pitch-accent:validate-tofugu-pairs`;
 - runner E2E Playwright sul setup locale dedicato.
 
 Il DB locale del release gate viene passato esplicitamente come `DATABASE_URL` e

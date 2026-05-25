@@ -52,6 +52,9 @@ run_step "Validazione contenuti su tutti i bundle reali" \
 run_step "Validazione corpus Pitch Accent Minimal Pairs" \
   ./scripts/with-node.sh pnpm pitch-accent:validate-corpus
 
+run_step "Validazione corpus Pitch Accent Tofugu" \
+  ./scripts/with-node.sh pnpm pitch-accent:validate-tofugu-pairs
+
 run_step "Test end-to-end" \
   run_with_release_database ./scripts/with-node.sh pnpm test:e2e:runner
 

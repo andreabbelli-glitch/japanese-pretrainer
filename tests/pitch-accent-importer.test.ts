@@ -12,7 +12,8 @@ import { describe, expect, it } from "vitest";
 
 import {
   importMinimalPairsCorpus,
-  validateGeneratedMinimalPairsCorpus
+  validateGeneratedMinimalPairsCorpus,
+  validateGeneratedTofuguPitchMinimalPairsCorpus
 } from "@/features/pitch-accent/tooling";
 
 describe("pitch accent minimal pairs importer", () => {
@@ -167,6 +168,142 @@ describe("pitch accent minimal pairs importer", () => {
       await rm(tempDir, { recursive: true, force: true });
     }
   });
+
+  it("rejects Tofugu pitch corpora that are not binary or duplicate Kuuuube coverage", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-tofugu-validator-"));
+    const outDir = path.join(tempDir, "tofugu");
+    const kuuuubeManifestPath = path.join(tempDir, "kuuuube-manifest.json");
+    const audioBytes = buildAacFixtureBytes();
+
+    try {
+      await mkdir(path.join(outDir, "audio", "tofugu_bad"), {
+        recursive: true
+      });
+      await writeFile(path.join(outDir, "NOTICE.md"), "Fixture notice.\n");
+      await writeFile(path.join(outDir, "audit.json"), "{}\n");
+      await writeFile(
+        path.join(outDir, "audio", "tofugu_bad", "0.aac"),
+        audioBytes
+      );
+      await writeFile(
+        path.join(outDir, "audio", "tofugu_bad", "1.aac"),
+        audioBytes
+      );
+      await writeFile(
+        path.join(outDir, "audio", "tofugu_bad", "2.aac"),
+        audioBytes
+      );
+      await writeFile(
+        path.join(outDir, "manifest.json"),
+        `${JSON.stringify(buildNonBinaryTofuguManifest(audioBytes), null, 2)}\n`
+      );
+      await writeFile(
+        kuuuubeManifestPath,
+        JSON.stringify(buildKuuuubeCoverageManifest())
+      );
+
+      const result = await validateGeneratedTofuguPitchMinimalPairsCorpus({
+        kuuuubeManifestPath,
+        outDir
+      });
+
+      expect(result.ok).toBe(false);
+      expect(result.errors).toEqual(
+        expect.arrayContaining(["tofugu_bad must contain exactly two options."])
+      );
+    } finally {
+      await rm(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it("normalizes katakana Kuuuube coverage when validating Tofugu duplicates", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-tofugu-validator-"));
+    const outDir = path.join(tempDir, "tofugu");
+    const kuuuubeManifestPath = path.join(tempDir, "kuuuube-manifest.json");
+    const audioBytes = buildAacFixtureBytes();
+
+    try {
+      await mkdir(path.join(outDir, "audio", "tofugu_duplicate"), {
+        recursive: true
+      });
+      await writeFile(path.join(outDir, "NOTICE.md"), "Fixture notice.\n");
+      await writeFile(path.join(outDir, "audit.json"), "{}\n");
+      await writeFile(
+        path.join(outDir, "audio", "tofugu_duplicate", "0.aac"),
+        audioBytes
+      );
+      await writeFile(
+        path.join(outDir, "audio", "tofugu_duplicate", "1.aac"),
+        audioBytes
+      );
+      await writeFile(
+        path.join(outDir, "manifest.json"),
+        `${JSON.stringify(buildBinaryTofuguManifest(audioBytes), null, 2)}\n`
+      );
+      await writeFile(
+        kuuuubeManifestPath,
+        JSON.stringify(buildKuuuubeCoverageManifest("ハシ"))
+      );
+
+      const result = await validateGeneratedTofuguPitchMinimalPairsCorpus({
+        kuuuubeManifestPath,
+        outDir
+      });
+
+      expect(result.ok).toBe(false);
+      expect(result.errors).toContain(
+        "tofugu_duplicate duplicates a Kuuuube pitch contrast."
+      );
+    } finally {
+      await rm(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects absolute local paths in the public Tofugu audit artifact", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-tofugu-validator-"));
+    const outDir = path.join(tempDir, "tofugu");
+    const kuuuubeManifestPath = path.join(tempDir, "kuuuube-manifest.json");
+    const audioBytes = buildAacFixtureBytes();
+
+    try {
+      await mkdir(path.join(outDir, "audio", "tofugu_duplicate"), {
+        recursive: true
+      });
+      await writeFile(path.join(outDir, "NOTICE.md"), "Fixture notice.\n");
+      await writeFile(
+        path.join(outDir, "audit.json"),
+        `${JSON.stringify(buildAbsolutePathAudit(), null, 2)}\n`
+      );
+      await writeFile(
+        path.join(outDir, "audio", "tofugu_duplicate", "0.aac"),
+        audioBytes
+      );
+      await writeFile(
+        path.join(outDir, "audio", "tofugu_duplicate", "1.aac"),
+        audioBytes
+      );
+      await writeFile(
+        path.join(outDir, "manifest.json"),
+        `${JSON.stringify(buildBinaryTofuguManifest(audioBytes), null, 2)}\n`
+      );
+      await writeFile(
+        kuuuubeManifestPath,
+        JSON.stringify(buildKuuuubeCoverageManifest("あめ"))
+      );
+
+      const result = await validateGeneratedTofuguPitchMinimalPairsCorpus({
+        kuuuubeManifestPath,
+        outDir
+      });
+
+      expect(result.ok).toBe(false);
+      expect(result.errors).toContain(
+        "audit.json source.jaydarSource must not be an absolute path."
+      );
+    } finally {
+      await rm(tempDir, { recursive: true, force: true });
+    }
+  });
 });
 
 function buildAacFixtureBytes() {
@@ -260,4 +397,167 @@ function buildUnsafePairManifest() {
     "/vendor/minimal-pairs/audio/../escape/1.aac";
 
   return manifest;
+}
+
+function buildNonBinaryTofuguManifest(audioBytes: Buffer) {
+  return {
+    pairs: [
+      {
+        hasDevoiced: false,
+        id: "tofugu_bad",
+        kana: "はし",
+        optionCount: 3,
+        options: [
+          {
+            accentedMora: 0,
+            audioMime: "audio/aac",
+            audioSrc:
+              "/vendor/tofugu-pitch-minimal-pairs/audio/tofugu_bad/0.aac",
+            byteLength: audioBytes.length,
+            id: "tofugu_bad:0",
+            moraCount: 2,
+            pitchAccent: 0,
+            rawPronunciation: "ハシ",
+            silencedMoras: []
+          },
+          {
+            accentedMora: 1,
+            audioMime: "audio/aac",
+            audioSrc:
+              "/vendor/tofugu-pitch-minimal-pairs/audio/tofugu_bad/1.aac",
+            byteLength: audioBytes.length,
+            id: "tofugu_bad:1",
+            moraCount: 2,
+            pitchAccent: 1,
+            rawPronunciation: "ハシ",
+            silencedMoras: []
+          },
+          {
+            accentedMora: 1,
+            audioMime: "audio/aac",
+            audioSrc:
+              "/vendor/tofugu-pitch-minimal-pairs/audio/tofugu_bad/2.aac",
+            byteLength: audioBytes.length,
+            id: "tofugu_bad:2",
+            moraCount: 2,
+            pitchAccent: 1,
+            rawPronunciation: "ハシ",
+            silencedMoras: []
+          }
+        ],
+        patternKeys: ["pitch0", "pitch1"]
+      }
+    ],
+    source: {
+      importedAt: "2026-05-25T00:00:00.000Z",
+      license: "CC-BY-SA-4.0",
+      repository: "fixture",
+      revision: "fixture"
+    },
+    version: 1
+  };
+}
+
+function buildBinaryTofuguManifest(audioBytes: Buffer) {
+  return {
+    pairs: [
+      {
+        hasDevoiced: false,
+        id: "tofugu_duplicate",
+        kana: "はし",
+        optionCount: 2,
+        options: [
+          {
+            accentedMora: 0,
+            audioMime: "audio/aac",
+            audioSrc:
+              "/vendor/tofugu-pitch-minimal-pairs/audio/tofugu_duplicate/0.aac",
+            byteLength: audioBytes.length,
+            id: "tofugu_duplicate:0",
+            moraCount: 2,
+            pitchAccent: 0,
+            rawPronunciation: "ハシ",
+            silencedMoras: []
+          },
+          {
+            accentedMora: 1,
+            audioMime: "audio/aac",
+            audioSrc:
+              "/vendor/tofugu-pitch-minimal-pairs/audio/tofugu_duplicate/1.aac",
+            byteLength: audioBytes.length,
+            id: "tofugu_duplicate:1",
+            moraCount: 2,
+            pitchAccent: 1,
+            rawPronunciation: "ハシ",
+            silencedMoras: []
+          }
+        ],
+        patternKeys: ["pitch0", "pitch1"]
+      }
+    ],
+    source: {
+      importedAt: "2026-05-25T00:00:00.000Z",
+      license: "CC-BY-SA-4.0",
+      repository: "fixture",
+      revision: "fixture"
+    },
+    version: 1
+  };
+}
+
+function buildKuuuubeCoverageManifest(kana = "はし") {
+  return {
+    pairs: [
+      {
+        hasDevoiced: false,
+        id: "kuuuube-hashi",
+        kana,
+        optionCount: 2,
+        options: [
+          {
+            accentedMora: 0,
+            audioSrc: "/vendor/minimal-pairs/audio/kuuuube-hashi/0.aac",
+            id: "kuuuube-hashi:0",
+            moraCount: 2,
+            pitchAccent: 0,
+            rawPronunciation: "ハシ",
+            silencedMoras: []
+          },
+          {
+            accentedMora: 1,
+            audioSrc: "/vendor/minimal-pairs/audio/kuuuube-hashi/1.aac",
+            id: "kuuuube-hashi:1",
+            moraCount: 2,
+            pitchAccent: 1,
+            rawPronunciation: "ハシ",
+            silencedMoras: []
+          }
+        ],
+        patternKeys: ["pitch0", "pitch1"]
+      }
+    ],
+    source: {
+      importedAt: "2026-05-25T00:00:00.000Z",
+      license: "GPL-3.0-only",
+      repository: "fixture",
+      revision: "fixture"
+    },
+    version: 1
+  };
+}
+
+function buildAbsolutePathAudit() {
+  return {
+    entries: [],
+    generatedAt: "2026-05-25T00:00:00.000Z",
+    source: {
+      jaydarRevision: "fixture",
+      jaydarSource: path.join(process.cwd(), "tmp", "jaydar.jsonl"),
+      kanjiumSource: "data/pitch-accents/kanjium-accents.txt",
+      kuuuubeManifestPath: "public/vendor/minimal-pairs/manifest.json",
+      tofuguDatasetPath: "data/tofugu-japanese-vocabulary-pronunciation-audio"
+    },
+    summary: {},
+    version: 1
+  };
 }

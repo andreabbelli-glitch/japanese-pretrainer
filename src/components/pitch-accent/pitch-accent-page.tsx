@@ -116,14 +116,14 @@ export function PitchAccentPage({ data }: PitchAccentPageProps) {
           <p className="pitch-accent-eyebrow">Corpus</p>
           <div className="stats-grid stats-grid--compact">
             <StatBlock
-              detail="Kuuuube/minimal-pairs"
+              detail="Corpus statici"
               label="Coppie"
               value={formatPitchAccentCount(data.corpusPairCount)}
             />
             <StatBlock detail="20 trial" label="Sessione" value="finita" />
           </div>
           <p className="pitch-accent-muted">
-            Corpus vendorizzato GPL-3.0 con attribution locale.
+            Corpus vendorizzati con attribution e licenze nei NOTICE locali.
           </p>
         </SurfaceCard>
       </section>

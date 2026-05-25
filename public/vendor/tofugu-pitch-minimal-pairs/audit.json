@@ -1,0 +1,3568 @@
+{
+  "entries": [
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "あおい",
+      "surfaces": ["葵", "青い"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "あさ",
+      "surfaces": ["朝", "麻"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "あたり",
+      "surfaces": ["当たり", "辺り"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "あつい",
+      "surfaces": ["厚い", "暑い"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "あつい",
+      "surfaces": ["厚い", "熱い"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "あめ",
+      "surfaces": ["飴", "雨"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "いか",
+      "surfaces": ["烏賊", "以下"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "いき",
+      "surfaces": ["粋", "息"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "いこう",
+      "surfaces": ["以降", "憩う"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "いし",
+      "surfaces": ["意志", "石"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "いし",
+      "surfaces": ["医師", "石"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "いしゃ",
+      "surfaces": ["医者", "慰謝"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "いじょう",
+      "surfaces": ["異常", "以上"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "いじょう",
+      "surfaces": ["異状", "以上"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "いじょう",
+      "surfaces": ["移譲", "以上"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "いぜん",
+      "surfaces": ["依然", "以前"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "いたい",
+      "surfaces": ["遺体", "痛い"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "いち",
+      "surfaces": ["位置", "一"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "いま",
+      "surfaces": ["今", "居間"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "うえる",
+      "surfaces": ["植える", "飢える"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "うれる",
+      "surfaces": ["売れる", "熟れる"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "えんぎ",
+      "surfaces": ["縁起", "演技"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "おう",
+      "surfaces": ["追う", "王"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "おく",
+      "surfaces": ["置く", "奥"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "おく",
+      "surfaces": ["置く", "億"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かう",
+      "surfaces": ["買う", "飼う"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かえる",
+      "surfaces": ["換える", "帰る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かえる",
+      "surfaces": ["換える", "返る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かえる",
+      "surfaces": ["替える", "帰る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かえる",
+      "surfaces": ["替える", "返る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かえる",
+      "surfaces": ["代える", "帰る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かえる",
+      "surfaces": ["代える", "返る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かえる",
+      "surfaces": ["変える", "帰る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かえる",
+      "surfaces": ["変える", "返る"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "かける",
+      "surfaces": ["欠ける", "掛ける"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "かける",
+      "surfaces": ["欠ける", "駆ける"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "かける",
+      "surfaces": ["欠ける", "懸ける"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "かける",
+      "surfaces": ["欠ける", "賭ける"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "かける",
+      "surfaces": ["欠ける", "翔る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かし",
+      "surfaces": ["貸し", "歌詞"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "かた",
+      "surfaces": ["肩", "潟"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "かた",
+      "surfaces": ["肩", "型"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "かた",
+      "surfaces": ["肩", "方"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "かち",
+      "surfaces": ["価値", "勝ち"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "かみ",
+      "surfaces": ["神", "紙"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "かみ",
+      "surfaces": ["神", "髪"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "からす",
+      "surfaces": ["枯らす", "烏"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かん",
+      "surfaces": ["勘", "冠"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かん",
+      "surfaces": ["勘", "缶"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かんき",
+      "surfaces": ["換気", "乾季"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かんき",
+      "surfaces": ["換気", "喚起"]
+    },
+    {
+      "contrast": "0-3",
+      "reason": "covered_by_kuuuube",
+      "reading": "かんじょう",
+      "surfaces": ["感情", "勘定"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "かんせい",
+      "surfaces": ["完成", "閑静"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "きげん",
+      "surfaces": ["機嫌", "期限"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "きゅう",
+      "surfaces": ["急", "九"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "きゅうしゅう",
+      "surfaces": ["吸収", "九州"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "きゅうりょう",
+      "surfaces": ["丘陵", "給料"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "きる",
+      "surfaces": ["着る", "斬る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "きる",
+      "surfaces": ["着る", "切る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "けいじ",
+      "surfaces": ["啓示", "刑事"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "けいじ",
+      "surfaces": ["啓示", "慶事"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "けいじ",
+      "surfaces": ["掲示", "刑事"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "けいじ",
+      "surfaces": ["掲示", "慶事"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "こうかい",
+      "surfaces": ["公開", "後悔"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "こうがい",
+      "surfaces": ["公害", "郊外"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "こうこう",
+      "surfaces": ["高校", "孝行"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "こうし",
+      "surfaces": ["子牛", "講師"]
+    },
+    {
+      "contrast": "0-3",
+      "reason": "covered_by_kuuuube",
+      "reading": "こうじょう",
+      "surfaces": ["恒常", "工場"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "こと",
+      "surfaces": ["琴", "事"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "さばく",
+      "surfaces": ["砂漠", "裁く"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "じこう",
+      "surfaces": ["時候", "事項"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "じどう",
+      "surfaces": ["自動", "児童"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "しめる",
+      "surfaces": ["湿る", "占める"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "しめる",
+      "surfaces": ["湿る", "締める"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "しめる",
+      "surfaces": ["湿る", "閉める"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "しょうか",
+      "surfaces": ["消化", "唱歌"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "しょうがい",
+      "surfaces": ["障害", "生涯"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "しょうにん",
+      "surfaces": ["承認", "商人"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "しょうにん",
+      "surfaces": ["証人", "商人"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "じょし",
+      "surfaces": ["助詞", "女子"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "しる",
+      "surfaces": ["知る", "汁"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "じんせい",
+      "surfaces": ["人性", "人生"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "しんとう",
+      "surfaces": ["浸透", "神道"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "すいしょう",
+      "surfaces": ["推奨", "水晶"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "すみ",
+      "surfaces": ["隅", "炭"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "すみ",
+      "surfaces": ["隅", "墨"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "せんしゃ",
+      "surfaces": ["洗車", "戦車"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "せんとう",
+      "surfaces": ["戦闘", "銭湯"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "たいしょう",
+      "surfaces": ["対称", "大将"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "たいしょう",
+      "surfaces": ["対象", "大将"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "ちかい",
+      "surfaces": ["誓い", "近い"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "ちたい",
+      "surfaces": ["遅滞", "地帯"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "つける",
+      "surfaces": ["漬ける", "着ける"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "つける",
+      "surfaces": ["漬ける", "点ける"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "つける",
+      "surfaces": ["漬ける", "付ける"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "てん",
+      "surfaces": ["点", "天"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "でんき",
+      "surfaces": ["伝記", "電気"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "とうし",
+      "surfaces": ["凍死", "闘志"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "とく",
+      "surfaces": ["得", "解く"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "とし",
+      "surfaces": ["都市", "年"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "なる",
+      "surfaces": ["鳴る", "成る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "はく",
+      "surfaces": ["履く", "掃く"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "はく",
+      "surfaces": ["履く", "吐く"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "はく",
+      "surfaces": ["履く", "伯"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "はし",
+      "surfaces": ["端", "箸"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "はる",
+      "surfaces": ["張る", "春"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "はる",
+      "surfaces": ["貼る", "春"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "ばん",
+      "surfaces": ["晩", "盤"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "ひろう",
+      "surfaces": ["拾う", "披露"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "ひろう",
+      "surfaces": ["疲労", "披露"]
+    },
+    {
+      "contrast": "0-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "ふかい",
+      "surfaces": ["不快", "深い"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "ふる",
+      "surfaces": ["振る", "降る"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "へい",
+      "surfaces": ["塀", "兵"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "へいき",
+      "surfaces": ["平気", "兵器"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "へん",
+      "surfaces": ["辺", "変"]
+    },
+    {
+      "contrast": "1-3",
+      "reason": "covered_by_kuuuube",
+      "reading": "へんじ",
+      "surfaces": ["変事", "返事"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "ぼう",
+      "surfaces": ["棒", "某"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "ほうこう",
+      "surfaces": ["方向", "奉公"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "ほうこう",
+      "surfaces": ["芳香", "奉公"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "めす",
+      "surfaces": ["召す", "雌"]
+    },
+    {
+      "contrast": "1-2",
+      "reason": "covered_by_kuuuube",
+      "reading": "やく",
+      "surfaces": ["約", "役"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "ようい",
+      "surfaces": ["容易", "用意"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "ようし",
+      "surfaces": ["養子", "要旨"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "ようじ",
+      "surfaces": ["用事", "幼児"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "よる",
+      "surfaces": ["寄る", "夜"]
+    },
+    {
+      "contrast": "0-1",
+      "reason": "covered_by_kuuuube",
+      "reading": "よる",
+      "surfaces": ["拠る", "夜"]
+    },
+    {
+      "detail": "jaydar=1 kanjium=0",
+      "reason": "jaydar_kanjium_pitch_mismatch",
+      "reading": "かい",
+      "surface": "甲斐"
+    },
+    {
+      "detail": "jaydar=1 kanjium=0",
+      "reason": "jaydar_kanjium_pitch_mismatch",
+      "reading": "かんこく",
+      "surface": "韓国"
+    },
+    {
+      "detail": "jaydar=1 kanjium=0",
+      "reason": "jaydar_kanjium_pitch_mismatch",
+      "reading": "しば",
+      "surface": "芝"
+    },
+    {
+      "detail": "jaydar=1 kanjium=0",
+      "reason": "jaydar_kanjium_pitch_mismatch",
+      "reading": "ちんたい",
+      "surface": "賃貸"
+    },
+    {
+      "detail": "jaydar=1 kanjium=0",
+      "reason": "jaydar_kanjium_pitch_mismatch",
+      "reading": "ひ",
+      "surface": "日"
+    },
+    {
+      "reason": "missing_kanjium_pitch",
+      "reading": "きき",
+      "surface": "嬉々"
+    },
+    {
+      "reason": "missing_kanjium_pitch",
+      "reading": "はじめに",
+      "surface": "始めに"
+    },
+    {
+      "reason": "missing_kanjium_pitch",
+      "reading": "はじめに",
+      "surface": "初めに"
+    },
+    {
+      "reason": "missing_kanjium_pitch",
+      "reading": "ふじさん",
+      "surface": "富士山"
+    },
+    {
+      "reason": "missing_kanjium_pitch",
+      "reading": "ほ",
+      "surface": "舗"
+    },
+    {
+      "reason": "missing_kanjium_pitch",
+      "reading": "みる",
+      "surface": "観る"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "あらい",
+      "surface": "荒い"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "いがい",
+      "surface": "意外"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "いっかい",
+      "surface": "一回"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "いっかん",
+      "surface": "一貫"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "うえ",
+      "surface": "上"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "おかす",
+      "surface": "侵す"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "おかす",
+      "surface": "犯す"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "かく",
+      "surface": "核"
+    },
+    {
+      "detail": "0,1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "かく",
+      "surface": "角"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "かたい",
+      "surface": "堅い"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "かたい",
+      "surface": "固い"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "かたい",
+      "surface": "硬い"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "かんせん",
+      "surface": "艦船"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "きかい",
+      "surface": "機会"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "きき",
+      "surface": "危機"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "きし",
+      "surface": "棋士"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "きし",
+      "surface": "騎士"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "きせき",
+      "surface": "奇跡"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "きふ",
+      "surface": "棋譜"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "きょうじゅ",
+      "surface": "教授"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "きょく",
+      "surface": "曲"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "げんぽう",
+      "surface": "減法"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ご",
+      "surface": "碁"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "こうじ",
+      "surface": "公示"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "こうしゃ",
+      "surface": "降車"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "こうち",
+      "surface": "拘置"
+    },
+    {
+      "detail": "0,1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "さき",
+      "surface": "崎"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "さく",
+      "surface": "策"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "じあい",
+      "surface": "慈愛"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "じあい",
+      "surface": "自愛"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "しき",
+      "surface": "四季"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "しき",
+      "surface": "指揮"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "しき",
+      "surface": "式"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "しずめる",
+      "surface": "鎮める"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "しつ",
+      "surface": "質"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "しゃめん",
+      "surface": "斜面"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "じょう",
+      "surface": "錠"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "しんずい",
+      "surface": "真髄"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "しんずい",
+      "surface": "神髄"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "す",
+      "surface": "巣"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "せ",
+      "surface": "瀬"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "せ",
+      "surface": "背"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ぜんかい",
+      "surface": "前回"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "そう",
+      "surface": "沿う"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "たいき",
+      "surface": "待機"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "たく",
+      "surface": "卓"
+    },
+    {
+      "detail": "3,4",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "たくわえる",
+      "surface": "蓄える"
+    },
+    {
+      "detail": "3,4",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "たくわえる",
+      "surface": "貯える"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "たんとう",
+      "surface": "短刀"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ちか",
+      "surface": "地下"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ちか",
+      "surface": "地価"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ちかく",
+      "surface": "近く"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ちゅうおう",
+      "surface": "中央"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "つく",
+      "surface": "就く"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "つく",
+      "surface": "着く"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "つく",
+      "surface": "突く"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "つく",
+      "surface": "付く"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "つつみ",
+      "surface": "堤"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "つる",
+      "surface": "弦"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "とうし",
+      "surface": "投資"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "なきごえ",
+      "surface": "泣き声"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "なきごえ",
+      "surface": "鳴き声"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "なし",
+      "surface": "梨"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "のぞむ",
+      "surface": "望む"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "はいき",
+      "surface": "廃棄"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ひかく",
+      "surface": "皮革"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ふきだす",
+      "surface": "吹き出す"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ふきだす",
+      "surface": "噴き出す"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ふきん",
+      "surface": "付近"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ふく",
+      "surface": "吹く"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ふくし",
+      "surface": "福祉"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ふじ",
+      "surface": "不治"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ほうし",
+      "surface": "奉仕"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "ます",
+      "surface": "升"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "まるい",
+      "surface": "円い"
+    },
+    {
+      "detail": "0,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "まるい",
+      "surface": "丸い"
+    },
+    {
+      "detail": "2,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "みかた",
+      "surface": "見方"
+    },
+    {
+      "detail": "1,2",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "むね",
+      "surface": "旨"
+    },
+    {
+      "detail": "0,1",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "も",
+      "surface": "喪"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "やさしい",
+      "surface": "易しい"
+    },
+    {
+      "detail": "0,3",
+      "reason": "multiple_kanjium_pitches",
+      "reading": "やさしい",
+      "surface": "優しい"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "い",
+      "surface": "〜位"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "えん",
+      "surface": "〜円"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "おてあらい",
+      "surface": "御手洗"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "かい",
+      "surface": "〜回"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "かい",
+      "surface": "〜階"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "かく",
+      "surface": "各〜"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "かた",
+      "surface": "片〜"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "かり",
+      "surface": "〜狩り"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "かん",
+      "surface": "〜貫"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "かん",
+      "surface": "〜間"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "きん",
+      "surface": "〜斤"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "けい",
+      "surface": "〜形"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "けい",
+      "surface": "〜系"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "けん",
+      "surface": "〜券"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "けん",
+      "surface": "〜県"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "けん",
+      "surface": "〜軒"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "こん",
+      "surface": "〜魂"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "さい",
+      "surface": "〜才"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "さい",
+      "surface": "〜歳"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "さつ",
+      "surface": "〜冊"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "さつ",
+      "surface": "〜札"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "し",
+      "surface": "〜氏"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "じ",
+      "surface": "〜時"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "しつ",
+      "surface": "〜室"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "じょう",
+      "surface": "〜畳"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "せき",
+      "surface": "〜隻"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "せんたくする",
+      "surface": "洗濯する"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "せんたくする",
+      "surface": "選択する"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "そう",
+      "surface": "〜層"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "ちょう",
+      "surface": "超〜"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "つき",
+      "surface": "〜付き"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "てき",
+      "surface": "〜的"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "どう",
+      "surface": "〜道"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "なべ",
+      "surface": "〜鍋"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "なべ",
+      "surface": "鍋"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "はく",
+      "surface": "〜拍"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "ひなんする",
+      "surface": "避難する"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "ひなんする",
+      "surface": "非難する"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "びょう",
+      "surface": "〜病"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "ふさ",
+      "surface": "〜房"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "ふじさん",
+      "surface": "ふじ山"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "まい",
+      "surface": "〜枚"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "や",
+      "surface": "〜屋"
+    },
+    {
+      "reason": "not_confirmed_by_jaydar",
+      "reading": "わ",
+      "surface": "〜把"
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あい",
+      "surfaces": ["愛", "藍"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あいず",
+      "surfaces": ["合図", "相図"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あう",
+      "surfaces": ["会う", "合う"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あう",
+      "surfaces": ["会う", "遭う"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あう",
+      "surfaces": ["合う", "遭う"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あおぐ",
+      "surfaces": ["仰ぐ", "扇ぐ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あがる",
+      "surfaces": ["挙がる", "上がる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あげる",
+      "surfaces": ["挙げる", "上げる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あげる",
+      "surfaces": ["挙げる", "揚げる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あげる",
+      "surfaces": ["上げる", "揚げる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あさごはん",
+      "surfaces": ["朝ごはん", "朝ご飯"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あし",
+      "surfaces": ["脚", "足"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あたたかい",
+      "surfaces": ["温かい", "暖かい"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あつい",
+      "surfaces": ["暑い", "熱い"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "あらわす",
+      "surfaces": ["現す", "表す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "いご",
+      "surfaces": ["以後", "囲碁"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "いし",
+      "surfaces": ["意志", "医師"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "いじょう",
+      "surfaces": ["異常", "異状"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "いじょう",
+      "surfaces": ["異常", "移譲"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "いじょう",
+      "surfaces": ["異状", "移譲"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "いだい",
+      "surfaces": ["偉大", "医大"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "いたむ",
+      "surfaces": ["傷む", "痛む"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "いちだい",
+      "surfaces": ["一代", "一台"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "いちょう",
+      "surfaces": ["胃腸", "銀杏"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "いど",
+      "surfaces": ["緯度", "井戸"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "いる",
+      "surfaces": ["居る", "要る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うける",
+      "surfaces": ["受ける", "請ける"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うた",
+      "surfaces": ["唄", "歌"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うたう",
+      "surfaces": ["唄う", "歌う"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うつ",
+      "surfaces": ["撃つ", "打つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うつす",
+      "surfaces": ["移す", "映す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うつす",
+      "surfaces": ["移す", "写す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うつす",
+      "surfaces": ["映す", "写す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うつる",
+      "surfaces": ["移る", "映る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うつる",
+      "surfaces": ["移る", "写る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うつる",
+      "surfaces": ["映る", "写る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うまい",
+      "surfaces": ["巧い", "旨い"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うむ",
+      "surfaces": ["産む", "生む"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "うら",
+      "surfaces": ["浦", "裏"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "えいせい",
+      "surfaces": ["衛星", "衛生"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "えんかい",
+      "surfaces": ["宴会", "沿海"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "おく",
+      "surfaces": ["奥", "億"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "おくる",
+      "surfaces": ["送る", "贈る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "おこる",
+      "surfaces": ["起こる", "怒る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "おさめる",
+      "surfaces": ["収める", "納める"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "おじ",
+      "surfaces": ["叔父", "伯父"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "おどり",
+      "surfaces": ["躍り", "踊り"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "おどる",
+      "surfaces": ["躍る", "踊る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "おば",
+      "surfaces": ["叔母", "伯母"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "おる",
+      "surfaces": ["織る", "折る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "おろす",
+      "surfaces": ["卸す", "降ろす"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "おんしょう",
+      "surfaces": ["恩賞", "温床"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かい",
+      "surfaces": ["会", "貝"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かいそう",
+      "surfaces": ["回想", "海藻"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かいだん",
+      "surfaces": ["怪談", "階段"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "がいとう",
+      "surfaces": ["街灯", "該当"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かえる",
+      "surfaces": ["換える", "替える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かえる",
+      "surfaces": ["換える", "代える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かえる",
+      "surfaces": ["換える", "変える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かえる",
+      "surfaces": ["替える", "代える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かえる",
+      "surfaces": ["替える", "変える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かえる",
+      "surfaces": ["代える", "変える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かえる",
+      "surfaces": ["帰る", "返る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かかる",
+      "surfaces": ["掛かる", "懸かる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かく",
+      "surfaces": ["書く", "描く"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かげ",
+      "surfaces": ["陰", "影"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かける",
+      "surfaces": ["掛ける", "駆ける"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かける",
+      "surfaces": ["掛ける", "懸ける"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かける",
+      "surfaces": ["掛ける", "賭ける"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かける",
+      "surfaces": ["掛ける", "翔る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かける",
+      "surfaces": ["駆ける", "懸ける"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かける",
+      "surfaces": ["駆ける", "賭ける"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かける",
+      "surfaces": ["駆ける", "翔る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かける",
+      "surfaces": ["懸ける", "賭ける"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かける",
+      "surfaces": ["懸ける", "翔る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かける",
+      "surfaces": ["賭ける", "翔る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かさ",
+      "surfaces": ["笠", "傘"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かじ",
+      "surfaces": ["家事", "火事"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かしょう",
+      "surfaces": ["仮称", "歌唱"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かぜ",
+      "surfaces": ["風", "風邪"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かせつ",
+      "surfaces": ["仮説", "架設"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かた",
+      "surfaces": ["潟", "型"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かた",
+      "surfaces": ["潟", "方"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かた",
+      "surfaces": ["型", "方"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "がっき",
+      "surfaces": ["学期", "楽器"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かてい",
+      "surfaces": ["仮定", "家庭"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かてい",
+      "surfaces": ["仮定", "過程"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かてい",
+      "surfaces": ["家庭", "過程"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かびん",
+      "surfaces": ["花瓶", "過敏"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かみ",
+      "surfaces": ["紙", "髪"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かもく",
+      "surfaces": ["寡黙", "科目"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かよう",
+      "surfaces": ["歌謡", "通う"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かわ",
+      "surfaces": ["河", "革"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かわ",
+      "surfaces": ["河", "川"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かわ",
+      "surfaces": ["河", "皮"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かわ",
+      "surfaces": ["革", "川"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かわ",
+      "surfaces": ["革", "皮"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かわ",
+      "surfaces": ["川", "皮"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かわく",
+      "surfaces": ["渇く", "乾く"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かわる",
+      "surfaces": ["替わる", "代わる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かわる",
+      "surfaces": ["替わる", "変わる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かわる",
+      "surfaces": ["代わる", "変わる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かん",
+      "surfaces": ["冠", "缶"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんかく",
+      "surfaces": ["感覚", "間隔"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんき",
+      "surfaces": ["乾季", "喚起"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんこう",
+      "surfaces": ["敢行", "観光"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんじ",
+      "surfaces": ["感じ", "漢字"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんしょう",
+      "surfaces": ["干渉", "環礁"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんしん",
+      "surfaces": ["感心", "関心"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんぜん",
+      "surfaces": ["完全", "敢然"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんそう",
+      "surfaces": ["乾燥", "感想"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんてい",
+      "surfaces": ["官邸", "艦艇"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんてい",
+      "surfaces": ["官邸", "鑑定"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんてい",
+      "surfaces": ["艦艇", "鑑定"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "かんりょう",
+      "surfaces": ["完了", "官僚"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "き",
+      "surfaces": ["忌", "機"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "き",
+      "surfaces": ["忌", "木"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "き",
+      "surfaces": ["機", "木"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きく",
+      "surfaces": ["効く", "聴く"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きく",
+      "surfaces": ["効く", "聞く"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きく",
+      "surfaces": ["効く", "利く"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きく",
+      "surfaces": ["聴く", "聞く"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きく",
+      "surfaces": ["聴く", "利く"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きく",
+      "surfaces": ["聞く", "利く"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きじ",
+      "surfaces": ["記事", "生地"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きじゅん",
+      "surfaces": ["基準", "規準"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きしょう",
+      "surfaces": ["気象", "起床"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ぎそう",
+      "surfaces": ["偽装", "擬装"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きちょう",
+      "surfaces": ["記帳", "貴重"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きば",
+      "surfaces": ["牙", "騎馬"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きゅうし",
+      "surfaces": ["休止", "急死"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きょうかい",
+      "surfaces": ["協会", "境界"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きょうき",
+      "surfaces": ["凶器", "狂気"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きょうせい",
+      "surfaces": ["強制", "矯正"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きょうりょく",
+      "surfaces": ["協力", "強力"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きる",
+      "surfaces": ["斬る", "切る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きんこう",
+      "surfaces": ["均衡", "近郊"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きんし",
+      "surfaces": ["禁止", "近視"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "きんせい",
+      "surfaces": ["均整", "金星"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "くら",
+      "surfaces": ["庫", "倉"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "くら",
+      "surfaces": ["庫", "蔵"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "くら",
+      "surfaces": ["倉", "蔵"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "くる",
+      "surfaces": ["繰る", "来る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ぐん",
+      "surfaces": ["軍", "郡"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "けいかん",
+      "surfaces": ["景観", "警官"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "けいき",
+      "surfaces": ["刑期", "契機"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "けいこく",
+      "surfaces": ["渓谷", "警告"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "けいじ",
+      "surfaces": ["啓示", "掲示"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "けいじ",
+      "surfaces": ["刑事", "慶事"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "けいしょう",
+      "surfaces": ["継承", "警鐘"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "けっかん",
+      "surfaces": ["欠陥", "血管"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "けんめい",
+      "surfaces": ["懸命", "賢明"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こい",
+      "surfaces": ["故意", "鯉"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こい",
+      "surfaces": ["故意", "濃い"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こい",
+      "surfaces": ["故意", "恋"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こい",
+      "surfaces": ["鯉", "濃い"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こい",
+      "surfaces": ["鯉", "恋"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こい",
+      "surfaces": ["濃い", "恋"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうえい",
+      "surfaces": ["光栄", "公営"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうえん",
+      "surfaces": ["公園", "講演"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうきゅう",
+      "surfaces": ["恒久", "高級"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうぎょう",
+      "surfaces": ["工業", "鉱業"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうこく",
+      "surfaces": ["公告", "広告"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうさく",
+      "surfaces": ["交錯", "工作"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうさく",
+      "surfaces": ["交錯", "耕作"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうさく",
+      "surfaces": ["工作", "耕作"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうしょう",
+      "surfaces": ["交渉", "高尚"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうせい",
+      "surfaces": ["恒星", "更生"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうせい",
+      "surfaces": ["恒星", "構成"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうせい",
+      "surfaces": ["更生", "構成"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうせき",
+      "surfaces": ["功績", "鉱石"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうてい",
+      "surfaces": ["公邸", "皇帝"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうてい",
+      "surfaces": ["公邸", "肯定"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうてい",
+      "surfaces": ["皇帝", "肯定"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうとう",
+      "surfaces": ["喉頭", "高等"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうとう",
+      "surfaces": ["喉頭", "高騰"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうとう",
+      "surfaces": ["喉頭", "叩頭"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうとう",
+      "surfaces": ["高等", "高騰"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうとう",
+      "surfaces": ["高等", "叩頭"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうとう",
+      "surfaces": ["高騰", "叩頭"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうどう",
+      "surfaces": ["坑道", "行動"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こうふく",
+      "surfaces": ["幸福", "降伏"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こくさい",
+      "surfaces": ["国債", "国際"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こす",
+      "surfaces": ["越す", "超す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ごはん",
+      "surfaces": ["ご飯", "御飯"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こむ",
+      "surfaces": ["込む", "混む"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "こわい",
+      "surfaces": ["恐い", "怖い"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "さいきん",
+      "surfaces": ["最近", "細菌"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "さいけん",
+      "surfaces": ["債券", "債権"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "さいけん",
+      "surfaces": ["債券", "再建"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "さいけん",
+      "surfaces": ["債権", "再建"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "さがす",
+      "surfaces": ["捜す", "探す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "さす",
+      "surfaces": ["差す", "刺す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "さす",
+      "surfaces": ["差す", "指す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "さす",
+      "surfaces": ["刺す", "指す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "さわる",
+      "surfaces": ["障る", "触る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "し",
+      "surfaces": ["市", "死"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しえい",
+      "surfaces": ["市営", "私営"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しお",
+      "surfaces": ["塩", "潮"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しかく",
+      "surfaces": ["視覚", "資格"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "じき",
+      "surfaces": ["時期", "磁気"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "じこ",
+      "surfaces": ["事故", "自己"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "じじょう",
+      "surfaces": ["事情", "自浄"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "じしん",
+      "surfaces": ["自信", "地震"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "じてん",
+      "surfaces": ["事典", "字典"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "じてん",
+      "surfaces": ["事典", "辞典"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "じてん",
+      "surfaces": ["字典", "辞典"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しぼう",
+      "surfaces": ["志望", "死亡"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しぼう",
+      "surfaces": ["志望", "脂肪"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しぼう",
+      "surfaces": ["死亡", "脂肪"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しぼる",
+      "surfaces": ["絞る", "搾る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しまる",
+      "surfaces": ["締まる", "閉まる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しめる",
+      "surfaces": ["占める", "締める"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しめる",
+      "surfaces": ["占める", "閉める"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しめる",
+      "surfaces": ["締める", "閉める"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しもん",
+      "surfaces": ["指紋", "諮問"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しゃない",
+      "surfaces": ["社内", "車内"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しゅいん",
+      "surfaces": ["主因", "朱印"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "じゅう",
+      "surfaces": ["十", "銃"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しゅさい",
+      "surfaces": ["主催", "主宰"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しゅしょう",
+      "surfaces": ["主唱", "主将"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しゅしょう",
+      "surfaces": ["主唱", "殊勝"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しゅしょう",
+      "surfaces": ["主将", "殊勝"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しょうしゃ",
+      "surfaces": ["傷者", "勝者"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しょうしん",
+      "surfaces": ["傷心", "昇進"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しょうにん",
+      "surfaces": ["承認", "証人"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しょうめい",
+      "surfaces": ["照明", "証明"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しょくたく",
+      "surfaces": ["嘱託", "食卓"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しょさい",
+      "surfaces": ["所載", "書斎"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しりつ",
+      "surfaces": ["市立", "私立"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "じん",
+      "surfaces": ["仁", "陣"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しんこう",
+      "surfaces": ["信仰", "侵攻"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しんこう",
+      "surfaces": ["信仰", "進行"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "しんこう",
+      "surfaces": ["侵攻", "進行"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "じんこう",
+      "surfaces": ["人口", "人工"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "すいせん",
+      "surfaces": ["推薦", "水仙"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "すすめる",
+      "surfaces": ["勧める", "薦める"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "すます",
+      "surfaces": ["済ます", "澄ます"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "すみ",
+      "surfaces": ["炭", "墨"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "すむ",
+      "surfaces": ["済む", "住む"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "すむ",
+      "surfaces": ["済む", "澄む"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "すむ",
+      "surfaces": ["住む", "澄む"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "する",
+      "surfaces": ["刷る", "擦る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せいかく",
+      "surfaces": ["性格", "正確"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せいこう",
+      "surfaces": ["成功", "製鋼"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せいさく",
+      "surfaces": ["政策", "製作"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せいじつ",
+      "surfaces": ["聖日", "誠実"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せいど",
+      "surfaces": ["制度", "精度"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せいふく",
+      "surfaces": ["制服", "征服"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せき",
+      "surfaces": ["堰", "席"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せめる",
+      "surfaces": ["攻める", "責める"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せん",
+      "surfaces": ["千", "栓"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せん",
+      "surfaces": ["千", "線"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せん",
+      "surfaces": ["栓", "線"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ぜんけい",
+      "surfaces": ["前景", "全景"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "せんじょう",
+      "surfaces": ["戦場", "洗浄"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "そうこう",
+      "surfaces": ["壮行", "草稿"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "そうこう",
+      "surfaces": ["壮行", "走行"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "そうこう",
+      "surfaces": ["草稿", "走行"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "そうさ",
+      "surfaces": ["捜査", "操作"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "そかい",
+      "surfaces": ["疎開", "租界"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "そがい",
+      "surfaces": ["疎外", "阻害"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "そなえる",
+      "surfaces": ["供える", "備える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たいがい",
+      "surfaces": ["対外", "大概"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たいさく",
+      "surfaces": ["対策", "大作"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たいしょう",
+      "surfaces": ["対称", "対象"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たえる",
+      "surfaces": ["堪える", "絶える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たえる",
+      "surfaces": ["堪える", "耐える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たえる",
+      "surfaces": ["絶える", "耐える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たく",
+      "surfaces": ["炊く", "宅"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たけ",
+      "surfaces": ["岳", "丈"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たずねる",
+      "surfaces": ["尋ねる", "訪ねる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たたかう",
+      "surfaces": ["戦う", "闘う"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たつ",
+      "surfaces": ["経つ", "建つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たつ",
+      "surfaces": ["経つ", "絶つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たつ",
+      "surfaces": ["経つ", "断つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たつ",
+      "surfaces": ["経つ", "立つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たつ",
+      "surfaces": ["建つ", "絶つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たつ",
+      "surfaces": ["建つ", "断つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たつ",
+      "surfaces": ["建つ", "立つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たつ",
+      "surfaces": ["絶つ", "断つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たつ",
+      "surfaces": ["絶つ", "立つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たつ",
+      "surfaces": ["断つ", "立つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たて",
+      "surfaces": ["縦", "盾"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たてる",
+      "surfaces": ["建てる", "立てる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たま",
+      "surfaces": ["球", "玉"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たま",
+      "surfaces": ["球", "弾"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "たま",
+      "surfaces": ["玉", "弾"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ち",
+      "surfaces": ["地", "智"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ちゅうい",
+      "surfaces": ["中尉", "注意"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ちょう",
+      "surfaces": ["腸", "蝶"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ちょうしゃ",
+      "surfaces": ["庁舎", "聴者"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ちょっこう",
+      "surfaces": ["直航", "直行"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "つかう",
+      "surfaces": ["遣う", "使う"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "つくる",
+      "surfaces": ["作る", "造る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "つける",
+      "surfaces": ["着ける", "点ける"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "つける",
+      "surfaces": ["着ける", "付ける"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "つける",
+      "surfaces": ["点ける", "付ける"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "つとめる",
+      "surfaces": ["勤める", "務める"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "つむ",
+      "surfaces": ["積む", "摘む"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ていかん",
+      "surfaces": ["定款", "諦観"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "でいすい",
+      "surfaces": ["泥水", "泥酔"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ていせい",
+      "surfaces": ["帝政", "訂正"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "でんとう",
+      "surfaces": ["伝統", "電灯"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とうき",
+      "surfaces": ["投棄", "陶器"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とうごう",
+      "surfaces": ["等号", "統合"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とうさく",
+      "surfaces": ["倒錯", "盗作"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とうとい",
+      "surfaces": ["貴い", "尊い"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "どうよう",
+      "surfaces": ["動揺", "童謡"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とける",
+      "surfaces": ["解ける", "溶ける"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とぶ",
+      "surfaces": ["跳ぶ", "飛ぶ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とまる",
+      "surfaces": ["止まる", "泊まる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とめる",
+      "surfaces": ["止める", "泊める"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とらえる",
+      "surfaces": ["捉える", "捕える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とる",
+      "surfaces": ["採る", "撮る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とる",
+      "surfaces": ["採る", "執る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とる",
+      "surfaces": ["採る", "取る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とる",
+      "surfaces": ["撮る", "執る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とる",
+      "surfaces": ["撮る", "取る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "とる",
+      "surfaces": ["執る", "取る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "なおす",
+      "surfaces": ["治す", "直す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "なか",
+      "surfaces": ["中", "仲"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "なく",
+      "surfaces": ["泣く", "鳴く"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "にる",
+      "surfaces": ["似る", "煮る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "のせる",
+      "surfaces": ["載せる", "乗せる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "のばす",
+      "surfaces": ["延ばす", "伸ばす"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "のぼる",
+      "surfaces": ["昇る", "上る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "のぼる",
+      "surfaces": ["昇る", "登る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "のぼる",
+      "surfaces": ["上る", "登る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "のる",
+      "surfaces": ["載る", "乗る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "は",
+      "surfaces": ["歯", "刃"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はい",
+      "surfaces": ["灰", "肺"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はいしゃ",
+      "surfaces": ["歯医者", "敗者"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はかる",
+      "surfaces": ["諮る", "測る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はかる",
+      "surfaces": ["諮る", "謀る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はかる",
+      "surfaces": ["諮る", "量る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はかる",
+      "surfaces": ["測る", "謀る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はかる",
+      "surfaces": ["測る", "量る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はかる",
+      "surfaces": ["謀る", "量る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はく",
+      "surfaces": ["掃く", "吐く"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はく",
+      "surfaces": ["掃く", "伯"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はく",
+      "surfaces": ["吐く", "伯"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はけん",
+      "surfaces": ["覇権", "派遣"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はち",
+      "surfaces": ["八", "鉢"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はなす",
+      "surfaces": ["放す", "離す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はなす",
+      "surfaces": ["放す", "話す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はなす",
+      "surfaces": ["離す", "話す"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はなれる",
+      "surfaces": ["放れる", "離れる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はやい",
+      "surfaces": ["早い", "速い"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はる",
+      "surfaces": ["張る", "貼る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はん",
+      "surfaces": ["半", "班"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はん",
+      "surfaces": ["半", "藩"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はん",
+      "surfaces": ["半", "範"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はん",
+      "surfaces": ["班", "藩"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はん",
+      "surfaces": ["班", "範"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はん",
+      "surfaces": ["藩", "範"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "はんそう",
+      "surfaces": ["帆走", "搬送"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ひ",
+      "surfaces": ["火", "妃"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ひく",
+      "surfaces": ["引く", "弾く"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ひっし",
+      "surfaces": ["必死", "必至"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ひとり",
+      "surfaces": ["一人", "独り"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ひなん",
+      "surfaces": ["避難", "非難"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ひろう",
+      "surfaces": ["拾う", "疲労"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ひろがる",
+      "surfaces": ["拡がる", "広がる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ふう",
+      "surfaces": ["封", "楓"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ふうとう",
+      "surfaces": ["封筒", "楓糖"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ふえる",
+      "surfaces": ["殖える", "増える"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ふきゅう",
+      "surfaces": ["不朽", "普及"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ふこう",
+      "surfaces": ["不孝", "不幸"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ふしん",
+      "surfaces": ["不信", "不振"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ふね",
+      "surfaces": ["舟", "船"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "へいこう",
+      "surfaces": ["平衡", "並行"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "べいこく",
+      "surfaces": ["米国", "米穀"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "へんかん",
+      "surfaces": ["変換", "返還"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ほ",
+      "surfaces": ["帆", "穂"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ほうき",
+      "surfaces": ["放棄", "法規"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ほうこう",
+      "surfaces": ["方向", "芳香"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ぼうし",
+      "surfaces": ["帽子", "防止"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ほしょう",
+      "surfaces": ["保証", "保障"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "まく",
+      "surfaces": ["幕", "膜"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "まじる",
+      "surfaces": ["交じる", "混じる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "まぜる",
+      "surfaces": ["交ぜる", "混ぜる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "まつ",
+      "surfaces": ["松", "待つ"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "みょうじ",
+      "surfaces": ["苗字", "名字"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "みる",
+      "surfaces": ["見る", "診る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "みんぞく",
+      "surfaces": ["民俗", "民族"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "むれる",
+      "surfaces": ["群れる", "蒸れる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "め",
+      "surfaces": ["芽", "眼"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "め",
+      "surfaces": ["芽", "目"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "め",
+      "surfaces": ["眼", "目"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "めいし",
+      "surfaces": ["名刺", "名詞"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "もん",
+      "surfaces": ["紋", "門"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "やぶれる",
+      "surfaces": ["破れる", "敗れる"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ゆうかん",
+      "surfaces": ["勇敢", "夕刊"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "よう",
+      "surfaces": ["酔う", "用"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "よむ",
+      "surfaces": ["詠む", "読む"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "よる",
+      "surfaces": ["寄る", "拠る"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "りょう",
+      "surfaces": ["寮", "猟"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "りょう",
+      "surfaces": ["寮", "量"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "りょう",
+      "surfaces": ["猟", "量"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "りょうし",
+      "surfaces": ["漁師", "猟師"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "るいしん",
+      "surfaces": ["塁審", "累進"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "れんぽう",
+      "surfaces": ["連峰", "連邦"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "ろうすい",
+      "surfaces": ["漏水", "老衰"]
+    },
+    {
+      "reason": "same_pitch_only",
+      "reading": "わく",
+      "surfaces": ["沸く", "湧く"]
+    }
+  ],
+  "generatedAt": "2026-05-25T11:56:59.992Z",
+  "source": {
+    "jaydarRevision": "2c38cb381a698b9d84d920f7ffbfd2b090579cf2",
+    "jaydarSource": "tmp/tofugu-pitch-build/jaydar-tofugu-homophones.jsonl",
+    "kanjiumSource": "data/pitch-accents/kanjium-accents.txt",
+    "kuuuubeManifestPath": "public/vendor/minimal-pairs/manifest.json",
+    "tofuguDatasetPath": "data/tofugu-japanese-vocabulary-pronunciation-audio"
+  },
+  "summary": {
+    "same_pitch_only": 405,
+    "covered_by_kuuuube": 126,
+    "multiple_kanjium_pitches": 81,
+    "not_confirmed_by_jaydar": 44,
+    "jaydar_kanjium_pitch_mismatch": 5,
+    "missing_kanjium_pitch": 6
+  },
+  "version": 1
+}

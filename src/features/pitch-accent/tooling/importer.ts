@@ -92,7 +92,9 @@ export async function importMinimalPairsCorpus(input: {
     },
     version: 1
   };
-  const validation = validatePitchAccentMinimalPairsCorpus(corpus);
+  const validation = validatePitchAccentMinimalPairsCorpus(corpus, {
+    allowedAudioSrcPrefixes: ["/vendor/minimal-pairs/audio/"]
+  });
 
   if (!validation.ok) {
     throw new Error(
