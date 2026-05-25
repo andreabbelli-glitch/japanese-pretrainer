@@ -33,6 +33,11 @@ import {
   collectPronunciationTargets,
   type PronunciationTargetEntry
 } from "./pronunciation-shared.ts";
+import {
+  importTofuguPronunciationsForBundle,
+  tofuguPronunciationDatasetDefaultDirectory,
+  type TofuguPronunciationImportSummary
+} from "./tofugu-pronunciation-dataset.ts";
 
 export type PronunciationResolveMode = "review" | "next-lesson" | "lesson-url";
 
@@ -62,6 +67,7 @@ export type BundleResolveExecutionSummary = {
   reuseSummary: Awaited<
     ReturnType<typeof reuseCrossMediaPronunciationsForBundle>
   >;
+  tofuguSummary: TofuguPronunciationImportSummary | null;
 };
 
 type ExecutePronunciationResolveForBundleInput = {
@@ -74,6 +80,12 @@ type ExecutePronunciationResolveForBundleInput = {
     browser: ForvoBrowserOptions;
     refresh?: boolean;
   }) => Promise<Awaited<ReturnType<typeof fetchForvoPronunciationsForBundle>>>;
+  fetchTofugu?: (input: {
+    bundle: NormalizedMediaBundle;
+    dryRun?: boolean;
+    onlyTargets?: PronunciationTargetEntry[];
+    refresh?: boolean;
+  }) => Promise<TofuguPronunciationImportSummary>;
   forvoOptions?: ForvoBrowserOptions;
   knownMissingEntryIds: Set<string>;
   limit?: number;
@@ -235,32 +247,15 @@ export async function executePronunciationResolveForBundle(
     input.selectedTargets,
     input.refresh
   );
-  const knownMissingSkipped = input.retryKnownMissing
-    ? []
-    : actionableTargets
-        .filter((target) =>
-          input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id))
-        )
-        .map((target) => target.id);
-  const candidateTargets = input.retryKnownMissing
-    ? actionableTargets
-    : actionableTargets.filter(
-        (target) =>
-          !input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id))
-      );
-  const limitedTargets =
-    typeof limit === "number"
-      ? candidateTargets.slice(0, limit)
-      : candidateTargets;
 
   const reuseSummary = await input.reuseCrossMedia({
     bundle: currentBundle,
     dryRun: input.dryRun,
-    onlyTargets: limitedTargets,
+    onlyTargets: actionableTargets,
     reuseContext: input.reuseContext
   });
   const forvoTargets = removeTargetsByEntryIds(
-    limitedTargets,
+    actionableTargets,
     reuseSummary.results
       .filter((result) => result.status === "reused")
       .map((result) => buildEntryKey(result.kind, result.entryId))
@@ -270,16 +265,56 @@ export async function executePronunciationResolveForBundle(
     currentBundle = await input.refreshBundleState(currentBundle);
   }
 
+  let tofuguSummary: TofuguPronunciationImportSummary | null = null;
+  let postTofuguTargets = forvoTargets;
+
+  if (forvoTargets.length > 0 && input.fetchTofugu) {
+    tofuguSummary = await input.fetchTofugu({
+      bundle: currentBundle,
+      dryRun: input.dryRun,
+      onlyTargets: forvoTargets,
+      refresh: input.refresh
+    });
+    postTofuguTargets = removeTargetsByEntryIds(
+      forvoTargets,
+      tofuguSummary.results
+        .filter((result) => result.status === "matched")
+        .map((result) => buildEntryKey(result.kind, result.entryId))
+    );
+
+    if (!input.dryRun && tofuguSummary.matched > 0) {
+      currentBundle = await input.refreshBundleState(currentBundle);
+    }
+  }
+
+  const knownMissingSkipped = input.retryKnownMissing
+    ? []
+    : postTofuguTargets
+        .filter((target) =>
+          input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id))
+        )
+        .map((target) => target.id);
+  const finalForvoTargets = input.retryKnownMissing
+    ? postTofuguTargets
+    : postTofuguTargets.filter(
+        (target) =>
+          !input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id))
+      );
+  const limitedForvoTargets =
+    typeof limit === "number"
+      ? finalForvoTargets.slice(0, limit)
+      : finalForvoTargets;
+
   let forvoSummary: Awaited<
     ReturnType<typeof fetchForvoPronunciationsForBundle>
   > | null = null;
 
-  if (forvoTargets.length > 0) {
+  if (limitedForvoTargets.length > 0) {
     forvoSummary = await input.fetchForvo({
       bundle: currentBundle,
       browser: input.forvoOptions ?? buildDefaultForvoOptions(),
       dryRun: input.dryRun,
-      entryIds: forvoTargets.map((target) => target.id),
+      entryIds: limitedForvoTargets.map((target) => target.id),
       refresh: input.refresh
     });
 
@@ -302,11 +337,12 @@ export async function executePronunciationResolveForBundle(
 
   return {
     currentBundle,
-    finalEntryIds: forvoTargets.map((target) => target.id),
+    finalEntryIds: limitedForvoTargets.map((target) => target.id),
     forvoSummary,
     knownMissingSkipped,
     pendingSummary,
-    reuseSummary
+    reuseSummary,
+    tofuguSummary
   };
 }
 
@@ -322,6 +358,9 @@ export async function resolvePronunciations(input: {
   mode: PronunciationResolveMode;
   refresh?: boolean;
   retryKnownMissing?: boolean;
+  tofuguAllowDownload?: boolean;
+  tofuguDatasetDir?: string;
+  tofuguEnabled?: boolean;
 }) {
   const selection = await selectPronunciationResolveTargets({
     contentRoot: input.contentRoot,
@@ -358,6 +397,21 @@ export async function resolvePronunciations(input: {
           entryIds: params.entryIds,
           refresh: params.refresh
         }),
+      fetchTofugu:
+        input.tofuguEnabled === false
+          ? undefined
+          : (params) =>
+              importTofuguPronunciationsForBundle({
+                allowDownload:
+                  input.tofuguAllowDownload ?? input.dryRun !== true,
+                bundle: params.bundle,
+                datasetDir:
+                  input.tofuguDatasetDir ??
+                  tofuguPronunciationDatasetDefaultDirectory,
+                dryRun: params.dryRun,
+                onlyTargets: params.onlyTargets,
+                refresh: params.refresh
+              }),
       forvoOptions: input.forvoOptions,
       knownMissingEntryIds,
       limit: input.limit,

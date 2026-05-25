@@ -29,6 +29,9 @@ type CliOptions = {
   refresh: boolean;
   requestRegistryPath: string;
   retryKnownMissing: boolean;
+  tofuguAllowDownload: boolean;
+  tofuguDatasetDir: string;
+  tofuguEnabled: boolean;
 };
 
 const options = parseCliOptions(process.argv.slice(2));
@@ -74,7 +77,12 @@ if (!options.openWordAddOnSkip) {
       mediaSlug: options.mediaSlug,
       mode: options.mode,
       refresh: options.refresh,
-      retryKnownMissing: options.retryKnownMissing
+      retryKnownMissing: options.retryKnownMissing,
+      tofuguAllowDownload: options.dryRun
+        ? false
+        : options.tofuguAllowDownload,
+      tofuguDatasetDir: path.resolve(options.tofuguDatasetDir),
+      tofuguEnabled: options.tofuguEnabled
     });
 
     console.info(
@@ -82,9 +90,20 @@ if (!options.openWordAddOnSkip) {
     );
 
     for (const summary of result.summaries) {
+      const forvoSummary = summary.execution.forvoSummary;
+      const forvoSummaryText = forvoSummary
+        ? ` forvo_matched=${forvoSummary.matched} forvo_missed=${forvoSummary.missed}`
+        : "";
+
       console.info(
-        `${summary.bundle.mediaSlug}: selected=${summary.targets.length} reuse=${summary.execution.reuseSummary.reused} forvo_matched=${summary.execution.forvoSummary?.matched ?? 0} forvo_missed=${summary.execution.forvoSummary?.missed ?? 0} pending=${summary.execution.pendingSummary.pendingCount}`
+        `${summary.bundle.mediaSlug}: selected=${summary.targets.length} reuse=${summary.execution.reuseSummary.reused} tofugu_matched=${summary.execution.tofuguSummary?.matched ?? 0}${forvoSummaryText} pending=${summary.execution.pendingSummary.pendingCount}`
       );
+
+      if (summary.execution.tofuguSummary?.unavailableReason) {
+        console.info(
+          `  tofugu unavailable: ${summary.execution.tofuguSummary.unavailableReason}`
+        );
+      }
 
       if (summary.lessonSlug) {
         console.info(`  lesson ${summary.lessonSlug}`);
@@ -121,7 +140,13 @@ function parseCliOptions(argv: string[]): CliOptions {
     openWordAddOnSkip: true,
     refresh: false,
     requestRegistryPath: path.join("data", "forvo-requested-word-add.json"),
-    retryKnownMissing: false
+    retryKnownMissing: false,
+    tofuguAllowDownload: true,
+    tofuguDatasetDir: path.join(
+      "data",
+      "tofugu-japanese-vocabulary-pronunciation-audio"
+    ),
+    tofuguEnabled: true
   };
 
   for (let index = 0; index < normalizedArgv.length; index += 1) {
@@ -277,6 +302,26 @@ function parseCliOptions(argv: string[]): CliOptions {
 
     if (argument === "--retry-known-missing") {
       options.retryKnownMissing = true;
+      continue;
+    }
+
+    if (argument === "--tofugu-dataset-dir") {
+      options.tofuguDatasetDir = readOptionValue(
+        normalizedArgv,
+        index,
+        "--tofugu-dataset-dir"
+      );
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--no-tofugu") {
+      options.tofuguEnabled = false;
+      continue;
+    }
+
+    if (argument === "--no-tofugu-download") {
+      options.tofuguAllowDownload = false;
       continue;
     }
 

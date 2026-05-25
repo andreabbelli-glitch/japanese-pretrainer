@@ -34,6 +34,7 @@
     "pronunciations:forvo": "node --experimental-strip-types ./scripts/fetch-forvo-pronunciations.ts",
     "pronunciations:forvo:request": "node --experimental-strip-types ./scripts/request-forvo-word-add.ts",
     "pronunciations:forvo:import-requested": "node --experimental-strip-types ./scripts/import-forvo-requested-audio-index.ts",
+    "pronunciations:tofugu:sync": "node --experimental-strip-types ./scripts/sync-tofugu-pronunciations.ts",
     "image:status": "node --experimental-strip-types ./scripts/image-workflow-status.ts",
     "image:apply": "node --experimental-strip-types ./scripts/apply-image-blocks.ts",
     "kanji-clash:generate-similar-kanji": "node --experimental-strip-types ./scripts/generate-kanji-clash-similar-kanji-dataset.ts",

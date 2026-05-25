@@ -314,6 +314,40 @@ describe("pronunciation resolve", () => {
       }
     }, 60_000);
 
+    it("accepts Tofugu resolver CLI flags and reports the Tofugu summary", async () => {
+      closeDatabaseClient(database);
+
+      try {
+        const { stdout } = await execFileAsync(
+          process.execPath,
+          [
+            "--experimental-strip-types",
+            path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
+            "--mode=review",
+            `--content-root=${contentRoot}`,
+            "--dry-run",
+            "--limit=0",
+            "--no-open",
+            `--tofugu-dataset-dir=${path.join(tempDir, "tofugu")}`,
+            "--no-tofugu-download"
+          ],
+          {
+            cwd: process.cwd(),
+            env: {
+              ...process.env,
+              DATABASE_URL: databasePath
+            }
+          }
+        );
+
+        expect(stdout).toContain("tofugu_matched=0");
+      } finally {
+        database = createDatabaseClient({
+          databaseUrl: databasePath
+        });
+      }
+    }, 60_000);
+
     it("rejects unsafe numeric resolver CLI options instead of rounding them", async () => {
       closeDatabaseClient(database);
 
@@ -520,6 +554,243 @@ describe("pronunciation resolve", () => {
       expect(summary.finalEntryIds).toEqual(["term-kiku", "term-yomu"]);
       expect(summary.reuseSummary.reused).toBe(1);
       expect(summary.forvoSummary?.matched).toBe(1);
+    });
+
+    it("runs Tofugu after cross-media reuse and sends only the remaining entries to Forvo", async () => {
+      const bundle = await loadBundle(contentRoot, "sample-game");
+      const selectedTargets: PronunciationTargetEntry[] = [
+        createTarget(bundle, "term", "term-miru"),
+        createTarget(bundle, "term", "term-kiku"),
+        createTarget(bundle, "term", "term-yomu")
+      ];
+      const calls: string[] = [];
+      const refreshSpy = vi.fn(async () => bundle);
+      const reuseSpy = vi.fn(async () => {
+        calls.push("reuse");
+        return {
+          ambiguous: 0,
+          reused: 1,
+          results: [
+            {
+              entryId: "term-miru",
+              kind: "term" as const,
+              sourceEntryId: "term-taberu",
+              sourceMediaSlug: "sample-anime",
+              status: "reused" as const
+            }
+          ]
+        };
+      });
+      const tofuguSpy = vi.fn(async () => {
+        calls.push("tofugu");
+        return {
+          alreadyAudioBacked: 0,
+          ambiguous: 0,
+          matched: 1,
+          notFound: 1,
+          results: [
+            {
+              entryId: "term-kiku",
+              kind: "term" as const,
+              status: "matched" as const
+            },
+            {
+              entryId: "term-yomu",
+              kind: "term" as const,
+              status: "not_found" as const
+            }
+          ]
+        };
+      });
+      const forvoSpy = vi.fn(async () => {
+        calls.push("forvo");
+        return {
+          knownMissingSkipped: [],
+          matched: 1,
+          missed: 0,
+          requestedUnresolved: [],
+          results: [
+            {
+              entryId: "term-yomu",
+              kind: "term" as const,
+              speaker: "Test Speaker",
+              status: "matched" as const,
+              votes: 5
+            }
+          ]
+        };
+      });
+
+      const summary = await executePronunciationResolveForBundle({
+        bundle,
+        dryRun: false,
+        fetchForvo: forvoSpy,
+        fetchTofugu: tofuguSpy,
+        knownMissingEntryIds: new Set(),
+        refreshBundleState: refreshSpy,
+        reuseCrossMedia: reuseSpy,
+        reuseContext: { audioBackedEntries: [] },
+        selectedTargets,
+        updatePendingSummary: vi.fn(async () => ({
+          audioBackedCount: 3,
+          knownMissingCount: 0,
+          mediaSlug: "sample-game",
+          pending: [],
+          pendingCount: 0,
+          totalTargets: 3,
+          workflowFilePath: path.join(
+            bundle.mediaDirectory,
+            "workflow",
+            "pronunciation-pending.json"
+          )
+        }))
+      });
+
+      expect(calls).toEqual(["reuse", "tofugu", "forvo"]);
+      expect(tofuguSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          onlyTargets: [
+            expect.objectContaining({ id: "term-kiku" }),
+            expect.objectContaining({ id: "term-yomu" })
+          ]
+        })
+      );
+      expect(forvoSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          entryIds: ["term-yomu"]
+        })
+      );
+      expect(refreshSpy).toHaveBeenCalledTimes(3);
+      expect(summary.tofuguSummary?.matched).toBe(1);
+      expect(summary.finalEntryIds).toEqual(["term-yomu"]);
+    });
+
+    it("lets Tofugu resolve known-missing Forvo entries before the Forvo gate", async () => {
+      const bundle = await loadBundle(contentRoot, "sample-game");
+      const forvoSpy = vi.fn();
+
+      const summary = await executePronunciationResolveForBundle({
+        bundle,
+        dryRun: false,
+        fetchForvo: forvoSpy,
+        fetchTofugu: vi.fn(async () => ({
+          alreadyAudioBacked: 0,
+          ambiguous: 0,
+          matched: 1,
+          notFound: 0,
+          results: [
+            {
+              entryId: "term-yomu",
+              kind: "term" as const,
+              status: "matched" as const
+            }
+          ]
+        })),
+        knownMissingEntryIds: new Set(["term:term-yomu"]),
+        refreshBundleState: vi.fn(async () => bundle),
+        reuseCrossMedia: vi.fn(async () => ({
+          ambiguous: 0,
+          reused: 0,
+          results: []
+        })),
+        reuseContext: { audioBackedEntries: [] },
+        selectedTargets: [createTarget(bundle, "term", "term-yomu")],
+        updatePendingSummary: vi.fn(async () => ({
+          audioBackedCount: 1,
+          knownMissingCount: 0,
+          mediaSlug: "sample-game",
+          pending: [],
+          pendingCount: 0,
+          totalTargets: 1,
+          workflowFilePath: path.join(
+            bundle.mediaDirectory,
+            "workflow",
+            "pronunciation-pending.json"
+          )
+        }))
+      });
+
+      expect(forvoSpy).not.toHaveBeenCalled();
+      expect(summary.tofuguSummary?.matched).toBe(1);
+      expect(summary.finalEntryIds).toEqual([]);
+      expect(summary.knownMissingSkipped).toEqual([]);
+    });
+
+    it("does not let Tofugu matches consume the Forvo batch limit", async () => {
+      const bundle = await loadBundle(contentRoot, "sample-game");
+      const forvoSpy = vi.fn(async () => ({
+        knownMissingSkipped: [],
+        matched: 1,
+        missed: 0,
+        requestedUnresolved: [],
+        results: [
+          {
+            entryId: "term-yomu",
+            kind: "term" as const,
+            speaker: "Test Speaker",
+            status: "matched" as const,
+            votes: 5
+          }
+        ]
+      }));
+
+      const summary = await executePronunciationResolveForBundle({
+        bundle,
+        dryRun: false,
+        fetchForvo: forvoSpy,
+        fetchTofugu: vi.fn(async () => ({
+          alreadyAudioBacked: 0,
+          ambiguous: 0,
+          matched: 1,
+          notFound: 1,
+          results: [
+            {
+              entryId: "term-kiku",
+              kind: "term" as const,
+              status: "matched" as const
+            },
+            {
+              entryId: "term-yomu",
+              kind: "term" as const,
+              status: "not_found" as const
+            }
+          ]
+        })),
+        knownMissingEntryIds: new Set(),
+        limit: 1,
+        refreshBundleState: vi.fn(async () => bundle),
+        reuseCrossMedia: vi.fn(async () => ({
+          ambiguous: 0,
+          reused: 0,
+          results: []
+        })),
+        reuseContext: { audioBackedEntries: [] },
+        selectedTargets: [
+          createTarget(bundle, "term", "term-kiku"),
+          createTarget(bundle, "term", "term-yomu")
+        ],
+        updatePendingSummary: vi.fn(async () => ({
+          audioBackedCount: 2,
+          knownMissingCount: 0,
+          mediaSlug: "sample-game",
+          pending: [],
+          pendingCount: 0,
+          totalTargets: 2,
+          workflowFilePath: path.join(
+            bundle.mediaDirectory,
+            "workflow",
+            "pronunciation-pending.json"
+          )
+        }))
+      });
+
+      expect(forvoSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          entryIds: ["term-yomu"]
+        })
+      );
+      expect(summary.finalEntryIds).toEqual(["term-yomu"]);
+      expect(summary.tofuguSummary?.matched).toBe(1);
     });
 
     it("summarizes pending pronunciations without writing during dry runs", async () => {

@@ -203,26 +203,48 @@ export function findTofuguMatchForTarget(
 }
 
 export async function importTofuguPronunciationsForBundle(input: {
+  allowDownload?: boolean;
   bundle: NormalizedMediaBundle;
   datasetDir?: string;
   dryRun?: boolean;
   onlyTargets?: PronunciationTargetEntry[];
   refresh?: boolean;
 }): Promise<TofuguPronunciationImportSummary> {
-  let index: TofuguPronunciationIndex;
+  let index: TofuguPronunciationIndex | null = null;
 
   try {
     index = await buildTofuguPronunciationIndex(input.datasetDir);
   } catch (error) {
     if ((error as NodeJS.ErrnoException)?.code === "ENOENT") {
-      return buildUnavailableImportSummary(
-        `Tofugu/WaniKani pronunciation dataset was not found at '${path.resolve(
-          input.datasetDir ?? tofuguPronunciationDatasetDefaultDirectory
-        )}'.`
-      );
+      if (input.allowDownload && !input.dryRun) {
+        try {
+          await syncTofuguPronunciationDataset({
+            datasetDir: input.datasetDir
+          });
+          index = await buildTofuguPronunciationIndex(input.datasetDir);
+        } catch (syncError) {
+          return buildUnavailableImportSummary(
+            `Tofugu/WaniKani pronunciation dataset could not be synced at '${path.resolve(
+              input.datasetDir ?? tofuguPronunciationDatasetDefaultDirectory
+            )}': ${formatErrorMessage(syncError)}`
+          );
+        }
+      } else {
+        return buildUnavailableImportSummary(
+          `Tofugu/WaniKani pronunciation dataset was not found at '${path.resolve(
+            input.datasetDir ?? tofuguPronunciationDatasetDefaultDirectory
+          )}'.`
+        );
+      }
+    } else {
+      throw error;
     }
+  }
 
-    throw error;
+  if (!index) {
+    return buildUnavailableImportSummary(
+      "Tofugu/WaniKani pronunciation dataset was not available."
+    );
   }
 
   const { entries: manifestEntries } = await loadValidatedManifest(
@@ -498,4 +520,10 @@ function buildUnavailableImportSummary(
     results: [],
     unavailableReason
   };
+}
+
+function formatErrorMessage(error: unknown) {
+  return error instanceof Error && error.message.length > 0
+    ? error.message
+    : String(error);
 }
