@@ -67,8 +67,9 @@ romaji: tsu-re-ru
 meaning_it: 'portare qualcuno con sé'
 pos: verb
 notes_it: >-
-  {{連|つ}}れる significa portare qualcuno con sé. Il punto è
-  l'accompagnamento: una persona si muove insieme a chi agisce.
+  {{連|つ}}れる è portare con sé qualcuno, soprattutto una persona o un animale.
+  Il punto non è trasportare un oggetto, ma accompagnare o far muovere un essere
+  vivente insieme a chi agisce.
 level_hint: n4
 :::
 
@@ -77,11 +78,12 @@ id: term-ch-kakaeru
 lemma: '抱える'
 reading: 'かかえる'
 romaji: ka-ka-e-ru
-meaning_it: 'tenere/portare tra le braccia; portare sotto braccio'
+meaning_it: 'tenere in braccio; portarsi addosso'
 pos: verb
 notes_it: >-
-  {{抱|かか}}える descrive tenere o reggere qualcosa contro il corpo. Con una
-  persona, la scena è fisica: qualcuno viene sostenuto tra le braccia.
+  {{抱|かか}}える descrive qualcosa che si tiene addosso o si porta con sé come
+  carico. Può essere fisico, come tenere qualcuno in braccio, oppure astratto:
+  un peso, un problema o una responsabilità che ci si porta dietro.
 level_hint: n3
 :::
 
@@ -264,8 +266,9 @@ back: 'つれる — portare qualcuno con sé'
 example_jp: 'カルが{{子|こ}}を{{連|つ}}れる。'
 example_it: 'Kal porta con sé il bambino.'
 notes_it: >-
-  {{連|つ}}れる significa portare qualcuno con sé. Il punto è
-  l'accompagnamento: una persona si muove insieme a chi agisce.
+  {{連|つ}}れる è portare con sé qualcuno, soprattutto una persona o un animale.
+  Il punto non è trasportare un oggetto, ma accompagnare o far muovere un essere
+  vivente insieme a chi agisce.
 tags: [crystal-hunters, book-2, lesson-02]
 :::
 
@@ -276,12 +279,13 @@ entry_type: term
 entry_id: term-ch-kakaeru
 card_type: recognition
 front: '{{抱|かか}}える'
-back: 'かかえる — tenere/portare tra le braccia; portare sotto braccio'
+back: 'かかえる — tenere in braccio; portarsi addosso'
 example_jp: 'カルが{{子|こ}}を{{抱|かか}}える。'
 example_it: 'Kal tiene il bambino tra le braccia.'
 notes_it: >-
-  {{抱|かか}}える descrive tenere o reggere qualcosa contro il corpo. Con una
-  persona, la scena è fisica: qualcuno viene sostenuto tra le braccia.
+  {{抱|かか}}える descrive qualcosa che si tiene addosso o si porta con sé come
+  carico. Qui è fisico: Kal tiene il bambino in braccio, ma il verbo può anche
+  indicare un peso, un problema o una responsabilità che ci si porta dietro.
 tags: [crystal-hunters, book-2, lesson-02]
 :::
 

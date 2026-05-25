@@ -145,8 +145,9 @@ romaji: sasaeru
 meaning_it: sostenere; sorreggere
 pos: verb
 notes_it: >-
-  {{支|ささ}}える significa sostenere fisicamente o reggere qualcuno o qualcosa.
-  In una scena di pericolo può indicare aiutare qualcuno a non cadere.
+  {{支|ささ}}える è sostenere dando supporto o stabilità. Può essere fisico,
+  come reggere qualcuno perché non cada, oppure astratto, come sostenere una
+  persona, un gruppo o una situazione difficile.
 level_hint: n3
 :::
 
@@ -369,8 +370,9 @@ example_jp: >-
 example_it: >-
   Sostengo la donna.
 notes_it: >-
-  {{支|ささ}}える può essere fisico: qualcuno sostiene un'altra persona per non
-  farla cadere o per reggerla.
+  {{支|ささ}}える è sostenere dando supporto o stabilità. Qui è fisico:
+  qualcuno regge un'altra persona perché non cada, ma il verbo può estendersi
+  anche a supporto astratto.
 tags: [crystal-hunters, book-1, lesson-04]
 :::
 
