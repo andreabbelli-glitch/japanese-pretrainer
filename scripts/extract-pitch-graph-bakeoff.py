@@ -18,6 +18,7 @@ def main() -> None:
     parser.add_argument("--audio", required=True)
     parser.add_argument("--sample-rate", default=16000, type=int)
     parser.add_argument("--hop-ms", default=10, type=float)
+    parser.add_argument("--only-swift-f0", action="store_true")
     args = parser.parse_args()
 
     y, sample_rate = librosa.load(args.audio, sr=args.sample_rate, mono=True)
@@ -29,18 +30,21 @@ def main() -> None:
         "sampleIntervalMs": round(args.hop_ms),
     }
 
-    run_extractor(
-        result,
-        "onseiPraat",
-        lambda: extract_onsei_praat(y, sample_rate),
-        sample_interval_ms=5,
-    )
     run_swift_f0_extractors(result, y, sample_rate)
-    run_extractor(result, "worldHarvest", lambda: extract_world(y, sample_rate, args.hop_ms))
-    run_extractor(
-        result, "praatRaw", lambda: extract_praat(y, sample_rate, args.hop_ms)
-    )
-    run_extractor(result, "pyinRaw", lambda: extract_pyin(y, sample_rate, args.hop_ms))
+    if not args.only_swift_f0:
+        run_extractor(
+            result,
+            "onseiPraat",
+            lambda: extract_onsei_praat(y, sample_rate),
+            sample_interval_ms=5,
+        )
+        run_extractor(
+            result, "worldHarvest", lambda: extract_world(y, sample_rate, args.hop_ms)
+        )
+        run_extractor(
+            result, "praatRaw", lambda: extract_praat(y, sample_rate, args.hop_ms)
+        )
+        run_extractor(result, "pyinRaw", lambda: extract_pyin(y, sample_rate, args.hop_ms))
 
     print(json.dumps(result, ensure_ascii=False))
 

@@ -33,6 +33,7 @@
     "pitch-accents:fetch": "node --experimental-strip-types ./scripts/fetch-pitch-accents.ts",
     "pitch-accent:fetch-kotu-pitch-baseline": "node --experimental-strip-types ./scripts/fetch-kotu-pitch-baseline.ts",
     "pitch-accent:generate-pitch-graph-bakeoff": "node --experimental-strip-types ./scripts/generate-pitch-accent-pitch-graph-bakeoff.ts",
+    "pitch-accent:benchmark-display-variants": "node --experimental-strip-types ./scripts/generate-pitch-accent-display-variant-benchmark.ts",
     "pitch-accent:benchmark-ptdb-tug": "node --experimental-strip-types ./scripts/generate-ptdb-tug-pitch-benchmark.ts",
     "pitch-accent:import-minimal-pairs": "node --experimental-strip-types ./scripts/import-minimal-pairs.ts",
     "pitch-accent:generate-pitch-graphs": "node --experimental-strip-types ./scripts/generate-pitch-accent-pitch-graphs.ts",

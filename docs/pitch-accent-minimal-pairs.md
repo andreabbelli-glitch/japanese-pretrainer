@@ -147,6 +147,18 @@ a MAE/RMSE, Gross Pitch Error e octave error. Quando disponibili, il confronto
 e il render usano i timestamp reali degli extractor invece di assumere che ogni
 curva inizi a `t=0`.
 
+Benchmark visuale didattico per scegliere come mostrare SwiftF0 dopo errore:
+
+```sh
+./scripts/with-node.sh pnpm pitch-accent:benchmark-display-variants
+```
+
+Il report viene scritto in `.tmp/pitch-graph-display-variants/` e seleziona
+almeno 10 pair coprendo piu volte `pitch0`-`pitch4`. Per ogni audio mostra:
+SwiftF0 voiced-gated smoothed raw, una curva display con micro-gap bridging,
+scala log relativa alla mediana, asse robusto e smoothing leggero, poi la stessa
+curva con overlay teorico e infine con marker del drop atteso.
+
 La baseline Kotu e autorizzata ma opt-in. La documentazione pubblica
 [Kotu API](https://docs.kotu.io/) dichiara una superficie v2 limitata a status,
 pronunciation search e text parsing; per questo il runtime non dipende da
