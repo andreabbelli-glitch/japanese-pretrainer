@@ -41,8 +41,9 @@ romaji: o-so-u
 meaning_it: 'assalire; attaccare'
 pos: verb
 notes_it: >-
-  {{襲|おそ}}う descrive un attacco che cade su un bersaglio. Con `カルを`, Kal
-  è la persona assalita, non solo qualcuno vicino alla scena.
+  {{襲|おそ}}う non è un generico "attaccare": è assalire o colpire un bersaglio,
+  spesso all'improvviso, di sorpresa o da una posizione di forza. Con `カルを`,
+  Kal è la persona assalita, non solo qualcuno vicino alla scena.
 level_hint: n3
 :::
 
@@ -202,8 +203,9 @@ back: 'おそう — assalire; attaccare'
 example_jp: '{{怪物|かいぶつ}}がカルを{{襲|おそ}}う。'
 example_it: 'Il mostro assale Kal.'
 notes_it: >-
-  {{襲|おそ}}う descrive un attacco che cade su un bersaglio. Con `カルを`, Kal
-  è la persona assalita, non solo qualcuno vicino alla scena.
+  {{襲|おそ}}う non è un generico "attaccare": è assalire o colpire un bersaglio,
+  spesso all'improvviso, di sorpresa o da una posizione di forza. Con `カルを`,
+  Kal è la persona assalita, non solo qualcuno vicino alla scena.
 tags: [crystal-hunters, book-2, lesson-03]
 :::
 
