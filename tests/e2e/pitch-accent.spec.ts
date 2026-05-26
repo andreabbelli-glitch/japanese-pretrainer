@@ -122,7 +122,7 @@ test("stores selected Pitch Accent filters when starting a session", async ({
   }
 });
 
-test("shows interactive review pitch graphs after a wrong answer on mobile", async ({
+test("replays answer options after a wrong answer on mobile", async ({
   page
 }) => {
   await page.setViewportSize({ width: 393, height: 852 });
@@ -155,24 +155,17 @@ test("shows interactive review pitch graphs after a wrong answer on mobile", asy
 
   await wrongOptionButton.click();
   await expect(page.getByRole("status")).toContainText("Da rifare");
-  await expect(page.getByTestId(testIds.pitchAccentReviewGraph)).toHaveCount(0);
 
   const playCountBeforeReview = await readPitchAccentPlayCount(page);
   await wrongOptionButton.click();
 
-  const graph = page.getByTestId(testIds.pitchAccentReviewGraph);
-  await expect(graph).toBeVisible();
   await expect(promptAudio).toHaveAttribute("src", promptAudioSrcBeforeReview!);
-  await expect(
-    graph.locator(".pitch-accent-review-graph__playhead")
-  ).toBeVisible();
   await expect
     .poll(() => readPitchAccentPlayCount(page))
     .toBeGreaterThan(playCountBeforeReview);
 
   const playCountBeforeSwitch = await readPitchAccentPlayCount(page);
   await correctOptionButton.click();
-  await expect(graph).toContainText("Pitch Graph");
   await expect
     .poll(() => readPitchAccentPlayCount(page))
     .toBeGreaterThan(playCountBeforeSwitch);

@@ -344,8 +344,8 @@ per audit e validazione.
 
 La UI normalizza anche le letture Kuuuube con handakuten combinante sulla riga
 K (`カ゚`, `キ゚`, `ク゚`, `ケ゚`, `コ゚`) in kana sonori (`ガ`, `ギ`, `グ`,
-`ゲ`, `ゴ`). I dati upstream restano invariati, ma label e grafi pitch-accent
-non devono mostrare il segno combinante come mora separata.
+`ゲ`, `ゴ`). I dati upstream restano invariati, ma label e notazione
+pitch-accent non devono mostrare il segno combinante come mora separata.
 
 Import o refresh del vendor corpus:
 

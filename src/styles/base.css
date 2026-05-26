@@ -3982,13 +3982,6 @@ button.katakana-speed-ran-cell:disabled {
   background: rgba(241, 221, 214, 0.86);
 }
 
-.pitch-accent-option--active-review {
-  border-color: rgba(45, 110, 185, 0.78);
-  box-shadow:
-    var(--shadow-card),
-    0 0 0 3px rgba(45, 110, 185, 0.16);
-}
-
 .pitch-accent-option__content {
   min-width: 0;
   display: grid;
@@ -4023,103 +4016,6 @@ button.katakana-speed-ran-cell:disabled {
 .pitch-accent-option__play:focus-visible {
   border-color: rgba(45, 110, 185, 0.72);
   box-shadow: 0 0 0 3px rgba(45, 110, 185, 0.14);
-}
-
-.pitch-accent-review-graph {
-  width: min(100%, 44rem);
-  display: grid;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  border: 1px solid rgba(92, 92, 92, 0.28);
-  border-radius: var(--radius-lg);
-  background: rgba(31, 32, 32, 0.94);
-  color: rgba(255, 250, 242, 0.92);
-  text-align: left;
-}
-
-.pitch-accent-review-graph__header {
-  display: grid;
-  gap: var(--space-1);
-}
-
-.pitch-accent-review-graph__title {
-  margin: 0;
-  color: rgba(255, 250, 242, 0.96);
-  font-size: var(--text-lg);
-  line-height: var(--line-tight);
-}
-
-.pitch-accent-review-graph__subtitle {
-  margin: 0;
-  color: rgba(255, 250, 242, 0.58);
-  font-size: var(--text-lg);
-  line-height: var(--line-tight);
-}
-
-.pitch-accent-review-graph__plot {
-  position: relative;
-  min-width: 0;
-  min-height: 13.75rem;
-}
-
-.pitch-accent-review-graph__svg {
-  width: 100%;
-  height: 13.75rem;
-  display: block;
-  overflow: visible;
-}
-
-.pitch-accent-review-graph__grid {
-  stroke: rgba(255, 250, 242, 0.16);
-  stroke-dasharray: 4 6;
-  stroke-width: 1;
-}
-
-.pitch-accent-review-graph__axis-label {
-  fill: rgba(255, 250, 242, 0.55);
-  font-size: 0.78rem;
-  text-anchor: middle;
-}
-
-.pitch-accent-review-graph__line {
-  fill: none;
-  stroke: #d19848;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 4;
-}
-
-.pitch-accent-review-graph__playhead {
-  position: absolute;
-  top: 0.65rem;
-  bottom: 1.55rem;
-  width: 3px;
-  border-radius: 999px;
-  background: #ff5b57;
-  transform: translateX(-50%);
-}
-
-.pitch-accent-review-graph__fallback {
-  min-height: 8rem;
-  display: grid;
-  place-items: center;
-  margin: 0;
-  color: rgba(255, 250, 242, 0.64);
-}
-
-.pitch-accent-review-graph__legend {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  color: rgba(255, 250, 242, 0.58);
-  font-size: var(--text-sm);
-}
-
-.pitch-accent-review-graph__legend-dot {
-  inline-size: 0.72rem;
-  block-size: 0.72rem;
-  border-radius: 999px;
-  background: #d19848;
 }
 
 .pitch-accent-feedback {
@@ -4776,18 +4672,6 @@ button.katakana-speed-ran-cell:disabled {
   .pitch-accent-option {
     min-height: 5.5rem;
     padding: var(--space-3);
-  }
-
-  .pitch-accent-review-graph {
-    padding: var(--space-3);
-  }
-
-  .pitch-accent-review-graph__plot {
-    min-height: 11.25rem;
-  }
-
-  .pitch-accent-review-graph__svg {
-    height: 11.25rem;
   }
 
   .katakana-speed-options--rating {

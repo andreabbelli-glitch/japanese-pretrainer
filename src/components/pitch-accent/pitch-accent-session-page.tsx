@@ -9,11 +9,7 @@ import {
   abandonPitchAccentSessionAction,
   completePitchAccentSessionAction
 } from "@/actions/pitch-accent";
-import { computePitchGraphDisplayDomain } from "@/features/pitch-accent/model";
-import type {
-  PitchAccentAudioPitchGraph,
-  PitchAccentPairOption
-} from "@/features/pitch-accent/model";
+import type { PitchAccentPairOption } from "@/features/pitch-accent/model";
 import type { PitchAccentSessionPageData } from "@/features/pitch-accent/server/contracts";
 import { cx } from "@/lib/classnames";
 
@@ -25,8 +21,7 @@ import {
 } from "./pitch-accent-shared";
 import {
   usePitchAccentSessionController,
-  type PitchAccentFeedback,
-  type PitchAccentReviewPlayback
+  type PitchAccentFeedback
 } from "./use-pitch-accent-session-controller";
 
 type PitchAccentSessionPageProps = {
@@ -178,9 +173,6 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
               <div className="pitch-accent-options">
                 {currentTrial.options.map((option, index) => (
                   <PitchAccentOptionButton
-                    activeReview={
-                      controller.activeReviewGraph?.optionId === option.id
-                    }
                     disabled={
                       (!controller.feedback && controller.isSubmitting) ||
                       Boolean(controller.feedback?.isCorrect) ||
@@ -192,30 +184,11 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
                     onChoose={() =>
                       controller.handleChooseOption(option.id, "pointer")
                     }
-                    onPlay={() => controller.selectReviewGraphOption(option.id)}
+                    onPlay={() => controller.playOptionAudio(option.id)}
                     option={option}
                   />
                 ))}
               </div>
-
-              {controller.activeReviewGraph ? (
-                <PitchAccentReviewGraph
-                  graph={controller.activeReviewGraph.graph}
-                  option={controller.activeReviewGraph.option}
-                  playback={controller.reviewPlayback}
-                />
-              ) : null}
-
-              {controller.awaitingContinue ? (
-                <button
-                  className="button button--primary pitch-accent-continue"
-                  disabled={controller.isSubmitting || isSessionFinalizing}
-                  onClick={controller.handleContinue}
-                  type="button"
-                >
-                  Continua
-                </button>
-              ) : null}
 
               {controller.feedback ? (
                 <div
@@ -235,6 +208,17 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
                     {formatPitchAccentOptionLabel(correctOption)}
                   </span>
                 </div>
+              ) : null}
+
+              {controller.awaitingContinue ? (
+                <button
+                  className="button button--primary pitch-accent-continue"
+                  disabled={controller.isSubmitting || isSessionFinalizing}
+                  onClick={controller.handleContinue}
+                  type="button"
+                >
+                  Continua
+                </button>
               ) : null}
             </>
           ) : (
@@ -291,7 +275,6 @@ export function PitchAccentSessionPage({ data }: PitchAccentSessionPageProps) {
 }
 
 export function PitchAccentOptionButton({
-  activeReview = false,
   disabled,
   feedback,
   index,
@@ -299,7 +282,6 @@ export function PitchAccentOptionButton({
   onPlay,
   option
 }: {
-  readonly activeReview?: boolean;
   readonly disabled: boolean;
   readonly feedback: PitchAccentFeedback | null;
   readonly index: number;
@@ -315,7 +297,6 @@ export function PitchAccentOptionButton({
     "pitch-accent-option",
     showAudioReplay && "pitch-accent-option--review",
     showAudioReplay && "pitch-accent-option--with-play",
-    showAudioReplay && activeReview && "pitch-accent-option--active-review",
     feedback && isCorrect && "pitch-accent-option--correct",
     feedback && isChosen && !isCorrect && "pitch-accent-option--incorrect"
   );
@@ -361,186 +342,4 @@ export function PitchAccentOptionButton({
       {content}
     </button>
   );
-}
-
-export function PitchAccentReviewGraph({
-  graph,
-  option,
-  playback
-}: {
-  readonly graph: PitchAccentAudioPitchGraph | null;
-  readonly option: PitchAccentPairOption;
-  readonly playback: PitchAccentReviewPlayback;
-}) {
-  const graphData = buildReviewGraphData(graph);
-  const playbackDuration =
-    playback.durationSeconds > 0
-      ? playback.durationSeconds
-      : graph
-        ? graph.durationMs / 1000
-        : 0;
-  const playheadPercent =
-    playbackDuration > 0
-      ? clamp((playback.currentTimeSeconds / playbackDuration) * 100, 0, 100)
-      : 0;
-
-  return (
-    <section
-      className="pitch-accent-review-graph"
-      data-testid="pitch-accent-review-graph"
-    >
-      <div className="pitch-accent-review-graph__header">
-        <h2 className="pitch-accent-review-graph__title">Pitch Graph</h2>
-        <p className="pitch-accent-review-graph__subtitle jp-inline">
-          {formatPitchAccentOptionLabel(option)}
-        </p>
-      </div>
-
-      {graphData ? (
-        <div className="pitch-accent-review-graph__plot">
-          <svg
-            aria-label={`Pitch graph ${formatPitchAccentOptionLabel(option)}`}
-            className="pitch-accent-review-graph__svg"
-            focusable="false"
-            role="img"
-            viewBox="0 0 640 220"
-          >
-            {graphData.yTicks.map((tick) => (
-              <g key={`y-${tick.value}`}>
-                <line
-                  className="pitch-accent-review-graph__grid"
-                  x1={graphData.bounds.left}
-                  x2={graphData.bounds.right}
-                  y1={tick.y}
-                  y2={tick.y}
-                />
-                <text
-                  className="pitch-accent-review-graph__axis-label"
-                  x={graphData.bounds.left - 12}
-                  y={tick.y + 5}
-                >
-                  {formatPitchTick(tick.value)}
-                </text>
-              </g>
-            ))}
-            {graphData.xTicks.map((tick) => (
-              <text
-                className="pitch-accent-review-graph__axis-label"
-                key={`x-${tick.value}`}
-                x={tick.x}
-                y={graphData.bounds.bottom + 24}
-              >
-                {formatTimeTick(tick.value)}
-              </text>
-            ))}
-            {graphData.paths.map((path, index) => (
-              <path
-                className="pitch-accent-review-graph__line"
-                d={path}
-                key={index}
-              />
-            ))}
-          </svg>
-          <span
-            aria-hidden="true"
-            className="pitch-accent-review-graph__playhead"
-            style={{ left: `${roundGraphPercent(playheadPercent)}%` }}
-          />
-        </div>
-      ) : (
-        <p className="pitch-accent-review-graph__fallback">
-          Pitch graph non disponibile.
-        </p>
-      )}
-
-      <div className="pitch-accent-review-graph__legend" aria-hidden="true">
-        <span className="pitch-accent-review-graph__legend-dot" />
-        <span>Pitch</span>
-      </div>
-    </section>
-  );
-}
-
-function buildReviewGraphData(graph: PitchAccentAudioPitchGraph | null) {
-  const displayDomain = computePitchGraphDisplayDomain(graph);
-  const voicedValues = graph?.values.filter(
-    (value): value is number =>
-      typeof value === "number" && Number.isFinite(value)
-  );
-
-  if (!graph || !displayDomain || !voicedValues || voicedValues.length === 0) {
-    return null;
-  }
-
-  const minYValue = displayDomain.minYValue;
-  const maxYValue = displayDomain.maxYValue;
-  const range = Math.max(maxYValue - minYValue, 1);
-  const durationSeconds = Math.max(graph.durationMs / 1000, 0.01);
-  const bounds = {
-    bottom: 176,
-    left: 58,
-    right: 612,
-    top: 20
-  };
-  const width = bounds.right - bounds.left;
-  const height = bounds.bottom - bounds.top;
-  const valueToY = (value: number) =>
-    bounds.bottom - ((value - minYValue) / range) * height;
-  const indexToX = (index: number) => {
-    const timeSeconds = (index * graph.sampleIntervalMs) / 1000;
-
-    return bounds.left + (timeSeconds / durationSeconds) * width;
-  };
-  const paths: string[] = [];
-  let currentPath = "";
-
-  graph.values.forEach((value, index) => {
-    if (typeof value !== "number" || !Number.isFinite(value)) {
-      if (currentPath) {
-        paths.push(currentPath);
-        currentPath = "";
-      }
-      return;
-    }
-
-    const x = roundCoordinate(indexToX(index));
-    const y = roundCoordinate(valueToY(value));
-    currentPath = currentPath ? `${currentPath} L ${x} ${y}` : `M ${x} ${y}`;
-  });
-  if (currentPath) {
-    paths.push(currentPath);
-  }
-
-  return {
-    bounds,
-    paths,
-    xTicks: [0, durationSeconds / 2, durationSeconds].map((value) => ({
-      value,
-      x: bounds.left + (value / durationSeconds) * width
-    })),
-    yTicks: displayDomain.ticks.map((value) => ({
-      value,
-      y: valueToY(value)
-    }))
-  };
-}
-
-function formatPitchTick(value: number) {
-  return value.toFixed(1);
-}
-
-function formatTimeTick(value: number) {
-  return value === 0 ? "0s" : `${value.toFixed(2)}s`;
-}
-
-function roundCoordinate(value: number) {
-  return Number.parseFloat(value.toFixed(2));
-}
-
-function roundGraphPercent(value: number) {
-  return Number.parseFloat(value.toFixed(2));
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value));
 }

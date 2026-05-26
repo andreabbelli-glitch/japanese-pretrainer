@@ -116,7 +116,7 @@ describe("pitch accent session controller interactions", () => {
     expect(audio.play).not.toHaveBeenCalled();
   });
 
-  it("keeps the review graph hidden until an incorrect option is selected for review", async () => {
+  it("replays option audio after an incorrect answer without replacing prompt audio", async () => {
     mocks.submitPitchAccentAnswerAction.mockResolvedValue({
       chosenOptionId: "pair-a:0",
       correctOptionId: "pair-a:1",
@@ -137,66 +137,29 @@ describe("pitch accent session controller interactions", () => {
     });
 
     expect(controller().feedback?.isCorrect).toBe(false);
-    expect(controller().activeReviewGraph).toBeNull();
 
     vi.mocked(audio.play).mockClear();
     vi.mocked(reviewAudio.play).mockClear();
 
     await act(async () => {
-      controller().selectReviewGraphOption("pair-a:0");
+      controller().playOptionAudio("pair-a:0");
       await Promise.resolve();
     });
 
-    expect(controller().activeReviewGraph?.optionId).toBe("pair-a:0");
-    expect(controller().activeReviewGraph?.graph).toMatchObject({
-      durationMs: 500,
-      sampleIntervalMs: 10,
-      values: [120, 132, null, 140]
-    });
     expect(reviewAudio.src).toBe("/vendor/minimal-pairs/audio/pair-a/0.aac");
     expect(reviewAudio.play).toHaveBeenCalledTimes(1);
     expect(audio.src).toBe("/vendor/minimal-pairs/audio/pair-a/1.aac");
     expect(audio.play).not.toHaveBeenCalled();
   });
 
-  it("tracks review graph playhead time from the active audio element", async () => {
-    mocks.submitPitchAccentAnswerAction.mockResolvedValue({
-      chosenOptionId: "pair-a:0",
-      correctOptionId: "pair-a:1",
-      idempotent: false,
-      isCorrect: false
-    });
-    const audio = createAudioElementStub();
-    const reviewAudio = createAudioElementStub();
-    const { controller } = await renderController({
-      audioElement: audio,
-      reviewAudioElement: reviewAudio,
-      pauseAfterCorrect: true
-    });
-
-    await act(async () => {
-      dispatchWindowKeyboardEvent("1");
-      await Promise.resolve();
-      controller().selectReviewGraphOption("pair-a:1");
-      await Promise.resolve();
-    });
-
-    await act(async () => {
-      (reviewAudio as HTMLAudioElement & { duration: number }).duration = 0.5;
-      reviewAudio.currentTime = 0.25;
-      dispatchAudioElementEvent(reviewAudio, "timeupdate");
-      await Promise.resolve();
-    });
-
-    expect(controller().reviewPlayback.currentTimeSeconds).toBe(0.25);
-    expect(controller().reviewPlayback.durationSeconds).toBe(0.5);
-  });
-
   it("shows answer feedback before the submission roundtrip finishes", async () => {
-    const pendingSubmission = createDeferred<
-      Awaited<ReturnType<typeof mocks.submitPitchAccentAnswerAction>>
-    >();
-    mocks.submitPitchAccentAnswerAction.mockReturnValue(pendingSubmission.promise);
+    const pendingSubmission =
+      createDeferred<
+        Awaited<ReturnType<typeof mocks.submitPitchAccentAnswerAction>>
+      >();
+    mocks.submitPitchAccentAnswerAction.mockReturnValue(
+      pendingSubmission.promise
+    );
     const { controller } = await renderController({
       audioElement: createAudioElementStub(),
       reviewAudioElement: createAudioElementStub(),
@@ -433,14 +396,6 @@ function createDeferred<T>() {
   };
 }
 
-function dispatchAudioElementEvent(audio: HTMLAudioElement, type: string) {
-  (
-    audio as HTMLAudioElement & {
-      dispatchPitchAccentTestEvent: (type: string) => void;
-    }
-  ).dispatchPitchAccentTestEvent(type);
-}
-
 function buildSession(): PitchAccentSessionPageData {
   return {
     answeredCount: 0,
@@ -452,18 +407,6 @@ function buildSession(): PitchAccentSessionPageData {
     sessionId: "pitch-accent-session-ui",
     startedAt: "2026-05-25T08:00:00.000Z",
     status: "active",
-    pitchGraphsByAudioSrc: {
-      "/vendor/minimal-pairs/audio/pair-a/0.aac": {
-        durationMs: 500,
-        sampleIntervalMs: 10,
-        values: [120, 132, null, 140]
-      },
-      "/vendor/minimal-pairs/audio/pair-a/1.aac": {
-        durationMs: 500,
-        sampleIntervalMs: 10,
-        values: [170, 150, null, 130]
-      }
-    },
     trials: [
       {
         correctOptionId: "pair-a:1",

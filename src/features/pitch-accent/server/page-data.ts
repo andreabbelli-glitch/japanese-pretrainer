@@ -5,17 +5,12 @@ import {
   listPitchAccentTrialRowsBySession,
   listRecentPitchAccentSessionRows
 } from "@/db/queries";
-import type { PitchAccentAudioPitchGraph } from "@/features/pitch-accent/model";
 
-import {
-  loadPitchAccentMinimalPairsCorpus,
-  loadPitchAccentPitchGraphs
-} from "./corpus";
+import { loadPitchAccentMinimalPairsCorpus } from "./corpus";
 import type {
   PitchAccentPageData,
   PitchAccentRecapPageData,
-  PitchAccentSessionPageData,
-  PitchAccentTrialSnapshot
+  PitchAccentSessionPageData
 } from "./contracts";
 import {
   mapPitchAccentAttemptRow,
@@ -55,23 +50,18 @@ export async function getPitchAccentSessionPageData(input: {
     return null;
   }
 
-  const [trials, pitchGraphsByAudioSrc] = await Promise.all([
-    listPitchAccentTrialRowsBySession(database, input.sessionId),
-    loadPitchAccentPitchGraphs()
-  ]);
-  const trialSnapshots = trials.map(mapPitchAccentTrialRow);
+  const trials = await listPitchAccentTrialRowsBySession(
+    database,
+    input.sessionId
+  );
 
   return {
     answeredCount: trials.filter((trial) => trial.status === "answered").length,
     filters: mapPitchAccentSessionSummary(session).filters,
-    pitchGraphsByAudioSrc: pickSessionPitchGraphs(
-      trialSnapshots,
-      pitchGraphsByAudioSrc
-    ),
     sessionId: session.id,
     startedAt: session.startedAt,
     status: session.status,
-    trials: trialSnapshots
+    trials: trials.map(mapPitchAccentTrialRow)
   };
 }
 
@@ -94,23 +84,4 @@ export async function getPitchAccentRecapPageData(input: {
     attempts: attempts.map(mapPitchAccentAttemptRow),
     session: mapPitchAccentSessionSummary(session)
   };
-}
-
-function pickSessionPitchGraphs(
-  trials: readonly PitchAccentTrialSnapshot[],
-  pitchGraphsByAudioSrc: Readonly<Record<string, PitchAccentAudioPitchGraph>>
-) {
-  const graphs: Record<string, PitchAccentAudioPitchGraph> = {};
-
-  for (const trial of trials) {
-    for (const option of trial.options) {
-      const graph = pitchGraphsByAudioSrc[option.audioSrc];
-
-      if (graph) {
-        graphs[option.audioSrc] = graph;
-      }
-    }
-  }
-
-  return graphs;
 }

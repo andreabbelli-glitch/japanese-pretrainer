@@ -11,7 +11,6 @@ import {
 
 import { submitPitchAccentAnswerAction } from "@/actions/pitch-accent";
 import type {
-  PitchAccentAudioPitchGraph,
   PitchAccentPairOption,
   PitchAccentSessionTrialPlan
 } from "@/features/pitch-accent/model";
@@ -35,20 +34,7 @@ export type PitchAccentAudioModifiers = {
   readonly noise: boolean;
 };
 
-export type PitchAccentActiveReviewGraph = {
-  readonly graph: PitchAccentAudioPitchGraph | null;
-  readonly option: PitchAccentPairOption;
-  readonly optionId: string;
-};
-
-export type PitchAccentReviewPlayback = {
-  readonly currentTimeSeconds: number;
-  readonly durationSeconds: number;
-  readonly isPlaying: boolean;
-};
-
 export type PitchAccentSessionControllerResult = {
-  readonly activeReviewGraph: PitchAccentActiveReviewGraph | null;
   readonly awaitingContinue: boolean;
   readonly clientError: string | null;
   readonly completed: boolean;
@@ -63,9 +49,7 @@ export type PitchAccentSessionControllerResult = {
   readonly isSubmitting: boolean;
   readonly playOptionAudio: (optionId: string) => void;
   readonly progressPercent: number;
-  readonly reviewPlayback: PitchAccentReviewPlayback;
   readonly replayCurrentAudio: () => void;
-  readonly selectReviewGraphOption: (optionId: string) => void;
   readonly totalTrials: number;
 };
 
@@ -87,14 +71,8 @@ export function usePitchAccentSessionController(
   const [clientError, setClientError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [awaitingContinue, setAwaitingContinue] = useState(false);
-  const [activeReviewGraphOptionId, setActiveReviewGraphOptionId] = useState<
-    string | null
-  >(null);
-  const [reviewPlayback, setReviewPlayback] =
-    useState<PitchAccentReviewPlayback>(emptyReviewPlayback);
   const autoAdvanceTimeoutRef = useRef<number | null>(null);
   const autoplayedTrialIdRef = useRef<string | null>(null);
-  const reviewAnimationFrameRef = useRef<number | null>(null);
   const primaryModifiedAudioUrlRef = useRef<string | null>(null);
   const reviewModifiedAudioUrlRef = useRef<string | null>(null);
   const presentedAtRef = useRef(0);
@@ -105,29 +83,6 @@ export function usePitchAccentSessionController(
   const activeFeedback =
     feedback?.trialId === currentTrial?.trialId ? feedback : null;
   const activeAwaitingContinue = awaitingContinue && activeFeedback !== null;
-  const activeReviewGraph = useMemo((): PitchAccentActiveReviewGraph | null => {
-    if (!currentTrial || !activeReviewGraphOptionId || !activeFeedback) {
-      return null;
-    }
-
-    const option = currentTrial.options.find(
-      (candidate) => candidate.id === activeReviewGraphOptionId
-    );
-    if (!option) {
-      return null;
-    }
-
-    return {
-      graph: session.pitchGraphsByAudioSrc[option.audioSrc] ?? null,
-      option,
-      optionId: option.id
-    };
-  }, [
-    activeFeedback,
-    activeReviewGraphOptionId,
-    currentTrial,
-    session.pitchGraphsByAudioSrc
-  ]);
   const nextCorrectAudio = session.trials[currentIndex + 1]?.options.find(
     (option) => option.id === session.trials[currentIndex + 1]?.correctOptionId
   )?.audioSrc;
@@ -135,14 +90,12 @@ export function usePitchAccentSessionController(
 
   useEffect(() => {
     clearAutoAdvanceTimeout(autoAdvanceTimeoutRef);
-    cancelReviewAnimationFrame(reviewAnimationFrameRef);
     presentedAtRef.current = performance.now();
   }, [currentTrial?.trialId]);
 
   useEffect(
     () => () => {
       clearAutoAdvanceTimeout(autoAdvanceTimeoutRef);
-      cancelReviewAnimationFrame(reviewAnimationFrameRef);
       revokeModifiedAudioUrl(primaryModifiedAudioUrlRef);
       revokeModifiedAudioUrl(reviewModifiedAudioUrlRef);
     },
@@ -265,38 +218,15 @@ export function usePitchAccentSessionController(
     });
   }, [currentTrial, input.audioElement, muffle, noise]);
 
-  const selectReviewGraphOption = useCallback(
-    (optionId: string) => {
-      if (!currentTrial || !activeFeedback || activeFeedback.isCorrect) {
-        return;
-      }
-
-      const option = currentTrial.options.find(
-        (candidate) => candidate.id === optionId
-      );
-      if (!option) {
-        return;
-      }
-
-      setActiveReviewGraphOptionId(option.id);
-      setReviewPlayback(emptyReviewPlayback);
-      playReviewAudioOption(option);
-    },
-    [activeFeedback, currentTrial, playReviewAudioOption]
-  );
-
   const handleContinue = useCallback(() => {
     if (submittingRef.current) {
       return;
     }
 
     clearAutoAdvanceTimeout(autoAdvanceTimeoutRef);
-    cancelReviewAnimationFrame(reviewAnimationFrameRef);
     stopAudioElement(input.reviewAudioElement ?? null);
     setFeedback(null);
     setAwaitingContinue(false);
-    setActiveReviewGraphOptionId(null);
-    setReviewPlayback(emptyReviewPlayback);
     const nextTrial = session.trials[currentIndex + 1] ?? null;
     const nextCorrectOption = nextTrial
       ? nextTrial.options.find(
@@ -340,8 +270,6 @@ export function usePitchAccentSessionController(
       };
 
       setFeedback(optimisticFeedback);
-      setActiveReviewGraphOptionId(null);
-      setReviewPlayback(emptyReviewPlayback);
       setAwaitingContinue(
         !optimisticFeedback.isCorrect || input.pauseAfterCorrect
       );
@@ -361,8 +289,6 @@ export function usePitchAccentSessionController(
             responseMs,
             trialId: currentTrial.trialId
           });
-          setActiveReviewGraphOptionId(null);
-          setReviewPlayback(emptyReviewPlayback);
           const shouldAwaitContinue =
             !result.isCorrect || input.pauseAfterCorrect;
           setAwaitingContinue(shouldAwaitContinue);
@@ -441,63 +367,8 @@ export function usePitchAccentSessionController(
     replayCurrentAudio
   ]);
 
-  useEffect(() => {
-    const audioElement = input.reviewAudioElement;
-
-    if (!audioElement) {
-      return;
-    }
-
-    const readPlayback = (): PitchAccentReviewPlayback => ({
-      currentTimeSeconds: Number.isFinite(audioElement.currentTime)
-        ? audioElement.currentTime
-        : 0,
-      durationSeconds: Number.isFinite(audioElement.duration)
-        ? audioElement.duration
-        : activeReviewGraph?.graph
-          ? activeReviewGraph.graph.durationMs / 1000
-          : 0,
-      isPlaying: !audioElement.paused && !audioElement.ended
-    });
-    const syncPlayback = () => {
-      setReviewPlayback(readPlayback());
-    };
-    const stopAnimationFrame = () => {
-      cancelReviewAnimationFrame(reviewAnimationFrameRef);
-      syncPlayback();
-    };
-    const startAnimationFrame = () => {
-      cancelReviewAnimationFrame(reviewAnimationFrameRef);
-
-      const tick = () => {
-        syncPlayback();
-        reviewAnimationFrameRef.current = window.requestAnimationFrame(tick);
-      };
-
-      reviewAnimationFrameRef.current = window.requestAnimationFrame(tick);
-    };
-
-    audioElement.addEventListener("durationchange", syncPlayback);
-    audioElement.addEventListener("loadedmetadata", syncPlayback);
-    audioElement.addEventListener("timeupdate", syncPlayback);
-    audioElement.addEventListener("play", startAnimationFrame);
-    audioElement.addEventListener("pause", stopAnimationFrame);
-    audioElement.addEventListener("ended", stopAnimationFrame);
-
-    return () => {
-      audioElement.removeEventListener("durationchange", syncPlayback);
-      audioElement.removeEventListener("loadedmetadata", syncPlayback);
-      audioElement.removeEventListener("timeupdate", syncPlayback);
-      audioElement.removeEventListener("play", startAnimationFrame);
-      audioElement.removeEventListener("pause", stopAnimationFrame);
-      audioElement.removeEventListener("ended", stopAnimationFrame);
-      cancelReviewAnimationFrame(reviewAnimationFrameRef);
-    };
-  }, [activeReviewGraph?.graph, input.reviewAudioElement]);
-
   return useMemo(
     () => ({
-      activeReviewGraph,
       awaitingContinue: activeAwaitingContinue,
       clientError,
       completed,
@@ -514,13 +385,10 @@ export function usePitchAccentSessionController(
               (Math.min(currentIndex, totalTrials) / totalTrials) * 100
             )
           : 0,
-      reviewPlayback,
       replayCurrentAudio,
-      selectReviewGraphOption,
       totalTrials
     }),
     [
-      activeReviewGraph,
       activeAwaitingContinue,
       activeFeedback,
       clientError,
@@ -531,19 +399,11 @@ export function usePitchAccentSessionController(
       handleContinue,
       isSubmitting,
       playOptionAudio,
-      reviewPlayback,
       replayCurrentAudio,
-      selectReviewGraphOption,
       totalTrials
     ]
   );
 }
-
-const emptyReviewPlayback: PitchAccentReviewPlayback = {
-  currentTimeSeconds: 0,
-  durationSeconds: 0,
-  isPlaying: false
-};
 
 async function playAudioElementOption(
   audioElement: HTMLAudioElement,
@@ -664,15 +524,6 @@ function clearAutoAdvanceTimeout(
   if (autoAdvanceTimeoutRef.current !== null) {
     window.clearTimeout(autoAdvanceTimeoutRef.current);
     autoAdvanceTimeoutRef.current = null;
-  }
-}
-
-function cancelReviewAnimationFrame(
-  reviewAnimationFrameRef: MutableRefObject<number | null>
-) {
-  if (reviewAnimationFrameRef.current !== null) {
-    window.cancelAnimationFrame(reviewAnimationFrameRef.current);
-    reviewAnimationFrameRef.current = null;
   }
 }
 

@@ -27,7 +27,6 @@ export const testIds = {
   pitchAccentAttemptRow: "pitch-accent-attempt-row",
   pitchAccentOption: "pitch-accent-option",
   pitchAccentRecap: "pitch-accent-recap",
-  pitchAccentReviewGraph: "pitch-accent-review-graph",
   pitchAccentStage: "pitch-accent-stage",
   pitchAccentTop: "pitch-accent-top",
   readerArticle: "reader-article",

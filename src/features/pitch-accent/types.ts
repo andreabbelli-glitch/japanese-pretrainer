@@ -32,44 +32,6 @@ export type PitchAccentPairOption = {
   readonly surface?: string;
 };
 
-export type PitchAccentPitchGraphExtractor =
-  | "autocorrelation-v1"
-  | "kotu-api"
-  | "onsei-praat"
-  | "praat"
-  | "pyin"
-  | "swift-f0-normalized"
-  | "swift-f0-raw"
-  | "swift-f0-smoothed"
-  | "world-harvest";
-
-export type PitchAccentPitchGraphRenderStrategy =
-  | "local-improved"
-  | "local-kotu-like"
-  | "strict-v1";
-
-export type PitchAccentExpectedAccentOverlay = {
-  readonly sampleIntervalMs: number;
-  readonly values: readonly (0 | 1 | null)[];
-};
-
-export type PitchAccentAudioPitchGraph = {
-  readonly durationMs: number;
-  readonly expectedAccentOverlay?: PitchAccentExpectedAccentOverlay;
-  readonly extractor?: PitchAccentPitchGraphExtractor;
-  readonly qualityScore?: number;
-  readonly rawValues?: readonly (number | null)[];
-  readonly renderStrategy?: PitchAccentPitchGraphRenderStrategy;
-  readonly sampleIntervalMs: number;
-  readonly values: readonly (number | null)[];
-  readonly version?: 2;
-};
-
-export type PitchAccentPitchGraphManifest = {
-  readonly graphs: Readonly<Record<string, PitchAccentAudioPitchGraph>>;
-  readonly version: 1 | 2;
-};
-
 export type PitchAccentMinimalPair = {
   readonly hasDevoiced: boolean;
   readonly id: string;
