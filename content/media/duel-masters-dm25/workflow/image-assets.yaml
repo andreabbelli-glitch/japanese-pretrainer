@@ -170,6 +170,26 @@ assets:
       [{{対戦開始|たい.せん.かい.し}}](term:term-start-match).
     notes: >-
       Screenshot fornito dall'utente e copiato da Downloads.
+  - id: duel-plays-kpg-legend-skill-stage-select
+    src: assets/ui/kpg-legend-skill-stage-select.jpg
+    source_type: screenshot
+    width: 1280
+    height: 590
+    lesson_slug: live-duel-encounters-kpg-legend-skill
+    anchor: "### 1. La frase della Legend Skill parte dalla finestra del turno"
+    alt_it: >-
+      Schermata stage select di デュエプレ contro KPG con pannello
+      レジェンドスキル, testo su turno del player, scudi a tre o meno, prima
+      carta eseguita e costo ridotto di cinque.
+    caption_it: >-
+      La [レジェンドスキル](term:term-legend-skill) usa una frase a catena:
+      プレイヤーのターン[{{中|ちゅう}}](grammar:grammar-ui-chuu), シールドが
+      {{3|みっ}}つ[{{以下|いか}}](grammar:grammar-ika-ijou)なら,
+      {{初|はじ}}めて[{{実行|じっこう}}する](term:term-jikkou-suru)カードの
+      [コスト](term:term-cost)を{{5|ご}}
+      [{{少|すく}}なくする](term:term-sukunaku-suru)。
+    notes: >-
+      Screenshot fornito dall'utente.
   - id: duel-plays-reward-claim-popup
     src: assets/ui/reward-claim-popup.png
     source_type: screenshot

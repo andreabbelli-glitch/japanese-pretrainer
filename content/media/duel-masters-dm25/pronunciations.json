@@ -2057,6 +2057,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-jikkou-suru",
+      "audio_src": "assets/audio/term/term-jikkou-suru/forvo-kawachimori-し-っこうする.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "kawachimori",
+      "audio_attribution": "kawachimori via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%98%E3%81%A3%E3%81%93%E3%81%86%E3%81%99%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-jishin",
       "audio_src": "assets/audio/term/term-jishin/forvo-manual-し-しん.mp3",
       "audio_source": "forvo",
