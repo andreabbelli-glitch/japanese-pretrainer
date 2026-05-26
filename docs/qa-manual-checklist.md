@@ -96,7 +96,9 @@
   `public/vendor/minimal-pairs`, il replay `r` usa l'audio corrente e non resta
   bloccato sul trial precedente dopo modifier o avanzamento.
 - `Pitch Accent`: tasti `1`-`3` e click sulle opzioni salvano il tentativo; se
-  `Pausa dopo corretto` e attivo, `Space` avanza dopo feedback.
+  il feedback e errato, `1`-`3` riascoltano le opzioni senza risottomettere e
+  `r` resta sull'audio originale. Se `Pausa dopo corretto` e attivo, `Space`
+  avanza dopo feedback.
 - `Pitch Accent`: `Abbandona e salva recap` e il completamento naturale portano
   a `/pitch-accent/recap/[sessionId]`, con attempt log persistito anche dopo
   reload.

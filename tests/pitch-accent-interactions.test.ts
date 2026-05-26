@@ -152,6 +152,61 @@ describe("pitch accent session controller interactions", () => {
     expect(audio.play).not.toHaveBeenCalled();
   });
 
+  it("uses number keys as option audio replay shortcuts after an incorrect answer", async () => {
+    mocks.submitPitchAccentAnswerAction.mockResolvedValue({
+      chosenOptionId: "pair-a:0",
+      correctOptionId: "pair-a:1",
+      idempotent: false,
+      isCorrect: false
+    });
+    const audio = createAudioElementStub();
+    const reviewAudio = createAudioElementStub();
+    const { controller } = await renderController({
+      audioElement: audio,
+      reviewAudioElement: reviewAudio,
+      pauseAfterCorrect: true
+    });
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("1");
+      await Promise.resolve();
+    });
+
+    expect(controller().feedback?.isCorrect).toBe(false);
+    expect(mocks.submitPitchAccentAnswerAction).toHaveBeenCalledTimes(1);
+
+    vi.mocked(audio.play).mockClear();
+    vi.mocked(reviewAudio.play).mockClear();
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("1");
+      await Promise.resolve();
+    });
+
+    expect(reviewAudio.src).toBe("/vendor/minimal-pairs/audio/pair-a/0.aac");
+    expect(reviewAudio.play).toHaveBeenCalledTimes(1);
+    expect(audio.src).toBe("/vendor/minimal-pairs/audio/pair-a/1.aac");
+    expect(audio.play).not.toHaveBeenCalled();
+    expect(mocks.submitPitchAccentAnswerAction).toHaveBeenCalledTimes(1);
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("2");
+      await Promise.resolve();
+    });
+
+    expect(reviewAudio.src).toBe("/vendor/minimal-pairs/audio/pair-a/1.aac");
+    expect(reviewAudio.play).toHaveBeenCalledTimes(2);
+    expect(audio.play).not.toHaveBeenCalled();
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("r");
+      await Promise.resolve();
+    });
+
+    expect(audio.src).toBe("/vendor/minimal-pairs/audio/pair-a/1.aac");
+    expect(audio.play).toHaveBeenCalledTimes(1);
+  });
+
   it("shows answer feedback before the submission roundtrip finishes", async () => {
     const pendingSubmission =
       createDeferred<

@@ -10,7 +10,9 @@ coppie minime finite, con corpus vendorizzato e audio statico offline.
   `Solo coppie con devoicing`, `Coppie solo tra pattern selezionati`, CTA di
   avvio e link alla sessione/recap piu recente.
 - `/pitch-accent/session/[sessionId]`: sessione focalizzata da 20 trial con
-  audio, replay, scorciatoie `1`/`2`/`3`, `r` e `Space`.
+  audio, replay, scorciatoie `1`/`2`/`3`, `r` e `Space`. Prima del feedback
+  `1`/`2`/`3` scelgono la risposta; dopo un errore riascoltano le opzioni,
+  mentre `r` resta sul prompt originale.
 - `/pitch-accent/recap/[sessionId]`: recap persistito con accuratezza globale,
   breakdown per pattern e log tentativi.
 

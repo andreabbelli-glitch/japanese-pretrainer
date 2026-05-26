@@ -350,6 +350,12 @@ export function usePitchAccentSessionController(
 
       const optionIndex = Number.parseInt(event.key, 10) - 1;
       const option = currentTrial?.options[optionIndex];
+      if (option && activeFeedback && !activeFeedback.isCorrect) {
+        event.preventDefault();
+        playOptionAudio(option.id);
+        return;
+      }
+
       if (option && !activeFeedback) {
         event.preventDefault();
         handleChooseOption(option.id, "keyboard");
@@ -364,6 +370,7 @@ export function usePitchAccentSessionController(
     currentTrial,
     handleChooseOption,
     handleContinue,
+    playOptionAudio,
     replayCurrentAudio
   ]);
 
