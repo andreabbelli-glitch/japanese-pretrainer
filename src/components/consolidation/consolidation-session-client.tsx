@@ -16,6 +16,10 @@ import {
 } from "@/lib/consolidation";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
 
+import {
+  isActivationKeyboardTarget,
+  isEditableKeyboardTarget
+} from "../katakana-speed/keyboard-targets";
 import styles from "./consolidation-session.module.css";
 import { useConsolidationMeaningAudio } from "./use-consolidation-meaning-audio";
 
@@ -90,12 +94,48 @@ export function ConsolidationSessionClient({
 
   useEffect(() => clearSessionTimers, [clearSessionTimers]);
 
-  const scheduleNext = (callback: () => void) => {
+  const scheduleNext = useCallback((callback: () => void) => {
     const timer = window.setTimeout(callback, FEEDBACK_MS);
     timersRef.current.push(timer);
-  };
+  }, []);
 
-  const handleAnswer = async (option: ConsolidationOption) => {
+  const applyAnswerResult = useCallback((result: ConsolidationAnswerResult) => {
+    if (result.completed) {
+      setQueue((current) =>
+        current.filter((subjectKey) => subjectKey !== result.subjectKey)
+      );
+      setStepIndex(0);
+      setFeedback(null);
+      setIsSubmitting(false);
+      setPhase("retrieval");
+      return;
+    }
+
+    if (result.correct && result.nextStep === "meaning") {
+      setStepIndex((current) => current + 1);
+      setFeedback(null);
+      setIsSubmitting(false);
+      setPhase("retrieval");
+      return;
+    }
+
+    setQueue((current) =>
+      reinsertSubject(current, result.subjectKey, result.reinsertionIndex)
+    );
+    setSubjects((current) =>
+      current.map((subject) =>
+        subject.subjectKey === result.subjectKey
+          ? advanceSubjectAttempt(subject, result.attemptCount)
+          : subject
+      )
+    );
+    setStepIndex(0);
+    setFeedback(null);
+    setIsSubmitting(false);
+    setPhase("retrieval");
+  }, []);
+
+  const handleAnswer = useCallback(async (option: ConsolidationOption) => {
     if (
       !currentSubject ||
       !currentStep ||
@@ -140,7 +180,50 @@ export function ConsolidationSessionClient({
         setPhase("answering");
       });
     }
-  };
+  }, [
+    applyAnswerResult,
+    currentStep,
+    currentSubject,
+    isSubmitting,
+    phase,
+    scheduleNext
+  ]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (
+        event.defaultPrevented ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.altKey ||
+        isEditableKeyboardTarget(event.target) ||
+        isActivationKeyboardTarget(event.target)
+      ) {
+        return;
+      }
+
+      if (phase !== "answering" || isSubmitting || !currentStep) {
+        return;
+      }
+
+      if (!/^[1-4]$/.test(event.key)) {
+        return;
+      }
+
+      const optionIndex = Number.parseInt(event.key, 10) - 1;
+      const option = currentStep.options[optionIndex];
+
+      if (!option) {
+        return;
+      }
+
+      event.preventDefault();
+      void handleAnswer(option);
+    };
+
+    window.addEventListener("keydown", handleKeyDown, true);
+    return () => window.removeEventListener("keydown", handleKeyDown, true);
+  }, [currentStep, handleAnswer, isSubmitting, phase]);
 
   const handleMarkKnown = async () => {
     if (
@@ -177,42 +260,6 @@ export function ConsolidationSessionClient({
         setPhase("answering");
       });
     }
-  };
-
-  const applyAnswerResult = (result: ConsolidationAnswerResult) => {
-    if (result.completed) {
-      setQueue((current) =>
-        current.filter((subjectKey) => subjectKey !== result.subjectKey)
-      );
-      setStepIndex(0);
-      setFeedback(null);
-      setIsSubmitting(false);
-      setPhase("retrieval");
-      return;
-    }
-
-    if (result.correct && result.nextStep === "meaning") {
-      setStepIndex((current) => current + 1);
-      setFeedback(null);
-      setIsSubmitting(false);
-      setPhase("retrieval");
-      return;
-    }
-
-    setQueue((current) =>
-      reinsertSubject(current, result.subjectKey, result.reinsertionIndex)
-    );
-    setSubjects((current) =>
-      current.map((subject) =>
-        subject.subjectKey === result.subjectKey
-          ? advanceSubjectAttempt(subject, result.attemptCount)
-          : subject
-      )
-    );
-    setStepIndex(0);
-    setFeedback(null);
-    setIsSubmitting(false);
-    setPhase("retrieval");
   };
 
   if (completed) {

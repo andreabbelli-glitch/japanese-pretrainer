@@ -2,7 +2,11 @@ import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { installMinimalDom, uninstallMinimalDom } from "./helpers/minimal-dom";
+import {
+  dispatchWindowKeyboardEvent,
+  installMinimalDom,
+  uninstallMinimalDom
+} from "./helpers/minimal-dom";
 
 import type { ConsolidationSessionData } from "@/lib/consolidation";
 
@@ -152,6 +156,46 @@ describe("ConsolidationSessionClient", () => {
     });
 
     expect(container?.textContent).not.toContain("Già nota");
+  });
+
+  it("submits visible answers with number keys during the answering phase", async () => {
+    mocks.submitConsolidationAnswerAction.mockResolvedValue({
+      attemptCount: 1,
+      completed: false,
+      correct: false,
+      nextStep: "reading",
+      reinsertionIndex: 0,
+      subjectKey: "entry:term:term-yomu"
+    });
+
+    await act(async () => {
+      root!.render(
+        createElement(ConsolidationSessionClient, { data: buildData() })
+      );
+    });
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("2");
+      await Promise.resolve();
+    });
+
+    expect(mocks.submitConsolidationAnswerAction).not.toHaveBeenCalled();
+
+    await act(async () => {
+      vi.advanceTimersByTime(2000);
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("2");
+      await Promise.resolve();
+    });
+
+    expect(mocks.submitConsolidationAnswerAction).toHaveBeenCalledWith({
+      selectedSubjectKey: "entry:term:term-kaku",
+      step: "reading",
+      subjectKey: "entry:term:term-yomu"
+    });
   });
 });
 
