@@ -97,8 +97,8 @@ test("stores selected Pitch Accent filters when starting a session", async ({
   await installMediaStubs(page);
   await page.goto("/pitch-accent");
 
-  await page.getByLabel("Solo devoicing").check();
-  await page.getByLabel("Strict pair finding").check();
+  await page.getByLabel("Solo coppie con devoicing").check();
+  await page.getByLabel("Coppie solo tra pattern selezionati").check();
   await page.getByRole("button", { name: "Avvia sessione" }).click();
   await expect(page).toHaveURL(/\/pitch-accent\/session\/[^/]+$/);
 

@@ -6,8 +6,9 @@ coppie minime finite, con corpus vendorizzato e audio statico offline.
 
 ## Superfici
 
-- `/pitch-accent`: dashboard con filtri per pattern, `Solo devoicing`,
-  `Strict pair finding`, CTA di avvio e link alla sessione/recap piu recente.
+- `/pitch-accent`: dashboard con filtri per pattern,
+  `Solo coppie con devoicing`, `Coppie solo tra pattern selezionati`, CTA di
+  avvio e link alla sessione/recap piu recente.
 - `/pitch-accent/session/[sessionId]`: sessione focalizzata da 20 trial con
   audio, replay, scorciatoie `1`/`2`/`3`, `r` e `Space`.
 - `/pitch-accent/recap/[sessionId]`: recap persistito con accuratezza globale,

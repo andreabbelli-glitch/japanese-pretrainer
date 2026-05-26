@@ -154,7 +154,7 @@ export function PitchAccentPage({ data }: PitchAccentPageProps) {
                 onChange={(event) => setOnlyDevoiced(event.target.checked)}
                 type="checkbox"
               />
-              <span>Solo devoicing</span>
+              <span>Solo coppie con devoicing</span>
             </label>
             <label className="pitch-accent-check">
               <input
@@ -162,7 +162,7 @@ export function PitchAccentPage({ data }: PitchAccentPageProps) {
                 onChange={(event) => setStrictPairFinding(event.target.checked)}
                 type="checkbox"
               />
-              <span>Strict pair finding</span>
+              <span>Coppie solo tra pattern selezionati</span>
             </label>
           </div>
         </SurfaceCard>
