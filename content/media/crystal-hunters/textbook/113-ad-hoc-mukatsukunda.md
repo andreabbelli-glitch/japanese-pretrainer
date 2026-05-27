@@ -2,7 +2,7 @@
 id: lesson-crystal-hunters-ad-hoc-mukatsukunda
 media_id: media-crystal-hunters
 slug: ad-hoc-mukatsukunda
-title: "Ad hoc: mukatsukunda"
+title: "Ad hoc: mukatsuku"
 order: 1130
 segment_ref: ad-hoc
 difficulty: n3
@@ -10,11 +10,11 @@ status: active
 tags: [crystal-hunters, ad-hoc, manga, expression]
 prerequisites: []
 summary: >-
-  Spiegazione extra su むかつくんだ, con focus sul fastidio ruvido e sul valore
-  assertivo di んだ.
+  Spiegazione extra su むかつく, con focus sul fastidio ruvido e sul valore
+  assertivo di むかつくんだ.
 ---
 
-# Ad hoc: mukatsukunda
+# Ad hoc: mukatsuku
 
 La discussione nasce come attacco personale: un personaggio punta il dito,
 usa pronomi ruvidi e trasforma il fastidio in accusa di gruppo. Il punto non è
@@ -25,7 +25,7 @@ viscerale, contro i mostri dell'altro.
 
 - [{{俺|おれ}}](term:term-ore)／[お{{前|まえ}}](term:term-ch-omae) — pronomi diretti e ruvidi, adatti a uno scontro
 - [{{気|き}}にくわない](term:term-ch-ki-ni-kuwanai) — non andare giù; irritare personalmente
-- [むかつくんだ](term:term-ch-ad-hoc-mukatsukunda) — dare sui nervi, detto come spiegazione insistita
+- [むかつく](term:term-ch-ad-hoc-mukatsukunda) — dare sui nervi; nel balloon diventa むかつくんだ
 
 ---
 
@@ -34,7 +34,7 @@ src: assets/ad-hoc/mukatsukunda.png
 alt: >-
   Pagina di Crystal Hunters con un personaggio che accusa Naitsu e i suoi mostri.
 caption: >-
-  La frase finale è {{俺|おれ}}たちはお{{前|まえ}}のモンスターが[むかつくんだ](term:term-ch-ad-hoc-mukatsukunda)！
+  La frase finale è {{俺|おれ}}たちはお{{前|まえ}}のモンスターが[むかつく](term:term-ch-ad-hoc-mukatsukunda)んだ！
   Il fastidio non riguarda solo Naitsu: viene scaricato sui suoi mostri.
 :::
 
@@ -66,9 +66,9 @@ translation_it: >-
 *   `お{{前|まえ}}が` ➔ **bersaglio del sentimento**: [お{{前|まえ}}](term:term-ch-omae) è la persona che provoca la reazione.
 *   `{{気|き}}にくわない` ➔ **antipatia personale**: non descrive un gusto neutro, ma un fastidio che il parlante sente addosso.
 
-## 2. むかつくんだ: fastidio viscerale più んだ
+## 2. むかつく + んだ: fastidio viscerale e spinta assertiva
 
-[むかつくんだ](term:term-ch-ad-hoc-mukatsukunda) parte da むかつく, verbo che può
+[むかつく](term:term-ch-ad-hoc-mukatsukunda) è un verbo che può
 indicare nausea o irritazione. Nel parlato colloquiale è molto usato per
 "mi dà sui nervi", "mi fa arrabbiare", "mi disgusta". Nella scena, `モンスターが`
 marca ciò che provoca il fastidio: non sono i mostri a fare un'azione precisa,
@@ -96,7 +96,7 @@ translation_it: >-
 #### ⚖️ Contrasto operativo
 
 [{{気|き}}にくわない](term:term-ch-ki-ni-kuwanai) e
-[むかつくんだ](term:term-ch-ad-hoc-mukatsukunda) si assomigliano, ma non
+[むかつく](term:term-ch-ad-hoc-mukatsukunda) si assomigliano, ma non
 mettono a fuoco la stessa cosa. La prima formula dice che una persona non va
 giù al parlante; la seconda fa sentire una reazione più corporea e rabbiosa,
 qui agganciata ai `モンスター`. Quando leggi `がむかつく`, cerca subito la cosa o
@@ -107,6 +107,6 @@ persona che scatena il fastidio.
 In questa scena i pronomi fanno metà del tono: [{{俺|おれ}}](term:term-ore) e
 [お{{前|まえ}}](term:term-ch-omae) preparano lo scontro, poi
 [{{気|き}}にくわない](term:term-ch-ki-ni-kuwanai) e
-[むかつくんだ](term:term-ch-ad-hoc-mukatsukunda) trasformano il giudizio in
-attacco diretto. Se riconosci il blocco `Xがむかつくんだ`, leggi `X` come ciò
-che dà sui nervi e `んだ` come la spinta che rende l'accusa più insistita.
+[むかつく](term:term-ch-ad-hoc-mukatsukunda) trasformano il giudizio in
+attacco diretto. Se riconosci il blocco `Xがむかつくんだ`, leggi `むかつく` come
+la reazione di fastidio e `んだ` come la spinta che rende l'accusa più insistita.

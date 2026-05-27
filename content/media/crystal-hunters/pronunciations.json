@@ -792,12 +792,15 @@
     {
       "entry_type": "term",
       "entry_id": "term-ch-ad-hoc-mukatsukunda",
-      "audio_src": "assets/audio/term/term-ch-ad-hoc-mukatsukunda/forvo-akitomo-むかつくんた.mp3",
+      "audio_src": "assets/audio/term/term-ch-ad-hoc-mukatsukunda/forvo-akitomo-むかつく.mp3",
       "audio_source": "forvo",
       "audio_speaker": "akitomo",
       "audio_attribution": "akitomo via Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%82%80%E3%81%8B%E3%81%A4%E3%81%8F/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1012320/0",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",

@@ -2,26 +2,26 @@
 id: cards-crystal-hunters-ad-hoc-mukatsukunda
 media_id: media-crystal-hunters
 slug: ad-hoc-mukatsukunda
-title: "Ad hoc - mukatsukunda"
+title: "Ad hoc - mukatsuku"
 order: 1130
 segment_ref: ad-hoc
 ---
 
 :::term
 id: term-ch-ad-hoc-mukatsukunda
-lemma: むかつくんだ
-reading: むかつくんだ
-romaji: mukatsukunda
+lemma: むかつく
+reading: むかつく
+romaji: mukatsuku
 meaning_it: >-
   dare sui nervi; far arrabbiare; risultare insopportabile
-pos: expression
+pos: verb
 aliases:
-  - むかつく
+  - むかつくんだ
 notes_it: >-
-  むかつくんだ combina むかつく, "dare sui nervi / irritare", con んだ, che rende
-  l'affermazione più esplicativa e insistita. In
-  `お{{前|まえ}}のモンスターがむかつくんだ`, i mostri dell'altro sono ciò che provoca
-  il fastidio.
+  むかつく significa "dare sui nervi / irritare" e può avere una sfumatura quasi
+  fisica, come qualcosa che resta sullo stomaco. In
+  `お{{前|まえ}}のモンスターがむかつくんだ`, んだ rende l'affermazione più esplicativa e
+  insistita.
 level_hint: n3
 :::
 
@@ -31,16 +31,15 @@ lesson_id: lesson-crystal-hunters-ad-hoc-mukatsukunda
 entry_type: term
 entry_id: term-ch-ad-hoc-mukatsukunda
 card_type: recognition
-front: 'むかつくんだ'
+front: 'むかつく'
 back: >-
-  むかつくんだ - mi dà sui nervi; mi fa arrabbiare, con んだ assertivo
+  むかつく - dare sui nervi; irritare; far arrabbiare
 example_jp: >-
   {{俺|おれ}}たちはお{{前|まえ}}のモンスターがむかつくんだ！
 example_it: >-
   I tuoi mostri ci danno sui nervi!
 notes_it: >-
-  Il soggetto marcato da `が` è ciò che scatena il fastidio. んだ rende la frase
-  più assertiva: il parlante presenta l'irritazione come la vera ragione dello
-  scontro.
+  Il soggetto marcato da `が` è ciò che scatena il fastidio. Nella frase
+  `むかつくんだ`, むかつく porta la reazione emotiva e んだ aggiunge tono assertivo.
 tags: [crystal-hunters, ad-hoc]
 :::
