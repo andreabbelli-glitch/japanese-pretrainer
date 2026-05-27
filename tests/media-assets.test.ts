@@ -62,7 +62,116 @@ describe("media asset serving", () => {
     expect(response.headers.get("Cache-Control")).toBe(
       "public, max-age=31536000, immutable"
     );
+    expect(response.headers.get("Accept-Ranges")).toBe("bytes");
+    expect(response.headers.get("Content-Length")).toBe("11");
     expect(response.headers.get("Content-Type")).toBe("audio/mpeg");
+    expect(await response.text()).toBe("ID3-fixture");
+  });
+
+  it("serves byte-range requests for audio assets", async () => {
+    const response = await GET(
+      new Request("https://example.test", {
+        headers: {
+          Range: "bytes=0-2"
+        }
+      }),
+      {
+        params: Promise.resolve({
+          assetPath: ["audio", "sample.mp3"],
+          mediaSlug: "fixture"
+        })
+      }
+    );
+
+    expect(response.status).toBe(206);
+    expect(response.headers.get("Accept-Ranges")).toBe("bytes");
+    expect(response.headers.get("Content-Length")).toBe("3");
+    expect(response.headers.get("Content-Range")).toBe("bytes 0-2/11");
+    expect(response.headers.get("Content-Type")).toBe("audio/mpeg");
+    expect(await response.text()).toBe("ID3");
+  });
+
+  it("serves open-ended byte ranges for audio assets", async () => {
+    const response = await GET(
+      new Request("https://example.test", {
+        headers: {
+          Range: "bytes=4-"
+        }
+      }),
+      {
+        params: Promise.resolve({
+          assetPath: ["audio", "sample.mp3"],
+          mediaSlug: "fixture"
+        })
+      }
+    );
+
+    expect(response.status).toBe(206);
+    expect(response.headers.get("Content-Length")).toBe("7");
+    expect(response.headers.get("Content-Range")).toBe("bytes 4-10/11");
+    expect(await response.text()).toBe("fixture");
+  });
+
+  it("rejects unsatisfiable byte ranges for audio assets", async () => {
+    const response = await GET(
+      new Request("https://example.test", {
+        headers: {
+          Range: "bytes=99-120"
+        }
+      }),
+      {
+        params: Promise.resolve({
+          assetPath: ["audio", "sample.mp3"],
+          mediaSlug: "fixture"
+        })
+      }
+    );
+
+    expect(response.status).toBe(416);
+    expect(response.headers.get("Accept-Ranges")).toBe("bytes");
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(response.headers.get("Content-Range")).toBe("bytes */11");
+  });
+
+  it("ignores unsupported range units instead of rejecting the asset", async () => {
+    const response = await GET(
+      new Request("https://example.test", {
+        headers: {
+          Range: "items=0-2"
+        }
+      }),
+      {
+        params: Promise.resolve({
+          assetPath: ["audio", "sample.mp3"],
+          mediaSlug: "fixture"
+        })
+      }
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("Content-Length")).toBe("11");
+    expect(response.headers.get("Content-Range")).toBeNull();
+    expect(await response.text()).toBe("ID3-fixture");
+  });
+
+  it("ignores multipart byte ranges when serving local assets", async () => {
+    const response = await GET(
+      new Request("https://example.test", {
+        headers: {
+          Range: "bytes=0-2,4-6"
+        }
+      }),
+      {
+        params: Promise.resolve({
+          assetPath: ["audio", "sample.mp3"],
+          mediaSlug: "fixture"
+        })
+      }
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("Content-Length")).toBe("11");
+    expect(response.headers.get("Content-Range")).toBeNull();
     expect(await response.text()).toBe("ID3-fixture");
   });
 
