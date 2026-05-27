@@ -21,9 +21,13 @@ id: term-anki-l05-houkoku
 lemma: 報告
 reading: ほうこく
 romaji: houkoku
-meaning_it: rapporto; segnalazione
+meaning_it: report; rapporto informativo
 notes_it: >-
-  Il termine {{報|ほう}}{{告|こく}} indica un resoconto ufficiale, tipico di contesti lavorativi o scolastici. È un sostantivo che forma il verbo con する; la persona a cui si fa rapporto è spesso marcata da に.
+  Il termine {{報|ほう}}{{告|こく}} indica un report: una comunicazione attiva
+  con cui si informa qualcun altro, per esempio un preside, un superiore, un
+  collega o un cliente, su una situazione, sull'andamento di un progetto o su
+  un risultato. È un sostantivo che forma il verbo con する; la persona a cui si
+  fa rapporto è spesso marcata da に.
 level_hint: custom
 :::
 :::term
@@ -131,13 +135,20 @@ entry_id: term-anki-l05-houkoku
 card_type: recognition
 front: '{{報|ほう}}{{告|こく}}'
 back: >-
-  ほうこく — rapporto; segnalazione; sostantivo verbale (する) per resoconti formali. Il destinatario del rapporto prende に.
+  ほうこく — report; rapporto informativo. È una comunicazione attiva rivolta a
+  qualcuno per informarlo su una situazione, un avanzamento o un risultato;
+  come sostantivo verbale forma {{報|ほう}}{{告|こく}}する. Il destinatario del
+  rapporto prende に.
 example_jp: >-
   クラベル{{校長|こうちょう}}への{{報|ほう}}{{告|こく}}は{{済|す}}んだか？
 example_it: >-
   Hai già fatto rapporto al preside Clavel?
 notes_it: >-
-  Il termine {{報|ほう}}{{告|こく}} indica un resoconto ufficiale, tipico di contesti lavorativi o scolastici. È un sostantivo che forma il verbo con する; la persona a cui si fa rapporto è spesso marcata da に.
+  Il termine {{報|ほう}}{{告|こく}} indica un report: una comunicazione attiva
+  con cui si informa qualcun altro, per esempio un preside, un superiore, un
+  collega o un cliente, su una situazione, sull'andamento di un progetto o su
+  un risultato. È un sostantivo che forma il verbo con する; la persona a cui si
+  fa rapporto è spesso marcata da に.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card

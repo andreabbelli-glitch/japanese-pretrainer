@@ -322,10 +322,12 @@ id: term-v246-kiroku
 lemma: 記録
 reading: きろく
 romaji: kiroku
-meaning_it: record / registrazione
+meaning_it: registro / log / annotazione
 notes_it: >-
-  記録 indica un dato salvato o un risultato registrato. In menu e riepiloghi
-  punta a qualcosa che il gioco conserva e può mostrare di nuovo.
+  {{記録|きろく}} indica un registro, un log o un'annotazione: l'atto di
+  documentare fatti, dati o eventi per conservarli e poterli consultare in
+  futuro. In menu e riepiloghi punta a qualcosa che il gioco salva e può
+  mostrare di nuovo.
 :::
 :::card
 id: card-v246-kiroku-recognition
@@ -334,11 +336,13 @@ entry_type: term
 entry_id: term-v246-kiroku
 card_type: recognition
 front: '{{記録|きろく}}'
-back: record / registrazione
+back: >-
+  きろく — registro; log; annotazione. È l'atto di documentare fatti, dati o
+  eventi per conservarli e consultarli in futuro.
 example_jp: >-
   バトルの {{記録|きろく}}を {{見|み}}る。
 example_it: >-
-  Guardo il registro delle lotte.
+  Consulto il registro delle lotte.
 :::
 :::term
 id: term-v247-pointo
