@@ -340,7 +340,7 @@ export function ConsolidationSessionClient({
               {feedback?.message ?? " "}
             </div>
             <div className={styles.optionsGrid}>
-              {currentStep.options.map((option) => {
+              {currentStep.options.map((option, index) => {
                 const isSelected =
                   feedback?.selectedSubjectKey === option.subjectKey;
                 const isCorrect =
@@ -362,7 +362,8 @@ export function ConsolidationSessionClient({
                     type="button"
                     onClick={() => void handleAnswer(option)}
                   >
-                    {option.label}
+                    <span className={styles.optionShortcut}>{index + 1}</span>
+                    <span className={styles.optionLabel}>{option.label}</span>
                   </button>
                 );
               })}

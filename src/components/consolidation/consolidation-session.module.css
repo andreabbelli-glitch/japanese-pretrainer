@@ -168,11 +168,27 @@
   line-height: 1.18;
   overflow-wrap: anywhere;
   text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
   transition:
     border-color 160ms ease,
     background 160ms ease,
     transform 160ms ease,
     box-shadow 160ms ease;
+}
+
+.optionShortcut {
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  font-weight: 760;
+  line-height: 1;
+}
+
+.optionLabel {
+  min-width: 0;
+  font-family: var(--font-family-jp);
+  overflow-wrap: anywhere;
 }
 
 .optionButton:not(:disabled):hover,

@@ -158,6 +158,22 @@ describe("ConsolidationSessionClient", () => {
     expect(container?.textContent).not.toContain("Già nota");
   });
 
+  it("renders number key hints next to visible answer options", async () => {
+    await act(async () => {
+      root!.render(
+        createElement(ConsolidationSessionClient, { data: buildData() })
+      );
+    });
+
+    await act(async () => {
+      vi.advanceTimersByTime(2000);
+      await Promise.resolve();
+    });
+
+    expect(container?.textContent).toContain("1よむ");
+    expect(container?.textContent).toContain("2かく");
+  });
+
   it("submits visible answers with number keys during the answering phase", async () => {
     mocks.submitConsolidationAnswerAction.mockResolvedValue({
       attemptCount: 1,
