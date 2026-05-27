@@ -190,6 +190,23 @@ assets:
       [{{少|すく}}なくする](term:term-sukunaku-suru)。
     notes: >-
       Screenshot fornito dall'utente.
+  - id: duel-plays-starting-order-vs-screen
+    src: assets/ui/starting-order-senkou-koukou-vs-screen.jpg
+    source_type: screenshot
+    width: 1280
+    height: 590
+    lesson_slug: live-duel-encounters-senkou-koukou-vs-screen
+    anchor: "### 1. 先攻: 先 decide il lato che apre"
+    alt_it: >-
+      Schermata VS di Duel Plays con Andrea a sinistra assegnato al primo turno
+      e l'avversaria a destra assegnata al secondo turno.
+    caption_it: >-
+      Il cartiglio blu [{{先攻|せんこう}}](term:term-senkou) è sopra Andrea:
+      quel lato parte per primo. Il cartiglio rosa
+      [{{後攻|こうこう}}](term:term-koukou) è sopra
+      {{一条莉々華|いちじょうりりか}}: quel lato parte dopo.
+    notes: >-
+      Screenshot fornito dall'utente.
   - id: duel-plays-reward-claim-popup
     src: assets/ui/reward-claim-popup.png
     source_type: screenshot
