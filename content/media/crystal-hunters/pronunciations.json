@@ -771,6 +771,16 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-ch-ad-hoc-mukatsukunda",
+      "audio_src": "assets/audio/term/term-ch-ad-hoc-mukatsukunda/forvo-akitomo-むかつくんた.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "akitomo",
+      "audio_attribution": "akitomo via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%80%E3%81%8B%E3%81%A4%E3%81%8F/#ja",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-ch-ad-hoc-yacchimae",
       "audio_src": "assets/audio/term/term-ch-ad-hoc-yacchimae/forvo-skent-やっちまえ.mp3",
       "audio_source": "forvo",
