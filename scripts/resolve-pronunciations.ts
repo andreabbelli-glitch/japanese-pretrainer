@@ -1,5 +1,6 @@
 import "./load-env.ts";
 
+import { readFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
@@ -32,6 +33,9 @@ type CliOptions = {
   tofuguAllowDownload: boolean;
   tofuguDatasetDir: string;
   tofuguEnabled: boolean;
+  wordListPath?: string;
+  words: string[];
+  entryIds: string[];
 };
 
 const options = parseCliOptions(process.argv.slice(2));
@@ -47,7 +51,9 @@ if (!options.openWordAddOnSkip) {
     process.exitCode = 1;
   }
 } else if (!options.mode) {
-  console.error("Missing required --mode (review | next-lesson | lesson-url).");
+  console.error(
+    "Missing required --mode (review | next-lesson | lesson-url | targeted)."
+  );
   process.exitCode = 1;
 } else if (options.mode === "next-lesson" && !options.mediaSlug) {
   console.error("Mode 'next-lesson' requires --media <slug>.");
@@ -55,12 +61,29 @@ if (!options.openWordAddOnSkip) {
 } else if (options.mode === "lesson-url" && !options.lessonUrl) {
   console.error("Mode 'lesson-url' requires --lesson-url <url|path>.");
   process.exitCode = 1;
+} else if (options.mode === "targeted" && !options.mediaSlug) {
+  console.error("Mode 'targeted' requires --media <slug>.");
+  process.exitCode = 1;
+} else if (
+  options.mode === "targeted" &&
+  options.entryIds.length === 0 &&
+  options.words.length === 0 &&
+  !options.wordListPath
+) {
+  console.error(
+    "Mode 'targeted' requires --entry <id>, --word <word>, or --words-file <path>."
+  );
+  process.exitCode = 1;
 } else {
   try {
+    const wordListSource = options.wordListPath
+      ? await readFile(path.resolve(options.wordListPath), "utf8")
+      : undefined;
     const result = await resolvePronunciations({
       contentRoot: path.resolve(options.contentRoot),
       database: db,
       dryRun: options.dryRun,
+      entryIds: options.entryIds,
       forvoOptions: {
         ankiAppPath: options.ankiAppPath,
         ankiBaseDir: path.resolve(options.ankiBaseDir),
@@ -82,7 +105,9 @@ if (!options.openWordAddOnSkip) {
         ? false
         : options.tofuguAllowDownload,
       tofuguDatasetDir: path.resolve(options.tofuguDatasetDir),
-      tofuguEnabled: options.tofuguEnabled
+      tofuguEnabled: options.tofuguEnabled,
+      wordListSource,
+      words: options.words
     });
 
     console.info(
@@ -121,6 +146,12 @@ if (!options.openWordAddOnSkip) {
         );
       }
     }
+
+    for (const unresolved of result.requestedUnresolved) {
+      console.info(
+        `  skipped ${unresolved.mediaSlug}:${unresolved.raw} (${unresolved.reason})`
+      );
+    }
   } catch (error) {
     console.error(error instanceof Error ? error.message : String(error));
     process.exitCode = 1;
@@ -134,6 +165,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     contentRoot: "content",
     controlPort: 3210,
     dryRun: false,
+    entryIds: [],
     knownMissingPath: path.join("data", "forvo-known-missing.json"),
     manualDownloadsDir: path.join(os.homedir(), "Downloads"),
     manualOpenUrls: true,
@@ -146,7 +178,8 @@ function parseCliOptions(argv: string[]): CliOptions {
       "data",
       "tofugu-japanese-vocabulary-pronunciation-audio"
     ),
-    tofuguEnabled: true
+    tofuguEnabled: true,
+    words: []
   };
 
   for (let index = 0; index < normalizedArgv.length; index += 1) {
@@ -171,12 +204,13 @@ function parseCliOptions(argv: string[]): CliOptions {
       if (
         mode === "review" ||
         mode === "next-lesson" ||
-        mode === "lesson-url"
+        mode === "lesson-url" ||
+        mode === "targeted"
       ) {
         options.mode = mode;
       } else {
         throw new Error(
-          "--mode must be one of review, next-lesson, or lesson-url."
+          "--mode must be one of review, next-lesson, lesson-url, or targeted."
         );
       }
       index += 1;
@@ -194,6 +228,28 @@ function parseCliOptions(argv: string[]): CliOptions {
         normalizedArgv,
         index,
         "--lesson-url"
+      );
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--entry") {
+      options.entryIds.push(readOptionValue(normalizedArgv, index, "--entry"));
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--word") {
+      options.words.push(readOptionValue(normalizedArgv, index, "--word"));
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--words-file") {
+      options.wordListPath = readOptionValue(
+        normalizedArgv,
+        index,
+        "--words-file"
       );
       index += 1;
       continue;

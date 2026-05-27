@@ -33,10 +33,11 @@ typically at:
 1. Work from the repo root above.
 2. Prefer the repo entry point
    `./scripts/with-node.sh pnpm pronunciations:resolve` for normal user
-   requests. It is the standard path for `review`, `next-lesson`, and
-   `lesson-url`, and it already performs selection, audio-backed filtering,
-   cross-media reuse, Tofugu/WaniKani local dataset import, and then Forvo
-   Anki-style retrieval for the unresolved remainder.
+   requests. It is the standard path for `review`, `next-lesson`,
+   `lesson-url`, and explicit `targeted` entry/word/list batches. It already
+   performs selection, audio-backed filtering, cross-media reuse,
+   Tofugu/WaniKani local dataset import, and then Forvo Anki-style retrieval
+   for the unresolved remainder.
 3. Before opening Forvo for any entry, always check whether another media
    already has a matching audio-backed card with the same entry type, label,
    and reading. If it exists, reuse/link that audio instead of fetching a new
@@ -68,9 +69,9 @@ typically at:
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode review
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode next-lesson --media <media-slug>
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode lesson-url --lesson-url /media/<media-slug>/textbook/<lesson-slug>
-.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media <media-slug> --word 食べる --word 設定
-.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media <media-slug> --entry term-taberu
-.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media <media-slug> --words-file /absolute/path/list.tsv
+.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --word 食べる --word 設定
+.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --entry term-taberu
+.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --words-file /absolute/path/list.tsv
 ```
 
 9. Do not add a default batch limit. Process every selected entry through
@@ -99,10 +100,12 @@ typically at:
     in `data/forvo-known-missing.json` with `wordAddBlockedReason` /
     `wordAddBlockedDetail` so future ordinary batches skip it until the query is
     corrected or an explicit blocked retry is requested.
-15. `./scripts/with-node.sh pnpm pronunciations:forvo` remains the low-level
-    command for explicit fetcher targets, debug, and extreme manual fallback.
-    Only mention Playwright when the user explicitly wants to test or debug
-    fetcher internals.
+15. Do not use `./scripts/with-node.sh pnpm pronunciations:forvo` as a
+    workflow entry point for explicit targets. Non-manual direct fetches are
+    disabled unless `--direct-fetcher-debug` is passed for fetcher maintenance;
+    normal target batches must use `pronunciations:resolve -- --mode targeted`
+    or the wrapper above. Only mention Playwright when the user explicitly wants
+    to test or debug fetcher internals.
 16. For Forvo requests that were already submitted through `word-add` and later
     fulfilled, scan the authenticated Forvo account requested-pronunciations
     page, build an audio index, then import it with:
@@ -163,6 +166,9 @@ typically at:
   first lesson whose status is not `completed`.
 - For `lesson-url`, accept only the app textbook route shape
   `/media/<media-slug>/textbook/<lesson-slug>` or a full URL to that route.
+- For `targeted`, require `--media` plus at least one `--entry`, `--word`, or
+  `--words-file`; this mode still runs the complete resolver sequence before
+  any Forvo request.
 - Cross-media reuse is mandatory before Forvo. If another media already has a
   matching audio-backed entry, reuse/link it and do not ask the user to fetch a
   new Forvo MP3 for that item.

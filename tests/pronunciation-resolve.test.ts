@@ -170,6 +170,45 @@ describe("pronunciation resolve", () => {
       }
     }, 60_000);
 
+    it("accepts targeted resolver CLI options for explicit entry batches", async () => {
+      closeDatabaseClient(database);
+
+      try {
+        const { stdout } = await execFileAsync(
+          process.execPath,
+          [
+            "--experimental-strip-types",
+            path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
+            "--mode=targeted",
+            "--media",
+            "sample-game",
+            "--entry",
+            "term-yomu",
+            `--content-root=${contentRoot}`,
+            "--dry-run",
+            "--limit=0",
+            "--no-open",
+            "--no-tofugu-download"
+          ],
+          {
+            cwd: process.cwd(),
+            env: {
+              ...process.env,
+              DATABASE_URL: databasePath
+            }
+          }
+        );
+
+        expect(stdout).toContain("mode=targeted");
+        expect(stdout).toContain("media=sample-game");
+        expect(stdout).toContain("sample-game: selected=1");
+      } finally {
+        database = createDatabaseClient({
+          databaseUrl: databasePath
+        });
+      }
+    }, 60_000);
+
     it("loads .env.local before creating the resolver CLI database client", async () => {
       closeDatabaseClient(database);
       await writeFile(
@@ -235,6 +274,44 @@ describe("pronunciation resolve", () => {
           )
         ).rejects.toMatchObject({
           stderr: expect.stringContaining("Unknown argument: --bogus")
+        });
+      } finally {
+        database = createDatabaseClient({
+          databaseUrl: databasePath
+        });
+      }
+    }, 60_000);
+
+    it("rejects targeted resolver CLI runs without an explicit media scope", async () => {
+      closeDatabaseClient(database);
+
+      try {
+        await expect(
+          execFileAsync(
+            process.execPath,
+            [
+              "--experimental-strip-types",
+              path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
+              "--mode=targeted",
+              "--entry",
+              "term-yomu",
+              `--content-root=${contentRoot}`,
+              "--dry-run",
+              "--limit=0",
+              "--no-open"
+            ],
+            {
+              cwd: process.cwd(),
+              env: {
+                ...process.env,
+                DATABASE_URL: databasePath
+              }
+            }
+          )
+        ).rejects.toMatchObject({
+          stderr: expect.stringContaining(
+            "Mode 'targeted' requires --media <slug>."
+          )
         });
       } finally {
         database = createDatabaseClient({
@@ -470,6 +547,26 @@ describe("pronunciation resolve", () => {
           (entry) => `${entry.kind}:${entry.id}`
         )
       ).toEqual(["term:term-kiku", "term:term-yomu"]);
+    });
+
+    it("selects targeted entry ids from content without bypassing resolver selection", async () => {
+      const selection = await selectPronunciationResolveTargets({
+        contentRoot,
+        database,
+        entryIds: ["term-yomu"],
+        mediaSlug: "sample-game",
+        mode: "targeted"
+      });
+
+      expect(selection.mode).toBe("targeted");
+      expect(selection.selectedMediaSlugs).toEqual(["sample-game"]);
+      expect(selection.requestedUnresolved).toEqual([]);
+      expect(selection.bundles).toHaveLength(1);
+      expect(
+        selection.bundles[0]?.targets.map(
+          (entry) => `${entry.kind}:${entry.id}`
+        )
+      ).toEqual(["term:term-yomu"]);
     });
 
     it("runs reuse and Forvo only on the unresolved remainder", async () => {

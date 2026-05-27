@@ -77,13 +77,15 @@ describe("forvo pronunciations skill wrapper", () => {
     ]);
   });
 
-  it("routes targeted runs through Anki-style Forvo without an implicit batch limit", async () => {
+  it("routes targeted runs through the full resolver without an implicit batch limit", async () => {
     await runWrapper("--media", "sample-game", "--entry", "term-yomu");
 
     await expectCapturedArgs([
       "pnpm",
-      "pronunciations:forvo",
+      "pronunciations:resolve",
       "--",
+      "--mode",
+      "targeted",
       "--media",
       "sample-game",
       "--entry",

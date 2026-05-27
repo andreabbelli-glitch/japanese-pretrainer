@@ -418,7 +418,7 @@ Practical card-selection rules:
   `pitch_accent_page_url` into `pronunciations.json` when it resolves them.
 - After creating or revising flashcards, resolve pronunciation audio for the
   same touched entries before finishing:
-  `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media duel-masters-dm25 --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]`
+  `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media duel-masters-dm25 --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]`
 - A new card entry is not complete until it has local audio in Markdown or
   `pronunciations.json`, or until the Forvo workflow has opened and recorded a
   `word-add` request because no pronunciation exists yet. Forvo audio must be

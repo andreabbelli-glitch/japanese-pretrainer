@@ -145,7 +145,7 @@ Workflow pronunce:
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
 ./scripts/with-node.sh pnpm pronunciations:tofugu:sync
-./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --entry term-cost
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media duel-masters-dm25 --entry term-cost
 ./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
 ```
 
@@ -156,8 +156,10 @@ Tofugu/WaniKani e manda solo il residuo al fetch Forvo Anki-style (helper Anki
 dedicato, player `Play(...)`, ranking speaker, download diretto, conversione
 OGG -> MP3). Aggiorna anche lo storico
 `data/forvo-requested-word-add.json`, marcando come `resolved` le entry per cui
-e' stato trovato un audio. `pronunciations:forvo` resta il comando low-level
-per target espliciti del fetcher, debug e fallback manuale estremo.
+e' stato trovato un audio. Anche i target espliciti usano
+`pronunciations:resolve -- --mode targeted`; il fetcher Forvo diretto resta
+solo per manutenzione interna con `--direct-fetcher-debug` o fallback manuale
+estremo.
 
 Il dataset Tofugu/WaniKani completo resta locale e ignorato da git sotto
 `data/tofugu-japanese-vocabulary-pronunciation-audio`; `pronunciations:tofugu:sync`

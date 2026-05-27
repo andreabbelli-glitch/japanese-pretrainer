@@ -127,7 +127,7 @@ non sostituisce un audit completo e aggiornato del codice.
   `Review del media` o equivalente, senza presentarli come globali.
 - Le schermate di studio secondarie non ereditano più il loading generico “Caricamento media”, ma comunicano cosa si sta preparando.
 - `content:import` non esplode più con stacktrace SQL opaco quando manca lo schema: ora indica di eseguire `db:migrate`.
-- `pronunciations:resolve -- --mode review|next-lesson|lesson-url --dry-run`
+- `pronunciations:resolve -- --mode review|next-lesson|lesson-url|targeted --dry-run`
   seleziona i target attesi, esclude le entry gia coperte, prova riuso
   cross-media e dataset Tofugu/WaniKani se gia presente, ma non scarica o copia
   file.

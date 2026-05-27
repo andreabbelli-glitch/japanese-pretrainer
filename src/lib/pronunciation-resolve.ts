@@ -23,6 +23,7 @@ import {
   persistForvoWordAddRequestRegistry,
   reconcileForvoWordAddRequestRegistry,
   refreshPronunciationReuseContextBundle,
+  resolveRequestedTargets,
   reuseCrossMediaPronunciationsForBundle,
   summarizeBundlePronunciationPending,
   writeBundlePronunciationPendingSummary,
@@ -39,7 +40,17 @@ import {
   type TofuguPronunciationImportSummary
 } from "./tofugu-pronunciation-dataset.ts";
 
-export type PronunciationResolveMode = "review" | "next-lesson" | "lesson-url";
+export type PronunciationResolveMode =
+  | "review"
+  | "next-lesson"
+  | "lesson-url"
+  | "targeted";
+
+export type PronunciationResolveUnresolvedTarget = {
+  mediaSlug: string;
+  raw: string;
+  reason: string;
+};
 
 export type SelectedPronunciationBundle = {
   bundle: NormalizedMediaBundle;
@@ -51,6 +62,7 @@ export type PronunciationResolveSelection = {
   allBundles: NormalizedMediaBundle[];
   bundles: SelectedPronunciationBundle[];
   mode: PronunciationResolveMode;
+  requestedUnresolved: PronunciationResolveUnresolvedTarget[];
   selectedMediaSlugs: string[];
 };
 
@@ -115,9 +127,12 @@ type ExecutePronunciationResolveForBundleInput = {
 export async function selectPronunciationResolveTargets(input: {
   contentRoot: string;
   database: DatabaseClient;
+  entryIds?: string[];
   lessonUrl?: string;
   mediaSlug?: string;
   mode: PronunciationResolveMode;
+  wordListSource?: string;
+  words?: string[];
 }): Promise<PronunciationResolveSelection> {
   const parseResult = await parseContentRoot(path.resolve(input.contentRoot));
 
@@ -159,6 +174,30 @@ export async function selectPronunciationResolveTargets(input: {
       bundles,
       database: input.database,
       mediaSlug: input.mediaSlug
+    });
+  }
+
+  if (input.mode === "targeted") {
+    if (!input.mediaSlug) {
+      throw new Error("Mode 'targeted' requires --media.");
+    }
+
+    if (
+      (input.entryIds?.length ?? 0) === 0 &&
+      (input.words?.length ?? 0) === 0 &&
+      typeof input.wordListSource !== "string"
+    ) {
+      throw new Error(
+        "Mode 'targeted' requires --entry, --word, or --words-file."
+      );
+    }
+
+    return selectTargetedTargets({
+      bundles,
+      entryIds: input.entryIds,
+      mediaSlug: input.mediaSlug,
+      wordListSource: input.wordListSource,
+      words: input.words
     });
   }
 
@@ -350,6 +389,7 @@ export async function resolvePronunciations(input: {
   contentRoot: string;
   database: DatabaseClient;
   dryRun?: boolean;
+  entryIds?: string[];
   forvoOptions?: ForvoBrowserOptions;
   knownMissingPath?: string;
   lessonUrl?: string;
@@ -361,13 +401,18 @@ export async function resolvePronunciations(input: {
   tofuguAllowDownload?: boolean;
   tofuguDatasetDir?: string;
   tofuguEnabled?: boolean;
+  wordListSource?: string;
+  words?: string[];
 }) {
   const selection = await selectPronunciationResolveTargets({
     contentRoot: input.contentRoot,
     database: input.database,
+    entryIds: input.entryIds,
     lessonUrl: input.lessonUrl,
     mediaSlug: input.mediaSlug,
-    mode: input.mode
+    mode: input.mode,
+    wordListSource: input.wordListSource,
+    words: input.words
   });
   const knownMissingRegistry = await loadForvoKnownMissingRegistry(
     input.knownMissingPath
@@ -457,6 +502,7 @@ export async function resolvePronunciations(input: {
 
   return {
     mode: selection.mode,
+    requestedUnresolved: selection.requestedUnresolved,
     selectedMediaSlugs: selection.selectedMediaSlugs,
     summaries
   };
@@ -546,6 +592,60 @@ async function selectLessonUrlTargets(input: {
   });
 }
 
+function selectTargetedTargets(input: {
+  bundles: NormalizedMediaBundle[];
+  entryIds?: string[];
+  mediaSlug: string;
+  wordListSource?: string;
+  words?: string[];
+}) {
+  const bundle = input.bundles.find(
+    (candidate) => candidate.mediaSlug === input.mediaSlug
+  );
+
+  if (!bundle) {
+    throw new Error(`Media '${input.mediaSlug}' was not found in content/.`);
+  }
+
+  const requestedTargets = resolveRequestedTargets({
+    bundle,
+    entryIds: input.entryIds,
+    refresh: true,
+    wordListSource: input.wordListSource,
+    words: input.words
+  });
+
+  if (requestedTargets.targets.length === 0) {
+    const details =
+      requestedTargets.unresolved.length > 0
+        ? ` ${requestedTargets.unresolved
+            .map((entry) => `${entry.raw} (${entry.reason})`)
+            .join("; ")}`
+        : "";
+
+    throw new Error(
+      `No pronunciation targets matched the selected targeted scope.${details}`
+    );
+  }
+
+  return {
+    allBundles: input.bundles,
+    bundles: [
+      {
+        bundle,
+        targets: requestedTargets.targets
+      }
+    ],
+    mode: "targeted",
+    requestedUnresolved: requestedTargets.unresolved.map((entry) => ({
+      mediaSlug: bundle.mediaSlug,
+      raw: entry.raw,
+      reason: entry.reason
+    })),
+    selectedMediaSlugs: [bundle.mediaSlug]
+  } satisfies PronunciationResolveSelection;
+}
+
 async function buildSelectionFromCards(input: {
   bundleByMediaId: Map<string, NormalizedMediaBundle>;
   bundles: NormalizedMediaBundle[];
@@ -608,6 +708,7 @@ async function buildSelectionFromCards(input: {
     allBundles: input.bundles,
     bundles: selectedBundles,
     mode: input.mode,
+    requestedUnresolved: [],
     selectedMediaSlugs: selectedBundles.map((bundle) => bundle.bundle.mediaSlug)
   } satisfies PronunciationResolveSelection;
 }

@@ -46,17 +46,23 @@ fi
 cd "$REPO_ROOT"
 
 has_mode=0
+has_target=0
 args=("$@")
 for arg in "${args[@]}"; do
   case "$arg" in
     --mode|--mode=*)
       has_mode=1
       ;;
+    --entry|--entry=*|--word|--word=*|--words-file|--words-file=*)
+      has_target=1
+      ;;
   esac
 done
 
 if [[ "$has_mode" -eq 1 ]]; then
   ./scripts/with-node.sh pnpm pronunciations:resolve -- "${args[@]}"
+elif [[ "$has_target" -eq 1 ]]; then
+  ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted "${args[@]}"
 else
-  ./scripts/with-node.sh pnpm pronunciations:forvo -- "${args[@]}"
+  ./scripts/with-node.sh pnpm pronunciations:resolve -- "${args[@]}"
 fi

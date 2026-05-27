@@ -20,6 +20,7 @@ type CliOptions = {
   browserTimeoutMs?: number;
   controlPort: number;
   contentRoot: string;
+  directFetcherDebug: boolean;
   dryRun: boolean;
   entryIds: string[];
   headless: boolean;
@@ -50,6 +51,21 @@ if (options.manual || !options.openWordAddOnSkip) {
     console.error(error instanceof Error ? error.message : String(error));
     process.exit(1);
   }
+}
+
+if (
+  !options.manual &&
+  !options.directFetcherDebug &&
+  process.env.JCS_ALLOW_DIRECT_FORVO_FETCH !== "1"
+) {
+  console.error(
+    [
+      "Direct non-manual Forvo fetches are disabled as a workflow entry point.",
+      "Use ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media <media-slug> --entry <entry-id> instead.",
+      "Pass --direct-fetcher-debug only when maintaining fetcher internals."
+    ].join("\n")
+  );
+  process.exit(1);
 }
 
 const contentRoot = path.resolve(options.contentRoot);
@@ -238,6 +254,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     ankiBaseDir: path.join("data", "forvo-anki-profile"),
     controlPort: 3210,
     contentRoot: "content",
+    directFetcherDebug: false,
     dryRun: false,
     entryIds: [],
     headless: false,
@@ -328,6 +345,11 @@ function parseCliOptions(argv: string[]): CliOptions {
 
     if (argument === "--manual") {
       options.manual = true;
+      continue;
+    }
+
+    if (argument === "--direct-fetcher-debug") {
+      options.directFetcherDebug = true;
       continue;
     }
 

@@ -65,7 +65,7 @@ Optional:
    - `content/media/web-giapponese/workflow/image-requests.yaml`
    - `content/media/web-giapponese/workflow/image-assets.yaml`
 7. Resolve pronunciation audio for every new or revised card entry with:
-   `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media web-giapponese --entry <new-term-or-grammar-id>`
+   `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media web-giapponese --entry <new-term-or-grammar-id>`
    Pass multiple `--entry` flags for multiple new cards. If Forvo has no audio,
    the workflow must open and record the `word-add` request. Forvo audio must be
    attempted through the Anki/addon-style flow first: dedicated Anki helper,
@@ -239,7 +239,7 @@ lesson into the configured target database:
 
 ```bash
 ./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese
-.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
+.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
 ./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>
 ```

@@ -68,11 +68,14 @@ Per la maggior parte delle richieste operative, usa direttamente il resolver:
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media <media-slug>
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media <media-slug>
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/<media-slug>/textbook/<lesson-slug>
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media <media-slug> --entry <entry-id>
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media <media-slug> --words-file /absolute/path/list.tsv
 ```
 
 Il resolver:
 
-- seleziona card da review, prossima lesson o pagina textbook;
+- seleziona card da review, prossima lesson, pagina textbook o target
+  espliciti;
 - deduplica le entry tramite `card_entry_link`;
 - filtra le entry gia audio-backed;
 - prova il riuso cross-media su stesso tipo entry, label e reading;
@@ -124,9 +127,13 @@ normale serve per aprire le richieste `word-add` dei miss.
 Per target espliciti puoi usare il wrapper repo-scoped:
 
 ```bash
-.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media <media-slug> --entry <entry-id>
-.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media <media-slug> --words-file /absolute/path/list.tsv
+.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --entry <entry-id>
+.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --words-file /absolute/path/list.tsv
 ```
+
+Il wrapper inoltra sempre al resolver completo. Se riceve `--entry`,
+`--word` o `--words-file` senza `--mode`, inserisce `--mode targeted` invece di
+chiamare il fetcher Forvo diretto.
 
 Durante il batch:
 
@@ -183,9 +190,9 @@ prima di una nuova euristica di matching.
 - I flag con valore (`--media`, `--media-slug`, `--known-missing-file` e
   simili) devono avere sempre un valore esplicito: il workflow deve fermarsi
   prima di partire se il valore manca o se al suo posto arriva un altro flag.
-- Non usare `pnpm pronunciations:forvo` come entry point standard quando lo
-  scope reale e' `review`, `next-lesson` o una pagina textbook: usa
-  `pnpm pronunciations:resolve`.
+- Non usare `pnpm pronunciations:forvo` come entry point di workflow, neanche
+  per target espliciti: usa sempre `pnpm pronunciations:resolve`, con
+  `--mode targeted` per `--entry`, `--word` o `--words-file`.
 - Non usare `curl` o script HTTP ad hoc fuori dall'helper Anki come workflow
   Forvo.
 - Non usare Playwright/browser automation come percorso standard per batch reali;

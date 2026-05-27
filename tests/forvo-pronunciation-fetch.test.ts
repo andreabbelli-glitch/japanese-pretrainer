@@ -377,4 +377,28 @@ describe("forvo pronunciation helpers", () => {
       stderr: expect.stringContaining("word-add request prefill")
     });
   }, 60_000);
+
+  it("rejects direct non-manual CLI fetches in favor of the full resolver", async () => {
+    await expect(
+      execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          fetchForvoScriptPath,
+          "--dry-run",
+          "--content-root",
+          validContentRoot,
+          "--media",
+          "sample-anime",
+          "--entry",
+          "term-taberu",
+          "--limit",
+          "0"
+        ],
+        { cwd: process.cwd() }
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining("Direct non-manual Forvo fetches")
+    });
+  }, 60_000);
 });

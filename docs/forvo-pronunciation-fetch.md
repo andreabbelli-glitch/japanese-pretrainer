@@ -1,8 +1,9 @@
 # Pronunce da Forvo
 
-Lo script `pnpm pronunciations:forvo` e il layer low-level per recuperare
-pronunce da Forvo e inserirle nel bundle locale. Il percorso operativo standard
-non e il download manuale dal browser: replica la logica dell'addon Anki Forvo,
+Lo script `pnpm pronunciations:forvo` e il layer low-level interno usato dal
+resolver per recuperare pronunce da Forvo e inserirle nel bundle locale. Non e'
+un entry point di workflow: le run operative passano da
+`pnpm pronunciations:resolve`, che replica la logica dell'addon Anki Forvo,
 legge la pagina Forvo tramite un helper Anki, estrae i candidati audio dal
 player `Play(...)`, scarica l'audio diretto e converte OGG -> MP3 quando serve.
 
@@ -11,10 +12,11 @@ singoli in cui la logica Anki-style o l'import diretto falliscono pur avendo una
 pronuncia visibile su Forvo. Non usarlo come normale alternativa e non usarlo per
 batch reali.
 
-Per richieste operative ad alto livello come `review`, `next-lesson` o
-`lesson-url`, l'entry point standard e ora
-`pnpm pronunciations:resolve`. `pnpm pronunciations:forvo` resta il comando
-low-level per target espliciti del fetcher, debug e fallback manuale estremo.
+Per richieste operative come `review`, `next-lesson`, `lesson-url` o target
+espliciti (`--entry`, `--word`, `--words-file`), l'entry point standard e'
+`pnpm pronunciations:resolve`. I target espliciti usano `--mode targeted`.
+`pnpm pronunciations:forvo` resta disponibile solo per manutenzione del fetcher
+con `--direct-fetcher-debug` o per fallback manuale estremo.
 
 ## Ruolo nel workflow
 
@@ -30,12 +32,10 @@ Forvo `word-add` registrata se la pronuncia non esiste ancora.
 
 ## Quando usarlo
 
-- hai gia lasciato che il workflow filtrasse gli audio locali e riusasse gli
-  audio compatibili presenti in altri media;
-- Anki e' installato e il profilo helper in `data/forvo-anki-profile/` puo
-  avviarsi;
-- vuoi passare una lista mirata di parole o entry invece di processare tutto il
-  bundle.
+Usa direttamente questo low-level solo quando stai mantenendo/debuggando il
+fetcher oppure quando serve il fallback manuale estremo su un caso specifico.
+Per liste mirate di parole o entry, usa il resolver completo con
+`--mode targeted`.
 
 Se invece vuoi che il repo scelga da solo le card giuste partendo da review,
 prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
@@ -90,11 +90,10 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media duel-masters-dm25 --entry term-cost
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media gundam-arsenal-base --word 専用機 --word 戦艦
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media duel-masters-dm25 --words-file tmp/forvo-list.tsv
 ./scripts/with-node.sh pnpm pronunciations:tofugu:sync
-./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --dry-run
-./scripts/with-node.sh pnpm pronunciations:forvo -- --media gundam-arsenal-base --word 専用機 --word 戦艦
-./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --entry term-cost
-./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --words-file tmp/forvo-list.tsv
 ./scripts/with-node.sh pnpm pronunciations:forvo:request
 ./scripts/with-node.sh pnpm pronunciations:forvo:request -- --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
@@ -141,7 +140,8 @@ Opzioni utili:
 - `--request-registry-file /path`: file JSON dove salvare le richieste
   `word-add` gia aperte;
 - `--retry-known-missing`: riprova anche le voci gia marcate come missing; vale
-  sia per `pnpm pronunciations:forvo` sia per `pnpm pronunciations:resolve`.
+  per il resolver completo e per il low-level solo quando viene avviato in
+  modalita debug/manutenzione.
 
 Il vecchio flag `--no-open-word-add-on-skip` non e piu un flusso valido: se
 viene passato, il comando fallisce invece di saltare il prefill della richiesta.
@@ -237,8 +237,9 @@ term-taberu
 ## Note operative
 
 - `pnpm pronunciations:resolve` e il percorso standard per richieste orientate
-  al prodotto; `pnpm pronunciations:forvo` resta il low-level per target espliciti
-  del fetcher;
+  al prodotto, inclusi target espliciti con `--mode targeted`;
+- `pnpm pronunciations:forvo` e' low-level interno: le run non manuali dirette
+  richiedono `--direct-fetcher-debug` e non sono workflow ordinari;
 - il resolver prova Forvo solo dopo audio locale, riuso cross-media e dataset
   Tofugu/WaniKani;
 - il fetch Forvo standard deve usare l'helper Anki/addon-style e candidati
