@@ -72,6 +72,12 @@ description: Handles a sample repo workflow.
     expect(markdown).toContain("`./scripts/with-node.sh pnpm check`");
     expect(markdown).toContain("`content/`");
     expect(markdown).toContain(".agents/skills/forvo-pronunciations/SKILL.md");
+    expect(markdown).toContain(
+      "Documentation-only changes: no application gate is mandatory"
+    );
+    expect(markdown).not.toContain(
+      "Documentation-only changes: run `./scripts/with-node.sh pnpm format:check`"
+    );
   });
 
   it("keeps every task classifier tied to source docs and verification", () => {

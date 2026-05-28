@@ -62,8 +62,7 @@ export const taskClassifiers: TaskClassifier[] = [
     task: "Local setup, environment, QA, or agent tooling",
     orientation:
       "Update the related operational docs in the same slice and keep commands behind `./scripts/with-node.sh`.",
-    verify:
-      "`./scripts/with-node.sh pnpm format:check` plus the smallest targeted tooling test.",
+    verify: "Use the smallest targeted doc/tooling check that proves the change.",
     sourceDocs: ["docs/dev-tooling.md", ".codex/README.md", ".env.example"]
   }
 ];
@@ -192,7 +191,7 @@ export function buildAgentOrientationDocument({
     "",
     "## Verification Chooser",
     "",
-    "- Documentation-only changes: run `./scripts/with-node.sh pnpm format:check` and any targeted doc/tooling check.",
+    "- Documentation-only changes: no application gate is mandatory; use a targeted doc/tooling check when useful.",
     "- App code or logic: run `./scripts/with-node.sh pnpm check`.",
     "- Routing, DB, importer/sync, auth, cache revalidation, or E2E-covered flows: run `./scripts/with-node.sh pnpm check` and `./scripts/with-node.sh pnpm release:check`.",
     "- Content-only repo-scoped skill work: run the skill's `Verification` section instead of broad app gates.",
