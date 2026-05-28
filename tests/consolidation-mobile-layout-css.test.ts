@@ -29,5 +29,15 @@ describe("consolidation mobile layout css", () => {
     );
     expect(css).not.toMatch(/\.actions\s*\{[^}]*position:\s*sticky;/s);
     expect(css).toMatch(/@media\s*\(prefers-reduced-motion:\s*reduce\)/);
+    expect(css).not.toMatch(/--(?:color-text|color-text-muted|shadow-soft)\b/);
+  });
+
+  it("keeps touched global css off the legacy soft shadow token", async () => {
+    const css = await readFile(
+      path.join(PROJECT_ROOT, "src/styles/base.css"),
+      "utf8"
+    );
+
+    expect(css).not.toContain("--shadow-soft");
   });
 });

@@ -26,7 +26,7 @@
 .eyebrow,
 .frontLabel {
   margin: 0 0 8px;
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
   font-size: 0.75rem;
   font-weight: 750;
   letter-spacing: 0.08em;
@@ -42,7 +42,7 @@
   align-items: center;
   justify-content: center;
   background: var(--surface-card);
-  color: var(--color-text);
+  color: var(--color-ink);
   font-weight: 800;
 }
 
@@ -54,7 +54,7 @@
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0)),
     var(--surface-card);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-card);
   display: grid;
   grid-template-rows: auto minmax(190px, auto) minmax(260px, 1fr);
   gap: 22px;
@@ -64,7 +64,7 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
   font-size: 0.86rem;
   font-weight: 700;
 }
@@ -78,7 +78,7 @@
 
 .frontText {
   margin: 0;
-  color: var(--color-text);
+  color: var(--color-ink);
   font-family: var(--font-family-jp);
   font-size: clamp(2.55rem, 12vw, 5.3rem);
   line-height: 1.08;
@@ -136,7 +136,7 @@
 
 .feedback {
   min-height: 28px;
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
   font-weight: 760;
 }
 
@@ -161,7 +161,7 @@
   border-radius: 14px;
   padding: 16px;
   background: var(--surface-card-quiet);
-  color: var(--color-text);
+  color: var(--color-ink);
   font: inherit;
   font-weight: 760;
   letter-spacing: 0;
@@ -179,7 +179,7 @@
 }
 
 .optionShortcut {
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
   font-size: 0.72rem;
   font-weight: 760;
   line-height: 1;
@@ -195,7 +195,7 @@
 .optionButton:not(:disabled):focus-visible {
   border-color: var(--color-accent);
   background: var(--surface-card);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-card);
   transform: translateY(-1px);
 }
 
@@ -232,7 +232,7 @@
   border: 1px solid var(--color-border-strong);
   border-radius: 18px;
   background: var(--surface-card);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-card);
 }
 
 @keyframes retrieval-progress {

@@ -1858,7 +1858,7 @@ button.katakana-speed-ran-cell:disabled {
   border: 1px solid rgba(210, 197, 177, 0.76);
   border-radius: var(--radius-lg);
   background: rgba(255, 250, 242, 0.96);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-card);
 }
 
 .katakana-speed-ran-errors {
