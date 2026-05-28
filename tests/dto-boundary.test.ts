@@ -7,6 +7,7 @@ const PROJECT_ROOT = process.cwd();
 const publicDtoFiles = [
   "src/features/kanji-clash/types.ts",
   "src/features/glossary/types.ts",
+  "src/features/review/types.ts",
   "src/features/textbook/types.ts",
   "src/lib/review-types.ts"
 ] as const;

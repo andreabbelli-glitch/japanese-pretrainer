@@ -56,6 +56,7 @@ This keeps local agents on the supported Node 22.x toolchain.
 | `AGENTS.md` | Non-negotiable repo rules, protected areas, verification matrix, product invariants. |
 | `README.md` | Product state, route semantics, bootstrap, and high-level architecture. |
 | `docs/dev-tooling.md` | Local runtime, Codex sandbox setup, workflow command notes. |
+| `docs/review-domain-boundary.md` | Review scope invariants and facade boundary for routes, actions, and components. |
 | `docs/llm-kit/README.md` | External LLM content kit and content handoff source of truth. |
 | `.codex/README.md` | Codex local action and sandbox configuration. |
 | `.agents/skills/*/SKILL.md` | Repo-scoped workflow instructions for protected content/editorial tasks. |

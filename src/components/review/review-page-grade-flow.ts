@@ -1,9 +1,9 @@
-import type { ReviewSessionInput } from "@/lib/review-session-transition";
 import type {
   ReviewForcedContrastPayload,
   ReviewPageData,
-  ReviewQueueCard
-} from "@/lib/review-types";
+  ReviewQueueCard,
+  ReviewSessionInput
+} from "@/features/review/client";
 
 import {
   buildOptimisticFirstCandidateGradeResult,

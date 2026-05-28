@@ -103,6 +103,11 @@ const keySourceDocs = [
     purpose: "Local runtime, Codex sandbox setup, workflow command notes."
   },
   {
+    path: "docs/review-domain-boundary.md",
+    purpose:
+      "Review scope invariants and facade boundary for routes, actions, and components."
+  },
+  {
     path: "docs/llm-kit/README.md",
     purpose: "External LLM content kit and content handoff source of truth."
   },

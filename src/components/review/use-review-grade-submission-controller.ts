@@ -3,8 +3,10 @@
 import { useCallback, useRef, useState } from "react";
 
 import { gradeReviewCardSessionAction } from "@/actions/review";
-import { getSafeReviewForcedContrastClientErrorMessage } from "@/lib/review-error-messages";
-import type { ReviewQueueCard } from "@/lib/review-types";
+import {
+  getSafeReviewForcedContrastClientErrorMessage,
+  type ReviewQueueCard
+} from "@/features/review/client";
 
 import { isReviewPageData, type ReviewGradeValue } from "./review-page-helpers";
 import { buildReviewGradeSubmissionPlan } from "./review-page-grade-flow";

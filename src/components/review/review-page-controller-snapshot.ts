@@ -1,6 +1,6 @@
 import type { Route } from "next";
 
-import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
+import type { ReviewPageData, ReviewQueueCard } from "@/features/review/client";
 import {
   appendReturnToParam,
   buildCanonicalReviewSessionHrefForBase

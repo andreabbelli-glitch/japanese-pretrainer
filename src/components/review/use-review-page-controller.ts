@@ -15,7 +15,7 @@ import {
   preloadAudioSources
 } from "@/components/ui/audio-preload";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
-import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
+import type { ReviewPageData, ReviewQueueCard } from "@/features/review/client";
 
 import {
   getInitiallyRevealedCardId,

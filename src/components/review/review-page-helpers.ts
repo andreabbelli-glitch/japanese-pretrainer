@@ -2,7 +2,7 @@ import type {
   ReviewFirstCandidatePageData,
   ReviewPageData,
   ReviewQueueCard
-} from "@/lib/review-types";
+} from "@/features/review/client";
 
 import type { ReviewPageClientData } from "./review-page-state";
 

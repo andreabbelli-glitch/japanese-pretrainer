@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef } from "react";
 
 import { prefetchReviewCardSessionAction } from "@/actions/review";
 import { preloadAudioSources } from "@/components/ui/audio-preload";
-import type { ReviewQueueCard } from "@/lib/review-types";
+import type { ReviewQueueCard } from "@/features/review/client";
 
 import type { ReviewPageClientData } from "./review-page-state";
 import {

@@ -1,9 +1,9 @@
-import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
+import { buildReviewGradePreviews } from "@/features/review/client";
 import type {
   ReviewFirstCandidatePageData,
   ReviewPageData
-} from "@/lib/review-types";
+} from "@/features/review/client";
 
 export type ReviewPageClientData =
   | ReviewPageData

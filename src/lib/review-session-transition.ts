@@ -10,34 +10,14 @@ import {
 } from "@/lib/review";
 import type { ReviewGradeResult } from "@/lib/review-service";
 import type {
-  ReviewForcedContrastPayload,
   ReviewPageData,
   ReviewQueueCard
 } from "@/lib/review-types";
+import type { ReviewSessionInput } from "@/features/review/types";
 
 import { buildReviewSearchParams } from "./site/review-session.ts";
 
-export type ReviewSessionInput = {
-  answeredCount: number;
-  cardId: string;
-  cardMediaSlug?: string;
-  candidateCardIds?: string[];
-  canonicalCandidateCardIds?: string[];
-  extraNewAnchorCount?: number | null;
-  extraNewCount: number;
-  expectedUpdatedAt?: string | null;
-  forcedContrast?: ReviewForcedContrastPayload;
-  forcedKanjiClashContrast?: ReviewForcedContrastPayload;
-  gradedCardBucket?: ReviewQueueCard["bucket"];
-  gradedCardIds?: string[];
-  mediaSlug?: string;
-  nextCardId?: string | null;
-  segmentId?: string | null;
-  sessionMedia?: ReviewPageData["media"];
-  sessionQueue?: ReviewPageData["queue"];
-  sessionSettings?: ReviewPageData["settings"];
-  scope?: "global" | "media";
-};
+export type { ReviewSessionInput } from "@/features/review/types";
 
 export type ResolvedReviewScopeMedia = {
   id: string;

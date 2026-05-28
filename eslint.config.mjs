@@ -36,6 +36,23 @@ const glossaryClientImportRestrictionPatterns = [
   }
 ];
 
+const reviewLegacyImportRestrictionPatterns = [
+  {
+    group: ["@/lib/review", "@/lib/review-*"],
+    message:
+      "Production review surfaces must import from @/features/review instead."
+  }
+];
+
+const reviewClientImportRestrictionPatterns = [
+  ...reviewLegacyImportRestrictionPatterns,
+  {
+    group: ["@/features/review/server", "@/features/review/server/*"],
+    message:
+      "Review client components must not import the server feature entrypoint."
+  }
+];
+
 const pureReviewImportRestrictionPatterns = [
   {
     group: ["@/db", "@/db/*", "../db", "../db/*", "../../db", "../../db/*"],
@@ -151,6 +168,34 @@ const eslintConfig = [
         "error",
         {
           patterns: glossaryClientImportRestrictionPatterns
+        }
+      ]
+    }
+  },
+  {
+    files: [
+      "src/actions/review.ts",
+      "src/app/review/*.{ts,tsx}",
+      "src/app/review/**/*.{ts,tsx}",
+      "src/app/media/*/review/*.{ts,tsx}",
+      "src/app/media/*/review/**/*.{ts,tsx}"
+    ],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: reviewLegacyImportRestrictionPatterns
+        }
+      ]
+    }
+  },
+  {
+    files: ["src/components/review/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: reviewClientImportRestrictionPatterns
         }
       ]
     }

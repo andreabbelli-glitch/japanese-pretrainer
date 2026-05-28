@@ -5,28 +5,27 @@ import { redirect } from "next/navigation";
 
 import { readOptionalInternalHref, readRequiredString } from "./form-data.ts";
 import { db } from "@/db";
-import { loadReviewPageDataSession } from "@/lib/review-page-data";
 import { listMediaCached } from "@/lib/data-cache";
-import { applyReviewGrade } from "@/lib/review-service";
-import { hydrateReviewCard } from "@/lib/review";
-import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
+import {
+  applyReviewActionCachePolicy,
+  applyReviewGrade,
+  hydrateReviewCard,
+  loadReviewPageDataSession,
+  requireMediaIdForSlug,
+  requireReviewPageDataForScope,
+  resolvePostGradeReviewSessionPageData,
+  resolveReviewSessionMedia,
+  runReviewActionMutation,
+  type ReviewMutationKind,
+  type ReviewPageData,
+  type ReviewQueueCard,
+  type ReviewSessionInput
+} from "@/features/review/server";
 import {
   buildRedirectSearchParams,
   buildReviewRedirectUrl,
   type ReviewRedirectMode
 } from "@/lib/site";
-import { applyReviewActionCachePolicy } from "@/lib/review-action-cache-policy";
-import {
-  runReviewActionMutation,
-  type ReviewMutationKind
-} from "@/lib/review-action-mutations";
-import {
-  requireMediaIdForSlug,
-  requireReviewPageDataForScope,
-  resolvePostGradeReviewSessionPageData,
-  resolveReviewSessionMedia,
-  type ReviewSessionInput
-} from "@/lib/review-session-transition";
 
 type ReviewSessionRedirectMode = Exclude<ReviewRedirectMode, "stay_detail">;
 type ReviewFormMutationInput = {

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { ReviewPageClient } from "@/components/review/review-page-client";
 import { EmptyState } from "@/components/ui/empty-state";
-import { getGlobalReviewFirstCandidateLoadResult } from "@/lib/review";
+import { getGlobalReviewFirstCandidateLoadResult } from "@/features/review/server";
 
 type ReviewRouteProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

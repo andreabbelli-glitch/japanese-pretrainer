@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { ReviewPage } from "@/components/review/review-page";
-import { getReviewPageData } from "@/lib/review";
+import { getReviewPageData } from "@/features/review/server";
 
 type StudyAreaRouteProps = {
   params: Promise<{

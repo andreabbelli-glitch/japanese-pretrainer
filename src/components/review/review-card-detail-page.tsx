@@ -14,7 +14,7 @@ import {
   setLinkedEntryLearningAction,
   setReviewCardSuspendedAction
 } from "@/actions/review";
-import type { ReviewCardDetailData } from "@/lib/review-types";
+import type { ReviewCardDetailData } from "@/features/review/client";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";

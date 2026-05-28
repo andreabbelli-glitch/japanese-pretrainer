@@ -2,7 +2,7 @@
 
 import { useCallback, useRef, useTransition } from "react";
 
-import type { ReviewPageData } from "@/lib/review-types";
+import type { ReviewPageData } from "@/features/review/client";
 
 import {
   getInitiallyRevealedCardId,
