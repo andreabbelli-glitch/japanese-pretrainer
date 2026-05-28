@@ -24,6 +24,9 @@ Gia presenti:
 Prima di lavorare nel repository, usare una shell che abbia caricato `nvm` e il
 runtime definito in `.nvmrc`.
 
+Per scegliere rapidamente workflow e verifiche in base al task, usa il
+documento generato [`docs/agent-orientation.md`](./agent-orientation.md).
+
 Comando sicuro:
 
 ```sh

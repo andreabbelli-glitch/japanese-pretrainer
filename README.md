@@ -179,6 +179,9 @@ ma la verifica canonica e il supporto restano ancorati a
 Il repository include una configurazione di progetto in `.codex/` pensata per
 agenti Codex locali che lavorano in sandbox `workspace-write`.
 
+Per classificare rapidamente un task prima di modificare file, parti dal
+documento generato [`docs/agent-orientation.md`](./docs/agent-orientation.md).
+
 Le skill Codex specifiche di questo repo vivono in `.agents/skills/`, che e il
 percorso repo-scoped scansionato da Codex. Non mantenerne copie parallele in
 `~/.codex/skills`: se serve compatibilita temporanea con un client vecchio, usa

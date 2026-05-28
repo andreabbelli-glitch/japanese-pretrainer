@@ -18,6 +18,8 @@
     "test:e2e:runner": "env -u NO_COLOR node ./node_modules/@playwright/test/cli.js test",
     "test:e2e": "pnpm build && pnpm test:e2e:runner",
     "test:watch": "node ./node_modules/vitest/vitest.mjs",
+    "docs:agent-orientation": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/generate-agent-orientation.ts",
+    "docs:agent-orientation:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/generate-agent-orientation.ts --check",
     "db:generate": "drizzle-kit generate --config=drizzle.config.ts",
     "db:migrate": "node --experimental-strip-types ./scripts/db-migrate.ts",
     "db:backfill-review-subject-state": "node --experimental-strip-types ./scripts/db-backfill-review-subject-state.ts",

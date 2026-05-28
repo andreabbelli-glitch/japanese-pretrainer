@@ -9,6 +9,10 @@ Lo sviluppo e' **100% AI-driven**: l'utente non legge mai il codice
 manualmente. Ogni sessione deve essere autonoma, completa e lasciare il repo in
 stato valido.
 
+Orientamento rapido per agenti: [`docs/agent-orientation.md`](docs/agent-orientation.md)
+e' generato da `./scripts/with-node.sh pnpm docs:agent-orientation` e va usato
+come classificatore iniziale dei task.
+
 ---
 
 ## Regole operative non negoziabili
