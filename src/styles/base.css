@@ -3630,7 +3630,7 @@ button.katakana-speed-ran-cell:disabled {
   display: inline-block;
   padding-top: var(--pitch-accent-graph-padding-top);
   padding-bottom: var(--pitch-accent-graph-padding-bottom);
-  font-family: var(--font-family-japanese);
+  font-family: var(--font-family-jp);
   font-size: 1.5rem;
   line-height: 1;
 }
@@ -3896,7 +3896,7 @@ button.katakana-speed-ran-cell:disabled {
 .pitch-accent-kana {
   margin: 0;
   color: var(--color-ink-strong);
-  font-family: var(--font-family-japanese);
+  font-family: var(--font-family-jp);
   font-size: clamp(3rem, 2.4rem + 2vw, 5rem);
   font-weight: var(--font-weight-semibold);
   letter-spacing: 0;
