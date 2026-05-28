@@ -48,11 +48,12 @@ export const taskClassifiers: TaskClassifier[] = [
   {
     task: "Pronunciation, Forvo, pitch accent, image, or media asset workflow",
     orientation:
-      "Use the canonical content workflow commands and keep sidecar workflow files scoped to the requested media.",
+      "Use `pronunciations:resolve` or the repo-scoped skill wrapper for normal pronunciation work, and keep sidecar workflow files scoped to the requested media.",
     verify:
       "Run the targeted workflow validation/import command named by the workflow or skill.",
     sourceDocs: [
       "docs/dev-tooling.md",
+      "docs/textbook-pronunciation-boundary.md",
       "docs/pronunciation-workflow.md",
       "docs/forvo-pronunciation-fetch.md",
       "docs/pitch-accent-workflow.md"
@@ -106,6 +107,11 @@ const keySourceDocs = [
     path: "docs/review-domain-boundary.md",
     purpose:
       "Review scope invariants and facade boundary for routes, actions, and components."
+  },
+  {
+    path: "docs/textbook-pronunciation-boundary.md",
+    purpose:
+      "Textbook facade imports, pronunciation display/runtime boundary, and canonical pronunciation workflow entry points."
   },
   {
     path: "docs/llm-kit/README.md",

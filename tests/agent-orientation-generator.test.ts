@@ -73,6 +73,7 @@ description: Handles a sample repo workflow.
     expect(markdown).toContain("`./scripts/with-node.sh pnpm agent:check`");
     expect(markdown).toContain("`content/`");
     expect(markdown).toContain("docs/review-domain-boundary.md");
+    expect(markdown).toContain("docs/textbook-pronunciation-boundary.md");
     expect(markdown).toContain(".agents/skills/forvo-pronunciations/SKILL.md");
     expect(markdown).toContain(
       "Documentation-only changes: no application gate is mandatory"

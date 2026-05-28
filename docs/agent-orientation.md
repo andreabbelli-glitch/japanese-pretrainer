@@ -11,7 +11,7 @@ Use this as the first task classifier before changing files. The detailed rules 
 | App code or application logic | Stay out of `content/` unless the task explicitly asks for content changes. | `./scripts/with-node.sh pnpm check` | `AGENTS.md`, `README.md`, `docs/dev-tooling.md` |
 | Routing, DB, importer/sync, auth, cache revalidation, or E2E-covered user flows | Treat this as a wider behavioral change and keep generated DB artifacts generated. | `./scripts/with-node.sh pnpm check` and `./scripts/with-node.sh pnpm release:check` | `AGENTS.md`, `docs/local-verification-notes.md` |
 | Content-only work through repo-scoped skills | Use the relevant `.agents/skills/*` workflow and edit protected content only through that workflow. | Run the skill's `Verification` commands, usually content/import or targeted workflow gates. | `AGENTS.md`, `.agents/skills/*/SKILL.md`, `docs/llm-kit/README.md` |
-| Pronunciation, Forvo, pitch accent, image, or media asset workflow | Use the canonical content workflow commands and keep sidecar workflow files scoped to the requested media. | Run the targeted workflow validation/import command named by the workflow or skill. | `docs/dev-tooling.md`, `docs/pronunciation-workflow.md`, `docs/forvo-pronunciation-fetch.md`, `docs/pitch-accent-workflow.md` |
+| Pronunciation, Forvo, pitch accent, image, or media asset workflow | Use `pronunciations:resolve` or the repo-scoped skill wrapper for normal pronunciation work, and keep sidecar workflow files scoped to the requested media. | Run the targeted workflow validation/import command named by the workflow or skill. | `docs/dev-tooling.md`, `docs/textbook-pronunciation-boundary.md`, `docs/pronunciation-workflow.md`, `docs/forvo-pronunciation-fetch.md`, `docs/pitch-accent-workflow.md` |
 | Local setup, environment, QA, or agent tooling | Update the related operational docs in the same slice and keep commands behind `./scripts/with-node.sh`. | Use the smallest targeted doc/tooling check that proves the change, plus `./scripts/with-node.sh pnpm agent:check` when agent-facing guardrails are touched. | `docs/dev-tooling.md`, `.codex/README.md`, `.env.example` |
 
 ## Protected Areas
@@ -57,6 +57,7 @@ This keeps local agents on the supported Node 22.x toolchain.
 | `README.md` | Product state, route semantics, bootstrap, and high-level architecture. |
 | `docs/dev-tooling.md` | Local runtime, Codex sandbox setup, workflow command notes. |
 | `docs/review-domain-boundary.md` | Review scope invariants and facade boundary for routes, actions, and components. |
+| `docs/textbook-pronunciation-boundary.md` | Textbook facade imports, pronunciation display/runtime boundary, and canonical pronunciation workflow entry points. |
 | `docs/llm-kit/README.md` | External LLM content kit and content handoff source of truth. |
 | `.codex/README.md` | Codex local action and sandbox configuration. |
 | `.agents/skills/*/SKILL.md` | Repo-scoped workflow instructions for protected content/editorial tasks. |

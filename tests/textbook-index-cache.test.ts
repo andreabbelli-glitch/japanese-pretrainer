@@ -73,7 +73,7 @@ import {
   getTextbookIndexData,
   getTextbookLessonData,
   getTextbookLessonTooltipEntries
-} from "@/lib/textbook";
+} from "@/features/textbook/server";
 import { createDeferred, waitForTruthy } from "./helpers/async";
 
 describe("textbook index cache", () => {

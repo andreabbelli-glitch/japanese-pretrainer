@@ -8,7 +8,7 @@ import {
   uninstallMinimalDom
 } from "./helpers/minimal-dom";
 
-import type { TextbookLessonData } from "@/lib/textbook-types";
+import type { TextbookLessonData } from "@/features/textbook/types";
 
 const mocks = vi.hoisted(() => ({
   latestToggleLessonCompletion: null as null | (() => void),

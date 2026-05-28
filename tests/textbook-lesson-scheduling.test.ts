@@ -46,7 +46,8 @@ describe("textbook lesson query scheduling", () => {
       getFuriganaModeSetting: vi.fn(furiganaGate.loader())
     }));
 
-    const { getTextbookLessonData } = await import("@/lib/textbook");
+    const { getTextbookLessonData } =
+      await import("@/features/textbook/server");
     let resolved = false;
     const lessonDataPromise = getTextbookLessonData(
       "missing-media",
