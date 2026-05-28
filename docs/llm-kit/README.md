@@ -148,7 +148,8 @@ modifica. Per esempio:
 Nota pratica aggiornata:
 
 - `general/01-content-format.md` deve restare allineato a
-  `docs/content-format.md`;
+  `docs/content-format.md`; il gate agent-facing
+  `./scripts/with-node.sh pnpm agent:check` fallisce se i due file divergono;
 - il formato supporta gia `:::image`, metadata audio locali e
   `pronunciations.json`;
 - il fatto che audio e immagini vengano spesso arricchiti dopo non significa

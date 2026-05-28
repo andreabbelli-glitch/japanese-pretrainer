@@ -264,6 +264,30 @@ automatica. Se invece
 cambia codice di parser, importer, routing, DB, auth, cache o UI, torna ai gate
 canonici del repo e ai test mirati indicati dalla skill.
 
+## Gate agent-facing
+
+Per modifiche a documenti o strumenti che orientano gli agenti, esegui:
+
+```sh
+./scripts/with-node.sh pnpm agent:check
+```
+
+Il comando verifica che `docs/agent-orientation.md` sia aggiornato, che ogni
+skill repo-scoped abbia una sezione `## Verification`, che il diff corrente
+renda esplicite modifiche a path protetti e che
+`docs/llm-kit/general/01-content-format.md` resti allineato byte-per-byte a
+`docs/content-format.md`.
+
+`agent:check` resta un gate standalone: non sostituisce `pnpm check`, i gate
+content-only dichiarati dalle skill, `content:validate`, `content:import` o
+`release:check`. Se stai eseguendo un workflow contenuto esplicito e hai
+modifiche legittime sotto `content/`, `content/media/**/workflow/**` o
+`drizzle/`, puoi rilanciarlo con:
+
+```sh
+./scripts/with-node.sh pnpm agent:check -- --allow-protected-paths
+```
+
 ## Kanji Clash
 
 Kanji Clash non richiede comandi dedicati oltre ai gate canonici del repo, ma

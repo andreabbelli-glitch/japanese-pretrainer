@@ -70,6 +70,7 @@ description: Handles a sample repo workflow.
     expect(markdown).toContain("## Repo-Scoped Skills");
     expect(markdown).toContain("## Key Source Docs");
     expect(markdown).toContain("`./scripts/with-node.sh pnpm check`");
+    expect(markdown).toContain("`./scripts/with-node.sh pnpm agent:check`");
     expect(markdown).toContain("`content/`");
     expect(markdown).toContain(".agents/skills/forvo-pronunciations/SKILL.md");
     expect(markdown).toContain(

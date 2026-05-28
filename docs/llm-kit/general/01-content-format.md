@@ -677,6 +677,10 @@ Regola review obbligatoria per `:::card`:
 - `example_jp` deve mostrare uso vivo, non spiegazione della parola: niente
   frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
   `Xという言葉は...` o simili;
+- ogni nuova card o card revisionata deve chiudere il workflow con una pronuncia
+  locale per la sua entry oppure con una richiesta Forvo `word-add` registrata;
+  non lasciare entry nuove semplicemente mute senza passare dal workflow
+  pronunce;
 - `example_jp` non deve contenere kanji che non hanno una flashcard associata nel
   corpus di studio (indipendentemente dal media e dallo stato di studio della
   card); anticipare leggermente e ammesso, usare kanji completamente fuori dal
@@ -799,10 +803,10 @@ Regole audio:
   legacy, entry non ancora review-backed e manifest costruiti per step;
 - per ogni entry collegata a una nuova card o card revisionata, pero, il
   workflow editoriale deve sempre risolvere la pronuncia: prima audio locale o
-  riuso cross-media; poi fetch Forvo Anki-style tramite helper Anki dedicato,
-  candidati `Play(...)`, ranking speaker e conversione OGG -> MP3; se Forvo non
-  espone la pronuncia, deve aprire la richiesta `word-add` e registrarla nello
-  storico richieste;
+  riuso cross-media; poi dataset locale Tofugu/WaniKani con match esatto; poi
+  fetch Forvo Anki-style tramite helper Anki dedicato, candidati `Play(...)`,
+  ranking speaker e conversione OGG -> MP3; se Forvo non espone la pronuncia,
+  deve aprire la richiesta `word-add` e registrarla nello storico richieste;
 - il download manuale Forvo non e un'alternativa normale per una nuova card: e'
   ammesso solo come fallback estremo quando il fetch Anki-style o l'import diretto
   falliscono su un caso specifico;
@@ -1005,6 +1009,9 @@ Regole:
 - il manifest integra i campi audio del Markdown;
 - se Markdown e manifest definiscono la stessa entry, il Markdown ha priorita
   sui campi gia presenti;
+- gli asset importati dal dataset Tofugu/WaniKani usano
+  `audio_source: "tofugu_wanikani"`, licenza `CC-BY-SA-4.0` e attribuzione
+  `Tofugu and WaniKani`;
 - il manifest viene validato durante `content:validate` e `content:import`.
 
 ## 12. Regole di import

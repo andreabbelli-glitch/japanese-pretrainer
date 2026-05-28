@@ -62,7 +62,8 @@ export const taskClassifiers: TaskClassifier[] = [
     task: "Local setup, environment, QA, or agent tooling",
     orientation:
       "Update the related operational docs in the same slice and keep commands behind `./scripts/with-node.sh`.",
-    verify: "Use the smallest targeted doc/tooling check that proves the change.",
+    verify:
+      "Use the smallest targeted doc/tooling check that proves the change, plus `./scripts/with-node.sh pnpm agent:check` when agent-facing guardrails are touched.",
     sourceDocs: ["docs/dev-tooling.md", ".codex/README.md", ".env.example"]
   }
 ];
@@ -195,6 +196,7 @@ export function buildAgentOrientationDocument({
     "- App code or logic: run `./scripts/with-node.sh pnpm check`.",
     "- Routing, DB, importer/sync, auth, cache revalidation, or E2E-covered flows: run `./scripts/with-node.sh pnpm check` and `./scripts/with-node.sh pnpm release:check`.",
     "- Content-only repo-scoped skill work: run the skill's `Verification` section instead of broad app gates.",
+    "- Agent-facing docs, skills, protected-path policy, or LLM kit mirrors: run `./scripts/with-node.sh pnpm agent:check`; it does not replace `pnpm check`, content workflow validation/import, or release gates.",
     "- If a required gate cannot run, report the exact command and concrete reason.",
     "",
     "## Repo-Scoped Skills",

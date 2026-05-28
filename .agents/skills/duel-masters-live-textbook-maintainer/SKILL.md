@@ -578,3 +578,45 @@ B.A.D 2: ...
 reveal_mode: sentence
 :::
 ```
+
+## Verification
+
+For normal runs of this skill where the diff is limited to
+`content/media/duel-masters-dm25/**` textbook, cards, assets, workflow sidecars,
+or pronunciation files, do not run the full `pnpm check` or
+`pnpm release:check` suites by default.
+
+Always validate the affected media bundle:
+
+```bash
+./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25
+```
+
+If the run creates or revises cards, refresh the pronunciation backlog and
+resolve every new or revised card entry before completion:
+
+```bash
+./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug duel-masters-dm25
+.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media duel-masters-dm25 --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
+./scripts/with-node.sh pnpm pitch-accents:fetch -- --media duel-masters-dm25 --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
+```
+
+Then import the changed lesson or lessons into the configured target database:
+
+```bash
+./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug>
+```
+
+Repeat `--lesson-slug` when a single task legitimately spans multiple textbook
+routes. Use the whole-media import form only when the run renumbers lessons,
+changes segment ordering, touches media-wide references, or needs archive/prune
+behavior:
+
+```bash
+./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25
+```
+
+If implementation code, parser/importer logic, routing, DB schema, auth, cache,
+or user-facing UI changes too, return to the repository gates for that change:
+`./scripts/with-node.sh pnpm check` and, when required by `AGENTS.md`,
+`./scripts/with-node.sh pnpm release:check`.
