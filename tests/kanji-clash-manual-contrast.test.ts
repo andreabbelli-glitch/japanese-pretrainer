@@ -18,11 +18,11 @@ import {
   kanjiClashManualContrastRoundState
 } from "@/db/schema";
 import {
-  applyKanjiClashSessionAction,
   buildKanjiClashContrastKey,
-  buildKanjiClashQueueSnapshot,
-  loadKanjiClashManualContrastCandidates
+  buildKanjiClashQueueSnapshot
 } from "@/features/kanji-clash";
+import { loadKanjiClashManualContrastCandidates } from "@/features/kanji-clash/server/manual-contrast";
+import { applyKanjiClashSessionAction } from "@/features/kanji-clash/server/session-action";
 
 import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
 

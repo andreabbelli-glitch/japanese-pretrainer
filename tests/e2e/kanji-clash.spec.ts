@@ -10,7 +10,7 @@ import {
   kanjiClashManualContrast,
   kanjiClashManualContrastRoundState
 } from "@/db/schema";
-import { loadKanjiClashQueueSnapshot } from "@/features/kanji-clash";
+import { loadKanjiClashQueueSnapshot } from "@/features/kanji-clash/server/session";
 
 import { resolveStartE2EDatabaseUrl } from "../../scripts/start-e2e-config.ts";
 import {

@@ -14,10 +14,8 @@ import {
   kanjiClashManualContrast,
   kanjiClashManualContrastRoundState
 } from "@/db/schema";
-import {
-  getKanjiClashPageData,
-  verifyKanjiClashQueueToken
-} from "@/features/kanji-clash";
+import { verifyKanjiClashQueueToken } from "@/features/kanji-clash/server/queue-token";
+import { getKanjiClashPageData } from "@/features/kanji-clash/server/page-data";
 import { updateStudySettings } from "@/features/settings/server";
 import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
 

@@ -17,19 +17,25 @@ import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
 import { loadValidatedManifest } from "./manifest-helpers.ts";
 import {
   createPronunciationReuseContext,
+  refreshPronunciationReuseContextBundle,
+  reuseCrossMediaPronunciationsForBundle,
+  type PronunciationReuseContext
+} from "./reuse.ts";
+import {
   fetchForvoPronunciationsForBundle,
-  loadForvoKnownMissingRegistry,
+  resolveRequestedTargets,
+  type ForvoBrowserOptions
+} from "./forvo-fetch.ts";
+import {
   loadForvoWordAddRequestRegistry,
   persistForvoWordAddRequestRegistry,
-  reconcileForvoWordAddRequestRegistry,
-  refreshPronunciationReuseContextBundle,
-  resolveRequestedTargets,
-  reuseCrossMediaPronunciationsForBundle,
+  reconcileForvoWordAddRequestRegistry
+} from "./forvo-word-add.ts";
+import {
+  loadForvoKnownMissingRegistry,
   summarizeBundlePronunciationPending,
-  writeBundlePronunciationPendingSummary,
-  type ForvoBrowserOptions,
-  type PronunciationReuseContext
-} from "../index.ts";
+  writeBundlePronunciationPendingSummary
+} from "./workflow.ts";
 import {
   collectPronunciationTargets,
   type PronunciationTargetEntry

@@ -8,13 +8,15 @@ type CliOptions = {
 };
 
 const options = parseCliOptions(process.argv.slice(2));
-const { parseContentRoot } = await import("../src/features/content/validator.ts");
+const { parseContentRoot } =
+  await import("../src/features/content/validator.ts");
 const {
   createPronunciationReuseContext,
   refreshPronunciationReuseContextBundle,
-  reusePronunciationsAcrossMedia,
-  writeBundlePronunciationPendingSummary
-} = await import("../src/features/pronunciation/index.ts");
+  reusePronunciationsAcrossMedia
+} = await import("../src/features/pronunciation/tooling/reuse.ts");
+const { writeBundlePronunciationPendingSummary } =
+  await import("../src/features/pronunciation/tooling/workflow.ts");
 const parseResult = await parseContentRoot(path.resolve(options.contentRoot));
 
 if (!parseResult.ok) {

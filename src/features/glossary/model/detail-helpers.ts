@@ -1,9 +1,10 @@
-import type { Route } from "next";
-
-import type { CrossMediaSibling, EntryLessonConnection } from "@/db/queries";
-import { mediaGlossaryEntryHref, mediaTextbookLessonHref } from "@/features/navigation";
+import {
+  mediaGlossaryEntryHref,
+  mediaTextbookLessonHref,
+  type AppHref
+} from "@/features/navigation";
 import { capitalizeToken } from "@/features/study/model/format";
-import { stripInlineMarkdown } from "@/features/study/ui/furigana";
+import { stripInlineMarkdown } from "@/features/study/model/inline-markdown";
 import { pickBestBy } from "@/features/shared/model/collections";
 import { formatLocalIsoDate } from "@/features/shared/model/local-date";
 
@@ -12,19 +13,53 @@ type GlossaryAlias = {
   type?: string;
 };
 
+export type GlossaryEntryLinkRole =
+  | "introduced"
+  | "explained"
+  | "mentioned"
+  | "reviewed";
+
+export type GlossaryLessonConnectionRow = {
+  entryId?: string;
+  entryType?: "term" | "grammar";
+  linkRole: GlossaryEntryLinkRole;
+  lessonId: string;
+  lessonOrderIndex: number;
+  lessonSlug: string;
+  lessonSummary: string | null;
+  lessonTitle: string;
+  segmentId?: string | null;
+  segmentTitle: string | null;
+  sortOrder: number | null;
+};
+
+export type GlossaryCrossMediaSiblingRow = {
+  kind: "term" | "grammar";
+  label: string;
+  meaningIt: string;
+  mediaSlug: string;
+  mediaTitle: string;
+  notesIt: string | null;
+  reading: string | null;
+  romaji?: string;
+  segmentTitle: string | null;
+  sourceId: string;
+  title?: string;
+};
+
 type AggregatedLessonConnection = {
   lessonId: string;
   lessonOrderIndex: number;
   lessonSlug: string;
   lessonSummary: string | null;
   lessonTitle: string;
-  linkRoles: EntryLessonConnection["linkRole"][];
+  linkRoles: GlossaryEntryLinkRole[];
   segmentTitle: string | null;
   sortOrder: number | null;
 };
 
 export function aggregateGlossaryLessonConnections(
-  rows: EntryLessonConnection[]
+  rows: GlossaryLessonConnectionRow[]
 ) {
   const lessons = new Map<string, AggregatedLessonConnection>();
 
@@ -91,7 +126,7 @@ export function aggregateGlossaryLessonConnections(
 export function pickPrimaryGlossaryLesson(
   rows: AggregatedLessonConnection[],
   mediaSlug: string
-): { href: Route; roleLabel: string; title: string } | undefined {
+): { href: AppHref; roleLabel: string; title: string } | undefined {
   const primary = pickBestBy(rows, (left, right) => {
     const leftRank = getGlossaryEntryLinkRoleRank(left.linkRoles[0]);
     const rightRank = getGlossaryEntryLinkRoleRank(right.linkRoles[0]);
@@ -167,7 +202,9 @@ export function groupAliasesForGlossaryDetail(aliases: GlossaryAlias[]) {
   }));
 }
 
-export function mapGlossaryCrossMediaSibling(sibling: CrossMediaSibling) {
+export function mapGlossaryCrossMediaSibling(
+  sibling: GlossaryCrossMediaSiblingRow
+) {
   return {
     href: mediaGlossaryEntryHref(
       sibling.mediaSlug,
@@ -195,8 +232,8 @@ export function mapGlossaryCrossMediaSibling(sibling: CrossMediaSibling) {
   };
 }
 
-function getGlossaryEntryLinkRoleRank(role: EntryLessonConnection["linkRole"]) {
-  const ranks: Record<EntryLessonConnection["linkRole"], number> = {
+function getGlossaryEntryLinkRoleRank(role: GlossaryEntryLinkRole) {
+  const ranks: Record<GlossaryEntryLinkRole, number> = {
     introduced: 0,
     explained: 1,
     mentioned: 2,

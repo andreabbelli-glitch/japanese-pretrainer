@@ -1,5 +1,5 @@
 import { mediaGlossaryEntryHref } from "@/features/navigation";
-import { type GlossaryDefaultSort } from "@/features/settings/server";
+import { type GlossaryDefaultSort } from "@/features/settings/types";
 import { deriveEntryStudyState } from "@/features/study/model/entry";
 import { buildEntryKey } from "@/features/study/model/entry-id";
 import { pickBestBy } from "@/features/shared/model/collections";

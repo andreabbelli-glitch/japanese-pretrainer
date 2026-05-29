@@ -1,15 +1,5 @@
-import type { Route } from "next";
-
+import type { AppHref } from "@/features/navigation";
 import {
-  listGlossaryProgressSummaries,
-  listGlossaryPreviewEntries,
-  type LessonListItem
-} from "@/db/queries";
-import type { DatabaseClient } from "@/db";
-import { mediaGlossaryEntryHref } from "@/features/navigation";
-import { formatDerivedStudyStateLabel } from "@/features/study/model/entry";
-import {
-  calculatePercent,
   compareIsoDates,
   formatLessonProgressStatusLabel
 } from "@/features/study/model/format";
@@ -22,7 +12,7 @@ export type StudyEntryPreview = {
   meaning: string;
   statusLabel: string;
   segmentTitle?: string;
-  href: Route;
+  href: AppHref;
 };
 
 export type SegmentStudyPreview = {
@@ -58,13 +48,26 @@ export type GlossaryProgressSnapshot = {
   };
 };
 
-export type LessonMetricsListItem = Omit<LessonListItem, "content"> & {
-  content?: LessonListItem["content"];
-};
-
-type GlossaryProgressMediaTarget = {
+export type LessonMetricsListItem = {
   id: string;
   slug: string;
+  title: string;
+  orderIndex: number;
+  difficulty: string | null;
+  summary: string | null;
+  segment: {
+    id: string;
+    title: string;
+    notes: string | null;
+  } | null;
+  progress: {
+    status: "not_started" | "in_progress" | "completed" | string | null;
+    completedAt: string | null;
+    lastOpenedAt: string | null;
+  } | null;
+  content?: {
+    excerpt: string | null;
+  } | null;
 };
 
 export function buildEmptyGlossaryProgressSnapshot(): GlossaryProgressSnapshot {
@@ -81,84 +84,6 @@ export function buildEmptyGlossaryProgressSnapshot(): GlossaryProgressSnapshot {
       review: 0
     }
   };
-}
-
-export async function loadGlossaryProgressSnapshot(
-  database: DatabaseClient,
-  mediaId: string,
-  mediaSlug: string
-) {
-  const snapshots = await loadGlossaryProgressSnapshots(database, [
-    {
-      id: mediaId,
-      slug: mediaSlug
-    }
-  ]);
-
-  return snapshots.get(mediaId) ?? buildEmptyGlossaryProgressSnapshot();
-}
-
-export async function loadGlossaryProgressSnapshots(
-  database: DatabaseClient,
-  media: GlossaryProgressMediaTarget[]
-) {
-  if (media.length === 0) {
-    return new Map<string, GlossaryProgressSnapshot>();
-  }
-
-  const mediaIds = media.map((item) => item.id);
-  const [summaries, previews] = await Promise.all([
-    listGlossaryProgressSummaries(database, mediaIds),
-    listGlossaryPreviewEntries(database, media, 6)
-  ]);
-
-  const snapshots = new Map<string, GlossaryProgressSnapshot>();
-  const previewsByMedia = new Map<string, StudyEntryPreview[]>();
-
-  for (const preview of previews) {
-    const existing = previewsByMedia.get(preview.mediaId) ?? [];
-
-    existing.push({
-      href: mediaGlossaryEntryHref(
-        preview.mediaSlug,
-        preview.kind,
-        preview.label,
-        {
-          sourceId: preview.sourceId
-        }
-      ),
-      id: preview.sourceId,
-      kind: preview.kind,
-      label: preview.label,
-      meaning: preview.meaningIt,
-      reading: preview.reading ?? undefined,
-      segmentTitle: preview.segmentTitle ?? undefined,
-      statusLabel: formatDerivedStudyStateLabel(preview.state)
-    });
-
-    previewsByMedia.set(preview.mediaId, existing);
-  }
-
-  for (const summary of summaries) {
-    snapshots.set(summary.mediaId, {
-      entriesCovered: summary.entriesCovered,
-      entriesTotal: summary.entriesTotal,
-      progressPercent: calculatePercent(
-        summary.entriesCovered,
-        summary.entriesTotal
-      ),
-      previewEntries: previewsByMedia.get(summary.mediaId) ?? [],
-      breakdown: {
-        available: summary.available,
-        known: summary.known,
-        learning: summary.learning,
-        new: summary.new,
-        review: summary.review
-      }
-    });
-  }
-
-  return snapshots;
 }
 
 export function mapLessonTarget(

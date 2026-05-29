@@ -1,4 +1,4 @@
-import { stripInlineMarkdown } from "@/features/study/ui/furigana";
+import { stripInlineMarkdown } from "@/features/study/model/inline-markdown";
 import type { ReviewCardSource } from "@/features/review/model/card-contract";
 import {
   groupReviewCardsBySubject,
@@ -7,7 +7,10 @@ import {
   type ReviewSubjectGroup,
   type ReviewSubjectStateSnapshot
 } from "@/features/review/model/subject";
-import type { ReviewOverviewSnapshot, ReviewQueueCard } from "@/features/review/types";
+import type {
+  ReviewOverviewSnapshot,
+  ReviewQueueCard
+} from "@/features/review/types";
 import { resolveReviewQueueState } from "@/features/review/model/queue-state";
 import type {
   ReviewQueueSubjectSnapshot,

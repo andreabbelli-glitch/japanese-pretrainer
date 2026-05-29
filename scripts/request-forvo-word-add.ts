@@ -6,10 +6,10 @@ import {
   addForvoWordAddRequestEntry,
   buildForvoWordAddUrl,
   hasCurrentForvoWordAddRequestForEntry,
-  loadForvoKnownMissingRegistry,
   loadForvoWordAddRequestRegistry,
   persistForvoWordAddRequestRegistry
-} from "../src/features/pronunciation/index.ts";
+} from "../src/features/pronunciation/tooling/forvo-word-add.ts";
+import { loadForvoKnownMissingRegistry } from "../src/features/pronunciation/tooling/workflow.ts";
 
 type CliOptions = {
   dryRun: boolean;

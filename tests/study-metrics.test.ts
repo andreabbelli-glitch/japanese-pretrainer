@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import type { LessonListItem } from "@/db/queries";
-import { buildLessonMetrics } from "@/features/study/model/metrics";
+import {
+  buildLessonMetrics,
+  type LessonMetricsListItem
+} from "@/features/study/model/metrics";
 
 describe("buildLessonMetrics", () => {
   it("uses the most recently opened in-progress lesson for segment previews", () => {
@@ -43,7 +45,7 @@ function buildLesson(input: {
     status: "in_progress" | "completed";
     lastOpenedAt: string | null;
   } | null;
-}): LessonListItem {
+}): LessonMetricsListItem {
   return {
     id: input.id,
     slug: input.slug,

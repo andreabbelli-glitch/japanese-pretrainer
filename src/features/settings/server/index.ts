@@ -9,25 +9,23 @@ import {
 } from "@/features/cache/server/data-cache";
 
 import { reviewSchedulerConfig } from "@/features/review/model/scheduler";
+import {
+  kanjiClashManualDefaultSizeOptions,
+  type FuriganaMode,
+  type GlossaryDefaultSort,
+  type KanjiClashDefaultScope,
+  type StudySettings,
+  type StudySettingsInput
+} from "@/features/settings/types";
 
-export type FuriganaMode = "on" | "off" | "hover";
-export type GlossaryDefaultSort = "lesson_order" | "alphabetical";
-export type KanjiClashDefaultScope = "global" | "media";
-
-export type StudySettings = {
-  furiganaMode: FuriganaMode;
-  glossaryDefaultSort: GlossaryDefaultSort;
-  kanjiClashDailyNewLimit: number;
-  kanjiClashDefaultScope: KanjiClashDefaultScope;
-  kanjiClashManualDefaultSize: number;
-  reviewAutoplayAudioOnReveal: boolean;
-  reviewFrontFurigana: boolean;
-  reviewDailyLimit: number;
-};
-
-export type StudySettingsInput = Partial<StudySettings>;
-
-export const kanjiClashManualDefaultSizeOptions = [10, 20, 40] as const;
+export { kanjiClashManualDefaultSizeOptions } from "@/features/settings/types";
+export type {
+  FuriganaMode,
+  GlossaryDefaultSort,
+  KanjiClashDefaultScope,
+  StudySettings,
+  StudySettingsInput
+} from "@/features/settings/types";
 
 export const defaultStudySettings: StudySettings = {
   furiganaMode: "hover",
@@ -352,9 +350,7 @@ export function normalizeReviewFrontFurigana(value: boolean | string) {
       : defaultStudySettings.reviewFrontFurigana;
 }
 
-export function normalizeReviewAutoplayAudioOnReveal(
-  value: boolean | string
-) {
+export function normalizeReviewAutoplayAudioOnReveal(value: boolean | string) {
   if (typeof value === "boolean") {
     return value;
   }

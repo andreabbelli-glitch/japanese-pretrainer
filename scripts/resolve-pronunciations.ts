@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
-import { assertForvoManualRunCanStart } from "../src/features/pronunciation/index.ts";
+import { assertForvoManualRunCanStart } from "../src/features/pronunciation/tooling/forvo-fetch.ts";
 import {
   resolvePronunciations,
   type PronunciationResolveMode

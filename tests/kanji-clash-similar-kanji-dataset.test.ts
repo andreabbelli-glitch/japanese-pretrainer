@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 
 import {
-  buildSimilarKanjiDataset,
   findKanjiClashSimilarKanjiEntry,
   getKanjiClashSimilarKanjiDataset
 } from "@/features/kanji-clash";
+import { buildSimilarKanjiDataset } from "@/features/kanji-clash/tooling";
 
 describe("kanji clash similar-kanji dataset", () => {
   it("loads the generated dataset with symmetric lookups", () => {
@@ -39,7 +39,9 @@ describe("kanji clash similar-kanji dataset", () => {
     expect(Object.isFrozen(entry)).toBe(true);
     expect(Object.isFrozen(entry.sources)).toBe(true);
     expect(entry).toBe(
-      dataset.swaps.find((swap) => swap.leftKanji === "待" && swap.rightKanji === "持")
+      dataset.swaps.find(
+        (swap) => swap.leftKanji === "待" && swap.rightKanji === "持"
+      )
     );
   });
 
@@ -229,21 +231,16 @@ describe("kanji clash similar-kanji dataset", () => {
       listName: "manualExcludes" as const,
       overrides: [["待", "待"]] as const
     }
-  ])(
-    "rejects invalid $listName overrides",
-    ({ listName, overrides }) => {
-      expect(() =>
-        buildSimilarKanjiDataset({
-          generatedAt: "2026-04-11T00:00:00.000Z",
-          [listName]: overrides,
-          minimumMetricScore: 0.75,
-          rulesVersion: 1
-        })
-      ).toThrow(
-        `Invalid ${listName}[0]: expected single-kanji swap, got`
-      );
-    }
-  );
+  ])("rejects invalid $listName overrides", ({ listName, overrides }) => {
+    expect(() =>
+      buildSimilarKanjiDataset({
+        generatedAt: "2026-04-11T00:00:00.000Z",
+        [listName]: overrides,
+        minimumMetricScore: 0.75,
+        rulesVersion: 1
+      })
+    ).toThrow(`Invalid ${listName}[0]: expected single-kanji swap, got`);
+  });
 
   it("ignores metric rows below the configured threshold", () => {
     const dataset = buildSimilarKanjiDataset({

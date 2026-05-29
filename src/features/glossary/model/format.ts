@@ -1,21 +1,21 @@
-import type {
-  CrossMediaSibling,
-  CrossMediaGroupRecord,
-  EntryCardConnection,
-  EntryLessonConnection,
-  GrammarGlossaryEntry,
-  GrammarGlossaryEntrySummary,
-  TermGlossaryEntry,
-  TermGlossaryEntrySummary
-} from "@/db/queries";
 import {
   aggregateGlossaryLessonConnections,
   formatGlossaryEntryLinkRole,
   formatGlossaryShortDate,
   groupAliasesForGlossaryDetail,
   mapGlossaryCrossMediaSibling,
-  pickPrimaryGlossaryLesson
+  pickPrimaryGlossaryLesson,
+  type GlossaryCrossMediaSiblingRow,
+  type GlossaryLessonConnectionRow
 } from "@/features/glossary/model/detail-helpers";
+import type {
+  GlossaryCardConnectionRow,
+  GlossaryCrossMediaGroupSummary,
+  GrammarGlossaryEntry,
+  GrammarGlossaryEntrySummary,
+  TermGlossaryEntry,
+  TermGlossaryEntrySummary
+} from "@/features/glossary/model/records";
 import {
   mediaGlossaryEntryHref,
   mediaGlossaryHref,
@@ -38,7 +38,7 @@ import {
   romanizeKanaForSearch
 } from "@/features/study/model/search";
 import { buildPronunciationData } from "@/features/pronunciation/model/data";
-import { stripInlineMarkdown } from "@/features/study/ui/furigana";
+import { stripInlineMarkdown } from "@/features/study/model/inline-markdown";
 import { deriveEntryStudyState } from "@/features/study/model/entry";
 import type {
   GlossaryBaseEntry,
@@ -92,7 +92,7 @@ export function mapEntryToBaseModel(
         kana: foldJapaneseKana(alias.aliasNorm),
         text: alias.aliasText,
         normalized: alias.aliasNorm,
-        type: alias.aliasType
+        type: alias.aliasType ?? undefined
       })),
       lemmaNorm: termEntry.searchLemmaNorm,
       readingNorm: termEntry.searchReadingNorm,
@@ -141,8 +141,8 @@ export function mapEntryToBaseModel(
       normalized: alias.aliasNorm
     })),
     lemmaNorm: grammarEntry.searchPatternNorm,
-    romajiNorm: grammarEntry.searchRomajiNorm,
-    romajiCompact: grammarEntry.searchRomajiNorm,
+    romajiNorm: grammarEntry.searchRomajiNorm ?? undefined,
+    romajiCompact: grammarEntry.searchRomajiNorm ?? undefined,
     patternNorm: grammarEntry.searchPatternNorm,
     patternKana: foldJapaneseKana(grammarEntry.searchPatternNorm),
     meaningNorm: normalizeSearchText(grammarEntry.meaningIt),
@@ -214,8 +214,8 @@ export function mapGrammarSummaryToBaseModel(
     segmentTitle: entry.segmentTitle ?? undefined,
     aliases: [],
     lemmaNorm: entry.searchPatternNorm,
-    romajiNorm: entry.searchRomajiNorm,
-    romajiCompact: entry.searchRomajiNorm,
+    romajiNorm: entry.searchRomajiNorm ?? undefined,
+    romajiCompact: entry.searchRomajiNorm ?? undefined,
     patternNorm: entry.searchPatternNorm,
     patternKana: foldJapaneseKana(entry.searchPatternNorm),
     meaningNorm: normalizeSearchText(entry.meaningIt),
@@ -253,7 +253,7 @@ export function buildLocalGlossaryResults(input: {
       matchesCurrentQuery: boolean;
     }
   >;
-  lessonsByEntry: Map<string, EntryLessonConnection[]>;
+  lessonsByEntry: Map<string, GlossaryLessonConnectionRow[]>;
   mediaSlug: string;
 }): GlossaryPageData["results"] {
   return input.entries.map((entry) => {
@@ -295,13 +295,13 @@ export function buildLocalGlossaryResults(input: {
 }
 
 export function buildLocalGlossaryPreviewData(input: {
-  cardConnections: EntryCardConnection[];
+  cardConnections: GlossaryCardConnectionRow[];
   crossMediaFamily?: {
-    group: CrossMediaGroupRecord | null;
-    siblings: CrossMediaSibling[];
+    group: GlossaryCrossMediaGroupSummary | null;
+    siblings: GlossaryCrossMediaSiblingRow[];
   };
   entry: RankedGlossaryEntry | null;
-  lessonsByEntry: Map<string, EntryLessonConnection[]>;
+  lessonsByEntry: Map<string, GlossaryLessonConnectionRow[]>;
   media: GlossaryMediaSummary;
 }): GlossaryDetailData | undefined {
   if (!input.entry) {
@@ -324,7 +324,7 @@ export function buildLocalGlossaryPreviewData(input: {
 }
 
 export function buildRankedGlossaryDetailEntry(input: {
-  cardConnections: EntryCardConnection[];
+  cardConnections: GlossaryCardConnectionRow[];
   entry: TermGlossaryEntry | GrammarGlossaryEntry;
   kind: GlossaryKind;
 }): RankedGlossaryEntry {
@@ -356,13 +356,13 @@ export function buildRankedGlossaryDetailEntry(input: {
 }
 
 export function buildGlossaryDetailData(input: {
-  cardConnections: EntryCardConnection[];
+  cardConnections: GlossaryCardConnectionRow[];
   crossMediaFamily: {
-    group: CrossMediaGroupRecord | null;
-    siblings: CrossMediaSibling[];
+    group: GlossaryCrossMediaGroupSummary | null;
+    siblings: GlossaryCrossMediaSiblingRow[];
   };
   entry: RankedGlossaryEntry;
-  lessonConnections: EntryLessonConnection[];
+  lessonConnections: GlossaryLessonConnectionRow[];
   media: GlossaryMediaSummary;
 }): GlossaryDetailData {
   const lessons = aggregateGlossaryLessonConnections(input.lessonConnections);

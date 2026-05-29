@@ -25,12 +25,12 @@ import {
   term
 } from "@/db/schema";
 import {
-  applyKanjiClashSessionAction,
   buildKanjiClashCandidate,
   buildKanjiClashPairKey,
-  buildKanjiClashQueueSnapshot,
-  loadKanjiClashQueueSnapshot
+  buildKanjiClashQueueSnapshot
 } from "@/features/kanji-clash";
+import { loadKanjiClashQueueSnapshot } from "@/features/kanji-clash/server/session";
+import { applyKanjiClashSessionAction } from "@/features/kanji-clash/server/session-action";
 import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
 
 describe("kanji clash session service", () => {

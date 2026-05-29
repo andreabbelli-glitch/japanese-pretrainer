@@ -6,13 +6,15 @@ import {
   advanceKanjiClashQueueSnapshot,
   buildKanjiClashCandidate,
   buildKanjiClashQueueSnapshot,
-  createKanjiClashQueueToken,
   type KanjiClashCandidate,
   type KanjiClashEligibleSubject,
   type KanjiClashPairState,
-  type KanjiClashQueueSnapshot,
-  verifyKanjiClashQueueToken
+  type KanjiClashQueueSnapshot
 } from "@/features/kanji-clash";
+import {
+  createKanjiClashQueueToken,
+  verifyKanjiClashQueueToken
+} from "@/features/kanji-clash/server/queue-token";
 
 function makeSubject(
   input: Partial<KanjiClashEligibleSubject> &
@@ -248,8 +250,9 @@ describe("kanji clash queue token", () => {
       throw new Error("Missing normalized Kanji Clash queue token.");
     }
 
-    expect(verifyKanjiClashQueueToken(createKanjiClashQueueToken(verifiedQueue)))
-      .toEqual(verifiedQueue);
+    expect(
+      verifyKanjiClashQueueToken(createKanjiClashQueueToken(verifiedQueue))
+    ).toEqual(verifiedQueue);
   });
 
   it("emits a smaller payload than the legacy full snapshot token", () => {

@@ -1,4 +1,3 @@
-import type { MediaListItem } from "@/db/queries";
 import {
   calculatePercent,
   formatMediaTypeLabel,
@@ -16,7 +15,15 @@ import {
 import { pickBestBy } from "@/features/shared/model/collections";
 
 type MediaShellMedia = Pick<
-  MediaListItem,
+  {
+    description: string | null;
+    id: string;
+    mediaType: string;
+    segmentKind: string;
+    slug: string;
+    status: string;
+    title: string;
+  },
   | "description"
   | "id"
   | "mediaType"

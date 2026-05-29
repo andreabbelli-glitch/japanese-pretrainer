@@ -1,7 +1,10 @@
 import type { PronunciationData } from "@/features/pronunciation/model/data";
-import type { GlossaryDefaultSort } from "@/features/settings/server";
+import type { GlossaryDefaultSort } from "@/features/settings/types";
 import type { AppHref } from "@/features/navigation";
-import type { DerivedStudyState, EntryStudySignal } from "@/features/study/model/entry";
+import type {
+  DerivedStudyState,
+  EntryStudySignal
+} from "@/features/study/model/entry";
 
 export type GlossaryKind = "term" | "grammar";
 export type GlossaryCardsFilter = "all" | "with_cards" | "without_cards";

@@ -8,10 +8,10 @@ import {
   assertForvoManualRunCanStart,
   fetchForvoPronunciationsForBundle,
   fetchForvoPronunciationsForBundleManual,
-  resolveRequestedTargets,
-  reuseCrossMediaPronunciationsForBundle,
-  writeBundlePronunciationPendingSummary
-} from "../src/features/pronunciation/index.ts";
+  resolveRequestedTargets
+} from "../src/features/pronunciation/tooling/forvo-fetch.ts";
+import { reuseCrossMediaPronunciationsForBundle } from "../src/features/pronunciation/tooling/reuse.ts";
+import { writeBundlePronunciationPendingSummary } from "../src/features/pronunciation/tooling/workflow.ts";
 
 type CliOptions = {
   ankiAppPath?: string;

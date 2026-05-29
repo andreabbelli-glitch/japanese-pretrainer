@@ -22,12 +22,14 @@ import {
 import {
   buildKanjiClashCandidate,
   buildKanjiClashQueueSnapshot,
-  createKanjiClashQueueToken,
-  loadKanjiClashQueueSnapshot,
   type KanjiClashRoundSide,
-  type KanjiClashSessionRound,
-  verifyKanjiClashQueueToken
+  type KanjiClashSessionRound
 } from "@/features/kanji-clash";
+import {
+  createKanjiClashQueueToken,
+  verifyKanjiClashQueueToken
+} from "@/features/kanji-clash/server/queue-token";
+import { loadKanjiClashQueueSnapshot } from "@/features/kanji-clash/server/session";
 import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
 
 const SESSION_NOW = new Date("2026-04-09T12:00:00.000Z");

@@ -1,7 +1,7 @@
 import path from "node:path";
 
 import { parseContentRoot } from "../src/features/content/validator.ts";
-import { writeBundlePronunciationPendingSummary } from "../src/features/pronunciation/index.ts";
+import { writeBundlePronunciationPendingSummary } from "../src/features/pronunciation/tooling/workflow.ts";
 
 const options = parseCliOptions(process.argv.slice(2));
 const contentRoot = path.resolve(options.contentRoot);
