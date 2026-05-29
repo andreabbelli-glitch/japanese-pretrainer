@@ -20,7 +20,7 @@ import {
 import { ReviewPageStage } from "@/components/review/review-page-stage";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
-import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
+import type { ReviewPageData, ReviewQueueCard } from "@/features/review/types";
 
 describe("review page client hydration", () => {
   it("keeps an early reveal open when the first-candidate hydration catches up on the same card", () => {

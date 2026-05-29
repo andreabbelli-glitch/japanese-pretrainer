@@ -1,5 +1,5 @@
 export type * from "../types";
 
-export { buildReviewGradePreviews } from "@/lib/review-grade-previews";
-export { getSafeReviewForcedContrastClientErrorMessage } from "@/lib/review-error-messages";
-export { normalizeReviewSubjectSurface } from "@/lib/review-subject";
+export { buildReviewGradePreviews } from "@/features/review/model/grade-previews";
+export { getSafeReviewForcedContrastClientErrorMessage } from "@/features/review/model/error-messages";
+export { normalizeReviewSubjectSurface } from "@/features/review/model/subject";

@@ -15,7 +15,7 @@ import { developmentFixture } from "@/db/seed";
 import { importContentWorkspace } from "@/lib/content/importer";
 import { getDashboardData } from "@/lib/dashboard";
 import { getMediaDetailData } from "@/lib/media-shell";
-import { loadGlobalReviewOverviewSnapshot } from "@/lib/review";
+import { loadGlobalReviewOverviewSnapshot } from "@/features/review/server";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture

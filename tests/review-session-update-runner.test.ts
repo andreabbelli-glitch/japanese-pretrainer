@@ -11,7 +11,7 @@ import {
   type ReviewOptimisticRollback
 } from "@/components/review/use-review-session-update-runner";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
-import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
+import type { ReviewPageData, ReviewQueueCard } from "@/features/review/types";
 
 type RunnerSnapshot = ReturnType<typeof useReviewSessionUpdateRunner> & {
   applyViewData: (

@@ -11,7 +11,7 @@ describe("media library query scheduling", () => {
     vi.doUnmock("@/lib/data-cache");
     vi.doUnmock("@/lib/local-date");
     vi.doUnmock("@/lib/media-shell-snapshot");
-    vi.doUnmock("@/lib/review-loader");
+    vi.doUnmock("@/features/review/server/loader");
     vi.doUnmock("@/lib/settings");
     vi.doUnmock("@/lib/site");
     vi.doUnmock("@/lib/study-format");
@@ -115,7 +115,7 @@ describe("media library query scheduling", () => {
       ),
       pickFocusMedia: vi.fn(() => null)
     }));
-    vi.doMock("@/lib/review-loader", () => ({
+    vi.doMock("@/features/review/server/loader", () => ({
       loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
       loadReviewLaunchCandidatesCached: vi.fn(() =>

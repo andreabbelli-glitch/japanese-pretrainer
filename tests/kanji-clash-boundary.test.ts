@@ -14,9 +14,8 @@ const productionKanjiClashFiles = [
   "src/actions/kanji-clash.ts",
   "src/db/queries/kanji-clash.ts",
   "src/db/queries/kanji-clash-session.ts",
-  "src/lib/review-service.ts"
+  "src/features/review/server/service.ts"
 ] as const;
-const legacyKanjiClashRoot = "src/lib/kanji-clash";
 const modelBoundaryRoot = "src/features/kanji-clash/model";
 const clientKanjiClashRoots = ["src/components/kanji-clash"] as const;
 
@@ -34,31 +33,13 @@ describe("kanji clash feature boundary", () => {
     expect(violations).toEqual([]);
   });
 
-  it("keeps legacy lib Kanji Clash modules as compatibility shims only", async () => {
-    const files = await listSourceFiles([legacyKanjiClashRoot]);
-    const violations: string[] = [];
+  it("has no legacy Kanji Clash compatibility modules under src/lib", async () => {
+    const files = await listSourceFiles(["src/lib/kanji-clash"]);
+    const legacyFiles = files
+      .filter((file) => file.startsWith("src/lib/kanji-clash/"))
+      .sort((left, right) => left.localeCompare(right));
 
-    for (const relativePath of files) {
-      const source = await readFile(
-        path.join(PROJECT_ROOT, relativePath),
-        "utf8"
-      );
-      const executableLines = source
-        .split(/\r?\n/u)
-        .map((line) => line.trim())
-        .filter((line) => line.length > 0 && !line.startsWith("//"));
-      const hasOnlyExports = executableLines.every((line) =>
-        /^export\s+(?:\*\s+from|type\s+\*\s+from|\{[\s\S]*\}\s+from)\s+["']@\/features\/kanji-clash\//u.test(
-          line
-        )
-      );
-
-      if (!hasOnlyExports) {
-        violations.push(relativePath);
-      }
-    }
-
-    expect(violations).toEqual([]);
+    expect(legacyFiles).toEqual([]);
   });
 
   it("keeps pure Kanji Clash model code independent from server and UI modules", async () => {

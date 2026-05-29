@@ -4,7 +4,7 @@ import { migrate } from "drizzle-orm/libsql/migrator";
 import { eq } from "drizzle-orm";
 
 import { db, type DatabaseClient } from "./client.ts";
-import { normalizeReviewSubjectSurface } from "../lib/review-subject.ts";
+import { normalizeReviewSubjectSurface } from "../features/review/model/subject.ts";
 import { romanizeKanaForSearch } from "../lib/study-search.ts";
 import { card, grammarPattern } from "./schema/index.ts";
 

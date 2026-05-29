@@ -8,7 +8,7 @@ import {
   runWithTaggedCache
 } from "@/lib/data-cache";
 
-import { reviewSchedulerConfig } from "./review-scheduler";
+import { reviewSchedulerConfig } from "@/features/review/model/scheduler";
 
 export type FuriganaMode = "on" | "off" | "hover";
 export type GlossaryDefaultSort = "lesson_order" | "alphabetical";

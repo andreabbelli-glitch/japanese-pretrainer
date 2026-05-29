@@ -10,7 +10,7 @@ describe("progress query scheduling", () => {
     vi.doUnmock("@/lib/data-cache");
     vi.doUnmock("@/lib/local-date");
     vi.doUnmock("@/lib/media-shell");
-    vi.doUnmock("@/lib/review");
+    vi.doUnmock("@/features/review/server");
     vi.doUnmock("@/lib/settings");
     vi.doUnmock("@/lib/site");
     vi.doUnmock("@/lib/study-format");
@@ -55,7 +55,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/lib/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
     }));
-    vi.doMock("@/lib/review", () => ({
+    vi.doMock("@/features/review/server", () => ({
       loadGlobalReviewOverviewSnapshot: vi.fn(),
       loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
@@ -107,7 +107,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/lib/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
     }));
-    vi.doMock("@/lib/review", () => ({
+    vi.doMock("@/features/review/server", () => ({
       loadGlobalReviewOverviewSnapshot: vi.fn(),
       loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
@@ -175,7 +175,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/lib/media-shell", () => ({
       getMediaDetailData: vi.fn()
     }));
-    vi.doMock("@/lib/review", () => ({
+    vi.doMock("@/features/review/server", () => ({
       loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
       loadReviewOverviewBundle,
@@ -297,7 +297,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/lib/media-shell", () => ({
       getMediaDetailData: vi.fn(sharedMediaGate.loader())
     }));
-    vi.doMock("@/lib/review", () => ({
+    vi.doMock("@/features/review/server", () => ({
       loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewOverviewBundle
     }));

@@ -1,13 +1,13 @@
 import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
-import type { ReviewSeedState } from "@/lib/review-grade-previews";
+import type { ReviewSeedState } from "@/features/review/model/grade-previews";
 
 const { scheduleReviewMock } = vi.hoisted(() => ({
   scheduleReviewMock: vi.fn()
 }));
 
-vi.mock("@/lib/review-scheduler", async () => {
-  const actual = await vi.importActual<typeof import("@/lib/review-scheduler")>(
-    "@/lib/review-scheduler"
+vi.mock("@/features/review/model/scheduler", async () => {
+  const actual = await vi.importActual<typeof import("@/features/review/model/scheduler")>(
+    "@/features/review/model/scheduler"
   );
 
   return {
@@ -43,7 +43,7 @@ describe("review grade previews", () => {
 
   it("keeps minute countdowns for intervals just below one hour", async () => {
     const { buildReviewGradePreviews } = await import(
-      "@/lib/review-grade-previews"
+      "@/features/review/model/grade-previews"
     );
     const now = new Date("2026-04-10T10:00:00.000Z");
     scheduleReviewMock.mockImplementation(({ rating }: { rating: string }) => ({
@@ -65,7 +65,7 @@ describe("review grade previews", () => {
 
   it("does not label intervals above five minutes as immediate", async () => {
     const { buildReviewGradePreviews } = await import(
-      "@/lib/review-grade-previews"
+      "@/features/review/model/grade-previews"
     );
     const now = new Date("2026-04-10T10:00:00.000Z");
     scheduleReviewMock.mockImplementation(({ rating }: { rating: string }) => ({
@@ -90,7 +90,7 @@ describe("review grade previews", () => {
 
   it("formats fallback dates using the local calendar day", async () => {
     const { buildReviewGradePreviews } = await import(
-      "@/lib/review-grade-previews"
+      "@/features/review/model/grade-previews"
     );
     const now = new Date("2026-04-10T10:00:00.000Z");
     scheduleReviewMock.mockImplementation(({ rating }: { rating: string }) => ({
@@ -109,7 +109,7 @@ describe("review grade previews", () => {
 
   it("labels tomorrow by local calendar date across the spring DST boundary", async () => {
     const { buildReviewGradePreviews } = await import(
-      "@/lib/review-grade-previews"
+      "@/features/review/model/grade-previews"
     );
     const now = new Date(2026, 2, 29, 12, 0, 0);
     const tomorrowMorning = new Date(2026, 2, 30, 10, 0, 0);

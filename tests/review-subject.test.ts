@@ -5,7 +5,7 @@ import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
   selectReviewSubjectRepresentativeCard
-} from "@/lib/review-subject";
+} from "@/features/review/model/subject";
 
 function buildReviewCard(
   input: Partial<ReviewCardListItem> & Pick<ReviewCardListItem, "id" | "front">

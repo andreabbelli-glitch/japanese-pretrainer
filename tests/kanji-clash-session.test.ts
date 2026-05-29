@@ -30,7 +30,7 @@ import {
   buildKanjiClashPairKey,
   buildKanjiClashQueueSnapshot,
   loadKanjiClashQueueSnapshot
-} from "@/lib/kanji-clash";
+} from "@/features/kanji-clash";
 import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
 
 describe("kanji clash session service", () => {

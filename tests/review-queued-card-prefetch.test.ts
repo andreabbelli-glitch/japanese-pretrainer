@@ -6,7 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createDeferred, flushMicrotasks } from "./helpers/async";
 import { installMinimalDom, uninstallMinimalDom } from "./helpers/minimal-dom";
 
-import type { ReviewQueueCard } from "@/lib/review-types";
+import type { ReviewQueueCard } from "@/features/review/types";
 
 const mocks = vi.hoisted(() => ({
   preloadAudioSources: vi.fn(),

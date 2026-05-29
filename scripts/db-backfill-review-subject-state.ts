@@ -5,7 +5,7 @@ import { count } from "drizzle-orm";
 import { closeDatabaseClient, db } from "../src/db/client.ts";
 import { resolveDatabaseLocation } from "../src/db/config.ts";
 import { reviewSubjectState } from "../src/db/schema/review.ts";
-import { backfillReviewSubjectState } from "../src/lib/review-subject-state-backfill.ts";
+import { backfillReviewSubjectState } from "../src/features/review/server/subject-state-backfill.ts";
 
 const location = resolveDatabaseLocation();
 

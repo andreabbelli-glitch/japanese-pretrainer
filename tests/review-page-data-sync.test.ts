@@ -13,7 +13,7 @@ import type {
   ReviewFirstCandidatePageData,
   ReviewPageData,
   ReviewQueueCard
-} from "@/lib/review-types";
+} from "@/features/review/types";
 
 const mocks = vi.hoisted(() => ({
   loadReviewPageDataSessionAction: vi.fn()

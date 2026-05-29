@@ -35,8 +35,8 @@ import {
   markConsolidationKnown,
   submitConsolidationAnswer
 } from "@/lib/consolidation";
-import { getGlobalReviewPageData, hydrateReviewCard } from "@/lib/review";
-import { applyReviewGrade } from "@/lib/review-service";
+import { getGlobalReviewPageData, hydrateReviewCard } from "@/features/review/server";
+import { applyReviewGrade } from "@/features/review/server/service";
 import {
   buildReviewDailyLimitSetting,
   buildReviewSubjectStateRow,

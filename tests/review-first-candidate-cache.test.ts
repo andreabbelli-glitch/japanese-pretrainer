@@ -98,16 +98,16 @@ import {
   writeFsrsOptimizerConfig
 } from "@/lib/fsrs-optimizer";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
-import { loadReviewPageDataSession } from "@/lib/review-page-data";
+import { loadReviewPageDataSession } from "@/features/review/server/page-data";
 import {
   loadReviewLaunchCandidatesCached,
   loadReviewWorkspaceV2
-} from "@/lib/review-loader";
+} from "@/features/review/server/loader";
 import {
   getGlobalReviewFirstCandidateLoadResult,
   hydrateReviewCard
-} from "@/lib/review";
-import { applyReviewGrade } from "@/lib/review-service";
+} from "@/features/review/server";
+import { applyReviewGrade } from "@/features/review/server/service";
 import {
   buildReviewSubjectStateRow,
   seedSingleReviewCardFixture

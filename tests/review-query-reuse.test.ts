@@ -8,8 +8,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import * as dataCacheModule from "@/lib/data-cache";
 import * as dbQueriesModule from "@/db/queries";
 import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
-import * as reviewCardHydrationModule from "@/lib/review-card-hydration";
-import * as reviewSubjectStateLookupModule from "@/lib/review-subject-state-lookup";
+import * as reviewCardHydrationModule from "@/features/review/server/card-hydration";
+import * as reviewSubjectStateLookupModule from "@/features/review/server/subject-state-lookup";
 import * as settingsModule from "@/lib/settings";
 import {
   closeDatabaseClient,
@@ -34,12 +34,12 @@ import {
   loadGlobalReviewOverviewSnapshot,
   loadReviewLaunchCandidatesCached,
   loadReviewOverviewSnapshots
-} from "@/lib/review";
+} from "@/features/review/server";
 import {
   loadGlobalReviewPageWorkspace,
   loadReviewWorkspaceV2
-} from "@/lib/review-loader";
-import { normalizeReviewSearchState } from "@/lib/review-search-state";
+} from "@/features/review/server/loader";
+import { normalizeReviewSearchState } from "@/features/review/model/search-state";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture

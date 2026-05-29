@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-import type { PitchAccentData } from "@/lib/pitch-accent";
+import type { PitchAccentData } from "@/features/pitch-accent/model";
 
 export type AccentRail = {
   length: number;

@@ -25,7 +25,7 @@ import { mediaGlossaryEntryHref } from "@/lib/site";
 import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewSnapshots
-} from "@/lib/review-loader";
+} from "@/features/review/server/loader";
 import { getReviewDailyLimit } from "@/lib/settings";
 import { formatDerivedStudyStateLabel } from "@/lib/study-entry";
 import {
@@ -39,7 +39,7 @@ import {
   type MediaShellSnapshot
 } from "@/lib/media-shell-snapshot";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
-import type { ReviewOverviewSnapshot } from "./review-types";
+import type { ReviewOverviewSnapshot } from "@/features/review/types";
 
 function buildGlossaryReviewTags(mediaIds: string[] = []) {
   return [

@@ -25,21 +25,21 @@ import {
   term
 } from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
-import { buildKanjiClashContrastKey } from "@/lib/kanji-clash";
+import { buildKanjiClashContrastKey } from "@/features/kanji-clash";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
   getReviewQueueSnapshotForMedia,
   loadGlobalReviewOverviewSnapshot
-} from "@/lib/review";
-import { getSafeReviewForcedContrastClientErrorMessage } from "@/lib/review-error-messages";
+} from "@/features/review/server";
+import { getSafeReviewForcedContrastClientErrorMessage } from "@/features/review/model/error-messages";
 import {
   applyReviewGrade,
   gradeReviewCardInTransaction,
   resetReviewCardProgress,
   setLinkedEntryStatusByCard,
   setReviewCardSuspended
-} from "@/lib/review-service";
-import type { ReviewForcedContrastResolution } from "@/lib/review-types";
+} from "@/features/review/server/service";
+import type { ReviewForcedContrastResolution } from "@/features/review/types";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture

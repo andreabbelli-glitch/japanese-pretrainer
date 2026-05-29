@@ -24,7 +24,7 @@ import type {
   useReviewSessionUpdateRunner
 } from "@/components/review/use-review-session-update-runner";
 import { useReviewGradeSubmissionController } from "@/components/review/use-review-grade-submission-controller";
-import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
+import type { ReviewPageData, ReviewQueueCard } from "@/features/review/types";
 
 const mocks = vi.hoisted(() => ({
   gradeReviewCardSessionAction: vi.fn()

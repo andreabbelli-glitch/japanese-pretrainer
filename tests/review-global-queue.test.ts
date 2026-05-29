@@ -33,7 +33,7 @@ import {
   getReviewPageData,
   getReviewQueueSnapshotForMedia,
   loadReviewOverviewSnapshots
-} from "@/lib/review";
+} from "@/features/review/server";
 import {
   buildReviewDailyLimitSetting,
   buildReviewSubjectLogRow,

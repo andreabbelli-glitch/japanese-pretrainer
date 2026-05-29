@@ -16,16 +16,6 @@ const productionGlossaryFiles = [
   "src/components/review/use-review-forced-contrast-controller.ts",
   "src/components/review/use-review-page-controller.ts"
 ] as const;
-const legacyGlossaryShims = [
-  "src/lib/glossary.ts",
-  "src/lib/glossary-autocomplete.ts",
-  "src/lib/glossary-detail-helpers.ts",
-  "src/lib/glossary-filter.ts",
-  "src/lib/glossary-format.ts",
-  "src/lib/glossary-loaders.ts",
-  "src/lib/glossary-search.ts",
-  "src/lib/glossary-types.ts"
-] as const;
 const clientTypeConsumerRoots = ["src/components/glossary"] as const;
 const clientTypeConsumerFiles = [
   "src/components/review/review-page-stage.tsx",
@@ -48,30 +38,19 @@ describe("glossary feature boundary", () => {
     expect(violations).toEqual([]);
   });
 
-  it("keeps legacy lib glossary modules as compatibility shims only", async () => {
-    const violations: string[] = [];
+  it("has no legacy glossary compatibility modules under src/lib", async () => {
+    const libEntries = await readdir(path.join(PROJECT_ROOT, "src", "lib"), {
+      withFileTypes: true
+    });
+    const legacyGlossaryFiles = libEntries
+      .filter(
+        (entry) =>
+          entry.isFile() && /^glossary(?:-|\.ts$)/u.test(entry.name)
+      )
+      .map((entry) => `src/lib/${entry.name}`)
+      .sort((left, right) => left.localeCompare(right));
 
-    for (const relativePath of legacyGlossaryShims) {
-      const source = await readFile(
-        path.join(PROJECT_ROOT, relativePath),
-        "utf8"
-      );
-      const executableLines = source
-        .split(/\r?\n/u)
-        .map((line) => line.trim())
-        .filter((line) => line.length > 0 && !line.startsWith("//"));
-      const hasOnlyExports = executableLines.every((line) =>
-        /^export\s+(?:\*\s+from|type\s+\*\s+from|\{[\s\S]*\}\s+from)\s+["']@\/features\/glossary\//u.test(
-          line
-        )
-      );
-
-      if (!hasOnlyExports) {
-        violations.push(relativePath);
-      }
-    }
-
-    expect(violations).toEqual([]);
+    expect(legacyGlossaryFiles).toEqual([]);
   });
 
   it("keeps client glossary type consumers away from the server entrypoint", async () => {

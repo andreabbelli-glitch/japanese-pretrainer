@@ -63,7 +63,7 @@ import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { getDashboardData } from "@/lib/dashboard";
 import { getMediaDetailData } from "@/lib/media-shell";
 import { getMediaProgressPageData } from "@/lib/progress";
-import * as reviewModule from "@/lib/review";
+import * as reviewModule from "@/features/review/server";
 import * as settingsModule from "@/lib/settings";
 
 describe("app shell day-scoped cache keys", () => {

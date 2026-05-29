@@ -3,14 +3,7 @@ export type * from "../types";
 export {
   getEligibleReviewCardsByMediaId,
   getEligibleReviewCardsByMediaIds,
-  getGlobalReviewFirstCandidateLoadResult,
-  getGlobalReviewPageData,
-  getGlobalReviewPageLoadResult,
-  getReviewCardDetailData,
   getReviewLaunchMedia,
-  getReviewPageData,
-  getReviewQueueSnapshotForMedia,
-  hydrateReviewCard,
   loadGlobalReviewOverviewSnapshot,
   loadReviewIntroducedTodayCountCached,
   loadReviewLaunchCandidateByMediaIdCached,
@@ -18,20 +11,31 @@ export {
   loadReviewOverviewBundle,
   loadReviewOverviewSnapshots,
   mapReviewOverviewSnapshot
-} from "@/lib/review";
-export { applyReviewActionCachePolicy } from "@/lib/review-action-cache-policy";
+} from "@/features/review/server/loader";
+export {
+  getGlobalReviewFirstCandidateLoadResult,
+  getGlobalReviewPageData,
+  getGlobalReviewPageLoadResult,
+  getReviewPageData,
+  getReviewQueueSnapshotForMedia,
+  loadReviewPageDataSession
+} from "@/features/review/server/page-data";
+export {
+  getReviewCardDetailData,
+  hydrateReviewCard
+} from "@/features/review/server/card-hydration";
+export { applyReviewActionCachePolicy } from "@/features/review/server/action-cache-policy";
 export {
   runReviewActionMutation,
   type ReviewMutationKind
-} from "@/lib/review-action-mutations";
-export { loadReviewPageDataSession } from "@/lib/review-page-data";
+} from "@/features/review/server/action-mutations";
 export {
   applyReviewGrade,
   type ReviewGradeResult
-} from "@/lib/review-service";
+} from "@/features/review/server/service";
 export {
   requireMediaIdForSlug,
   requireReviewPageDataForScope,
   resolvePostGradeReviewSessionPageData,
   resolveReviewSessionMedia
-} from "@/lib/review-session-transition";
+} from "@/features/review/server/session-transition";

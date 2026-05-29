@@ -5,13 +5,13 @@ describe("startup instrumentation", () => {
     vi.unstubAllEnvs();
     vi.resetModules();
     vi.clearAllMocks();
-    vi.doUnmock("@/lib/review-page-data");
+    vi.doUnmock("@/features/review/server/page-data");
   });
 
   it("does not block server readiness on the review warm-up", async () => {
     vi.stubEnv("NEXT_RUNTIME", "nodejs");
     vi.stubEnv("NEXT_PHASE", "phase-production-server");
-    vi.doMock("@/lib/review-page-data", () => ({
+    vi.doMock("@/features/review/server/page-data", () => ({
       getGlobalReviewFirstCandidateLoadResult: vi.fn(
         () => new Promise<never>(() => {})
       )

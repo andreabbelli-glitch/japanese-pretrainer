@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { getLocalDayBounds } from "@/db/queries/review-query-helpers";
-import { resolveReviewCardReading } from "@/lib/review-card-hydration";
-import { scheduleReview } from "@/lib/review-scheduler";
+import { resolveReviewCardReading } from "@/features/review/server/card-hydration";
+import { scheduleReview } from "@/features/review/model/scheduler";
 
 describe("review model", () => {
   it("derives grammar card reading from annotated fronts when the glossary reading is missing", () => {

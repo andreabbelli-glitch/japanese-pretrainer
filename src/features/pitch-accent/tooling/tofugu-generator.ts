@@ -13,7 +13,7 @@ import {
   parseTofuguPronunciationFilename,
   tofuguPronunciationDatasetDefaultDirectory
 } from "../../../lib/tofugu-pronunciation-dataset.ts";
-import { splitJapaneseMorae } from "../../../lib/pitch-accent.ts";
+import { splitJapaneseMorae } from "../model/notation.ts";
 
 import {
   getPitchAccentPatternKey,

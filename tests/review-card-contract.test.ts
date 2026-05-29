@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import type { ReviewCardListItem } from "@/db/queries";
-import type { ReviewCardSource } from "@/lib/review-card-contract";
+import type { ReviewCardSource } from "@/features/review/model/card-contract";
 
 type ExpectAssignable<TValue, TTarget> = TValue extends TTarget ? true : never;
 type ReviewCardListItemMatchesReviewContract = ExpectAssignable<

@@ -27,7 +27,7 @@ import {
   type KanjiClashRoundSide,
   type KanjiClashSessionRound,
   verifyKanjiClashQueueToken
-} from "@/lib/kanji-clash";
+} from "@/features/kanji-clash";
 import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
 
 const SESSION_NOW = new Date("2026-04-09T12:00:00.000Z");

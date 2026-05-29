@@ -50,9 +50,9 @@ import {
   getGrammarGlossaryDetailData,
   getTermGlossaryDetailData
 } from "@/features/glossary/server";
-import { buildPitchAccentData } from "@/lib/pitch-accent";
-import { getReviewCardDetailData } from "@/lib/review";
-import { setReviewCardSuspended } from "@/lib/review-service";
+import { buildPitchAccentData } from "@/features/pitch-accent/model";
+import { getReviewCardDetailData } from "@/features/review/server";
+import { setReviewCardSuspended } from "@/features/review/server/service";
 import * as settings from "@/lib/settings";
 import { buildReviewSessionHref, mediaGlossaryEntryHref } from "@/lib/site";
 import {

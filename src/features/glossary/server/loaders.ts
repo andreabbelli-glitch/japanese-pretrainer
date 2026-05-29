@@ -62,7 +62,7 @@ import {
   mapTermSummaryToBaseModel
 } from "@/features/glossary/model/format";
 import { defaultStudySettings, getGlossaryDefaultSort } from "@/lib/settings";
-import { normalizeReviewSubjectSurface } from "@/lib/review-subject";
+import { normalizeReviewSubjectSurface } from "@/features/review/model/subject";
 import type {
   GlossaryBaseEntry,
   GlossaryDetailData,

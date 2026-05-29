@@ -5,7 +5,7 @@ import {
   kanjiClashSchedulerConfig,
   scheduleKanjiClashPair,
   transitionKanjiClashPairState
-} from "@/lib/kanji-clash";
+} from "@/features/kanji-clash";
 
 describe("kanji clash scheduler", () => {
   it("creates an initial pair state with the dedicated scheduler namespace", () => {

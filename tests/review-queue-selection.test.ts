@@ -5,9 +5,9 @@ import {
   resolveReviewPageSelection,
   type ReviewQueueSubjectSnapshot,
   type ReviewSubjectModel
-} from "@/lib/review-queue";
-import * as reviewSubjectModule from "@/lib/review-subject";
-import type { ReviewSubjectGroup } from "@/lib/review-subject";
+} from "@/features/review/model/queue";
+import * as reviewSubjectModule from "@/features/review/model/subject";
+import type { ReviewSubjectGroup } from "@/features/review/model/subject";
 import type { ReviewCardListItem } from "@/db/queries";
 
 function createModel(input: {

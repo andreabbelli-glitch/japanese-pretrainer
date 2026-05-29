@@ -7,7 +7,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import * as dbQueriesModule from "@/db/queries";
 import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
-import { applyReviewGrade } from "@/lib/review-service";
+import { applyReviewGrade } from "@/features/review/server/service";
 import {
   closeDatabaseClient,
   createDatabaseClient,

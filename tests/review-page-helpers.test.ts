@@ -18,7 +18,7 @@ import type {
   ReviewFirstCandidatePageData,
   ReviewPageData,
   ReviewQueueCard
-} from "@/lib/review-types";
+} from "@/features/review/types";
 
 describe("resolveReviewQueuePosition", () => {
   it("prefers the optimistic queue when the selected card is still present", () => {

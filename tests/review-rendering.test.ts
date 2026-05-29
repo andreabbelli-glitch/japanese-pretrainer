@@ -18,11 +18,11 @@ import {
   getReviewPageData,
   getReviewQueueSnapshotForMedia,
   hydrateReviewCard
-} from "@/lib/review";
+} from "@/features/review/server";
 import {
   applyReviewGrade,
   setLinkedEntryStatusByCard
-} from "@/lib/review-service";
+} from "@/features/review/server/service";
 import { updateStudySettings } from "@/lib/settings";
 import {
   crossMediaFixture,

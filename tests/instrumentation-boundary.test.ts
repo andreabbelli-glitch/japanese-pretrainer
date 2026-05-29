@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 
 const PROJECT_ROOT = process.cwd();
 const disallowedInstrumentationTerms = [
-  "@/lib/review",
+  "@/features/review/server",
   "@/db",
   "@/lib/pronunciation",
   "Forvo",

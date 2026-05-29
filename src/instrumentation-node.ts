@@ -16,7 +16,7 @@ function scheduleStartupWarmup() {
 async function warmStartupCaches() {
   try {
     const { getGlobalReviewFirstCandidateLoadResult } = await import(
-      "@/lib/review-page-data"
+      "@/features/review/server/page-data"
     );
 
     // Warm the review entry point without forcing the glossary shell snapshots

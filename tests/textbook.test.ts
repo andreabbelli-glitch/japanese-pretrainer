@@ -36,7 +36,7 @@ import {
 import * as dataCache from "@/lib/data-cache";
 import * as settings from "@/lib/settings";
 import { applyLessonCompletionState } from "@/features/textbook/client/reader-state";
-import { parseTextbookDocument } from "@/lib/textbook-document";
+import { parseTextbookDocument } from "@/features/textbook/server/document";
 import { renderFurigana } from "@/lib/render-furigana";
 import {
   LessonArticle,

@@ -20,7 +20,7 @@ import {
 import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewBundle
-} from "@/lib/review";
+} from "@/features/review/server";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { getReviewDailyLimit } from "@/lib/settings";
 import { mediaTextbookLessonHref } from "@/lib/site";

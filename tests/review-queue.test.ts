@@ -35,8 +35,8 @@ import {
   getReviewQueueSnapshotForMedia,
   loadGlobalReviewOverviewSnapshot,
   loadReviewOverviewSnapshots
-} from "@/lib/review";
-import { applyReviewGrade } from "@/lib/review-service";
+} from "@/features/review/server";
+import { applyReviewGrade } from "@/features/review/server/service";
 import { buildCanonicalReviewSessionHref } from "@/lib/site";
 import * as settings from "@/lib/settings";
 import { updateStudySettings } from "@/lib/settings";

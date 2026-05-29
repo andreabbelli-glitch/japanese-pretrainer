@@ -4,7 +4,7 @@ import {
   buildSimilarKanjiDataset,
   findKanjiClashSimilarKanjiEntry,
   getKanjiClashSimilarKanjiDataset
-} from "@/lib/kanji-clash";
+} from "@/features/kanji-clash";
 
 describe("kanji clash similar-kanji dataset", () => {
   it("loads the generated dataset with symmetric lookups", () => {

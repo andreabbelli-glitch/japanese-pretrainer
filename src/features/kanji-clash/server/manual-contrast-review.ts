@@ -15,17 +15,17 @@ import { buildKanjiClashContrastKey } from "../model/keys.ts";
 import {
   REVIEW_FORCED_CONTRAST_SAME_SUBJECT_ERROR,
   REVIEW_FORCED_CONTRAST_TARGET_UNAVAILABLE_ERROR
-} from "@/lib/review-error-messages";
+} from "@/features/review/model/error-messages";
 import {
   buildReviewSubjectKey,
   type ReviewSubjectIdentity
-} from "@/lib/review-subject";
+} from "@/features/review/model/subject";
 import type {
   ReviewForcedContrastEndpoint,
   ReviewForcedContrastPayload,
   ReviewForcedContrastResolution,
   ReviewScope
-} from "@/lib/review-types";
+} from "@/features/review/types";
 
 export type ManualContrastReviewTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]

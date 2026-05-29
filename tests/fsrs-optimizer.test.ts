@@ -34,9 +34,9 @@ import {
 } from "@/lib/fsrs-optimizer";
 import * as fsrsOptimizer from "@/lib/fsrs-optimizer";
 import { runFsrsOptimizer } from "@/lib/fsrs-optimizer-trainer";
-import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
-import { applyReviewGrade } from "@/lib/review-service";
-import { reviewSchedulerConfig, scheduleReview } from "@/lib/review-scheduler";
+import { buildReviewGradePreviews } from "@/features/review/model/grade-previews";
+import { applyReviewGrade } from "@/features/review/server/service";
+import { reviewSchedulerConfig, scheduleReview } from "@/features/review/model/scheduler";
 
 const execFileAsync = promisify(execFile);
 const DAY = 24 * 60 * 60_000;

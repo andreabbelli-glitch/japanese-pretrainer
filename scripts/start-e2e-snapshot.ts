@@ -12,7 +12,7 @@ import path from "node:path";
 
 import { closeDatabaseClient, createDatabaseClient } from "../src/db/client.ts";
 import { runMigrations } from "../src/db/migrate.ts";
-import { backfillReviewSubjectState } from "../src/lib/review-subject-state-backfill.ts";
+import { backfillReviewSubjectState } from "../src/features/review/server/subject-state-backfill.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
 

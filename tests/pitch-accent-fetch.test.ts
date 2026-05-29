@@ -13,7 +13,7 @@ import {
   fetchPitchAccentsForBundle,
   parsePitchAccentWordList,
   resolvePitchAccentForEntry
-} from "@/lib/pitch-accent-fetch";
+} from "@/features/pitch-accent/tooling/fetch";
 
 const execFileAsync = promisify(execFile);
 const __filename = fileURLToPath(import.meta.url);

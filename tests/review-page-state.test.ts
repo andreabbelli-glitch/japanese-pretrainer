@@ -7,7 +7,7 @@ import {
   shouldKeepRevealedReviewAnswer,
   type ReviewPageClientData
 } from "@/components/review/review-page-state";
-import type { ReviewPageData } from "@/lib/review-types";
+import type { ReviewPageData } from "@/features/review/types";
 
 describe("review page state", () => {
   it("preserves a revealed answer only when the server keeps the same card", () => {

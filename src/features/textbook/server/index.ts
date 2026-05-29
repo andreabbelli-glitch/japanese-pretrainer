@@ -28,8 +28,8 @@ import {
   formatMediaTypeLabel,
   formatSegmentKindLabel
 } from "@/lib/study-format";
-import { parseTextbookDocument } from "@/lib/textbook-document";
-import { loadLessonTooltipEntries } from "@/lib/textbook-tooltips";
+import { parseTextbookDocument } from "@/features/textbook/server/document";
+import { loadLessonTooltipEntries } from "@/features/textbook/server/tooltips";
 import type {
   TextbookIndexData,
   TextbookLessonData,
@@ -53,7 +53,7 @@ export {
   setFuriganaMode,
   setLessonCompletionState,
   settleLessonOpenedStateForRender
-} from "@/lib/textbook-progress";
+} from "@/features/textbook/server/progress";
 
 type ResolvedMedia = NonNullable<
   Awaited<ReturnType<typeof getMediaBySlugCached>>

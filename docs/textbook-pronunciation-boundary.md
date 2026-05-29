@@ -9,9 +9,8 @@ runtime display code separate from content workflow code.
   through the feature facade:
   `@/features/textbook/server`, `@/features/textbook/types`, and
   `@/features/textbook/client/reader-state`.
-- `src/lib/textbook*` modules remain legacy compatibility shims or
-  implementation details for now. Do not move textbook logic in small
-  boundary-only slices.
+- Textbook runtime implementation lives under `src/features/textbook/`.
+  Do not reintroduce `src/lib/textbook*` compatibility modules or wrappers.
 - The resume lesson semantic is the first lesson whose status is not
   `completed`. Pronunciation `next-lesson` selection must stay aligned with
   that same semantic.

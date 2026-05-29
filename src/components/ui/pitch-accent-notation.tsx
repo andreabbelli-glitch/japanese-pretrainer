@@ -10,7 +10,7 @@ import {
 import {
   formatPitchAccentLabel,
   type PitchAccentData
-} from "@/lib/pitch-accent";
+} from "@/features/pitch-accent/model";
 import {
   areMeasurementsEqual,
   buildConnectorStyle,

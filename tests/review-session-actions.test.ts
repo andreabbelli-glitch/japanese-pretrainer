@@ -11,18 +11,18 @@ import {
 } from "@/db/schema";
 import type { DatabaseClient } from "@/db";
 import { developmentFixture } from "@/db/seed";
-import { buildKanjiClashContrastKey } from "@/lib/kanji-clash";
+import { buildKanjiClashContrastKey } from "@/features/kanji-clash";
 import {
   getGlobalReviewPageData,
   getReviewPageData,
   hydrateReviewCard,
   type ReviewPageData
-} from "@/lib/review";
-import { applyReviewGrade } from "@/lib/review-service";
+} from "@/features/review/server";
+import { applyReviewGrade } from "@/features/review/server/service";
 import type {
   ReviewForcedContrastResolution,
   ReviewQueueCard
-} from "@/lib/review-types";
+} from "@/features/review/types";
 import {
   buildCanonicalReviewSessionHref,
   mediaReviewCardHref
@@ -254,69 +254,98 @@ async function loadReviewActionsForDatabase(
         updateReviewSummaryCache: updateReviewSummaryCacheMock
       };
     });
-    vi.doMock("@/lib/review", async () => {
+    const hydrateReviewCardMock = vi.fn(async (input: { cardId: string }) => {
+      if (options.hydrateReviewCard) {
+        const hydratedCard = await options.hydrateReviewCard(input);
+
+        if (hydratedCard !== undefined) {
+          return hydratedCard;
+        }
+      }
+
       const actual =
-        await vi.importActual<typeof import("@/lib/review")>("@/lib/review");
+        await vi.importActual<
+          typeof import("@/features/review/server/card-hydration")
+        >("@/features/review/server/card-hydration");
+
+      return actual.hydrateReviewCard(input);
+    });
+    const getGlobalReviewPageDataMock = vi.fn(
+      async (
+        searchParams: Record<string, string>,
+        _database?: unknown,
+        reviewOptions?: {
+          resolvedMediaRows?: unknown[];
+        }
+      ) => {
+        reviewPageCalls.push({
+          scope: "global",
+          searchParams,
+          ...(reviewOptions?.resolvedMediaRows
+            ? {
+                resolvedMediaRowsLength: reviewOptions.resolvedMediaRows.length
+              }
+            : {})
+        });
+
+        return {} as ReviewPageData;
+      }
+    );
+    const getReviewPageDataMock = vi.fn(
+      async (
+        mediaSlug: string,
+        searchParams: Record<string, string>,
+        _database?: unknown,
+        reviewOptions?: {
+          resolvedMediaRows?: unknown[];
+        }
+      ) => {
+        reviewPageCalls.push({
+          mediaSlug,
+          scope: "media",
+          searchParams,
+          ...(reviewOptions?.resolvedMediaRows
+            ? {
+                resolvedMediaRowsLength: reviewOptions.resolvedMediaRows.length
+              }
+            : {})
+        });
+
+        return {} as ReviewPageData;
+      }
+    );
+    vi.doMock("@/features/review/server/card-hydration", async () => {
+      const actual =
+        await vi.importActual<
+          typeof import("@/features/review/server/card-hydration")
+        >("@/features/review/server/card-hydration");
 
       return {
         ...actual,
-        hydrateReviewCard: vi.fn(async (input: { cardId: string }) => {
-          if (options.hydrateReviewCard) {
-            const hydratedCard = await options.hydrateReviewCard(input);
+        hydrateReviewCard: hydrateReviewCardMock
+      };
+    });
+    vi.doMock("@/features/review/server/page-data", async () => {
+      const actual =
+        await vi.importActual<
+          typeof import("@/features/review/server/page-data")
+        >("@/features/review/server/page-data");
 
-            if (hydratedCard !== undefined) {
-              return hydratedCard;
-            }
-          }
+      return {
+        ...actual,
+        getGlobalReviewPageData: getGlobalReviewPageDataMock,
+        getReviewPageData: getReviewPageDataMock
+      };
+    });
+    vi.doMock("@/features/review/server", async () => {
+      const actual =
+        await vi.importActual<typeof import("@/features/review/server")>("@/features/review/server");
 
-          return actual.hydrateReviewCard(input);
-        }),
-        getGlobalReviewPageData: vi.fn(
-          async (
-            searchParams: Record<string, string>,
-            _database?: unknown,
-            reviewOptions?: {
-              resolvedMediaRows?: unknown[];
-            }
-          ) => {
-            reviewPageCalls.push({
-              scope: "global",
-              searchParams,
-              ...(reviewOptions?.resolvedMediaRows
-                ? {
-                    resolvedMediaRowsLength:
-                      reviewOptions.resolvedMediaRows.length
-                  }
-                : {})
-            });
-
-            return {} as ReviewPageData;
-          }
-        ),
-        getReviewPageData: vi.fn(
-          async (
-            mediaSlug: string,
-            searchParams: Record<string, string>,
-            _database?: unknown,
-            reviewOptions?: {
-              resolvedMediaRows?: unknown[];
-            }
-          ) => {
-            reviewPageCalls.push({
-              mediaSlug,
-              scope: "media",
-              searchParams,
-              ...(reviewOptions?.resolvedMediaRows
-                ? {
-                    resolvedMediaRowsLength:
-                      reviewOptions.resolvedMediaRows.length
-                  }
-                : {})
-            });
-
-            return {} as ReviewPageData;
-          }
-        )
+      return {
+        ...actual,
+        hydrateReviewCard: hydrateReviewCardMock,
+        getGlobalReviewPageData: getGlobalReviewPageDataMock,
+        getReviewPageData: getReviewPageDataMock
       };
     });
     globalDatabase.__japaneseCustomStudyDb__ = database;
@@ -328,7 +357,9 @@ async function loadReviewActionsForDatabase(
   } finally {
     globalDatabase.__japaneseCustomStudyDb__ = previousDatabase;
     vi.doUnmock("@/lib/data-cache");
-    vi.doUnmock("@/lib/review");
+    vi.doUnmock("@/features/review/server/card-hydration");
+    vi.doUnmock("@/features/review/server/page-data");
+    vi.doUnmock("@/features/review/server");
   }
 }
 

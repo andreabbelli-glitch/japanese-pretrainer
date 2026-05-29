@@ -22,7 +22,7 @@ import {
   buildKanjiClashContrastKey,
   buildKanjiClashQueueSnapshot,
   loadKanjiClashManualContrastCandidates
-} from "@/lib/kanji-clash";
+} from "@/features/kanji-clash";
 
 import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
 

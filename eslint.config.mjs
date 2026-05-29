@@ -202,12 +202,12 @@ const eslintConfig = [
   },
   {
     files: [
-      "src/lib/review-card-contract.ts",
-      "src/lib/review-model.ts",
-      "src/lib/review-subject.ts",
-      "src/lib/review-queue.ts",
-      "src/lib/review-queue-types.ts",
-      "src/lib/review-subject-state-lookup.ts"
+      "src/features/review/model/card-contract.ts",
+      "src/features/review/model/state.ts",
+      "src/features/review/model/subject.ts",
+      "src/features/review/model/queue.ts",
+      "src/features/review/model/queue-types.ts",
+      "src/features/review/server/subject-state-lookup.ts"
     ],
     rules: {
       "no-restricted-imports": [

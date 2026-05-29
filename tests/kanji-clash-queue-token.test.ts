@@ -12,7 +12,7 @@ import {
   type KanjiClashPairState,
   type KanjiClashQueueSnapshot,
   verifyKanjiClashQueueToken
-} from "@/lib/kanji-clash";
+} from "@/features/kanji-clash";
 
 function makeSubject(
   input: Partial<KanjiClashEligibleSubject> &

@@ -20,9 +20,9 @@ import {
   reviewSubjectState,
   term
 } from "@/db/schema";
-import { getGlobalReviewPageData, getReviewPageData } from "@/lib/review";
+import { getGlobalReviewPageData, getReviewPageData } from "@/features/review/server";
 import { importContentWorkspace } from "@/lib/content/importer";
-import { backfillReviewSubjectState } from "@/lib/review-subject-state-backfill";
+import { backfillReviewSubjectState } from "@/features/review/server/subject-state-backfill";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture

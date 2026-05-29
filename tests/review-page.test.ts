@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { ReviewPage } from "@/components/review/review-page";
-import type { ReviewPageData } from "@/lib/review-types";
+import type { ReviewPageData } from "@/features/review/types";
 
 describe("review page", () => {
   it("forwards search params to the review client", () => {

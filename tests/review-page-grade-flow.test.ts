@@ -7,7 +7,7 @@ import type {
   ReviewFirstCandidatePageData,
   ReviewPageData,
   ReviewQueueCard
-} from "@/lib/review-types";
+} from "@/features/review/types";
 
 describe("buildReviewGradeSubmissionPlan", () => {
   it("builds queued grade payloads with canonical ids and a preferred prefetched next card", () => {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { normalizeReviewSearchState } from "@/lib/review-search-state";
+import { normalizeReviewSearchState } from "@/features/review/model/search-state";
 
 describe("review search state", () => {
   it("keeps fully numeric counters", () => {

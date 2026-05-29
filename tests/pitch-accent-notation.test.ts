@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
 import { PitchAccentNotation } from "@/components/ui/pitch-accent-notation";
-import { buildPitchAccentData } from "@/lib/pitch-accent";
+import { buildPitchAccentData } from "@/features/pitch-accent/model";
 
 describe("PitchAccentNotation", () => {
   it("starts the low rail after the drop for atamadaka words", () => {

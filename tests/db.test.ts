@@ -51,7 +51,7 @@ import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
   normalizeReviewSubjectSurface
-} from "@/lib/review-subject";
+} from "@/features/review/model/subject";
 
 describe("database layer", () => {
   let tempDir = "";

@@ -16,25 +16,25 @@ import {
   listTermEntryReviewSummariesByIds
 } from "@/db/queries";
 
-import { buildEntryKey } from "./entry-id";
+import { buildEntryKey } from "@/lib/entry-id";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
   normalizeReviewSubjectSurface,
   type ReviewSubjectIdentity
-} from "./review-subject";
+} from "@/features/review/model/subject";
 import {
   consolidationLessonHref,
   consolidationRetrainingHref,
   reviewHref,
   type AppHref
-} from "./site";
-import { setLessonCompletionState } from "./textbook-progress";
-import type { ReviewRating } from "./review-scheduler";
+} from "@/lib/site";
+import { setLessonCompletionState } from "@/features/textbook/server/progress";
+import type { ReviewRating } from "@/features/review/model/scheduler";
 import {
   buildPronunciationData,
   type PronunciationData
-} from "./pronunciation-data";
+} from "@/lib/pronunciation-data";
 
 type EnqueueLessonConsolidationInput = {
   database?: ConsolidationMutationClient;

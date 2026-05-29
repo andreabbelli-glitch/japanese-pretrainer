@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 
 import { parseContentRoot } from "../src/lib/content/validator.ts";
 import { MAX_TIMER_DELAY_MS } from "../src/lib/fetch-throttle.ts";
-import { fetchPitchAccentsForBundle } from "../src/lib/pitch-accent-fetch.ts";
+import { fetchPitchAccentsForBundle } from "../src/features/pitch-accent/tooling/fetch.ts";
 import type { PronunciationFetchNetworkOptions } from "../src/lib/pronunciation-shared.ts";
 
 type PitchAccentSourceOption =

@@ -6,7 +6,7 @@ import {
   materializeKanjiClashSessionRound,
   type KanjiClashEligibleSubject,
   type KanjiClashPairState
-} from "@/lib/kanji-clash";
+} from "@/features/kanji-clash";
 
 function makeSubject(
   input: Partial<KanjiClashEligibleSubject> &

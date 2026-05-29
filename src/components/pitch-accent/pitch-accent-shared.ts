@@ -1,7 +1,7 @@
 import {
   buildPitchAccentData,
   normalizePitchAccentReading
-} from "@/lib/pitch-accent";
+} from "@/features/pitch-accent/model";
 
 import type { PitchAccentPairOption } from "@/features/pitch-accent/model";
 

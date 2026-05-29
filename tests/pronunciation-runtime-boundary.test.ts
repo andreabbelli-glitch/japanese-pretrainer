@@ -21,10 +21,10 @@ const textbookFacadeFiles = [
   "src/features/textbook/server/index.ts"
 ] as const;
 const runtimePronunciationConsumers = [
-  "src/lib/review-card-hydration.ts",
-  "src/lib/textbook-tooltips.ts",
+  "src/features/review/server/card-hydration.ts",
+  "src/features/textbook/server/tooltips.ts",
   "src/features/glossary/model/format.ts",
-  "src/lib/review-types.ts",
+  "src/features/review/types.ts",
   "src/features/glossary/types.ts",
   "src/features/textbook/types.ts",
   "src/components/ui/pronunciation-audio.tsx"
@@ -34,9 +34,9 @@ const runtimePronunciationDisplayRoots = [
   "src/components/ui/pronunciation-audio.tsx",
   "src/features/glossary",
   "src/features/textbook",
-  "src/lib/review-card-hydration.ts",
-  "src/lib/review-types.ts",
-  "src/lib/textbook-tooltips.ts"
+  "src/features/review/server/card-hydration.ts",
+  "src/features/review/types.ts",
+  "src/features/textbook/server/tooltips.ts"
 ] as const;
 const workflowOnlyTerms = [
   "Forvo",
@@ -48,11 +48,26 @@ const workflowOnlyTerms = [
   "pronunciation-reuse"
 ] as const;
 const legacyTextbookShimImportPattern =
-  /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["']@\/lib\/(?:textbook|textbook-types|textbook-reader-state)(?:["']|\/)/u;
+  /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["']@\/lib\/textbook(?:["']|[-/])/u;
 const workflowPronunciationImportPattern =
   /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["']@\/lib\/pronunciation(?:["']|\/)/u;
 
 describe("pronunciation runtime boundary", () => {
+  it("has no legacy textbook modules under src/lib", async () => {
+    const libEntries = await readdir(path.join(PROJECT_ROOT, "src", "lib"), {
+      withFileTypes: true
+    });
+    const legacyTextbookFiles = libEntries
+      .filter(
+        (entry) =>
+          entry.isFile() && /^textbook(?:-|\.ts$)/u.test(entry.name)
+      )
+      .map((entry) => `src/lib/${entry.name}`)
+      .sort((left, right) => left.localeCompare(right));
+
+    expect(legacyTextbookFiles).toEqual([]);
+  });
+
   it("keeps production textbook consumers on the feature facade", async () => {
     const files = await listSourceFiles(productionTextbookConsumerRoots);
     const violations = await findImportViolations(

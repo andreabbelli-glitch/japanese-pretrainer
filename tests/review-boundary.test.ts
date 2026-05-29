@@ -22,6 +22,31 @@ const pureReviewFacadeRoots = [
 ] as const;
 
 describe("review feature boundary", () => {
+  it("has no legacy review implementation files under src/lib", async () => {
+    const libEntries = await readdir(path.join(PROJECT_ROOT, "src", "lib"), {
+      withFileTypes: true
+    });
+    const legacyReviewFiles = libEntries
+      .filter(
+        (entry) =>
+          entry.isFile() && /^review(?:-|\.ts$)/u.test(entry.name)
+      )
+      .map((entry) => `src/lib/${entry.name}`)
+      .sort((left, right) => left.localeCompare(right));
+
+    expect(legacyReviewFiles).toEqual([]);
+  });
+
+  it("keeps review feature files from re-exporting legacy lib review modules", async () => {
+    const files = await listSourceFiles(["src/features/review"]);
+    const violations = await findImportViolations(
+      files,
+      /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["']@\/lib\/review(?:["']|[-/])/u
+    );
+
+    expect(violations).toEqual([]);
+  });
+
   it("keeps production review consumers off legacy lib review modules", async () => {
     const files = await listSourceFiles(productionReviewRoots);
     const violations = await findImportViolations(
@@ -68,7 +93,10 @@ describe("review feature boundary", () => {
 
   it("keeps ReviewSessionInput owned by the public review DTO boundary", async () => {
     const transitionSource = await readFile(
-      path.join(PROJECT_ROOT, "src/lib/review-session-transition.ts"),
+      path.join(
+        PROJECT_ROOT,
+        "src/features/review/server/session-transition.ts"
+      ),
       "utf8"
     );
 

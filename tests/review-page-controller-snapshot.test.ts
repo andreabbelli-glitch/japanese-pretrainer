@@ -10,7 +10,7 @@ import type {
   ReviewFirstCandidatePageData,
   ReviewPageData,
   ReviewQueueCard
-} from "@/lib/review-types";
+} from "@/features/review/types";
 
 describe("buildReviewControllerSnapshot", () => {
   it("derives global first-candidate hydration flags and request keys", () => {

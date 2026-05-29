@@ -5,7 +5,7 @@ import {
   formatPitchAccentLabel,
   normalizePitchAccentReading,
   splitJapaneseMorae
-} from "@/lib/pitch-accent";
+} from "@/features/pitch-accent/model";
 
 describe("pitch accent helpers", () => {
   it("splits morae while preserving combined kana", () => {

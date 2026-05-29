@@ -11,7 +11,7 @@ describe("dashboard data", () => {
     vi.doUnmock("@/lib/data-cache");
     vi.doUnmock("@/lib/local-date");
     vi.doUnmock("@/lib/media-shell");
-    vi.doUnmock("@/lib/review");
+    vi.doUnmock("@/features/review/server");
     vi.doUnmock("@/lib/settings");
   });
 
@@ -212,7 +212,7 @@ function mockDashboardDependencies(input: {
     loadMediaShellSnapshots: vi.fn(() => Promise.resolve(input.mediaSnapshots)),
     pickFocusMedia: vi.fn(() => input.mediaSnapshots[0] ?? null)
   }));
-  vi.doMock("@/lib/review", () => ({
+  vi.doMock("@/features/review/server", () => ({
     loadGlobalReviewOverviewSnapshot: vi.fn(() =>
       Promise.resolve({
         activeCards: 4,

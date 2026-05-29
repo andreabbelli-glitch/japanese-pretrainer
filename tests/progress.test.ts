@@ -30,7 +30,7 @@ import { buildScopedEntryId } from "@/lib/entry-id";
 import { getGlossaryPageData } from "@/features/glossary/server";
 import { importContentWorkspace } from "@/lib/content/importer";
 import { getMediaProgressPageData } from "@/lib/progress";
-import { getReviewPageData } from "@/lib/review";
+import { getReviewPageData } from "@/features/review/server";
 import { mediaKanjiClashHref } from "@/lib/site";
 import { getStudySettings, updateStudySettings } from "@/lib/settings";
 import {

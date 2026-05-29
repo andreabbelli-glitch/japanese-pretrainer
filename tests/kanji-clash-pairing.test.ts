@@ -9,7 +9,7 @@ import {
   generateKanjiClashCandidates,
   getKanjiClashPairExclusionReason,
   type KanjiClashEligibleSubject
-} from "@/lib/kanji-clash";
+} from "@/features/kanji-clash";
 
 function buildSubject(
   input: Partial<KanjiClashEligibleSubject> &

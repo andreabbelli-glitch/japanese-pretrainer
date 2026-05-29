@@ -29,9 +29,9 @@ import {
 import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewBundle
-} from "./review";
-import type { ReviewOverviewSnapshot } from "./review-types";
-import { getLocalIsoTimeBucketKey } from "./local-date";
+} from "@/features/review/server";
+import type { ReviewOverviewSnapshot } from "@/features/review/types";
+import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 
 type ProgressReviewSnapshots = {
   byMedia: Map<string, ReviewOverviewSnapshot>;
