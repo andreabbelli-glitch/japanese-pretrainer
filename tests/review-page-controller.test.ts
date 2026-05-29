@@ -52,7 +52,7 @@ vi.mock("@/components/ui/audio-preload", () => ({
   preloadAudioSources: mocks.preloadAudioSources
 }));
 
-vi.mock("@/components/glossary/use-glossary-autocomplete", () => ({
+vi.mock("@/features/glossary/ui/client/use-glossary-autocomplete", () => ({
   useGlossaryAutocomplete: (input: unknown) =>
     mocks.useGlossaryAutocomplete(input)
 }));

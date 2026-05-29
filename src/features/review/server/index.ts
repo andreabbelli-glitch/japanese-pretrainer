@@ -1,6 +1,17 @@
 export type * from "../types";
 
 export {
+  gradeReviewCardFormWorkflow,
+  gradeReviewCardSessionWorkflow,
+  loadReviewPageDataSessionWorkflow,
+  prefetchReviewCardSessionWorkflow,
+  runReviewFormMutationWorkflow,
+  runReviewSessionMutationWorkflow,
+  type ReviewFormGradeWorkflowInput,
+  type ReviewFormMutationWorkflowInput,
+  type ReviewSessionMutationWorkflowInput
+} from "@/features/review/server/action-workflows";
+export {
   getEligibleReviewCardsByMediaId,
   getEligibleReviewCardsByMediaIds,
   getReviewLaunchMedia,

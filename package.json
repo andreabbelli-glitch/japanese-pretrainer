@@ -18,6 +18,7 @@
     "test:e2e:runner": "env -u NO_COLOR node ./node_modules/@playwright/test/cli.js test",
     "test:e2e": "pnpm build && pnpm test:e2e:runner",
     "test:watch": "node ./node_modules/vitest/vitest.mjs",
+    "file-size:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/file-size-check.ts",
     "agent:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/agent-check.ts",
     "docs:agent-orientation": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/generate-agent-orientation.ts",
     "docs:agent-orientation:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/generate-agent-orientation.ts --check",
@@ -48,7 +49,7 @@
     "db:setup": "pnpm db:migrate && pnpm db:seed",
     "db:studio": "drizzle-kit studio --config=drizzle.config.ts",
     "auth:hash-password": "node --experimental-strip-types ./scripts/hash-auth-password.ts",
-    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "check": "pnpm file-size:check && pnpm lint && pnpm typecheck && pnpm test",
     "release:check": "./scripts/release-check.sh"
   },
   "dependencies": {

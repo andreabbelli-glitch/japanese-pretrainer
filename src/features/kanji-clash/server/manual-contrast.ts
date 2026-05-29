@@ -10,7 +10,7 @@ import {
   term,
   type EntryType
 } from "@/db/schema";
-import type { DatabaseClient } from "@/db";
+import { db, type DatabaseClient } from "@/db";
 
 import type {
   KanjiClashCandidate,
@@ -234,12 +234,7 @@ export async function archiveKanjiClashManualContrast(input: {
   database?: DatabaseClient;
   now?: Date;
 }) {
-  const database = input.database;
-
-  if (!database) {
-    throw new Error("Missing database client.");
-  }
-
+  const database = input.database ?? db;
   const nowIso = (input.now ?? new Date()).toISOString();
   const [updated] = await database
     .update(kanjiClashManualContrast)
@@ -262,12 +257,7 @@ export async function restoreKanjiClashManualContrast(input: {
   database?: DatabaseClient;
   now?: Date;
 }) {
-  const database = input.database;
-
-  if (!database) {
-    throw new Error("Missing database client.");
-  }
-
+  const database = input.database ?? db;
   const nowIso = (input.now ?? new Date()).toISOString();
 
   await database.transaction(async (tx) => {

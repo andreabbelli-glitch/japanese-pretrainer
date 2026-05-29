@@ -71,6 +71,11 @@ artefatti locali e directory di tooling generate (`.codex/`, `.playwright-*`,
 `.agents/` restano nel repo, ma ESLint ignora solo i loro file Markdown/YAML e
 shell: eventuali helper JavaScript continuano a essere coperti dal lint.
 
+Il gate `pnpm check` esegue prima `pnpm file-size:check`: il controllo guarda
+solo i file di codice human-maintained modificati nel diff corrente e fallisce
+quando una slice tocca un file molto grande. In quel caso il cambio va
+spezzato in moduli piu focalizzati prima di procedere.
+
 ## Codex locale in sandbox
 
 Per worktree e automazioni Codex locali, il repo include una configurazione

@@ -2,13 +2,11 @@
 
 import {
   invalidateFuriganaModeChanged,
-  invalidateLessonCompletionChanged
-} from "@/features/cache/server/invalidation-policy";
-import { db } from "@/db";
-import { getMediaBySlug } from "@/db/queries";
-import { setFuriganaMode } from "@/features/textbook/server";
-import { setLessonCompletionWithConsolidation } from "@/features/consolidation/server";
-import { consolidationLessonHref } from "@/features/navigation";
+} from "@/features/cache/server";
+import {
+  setFuriganaMode,
+  setLessonCompletionForAction
+} from "@/features/textbook/server";
 import type { FuriganaMode } from "@/features/textbook/types";
 
 export async function setFuriganaModeAction(input: {
@@ -32,24 +30,5 @@ export async function setLessonCompletionAction(input: {
   lessonSlug: string;
   completed: boolean;
 }) {
-  const mediaPromise = getMediaBySlug(db, input.mediaSlug);
-
-  const completion = await setLessonCompletionWithConsolidation({
-    completed: input.completed,
-    lessonId: input.lessonId
-  });
-  const media = await mediaPromise;
-
-  invalidateLessonCompletionChanged({
-    mediaId: media?.id
-  });
-
-  return {
-    consolidationHref:
-      input.completed && completion.consolidation.createdCount > 0
-        ? consolidationLessonHref(input.mediaSlug, input.lessonSlug)
-        : null,
-    ok: true as const,
-    status: input.completed ? "completed" : "in_progress"
-  };
+  return setLessonCompletionForAction(input);
 }

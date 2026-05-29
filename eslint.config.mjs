@@ -65,6 +65,38 @@ const pureReviewImportRestrictionPatterns = [
   }
 ];
 
+const serverActionImportRestrictionPatterns = [
+  {
+    group: ["@/db", "@/db/*", "../db", "../db/*", "../../db", "../../db/*"],
+    message:
+      "Server actions must not import database modules. Move DB access behind a feature server use case."
+  },
+  {
+    group: ["drizzle-orm", "drizzle-orm/*"],
+    message:
+      "Server actions must not build DB queries. Move query logic behind a feature server use case."
+  },
+  {
+    group: [
+      "@/features/*/client",
+      "@/features/*/client/*",
+      "@/features/*/model",
+      "@/features/*/model/*",
+      "@/features/*/tooling",
+      "@/features/*/tooling/*",
+      "@/features/*/ui",
+      "@/features/*/ui/*"
+    ],
+    message:
+      "Server actions must call feature server facades, not feature internals."
+  },
+  {
+    group: ["@/features/*/server/*"],
+    message:
+      "Server actions must import feature server barrels only. Export action-safe use cases from @/features/<feature>/server."
+  }
+];
+
 const eslintConfig = [
   ...nextCoreWebVitals,
   ...nextTypescript,
@@ -99,6 +131,17 @@ const eslintConfig = [
       "*.tsbuildinfo",
       "pnpm-lock.yaml"
     ]
+  },
+  {
+    files: ["src/actions/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: serverActionImportRestrictionPatterns
+        }
+      ]
+    }
   },
   {
     files: [
@@ -214,6 +257,22 @@ const eslintConfig = [
         "error",
         {
           patterns: pureReviewImportRestrictionPatterns
+        }
+      ]
+    }
+  },
+  {
+    files: ["src/actions/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: textbookLegacyImportRestrictions,
+          patterns: [
+            ...serverActionImportRestrictionPatterns,
+            ...glossaryLegacyImportRestrictionPatterns,
+            ...reviewLegacyImportRestrictionPatterns
+          ]
         }
       ]
     }

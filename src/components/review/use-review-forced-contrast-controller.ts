@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type RefObject } from "react";
 
-import { useGlossaryAutocomplete } from "@/components/glossary/use-glossary-autocomplete";
+import { useGlossaryAutocomplete } from "@/features/glossary/ui/client/use-glossary-autocomplete";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 
 import {

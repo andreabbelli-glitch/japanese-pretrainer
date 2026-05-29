@@ -6,8 +6,8 @@ import { useRef, useState } from "react";
 
 import type { GlobalGlossaryPageData } from "@/features/glossary/types";
 
-import { GlossaryAutocompleteDropdown } from "./glossary-autocomplete-dropdown";
-import { useGlossaryAutocomplete } from "./use-glossary-autocomplete";
+import { GlossaryAutocompleteDropdown } from "@/features/glossary/ui/client/glossary-autocomplete-dropdown";
+import { useGlossaryAutocomplete } from "@/features/glossary/ui/client/use-glossary-autocomplete";
 
 type GlossaryPortalSearchFormProps = {
   filters: GlobalGlossaryPageData["filters"];

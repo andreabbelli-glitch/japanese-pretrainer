@@ -4,28 +4,19 @@ import type { Route } from "next";
 import { redirect } from "next/navigation";
 
 import { readOptionalInternalHref, readRequiredString } from "./form-data.ts";
-import { db } from "@/db";
-import { listMediaCached } from "@/features/cache/server/data-cache";
 import {
-  applyReviewActionCachePolicy,
-  applyReviewGrade,
-  hydrateReviewCard,
-  loadReviewPageDataSession,
-  requireMediaIdForSlug,
-  requireReviewPageDataForScope,
-  resolvePostGradeReviewSessionPageData,
-  resolveReviewSessionMedia,
-  runReviewActionMutation,
+  gradeReviewCardFormWorkflow,
+  gradeReviewCardSessionWorkflow,
+  loadReviewPageDataSessionWorkflow,
+  prefetchReviewCardSessionWorkflow,
+  runReviewFormMutationWorkflow,
+  runReviewSessionMutationWorkflow,
   type ReviewMutationKind,
   type ReviewPageData,
   type ReviewQueueCard,
   type ReviewSessionInput
 } from "@/features/review/server";
-import {
-  buildRedirectSearchParams,
-  buildReviewRedirectUrl,
-  type ReviewRedirectMode
-} from "@/features/navigation";
+import type { ReviewRedirectMode } from "@/features/navigation";
 
 type ReviewSessionRedirectMode = Exclude<ReviewRedirectMode, "stay_detail">;
 type ReviewFormMutationInput = {
@@ -53,33 +44,15 @@ export async function gradeReviewCardAction(formData: FormData) {
     formData,
     "expectedUpdatedAt"
   );
-  const mediaId = await requireMediaIdForSlug(mediaSlug);
 
-  const gradeResult = await applyReviewGrade({
+  redirect(await gradeReviewCardFormWorkflow({
+    answeredCount,
     cardId,
-    expectedMediaId: mediaId,
     expectedUpdatedAt,
-    rating:
-      rating === "again" ||
-      rating === "hard" ||
-      rating === "good" ||
-      rating === "easy"
-        ? rating
-        : "good"
-  });
-
-  applyReviewActionCachePolicy({
-    includeConsolidation: gradeResult.consolidationQueued,
-    mediaId,
-    policy: "review"
-  });
-  redirect(
-    buildReviewRedirectUrl({
-      answeredCount: answeredCount + 1,
-      extraNewCount,
-      mediaSlug
-    })
-  );
+    extraNewCount,
+    mediaSlug,
+    rating
+  }));
 }
 
 export async function markLinkedEntryKnownAction(formData: FormData) {
@@ -117,37 +90,13 @@ export async function gradeReviewCardSessionAction(
     rating: "again" | "hard" | "good" | "easy";
   }
 ): Promise<ReviewPageData> {
-  const media = await resolveReviewSessionMedia(input);
-  const forcedContrast = input.forcedKanjiClashContrast ?? input.forcedContrast;
-
-  const gradeResult = await applyReviewGrade({
-    cardId: input.cardId,
-    expectedMediaId: media?.id,
-    expectedUpdatedAt: input.expectedUpdatedAt,
-    forcedContrast,
-    forcedContrastMediaSlug: input.mediaSlug,
-    forcedContrastScope: input.scope === "media" ? "media" : "global",
-    rating: input.rating
-  });
-  applyReviewActionCachePolicy({
-    includeConsolidation: gradeResult.consolidationQueued,
-    mediaId: gradeResult.mediaId,
-    policy: "review"
-  });
-
-  return resolvePostGradeReviewSessionPageData({
-    gradeResult,
-    resolvedMedia: media,
-    sessionInput: input
-  });
+  return gradeReviewCardSessionWorkflow(input);
 }
 
 export async function prefetchReviewCardSessionAction(input: {
   cardId: string;
 }): Promise<ReviewQueueCard | null> {
-  return hydrateReviewCard({
-    cardId: input.cardId
-  });
+  return prefetchReviewCardSessionWorkflow(input);
 }
 
 export async function loadReviewPageDataSessionAction(input: {
@@ -155,7 +104,7 @@ export async function loadReviewPageDataSessionAction(input: {
   scope: "global" | "media";
   searchParams: Record<string, string | string[] | undefined>;
 }): Promise<ReviewPageData> {
-  return loadReviewPageDataSession(input, db);
+  return loadReviewPageDataSessionWorkflow(input);
 }
 
 export async function markLinkedEntryKnownSessionAction(
@@ -223,66 +172,13 @@ function readReviewFormMutationInput(
 async function runReviewFormMutationAction(
   input: ReviewFormMutationInput & { kind: ReviewMutationKind }
 ) {
-  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
-
-  const mutationResult = await runReviewActionMutation({
-    cardId: input.cardId,
-    expectedMediaId: mediaId,
-    kind: input.kind,
-    suspended: input.suspended
-  });
-  applyReviewActionCachePolicy({
-    mediaId: mutationResult.mediaId,
-    policy: mutationResult.cachePolicy
-  });
-
-  redirect(
-    buildReviewRedirectUrl({
-      answeredCount: input.answeredCount,
-      cardId: input.cardId,
-      extraNewCount: input.extraNewCount,
-      mediaSlug: input.mediaSlug,
-      notice: mutationResult.notice,
-      redirectMode: input.redirectMode,
-      returnTo: input.returnTo
-    })
-  );
+  redirect(await runReviewFormMutationWorkflow(input));
 }
 
 async function runReviewSessionMutationAction(
   input: ReviewSessionMutationInput
 ): Promise<ReviewPageData> {
-  const mediaRowsPromise = listMediaCached(db);
-  const media = await resolveReviewSessionMedia(input);
-
-  const mutationResult = await runReviewActionMutation({
-    cardId: input.cardId,
-    expectedMediaId: media?.id,
-    kind: input.kind,
-    suspended: input.suspended
-  });
-  applyReviewActionCachePolicy({
-    mediaId: mutationResult.mediaId,
-    policy: mutationResult.cachePolicy
-  });
-
-  return requireReviewPageDataForScope(
-    input,
-    buildRedirectSearchParams({
-      answeredCount: input.answeredCount,
-      cardId: input.cardId,
-      extraNewAnchorCount: input.extraNewAnchorCount,
-      extraNewCount: input.extraNewCount,
-      notice: mutationResult.notice,
-      redirectMode: input.redirectMode,
-      segmentId: input.segmentId
-    }),
-    {
-      bypassCache: true,
-      resolvedMedia: media,
-      resolvedMediaRows: await mediaRowsPromise
-    }
-  );
+  return runReviewSessionMutationWorkflow(input);
 }
 
 function readCount(formData: FormData, key: string) {

@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 
 import { readOptionalInternalHref, readRequiredString } from "./form-data.ts";
-import { invalidateStudySettingsSaved } from "@/features/cache/server/invalidation-policy";
+import { invalidateStudySettingsSaved } from "@/features/cache/server";
 import { buildHrefWithSearch } from "@/features/navigation";
 import {
   normalizeFuriganaMode,

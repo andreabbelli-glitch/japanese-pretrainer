@@ -13,7 +13,7 @@ const mocks = vi.hoisted(() => ({
   useGlossaryAutocomplete: vi.fn()
 }));
 
-vi.mock("@/components/glossary/use-glossary-autocomplete", () => ({
+vi.mock("@/features/glossary/ui/client/use-glossary-autocomplete", () => ({
   useGlossaryAutocomplete: (input: unknown) =>
     mocks.useGlossaryAutocomplete(input)
 }));

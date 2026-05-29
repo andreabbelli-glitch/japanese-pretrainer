@@ -158,6 +158,10 @@ export const getMediaBySlugCached = cache(
   }
 );
 
+export function getMediaBySlugCachedDefault(slug: string) {
+  return getMediaBySlugCached(db, slug);
+}
+
 export async function listMediaCached(database: DatabaseClient = db) {
   const inFlight = inFlightMediaListSnapshots.get(database);
 

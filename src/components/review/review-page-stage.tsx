@@ -2,7 +2,7 @@ import type { Route } from "next";
 import Link from "next/link";
 import type { RefObject } from "react";
 
-import { GlossaryAutocompleteDropdown } from "@/components/glossary/glossary-autocomplete-dropdown";
+import { GlossaryAutocompleteDropdown } from "@/features/glossary/ui/client/glossary-autocomplete-dropdown";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 import type { ReviewQueueCard } from "@/features/review/client";
 import { renderFurigana, stripInlineMarkdown } from "@/features/study/ui/furigana";

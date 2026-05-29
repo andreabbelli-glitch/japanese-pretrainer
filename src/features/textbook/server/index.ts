@@ -39,6 +39,7 @@ import type {
 } from "@/features/textbook/types";
 
 export type { FuriganaMode } from "@/features/settings/server";
+export { setLessonCompletionForAction } from "@/features/textbook/server/action-workflows";
 export type {
   TextbookEntryTooltip,
   TextbookIndexData,

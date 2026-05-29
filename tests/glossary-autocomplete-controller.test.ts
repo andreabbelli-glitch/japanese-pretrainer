@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createDeferred } from "./helpers/async";
 import { installMinimalDom, uninstallMinimalDom } from "./helpers/minimal-dom";
 
-import { useGlossaryAutocomplete } from "@/components/glossary/use-glossary-autocomplete";
+import { useGlossaryAutocomplete } from "@/features/glossary/ui/client/use-glossary-autocomplete";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 
 const initialSuggestions: GlobalGlossaryAutocompleteSuggestion[] = [

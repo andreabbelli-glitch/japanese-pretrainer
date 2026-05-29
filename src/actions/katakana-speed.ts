@@ -1,6 +1,5 @@
 "use server";
 
-import { db, type DatabaseClient } from "@/db";
 import {
   aggregateKatakanaSpeedExerciseResult,
   abandonKatakanaSpeedSession,
@@ -8,38 +7,37 @@ import {
   startKatakanaSpeedSession,
   submitKatakanaSpeedAnswer,
   submitKatakanaSpeedSelfCheck,
-  type KatakanaSpeedManualExercise,
-  type KatakanaSpeedSelfRating,
-  type KatakanaSpeedSessionMode
+  type KatakanaSpeedSelfRating
 } from "@/features/katakana-speed/server";
 
-export async function startKatakanaSpeedSessionAction(input: {
-  count?: number;
-  database?: DatabaseClient;
-  manualExercise?: KatakanaSpeedManualExercise;
-  mode?: KatakanaSpeedSessionMode;
-  now?: Date;
-  seed?: string;
-}) {
-  return startKatakanaSpeedSession({
-    count: input.count,
-    database: input.database ?? db,
-    manualExercise: input.manualExercise,
-    mode: input.mode,
-    now: input.now,
-    seed: input.seed
-  });
+type StartKatakanaSpeedSessionActionInput = Parameters<
+  typeof startKatakanaSpeedSession
+>[0];
+type SubmitKatakanaSpeedAnswerActionInput = Parameters<
+  typeof submitKatakanaSpeedAnswer
+>[0];
+type SubmitKatakanaSpeedSelfCheckActionInput = Parameters<
+  typeof submitKatakanaSpeedSelfCheck
+>[0];
+type AggregateKatakanaSpeedExerciseResultActionInput = Parameters<
+  typeof aggregateKatakanaSpeedExerciseResult
+>[0];
+type CompleteKatakanaSpeedSessionActionInput = Parameters<
+  typeof completeKatakanaSpeedSession
+>[0];
+type AbandonKatakanaSpeedSessionActionInput = Parameters<
+  typeof abandonKatakanaSpeedSession
+>[0];
+
+export async function startKatakanaSpeedSessionAction(
+  input: StartKatakanaSpeedSessionActionInput
+) {
+  return startKatakanaSpeedSession(input);
 }
 
-export async function submitKatakanaSpeedAnswerAction(input: {
-  database?: DatabaseClient;
-  inputMethod?: string | null;
-  now?: Date;
-  responseMs: number;
-  sessionId: string;
-  trialId: string;
-  userAnswer: string;
-}) {
+export async function submitKatakanaSpeedAnswerAction(
+  input: SubmitKatakanaSpeedAnswerActionInput
+) {
   const sessionId = input.sessionId.trim();
   const trialId = input.trialId.trim();
 
@@ -51,7 +49,7 @@ export async function submitKatakanaSpeedAnswerAction(input: {
   }
 
   return submitKatakanaSpeedAnswer({
-    database: input.database ?? db,
+    database: input.database,
     inputMethod: input.inputMethod,
     now: input.now,
     responseMs: input.responseMs,
@@ -61,15 +59,9 @@ export async function submitKatakanaSpeedAnswerAction(input: {
   });
 }
 
-export async function submitKatakanaSpeedSelfCheckAction(input: {
-  database?: DatabaseClient;
-  metricsJson?: unknown;
-  now?: Date;
-  responseMs: number;
-  selfRating: KatakanaSpeedSelfRating;
-  sessionId: string;
-  trialId: string;
-}) {
+export async function submitKatakanaSpeedSelfCheckAction(
+  input: SubmitKatakanaSpeedSelfCheckActionInput
+) {
   const sessionId = input.sessionId.trim();
   const trialId = input.trialId.trim();
 
@@ -81,7 +73,7 @@ export async function submitKatakanaSpeedSelfCheckAction(input: {
   }
 
   return submitKatakanaSpeedSelfCheck({
-    database: input.database ?? db,
+    database: input.database,
     metricsJson: input.metricsJson,
     now: input.now,
     responseMs: input.responseMs,
@@ -92,17 +84,8 @@ export async function submitKatakanaSpeedSelfCheckAction(input: {
 }
 
 export async function aggregateKatakanaSpeedExerciseResultAction(input: {
-  blockId?: string | null;
-  database?: DatabaseClient;
-  exerciseId: string;
-  metricsJson?: unknown;
-  now?: Date;
-  resultId: string;
   selfRating?: KatakanaSpeedSelfRating | null;
-  sessionId: string;
-  sortOrder?: number;
-  trialId?: string | null;
-}) {
+} & AggregateKatakanaSpeedExerciseResultActionInput) {
   const sessionId = input.sessionId.trim();
   const exerciseId = input.exerciseId.trim();
   const resultId = input.resultId.trim();
@@ -119,7 +102,7 @@ export async function aggregateKatakanaSpeedExerciseResultAction(input: {
 
   return aggregateKatakanaSpeedExerciseResult({
     blockId: input.blockId?.trim() || null,
-    database: input.database ?? db,
+    database: input.database,
     exerciseId,
     metricsJson: input.metricsJson,
     now: input.now,
@@ -131,25 +114,21 @@ export async function aggregateKatakanaSpeedExerciseResultAction(input: {
   });
 }
 
-export async function completeKatakanaSpeedSessionAction(input: {
-  database?: DatabaseClient;
-  now?: Date;
-  sessionId: string;
-}) {
+export async function completeKatakanaSpeedSessionAction(
+  input: CompleteKatakanaSpeedSessionActionInput
+) {
   return completeKatakanaSpeedSession({
-    database: input.database ?? db,
+    database: input.database,
     now: input.now,
     sessionId: input.sessionId.trim()
   });
 }
 
-export async function abandonKatakanaSpeedSessionAction(input: {
-  database?: DatabaseClient;
-  now?: Date;
-  sessionId: string;
-}) {
+export async function abandonKatakanaSpeedSessionAction(
+  input: AbandonKatakanaSpeedSessionActionInput
+) {
   return abandonKatakanaSpeedSession({
-    database: input.database ?? db,
+    database: input.database,
     now: input.now,
     sessionId: input.sessionId.trim()
   });

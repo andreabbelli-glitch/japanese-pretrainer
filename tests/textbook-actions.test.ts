@@ -1,29 +1,19 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const {
-  getMediaBySlugMock,
   updateConsolidationSummaryCacheMock,
   updateMediaListCacheMock,
   updateReviewSummaryCacheMock,
   updateSettingsCacheMock,
   setFuriganaModeMock,
-  setLessonCompletionWithConsolidationMock
+  setLessonCompletionForActionMock
 } = vi.hoisted(() => ({
-  getMediaBySlugMock: vi.fn(),
   updateConsolidationSummaryCacheMock: vi.fn(),
   updateMediaListCacheMock: vi.fn(),
   updateReviewSummaryCacheMock: vi.fn(),
   updateSettingsCacheMock: vi.fn(),
   setFuriganaModeMock: vi.fn(),
-  setLessonCompletionWithConsolidationMock: vi.fn()
-}));
-
-vi.mock("@/db", () => ({
-  db: {}
-}));
-
-vi.mock("@/db/queries", () => ({
-  getMediaBySlug: getMediaBySlugMock
+  setLessonCompletionForActionMock: vi.fn()
 }));
 
 vi.mock("@/features/cache/server/data-cache", () => ({
@@ -33,12 +23,9 @@ vi.mock("@/features/cache/server/data-cache", () => ({
   updateSettingsCache: updateSettingsCacheMock
 }));
 
-vi.mock("@/features/consolidation/server", () => ({
-  setLessonCompletionWithConsolidation: setLessonCompletionWithConsolidationMock
-}));
-
 vi.mock("@/features/textbook/server", () => ({
-  setFuriganaMode: setFuriganaModeMock
+  setFuriganaMode: setFuriganaModeMock,
+  setLessonCompletionForAction: setLessonCompletionForActionMock
 }));
 
 import {
@@ -48,21 +35,15 @@ import {
 
 describe("textbook actions", () => {
   beforeEach(() => {
-    getMediaBySlugMock.mockReset();
-    getMediaBySlugMock.mockResolvedValue({ id: "media_fixture" });
     updateConsolidationSummaryCacheMock.mockReset();
     updateMediaListCacheMock.mockReset();
     updateReviewSummaryCacheMock.mockReset();
     updateSettingsCacheMock.mockReset();
     setFuriganaModeMock.mockReset();
-    setLessonCompletionWithConsolidationMock.mockReset();
-    setLessonCompletionWithConsolidationMock.mockResolvedValue({
-      completedNow: true,
-      consolidation: {
-        createdCount: 2,
-        subjectKeys: ["card:fixture-one", "card:fixture-two"]
-      },
-      previousStatus: "in_progress",
+    setLessonCompletionForActionMock.mockReset();
+    setLessonCompletionForActionMock.mockResolvedValue({
+      consolidationHref: "/consolidation/media/fixture-media/lesson/core-vocab",
+      ok: true,
       status: "completed"
     });
   });
@@ -81,24 +62,20 @@ describe("textbook actions", () => {
     expect(updateReviewSummaryCacheMock).not.toHaveBeenCalled();
   });
 
-  it("revalidates media and review caches after lesson completion changes", async () => {
-    await setLessonCompletionAction({
+  it("delegates lesson completion changes to the textbook workflow", async () => {
+    const input = {
       completed: true,
       lessonId: "lesson_001",
       lessonSlug: "core-vocab",
       mediaSlug: "fixture-media"
-    });
+    };
 
-    expect(setLessonCompletionWithConsolidationMock).toHaveBeenCalledWith({
-      completed: true,
-      lessonId: "lesson_001"
-    });
-    expect(getMediaBySlugMock).toHaveBeenCalledWith({}, "fixture-media");
-    expect(updateMediaListCacheMock).toHaveBeenCalledTimes(1);
-    expect(updateConsolidationSummaryCacheMock).toHaveBeenCalledWith(
-      "media_fixture"
-    );
-    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith("media_fixture");
+    await setLessonCompletionAction(input);
+
+    expect(setLessonCompletionForActionMock).toHaveBeenCalledWith(input);
+    expect(updateMediaListCacheMock).not.toHaveBeenCalled();
+    expect(updateConsolidationSummaryCacheMock).not.toHaveBeenCalled();
+    expect(updateReviewSummaryCacheMock).not.toHaveBeenCalled();
     expect(updateSettingsCacheMock).not.toHaveBeenCalled();
   });
 
@@ -110,10 +87,6 @@ describe("textbook actions", () => {
       mediaSlug: "fixture-media"
     });
 
-    expect(setLessonCompletionWithConsolidationMock).toHaveBeenCalledWith({
-      completed: true,
-      lessonId: "lesson_001"
-    });
     expect(result).toMatchObject({
       consolidationHref: "/consolidation/media/fixture-media/lesson/core-vocab",
       ok: true,
@@ -122,6 +95,12 @@ describe("textbook actions", () => {
   });
 
   it("does not enqueue pre-FSRS consolidation when reopening a lesson", async () => {
+    setLessonCompletionForActionMock.mockResolvedValueOnce({
+      consolidationHref: null,
+      ok: true,
+      status: "in_progress"
+    });
+
     const result = await setLessonCompletionAction({
       completed: false,
       lessonId: "lesson_001",
@@ -129,21 +108,13 @@ describe("textbook actions", () => {
       mediaSlug: "fixture-media"
     });
 
-    expect(setLessonCompletionWithConsolidationMock).toHaveBeenCalledWith({
-      completed: false,
-      lessonId: "lesson_001"
-    });
     expect(result.consolidationHref).toBeNull();
   });
 
   it("does not enqueue pre-FSRS consolidation when completion was already persisted", async () => {
-    setLessonCompletionWithConsolidationMock.mockResolvedValueOnce({
-      completedNow: false,
-      consolidation: {
-        createdCount: 0,
-        subjectKeys: []
-      },
-      previousStatus: "completed",
+    setLessonCompletionForActionMock.mockResolvedValueOnce({
+      consolidationHref: null,
+      ok: true,
       status: "completed"
     });
 
@@ -154,10 +125,6 @@ describe("textbook actions", () => {
       mediaSlug: "fixture-media"
     });
 
-    expect(setLessonCompletionWithConsolidationMock).toHaveBeenCalledWith({
-      completed: true,
-      lessonId: "lesson_001"
-    });
     expect(result.consolidationHref).toBeNull();
   });
 });

@@ -18,6 +18,8 @@ const productionGlossaryFiles = [
 ] as const;
 const clientTypeConsumerRoots = ["src/components/glossary"] as const;
 const clientTypeConsumerFiles = [
+  "src/features/glossary/ui/client/glossary-autocomplete-dropdown.tsx",
+  "src/features/glossary/ui/client/use-glossary-autocomplete.ts",
   "src/components/review/review-page-stage.tsx",
   "src/components/review/review-page-state.ts",
   "src/components/review/use-review-forced-contrast-controller.ts",
