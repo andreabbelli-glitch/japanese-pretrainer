@@ -9,7 +9,7 @@ import {
 import type { NormalizedMediaBundle } from "../../content/types.ts";
 import { buildEntryKey } from "../../../lib/entry-id.ts";
 import { mergePronunciationAudioManifestEntry } from "./manifest-helpers.ts";
-import { resolveMediaAssetAbsolutePath } from "../../../lib/media-assets.ts";
+import { resolveMediaAssetAbsolutePath } from "../../media/server/assets.ts";
 import {
   collectPronunciationTargets,
   normalizePronunciationText,

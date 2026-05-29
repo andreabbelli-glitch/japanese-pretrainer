@@ -9,7 +9,7 @@ import {
   isWithinMediaAssetRoot,
   normalizeMediaAssetPath,
   resolveMediaAssetAbsolutePath
-} from "@/lib/media-assets";
+} from "@/features/media/server/assets";
 
 type RouteContext = {
   params: Promise<{

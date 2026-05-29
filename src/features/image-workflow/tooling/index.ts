@@ -1,21 +1,21 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import { parseFrontmatter } from "../features/content/parser/frontmatter.ts";
+import { parseFrontmatter } from "../../content/parser/frontmatter.ts";
 import {
   type ImageAssetRecord,
   type ImageRequestRecord,
   parseImageAssets,
   parseImageRequests
-} from "./image-workflow-records.ts";
+} from "./records.ts";
 import {
   resolveMediaAssetAbsolutePath
-} from "./media-assets.ts";
+} from "../../media/server/assets.ts";
 
 export type {
   ImageAssetRecord,
   ImageRequestRecord
-} from "./image-workflow-records.ts";
+} from "./records.ts";
 
 export const imageWorkflowDirectoryName = "workflow";
 export const imageRequestsFileName = "image-requests.yaml";

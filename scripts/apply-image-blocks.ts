@@ -1,7 +1,7 @@
 import { readdir } from "node:fs/promises";
 import path from "node:path";
 
-import { applyMediaImageBlocks } from "../src/lib/image-workflow.ts";
+import { applyMediaImageBlocks } from "../src/features/image-workflow/tooling/index.ts";
 
 try {
   const cliOptions = resolveCliOptions(process.argv.slice(2));

@@ -5,7 +5,7 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { GET } from "@/app/media/[mediaSlug]/assets/[...assetPath]/route";
-import { getMediaAssetContentType } from "@/lib/media-assets";
+import { getMediaAssetContentType } from "@/features/media/server/assets";
 
 describe("media asset serving", () => {
   let tempDir = "";

@@ -11,7 +11,7 @@ import {
   applyMediaImageBlocks,
   buildImageBlock,
   summarizeMediaImageWorkflow
-} from "@/lib/image-workflow";
+} from "@/features/image-workflow/tooling";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

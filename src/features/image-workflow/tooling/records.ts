@@ -1,6 +1,6 @@
 import { parseDocument } from "yaml";
 
-import { isValidMediaAssetPath } from "./media-assets.ts";
+import { isValidMediaAssetPath } from "../../media/server/assets.ts";
 
 export interface ImageRequestRecord {
   id: string;
