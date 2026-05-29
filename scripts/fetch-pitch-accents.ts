@@ -1,7 +1,7 @@
 import path from "node:path";
 import { readFile } from "node:fs/promises";
 
-import { parseContentRoot } from "../src/lib/content/validator.ts";
+import { parseContentRoot } from "../src/features/content/validator.ts";
 import { MAX_TIMER_DELAY_MS } from "../src/lib/fetch-throttle.ts";
 import { fetchPitchAccentsForBundle } from "../src/features/pitch-accent/tooling/fetch.ts";
 import type { PronunciationFetchNetworkOptions } from "../src/lib/pronunciation-shared.ts";

@@ -21,7 +21,7 @@ import {
   term
 } from "@/db/schema";
 import { getGlobalReviewPageData, getReviewPageData } from "@/features/review/server";
-import { importContentWorkspace } from "@/lib/content/importer";
+import { importContentWorkspace } from "@/features/content/importer";
 import { backfillReviewSubjectState } from "@/features/review/server/subject-state-backfill";
 import {
   crossMediaFixture,

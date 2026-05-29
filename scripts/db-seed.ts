@@ -5,7 +5,7 @@ import path from "node:path";
 import { closeDatabaseClient, db } from "../src/db/client.ts";
 import { resolveDatabaseLocation } from "../src/db/config.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
-import { importContentWorkspace } from "../src/lib/content/importer.ts";
+import { importContentWorkspace } from "../src/features/content/importer.ts";
 
 const location = resolveDatabaseLocation();
 const contentRoot = path.resolve(process.cwd(), "content");

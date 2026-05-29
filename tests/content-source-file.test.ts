@@ -2,7 +2,7 @@ import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 
-import { normalizeSourceFile } from "@/lib/content/importer/render";
+import { normalizeSourceFile } from "@/features/content/importer/render";
 
 describe("content source file normalization", () => {
   it("keeps source files in dot-prefixed directories relative to the content root", () => {

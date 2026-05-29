@@ -14,7 +14,7 @@ import { closeDatabaseClient, createDatabaseClient } from "../src/db/client.ts";
 import { runMigrations } from "../src/db/migrate.ts";
 import { backfillReviewSubjectState } from "../src/features/review/server/subject-state-backfill.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
-import { importContentWorkspace } from "../src/lib/content/importer.ts";
+import { importContentWorkspace } from "../src/features/content/importer.ts";
 
 const START_E2E_SNAPSHOT_VERSION = 1;
 const SQLITE_ARTIFACT_SUFFIXES = ["", "-wal", "-shm", "-journal"] as const;

@@ -11,7 +11,7 @@ import { tmpdir } from "node:os";
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
-import type { NormalizedMediaBundle } from "@/lib/content/types";
+import type { NormalizedMediaBundle } from "@/features/content/types";
 import {
   buildTofuguPronunciationIndex,
   findTofuguMatchForTarget,

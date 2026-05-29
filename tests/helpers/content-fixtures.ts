@@ -9,7 +9,7 @@ export const repositoryRoot = path.join(__dirname, "..", "..");
 export const contentLibraryRoot = path.join(
   repositoryRoot,
   "src",
-  "lib",
+  "features",
   "content"
 );
 export const fixturesRoot = path.join(

@@ -45,7 +45,7 @@ import {
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
 import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
-import { importContentWorkspace } from "@/lib/content/importer";
+import { importContentWorkspace } from "@/features/content/importer";
 
 describe("review media query reuse", () => {
   let tempDir = "";

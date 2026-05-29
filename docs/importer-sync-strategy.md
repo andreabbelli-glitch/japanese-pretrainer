@@ -5,7 +5,7 @@
 L'importer collega davvero:
 
 - file Markdown sotto `content/media/*`;
-- parser + validator di `src/lib/content`;
+- parser + validator di `src/features/content`;
 - schema SQLite/Drizzle del runtime.
 
 Il runtime dell'app continua quindi a lavorare sui dati normalizzati nel DB, non

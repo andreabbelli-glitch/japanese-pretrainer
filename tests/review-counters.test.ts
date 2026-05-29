@@ -18,7 +18,7 @@ import {
   reviewSubjectLog,
   reviewSubjectState
 } from "@/db/schema";
-import { importContentWorkspace } from "@/lib/content/importer";
+import { importContentWorkspace } from "@/features/content/importer";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture

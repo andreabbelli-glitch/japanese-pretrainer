@@ -5,7 +5,7 @@ import {
   loadPronunciationManifest,
   serializePronunciationManifest,
   type PronunciationManifestEntry
-} from "./content/pronunciations-manifest.ts";
+} from "../features/content/pronunciations-manifest.ts";
 import { buildEntryKey } from "./entry-id.ts";
 
 type PronunciationAudioManifestFields = Pick<

@@ -1,7 +1,7 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import { parseFrontmatter } from "./content/parser/frontmatter.ts";
+import { parseFrontmatter } from "../features/content/parser/frontmatter.ts";
 import {
   type ImageAssetRecord,
   type ImageRequestRecord,

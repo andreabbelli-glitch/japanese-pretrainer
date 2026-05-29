@@ -4,7 +4,7 @@ import {
   parseContentRoot,
   parseMediaDirectory,
   type ValidationIssue
-} from "../src/lib/content/index.ts";
+} from "../src/features/content/index.ts";
 
 try {
   const cliOptions = resolveCliOptions(process.argv.slice(2));

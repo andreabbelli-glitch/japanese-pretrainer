@@ -4,7 +4,7 @@ import path from "node:path";
 import { spawn } from "node:child_process";
 
 import { buildEntryKey } from "../src/lib/entry-id.ts";
-import { parseContentRoot } from "../src/lib/content/validator.ts";
+import { parseContentRoot } from "../src/features/content/validator.ts";
 import {
   loadValidatedManifest,
   mergePronunciationAudioManifestEntry,

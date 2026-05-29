@@ -4,8 +4,8 @@ import path from "node:path";
 
 import { closeDatabaseClient, db } from "../src/db/client.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
-import { importContentWorkspace } from "../src/lib/content/importer.ts";
-import { readContentCacheRevalidationErrorDetails } from "../src/lib/content/importer/revalidation-error.ts";
+import { importContentWorkspace } from "../src/features/content/importer.ts";
+import { readContentCacheRevalidationErrorDetails } from "../src/features/content/importer/revalidation-error.ts";
 
 const CONTENT_CACHE_REVALIDATE_TIMEOUT_MS = 15_000;
 const ALLOW_REMOTE_FULL_IMPORT_ENV = "ALLOW_REMOTE_FULL_CONTENT_IMPORT";

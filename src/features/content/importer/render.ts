@@ -12,14 +12,14 @@ import type {
   RichTextFragment,
   TermDefinitionBlock
 } from "../types.ts";
-import { buildEntryKey } from "../../entry-id.ts";
-import { normalizeSearchText } from "../../../features/study/model/search.ts";
-import { mediaAssetHref } from "../../site.ts";
+import { buildEntryKey } from "../../../lib/entry-id.ts";
+import { normalizeSearchText } from "../../study/model/search.ts";
+import { mediaAssetHref } from "../../../lib/site.ts";
 
 export {
   normalizeGrammarSearchText,
   normalizeSearchText
-} from "../../../features/study/model/search.ts";
+} from "../../study/model/search.ts";
 
 export function buildDeterministicId(
   namespace: string,

@@ -515,6 +515,7 @@ src/
     schema/
   features/
     consolidation/
+    content/
     dashboard/
     fsrs-optimizer/
     glossary/
@@ -527,7 +528,6 @@ src/
     study/
     textbook/
   lib/
-    content/
     e2e/
     site/
   styles/

@@ -16,7 +16,7 @@ import { createServer } from "node:http";
 import type { Socket } from "node:net";
 import { homedir, tmpdir } from "node:os";
 
-import type { NormalizedMediaBundle } from "./content/types.ts";
+import type { NormalizedMediaBundle } from "../features/content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
 import { sleep } from "./fetch-throttle.ts";
 import {

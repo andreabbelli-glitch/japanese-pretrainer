@@ -1,8 +1,8 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import { loadPronunciationManifest } from "./content/pronunciations-manifest.ts";
-import type { NormalizedMediaBundle } from "./content/types.ts";
+import { loadPronunciationManifest } from "../features/content/pronunciations-manifest.ts";
+import type { NormalizedMediaBundle } from "../features/content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
 import {
   collectPronunciationTargets,

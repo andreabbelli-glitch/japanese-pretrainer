@@ -12,7 +12,7 @@ import { fileURLToPath } from "node:url";
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
-import { parseContentRoot } from "@/lib/content/validator";
+import { parseContentRoot } from "@/features/content/validator";
 import { writeBundlePronunciationPendingSummary } from "@/lib/pronunciation-workflow";
 
 const __filename = fileURLToPath(import.meta.url);

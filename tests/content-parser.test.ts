@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { parseFrontmatter } from "@/lib/content/parser/frontmatter";
-import { parseInlineFragment } from "@/lib/content/parser/markdown";
-import { extractStructuredBlocks } from "@/lib/content/parser/structured-blocks";
+import { parseFrontmatter } from "@/features/content/parser/frontmatter";
+import { parseInlineFragment } from "@/features/content/parser/markdown";
+import { extractStructuredBlocks } from "@/features/content/parser/structured-blocks";
 
 describe("content parser", () => {
   it("parses frontmatter when the file starts with BOM and uses CRLF", () => {

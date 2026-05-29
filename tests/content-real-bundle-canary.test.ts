@@ -6,8 +6,8 @@ import { describe, expect, it } from "vitest";
 
 import { closeDatabaseClient, createDatabaseClient } from "@/db";
 import { runMigrations } from "@/db/migrate";
-import { importContentWorkspace } from "@/lib/content/importer";
-import { parseMediaDirectory } from "@/lib/content";
+import { importContentWorkspace } from "@/features/content/importer";
+import { parseMediaDirectory } from "@/features/content";
 import { repositoryRoot } from "./helpers/content-fixtures";
 import { readDuelMastersRealBundleStats } from "./helpers/duel-masters-real-bundle-stats";
 import { realDuelMastersMediaDirectory } from "./helpers/real-content-fixtures";

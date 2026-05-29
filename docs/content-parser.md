@@ -1,6 +1,6 @@
 # Content Parser And Validator
 
-Il layer contenuti vive in `src/lib/content`.
+Il layer contenuti vive in `src/features/content`.
 
 Espone due entry point:
 
@@ -51,7 +51,7 @@ disponibile, `location.range`.
 ## Uso minimo
 
 ```ts
-import { parseMediaDirectory } from "@/lib/content";
+import { parseMediaDirectory } from "@/features/content";
 
 const result = await parseMediaDirectory(
   "/abs/path/content/media/sample-anime"

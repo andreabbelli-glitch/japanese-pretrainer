@@ -10,7 +10,7 @@ import {
   type DatabaseClient
 } from "@/db";
 import { runMigrations } from "@/db/migrate";
-import { importContentWorkspace } from "@/lib/content/importer";
+import { importContentWorkspace } from "@/features/content/importer";
 
 describe("canonical global glossary subjects", () => {
   let tempDir = "";

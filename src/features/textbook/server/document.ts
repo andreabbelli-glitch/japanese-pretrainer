@@ -11,7 +11,7 @@ import type {
   NormalizedTerm,
   RichTextFragment,
   TermDefinitionBlock
-} from "@/lib/content/types";
+} from "@/features/content/types";
 
 type UnknownRecord = Record<string, unknown>;
 

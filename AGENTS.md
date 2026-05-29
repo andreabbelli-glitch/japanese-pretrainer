@@ -112,7 +112,7 @@ src/
   db/           Client, config, schema, query, seed e migrazioni runtime
   domain/       Logica di dominio pura, senza dipendenze framework
   features/     Moduli feature-oriented condivisi tra route, componenti e test
-  lib/          Utility condivise, content parser/importer, routing UI, E2E
+  lib/          Utility condivise, routing UI, E2E
   styles/       CSS globale e variabili
   types/        Tipi TypeScript globali
 
@@ -146,7 +146,7 @@ prompts/        Prompt locali ignorati da git
   tooling dataset.
 - `src/features/katakana-speed/`: catalogo, tokenizer, scheduler, stato e
   persistenza sessione.
-- `src/lib/content/`: parser Markdown/frontmatter, validazione, import e sync
+- `src/features/content/`: parser Markdown/frontmatter, validazione, import e sync
   dei bundle.
 
 ---

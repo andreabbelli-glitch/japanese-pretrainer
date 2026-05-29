@@ -8,7 +8,7 @@ import {
 import path from "node:path";
 import { promisify } from "node:util";
 
-import type { NormalizedMediaBundle } from "./content/types.ts";
+import type { NormalizedMediaBundle } from "../features/content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
 import { stripInlineMarkdown } from "./inline-markdown.ts";
 import {

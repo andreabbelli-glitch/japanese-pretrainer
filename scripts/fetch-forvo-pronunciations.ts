@@ -2,7 +2,7 @@ import path from "node:path";
 import { readFile } from "node:fs/promises";
 import os from "node:os";
 
-import { parseContentRoot } from "../src/lib/content/validator.ts";
+import { parseContentRoot } from "../src/features/content/validator.ts";
 import { MAX_TIMER_DELAY_MS } from "../src/lib/fetch-throttle.ts";
 import {
   assertForvoManualRunCanStart,

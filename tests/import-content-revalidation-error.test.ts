@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { readContentCacheRevalidationErrorDetails } from "@/lib/content/importer/revalidation-error";
+import { readContentCacheRevalidationErrorDetails } from "@/features/content/importer/revalidation-error";
 
 describe("content import cache revalidation error details", () => {
   it("preserves plain-text error bodies from the revalidation endpoint", async () => {

@@ -9,7 +9,7 @@ import type {
   ContentBlock,
   InlineNode,
   MarkdownDocument
-} from "@/lib/content/types";
+} from "@/features/content/types";
 import { renderFurigana, splitMonoRuby } from "@/lib/render-furigana";
 import { mediaAssetHref } from "@/lib/site";
 import type {

@@ -12,7 +12,7 @@ import { tmpdir } from "node:os";
 
 import { describe, expect, it } from "vitest";
 
-import { parseContentRoot, parseMediaDirectory } from "@/lib/content";
+import { parseContentRoot, parseMediaDirectory } from "@/features/content";
 import {
   cardTextPlainScalarMediaDirectory,
   duplicateIdsMediaDirectory,

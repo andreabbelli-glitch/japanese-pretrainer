@@ -16,7 +16,7 @@ import {
 import { runMigrations } from "@/db/migrate";
 import { card, lessonContent, lessonProgress } from "@/db/schema";
 import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
-import { importContentWorkspace } from "@/lib/content/importer";
+import { importContentWorkspace } from "@/features/content/importer";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture

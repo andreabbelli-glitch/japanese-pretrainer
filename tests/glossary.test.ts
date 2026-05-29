@@ -41,7 +41,7 @@ import {
   term,
   termAlias
 } from "@/db/schema/index.ts";
-import { importContentWorkspace } from "@/lib/content/importer";
+import { importContentWorkspace } from "@/features/content/importer";
 import {
   getGlobalGlossaryAutocompleteData,
   getGlobalGrammarGlossaryDetailData,

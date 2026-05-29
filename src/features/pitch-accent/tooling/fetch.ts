@@ -1,14 +1,14 @@
 import {
   getPitchAccentCheckStatus,
   type PronunciationManifestEntry
-} from "../../../lib/content/pronunciations-manifest.ts";
+} from "../../content/pronunciations-manifest.ts";
 import type {
   EntryAudioMetadata,
   NormalizedGrammarPattern,
   NormalizedMediaBundle,
   NormalizedTerm,
   PitchAccentCheckStatus
-} from "../../../lib/content/types.ts";
+} from "../../content/types.ts";
 import { buildEntryKey } from "../../../lib/entry-id.ts";
 import { createFetchThrottle, sleep } from "../../../lib/fetch-throttle.ts";
 import {

@@ -26,7 +26,7 @@ import {
 } from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
 import { buildKanjiClashContrastKey } from "@/features/kanji-clash";
-import { importContentWorkspace } from "@/lib/content/importer";
+import { importContentWorkspace } from "@/features/content/importer";
 import {
   getReviewQueueSnapshotForMedia,
   loadGlobalReviewOverviewSnapshot

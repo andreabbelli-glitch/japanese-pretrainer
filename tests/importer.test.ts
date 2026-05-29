@@ -26,7 +26,7 @@ import {
   segment,
   term
 } from "@/db/schema/index.ts";
-import { importContentWorkspace } from "@/lib/content/importer.ts";
+import { importContentWorkspace } from "@/features/content/importer.ts";
 import { buildScopedEntryId } from "@/lib/entry-id";
 import {
   crossMediaFixture,

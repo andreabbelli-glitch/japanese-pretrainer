@@ -16,7 +16,7 @@ import {
   termAlias
 } from "../../../db/schema/index.ts";
 
-import { syncReviewSubjectState } from "../../../features/review/server/subject-state-backfill.ts";
+import { syncReviewSubjectState } from "../../review/server/subject-state-backfill.ts";
 import { buildMediaImportPlan } from "./planner.ts";
 import {
   cardComparisonKeys,

@@ -28,7 +28,7 @@ import {
 import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import { buildScopedEntryId } from "@/lib/entry-id";
 import { getGlossaryPageData } from "@/features/glossary/server";
-import { importContentWorkspace } from "@/lib/content/importer";
+import { importContentWorkspace } from "@/features/content/importer";
 import { getMediaProgressPageData } from "@/features/progress/server";
 import { getReviewPageData } from "@/features/review/server";
 import { mediaKanjiClashHref } from "@/lib/site";

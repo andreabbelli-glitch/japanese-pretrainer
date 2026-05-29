@@ -12,7 +12,7 @@ import { ReviewPage } from "@/components/review/review-page";
 import type { DatabaseClient } from "@/db";
 import { card, cardEntryLink, reviewSubjectState } from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
-import { importContentWorkspace } from "@/lib/content/importer";
+import { importContentWorkspace } from "@/features/content/importer";
 import {
   getReviewCardDetailData,
   getReviewPageData,

@@ -13,8 +13,8 @@ import {
   term,
   termAlias
 } from "../src/db/schema/index.ts";
-import { importContentWorkspace } from "../src/lib/content/importer.ts";
-import { parseMediaDirectory } from "../src/lib/content/validator.ts";
+import { importContentWorkspace } from "../src/features/content/importer.ts";
+import { parseMediaDirectory } from "../src/features/content/validator.ts";
 import {
   duelMastersRealBundleStatsPath,
   type DuelMastersRealBundleStats

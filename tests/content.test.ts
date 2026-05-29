@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 
 import { describe, expect, it } from "vitest";
 
-import { parseContentRoot, parseMediaDirectory } from "@/lib/content";
+import { parseContentRoot, parseMediaDirectory } from "@/features/content";
 import {
   bonusDistinctCardsFixture,
   contentLibraryRoot,
@@ -144,7 +144,7 @@ describe("content parser and validator integration", () => {
     }
   });
 
-  it("keeps the parser core under src/lib/content independent from src/db", async () => {
+  it("keeps the parser core under src/features/content independent from src/db", async () => {
     const contentSourceFiles = (
       await listFilesRecursively(contentLibraryRoot)
     ).filter(

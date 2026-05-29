@@ -12,7 +12,7 @@ import {
   reviewSubjectState
 } from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
-import { importContentWorkspace } from "@/lib/content/importer";
+import { importContentWorkspace } from "@/features/content/importer";
 import { getDashboardData } from "@/features/dashboard/server";
 import { getMediaDetailData } from "@/features/media/server";
 import { loadGlobalReviewOverviewSnapshot } from "@/features/review/server";

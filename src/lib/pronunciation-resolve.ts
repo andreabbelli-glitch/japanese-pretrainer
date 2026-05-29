@@ -11,8 +11,8 @@ import {
   listReviewPronunciationCards
 } from "../db/queries/pronunciation-resolve.ts";
 import type { DatabaseClient } from "../db/index.ts";
-import { parseContentRoot, parseMediaDirectory } from "./content/index.ts";
-import type { NormalizedMediaBundle } from "./content/types.ts";
+import { parseContentRoot, parseMediaDirectory } from "../features/content/index.ts";
+import type { NormalizedMediaBundle } from "../features/content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
 import { loadValidatedManifest } from "./manifest-helpers.ts";
 import {

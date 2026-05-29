@@ -6,8 +6,8 @@ import {
   isValidMediaAssetPath,
   isWithinMediaAssetRoot,
   resolveMediaAssetAbsolutePath
-} from "../media-assets.ts";
-import { romanizeKanaForSearch } from "../../features/study/model/search.ts";
+} from "../../lib/media-assets.ts";
+import { romanizeKanaForSearch } from "../study/model/search.ts";
 import type { RawStructuredBlock } from "./parser/internal.ts";
 import { parseInlineFragment } from "./parser/markdown.ts";
 import { createIssue, isUrlSafeSlug } from "./parser/utils.ts";

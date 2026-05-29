@@ -29,8 +29,8 @@ import {
   media,
   term
 } from "@/db/schema";
-import { parseContentRoot } from "@/lib/content/validator";
-import type { NormalizedMediaBundle } from "@/lib/content/types";
+import { parseContentRoot } from "@/features/content/validator";
+import type { NormalizedMediaBundle } from "@/features/content/types";
 import {
   executePronunciationResolveForBundle,
   parseTextbookLessonUrl,
