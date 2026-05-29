@@ -44,7 +44,7 @@ import {
 } from "@/features/review/server/card-hydration";
 import type { ReviewOverviewSnapshot } from "@/features/review/types";
 import type { ReviewSearchState } from "@/features/review/model/search-state";
-import { getPendingConsolidationSubjectKeySet } from "@/lib/consolidation";
+import { getPendingConsolidationSubjectKeySet } from "@/features/consolidation/server";
 
 export type ReviewPageLoadOptions = {
   bypassCache?: boolean;

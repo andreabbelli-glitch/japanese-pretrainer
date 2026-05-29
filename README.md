@@ -514,6 +514,7 @@ src/
     queries/
     schema/
   features/
+    consolidation/
     dashboard/
     fsrs-optimizer/
     glossary/

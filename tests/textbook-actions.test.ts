@@ -33,7 +33,7 @@ vi.mock("@/lib/data-cache", () => ({
   updateSettingsCache: updateSettingsCacheMock
 }));
 
-vi.mock("@/lib/consolidation", () => ({
+vi.mock("@/features/consolidation/server", () => ({
   setLessonCompletionWithConsolidation: setLessonCompletionWithConsolidationMock
 }));
 

@@ -34,7 +34,7 @@ import {
   getPendingConsolidationSubjectKeys,
   markConsolidationKnown,
   submitConsolidationAnswer
-} from "@/lib/consolidation";
+} from "@/features/consolidation/server";
 import { getGlobalReviewPageData, hydrateReviewCard } from "@/features/review/server";
 import { applyReviewGrade } from "@/features/review/server/service";
 import {

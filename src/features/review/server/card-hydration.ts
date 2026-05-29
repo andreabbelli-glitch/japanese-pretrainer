@@ -66,7 +66,7 @@ import {
   type ReviewQueueStateSnapshot,
   resolveReviewQueueState
 } from "@/features/review/model/queue-state";
-import { getPendingConsolidationSubjectKeySet } from "@/lib/consolidation";
+import { getPendingConsolidationSubjectKeySet } from "@/features/consolidation/server";
 import {
   buildBucketDetail,
   formatBucketLabel,

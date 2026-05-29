@@ -8,7 +8,7 @@ import {
   uninstallMinimalDom
 } from "./helpers/minimal-dom";
 
-import type { ConsolidationSessionData } from "@/lib/consolidation";
+import type { ConsolidationSessionData } from "@/features/consolidation/server";
 
 const mocks = vi.hoisted(() => ({
   markConsolidationKnownAction: vi.fn(),

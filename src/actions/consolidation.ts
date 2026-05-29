@@ -6,7 +6,7 @@ import {
   submitConsolidationAnswer,
   type MarkConsolidationKnownInput,
   type SubmitConsolidationAnswerInput
-} from "@/lib/consolidation";
+} from "@/features/consolidation/server";
 
 export async function submitConsolidationAnswerAction(
   input: Omit<SubmitConsolidationAnswerInput, "database" | "now">

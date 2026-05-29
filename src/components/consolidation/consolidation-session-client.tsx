@@ -13,7 +13,7 @@ import {
   type ConsolidationOption,
   type ConsolidationSessionData,
   type ConsolidationSessionSubject
-} from "@/lib/consolidation";
+} from "@/features/consolidation/server";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
 
 import {

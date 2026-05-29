@@ -7,7 +7,7 @@ import {
 import { db } from "@/db";
 import { getMediaBySlug } from "@/db/queries";
 import { setFuriganaMode } from "@/features/textbook/server";
-import { setLessonCompletionWithConsolidation } from "@/lib/consolidation";
+import { setLessonCompletionWithConsolidation } from "@/features/consolidation/server";
 import { consolidationLessonHref } from "@/lib/site";
 import type { FuriganaMode } from "@/features/textbook/types";
 

@@ -48,7 +48,7 @@ import type {
   ReviewScope
 } from "@/features/review/types";
 import { buildEntryKey } from "@/lib/entry-id";
-import { enqueueReviewMistakeConsolidation } from "@/lib/consolidation";
+import { enqueueReviewMistakeConsolidation } from "@/features/consolidation/server";
 
 export type ReviewMutationTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]

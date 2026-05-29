@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { ConsolidationSessionClient } from "@/components/consolidation/consolidation-session-client";
-import { getConsolidationSessionData } from "@/lib/consolidation";
+import { getConsolidationSessionData } from "@/features/consolidation/server";
 
 export const dynamic = "force-dynamic";
 

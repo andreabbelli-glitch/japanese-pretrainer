@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { EmptyState } from "@/components/ui/empty-state";
-import { getConsolidationHubData } from "@/lib/consolidation";
+import { getConsolidationHubData } from "@/features/consolidation/server";
 
 export const dynamic = "force-dynamic";
 

@@ -1,5 +1,5 @@
 import { ConsolidationSessionClient } from "@/components/consolidation/consolidation-session-client";
-import { getRetrainingConsolidationSessionData } from "@/lib/consolidation";
+import { getRetrainingConsolidationSessionData } from "@/features/consolidation/server";
 
 export const dynamic = "force-dynamic";
 

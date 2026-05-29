@@ -10,7 +10,7 @@ const {
   submitConsolidationAnswerMock: vi.fn()
 }));
 
-vi.mock("@/lib/consolidation", () => ({
+vi.mock("@/features/consolidation/server", () => ({
   markConsolidationKnown: markConsolidationKnownMock,
   submitConsolidationAnswer: submitConsolidationAnswerMock
 }));
