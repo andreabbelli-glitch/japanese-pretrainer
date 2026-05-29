@@ -8,7 +8,7 @@ describe("kanji clash page query scheduling", () => {
     vi.clearAllMocks();
     vi.doUnmock("@/db");
     vi.doUnmock("@/lib/data-cache");
-    vi.doUnmock("@/lib/settings");
+    vi.doUnmock("@/features/settings/server");
     vi.doUnmock("@/features/kanji-clash/server/manual-contrast.ts");
     vi.doUnmock("@/features/kanji-clash/server/queue-token.ts");
     vi.doUnmock("@/features/kanji-clash/model/queue.ts");
@@ -58,7 +58,7 @@ describe("kanji clash page query scheduling", () => {
     vi.doMock("@/lib/data-cache", () => ({
       listMediaCached: vi.fn(mediaRowsGate.loader())
     }));
-    vi.doMock("@/lib/settings", () => ({
+    vi.doMock("@/features/settings/server", () => ({
       getStudySettings: vi.fn(settingsGate.loader()),
       kanjiClashManualDefaultSizeOptions: [10, 20, 40],
       resolveKanjiClashDefaultScope: vi.fn(

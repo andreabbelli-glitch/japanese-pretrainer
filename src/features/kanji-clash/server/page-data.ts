@@ -5,7 +5,7 @@ import {
   getStudySettings,
   kanjiClashManualDefaultSizeOptions,
   resolveKanjiClashDefaultScope
-} from "@/lib/settings";
+} from "@/features/settings/server";
 
 import { loadKanjiClashManualContrastPageSnapshot } from "./manual-contrast.ts";
 import { getKanjiClashCurrentRound } from "../model/queue.ts";

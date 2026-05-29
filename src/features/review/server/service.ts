@@ -36,7 +36,7 @@ import {
 import {
   getFsrsOptimizerSnapshot,
   resolveFsrsPresetKey
-} from "@/lib/fsrs-optimizer";
+} from "@/features/fsrs-optimizer/server";
 import {
   scheduleReview,
   type ReviewRating,

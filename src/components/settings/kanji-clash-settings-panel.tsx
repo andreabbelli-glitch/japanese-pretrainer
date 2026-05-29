@@ -1,5 +1,5 @@
-import type { StudySettings } from "@/lib/settings";
-import { kanjiClashManualDefaultSizeOptions } from "@/lib/settings";
+import type { StudySettings } from "@/features/settings/server";
+import { kanjiClashManualDefaultSizeOptions } from "@/features/settings/server";
 
 import { SurfaceCard } from "../ui/surface-card";
 

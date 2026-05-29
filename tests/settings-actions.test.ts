@@ -17,8 +17,8 @@ vi.mock("@/lib/data-cache", () => ({
   updateSettingsCache: updateSettingsCacheMock
 }));
 
-vi.mock("@/lib/settings", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@/lib/settings")>();
+vi.mock("@/features/settings/server", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/features/settings/server")>();
 
   return {
     ...actual,
@@ -27,7 +27,7 @@ vi.mock("@/lib/settings", async (importOriginal) => {
 });
 
 import { saveStudySettingsAction } from "@/actions/settings";
-import { defaultStudySettings } from "@/lib/settings";
+import { defaultStudySettings } from "@/features/settings/server";
 
 describe("settings actions", () => {
   beforeEach(() => {

@@ -10,7 +10,7 @@ describe("textbook lesson query scheduling", () => {
     vi.doUnmock("@/db");
     vi.doUnmock("@/db/queries");
     vi.doUnmock("@/lib/data-cache");
-    vi.doUnmock("@/lib/settings");
+    vi.doUnmock("@/features/settings/server");
   });
 
   it("returns null on a missing media slug without waiting for furigana settings", async () => {
@@ -42,7 +42,7 @@ describe("textbook lesson query scheduling", () => {
       getMediaBySlugCached: vi.fn(mediaGate.loader()),
       runWithTaggedCache: vi.fn(async ({ loader }) => loader())
     }));
-    vi.doMock("@/lib/settings", () => ({
+    vi.doMock("@/features/settings/server", () => ({
       getFuriganaModeSetting: vi.fn(furiganaGate.loader())
     }));
 

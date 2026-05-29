@@ -1,5 +1,5 @@
 import type { PronunciationData } from "@/lib/pronunciation-data";
-import type { GlossaryDefaultSort } from "@/lib/settings";
+import type { GlossaryDefaultSort } from "@/features/settings/server";
 import type { AppHref } from "@/lib/site";
 import type { DerivedStudyState, EntryStudySignal } from "@/features/study/model/entry";
 

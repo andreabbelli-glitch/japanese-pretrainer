@@ -3,8 +3,8 @@ import { saveStudySettingsAction } from "@/actions/settings";
 import type { Route } from "next";
 import Link from "next/link";
 import { isAuthEnabled } from "@/lib/auth";
-import type { FsrsOptimizerStatus } from "@/lib/fsrs-optimizer";
-import type { StudySettings } from "@/lib/settings";
+import type { FsrsOptimizerStatus } from "@/features/fsrs-optimizer/server";
+import type { StudySettings } from "@/features/settings/server";
 import { resolveReturnToContext, resolveReturnToLabel } from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";

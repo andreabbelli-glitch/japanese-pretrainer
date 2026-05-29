@@ -64,7 +64,7 @@ import { getDashboardData } from "@/features/dashboard/server";
 import { getMediaDetailData } from "@/features/media/server";
 import { getMediaProgressPageData } from "@/features/progress/server";
 import * as reviewModule from "@/features/review/server";
-import * as settingsModule from "@/lib/settings";
+import * as settingsModule from "@/features/settings/server";
 
 describe("app shell day-scoped cache keys", () => {
   let database: DatabaseClient;

@@ -9,7 +9,7 @@ vi.mock("@/db", () => ({
   db: dbMock
 }));
 
-vi.mock("@/lib/fsrs-optimizer-trainer", () => ({
+vi.mock("@/features/fsrs-optimizer/tooling/trainer", () => ({
   runFsrsOptimizer: runFsrsOptimizerMock
 }));
 

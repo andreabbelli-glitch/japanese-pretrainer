@@ -9,7 +9,7 @@ import {
   getStudySettings,
   resolveKanjiClashDefaultScope,
   updateStudySettings
-} from "@/lib/settings";
+} from "@/features/settings/server";
 import {
   cleanupTestDatabase,
   setupTestDatabase,

@@ -25,7 +25,7 @@ import {
   term
 } from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
-import * as fsrsOptimizer from "@/lib/fsrs-optimizer";
+import * as fsrsOptimizer from "@/features/fsrs-optimizer/server";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
   getGlobalReviewPageData,
@@ -38,8 +38,8 @@ import {
 } from "@/features/review/server";
 import { applyReviewGrade } from "@/features/review/server/service";
 import { buildCanonicalReviewSessionHref } from "@/lib/site";
-import * as settings from "@/lib/settings";
-import { updateStudySettings } from "@/lib/settings";
+import * as settings from "@/features/settings/server";
+import { updateStudySettings } from "@/features/settings/server";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture

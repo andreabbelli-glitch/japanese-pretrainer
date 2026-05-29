@@ -26,7 +26,7 @@ import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewSnapshots
 } from "@/features/review/server/loader";
-import { getReviewDailyLimit } from "@/lib/settings";
+import { getReviewDailyLimit } from "@/features/settings/server";
 import { formatDerivedStudyStateLabel } from "@/features/study/model/entry";
 import {
   buildEmptyGlossaryProgressSnapshot,

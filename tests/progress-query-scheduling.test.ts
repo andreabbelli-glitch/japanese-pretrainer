@@ -11,7 +11,7 @@ describe("progress query scheduling", () => {
     vi.doUnmock("@/lib/local-date");
     vi.doUnmock("@/features/media/server");
     vi.doUnmock("@/features/review/server");
-    vi.doUnmock("@/lib/settings");
+    vi.doUnmock("@/features/settings/server");
     vi.doUnmock("@/lib/site");
     vi.doUnmock("@/features/study/model/format");
   });
@@ -62,7 +62,7 @@ describe("progress query scheduling", () => {
       loadReviewOverviewBundle: vi.fn(),
       mapReviewOverviewSnapshot: vi.fn()
     }));
-    vi.doMock("@/lib/settings", () => ({
+    vi.doMock("@/features/settings/server", () => ({
       getStudySettings: vi.fn(settingsGate.loader())
     }));
 
@@ -114,7 +114,7 @@ describe("progress query scheduling", () => {
       loadReviewOverviewBundle: vi.fn(),
       mapReviewOverviewSnapshot: vi.fn()
     }));
-    vi.doMock("@/lib/settings", () => ({
+    vi.doMock("@/features/settings/server", () => ({
       getStudySettings: vi.fn(settingsGate.loader())
     }));
 
@@ -181,7 +181,7 @@ describe("progress query scheduling", () => {
       loadReviewOverviewBundle,
       mapReviewOverviewSnapshot: vi.fn()
     }));
-    vi.doMock("@/lib/settings", () => ({
+    vi.doMock("@/features/settings/server", () => ({
       getStudySettings: vi.fn(settingsGate.loader())
     }));
 
@@ -301,7 +301,7 @@ describe("progress query scheduling", () => {
       loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewOverviewBundle
     }));
-    vi.doMock("@/lib/settings", () => ({
+    vi.doMock("@/features/settings/server", () => ({
       getStudySettings: vi.fn(settingsGate.loader())
     }));
     vi.doMock("@/lib/site", () => ({

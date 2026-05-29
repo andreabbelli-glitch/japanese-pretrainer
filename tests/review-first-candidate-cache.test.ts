@@ -56,9 +56,9 @@ vi.mock("@/lib/data-cache", async () => {
   };
 });
 
-vi.mock("@/lib/fsrs-optimizer", async () => {
-  const actual = await vi.importActual<typeof import("@/lib/fsrs-optimizer")>(
-    "@/lib/fsrs-optimizer"
+vi.mock("@/features/fsrs-optimizer/server", async () => {
+  const actual = await vi.importActual<typeof import("@/features/fsrs-optimizer/server")>(
+    "@/features/fsrs-optimizer/server"
   );
 
   getFsrsOptimizerRuntimeContextMock.mockImplementation(
@@ -96,7 +96,7 @@ import {
   getFsrsOptimizerCacheKeyPart,
   writeFsrsOptimizedParameters,
   writeFsrsOptimizerConfig
-} from "@/lib/fsrs-optimizer";
+} from "@/features/fsrs-optimizer/server";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { loadReviewPageDataSession } from "@/features/review/server/page-data";
 import {

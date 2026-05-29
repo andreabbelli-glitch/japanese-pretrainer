@@ -50,7 +50,7 @@ function mockGlossaryDataCache(overrides: Record<string, unknown>) {
 function mockGlossarySettings(
   getGlossaryDefaultSort: () => Promise<"lesson_order" | "alphabetical">
 ) {
-  vi.doMock("@/lib/settings", () => ({
+  vi.doMock("@/features/settings/server", () => ({
     defaultStudySettings: {
       furiganaMode: "hover",
       glossaryDefaultSort: "lesson_order",
@@ -72,7 +72,7 @@ describe("glossary query scheduling", () => {
     vi.doUnmock("@/db");
     vi.doUnmock("@/db/queries");
     vi.doUnmock("@/lib/data-cache");
-    vi.doUnmock("@/lib/settings");
+    vi.doUnmock("@/features/settings/server");
   });
 
   it("starts the global browse query as soon as the default sort is ready", async () => {

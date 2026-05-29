@@ -22,7 +22,7 @@ import {
   loadReviewOverviewBundle
 } from "@/features/review/server";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
-import { getReviewDailyLimit } from "@/lib/settings";
+import { getReviewDailyLimit } from "@/features/settings/server";
 import { mediaTextbookLessonHref } from "@/lib/site";
 
 const DASHBOARD_RECENT_LESSON_LIMIT = 3;

@@ -4,7 +4,7 @@ import {
   computeParameters
 } from "@open-spaced-repetition/binding";
 
-import { db, type DatabaseClient } from "../db/index.ts";
+import { db, type DatabaseClient } from "../../../db/index.ts";
 import {
   buildFsrsTrainingDataset,
   calculateFsrsOptimizerNewReviewThreshold,
@@ -20,7 +20,7 @@ import {
   type FsrsOptimizedParameters,
   type FsrsOptimizationRunResult,
   type FsrsPresetKey
-} from "./fsrs-optimizer.ts";
+} from "../server/index.ts";
 
 const DAY = 24 * 60 * 60_000;
 const MIN_TRAINING_REVIEW_COUNT = 10;

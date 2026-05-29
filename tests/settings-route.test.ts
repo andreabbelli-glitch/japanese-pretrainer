@@ -9,11 +9,11 @@ vi.mock("@/components/settings/settings-page", () => ({
   SettingsPage: (props: unknown) => ({ props, type: "mock-settings-page" })
 }));
 
-vi.mock("@/lib/fsrs-optimizer", () => ({
+vi.mock("@/features/fsrs-optimizer/server", () => ({
   getFsrsOptimizerStatus: getFsrsOptimizerStatusMock
 }));
 
-vi.mock("@/lib/settings", () => ({
+vi.mock("@/features/settings/server", () => ({
   getStudySettings: getStudySettingsMock
 }));
 

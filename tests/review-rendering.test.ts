@@ -23,7 +23,7 @@ import {
   applyReviewGrade,
   setLinkedEntryStatusByCard
 } from "@/features/review/server/service";
-import { updateStudySettings } from "@/lib/settings";
+import { updateStudySettings } from "@/features/settings/server";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture

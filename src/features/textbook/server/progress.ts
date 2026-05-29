@@ -2,7 +2,7 @@ import { eq, sql } from "drizzle-orm";
 
 import { db, type DatabaseClient, type DatabaseQueryClient } from "@/db";
 import { lessonProgress } from "@/db/schema";
-import { updateStudySettings, type FuriganaMode } from "@/lib/settings";
+import { updateStudySettings, type FuriganaMode } from "@/features/settings/server";
 import {
   calculatePercent,
   compareIsoDates,

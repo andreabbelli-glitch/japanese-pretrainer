@@ -12,7 +12,7 @@ describe("media library query scheduling", () => {
     vi.doUnmock("@/lib/local-date");
     vi.doUnmock("@/features/media/model/shell-snapshot");
     vi.doUnmock("@/features/review/server/loader");
-    vi.doUnmock("@/lib/settings");
+    vi.doUnmock("@/features/settings/server");
     vi.doUnmock("@/lib/site");
     vi.doUnmock("@/features/study/model/format");
     vi.doUnmock("@/features/study/model/metrics");
@@ -136,7 +136,7 @@ describe("media library query scheduling", () => {
       ),
       loadReviewOverviewSnapshots: vi.fn(reviewSnapshotsGate.loader())
     }));
-    vi.doMock("@/lib/settings", () => ({
+    vi.doMock("@/features/settings/server", () => ({
       getReviewDailyLimit: vi.fn(dailyLimitGate.loader())
     }));
     vi.doMock("@/lib/site", () => ({

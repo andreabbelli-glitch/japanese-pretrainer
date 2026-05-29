@@ -4,9 +4,13 @@ import path from "node:path";
 import { eq, inArray, sql } from "drizzle-orm";
 import { generatorParameters } from "ts-fsrs";
 
-import { db, type DatabaseClient } from "../db/index.ts";
-import { card, reviewSubjectLog, userSetting } from "../db/schema/index.ts";
-import type { ReviewSeedState } from "@/features/review/model/grade-previews.ts";
+import { db, type DatabaseClient } from "../../../db/index.ts";
+import {
+  card,
+  reviewSubjectLog,
+  userSetting
+} from "../../../db/schema/index.ts";
+import type { ReviewSeedState } from "../../review/model/grade-previews.ts";
 
 export type FsrsPresetKey = "recognition" | "concept";
 

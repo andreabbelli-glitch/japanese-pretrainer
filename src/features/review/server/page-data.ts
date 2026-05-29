@@ -5,7 +5,7 @@ import {
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
-import { getStudySettings } from "@/lib/settings";
+import { getStudySettings } from "@/features/settings/server";
 import {
   mediaGlossaryHref,
   mediaHref,
@@ -22,7 +22,7 @@ import {
   getFsrsOptimizerCacheKeyPart,
   getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
-} from "@/lib/fsrs-optimizer";
+} from "@/features/fsrs-optimizer/server";
 import {
   buildReviewSearchStateCacheKeyParts,
   normalizeReviewSearchState,

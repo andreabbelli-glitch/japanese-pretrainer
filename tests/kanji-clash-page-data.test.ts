@@ -18,7 +18,7 @@ import {
   getKanjiClashPageData,
   verifyKanjiClashQueueToken
 } from "@/features/kanji-clash";
-import { updateStudySettings } from "@/lib/settings";
+import { updateStudySettings } from "@/features/settings/server";
 import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
 
 describe("kanji clash page data", () => {

@@ -1,5 +1,5 @@
 import { SurfaceCard } from "../ui/surface-card";
-import type { FsrsOptimizerStatus } from "@/lib/fsrs-optimizer";
+import type { FsrsOptimizerStatus } from "@/features/fsrs-optimizer/server";
 
 type FsrsOptimizerStatusPanelProps = {
   status: FsrsOptimizerStatus;

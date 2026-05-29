@@ -1,8 +1,8 @@
 import { SettingsPage } from "@/components/settings/settings-page";
-import { getFsrsOptimizerStatus } from "@/lib/fsrs-optimizer";
+import { getFsrsOptimizerStatus } from "@/features/fsrs-optimizer/server";
 import { hasSearchParamValue } from "@/lib/search-params";
 import { readInternalHref } from "@/lib/site";
-import { getStudySettings } from "@/lib/settings";
+import { getStudySettings } from "@/features/settings/server";
 
 type SettingsRouteProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

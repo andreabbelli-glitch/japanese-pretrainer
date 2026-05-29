@@ -2,7 +2,7 @@ import "dotenv/config";
 
 import { closeDatabaseClient, db } from "../src/db/client.ts";
 import { resolveDatabaseLocation } from "../src/db/config.ts";
-import { runFsrsOptimizer } from "../src/lib/fsrs-optimizer-trainer.ts";
+import { runFsrsOptimizer } from "../src/features/fsrs-optimizer/tooling/trainer.ts";
 
 const location = resolveDatabaseLocation();
 

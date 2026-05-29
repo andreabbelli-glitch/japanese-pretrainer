@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
-import { runFsrsOptimizer } from "@/lib/fsrs-optimizer-trainer";
+import * as fsrsOptimizerModule from "@/features/fsrs-optimizer/server";
+import { runFsrsOptimizer } from "@/features/fsrs-optimizer/tooling/trainer";
 import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
 describe("fsrs optimizer query scheduling", () => {

@@ -7,10 +7,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import * as dataCacheModule from "@/lib/data-cache";
 import * as dbQueriesModule from "@/db/queries";
-import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
+import * as fsrsOptimizerModule from "@/features/fsrs-optimizer/server";
 import * as reviewCardHydrationModule from "@/features/review/server/card-hydration";
 import * as reviewSubjectStateLookupModule from "@/features/review/server/subject-state-lookup";
-import * as settingsModule from "@/lib/settings";
+import * as settingsModule from "@/features/settings/server";
 import {
   closeDatabaseClient,
   createDatabaseClient,

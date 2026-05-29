@@ -13,7 +13,7 @@ import { runMigrations } from "@/db/migrate";
 import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import * as dataCacheModule from "@/lib/data-cache";
 import { getGlossaryPageData } from "@/features/glossary/server";
-import * as settingsModule from "@/lib/settings";
+import * as settingsModule from "@/features/settings/server";
 import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
 describe("glossary page query scheduling", () => {

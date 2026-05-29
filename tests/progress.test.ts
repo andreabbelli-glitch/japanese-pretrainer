@@ -32,7 +32,7 @@ import { importContentWorkspace } from "@/lib/content/importer";
 import { getMediaProgressPageData } from "@/features/progress/server";
 import { getReviewPageData } from "@/features/review/server";
 import { mediaKanjiClashHref } from "@/lib/site";
-import { getStudySettings, updateStudySettings } from "@/lib/settings";
+import { getStudySettings, updateStudySettings } from "@/features/settings/server";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture

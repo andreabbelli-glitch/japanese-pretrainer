@@ -61,7 +61,7 @@ import {
   getFsrsOptimizerRuntimeContext,
   getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
-} from "@/lib/fsrs-optimizer";
+} from "@/features/fsrs-optimizer/server";
 import {
   type ReviewQueueStateSnapshot,
   resolveReviewQueueState

@@ -15,7 +15,7 @@ import {
   normalizeReviewFrontFurigana,
   normalizeReviewDailyLimit,
   updateStudySettings
-} from "@/lib/settings";
+} from "@/features/settings/server";
 
 export async function saveStudySettingsAction(formData: FormData) {
   const returnTo = readOptionalInternalHref(formData, "returnTo");

@@ -20,7 +20,7 @@ import {
   SETTINGS_TAG
 } from "@/lib/data-cache";
 import { mediaGlossaryHref } from "@/lib/site";
-import { getFuriganaModeSetting, type FuriganaMode } from "@/lib/settings";
+import { getFuriganaModeSetting, type FuriganaMode } from "@/features/settings/server";
 import {
   calculatePercent,
   compareIsoDates,
@@ -38,7 +38,7 @@ import type {
   TextbookTooltipEntry
 } from "@/features/textbook/types";
 
-export type { FuriganaMode } from "@/lib/settings";
+export type { FuriganaMode } from "@/features/settings/server";
 export type {
   TextbookEntryTooltip,
   TextbookIndexData,

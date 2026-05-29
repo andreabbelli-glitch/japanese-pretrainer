@@ -12,7 +12,7 @@ describe("dashboard data", () => {
     vi.doUnmock("@/lib/local-date");
     vi.doUnmock("@/features/media/server");
     vi.doUnmock("@/features/review/server");
-    vi.doUnmock("@/lib/settings");
+    vi.doUnmock("@/features/settings/server");
   });
 
   it("combines media shell totals with the global review overview", async () => {
@@ -253,7 +253,7 @@ function mockDashboardDependencies(input: {
       })
     )
   }));
-  vi.doMock("@/lib/settings", () => ({
+  vi.doMock("@/features/settings/server", () => ({
     getReviewDailyLimit: vi.fn(() => Promise.resolve(7))
   }));
 }

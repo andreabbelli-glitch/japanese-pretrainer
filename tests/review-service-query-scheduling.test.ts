@@ -6,7 +6,7 @@ import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import * as dbQueriesModule from "@/db/queries";
-import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
+import * as fsrsOptimizerModule from "@/features/fsrs-optimizer/server";
 import { applyReviewGrade } from "@/features/review/server/service";
 import {
   closeDatabaseClient,

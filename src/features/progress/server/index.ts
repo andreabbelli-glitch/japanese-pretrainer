@@ -18,7 +18,7 @@ import {
   mediaStudyHref,
   mediaTextbookLessonHref
 } from "@/lib/site";
-import { getStudySettings } from "@/lib/settings";
+import { getStudySettings } from "@/features/settings/server";
 import { calculatePercent } from "@/features/study/model/format";
 import {
   type GlossaryProgressSnapshot,

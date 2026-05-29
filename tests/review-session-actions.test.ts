@@ -27,7 +27,7 @@ import {
   buildCanonicalReviewSessionHref,
   mediaReviewCardHref
 } from "@/lib/site";
-import { updateStudySettings } from "@/lib/settings";
+import { updateStudySettings } from "@/features/settings/server";
 import {
   buildReviewSubjectStateRow,
   createIsolatedNewMediaFixture

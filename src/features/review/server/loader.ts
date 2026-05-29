@@ -24,7 +24,7 @@ import {
 import { pickBestBy } from "@/lib/collections";
 import { getLocalIsoDateKey, getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
-import { getReviewDailyLimit, getStudySettings } from "@/lib/settings";
+import { getReviewDailyLimit, getStudySettings } from "@/features/settings/server";
 import { measureWith, type ReviewProfiler } from "@/features/review/server/profiler";
 import { resolveReviewSubjectGroups } from "@/features/review/server/subject-state-lookup";
 import { hasCompletedReviewLesson } from "@/features/review/model/state";

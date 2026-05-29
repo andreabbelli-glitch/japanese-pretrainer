@@ -53,7 +53,7 @@ import {
 import { buildPitchAccentData } from "@/features/pitch-accent/model";
 import { getReviewCardDetailData } from "@/features/review/server";
 import { setReviewCardSuspended } from "@/features/review/server/service";
-import * as settings from "@/lib/settings";
+import * as settings from "@/features/settings/server";
 import { buildReviewSessionHref, mediaGlossaryEntryHref } from "@/lib/site";
 import {
   crossMediaOverflowFixture,

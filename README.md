@@ -515,12 +515,14 @@ src/
     schema/
   features/
     dashboard/
+    fsrs-optimizer/
     glossary/
     kanji-clash/
     katakana-speed/
     media/
     progress/
     review/
+    settings/
     study/
     textbook/
   lib/

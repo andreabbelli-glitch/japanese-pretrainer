@@ -31,9 +31,9 @@ import {
   getFsrsOptimizerStatus,
   writeFsrsOptimizerConfig,
   writeFsrsOptimizerState
-} from "@/lib/fsrs-optimizer";
-import * as fsrsOptimizer from "@/lib/fsrs-optimizer";
-import { runFsrsOptimizer } from "@/lib/fsrs-optimizer-trainer";
+} from "@/features/fsrs-optimizer/server";
+import * as fsrsOptimizer from "@/features/fsrs-optimizer/server";
+import { runFsrsOptimizer } from "@/features/fsrs-optimizer/tooling/trainer";
 import { buildReviewGradePreviews } from "@/features/review/model/grade-previews";
 import { applyReviewGrade } from "@/features/review/server/service";
 import { reviewSchedulerConfig, scheduleReview } from "@/features/review/model/scheduler";

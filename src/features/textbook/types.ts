@@ -1,9 +1,9 @@
 import type { MarkdownDocument } from "@/lib/content/types";
 import type { PronunciationData } from "@/lib/pronunciation-data";
-import type { FuriganaMode } from "@/lib/settings";
+import type { FuriganaMode } from "@/features/settings/server";
 import type { AppHref } from "@/lib/site";
 
-export type { FuriganaMode } from "@/lib/settings";
+export type { FuriganaMode } from "@/features/settings/server";
 
 export type TextbookLessonNavItem = {
   id: string;

@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, describe, expect, it } from "vitest";
 
 import { SettingsPage } from "@/components/settings/settings-page";
-import type { FsrsOptimizerStatus } from "@/lib/fsrs-optimizer";
+import type { FsrsOptimizerStatus } from "@/features/fsrs-optimizer/server";
 
 const AUTH_ENV_KEYS = [
   "AUTH_PASSWORD",
