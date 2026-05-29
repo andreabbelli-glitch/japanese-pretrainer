@@ -1,8 +1,8 @@
 import {
   buildPitchAccentData,
   type PitchAccentData
-} from "../features/pitch-accent/model/notation.ts";
-import { mediaAssetHref } from "./site.ts";
+} from "../../pitch-accent/model/notation.ts";
+import { mediaAssetHref } from "../../../lib/site.ts";
 
 export type PronunciationData = {
   attribution?: string;

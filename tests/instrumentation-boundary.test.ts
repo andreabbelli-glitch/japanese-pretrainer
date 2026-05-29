@@ -7,7 +7,7 @@ const PROJECT_ROOT = process.cwd();
 const disallowedInstrumentationTerms = [
   "@/features/review/server",
   "@/db",
-  "@/lib/pronunciation",
+  "@/features/pronunciation",
   "Forvo",
   "forvo",
   "playwright"

@@ -14,7 +14,7 @@ import { fileURLToPath } from "node:url";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { parseContentRoot } from "@/features/content/validator";
-import { reusePronunciationsAcrossMedia } from "@/lib/pronunciation-reuse";
+import { reusePronunciationsAcrossMedia } from "@/features/pronunciation/tooling/reuse";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

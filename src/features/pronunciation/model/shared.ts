@@ -2,7 +2,7 @@ import type {
   NormalizedGrammarPattern,
   NormalizedMediaBundle,
   NormalizedTerm
-} from "../features/content/types.ts";
+} from "../../content/types.ts";
 
 export type EntryKind = "term" | "grammar";
 

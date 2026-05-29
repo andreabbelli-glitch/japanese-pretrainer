@@ -34,7 +34,7 @@ import type { ReviewRating } from "@/features/review/model/scheduler";
 import {
   buildPronunciationData,
   type PronunciationData
-} from "@/lib/pronunciation-data";
+} from "@/features/pronunciation/model/data";
 
 type EnqueueLessonConsolidationInput = {
   database?: ConsolidationMutationClient;

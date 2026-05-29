@@ -8,7 +8,7 @@ import {
 } from "@/db/queries";
 import type { DatabaseClient } from "@/db";
 import { mediaGlossaryEntryHref } from "@/lib/site";
-import { buildPronunciationData } from "@/lib/pronunciation-data";
+import { buildPronunciationData } from "@/features/pronunciation/model/data";
 import { buildEntryKey } from "@/lib/entry-id";
 import {
   deriveInlineReading,

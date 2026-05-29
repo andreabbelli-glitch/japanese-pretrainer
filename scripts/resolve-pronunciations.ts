@@ -4,11 +4,11 @@ import { readFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
-import { assertForvoManualRunCanStart } from "../src/lib/pronunciation.ts";
+import { assertForvoManualRunCanStart } from "../src/features/pronunciation/index.ts";
 import {
   resolvePronunciations,
   type PronunciationResolveMode
-} from "../src/lib/pronunciation-resolve.ts";
+} from "../src/features/pronunciation/tooling/resolve.ts";
 
 type CliOptions = {
   ankiAppPath?: string;

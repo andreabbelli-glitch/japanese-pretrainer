@@ -25,7 +25,7 @@ import {
   persistForvoWordAddRequestRegistry,
   reconcileForvoWordAddRequestRegistry,
   type ForvoWordAddRequestRegistry
-} from "@/lib/pronunciation";
+} from "@/features/pronunciation";
 
 const execFileAsync = promisify(execFile);
 

@@ -53,7 +53,7 @@ import {
 import {
   buildPronunciationData,
   type PronunciationData
-} from "@/lib/pronunciation-data";
+} from "@/features/pronunciation/model/data";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "@/features/review/model/grade-previews";
 import {
   buildDefaultFsrsOptimizerSnapshot,

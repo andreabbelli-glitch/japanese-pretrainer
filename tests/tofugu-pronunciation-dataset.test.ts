@@ -17,8 +17,8 @@ import {
   findTofuguMatchForTarget,
   importTofuguPronunciationsForBundle,
   parseTofuguPronunciationFilename
-} from "@/lib/tofugu-pronunciation-dataset";
-import type { PronunciationTargetEntry } from "@/lib/pronunciation-shared";
+} from "@/features/pronunciation/tooling/tofugu-dataset";
+import type { PronunciationTargetEntry } from "@/features/pronunciation/model/shared";
 
 describe("Tofugu pronunciation dataset", () => {
   let tempDir = "";

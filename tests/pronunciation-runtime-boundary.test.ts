@@ -47,10 +47,25 @@ const workflowOnlyTerms = [
   "pronunciation-workflow",
   "pronunciation-reuse"
 ] as const;
+const legacyPronunciationLibFiles = [
+  "fetch-throttle.ts",
+  "forvo-known-missing.ts",
+  "forvo-pronunciation-fetch.ts",
+  "forvo-pronunciation-helpers.ts",
+  "forvo-word-add.ts",
+  "manifest-helpers.ts",
+  "pronunciation-data.ts",
+  "pronunciation-resolve.ts",
+  "pronunciation-reuse.ts",
+  "pronunciation-shared.ts",
+  "pronunciation-workflow.ts",
+  "pronunciation.ts",
+  "tofugu-pronunciation-dataset.ts"
+] as const;
 const legacyTextbookShimImportPattern =
   /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["']@\/lib\/textbook(?:["']|[-/])/u;
 const workflowPronunciationImportPattern =
-  /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["']@\/lib\/pronunciation(?:["']|\/)/u;
+  /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["'](?:@\/lib\/pronunciation(?:["']|\/)|@\/features\/pronunciation(?:["']|\/tooling\/))/u;
 
 describe("pronunciation runtime boundary", () => {
   it("has no legacy textbook modules under src/lib", async () => {
@@ -123,14 +138,28 @@ describe("pronunciation runtime boundary", () => {
       );
 
       expect(source).not.toMatch(
-        /from\s+["'](?:@\/lib\/pronunciation|\.\/pronunciation)["']/u
+        /from\s+["'](?:@\/lib\/pronunciation|@\/features\/pronunciation|\.\/pronunciation)["']/u
       );
+      expect(source).toContain("@/features/pronunciation/model/data");
     }
   );
 
+  it("has no pronunciation workflow or tooling modules under src/lib", async () => {
+    const libEntries = await readdir(path.join(PROJECT_ROOT, "src", "lib"), {
+      withFileTypes: true
+    });
+    const legacyFiles = new Set<string>(legacyPronunciationLibFiles);
+    const found = libEntries
+      .filter((entry) => entry.isFile() && legacyFiles.has(entry.name))
+      .map((entry) => `src/lib/${entry.name}`)
+      .sort((left, right) => left.localeCompare(right));
+
+    expect(found).toEqual([]);
+  });
+
   it("keeps pronunciation-data free of workflow and Node-only dependencies", async () => {
     const source = await readFile(
-      path.join(PROJECT_ROOT, "src/lib/pronunciation-data.ts"),
+      path.join(PROJECT_ROOT, "src/features/pronunciation/model/data.ts"),
       "utf8"
     );
 

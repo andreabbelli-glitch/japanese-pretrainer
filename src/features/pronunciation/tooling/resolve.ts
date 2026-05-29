@@ -3,17 +3,17 @@ import path from "node:path";
 import {
   getLessonIdBySlug,
   listLessonsByMediaId
-} from "../db/queries/lessons.ts";
-import { getMediaBySlug } from "../db/queries/media.ts";
+} from "../../../db/queries/lessons.ts";
+import { getMediaBySlug } from "../../../db/queries/media.ts";
 import {
   listLessonPronunciationCards,
   listPronunciationEntryRefsByCardIds,
   listReviewPronunciationCards
-} from "../db/queries/pronunciation-resolve.ts";
-import type { DatabaseClient } from "../db/index.ts";
-import { parseContentRoot, parseMediaDirectory } from "../features/content/index.ts";
-import type { NormalizedMediaBundle } from "../features/content/types.ts";
-import { buildEntryKey } from "./entry-id.ts";
+} from "../../../db/queries/pronunciation-resolve.ts";
+import type { DatabaseClient } from "../../../db/index.ts";
+import { parseContentRoot, parseMediaDirectory } from "../../content/index.ts";
+import type { NormalizedMediaBundle } from "../../content/types.ts";
+import { buildEntryKey } from "../../../lib/entry-id.ts";
 import { loadValidatedManifest } from "./manifest-helpers.ts";
 import {
   createPronunciationReuseContext,
@@ -29,16 +29,16 @@ import {
   writeBundlePronunciationPendingSummary,
   type ForvoBrowserOptions,
   type PronunciationReuseContext
-} from "./pronunciation.ts";
+} from "../index.ts";
 import {
   collectPronunciationTargets,
   type PronunciationTargetEntry
-} from "./pronunciation-shared.ts";
+} from "../model/shared.ts";
 import {
   importTofuguPronunciationsForBundle,
   tofuguPronunciationDatasetDefaultDirectory,
   type TofuguPronunciationImportSummary
-} from "./tofugu-pronunciation-dataset.ts";
+} from "./tofugu-dataset.ts";
 
 export type PronunciationResolveMode =
   | "review"

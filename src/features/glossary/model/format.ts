@@ -37,7 +37,7 @@ import {
   normalizeSearchText,
   romanizeKanaForSearch
 } from "@/features/study/model/search";
-import { buildPronunciationData } from "@/lib/pronunciation-data";
+import { buildPronunciationData } from "@/features/pronunciation/model/data";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
 import { deriveEntryStudyState } from "@/features/study/model/entry";
 import type {

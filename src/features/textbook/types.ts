@@ -1,5 +1,5 @@
 import type { MarkdownDocument } from "@/features/content/types";
-import type { PronunciationData } from "@/lib/pronunciation-data";
+import type { PronunciationData } from "@/features/pronunciation/model/data";
 import type { FuriganaMode } from "@/features/settings/server";
 import type { AppHref } from "@/lib/site";
 

@@ -16,8 +16,8 @@ import { createServer } from "node:http";
 import type { Socket } from "node:net";
 import { homedir, tmpdir } from "node:os";
 
-import type { NormalizedMediaBundle } from "../features/content/types.ts";
-import { buildEntryKey } from "./entry-id.ts";
+import type { NormalizedMediaBundle } from "../../content/types.ts";
+import { buildEntryKey } from "../../../lib/entry-id.ts";
 import { sleep } from "./fetch-throttle.ts";
 import {
   loadValidatedManifest,
@@ -35,11 +35,11 @@ import {
   slugifyForvoSegment,
   type ForvoAudioCandidate,
   type ForvoCandidate
-} from "./forvo-pronunciation-helpers.ts";
+} from "./forvo-helpers.ts";
 import {
   collectPronunciationTargets,
   type PronunciationTargetEntry
-} from "./pronunciation-shared.ts";
+} from "../model/shared.ts";
 import {
   addForvoKnownMissingEntry,
   hasForvoKnownMissingEntry,
@@ -56,7 +56,7 @@ import {
   type ForvoWordAddRequestRegistry
 } from "./forvo-word-add.ts";
 
-export type { ForvoCandidate } from "./forvo-pronunciation-helpers.ts";
+export type { ForvoCandidate } from "./forvo-helpers.ts";
 
 export {
   buildForvoSearchQueries,
@@ -66,7 +66,7 @@ export {
   resolveRequestedTargets,
   scoreForvoCandidate,
   selectBestForvoCandidate
-} from "./forvo-pronunciation-helpers.ts";
+} from "./forvo-helpers.ts";
 
 export type ForvoBrowserOptions = {
   ankiAppPath?: string;

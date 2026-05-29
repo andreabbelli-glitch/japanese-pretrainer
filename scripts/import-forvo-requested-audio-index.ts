@@ -9,19 +9,19 @@ import {
   loadValidatedManifest,
   mergePronunciationAudioManifestEntry,
   persistManifestEntries
-} from "../src/lib/manifest-helpers.ts";
+} from "../src/features/pronunciation/tooling/manifest-helpers.ts";
 import {
   loadForvoKnownMissingRegistry,
   persistForvoKnownMissingRegistry
-} from "../src/lib/forvo-known-missing.ts";
+} from "../src/features/pronunciation/tooling/forvo-known-missing.ts";
 import {
   loadForvoWordAddRequestRegistry,
   persistForvoWordAddRequestRegistry
-} from "../src/lib/forvo-word-add.ts";
-import { slugifyForvoSegment } from "../src/lib/forvo-pronunciation-helpers.ts";
-import { collectPronunciationTargets } from "../src/lib/pronunciation-shared.ts";
-import { writeBundlePronunciationPendingSummary } from "../src/lib/pronunciation-workflow.ts";
-import type { PronunciationTargetEntry } from "../src/lib/pronunciation-shared.ts";
+} from "../src/features/pronunciation/tooling/forvo-word-add.ts";
+import { slugifyForvoSegment } from "../src/features/pronunciation/tooling/forvo-helpers.ts";
+import { collectPronunciationTargets } from "../src/features/pronunciation/model/shared.ts";
+import { writeBundlePronunciationPendingSummary } from "../src/features/pronunciation/tooling/workflow.ts";
+import type { PronunciationTargetEntry } from "../src/features/pronunciation/model/shared.ts";
 
 type CliOptions = {
   audioIndexPath: string;

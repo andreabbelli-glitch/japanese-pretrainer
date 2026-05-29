@@ -5,16 +5,16 @@ import {
   loadPronunciationManifest,
   serializePronunciationManifest,
   type PronunciationManifestEntry
-} from "../features/content/pronunciations-manifest.ts";
-import type { NormalizedMediaBundle } from "../features/content/types.ts";
-import { buildEntryKey } from "./entry-id.ts";
+} from "../../content/pronunciations-manifest.ts";
+import type { NormalizedMediaBundle } from "../../content/types.ts";
+import { buildEntryKey } from "../../../lib/entry-id.ts";
 import { mergePronunciationAudioManifestEntry } from "./manifest-helpers.ts";
-import { resolveMediaAssetAbsolutePath } from "./media-assets.ts";
+import { resolveMediaAssetAbsolutePath } from "../../../lib/media-assets.ts";
 import {
   collectPronunciationTargets,
   normalizePronunciationText,
   type PronunciationTargetEntry
-} from "./pronunciation-shared.ts";
+} from "../model/shared.ts";
 
 type AudioBackedEntry = {
   audioAttribution?: string | null;

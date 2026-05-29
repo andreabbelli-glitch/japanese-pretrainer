@@ -12,7 +12,7 @@ import path from "node:path";
 import {
   parseTofuguPronunciationFilename,
   tofuguPronunciationDatasetDefaultDirectory
-} from "../../../lib/tofugu-pronunciation-dataset.ts";
+} from "../../pronunciation/tooling/tofugu-dataset.ts";
 import { splitJapaneseMorae } from "../model/notation.ts";
 
 import {

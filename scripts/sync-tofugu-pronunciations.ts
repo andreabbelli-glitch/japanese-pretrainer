@@ -4,7 +4,7 @@ import {
   syncTofuguPronunciationDataset,
   tofuguPronunciationDatasetDefaultDirectory,
   tofuguPronunciationDatasetRepositoryUrl
-} from "../src/lib/tofugu-pronunciation-dataset.ts";
+} from "../src/features/pronunciation/tooling/tofugu-dataset.ts";
 
 type CliOptions = {
   datasetDir: string;

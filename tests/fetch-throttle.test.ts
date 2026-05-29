@@ -5,7 +5,7 @@ import {
   createFetchThrottle,
   parseRetryAfterMs,
   sleep
-} from "@/lib/fetch-throttle";
+} from "@/features/pronunciation/tooling/fetch-throttle";
 
 describe("fetch throttle", () => {
   afterEach(() => {

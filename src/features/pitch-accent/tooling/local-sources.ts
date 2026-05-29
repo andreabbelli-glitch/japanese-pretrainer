@@ -1,7 +1,7 @@
 import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 
-import { normalizePronunciationText } from "../../../lib/pronunciation-shared.ts";
+import { normalizePronunciationText } from "../../pronunciation/model/shared.ts";
 
 export type LocalPitchAccentSourceKey = "kanjium" | "shirabe";
 export type PitchAccentMatchType = "exact" | "fuzzy";

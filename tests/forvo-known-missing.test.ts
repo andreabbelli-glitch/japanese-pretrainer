@@ -11,8 +11,8 @@ import {
   persistForvoKnownMissingRegistry,
   pruneForvoKnownMissingRegistry,
   type ForvoKnownMissingRegistry
-} from "@/lib/forvo-known-missing";
-import type { PronunciationTargetEntry } from "@/lib/pronunciation-shared";
+} from "@/features/pronunciation/tooling/forvo-known-missing";
+import type { PronunciationTargetEntry } from "@/features/pronunciation/model/shared";
 
 describe("forvo known-missing registry", () => {
   let tempDir = "";

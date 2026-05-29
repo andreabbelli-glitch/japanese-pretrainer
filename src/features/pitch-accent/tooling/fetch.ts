@@ -10,16 +10,16 @@ import type {
   PitchAccentCheckStatus
 } from "../../content/types.ts";
 import { buildEntryKey } from "../../../lib/entry-id.ts";
-import { createFetchThrottle, sleep } from "../../../lib/fetch-throttle.ts";
+import { createFetchThrottle, sleep } from "../../pronunciation/tooling/fetch-throttle.ts";
 import {
   loadValidatedManifest,
   persistManifestEntries
-} from "../../../lib/manifest-helpers.ts";
+} from "../../pronunciation/tooling/manifest-helpers.ts";
 import {
   normalizePronunciationText,
   type EntryKind,
   type PronunciationFetchNetworkOptions
-} from "../../../lib/pronunciation-shared.ts";
+} from "../../pronunciation/model/shared.ts";
 import {
   lookupKanjiumPitchAccents,
   lookupShirabePitchAccents,

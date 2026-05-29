@@ -1,4 +1,4 @@
-import type { PronunciationData } from "@/lib/pronunciation-data";
+import type { PronunciationData } from "@/features/pronunciation/model/data";
 import type { GlossaryDefaultSort } from "@/features/settings/server";
 import type { AppHref } from "@/lib/site";
 import type { DerivedStudyState, EntryStudySignal } from "@/features/study/model/entry";

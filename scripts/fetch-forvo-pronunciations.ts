@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import os from "node:os";
 
 import { parseContentRoot } from "../src/features/content/validator.ts";
-import { MAX_TIMER_DELAY_MS } from "../src/lib/fetch-throttle.ts";
+import { MAX_TIMER_DELAY_MS } from "../src/features/pronunciation/tooling/fetch-throttle.ts";
 import {
   assertForvoManualRunCanStart,
   fetchForvoPronunciationsForBundle,
@@ -11,7 +11,7 @@ import {
   resolveRequestedTargets,
   reuseCrossMediaPronunciationsForBundle,
   writeBundlePronunciationPendingSummary
-} from "../src/lib/pronunciation.ts";
+} from "../src/features/pronunciation/index.ts";
 
 type CliOptions = {
   ankiAppPath?: string;

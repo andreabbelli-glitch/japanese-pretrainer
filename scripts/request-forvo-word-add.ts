@@ -1,7 +1,7 @@
 import path from "node:path";
 import { spawn } from "node:child_process";
 
-import { MAX_TIMER_DELAY_MS } from "../src/lib/fetch-throttle.ts";
+import { MAX_TIMER_DELAY_MS } from "../src/features/pronunciation/tooling/fetch-throttle.ts";
 import {
   addForvoWordAddRequestEntry,
   buildForvoWordAddUrl,
@@ -9,7 +9,7 @@ import {
   loadForvoKnownMissingRegistry,
   loadForvoWordAddRequestRegistry,
   persistForvoWordAddRequestRegistry
-} from "../src/lib/pronunciation.ts";
+} from "../src/features/pronunciation/index.ts";
 
 type CliOptions = {
   dryRun: boolean;

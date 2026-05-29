@@ -1,11 +1,11 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import { buildEntryKey } from "./entry-id.ts";
+import { buildEntryKey } from "../../../lib/entry-id.ts";
 import type {
   EntryKind,
   PronunciationTargetEntry
-} from "./pronunciation-shared.ts";
+} from "../model/shared.ts";
 
 export type ForvoKnownMissingEntry = {
   entryId: string;

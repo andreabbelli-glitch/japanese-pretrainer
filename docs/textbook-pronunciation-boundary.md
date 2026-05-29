@@ -17,12 +17,12 @@ runtime display code separate from content workflow code.
 
 ## Pronunciation Runtime Boundary
 
-- Runtime display code uses `@/lib/pronunciation-data` for
+- Runtime display code uses `@/features/pronunciation/model/data` for
   `PronunciationData` and `buildPronunciationData`.
-- Runtime display code must not import `@/lib/pronunciation`, because that
-  barrel exposes workflow, Forvo, filesystem, and maintenance helpers.
+- Runtime display code must not import the `@/features/pronunciation` barrel,
+  because it exposes workflow, Forvo, filesystem, and maintenance helpers.
 - Do not introduce a second pronunciation facade in small hardening slices; the
-  current display boundary is `@/lib/pronunciation-data`.
+  current display boundary is `@/features/pronunciation/model/data`.
 
 ## Pronunciation Workflow Boundary
 

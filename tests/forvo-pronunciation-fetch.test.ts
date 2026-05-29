@@ -12,7 +12,7 @@ import {
   parseForvoWordList,
   scoreForvoCandidate,
   selectBestForvoCandidate
-} from "@/lib/forvo-pronunciation-fetch";
+} from "@/features/pronunciation/tooling/forvo-fetch";
 
 const execFileAsync = promisify(execFile);
 const fetchForvoScriptPath = path.join(

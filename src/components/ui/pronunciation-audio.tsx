@@ -1,4 +1,4 @@
-import type { PronunciationData } from "@/lib/pronunciation-data";
+import type { PronunciationData } from "@/features/pronunciation/model/data";
 
 import { PitchAccentNotation } from "./pitch-accent-notation";
 

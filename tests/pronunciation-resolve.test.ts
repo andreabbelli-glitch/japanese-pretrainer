@@ -35,8 +35,8 @@ import {
   executePronunciationResolveForBundle,
   parseTextbookLessonUrl,
   selectPronunciationResolveTargets
-} from "@/lib/pronunciation-resolve";
-import type { PronunciationTargetEntry } from "@/lib/pronunciation-shared";
+} from "@/features/pronunciation/tooling/resolve";
+import type { PronunciationTargetEntry } from "@/features/pronunciation/model/shared";
 import { runNodeCli } from "./helpers/run-cli";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -118,7 +118,7 @@ describe("pronunciation resolve", () => {
       [
         "--experimental-strip-types",
         "-e",
-        "await import('./src/lib/pronunciation-resolve.ts')"
+        "await import('./src/features/pronunciation/tooling/resolve.ts')"
       ],
       {
         cwd: process.cwd()

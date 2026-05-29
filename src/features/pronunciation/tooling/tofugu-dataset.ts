@@ -8,9 +8,9 @@ import {
 import path from "node:path";
 import { promisify } from "node:util";
 
-import type { NormalizedMediaBundle } from "../features/content/types.ts";
-import { buildEntryKey } from "./entry-id.ts";
-import { stripInlineMarkdown } from "./inline-markdown.ts";
+import type { NormalizedMediaBundle } from "../../content/types.ts";
+import { buildEntryKey } from "../../../lib/entry-id.ts";
+import { stripInlineMarkdown } from "../../../lib/inline-markdown.ts";
 import {
   loadValidatedManifest,
   mergePronunciationAudioManifestEntry,
@@ -19,7 +19,7 @@ import {
 import {
   collectPronunciationTargets,
   type PronunciationTargetEntry
-} from "./pronunciation-shared.ts";
+} from "../model/shared.ts";
 
 const execFileAsync = promisify(execFile);
 

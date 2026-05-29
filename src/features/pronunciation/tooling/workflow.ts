@@ -1,13 +1,13 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import { loadPronunciationManifest } from "../features/content/pronunciations-manifest.ts";
-import type { NormalizedMediaBundle } from "../features/content/types.ts";
-import { buildEntryKey } from "./entry-id.ts";
+import { loadPronunciationManifest } from "../../content/pronunciations-manifest.ts";
+import type { NormalizedMediaBundle } from "../../content/types.ts";
+import { buildEntryKey } from "../../../lib/entry-id.ts";
 import {
   collectPronunciationTargets,
   type PronunciationTargetEntry
-} from "./pronunciation-shared.ts";
+} from "../model/shared.ts";
 import { loadForvoKnownMissingRegistry } from "./forvo-known-missing.ts";
 import type {
   ForvoKnownMissingEntry,

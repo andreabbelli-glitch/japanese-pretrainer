@@ -1,22 +1,22 @@
-export { buildPronunciationData } from "./pronunciation-data.ts";
-export type { PronunciationData } from "./pronunciation-data.ts";
+export { buildPronunciationData } from "./model/data.ts";
+export type { PronunciationData } from "./model/data.ts";
 
 export type {
   EntryKind,
   PronunciationFetchNetworkOptions,
   PronunciationTargetEntry
-} from "./pronunciation-shared.ts";
+} from "./model/shared.ts";
 
 export {
   createPronunciationReuseContext,
   refreshPronunciationReuseContextBundle,
   reuseCrossMediaPronunciationsForBundle,
   reusePronunciationsAcrossMedia
-} from "./pronunciation-reuse.ts";
+} from "./tooling/reuse.ts";
 export type {
   PronunciationReuseContext,
   PronunciationReuseResult
-} from "./pronunciation-reuse.ts";
+} from "./tooling/reuse.ts";
 
 export {
   loadForvoKnownMissingRegistry,
@@ -24,13 +24,13 @@ export {
   writeBundlePronunciationPendingSummary,
   pronunciationPendingFileName,
   pronunciationWorkflowDirectoryName
-} from "./pronunciation-workflow.ts";
+} from "./tooling/workflow.ts";
 export type {
   ForvoKnownMissingEntry,
   ForvoKnownMissingRegistry,
   MediaPronunciationPendingSummary,
   PronunciationPendingEntry
-} from "./pronunciation-workflow.ts";
+} from "./tooling/workflow.ts";
 
 export {
   assertForvoManualRunCanStart,
@@ -40,13 +40,13 @@ export {
   parseForvoWordList,
   resolveRequestedTargets,
   scoreForvoCandidate
-} from "./forvo-pronunciation-fetch.ts";
+} from "./tooling/forvo-fetch.ts";
 export type {
   ForvoBrowserOptions,
   ForvoCandidate,
   ForvoManualOptions,
   ForvoManualRuntimeOptions
-} from "./forvo-pronunciation-fetch.ts";
+} from "./tooling/forvo-fetch.ts";
 
 export {
   addForvoWordAddRequestEntry,
@@ -59,9 +59,9 @@ export {
   normalizeForvoWordAddLabel,
   persistForvoWordAddRequestRegistry,
   reconcileForvoWordAddRequestRegistry
-} from "./forvo-word-add.ts";
+} from "./tooling/forvo-word-add.ts";
 export type {
   ForvoWordAddPrefill,
   ForvoWordAddRequestEntry,
   ForvoWordAddRequestRegistry
-} from "./forvo-word-add.ts";
+} from "./tooling/forvo-word-add.ts";

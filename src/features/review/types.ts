@@ -4,7 +4,7 @@ import type {
   ReviewGradePreview,
   ReviewSeedState
 } from "@/features/review/model/grade-previews";
-import type { PronunciationData } from "@/lib/pronunciation-data";
+import type { PronunciationData } from "@/features/pronunciation/model/data";
 import type { AppHref } from "@/lib/site";
 
 type MediaGlossaryEntryHref = AppHref;

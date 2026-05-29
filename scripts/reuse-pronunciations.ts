@@ -14,7 +14,7 @@ const {
   refreshPronunciationReuseContextBundle,
   reusePronunciationsAcrossMedia,
   writeBundlePronunciationPendingSummary
-} = await import("../src/lib/pronunciation.ts");
+} = await import("../src/features/pronunciation/index.ts");
 const parseResult = await parseContentRoot(path.resolve(options.contentRoot));
 
 if (!parseResult.ok) {
