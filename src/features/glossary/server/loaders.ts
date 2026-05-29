@@ -23,8 +23,8 @@ import {
   type TermGlossaryEntry,
   type TermGlossaryEntrySummary
 } from "@/db/queries";
-import { buildEntryKey } from "@/lib/entry-id";
-import { readMatchingSearchParam } from "@/lib/search-params";
+import { buildEntryKey } from "@/features/study/model/entry-id";
+import { readMatchingSearchParam } from "@/features/shared/model/search-params";
 import {
   GLOSSARY_SUMMARY_TAG,
   buildGlossarySummaryTags,
@@ -34,7 +34,7 @@ import {
   MEDIA_LIST_TAG,
   REVIEW_SUMMARY_TAG,
   runWithTaggedCache
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 import {
   buildFilteredQuery,
   buildGlobalGlossaryAutocompleteSuggestions,

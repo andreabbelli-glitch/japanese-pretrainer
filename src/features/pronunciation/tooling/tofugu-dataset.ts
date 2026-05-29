@@ -9,8 +9,8 @@ import path from "node:path";
 import { promisify } from "node:util";
 
 import type { NormalizedMediaBundle } from "../../content/types.ts";
-import { buildEntryKey } from "../../../lib/entry-id.ts";
-import { stripInlineMarkdown } from "../../../lib/inline-markdown.ts";
+import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
+import { stripInlineMarkdown } from "../../study/model/inline-markdown.ts";
 import {
   loadValidatedManifest,
   mergePronunciationAudioManifestEntry,

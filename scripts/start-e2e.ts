@@ -21,7 +21,7 @@ import {
   createDatabaseClient,
   type DatabaseClient
 } from "../src/db/client.ts";
-import { seedDuelMastersReviewBaseline } from "../src/lib/e2e/review-baseline.ts";
+import { seedDuelMastersReviewBaseline } from "../src/features/review/testing/baseline.ts";
 import {
   buildStartE2ERuntimeEnv,
   resolveStartE2EDatabaseUrl

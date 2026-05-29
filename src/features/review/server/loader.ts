@@ -20,10 +20,10 @@ import {
   listMediaCached,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
-} from "@/lib/data-cache";
-import { pickBestBy } from "@/lib/collections";
-import { getLocalIsoDateKey, getLocalIsoTimeBucketKey } from "@/lib/local-date";
-import { stripInlineMarkdown } from "@/lib/render-furigana";
+} from "@/features/cache/server/data-cache";
+import { pickBestBy } from "@/features/shared/model/collections";
+import { getLocalIsoDateKey, getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
+import { stripInlineMarkdown } from "@/features/study/ui/furigana";
 import { getReviewDailyLimit, getStudySettings } from "@/features/settings/server";
 import { measureWith, type ReviewProfiler } from "@/features/review/server/profiler";
 import { resolveReviewSubjectGroups } from "@/features/review/server/subject-state-lookup";

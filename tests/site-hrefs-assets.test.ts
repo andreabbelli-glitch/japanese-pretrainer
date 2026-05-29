@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { mediaAssetHref } from "@/lib/site/hrefs";
+import { mediaAssetHref } from "@/features/navigation/hrefs";
 
 describe("media asset hrefs", () => {
   it("normalizes dot segments without escaping the media assets route", () => {

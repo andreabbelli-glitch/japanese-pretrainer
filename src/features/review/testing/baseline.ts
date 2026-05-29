@@ -4,13 +4,13 @@ import {
   closeDatabaseClient,
   createDatabaseClient,
   type DatabaseClient
-} from "../../db/index.ts";
+} from "../../../db/index.ts";
 import {
   card,
   lesson,
   lessonProgress,
   reviewSubjectState
-} from "../../db/schema/index.ts";
+} from "../../../db/schema/index.ts";
 
 const E2E_APP_BASE_URL = "http://127.0.0.1:3100";
 const E2E_DATABASE_URL = "E2E_DATABASE_URL";

@@ -11,7 +11,7 @@ import {
 } from "@/actions/pitch-accent";
 import type { PitchAccentPairOption } from "@/features/pitch-accent/model";
 import type { PitchAccentSessionPageData } from "@/features/pitch-accent/server/contracts";
-import { cx } from "@/lib/classnames";
+import { cx } from "@/features/shared/ui/classnames";
 
 import { PitchAccentNotation } from "../ui/pitch-accent-notation";
 import { SurfaceCard } from "../ui/surface-card";

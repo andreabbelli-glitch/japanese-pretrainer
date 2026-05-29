@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { cx } from "@/lib/classnames";
+import { cx } from "@/features/shared/ui/classnames";
 
 type SectionProps = {
   id?: string;

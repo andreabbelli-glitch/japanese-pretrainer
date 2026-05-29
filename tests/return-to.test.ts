@@ -1,7 +1,7 @@
 import type { Route } from "next";
 import { describe, expect, it } from "vitest";
 
-import { resolveGlossaryReviewReturnTo } from "@/lib/site";
+import { resolveGlossaryReviewReturnTo } from "@/features/navigation";
 
 describe("return-to helpers", () => {
   it("returns null instead of looping on self-referential glossary returnTo chains", () => {

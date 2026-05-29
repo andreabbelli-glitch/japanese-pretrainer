@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { GlossaryDetailPage } from "@/components/glossary/glossary-detail-page";
 import { getGlobalGrammarGlossaryDetailData } from "@/features/glossary/server";
-import { decodeRouteSegment, readInternalHref } from "@/lib/site";
+import { decodeRouteSegment, readInternalHref } from "@/features/navigation";
 
 type GlobalGlossaryGrammarRouteProps = {
   params: Promise<{

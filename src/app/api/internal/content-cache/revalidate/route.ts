@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/db";
 import { listMediaBySlugs } from "@/db/queries";
-import { invalidateImportedContentCaches } from "@/lib/cache-invalidation-policy";
-import { matchesSecret } from "@/lib/secret-compare";
+import { invalidateImportedContentCaches } from "@/features/cache/server/invalidation-policy";
+import { matchesSecret } from "@/features/security/server/secret-compare";
 
 type RevalidationRequest = {
   importId?: unknown;

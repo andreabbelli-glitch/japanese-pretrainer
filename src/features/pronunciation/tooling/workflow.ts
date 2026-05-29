@@ -3,7 +3,7 @@ import path from "node:path";
 
 import { loadPronunciationManifest } from "../../content/pronunciations-manifest.ts";
 import type { NormalizedMediaBundle } from "../../content/types.ts";
-import { buildEntryKey } from "../../../lib/entry-id.ts";
+import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
 import {
   collectPronunciationTargets,
   type PronunciationTargetEntry

@@ -37,7 +37,7 @@ import {
   loadReviewOverviewSnapshots
 } from "@/features/review/server";
 import { applyReviewGrade } from "@/features/review/server/service";
-import { buildCanonicalReviewSessionHref } from "@/lib/site";
+import { buildCanonicalReviewSessionHref } from "@/features/navigation";
 import * as settings from "@/features/settings/server";
 import { updateStudySettings } from "@/features/settings/server";
 import {

@@ -7,7 +7,7 @@ import {
   isWithinMediaAssetRoot,
   resolveMediaAssetAbsolutePath
 } from "../media/server/assets.ts";
-import { buildEntryKey } from "../../lib/entry-id.ts";
+import { buildEntryKey } from "../../features/study/model/entry-id.ts";
 import type {
   EntryAudioMetadata,
   NormalizedGrammarPattern,

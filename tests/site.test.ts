@@ -30,7 +30,7 @@ import {
   resolveReturnToContext,
   resolveReturnToLabel,
   type StudyAreaKey
-} from "@/lib/site";
+} from "@/features/navigation";
 
 let pathname = "/";
 let searchParams = new URLSearchParams();

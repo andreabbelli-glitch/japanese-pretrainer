@@ -43,10 +43,10 @@ vi.mock("next/cache", () => ({
   unstable_noStore: noStoreMock
 }));
 
-vi.mock("@/lib/data-cache", async () => {
+vi.mock("@/features/cache/server/data-cache", async () => {
   const actual =
-    await vi.importActual<typeof import("@/lib/data-cache")>(
-      "@/lib/data-cache"
+    await vi.importActual<typeof import("@/features/cache/server/data-cache")>(
+      "@/features/cache/server/data-cache"
     );
 
   return {
@@ -68,7 +68,7 @@ import {
   revalidateSettingsCache,
   SETTINGS_TAG,
   TEXTBOOK_LESSON_BODY_TAG
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 import {
   getTextbookIndexData,
   getTextbookLessonData,
@@ -150,7 +150,7 @@ describe("textbook index cache", () => {
   it("skips the media lookup entirely on a warm textbook index cache hit", async () => {
     await getTextbookIndexData(developmentFixture.mediaSlug, database);
 
-    const dataCacheModule = await import("@/lib/data-cache");
+    const dataCacheModule = await import("@/features/cache/server/data-cache");
     const resolvedMedia = await dataCacheModule.getMediaBySlugCached(
       database,
       developmentFixture.mediaSlug
@@ -190,7 +190,7 @@ describe("textbook index cache", () => {
       database
     );
 
-    const dataCacheModule = await import("@/lib/data-cache");
+    const dataCacheModule = await import("@/features/cache/server/data-cache");
     const resolvedMedia = await dataCacheModule.getMediaBySlugCached(
       database,
       developmentFixture.mediaSlug

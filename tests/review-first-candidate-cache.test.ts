@@ -44,10 +44,10 @@ vi.mock("next/cache", () => ({
   unstable_cache: unstableCacheMock
 }));
 
-vi.mock("@/lib/data-cache", async () => {
+vi.mock("@/features/cache/server/data-cache", async () => {
   const actual =
-    await vi.importActual<typeof import("@/lib/data-cache")>(
-      "@/lib/data-cache"
+    await vi.importActual<typeof import("@/features/cache/server/data-cache")>(
+      "@/features/cache/server/data-cache"
     );
 
   return {
@@ -91,13 +91,13 @@ import {
   revalidateReviewSummaryCache,
   revalidateSettingsCache,
   REVIEW_FIRST_CANDIDATE_TAG
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 import {
   getFsrsOptimizerCacheKeyPart,
   writeFsrsOptimizedParameters,
   writeFsrsOptimizerConfig
 } from "@/features/fsrs-optimizer/server";
-import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
+import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
 import { loadReviewPageDataSession } from "@/features/review/server/page-data";
 import {
   loadReviewLaunchCandidatesCached,

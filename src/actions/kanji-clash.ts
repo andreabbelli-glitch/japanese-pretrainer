@@ -1,7 +1,7 @@
 "use server";
 
 import { db, type DatabaseClient } from "@/db";
-import { invalidateKanjiClashManualContrastChanged } from "@/lib/cache-invalidation-policy";
+import { invalidateKanjiClashManualContrastChanged } from "@/features/cache/server/invalidation-policy";
 import { getKanjiClashCurrentRound } from "@/features/kanji-clash/model/queue";
 import {
   archiveKanjiClashManualContrast,

@@ -8,7 +8,7 @@ import {
   buildReviewSessionHref,
   mediaHref,
   mediaTextbookLessonHref
-} from "@/lib/site";
+} from "@/features/navigation";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";

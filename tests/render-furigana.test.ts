@@ -2,7 +2,7 @@ import { Fragment, createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
-import { renderFurigana } from "@/lib/render-furigana";
+import { renderFurigana } from "@/features/study/ui/furigana";
 
 describe("renderFurigana", () => {
   it("renders furigana in compact descriptions while flattening inline links", () => {

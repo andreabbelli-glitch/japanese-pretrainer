@@ -10,14 +10,14 @@ import {
   REVIEW_SUMMARY_TAG,
   runWithTaggedCache,
   SETTINGS_TAG
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 import {
   mediaGlossaryHref,
   mediaHref,
   reviewHref,
   mediaStudyHref,
   mediaTextbookLessonHref
-} from "@/lib/site";
+} from "@/features/navigation";
 import { getStudySettings } from "@/features/settings/server";
 import { calculatePercent } from "@/features/study/model/format";
 import {
@@ -31,7 +31,7 @@ import {
   loadReviewOverviewBundle
 } from "@/features/review/server";
 import type { ReviewOverviewSnapshot } from "@/features/review/types";
-import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
+import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
 
 type ProgressReviewSnapshots = {
   byMedia: Map<string, ReviewOverviewSnapshot>;

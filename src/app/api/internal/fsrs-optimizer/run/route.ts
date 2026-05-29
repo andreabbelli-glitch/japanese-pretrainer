@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/db";
 import { runFsrsOptimizer } from "@/features/fsrs-optimizer/tooling/trainer";
-import { matchesSecret } from "@/lib/secret-compare";
+import { matchesSecret } from "@/features/security/server/secret-compare";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;

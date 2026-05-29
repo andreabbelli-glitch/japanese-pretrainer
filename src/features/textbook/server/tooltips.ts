@@ -7,13 +7,13 @@ import {
   type TermGlossaryEntry
 } from "@/db/queries";
 import type { DatabaseClient } from "@/db";
-import { mediaGlossaryEntryHref } from "@/lib/site";
+import { mediaGlossaryEntryHref } from "@/features/navigation";
 import { buildPronunciationData } from "@/features/pronunciation/model/data";
-import { buildEntryKey } from "@/lib/entry-id";
+import { buildEntryKey } from "@/features/study/model/entry-id";
 import {
   deriveInlineReading,
   stripInlineMarkdown
-} from "@/lib/inline-markdown";
+} from "@/features/study/model/inline-markdown";
 import { deriveEntryStudyState } from "@/features/study/model/entry";
 import type {
   TextbookEntryTooltip,

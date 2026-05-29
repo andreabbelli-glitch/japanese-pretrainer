@@ -4,17 +4,17 @@ import {
   listMediaCached,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 import { getStudySettings } from "@/features/settings/server";
 import {
   mediaGlossaryHref,
   mediaHref,
   mediaReviewCardHref,
   mediaStudyHref
-} from "@/lib/site";
+} from "@/features/navigation";
 import type { ReviewCardSource } from "@/features/review/model/card-contract";
 import { capitalizeToken, formatReviewStateLabel } from "@/features/study/model/format";
-import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
+import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
 import { measureWith, type ReviewProfiler } from "@/features/review/server/profiler";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "@/features/review/model/grade-previews";
 import {
@@ -68,7 +68,7 @@ import type {
   ReviewQueueSnapshot,
   ReviewScope
 } from "@/features/review/types";
-import { stripInlineMarkdown } from "@/lib/render-furigana";
+import { stripInlineMarkdown } from "@/features/study/ui/furigana";
 
 type ReviewPageWorkspace = ReviewPageData["media"];
 const REVIEW_ADVANCE_WINDOW_SIZE = 3;

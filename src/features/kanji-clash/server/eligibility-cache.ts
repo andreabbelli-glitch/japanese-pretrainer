@@ -5,7 +5,7 @@ import {
   buildReviewSummaryTags,
   canUseDataCache,
   runWithTaggedCache
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 
 export async function listEligibleKanjiClashSubjectsCached(
   database: DatabaseClient,

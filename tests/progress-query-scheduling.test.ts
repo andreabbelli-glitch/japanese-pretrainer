@@ -7,12 +7,12 @@ describe("progress query scheduling", () => {
     vi.resetModules();
     vi.clearAllMocks();
     vi.doUnmock("@/db");
-    vi.doUnmock("@/lib/data-cache");
-    vi.doUnmock("@/lib/local-date");
+    vi.doUnmock("@/features/cache/server/data-cache");
+    vi.doUnmock("@/features/shared/model/local-date");
     vi.doUnmock("@/features/media/server");
     vi.doUnmock("@/features/review/server");
     vi.doUnmock("@/features/settings/server");
-    vi.doUnmock("@/lib/site");
+    vi.doUnmock("@/features/navigation");
     vi.doUnmock("@/features/study/model/format");
   });
 
@@ -39,7 +39,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/db", () => ({
       db: {}
     }));
-    vi.doMock("@/lib/data-cache", () => ({
+    vi.doMock("@/features/cache/server/data-cache", () => ({
       GLOSSARY_SUMMARY_TAG: "glossary-summary",
       MEDIA_LIST_TAG: "media-list",
       REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
@@ -52,7 +52,7 @@ describe("progress query scheduling", () => {
       listMediaCached: vi.fn(),
       runWithTaggedCache: vi.fn(async ({ loader }) => loader())
     }));
-    vi.doMock("@/lib/local-date", () => ({
+    vi.doMock("@/features/shared/model/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
     }));
     vi.doMock("@/features/review/server", () => ({
@@ -91,7 +91,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/db", () => ({
       db: {}
     }));
-    vi.doMock("@/lib/data-cache", () => ({
+    vi.doMock("@/features/cache/server/data-cache", () => ({
       GLOSSARY_SUMMARY_TAG: "glossary-summary",
       MEDIA_LIST_TAG: "media-list",
       REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
@@ -104,7 +104,7 @@ describe("progress query scheduling", () => {
       listMediaCached: vi.fn(),
       runWithTaggedCache: vi.fn(async ({ loader }) => loader())
     }));
-    vi.doMock("@/lib/local-date", () => ({
+    vi.doMock("@/features/shared/model/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
     }));
     vi.doMock("@/features/review/server", () => ({
@@ -156,7 +156,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/db", () => ({
       db: {}
     }));
-    vi.doMock("@/lib/data-cache", () => ({
+    vi.doMock("@/features/cache/server/data-cache", () => ({
       GLOSSARY_SUMMARY_TAG: "glossary-summary",
       MEDIA_LIST_TAG: "media-list",
       REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
@@ -169,7 +169,7 @@ describe("progress query scheduling", () => {
       listMediaCached: vi.fn(),
       runWithTaggedCache: vi.fn(async ({ loader }) => loader())
     }));
-    vi.doMock("@/lib/local-date", () => ({
+    vi.doMock("@/features/shared/model/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
     }));
     vi.doMock("@/features/media/server", () => ({
@@ -272,7 +272,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/db", () => ({
       db: {}
     }));
-    vi.doMock("@/lib/data-cache", () => ({
+    vi.doMock("@/features/cache/server/data-cache", () => ({
       GLOSSARY_SUMMARY_TAG: "glossary-summary",
       MEDIA_LIST_TAG: "media-list",
       REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
@@ -291,7 +291,7 @@ describe("progress query scheduling", () => {
       ]),
       runWithTaggedCache: vi.fn(async ({ loader }) => loader())
     }));
-    vi.doMock("@/lib/local-date", () => ({
+    vi.doMock("@/features/shared/model/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
     }));
     vi.doMock("@/features/media/server", () => ({
@@ -304,7 +304,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/features/settings/server", () => ({
       getStudySettings: vi.fn(settingsGate.loader())
     }));
-    vi.doMock("@/lib/site", () => ({
+    vi.doMock("@/features/navigation", () => ({
       mediaGlossaryHref: (slug: string) => `/media/${slug}/glossary`,
       mediaHref: (slug: string) => `/media/${slug}`,
       mediaStudyHref: (slug: string, area: string) => `/media/${slug}/${area}`,

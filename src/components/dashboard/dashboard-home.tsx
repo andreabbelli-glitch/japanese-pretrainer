@@ -1,14 +1,14 @@
 import Link from "next/link";
 
 import type { DashboardData } from "@/features/dashboard/server";
-import { renderFurigana } from "@/lib/render-furigana";
+import { renderFurigana } from "@/features/study/ui/furigana";
 import {
   mediaGlossaryHref,
   mediaHref,
   reviewHref,
   mediaStudyHref,
   mediaTextbookLessonHref
-} from "@/lib/site";
+} from "@/features/navigation";
 
 import { EmptyState } from "../ui/empty-state";
 import { Section } from "../ui/section";

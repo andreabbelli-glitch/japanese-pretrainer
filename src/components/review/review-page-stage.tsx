@@ -5,11 +5,11 @@ import type { RefObject } from "react";
 import { GlossaryAutocompleteDropdown } from "@/components/glossary/glossary-autocomplete-dropdown";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 import type { ReviewQueueCard } from "@/features/review/client";
-import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
+import { renderFurigana, stripInlineMarkdown } from "@/features/study/ui/furigana";
 import {
   appendReturnToParam,
   buildCanonicalReviewSessionHrefForBase
-} from "@/lib/site";
+} from "@/features/navigation";
 
 import { EmptyState } from "../ui/empty-state";
 import { PronunciationAudio } from "../ui/pronunciation-audio";

@@ -22,8 +22,8 @@ vi.mock("@/db/queries", () => ({
   listMediaBySlugs: listMediaBySlugsMock
 }));
 
-vi.mock("@/lib/data-cache", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@/lib/data-cache")>();
+vi.mock("@/features/cache/server/data-cache", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/features/cache/server/data-cache")>();
 
   return {
     ...actual,

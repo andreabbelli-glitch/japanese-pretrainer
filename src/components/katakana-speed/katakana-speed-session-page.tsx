@@ -14,7 +14,7 @@ import { getKatakanaSpeedItemById } from "@/features/katakana-speed/model/catalo
 import { formatKatakanaSpeedReading } from "@/features/katakana-speed/model/readings";
 import type { KatakanaSpeedSessionPageData } from "@/features/katakana-speed/server";
 import type { KatakanaSpeedTrialPlan } from "@/features/katakana-speed/types";
-import { cx } from "@/lib/classnames";
+import { cx } from "@/features/shared/ui/classnames";
 
 import { SurfaceCard } from "../ui/surface-card";
 import {

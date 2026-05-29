@@ -7,7 +7,7 @@ import {
   type PronunciationManifestEntry
 } from "../../content/pronunciations-manifest.ts";
 import type { NormalizedMediaBundle } from "../../content/types.ts";
-import { buildEntryKey } from "../../../lib/entry-id.ts";
+import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
 import { mergePronunciationAudioManifestEntry } from "./manifest-helpers.ts";
 import { resolveMediaAssetAbsolutePath } from "../../media/server/assets.ts";
 import {

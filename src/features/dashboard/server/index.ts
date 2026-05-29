@@ -10,8 +10,8 @@ import {
   REVIEW_SUMMARY_TAG,
   runWithTaggedCache,
   SETTINGS_TAG
-} from "@/lib/data-cache";
-import { pickBestBy } from "@/lib/collections";
+} from "@/features/cache/server/data-cache";
+import { pickBestBy } from "@/features/shared/model/collections";
 import {
   loadMediaShellSnapshots,
   pickFocusMedia,
@@ -21,9 +21,9 @@ import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewBundle
 } from "@/features/review/server";
-import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
+import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
 import { getReviewDailyLimit } from "@/features/settings/server";
-import { mediaTextbookLessonHref } from "@/lib/site";
+import { mediaTextbookLessonHref } from "@/features/navigation";
 
 const DASHBOARD_RECENT_LESSON_LIMIT = 3;
 

@@ -2,7 +2,7 @@ import type { Route } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { cx } from "@/lib/classnames";
+import { cx } from "@/features/shared/ui/classnames";
 
 type StickyPageHeaderProps = {
   eyebrow?: string;

@@ -2,7 +2,7 @@ import { db } from "@/db";
 import {
   getMediaBySlugCached,
   listMediaCached
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 import {
   getGlobalReviewPageData,
   getReviewPageData
@@ -15,7 +15,7 @@ import type {
 } from "@/features/review/types";
 import type { ReviewSessionInput } from "@/features/review/types";
 
-import { buildReviewSearchParams } from "@/lib/site/review-session.ts";
+import { buildReviewSearchParams } from "@/features/navigation/review-session.ts";
 
 export type { ReviewSessionInput } from "@/features/review/types";
 

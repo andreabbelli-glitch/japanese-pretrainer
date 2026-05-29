@@ -1,4 +1,4 @@
-import { readInternalHref } from "@/lib/site";
+import { readInternalHref } from "@/features/navigation";
 
 export function readRequiredString(formData: FormData, key: string) {
   const value = formData.get(key);

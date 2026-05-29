@@ -34,7 +34,7 @@ function mockGlossaryDb(overrides: Record<string, unknown>) {
 }
 
 function mockGlossaryDataCache(overrides: Record<string, unknown>) {
-  vi.doMock("@/lib/data-cache", () => ({
+  vi.doMock("@/features/cache/server/data-cache", () => ({
     GLOSSARY_SUMMARY_TAG: "glossary-summary",
     MEDIA_LIST_TAG: "media-list",
     REVIEW_SUMMARY_TAG: "review-summary",
@@ -71,7 +71,7 @@ describe("glossary query scheduling", () => {
     vi.clearAllMocks();
     vi.doUnmock("@/db");
     vi.doUnmock("@/db/queries");
-    vi.doUnmock("@/lib/data-cache");
+    vi.doUnmock("@/features/cache/server/data-cache");
     vi.doUnmock("@/features/settings/server");
   });
 

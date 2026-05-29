@@ -11,8 +11,8 @@ import {
   getAuthConfig,
   getSessionCookieOptions,
   verifyLoginCredentials
-} from "@/lib/auth";
-import { buildHrefWithSearch } from "@/lib/site";
+} from "@/features/auth/server";
+import { buildHrefWithSearch } from "@/features/navigation";
 
 export async function loginAction(formData: FormData) {
   const config = getAuthConfig();

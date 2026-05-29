@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { DatabaseClient } from "@/db";
 import { developmentFixture } from "@/db/seed";
-import { getMediaBySlugCached } from "@/lib/data-cache";
+import { getMediaBySlugCached } from "@/features/cache/server/data-cache";
 import {
   cleanupTestDatabase,
   setupTestDatabase,

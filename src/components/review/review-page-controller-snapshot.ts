@@ -4,7 +4,7 @@ import type { ReviewPageData, ReviewQueueCard } from "@/features/review/client";
 import {
   appendReturnToParam,
   buildCanonicalReviewSessionHrefForBase
-} from "@/lib/site";
+} from "@/features/navigation";
 
 import {
   buildReviewGradePreviewLookup,

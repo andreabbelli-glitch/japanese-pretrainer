@@ -8,12 +8,12 @@ describe("media library query scheduling", () => {
     vi.clearAllMocks();
     vi.doUnmock("@/db");
     vi.doUnmock("@/db/queries");
-    vi.doUnmock("@/lib/data-cache");
-    vi.doUnmock("@/lib/local-date");
+    vi.doUnmock("@/features/cache/server/data-cache");
+    vi.doUnmock("@/features/shared/model/local-date");
     vi.doUnmock("@/features/media/model/shell-snapshot");
     vi.doUnmock("@/features/review/server/loader");
     vi.doUnmock("@/features/settings/server");
-    vi.doUnmock("@/lib/site");
+    vi.doUnmock("@/features/navigation");
     vi.doUnmock("@/features/study/model/format");
     vi.doUnmock("@/features/study/model/metrics");
   });
@@ -66,7 +66,7 @@ describe("media library query scheduling", () => {
       listLessonsByMediaId: vi.fn(() => Promise.resolve([])),
       listLessonsByMediaIdsForShell: vi.fn(() => Promise.resolve([]))
     }));
-    vi.doMock("@/lib/data-cache", () => ({
+    vi.doMock("@/features/cache/server/data-cache", () => ({
       GLOSSARY_SUMMARY_TAG: "glossary-summary",
       MEDIA_LIST_TAG: "media-list",
       REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
@@ -79,7 +79,7 @@ describe("media library query scheduling", () => {
       listMediaCached: vi.fn(mediaRowsGate.loader()),
       runWithTaggedCache: vi.fn(async ({ loader }) => loader())
     }));
-    vi.doMock("@/lib/local-date", () => ({
+    vi.doMock("@/features/shared/model/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
     }));
     vi.doMock("@/features/media/model/shell-snapshot", () => ({
@@ -139,7 +139,7 @@ describe("media library query scheduling", () => {
     vi.doMock("@/features/settings/server", () => ({
       getReviewDailyLimit: vi.fn(dailyLimitGate.loader())
     }));
-    vi.doMock("@/lib/site", () => ({
+    vi.doMock("@/features/navigation", () => ({
       mediaGlossaryEntryHref: vi.fn(() => "/glossary/entry")
     }));
     vi.doMock("@/features/study/model/format", () => ({

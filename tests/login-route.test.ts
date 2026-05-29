@@ -8,7 +8,7 @@ vi.mock("@/components/auth/login-page-content", () => ({
   LoginPageContent: (props: unknown) => ({ props, type: "mock-login-page" })
 }));
 
-vi.mock("@/lib/auth", () => ({
+vi.mock("@/features/auth/server", () => ({
   getAuthConfig: getAuthConfigMock
 }));
 

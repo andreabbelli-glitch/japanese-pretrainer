@@ -6,7 +6,7 @@ import {
   createSignedPayloadToken,
   timingSafeStringEqual,
   verifySignedPayloadToken
-} from "@/lib/signed-token";
+} from "@/features/security/server/signed-token";
 
 describe("signed token helpers", () => {
   it("round-trips a Japanese UTF-8 payload through the signed token envelope", () => {

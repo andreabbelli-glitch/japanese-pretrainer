@@ -69,9 +69,9 @@ const workflowPronunciationImportPattern =
 
 describe("pronunciation runtime boundary", () => {
   it("has no legacy textbook modules under src/lib", async () => {
-    const libEntries = await readdir(path.join(PROJECT_ROOT, "src", "lib"), {
-      withFileTypes: true
-    });
+    const libEntries = await listDirectoryEntries(
+      path.join(PROJECT_ROOT, "src", "lib")
+    );
     const legacyTextbookFiles = libEntries
       .filter(
         (entry) =>
@@ -145,9 +145,9 @@ describe("pronunciation runtime boundary", () => {
   );
 
   it("has no pronunciation workflow or tooling modules under src/lib", async () => {
-    const libEntries = await readdir(path.join(PROJECT_ROOT, "src", "lib"), {
-      withFileTypes: true
-    });
+    const libEntries = await listDirectoryEntries(
+      path.join(PROJECT_ROOT, "src", "lib")
+    );
     const legacyFiles = new Set<string>(legacyPronunciationLibFiles);
     const found = libEntries
       .filter((entry) => entry.isFile() && legacyFiles.has(entry.name))
@@ -243,4 +243,16 @@ async function findImportViolations(files: readonly string[], pattern: RegExp) {
   }
 
   return violations;
+}
+
+async function listDirectoryEntries(directory: string) {
+  try {
+    return await readdir(directory, { withFileTypes: true });
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException)?.code === "ENOENT") {
+      return [];
+    }
+
+    throw error;
+  }
 }

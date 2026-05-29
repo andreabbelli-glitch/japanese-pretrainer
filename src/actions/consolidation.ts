@@ -1,6 +1,6 @@
 "use server";
 
-import { invalidateConsolidationMutationCaches } from "@/lib/cache-invalidation-policy";
+import { invalidateConsolidationMutationCaches } from "@/features/cache/server/invalidation-policy";
 import {
   markConsolidationKnown,
   submitConsolidationAnswer,

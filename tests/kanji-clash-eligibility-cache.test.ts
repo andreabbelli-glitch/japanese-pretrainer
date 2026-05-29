@@ -14,7 +14,7 @@ describe("kanji clash eligibility cache", () => {
     vi.doMock("@/db/queries", () => ({
       listEligibleKanjiClashSubjects
     }));
-    vi.doMock("@/lib/data-cache", () => ({
+    vi.doMock("@/features/cache/server/data-cache", () => ({
       buildReviewSummaryTags: (mediaIds: string[] = []) => [
         "review-summary",
         ...mediaIds.map((mediaId) => `review-summary:${mediaId}`)
@@ -65,7 +65,7 @@ describe("kanji clash eligibility cache", () => {
     vi.doMock("@/db/queries", () => ({
       listEligibleKanjiClashSubjects
     }));
-    vi.doMock("@/lib/data-cache", () => ({
+    vi.doMock("@/features/cache/server/data-cache", () => ({
       buildReviewSummaryTags: () => ["review-summary"],
       canUseDataCache: vi.fn(() => true),
       MEDIA_LIST_TAG: "media-list",
@@ -100,7 +100,7 @@ describe("kanji clash eligibility cache", () => {
     vi.doMock("@/db/queries", () => ({
       listEligibleKanjiClashSubjects
     }));
-    vi.doMock("@/lib/data-cache", () => ({
+    vi.doMock("@/features/cache/server/data-cache", () => ({
       buildReviewSummaryTags: () => ["review-summary"],
       canUseDataCache: vi.fn(() => false),
       MEDIA_LIST_TAG: "media-list",

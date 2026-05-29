@@ -8,7 +8,7 @@ import {
   primaryNav,
   resolveReturnToContext,
   resolveActivePrimaryNavHref
-} from "@/lib/site";
+} from "@/features/navigation";
 
 export function SiteShellPrimaryNav() {
   const pathname = usePathname();

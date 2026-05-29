@@ -1,13 +1,13 @@
 import Link from "next/link";
 import type { Route } from "next";
 
-import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
+import { renderFurigana, stripInlineMarkdown } from "@/features/study/ui/furigana";
 import {
   appendReturnToParam,
   buildReviewSessionHref,
   replaceReviewCardInHref,
   resolveReturnToContext
-} from "@/lib/site";
+} from "@/features/navigation";
 import {
   markLinkedEntryKnownAction,
   resetReviewCardAction,

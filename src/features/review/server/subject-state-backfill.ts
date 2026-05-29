@@ -9,7 +9,7 @@ import {
 } from "../../../db/schema/review.ts";
 
 import type { ReviewSubjectStateSnapshot } from "../model/subject.ts";
-import { pickBestBy } from "../../../lib/collections.ts";
+import { pickBestBy } from "../../shared/model/collections.ts";
 import {
   resolveReviewSubjectGroups,
   type ResolveReviewSubjectGroupsResult

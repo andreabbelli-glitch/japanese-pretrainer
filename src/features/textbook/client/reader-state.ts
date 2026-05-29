@@ -1,4 +1,4 @@
-import { pickBestBy } from "@/lib/collections";
+import { pickBestBy } from "@/features/shared/model/collections";
 import {
   calculatePercent,
   compareIsoDates,

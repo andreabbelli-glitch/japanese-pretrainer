@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { spawn } from "node:child_process";
 
-import { buildEntryKey } from "../src/lib/entry-id.ts";
+import { buildEntryKey } from "../src/features/study/model/entry-id.ts";
 import { parseContentRoot } from "../src/features/content/validator.ts";
 import {
   loadValidatedManifest,

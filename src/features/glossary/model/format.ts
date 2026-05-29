@@ -22,7 +22,7 @@ import {
   mediaReviewCardHref,
   mediaStudyHref,
   mediaTextbookLessonHref
-} from "@/lib/site";
+} from "@/features/navigation";
 import {
   capitalizeToken,
   formatCardRelationshipLabel,
@@ -38,7 +38,7 @@ import {
   romanizeKanaForSearch
 } from "@/features/study/model/search";
 import { buildPronunciationData } from "@/features/pronunciation/model/data";
-import { stripInlineMarkdown } from "@/lib/render-furigana";
+import { stripInlineMarkdown } from "@/features/study/ui/furigana";
 import { deriveEntryStudyState } from "@/features/study/model/entry";
 import type {
   GlossaryBaseEntry,

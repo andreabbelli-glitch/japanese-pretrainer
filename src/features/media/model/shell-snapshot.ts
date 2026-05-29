@@ -13,7 +13,7 @@ import {
   type SegmentStudyPreview,
   type StudyEntryPreview
 } from "@/features/study/model/metrics";
-import { pickBestBy } from "@/lib/collections";
+import { pickBestBy } from "@/features/shared/model/collections";
 
 type MediaShellMedia = Pick<
   MediaListItem,

@@ -39,10 +39,10 @@ vi.mock("next/cache", () => ({
   unstable_cache: unstableCacheMock
 }));
 
-vi.mock("@/lib/data-cache", async () => {
+vi.mock("@/features/cache/server/data-cache", async () => {
   const actual =
-    await vi.importActual<typeof import("@/lib/data-cache")>(
-      "@/lib/data-cache"
+    await vi.importActual<typeof import("@/features/cache/server/data-cache")>(
+      "@/features/cache/server/data-cache"
     );
 
   return {
@@ -59,13 +59,13 @@ import {
 import { runMigrations } from "@/db/migrate";
 import * as dbQueriesModule from "@/db/queries";
 import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
-import * as dataCacheModule from "@/lib/data-cache";
+import * as dataCacheModule from "@/features/cache/server/data-cache";
 import {
   MEDIA_LIST_TAG,
   GLOSSARY_SUMMARY_TAG,
   REVIEW_SUMMARY_TAG,
   revalidateGlossarySummaryCache
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 import {
   getGlobalGlossaryAutocompleteData,
   getGlobalGlossaryPageData,

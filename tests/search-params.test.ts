@@ -4,7 +4,7 @@ import {
   readFirstNonEmptySearchParam,
   readMatchingSearchParam,
   readPositiveIntegerSearchParam
-} from "@/lib/search-params";
+} from "@/features/shared/model/search-params";
 
 describe("search param helpers", () => {
   it("keeps the first non-empty duplicated value", () => {

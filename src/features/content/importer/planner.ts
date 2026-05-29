@@ -1,5 +1,5 @@
 import type { EntryType } from "../../../domain/content.ts";
-import { buildEntryKey, buildScopedEntryId } from "../../../lib/entry-id.ts";
+import { buildEntryKey, buildScopedEntryId } from "../../../features/study/model/entry-id.ts";
 import { normalizeReviewSubjectSurface } from "../../review/model/subject.ts";
 import { romanizeKanaForSearch } from "../../study/model/search.ts";
 

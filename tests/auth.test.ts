@@ -18,7 +18,7 @@ import {
   readRequestSearch,
   verifyLoginCredentials,
   verifySessionToken
-} from "@/lib/auth";
+} from "@/features/auth/server";
 
 const AUTH_ENV_KEYS = [
   "AUTH_PASSWORD",

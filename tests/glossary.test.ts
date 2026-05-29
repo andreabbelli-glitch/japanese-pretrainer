@@ -32,7 +32,7 @@ import * as dbQueriesModule from "@/db/queries";
 import { runMigrations } from "@/db/migrate";
 import { lessonProgress } from "@/db/schema";
 import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
-import { buildScopedEntryId } from "@/lib/entry-id";
+import { buildScopedEntryId } from "@/features/study/model/entry-id";
 import {
   card,
   cardEntryLink,
@@ -54,7 +54,7 @@ import { buildPitchAccentData } from "@/features/pitch-accent/model";
 import { getReviewCardDetailData } from "@/features/review/server";
 import { setReviewCardSuspended } from "@/features/review/server/service";
 import * as settings from "@/features/settings/server";
-import { buildReviewSessionHref, mediaGlossaryEntryHref } from "@/lib/site";
+import { buildReviewSessionHref, mediaGlossaryEntryHref } from "@/features/navigation";
 import {
   crossMediaOverflowFixture,
   crossMediaFixture,

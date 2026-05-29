@@ -2,7 +2,7 @@ import {
   invalidateConsolidationMutationCaches,
   invalidateReviewMutationCaches,
   type ReviewMutationCachePolicy
-} from "@/lib/cache-invalidation-policy";
+} from "@/features/cache/server/invalidation-policy";
 
 export type ReviewActionCachePolicy = ReviewMutationCachePolicy;
 

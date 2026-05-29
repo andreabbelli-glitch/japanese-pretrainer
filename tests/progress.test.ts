@@ -26,12 +26,12 @@ import {
   term
 } from "@/db/schema";
 import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
-import { buildScopedEntryId } from "@/lib/entry-id";
+import { buildScopedEntryId } from "@/features/study/model/entry-id";
 import { getGlossaryPageData } from "@/features/glossary/server";
 import { importContentWorkspace } from "@/features/content/importer";
 import { getMediaProgressPageData } from "@/features/progress/server";
 import { getReviewPageData } from "@/features/review/server";
-import { mediaKanjiClashHref } from "@/lib/site";
+import { mediaKanjiClashHref } from "@/features/navigation";
 import { getStudySettings, updateStudySettings } from "@/features/settings/server";
 import {
   crossMediaFixture,

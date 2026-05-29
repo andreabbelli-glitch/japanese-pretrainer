@@ -2,10 +2,10 @@ import { logoutAction } from "@/actions/auth";
 import { saveStudySettingsAction } from "@/actions/settings";
 import type { Route } from "next";
 import Link from "next/link";
-import { isAuthEnabled } from "@/lib/auth";
+import { isAuthEnabled } from "@/features/auth/server";
 import type { FsrsOptimizerStatus } from "@/features/fsrs-optimizer/server";
 import type { StudySettings } from "@/features/settings/server";
-import { resolveReturnToContext, resolveReturnToLabel } from "@/lib/site";
+import { resolveReturnToContext, resolveReturnToLabel } from "@/features/navigation";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { Section } from "../ui/section";

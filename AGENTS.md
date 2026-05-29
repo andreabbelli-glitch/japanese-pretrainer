@@ -112,7 +112,6 @@ src/
   db/           Client, config, schema, query, seed e migrazioni runtime
   domain/       Logica di dominio pura, senza dipendenze framework
   features/     Moduli feature-oriented condivisi tra route, componenti e test
-  lib/          Utility condivise, routing UI, E2E
   styles/       CSS globale e variabili
   types/        Tipi TypeScript globali
 
@@ -139,8 +138,13 @@ prompts/        Prompt locali ignorati da git
 
 ### Feature principali
 
+- `src/features/auth/`: configurazione auth locale, sessione e login.
+- `src/features/cache/`: data cache server-side e policy di invalidazione.
 - `src/features/glossary/`: modello, ricerca, formattazione, detail helper e
   loader server.
+- `src/features/image-workflow/`: workflow operativi per richieste e applicazione
+  immagini nei bundle media.
+- `src/features/navigation/`: helper route, href, return-to e navigazione shell.
 - `src/features/textbook/`: contratti reader, stato client e loader/API server.
 - `src/features/kanji-clash/`: pairing, queue, scheduler, session loader e
   tooling dataset.
@@ -148,6 +152,9 @@ prompts/        Prompt locali ignorati da git
   persistenza sessione.
 - `src/features/content/`: parser Markdown/frontmatter, validazione, import e sync
   dei bundle.
+- `src/features/pronunciation/`: dati runtime pronunce e tooling Forvo/Tofugu.
+- `src/features/security/`: primitive server-side per secret e token firmati.
+- `src/features/shared/`: primitive condivise minime non legate a un dominio.
 
 ---
 

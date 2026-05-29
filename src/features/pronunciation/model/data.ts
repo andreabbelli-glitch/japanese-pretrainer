@@ -2,7 +2,7 @@ import {
   buildPitchAccentData,
   type PitchAccentData
 } from "../../pitch-accent/model/notation.ts";
-import { mediaAssetHref } from "../../../lib/site.ts";
+import { mediaAssetHref } from "../../navigation/index.ts";
 
 export type PronunciationData = {
   attribution?: string;

@@ -39,9 +39,9 @@ describe("glossary feature boundary", () => {
   });
 
   it("has no legacy glossary compatibility modules under src/lib", async () => {
-    const libEntries = await readdir(path.join(PROJECT_ROOT, "src", "lib"), {
-      withFileTypes: true
-    });
+    const libEntries = await listDirectoryEntries(
+      path.join(PROJECT_ROOT, "src", "lib")
+    );
     const legacyGlossaryFiles = libEntries
       .filter(
         (entry) =>
@@ -120,4 +120,16 @@ async function findImportViolations(files: readonly string[], pattern: RegExp) {
   }
 
   return violations;
+}
+
+async function listDirectoryEntries(directory: string) {
+  try {
+    return await readdir(directory, { withFileTypes: true });
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException)?.code === "ENOENT") {
+      return [];
+    }
+
+    throw error;
+  }
 }

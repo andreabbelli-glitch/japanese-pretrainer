@@ -1,6 +1,6 @@
 import type { Route } from "next";
 
-import { kanjiClashHref } from "@/lib/site";
+import { kanjiClashHref } from "@/features/navigation";
 import type {
   KanjiClashEligibleSubject,
   KanjiClashPageData,

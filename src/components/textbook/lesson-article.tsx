@@ -4,14 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment, type ReactNode, useRef, useState } from "react";
 
-import { cx } from "@/lib/classnames";
+import { cx } from "@/features/shared/ui/classnames";
 import type {
   ContentBlock,
   InlineNode,
   MarkdownDocument
 } from "@/features/content/types";
-import { renderFurigana, splitMonoRuby } from "@/lib/render-furigana";
-import { mediaAssetHref } from "@/lib/site";
+import { renderFurigana, splitMonoRuby } from "@/features/study/ui/furigana";
+import { mediaAssetHref } from "@/features/navigation";
 import type {
   FuriganaMode,
   TextbookEntryTooltip

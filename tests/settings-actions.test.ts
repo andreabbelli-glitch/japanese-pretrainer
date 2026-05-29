@@ -13,7 +13,7 @@ vi.mock("next/navigation", () => ({
   redirect: redirectMock
 }));
 
-vi.mock("@/lib/data-cache", () => ({
+vi.mock("@/features/cache/server/data-cache", () => ({
   updateSettingsCache: updateSettingsCacheMock
 }));
 

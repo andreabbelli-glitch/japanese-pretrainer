@@ -16,7 +16,7 @@ import {
   updateMediaListCache,
   updateReviewSummaryCache,
   updateSettingsCache
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 import {
   consolidationHref,
   consolidationRetrainingHref,
@@ -25,7 +25,7 @@ import {
   mediaTextbookLessonHref,
   mediaTextbookLessonTooltipsHref,
   reviewHref
-} from "@/lib/site";
+} from "@/features/navigation";
 
 export type ReviewMutationCachePolicy = "review" | "entry-status";
 

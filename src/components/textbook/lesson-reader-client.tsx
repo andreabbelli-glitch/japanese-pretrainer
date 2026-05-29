@@ -20,11 +20,11 @@ import type {
   TextbookLessonData,
   TextbookTooltipEntry
 } from "@/features/textbook/types";
-import { cx } from "@/lib/classnames";
+import { cx } from "@/features/shared/ui/classnames";
 import {
   buildReviewSessionHref,
   mediaTextbookLessonTooltipsHref
-} from "@/lib/site";
+} from "@/features/navigation";
 
 import {
   EntryTooltipCard,

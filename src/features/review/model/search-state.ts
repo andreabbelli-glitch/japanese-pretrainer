@@ -2,7 +2,7 @@ import {
   readFirstNonEmptySearchParam,
   readMatchingSearchParam,
   readPositiveIntegerSearchParam
-} from "@/lib/search-params";
+} from "@/features/shared/model/search-params";
 
 type ReviewSearchState = {
   answeredCount: number;

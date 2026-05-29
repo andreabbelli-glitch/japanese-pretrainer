@@ -27,7 +27,7 @@ import {
   term
 } from "@/db/schema/index.ts";
 import { importContentWorkspace } from "@/features/content/importer.ts";
-import { buildScopedEntryId } from "@/lib/entry-id";
+import { buildScopedEntryId } from "@/features/study/model/entry-id";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture

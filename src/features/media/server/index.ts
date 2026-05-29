@@ -19,9 +19,9 @@ import {
   REVIEW_SUMMARY_TAG,
   runWithTaggedCache,
   SETTINGS_TAG
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 import { calculatePercent } from "@/features/study/model/format";
-import { mediaGlossaryEntryHref } from "@/lib/site";
+import { mediaGlossaryEntryHref } from "@/features/navigation";
 import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewSnapshots
@@ -38,7 +38,7 @@ import {
   pickFocusMedia,
   type MediaShellSnapshot
 } from "@/features/media/model/shell-snapshot";
-import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
+import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
 import type { ReviewOverviewSnapshot } from "@/features/review/types";
 
 function buildGlossaryReviewTags(mediaIds: string[] = []) {

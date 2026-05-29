@@ -3,12 +3,12 @@
 import {
   invalidateFuriganaModeChanged,
   invalidateLessonCompletionChanged
-} from "@/lib/cache-invalidation-policy";
+} from "@/features/cache/server/invalidation-policy";
 import { db } from "@/db";
 import { getMediaBySlug } from "@/db/queries";
 import { setFuriganaMode } from "@/features/textbook/server";
 import { setLessonCompletionWithConsolidation } from "@/features/consolidation/server";
-import { consolidationLessonHref } from "@/lib/site";
+import { consolidationLessonHref } from "@/features/navigation";
 import type { FuriganaMode } from "@/features/textbook/types";
 
 export async function setFuriganaModeAction(input: {

@@ -1,7 +1,7 @@
 import { memo } from "react";
 import Link from "next/link";
 
-import { kanjiClashHref } from "@/lib/site";
+import { kanjiClashHref } from "@/features/navigation";
 
 import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";

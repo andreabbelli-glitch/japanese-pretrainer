@@ -1,7 +1,7 @@
 import {
   createSignedPayloadToken,
   verifySignedPayloadToken
-} from "@/lib/signed-token";
+} from "@/features/security/server/signed-token";
 import { materializeKanjiClashSessionRound } from "../model/queue.ts";
 import { buildKanjiClashPairKey } from "../model/keys.ts";
 import type {

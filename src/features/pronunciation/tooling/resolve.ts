@@ -13,7 +13,7 @@ import {
 import type { DatabaseClient } from "../../../db/index.ts";
 import { parseContentRoot, parseMediaDirectory } from "../../content/index.ts";
 import type { NormalizedMediaBundle } from "../../content/types.ts";
-import { buildEntryKey } from "../../../lib/entry-id.ts";
+import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
 import { loadValidatedManifest } from "./manifest-helpers.ts";
 import {
   createPronunciationReuseContext,

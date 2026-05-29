@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 
 import { expect, test } from "@playwright/test";
-import { prepareDuelMastersReviewBaseline } from "@/lib/e2e/review-baseline";
+import { prepareDuelMastersReviewBaseline } from "@/features/review/testing/baseline";
 
 import {
   expectReviewReady,

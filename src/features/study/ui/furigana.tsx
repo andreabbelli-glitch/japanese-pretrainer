@@ -1,10 +1,10 @@
 import { Fragment, type ReactNode } from "react";
 
-import type { InlineNode } from "../features/content/types.ts";
+import type { InlineNode } from "../../content/types.ts";
 import {
   parseInlineText,
   stripInlineMarkdown as stripInlineMarkdownText
-} from "./inline-markdown.ts";
+} from "../model/inline-markdown.ts";
 
 type RenderFuriganaOptions = {
   linkBehavior?: "render" | "flatten";

@@ -26,7 +26,7 @@ import type {
 import {
   buildCanonicalReviewSessionHref,
   mediaReviewCardHref
-} from "@/lib/site";
+} from "@/features/navigation";
 import { updateStudySettings } from "@/features/settings/server";
 import {
   buildReviewSubjectStateRow,
@@ -242,10 +242,10 @@ async function loadReviewActionsForDatabase(
 
   try {
     vi.resetModules();
-    vi.doMock("@/lib/data-cache", async () => {
+    vi.doMock("@/features/cache/server/data-cache", async () => {
       const actual =
-        await vi.importActual<typeof import("@/lib/data-cache")>(
-          "@/lib/data-cache"
+        await vi.importActual<typeof import("@/features/cache/server/data-cache")>(
+          "@/features/cache/server/data-cache"
         );
 
       return {
@@ -356,7 +356,7 @@ async function loadReviewActionsForDatabase(
     };
   } finally {
     globalDatabase.__japaneseCustomStudyDb__ = previousDatabase;
-    vi.doUnmock("@/lib/data-cache");
+    vi.doUnmock("@/features/cache/server/data-cache");
     vi.doUnmock("@/features/review/server/card-hydration");
     vi.doUnmock("@/features/review/server/page-data");
     vi.doUnmock("@/features/review/server");

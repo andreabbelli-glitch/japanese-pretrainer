@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import { buildEntryKey } from "../../../lib/entry-id.ts";
+import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
 import type {
   EntryKind,
   PronunciationTargetEntry

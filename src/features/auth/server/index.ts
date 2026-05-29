@@ -4,7 +4,7 @@ import {
   createSignedPayloadToken,
   timingSafeStringEqual,
   verifySignedPayloadToken
-} from "./signed-token.ts";
+} from "../../security/server/signed-token.ts";
 
 export const AUTH_SESSION_COOKIE = "jcs_session";
 export const AUTH_LOGIN_PATH = "/login";

@@ -12,9 +12,9 @@ import type {
   RichTextFragment,
   TermDefinitionBlock
 } from "../types.ts";
-import { buildEntryKey } from "../../../lib/entry-id.ts";
+import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
 import { normalizeSearchText } from "../../study/model/search.ts";
-import { mediaAssetHref } from "../../../lib/site.ts";
+import { mediaAssetHref } from "../../navigation/index.ts";
 
 export {
   normalizeGrammarSearchText,

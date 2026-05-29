@@ -5,7 +5,7 @@ import path from "node:path";
 import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import * as dataCacheModule from "@/lib/data-cache";
+import * as dataCacheModule from "@/features/cache/server/data-cache";
 import * as dbQueriesModule from "@/db/queries";
 import * as fsrsOptimizerModule from "@/features/fsrs-optimizer/server";
 import * as reviewCardHydrationModule from "@/features/review/server/card-hydration";

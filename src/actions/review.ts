@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 import { readOptionalInternalHref, readRequiredString } from "./form-data.ts";
 import { db } from "@/db";
-import { listMediaCached } from "@/lib/data-cache";
+import { listMediaCached } from "@/features/cache/server/data-cache";
 import {
   applyReviewActionCachePolicy,
   applyReviewGrade,
@@ -25,7 +25,7 @@ import {
   buildRedirectSearchParams,
   buildReviewRedirectUrl,
   type ReviewRedirectMode
-} from "@/lib/site";
+} from "@/features/navigation";
 
 type ReviewSessionRedirectMode = Exclude<ReviewRedirectMode, "stay_detail">;
 type ReviewFormMutationInput = {

@@ -16,7 +16,7 @@ import {
   listTermEntryReviewSummariesByIds
 } from "@/db/queries";
 
-import { buildEntryKey } from "@/lib/entry-id";
+import { buildEntryKey } from "@/features/study/model/entry-id";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
@@ -28,7 +28,7 @@ import {
   consolidationRetrainingHref,
   reviewHref,
   type AppHref
-} from "@/lib/site";
+} from "@/features/navigation";
 import { setLessonCompletionState } from "@/features/textbook/server/progress";
 import type { ReviewRating } from "@/features/review/model/scheduler";
 import {

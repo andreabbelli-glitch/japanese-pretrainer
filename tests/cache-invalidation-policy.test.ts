@@ -23,7 +23,7 @@ import {
   invalidateLessonCompletionChanged,
   invalidateReviewMutationCaches,
   invalidateStudySettingsSaved
-} from "@/lib/cache-invalidation-policy";
+} from "@/features/cache/server/invalidation-policy";
 import {
   CONSOLIDATION_SUMMARY_TAG,
   GLOSSARY_SUMMARY_TAG,
@@ -33,7 +33,7 @@ import {
   SETTINGS_TAG,
   TEXTBOOK_LESSON_BODY_TAG,
   TEXTBOOK_TOOLTIP_TAG
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 
 describe("cache invalidation policy", () => {
   beforeEach(() => {

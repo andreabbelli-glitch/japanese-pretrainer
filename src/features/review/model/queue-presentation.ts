@@ -1,4 +1,4 @@
-import { formatLocalIsoDate } from "@/lib/local-date";
+import { formatLocalIsoDate } from "@/features/shared/model/local-date";
 import type { ReviewQueueCard } from "@/features/review/types";
 
 export function buildBucketDetail(

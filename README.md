@@ -514,22 +514,26 @@ src/
     queries/
     schema/
   features/
+    auth/
+    cache/
     consolidation/
     content/
     dashboard/
     fsrs-optimizer/
     glossary/
+    image-workflow/
     kanji-clash/
     katakana-speed/
     media/
+    navigation/
     progress/
+    pronunciation/
     review/
+    security/
     settings/
+    shared/
     study/
     textbook/
-  lib/
-    e2e/
-    site/
   styles/
 .agents/
   skills/

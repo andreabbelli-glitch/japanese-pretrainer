@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { mediaHref } from "@/lib/site";
+import { mediaHref } from "@/features/navigation";
 
 type StudyAreaRouteProps = {
   params: Promise<{

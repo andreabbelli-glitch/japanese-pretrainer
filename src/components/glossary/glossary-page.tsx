@@ -7,7 +7,7 @@ import {
   buildGlossaryHref,
   mediaHref,
   resolveGlossaryBackNavigation
-} from "@/lib/site";
+} from "@/features/navigation";
 
 import { GlossaryDetailPanels } from "./glossary-detail-page";
 import { HighlightText } from "./glossary-highlight-text";

@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation";
 
 import { LoginPageContent } from "@/components/auth/login-page-content";
-import { getAuthConfig } from "@/lib/auth";
-import { hasSearchParamValue } from "@/lib/search-params";
-import { readInternalHref } from "@/lib/site";
+import { getAuthConfig } from "@/features/auth/server";
+import { hasSearchParamValue } from "@/features/shared/model/search-params";
+import { readInternalHref } from "@/features/navigation";
 
 type LoginRouteProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

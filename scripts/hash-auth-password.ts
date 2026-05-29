@@ -1,4 +1,4 @@
-import { createPasswordHash } from "../src/lib/auth.ts";
+import { createPasswordHash } from "../src/features/auth/server/index.ts";
 
 const usage =
   'Usage: ./scripts/with-node.sh pnpm auth:hash-password -- "your-password"';

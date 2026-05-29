@@ -1,8 +1,8 @@
 import type { EntryType } from "../../../domain/content";
 
 import type { ReviewCardSource } from "./card-contract.ts";
-import { buildEntryKey } from "../../../lib/entry-id.ts";
-import { stripInlineMarkdown } from "../../../lib/inline-markdown.ts";
+import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
+import { stripInlineMarkdown } from "../../study/model/inline-markdown.ts";
 
 import {
   getDrivingEntryLinks,

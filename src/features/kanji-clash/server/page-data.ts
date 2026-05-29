@@ -1,6 +1,6 @@
 import { db, type DatabaseClient } from "@/db";
-import { listMediaCached } from "@/lib/data-cache";
-import { readMatchingSearchParam } from "@/lib/search-params";
+import { listMediaCached } from "@/features/cache/server/data-cache";
+import { readMatchingSearchParam } from "@/features/shared/model/search-params";
 import {
   getStudySettings,
   kanjiClashManualDefaultSizeOptions,

@@ -8,8 +8,8 @@ describe("dashboard data", () => {
     vi.clearAllMocks();
     vi.doUnmock("@/db");
     vi.doUnmock("@/db/queries");
-    vi.doUnmock("@/lib/data-cache");
-    vi.doUnmock("@/lib/local-date");
+    vi.doUnmock("@/features/cache/server/data-cache");
+    vi.doUnmock("@/features/shared/model/local-date");
     vi.doUnmock("@/features/media/server");
     vi.doUnmock("@/features/review/server");
     vi.doUnmock("@/features/settings/server");
@@ -187,7 +187,7 @@ function mockDashboardDependencies(input: {
       Promise.resolve(input.recentLessonRows ?? [])
     )
   }));
-  vi.doMock("@/lib/data-cache", () => ({
+  vi.doMock("@/features/cache/server/data-cache", () => ({
     GLOSSARY_SUMMARY_TAG: "glossary-summary",
     MEDIA_LIST_TAG: "media-list",
     REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
@@ -205,7 +205,7 @@ function mockDashboardDependencies(input: {
     ),
     runWithTaggedCache: vi.fn(async ({ loader }) => loader())
   }));
-  vi.doMock("@/lib/local-date", () => ({
+  vi.doMock("@/features/shared/model/local-date", () => ({
     getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
   }));
   vi.doMock("@/features/media/server", () => ({

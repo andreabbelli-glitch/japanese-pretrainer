@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Suspense, type ReactNode } from "react";
 
 import { SiteShellPrimaryNav } from "@/components/site-shell-primary-nav";
-import { primaryNav } from "@/lib/site";
+import { primaryNav } from "@/features/navigation";
 
 type SiteShellProps = {
   children: ReactNode;

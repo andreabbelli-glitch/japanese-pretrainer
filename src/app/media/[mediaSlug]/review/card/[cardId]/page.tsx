@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { ReviewCardDetailPage } from "@/components/review/review-card-detail-page";
 import { getReviewCardDetailData } from "@/features/review/server";
-import { readInternalHref } from "@/lib/site";
+import { readInternalHref } from "@/features/navigation";
 
 type ReviewCardRouteProps = {
   params: Promise<{

@@ -1,6 +1,6 @@
 import type { ElementType, ReactNode } from "react";
 
-import { cx } from "@/lib/classnames";
+import { cx } from "@/features/shared/ui/classnames";
 
 type SurfaceCardProps<T extends ElementType> = {
   as?: T;

@@ -1,11 +1,11 @@
 import type { Route } from "next";
 
 import type { CrossMediaSibling, EntryLessonConnection } from "@/db/queries";
-import { mediaGlossaryEntryHref, mediaTextbookLessonHref } from "@/lib/site";
+import { mediaGlossaryEntryHref, mediaTextbookLessonHref } from "@/features/navigation";
 import { capitalizeToken } from "@/features/study/model/format";
-import { stripInlineMarkdown } from "@/lib/render-furigana";
-import { pickBestBy } from "@/lib/collections";
-import { formatLocalIsoDate } from "@/lib/local-date";
+import { stripInlineMarkdown } from "@/features/study/ui/furigana";
+import { pickBestBy } from "@/features/shared/model/collections";
+import { formatLocalIsoDate } from "@/features/shared/model/local-date";
 
 type GlossaryAlias = {
   text: string;

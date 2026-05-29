@@ -1,5 +1,5 @@
 import type { ReviewPageData } from "@/features/review/client";
-import { readFirstNonEmptySearchParam } from "@/lib/search-params";
+import { readFirstNonEmptySearchParam } from "@/features/shared/model/search-params";
 
 import {
   getInitiallyRevealedCardId,

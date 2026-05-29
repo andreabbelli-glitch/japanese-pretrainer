@@ -1,13 +1,13 @@
 import Link from "next/link";
 
 import { getMediaLibraryData } from "@/features/media/server";
-import { renderFurigana } from "@/lib/render-furigana";
+import { renderFurigana } from "@/features/study/ui/furigana";
 import {
   mediaGlossaryHref,
   mediaHref,
   mediaReviewHref,
   mediaStudyHref
-} from "@/lib/site";
+} from "@/features/navigation";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";

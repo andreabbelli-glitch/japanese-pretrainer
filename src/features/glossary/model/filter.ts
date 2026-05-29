@@ -1,13 +1,13 @@
-import { mediaGlossaryEntryHref } from "@/lib/site";
+import { mediaGlossaryEntryHref } from "@/features/navigation";
 import { type GlossaryDefaultSort } from "@/features/settings/server";
 import { deriveEntryStudyState } from "@/features/study/model/entry";
-import { buildEntryKey } from "@/lib/entry-id";
-import { pickBestBy } from "@/lib/collections";
+import { buildEntryKey } from "@/features/study/model/entry-id";
+import { pickBestBy } from "@/features/shared/model/collections";
 import {
   readFirstNonEmptySearchParam,
   readMatchingSearchParam,
   readPositiveIntegerSearchParam
-} from "@/lib/search-params";
+} from "@/features/shared/model/search-params";
 import {
   buildFilteredQuery,
   buildRankedGlossaryEntry,

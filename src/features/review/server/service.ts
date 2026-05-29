@@ -47,7 +47,7 @@ import type {
   ReviewForcedContrastResolution,
   ReviewScope
 } from "@/features/review/types";
-import { buildEntryKey } from "@/lib/entry-id";
+import { buildEntryKey } from "@/features/study/model/entry-id";
 import { enqueueReviewMistakeConsolidation } from "@/features/consolidation/server";
 
 export type ReviewMutationTransaction = Parameters<

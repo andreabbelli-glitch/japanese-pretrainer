@@ -1,5 +1,5 @@
-import { parseInlineFragment } from "../features/content/parser/markdown.ts";
-import type { InlineNode } from "../features/content/types.ts";
+import { parseInlineFragment } from "../../content/parser/markdown.ts";
+import type { InlineNode } from "../../content/types.ts";
 
 export function parseInlineText(text: string): InlineNode[] {
   return parseInlineFragment({

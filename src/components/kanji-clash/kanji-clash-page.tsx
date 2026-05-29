@@ -10,7 +10,7 @@ import type {
   KanjiClashQueueSnapshot,
   KanjiClashSessionRound
 } from "@/features/kanji-clash/types";
-import { cx } from "@/lib/classnames";
+import { cx } from "@/features/shared/ui/classnames";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";

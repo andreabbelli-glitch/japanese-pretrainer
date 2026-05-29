@@ -27,7 +27,7 @@ describe("local date cache keys", () => {
       DateTimeFormat: MockDateTimeFormat
     });
 
-    const { getLocalIsoDateKey } = await import("@/lib/local-date");
+    const { getLocalIsoDateKey } = await import("@/features/shared/model/local-date");
 
     expect(getLocalIsoDateKey(new Date("2026-03-11T06:30:00.000Z"))).toBe(
       "2026-03-10"

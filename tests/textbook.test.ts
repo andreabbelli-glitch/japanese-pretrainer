@@ -33,11 +33,11 @@ import {
   setFuriganaMode,
   setLessonCompletionState
 } from "@/features/textbook/server";
-import * as dataCache from "@/lib/data-cache";
+import * as dataCache from "@/features/cache/server/data-cache";
 import * as settings from "@/features/settings/server";
 import { applyLessonCompletionState } from "@/features/textbook/client/reader-state";
 import { parseTextbookDocument } from "@/features/textbook/server/document";
-import { renderFurigana } from "@/lib/render-furigana";
+import { renderFurigana } from "@/features/study/ui/furigana";
 import {
   LessonArticle,
   areLessonRailPropsEqual,

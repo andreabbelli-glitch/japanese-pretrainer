@@ -8,7 +8,7 @@ import {
   getAuthConfig,
   hasValidSessionToken,
   isLoginPath
-} from "@/lib/auth";
+} from "@/features/auth/server";
 
 const INTERNAL_CONTENT_CACHE_REVALIDATE_PATH =
   "/api/internal/content-cache/revalidate";

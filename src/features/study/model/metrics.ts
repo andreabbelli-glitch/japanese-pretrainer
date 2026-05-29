@@ -6,7 +6,7 @@ import {
   type LessonListItem
 } from "@/db/queries";
 import type { DatabaseClient } from "@/db";
-import { mediaGlossaryEntryHref } from "@/lib/site";
+import { mediaGlossaryEntryHref } from "@/features/navigation";
 import { formatDerivedStudyStateLabel } from "@/features/study/model/entry";
 import {
   calculatePercent,

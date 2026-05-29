@@ -6,7 +6,7 @@ import { eq } from "drizzle-orm";
 import type { DatabaseClient } from "@/db";
 import { term } from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
-import { mediaGlossaryEntryHref } from "@/lib/site";
+import { mediaGlossaryEntryHref } from "@/features/navigation";
 import { crossMediaFixture } from "./cross-media-fixture";
 
 const __filename = fileURLToPath(import.meta.url);

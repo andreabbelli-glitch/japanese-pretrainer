@@ -15,7 +15,7 @@ vi.mock("@/features/consolidation/server", () => ({
   submitConsolidationAnswer: submitConsolidationAnswerMock
 }));
 
-vi.mock("@/lib/cache-invalidation-policy", () => ({
+vi.mock("@/features/cache/server/invalidation-policy", () => ({
   invalidateConsolidationMutationCaches:
     invalidateConsolidationMutationCachesMock
 }));

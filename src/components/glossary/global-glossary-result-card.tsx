@@ -2,7 +2,7 @@ import type { Route } from "next";
 import Link from "next/link";
 
 import type { GlossarySearchResult } from "@/features/glossary/types";
-import { appendReturnToParam } from "@/lib/site";
+import { appendReturnToParam } from "@/features/navigation";
 
 import { HighlightText } from "./glossary-highlight-text";
 import { PronunciationAudio } from "../ui/pronunciation-audio";

@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
 import { DashboardHome } from "@/components/dashboard/dashboard-home";
-import { mediaTextbookLessonHref } from "@/lib/site";
+import { mediaTextbookLessonHref } from "@/features/navigation";
 
 describe("dashboard home", () => {
   it("shows queued new cards in the global review card", () => {

@@ -18,7 +18,7 @@ import {
   revalidateGlossarySummaryCache,
   REVIEW_FIRST_CANDIDATE_TAG,
   updateGlossarySummaryCache
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 
 describe("glossary summary cache tags", () => {
   beforeEach(() => {

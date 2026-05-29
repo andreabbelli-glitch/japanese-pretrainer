@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { DatabaseClient } from "@/db";
-import { listMediaCached } from "@/lib/data-cache";
+import { listMediaCached } from "@/features/cache/server/data-cache";
 import {
   cleanupTestDatabase,
   setupTestDatabase,

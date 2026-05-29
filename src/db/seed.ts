@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
 
 import { db, type DatabaseClient } from "./client.ts";
-import { buildScopedEntryId } from "../lib/entry-id.ts";
+import { buildScopedEntryId } from "../features/study/model/entry-id.ts";
 import {
   card,
   cardEntryLink,

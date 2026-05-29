@@ -38,10 +38,10 @@ vi.mock("next/cache", () => ({
   unstable_cache: unstableCacheMock
 }));
 
-vi.mock("@/lib/data-cache", async () => {
+vi.mock("@/features/cache/server/data-cache", async () => {
   const actual =
-    await vi.importActual<typeof import("@/lib/data-cache")>(
-      "@/lib/data-cache"
+    await vi.importActual<typeof import("@/features/cache/server/data-cache")>(
+      "@/features/cache/server/data-cache"
     );
 
   return {
@@ -58,8 +58,8 @@ import {
 import { runMigrations } from "@/db/migrate";
 import { reviewSubjectState } from "@/db/schema";
 import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
-import * as dataCache from "@/lib/data-cache";
-import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
+import * as dataCache from "@/features/cache/server/data-cache";
+import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
 import { getDashboardData } from "@/features/dashboard/server";
 import { getMediaDetailData } from "@/features/media/server";
 import { getMediaProgressPageData } from "@/features/progress/server";

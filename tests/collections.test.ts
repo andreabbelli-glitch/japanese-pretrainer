@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { pickBestBy } from "@/lib/collections";
+import { pickBestBy } from "@/features/shared/model/collections";
 
 describe("pickBestBy", () => {
   it("keeps a falsy value when it is the best candidate", () => {

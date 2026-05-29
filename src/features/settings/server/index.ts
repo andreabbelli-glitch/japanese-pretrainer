@@ -6,7 +6,7 @@ import {
   SETTINGS_TAG,
   canUseDataCache,
   runWithTaggedCache
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 
 import { reviewSchedulerConfig } from "@/features/review/model/scheduler";
 

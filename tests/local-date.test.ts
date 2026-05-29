@@ -37,7 +37,7 @@ describe("local date formatting", () => {
       DateTimeFormat: MockDateTimeFormat
     });
 
-    const { formatLocalIsoDate } = await import("@/lib/local-date");
+    const { formatLocalIsoDate } = await import("@/features/shared/model/local-date");
 
     expect(formatLocalIsoDate("2026-04-10")).toBe("2026-04-10");
   });

@@ -6,7 +6,7 @@ import {
   serializePronunciationManifest,
   type PronunciationManifestEntry
 } from "../../content/pronunciations-manifest.ts";
-import { buildEntryKey } from "../../../lib/entry-id.ts";
+import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
 
 type PronunciationAudioManifestFields = Pick<
   PronunciationManifestEntry,

@@ -7,7 +7,7 @@ describe("kanji clash page query scheduling", () => {
     vi.resetModules();
     vi.clearAllMocks();
     vi.doUnmock("@/db");
-    vi.doUnmock("@/lib/data-cache");
+    vi.doUnmock("@/features/cache/server/data-cache");
     vi.doUnmock("@/features/settings/server");
     vi.doUnmock("@/features/kanji-clash/server/manual-contrast.ts");
     vi.doUnmock("@/features/kanji-clash/server/queue-token.ts");
@@ -55,7 +55,7 @@ describe("kanji clash page query scheduling", () => {
     vi.doMock("@/db", () => ({
       db: {}
     }));
-    vi.doMock("@/lib/data-cache", () => ({
+    vi.doMock("@/features/cache/server/data-cache", () => ({
       listMediaCached: vi.fn(mediaRowsGate.loader())
     }));
     vi.doMock("@/features/settings/server", () => ({

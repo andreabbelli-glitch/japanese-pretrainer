@@ -1,6 +1,6 @@
 import type { PronunciationData } from "@/features/pronunciation/model/data";
 import type { GlossaryDefaultSort } from "@/features/settings/server";
-import type { AppHref } from "@/lib/site";
+import type { AppHref } from "@/features/navigation";
 import type { DerivedStudyState, EntryStudySignal } from "@/features/study/model/entry";
 
 export type GlossaryKind = "term" | "grammar";

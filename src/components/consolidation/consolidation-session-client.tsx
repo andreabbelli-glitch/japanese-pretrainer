@@ -7,14 +7,14 @@ import {
   markConsolidationKnownAction,
   submitConsolidationAnswerAction
 } from "@/actions/consolidation";
-import { cx } from "@/lib/classnames";
+import { cx } from "@/features/shared/ui/classnames";
 import {
   type ConsolidationAnswerResult,
   type ConsolidationOption,
   type ConsolidationSessionData,
   type ConsolidationSessionSubject
 } from "@/features/consolidation/server";
-import { stripInlineMarkdown } from "@/lib/render-furigana";
+import { stripInlineMarkdown } from "@/features/study/ui/furigana";
 
 import {
   isActivationKeyboardTarget,

@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import { buildForvoSearchQueries } from "./forvo-helpers.ts";
-import { stripInlineMarkdown } from "../../../lib/inline-markdown.ts";
+import { stripInlineMarkdown } from "../../study/model/inline-markdown.ts";
 
 const forvoWordAddLanguageCode = "ja";
 const phraseMarkerPattern = /[〜～~]/u;

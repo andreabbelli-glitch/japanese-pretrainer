@@ -22,29 +22,29 @@ import {
   listMediaCached,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
-} from "@/lib/data-cache";
+} from "@/features/cache/server/data-cache";
 import {
   mediaGlossaryEntryHref,
   mediaGlossaryHref,
   mediaHref,
   mediaReviewCardHref,
   mediaStudyHref
-} from "@/lib/site";
+} from "@/features/navigation";
 import {
   capitalizeToken,
   formatCardRelationshipLabel,
   formatReviewStateLabel
 } from "@/features/study/model/format";
-import { buildEntryKey } from "@/lib/entry-id";
+import { buildEntryKey } from "@/features/study/model/entry-id";
 import { measureWith, type ReviewProfiler } from "@/features/review/server/profiler";
-import { stripInlineMarkdown } from "@/lib/render-furigana";
+import { stripInlineMarkdown } from "@/features/study/ui/furigana";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
   matchesReviewSubjectEntrySurface,
   type ReviewSubjectIdentity
 } from "@/features/review/model/subject";
-import { deriveInlineReading } from "@/lib/inline-markdown.ts";
+import { deriveInlineReading } from "@/features/study/model/inline-markdown.ts";
 import {
   getDrivingEntryLinks,
   hasCompletedReviewLesson,

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { matchesSecret } from "@/lib/secret-compare";
+import { matchesSecret } from "@/features/security/server/secret-compare";
 
 describe("secret comparison", () => {
   it("matches exact secrets without accepting missing or length-mismatched values", () => {

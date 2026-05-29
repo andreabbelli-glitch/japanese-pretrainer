@@ -18,8 +18,8 @@ import {
   REVIEW_SUMMARY_TAG,
   runWithTaggedCache,
   SETTINGS_TAG
-} from "@/lib/data-cache";
-import { mediaGlossaryHref } from "@/lib/site";
+} from "@/features/cache/server/data-cache";
+import { mediaGlossaryHref } from "@/features/navigation";
 import { getFuriganaModeSetting, type FuriganaMode } from "@/features/settings/server";
 import {
   calculatePercent,

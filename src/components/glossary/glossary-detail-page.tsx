@@ -7,8 +7,8 @@ import {
   replaceReviewCardInHref,
   resolveGlossaryBackNavigation,
   resolveGlossaryReviewReturnTo
-} from "@/lib/site";
-import { renderFurigana } from "@/lib/render-furigana";
+} from "@/features/navigation";
+import { renderFurigana } from "@/features/study/ui/furigana";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";

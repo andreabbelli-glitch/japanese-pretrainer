@@ -9,7 +9,7 @@ describe("textbook lesson query scheduling", () => {
     vi.doUnmock("next/cache");
     vi.doUnmock("@/db");
     vi.doUnmock("@/db/queries");
-    vi.doUnmock("@/lib/data-cache");
+    vi.doUnmock("@/features/cache/server/data-cache");
     vi.doUnmock("@/features/settings/server");
   });
 
@@ -31,7 +31,7 @@ describe("textbook lesson query scheduling", () => {
       listLessonEntryLinks: vi.fn(),
       listLessonsByMediaId: vi.fn()
     }));
-    vi.doMock("@/lib/data-cache", () => ({
+    vi.doMock("@/features/cache/server/data-cache", () => ({
       GLOSSARY_SUMMARY_TAG: "glossary-summary",
       MEDIA_LIST_TAG: "media-list",
       REVIEW_SUMMARY_TAG: "review-summary",

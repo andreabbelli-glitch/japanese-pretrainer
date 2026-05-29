@@ -3,13 +3,13 @@ import Link from "next/link";
 import type { Route } from "next";
 import { memo, type ReactNode } from "react";
 
-import { cx } from "@/lib/classnames";
+import { cx } from "@/features/shared/ui/classnames";
 import type {
   FuriganaMode,
   TextbookLessonData,
   TextbookLessonNavItem
 } from "@/features/textbook/types";
-import { mediaStudyHref, mediaTextbookLessonHref } from "@/lib/site";
+import { mediaStudyHref, mediaTextbookLessonHref } from "@/features/navigation";
 
 import type { ExpandedImageState } from "./lesson-article";
 

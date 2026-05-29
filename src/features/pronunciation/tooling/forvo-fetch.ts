@@ -17,7 +17,7 @@ import type { Socket } from "node:net";
 import { homedir, tmpdir } from "node:os";
 
 import type { NormalizedMediaBundle } from "../../content/types.ts";
-import { buildEntryKey } from "../../../lib/entry-id.ts";
+import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
 import { sleep } from "./fetch-throttle.ts";
 import {
   loadValidatedManifest,

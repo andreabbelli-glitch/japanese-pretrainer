@@ -1,4 +1,4 @@
-import { stripInlineMarkdown } from "@/lib/render-furigana";
+import { stripInlineMarkdown } from "@/features/study/ui/furigana";
 import type { ReviewCardSource } from "@/features/review/model/card-contract";
 import {
   groupReviewCardsBySubject,

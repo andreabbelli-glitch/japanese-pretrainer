@@ -9,7 +9,7 @@ import type {
   NormalizedTerm,
   PitchAccentCheckStatus
 } from "../../content/types.ts";
-import { buildEntryKey } from "../../../lib/entry-id.ts";
+import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
 import { createFetchThrottle, sleep } from "../../pronunciation/tooling/fetch-throttle.ts";
 import {
   loadValidatedManifest,

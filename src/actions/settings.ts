@@ -3,8 +3,8 @@
 import { redirect } from "next/navigation";
 
 import { readOptionalInternalHref, readRequiredString } from "./form-data.ts";
-import { invalidateStudySettingsSaved } from "@/lib/cache-invalidation-policy";
-import { buildHrefWithSearch } from "@/lib/site";
+import { invalidateStudySettingsSaved } from "@/features/cache/server/invalidation-policy";
+import { buildHrefWithSearch } from "@/features/navigation";
 import {
   normalizeFuriganaMode,
   normalizeGlossaryDefaultSort,

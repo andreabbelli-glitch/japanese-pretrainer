@@ -26,7 +26,7 @@ vi.mock("@/db/queries", () => ({
   getMediaBySlug: getMediaBySlugMock
 }));
 
-vi.mock("@/lib/data-cache", () => ({
+vi.mock("@/features/cache/server/data-cache", () => ({
   updateConsolidationSummaryCache: updateConsolidationSummaryCacheMock,
   updateMediaListCache: updateMediaListCacheMock,
   updateReviewSummaryCache: updateReviewSummaryCacheMock,

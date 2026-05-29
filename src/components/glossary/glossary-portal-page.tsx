@@ -2,7 +2,7 @@ import type { Route } from "next";
 import Link from "next/link";
 
 import type { GlobalGlossaryPageData } from "@/features/glossary/types";
-import { buildGlossaryHref } from "@/lib/site";
+import { buildGlossaryHref } from "@/features/navigation";
 
 import { GlobalGlossaryResultCard } from "./global-glossary-result-card";
 import { GlossaryPortalSearchForm } from "./glossary-portal-search-form";
