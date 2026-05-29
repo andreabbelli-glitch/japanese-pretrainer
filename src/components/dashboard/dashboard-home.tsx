@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type { DashboardData } from "@/lib/dashboard";
+import type { DashboardData } from "@/features/dashboard/server";
 import { renderFurigana } from "@/lib/render-furigana";
 import {
   mediaGlossaryHref,

@@ -1,4 +1,4 @@
-import { formatReviewStateLabel } from "@/lib/study-format";
+import { formatReviewStateLabel } from "@/features/study/model/format";
 
 import {
   isReviewCardDue,

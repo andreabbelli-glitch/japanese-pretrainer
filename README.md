@@ -514,14 +514,18 @@ src/
     queries/
     schema/
   features/
+    dashboard/
     glossary/
     kanji-clash/
     katakana-speed/
+    media/
+    progress/
+    review/
+    study/
     textbook/
   lib/
     content/
     e2e/
-    kanji-clash/
     site/
   styles/
 .agents/
@@ -564,7 +568,7 @@ Per workflow con LLM esterni, il punto di partenza operativo e
   bottom navigation separata.
 - I pattern base riusabili vivono in `src/components/ui` e
   `src/components/layout`; lo shell globale e in `src/components/site-shell*.tsx`.
-- Dashboard, library e media detail leggono il DB tramite helper server-side in
-  `src/lib/dashboard.ts`, `src/lib/media-shell.ts` e `src/lib/progress.ts`,
-  mentre glossary, textbook, Kanji Clash e Katakana Speed espongono i loader
-  canonici da `src/features/*` o dai rispettivi helper `src/lib/*`.
+- Dashboard, library, media detail e progress leggono il DB tramite loader
+  server-side in `src/features/dashboard/server`, `src/features/media/server`
+  e `src/features/progress/server`; i formatter e helper puri condivisi vivono
+  in `src/features/study/model`.

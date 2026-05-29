@@ -29,17 +29,17 @@ import {
   formatMediaTypeLabel,
   formatReviewStateLabel,
   formatSegmentKindLabel
-} from "@/lib/study-format";
+} from "@/features/study/model/format";
 import {
   compactLatinSearchText,
   foldJapaneseKana,
   normalizeGrammarSearchText,
   normalizeSearchText,
   romanizeKanaForSearch
-} from "@/lib/study-search";
+} from "@/features/study/model/search";
 import { buildPronunciationData } from "@/lib/pronunciation-data";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
-import { deriveEntryStudyState } from "@/lib/study-entry";
+import { deriveEntryStudyState } from "@/features/study/model/entry";
 import type {
   GlossaryBaseEntry,
   GlossaryDetailData,

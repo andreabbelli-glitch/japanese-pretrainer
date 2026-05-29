@@ -6,7 +6,7 @@ import type {
   GlobalGlossaryAutocompleteSuggestion,
   GlobalGlossaryPageData
 } from "@/features/glossary/types";
-import { normalizeSearchText } from "@/lib/study-search";
+import { normalizeSearchText } from "@/features/study/model/search";
 
 type GlossaryAutocompleteFilters = Pick<
   GlobalGlossaryPageData["filters"],

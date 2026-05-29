@@ -2,7 +2,7 @@ import {
   buildSearchQueryVariants,
   compactLatinSearchText,
   type SearchQueryVariants
-} from "@/lib/study-search";
+} from "@/features/study/model/search";
 import { getGlossaryAutocompleteSuggestions } from "@/features/glossary/model/autocomplete";
 import type {
   GlossaryBaseEntry,

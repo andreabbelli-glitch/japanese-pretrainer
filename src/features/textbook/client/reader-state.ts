@@ -3,7 +3,7 @@ import {
   calculatePercent,
   compareIsoDates,
   formatLessonProgressStatusLabel
-} from "@/lib/study-format";
+} from "@/features/study/model/format";
 import type {
   TextbookLessonData,
   TextbookLessonNavItem

@@ -14,7 +14,7 @@ import {
   deriveInlineReading,
   stripInlineMarkdown
 } from "@/lib/inline-markdown";
-import { deriveEntryStudyState } from "@/lib/study-entry";
+import { deriveEntryStudyState } from "@/features/study/model/entry";
 import type {
   TextbookEntryTooltip,
   TextbookTooltipEntry

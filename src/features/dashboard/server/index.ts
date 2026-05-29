@@ -16,7 +16,7 @@ import {
   loadMediaShellSnapshots,
   pickFocusMedia,
   type MediaShellSnapshot
-} from "@/lib/media-shell";
+} from "@/features/media/server";
 import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewBundle

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { romanizeKanaForSearch } from "@/lib/study-search";
+import { romanizeKanaForSearch } from "@/features/study/model/search";
 
 describe("study search", () => {
   it("romanizes ツァ-series loanword digraphs without inserting an extra u", () => {

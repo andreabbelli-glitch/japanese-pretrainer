@@ -4,7 +4,7 @@ import {
   formatMediaTypeLabel,
   formatSegmentKindLabel,
   formatStatusLabel
-} from "@/lib/study-format";
+} from "@/features/study/model/format";
 import {
   buildLessonMetrics,
   type GlossaryProgressSnapshot,
@@ -12,7 +12,7 @@ import {
   type LessonResumeTarget,
   type SegmentStudyPreview,
   type StudyEntryPreview
-} from "@/lib/study-metrics";
+} from "@/features/study/model/metrics";
 import { pickBestBy } from "@/lib/collections";
 
 type MediaShellMedia = Pick<

@@ -1,5 +1,5 @@
 import { db, type DatabaseClient } from "@/db";
-import { getMediaDetailData } from "@/lib/media-shell";
+import { getMediaDetailData } from "@/features/media/server";
 import {
   canUseDataCache,
   GLOSSARY_SUMMARY_TAG,
@@ -19,12 +19,12 @@ import {
   mediaTextbookLessonHref
 } from "@/lib/site";
 import { getStudySettings } from "@/lib/settings";
-import { calculatePercent } from "@/lib/study-format";
+import { calculatePercent } from "@/features/study/model/format";
 import {
   type GlossaryProgressSnapshot,
   type LessonResumeTarget,
   type SegmentStudyPreview
-} from "@/lib/study-metrics";
+} from "@/features/study/model/metrics";
 
 import {
   loadReviewIntroducedTodayCountCached,

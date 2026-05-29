@@ -7,7 +7,7 @@ import {
   foldJapaneseKana,
   normalizeSearchText,
   romanizeKanaForSearch
-} from "@/lib/study-search";
+} from "@/features/study/model/search";
 
 type RankedSuggestion = {
   score: number;

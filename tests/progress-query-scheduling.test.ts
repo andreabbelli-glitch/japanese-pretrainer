@@ -9,11 +9,11 @@ describe("progress query scheduling", () => {
     vi.doUnmock("@/db");
     vi.doUnmock("@/lib/data-cache");
     vi.doUnmock("@/lib/local-date");
-    vi.doUnmock("@/lib/media-shell");
+    vi.doUnmock("@/features/media/server");
     vi.doUnmock("@/features/review/server");
     vi.doUnmock("@/lib/settings");
     vi.doUnmock("@/lib/site");
-    vi.doUnmock("@/lib/study-format");
+    vi.doUnmock("@/features/study/model/format");
   });
 
   it("starts shared settings lookups before the cache-enabled media lookup settles", async () => {
@@ -66,7 +66,7 @@ describe("progress query scheduling", () => {
       getStudySettings: vi.fn(settingsGate.loader())
     }));
 
-    const { getMediaProgressPageData } = await import("@/lib/progress");
+    const { getMediaProgressPageData } = await import("@/features/progress/server");
     const progressPromise = getMediaProgressPageData("fixture-media");
 
     await schedule.expectStarted("media", "settings", "introduced today");
@@ -118,7 +118,7 @@ describe("progress query scheduling", () => {
       getStudySettings: vi.fn(settingsGate.loader())
     }));
 
-    const { getMediaProgressPageData } = await import("@/lib/progress");
+    const { getMediaProgressPageData } = await import("@/features/progress/server");
     const progressPromise = getMediaProgressPageData("missing-media");
 
     await schedule.expectStarted("media", "settings", "introduced today");
@@ -172,7 +172,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/lib/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
     }));
-    vi.doMock("@/lib/media-shell", () => ({
+    vi.doMock("@/features/media/server", () => ({
       getMediaDetailData: vi.fn()
     }));
     vi.doMock("@/features/review/server", () => ({
@@ -185,7 +185,7 @@ describe("progress query scheduling", () => {
       getStudySettings: vi.fn(settingsGate.loader())
     }));
 
-    const { getMediaProgressPageData } = await import("@/lib/progress");
+    const { getMediaProgressPageData } = await import("@/features/progress/server");
     const progressPromise = getMediaProgressPageData("fixture-media");
 
     await schedule.expectStarted("media", "settings", "introduced today");
@@ -294,7 +294,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/lib/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
     }));
-    vi.doMock("@/lib/media-shell", () => ({
+    vi.doMock("@/features/media/server", () => ({
       getMediaDetailData: vi.fn(sharedMediaGate.loader())
     }));
     vi.doMock("@/features/review/server", () => ({
@@ -312,11 +312,11 @@ describe("progress query scheduling", () => {
         `/media/${slug}/textbook/${lesson}`,
       reviewHref: () => "/review"
     }));
-    vi.doMock("@/lib/study-format", () => ({
+    vi.doMock("@/features/study/model/format", () => ({
       calculatePercent: vi.fn(() => null)
     }));
 
-    const { getMediaProgressPageData } = await import("@/lib/progress");
+    const { getMediaProgressPageData } = await import("@/features/progress/server");
     const progressPromise = getMediaProgressPageData("fixture-media");
 
     await schedule.expectStarted("settings", "introduced today");

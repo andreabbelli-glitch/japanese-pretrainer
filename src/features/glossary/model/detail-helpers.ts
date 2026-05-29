@@ -2,7 +2,7 @@ import type { Route } from "next";
 
 import type { CrossMediaSibling, EntryLessonConnection } from "@/db/queries";
 import { mediaGlossaryEntryHref, mediaTextbookLessonHref } from "@/lib/site";
-import { capitalizeToken } from "@/lib/study-format";
+import { capitalizeToken } from "@/features/study/model/format";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
 import { pickBestBy } from "@/lib/collections";
 import { formatLocalIsoDate } from "@/lib/local-date";

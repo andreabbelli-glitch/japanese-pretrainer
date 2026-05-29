@@ -1,7 +1,7 @@
 import type { EntryType } from "../../../domain/content.ts";
 import { buildEntryKey, buildScopedEntryId } from "../../entry-id.ts";
 import { normalizeReviewSubjectSurface } from "../../../features/review/model/subject.ts";
-import { romanizeKanaForSearch } from "../../study-search.ts";
+import { romanizeKanaForSearch } from "../../../features/study/model/search.ts";
 
 import type { NormalizedMediaBundle } from "../types.ts";
 import {

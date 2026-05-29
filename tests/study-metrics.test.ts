@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import type { LessonListItem } from "@/db/queries";
-import { buildLessonMetrics } from "@/lib/study-metrics";
+import { buildLessonMetrics } from "@/features/study/model/metrics";
 
 describe("buildLessonMetrics", () => {
   it("uses the most recently opened in-progress lesson for segment previews", () => {

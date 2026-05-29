@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import type { MediaShellSnapshot } from "@/lib/media-shell";
+import type { MediaShellSnapshot } from "@/features/media/server";
 
 describe("dashboard data", () => {
   afterEach(() => {
@@ -10,7 +10,7 @@ describe("dashboard data", () => {
     vi.doUnmock("@/db/queries");
     vi.doUnmock("@/lib/data-cache");
     vi.doUnmock("@/lib/local-date");
-    vi.doUnmock("@/lib/media-shell");
+    vi.doUnmock("@/features/media/server");
     vi.doUnmock("@/features/review/server");
     vi.doUnmock("@/lib/settings");
   });
@@ -66,7 +66,7 @@ describe("dashboard data", () => {
       recentLessonRows
     });
 
-    const { getDashboardData } = await import("@/lib/dashboard");
+    const { getDashboardData } = await import("@/features/dashboard/server");
     const dashboard = await getDashboardData({} as never);
 
     expect(dashboard.media).toEqual(mediaSnapshots);
@@ -130,7 +130,7 @@ describe("dashboard data", () => {
       mediaSnapshots: [focusMedia, dueMedia]
     });
 
-    const { getDashboardData } = await import("@/lib/dashboard");
+    const { getDashboardData } = await import("@/features/dashboard/server");
     const dashboard = await getDashboardData({} as never);
 
     expect(dashboard.focusMedia).toBe(focusMedia);
@@ -159,7 +159,7 @@ describe("dashboard data", () => {
       mediaSnapshots: [oneQueuedMedia, twoQueuedMedia]
     });
 
-    const { getDashboardData } = await import("@/lib/dashboard");
+    const { getDashboardData } = await import("@/features/dashboard/server");
     const dashboard = await getDashboardData({} as never);
 
     expect(dashboard.reviewMedia).toBe(twoQueuedMedia);
@@ -208,7 +208,7 @@ function mockDashboardDependencies(input: {
   vi.doMock("@/lib/local-date", () => ({
     getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
   }));
-  vi.doMock("@/lib/media-shell", () => ({
+  vi.doMock("@/features/media/server", () => ({
     loadMediaShellSnapshots: vi.fn(() => Promise.resolve(input.mediaSnapshots)),
     pickFocusMedia: vi.fn(() => input.mediaSnapshots[0] ?? null)
   }));

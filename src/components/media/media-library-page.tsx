@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getMediaLibraryData } from "@/lib/media-shell";
+import { getMediaLibraryData } from "@/features/media/server";
 import { renderFurigana } from "@/lib/render-furigana";
 import {
   mediaGlossaryHref,

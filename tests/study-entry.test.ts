@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   deriveEntryStudyState,
   formatDerivedStudyStateLabel
-} from "@/lib/study-entry";
+} from "@/features/study/model/entry";
 
 describe("study entry labels", () => {
   it("formats each derived study state with stable labels", () => {

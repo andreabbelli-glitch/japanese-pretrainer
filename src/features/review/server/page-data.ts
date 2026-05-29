@@ -13,7 +13,7 @@ import {
   mediaStudyHref
 } from "@/lib/site";
 import type { ReviewCardSource } from "@/features/review/model/card-contract";
-import { capitalizeToken, formatReviewStateLabel } from "@/lib/study-format";
+import { capitalizeToken, formatReviewStateLabel } from "@/features/study/model/format";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { measureWith, type ReviewProfiler } from "@/features/review/server/profiler";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "@/features/review/model/grade-previews";

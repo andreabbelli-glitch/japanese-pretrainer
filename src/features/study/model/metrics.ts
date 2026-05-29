@@ -7,12 +7,12 @@ import {
 } from "@/db/queries";
 import type { DatabaseClient } from "@/db";
 import { mediaGlossaryEntryHref } from "@/lib/site";
-import { formatDerivedStudyStateLabel } from "@/lib/study-entry";
+import { formatDerivedStudyStateLabel } from "@/features/study/model/entry";
 import {
   calculatePercent,
   compareIsoDates,
   formatLessonProgressStatusLabel
-} from "@/lib/study-format";
+} from "@/features/study/model/format";
 
 export type StudyEntryPreview = {
   id: string;

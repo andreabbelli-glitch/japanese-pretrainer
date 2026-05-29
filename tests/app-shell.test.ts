@@ -13,8 +13,8 @@ import {
 } from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
 import { importContentWorkspace } from "@/lib/content/importer";
-import { getDashboardData } from "@/lib/dashboard";
-import { getMediaDetailData } from "@/lib/media-shell";
+import { getDashboardData } from "@/features/dashboard/server";
+import { getMediaDetailData } from "@/features/media/server";
 import { loadGlobalReviewOverviewSnapshot } from "@/features/review/server";
 import {
   crossMediaFixture,

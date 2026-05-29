@@ -24,9 +24,9 @@ import {
   term,
   userSetting
 } from "@/db/schema";
-import { getDashboardData } from "@/lib/dashboard";
-import { getMediaDetailData } from "@/lib/media-shell";
-import { getMediaProgressPageData } from "@/lib/progress";
+import { getDashboardData } from "@/features/dashboard/server";
+import { getMediaDetailData } from "@/features/media/server";
+import { getMediaProgressPageData } from "@/features/progress/server";
 import {
   getGlobalReviewFirstCandidateLoadResult,
   getGlobalReviewPageData,

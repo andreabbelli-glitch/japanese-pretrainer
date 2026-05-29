@@ -1,7 +1,7 @@
 import type { PronunciationData } from "@/lib/pronunciation-data";
 import type { GlossaryDefaultSort } from "@/lib/settings";
 import type { AppHref } from "@/lib/site";
-import type { DerivedStudyState, EntryStudySignal } from "@/lib/study-entry";
+import type { DerivedStudyState, EntryStudySignal } from "@/features/study/model/entry";
 
 export type GlossaryKind = "term" | "grammar";
 export type GlossaryCardsFilter = "all" | "with_cards" | "without_cards";

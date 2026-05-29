@@ -5,7 +5,7 @@ import { eq } from "drizzle-orm";
 
 import { db, type DatabaseClient } from "./client.ts";
 import { normalizeReviewSubjectSurface } from "../features/review/model/subject.ts";
-import { romanizeKanaForSearch } from "../lib/study-search.ts";
+import { romanizeKanaForSearch } from "../features/study/model/search.ts";
 import { card, grammarPattern } from "./schema/index.ts";
 
 export async function runMigrations(

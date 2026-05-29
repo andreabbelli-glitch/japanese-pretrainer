@@ -20,24 +20,24 @@ import {
   runWithTaggedCache,
   SETTINGS_TAG
 } from "@/lib/data-cache";
-import { calculatePercent } from "@/lib/study-format";
+import { calculatePercent } from "@/features/study/model/format";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewSnapshots
 } from "@/features/review/server/loader";
 import { getReviewDailyLimit } from "@/lib/settings";
-import { formatDerivedStudyStateLabel } from "@/lib/study-entry";
+import { formatDerivedStudyStateLabel } from "@/features/study/model/entry";
 import {
   buildEmptyGlossaryProgressSnapshot,
   type GlossaryProgressSnapshot,
   type StudyEntryPreview
-} from "@/lib/study-metrics";
+} from "@/features/study/model/metrics";
 import {
   mapMediaShellSnapshotFromCounts,
   pickFocusMedia,
   type MediaShellSnapshot
-} from "@/lib/media-shell-snapshot";
+} from "@/features/media/model/shell-snapshot";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import type { ReviewOverviewSnapshot } from "@/features/review/types";
 

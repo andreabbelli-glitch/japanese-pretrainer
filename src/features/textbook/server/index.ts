@@ -27,7 +27,7 @@ import {
   formatLessonProgressStatusLabel,
   formatMediaTypeLabel,
   formatSegmentKindLabel
-} from "@/lib/study-format";
+} from "@/features/study/model/format";
 import { parseTextbookDocument } from "@/features/textbook/server/document";
 import { loadLessonTooltipEntries } from "@/features/textbook/server/tooltips";
 import type {

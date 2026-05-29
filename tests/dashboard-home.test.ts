@@ -1,4 +1,4 @@
-import type { DashboardData } from "@/lib/dashboard";
+import type { DashboardData } from "@/features/dashboard/server";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 

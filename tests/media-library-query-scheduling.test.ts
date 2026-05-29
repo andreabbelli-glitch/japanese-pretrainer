@@ -10,12 +10,12 @@ describe("media library query scheduling", () => {
     vi.doUnmock("@/db/queries");
     vi.doUnmock("@/lib/data-cache");
     vi.doUnmock("@/lib/local-date");
-    vi.doUnmock("@/lib/media-shell-snapshot");
+    vi.doUnmock("@/features/media/model/shell-snapshot");
     vi.doUnmock("@/features/review/server/loader");
     vi.doUnmock("@/lib/settings");
     vi.doUnmock("@/lib/site");
-    vi.doUnmock("@/lib/study-format");
-    vi.doUnmock("@/lib/study-metrics");
+    vi.doUnmock("@/features/study/model/format");
+    vi.doUnmock("@/features/study/model/metrics");
   });
 
   it("starts shared review settings before the cached media list settles", async () => {
@@ -82,7 +82,7 @@ describe("media library query scheduling", () => {
     vi.doMock("@/lib/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
     }));
-    vi.doMock("@/lib/media-shell-snapshot", () => ({
+    vi.doMock("@/features/media/model/shell-snapshot", () => ({
       mapMediaShellSnapshotFromCounts: vi.fn(
         ({ glossary, lessons, media, reviewCounts }) => ({
           activeReviewCards: reviewCounts?.activeReviewCards ?? 0,
@@ -142,10 +142,10 @@ describe("media library query scheduling", () => {
     vi.doMock("@/lib/site", () => ({
       mediaGlossaryEntryHref: vi.fn(() => "/glossary/entry")
     }));
-    vi.doMock("@/lib/study-format", () => ({
+    vi.doMock("@/features/study/model/format", () => ({
       calculatePercent: vi.fn(() => 0)
     }));
-    vi.doMock("@/lib/study-metrics", () => ({
+    vi.doMock("@/features/study/model/metrics", () => ({
       buildEmptyGlossaryProgressSnapshot: vi.fn(() => ({
         breakdown: {
           available: 0,
@@ -161,7 +161,7 @@ describe("media library query scheduling", () => {
       }))
     }));
 
-    const { getMediaLibraryData } = await import("@/lib/media-shell");
+    const { getMediaLibraryData } = await import("@/features/media/server");
     const mediaLibraryPromise = getMediaLibraryData();
 
     await schedule.expectStarted(

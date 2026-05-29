@@ -34,7 +34,7 @@ import {
   capitalizeToken,
   formatCardRelationshipLabel,
   formatReviewStateLabel
-} from "@/lib/study-format";
+} from "@/features/study/model/format";
 import { buildEntryKey } from "@/lib/entry-id";
 import { measureWith, type ReviewProfiler } from "@/features/review/server/profiler";
 import { stripInlineMarkdown } from "@/lib/render-furigana";

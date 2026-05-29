@@ -13,13 +13,13 @@ import type {
   TermDefinitionBlock
 } from "../types.ts";
 import { buildEntryKey } from "../../entry-id.ts";
-import { normalizeSearchText } from "../../study-search.ts";
+import { normalizeSearchText } from "../../../features/study/model/search.ts";
 import { mediaAssetHref } from "../../site.ts";
 
 export {
   normalizeGrammarSearchText,
   normalizeSearchText
-} from "../../study-search.ts";
+} from "../../../features/study/model/search.ts";
 
 export function buildDeterministicId(
   namespace: string,

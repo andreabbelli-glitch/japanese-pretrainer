@@ -1,11 +1,11 @@
-import type { DashboardData } from "@/lib/dashboard";
+import type { DashboardData } from "@/features/dashboard/server";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const { getDashboardDataMock } = vi.hoisted(() => ({
   getDashboardDataMock: vi.fn()
 }));
 
-vi.mock("@/lib/dashboard", () => ({
+vi.mock("@/features/dashboard/server", () => ({
   getDashboardData: getDashboardDataMock
 }));
 

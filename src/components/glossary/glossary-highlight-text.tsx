@@ -4,7 +4,7 @@ import {
   foldJapaneseKana,
   normalizeGrammarSearchText,
   normalizeSearchText
-} from "@/lib/study-search";
+} from "@/features/study/model/search";
 
 type HighlightTextProps = {
   mode?: GlossaryMatchMode;

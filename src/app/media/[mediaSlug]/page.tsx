@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { MediaDetailPage } from "@/components/media/media-detail-page";
-import { getMediaProgressPageData } from "@/lib/progress";
+import { getMediaProgressPageData } from "@/features/progress/server";
 
 type MediaDetailRouteProps = {
   params: Promise<{

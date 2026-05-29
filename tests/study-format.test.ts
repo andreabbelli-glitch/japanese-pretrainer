@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   formatMediaTypeLabel,
   formatSegmentKindLabel
-} from "@/lib/study-format";
+} from "@/features/study/model/format";
 
 describe("study format labels", () => {
   it("formats dedicated web media labels", () => {
