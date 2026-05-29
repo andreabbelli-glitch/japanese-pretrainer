@@ -1,11 +1,10 @@
 import path from "node:path";
-import { execFile } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { promisify } from "node:util";
 
 import { describe, expect, it } from "vitest";
 
-const execFileAsync = promisify(execFile);
+import { runNodeCli } from "./helpers/run-cli";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, "..");
@@ -36,8 +35,7 @@ describe("pronunciation reuse CLI", () => {
 });
 
 function runReuseCli(...args: string[]) {
-  return execFileAsync(
-    process.execPath,
+  return runNodeCli(
     [
       "--experimental-strip-types",
       path.join(repoRoot, "scripts", "reuse-pronunciations.ts"),

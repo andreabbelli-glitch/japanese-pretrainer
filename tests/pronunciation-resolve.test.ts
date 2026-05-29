@@ -1,9 +1,7 @@
 import path from "node:path";
-import { execFile } from "node:child_process";
 import { cp, mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
-import { promisify } from "node:util";
 
 import {
   afterAll,
@@ -39,13 +37,35 @@ import {
   selectPronunciationResolveTargets
 } from "@/lib/pronunciation-resolve";
 import type { PronunciationTargetEntry } from "@/lib/pronunciation-shared";
+import { runNodeCli } from "./helpers/run-cli";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const execFileAsync = promisify(execFile);
 const fixturesRoot = path.resolve(__dirname, "fixtures", "content");
 const validContentRoot = path.join(fixturesRoot, "valid", "content");
 const NOW = "2026-04-18T09:00:00.000Z";
+const resolveCliScript = path.join(
+  process.cwd(),
+  "scripts",
+  "resolve-pronunciations.ts"
+);
+
+function runResolveCli(
+  args: string[],
+  options: { cwd?: string; env?: Record<string, string | undefined> } = {}
+) {
+  return runNodeCli(["--experimental-strip-types", resolveCliScript, ...args], {
+    cwd: options.cwd,
+    env: options.env
+  });
+}
+
+function isolatedPronunciationWorkflowArgs(directory: string) {
+  return [
+    `--known-missing-file=${path.join(directory, "forvo-known-missing.json")}`,
+    `--request-registry-file=${path.join(directory, "forvo-requested-word-add.json")}`
+  ];
+}
 
 describe("pronunciation resolve", () => {
   it("parses textbook lesson URLs from full URLs and app paths", () => {
@@ -94,8 +114,7 @@ describe("pronunciation resolve", () => {
   });
 
   it("can be imported by the Node strip-types runtime used by pronunciation scripts", async () => {
-    await execFileAsync(
-      process.execPath,
+    await runNodeCli(
       [
         "--experimental-strip-types",
         "-e",
@@ -142,21 +161,19 @@ describe("pronunciation resolve", () => {
       closeDatabaseClient(database);
 
       try {
-        const { stdout } = await execFileAsync(
-          process.execPath,
+        const { stdout } = await runResolveCli(
           [
-            "--experimental-strip-types",
-            path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
             "--mode=review",
             `--content-root=${contentRoot}`,
+            ...isolatedPronunciationWorkflowArgs(tempDir),
             "--dry-run",
             "--limit=0",
+            "--no-tofugu",
             "--no-open"
           ],
           {
             cwd: process.cwd(),
             env: {
-              ...process.env,
               DATABASE_URL: databasePath
             }
           }
@@ -174,26 +191,24 @@ describe("pronunciation resolve", () => {
       closeDatabaseClient(database);
 
       try {
-        const { stdout } = await execFileAsync(
-          process.execPath,
+        const { stdout } = await runResolveCli(
           [
-            "--experimental-strip-types",
-            path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
             "--mode=targeted",
             "--media",
             "sample-game",
             "--entry",
             "term-yomu",
             `--content-root=${contentRoot}`,
+            ...isolatedPronunciationWorkflowArgs(tempDir),
             "--dry-run",
             "--limit=0",
+            "--no-tofugu",
             "--no-open",
             "--no-tofugu-download"
           ],
           {
             cwd: process.cwd(),
             env: {
-              ...process.env,
               DATABASE_URL: databasePath
             }
           }
@@ -215,26 +230,20 @@ describe("pronunciation resolve", () => {
         path.join(tempDir, ".env.local"),
         `DATABASE_URL=${databasePath}\n`
       );
-      const env = { ...process.env };
-      delete env.DATABASE_URL;
-      delete env.DATABASE_AUTH_TOKEN;
-      delete env.LIBSQL_AUTH_TOKEN;
 
       try {
-        const { stdout } = await execFileAsync(
-          process.execPath,
+        const { stdout } = await runResolveCli(
           [
-            "--experimental-strip-types",
-            path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
             "--mode=review",
             `--content-root=${contentRoot}`,
+            ...isolatedPronunciationWorkflowArgs(tempDir),
             "--dry-run",
             "--limit=0",
+            "--no-tofugu",
             "--no-open"
           ],
           {
-            cwd: tempDir,
-            env
+            cwd: tempDir
           }
         );
 
@@ -252,22 +261,20 @@ describe("pronunciation resolve", () => {
 
       try {
         await expect(
-          execFileAsync(
-            process.execPath,
+          runResolveCli(
             [
-              "--experimental-strip-types",
-              path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
               "--mode=review",
               `--content-root=${contentRoot}`,
+              ...isolatedPronunciationWorkflowArgs(tempDir),
               "--dry-run",
               "--limit=0",
+              "--no-tofugu",
               "--no-open",
               "--bogus"
             ],
             {
               cwd: process.cwd(),
               env: {
-                ...process.env,
                 DATABASE_URL: databasePath
               }
             }
@@ -287,23 +294,21 @@ describe("pronunciation resolve", () => {
 
       try {
         await expect(
-          execFileAsync(
-            process.execPath,
+          runResolveCli(
             [
-              "--experimental-strip-types",
-              path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
               "--mode=targeted",
               "--entry",
               "term-yomu",
               `--content-root=${contentRoot}`,
+              ...isolatedPronunciationWorkflowArgs(tempDir),
               "--dry-run",
               "--limit=0",
+              "--no-tofugu",
               "--no-open"
             ],
             {
               cwd: process.cwd(),
               env: {
-                ...process.env,
                 DATABASE_URL: databasePath
               }
             }
@@ -325,22 +330,20 @@ describe("pronunciation resolve", () => {
 
       try {
         await expect(
-          execFileAsync(
-            process.execPath,
+          runResolveCli(
             [
-              "--experimental-strip-types",
-              path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
               "--mode=review",
               "--media",
               "--dry-run",
               `--content-root=${contentRoot}`,
+              ...isolatedPronunciationWorkflowArgs(tempDir),
               "--limit=0",
+              "--no-tofugu",
               "--no-open"
             ],
             {
               cwd: process.cwd(),
               env: {
-                ...process.env,
                 DATABASE_URL: databasePath
               }
             }
@@ -360,21 +363,19 @@ describe("pronunciation resolve", () => {
 
       try {
         await expect(
-          execFileAsync(
-            process.execPath,
+          runResolveCli(
             [
-              "--experimental-strip-types",
-              path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
               "--mode=review",
               `--content-root=${contentRoot}`,
+              ...isolatedPronunciationWorkflowArgs(tempDir),
               "--dry-run",
               "--limit=two",
+              "--no-tofugu",
               "--no-open"
             ],
             {
               cwd: process.cwd(),
               env: {
-                ...process.env,
                 DATABASE_URL: databasePath
               }
             }
@@ -395,13 +396,11 @@ describe("pronunciation resolve", () => {
       closeDatabaseClient(database);
 
       try {
-        const { stdout } = await execFileAsync(
-          process.execPath,
+        const { stdout } = await runResolveCli(
           [
-            "--experimental-strip-types",
-            path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
             "--mode=review",
             `--content-root=${contentRoot}`,
+            ...isolatedPronunciationWorkflowArgs(tempDir),
             "--dry-run",
             "--limit=0",
             "--no-open",
@@ -411,7 +410,6 @@ describe("pronunciation resolve", () => {
           {
             cwd: process.cwd(),
             env: {
-              ...process.env,
               DATABASE_URL: databasePath
             }
           }
@@ -430,21 +428,19 @@ describe("pronunciation resolve", () => {
 
       try {
         await expect(
-          execFileAsync(
-            process.execPath,
+          runResolveCli(
             [
-              "--experimental-strip-types",
-              path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
               "--mode=review",
               `--content-root=${contentRoot}`,
+              ...isolatedPronunciationWorkflowArgs(tempDir),
               "--dry-run",
               "--limit=9007199254740993",
+              "--no-tofugu",
               "--no-open"
             ],
             {
               cwd: process.cwd(),
               env: {
-                ...process.env,
                 DATABASE_URL: databasePath
               }
             }

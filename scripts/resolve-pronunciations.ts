@@ -4,7 +4,6 @@ import { readFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
-import { db } from "../src/db/client.ts";
 import { assertForvoManualRunCanStart } from "../src/lib/pronunciation.ts";
 import {
   resolvePronunciations,
@@ -79,78 +78,84 @@ if (!options.openWordAddOnSkip) {
     const wordListSource = options.wordListPath
       ? await readFile(path.resolve(options.wordListPath), "utf8")
       : undefined;
-    const result = await resolvePronunciations({
-      contentRoot: path.resolve(options.contentRoot),
-      database: db,
-      dryRun: options.dryRun,
-      entryIds: options.entryIds,
-      forvoOptions: {
-        ankiAppPath: options.ankiAppPath,
-        ankiBaseDir: path.resolve(options.ankiBaseDir),
-        ankiPythonPath: options.ankiPythonPath,
-        browserTimeoutMs: options.browserTimeoutMs,
+    const { closeDatabaseClient, db } = await import("../src/db/client.ts");
+
+    try {
+      const result = await resolvePronunciations({
+        contentRoot: path.resolve(options.contentRoot),
+        database: db,
+        dryRun: options.dryRun,
+        entryIds: options.entryIds,
+        forvoOptions: {
+          ankiAppPath: options.ankiAppPath,
+          ankiBaseDir: path.resolve(options.ankiBaseDir),
+          ankiPythonPath: options.ankiPythonPath,
+          browserTimeoutMs: options.browserTimeoutMs,
+          knownMissingPath: path.resolve(options.knownMissingPath),
+          openWordAddOnMiss: options.openWordAddOnSkip,
+          requestRegistryPath: path.resolve(options.requestRegistryPath),
+          retryKnownMissing: options.retryKnownMissing
+        },
         knownMissingPath: path.resolve(options.knownMissingPath),
-        openWordAddOnMiss: options.openWordAddOnSkip,
-        requestRegistryPath: path.resolve(options.requestRegistryPath),
-        retryKnownMissing: options.retryKnownMissing
-      },
-      knownMissingPath: path.resolve(options.knownMissingPath),
-      lessonUrl: options.lessonUrl,
-      limit: options.limit,
-      mediaSlug: options.mediaSlug,
-      mode: options.mode,
-      refresh: options.refresh,
-      retryKnownMissing: options.retryKnownMissing,
-      tofuguAllowDownload: options.dryRun
-        ? false
-        : options.tofuguAllowDownload,
-      tofuguDatasetDir: path.resolve(options.tofuguDatasetDir),
-      tofuguEnabled: options.tofuguEnabled,
-      wordListSource,
-      words: options.words
-    });
-
-    console.info(
-      `mode=${result.mode} media=${result.selectedMediaSlugs.join(",") || "none"}`
-    );
-
-    for (const summary of result.summaries) {
-      const forvoSummary = summary.execution.forvoSummary;
-      const forvoSummaryText = forvoSummary
-        ? ` forvo_matched=${forvoSummary.matched} forvo_missed=${forvoSummary.missed}`
-        : "";
+        lessonUrl: options.lessonUrl,
+        limit: options.limit,
+        mediaSlug: options.mediaSlug,
+        mode: options.mode,
+        refresh: options.refresh,
+        retryKnownMissing: options.retryKnownMissing,
+        tofuguAllowDownload: options.dryRun
+          ? false
+          : options.tofuguAllowDownload,
+        tofuguDatasetDir: path.resolve(options.tofuguDatasetDir),
+        tofuguEnabled: options.tofuguEnabled,
+        wordListSource,
+        words: options.words
+      });
 
       console.info(
-        `${summary.bundle.mediaSlug}: selected=${summary.targets.length} reuse=${summary.execution.reuseSummary.reused} tofugu_matched=${summary.execution.tofuguSummary?.matched ?? 0}${forvoSummaryText} pending=${summary.execution.pendingSummary.pendingCount}`
+        `mode=${result.mode} media=${result.selectedMediaSlugs.join(",") || "none"}`
       );
 
-      if (summary.execution.tofuguSummary?.unavailableReason) {
+      for (const summary of result.summaries) {
+        const forvoSummary = summary.execution.forvoSummary;
+        const forvoSummaryText = forvoSummary
+          ? ` forvo_matched=${forvoSummary.matched} forvo_missed=${forvoSummary.missed}`
+          : "";
+
         console.info(
-          `  tofugu unavailable: ${summary.execution.tofuguSummary.unavailableReason}`
+          `${summary.bundle.mediaSlug}: selected=${summary.targets.length} reuse=${summary.execution.reuseSummary.reused} tofugu_matched=${summary.execution.tofuguSummary?.matched ?? 0}${forvoSummaryText} pending=${summary.execution.pendingSummary.pendingCount}`
+        );
+
+        if (summary.execution.tofuguSummary?.unavailableReason) {
+          console.info(
+            `  tofugu unavailable: ${summary.execution.tofuguSummary.unavailableReason}`
+          );
+        }
+
+        if (summary.lessonSlug) {
+          console.info(`  lesson ${summary.lessonSlug}`);
+        }
+
+        if (summary.execution.knownMissingSkipped.length > 0) {
+          console.info(
+            `  skipped known missing: ${summary.execution.knownMissingSkipped.join(", ")}`
+          );
+        }
+
+        if (summary.execution.finalEntryIds.length > 0) {
+          console.info(
+            `  forvo targets: ${summary.execution.finalEntryIds.join(", ")}`
+          );
+        }
+      }
+
+      for (const unresolved of result.requestedUnresolved) {
+        console.info(
+          `  skipped ${unresolved.mediaSlug}:${unresolved.raw} (${unresolved.reason})`
         );
       }
-
-      if (summary.lessonSlug) {
-        console.info(`  lesson ${summary.lessonSlug}`);
-      }
-
-      if (summary.execution.knownMissingSkipped.length > 0) {
-        console.info(
-          `  skipped known missing: ${summary.execution.knownMissingSkipped.join(", ")}`
-        );
-      }
-
-      if (summary.execution.finalEntryIds.length > 0) {
-        console.info(
-          `  forvo targets: ${summary.execution.finalEntryIds.join(", ")}`
-        );
-      }
-    }
-
-    for (const unresolved of result.requestedUnresolved) {
-      console.info(
-        `  skipped ${unresolved.mediaSlug}:${unresolved.raw} (${unresolved.reason})`
-      );
+    } finally {
+      closeDatabaseClient(db);
     }
   } catch (error) {
     console.error(error instanceof Error ? error.message : String(error));

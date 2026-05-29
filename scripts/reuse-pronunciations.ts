@@ -1,13 +1,5 @@
 import path from "node:path";
 
-import { parseContentRoot } from "../src/lib/content/validator.ts";
-import {
-  createPronunciationReuseContext,
-  refreshPronunciationReuseContextBundle,
-  reusePronunciationsAcrossMedia,
-  writeBundlePronunciationPendingSummary
-} from "../src/lib/pronunciation.ts";
-
 type CliOptions = {
   contentRoot: string;
   dryRun: boolean;
@@ -16,6 +8,13 @@ type CliOptions = {
 };
 
 const options = parseCliOptions(process.argv.slice(2));
+const { parseContentRoot } = await import("../src/lib/content/validator.ts");
+const {
+  createPronunciationReuseContext,
+  refreshPronunciationReuseContextBundle,
+  reusePronunciationsAcrossMedia,
+  writeBundlePronunciationPendingSummary
+} = await import("../src/lib/pronunciation.ts");
 const parseResult = await parseContentRoot(path.resolve(options.contentRoot));
 
 if (!parseResult.ok) {
