@@ -378,15 +378,6 @@
       "updatedAt": "2026-03-23T23:52:26.328Z"
     },
     {
-      "entryId": "term-final-revolution",
-      "entryKind": "term",
-      "label": "ファイナル革命",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ファイナルかくめい",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T21:25:39.110Z"
-    },
-    {
       "entryId": "term-smash-burst",
       "entryKind": "term",
       "label": "スマッシュ・バースト",
@@ -2247,15 +2238,6 @@
       "reading": "ハードモードではさらにきょうりょくなモンスターがしゅつげん",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-05-02T13:36:51.889Z"
-    },
-    {
-      "entryId": "term-hard-mode-ga-kaihou-saremashita",
-      "entryKind": "term",
-      "label": "ハードモードが解放されました",
-      "mediaSlug": "web-giapponese",
-      "reading": "ハードモードがかいほうされました",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-02T13:36:50.067Z"
     },
     {
       "entryId": "term-saikin-ppoi",

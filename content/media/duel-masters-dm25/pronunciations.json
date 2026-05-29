@@ -1732,6 +1732,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-final-revolution",
+      "audio_src": "assets/audio/term/term-final-revolution/forvo-ym1130kb-ファイナルかくめい.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "ym1130kb",
+      "audio_attribution": "ym1130kb via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E9%9D%A9%E5%91%BD/#ja",
       "pitch_accent_status": "miss"
     },
     {

@@ -1172,7 +1172,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "ファイナルかくめい",
       "requestUrl": "https://forvo.com/word-add/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E9%9D%A9%E5%91%BD/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:25:30.520Z"
+      "requestedAt": "2026-05-24T18:25:30.520Z",
+      "resolvedAt": "2026-05-29T20:20:36.296Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-final-revolution/forvo-ym1130kb-ファイナルかくめい.mp3"
     },
     {
       "entryId": "term-g-neo-creature",
@@ -5295,7 +5298,10 @@
       "mediaSlug": "web-giapponese",
       "reading": "ハードモードがかいほうされました",
       "requestUrl": "https://forvo.com/word-add/%E3%83%8F%E3%83%BC%E3%83%89%E3%83%A2%E3%83%BC%E3%83%89%E3%81%8C%E8%A7%A3%E6%94%BE%E3%81%95%E3%82%8C%E3%81%BE%E3%81%97%E3%81%9F/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:28:21.810Z"
+      "requestedAt": "2026-05-24T18:28:21.810Z",
+      "resolvedAt": "2026-05-29T20:20:36.222Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-hard-mode-ga-kaihou-saremashita/forvo-ym1130kb-ハート-モート-か-かいほうされました.mp3"
     },
     {
       "entryId": "term-hikinaoseru",
