@@ -38,6 +38,7 @@ export type PitchAccentPatternStats = {
 };
 
 export type PitchAccentPageData = {
+  readonly availableMoraCounts: readonly number[];
   readonly corpusPairCount: number;
   readonly recentSession: PitchAccentSessionSummary | null;
 };

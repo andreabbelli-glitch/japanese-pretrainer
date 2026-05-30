@@ -71,6 +71,7 @@ describe("pitch accent session persistence", () => {
       count: 3,
       database: fixture.database,
       filters: {
+        moraCounts: [3],
         onlyDevoiced: false,
         patternKeys: ["pitch0", "pitch1"],
         strictPairFinding: false
@@ -82,6 +83,11 @@ describe("pitch accent session persistence", () => {
 
     expect(started.trials).toHaveLength(3);
     expect(firstTrial.options).toHaveLength(2);
+    expect(
+      started.trials.every((trial) =>
+        trial.options.every((option) => option.moraCount === 3)
+      )
+    ).toBe(true);
 
     const firstSubmit = await submitPitchAccentAnswer({
       chosenOptionId: firstTrial.correctOptionId,

@@ -123,6 +123,7 @@ describe("pitch accent minimal pairs corpus", () => {
   it("filters selected patterns lazily or strictly and supports devoiced-only", () => {
     expect(
       filterPitchAccentMinimalPairs(fixtureCorpus, {
+        moraCounts: [],
         onlyDevoiced: false,
         patternKeys: ["pitch1"],
         strictPairFinding: false
@@ -131,6 +132,7 @@ describe("pitch accent minimal pairs corpus", () => {
 
     expect(
       filterPitchAccentMinimalPairs(fixtureCorpus, {
+        moraCounts: [],
         onlyDevoiced: false,
         patternKeys: ["pitch1"],
         strictPairFinding: true
@@ -139,6 +141,7 @@ describe("pitch accent minimal pairs corpus", () => {
 
     expect(
       filterPitchAccentMinimalPairs(fixtureCorpus, {
+        moraCounts: [],
         onlyDevoiced: true,
         patternKeys: ["pitch0", "pitch1"],
         strictPairFinding: false
@@ -146,11 +149,41 @@ describe("pitch accent minimal pairs corpus", () => {
     ).toEqual(["pair-c"]);
   });
 
+  it("filters pairs by selected mora counts", () => {
+    expect(
+      filterPitchAccentMinimalPairs(fixtureCorpus, {
+        moraCounts: [2],
+        onlyDevoiced: false,
+        patternKeys: ["pitch0", "pitch1"],
+        strictPairFinding: false
+      }).map((pair) => pair.id)
+    ).toEqual(["pair-a", "pair-b"]);
+
+    expect(
+      filterPitchAccentMinimalPairs(fixtureCorpus, {
+        moraCounts: [3],
+        onlyDevoiced: false,
+        patternKeys: ["pitch0", "pitch1"],
+        strictPairFinding: false
+      }).map((pair) => pair.id)
+    ).toEqual(["pair-c"]);
+
+    expect(
+      filterPitchAccentMinimalPairs(fixtureCorpus, {
+        moraCounts: [],
+        onlyDevoiced: false,
+        patternKeys: ["pitch0", "pitch1"],
+        strictPairFinding: false
+      }).map((pair) => pair.id)
+    ).toEqual(["pair-a", "pair-b", "pair-c"]);
+  });
+
   it("plans deterministic session trials from eligible pairs", () => {
     const firstPlan = planPitchAccentSessionTrials({
       corpus: fixtureCorpus,
       count: 3,
       filters: {
+        moraCounts: [],
         onlyDevoiced: false,
         patternKeys: ["pitch0", "pitch1"],
         strictPairFinding: false
@@ -162,6 +195,7 @@ describe("pitch accent minimal pairs corpus", () => {
       corpus: fixtureCorpus,
       count: 3,
       filters: {
+        moraCounts: [],
         onlyDevoiced: false,
         patternKeys: ["pitch0", "pitch1"],
         strictPairFinding: false
@@ -185,6 +219,7 @@ describe("pitch accent minimal pairs corpus", () => {
       corpus: fixtureCorpus,
       count: 5,
       filters: {
+        moraCounts: [],
         onlyDevoiced: true,
         patternKeys: ["pitch0", "pitch1"],
         strictPairFinding: false

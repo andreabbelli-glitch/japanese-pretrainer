@@ -17,6 +17,7 @@ import {
   mapPitchAccentSessionSummary,
   mapPitchAccentTrialRow
 } from "./mappers";
+import { getAvailablePitchAccentMoraCounts } from "../model";
 
 export async function getPitchAccentPageData(
   input: {
@@ -33,6 +34,9 @@ export async function getPitchAccentPageData(
   ]);
 
   return {
+    availableMoraCounts: corpus
+      ? getAvailablePitchAccentMoraCounts(corpus)
+      : [],
     corpusPairCount: input.corpusPairCount ?? corpus?.pairs.length ?? 0,
     recentSession: recentSessions[0]
       ? mapPitchAccentSessionSummary(recentSessions[0])

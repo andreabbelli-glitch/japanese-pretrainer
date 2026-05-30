@@ -97,6 +97,7 @@ test("stores selected Pitch Accent filters when starting a session", async ({
   await installMediaStubs(page);
   await page.goto("/pitch-accent");
 
+  await page.getByLabel("2 mora").uncheck();
   await page.getByLabel("Solo coppie con devoicing").check();
   await page.getByLabel("Coppie solo tra pattern selezionati").check();
   await page.getByRole("button", { name: "Avvia sessione" }).click();
@@ -113,10 +114,18 @@ test("stores selected Pitch Accent filters when starting a session", async ({
       where: eq(pitchAccentSession.id, sessionId!)
     });
 
-    expect(JSON.parse(session?.filtersJson ?? "{}")).toMatchObject({
+    const filters = JSON.parse(session?.filtersJson ?? "{}") as {
+      moraCounts?: number[];
+      onlyDevoiced?: boolean;
+      strictPairFinding?: boolean;
+    };
+
+    expect(filters).toMatchObject({
       onlyDevoiced: true,
       strictPairFinding: true
     });
+    expect(filters.moraCounts).toBeTruthy();
+    expect(filters.moraCounts).not.toContain(2);
   } finally {
     closeDatabaseClient(database);
   }

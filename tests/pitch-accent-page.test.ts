@@ -19,6 +19,7 @@ vi.mock("next/navigation", () => ({
 }));
 
 const pageData: PitchAccentPageData = {
+  availableMoraCounts: [2, 3, 4],
   corpusPairCount: 1882,
   recentSession: null
 };
@@ -26,6 +27,7 @@ const pageData: PitchAccentPageData = {
 const sessionData: PitchAccentSessionPageData = {
   answeredCount: 0,
   filters: {
+    moraCounts: [2],
     onlyDevoiced: false,
     patternKeys: ["pitch0", "pitch1"],
     strictPairFinding: false
@@ -78,6 +80,9 @@ describe("pitch accent pages", () => {
     expect(markup).toContain("1.882");
     expect(markup).toContain("Avvia sessione");
     expect(markup).toContain("Corpus statici");
+    expect(markup).toContain("Mora");
+    expect(markup).toContain("2 mora");
+    expect(markup).toContain("4 mora");
     expect(markup).toContain("licenze nei NOTICE locali");
   });
 

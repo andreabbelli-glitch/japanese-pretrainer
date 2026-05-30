@@ -15,6 +15,7 @@ export const pitchAccentPatternKeys = [
 ] as const satisfies readonly PitchAccentPatternKey[];
 
 export const defaultPitchAccentFilters: PitchAccentPatternFilter = {
+  moraCounts: [],
   onlyDevoiced: false,
   patternKeys: pitchAccentPatternKeys,
   strictPairFinding: false
@@ -47,6 +48,9 @@ export function getPitchAccentPatternKey(
 export function normalizePitchAccentFilters(
   filters: Partial<PitchAccentPatternFilter> | undefined
 ): PitchAccentPatternFilter {
+  const moraCounts = [...new Set(filters?.moraCounts ?? [])]
+    .filter((count) => Number.isInteger(count) && count > 0)
+    .sort((left, right) => left - right);
   const selectedKeys = [
     ...new Set(filters?.patternKeys ?? pitchAccentPatternKeys)
   ]
@@ -54,6 +58,7 @@ export function normalizePitchAccentFilters(
     .sort(comparePitchAccentPatternKey);
 
   return {
+    moraCounts,
     onlyDevoiced: filters?.onlyDevoiced ?? false,
     patternKeys:
       selectedKeys.length > 0 ? selectedKeys : pitchAccentPatternKeys,
@@ -66,10 +71,17 @@ export function filterPitchAccentMinimalPairs(
   filters: Partial<PitchAccentPatternFilter> | undefined
 ): readonly PitchAccentMinimalPair[] {
   const normalizedFilters = normalizePitchAccentFilters(filters);
+  const selectedMoraCounts = new Set(normalizedFilters.moraCounts);
   const selected = new Set(normalizedFilters.patternKeys);
 
   return corpus.pairs.filter((pair) => {
     if (normalizedFilters.onlyDevoiced && !pair.hasDevoiced) {
+      return false;
+    }
+    if (
+      selectedMoraCounts.size > 0 &&
+      !pair.options.every((option) => selectedMoraCounts.has(option.moraCount))
+    ) {
       return false;
     }
 
@@ -87,6 +99,22 @@ export function filterPitchAccentMinimalPairs(
       selected.has(patternKey)
     );
   });
+}
+
+export function getAvailablePitchAccentMoraCounts(
+  corpus: Pick<PitchAccentMinimalPairsCorpus, "pairs">
+): readonly number[] {
+  const counts = new Set<number>();
+
+  for (const pair of corpus.pairs) {
+    for (const option of pair.options) {
+      if (Number.isInteger(option.moraCount) && option.moraCount > 0) {
+        counts.add(option.moraCount);
+      }
+    }
+  }
+
+  return [...counts].sort((left, right) => left - right);
 }
 
 export function validatePitchAccentMinimalPairsCorpus(

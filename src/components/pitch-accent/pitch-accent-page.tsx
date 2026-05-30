@@ -29,6 +29,9 @@ export function PitchAccentPage({ data }: PitchAccentPageProps) {
   const [selectedPatterns, setSelectedPatterns] = useState<
     readonly PitchAccentPatternKey[]
   >(pitchAccentPatternKeys);
+  const [selectedMoraCounts, setSelectedMoraCounts] = useState<
+    readonly number[]
+  >(data.availableMoraCounts);
   const [onlyDevoiced, setOnlyDevoiced] = useState(false);
   const [strictPairFinding, setStrictPairFinding] = useState(false);
   const [clientError, setClientError] = useState<string | null>(null);
@@ -45,6 +48,7 @@ export function PitchAccentPage({ data }: PitchAccentPageProps) {
     try {
       const session = await startPitchAccentSessionAction({
         filters: {
+          moraCounts: selectedMoraCounts,
           onlyDevoiced,
           patternKeys: selectedPatterns,
           strictPairFinding
@@ -73,6 +77,17 @@ export function PitchAccentPage({ data }: PitchAccentPageProps) {
           pitchAccentPatternKeys.indexOf(left) -
           pitchAccentPatternKeys.indexOf(right)
       );
+    });
+  }
+
+  function toggleMoraCount(moraCount: number) {
+    setSelectedMoraCounts((current) => {
+      if (current.includes(moraCount)) {
+        const next = current.filter((count) => count !== moraCount);
+        return next.length > 0 ? next : current;
+      }
+
+      return [...current, moraCount].sort((left, right) => left - right);
     });
   }
 
@@ -145,6 +160,24 @@ export function PitchAccentPage({ data }: PitchAccentPageProps) {
           </div>
         </SurfaceCard>
 
+        {data.availableMoraCounts.length > 0 ? (
+          <SurfaceCard className="pitch-accent-panel pitch-accent-panel--wide">
+            <p className="pitch-accent-eyebrow">Mora</p>
+            <div className="pitch-accent-filter-grid">
+              {data.availableMoraCounts.map((moraCount) => (
+                <label className="pitch-accent-check" key={moraCount}>
+                  <input
+                    checked={selectedMoraCounts.includes(moraCount)}
+                    onChange={() => toggleMoraCount(moraCount)}
+                    type="checkbox"
+                  />
+                  <span>{moraCountLabel(moraCount)}</span>
+                </label>
+              ))}
+            </div>
+          </SurfaceCard>
+        ) : null}
+
         <SurfaceCard className="pitch-accent-panel">
           <p className="pitch-accent-eyebrow">Opzioni</p>
           <div className="pitch-accent-toggle-stack">
@@ -183,6 +216,10 @@ export function PitchAccentPage({ data }: PitchAccentPageProps) {
       </section>
     </div>
   );
+}
+
+function moraCountLabel(moraCount: number) {
+  return moraCount === 1 ? "1 mora" : `${moraCount} mora`;
 }
 
 function patternLabel(patternKey: PitchAccentPatternKey) {

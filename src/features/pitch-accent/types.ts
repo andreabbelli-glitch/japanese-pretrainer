@@ -6,6 +6,7 @@ export type PitchAccentPatternKey =
   | "pitch4";
 
 export type PitchAccentPatternFilter = {
+  readonly moraCounts: readonly number[];
   readonly onlyDevoiced: boolean;
   readonly patternKeys: readonly PitchAccentPatternKey[];
   readonly strictPairFinding: boolean;

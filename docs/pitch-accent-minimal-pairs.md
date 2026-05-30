@@ -6,7 +6,7 @@ coppie minime finite, con corpus vendorizzato e audio statico offline.
 
 ## Superfici
 
-- `/pitch-accent`: dashboard con filtri per pattern,
+- `/pitch-accent`: dashboard con filtri per pattern, numero di mora,
   `Solo coppie con devoicing`, `Coppie solo tra pattern selezionati`, CTA di
   avvio e link alla sessione/recap piu recente.
 - `/pitch-accent/session/[sessionId]`: sessione focalizzata da 20 trial con

@@ -455,6 +455,7 @@ function buildSession(): PitchAccentSessionPageData {
   return {
     answeredCount: 0,
     filters: {
+      moraCounts: [2],
       onlyDevoiced: false,
       patternKeys: ["pitch0", "pitch1"],
       strictPairFinding: false

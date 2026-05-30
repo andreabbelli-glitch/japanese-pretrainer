@@ -20,6 +20,7 @@ import PitchAccentRoute from "@/app/pitch-accent/page";
 describe("pitch accent route", () => {
   it("loads page data and renders the pitch accent page", async () => {
     getPitchAccentPageDataMock.mockResolvedValue({
+      availableMoraCounts: [2, 3],
       corpusPairCount: 1882,
       recentSession: null
     });
@@ -29,6 +30,7 @@ describe("pitch accent route", () => {
     expect(getPitchAccentPageDataMock).toHaveBeenCalledTimes(1);
     expect(element.props).toMatchObject({
       data: {
+        availableMoraCounts: [2, 3],
         corpusPairCount: 1882,
         recentSession: null
       }

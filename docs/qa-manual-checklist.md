@@ -88,7 +88,8 @@
   coda di `/review`, non scrive in Kanji Clash e non modifica `content/media`.
 - `Pitch Accent` `/pitch-accent`: apre il dashboard con totale corpus,
   attribution GPL-3.0 e filtri `Solo coppie con devoicing`,
-  `Coppie solo tra pattern selezionati` e pattern selezionabili.
+  `Coppie solo tra pattern selezionati`, pattern selezionabili e numero di
+  mora selezionabile.
 - `Pitch Accent`: `Avvia sessione` crea una sessione da 20 trial e porta a
   `/pitch-accent/session/[sessionId]`; la route sessione non mostra la sticky
   global header.
