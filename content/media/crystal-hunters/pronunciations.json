@@ -1700,9 +1700,9 @@
       "audio_speaker": "mezashi",
       "audio_attribution": "mezashi via Forvo",
       "audio_page_url": "https://forvo.com/word/%E8%A6%9A%E6%82%9F/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1663000/2",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
