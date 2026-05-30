@@ -30,7 +30,7 @@ e il verbo finale trasformano una vignetta in azione.
 - [{{付|つ}}いてくる](term:term-ch-b4-itekuru-27) - seguire; venire dietro
 - [{{持|も}}ち{{上|あ}}げる](term:term-ch-b4-chigeru-28) - sollevare
 - [{{投|な}}げ{{上|あ}}げる](term:term-ch-b4-gegeru-12) - lanciare in alto
-- [{{気|き}}を{{失|うしな}}う](term:term-ch-b4-ou-31) - perdere conoscenza
+- [{{気|き}}を{{失|うしな}}う](term:term-ch-b4-ou-31) - svenire; perdere conoscenza
 - [{{治|なお}}す](term:term-ch-b4-su-32) - curare; guarire qualcuno
 - [{{了解|りょうかい}}](term:term-ch-b4-ryoukai) - ricevuto; capito
 
@@ -181,7 +181,8 @@ secondo pezzo: spesso è lì che la vignetta prende direzione.
 ## 4. Svenire e curare
 
 [{{気|き}}を{{失|うしな}}う](term:term-ch-b4-ou-31) è una formula da leggere
-intera: perdere conoscenza. Non conviene tradurre {{気|き}} come parola isolata.
+intera: svenire/perdere conoscenza. Non conviene tradurre {{気|き}} come parola
+isolata.
 
 :::example_sentence
 jp: >-

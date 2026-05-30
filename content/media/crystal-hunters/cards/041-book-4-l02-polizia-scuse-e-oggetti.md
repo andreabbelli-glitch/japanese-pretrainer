@@ -116,10 +116,11 @@ id: term-ch-b4-ou-31
 lemma: '気を失う'
 reading: 'きをうしなう'
 romaji: ki-o-u-shi-na-u
-meaning_it: perdere conoscenza
+meaning_it: svenire; perdere conoscenza
 pos: expression
 notes_it: >-
-  {{気|き}}を{{失|うしな}}う è una formula intera: la persona perde coscienza.
+  {{気|き}}を{{失|うしな}}う è una formula intera: la persona sviene o perde
+  coscienza.
   Non conviene tradurre {{気|き}} parola per parola.
 level_hint: n3
 :::
@@ -285,9 +286,9 @@ entry_type: term
 entry_id: term-ch-b4-ou-31
 card_type: recognition
 front: '{{気|き}}を{{失|うしな}}う'
-back: 'きをうしなう — perdere conoscenza'
+back: 'きをうしなう — svenire; perdere conoscenza'
 example_jp: 'カルが{{気|き}}を{{失|うしな}}う。'
-example_it: 'Kal perde conoscenza.'
+example_it: 'Kal sviene.'
 notes_it: >-
   Leggila come formula intera: in italiano il risultato è "svenire/perdere
   conoscenza", non "perdere lo spirito" parola per parola.
