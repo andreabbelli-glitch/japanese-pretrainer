@@ -16,7 +16,7 @@ summary: >-
 
 # Garchainsaw Dragon: zone, limiti e break distribuiti
 
-ガルチェンソ・ドラゴン mette in fila tre movimenti tipici del rules text di Duel Masters: una creatura entra, una carta passa dal mazzo alla mana zone, un Dragon torna in mano, poi un altro Dragon può trascinare una creatura avversaria in battle. La difficoltà non è il singolo verbo, ma il modo in cui il giapponese compatta timing, quantità e destinazione nella stessa riga.
+ガルチェンソ・ドラゴン mette in fila tre movimenti tipici del rules text di Duel Masters: una creatura entra, una carta passa dal mazzo alla mana zone, un Dragon torna in mano, poi un altro Dragon può trascinare una creatura avversaria in battle. La difficolta' sta nella compattezza di timing, quantita' e destinazione nella stessa riga.
 
 Il testo diventa molto leggibile quando separi tre domande: quando parte l'effetto, quante volte si applica, e su chi o che cosa ricade. Qui quelle risposte arrivano con `{{時|とき}}`, `につき`, `{{各|かく}}ターン`, `はじめて` e `ずつ`: piccoli segnali che decidono la procedura.
 
@@ -106,11 +106,11 @@ reveal_mode: sentence
 
 #### 🧠 Gancio cognitivo: `から` e `に` come binari
 
-Come trucco mnemonico, tratta から e に come due estremi di un binario: {{山札|やまふだ}}の{{上|うえ}}から ... [マナゾーン](term:term-mana-zone)に manda una carta verso la mana zone; [マナゾーン](term:term-mana-zone)から ... [{{手札|てふだ}}](term:term-hand)に fa tornare un Dragon verso la mano. Non è etimologia, ma aiuta a non confondere fonte e destinazione.
+Come trucco mnemonico, tratta から e に come due estremi di un binario: {{山札|やまふだ}}の{{上|うえ}}から ... [マナゾーン](term:term-mana-zone)に manda una carta verso la mana zone; [マナゾーン](term:term-mana-zone)から ... [{{手札|てふだ}}](term:term-hand)に fa tornare un Dragon verso la mano. `から` e `に` marcano gli estremi del movimento: fonte e destinazione.
 
 ## 2. Una volta per turno: scelta facoltativa e battle forzato
 
-La seconda riga cambia ritmo: non guarda più soltanto l'ingresso di Garchainsaw, ma ogni volta in cui una tua creatura Dragon entra. Il limite [{{各|かく}}ターンに{{一度|いちど}}](grammar:grammar-kaku-turn-ni-ichido) sta prima del trigger e governa tutta la procedura successiva: in quel turno puoi arrivare a questa risoluzione una sola volta.
+La seconda riga cambia ritmo: La seconda riga guarda ogni ingresso di una tua creatura Dragon. Il limite [{{各|かく}}ターンに{{一度|いちど}}](grammar:grammar-kaku-turn-ni-ichido) sta prima del trigger e governa tutta la procedura successiva: in quel turno puoi arrivare a questa risoluzione una sola volta.
 
 Dentro la frase, [{{選|えら}}んでもよい](grammar:grammar-temoyoi) è il punto di scelta. {{選|えら}}ぶ prende un bersaglio con を, mentre てもよい concede l'azione senza renderla obbligatoria. Dopo la scelta, però, その{{2体|にたい}} riprende la tua creatura Dragon appena entrata e la creatura avversaria scelta: quelle due, non altre, vengono fatte combattere.
 
@@ -165,7 +165,7 @@ reveal_mode: sentence
 *   `{{各|かく}}ターン`: lo scope si riapre a ogni turno. Da solo non dice ancora quante volte l'effetto può accadere; prepara il contesto temporale.
 *   [はじめて{{相手|あいて}}のシールドをブレイクした{{時|とき}}](grammar:grammar-hajimete-shita-toki): はじめて sposta il focus sulla prima occorrenza. ブレイクした modifica {{時|とき}}, quindi il trigger parte quando il break è già avvenuto.
 *   [{{他|ほか}}の{{各|かく}}{{相手|あいて}}](grammar:grammar-hoka-no-kaku-aite)のシールドも: {{他|ほか}}の toglie dal gruppo l'avversario già colpito, {{各|かく}} guarda ciascun altro avversario separatamente, も aggiunge anche i loro scudi al risultato.
-*   [{{1|ひと}}つずつ](grammar:grammar-hitotsu-zutsu)ブレイクする: {{1|ひと}}つ fissa l'unità, ずつ la distribuisce. Il testo non dice "un totale di uno", ma "uno per volta / uno per ciascuno".
+*   [{{1|ひと}}つずつ](grammar:grammar-hitotsu-zutsu)ブレイクする: {{1|ひと}}つ fissa l'unità, ずつ la distribuisce. Il testo `1つずつ` distribuisce un'unita' per volta o per ciascun bersaglio.
 
 #### ⚖️ Contrasto operativo: `につき` conta fonti, `ずつ` distribuisce risultato
 

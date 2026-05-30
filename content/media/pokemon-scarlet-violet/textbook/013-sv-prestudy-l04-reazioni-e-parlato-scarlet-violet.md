@@ -83,7 +83,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Pensa a [{{大丈夫|だいじょうぶ}}](term:term-v039-daijoubu) come a un semaforo verde del dialogo: non descrive un oggetto, ma lo stato complessivo della situazione. È un'immagine mnemonica, non un'etimologia.
+Pensa a [{{大丈夫|だいじょうぶ}}](term:term-v039-daijoubu) come a un semaforo verde del dialogo: `大丈夫` funziona come semaforo verde del dialogo: la situazione e' a posto. È un'immagine mnemonica, non un'etimologia.
 
 ## 2. Dal controllo al movimento: allora, andiamo
 
@@ -101,9 +101,9 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `じゃあ` ➔ **Cerniera discorsiva**: prende ciò che è appena stato deciso o confermato e apre il passo successivo.
-*   `{{行|い}}こう` ➔ **Volitivo inclusivo**: non dice "vado", ma "andiamo / muoviamoci"; il parlante include l'interlocutore nella nuova azione.
+*   `{{行|い}}こう` ➔ **Volitivo inclusivo**: `行こう` e' un volitivo inclusivo: il parlante propone di muoversi insieme.
 
-La stessa forma diventa più calda quando entra una relazione personale. [{{友達|ともだち}}](term:term-v046-tomodachi) è l'amico o il compagno, non un ruolo tecnico; vicino a {{一緒|いっしょ}}に fa sentire che il movimento è condiviso. [{{楽|たの}}しい](term:term-v050-tanoshii), invece, descrive l'esperienza come divertente o piacevole: nelle battaglie amichevoli, il punto non è soltanto vincere, ma il tono vivace con cui il personaggio vive la scena.
+La stessa forma diventa più calda quando entra una relazione personale. [{{友達|ともだち}}](term:term-v046-tomodachi) è l'amico o il compagno, Nelle battaglie amichevoli, il focus e' il tono vivace con cui il personaggio vive la scena.
 
 :::example_sentence
 jp: >-
@@ -164,7 +164,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`{{前|まえ}}` può parlare di spazio o di tempo. In `{{先|さき}}へ {{行|い}}きたい`, il movimento va "più avanti"; in `{{行|い}}く {{前|まえ}}に`, invece, `{{前|まえ}}に` non indica davanti sulla mappa, ma un momento precedente nella sequenza. La particella e il contesto decidono la lettura.
+`{{前|まえ}}` può parlare di spazio o di tempo. `前に` colloca un momento precedente nella sequenza, quando segue un verbo. La particella e il contesto decidono la lettura.
 
 ## 4. Desiderio, direzione e voce dei personaggi
 

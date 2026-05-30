@@ -94,9 +94,7 @@ example_it: >-
   a faccia in giù.
 notes_it: >-
   `Xのまま` in giapponese generale conserva lo stato di `X` senza modificarlo.
-  In questa carta il punto non è solo `{{裏向|うらむ}}き`, ma proprio il fatto
-  che la carta resti così durante il passaggio a scudo: non si scopre, non si
-  gira, non cambia stato nel mezzo della procedura.
+  `裏向きのまま` governa lo stato: la carta rimane coperta durante lo spostamento.
 tags: [live-duel, grammar, state, shields]
 :::
 

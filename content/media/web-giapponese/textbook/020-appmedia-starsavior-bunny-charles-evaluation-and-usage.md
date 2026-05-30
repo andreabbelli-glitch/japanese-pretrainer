@@ -196,8 +196,7 @@ La sezione successiva cambia prospettiva e passa dai dati agli scenari.
 [バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}](term:term-bunny-charles-tsuyosa-tsukaimichi)
 non ripete [{{性能|せいのう}}](term:term-seino): trasforma il kit in lettura
 pratica. [{{強|つよ}}さ](term:term-tsuyosa) usa l'aggettivo
-`{{強|つよ}}い` trasformato in nome con `さ`: non è solo “forza” fisica, ma la
-misura percepibile dell'efficacia. [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi)
+`{{強|つよ}}い` trasformato in nome con `さ`: `強さ` nominalizza il valore pratico di `強い`: quanto il personaggio rende nel contesto. [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi)
 unisce `{{使|つか}}い` (“uso”) e `{{道|みち}}` (“via, modo, percorso”): in una
 guida personaggio diventa “dove lo impiego davvero”.
 

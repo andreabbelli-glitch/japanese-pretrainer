@@ -61,7 +61,7 @@ Questi pezzi non vanno letti come parole isolate. In *Pokémon Scarlet & Violet*
 
 ## 1. Segnali di percorso: leggere dove ti sta mandando la scena
 
-I cartelli e le battute di accompagnamento spesso non spiegano tutto: puntano. [この{{先|さき}}](term:term-e010-kono-saki) prende この, "questo", e lo lega a {{先|さき}}, il tratto davanti a te. Non indica un luogo generico, ma la porzione di percorso che continua oltre il punto in cui sei.
+`この先` punta alla porzione di percorso che continua davanti a te.
 
 [こっち](term:term-e011-kocchi) funziona in modo diverso. È deittico: dipende da chi parla o da dove la camera ti sta richiamando. Quando un personaggio dice こっち, non sta nominando una destinazione sulla mappa; ti sta tirando verso il suo lato della scena.
 
@@ -96,7 +96,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `こっちへ` ➔ **Direzione di movimento** (`へ` orienta l'azione: il punto importante è la direzione, non l'arrivo preciso).
-*   `{{行|い}}こう` ➔ **Invito volitivo** (da `{{行|い}}く`, "andare": non è un ordine secco, ma un "andiamo").
+*   `{{行|い}}こう` ➔ **Invito volitivo** (`行こう` e' un invito volitivo: muoviamoci / andiamo).
 
 #### ⚖️ Contrasto operativo
 

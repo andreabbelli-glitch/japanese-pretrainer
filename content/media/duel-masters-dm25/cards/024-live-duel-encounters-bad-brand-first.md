@@ -142,7 +142,7 @@ example_it: >-
   Quando attacchi, se metti scoperta la prima carta del mazzo, tutti possono
   verificarla.
 notes_it: >-
-  Il punto qui non è pescare la carta ma renderla informazione pubblica. La
+  Qui l'azione rende la carta informazione pubblica. La
   frase unisce posizione del mazzo e stato `{{表|おもて}}{{向|む}}き` nello stesso
   gesto.
 tags: [live-duel, deck, reveal, chunk]

@@ -23,7 +23,7 @@ summary: >-
 
 A Paldea il testo passa continuamente da una schermata di movimento a una lotta, poi a un dialogo che ti chiede un favore o ti propone il passo successivo. Il giapponese cambia registro insieme alla scena: i menu comprimono l'informazione in label brevi, i messaggi di battaglia nominano bersagli e risultati, i personaggi ammorbidiscono richieste e consigli con forme colloquiali.
 
-Il punto non è memorizzare parole isolate, ma riconoscere chi sta facendo cosa: con quale mezzo ti muovi, verso quale luogo, quale Pokémon subisce l'azione, chi vince, chi compra e per chi viene fatta una richiesta.
+Questa lezione punta a riconoscere ruoli e relazioni: chi agisce, con quale mezzo, verso quale luogo e per chi.
 
 ## Termini chiave
 
@@ -82,7 +82,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Pensa a [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) come a uno spillo sulla mappa: non descrive il mezzo, ma il punto verso cui l'azione viene agganciata. [の](grammar:grammar-g030-possesso-collegamento-tra-nomi), invece, è il gancio piccolo tra due nomi: prende {{次|つぎ}} e lo attacca a {{町|まち}}.
+Pensa a [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) come a uno spillo sulla mappa: `に` aggancia l'azione a un punto di arrivo o bersaglio; `の` collega due nomi. [の](grammar:grammar-g030-possesso-collegamento-tra-nomi), invece, è il gancio piccolo tra due nomi: prende {{次|つぎ}} e lo attacca a {{町|まち}}.
 
 ## 2. Battaglia: chi cade, chi vince e quanto è fragile il bersaglio
 
@@ -149,7 +149,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`{{買|か}}ってください` è una richiesta cortese e diretta: "compralo, per favore". `{{買|か}}ってくれる？` mette dentro la relazione: "lo compri per me?". La differenza non è solo grammaticale, ma di scena: il menu istruisce, un personaggio chiede.
+`{{買|か}}ってください` è una richiesta cortese e diretta: "compralo, per favore". `{{買|か}}ってくれる？` mette dentro la relazione: "lo compri per me?". `買ってくれる？` inserisce la richiesta dentro una relazione personale.
 
 #### 🧠 Gancio cognitivo
 

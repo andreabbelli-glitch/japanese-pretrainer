@@ -103,7 +103,7 @@ translation_it: >-
 
 [{{全選択|ぜんせんたく}}](term:term-v665-zensentaku) non significa "scegliere la soluzione migliore". Parla di ampiezza, non di qualità: tutto ciò che rientra nella lista selezionabile viene incluso nell'azione successiva. Per la "soluzione migliore" il gioco usa un'altra logica, come [{{最適解|さいてきかい}}](term:term-v679-saitekikai), dove il punto è l'efficacia della scelta.
 
-Gli stati di ricezione lavorano in modo simile, ma sul tempo dell'azione. [{{受|う}}けとり{{可能|かのう}}](term:term-v668-uketorikanou) segnala che qualcosa può ancora essere preso in consegna; [{{受|う}}けとり{{済|ず}}み](term:term-v669-uketorizumi) segnala che l'operazione è già stata completata. [{{常設|じょうせつ}}](term:term-v677-jousetsu) aggiunge un'altra informazione: non parla di un premio già preso, ma di una funzione o presenza stabile, non temporanea.
+Gli stati di ricezione lavorano in modo simile, ma sul tempo dell'azione. [{{受|う}}けとり{{可能|かのう}}](term:term-v668-uketorikanou) segnala che qualcosa può ancora essere preso in consegna; [{{受|う}}けとり{{済|ず}}み](term:term-v669-uketorizumi) segnala che l'operazione è già stata completata. [{{常設|じょうせつ}}](term:term-v677-jousetsu) aggiunge un'altra informazione: `常設` indica una funzione o presenza stabile.
 
 :::example_sentence
 jp: >-
@@ -269,7 +269,7 @@ Per riconoscere il [{{使役|しえき}}](grammar:grammar-g111-far-fare-lasciar-
 
 Quando il testo parla di lotte, raid o attraversamento del campo, i termini non indicano solo "difficile" o "muoversi". Separano esito, cooperazione, sforzo richiesto, scelta efficace e libertà di movimento. Questa distinzione evita di leggere tutto come semplice flavor: spesso il gioco ti sta dicendo che cosa aspettarti dalla situazione.
 
-- [{{勝敗|しょうはい}}](term:term-v666-shouhai) unisce vittoria e sconfitta in un unico concetto: l'esito complessivo. Non parla del danno di un turno, ma del risultato della sfida quando viene tirata la linea finale.
+- [{{勝敗|しょうはい}}](term:term-v666-shouhai) unisce vittoria e sconfitta in un unico concetto: l'esito complessivo. `勝敗` e' l'esito complessivo della sfida.
 - [{{共闘|きょうとう}}](term:term-v671-kyoutou) combina {{共|きょう}}, insieme, e {{闘|とう}}, combattere. In un raid o in una missione non basta essere nello stesso luogo: il termine segnala che più partecipanti agiscono contro un avversario o un problema comune.
 - [{{困難|こんなん}}](term:term-v672-konnan), [{{一苦労|ひとくろう}}](term:term-v681-hitokurou) e [{{最適解|さいてきかい}}](term:term-v679-saitekikai) misurano tre cose diverse. [{{困難|こんなん}}](term:term-v672-konnan) nomina un ostacolo serio o strutturale; [{{一苦労|ひとくろう}}](term:term-v681-hitokurou) suona come "sarà una bella fatica"; [{{最適解|さいてきかい}}](term:term-v679-saitekikai) indica la risposta più efficace dentro quelle condizioni.
 - [{{腕|うで}}を{{磨|みが}}く](term:term-v680-ude-wo-migaku) usa {{腕|うで}}, braccio o abilità pratica, e {{磨|みが}}く, lucidare o affinare. Nei dialoghi di allenamento non parla di pulire qualcosa: descrive il migliorare le proprie capacità con pratica e scontri.
@@ -310,7 +310,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Per [{{縦横無尽|じゅうおうむじん}}](term:term-v682-juuoumujin), immagina una mappa senza griglia che ti blocchi: {{縦|じゅう}} è la direzione verticale, {{横|おう}} quella orizzontale, {{無尽|むじん}} toglie l'idea di limite. Non è una traduzione letterale da usare sempre, ma ti aiuta a riconoscere il senso di movimento libero quando il testo parla di esplorazione.
+Per [{{縦横無尽|じゅうおうむじん}}](term:term-v682-juuoumujin), immagina una mappa senza griglia che ti blocchi: {{縦|じゅう}} è la direzione verticale, {{横|おう}} quella orizzontale, {{無尽|むじん}} toglie l'idea di limite. `縦横無尽` evoca movimento libero in ogni direzione.
 
 ## Esempi guidati di riepilogo
 

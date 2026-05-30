@@ -418,7 +418,7 @@ translation_it: >-
 *   `{{木|き}}が` ➔ **Soggetto che cade**: nel secondo esempio l'albero è ciò che cambia stato.
 *   `{{倒|たお}}れる` ➔ **Caduta intransitiva**: non nomina chi causa la caduta.
 *   `{{男|おとこ}}が` ➔ **Agente dell'assalto**: qui l'uomo è chi parte all'attacco.
-*   `{{切|き}}りかかる` ➔ **Attacco che si avvia**: non è solo tagliare, ma lanciarsi contro qualcuno.
+*   `{{切|き}}りかかる` ➔ **Attacco che si avvia**: `切りかかる` mostra l'attacco che parte: il personaggio si lancia verso il bersaglio per colpire.
 
 #### ⚖️ Contrasto operativo
 

@@ -107,7 +107,7 @@ Prima di lasciare una zona sicura, il gioco parla spesso di mosse, allenamento e
 *   [{{覚|おぼ}}える](term:term-v432-oboe-ru) (**imparare / ricordare**) guarda il Pokémon o la persona che acquisisce qualcosa. In un messaggio su una mossa, il focus è il repertorio che si arricchisce: una nuova わざ entra tra le possibilità disponibili.
 *   [{{覚|おぼ}}えさせる](term:term-v441-oboe-saseru) (**far imparare**) aggiunge il causativo させる. Non dice solo che il Pokémon impara: dice che qualcuno fa sì che impari. Se nella frase compare このポケモンに, il に marca il destinatario dell'apprendimento; se compare わざを, il を marca ciò che viene fatto imparare.
 *   [{{習|なら}}う](term:term-v446-narau) (**imparare da qualcuno**) mette l'apprendimento dentro un rapporto con una fonte: un insegnante, una lezione, una pratica guidata. È più "apprendere da" che "registrare una mossa".
-*   [{{鍛|きた}}える](term:term-v433-kitae-ru) (**allenare / temprare**) sposta il campo dallo studio alla resistenza. In Pokémon può riguardare corpo, statistiche, abilità o determinazione: il risultato atteso non è sapere una nozione, ma essere più pronti a reggere una lotta o un percorso.
+*   [{{鍛|きた}}える](term:term-v433-kitae-ru) (**allenare / temprare**) sposta il campo dallo studio alla resistenza. In Pokémon può riguardare corpo, statistiche, abilità o determinazione: `鍛える` porta al risultato di essere piu' pronti a reggere lotta o percorso.
 
 :::example_sentence
 jp: >-

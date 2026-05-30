@@ -63,9 +63,7 @@ reading: こうちょうしつ
 romaji: kouchoushitsu
 meaning_it: ufficio del preside
 notes_it: >-
-  Non indica una stanza qualsiasi del campus ma l'ufficio del preside. Quando
-  compare `{{校長室|こう.ちょう.しつ}}`, il gioco sta aprendo una scena formale che
-  conferma istruzioni, permessi o passaggi successivi dell'avventura scolastica.
+  La stanza indicata è l'ufficio del preside. Quando compare `{{校長室|こう.ちょう.しつ}}`, il gioco apre una scena formale di istruzioni, permessi o passaggi successivi dell'avventura scolastica.
 :::
 :::card
 id: card-kouchoushitsu-recognition

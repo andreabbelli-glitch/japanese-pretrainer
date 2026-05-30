@@ -61,7 +61,7 @@ Il filo comune è pratico. [{{動画|どうが}}](term:term-anki-l15-douga) rend
 
 Smart Rotom, chiamate e filmati creano un tipo di frase molto concreto: c'è un dispositivo, c'è un contenuto e c'è un'azione percettiva. Da lì il gioco può passare a un altro registro, quello dei risultati ottenuti dopo una battaglia o una spiegazione.
 
-*   [{{動画|どうが}}](term:term-anki-l15-douga) è un composto trasparente se lo leggi come "immagine in movimento": {{動|どう}} porta l'idea del movimento, {{画|が}} quella dell'immagine. Vicino allo スマホロトム non indica una foto né una schermata statica, ma un contenuto che si guarda nel tempo.
+*   [{{動画|どうが}}](term:term-anki-l15-douga) è un composto trasparente se lo leggi come "immagine in movimento": {{動|どう}} porta l'idea del movimento, {{画|が}} quella dell'immagine. Vicino allo スマホロトム `動画` indica un contenuto che si guarda nel tempo.
 *   [{{得|え}}る](term:term-anki-l15-eru) non è il verbo neutro per "ricevere qualunque cosa". La cosa ottenuta prende を, ma spesso è un risultato immateriale: {{経験|けいけん}}を{{得|え}}る, ottenere esperienza, o {{知識|ちしき}}を{{得|え}}る, acquisire conoscenza. Se entra nello zaino una Poké Ball, una MT o un oggetto concreto, il gioco tende invece a usare formule più fisiche, come {{手|て}}に{{入|い}}れる o もらう.
 
 :::example_sentence
@@ -152,7 +152,7 @@ translation_it: >-
 
 *   `ドアを{{開|あ}}ける` ➔ apertura fisica: porta, contenitore, coperchio, accesso concreto.
 *   `メニューを{{開|ひら}}く` ➔ apertura di una schermata: non stai spostando un oggetto, stai facendo apparire una vista.
-*   `{{買|か}}いものをする` ➔ azione di negozio: non dice ancora che cosa hai comprato, ma ti colloca dentro l'attività.
+*   `{{買|か}}いものをする` ➔ azione di negozio: `買いものをする` colloca il personaggio nell'attivita' di negozio.
 
 #### 🧠 Gancio cognitivo
 
@@ -163,7 +163,7 @@ translation_it: >-
 Le lezioni dell'Accademia e i dialoghi sui ruoli usano parole che chiudono uno stato: una risposta è corretta o no, una persona continua o si ritira. Il giapponese separa bene l'esito classificato dall'azione di sbagliare.
 
 *   [{{不正解|ふせいかい}}](term:term-anki-l15-fuseikai) si legge bene se vedi prima il nucleo {{正解|せいかい}}: risposta corretta. Il prefisso {{不|ふ}} nega quel valore, quindi trasforma la risposta in "non corretta". In una domanda dell'Accademia, il termine non giudica la persona: classifica l'esito della risposta.
-*   [{{引退|いんたい}}](term:term-anki-l15-intai) indica il ritiro da un ruolo attivo, professionale o agonistico. Con する diventa azione, e il ruolo lasciato può prendere を: トレーナーを{{引退|いんたい}}する. In un dialogo su Allenatori o Capipalestra, non significa "allontanarsi per un momento", ma smettere di occupare quella posizione.
+*   [{{引退|いんたい}}](term:term-anki-l15-intai) indica il ritiro da un ruolo attivo, professionale o agonistico. Con する diventa azione, e il ruolo lasciato può prendere を: トレーナーを{{引退|いんたい}}する. In un dialogo su Allenatori o Capipalestra, `引退する` significa lasciare un ruolo attivo, professionale o agonistico.
 
 :::example_sentence
 jp: >-
@@ -194,7 +194,7 @@ translation_it: >-
 
 *   [{{不正解|ふせいかい}}](term:term-anki-l15-fuseikai) ➔ etichetta dell'esito: la risposta viene classificata come non corretta.
 *   `{{間違|まちが}}えた` ➔ azione compiuta: qualcuno ha sbagliato.
-*   [{{引退|いんたい}}](term:term-anki-l15-intai) ➔ uscita da un ruolo: non è una pausa, ma la fine di una funzione attiva.
+*   [{{引退|いんたい}}](term:term-anki-l15-intai) ➔ uscita da un ruolo: `引退` indica la fine di una funzione attiva.
 
 #### 🧠 Gancio cognitivo
 
@@ -219,7 +219,7 @@ translation_it: >-
 
 *   `この ポケモンは` ➔ **Tema della percezione** (`は` mette il Pokémon al centro della frase).
 *   `ふしぎな {{感|かん}}じが` ➔ **Impressione che emerge** (`ふしぎな` qualifica la sensazione; `が` marca ciò che si manifesta).
-*   する ➔ **Dare impressione** (con [{{感|かん}}じ](term:term-anki-l15-kanji), non significa "fare", ma "sembrare / dare una certa sensazione").
+*   する ➔ **Dare impressione** (con [{{感|かん}}じ](term:term-anki-l15-kanji), Con `感じ`, `する` significa dare una certa impressione.
 
 :::example_sentence
 jp: >-

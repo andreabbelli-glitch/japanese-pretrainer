@@ -16,9 +16,7 @@ meaning_it: Dragocalypse Day / magia drago che in multiplayer può ottenere S-Tr
 pos: proper-noun
 aliases: [ドラゴカリプス・デイ, Dragocalypse Day, doragokaripusu dei]
 notes_it: >-
-  È il nome proprio della magia. In questa lezione la lettura utile da fissare
-  non è solo la rimozione totale finale, ma soprattutto la lunga condizione
-  `このゲームが{{2人以上|ふたり.い.じょう}}の{{相手|あいて}}がいる
+  È il nome proprio della magia. La frase mette in evidenza soprattutto la lunga condizione che prepara la rimozione totale.い.じょう}}の{{相手|あいて}}がいる
   {{状態|じょうたい}}で{{始|はじ}}まっていて`, che decide se la carta può
   ricevere `S・トリガー` mentre si trova nello shield zone.
 level_hint: custom

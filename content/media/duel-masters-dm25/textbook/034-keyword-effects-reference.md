@@ -689,9 +689,7 @@ lo svuota.
 
 ## 6. Lati spell, distruzione in battle e rottura degli scudi
 
-Alcune keyword sono brevi perché comprimono un solo gesto. Qui la lettura
-utile non è cercare una procedura lunga, ma identificare il verbo tecnico che
-fa muovere la carta o modifica il risultato del battle.
+Alcune keyword sono brevi perché comprimono un solo gesto. La lettura utile consiste nell'identificare il verbo tecnico che risolve l'effetto.
 
 - [スマッシュ・バースト](term:term-smash-burst) si legge attraverso
   [{{呪文側|じゅもんがわ}}](term:term-spell-side) e

@@ -58,7 +58,6 @@ example_it: >-
 notes_it: >-
   Questo è il chunk davvero utile della carta. `シールド` fissa il nuovo ruolo,
   `{{化|か}}す` marca la trasformazione e `してもよい` lascia la scelta al
-  giocatore. Il senso corretto non è `mettila vicino agli scudi`, ma
-  `falla contare come scudo`.
+  giocatore. La destinazione corretta e' la shield zone: il testo ordina dove collocare la carta.
 tags: [live-duel, concept, shield, transformation]
 :::

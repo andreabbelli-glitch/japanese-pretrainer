@@ -71,9 +71,7 @@ e le formule fisse ti confermano se una scelta ha funzionato davvero.
 
 Il turno di lotta comincia quasi sempre da una scelta esplicita. [わざ](term:term-waza)
 è quella scelta: la mossa che selezioni, con tipo, potenza, precisione e
-possibili effetti secondari. Per questo una frase con `わざを {{選|えら}}ぶ`
-non parla di una qualità generica del Pokémon, ma del comando operativo che
-stai per mandare in campo.
+possibili effetti secondari. Il testo punta al comando operativo che il giocatore puo' usare in battaglia.
 
 [{{特性|とくせい}}](term:term-tokusei), invece, appartiene al Pokémon prima
 ancora che tu prema il comando del turno. `{{特|とく}}` porta l'idea di
@@ -93,7 +91,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{相手|あいて}}の タイプに` ➔ **Bersaglio di adeguatezza**: `の` collega l'avversario al suo tipo, `に` marca il punto rispetto a cui la mossa deve essere adatta.
-*   `{{合|あ}}う` ➔ **Adattarsi / corrispondere**: non significa "incontrare una persona", ma combaciare con una situazione.
+*   `{{合|あ}}う` ➔ **Adattarsi / corrispondere**: `合う` qui significa combaciare con una situazione o condizione.
 *   `わざを` ➔ **Oggetto scelto**: `を` marca la mossa come cosa selezionata.
 *   `{{選|えら}}ぼう` ➔ **Volitivo operativo**: "scegliamo", tipico di consigli strategici o tutorial morbidi.
 
@@ -108,7 +106,7 @@ translation_it: >-
 
 *   `この {{特性|とくせい}}は` ➔ **Tema della spiegazione**: `は` mette l'abilità al centro della regola.
 *   `バトルに {{出|で}}た ときに` ➔ **Momento di attivazione**: `に` dopo `とき` indica quando la regola scatta.
-*   `{{働|はたら}}く` ➔ **Funzionare / entrare in azione**: in questo contesto non è "lavorare" come persona, ma operare come effetto di gioco.
+*   `{{働|はたら}}く` ➔ **Funzionare / entrare in azione**: `働く` descrive un effetto che entra in funzione.
 
 #### ⚖️ Contrasto operativo
 

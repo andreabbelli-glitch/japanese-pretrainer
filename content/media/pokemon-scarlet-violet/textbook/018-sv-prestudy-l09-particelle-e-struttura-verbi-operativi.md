@@ -79,7 +79,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Come trucco mnemonico, immagina `から` come il pin di partenza e `まで` come il nastro d'arrivo. Tutto quello che sta tra i due non è una lista di luoghi, ma il tratto che il gioco ti sta facendo percorrere.
+Come trucco mnemonico, immagina `から` come il pin di partenza e `まで` come il nastro d'arrivo. `から` e `まで` disegnano il tratto completo che il gioco ti fa percorrere.
 
 ### Venire o andare: la posizione della scena
 
@@ -110,7 +110,7 @@ Pensa a [{{来|く}}る](term:term-v112-kuru) come a una calamita narrativa: la 
 
 ## 2. Stato e presenza: quando が mette qualcosa sotto i riflettori
 
-[が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo) presenta o evidenzia ciò che conta in quel momento. Nei messaggi di stato, questo è decisivo: [{{体力|たいりょく}}](term:term-v103-tairyoku) non è solo "energia" come concetto generale, ma l'elemento che la frase mette davanti ai tuoi occhi. Se {{体力|たいりょく}}が {{少|すこ}}ない, il problema attivo sono gli HP bassi.
+[が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo) presenta o evidenzia ciò che conta in quel momento. `体力が少ない` mette gli HP bassi davanti agli occhi come problema attivo. Se {{体力|たいりょく}}が {{少|すこ}}ない, il problema attivo sono gli HP bassi.
 
 Lo stesso meccanismo lavora con la presenza: `ポケモンが いる` introduce un Pokémon nella scena. Non sta dicendo "a proposito dei Pokémon in generale"; sta facendo comparire proprio quel soggetto nel campo dell'attenzione.
 

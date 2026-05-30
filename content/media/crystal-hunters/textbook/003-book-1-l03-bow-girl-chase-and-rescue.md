@@ -87,8 +87,7 @@ come interpretare quel movimento.
   valore pratico è "la cosa che si muove e che bisogna raggiungere".
 - [{{追|お}}いつく](term:term-oitsuku) non è semplicemente "seguire". Dentro il
   verbo c'è il risultato dell'inseguimento: chi era dietro arriva abbastanza
-  vicino a chi era davanti. Per questo la frase non descrive solo movimento,
-  ma la chiusura della distanza.
+  vicino a chi era davanti. La frase mostra la chiusura della distanza.
 
 :::example_sentence
 jp: >-
@@ -273,8 +272,7 @@ translation_it: >-
     qualcosa c'è o non c'è).
 *   `クリスタルが` ➔ **Cosa cercata** (`が` marca ciò di cui si verifica la
     presenza).
-*   `ない` ➔ **Assenza**: qui non è il negativo di un'azione, ma la forma che
-    sostituisce `ある` quando qualcosa non esiste o non è presente.
+*   `ない` ➔ **Assenza**: Qui `ない` sostituisce `ある` e segnala assenza o mancata presenza.
 
 #### 🧠 Gancio cognitivo
 
@@ -338,10 +336,7 @@ funzione della frase nel dialogo.
 
 ### C. `Vている`: azione in corso o stato risultante
 
-Con `いる`, la forma `て` descrive ciò che continua nel momento. A volte è
-un'azione in corso, come `{{使|つか}}っている`; altre volte è uno stato ottenuto,
-come `{{持|も}}っている`, dove il punto non è il gesto del prendere ma il fatto
-di avere con sé qualcosa.
+Con `いる`, la forma `て` descrive ciò che continua nel momento. Con `持っている`, conta lo stato di possesso: qualcosa resta in mano o a disposizione.
 
 :::example_sentence
 jp: >-
@@ -408,8 +403,7 @@ passa alla distanza, alla mira e alla freccia.
   soltanto un nome come `{{誰|だれ}}`; in una scena tesa può voler dire "chi sei
   davvero?" o "che razza di persona sei?".
 - [{{本当|ほんとう}}に](term:term-hontou-ni) rafforza la valutazione che segue:
-  non è apparenza, non è esagerazione vuota, ma qualcosa che il parlante
-  presenta come vero nella scena.
+  La forma fa sentire una minaccia percepita come reale dal parlante, con tono immediato.
 
 :::example_sentence
 jp: >-

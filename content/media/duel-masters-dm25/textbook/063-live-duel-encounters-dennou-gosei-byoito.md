@@ -22,7 +22,7 @@ summary: >-
 
 # {{電脳護聖|でんのうごせい}}ビョイト: il gruppo che riceve S-Trigger
 
-Nel testo di {{電脳護聖|でんのうごせい}}ビョイト la difficoltà non è una keyword nuova, ma l'ordine in cui il giapponese costruisce il destinatario dell'effetto. Prima arriva il contesto delle carte che vengono aggiunte alla mano, poi una serie di filtri, e solo alla fine il verbo dice che cosa viene dato.
+La frase costruisce prima il destinatario filtrato e solo alla fine dice cosa viene dato. Prima arriva il contesto delle carte che vengono aggiunte alla mano, poi una serie di filtri, e solo alla fine il verbo dice che cosa viene dato.
 
 La lettura funziona bene quando tieni separati tre strati: le carte scudo che entrano in [{{手札|てふだ}}](term:term-hand), il filtro 「ブロッカー」を{{持|も}}つ{{光|ひかり}}または{{水|みず}}の, e la chiusura [すべて](term:term-subete)に. L'italiano tende a partire dal risultato; il giapponese, invece, prepara con pazienza il gruppo che riceverà [S・トリガー](term:term-s-trigger).
 
@@ -90,7 +90,7 @@ reveal_mode: sentence
 #### 🗺️ Anatomia della frase
 
 *   [{{自分|じぶん}}](term:term-self)の[{{手札|てふだ}}](term:term-hand)に[{{加|くわ}}える](term:term-add): cornice relativa. Non è ancora l'azione principale della frase; descrive quali shield card stai considerando, cioè quelle che finiscono nella tua mano.
-*   「[ブロッカー](term:term-blocker)」を[{{持|も}}つ](term:term-motsu): filtro di proprietà. {{持|も}}つ qui non significa "tenere in mano", ma "avere quella keyword stampata o concessa".
+*   「[ブロッカー](term:term-blocker)」を[{{持|も}}つ](term:term-motsu): filtro di proprietà. {{持|も}}つ qui `ブロッカーを持つ` significa avere quella keyword stampata o concessa.
 *   [{{光|ひかり}}](term:term-light)または{{水|みず}}のシールドカード: nome del gruppo. または mette Luce e Acqua in parallelo, mentre の collega quelle civiltà al nome シールドカード.
 *   [すべて](term:term-subete)に: chiusura del destinatario. Tutte le carte che passano i filtri precedenti diventano il ricevente dell'effetto.
 *   「[S・トリガー](term:term-s-trigger)」を[{{与|あた}}える](term:term-ataeru): oggetto più verbo. La keyword è ciò che viene conferito; il gruppo prima di に è ciò che la riceve.

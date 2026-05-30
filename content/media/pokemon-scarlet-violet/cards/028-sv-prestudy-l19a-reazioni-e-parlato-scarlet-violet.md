@@ -466,8 +466,7 @@ reading: すでに
 romaji: sudeni
 meaning_it: già
 notes_it: >-
-  すでに dice che uno stato è già vero prima del momento presente; con 終わっている
-  segnala che l'azione non è in corso, ma completata.
+  すでに dice che uno stato è già vero prima del momento presente; con 終わっている segnala un'azione completata.
 :::
 :::card
 id: card-v252-sudeni-recognition

@@ -142,7 +142,7 @@ translation_it: >-
 In battaglia, il verso del cambiamento è grammatica concreta. Una statistica può scendere come effetto osservato, oppure qualcuno può alzarla con una mossa, uno strumento o una scelta. La differenza tra [{{落|お}}ちる](term:term-anki-l10-ochiru) e [{{高|たか}}める](term:term-anki-l10-takameru) passa soprattutto da が e を.
 
 *   [{{落|お}}ちる](term:term-anki-l10-ochiru) è intransitivo: il soggetto cade, scende o si abbassa. In una lotta Pokémon, すばやさが {{落|お}}ちる guarda la velocità che cala; la frase non deve per forza dire chi l'ha fatta calare.
-*   [{{高|たか}}める](term:term-anki-l10-takameru) è transitivo: qualcuno o qualcosa rende più alto un valore. こうげきを {{高|たか}}める non significa soltanto "l'attacco diventa alto", ma "alzare l'attacco" tramite un'azione.
+*   [{{高|たか}}める](term:term-anki-l10-takameru) è transitivo: qualcuno o qualcosa rende più alto un valore. こうげきを {{高|たか}}める `高める` e' transitivo: qualcuno o qualcosa alza un valore.
 
 :::example_sentence
 jp: >-
@@ -210,7 +210,7 @@ translation_it: >-
 *   `{{長|なが}}い {{冒|ぼう}}{{険|けん}}` ➔ **Aggettivo prima del nome**: la durata del viaggio pesa sulla frase prima ancora dell'arrivo.
 *   `の {{末|すえ}}に` ➔ **Punto d'arrivo dopo un percorso**: "alla fine di, dopo".
 *   `エリアゼロへ` ➔ **Direzione**: `へ` orienta il movimento verso Area Zero.
-*   `たどり{{着|つ}}いた` ➔ **Arrivo dopo sforzo**: non è solo "venire", ma raggiungere un luogo dopo un percorso.
+*   `たどり{{着|つ}}いた` ➔ **Arrivo dopo sforzo**: `たどり着く` indica raggiungere un luogo dopo un percorso o sforzo.
 
 #### ⚖️ Contrasto operativo
 

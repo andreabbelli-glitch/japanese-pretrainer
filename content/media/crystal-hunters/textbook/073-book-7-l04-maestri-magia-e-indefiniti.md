@@ -120,8 +120,8 @@ translation_it: >-
 *   `{{閉|と}}じ{{込|こ}}める` -> **Azione di chiusura interna**.
 
 [{{投入|とうにゅう}}](term:term-ch-b7-tounyuu) è più tecnico di
-[{{入|い}}れる](term:term-ch-b7-ireru): non è solo mettere dentro un contenitore,
-ma introdurre qualcosa in un processo.
+[{{入|い}}れる](term:term-ch-b7-ireru): introduce qualcosa in un processo, come un
+ingrediente, una risorsa o un passaggio operativo.
 
 :::example_sentence
 jp: >-

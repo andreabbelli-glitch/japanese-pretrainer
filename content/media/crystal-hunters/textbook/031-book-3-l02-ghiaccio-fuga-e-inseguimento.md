@@ -118,7 +118,7 @@ translation_it: >-
 *   `{{追|お}}いかける` -> **Seguire correndo dietro**.
 
 [{{殴|なぐ}}りかかる](term:term-ch-nagurikakaru) ha una direzione ancora più
-aggressiva: non è solo colpire, ma avventarsi per colpire.
+aggressiva: Il verbo comunica un colpo che parte con aggressivita': avventarsi per colpire.
 
 :::example_sentence
 jp: >-

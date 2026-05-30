@@ -187,7 +187,7 @@ example_it: >-
   Ci siamo fermati un attimo proprio prima del gate.
 notes_it: >-
   [{{直前|ちょくぜん}}](term:term-chokuzen) aggancia la frase a un evento
-  imminente. Non indica un generico “prima”, ma il momento subito precedente.
+  imminente. `直前` indica il momento subito precedente all'evento.
 tags: [noun, time, travel]
 :::
 

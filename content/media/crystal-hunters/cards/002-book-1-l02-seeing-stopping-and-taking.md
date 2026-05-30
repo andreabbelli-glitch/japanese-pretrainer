@@ -119,8 +119,8 @@ romaji: te ni toru
 meaning_it: prendere in mano
 pos: expression
 notes_it: >-
-  {{手|て}}に{{取|と}}る restringe il valore di {{取|と}}る: non è solo prendere,
-  ma arrivare ad avere l'oggetto in mano.
+  {{手|て}}に{{取|と}}る restringe il valore di {{取|と}}る: l'oggetto arriva in mano
+  ed è sotto il controllo della persona.
 level_hint: n3
 :::
 

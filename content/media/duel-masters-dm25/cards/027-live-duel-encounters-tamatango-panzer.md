@@ -207,10 +207,7 @@ example_jp: >-
 example_it: >-
   Conferisce "S-Trigger" a questa creatura che si trova nello shield zone.
 notes_it: >-
-  Significato base: dare o conferire qualcosa a un bersaglio. Nel TCG il verbo
-  compare spesso quando un effetto assegna una keyword, un'abilita o una
-  proprieta: qui non descrive uno S-Trigger stampato di base, ma una keyword
-  che il gioco attribuisce a questa creatura mentre si trova nello shield zone.
+  Significato base: dare o conferire qualcosa a un bersaglio. Qui il testo assegna una keyword come proprieta' valida in quel contesto.
 tags: [live-duel, verb, keyword, granted-effect, general-japanese]
 :::
 

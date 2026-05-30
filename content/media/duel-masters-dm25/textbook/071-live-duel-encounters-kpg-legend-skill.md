@@ -133,8 +133,7 @@ reveal_mode: sentence
 
 #### ⚖️ Contrasto operativo: tre scudi include esattamente tre
 
-[{{以下|いか}}](grammar:grammar-ika-ijou) non significa "sotto tre", ma "tre o
-meno". Se il player ha {{3|みっ}}つ scudi, la condizione è già vera; se ne ha
+`以下` include il valore indicato e tutto cio' che sta sotto quel limite. Se il player ha {{3|みっ}}つ scudi, la condizione è già vera; se ne ha
 {{4|よっ}}つ, non lo è. Il numero scritto nella UI è l'ultimo valore valido,
 non il primo valore escluso.
 

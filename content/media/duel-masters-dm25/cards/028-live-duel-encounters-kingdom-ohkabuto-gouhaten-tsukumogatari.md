@@ -140,9 +140,7 @@ notes_it: >-
   prende vita da solo, senza che qualcuno lo faccia di proposito. Nel rules text
   di Duel Masters questo significato si restringe: `{{起|お}}こる` indica un
   effetto che scatta automaticamente come conseguenza di un evento di gioco.
-  Quando leggi `{{出|で}}ることによって{{起|お}}こる{{効果|こうか}}`, il testo
-  non parla di tutti gli effetti della carta, ma solo di quelli che si attivano
-  da soli perché quelle creature sono entrate in gioco.
+  Il riferimento restringe il campo agli effetti che si attivano in quella finestra.
 level_hint: n4
 :::
 
@@ -154,10 +152,7 @@ reading: でも でも ない
 meaning_it: né A né B / non essere né l'uno né l'altro
 aliases: [～でも～でもない]
 notes_it: >-
-  Qui `でも` non significa `anche`, ma viene ripetuto per escludere due
-  categorie nello stesso filtro. In `{{進化|しんか}}でもNEOでもない`, la creatura
-  valida deve passare entrambe le esclusioni: non essere un'evoluzione e non
-  essere nemmeno NEO.
+  `でも` ripetuto in serie esclude entrambe le opzioni indicate. In `{{進化|しんか}}でもNEOでもない`, la creatura valida deve passare entrambe le esclusioni: essere fuori dall'evoluzione e fuori da NEO.
 level_hint: n3
 :::
 
@@ -334,7 +329,7 @@ example_it: >-
   Se è "né evoluzione né NEO", restano solo creature che non rientrano in
   nessuna delle due categorie.
 notes_it: >-
-  Il punto utile non è `でも` come `anche`, ma il suo uso ripetuto in serie
+  Qui `でも` in serie costruisce una doppia esclusione: nessuna delle due condizioni basta.
   negativa: `AでもBでもない` costruisce un doppio filtro esclusivo.
 tags: [live-duel, grammar, filter, exclusion]
 :::

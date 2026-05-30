@@ -60,7 +60,7 @@ translation_it: >-
 
 *   `カルがいる` -> **Presenza animata**: Kal è una persona presente nella scena.
 *   `{{水|みず}}が` -> **Cosa necessaria**: `が` marca ciò che è necessario.
-*   `{{要|い}}る` -> **Bisogno**: non significa "essere in un luogo", ma "essere necessario".
+*   `{{要|い}}る` -> **Bisogno**: `要る` indica bisogno o necessita': qualcosa serve davvero alla scena.
 
 #### ⚖️ Contrasto operativo
 
@@ -101,7 +101,7 @@ una cosa richiesta dalla situazione, cerca [{{要|い}}る](term:term-ch-iru-nee
 ## 2. Guardare, assalire e usare armi
 
 [{{見|み}}つめる](term:term-ch-mitsumeru) è più intenso di [{{見|み}}る](term:term-miru):
-non è "vedere per caso", ma tenere lo sguardo fisso su qualcosa. In una tavola
+`見つめる` descrive uno sguardo fissato intenzionalmente su qualcuno o qualcosa. In una tavola
 di manga spesso segnala attenzione, sorpresa o decisione.
 
 :::example_sentence
@@ -118,7 +118,7 @@ translation_it: >-
 *   `{{見|み}}つめる` -> **Guardare intensamente**: lo sguardo resta attaccato all'oggetto.
 
 [{{襲|おそ}}う](term:term-ch-osou) entra quando la scena diventa aggressiva:
-non è un semplice "andare verso", ma assalire o attaccare.
+`向かってくる` fa sentire l'assalto: qualcuno viene addosso al punto di vista.
 
 :::example_sentence
 jp: >-

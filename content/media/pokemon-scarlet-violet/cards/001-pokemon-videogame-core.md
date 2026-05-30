@@ -134,8 +134,8 @@ romaji: taisetsu na mono
 meaning_it: strumenti chiave
 notes_it: >-
   La categoria corrisponde all'idea di `{{大切|たいせつ}}なもの`: oggetti chiave legati
-  alla progressione. Se qualcosa finisce qui, di solito non è un consumabile
-  ma un oggetto che sblocca mappe, sistemi o avanzamento della storia.
+  alla progressione. Se qualcosa finisce qui, di solito è un oggetto che sblocca
+  mappe, sistemi o avanzamento della storia.
 :::
 :::card
 id: card-taisetsu-na-mono-recognition

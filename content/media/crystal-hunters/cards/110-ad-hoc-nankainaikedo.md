@@ -17,8 +17,8 @@ aliases:
   - なんか
 notes_it: >-
   In `モンスターなんかいないけど。`, なんか tratta モンスター come categoria colloquiale:
-  "mostri o roba del genere". Non è una semplice card su {{何|なに}}か "qualcosa",
-  ma l'uso dopo un nome per generalizzare o sminuire leggermente.
+  "mostri o roba del genere". Qui conta l'uso dopo un nome per generalizzare o
+  sminuire leggermente.
 level_hint: custom
 :::
 

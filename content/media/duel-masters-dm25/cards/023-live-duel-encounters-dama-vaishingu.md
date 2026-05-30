@@ -88,9 +88,7 @@ example_it: >-
   Quando vedi il prefisso `{{堕魔|だーま}}`, è facile pensare a una carta del
   gruppo Magic Tool.
 notes_it: >-
-  Non è ancora la funzione della carta, ma un indizio molto utile di famiglia:
-  `{{堕魔|だーま}}` compare proprio dove il nome ti sta già segnalando il
-  pacchetto giusto.
+  Questa parte e' un indizio di famiglia utile prima ancora della funzione della carta.
 tags: [live-duel, archetype, naming]
 :::
 

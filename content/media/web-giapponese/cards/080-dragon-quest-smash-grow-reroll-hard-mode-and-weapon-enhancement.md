@@ -191,8 +191,7 @@ pos: noun
 aliases: [武器強化]
 notes_it: >-
   [ぶき{{強化|きょうか}}](term:term-buki-kyouka) è la schermata o azione di
-  potenziamento delle armi. Non indica una nuova estrazione, ma il migliorare
-  l'arma già a disposizione.
+  potenziamento delle armi. Il termine riguarda il potenziamento delle armi gia' possedute.
 level_hint: n4
 :::
 

@@ -16,9 +16,7 @@ meaning_it: per il resto della partita / durante tutto ciò che resta della part
 aliases: [残りのゲーム中]
 notes_it: >-
   In giapponese generale `{{残|のこ}}り` indica ciò che resta, mentre
-  `ゲーム{{中|ちゅう}}` crea una durata `nel corso della partita`. Insieme il
-  chunk non parla di un momento breve, ma di una cornice che resta attiva fino
-  alla fine del match. Nel rules text questo è il segnale che la regola scritta
+  `ゲーム{{中|ちゅう}}` crea una durata `nel corso della partita`. Il chunk definisce una cornice che resta attiva fino al timing indicato. Nel rules text questo è il segnale che la regola scritta
   dopo continua ad applicarsi per tutto il resto della partita.
 level_hint: n3
 :::

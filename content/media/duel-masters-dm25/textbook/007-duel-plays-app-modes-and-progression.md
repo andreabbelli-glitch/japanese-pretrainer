@@ -81,8 +81,7 @@ il tipo di avversario, il peso del risultato e il percorso che seguirà dopo il
 tap.
 
 *   [ランクマッチ](term:term-ranked-match) porta alla ladder competitiva. ランク
-    restringe subito la lettura: non è una partita libera, ma un match in cui
-    il risultato pesa sulla progressione classificata. Se accanto compare uno
+    restringe subito la lettura: La lettura va verso un match con regole o vincoli specifici. Se accanto compare uno
     stato come [{{開催|かいさい}}{{中|ちゅう}}](term:term-ongoing), la schermata
     non sta solo nominando la modalità: sta dicendo che quella finestra è
     disponibile ora.
@@ -191,10 +190,7 @@ la stessa cosa.
     [{{達成|たっせい}}](term:term-achievement) ma una
     [{{報酬|ほうしゅう}}](term:term-reward) già riscossa, ancora disponibile o
     bloccata da un altro stato.
-*   [～{{済|ず}}み](grammar:grammar-zumi) è il pezzo che evita il doppio controllo:
-    `{{達成|たっせい}}{{済|ず}}み` non significa "puoi completarla", ma "è già
-    completata"; `{{受取|うけとり}}{{済|ず}}み` non significa "puoi ritirarla",
-    ma "è già stata ritirata".
+`達成済み` segnala una condizione gia' completata.
 
 :::example_sentence
 jp: >-
@@ -269,9 +265,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   [デッキ](term:term-constructed-deck)の{{準備|じゅんび}}が ➔ **Soggetto pronto
-    o non pronto**: non è il deck da solo a essere valutato, ma la sua
-    preparazione.
+La valutazione riguarda deck e condizioni operative insieme.
 *   `すべて{{終|お}}わったら` ➔ **Condizione di ingresso**: `たら` aggancia il
     click al completamento; `すべて` chiude lo scope su tutta la preparazione.
 *   [{{対戦|たいせん}}{{開始|かいし}}](term:term-start-match)のボタンをタップする

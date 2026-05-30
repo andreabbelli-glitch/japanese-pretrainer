@@ -83,7 +83,7 @@ translation_it: >-
 *   `{{周|まわ}}りを` ➔ **Oggetto dell'osservazione**: il testo restringe l'attenzione alla zona circostante.
 *   `{{見|み}}てから` ➔ **Sequenza temporale**: prima guardi, poi passi all'azione successiva.
 *   [ゼロゲート](term:term-v382-zerogeeto)に ➔ **Direzione o punto di riferimento**: `に` marca il luogo verso cui ti avvicini.
-*   `{{近|ちか}}づく` ➔ **Movimento verso la vicinanza**: non dice ancora che sei arrivato, ma che stai riducendo la distanza.
+*   `{{近|ちか}}づく` ➔ **Movimento verso la vicinanza**: `近づく` indica ridurre la distanza verso qualcosa.
 
 #### ⚖️ Contrasto operativo
 
@@ -94,8 +94,7 @@ translation_it: >-
 Per [{{周|まわ}}り](term:term-v379-mawari), immagina la telecamera che ruota attorno al personaggio. Non punta a una destinazione lontana: disegna un cerchio di attenzione intorno a te.
 
 [ほかくパワー](term:term-v374-hokakupawaa) appartiene alla stessa logica di
-interfaccia: non è una mossa e non è un luogo, ma un bonus che modifica la
-probabilità di cattura. Quando lo trovi vicino a panini, pasti o poteri attivi,
+interfaccia: Il termine indica un bonus di interfaccia che modifica la lotta. Quando lo trovi vicino a panini, pasti o poteri attivi,
 leggilo come etichetta di effetto temporaneo.
 
 [ゼロゲート](term:term-v382-zerogeeto) è invece un landmark: il nome non chiede
@@ -107,7 +106,7 @@ il testo ti sta guidando.
 Le parole di movimento diventano ancora più concrete quando il terreno cambia. Zone ampie, superfici d'acqua e salti potenziati richiedono una lettura diversa da quella di un dialogo fermo: il testo ti sta dicendo quale tipo di attraversamento è possibile o rischioso.
 
 *   [{{広|ひろ}}い](term:term-v383-hiroi) qualifica uno spazio aperto e largo. Non è solo "grande" in senso generico: su una mappa suggerisce distanza da coprire, visuale più ampia e possibilità di perdere l'orientamento se non controlli bene i dintorni.
-*   [{{水上|すいじょう}}](term:term-v384-suijou) unisce {{水|すい}} e {{上|じょう}}: il punto non è "dentro l'acqua", ma "sopra l'acqua" come superficie attraversabile. In *Scarlet & Violet* questo è il linguaggio naturale per tutorial e istruzioni legate a fiumi, laghi e mare.
+*   [{{水上|すいじょう}}](term:term-v384-suijou) unisce {{水|すい}} e {{上|じょう}}: `水上` indica la superficie dell'acqua come spazio attraversabile. In *Scarlet & Violet* questo è il linguaggio naturale per tutorial e istruzioni legate a fiumi, laghi e mare.
 *   [{{一気|いっき}}に](term:term-v385-ikki-ni) descrive il modo dell'azione: tutto d'un colpo, senza spezzare il movimento in più passaggi. [{{一瞬|いっしゅん}}](term:term-v381-isshun), invece, parla della durata brevissima. Uno segnala lo slancio continuo, l'altro il tempo quasi istantaneo.
 *   [{{大|おお}}ジャンプ](term:term-v387-oojanpu) è un salto potenziato. Il prefisso {{大|おお}} qui funziona come "grande" o "super", quindi il testo non sta nominando un salto normale. Quando compare vicino a [{{危|あぶ}}ない](term:term-v389-abunai), la schermata non sta facendo atmosfera: sta avvisando che quella traiettoria può diventare un problema.
 
@@ -185,13 +184,13 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Per [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka), guarda il suffisso {{化|か}} come una freccia di trasformazione: non nomina solo una cosa cristallina, ma il passaggio verso quello stato.
+Per [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka), guarda il suffisso {{化|か}} come una freccia di trasformazione: `化` segnala trasformazione verso uno stato cristallino.
 
 ## 4. Sfide e richieste: tono del personaggio, favore e metodo
 
 Le battute dei personaggi cambiano postura con pochissime sillabe. Una frase può lanciare una sfida, chiedere un favore, offrire un consiglio o spiegare il metodo di un'azione. Qui il significato non sta solo nel vocabolario, ma anche nel modo in cui la forma si rivolge all'interlocutore.
 
-*   [{{手加減|てかげん}}しないよ](term:term-e071-tekagen-shinaiyo) è una dichiarazione da sfida. {{手|て}}{{加減|かげん}} è il dosare la mano, cioè trattenersi; しない lo nega, e よ porta l'affermazione verso l'altro personaggio. Il risultato non è "non farò qualcosa" in modo neutro, ma "non mi tratterrò".
+*   [{{手加減|てかげん}}しないよ](term:term-e071-tekagen-shinaiyo) è una dichiarazione da sfida. {{手|て}}{{加減|かげん}} è il dosare la mano, cioè trattenersi; しない lo nega, e よ porta l'affermazione verso l'altro personaggio. Il risultato `手加減しないよ` dichiara che il personaggio andra' fino in fondo nella sfida.
 *   [〜してくれない？](term:term-e072-shitekurenai) costruisce una richiesta morbida. くれる presenta l'azione come fatta a beneficio del parlante, mentre la domanda negativa attenua il comando. Nei dialoghi suona più come "non è che potresti...?" che come un ordine secco.
 *   [〜のやり{{方|かた}}](term:term-e073-noyarikata) trasforma un'azione nel suo metodo. やる è "fare", {{方|かた}} è "modo": insieme diventano "come si fa". Se il gioco parla di {{大|おお}}ジャンプのやり{{方|かた}}, non sta nominando il salto come azione da eseguire subito, ma il modo per farlo.
 *   [アドバイス](term:term-v377-adobaisu) entra bene nei dialoghi di supporto: un personaggio non sta necessariamente dando un comando, ma una lettura utile della situazione. Accanto a [{{謎|なぞ}}](term:term-v376-nazo), può indicare una pista su qualcosa che non è ancora chiaro.

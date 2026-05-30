@@ -239,8 +239,7 @@ singola, ma una vita quotidiana dentro il campus.
   studenti. Quando il prologo ti porta lì, la camera diventa un punto di
   riposo, cambio di giornata e ripartenza della storia.
 - [{{寮生活|りょうせいかつ}}](term:term-ryouseikatsu) aggiunge {{生活|せいかつ}},
-  "vita quotidiana". Il centro non è il letto o l'arredo, ma il fatto che il
-  personaggio vive secondo un ritmo scolastico interno all'accademia.
+  "vita quotidiana". La parte centrale e' la vita quotidiana nello spazio abitativo.
 - [{{通学|つうがく}}](term:term-tsuugaku) è il contrasto naturale. {{通|つう}}
   porta l'idea di passare o andare attraverso, `{{学|がく}}` richiama la
   scuola: il composto indica il tragitto regolare di chi va a scuola da casa.

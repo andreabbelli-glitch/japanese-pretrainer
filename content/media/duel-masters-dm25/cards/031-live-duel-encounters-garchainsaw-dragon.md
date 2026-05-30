@@ -115,8 +115,7 @@ example_it: >-
   Una volta per turno, quando entra una tua creatura Dragon, puoi scegliere una
   creatura avversaria.
 notes_it: >-
-  `各` cambia il raggio del limite: non è `una volta` in astratto, ma
-  `una volta per ogni turno`. Qui il chunk governa il blocco che porta alla
+  `各` cambia il raggio del limite: `各` distribuisce il limite su ciascun turno o ciascuna unita' rilevante. Qui il chunk governa il blocco che porta alla
   scelta della creatura avversaria e al successivo battle.
 tags: [live-duel, grammar, limit]
 :::
@@ -139,8 +138,7 @@ example_it: >-
   Ogni turno, la prima volta che rompe uno scudo di un avversario, rompe anche uno scudo
   di ciascun altro avversario.
 notes_it: >-
-  Il punto non è il semplice `quando`, ma il fatto che l'effetto scatta solo
-  alla prima occorrenza del turno. Questa è una forma molto utile da
+  La finestra di trigger e' vincolata: l'effetto scatta solo nel momento definito. Questa è una forma molto utile da
   riconoscere quando un testo vuole limitare un trigger alla prima volta.
 tags: [live-duel, grammar, trigger]
 :::

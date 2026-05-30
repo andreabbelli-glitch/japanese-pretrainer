@@ -225,9 +225,7 @@ reading: せんようき
 romaji: senyouki
 meaning_it: variante di macchina dedicata a un pilota specifico
 notes_it: >-
-  Compare spesso dentro nomi più lunghi. Se lo leggi bene, capisci subito che
-  quella MS non è una variante generica, ma una macchina associata in modo
-  esplicito a un personaggio preciso.
+  Compare spesso dentro nomi più lunghi. Quella MS va letta come macchina collegata al pairing indicato.
 level_hint: custom
 :::
 
@@ -520,8 +518,7 @@ example_it: >-
   rende molto più chiara la sua funzione.
 notes_it: >-
   [{{機動|きどう}}](term:term-ms-type-mobility) segnala la MS da riposizionare
-  sulle corsie aperte. Il punto non è "veloce" in astratto, ma mobile nel senso
-  tattico della mappa.
+  sulle corsie aperte. Qui `veloce` significa mobile sul campo: capace di muoversi bene sulle corsie aperte.
 tags: [starter-deck, frame, ms-type]
 :::
 
@@ -594,11 +591,11 @@ back: due nomi letti come una coppia in una sola carta
 example_jp: >-
   キラ・ヤマト＆ラクス・クラインの`＆`は、{{二枚|にまい}}のカードではなく{{一枚|いちまい}}のPLカード{{内|ない}}の{{結合|けつごう}}です。
 example_it: >-
-  L'`＆` in Kira Yamato & Lacus Clyne non indica due carte, ma l'unione di due
-  nomi dentro una singola PL card.
+  L'`&` in Kira Yamato & Lacus Clyne indica l'unione dei due personaggi dentro
+  una sola PL card.
 notes_it: >-
-  Questo pattern dice che due nomi convivono nella stessa PL: non stai
-  guardando due carte, ma una sola carta con doppio nome.
+  L'`&` segnala l'unione dei due personaggi come pairing della carta: due nomi
+  convivono nella stessa PL e vanno letti come doppio nome.
 tags: [starter-deck, grammar, names]
 :::
 

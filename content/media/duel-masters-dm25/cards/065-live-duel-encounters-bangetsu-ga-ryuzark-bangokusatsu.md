@@ -81,9 +81,7 @@ example_it: >-
   Alla fine di ogni turno, se ci sono sei Magic Tool in totale, si attiva
   Gate of Moonless Night Zetsu.
 notes_it: >-
-  Il punto utile non è solo riconoscere il nome della keyword, ma ricordare che
-  qui il controllo arriva a fine turno e su un totale combinato, non su una
-  ripartizione fissa `{{2|ふた}}つずつ`.
+  La keyword conta perche' decide il tipo di risoluzione che puoi applicare.
 tags: [live-duel, keyword, magic-tool, timing]
 :::
 
@@ -123,8 +121,7 @@ example_it: >-
 notes_it: >-
   Qui [{{合計|ごうけい}}](term:term-goukei) è il pezzo che chiude il dubbio
   sulla distribuzione. A differenza di
-  `{{2|ふた}}つずつ`, non impone `quanti per zona`, ma solo il totale
-  finale richiesto.
+  `{{2|ふた}}つずつ`, `2つずつ` fissa una distribuzione per unita', mantenendo il totale richiesto.
 tags: [live-duel, quantity, total, procedure]
 :::
 
@@ -142,9 +139,7 @@ example_jp: >-
 example_it: >-
   In questo turno puoi usare solo magie di costo 5 o inferiore.
 notes_it: >-
-  Qui non serve ripassare `usare` in astratto, ma riconoscere che il cuore di
-  `{{使用可能|しようかのう}}マナ` è proprio [{{使用|しよう}}](term:term-use): la
-  mana che il testo considera è quella `usabile`.
+  Qui il cuore e' riconoscere quale uso della carta viene autorizzato.
 tags: [live-duel, term, compound, mana]
 :::
 

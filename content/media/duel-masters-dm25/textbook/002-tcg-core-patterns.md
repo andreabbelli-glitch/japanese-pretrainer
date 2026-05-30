@@ -128,8 +128,7 @@ procedura nel punto sbagliato della partita.
   evento qualunque, ma di una finestra del turno. `{{自分|じぶん}}のターンのはじめに`
   sposta l'effetto all'inizio del tuo turno; このクリーチャーの{{最初|さいしょ}}の
   {{攻撃|こうげき}}の{{終|お}}わりに lo colloca alla fine del primo attacco di
-  quella creatura. Il testo non ti sta dicendo solo "dopo", ma quale finestra
-  della procedura usare.
+  quella creatura. Il testo precisa la finestra esatta in cui quella creatura puo' essere scelta o applicata.
 
 :::example_sentence
 jp: >-
@@ -173,9 +172,7 @@ passa da quella porta.
 
 ## 2. Sequenza e dipendenza: その後 continua, そうしたら aggancia
 
-Dopo il trigger, molte carte concatenano due istruzioni. Qui la differenza
-decisiva non è tra "poi" e "poi" in italiano, ma tra una sequenza ordinata e
-un seguito che dipende dal primo passo.
+Dopo il trigger, molte carte concatenano due istruzioni. La distinzione utile e' tra sequenza ordinata e condizione agganciata a un evento.
 
 - [その後](grammar:grammar-sonoato) significa "dopo quello": chiude il blocco
   precedente e apre il blocco successivo. La frase resta procedurale; prima
@@ -301,9 +298,7 @@ sguardo.
 ## 4. Sostituzione e opzionalità: かわりに non aggiunge, rimpiazza
 
 Le carte spesso danno un modo per evitare un evento, pagare un costo alternativo
-o cambiare la conseguenza. Qui [かわりに](grammar:grammar-kawarini) è il segnale
-da non perdere: non introduce un secondo effetto dopo il primo, ma mette un ramo
-al posto dell'evento che stava per accadere.
+o cambiare la conseguenza. `かわりに` apre un ramo alternativo dentro lo stesso effetto.
 
 :::example_sentence
 jp: >-
@@ -342,9 +337,7 @@ rules text sono davvero attive.
 - [～なければ ... ない](grammar:grammar-nakereba) crea una condizione negativa:
   se il requisito non è soddisfatto, il risultato non si applica. Nel rules
   text spesso chiude uno status, per esempio "non viene trattata come creatura".
-- [～ていれば](grammar:grammar-teireba) controlla uno stato già raggiunto:
-  `{{進化|しんか}}していれば` non dice "evolvila adesso", ma "se si trova nello
-  stato di essersi evoluta".
+`進化していれば` controlla lo stato gia' raggiunto dalla creatura: evoluta o meno.
 - [{{残|のこ}}る](term:term-nokoru) descrive continuità. Se un'altra carta
   lascia la zona ma `このカードは{{残|のこ}}る`, il testo separa il destino della
   carta rimasta dal movimento della carta uscita.

@@ -18,7 +18,7 @@ summary: >-
 
 Dragon Quest Smash Grow alterna due registri molto riconoscibili: prima una finestra tutorial spiega che cosa cambia quando tocchi il pulsante Auto, poi un robottino trasforma l'avvio dell'avventura in un annuncio solenne. La stessa schermata passa così dalla lingua procedurale della UI alla lingua narrativa da RPG.
 
-Nel tutorial devi seguire una catena precisa: pulsante, condizione, azioni delegate al sistema, cambio di modalità. Nel dialogo successivo il centro non è più che cosa devi premere, ma che cosa sta per accadere: una [{{新|あたら}}しい{{伝説|でんせつ}}](term:term-densetsu) è sul punto di [{{生|う}}まれる](term:term-umareru).
+Nel tutorial devi seguire una catena precisa: pulsante, condizione, azioni delegate al sistema, cambio di modalità. Nel dialogo successivo, il centro si sposta da cosa premere a cio' che sta per nascere: una nuova leggenda.
 
 ## Termini chiave
 
@@ -63,7 +63,7 @@ caption: >-
   [{{自動|じどう}}](term:term-jidou).
 :::
 
-Il blocco operativo parte da オートボタンを{{押|お}}すと. [{{押|お}}す](term:term-osu) è il verbo base per premere o spingere, e を marca オートボタン come oggetto diretto: l'azione richiesta non è “andare in Auto” in modo astratto, ma premere proprio quel bottone. Subito dopo, と aggancia una conseguenza quasi meccanica: quando succede A, il sistema fa B.
+Il blocco operativo parte da オートボタンを{{押|お}}すと. L'azione richiesta e' concreta: premere il bottone Auto, poi lasciare che `と` agganci la conseguenza automatica. Subito dopo, と aggancia una conseguenza quasi meccanica: quando succede A, il sistema fa B.
 
 La conseguenza è {{移動|いどう}}と{{攻撃|こうげき}}を{{自動|じどう}}で{{行|おこな}}う. [{{移動|いどう}}](term:term-idou) è lo spostamento del personaggio, {{攻撃|こうげき}} è l'attacco, e と li mette in coppia come azioni coordinate. [{{自動|じどう}}](term:term-jidou) non è solo il nome inglese della modalità: in {{自動|じどう}}で{{行|おこな}}う descrive il modo dell'azione, cioè “eseguire in automatico”.
 
@@ -91,7 +91,7 @@ Pensa a `と` nei tutorial come a un interruttore causa-effetto: `ボタンを{{
 
 ## 2. `{{切|き}}り{{替|か}}わる`: il sistema passa a un altro stato
 
-Dopo aver spiegato che cosa verrà automatizzato, la frase chiude con オートモードに{{切|き}}り{{替|か}}わるぞ. [{{切|き}}り{{替|か}}わる](term:term-kirikawaru) è intransitivo: non descrive il giocatore che “cambia qualcosa” con le mani, ma la modalità che cambia stato. Il punto di arrivo è segnato da に, quindi オートモードに significa “verso / in modalità Auto”.
+Dopo aver spiegato che cosa verrà automatizzato, la frase chiude con オートモードに{{切|き}}り{{替|か}}わるぞ. [{{切|き}}り{{替|か}}わる](term:term-kirikawaru) è intransitivo: `切り替わる` e' intransitivo: la modalita' cambia stato verso Auto. Il punto di arrivo è segnato da に, quindi オートモードに significa “verso / in modalità Auto”.
 
 La finale `ぞ` dà alla spiegazione un tono energico, da mascotte o tutorial parlato. La grammatica resta procedurale, ma la voce non è fredda: il gioco ti sta guidando con un registro più vivace di un manuale tecnico.
 
@@ -144,7 +144,7 @@ translation_it: >-
 *   `{{今|いま}}` ➔ **Tempo della scena** (colloca l'evento nel presente immediato).
 *   `{{新|あたら}}しい{{伝説|でんせつ}}が` ➔ **Soggetto narrativo** (`が` presenta ciò che sta emergendo).
 *   {{生|う}}まれよう ➔ **Forma volitiva** di [{{生|う}}まれる](term:term-umareru), qui usata dentro il pattern di imminenza.
-*   `としている / としてイル` ➔ **Essere sul punto di** (l'evento non è già completo, ma sta per accadere).
+*   `としている / としてイル` ➔ **Essere sul punto di** (`としている` presenta un evento sul punto di accadere).
 
 #### ⚖️ Contrasto operativo
 

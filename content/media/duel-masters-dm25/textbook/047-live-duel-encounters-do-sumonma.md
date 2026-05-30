@@ -120,7 +120,7 @@ prendere più opzioni.
 Come trucco mnemonico, immagina `のうち` come il bordo di una scatola: tutto ciò
 che sta dopo entra nella scatola delle opzioni. [いずれか](grammar:grammar-izureka)
 è la mano che ne prende una, mentre `{{1|ひと}}つ` ti impedisce di prenderne due.
-Non è etimologia, ma rende visibile il movimento logico della frase.
+Questo promemoria rende visibile il movimento logico della frase.
 
 ## 2. L'opzione che rimette carte sotto il deck
 

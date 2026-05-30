@@ -107,7 +107,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `ホーム{{画面|がめん}}から` ➔ **punto di partenza**: `から` non descrive il contenuto della home, ma la schermata da cui parte l'azione.
+- `ホーム{{画面|がめん}}から` ➔ **punto di partenza**: `から` marca la Home come punto da cui parte l'azione.
 - ミッション{{一覧|いちらん}}を ➔ **oggetto aperto**: [～{{一覧|いちらん}}](grammar:grammar-ichiran) trasforma ミッション in una vista elenco, quindi non stai entrando in una singola missione.
 - `{{開|ひら}}いて` ➔ **prima azione concatenata**: la forma in `-te` prepara l'azione successiva senza chiudere la frase.
 - {{確認|かくにん}}する ➔ **controllo informativo**: qui [{{確認|かくにん}}](term:term-confirm) significa verificare lo stato, non ritirare un premio.

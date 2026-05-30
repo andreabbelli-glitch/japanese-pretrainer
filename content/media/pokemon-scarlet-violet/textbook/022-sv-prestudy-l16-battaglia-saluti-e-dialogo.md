@@ -87,11 +87,11 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `いわタイプの` ➔ **Specificazione nominale** (`の` lega il tipo Roccia al nome che segue).
-*   `{{攻撃|こうげき}}です` ➔ **Etichetta in forma cortese**: non descrive ancora chi colpisce, ma classifica l'azione come attacco.
+*   `{{攻撃|こうげき}}です` ➔ **Etichetta in forma cortese**: `攻撃です` classifica l'azione come attacco.
 
 #### 🧠 Gancio cognitivo
 
-Come trucco mnemonico, tratta `タイプの` come un cartellino attaccato al nome dopo: `いわタイプの{{攻撃|こうげき}}` non è "roccia e poi attacco", ma "attacco con il cartellino Roccia".
+`タイプの` attacca il cartellino del tipo al nome seguente.
 
 ## 2. `ただ` e `〜させて`: limite, svolta e permesso
 

@@ -236,15 +236,13 @@ Nel label
 la parte che cambia la lettura è [～{{済|ず}}み](grammar:grammar-zumi).
 `{{構築|こうちく}}` da solo richiama la costruzione del deck;
 [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt) aggiunge che quella costruzione
-è già completata. Per questo il deck non è un progetto da montare da zero, ma
-un prodotto già pronto.
+è già completata. Il deck risulta gia' completato e pronto come prodotto di scambio.
 
 - `デッキ` resta il termine di gioco per il mazzo.
 - `{{購入|こうにゅう}}` apre il flusso di acquisto.
 - [{{販売期間|はんばいきかん}}](term:term-sale-period) sposta l'attenzione sulla
   disponibilità commerciale: il prodotto esiste solo entro quella finestra.
-- `{{特典|とくてん}}プレイマット/プロテクト` segnala bonus inclusi. `{{特典|とくてん}}`
-  non è il deck principale, ma ciò che viene aggiunto come extra.
+- `{{特典|とくてん}}プレイマット/プロテクト` segnala bonus inclusi. Qui si parla della parte aggiunta come extra al deck principale.
 
 :::example_sentence
 jp: >-

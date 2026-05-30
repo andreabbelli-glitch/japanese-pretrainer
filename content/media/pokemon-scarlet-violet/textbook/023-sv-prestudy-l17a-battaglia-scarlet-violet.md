@@ -94,9 +94,9 @@ Come trucco mnemonico, immagina [さて](term:term-e030-sate) come una mano che 
 
 ## 2. Team, scuola e boss: leggere il ruolo prima del nome
 
-La storia di Paldea alterna gruppi organizzati, autorità scolastiche e avversari speciali. [チーム](term:term-v157-chiimu) indica il gruppo; con [の](grammar:grammar-g030-possesso-collegamento-tra-nomi), チームの ボス non descrive due cose separate, ma "il boss del team". [ボス](term:term-v159-bosu) restringe la scena a una figura da raggiungere, affrontare o ascoltare, mentre [アジト](term:term-v165-ajito) sposta l'attenzione sul luogo del gruppo: base, covo, nascondiglio.
+La storia di Paldea alterna gruppi organizzati, autorità scolastiche e avversari speciali. `チームのボス` lega il boss al gruppo; `アジト` porta la scena verso base o covo. [ボス](term:term-v159-bosu) restringe la scena a una figura da raggiungere, affrontare o ascoltare, mentre [アジト](term:term-v165-ajito) sposta l'attenzione sul luogo del gruppo: base, covo, nascondiglio.
 
-La cornice scolastica usa un vocabolario diverso. [{{学園|がくえん}}](term:term-v158-gakuen) non è una classe singola, ma l'istituzione e il campus; [{{校長|こうちょう}}](term:term-v168-kouchou) è la persona che parla con autorità istituzionale; [{{勉強|べんきょう}}](term:term-v174-benkyou) porta la frase verso studio, preparazione o lezioni. Quando questi termini entrano insieme, la scena non è più solo "qualcuno parla": sta parlando l'Accademia come sistema.
+La cornice scolastica usa un vocabolario diverso. `学園` indica istituzione e campus; `校長` porta autorita' scolastica nella scena. Quando questi termini entrano insieme, la scena non è più solo "qualcuno parla": sta parlando l'Accademia come sistema.
 
 :::example_sentence
 jp: >-
@@ -110,7 +110,7 @@ translation_it: >-
 *   {{学園|がくえん}}で ➔ **Cornice dell'azione**: [で](grammar:grammar-g027-luogo-dell-azione-mezzo) colloca l'evento dentro l'Accademia.
 *   `{{校長|こうちょう}}が` ➔ **Soggetto evidenziato**: è il preside a portare avanti la spiegazione.
 *   `チームの ボス` ➔ **Nome collegato da `の`**: il secondo nome, `ボス`, viene specificato dal primo, `チーム`.
-*   `について {{話|はな}}します` ➔ **Argomento del discorso**: la battuta non introduce un'azione di battaglia, ma una spiegazione su quel ruolo.
+*   `について {{話|はな}}します` ➔ **Argomento del discorso**: `について話します` introduce una spiegazione su un argomento.
 
 #### ⚖️ Contrasto operativo
 
@@ -138,7 +138,7 @@ translation_it: >-
 *   ほのおタイプの わざで ➔ **Mezzo dell'azione**: [で](grammar:grammar-g027-luogo-dell-azione-mezzo) dice con quale strumento avviene il danno, cioè una mossa di tipo Fuoco.
 *   `くさタイプに` ➔ **Bersaglio / destinazione dell'effetto**: il danno si dirige verso il tipo Erba.
 *   ダメージを ➔ **Oggetto diretto**: [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene inflitto.
-*   `{{与|あた}}える` ➔ **Verbo di conferimento**: l'azione non è "ricevere danno", ma applicarlo a un bersaglio.
+*   `{{与|あた}}える` ➔ **Verbo di conferimento**: `与える` applica danno o effetto a un bersaglio.
 
 #### ⚖️ Contrasto operativo
 
@@ -152,7 +152,7 @@ Quando vedi `タイプ`, leggi la parola precedente come colore sulla tabella de
 
 [{{出|だ}}す](term:term-v172-dasu) è un verbo piccolo ma molto operativo. Il valore di base è "mettere fuori / far uscire"; in battaglia ポケモンを {{出|だ}}す significa mandare un Pokémon in campo. La particella [を](grammar:grammar-g033-marca-l-oggetto-diretto) ti dice che il Pokémon è l'oggetto mosso dall'allenatore o dal sistema.
 
-[{{新|あたら}}しい](term:term-v169-atarashii) segnala che qualcosa entra ora nella scena: un Pokémon, una mossa, una funzione, un'informazione. [{{以上|いじょう}}](term:term-v175-ijou) invece lavora sul limite già toccato o superato. In これ{{以上|いじょう}}, il blocco non indica un numero, ma un confine narrativo o pratico: "oltre questo punto".
+[{{新|あたら}}しい](term:term-v169-atarashii) segnala che qualcosa entra ora nella scena: un Pokémon, una mossa, una funzione, un'informazione. [{{以上|いじょう}}](term:term-v175-ijou) invece lavora sul limite già toccato o superato. `これ以上` segna un confine narrativo o pratico oltre il punto attuale.
 
 :::example_sentence
 jp: >-
@@ -165,7 +165,7 @@ translation_it: >-
 
 *   `{{新|あたら}}しい ポケモン` ➔ **Elemento appena introdotto**: l'aggettivo cambia il Pokémon da noto a nuovo nella scena.
 *   ポケモンを ➔ **Oggetto diretto**: [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene mandato fuori.
-*   `{{出|だ}}す` ➔ **Azione operativa**: non è "uscire" da solo, ma "far uscire / mettere in campo" qualcosa.
+*   `{{出|だ}}す` ➔ **Azione operativa**: `出す` mette in campo o fa uscire qualcosa.
 
 #### ⚖️ Contrasto operativo
 

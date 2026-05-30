@@ -124,8 +124,7 @@ dove compaiono `{{勝利|しょうり}}のプリンプリン`,
 `{{勝利|しょうり}}のガイアール・カイザー`.
 
 [{{表示|ひょうじ}}している](term:term-hyoujishiteiru) usa している in valore
-stativo. Non descrive l'animazione del mostrare, ma lo stato risultante: quelle
-carte sono già visibili a schermo mentre leggi il messaggio.
+stativo. `表示されている` descrive lo stato risultante: le carte sono visibili.
 
 #### 🗺️ Anatomia del gruppo nominale
 
@@ -137,8 +136,8 @@ carte sono già visibili a schermo mentre leggi il messaggio.
 
 Come trucco mnemonico, leggi [{{下記|かき}}](term:term-kaki) come "la scritta
 sotto": `{{下|した}}` ti porta in basso nello schermo, `{{記|き}}` ti ricorda
-l'elemento indicato per iscritto. Non è una definizione etimologica completa,
-ma aiuta a riconoscere subito il gesto della UI.
+l'elemento indicato per iscritto. È un appoggio pratico per riconoscere subito
+il gesto della UI.
 
 ## 3. `特典カードを獲得します`: la ricompensa entra davvero in possesso
 

@@ -77,7 +77,7 @@ Il lato creatura ha una frase compatta perché segue un ordine tipico del rules 
 
 - [{{相手|あいて}}](term:term-opponent)のエレメントを{{1|ひと}}つ restringe il bersaglio al lato dell'avversario e usa を per marcare ciò che viene scelto. Il contatore {{1|ひと}}つ resta generico perché エレメント è una categoria larga: non richiede di contare solo creature o solo spell.
 - [{{選|えら}}び](term:term-erabu) è la forma continuativa di {{選|えら}}ぶ: collega la scelta all'azione successiva senza chiudere la frase. In italiano suona come "scegli ... e poi...".
-- [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の[{{手札|てふだ}}](term:term-hand)に[{{戻|もど}}す](term:term-modosu) mette la destinazione dopo に. Il punto non è "nella tua mano", ma "nella mano del proprietario": [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi) controlla dove torna la carta.
+- [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の[{{手札|てふだ}}](term:term-hand)に[{{戻|もど}}す](term:term-modosu) mette la destinazione dopo に. `持ち主の手札に戻す` manda la carta nella mano del proprietario.
 
 :::example_sentence
 jp: >-
@@ -96,7 +96,7 @@ reveal_mode: sentence
 
 *   このクリーチャーが[バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)[{{時|とき}}](grammar:grammar-toki) — **timing dell'effetto**: が marca la creatura che entra, に marca la zona di ingresso e {{時|とき}} trasforma quell'ingresso nel momento di attivazione.
 *   [{{相手|あいて}}](term:term-opponent)のエレメントを{{1|ひと}}つ — **bersaglio scelto**: {{相手|あいて}}の limita la scelta al campo avversario, mentre を prepara l'oggetto di [{{選|えら}}び](term:term-erabu).
-*   [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の[{{手札|てふだ}}](term:term-hand)に[{{戻|もど}}す](term:term-modosu) — **destinazione finale**: に non indica chi subisce l'effetto, ma la zona verso cui l'elemento ritorna.
+*   [{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)の[{{手札|てふだ}}](term:term-hand)に[{{戻|もど}}す](term:term-modosu) — **destinazione finale**: `に` marca la zona di destinazione verso cui l'elemento ritorna.
 
 #### ⚖️ Contrasto operativo: `{{相手|あいて}}の` contro `{{持|も}}ち{{主|ぬし}}の`
 
@@ -140,7 +140,7 @@ Per [{{残|のこ}}りのゲーム{{中|ちゅう}}](grammar:grammar-nokori-no-g
 
 ## 3. Pescare cinque, controllare dopo, aggiungere un turno
 
-Dopo avere impedito la perdita da mazzo vuoto, il testo ordina un'azione molto concreta: カードを{{5枚|ごまい}}[{{引|ひ}}く](term:term-hiku). Il contatore {{5枚|ごまい}} conta carte piatte o oggetti simili a fogli, perciò è la forma naturale con カード. Solo quando quella pescata è risolta compare [その{{後|あと}}](grammar:grammar-sonoato): la condizione non guarda il mazzo prima di pescare, ma lo stato prodotto dopo la pescata.
+Dopo avere impedito la perdita da mazzo vuoto, il testo ordina un'azione molto concreta: カードを{{5枚|ごまい}}[{{引|ひ}}く](term:term-hiku). Il contatore {{5枚|ごまい}} conta carte piatte o oggetti simili a fogli, perciò è la forma naturale con カード. `その後` guarda lo stato prodotto dopo la pescata di cinque carte.
 
 La parte finale combina [なければ](grammar:grammar-nakereba) e [このターンの{{後|あと}}に](grammar:grammar-no-ato-ni). Il primo pezzo controlla l'assenza di carte nel [{{山札|やまふだ}}](term:term-deck); il secondo colloca il turno aggiunto subito dopo quello attuale. [ターンを{{追加|ついか}}する](term:term-add-turn) usa を perché il turno è l'oggetto che viene aggiunto alla sequenza.
 

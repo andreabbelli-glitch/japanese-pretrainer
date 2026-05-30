@@ -55,7 +55,7 @@ Quando riconosci [やった！](term:term-e016-yatta), capisci che qualcuno reag
 
 Le frasi più corte sono spesso le più cariche di funzione. [やった！](term:term-e016-yatta) nasce dalla forma passata informale di やる, ma nel parlato di gioco non ti chiede di ricostruire "ha fatto": funziona come esclamazione di successo. Dopo una vittoria, una prova riuscita o una conferma positiva, suona come "sì!", "ce l'ho fatta!", "grande!".
 
-[もちろん](term:term-v081-mochiron) lavora nello stesso spazio delle risposte rapide, ma con un valore diverso. Non è solo "ovviamente" come ragionamento logico: in dialogo spesso è un "certo", "ma certo", cioè una conferma piena verso l'interlocutore. La scena non sta aggiungendo un'informazione nuova; sta mostrando che il personaggio accetta, rassicura o conferma senza esitazione.
+[もちろん](term:term-v081-mochiron) lavora nello stesso spazio delle risposte rapide, ma con un valore diverso. `もちろん` nel dialogo vale come conferma piena verso l'interlocutore. La scena non sta aggiungendo un'informazione nuova; sta mostrando che il personaggio accetta, rassicura o conferma senza esitazione.
 
 :::example_sentence
 jp: >-
@@ -121,7 +121,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Come trucco mnemonico, immagina [しっかり](term:term-v077-shikkari) come una presa salda sul controller: non descrive solo l'azione riuscita, ma il modo stabile e concentrato con cui la fai.
+Come trucco mnemonico, immagina [しっかり](term:term-v077-shikkari) come una presa salda sul controller: `しっかり` descrive il modo stabile e concentrato con cui compi l'azione.
 
 ## 3. Compagni e battaglia: chi sta dalla tua parte e che cosa cambia sullo schermo
 
@@ -166,7 +166,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Per [{{特攻|とくこう}}](term:term-v083-tokukou), aggancia {{特|とく}} a "speciale" e {{攻|こう}} ad "attacco": non è un'etimologia completa da manuale, ma ti aiuta a riconoscere subito la statistica come Attacco Speciale.
+Per [{{特攻|とくこう}}](term:term-v083-tokukou), aggancia {{特|とく}} a "speciale" e {{攻|こう}} ad "attacco": Il promemoria `特` + `攻` aiuta a riconoscere Attacco Speciale.
 
 ## 4. Possibilità, obbligo e completamento: che cosa si può fare e che cosa va fatto
 

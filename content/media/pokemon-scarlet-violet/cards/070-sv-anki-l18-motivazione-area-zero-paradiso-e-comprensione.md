@@ -43,7 +43,8 @@ reading: らくえん
 romaji: rakuen
 meaning_it: paradiso
 notes_it: >-
-  Nel contesto dell'Area Zero, il termine ha un peso narrativo e malinconico. Non è solo un bel panorama, ma indica un luogo ideale, incorrotto e promesso alle creature che lo abitano.
+  Nel contesto dell'Area Zero, il termine ha un peso narrativo e malinconico:
+  indica un luogo ideale, incorrotto e promesso alle creature che lo abitano.
 level_hint: custom
 :::
 :::term
@@ -53,7 +54,7 @@ reading: かつやく
 romaji: katsuyaku
 meaning_it: distinguersi; avere un ruolo attivo; successo/prestazione notevole
 notes_it: >-
-  Non indica semplicemente un 'fare bene', ma un 'distinguersi attivamente' svolgendo un ruolo decisivo e visibile. Il termine è spesso impiegato da presidi, professori e leader per augurare o lodare l'impatto positivo di un alunno nel mondo pokemon.
+  `活躍` indica distinguersi attivamente con un ruolo visibile. Il termine è spesso impiegato da presidi, professori e leader per augurare o lodare l'impatto positivo di un alunno nel mondo pokemon.
 level_hint: custom
 :::
 :::term
@@ -181,7 +182,7 @@ example_jp: >-
 example_it: >-
   Questo posto è un paradiso per i Pokémon.
 notes_it: >-
-  Nel contesto dell'Area Zero, il termine ha un peso narrativo e malinconico. Non è solo un bel panorama, ma indica un luogo ideale, incorrotto e promesso alle creature che lo abitano.
+  Nel contesto dell'Area Zero, il termine ha un peso narrativo e malinconico. `楽園` porta un peso narrativo: luogo ideale, promesso e incorrotto.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-18]
 :::
 :::card
@@ -198,7 +199,7 @@ example_jp: >-
 example_it: >-
   Mi aspetto grandi cose da te nel rango Campione.
 notes_it: >-
-  Non indica semplicemente un 'fare bene', ma un 'distinguersi attivamente' svolgendo un ruolo decisivo e visibile. Il termine è spesso impiegato da presidi, professori e leader per augurare o lodare l'impatto positivo di un alunno nel mondo pokemon.
+  `活躍` indica distinguersi attivamente con un ruolo visibile. Il termine è spesso impiegato da presidi, professori e leader per augurare o lodare l'impatto positivo di un alunno nel mondo pokemon.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-18]
 :::
 :::card

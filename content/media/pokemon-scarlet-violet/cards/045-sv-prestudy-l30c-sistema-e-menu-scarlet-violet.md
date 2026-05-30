@@ -447,8 +447,7 @@ romaji: yuuri
 meaning_it: vantaggioso
 notes_it: >-
   Indica una situazione favorevole. In lotta può riguardare tipo, posizione o
-  condizione: non significa "forte" in assoluto, ma avvantaggiato rispetto a
-  qualcosa.
+  condizione: `強い` qui indica vantaggio rispetto a una condizione o confronto.
 :::
 :::card
 id: card-v628-yuuri-recognition

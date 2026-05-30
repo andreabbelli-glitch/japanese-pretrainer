@@ -22,7 +22,7 @@ summary: >-
 
 In *Pokémon Scarlet & Violet* il testo cambia spesso registro senza avvisare: una riga sembra narrativa, poi diventa spiegazione dell'Accademia; una schermata online non racconta più nulla, ma ti dice chi è attivo, quale squadra stai usando o se lo scambio è già finito. In questi passaggi il giapponese non serve solo a capire la storia: ti fa leggere lo stato del sistema prima di premere il comando successivo.
 
-Le parole più astratte diventano molto concrete quando le guardi nel loro frame. `{{情報|じょうほう}}を{{共有|きょうゆう}}する` non è "avere informazioni", ma metterle in comune; `{{被害|ひがい}}が{{出|で}}る` non è un danno numerico da battaglia, ma una conseguenza che appare nella scena; `{{交換完了|こうかんかんりょう}}` non chiede di iniziare uno scambio, ti conferma che l'operazione si è chiusa.
+Le parole più astratte diventano molto concrete quando le guardi nel loro frame. `情報を共有する` significa mettere informazioni in comune; `被害が出る` presenta una conseguenza che emerge; `交換完了` conferma la chiusura dello scambio.
 
 ## Termini chiave
 
@@ -102,7 +102,7 @@ translation_it: >-
 
 ## 2. Menu online: condividere, filtrare, confermare
 
-Quando il dialogo lascia la scena e passa ai menu, le frasi diventano compatte. Label brevi, liste e messaggi di stato sostituiscono la prosa narrativa: il punto non è "chi parla", ma quale operazione il sistema sta permettendo, bloccando o confermando.
+Quando il dialogo lascia la scena e passa ai menu, le frasi diventano compatte. Label brevi, liste e messaggi di stato sostituiscono la prosa narrativa: Nei menu, l'informazione centrale e' l'operazione che il sistema permette, blocca o conferma.
 
 *   [{{共有|きょうゆう}}](term:term-v714-kyouyuu) compare con dati, impostazioni o informazioni. In {{情報|じょうほう}}を{{共有|きょうゆう}}する, l'informazione marcata da を viene messa a disposizione di un altro giocatore o gruppo: non è possesso privato, è disponibilità comune.
 *   [おことわりリスト](term:term-v720-okotowaririsuto) unisce おことわり, rifiuto espresso in forma cortese, e リスト. Il tono della parola è morbido, ma la funzione di menu è netta: filtrare, bloccare o rifiutare una certa interazione.
@@ -133,9 +133,9 @@ In [{{交換完了|こうかんかんりょう}}](term:term-v733-koukankanryou),
 La parte scolastica di Paldea usa parole amministrative, ma dentro il gioco hanno effetti molto pratici: dicono chi appartiene a un elenco, quanti elementi devi selezionare e quando un'attività smette di essere preparazione e diventa fase vera.
 
 *   [{{在籍|ざいせき}}](term:term-v721-zaiseki) indica appartenenza registrata. アカデミーに{{在籍|ざいせき}}している non vuol dire solo "trovarsi a scuola" in quel momento: significa risultare iscritti, essere parte ufficiale dell'Accademia.
-*   [{{単位|たんい}}](term:term-v717-tani) sono i crediti scolastici. In {{授業|じゅぎょう}}を{{受|う}}けて{{単位|たんい}}を{{取|と}}る, {{取|と}}る non è prendere un oggetto fisico, ma ottenere il credito dopo una lezione, un test o un'attività.
+*   [{{単位|たんい}}](term:term-v717-tani) sono i crediti scolastici. In {{授業|じゅぎょう}}を{{受|う}}けて{{単位|たんい}}を{{取|と}}る, {{取|と}}る `単位を取る` significa ottenere crediti dopo lezione, test o attivita'.
 *   [{{決|き}}められた{{数|かず}}](term:term-v716-kimeraretakazu) contiene {{決|き}}められた, forma passiva di "decidere / stabilire". In un prompt di selezione, la quantità non è lasciata alla tua scelta: il sistema l'ha già fissata e tu devi riempire quel numero.
-*   [{{本格的|ほんかくてき}}](term:term-v723-honkakuteki) segnala il passaggio alla fase seria. {{本格的|ほんかくてき}}に{{始|はじ}}まる non è solo "iniziare", ma iniziare a tutti gli effetti, dopo prove, preparazione o spiegazioni iniziali.
+*   [{{本格的|ほんかくてき}}](term:term-v723-honkakuteki) segnala il passaggio alla fase seria. {{本格的|ほんかくてき}}に{{始|はじ}}まる `本格的に始まる` indica l'avvio della fase seria, dopo preparazione o prove.
 *   [{{守護者|しゅごしゃ}}](term:term-v728-shugosha) è un titolo narrativo: {{守|まも}}る porta l'idea di proteggere, {{者|しゃ}} quella di persona o figura. Quando compare vicino a luoghi, tesori o ruoli speciali, leggilo come "guardiano", non come addetto tecnico a un menu.
 
 :::example_sentence
@@ -159,10 +159,10 @@ translation_it: >-
 
 Quando la storia passa a basi, zone e gruppi rivali, i nomi indicano estensione, controllo e ruolo nella scena. Non stai più leggendo un campo tecnico della UI: stai leggendo chi occupa uno spazio, chi lo protegge e come i personaggi si misurano tra loro.
 
-*   [{{一帯|いったい}}](term:term-v734-ittai) ha quasi sempre bisogno di un punto di riferimento: この{{一帯|いったい}}, あたり{{一帯|いったい}}, {{湖|みずうみ}}の{{一帯|いったい}}. Non è "area" in astratto, ma la zona attorno a un luogo riconoscibile.
+*   [{{一帯|いったい}}](term:term-v734-ittai) ha quasi sempre bisogno di un punto di riferimento: この{{一帯|いったい}}, あたり{{一帯|いったい}}, {{湖|みずうみ}}の{{一帯|いったい}}. `一帯` indica la zona attorno a un luogo riconoscibile.
 *   [{{占拠|せんきょ}}](term:term-v735-senkyo) è più forte di "stare lì". {{拠点|きょてん}}を{{占拠|せんきょ}}する dice che un gruppo prende una base e la tiene sotto controllo; con {{占拠|せんきょ}}される, invece, il luogo è ciò che subisce l'occupazione.
 *   [{{不良|ふりょう}}](term:term-v713-furyou) nella cornice scolastica indica studenti problematici, teppisti o ragazzi fuori dalle regole, come quando il testo sfiora l'immaginario del Team Star. Fuori contesto può anche significare "difettoso", ma qui il referente naturale sono persone e comportamento.
-*   [{{競|きそ}}い{{合|あ}}う](term:term-v732-seiau) è reciproco: {{競|きそ}}う è competere, {{合|あ}}う aggiunge l'idea di azione tra più parti. La scena non descrive una vittoria isolata, ma un confronto in cui i partecipanti si misurano tra loro.
+*   [{{競|きそ}}い{{合|あ}}う](term:term-v732-seiau) è reciproco: {{競|きそ}}う è competere, {{合|あ}}う aggiunge l'idea di azione tra più parti. La scena `競い合う` presenta un confronto reciproco tra partecipanti.
 
 :::example_sentence
 jp: >-

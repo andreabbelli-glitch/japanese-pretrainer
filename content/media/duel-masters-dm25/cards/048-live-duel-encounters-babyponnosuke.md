@@ -75,8 +75,7 @@ example_jp: >-
   {{体|からだ}}が{{大|おお}}きいのではなく、
   コストの{{数字|すうじ}}が{{高|たか}}いという{{意味|いみ}}になる。
 example_it: >-
-  Quando una carta dice `creatura dal costo alto`, non parla della stazza ma
-  del valore numerico del costo.
+  Quando una carta dice `creatura dal costo alto`, `costo alto` riguarda il valore numerico della carta.
 notes_it: >-
   È importante non tradurlo in automatico come `grossa creatura`. In una frase
   sui costi, `{{大|おお}}きい` prende il senso di `più alto`, `più grande come

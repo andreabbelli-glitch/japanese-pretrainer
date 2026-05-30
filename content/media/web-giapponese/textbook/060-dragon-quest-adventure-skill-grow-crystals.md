@@ -159,7 +159,7 @@ una regola: appena la condizione A è vera, la conseguenza B si attiva.
 
 La seconda frase riprende la stessa grammatica e alza il livello della catena:
 `グロウ{{結晶|けっしょう}}をたくさん{{手|て}}に{{入|い}}れると{{冒険|ぼうけん}}スキルを{{獲得|かくとく}}するぞ。`.
-Ora il trigger non è più sconfiggere il nemico, ma ottenere molti cristalli.
+Qui il trigger cambia: l'azione rilevante diventa ottenere molti cristalli.
 Il testo ti fa leggere la progressione completa: drop dei cristalli, accumulo,
 acquisizione della skill.
 

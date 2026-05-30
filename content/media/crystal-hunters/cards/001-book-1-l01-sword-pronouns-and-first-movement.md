@@ -164,7 +164,7 @@ example_it: >-
   Io recupero la spada.
 notes_it: >-
   {{剣|けん}} è l'oggetto concreto attorno a cui si muove l'azione iniziale:
-  non descrive un tema astratto, ma ciò che qualcuno vuole avere di nuovo.
+  La frase punta a cio' che qualcuno vuole recuperare: qualcosa da avere di nuovo, concreto nella scena.
 tags: [crystal-hunters, book-1, lesson-01]
 :::
 

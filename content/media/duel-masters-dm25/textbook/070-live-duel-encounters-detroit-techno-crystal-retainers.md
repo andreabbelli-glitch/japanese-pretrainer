@@ -30,7 +30,7 @@ summary: >-
 # Detroit Techno: il lato spell resta in campo e controlla il topdeck
 
 
-{{鬼面|きめん}}のコード デトロイト・テクノ è una carta Twinpact: il testo ti fa leggere prima la creatura che può attaccare subito, poi la parentesi di [スマッシュ・バースト](term:term-smash-burst), infine lo spell side 「{{水晶|すいしょう}}よ、{{大地|だいち}}より{{我|わ}}が[{{配下|はいか}}](term:term-haika)を{{創|つく}}れ！」. La difficoltà non è una singola parola rara, ma il cambio continuo di asse: turno di ingresso, lato della stessa carta, posizione fisica nel [バトルゾーン](term:term-battle-zone), cima del [{{山札|やまふだ}}](term:term-deck), filtro di razza e destinazione finale in [マナゾーン](term:term-mana-zone).
+{{鬼面|きめん}}のコード デトロイト・テクノ è una carta Twinpact: il testo ti fa leggere prima la creatura che può attaccare subito, poi la parentesi di [スマッシュ・バースト](term:term-smash-burst), infine lo spell side 「{{水晶|すいしょう}}よ、{{大地|だいち}}より{{我|わ}}が[{{配下|はいか}}](term:term-haika)を{{創|つく}}れ！」. La difficolta' e' seguire i cambi d'asse: turno d'ingresso, lato Twinpact, zona, cima del deck, razza e destinazione.
 
 La carta diventa più chiara quando tieni separati due movimenti. Il lato creatura rimane sul tavolo e permette di lanciare il [{{呪文側|じゅもんがわ}}](term:term-spell-side); lo spell side invece rimescola il deck, rende pubblica la prima carta e poi divide il risultato in due rami con なら e [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara).
 
@@ -90,9 +90,9 @@ caption: >-
 
 ## 1. Entrare e attaccare subito: 出たターン come finestra stretta
 
-La prima riga della creatura è corta, ma decide una cosa concreta: Detroit Techno può attaccare il giocatore avversario nel turno in cui entra. `{{出|で}}たターン` non descrive un turno qualsiasi; lega il permesso al turno di ingresso. Subito dopo, `{{相手|あいて}}プレイヤーを` marca il bersaglio diretto con `を`, quindi il testo non parla genericamente di "fare un attacco", ma proprio di poter puntare il player avversario.
+La prima riga della creatura è corta, ma decide una cosa concreta: Detroit Techno può attaccare il giocatore avversario nel turno in cui entra. Il testo concede a Detroit Techno la possibilita' di puntare il giocatore avversario nel turno d'ingresso.
 
-Il verbo finale [{{攻撃|こうげき}}](term:term-attack)できる usa la forma potenziale: non dice che la creatura attacca automaticamente, ma che il testo le concede una possibilità che normalmente sarebbe limitata. In lettura TCG, questo tipo di riga va separato dal resto della carta: è un permesso di attacco, non il trigger dello spell side.
+Il verbo finale [{{攻撃|こうげき}}](term:term-attack)できる usa la forma potenziale: `攻撃できる` concede una possibilita' di attacco normalmente limitata. In lettura TCG, questo tipo di riga va separato dal resto della carta: è un permesso di attacco, non il trigger dello spell side.
 
 :::example_sentence
 jp: >-

@@ -107,7 +107,7 @@ example_it: >-
   Siccome c'è `ni`, qui il testo marca il destinatario. `Wo` resta sul lato di
   ciò che viene conferito, cioè `S-Trigger`.
 notes_it: >-
-  Il punto da fissare non è solo `すべて`, ma `すべてに`. `に` funziona come il
+  `すべてに` include anche la particella `に`: l'effetto viene assegnato a tutti i destinatari. `に` funziona come il
   nostro `a`: il gruppo lungo costruito prima diventa il ricevente del verbo
   [{{与|あた}}える](term:term-ataeru).
 tags: [live-duel, concept, recipient, particle]

@@ -23,8 +23,7 @@ summary: >-
 
 シャダンＱ mette insieme due movimenti molto diversi: entrare gratis se il tuo campo
 ha già la razza giusta, e poi trasformarsi in una risposta difensiva quando
-una creatura attacca te. Il testo non è lungo, ma alterna condizione,
-permesso e referenza locale con grande precisione.
+una creatura attacca te. Il testo alterna condizione, evento d'attacco e risposta della carta.
 
 La prima riga chiede di controllare se esiste un tuo ジョーカーズ abbastanza
 costoso. La seconda riga guarda invece un attacco già dichiarato: se quel
@@ -127,8 +126,7 @@ pagamento di シャダンＱ, non il valore del Jokers controllato.
 
 ## 2. 攻撃する時: il timing nasce dall'attacco contro di te
 
-La seconda riga cambia scena. Non parla più di evocare シャダンＱ, ma di
-rispondere a un attacco. Il soggetto è `クリーチャーが`: una creatura qualunque
+La seconda riga cambia scena. La seconda riga passa dall'evocazione di シャダンＱ alla gestione dell'attacco. Il soggetto è `クリーチャーが`: una creatura qualunque
 sta attaccando. Il bersaglio è
 [{{自分|じぶん}}](term:term-self)を: questa volta 自分 non indica "una tua
 carta", ma te come giocatore.

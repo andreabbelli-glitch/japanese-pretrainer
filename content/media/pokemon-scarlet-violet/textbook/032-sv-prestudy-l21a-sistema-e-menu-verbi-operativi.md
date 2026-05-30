@@ -82,7 +82,7 @@ Quando il gioco ti mette davanti una schermata di selezione, il verbo decide il 
 *   [{{選|えら}}ぶ](term:term-v322-erabu) è il verbo base della selezione. Una voce del menu, un Pokémon, una destinazione o un oggetto vengono marcati da を e diventano il bersaglio della scelta: ポケモンを{{選|えら}}ぶ non sta descrivendo il Pokémon, ma ti sta dicendo che il Pokémon è l'elemento da selezionare. Nelle schermate di squadra o negli elenchi, questa forma ti orienta subito verso l'azione richiesta.
 *   [{{戻|もど}}る](term:term-v315-modoru) lavora nella direzione opposta. Non significa "ripetere" e non apre un nuovo ramo: riporta al punto precedente, spesso alla schermata da cui sei arrivato. Come comando di UI, [{{戻|もど}}る](term:term-v315-modoru) è il verbo dell'uscita controllata, non della conferma.
 *   [{{変更|へんこう}}](term:term-v331-henkou) entra in gioco quando una scelta o un'impostazione esiste già. In menu di aspetto, configurazione o preferenze, {{変更|へんこう}}する segnala che lo stato attuale verrà sostituito con un altro. Per questo è più forte di [{{選|えら}}ぶ](term:term-v322-erabu): non scegli soltanto una possibilità, cambi ciò che era impostato.
-*   [{{見|み}}た{{目|め}}](term:term-v321-mitame) significa "aspetto esteriore": {{見|み}}た viene da ciò che si vede, {{目|め}} è l'occhio o la vista. Quando questa parola compare accanto a [{{変更|へんこう}}](term:term-v331-henkou), la schermata non parla della forza del personaggio o del Pokémon, ma di ciò che appare visivamente.
+*   [{{見|み}}た{{目|め}}](term:term-v321-mitame) significa "aspetto esteriore": {{見|み}}た viene da ciò che si vede, {{目|め}} è l'occhio o la vista. Quando questa parola compare accanto a [{{変更|へんこう}}](term:term-v331-henkou), la schermata `見た目` porta la schermata verso cio' che appare visivamente.
 
 :::example_sentence
 jp: >-
@@ -109,8 +109,8 @@ translation_it: >-
 
 Quando la UI parla di nuove funzioni, ricette, crafting o risorse, il soggetto della frase spesso non sei tu. Il giapponese mette al centro lo stato del sistema: una voce aumenta, una creazione diventa possibile, una risorsa si ricarica.
 
-*   [{{増|ふ}}える](term:term-v314-fue-ru) è intransitivo: non significa "aggiungere qualcosa con la mano", ma "qualcosa aumenta / compare". In メニューが{{増|ふ}}える, メニュー è marcato da が perché è il menu stesso a espandersi. Il focus è il nuovo stato della schermata, non un gesto manuale del giocatore.
-*   [{{作|つく}}れる](term:term-e049-tsukureru) è la forma potenziale di {{作|つく}}る: il gioco non dice semplicemente "creare", ma "si può creare". In *Scarlet & Violet* questo valore diventa concreto quando hai materiali, ricette o una funzione sbloccata per MT e oggetti.
+*   [{{増|ふ}}える](term:term-v314-fue-ru) è intransitivo: `増える` e' intransitivo: il menu stesso aumenta o compare. In メニューが{{増|ふ}}える, メニュー è marcato da が perché è il menu stesso a espandersi. Il focus è il nuovo stato della schermata, non un gesto manuale del giocatore.
+*   [{{作|つく}}れる](term:term-e049-tsukureru) è la forma potenziale di {{作|つく}}る: `作れる` presenta una possibilita' concreta di creazione sbloccata da materiali o funzione. In *Scarlet & Violet* questo valore diventa concreto quando hai materiali, ricette o una funzione sbloccata per MT e oggetti.
 *   [まとめて](term:term-e048-matomete) comprime più elementi in un'unica azione. In acquisti, selezioni o conferme multiple, non vuol dire solo "molto": dice che gli elementi vengono trattati insieme, in blocco.
 *   [チャージ](term:term-v319-chaaji) porta nella UI il lessico della ricarica. Può riguardare energia, uso di una funzione o disponibilità di una risorsa: quando lo vedi, chiediti che cosa deve tornare pronto prima del prossimo utilizzo.
 *   [ちなみに](term:term-e060-chinamini) introduce un'informazione laterale, spesso utile ma non centrale. Se dopo compare [～かも](grammar:grammar-g064-contrazione-di), il tono resta ipotetico: il parlante aggiunge una possibilità, non una garanzia.

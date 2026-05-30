@@ -359,10 +359,9 @@ non disegnano lo stesso personaggio.
 
 ## 4. La spada come oggetto dell'azione
 
-La [{{剣|けん}}](term:term-ken) è concreta: non è un tema astratto da nominare,
-ma qualcosa che si vede, si prende, si perde e si recupera. Per questo il
-blocco più importante è spesso `{{剣|けん}}を`: la spada entra nella frase come
-oggetto diretto, in attesa del verbo.
+La [{{剣|けん}}](term:term-ken) è concreta: si vede, si prende, si perde e si
+recupera. Per questo il blocco più importante è spesso `{{剣|けん}}を`: la spada
+entra nella frase come oggetto diretto, in attesa del verbo.
 
 :::example_sentence
 jp: >-

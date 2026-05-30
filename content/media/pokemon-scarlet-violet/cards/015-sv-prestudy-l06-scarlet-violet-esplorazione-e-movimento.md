@@ -172,8 +172,7 @@ reading: ぱるであちほう
 romaji: parudea chihou
 meaning_it: regione di Paldea
 notes_it: >-
-  Nome della regione in cui si svolge Scarlet / Violet. Il componente
-  {{地方|ちほう}} indica che non è una città singola, ma l’area geografica ampia.
+  Nome della regione in cui si svolge Scarlet / Violet. `地方` indica una regione ampia.
 :::
 :::term
 id: term-v065-dougu
@@ -363,8 +362,7 @@ reading: すばやさ
 romaji: subayasa
 meaning_it: Velocità
 notes_it: >-
-  Statistica di velocità del Pokémon. In battaglia decide spesso chi agisce
-  prima, quindi non è una qualità generica ma un valore operativo.
+  Statistica di velocità del Pokémon. La qualita' va letta come valore operativo nel contesto della schermata.
 :::
 :::card
 id: card-v075-subayasa-recognition

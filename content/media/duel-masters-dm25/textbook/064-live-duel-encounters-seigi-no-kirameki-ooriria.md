@@ -183,7 +183,7 @@ reveal_mode: sentence
     scudi.
 *   [{{自分|じぶん}}](term:term-self)のシールドの
     [{{数|かず}}](term:term-kazu)が: が marca come soggetto il numero dei
-    tuoi scudi. Il testo non guarda quali scudi sono, ma quanti scudi hai.
+    tuoi scudi. Il testo controlla quanti scudi hai.
 *   [{{相手|あいて}}](term:term-opponent)[より](grammar:grammar-yori):
     `より` marca il benchmark del paragone. Qui la forma piena sottintesa è
     `{{相手|あいて}}のシールドの{{数|かず}}より`, cioè "rispetto al numero degli

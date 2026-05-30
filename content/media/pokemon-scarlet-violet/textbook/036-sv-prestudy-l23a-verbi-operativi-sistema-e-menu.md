@@ -247,18 +247,7 @@ Alcune frasi operative non ti dicono solo che cosa fare: ti dicono che cosa evit
 
 ### A. Divieto cortese: `～ないでください`
 
-[～ないでください](grammar:grammar-g079-per-favore-non-fare) è la forma cortese per chiedere di non fare qualcosa: verbo in negativo con ないで + ください. In un messaggio di sistema può bloccare un'azione senza suonare brusco, come ここではレポートを{{消|け}}さないでください. La parte importante è ないで: non descrive una mancanza, ma trasforma il verbo in "senza fare / non fare".
-
-:::example_sentence
-jp: >-
-  ここでは レポートを {{消|け}}さないでください。
-translation_it: >-
-  Qui non cancellare il salvataggio, per favore.
-:::
-
-#### 🗺️ Anatomia della frase
-
-*   `ここでは` ➔ **Ambito del divieto** (`では` restringe la regola a "qui / in questa schermata").
+[～ないでください](`ないでください` trasforma il verbo in richiesta cortese di astenersi dall'azione).
 *   `レポートを` ➔ **Oggetto dell'azione vietata** (il report è ciò che non devi cancellare).
 *   `{{消|け}}さないでください` ➔ **Richiesta negativa cortese** (`{{消|け}}す` diventa `{{消|け}}さないで`, poi `ください` rende la proibizione più formale).
 

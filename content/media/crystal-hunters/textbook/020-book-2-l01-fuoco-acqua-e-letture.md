@@ -197,7 +197,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `カルは` -> **Tema**: la frase parla dello stato di Kal.
-*   `{{倒|たお}}れている` -> **Stato risultante**: non descrive il momento della caduta, ma la condizione rimasta visibile.
+*   `{{倒|たお}}れている` -> **Stato risultante**: `倒れている` mostra lo stato rimasto visibile dopo la caduta.
 
 [まずい](term:term-ch-mazui) lavora nello stesso ritmo: non spiega tutto, ma
 nomina la valutazione immediata della scena.

@@ -92,8 +92,7 @@ tutto in pochi nomi forti.
     impossibile in assoluto: sta dicendo che serve una condizione, come progresso
     nella storia, connessione, numero di giocatori o scelta precedente.
 *   [{{場合|ばあい}}](term:term-v350-baai) costruisce il "caso". Una formula come
-    `その{{場合|ばあい}}` delimita la regola: non vale per ogni situazione, ma per lo
-    scenario appena nominato. È una parola piccola, però evita di leggere un
+    `その{{場合|ばあい}}` delimita la regola: `その場合` delimita la regola al caso appena nominato. È una parola piccola, però evita di leggere un
     avviso specifico come se fosse una regola generale.
 *   [{{続|つづ}}ける](term:term-v351-tsuzuke-ru) tiene aperto il flusso. In un
     prompt è il verbo del proseguire: continuare la sessione, lasciare aperto il

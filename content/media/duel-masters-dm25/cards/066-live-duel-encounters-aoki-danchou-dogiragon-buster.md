@@ -71,8 +71,7 @@ aliases: [指定, してい, shitei, 指定された]
 notes_it: >-
   In giapponese generale `{{指定|してい}}` vuol dire indicare o designare in
   modo preciso. Nel rules text restringe il gruppo valido: in
-  `{{指定|してい}}されたクリーチャー`, non basta una creatura qualunque, ma serve una
-  creatura che corrisponda alla condizione scritta dalla carta.
+  `{{指定|してい}}されたクリーチャー`, `指定されたクリーチャー` richiede una creatura che corrisponda esattamente al filtro indicato.
 level_hint: n3
 :::
 
@@ -246,7 +245,7 @@ example_it: >-
   Puoi scambiare la creatura che attacca con il Drago nella mano.
 notes_it: >-
   È il verbo che rende concreta [{{革命|かくめい}}チェンジ](term:term-kakumei-change):
-  non è solo `出す`, ma uno scambio di posizione fra due carte.
+  Qui `出す` avviene dentro uno scambio di posizione tra due carte.
 tags: [live-duel, verb, revolution-change, movement]
 :::
 

@@ -37,11 +37,7 @@ meaning_it: Ninja Strike / keyword che permette di evocare la carta durante un a
 pos: keyword
 aliases: [ニンジャ・ストライク, Ninja Strike, ninja strike]
 notes_it: >-
-  È una keyword di risposta durante un attacco o un blocco. La parte utile da
-  fissare non è solo `entrare gratis`, ma la catena che la segue: soglia di
-  mana, controllo sul fatto di non aver già usato `ニンジャ・ストライク` in
-  quello stesso attacco, evocazione senza costo e rientro sotto il mazzo a fine
-  turno.
+  È una keyword di risposta durante un attacco o un blocco. Il nucleo da ricordare e' la catena successiva all'ingresso gratuito.
 level_hint: custom
 :::
 
@@ -56,9 +52,7 @@ aliases: [持つ, もつ, motsu]
 notes_it: >-
   In giapponese generale `持つ` vuol dire `avere`, `possedere`, `portare con
   sé`. Nel rules text di Duel Masters appare spesso come verbo che modifica un
-  nome: `〜を{{持|も}}つX` = `X che ha 〜`. In
-  `コストを{{持|も}}つドラゴン・エレメント` non indica un gesto fisico, ma una
-  proprietà della carta rivelata.
+  nome: `〜を{{持|も}}つX` = `X che ha 〜`. `コストを持つ` significa possedere un valore di costo stampato o rilevante.
 level_hint: n4
 :::
 

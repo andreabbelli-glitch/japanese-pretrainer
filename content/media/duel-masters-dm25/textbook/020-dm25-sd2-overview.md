@@ -146,9 +146,7 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-- `このクリーチャーの{{攻撃中|こうげきちゅう}}` ➔ **Finestra in corso**:
-  `中` agganciato ad `{{攻撃|こうげき}}` non indica "dopo l'attacco", ma il periodo
-  in cui l'attacco sta avvenendo.
+`攻撃中` indica il periodo interno all'attacco.
 - `{{相手|あいて}}は` ➔ **Soggetto limitato**: il divieto riguarda l'avversario,
   non entrambi i giocatori.
 - `「G・ストライク」を{{使|つか}}えない` ➔ **Divieto d'uso**: `{{使|つか}}えない`
@@ -364,9 +362,7 @@ reveal_mode: sentence
 
 #### 🗺️ Anatomia della frase
 
-- `コスト{{表記|ひょうき}}にある{{数字|すうじ}}` ➔ **Numeri stampati nel costo**:
-  il testo non guarda la potenza né il numero di carte, ma i numeri visibili nel
-  costo.
+Il testo confronta i numeri visibili sui costi.
 - [{{合計|ごうけい}}](term:term-goukei)したもの ➔ **Risultato della somma**:
   prima sommi, poi confronti il totale.
 - `{{5以上|ごいじょう}}になる` ➔ **Soglia minima**: `以上` include 5; non chiede
@@ -469,8 +465,8 @@ reveal_mode: sentence
   può essere eseguita subito, non messa da parte per dopo.
 - `その{{時|とき}}` ➔ **Riferimento allo stesso istante**: la condizione degli
   scudi si misura in quel momento.
-- `{{1|ひと}}つもなければ` ➔ **Zero scudi**: `1つもない` non significa "almeno uno",
-  ma "nemmeno uno".
+- `{{1|ひと}}つもなければ` ➔ **Zero scudi**: `1つもない` significa "nemmeno
+  uno".
 - このカードに[{{能力|のうりょく}}](term:term-ability)を
   [{{与|あた}}える](term:term-ataeru) ➔ **Abilità concessa**: prima il testo
   assegna una capacità alla carta; poi quella capacità può produrre il suo

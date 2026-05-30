@@ -57,8 +57,7 @@ translation_it: >-
 *   `もう{{少|すこ}}し` ➔ **Quantità aggiuntiva**.
 *   `{{待|ま}}って` ➔ **Richiesta informale**: aspetta.
 
-Con `で`, la frase cambia: non chiede una quantità, ma segnala che manca poco
-a un risultato.
+Con `で`, la frase cambia: Con `で`, la frase segnala che manca poco rispetto a una quantita' o soglia.
 
 :::example_sentence
 jp: >-

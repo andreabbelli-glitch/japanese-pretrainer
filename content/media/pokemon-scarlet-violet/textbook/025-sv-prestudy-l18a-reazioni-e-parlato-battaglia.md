@@ -85,7 +85,7 @@ translation_it: >-
 
 Per [そうか](term:term-e036-souka), pensa alla testa del personaggio che fa clic: "così, eh". Per [まさか](term:term-e038-masaka), immagina invece un freno improvviso nella frase: "aspetta, non può essere...". È un trucco mnemonico sul tono, non un'etimologia.
 
-Quando entra [{{感謝|かんしゃ}}](term:term-v208-kansha), il registro si sposta ancora: non è più solo reazione, ma riconoscimento di un favore. {{感謝|かんしゃ}}する trasforma il sostantivo in verbo, "ringraziare / essere grati", ed è naturale dopo aiuto, collaborazione o salvataggio.
+Quando entra [{{感謝|かんしゃ}}](term:term-v208-kansha), il registro si sposta ancora: `感謝する` sposta il registro verso riconoscenza per un favore. {{感謝|かんしゃ}}する trasforma il sostantivo in verbo, "ringraziare / essere grati", ed è naturale dopo aiuto, collaborazione o salvataggio.
 
 ## 2. Parlare di persone e parole: `って` mette il tema davanti
 
@@ -108,7 +108,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[〜って](grammar:grammar-g037-citazione-tema-colloquiale) non è sempre virgolette invisibili. Se dopo arriva un commento su una persona o un concetto, leggilo come tema: ネモって non significa "la parola Nemona", ma "quanto a Nemona". Se invece il blocco riprende una frase detta da qualcuno, allora la lettura da citazione torna possibile.
+`って` puo' introdurre un tema colloquiale: quanto a Nemona, quanto a quella persona. Se invece il blocco riprende una frase detta da qualcuno, allora la lettura da citazione torna possibile.
 
 #### 🧠 Gancio cognitivo
 
@@ -147,7 +147,7 @@ Per ricordare [{{持|も}}たせる](term:term-v202-mota-seru), visualizza l'ogg
 
 Molte battute di battaglia non dicono solo cosa succede, ma quanto una cosa supera un'altra o a quale condizione parte l'effetto. [〜より / 〜ほど](grammar:grammar-g038-piu-di-al-punto-da) copre due movimenti diversi: AよりB mette A come punto di confronto e fa risaltare B, mentre ほど misura il grado, spesso in frasi come "non quanto pensavo" o "al punto da".
 
-[ずっと](term:term-v197-zutto) può indicare durata continuativa, "per tutto il tempo", ma nei confronti spesso intensifica: ずっと{{強|つよ}}い non vuol dire che è forte da sempre, ma "molto più forte". [{{全然|ぜんぜん}}](term:term-v203-zenzen) richiede attenzione simile: con una forma negativa è "per niente", mentre nel parlato moderno può rafforzare una valutazione positiva, come "assolutamente / davvero".
+`ずっと強い` nei confronti intensifica: molto piu' forte. [{{全然|ぜんぜん}}](term:term-v203-zenzen) richiede attenzione simile: con una forma negativa è "per niente", mentre nel parlato moderno può rafforzare una valutazione positiva, come "assolutamente / davvero".
 
 :::example_sentence
 jp: >-

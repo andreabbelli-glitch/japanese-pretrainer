@@ -104,8 +104,7 @@ Nel sommario, [{{最強|さいきょう}}](term:term-saikyo) ricompare vicino a 
 La parte finale del sommario cambia destinatario. [{{序盤|じょばん}}](term:term-shoban) parla della fase iniziale della progressione, [{{初心者|しょしんしゃ}}](term:term-shoshinsha) parla del lettore che comincia, e [{{考|かんが}}え{{方|かた}}](term:term-kangaekata) sposta l'attenzione dalle liste di squadre al criterio con cui costruirle. Questo passaggio è importante: quando leggi {{考|かんが}}え{{方|かた}}, non aspettarti solo "quale personaggio mettere", ma "come ragionare sulla composizione".
 
 [コラボ{{開催|かいさい}}](term:term-collab) appartiene invece al registro da
-portale aggiornato: non descrive una build, ma un evento o una collaborazione
-in corso che può cambiare priorità, banner e personaggi disponibili. Se compare
+portale aggiornato: Qui il termine segnala un evento o collaborazione annunciata dal portale. Se compare
 accanto al sommario, leggilo come segnale temporale della pagina, non come parte
 della grammatica della composizione.
 
@@ -143,7 +142,7 @@ La parte più pratica della guida usa [{{編成|へんせい}}](term:term-hensei
 
 [{{前衛|ぜんえい}}](term:term-frontline) combina {{前|ぜん}} "davanti" e {{衛|えい}} "guardia / difesa". In una guida di party composition, diventa la prima linea: il posto dove ha senso mettere chi regge pressione e contatto. [{{後衛|こうえい}}](term:term-backline) usa {{後|こう}} "dietro" con lo stesso {{衛|えい}}: è la retroguardia, cioè la zona più protetta. Non sono decorazioni grafiche della tabella; cambiano il modo in cui leggi il ruolo del personaggio.
 
-[{{代用|だいよう}}](term:term-substitute) completa questa logica. Il composto unisce {{代|だい}} "sostituzione / al posto di" e {{用|よう}} "uso": nella tabella non indica una scelta di ripiego qualsiasi, ma chi può essere usato al posto del personaggio ideale. Quando la pagina elenca alternative, [{{代用|だいよう}}](term:term-substitute) ti dice di non cercare il "migliore assoluto", ma un equivalente funzionale.
+[{{代用|だいよう}}](term:term-substitute) completa questa logica. `代用` indica il personaggio che puo' coprire la funzione dell'opzione ideale. Quando la pagina elenca alternative, [{{代用|だいよう}}](term:term-substitute) ti dice di non cercare il "migliore assoluto", ma un equivalente funzionale.
 
 :::image
 src: assets/starsavior-79520369-front-back.png
@@ -178,7 +177,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{代用|だいよう}}キャラ` ➔ **Nome composto da guida**: un personaggio usato come alternativa.
-*   `{{後衛|こうえい}}に` ➔ **Posizione protetta**: la sostituzione non è solo "chi uso", ma anche "dove lo metto".
+*   `{{後衛|こうえい}}に` ➔ **Posizione protetta**: `後衛に` specifica anche la posizione: la sostituzione funziona per ruolo e collocazione.
 *   `おく` ➔ **Decisione di layout**: il verbo chiude la frase come istruzione di disposizione.
 
 #### 🧠 Gancio cognitivo

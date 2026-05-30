@@ -60,7 +60,7 @@ Nei dialoghi più quotidiani, lo stesso principio vale per tempo, tono e routine
 Nelle scene dell'Area Zero, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) non funziona come semplice parola fantascientifica. È una sigla inglese scritta nel testo giapponese con lettura エーアイ, e proprio questa forma fredda la distingue da un personaggio umano: quando la frase parte da {{Ａ|エー}}{{Ｉ|アイ}}が, il testo sta assegnando a un sistema artificiale il ruolo di soggetto.
 
 *   [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) compare bene dove il gioco vuole far sentire una presenza tecnica che parla, analizza o gestisce. Se il soggetto fosse una persona, ti aspetteresti un nome proprio, un titolo o una descrizione umana; con {{Ａ|エー}}{{Ｉ|アイ}}, invece, la battuta mette davanti un'entità costruita, capace di compiere azioni operative.
-*   Il punto da leggere non è solo "che cosa significa la sigla", ma che cosa fa nella frase. Con が, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) può controllare, spiegare, bloccare o guidare una procedura. In una scena tesa, questo cambia il peso della battuta: non stai ascoltando un commento neutro, stai leggendo il comportamento di un sistema.
+*   Il punto da leggere Con `AI` marcato da `が`, guarda che cosa fa il sistema nella frase. Con が, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) può controllare, spiegare, bloccare o guidare una procedura. In una scena tesa, questo cambia il peso della battuta: non stai ascoltando un commento neutro, stai leggendo il comportamento di un sistema.
 
 :::example_sentence
 jp: >-
@@ -85,9 +85,9 @@ translation_it: >-
 
 I menu e le città di Paldea fanno passare il giapponese dal prezzo fisso alla competizione, poi dalla compravendita alla cultura dell'Accademia. [お{{金|かね}}](term:term-anki-l08-okane), [{{競|せ}}り](term:term-anki-l08-seri) e [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu) appartengono allo stesso blocco di lettura perché ti obbligano a chiederti che tipo di situazione hai davanti.
 
-*   [お{{金|かね}}](term:term-anki-l08-okane) indica i soldi ordinari del giocatore. Il prefisso お fa parte dell'uso naturale: in giapponese quotidiano si dice spesso お{{金|かね}}, non solo {{金|かね}}, quando si parla di denaro in modo neutro. In お{{金|かね}}で{{払|はら}}う, la particella で non indica il luogo, ma il mezzo: il denaro è lo strumento con cui paghi.
-*   [{{競|せ}}り](term:term-anki-l08-seri) sposta l'attenzione dal semplice pagare al competere. Il kanji {{競|せ}} porta l'idea di gara: al mercato di マリナードタウン, il prezzo non è solo una cifra scritta, ma il risultato di rilanci e offerte. Se leggi [{{競|せ}}り](term:term-anki-l08-seri), preparati a una dinamica in cui vincere l'oggetto significa superare altri offerenti.
-*   [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu) cambia ancora ambiente. All'Accademia non indica "qualcosa di bello" in generale, ma l'arte come disciplina, materia e pratica guidata. {{術|じゅつ}} suggerisce tecnica: forme, colori e stile diventano oggetti di insegnamento, non solo impressioni personali.
+*   [お{{金|かね}}](term:term-anki-l08-okane) indica i soldi ordinari del giocatore. Il prefisso お fa parte dell'uso naturale: `お金で払う` usa il denaro come mezzo, marcato da `で`.
+*   [{{競|せ}}り](term:term-anki-l08-seri) sposta l'attenzione dal semplice pagare al competere. Il kanji {{競|せ}} porta l'idea di gara: `競り` trasforma il prezzo in risultato di rilanci e competizione. Se leggi [{{競|せ}}り](term:term-anki-l08-seri), preparati a una dinamica in cui vincere l'oggetto significa superare altri offerenti.
+*   [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu) cambia ancora ambiente. All'Accademia `芸術` indica l'arte come disciplina, materia e pratica guidata. {{術|じゅつ}} suggerisce tecnica: forme, colori e stile diventano oggetti di insegnamento, non solo impressioni personali.
 
 :::example_sentence
 jp: >-
@@ -121,7 +121,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Per [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu), pensa a {{術|じゅつ}} come "tecnica praticata". È un trucco mnemonico utile: l'arte qui non è soltanto gusto, ma una disciplina che si impara, si osserva e si valuta.
+Per [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu), pensa a {{術|じゅつ}} come "tecnica praticata". `術` aiuta a leggere l'arte come tecnica praticata.
 
 ---
 

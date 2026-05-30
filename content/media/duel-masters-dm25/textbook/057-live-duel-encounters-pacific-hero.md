@@ -128,7 +128,7 @@ conta perché [{{選|えら}}ぶ](term:term-erabu) indica una selezione mirata,
 mentre [{{攻撃|こうげき}}](term:term-attack) indica la dichiarazione di un
 attacco.
 
-*   [{{相手|あいて}}](term:term-opponent)に{{選|えら}}ばれず usa に per marcare l'agente del passivo: il lato che non può scegliere è l'avversario. {{選|えら}}ばれず viene da {{選|えら}}ばれる più [～ず](grammar:grammar-zu), quindi non vuol dire "senza scegliere", ma "senza essere scelto".
+*   [{{相手|あいて}}](term:term-opponent)に{{選|えら}}ばれず usa に per marcare l'agente del passivo: `選ばれず` significa restare senza essere scelto dall'avversario.
 *   [{{攻撃|こうげき}}](term:term-attack)されない usa la negativa passiva normale. Non parla di scelta come bersaglio di effetto: parla dell'attacco come azione di combattimento che non può puntare quella creatura.
 *   La virgola dopo `{{選|えら}}ばれず` non apre una nuova condizione. Tiene legate due conseguenze parallele sotto la stessa durata appena dichiarata.
 

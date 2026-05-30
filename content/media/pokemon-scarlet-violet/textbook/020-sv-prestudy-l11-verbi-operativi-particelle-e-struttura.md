@@ -59,7 +59,7 @@ In queste frasi non basta tradurre il verbo. Devi vedere chi è il tema, che cos
 
 Nei menu e nei dialoghi brevi, il gioco non costruisce frasi lunghe: usa formule compatte che cambiano subito lo stato della scena. [ちょっと {{待|ま}}って](term:term-e023-chotto-matsu-te) blocca l'azione per un momento; [どの ポケモンに {{使|つか}}いますか？](term:term-e024-dono-pokemoni-tsukaimasuka) sposta invece il controllo su di te e ti chiede di scegliere un bersaglio.
 
-[ちょっと {{待|ま}}って](term:term-e023-chotto-matsu-te) è parlato informale. ちょっと ammorbidisce la richiesta, mentre {{待|ま}}って è la forma in -te di {{待|ま}}つ, usata qui come invito diretto: non è un ordine militaresco, ma un "fermati un secondo" da dialogo.
+[ちょっと {{待|ま}}って](term:term-e023-chotto-matsu-te) è parlato informale. ちょっと ammorbidisce la richiesta, mentre {{待|ま}}って è la forma in -te di {{待|ま}}つ, usata qui come invito diretto: `ちょっと待って` e' un invito informale a fermarsi un momento.
 
 :::example_sentence
 jp: >-
@@ -178,7 +178,7 @@ translation_it: >-
 
 Per ricordare [{{見|み}}つける](term:term-v135-mitsu-keru), immagina che la ricerca finisca quando "lo vedi e lo agganci". È un trucco mnemonico, non una traduzione letterale completa, ma aiuta a sentire la differenza da [{{探|さが}}す](term:term-v129-sagasu).
 
-[{{旅|たび}}](term:term-v137-tabi) allarga questi verbi: non indica solo spostamento, ma il percorso che il personaggio sta costruendo. In {{旅|たび}}に{{出|で}}る, la particella に lega il viaggio alla partenza: si entra in una condizione nuova, quella del viaggiare.
+[{{旅|たび}}](term:term-v137-tabi) allarga questi verbi: `旅` allarga il movimento a un percorso che il personaggio sta costruendo. In {{旅|たび}}に{{出|で}}る, la particella に lega il viaggio alla partenza: si entra in una condizione nuova, quella del viaggiare.
 
 :::example_sentence
 jp: >-

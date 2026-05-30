@@ -166,8 +166,7 @@ translation_it: >-
 
 Quando `から` segue una frase, invece, diventa causa: "siccome / perché".
 
-[{{向|む}}ける](term:term-ch-b4-mukeru) non parla di partire da un punto, ma di
-orientare qualcosa verso un bersaglio. È il verbo naturale quando un'arma, uno
+`向ける` orienta qualcosa verso un bersaglio o destinatario. È il verbo naturale quando un'arma, uno
 sguardo o un oggetto viene puntato.
 
 :::example_sentence
@@ -210,8 +209,7 @@ translation_it: >-
   Quanto tempo.
 :::
 
-[{{格好|かっこう}}いい](term:term-ch-b4-ii-13) è diverso: non è un saluto, ma una
-valutazione. Appena compare, la battuta sta giudicando aspetto, stile o gesto.
+[{{格好|かっこう}}いい](term:term-ch-b4-ii-13) è diverso: `格好いい` valuta l'aspetto o il comportamento come figo, ammirevole, ben riuscito. Appena compare, la battuta sta giudicando aspetto, stile o gesto.
 
 :::example_sentence
 jp: >-

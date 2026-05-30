@@ -40,10 +40,7 @@ reading: フレンドリィショップ
 romaji: furendorii shoppu
 meaning_it: negozio del Centro Pokemon
 notes_it: >-
-  Non nomina un negozio qualsiasi della citta ma il banco collegato al
-  [ポケモンセンター](term:term-pokemon-center) dove compri Ball, medicine e altri
-  oggetti di base. Il termine distingue subito il punto cura dal punto
-  acquisti dentro lo stesso hub.
+  La scena nomina il banco servizi del Centro Pokemon: il punto acquisti collegato al [ポケモンセンター](term:term-pokemon-center), dove compri Ball, medicine e altri oggetti di base.
 :::
 :::term
 id: term-lp
@@ -67,9 +64,7 @@ meaning_it: materiale lasciato dai Pokemon
 notes_it: >-
   Nel lessico comune puo voler dire oggetto smarrito, ma in Scarlet / Violet
   indica i materiali che i Pokemon lasciano dopo le lotte o gli scontri sul
-  campo. Ti serve per leggere correttamente il crafting delle
-  [わざマシン](term:term-waza-machine): il gioco non parla di quest item ma di drop
-  di specie.
+  campo. `わざマシン` qui rimanda a materiali e drop utili alla creazione di MT.
 :::
 :::card
 id: card-otoshimono-recognition

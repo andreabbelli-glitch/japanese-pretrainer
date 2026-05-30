@@ -60,8 +60,7 @@ pos: phrase
 aliases: [表示している, hyouji shite iru, ひょうじしている]
 meaning_it: visualizzato / mostrato
 notes_it: >-
-  Forma stativa di `表示する`: non indica solo l'azione di "mostrare", ma lo stato
-  in cui qualcosa risulta attualmente visualizzato a schermo.
+  Forma stativa di `表示する`: `表示されている` descrive lo stato visibile prodotto dall'azione di mostrare.
 level_hint: n3
 :::
 

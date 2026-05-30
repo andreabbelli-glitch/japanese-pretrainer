@@ -132,8 +132,7 @@ reading: プレゼント
 romaji: purezento
 meaning_it: regalo / premio dato
 notes_it: >-
-  Nel gioco spesso non e un regalo sentimentale ma una ricompensa pratica:
-  oggetti, premi o strumenti dati subito dopo una piccola prova.
+  Nel gioco, il dono funziona spesso come ricompensa pratica: oggetti, premi o strumenti dati subito dopo una piccola prova.
 :::
 :::card
 id: card-v744-purezento-recognition

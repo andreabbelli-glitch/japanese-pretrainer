@@ -396,8 +396,7 @@ reading: ほんきで
 romaji: honki de
 meaning_it: sul serio
 notes_it: >-
-  本気で aggiunge serietà all'azione: 本気でやる non è solo "fare", ma farlo senza
-  scherzare o trattenersi.
+  `本気でやる` significa fare qualcosa con serietà e senza trattenersi.
 :::
 :::card
 id: card-v323-honki-de-recognition

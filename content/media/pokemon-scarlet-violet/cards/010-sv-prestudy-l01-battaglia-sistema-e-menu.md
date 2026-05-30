@@ -107,8 +107,7 @@ pattern: ～かな
 title: Mi chiedo se...
 meaning_it: mi chiedo se...
 notes_it: >-
-  Si attacca a una frase quando il parlante formula un dubbio leggero o pensa
-  ad alta voce: どこへ {{行|い}}こうかな non chiede a qualcuno, ma pesa una scelta.
+  `どこへ行こうかな` pesa ad alta voce una scelta di destinazione.
 :::
 :::card
 id: card-g002-mi-chiedo-se-concept

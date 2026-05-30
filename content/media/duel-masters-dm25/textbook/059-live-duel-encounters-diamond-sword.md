@@ -90,7 +90,7 @@ reveal_mode: sentence
 *   `このターン`: cornice temporale. La lettura non è permanente: vale per questo turno.
 *   [{{自分|じぶん}}](term:term-self)のクリーチャーが: soggetto interno alla relativa. Sono le tue creature a trovarsi sotto un divieto di attacco.
 *   [{{相手|あいて}}](term:term-opponent)プレイヤーを: oggetto dell'attacco. Il bersaglio nominato è il player avversario.
-*   [{{攻撃|こうげき}}](term:term-attack)することができない: azione nominalizzata più impossibilità. Non vuol dire “non attaccano adesso”, ma “non sono in grado / non possono attaccare” per effetto di una regola.
+*   [{{攻撃|こうげき}}](term:term-attack)することができない: azione nominalizzata più impossibilità. `攻撃することができない` esprime impossibilita' regolistica di attaccare.
 *   [{{効果|こうか}}](term:term-effect)は[すべて](term:term-subete): topic più totalità. La spell prende tutto il gruppo di effetti appena definito.
 *   [{{無効|むこう}}](term:term-mukou)になる: risultato. Quegli effetti diventano non validi, quindi non bloccano più l'attacco al player.
 
@@ -128,7 +128,7 @@ reveal_mode: sentence
 
 #### 🧠 Gancio cognitivo
 
-Come trucco mnemonico, immagina [{{無効|むこう}}](term:term-mukou) come un timbro “non valido” applicato sopra il divieto. Non è un'etimologia della parola: serve solo a ricordare che il testo non cancella fisicamente la creatura o la riga stampata, ma impedisce a quell'effetto di bloccare l'attacco per questo turno.
+`無効` rende inefficace il divieto per questo turno.
 
 ## 3. La clausola ただし: l'apertura non arriva fino alle creature
 

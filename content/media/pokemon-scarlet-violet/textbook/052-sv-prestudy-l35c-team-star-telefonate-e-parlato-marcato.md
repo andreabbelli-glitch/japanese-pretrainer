@@ -61,8 +61,7 @@ normale, [カシオペア](term:term-v764-kashiopea) non è solo un nome proprio
 
 ## 1. Il contatto forzato: quando la voce prende il telefono
 
-La prima informazione importante non è solo "qualcuno ti chiama", ma "qualcuno
-ha ottenuto accesso al canale". Il giapponese lo segnala con parole tecniche
+La chiamata va letta come ingresso di qualcuno nella scena a distanza. Il giapponese lo segnala con parole tecniche
 molto dirette.
 
 *   [ハッキング](term:term-v762-hakkingu) resta katakana, quindi il valore
@@ -168,8 +167,7 @@ translation_it: >-
 
 *   `そこで！` ➔ **Snodo operativo**: collega la spiegazione precedente alla
     richiesta che sta per arrivare.
-*   `ぜひとも` ➔ **Insistenza forte**: non è un semplice "per favore", ma un
-    rafforzatore del desiderio del parlante.
+*   `ぜひとも` ➔ **Insistenza forte**: `ぜひとも` alza l'insistenza della richiesta.
 *   `オマエの {{力|ちから}}を` ➔ **Collaborazione richiesta**: `{{力|ちから}}` è la
     forza o l'aiuto dell'interlocutore, marcata da `を` come oggetto della
     richiesta.
@@ -263,9 +261,7 @@ Molte battute non dicono la verità in modo frontale. Propongono un'impressione,
 formulano un'ipotesi o negano un'intenzione prima di arrivare alla richiesta.
 Queste forme sono piccole, ma cambiano quanto il parlante si sta esponendo.
 
-*   [～っぽい](grammar:grammar-g112-sembra-ha-l-aria-di) attacca un'impressione
-    a una base: `モトトカゲっぽい` non significa "è Cyclizar", ma "ha l'aria di
-    Cyclizar". È perfetto per somiglianze visive, atteggiamenti o atmosfere che
+`っぽい` comunica somiglianza o impressione: ha l'aria di Cyclizar. È perfetto per somiglianze visive, atteggiamenti o atmosfere che
     il personaggio percepisce senza dichiarare una certezza.
 *   [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che) trasforma una
     lettura della situazione in ipotesi condivisibile. Il `ん` porta dentro una

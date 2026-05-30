@@ -36,8 +36,7 @@ notes_it: >-
   In giapponese generale `{{数|かず}}` è il numero o la quantità di qualcosa.
   Nel rules text di Duel Masters compare spesso dopo una zona o un gruppo già
   nominato e lo trasforma nel conteggio che verrà confrontato, limitato o usato
-  come soglia. In `シールドの{{数|かず}}`, il punto non è quali scudi hai, ma
-  quanti scudi risultano presenti in quel momento.
+  come soglia. In `シールドの{{数|かず}}`, `シールドの数` controlla la quantita' di scudi posseduti.
 level_hint: n4
 :::
 

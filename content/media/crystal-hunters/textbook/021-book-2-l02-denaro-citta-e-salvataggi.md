@@ -222,7 +222,7 @@ translation_it: >-
 :::
 
 [{{仕方|しかた}}ない](term:term-ch-shikata-nai) chiude una situazione senza opzioni:
-non è una descrizione della scena, ma una resa pragmatica. [{{二人|ふたり}}とも](term:term-ch-futari-tomo)
+La resa italiana deve far sentire il valore pragmatico di `二人とも`: entrambi i personaggi sono coinvolti. [{{二人|ふたり}}とも](term:term-ch-futari-tomo)
 invece non lascia fuori nessuno dei due: entrambi sono inclusi.
 
 ## Nota finale

@@ -53,9 +53,7 @@ devono spiegare, contrastare e agire in fretta.
 ## 1. Quando la minaccia non è ancora visibile
 
 [{{潜|ひそ}}む](term:term-ch-b6-mu-19) è un verbo utile perché non dice solo
-"stare in un posto". Dice che qualcosa resta nascosto. Con un
-[{{怪物|かいぶつ}}](term:term-ch-b6-kaibutsu), la parola crea attesa: il mostro
-non è ancora pienamente in azione, ma è già nella scena.
+"stare in un posto". Dice che qualcosa resta nascosto. La minaccia e' gia' entrata nella scena, anche se deve ancora manifestarsi pienamente.
 
 :::example_sentence
 jp: >-

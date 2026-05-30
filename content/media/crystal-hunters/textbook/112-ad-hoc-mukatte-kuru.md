@@ -77,4 +77,4 @@ In giapponese, verbi come kuru (venire) e iku (andare) fungono da vera e propria
 
 Se l'autore avesse scritto 「{{男|おとこ}}がナイツに{{向|む}}かっていく！」 (Otoko ga Naitsu ni mukatte iku - va verso), la nostra "telecamera mentale" sarebbe stata piazzata alle spalle dell'attaccante, guardandolo allontanarsi da noi per colpire il bersaglio.
 
-Usando te kuru, la minaccia non è solo descritta, ma è "avvertita": il pericolo sta arrivando dritto verso di noi! È una vera e propria magia di regia testuale che rende l'azione dei manga giapponesi così dinamica e coinvolgente.
+Con `てくる`, la minaccia viene percepita come in arrivo verso il punto di vista: il pericolo si avvicina al lettore o al personaggio. È una vera e propria magia di regia testuale che rende l'azione dei manga giapponesi così dinamica e coinvolgente.

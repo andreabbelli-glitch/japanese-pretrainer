@@ -137,8 +137,7 @@ reading: されたとき
 meaning_it: quando viene X / quando subisce X
 aliases: [された時]
 notes_it: >-
-  E la forma passiva + 時. Il focus non e su chi compie l'azione, ma su cio che
-  succede a questa carta. Esempio:
+  E la forma passiva + 時. La forma passiva con `時` sposta il focus sull'evento subito dalla carta. Esempio:
   `破壊された時` = quando viene distrutta.
 level_hint: custom
 :::

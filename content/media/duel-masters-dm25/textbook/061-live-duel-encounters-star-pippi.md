@@ -62,7 +62,7 @@ chiude la frase e impedisce al [コスト](term:term-cost) di scendere fino a ze
 ## Etichette da riconoscere
 
 - スター・ピッピー — creatura Light/Fire; il nome ti prepara a leggere una carta multicolore, non un effetto mono-civiltà.
-- [{{光|ひかり}}](term:term-light) / {{火|ひ}} — coppia di civiltà: qui non significa "scegline una", ma "leggi due filtri paralleli".
+- [{{光|ひかり}}](term:term-light) / {{火|ひ}} — coppia di civiltà: `光 / 火` crea due filtri paralleli di civilta'.
 
 ---
 

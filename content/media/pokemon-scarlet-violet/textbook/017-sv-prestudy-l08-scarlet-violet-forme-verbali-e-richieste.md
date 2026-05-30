@@ -112,7 +112,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `ここから` ➔ **punto di partenza** (`ここ` = qui; `から` = da / a partire da).
-*   `{{始|はじ}}めて` ➔ **verbo agganciato in て-forma**: non è passato e non è una forma cortese completa; nel dialogo funziona come richiesta diretta ma non dura.
+*   `{{始|はじ}}めて` ➔ **verbo agganciato in て-forma**: `始めて` agganciato in forma `て` funziona come richiesta diretta.
 
 :::example_sentence
 jp: >-
@@ -149,7 +149,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{自由|じゆう}}に` ➔ **modo dell'azione**: non significa "la libertà" come nome isolato, ma "in modo libero".
+*   `{{自由|じゆう}}に` ➔ **modo dell'azione**: `自由に` modifica il verbo: agire in modo libero.
 *   `{{行|い}}けます` ➔ **potenziale cortese** di `{{行|い}}く`: indica possibilità, quindi "puoi andare".
 
 :::example_sentence

@@ -132,8 +132,7 @@ romaji: ganbaru
 meaning_it: 'impegnarsi; fare del proprio meglio'
 pos: verb
 notes_it: >-
-  {{頑張|がんば}}る è resistere e mettercela tutta. In una battuta di
-  incoraggiamento non significa solo "lavorare", ma non mollare la scena.
+  {{頑張|がんば}}る è resistere e mettercela tutta. In un incoraggiamento, `頑張る` vale come tenere duro e restare dentro la scena.
 level_hint: n5
 :::
 

@@ -122,7 +122,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed)の[{{報酬|ほうしゅう}}](term:term-reward) ➔ **Nome modificato dallo stato**: の collega "non ancora ritirato" a "reward", quindi non descrive il tipo di premio ma il suo stato operativo.
+*   [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed)の[{{報酬|ほうしゅう}}](term:term-reward) ➔ **Nome modificato dallo stato**: `未受け取りの報酬` collega lo stato non ritirato alla reward.
 *   `{{2件|にけん}}あるので` ➔ **Motivo quantitativo**: il contatore `件` tratta le reward come pratiche o elementi di lista; `ので` trasforma quel numero nella ragione dell'azione successiva.
 *   [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim)で ➔ **Mezzo dell'azione**: で indica lo strumento usato per ritirare.
 *   まとめて[{{受|う}}け{{取|と}}る](term:term-receive) ➔ **Azione finale**: まとめて rafforza l'idea di gruppo, mentre [{{受|う}}け{{取|と}}る](term:term-receive) chiude il claim.

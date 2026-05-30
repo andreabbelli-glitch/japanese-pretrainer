@@ -69,7 +69,7 @@ Sul campo, la prima informazione da leggere è spesso dove andare e che cosa far
 
 *   [{{奥|おく}}](term:term-v415-oku) indica la parte profonda di un luogo: il fondo di una grotta, l'interno di una stanza, il punto più avanti di un passaggio. In {{奥|おく}}へ, la particella へ marca la direzione, quindi la frase non ti dice "sei nel fondo", ma "spostati verso l'interno". È una parola da leggere con la mappa in testa.
 *   [{{逃|に}}げる](term:term-v416-nige-ru) mette il soggetto fuori dalla situazione. In battaglia può voler dire abbandonare lo scontro; in un dialogo può evocare il gesto di tirarsi indietro. Quando diventa {{逃|に}}げるな, la grammatica non descrive una fuga: la proibisce.
-*   [{{助|たす}}ける](term:term-v417-tasuke-ru) richiede un bersaglio aiutato. Con {{味方|みかた}}を {{助|たす}}ける, を marca la persona o il Pokémon che riceve l'intervento. Il centro della frase non è la buona intenzione, ma l'azione concreta di salvare o supportare qualcuno.
+*   [{{助|たす}}ける](term:term-v417-tasuke-ru) richiede un bersaglio aiutato. Con {{味方|みかた}}を {{助|たす}}ける, を marca la persona o il Pokémon che riceve l'intervento. Il centro della frase `助ける` richiede un bersaglio aiutato, marcato da `を`.
 
 :::example_sentence
 jp: >-
@@ -123,7 +123,7 @@ Dopo una lunga strada, il giapponese spesso segnala non solo il fatto di arrivar
 
 *   [ようやく](term:term-v424-youyaku) vuol dire "finalmente" con una coda di attesa, fatica o ritardo. In ようやく ゼロゲートに {{着|つ}}いた, il focus non è solo l'arrivo: è l'arrivo dopo un tratto che pesava.
 *   [{{触|ふ}}れる](term:term-v426-fureru) usa spesso に per l'oggetto con cui entri in contatto. ボールに {{触|ふ}}れる può essere un tocco fisico, ma in una UI o in una scena di gioco può anche indicare l'interazione che fa partire qualcosa.
-*   [{{立|た}}ち{{向|む}}かう](term:term-v425-tachi-muka-u) combina l'immagine di alzarsi e orientarsi verso un ostacolo. Il bersaglio prende spesso に: {{強|つよ}}い {{相手|あいて}}に {{立|た}}ち{{向|む}}かう non è "andare da un avversario", ma affrontarlo.
+*   [{{立|た}}ち{{向|む}}かう](term:term-v425-tachi-muka-u) combina l'immagine di alzarsi e orientarsi verso un ostacolo. Il bersaglio prende spesso に: `立ち向かう` significa affrontare un ostacolo o avversario.
 
 :::example_sentence
 jp: >-

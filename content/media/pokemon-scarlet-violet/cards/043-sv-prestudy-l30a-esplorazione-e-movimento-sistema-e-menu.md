@@ -323,8 +323,7 @@ reading: べつに
 romaji: betsuni
 meaning_it: non particolarmente
 notes_it: >-
-  Riduce o nega l'intensità della frase. In risposte come `別にいい` il parlante
-  non dice "separatamente", ma "non mi importa molto" o "va bene lo stesso".
+  Riduce o nega l'intensità della frase. `別に` abbassa l'intensita': il parlante comunica disinteresse o accettazione blanda.
 :::
 :::card
 id: card-v575-betsuni-recognition
@@ -347,8 +346,7 @@ romaji: gumimiawase
 meaning_it: combinazione
 notes_it: >-
   Indica come elementi diversi stanno insieme: mosse, oggetti, colori o opzioni
-  di menu. In una scelta pratica non descrive un pezzo singolo, ma il risultato
-  creato dalla loro relazione.
+  di menu. In una scelta di menu, il termine descrive il risultato combinato della selezione.
 :::
 :::card
 id: card-v576-gumimiawase-recognition
@@ -579,7 +577,7 @@ romaji: hyouji
 meaning_it: visualizzazione
 notes_it: >-
   Indica ciò che viene mostrato a schermo. In opzioni come `表示` e `非表示`,
-  il punto non è l'oggetto in sé, ma se la UI lo rende visibile.
+  La UI sta decidendo se rendere visibile quell'oggetto.
 :::
 :::card
 id: card-v586-hyouji-recognition

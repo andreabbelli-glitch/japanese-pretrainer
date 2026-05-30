@@ -88,7 +88,7 @@ Quando affronti sfide impegnative, il sistema o i personaggi ti daranno avvisi p
 
 *   [{{注意|ちゅうい}}](term:term-v261-chuui) (**Attenzione / Cautela**): Composto da {{注|ちゅう}} (*versare*) e {{意|い}} (*mente/intenzione*). Lo troverai spesso nei messaggi di pericolo o nelle istruzioni operative.
     *   🧠 **Gancio cognitivo:** Immagina di *"versare la propria mente su qualcosa"*: è un modo efficace per ricordare che [{{注意|ちゅうい}}](term:term-v261-chuui) significa concentrare tutta l'attenzione su un punto preciso.
-*   [{{受|う}}ける](term:term-v262-ukeru) (**Ricevere / Sostenere**): È il verbo-base per descrivere chi subisce un'azione. In battaglia, non significa ricevere un regalo, ma subire un attacco o un effetto di stato (es. はがねタイプのわざを{{受|う}}ける ➔ subire una mossa di tipo Acciaio).
+*   [{{受|う}}ける](term:term-v262-ukeru) (**Ricevere / Sostenere**): È il verbo-base per descrivere chi subisce un'azione. In battaglia, `受ける` in battaglia significa subire un attacco o effetto. はがねタイプのわざを{{受|う}}ける ➔ subire una mossa di tipo Acciaio).
 
 #### ⚖️ Contrasto operativo: `{{普通|ふつう}}` (normale) vs `ノーマル` (tipo Normale)
 
@@ -175,7 +175,7 @@ translation_it: >-
 ---
 
 ### C. La forza di un'occasione: `せっかく`
-La parola [せっかく](term:term-v270-sekkaku) segnala un'occasione ottenuta con fatica, rara o comunque già presente. Il centro non è solo "visto che", ma l'idea che **sarebbe un vero peccato sprecarla**.
+La parola [せっかく](term:term-v270-sekkaku) segnala un'occasione ottenuta con fatica, rara o comunque già presente. `せっかく` segnala un'occasione preziosa che sarebbe un peccato sprecare.
 
 *   🧠 **Gancio Cognitivo:** Pensa a [せっかく](term:term-v270-sekkaku) come a un segnale che dice *"Visto che abbiamo questa occasione, non sprechiamola..."*.
     Nei dialoghi dei personaggi, sentirai spesso dire `せっかくなので` (*poiché si è presentata questa rara occasione...*) per proporre un'azione successiva (es. *"Visto che siamo arrivati fin qui, proviamo a fare una lotta!"*).

@@ -65,11 +65,11 @@ stabile e preparazione.
 
 ---
 
-[ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) è il Pokédex: quando compare, la frase non parla solo di un menu, ma del registro che cataloga i Pokémon incontrati o catturati.
+Quando compare il Pokédex, la frase richiama il registro che cataloga Pokemon incontrati o catturati.
 
 ## 1. Il tutorial parla piano, ma spinge l'azione
 
-Il primo registro da imparare non è il comando duro, ma l'invito operativo. Nei
+Il registro di base e' l'invito operativo: una spinta gentile verso l'azione. Nei
 dialoghi guida, un personaggio può formulare la prossima azione come
 "proviamo", "che ne dici di provare" o "mi raccomando". La frase sembra
 sociale, però nel flusso del gioco apre una procedura concreta.
@@ -141,8 +141,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[～てね](grammar:grammar-te-ne) non è un imperativo brusco, ma nemmeno semplice
-decorazione affettuosa. Se la frase contiene un'azione giocabile, leggila come
+`てね` suona come richiesta morbida rivolta all'interlocutore. Se la frase contiene un'azione giocabile, leggila come
 raccomandazione reale con tono gentile.
 
 ## 2. Condizione prima, procedura dopo: il ruolo di ～たら

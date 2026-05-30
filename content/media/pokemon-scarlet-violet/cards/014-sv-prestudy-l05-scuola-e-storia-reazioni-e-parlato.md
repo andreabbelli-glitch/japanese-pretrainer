@@ -218,13 +218,7 @@ reading: ちゃんと
 romaji: chanto
 meaning_it: come si deve / per bene
 notes_it: >-
-  Qui l'idea centrale non è la forza, ma il fatto di fare qualcosa come
-  previsto, in ordine e senza trascuratezza. ちゃんと si usa quando conta
-  rispettare uno standard, una regola o un'aspettativa: mangiare come si deve,
-  fare i compiti per bene, guardare davvero con attenzione perché è quello che
-  ci si aspetta. Per questo in italiano rende bene “come si deve”, “per bene”,
-  “correttamente”. Se invece il punto è la solidità, la fermezza o il metterci
-  sostanza, la parola che spesso entra in gioco è しっかり.
+  ちゃんと punta a un'azione fatta come si deve: in ordine, con attenzione e senza trascurare lo standard richiesto dalla scena.
 :::
 :::card
 id: card-v056-chanto-recognition

@@ -83,7 +83,7 @@ La prima riga non descrive Momoking già sul campo: descrive come può entrare. 
 
 *   [キリフダッシュ](term:term-kirifudash){{6|ろく}} non è solo il nome della keyword. Il numero accanto dice quanto devi pagare se la finestra si apre, quindi va letto insieme al verbo [{{支払|しはら}}って](term:term-harau) e a [{{召喚|しょうかん}}](term:term-summon)してもよい.
 *   `{{攻撃|こうげき}}の{{終|お}}わりに` mette il controllo alla fine dell'attacco. La frase non autorizza Momoking appena inizi l'attacco, né nel mezzo della risoluzione: aspetta che quell'attacco sia arrivato alla sua chiusura.
-*   [その{{攻撃|こうげき}}{{中|ちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba) usa due volte その per chiudere il riferimento: quella creatura, quell'attacco. La condizione non guarda un break qualsiasi del turno, ma lo scudo rotto dentro l'attacco appena nominato.
+*   [その{{攻撃|こうげき}}{{中|ちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba) usa due volte その per chiudere il riferimento: quella creatura, quell'attacco. La condizione La condizione guarda lo scudo rotto dentro l'attacco appena nominato.
 *   [～してもよい](grammar:grammar-temoyoi) trasforma il payoff in possibilità. Se la condizione è vera, puoi pagare {{6|ろく}} ed evocare questa creatura con [{{召喚|しょうかん}}](term:term-summon); il testo non ti obbliga a farlo.
 
 :::example_sentence
@@ -161,11 +161,11 @@ reveal_mode: sentence
 
 ## 3. Protezione dalle fonti non multicolori: filtro, sorgente, scelta
 
-L'ultimo effetto cambia ritmo: non dice cosa fa Momoking, ma che cosa l'avversario non può fare a Momoking. La frase parte da [{{相手|あいて}}](term:term-opponent)は e finisce con この[クリーチャー](term:term-creature)は[{{選|えら}}べない](term:term-erabu): l'avversario è il lato limitato, Momoking è il bersaglio che certe fonti non possono scegliere.
+L'ultimo effetto cambia ritmo: L'ultimo effetto limita cio' che l'avversario puo' fare a Momoking. La frase parte da [{{相手|あいて}}](term:term-opponent)は e finisce con この[クリーチャー](term:term-creature)は[{{選|えら}}べない](term:term-erabu): l'avversario è il lato limitato, Momoking è il bersaglio che certe fonti non possono scegliere.
 
 *   [{{多色|たしょく}}](term:term-multicolor)ではない è un filtro negativo. Non descrive Momoking: modifica le fonti avversarie, cioè spell ed effetti di creatura che non sono multicolori.
 *   [{{呪文|じゅもん}}](term:term-spell)の[{{効果|こうか}}](term:term-effect) e [クリーチャー](term:term-creature)の[{{能力|のうりょく}}](term:term-ability) sono due sorgenti diverse. または le mette in alternativa: spell non multicolori oppure abilità di creature non multicolori.
-*   `によって` indica il mezzo o la causa. Qui non sta dicendo "a causa di Momoking", ma "tramite quegli effetti o quelle abilità".
+*   `によって` indica il mezzo o la causa. Qui `によって` indica il mezzo: tramite quegli effetti o quelle abilita'.
 *   [{{選|えら}}べない](term:term-erabu) è il potenziale negativo di [{{選|えら}}ぶ](term:term-erabu): non può scegliere. Il divieto riguarda la selezione come bersaglio, non qualsiasi interazione possibile con la carta.
 
 :::example_sentence

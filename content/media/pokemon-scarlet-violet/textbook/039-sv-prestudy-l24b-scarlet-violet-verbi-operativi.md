@@ -71,7 +71,7 @@ Il segnale più utile è il verbo operativo. Quando trovi を, cerca quale cosa 
 
 Quando il gioco usa verbi come [{{広|ひろ}}げる](term:term-v454-hiroge-ru), [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru), [{{預|あず}}ける](term:term-v465-azuke-ru) o [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru), la frase non resta descrittiva: qualcosa passa da uno stato a un altro. Il nome marcato da を è il bersaglio concreto dell'operazione.
 
-*   [{{広|ひろ}}げる](term:term-v454-hiroge-ru) significa allargare o espandere. In un tutorial di Paldea può riguardare lo spazio esplorabile, il raggio d'azione o una possibilità appena sbloccata: il punto non è "aprire" qualcosa in astratto, ma rendere più ampio ciò che prima era limitato.
+*   [{{広|ひろ}}げる](term:term-v454-hiroge-ru) significa allargare o espandere. In un tutorial di Paldea può riguardare lo spazio esplorabile, il raggio d'azione o una possibilità appena sbloccata: `広げる` amplia cio' che prima era limitato: spazio, raggio o possibilita'.
 *   [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru) unisce {{回復|かいふく}} (*recupero*) e させる, forma causativa di する. In ポケモンを {{回復|かいふく}}させる, il Pokémon non decide da solo di guarire: tu fai sì che recuperi tramite un Centro Pokémon, uno strumento o una funzione del menu.
 *   [{{手|て}}ごわい](term:term-v463-tegowai) qualifica un avversario, un
     percorso o una prova che richiede attenzione perché non si lascia gestire
@@ -106,7 +106,7 @@ translation_it: >-
 Quando la frase passa dall'inventario al mondo aperto, i verbi diventano spaziali. Qui contano direzione, mezzo e percorso: il gioco ti fa salire verso l'alto, fermarti solo di passaggio, girare più punti o riconoscere un riferimento sulla mappa.
 
 *   [{{登|のぼ}}る](term:term-v458-noboru) è il verbo del movimento verso l'alto: montagne, pareti, scale, strutture. Con [はしご](term:term-v459-hashigo), la scala a pioli non è solo un oggetto: diventa il percorso fisico su cui avviene la salita.
-*   [{{立|た}}ち{{寄|よ}}る](term:term-v461-tachi-yoru) combina {{立|た}}つ (*stare in piedi / mettersi in un punto*) e {{寄|よ}}る (*avvicinarsi*). Il risultato non è "fermarsi per sempre", ma fare una sosta lungo il percorso: entrare in un Centro Pokémon, passare da un negozio, controllare un edificio e poi ripartire.
+*   [{{立|た}}ち{{寄|よ}}る](term:term-v461-tachi-yoru) combina {{立|た}}つ (*stare in piedi / mettersi in un punto*) e {{寄|よ}}る (*avvicinarsi*). Il risultato `立ち寄る` e' una sosta lungo il percorso prima di ripartire.
 *   [{{巡|めぐ}}る](term:term-v472-meguru) descrive un giro attraverso più luoghi. {{町|まち}}を {{巡|めぐ}}る non suona come visitare un singolo edificio: la città viene attraversata come insieme di punti.
 *   [{{目印|めじるし}}](term:term-v456-mejirushi) è il segno che orienta il movimento: un edificio riconoscibile, un simbolo sulla mappa, un dettaglio che un personaggio ti dice di cercare. Nei dialoghi di percorso, questa parola trasforma un "vai lì" generico in "segui quel riferimento".
 
@@ -165,7 +165,7 @@ Le schermate di gestione comprimono azioni diverse in parole molto brevi. Il tru
 *   [ポケモンのおとしもの](term:term-v464-pokemon-nootoshimono) è costruito da ポケモンの più おとしもの, cioè "cosa lasciata cadere". Nel contesto di Scarlet/Violet non è un oggetto smarrito da restituire: sono materiali lasciati dai Pokémon, usati per crafting e MT.
 *   [{{入手|にゅうしゅ}}](term:term-v474-nyuushu) è il segnale forte di acquisizione. Quando compare dopo una lotta, una raccolta o una ricompensa, qualcosa entra davvero tra le tue risorse.
 *   [{{並|なら}}べかえ](term:term-v473-narabekae) cambia l'ordine, non il possesso. {{並|なら}}べる è disporre in fila, かえ rimanda al cambiare: una lista viene riorganizzata, ma gli oggetti non aumentano.
-*   [{{協力|きょうりょく}}する](term:term-v460-kyouryoku-suru) può apparire vicino a obiettivi condivisi o richieste di aiuto. {{協|きょう}} porta l'idea di fare insieme, {{力|りょく}} quella di forza: nel dialogo non è solo "essere gentili", ma mettere la propria azione dentro uno sforzo comune.
+*   [{{協力|きょうりょく}}する](term:term-v460-kyouryoku-suru) può apparire vicino a obiettivi condivisi o richieste di aiuto. {{協|きょう}} porta l'idea di fare insieme, {{力|りょく}} quella di forza: `協力する` mette la propria azione dentro uno sforzo comune.
 
 :::example_sentence
 jp: >-

@@ -162,7 +162,7 @@ back: 'みおぼえ - riconoscimento visivo; ricordo'
 example_jp: 'この{{場所|ばしょ}}に{{見覚|みおぼ}}えがある。'
 example_it: Questo posto mi sembra familiare.
 notes_it: >-
-  Non e' ricordare un fatto, ma riconoscere qualcosa vista prima.
+  Qui il verbo richiama il riconoscere qualcosa gia' visto.
 tags: [crystal-hunters, book-10, lesson-04]
 :::
 

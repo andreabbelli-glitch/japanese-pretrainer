@@ -54,8 +54,7 @@ romaji: koshinuke
 meaning_it: codardo; fifone
 pos: noun
 notes_it: >-
-  {{腰抜|こしぬ}}け è un insulto: indica qualcuno che non ha coraggio. In una
-  lite non descrive il corpo, ma il giudizio sul carattere.
+  {{腰抜|こしぬ}}け è un insulto: indica qualcuno che non ha coraggio. In una lite, la parola porta un giudizio sul carattere della persona.
 level_hint: n1
 :::
 

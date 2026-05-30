@@ -122,8 +122,7 @@ reveal_mode: sentence
 #### 🗺️ Anatomia della frase
 
 *   `{{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}`: origine
-    e quantità. `から` non indica una provenienza generica, ma il punto da cui
-    si conta il blocco.
+    e quantità. `から` indica il punto di origine da cui parte il prelievo.
 *   `その{{中|なか}}から`: campo della scelta. `その` riprende le tre carte appena
     viste; `{{中|なか}}から` impedisce di cercare fuori da quel gruppo.
 *   `{{呪文|じゅもん}}を{{1枚|いちまい}}またはメタリカを{{1体|いったい}}`: due
@@ -249,8 +248,7 @@ sostituito. La destinazione effettiva è subito
 
 Come immagine mentale, `のまま` è una graffetta grammaticale: tiene attaccato
 lo stato {{表|おもて}}{{向|む}}き alla carta mentre `かわりに` cambia la
-destinazione. Non è etimologia, ma aiuta a non perdere il fatto che la carta
-resta scoperta.
+destinazione. Il promemoria serve a tenere separati fonte e destinazione.
 
 ## Esempi guidati di riepilogo
 

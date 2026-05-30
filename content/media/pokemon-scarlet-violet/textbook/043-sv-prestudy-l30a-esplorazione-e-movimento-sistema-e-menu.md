@@ -74,7 +74,7 @@ Quando il testo parla di strade, il verbo non indica solo che il personaggio si 
 *   [{{抜|ぬ}}ける](term:term-v485-nukeru) non è un generico "andare". Porta l'idea di passare attraverso qualcosa e uscirne dall'altra parte: una strada stretta, una grotta, una zona erbosa o un corridoio naturale. Se lo incontri in un cartello o in una battuta legata alla mappa, preparati a leggere un attraversamento, non una semplice posizione.
 *   [{{抜|ぬ}}け{{道|みち}}](term:term-v503-nukemichi) nasce dallo stesso gesto: è una {{道|みち}} che permette di {{抜|ぬ}}ける, cioè una via che fa uscire dal percorso principale. In gioco funziona come scorciatoia, passaggio laterale o strada alternativa da cercare quando il percorso normale sembra lungo o bloccato.
 *   [{{坂道|さかみち}}](term:term-v578-sakamichi), [{{行|い}}き{{止|ど}}まり](term:term-v585-ikitomari) e [{{周囲|しゅうい}}](term:term-v587-shuui) restringono lo spazio in tre modi diversi. [{{坂道|さかみち}}](term:term-v578-sakamichi) descrive la forma fisica della strada, [{{行|い}}き{{止|ど}}まり](term:term-v585-ikitomari) ti avvisa che non si prosegue, [{{周囲|しゅうい}}](term:term-v587-shuui) sposta l'attenzione sui dintorni del punto in cui ti trovi.
-*   [{{到着|とうちゃく}}](term:term-v581-touchaku) chiude il movimento: non descrive il tratto, ma l'arrivo. In una frase con に {{到着|とうちゃく}}する, la particella に marca il punto raggiunto, spesso un negozio, una città o una destinazione selezionata sulla mappa.
+*   [{{到着|とうちゃく}}](term:term-v581-touchaku) chiude il movimento: `到着` chiude il movimento sul punto raggiunto. In una frase con に {{到着|とうちゃく}}する, la particella に marca il punto raggiunto, spesso un negozio, una città o una destinazione selezionata sulla mappa.
 
 :::example_sentence
 jp: >-
@@ -107,7 +107,7 @@ Nei negozi e nei menu la domanda cambia: non stai più chiedendo "dove porta que
 *   [{{内容|ないよう}}](term:term-v583-naiyou) è il contenuto da aprire o controllare: dettagli di un acquisto, descrizione di una funzione, testo di una schermata. Quando compare con {{確認|かくにん}}する, la scena ti chiede di leggere prima di confermare.
 *   [{{支払|しはら}}い](term:term-v571-shiharai) nomina il pagamento come azione da completare. Se lo vedi vicino a prezzo, LP o denaro, la frase parla del costo da saldare, non dell'oggetto ricevuto.
 *   [{{使用|しよう}}](term:term-v584-shiyou) distingue il possesso dall'attivazione. Avere un oggetto nello zaino non è ancora {{使用|しよう}}: il termine entra quando lo usi davvero, lo consumi o attivi una funzione.
-*   [{{表示|ひょうじ}}](term:term-v586-hyouji) sposta il focus su ciò che appare a schermo. [フィルター](term:term-v588-firutaa) restringe le voci mostrate, mentre {{非表示|ひひょうじ}} le nasconde: il punto non è l'oggetto in sé, ma la visibilità nella UI.
+*   [{{表示|ひょうじ}}](term:term-v586-hyouji) sposta il focus su ciò che appare a schermo. [フィルター](term:term-v588-firutaa) restringe le voci mostrate, mentre {{非表示|ひひょうじ}} le nasconde: `表示` e `非表示` riguardano la visibilita' nella UI.
 
 :::example_sentence
 jp: >-
@@ -164,7 +164,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   わざの {{組|く}}み{{合|あ}}わせを ➔ **Assetto combinato** ([{{組|く}}み{{合|あ}}わせ](term:term-v576-gumimiawase) non indica una singola mossa, ma il rapporto tra più mosse).
+*   わざの {{組|く}}み{{合|あ}}わせを ➔ **Assetto combinato** ([{{組|く}}み{{合|あ}}わせ](term:term-v576-gumimiawase) `組み合わせ` indica il rapporto tra piu' mosse.
 *   {{変|か}}えるために ➔ **Scopo intenzionale** ([～ために](grammar:grammar-g097-per-allo-scopo-di) lega l'azione successiva a un obiettivo: controllo qualcosa per poter cambiare l'assetto).
 *   `プロフィールを {{確認|かくにん}}します` ➔ **Schermata consultata** (il profilo è l'area informativa aperta; `{{確認|かくにん}}` funziona come controllo prima dell'azione).
 
@@ -244,7 +244,7 @@ Nei dialoghi brevi il peso non sta nella quantità di parole, ma nella formula. 
 
 *   [おかえり](term:term-e092-okaeri) è detto da chi accoglie qualcuno che rientra; [ただいま](term:term-e093-tadaima) è detto da chi torna. La coppia funziona come una mini-scena: una voce arriva, l'altra la riconosce.
 *   [くやしいけど](term:term-e090-kuyashiikedo) unisce frustrazione e concessione. くやしい porta il senso di rabbia o amarezza per una sconfitta; けど apre un "però" che permette di continuare, spesso con una promessa o una reazione combattiva.
-*   [{{別|べつ}}に](term:term-v575-betsuni) abbassa l'intensità. In risposte come {{別|べつ}}にいい, il parlante non sta dicendo "separatamente", ma "non mi importa particolarmente", "non è un grosso problema" o "va bene lo stesso".
+*   [{{別|べつ}}に](term:term-v575-betsuni) abbassa l'intensità. In risposte come {{別|べつ}}にいい, il parlante `別に` abbassa l'intensita' della risposta: disinteresse, accettazione o poca importanza.
 
 :::example_sentence
 jp: >-

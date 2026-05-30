@@ -87,11 +87,7 @@ Beethoven come "vertice del terrore".
     `T` non va cercata come parola giapponese; nella UI e nel rules text resta
     il segnale tecnico per tre rotture.
 *   キング・コマンド・ドラゴン, アンノウン e ゼニス sono razze, quindi funzionano
-    come categorie di appartenenza. Questo conta perché più avanti il testo
-    parla di ドラゴン e コマンド: la carta non nomina un singolo mostro, ma
-    categorie che decidono quali carte possono essere recuperate come Draghi e
-    quali creature ricevono [エターナル・Ω](term:term-eternal-omega) come Draghi
-    o Command.
+    come categorie di appartenenza. La carta nomina una famiglia ampia di Dragon e Command.
 
 #### 🧠 Gancio cognitivo
 
@@ -132,8 +128,7 @@ reveal_mode: sentence
 *   `このクリーチャーが`: Beethoven è il soggetto grammaticale del trigger; `が`
     marca proprio la creatura che è entrata.
 *   [{{召喚|しょうかん}}によって](grammar:grammar-shoukan-ni-yotte): によって
-    introduce il mezzo. Qui il mezzo non è narrativo, ma una condizione di
-    rules text.
+    introduce il mezzo. Qui il mezzo funziona come condizione di gioco.
 *   [{{出|で}}た{{時|とき}}](grammar:grammar-toki): {{時|とき}} trasforma
     l'ingresso già avvenuto nella finestra in cui l'effetto si accende.
 *   ドラゴンまたは[{{無色|むしょく}}{{呪文|じゅもん}}](term:term-colorless-spell)を{{合計|ごうけい}}{{3枚|さんまい}}:
@@ -223,7 +218,7 @@ reveal_mode: sentence
 *   `{{自分|じぶん}}のドラゴンとコマンドすべてに`: `に` marca i destinatari della
     keyword; `すべて` impedisce di leggere il gruppo come una selezione parziale.
 *   「[エターナル・Ω](term:term-eternal-omega)」を{{与|あた}}える: を marca la
-    cosa conferita. La cosa non è una carta fisica, ma una capacità.
+    cosa conferita. La cosa conferita e' una capacita', non un oggetto fisico.
 *   {{持|も}}つクリーチャーが{{離|はな}}れる[{{時|とき}}](grammar:grammar-toki):
     la parentesi definisce quando la keyword si applica, cioè nel momento in
     cui una creatura con quella capacità sta lasciando il campo.

@@ -74,15 +74,12 @@ porta dentro un'asta, [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken)
 porta alla luce qualcosa, [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu)
 sposta l'attenzione sulle risorse da reintegrare.
 
-- [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) non è il mercato intero, ma
-  l'atto di fare la propria offerta. In una frase come `セリで{{入|にゅう}}{{札|さつ}}する`,
+- [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) `入札` e' l'atto di fare un'offerta dentro l'asta. In una frase come `セリで{{入|にゅう}}{{札|さつ}}する`,
   [{{競|せ}}り](term:term-anki-l08-seri) è l'evento dell'asta, で dà la
   cornice dell'azione e [{{入|にゅう}}{{札|さつ}}する](term:term-anki-l17-nyuusatsu)
   dice che il giocatore partecipa con un rilancio concreto.
 - [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken) contiene {{見|み}}る, "vedere",
-  e dà l'idea di far emergere qualcosa che era già lì. In [エリアゼロ](term:term-v022-eriazero),
-  `ポケモンを{{発|はっ}}{{見|けん}}した` non vuol dire "ho creato un Pokémon", ma
-  "l'ho trovato, l'ho scoperto, ora è entrato nel campo della conoscenza".
+  e dà l'idea di far emergere qualcosa che era già lì. `発見した` significa scoprire o trovare un Pokemon.
 - [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu) combina l'idea di integrare
   con quella di fornire. Con `どうぐの{{補|ほ}}{{給|きゅう}}`, il focus non è una
   cura immediata in battaglia: è lo stock di strumenti che torna pronto prima

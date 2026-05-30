@@ -87,10 +87,7 @@ vanno distinti con più attenzione.
     dell'azione.
 *   [{{緊張|きんちょう}}](term:term-anki-l16-kinchou) sposta la lettura dentro
     lo stato psicologico. Da solo è "tensione / nervosismo"; con `する` diventa
-    `{{緊張|きんちょう}}する`, cioè "essere tesi" o "innervosirsi". Il soggetto
-    è la persona che prova quello stato: `{{私|わたし}}が{{緊張|きんちょう}}する`
-    non descrive qualcuno che tende un oggetto, ma una persona che sente la
-    pressione della scena.
+    `{{緊張|きんちょう}}する`, cioè "essere tesi" o "innervosirsi". Qui il termine descrive una persona che prova tensione.
 
 :::example_sentence
 jp: >-
@@ -265,7 +262,7 @@ diretta, quantità ampia e relazione tra persone dello stesso ruolo.
 
 *   [{{体験|たいけん}}](term:term-anki-l16-taiken) indica un'esperienza vissuta
     in prima persona, con il corpo o sul campo. Il primo kanji `{{体|たい}}` ti
-    orienta: non è solo sapere qualcosa, ma esserci passato. Per questo
+    orienta: L'espressione indica sapere per esperienza diretta. Per questo
     funziona bene con attività extracurricolari, esplorazione e prove pratiche.
 *   [{{多|おお}}く](term:term-anki-l16-ooku) nasce da {{多|おお}}い, ma nel
     frame `{{多|おお}}くの + nome` prepara un referente plurale o ampio:

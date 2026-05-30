@@ -248,8 +248,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{勝負|しょうぶ}}の {{準備|じゅんび}}が` ➔ **Stato di preparazione** (il
-    soggetto non è una persona, ma l'essere pronti per il match).
+Il soggetto grammaticale e' l'essere pronti per il match.
 *   `できたら` ➔ **Condizione completata** (quando la preparazione è fatta,
     scatta il passaggio successivo).
 *   `{{下|した}}の ビーチへ {{来|き}}てね` ➔ **Direzione più invito amichevole**
@@ -371,8 +370,7 @@ translation_it: >-
     tutorial, ma il Pokémon che userebbe di solito).
 *   `{{繰|く}}り{{出|だ}}しちゃう` ➔ **Azione quasi sfuggita di mano**
     (`{{繰|く}}り{{出|だ}}してしまう` contratto: finire per mandarlo in campo).
-*   `ところでした` ➔ **Quasi-evento** (l'azione non è avvenuta, ma ci è mancato
-    poco).
+*   `ところでした` ➔ **Quasi-evento** (`ところでした` indica un quasi-evento: e' mancato poco che accadesse).
 
 #### 🧠 Gancio cognitivo
 

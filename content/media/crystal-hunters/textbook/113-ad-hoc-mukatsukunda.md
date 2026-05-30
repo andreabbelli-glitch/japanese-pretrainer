@@ -64,7 +64,7 @@ translation_it: >-
 
 *   `{{俺|おれ}}は` ➔ **topic ruvido**: il parlante mette in primo piano il proprio giudizio.
 *   `お{{前|まえ}}が` ➔ **bersaglio del sentimento**: [お{{前|まえ}}](term:term-ch-omae) è la persona che provoca la reazione.
-*   `{{気|き}}にくわない` ➔ **antipatia personale**: non descrive un gusto neutro, ma un fastidio che il parlante sente addosso.
+*   `{{気|き}}にくわない` ➔ **antipatia personale**: `気にくわない` esprime fastidio personale, un rifiuto sentito addosso dal parlante.
 
 ## 2. むかつく + んだ: fastidio viscerale e spinta assertiva
 

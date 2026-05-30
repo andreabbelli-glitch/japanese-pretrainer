@@ -67,7 +67,7 @@ caption: >-
 
 La prima metà della riga non parla ancora dell'attacco. Costruisce il gruppo da controllare: elementi tuoi, ma soltanto quando i loro costi non coincidono. Il nome finale è `エレメント`; tutto ciò che lo precede restringe quali element entrano davvero nel conteggio.
 
-- [コスト](term:term-cost)が non è il soggetto principale dell'intera frase. Sta dentro la clausola che modifica エレメント: il testo non dice "il costo attacca" o "il costo manca", ma "elementi per cui il costo differisce".
+- [コスト](term:term-cost)が `コストが` vive dentro la clausola che modifica `エレメント`.
 - [{{異|こと}}なる](term:term-kotonaru) non equivale a "strano", "particolare" o "speciale". In questa riga è un verbo di confronto: due o più valori vengono messi uno accanto all'altro e non risultano uguali.
 - [{{自分|じぶん}}](term:term-self)の restringe il gruppo al tuo lato della partita. Non sta parlando dell'identità psicologica della creatura; nel rules text di Duel Masters è il possessivo tecnico che seleziona carte, zone o oggetti controllati da te.
 
@@ -127,7 +127,7 @@ La parte finale usa [～なければ ... ない](grammar:grammar-nakereba), una 
 
 ### A. `なければ`: il requisito non c'è
 
-`なければ` nasce da `ない` più condizione: se la cosa richiesta non esiste, si passa al risultato negativo. In questa carta la cosa richiesta non è una risorsa da pagare, ma uno stato già visibile sul campo: i tuoi element devono formare un gruppo abbastanza vario per costo.
+La condizione richiede uno stato visibile sul campo: costi abbastanza vari tra i tuoi element.
 
 ### B. `できない`: l'azione impossibile
 

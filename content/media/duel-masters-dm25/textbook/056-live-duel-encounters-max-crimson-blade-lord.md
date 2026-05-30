@@ -69,7 +69,7 @@ caption: >-
 
 La prima metà della frase non dice semplicemente "quando attacca". Il testo costruisce una piccola catena: このクリーチャーが mette in scena la creatura, [{{相手|あいて}}](term:term-opponent)プレイヤーを indica il bersaglio dell'attacco, [{{攻撃|こうげき}}](term:term-attack)して collega quell'azione alla condizione successiva, e [ブロックされなかった](grammar:grammar-sarenakatta)[{{時|とき}}](grammar:grammar-toki) chiude la finestra.
 
-- `ブロックする` è l'azione di bloccare. Quando diventa `ブロックされる`, la frase cambia punto di vista: non guarda chi blocca, ma ciò che viene bloccato.
+- `ブロックする` è l'azione di bloccare. Quando diventa `ブロックされる`, la frase cambia punto di vista: Con il passivo, la frase guarda cio' che viene bloccato.
 - `ブロックされなかった` aggiunge negazione e passato al passivo. La lettura concreta è "non è stato bloccato", cioè l'attacco non ha incontrato un blocco valido.
 - [{{時|とき}}](grammar:grammar-toki) non è un "tempo" generico. Dopo una frase completa, prende tutto ciò che precede e lo trasforma nel momento in cui il testo controlla se l'effetto può partire.
 
@@ -138,7 +138,7 @@ reveal_mode: sentence
 
 #### 🧠 Gancio cognitivo
 
-Per ricordare [～されている](grammar:grammar-sareteiru), pensa al risultato lasciato sul tavolo. Il verbo passato non è visibile come evento, ma il suo esito sì: la creatura è inclinata, quindi il giapponese la descrive come タップされている.
+Per ricordare [～されている](grammar:grammar-sareteiru), pensa al risultato lasciato sul tavolo. `されている` mostra l'esito rimasto sul tavolo: la creatura e' inclinata.
 
 ## 3. Ordine giapponese e decisione reale
 

@@ -73,8 +73,7 @@ aliases: [光, ひかり, hikari, Light]
 notes_it: >-
   In giapponese generale `{{光|ひかり}}` e` `luce`. Nel rules text di Duel
   Masters, pero`, in blocchi come `{{光|ひかり}}のドラゴン` funziona come nome di
-  civiltà. Qui quindi non vuol dire `drago luminoso` in senso narrativo, ma
-  `drago della civiltà Luce`.
+  civiltà. `光` va letto come civilta' Light nel sistema di Duel Masters.
 level_hint: n4
 :::
 

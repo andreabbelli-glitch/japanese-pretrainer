@@ -64,7 +64,7 @@ Il filo da seguire è la funzione della frase. Alcune forme aprono il tono socia
 
 ## 1. Reazioni del parlato: capire, scusarsi, fare un'ipotesi
 
-Nei dialoghi di *Scarlet & Violet*, le prime parole spesso non portano nuova informazione di gioco: preparano il tono con cui leggerla. [なるほど](term:term-e033-naruhodo) chiude un buco di comprensione: chi parla ha ricevuto una spiegazione e la sta facendo tornare. Non è un semplice "sì", ma una presa d'atto.
+`なるほど` segnala presa d'atto: chi parla fa tornare una spiegazione ricevuta.
 
 [すみません](term:term-e034-sumimasen) lavora sul rapporto con l'interlocutore. Può essere una scusa vera, ma può anche aprire una battuta quando il personaggio richiama l'attenzione prima di chiedere o correggere qualcosa. [もしかして](term:term-v191-moshikashite) abbassa invece la sicurezza: il parlante propone un'ipotesi senza presentarla come già certa. Quando compare [{{今回|こんかい}}](term:term-v192-konkai), la frase si restringe a questa occasione, non a una regola generale.
 
@@ -97,8 +97,7 @@ Quando il testo passa dalle reazioni alla scoperta, la grammatica diventa più l
 Le parole di scuola e indagine specificano che tipo di scoperta stai leggendo. [{{研究|けんきゅう}}](term:term-v177-kenkyuu) è ricerca sistematica, naturale per professori, laboratori e argomenti accademici. [{{調査|ちょうさ}}](term:term-v190-chousa) suona più concreta: qualcuno va a verificare sul campo. [{{歴史|れきし}}](term:term-v186-rekishi) sposta il discorso verso il passato o la materia scolastica, mentre [{{名前|なまえ}}](term:term-v185-namae) identifica l'etichetta con cui una persona, un Pokémon, un luogo o un oggetto viene chiamato.
 
 [ポケモンリーグ](term:term-v187-pokemonriigu) appartiene a questa famiglia di
-nomi istituzionali: non è solo "una lega" generica, ma l'ente che dà cornice a
-palestre, sfide e riconoscimenti ufficiali. Quando compare vicino a
+nomi istituzionali: `リーグ` qui indica l'ente che incornicia sfide e autorita'. Quando compare vicino a
 [{{調査|ちょうさ}}](term:term-v190-chousa), [{{参加|さんか}}](term:term-v195-sanka)
 o [{{名前|なまえ}}](term:term-v185-namae), leggilo come riferimento al sistema
 organizzato della regione, non come semplice luogo da visitare.
@@ -155,7 +154,7 @@ translation_it: >-
 
 *   `ここから` ➔ **Punto di partenza**: `から` indica da dove diventa valida l'azione.
 *   `ライドが` ➔ **Funzione presentata**: `が` mette a fuoco la funzione disponibile.
-*   {{可能|かのう}}です ➔ **Stato di disponibilità**: [{{可能|かのう}}](term:term-v189-kanou) non dice che stai già cavalcando, ma che puoi farlo.
+*   {{可能|かのう}}です ➔ **Stato di disponibilità**: `可能です` comunica disponibilita': l'azione ora si puo' fare.
 
 #### ⚖️ Contrasto operativo
 
@@ -167,7 +166,7 @@ In `タイプのわざ`, il blocco `の` funziona come una targhetta: "mossa del
 
 ## 4. Crescita e valutazione: dal progresso al giudizio
 
-Dopo una lotta o una fase di allenamento, il lessico può spostarsi sul risultato del percorso. [{{成長|せいちょう}}](term:term-v193-seichou) descrive una crescita nel tempo: non è un singolo numero isolato, ma il cambiamento maturato attraverso esperienza, allenamento o avanzamento. [{{最高|さいこう}}](term:term-v194-saikou) è invece una valutazione di vertice: qualcosa è al massimo della scala o viene lodato come "il migliore".
+Dopo una lotta o una fase di allenamento, il lessico può spostarsi sul risultato del percorso. [{{成長|せいちょう}}](term:term-v193-seichou) descrive una crescita nel tempo: `成長` descrive crescita maturata nel tempo attraverso esperienza o allenamento. [{{最高|さいこう}}](term:term-v194-saikou) è invece una valutazione di vertice: qualcosa è al massimo della scala o viene lodato come "il migliore".
 
 [{{能力|のうりょく}}](term:term-v184-nouryoku) torna qui con una sfumatura diversa rispetto alla mossa. In un menu Pokémon può indicare i valori da controllare dopo la crescita; non è automaticamente il nome della "abilità speciale" del Pokémon, che nei giochi viene trattata con altri termini. La lettura utile è il parametro che il testo ti invita a osservare.
 

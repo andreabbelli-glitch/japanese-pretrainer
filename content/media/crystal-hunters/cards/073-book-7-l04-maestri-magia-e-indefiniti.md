@@ -242,8 +242,7 @@ pattern: のか
 title: Domanda con dubbio o curiosità
 meaning_it: domanda con dubbio, sorpresa o curiosità
 notes_it: >-
-  のか unisce il tono esplicativo di の alla domanda con か. Aggiunge profondità:
-  chi parla non chiede solo un dato, ma sta reagendo a qualcosa che non torna.
+  のか unisce il tono esplicativo di の alla domanda con か. La domanda ha una carica reattiva: chi parla segnala che qualcosa stona.
 level_hint: n4
 :::
 

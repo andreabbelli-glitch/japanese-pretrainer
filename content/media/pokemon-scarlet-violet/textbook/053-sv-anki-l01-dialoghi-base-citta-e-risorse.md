@@ -18,7 +18,7 @@ summary: >-
 
 All'inizio di *Pokémon Scarlet & Violet*, Paldea si presenta con frasi brevi:
 personaggi che parlano, città da raggiungere, servizi da usare, prezzi da
-leggere. Il giapponese non è ancora lungo, ma decide già che cosa sta
+leggere. Gia' nelle frasi brevi, il giapponese decide cosa mettere in primo piano.
 succedendo: chi parla, dove devi entrare, che cosa stai aspettando, quale
 risorsa viene spesa.
 

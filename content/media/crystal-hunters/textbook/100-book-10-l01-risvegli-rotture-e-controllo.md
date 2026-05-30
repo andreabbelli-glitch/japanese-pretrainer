@@ -184,7 +184,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `この{{魔法|まほう}}は` -> **tema**: si parla della magia.
-*   `{{効|き}}く` -> **efficacia**: il punto non e' usarla, ma se produce effetto.
+*   `{{効|き}}く` -> **efficacia**: `効く` misura l'efficacia: la domanda e' se qualcosa produce effetto.
 
 ## Esempi guidati di riepilogo
 

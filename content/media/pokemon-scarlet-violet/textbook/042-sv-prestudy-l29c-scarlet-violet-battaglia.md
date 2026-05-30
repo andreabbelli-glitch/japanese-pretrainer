@@ -93,7 +93,7 @@ l'effetto. Subito dopo arriva il verbo o il nome tecnico che dice se il
 bersaglio cambia stato, subisce danno o resta fuori dall'effetto.
 
 [{{確率|かくりつ}}](term:term-v540-kakuritsu) aggiunge una soglia di incertezza:
-non nomina l'effetto, ma la possibilità che l'effetto parta. In una frase con
+La frase parla della possibilita' che l'effetto parta. In una frase con
 `{{30％|さんじゅっぱーせんと}}の{{確率|かくりつ}}`, il numero va letto insieme
 al nome seguente: trenta per cento di probabilità, non trenta punti di danno e
 non trenta turni.
@@ -296,8 +296,7 @@ translation_it: >-
 
 [{{本物|ほんもの}}](term:term-v541-honmono) oppone il reale al falso, alla copia
 o all'apparenza. [{{迷惑|めいわく}}](term:term-v544-meiwaku), invece, sposta la
-lettura sul rapporto sociale: non è solo "problema", ma fastidio imposto a
-qualcun altro. Per questo `{{迷惑|めいわく}}をかける` suona più forte di un
+lettura sul rapporto sociale: `迷惑` porta il rapporto sociale: fastidio imposto a qualcuno. Per questo `{{迷惑|めいわく}}をかける` suona più forte di un
 semplice contrattempo.
 
 :::example_sentence
@@ -409,7 +408,7 @@ translation_it: >-
 
 *   `{{秘密|ひみつ}}のメニューを` ➔ **Indizio richiamato**: `の` lega "segreto" al menu come nome unitario della prova.
 *   `{{思|おも}}い{{出|だ}}して` ➔ **Recupero di conoscenza**: prima richiami ciò che sai, poi lo usi.
-*   `ジムの {{問題|もんだい}}を {{解|と}}く` ➔ **Problema risolto**: il bersaglio non è il menu, ma il quesito della palestra.
+*   `ジムの {{問題|もんだい}}を {{解|と}}く` ➔ **Problema risolto**: `ジムの問題を解く` punta al quesito della palestra come bersaglio da risolvere.
 *   [{{迷子|まいご}}](term:term-v570-maigo)の ポケモンの {{様子|ようす}}を ➔ **Stato da controllare**: la catena con `の` collega Pokémon smarrito e aspetto osservabile.
 *   `トレーナーに {{紹介|しょうかい}}する` ➔ **Destinatario sociale**: `に` dice a chi viene presentato il Pokémon.
 

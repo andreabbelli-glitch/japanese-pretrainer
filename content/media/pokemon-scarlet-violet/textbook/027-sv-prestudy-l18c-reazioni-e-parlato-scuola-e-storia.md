@@ -77,9 +77,7 @@ quale tono.
 
 - [〜してあげる](term:term-e042-shiteageru) aggiunge al verbo l'idea di un
   favore diretto verso qualcun altro. Non significa semplicemente "fare": dice
-  che l'azione viene compiuta per il beneficio dell'altra persona. In un
-  dialogo tra compagni, `{{手伝|てつだ}}ってあげる` non è solo "aiuto", ma
-  "ti do una mano io", con il parlante che si presenta come chi offre supporto.
+  che l'azione viene compiuta per il beneficio dell'altra persona. `手伝ってあげる` porta l'aiuto dentro una relazione tra compagni.
 
 - Questo pattern può suonare caldo, premuroso o un po' superiore secondo il
   contesto. Se lo dice un amico che ti accompagna, è un favore gentile; se lo
@@ -142,9 +140,7 @@ che ti aspetteresti e ciò che succede davvero. La prima parte prepara una
 conclusione naturale; la seconda la smentisce, la complica o la rende
 emotivamente storta.
 
-- In una frase con [{{残念|ざんねん}}](term:term-v232-zannen), il contrasto
-  spesso non è logico ma affettivo: qualcosa è andato bene, eppure qualcuno è
-  deluso; oppure l'occasione c'era, ma non è stata sfruttata. `{{残念|ざんねん}}`
+Qui il contrasto e' affettivo: qualcosa e' andato bene e una reazione emotiva resta comunque aperta. `{{残念|ざんねん}}`
   non è solo "triste": è il sentimento di un risultato che avrebbe potuto
   essere migliore.
 

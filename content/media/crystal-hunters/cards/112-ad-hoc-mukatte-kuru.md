@@ -17,8 +17,7 @@ meaning_it: >-
 pos: expression
 notes_it: >-
   やっちまえ è un imperativo ruvido: viene da やっちまう, contrazione colloquiale
-  di やってしまう. In una scena di combattimento non significa solo "fallo", ma
-  spinge qualcuno a chiudere l'azione in modo aggressivo.
+  di やってしまう. Nel combattimento, `やってしまう` suona come portare a termine l'azione con impeto, fino in fondo.
 level_hint: custom
 :::
 

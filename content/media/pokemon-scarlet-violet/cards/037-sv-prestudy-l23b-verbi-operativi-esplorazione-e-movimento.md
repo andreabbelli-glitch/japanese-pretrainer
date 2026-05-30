@@ -154,7 +154,7 @@ romaji: reidopawaa
 meaning_it: Raid Power
 notes_it: >-
   レイドパワー indica un bonus collegato ai raid. Quando appare in un menu panino o
-  bonus, non parla di lotta generica ma di quella modalità.
+  bonus, Il bonus appartiene a quella modalita' specifica di lotta.
 :::
 :::term
 id: term-v415-oku

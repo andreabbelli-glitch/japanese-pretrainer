@@ -66,8 +66,6 @@ example_it: >-
   trattandolo come se fosse una creatura.
 notes_it: >-
   Qui vale la pena fissare il blocco intero. `クリーチャーである` prepara lo
-  stato di riferimento e `かのように` aggiunge la lettura `come se`. Il
-  risultato non è una definizione permanente del tipo carta, ma un permesso di
-  trattare il Tamaseed come creatura proprio per l'azione che segue.
+  stato di riferimento e `かのように` aggiunge la lettura `come se`. Il risultato e' un permesso temporaneo di evoluzione o trattamento, valido per quel passaggio.
 tags: [live-duel, grammar, shinkarize, treated-as]
 :::

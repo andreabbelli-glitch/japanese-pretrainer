@@ -247,7 +247,7 @@ entry_id: term-anki-l01-kyou
 card_type: recognition
 front: '{{今日|きょう}}'
 back: >-
-  きょう — oggi. Indicatore temporale. Non richiede particelle se usato genericamente, ma può prendere は se enfatizzato come tema della frase.
+  きょう — oggi. Indicatore temporale. `きょう` puo' restare senza particella; con `は` diventa tema temporale enfatizzato.
 example_jp: >-
   {{今日|きょう}}から あなたも アカデミーの {{生徒|せいと}}ですね！
 example_it: >-

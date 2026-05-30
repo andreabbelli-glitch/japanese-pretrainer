@@ -27,10 +27,7 @@ materiali, li richiama con [それら](grammar:grammar-sorera), e solo alla fine
 arriva la scelta di [{{召喚|しょうかん}}](term:term-summon) senza pagare il
 [コスト](term:term-cost).
 
-Il punto di lettura non è ricordare a memoria l'effetto, ma non perdere il filo
-dei referenti: chi fa scattare la keyword, da quali zone scegli, quante carte
-prendi per zona, dove viene messa la creatura, e per quanto dura il debuff
-finale.
+La lettura utile segue il filo operativo dell'effetto, passo per passo.
 
 
 ## Termini chiave
@@ -109,10 +106,10 @@ caption: >-
 ## 1. Il trigger: una porta che si apre quando entra un Magic Tool
 
 La frase di [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon) comincia
-con un trigger molto specifico: non dice che De Szark entra e poi fa qualcosa,
-ma che un tuo [{{魔導具|まどうぐ}}](term:term-madougu) entra nel
-[バトルゾーン](term:term-battle-zone). Questo sposta subito l'attenzione dal
-nome della creatura alla famiglia di carte che può accendere la procedura.
+con un trigger molto specifico: l'ingresso di un tuo
+[{{魔導具|まどうぐ}}](term:term-madougu) nel [バトルゾーン](term:term-battle-zone).
+Questo sposta subito l'attenzione dal nome della creatura alla famiglia di carte
+che può accendere la procedura.
 
 :::example_sentence
 jp: >-
@@ -199,8 +196,7 @@ la carta vuole due materiali da una zona e due dall'altra.
 
 La parte finale della keyword riaggancia il gruppo appena scelto e lo usa come
 base fisica per la creatura. Qui [それら](grammar:grammar-sorera) è il perno:
-non introduce nuove carte, ma riprende le quattro carte prodotte dalla scelta
-con [ずつ](grammar:grammar-zutsu).
+`それら` riprende le quattro carte prodotte dalla scelta precedente.
 
 #### 🗺️ Anatomia della frase
 

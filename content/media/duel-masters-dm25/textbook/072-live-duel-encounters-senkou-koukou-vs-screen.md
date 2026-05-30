@@ -20,8 +20,7 @@ summary: >-
 
 # {{先攻|せんこう}} e {{後攻|こうこう}}: il VS screen decide chi parte
 
-Nel VS screen la partita non è ancora cominciata, ma la UI ha già fissato
-l'ordine dei turni. Il cartiglio blu sopra Andrea mostra
+Nel VS screen, la UI fissa gia' le condizioni della partita prima dell'inizio. Il cartiglio blu sopra Andrea mostra
 [{{先攻|せんこう}}](term:term-senkou); il cartiglio rosa sopra
 {{一条莉々華|いちじょうりりか}} mostra
 [{{後攻|こうこう}}](term:term-koukou). Sono due label brevi, ma dentro una

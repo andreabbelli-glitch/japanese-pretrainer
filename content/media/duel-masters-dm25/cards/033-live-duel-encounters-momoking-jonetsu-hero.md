@@ -61,9 +61,7 @@ reading: そのこうげきちゅうにしーるどをぶれいくしていれ�
 meaning_it: se durante quell'attacco ha rotto uno scudo
 aliases: [その攻撃中にシールドをブレイクしていれば]
 notes_it: >-
-  Qui il centro del chunk e` `{{攻撃中|こう.げき.ちゅう}}に`. `{{中|ちゅう}}`
-  non vuol dire genericamente `mentre`, ma delimita l'interno di quella
-  precisa finestra di attacco. Il controllo avviene alla fine con
+  Qui il centro del chunk e` `{{攻撃中|こう.げき.ちゅう}}に`. `中` delimita l'interno di quell'attacco specifico. Il controllo avviene alla fine con
   `{{攻撃|こうげき}}の{{終|お}}わりに`, ma la condizione deve essere gia`
   successa dentro quell'attacco; `していれば` la presenta quindi come fatto
   ormai verificato e controllato retrospettivamente.
@@ -104,8 +102,7 @@ example_jp: >-
 example_it: >-
   Questa creatura non può essere scelta da effetti di spell non multicolori.
 notes_it: >-
-  Il punto da fissare è il composto `多色`: non descrive un colore generico, ma
-  la categoria delle carte con più civiltà. In questa lezione lo incontri nella
+  Il punto da fissare è il composto `多色`: `多色` classifica la carta come multicolore, con implicazioni sulle regole. In questa lezione lo incontri nella
   forma negativa `多色ではない`, che filtra le sorgenti autorizzate a
   sceglierla.
 tags: [live-duel, compound, color, filter]

@@ -80,7 +80,7 @@ caption: >-
 
 ## 1. Il trigger di attacco: quando il numero degli avversari diventa quantità di carte
 
-Il primo blocco si apre con このクリーチャーが: il soggetto non è una creatura qualsiasi, ma proprio questa carta. Subito dopo arriva [{{攻撃|こうげき}}](term:term-attack)する[{{時|とき}}](grammar:grammar-toki), la formula che trasforma l'attacco in finestra di attivazione.
+`このクリーチャーが` restringe il soggetto proprio a questa carta. Subito dopo arriva [{{攻撃|こうげき}}](term:term-attack)する[{{時|とき}}](grammar:grammar-toki), la formula che trasforma l'attacco in finestra di attivazione.
 
 Da lì la frase non dice ancora cosa prendere: prima stabilisce da dove guardare e quante carte vedere. [{{自分|じぶん}}](term:term-self)の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から punta alla cima del tuo deck, mentre [{{相手|あいて}}](term:term-opponent)の[{{人数|にんずう}}](term:term-ninzuu)と[{{同|おな}}じ{{枚数|まいすう}}](grammar:grammar-to-onaji-maisuu) prende un numero fuori dal deck e lo usa come misura per le carte.
 
@@ -112,7 +112,7 @@ reveal_mode: sentence
 
 #### 🧠 Gancio cognitivo
 
-Come trucco visivo, guarda il kanji iniziale: {{人|ひと}} in [{{人数|にんずう}}](term:term-ninzuu) ti manda verso le persone; {{枚|まい}} in {{枚数|まいすう}} ti manda verso carte, fogli o altri oggetti piatti. Non è una regola completa per ogni parola, ma qui ti aiuta a non confondere chi viene contato con che cosa viene guardato.
+Come trucco visivo, guarda il kanji iniziale: {{人|ひと}} in [{{人数|にんずう}}](term:term-ninzuu) ti manda verso le persone; {{枚|まい}} in {{枚数|まいすう}} ti manda verso carte, fogli o altri oggetti piatti. Il kanji iniziale aiuta a distinguere persone contate da carte o oggetti piatti contati.
 
 ## 2. Dal gruppo visto alla scelta: `その{{中|なか}}から` chiude il perimetro
 
@@ -167,7 +167,7 @@ reveal_mode: sentence
 *   `このターン` — **finestra temporale**: l'effetto vale nel turno in corso, non come modifica permanente.
 *   [それら](grammar:grammar-sorera)のドラゴンに — **destinatario già definito**: それら riprende i draghi messi in campo dalla frase precedente.
 *   [スピードアタッカー](term:term-speed-attacker)を — **abilità assegnata**: la keyword è l'oggetto grammaticale del dare.
-*   [{{与|あた}}える](term:term-ataeru) — **verbo di conferimento**: non descrive un attacco, ma concede la capacità di attaccare subito.
+*   [{{与|あた}}える](term:term-ataeru) — **verbo di conferimento**: `与える` concede una capacita' di attacco immediato.
 
 #### ⚖️ Contrasto operativo: その{{中|なか}} e [それら](grammar:grammar-sorera)
 

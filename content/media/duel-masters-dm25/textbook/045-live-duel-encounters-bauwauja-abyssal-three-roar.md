@@ -86,7 +86,7 @@ caption: >-
 
 ## 1. Entrata in campo: dalla cima del deck al cimitero
 
-La prima riga di Bauwauja usa una struttura molto comune nel rules text: evento di ingresso, fonte ordinata, quantità e destinazione. Il verbo finale non è {{破壊|はかい}}する, ma [{{置|お}}く](term:term-oku): il testo non sta distruggendo carte del deck, le sta mettendo in una zona precisa.
+La prima riga di Bauwauja usa una struttura molto comune nel rules text: evento di ingresso, fonte ordinata, quantità e destinazione. Il verbo finale `置く` ordina di mettere carte in una zona precisa.
 
 :::example_sentence
 jp: >-

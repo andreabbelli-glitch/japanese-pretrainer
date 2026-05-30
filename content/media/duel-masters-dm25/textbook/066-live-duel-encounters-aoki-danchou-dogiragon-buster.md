@@ -32,7 +32,7 @@ summary: >-
 
 {{蒼|あお}}き{{団長|だんちょう}} ドギラゴン{{剣|バスター}} legge come una carta che accelera tutto, ma il testo giapponese non parte dal risultato spettacolare. Prima restringe quale Drago può fare [{{革命|かくめい}}チェンジ](term:term-kakumei-change), poi dà [スピードアタッカー](term:term-speed-attacker) solo a un gruppo preciso, e solo dopo apre [ファイナル{{革命|かくめい}}](term:term-final-revolution).
 
-La chiave è non trattare le keyword come titoli decorativi. Ogni riga costruisce un controllo: civiltà e costo per il cambio, [{{多色|たしょく}}](term:term-multicolor) per chi riceve velocità, そのターン{{中|ちゅう}}に{{他|ほか}}の...まだ{{使|つか}}っていなければ per non usare due Final Revolution nello stesso turno, e {{6以下|ろくいか}}になるよう per tenere il payoff dentro un limite numerico. Nel nome, [{{団長|だんちょう}}](term:term-danchou) dà il titolo di leader; [{{革命|かくめい}}](term:term-kakumei) è il kanji che torna nelle keyword; [{{指定|してい}}](term:term-shitei) è il segnale che il testo non parla di qualunque creatura, ma solo di quelle indicate.
+La chiave è non trattare le keyword come titoli decorativi. Ogni riga costruisce un controllo: civiltà e costo per il cambio, [{{多色|たしょく}}](term:term-multicolor) per chi riceve velocità, そのターン{{中|ちゅう}}に{{他|ほか}}の...Le keyword vanno trattate come controlli: civilta', costo, turno e limite numerico.
 
 
 ## Termini chiave
@@ -147,7 +147,7 @@ reveal_mode: sentence
 *   [{{多色|たしょく}}](term:term-multicolor)[クリーチャー](term:term-creature): gruppo nominale filtrato. La proprietà multicolore viene controllata prima di arrivare al nome クリーチャー.
 *   すべてに: destinatario totale. [すべて](term:term-subete) prende tutte le creature che passano il filtro, mentre に le rende riceventi della keyword.
 *   [「スピードアタッカー」](term:term-speed-attacker)を: oggetto conferito. Il を non marca le creature, ma la capacità che viene data.
-*   [{{与|あた}}える](term:term-ataeru): verbo di assegnazione. Nel rules text non vuol dire "consegnare una carta", ma attribuire una capacità a un gruppo.
+*   [{{与|あた}}える](term:term-ataeru): verbo di assegnazione. Nel rules text `与える` attribuisce una capacita' a un gruppo di creature.
 
 #### ⚖️ Contrasto operativo
 

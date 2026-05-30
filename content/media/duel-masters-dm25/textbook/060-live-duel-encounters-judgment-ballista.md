@@ -57,7 +57,7 @@ La carta diventa leggibile quando separi i quattro assi del rules text: bersagli
 - [クリーチャー](term:term-creature) — oggetto controllato dai filtri di costo, civiltà e ingresso.
 - [バトルゾーン](term:term-battle-zone) — zona di arrivo della creatura avversaria che apre il trigger.
 - [シールドゾーン](term:term-shield-zone) — zona finale della carta presa dalla cima del mazzo.
-- `{{火|ひ}}` — civiltà Fire; qui non è un colore descrittivo, ma il filtro che decide se la protezione vale.
+- `{{火|ひ}}` — civiltà Fire; qui `火` qui filtra le creature di civilta' Fire.
 - [{{出|で}}る](term:term-deru) — uscire / entrare in gioco
 
 ---
@@ -75,7 +75,7 @@ caption: >-
 
 La prima riga sembra un divieto molto ampio, ma il giapponese lo restringe con precisione. このクリーチャーは mette Judgment Ballista come tema, {{相手|あいて}}プレイヤーを marca il bersaglio vietato e [{{攻撃|こうげき}}](term:term-attack)できない chiude con la forma potenziale negativa: "non può attaccare".
 
-Il punto è il を: l'oggetto del divieto non è una creatura, ma il giocatore avversario. Per questo [ブロッカー](term:term-blocker) resta coerente con la carta. Il testo non sta dicendo che Judgment Ballista non partecipa al combattimento; sta bloccando una direzione offensiva precisa.
+`を` mostra che il divieto punta al giocatore avversario come bersaglio d'attacco. Per questo [ブロッカー](term:term-blocker) resta coerente con la carta. Il testo non sta dicendo che Judgment Ballista non partecipa al combattimento; sta bloccando una direzione offensiva precisa.
 
 :::example_sentence
 jp: >-
@@ -90,7 +90,7 @@ reveal_mode: sentence
 
 *   `このクリーチャーは`: tema della frase. Tutto il divieto riguarda questa creatura, non una regola globale.
 *   `{{相手|あいて}}プレイヤーを`: oggetto dell'azione vietata. `を` ti dice chi sarebbe il bersaglio dell'attacco.
-*   [{{攻撃|こうげき}}](term:term-attack)できない: potenziale negativo. Non è "non attacca", ma "non può attaccare" quel bersaglio.
+*   [{{攻撃|こうげき}}](term:term-attack)できない: potenziale negativo. `攻撃できない` indica impossibilita' di attaccare quel bersaglio.
 
 #### ⚖️ Contrasto operativo: divieto di bersaglio, non silenzio totale
 
@@ -98,7 +98,7 @@ reveal_mode: sentence
 
 ## 2. バトル中 e されない: protezione nel battle giusto
 
-La seconda riga cambia asse: non parla più di chi puoi attaccare, ma del risultato di un battle. {{火|ひ}}の[クリーチャー](term:term-creature)と crea la coppia di combattimento, バトル{{中|ちゅう}} limita la protezione alla finestra in cui quel battle è in corso e [{{破壊|はかい}}](term:term-destroy)されない nega il risultato passivo "essere distrutta".
+La seconda riga cambia asse: La seconda riga passa dal bersaglio d'attacco al risultato del battle. {{火|ひ}}の[クリーチャー](term:term-creature)と crea la coppia di combattimento, バトル{{中|ちゅう}} limita la protezione alla finestra in cui quel battle è in corso e [{{破壊|はかい}}](term:term-destroy)されない nega il risultato passivo "essere distrutta".
 
 Qui `{{火|ひ}}の` funziona come filtro di civiltà. Non descrive una creatura "infuocata" in senso narrativo: dice che la protezione vale quando l'altro lato del battle è una creatura Fire. Se il battle non è contro quel tipo di creatura, questa riga non si accende.
 
@@ -169,7 +169,7 @@ reveal_mode: sentence
 
 Dopo il trigger, la frase non ti fa scegliere una carta qualunque. {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{1枚目|いちまいめ}} identifica la prima carta del tuo mazzo. Il giapponese usa {{1枚目|いちまいめ}}, non solo {{1枚|いちまい}}: il suffisso 目 ordina la carta nella sequenza e punta alla prima posizione dall'alto.
 
-Il blocco [{{裏向|うらむ}}きのまま](grammar:grammar-uramuki-no-mama) è quello che governa lo stato. {{裏向|うらむ}}き dice che la carta è face-down; のまま dice che resta così mentre viene spostata. Subito dopo, {{新|あたら}}しいシールドとして assegna un ruolo: non è una carta vista, scelta e poi coperta, ma una carta collocata nello [シールドゾーン](term:term-shield-zone) come nuovo scudo senza cambiare stato.
+Il blocco [{{裏向|うらむ}}きのまま](grammar:grammar-uramuki-no-mama) è quello che governa lo stato. {{裏向|うらむ}}き dice che la carta è face-down; のまま dice che resta così mentre viene spostata. Subito dopo, {{新|あたら}}しいシールドとして assegna un ruolo: `裏向きのまま` mantiene la carta coperta mentre viene collocata come nuovo scudo.
 
 ### A. 目 in `{{1枚目|いちまいめ}}`: posizione, non quantità generica
 

@@ -73,10 +73,10 @@ La lettura utile non è tradurre ogni label in isolamento: è capire che tipo di
 
 ## 1. Dal menu locale al portale: collegare, sfidare, rendere visibile
 
-Quando il gioco passa dalle schermate locali al [ポケポータル](term:term-v611-pokepootaru), il lessico cambia funzione: non descrive più solo un'opzione, ma prepara un cambio di stato. [{{接続|せつぞく}}](term:term-v592-setsuzoku) indica il collegamento a una rete, a un servizio o a un altro giocatore; vicino a un pulsante segnala che il gioco sta per uscire dalla modalità isolata e aprire una funzione comunicante.
+Quando il gioco passa dalle schermate locali al [ポケポータル](term:term-v611-pokepootaru), il lessico cambia funzione: `接続` segnala il passaggio da modalita' isolata a funzione comunicante. [{{接続|せつぞく}}](term:term-v592-setsuzoku) indica il collegamento a una rete, a un servizio o a un altro giocatore; vicino a un pulsante segnala che il gioco sta per uscire dalla modalità isolata e aprire una funzione comunicante.
 
 *   [{{同時|どうじ}}](term:term-v593-douji) unisce {{同|どう}}, "stesso", e {{時|じ}}, "tempo". In una UI non significa "insieme" in senso emotivo: mette a fuoco la simultaneità tecnica, come azioni o giocatori gestiti nello stesso momento.
-*   [{{通信対戦|つうしんたいせん}}](term:term-v594-tsuushintaisen) combina [{{通信|つうしん}}](term:term-v267-tsuushin), comunicazione o trasmissione di dati, con {{対戦|たいせん}}, sfida contro qualcuno. Il composto intero restringe il campo: non è una lotta qualsiasi, ma una lotta contro un altro giocatore raggiunto tramite connessione.
+*   [{{通信対戦|つうしんたいせん}}](term:term-v594-tsuushintaisen) combina [{{通信|つうしん}}](term:term-v267-tsuushin), comunicazione o trasmissione di dati, con {{対戦|たいせん}}, sfida contro qualcuno. Il composto intero restringe il campo: `通信対戦` restringe la lotta a una sfida contro un altro giocatore via connessione.
 *   [{{公式|こうしき}}](term:term-v595-koushiki) e [シーズン](term:term-v596-shiizun) spostano la lettura verso eventi, regole e classifiche riconosciute dal gioco. {{公式|こうしき}} marca ciò che è ufficiale; シーズン divide il tempo competitivo in periodi leggibili.
 *   [{{公開|こうかい}}](term:term-v597-koukai) contiene l'idea di "aprire al pubblico". In profili, impostazioni e dati condivisi non è solo "mostrare": è rendere visibile qualcosa fuori dallo spazio privato del giocatore.
 
@@ -104,7 +104,7 @@ Pensa a [{{接続|せつぞく}}](term:term-v592-setsuzoku) come a un cavo che c
 
 ## 2. Controllare, aiutare e confermare una perdita
 
-Le finestre di sistema usano spesso forme cortesi perché devono guidarti prima di un'azione. [〜を {{確認|かくにん}}してみましょう！](term:term-e095-o-kakuninshitemimashou) mette l'oggetto davanti a を, poi usa {{確認|かくにん}}する in してみましょう: il gioco non dice solo "guarda", ma propone di fare una verifica.
+Le finestre di sistema usano spesso forme cortesi perché devono guidarti prima di un'azione. `確認してみましょう` propone di fare una verifica concreta.
 
 [〜してあげましょう](term:term-e094-shiteagemashou) ha una sfumatura diversa. あげる aggiunge l'idea di fare qualcosa a beneficio di qualcun altro, mentre ましょう rende la frase una decisione o un'offerta cortese. In bocca a un personaggio, a un sistema di cura o a un aiutante, comunica "lo faccio per te" più che "fallo tu".
 
@@ -120,7 +120,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{持|も}}ちものを` ➔ **Oggetto della verifica** (`を` marca ciò che viene controllato: oggetti posseduti o tenuti).
-*   `{{確認|かくにん}}して` ➔ **Controllo effettivo** (non è solo vedere di sfuggita, ma verificare uno stato o un contenuto).
+*   `{{確認|かくにん}}して` ➔ **Controllo effettivo** (`確認して` significa verificare stato o contenuto).
 *   `みましょう` ➔ **Invito condiviso** ("proviamo a", con tono più morbido di un comando diretto).
 
 :::example_sentence
@@ -180,7 +180,7 @@ Per `パワー`, leggi prima la parola a sinistra e poi il contenitore: `ちび�
 
 ## 4. Luoghi, distanza e parlato colloquiale
 
-Fuori dai menu online, le stesse schermate possono guidarti nello spazio o far emergere una voce più colloquiale. [{{研究|けんきゅう}}{{室|しつ}}](term:term-v599-kenkyuushitsu) combina {{研究|けんきゅう}}, ricerca, e {{室|しつ}}, stanza: in gioco non è solo un luogo generico, ma uno spazio associato a spiegazioni, scienziati e funzioni narrative. [{{壁|かべ}}](term:term-v598-kabe), invece, è concreto: una parete o barriera fisica, quindi in esplorazione segnala limite, ostacolo o superficie.
+Fuori dai menu online, le stesse schermate possono guidarti nello spazio o far emergere una voce più colloquiale. `研究室` e' lo spazio associato a ricerca, scienziati e funzioni narrative. [{{壁|かべ}}](term:term-v598-kabe), invece, è concreto: una parete o barriera fisica, quindi in esplorazione segnala limite, ostacolo o superficie.
 
 *   [{{距離|きょり}}](term:term-v606-kyori) misura quanto due punti sono lontani. Se appare accanto a luoghi, icone o marker, ti sta facendo leggere una relazione spaziale.
 *   [～くらい / ～ぐらい](grammar:grammar-g100-circa-al-punto-da) introduce una
@@ -212,7 +212,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Per [{{表情|ひょうじょう}}](term:term-v603-hyoujou), pensa alla "superficie del volto": non è una condizione interna o uno stato di battaglia, ma ciò che la faccia mostra all'esterno. È solo un appoggio mnemonico per non confonderlo con {{状態|じょうたい}}.
+Per [{{表情|ひょうじょう}}](term:term-v603-hyoujou), pensa alla "superficie del volto": `表情` indica cio' che il volto mostra all'esterno. È solo un appoggio mnemonico per non confonderlo con {{状態|じょうたい}}.
 
 ## Esempi guidati di riepilogo
 

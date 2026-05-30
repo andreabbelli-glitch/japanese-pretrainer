@@ -24,7 +24,7 @@ summary: >-
 
 [ソファ＝ソフティソニア](term:term-sofa-softysonia) legge il campo come un problema di soglia. Prima manda due carte dal mazzo al cimitero, poi trasforma il costo di quelle carte in un benchmark e infine sceglie creature avversarie che restano sotto quel limite. La frase è lunga, ma non è disordinata: ogni blocco prepara il successivo.
 
-Il lato spell è più breve e serve da conferma pratica: `{{2体|にたい}}まで` non obbliga a prendere due creature, ma mette un tetto massimo. Quando lo stesso pattern appare su entrambi i lati della Twinpact, puoi riconoscerlo come limite operativo stabile.
+`2体まで` stabilisce un tetto massimo di due creature. Quando lo stesso pattern appare su entrambi i lati della Twinpact, puoi riconoscerlo come limite operativo stabile.
 
 
 ## Termini chiave
@@ -120,7 +120,7 @@ reveal_mode: sentence
 
 #### 🧠 Gancio cognitivo
 
-Come trucco mnemonico, pensa a `{{合計|ごうけい}}` come al totale scritto in fondo a un conto. Non è una spiegazione etimologica: serve solo a ricordare che la carta non guarda due costi isolati, ma il valore finale dopo averli sommati.
+Come trucco mnemonico, pensa a `{{合計|ごうけい}}` come al totale scritto in fondo a un conto. `合計` invita a guardare il valore finale dopo la somma dei costi.
 
 ## 2. ように: il criterio non è un desiderio
 
@@ -182,7 +182,7 @@ reveal_mode: sentence
 #### ⚖️ Contrasto operativo
 
 *   `まで` può segnare anche un punto di arrivo in frasi diverse, ma con `{{2体|にたい}}` davanti a un'azione di scelta o recupero si comporta da tetto massimo.
-*   Il lato creatura e il lato spell confermano la stessa lettura: `{{2体|にたい}}まで` non significa "esattamente due", ma "non più di due".
+*   Il lato creatura e il lato spell confermano la stessa lettura: `2体まで` conferma la lettura di limite massimo.
 
 #### 🧠 Gancio cognitivo
 

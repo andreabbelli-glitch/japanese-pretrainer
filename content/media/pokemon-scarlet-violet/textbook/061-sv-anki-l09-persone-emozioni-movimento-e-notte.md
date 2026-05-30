@@ -71,7 +71,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `どんな` ➔ **Tipo o qualità richiesta**: non chiede "quale faccia" come scelta da una lista, ma "che genere di espressione".
+*   `どんな` ➔ **Tipo o qualità richiesta**: `どんな` chiede tipo o qualita' dell'espressione.
 *   {{顔|かお}}をしてる ➔ **Espressione assunta**: {{顔|かお}}をする vale "fare una faccia"; [～ている](grammar:grammar-g003-stato-in-corso-stato-risultante) mostra l'espressione mentre è visibile.
 *   `の？` ➔ **Domanda morbida**: chiude con curiosità o preoccupazione, non con tono da interrogatorio.
 
@@ -141,7 +141,7 @@ Per [{{伝|つた}}える](term:term-anki-l09-tsutaeru), immagina una freccia: c
 Quando la scena passa dall'aula all'esplorazione, il giapponese diventa più operativo: dice se qualcosa si muove, se un corpo sconosciuto può essere osservato, o se la notte cambia ciò che appare nel mondo. Qui le parole non servono solo a descrivere: ti fanno prevedere stato, possibilità e conseguenza.
 
 *   [{{動|うご}}く](term:term-anki-l09-ugoku) mette in primo piano il soggetto che riesce o non riesce a muoversi. Essendo intransitivo, lavora naturalmente con が: ポケモンが{{動|うご}}く, "il Pokémon si muove". In {{動|うご}}くことができない, こと trasforma l'azione in "il fatto di muoversi", e できない nega la possibilità. Il punto non è una scelta del Pokémon: la schermata segnala impossibilità.
-*   [{{物|ぶっ}}{{体|たい}}](term:term-anki-l09-buttai) è più tecnico di もの. Non serve per dire "cosa" in modo generico, ma per trattare qualcosa come corpo fisico osservabile: un oggetto sconosciuto, un reperto, una massa o una presenza da documentare. Per questo suona naturale in contesti di ricerca, Area Zero e descrizioni con tono scientifico.
+*   [{{物|ぶっ}}{{体|たい}}](term:term-anki-l09-buttai) è più tecnico di もの. `物体` tratta qualcosa come corpo fisico osservabile. Per questo suona naturale in contesti di ricerca, Area Zero e descrizioni con tono scientifico.
 *   [{{夜|よる}}](term:term-anki-l09-yoru) può indicare il momento della giornata, ma diventa davvero operativo quando entra in frasi temporali. {{夜|よる}}に vuol dire "di notte"; {{夜|よる}}になると significa "quando si fa notte". Con [～と](grammar:grammar-g085-quando-se-risultato-naturale), il cambio di stato non è un dettaglio atmosferico: prepara una conseguenza regolare.
 
 :::example_sentence
@@ -155,7 +155,7 @@ translation_it: >-
 
 *   `まひして` ➔ **Condizione causale**: "essendo paralizzato", prepara il motivo dell'impossibilità.
 *   `{{動|うご}}くこと` ➔ **Azione trattata come cosa possibile**: "il muoversi" diventa il contenuto valutato dalla frase.
-*   `ができない` ➔ **Possibilità negata**: non è "non vuole muoversi", ma "non può muoversi".
+*   `ができない` ➔ **Possibilità negata**: `ができない` esprime impossibilita' di compiere l'azione.
 
 :::example_sentence
 jp: >-

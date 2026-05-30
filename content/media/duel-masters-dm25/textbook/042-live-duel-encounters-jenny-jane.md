@@ -23,7 +23,7 @@ summary: >-
 
 Nel testo di [{{刻解|こくかい}}{{人形|にんぎょう}} ジェニー・ジェーン](term:term-jenny-jane), la mano dell'avversario non è trattata come un blocco indistinto. La carta cerca prima gli estremi di costo, li rende visibili, poi collega ogni scarto successivo a una pesca misurata sullo stesso numero di carte.
 
-La seconda metà cambia prospettiva: non guarda più solo la mano, ma il conteggio del mazzo a fine turno. Per leggerla bene servono tre segnali ricorrenti nel rules text: il superlativo con {{最|もっと}}も, il riflessivo [{{自身|じしん}}](term:term-jishin) e le soglie con [なら](grammar:grammar-nara).
+La seconda metà cambia prospettiva: La seconda meta' passa dalla mano al conteggio del mazzo a fine turno. Per leggerla bene servono tre segnali ricorrenti nel rules text: il superlativo con {{最|もっと}}も, il riflessivo [{{自身|じしん}}](term:term-jishin) e le soglie con [なら](grammar:grammar-nara).
 
 
 ## Termini chiave
@@ -172,7 +172,7 @@ Tratta [{{自身|じしん}}](term:term-jishin) come una graffetta grammaticale:
 
 ## 4. Fine turno: `{{13枚以下|じゅうさんまいいか}}なら` apre l'ultimo ramo
 
-L'ultimo effetto abbandona la mano e guarda il [{{山札|やまふだ}}](term:term-deck) dell'avversario. Il timing è rigido: [{{終了時|しゅうりょうじ}}](term:term-shuuryouji) non significa "a turno avanzato", ma il punto preciso in cui il tuo turno termina.
+L'ultimo effetto abbandona la mano e guarda il [{{山札|やまふだ}}](term:term-deck) dell'avversario. `終了時` fissa il punto preciso in cui il tuo turno termina.
 
 *   {{自分|じぶん}}のターン[{{終了時|しゅうりょうじ}}](term:term-shuuryouji) mette il controllo sul tuo fine turno. Non è il fine turno dell'avversario e non è un trigger generico di upkeep.
 *   [{{相手|あいて}}](term:term-opponent)の[{{山札|やまふだ}}](term:term-deck)が{{13枚以下|じゅうさんまいいか}}[なら](grammar:grammar-nara) combina soglia numerica e condizione. {{13枚以下|じゅうさんまいいか}} include anche il numero 13: tredici va bene, quattordici no.

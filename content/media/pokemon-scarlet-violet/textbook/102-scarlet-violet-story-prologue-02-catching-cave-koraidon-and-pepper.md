@@ -94,9 +94,7 @@ mentre [{{捕|つか}}まえる](term:term-tsukamaeru) è il verbo dell'azione c
 Nemona rende questa procedura più morbida con due pattern. Con
 [～てあげる](grammar:grammar-te-ageru), frasi come わけてあげる presentano
 l'azione come aiuto fatto per te: ti dà Ball, spiegazioni o spazio per
-provare. Con [～てみる](grammar:grammar-te-miru), un comando come
-`{{戦|たたか}}ってみて` non è una teoria futura, ma una prova guidata immediata:
-entra in lotta e verifica come funziona la cattura.
+provare. `戦ってみて` propone una prova guidata immediata.
 
 :::image
 src: assets/ui/catch-tutorial-monster-ball.webp
@@ -163,7 +161,7 @@ non rumore generico, bensì traccia di una presenza viva.
 src: assets/story/inlet-cave-houndour-warning.webp
 alt: "Area della grotta iniziale vicino al faro con ambiente roccioso e Pokémon selvatici del luogo."
 caption: >-
-  La grotta rende concreto [{{生息|せいそく}}する](term:term-seisoku-suru): il testo non dice solo che ci sono Pokémon, ma che quell'area è il loro habitat.
+  `{{生息|せいそく}}する` presenta quell'area come habitat dei Pokemon.
 :::
 
 :::example_sentence
@@ -339,7 +337,7 @@ translation_it: >-
 
 - `{{見|み}}れば {{見|み}}るほど` ➔ correlazione crescente: più continua l'osservazione, più cresce l'impressione.
 - `{{不思議|ふしぎ}}な ポケモンだし` ➔ valutazione più collegamento: `し` aggiunge una ragione o un elemento alla constatazione.
-- `{{先|さき}}が {{思|おも}}いやられるな` ➔ giudizio sul futuro: non descrive un fatto già successo, ma il brutto presagio che Pepper ricava dalla scena.
+- `{{先|さき}}が {{思|おも}}いやられるな` ➔ giudizio sul futuro: `先が思いやられる` e' un brutto presagio ricavato dalla scena.
 
 Accanto al dialogo, [わざマシン](term:term-waza-machine) riporta il blocco verso
 la progressione di sistema. Una `わざマシン` insegna una mossa, ma in Scarlet /
@@ -359,15 +357,13 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `わざマシンは` ➔ **Tema della regola** (la frase non parla di tutte le mosse,
-    ma dell'oggetto MT).
+*   `わざマシンは` ➔ **Tema della regola** (la frase mette a tema l'oggetto MT).
 *   `{{1回|いっかい}} {{使|つか}}うと` ➔ **Condizione automatica** (`と` collega
     un solo uso alla conseguenza che segue).
 *   `なくなっちゃうから` ➔ **Consumo completo più avvertimento** (`なくなる`
     diventa "sparire / esaurirsi"; `ちゃう` aggiunge la sfumatura di risultato
     compiuto e poco desiderabile).
-*   `{{使|つか}}いどころを {{考|かんが}}えよう` ➔ **Decisione strategica** (il
-    punto non è solo usare la MT, ma scegliere quando conviene farlo).
+La scelta riguarda quando conviene usare la MT.
 
 ## Esempi guidati di riepilogo
 

@@ -94,7 +94,7 @@ meaning_it: essere completo; essere riunito
 pos: verb
 notes_it: >-
   {{揃|そろ}}う è intransitivo: il soggetto è l'insieme che diventa completo.
-  Non dice "mettere insieme", ma "essere tutto pronto / riunito".
+  `揃う` indica che gli elementi necessari sono pronti o riuniti.
 level_hint: n3
 :::
 

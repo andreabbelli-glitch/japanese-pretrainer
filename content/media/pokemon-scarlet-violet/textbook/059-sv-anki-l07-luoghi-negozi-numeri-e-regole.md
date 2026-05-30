@@ -18,7 +18,7 @@ summary: >-
 
 Tra una visita a Mesapoli, una lezione dell'Accademia e una lotta contro il Team Star, *Pokémon Scarlet & Violet* usa parole molto concrete per farti capire dove sei, che cosa puoi fare e quale regola sta governando la scena. Un [{{店|みせ}}](term:term-anki-l07-mise) non è solo un negozio: con la particella giusta diventa una meta, il luogo dell'acquisto o il punto da cui parte una risorsa per il viaggio.
 
-Lo stesso succede con i numeri e con i ruoli. [{{2倍|にばい}}](term:term-anki-l07-nibai) non descrive una quantità qualsiasi, ma un moltiplicatore di battaglia; [{{4|よっ}}つ](term:term-anki-l07-yottsu) conta elementi generici come slot o cose disponibili; [{{教師|きょうし}}](term:term-anki-l07-kyoushi), [{{掟|おきて}}](term:term-anki-l07-okite) e [{{優|やさ}}しい](term:term-anki-l07-yasashii) spostano invece la lettura verso scuola, appartenenza al gruppo e tono umano del dialogo.
+Lo stesso succede con i numeri e con i ruoli. `2倍`, `4つ`, `教師`, `掟` e `優しい` spostano la lettura tra battaglia, conteggio, scuola, appartenenza e tono umano.
 
 ## Termini chiave
 
@@ -100,7 +100,7 @@ Pensa a [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) come 
 Quando una schermata ti dà un comando, il verbo e la particella devono essere letti insieme. [{{止|と}}める](term:term-anki-l07-tomeru) è transitivo: qualcuno ferma qualcosa. Questo lo separa da {{止|と}}まる, dove la cosa si ferma o viene descritta come ferma senza mettere in primo piano chi interviene.
 
 - In un messaggio come {{進化|しんか}}を {{止|と}}める, [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene bloccato. Non è "l'evoluzione si ferma" in modo neutro: il testo sta dicendo che il giocatore può intervenire su quel processo.
-- [で](grammar:grammar-g027-luogo-dell-azione-mezzo) può indicare anche il mezzo. Bボタンで non descrive un luogo, ma lo strumento operativo: il tasto B è il mezzo con cui fermi l'evoluzione. Nei menu, questo valore di [で](grammar:grammar-g027-luogo-dell-azione-mezzo) compare spesso accanto a pulsanti, funzioni e comandi.
+- [で](grammar:grammar-g027-luogo-dell-azione-mezzo) può indicare anche il mezzo. Bボタンで `Bボタンで` usa `で` come mezzo operativo: il tasto B e' lo strumento. Nei menu, questo valore di [で](grammar:grammar-g027-luogo-dell-azione-mezzo) compare spesso accanto a pulsanti, funzioni e comandi.
 - [～ことができる](grammar:grammar-koto-ga-dekiru) trasforma un verbo in possibilità. {{止|と}}める ことが できる non è una riflessione astratta su ciò che esiste: in una UI significa "questa azione è disponibile adesso".
 
 :::example_sentence
@@ -173,7 +173,7 @@ translation_it: >-
 Quando il testo passa dai menu ai dialoghi, le parole non servono solo a comandare un'azione. Definiscono ruoli sociali, appartenenza e giudizi sui personaggi. [{{教師|きょうし}}](term:term-anki-l07-kyoushi), [{{掟|おきて}}](term:term-anki-l07-okite) e [{{優|やさ}}しい](term:term-anki-l07-yasashii) stanno in questo spazio: ti fanno capire se la frase parla di scuola, di norme interne o di carattere.
 
 - [{{教師|きょうし}}](term:term-anki-l07-kyoushi) nomina l'insegnante come professione. Nei dialoghi dell'Accademia sentirai spesso {{先生|せんせい}} come titolo rivolto a una persona; [{{教師|きょうし}}](term:term-anki-l07-kyoushi), invece, classifica il ruolo istituzionale. La differenza è utile: {{先生|せんせい}} può suonare come "professore!", mentre [{{教師|きょうし}}](term:term-anki-l07-kyoushi) parla della categoria.
-- [{{掟|おきて}}](term:term-anki-l07-okite) pesa più di ルール. ルール può essere una regola tecnica, una norma di gioco o un'impostazione; [{{掟|おきて}}](term:term-anki-l07-okite) suona come un codice interno che il gruppo sente come vincolante. Per il Team Star, questo tono è naturale: la parola non descrive solo una procedura, ma un'appartenenza.
+- [{{掟|おきて}}](term:term-anki-l07-okite) pesa più di ルール. ルール può essere una regola tecnica, una norma di gioco o un'impostazione; [{{掟|おきて}}](term:term-anki-l07-okite) suona come un codice interno che il gruppo sente come vincolante. Per il Team Star, questo tono è naturale: `掟` suona come codice interno sentito come vincolante dal gruppo.
 - [{{優|やさ}}しい](term:term-anki-l07-yasashii) descrive gentilezza o premura. Non confonderlo con {{易|やさ}}しい, che si legge allo stesso modo ma significa "facile". Se Pepe viene descritto come [{{優|やさ}}しい](term:term-anki-l07-yasashii), la frase non dice che è facile da battere o da capire: dice che sotto il tono brusco c'è attenzione per gli altri.
 
 :::example_sentence

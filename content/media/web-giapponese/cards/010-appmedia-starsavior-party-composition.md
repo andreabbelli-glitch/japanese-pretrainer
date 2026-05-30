@@ -195,8 +195,7 @@ romaji: korabo kaisai
 meaning_it: annuncio di collaborazione; evento collab in corso
 notes_it: >-
   È un'etichetta da news rail o banner: segnala che una collaborazione è stata
-  annunciata o sta per partire. Non è lessico di battaglia, ma un indicatore di
-  stato della pagina.
+  annunciata o sta per partire. In questo contesto la parola segnala un evento o una collaborazione in arrivo.
 level_hint: custom
 :::
 

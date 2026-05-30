@@ -68,8 +68,7 @@ meaning_it: 'portare qualcuno con sé'
 pos: verb
 notes_it: >-
   {{連|つ}}れる è portare con sé qualcuno, soprattutto una persona o un animale.
-  Il punto non è trasportare un oggetto, ma accompagnare o far muovere un essere
-  vivente insieme a chi agisce.
+  Qui `連れていく` mette al centro l'accompagnare un essere animato e farlo muovere con se'.
 level_hint: n4
 :::
 
@@ -267,8 +266,7 @@ example_jp: 'カルが{{子|こ}}を{{連|つ}}れる。'
 example_it: 'Kal porta con sé il bambino.'
 notes_it: >-
   {{連|つ}}れる è portare con sé qualcuno, soprattutto una persona o un animale.
-  Il punto non è trasportare un oggetto, ma accompagnare o far muovere un essere
-  vivente insieme a chi agisce.
+  Qui `連れていく` mette al centro l'accompagnare un essere animato e farlo muovere con se'.
 tags: [crystal-hunters, book-2, lesson-02]
 :::
 

@@ -61,7 +61,7 @@ Lo stesso vale per le scene più emotive o tecnologiche: un valore che [{{上|�
 
 All'Accademia e nelle città di Paldea molte battute ruotano intorno a informazioni ricevute da altri: qualcuno ha sentito parlare di un Pokémon, un professore introduce una materia, una comunicazione nomina una figura in modo ufficiale. Qui la grammatica non serve solo a tradurre: serve a capire quanto è solida l'informazione e che rapporto sociale sta mettendo in scena.
 
-*   [{{噂|うわさ}}](term:term-anki-l06-uwasa) indica una voce che circola prima di diventare certezza. Non è ancora {{本当|ほんとう}} di per sé: è ciò che qualcuno racconta, ripete o ha sentito. Per questo si combina bene con {{聞|き}}く quando la voce viene ascoltata, e con verbi come {{流|なが}}れる quando l'immagine è quella della diceria che passa di persona in persona. In una frase con あの ポケモンの {{噂|うわさ}}, il centro non è il Pokémon come creatura, ma quello che si dice su di lui.
+*   [{{噂|うわさ}}](term:term-anki-l06-uwasa) indica una voce che circola prima di diventare certezza. `噂` indica cio' che circola come voce prima di diventare certezza.
 *   [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) porta la lettura dentro la scuola. Il composto si apre bene in due pezzi: {{言語|げんご}} è "lingua / linguaggio", mentre {{学|がく}} funziona come suffisso di disciplina, cioè "studio di". In un dialogo dell'Accademia, quindi, [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) non nomina semplicemente delle parole: identifica una materia, un'aula, un insegnante e un tipo di spiegazione.
 *   [{{氏|し}}](term:term-anki-l06-shi) dopo un nome proprio cambia il registro. さん resta quotidiano e relazionale; [{{氏|し}}](term:term-anki-l06-shi) suona più rigido, da comunicazione, rapporto o riferimento istituzionale. Se leggi クラベル{{氏|し}}, il testo non sta rendendo Clavel più vicino: lo sta nominando con una distanza formale.
 
@@ -216,11 +216,11 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{楽|たの}}しみ](term:term-anki-l06-tanoshimi) e {{楽|たの}}しい non occupano lo stesso posto. {{楽|たの}}しい descrive una qualità presente: una lezione, una lotta o una gita "è divertente". [{{楽|たの}}しみ](term:term-anki-l06-tanoshimi) può invece nominare l'attesa stessa: la cosa non è ancora accaduta, ma il parlante la guarda già con piacere.
+`楽しみ` nomina l'attesa piacevole per qualcosa che deve ancora accadere.
 
 #### 🧠 Gancio cognitivo
 
-Per ricordare [{{解散|かいさん}}](term:term-anki-l06-kaisan), immagina il momento in cui una classe smette di essere una classe riunita: le persone erano un gruppo, poi la parola le lascia disperdere. Il cuore non è "rompere", ma "sciogliere il raduno".
+Per ricordare [{{解散|かいさん}}](term:term-anki-l06-kaisan), immagina il momento in cui una classe smette di essere una classe riunita: le persone erano un gruppo, poi la parola le lascia disperdere. `解散` descrive il gruppo che si scioglie e le persone che si disperdono.
 
 ## 4. Macchine e Area Zero: quando l'oggetto diventa trama
 

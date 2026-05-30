@@ -85,7 +85,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `やけどが` ➔ **soggetto dello stato**: la condizione di scottatura è ciò che cambia.
-*   `{{解除|かいじょ}}されました` ➔ **passivo cortese di risultato**: l'effetto viene rimosso, quindi il focus non è su chi lo ha tolto, ma sul nuovo stato visibile nella schermata.
+*   `{{解除|かいじょ}}されました` ➔ **passivo cortese di risultato**: `解除されました` mette il focus sul nuovo stato: l'effetto e' rimosso.
 
 #### ⚖️ Contrasto operativo
 
@@ -97,7 +97,7 @@ Per [{{解除|かいじょ}}](term:term-v276-kaijo), immagina un nodo che viene 
 
 ## 2. Mappe ed esplorazione: luogo, strumento e rischio
 
-Fuori dall'aula, il gioco usa parole compatte per collegare luogo, strumento e pericolo. Qui la lettura corretta non è solo "capire la parola", ma capire se il testo ti sta orientando verso una zona, ti sta abilitando un movimento o ti sta mettendo un limite.
+Fuori dall'aula, il gioco usa parole compatte per collegare luogo, strumento e pericolo. Qui devi capire se il testo orienta verso una zona, abilita un movimento o impone un limite.
 
 *   [{{草原|そうげん}}](term:term-v283-sougen) è formato da {{草|そう}} (*erba*) e {{原|げん}} (*piana / campo aperto*): indica una prateria o una zona erbosa aperta. In una descrizione di destinazione ti prepara a un ambiente esplorabile, non a un edificio, a una classe o a una strada urbana.
 *   [マップアプリ](term:term-v288-mappuapuri) è katakana composto: マップ (*mappa*) + アプリ (*app*). In Scarlet/Violet è lo strumento con cui leggi posizione, destinazioni e segnalini; quando il testo lo nomina, il gioco sta spostando l'attenzione dal dialogo alla navigazione concreta.
@@ -143,7 +143,7 @@ Le lezioni dell'Accademia e i dialoghi sul Treasure Hunt usano parole che sembra
 ### B. Azioni, ragioni e capacità
 
 *   [{{行動|こうどう}}](term:term-v284-koudou) è l'**azione / comportamento**. Non guarda solo il gesto fisico: nei dialoghi può indicare il modo in cui qualcuno decide di muoversi, intervenire, scappare, aiutare o restare fermo.
-*   [{{理由|りゆう}}](term:term-v285-riyuu) è il **motivo / ragione**. Quando compare in una domanda, il testo non chiede solo "che cosa è successo", ma quale spiegazione tiene insieme quel comportamento.
+*   [{{理由|りゆう}}](term:term-v285-riyuu) è il **motivo / ragione**. Quando compare in una domanda, il testo `理由` chiede la spiegazione che tiene insieme il comportamento.
 *   [{{実力|じつりょく}}](term:term-v287-jitsuryoku) unisce {{実|じつ}} (*reale, effettivo*) e {{力|りょく}} (*forza, capacità*): indica il livello reale dimostrabile. In contesti scolastici, lotte o prove, non è autostima dichiarata: è capacità che si vede quando la situazione ti misura davvero.
 
 :::example_sentence

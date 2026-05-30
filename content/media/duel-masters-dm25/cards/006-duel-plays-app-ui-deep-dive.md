@@ -77,9 +77,7 @@ meaning_it: scadenza per il claim / claim deadline
 pos: status-label
 aliases: [受け取り期限, claim deadline]
 notes_it: >-
-  Non descrive quando hai ottenuto la reward, ma fino a quando puoi ancora
-  incassarla. In UI questo label conta perché ti dice se la reward è solo
-  presente o ancora riscattabile.
+  `期限` indica fino a quando puoi ancora ritirare o usare qualcosa. In UI questo label ti dice se la reward è presente o ancora riscattabile.
 level_hint: custom
 :::
 
@@ -140,8 +138,7 @@ pos: screen-label
 aliases: [ステージ選択, stage select]
 notes_it: >-
   È la schermata in cui scegli il livello o lo stage da affrontare. Il composto
-  va letto come blocco operativo: non è una descrizione narrativa, ma il punto
-  in cui si definiscono costo, difficoltà e reward preview.
+  va letto come blocco operativo: Qui il blocco va letto come istruzione operativa della UI.
 level_hint: custom
 :::
 
@@ -154,9 +151,7 @@ meaning_it: acquisto pack / card pack purchase
 pos: screen-label
 aliases: [カードパック購入, card pack purchase]
 notes_it: >-
-  Qui l'oggetto non è una carta singola ma un pack. Il label intero ti porta nel
-  flusso di acquisto delle buste, con relative valute, ticket, `カード一覧` e
-  [{{提供割合|てい.きょう.わり.あい}}](term:term-offer-rate).
+  L'oggetto selezionato è il pack: la label porta nel flusso di acquisto delle buste, con relative valute, ticket, `カード一覧` e [{{提供割合|てい.きょう.わり.あい}}](term:term-offer-rate).
 level_hint: custom
 :::
 
@@ -200,8 +195,7 @@ pos: resource-name
 aliases: [所持チケット, owned tickets]
 notes_it: >-
   Combina [{{所持|しょじ}}](term:term-owned) e
-  [チケット](term:term-ticket). Non indica un tipo di ticket astratto, ma lo
-  stock spendibile in quel momento in quello specifico popup o menu.
+  [チケット](term:term-ticket). Il composto indica il tipo di ticket che abilita quella funzione.
 level_hint: custom
 :::
 
@@ -214,9 +208,7 @@ meaning_it: quantità da acquistare / purchase quantity
 pos: ui-field
 aliases: [購入個数, purchase quantity]
 notes_it: >-
-  Non parla del prezzo o del prodotto, ma solo del numero di unità che stai per
-  comprare. Nelle schermate pack ti evita di confondere costo totale e quantità
-  selezionata.
+  La frase controlla la quantità di unità che stai per comprare o usare. Nelle schermate pack separa costo totale e quantità selezionata.
 level_hint: custom
 :::
 
@@ -291,8 +283,7 @@ pos: screen-label
 aliases: [デッキ一覧, deck list]
 notes_it: >-
   Qui [デッキ](term:term-constructed-deck) è l'oggetto e
-  [～{{一覧|いちらん}}](grammar:grammar-ichiran) il formato schermata. Quindi il
-  label non indica un deck singolo, ma la vista da cui li confronti e li scegli.
+  [～{{一覧|いちらん}}](grammar:grammar-ichiran) il formato schermata. La label apre la vista da cui confronti e scegli i deck.
 level_hint: custom
 :::
 
@@ -660,7 +651,7 @@ example_it: >-
   Siccome i pack ticket non bastano, li compro con le gemme.
 notes_it: >-
   È lo stock immediato che il popup userà per decidere fino a dove puoi arrivare.
-  Non è il nome della valuta in astratto, ma il numero spendibile adesso.
+  La valuta qui e' il saldo spendibile adesso.
 tags: [duel-plays, app, ui, resource]
 :::
 

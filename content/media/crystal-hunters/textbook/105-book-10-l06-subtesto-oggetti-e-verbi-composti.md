@@ -117,8 +117,7 @@ translation_it: >-
 
 ## 3. Fine, riposo e rammarico
 
-[{{終|お}}わる](term:term-ch-b10-owaru) dice che qualcosa arriva alla fine. Il
-soggetto non e' chi "fa finire" qualcosa, ma la cosa che termina.
+[{{終|お}}わる](term:term-ch-b10-owaru) dice che qualcosa arriva alla fine. Con l'intransitivo, il soggetto e' la cosa che termina da se' nella frase.
 
 :::example_sentence
 jp: >-
@@ -150,8 +149,7 @@ translation_it: >-
 :::
 
 `しまった` puo' anche stare da solo come reazione: "accidenti", "ho combinato
-un guaio". Non e' una parolaccia in giapponese, ma porta bene il colpo emotivo
-di un errore.
+un guaio". In giapponese questa parola porta il colpo emotivo di una situazione finita male.
 
 ## 4. Proposta cortese: ましょう
 

@@ -110,7 +110,7 @@ Fuori dal campus, la lingua descrive lo spazio come qualcosa da attraversare: pu
 
 *   [{{戻|もど}}れる](term:term-v746-modoreru) è la forma potenziale di {{戻|もど}}る. Non racconta "torno", ma "posso tornare". Nei dialoghi di esplorazione questo cambia la lettura: il testo non descrive un movimento già iniziato, segnala che una via di ritorno resta aperta.
 *   [{{入|い}}り{{組|く}}む](term:term-v750-irikumu) descrive un percorso che entra, si intreccia e diventa complicato: vicoli, interni, grotte o strade piene di svolte. Quando compare vicino a [{{迷|まよ}}う](term:term-v751-mayou), il giapponese passa dalla forma del luogo alla tua esperienza: il posto è intricato, quindi puoi perderti o restare indeciso.
-*   [{{天気|てんき}}](term:term-v749-tenki) non è solo colore di sfondo. Con [～によって](grammar:grammar-g101-a-seconda-di-in-base-a), il meteo diventa una variabile: può cambiare comportamento dei Pokémon, apparizioni o ritmo del campo. La frase non dice "c'è tempo atmosferico", ma "il risultato dipende anche da questo fattore".
+*   [{{天気|てんき}}](term:term-v749-tenki) Il meteo diventa una variabile che puo' cambiare incontri, ritmo o comportamento dei Pokemon.
 
 :::example_sentence
 jp: >-

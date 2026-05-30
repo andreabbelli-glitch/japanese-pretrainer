@@ -78,7 +78,7 @@ risorsa.
 
 ---
 
-[{{選択|せんたく}}](term:term-selection) è il gesto di scegliere una voce precisa: nel menu non significa ancora confermare o comprare, ma portare un elemento al centro dell'azione.
+`選択` e' il gesto di portare una voce al centro dell'azione, prima della conferma.
 
 ## 1. デッキ non è sempre lo stesso “mazzo”
 

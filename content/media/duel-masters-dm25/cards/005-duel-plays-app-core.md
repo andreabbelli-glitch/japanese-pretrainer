@@ -159,9 +159,7 @@ meaning_it: aprire / open
 pos: verb
 aliases: [開く, ひらく, hiraku]
 notes_it: >-
-  Nella UI non vuol dire "sbloccare", ma aprire davvero una schermata, un menu
-  o una lista. In frasi come `ホームからミッションを{{開|ひら}}く`, il punto
-  pratico è il passaggio di navigazione verso il contenuto richiesto.
+  Nella UI, `開く` significa aprire concretamente una schermata o un menu. In frasi come `ホームからミッションを{{開|ひら}}く`, il punto pratico è il passaggio di navigazione verso il contenuto richiesto.
 level_hint: n4
 :::
 
@@ -549,8 +547,7 @@ pos: status-label
 aliases: [開催中, kaisaichuu]
 notes_it: >-
   Il composto si legge come `{{開催|かいさい}}` + [～{{中|ちゅう}}](grammar:grammar-ui-chuu):
-  l'evento è "in svolgimento adesso". Non è un titolo statico, ma un'indicazione
-  di stato che ti dice che quella modalità o campagna è attiva nel presente.
+  l'evento è "in svolgimento adesso". `開催中` segnala che l'evento e' attivo in questo momento.
 level_hint: custom
 :::
 
@@ -793,7 +790,7 @@ example_it: >-
   Controlla le informazioni evento negli avvisi.
 notes_it: >-
   È la schermata che ti aggiorna sul contesto del gioco: eventi, campagne,
-  manutenzioni, novità. Non è un premio da ritirare, ma un'area da leggere.
+  manutenzioni, novità. `お知らせ` e' un'area informativa da leggere per manutenzioni, novita' e avvisi.
 tags: [duel-plays, app, navigation]
 :::
 

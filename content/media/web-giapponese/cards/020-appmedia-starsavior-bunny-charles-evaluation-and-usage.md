@@ -68,8 +68,7 @@ reading: つよさ
 romaji: tsuyosa
 meaning_it: forza; impatto reale
 notes_it: >-
-  Qui [{{強|つよ}}さ](term:term-tsuyosa) non è la forza fisica in astratto, ma
-  quanto il personaggio incide davvero in battaglia.
+  `強さ` qui misura la performance utile del personaggio nel gioco.
 level_hint: n4
 :::
 
@@ -82,7 +81,7 @@ meaning_it: uso; use case; impiego
 notes_it: >-
   In una guida personaggio [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi)
   indica i contesti in cui il kit rende bene: boss, auto battle, team
-  specifici. Non è un “uso” astratto, ma un ruolo pratico.
+  specifici. `使い道` indica un ruolo pratico: dove e come conviene usare quel personaggio.
 level_hint: n3
 :::
 

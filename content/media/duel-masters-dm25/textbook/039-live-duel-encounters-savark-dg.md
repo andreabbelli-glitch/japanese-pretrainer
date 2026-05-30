@@ -173,9 +173,8 @@ Il secondo effetto cambia ritmo. Non guarda più il mazzo: aspetta
 ma contiene tre segnali importanti: fonte, quantità e costo saltato.
 
 - {{自分|じぶん}}のターン[{{終了|しゅうりょう}}{{時|じ}}](term:term-shuuryouji) è
-  un timing tecnico. Non significa "quando il turno sta andando verso la fine",
-  ma nel punto in cui il turno si chiude e gli effetti di fine turno si
-  controllano.
+  un timing tecnico: il punto in cui il turno si chiude e gli effetti di fine
+  turno si controllano.
 - {{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)から
   [{{裁|さば}}きの{{紋章|もんしょう}}](term:term-judgment-emblem)を{{1枚|いちまい}}
   costruisce l'oggetto in modo stretto: dalla tua mano, una singola carta con
@@ -359,6 +358,6 @@ i tre segnali: `その{{中|なか}}から` restringe il top {{3枚|さんまい
 [すべて](term:term-subete) prende tutte le carte valide, e
 [{{合計|ごうけい}}](term:term-goukei) conta solo le carte
 [{{表向|おもてむ}}き](term:term-face-up) negli scudi. Con quei passaggi chiari,
-[{{終了|しゅうりょう}}{{時|じ}}](term:term-shuuryouji) non è più un finale vago,
-ma il punto preciso in cui il testo apre prima un cast gratuito e poi una
-soglia che può trasformare Savark DG in un Drago di Luce.
+[{{終了|しゅうりょう}}{{時|じ}}](term:term-shuuryouji) diventa il punto preciso in
+cui il testo apre prima un cast gratuito e poi una soglia che può trasformare
+Savark DG in un Drago di Luce.

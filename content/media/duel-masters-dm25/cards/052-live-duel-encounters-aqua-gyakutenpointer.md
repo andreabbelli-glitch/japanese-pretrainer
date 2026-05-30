@@ -109,8 +109,7 @@ example_it: >-
   Siccome c'è `al massimo una per ciascuno`, non puoi sceglierne due solo da un
   lato.
 notes_it: >-
-  Qui il punto non è solo `{{最大|さいだい}}`, ma la combinazione con
-  [ずつ](grammar:grammar-zutsu). Il numero viene distribuito separatamente su
+  Qui `最大` lavora insieme alla quantita' indicata e fissa un tetto. Il numero viene distribuito separatamente su
   ogni giocatore e resta facoltativo entro quel limite.
 tags: [live-duel, concept, quantity, distribution]
 :::
@@ -149,8 +148,7 @@ example_jp: >-
   そのプレイヤーの[クリーチャー](term:term-creature)に
   {{選択|せんたく}}が{{起|お}}きたことを{{示|しめ}}している。
 example_it: >-
-  `Erabareta` è passivo: non dice che è stato scelto il giocatore, ma che la
-  scelta ha colpito una creatura di quel giocatore.
+  `Erabareta` è passivo: `選ばれた` e' passivo: la creatura riceve lo stato di essere stata scelta.
 notes_it: >-
   Questo è il chunk giusto da fissare se `選ばれた` ti confonde. La forma
   passiva serve da etichetta relativa e costruisce `il giocatore per cui è

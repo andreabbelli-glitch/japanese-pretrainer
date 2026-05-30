@@ -37,8 +37,7 @@ reading: やるっきゃない
 romaji: yarukkyanai
 meaning_it: non resta che farlo
 notes_it: >-
-  Formula colloquiale energica: non esprime un dovere freddo, ma il momento in
-  cui si decide di buttarsi e andare avanti.
+  Formula colloquiale energica: La formula colloquiale spinge il parlante verso l'azione immediata.
 :::
 :::card
 id: card-e114-yarukkyanai-recognition
@@ -155,8 +154,7 @@ reading: かんり
 romaji: kanri
 meaning_it: gestione / controllo
 notes_it: >-
-  In queste scene non vuol dire gestione astratta, ma controllo effettivo di un
-  Pokemon, di un dispositivo o di una situazione che richiede responsabilita.
+  In queste scene, `管理` indica controllo effettivo di un Pokemon, di un dispositivo o di una situazione che richiede responsabilità.
 :::
 :::card
 id: card-v766-kanri-recognition

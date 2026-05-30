@@ -117,7 +117,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `メニューから` ➔ **Punto di partenza**: l'azione nasce dentro il menu.
-*   `プレゼントの {{受|う}}けとりを` ➔ **Funzione selezionata**: `の` lega il ritiro al regalo; non è il regalo in sé, ma l'opzione per riceverlo.
+*   `プレゼントの {{受|う}}けとりを` ➔ **Funzione selezionata**: `プレゼントの受けとり` e' l'opzione per ricevere il regalo.
 *   `{{選|えら}}びます` ➔ **Selezione operativa**: la schermata aspetta una scelta, non una conferma finale.
 
 #### 🧠 Gancio cognitivo
@@ -280,7 +280,7 @@ translation_it: >-
 
 *   `このわざは` ➔ **Tema della spiegazione**: la frase parla dell'effetto di questa mossa.
 *   `{{相手|あいて}}に` ➔ **Bersaglio**: `に` indica chi riceve l'effetto.
-*   ダメージを {{与|あた}}えます ➔ **Effetto inflitto**: を marca il danno come oggetto; [{{与|あた}}える](term:term-v510-atae-ru) qui non è "dare" in senso gentile, ma applicare danni al bersaglio.
+*   ダメージを {{与|あた}}えます ➔ **Effetto inflitto**: `ダメージを与えます` applica danno al bersaglio.
 
 #### ⚖️ Contrasto operativo
 

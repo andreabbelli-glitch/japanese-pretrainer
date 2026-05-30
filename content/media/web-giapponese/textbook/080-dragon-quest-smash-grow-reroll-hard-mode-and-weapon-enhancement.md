@@ -63,7 +63,7 @@ ottenimento di un oggetto nuovo.
 
 ---
 
-[{{引|ひ}}き{{直|なお}}せる](term:term-hikinaoseru) è potenziale: non dice che il reroll è già avvenuto, ma che puoi rifare l'estrazione.
+[{{引|ひ}}き{{直|なお}}せる](term:term-hikinaoseru) è potenziale: `引き直せる` e' potenziale: il gioco ti permette di rifare l'estrazione.
 
 :::image
 src: assets/dragon-quest-smash-grow-star3-reroll-fukubiki.jpg
@@ -108,8 +108,7 @@ Il risultato desiderato viene messo prima, poi `まで` chiude il limite: vai
 avanti fino al momento in cui quel risultato esce.
 
 *   [{{好|す}}きな](term:term-sukina) modifica direttamente
-    [ぶき](term:term-buki). Non significa "un'arma buona" in senso tecnico, ma
-    "un'arma che ti piace / che vuoi tu". In una UI di reroll questa sfumatura
+    [ぶき](term:term-buki). `いいぶき` indica un'arma conveniente o utile per il reroll, nel frame della guida. In una UI di reroll questa sfumatura
     è decisiva: il gioco non ti sta imponendo una scelta ottimale, ti sta
     dando margine per fermarti quando il risultato è soddisfacente.
 *   `{{★3|ほしさん}}` indica la rarità a tre stelle. La lettura naturale è
@@ -130,8 +129,7 @@ translation_it: >-
 
 *   `{{好|す}}きな{{★3|ほしさん}}ぶきが` ➔ **Soggetto-risultato** (`が` marca ciò
     che deve comparire: l'arma a tre stelle desiderata).
-*   `{{出|で}}るまで` ➔ **Limite temporale** (`まで` non è "fino a un luogo", ma
-    "fino al momento in cui succede X").
+*   `{{出|で}}るまで` ➔ **Limite temporale** (`出るまで` fissa il limite temporale: continui fino alla comparsa del risultato).
 *   `ふくびきを` ➔ **Oggetto dell'azione** (`を` marca la lotteria come cosa che
     viene tirata di nuovo).
 *   `{{引|ひ}}き{{直|なお}}せる` ➔ **Potenziale di rifacimento** (`{{引|ひ}}く`
@@ -164,8 +162,7 @@ scegliendo se tirare ancora: stai ricevendo una notifica di progresso. La frase
 ha il ritmo tipico degli sblocchi di gioco: nome della funzione, `が`, verbo al
 passivo cortese, passato.
 
-*   `ハードモードが` mette la modalità come soggetto della notifica. Il focus
-    non è "tu hai sbloccato", ma "questa modalità risulta ora sbloccata".
+*   `ハードモードが` mette la modalità come soggetto della notifica. La frase presenta la modalita' come appena sbloccata e ora disponibile.
 *   `{{解放|かいほう}}` contiene l'idea di apertura o rilascio. Nei giochi è
     molto vicino a "unlock": una funzione prima chiusa diventa accessibile.
 *   `されました` è `する` in forma passiva/polite al passato. La conseguenza di

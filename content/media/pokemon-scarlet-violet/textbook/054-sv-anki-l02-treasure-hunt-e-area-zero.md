@@ -131,7 +131,7 @@ translation_it: >-
 *   みんなは ➔ **Tema collettivo** ([は](grammar:grammar-g031-marca-il-tema) presenta "tutti" come punto di partenza della frase).
 *   わたしの ことを ➔ **Persona chiamata** (こと trasforma "io" in "la cosa/persona che mi riguarda"; [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che riceve il nome).
 *   `ネモと` ➔ **Nome assegnato** (`と` introduce il nome con cui viene chiamata).
-*   `{{呼|よ}}ぶの` ➔ **Chiamare / denominare** (qui non è solo gridare verso qualcuno, ma chiamare una persona con un nome).
+*   `{{呼|よ}}ぶの` ➔ **Chiamare / denominare** (`呼ぶ` qui significa chiamare qualcuno con un nome).
 
 #### ⚖️ Contrasto operativo
 

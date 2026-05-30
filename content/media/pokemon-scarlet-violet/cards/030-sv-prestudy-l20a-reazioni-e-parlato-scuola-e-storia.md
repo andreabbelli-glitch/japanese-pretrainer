@@ -550,8 +550,8 @@ reading: にがて
 romaji: nigate
 meaning_it: non essere bravo / non piacere
 notes_it: >-
-  苦手 indica difficoltà o scarso gradimento verso qualcosa; non è solo "debole",
-  ma "non me la cavo bene con X" oppure "X non mi piace".
+  苦手 indica difficoltà o scarso gradimento verso qualcosa: "non me la cavo bene
+  con X" oppure "X non mi piace".
 :::
 :::card
 id: card-v291-nigate-recognition

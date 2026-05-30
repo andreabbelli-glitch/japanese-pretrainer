@@ -379,10 +379,10 @@ meaning_it: effetto
 pos: noun
 aliases: [効果, こうか, kouka]
 notes_it: >-
-  È una delle parole più importanti del rules text. Non indica la carta in sé,
-  ma ciò che il testo fa davvero: pescare, distruggere, impedire o modificare
-  uno stato. In frasi come `この{{効果|こうか}}` o `{{効果|こうか}}を{{使|つか}}う`,
-  la carta sta richiamando il blocco di testo che produce il risultato reale.
+  È una delle parole più importanti del rules text: richiama ciò che il testo fa
+  davvero, come pescare, distruggere, impedire o modificare uno stato. In frasi
+  come `この{{効果|こうか}}` o `{{効果|こうか}}を{{使|つか}}う`, la carta sta
+  richiamando il blocco di testo che produce il risultato reale.
 level_hint: n4
 :::
 
@@ -397,9 +397,7 @@ aliases: [召喚, しょうかん, shoukan]
 notes_it: >-
   Indica il normale atto di giocare una creatura pagando il suo costo. La
   distinzione conta perché molte carte separano l'ingresso regolare
-  dall'ingresso speciale. Se leggi `{{召喚|しょうかん}}{{以外|いがい}}`, sai già che
-  il testo non parla di una giocata standard ma di un modo alternativo di far
-  entrare la carta.
+  dall'ingresso speciale. Il testo presenta una modalita' alternativa di mettere in campo la carta.
 level_hint: custom
 :::
 
@@ -1079,8 +1077,7 @@ example_it: >-
   Tratta questo Tamaseed in modo che possa funzionare sia come base sia come
   estensione di un'evoluzione.
 notes_it: >-
-  Qui il punto non è il nome della keyword ma il verbo `{{扱|あつか}}う` con il doppio
-  ruolo `進化元 / 進化先`, che spiega davvero come leggere la meccanica.
+  Qui conta il verbo `扱う`: una carta viene trattata come avente una certa qualita'.
 tags: [core, keyword, evolution, dm25-sd2]
 :::
 

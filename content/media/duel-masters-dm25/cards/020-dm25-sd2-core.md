@@ -232,8 +232,7 @@ meaning_it: far combattere / forzare un battle
 pos: verb-phrase
 aliases: [バトルさせる, ばとるさせる, batoru saseru]
 notes_it: >-
-  Formula tipica del linguaggio di gioco: non descrive un attacco normale, ma
-  forza un combattimento fra due creature precise. Il causativo marca proprio
+  Formula tipica del linguaggio di gioco: La formula descrive un attacco autorizzato o modificato da una regola. Il causativo marca proprio
   l'effetto operativo: il battle viene imposto dal testo, non dall'attacco
   dichiarato di una creatura.
 level_hint: custom
@@ -431,8 +430,7 @@ example_jp: >-
 example_it: >-
   Alla fine dell'attacco di questa creatura, distruggi la carta in cima.
 notes_it: >-
-  `{{終|お}}わり` non indica il mezzo dell'azione, ma il momento successivo alla
-  sua conclusione. In questo chunk il gioco aspetta la fine dell'attacco e poi
+  `終わり` colloca l'effetto dopo la fine dell'azione o fase indicata. In questo chunk il gioco aspetta la fine dell'attacco e poi
   applica il resto.
 tags: [dm25-sd2, timing, structure]
 :::

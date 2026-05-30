@@ -65,8 +65,7 @@ meaning_it: anche uno solo / almeno uno
 aliases: [1つでも, ひとつでも]
 notes_it: >-
   `{{1|ひと}}つでも` combina il contatore `{{1|ひと}}つ` con `でも`.
-  Il risultato non è una quantità ampia, ma una soglia minima: se ce n'è anche
-  uno solo, la condizione può bastare. Nel testo di Apache Urara, basta una
+  Il risultato stabilisce una soglia minima: anche una sola unita' basta. Nel testo di Apache Urara, basta una
   [{{文明|ぶんめい}}](term:term-civilization) condivisa.
 level_hint: n4
 :::

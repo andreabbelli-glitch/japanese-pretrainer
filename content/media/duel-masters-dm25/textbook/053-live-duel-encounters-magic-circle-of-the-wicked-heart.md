@@ -110,7 +110,7 @@ reveal_mode: sentence
 
 #### 🧠 Gancio cognitivo
 
-Come trucco mnemonico, pensa a よう come a una “forma percepita”: la carta si presenta alla frase con l'aspetto necessario per l'evoluzione. Non è una spiegazione etimologica completa, ma aiuta a ricordare che [かのように](grammar:grammar-kanoyouni) parla di lettura “come se”, non di identità definitiva.
+Come trucco mnemonico, pensa a よう come a una “forma percepita”: la carta si presenta alla frase con l'aspetto necessario per l'evoluzione. `かのように` parla di una lettura come-se, utile all'evoluzione in quel contesto.
 
 ---
 

@@ -77,7 +77,7 @@ leggibili.
 
 ---
 
-Prima degli esempi, tieni fisso [ブレイク](term:term-break): nel lessico di Duel Masters non è un danno generico, ma il gesto tecnico di rompere uno scudo.
+Nel lessico di Duel Masters, `ブレイク` e' il gesto tecnico di rompere uno scudo.
 
 ## 1. La carta dall'esterno verso l'interno
 
@@ -118,7 +118,7 @@ translation_it: >-
 
 *   `クリーチャー` ➔ **Tipo carta** (ti dice che la carta può restare in battle zone e partecipare al combattimento).
 *   `コスト{{5|ご}}` ➔ **Valore di pagamento** (numero da pagare quando giochi la carta; in altri testi, `コスト` può diventare filtro).
-*   `パワー{{5000|ごせん}}` ➔ **Valore di combattimento** (non è una quantità di carte, ma una statistica della creatura).
+*   `パワー{{5000|ごせん}}` ➔ **Valore di combattimento** (`パワー5000` e' il valore di combattimento della creatura).
 *   `{{火|ひ}}{{文明|ぶんめい}}` ➔ **Civiltà** (`{{火|ひ}}` specifica il colore, `{{文明|ぶんめい}}` dice che stai leggendo la categoria di appartenenza).
 
 #### ⚖️ Contrasto operativo

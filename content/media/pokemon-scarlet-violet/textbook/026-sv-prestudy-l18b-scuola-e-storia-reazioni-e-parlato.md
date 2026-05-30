@@ -74,7 +74,7 @@ Le scene scolastiche di *Scarlet & Violet* non usano solo frasi informative. Spe
 
 *   [いってらっしゃい](term:term-e039-itterasshai) si dice a chi sta andando via, ma contiene già l'idea del ritorno. Non è un "ciao" neutro: è la battuta di chi resta e manda avanti l'altra persona, come se dicesse "vai, fai quello che devi fare, poi torna". Nei dialoghi dell'Accademia ti aiuta a distinguere una partenza temporanea da un addio o da un semplice saluto d'incontro.
 *   [ところで](term:term-e040-tokorode) funziona come una cerniera. La conversazione era su un binario, poi il parlante dice [ところで](term:term-e040-tokorode) e apre un nuovo punto: "a proposito". Se lo incontri prima di una domanda, aspettati un cambio di fuoco, non una continuazione lineare della frase precedente.
-*   [いったい](term:term-e041-ittai) rende la domanda più carica. In italiano può diventare "ma che...?", "chi mai...?", "che diavolo...?", a seconda del tono. Il valore stabile è la pressione emotiva: il parlante non chiede con calma, ma segnala sorpresa, incredulità o frustrazione.
+*   [いったい](term:term-e041-ittai) rende la domanda più carica. In italiano può diventare "ma che...?", "chi mai...?", "che diavolo...?", a seconda del tono. Il valore stabile è la pressione emotiva: `いったい` carica la domanda di sorpresa, incredulita' o frustrazione.
 
 #### 🧠 Gancio cognitivo
 
@@ -129,7 +129,7 @@ translation_it: >-
 
 *   `{{生物|せいぶつ}}の {{説明|せつめい}}を` ➔ **Oggetto dell'ascolto** (`{{生物|せいぶつ}}` qui è la materia scolastica, non genericamente "creature viventi"; `{{説明|せつめい}}` è la spiegazione).
 *   {{聞|き}}くとき ➔ **Cornice temporale** (verbo in forma piana {{聞|き}}く + [～とき](grammar:grammar-g040-quando-nel-momento-in-cui): "quando ascolti / nel momento in cui ascolti").
-*   `{{問題|もんだい}}を よく {{見|み}}ます` ➔ **Azione principale** (`{{問題|もんだい}}` in classe può essere un quesito; `よく{{見|み}}る` non è solo "vedere", ma controllare con attenzione).
+*   `{{問題|もんだい}}を よく {{見|み}}ます` ➔ **Azione principale** (`よく見る` in classe significa controllare con attenzione il quesito).
 
 ### B. `～だろう / でしょう`: probabilità, non certezza
 

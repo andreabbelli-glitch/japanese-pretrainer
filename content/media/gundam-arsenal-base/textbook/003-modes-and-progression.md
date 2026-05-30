@@ -206,8 +206,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `{{指揮官|しきかん}}レベルが{{上|あ}}がると` ➔ **Condizione stabile**: `と` qui
-  funziona come "quando succede X, segue Y". Non è un'ipotesi vaga, ma una
-  conseguenza di sistema.
+  funziona come "quando succede X, segue Y". La costruzione con `と` presenta una conseguenza stabile: quando succede X, segue Y.
 - `{{使|つか}}える{{機能|きのう}}が` ➔ **Funzioni disponibili**: `{{使|つか}}える`
   restringe `{{機能|きのう}}` a ciò che può essere usato, non a ogni voce
   nominabile del menu.
@@ -333,8 +332,7 @@ per decidere cosa stai leggendo, non una spiegazione etimologica.
 ## 4. Guide vecchie: riconoscere un'etichetta senza seguirla
 
 [EXバトル](term:term-ex-battle) è utile da riconoscere quando incontri guide o
-articoli passati. `EX` lo marca come contenuto speciale o extra, `バトル` resta
-"battaglia"; il punto delicato non è la traduzione, ma il tempo della fonte. Se
+articoli passati. La parte delicata e' il tempo della fonte: quando il gioco considera disponibile quella battaglia. Se
 una guida lo presenta come passaggio centrale del percorso attuale, probabilmente
 sta parlando di un sistema precedente alle stagioni `UNITRIBE SEASON:01`.
 

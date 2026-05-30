@@ -236,8 +236,7 @@ example_jp: >-
 example_it: >-
   Nasce una nuova leggenda.
 notes_it: >-
-  [{{伝説|でんせつ}}](term:term-densetsu) dà alla battuta un tono solenne: il
-  gioco non parla di un semplice evento, ma di qualcosa da raccontare.
+  Nel dialogo, il termine prepara qualcosa da raccontare come evento importante.
 tags: [rpg, story, noun]
 :::
 

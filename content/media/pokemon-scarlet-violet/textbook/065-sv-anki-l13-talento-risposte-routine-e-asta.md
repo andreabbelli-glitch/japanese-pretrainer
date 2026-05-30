@@ -85,8 +85,7 @@ usato o in quale stadio si trova un cambiamento di battaglia.
     una statistica numerica. Il frame più leggibile è
     `{{才能|さいのう}}がある`: `が` presenta il talento come qualcosa che "c'è" in
     una persona, in un Allenatore o in un modo di combattere. Se il testo dice
-    `{{才能|さいのう}}がない`, il punto non è che manca un oggetto, ma che quella
-    qualità non viene riconosciuta.
+    `{{才能|さいのう}}がない`, `才能がない` presenta assenza di talento come qualita' della persona.
 *   [{{使|つか}}える](term:term-anki-l13-tsukaeru) è la forma potenziale di
     `{{使|つか}}う`, quindi parte dall'idea di "poter usare". Nei menu può
     indicare che uno strumento funziona su un bersaglio; nel parlato può
@@ -94,9 +93,7 @@ usato o in quale stadio si trova un cambiamento di battaglia.
     [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) non marca
     il possessore: marca il destinatario dell'uso.
 *   [{{段階|だんかい}}](term:term-anki-l13-dankai) spezza un processo in stadi
-    ordinati. In battaglia è naturale con aumenti o cali di statistiche:
-    `{{2段階|にだんかい}}{{上|あ}}がった` non descrive due scale fisiche, ma due
-    livelli di modifica già applicati alla statistica.
+    ordinati. `2段階上がった` indica due step di aumento statistico.
 
 :::example_sentence
 jp: >-

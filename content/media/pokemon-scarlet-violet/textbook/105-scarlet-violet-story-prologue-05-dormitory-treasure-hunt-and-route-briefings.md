@@ -116,7 +116,7 @@ caption: >-
 modo più largo. Non ti sta mandando verso un solo forziere o un solo premio; ti
 sta dando un nome comune per più percorsi possibili.
 
-- [～とはいっても](grammar:grammar-to-wa-itte-mo) è il freno che impedisce la lettura troppo letterale. In una frase come [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi)とは いっても..., il parlante riprende il nome appena pronunciato e lo ridimensiona: "anche se lo chiamiamo così...". Il valore non è contraddire il titolo, ma spiegare che il titolo copre più cose di quanto sembri.
+- [～とはいっても](grammar:grammar-to-wa-itte-mo) è il freno che impedisce la lettura troppo letterale. In una frase come [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi)とは いっても..., il parlante riprende il nome appena pronunciato e lo ridimensiona: "anche se lo chiamiamo così...". Il valore `とはいっても` ridimensiona il titolo e spiega che copre piu' cose di quanto sembri.
 - [～たり ～たりする](grammar:grammar-tari-tari-suru) mostra questa ampiezza in azione. Quando il gioco elenca azioni come sfidare palestre o aiutare persone in difficoltà, たり non chiude una lista completa. Apre esempi rappresentativi: cose del tipo A, B e altre ancora, tutte possibili dentro lo stesso Treasure Hunt.
 
 :::example_sentence
@@ -227,7 +227,7 @@ partire con una direzione leggibile.
 
 - [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) è più specifico di "posto". {{目的|もくてき}} è lo scopo o obiettivo, {{地|ち}} è il luogo: il composto indica il luogo che diventa scopo del movimento. In una UI di mappa, questa parola ti dice che stai fissando una destinazione, non solo osservando una zona.
 - [～てみる](grammar:grammar-te-miru) è il pattern della prova. In {{登録|とうろく}}してみよう, il gioco non dà soltanto un comando tecnico: invita a provare la funzione e vedere che effetto ha sulla navigazione.
-- [～ておく](grammar:grammar-teoku) sposta invece l'azione nella preparazione. {{決|き}}めておく non significa "decidere e basta", ma "decidere in anticipo e lasciare deciso", così il movimento successivo parte più ordinato.
+- [～ておく](grammar:grammar-teoku) sposta invece l'azione nella preparazione. {{決|き}}めておく `ておく` presenta l'azione come preparazione lasciata pronta per dopo.
 
 :::example_sentence
 jp: >-

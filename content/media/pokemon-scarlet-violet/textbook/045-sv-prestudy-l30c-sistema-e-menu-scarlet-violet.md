@@ -76,7 +76,7 @@ Nelle scene scolastiche, il testo non ti dà solo nomi di persone: ti dice quale
 *   [{{同級生|どうきゅうせい}}](term:term-v615-doukyuusei) (**Compagno di classe**) combina {{同|どう}} (*stesso*) con {{級|きゅう}}{{生|せい}}, cioè qualcuno legato alla stessa classe o allo stesso livello scolastico. Quando lo incontri nei dialoghi dell'Accademia, prepara una relazione laterale: non autorità, non sconosciuto, ma qualcuno che condivide il tuo ambiente.
 *   [{{面接官|めんせつかん}}](term:term-v625-mensetsukan) (**Intervistatore**) sposta subito il registro verso una prova orale o un colloquio. {{面接|めんせつ}} è l'intervista, {{官|かん}} marca la persona incaricata: chi parla non sta solo chiacchierando, sta conducendo domande e valutando risposte.
 *   [{{不在|ふざい}}](term:term-v624-fuzai) (**Assenza / non presente**) non nega l'esistenza di una persona. {{不|ふ}} nega, {{在|ざい}} riguarda l'essere presente in un luogo: la persona o funzione esiste, ma non si trova lì adesso. In una schermata, questo spesso blocca l'interazione o ti costringe a cercare altrove.
-*   [{{本校|ほんこう}}](term:term-v636-honkou) (**Sede principale**) distingue l'edificio principale della scuola da altre sedi o luoghi collegati. {{本|ほん}} qui porta il valore di "principale", {{校|こう}} quello di scuola: se il messaggio lo usa, il problema non è una scuola qualunque, ma la sede centrale dell'Accademia.
+*   [{{本校|ほんこう}}](term:term-v636-honkou) (**Sede principale**) distingue l'edificio principale della scuola da altre sedi o luoghi collegati. {{本|ほん}} qui porta il valore di "principale", {{校|こう}} quello di scuola: `本校` distingue la sede centrale dell'Accademia.
 
 La formula amministrativa più pulita di questo blocco è [{{指定|してい}}の{{教室|きょうしつ}}へ {{向|む}}かってください](term:term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai): il gioco restringe la destinazione e poi ti dà un comando cortese di movimento.
 
@@ -238,7 +238,7 @@ translation_it: >-
 
 [～らしい](grammar:grammar-g102-pare-che-tipico-di) presenta un fatto come voce, impressione o tratto tipico. Se un personaggio dice che qualcuno è arrivato らしい, il fatto non viene messo in scena come osservazione diretta: arriva tramite indizio, sentito dire o deduzione.
 
-[～うちに](grammar:grammar-g103-mentre-finche) delimita una finestra temporale. Il punto non è solo "mentre", ma "prima che la condizione smetta di valere": finché ricordi, finché sei qui, finché c'è tempo.
+[～うちに](grammar:grammar-g103-mentre-finche) delimita una finestra temporale. `うちに` delimita una finestra: prima che la condizione smetta di valere.
 
 :::example_sentence
 jp: >-

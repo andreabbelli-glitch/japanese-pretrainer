@@ -74,14 +74,12 @@ src: assets/dragon-quest-smash-grow-companion-join.png
 alt: >-
   Schermata di Dragon Quest Smash Grow con un nuovo personaggio entrato nel
   gruppo.
-caption: >-
-  `{{仲間加入|なかまかにゅう}}！` è un annuncio di stato: il personaggio mostrato
-  non è solo ottenuto come item, ma entra tra i membri disponibili.
 :::
+
+`仲間加入` segnala che il risultato entra tra i membri disponibili.
 
 ## 1. Intestazione dello stage: dove sei e quale variante stai leggendo
 
-La riga alta della schermata non è decorativa: definisce il contesto delle
 ricompense. [{{第1章|だいいっしょう}}](term:term-dai-isshou) usa 第 per
 trasformare il numero in ordinale e `章` per dire "capitolo". Subito dopo,
 `ルイナ{{平原|へいげん}}` combina un nome proprio, `ルイナ`, con
@@ -102,9 +100,10 @@ translation_it: >-
   Ho completato lo stage 5 della pianura Ruina nel capitolo 1.
 :::
 
+La riga alta della schermata non è decorativa: definisce il contesto delle
+
 #### 🗺️ Anatomia della frase
 
-*   `{{第1章|だいいっしょう}}` ➔ **Cornice di progressione** (`第` ordinale +
     `章` capitolo: colloca lo stage nella storia principale).
 *   `ルイナ{{平原|へいげん}}` ➔ **Nome più tipo di area** (`ルイナ` identifica,
     [{{平原|へいげん}}](term:term-heigen) classifica il luogo).
@@ -145,9 +144,10 @@ translation_it: >-
   Tra gli item ottenuti ci sono la ricompensa della prima volta e la ricompensa per obiettivo raggiunto.
 :::
 
+*   `{{第1章|だいいっしょう}}` ➔ **Cornice di progressione** (`第` ordinale +
+
 #### 🗺️ Anatomia della frase
 
-*   `{{手|て}}にいれたアイテムに` ➔ **Campo della lista** (`{{手|て}}にいれた`
     qualifica gli item come già ottenuti; `に` li tratta come area in cui
     trovi le voci).
 *   `{{初回報酬|しょかいほうしゅう}}と{{達成報酬|たっせいほうしゅう}}` ➔ **Due fonti
@@ -190,9 +190,10 @@ translation_it: >-
   Nuovo compagno entrato! È aumentato il numero di alleati.
 :::
 
+*   `{{手|て}}にいれたアイテムに` ➔ **Campo della lista** (`{{手|て}}にいれた`
+
 #### 🗺️ Anatomia della frase
 
-*   `{{仲間加入|なかまかにゅう}}！` ➔ **Annuncio nominale** (nessun verbo visibile:
     il composto basta a comunicare il cambiamento di stato).
 *   `あたらしい{{仲間|なかま}}が` ➔ **Soggetto del cambiamento** (`が` presenta il
     nuovo compagno come elemento che appare nella situazione).
@@ -220,6 +221,8 @@ translation_it: >-
   Ho completato lo stage 5 della pianura Ruina nel capitolo 1.
 :::
 
+*   `{{仲間加入|なかまかにゅう}}！` ➔ **Annuncio nominale** (nessun verbo visibile:
+
 :::example_sentence
 jp: >-
   {{難易度|なんいど}}がノーマルのステージで、キャンペーン{{報酬|ほうしゅう}}をもらった。
@@ -244,9 +247,4 @@ translation_it: >-
 ## Nota finale
 
 Le schermate reward diventano leggibili quando separi tre piani: posizione,
-fonte e conseguenza. [{{第1章|だいいっしょう}}](term:term-dai-isshou),
-ルイナ{{平原|へいげん}} e [{{難易度|なんいど}}](term:term-nanido) collocano lo
-stage; [{{初回報酬|しょかいほうしゅう}}](term:term-shokai-houshuu),
-[{{達成報酬|たっせいほうしゅう}}](term:term-tassei-houshuu) e
-[キャンペーン](term:term-campaign) spiegano la provenienza dei premi; [{{仲間加入|なかまかにゅう}}](term:term-kanyu)
-segnala che il risultato non è un oggetto, ma un nuovo compagno nel gruppo.
+fonte e conseguenza. Il risultato va letto come nuovo compagno aggiunto al gruppo.

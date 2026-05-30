@@ -98,8 +98,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[レポート](term:term-report) non è un resoconto da leggere, ma un comando da
-eseguire. Se lo incontri vicino a `はい` e `いいえ`, la domanda reale è "vuoi
+`レポート` e' il comando di salvataggio del gioco. Se lo incontri vicino a `はい` e `いいえ`, la domanda reale è "vuoi
 salvare adesso?", non "vuoi aprire un documento?".
 
 #### 🧠 Gancio cognitivo
@@ -198,9 +197,7 @@ lista generale di oggetti.
 ## 4. Mappa e Pokédex: registrare ciò che scopri e dove vai
 
 [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) è il catalogo che registra le
-specie viste o catturate. `{{図鑑|ずかん}}` è un'enciclopedia illustrata: nel
-gioco non è solo una lista da completare, ma il sistema che trasforma l'incontro
-con una specie in informazione consultabile.
+specie viste o catturate. Il Pokédex trasforma incontri e catture in progresso registrato.
 
 La mappa lavora in modo simile, ma sullo spazio. [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi)
 unisce `{{目的|もくてき}}`, scopo o obiettivo, e `{{地|ち}}`, luogo. Non indica
@@ -255,7 +252,8 @@ poetico: sta gestendo slot reali nella scheda del Pokémon.
 src: assets/ui/summary-moves-management-screen.webp
 alt: "Schermata di riepilogo del Pokémon con elenco mosse e opzione per ricordare una mossa."
 caption: >-
-  Questa schermata rende concreti [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru), [{{思|おも}}い{{出|だ}}す](term:term-omoidasu) e [{{忘|わす}}れる](term:term-wasureru): il menu non descrive concetti astratti, ma azioni precise sulla scheda del Pokémon.
+  Il menu rende concrete azioni sulla scheda del Pokemon: vedere statistiche,
+  ricordare mosse, dimenticarle.
 :::
 
 :::example_sentence
@@ -307,8 +305,7 @@ translation_it: >-
 
 ### B. ～ようになる: sblocco stabile
 
-[～ようになる](grammar:grammar-you-ni-naru) non dice solo "puoi", ma "da un
-certo momento in poi diventa così". Nei giochi è la grammatica degli sblocchi:
+`ようになる` segnala il passaggio a una nuova possibilita' disponibile. Nei giochi è la grammatica degli sblocchi:
 una funzione si apre, una regola comincia a valere, un Pokémon inizia a obbedire
 in condizioni nuove.
 

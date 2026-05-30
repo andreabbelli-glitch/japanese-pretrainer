@@ -121,7 +121,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[どこ](term:term-v027-doko) è interrogativo; [{{場所|ばしょ}}](term:term-v034-basho) è un nome. どこへ chiede la direzione del movimento, mentre {{場所|ばしょ}}は どこ chiede di identificare il posto. [{{地方|ちほう}}](term:term-v036-chihou), invece, non è un punto sulla mappa: è una regione ampia, quindi in パルデア{{地方|ちほう}} non stai leggendo "il luogo Paldea", ma "la regione di Paldea".
+[どこ](term:term-v027-doko) è interrogativo; [{{場所|ばしょ}}](term:term-v034-basho) è un nome. どこへ chiede la direzione del movimento, mentre {{場所|ばしょ}}は どこ chiede di identificare il posto. [{{地方|ちほう}}](term:term-v036-chihou), invece, `地方` indica una regione ampia; in `パルデア地方`, Paldea viene letta come regione.
 
 ## 3. Muoversi con qualcuno: `{{一緒|いっしょ}}`, `{{一緒|いっしょ}}に`, `{{元気|げんき}}`
 
@@ -237,7 +237,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Pensa a `なきゃ` come a mezza frase lasciata a mezz'aria. Il personaggio non dice tutto il `ならない`, ma lo senti comunque: "devo farlo, altrimenti...".
+Pensa a `なきゃ` come a mezza frase lasciata a mezz'aria. `なきゃ` lascia sottinteso `ならない`: il parlante sente un dovere incompleto ma chiaro...".
 
 ## Esempi guidati di riepilogo
 

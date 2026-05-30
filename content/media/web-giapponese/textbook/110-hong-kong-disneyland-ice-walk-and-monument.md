@@ -180,7 +180,7 @@ avviene mentre il gelato è ancora in mano. `ながら` è quindi un segnale di
 simultaneità, non un semplice "e".
 
 [{{直前|ちょくぜん}}](term:term-chokuzen) aggiunge un secondo tipo di precisione:
-non dice solo "prima", ma "proprio appena prima". In
+`直前` restringe il tempo al momento immediatamente prima. In
 `パークの{{中|なか}}に{{入|はい}}る{{直前|ちょくぜん}}`, l'evento di riferimento è
 entrare dentro il parco. La foto viene collocata sulla soglia: non siamo in un
 generico momento precedente del viaggio, ma nel punto immediatamente prima che

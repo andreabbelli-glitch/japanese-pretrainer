@@ -271,7 +271,7 @@ translation_it: >-
 
 - `みんなは` ➔ il topic è "tutti / la gente".
 - `ジムって` ➔ `って` introduce il nome usato, in modo colloquiale.
-- `{{言|い}}う` ➔ qui non significa "dire una frase" ma "chiamare con quel nome".
+- `{{言|い}}う` ➔ qui Qui `言う` significa chiamare qualcosa con quel nome.
 
 #### ⚖️ Contrasto operativo
 

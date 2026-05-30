@@ -78,8 +78,7 @@ leggibili.
 - [{{計|けい}}{{算|さん}}](term:term-anki-l14-keisan) indica il calcolo come
   procedura o risultato mentale. Da solo è un sostantivo; con `する` diventa
   `{{計|けい}}{{算|さん}}する`, calcolare. In una battaglia può riferirsi a danni,
-  turni, statistiche o conseguenze di una scelta: non è un oggetto visibile, ma
-  il ragionamento numerico dietro una decisione.
+  turni, statistiche o conseguenze di una scelta: Qui il termine indica un valore astratto: turni, statistiche o conseguenze di una scelta.
 - [{{花|はな}}](term:term-anki-l14-hana) è semplice come parola, ma la particella
   decide il suo ruolo nella frase. Con `を` diventa ciò che trovi, raccogli o
   mostri; con `に` può diventare il punto verso cui va un'azione. In una scena
@@ -242,9 +241,7 @@ destinazione: il Pokémon non si sposta da solo, viene trasferito.
   {{送|おく}}る, la frase mette in primo piano l'atto di trasferimento.
 - `ボックスに{{送|おく}}る` è un blocco molto leggibile nei sistemi Pokémon:
   l'oggetto della frase lascia la posizione corrente e viene mandato nel Box.
-  Il dettaglio importante non è solo la destinazione, ma il cambiamento di
-  stato nella UI: dopo l'invio, non lo stai più trattando come elemento presente
-  nello stesso posto.
+  Il dettaglio importante e' il cambiamento di destinazione o stato.
 - Lo stesso verbo può funzionare anche fuori dai menu. In una scena narrativa
   [{{送|おく}}る](term:term-anki-l14-okuru) può mandare un messaggio, una persona
   o un oggetto; nel sistema di gioco, spesso sposta dati o Pokémon verso una

@@ -136,7 +136,7 @@ translation_it: >-
 
 *   `バトルが{{長|なが}}くなると` ➔ **Condizione naturale**: quando la battaglia diventa lunga, si apre la conseguenza.
 *   ポケモンが ➔ **Soggetto dello stato**: [が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo) marca chi entra nella stanchezza.
-*   `{{疲|つか}}れることがある` ➔ **Possibilità ricorrente**: `Vることがある` non dice che succede sempre, ma che può capitare.
+*   `{{疲|つか}}れることがある` ➔ **Possibilità ricorrente**: `Vることがある` indica possibilita' ricorrente: puo' capitare.
 
 #### ⚖️ Contrasto operativo
 

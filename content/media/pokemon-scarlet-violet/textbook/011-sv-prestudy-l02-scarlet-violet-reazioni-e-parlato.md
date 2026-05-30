@@ -59,7 +59,7 @@ Il giapponese qui non è difficile perché usa parole rare: è denso perché mol
 
 ## 1. Partenze e rapporto: quando una battuta muove la scena
 
-All'inizio di *Scarlet & Violet* i personaggi parlano spesso mentre ti stanno già spingendo verso l'azione successiva: uscire, raggiungere qualcuno, iniziare una sfida, accettare una collaborazione. In quelle frasi, il punto non è soltanto "che cosa significa la parola", ma che tipo di pressione mette sulla scena.
+All'inizio di *Scarlet & Violet* i personaggi parlano spesso mentre ti stanno già spingendo verso l'azione successiva: uscire, raggiungere qualcuno, iniziare una sfida, accettare una collaborazione. In quelle frasi, In queste frasi, guarda la pressione scenica esercitata dalla parola: uscire, raggiungere, iniziare, accettare.
 
 ### A. `もう`: tempo, soglia e spinta
 
@@ -158,7 +158,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `これ{{以上|いじょう}}は` ➔ **limite tematizzato**: "oltre questo" viene messo a tema con `は`, quindi il popup sta parlando della soglia massima.
-*   `{{持|も}}ち{{切|き}}れません` ➔ **capacità negata in registro cortese**: non è "non vuoi portare", ma "non riesci / non puoi portare fino in fondo".
+*   `{{持|も}}ち{{切|き}}れません` ➔ **capacità negata in registro cortese**: `持ち切れません` indica incapacita' o impossibilita' di portare tutto.
 
 #### ⚖️ Contrasto operativo
 
@@ -182,7 +182,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`バトルしない` può essere una semplice descrizione: "non combatte / non combatto". `バトルしないで` rivolto a qualcuno è più operativo: ferma l'azione dell'interlocutore. La differenza non è nel verbo `バトル`, ma nel modo in cui `で` aggancia la negazione alla richiesta.
+`バトルしないで` ferma l'azione dell'interlocutore attraverso la forma negativa in `で`.
 
 ---
 
@@ -253,7 +253,7 @@ translation_it: >-
 
 *   `{{四天王|してんのう}}に` ➔ **bersaglio della sfida**: con `{{挑戦|ちょうせん}}する`, `に` marca chi o che cosa viene sfidato.
 *   `{{挑戦|ちょうせん}}する {{前|まえ}}に` ➔ **prima di sfidare**: la frase nominalizza l'azione di sfidare e la colloca prima della preparazione.
-*   `{{準備|じゅんび}}する` ➔ **azione preparatoria**: il verbo principale non è la sfida, ma prepararsi in vista di essa.
+*   `{{準備|じゅんび}}する` ➔ **azione preparatoria**: `準備する` mette al centro il prepararsi in vista della sfida.
 
 #### 🧠 Gancio cognitivo
 
@@ -276,7 +276,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{自分|じぶん}}で` ➔ **modo o mezzo personale**: `で` non indica luogo, ma il fatto che l'azione viene compiuta da sé.
+*   `{{自分|じぶん}}で` ➔ **modo o mezzo personale**: `自分で` indica che l'azione viene compiuta in proprio.
 *   `やります` ➔ **fare, in registro cortese**: il verbo resta generico; `{{自分|じぶん}}で` porta il valore di autonomia.
 
 [サンドウィッチ](term:term-v023-sandowicchi) è trasparente come prestito, ma nel gioco non è soltanto cibo: è l'oggetto pratico dei picnic, degli ingredienti e dei bonus pasto. In frasi operative prende facilmente を, perché è qualcosa che prepari, ricevi o scegli.
@@ -291,7 +291,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `サンドウィッチを` ➔ **oggetto diretto**: `を` marca ciò che viene preparato.
-*   `{{作|つく}}ります` ➔ **azione di produzione**: non è mangiare il panino, ma crearlo nel contesto del picnic o della cucina.
+*   `{{作|つく}}ります` ➔ **azione di produzione**: `作ります` descrive la creazione del panino nel contesto di picnic o cucina.
 
 ---
 

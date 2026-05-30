@@ -16,9 +16,7 @@ meaning_it: Felix Misery / NEO creature Darkness che si evoca dal cimitero e ria
 pos: proper-noun
 aliases: [フェリックス・ミザリィ, Felix Misery, ferikkusu mizarii]
 notes_it: >-
-  È il nome proprio della carta. La lettura utile da fissare insieme a questo
-  nome non è solo il corpo da `{{6000|ろくせん}}`, ma soprattutto il blocco
-  `{{2体以上|に.たい.い.じょう}}あれば{{墓地|ぼち}}から{{召喚|しょうかん}}してもよい`
+  È il nome proprio della carta. La parte da fissare e' il blocco funzionale che accompagna il corpo da `6000`.たい.い.じょう}}あれば{{墓地|ぼち}}から{{召喚|しょうかん}}してもよい`
   e il filtro `コスト{{6以下|ろくいか}}の、{{進化|しんか}}でない{{闇|やみ}}の
   クリーチャー{{1枚|いちまい}}`.
 level_hint: custom
@@ -50,10 +48,7 @@ meaning_it: oscurità / civiltà Darkness
 pos: noun
 aliases: [闇, やみ, yami, Darkness]
 notes_it: >-
-  In giapponese generale `闇` significa "oscurità". Nel lessico di Duel Masters
-  il significato si specializza spesso nella civiltà Darkness, quindi in chunk
-  come `{{闇|やみ}}のクリーチャー` non descrive un'atmosfera "oscura", ma la
-  famiglia di appartenenza della carta.
+  In giapponese generale `闇` significa "oscurità". `闇のクリーチャー` indica una creatura di civilta' Darkness.
 level_hint: n3
 :::
 

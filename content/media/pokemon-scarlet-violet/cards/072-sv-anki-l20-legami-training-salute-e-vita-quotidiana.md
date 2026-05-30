@@ -93,7 +93,7 @@ reading: ほけん
 romaji: hoken
 meaning_it: salute; igiene; educazione sanitaria
 notes_it: >-
-  La radice {{保|ほ}} significa 'preservare', mentre {{健|けん}} indica la 'salute robusta'. In Accademia non è solo una materia di studio (educazione alla salute), ma si declina fisicamente nella {{保|ほ}}{{健|けん}}{{室|しつ}} (l'infermeria scolastica), luogo centrale per la guarigione e i dialoghi con i membri dello staff.
+  La radice {{保|ほ}} significa 'preservare', mentre {{健|けん}} indica la 'salute robusta'. `保健` lega la salute come materia alla `保健室`, lo spazio scolastico della cura.
 level_hint: custom
 :::
 :::term
@@ -256,7 +256,7 @@ example_jp: >-
 example_it: >-
   Nelle lezioni di educazione sanitaria dell'Accademia si studia il corpo delle persone e dei Pokémon.
 notes_it: >-
-  La radice {{保|ほ}} significa 'preservare', mentre {{健|けん}} indica la 'salute robusta'. In Accademia non è solo una materia di studio (educazione alla salute), ma si declina fisicamente nella {{保|ほ}}{{健|けん}}{{室|しつ}} (l'infermeria scolastica), luogo centrale per la guarigione e i dialoghi con i membri dello staff.
+  La radice {{保|ほ}} significa 'preservare', mentre {{健|けん}} indica la 'salute robusta'. `保健` lega la salute come materia alla `保健室`, lo spazio scolastico della cura.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
 :::
 :::card
@@ -267,7 +267,7 @@ entry_id: term-anki-l20-kurasu
 card_type: recognition
 front: '{{暮|く}}らす'
 back: >-
-  くらす — vivere; abitare; trascorrere la vita. Non indica la mera esistenza biologica, ma lo svolgimento delle abitudini quotidiane in un luogo (marcato con で).
+  くらす — vivere; abitare; trascorrere la vita. `くらす` descrive il vivere quotidiano in un luogo, con abitudini e contesto.
 example_jp: >-
   パルデア{{地|ち}}{{方|ほう}}で ポケモンと {{暮|く}}らす まいにちは、{{新|あたら}}しい {{発|はっ}}{{見|けん}}で いっぱいだ。
 example_it: >-

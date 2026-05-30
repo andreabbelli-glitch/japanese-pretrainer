@@ -101,7 +101,7 @@ Il blocco da leggere insieme è [{{召喚|しょうかん}}{{酔|よ}}い](term:
 
 #### 🧠 Gancio cognitivo: 酔い come stordimento temporaneo
 
-Come trucco mnemonico, immagina [{{召喚|しょうかん}}{{酔|よ}}い](term:term-shoukan-yoi) come il “capogiro” del turno in cui una creatura è appena arrivata. Non è etimologia da usare fuori contesto, ma aiuta a ricordare perché [スピードアタッカー](term:term-speed-attacker) cancella proprio quello stato.
+Come trucco mnemonico, immagina [{{召喚|しょうかん}}{{酔|よ}}い](term:term-shoukan-yoi) come il “capogiro” del turno in cui una creatura è appena arrivata. Il promemoria del capogiro aiuta a ricordare lo stato che Speed Attacker cancella.
 
 ---
 

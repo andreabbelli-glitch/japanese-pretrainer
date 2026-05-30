@@ -193,7 +193,7 @@ translation_it: >-
 
 *   `{{防衛|ぼうえい}}を{{自軍|じぐん}}{{拠点|きょてん}}に{{置|お}}くと` ➔ **Condizione di posizione** (`に` marca il luogo dove metti la difesa; `～と` lega posizione e conseguenza).
 *   `{{相手|あいて}}の{{制圧|せいあつ}}が` ➔ **Pressione avversaria come soggetto** (`が` mette in primo piano il ruolo che prova a passare).
-*   `{{通|とお}}りにくくなります` ➔ **Difficoltà aumentata** (`～にくくなる` non dice "impossibile", ma "diventa difficile": la difesa cambia la probabilità della corsia).
+*   `{{通|とお}}りにくくなります` ➔ **Difficoltà aumentata** (`通りにくくなる` descrive una corsia che diventa piu' difficile da attraversare).
 
 #### ⚖️ Contrasto operativo
 
@@ -222,10 +222,7 @@ viene visualizzata a destra, la decisione non è ancora "premi subito": prima
 devi leggere quale bersaglio rende sensata la spesa.
 
 [～することで](grammar:grammar-suru-koto-de) lavora invece sul rapporto
-mezzo-risultato: compiendo un'azione, ottieni una conseguenza tattica. In una
-frase come `コストを{{使|つか}}うことでユニットを{{出撃|しゅつげき}}できます`, il
-focus non è "il costo esiste", ma "usare il costo è il mezzo che rende possibile
-la sortita". Quando lo incontri in guide o tutorial, cerca prima l'azione prima
+mezzo-risultato: compiendo un'azione, ottieni una conseguenza tattica. Qui il costo funziona come mezzo: spendere quella risorsa rende possibile l'azione. Quando lo incontri in guide o tutorial, cerca prima l'azione prima
 di `ことで`, poi l'effetto che diventa disponibile dopo.
 
 :::example_sentence

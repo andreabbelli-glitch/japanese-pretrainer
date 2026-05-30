@@ -461,7 +461,7 @@ back: 'いったい — mai; in assoluto'
 example_jp: '{{一体|いったい}}{{何者|なにもの}}だ？'
 example_it: Chi diavolo sei?
 notes_it: >-
-  Rafforza la domanda. Non e' il "corpo" 一体, ma un avverbio interrogativo.
+  Rafforza la domanda. `一体` rafforza l'interrogativa e rende la domanda piu' pressante.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
 

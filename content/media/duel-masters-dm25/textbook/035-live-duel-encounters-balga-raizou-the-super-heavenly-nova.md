@@ -179,7 +179,7 @@ Come trucco mnemonico, leggi その{{中|なか}}から come un cerchio disegnat
 
 La carta tiene separati tre tipi di informazione visiva. [T・ブレイカー](term:term-t-breaker) è una keyword di combattimento e non modifica il parsing di [メテオバーン](term:term-meteorburn); rimane un'etichetta da riconoscere quando valuti quanti scudi può rompere la creatura. [マナ{{進化|しんか}}GV](term:term-mana-evolution-gv), invece, governa la procedura di entrata in campo e spiega perché ci sono carte sotto Balga Raizou già prima dell'attacco.
 
-Le zone fanno il lavoro grammaticale più pesante. [マナゾーン](term:term-mana-zone) è la fonte delle basi, [{{山札|やまふだ}}](term:term-deck) è la fonte del payoff, [{{墓地|ぼち}}](term:term-graveyard) è la destinazione del costo e delle carte rimaste. [{{表向|おもてむ}}き](term:term-face-up) non è una zona, ma uno stato: le carte rivelate diventano leggibili sul tavolo, e solo dopo その{{中|なか}}から può indicare quali di esse sono candidati validi.
+Le zone fanno il lavoro grammaticale più pesante. [マナゾーン](term:term-mana-zone) è la fonte delle basi, [{{山札|やまふだ}}](term:term-deck) è la fonte del payoff, [{{墓地|ぼち}}](term:term-graveyard) è la destinazione del costo e delle carte rimaste. `表向き` e' uno stato visibile: le carte rivelate possono poi essere filtrate da `その中から`.
 
 #### ⚖️ Contrasto operativo: zona contro stato
 

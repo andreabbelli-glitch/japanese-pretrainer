@@ -17,8 +17,7 @@ summary: >-
 
 La parte centrale del Book 4 è più concreta: qualcuno può chiamare la polizia,
 fermare una rissa, raccogliere acqua e legna, seguire un compagno o sollevare un
-oggetto. Qui il punto non è memorizzare nomi isolati, ma vedere come `が`, `を`
-e il verbo finale trasformano una vignetta in azione.
+oggetto. In questa lezione conviene seguire il lavoro delle particelle: `が`, `を` e `に` decidono chi agisce, cosa cambia e dove finisce l'azione.
 
 ## Termini chiave
 

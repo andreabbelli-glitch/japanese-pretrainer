@@ -63,7 +63,7 @@ Il filo da seguire è il movimento della frase. [{{渡|わた}}す](term:term-an
 Le richieste dell'Accademia e le schermate di battaglia separano due movimenti molto diversi: una consegna va da una persona a un'altra, mentre un attacco o una risposta arriva sul punto giusto. Il giapponese ti aiuta a non confonderli perché cambia particelle, verbo e punto di vista.
 
 *   [{{渡|わた}}す](term:term-anki-l11-watasu) è un verbo di trasferimento: qualcuno mette un oggetto nella sfera di qualcun altro. La struttura naturale è XをYに{{渡|わた}}す: を marca la cosa consegnata, に marca il destinatario. In un incarico scolastico, quindi, non basta pensare "passare": devi cercare che cosa cambia mano e verso quale persona si muove.
-*   [{{当|あ}}たる](term:term-anki-l11-ataru) guarda invece il risultato. Una mossa [{{当|あ}}たる](term:term-anki-l11-ataru) quando va a segno; una previsione [{{当|あ}}たる](term:term-anki-l11-ataru) quando si rivela giusta; un premio può [{{当|あ}}たる](term:term-anki-l11-ataru) quando "capita" a qualcuno. È un verbo intransitivo: il centro non è chi mira, ma il fatto che qualcosa abbia raggiunto il bersaglio.
+*   [{{当|あ}}たる](term:term-anki-l11-ataru) guarda invece il risultato. Una mossa [{{当|あ}}たる](term:term-anki-l11-ataru) quando va a segno; una previsione [{{当|あ}}たる](term:term-anki-l11-ataru) quando si rivela giusta; un premio può [{{当|あ}}たる](term:term-anki-l11-ataru) quando "capita" a qualcuno. È un verbo intransitivo: `当たる` guarda il risultato: qualcosa raggiunge il bersaglio o si rivela giusto.
 
 :::example_sentence
 jp: >-
@@ -119,7 +119,7 @@ translation_it: >-
 *   `{{彼女|かのじょ}}は` ➔ **Tema personale**: stabilisce "lei" come centro della frase; il nome resta fuori perché il focus è sul comportamento.
 *   `いつも` ➔ **Abitudine**: la voglia di lottare non è un episodio isolato.
 *   `ポケモンバトルを` ➔ **Oggetto del desiderio osservato**: ciò verso cui la persona tende.
-*   `したがっている` ➔ **Desiderio visto dall'esterno**: non è "io voglio", ma "sembra voler fare / mostra voglia di fare".
+*   `したがっている` ➔ **Desiderio visto dall'esterno**: `したがっている` presenta il desiderio visto dall'esterno.
 
 :::example_sentence
 jp: >-
@@ -170,7 +170,7 @@ translation_it: >-
 
 *   `パルデアの {{大穴|おおあな}}と` ➔ **Nome stabilito**: `と` marca la denominazione, cioè il nome con cui il luogo è conosciuto.
 *   `{{呼|よ}}ばれる` ➔ **Passiva di denominazione**: "viene chiamato"; l'agente resta fuori perché non serve sapere chi lo dice.
-*   `{{場所|ばしょ}}だ` ➔ **Classificazione**: il referente non è una persona o un oggetto, ma un luogo.
+*   `{{場所|ばしょ}}だ` ➔ **Classificazione**: `場所だ` classifica il referente come luogo.
 
 #### ⚖️ Contrasto operativo
 

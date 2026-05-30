@@ -175,8 +175,7 @@ translation_it: >-
     "creare una MT" e lo trasforma nella condizione da soddisfare.
 *   `LPと ポケモンの おとしものが` ➔ **soggetto del bisogno**: `と` unisce valuta
     e materiali nella stessa lista di costo.
-*   `{{必要|ひつよう}}だ` ➔ **necessità dichiarata**: non è un consiglio, ma il
-    requisito minimo perché la creazione sia possibile.
+*   `{{必要|ひつよう}}だ` ➔ **necessità dichiarata**: `必要だ` dichiara una necessita'.
 
 #### 🧠 Gancio cognitivo: おとしもの come "ciò che cade dal percorso"
 
@@ -226,8 +225,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `レッツゴーで` ➔ **mezzo / comando usato**: `で` non indica un luogo, ma il
-    modo in cui attivi l'azione.
+*   `レッツゴーで` ➔ **mezzo / comando usato**: `レッツゴーで` usa `で` per marcare il comando come mezzo.
 *   `{{先頭|せんとう}}の ポケモンを {{出|だ}}すと` ➔ **condizione automatica**:
     quando mandi fuori il Pokémon in prima posizione, il resto della frase può
     attivarsi.

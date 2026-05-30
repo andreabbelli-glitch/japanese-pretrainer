@@ -114,8 +114,7 @@ translation_it: >-
 :::
 
 [{{皆々様|みなみなさま}}](term:term-ch-b8-minamina-sama) alza ancora di piu' il
-registro: non e' il semplice "tutti", ma un modo cerimoniale di rivolgersi ai
-presenti.
+registro: `皆様` alza il registro e si rivolge al gruppo in modo cerimoniale.
 
 :::example_sentence
 jp: >-

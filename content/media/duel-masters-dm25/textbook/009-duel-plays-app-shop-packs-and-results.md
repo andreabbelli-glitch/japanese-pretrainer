@@ -111,8 +111,8 @@ dopo.
     quantità e conferma.
 *   [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
     è più lungo perché contiene lo stato del prodotto. [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt)
-    significa "già costruito": `済み` non descrive un'azione che devi fare tu,
-    ma una costruzione già completata prima della vendita del deck.
+    significa "già costruito": `済み` segnala una costruzione già completata
+    prima della vendita del deck.
 *   [カード{{交換|こうかん}}](term:term-card-exchange) cambia verbo e quindi
     cambia logica. [{{交換|こうかん}}](term:term-exchange) non è "comprare a
     prezzo diverso"; è ottenere una carta dando in cambio una risorsa prevista
@@ -218,19 +218,15 @@ src: assets/ui/card-pack-purchase-count.png
 alt: >-
   Popup acquisto pack con contatore della quantità, indicazione ticket
   posseduti e pulsanti meno, più e MAX.
-caption: >-
-  Nel popup quantità il punto non è il banner del pack, ma il rapporto tra
-  [{{所持|しょじ}}チケット](term:term-owned-ticket), contatore e MAX.
 :::
 
-Il popup quantità sposta l'attenzione dal prodotto allo stock. Qui non basta
+Nel popup quantita', guarda il rapporto tra banner, pack e numero selezionato.
+
 riconoscere `チケット`: devi leggere se la UI parla di ticket posseduti,
 quantità selezionata o scorciatoia di massimo consumo.
 
 *   [{{所持|しょじ}}チケット](term:term-owned-ticket) combina
-    [{{所持|しょじ}}](term:term-owned) e [チケット](term:term-ticket). Il
-    risultato non è "ticket in generale", ma ticket che il tuo account possiede
-    adesso e che possono limitare la scelta.
+    [{{所持|しょじ}}](term:term-owned) e [チケット](term:term-ticket). Il risultato si riferisce ai ticket posseduti dal tuo account.
 *   [{{購入|こうにゅう}}{{個数|こすう}}](term:term-purchase-quantity) è la
     quantità dell'acquisto. `{{個数|こすう}}` conta unità; attaccato a
     [{{購入|こうにゅう}}](term:term-purchase), ti dice quante unità stai per
@@ -249,9 +245,10 @@ translation_it: >-
   Controllo i ticket posseduti e imposto la quantità di acquisto a 4.
 :::
 
+Il popup quantità sposta l'attenzione dal prodotto allo stock. Qui non basta
+
 #### 🗺️ Anatomia della frase
 
-*   `{{所持|しょじ}}チケットを` ➔ **Stock controllato**: `を` marca il dato che
     stai verificando.
 *   `{{確認|かくにん}}して` ➔ **Azione preparatoria**: la forma in `-te`
     collega il controllo al passo successivo.
@@ -278,7 +275,8 @@ caption: >-
   mentre la riga in basso ti fa controllare la risorsa consumata.
 :::
 
-Il popup di conferma mette nella stessa frase il numero, la risorsa e il verbo
+*   `{{所持|しょじ}}チケットを` ➔ **Stock controllato**: `を` marca il dato che
+
 di acquisto. Questo è il punto in cui [{{確認|かくにん}}](term:term-confirm)
 diventa una decisione pratica: prima eri nel menu, ora stai autorizzando il
 consumo.
@@ -290,9 +288,10 @@ translation_it: >-
   Vuoi usare 4 ticket per comprare i pack?
 :::
 
+Il popup di conferma mette nella stessa frase il numero, la risorsa e il verbo
+
 #### 🗺️ Anatomia della frase
 
-*   `{{4枚|よんまい}}を` ➔ **Quantità marcata come oggetto**: il referente è la
     risorsa contata dal popup, non una previsione sulle carte che usciranno.
 *   {{使用|しよう}}して ➔ **Mezzo consumato**: [{{使用|しよう}}](term:term-use)
     dice che quella quantità verrà spesa.
@@ -320,6 +319,8 @@ caption: >-
   saper recuperare nome carta e risultato reale.
 :::
 
+*   `{{4枚|よんまい}}を` ➔ **Quantità marcata come oggetto**: il referente è la
+
 :::image
 src: assets/ui/card-pack-obtained-list.png
 alt: >-
@@ -338,8 +339,7 @@ leggibile.
     avvenuta. Non è il verbo del pagamento: descrive ciò che è entrato nel tuo
     account dopo l'apertura.
 *   カード{{一覧|いちらん}} usa [～{{一覧|いちらん}}](grammar:grammar-ichiran) per
-    trasformare le carte ottenute in una vista consultabile. Qui la schermata
-    non serve a emozionare, ma a controllare nomi, quantità e rarità.
+    trasformare le carte ottenute in una vista consultabile. Questa schermata serve a controllare nomi, quantita' e rarita'.
 *   I filtri per civiltà o categoria hanno senso proprio perché la lista è il
     luogo della verifica. Nel reveal leggi il colpo singolo; in
     `{{獲得|かくとく}}カード{{一覧|いちらん}}` leggi il risultato completo.
@@ -359,8 +359,7 @@ translation_it: >-
     l'apertura, poi il controllo.
 *   `{{獲得|かくとく}}カード{{一覧|いちらん}}で` ➔ **Luogo funzionale**: `で` marca
     la schermata in cui avviene la verifica.
-*   `{{結果|けっか}}を{{確認|かくにん}}する` ➔ **Controllo dell'esito**: il focus
-    non è più spendere, ma leggere cosa hai ottenuto.
+Dopo l'acquisto, l'azione centrale diventa leggere cosa hai ottenuto.
 
 #### 🧠 Gancio cognitivo
 

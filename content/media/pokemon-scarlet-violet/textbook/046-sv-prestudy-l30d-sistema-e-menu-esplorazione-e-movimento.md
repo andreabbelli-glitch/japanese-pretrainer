@@ -148,14 +148,14 @@ translation_it: >-
 #### ⚖️ Contrasto operativo
 
 *   [{{開催中|かいさいちゅう}}](term:term-v644-kaisaichuu) usa {{中|ちゅう}} come "in corso".
-*   [{{中止|ちゅうし}}](term:term-v645-chuushi) è un composto diverso: non significa "dentro uno stop", ma "interruzione / annullamento".
+*   [{{中止|ちゅうし}}](term:term-v645-chuushi) è un composto diverso: `中止` significa interruzione o annullamento.
 *   [{{非表示|ひひょうじ}}](term:term-v652-hihyouji) nasconde dalla visualizzazione; non dice automaticamente che la notifica o il dato siano stati eliminati.
 
 Le schermate di elenco e negozio aggiungono un altro tipo di lettura: non chiedono solo "che cosa c'è?", ma "in che ordine, in quale blocco, dentro quale offerta?".
 
 *   [{{一覧|いちらん}}](term:term-v653-ichiran) (**Elenco**): è una vista ordinata di elementi consultabili. Quando lo vedi in una UI, aspettati una lista da scorrere, filtrare o controllare.
 *   [ラインナップ](term:term-v656-rainnappu) (**Lista disponibile / offerta**): katakana da *lineup*, ma in negozio o servizio indica ciò che è messo a disposizione. Non è solo una lista astratta: è l'assortimento disponibile.
-*   [まとめ{{買|か}}い](term:term-v655-matomekai) (**Acquisto in blocco**): まとめ raggruppa, {{買|か}}い è l'acquisto. Il focus non è il tipo di oggetto, ma il modo dell'azione: comprare più cose insieme.
+*   [まとめ{{買|か}}い](term:term-v655-matomekai) (**Acquisto in blocco**): まとめ raggruppa, {{買|か}}い è l'acquisto. Il focus `まとめ買い` descrive il modo dell'azione: acquistare piu' cose insieme.
 
 :::example_sentence
 jp: >-

@@ -304,8 +304,7 @@ reading: こうかい
 romaji: koukai
 meaning_it: pubblicazione / rendere pubblico
 notes_it: >-
-  Indica che un dato viene reso pubblico o messo visibile ad altri. Nei profili
-  e nelle liste non significa solo "aprire", ma condividere una informazione.
+  Indica che un dato viene reso pubblico o messo visibile ad altri. Qui `開く` riguarda la condivisione di un'informazione o finestra.
 :::
 :::card
 id: card-v597-koukai-recognition

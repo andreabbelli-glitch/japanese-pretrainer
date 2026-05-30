@@ -73,7 +73,7 @@ La prima metà del testo non chiede semplicemente "ci sono molti avversari?". Fo
 
 - `{{2人以上|ふたりいじょう}}` significa "due o più persone". Il numero non indica una quantità qualsiasi di carte o creature: con `人` conta persone, quindi in questo contesto conta gli avversari al tavolo.
 - {{2人以上|ふたりいじょう}}の[{{相手|あいて}}](term:term-opponent)がいる è una piccola frase interna: "ci sono due o più avversari". Quando questa frase arriva davanti a [{{状態|じょうたい}}](term:term-state), diventa un modificatore nominale: "lo stato in cui ci sono due o più avversari".
-- Il で dopo [{{状態|じょうたい}}](term:term-state) marca la circostanza in cui avviene l'inizio della partita. Non è "dentro un luogo fisico", ma "con quella configurazione come condizione di partenza".
+- Il で dopo [{{状態|じょうたい}}](term:term-state) marca la circostanza in cui avviene l'inizio della partita. `で` marca la configurazione di partenza della partita.
 - [{{始|はじ}}まっていて](grammar:grammar-hajimatte-ite) non descrive la partita che sta iniziando adesso. Descrive un fatto già avvenuto che resta valido per leggere il resto della frase: la partita è cominciata così, e quel dato iniziale continua a contare.
 
 :::example_sentence

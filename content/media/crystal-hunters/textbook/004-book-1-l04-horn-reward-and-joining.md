@@ -203,7 +203,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `そのクリスタルが` ➔ **Oggetto desiderato**: `その` punta a ciò che è vicino all'altro o appena nominato, `が` marca la cosa voluta.
-*   `{{欲|ほ}}しい` ➔ **Desiderio come stato**: non è un verbo di prendere, ma "volere".
+*   `{{欲|ほ}}しい` ➔ **Desiderio come stato**: `欲しい` descrive il desiderio come stato: il parlante vuole avere quella cosa.
 *   `あの{{人|ひと}}は` ➔ **Persona lontana messa a tema**: `あの` allunga la distanza nella scena.
 *   `{{悲|かな}}しい` ➔ **Stato emotivo osservato**: la frase descrive la persona, non un'azione.
 
@@ -342,9 +342,7 @@ translation_it: >-
 *   `{{彼|かれ}}らは` ➔ **Loro come topic**: `ら` costruisce il plurale attorno a `彼`.
 *   `{{家|いえ}}に {{帰|かえ}}る` ➔ **Ritorno verso casa**: `に` marca la meta del rientro.
 
-Il finale usa questa logica con [{{一員|いちいん}}](term:term-ichiin). Come parola
-intera non indica una persona qualsiasi, ma un membro riconosciuto dentro una
-compagnia o una casa.
+Il finale usa questa logica con [{{一員|いちいん}}](term:term-ichiin). `一員` presenta una persona riconosciuta come membro di un gruppo.
 
 :::example_sentence
 jp: >-
@@ -427,7 +425,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-In composti come `{{飛|と}}びかかる` e `{{切|き}}りかかる`, tratta `かかる` come un segnale mnemonico di azione che si aggancia a un bersaglio. Non vale come definizione unica in ogni contesto, ma qui aiuta a separare un salto generico da un attacco.
+In composti come `{{飛|と}}びかかる` e `{{切|き}}りかかる`, tratta `かかる` come un segnale mnemonico di azione che si aggancia a un bersaglio. Qui `かかる` aiuta a vedere un'azione che si aggancia a un bersaglio; funziona come appoggio mnemonico locale.
 
 ---
 
@@ -507,7 +505,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `あの{{野郎|やろう}}が` ➔ **Bersaglio ruvido della voce**: `あの` lo colloca lontano e `野郎` porta giudizio ostile.
-*   `{{逃|に}}げる` ➔ **Movimento di fuga**: la frase non dice solo "andare", ma scappare da una pressione.
+*   `{{逃|に}}げる` ➔ **Movimento di fuga**: `逃げる` porta la scena verso una fuga da una pressione o minaccia.
 
 [{{支|ささ}}える](term:term-sasaeru) riporta il corpo dentro una relazione di
 aiuto. Con `を`, la persona sostenuta è il bersaglio dell'azione: in

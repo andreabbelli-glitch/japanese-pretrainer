@@ -331,8 +331,7 @@ back: 'したじゅんび — preparativi preliminari'
 example_jp: '{{下準備|したじゅんび}}が{{必要|ひつよう}}だ。'
 example_it: Servono preparativi preliminari.
 notes_it: >-
-  {{下|した}} non indica qui "sotto" fisico, ma ciò che viene prima della fase
-  principale.
+  Qui `下` orienta alla fase precedente: cio' che viene prima nel procedimento.
 tags: [crystal-hunters, book-7, lesson-03]
 :::
 

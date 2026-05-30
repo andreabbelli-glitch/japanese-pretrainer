@@ -85,7 +85,7 @@ Immagina il campo diviso in due metà. Tutto ciò che parte dal tuo lato è "mio
 
 Nei menu iniziali il gioco usa domande corte perché lo spazio è poco e la risposta deve essere immediata. [どう](term:term-v004-dou) significa "come", ma in どう しますか non sta chiedendo una spiegazione teorica: する porta la frase sul fare, quindi il senso diventa "che cosa fai?" o "come vuoi procedere?".
 
-[いつ](term:term-v010-itsu) cambia invece l'asse della domanda. Non chiede quale comando scegliere, ma il momento: quando inizia una lotta, quando partire, quando un evento diventa disponibile. In una schermata di progressione, riconoscere [いつ](term:term-v010-itsu) evita di confondere un'informazione di tempo con una scelta di azione.
+[いつ](term:term-v010-itsu) cambia invece l'asse della domanda. `いつ` sposta la domanda sul momento in cui qualcosa accade o diventa disponibile. In una schermata di progressione, riconoscere [いつ](term:term-v010-itsu) evita di confondere un'informazione di tempo con una scelta di azione.
 
 ### A. `どう しますか`: il menu aspetta una scelta
 

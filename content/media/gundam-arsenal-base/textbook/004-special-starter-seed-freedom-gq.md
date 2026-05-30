@@ -173,7 +173,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `アマテ・ユズリハ(マチュ)の` ➔ **possesso/ambito**: `の` lega la parentesi a quel nome specifico.
-- `{{括弧|かっこ}}は` ➔ **tema della frase**: il focus non è il personaggio, ma il segno grafico.
+- `{{括弧|かっこ}}は` ➔ **tema della frase**: `括弧は` mette a tema il segno grafico: la frase sta spiegando la parentesi.
 - `{{呼|よ}}び{{名|な}}を` ➔ **oggetto indicato**: `を` marca ciò che la parentesi comunica.
 - `{{示|しめ}}します` ➔ **verbo esplicativo cortese**: "indica / mostra", utile per leggere label e riquadri.
 

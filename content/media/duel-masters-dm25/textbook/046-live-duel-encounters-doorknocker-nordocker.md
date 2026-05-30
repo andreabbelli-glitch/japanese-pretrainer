@@ -22,9 +22,9 @@ summary: >-
 # [ドアノッカ＝ノアドッカ](term:term-doorknocker-nordocker) / 「…{{開|あ}}けるか？」: l'abilità che segue
 
 
-La Twinpact [ドアノッカ＝ノアドッカ](term:term-doorknocker-nordocker) / 「…{{開|あ}}けるか？」 gioca su una lettura molto concreta del rules text: il lato creatura non descrive un effetto nuovo da solo, ma punta alla frase scritta subito dopo e la fa risolvere due volte. Per seguirla bene, gli occhi devono muoversi come fa la carta: prima il timing このクリーチャーが{{出|で}}た{{時|とき}}, poi il riferimento [{{次|つぎ}}の](grammar:grammar-tsugi-no)[{{能力|のうりょく}}](term:term-ability), poi il blocco di scelta e riduzione del power.
+Il lato creatura punta alla frase successiva e la fa risolvere due volte. Per seguirla bene, gli occhi devono muoversi come fa la carta: prima il timing このクリーチャーが{{出|で}}た{{時|とき}}, poi il riferimento [{{次|つぎ}}の](grammar:grammar-tsugi-no)[{{能力|のうりょく}}](term:term-ability), poi il blocco di scelta e riduzione del power.
 
-Il nome della spell, 「…{{開|あ}}けるか？」, ha il tono di una domanda sospesa: "lo apri?". Nel testo di gioco, però, la parte decisiva non è la battuta del titolo, ma la catena grammaticale che trasforma una singola istruzione in una procedura ripetuta.
+Il nome della spell, 「…{{開|あ}}けるか？」, ha il tono di una domanda sospesa: "lo apri?". La parte decisiva e' la catena grammaticale che trasforma l'istruzione in procedura ripetuta.
 
 ## Termini chiave
 

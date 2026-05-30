@@ -95,7 +95,7 @@ reveal_mode: sentence
 *   `このクリーチャーが` ➔ **Soggetto del trigger**: la particella `が` identifica proprio questa creatura come entità colpita dall’evento.
 *   `破壊された時` ➔ **Timing passivo**: `された` dice “è stata distrutta / viene distrutta”, mentre `時` aggancia l’effetto a quel momento.
 *   `タップ状態でいたら` ➔ **Condizione di stato**: `状態` nominalizza lo stato tapped, `でいる` indica “essere in quello stato” e `たら` lo rende una condizione.
-*   `このターンの後に` ➔ **Punto di inserimento**: il riferimento non è un turno futuro generico, ma il turno attuale appena nominato da `この`.
+*   `このターンの後に` ➔ **Punto di inserimento**: `このターンの後に` inserisce il nuovo turno subito dopo quello corrente.
 *   `自分のターンを追加する` ➔ **Risultato**: `自分のターン` restringe il turno aggiunto al tuo lato della partita, e `追加する` lo presenta come aggiunta alla sequenza.
 
 ### A. `破壊された時`: il passivo decide chi subisce
@@ -161,7 +161,7 @@ Le etichette in alto vanno riconosciute in fretta, ma non hanno tutte lo stesso 
 
 *   `このクリーチャーが破壊された時` ➔ cerca prima chi subisce l’evento. Qui è `このクリーチャー`, quindi il trigger appartiene alla distruzione di questa creatura.
 *   `タップ状態でいたら` ➔ controlla la fotografia dello stato in quel momento. Se non era tapped, la condizione non apre il payoff.
-*   `このターンの後に自分のターンを追加する` ➔ il risultato non è “prendere subito un’azione”, ma inserire un tuo turno dopo quello in corso.
+*   `このターンの後に自分のターンを追加する` ➔ il risultato L'effetto aggiunge un turno dopo quello in corso.
 *   `バトル中、このクリーチャーのパワーを+5000する` ➔ la finestra è il battle; il bersaglio grammaticale marcato da `を` è il valore di potere della creatura.
 
 ---

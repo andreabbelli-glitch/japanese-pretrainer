@@ -21,7 +21,7 @@ successo. Non basta piu' leggere "combattere" o "aiutare": entrano parole di
 colpa, scuse, memoria e costrizione.
 
 La grammatica nuova piu' importante qui e' [～ざるを{{得|え}}ない](grammar:grammar-ch-b10-zaru-o-enai):
-non indica desiderio, ma assenza di alternative. In una scena dove i personaggi
+La costruzione segnala assenza di alternative e costrizione pratica. In una scena dove i personaggi
 si accusano, si salvano o parlano troppo, questa forma pesa molto.
 
 ## Termini chiave

@@ -50,10 +50,7 @@ meaning_it: mentre / facendo contemporaneamente / nel fare
 aliases: [つつ]
 notes_it: >-
   In giapponese generale `つつ` collega un'azione a un'altra con il senso di
-  `mentre fai X` o `facendo X nello stesso tempo`. Nel rules text di questa
-  carta il punto utile e` molto concreto: `その{{上|うえ}}に{{重|かさ}}ねつつ
-  {{出|だ}}す` non descrive due step separati, ma un unico ingresso in gioco che
-  avviene proprio nella forma della sovrapposizione. Per questo la resa piu
+  `mentre fai X` o `facendo X nello stesso tempo`. Il blocco descrive un unico ingresso in gioco, con la zona di arrivo gia' inclusa. Per questo la resa piu
   naturale qui e` `metterla in gioco sovrapponendola`.
 level_hint: n2
 :::

@@ -69,7 +69,7 @@ Questi verbi non sono intercambiabili. [{{確認|かくにん}}する](term:term
 Le schermate operative del gioco sono piene di verbi brevi perché devono ridurre l'incertezza. Prima ancora di tradurre tutta la frase, conviene chiedersi quale tipo di azione il verbo sta aprendo: controllo, ritorno, annullamento o completamento.
 
 *   [{{確認|かくにん}}する](term:term-e050-kakunin-suru) non significa solo "guardare". {{確認|かくにん}} contiene l'idea di accertarsi che qualcosa sia corretto, e する trasforma il nome in azione. In un menu, quindi, il gioco non ti sta invitando a osservare passivamente: ti rimette davanti una scelta, uno stato o un dettaglio da controllare prima di procedere.
-*   [もどる](term:term-e051-modoru) guarda nella direzione opposta. Il centro non è la scelta corrente, ma il movimento verso la schermata precedente, il punto di partenza o il livello superiore del menu. Se la frase contiene {{前|まえ}}のメニューに, に marca proprio il luogo a cui si torna.
+*   [もどる](term:term-e051-modoru) guarda nella direzione opposta. Il centro `もどる` guarda il ritorno alla schermata o punto precedente. Se la frase contiene {{前|まえ}}のメニューに, に marca proprio il luogo a cui si torna.
 *   [キャンセル](term:term-v371-kyanseru) interrompe l'azione in corso. È vicino a [もどる](term:term-e051-modoru) perché spesso ti porta fuori dalla schermata corrente, ma il suo valore è più netto: blocca la selezione prima che diventi effettiva.
 *   [クリアする](term:term-e052-kuria-suru) porta nel giapponese il valore videoludico di "superare" o "completare". In ジムテストをクリアする, を marca la prova come oggetto dell'azione: non stai solo partecipando al test, lo porti alla condizione di superato.
 
@@ -161,11 +161,11 @@ Per [お{{気|き}}に{{入|い}}り](term:term-v362-okiniiri), usa l'immagine m
 
 Fuori dai menu puri, gli stessi testi brevi si legano ai personaggi. Un NPC può chiederti materiali, affidarti un compito, spiegarti una procedura o comunicarti un'informazione. Qui il punto decisivo è capire da che lato scorre l'azione: verso un gruppo che si accumula, verso una responsabilità, verso chi riceve una spiegazione o verso chi viene a sapere qualcosa.
 
-*   [{{集|あつ}}める](term:term-v354-atsume-ru) prende con を ciò che viene raccolto e suggerisce un risultato più completo: materiali, dati, Pokémon, persone o oggetti sparsi diventano un insieme. In un obiettivo di gioco, {{材料|ざいりょう}}を{{集|あつ}}める non descrive materiali già pronti, ma ti assegna il compito di metterli insieme.
+*   [{{集|あつ}}める](term:term-v354-atsume-ru) prende con を ciò che viene raccolto e suggerisce un risultato più completo: materiali, dati, Pokémon, persone o oggetti sparsi diventano un insieme. In un obiettivo di gioco, {{材料|ざいりょう}}を{{集|あつ}}める `集める` assegna il compito di mettere insieme materiali, dati, Pokemon o persone.
 *   [{{頼|たの}}む](term:term-v356-tanomu) non è un semplice "per favore". Può voler dire chiedere un favore, affidare qualcosa o contare su qualcuno. In un dialogo, これを{{頼|たの}}むよ mette una responsabilità nelle tue mani: il parlante non sta solo addolcendo una frase, ti sta chiedendo di occupartene.
 *   [{{教|おし}}える](term:term-v359-oshie-ru) copre sia "insegnare" sia "dire / spiegare". Nei tutorial, l'oggetto con を è spesso il contenuto trasmesso: やり{{方|かた}}を{{教|おし}}える significa spiegare il modo di fare qualcosa.
 *   [{{知|し}}る](term:term-v370-shiru) guarda dal lato opposto rispetto a [{{教|おし}}える](term:term-v359-oshie-ru). Non trasmette l'informazione: registra il momento in cui qualcuno la acquisisce. {{情報|じょうほう}}を{{知|し}}る è venire a sapere un fatto.
-*   [{{人々|ひとびと}}](term:term-v373-hitobito) allarga il soggetto. Non parla di una persona specifica, ma della gente coinvolta in un luogo, in una città o in una situazione. Quando compare in una frase narrativa, aspettati un commento sul gruppo e non su un singolo interlocutore.
+*   [{{人々|ひとびと}}](term:term-v373-hitobito) allarga il soggetto. `人々` allarga il soggetto alla gente coinvolta in un luogo o situazione. Quando compare in una frase narrativa, aspettati un commento sul gruppo e non su un singolo interlocutore.
 
 :::example_sentence
 jp: >-
@@ -232,7 +232,7 @@ Le istruzioni di percorso separano quattro livelli: dove andare, in che direzion
 *   [{{向|む}}かう](term:term-v358-muka-u) non è un generico "andare". Mette in primo piano l'orientamento verso una meta, spesso marcata da へ o に. Se leggi {{中央|ちゅうおう}}へ{{向|む}}かう, il centro non è solo nominato: è la direzione del movimento.
 *   [{{中央|ちゅうおう}}](term:term-v361-chuuou) indica il centro di un'area, di una stanza, di una piazza o anche di una schermata. Nelle istruzioni spaziali ti aiuta a capire il punto di riferimento; nei menu può indicare la parte centrale dell'interfaccia.
 *   [{{歩|ある}}く](term:term-v360-aruku) e [{{走|はし}}る](term:term-v367-hashiru) descrivono il modo del movimento. Entrambi possono portarti nella stessa direzione, ma [{{歩|ある}}く](term:term-v360-aruku) è camminare normalmente, mentre [{{走|はし}}る](term:term-v367-hashiru) aggiunge velocità, urgenza o energia.
-*   [{{全力|ぜんりょく}}](term:term-v372-zenryoku) con で modifica il modo dell'azione: {{全力|ぜんりょく}}で{{走|はし}}る non è solo correre, ma farlo con tutte le forze disponibili.
+*   [{{全力|ぜんりょく}}](term:term-v372-zenryoku) con で modifica il modo dell'azione: `全力で` modifica il modo dell'azione: farla con tutte le forze disponibili.
 *   [{{途中|とちゅう}}](term:term-v364-tochuu) blocca la scena nel mezzo del percorso o dello svolgimento. In バトルの{{途中|とちゅう}}, la battaglia non è chiusa: sei dentro la sua fase intermedia.
 *   [{{制限|せいげん}}{{時間|じかん}}](term:term-v366-seigenjikan) aggiunge un vincolo esterno. La prova o la battaglia non dipende solo dal risultato, ma anche dal timer: c'è un tempo entro cui agire.
 
@@ -289,8 +289,8 @@ Alcuni blocchi non sono comandi immediati, ma cambiano il tipo di informazione c
 *   [{{伝説|でんせつ}}のポケモン](term:term-v363-densetsunopokemon) usa {{伝説|でんせつ}}, "leggenda", per classificare un Pokémon come speciale sul piano narrativo e di sistema. La particella の lega la qualità "leggendaria" al nome ポケモン.
 *   [〜は どうだ？](term:term-e069-ha-douda) mette un tema davanti all'interlocutore e chiede una valutazione. このポケモンはどうだ？ non domanda dove sia il Pokémon: lo propone e aspetta una reazione, come "che ne dici di questo?".
 *   [やってみよう](term:term-e070-yattemiyou) combina やる "fare", 〜てみる "provare a fare" e 〜よう volitivo. Il risultato è un invito a provare, spesso con tono condiviso: "proviamo a farlo".
-*   [～なら](grammar:grammar-g072-se-e-cosi-se-parli-di) riprende un tema già sul tavolo e lo usa come condizione discorsiva. ジムなら あっちだ significa "se parli della palestra, è di là": non è un "se" ipotetico complesso, ma una risposta agganciata a un argomento nominato.
-*   [～{{予定|よてい}}だ](grammar:grammar-g073-essere-previsto) colloca un'azione nel programma. L'evento non è ancora successo, ma è già previsto: ジムへ{{行|い}}く{{予定|よてい}}だ vuol dire che andare in palestra è nel piano.
+*   [～なら](grammar:grammar-g072-se-e-cosi-se-parli-di) riprende un tema già sul tavolo e lo usa come condizione discorsiva. ジムなら あっちだ significa "se parli della palestra, è di là": `なら` riprende un tema gia' nominato e lo usa come condizione discorsiva.
+*   [～{{予定|よてい}}だ](grammar:grammar-g073-essere-previsto) colloca un'azione nel programma. L'evento `予定だ` colloca l'azione in un piano gia' previsto.
 
 :::example_sentence
 jp: >-

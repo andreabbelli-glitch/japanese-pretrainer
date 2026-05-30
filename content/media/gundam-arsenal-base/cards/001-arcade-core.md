@@ -138,7 +138,7 @@ reading: でっき
 romaji: dekki
 meaning_it: lista di 10 carte da usare in partita
 notes_it: >-
-  Qui deck non indica un mazzo da pescare, ma la lista preimpostata di 5 MS e 5 PL che carichi nel cabinato prima del match.
+  Qui `deck` indica la lista preimpostata di MS e PL caricata al cabinato prima del match.
 level_hint: custom
 :::
 
@@ -185,9 +185,7 @@ reading: しんこう
 romaji: shinkou
 meaning_it: avanzamento / progresso
 notes_it: >-
-  In schermate come missioni o profilo non indica un movimento fisico, ma lo
-  stato di avanzamento di un obiettivo. In [MY PAGE](term:term-mypage) segnala
-  quanta parte della missione è già completata e quanta resta.
+  In schermate come missioni o profilo, `進行` indica lo stato di avanzamento di un obiettivo. In [MY PAGE](term:term-mypage) segnala quanta parte della missione è già completata e quanta resta.
 level_hint: n4
 :::
 
