@@ -77,11 +77,12 @@ id: term-ch-b4-suru-19
 lemma: '装備する'
 reading: 'そうびする'
 romaji: so-u-bi-su-ru
-meaning_it: equipaggiare
+meaning_it: 'equipaggiare; dotare; fornire equipaggiamento'
 pos: suru-verb
 notes_it: >-
-  {{装備|そうび}}する prende ciò che viene indossato o messo in dotazione. È un
-  verbo da oggetto concreto: arma, protezione, attrezzo.
+  {{装備|そうび}}する prende ciò che viene indossato, installato o messo in
+  dotazione. Il focus è la funzionalità: qualcosa viene preparato per essere
+  usato.
 level_hint: n3
 :::
 
@@ -129,11 +130,12 @@ id: term-ch-b4-me-30
 lemma: '求める'
 reading: 'もとめる'
 romaji: mo-to-me-ru
-meaning_it: 'cercare; chiedere; desiderare'
+meaning_it: 'cercare; richiedere; esigere; desiderare'
 pos: verb
 notes_it: >-
-  {{求|もと}}める indica cercare, chiedere o desiderare di ottenere qualcosa.
-  Nel dialogo è più formale di un semplice "volere".
+  {{求|もと}}める indica una ricerca o richiesta astratta: desiderare, esigere
+  o chiedere di ottenere un concetto, un ideale, una risposta o un aiuto. Non
+  è il verbo per cercare fisicamente un oggetto perso.
 level_hint: n3
 :::
 
@@ -366,12 +368,12 @@ entry_type: term
 entry_id: term-ch-b4-suru-19
 card_type: recognition
 front: '{{装備|そうび}}する'
-back: 'そうびする — equipaggiare'
+back: 'そうびする — equipaggiare; dotare; fornire equipaggiamento'
 example_jp: '{{剣|けん}}を{{装備|そうび}}する。'
 example_it: 'Equipaggio la spada.'
 notes_it: >-
-  L'oggetto equipaggiato prende `を`: la frase parla di mettere addosso o in
-  uso qualcosa.
+  L'oggetto equipaggiato prende `を`. Il focus è la funzionalità e la
+  prontezza all'uso: arma, protezione o attrezzo vengono messi in dotazione.
 tags: [crystal-hunters, book-4, lesson-03]
 :::
 
@@ -428,12 +430,13 @@ entry_type: term
 entry_id: term-ch-b4-me-30
 card_type: recognition
 front: '{{求|もと}}める'
-back: 'もとめる — cercare; chiedere; desiderare'
+back: 'もとめる — cercare; richiedere; esigere; desiderare'
 example_jp: '{{助|たす}}けを{{求|もと}}める。'
 example_it: 'Chiedo aiuto.'
 notes_it: >-
-  {{求|もと}}める tiene dentro richiesta, ricerca o desiderio di ottenere
-  qualcosa.
+  È un verbo formale e astratto: non "cercare sotto il divano", ma esprimere
+  il desiderio profondo, la necessità o la richiesta formale di ottenere un
+  concetto, un ideale, una risposta o un aiuto.
 tags: [crystal-hunters, book-4, lesson-03]
 :::
 
