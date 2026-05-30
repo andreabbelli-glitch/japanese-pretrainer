@@ -1249,9 +1249,9 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%86%86/#ja",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1216250/1",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
@@ -1288,9 +1288,9 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E7%94%BA/#ja",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1603990/0",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
@@ -1587,9 +1587,9 @@
       "audio_speaker": "kaoring",
       "audio_attribution": "kaoring via Forvo",
       "audio_page_url": "https://forvo.com/word/%E6%AE%BF/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1442500/0",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
@@ -1948,9 +1948,9 @@
       "audio_speaker": "usako_usagiclub",
       "audio_attribution": "usako_usagiclub via Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%80%8D/#ja",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2711610/0",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
@@ -1987,9 +1987,9 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%BA%97/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1582120/0",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
@@ -2021,9 +2021,9 @@
       "audio_speaker": "poyotan",
       "audio_attribution": "poyotan via Forvo",
       "audio_page_url": "https://forvo.com/word/%E6%AD%A2%E3%82%81%E3%82%8B/#ja",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1310670/0",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
@@ -2741,9 +2741,9 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E7%AD%94%E3%81%88%E3%82%8B/#ja",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2827352/3",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -3284,9 +3284,9 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E7%AB%9C/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1629170/0",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
@@ -3297,9 +3297,9 @@
       "audio_speaker": "akitomo",
       "audio_attribution": "akitomo via Forvo",
       "audio_page_url": "https://forvo.com/word/%E8%AA%98%E3%81%86/#ja",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1541900/0",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
@@ -5943,9 +5943,9 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%9C%B0%E6%96%B9/#ja",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%9C%B0%E6%96%B9",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -6835,9 +6835,9 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E9%9B%A3%E3%81%97%E3%81%84/#ja",
-      "pitch_accent": 9,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E9%9B%A3%E3%81%97%E3%81%84",
+      "pitch_accent": 4,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -8725,9 +8725,9 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%85%A5%E3%82%8B/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%85%A5%E3%82%8B",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
@@ -8905,9 +8905,9 @@
       "audio_speaker": "MurasakiShikibu",
       "audio_attribution": "MurasakiShikibu via Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%BE%97%E6%84%8F/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BE%97%E6%84%8F",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -8949,9 +8949,9 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E8%A6%8B%E3%81%9F%E7%9B%AE/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A6%8B%E3%81%9F%E7%9B%AE",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
@@ -10525,9 +10525,9 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E7%AB%8B%E3%81%A1%E5%AF%84%E3%82%8B/#ja",
-      "pitch_accent": 7,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E7%AB%8B%E3%81%A1%E5%AF%84%E3%82%8B",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -11445,9 +11445,9 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E7%A0%94%E7%A9%B6%E6%89%80/#ja",
-      "pitch_accent": 10,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%91%E3%82%93%E3%81%8D%E3%82%85%E3%81%86%E3%81%98%E3%82%87",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -11810,9 +11810,9 @@
       "audio_speaker": "naotokyo",
       "audio_attribution": "naotokyo via Forvo",
       "audio_page_url": "https://forvo.com/word/%E8%87%AA%E6%92%AE%E3%82%8A/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%87%AA%E6%92%AE%E3%82%8A",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -12604,9 +12604,9 @@
       "audio_speaker": "skent",
       "audio_attribution": "skent via Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%8B%9D%E3%81%A1%E8%B2%A0%E3%81%91/#ja",
-      "pitch_accent": 2,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8B%E3%81%A1%E3%81%BE%E3%81%91",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
