@@ -46,8 +46,7 @@ describe("glossary feature boundary", () => {
     );
     const legacyGlossaryFiles = libEntries
       .filter(
-        (entry) =>
-          entry.isFile() && /^glossary(?:-|\.ts$)/u.test(entry.name)
+        (entry) => entry.isFile() && /^glossary(?:-|\.ts$)/u.test(entry.name)
       )
       .map((entry) => `src/lib/${entry.name}`)
       .sort((left, right) => left.localeCompare(right));
@@ -75,6 +74,39 @@ describe("glossary feature boundary", () => {
     );
 
     expect(source).not.toContain("listEntryStudySignals");
+  });
+
+  it("keeps the global glossary result pipeline out of the route-facing loaders", async () => {
+    const routeLoaderSource = await readFile(
+      path.join(PROJECT_ROOT, "src/features/glossary/server/loaders.ts"),
+      "utf8"
+    );
+    const globalResultSource = await readOptionalTextFile(
+      path.join(PROJECT_ROOT, "src/features/glossary/server/global-results.ts")
+    );
+    const globalQueryPrimitives = [
+      "countGlobalGlossaryBrowseGroups",
+      "getGlobalGlossaryAggregateStats",
+      "getGlossaryEntriesByIds",
+      "listGlobalGlossaryBrowseGroupRefs",
+      "listGlossarySearchCandidateRefs"
+    ];
+
+    for (const primitive of globalQueryPrimitives) {
+      const primitivePattern = new RegExp(`\\b${primitive}\\b`, "u");
+
+      expect(routeLoaderSource).not.toMatch(primitivePattern);
+      expect(globalResultSource).toMatch(primitivePattern);
+    }
+
+    const forbiddenImports = readImportSpecifiers(globalResultSource).filter(
+      (specifier) =>
+        /^(?:\.|\.\/index|\.\/loaders|@\/features\/glossary\/server(?:\/index|\/loaders)?)$/u.test(
+          specifier
+        )
+    );
+
+    expect(forbiddenImports).toEqual([]);
   });
 });
 
@@ -134,4 +166,37 @@ async function listDirectoryEntries(directory: string) {
 
     throw error;
   }
+}
+
+async function readOptionalTextFile(filePath: string) {
+  try {
+    return await readFile(filePath, "utf8");
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException)?.code === "ENOENT") {
+      return "";
+    }
+
+    throw error;
+  }
+}
+
+function readImportSpecifiers(source: string) {
+  const specifiers = new Set<string>();
+  const importPatterns = [
+    /\bfrom\s+["']([^"']+)["']/gu,
+    /\bimport\s*\(\s*["']([^"']+)["']\s*\)/gu,
+    /^\s*import\s+["']([^"']+)["']/gmu
+  ];
+
+  for (const pattern of importPatterns) {
+    for (const match of source.matchAll(pattern)) {
+      const specifier = match[1];
+
+      if (specifier) {
+        specifiers.add(specifier);
+      }
+    }
+  }
+
+  return [...specifiers].sort((left, right) => left.localeCompare(right));
 }
