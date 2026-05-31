@@ -244,6 +244,15 @@
       "updatedAt": "2026-03-23T23:53:41.173Z"
     },
     {
+      "entryId": "grammar-power-dewanaku-cost-no-ookisa-o-kurabete-battle-suru",
+      "entryKind": "grammar",
+      "label": "クリーチャーは、パワーではなくコストの大きさを比べてバトルする",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "くりーちゃーは、ぱわーではなくこすとのおおきさをくらべてばとるする",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-31T18:20:02.332Z"
+    },
+    {
       "entryId": "grammar-sarenakatta",
       "entryKind": "grammar",
       "label": "～されなかった",

@@ -81,6 +81,16 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-dewanaku",
+      "audio_src": "assets/audio/grammar/grammar-dewanaku/forvo-straycat88-て-はなく.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "straycat88",
+      "audio_attribution": "straycat88 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F/#ja",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-dokokarademo",
       "audio_src": "assets/audio/grammar/grammar-dokokarademo/forvo-manual-と-こからて-も.mp3",
       "audio_source": "forvo",
@@ -404,6 +414,11 @@
       "audio_speaker": "mezashi",
       "audio_attribution": "mezashi via Forvo",
       "audio_page_url": "https://forvo.com/word/%E6%AE%8B%E3%82%8A%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E4%B8%AD/#ja",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-power-dewanaku-cost-no-ookisa-o-kurabete-battle-suru",
       "pitch_accent_status": "miss"
     },
     {
@@ -2415,6 +2430,16 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-kurabete",
+      "audio_src": "assets/audio/term/term-kurabete/forvo-mezashi-くらへ-て.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%AF%94%E3%81%B9%E3%81%A6/#ja",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-kuromame-danshaku",
       "audio_src": "assets/audio/term/term-kuromame-danshaku/forvo-mezashi-くろまめた-んしゃく.mp3",
       "audio_source": "forvo",
@@ -2855,6 +2880,19 @@
       "pitch_accent": 3,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A4%A7%E3%81%8D%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ookisa",
+      "audio_src": "assets/audio/term/term-ookisa/tofugu-wanikani-大きさ.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E5%A4%A7%E3%81%8D%E3%81%95%E3%80%90%E3%81%8A%E3%81%8A%E3%81%8D%E3%81%95%E3%80%91.mp3",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
