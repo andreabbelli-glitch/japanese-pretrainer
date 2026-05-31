@@ -1421,6 +1421,15 @@
       "resolvedAudioSrc": "assets/audio/term/term-kingdom-ohkabuto/forvo-mezashi-きんく-た-む-おうかふ-と.mp3"
     },
     {
+      "entryId": "term-kinjutsu",
+      "entryKind": "term",
+      "label": "禁術",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "きんじゅつ",
+      "requestUrl": "https://forvo.com/word-add/%E7%A6%81%E8%A1%93/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-31T18:08:37.161Z"
+    },
+    {
       "entryId": "term-kirifudash",
       "entryKind": "term",
       "label": "キリフダッシュ",

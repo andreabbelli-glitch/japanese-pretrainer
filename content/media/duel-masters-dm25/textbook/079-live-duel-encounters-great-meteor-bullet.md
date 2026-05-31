@@ -197,3 +197,22 @@ La frase diventa leggibile quando separi budget, quantità e azione. `その
 applica al gruppo scelto; `[{{2|ふた}}つまで](grammar:grammar-made)` limita il
 numero di element; `[{{破壊|はかい}}する](term:term-destroy)` chiude la sequenza
 sugli oggetti che hanno superato entrambi i controlli.
+
+## Flashcard extra: 禁術
+
+:::image
+src: assets/cards/live-duel/kareile-karma-banned-technique-forbid-crystal-charger.jpg
+alt: >-
+  Carta Duel Masters Kareile Karma's Banned Technique / Forbid Crystal Charger,
+  twinpact Light and Water con lato creatura e lato spell Crystal Charger.
+caption: >-
+  In `{{禁術|きんじゅつ}}のカルマ カレイル`,
+  [{{禁術|きんじゅつ}}](term:term-kinjutsu) è il blocco lessicale da ricordare:
+  una tecnica proibita o arte vietata.
+:::
+
+[{{禁術|きんじゅつ}}](term:term-kinjutsu) non cambia la lettura della frase di
+グレート・{{流星弾|りゅうせいだん}}: qui lo teniamo solo come richiamo lessicale
+per la flashcard della carta カレイル. `{{禁|きん}}` porta l'idea di divieto;
+`{{術|じゅつ}}` indica tecnica, arte o metodo. Insieme danno il tono di una
+"tecnica proibita".

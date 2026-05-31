@@ -405,6 +405,15 @@
       "updatedAt": "2026-03-23T23:52:26.328Z"
     },
     {
+      "entryId": "term-kinjutsu",
+      "entryKind": "term",
+      "label": "禁術",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "きんじゅつ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-31T18:08:37.151Z"
+    },
+    {
       "entryId": "term-sayuu-sakasama",
       "entryKind": "term",
       "label": "左右逆さま",
