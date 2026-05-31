@@ -10,40 +10,28 @@ import {
   reviewSubjectLog,
   userSetting
 } from "../../../db/schema/index.ts";
-import type { ReviewSeedState } from "../../review/model/grade-previews.ts";
+import {
+  buildReviewSeedStateWithFsrsPreset,
+  DEFAULT_FSRS_OPTIMIZER_CONFIG,
+  resolveFsrsPresetKey,
+  type FsrsOptimizedParameters,
+  type FsrsOptimizerConfig,
+  type FsrsOptimizerSnapshot,
+  type FsrsOptimizerState,
+  type FsrsPresetKey
+} from "../model/snapshot.ts";
 
-export type FsrsPresetKey = "recognition" | "concept";
-
-export type FsrsOptimizerConfig = {
-  desiredRetention: number;
-  enabled: boolean;
-  minDaysBetweenRuns: number;
-  minNewReviews: number;
-  presetStrategy: "card_type_v1";
+export {
+  buildReviewSeedStateWithFsrsPreset,
+  DEFAULT_FSRS_OPTIMIZER_CONFIG,
+  resolveFsrsPresetKey
 };
-
-export type FsrsOptimizerState = {
-  bindingVersion: string;
-  lastAttemptAt: string | null;
-  lastCheckAt: string | null;
-  lastSuccessfulTrainingAt: string | null;
-  lastTrainingError: string | null;
-  newEligibleReviewsSinceLastTraining: number;
-  totalEligibleReviewsAtLastTraining: number;
-};
-
-export type FsrsOptimizedParameters = {
-  desiredRetention: number;
-  presetKey: FsrsPresetKey;
-  trainedAt: string;
-  trainingReviewCount: number;
-  weights: number[];
-};
-
-export type FsrsOptimizerSnapshot = {
-  config: FsrsOptimizerConfig;
-  presets: Record<FsrsPresetKey, FsrsOptimizedParameters | null>;
-  state: FsrsOptimizerState;
+export type {
+  FsrsOptimizedParameters,
+  FsrsOptimizerConfig,
+  FsrsOptimizerSnapshot,
+  FsrsOptimizerState,
+  FsrsPresetKey
 };
 
 export type FsrsOptimizerPresetStatus = {
@@ -142,13 +130,7 @@ const FSRS_RUNTIME_CONTEXT_TTL_MS = 60_000;
 const FSRS_OPTIMIZER_NEW_REVIEW_RATIO = 0.25;
 const FSRS_OPTIMIZER_MAX_NEW_REVIEW_THRESHOLD = 3_000;
 
-const defaultFsrsOptimizerConfig: FsrsOptimizerConfig = {
-  desiredRetention: 0.9,
-  enabled: true,
-  minDaysBetweenRuns: 30,
-  minNewReviews: 500,
-  presetStrategy: "card_type_v1"
-};
+const defaultFsrsOptimizerConfig = DEFAULT_FSRS_OPTIMIZER_CONFIG;
 
 type FsrsSettingsReader = Pick<DatabaseClient, "query" | "select">;
 type FsrsSettingsWriter = Pick<DatabaseClient, "insert" | "query">;
@@ -171,29 +153,6 @@ function defaultFsrsOptimizerState(): FsrsOptimizerState {
     lastTrainingError: null,
     newEligibleReviewsSinceLastTraining: 0,
     totalEligibleReviewsAtLastTraining: 0
-  };
-}
-
-export function resolveFsrsPresetKey(cardType: string): FsrsPresetKey | null {
-  if (cardType === "recognition" || cardType === "concept") {
-    return cardType;
-  }
-
-  return null;
-}
-
-export function buildReviewSeedStateWithFsrsPreset(
-  reviewSeedState: ReviewSeedState,
-  cardType: string,
-  snapshot: FsrsOptimizerSnapshot
-): ReviewSeedState {
-  const presetKey = resolveFsrsPresetKey(cardType);
-  const preset = presetKey ? snapshot.presets[presetKey] : null;
-
-  return {
-    ...reviewSeedState,
-    fsrsDesiredRetention: snapshot.config.desiredRetention,
-    fsrsWeights: preset?.weights ?? null
   };
 }
 

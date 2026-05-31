@@ -1,7 +1,7 @@
 import {
   buildReviewSeedStateWithFsrsPreset,
-  type FsrsOptimizerSnapshot
-} from "@/features/fsrs-optimizer/server";
+  type FsrsOptimizerSeedSnapshot
+} from "@/features/fsrs-optimizer/model/snapshot";
 import { mediaReviewCardHref } from "@/features/navigation";
 import type { ReviewCardSource } from "@/features/review/model/card-contract";
 import { buildReviewQueueSubjectSnapshot } from "@/features/review/model/queue";
@@ -26,13 +26,13 @@ import {
   resolveReviewCardReading,
   type ReviewEntryLookupItem,
   type ReviewMediaLookup
-} from "./card-hydration";
+} from "./card-presenters";
 import type { ReviewFirstCandidateCard, ReviewQueueCard } from "../types";
 
 type ReviewQueueCardMapInput = {
   contextCache?: Map<string, ReviewQueueCard["contexts"]>;
   entryLookup: Map<string, ReviewEntryLookupItem>;
-  fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
+  fsrsOptimizerSnapshot: FsrsOptimizerSeedSnapshot;
   includePronunciations?: boolean;
   mediaById: ReviewMediaLookup;
   nowIso: string;
@@ -43,7 +43,7 @@ type ReviewQueueCardMapInput = {
 export function buildReviewAdvanceCardsFromQueueModels(input: {
   advanceCardModels: ReviewSubjectModel[];
   entryLookup: Map<string, ReviewEntryLookupItem>;
-  fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
+  fsrsOptimizerSnapshot: FsrsOptimizerSeedSnapshot;
   mediaById: ReviewMediaLookup;
   nowIso: string;
   selectedCardId?: string | null;
@@ -68,7 +68,7 @@ export function buildReviewAdvanceCardsFromQueueModels(input: {
 export function mapReviewQueueSubjectCardPreview(input: {
   card: ReviewCardSource;
   entryLookup: Map<string, ReviewEntryLookupItem>;
-  fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
+  fsrsOptimizerSnapshot: FsrsOptimizerSeedSnapshot;
   mediaById: ReviewMediaLookup;
   nowIso: string;
   queueStateSnapshot: ReviewQueueStateSnapshot;
@@ -124,7 +124,7 @@ export function buildReviewQueueSnapshot(input: {
   entryLookup: Map<string, ReviewEntryLookupItem>;
   extraNewAnchorCount?: number | null;
   extraNewCount: number;
-  fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
+  fsrsOptimizerSnapshot: FsrsOptimizerSeedSnapshot;
   mediaById: ReviewMediaLookup;
   newIntroducedTodayCount: number;
   nowIso: string;

@@ -9,10 +9,7 @@ import {
   getReviewSubjectStateByKey,
   type CrossMediaFamily,
   type CrossMediaSibling,
-  type GrammarEntryReviewSummaryById,
   type GrammarGlossaryEntry,
-  type MediaListItem,
-  type TermEntryReviewSummaryById,
   type TermGlossaryEntry
 } from "@/db/queries";
 import {
@@ -27,90 +24,67 @@ import {
   mediaGlossaryEntryHref,
   mediaGlossaryHref,
   mediaHref,
-  mediaReviewCardHref,
   mediaStudyHref
 } from "@/features/navigation";
-import {
-  capitalizeToken,
-  formatCardRelationshipLabel,
-  formatReviewStateLabel
-} from "@/features/study/model/format";
+import { formatCardRelationshipLabel } from "@/features/study/model/format";
 import { buildEntryKey } from "@/features/study/model/entry-id";
-import { measureWith, type ReviewProfiler } from "@/features/review/server/profiler";
-import { stripInlineMarkdown } from "@/features/study/ui/furigana";
+import {
+  measureWith,
+  type ReviewProfiler
+} from "@/features/review/server/profiler";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
-  matchesReviewSubjectEntrySurface,
   type ReviewSubjectIdentity
 } from "@/features/review/model/subject";
-import { deriveInlineReading } from "@/features/study/model/inline-markdown.ts";
 import {
   getDrivingEntryLinks,
-  hasCompletedReviewLesson,
-  type ReviewEntryLinkLike
+  hasCompletedReviewLesson
 } from "@/features/review/model/state";
-import {
-  buildPronunciationData,
-  type PronunciationData
-} from "@/features/pronunciation/model/data";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "@/features/review/model/grade-previews";
 import {
-  buildDefaultFsrsOptimizerSnapshot,
-  buildReviewSeedStateWithFsrsPreset,
   getFsrsOptimizerRuntimeContext,
   getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
 } from "@/features/fsrs-optimizer/server";
-import {
-  type ReviewQueueStateSnapshot,
-  resolveReviewQueueState
-} from "@/features/review/model/queue-state";
+import { resolveReviewQueueState } from "@/features/review/model/queue-state";
 import { getPendingConsolidationSubjectKeySet } from "@/features/consolidation/server";
 import {
-  buildBucketDetail,
-  formatBucketLabel,
-  formatShortIsoDate
-} from "@/features/review/model/queue-presentation";
-import type {
-  ReviewCardSource,
-  ReviewCardEntryLink,
-  ReviewCardSegmentSource
-} from "@/features/review/model/card-contract";
+  buildEntryLookup,
+  buildReviewCardContexts,
+  buildReviewCardPronunciations,
+  buildReviewMediaLookup,
+  buildSingleMediaLookup,
+  canExposeReviewEntryMedia,
+  collectReviewLinkedEntryIds,
+  mapQueueCard,
+  type ReviewEntryLookupItem,
+  type ReviewGrammarLookupEntry,
+  type ReviewTermLookupEntry
+} from "./card-presenters";
+import type { ReviewCardSource } from "@/features/review/model/card-contract";
 import type {
   ReviewCardDetailData,
-  ReviewCardEntryKind,
-  ReviewCardEntrySummary,
-  ReviewCardPronunciation,
   ReviewQueueCard
 } from "@/features/review/types";
 
-export type ReviewEntryLookupItem = {
-  href: ReturnType<typeof mediaGlossaryEntryHref>;
-  id: string;
-  kind: ReviewCardEntryKind;
-  label: string;
-  meaning: string;
-  pronunciation?: PronunciationData;
-  reading?: string;
-  subtitle?: string;
-};
-
-export type ReviewTermLookupEntry =
-  | TermGlossaryEntry
-  | TermEntryReviewSummaryById;
-
-export type ReviewGrammarLookupEntry =
-  | GrammarGlossaryEntry
-  | GrammarEntryReviewSummaryById;
-
-export type ReviewMediaLookup = Map<
-  string,
-  {
-    slug: string;
-    title: string;
-  }
->;
+export {
+  buildEntryLookup,
+  buildReviewCardPronunciations,
+  buildReviewMediaLookup,
+  buildSingleMediaLookup,
+  canExposeReviewEntryMedia,
+  collectReviewLinkedEntryIds,
+  mapQueueCard,
+  resolveReviewCardMedia,
+  resolveReviewCardReading
+} from "./card-presenters";
+export type {
+  ReviewEntryLookupItem,
+  ReviewGrammarLookupEntry,
+  ReviewMediaLookup,
+  ReviewTermLookupEntry
+} from "./card-presenters";
 
 type ReviewCardWithOptionalMedia = ReviewCardSource & {
   media?: {
@@ -118,31 +92,6 @@ type ReviewCardWithOptionalMedia = ReviewCardSource & {
     title: string;
   } | null;
 };
-
-export function collectReviewLinkedEntryIds(
-  cards: Array<Pick<ReviewCardSource, "entryLinks">>
-) {
-  const termIds = new Set<string>();
-  const grammarIds = new Set<string>();
-
-  for (const card of cards) {
-    for (const link of card.entryLinks) {
-      if (link.entryType === "term") {
-        termIds.add(link.entryId);
-        continue;
-      }
-
-      if (link.entryType === "grammar") {
-        grammarIds.add(link.entryId);
-      }
-    }
-  }
-
-  return {
-    grammarIds: [...grammarIds],
-    termIds: [...termIds]
-  };
-}
 
 export async function hydrateReviewCard(input: {
   cardId: string;
@@ -271,7 +220,10 @@ export async function hydrateReviewCardUncached(input: {
         nowIso,
         fsrsOptimizerSnapshot,
         queueStateSnapshot,
-        buildReviewCardContexts(subjectContext.contextCards, subjectContext.mediaById),
+        buildReviewCardContexts(
+          subjectContext.contextCards,
+          subjectContext.mediaById
+        ),
         {
           reviewStateUpdatedAt: subjectState?.updatedAt ?? null
         }
@@ -354,16 +306,16 @@ export async function getReviewCardDetailData(
   const grammarById = new Map(grammar.map((entry) => [entry.id, entry]));
   const [subjectState, subjectContext, termFamilies, grammarFamilies] =
     await Promise.all([
-    subjectStatePromise,
-    loadReviewSubjectCardContext({
-      card: selectedRawCard,
-      database,
-      grammar,
-      subjectIdentity,
-      terms
-    }),
-    termFamiliesPromise,
-    grammarFamiliesPromise
+      subjectStatePromise,
+      loadReviewSubjectCardContext({
+        card: selectedRawCard,
+        database,
+        grammar,
+        subjectIdentity,
+        terms
+      }),
+      termFamiliesPromise,
+      grammarFamiliesPromise
     ]);
   const queueStateSnapshot = resolveReviewQueueState(
     selectedRawCard.status,
@@ -378,7 +330,10 @@ export async function getReviewCardDetailData(
     nowIso,
     undefined,
     queueStateSnapshot,
-    buildReviewCardContexts(subjectContext.contextCards, subjectContext.mediaById),
+    buildReviewCardContexts(
+      subjectContext.contextCards,
+      subjectContext.mediaById
+    ),
     {
       reviewStateUpdatedAt: subjectState?.updatedAt ?? null
     }
@@ -468,9 +423,11 @@ async function loadReviewSubjectCardContext(input: {
       ? await getGlossaryEntriesByCrossMediaGroupIds(input.database, "term", [
           input.subjectIdentity.crossMediaGroupId
         ])
-      : await getGlossaryEntriesByCrossMediaGroupIds(input.database, "grammar", [
-          input.subjectIdentity.crossMediaGroupId
-        ]);
+      : await getGlossaryEntriesByCrossMediaGroupIds(
+          input.database,
+          "grammar",
+          [input.subjectIdentity.crossMediaGroupId]
+        );
   const cardConnections = await listEntryCardConnections(
     input.database,
     groupEntries.map((entry) => ({
@@ -488,7 +445,9 @@ async function loadReviewSubjectCardContext(input: {
   const subjectCards = mergeReviewSubjectCards(
     [input.card, ...loadedSubjectCards].filter(hasCompletedReviewLesson)
   );
-  const mediaById = buildReviewMediaLookup(await listMediaCached(input.database));
+  const mediaById = buildReviewMediaLookup(
+    await listMediaCached(input.database)
+  );
 
   const mergedTerms =
     input.subjectIdentity.entryType === "term"
@@ -583,115 +542,6 @@ function dedupeStable(values: string[]) {
   return [...new Set(values)];
 }
 
-export function buildReviewMediaLookup(media: MediaListItem[]) {
-  return new Map(
-    media.map((item) => [
-      item.id,
-      {
-        slug: item.slug,
-        title: item.title
-      }
-    ])
-  );
-}
-
-export function buildSingleMediaLookup(
-  media: Pick<MediaListItem, "id" | "slug" | "title">
-): ReviewMediaLookup {
-  return new Map([
-    [
-      media.id,
-      {
-        slug: media.slug,
-        title: media.title
-      }
-    ]
-  ]);
-}
-
-export function buildEntryLookup(
-  terms: ReviewTermLookupEntry[],
-  grammar: ReviewGrammarLookupEntry[]
-) {
-  const lookup = new Map<string, ReviewEntryLookupItem>();
-
-  for (const entry of terms) {
-    const mediaSlug = getEntryMediaSlug(entry);
-
-    lookup.set(buildEntryKey("term", entry.id), {
-      href: mediaGlossaryEntryHref(mediaSlug, "term", entry.lemma, {
-        sourceId: entry.sourceId
-      }),
-      id: entry.sourceId,
-      kind: "term",
-      label: entry.lemma,
-      meaning: entry.meaningIt,
-      pronunciation: buildReviewEntryPronunciation(
-        mediaSlug,
-        entry,
-        entry.reading
-      ),
-      reading: entry.reading,
-      subtitle:
-        [entry.reading, entry.romaji].filter(Boolean).join(" / ") || undefined
-    });
-  }
-
-  for (const entry of grammar) {
-    const mediaSlug = getEntryMediaSlug(entry);
-
-    lookup.set(buildEntryKey("grammar", entry.id), {
-      href: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.pattern, {
-        sourceId: entry.sourceId
-      }),
-      id: entry.sourceId,
-      kind: "grammar",
-      label: entry.pattern,
-      meaning: entry.meaningIt,
-      pronunciation: buildReviewEntryPronunciation(
-        mediaSlug,
-        entry,
-        entry.reading ?? entry.pattern
-      ),
-      reading: entry.reading ?? deriveKanaReading(entry.pattern),
-      subtitle: entry.title !== entry.pattern ? entry.title : undefined
-    });
-  }
-
-  return lookup;
-}
-
-export function buildReviewCardPronunciations(
-  card: Pick<ReviewCardSource, "cardType" | "entryLinks" | "front">,
-  entryLookup: Map<string, ReviewEntryLookupItem>,
-  sortedEntryLinks?: ReviewEntryLinkLike[]
-): ReviewCardPronunciation[] {
-  const links =
-    sortedEntryLinks ?? card.entryLinks.slice().sort(compareEntryLinks);
-
-  if (!canExposeReviewEntryMedia(card, entryLookup, links)) {
-    return [];
-  }
-
-  return getDrivingEntryLinks(links).flatMap((link) => {
-    const entry = entryLookup.get(buildEntryKey(link.entryType, link.entryId));
-
-    if (!entry?.pronunciation) {
-      return [];
-    }
-
-    return [
-      {
-        audio: entry.pronunciation,
-        kind: entry.kind,
-        label: entry.label,
-        meaning: entry.meaning,
-        relationshipLabel: formatCardRelationshipLabel(link.relationshipType)
-      }
-    ];
-  });
-}
-
 export async function loadReviewCardPronunciations(input: {
   card: Pick<ReviewCardSource, "cardType" | "entryLinks" | "front">;
   database: DatabaseClient;
@@ -739,208 +589,6 @@ export async function loadReviewCardPronunciations(input: {
   return buildReviewCardPronunciations(input.card, resolvedEntryLookup);
 }
 
-export function resolveReviewCardMedia(
-  card: Pick<ReviewCardSource, "mediaId">,
-  mediaById: ReviewMediaLookup
-) {
-  return (
-    mediaById.get(card.mediaId) ?? {
-      slug: "unknown-media",
-      title: "Media"
-    }
-  );
-}
-
-export function mapQueueCard(
-  card: ReviewCardSource,
-  entryLookup: Map<string, ReviewEntryLookupItem>,
-  subjectCards: ReviewCardSource[],
-  mediaById: ReviewMediaLookup,
-  nowIso: string,
-  fsrsOptimizerSnapshot?: FsrsOptimizerSnapshot,
-  queueStateSnapshot?: ReviewQueueStateSnapshot,
-  contexts?: ReviewQueueCard["contexts"],
-  options: {
-    includePronunciations?: boolean;
-    reviewStateUpdatedAt?: string | null;
-  } = {}
-): ReviewQueueCard {
-  const cardMedia = resolveReviewCardMedia(card, mediaById);
-  const sortedEntryLinks = card.entryLinks.slice().sort(compareEntryLinks);
-  const entries = sortedEntryLinks.flatMap((link) => {
-    const entry = entryLookup.get(buildEntryKey(link.entryType, link.entryId));
-
-    if (!entry) {
-      return [];
-    }
-
-    return [
-      {
-        href: entry.href,
-        id: entry.id,
-        kind: entry.kind,
-        label: entry.label,
-        meaning: entry.meaning,
-        relationshipLabel: formatCardRelationshipLabel(link.relationshipType),
-        statusLabel: "Disponibile",
-        subtitle: entry.subtitle
-      } satisfies ReviewCardEntrySummary
-    ];
-  });
-  const resolved =
-    queueStateSnapshot ?? resolveReviewQueueState(card.status, null, nowIso);
-  const pronunciations =
-    options.includePronunciations === false
-      ? []
-      : buildReviewCardPronunciations(card, entryLookup, sortedEntryLinks);
-  const reading = resolveReviewCardReading(card, entryLookup, sortedEntryLinks);
-
-  return {
-    back: buildAggregatedReviewBack(card, subjectCards, mediaById),
-    bucket: resolved.bucket,
-    bucketDetail: buildBucketDetail(resolved.bucket, resolved.dueAt),
-    bucketLabel: formatBucketLabel(resolved.bucket),
-    contexts: contexts ?? buildReviewCardContexts(subjectCards, mediaById),
-    createdAt: card.createdAt,
-    dueAt: resolved.dueAt,
-    dueLabel: resolved.dueAt
-      ? `Scadenza ${formatShortIsoDate(resolved.dueAt)}`
-      : undefined,
-    effectiveState: resolved.effectiveState,
-    effectiveStateLabel: formatReviewStateLabel(
-      resolved.effectiveState,
-      resolved.effectiveState === "known_manual"
-    ),
-    exampleIt: card.exampleIt ?? undefined,
-    exampleJp: card.exampleJp ?? undefined,
-    entries,
-    front: card.front,
-    gradePreviews: [],
-    href: mediaReviewCardHref(cardMedia.slug, card.id),
-    id: card.id,
-    mediaSlug: cardMedia.slug,
-    mediaTitle: cardMedia.title,
-    notes: card.notesIt ?? undefined,
-    orderIndex: card.orderIndex,
-    pronunciations,
-    rawReviewLabel: resolved.rawReviewLabel,
-    reading,
-    reviewSeedState: buildReviewSeedStateWithFsrsPreset(
-      resolved.reviewSeedState,
-      card.cardType,
-      fsrsOptimizerSnapshot ?? buildDefaultFsrsOptimizerSnapshot()
-    ),
-    reviewStateUpdatedAt: options.reviewStateUpdatedAt ?? null,
-    segmentTitle: card.segment?.title ?? undefined,
-    typeLabel: capitalizeToken(card.cardType)
-  };
-}
-
-function buildAggregatedReviewBack(
-  representativeCard: ReviewCardSource,
-  subjectCards: ReviewCardSource[],
-  mediaById: ReviewMediaLookup
-) {
-  const uniqueBacks = new Map<string, ReviewCardSource>();
-
-  for (const subjectCard of subjectCards) {
-    const normalizedBack = subjectCard.back.trim();
-
-    if (!normalizedBack || uniqueBacks.has(normalizedBack)) {
-      continue;
-    }
-
-    uniqueBacks.set(normalizedBack, subjectCard);
-  }
-
-  if (uniqueBacks.size <= 1) {
-    return representativeCard.back;
-  }
-
-  return [...uniqueBacks.entries()]
-    .map(([back, subjectCard]) => {
-      const media = resolveReviewCardMedia(subjectCard, mediaById);
-
-      return `${media.title}\n${back}`;
-    })
-    .join("\n\n");
-}
-
-export function resolveReviewCardReading(
-  card: Pick<ReviewCardSource, "cardType" | "entryLinks" | "front">,
-  entryLookup: Map<string, ReviewEntryLookupItem>,
-  sortedEntryLinks?: ReviewEntryLinkLike[]
-) {
-  const links =
-    sortedEntryLinks ?? card.entryLinks.slice().sort(compareEntryLinks);
-
-  if (!canExposeReviewEntryMedia(card, entryLookup, links)) {
-    return undefined;
-  }
-
-  const drivingLinks = getDrivingEntryLinks(links);
-
-  for (const link of drivingLinks) {
-    const reading = entryLookup.get(
-      buildEntryKey(link.entryType, link.entryId)
-    )?.reading;
-
-    if (reading) {
-      return reading;
-    }
-  }
-
-  for (const link of links) {
-    const reading = entryLookup.get(
-      buildEntryKey(link.entryType, link.entryId)
-    )?.reading;
-
-    if (reading) {
-      return reading;
-    }
-  }
-
-  return deriveInlineReading(card.front) ?? deriveKanaReading(card.front);
-}
-
-export function canExposeReviewEntryMedia(
-  card: Pick<ReviewCardSource, "cardType" | "entryLinks" | "front">,
-  entryLookup: Map<string, ReviewEntryLookupItem>,
-  sortedEntryLinks?: ReviewEntryLinkLike[]
-) {
-  const links = sortedEntryLinks ?? card.entryLinks;
-  const drivingLinks = getDrivingEntryLinks(links);
-  const hasPrimaryLink = links.some(
-    (link) => link.relationshipType === "primary"
-  );
-
-  if (drivingLinks.length !== 1) {
-    return false;
-  }
-
-  const drivingLink = drivingLinks[0]!;
-  const drivingEntry = entryLookup.get(
-    buildEntryKey(drivingLink.entryType, drivingLink.entryId)
-  );
-
-  if (!drivingEntry) {
-    return false;
-  }
-
-  if (!hasPrimaryLink) {
-    return true;
-  }
-
-  if (card.cardType !== "concept") {
-    return true;
-  }
-
-  return matchesReviewSubjectEntrySurface(card.front, {
-    label: drivingEntry.label,
-    reading: drivingEntry.reading
-  });
-}
-
 function mapReviewCrossMediaSibling(sibling: CrossMediaSibling) {
   return {
     href: mediaGlossaryEntryHref(
@@ -967,132 +615,6 @@ function mapReviewCrossMediaSibling(sibling: CrossMediaSibling) {
   };
 }
 
-function buildReviewEntryPronunciation(
-  mediaSlug: string,
-  entry: ReviewTermLookupEntry | ReviewGrammarLookupEntry,
-  reading: string | null | undefined
-) {
-  if (!("audioSrc" in entry || "pitchAccent" in entry)) {
-    return undefined;
-  }
-
-  const pronunciationSource = entry as Record<string, unknown>;
-
-  return (
-    buildPronunciationData(mediaSlug, {
-      audioAttribution: getOptionalPronunciationStringField(
-        pronunciationSource,
-        "audioAttribution"
-      ),
-      audioLicense: getOptionalPronunciationStringField(
-        pronunciationSource,
-        "audioLicense"
-      ),
-      audioPageUrl: getOptionalPronunciationStringField(
-        pronunciationSource,
-        "audioPageUrl"
-      ),
-      audioSource: getOptionalPronunciationStringField(
-        pronunciationSource,
-        "audioSource"
-      ),
-      audioSpeaker: getOptionalPronunciationStringField(
-        pronunciationSource,
-        "audioSpeaker"
-      ),
-      audioSrc: getOptionalPronunciationStringField(
-        pronunciationSource,
-        "audioSrc"
-      ),
-      pitchAccent: getOptionalPronunciationNumberField(
-        pronunciationSource,
-        "pitchAccent"
-      ),
-      pitchAccentPageUrl: getOptionalPronunciationStringField(
-        pronunciationSource,
-        "pitchAccentPageUrl"
-      ),
-      pitchAccentSource: getOptionalPronunciationStringField(
-        pronunciationSource,
-        "pitchAccentSource"
-      ),
-      reading
-    }) ?? undefined
-  );
-}
-
-function getOptionalPronunciationStringField(
-  entry: Record<string, unknown>,
-  key:
-    | "audioAttribution"
-    | "audioLicense"
-    | "audioPageUrl"
-    | "audioSource"
-    | "audioSpeaker"
-    | "audioSrc"
-    | "pitchAccentPageUrl"
-    | "pitchAccentSource"
-) {
-  const value = entry[key];
-
-  return typeof value === "string" || value === null ? value : undefined;
-}
-
-function getOptionalPronunciationNumberField(
-  entry: Record<string, unknown>,
-  key: "pitchAccent"
-) {
-  const value = entry[key];
-
-  return typeof value === "number" || value === null ? value : undefined;
-}
-
-function getEntryMediaSlug(
-  entry: ReviewTermLookupEntry | ReviewGrammarLookupEntry
-) {
-  if ("mediaSlug" in entry) {
-    return entry.mediaSlug;
-  }
-
-  return entry.media.slug;
-}
-
-function buildReviewCardContexts(
-  cards: Array<
-    Pick<ReviewCardSource, "front" | "id" | "mediaId"> & {
-      segment?: ReviewCardSegmentSource | null;
-    }
-  >,
-  mediaById: ReviewMediaLookup
-) {
-  return cards
-    .map((item) => {
-      const media = resolveReviewCardMedia(item, mediaById);
-
-      return {
-        cardId: item.id,
-        front: stripInlineMarkdown(item.front),
-        mediaSlug: media.slug,
-        mediaTitle: media.title,
-        segmentTitle: item.segment?.title ?? undefined
-      };
-    })
-    .sort((left, right) => {
-      if (left.mediaTitle !== right.mediaTitle) {
-        return left.mediaTitle.localeCompare(right.mediaTitle, "it");
-      }
-
-      if ((left.segmentTitle ?? "") !== (right.segmentTitle ?? "")) {
-        return (left.segmentTitle ?? "").localeCompare(
-          right.segmentTitle ?? "",
-          "it"
-        );
-      }
-
-      return left.front.localeCompare(right.front, "it");
-    });
-}
-
 function buildReviewCrossMediaNotesPreview(notes?: string | null) {
   if (!notes) {
     return undefined;
@@ -1112,43 +634,4 @@ function buildReviewCrossMediaNotesPreview(notes?: string | null) {
   }
 
   return `${plainText.slice(0, 157).trimEnd()}...`;
-}
-
-function deriveKanaReading(value: string) {
-  const hasKana = /[\p{Script=Hiragana}\p{Script=Katakana}]/u.test(value);
-  const hasHan = /\p{Script=Han}/u.test(value);
-
-  if (hasKana && !hasHan) {
-    return value;
-  }
-
-  return undefined;
-}
-
-function compareEntryLinks(
-  left: ReviewCardEntryLink,
-  right: ReviewCardEntryLink
-) {
-  const leftRank = getRelationshipRank(left.relationshipType);
-  const rightRank = getRelationshipRank(right.relationshipType);
-
-  if (leftRank !== rightRank) {
-    return leftRank - rightRank;
-  }
-
-  if (left.entryType !== right.entryType) {
-    return left.entryType.localeCompare(right.entryType);
-  }
-
-  return left.entryId.localeCompare(right.entryId);
-}
-
-function getRelationshipRank(value: string) {
-  const ranks: Record<string, number> = {
-    primary: 0,
-    secondary: 1,
-    context: 2
-  };
-
-  return ranks[value] ?? 99;
 }

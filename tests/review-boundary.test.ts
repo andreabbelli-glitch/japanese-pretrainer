@@ -123,7 +123,29 @@ describe("review feature boundary", () => {
       "utf8"
     );
     const implementationImportPattern =
-      /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["'](?:@\/db(?:["'/])|@\/features\/cache(?:["'/])|next\/cache(?:["'/]))/u;
+      /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["'](?:@\/db(?:["'/])|@\/features\/cache(?:["'/])|@\/features\/fsrs-optimizer\/server(?:["'/])|next\/cache(?:["'/]))/u;
+    const mutationCallPattern = /\.(?:transaction|insert|update|delete)\s*\(/u;
+
+    expect(source).not.toMatch(implementationImportPattern);
+    expect(source).not.toMatch(mutationCallPattern);
+    expect(source).toContain('from "./card-presenters"');
+    expect(source).not.toContain('from "./card-hydration"');
+  });
+
+  it("keeps review card presenters free of hydration, database, cache, and mutation details", async () => {
+    const source = await readFile(
+      path.join(
+        PROJECT_ROOT,
+        "src",
+        "features",
+        "review",
+        "server",
+        "card-presenters.ts"
+      ),
+      "utf8"
+    );
+    const implementationImportPattern =
+      /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["'](?:@\/db(?:["'/])|@\/features\/cache(?:["'/])|@\/features\/consolidation(?:["'/])|@\/features\/fsrs-optimizer\/server(?:["'/])|next\/cache(?:["'/])|\.\/(?:card-hydration|page-data|loader|service)(?:["'/]))/u;
     const mutationCallPattern = /\.(?:transaction|insert|update|delete)\s*\(/u;
 
     expect(source).not.toMatch(implementationImportPattern);

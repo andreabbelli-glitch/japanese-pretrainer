@@ -36,7 +36,10 @@ describe("settings and FSRS optimizer feature boundary", () => {
     const violations: string[] = [];
 
     for (const relativePath of files) {
-      const source = await readFile(path.join(PROJECT_ROOT, relativePath), "utf8");
+      const source = await readFile(
+        path.join(PROJECT_ROOT, relativePath),
+        "utf8"
+      );
 
       if (legacyImportPattern.test(source)) {
         violations.push(relativePath);
@@ -44,6 +47,24 @@ describe("settings and FSRS optimizer feature boundary", () => {
     }
 
     expect(violations).toEqual([]);
+  });
+
+  it("keeps the FSRS seed snapshot model free of server, database, and cache details", async () => {
+    const source = await readFile(
+      path.join(
+        PROJECT_ROOT,
+        "src",
+        "features",
+        "fsrs-optimizer",
+        "model",
+        "snapshot.ts"
+      ),
+      "utf8"
+    );
+    const implementationImportPattern =
+      /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["'](?:@\/db(?:["'/])|@\/features\/cache(?:["'/])|@\/features\/fsrs-optimizer\/server(?:["'/])|next\/cache(?:["'/])|node:(?:fs|path)(?:["'/]))/u;
+
+    expect(source).not.toMatch(implementationImportPattern);
   });
 });
 

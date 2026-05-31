@@ -22,10 +22,19 @@ import {
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/features/cache/server/data-cache";
 import { pickBestBy } from "@/features/shared/model/collections";
-import { getLocalIsoDateKey, getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
+import {
+  getLocalIsoDateKey,
+  getLocalIsoTimeBucketKey
+} from "@/features/shared/model/local-date";
 import { stripInlineMarkdown } from "@/features/study/ui/furigana";
-import { getReviewDailyLimit, getStudySettings } from "@/features/settings/server";
-import { measureWith, type ReviewProfiler } from "@/features/review/server/profiler";
+import {
+  getReviewDailyLimit,
+  getStudySettings
+} from "@/features/settings/server";
+import {
+  measureWith,
+  type ReviewProfiler
+} from "@/features/review/server/profiler";
 import { resolveReviewSubjectGroups } from "@/features/review/server/subject-state-lookup";
 import { hasCompletedReviewLesson } from "@/features/review/model/state";
 import {
@@ -41,7 +50,7 @@ import {
   type ReviewEntryLookupItem,
   type ReviewGrammarLookupEntry,
   type ReviewTermLookupEntry
-} from "@/features/review/server/card-hydration";
+} from "@/features/review/server/card-presenters";
 import type { ReviewOverviewSnapshot } from "@/features/review/types";
 import type { ReviewSearchState } from "@/features/review/model/search-state";
 import { getPendingConsolidationSubjectKeySet } from "@/features/consolidation/server";
@@ -236,7 +245,8 @@ export async function loadReviewWorkspaceV2(input: {
       }
 
       return subjectGroups.filter(
-        (group) => !pendingConsolidationSubjectKeys.has(group.identity.subjectKey)
+        (group) =>
+          !pendingConsolidationSubjectKeys.has(group.identity.subjectKey)
       );
     }
   );

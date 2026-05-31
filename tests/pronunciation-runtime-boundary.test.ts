@@ -21,7 +21,7 @@ const textbookFacadeFiles = [
   "src/features/textbook/server/index.ts"
 ] as const;
 const runtimePronunciationConsumers = [
-  "src/features/review/server/card-hydration.ts",
+  "src/features/review/server/card-presenters.ts",
   "src/features/textbook/server/tooltips.ts",
   "src/features/glossary/model/format.ts",
   "src/features/review/types.ts",
@@ -35,6 +35,7 @@ const runtimePronunciationDisplayRoots = [
   "src/features/glossary",
   "src/features/textbook",
   "src/features/review/server/card-hydration.ts",
+  "src/features/review/server/card-presenters.ts",
   "src/features/review/types.ts",
   "src/features/textbook/server/tooltips.ts"
 ] as const;
@@ -74,8 +75,7 @@ describe("pronunciation runtime boundary", () => {
     );
     const legacyTextbookFiles = libEntries
       .filter(
-        (entry) =>
-          entry.isFile() && /^textbook(?:-|\.ts$)/u.test(entry.name)
+        (entry) => entry.isFile() && /^textbook(?:-|\.ts$)/u.test(entry.name)
       )
       .map((entry) => `src/lib/${entry.name}`)
       .sort((left, right) => left.localeCompare(right));

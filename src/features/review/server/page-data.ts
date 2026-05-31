@@ -34,12 +34,12 @@ import {
   resolveReviewPageSelection
 } from "@/features/review/model/queue-selection";
 import type { ReviewSubjectGroup } from "@/features/review/model/subject";
+import { loadReviewCardPronunciations } from "@/features/review/server/card-hydration";
 import {
   buildReviewMediaLookup,
-  loadReviewCardPronunciations,
   type ReviewEntryLookupItem,
   type ReviewMediaLookup
-} from "@/features/review/server/card-hydration";
+} from "@/features/review/server/card-presenters";
 import {
   loadGlobalReviewWorkspace,
   loadGlobalReviewPageWorkspace,
