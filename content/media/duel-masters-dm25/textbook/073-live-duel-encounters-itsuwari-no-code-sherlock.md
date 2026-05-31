@@ -16,24 +16,23 @@ prerequisites:
   ]
 summary: >-
   Leggere come シャーロック salva una creatura per ciascun player e poi
-  distrugge tutte quelle non scelte.
+  distrugge tutte quelle rimaste fuori dalla scelta.
 ---
 
 # {{偽|いつわ}}りのコード シャーロック: こうして chiude la scelta
 
-{{偽|いつわ}}りのコード シャーロック non distrugge il campo in modo indistinto.
-Prima obbliga ogni player a isolare una propria creatura, poi usa
-[こうして](term:term-koushite) per richiamare esattamente quella procedura e
-colpire il resto. La frase si legge bene solo se tieni insieme tre segnali:
+{{偽|いつわ}}りのコード シャーロック tratta il campo come una procedura a due tempi.
+Prima ogni player isola una propria creatura; subito dopo
+[こうして](term:term-koushite) richiama esattamente quella scelta e colpisce il
+resto. La frase si legge bene solo se tieni insieme tre segnali:
 [{{各|かく}}](term:term-kaku) distribuisce la scelta, [{{自身|じしん}}](term:term-jishin)
 fissa il possessore corretto, e [すべて](term:term-subete) chiude senza
-eccezioni il gruppo non salvato.
+eccezioni il gruppo rimasto fuori.
 
-La riga successiva, {{水晶武装|すいしょうぶそう}}{{4|よん}}, lavora con una logica
-diversa: non sceglie bersagli, ma controlla una soglia nella mana zone e poi
-conferisce keyword a tutte le tue creature. Qui il punto di lettura resta lo
-stesso: prima costruire il gruppo, poi guardare la particella che dice che cosa
-succede a quel gruppo.
+La riga successiva, {{水晶武装|すいしょうぶそう}}{{4|よん}}, apre un frame separato:
+controlla una soglia nella mana zone e poi conferisce keyword a tutte le tue
+creature. Qui il punto di lettura resta lo stesso: prima costruire il gruppo,
+poi guardare la particella che dice che cosa succede a quel gruppo.
 
 ## Termini chiave
 
@@ -45,20 +44,20 @@ succede a quel gruppo.
 
 ## Espressioni ricorrenti
 
-- [{{1体|いったい}}ずつ](grammar:grammar-zutsu) — una creatura per ciascun player, non un totale comune
-- [{{選|えら}}ばれなかったクリーチャー](grammar:grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru) — le creature che non hanno ricevuto la scelta
+- [{{1体|いったい}}ずつ](grammar:grammar-zutsu) — una creatura assegnata a ciascun player come quantità distribuita
+- [{{選|えら}}ばれなかったクリーチャー](grammar:grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru) — le creature rimaste senza scelta ricevuta
 - [すべて](term:term-subete)に — tutto il gruppo come destinatario di una proprietà
 
 ## Pattern grammaticali chiave
 
-- [こうして{{選|えら}}ばれなかったクリーチャーをすべて{{破壊|はかい}}する](grammar:grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru) — il risultato colpisce tutto ciò che non è stato scelto in quel modo
+- [こうして{{選|えら}}ばれなかったクリーチャーをすべて{{破壊|はかい}}する](grammar:grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru) — il risultato colpisce tutte le creature rimaste fuori da quella scelta
 - [{{1体|いったい}}ずつ](grammar:grammar-zutsu) — stessa quantità distribuita su ogni player
 
 ## Etichette da riconoscere
 
 - Q・ブレイカー — keyword di break multiplo già chiusa come etichetta
 - {{水晶武装|すいしょうぶそう}}{{4|よん}} — keyword che controlla una soglia di carte a faccia in giù nella mana zone
-- アンノウン・セレス — razza della creatura, utile come contesto ma non parte della frase di distruzione
+- アンノウン・セレス — razza della creatura, utile per riconoscere la carta e il contesto dell'effetto
 
 ---
 
@@ -66,7 +65,7 @@ succede a quel gruppo.
 src: assets/cards/live-duel/itsuwari-no-code-sherlock.webp
 alt: >-
   Carta Duel Masters Itsuwari no Code Sherlock, creatura Unknown Celes con
-  effetto di scelta per ciascun player e distruzione delle creature non scelte.
+  effetto di scelta per ciascun player e distruzione delle creature rimaste fuori.
 caption: >-
   {{偽|いつわ}}りのコード シャーロック crea prima un gruppo salvato con
   {{1体|いったい}}ずつ, poi richiama quella scelta con
@@ -75,11 +74,11 @@ caption: >-
 
 ## 1. 各プレイヤー e 自身: la scelta resta separata per player
 
-La prima frase dopo il trigger non dice semplicemente "scegli una creatura".
-Parte da [{{各|かく}}](term:term-kaku)プレイヤー, quindi ogni player viene
-considerato come unità separata. Subito dopo, [{{自身|じしん}}](term:term-jishin)
-stringe il riferimento: ogni player sceglie una creatura propria, non una
-creatura qualsiasi sul campo.
+La prima frase dopo il trigger distribuisce subito la scelta. Parte da
+[{{各|かく}}](term:term-kaku)プレイヤー, quindi ogni player viene considerato come
+unità separata. Subito dopo, [{{自身|じしん}}](term:term-jishin) stringe il
+riferimento: la creatura scelta appartiene allo stesso player che sta risolvendo
+quello slot.
 
 :::example_sentence
 jp: >-
@@ -100,29 +99,29 @@ reveal_mode: sentence
     **Possesso riflessivo**: `自身` rimanda al player appena nominato, quindi la
     creatura scelta deve appartenere a quel player.
 *   [{{1体|いったい}}ずつ](grammar:grammar-zutsu) ➔ **Quantità ripetuta**: una
-    creatura per ciascun player, non una creatura totale per tutto il tavolo.
+    creatura per ogni player come slot separato sul tavolo.
 *   [{{選|えら}}ぶ](term:term-erabu) ➔ **Azione di selezione**: il testo crea il
     gruppo delle creature scelte, che la frase successiva userà come confine.
 
-#### ⚖️ Contrasto operativo: `各` non crea un gruppo unico
+#### ⚖️ Scope operativo di `各`
 
-Se leggi solo `プレイヤーは...選ぶ`, potresti immaginare una selezione comune.
-[{{各|かく}}](term:term-kaku) impedisce questa lettura: ogni player ha il suo
-slot da {{1体|いったい}}. In una partita multiplayer, questo dettaglio evita di
-pensare che un solo lato possa occupare tutti gli slot di scelta.
+Leggere solo `プレイヤーは...選ぶ` può far immaginare una selezione comune.
+[{{各|かく}}](term:term-kaku) assegna a ogni player il suo slot da
+{{1体|いったい}}. In una partita multiplayer, il numero degli slot cresce con i
+player e ciascuno viene riempito dal lato corrispondente.
 
-## 2. こうして: il ponte verso le creature non salvate
+## 2. こうして: il ponte verso le creature rimaste fuori
 
-[こうして](term:term-koushite) non è un riempitivo traducibile con un vago
-"così". Nel rules text punta alla procedura appena finita: le creature sono
-state scelte una per player, e proprio "in questo modo" il testo può distinguere
-le scelte dal resto del campo.
+[こうして](term:term-koushite) porta nella seconda frase la procedura appena
+conclusa. Nel rules text punta a "in questo modo": dopo una scelta di
+{{1体|いったい}} per player, il campo viene diviso tra creature salvate e creature
+rimaste fuori.
 
 :::example_sentence
 jp: >-
   [こうして{{選|えら}}ばれなかったクリーチャーをすべて{{破壊|はかい}}する](grammar:grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru)。
 translation_it: >-
-  Distruggi tutte le creature che non sono state scelte in questo modo.
+  Distruggi tutte le creature rimaste fuori da questa scelta.
 reveal_mode: sentence
 :::
 
@@ -131,33 +130,34 @@ reveal_mode: sentence
 *   [こうして](term:term-koushite) ➔ **Rimando procedurale**: riprende la scelta
     di {{1体|いったい}} per ciascun player.
 *   {{選|えら}}ばれなかった[クリーチャー](term:term-creature) ➔ **Relativa passiva
-    negativa**: non "le creature che non hanno scelto", ma "le creature che non
-    sono state scelte".
+    negativa**: le creature sono descritte dal punto di vista della scelta
+    ricevuta; ばれなかった segnala "rimaste senza essere scelte".
 *   [すべて](term:term-subete) ➔ **Totalità del gruppo rimasto**: tutte le
     creature fuori dal gruppo salvato entrano nell'effetto.
 *   [{{破壊|はかい}}する](term:term-destroy) ➔ **Payoff**: il gruppo marcato da
     を viene distrutto.
 
-#### ⚖️ Contrasto operativo: non è una seconda scelta
+#### ⚖️ La scelta è già chiusa
 
-`{{選|えら}}ばれなかった` non chiede di scegliere di nuovo. È il passivo negativo
-della scelta appena fatta: dopo che ogni player ha scelto la propria creatura,
-la grammatica definisce automaticamente il gruppo opposto. [こうして](term:term-koushite)
-serve proprio a chiudere quel collegamento.
+`{{選|えら}}ばれなかった` usa la scelta appena fatta come confine già disponibile.
+Dopo che ogni player ha scelto la propria creatura, la grammatica definisce
+automaticamente il gruppo opposto. [こうして](term:term-koushite) mantiene la
+distruzione agganciata a quel collegamento.
 
 #### 🧠 Gancio cognitivo
 
 Come gancio mnemonico, leggi [こうして](term:term-koushite) come una freccia
-all'indietro: "con questa procedura". Non è etimologia, ma aiuta a non trattare
-la seconda frase come un effetto isolato.
+all'indietro: "con questa procedura". È un trucco di lettura per tenere la
+seconda frase agganciata alla scelta precedente.
 
 ## 3. {{水晶武装|すいしょうぶそう}}{{4|よん}}: una soglia, poi proprietà concesse
 
-La seconda abilità non usa [こうして](term:term-koushite), perché non deve
-richiamare una scelta appena fatta. Usa invece
-{{水晶武装|すいしょうぶそう}}{{4|よん}}：...あれば...{{与|あた}}える: se nella mana
+La seconda abilità apre un altro frame, con il focus che passa da
+[こうして](term:term-koushite) a
+{{水晶武装|すいしょうぶそう}}{{4|よん}}：...あれば...{{与|あた}}える. Se nella mana
 zone hai abbastanza carte a faccia in giù, il testo conferisce keyword a tutte
-le tue creature.
+le tue creature. Il gruppo nasce da `すべてに`, quindi viene trattato come
+destinatario delle capacità.
 
 :::example_sentence
 jp: >-
@@ -186,13 +186,13 @@ reveal_mode: sentence
 *   [{{与|あた}}える](term:term-ataeru) ➔ **Verbo di assegnazione**: l'effetto
     attribuisce quelle capacità al gruppo marcato da に.
 
-#### ⚖️ Contrasto operativo: `すべてに` non è `すべてを`
+#### ⚖️ `を` e `に` cambiano il ruolo di `すべて`
 
 Nella riga di distruzione, [すべて](term:term-subete) lavora con を: il gruppo
 rimasto è l'oggetto da distruggere. Nella riga di
-{{水晶武装|すいしょうぶそう}}{{4|よん}}, invece, `すべてに` marca i destinatari: le tue
-creature non vengono distrutte, ricevono keyword. La differenza fra を e に
-cambia completamente il tipo di azione.
+{{水晶武装|すいしょうぶそう}}{{4|よん}}, `すべてに` marca i destinatari: le tue
+creature ricevono keyword. La differenza fra を e に cambia completamente il
+tipo di azione.
 
 ## Esempi guidati di riepilogo
 
@@ -203,8 +203,8 @@ jp: >-
   {{1体|いったい}}ずつ[{{選|えら}}ぶ](term:term-erabu)と、
   [こうして](term:term-koushite)[{{選|えら}}ばれなかったクリーチャーをすべて{{破壊|はかい}}する](grammar:grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru)。
 translation_it: >-
-  Quando ogni player sceglie una propria creatura, tutte le creature non scelte
-  in questo modo vengono distrutte.
+  Quando ogni player sceglie una propria creatura, tutte le creature rimaste
+  fuori da quella scelta vengono distrutte.
 reveal_mode: sentence
 :::
 
@@ -223,7 +223,7 @@ reveal_mode: sentence
 ## Nota finale
 
 シャーロック si legge come una carta di scope: prima costruisce chi resta fuori
-dalla distruzione, poi distrugge tutto ciò che non è entrato in quel gruppo. Se
+dalla distruzione, poi distrugge tutto il resto. Quando
 [こうして](term:term-koushite) ti rimanda alla scelta precedente e le particelle
-ti dicono se il gruppo è oggetto o destinatario, le due abilità smettono di
-sembrare una lista di keyword e diventano una procedura leggibile.
+ti dicono se il gruppo è oggetto o destinatario, le due abilità diventano una
+procedura leggibile.

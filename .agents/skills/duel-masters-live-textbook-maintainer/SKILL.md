@@ -196,6 +196,14 @@ Primary target files:
 - Use operational contrasts when a form could be misread, for example condition
   vs timing, source zone vs destination, optionality vs obligation, or state
   already present vs state created by the effect.
+- Avoid stock correction scaffolds in learner-facing prose. Do not write formulas
+  like `non è X, è Y`, `non è X ma Y`, `non X, ma Y`, `not X but Y`,
+  `non dice semplicemente X`, `non chiede di X`, or `non usa X perché...`.
+  Even in an operational contrast block, write the positive reading first: what
+  the form does, what scope it creates, and what practical effect follows. If a
+  likely misreading must be mentioned, name it briefly as a possible ambiguity
+  and resolve it through particles, scope, or timing rather than through a
+  binary correction sentence.
 - Ganci cognitivi are allowed when they help recognition, but mark them as
   mnemonic aids when they are not real etymology.
 - Prefer the recognizable lesson markers from the standard when useful:
@@ -535,14 +543,16 @@ Do not write meta or tautological explanations. The banned shape is:
   Japanese;
 - saying that an element is important, useful, canonical, duplicated, or worth a
   card instead of parsing the phrase;
-- using an automatic "not X but Y" contrast when no real likely misreading is
-  being corrected.
+- using a stock "not X, but Y" / "non è X, è Y" correction scaffold in
+  learner-facing prose, even inside an operational contrast.
 
 Why these are wrong:
 
 - they explain the page instead of the Japanese;
 - they describe importance vaguely instead of parsing the phrase;
-- they do not tell the learner how the grammar works.
+- they do not tell the learner how the grammar works;
+- they make the learner process the author's correction pattern before seeing
+  the Japanese form's actual function.
 
 Replace that style with concrete analysis such as:
 
