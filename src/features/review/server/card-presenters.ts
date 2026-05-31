@@ -550,7 +550,7 @@ export function buildReviewCardContexts(
     }
   >,
   mediaById: ReviewMediaLookup
-) {
+): ReviewQueueCard["contexts"] {
   return cards
     .map((item) => {
       const media = resolveReviewCardMedia(item, mediaById);

@@ -17,9 +17,9 @@ import {
   capitalizeToken,
   formatReviewStateLabel
 } from "@/features/study/model/format";
-import { stripInlineMarkdown } from "@/features/study/ui/furigana";
 
 import {
+  buildReviewCardContexts,
   buildReviewCardPronunciations,
   mapQueueCard,
   resolveReviewCardMedia,
@@ -208,38 +208,6 @@ export function mapReviewQueueSubjectModel(
       reviewStateUpdatedAt: model.group.subjectState?.updatedAt ?? null
     }
   );
-}
-
-function buildReviewCardContexts(
-  cards: ReviewCardSource[],
-  mediaById: ReviewMediaLookup
-) {
-  return cards
-    .map((item) => {
-      const media = resolveReviewCardMedia(item, mediaById);
-
-      return {
-        cardId: item.id,
-        front: stripInlineMarkdown(item.front),
-        mediaSlug: media.slug,
-        mediaTitle: media.title,
-        segmentTitle: item.segment?.title ?? undefined
-      };
-    })
-    .sort((left, right) => {
-      if (left.mediaTitle !== right.mediaTitle) {
-        return left.mediaTitle.localeCompare(right.mediaTitle, "it");
-      }
-
-      if ((left.segmentTitle ?? "") !== (right.segmentTitle ?? "")) {
-        return (left.segmentTitle ?? "").localeCompare(
-          right.segmentTitle ?? "",
-          "it"
-        );
-      }
-
-      return left.front.localeCompare(right.front, "it");
-    });
 }
 
 function resolveReviewQueueSubjectContexts(

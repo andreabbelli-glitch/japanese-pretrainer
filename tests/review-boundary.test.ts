@@ -145,10 +145,14 @@ describe("review feature boundary", () => {
     const implementationImportPattern =
       /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["'](?:@\/db(?:["'/])|@\/features\/cache(?:["'/])|@\/features\/fsrs-optimizer\/server(?:["'/])|next\/cache(?:["'/]))/u;
     const mutationCallPattern = /\.(?:transaction|insert|update|delete)\s*\(/u;
+    const localContextPresenterPattern =
+      /(?:function|const|let)\s+buildReviewCardContexts\b/u;
 
     expect(source).not.toMatch(implementationImportPattern);
     expect(source).not.toMatch(mutationCallPattern);
     expect(source).toContain('from "./card-presenters"');
+    expect(source).not.toMatch(localContextPresenterPattern);
+    expect(source).not.toContain("@/features/study/ui/furigana");
     expect(source).not.toContain('from "./card-hydration"');
   });
 
