@@ -548,6 +548,16 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-suishou-no-chikara-ni-erabareshi-mono-sore-ga-watashi-da",
+      "audio_src": "assets/audio/grammar/grammar-suishou-no-chikara-ni-erabareshi-mono-sore-ga-watashi-da/forvo-cawacci-すいしょうのちからにえらは-れしもの-それか-わたした.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "cawacci",
+      "audio_attribution": "cawacci via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%81%B8%E3%81%B0%E3%82%8C%E3%81%97%E8%80%85/#ja",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-sukina-junjo-de",
       "audio_src": "assets/audio/grammar/grammar-sukina-junjo-de/forvo-manual-すきなし-ゅんし-ょて.mp3",
       "audio_source": "forvo",
@@ -3455,6 +3465,19 @@
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%99%E3%81%B9%E3%81%A6",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-suishou",
+      "audio_src": "assets/audio/term/term-suishou/tofugu-wanikani-水晶.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E6%B0%B4%E6%99%B6%E3%80%90%E3%81%99%E3%81%84%E3%81%97%E3%82%87%E3%81%86%E3%80%91.mp3",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
