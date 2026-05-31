@@ -2043,9 +2043,8 @@
       "audio_speaker": "driftking__",
       "audio_attribution": "driftking__ via Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%A0%E3%81%91/#ja",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1007340/1",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Manual review",
       "pitch_accent_status": "resolved"
     },
     {
