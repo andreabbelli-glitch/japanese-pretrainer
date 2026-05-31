@@ -45,6 +45,11 @@ export {
   type ReviewGradeResult
 } from "@/features/review/server/service";
 export {
+  resetReviewCardProgress,
+  setLinkedEntryStatusByCard,
+  setReviewCardSuspended
+} from "@/features/review/server/mutations";
+export {
   requireMediaIdForSlug,
   requireReviewPageDataForScope,
   resolvePostGradeReviewSessionPageData,

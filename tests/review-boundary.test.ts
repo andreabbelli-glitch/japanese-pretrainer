@@ -110,6 +110,26 @@ describe("review feature boundary", () => {
     );
   });
 
+  it("keeps review action mutations out of the grading service", async () => {
+    const source = await readFile(
+      path.join(
+        PROJECT_ROOT,
+        "src",
+        "features",
+        "review",
+        "server",
+        "action-mutations.ts"
+      ),
+      "utf8"
+    );
+
+    const serviceImportPattern =
+      /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["'](?:@\/features\/review\/server\/service|\.\/service(?:\.ts)?)(?:["'])/u;
+
+    expect(source).toContain("@/features/review/server/mutations");
+    expect(source).not.toMatch(serviceImportPattern);
+  });
+
   it("keeps review queue projection free of database, cache, and mutation details", async () => {
     const source = await readFile(
       path.join(

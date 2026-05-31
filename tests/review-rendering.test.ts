@@ -19,10 +19,8 @@ import {
   getReviewQueueSnapshotForMedia,
   hydrateReviewCard
 } from "@/features/review/server";
-import {
-  applyReviewGrade,
-  setLinkedEntryStatusByCard
-} from "@/features/review/server/service";
+import { applyReviewGrade } from "@/features/review/server/service";
+import { setLinkedEntryStatusByCard } from "@/features/review/server/mutations";
 import { updateStudySettings } from "@/features/settings/server";
 import {
   crossMediaFixture,

@@ -34,11 +34,13 @@ import {
 import { getSafeReviewForcedContrastClientErrorMessage } from "@/features/review/model/error-messages";
 import {
   applyReviewGrade,
-  gradeReviewCardInTransaction,
+  gradeReviewCardInTransaction
+} from "@/features/review/server/service";
+import {
   resetReviewCardProgress,
   setLinkedEntryStatusByCard,
   setReviewCardSuspended
-} from "@/features/review/server/service";
+} from "@/features/review/server/mutations";
 import type { ReviewForcedContrastResolution } from "@/features/review/types";
 import {
   crossMediaFixture,

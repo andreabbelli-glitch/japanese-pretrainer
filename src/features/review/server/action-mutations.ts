@@ -2,7 +2,7 @@ import {
   resetReviewCardProgress,
   setLinkedEntryStatusByCard,
   setReviewCardSuspended
-} from "@/features/review/server/service";
+} from "@/features/review/server/mutations";
 
 import type { ReviewActionCachePolicy } from "@/features/review/server/action-cache-policy";
 
