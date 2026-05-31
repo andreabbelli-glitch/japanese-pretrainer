@@ -22,6 +22,7 @@ import {
   listGlossaryProgressSummaries,
   listGrammarEntryReviewSummaries,
   listGrammarEntryReviewSummariesByIds,
+  listGrammarReviewSubjectIdentityRowsByIds,
   listLessonEntryLinks,
   listEntryStudySignals,
   listLessonsByMediaId,
@@ -30,7 +31,8 @@ import {
   listMediaBySlugs,
   listReviewCardsByMediaIds,
   listTermEntryReviewSummaries,
-  listTermEntryReviewSummariesByIds
+  listTermEntryReviewSummariesByIds,
+  listTermReviewSubjectIdentityRowsByIds
 } from "@/db/queries";
 import { runMigrations } from "@/db/migrate";
 import {
@@ -566,6 +568,41 @@ describe("database layer", () => {
     expect(grammar[0]).not.toHaveProperty("mediaTitle");
     expect(grammar[0]).not.toHaveProperty("segmentTitle");
     expect(grammar[0]).not.toHaveProperty("crossMediaGroupKey");
+  });
+
+  it("keeps review overview subject identity rows presentation-free", async () => {
+    const [terms, grammar] = await Promise.all([
+      listTermReviewSubjectIdentityRowsByIds(database, [
+        developmentFixture.termDbId
+      ]),
+      listGrammarReviewSubjectIdentityRowsByIds(database, [
+        developmentFixture.grammarDbId
+      ])
+    ]);
+
+    expect(terms).toHaveLength(1);
+    expect(terms[0]).toEqual({
+      id: developmentFixture.termDbId,
+      crossMediaGroupId: null,
+      lemma: "行く",
+      reading: "いく"
+    });
+    expect(terms[0]).not.toHaveProperty("meaningIt");
+    expect(terms[0]).not.toHaveProperty("audioSrc");
+    expect(terms[0]).not.toHaveProperty("pitchAccent");
+    expect(terms[0]).not.toHaveProperty("mediaSlug");
+
+    expect(grammar).toHaveLength(1);
+    expect(grammar[0]).toEqual({
+      id: developmentFixture.grammarDbId,
+      crossMediaGroupId: null,
+      pattern: "〜ている",
+      reading: null
+    });
+    expect(grammar[0]).not.toHaveProperty("meaningIt");
+    expect(grammar[0]).not.toHaveProperty("audioSrc");
+    expect(grammar[0]).not.toHaveProperty("pitchAccent");
+    expect(grammar[0]).not.toHaveProperty("mediaSlug");
   });
 
   it("uses a trimmed segment query for local glossary filters", async () => {

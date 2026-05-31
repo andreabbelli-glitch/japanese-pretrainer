@@ -3,13 +3,10 @@ import {
   countReviewSubjectsIntroducedOnDay,
   getReviewLaunchCandidateByMediaId,
   listGrammarEntryReviewSummariesByIds,
-  listReviewMediaRefs,
   listReviewLaunchCandidates,
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
-  listReviewSubjectStatesByKeys,
   listTermEntryReviewSummariesByIds,
-  type GlobalReviewOverviewData,
   type MediaListItem,
   type ReviewCardListItem,
   type ReviewLaunchCandidate
@@ -21,12 +18,10 @@ import {
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/features/cache/server/data-cache";
-import { pickBestBy } from "@/features/shared/model/collections";
 import {
   getLocalIsoDateKey,
   getLocalIsoTimeBucketKey
 } from "@/features/shared/model/local-date";
-import { stripInlineMarkdown } from "@/features/study/ui/furigana";
 import {
   getReviewDailyLimit,
   getStudySettings
@@ -35,14 +30,7 @@ import {
   measureWith,
   type ReviewProfiler
 } from "@/features/review/server/profiler";
-import { resolveReviewSubjectGroups } from "@/features/review/server/subject-state-lookup";
 import { hasCompletedReviewLesson } from "@/features/review/model/state";
-import {
-  buildQueueIntroLabel,
-  buildReviewOverviewSnapshot,
-  buildReviewSubjectModels,
-  bucketAndSortReviewSubjectModels
-} from "@/features/review/model/queue";
 import type { ReviewSubjectGroup } from "@/features/review/model/subject";
 import {
   buildEntryLookup,
@@ -51,9 +39,12 @@ import {
   type ReviewGrammarLookupEntry,
   type ReviewTermLookupEntry
 } from "@/features/review/server/card-presenters";
-import type { ReviewOverviewSnapshot } from "@/features/review/types";
 import type { ReviewSearchState } from "@/features/review/model/search-state";
-import { getPendingConsolidationSubjectKeySet } from "@/features/consolidation/server";
+import {
+  filterEligibleReviewCards,
+  filterReviewCardsBySubjectGroups,
+  resolveReviewWorkspaceSubjectGroups
+} from "@/features/review/server/workspace-helpers";
 
 export type ReviewPageLoadOptions = {
   bypassCache?: boolean;
@@ -88,8 +79,6 @@ export type LoadedGlobalReviewPageWorkspace = {
   reviewFrontFurigana: boolean;
   searchState: ReviewSearchState;
 } & LoadedReviewWorkspaceV2;
-
-const EMPTY_ENTRY_LOOKUP = new Map<string, ReviewEntryLookupItem>();
 
 export async function loadReviewEntrySummariesForCards(input: {
   cards: ReviewCardListItem[];
@@ -214,41 +203,15 @@ export async function loadReviewWorkspaceV2(input: {
       })
   );
   const subjectGroupsPromise = stableWorkspacePromise.then(
-    async (stableWorkspace) => {
-      if (stableWorkspace.cards.length === 0) {
-        return [] as ReviewSubjectGroup[];
-      }
-
-      const { subjectGroups } = await measureWith(
-        input.profiler,
-        "resolveReviewSubjectGroups",
-        () =>
-          resolveReviewSubjectGroups({
-            cards: stableWorkspace.cards,
-            grammar: stableWorkspace.grammar,
-            loadSubjectStatesByKeys: (subjectKeys) =>
-              listReviewSubjectStatesByKeys(database, subjectKeys),
-            nowIso: now.toISOString(),
-            terms: stableWorkspace.terms
-          }),
-        (value) => ({ subjectGroups: value.subjectGroups.length })
-      );
-
-      const pendingConsolidationSubjectKeys =
-        await getPendingConsolidationSubjectKeySet(
-          database,
-          subjectGroups.map((group) => group.identity.subjectKey)
-        );
-
-      if (pendingConsolidationSubjectKeys.size === 0) {
-        return subjectGroups;
-      }
-
-      return subjectGroups.filter(
-        (group) =>
-          !pendingConsolidationSubjectKeys.has(group.identity.subjectKey)
-      );
-    }
+    async (stableWorkspace) =>
+      resolveReviewWorkspaceSubjectGroups({
+        cards: stableWorkspace.cards,
+        database,
+        grammar: stableWorkspace.grammar,
+        now,
+        profiler: input.profiler,
+        terms: stableWorkspace.terms
+      })
   );
   const [stableWorkspace, dailyLimit, newIntroducedTodayCount, subjectGroups] =
     await Promise.all([
@@ -445,63 +408,6 @@ export async function loadReviewIntroducedTodayCountCached(
   });
 }
 
-export async function getReviewLaunchMedia(
-  database: DatabaseClient = db
-): Promise<{
-  slug: string;
-  title: string;
-} | null> {
-  const mediaRows = await listMediaCached(database);
-  const snapshots = await loadReviewOverviewSnapshots(
-    database,
-    mediaRows.map((item) => ({
-      id: item.id,
-      slug: item.slug
-    })),
-    {
-      globalMediaRows: mediaRows
-    }
-  );
-
-  return pickBestBy(mediaRows, (left, right) => {
-    const leftSnapshot = snapshots.get(left.id);
-    const rightSnapshot = snapshots.get(right.id);
-    const scoreDifference =
-      scoreReviewLaunchCandidate({
-        activeReviewCards: leftSnapshot?.activeCards ?? 0,
-        cardsTotal: leftSnapshot?.totalCards ?? 0,
-        dueCount: leftSnapshot?.dueCount ?? 0
-      }) -
-      scoreReviewLaunchCandidate({
-        activeReviewCards: rightSnapshot?.activeCards ?? 0,
-        cardsTotal: rightSnapshot?.totalCards ?? 0,
-        dueCount: rightSnapshot?.dueCount ?? 0
-      });
-
-    if (scoreDifference !== 0) {
-      return scoreDifference;
-    }
-
-    if ((leftSnapshot?.dueCount ?? 0) !== (rightSnapshot?.dueCount ?? 0)) {
-      return (rightSnapshot?.dueCount ?? 0) - (leftSnapshot?.dueCount ?? 0);
-    }
-
-    if (
-      (leftSnapshot?.activeCards ?? 0) !== (rightSnapshot?.activeCards ?? 0)
-    ) {
-      return (
-        (rightSnapshot?.activeCards ?? 0) - (leftSnapshot?.activeCards ?? 0)
-      );
-    }
-
-    if ((leftSnapshot?.totalCards ?? 0) !== (rightSnapshot?.totalCards ?? 0)) {
-      return (rightSnapshot?.totalCards ?? 0) - (leftSnapshot?.totalCards ?? 0);
-    }
-
-    return left.title.localeCompare(right.title, "it");
-  });
-}
-
 export async function getEligibleReviewCardsByMediaId(
   mediaId: string,
   database: DatabaseClient = db
@@ -509,227 +415,6 @@ export async function getEligibleReviewCardsByMediaId(
   const cards = await listReviewCardsByMediaId(database, mediaId);
 
   return filterEligibleReviewCards(cards);
-}
-
-type ReviewOverviewLoadOptions = {
-  asOf?: Date;
-  globalMediaRows?: Array<{
-    id: string;
-    slug: string;
-  }>;
-  resolvedDailyLimit?: number;
-  resolvedNewIntroducedTodayCount?: number;
-};
-
-export async function loadReviewOverviewBundle(
-  database: DatabaseClient,
-  media: Array<{
-    id: string;
-    slug: string;
-  }>,
-  options: ReviewOverviewLoadOptions = {}
-) {
-  const now = options.asOf ?? new Date();
-  const globalMediaRows =
-    options.globalMediaRows ?? (await listReviewMediaRefs(database));
-  const mediaIds = globalMediaRows.map((item) => item.id);
-  const workspace = await loadReviewWorkspaceV2({
-    database,
-    mediaIds,
-    now,
-    resolvedDailyLimit: options.resolvedDailyLimit,
-    resolvedNewIntroducedTodayCount: options.resolvedNewIntroducedTodayCount
-  });
-  const shared = buildSharedReviewOverviewInput(workspace);
-
-  return {
-    byMedia: buildReviewOverviewSnapshotsFromWorkspace(
-      workspace,
-      media,
-      shared
-    ),
-    global: buildReviewOverviewSnapshotFromWorkspace(workspace, shared)
-  };
-}
-
-export async function loadReviewOverviewSnapshots(
-  database: DatabaseClient,
-  media: Array<{
-    id: string;
-    slug: string;
-  }>,
-  options: ReviewOverviewLoadOptions = {}
-) {
-  if (media.length === 0) {
-    return new Map<string, ReviewOverviewSnapshot>();
-  }
-
-  const bundle = await loadReviewOverviewBundle(database, media, options);
-
-  return bundle.byMedia;
-}
-
-export async function loadGlobalReviewOverviewSnapshot(
-  database: DatabaseClient = db,
-  options: {
-    asOf?: Date;
-    resolvedDailyLimit?: number;
-    resolvedNewIntroducedTodayCount?: number;
-  } = {}
-) {
-  const now = options.asOf ?? new Date();
-  const bundle = await loadReviewOverviewBundle(database, [], {
-    asOf: now,
-    resolvedDailyLimit: options.resolvedDailyLimit,
-    resolvedNewIntroducedTodayCount: options.resolvedNewIntroducedTodayCount
-  });
-
-  return bundle.global;
-}
-
-function buildSharedReviewOverviewInput(workspace: LoadedReviewWorkspaceV2) {
-  const nowIso = workspace.now.toISOString();
-  const subjectModels = buildReviewSubjectModels({
-    cards: workspace.cards,
-    entryLookup: EMPTY_ENTRY_LOOKUP,
-    nowIso,
-    subjectGroups: workspace.subjectGroups
-  });
-
-  return {
-    buckets: bucketAndSortReviewSubjectModels(subjectModels),
-    nowIso,
-    subjectModels
-  };
-}
-
-function buildReviewOverviewSnapshotFromWorkspace(
-  workspace: LoadedReviewWorkspaceV2,
-  shared = buildSharedReviewOverviewInput(workspace)
-) {
-  const { buckets, nowIso, subjectModels } = shared;
-
-  return buildReviewOverviewSnapshot({
-    buckets,
-    cards: workspace.cards,
-    dailyLimit: workspace.dailyLimit,
-    entryLookup: EMPTY_ENTRY_LOOKUP,
-    extraNewCount: 0,
-    newIntroducedTodayCount: workspace.newIntroducedTodayCount,
-    nowIso,
-    subjectGroups: workspace.subjectGroups,
-    subjectModels
-  });
-}
-
-function buildReviewOverviewSnapshotsFromWorkspace(
-  workspace: LoadedReviewWorkspaceV2,
-  media: Array<{
-    id: string;
-    slug: string;
-  }>,
-  shared = buildSharedReviewOverviewInput(workspace)
-) {
-  const { buckets, nowIso, subjectModels } = shared;
-  const snapshots = new Map<string, ReviewOverviewSnapshot>();
-
-  for (const item of media) {
-    snapshots.set(
-      item.id,
-      buildReviewOverviewSnapshot({
-        buckets,
-        cards: workspace.cards,
-        dailyLimit: workspace.dailyLimit,
-        entryLookup: EMPTY_ENTRY_LOOKUP,
-        extraNewCount: 0,
-        newIntroducedTodayCount: workspace.newIntroducedTodayCount,
-        nowIso,
-        subjectGroups: workspace.subjectGroups,
-        subjectModels,
-        visibleMediaId: item.id
-      })
-    );
-  }
-
-  return snapshots;
-}
-
-export function mapReviewOverviewSnapshot(input: {
-  dailyLimit: number;
-  newIntroducedTodayCount: number;
-  overview:
-    | GlobalReviewOverviewData
-    | (ReviewLaunchCandidate & {
-        newAvailableCount: number;
-        newQueuedCount?: number;
-      })
-    | undefined;
-}) {
-  const { dailyLimit, newIntroducedTodayCount, overview } = input;
-
-  if (!overview) {
-    return {
-      activeCards: 0,
-      dailyLimit,
-      dueCount: 0,
-      effectiveDailyLimit: dailyLimit,
-      manualCount: 0,
-      newAvailableCount: 0,
-      newQueuedCount: 0,
-      queueCount: 0,
-      queueLabel: buildQueueIntroLabel({
-        dailyLimit,
-        dueCount: 0,
-        manualCount: 0,
-        newQueuedCount: 0,
-        sessionTopUpNewCount: 0,
-        upcomingCount: 0
-      }),
-      suspendedCount: 0,
-      tomorrowCount: 0,
-      totalCards: 0,
-      upcomingCount: 0
-    };
-  }
-
-  const remainingNewSlots = Math.max(dailyLimit - newIntroducedTodayCount, 0);
-  const newQueuedCount =
-    "newQueuedCount" in overview && overview.newQueuedCount != null
-      ? overview.newQueuedCount
-      : Math.min(overview.newAvailableCount, remainingNewSlots);
-  const upcomingCount = Math.max(
-    overview.activeReviewCards - overview.dueCount,
-    0
-  );
-  const nextCardFront =
-    overview.firstDueFront ??
-    (newQueuedCount > 0 ? (overview.firstNewFront ?? null) : null);
-
-  return {
-    activeCards: overview.activeReviewCards,
-    dailyLimit,
-    dueCount: overview.dueCount,
-    effectiveDailyLimit: dailyLimit,
-    manualCount: overview.manualCount,
-    newAvailableCount: overview.newAvailableCount,
-    newQueuedCount,
-    nextCardFront: nextCardFront
-      ? stripInlineMarkdown(nextCardFront)
-      : undefined,
-    queueCount: overview.dueCount + newQueuedCount,
-    queueLabel: buildQueueIntroLabel({
-      dailyLimit,
-      dueCount: overview.dueCount,
-      manualCount: overview.manualCount,
-      newQueuedCount,
-      sessionTopUpNewCount: 0,
-      upcomingCount
-    }),
-    suspendedCount: overview.suspendedCount,
-    tomorrowCount: overview.tomorrowCount,
-    totalCards: overview.totalCards,
-    upcomingCount
-  };
 }
 
 function buildEligibleReviewCardsByMedia(input: {
@@ -753,39 +438,4 @@ function buildEligibleReviewCardsByMedia(input: {
   }
 
   return eligibleCards;
-}
-
-function filterEligibleReviewCards(cards: ReviewCardListItem[]) {
-  return cards.filter((card) => hasCompletedReviewLesson(card));
-}
-
-function filterReviewCardsBySubjectGroups(
-  cards: ReviewCardListItem[],
-  subjectGroups: ReviewSubjectGroup[]
-) {
-  const visibleCardIds = new Set(
-    subjectGroups.flatMap((group) => group.cards.map((card) => card.id))
-  );
-
-  return cards.filter((card) => visibleCardIds.has(card.id));
-}
-
-function scoreReviewLaunchCandidate(candidate: {
-  activeReviewCards: number;
-  cardsTotal: number;
-  dueCount: number;
-}) {
-  if (candidate.dueCount > 0) {
-    return 0;
-  }
-
-  if (candidate.activeReviewCards > 0) {
-    return 1;
-  }
-
-  if (candidate.cardsTotal > 0) {
-    return 2;
-  }
-
-  return 3;
 }

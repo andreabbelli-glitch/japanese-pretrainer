@@ -187,6 +187,26 @@ export async function listTermEntryReviewSummariesByIds(
     .orderBy(asc(term.lemma), asc(term.reading));
 }
 
+export async function listTermReviewSubjectIdentityRowsByIds(
+  database: DatabaseQueryClient,
+  termIds: string[]
+) {
+  if (termIds.length === 0) {
+    return [];
+  }
+
+  return database
+    .select({
+      id: term.id,
+      crossMediaGroupId: term.crossMediaGroupId,
+      lemma: term.lemma,
+      reading: term.reading
+    })
+    .from(term)
+    .where(inArray(term.id, termIds))
+    .orderBy(asc(term.lemma), asc(term.reading));
+}
+
 export async function listGrammarEntryReviewSummariesByIds(
   database: DatabaseQueryClient,
   grammarIds: string[]
@@ -221,12 +241,40 @@ export async function listGrammarEntryReviewSummariesByIds(
     .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
 }
 
+export async function listGrammarReviewSubjectIdentityRowsByIds(
+  database: DatabaseQueryClient,
+  grammarIds: string[]
+) {
+  if (grammarIds.length === 0) {
+    return [];
+  }
+
+  return database
+    .select({
+      id: grammarPattern.id,
+      crossMediaGroupId: grammarPattern.crossMediaGroupId,
+      pattern: grammarPattern.pattern,
+      reading: grammarPattern.reading
+    })
+    .from(grammarPattern)
+    .where(inArray(grammarPattern.id, grammarIds))
+    .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
+}
+
 export type TermEntryReviewSummaryById = Awaited<
   ReturnType<typeof listTermEntryReviewSummariesByIds>
 >[number];
 
 export type GrammarEntryReviewSummaryById = Awaited<
   ReturnType<typeof listGrammarEntryReviewSummariesByIds>
+>[number];
+
+export type TermReviewSubjectIdentityRowById = Awaited<
+  ReturnType<typeof listTermReviewSubjectIdentityRowsByIds>
+>[number];
+
+export type GrammarReviewSubjectIdentityRowById = Awaited<
+  ReturnType<typeof listGrammarReviewSubjectIdentityRowsByIds>
 >[number];
 
 export {

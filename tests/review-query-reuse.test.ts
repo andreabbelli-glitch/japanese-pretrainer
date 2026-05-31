@@ -757,7 +757,7 @@ describe("review media query reuse", () => {
     ).toBe(1);
   });
 
-  it("builds a single-media overview snapshot from the shared global review workspace", async () => {
+  it("builds a single-media overview snapshot without loading full entry summaries", async () => {
     const reviewCardsSpy = vi.spyOn(
       dbQueriesModule,
       "listReviewCardsByMediaIds"
@@ -769,6 +769,14 @@ describe("review media query reuse", () => {
     const grammarSpy = vi.spyOn(
       dbQueriesModule,
       "listGrammarEntryReviewSummariesByIds"
+    );
+    const termIdentitySpy = vi.spyOn(
+      dbQueriesModule,
+      "listTermReviewSubjectIdentityRowsByIds"
+    );
+    const grammarIdentitySpy = vi.spyOn(
+      dbQueriesModule,
+      "listGrammarReviewSubjectIdentityRowsByIds"
     );
 
     const snapshots = await loadReviewOverviewSnapshots(database, [
@@ -782,12 +790,16 @@ describe("review media query reuse", () => {
       snapshots.get(developmentFixture.mediaId)?.queueCount
     ).toBeGreaterThanOrEqual(0);
     expect(reviewCardsSpy).toHaveBeenCalledTimes(1);
-    expect(termsSpy).toHaveBeenCalledTimes(1);
-    expect(grammarSpy).toHaveBeenCalledTimes(1);
+    expect(termsSpy.mock.calls.length).toBe(0);
+    expect(grammarSpy.mock.calls.length).toBe(0);
+    expect(termIdentitySpy).toHaveBeenCalledTimes(1);
+    expect(grammarIdentitySpy).toHaveBeenCalledTimes(1);
 
     reviewCardsSpy.mockRestore();
     termsSpy.mockRestore();
     grammarSpy.mockRestore();
+    termIdentitySpy.mockRestore();
+    grammarIdentitySpy.mockRestore();
   });
 
   it("keeps the single-media overview next card aligned with the canonical representative when subject state has no pinned card", async () => {

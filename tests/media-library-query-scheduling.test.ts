@@ -12,6 +12,7 @@ describe("media library query scheduling", () => {
     vi.doUnmock("@/features/shared/model/local-date");
     vi.doUnmock("@/features/media/model/shell-snapshot");
     vi.doUnmock("@/features/review/server/loader");
+    vi.doUnmock("@/features/review/server/overview-loader");
     vi.doUnmock("@/features/settings/server");
     vi.doUnmock("@/features/navigation");
     vi.doUnmock("@/features/study/model/format");
@@ -133,7 +134,9 @@ describe("media library query scheduling", () => {
             totalCards: 3
           }
         ])
-      ),
+      )
+    }));
+    vi.doMock("@/features/review/server/overview-loader", () => ({
       loadReviewOverviewSnapshots: vi.fn(reviewSnapshotsGate.loader())
     }));
     vi.doMock("@/features/settings/server", () => ({

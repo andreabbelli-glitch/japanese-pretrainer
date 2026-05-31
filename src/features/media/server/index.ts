@@ -22,10 +22,8 @@ import {
 } from "@/features/cache/server/data-cache";
 import { calculatePercent } from "@/features/study/model/format";
 import { mediaGlossaryEntryHref } from "@/features/navigation";
-import {
-  loadReviewIntroducedTodayCountCached,
-  loadReviewOverviewSnapshots
-} from "@/features/review/server/loader";
+import { loadReviewIntroducedTodayCountCached } from "@/features/review/server/loader";
+import { loadReviewOverviewSnapshots } from "@/features/review/server/overview-loader";
 import { getReviewDailyLimit } from "@/features/settings/server";
 import { formatDerivedStudyStateLabel } from "@/features/study/model/entry";
 import {
