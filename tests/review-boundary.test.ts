@@ -28,8 +28,7 @@ describe("review feature boundary", () => {
     );
     const legacyReviewFiles = libEntries
       .filter(
-        (entry) =>
-          entry.isFile() && /^review(?:-|\.ts$)/u.test(entry.name)
+        (entry) => entry.isFile() && /^review(?:-|\.ts$)/u.test(entry.name)
       )
       .map((entry) => `src/lib/${entry.name}`)
       .sort((left, right) => left.localeCompare(right));
@@ -71,7 +70,10 @@ describe("review feature boundary", () => {
     const missingOrEmpty: string[] = [];
 
     for (const relativePath of reviewFacadeFiles) {
-      const source = await readFile(path.join(PROJECT_ROOT, relativePath), "utf8");
+      const source = await readFile(
+        path.join(PROJECT_ROOT, relativePath),
+        "utf8"
+      );
 
       if (!source.includes("export")) {
         missingOrEmpty.push(relativePath);
@@ -103,7 +105,29 @@ describe("review feature boundary", () => {
     expect(transitionSource).toContain(
       'export type { ReviewSessionInput } from "@/features/review/types";'
     );
-    expect(transitionSource).not.toContain("export type ReviewSessionInput = {");
+    expect(transitionSource).not.toContain(
+      "export type ReviewSessionInput = {"
+    );
+  });
+
+  it("keeps review queue projection free of database, cache, and mutation details", async () => {
+    const source = await readFile(
+      path.join(
+        PROJECT_ROOT,
+        "src",
+        "features",
+        "review",
+        "server",
+        "queue-projection.ts"
+      ),
+      "utf8"
+    );
+    const implementationImportPattern =
+      /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["'](?:@\/db(?:["'/])|@\/features\/cache(?:["'/])|next\/cache(?:["'/]))/u;
+    const mutationCallPattern = /\.(?:transaction|insert|update|delete)\s*\(/u;
+
+    expect(source).not.toMatch(implementationImportPattern);
+    expect(source).not.toMatch(mutationCallPattern);
   });
 });
 
@@ -140,7 +164,10 @@ async function findImportViolations(files: readonly string[], pattern: RegExp) {
   const violations: string[] = [];
 
   for (const relativePath of files) {
-    const source = await readFile(path.join(PROJECT_ROOT, relativePath), "utf8");
+    const source = await readFile(
+      path.join(PROJECT_ROOT, relativePath),
+      "utf8"
+    );
 
     if (pattern.test(source)) {
       violations.push(relativePath);

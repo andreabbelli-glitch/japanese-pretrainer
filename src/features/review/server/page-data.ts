@@ -9,16 +9,16 @@ import { getStudySettings } from "@/features/settings/server";
 import {
   mediaGlossaryHref,
   mediaHref,
-  mediaReviewCardHref,
   mediaStudyHref
 } from "@/features/navigation";
 import type { ReviewCardSource } from "@/features/review/model/card-contract";
-import { capitalizeToken, formatReviewStateLabel } from "@/features/study/model/format";
 import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
-import { measureWith, type ReviewProfiler } from "@/features/review/server/profiler";
+import {
+  measureWith,
+  type ReviewProfiler
+} from "@/features/review/server/profiler";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "@/features/review/model/grade-previews";
 import {
-  buildReviewSeedStateWithFsrsPreset,
   getFsrsOptimizerCacheKeyPart,
   getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
@@ -33,21 +33,10 @@ import {
   buildReviewFirstCandidateSelectedCardContext,
   resolveReviewPageSelection
 } from "@/features/review/model/queue-selection";
-import {
-  buildBucketDetail,
-  formatBucketLabel,
-  formatShortIsoDate
-} from "@/features/review/model/queue-presentation";
-import { type ReviewQueueStateSnapshot } from "@/features/review/model/queue-state";
-import { type ReviewSubjectModel } from "@/features/review/model/queue-types";
 import type { ReviewSubjectGroup } from "@/features/review/model/subject";
 import {
   buildReviewMediaLookup,
-  buildReviewCardPronunciations,
   loadReviewCardPronunciations,
-  mapQueueCard,
-  resolveReviewCardMedia,
-  resolveReviewCardReading,
   type ReviewEntryLookupItem,
   type ReviewMediaLookup
 } from "@/features/review/server/card-hydration";
@@ -61,28 +50,27 @@ import {
 import type {
   GlobalReviewFirstCandidateLoadResult,
   GlobalReviewPageLoadResult,
-  ReviewFirstCandidateCard,
   ReviewFirstCandidatePageData,
   ReviewPageData,
-  ReviewQueueCard,
   ReviewQueueSnapshot,
   ReviewScope
 } from "@/features/review/types";
-import { stripInlineMarkdown } from "@/features/study/ui/furigana";
+import {
+  buildReviewAdvanceCardsFromQueueModels,
+  buildReviewQueueSnapshot,
+  mapReviewQueueSubjectCardPreview,
+  mapReviewQueueSubjectModel,
+  resolveReviewSubjectSelectionCard
+} from "./queue-projection";
+
+export {
+  buildReviewQueueSnapshot,
+  mapReviewQueueSubjectCardPreview,
+  mapReviewQueueSubjectModel
+} from "./queue-projection";
 
 type ReviewPageWorkspace = ReviewPageData["media"];
 const REVIEW_ADVANCE_WINDOW_SIZE = 3;
-
-type ReviewQueueCardMapInput = {
-  contextCache?: Map<string, ReviewQueueCard["contexts"]>;
-  entryLookup: Map<string, ReviewEntryLookupItem>;
-  fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
-  includePronunciations?: boolean;
-  mediaById: ReviewMediaLookup;
-  nowIso: string;
-  selectedCardId?: string | null;
-  visibleMediaId?: string;
-};
 
 function filterReviewSubjectGroupsByCards(
   subjectGroups: ReviewSubjectGroup[],
@@ -373,31 +361,6 @@ export async function buildReviewPageDataFromWorkspace(input: {
       segmentId: input.searchState.segmentId
     }
   } satisfies ReviewPageData;
-}
-
-function buildReviewAdvanceCardsFromQueueModels(input: {
-  advanceCardModels: ReviewSubjectModel[];
-  entryLookup: Map<string, ReviewEntryLookupItem>;
-  fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
-  mediaById: ReviewMediaLookup;
-  nowIso: string;
-  selectedCardId?: string | null;
-  visibleMediaId?: string;
-}) {
-  const contextCache = new Map<string, ReviewQueueCard["contexts"]>();
-
-  return input.advanceCardModels.map((model) =>
-    mapReviewQueueSubjectModel(model, {
-      contextCache,
-      entryLookup: input.entryLookup,
-      fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
-      includePronunciations: true,
-      mediaById: input.mediaById,
-      nowIso: input.nowIso,
-      selectedCardId: input.selectedCardId,
-      visibleMediaId: input.visibleMediaId
-    })
-  );
 }
 
 export async function getReviewPageData(
@@ -751,8 +714,7 @@ export async function getGlobalReviewFirstCandidateLoadResult(
         newIntroducedTodayCount: workspace.newIntroducedTodayCount,
         now: workspace.now,
         profiler: options.profiler,
-        reviewAutoplayAudioOnReveal:
-          workspace.reviewAutoplayAudioOnReveal,
+        reviewAutoplayAudioOnReveal: workspace.reviewAutoplayAudioOnReveal,
         reviewFrontFurigana: workspace.reviewFrontFurigana,
         scope: "global",
         searchState: workspace.searchState,
@@ -846,221 +808,6 @@ export async function getReviewQueueSnapshotForMedia(
     tomorrowCount: snapshot.tomorrowCount,
     upcomingCount: snapshot.upcomingCount
   };
-}
-
-export function mapReviewQueueSubjectCardPreview(input: {
-  card: ReviewCardSource;
-  entryLookup: Map<string, ReviewEntryLookupItem>;
-  fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
-  mediaById: ReviewMediaLookup;
-  nowIso: string;
-  queueStateSnapshot: ReviewQueueStateSnapshot;
-}) {
-  const cardMedia = resolveReviewCardMedia(input.card, input.mediaById);
-
-  return {
-    back: input.card.back,
-    bucket: input.queueStateSnapshot.bucket,
-    bucketDetail: buildBucketDetail(
-      input.queueStateSnapshot.bucket,
-      input.queueStateSnapshot.dueAt
-    ),
-    bucketLabel: formatBucketLabel(input.queueStateSnapshot.bucket),
-    createdAt: input.card.createdAt,
-    dueAt: input.queueStateSnapshot.dueAt,
-    dueLabel: input.queueStateSnapshot.dueAt
-      ? `Scadenza ${formatShortIsoDate(input.queueStateSnapshot.dueAt)}`
-      : undefined,
-    effectiveState: input.queueStateSnapshot.effectiveState,
-    effectiveStateLabel: formatReviewStateLabel(
-      input.queueStateSnapshot.effectiveState,
-      input.queueStateSnapshot.effectiveState === "known_manual"
-    ),
-    exampleIt: input.card.exampleIt ?? undefined,
-    exampleJp: input.card.exampleJp ?? undefined,
-    front: input.card.front,
-    href: mediaReviewCardHref(cardMedia.slug, input.card.id),
-    id: input.card.id,
-    mediaSlug: cardMedia.slug,
-    mediaTitle: cardMedia.title,
-    notes: input.card.notesIt ?? undefined,
-    orderIndex: input.card.orderIndex,
-    pronunciations: buildReviewCardPronunciations(
-      input.card,
-      input.entryLookup
-    ),
-    rawReviewLabel: input.queueStateSnapshot.rawReviewLabel,
-    reading: resolveReviewCardReading(input.card, input.entryLookup),
-    reviewSeedState: buildReviewSeedStateWithFsrsPreset(
-      input.queueStateSnapshot.reviewSeedState,
-      input.card.cardType,
-      input.fsrsOptimizerSnapshot
-    ),
-    segmentTitle: input.card.segment?.title ?? undefined,
-    typeLabel: capitalizeToken(input.card.cardType)
-  } satisfies ReviewFirstCandidateCard;
-}
-
-export function buildReviewQueueSnapshot(input: {
-  cards: ReviewCardSource[];
-  dailyLimit: number;
-  entryLookup: Map<string, ReviewEntryLookupItem>;
-  extraNewAnchorCount?: number | null;
-  extraNewCount: number;
-  fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
-  mediaById: ReviewMediaLookup;
-  newIntroducedTodayCount: number;
-  nowIso: string;
-  subjectGroups: ReviewSubjectGroup[];
-  visibleMediaId?: string;
-}) {
-  const snapshot = buildReviewQueueSubjectSnapshot({
-    cards: input.cards,
-    dailyLimit: input.dailyLimit,
-    entryLookup: input.entryLookup,
-    extraNewAnchorCount: input.extraNewAnchorCount,
-    extraNewCount: input.extraNewCount,
-    newIntroducedTodayCount: input.newIntroducedTodayCount,
-    nowIso: input.nowIso,
-    subjectGroups: input.subjectGroups,
-    visibleMediaId: input.visibleMediaId
-  });
-  const mapInput: ReviewQueueCardMapInput = {
-    contextCache: new Map(),
-    entryLookup: input.entryLookup,
-    fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
-    mediaById: input.mediaById,
-    nowIso: input.nowIso,
-    visibleMediaId: input.visibleMediaId
-  };
-
-  return {
-    advanceCards: [],
-    cards: snapshot.queueModels.map((model) =>
-      mapReviewQueueSubjectModel(model, mapInput)
-    ),
-    dailyLimit: snapshot.dailyLimit,
-    dueCount: snapshot.dueCount,
-    effectiveDailyLimit: snapshot.effectiveDailyLimit,
-    introLabel: snapshot.introLabel,
-    manualCards: snapshot.manualModels.map((model) =>
-      mapReviewQueueSubjectModel(model, mapInput)
-    ),
-    manualCount: snapshot.manualCount,
-    newAvailableCount: snapshot.newAvailableCount,
-    newQueuedCount: snapshot.newQueuedCount,
-    queueLabel: snapshot.introLabel,
-    queueCount: snapshot.queueCount,
-    suspendedCards: snapshot.suspendedModels.map((model) =>
-      mapReviewQueueSubjectModel(model, mapInput)
-    ),
-    suspendedCount: snapshot.suspendedCount,
-    tomorrowCount: snapshot.tomorrowCount,
-    upcomingCards: snapshot.upcomingModels.map((model) =>
-      mapReviewQueueSubjectModel(model, mapInput)
-    ),
-    upcomingCount: snapshot.upcomingCount
-  };
-}
-
-export function mapReviewQueueSubjectModel(
-  model: ReviewSubjectModel,
-  input: ReviewQueueCardMapInput
-) {
-  const selectedCard = resolveReviewSubjectSelectionCard({
-    selectedCardId: input.selectedCardId,
-    subjectModel: model
-  });
-
-  return mapQueueCard(
-    selectedCard,
-    input.entryLookup,
-    model.group.cards,
-    input.mediaById,
-    input.nowIso,
-    input.fsrsOptimizerSnapshot,
-    model.queueStateSnapshot,
-    resolveReviewQueueSubjectContexts(
-      model.group,
-      input.mediaById,
-      input.contextCache,
-      input.visibleMediaId
-    ),
-    {
-      includePronunciations: input.includePronunciations,
-      reviewStateUpdatedAt: model.group.subjectState?.updatedAt ?? null
-    }
-  );
-}
-
-function buildReviewCardContexts(
-  cards: ReviewCardSource[],
-  mediaById: ReviewMediaLookup
-) {
-  return cards
-    .map((item) => {
-      const media = resolveReviewCardMedia(item, mediaById);
-
-      return {
-        cardId: item.id,
-        front: stripInlineMarkdown(item.front),
-        mediaSlug: media.slug,
-        mediaTitle: media.title,
-        segmentTitle: item.segment?.title ?? undefined
-      };
-    })
-    .sort((left, right) => {
-      if (left.mediaTitle !== right.mediaTitle) {
-        return left.mediaTitle.localeCompare(right.mediaTitle, "it");
-      }
-
-      if ((left.segmentTitle ?? "") !== (right.segmentTitle ?? "")) {
-        return (left.segmentTitle ?? "").localeCompare(
-          right.segmentTitle ?? "",
-          "it"
-        );
-      }
-
-      return left.front.localeCompare(right.front, "it");
-    });
-}
-
-function resolveReviewQueueSubjectContexts(
-  group: ReviewSubjectGroup,
-  mediaById: ReviewMediaLookup,
-  contextCache?: Map<string, ReviewQueueCard["contexts"]>,
-  visibleMediaId?: string
-) {
-  const cacheKey = `${group.identity.subjectKey}:${visibleMediaId ?? "all"}`;
-  const cached = contextCache?.get(cacheKey);
-
-  if (cached) {
-    return cached;
-  }
-
-  const contexts = buildReviewCardContexts(
-    visibleMediaId
-      ? group.cards.filter((card) => card.mediaId === visibleMediaId)
-      : group.cards,
-    mediaById
-  );
-
-  contextCache?.set(cacheKey, contexts);
-
-  return contexts;
-}
-
-function resolveReviewSubjectSelectionCard(input: {
-  selectedCardId?: string | null;
-  subjectModel: ReviewSubjectModel;
-}) {
-  return (
-    (input.selectedCardId
-      ? input.subjectModel.group.cards.find(
-          (card) => card.id === input.selectedCardId
-        )
-      : null) ?? input.subjectModel.card
-  );
 }
 
 function resolveReviewNotice(value: string | null) {
