@@ -67,15 +67,12 @@ aliases:
 notes_it: >-
   La particella よ (yo) attaccata a un nome in questo modo funge da vocativo
   solenne, simile al nostro "Oh Maestro": indica un profondo rispetto e un
-  legame di discepolato. In giapponese, la parola
-  `{{結晶|けっしょう}}` ("cristallizzazione") viene usata spesso anche in senso
-  metaforico. Oltre al valore concreto di minerale o cristallo, rappresenta il
-  risultato tangibile, il culmine o il frutto supremo di uno sforzo, di un
-  legame o di un sentimento profondo. In questo contesto, il personaggio
-  nell'illustrazione sta offrendo o mostrando il suo potere supremo, sotto
-  forma di cristallo lucente, al proprio mentore: "questo potere/questo oggetto
-  è il frutto e la dimostrazione fisica di tutta la gratitudine che provo verso
-  di te e i tuoi insegnamenti".
+  legame di discepolato. `{{結晶|けっしょう}}` significa "cristallo", ma anche
+  "risultato condensato", "frutto", "concretizzazione". Qui c'è il punto
+  chiave: `{{結晶|けっしょう}}` significa letteralmente "cristallo", ma in
+  giapponese può anche voler dire la forma finale e tangibile di qualcosa
+  accumulato nel tempo. Quindi "la cristallizzazione della mia gratitudine"
+  significa: "tutto ciò che ti devo si è concentrato in questa cosa".
 level_hint: n3
 :::
 
@@ -138,6 +135,26 @@ tags: [live-duel, term, kanji, metaphor, crystal]
 :::
 
 :::card
+id: card-shi-yo-aite-player-hitori-nitsuki-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-shi-yo-kore-ga-watashi-no-kansha-no-kesshou-da
+entry_type: grammar
+entry_id: grammar-aite-hitori-nitsuki
+card_type: concept
+front: '{{相手|あいて}}プレイヤー{{1人|ひとり}}につき'
+back: per ogni player avversario
+example_jp: >-
+  {{相手|あいて}}プレイヤー{{1人|ひとり}}につき、その
+  {{相手|あいて}}のエレメントを{{1|ひと}}つ{{選|えら}}ぶ。
+example_it: >-
+  Per ogni player avversario, scegli uno dei suoi elementi.
+notes_it: >-
+  `{{1人|ひとり}}につき` lega la stessa procedura a ogni persona contata. In
+  questa carta, `{{相手|あいて}}プレイヤー{{1人|ひとり}}につき` crea un giro per
+  ciascun player avversario: per ognuno scegli un suo elemento.
+tags: [live-duel, grammar, nitsuki, opponent, distribution]
+:::
+
+:::card
 id: card-shi-yo-kore-ga-watashi-no-kansha-no-kesshou-da-concept
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-shi-yo-kore-ga-watashi-no-kansha-no-kesshou-da
 entry_type: grammar
@@ -153,14 +170,11 @@ example_it: >-
 notes_it: >-
   La particella よ (yo) attaccata a un nome in questo modo funge da vocativo
   solenne, simile al nostro "Oh Maestro": indica un profondo rispetto e un
-  legame di discepolato. In giapponese, la parola
-  `{{結晶|けっしょう}}` ("cristallizzazione") viene usata spesso anche in senso
-  metaforico. Oltre al valore concreto di minerale o cristallo, rappresenta il
-  risultato tangibile, il culmine o il frutto supremo di uno sforzo, di un
-  legame o di un sentimento profondo. In questo contesto, il personaggio
-  nell'illustrazione sta offrendo o mostrando il suo potere supremo, sotto
-  forma di cristallo lucente, al proprio mentore: "questo potere/questo oggetto
-  è il frutto e la dimostrazione fisica di tutta la gratitudine che provo verso
-  di te e i tuoi insegnamenti".
+  legame di discepolato. `{{結晶|けっしょう}}` significa "cristallo", ma anche
+  "risultato condensato", "frutto", "concretizzazione". Qui c'è il punto
+  chiave: `{{結晶|けっしょう}}` significa letteralmente "cristallo", ma in
+  giapponese può anche voler dire la forma finale e tangibile di qualcosa
+  accumulato nel tempo. Quindi "la cristallizzazione della mia gratitudine"
+  significa: "tutto ciò che ti devo si è concentrato in questa cosa".
 tags: [live-duel, grammar, title, vocative, metaphor]
 :::

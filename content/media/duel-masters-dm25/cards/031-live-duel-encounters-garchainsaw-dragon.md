@@ -13,7 +13,7 @@ pattern: 相手1人につき
 title: Per ogni avversario
 reading: あいてひとりにつき
 meaning_it: per ogni avversario
-aliases: [相手1人につき]
+aliases: [相手1人につき, 相手プレイヤー1人につき]
 notes_it: >-
   `1人につき` distribuisce la stessa procedura su ogni avversario presente.
   In una partita a due giocatori il chunk si legge come `per l'avversario`,
