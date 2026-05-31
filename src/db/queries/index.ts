@@ -10,3 +10,4 @@ export * from "./pronunciation-resolve.ts";
 export * from "./review.ts";
 export * from "./review-subject.ts";
 export * from "./textbook.ts";
+export * from "./user-settings.ts";

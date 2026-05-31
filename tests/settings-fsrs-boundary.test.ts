@@ -66,6 +66,37 @@ describe("settings and FSRS optimizer feature boundary", () => {
 
     expect(source).not.toMatch(implementationImportPattern);
   });
+
+  it("centralizes user setting persistence in the database query layer", async () => {
+    const sharedHelperPath = path.join(
+      PROJECT_ROOT,
+      "src",
+      "db",
+      "queries",
+      "user-settings.ts"
+    );
+    const violations: string[] = [];
+
+    if (!(await fileExists(sharedHelperPath))) {
+      violations.push("missing src/db/queries/user-settings.ts");
+    }
+
+    for (const relativePath of [
+      "src/features/settings/server/index.ts",
+      "src/features/fsrs-optimizer/server/index.ts"
+    ]) {
+      const source = await readFile(
+        path.join(PROJECT_ROOT, relativePath),
+        "utf8"
+      );
+
+      if (/\buserSetting\b/u.test(source)) {
+        violations.push(relativePath);
+      }
+    }
+
+    expect(violations).toEqual([]);
+  });
 });
 
 async function fileExists(filePath: string) {

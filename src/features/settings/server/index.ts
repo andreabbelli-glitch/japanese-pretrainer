@@ -1,7 +1,12 @@
-import { inArray } from "drizzle-orm";
-
 import { db, type DatabaseClient } from "@/db";
-import { userSetting } from "@/db/schema";
+import {
+  listUserSettingsByKeys,
+  mapUserSettingsByKey,
+  parseUserSettingValue,
+  upsertUserSettingValue,
+  type UserSettingKey,
+  type UserSettingStorageRow
+} from "@/db/queries";
 import {
   SETTINGS_TAG,
   canUseDataCache,
@@ -47,13 +52,10 @@ const studySettingKeys = [
   "review_autoplay_audio_on_reveal",
   "review_front_furigana",
   "review_daily_limit"
-] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
+] as const satisfies readonly UserSettingKey[];
 
-type StudySettingKey = (typeof userSetting.$inferSelect)["key"];
-type StudySettingRow = Pick<
-  typeof userSetting.$inferSelect,
-  "key" | "valueJson"
->;
+type StudySettingKey = UserSettingKey;
+type StudySettingRow = Pick<UserSettingStorageRow, "key" | "valueJson">;
 
 const inFlightStudySettingsSnapshots = new WeakMap<
   DatabaseClient,
@@ -93,51 +95,49 @@ export async function getGlossaryDefaultSort(
 async function loadStudySettingsRows(
   database: DatabaseClient
 ): Promise<StudySettingRow[]> {
-  return database.query.userSetting.findMany({
-    where: inArray(userSetting.key, studySettingKeys)
-  });
+  return listUserSettingsByKeys(database, studySettingKeys);
 }
 
 function buildStudySettingsSnapshot(rows: StudySettingRow[]): StudySettings {
-  const valuesByKey = new Map(rows.map((row) => [row.key, row.valueJson]));
+  const valuesByKey = mapUserSettingsByKey(rows);
 
   return {
-    furiganaMode: parseSettingValue(
+    furiganaMode: parseUserSettingValue(
       valuesByKey.get("furigana_mode"),
       normalizeFuriganaMode,
       defaultStudySettings.furiganaMode
     ),
-    glossaryDefaultSort: parseSettingValue(
+    glossaryDefaultSort: parseUserSettingValue(
       valuesByKey.get("glossary_default_sort"),
       normalizeGlossaryDefaultSort,
       defaultStudySettings.glossaryDefaultSort
     ),
-    kanjiClashDailyNewLimit: parseSettingValue(
+    kanjiClashDailyNewLimit: parseUserSettingValue(
       valuesByKey.get("kanji_clash_daily_new_limit"),
       normalizeKanjiClashDailyNewLimit,
       defaultStudySettings.kanjiClashDailyNewLimit
     ),
-    kanjiClashDefaultScope: parseSettingValue(
+    kanjiClashDefaultScope: parseUserSettingValue(
       valuesByKey.get("kanji_clash_default_scope"),
       normalizeKanjiClashDefaultScope,
       defaultStudySettings.kanjiClashDefaultScope
     ),
-    kanjiClashManualDefaultSize: parseSettingValue(
+    kanjiClashManualDefaultSize: parseUserSettingValue(
       valuesByKey.get("kanji_clash_manual_default_size"),
       normalizeKanjiClashManualDefaultSize,
       defaultStudySettings.kanjiClashManualDefaultSize
     ),
-    reviewAutoplayAudioOnReveal: parseSettingValue(
+    reviewAutoplayAudioOnReveal: parseUserSettingValue(
       valuesByKey.get("review_autoplay_audio_on_reveal"),
       normalizeReviewAutoplayAudioOnReveal,
       defaultStudySettings.reviewAutoplayAudioOnReveal
     ),
-    reviewFrontFurigana: parseSettingValue(
+    reviewFrontFurigana: parseUserSettingValue(
       valuesByKey.get("review_front_furigana"),
       normalizeReviewFrontFurigana,
       defaultStudySettings.reviewFrontFurigana
     ),
-    reviewDailyLimit: parseSettingValue(
+    reviewDailyLimit: parseUserSettingValue(
       valuesByKey.get("review_daily_limit"),
       normalizeReviewDailyLimit,
       defaultStudySettings.reviewDailyLimit
@@ -276,7 +276,7 @@ export async function updateStudySettings(
 
   await Promise.all(
     changedSettings.map((setting) =>
-      upsertUserSetting({
+      upsertUserSettingValue({
         database,
         key: setting.key,
         nowIso,
@@ -383,22 +383,6 @@ export function resolveKanjiClashDefaultScope(
   return scope;
 }
 
-function parseSettingValue<TValue, TResult>(
-  valueJson: string | undefined,
-  normalize: (value: TValue) => TResult,
-  fallback: TResult
-) {
-  if (!valueJson) {
-    return fallback;
-  }
-
-  try {
-    return normalize(JSON.parse(valueJson) as TValue);
-  } catch {
-    return fallback;
-  }
-}
-
 function normalizeNumericSettingValue(value: number | string) {
   if (typeof value === "number") {
     return Number.isFinite(value) ? value : null;
@@ -413,26 +397,4 @@ function normalizeNumericSettingValue(value: number | string) {
   const parsed = Number(trimmed);
 
   return Number.isFinite(parsed) ? parsed : null;
-}
-
-async function upsertUserSetting(input: {
-  database: DatabaseClient;
-  key: (typeof userSetting.$inferInsert)["key"];
-  nowIso: string;
-  valueJson: string;
-}) {
-  await input.database
-    .insert(userSetting)
-    .values({
-      key: input.key,
-      valueJson: input.valueJson,
-      updatedAt: input.nowIso
-    })
-    .onConflictDoUpdate({
-      target: userSetting.key,
-      set: {
-        valueJson: input.valueJson,
-        updatedAt: input.nowIso
-      }
-    });
 }

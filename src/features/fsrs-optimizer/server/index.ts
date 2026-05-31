@@ -6,10 +6,16 @@ import { generatorParameters } from "ts-fsrs";
 
 import { db, type DatabaseClient } from "../../../db/index.ts";
 import {
-  card,
-  reviewSubjectLog,
-  userSetting
-} from "../../../db/schema/index.ts";
+  getUserSettingByKey,
+  listUserSettingsByKeys,
+  mapUserSettingsByKey,
+  parseOptionalUserSettingValue,
+  parseUserSettingValue,
+  upsertUserSettingValue,
+  type UserSettingKey,
+  type UserSettingStorageRow
+} from "../../../db/queries/user-settings.ts";
+import { card, reviewSubjectLog } from "../../../db/schema/index.ts";
 import {
   buildReviewSeedStateWithFsrsPreset,
   DEFAULT_FSRS_OPTIMIZER_CONFIG,
@@ -101,10 +107,7 @@ type FsrsTrainingDataset = {
   subjectCount: number;
 };
 
-type FsrsOptimizerSettingRow = Pick<
-  typeof userSetting.$inferSelect,
-  "key" | "updatedAt" | "valueJson"
->;
+type FsrsOptimizerSettingRow = UserSettingStorageRow;
 
 const fsrsWeightCount = generatorParameters({}).w.length;
 
@@ -118,13 +121,13 @@ const fsrsOptimizerSettingKeys = [
   FSRS_OPTIMIZER_STATE_KEY,
   FSRS_PARAMS_RECOGNITION_KEY,
   FSRS_PARAMS_CONCEPT_KEY
-] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
+] as const satisfies readonly UserSettingKey[];
 
 const fsrsOptimizerRuntimeCacheKeySettingKeys = [
   FSRS_OPTIMIZER_CONFIG_KEY,
   FSRS_PARAMS_RECOGNITION_KEY,
   FSRS_PARAMS_CONCEPT_KEY
-] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
+] as const satisfies readonly UserSettingKey[];
 
 const FSRS_RUNTIME_CONTEXT_TTL_MS = 60_000;
 const FSRS_OPTIMIZER_NEW_REVIEW_RATIO = 0.25;
@@ -293,9 +296,10 @@ export async function writeFsrsOptimizerConfig(
   nowIso = new Date().toISOString()
 ) {
   const normalizedConfig = normalizeFsrsOptimizerConfig(config);
-  const existingConfig = await database.query.userSetting.findFirst({
-    where: inArray(userSetting.key, [FSRS_OPTIMIZER_CONFIG_KEY])
-  });
+  const existingConfig = await getUserSettingByKey(
+    database,
+    FSRS_OPTIMIZER_CONFIG_KEY
+  );
 
   if (existingConfig) {
     const parsedExistingConfig = parseFsrsOptimizerConfigValue(
@@ -310,7 +314,7 @@ export async function writeFsrsOptimizerConfig(
     }
   }
 
-  await upsertUserSetting({
+  await upsertUserSettingValue({
     database,
     key: FSRS_OPTIMIZER_CONFIG_KEY,
     nowIso,
@@ -325,7 +329,7 @@ export async function writeFsrsOptimizerState(
   database: FsrsSettingsWriter = db,
   nowIso = new Date().toISOString()
 ) {
-  await upsertUserSetting({
+  await upsertUserSettingValue({
     database,
     key: FSRS_OPTIMIZER_STATE_KEY,
     nowIso,
@@ -343,7 +347,7 @@ export async function writeFsrsOptimizedParameters(
       ? FSRS_PARAMS_CONCEPT_KEY
       : FSRS_PARAMS_RECOGNITION_KEY;
 
-  await upsertUserSetting({
+  await upsertUserSettingValue({
     database,
     key,
     nowIso,
@@ -461,11 +465,9 @@ function normalizeElapsedDays(value: number | null) {
 
 async function loadFsrsOptimizerRows(
   database: FsrsSettingsReader,
-  keys: readonly (typeof userSetting.$inferSelect)["key"][]
+  keys: readonly UserSettingKey[]
 ) {
-  return database.query.userSetting.findMany({
-    where: inArray(userSetting.key, [...keys])
-  }) as Promise<FsrsOptimizerSettingRow[]>;
+  return listUserSettingsByKeys(database, keys);
 }
 
 async function loadFsrsOptimizerRuntimeContext(
@@ -488,7 +490,7 @@ async function loadFsrsOptimizerRuntimeContext(
 function buildFsrsOptimizerSnapshotFromRows(
   rows: FsrsOptimizerSettingRow[]
 ): FsrsOptimizerSnapshot {
-  const valueByKey = new Map(rows.map((row) => [row.key, row.valueJson]));
+  const valueByKey = mapUserSettingsByKey(rows);
 
   return {
     config: parseConfigValue(valueByKey.get(FSRS_OPTIMIZER_CONFIG_KEY)),
@@ -581,65 +583,36 @@ function isNextCacheModuleResolutionError(error: unknown) {
 }
 
 function parseConfigValue(valueJson: string | undefined): FsrsOptimizerConfig {
-  if (!valueJson) {
-    return defaultFsrsOptimizerConfig;
-  }
-
-  try {
-    return normalizeFsrsOptimizerConfig(
-      JSON.parse(valueJson) as Partial<FsrsOptimizerConfig>
-    );
-  } catch {
-    return defaultFsrsOptimizerConfig;
-  }
+  return parseUserSettingValue(
+    valueJson,
+    normalizeFsrsOptimizerConfig,
+    defaultFsrsOptimizerConfig
+  );
 }
 
 function parseFsrsOptimizerConfigValue(
   valueJson: string | undefined
 ): FsrsOptimizerConfig | null {
-  if (!valueJson) {
-    return null;
-  }
-
-  try {
-    return normalizeFsrsOptimizerConfig(
-      JSON.parse(valueJson) as Partial<FsrsOptimizerConfig>
-    );
-  } catch {
-    return null;
-  }
+  return parseOptionalUserSettingValue(valueJson, normalizeFsrsOptimizerConfig);
 }
 
 function parseStateValue(valueJson: string | undefined): FsrsOptimizerState {
-  if (!valueJson) {
-    return defaultFsrsOptimizerState();
-  }
-
-  try {
-    return normalizeFsrsOptimizerState(
-      JSON.parse(valueJson) as Partial<FsrsOptimizerState>
-    );
-  } catch {
-    return defaultFsrsOptimizerState();
-  }
+  return parseUserSettingValue(
+    valueJson,
+    normalizeFsrsOptimizerState,
+    defaultFsrsOptimizerState()
+  );
 }
 
 function parseParamsValue(
   valueJson: string | undefined,
   presetKey: FsrsPresetKey
 ): FsrsOptimizedParameters | null {
-  if (!valueJson) {
-    return null;
-  }
-
-  try {
-    return normalizeFsrsOptimizedParameters(
-      JSON.parse(valueJson) as Partial<FsrsOptimizedParameters>,
-      presetKey
-    );
-  } catch {
-    return null;
-  }
+  return parseOptionalUserSettingValue(
+    valueJson,
+    (value: Partial<FsrsOptimizedParameters>) =>
+      normalizeFsrsOptimizedParameters(value, presetKey)
+  );
 }
 
 function normalizeFsrsOptimizerConfig(
@@ -802,28 +775,6 @@ export async function loadFsrsOptimizerLogRows(
     rating: String(row.rating),
     subjectKey: String(row.subjectKey)
   }));
-}
-
-async function upsertUserSetting(input: {
-  database: FsrsSettingsWriter;
-  key: (typeof userSetting.$inferInsert)["key"];
-  nowIso: string;
-  valueJson: string;
-}) {
-  await input.database
-    .insert(userSetting)
-    .values({
-      key: input.key,
-      valueJson: input.valueJson,
-      updatedAt: input.nowIso
-    })
-    .onConflictDoUpdate({
-      target: userSetting.key,
-      set: {
-        valueJson: input.valueJson,
-        updatedAt: input.nowIso
-      }
-    });
 }
 
 let cachedBindingPackageVersion: string | null = null;
