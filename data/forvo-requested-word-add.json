@@ -369,6 +369,15 @@
       "resolvedAudioSrc": "assets/audio/grammar/grammar-kanoyouni/forvo-manual-かのように.mp3"
     },
     {
+      "entryId": "grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru",
+      "entryKind": "grammar",
+      "label": "こうして選ばれなかったクリーチャーをすべて破壊する。",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "こうしてえらばれなかったくりーちゃーをすべてはかいする",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%93%E3%81%86%E3%81%97%E3%81%A6%E9%81%B8%E3%81%B0%E3%82%8C%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC%E3%82%92%E3%81%99%E3%81%B9%E3%81%A6%E7%A0%B4%E5%A3%8A%E3%81%99%E3%82%8B%E3%80%82/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-31T15:59:33.628Z"
+    },
+    {
       "entryId": "grammar-koushite-misetamushoku-card-1-nitsuki",
       "entryKind": "grammar",
       "label": "こうして見せた無色カード1枚につき",

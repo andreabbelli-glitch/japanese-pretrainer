@@ -1,19 +1,19 @@
 {
   "parser": {
-    "lessons": 63,
-    "cardFiles": 57,
-    "terms": 267,
-    "grammarPatterns": 86,
-    "cards": 395,
-    "references": 6479
+    "lessons": 64,
+    "cardFiles": 58,
+    "terms": 268,
+    "grammarPatterns": 87,
+    "cards": 397,
+    "references": 6561
   },
   "importer": {
-    "term": 267,
-    "termAlias": 743,
-    "grammarPattern": 86,
-    "grammarAlias": 115,
-    "entryLink": 1633,
-    "card": 395,
-    "cardEntryLink": 515
+    "term": 268,
+    "termAlias": 745,
+    "grammarPattern": 87,
+    "grammarAlias": 118,
+    "entryLink": 1661,
+    "card": 397,
+    "cardEntryLink": 527
   }
 }

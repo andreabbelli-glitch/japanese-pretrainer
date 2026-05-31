@@ -267,6 +267,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-koushite-misetamushoku-card-1-nitsuki",
       "audio_src": "assets/audio/grammar/grammar-koushite-misetamushoku-card-1-nitsuki/forvo-mezashi-こうしてみせたむしょくかーと-いちまいにつき.mp3",
       "audio_source": "forvo",
@@ -2320,6 +2325,19 @@
       "pitch_accent": 0,
       "pitch_accent_source": "Kanjium",
       "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-koushite",
+      "audio_src": "assets/audio/term/term-koushite/forvo-kaoring-こうして.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "kaoring",
+      "audio_attribution": "kaoring via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%93%E3%81%86%E3%81%97%E3%81%A6/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/2008040/1",
       "pitch_accent_status": "resolved"
     },
     {

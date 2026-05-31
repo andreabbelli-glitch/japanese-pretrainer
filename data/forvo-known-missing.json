@@ -217,6 +217,15 @@
       "updatedAt": "2026-03-12T19:55:12.140Z"
     },
     {
+      "entryId": "grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru",
+      "entryKind": "grammar",
+      "label": "こうして選ばれなかったクリーチャーをすべて破壊する。",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "こうしてえらばれなかったくりーちゃーをすべてはかいする",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-05-31T15:59:33.605Z"
+    },
+    {
       "entryId": "grammar-no-ato-ni",
       "entryKind": "grammar",
       "label": "～の後に",
