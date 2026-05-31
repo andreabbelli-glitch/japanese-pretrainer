@@ -2203,9 +2203,9 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%BE%E3%81%9F/#ja",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1267460/4",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
