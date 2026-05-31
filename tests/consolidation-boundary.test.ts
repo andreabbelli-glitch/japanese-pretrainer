@@ -7,7 +7,12 @@ const PROJECT_ROOT = process.cwd();
 
 describe("consolidation feature boundary", () => {
   it("has no legacy consolidation implementation module under src/lib", async () => {
-    const legacyPath = path.join(PROJECT_ROOT, "src", "lib", "consolidation.ts");
+    const legacyPath = path.join(
+      PROJECT_ROOT,
+      "src",
+      "lib",
+      "consolidation.ts"
+    );
 
     expect(await fileExists(legacyPath)).toBe(false);
   });
@@ -23,9 +28,39 @@ describe("consolidation feature boundary", () => {
     const violations: string[] = [];
 
     for (const relativePath of files) {
-      const source = await readFile(path.join(PROJECT_ROOT, relativePath), "utf8");
+      const source = await readFile(
+        path.join(PROJECT_ROOT, relativePath),
+        "utf8"
+      );
 
       if (legacyImportPattern.test(source)) {
+        violations.push(relativePath);
+      }
+    }
+
+    expect(violations).toEqual([]);
+  });
+
+  it("keeps production consumers on the public consolidation server facade", async () => {
+    const files = [
+      ...(await listSourceFiles(path.join(PROJECT_ROOT, "src"))),
+      ...(await listSourceFiles(path.join(PROJECT_ROOT, "scripts"))),
+      ...(await listSourceFiles(path.join(PROJECT_ROOT, "tests")))
+    ].filter(
+      (relativePath) =>
+        !relativePath.startsWith("src/features/consolidation/server/")
+    );
+    const internalServerImportPattern =
+      /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+|vi\.mock\()["']@\/features\/consolidation\/server\/[^"']+["']/u;
+    const violations: string[] = [];
+
+    for (const relativePath of files) {
+      const source = await readFile(
+        path.join(PROJECT_ROOT, relativePath),
+        "utf8"
+      );
+
+      if (internalServerImportPattern.test(source)) {
         violations.push(relativePath);
       }
     }
