@@ -1865,6 +1865,15 @@
       "resolvedAudioSrc": "assets/audio/term/term-savark-dg/forvo-manual-さっう-ぁーく-て-ぃーし-ー.mp3"
     },
     {
+      "entryId": "term-sayuu-sakasama",
+      "entryKind": "term",
+      "label": "左右逆さま",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "さゆうさかさま",
+      "requestUrl": "https://forvo.com/word-add/%E5%B7%A6%E5%8F%B3%E9%80%86%E3%81%95%E3%81%BE/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-05-31T17:29:11.374Z"
+    },
+    {
       "entryId": "term-shield-zone",
       "entryKind": "term",
       "label": "シールドゾーン",

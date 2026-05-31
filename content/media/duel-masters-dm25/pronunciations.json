@@ -2112,6 +2112,29 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-jouge",
+      "audio_src": "assets/audio/term/term-jouge/forvo-mezashi-し-ょうけ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%B8%8A%E4%B8%8B/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-jouge-sakasama",
+      "audio_src": "assets/audio/term/term-jouge-sakasama/forvo-le_temps_perdu-し-ょうけ-さかさま.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "le_temps_perdu",
+      "audio_attribution": "le_temps_perdu via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%B8%8A%E4%B8%8B%E9%80%86%E3%81%95%E3%81%BE/#ja",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-jougen",
       "audio_src": "assets/audio/term/term-jougen/forvo-manual-し-ょうけ-ん.mp3",
       "audio_source": "forvo",
@@ -3124,6 +3147,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-sakasama",
+      "audio_src": "assets/audio/term/term-sakasama/tofugu-wanikani-逆さま.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E9%80%86%E3%81%95%E3%81%BE%E3%80%90%E3%81%95%E3%81%8B%E3%81%95%E3%81%BE%E3%80%91.mp3",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-sale-period",
       "audio_src": "assets/audio/term/term-sale-period/forvo-manual-はんは-いきかん.mp3",
       "audio_source": "forvo",
@@ -3175,6 +3211,24 @@
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%BB%E3%81%9E%E3%82%93",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-sayuu",
+      "audio_src": "assets/audio/term/term-sayuu/tofugu-wanikani-左右.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E5%B7%A6%E5%8F%B3%E3%80%90%E3%81%95%E3%82%86%E3%81%86%E3%80%91.mp3",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-sayuu-sakasama",
+      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
