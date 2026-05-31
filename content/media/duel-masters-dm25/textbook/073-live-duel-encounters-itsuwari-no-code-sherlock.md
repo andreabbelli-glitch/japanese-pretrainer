@@ -63,7 +63,7 @@ succede a quel gruppo.
 ---
 
 :::image
-src: assets/cards/itsuwari-no-code-sherlock.jpg
+src: assets/cards/live-duel/itsuwari-no-code-sherlock.webp
 alt: >-
   Carta Duel Masters Itsuwari no Code Sherlock, creatura Unknown Celes con
   effetto di scelta per ciascun player e distruzione delle creature non scelte.
