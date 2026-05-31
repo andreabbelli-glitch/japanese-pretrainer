@@ -19,7 +19,7 @@ import { stripInlineMarkdown } from "@/features/study/ui/furigana";
 import {
   isActivationKeyboardTarget,
   isEditableKeyboardTarget
-} from "../katakana-speed/keyboard-targets";
+} from "@/features/shared/ui/keyboard-targets";
 import styles from "./consolidation-session.module.css";
 import { useConsolidationMeaningAudio } from "./use-consolidation-meaning-audio";
 

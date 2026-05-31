@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   isActivationKeyboardTarget,
   isEditableKeyboardTarget
-} from "@/components/katakana-speed/keyboard-targets";
+} from "@/features/shared/ui/keyboard-targets";
 
 class StubHTMLElement {}
 
@@ -11,7 +11,7 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-describe("katakana speed keyboard target guards", () => {
+describe("keyboard target guards", () => {
   it("recognizes DOM-like controls when HTMLElement comes from another realm", () => {
     vi.stubGlobal("HTMLElement", StubHTMLElement);
 

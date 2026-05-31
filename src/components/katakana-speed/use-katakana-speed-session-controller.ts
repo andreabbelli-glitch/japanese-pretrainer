@@ -25,7 +25,7 @@ import type {
 import {
   isActivationKeyboardTarget,
   isEditableKeyboardTarget
-} from "./keyboard-targets";
+} from "@/features/shared/ui/keyboard-targets";
 
 export type KatakanaSpeedFeedbackStatus =
   | "correct-fast"

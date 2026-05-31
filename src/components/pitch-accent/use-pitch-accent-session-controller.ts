@@ -19,7 +19,7 @@ import type { PitchAccentSessionPageData } from "@/features/pitch-accent/server/
 import {
   isActivationKeyboardTarget,
   isEditableKeyboardTarget
-} from "../katakana-speed/keyboard-targets";
+} from "@/features/shared/ui/keyboard-targets";
 
 export type PitchAccentFeedback = {
   readonly chosenOptionId: string;

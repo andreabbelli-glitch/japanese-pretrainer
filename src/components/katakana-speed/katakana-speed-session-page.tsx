@@ -27,7 +27,7 @@ import { formatDuration } from "./katakana-speed-shared";
 import {
   isActivationKeyboardTarget,
   isEditableKeyboardTarget
-} from "./keyboard-targets";
+} from "@/features/shared/ui/keyboard-targets";
 import { useKatakanaSpeedSessionController } from "./use-katakana-speed-session-controller";
 
 type KatakanaSpeedSessionPageProps = {

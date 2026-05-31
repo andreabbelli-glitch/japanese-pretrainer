@@ -46,6 +46,16 @@ describe("feature UI boundary", () => {
 
     expect(violations).toEqual([]);
   });
+
+  it("keeps shared keyboard target helpers out of Katakana Speed ownership", async () => {
+    const files = await listSourceFiles(["src/components", "tests"]);
+    const violations = await findImportViolations(
+      files,
+      /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+|vi\.mock\()["'](?:@\/components\/katakana-speed\/keyboard-targets|(?:\.\.\/)+katakana-speed\/keyboard-targets|\.\/keyboard-targets)(?:["']|\/)/u
+    );
+
+    expect(violations).toEqual([]);
+  });
 });
 
 async function listFeatureUiClientFiles() {
