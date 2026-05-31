@@ -67,6 +67,29 @@ describe("consolidation feature boundary", () => {
 
     expect(violations).toEqual([]);
   });
+
+  it("keeps the consolidation server facade free of implementation details", async () => {
+    const source = await readFile(
+      path.join(
+        PROJECT_ROOT,
+        "src",
+        "features",
+        "consolidation",
+        "server",
+        "index.ts"
+      ),
+      "utf8"
+    );
+    const implementationImportPattern =
+      /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["'](?:@\/db(?:["'/])|drizzle-orm(?:["'/])|@\/features\/(?:review|textbook)\/server(?:["'/]))/u;
+    const mutationCallPattern = /\.(?:transaction|insert|update)\s*\(/u;
+
+    expect(source).not.toMatch(implementationImportPattern);
+    expect(source).not.toMatch(mutationCallPattern);
+    expect(source).toContain('from "./enqueue"');
+    expect(source).toContain('from "./lesson-completion"');
+    expect(source).toContain('from "./mutations"');
+  });
 });
 
 async function fileExists(filePath: string) {
