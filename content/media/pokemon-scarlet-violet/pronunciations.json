@@ -4398,7 +4398,10 @@
       "audio_speaker": "akitomo",
       "audio_attribution": "akitomo via Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%A1%E3%81%AA%E3%81%BF%E3%81%AB/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -7329,9 +7332,9 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%BF%E3%81%9A/#ja",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%BF%E3%81%9A",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -7425,9 +7428,9 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%A9%E3%81%8F/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%A9%E3%81%8F",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -7665,9 +7668,9 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%93%E3%81%8A%E3%82%8A/#ja",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%93%E3%81%8A%E3%82%8A",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -7953,9 +7956,9 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%A7%E3%82%93%E3%81%8D/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%A7%E3%82%93%E3%81%8D",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -8228,9 +8231,9 @@
       "audio_speaker": "mezashi",
       "audio_attribution": "mezashi via Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%AF%E3%81%8C%E3%81%AD/#ja",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Jiten",
-      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1282680/2",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -8252,7 +8255,10 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%AA%E3%81%BF%E3%81%AE%E3%82%8A/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -8675,9 +8681,9 @@
       "audio_speaker": "le_temps_perdu",
       "audio_attribution": "le_temps_perdu via Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%82%E3%81%8F/#ja",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%82%E3%81%8F",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
       "pitch_accent_status": "resolved"
     },
     {
@@ -8895,7 +8901,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-v316-mahi",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -13762,7 +13771,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-v761-ayashii",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",

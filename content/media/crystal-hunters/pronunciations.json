@@ -2004,7 +2004,10 @@
       "audio_speaker": "straycat88",
       "audio_attribution": "straycat88 via Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%9F%E3%81%8F%E3%81%95%E3%82%93/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -5658,7 +5661,10 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%BF%E3%82%93%E3%81%AA/#ja",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",

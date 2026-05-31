@@ -433,9 +433,8 @@ function parsePitchAccentList(value: string | undefined) {
     return [];
   }
 
-  const parsed = value
-    .split(",")
-    .map((part) => Number.parseInt(part.trim(), 10))
+  const parsed = [...value.matchAll(/\d+/gu)]
+    .map((match) => Number.parseInt(match[0]!, 10))
     .filter((accent) => Number.isInteger(accent) && accent >= 0);
 
   return [...new Set(parsed)];
