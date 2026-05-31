@@ -701,6 +701,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-unknown-to-zenith-ryouhou-wo-shuzoku-ni-motsu",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-uramuki-ni-shite",
       "pitch_accent_status": "miss"
     },
@@ -3060,6 +3065,19 @@
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%83%AB%E3%83%BC%E3%83%A0%E3%83%9E%E3%83%83%E3%83%81/#ja",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ryouhou",
+      "audio_src": "assets/audio/term/term-ryouhou/tofugu-wanikani-両方.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E4%B8%A1%E6%96%B9%E3%80%90%E3%82%8A%E3%82%87%E3%81%86%E3%81%BB%E3%81%86%E3%80%91.mp3",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium + Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
