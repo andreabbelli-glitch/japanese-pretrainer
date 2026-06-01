@@ -22,9 +22,11 @@ entry separate.
 
 ## Catalogo e logica
 
-Il catalogo vive in TypeScript sotto
-`src/features/katakana-speed/model/catalog.ts`, con il sotto-catalogo
-pseudoword seed-driven in
+Il catalogo viene materializzato dal facade TypeScript
+`src/features/katakana-speed/model/catalog.ts`: le righe statiche di item e
+cluster vivono in `src/features/katakana-speed/model/catalog-static-data.ts`,
+le frasi `P01-P60` in `src/features/katakana-speed/model/sentence-bank.ts`, il
+sotto-catalogo pseudoword seed-driven in
 `src/features/katakana-speed/model/pseudoword-catalog.ts` e il registry
 operativo non-audio in
 `src/features/katakana-speed/model/exercise-catalog.ts`. Gli ID sono stabili,

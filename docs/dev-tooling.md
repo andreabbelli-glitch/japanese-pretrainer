@@ -318,10 +318,14 @@ server action di Kanji Clash:
 
 ## Katakana Speed
 
-Katakana Speed usa un catalogo statico in
-`src/features/katakana-speed/model/catalog.ts` e persiste solo stato runtime
-nelle tabelle `katakana_*`. Non richiede workflow contenuto, import dei media,
-pronunce o asset audio.
+Katakana Speed usa `src/features/katakana-speed/model/catalog.ts` come
+materializzatore/facade del catalogo: righe statiche di item e cluster stanno in
+`src/features/katakana-speed/model/catalog-static-data.ts`, la phrase bank in
+`src/features/katakana-speed/model/sentence-bank.ts`, i pseudoword in
+`src/features/katakana-speed/model/pseudoword-catalog.ts` e i termini media/ad
+hoc in `src/features/katakana-speed/model/media-word-bank.json`. La feature
+persiste solo stato runtime nelle tabelle `katakana_*`. Non richiede workflow
+contenuto, import dei media, pronunce o asset audio.
 
 Il registry operativo non-audio vive in
 `src/features/katakana-speed/model/exercise-catalog.ts` e alimenta word bank,
