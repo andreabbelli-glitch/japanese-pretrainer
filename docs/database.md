@@ -12,6 +12,13 @@
 Il path del DB arriva da `DATABASE_URL`. Se non e impostato, il progetto usa il
 default locale sopra.
 
+Il DB SQLite locale sotto `data/` e' disposable. In sviluppo e' una cache
+runtime ricostruibile da migrazioni e `content:import`/`db:seed`, non la fonte
+primaria dei contenuti. Per media, lesson, glossary, flashcard e decisioni
+editoriali usa sempre il filesystem versionato `content/media/**` validato; se
+il DB locale non coincide con quei file, considera stale il DB e reimporta lo
+scope necessario.
+
 Se invece `DATABASE_URL` usa uno schema remoto `libsql://...`, il runtime usa
 direttamente il client remoto standard. Il progetto non usa piu embedded
 replica locali ne sync automatiche al bootstrap, per evitare consumi inattesi
@@ -81,6 +88,11 @@ Setup completo del DB locale:
 ```sh
 ./scripts/with-node.sh pnpm db:setup
 ```
+
+Usa `db:setup` o un `content:import` mirato per riallineare una macchina di
+sviluppo. Non recuperare contenuti editoriali dal DB locale quando devi passare
+contesto a un LLM o verificare sovrapposizioni: esporta/leggi i Markdown reali
+in `content/media/**`.
 
 Apri Drizzle Studio:
 

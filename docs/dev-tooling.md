@@ -134,6 +134,9 @@ Workflow immagini:
 
 `image:apply` aggiorna i markdown, ma il reader usa il contenuto importato nel
 DB locale. Dopo un apply reale serve quindi un nuovo `content:import`.
+Il DB locale resta un artefatto runtime disposable: per decidere quali lesson,
+entry o flashcard esistono gia, usa i Markdown validati in `content/media/**`,
+non lo snapshot SQLite locale.
 Minimizza sempre lo scope del sync DB: se l'apply o la revisione tocca solo una
 o poche lesson note, devi limitare l'import alle sole route textbook coinvolte:
 

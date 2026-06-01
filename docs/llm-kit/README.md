@@ -12,6 +12,19 @@ l'LLM esterno che produce contenuti importabili.
 Serve come pacchetto operativo pronto da passare all'altro modello senza dover
 cercare file in cartelle diverse.
 
+## Source Of Truth Operativa
+
+Per gli LLM, la fonte autorevole dei contenuti e sempre il filesystem
+versionato `content/media/**`, insieme alle specifiche in questo kit. Il DB
+SQLite locale in `data/` e un artefatto disposable di sviluppo: puo essere
+stale, parziale o contenere dati fixture non presenti nei bundle reali.
+
+Quando un LLM deve evitare sovrapposizioni, riusare entry esistenti o capire se
+una flashcard e gia coperta, passagli i file Markdown reali del bundle/segmento
+coinvolto, non uno snapshot del DB locale. `content:import` serve dopo la
+validazione per aggiornare il runtime della webapp, non per decidere la
+curation editoriale.
+
 ## Struttura
 
 - `general/`
@@ -59,9 +72,10 @@ Nota pratica:
 > [!IMPORTANT]
 > Se il workflow immagini inserisce o aggiorna blocchi `:::image` nei textbook,
 > dopo `image:apply` serve sempre `content:import`: la webapp legge il
-> contenuto importato nel DB locale, non il markdown appena modificato. Usa
-> sempre l'import lesson-scoped quando le lesson aggiornate sono note; allarga a
-> media o full solo per cambi davvero piu ampi.
+> contenuto importato nel DB locale, non il markdown appena modificato. Questo
+> non rende il DB locale source of truth: il Markdown validato resta l'autorita'
+> editoriale. Usa sempre l'import lesson-scoped quando le lesson aggiornate sono
+> note; allarga a media o full solo per cambi davvero piu ampi.
 
 > [!IMPORTANT]
 > Audio e immagini sono gia supportati dal formato reale del progetto, ma il

@@ -8,6 +8,18 @@ importabili per la webapp.
 L'LLM esterno non deve decidere il formato. Deve riempire un formato gia
 definito e rispettarlo in modo rigoroso.
 
+## 1.1 Source of truth dei contenuti
+
+La fonte autorevole dei contenuti e `content/media/**` nel repository. I file
+Markdown versionati, dopo validazione, decidono quali lesson, entry, flashcard,
+asset e workflow sidecar esistono davvero.
+
+Il DB SQLite locale sotto `data/` non e una fonte editoriale: e una cache
+runtime disposable usata da webapp, test manuali e import locali. Puo essere
+stale, parziale o contenere residui/fixture. Se l'obiettivo e evitare
+sovrapposizioni o riusare materiale gia presente, l'LLM deve ricevere i file
+Markdown reali dell'area toccata, non un dump del DB locale.
+
 ## 2. Principio operativo
 
 L'LLM esterno ha un ruolo preciso:
@@ -748,4 +760,6 @@ Il playbook fissa il ciclo reale da seguire:
    Minimizza sempre lo scope: usa
    `--media-slug <media-slug> --lesson-slug <lesson-slug>` quando il batch tocca
    solo una o piu lesson specifiche dello stesso media; media/full solo per
-   cambi piu ampi o riallineamenti intenzionali.
+   cambi piu ampi o riallineamenti intenzionali. Questo passaggio aggiorna il
+   runtime della webapp; non sostituisce `content/media/**` come source of truth
+   editoriale.

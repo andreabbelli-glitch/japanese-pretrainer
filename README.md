@@ -244,6 +244,20 @@ Anche se `.env.local` punta a un database Turso remoto, `release:check` forza
 build ed E2E sul DB SQLite locale dedicato e disattiva la cache revalidation
 remota del content import preparatorio.
 
+## Source Of Truth Contenuti
+
+Per contenuti editoriali, flashcard, glossary e handoff verso LLM esterni, la
+source of truth del repository e' il filesystem versionato sotto
+`content/media/**`.
+
+Il DB SQLite locale di default (`./data/japanese-custom-study.db`) e' solo un
+artefatto runtime di sviluppo: viene popolato da `db:seed` o `content:import`,
+puo' essere cancellato e ricreato, e puo' non riflettere i Markdown correnti se
+non e' stato reimportato. Non usarlo come inventario autorevole per decidere se
+una card, entry o lesson esiste gia; usa i file in `content/media/**` e il
+parser/validator. Il DB locale serve a far girare la webapp e le verifiche dopo
+aver importato lo scope necessario.
+
 ## Script disponibili
 
 ```sh
@@ -380,6 +394,11 @@ Comandi principali:
 
 Di default il DB viene creato in `./data/japanese-custom-study.db`, ma puoi
 sovrascrivere il path con `DATABASE_URL`.
+
+Il file SQLite locale e' disposable: trattalo come cache di sviluppo derivata
+da migrazioni + import contenuti, non come sorgente primaria. Se il contenuto in
+`content/media/**` e il DB locale divergono, il Markdown validato vince;
+riallinea il DB con `content:import` o `db:setup` nello scope appropriato.
 
 Se `DATABASE_URL` punta a un database remoto `libsql://...`, il runtime usa il
 client remoto standard direttamente. Non usiamo piu embedded replica locali ne

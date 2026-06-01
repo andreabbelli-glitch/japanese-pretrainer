@@ -39,6 +39,11 @@ come classificatore iniziale dei task.
 7. Non eliminare test in `tests/`.
 8. Non introdurre multi-tenancy o auth complessa: il prodotto resta single-user
    locale-first salvo milestone dedicata.
+9. Per contenuti, inventari flashcard, glossary e decisioni editoriali, la
+   source of truth e' sempre `content/media/**` validato. Il DB SQLite locale
+   sotto `data/` e' una cache/runtime disposable di sviluppo: puo' essere stale,
+   parziale o contenere residui/fixture, quindi non usarlo come autorita'
+   editoriale salvo dopo un import intenzionale dello scope rilevante.
 
 ---
 

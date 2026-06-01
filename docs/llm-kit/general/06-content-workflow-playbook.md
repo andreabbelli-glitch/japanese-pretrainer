@@ -30,6 +30,17 @@ Quindi il valore di questo playbook e operativo:
 - ti aiuta a evitare batch troppo grandi;
 - riduce il rischio di ID duplicati, riferimenti rotti e sovrapposizioni.
 
+## Source of truth da assumere
+
+Per contenuti e curation, la fonte autorevole e `content/media/**` validato. Il
+DB SQLite locale sotto `data/` e un artefatto runtime disposable: puo essere
+stale, parziale o contenere fixture residue e non va usato come inventario
+editoriale per decidere sovrapposizioni tra flashcard o entry.
+
+Quando prepari un batch per un LLM, allega i Markdown reali del bundle o del
+segmento coinvolto. Usa `content:import` solo dopo validazione, per aggiornare
+la webapp o il DB target con lo scope minimo sufficiente.
+
 ## Kit da passare all'LLM esterno
 
 Per qualunque media, passa sempre il kit generale completo:
@@ -251,6 +262,8 @@ Nota operativa:
 - la webapp renderizza il contenuto importato nel DB locale;
 - quindi, dopo un apply reale, va rieseguito `content:import` prima di
   verificare il risultato nel reader;
+- il DB locale resta derivato e disposable: se diverge dai Markdown validati,
+  reimporta invece di trattarlo come fonte autorevole;
 - lo scope dell'import va minimizzato: lesson-scoped quando le lesson aggiornate
   sono note.
 
