@@ -20,6 +20,14 @@ const settingsStoreModulePath = path.join(
   "server",
   "settings-store.ts"
 );
+const settingsCodecModulePath = path.join(
+  PROJECT_ROOT,
+  "src",
+  "features",
+  "fsrs-optimizer",
+  "model",
+  "settings-codec.ts"
+);
 const serverFacadePath = path.join(
   PROJECT_ROOT,
   "src",
@@ -131,6 +139,64 @@ describe("fsrs optimizer server boundary", () => {
       )
     ) {
       violations.push("server facade still owns settings/cache persistence");
+    }
+
+    expect(violations).toEqual([]);
+  });
+
+  it("keeps settings value normalization in a pure model codec", async () => {
+    const violations: string[] = [];
+
+    if (!(await fileExists(settingsCodecModulePath))) {
+      violations.push(
+        "missing src/features/fsrs-optimizer/model/settings-codec.ts"
+      );
+    }
+
+    if (violations.length === 0) {
+      const settingsCodecSource = await readFile(
+        settingsCodecModulePath,
+        "utf8"
+      );
+
+      for (const exportedName of [
+        "getFsrsOptimizerConfigDefaults",
+        "calculateFsrsOptimizerNewReviewThreshold",
+        "buildDefaultFsrsOptimizerSnapshot",
+        "normalizeFsrsOptimizerConfig",
+        "areFsrsOptimizerConfigsEqual",
+        "normalizeFsrsOptimizerState",
+        "normalizeFsrsOptimizedParameters",
+        "normalizeFsrsWeights"
+      ]) {
+        if (!settingsCodecSource.includes(exportedName)) {
+          violations.push(`settings-codec.ts missing ${exportedName}`);
+        }
+      }
+
+      if (
+        /db\/|user-settings|next\/cache|node:fs|node:path|settings-store|training-data|server\/index|upsertUserSettingValue|revalidateTag/u.test(
+          settingsCodecSource
+        )
+      ) {
+        violations.push("settings-codec.ts mixes server/storage concerns");
+      }
+    }
+
+    const settingsStoreSource = await readFile(settingsStoreModulePath, "utf8");
+
+    if (!settingsStoreSource.includes("../model/settings-codec")) {
+      violations.push(
+        "settings-store.ts does not use the model settings codec"
+      );
+    }
+
+    if (
+      /generatorParameters|function normalizeDesiredRetention|function roundTo|function normalizeFsrsOptimizerConfig|function normalizeFsrsOptimizerState|function normalizeFsrsOptimizedParameters|export function normalizeFsrsWeights/u.test(
+        settingsStoreSource
+      )
+    ) {
+      violations.push("settings-store.ts still owns settings normalization");
     }
 
     expect(violations).toEqual([]);
