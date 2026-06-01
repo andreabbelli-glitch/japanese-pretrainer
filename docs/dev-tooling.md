@@ -145,6 +145,8 @@ read-only sui Markdown prima di creare nuove entry, card o lesson:
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> "<superficie-giapponese-esatta>"
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --kind grammar "～ている"
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --list entries
+./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
+./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug <media-slug> --lesson-slug <lesson-slug>
@@ -157,6 +159,18 @@ read-only sui Markdown prima di creare nuove entry, card o lesson:
 front card, normalizzando furigana e varianti `~`/`～`/`〜`; non fa dedup
 semantico fuzzy e non cerca nelle traduzioni. `--list entries|cards|lessons`
 e' una vista inventory leggera, non un export globale da incollare agli LLM.
+
+`content:entry-brief` carica una sola entry tramite parser Markdown e stampa
+fonte, significato, audio/accento, lesson, card e riferimenti collegati in forma
+compatta. Usalo prima di aggiungere o correggere card/entry quando hai gia un
+`entry_id` o una superficie esatta: fallisce chiuso su match ambigui e non usa
+il DB, quindi evita dump manuali di cards/textbook senza diventare dedup fuzzy.
+
+`content:lesson-brief` compatta una lesson nota in identita, file, headings,
+entry, card, immagini, warning editoriali e comandi minimi di validate/import.
+Usalo prima di revisionare o consegnare una lesson a un LLM; quando devi
+riscrivere prosa esatta, apri comunque il Markdown sorgente della sezione da
+modificare.
 
 `content:next-id` calcola path, prefix, `order`, `lesson_id` e `cards_id` per
 una nuova coppia textbook/cards. E' append-only e read-only: non riempie gap,

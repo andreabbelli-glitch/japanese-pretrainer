@@ -95,6 +95,9 @@ Primary target files:
   `./scripts/with-node.sh pnpm content:lookup -- --media-slug duel-masters-dm25 "<exact-card-front-or-surface>"`.
   For grammar candidates, add `--kind grammar`. For a compact local inventory,
   use `--list entries`.
+- When the lookup finds an existing entry/card, or when an `entry_id` is already
+  known, load only the compact context with:
+  `./scripts/with-node.sh pnpm content:entry-brief -- --media-slug duel-masters-dm25 --entry-id <entry-id>`.
 - Reuse existing `term.id` and `grammar.id` when the concept is already in the
   media.
 - Do not create a second glossary entry for the same keyword, grammar chunk, or
@@ -117,6 +120,9 @@ Primary target files:
 
 - Do not append the new card to
   `textbook/021-live-duel-encounters-crash-hadou.md`.
+- If the task revises an existing live encounter lesson instead of creating a
+  new one, load its compact context first with:
+  `./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug duel-masters-dm25 --lesson-slug <lesson-slug>`.
 - Create a new textbook page for the card using the repo lesson style standard
   (`docs/llm-kit/general/10-textbook-lesson-style-standard.md`) and the current
   textbook template. Use older live encounter files only for sequence/naming

@@ -30,6 +30,8 @@ grep manuali lunghi:
 
 ```sh
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> "<front-o-superficie>"
+./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
+./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug <media-slug> --lesson-slug <lesson-slug>
@@ -39,7 +41,12 @@ grep manuali lunghi:
 ```
 
 `content:lookup` risponde con un verdetto compatto su match esatti nei
-Markdown (`covered-card`, `entry-only`, `new`). `content:next-id` calcola ID,
+Markdown (`covered-card`, `entry-only`, `new`). `content:entry-brief` stampa
+solo il contesto operativo di una entry esatta: fonte, significato,
+audio/accento, lesson, card e riferimenti collegati; fallisce chiuso se il
+match e ambiguo. `content:lesson-brief` stampa solo il contesto operativo di
+una lesson nota: identita, file, headings, entry, card, immagini, warning
+editoriali e comandi minimi di verifica/import. `content:next-id` calcola ID,
 order e path per nuove lesson/card senza scrivere file. `content:scaffold`
 scrive solo il nuovo textbook Markdown valido, lasciando il cards path come
 piano finche esistono card reali da inserire. `content:scope` stampa i comandi
