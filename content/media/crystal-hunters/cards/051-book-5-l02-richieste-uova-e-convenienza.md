@@ -395,7 +395,7 @@ entry_type: grammar
 entry_id: grammar-ch-b5-sorede-cause
 card_type: concept
 front: 'それで'
-back: 'collega una causa appena detta alla conseguenza successiva'
+back: 'quindi, perciò, di conseguenza'
 example_jp: 'それで、ナイツは{{逃|に}}げた。'
 example_it: 'Per questo, Knites è scappato.'
 notes_it: >-
