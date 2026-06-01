@@ -5,6 +5,7 @@ const {
   updateMediaListCacheMock,
   updateReviewSummaryCacheMock,
   updateSettingsCacheMock,
+  recordLessonOpenedMock,
   setFuriganaModeMock,
   setLessonCompletionForActionMock
 } = vi.hoisted(() => ({
@@ -12,6 +13,7 @@ const {
   updateMediaListCacheMock: vi.fn(),
   updateReviewSummaryCacheMock: vi.fn(),
   updateSettingsCacheMock: vi.fn(),
+  recordLessonOpenedMock: vi.fn(),
   setFuriganaModeMock: vi.fn(),
   setLessonCompletionForActionMock: vi.fn()
 }));
@@ -24,11 +26,13 @@ vi.mock("@/features/cache/server/data-cache", () => ({
 }));
 
 vi.mock("@/features/textbook/server", () => ({
+  recordLessonOpened: recordLessonOpenedMock,
   setFuriganaMode: setFuriganaModeMock,
   setLessonCompletionForAction: setLessonCompletionForActionMock
 }));
 
 import {
+  recordLessonOpenedAction,
   setFuriganaModeAction,
   setLessonCompletionAction
 } from "@/actions/textbook";
@@ -39,8 +43,14 @@ describe("textbook actions", () => {
     updateMediaListCacheMock.mockReset();
     updateReviewSummaryCacheMock.mockReset();
     updateSettingsCacheMock.mockReset();
+    recordLessonOpenedMock.mockReset();
     setFuriganaModeMock.mockReset();
     setLessonCompletionForActionMock.mockReset();
+    recordLessonOpenedMock.mockResolvedValue({
+      lastOpenedAt: "2026-04-25T10:00:00.000Z",
+      startedAt: "2026-04-25T10:00:00.000Z",
+      status: "in_progress"
+    });
     setLessonCompletionForActionMock.mockResolvedValue({
       consolidationHref: "/consolidation/media/fixture-media/lesson/core-vocab",
       ok: true,
@@ -73,6 +83,25 @@ describe("textbook actions", () => {
     await setLessonCompletionAction(input);
 
     expect(setLessonCompletionForActionMock).toHaveBeenCalledWith(input);
+    expect(updateMediaListCacheMock).not.toHaveBeenCalled();
+    expect(updateConsolidationSummaryCacheMock).not.toHaveBeenCalled();
+    expect(updateReviewSummaryCacheMock).not.toHaveBeenCalled();
+    expect(updateSettingsCacheMock).not.toHaveBeenCalled();
+  });
+
+  it("records opened lesson state from the client without invalidating cached route data", async () => {
+    await expect(
+      recordLessonOpenedAction({
+        lessonId: "lesson_001"
+      })
+    ).resolves.toEqual({
+      lastOpenedAt: "2026-04-25T10:00:00.000Z",
+      ok: true,
+      startedAt: "2026-04-25T10:00:00.000Z",
+      status: "in_progress"
+    });
+
+    expect(recordLessonOpenedMock).toHaveBeenCalledWith("lesson_001");
     expect(updateMediaListCacheMock).not.toHaveBeenCalled();
     expect(updateConsolidationSummaryCacheMock).not.toHaveBeenCalled();
     expect(updateReviewSummaryCacheMock).not.toHaveBeenCalled();

@@ -4,20 +4,14 @@ import { db, type DatabaseClient, type DatabaseQueryClient } from "@/db";
 import { lessonProgress } from "@/db/schema";
 import { updateStudySettings, type FuriganaMode } from "@/features/settings/server";
 import {
-  calculatePercent,
-  compareIsoDates,
-  formatLessonProgressStatusLabel
-} from "@/features/study/model/format";
-import type {
-  TextbookLessonData,
-  TextbookLessonNavItem
-} from "@/features/textbook/types";
+  applyLessonOpenedState,
+  LESSON_OPEN_WRITE_THROTTLE_MS,
+  type LessonOpenState
+} from "@/features/textbook/client/reader-state";
+import type { TextbookLessonData } from "@/features/textbook/types";
 
-type LessonOpenState = {
-  lastOpenedAt: string;
-  startedAt: string;
-  status: "in_progress" | "completed";
-};
+export { applyLessonOpenedState };
+export type { LessonOpenState };
 
 type LessonProgressMutationClient = DatabaseQueryClient &
   Pick<DatabaseClient, "insert" | "update">;
@@ -26,7 +20,16 @@ export async function recordLessonOpened(
   lessonId: string,
   database: DatabaseClient = db
 ): Promise<LessonOpenState> {
-  const nowIso = new Date().toISOString();
+  const now = new Date();
+  const nowIso = now.toISOString();
+  const existing = await database.query.lessonProgress.findFirst({
+    where: eq(lessonProgress.lessonId, lessonId)
+  });
+
+  if (existing && shouldReuseRecentLessonOpen(existing, now)) {
+    return toLessonOpenState(existing, nowIso);
+  }
+
   const [updated] = await database
     .insert(lessonProgress)
     .values({
@@ -161,123 +164,44 @@ export async function setFuriganaMode(
   );
 }
 
-export function applyLessonOpenedState(
-  data: TextbookLessonData,
-  openedState: LessonOpenState
-): TextbookLessonData {
-  const currentLessonIndex = data.lessons.findIndex(
-    (lesson) => lesson.id === data.lesson.id
-  );
-  const currentLessonItem =
-    currentLessonIndex >= 0 ? data.lessons[currentLessonIndex]! : null;
-  const hasStatusChange = data.lesson.status !== openedState.status;
-  const hasLastOpenedAtChange =
-    currentLessonItem?.lastOpenedAt !== openedState.lastOpenedAt;
-
-  if (!hasStatusChange && !hasLastOpenedAtChange) {
-    return data;
-  }
-
-  const nextStatus = openedState.status;
-  const nextStatusLabel = formatLessonProgressStatusLabel(nextStatus);
-  const previousStatus = currentLessonItem?.status ?? data.lesson.status;
-  const completionDelta =
-    Number(nextStatus === "completed") - Number(previousStatus === "completed");
-  const nextCompletedLessons = Math.max(
-    0,
-    Math.min(data.totalLessons, data.completedLessons + completionDelta)
-  );
-  const updatedLesson =
-    currentLessonItem === null
-      ? null
-      : ({
-          ...currentLessonItem,
-          lastOpenedAt: openedState.lastOpenedAt,
-          status: nextStatus,
-          statusLabel: nextStatusLabel
-        } satisfies TextbookLessonNavItem);
-  const lessons =
-    updatedLesson === null
-      ? data.lessons
-      : data.lessons.map((lesson, index) =>
-          index === currentLessonIndex ? updatedLesson : lesson
-        );
-  const activeLesson =
-    hasStatusChange
-      ? selectActiveLesson(lessons)
-      : updatedLesson && nextStatus === "in_progress"
-      ? updatedLesson
-      : data.activeLesson;
-  const resumeLesson =
-    hasStatusChange
-      ? selectResumeLesson(lessons)
-      : updatedLesson && data.resumeLesson?.id === updatedLesson.id
-      ? updatedLesson
-      : data.resumeLesson;
-  const groups =
-    !hasStatusChange || updatedLesson === null
-      ? data.groups
-      : data.groups.map((group) =>
-          group.id !== (updatedLesson.segmentId ?? "__ungrouped__")
-            ? group
-            : {
-                ...group,
-                completedLessons: Math.max(
-                  0,
-                  Math.min(
-                    group.totalLessons,
-                    group.completedLessons + completionDelta
-                  )
-                ),
-                lessons: group.lessons.map((lesson) =>
-                  lesson.id === updatedLesson.id ? updatedLesson : lesson
-                )
-              }
-        );
-
-  return {
-    ...data,
-    activeLesson,
-    completedLessons: nextCompletedLessons,
-    groups,
-    lesson: {
-      ...data.lesson,
-      status: nextStatus,
-      statusLabel: nextStatusLabel
-    },
-    lessons,
-    resumeLesson,
-    textbookProgressPercent: calculatePercent(
-      nextCompletedLessons,
-      data.totalLessons
-    )
-  };
-}
-
-function selectActiveLesson(lessons: TextbookLessonNavItem[]) {
-  const inProgressLessons = lessons.filter(
-    (lesson) => lesson.status === "in_progress"
-  );
-
-  if (inProgressLessons.length === 0) {
-    return null;
-  }
-
-  return inProgressLessons.reduce((best, candidate) =>
-    compareIsoDates(best.lastOpenedAt, candidate.lastOpenedAt) < 0
-      ? candidate
-      : best
-  );
-}
-
-function selectResumeLesson(lessons: TextbookLessonNavItem[]) {
-  return (
-    lessons.find((lesson) => lesson.status !== "completed") ??
-    lessons[0] ??
-    null
-  );
-}
-
 function defaultLessonOpenRenderErrorHandler(error: unknown) {
   console.error("Unable to record textbook lesson open.", error);
+}
+
+type ExistingLessonOpenRow = NonNullable<
+  Awaited<ReturnType<DatabaseClient["query"]["lessonProgress"]["findFirst"]>>
+>;
+
+function shouldReuseRecentLessonOpen(
+  existing: ExistingLessonOpenRow,
+  now: Date
+) {
+  if (
+    existing.status === "not_started" ||
+    !existing.startedAt ||
+    !existing.lastOpenedAt
+  ) {
+    return false;
+  }
+
+  const lastOpenedAtMs = Date.parse(existing.lastOpenedAt);
+
+  return (
+    Number.isFinite(lastOpenedAtMs) &&
+    now.getTime() - lastOpenedAtMs < LESSON_OPEN_WRITE_THROTTLE_MS
+  );
+}
+
+function toLessonOpenState(
+  progress: Pick<
+    ExistingLessonOpenRow,
+    "lastOpenedAt" | "startedAt" | "status"
+  >,
+  fallbackIso: string
+): LessonOpenState {
+  return {
+    lastOpenedAt: progress.lastOpenedAt ?? fallbackIso,
+    startedAt: progress.startedAt ?? fallbackIso,
+    status: progress.status === "completed" ? "completed" : "in_progress"
+  };
 }

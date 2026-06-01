@@ -1,8 +1,4 @@
-import {
-  getTextbookLessonData,
-  recordLessonOpened,
-  settleLessonOpenedStateForRender
-} from "@/features/textbook/server";
+import { getTextbookLessonData } from "@/features/textbook/server";
 
 type LessonReaderRouteDataInput = {
   lessonSlug: string;
@@ -19,7 +15,5 @@ export async function loadLessonReaderRouteData({
     return null;
   }
 
-  const openedState = recordLessonOpened(data.lesson.id);
-
-  return settleLessonOpenedStateForRender(data, openedState);
+  return data;
 }

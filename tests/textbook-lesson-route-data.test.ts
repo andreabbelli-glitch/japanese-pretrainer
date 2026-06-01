@@ -44,54 +44,32 @@ describe("textbook lesson route data", () => {
     expect(settleLessonOpenedStateForRenderMock).not.toHaveBeenCalled();
   });
 
-  it("records the opened state for the selected lesson id", async () => {
+  it("returns the selected lesson data without recording an opened lesson", async () => {
     const lessonData = {
       lesson: {
         id: "lesson-selected"
       }
     } as TextbookLessonData;
-    const openedState = Promise.resolve({
-      lastOpenedAt: "2026-04-25T10:00:00.000Z",
-      startedAt: "2026-04-25T10:00:00.000Z",
-      status: "in_progress" as const
-    });
-    const settledData = {
-      ...lessonData,
-      lesson: {
-        id: "lesson-selected",
-        status: "in_progress"
-      }
-    } as TextbookLessonData;
 
     getTextbookLessonDataMock.mockResolvedValue(lessonData);
-    recordLessonOpenedMock.mockReturnValue(openedState);
-    settleLessonOpenedStateForRenderMock.mockResolvedValue(settledData);
 
     await expect(
       loadLessonReaderRouteData({
         lessonSlug: "core-vocab",
         mediaSlug: "fixture-media"
       })
-    ).resolves.toBe(settledData);
+    ).resolves.toBe(lessonData);
 
-    expect(recordLessonOpenedMock).toHaveBeenCalledWith("lesson-selected");
-    expect(settleLessonOpenedStateForRenderMock).toHaveBeenCalledWith(
-      lessonData,
-      openedState
-    );
+    expect(recordLessonOpenedMock).not.toHaveBeenCalled();
+    expect(settleLessonOpenedStateForRenderMock).not.toHaveBeenCalled();
   });
 
-  it("returns the settled render data", async () => {
+  it("does not wait for opened-state settlement during route loading", async () => {
     const lessonData = {
       lesson: {
         id: "lesson-selected"
       }
     } as TextbookLessonData;
-    const openedState = Promise.resolve({
-      lastOpenedAt: "2026-04-25T10:00:00.000Z",
-      startedAt: "2026-04-25T10:00:00.000Z",
-      status: "completed" as const
-    });
     const settledData = {
       ...lessonData,
       lesson: {
@@ -101,7 +79,6 @@ describe("textbook lesson route data", () => {
     } as TextbookLessonData;
 
     getTextbookLessonDataMock.mockResolvedValue(lessonData);
-    recordLessonOpenedMock.mockReturnValue(openedState);
     settleLessonOpenedStateForRenderMock.mockResolvedValue(settledData);
 
     const result = await loadLessonReaderRouteData({
@@ -109,6 +86,8 @@ describe("textbook lesson route data", () => {
       mediaSlug: "fixture-media"
     });
 
-    expect(result).toBe(settledData);
+    expect(result).toBe(lessonData);
+    expect(recordLessonOpenedMock).not.toHaveBeenCalled();
+    expect(settleLessonOpenedStateForRenderMock).not.toHaveBeenCalled();
   });
 });

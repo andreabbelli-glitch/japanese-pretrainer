@@ -1,9 +1,10 @@
 "use server";
 
 import {
-  invalidateFuriganaModeChanged,
+  invalidateFuriganaModeChanged
 } from "@/features/cache/server";
 import {
+  recordLessonOpened,
   setFuriganaMode,
   setLessonCompletionForAction
 } from "@/features/textbook/server";
@@ -31,4 +32,13 @@ export async function setLessonCompletionAction(input: {
   completed: boolean;
 }) {
   return setLessonCompletionForAction(input);
+}
+
+export async function recordLessonOpenedAction(input: { lessonId: string }) {
+  const openedState = await recordLessonOpened(input.lessonId);
+
+  return {
+    ok: true as const,
+    ...openedState
+  };
 }
