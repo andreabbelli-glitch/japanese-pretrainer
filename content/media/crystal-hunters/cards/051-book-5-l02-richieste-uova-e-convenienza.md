@@ -333,7 +333,7 @@ entry_type: term
 entry_id: term-ch-b5-reteku-19
 card_type: recognition
 front: '{{連|つ}}れて{{行|い}}く'
-back: 'つれていく — portare qualcuno con sé'
+back: 'つれていく — portare qualcuno con sé (andando là)'
 example_jp: '{{子|こ}}を{{連|つ}}れて{{行|い}}く。'
 example_it: 'Porto il bambino con me.'
 notes_it: >-
