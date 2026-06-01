@@ -1,3 +1,5 @@
+import path from "node:path";
+
 export type AgentVerifyMode =
   | "agent"
   | "check"
@@ -212,17 +214,34 @@ function isTargetedTestCommand(command: string) {
 }
 
 function normalizePaths(paths: string[]) {
-  return unique(
-    paths
-      .map((candidate) =>
-        candidate
-          .replaceAll("\\", "/")
-          .replace(/^\.\/+/, "")
-          .replace(/\/+$/, "")
-          .trim()
-      )
-      .filter(Boolean)
-  ).sort();
+  return unique(paths.map(normalizePath).filter(Boolean)).sort();
+}
+
+function normalizePath(candidate: string) {
+  const trimmed = candidate.trim();
+
+  if (trimmed.length === 0) {
+    return "";
+  }
+
+  const repositoryRoot = process.cwd();
+  const resolvedCandidate = path.resolve(trimmed);
+  const relativeCandidate = path
+    .relative(repositoryRoot, resolvedCandidate)
+    .replaceAll("\\", "/");
+
+  if (
+    relativeCandidate.length > 0 &&
+    !relativeCandidate.startsWith("..") &&
+    !path.isAbsolute(relativeCandidate)
+  ) {
+    return relativeCandidate.replace(/\/+$/, "");
+  }
+
+  return trimmed
+    .replaceAll("\\", "/")
+    .replace(/^\.\/+/, "")
+    .replace(/\/+$/, "");
 }
 
 function unique(values: string[]) {

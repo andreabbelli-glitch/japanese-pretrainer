@@ -204,6 +204,28 @@ describe("agent verify CLI", () => {
     );
   });
 
+  it("normalizes absolute repository paths before choosing content gates", async () => {
+    const textbookPath = path.resolve(
+      "content/media/duel-masters-dm25/textbook/082-live-duel-encounters-bandasuperu-zogujigusu.md"
+    );
+    const cardsPath = path.resolve(
+      "content/media/duel-masters-dm25/cards/082-live-duel-encounters-bandasuperu-zogujigusu.md"
+    );
+    const { stdout } = await runNodeCli(
+      ["--experimental-strip-types", verifyScriptPath, textbookPath, cardsPath],
+      { timeoutMs: 60_000 }
+    );
+
+    expect(stdout).toContain("VERIFY content");
+    expect(stdout).toContain(
+      "COMMAND ./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25"
+    );
+    expect(stdout).toContain(
+      "COMMAND ./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25 --lesson-slug live-duel-encounters-bandasuperu-zogujigusu"
+    );
+    expect(stdout).not.toContain("IGNORED");
+  });
+
   it("uses full final content gates for the whole content media root", async () => {
     const { stdout } = await runNodeCli(
       ["--experimental-strip-types", verifyScriptPath, "content/media"],
@@ -242,7 +264,9 @@ describe("agent verify CLI", () => {
   it("does not emit content:scope from the exported planner without resolved content gates", () => {
     const plan = buildAgentVerifyPlan({
       paths: [
-        "content/media/duel-masters-dm25/textbook/082-live-duel-encounters-bandasuperu-zogujigusu.md"
+        path.resolve(
+          "content/media/duel-masters-dm25/textbook/082-live-duel-encounters-bandasuperu-zogujigusu.md"
+        )
       ]
     });
 

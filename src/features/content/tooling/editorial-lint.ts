@@ -119,6 +119,8 @@ export function formatEditorialLintResult(result: EditorialLintResult) {
         warning.code,
         formatLocation(warning),
         `path=${warning.path}`,
+        `message=${quoteForLine(warning.message)}`,
+        `hint=${quoteForLine(warning.hint)}`,
         `snippet=${quoteForLine(warning.snippet)}`
       ].join(" ")
     );
@@ -640,7 +642,14 @@ function dedupeWarnings(warnings: EditorialLintWarning[]) {
   const deduped: EditorialLintWarning[] = [];
 
   for (const warning of warnings) {
-    const key = `${warning.filePath}:${warning.code}`;
+    const key = [
+      warning.filePath,
+      warning.line ?? 0,
+      warning.column ?? 0,
+      warning.path,
+      warning.code,
+      warning.snippet
+    ].join(":");
 
     if (seen.has(key)) {
       continue;

@@ -94,7 +94,7 @@ async function resolveExplicitPathChanges(paths: string[]) {
 
   for (const filePath of paths) {
     changes.push({
-      path: filePath,
+      path: normalizePath(filePath),
       status: (await pathExists(filePath)) ? "modified" : "deleted"
     });
   }
@@ -251,7 +251,25 @@ async function pathExists(filePath: string) {
 }
 
 function normalizePath(filePath: string) {
-  return filePath
+  const trimmed = filePath.trim();
+
+  if (trimmed.length === 0) {
+    return "";
+  }
+
+  const resolvedPath = path.resolve(trimmed);
+  const relativePath = path.relative(process.cwd(), resolvedPath);
+  const normalizedRelativePath = relativePath.replaceAll("\\", "/");
+
+  if (
+    normalizedRelativePath.length > 0 &&
+    !normalizedRelativePath.startsWith("..") &&
+    !path.isAbsolute(normalizedRelativePath)
+  ) {
+    return normalizedRelativePath.replace(/\/+$/, "");
+  }
+
+  return trimmed
     .replaceAll("\\", "/")
     .replace(/^\.\/+/, "")
     .replace(/\/+$/, "");

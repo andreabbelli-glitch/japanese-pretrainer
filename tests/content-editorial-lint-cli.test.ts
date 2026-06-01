@@ -39,13 +39,19 @@ describe("content editorial lint CLI", () => {
       { timeoutMs: 60_000 }
     );
 
-    expect(stdout).toContain("EDITORIAL_LINT warnings=7");
+    expect(stdout).toContain("EDITORIAL_LINT warnings=9");
     expect(stdout).toContain("WARNING P0 meta.lesson-object");
     expect(stdout).toContain("WARNING P0 typography.degraded-accents");
     expect(stdout).toContain("WARNING P0 meta.card-rationale");
     expect(stdout).toContain("WARNING P0 card.example-meta-jp");
     expect(stdout).toContain("WARNING P1 style.stock-contrast");
     expect(stdout).toContain("WARNING P1 style.low-density-utility");
+    expect(stdout).toContain(
+      'message="Learner-facing text talks about the lesson/page as courseware."'
+    );
+    expect(stdout).toContain(
+      'hint="Rewrite the sentence around the scene, screen, card, dialogue, or Japanese form instead of the lesson object."'
+    );
     expect(stdout).toContain("content/media/lint-media/textbook/001-meta.md");
     expect(stdout).toContain("content/media/lint-media/cards/001-meta.md");
     expect(stdout).not.toContain("002-clean.md");
@@ -74,7 +80,7 @@ describe("content editorial lint CLI", () => {
       warnings: Array<{ code: string; severity: string }>;
     };
 
-    expect(payload.counts.P0).toBe(4);
+    expect(payload.counts.P0).toBe(6);
     expect(payload.counts.P1).toBe(3);
     expect(payload.warnings.map((warning) => warning.code)).toContain(
       "meta.lesson-object"
@@ -104,7 +110,7 @@ describe("content editorial lint CLI", () => {
       { timeoutMs: 60_000 }
     );
 
-    expect(stdout).toContain("EDITORIAL_LINT warnings=4");
+    expect(stdout).toContain("EDITORIAL_LINT warnings=6");
     expect(stdout).toContain("content/media/lint-media/textbook/001-meta.md");
     expect(stdout).not.toContain("cards/001-meta.md");
     expect(stdout).not.toContain("002-clean.md");
@@ -128,7 +134,7 @@ describe("content editorial lint CLI", () => {
       { timeoutMs: 60_000 }
     );
 
-    expect(stdout).toContain("EDITORIAL_LINT warnings=7");
+    expect(stdout).toContain("EDITORIAL_LINT warnings=9");
     expect(stdout).not.toContain("999-broken-unrelated.md");
   });
 
