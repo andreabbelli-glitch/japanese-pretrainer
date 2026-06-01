@@ -269,7 +269,7 @@ entry_type: term
 entry_id: term-ch-b5-ishiki-wo-ushinau
 card_type: recognition
 front: '{{意識|いしき}}を{{失|うしな}}う'
-back: 'いしきをうしなう — perdere conoscenza; perdere i sensi (formale)'
+back: 'いしきをうしなう — perdere conoscenza; perdere i sensi (registro formale/clinico, da referto o notiziario; più esplicito di 気を失う)'
 example_jp: 'カルが{{意識|いしき}}を{{失|うしな}}う。'
 example_it: 'Kal perde conoscenza.'
 notes_it: >-
