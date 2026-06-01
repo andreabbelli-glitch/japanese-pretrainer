@@ -37,7 +37,7 @@ oggetto con `を`.
 - [{{二人|ふたり}}とも](term:term-ch-futari-tomo) - entrambi
 - [{{今|いま}}](term:term-ch-ima) - ora; adesso
 - [{{怪我|けが}}](term:term-ch-kega) - ferita
-- [{{治|なお}}る](term:term-ch-naoru) - guarire
+- [{{治|なお}}る](term:term-ch-naoru) - Guarire, rimettersi, sistemarsi
 - [{{救|すく}}う](term:term-ch-sukuu) - salvare
 - [{{子|こ}}](term:term-ch-ko-child) - bambino; persona giovane
 - [{{投|な}}げる](term:term-ch-nageru) - lanciare
@@ -159,7 +159,8 @@ il verbo finale prima di decidere quale scena stai leggendo.
 
 [{{怪我|けが}}](term:term-ch-kega) e [{{治|なお}}る](term:term-ch-naoru) formano
 una coppia utile: una parola nomina la ferita, l'altra descrive il cambiamento
-di stato.
+di stato. Con {{治|なお}}る, di solito la particella `が` (ga) marca ciò che
+guarisce o si sistema.
 
 :::example_sentence
 jp: >-

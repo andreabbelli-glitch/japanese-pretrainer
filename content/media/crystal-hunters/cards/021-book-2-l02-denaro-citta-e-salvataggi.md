@@ -130,11 +130,12 @@ id: term-ch-naoru
 lemma: '治る'
 reading: 'なおる'
 romaji: na-o-ru
-meaning_it: guarire
+meaning_it: 'Guarire, rimettersi, sistemarsi'
 pos: verb
 notes_it: >-
-  {{治|なお}}る è guarire o tornare a posto da sé. Con {{怪我|けが}}が, la ferita
-  è il soggetto del cambiamento.
+  {{治|なお}}る è guarire, rimettersi o sistemarsi da sé. Di solito è
+  accompagnato dalla particella `が` (ga): con {{怪我|けが}}が, la ferita è il
+  soggetto del cambiamento.
 level_hint: n4
 :::
 
@@ -342,12 +343,13 @@ entry_type: term
 entry_id: term-ch-naoru
 card_type: recognition
 front: '{{治|なお}}る'
-back: 'なおる — guarire'
+back: 'なおる — Guarire, rimettersi, sistemarsi'
 example_jp: '{{怪我|けが}}が{{治|なお}}る。'
 example_it: 'La ferita guarisce.'
 notes_it: >-
-  {{治|なお}}る è guarire o tornare a posto da sé. Con {{怪我|けが}}が, la ferita
-  è il soggetto del cambiamento.
+  {{治|なお}}る è guarire, rimettersi o sistemarsi da sé. Di solito è
+  accompagnato dalla particella `が` (ga): con {{怪我|けが}}が, la ferita è il
+  soggetto del cambiamento.
 tags: [crystal-hunters, book-2, lesson-02]
 :::
 

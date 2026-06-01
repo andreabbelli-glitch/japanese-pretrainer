@@ -130,11 +130,12 @@ id: term-ch-b4-su-32
 lemma: '治す'
 reading: 'なおす'
 romaji: na-o-su
-meaning_it: 'curare; guarire qualcuno'
+meaning_it: 'Curare qualcosa o qualcuno'
 pos: verb
 notes_it: >-
-  {{治|なお}}す è transitivo: qualcuno cura o fa guarire qualcosa. La ferita,
-  il problema o la persona trattata prende `を`.
+  {{治|なお}}す è transitivo: qualcuno cura qualcosa o qualcuno. Di solito è
+  accompagnato dalla particella `を` (wo): la ferita, il problema o la persona
+  trattata sono l'oggetto dell'intervento.
 level_hint: n4
 :::
 
@@ -302,12 +303,13 @@ entry_type: term
 entry_id: term-ch-b4-su-32
 card_type: recognition
 front: '{{治|なお}}す'
-back: 'なおす — curare; guarire qualcuno'
+back: 'なおす — Curare qualcosa o qualcuno'
 example_jp: '{{怪我|けが}}を{{治|なお}}す。'
 example_it: 'Curo la ferita.'
 notes_it: >-
-  {{治|なお}}す prende ciò che viene curato. Non descrive la ferita che guarisce
-  da sola: descrive l'intervento.
+  {{治|なお}}す prende ciò che viene curato ed è di solito accompagnato dalla
+  particella `を` (wo). Non descrive la ferita che guarisce da sola: descrive
+  l'intervento.
 tags: [crystal-hunters, book-4, lesson-02]
 :::
 
