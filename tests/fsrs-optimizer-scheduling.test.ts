@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import * as fsrsOptimizerModule from "@/features/fsrs-optimizer/server";
+import * as settingsStoreModule from "@/features/fsrs-optimizer/server/settings-store";
+import * as trainingDataModule from "@/features/fsrs-optimizer/server/training-data";
 import { runFsrsOptimizer } from "@/features/fsrs-optimizer/tooling/trainer";
 import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
 
@@ -15,7 +16,7 @@ describe("fsrs optimizer query scheduling", () => {
     const eligibleReviewCountGate = schedule.gate("eligible review count");
 
     vi.spyOn(
-      fsrsOptimizerModule,
+      settingsStoreModule,
       "getFsrsOptimizerSnapshot"
     ).mockImplementation(async () => {
       await snapshotGate.loader()();
@@ -44,19 +45,19 @@ describe("fsrs optimizer query scheduling", () => {
       };
     });
     vi.spyOn(
-      fsrsOptimizerModule,
+      trainingDataModule,
       "countEligibleFsrsOptimizerReviews"
     ).mockImplementation(async () => {
       await eligibleReviewCountGate.loader()();
       return 12;
     });
-    vi.spyOn(fsrsOptimizerModule, "writeFsrsOptimizerConfig").mockResolvedValue(
+    vi.spyOn(settingsStoreModule, "writeFsrsOptimizerConfig").mockResolvedValue(
       undefined
     );
-    vi.spyOn(fsrsOptimizerModule, "writeFsrsOptimizerState").mockResolvedValue(
+    vi.spyOn(settingsStoreModule, "writeFsrsOptimizerState").mockResolvedValue(
       undefined
     );
-    vi.spyOn(fsrsOptimizerModule, "getBindingPackageVersion").mockReturnValue(
+    vi.spyOn(settingsStoreModule, "getBindingPackageVersion").mockReturnValue(
       "0.3.0"
     );
 

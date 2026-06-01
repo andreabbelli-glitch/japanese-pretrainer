@@ -32,11 +32,14 @@ import {
   writeFsrsOptimizerConfig,
   writeFsrsOptimizerState
 } from "@/features/fsrs-optimizer/server";
-import * as fsrsOptimizer from "@/features/fsrs-optimizer/server";
+import * as settingsStore from "@/features/fsrs-optimizer/server/settings-store";
 import { runFsrsOptimizer } from "@/features/fsrs-optimizer/tooling/trainer";
 import { buildReviewGradePreviews } from "@/features/review/model/grade-previews";
 import { applyReviewGrade } from "@/features/review/server/service";
-import { reviewSchedulerConfig, scheduleReview } from "@/features/review/model/scheduler";
+import {
+  reviewSchedulerConfig,
+  scheduleReview
+} from "@/features/review/model/scheduler";
 
 const execFileAsync = promisify(execFile);
 const DAY = 24 * 60 * 60_000;
@@ -539,10 +542,10 @@ describe("fsrs optimizer", () => {
     });
 
     const invalidateSpy = vi.spyOn(
-      fsrsOptimizer,
+      settingsStore,
       "invalidateFsrsOptimizerRuntimeContextCache"
     );
-    const originalWrite = fsrsOptimizer.writeFsrsOptimizedParameters;
+    const originalWrite = settingsStore.writeFsrsOptimizedParameters;
     let releaseWriteGate: () => void = () => {};
     let resolveWriteCompleted: () => void = () => {};
     const writeGate = new Promise<void>((resolve) => {
@@ -552,7 +555,7 @@ describe("fsrs optimizer", () => {
       resolveWriteCompleted = resolve;
     });
     const writeSpy = vi
-      .spyOn(fsrsOptimizer, "writeFsrsOptimizedParameters")
+      .spyOn(settingsStore, "writeFsrsOptimizedParameters")
       .mockImplementation(async (...args) => {
         const result = await originalWrite(
           ...(args as Parameters<typeof originalWrite>)

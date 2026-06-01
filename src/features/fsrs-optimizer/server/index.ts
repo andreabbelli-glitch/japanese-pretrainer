@@ -23,6 +23,10 @@ export type {
   FsrsOptimizerState,
   FsrsPresetKey
 } from "../model/snapshot.ts";
+export type {
+  FsrsOptimizationPresetResult,
+  FsrsOptimizationRunResult
+} from "../model/training-policy.ts";
 export {
   FSRS_OPTIMIZER_CONFIG_KEY,
   FSRS_OPTIMIZER_STATE_KEY,
@@ -69,35 +73,6 @@ export type FsrsOptimizerStatus = {
   presets: Record<FsrsPresetKey, FsrsOptimizerPresetStatus>;
   totalEligibleReviews: number;
 };
-
-type FsrsOptimizationPresetResult = {
-  status: "trained" | "unchanged";
-  trainingReviewCount: number;
-};
-
-export type FsrsOptimizationRunResult =
-  | {
-      lastCheckAt: string;
-      newEligibleReviews: number;
-      reason: "disabled" | "insufficient-new-reviews" | "too-soon";
-      status: "skipped";
-      totalEligibleReviews: number;
-    }
-  | {
-      lastCheckAt: string;
-      newEligibleReviews: number;
-      reason: "no-trainable-data";
-      status: "skipped";
-      totalEligibleReviews: number;
-    }
-  | {
-      lastCheckAt: string;
-      newEligibleReviews: number;
-      presetResults: Record<FsrsPresetKey, FsrsOptimizationPresetResult>;
-      status: "trained";
-      totalEligibleReviews: number;
-      trainedAt: string;
-    };
 
 export async function getFsrsOptimizerStatus(
   database: DatabaseClient = db

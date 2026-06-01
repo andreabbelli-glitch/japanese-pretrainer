@@ -6,31 +6,35 @@ import {
 
 import { db, type DatabaseClient } from "../../../db/index.ts";
 import {
-  buildFsrsTrainingDataset,
+  type FsrsOptimizedParameters,
+  type FsrsOptimizerState,
+  type FsrsPresetKey
+} from "../model/snapshot.ts";
+import {
+  buildInitialFsrsOptimizationPresetResults,
+  markFsrsOptimizationPresetTrained,
+  planFsrsOptimizerRun,
+  resolveFsrsTrainingReadiness,
+  type FsrsOptimizationRunResult
+} from "../model/training-policy.ts";
+import {
   calculateFsrsOptimizerNewReviewThreshold,
-  countEligibleFsrsOptimizerReviews,
   getBindingPackageVersion,
   getFsrsOptimizerSnapshot,
-  loadFsrsOptimizerLogRows,
   invalidateFsrsOptimizerRuntimeContextCache,
   normalizeFsrsWeights,
   writeFsrsOptimizedParameters,
   writeFsrsOptimizerConfig,
-  writeFsrsOptimizerState,
-  type FsrsOptimizedParameters,
-  type FsrsOptimizationRunResult,
-  type FsrsPresetKey
-} from "../server/index.ts";
+  writeFsrsOptimizerState
+} from "../server/settings-store.ts";
+import {
+  buildFsrsTrainingDataset,
+  countEligibleFsrsOptimizerReviews,
+  loadFsrsOptimizerLogRows
+} from "../server/training-data.ts";
 
-const DAY = 24 * 60 * 60_000;
-const MIN_TRAINING_REVIEW_COUNT = 10;
-const MIN_TRAINING_ITEM_COUNT = 5;
 const DEFAULT_TRAINING_TIMEOUT_MS = 5_000;
 const TRAINING_TIMEOUT_ENV = "FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS";
-
-type FsrsOptimizationPresetResult = NonNullable<
-  Extract<FsrsOptimizationRunResult, { status: "trained" }>["presetResults"][FsrsPresetKey]
->;
 
 export async function runFsrsOptimizer(
   input: {
@@ -60,10 +64,18 @@ export async function runFsrsOptimizer(
     totalEligibleReviewsAtLastTraining:
       snapshot.state.totalEligibleReviewsAtLastTraining
   });
+  const runPlan = planFsrsOptimizerRun({
+    config: snapshot.config,
+    force: input.force ?? false,
+    newEligibleReviews,
+    newReviewThreshold,
+    now,
+    state: snapshot.state
+  });
 
   await writeFsrsOptimizerConfig(snapshot.config, database, nowIso);
 
-  if (!input.force && !snapshot.config.enabled) {
+  if (runPlan.action === "skip") {
     await writeSkippedFsrsOptimizerState({
       database,
       nowIso,
@@ -74,46 +86,7 @@ export async function runFsrsOptimizer(
     return {
       lastCheckAt: nowIso,
       newEligibleReviews,
-      reason: "disabled",
-      status: "skipped",
-      totalEligibleReviews
-    };
-  }
-
-  if (
-    !input.force &&
-    snapshot.state.lastSuccessfulTrainingAt &&
-    now.getTime() - new Date(snapshot.state.lastSuccessfulTrainingAt).getTime() <
-      snapshot.config.minDaysBetweenRuns * DAY
-  ) {
-    await writeSkippedFsrsOptimizerState({
-      database,
-      nowIso,
-      newEligibleReviews,
-      state: snapshot.state
-    });
-
-    return {
-      lastCheckAt: nowIso,
-      newEligibleReviews,
-      reason: "too-soon",
-      status: "skipped",
-      totalEligibleReviews
-    };
-  }
-
-  if (!input.force && newEligibleReviews < newReviewThreshold) {
-    await writeSkippedFsrsOptimizerState({
-      database,
-      nowIso,
-      newEligibleReviews,
-      state: snapshot.state
-    });
-
-    return {
-      lastCheckAt: nowIso,
-      newEligibleReviews,
-      reason: "insufficient-new-reviews",
+      reason: runPlan.reason,
       status: "skipped",
       totalEligibleReviews
     };
@@ -130,14 +103,12 @@ export async function runFsrsOptimizer(
     trainingSnapshotRows,
     "concept"
   );
-  const recognitionTrainable =
-    recognitionDataset.itemCount >= MIN_TRAINING_ITEM_COUNT &&
-    recognitionDataset.reviewCount >= MIN_TRAINING_REVIEW_COUNT;
-  const conceptTrainable =
-    conceptDataset.itemCount >= MIN_TRAINING_ITEM_COUNT &&
-    conceptDataset.reviewCount >= MIN_TRAINING_REVIEW_COUNT;
+  const readiness = resolveFsrsTrainingReadiness({
+    conceptDataset,
+    recognitionDataset
+  });
 
-  if (!recognitionTrainable && !conceptTrainable) {
+  if (!readiness.hasTrainableData) {
     await writeFsrsOptimizerState(
       {
         ...snapshot.state,
@@ -161,18 +132,12 @@ export async function runFsrsOptimizer(
   }
 
   try {
-    const presetResults: Record<FsrsPresetKey, FsrsOptimizationPresetResult> = {
-      concept: {
-        status: "unchanged",
-        trainingReviewCount: conceptDataset.reviewCount
-      },
-      recognition: {
-        status: "unchanged",
-        trainingReviewCount: recognitionDataset.reviewCount
-      }
-    };
+    const presetResults = buildInitialFsrsOptimizationPresetResults({
+      conceptTrainingReviewCount: conceptDataset.reviewCount,
+      recognitionTrainingReviewCount: recognitionDataset.reviewCount
+    });
     const [recognitionParameters, conceptParameters] = await Promise.all([
-      recognitionTrainable
+      readiness.recognitionTrainable
         ? trainFsrsPreset(
             "recognition",
             recognitionDataset.items,
@@ -182,7 +147,7 @@ export async function runFsrsOptimizer(
             trainingTimeoutMs
           )
         : null,
-      conceptTrainable
+      readiness.conceptTrainable
         ? trainFsrsPreset(
             "concept",
             conceptDataset.items,
@@ -197,15 +162,11 @@ export async function runFsrsOptimizer(
       (parameters): parameters is FsrsOptimizedParameters => parameters !== null
     );
 
-    if (recognitionParameters) {
-      presetResults.recognition.status = "trained";
-    }
+    markFsrsOptimizationPresetTrained(presetResults, recognitionParameters);
+    markFsrsOptimizationPresetTrained(presetResults, conceptParameters);
 
-    if (conceptParameters) {
-      presetResults.concept.status = "trained";
-    }
-
-    const liveEligibleReviews = await countEligibleFsrsOptimizerReviews(database);
+    const liveEligibleReviews =
+      await countEligibleFsrsOptimizerReviews(database);
     const newEligibleReviewsSinceLastTraining = Math.max(
       liveEligibleReviews - trainingSnapshotEligibleReviewCount,
       0
@@ -224,7 +185,8 @@ export async function runFsrsOptimizer(
           lastSuccessfulTrainingAt: nowIso,
           lastTrainingError: null,
           newEligibleReviewsSinceLastTraining,
-          totalEligibleReviewsAtLastTraining: trainingSnapshotEligibleReviewCount
+          totalEligibleReviewsAtLastTraining:
+            trainingSnapshotEligibleReviewCount
         },
         tx,
         nowIso
@@ -266,7 +228,9 @@ function buildBindingItems(
   return items.map(
     (reviews) =>
       new FSRSBindingItem(
-        reviews.map((review) => new FSRSBindingReview(review.rating, review.deltaT))
+        reviews.map(
+          (review) => new FSRSBindingReview(review.rating, review.deltaT)
+        )
       )
   );
 }
@@ -321,7 +285,7 @@ async function writeSkippedFsrsOptimizerState(input: {
   database: DatabaseClient;
   nowIso: string;
   newEligibleReviews: number;
-  state: Awaited<ReturnType<typeof getFsrsOptimizerSnapshot>>["state"];
+  state: FsrsOptimizerState;
 }) {
   await writeFsrsOptimizerState(
     {
