@@ -30,6 +30,7 @@
     "fsrs:optimize": "node --experimental-strip-types ./scripts/fsrs-optimize.ts",
     "fsrs:optimize:if-needed": "node --experimental-strip-types ./scripts/fsrs-optimize-if-needed.ts",
     "content:validate": "node --experimental-strip-types ./scripts/validate-content.ts",
+    "content:entry-brief": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-entry-brief.ts",
     "content:editorial-lint": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-editorial-lint.ts",
     "content:lesson-brief": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-lesson-brief.ts",
     "content:lookup": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-lookup.ts",
