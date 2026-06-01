@@ -91,8 +91,10 @@ Primary target files:
 
 3. Reuse existing IDs first.
 
-- Search with `rg` in `content/media/duel-masters-dm25/cards` and the relevant
-  `textbook/` files.
+- Before falling back to `rg`, use the Markdown-backed lookup helper:
+  `./scripts/with-node.sh pnpm content:lookup -- --media-slug duel-masters-dm25 "<exact-card-front-or-surface>"`.
+  For grammar candidates, add `--kind grammar`. For a compact local inventory,
+  use `--list entries`.
 - Reuse existing `term.id` and `grammar.id` when the concept is already in the
   media.
 - Do not create a second glossary entry for the same keyword, grammar chunk, or
@@ -124,14 +126,14 @@ Primary target files:
   - a fresh `id`, `slug`, `title`, `summary`, and tags for the new card
   - a fresh filename of the form
     `textbook/<NNN>-live-duel-encounters-<slug>.md`
-- Choose `<NNN>` as the next free numeric prefix that is not already used in
-  `textbook/`.
-- Set `order` to the next integer after the current maximum `order` among the
-  textbook lessons with `segment_ref: live-duel-encounters`.
-- Keep the live encounter lessons contiguous as a section. If the new `order`
-  would collide with or overtake the keyword bank or later DM25 textbook pages,
-  renumber those later textbook pages so the live encounter block remains in
-  sequence before the keyword bank.
+- Compute the candidate prefix, `order`, IDs, and paired cards path with:
+  `./scripts/with-node.sh pnpm content:next-id -- --media-slug duel-masters-dm25 --segment-ref live-duel-encounters --slug live-duel-encounters-<slug>`.
+- Treat that tool output as authoritative for `<NNN>`, `order`, lesson ID,
+  cards ID, and target paths. It deliberately chooses append-only values that
+  do not collide globally, even when the segment-local next order would collide
+  with keyword-bank or later DM25 textbook pages.
+- Do not renumber existing textbook pages to keep the live encounter block
+  contiguous unless the user explicitly asks for a broader reordering task.
 - If the import produces new canonical glossary entries or new flashcards,
   prefer a matching cards file with the same numeric prefix and slug:
   `cards/<NNN>-live-duel-encounters-<slug>.md`

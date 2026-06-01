@@ -56,15 +56,22 @@ Optional:
    the source of truth.
 2. Identify the section slug using the source/game/app plus thematic area when a
    plain source name would be too broad.
-3. Capture:
+3. Before drafting new entries or cards, check exact local coverage with:
+   `./scripts/with-node.sh pnpm content:lookup -- --media-slug web-giapponese "<exact-front-or-surface>"`.
+   Use `--kind grammar` for grammar candidates and `--list entries` only when a
+   compact local inventory is more useful than individual lookups.
+4. Before creating the paired lesson/cards files, compute the next prefix,
+   `order`, IDs, and paths with:
+   `./scripts/with-node.sh pnpm content:next-id -- --media-slug web-giapponese --slug <source-area-item-slug>`.
+5. Capture:
    - one overview screenshot or the provided image that helps remember the item;
    - only the crops that directly support the explanation.
-4. Draft one lesson file for the item and one cards file for the item.
-5. Save screenshot assets under `content/media/web-giapponese/assets/`.
-6. Update:
+6. Draft one lesson file for the item and one cards file for the item.
+7. Save screenshot assets under `content/media/web-giapponese/assets/`.
+8. Update:
    - `content/media/web-giapponese/workflow/image-requests.yaml`
    - `content/media/web-giapponese/workflow/image-assets.yaml`
-7. Resolve pronunciation audio for every new or revised card entry with:
+9. Resolve pronunciation audio for every new or revised card entry with:
    `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media web-giapponese --entry <new-term-or-grammar-id>`
    Pass multiple `--entry` flags for multiple new cards. If Forvo has no audio,
    the workflow must open and record the `word-add` request. Forvo audio must be
@@ -72,28 +79,28 @@ Optional:
    `Play(...)` candidates, speaker ranking, direct audio download, and OGG -> MP3
    conversion when needed. Manual download is only an extreme fallback for a
    specific blocked item.
-8. Regenerate
-   `content/media/web-giapponese/workflow/pronunciation-pending.json` with:
-   `./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese`
-   so every newly added card without local audio is recorded in the pending
-   manifest after the request path has run.
-9. Run the repo validation flow before closing.
-10. Fetch pitch accents only for the flashcard entries created or revised in
+10. Regenerate
+    `content/media/web-giapponese/workflow/pronunciation-pending.json` with:
+    `./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese`
+    so every newly added card without local audio is recorded in the pending
+    manifest after the request path has run.
+11. Run the repo validation flow before closing.
+12. Fetch pitch accents only for the flashcard entries created or revised in
     this task. Prefer entry IDs:
     `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`
     Pass multiple `--entry` flags for multiple new cards. Use `--word` or
     `--words-file` only when a reliable entry-id list is not available.
-11. Import the updated item into the configured target database with a
+13. Import the updated item into the configured target database with a
     lesson-scoped import. Minimize import scope; when the item's lesson slug is
     known, the lesson-scoped import is required:
     `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>`
     Use the broader media-scoped import only when the task changed media-wide
     ordering or other content that must apply archive/prune to all
     `web-giapponese` lessons/cards.
-12. Treat the work as incomplete if pronunciation resolution, pitch accent fetch,
+14. Treat the work as incomplete if pronunciation resolution, pitch accent fetch,
     import, or cache
     revalidation fails.
-13. After a completed item/card workflow with passing required checks, commit
+15. After a completed item/card workflow with passing required checks, commit
     and push the relevant changes to `main` before closing the task. Stage only
     files created or updated by this workflow, and leave unrelated worktree
     changes unstaged.

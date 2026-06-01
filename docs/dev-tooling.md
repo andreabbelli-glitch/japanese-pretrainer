@@ -137,6 +137,27 @@ DB locale. Dopo un apply reale serve quindi un nuovo `content:import`.
 Il DB locale resta un artefatto runtime disposable: per decidere quali lesson,
 entry o flashcard esistono gia, usa i Markdown validati in `content/media/**`,
 non lo snapshot SQLite locale.
+
+Per ridurre ricerche manuali e token spesi dagli agenti, usa i helper
+read-only sui Markdown prima di creare nuove entry, card o lesson:
+
+```sh
+./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> "<superficie-giapponese-esatta>"
+./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --kind grammar "～ている"
+./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --list entries
+./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
+```
+
+`content:lookup` stampa un verdetto compatto (`covered-card`, `entry-only`,
+`new`) e non usa il DB. Cerca match esatti su ID, superficie, reading, alias e
+front card, normalizzando furigana e varianti `~`/`～`/`〜`; non fa dedup
+semantico fuzzy e non cerca nelle traduzioni. `--list entries|cards|lessons`
+e' una vista inventory leggera, non un export globale da incollare agli LLM.
+
+`content:next-id` calcola path, prefix, `order`, `lesson_id` e `cards_id` per
+una nuova coppia textbook/cards. E' append-only e read-only: non riempie gap,
+non rinumera file e segnala collisioni invece di inventare suffissi.
+
 Minimizza sempre lo scope del sync DB: se l'apply o la revisione tocca solo una
 o poche lesson note, devi limitare l'import alle sole route textbook coinvolte:
 

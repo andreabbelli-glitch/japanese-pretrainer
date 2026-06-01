@@ -29,6 +29,8 @@
     "fsrs:optimize": "node --experimental-strip-types ./scripts/fsrs-optimize.ts",
     "fsrs:optimize:if-needed": "node --experimental-strip-types ./scripts/fsrs-optimize-if-needed.ts",
     "content:validate": "node --experimental-strip-types ./scripts/validate-content.ts",
+    "content:lookup": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-lookup.ts",
+    "content:next-id": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-next-id.ts",
     "content:import": "node --experimental-strip-types ./scripts/import-content.ts",
     "content:test-stats": "node --experimental-strip-types ./scripts/update-real-bundle-test-stats.ts",
     "pronunciations:resolve": "node --experimental-strip-types ./scripts/resolve-pronunciations.ts",

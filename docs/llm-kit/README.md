@@ -25,6 +25,19 @@ coinvolto, non uno snapshot del DB locale. `content:import` serve dopo la
 validazione per aggiornare il runtime della webapp, non per decidere la
 curation editoriale.
 
+Quando l'agent locale ha accesso al repo, deve preferire i helper read-only ai
+grep manuali lunghi:
+
+```sh
+./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> "<front-o-superficie>"
+./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
+```
+
+`content:lookup` risponde con un verdetto compatto su match esatti nei
+Markdown (`covered-card`, `entry-only`, `new`). `content:next-id` calcola ID,
+order e path per nuove lesson/card senza scrivere file. Questi tool riducono il
+contesto da passare all'LLM, ma non sostituiscono il giudizio editoriale.
+
 ## Struttura
 
 - `general/`
