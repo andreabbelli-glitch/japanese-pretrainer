@@ -1024,6 +1024,9 @@ Regole:
 - Import aggiorna il contenuto senza azzerare gli stati review esistenti.
 - I link semantici `term:...` e `grammar:...` vengono risolti nel contesto del
   media corrente.
+- Quando sincronizzi il DB da questo formato, usa lo scope minimo sufficiente:
+  lesson-scoped se le lesson toccate sono note, media/full solo per cambi piu
+  ampi o riallineamenti intenzionali.
 
 ## 13. Regole di naming
 

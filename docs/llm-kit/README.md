@@ -59,7 +59,9 @@ Nota pratica:
 > [!IMPORTANT]
 > Se il workflow immagini inserisce o aggiorna blocchi `:::image` nei textbook,
 > dopo `image:apply` serve sempre `content:import`: la webapp legge il
-> contenuto importato nel DB locale, non il markdown appena modificato.
+> contenuto importato nel DB locale, non il markdown appena modificato. Usa
+> sempre l'import lesson-scoped quando le lesson aggiornate sono note; allarga a
+> media o full solo per cambi davvero piu ampi.
 
 > [!IMPORTANT]
 > Audio e immagini sono gia supportati dal formato reale del progetto, ma il

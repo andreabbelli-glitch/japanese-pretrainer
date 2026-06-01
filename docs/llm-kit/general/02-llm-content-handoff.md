@@ -114,7 +114,8 @@ Workflow consigliato:
 4. solo dopo si inserisce nel textbook un blocco `:::image` con `src` reale.
 5. dopo l'apply reale dei blocchi nel textbook, riesegui `content:import` prima
    di controllare la webapp: il reader legge il contenuto importato nel DB, non
-   il markdown appena cambiato sul filesystem.
+   il markdown appena cambiato sul filesystem. Minimizza lo scope dell'import:
+   lesson-scoped quando le lesson aggiornate sono note.
 
 Il validatore fallisce se il file non esiste.
 
@@ -743,6 +744,8 @@ Il playbook fissa il ciclo reale da seguire:
 3. validazione locale con `content:validate`;
 4. correzione iterativa sui file che falliscono;
 5. eventuale `image:apply` se hai risolto asset immagini;
-6. import con `content:import` per aggiornare il DB che alimenta la webapp,
-   preferendo `--media-slug <media-slug> --lesson-slug <lesson-slug>` quando
-   il batch tocca solo una o piu lesson specifiche dello stesso media.
+6. import con `content:import` per aggiornare il DB che alimenta la webapp.
+   Minimizza sempre lo scope: usa
+   `--media-slug <media-slug> --lesson-slug <lesson-slug>` quando il batch tocca
+   solo una o piu lesson specifiche dello stesso media; media/full solo per
+   cambi piu ampi o riallineamenti intenzionali.

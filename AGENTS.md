@@ -28,10 +28,16 @@ come classificatore iniziale dei task.
    `.agents/skills/*`, segui la sezione `Verification` della skill invece dei
    gate completi: deve usare solo validazioni/import/test mirati al media o al
    workflow toccato.
-5. Se una verifica richiesta non e' eseguibile, dichiaralo nel riepilogo finale
+5. Minimizza sempre lo scope di `content:import`: usa l'import lesson-scoped
+   con `--media-slug <media-slug> --lesson-slug <lesson-slug>` ogni volta che le
+   lesson toccate sono note. Ripeti `--lesson-slug` per piu lesson dello stesso
+   media. Usa import media-scoped o full solo quando il cambio e' davvero
+   media-wide, richiede archive/prune fuori dalle lesson note, oppure e' un setup
+   o recovery intenzionale.
+6. Se una verifica richiesta non e' eseguibile, dichiaralo nel riepilogo finale
    con il motivo concreto.
-6. Non eliminare test in `tests/`.
-7. Non introdurre multi-tenancy o auth complessa: il prodotto resta single-user
+7. Non eliminare test in `tests/`.
+8. Non introdurre multi-tenancy o auth complessa: il prodotto resta single-user
    locale-first salvo milestone dedicata.
 
 ---
@@ -47,7 +53,9 @@ come classificatore iniziale dei task.
 
 Workflow canonici autorizzati su contenuti quando pertinenti:
 `image:apply`, `pronunciations:*`, `pitch-accents:fetch`, `content:validate`,
-`content:import`.
+`content:import`. Per `content:import`, parti sempre dallo scope minimo
+sufficiente: lesson-scoped quando possibile, poi media-scoped, full solo se
+necessario.
 
 ---
 

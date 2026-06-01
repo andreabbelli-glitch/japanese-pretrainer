@@ -10,8 +10,8 @@ Use this as the first task classifier before changing files. The detailed rules 
 | --- | --- | --- | --- |
 | App code or application logic | Stay out of `content/` unless the task explicitly asks for content changes. | `./scripts/with-node.sh pnpm check` | `AGENTS.md`, `README.md`, `docs/dev-tooling.md` |
 | Routing, DB, importer/sync, auth, cache revalidation, or E2E-covered user flows | Treat this as a wider behavioral change and keep generated DB artifacts generated. | `./scripts/with-node.sh pnpm check` and `./scripts/with-node.sh pnpm release:check` | `AGENTS.md`, `docs/local-verification-notes.md` |
-| Content-only work through repo-scoped skills | Use the relevant `.agents/skills/*` workflow and edit protected content only through that workflow. | Run the skill's `Verification` commands, usually content/import or targeted workflow gates. | `AGENTS.md`, `.agents/skills/*/SKILL.md`, `docs/llm-kit/README.md` |
-| Pronunciation, Forvo, pitch accent, image, or media asset workflow | Use `pronunciations:resolve` or the repo-scoped skill wrapper for normal pronunciation work, and keep sidecar workflow files scoped to the requested media. | Run the targeted workflow validation/import command named by the workflow or skill. | `docs/dev-tooling.md`, `docs/textbook-pronunciation-boundary.md`, `docs/pronunciation-workflow.md`, `docs/forvo-pronunciation-fetch.md`, `docs/pitch-accent-workflow.md` |
+| Content-only work through repo-scoped skills | Use the relevant `.agents/skills/*` workflow and edit protected content only through that workflow. | Run the skill's `Verification` commands and minimize `content:import` scope; use lesson-scoped import when touched lessons are known. | `AGENTS.md`, `.agents/skills/*/SKILL.md`, `docs/llm-kit/README.md` |
+| Pronunciation, Forvo, pitch accent, image, or media asset workflow | Use `pronunciations:resolve` or the repo-scoped skill wrapper for normal pronunciation work, and keep sidecar workflow files scoped to the requested media. | Run the targeted workflow validation/import command named by the workflow or skill, using the smallest import scope available. | `docs/dev-tooling.md`, `docs/textbook-pronunciation-boundary.md`, `docs/pronunciation-workflow.md`, `docs/forvo-pronunciation-fetch.md`, `docs/pitch-accent-workflow.md` |
 | Local setup, environment, QA, or agent tooling | Update the related operational docs in the same slice and keep commands behind `./scripts/with-node.sh`. | Use the smallest targeted doc/tooling check that proves the change, plus `./scripts/with-node.sh pnpm agent:check` when agent-facing guardrails are touched. | `docs/dev-tooling.md`, `.codex/README.md`, `.env.example` |
 
 ## Protected Areas
@@ -39,6 +39,7 @@ This keeps local agents on the supported Node 22.x toolchain.
 - App code or logic: run `./scripts/with-node.sh pnpm check`.
 - Routing, DB, importer/sync, auth, cache revalidation, or E2E-covered flows: run `./scripts/with-node.sh pnpm check` and `./scripts/with-node.sh pnpm release:check`.
 - Content-only repo-scoped skill work: run the skill's `Verification` section instead of broad app gates.
+- For `content:import`, always choose the smallest sufficient scope: lesson-scoped when touched lessons are known, media-scoped only for media-wide or unknown lesson sets, and full only for setup/recovery/intentional whole-root sync.
 - Agent-facing docs, skills, protected-path policy, or LLM kit mirrors: run `./scripts/with-node.sh pnpm agent:check`; it does not replace `pnpm check`, content workflow validation/import, or release gates.
 - If a required gate cannot run, report the exact command and concrete reason.
 

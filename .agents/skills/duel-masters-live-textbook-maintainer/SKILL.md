@@ -446,8 +446,8 @@ Practical card-selection rules:
   new card content is not done until this check has been run and the outcome is
   reported.
 - Run a real workspace database import before finishing, not only a temporary
-  test harness import. Prefer a lesson-scoped import for ordinary per-card
-  updates:
+  test harness import. Minimize import scope: use a lesson-scoped import for
+  ordinary per-card updates whenever the touched lesson slugs are known:
   `./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug> [--lesson-slug <additional-lesson-slug> ...]`
 - Use the broader media-scoped import only when the task changed media-wide
   ordering, keyword-bank pages, shared card files, or other content that should
@@ -618,9 +618,9 @@ Then import the changed lesson or lessons into the configured target database:
 ```
 
 Repeat `--lesson-slug` when a single task legitimately spans multiple textbook
-routes. Use the whole-media import form only when the run renumbers lessons,
-changes segment ordering, touches media-wide references, or needs archive/prune
-behavior:
+routes. Do not broaden the import when the touched lesson set is known. Use the
+whole-media import form only when the run renumbers lessons, changes segment
+ordering, touches media-wide references, or needs archive/prune behavior:
 
 ```bash
 ./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25

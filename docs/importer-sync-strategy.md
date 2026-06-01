@@ -137,19 +137,28 @@ Prima dell'import conviene validare il bundle o il content root:
 ./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25
 ```
 
-Import completo dalla content root di default:
+Scegli sempre lo scope minimo sufficiente. L'import lesson-scoped e' obbligatorio
+quando le lesson toccate sono note; ripeti `--lesson-slug` per piu lesson dello
+stesso media. Usa import media-scoped solo per cambi media-wide o per applicare
+archive/prune all'intero media. Usa import full solo per setup, recovery o
+riallineamenti intenzionali dell'intera content root.
+
+Import full dalla content root di default, solo per setup, recovery o
+riallineamento intenzionale:
 
 ```sh
 ./scripts/with-node.sh pnpm content:import
 ```
 
-Content root esplicita:
+Import full con content root esplicita, solo per setup, recovery o
+riallineamento intenzionale:
 
 ```sh
 ./scripts/with-node.sh pnpm content:import -- --content-root /percorso/content
 ```
 
-Import incrementale scoped a uno o piu media slug:
+Import incrementale scoped a uno o piu media slug, quando lo scope lesson non e'
+disponibile o il cambio e' media-wide:
 
 ```sh
 ./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25

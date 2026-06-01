@@ -62,9 +62,11 @@ workflow passa automaticamente solo gli slug interessati a `content:import`
 tramite `--media-slug`; un import remoto full va lanciato solo manualmente dal
 workflow dispatch impostando `full_import`. Anche il CLI locale blocca i full
 import quando `DATABASE_URL` punta a un host remoto: usa sempre `--media-slug`
-per gli import Turso ordinari, aggiungendo uno o piu `--lesson-slug` quando il
-sync deve toccare solo lesson specifiche dello stesso media, oppure imposta
-`ALLOW_REMOTE_FULL_CONTENT_IMPORT=1` solo per un full import intenzionale.
+per gli import Turso ordinari e aggiungi sempre uno o piu `--lesson-slug` quando
+il sync deve toccare solo lesson specifiche dello stesso media. L'obiettivo e
+minimizzare la quantita di contenuto sincronizzato: media-scoped solo per cambi
+media-wide, full solo con `ALLOW_REMOTE_FULL_CONTENT_IMPORT=1` e per un full
+import intenzionale.
 Il resolver del workflow deve evitare pipeline con producer soggetti a SIGPIPE
 sotto `pipefail`, cosi' i push con molti asset vendorizzati non possono falsare
 il rilevamento delle migrazioni e lasciare `run_migrations=false`.

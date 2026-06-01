@@ -38,7 +38,7 @@ export const taskClassifiers: TaskClassifier[] = [
     orientation:
       "Use the relevant `.agents/skills/*` workflow and edit protected content only through that workflow.",
     verify:
-      "Run the skill's `Verification` commands, usually content/import or targeted workflow gates.",
+      "Run the skill's `Verification` commands and minimize `content:import` scope; use lesson-scoped import when touched lessons are known.",
     sourceDocs: [
       "AGENTS.md",
       ".agents/skills/*/SKILL.md",
@@ -50,7 +50,7 @@ export const taskClassifiers: TaskClassifier[] = [
     orientation:
       "Use `pronunciations:resolve` or the repo-scoped skill wrapper for normal pronunciation work, and keep sidecar workflow files scoped to the requested media.",
     verify:
-      "Run the targeted workflow validation/import command named by the workflow or skill.",
+      "Run the targeted workflow validation/import command named by the workflow or skill, using the smallest import scope available.",
     sourceDocs: [
       "docs/dev-tooling.md",
       "docs/textbook-pronunciation-boundary.md",
@@ -207,6 +207,7 @@ export function buildAgentOrientationDocument({
     "- App code or logic: run `./scripts/with-node.sh pnpm check`.",
     "- Routing, DB, importer/sync, auth, cache revalidation, or E2E-covered flows: run `./scripts/with-node.sh pnpm check` and `./scripts/with-node.sh pnpm release:check`.",
     "- Content-only repo-scoped skill work: run the skill's `Verification` section instead of broad app gates.",
+    "- For `content:import`, always choose the smallest sufficient scope: lesson-scoped when touched lessons are known, media-scoped only for media-wide or unknown lesson sets, and full only for setup/recovery/intentional whole-root sync.",
     "- Agent-facing docs, skills, protected-path policy, or LLM kit mirrors: run `./scripts/with-node.sh pnpm agent:check`; it does not replace `pnpm check`, content workflow validation/import, or release gates.",
     "- If a required gate cannot run, report the exact command and concrete reason.",
     "",

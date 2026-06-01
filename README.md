@@ -391,10 +391,12 @@ DB ai media correnti e rimuove eventuali residui legacy non piu presenti nel
 workspace. L'importer esegue parser + validazione prima di sincronizzare il DB;
 puoi passare una content root diversa con
 `pnpm content:import -- --content-root /percorso/content`.
-Per sync mirati, usa `--media-slug <media-slug>`; se hai toccato solo una o
-piu route textbook dello stesso media, aggiungi uno o piu
-`--lesson-slug <lesson-slug>` per aggiornare solo quelle lesson, le card
-collegate e le entry referenziate.
+Regola generale: minimizza lo scope dell'import. Usa sempre
+`--media-slug <media-slug> --lesson-slug <lesson-slug>` quando hai toccato solo
+una o piu route textbook note dello stesso media; ripeti `--lesson-slug` per
+piu lesson. Usa il solo `--media-slug` quando il cambio e' media-wide o deve
+applicare archive/prune oltre alle lesson note. Usa l'import full solo per setup,
+recovery o riallineamenti intenzionali dell'intera content root.
 
 Dettagli operativi e schema: [Persistence layer](./docs/database.md)
 

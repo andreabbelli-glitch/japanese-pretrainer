@@ -250,7 +250,9 @@ Nota operativa:
 - `image:apply` aggiorna i file textbook sul filesystem;
 - la webapp renderizza il contenuto importato nel DB locale;
 - quindi, dopo un apply reale, va rieseguito `content:import` prima di
-  verificare il risultato nel reader.
+  verificare il risultato nel reader;
+- lo scope dell'import va minimizzato: lesson-scoped quando le lesson aggiornate
+  sono note.
 
 ### 3.2 Asset audio
 
@@ -397,24 +399,27 @@ Formato minimo del correction batch:
 
 ### 6. Importa solo dopo validazione verde
 
-Import scoped al bundle, quando vuoi riallineare tutto il media:
-
-```sh
-./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug <media-slug>
-```
-
-Import scoped a una o piu lesson dello stesso media, quando hai toccato solo
-quelle route textbook e le card collegate:
+Scegli sempre lo scope minimo sufficiente. Import scoped a una o piu lesson
+dello stesso media, obbligatorio quando hai toccato solo quelle route textbook e
+le card collegate:
 
 ```sh
 ./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug <media-slug> --lesson-slug <lesson-slug> [--lesson-slug <lesson-slug> ...]
+```
+
+Import scoped al bundle, solo quando vuoi riallineare tutto il media o applicare
+archive/prune media-wide:
+
+```sh
+./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug <media-slug>
 ```
 
 Usa lo slug della route textbook, non il nome del file. Il parser/validator
 controlla comunque il bundle, ma il sync DB aggiorna solo le lesson richieste,
 le card che puntano a quelle lesson e le entry collegate.
 
-Import completo:
+Import completo, solo per setup, recovery o riallineamento intenzionale
+dell'intera content root:
 
 ```sh
 ./scripts/with-node.sh pnpm content:import -- --content-root ./content
@@ -464,4 +469,5 @@ Il repository accetta solo output che passa:
 1. `content:validate`
 2. eventuale `image:apply` quando ci sono asset immagini risolti
 3. eventuale correzione iterativa
-4. `content:import`
+4. `content:import` con lo scope minimo sufficiente, lesson-scoped quando le
+   lesson toccate sono note

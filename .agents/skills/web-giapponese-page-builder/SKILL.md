@@ -84,7 +84,8 @@ Optional:
     Pass multiple `--entry` flags for multiple new cards. Use `--word` or
     `--words-file` only when a reliable entry-id list is not available.
 11. Import the updated item into the configured target database with a
-    lesson-scoped import:
+    lesson-scoped import. Minimize import scope; when the item's lesson slug is
+    known, the lesson-scoped import is required:
     `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>`
     Use the broader media-scoped import only when the task changed media-wide
     ordering or other content that must apply archive/prune to all
@@ -251,7 +252,8 @@ source if needed, and only then add `pitch_accent` manually when the value is
 well supported.
 
 Repeat `--lesson-slug` if the item update legitimately spans multiple
-textbook routes. Use
+textbook routes. Do not broaden the import when the touched lesson set is known.
+Use
 `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`
 only for media-wide cleanup or ordering changes.
 

@@ -212,23 +212,24 @@ For normal skill runs that only update pronunciation artifacts such as
 `data/forvo-known-missing.json`, or `data/forvo-requested-word-add.json`, do not
 run the full `pnpm check` or `pnpm release:check` suites.
 
-For each media bundle whose pronunciation manifest or audio assets changed, run
-only:
+For each media bundle whose pronunciation manifest or audio assets changed,
+minimize import scope. When the run touched entries across review, multiple
+unknown lessons, or a media-wide pending backlog, run only:
 
 ```bash
 ./scripts/with-node.sh pnpm content:validate -- --media-slug <media-slug>
 ./scripts/with-node.sh pnpm content:import -- --media-slug <media-slug>
 ```
 
-If the pronunciation update is part of a known single-lesson content edit, you
-may use the narrower import form instead:
+If the pronunciation update is part of a known single-lesson or known
+multi-lesson content edit, you must use the narrower import form instead:
 
 ```bash
 ./scripts/with-node.sh pnpm content:import -- --media-slug <media-slug> --lesson-slug <lesson-slug> [--lesson-slug <lesson-slug> ...]
 ```
 
-Keep the media-scoped import when the run touched entries across review,
-multiple unknown lessons, or a media-wide pending backlog.
+Keep the media-scoped import only when the touched lesson set is unknown or the
+run intentionally covers media-wide pronunciation state.
 
 If the run only changed `data/forvo-known-missing.json` or
 `data/forvo-requested-word-add.json` and no content media file changed, no repo
