@@ -12,9 +12,9 @@ id: term-itsudemo
 lemma: いつでも
 reading: いつでも
 romaji: itsudemo
-meaning_it: sempre / in qualsiasi momento
+meaning_it: sempre / quando vuoi / in qualsiasi momento
 pos: adverb
-aliases: [いつでも, itsudemo, sempre, in qualsiasi momento]
+aliases: [いつでも, itsudemo, sempre, quando vuoi, in qualsiasi momento]
 notes_it: >-
   In giapponese generale `いつでも` apre il timing: "sempre", "quando vuoi",
   "in qualsiasi momento". Nel rules text di questa carta segnala una finestra
@@ -49,7 +49,7 @@ entry_type: term
 entry_id: term-itsudemo
 card_type: recognition
 front: 'いつでも'
-back: 'sempre / in qualsiasi momento'
+back: 'sempre / quando vuoi / in qualsiasi momento'
 example_jp: >-
   その[{{持|も}}ち{{主|ぬし}}](term:term-mochinushi)はそれをいつでも{{見|み}}てもよい。
 example_it: >-
