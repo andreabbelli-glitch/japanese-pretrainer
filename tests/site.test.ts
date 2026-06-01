@@ -29,6 +29,7 @@ import {
   resolveGlossaryReviewReturnTo,
   resolveReturnToContext,
   resolveReturnToLabel,
+  shouldPrefetchPrimaryNavHref,
   type StudyAreaKey
 } from "@/features/navigation";
 
@@ -74,6 +75,16 @@ describe("site helpers", () => {
       "/pitch-accent",
       "/settings"
     ]);
+  });
+
+  it("keeps only the primary review route warm from the persistent nav", () => {
+    expect(
+      primaryNav
+        .filter((item) => shouldPrefetchPrimaryNavHref(item.href))
+        .map((item) => item.href)
+    ).toEqual(["/review"]);
+    expect(shouldPrefetchPrimaryNavHref("/media")).toBe(false);
+    expect(shouldPrefetchPrimaryNavHref("/glossary")).toBe(false);
   });
 
   it("builds stable routes for media detail and study areas", () => {

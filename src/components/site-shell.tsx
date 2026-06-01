@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Suspense, type ReactNode } from "react";
 
 import { SiteShellPrimaryNav } from "@/components/site-shell-primary-nav";
-import { primaryNav } from "@/features/navigation";
+import { primaryNav, shouldPrefetchPrimaryNavHref } from "@/features/navigation";
 
 type SiteShellProps = {
   children: ReactNode;
@@ -57,7 +57,7 @@ function SiteShellPrimaryNavFallback() {
           key={item.href}
           className="site-nav__link"
           href={item.href as Route}
-          prefetch={false}
+          prefetch={shouldPrefetchPrimaryNavHref(item.href)}
         >
           <span>{item.label}</span>
           <small>{item.description}</small>

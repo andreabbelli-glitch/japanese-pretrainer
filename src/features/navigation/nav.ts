@@ -61,6 +61,10 @@ export const primaryNav: NavItem[] = [
   }
 ];
 
+export function shouldPrefetchPrimaryNavHref(href: NavItem["href"]) {
+  return href === "/review";
+}
+
 export function resolveActivePrimaryNavHref(pathname: string): NavItem["href"] {
   if (pathname === "/" || pathname.length === 0) {
     return "/";

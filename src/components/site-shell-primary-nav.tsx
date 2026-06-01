@@ -7,7 +7,8 @@ import { usePathname, useSearchParams } from "next/navigation";
 import {
   primaryNav,
   resolveReturnToContext,
-  resolveActivePrimaryNavHref
+  resolveActivePrimaryNavHref,
+  shouldPrefetchPrimaryNavHref
 } from "@/features/navigation";
 
 export function SiteShellPrimaryNav() {
@@ -33,7 +34,7 @@ export function SiteShellPrimaryNav() {
             aria-current={active ? "page" : undefined}
             className={`site-nav__link${active ? " site-nav__link--active" : ""}`}
             href={href}
-            prefetch={false}
+            prefetch={shouldPrefetchPrimaryNavHref(item.href)}
           >
             <span>{item.label}</span>
             <small>{item.description}</small>
