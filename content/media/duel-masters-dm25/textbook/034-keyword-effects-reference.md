@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: "Leggere le keyword: timing, costi e condizioni del rules text"
-order: 109
+order: 111
 segment_ref: keyword-bank
 difficulty: n3
 status: active

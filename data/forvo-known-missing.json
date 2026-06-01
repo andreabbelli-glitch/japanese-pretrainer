@@ -301,6 +301,15 @@
       "wordAddBlockedDetail": "\"そのカードと同じ文明を1つでも持つ\" is not allowed in Forvo.Please check the word's spelling or language."
     },
     {
+      "entryId": "grammar-sono-kazu-dake",
+      "entryKind": "grammar",
+      "label": "その数だけ",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "そのかずだけ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-06-01T16:04:22.991Z"
+    },
+    {
       "entryId": "grammar-sono-mochinushi-wa-sore-wo-itsudemo-mitemo-yoi",
       "entryKind": "grammar",
       "label": "その持ち主はそれをいつでも見てもよい",
@@ -394,6 +403,15 @@
       "reading": "うらむきにして",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-05-24T15:16:09.768Z"
+    },
+    {
+      "entryId": "grammar-x-wo-motsu-y",
+      "entryKind": "grammar",
+      "label": "Xを持つY",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "XをもつY",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-06-01T16:04:26.148Z"
     },
     {
       "entryId": "term-b-a-d-two",

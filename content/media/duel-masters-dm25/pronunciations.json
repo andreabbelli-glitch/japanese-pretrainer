@@ -480,6 +480,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-sono-kazu-dake",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba",
       "audio_src": "assets/audio/grammar/grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba/forvo-manual-そのこうけ-きちゅうにしーると-をふ-れいくしていれは.mp3",
       "audio_source": "forvo",
@@ -756,6 +761,11 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%82%92%E9%81%B8%E6%8A%9E/#ja",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-x-wo-motsu-y",
       "pitch_accent_status": "miss"
     },
     {
@@ -1786,6 +1796,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-fukumareru",
+      "audio_src": "assets/audio/term/term-fukumareru/forvo-strawberrybrown-ふくまれる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%90%AB%E3%81%BE%E3%82%8C%E3%82%8B/#ja",
+      "pitch_accent": 4,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-g-neo-creature",
       "audio_src": "assets/audio/term/term-g-neo-creature/forvo-mezashi-し-ーねおくりーちゃー.mp3",
       "audio_source": "forvo",
@@ -2313,6 +2336,19 @@
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%8C%96%E3%81%99",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kazoeru",
+      "audio_src": "assets/audio/term/term-kazoeru/tofugu-wanikani-数える.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E6%95%B0%E3%81%88%E3%82%8B%E3%80%90%E3%81%8B%E3%81%9E%E3%81%88%E3%82%8B%E3%80%91.mp3",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {

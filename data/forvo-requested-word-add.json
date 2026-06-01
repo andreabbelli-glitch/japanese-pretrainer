@@ -501,6 +501,15 @@
       "resolvedAudioSrc": "assets/audio/grammar/grammar-shoukan-ni-yotte/forvo-manual-しょうかんによって.mp3"
     },
     {
+      "entryId": "grammar-sono-kazu-dake",
+      "entryKind": "grammar",
+      "label": "その数だけ",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "そのかずだけ",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%9D%E3%81%AE%E6%95%B0%E3%81%A0%E3%81%91/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-06-01T16:04:22.998Z"
+    },
+    {
       "entryId": "grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba",
       "entryKind": "grammar",
       "label": "その攻撃中にシールドをブレイクしていれば",
@@ -654,6 +663,15 @@
       "resolvedAt": "2026-04-25T22:18:21.854Z",
       "resolvedAudioSource": "forvo",
       "resolvedAudioSrc": "assets/audio/grammar/grammar-wo-sentaku/forvo-manual-をせんたく.mp3"
+    },
+    {
+      "entryId": "grammar-x-wo-motsu-y",
+      "entryKind": "grammar",
+      "label": "Xを持つY",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "XをもつY",
+      "requestUrl": "https://forvo.com/word-add/%E3%82%92%E3%82%82%E3%81%A4/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-06-01T16:04:26.168Z"
     },
     {
       "entryId": "grammar-yamafuda-no-ue-ka-shita-no-dochiraka-ni-modosu",
