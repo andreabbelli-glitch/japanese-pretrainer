@@ -1,5 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { eq } from "drizzle-orm";
 
+import { pitchAccentSession } from "@/db/schema";
 import {
   abandonPitchAccentSession,
   completePitchAccentSession,
@@ -123,6 +125,22 @@ describe("pitch accent session persistence", () => {
       isCorrect: true
     });
 
+    const activePersistedSession =
+      await fixture.database.query.pitchAccentSession.findFirst({
+        where: eq(pitchAccentSession.id, started.sessionId)
+      });
+    const activeRecap = await getPitchAccentRecapPageData({
+      database: fixture.database,
+      sessionId: started.sessionId
+    });
+
+    expect(activePersistedSession?.totalAttempts).toBe(0);
+    expect(activeRecap?.session).toMatchObject({
+      correctAttempts: 1,
+      status: "active",
+      totalAttempts: 1
+    });
+
     await abandonPitchAccentSession({
       database: fixture.database,
       now: new Date("2026-05-25T08:01:00.000Z"),
@@ -178,7 +196,12 @@ describe("pitch accent session persistence", () => {
       database: fixture.database,
       sessionId: partial.sessionId
     });
+    const partialPersistedSession =
+      await fixture.database.query.pitchAccentSession.findFirst({
+        where: eq(pitchAccentSession.id, partial.sessionId)
+      });
 
+    expect(partialPersistedSession?.totalAttempts).toBe(0);
     expect(partialRecap?.session).toMatchObject({
       status: "active",
       totalAttempts: 1
@@ -254,6 +277,10 @@ describe("pitch accent session persistence", () => {
       database: fixture.database,
       sessionId: started.sessionId
     });
+    const persistedSession =
+      await fixture.database.query.pitchAccentSession.findFirst({
+        where: eq(pitchAccentSession.id, started.sessionId)
+      });
 
     expect(validSubmit).toEqual({
       chosenOptionId: trial.correctOptionId,
@@ -261,6 +288,7 @@ describe("pitch accent session persistence", () => {
       idempotent: false,
       isCorrect: true
     });
+    expect(persistedSession?.totalAttempts).toBe(0);
     expect(recap?.attempts).toHaveLength(1);
     expect(recap?.session.totalAttempts).toBe(1);
   });

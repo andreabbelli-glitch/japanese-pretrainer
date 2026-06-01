@@ -201,7 +201,7 @@ describe("katakana speed session persistence", () => {
     ).rejects.toThrow("Unsupported Katakana Speed trial mode.");
   });
 
-  it("submits an answer once, updates item state, and rolls up session counters", async () => {
+  it("submits an answer once and defers persisted session rollups", async () => {
     const session = await startKatakanaSpeedSession({
       count: 3,
       database,
@@ -233,6 +233,7 @@ describe("katakana speed session persistence", () => {
     const persistedTrial = await database.query.katakanaTrial.findFirst({
       where: eq(katakanaTrial.trialId, trial.trialId)
     });
+    const dashboard = await getKatakanaSpeedPageData({ database });
 
     expect(attempts).toHaveLength(1);
     expect(attempts[0]).toMatchObject({
@@ -250,6 +251,12 @@ describe("katakana speed session persistence", () => {
       wrongCount: 0
     });
     expect(persistedSession).toMatchObject({
+      correctAttempts: 0,
+      medianRtMs: null,
+      p90RtMs: null,
+      totalAttempts: 0
+    });
+    expect(dashboard.recentSession).toMatchObject({
       correctAttempts: 1,
       medianRtMs: 420,
       p90RtMs: 420,
@@ -351,6 +358,12 @@ describe("katakana speed session persistence", () => {
     });
 
     expect(persistedSession).toMatchObject({
+      correctAttempts: 0,
+      medianRtMs: null,
+      p90RtMs: null,
+      totalAttempts: 0
+    });
+    expect(recap?.session).toMatchObject({
       correctAttempts: 1,
       medianRtMs: 300,
       p90RtMs: 300,
@@ -399,7 +412,7 @@ describe("katakana speed session persistence", () => {
     expect(attempts).toHaveLength(1);
     expect(attempts[0]?.responseMs).toBe(300);
     expect(itemState?.reps).toBe(1);
-    expect(persistedSession?.totalAttempts).toBe(1);
+    expect(persistedSession?.totalAttempts).toBe(0);
   });
 
   it("rejects duplicate trial submits for the wrong session id", async () => {
@@ -527,7 +540,11 @@ describe("katakana speed session persistence", () => {
     expect(JSON.parse(itemState?.lastErrorTagsJson ?? "[]")).toEqual([
       "slow_correct"
     ]);
-    expect(persistedSession?.slowCorrectCount).toBe(1);
+    expect(persistedSession?.slowCorrectCount).toBe(0);
+    expect(
+      (await getKatakanaSpeedPageData({ database })).recentSession
+        ?.slowCorrectCount
+    ).toBe(1);
   });
 
   it("persists self-check metadata without counting hesitation as objective lapse", async () => {
@@ -563,6 +580,13 @@ describe("katakana speed session persistence", () => {
     const itemState = await database.query.katakanaItemState.findFirst({
       where: eq(katakanaItemState.itemId, trial?.itemId ?? "")
     });
+    const persistedSession = await database.query.katakanaSession.findFirst({
+      where: eq(katakanaSession.id, session.sessionId)
+    });
+    const recap = await getKatakanaSpeedRecapPageData({
+      database,
+      sessionId: session.sessionId
+    });
     const persistedFeatures = JSON.parse(attempt?.featuresJson ?? "{}");
     const persistedMetrics = JSON.parse(attempt?.metricsJson ?? "{}");
 
@@ -586,6 +610,8 @@ describe("katakana speed session persistence", () => {
       slowCorrectCount: 1,
       slowStreak: 1
     });
+    expect(persistedSession?.totalAttempts).toBe(0);
+    expect(recap?.session.totalAttempts).toBe(1);
   });
 
   it("completion writes recap metrics", async () => {
@@ -615,6 +641,11 @@ describe("katakana speed session persistence", () => {
       trialId: session.trials[1]?.trialId ?? "",
       userAnswer: "ツ"
     });
+
+    const activeSession = await database.query.katakanaSession.findFirst({
+      where: eq(katakanaSession.id, session.sessionId)
+    });
+    expect(activeSession?.totalAttempts).toBe(0);
 
     const recap = await completeKatakanaSpeedSession({
       database,

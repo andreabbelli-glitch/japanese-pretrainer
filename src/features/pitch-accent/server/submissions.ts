@@ -8,7 +8,6 @@ import {
 } from "@/db/queries";
 
 import type { SubmitPitchAccentAnswerResult } from "./contracts";
-import { refreshPitchAccentSessionRollup } from "./rollups";
 
 export async function submitPitchAccentAnswer(input: {
   readonly chosenOptionId: string;
@@ -101,15 +100,6 @@ export async function submitPitchAccentAnswer(input: {
       answeredAt: nowIso,
       trialId: input.trialId
     });
-    const refreshed = await refreshPitchAccentSessionRollup(transaction, {
-      expectedStatus: "active",
-      sessionId: input.sessionId,
-      status: "active",
-      updatedAt: nowIso
-    });
-    if (!refreshed) {
-      throw new Error("Pitch accent session is not active.");
-    }
 
     return {
       chosenOptionId: input.chosenOptionId,

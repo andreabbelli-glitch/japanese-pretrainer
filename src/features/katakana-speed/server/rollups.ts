@@ -20,6 +20,21 @@ import {
   topKeys
 } from "./codecs";
 
+type KatakanaAttemptLogRow = Awaited<
+  ReturnType<typeof listKatakanaAttemptLogsBySession>
+>[number];
+
+export type KatakanaSessionRollup = {
+  readonly correctAttempts: number;
+  readonly mainConfusionsJson: string;
+  readonly mainErrorTagsJson: string;
+  readonly medianRtMs: number | null;
+  readonly p90RtMs: number | null;
+  readonly recommendedFocusJson: string;
+  readonly slowCorrectCount: number;
+  readonly totalAttempts: number;
+};
+
 export async function loadKatakanaSpeedState(
   database: Parameters<Parameters<DatabaseClient["transaction"]>[0]>[0],
   now: Date
@@ -118,19 +133,10 @@ export async function updateItemStateAfterAttempt(
   });
 }
 
-export async function refreshSessionRollup(
-  database: Parameters<Parameters<DatabaseClient["transaction"]>[0]>[0],
-  input: {
-    durationMs?: number | null;
-    endedAt?: string | null;
-    nowIso: string;
-    sessionId: string;
-    status: "active" | "completed" | "abandoned";
-  }
-) {
-  const attempts = (
-    await listKatakanaAttemptLogsBySession(database, input.sessionId)
-  ).filter(hasSupportedKatakanaAttemptMode);
+export function buildKatakanaSessionRollup(
+  attemptRows: readonly KatakanaAttemptLogRow[]
+): KatakanaSessionRollup {
+  const attempts = attemptRows.filter(hasSupportedKatakanaAttemptMode);
   const responseTimes = attempts.map((attempt) => attempt.responseMs);
   const errorTagCounts = countValues(
     attempts.flatMap((attempt) =>
@@ -145,7 +151,8 @@ export async function refreshSessionRollup(
   const recommendedFocus = [
     ...new Set([...topKeys(errorTagCounts, 3), ...topKeys(confusionCounts, 3)])
   ];
-  const rollup = {
+
+  return {
     correctAttempts: attempts.filter((attempt) => attempt.isCorrect === 1)
       .length,
     mainConfusionsJson: JSON.stringify(topKeys(confusionCounts, 5)),
@@ -160,6 +167,21 @@ export async function refreshSessionRollup(
     ).length,
     totalAttempts: attempts.length
   };
+}
+
+export async function refreshSessionRollup(
+  database: Parameters<Parameters<DatabaseClient["transaction"]>[0]>[0],
+  input: {
+    durationMs?: number | null;
+    endedAt?: string | null;
+    nowIso: string;
+    sessionId: string;
+    status: "active" | "completed" | "abandoned";
+  }
+) {
+  const rollup = buildKatakanaSessionRollup(
+    await listKatakanaAttemptLogsBySession(database, input.sessionId)
+  );
 
   await updateKatakanaSessionRollup(database, {
     ...rollup,

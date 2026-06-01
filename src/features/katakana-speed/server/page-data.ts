@@ -34,6 +34,7 @@ import {
   mapKatakanaSpeedSessionSummary,
   mapKatakanaTrialRow
 } from "./mappers";
+import { buildKatakanaSessionRollup } from "./rollups";
 
 export async function getKatakanaSpeedPageData(
   input: {
@@ -45,15 +46,18 @@ export async function getKatakanaSpeedPageData(
     listRecentKatakanaSessionRows(database, 10),
     listKatakanaItemStateRows(database)
   ]);
-  const recentSession = sessionRows[0]
-    ? mapKatakanaSpeedSessionSummary(sessionRows[0])
-    : null;
   const sessionIds = sessionRows.map((session) => session.id);
   const [attempts, exerciseResults, confusionEdges] = await Promise.all([
     listKatakanaAttemptLogsBySessions(database, sessionIds),
     listKatakanaExerciseResultRowsBySessions(database, sessionIds),
     listKatakanaConfusionEdgeRowsBySessions(database, sessionIds)
   ]);
+  const recentSession = sessionRows[0]
+    ? mapKatakanaSessionSummaryForRead(
+        sessionRows[0],
+        attempts.filter((attempt) => attempt.sessionId === sessionRows[0]?.id)
+      )
+    : null;
   const analytics = buildKatakanaSpeedAnalytics({
     attempts: attempts
       .filter(hasSupportedKatakanaAttemptMode)
@@ -150,6 +154,27 @@ export async function getKatakanaSpeedRecapPageData(input: {
     }),
     attempts: mappedAttempts,
     exerciseResults: mappedResults,
-    session: mapKatakanaSpeedSessionSummary(session)
+    session: mapKatakanaSessionSummaryForRead(session, attempts)
   };
+}
+
+function mapKatakanaSessionSummaryForRead(
+  session: Parameters<typeof mapKatakanaSpeedSessionSummary>[0],
+  attempts: Parameters<typeof buildKatakanaSessionRollup>[0]
+) {
+  if (session.status !== "active") {
+    return mapKatakanaSpeedSessionSummary(session);
+  }
+
+  const rollup = buildKatakanaSessionRollup(attempts);
+
+  return mapKatakanaSpeedSessionSummary({
+    ...session,
+    correctAttempts: rollup.correctAttempts,
+    medianRtMs: rollup.medianRtMs,
+    p90RtMs: rollup.p90RtMs,
+    recommendedFocusJson: rollup.recommendedFocusJson,
+    slowCorrectCount: rollup.slowCorrectCount,
+    totalAttempts: rollup.totalAttempts
+  });
 }

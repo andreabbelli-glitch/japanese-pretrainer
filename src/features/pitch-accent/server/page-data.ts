@@ -18,6 +18,7 @@ import {
   mapPitchAccentTrialRow
 } from "./mappers";
 import { getAvailablePitchAccentMoraCounts } from "../model";
+import { buildPitchAccentSessionRollup } from "./rollups";
 
 export async function getPitchAccentPageData(
   input: {
@@ -32,14 +33,22 @@ export async function getPitchAccentPageData(
       ? loadPitchAccentMinimalPairsCorpus()
       : Promise.resolve(null)
   ]);
+  const recentSessionRow = recentSessions[0] ?? null;
+  const recentSessionAttempts =
+    recentSessionRow?.status === "active"
+      ? await listPitchAccentAttemptLogsBySession(database, recentSessionRow.id)
+      : [];
 
   return {
     availableMoraCounts: corpus
       ? getAvailablePitchAccentMoraCounts(corpus)
       : [],
     corpusPairCount: input.corpusPairCount ?? corpus?.pairs.length ?? 0,
-    recentSession: recentSessions[0]
-      ? mapPitchAccentSessionSummary(recentSessions[0])
+    recentSession: recentSessionRow
+      ? mapPitchAccentSessionSummaryForRead(
+          recentSessionRow,
+          recentSessionAttempts
+        )
       : null
   };
 }
@@ -86,6 +95,24 @@ export async function getPitchAccentRecapPageData(input: {
 
   return {
     attempts: attempts.map(mapPitchAccentAttemptRow),
-    session: mapPitchAccentSessionSummary(session)
+    session: mapPitchAccentSessionSummaryForRead(session, attempts)
   };
+}
+
+function mapPitchAccentSessionSummaryForRead(
+  session: Parameters<typeof mapPitchAccentSessionSummary>[0],
+  attempts: Parameters<typeof buildPitchAccentSessionRollup>[0]
+) {
+  if (session.status !== "active") {
+    return mapPitchAccentSessionSummary(session);
+  }
+
+  const rollup = buildPitchAccentSessionRollup(attempts);
+
+  return mapPitchAccentSessionSummary({
+    ...session,
+    correctAttempts: rollup.correctAttempts,
+    patternStatsJson: rollup.patternStatsJson,
+    totalAttempts: rollup.totalAttempts
+  });
 }

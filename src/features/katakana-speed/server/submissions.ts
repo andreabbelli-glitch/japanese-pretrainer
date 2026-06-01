@@ -41,7 +41,7 @@ import {
   selfRatingErrorTags
 } from "./codecs";
 import { snapshotKatakanaTrialRow, type KatakanaTrialRow } from "./mappers";
-import { refreshSessionRollup, updateItemStateAfterAttempt } from "./rollups";
+import { updateItemStateAfterAttempt } from "./rollups";
 
 const selfCheckTrialModes = new Set([
   "word_naming",
@@ -200,11 +200,6 @@ export async function submitKatakanaSpeedAnswer(input: {
       nowIso,
       responseMs
     });
-    await refreshSessionRollup(transaction, {
-      nowIso,
-      sessionId: input.sessionId,
-      status: "active"
-    });
 
     return {
       errorTags,
@@ -349,11 +344,6 @@ export async function submitKatakanaSpeedSelfCheck(input: {
       itemId: trial.itemId,
       nowIso,
       responseMs
-    });
-    await refreshSessionRollup(transaction, {
-      nowIso,
-      sessionId: input.sessionId,
-      status: "active"
     });
 
     return {
