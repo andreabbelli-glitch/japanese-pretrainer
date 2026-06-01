@@ -65,11 +65,12 @@ id: term-ch-b5-ishiki-wo-ushinau
 lemma: '意識を失う'
 reading: 'いしきをうしなう'
 romaji: i-shi-ki-o-u-shi-na-u
-meaning_it: perdere conoscenza
+meaning_it: 'perdere conoscenza; perdere i sensi (formale)'
 pos: expression
 notes_it: >-
-  {{意識|いしき}}を{{失|うしな}}う è perdere conoscenza. Rispetto a
-  {{気|き}}を{{失|うしな}}う, suona più esplicito perché nomina la coscienza.
+  {{意識|いしき}}を{{失|うしな}}う è perdere conoscenza o perdere i sensi. Rispetto
+  a {{気|き}}を{{失|うしな}}う, suona più esplicito e formale perché nomina la
+  coscienza: può avere una sfumatura clinica, da referto o notiziario.
 level_hint: n3
 :::
 
@@ -268,12 +269,13 @@ entry_type: term
 entry_id: term-ch-b5-ishiki-wo-ushinau
 card_type: recognition
 front: '{{意識|いしき}}を{{失|うしな}}う'
-back: 'いしきをうしなう — perdere conoscenza'
+back: 'いしきをうしなう — perdere conoscenza; perdere i sensi (formale)'
 example_jp: 'カルが{{意識|いしき}}を{{失|うしな}}う。'
 example_it: 'Kal perde conoscenza.'
 notes_it: >-
   Leggi la formula intera. {{意識|いしき}} esplicita che ciò che viene perso è
-  la coscienza.
+  la coscienza, perciò l'espressione può suonare più clinica o da notiziario di
+  {{気|き}}を{{失|うしな}}う.
 tags: [crystal-hunters, book-5, lesson-02]
 :::
 

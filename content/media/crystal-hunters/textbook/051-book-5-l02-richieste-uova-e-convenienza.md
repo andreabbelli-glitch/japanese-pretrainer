@@ -26,7 +26,7 @@ Qui conta molto distinguere chi cambia stato da chi causa il cambiamento.
 - [{{逃|に}}がす](term:term-ch-b5-gasu-11) - lasciare scappare; liberare
 - [{{弱|よわ}}る](term:term-ch-b5-ru-12) - indebolirsi
 - [{{眠|ねむ}}る](term:term-ch-b5-ru-13) - dormire; addormentarsi; anche riposare in pace, giacere sepolto o restare dormiente
-- [{{意識|いしき}}を{{失|うしな}}う](term:term-ch-b5-ishiki-wo-ushinau) - perdere conoscenza
+- [{{意識|いしき}}を{{失|うしな}}う](term:term-ch-b5-ishiki-wo-ushinau) - perdere conoscenza; perdere i sensi (formale)
 - [{{付|つ}}く](term:term-ch-b5-ku-16) - attaccarsi; aggiungersi
 - [{{原因|げんいん}}](term:term-ch-b5-entry-17) - causa
 - [{{元|もと}}に{{戻|もど}}る](term:term-ch-b5-niru-18) - tornare come prima
@@ -132,7 +132,9 @@ translation_it: >-
 :::
 
 [{{意識|いしき}}を{{失|うしな}}う](term:term-ch-b5-ishiki-wo-ushinau) è più
-esplicito: la persona perde coscienza.
+esplicito: la persona perde coscienza o perde i sensi. Poiché nomina
+direttamente la coscienza, suona più formale di {{気|き}}を{{失|うしな}}う e può
+avere una sfumatura clinica, da referto o da notiziario.
 
 :::example_sentence
 jp: >-
