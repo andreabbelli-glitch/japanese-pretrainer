@@ -31,6 +31,7 @@ grep manuali lunghi:
 ```sh
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> "<front-o-superficie>"
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
+./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:scope
 ./scripts/with-node.sh pnpm agent:verify
 ```
@@ -40,8 +41,12 @@ Markdown (`covered-card`, `entry-only`, `new`). `content:next-id` calcola ID,
 order e path per nuove lesson/card senza scrivere file. `content:scope` stampa
 i comandi minimi di `content:validate` e `content:import` basandosi sui file
 modificati o su path espliciti. Questi tool riducono il contesto da passare
-all'LLM. `agent:verify` sceglie i gate repo da eseguire dopo le modifiche, ma
-non li esegue. Questi helper non sostituiscono il giudizio editoriale.
+all'LLM. `content:editorial-lint` segnala warning su meta-discorso, scorciatoie
+di stile e frasi povere prima di importare o consegnare una lesson: l'LLM deve
+valutarli come problemi editoriali reali e riscrivere il contenuto, non
+aggirarli con modifiche cosmetiche. `agent:verify` sceglie i gate repo da
+eseguire dopo le modifiche, ma non li esegue. Questi helper non sostituiscono
+il giudizio editoriale.
 
 ## Struttura
 

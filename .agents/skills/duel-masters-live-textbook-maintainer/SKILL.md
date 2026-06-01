@@ -609,6 +609,18 @@ Always validate the affected media bundle:
 ./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25
 ```
 
+Before importing or opening the revised lesson in the app, run the editorial
+lint on each touched lesson:
+
+```bash
+./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug>
+```
+
+Treat every warning as an editorial review prompt. Read the warning, inspect the
+affected lesson or card text, and fix the underlying prose seriously; do not
+silence the tool with cosmetic wording swaps, by moving author notes to another
+learner-facing field, or by broadening the scope until the warning is buried.
+
 If the run creates or revises cards, refresh the pronunciation backlog and
 resolve every new or revised card entry before completion:
 

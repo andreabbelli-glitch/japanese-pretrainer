@@ -242,6 +242,19 @@ Always validate only the affected media bundle:
 ./scripts/with-node.sh pnpm content:validate -- --media-slug web-giapponese
 ```
 
+Before importing or opening the revised lesson in the app, run the editorial
+lint on the touched lesson:
+
+```bash
+./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>
+```
+
+Treat the warnings as editorial review prompts. Inspect the affected lesson or
+card text and fix the real prose issue; do not bypass the check with cosmetic
+renames, by moving author notes into another learner-facing field, or by
+ignoring warnings that point at meta-discourse, stock contrasts, or weak
+examples.
+
 Then refresh the media-side pronunciation workflows and import the generated
 lesson into the configured target database:
 

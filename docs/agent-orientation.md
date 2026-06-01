@@ -40,6 +40,7 @@ This keeps local agents on the supported Node 22.x toolchain.
 - App code or logic: run `./scripts/with-node.sh pnpm check`.
 - Routing, DB, importer/sync, auth, cache revalidation, or E2E-covered flows: run `./scripts/with-node.sh pnpm check` and `./scripts/with-node.sh pnpm release:check`.
 - Content-only repo-scoped skill work: run the skill's `Verification` section instead of broad app gates.
+- Before importing or loading revised lesson/card content, run `./scripts/with-node.sh pnpm content:editorial-lint` on the touched media/lesson and treat warnings as editorial problems to fix, not as wording checks to bypass.
 - For `content:import`, always choose the smallest sufficient scope. Use `./scripts/with-node.sh pnpm content:scope` when local content file changes make the lesson/media scope unclear.
 - Prefer lesson-scoped import when touched lessons are known, media-scoped only for media-wide or unknown lesson sets, and full only for setup/recovery/intentional whole-root sync.
 - Agent-facing docs, skills, protected-path policy, or LLM kit mirrors: run `./scripts/with-node.sh pnpm agent:check`; it does not replace `pnpm check`, content workflow validation/import, or release gates.
