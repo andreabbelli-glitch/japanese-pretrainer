@@ -147,6 +147,7 @@ read-only sui Markdown prima di creare nuove entry, card o lesson:
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --list entries
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scope
+./scripts/with-node.sh pnpm agent:verify
 ```
 
 `content:lookup` stampa un verdetto compatto (`covered-card`, `entry-only`,
@@ -164,6 +165,12 @@ di default legge `git status` su `content/media/**`; puoi anche passare path
 espliciti. Non esegue dry-run DB, validazione o import: stampa solo `VALIDATE`
 e `IMPORT` consigliati, usando lesson scope quando riesce a mappare i file
 `textbook/` o `cards/` agli slug delle route textbook.
+
+`agent:verify` e' il verificatore di gate read-only: di default legge i file
+modificati nel repo e stampa i comandi minimi da eseguire (`check`,
+`release:check`, `agent:check`, o i gate content derivati da `content:scope`).
+Non esegue test o import e non sostituisce la sezione `Verification` delle
+skill content.
 
 Minimizza sempre lo scope del sync DB: se l'apply o la revisione tocca solo una
 o poche lesson note, devi limitare l'import alle sole route textbook coinvolte:

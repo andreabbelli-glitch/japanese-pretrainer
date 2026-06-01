@@ -35,6 +35,7 @@ This keeps local agents on the supported Node 22.x toolchain.
 
 ## Verification Chooser
 
+- When local changes span multiple areas or the right gate is unclear, run `./scripts/with-node.sh pnpm agent:verify` first; it is read-only and only prints suggested commands.
 - Documentation-only changes: no application gate is mandatory; use a targeted doc/tooling check when useful.
 - App code or logic: run `./scripts/with-node.sh pnpm check`.
 - Routing, DB, importer/sync, auth, cache revalidation, or E2E-covered flows: run `./scripts/with-node.sh pnpm check` and `./scripts/with-node.sh pnpm release:check`.
