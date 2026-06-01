@@ -14,10 +14,10 @@ export {
 export {
   getEligibleReviewCardsByMediaId,
   getEligibleReviewCardsByMediaIds,
-  loadReviewIntroducedTodayCountCached,
   loadReviewLaunchCandidateByMediaIdCached,
   loadReviewLaunchCandidatesCached
 } from "@/features/review/server/loader";
+export { loadReviewIntroducedTodayCountCached } from "@/features/review/server/workspace-core";
 export {
   getReviewLaunchMedia,
   loadGlobalReviewOverviewSnapshot,

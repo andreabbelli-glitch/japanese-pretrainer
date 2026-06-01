@@ -1,6 +1,5 @@
 import { db, type DatabaseClient } from "@/db";
 import {
-  countReviewSubjectsIntroducedOnDay,
   getReviewLaunchCandidateByMediaId,
   listGrammarEntryReviewSummariesByIds,
   listReviewLaunchCandidates,
@@ -18,14 +17,8 @@ import {
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/features/cache/server/data-cache";
-import {
-  getLocalIsoDateKey,
-  getLocalIsoTimeBucketKey
-} from "@/features/shared/model/local-date";
-import {
-  getReviewDailyLimit,
-  getStudySettings
-} from "@/features/settings/server";
+import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
+import { getStudySettings } from "@/features/settings/server";
 import {
   measureWith,
   type ReviewProfiler
@@ -40,11 +33,10 @@ import {
   type ReviewTermLookupEntry
 } from "@/features/review/server/card-presenters";
 import type { ReviewSearchState } from "@/features/review/model/search-state";
-import {
-  filterEligibleReviewCards,
-  filterReviewCardsBySubjectGroups,
-  resolveReviewWorkspaceSubjectGroups
-} from "@/features/review/server/workspace-helpers";
+import { resolveLoadedReviewWorkspaceCore } from "@/features/review/server/workspace-core";
+import { filterEligibleReviewCards } from "@/features/review/server/workspace-helpers";
+
+export { loadReviewIntroducedTodayCountCached } from "@/features/review/server/workspace-core";
 
 export type ReviewPageLoadOptions = {
   bypassCache?: boolean;
@@ -202,75 +194,44 @@ export async function loadReviewWorkspaceV2(input: {
         profiler: input.profiler
       })
   );
-  const subjectGroupsPromise = stableWorkspacePromise.then(
-    async (stableWorkspace) =>
-      resolveReviewWorkspaceSubjectGroups({
-        cards: stableWorkspace.cards,
-        database,
-        grammar: stableWorkspace.grammar,
-        now,
-        profiler: input.profiler,
-        terms: stableWorkspace.terms
-      })
-  );
-  const [stableWorkspace, dailyLimit, newIntroducedTodayCount, subjectGroups] =
-    await Promise.all([
-      stableWorkspacePromise,
-      input.resolvedDailyLimit != null
-        ? input.resolvedDailyLimit
-        : measureWith(input.profiler, "getReviewDailyLimit", () =>
-            getReviewDailyLimit(database)
-          ),
-      input.resolvedNewIntroducedTodayCount != null
-        ? input.resolvedNewIntroducedTodayCount
-        : measureWith(
-            input.profiler,
-            "countReviewSubjectsIntroducedOnDay",
-            () =>
-              loadReviewIntroducedTodayCountCached(
-                database,
-                now,
-                input.bypassCache
-              )
-          ),
-      subjectGroupsPromise
-    ]);
-  const cards = filterReviewCardsBySubjectGroups(
-    stableWorkspace.cards,
-    subjectGroups
-  );
-  input.profiler?.addMeta({
-    cards: cards.length,
-    mediaIds: input.mediaIds.length,
-    rawCardCount: stableWorkspace.rawCardCount
+  const workspaceCore = await resolveLoadedReviewWorkspaceCore({
+    bypassCache: input.bypassCache,
+    database,
+    mediaIds: input.mediaIds,
+    now,
+    profiler: input.profiler,
+    resolvedDailyLimit: input.resolvedDailyLimit,
+    resolvedNewIntroducedTodayCount: input.resolvedNewIntroducedTodayCount,
+    stableWorkspacePromise
   });
+  const { stableWorkspace } = workspaceCore;
 
-  if (cards.length === 0) {
+  if (workspaceCore.cards.length === 0) {
     return {
-      cards,
-      dailyLimit,
+      cards: workspaceCore.cards,
+      dailyLimit: workspaceCore.dailyLimit,
       entryLookup: new Map(),
       grammar: [],
-      newIntroducedTodayCount,
-      now,
-      rawCardCount: stableWorkspace.rawCardCount,
+      newIntroducedTodayCount: workspaceCore.newIntroducedTodayCount,
+      now: workspaceCore.now,
+      rawCardCount: workspaceCore.rawCardCount,
       subjectGroups: [],
       terms: []
     };
   }
 
   return {
-    cards,
-    dailyLimit,
+    cards: workspaceCore.cards,
+    dailyLimit: workspaceCore.dailyLimit,
     entryLookup: buildEntryLookup(
       stableWorkspace.terms,
       stableWorkspace.grammar
     ),
     grammar: stableWorkspace.grammar,
-    newIntroducedTodayCount,
-    now,
-    rawCardCount: stableWorkspace.rawCardCount,
-    subjectGroups,
+    newIntroducedTodayCount: workspaceCore.newIntroducedTodayCount,
+    now: workspaceCore.now,
+    rawCardCount: workspaceCore.rawCardCount,
+    subjectGroups: workspaceCore.subjectGroups,
     terms: stableWorkspace.terms
   };
 }
@@ -392,19 +353,6 @@ export async function loadReviewLaunchCandidateByMediaIdCached(
     keyParts: ["review-launch-candidate", mediaId, `bucket:${cacheBucketKey}`],
     loader: () => getReviewLaunchCandidateByMediaId(database, mediaId, nowIso),
     tags: [...buildReviewSummaryTags([mediaId]), REVIEW_FIRST_CANDIDATE_TAG]
-  });
-}
-
-export async function loadReviewIntroducedTodayCountCached(
-  database: DatabaseClient = db,
-  asOf: Date = new Date(),
-  bypassCache?: boolean
-) {
-  return runWithTaggedCache({
-    enabled: !bypassCache && canUseDataCache(database),
-    keyParts: ["review-introduced-global", getLocalIsoDateKey(asOf)],
-    loader: () => countReviewSubjectsIntroducedOnDay(database, asOf),
-    tags: buildReviewSummaryTags()
   });
 }
 

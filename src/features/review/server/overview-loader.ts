@@ -28,16 +28,11 @@ import {
   measureWith,
   type ReviewProfiler
 } from "@/features/review/server/profiler";
-import {
-  filterEligibleReviewCards,
-  filterReviewCardsBySubjectGroups,
-  resolveReviewWorkspaceSubjectGroups
-} from "@/features/review/server/workspace-helpers";
+import { resolveLoadedReviewWorkspaceCore } from "@/features/review/server/workspace-core";
+import { filterEligibleReviewCards } from "@/features/review/server/workspace-helpers";
 import { pickBestBy } from "@/features/shared/model/collections";
 
 import type { ReviewOverviewSnapshot } from "../types";
-import { getReviewDailyLimit } from "../../settings/server";
-import { loadReviewIntroducedTodayCountCached } from "./loader";
 
 const EMPTY_ENTRY_LOOKUP = new Map<string, ReviewEntryLookupItem>();
 
@@ -182,67 +177,35 @@ export async function loadReviewOverviewWorkspace(input: {
         profiler: input.profiler
       })
   );
-  const subjectGroupsPromise = stableWorkspacePromise.then(
-    async (stableWorkspace) =>
-      resolveReviewWorkspaceSubjectGroups({
-        cards: stableWorkspace.cards,
-        database,
-        grammar: stableWorkspace.grammar,
-        now,
-        profiler: input.profiler,
-        terms: stableWorkspace.terms
-      })
-  );
-  const [stableWorkspace, dailyLimit, newIntroducedTodayCount, subjectGroups] =
-    await Promise.all([
-      stableWorkspacePromise,
-      input.resolvedDailyLimit != null
-        ? input.resolvedDailyLimit
-        : measureWith(input.profiler, "getReviewDailyLimit", () =>
-            getReviewDailyLimit(database)
-          ),
-      input.resolvedNewIntroducedTodayCount != null
-        ? input.resolvedNewIntroducedTodayCount
-        : measureWith(
-            input.profiler,
-            "countReviewSubjectsIntroducedOnDay",
-            () =>
-              loadReviewIntroducedTodayCountCached(
-                database,
-                now,
-                input.bypassCache
-              )
-          ),
-      subjectGroupsPromise
-    ]);
-  const cards = filterReviewCardsBySubjectGroups(
-    stableWorkspace.cards,
-    subjectGroups
-  );
-  input.profiler?.addMeta({
-    cards: cards.length,
-    mediaIds: input.mediaIds.length,
-    rawCardCount: stableWorkspace.rawCardCount
+  const workspaceCore = await resolveLoadedReviewWorkspaceCore({
+    bypassCache: input.bypassCache,
+    database,
+    mediaIds: input.mediaIds,
+    now,
+    profiler: input.profiler,
+    resolvedDailyLimit: input.resolvedDailyLimit,
+    resolvedNewIntroducedTodayCount: input.resolvedNewIntroducedTodayCount,
+    stableWorkspacePromise
   });
 
-  if (cards.length === 0) {
+  if (workspaceCore.cards.length === 0) {
     return {
-      cards,
-      dailyLimit,
-      newIntroducedTodayCount,
-      now,
-      rawCardCount: stableWorkspace.rawCardCount,
+      cards: workspaceCore.cards,
+      dailyLimit: workspaceCore.dailyLimit,
+      newIntroducedTodayCount: workspaceCore.newIntroducedTodayCount,
+      now: workspaceCore.now,
+      rawCardCount: workspaceCore.rawCardCount,
       subjectGroups: []
     };
   }
 
   return {
-    cards,
-    dailyLimit,
-    newIntroducedTodayCount,
-    now,
-    rawCardCount: stableWorkspace.rawCardCount,
-    subjectGroups
+    cards: workspaceCore.cards,
+    dailyLimit: workspaceCore.dailyLimit,
+    newIntroducedTodayCount: workspaceCore.newIntroducedTodayCount,
+    now: workspaceCore.now,
+    rawCardCount: workspaceCore.rawCardCount,
+    subjectGroups: workspaceCore.subjectGroups
   };
 }
 
