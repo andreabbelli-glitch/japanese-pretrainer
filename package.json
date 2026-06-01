@@ -33,6 +33,7 @@
     "content:editorial-lint": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-editorial-lint.ts",
     "content:lookup": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-lookup.ts",
     "content:next-id": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-next-id.ts",
+    "content:scaffold": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-scaffold.ts",
     "content:scope": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-scope.ts",
     "content:import": "node --experimental-strip-types ./scripts/import-content.ts",
     "content:test-stats": "node --experimental-strip-types ./scripts/update-real-bundle-test-stats.ts",

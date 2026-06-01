@@ -31,6 +31,7 @@ grep manuali lunghi:
 ```sh
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> "<front-o-superficie>"
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
+./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:scope
 ./scripts/with-node.sh pnpm agent:verify
@@ -39,14 +40,16 @@ grep manuali lunghi:
 
 `content:lookup` risponde con un verdetto compatto su match esatti nei
 Markdown (`covered-card`, `entry-only`, `new`). `content:next-id` calcola ID,
-order e path per nuove lesson/card senza scrivere file. `content:scope` stampa
-i comandi minimi di `content:validate` e `content:import` basandosi sui file
-modificati o su path espliciti. Questi tool riducono il contesto da passare
-all'LLM. `content:editorial-lint` segnala warning su meta-discorso, scorciatoie
-di stile e frasi povere prima di importare o consegnare una lesson: l'LLM deve
-valutarli come problemi editoriali reali e riscrivere il contenuto, non
-aggirarli con modifiche cosmetiche. `agent:verify` sceglie i gate repo da
-eseguire dopo le modifiche, ma non li esegue. `forvo:preflight` e opzionale:
+order e path per nuove lesson/card senza scrivere file. `content:scaffold`
+scrive solo il nuovo textbook Markdown valido, lasciando il cards path come
+piano finche esistono card reali da inserire. `content:scope` stampa i comandi
+minimi di `content:validate` e `content:import` basandosi sui file modificati o
+su path espliciti. Questi tool riducono il contesto da passare all'LLM.
+`content:editorial-lint` segnala warning su meta-discorso, scorciatoie di stile
+e frasi povere prima di importare o consegnare una lesson: l'LLM deve valutarli
+come problemi editoriali reali e riscrivere il contenuto, non aggirarli con
+modifiche cosmetiche. `agent:verify` sceglie i gate repo da eseguire dopo le
+modifiche, ma non li esegue. `forvo:preflight` e opzionale:
 usalo prima di batch Forvo incerti o grandi per capire se i target sono gia
 audio-backed, known-missing o gia richiesti; saltalo per target piccoli e
 chiari. Questi helper non sostituiscono il giudizio editoriale.

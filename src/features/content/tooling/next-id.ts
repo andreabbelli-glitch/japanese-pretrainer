@@ -20,6 +20,7 @@ export type ContentNextIdPlan = {
       cards: string;
       textbook: string;
     };
+    segment_ref?: string;
   };
   schema_version: 1;
   strategy: {
@@ -65,6 +66,12 @@ export function buildContentNextIdPlan(input: {
 
   if (!isUrlSafeSlug(input.slug)) {
     throw new Error(`Invalid --slug '${input.slug}'. Use a URL-safe slug.`);
+  }
+
+  if (input.cardsSlug && !isUrlSafeSlug(input.cardsSlug)) {
+    throw new Error(
+      `Invalid --cards-slug '${input.cardsSlug}'. Use a URL-safe slug.`
+    );
   }
 
   const lessonPrefixes = input.mediaBundle.lessons
@@ -114,6 +121,17 @@ export function buildContentNextIdPlan(input: {
     `${filenamePrefix}-${baseCardsSlug}.md`
   );
 
+  assertPathWithinDirectory(
+    textbookPath,
+    path.join(input.mediaBundle.mediaDirectory, "textbook"),
+    "textbook"
+  );
+  assertPathWithinDirectory(
+    cardsPath,
+    path.join(input.mediaBundle.mediaDirectory, "cards"),
+    "cards"
+  );
+
   collectConflicts({
     cardsId,
     cardsPath,
@@ -150,7 +168,8 @@ export function buildContentNextIdPlan(input: {
       paths: {
         cards: relativeSource(cardsPath, repositoryRoot),
         textbook: relativeSource(textbookPath, repositoryRoot)
-      }
+      },
+      ...(input.segmentRef ? { segment_ref: input.segmentRef } : {})
     },
     schema_version: 1,
     strategy: {
@@ -190,11 +209,14 @@ export function formatContentNextIdPlan(plan: ContentNextIdPlan) {
       `cards_id: ${plan.next.cards_id}`,
       `lesson_slug: ${plan.next.lesson_slug}`,
       `cards_slug: ${plan.next.cards_slug}`,
+      plan.next.segment_ref ? `segment_ref: ${plan.next.segment_ref}` : null,
       `filename_prefix: ${plan.next.filename_prefix}`,
       `order: ${plan.next.order}`,
       ...plan.conflicts.map((conflict) => `CONFLICT ${conflict}`),
       ...plan.warnings.map((warning) => `WARNING ${warning}`)
-    ].join("\n") + "\n"
+    ]
+      .filter((line): line is string => line !== null)
+      .join("\n") + "\n"
   );
 }
 
@@ -328,6 +350,21 @@ function stripLeadingNumericPrefix(value: string) {
 
 function isUrlSafeSlug(value: string) {
   return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
+}
+
+function assertPathWithinDirectory(
+  filePath: string,
+  directoryPath: string,
+  label: string
+) {
+  const relative = path.relative(
+    path.resolve(directoryPath),
+    path.resolve(filePath)
+  );
+
+  if (relative.startsWith("..") || path.isAbsolute(relative)) {
+    throw new Error(`Generated ${label} path escaped its content directory.`);
+  }
 }
 
 function relativeSource(filePath: string, repositoryRoot = process.cwd()) {

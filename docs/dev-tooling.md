@@ -146,6 +146,7 @@ read-only sui Markdown prima di creare nuove entry, card o lesson:
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --kind grammar "～ている"
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --list entries
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
+./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:scope
 ./scripts/with-node.sh pnpm agent:verify
@@ -160,6 +161,14 @@ e' una vista inventory leggera, non un export globale da incollare agli LLM.
 `content:next-id` calcola path, prefix, `order`, `lesson_id` e `cards_id` per
 una nuova coppia textbook/cards. E' append-only e read-only: non riempie gap,
 non rinumera file e segnala collisioni invece di inventare suffissi.
+
+`content:scaffold` usa lo stesso piano di `content:next-id` e scrive solo il
+file `textbook/*.md` con frontmatter valido e append-only. Non crea un
+`cards/*.md` vuoto, perche i cards file senza blocchi `:::card` sono invalidi:
+stampa invece il path pianificato da usare quando le card reali sono pronte.
+Non stampa un comando import immediato per la shell vuota: riempi prima il
+contenuto reale, poi usa `content:scope`. Usa `--print --json` se vuoi solo il
+piano senza scrivere.
 
 `content:editorial-lint` scansiona Markdown e blocchi strutturati già parsati e
 stampa warning editoriali su meta-discorso, frasi povere, contrasti stock,

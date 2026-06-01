@@ -100,6 +100,26 @@ describe("content next-id CLI", () => {
     expect(payload.warnings).not.toContain("order-collision:111");
   }, 60_000);
 
+  it("prints the requested segment ref in the human-readable plan", async () => {
+    const { stdout } = await runNodeCli(
+      [
+        "--experimental-strip-types",
+        nextIdScriptPath,
+        "--content-root",
+        validContentRoot,
+        "--media-slug",
+        "sample-anime",
+        "--slug",
+        "ep02-followup",
+        "--segment-ref",
+        "episode-01"
+      ],
+      { timeoutMs: 60_000 }
+    );
+
+    expect(stdout).toContain("segment_ref: episode-01");
+  });
+
   it("rejects unsafe numeric overrides instead of truncating them", async () => {
     let failure: { code?: number; stderr?: string } | null = null;
 
@@ -126,5 +146,27 @@ describe("content next-id CLI", () => {
     expect(failure).not.toBeNull();
     expect(failure?.code).toBe(1);
     expect(failure?.stderr).toContain("--order must be a positive integer.");
+  });
+
+  it("rejects unsafe cards slugs before emitting paths", async () => {
+    await expect(
+      runNodeCli(
+        [
+          "--experimental-strip-types",
+          nextIdScriptPath,
+          "--content-root",
+          validContentRoot,
+          "--media-slug",
+          "sample-anime",
+          "--slug",
+          "ep02-followup",
+          "--cards-slug",
+          "foo/../../bar"
+        ],
+        { timeoutMs: 60_000 }
+      )
+    ).rejects.toMatchObject({
+      stderr: expect.stringContaining("Invalid --cards-slug")
+    });
   });
 });
