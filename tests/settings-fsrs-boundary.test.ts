@@ -81,10 +81,17 @@ describe("settings and FSRS optimizer feature boundary", () => {
       violations.push("missing src/db/queries/user-settings.ts");
     }
 
-    for (const relativePath of [
+    const filesToCheck = [
       "src/features/settings/server/index.ts",
-      "src/features/fsrs-optimizer/server/index.ts"
-    ]) {
+      "src/features/fsrs-optimizer/server/index.ts",
+      ...(
+        await listSourceFiles(path.join(PROJECT_ROOT, "src", "db", "queries"))
+      ).filter(
+        (relativePath) => relativePath !== "src/db/queries/user-settings.ts"
+      )
+    ];
+
+    for (const relativePath of filesToCheck) {
       const source = await readFile(
         path.join(PROJECT_ROOT, relativePath),
         "utf8"

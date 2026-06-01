@@ -1,7 +1,7 @@
 import { and, asc, eq } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
-import { entryLink, userSetting } from "../schema/index.ts";
+import { entryLink } from "../schema/index.ts";
 
 const lessonEntryLinkColumns = {
   entryId: true,
@@ -24,15 +24,4 @@ export async function listLessonEntryLinks(
       asc(entryLink.entryId)
     ]
   });
-}
-
-export async function getUserSettingValue(
-  database: DatabaseClient,
-  key: (typeof userSetting.$inferSelect)["key"]
-) {
-  const row = await database.query.userSetting.findFirst({
-    where: eq(userSetting.key, key)
-  });
-
-  return row ?? null;
 }
