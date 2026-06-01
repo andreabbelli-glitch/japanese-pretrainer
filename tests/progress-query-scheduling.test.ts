@@ -59,14 +59,14 @@ describe("progress query scheduling", () => {
       loadGlobalReviewOverviewSnapshot: vi.fn(),
       loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
-      loadReviewOverviewBundle: vi.fn(),
-      mapReviewOverviewSnapshot: vi.fn()
+      loadReviewOverviewBundle: vi.fn()
     }));
     vi.doMock("@/features/settings/server", () => ({
       getStudySettings: vi.fn(settingsGate.loader())
     }));
 
-    const { getMediaProgressPageData } = await import("@/features/progress/server");
+    const { getMediaProgressPageData } =
+      await import("@/features/progress/server");
     const progressPromise = getMediaProgressPageData("fixture-media");
 
     await schedule.expectStarted("media", "settings", "introduced today");
@@ -111,14 +111,14 @@ describe("progress query scheduling", () => {
       loadGlobalReviewOverviewSnapshot: vi.fn(),
       loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
-      loadReviewOverviewBundle: vi.fn(),
-      mapReviewOverviewSnapshot: vi.fn()
+      loadReviewOverviewBundle: vi.fn()
     }));
     vi.doMock("@/features/settings/server", () => ({
       getStudySettings: vi.fn(settingsGate.loader())
     }));
 
-    const { getMediaProgressPageData } = await import("@/features/progress/server");
+    const { getMediaProgressPageData } =
+      await import("@/features/progress/server");
     const progressPromise = getMediaProgressPageData("missing-media");
 
     await schedule.expectStarted("media", "settings", "introduced today");
@@ -178,14 +178,14 @@ describe("progress query scheduling", () => {
     vi.doMock("@/features/review/server", () => ({
       loadReviewIntroducedTodayCountCached: vi.fn(introducedTodayGate.loader()),
       loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
-      loadReviewOverviewBundle,
-      mapReviewOverviewSnapshot: vi.fn()
+      loadReviewOverviewBundle
     }));
     vi.doMock("@/features/settings/server", () => ({
       getStudySettings: vi.fn(settingsGate.loader())
     }));
 
-    const { getMediaProgressPageData } = await import("@/features/progress/server");
+    const { getMediaProgressPageData } =
+      await import("@/features/progress/server");
     const progressPromise = getMediaProgressPageData("fixture-media");
 
     await schedule.expectStarted("media", "settings", "introduced today");
@@ -316,7 +316,8 @@ describe("progress query scheduling", () => {
       calculatePercent: vi.fn(() => null)
     }));
 
-    const { getMediaProgressPageData } = await import("@/features/progress/server");
+    const { getMediaProgressPageData } =
+      await import("@/features/progress/server");
     const progressPromise = getMediaProgressPageData("fixture-media");
 
     await schedule.expectStarted("settings", "introduced today");

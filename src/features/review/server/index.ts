@@ -22,8 +22,7 @@ export {
   getReviewLaunchMedia,
   loadGlobalReviewOverviewSnapshot,
   loadReviewOverviewBundle,
-  loadReviewOverviewSnapshots,
-  mapReviewOverviewSnapshot
+  loadReviewOverviewSnapshots
 } from "@/features/review/server/overview-loader";
 export {
   getGlobalReviewFirstCandidateLoadResult,

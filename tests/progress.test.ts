@@ -32,7 +32,10 @@ import { importContentWorkspace } from "@/features/content/importer";
 import { getMediaProgressPageData } from "@/features/progress/server";
 import { getReviewPageData } from "@/features/review/server";
 import { mediaKanjiClashHref } from "@/features/navigation";
-import { getStudySettings, updateStudySettings } from "@/features/settings/server";
+import {
+  getStudySettings,
+  updateStudySettings
+} from "@/features/settings/server";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture
@@ -142,14 +145,6 @@ describe("progress, settings, and study controls", () => {
       dbQueriesModule,
       "getReviewLaunchCandidateByMediaId"
     );
-    const mediaOverviewSpy = vi.spyOn(
-      dbQueriesModule,
-      "getReviewOverviewDataByMediaId"
-    );
-    const queuedNewSpy = vi.spyOn(
-      dbQueriesModule,
-      "getQueuedNewReviewSubjectSummaryByMediaId"
-    );
 
     const data = await getMediaProgressPageData(
       developmentFixture.mediaSlug,
@@ -159,13 +154,9 @@ describe("progress, settings, and study controls", () => {
     expect(data).not.toBeNull();
     expect(globalCandidatesSpy).not.toHaveBeenCalled();
     expect(mediaCandidateSpy).not.toHaveBeenCalled();
-    expect(mediaOverviewSpy).not.toHaveBeenCalled();
-    expect(queuedNewSpy).not.toHaveBeenCalled();
 
     globalCandidatesSpy.mockRestore();
     mediaCandidateSpy.mockRestore();
-    mediaOverviewSpy.mockRestore();
-    queuedNewSpy.mockRestore();
   });
 
   it("includes glossary preview entries for the media detail progress page", async () => {

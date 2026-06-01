@@ -30,17 +30,46 @@ describe("database query module boundary", () => {
       "queries",
       "review-launch-candidates.ts"
     );
-    const reviewModuleSource = await readFile(
-      path.join(PROJECT_ROOT, "src", "db", "queries", "review.ts"),
+    const reviewOverviewPath = path.join(
+      PROJECT_ROOT,
+      "src",
+      "db",
+      "queries",
+      "review-overview.ts"
+    );
+    const overviewLoaderSource = await readFile(
+      path.join(
+        PROJECT_ROOT,
+        "src",
+        "features",
+        "review",
+        "server",
+        "overview-loader.ts"
+      ),
       "utf8"
     );
-    const overviewModuleSource = await readFile(
-      path.join(PROJECT_ROOT, "src", "db", "queries", "review-overview.ts"),
+    const reviewServerIndexSource = await readFile(
+      path.join(
+        PROJECT_ROOT,
+        "src",
+        "features",
+        "review",
+        "server",
+        "index.ts"
+      ),
+      "utf8"
+    );
+    const reviewModuleSource = await readFile(
+      path.join(PROJECT_ROOT, "src", "db", "queries", "review.ts"),
       "utf8"
     );
 
     if (!(await fileExists(launchCandidatesPath))) {
       violations.push("missing src/db/queries/review-launch-candidates.ts");
+    }
+
+    if (await fileExists(reviewOverviewPath)) {
+      violations.push("src/db/queries/review-overview.ts still exists");
     }
 
     if (violations.length === 0) {
@@ -68,12 +97,26 @@ describe("database query module boundary", () => {
       violations.push("review.ts does not re-export review launch candidates");
     }
 
+    if (reviewModuleSource.includes('from "./review-overview')) {
+      violations.push("review.ts still re-exports retired review overview SQL");
+    }
+
     if (
-      /export\s+(type\s+)?ReviewLaunchCandidate|export\s+function\s+selectReviewLaunchCandidate|export\s+async\s+function\s+(listReviewLaunchCandidates|getReviewLaunchCandidateByMediaId)/u.test(
-        overviewModuleSource
+      /GlobalReviewOverview|aggregateGlobalReviewOverviewData|getGlobalReviewNextCardFront|getGlobalReviewOverviewData|getReviewOverviewDataByMediaId|getQueuedNewReviewSubjectSummaryByMediaId/u.test(
+        reviewModuleSource
       )
     ) {
-      violations.push("review-overview.ts still owns launch candidate exports");
+      violations.push("review.ts still exports retired review overview API");
+    }
+
+    if (/mapReviewOverviewSnapshot/u.test(overviewLoaderSource)) {
+      violations.push("overview-loader.ts still exports the retired mapper");
+    }
+
+    if (/mapReviewOverviewSnapshot/u.test(reviewServerIndexSource)) {
+      violations.push(
+        "review server barrel still re-exports the retired mapper"
+      );
     }
 
     expect(violations).toEqual([]);

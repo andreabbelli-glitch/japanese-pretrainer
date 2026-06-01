@@ -59,9 +59,6 @@ describe("media library query scheduling", () => {
       db: {}
     }));
     vi.doMock("@/db/queries", () => ({
-      getQueuedNewReviewSubjectSummaryByMediaId: vi.fn(() => {
-        throw new Error("Legacy queued-new SQL summary should not run.");
-      }),
       listGlossaryPreviewEntries: vi.fn(() => Promise.resolve([])),
       listGlossaryProgressSummaries: vi.fn(() => Promise.resolve([])),
       listLessonsByMediaId: vi.fn(() => Promise.resolve([])),

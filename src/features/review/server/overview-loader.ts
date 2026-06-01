@@ -4,10 +4,8 @@ import {
   listReviewCardsByMediaIds,
   listReviewMediaRefs,
   listTermReviewSubjectIdentityRowsByIds,
-  type GlobalReviewOverviewData,
   type GrammarReviewSubjectIdentityRowById,
   type ReviewCardListItem,
-  type ReviewLaunchCandidate,
   type TermReviewSubjectIdentityRowById
 } from "@/db/queries";
 import {
@@ -17,7 +15,6 @@ import {
   runWithTaggedCache
 } from "@/features/cache/server/data-cache";
 import {
-  buildQueueIntroLabel,
   buildReviewOverviewSnapshot,
   buildReviewSubjectModels,
   bucketAndSortReviewSubjectModels
@@ -37,7 +34,6 @@ import {
   resolveReviewWorkspaceSubjectGroups
 } from "@/features/review/server/workspace-helpers";
 import { pickBestBy } from "@/features/shared/model/collections";
-import { stripInlineMarkdown } from "@/features/study/ui/furigana";
 
 import type { ReviewOverviewSnapshot } from "../types";
 import { getReviewDailyLimit } from "../../settings/server";
@@ -450,84 +446,6 @@ function buildReviewOverviewSnapshotsFromWorkspace(
   }
 
   return snapshots;
-}
-
-export function mapReviewOverviewSnapshot(input: {
-  dailyLimit: number;
-  newIntroducedTodayCount: number;
-  overview:
-    | GlobalReviewOverviewData
-    | (ReviewLaunchCandidate & {
-        newAvailableCount: number;
-        newQueuedCount?: number;
-      })
-    | undefined;
-}) {
-  const { dailyLimit, newIntroducedTodayCount, overview } = input;
-
-  if (!overview) {
-    return {
-      activeCards: 0,
-      dailyLimit,
-      dueCount: 0,
-      effectiveDailyLimit: dailyLimit,
-      manualCount: 0,
-      newAvailableCount: 0,
-      newQueuedCount: 0,
-      queueCount: 0,
-      queueLabel: buildQueueIntroLabel({
-        dailyLimit,
-        dueCount: 0,
-        manualCount: 0,
-        newQueuedCount: 0,
-        sessionTopUpNewCount: 0,
-        upcomingCount: 0
-      }),
-      suspendedCount: 0,
-      tomorrowCount: 0,
-      totalCards: 0,
-      upcomingCount: 0
-    };
-  }
-
-  const remainingNewSlots = Math.max(dailyLimit - newIntroducedTodayCount, 0);
-  const newQueuedCount =
-    "newQueuedCount" in overview && overview.newQueuedCount != null
-      ? overview.newQueuedCount
-      : Math.min(overview.newAvailableCount, remainingNewSlots);
-  const upcomingCount = Math.max(
-    overview.activeReviewCards - overview.dueCount,
-    0
-  );
-  const nextCardFront =
-    overview.firstDueFront ??
-    (newQueuedCount > 0 ? (overview.firstNewFront ?? null) : null);
-
-  return {
-    activeCards: overview.activeReviewCards,
-    dailyLimit,
-    dueCount: overview.dueCount,
-    effectiveDailyLimit: dailyLimit,
-    manualCount: overview.manualCount,
-    newAvailableCount: overview.newAvailableCount,
-    newQueuedCount,
-    nextCardFront: nextCardFront
-      ? stripInlineMarkdown(nextCardFront)
-      : undefined,
-    queueCount: overview.dueCount + newQueuedCount,
-    queueLabel: buildQueueIntroLabel({
-      dailyLimit,
-      dueCount: overview.dueCount,
-      manualCount: overview.manualCount,
-      newQueuedCount,
-      sessionTopUpNewCount: 0,
-      upcomingCount
-    }),
-    suspendedCount: overview.suspendedCount,
-    tomorrowCount: overview.tomorrowCount,
-    totalCards: overview.totalCards,
-    upcomingCount
-  };
 }
 
 function scoreReviewLaunchCandidate(candidate: {

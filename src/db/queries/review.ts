@@ -278,17 +278,6 @@ export type GrammarReviewSubjectIdentityRowById = Awaited<
 >[number];
 
 export {
-  aggregateGlobalReviewOverviewData,
-  getGlobalReviewNextCardFront,
-  getGlobalReviewOverviewData,
-  getQueuedNewReviewSubjectSummaryByMediaId,
-  getReviewOverviewDataByMediaId
-} from "./review-overview.ts";
-export type {
-  GlobalReviewOverviewCounts,
-  GlobalReviewOverviewData
-} from "./review-overview.ts";
-export {
   getReviewLaunchCandidateByMediaId,
   listReviewLaunchCandidates,
   selectReviewLaunchCandidateByDue,
