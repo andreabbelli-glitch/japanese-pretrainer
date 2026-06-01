@@ -18,6 +18,23 @@ export function quoteSqlString(value: string) {
   return `'${value.replaceAll("'", "''")}'`;
 }
 
+export function buildCompletedReviewLessonsCteSql(mediaId?: string) {
+  const mediaFilterSql = mediaId
+    ? `\n        AND l.media_id = ${quoteSqlString(mediaId)}`
+    : "";
+
+  return `
+    completed_lessons AS (
+      SELECT l.id
+      FROM lesson l
+      INNER JOIN lesson_progress lp
+        ON lp.lesson_id = l.id
+      WHERE l.status = 'active'
+        AND lp.status = 'completed'${mediaFilterSql}
+    )
+  `;
+}
+
 function normalizeReviewSubjectSurfaceSql(expression: string) {
   return `replace(replace(replace(replace(trim(${expression}), '～', '〜'), char(10), ' '), char(13), ' '), char(9), ' ')`;
 }

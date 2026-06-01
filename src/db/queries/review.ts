@@ -282,17 +282,19 @@ export {
   getGlobalReviewNextCardFront,
   getGlobalReviewOverviewData,
   getQueuedNewReviewSubjectSummaryByMediaId,
-  getReviewLaunchCandidateByMediaId,
-  getReviewOverviewDataByMediaId,
-  listReviewLaunchCandidates,
-  selectReviewLaunchCandidateByDue,
-  selectReviewLaunchCandidateByNew
+  getReviewOverviewDataByMediaId
 } from "./review-overview.ts";
 export type {
   GlobalReviewOverviewCounts,
-  GlobalReviewOverviewData,
-  ReviewLaunchCandidate
+  GlobalReviewOverviewData
 } from "./review-overview.ts";
+export {
+  getReviewLaunchCandidateByMediaId,
+  listReviewLaunchCandidates,
+  selectReviewLaunchCandidateByDue,
+  selectReviewLaunchCandidateByNew
+} from "./review-launch-candidates.ts";
+export type { ReviewLaunchCandidate } from "./review-launch-candidates.ts";
 
 export async function listDueCardsByMediaId(
   database: DatabaseQueryClient,
