@@ -132,6 +132,11 @@ Primary target files:
   cards ID, and target paths. It deliberately chooses append-only values that
   do not collide globally, even when the segment-local next order would collide
   with keyword-bank or later DM25 textbook pages.
+- When creating the new textbook shell, prefer:
+  `./scripts/with-node.sh pnpm content:scaffold -- --media-slug duel-masters-dm25 --segment-ref live-duel-encounters --slug live-duel-encounters-<slug> --title "<lesson-title>"`.
+  The scaffold writes only the textbook file, refuses conflicts, does not create
+  empty cards files, and still requires real lesson/card content plus
+  `content:scope` before import.
 - Do not renumber existing textbook pages to keep the live encounter block
   contiguous unless the user explicitly asks for a broader reordering task.
 - If the import produces new canonical glossary entries or new flashcards,

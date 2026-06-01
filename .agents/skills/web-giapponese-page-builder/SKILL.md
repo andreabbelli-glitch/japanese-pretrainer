@@ -63,6 +63,11 @@ Optional:
 4. Before creating the paired lesson/cards files, compute the next prefix,
    `order`, IDs, and paths with:
    `./scripts/with-node.sh pnpm content:next-id -- --media-slug web-giapponese --slug <source-area-item-slug>`.
+   If the task really creates a new lesson, prefer:
+   `./scripts/with-node.sh pnpm content:scaffold -- --media-slug web-giapponese --slug <source-area-item-slug> --title "<lesson-title>"`.
+   This writes only the textbook scaffold, refuses conflicts, does not create
+   empty cards files, and still requires real content plus `content:scope`
+   before import.
 5. Capture:
    - one overview screenshot or the provided image that helps remember the item;
    - only the crops that directly support the explanation.

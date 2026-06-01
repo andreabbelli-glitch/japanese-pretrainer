@@ -107,12 +107,15 @@ contenuto deve usare i helper read-only invece di ricostruire tutto a mano:
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> "<superficie-o-front-esatto>"
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --list entries
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
+./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ```
 
 `content:lookup` controlla match esatti su Markdown e produce solo il verdetto
 necessario all'agent. La modalita `--list` e' una inventory mirata e compatta,
 non un dump globale. `content:next-id` calcola il prossimo ID/path/order senza
-scrivere file e senza rinumerare contenuti esistenti.
+scrivere file e senza rinumerare contenuti esistenti. `content:scaffold` usa lo
+stesso piano per scrivere solo il file textbook iniziale: non inventa card, non
+crea placeholder vuoti e trattiene l'import finche non esiste contenuto reale.
 
 ## Workflow operativo
 
