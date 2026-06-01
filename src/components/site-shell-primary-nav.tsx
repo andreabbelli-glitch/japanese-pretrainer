@@ -33,6 +33,7 @@ export function SiteShellPrimaryNav() {
             aria-current={active ? "page" : undefined}
             className={`site-nav__link${active ? " site-nav__link--active" : ""}`}
             href={href}
+            prefetch={false}
           >
             <span>{item.label}</span>
             <small>{item.description}</small>

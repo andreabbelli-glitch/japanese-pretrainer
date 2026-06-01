@@ -34,7 +34,7 @@ export function SiteShell({ children }: SiteShellProps) {
     <div className="app-shell">
       <header className="site-header">
         <div className="site-header__inner">
-          <Link className="brand" href="/">
+          <Link className="brand" href="/" prefetch={false}>
             <span className="brand__eyebrow">Japanese Custom Study</span>
             <span className="brand__title">Studio del giapponese</span>
           </Link>
@@ -57,6 +57,7 @@ function SiteShellPrimaryNavFallback() {
           key={item.href}
           className="site-nav__link"
           href={item.href as Route}
+          prefetch={false}
         >
           <span>{item.label}</span>
           <small>{item.description}</small>
