@@ -513,6 +513,15 @@
       "resolvedAudioSrc": "assets/audio/grammar/grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba/forvo-manual-そのこうけ-きちゅうにしーると-をふ-れいくしていれは.mp3"
     },
     {
+      "entryId": "grammar-sono-mochinushi-wa-sore-wo-itsudemo-mitemo-yoi",
+      "entryKind": "grammar",
+      "label": "その持ち主はそれをいつでも見てもよい",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "そのもちぬしはそれをいつでもみてもよい",
+      "requestUrl": "https://forvo.com/word-add/%E3%81%9D%E3%81%AE%E6%8C%81%E3%81%A1%E4%B8%BB%E3%81%AF%E3%81%9D%E3%82%8C%E3%82%92%E3%81%84%E3%81%A4%E3%81%A7%E3%82%82%E8%A6%8B%E3%81%A6%E3%82%82%E3%82%88%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-06-01T09:23:23.680Z"
+    },
+    {
       "entryId": "grammar-sorega-nara",
       "entryKind": "grammar",
       "label": "それが～なら",

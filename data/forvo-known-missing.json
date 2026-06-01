@@ -301,6 +301,15 @@
       "wordAddBlockedDetail": "\"そのカードと同じ文明を1つでも持つ\" is not allowed in Forvo.Please check the word's spelling or language."
     },
     {
+      "entryId": "grammar-sono-mochinushi-wa-sore-wo-itsudemo-mitemo-yoi",
+      "entryKind": "grammar",
+      "label": "その持ち主はそれをいつでも見てもよい",
+      "mediaSlug": "duel-masters-dm25",
+      "reading": "そのもちぬしはそれをいつでもみてもよい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-06-01T09:23:23.664Z"
+    },
+    {
       "entryId": "grammar-sonoturnchuu-hoka-final-kakumei-mada-tsukatte-inakereba",
       "entryKind": "grammar",
       "label": "そのターン中に他の「ファイナル革命」をまだ使っていなければ",

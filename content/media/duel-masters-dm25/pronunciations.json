@@ -489,6 +489,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-sono-mochinushi-wa-sore-wo-itsudemo-mitemo-yoi",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-sonoato",
       "audio_src": "assets/audio/grammar/grammar-sonoato/forvo-manual-その後.mp3",
       "audio_source": "forvo",
@@ -2056,6 +2061,19 @@
       "pitch_accent": 4,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-itsudemo",
+      "audio_src": "assets/audio/term/term-itsudemo/forvo-strawberrybrown-いつて-も.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%84%E3%81%A4%E3%81%A7%E3%82%82/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%84%E3%81%A4%E3%81%A7%E3%82%82",
       "pitch_accent_status": "resolved"
     },
     {
