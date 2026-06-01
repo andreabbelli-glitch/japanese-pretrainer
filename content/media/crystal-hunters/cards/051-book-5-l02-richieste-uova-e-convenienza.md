@@ -51,11 +51,12 @@ id: term-ch-b5-ru-13
 lemma: '眠る'
 reading: 'ねむる'
 romaji: ne-mu-ru
-meaning_it: dormire
+meaning_it: 'dormire; addormentarsi; morire/riposare in pace; giacere sepolto; restare inutilizzato o dormiente'
 pos: verb
 notes_it: >-
-  {{眠|ねむ}}る è dormire o addormentarsi. Nel manga può indicare riposo reale
-  o un corpo che non reagisce più.
+  {{眠|ねむ}}る è dormire o addormentarsi. Può anche essere un eufemismo per
+  morire o riposare in pace, giacere sepolto, oppure restare inutilizzato o
+  dormiente, come risorse o potenziale non ancora sfruttati.
 level_hint: n5
 :::
 
@@ -207,8 +208,8 @@ back: 'つごうがいい — fare comodo; essere conveniente'
 example_jp: 'それは{{都合|つごう}}がいい。'
 example_it: 'Quello mi fa comodo.'
 notes_it: >-
-  La frase valuta la situazione rispetto agli interessi di qualcuno, non dice
-  solo che qualcosa è "buono".
+  La frase valuta la situazione rispetto agli interessi di qualcuno: qualcosa fa
+  comodo o si incastra bene con ciò che quella persona vuole.
 tags: [crystal-hunters, book-5, lesson-02]
 :::
 
@@ -250,12 +251,13 @@ entry_type: term
 entry_id: term-ch-b5-ru-13
 card_type: recognition
 front: '{{眠|ねむ}}る'
-back: 'ねむる — dormire'
+back: 'ねむる — dormire; addormentarsi; anche: morire/riposare in pace, giacere sepolto, restare inutilizzato o dormiente'
 example_jp: 'カルが{{眠|ねむ}}る。'
 example_it: 'Kal dorme.'
 notes_it: >-
-  {{眠|ねむ}}る può essere riposo, sonno o corpo che non reagisce più, a seconda
-  della vignetta.
+  Nel contesto immediato può essere sonno, riposo o corpo che non reagisce più.
+  Fuori da scene di sonno può estendersi a morte e sepoltura, oppure a qualcosa
+  che rimane dormiente o inutilizzato.
 tags: [crystal-hunters, book-5, lesson-02]
 :::
 

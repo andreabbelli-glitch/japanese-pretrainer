@@ -25,7 +25,7 @@ Qui conta molto distinguere chi cambia stato da chi causa il cambiamento.
 - [{{都合|つごう}}がいい](term:term-ch-b5-gaii-10) - fare comodo; essere conveniente
 - [{{逃|に}}がす](term:term-ch-b5-gasu-11) - lasciare scappare; liberare
 - [{{弱|よわ}}る](term:term-ch-b5-ru-12) - indebolirsi
-- [{{眠|ねむ}}る](term:term-ch-b5-ru-13) - dormire
+- [{{眠|ねむ}}る](term:term-ch-b5-ru-13) - dormire; addormentarsi; anche riposare in pace, giacere sepolto o restare dormiente
 - [{{意識|いしき}}を{{失|うしな}}う](term:term-ch-b5-ishiki-wo-ushinau) - perdere conoscenza
 - [{{付|つ}}く](term:term-ch-b5-ku-16) - attaccarsi; aggiungersi
 - [{{原因|げんいん}}](term:term-ch-b5-entry-17) - causa
@@ -45,8 +45,8 @@ Qui conta molto distinguere chi cambia stato da chi causa il cambiamento.
 
 ## 1. Convenienza, causa e conseguenza
 
-[{{都合|つごう}}がいい](term:term-ch-b5-gaii-10) non significa semplicemente
-"buono": significa che la situazione fa comodo a qualcuno.
+[{{都合|つごう}}がいい](term:term-ch-b5-gaii-10) valuta una situazione rispetto
+agli interessi di qualcuno: la cosa fa comodo o si incastra bene.
 
 :::example_sentence
 jp: >-
@@ -118,8 +118,11 @@ translation_it: >-
 
 ## 3. Sonno, coscienza e ritorno allo stato normale
 
-[{{眠|ねむ}}る](term:term-ch-b5-ru-13) può indicare sonno normale, ma in una
-scena d'azione può trovarsi vicino a perdita di coscienza o recupero.
+[{{眠|ねむ}}る](term:term-ch-b5-ru-13) può indicare sonno normale o
+addormentarsi, ma ha anche usi più ampi: può essere un eufemismo per morire o
+riposare in pace, può dire che qualcuno giace sepolto, oppure che risorse,
+talenti o possibilità restano inutilizzati e quindi "dormienti". In una scena
+d'azione, però, resta vicino a perdita di coscienza o recupero.
 
 :::example_sentence
 jp: >-
