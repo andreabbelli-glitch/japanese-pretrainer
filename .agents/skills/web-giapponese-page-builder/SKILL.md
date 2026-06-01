@@ -252,6 +252,16 @@ lesson into the configured target database:
 ./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>
 ```
 
+If the touched file set is not obvious, run the read-only scope helper before
+choosing the import command:
+
+```bash
+./scripts/with-node.sh pnpm content:scope
+```
+
+Follow its `IMPORT` recommendation unless you have a concrete reason to use a
+narrower command.
+
 `pitch-accents:fetch` tries Kanjium, optional local Shirabe Jisho, Jiten,
 Wiktionary, then OJAD. If it prints `review_required`, do not treat it as a
 resolved accent or a miss: inspect the printed candidates, consult another

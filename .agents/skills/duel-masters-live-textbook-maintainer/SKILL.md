@@ -447,6 +447,11 @@ Practical card-selection rules:
 - Treat the pitch-accent fetch as part of completion, not as an optional extra:
   new card content is not done until this check has been run and the outcome is
   reported.
+- Before choosing the final import command, run the read-only scope helper if
+  the touched file set is not obvious:
+  `./scripts/with-node.sh pnpm content:scope`
+  Follow its `IMPORT` recommendation unless you have a concrete reason to use a
+  narrower command.
 - Run a real workspace database import before finishing, not only a temporary
   test harness import. Minimize import scope: use a lesson-scoped import for
   ordinary per-card updates whenever the touched lesson slugs are known:

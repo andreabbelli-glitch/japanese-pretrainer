@@ -434,6 +434,19 @@ le card collegate:
 ./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug <media-slug> --lesson-slug <lesson-slug> [--lesson-slug <lesson-slug> ...]
 ```
 
+Se non sei sicuro dello scope minimo dopo le modifiche locali, chiedilo al
+helper read-only invece di fare un import largo:
+
+```sh
+./scripts/with-node.sh pnpm content:scope
+./scripts/with-node.sh pnpm content:scope -- content/media/<media-slug>/textbook/<file>.md content/media/<media-slug>/cards/<file>.md
+```
+
+Il tool non esegue validate/import e non tocca il DB: stampa solo i comandi
+consigliati. Se indica `IMPORT none`, non trasformarlo in un import per
+abitudine; valuta il warning/reason e importa solo se hai cambiato contenuto
+che il runtime DB deve vedere.
+
 Import scoped al bundle, solo quando vuoi riallineare tutto il media o applicare
 archive/prune media-wide:
 

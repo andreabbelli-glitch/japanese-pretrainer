@@ -31,12 +31,15 @@ grep manuali lunghi:
 ```sh
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> "<front-o-superficie>"
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
+./scripts/with-node.sh pnpm content:scope
 ```
 
 `content:lookup` risponde con un verdetto compatto su match esatti nei
 Markdown (`covered-card`, `entry-only`, `new`). `content:next-id` calcola ID,
-order e path per nuove lesson/card senza scrivere file. Questi tool riducono il
-contesto da passare all'LLM, ma non sostituiscono il giudizio editoriale.
+order e path per nuove lesson/card senza scrivere file. `content:scope` stampa
+i comandi minimi di `content:validate` e `content:import` basandosi sui file
+modificati o su path espliciti. Questi tool riducono il contesto da passare
+all'LLM, ma non sostituiscono il giudizio editoriale.
 
 ## Struttura
 
