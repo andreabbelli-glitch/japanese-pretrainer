@@ -80,6 +80,12 @@ typically at:
    test; it limits the final Forvo residual, not the local steps.
 10. If the browser pauses for manual verification or login, tell the user exactly that and then continue the batch.
 11. Prefer `--dry-run` first when the user wants a preview or when selectors may have drifted.
+    If the goal is only to avoid opening a useless Forvo/browser batch, prefer
+    the faster read-only preflight instead:
+    `./scripts/with-node.sh pnpm forvo:preflight -- --mode targeted --media <media-slug> --entry <entry-id>`.
+    Use it for uncertain, large, or possibly already-requested batches; skip it
+    for small obvious targets and run `pronunciations:resolve` directly.
+    `forvo:preflight` must not be treated as a mandatory dry-run gate.
 12. If a term is not present on Forvo, open the prefilled `word-add` URL and
     record the miss in `data/forvo-known-missing.json` and
     `data/forvo-requested-word-add.json`; this is the normal outcome for true

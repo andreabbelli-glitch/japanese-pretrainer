@@ -132,7 +132,7 @@ type ExecutePronunciationResolveForBundleInput = {
 
 export async function selectPronunciationResolveTargets(input: {
   contentRoot: string;
-  database: DatabaseClient;
+  database?: DatabaseClient;
   entryIds?: string[];
   lessonUrl?: string;
   mediaSlug?: string;
@@ -165,7 +165,7 @@ export async function selectPronunciationResolveTargets(input: {
     return selectReviewTargets({
       bundleByMediaId,
       bundles,
-      database: input.database,
+      database: requirePronunciationResolveDatabase(input.database, input.mode),
       mediaSlug: input.mediaSlug
     });
   }
@@ -178,7 +178,7 @@ export async function selectPronunciationResolveTargets(input: {
     return selectNextLessonTargets({
       bundleByMediaId,
       bundles,
-      database: input.database,
+      database: requirePronunciationResolveDatabase(input.database, input.mode),
       mediaSlug: input.mediaSlug
     });
   }
@@ -214,7 +214,7 @@ export async function selectPronunciationResolveTargets(input: {
   return selectLessonUrlTargets({
     bundleByMediaId,
     bundles,
-    database: input.database,
+    database: requirePronunciationResolveDatabase(input.database, input.mode),
     lessonUrl: input.lessonUrl
   });
 }
@@ -727,6 +727,17 @@ async function getRequiredMedia(database: DatabaseClient, mediaSlug: string) {
   }
 
   return media;
+}
+
+function requirePronunciationResolveDatabase(
+  database: DatabaseClient | undefined,
+  mode: PronunciationResolveMode
+) {
+  if (!database) {
+    throw new Error(`Mode '${mode}' requires a database connection.`);
+  }
+
+  return database;
 }
 
 async function filterAudioBackedTargets(

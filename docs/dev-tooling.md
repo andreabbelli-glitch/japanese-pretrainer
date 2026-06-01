@@ -199,6 +199,7 @@ Workflow pronunce:
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
 ./scripts/with-node.sh pnpm pronunciations:tofugu:sync
+./scripts/with-node.sh pnpm forvo:preflight -- --mode targeted --media duel-masters-dm25 --entry term-cost
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media duel-masters-dm25 --entry term-cost
 ./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
 ```
@@ -214,6 +215,15 @@ e' stato trovato un audio. Anche i target espliciti usano
 `pronunciations:resolve -- --mode targeted`; il fetcher Forvo diretto resta
 solo per manutenzione interna con `--direct-fetcher-debug` o fallback manuale
 estremo.
+
+`forvo:preflight` e un helper read-only e rapido da usare quando l'LLM sta per
+aprire un batch Forvo incerto, costoso o potenzialmente gia coperto. Riusa la
+selezione del resolver, legge solo content/DB locale e i registri
+`data/forvo-known-missing.json` / `data/forvo-requested-word-add.json`, poi
+stampa stato, target, known-missing, richieste gia aperte e il comando
+canonico `pronunciations:resolve` da lanciare. Non contatta Forvo, non apre
+browser, non copia audio e non e un altro dry-run: per target piccoli e ovvi
+puoi saltarlo e chiamare direttamente `pronunciations:resolve`.
 
 Il dataset Tofugu/WaniKani completo resta locale e ignorato da git sotto
 `data/tofugu-japanese-vocabulary-pronunciation-audio`; `pronunciations:tofugu:sync`

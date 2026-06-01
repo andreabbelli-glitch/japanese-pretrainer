@@ -48,7 +48,7 @@ export const taskClassifiers: TaskClassifier[] = [
   {
     task: "Pronunciation, Forvo, pitch accent, image, or media asset workflow",
     orientation:
-      "Use `pronunciations:resolve` or the repo-scoped skill wrapper for normal pronunciation work, and keep sidecar workflow files scoped to the requested media.",
+      "Use `pronunciations:resolve` or the repo-scoped skill wrapper for normal pronunciation work; use `forvo:preflight` only before uncertain or large Forvo batches.",
     verify:
       "Run the targeted workflow validation/import command named by the workflow or skill, using the smallest import scope available.",
     sourceDocs: [

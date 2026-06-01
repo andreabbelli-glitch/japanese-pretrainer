@@ -39,6 +39,7 @@
     "pronunciations:resolve": "node --experimental-strip-types ./scripts/resolve-pronunciations.ts",
     "pronunciations:pending": "node --experimental-strip-types ./scripts/update-pronunciation-pending.ts",
     "pronunciations:reuse": "node --experimental-strip-types ./scripts/reuse-pronunciations.ts",
+    "forvo:preflight": "node --disable-warning=DEP0040 --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/forvo-preflight.ts",
     "pitch-accents:fetch": "node --experimental-strip-types ./scripts/fetch-pitch-accents.ts",
     "pitch-accent:import-minimal-pairs": "node --experimental-strip-types ./scripts/import-minimal-pairs.ts",
     "pitch-accent:generate-tofugu-pairs": "node --experimental-strip-types ./scripts/generate-tofugu-pitch-minimal-pairs.ts",

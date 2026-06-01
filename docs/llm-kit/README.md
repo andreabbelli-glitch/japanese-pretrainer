@@ -34,6 +34,7 @@ grep manuali lunghi:
 ./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:scope
 ./scripts/with-node.sh pnpm agent:verify
+./scripts/with-node.sh pnpm forvo:preflight -- --mode targeted --media <media-slug> --entry <entry-id>
 ```
 
 `content:lookup` risponde con un verdetto compatto su match esatti nei
@@ -45,8 +46,10 @@ all'LLM. `content:editorial-lint` segnala warning su meta-discorso, scorciatoie
 di stile e frasi povere prima di importare o consegnare una lesson: l'LLM deve
 valutarli come problemi editoriali reali e riscrivere il contenuto, non
 aggirarli con modifiche cosmetiche. `agent:verify` sceglie i gate repo da
-eseguire dopo le modifiche, ma non li esegue. Questi helper non sostituiscono
-il giudizio editoriale.
+eseguire dopo le modifiche, ma non li esegue. `forvo:preflight` e opzionale:
+usalo prima di batch Forvo incerti o grandi per capire se i target sono gia
+audio-backed, known-missing o gia richiesti; saltalo per target piccoli e
+chiari. Questi helper non sostituiscono il giudizio editoriale.
 
 ## Struttura
 

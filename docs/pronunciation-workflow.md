@@ -91,6 +91,18 @@ Non aggiungere mai un limite batch implicito. Usa `--limit` solo quando l'utente
 chiede esplicitamente un numero massimo o uno smoke test; il limite si applica
 al residuo Forvo, non al riuso cross-media o al dataset Tofugu/WaniKani.
 
+Prima di un batch Forvo incerto, grande o potenzialmente gia coperto, puoi
+usare il preflight read-only:
+
+```bash
+./scripts/with-node.sh pnpm forvo:preflight -- --mode targeted --media <media-slug> --entry <entry-id>
+```
+
+Il preflight seleziona gli stessi target del resolver, legge gli audio gia
+presenti e i registri known-missing / word-add, poi stampa il comando
+`pronunciations:resolve` consigliato. Non apre Forvo, non copia file e non e un
+dry-run del resolver. Saltalo per target piccoli e ovvi.
+
 Opzioni Tofugu utili:
 
 - `--tofugu-dataset-dir /path`: usa un clone locale diverso;

@@ -93,11 +93,19 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media duel-masters-dm25 --entry term-cost
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media gundam-arsenal-base --word 専用機 --word 戦艦
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media duel-masters-dm25 --words-file tmp/forvo-list.tsv
+./scripts/with-node.sh pnpm forvo:preflight -- --mode targeted --media duel-masters-dm25 --entry term-cost
 ./scripts/with-node.sh pnpm pronunciations:tofugu:sync
 ./scripts/with-node.sh pnpm pronunciations:forvo:request
 ./scripts/with-node.sh pnpm pronunciations:forvo:request -- --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
 ```
+
+`forvo:preflight` e un check read-only da usare prima di aprire Forvo quando il
+batch e incerto, grande o forse gia coperto. Riusa la selezione del resolver,
+legge audio locale e registri known-missing / word-add, e stampa il comando
+canonico da lanciare. Non contatta Forvo, non apre il browser, non scrive file
+e non sostituisce `pronunciations:resolve`. Non renderlo un passaggio
+obbligatorio per target piccoli e chiari.
 
 ## Miss e richiesta word-add
 
@@ -238,6 +246,9 @@ term-taberu
 
 - `pnpm pronunciations:resolve` e il percorso standard per richieste orientate
   al prodotto, inclusi target espliciti con `--mode targeted`;
+- `pnpm forvo:preflight` serve solo a evitare batch Forvo inutili o gia coperti
+  quando il costo di aprire browser/rete non e chiaro; non e un gate
+  obbligatorio;
 - `pnpm pronunciations:forvo` e' low-level interno: le run non manuali dirette
   richiedono `--direct-fetcher-debug` e non sono workflow ordinari;
 - il resolver prova Forvo solo dopo audio locale, riuso cross-media e dataset
