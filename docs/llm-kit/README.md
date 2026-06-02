@@ -32,6 +32,7 @@ grep manuali lunghi:
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> "<front-o-superficie>"
 ./scripts/with-node.sh pnpm content:lookup-batch -- --media-slug <media-slug> --query "<front-o-superficie>" --grammar "<pattern>"
 ./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
+./scripts/with-node.sh pnpm content:entry-usage -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
@@ -48,7 +49,10 @@ parser gira una sola volta e l'output resta compatto, ordinato e riepilogato.
 `content:entry-brief` stampa solo il contesto operativo di una entry esatta:
 fonte, significato,
 audio/accento, lesson, card e riferimenti collegati; fallisce chiuso se il
-match e ambiguo. `content:lesson-brief` stampa solo il contesto operativo di
+match e ambiguo. `content:entry-usage` e' il drilldown piu piccolo quando hai
+gia l'ID: mostra card coverage e riferimenti semantici con file/linea, senza
+aprire o greppare i Markdown completi. `content:lesson-brief` stampa solo il
+contesto operativo di
 una lesson nota: identita, file, headings, entry, card, immagini, warning
 editoriali e comandi minimi di verifica/import. `content:next-id` calcola ID,
 order e path per nuove lesson/card senza scrivere file. `content:scaffold`

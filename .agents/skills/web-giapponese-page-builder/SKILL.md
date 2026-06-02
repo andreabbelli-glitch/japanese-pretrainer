@@ -65,6 +65,9 @@ Optional:
    When that check finds an existing entry/card, or when you already know the
    `entry_id`, load the compact parser-backed context with:
    `./scripts/with-node.sh pnpm content:entry-brief -- --media-slug web-giapponese --entry-id <entry-id>`.
+   If you only need card coverage and semantic reference coordinates for a known
+   entry, use the smaller:
+   `./scripts/with-node.sh pnpm content:entry-usage -- --media-slug web-giapponese --entry-id <entry-id>`.
 4. When revising an existing lesson, load its compact context before opening
    broad files:
    `./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug web-giapponese --lesson-slug <lesson-slug>`.
@@ -85,35 +88,35 @@ Optional:
    - `content/media/web-giapponese/workflow/image-requests.yaml`
    - `content/media/web-giapponese/workflow/image-assets.yaml`
 10. Resolve pronunciation audio for every new or revised card entry with:
-   `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media web-giapponese --entry <new-term-or-grammar-id>`
-   Pass multiple `--entry` flags for multiple new cards. If Forvo has no audio,
-   the workflow must open and record the `word-add` request. Forvo audio must be
-   attempted through the Anki/addon-style flow first: dedicated Anki helper,
-   `Play(...)` candidates, speaker ranking, direct audio download, and OGG -> MP3
-   conversion when needed. Manual download is only an extreme fallback for a
-   specific blocked item.
-10. Regenerate
+    `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media web-giapponese --entry <new-term-or-grammar-id>`
+    Pass multiple `--entry` flags for multiple new cards. If Forvo has no audio,
+    the workflow must open and record the `word-add` request. Forvo audio must be
+    attempted through the Anki/addon-style flow first: dedicated Anki helper,
+    `Play(...)` candidates, speaker ranking, direct audio download, and OGG -> MP3
+    conversion when needed. Manual download is only an extreme fallback for a
+    specific blocked item.
+11. Regenerate
     `content/media/web-giapponese/workflow/pronunciation-pending.json` with:
     `./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese`
     so every newly added card without local audio is recorded in the pending
     manifest after the request path has run.
-11. Run the repo validation flow before closing.
-12. Fetch pitch accents only for the flashcard entries created or revised in
+12. Run the repo validation flow before closing.
+13. Fetch pitch accents only for the flashcard entries created or revised in
     this task. Prefer entry IDs:
     `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`
     Pass multiple `--entry` flags for multiple new cards. Use `--word` or
     `--words-file` only when a reliable entry-id list is not available.
-13. Import the updated item into the configured target database with a
+14. Import the updated item into the configured target database with a
     lesson-scoped import. Minimize import scope; when the item's lesson slug is
     known, the lesson-scoped import is required:
     `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>`
     Use the broader media-scoped import only when the task changed media-wide
     ordering or other content that must apply archive/prune to all
     `web-giapponese` lessons/cards.
-14. Treat the work as incomplete if pronunciation resolution, pitch accent fetch,
+15. Treat the work as incomplete if pronunciation resolution, pitch accent fetch,
     import, or cache
     revalidation fails.
-15. After a completed item/card workflow with passing required checks, commit
+16. After a completed item/card workflow with passing required checks, commit
     and push the relevant changes to `main` before closing the task. Stage only
     files created or updated by this workflow, and leave unrelated worktree
     changes unstaged.

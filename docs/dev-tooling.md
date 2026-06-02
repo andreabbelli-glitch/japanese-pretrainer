@@ -147,6 +147,7 @@ read-only sui Markdown prima di creare nuove entry, card o lesson:
 ./scripts/with-node.sh pnpm content:lookup-batch -- --media-slug <media-slug> --query "<superficie-1>" --grammar "<pattern-1>"
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --list entries
 ./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
+./scripts/with-node.sh pnpm content:entry-usage -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
@@ -172,6 +173,12 @@ fonte, significato, audio/accento, lesson, card e riferimenti collegati in forma
 compatta. Usalo prima di aggiungere o correggere card/entry quando hai gia un
 `entry_id` o una superficie esatta: fallisce chiuso su match ambigui e non usa
 il DB, quindi evita dump manuali di cards/textbook senza diventare dedup fuzzy.
+
+`content:entry-usage` e' ancora piu mirato: dopo che conosci un `entry_id`,
+stampa stato `covered-card`/`entry-only`, card collegate e riferimenti semantici
+con file/linea gia risolti. Usalo quando devi capire dove una entry ricorre
+senza fare `rg` su tutto il media; non cerca substring raw e non sostituisce
+`content:lookup-batch` per scoprire l'ID.
 
 `content:lesson-brief` compatta una lesson nota in identita, file, headings,
 entry, card, immagini, warning editoriali e comandi minimi di validate/import.

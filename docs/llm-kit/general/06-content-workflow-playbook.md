@@ -108,6 +108,7 @@ contenuto deve usare i helper read-only invece di ricostruire tutto a mano:
 ./scripts/with-node.sh pnpm content:lookup-batch -- --media-slug <media-slug> --query "<superficie-1>" --grammar "<pattern-1>"
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --list entries
 ./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
+./scripts/with-node.sh pnpm content:entry-usage -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
@@ -121,7 +122,10 @@ riepilogo finale. La modalita `--list` e' una inventory mirata e compatta, non
 un dump globale. `content:entry-brief` e' il passo successivo quando esiste
 gia un candidato preciso: riassume una sola entry con card, lesson,
 riferimenti e stato audio/accento, fallendo su ambiguita invece di tirare dentro
-file interi. `content:lesson-brief` riassume una lesson nota con entry, card,
+file interi. Se invece ti servono solo coverage e coordinate dei riferimenti
+semantici di un ID noto, usa `content:entry-usage`: e' piu corto di
+`entry-brief` e non fa ricerca raw. `content:lesson-brief` riassume una lesson
+nota con entry, card,
 immagini, warning editoriali e comandi minimi di verifica/import; usalo per
 dare contesto compatto, non per sostituire il Markdown quando devi riscrivere
 frasi esatte. `content:next-id` calcola il prossimo ID/path/order senza scrivere

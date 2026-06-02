@@ -101,6 +101,9 @@ Primary target files:
 - When the lookup finds an existing entry/card, or when an `entry_id` is already
   known, load only the compact context with:
   `./scripts/with-node.sh pnpm content:entry-brief -- --media-slug duel-masters-dm25 --entry-id <entry-id>`.
+- When you only need coverage and where a known entry is semantically referenced,
+  prefer the smaller usage drilldown:
+  `./scripts/with-node.sh pnpm content:entry-usage -- --media-slug duel-masters-dm25 --entry-id <entry-id>`.
 - Reuse existing `term.id` and `grammar.id` when the concept is already in the
   media.
 - Do not create a second glossary entry for the same keyword, grammar chunk, or
