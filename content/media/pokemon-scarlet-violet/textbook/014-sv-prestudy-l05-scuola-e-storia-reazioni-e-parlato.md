@@ -61,7 +61,7 @@ Quando una schermata di battaglia o un dialogo scolastico usa [{{効果|こう�
 
 [{{博士|はかせ}}](term:term-v053-hakase) porta invece la scena verso spiegazioni e ricerca. In un gioco Pokémon, il professore non è solo un titolo scolastico: è la voce che collega il mondo dei Pokémon a strumenti come il [{{図鑑|ずかん}}](term:term-v054-zukan). Quando leggi {{図鑑|ずかん}}に{{登録|とうろく}}する, la particella に è decisiva: non stai semplicemente "guardando" il Pokédex, stai mandando un'informazione dentro quel registro.
 
-[どんな](term:term-v055-donna) apre domande sul tipo o sulla natura di qualcosa. どんな ポケモン non chiede "dove" sia il Pokémon e non chiede solo il nome: chiede che genere di Pokémon è, che caratteristiche ha, che cosa bisogna aspettarsi.
+[どんな](term:term-v055-donna) apre domande sul tipo o sulla natura di qualcosa. In どんな ポケモン il focus è il genere di Pokémon: caratteristiche, natura e che cosa bisogna aspettarsi.
 
 :::example_sentence
 jp: >-
@@ -104,7 +104,7 @@ translation_it: >-
 
 ## 2. Picnic, ingredienti e accuratezza: oggetti che diventano azioni
 
-Il [ピクニック](term:term-v059-pikunikku) in Scarlet/Violet è una funzione concreta di campo: tiri fuori i Pokémon, prepari panini, recuperi ritmo tra una tratta e l'altra. Dentro questa scena, [{{食材|しょくざい}}](term:term-v052-shokuzai) non significa genericamente "cibo"; è il materiale alimentare che puoi combinare per preparare qualcosa.
+Il [ピクニック](term:term-v059-pikunikku) in Scarlet/Violet è una funzione concreta di campo: tiri fuori i Pokémon, prepari panini, recuperi ritmo tra una tratta e l'altra. Dentro questa scena, [{{食材|しょくざい}}](term:term-v052-shokuzai) è il materiale alimentare che puoi combinare per preparare qualcosa.
 
 [{{作|つく}}る](term:term-v058-tsukuru) è il verbo che chiude l'azione: creare, fare, preparare. Se la frase dice {{食材|しょくざい}}を{{使|つか}}って サンドウィッチを{{作|つく}}る, prima selezioni e usi gli ingredienti, poi il risultato è il sandwich. La forma in て di {{使|つか}}う collega le due azioni senza trasformarle in una lista separata.
 
@@ -192,7 +192,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{最後|さいご}}](term:term-v060-saigo) non significa "recente". {{最後|さいご}}のバッジ è la medaglia finale della serie, mentre バトルの{{後|あと}}で è il momento successivo alla lotta. Uno ordina una lista; l'altro ordina il tempo.
+[{{最後|さいご}}](term:term-v060-saigo) marca l'elemento finale di una serie. {{最後|さいご}}のバッジ è la medaglia finale; バトルの{{後|あと}}で indica invece il momento successivo alla lotta. Uno ordina una lista; l'altro ordina il tempo.
 
 ## 4. Reazioni e parlato: avviso, sorpresa e tono del personaggio
 

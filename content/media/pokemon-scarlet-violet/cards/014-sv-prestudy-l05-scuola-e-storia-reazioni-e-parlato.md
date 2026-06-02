@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-014-sv-prestudy-l05-scuola-e-storia-reazioni-e-parlato
 media_id: media-pokemon-scarlet-violet
 slug: 014-sv-prestudy-l05-scuola-e-storia-reazioni-e-parlato
-title: SV Pre-study L05 - scuola e storia, reazioni e parlato
+title: "Scuola, picnic e reazioni: effetto, permesso e sequenza"
 order: 44
 segment_ref: scarlet-violet-prestudy
 ---
@@ -342,7 +342,10 @@ entry_type: term
 entry_id: term-v061-kitto
 card_type: recognition
 front: 'きっと'
-back: sicuramente
+back: >-
+  sicuramente. Esprime certezza soggettiva o una forte aspettativa: "sono quasi
+  sicuro", circa 80-90% di certezza, guidata da convinzioni, speranze o
+  intuizione del parlante.
 example_jp: >-
   きっと ネモも {{来|く}}ると {{思|おも}}う。
 example_it: >-

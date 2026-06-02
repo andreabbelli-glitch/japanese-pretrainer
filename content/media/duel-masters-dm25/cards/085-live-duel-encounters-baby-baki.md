@@ -28,7 +28,7 @@ id: term-kanarazu
 lemma: 必ず
 reading: かならず
 romaji: kanarazu
-meaning_it: sicuramente / certamente
+meaning_it: sicuramente / certamente / inevitabilmente
 pos: adverb
 aliases: [必ず, かならず, kanarazu]
 notes_it: >-
@@ -72,7 +72,10 @@ entry_type: term
 entry_id: term-kanarazu
 card_type: recognition
 front: '{{必|かなら}}ず'
-back: sicuramente / certamente
+back: >-
+  sicuramente / certamente / inevitabilmente. Esprime certezza oggettiva o
+  inevitabilità logica: "senza fallo", con certezza al 100%, perché poggia su
+  fatti, leggi di natura o requisiti rigidi.
 example_jp: >-
   {{仲間|なかま}}がいるなら、{{俺|おれ}}たちも
   [{{必|かなら}}ず](term:term-kanarazu){{勝|か}}つ。
