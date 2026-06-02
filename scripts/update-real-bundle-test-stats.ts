@@ -24,9 +24,22 @@ const duelMastersMediaSlug = "duel-masters-dm25";
 
 try {
   const cliOptions = resolveCliOptions(process.argv.slice(2));
-  const nextStats = await collectDuelMastersRealBundleStats(
-    cliOptions.contentRoot
-  );
+  let nextStats: DuelMastersRealBundleStats;
+
+  try {
+    nextStats = await collectDuelMastersRealBundleStats(
+      cliOptions.contentRoot
+    );
+  } catch (error) {
+    if (cliOptions.acceptFailure) {
+      console.error(`Accepted real bundle stats failure: ${formatError(error)}`);
+    } else {
+      throw error;
+    }
+
+    process.exit(0);
+  }
+
   const formattedStats = `${JSON.stringify(nextStats, null, 2)}\n`;
 
   if (!cliOptions.write) {
@@ -126,6 +139,7 @@ async function collectDuelMastersRealBundleStats(contentRoot: string) {
 }
 
 function resolveCliOptions(args: string[]) {
+  let acceptFailure = false;
   let contentRoot = path.resolve(process.cwd(), "content");
   let write = false;
 
@@ -153,10 +167,20 @@ function resolveCliOptions(args: string[]) {
       continue;
     }
 
+    if (value === "--accept-failure") {
+      acceptFailure = true;
+      continue;
+    }
+
     throw new Error(`Unknown argument: ${value}`);
   }
 
+  if (acceptFailure && write) {
+    throw new Error("--accept-failure cannot be combined with --write.");
+  }
+
   return {
+    acceptFailure,
     contentRoot,
     write
   };
@@ -184,9 +208,13 @@ function isMissingFileError(error: unknown): error is NodeJS.ErrnoException {
 }
 
 function formatUnexpectedError(error: unknown) {
+  return `Failed to compute real bundle stats: ${formatError(error)}`;
+}
+
+function formatError(error: unknown) {
   if (error instanceof Error && error.message.length > 0) {
-    return `Failed to compute real bundle stats: ${error.message}`;
+    return error.message;
   }
 
-  return "Failed to compute real bundle stats with an unknown error.";
+  return "unknown error";
 }

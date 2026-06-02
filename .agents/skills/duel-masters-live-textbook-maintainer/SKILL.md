@@ -439,6 +439,11 @@ Practical card-selection rules:
 - If the real-bundle fixture stats become stale, update them with the repo
   command:
   `./scripts/with-node.sh pnpm content:test-stats -- --write`
+- For read-only diagnostics on a work-in-progress bundle that may not parse or
+  import yet, `./scripts/with-node.sh pnpm content:test-stats -- --accept-failure`
+  may be used to log the failure without failing the shell step. Never combine
+  it with `--write`; fixture updates must fail loudly when stats cannot be
+  computed.
 - If a test fails because of a real code bug, fix the code first instead of
   weakening or rewriting the assertion to match the bug.
 - Run broader targeted tests only when the implementation actually changed.

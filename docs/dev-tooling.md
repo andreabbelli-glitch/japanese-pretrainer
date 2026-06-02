@@ -436,6 +436,13 @@ canary mirato invece di ricordare a mano il path Vitest:
 Il comando esegue solo `tests/content-real-bundle-canary.test.ts`, cioe parse e
 import del bundle reale contro le statistiche aggregate versionate.
 
+Quando le statistiche aggregate del canary sono intenzionalmente cambiate, usa
+`./scripts/with-node.sh pnpm content:test-stats -- --write` per aggiornarle.
+Durante una diagnosi read-only di un bundle ancora invalido puoi usare
+`./scripts/with-node.sh pnpm content:test-stats -- --accept-failure`: il comando
+riporta l'errore ma torna exit 0. Il flag e rifiutato insieme a `--write`, cosi
+un aggiornamento fixture non puo mascherare un parse/import fallito.
+
 Per un normale aggiornamento editoriale, minimizza lo scope dell'import. Se il
 cambio e limitato a una o piu lesson note dello stesso media, l'import deve
 essere lesson-scoped:
