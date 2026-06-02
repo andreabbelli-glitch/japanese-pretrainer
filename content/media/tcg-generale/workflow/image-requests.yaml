@@ -70,3 +70,39 @@ requests:
     notes: >-
       L'immagine era allegata al prompt, ma non risultava materializzata come
       file locale nella sessione.
+  - id: vanguard-janken-decision-screen
+    lesson_slug: vanguard-tutorial-ride-deck-and-starting-order
+    anchor: "## 2. Janken decide quale lato riceve {{先攻|せんこう}}"
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      La schermata mostra le icone di janken e la riga `先攻・後攻を決定します`,
+      utile per spiegare la forma cortese `決定します` nella stessa sequenza del
+      tutorial.
+    visual_goal: >-
+      Rendere leggibili le due righe di icone janken e il testo
+      `先攻・後攻を決定します` al centro.
+    source_preference: >-
+      Screenshot fornito dall'utente dal tutorial Vanguard.
+    search_hint: >-
+      Vanguard tutorial janken decision senkou koukou kettei shimasu screenshot.
+    capture_instructions: >-
+      Usare lo screenshot fornito dall'utente con icone sasso/carta/forbici:
+      deve restare visibile la barra centrale con `先攻・後攻を決定します`.
+    must_show: >-
+      Testo `先攻・後攻を決定します` e le icone janken dei due lati, incluso il
+      riquadro evidenziato in giallo.
+    avoid: >-
+      Crop che nasconde la riga testuale o taglia il confronto tra le due file
+      di icone.
+    alt_it: >-
+      Schermata Vanguard con icone janken e barra centrale che dice che si
+      decide primo e secondo turno.
+    caption_it: >-
+      La schermata usa la forma cortese:
+      [{{先攻|せんこう}}](term:term-senkou)・
+      [{{後攻|こうこう}}](term:term-koukou)を
+      [{{決定|けってい}}します](term:term-kettei-shimasu)。
+    notes: >-
+      L'immagine era allegata al prompt, ma non risultava materializzata come
+      file locale nella sessione.

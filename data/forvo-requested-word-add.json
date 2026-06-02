@@ -5217,6 +5217,15 @@
       "requestedAt": "2026-06-02T23:03:39.965Z"
     },
     {
+      "entryId": "term-kettei-shimasu",
+      "entryKind": "term",
+      "label": "決定します",
+      "mediaSlug": "tcg-generale",
+      "reading": "けっていします",
+      "requestUrl": "https://forvo.com/word-add/%E6%B1%BA%E5%AE%9A%E3%81%97%E3%81%BE%E3%81%99/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-06-02T23:19:06.608Z"
+    },
+    {
       "entryId": "grammar-da-to-kanjiru",
       "entryKind": "grammar",
       "label": "N / ナ{{形|けい}} + だと{{感|かん}}じる",

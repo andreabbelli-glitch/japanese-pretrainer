@@ -71,6 +71,20 @@ level_hint: n4
 :::
 
 :::term
+id: term-kettei-shimasu
+lemma: 決定します
+reading: けっていします
+romaji: kettei shimasu
+meaning_it: si decide / si stabilisce
+pos: expression
+notes_it: >-
+  Forma cortese di `{{決定|けってい}}する`: nella schermata Vanguard presenta la
+  decisione di `{{先攻|せんこう}}・{{後攻|こうこう}}` come risultato stabilito dal
+  sistema.
+level_hint: n4
+:::
+
+:::term
 id: term-senkou
 lemma: 先攻
 reading: せんこう
@@ -112,6 +126,25 @@ notes_it: >-
   `{{自動|じどう}}{{的|てき}}に` modifica il verbo: non descrive la carta, ma il
   modo in cui viene collocata. Qui il piazzamento è eseguito dal sistema.
 tags: [vanguard, tutorial, setup]
+:::
+
+:::card
+id: card-kettei-shimasu-recognition
+lesson_id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order
+entry_type: term
+entry_id: term-kettei-shimasu
+card_type: recognition
+front: '{{決定|けってい}}します'
+back: 'si decide; si stabilisce'
+example_jp: >-
+  {{先攻|せんこう}}・{{後攻|こうこう}}を{{決定|けってい}}します。
+example_it: >-
+  Si decide chi va per primo e chi per secondo.
+notes_it: >-
+  `{{決定|けってい}}します` è la forma cortese di `{{決定|けってい}}する`. Con `を`
+  davanti, il testo dice quale cosa viene stabilita: qui la coppia
+  `{{先攻|せんこう}}・{{後攻|こうこう}}`.
+tags: [vanguard, tutorial, starting-order]
 :::
 
 :::card

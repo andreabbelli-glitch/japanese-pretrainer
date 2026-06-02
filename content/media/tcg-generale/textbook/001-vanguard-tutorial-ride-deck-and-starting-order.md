@@ -21,14 +21,16 @@ spiega due cose molto concrete: quale carta viene messa sul campo senza scelta
 manuale e come si decide chi parte. Il registro è amichevole, con `よ` finale,
 ma la struttura delle frasi è precisa: [{{自動|じどう}}{{的|てき}}](term:term-jidouteki)
 toglie l'azione dalle mani del giocatore, mentre
+[{{決定|けってい}}します](term:term-kettei-shimasu) presenta la scelta
+dell'ordine in registro pulito da schermata. Subito dopo,
 [{{勝|か}}った{{方|ほう}}](term:term-katta-hou) trasforma il risultato di
 [じゃんけん](term:term-janken) nel lato che riceve [{{先攻|せんこう}}](term:term-senkou).
 
 Le due frasi da tenere insieme sono `ライドデッキのグレード{{0|ゼロ}}のカードが
 {{自動|じどう}}{{的|てき}}に{{置|お}}かれる` e
-`{{勝|か}}った{{方|ほう}}が{{先攻|せんこう}}`. Una parla di setup automatico,
-l'altra di assegnazione del turno: in entrambe il soggetto marcato da `が`
-riceve un ruolo nel sistema della partita.
+`{{先攻|せんこう}}・{{後攻|こうこう}}を{{決定|けってい}}します` e
+`{{勝|か}}った{{方|ほう}}が{{先攻|せんこう}}`. La prima parla di decisione dei
+ruoli, la seconda assegna il primo turno al lato vincente.
 
 ## Termini chiave
 
@@ -36,6 +38,7 @@ riceve un ruolo nel sistema della partita.
 - [グレード{{0|ゼロ}}](term:term-grade-zero) — grado iniziale che viene piazzato all'avvio
 - [{{自動|じどう}}{{的|てき}}](term:term-jidouteki) — automatico / automaticamente
 - [じゃんけん](term:term-janken) — morra cinese usata per decidere l'ordine
+- [{{決定|けってい}}します](term:term-kettei-shimasu) — si decide / si stabilisce
 - [{{勝|か}}った{{方|ほう}}](term:term-katta-hou) — il lato o giocatore che ha vinto
 - [{{先攻|せんこう}}](term:term-senkou) — andare per primi
 - [{{後攻|こうこう}}](term:term-koukou) — andare per secondi
@@ -91,11 +94,34 @@ mezzo, e `{{先攻|せんこう}}・{{後攻|こうこう}}を{{決|き}}める`
 sta determinando i due ruoli di turno; il vincitore della morra serve a
 scegliere quale lato riceve il primo ruolo.
 
+[{{決定|けってい}}します](term:term-kettei-shimasu) è la versione più formale e
+da schermata della stessa azione. `{{決定|けってい}}` è "decisione /
+determinazione"; `します` la rende un verbo cortese. In
+`{{先攻|せんこう}}・{{後攻|こうこう}}を{{決定|けってい}}します`, `を` marca i due
+ruoli come oggetto della decisione: il gioco non sta chiedendo di scegliere una
+mano di janken, ma sta stabilendo chi sarà primo e chi secondo.
+
 [{{先攻|せんこう}}](term:term-senkou) combina `{{先|せん}}`, "prima / davanti",
 con `{{攻|こう}}`, "attacco / iniziativa". [{{後攻|こうこう}}](term:term-koukou)
 usa lo stesso `{{攻|こう}}`, ma con `{{後|こう}}`: il lato non apre, agisce
 dopo. In un tutorial TCG questi due label sono più importanti del colore del
 cartiglio, perché dicono chi prende il primo turno.
+
+:::example_sentence
+jp: >-
+  {{先攻|せんこう}}・{{後攻|こうこう}}を{{決定|けってい}}します。
+translation_it: >-
+  Si decide chi va per primo e chi per secondo.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `[{{先攻|せんこう}}](term:term-senkou)・[{{後攻|こうこう}}](term:term-koukou)を`
+    ➔ **Ruoli da stabilire**: `を` marca la coppia primo/secondo turno come
+    oggetto della decisione.
+*   `[{{決定|けってい}}します](term:term-kettei-shimasu)` ➔ **Decisione
+    formale**: `{{決定|けってい}}` nomina l'atto di fissare il risultato e
+    `します` lo presenta in registro cortese da UI.
 
 :::example_sentence
 jp: >-
@@ -151,6 +177,13 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
+  {{先攻|せんこう}}・{{後攻|こうこう}}を{{決定|けってい}}します。
+translation_it: >-
+  Si decide chi va per primo e chi per secondo.
+:::
+
+:::example_sentence
+jp: >-
   じゃんけんで{{勝|か}}った{{方|ほう}}が{{先攻|せんこう}}になる。
 translation_it: >-
   La parte che vince a janken diventa il lato che va per primo.
@@ -167,6 +200,8 @@ translation_it: >-
 
 Quando il tutorial usa [{{自動|じどう}}{{的|てき}}](term:term-jidouteki),
 controlla quale azione il sistema sta facendo al posto tuo. Quando usa
+[{{決定|けってい}}します](term:term-kettei-shimasu), guarda l'oggetto marcato da
+`を`: sono i ruoli da fissare. Quando usa
 [{{勝|か}}った{{方|ほう}}](term:term-katta-hou), cerca subito il ruolo che viene
 assegnato dopo `が`: in questa schermata è [{{先攻|せんこう}}](term:term-senkou),
 cioè il primo turno della partita.

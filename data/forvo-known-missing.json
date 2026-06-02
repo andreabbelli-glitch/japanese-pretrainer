@@ -2285,6 +2285,15 @@
       "updatedAt": "2026-06-02T23:03:39.946Z"
     },
     {
+      "entryId": "term-kettei-shimasu",
+      "entryKind": "term",
+      "label": "決定します",
+      "mediaSlug": "tcg-generale",
+      "reading": "けっていします",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-06-02T23:19:06.594Z"
+    },
+    {
       "entryId": "grammar-da-to-kanjiru",
       "entryKind": "grammar",
       "label": "N / ナ{{形|けい}} + だと{{感|かん}}じる",
