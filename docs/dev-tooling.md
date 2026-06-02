@@ -318,6 +318,7 @@ Workflow pronunce:
 ./scripts/with-node.sh pnpm pronunciations:tofugu:sync
 ./scripts/with-node.sh pnpm forvo:preflight -- --mode targeted --media duel-masters-dm25 --entry term-cost
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media duel-masters-dm25 --entry term-cost
+./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug duel-masters-dm25 --entry term-cost --preflight
 ./scripts/with-node.sh pnpm pronunciations:forvo:import-requested -- --audio-index /tmp/forvo-requested-audio-index.json
 ```
 
@@ -341,6 +342,14 @@ stampa stato, target, known-missing, richieste gia aperte e il comando
 canonico `pronunciations:resolve` da lanciare. Non contatta Forvo, non apre
 browser, non copia audio e non e un altro dry-run: per target piccoli e ovvi
 puoi saltarlo e chiamare direttamente `pronunciations:resolve`.
+
+`pronunciations:resolve-entries` e il wrapper piu stretto per entry ID appena
+creati o revisionati: richiede `--media-slug` e uno o piu `--entry` o una
+`--entries-file`, inoltra al resolver in `--mode targeted`, e rifiuta selector
+non-entry come `--word`, `--words-file`, `--lesson-url` e `--mode`. Usa
+`--preflight` o `--preflight-only` quando vuoi includere il check read-only
+senza ricostruire a mano il comando `forvo:preflight`; usa `--print-command`
+per auditare la run senza eseguirla.
 
 Il dataset Tofugu/WaniKani completo resta locale e ignorato da git sotto
 `data/tofugu-japanese-vocabulary-pronunciation-audio`; `pronunciations:tofugu:sync`

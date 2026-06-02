@@ -91,6 +91,7 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media duel-masters-dm25 --entry term-cost
+./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug duel-masters-dm25 --entry term-cost --preflight
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media gundam-arsenal-base --word 専用機 --word 戦艦
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media duel-masters-dm25 --words-file tmp/forvo-list.tsv
 ./scripts/with-node.sh pnpm forvo:preflight -- --mode targeted --media duel-masters-dm25 --entry term-cost
@@ -106,6 +107,13 @@ legge audio locale e registri known-missing / word-add, e stampa il comando
 canonico da lanciare. Non contatta Forvo, non apre il browser, non scrive file
 e non sostituisce `pronunciations:resolve`. Non renderlo un passaggio
 obbligatorio per target piccoli e chiari.
+
+Per entry ID espliciti, soprattutto subito dopo una modifica editoriale,
+`pronunciations:resolve-entries` evita di ricostruire a mano
+`pronunciations:resolve -- --mode targeted`: accetta solo `--entry` /
+`--entries-file`, puo includere `--preflight` o `--preflight-only`, e rifiuta
+word list miste. Per target a parola libera o scope review/lesson resta sul
+resolver generale.
 
 ## Miss e richiesta word-add
 

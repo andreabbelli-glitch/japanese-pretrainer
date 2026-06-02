@@ -47,6 +47,7 @@
     "content:import": "node --experimental-strip-types ./scripts/import-content.ts",
     "content:test-stats": "node --experimental-strip-types ./scripts/update-real-bundle-test-stats.ts",
     "pronunciations:resolve": "node --experimental-strip-types ./scripts/resolve-pronunciations.ts",
+    "pronunciations:resolve-entries": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/resolve-pronunciation-entries.ts",
     "pronunciations:pending": "node --experimental-strip-types ./scripts/update-pronunciation-pending.ts",
     "pronunciations:reuse": "node --experimental-strip-types ./scripts/reuse-pronunciations.ts",
     "forvo:preflight": "node --disable-warning=DEP0040 --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/forvo-preflight.ts",

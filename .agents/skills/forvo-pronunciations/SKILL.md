@@ -72,7 +72,13 @@ typically at:
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --word 食べる --word 設定
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --entry term-taberu
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --words-file /absolute/path/list.tsv
+./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry term-taberu --entry grammar-teiru
 ```
+
+   Prefer `pronunciations:resolve-entries` when a content edit produced exact
+   entry IDs: it is entry-only, may run `--preflight` / `--preflight-only`, and
+   refuses review, lesson, URL, word, or mixed word-file selectors. Use the
+   resolver or skill wrapper above for every non-entry scope.
 
 9. Do not add a default batch limit. Process every selected entry through
    audio-backed filtering, reuse, and Tofugu/WaniKani local import. Pass

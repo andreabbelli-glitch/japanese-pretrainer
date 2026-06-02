@@ -70,6 +70,7 @@ Per la maggior parte delle richieste operative, usa direttamente il resolver:
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/<media-slug>/textbook/<lesson-slug>
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media <media-slug> --entry <entry-id>
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode targeted --media <media-slug> --words-file /absolute/path/list.tsv
+./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry <entry-id> --entry <entry-id>
 ```
 
 Il resolver:
@@ -96,12 +97,22 @@ usare il preflight read-only:
 
 ```bash
 ./scripts/with-node.sh pnpm forvo:preflight -- --mode targeted --media <media-slug> --entry <entry-id>
+./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry <entry-id> --preflight-only
 ```
 
 Il preflight seleziona gli stessi target del resolver, legge gli audio gia
 presenti e i registri known-missing / word-add, poi stampa il comando
 `pronunciations:resolve` consigliato. Non apre Forvo, non copia file e non e un
 dry-run del resolver. Saltalo per target piccoli e ovvi.
+
+Per entry ID espliciti creati o revisionati nello stesso task editoriale,
+preferisci `pronunciations:resolve-entries`: e' un wrapper entry-only sul
+resolver canonico, non accetta `--word`, `--words-file`, `--lesson-url` o
+`--mode`, e quindi riduce il rischio di lanciare per sbaglio uno scope review o
+lesson. Usa `--preflight` se vuoi vedere prima lo stato Forvo e poi risolvere,
+`--preflight-only` per fermarti al check read-only, e `--print-command` per
+auditare i comandi senza eseguirli. Per word list miste o selezioni da review,
+prossima lesson o URL textbook, resta su `pronunciations:resolve`.
 
 Opzioni Tofugu utili:
 

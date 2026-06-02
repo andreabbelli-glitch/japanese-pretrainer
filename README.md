@@ -288,6 +288,7 @@ pnpm auth:hash-password
 pnpm fsrs:optimize
 pnpm fsrs:optimize:if-needed
 pnpm pronunciations:resolve
+pnpm pronunciations:resolve-entries
 pnpm pronunciations:pending
 pnpm pronunciations:reuse
 pnpm pronunciations:forvo
