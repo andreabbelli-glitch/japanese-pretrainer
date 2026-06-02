@@ -116,6 +116,7 @@ contenuto deve usare i helper read-only invece di ricostruire tutto a mano:
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ./scripts/with-node.sh pnpm dm:card-fetch -- --official-id <official-card-id> --expect-name "<visible-card-name>"
+./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry <entry-id>
 ```
 
 `content:lookup` controlla match esatti su Markdown e produce solo il verdetto
@@ -149,6 +150,11 @@ shell e non crea cards o asset. Quando hai gia testo visibile trascritto,
 `dm:official-text-compare` confronta solo quei campi/righe con la pagina
 ufficiale e segnala contraddizioni: un risultato `supported` non rende il testo
 ufficiale ground truth.
+Per flashcard create o revisionate con entry ID esatti,
+`pronunciations:resolve-entries` e il wrapper entry-only: riusa audio locali e
+cross-media, importa match Tofugu/WaniKani e passa a Forvo solo il residuo. Per
+scope review, lesson, URL o word-list resta il resolver generale documentato
+nei workflow pronunce.
 
 ## Workflow operativo
 
@@ -332,6 +338,8 @@ Regole pratiche:
   Anki-style tramite helper Anki dedicato, candidati `Play(...)`, ranking speaker
   e conversione OGG -> MP3; se Forvo non espone pronuncia, apri e registra la
   richiesta `word-add`;
+- per entry ID esatti usa
+  `./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry <new-term-or-grammar-id>`;
 - il download manuale Forvo e solo fallback estremo per casi singoli in cui il
   fetch Anki-style o l'import diretto falliscono, non un percorso standard;
 - se il batch crea o rivede flashcard, cerca anche il pitch accent solo per le

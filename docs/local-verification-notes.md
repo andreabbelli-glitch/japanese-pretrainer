@@ -10,8 +10,13 @@ non sostituisce un audit completo e aggiornato del codice.
 - I test unit/integration ordinari di parser, validator e importer usano fixture
   sintetiche versionate o generate in `tests/helpers/content-fixtures.ts`; il
   bundle reale `duel-masters-dm25` resta coperto solo dal canary esplicito
-  `tests/content-real-bundle-canary.test.ts`, che confronta invarianti generali
-  e statistiche aggregate.
+  `tests/content-real-bundle-canary.test.ts`, richiamabile con
+  `./scripts/with-node.sh pnpm test:real-bundle`, che confronta invarianti
+  generali e statistiche aggregate.
+- Per le slice editoriali Duel Masters, `content:canary-diff` mostra i delta
+  parser/importer rispetto alle statistiche versionate prima di aggiornare la
+  fixture con `content:test-stats -- --write`; `content:test-stats --
+  --accept-failure` serve solo per diagnosi read-only di bundle ancora invalidi.
 - Copertura dei flussi chiave: dashboard, media detail, textbook reader, tooltip, lightbox immagini, glossary, review, progress, settings.
 - Copertura dedicata di `Kanji Clash` su `/kanji-clash` con filtro media,
   sessione manuale e interazioni click/tastiera/touch.

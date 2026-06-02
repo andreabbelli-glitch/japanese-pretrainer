@@ -87,12 +87,15 @@ Optional:
 9. Update:
    - `content/media/web-giapponese/workflow/image-requests.yaml`
    - `content/media/web-giapponese/workflow/image-assets.yaml`
-10. Resolve pronunciation audio for every new or revised card entry with:
-    `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media web-giapponese --entry <new-term-or-grammar-id>`
-    Pass multiple `--entry` flags for multiple new cards. If Forvo has no audio,
-    the workflow must open and record the `word-add` request. Forvo audio must be
-    attempted through the Anki/addon-style flow first: dedicated Anki helper,
-    `Play(...)` candidates, speaker ranking, direct audio download, and OGG -> MP3
+10. Resolve pronunciation audio for every new or revised card entry with the
+    entry-only wrapper:
+    `./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug web-giapponese --entry <new-term-or-grammar-id>`
+    Pass multiple `--entry` flags for multiple new cards. Use the Forvo skill
+    wrapper only for non-entry selectors such as review, next-lesson,
+    lesson-url, words, or mixed word files. If Forvo has no audio, the workflow
+    must open and record the `word-add` request. Forvo audio must be attempted
+    through the Anki/addon-style flow first: dedicated Anki helper, `Play(...)`
+    candidates, speaker ranking, direct audio download, and OGG -> MP3
     conversion when needed. Manual download is only an extreme fallback for a
     specific blocked item.
 11. Regenerate
@@ -100,16 +103,19 @@ Optional:
     `./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese`
     so every newly added card without local audio is recorded in the pending
     manifest after the request path has run.
-12. Run the repo validation flow before closing.
+12. Run the combined lesson workflow check before closing when the lesson slug
+    is known:
+    `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>`
+    Treat editorial warnings as prose problems to fix before import.
 13. Fetch pitch accents only for the flashcard entries created or revised in
     this task. Prefer entry IDs:
     `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`
     Pass multiple `--entry` flags for multiple new cards. Use `--word` or
     `--words-file` only when a reliable entry-id list is not available.
-14. Import the updated item into the configured target database with a
-    lesson-scoped import. Minimize import scope; when the item's lesson slug is
-    known, the lesson-scoped import is required:
-    `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>`
+14. Import the updated item into the configured target database with the same
+    lesson-scoped workflow check and explicit `--import`. Minimize import scope;
+    when the item's lesson slug is known, the lesson-scoped import is required:
+    `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug> --import`
     Use the broader media-scoped import only when the task changed media-wide
     ordering or other content that must apply archive/prune to all
     `web-giapponese` lessons/cards.
@@ -252,33 +258,28 @@ For the normal item-builder workflow, where the diff is limited to
 and no app code, parser, importer, routing, DB schema, auth, cache, or UI code
 changed, do not run the full `pnpm check` or `pnpm release:check` suites.
 
-Always validate only the affected media bundle:
+For known lesson-scoped edits, run the combined lesson workflow check first:
 
 ```bash
-./scripts/with-node.sh pnpm content:validate -- --media-slug web-giapponese
+./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>
 ```
 
-Before importing or opening the revised lesson in the app, run the editorial
-lint on the touched lesson:
-
-```bash
-./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>
-```
-
-Treat the warnings as editorial review prompts. Inspect the affected lesson or
-card text and fix the real prose issue; do not bypass the check with cosmetic
-renames, by moving author notes into another learner-facing field, or by
-ignoring warnings that point at meta-discourse, stock contrasts, or weak
-examples.
+The tool validates the media, runs editorial lint on the touched lesson,
+verifies that the import plan remains lesson-scoped, and prints the exact import
+command without running it. Treat warnings as editorial review prompts. Inspect
+the affected lesson or card text and fix the real prose issue; do not bypass the
+check with cosmetic renames, by moving author notes into another learner-facing
+field, or by ignoring warnings that point at meta-discourse, stock contrasts, or
+weak examples.
 
 Then refresh the media-side pronunciation workflows and import the generated
 lesson into the configured target database:
 
 ```bash
 ./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese
-.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
+./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
-./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug>
+./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug> --import
 ```
 
 If the touched file set is not obvious, run the read-only scope helper before
@@ -299,9 +300,10 @@ well supported.
 
 Repeat `--lesson-slug` if the item update legitimately spans multiple
 textbook routes. Do not broaden the import when the touched lesson set is known.
-Use
+Use the broader media validation/import form
 `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`
-only for media-wide cleanup or ordering changes.
+only for media-wide cleanup or ordering changes, after:
+`./scripts/with-node.sh pnpm content:validate -- --media-slug web-giapponese`.
 
 If `pitch-accents:fetch` creates or updates
 `content/media/web-giapponese/pronunciations.json`, keep that file in the same

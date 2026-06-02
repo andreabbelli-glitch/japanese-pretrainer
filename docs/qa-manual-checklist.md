@@ -6,6 +6,10 @@
   `.codex/scripts/setup-worktree.sh`
 - Eseguire `./scripts/with-node.sh pnpm db:migrate`
 - Eseguire `./scripts/with-node.sh pnpm content:validate`
+- Per revisioni content-only su lesson note conosciute, preferire
+  `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug <media-slug> --lesson-slug <lesson-slug>`:
+  valida il media, esegue editorial lint, verifica lo scope lesson-scoped e
+  stampa l'import minimo.
 - Eseguire l'import con lo scope minimo sufficiente. Dopo una revisione
   contenuti su lesson note, usa sempre
   `./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug <media-slug> --lesson-slug <lesson-slug>`;
@@ -34,6 +38,10 @@
 - Workflow pronunce: `./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --dry-run`
   produce un batch coerente con la review reale e non ripropone entry gia
   coperte localmente.
+- Workflow pronunce per entry appena create o revisionate:
+  `./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry <entry-id>`
+  resta entry-only e riduce il rischio di lanciare per errore uno scope review,
+  lesson o word-list.
 - Workflow pronunce: dopo una run reale, il registry
   `data/forvo-requested-word-add.json` continua a contenere lo storico ma
   distingue le richieste risolte tramite campo `resolvedAt`.

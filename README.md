@@ -276,10 +276,29 @@ pnpm test:e2e:runner
 pnpm test:e2e
 pnpm check
 pnpm release:check
+pnpm file-size:check
+pnpm agent:check
+pnpm agent:verify
+pnpm app:progress-brief
+pnpm docs:agent-orientation
+pnpm docs:agent-orientation:check
 pnpm content:validate
+pnpm content:lookup
+pnpm content:lookup-batch
+pnpm content:entry-brief
+pnpm content:entry-usage
+pnpm content:lesson-brief
+pnpm content:editorial-lint
+pnpm content:lesson-workflow-check
+pnpm content:scope
+pnpm content:next-id
+pnpm content:scaffold
 pnpm content:import
 pnpm content:test-stats
 pnpm content:canary-diff
+pnpm dm:card-fetch
+pnpm dm:live-card-scaffold
+pnpm dm:official-text-compare
 pnpm db:generate
 pnpm db:migrate
 pnpm db:backfill-review-subject-state
@@ -293,9 +312,11 @@ pnpm pronunciations:resolve
 pnpm pronunciations:resolve-entries
 pnpm pronunciations:pending
 pnpm pronunciations:reuse
+pnpm forvo:preflight
 pnpm pronunciations:forvo
 pnpm pronunciations:forvo:request
 pnpm pronunciations:forvo:import-requested
+pnpm pronunciations:tofugu:sync
 pnpm pitch-accents:fetch
 pnpm pitch-accent:import-minimal-pairs
 pnpm pitch-accent:generate-tofugu-pairs
@@ -321,6 +342,7 @@ parte piu dal low-level Forvo, ma dal resolver smart:
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
+./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug duel-masters-dm25 --entry term-cost
 ```
 
 Il resolver seleziona i target, esclude le entry gia coperte, prova il riuso

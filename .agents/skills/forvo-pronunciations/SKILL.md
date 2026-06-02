@@ -55,30 +55,32 @@ typically at:
 6. Do not use `curl`, ad hoc HTTP scripts outside the Anki helper, or
    Playwright/headless browser automation as the normal batch path. Playwright
    may be mentioned only for targeted debug or fetcher maintenance.
-7. Prefer the repo-scoped wrapper script, which auto-detects
-   the repo root from `JAPANESE_CUSTOM_STUDY_ROOT`, the current working tree, or
-   known local defaults:
+7. Prefer the repo-scoped wrapper script for review, next-lesson, lesson-url,
+   word, or mixed word-file scopes. It auto-detects the repo root from
+   `JAPANESE_CUSTOM_STUDY_ROOT`, the current working tree, or known local
+   defaults:
 
 ```bash
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode review --media <media-slug>
 ```
 
-8. For targeted runs, use one of:
+8. For exact entry IDs created or revised by a content edit, use the stricter
+   entry-only wrapper. For non-entry targeted runs, use the skill wrapper:
 
 ```bash
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode review
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode next-lesson --media <media-slug>
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode lesson-url --lesson-url /media/<media-slug>/textbook/<lesson-slug>
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --word 食べる --word 設定
-.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --entry term-taberu
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --words-file /absolute/path/list.tsv
 ./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry term-taberu --entry grammar-teiru
 ```
 
    Prefer `pronunciations:resolve-entries` when a content edit produced exact
    entry IDs: it is entry-only, may run `--preflight` / `--preflight-only`, and
-   refuses review, lesson, URL, word, or mixed word-file selectors. Use the
-   resolver or skill wrapper above for every non-entry scope.
+   refuses review, lesson, URL, word, or mixed word-file selectors. The skill
+   wrapper still accepts legacy `--entry` targeted runs, but new content-edit
+   workflows should use `pronunciations:resolve-entries`.
 
 9. Do not add a default batch limit. Process every selected entry through
    audio-backed filtering, reuse, and Tofugu/WaniKani local import. Pass

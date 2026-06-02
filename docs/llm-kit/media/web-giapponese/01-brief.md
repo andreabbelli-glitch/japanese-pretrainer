@@ -129,12 +129,15 @@ Per un singolo item:
 - eventuali asset sotto `content/media/web-giapponese/assets/...`
 - aggiornamento di `workflow/image-requests.yaml`
 - aggiornamento di `workflow/image-assets.yaml`
-- validazione mirata del bundle con i comandi canonici della skill/workflow
+- validazione mirata del bundle con il check combinato:
+  `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <page-slug>`
+- risoluzione pronunce per le flashcard create o riviste:
+  `./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug web-giapponese --entry <new-term-or-grammar-id>`
 - fetch dei pitch accent solo per le flashcard create o riviste, preferendo gli
   ID entry:
   `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`
 - se il fetch stampa `review_required`, valuta i candidati, consulta un'altra
   fonte se serve, e salva manualmente `pitch_accent` solo quando il valore e
   giustificato; non trattarlo come risolto automaticamente;
-- import lesson-scoped nel DB target con
-  `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese --lesson-slug <page-slug>`
+- import lesson-scoped nel DB target con lo stesso check:
+  `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <page-slug> --import`

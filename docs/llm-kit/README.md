@@ -43,6 +43,7 @@ grep manuali lunghi:
 ./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:scope
 ./scripts/with-node.sh pnpm agent:verify
+./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry <entry-id>
 ./scripts/with-node.sh pnpm forvo:preflight -- --mode targeted --media <media-slug> --entry <entry-id>
 ```
 
@@ -70,7 +71,10 @@ linta le lesson, verifica lo scope lesson-scoped e importa solo con `--import`.
 e frasi povere prima di importare o consegnare una lesson: l'LLM deve valutarli
 come problemi editoriali reali e riscrivere il contenuto, non aggirarli con
 modifiche cosmetiche. `agent:verify` sceglie i gate repo da eseguire dopo le
-modifiche, ma non li esegue. `forvo:preflight` e opzionale:
+modifiche, ma non li esegue. `pronunciations:resolve-entries` e il wrapper
+entry-only da usare dopo aver creato o revisionato flashcard con ID esatti:
+riusa audio locali/cross-media, importa match Tofugu/WaniKani e manda a Forvo
+solo il residuo. `forvo:preflight` e opzionale:
 usalo prima di batch Forvo incerti o grandi per capire se i target sono gia
 audio-backed, known-missing o gia richiesti; saltalo per target piccoli e
 chiari. Per Duel Masters TCG, `dm:card-fetch` riduce una pagina ufficiale

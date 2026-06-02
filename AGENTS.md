@@ -78,6 +78,7 @@ Quando cambi comportamento, setup locale, variabili ambiente, flussi QA o
 workflow contenuti, aggiorna nella stessa modifica i documenti pertinenti, tra:
 `README.md`, `docs/local-verification-notes.md`,
 `docs/qa-manual-checklist.md`, `docs/dev-tooling.md`,
+`docs/agent-orientation.md`, `.agents/skills/*/SKILL.md`,
 `docs/pronunciation-workflow.md`, `docs/forvo-pronunciation-fetch.md`,
 `.env.example`.
 
@@ -191,6 +192,7 @@ user_setting -> preferenze utente
 ./scripts/with-node.sh pnpm dev
 ./scripts/with-node.sh pnpm build
 ./scripts/with-node.sh pnpm start
+./scripts/with-node.sh pnpm start:e2e
 ```
 
 ### Verifica
@@ -198,11 +200,16 @@ user_setting -> preferenze utente
 ```bash
 ./scripts/with-node.sh pnpm check
 ./scripts/with-node.sh pnpm release:check
+./scripts/with-node.sh pnpm agent:check
+./scripts/with-node.sh pnpm agent:verify
 ./scripts/with-node.sh pnpm lint
 ./scripts/with-node.sh pnpm format
 ./scripts/with-node.sh pnpm format:check
 ./scripts/with-node.sh pnpm typecheck
+./scripts/with-node.sh pnpm file-size:check
 ./scripts/with-node.sh pnpm test
+./scripts/with-node.sh pnpm test:real-bundle
+./scripts/with-node.sh pnpm test:watch
 ./scripts/with-node.sh pnpm test:e2e
 ./scripts/with-node.sh pnpm test:e2e:runner
 ```
@@ -222,8 +229,22 @@ user_setting -> preferenze utente
 
 ```bash
 ./scripts/with-node.sh pnpm content:validate
+./scripts/with-node.sh pnpm content:lookup
+./scripts/with-node.sh pnpm content:lookup-batch
+./scripts/with-node.sh pnpm content:entry-brief
+./scripts/with-node.sh pnpm content:entry-usage
+./scripts/with-node.sh pnpm content:lesson-brief
+./scripts/with-node.sh pnpm content:editorial-lint
+./scripts/with-node.sh pnpm content:lesson-workflow-check
+./scripts/with-node.sh pnpm content:scope
+./scripts/with-node.sh pnpm content:next-id
+./scripts/with-node.sh pnpm content:scaffold
 ./scripts/with-node.sh pnpm content:import
 ./scripts/with-node.sh pnpm content:test-stats
+./scripts/with-node.sh pnpm content:canary-diff
+./scripts/with-node.sh pnpm dm:card-fetch
+./scripts/with-node.sh pnpm dm:live-card-scaffold
+./scripts/with-node.sh pnpm dm:official-text-compare
 ./scripts/with-node.sh pnpm image:status
 ./scripts/with-node.sh pnpm image:apply
 ```
@@ -233,15 +254,26 @@ user_setting -> preferenze utente
 ```bash
 ./scripts/with-node.sh pnpm pronunciations:pending
 ./scripts/with-node.sh pnpm pronunciations:resolve
+./scripts/with-node.sh pnpm pronunciations:resolve-entries
 ./scripts/with-node.sh pnpm pronunciations:reuse
+./scripts/with-node.sh pnpm forvo:preflight
 ./scripts/with-node.sh pnpm pronunciations:forvo
 ./scripts/with-node.sh pnpm pronunciations:forvo:request
+./scripts/with-node.sh pnpm pronunciations:forvo:import-requested
+./scripts/with-node.sh pnpm pronunciations:tofugu:sync
 ./scripts/with-node.sh pnpm pitch-accents:fetch
+./scripts/with-node.sh pnpm pitch-accent:import-minimal-pairs
+./scripts/with-node.sh pnpm pitch-accent:generate-tofugu-pairs
+./scripts/with-node.sh pnpm pitch-accent:validate-corpus
+./scripts/with-node.sh pnpm pitch-accent:validate-tofugu-pairs
 ```
 
 ### Tooling feature
 
 ```bash
+./scripts/with-node.sh pnpm app:progress-brief
+./scripts/with-node.sh pnpm docs:agent-orientation
+./scripts/with-node.sh pnpm docs:agent-orientation:check
 ./scripts/with-node.sh pnpm fsrs:optimize
 ./scripts/with-node.sh pnpm fsrs:optimize:if-needed
 ./scripts/with-node.sh pnpm auth:hash-password

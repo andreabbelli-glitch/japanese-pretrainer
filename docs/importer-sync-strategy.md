@@ -137,6 +137,18 @@ Prima dell'import conviene validare il bundle o il content root:
 ./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25
 ```
 
+Per un cambio content-only con lesson note conosciute, usa prima il check
+combinato:
+
+```sh
+./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug duel-masters-dm25 --lesson-slug live-duel-encounters-example
+```
+
+Il comando valida il media, esegue l'editorial lint sulle lesson indicate,
+verifica che il piano resti lesson-scoped e stampa l'import minimo. Aggiungi
+`--import` allo stesso comando solo quando vuoi applicare quel preciso scope al
+DB runtime.
+
 Scegli sempre lo scope minimo sufficiente. L'import lesson-scoped e' obbligatorio
 quando le lesson toccate sono note; ripeti `--lesson-slug` per piu lesson dello
 stesso media. Usa import media-scoped solo per cambi media-wide o per applicare

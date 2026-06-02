@@ -147,16 +147,23 @@ Questo percorso non va sostituito con `curl`, scraping HTTP ad hoc o Playwright
 headless per batch reali. La logica standard resta Anki/addon-style; il browser
 normale serve per aprire le richieste `word-add` dei miss.
 
-Per target espliciti puoi usare il wrapper repo-scoped:
+Per target espliciti basati su entry ID appena create o revisionate, preferisci
+il wrapper entry-only del repo:
 
 ```bash
-.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --entry <entry-id>
+./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry <entry-id>
+```
+
+Il wrapper repo-scoped della skill resta utile per scope non-entry o misti:
+
+```bash
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --mode targeted --media <media-slug> --words-file /absolute/path/list.tsv
 ```
 
-Il wrapper inoltra sempre al resolver completo. Se riceve `--entry`,
-`--word` o `--words-file` senza `--mode`, inserisce `--mode targeted` invece di
-chiamare il fetcher Forvo diretto.
+Il wrapper inoltra sempre al resolver completo. Se riceve selector legacy come
+`--entry`, `--word` o `--words-file` senza `--mode`, inserisce
+`--mode targeted` invece di chiamare il fetcher Forvo diretto; per nuovi
+workflow entry-only resta preferito `pronunciations:resolve-entries`.
 
 Durante il batch:
 

@@ -154,6 +154,8 @@ Workflow consigliato:
    workflow pronunce: audio locale/riuso cross-media, poi fetch Forvo Anki-style
    tramite helper Anki dedicato e conversione OGG -> MP3, oppure richiesta
    `word-add` registrata quando Forvo non espone ancora la pronuncia;
+   per entry ID esatti usa
+   `./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry <new-term-or-grammar-id>`;
 4. il download manuale Forvo resta solo fallback estremo per casi singoli in cui
    il fetch Anki-style o l'import diretto falliscono;
 5. i metadata audio vengono salvati con asset e provenance reali, non

@@ -28,8 +28,11 @@ runtime display code separate from content workflow code.
 
 - The normal operational entry point is:
   `./scripts/with-node.sh pnpm pronunciations:resolve`.
+- When a textbook/card content edit produced exact entry IDs, use the narrower
+  entry-only wrapper:
+  `./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry <entry-id>`.
 - The repo-scoped Forvo skill wrapper may be used when running the
-  pronunciation skill:
+  pronunciation skill for non-entry selectors:
   `.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh`.
 - `./scripts/with-node.sh pnpm pronunciations:forvo` is low-level maintenance
   or debug only. Do not use it as the normal workflow for review, next lesson,
