@@ -15,6 +15,7 @@
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
     "test": "node ./node_modules/vitest/vitest.mjs run",
+    "test:real-bundle": "node ./node_modules/vitest/vitest.mjs run tests/content-real-bundle-canary.test.ts",
     "test:e2e:runner": "env -u NO_COLOR node ./node_modules/@playwright/test/cli.js test",
     "test:e2e": "pnpm build && pnpm test:e2e:runner",
     "test:watch": "node ./node_modules/vitest/vitest.mjs",

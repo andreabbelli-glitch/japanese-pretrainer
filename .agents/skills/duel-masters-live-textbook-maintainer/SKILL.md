@@ -427,7 +427,7 @@ Practical card-selection rules:
   `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug> [--lesson-slug <additional-lesson-slug> ...]`
 - Also run only the two Vitest cases that exercise the real DM25 bundle parse
   and import paths:
-  `./scripts/with-node.sh pnpm test -- tests/content.test.ts tests/importer.test.ts -t "real Duel Masters bundle"`
+  `./scripts/with-node.sh pnpm test:real-bundle`
 - If the DM25 real bundle changes in a way that alters observable parser/import
   expectations, align only the affected real-bundle assertions or fixtures in
   the same diff.

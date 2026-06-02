@@ -426,6 +426,16 @@ asset, pronunce o sidecar workflow devono indicare nella propria sezione
 `Verification` il gate minimo necessario per il media o sottosistema toccato.
 Non devono imporre `pnpm check` o `pnpm release:check` per default.
 
+Per le slice editoriali Duel Masters che toccano il bundle reale DM25, usa il
+canary mirato invece di ricordare a mano il path Vitest:
+
+```sh
+./scripts/with-node.sh pnpm test:real-bundle
+```
+
+Il comando esegue solo `tests/content-real-bundle-canary.test.ts`, cioe parse e
+import del bundle reale contro le statistiche aggregate versionate.
+
 Per un normale aggiornamento editoriale, minimizza lo scope dell'import. Se il
 cambio e limitato a una o piu lesson note dello stesso media, l'import deve
 essere lesson-scoped:
