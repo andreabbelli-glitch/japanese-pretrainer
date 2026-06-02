@@ -94,6 +94,19 @@ sviluppo. Non recuperare contenuti editoriali dal DB locale quando devi passare
 contesto a un LLM o verificare sovrapposizioni: esporta/leggi i Markdown reali
 in `content/media/**`.
 
+Quando invece devi interrogare lo stato reale d'uso dell'app, come ultima lesson
+completata, ultima lesson aperta o resume target, usa il helper read-only sul DB
+runtime:
+
+```sh
+./scripts/with-node.sh pnpm app:progress-brief -- --media-slug <media-slug>
+```
+
+Il comando carica `.env`/`.env.local`, dichiara sempre se sta leggendo un DB
+locale o remoto e, se `DATABASE_URL` punta a Turso, interroga direttamente quel
+database. Non crea DB locali mancanti, non esegue migrazioni, non importa
+contenuti e non legge `content/media/**`.
+
 Apri Drizzle Studio:
 
 ```sh

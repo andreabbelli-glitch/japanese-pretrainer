@@ -21,6 +21,7 @@
     "file-size:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/file-size-check.ts",
     "agent:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/agent-check.ts",
     "agent:verify": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/agent-verify.ts",
+    "app:progress-brief": "node --disable-warning=DEP0040 --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/app-progress-brief.ts",
     "docs:agent-orientation": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/generate-agent-orientation.ts",
     "docs:agent-orientation:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/generate-agent-orientation.ts --check",
     "db:generate": "drizzle-kit generate --config=drizzle.config.ts",

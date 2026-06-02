@@ -40,6 +40,7 @@ This keeps local agents on the supported Node 22.x toolchain.
 - App code or logic: run `./scripts/with-node.sh pnpm check`.
 - Routing, DB, importer/sync, auth, cache revalidation, or E2E-covered flows: run `./scripts/with-node.sh pnpm check` and `./scripts/with-node.sh pnpm release:check`.
 - Content-only repo-scoped skill work: run the skill's `Verification` section instead of broad app gates.
+- When the user asks about app runtime state such as the latest completed/opened lesson, resume target, or current textbook progress, use `./scripts/with-node.sh pnpm app:progress-brief -- --media-slug <media-slug>`; it reads the configured runtime DB/Turso state and does not replace content source-of-truth checks.
 - Before adding or revising a known entry/card, use `./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>` when you have an exact ID; it is read-only and avoids dumping whole cards/textbook files.
 - Before revising or handing off a known lesson, use `./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>` for compact lesson context; open raw Markdown only for exact prose edits.
 - Before importing or loading revised lesson/card content, run `./scripts/with-node.sh pnpm content:editorial-lint` on the touched media/lesson and treat warnings as editorial problems to fix, not as wording checks to bypass.

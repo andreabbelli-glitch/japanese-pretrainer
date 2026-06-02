@@ -3,4 +3,4 @@ export type {
   DatabaseClient,
   DatabaseClientOptions,
   DatabaseQueryClient
-} from "./client.ts";
+} from "./create-client.ts";

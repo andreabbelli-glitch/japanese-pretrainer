@@ -151,6 +151,7 @@ read-only sui Markdown prima di creare nuove entry, card o lesson:
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:scope
+./scripts/with-node.sh pnpm app:progress-brief -- --media-slug <media-slug>
 ./scripts/with-node.sh pnpm agent:verify
 ```
 
@@ -196,6 +197,14 @@ di default legge `git status` su `content/media/**`; puoi anche passare path
 espliciti. Non esegue dry-run DB, validazione o import: stampa solo `VALIDATE`
 e `IMPORT` consigliati, usando lesson scope quando riesce a mappare i file
 `textbook/` o `cards/` agli slug delle route textbook.
+
+`app:progress-brief` interroga il DB runtime configurato (`DATABASE_URL`,
+incluso Turso remoto quando `.env.local` lo punta) e stampa lo stato reale
+dell'app: ultima lesson completata/aperta, resume lesson, active lesson,
+conteggi textbook e se il DB e locale o remoto. Usalo quando la domanda parla
+di "ultima lesson completata", "dove sono arrivato" o stato d'uso dell'app. Non
+legge Markdown, non esegue import/migrazioni e non sostituisce i content helper:
+per decisioni editoriali la source of truth resta `content/media/**`.
 
 `agent:verify` e' il verificatore di gate read-only: di default legge i file
 modificati nel repo e stampa i comandi minimi da eseguire (`check`,
