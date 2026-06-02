@@ -541,9 +541,11 @@ metadata in JSON snapshot.
 
 I termini media/ad hoc aggiuntivi vivono in
 `src/features/katakana-speed/model/media-word-bank.json`. Per aggiunte manuali
-usa la skill repo-scoped `.agents/skills/katakana-speed-word-bank`, che fornisce
-lo script `scripts/add-katakana-words.mjs`; le parole entrano nel catalogo come
-candidati normali, senza preferenza nello scheduling.
+usa la skill repo-scoped `.agents/skills/katakana-speed-word-bank`, che contiene
+lo script interno
+`.agents/skills/katakana-speed-word-bank/scripts/add-katakana-words.mjs` da
+lanciare tramite `./scripts/with-node.sh pnpm exec node`; le parole entrano nel
+catalogo come candidati normali, senza preferenza nello scheduling.
 
 Per modifiche mirate al modello puro puoi lanciare i test Katakana Speed:
 

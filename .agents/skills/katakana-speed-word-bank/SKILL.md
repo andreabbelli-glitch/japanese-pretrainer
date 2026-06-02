@@ -11,12 +11,13 @@ when the user gives katakana terms to practice in Katakana Speed.
 ## Workflow
 
 1. Work from the repo root.
-2. Add terms with the bundled script. Use a media slug for media-derived words;
-   use `custom` for ad hoc user lists.
+2. Add terms with the bundled skill script through the canonical Node/pnpm
+   wrapper. Use a media slug for media-derived words; use `custom` for ad hoc
+   user lists.
 
 ```bash
-.agents/skills/katakana-speed-word-bank/scripts/add-katakana-words.mjs --source custom --word カタカナ
-.agents/skills/katakana-speed-word-bank/scripts/add-katakana-words.mjs --source duel-masters-dm25 --words-file /absolute/path/words.txt
+./scripts/with-node.sh pnpm exec node .agents/skills/katakana-speed-word-bank/scripts/add-katakana-words.mjs --source custom --word カタカナ
+./scripts/with-node.sh pnpm exec node .agents/skills/katakana-speed-word-bank/scripts/add-katakana-words.mjs --source duel-masters-dm25 --words-file /absolute/path/words.txt
 ```
 
 3. The script updates only
