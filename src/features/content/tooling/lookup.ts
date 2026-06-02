@@ -37,6 +37,22 @@ export type ContentLookupResult = {
   verdict: ContentLookupVerdict;
 };
 
+export type ContentLookupBatchQuery = {
+  kind?: ContentLookupKind;
+  query: string;
+};
+
+export type ContentLookupBatchResult = {
+  results: Array<ContentLookupResult & { kind: ContentLookupKind }>;
+  summary: {
+    coveredCard: number;
+    entryOnly: number;
+    new: number;
+    total: number;
+    truncated: number;
+  };
+};
+
 export type ContentListResult = {
   lines: string[];
   truncated: boolean;
@@ -68,13 +84,63 @@ export function lookupContent(input: {
   const kind = input.kind ?? "all";
   const limit = Math.max(1, input.limit ?? 5);
   const index = buildLookupIndex(input.bundles, input.repositoryRoot);
-  const normalizedQuery = normalizeLookupText(input.query);
-  const matches = collectMatches({
+
+  return lookupContentWithIndex({
     index,
     kind,
+    limit,
+    query: input.query
+  });
+}
+
+export function lookupContentBatch(input: {
+  bundles: NormalizedMediaBundle[];
+  defaultKind?: ContentLookupKind;
+  limit?: number;
+  queries: ContentLookupBatchQuery[];
+  repositoryRoot?: string;
+}) {
+  const defaultKind = input.defaultKind ?? "all";
+  const limit = Math.max(1, input.limit ?? 5);
+  const index = buildLookupIndex(input.bundles, input.repositoryRoot);
+  const results = input.queries.map((query) => ({
+    ...lookupContentWithIndex({
+      index,
+      kind: query.kind ?? defaultKind,
+      limit,
+      query: query.query
+    }),
+    kind: query.kind ?? defaultKind
+  }));
+
+  return {
+    results,
+    summary: {
+      coveredCard: results.filter(
+        (result) => result.verdict === "covered-card"
+      ).length,
+      entryOnly: results.filter((result) => result.verdict === "entry-only")
+        .length,
+      new: results.filter((result) => result.verdict === "new").length,
+      total: results.length,
+      truncated: results.filter((result) => result.truncated).length
+    }
+  } satisfies ContentLookupBatchResult;
+}
+
+function lookupContentWithIndex(input: {
+  index: ReturnType<typeof buildLookupIndex>;
+  kind: ContentLookupKind;
+  limit: number;
+  query: string;
+}) {
+  const normalizedQuery = normalizeLookupText(input.query);
+  const matches = collectMatches({
+    index: input.index,
+    kind: input.kind,
     normalizedQuery
   });
-  const limitedMatches = matches.slice(0, limit);
+  const limitedMatches = matches.slice(0, input.limit);
   const verdict = resolveVerdict(matches);
 
   return {
@@ -195,6 +261,65 @@ export function formatLookupResult(result: ContentLookupResult) {
   if (result.truncated) {
     lines.push("NOTE results truncated; rerun with --limit for more.");
   }
+
+  return `${lines.join("\n")}\n`;
+}
+
+export function formatLookupBatchResult(result: ContentLookupBatchResult) {
+  const lines: string[] = [];
+
+  for (const [index, lookup] of result.results.entries()) {
+    if (index > 0) {
+      lines.push("");
+    }
+
+    lines.push(`QUERY ${quoteForLine(lookup.query)}`);
+    lines.push(`VERDICT ${lookup.verdict}`);
+
+    for (const match of lookup.matches) {
+      lines.push(
+        [
+          "HIT",
+          match.kind,
+          match.id,
+          quoteForLine(match.display),
+          match.reading ? `reading=${match.reading}` : null,
+          `matched=${match.matchedFields.join(",")}`,
+          `cards=${match.cards.length}`,
+          `@ ${match.sourceFile}`
+        ]
+          .filter((value): value is string => value !== null)
+          .join(" ")
+      );
+
+      for (const card of match.cards.slice(0, 1)) {
+        lines.push(
+          [
+            "CARD",
+            card.id,
+            quoteForLine(card.front),
+            `entry=${card.entryType}:${card.entryId}`,
+            `@ ${card.sourceFile}`
+          ].join(" ")
+        );
+      }
+    }
+
+    if (lookup.truncated) {
+      lines.push("NOTE query results truncated; rerun with --limit for more.");
+    }
+  }
+
+  lines.push(
+    [
+      "SUMMARY",
+      `total=${result.summary.total}`,
+      `covered-card=${result.summary.coveredCard}`,
+      `entry-only=${result.summary.entryOnly}`,
+      `new=${result.summary.new}`,
+      `truncated=${result.summary.truncated}`
+    ].join(" ")
+  );
 
   return `${lines.join("\n")}\n`;
 }

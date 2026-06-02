@@ -30,6 +30,7 @@ grep manuali lunghi:
 
 ```sh
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> "<front-o-superficie>"
+./scripts/with-node.sh pnpm content:lookup-batch -- --media-slug <media-slug> --query "<front-o-superficie>" --grammar "<pattern>"
 ./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
@@ -41,8 +42,11 @@ grep manuali lunghi:
 ```
 
 `content:lookup` risponde con un verdetto compatto su match esatti nei
-Markdown (`covered-card`, `entry-only`, `new`). `content:entry-brief` stampa
-solo il contesto operativo di una entry esatta: fonte, significato,
+Markdown (`covered-card`, `entry-only`, `new`). Quando ci sono piu candidati,
+usa `content:lookup-batch` con `--query`, `--term`, `--grammar` o `--card`: il
+parser gira una sola volta e l'output resta compatto, ordinato e riepilogato.
+`content:entry-brief` stampa solo il contesto operativo di una entry esatta:
+fonte, significato,
 audio/accento, lesson, card e riferimenti collegati; fallisce chiuso se il
 match e ambiguo. `content:lesson-brief` stampa solo il contesto operativo di
 una lesson nota: identita, file, headings, entry, card, immagini, warning

@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { lookupContent } from "../src/features/content/tooling/lookup";
+import {
+  lookupContent,
+  lookupContentBatch
+} from "../src/features/content/tooling/lookup";
 import type {
   NormalizedCard,
   NormalizedMediaBundle,
@@ -38,6 +41,56 @@ describe("content lookup tooling", () => {
       "term-kasanaru",
       "card-other-kasanaru"
     ]);
+  });
+
+  it("runs batch lookups in input order with compact verdict counts", () => {
+    const bundle = buildLookupBundle({
+      cards: [
+        buildCard({
+          entryId: "term-taberu",
+          front: "食べる",
+          id: "card-taberu-recognition"
+        })
+      ],
+      terms: [
+        buildTerm({
+          id: "term-taberu",
+          lemma: "食べる",
+          reading: "たべる"
+        }),
+        buildTerm({
+          id: "term-kasanaru",
+          lemma: "重なる",
+          reading: "かさなる"
+        })
+      ]
+    });
+
+    const result = lookupContentBatch({
+      bundles: [bundle],
+      queries: [
+        { kind: "all", query: "食べる" },
+        { kind: "term", query: "重なる" },
+        { kind: "all", query: "mangiare" }
+      ],
+      repositoryRoot: "/repo"
+    });
+
+    expect(result.summary).toEqual({
+      coveredCard: 1,
+      entryOnly: 1,
+      new: 1,
+      total: 3,
+      truncated: 0
+    });
+    expect(result.results.map((lookup) => lookup.verdict)).toEqual([
+      "covered-card",
+      "entry-only",
+      "new"
+    ]);
+    expect(result.results[0]?.query).toBe("食べる");
+    expect(result.results[1]?.kind).toBe("term");
+    expect(result.results[1]?.matches[0]?.id).toBe("term-kasanaru");
   });
 });
 

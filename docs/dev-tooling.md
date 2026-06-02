@@ -144,6 +144,7 @@ read-only sui Markdown prima di creare nuove entry, card o lesson:
 ```sh
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> "<superficie-giapponese-esatta>"
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --kind grammar "～ている"
+./scripts/with-node.sh pnpm content:lookup-batch -- --media-slug <media-slug> --query "<superficie-1>" --grammar "<pattern-1>"
 ./scripts/with-node.sh pnpm content:lookup -- --media-slug <media-slug> --list entries
 ./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
@@ -160,6 +161,11 @@ read-only sui Markdown prima di creare nuove entry, card o lesson:
 front card, normalizzando furigana e varianti `~`/`～`/`〜`; non fa dedup
 semantico fuzzy e non cerca nelle traduzioni. `--list entries|cards|lessons`
 e' una vista inventory leggera, non un export globale da incollare agli LLM.
+Quando hai piu candidati da controllare, preferisci `content:lookup-batch`
+oppure `content:lookup -- --query ... --query ...`: il bundle viene parsato una
+sola volta e l'output resta ordinato per query con una sola riga `SUMMARY`.
+Usa `--term`, `--grammar` o `--card` per candidati con tipo noto, invece di
+lanciare lookup separati.
 
 `content:entry-brief` carica una sola entry tramite parser Markdown e stampa
 fonte, significato, audio/accento, lesson, card e riferimenti collegati in forma

@@ -58,6 +58,8 @@ Optional:
    plain source name would be too broad.
 3. Before drafting new entries or cards, check exact local coverage with:
    `./scripts/with-node.sh pnpm content:lookup -- --media-slug web-giapponese "<exact-front-or-surface>"`.
+   When several candidates come from the same page/screenshot, prefer:
+   `./scripts/with-node.sh pnpm content:lookup-batch -- --media-slug web-giapponese --query "<surface>" --grammar "<pattern>"`.
    Use `--kind grammar` for grammar candidates and `--list entries` only when a
    compact local inventory is more useful than individual lookups.
    When that check finds an existing entry/card, or when you already know the

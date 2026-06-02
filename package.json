@@ -35,6 +35,7 @@
     "content:editorial-lint": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-editorial-lint.ts",
     "content:lesson-brief": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-lesson-brief.ts",
     "content:lookup": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-lookup.ts",
+    "content:lookup-batch": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-lookup.ts",
     "content:next-id": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-next-id.ts",
     "content:scaffold": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-scaffold.ts",
     "content:scope": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-scope.ts",

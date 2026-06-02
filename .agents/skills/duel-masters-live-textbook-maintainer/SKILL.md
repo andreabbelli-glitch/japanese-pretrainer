@@ -93,6 +93,9 @@ Primary target files:
 
 - Before falling back to `rg`, use the Markdown-backed lookup helper:
   `./scripts/with-node.sh pnpm content:lookup -- --media-slug duel-masters-dm25 "<exact-card-front-or-surface>"`.
+  When checking several candidates from the same card, prefer the batch form so
+  the media bundle is parsed once:
+  `./scripts/with-node.sh pnpm content:lookup-batch -- --media-slug duel-masters-dm25 --query "<surface>" --grammar "<pattern>"`.
   For grammar candidates, add `--kind grammar`. For a compact local inventory,
   use `--list entries`.
 - When the lookup finds an existing entry/card, or when an `entry_id` is already

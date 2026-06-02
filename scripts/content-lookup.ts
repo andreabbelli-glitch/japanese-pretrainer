@@ -1,10 +1,13 @@
 import path from "node:path";
 
 import {
+  formatLookupBatchResult,
   formatListResult,
   formatLookupResult,
   listContent,
+  lookupContentBatch,
   lookupContent,
+  type ContentLookupBatchQuery,
   type ContentLookupKind,
   type ContentLookupListKind
 } from "../src/features/content/tooling/lookup.ts";
@@ -37,6 +40,20 @@ try {
 
     process.stdout.write(
       cliOptions.json ? `${JSON.stringify(result)}\n` : formatListResult(result)
+    );
+  } else if (cliOptions.queries.length > 0) {
+    const result = lookupContentBatch({
+      bundles,
+      defaultKind: cliOptions.kind,
+      limit: cliOptions.limit,
+      queries: cliOptions.queries,
+      repositoryRoot: process.cwd()
+    });
+
+    process.stdout.write(
+      cliOptions.json
+        ? `${JSON.stringify(result)}\n`
+        : formatLookupBatchResult(result)
     );
   } else {
     if (!cliOptions.query) {
@@ -97,6 +114,7 @@ type CliOptions = {
   limit: number;
   list: ContentLookupListKind | null;
   mediaSlug: string | null;
+  queries: ContentLookupBatchQuery[];
   query: string | null;
 };
 
@@ -107,6 +125,7 @@ function resolveCliOptions(args: string[]): CliOptions {
   let limit = 5;
   let list: ContentLookupListKind | null = null;
   let mediaSlug: string | null = null;
+  const queries: ContentLookupBatchQuery[] = [];
   let query: string | null = null;
 
   for (let index = 0; index < args.length; index += 1) {
@@ -136,6 +155,41 @@ function resolveCliOptions(args: string[]): CliOptions {
         "grammar",
         "term"
       ] as const);
+      index += 1;
+      continue;
+    }
+
+    if (value === "--query" || value === "--q") {
+      queries.push({
+        query: readOptionValue(args, index, value)
+      });
+      index += 1;
+      continue;
+    }
+
+    if (value === "--term") {
+      queries.push({
+        kind: "term",
+        query: readOptionValue(args, index, value)
+      });
+      index += 1;
+      continue;
+    }
+
+    if (value === "--grammar") {
+      queries.push({
+        kind: "grammar",
+        query: readOptionValue(args, index, value)
+      });
+      index += 1;
+      continue;
+    }
+
+    if (value === "--card") {
+      queries.push({
+        kind: "card",
+        query: readOptionValue(args, index, value)
+      });
       index += 1;
       continue;
     }
@@ -170,6 +224,10 @@ function resolveCliOptions(args: string[]): CliOptions {
     query = query === null ? value : `${query} ${value}`;
   }
 
+  if (queries.length > 0 && query !== null) {
+    throw new Error("--query cannot be combined with a positional lookup query.");
+  }
+
   if (!Number.isFinite(limit) || limit < 1) {
     throw new Error("--limit must be a positive integer.");
   }
@@ -181,6 +239,7 @@ function resolveCliOptions(args: string[]): CliOptions {
     limit,
     list,
     mediaSlug,
+    queries,
     query
   };
 }
