@@ -1,0 +1,72 @@
+requests:
+  - id: vanguard-ride-deck-auto-placement
+    lesson_slug: vanguard-tutorial-ride-deck-and-starting-order
+    anchor: "## 1. Il ride deck entra in campo senza scelta manuale"
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      La schermata mostra il board di Vanguard e la bolla tutorial con la frase
+      sul piazzamento automatico della carta di grado 0 dal ride deck.
+    visual_goal: >-
+      Rendere leggibili la posizione del ride deck, la carta evidenziata al
+      centro e il testo `自動的に置かれる`.
+    source_preference: >-
+      Screenshot fornito dall'utente dal tutorial Vanguard.
+    search_hint: >-
+      Vanguard tutorial ride deck grade 0 card automatically placed Japanese
+      screenshot.
+    capture_instructions: >-
+      Usare il primo screenshot fornito dall'utente: deve restare visibile la
+      bolla tutorial in alto a destra e il board con il ride deck.
+    must_show: >-
+      Testo tutorial `ゲームではライドデッキのグレード0のカードが自動的に置かれるよ`,
+      ride deck e carta evidenziata sul board.
+    avoid: >-
+      Crop troppo stretto che nasconde il board o rende il testo della bolla
+      illeggibile.
+    alt_it: >-
+      Tutorial Vanguard con board di gioco, ride deck e bolla che spiega il
+      piazzamento automatico della carta iniziale.
+    caption_it: >-
+      Il tutorial spiega che la carta di grado {{0|ゼロ}} del
+      [ライドデッキ](term:term-ride-deck) viene
+      [{{自動|じどう}}{{的|てき}}](term:term-jidouteki)に
+      `{{置|お}}かれる`.
+    notes: >-
+      L'immagine era allegata al prompt, ma non risultava materializzata come
+      file locale nella sessione.
+  - id: vanguard-janken-starting-order
+    lesson_slug: vanguard-tutorial-ride-deck-and-starting-order
+    anchor: "## 2. Janken decide quale lato riceve {{先攻|せんこう}}"
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      La schermata mostra la bolla tutorial che spiega il janken e mette in
+      rosso la frase sulla parte vincente che riceve il primo turno.
+    visual_goal: >-
+      Rendere leggibili `じゃんけんで先攻・後攻を決めるよ` e
+      `勝った方が先攻だよ` nel loro contesto di tutorial.
+    source_preference: >-
+      Screenshot fornito dall'utente dal tutorial Vanguard.
+    search_hint: >-
+      Vanguard tutorial janken senkou koukou Japanese screenshot.
+    capture_instructions: >-
+      Usare il secondo screenshot fornito dall'utente: conservare la bolla
+      tutorial completa e il board sullo sfondo.
+    must_show: >-
+      Testo tutorial con `じゃんけん`, `先攻・後攻`, e la riga rossa
+      `勝った方が先攻だよ`.
+    avoid: >-
+      Tagliare la riga rossa o il triangolo di avanzamento della bolla.
+    alt_it: >-
+      Tutorial Vanguard con bolla che spiega janken e assegna il primo turno a
+      chi ha vinto.
+    caption_it: >-
+      La bolla passa dalla procedura `じゃんけんで
+      [{{先攻|せんこう}}](term:term-senkou)・
+      [{{後攻|こうこう}}](term:term-koukou)を{{決|き}}める` alla regola:
+      [{{勝|か}}った{{方|ほう}}](term:term-katta-hou)が
+      [{{先攻|せんこう}}](term:term-senkou)。
+    notes: >-
+      L'immagine era allegata al prompt, ma non risultava materializzata come
+      file locale nella sessione.

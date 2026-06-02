@@ -2276,6 +2276,15 @@
       "updatedAt": "2026-05-24T16:22:57.068Z"
     },
     {
+      "entryId": "term-katta-hou",
+      "entryKind": "term",
+      "label": "勝った方",
+      "mediaSlug": "tcg-generale",
+      "reading": "かったほう",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-06-02T23:03:39.946Z"
+    },
+    {
       "entryId": "grammar-da-to-kanjiru",
       "entryKind": "grammar",
       "label": "N / ナ{{形|けい}} + だと{{感|かん}}じる",

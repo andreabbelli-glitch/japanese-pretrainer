@@ -5208,6 +5208,15 @@
       "resolvedAudioSrc": "assets/audio/term/term-yowaraseru/forvo-mezashi-よわらせる.mp3"
     },
     {
+      "entryId": "term-katta-hou",
+      "entryKind": "term",
+      "label": "勝った方",
+      "mediaSlug": "tcg-generale",
+      "reading": "かったほう",
+      "requestUrl": "https://forvo.com/word-add/%E5%8B%9D%E3%81%A3%E3%81%9F%E6%96%B9/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-06-02T23:03:39.965Z"
+    },
+    {
       "entryId": "grammar-da-to-kanjiru",
       "entryKind": "grammar",
       "label": "N / ナ{{形|けい}} + だと{{感|かん}}じる",

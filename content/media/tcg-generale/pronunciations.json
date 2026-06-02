@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-jidouteki",
+      "audio_src": "assets/audio/term/term-jidouteki/tofugu-wanikani-自動的.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E8%87%AA%E5%8B%95%E7%9A%84%E3%80%90%E3%81%98%E3%81%A9%E3%81%86%E3%81%A6%E3%81%8D%E3%80%91.mp3",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-katta-hou",
+      "pitch_accent_status": "miss"
+    }
+  ]
+}

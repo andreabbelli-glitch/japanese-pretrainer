@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "media_slug": "tcg-generale",
+  "total_targets": 7,
+  "audio_backed_count": 1,
+  "known_missing_count": 1,
+  "pending_count": 5,
+  "pending": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-ride-deck",
+      "label": "ライドデッキ",
+      "reading": "らいどでっき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-grade-zero",
+      "label": "グレード0",
+      "reading": "ぐれーどぜろ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-janken",
+      "label": "じゃんけん",
+      "reading": "じゃんけん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-senkou",
+      "label": "先攻",
+      "reading": "せんこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-koukou",
+      "label": "後攻",
+      "reading": "こうこう"
+    }
+  ]
+}
