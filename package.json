@@ -38,6 +38,7 @@
     "content:lookup": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-lookup.ts",
     "content:lookup-batch": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-lookup.ts",
     "content:next-id": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-next-id.ts",
+    "content:lesson-workflow-check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-lesson-workflow-check.ts",
     "content:scaffold": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-scaffold.ts",
     "content:scope": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-scope.ts",
     "dm:card-fetch": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/dm-card-fetch.ts",

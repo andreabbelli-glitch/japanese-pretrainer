@@ -110,6 +110,7 @@ contenuto deve usare i helper read-only invece di ricostruire tutto a mano:
 ./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:entry-usage -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
+./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm dm:live-card-scaffold -- --card-slug <card-slug> --title "<titolo lesson>"
 ./scripts/with-node.sh pnpm dm:official-text-compare -- --official-id <official-card-id> --visible-name "<visible-card-name>" --visible-card-line "<visible-card-line>"
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
@@ -134,7 +135,10 @@ dare contesto compatto, non per sostituire il Markdown quando devi riscrivere
 frasi esatte. `content:next-id` calcola il prossimo ID/path/order senza scrivere
 file e senza rinumerare contenuti esistenti. `content:scaffold` usa lo stesso
 piano per scrivere solo il file textbook iniziale: non inventa card, non crea
-placeholder vuoti e trattiene l'import finche non esiste contenuto reale. Per
+placeholder vuoti e trattiene l'import finche non esiste contenuto reale.
+`content:lesson-workflow-check` chiude il workflow per lesson note: valida il
+media, linta le lesson, verifica lo scope lesson-scoped e importa solo con
+`--import`. Per
 Duel Masters TCG, `dm:card-fetch` compatta una pagina ufficiale Takara Tomy in
 campi, testo abilita, immagine e check `--expect-*`; resta un helper, quindi
 usa screenshot/testo utente come controllo decisivo se emergono mismatch o se

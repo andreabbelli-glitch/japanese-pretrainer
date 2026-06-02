@@ -422,8 +422,9 @@ Practical card-selection rules:
   no app code, parser, importer, routing, DB schema, auth, cache, or UI code
   changed, do not run the full `pnpm test`, `pnpm check`, or
   `pnpm release:check` suites.
-- Always validate only the affected media bundle:
-  `./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25`
+- For known lesson-scoped edits, run the combined lesson workflow check instead
+  of separate validate/lint commands:
+  `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug> [--lesson-slug <additional-lesson-slug> ...]`
 - Also run only the two Vitest cases that exercise the real DM25 bundle parse
   and import paths:
   `./scripts/with-node.sh pnpm test -- tests/content.test.ts tests/importer.test.ts -t "real Duel Masters bundle"`
@@ -492,12 +493,14 @@ Practical card-selection rules:
   Follow its `IMPORT` recommendation unless you have a concrete reason to use a
   narrower command.
 - Run a real workspace database import before finishing, not only a temporary
-  test harness import. Minimize import scope: use a lesson-scoped import for
-  ordinary per-card updates whenever the touched lesson slugs are known:
-  `./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug> [--lesson-slug <additional-lesson-slug> ...]`
+  test harness import. Minimize import scope: use the same lesson workflow
+  check with explicit `--import` for ordinary per-card updates whenever the
+  touched lesson slugs are known:
+  `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug> [--lesson-slug <additional-lesson-slug> ...] --import`
 - Use the broader media-scoped import only when the task changed media-wide
   ordering, keyword-bank pages, shared card files, or other content that should
   trigger the normal archive/prune policy for the whole DM25 media:
+  `./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25`
   `./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25`
 - If the import fails because the database schema is missing, run
   `./scripts/with-node.sh pnpm db:migrate` for the configured database and then
@@ -642,23 +645,21 @@ For normal runs of this skill where the diff is limited to
 or pronunciation files, do not run the full `pnpm check` or
 `pnpm release:check` suites by default.
 
-Always validate the affected media bundle:
+For normal lesson-scoped edits where the touched lesson set is known, run the
+combined lesson workflow check first:
 
 ```bash
-./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25
+./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug>
 ```
 
-Before importing or opening the revised lesson in the app, run the editorial
-lint on each touched lesson:
-
-```bash
-./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug>
-```
-
-Treat every warning as an editorial review prompt. Read the warning, inspect the
-affected lesson or card text, and fix the underlying prose seriously; do not
-silence the tool with cosmetic wording swaps, by moving author notes to another
-learner-facing field, or by broadening the scope until the warning is buried.
+Repeat `--lesson-slug` when a single task legitimately spans multiple textbook
+routes. The tool validates the media, runs editorial lint on those lessons,
+verifies that the import plan remains lesson-scoped, and prints the exact
+lesson-scoped import command without running it. Treat every warning as an
+editorial review prompt. Read the warning, inspect the affected lesson or card
+text, and fix the underlying prose seriously; do not silence the tool with
+cosmetic wording swaps, by moving author notes to another learner-facing field,
+or by broadening the scope until the warning is buried.
 
 If the run creates or revises cards, refresh the pronunciation backlog and
 resolve every new or revised card entry before completion:
@@ -669,18 +670,20 @@ resolve every new or revised card entry before completion:
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media duel-masters-dm25 --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
 ```
 
-Then import the changed lesson or lessons into the configured target database:
+Then import the changed lesson or lessons into the configured target database
+with the same tool and explicit `--import`:
 
 ```bash
-./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug>
+./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug duel-masters-dm25 --lesson-slug <new-or-revised-lesson-slug> --import
 ```
 
-Repeat `--lesson-slug` when a single task legitimately spans multiple textbook
-routes. Do not broaden the import when the touched lesson set is known. Use the
-whole-media import form only when the run renumbers lessons, changes segment
-ordering, touches media-wide references, or needs archive/prune behavior:
+Do not broaden the import when the touched lesson set is known. Use the manual
+whole-media validation/import form only when the run renumbers lessons, changes
+segment ordering, touches media-wide references, or needs archive/prune
+behavior:
 
 ```bash
+./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25
 ./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25
 ```
 

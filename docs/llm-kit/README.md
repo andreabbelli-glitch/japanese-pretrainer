@@ -34,6 +34,7 @@ grep manuali lunghi:
 ./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:entry-usage -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
+./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm dm:live-card-scaffold -- --card-slug <card-slug> --title "<titolo lesson>"
 ./scripts/with-node.sh pnpm dm:official-text-compare -- --official-id <official-card-id> --visible-name "<visible-card-name>" --visible-card-line "<visible-card-line>"
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
@@ -63,6 +64,8 @@ scrive solo il nuovo textbook Markdown valido, lasciando il cards path come
 piano finche esistono card reali da inserire. `content:scope` stampa i comandi
 minimi di `content:validate` e `content:import` basandosi sui file modificati o
 su path espliciti. Questi tool riducono il contesto da passare all'LLM.
+`content:lesson-workflow-check` e il runner per lesson note: valida il media,
+linta le lesson, verifica lo scope lesson-scoped e importa solo con `--import`.
 `content:editorial-lint` segnala warning su meta-discorso, scorciatoie di stile
 e frasi povere prima di importare o consegnare una lesson: l'LLM deve valutarli
 come problemi editoriali reali e riscrivere il contenuto, non aggirarli con

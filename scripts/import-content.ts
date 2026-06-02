@@ -5,9 +5,11 @@ import path from "node:path";
 import { closeDatabaseClient, db } from "../src/db/client.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
 import { importContentWorkspace } from "../src/features/content/importer.ts";
-import { readContentCacheRevalidationErrorDetails } from "../src/features/content/importer/revalidation-error.ts";
+import {
+  resolveRevalidatedLessons,
+  revalidateImportedContentCache
+} from "../src/features/content/importer/cache-revalidation.ts";
 
-const CONTENT_CACHE_REVALIDATE_TIMEOUT_MS = 15_000;
 const ALLOW_REMOTE_FULL_IMPORT_ENV = "ALLOW_REMOTE_FULL_CONTENT_IMPORT";
 
 try {
@@ -92,7 +94,7 @@ try {
       }
     }
 
-    const cacheRevalidationResult = await revalidateContentCache({
+    const cacheRevalidationResult = await revalidateImportedContentCache({
       importId: result.importId,
       lessons: resolveRevalidatedLessons({
         lessonSlugs: cliOptions.lessonSlugs,
@@ -209,33 +211,6 @@ function formatImportMode(input: {
     : "Mode: full.";
 }
 
-function resolveRevalidatedLessons(input: {
-  lessonSlugs: string[];
-  parseBundles: Array<{
-    lessons: Array<{
-      frontmatter: {
-        slug: string;
-      };
-    }>;
-    mediaSlug: string;
-  }>;
-}) {
-  const lessonSlugScope = new Set(input.lessonSlugs);
-
-  return input.parseBundles.flatMap((bundle) =>
-    bundle.lessons
-      .filter(
-        (lesson) =>
-          lessonSlugScope.size === 0 ||
-          lessonSlugScope.has(lesson.frontmatter.slug)
-      )
-      .map((lesson) => ({
-        lessonSlug: lesson.frontmatter.slug,
-        mediaSlug: bundle.mediaSlug
-      }))
-  );
-}
-
 function isRemoteDatabaseUrl() {
   const databaseUrl = process.env.DATABASE_URL?.trim();
 
@@ -291,108 +266,4 @@ function formatUnexpectedError(error: unknown) {
   }
 
   return "Import failed with an unknown error.";
-}
-
-async function revalidateContentCache(input: {
-  importId: string;
-  lessons: Array<{
-    lessonSlug: string;
-    mediaSlug: string;
-  }>;
-  mediaSlugs: string[];
-}) {
-  const revalidateUrl = process.env.CONTENT_CACHE_REVALIDATE_URL?.trim();
-  const revalidateSecret = process.env.CONTENT_CACHE_REVALIDATE_SECRET?.trim();
-
-  if (!revalidateUrl || !revalidateSecret) {
-    return {
-      message:
-        "Import completed. Cache revalidation skipped because CONTENT_CACHE_REVALIDATE_URL or CONTENT_CACHE_REVALIDATE_SECRET is not configured.",
-      status: "skipped" as const
-    };
-  }
-
-  try {
-    const response = await fetch(revalidateUrl, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-revalidate-secret": revalidateSecret
-      },
-      body: JSON.stringify({
-        importId: input.importId,
-        lessons: dedupeLessons(input.lessons),
-        mediaSlugs: [...new Set(input.mediaSlugs)]
-      }),
-      redirect: "manual",
-      signal: AbortSignal.timeout(CONTENT_CACHE_REVALIDATE_TIMEOUT_MS)
-    });
-
-    if (response.status >= 300 && response.status < 400) {
-      return {
-        message: `Import completed, but cache revalidation was redirected (${response.status}) to ${response.headers.get("location") ?? "an unknown location"}.`,
-        status: "failed" as const
-      };
-    }
-
-    if (!response.ok) {
-      const details = await readContentCacheRevalidationErrorDetails(response);
-
-      return {
-        message: `Import completed, but cache revalidation failed (${response.status}). ${details}`,
-        status: "failed" as const
-      };
-    }
-
-    const payload = await readRevalidationPayload(response);
-
-    if (!payload?.ok) {
-      return {
-        message:
-          "Import completed, but cache revalidation returned an unexpected response body.",
-        status: "failed" as const
-      };
-    }
-
-    return {
-      message: `Cache revalidation completed for import ${input.importId}.`,
-      status: "performed" as const
-    };
-  } catch (error) {
-    return {
-      message: `Import completed, but cache revalidation failed: ${formatRevalidationError(error)}`,
-      status: "failed" as const
-    };
-  }
-}
-
-function dedupeLessons(
-  lessons: Array<{
-    lessonSlug: string;
-    mediaSlug: string;
-  }>
-) {
-  const unique = new Map<string, { lessonSlug: string; mediaSlug: string }>();
-
-  for (const lesson of lessons) {
-    unique.set(`${lesson.mediaSlug}:${lesson.lessonSlug}`, lesson);
-  }
-
-  return [...unique.values()];
-}
-
-async function readRevalidationPayload(response: Response) {
-  try {
-    return (await response.json()) as { ok?: boolean };
-  } catch {
-    return null;
-  }
-}
-
-function formatRevalidationError(error: unknown) {
-  if (error instanceof Error && error.message.trim().length > 0) {
-    return error.message.trim();
-  }
-
-  return "Unknown revalidation error.";
 }

@@ -199,6 +199,7 @@ read-only sui Markdown prima di creare nuove entry, card o lesson:
 ./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:entry-usage -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
+./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm dm:live-card-scaffold -- --card-slug <card-slug> --title "<titolo lesson>"
 ./scripts/with-node.sh pnpm dm:official-text-compare -- --official-id <official-card-id> --visible-name "<visible-card-name>" --visible-card-line "<visible-card-line>"
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
@@ -237,6 +238,15 @@ entry, card, immagini, warning editoriali e comandi minimi di validate/import.
 Usalo prima di revisionare o consegnare una lesson a un LLM; quando devi
 riscrivere prosa esatta, apri comunque il Markdown sorgente della sezione da
 modificare.
+
+`content:lesson-workflow-check` chiude il workflow normale per lesson note:
+valida il media, esegue `content:editorial-lint` sulle lesson indicate,
+controlla che il piano resti lesson-scoped e stampa il comando import minimo.
+Di default non modifica il DB; aggiungi `--import` solo quando vuoi importare
+quello stesso scope. Con `--import` usa la stessa cache revalidation di
+`content:import`. Blocca i warning editoriali salvo
+`--allow-editorial-warnings`; non gestisce pronunce, canary, statistiche o
+scope media-wide.
 
 `content:next-id` calcola path, prefix, `order`, `lesson_id` e `cards_id` per
 una nuova coppia textbook/cards. E' append-only e read-only: non riempie gap,
