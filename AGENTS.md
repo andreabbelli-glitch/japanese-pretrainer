@@ -140,35 +140,35 @@ prompts/        Prompt locali ignorati da git
 
 ### Route principali
 
+- `src/app/`: dashboard/home con stato globale e CTA di resume.
+- `src/app/media/` e `src/app/media/[mediaSlug]/`: libreria, dettaglio media,
+  textbook, progress/overview e filtro review locale; gli asset dei bundle sono
+  serviti da `src/app/media/[mediaSlug]/assets/[...assetPath]/`.
 - `src/app/review/`: coda review cross-media globale.
-- `src/app/glossary/`: glossary globale e pagine dettaglio.
-- `src/app/media/[mediaSlug]/`: superfici per media, progress, textbook e filtro
-  review locale.
-- `src/app/media/[mediaSlug]/assets/[...assetPath]/`: route asset dei bundle.
-- `src/app/kanji-clash/`: modalita' Kanji Clash.
-- `src/app/katakana-speed/`: sessioni e recap Katakana Speed.
-- `src/app/api/`: API server-side, inclusi glossary autocomplete e
-  invalidazione cache contenuti.
+- `src/app/consolidation/`: hub, sessioni lesson-scoped e retraining prima della
+  review.
+- `src/app/glossary/`: glossary globale e pagine dettaglio term/grammar.
+- `src/app/kanji-clash/`, `src/app/katakana-speed/`, `src/app/pitch-accent/`:
+  modalita' drill con sessioni e recap.
+- `src/app/settings/`: preferenze studio e stato FSRS optimizer.
+- `src/app/login/`: entrypoint auth locale.
+- `src/app/api/`: API server-side, inclusi glossary autocomplete,
+  invalidazione cache contenuti e `src/app/api/internal/fsrs-optimizer/run/`.
 
 ### Feature principali
 
-- `src/features/auth/`: configurazione auth locale, sessione e login.
-- `src/features/cache/`: data cache server-side e policy di invalidazione.
-- `src/features/glossary/`: modello, ricerca, formattazione, detail helper e
-  loader server.
-- `src/features/image-workflow/`: workflow operativi per richieste e applicazione
-  immagini nei bundle media.
-- `src/features/navigation/`: helper route, href, return-to e navigazione shell.
-- `src/features/textbook/`: contratti reader, stato client e loader/API server.
-- `src/features/kanji-clash/`: pairing, queue, scheduler, session loader e
-  tooling dataset.
-- `src/features/katakana-speed/`: catalogo, tokenizer, scheduler, stato e
-  persistenza sessione.
-- `src/features/content/`: parser Markdown/frontmatter, validazione, import e sync
-  dei bundle.
-- `src/features/pronunciation/`: dati runtime pronunce e tooling Forvo/Tofugu.
-- `src/features/security/`: primitive server-side per secret e token firmati.
-- `src/features/shared/`: primitive condivise minime non legate a un dominio.
+- `src/features/dashboard/`, `media/`, `textbook/`, `progress/`: home, media,
+  reader e avanzamento studio.
+- `src/features/study/`, `settings/`, `fsrs-optimizer/`: modello studio,
+  preferenze utente e ottimizzazione FSRS.
+- `src/features/glossary/`, `review/`, `consolidation/`: lookup, SRS globale e
+  consolidamento pre-review/retraining.
+- `src/features/kanji-clash/`, `katakana-speed/`, `pitch-accent/`: modalita'
+  pratica, sessioni, recap e tooling dataset/corpus.
+- `src/features/content/`, `pronunciation/`, `image-workflow/`: parser/import
+  contenuti, pronunce/accenti e workflow asset.
+- `src/features/auth/`, `cache/`, `navigation/`, `security/`, `shared/`: auth
+  locale, cache, href/return-to, primitive server-side e helper condivisi.
 
 ---
 
