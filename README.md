@@ -20,10 +20,15 @@ Il repository include attualmente:
 - app `Next.js` con App Router e TypeScript;
 - shell desktop/mobile coerente con la direzione UX/UI approvata;
 - dashboard `/`, media library `/media` e media detail `/media/[mediaSlug]`;
-- entry point dedicati per `/textbook`, `/glossary`, `/review` e `/progress`,
-  con `/review` come workspace globale reale, `/media/[mediaSlug]/review` come
-  filtro verticale locale e un empty state dedicato al primo avvio quando non
-  ci sono ancora media o card da ripassare;
+- route globali top-level `/glossary` e `/review`, con `/review` come
+  workspace globale reale, `/media/[mediaSlug]/review` come filtro verticale
+  locale e un empty state dedicato al primo avvio quando non ci sono ancora
+  media o card da ripassare;
+- textbook media-scoped in `/media/[mediaSlug]/textbook`, con lesson route sotto
+  `/media/[mediaSlug]/textbook/[lessonSlug]`;
+- progress integrato nell'overview `/media/[mediaSlug]`, mentre
+  `/media/[mediaSlug]/progress` resta un redirect di compatibilita verso
+  `#overview`;
 - limite dei nuovi globale sulla review, non per media;
 - font self-hosted, cosi `build` non dipende da fetch esterni;
 - tooling locale per lint, format, typecheck, test unit/integration ed E2E;
@@ -537,21 +542,26 @@ restano separati.
 src/
   app/
     api/
+    consolidation/
     glossary/
     kanji-clash/
     katakana-speed/
+    login/
     media/
+    pitch-accent/
     review/
     settings/
   actions/
   components/
     auth/
+    consolidation/
     dashboard/
     glossary/
     kanji-clash/
     katakana-speed/
     layout/
     media/
+    pitch-accent/
     review/
     settings/
     textbook/
@@ -572,6 +582,7 @@ src/
     katakana-speed/
     media/
     navigation/
+    pitch-accent/
     progress/
     pronunciation/
     review/
