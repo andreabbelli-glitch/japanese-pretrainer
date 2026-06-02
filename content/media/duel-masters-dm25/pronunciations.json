@@ -2042,6 +2042,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-ikou",
+      "audio_src": "assets/audio/term/term-ikou/tofugu-wanikani-以降.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E4%BB%A5%E9%99%8D%E3%80%90%E3%81%84%E3%81%93%E3%81%86%E3%80%91.mp3",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-infelstarge",
       "audio_src": "assets/audio/term/term-infelstarge/forvo-mezashi-いんふぇるすたーし-ゅ.mp3",
       "audio_source": "forvo",
@@ -2312,6 +2325,19 @@
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%8D%B2%E5%BE%97",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kanarazu",
+      "audio_src": "assets/audio/term/term-kanarazu/tofugu-wanikani-必ず.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E5%BF%85%E3%81%9A%E3%80%90%E3%81%8B%E3%81%AA%E3%82%89%E3%81%9A%E3%80%91.mp3",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
