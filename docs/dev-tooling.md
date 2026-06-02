@@ -437,6 +437,10 @@ Il comando esegue solo `tests/content-real-bundle-canary.test.ts`, cioe parse e
 import del bundle reale contro le statistiche aggregate versionate.
 
 Quando le statistiche aggregate del canary sono intenzionalmente cambiate, usa
+`./scripts/with-node.sh pnpm content:canary-diff` per vedere le differenze
+parser/importer rispetto alla fixture versionata; il comando torna exit 1 se
+trova delta e stampa il comando di aggiornamento. Quando le differenze sono
+intenzionali, usa
 `./scripts/with-node.sh pnpm content:test-stats -- --write` per aggiornarle.
 Durante una diagnosi read-only di un bundle ancora invalido puoi usare
 `./scripts/with-node.sh pnpm content:test-stats -- --accept-failure`: il comando

@@ -279,6 +279,7 @@ pnpm release:check
 pnpm content:validate
 pnpm content:import
 pnpm content:test-stats
+pnpm content:canary-diff
 pnpm db:generate
 pnpm db:migrate
 pnpm db:backfill-review-subject-state

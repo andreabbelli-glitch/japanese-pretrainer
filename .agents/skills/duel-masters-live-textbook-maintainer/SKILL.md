@@ -439,6 +439,9 @@ Practical card-selection rules:
 - If the real-bundle fixture stats become stale, update them with the repo
   command:
   `./scripts/with-node.sh pnpm content:test-stats -- --write`
+- Before updating fixture stats, `./scripts/with-node.sh pnpm content:canary-diff`
+  shows the aggregate parser/importer deltas and exits non-zero when the
+  versioned stats differ from the current bundle.
 - For read-only diagnostics on a work-in-progress bundle that may not parse or
   import yet, `./scripts/with-node.sh pnpm content:test-stats -- --accept-failure`
   may be used to log the failure without failing the shell step. Never combine

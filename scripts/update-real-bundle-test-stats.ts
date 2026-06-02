@@ -42,7 +42,29 @@ try {
 
   const formattedStats = `${JSON.stringify(nextStats, null, 2)}\n`;
 
-  if (!cliOptions.write) {
+  if (cliOptions.diff) {
+    const previousStats = await readRequiredStats(cliOptions.expectedStatsPath);
+    const diffLines = formatStatsDiff(previousStats, nextStats);
+    const relativeStatsPath = path.relative(
+      process.cwd(),
+      cliOptions.expectedStatsPath
+    );
+
+    if (diffLines.length === 0) {
+      console.info(`CONTENT_CANARY_DIFF clean ${relativeStatsPath}`);
+    } else {
+      console.info(`CONTENT_CANARY_DIFF changed ${relativeStatsPath}`);
+
+      for (const line of diffLines) {
+        console.info(line);
+      }
+
+      console.info(
+        "COMMAND ./scripts/with-node.sh pnpm content:test-stats -- --write"
+      );
+      process.exitCode = 1;
+    }
+  } else if (!cliOptions.write) {
     process.stdout.write(formattedStats);
   } else {
     const previousStats = await readExistingStats();
@@ -141,6 +163,8 @@ async function collectDuelMastersRealBundleStats(contentRoot: string) {
 function resolveCliOptions(args: string[]) {
   let acceptFailure = false;
   let contentRoot = path.resolve(process.cwd(), "content");
+  let diff = false;
+  let expectedStatsPath = duelMastersRealBundleStatsPath;
   let write = false;
 
   for (let index = 0; index < args.length; index += 1) {
@@ -167,6 +191,23 @@ function resolveCliOptions(args: string[]) {
       continue;
     }
 
+    if (value === "--diff") {
+      diff = true;
+      continue;
+    }
+
+    if (value === "--expected-stats-file") {
+      const nextValue = args[index + 1];
+
+      if (!nextValue || nextValue.startsWith("--")) {
+        throw new Error("Missing value for --expected-stats-file.");
+      }
+
+      expectedStatsPath = path.resolve(nextValue);
+      index += 1;
+      continue;
+    }
+
     if (value === "--accept-failure") {
       acceptFailure = true;
       continue;
@@ -179,16 +220,30 @@ function resolveCliOptions(args: string[]) {
     throw new Error("--accept-failure cannot be combined with --write.");
   }
 
+  if (diff && write) {
+    throw new Error("--diff cannot be combined with --write.");
+  }
+
+  if (diff && acceptFailure) {
+    throw new Error("--diff cannot be combined with --accept-failure.");
+  }
+
+  if (!diff && expectedStatsPath !== duelMastersRealBundleStatsPath) {
+    throw new Error("--expected-stats-file can only be used with --diff.");
+  }
+
   return {
     acceptFailure,
     contentRoot,
+    diff,
+    expectedStatsPath,
     write
   };
 }
 
-async function readExistingStats() {
+async function readExistingStats(statsPath = duelMastersRealBundleStatsPath) {
   try {
-    return await readFile(duelMastersRealBundleStatsPath, "utf8");
+    return await readFile(statsPath, "utf8");
   } catch (error) {
     if (isMissingFileError(error)) {
       return null;
@@ -196,6 +251,55 @@ async function readExistingStats() {
 
     throw error;
   }
+}
+
+async function readRequiredStats(statsPath: string) {
+  const source = await readExistingStats(statsPath);
+
+  if (source === null) {
+    throw new Error(`Expected stats file not found: ${statsPath}`);
+  }
+
+  return JSON.parse(source) as DuelMastersRealBundleStats;
+}
+
+function formatStatsDiff(
+  previousStats: DuelMastersRealBundleStats,
+  nextStats: DuelMastersRealBundleStats
+) {
+  const previousByKey = flattenStats(previousStats);
+  const nextByKey = flattenStats(nextStats);
+  const keys = [...new Set([...previousByKey.keys(), ...nextByKey.keys()])];
+  const lines: string[] = [];
+
+  for (const key of keys) {
+    const previousValue = previousByKey.get(key);
+    const nextValue = nextByKey.get(key);
+
+    if (previousValue === nextValue) {
+      continue;
+    }
+
+    lines.push(
+      `${key}: ${previousValue ?? "missing"} -> ${nextValue ?? "missing"}`
+    );
+  }
+
+  return lines;
+}
+
+function flattenStats(stats: DuelMastersRealBundleStats) {
+  const entries: Array<[string, number]> = [];
+
+  for (const section of ["parser", "importer"] as const) {
+    const values = stats[section] as Record<string, number>;
+
+    for (const [key, value] of Object.entries(values)) {
+      entries.push([`${section}.${key}`, value]);
+    }
+  }
+
+  return new Map(entries);
 }
 
 function isMissingFileError(error: unknown): error is NodeJS.ErrnoException {
