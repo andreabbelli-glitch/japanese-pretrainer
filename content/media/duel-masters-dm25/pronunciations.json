@@ -2203,6 +2203,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-jouken",
+      "audio_src": "assets/audio/term/term-jouken/forvo-strawberrybrown-し-ょうけん.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%9D%A1%E4%BB%B6/#ja",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-judgment-emblem",
       "audio_src": "assets/audio/term/term-judgment-emblem/forvo-mezashi-さは-きのもんしょう.mp3",
       "audio_source": "forvo",
@@ -2672,6 +2685,19 @@
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-mitasu",
+      "audio_src": "assets/audio/term/term-mitasu/forvo-strawberrybrown-みたす.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%BA%80%E3%81%9F%E3%81%99/#ja",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
     },
     {
