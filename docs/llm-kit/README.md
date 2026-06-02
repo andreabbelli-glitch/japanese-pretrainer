@@ -36,6 +36,7 @@ grep manuali lunghi:
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
+./scripts/with-node.sh pnpm dm:card-fetch -- --official-id <official-card-id> --expect-name "<visible-card-name>"
 ./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:scope
 ./scripts/with-node.sh pnpm agent:verify
@@ -67,7 +68,11 @@ modifiche cosmetiche. `agent:verify` sceglie i gate repo da eseguire dopo le
 modifiche, ma non li esegue. `forvo:preflight` e opzionale:
 usalo prima di batch Forvo incerti o grandi per capire se i target sono gia
 audio-backed, known-missing o gia richiesti; saltalo per target piccoli e
-chiari. Questi helper non sostituiscono il giudizio editoriale.
+chiari. Per Duel Masters TCG, `dm:card-fetch` riduce una pagina ufficiale
+Takara Tomy a campi, testo abilita, immagine e check compatti; usalo solo come
+helper di acquisizione e verifica sempre contro screenshot/testo utente,
+soprattutto quando la carta puo essere da Duel Masters Play's o da una stampa
+corretta nel tempo. Questi helper non sostituiscono il giudizio editoriale.
 
 ## Struttura
 

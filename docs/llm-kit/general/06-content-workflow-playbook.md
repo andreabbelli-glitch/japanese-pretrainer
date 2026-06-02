@@ -112,6 +112,7 @@ contenuto deve usare i helper read-only invece di ricostruire tutto a mano:
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
+./scripts/with-node.sh pnpm dm:card-fetch -- --official-id <official-card-id> --expect-name "<visible-card-name>"
 ```
 
 `content:lookup` controlla match esatti su Markdown e produce solo il verdetto
@@ -131,7 +132,11 @@ dare contesto compatto, non per sostituire il Markdown quando devi riscrivere
 frasi esatte. `content:next-id` calcola il prossimo ID/path/order senza scrivere
 file e senza rinumerare contenuti esistenti. `content:scaffold` usa lo stesso
 piano per scrivere solo il file textbook iniziale: non inventa card, non crea
-placeholder vuoti e trattiene l'import finche non esiste contenuto reale.
+placeholder vuoti e trattiene l'import finche non esiste contenuto reale. Per
+Duel Masters TCG, `dm:card-fetch` compatta una pagina ufficiale Takara Tomy in
+campi, testo abilita, immagine e check `--expect-*`; resta un helper, quindi
+usa screenshot/testo utente come controllo decisivo se emergono mismatch o se
+la carta potrebbe essere Duel Masters Play's-only.
 
 ## Workflow operativo
 

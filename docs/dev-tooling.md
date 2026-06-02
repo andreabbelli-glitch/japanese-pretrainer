@@ -76,6 +76,25 @@ solo i file di codice human-maintained modificati nel diff corrente e fallisce
 quando una slice tocca un file molto grande. In quel caso il cambio va
 spezzato in moduli piu focalizzati prima di procedere.
 
+## Helper contenuti Duel Masters
+
+`dm:card-fetch` compatta una pagina ufficiale Takara Tomy TCG in poche righe
+verificabili:
+
+```sh
+./scripts/with-node.sh pnpm dm:card-fetch -- --official-id dm25rp4-T07 --expect-name "天災 デドダム" --expect-keyword "出た時"
+./scripts/with-node.sh pnpm dm:card-fetch -- --url "https://dm.takaratomy.co.jp/card/detail/?id=dmr19-067" --expect-keyword "ブロッカー"
+```
+
+Il tool e read-only, accetta solo URL `https://dm.takaratomy.co.jp/card/detail/`
+con un solo `id` sicuro, e stampa `authority=helper` con flag come
+`verify_with_screenshot`, `errata_possible`, `duel_plays_not_checked` e
+`ground_truth_user_input`. Usa `--expect-name`, `--expect-type`,
+`--expect-print`, `--expect-keyword` e `--expect-text-line` per confrontare la
+pagina ufficiale con cio che e visibile nello screenshot o nel testo fornito
+dall'utente. Exit code: `0` trovato, `1` errore CLI/input, `2` fetch/source,
+`3` pagina non parsabile o non trovata, `4` mismatch con gli `--expect-*`.
+
 ## Codex locale in sandbox
 
 Per worktree e automazioni Codex locali, il repo include una configurazione

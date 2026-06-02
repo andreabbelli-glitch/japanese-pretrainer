@@ -56,6 +56,14 @@ Primary target files:
 
 - Once the exact card name is identified, look for the official card detail page
   first, preferably on `https://dm.takaratomy.co.jp/card/detail/`.
+- When you have an official detail URL or official card ID, use the compact
+  fetch helper before opening raw page HTML:
+  `./scripts/with-node.sh pnpm dm:card-fetch -- --url "https://dm.takaratomy.co.jp/card/detail/?id=<official-id>" --expect-name "<visible-card-name>" --expect-keyword "<visible-keyword-or-text-chunk>"`.
+  Repeat `--expect-keyword` or `--expect-text-line` for screenshot text that
+  should match. The helper output is `authority=helper`: it reduces raw HTML
+  inspection, but the user-provided screenshot/text remains the ground truth
+  when there is a mismatch, and Duel Masters Play's-only cards are not checked
+  by this helper.
 - If the official page is missing, incomplete, or unusable, search for the
   dedicated card page, preferably on
   `https://duelmasters.fandom.com/wiki/Duel_Masters_Wiki`.
@@ -85,9 +93,12 @@ Primary target files:
   sleeve glare, camera perspective, fingers, background clutter, or camera
   metadata, treat that as a strong sign that the wrong file was imported for a
   per-card lesson.
-- If the page and screenshot differ, prefer the dedicated card page unless the
-  screenshot clearly shows a different printing or variant. In that case,
-  reconcile cautiously and explain only the variant actually being imported.
+- If the external page and the user's screenshot/text differ, treat the user
+  input as the ground truth for the requested card. Use the external page only
+  as helper evidence for art, layout, and candidate text, then reconcile
+  cautiously: confirm whether this is Duel Masters Play's-only, a corrected
+  printing, a same-name reprint, or another visible variant before importing
+  any external text.
 
 3. Reuse existing IDs first.
 
