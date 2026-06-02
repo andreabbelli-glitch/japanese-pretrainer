@@ -95,6 +95,22 @@ pagina ufficiale con cio che e visibile nello screenshot o nel testo fornito
 dall'utente. Exit code: `0` trovato, `1` errore CLI/input, `2` fetch/source,
 `3` pagina non parsabile o non trovata, `4` mismatch con gli `--expect-*`.
 
+`dm:official-text-compare` e il wrapper piu stretto quando hai gia trascritto
+campi o righe visibili dall'input utente e vuoi solo sapere se la pagina
+ufficiale li contraddice:
+
+```sh
+./scripts/with-node.sh pnpm dm:official-text-compare -- --official-id dmr19-067 --visible-name "トリガ・トリカマ" --visible-keyword "ブロッカー" --visible-card-line "このクリーチャーは攻撃できない。"
+./scripts/with-node.sh pnpm dm:official-text-compare -- --url "https://dm.takaratomy.co.jp/card/detail/?id=dmr19-067" --visible-text-file ./tmp/visible-card-text.txt
+```
+
+Il tool riusa il parser ufficiale di `dm:card-fetch`, non fa OCR, non cerca
+Duel Masters Play's e rifiuta run senza input visibile. Output `supported`
+significa solo che non ha trovato contraddizioni nei campi controllati; su
+`mismatch` esce con codice `4` e l'azione resta conservativa: mantieni
+screenshot/testo utente e ispeziona errata, ristampa o variante prima di
+copiare wording ufficiale.
+
 `dm:live-card-scaffold` prepara il piano append-only per una nuova lesson
 per-card nel segmento `live-duel-encounters` di `duel-masters-dm25`:
 
@@ -184,6 +200,7 @@ read-only sui Markdown prima di creare nuove entry, card o lesson:
 ./scripts/with-node.sh pnpm content:entry-usage -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm dm:live-card-scaffold -- --card-slug <card-slug> --title "<titolo lesson>"
+./scripts/with-node.sh pnpm dm:official-text-compare -- --official-id <official-card-id> --visible-name "<visible-card-name>" --visible-card-line "<visible-card-line>"
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug <media-slug> --lesson-slug <lesson-slug>
@@ -237,6 +254,11 @@ Per nuove lesson live-card Duel Masters, preferisci `dm:live-card-scaffold`: e'
 un preset piu stretto per `duel-masters-dm25`/`live-duel-encounters`, resta
 plan-only finche non passi `--write`, scrive solo il textbook shell e non
 inventa cards o asset.
+
+Quando hai gia trascritto piu campi o righe visibili di una carta Duel
+Masters, preferisci `dm:official-text-compare` a un fetch raw: e' read-only,
+riusa il parser di `dm:card-fetch`, rifiuta run senza input visibile e segnala
+solo se la pagina ufficiale contraddice lo screenshot/testo utente.
 
 `content:editorial-lint` scansiona Markdown e blocchi strutturati già parsati e
 stampa warning editoriali su meta-discorso, frasi povere, contrasti stock,

@@ -64,6 +64,12 @@ Primary target files:
   inspection, but the user-provided screenshot/text remains the ground truth
   when there is a mismatch, and Duel Masters Play's-only cards are not checked
   by this helper.
+- When you already have several visible fields or effect lines from the user
+  screenshot/text, prefer the contradiction checker over raw official text:
+  `./scripts/with-node.sh pnpm dm:official-text-compare -- --official-id <official-id> --visible-name "<visible-card-name>" --visible-card-line "<visible-effect-line>"`.
+  A supported result only means the official page did not contradict the
+  checked user-visible text; it does not make the official page the ground
+  truth.
 - If the official page is missing, incomplete, or unusable, search for the
   dedicated card page, preferably on
   `https://duelmasters.fandom.com/wiki/Duel_Masters_Wiki`.

@@ -64,7 +64,7 @@ type BuildDmCardFetchResultInput = ParseOfficialTcgCardDetailInput & {
 
 const officialCardDetailOrigin = "https://dm.takaratomy.co.jp";
 const officialCardIdPattern = /^[A-Za-z0-9][A-Za-z0-9-]*$/u;
-const helperFlags = [
+export const dmCardHelperFlags = [
   "verify_with_screenshot",
   "errata_possible",
   "duel_plays_not_checked",
@@ -157,7 +157,7 @@ export function buildDmCardFetchResult(
     return {
       checks: { items: [], status: "unchecked" },
       confidence: "blocked",
-      flags: helperFlags,
+      flags: dmCardHelperFlags,
       source: {
         inputKind: input.inputKind,
         kind: "official-tcg",
@@ -177,7 +177,7 @@ export function buildDmCardFetchResult(
       status: checkStatus
     },
     confidence: resolveConfidence(checkStatus),
-    flags: helperFlags,
+    flags: dmCardHelperFlags,
     source: {
       inputKind: input.inputKind,
       kind: "official-tcg",

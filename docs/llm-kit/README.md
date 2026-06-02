@@ -35,6 +35,7 @@ grep manuali lunghi:
 ./scripts/with-node.sh pnpm content:entry-usage -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
 ./scripts/with-node.sh pnpm dm:live-card-scaffold -- --card-slug <card-slug> --title "<titolo lesson>"
+./scripts/with-node.sh pnpm dm:official-text-compare -- --official-id <official-card-id> --visible-name "<visible-card-name>" --visible-card-line "<visible-card-line>"
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ./scripts/with-node.sh pnpm dm:card-fetch -- --official-id <official-card-id> --expect-name "<visible-card-name>"
@@ -76,8 +77,11 @@ soprattutto quando la carta puo essere da Duel Masters Play's o da una stampa
 corretta nel tempo. Per nuove lesson live-card Duel Masters, usa
 `dm:live-card-scaffold` come piano iniziale: e' vincolato a
 `duel-masters-dm25`/`live-duel-encounters`, resta plan-only salvo `--write`,
-scrive solo il textbook shell e non crea cards o asset. Questi helper non
-sostituiscono il giudizio editoriale.
+scrive solo il textbook shell e non crea cards o asset. Quando hai gia testo
+visibile trascritto, `dm:official-text-compare` confronta solo quei campi/righe
+con la pagina ufficiale e segnala contraddizioni: un risultato `supported` non
+rende il testo ufficiale ground truth. Questi helper non sostituiscono il
+giudizio editoriale.
 
 ## Struttura
 
