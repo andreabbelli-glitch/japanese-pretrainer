@@ -95,6 +95,21 @@ pagina ufficiale con cio che e visibile nello screenshot o nel testo fornito
 dall'utente. Exit code: `0` trovato, `1` errore CLI/input, `2` fetch/source,
 `3` pagina non parsabile o non trovata, `4` mismatch con gli `--expect-*`.
 
+`dm:live-card-scaffold` prepara il piano append-only per una nuova lesson
+per-card nel segmento `live-duel-encounters` di `duel-masters-dm25`:
+
+```sh
+./scripts/with-node.sh pnpm dm:live-card-scaffold -- --card-slug <card-slug> --title "<titolo lesson>" --summary "<summary UI plain text>"
+./scripts/with-node.sh pnpm dm:live-card-scaffold -- --card-slug <card-slug> --title "<titolo lesson>" --official-id <official-card-id> --write
+```
+
+Di default e plan-only. Con `--write` crea solo il textbook shell valido,
+rifiutando collisioni e trattenendo l'import finche il contenuto reale non e
+stato scritto. Non crea `cards/` o asset: stampa invece il path pianificato,
+i comandi di verifica mirati e, se passi `--official-id` o `--url`, il comando
+`dm:card-fetch` da eseguire come helper. La ground truth resta sempre lo
+screenshot/testo fornito dall'utente.
+
 ## Codex locale in sandbox
 
 Per worktree e automazioni Codex locali, il repo include una configurazione
@@ -168,6 +183,7 @@ read-only sui Markdown prima di creare nuove entry, card o lesson:
 ./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:entry-usage -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
+./scripts/with-node.sh pnpm dm:live-card-scaffold -- --card-slug <card-slug> --title "<titolo lesson>"
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ./scripts/with-node.sh pnpm content:editorial-lint -- --media-slug <media-slug> --lesson-slug <lesson-slug>
@@ -216,6 +232,11 @@ stampa invece il path pianificato da usare quando le card reali sono pronte.
 Non stampa un comando import immediato per la shell vuota: riempi prima il
 contenuto reale, poi usa `content:scope`. Usa `--print --json` se vuoi solo il
 piano senza scrivere.
+
+Per nuove lesson live-card Duel Masters, preferisci `dm:live-card-scaffold`: e'
+un preset piu stretto per `duel-masters-dm25`/`live-duel-encounters`, resta
+plan-only finche non passi `--write`, scrive solo il textbook shell e non
+inventa cards o asset.
 
 `content:editorial-lint` scansiona Markdown e blocchi strutturati già parsati e
 stampa warning editoriali su meta-discorso, frasi povere, contrasti stock,

@@ -159,7 +159,10 @@ function assertSingleLinePlainText(value: string, fieldName: string) {
   }
 }
 
-function assertValidTextbookScaffoldSource(source: string, filePath: string) {
+export function assertValidTextbookScaffoldSource(
+  source: string,
+  filePath: string
+) {
   const parsed = parseFrontmatter(source, filePath);
   const issues: ValidationIssue[] = [...parsed.issues];
 

@@ -34,6 +34,7 @@ grep manuali lunghi:
 ./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:entry-usage -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
+./scripts/with-node.sh pnpm dm:live-card-scaffold -- --card-slug <card-slug> --title "<titolo lesson>"
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ./scripts/with-node.sh pnpm dm:card-fetch -- --official-id <official-card-id> --expect-name "<visible-card-name>"
@@ -72,7 +73,11 @@ chiari. Per Duel Masters TCG, `dm:card-fetch` riduce una pagina ufficiale
 Takara Tomy a campi, testo abilita, immagine e check compatti; usalo solo come
 helper di acquisizione e verifica sempre contro screenshot/testo utente,
 soprattutto quando la carta puo essere da Duel Masters Play's o da una stampa
-corretta nel tempo. Questi helper non sostituiscono il giudizio editoriale.
+corretta nel tempo. Per nuove lesson live-card Duel Masters, usa
+`dm:live-card-scaffold` come piano iniziale: e' vincolato a
+`duel-masters-dm25`/`live-duel-encounters`, resta plan-only salvo `--write`,
+scrive solo il textbook shell e non crea cards o asset. Questi helper non
+sostituiscono il giudizio editoriale.
 
 ## Struttura
 

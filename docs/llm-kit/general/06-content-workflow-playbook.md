@@ -110,6 +110,7 @@ contenuto deve usare i helper read-only invece di ricostruire tutto a mano:
 ./scripts/with-node.sh pnpm content:entry-brief -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:entry-usage -- --media-slug <media-slug> --entry-id <entry-id>
 ./scripts/with-node.sh pnpm content:lesson-brief -- --media-slug <media-slug> --lesson-slug <lesson-slug>
+./scripts/with-node.sh pnpm dm:live-card-scaffold -- --card-slug <card-slug> --title "<titolo lesson>"
 ./scripts/with-node.sh pnpm content:next-id -- --media-slug <media-slug> --slug <new-lesson-slug>
 ./scripts/with-node.sh pnpm content:scaffold -- --media-slug <media-slug> --slug <new-lesson-slug> --title "<titolo>"
 ./scripts/with-node.sh pnpm dm:card-fetch -- --official-id <official-card-id> --expect-name "<visible-card-name>"
@@ -136,7 +137,10 @@ placeholder vuoti e trattiene l'import finche non esiste contenuto reale. Per
 Duel Masters TCG, `dm:card-fetch` compatta una pagina ufficiale Takara Tomy in
 campi, testo abilita, immagine e check `--expect-*`; resta un helper, quindi
 usa screenshot/testo utente come controllo decisivo se emergono mismatch o se
-la carta potrebbe essere Duel Masters Play's-only.
+la carta potrebbe essere Duel Masters Play's-only. Per nuove lesson live-card
+Duel Masters, `dm:live-card-scaffold` e il piano iniziale piu stretto: fissa
+media e segmento, resta plan-only salvo `--write`, scrive solo il textbook
+shell e non crea cards o asset.
 
 ## Workflow operativo
 

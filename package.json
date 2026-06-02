@@ -41,6 +41,7 @@
     "content:scaffold": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-scaffold.ts",
     "content:scope": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/content-scope.ts",
     "dm:card-fetch": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/dm-card-fetch.ts",
+    "dm:live-card-scaffold": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/dm-live-card-scaffold.ts",
     "content:import": "node --experimental-strip-types ./scripts/import-content.ts",
     "content:test-stats": "node --experimental-strip-types ./scripts/update-real-bundle-test-stats.ts",
     "pronunciations:resolve": "node --experimental-strip-types ./scripts/resolve-pronunciations.ts",

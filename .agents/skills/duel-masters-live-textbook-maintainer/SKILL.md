@@ -149,6 +149,11 @@ Primary target files:
   - a fresh `id`, `slug`, `title`, `summary`, and tags for the new card
   - a fresh filename of the form
     `textbook/<NNN>-live-duel-encounters-<slug>.md`
+- Prefer the DM-specific scaffold planner for new live-card lessons:
+  `./scripts/with-node.sh pnpm dm:live-card-scaffold -- --card-slug <slug> --title "<lesson-title>" --summary "<plain Italian summary>"`.
+  By default it is plan-only; add `--write` only when you are ready to create
+  the textbook shell. It never creates cards or assets, and user-provided
+  screenshot/text remains the ground truth.
 - Compute the candidate prefix, `order`, IDs, and paired cards path with:
   `./scripts/with-node.sh pnpm content:next-id -- --media-slug duel-masters-dm25 --segment-ref live-duel-encounters --slug live-duel-encounters-<slug>`.
 - Treat that tool output as authoritative for `<NNN>`, `order`, lesson ID,
