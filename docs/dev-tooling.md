@@ -173,7 +173,7 @@ in `.tmp/release-check/`, valida i corpus Pitch Accent vendorizzati e forza
 build/E2E su quel database. Questo evita che un `.env.local` puntato a Turso
 consumi quota remota durante i gate locali.
 
-Workflow immagini:
+Applicazione di blocchi immagine da asset reali:
 
 ```sh
 ./scripts/with-node.sh pnpm image:status -- --media-slug duel-masters-dm25
@@ -182,8 +182,11 @@ Workflow immagini:
 ./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug duel-masters-dm25
 ```
 
-`image:apply` aggiorna i markdown, ma il reader usa il contenuto importato nel
-DB locale. Dopo un apply reale serve quindi un nuovo `content:import`.
+`image:status` / `image:apply` servono solo quando ci sono asset immagine reali
+gia risolti da applicare ai textbook. Non sono un workflow per tracciare
+immagini mancanti. `image:apply` aggiorna i markdown, ma il reader usa il
+contenuto importato nel DB locale. Dopo un apply reale serve quindi un nuovo
+`content:import`.
 Il DB locale resta un artefatto runtime disposable: per decidere quali lesson,
 entry o flashcard esistono gia, usa i Markdown validati in `content/media/**`,
 non lo snapshot SQLite locale.

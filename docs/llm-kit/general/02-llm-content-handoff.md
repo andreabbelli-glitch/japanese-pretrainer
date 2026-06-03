@@ -118,27 +118,26 @@ Non far inventare all'LLM contenuti un `src` immagine che non esiste ancora.
 
 Workflow consigliato:
 
-1. il content drafter decide se una immagine serve davvero, dove va nel flow e
-   quale immagine specifica chiarirebbe il passaggio;
-2. salva le richieste in `content/media/<slug>/workflow/image-requests.yaml`;
-3. l'agent immagini recupera il file e aggiorna
-   `content/media/<slug>/workflow/image-assets.yaml`;
-4. solo dopo si inserisce nel textbook un blocco `:::image` con `src` reale.
-5. dopo l'apply reale dei blocchi nel textbook, riesegui `content:import` prima
+1. il content drafter usa screenshot forniti, immagini visibili nel prompt o
+   asset gia presenti solo come fonte per trascrizione e contesto;
+2. se esiste un file immagine reale, lo salva sotto
+   `content/media/<slug>/assets/...`;
+3. inserisce nel textbook un blocco `:::image` solo quando `src` punta a quel
+   file reale;
+4. se l'immagine non e disponibile come file, omette il blocco immagine e crea
+   comunque la lesson;
+5. non crea file di tracking per immagini mancanti;
+6. dopo l'apply reale dei blocchi nel textbook, riesegui `content:import` prima
    di controllare la webapp: il reader legge il contenuto importato nel DB, non
    il markdown appena cambiato sul filesystem. Minimizza lo scope dell'import:
    lesson-scoped quando le lesson aggiornate sono note.
 
 Il validatore fallisce se il file non esiste.
 
-Tratta `image-requests.yaml` come piano editoriale, non come semplice TODO
-tecnico. La request deve fissare almeno:
-
-- il punto esatto del flow in cui l'immagine va inserita;
-- la scena / schermata / crop scelto;
-- che cosa l'immagine deve rendere leggibile;
-- quali elementi devono essere visibili;
-- quale tipo di fonte e preferibile per recuperarla.
+Non usare `workflow/image-requests.yaml` o `workflow/image-assets.yaml` come
+placeholder per materiale non disponibile. I file legacy esistenti possono
+restare nei bundle storici, ma i nuovi contenuti non devono introdurre request
+di immagini mancanti.
 
 ### 5.2 Regola pratica per l'audio
 
@@ -250,9 +249,8 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
   `example_it`, con una frase giapponese completa e la sua traduzione italiana;
 - che un blocco `:::image` e valido solo se `src` punta a un file gia esistente
   sotto `assets/`;
-- che, se il task include il workflow immagini, il primo agente deve produrre
-  `workflow/image-requests.yaml` invece di inventare direttamente `src`, e deve
-  usarlo come piano editoriale completo della scelta visiva;
+- che, se l'immagine non e disponibile come file reale, il contenuto deve
+  omettere il blocco immagine invece di creare request placeholder;
 - che i campi audio sono supportati dal formato ma non vanno compilati a
   fantasia: si popolano solo con asset e provenance reali;
 - che anche nel textbook l'obiettivo primario resta capire il giapponese:
@@ -289,13 +287,10 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
   tono letterario o dettagli non presenti nel testo;
 - che non deve aggiungere spiegazioni fuori dai file.
 
-Per il workflow immagini, chiedi esplicitamente anche:
-
-- `placement_rationale`: perche l'immagine va proprio in quel punto;
-- `visual_goal`: che cosa deve rendere leggibile;
-- `source_preference`: che tipo di fonte e preferita;
-- `must_show`: elementi che devono comparire nel frame finale;
-- `avoid`: elementi da evitare per non prendere un'immagine sbagliata.
+Per le immagini, chiedi esplicitamente che gli asset vengano referenziati solo
+quando sono file reali sotto `assets/`. Screenshot visibili nel prompt ma non
+salvabili come file possono essere usati per trascrivere frasi, parole e
+contesto, senza generare file workflow di richiesta.
 
 Regola editoriale addizionale:
 

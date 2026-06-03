@@ -105,8 +105,9 @@ Per ogni item reale:
 - crop mirati solo nei punti che il textbook spiega davvero;
 - i crop servono a mostrare label, navbar, filtri, tab, box risultati, tabelle,
   finestre di dialogo, prompt o altri target richiesti dall'utente;
-- salvare gli asset sotto `assets/` e mantenere allineati
-  `workflow/image-requests.yaml` e `workflow/image-assets.yaml`.
+- salvare gli asset sotto `assets/` solo quando esiste un file reale;
+- se l'immagine e visibile nel prompt ma non disponibile come file, usarla come
+  fonte testuale e creare la lesson senza blocco immagine.
 
 ## Convenzioni consigliate
 
@@ -127,8 +128,6 @@ Per un singolo item:
 - `content/media/web-giapponese/textbook/<ordine>-<page-slug>.md`
 - `content/media/web-giapponese/cards/<ordine>-<page-slug>.md`
 - eventuali asset sotto `content/media/web-giapponese/assets/...`
-- aggiornamento di `workflow/image-requests.yaml`
-- aggiornamento di `workflow/image-assets.yaml`
 - validazione mirata del bundle con il check combinato:
   `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <page-slug>`
 - risoluzione pronunce per le flashcard create o riviste:

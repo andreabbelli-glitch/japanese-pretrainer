@@ -79,15 +79,16 @@ Optional:
    This writes only the textbook scaffold, refuses conflicts, does not create
    empty cards files, and still requires real content plus `content:scope`
    before import.
-6. Capture:
-   - one overview screenshot or the provided image that helps remember the item;
-   - only the crops that directly support the explanation.
-7. Draft one lesson file for the item and one cards file for the item.
-8. Save screenshot assets under `content/media/web-giapponese/assets/`.
-9. Update:
-   - `content/media/web-giapponese/workflow/image-requests.yaml`
-   - `content/media/web-giapponese/workflow/image-assets.yaml`
-10. Resolve pronunciation audio for every new or revised card entry with the
+6. Use provided screenshots or visible prompt images as source material for
+   transcription and explanations. If an actual local image file is available,
+   save only useful overview/crop assets under
+   `content/media/web-giapponese/assets/`.
+7. Draft one lesson file for the item and one cards file for the item. Insert
+   `:::image` blocks only for real asset files that exist under `assets/`.
+8. Do not create or update image request/asset tracking files just because an
+   image is missing. If no real image file is available, create the lesson
+   without images.
+9. Resolve pronunciation audio for every new or revised card entry with the
     entry-only wrapper:
     `./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug web-giapponese --entry <new-term-or-grammar-id>`
     Pass multiple `--entry` flags for multiple new cards. Use the Forvo skill
@@ -227,11 +228,14 @@ Optional:
 
 ## Screenshot rules
 
-- One overview image per item.
+- Images are optional unless a real local source file is available.
+- One overview image per item when it materially helps and can be saved as a
+  real asset.
 - Crops only where the textbook actually explains something.
 - Favor visible text and layout that clarify function: navbar, filters, tabs,
   table headers, badges, result boxes, CTA labels, prompt text or rules text.
 - Do not insert `:::image` blocks with invented `src` values.
+- Do not create image request placeholders for missing screenshots.
 
 ## Output targets
 
@@ -239,7 +243,8 @@ Typical files for one item:
 
 - `content/media/web-giapponese/textbook/<order>-<page-slug>.md`
 - `content/media/web-giapponese/cards/<order>-<page-slug>.md`
-- related assets under `content/media/web-giapponese/assets/...`
+- related assets under `content/media/web-giapponese/assets/...` only when real
+  source files are available
 
 The bundle root already exists:
 

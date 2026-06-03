@@ -51,8 +51,6 @@ Per qualunque media, passa sempre il kit generale completo:
 - `docs/llm-kit/general/04-template-textbook-lesson.md`
 - `docs/llm-kit/general/05-template-cards-file.md`
 - `docs/llm-kit/general/06-content-workflow-playbook.md`
-- `docs/llm-kit/general/07-template-image-requests.yaml`
-- `docs/llm-kit/general/08-template-image-assets.yaml`
 - `docs/llm-kit/general/09-editorial-quality-rubric.md`
 - `docs/llm-kit/general/10-textbook-lesson-style-standard.md`
 
@@ -282,29 +280,26 @@ Distinzione da mantenere:
 
 Se una lesson usa screenshot o immagini carte:
 
-- salva i file sotto `content/media/<slug>/assets/...`;
-- salva le richieste del primo agente in
-  `content/media/<slug>/workflow/image-requests.yaml`;
-- salva le risoluzioni del secondo agente in
-  `content/media/<slug>/workflow/image-assets.yaml`;
-- tratta `image-requests.yaml` come piano editoriale dell'immagine: non basta
-  dire "qui serve uno screenshot", bisogna fissare scena scelta, punto del
-  flow, obiettivo visivo e criteri di recupero;
+- se esiste un file reale, salvalo sotto `content/media/<slug>/assets/...`;
+- se l'immagine e solo visibile nel prompt o in chat, usala come fonte per
+  trascrivere testo e contesto, ma non inserirla come asset;
+- non creare o aggiornare `workflow/image-requests.yaml` /
+  `workflow/image-assets.yaml` come placeholder per immagini mancanti;
 - usa nomi stabili e descrittivi, per esempio
   `assets/ui/deck-edit.webp` o `assets/cards/abyss-bell.svg`;
 - inserisci nel textbook un blocco `:::image` solo quando il file esiste gia;
-- in `image-requests.yaml` / `image-assets.yaml`, `alt_it` deve restare testo
-  semplice: evita kanji nudi e preferisci italiano o kana / katakana;
-- in `image-requests.yaml` / `image-assets.yaml`, `caption_it` e testo visibile:
-  se compaiono kanji, annotali con furigana; se richiama una entry glossary /
-  flashcard, usa il link semantico e annota anche il label;
-- in `image-requests.yaml`, compila anche `placement_rationale`,
-  `visual_goal`, `source_preference`, `must_show` e `avoid` ogni volta che la
-  lesson ha bisogno di una scelta visiva non banale;
+- nel blocco `:::image`, `alt_it` deve restare testo semplice: evita kanji nudi
+  e preferisci italiano o kana / katakana;
+- nel blocco `:::image`, `caption_it` e testo visibile: se compaiono kanji,
+  annotali con furigana; se richiama una entry glossary / flashcard, usa il link
+  semantico e annota anche il label;
 - non lasciare in `content/media/...` placeholder tipo `TODO`, URL remoti o
   `src` inventati.
 
 Comandi pratici:
+
+Usali solo quando ci sono asset immagine reali gia risolti da applicare. Non
+creare manifest o request placeholder per immagini mancanti.
 
 ```sh
 ./scripts/with-node.sh pnpm image:status -- --media-slug <media-slug>
@@ -520,7 +515,8 @@ Dopo l'import verifica almeno:
 - che i file scansionati siano quelli attesi;
 - che non ci siano archive/prune inattesi;
 - che il bundle resti validabile con `content:validate`;
-- che nel reader compaiano davvero i nuovi blocchi `:::image`;
+- che nel reader compaiano davvero i nuovi blocchi `:::image`, se ne sono stati
+  aggiunti;
 - che `alt` non lasci kanji nudi e che `caption` annoti con furigana o link
   semantico ogni termine visibile che lo richiede.
 - che i link `term:` / `grammar:` verso entry con flashcard associata non

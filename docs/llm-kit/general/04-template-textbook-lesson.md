@@ -295,12 +295,10 @@ normalizzata. Se lo usi, preferisci uno slug stabile con prefisso del tipo, per
 esempio `term-shared-ranked-match`.
 Usa :::example_sentence quando vuoi una frase con traduzione italiana
 collassabile nel reader.
-Se l'asset non esiste ancora, non usare subito :::image: crea prima una voce in
-`workflow/image-requests.yaml`.
-Quella voce non deve essere una nota vaga: deve fissare posizione nel flow,
-immagine scelta, obiettivo visivo e criteri di recupero.
 Usa :::image solo se esiste gia un asset reale sotto `assets/`; non inventare
-path immagine.
+path immagine. Se l'asset non esiste o l'immagine e solo visibile nel prompt,
+ometti il blocco immagine e usa il testo visibile come fonte per la lezione.
+Non creare file workflow di richiesta per immagini mancanti.
 Non mettere :::image prima degli inventari e del separatore `---`; inseriscilo
 dopo il separatore, nel cluster che lo rende didatticamente utile.
 Non inventare campi audio nel testo editoriale: l'audio, se serve, viene

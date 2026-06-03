@@ -442,15 +442,15 @@ vedere come il lessico e la grammatica lavorano insieme.
 
 ## Immagini
 
-Questo standard non cambia il workflow immagini.
+Questo standard non introduce un workflow di richiesta immagini.
 
 - Se un'immagine reale esiste già sotto `assets/`, inserisci un blocco
   `:::image` nel punto in cui aiuta davvero la spiegazione.
 - Non mettere mai `:::image` prima dell'introduzione, degli inventari e del
   separatore `---`: il primo punto legale è dopo il separatore, idealmente
   dentro il cluster che usa quella immagine.
-- Se l'immagine servirebbe ma non esiste ancora, non inventare `src`: crea o
-  aggiorna `workflow/image-requests.yaml`.
+- Se l'immagine servirebbe ma non esiste come file reale, non inventare `src` e
+  non creare request placeholder: lascia la lesson senza blocco immagine.
 - Le caption seguono lo stesso standard del testo: spiegano quale label, stato
   o contrasto diventa leggibile, non dicono genericamente che l'immagine è
   utile.

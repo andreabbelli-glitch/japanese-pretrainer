@@ -58,18 +58,16 @@ Vincoli didattici obbligatori:
   fallo in `notes_it`, non in `example_jp`.
 
 Politica immagini:
-- prevedi una snapshot generale orientativa o usa lo screenshot fornito;
-- prevedi crop mirati solo per i punti spiegati davvero;
-- aggiorna `workflow/image-requests.yaml` e `workflow/image-assets.yaml` con
-  criterio editoriale, non come semplice lista tecnica;
+- usa una snapshot generale o crop mirati solo se esiste un file reale da
+  salvare sotto `assets/`;
+- se lo screenshot e solo visibile nel prompt, usalo come fonte testuale e
+  ometti il blocco immagine;
 - non inventare `src` immagine inesistenti nel textbook finale.
 
 File da produrre di norma:
 - `content/media/web-giapponese/textbook/<ordine>-<page-slug>.md`
 - `content/media/web-giapponese/cards/<ordine>-<page-slug>.md`
-- eventuali aggiornamenti a:
-  - `content/media/web-giapponese/workflow/image-requests.yaml`
-  - `content/media/web-giapponese/workflow/image-assets.yaml`
+- eventuali asset reali sotto `content/media/web-giapponese/assets/...`
 
 Comandi operativi obbligatori dopo la scrittura:
 - esegui il check combinato della lesson:
@@ -112,8 +110,6 @@ Documenti da seguire:
 - docs/llm-kit/general/04-template-textbook-lesson.md
 - docs/llm-kit/general/05-template-cards-file.md
 - docs/llm-kit/general/06-content-workflow-playbook.md
-- docs/llm-kit/general/07-template-image-requests.yaml
-- docs/llm-kit/general/08-template-image-assets.yaml
 - docs/llm-kit/general/10-textbook-lesson-style-standard.md
 - docs/llm-kit/media/web-giapponese/01-brief.md
 ```

@@ -107,8 +107,6 @@ Da passare sempre:
 - `general/04-template-textbook-lesson.md`
 - `general/05-template-cards-file.md`
 - `general/06-content-workflow-playbook.md`
-- `general/07-template-image-requests.yaml`
-- `general/08-template-image-assets.yaml`
 - `general/09-editorial-quality-rubric.md`
 - `general/10-textbook-lesson-style-standard.md`
 
@@ -135,10 +133,10 @@ Nota pratica:
 ## Uso pratico
 
 > [!IMPORTANT]
-> Se il workflow immagini inserisce o aggiorna blocchi `:::image` nei textbook,
-> dopo `image:apply` serve sempre `content:import`: la webapp legge il
-> contenuto importato nel DB locale, non il markdown appena modificato. Questo
-> non rende il DB locale source of truth: il Markdown validato resta l'autorita'
+> Se un passaggio locale inserisce o aggiorna blocchi `:::image` nei textbook,
+> dopo la modifica serve sempre `content:import`: la webapp legge il contenuto
+> importato nel DB locale, non il markdown appena modificato. Questo non rende
+> il DB locale source of truth: il Markdown validato resta l'autorita'
 > editoriale. Usa sempre l'import lesson-scoped quando le lesson aggiornate sono
 > note; allarga a media o full solo per cambi davvero piu ampi.
 
@@ -146,17 +144,11 @@ Nota pratica:
 > Audio e immagini sono gia supportati dal formato reale del progetto, ma il
 > loro recupero avviene di norma in un secondo passaggio locale. L'LLM esterno
 > non deve inventare file audio, metadata audio di provenance o `src` immagine
-> inesistenti. Per le immagini usa il workflow
-> `workflow/image-requests.yaml` / `workflow/image-assets.yaml`; per l'audio
-> lascia i campi assenti salvo che asset e provenance reali siano gia stati
-> forniti esplicitamente.
-
-> [!IMPORTANT]
-> `workflow/image-requests.yaml` non e una semplice lista tecnica di cose da
-> scaricare. E il piano editoriale delle immagini: il producer contenuti deve
-> decidere gia li dove va l'immagine, quale scena o schermata serve, che cosa
-> deve rendere leggibile e quali criteri usera poi l'agent immagini per
-> recuperarla correttamente.
+> inesistenti. Per le immagini inserisci `:::image` solo quando esiste un file
+> reale sotto `assets/`; se lo screenshot e visibile nel prompt ma non esiste
+> come file, usalo solo come fonte testuale e ometti il blocco immagine. Per
+> l'audio lascia i campi assenti salvo che asset e provenance reali siano gia
+> stati forniti esplicitamente.
 
 > [!IMPORTANT]
 > Le flashcard devono allenare soprattutto giapponese generalizzabile. Di
@@ -194,8 +186,6 @@ Passa almeno:
 - `general/04-template-textbook-lesson.md`
 - `general/05-template-cards-file.md`
 - `general/06-content-workflow-playbook.md`
-- `general/07-template-image-requests.yaml`
-- `general/08-template-image-assets.yaml`
 - `general/09-editorial-quality-rubric.md`
 - `general/10-textbook-lesson-style-standard.md`
 - `media/duel-masters-dm25/01-brief.md`
