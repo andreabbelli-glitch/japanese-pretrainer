@@ -36,6 +36,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-kakegoe",
+      "audio_src": "assets/audio/term/term-kakegoe/forvo-strawberrybrown-かけこ-え.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%8E%9B%E3%81%91%E5%A3%B0/#ja",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-katta-hou",
       "pitch_accent_status": "miss"
     },
