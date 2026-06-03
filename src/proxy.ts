@@ -13,6 +13,7 @@ import {
 const INTERNAL_CONTENT_CACHE_REVALIDATE_PATH =
   "/api/internal/content-cache/revalidate";
 const INTERNAL_FSRS_OPTIMIZER_RUN_PATH = "/api/internal/fsrs-optimizer/run";
+const STATIC_MEDIA_AUDIO_PATH_PREFIX = "/media-audio";
 
 export function proxy(request: NextRequest) {
   const config = getAuthConfig();
@@ -22,6 +23,10 @@ export function proxy(request: NextRequest) {
 
   requestHeaders.set(APP_PATHNAME_HEADER, pathname);
   requestHeaders.set(APP_SEARCH_HEADER, search);
+
+  if (isStaticMediaAudioPath(pathname)) {
+    return continueRequest(requestHeaders);
+  }
 
   if (!config.enabled) {
     return continueRequest(requestHeaders);
@@ -60,9 +65,16 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|icon.svg|apple-icon.png|robots.txt|site.webmanifest).*)"
+    "/((?!_next/static|_next/image|media-audio(?:/|$)|favicon.ico|icon.svg|apple-icon.png|robots.txt|site.webmanifest).*)"
   ]
 };
+
+export function isStaticMediaAudioPath(pathname: string) {
+  return (
+    pathname === STATIC_MEDIA_AUDIO_PATH_PREFIX ||
+    pathname.startsWith(`${STATIC_MEDIA_AUDIO_PATH_PREFIX}/`)
+  );
+}
 
 function continueRequest(requestHeaders: Headers) {
   return NextResponse.next({

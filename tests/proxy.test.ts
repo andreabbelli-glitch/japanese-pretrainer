@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { NextRequest } from "next/server";
 
-import { proxy } from "@/proxy";
+import { config, isStaticMediaAudioPath, proxy } from "@/proxy";
 
 const AUTH_ENV_KEYS = [
   "AUTH_PASSWORD",
@@ -47,6 +47,35 @@ describe("proxy", () => {
       "https://example.test/login?next=%2Fsettings"
     );
   });
+
+  it("bypasses static media audio even when auth is enabled", () => {
+    enableAuth();
+
+    const response = proxy(
+      new NextRequest(
+        "https://example.test/media-audio/sample-media/audio/term/yomu.mp3?v=2026-01-02T03%3A04%3A05.000Z"
+      )
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("location")).toBeNull();
+  });
+
+  it("keeps media audio out of the real Next proxy matcher", () => {
+    expect(matchesConfiguredProxy("/media-audio")).toBe(false);
+    expect(matchesConfiguredProxy("/media-audio/sample/audio/yomu.mp3")).toBe(
+      false
+    );
+    expect(matchesConfiguredProxy("/media-audio-admin")).toBe(true);
+    expect(matchesConfiguredProxy("/media-audiox")).toBe(true);
+    expect(isStaticMediaAudioPath("/media-audio/sample/audio/yomu.mp3")).toBe(
+      true
+    );
+    expect(isStaticMediaAudioPath("/media-audio-admin")).toBe(false);
+    expect(isStaticMediaAudioPath("/media/sample/assets/audio/yomu.mp3")).toBe(
+      false
+    );
+  });
 });
 
 function enableAuth() {
@@ -54,4 +83,8 @@ function enableAuth() {
   process.env.AUTH_SESSION_SECRET = "session-secret";
   process.env.AUTH_USERNAME = "owner";
   delete process.env.AUTH_PASSWORD_HASH;
+}
+
+function matchesConfiguredProxy(pathname: string) {
+  return new RegExp(`^${config.matcher[0]}$`, "u").test(pathname);
 }
