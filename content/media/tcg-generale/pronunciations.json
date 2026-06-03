@@ -62,6 +62,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-kousei",
+      "audio_src": "assets/audio/term/term-kousei/tofugu-wanikani-構成.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E6%A7%8B%E6%88%90%E3%80%90%E3%81%93%E3%81%86%E3%81%9B%E3%81%84%E3%80%91.mp3",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-sousa",
       "audio_src": "assets/audio/term/term-sousa/forvo-manual-操作.mp3",
       "audio_source": "forvo",
