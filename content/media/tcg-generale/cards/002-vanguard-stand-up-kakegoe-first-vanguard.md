@@ -204,6 +204,20 @@ notes_it: >-
 level_hint: n3
 :::
 
+:::term
+id: term-hassei-suru-nda-vanguard-occurs
+lemma: 発生するんだ
+reading: はっせいするんだ
+romaji: hassei suru nda
+meaning_it: si verifica / si attiva
+pos: expression
+notes_it: >-
+  {{発生|はっせい}}する descrive la comparsa o l'attivazione di un evento. Il
+  `んだ` finale aggiunge un tono esplicativo: nel prompt il drive check scatta
+  come conseguenza dell'attacco del Vanguard.
+level_hint: n3
+:::
+
 :::card
 id: card-kakegoe-recognition
 lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
@@ -459,5 +473,24 @@ example_it: >-
 notes_it: >-
   {{退却|たいきゃく}} è il risultato sul campo: il rear-guard indicato viene
   rimosso dalla sua posizione dopo l'attacco riuscito.
+tags: [vanguard, tutorial, attack]
+:::
+
+:::card
+id: card-hassei-suru-nda-vanguard-occurs-recognition
+lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
+entry_type: term
+entry_id: term-hassei-suru-nda-vanguard-occurs
+card_type: recognition
+front: '{{発生|はっせい}}するんだ'
+back: 'si verifica; si attiva; scatta come conseguenza'
+example_jp: >-
+  ヴァンガードがアタックするとドライブチェックが{{発生|はっせい}}するんだ。
+example_it: >-
+  Quando il Vanguard attacca, si verifica il drive check.
+notes_it: >-
+  `〜すると` prepara una conseguenza quasi automatica. {{発生|はっせい}}するんだ
+  presenta il drive check come evento che scatta in quel momento, con `んだ`
+  che suona esplicativo.
 tags: [vanguard, tutorial, attack]
 :::

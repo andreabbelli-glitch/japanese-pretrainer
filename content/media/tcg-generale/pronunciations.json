@@ -3,6 +3,11 @@
   "entries": [
     {
       "entry_type": "term",
+      "entry_id": "term-hassei-suru-nda-vanguard-occurs",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-herasu",
       "audio_src": "assets/audio/term/term-herasu/tofugu-wanikani-減らす.mp3",
       "audio_source": "tofugu_wanikani",

@@ -69,6 +69,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
 - `アタックに{{成功|せいこう}}すると` — quando l'attacco riesce
 - `リアガードへのアタックがヒットしたなら` — se l'attacco al rear-guard va a
   segno
+- ヴァンガードがアタックするとドライブチェックが[{{発生|はっせい}}するんだ](term:term-hassei-suru-nda-vanguard-occurs)
+  — quando il Vanguard attacca, si verifica il drive check
 
 ---
 
@@ -243,6 +245,15 @@ condizione "se ha colpito" e `そのリアガードは` riprende proprio quel be
 [{{退却|たいきゃく}}](term:term-taikyaku-vanguard-retire) è il risultato
 operativo: quel rear-guard viene rimosso dal campo.
 
+Quando l'attaccante è il Vanguard, il prompt apre un altro effetto automatico:
+ヴァンガードがアタックするとドライブチェックが[{{発生|はっせい}}するんだ](term:term-hassei-suru-nda-vanguard-occurs).
+`ヴァンガードがアタックすると` usa `〜すると` per legare l'azione alla
+conseguenza che segue. `ドライブチェックが` marca il drive check come evento
+che compare, e [{{発生|はっせい}}するんだ](term:term-hassei-suru-nda-vanguard-occurs)
+lo presenta come qualcosa che si verifica in quel momento. Il `んだ` finale dà
+alla frase un tono esplicativo, come una regola che il tutorial sta rendendo
+chiara.
+
 :::example_sentence
 jp: >-
   アタックに{{成功|せいこう}}すると、{{相手|あいて}}のリアガードを{{減|へ}}らしたり、{{相手|あいて}}にダメージを{{与|あた}}えられるよ。
@@ -258,6 +269,13 @@ translation_it: >-
   Se l'attacco al rear-guard va a segno, quel rear-guard viene ritirato.
 :::
 
+:::example_sentence
+jp: >-
+  ヴァンガードがアタックするとドライブチェックが{{発生|はっせい}}するんだ。
+translation_it: >-
+  Quando il Vanguard attacca, si verifica il drive check.
+:::
+
 #### 🧠 Gancio cognitivo
 
 Pensa a [{{減|へ}}らす](term:term-herasu) come a un contatore che scende. Se
@@ -267,6 +285,10 @@ sul campo.
 Pensa a [{{退却|たいきゃく}}](term:term-taikyaku-vanguard-retire) come alla
 singola carta che lascia il campo: il focus passa dal numero di unità alla
 carta precisa che viene ritirata.
+
+Pensa a [{{発生|はっせい}}するんだ](term:term-hassei-suru-nda-vanguard-occurs)
+come al momento in cui un evento si accende nella sequenza del turno: attacca
+il Vanguard, quindi parte il drive check.
 
 ## Nota finale
 

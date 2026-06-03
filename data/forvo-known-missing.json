@@ -2276,6 +2276,15 @@
       "updatedAt": "2026-05-24T16:22:57.068Z"
     },
     {
+      "entryId": "term-hassei-suru-nda-vanguard-occurs",
+      "entryKind": "term",
+      "label": "発生するんだ",
+      "mediaSlug": "tcg-generale",
+      "reading": "はっせいするんだ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-06-03T22:40:16.654Z"
+    },
+    {
       "entryId": "term-iranai-card-ga-attara",
       "entryKind": "term",
       "label": "いらないカードがあったら",

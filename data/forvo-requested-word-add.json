@@ -5208,6 +5208,15 @@
       "resolvedAudioSrc": "assets/audio/term/term-yowaraseru/forvo-mezashi-よわらせる.mp3"
     },
     {
+      "entryId": "term-hassei-suru-nda-vanguard-occurs",
+      "entryKind": "term",
+      "label": "発生するんだ",
+      "mediaSlug": "tcg-generale",
+      "reading": "はっせいするんだ",
+      "requestUrl": "https://forvo.com/word-add/%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E3%82%93%E3%81%A0/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+      "requestedAt": "2026-06-03T22:40:16.679Z"
+    },
+    {
       "entryId": "term-iranai-card-ga-attara",
       "entryKind": "term",
       "label": "いらないカードがあったら",
