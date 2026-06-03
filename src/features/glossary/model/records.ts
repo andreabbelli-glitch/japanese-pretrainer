@@ -7,6 +7,8 @@ export type GlossaryAudioFields = {
   audioSource?: string | null;
   audioSpeaker?: string | null;
   audioSrc?: string | null;
+  audioUpdatedAt?: Date | string | null;
+  updatedAt?: Date | string | null;
   pitchAccent?: number | null;
   pitchAccentPageUrl?: string | null;
   pitchAccentSource?: string | null;

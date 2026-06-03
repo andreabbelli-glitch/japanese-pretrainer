@@ -717,7 +717,9 @@ describe("pre-FSRS consolidation service", () => {
       label: "Native Speaker · forvo",
       source: "forvo",
       speaker: "Native Speaker",
-      src: "/media/media-consolidation/assets/audio/term/term-yomu/yomu.mp3"
+      src: expect.stringMatching(
+        /^\/media-audio\/media-consolidation\/audio\/term\/term-yomu\/yomu\.mp3\?v=.+/u
+      )
     });
   });
 

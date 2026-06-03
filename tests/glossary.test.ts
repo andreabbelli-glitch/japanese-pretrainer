@@ -1468,8 +1468,10 @@ describe("glossary data", () => {
     expect(detail?.cards[0]?.href).toBe(
       "/media/sample-anime/review/card/card-taberu-recognition"
     );
-    expect(detail?.entry.pronunciation?.src).toBe(
-      "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"
+    expect(detail?.entry.pronunciation?.src).toEqual(
+      expect.stringMatching(
+        /^\/media-audio\/sample-anime\/audio\/term\/term-taberu\/term-taberu\.ogg\?v=.+/u
+      )
     );
     expect(detail?.entry.pronunciation?.pitchAccent).toMatchObject({
       downstep: 2,
@@ -1531,8 +1533,10 @@ describe("glossary data", () => {
         "grammar-teiru"
       )
     );
-    expect(detail?.pronunciations[0]?.audio.src).toBe(
-      "/media/sample-anime/assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
+    expect(detail?.pronunciations[0]?.audio.src).toEqual(
+      expect.stringMatching(
+        /^\/media-audio\/sample-anime\/audio\/grammar\/grammar-teiru\/grammar-teiru\.mp3\?v=.+/u
+      )
     );
     expect(detail?.pronunciations[0]?.audio.pitchAccent).toMatchObject({
       downstep: 0,

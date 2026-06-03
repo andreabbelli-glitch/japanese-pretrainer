@@ -118,8 +118,10 @@ describe("review rendering", () => {
     );
 
     expect(reviewPage?.selectedCard?.pronunciations).toHaveLength(1);
-    expect(reviewPage?.selectedCard?.pronunciations[0]?.audio.src).toBe(
-      "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"
+    expect(reviewPage?.selectedCard?.pronunciations[0]?.audio.src).toEqual(
+      expect.stringMatching(
+        /^\/media-audio\/sample-anime\/audio\/term\/term-taberu\/term-taberu\.ogg\?v=.+/u
+      )
     );
     expect(
       reviewPage?.selectedCard?.pronunciations[0]?.audio.pitchAccent
@@ -135,7 +137,7 @@ describe("review rendering", () => {
     expect(markup).toContain('preload="metadata"');
     expect(markup).toContain("pitch-accent__graph");
     expect(markup).toContain(
-      "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"
+      "/media-audio/sample-anime/audio/term/term-taberu/term-taberu.ogg"
     );
   });
 

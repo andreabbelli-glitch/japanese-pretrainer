@@ -63,6 +63,8 @@ type ReviewLookupPronunciationFields = {
   audioSource?: string | null;
   audioSpeaker?: string | null;
   audioSrc?: string | null;
+  audioUpdatedAt?: Date | string | null;
+  updatedAt?: Date | string | null;
   pitchAccent?: number | null;
   pitchAccentPageUrl?: string | null;
   pitchAccentSource?: string | null;
@@ -490,6 +492,10 @@ function buildReviewEntryPronunciation(
         pronunciationSource,
         "audioSrc"
       ),
+      audioUpdatedAt: getOptionalPronunciationVersionField(
+        pronunciationSource,
+        "audioUpdatedAt"
+      ) ?? getOptionalPronunciationVersionField(pronunciationSource, "updatedAt"),
       pitchAccent: getOptionalPronunciationNumberField(
         pronunciationSource,
         "pitchAccent"
@@ -505,6 +511,17 @@ function buildReviewEntryPronunciation(
       reading
     }) ?? undefined
   );
+}
+
+function getOptionalPronunciationVersionField(
+  entry: Record<string, unknown>,
+  key: "audioUpdatedAt" | "updatedAt"
+) {
+  const value = entry[key];
+
+  return typeof value === "string" || value instanceof Date || value === null
+    ? value
+    : undefined;
 }
 
 function getOptionalPronunciationStringField(

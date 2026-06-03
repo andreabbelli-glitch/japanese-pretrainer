@@ -1401,7 +1401,9 @@ describe("textbook data", () => {
           downstep: 2,
           shape: "nakadaka"
         },
-        src: "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"
+        src: expect.stringMatching(
+          /^\/media-audio\/sample-anime\/audio\/term\/term-taberu\/term-taberu\.ogg\?v=.+/u
+        )
       }
     });
     expect(tooltipEntries?.[1]).toMatchObject({
@@ -1411,7 +1413,9 @@ describe("textbook data", () => {
           downstep: 0,
           shape: "heiban"
         },
-        src: "/media/sample-anime/assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
+        src: expect.stringMatching(
+          /^\/media-audio\/sample-anime\/audio\/grammar\/grammar-teiru\/grammar-teiru\.mp3\?v=.+/u
+        )
       }
     });
     expect(

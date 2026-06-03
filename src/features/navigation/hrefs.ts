@@ -137,6 +137,26 @@ export function mediaAssetHref(mediaSlug: string, assetPath: string): Route {
   return `/media/${mediaSlug}/assets/${normalizedPath}` as Route;
 }
 
+export function mediaAudioAssetHref(
+  mediaSlug: string,
+  assetPath: string,
+  audioUpdatedAt?: Date | string | null
+): Route {
+  const normalizedAssetPath = normalizeAssetPath(assetPath);
+  const relativeAssetPath = normalizedAssetPath.startsWith("assets/")
+    ? normalizedAssetPath.slice("assets/".length)
+    : normalizedAssetPath;
+  const normalizedPath = relativeAssetPath
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/");
+  const version = normalizeAssetVersion(audioUpdatedAt);
+
+  return `/media-audio/${encodeURIComponent(mediaSlug)}/${normalizedPath}${
+    version ? `?v=${encodeURIComponent(version)}` : ""
+  }` as Route;
+}
+
 export function mediaGlossaryTermHref(
   entrySurface: string,
   options: GlossaryEntryHrefOptions = {}
@@ -280,4 +300,12 @@ function normalizeAssetPath(assetPath: string) {
     }, []);
 
   return normalizedSegments.join("/");
+}
+
+function normalizeAssetVersion(version?: Date | string | null) {
+  if (version instanceof Date) {
+    return version.toISOString();
+  }
+
+  return version?.trim() || undefined;
 }
