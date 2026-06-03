@@ -3,6 +3,19 @@
   "entries": [
     {
       "entry_type": "term",
+      "entry_id": "term-hakki-vanguard-effect",
+      "audio_src": "assets/audio/term/term-hakki-vanguard-effect/forvo-strawberrybrown-はっき.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%99%BA%E6%8F%AE/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-hassei-suru-nda-vanguard-occurs",
       "pitch_accent_status": "miss"
     },

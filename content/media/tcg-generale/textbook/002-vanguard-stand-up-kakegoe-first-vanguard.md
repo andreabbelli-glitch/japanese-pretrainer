@@ -38,6 +38,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
 - [{{確定|かくてい}}](term:term-kakutei) — conferma / determinazione definitiva
 - [{{起動|きどう}}](term:term-kidou) — attivazione / avvio; in
   `{{起動|きどう}}{{能力|のうりょく}}` indica una capacità attivabile
+- [{{発揮|はっき}}](term:term-hakki-vanguard-effect) — manifestazione /
+  efficacia espressa da un effetto
 - [ともに](term:term-tomoni) — insieme / assieme; mette più elementi nella
   stessa azione
 - [{{低|ひく}}い](term:term-hikui-low-grade) — basso / inferiore, qui riferito
@@ -62,6 +64,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
   composto da sei fasi
 - `{{起動|きどう}}{{能力|のうりょく}}を{{使|つか}}うことができる` — puoi usare una
   capacità attivabile
+- {{効果|こうか}}を[{{発揮|はっき}}する](term:term-hakki-vanguard-effect) — far
+  manifestare / applicare un effetto
 - `リアガードは、ともに{{戦|たたか}}ってくれる{{仲間|なかま}}のユニット` — i rear-guard
   sono unità compagne che combattono insieme
 - `ヴァンガードと{{同|おな}}じか{{低|ひく}}いグレード` — grado uguale o inferiore al
@@ -129,6 +133,12 @@ apre una possibilità di azione. `{{起動|きどう}}{{能力|のうりょく}}
 abilità, `を` lo marca come oggetto e `{{使|つか}}うことができる` dice che l'uso è
 consentito.
 
+Quando una abilità produce davvero il suo risultato, il testo può usare
+{{効果|こうか}}を[{{発揮|はっき}}する](term:term-hakki-vanguard-effect). `{{効果|こうか}}を`
+marca l'effetto come oggetto, mentre [{{発揮|はっき}}する](term:term-hakki-vanguard-effect)
+lo porta dal testo della carta al risultato operativo: l'effetto diventa
+visibile nella partita.
+
 :::example_sentence
 jp: >-
   {{1|いち}}ターンは{{6|むっ}}つのフェイズで{{構成|こうせい}}されているよ。
@@ -150,6 +160,13 @@ jp: >-
   {{起動|きどう}}{{能力|のうりょく}}を{{使|つか}}うことができるよ。
 translation_it: >-
   Puoi usare una capacità attivabile.
+:::
+
+:::example_sentence
+jp: >-
+  その{{能力|のうりょく}}は{{効果|こうか}}を{{発揮|はっき}}する。
+translation_it: >-
+  Quella capacità manifesta il suo effetto.
 :::
 
 [{{確定|かくてい}}](term:term-kakutei) si colloca nello stesso registro di UI:

@@ -232,6 +232,20 @@ notes_it: >-
 level_hint: n3
 :::
 
+:::term
+id: term-hakki-vanguard-effect
+lemma: 発揮
+reading: はっき
+romaji: hakki
+meaning_it: manifestazione / efficacia espressa
+pos: suru-noun
+notes_it: >-
+  {{発揮|はっき}} indica che una capacità o un effetto viene espresso davvero.
+  In `{{効果|こうか}}を{{発揮|はっき}}する`, l'effetto non resta solo scritto sulla
+  carta: entra in funzione nel momento indicato dalla regola.
+level_hint: n3
+:::
+
 :::card
 id: card-kakegoe-recognition
 lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
@@ -525,4 +539,22 @@ notes_it: >-
   めくって è la forma in `て`: prima scopri la carta dalla cima del mazzo, poi
   la metti nella zona indicata da `トリガーゾーンに`.
 tags: [vanguard, tutorial, drive-check]
+:::
+
+:::card
+id: card-hakki-vanguard-effect-recognition
+lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
+entry_type: term
+entry_id: term-hakki-vanguard-effect
+card_type: recognition
+front: '{{発揮|はっき}}'
+back: 'manifestazione; efficacia espressa; far valere un effetto'
+example_jp: >-
+  その{{能力|のうりょく}}は{{効果|こうか}}を{{発揮|はっき}}する。
+example_it: >-
+  Quella capacità manifesta il suo effetto.
+notes_it: >-
+  `{{効果|こうか}}を{{発揮|はっき}}する` guarda all'effetto che diventa operativo:
+  `を` marca l'effetto come ciò che viene fatto emergere dalla capacità.
+tags: [vanguard, tutorial, effect]
 :::
