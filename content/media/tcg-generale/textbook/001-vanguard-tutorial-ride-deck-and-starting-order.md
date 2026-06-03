@@ -2,35 +2,38 @@
 id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order
 media_id: media-tcg-generale
 slug: vanguard-tutorial-ride-deck-and-starting-order
-title: "Ride deck e ordine di turno nel tutorial Vanguard"
+title: "Ride deck, ordine e mulligan nel tutorial Vanguard"
 order: 10
 segment_ref: vanguard
 difficulty: n4
 status: active
-tags: [vanguard, tutorial, setup, starting-order]
+tags: [vanguard, tutorial, setup, starting-order, mulligan]
 prerequisites: []
 summary: >-
-  Leggere l'automatismo del ride deck e la frase che assegna il primo turno a
-  chi vince a janken.
+  Leggere setup automatico, ordine di turno, mulligan prima del fight e messaggi
+  di attesa o preparazione completata.
 ---
 
-# Ride deck e ordine di turno nel tutorial Vanguard
+# Ride deck, ordine e mulligan nel tutorial Vanguard
 
 Nel tutorial di Vanguard, prima ancora di giocare carte dalla mano, il gioco
-spiega due cose molto concrete: quale carta viene messa sul campo senza scelta
-manuale e come si decide chi parte. Il registro è amichevole, con `よ` finale,
-ma la struttura delle frasi è precisa: [{{自動|じどう}}{{的|てき}}](term:term-jidouteki)
+costruisce il setup in passaggi molto concreti: quale carta viene messa sul
+campo senza scelta manuale, come si decide chi parte e quando puoi rifare la
+mano iniziale. Il registro è amichevole, con `よ` finale, ma la struttura delle
+frasi è precisa: [{{自動|じどう}}{{的|てき}}](term:term-jidouteki)
 toglie l'azione dalle mani del giocatore, mentre
 [{{決定|けってい}}します](term:term-kettei-shimasu) presenta la scelta
 dell'ordine in registro pulito da schermata. Subito dopo,
 [{{勝|か}}った{{方|ほう}}](term:term-katta-hou) trasforma il risultato di
 [じゃんけん](term:term-janken) nel lato che riceve [{{先攻|せんこう}}](term:term-senkou).
 
-Le due frasi da tenere insieme sono `ライドデッキのグレード{{0|ゼロ}}のカードが
-{{自動|じどう}}{{的|てき}}に{{置|お}}かれる` e
-`{{先攻|せんこう}}・{{後攻|こうこう}}を{{決定|けってい}}します` e
-`{{勝|か}}った{{方|ほう}}が{{先攻|せんこう}}`. La prima parla di decisione dei
-ruoli, la seconda assegna il primo turno al lato vincente.
+Quando compaiono le carte in mano, il tutorial aggiunge un altro livello:
+`いらないカードがあったら` apre una condizione, [{{開始|かいし}}{{前|まえ}}](term:term-kaishi-mae)
+fissa il timing, e `{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができる`
+limita il mulligan a una sola volta. Poi i messaggi di sistema come
+[{{操作|そうさ}}](term:term-sousa) e
+[{{準備|じゅんび}}{{完了|かんりょう}}](term:term-junbi-kanryou) ti dicono se il
+gioco sta ancora aspettando input o se può iniziare il fight.
 
 ## Termini chiave
 
@@ -42,6 +45,14 @@ ruoli, la seconda assegna il primo turno al lato vincente.
 - [{{勝|か}}った{{方|ほう}}](term:term-katta-hou) — il lato o giocatore che ha vinto
 - [{{先攻|せんこう}}](term:term-senkou) — andare per primi
 - [{{後攻|こうこう}}](term:term-koukou) — andare per secondi
+- [{{開始|かいし}}{{前|まえ}}](term:term-kaishi-mae) — prima dell'inizio
+- [{{操作|そうさ}}](term:term-sousa) — operazione / input del giocatore
+- [{{準備|じゅんび}}{{完了|かんりょう}}](term:term-junbi-kanryou) — preparazione completata
+
+## Espressioni ricorrenti
+
+- [いらないカードがあったら](term:term-iranai-card-ga-attara) — se ci sono carte che non ti servono
+- [いらないカードがあったらファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ](term:term-vanguard-mulligan-full) — condizione, timing e limite del mulligan
 
 ---
 
@@ -166,6 +177,71 @@ translation_it: >-
 un confronto tra player: la frase assegna il diritto al primo turno al lato che
 ha vinto la procedura.
 
+## 3. Mulligan e messaggi di stato prima del fight
+
+`いらないカードがあったら` parte da una forma molto concreta. `いらない` è "non
+serve / non lo voglio", `カードがあったら` è "se ci sono carte"; insieme crea
+la condizione per cambiare mano. Il tutorial non sta dicendo che tutte le carte
+sono inutili: sta parlando delle carte che, nella mano iniziale, non vuoi tenere.
+
+[{{開始|かいし}}{{前|まえ}}](term:term-kaishi-mae) stringe il timing. `{{開始|かいし}}`
+è "inizio / avvio", `{{前|まえ}}` è "prima": in
+`ファイト{{開始|かいし}}{{前|まえ}}に`, il `に` aggancia l'azione al momento
+prima dell'inizio del fight. La finestra è quindi pre-partita, non durante il
+turno.
+
+:::example_sentence
+jp: >-
+  いらないカードがあったらファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ。
+translation_it: >-
+  Se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta
+  prima dell'inizio del match.
+:::
+
+#### 🗺️ Anatomia della frase
+
+*   `いらないカードがあったら` ➔ **Condizione sulla mano**: `あったら` apre il caso
+    "se ci sono"; il soggetto è la carta che non vuoi tenere.
+*   `ファイト[{{開始|かいし}}{{前|まえ}}](term:term-kaishi-mae)に` ➔ **Timing
+    pre-fight**: `に` colloca l'azione prima dell'inizio della partita.
+*   `{{一度|いちど}}だけ` ➔ **Limite numerico**: `だけ` restringe la possibilità a
+    una sola volta.
+*   `{{引|ひ}}き{{直|なお}}しができるよ` ➔ **Possibilità di rifare la pescata**:
+    `{{引|ひ}}き{{直|なお}}し` è la pescata rifatta; `できる` dice che è possibile.
+
+[{{操作|そうさ}}](term:term-sousa) sposta la frase dalla regola al controllo del
+giocatore. In `あなたの{{操作|そうさ}}を{{待|ま}}っています`, `あなたの` marca
+l'input come tuo, `を` lo rende oggetto dell'attesa, e `{{待|ま}}っています`
+descrive lo stato in corso: il gioco è fermo perché aspetta la tua azione.
+
+:::example_sentence
+jp: >-
+  あなたの{{操作|そうさ}}を{{待|ま}}っています。
+translation_it: >-
+  Sta aspettando la tua operazione.
+:::
+
+[{{準備|じゅんび}}{{完了|かんりょう}}](term:term-junbi-kanryou) chiude invece la
+preparazione. `{{準備|じゅんび}}` è ciò che doveva essere pronto; `{{完了|かんりょう}}`
+dice che è completato. In `さあ、これで{{準備|じゅんび}}{{完了|かんりょう}}！`,
+`これで` significa "con questo": dopo l'ultimo passaggio, lo stato passa da
+attesa a partenza.
+
+:::example_sentence
+jp: >-
+  さあ、これで{{準備|じゅんび}}{{完了|かんりょう}}！ファイトを{{始|はじ}}めるよ。
+translation_it: >-
+  Bene, con questo la preparazione è completa! Iniziamo il fight.
+:::
+
+#### ⚖️ Contrasto operativo
+
+[{{操作|そうさ}}](term:term-sousa) indica un input ancora atteso;
+[{{準備|じゅんび}}{{完了|かんりょう}}](term:term-junbi-kanryou) indica che la
+preparazione è già chiusa. Se li leggi come due messaggi generici di sistema,
+perdi il passaggio più importante: prima il gioco aspetta te, poi autorizza
+l'inizio del fight.
+
 ## Esempi guidati di riepilogo
 
 :::example_sentence
@@ -180,6 +256,28 @@ jp: >-
   {{先攻|せんこう}}・{{後攻|こうこう}}を{{決定|けってい}}します。
 translation_it: >-
   Si decide chi va per primo e chi per secondo.
+:::
+
+:::example_sentence
+jp: >-
+  いらないカードがあったら、{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}せる。
+translation_it: >-
+  Se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta
+  prima dell'inizio.
+:::
+
+:::example_sentence
+jp: >-
+  あなたの{{操作|そうさ}}を{{待|ま}}っています。
+translation_it: >-
+  Sta aspettando la tua operazione.
+:::
+
+:::example_sentence
+jp: >-
+  これで{{準備|じゅんび}}{{完了|かんりょう}}。ファイトを{{始|はじ}}めるよ。
+translation_it: >-
+  Con questo la preparazione è completa. Iniziamo il fight.
 :::
 
 :::example_sentence
@@ -204,4 +302,7 @@ controlla quale azione il sistema sta facendo al posto tuo. Quando usa
 `を`: sono i ruoli da fissare. Quando usa
 [{{勝|か}}った{{方|ほう}}](term:term-katta-hou), cerca subito il ruolo che viene
 assegnato dopo `が`: in questa schermata è [{{先攻|せんこう}}](term:term-senkou),
-cioè il primo turno della partita.
+cioè il primo turno della partita. Quando vedi
+[いらないカードがあったら](term:term-iranai-card-ga-attara), cerca subito il timing
+e il limite: nel tutorial sono
+[{{開始|かいし}}{{前|まえ}}](term:term-kaishi-mae) e `{{一度|いちど}}だけ`.

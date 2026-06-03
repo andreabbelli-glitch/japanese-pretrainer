@@ -110,6 +110,75 @@ notes_it: >-
 level_hint: custom
 :::
 
+:::term
+id: term-iranai-card-ga-attara
+lemma: いらないカードがあったら
+reading: いらないカードがあったら
+romaji: iranai kaado ga attara
+meaning_it: se ci sono carte che non vuoi / non ti servono
+pos: expression
+notes_it: >-
+  `いらない` descrive carte non desiderate nella mano iniziale; `あったら` apre la
+  condizione "se ci sono". Nel tutorial introduce la possibilità di rifare la
+  pescata prima del fight.
+level_hint: n4
+:::
+
+:::term
+id: term-kaishi-mae
+lemma: 開始前
+reading: かいしまえ
+romaji: kaishi mae
+meaning_it: prima dell'inizio
+pos: temporal noun
+notes_it: >-
+  Unisce `{{開始|かいし}}`, inizio, e `{{前|まえ}}`, prima. In
+  `ファイト{{開始|かいし}}{{前|まえ}}に` segnala che l'azione avviene prima
+  dell'inizio del match.
+level_hint: n4
+:::
+
+:::term
+id: term-vanguard-mulligan-full
+lemma: いらないカードがあったらファイト開始前に一度だけ引き直しができるよ
+reading: いらないカードがあったらふぁいとかいしまえにいちどだけひきなおしができるよ
+romaji: iranai kaado ga attara faito kaishi mae ni ichido dake hikinaoshi ga dekiru yo
+meaning_it: se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta prima dell'inizio del match
+pos: sentence
+notes_it: >-
+  La frase completa combina condizione, timing e limite: se la mano contiene
+  carte che non vuoi tenere, il mulligan è possibile solo una volta prima
+  dell'inizio del fight.
+level_hint: n4
+:::
+
+:::term
+id: term-sousa
+lemma: 操作
+reading: そうさ
+romaji: sousa
+meaning_it: operazione / input / controllo
+pos: suru-noun
+notes_it: >-
+  Nei messaggi UI indica l'azione richiesta al giocatore. In
+  `あなたの{{操作|そうさ}}を{{待|ま}}っています`, il sistema è in attesa del tuo
+  input.
+level_hint: n4
+:::
+
+:::term
+id: term-junbi-kanryou
+lemma: 準備完了
+reading: じゅんびかんりょう
+romaji: junbi kanryou
+meaning_it: preparazione completata / pronto
+pos: expression
+notes_it: >-
+  `{{準備|じゅんび}}` è la preparazione; `{{完了|かんりょう}}` dice che è conclusa.
+  Nel tutorial segnala che il setup è finito e il fight può iniziare.
+level_hint: n4
+:::
+
 :::card
 id: card-jidouteki-recognition
 lesson_id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order
@@ -147,6 +216,101 @@ notes_it: >-
 tags: [vanguard, tutorial, starting-order]
 :::
 
+:::card
+id: card-iranai-card-ga-attara-recognition
+lesson_id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order
+entry_type: term
+entry_id: term-iranai-card-ga-attara
+card_type: recognition
+front: 'いらないカードがあったら'
+back: 'se ci sono carte che non vuoi / non ti servono'
+example_jp: >-
+  いらないカードがあったらファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ。
+example_it: >-
+  Se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta
+  prima dell'inizio del match.
+notes_it: >-
+  `いらないカード` sono le carte che non vuoi tenere; `あったら` apre la
+  condizione che rende disponibile il cambio mano.
+tags: [vanguard, tutorial, mulligan]
+:::
+
+:::card
+id: card-kaishi-mae-recognition
+lesson_id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order
+entry_type: term
+entry_id: term-kaishi-mae
+card_type: recognition
+front: '{{開始|かいし}}{{前|まえ}}'
+back: "prima dell'inizio"
+example_jp: >-
+  ファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ。
+example_it: >-
+  Puoi pescare di nuovo solo una volta prima dell'inizio del fight.
+notes_it: >-
+  `{{開始|かいし}}{{前|まえ}}` fissa una finestra temporale: l'azione deve
+  avvenire prima che il fight inizi.
+tags: [vanguard, tutorial, timing]
+:::
+
+:::card
+id: card-vanguard-mulligan-full-recognition
+lesson_id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order
+entry_type: term
+entry_id: term-vanguard-mulligan-full
+card_type: recognition
+front: >-
+  いらないカードがあったら
+  ファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ
+back: >-
+  Se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta
+  prima dell'inizio del match.
+example_jp: >-
+  いらないカードがあったらファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ。
+example_it: >-
+  Se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta
+  prima dell'inizio del match.
+notes_it: >-
+  La frase completa va letta in tre pezzi: condizione con `あったら`, timing con
+  `ファイト{{開始|かいし}}{{前|まえ}}に`, e limite con `{{一度|いちど}}だけ`.
+tags: [vanguard, tutorial, mulligan]
+:::
+
+:::card
+id: card-sousa-recognition
+lesson_id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order
+entry_type: term
+entry_id: term-sousa
+card_type: recognition
+front: '{{操作|そうさ}}'
+back: 'operazione; input; controllo'
+example_jp: >-
+  あなたの{{操作|そうさ}}を{{待|ま}}っています。
+example_it: >-
+  Sta aspettando la tua operazione.
+notes_it: >-
+  Nei messaggi UI, `{{操作|そうさ}}` è l'input che il sistema aspetta dal
+  giocatore: scelta, conferma o comando.
+tags: [vanguard, tutorial, ui]
+:::
+
+:::card
+id: card-junbi-kanryou-recognition
+lesson_id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order
+entry_type: term
+entry_id: term-junbi-kanryou
+card_type: recognition
+front: '{{準備|じゅんび}}{{完了|かんりょう}}'
+back: 'preparazione completata; ready'
+example_jp: >-
+  さあ、これで{{準備|じゅんび}}{{完了|かんりょう}}！ファイトを{{始|はじ}}めるよ。
+example_it: >-
+  Bene, con questo la preparazione è completa! Iniziamo il fight.
+notes_it: >-
+  `{{準備|じゅんび}}{{完了|かんりょう}}` segnala che il setup è chiuso. Dopo questo
+  messaggio il tutorial passa all'inizio del fight.
+tags: [vanguard, tutorial, setup]
+:::
 :::card
 id: card-katta-hou-recognition
 lesson_id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order

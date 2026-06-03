@@ -2276,6 +2276,24 @@
       "updatedAt": "2026-05-24T16:22:57.068Z"
     },
     {
+      "entryId": "term-iranai-card-ga-attara",
+      "entryKind": "term",
+      "label": "いらないカードがあったら",
+      "mediaSlug": "tcg-generale",
+      "reading": "いらないカードがあったら",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-06-03T09:39:58.300Z"
+    },
+    {
+      "entryId": "term-kaishi-mae",
+      "entryKind": "term",
+      "label": "開始前",
+      "mediaSlug": "tcg-generale",
+      "reading": "かいしまえ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-06-03T09:40:01.102Z"
+    },
+    {
       "entryId": "term-katta-hou",
       "entryKind": "term",
       "label": "勝った方",
@@ -2292,6 +2310,15 @@
       "reading": "けっていします",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-06-02T23:19:06.594Z"
+    },
+    {
+      "entryId": "term-vanguard-mulligan-full",
+      "entryKind": "term",
+      "label": "いらないカードがあったらファイト開始前に一度だけ引き直しができるよ",
+      "mediaSlug": "tcg-generale",
+      "reading": "いらないカードがあったらふぁいとかいしまえにいちどだけひきなおしができるよ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-06-03T09:40:03.749Z"
     },
     {
       "entryId": "grammar-da-to-kanjiru",

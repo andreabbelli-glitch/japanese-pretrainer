@@ -106,3 +106,40 @@ requests:
     notes: >-
       L'immagine era allegata al prompt, ma non risultava materializzata come
       file locale nella sessione.
+  - id: vanguard-mulligan-hand-screen
+    lesson_slug: vanguard-tutorial-ride-deck-and-starting-order
+    anchor: "## 3. Mulligan e messaggi di stato prima del fight"
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      La schermata mostra la mano iniziale e la bolla tutorial con la frase sul
+      mulligan prima dell'inizio del fight.
+    visual_goal: >-
+      Rendere leggibili `いらないカードがあったら`,
+      `ファイト開始前に一度だけ引き直しができるよ` e le carte in mano sul
+      board.
+    source_preference: >-
+      Screenshot fornito dall'utente dal tutorial Vanguard.
+    search_hint: >-
+      Vanguard tutorial mulligan hand iranai card attara fight kaishi mae
+      ichido dake hikinaoshi screenshot.
+    capture_instructions: >-
+      Usare lo screenshot fornito dall'utente con la mano da cinque carte e la
+      bolla tutorial in alto; conservare il testo rosso e il contesto del board.
+    must_show: >-
+      Testo `いらないカードがあったら`, riga rossa
+      `ファイト開始前に一度だけ引き直しができるよ` e carte in mano.
+    avoid: >-
+      Crop troppo stretto che taglia la mano o rende il testo rosso
+      illeggibile.
+    alt_it: >-
+      Tutorial Vanguard con mano iniziale e bolla che spiega il mulligan prima
+      del fight.
+    caption_it: >-
+      La bolla apre la condizione
+      [いらないカードがあったら](term:term-iranai-card-ga-attara), poi limita
+      il mulligan a [{{開始|かいし}}{{前|まえ}}](term:term-kaishi-mae) e
+      `{{一度|いちど}}だけ`.
+    notes: >-
+      L'immagine era allegata al prompt, ma non risultava materializzata come
+      file locale nella sessione.

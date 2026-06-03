@@ -3,6 +3,11 @@
   "entries": [
     {
       "entry_type": "term",
+      "entry_id": "term-iranai-card-ga-attara",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-jidouteki",
       "audio_src": "assets/audio/term/term-jidouteki/tofugu-wanikani-自動的.mp3",
       "audio_source": "tofugu_wanikani",
@@ -16,6 +21,21 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-junbi-kanryou",
+      "audio_src": "assets/audio/term/term-junbi-kanryou/forvo-yatebe-し-ゅんひ-かんりょう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "Yatebe",
+      "audio_attribution": "Yatebe via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%BA%96%E5%82%99%E5%AE%8C%E4%BA%86/#ja",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kaishi-mae",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-katta-hou",
       "pitch_accent_status": "miss"
     },
@@ -26,6 +46,24 @@
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E6%B1%BA%E5%AE%9A%E3%81%97%E3%81%BE%E3%81%99",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-sousa",
+      "audio_src": "assets/audio/term/term-sousa/tofugu-wanikani-操作.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E6%93%8D%E4%BD%9C%E3%80%90%E3%81%9D%E3%81%86%E3%81%95%E3%80%91.mp3",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-vanguard-mulligan-full",
+      "pitch_accent_status": "miss"
     }
   ]
 }
