@@ -62,11 +62,11 @@ id: term-katta-hou
 lemma: 勝った方
 reading: かったほう
 romaji: katta hou
-meaning_it: la parte che ha vinto
+meaning_it: chi ha vinto / il lato vincente
 notes_it: >-
-  `{{勝|か}}った` modifica `{{方|ほう}}`: il chunk indica il lato, player o gruppo
-  che ha vinto il confronto appena fatto. Nella schermata Vanguard è il lato che
-  ottiene il primo turno.
+  `{{勝|か}}った` modifica `{{方|ほう}}`: il chunk indica chi ha vinto il
+  confronto appena fatto, che sia un giocatore o un lato della partita. Nella
+  schermata Vanguard è chi ottiene il primo turno.
 level_hint: n4
 :::
 
@@ -115,7 +115,7 @@ id: term-iranai-card-ga-attara
 lemma: いらないカードがあったら
 reading: いらないカードがあったら
 romaji: iranai kaado ga attara
-meaning_it: se ci sono carte che non vuoi / non ti servono
+meaning_it: se hai carte che non vuoi / non ti servono
 pos: expression
 notes_it: >-
   `いらない` descrive carte non desiderate nella mano iniziale; `あったら` apre la
@@ -143,7 +143,7 @@ id: term-vanguard-mulligan-full
 lemma: いらないカードがあったらファイト開始前に一度だけ引き直しができるよ
 reading: いらないカードがあったらふぁいとかいしまえにいちどだけひきなおしができるよ
 romaji: iranai kaado ga attara faito kaishi mae ni ichido dake hikinaoshi ga dekiru yo
-meaning_it: se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta prima dell'inizio del match
+meaning_it: se hai carte che non ti servono, puoi pescare di nuovo solo una volta prima dell'inizio del match
 pos: sentence
 notes_it: >-
   La frase completa combina condizione, timing e limite: se la mano contiene
@@ -157,12 +157,12 @@ id: term-sousa
 lemma: 操作
 reading: そうさ
 romaji: sousa
-meaning_it: operazione / input / controllo
+meaning_it: input / comando / controllo
 pos: suru-noun
 notes_it: >-
-  Nei messaggi UI indica l'azione richiesta al giocatore. In
-  `あなたの{{操作|そうさ}}を{{待|ま}}っています`, il sistema è in attesa del tuo
-  input.
+  Nei messaggi UI indica l'azione o il comando richiesto al giocatore. In
+  `プレイヤーの{{操作|そうさ}}を{{待|ま}}っています`, il sistema è in attesa
+  dell'input del giocatore.
 level_hint: n4
 :::
 
@@ -171,7 +171,7 @@ id: term-junbi-kanryou
 lemma: 準備完了
 reading: じゅんびかんりょう
 romaji: junbi kanryou
-meaning_it: preparazione completata / pronto
+meaning_it: preparazione completata / tutto pronto
 pos: expression
 notes_it: >-
   `{{準備|じゅんび}}` è la preparazione; `{{完了|かんりょう}}` dice che è conclusa.
@@ -223,12 +223,12 @@ entry_type: term
 entry_id: term-iranai-card-ga-attara
 card_type: recognition
 front: 'いらないカードがあったら'
-back: 'se ci sono carte che non vuoi / non ti servono'
+back: 'se hai carte che non vuoi / non ti servono'
 example_jp: >-
   いらないカードがあったらファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ。
 example_it: >-
-  Se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta
-  prima dell'inizio del match.
+  Se hai carte che non ti servono, puoi pescare di nuovo solo una volta prima
+  dell'inizio del match.
 notes_it: >-
   `いらないカード` sono le carte che non vuoi tenere; `あったら` apre la
   condizione che rende disponibile il cambio mano.
@@ -246,7 +246,7 @@ back: "prima dell'inizio"
 example_jp: >-
   ファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ。
 example_it: >-
-  Puoi pescare di nuovo solo una volta prima dell'inizio del fight.
+  Puoi pescare di nuovo una sola volta prima dell'inizio del fight.
 notes_it: >-
   `{{開始|かいし}}{{前|まえ}}` fissa una finestra temporale: l'azione deve
   avvenire prima che il fight inizi.
@@ -259,17 +259,15 @@ lesson_id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order
 entry_type: term
 entry_id: term-vanguard-mulligan-full
 card_type: recognition
-front: >-
-  いらないカードがあったら
-  ファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ
+front: 'いらないカードがあったらファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ'
 back: >-
-  Se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta
-  prima dell'inizio del match.
+  Se hai carte che non ti servono, puoi pescare di nuovo solo una volta prima
+  dell'inizio del match.
 example_jp: >-
   いらないカードがあったらファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ。
 example_it: >-
-  Se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta
-  prima dell'inizio del match.
+  Se hai carte che non ti servono, puoi pescare di nuovo solo una volta prima
+  dell'inizio del match.
 notes_it: >-
   La frase completa va letta in tre pezzi: condizione con `あったら`, timing con
   `ファイト{{開始|かいし}}{{前|まえ}}に`, e limite con `{{一度|いちど}}だけ`.
@@ -283,11 +281,11 @@ entry_type: term
 entry_id: term-sousa
 card_type: recognition
 front: '{{操作|そうさ}}'
-back: 'operazione; input; controllo'
+back: 'input; comando; controllo'
 example_jp: >-
-  あなたの{{操作|そうさ}}を{{待|ま}}っています。
+  プレイヤーの{{操作|そうさ}}を{{待|ま}}っています。
 example_it: >-
-  Sta aspettando la tua operazione.
+  Il sistema è in attesa dell'input del giocatore.
 notes_it: >-
   Nei messaggi UI, `{{操作|そうさ}}` è l'input che il sistema aspetta dal
   giocatore: scelta, conferma o comando.
@@ -301,16 +299,17 @@ entry_type: term
 entry_id: term-junbi-kanryou
 card_type: recognition
 front: '{{準備|じゅんび}}{{完了|かんりょう}}'
-back: 'preparazione completata; ready'
+back: 'preparazione completata; tutto pronto'
 example_jp: >-
   さあ、これで{{準備|じゅんび}}{{完了|かんりょう}}！ファイトを{{始|はじ}}めるよ。
 example_it: >-
-  Bene, con questo la preparazione è completa! Iniziamo il fight.
+  Ecco, ora è tutto pronto! Iniziamo il fight.
 notes_it: >-
   `{{準備|じゅんび}}{{完了|かんりょう}}` segnala che il setup è chiuso. Dopo questo
   messaggio il tutorial passa all'inizio del fight.
 tags: [vanguard, tutorial, setup]
 :::
+
 :::card
 id: card-katta-hou-recognition
 lesson_id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order
@@ -318,13 +317,13 @@ entry_type: term
 entry_id: term-katta-hou
 card_type: recognition
 front: '{{勝|か}}った{{方|ほう}}'
-back: 'la parte / il giocatore che ha vinto'
+back: 'chi ha vinto; il lato vincente'
 example_jp: >-
   {{勝|か}}った{{方|ほう}}が{{先攻|せんこう}}だよ。
 example_it: >-
   Chi ha vinto va per primo.
 notes_it: >-
-  `{{方|ほう}}` qui non è una direzione fisica: dopo `{{勝|か}}った` indica il
-  lato o player vincente, quello a cui viene assegnato `{{先攻|せんこう}}`.
+  `{{方|ほう}}` qui non è una direzione fisica: dopo `{{勝|か}}った` indica chi
+  ha vinto, cioè il giocatore o lato a cui viene assegnato `{{先攻|せんこう}}`.
 tags: [vanguard, tutorial, starting-order]
 :::

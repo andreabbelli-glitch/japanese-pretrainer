@@ -22,10 +22,11 @@ campo senza scelta manuale, come si decide chi parte e quando puoi rifare la
 mano iniziale. Il registro è amichevole, con `よ` finale, ma la struttura delle
 frasi è precisa: [{{自動|じどう}}{{的|てき}}](term:term-jidouteki)
 toglie l'azione dalle mani del giocatore, mentre
-[{{決定|けってい}}します](term:term-kettei-shimasu) presenta la scelta
+[{{決定|けってい}}します](term:term-kettei-shimasu) presenta l'assegnazione
 dell'ordine in registro pulito da schermata. Subito dopo,
 [{{勝|か}}った{{方|ほう}}](term:term-katta-hou) trasforma il risultato di
-[じゃんけん](term:term-janken) nel lato che riceve [{{先攻|せんこう}}](term:term-senkou).
+[じゃんけん](term:term-janken) nel giocatore o lato a cui viene assegnato
+[{{先攻|せんこう}}](term:term-senkou).
 
 Quando compaiono le carte in mano, il tutorial aggiunge un altro livello:
 `いらないカードがあったら` apre una condizione, [{{開始|かいし}}{{前|まえ}}](term:term-kaishi-mae)
@@ -33,7 +34,7 @@ fissa il timing, e `{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しが
 limita il mulligan a una sola volta. Poi i messaggi di sistema come
 [{{操作|そうさ}}](term:term-sousa) e
 [{{準備|じゅんび}}{{完了|かんりょう}}](term:term-junbi-kanryou) ti dicono se il
-gioco sta ancora aspettando input o se può iniziare il fight.
+gioco sta ancora aspettando un comando o se può iniziare il fight.
 
 ## Termini chiave
 
@@ -42,16 +43,16 @@ gioco sta ancora aspettando input o se può iniziare il fight.
 - [{{自動|じどう}}{{的|てき}}](term:term-jidouteki) — automatico / automaticamente
 - [じゃんけん](term:term-janken) — morra cinese usata per decidere l'ordine
 - [{{決定|けってい}}します](term:term-kettei-shimasu) — si decide / si stabilisce
-- [{{勝|か}}った{{方|ほう}}](term:term-katta-hou) — il lato o giocatore che ha vinto
+- [{{勝|か}}った{{方|ほう}}](term:term-katta-hou) — chi ha vinto / il lato vincente
 - [{{先攻|せんこう}}](term:term-senkou) — andare per primi
 - [{{後攻|こうこう}}](term:term-koukou) — andare per secondi
 - [{{開始|かいし}}{{前|まえ}}](term:term-kaishi-mae) — prima dell'inizio
-- [{{操作|そうさ}}](term:term-sousa) — operazione / input del giocatore
-- [{{準備|じゅんび}}{{完了|かんりょう}}](term:term-junbi-kanryou) — preparazione completata
+- [{{操作|そうさ}}](term:term-sousa) — input / comando del giocatore
+- [{{準備|じゅんび}}{{完了|かんりょう}}](term:term-junbi-kanryou) — preparazione completata / tutto pronto
 
 ## Espressioni ricorrenti
 
-- [いらないカードがあったら](term:term-iranai-card-ga-attara) — se ci sono carte che non ti servono
+- [いらないカードがあったら](term:term-iranai-card-ga-attara) — se hai carte che non ti servono
 - [いらないカードがあったらファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ](term:term-vanguard-mulligan-full) — condizione, timing e limite del mulligan
 
 ---
@@ -97,26 +98,26 @@ translation_it: >-
 già creato. La lettura pratica è quindi "guarda dove è stata messa la carta di
 partenza", non "scegli tu quale carta piazzare".
 
-## 2. Janken decide quale lato riceve {{先攻|せんこう}}
+## 2. Janken decide a chi va {{先攻|せんこう}}
 
 La seconda bolla cambia argomento: da setup automatico passa alla decisione
 dell'ordine. [じゃんけん](term:term-janken) è il metodo, `で` lo marca come
 mezzo, e `{{先攻|せんこう}}・{{後攻|こうこう}}を{{決|き}}める` dice che il gioco
-sta determinando i due ruoli di turno; il vincitore della morra serve a
-scegliere quale lato riceve il primo ruolo.
+sta determinando i due ruoli di turno; il vincitore della morra determina a
+chi viene assegnato il primo ruolo.
 
 [{{決定|けってい}}します](term:term-kettei-shimasu) è la versione più formale e
 da schermata della stessa azione. `{{決定|けってい}}` è "decisione /
 determinazione"; `します` la rende un verbo cortese. In
 `{{先攻|せんこう}}・{{後攻|こうこう}}を{{決定|けってい}}します`, `を` marca i due
-ruoli come oggetto della decisione: il gioco non sta chiedendo di scegliere una
-mano di janken, ma sta stabilendo chi sarà primo e chi secondo.
+ruoli come oggetto della decisione: il gioco non sta chiedendo una scelta al
+giocatore, ma sta stabilendo chi sarà primo e chi secondo.
 
 [{{先攻|せんこう}}](term:term-senkou) combina `{{先|せん}}`, "prima / davanti",
-con `{{攻|こう}}`, "attacco / iniziativa". [{{後攻|こうこう}}](term:term-koukou)
+con `{{攻|こう}}`, "attaccare / agire". [{{後攻|こうこう}}](term:term-koukou)
 usa lo stesso `{{攻|こう}}`, ma con `{{後|こう}}`: il lato non apre, agisce
 dopo. In un tutorial TCG questi due label sono più importanti del colore del
-cartiglio, perché dicono chi prende il primo turno.
+cartiglio, perché dicono chi prende il primo turno e chi aspetta il secondo.
 
 :::example_sentence
 jp: >-
@@ -152,7 +153,7 @@ translation_it: >-
     "stabilire / decidere"; `よ` mantiene il tono da guida.
 
 Subito dopo, il tutorial evidenzia la regola operativa in rosso:
-[{{勝|か}}った{{方|ほう}}](term:term-katta-hou) è il lato che ha vinto la
+[{{勝|か}}った{{方|ほう}}](term:term-katta-hou) indica chi ha vinto la
 morra cinese, e quel lato diventa [{{先攻|せんこう}}](term:term-senkou).
 
 :::example_sentence
@@ -165,8 +166,8 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `[{{勝|か}}った{{方|ほう}}](term:term-katta-hou)が` ➔ **Lato vincente**:
-    `{{勝|か}}った` modifica `{{方|ほう}}` e costruisce il chunk "la parte /
-    persona che ha vinto".
+    `{{勝|か}}った` modifica `{{方|ほう}}` e costruisce il chunk "chi ha vinto /
+    il lato vincente".
 *   `[{{先攻|せんこう}}](term:term-senkou)だよ` ➔ **Ruolo assegnato**: `だ`
     collega quel lato al ruolo di primo turno.
 
@@ -174,8 +175,8 @@ translation_it: >-
 
 `{{方|ほう}}` può indicare anche una direzione o un lato in senso spaziale. In
 `{{勝|か}}った{{方|ほう}}`, però, il modificatore `{{勝|か}}った` lo porta dentro
-un confronto tra player: la frase assegna il diritto al primo turno al lato che
-ha vinto la procedura.
+un confronto tra giocatori: la frase assegna il diritto al primo turno a chi ha
+vinto la procedura.
 
 ## 3. Mulligan e messaggi di stato prima del fight
 
@@ -194,7 +195,7 @@ turno.
 jp: >-
   いらないカードがあったらファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}しができるよ。
 translation_it: >-
-  Se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta
+  Se hai carte che non ti servono, puoi pescare di nuovo solo una volta
   prima dell'inizio del match.
 :::
 
@@ -210,15 +211,16 @@ translation_it: >-
     `{{引|ひ}}き{{直|なお}}し` è la pescata rifatta; `できる` dice che è possibile.
 
 [{{操作|そうさ}}](term:term-sousa) sposta la frase dalla regola al controllo del
-giocatore. In `あなたの{{操作|そうさ}}を{{待|ま}}っています`, `あなたの` marca
-l'input come tuo, `を` lo rende oggetto dell'attesa, e `{{待|ま}}っています`
-descrive lo stato in corso: il gioco è fermo perché aspetta la tua azione.
+giocatore. In `プレイヤーの{{操作|そうさ}}を{{待|ま}}っています`, `プレイヤーの`
+marca di chi è l'input, `を` lo rende oggetto dell'attesa, e
+`{{待|ま}}っています` descrive lo stato in corso: il gioco è fermo perché
+aspetta un comando.
 
 :::example_sentence
 jp: >-
-  あなたの{{操作|そうさ}}を{{待|ま}}っています。
+  プレイヤーの{{操作|そうさ}}を{{待|ま}}っています。
 translation_it: >-
-  Sta aspettando la tua operazione.
+  Il sistema è in attesa dell'input del giocatore.
 :::
 
 [{{準備|じゅんび}}{{完了|かんりょう}}](term:term-junbi-kanryou) chiude invece la
@@ -231,7 +233,7 @@ attesa a partenza.
 jp: >-
   さあ、これで{{準備|じゅんび}}{{完了|かんりょう}}！ファイトを{{始|はじ}}めるよ。
 translation_it: >-
-  Bene, con questo la preparazione è completa! Iniziamo il fight.
+  Ecco, ora è tutto pronto! Iniziamo il fight.
 :::
 
 #### ⚖️ Contrasto operativo
@@ -239,8 +241,8 @@ translation_it: >-
 [{{操作|そうさ}}](term:term-sousa) indica un input ancora atteso;
 [{{準備|じゅんび}}{{完了|かんりょう}}](term:term-junbi-kanryou) indica che la
 preparazione è già chiusa. Se li leggi come due messaggi generici di sistema,
-perdi il passaggio più importante: prima il gioco aspetta te, poi autorizza
-l'inizio del fight.
+perdi il passaggio più importante: prima il gioco aspetta un comando, poi
+autorizza l'inizio del fight.
 
 ## Esempi guidati di riepilogo
 
@@ -260,38 +262,38 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  いらないカードがあったら、{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}せる。
+  いらないカードがあったら、ファイト{{開始|かいし}}{{前|まえ}}に{{一度|いちど}}だけ{{引|ひ}}き{{直|なお}}せる。
 translation_it: >-
-  Se ci sono carte che non ti servono, puoi pescare di nuovo solo una volta
-  prima dell'inizio.
+  Se hai carte che non ti servono, puoi pescare di nuovo una sola volta prima
+  dell'inizio del fight.
 :::
 
 :::example_sentence
 jp: >-
-  あなたの{{操作|そうさ}}を{{待|ま}}っています。
+  プレイヤーの{{操作|そうさ}}を{{待|ま}}っています。
 translation_it: >-
-  Sta aspettando la tua operazione.
+  Il sistema è in attesa dell'input del giocatore.
 :::
 
 :::example_sentence
 jp: >-
   これで{{準備|じゅんび}}{{完了|かんりょう}}。ファイトを{{始|はじ}}めるよ。
 translation_it: >-
-  Con questo la preparazione è completa. Iniziamo il fight.
+  Ora è tutto pronto. Iniziamo il fight.
 :::
 
 :::example_sentence
 jp: >-
   じゃんけんで{{勝|か}}った{{方|ほう}}が{{先攻|せんこう}}になる。
 translation_it: >-
-  La parte che vince a janken diventa il lato che va per primo.
+  Chi vince a janken va per primo.
 :::
 
 :::example_sentence
 jp: >-
-  {{後攻|こうこう}}のプレイヤーは{{先攻|せんこう}}のあとに{{動|うご}}く。
+  {{後攻|こうこう}}のプレイヤーは{{先攻|せんこう}}のあとにプレイする。
 translation_it: >-
-  Il giocatore che va per secondo agisce dopo quello che va per primo.
+  Il giocatore che va per secondo gioca dopo quello che va per primo.
 :::
 
 ## Nota finale
