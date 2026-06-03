@@ -111,6 +111,16 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-kecchaku-o-tsukeru-vanguard-settle",
+      "audio_src": "assets/audio/term/term-kecchaku-o-tsukeru-vanguard-settle/forvo-mezashi-けっちゃくをつける.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%B1%BA%E7%9D%80%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B/#ja",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-kettei-shimasu",
       "pitch_accent": 0,
       "pitch_accent_source": "OJAD",
@@ -198,6 +208,19 @@
       "audio_speaker": "strawberrybrown",
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E5%85%83%E3%80%85/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-namaiki-vanguard-cheeky",
+      "audio_src": "assets/audio/term/term-namaiki-vanguard-cheeky/forvo-strawberrybrown-なまいき.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%94%9F%E6%84%8F%E6%B0%97/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Kanjium",
       "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",

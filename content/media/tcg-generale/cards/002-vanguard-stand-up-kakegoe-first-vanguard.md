@@ -246,6 +246,34 @@ notes_it: >-
 level_hint: n3
 :::
 
+:::term
+id: term-namaiki-vanguard-cheeky
+lemma: 生意気
+reading: なまいき
+romaji: namaiki
+meaning_it: insolente / impertinente
+pos: na-adjective
+notes_it: >-
+  {{生意気|なまいき}} descrive un atteggiamento percepito come sfacciato o
+  presuntuoso. In `{{何|なに}}よ{{生意気|なまいき}}ね`, il personaggio reagisce al
+  giocatore con una punta di fastidio e superiorità.
+level_hint: n3
+:::
+
+:::term
+id: term-kecchaku-o-tsukeru-vanguard-settle
+lemma: 決着をつける
+reading: けっちゃくをつける
+romaji: kecchaku o tsukeru
+meaning_it: chiudere la partita / regolare lo scontro
+pos: expression
+notes_it: >-
+  {{決着|けっちゃく}} è la conclusione di uno scontro o di una disputa. Con
+  `をつける`, la frase diventa "{{決着|けっちゃく}}をつける": portare lo scontro
+  a una decisione, cioè chiuderlo in modo definitivo.
+level_hint: n3
+:::
+
 :::card
 id: card-kakegoe-recognition
 lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
@@ -557,4 +585,42 @@ notes_it: >-
   `{{効果|こうか}}を{{発揮|はっき}}する` guarda all'effetto che diventa operativo:
   `を` marca l'effetto come ciò che viene fatto emergere dalla capacità.
 tags: [vanguard, tutorial, effect]
+:::
+
+:::card
+id: card-namaiki-vanguard-cheeky-recognition
+lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
+entry_type: term
+entry_id: term-namaiki-vanguard-cheeky
+card_type: recognition
+front: '{{生意気|なまいき}}'
+back: 'insolente; impertinente; sfacciato'
+example_jp: >-
+  {{何|なに}}よ{{生意気|なまいき}}ね。{{次|つぎ}}のターンで{{決着|けっちゃく}}をつけるわよ。ターンエンド。
+example_it: >-
+  Ma che insolente. Nel prossimo turno chiudo la partita. Fine turno.
+notes_it: >-
+  {{生意気|なまいき}} è un giudizio sul tono o sull'atteggiamento dell'altro.
+  Qui `ね` rende la battuta pungente, come se l'avversaria stesse commentando
+  la sfacciataggine del giocatore.
+tags: [vanguard, tutorial, dialogue]
+:::
+
+:::card
+id: card-kecchaku-o-tsukeru-vanguard-settle-recognition
+lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
+entry_type: term
+entry_id: term-kecchaku-o-tsukeru-vanguard-settle
+card_type: recognition
+front: '{{決着|けっちゃく}}をつける'
+back: 'chiudere la partita; regolare lo scontro'
+example_jp: >-
+  {{何|なに}}よ{{生意気|なまいき}}ね。{{次|つぎ}}のターンで{{決着|けっちゃく}}をつけるわよ。ターンエンド。
+example_it: >-
+  Ma che insolente. Nel prossimo turno chiudo la partita. Fine turno.
+notes_it: >-
+  `{{次|つぎ}}のターンで` fissa il momento, mentre
+  {{決着|けっちゃく}}をつける annuncia che lo scontro verrà portato a una
+  conclusione netta.
+tags: [vanguard, tutorial, dialogue]
 :::

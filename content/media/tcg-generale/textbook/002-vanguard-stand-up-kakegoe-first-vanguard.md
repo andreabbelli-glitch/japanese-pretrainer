@@ -40,6 +40,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
   `{{起動|きどう}}{{能力|のうりょく}}` indica una capacità attivabile
 - [{{発揮|はっき}}](term:term-hakki-vanguard-effect) — manifestazione /
   efficacia espressa da un effetto
+- [{{生意気|なまいき}}](term:term-namaiki-vanguard-cheeky) — insolente /
+  impertinente
 - [ともに](term:term-tomoni) — insieme / assieme; mette più elementi nella
   stessa azione
 - [{{低|ひく}}い](term:term-hikui-low-grade) — basso / inferiore, qui riferito
@@ -66,6 +68,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
   capacità attivabile
 - {{効果|こうか}}を[{{発揮|はっき}}する](term:term-hakki-vanguard-effect) — far
   manifestare / applicare un effetto
+- {{次|つぎ}}のターンで[{{決着|けっちゃく}}をつける](term:term-kecchaku-o-tsukeru-vanguard-settle)
+  — chiudere la partita al turno successivo
 - `リアガードは、ともに{{戦|たたか}}ってくれる{{仲間|なかま}}のユニット` — i rear-guard
   sono unità compagne che combattono insieme
 - `ヴァンガードと{{同|おな}}じか{{低|ひく}}いグレード` — grado uguale o inferiore al
@@ -172,6 +176,22 @@ translation_it: >-
 [{{確定|かくてい}}](term:term-kakutei) si colloca nello stesso registro di UI:
 `フェイズを{{確定|かくてい}}する` significa confermare la fase, cioè fissare quella
 scelta prima di procedere.
+
+Il dialogo dell'avversaria cambia registro e porta dentro una sfida diretta:
+{{何|なに}}よ[{{生意気|なまいき}}](term:term-namaiki-vanguard-cheeky)ね。{{次|つぎ}}のターンで[{{決着|けっちゃく}}をつける](term:term-kecchaku-o-tsukeru-vanguard-settle)わよ。ターンエンド。
+`{{何|なに}}よ` apre come reazione secca, [{{生意気|なまいき}}](term:term-namaiki-vanguard-cheeky)
+giudica l'atteggiamento dell'altro come impertinente e `ね` lo rende
+un'osservazione pungente. Nella frase successiva, `{{次|つぎ}}のターンで` dà il
+momento preciso e [{{決着|けっちゃく}}をつける](term:term-kecchaku-o-tsukeru-vanguard-settle)
+annuncia che lo scontro verrà chiuso. `わよ` dà una spinta assertiva alla
+minaccia, poi `ターンエンド` chiude il turno.
+
+:::example_sentence
+jp: >-
+  {{何|なに}}よ{{生意気|なまいき}}ね。{{次|つぎ}}のターンで{{決着|けっちゃく}}をつけるわよ。ターンエンド。
+translation_it: >-
+  Ma che insolente. Nel prossimo turno chiudo la partita. Fine turno.
+:::
 
 ## 3. Rear-guard, grado e call
 
