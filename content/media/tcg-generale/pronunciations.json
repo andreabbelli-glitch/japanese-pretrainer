@@ -127,6 +127,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-me-no-mae-vanguard",
+      "audio_src": "assets/audio/term/term-me-no-mae-vanguard/forvo-strawberrybrown-めのまえ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%9B%AE%E3%81%AE%E5%89%8D/#ja",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-moshi-vanguard-if",
       "audio_src": "assets/audio/term/term-moshi-vanguard-if/forvo-obaka-もし.mp3",
       "audio_source": "forvo",
@@ -191,6 +204,19 @@
       "entry_type": "term",
       "entry_id": "term-vanguard-mulligan-full",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-zenretsu-vanguard-front-row",
+      "audio_src": "assets/audio/term/term-zenretsu-vanguard-front-row/forvo-usako_usagiclub-せ-んれつ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "usako_usagiclub",
+      "audio_attribution": "usako_usagiclub via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%89%8D%E5%88%97/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
     }
   ]
 }
