@@ -228,6 +228,16 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-shugosha-vanguard-guardian",
+      "audio_src": "assets/audio/term/term-shugosha-vanguard-guardian/forvo-cafebiz-しゅこ-しゃ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "cafebiz",
+      "audio_attribution": "cafebiz via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%AE%88%E8%AD%B7%E8%80%85/#ja",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-sousa",
       "audio_src": "assets/audio/term/term-sousa/forvo-manual-操作.mp3",
       "audio_source": "forvo",

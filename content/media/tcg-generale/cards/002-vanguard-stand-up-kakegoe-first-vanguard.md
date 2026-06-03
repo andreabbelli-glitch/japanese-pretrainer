@@ -274,6 +274,20 @@ notes_it: >-
 level_hint: n3
 :::
 
+:::term
+id: term-shugosha-vanguard-guardian
+lemma: 守護者
+reading: しゅごしゃ
+romaji: shugosha
+meaning_it: guardiano / protettore
+pos: noun
+notes_it: >-
+  {{守護者|しゅごしゃ}} indica chi protegge o difende. Nel prompt
+  `{{手札|てふだ}}に{{守護者|しゅごしゃ}}と{{書|か}}かれたカードはある？`,
+  è la dicitura da cercare su una carta nella mano.
+level_hint: n3
+:::
+
 :::card
 id: card-kakegoe-recognition
 lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
@@ -623,4 +637,22 @@ notes_it: >-
   {{決着|けっちゃく}}をつける annuncia che lo scontro verrà portato a una
   conclusione netta.
 tags: [vanguard, tutorial, dialogue]
+:::
+
+:::card
+id: card-shugosha-vanguard-guardian-recognition
+lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
+entry_type: term
+entry_id: term-shugosha-vanguard-guardian
+card_type: recognition
+front: '{{守護者|しゅごしゃ}}'
+back: 'guardiano; protettore'
+example_jp: >-
+  {{手札|てふだ}}に{{守護者|しゅごしゃ}}と{{書|か}}かれたカードはある？
+example_it: >-
+  Hai in mano una carta con scritto Guardiano?
+notes_it: >-
+  `{{守護者|しゅごしゃ}}と{{書|か}}かれたカード` identifica una carta tramite la
+  dicitura stampata. `{{手札|てふだ}}に` restringe la ricerca alla mano.
+tags: [vanguard, tutorial, defense]
 :::

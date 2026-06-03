@@ -42,6 +42,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
   efficacia espressa da un effetto
 - [{{生意気|なまいき}}](term:term-namaiki-vanguard-cheeky) — insolente /
   impertinente
+- [{{守護者|しゅごしゃ}}](term:term-shugosha-vanguard-guardian) — guardiano /
+  protettore
 - [ともに](term:term-tomoni) — insieme / assieme; mette più elementi nella
   stessa azione
 - [{{低|ひく}}い](term:term-hikui-low-grade) — basso / inferiore, qui riferito
@@ -75,6 +77,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
 - `ヴァンガードと{{同|おな}}じか{{低|ひく}}いグレード` — grado uguale o inferiore al
   Vanguard
 - `もしグレード{{1|いち}}を{{持|も}}っていたら` — se hai una unità di grado 1
+- {{手札|てふだ}}に[{{守護者|しゅごしゃ}}](term:term-shugosha-vanguard-guardian)と{{書|か}}かれたカードはある？
+  — hai in mano una carta con scritto Guardiano?
 - `アタックに{{成功|せいこう}}すると` — quando l'attacco riesce
 - `リアガードへのアタックがヒットしたなら` — se l'attacco al rear-guard va a
   segno
@@ -234,11 +238,26 @@ vista di chi guarda: ciò che è proprio davanti agli occhi. [{{前列|ぜんれ
 e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il campo come
 righe: fila davanti e fila dietro.
 
+Una verifica dalla mano usa la stessa logica di controllo:
+{{手札|てふだ}}に[{{守護者|しゅごしゃ}}](term:term-shugosha-vanguard-guardian)と{{書|か}}かれたカードはある？
+`{{手札|てふだ}}に` delimita il luogo in cui cercare, cioè la mano del
+giocatore. [{{守護者|しゅごしゃ}}](term:term-shugosha-vanguard-guardian) è la
+dicitura da riconoscere, mentre `と{{書|か}}かれたカード` significa "una carta su
+cui è scritto così". `はある？` chiede se quella carta esiste tra le carte
+disponibili in mano.
+
 :::example_sentence
 jp: >-
   もしグレード{{1|いち}}を{{持|も}}っていたらヴァンガードの{{後|うし}}ろにコールしてみて。
 translation_it: >-
   Se hai una unità di grado 1, prova a chiamarla dietro al Vanguard.
+:::
+
+:::example_sentence
+jp: >-
+  {{手札|てふだ}}に{{守護者|しゅごしゃ}}と{{書|か}}かれたカードはある？
+translation_it: >-
+  Hai in mano una carta con scritto Guardiano?
 :::
 
 #### 🗺️ Anatomia della frase
