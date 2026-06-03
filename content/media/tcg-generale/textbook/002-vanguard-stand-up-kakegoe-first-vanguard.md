@@ -50,6 +50,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
 - [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) — fila posteriore
 - [{{元々|もともと}}](term:term-motomoto) — originariamente / fin dall'inizio
 - [{{減|へ}}らす](term:term-herasu) — ridurre / diminuire, far calare una quantità
+- [{{退却|たいきゃく}}](term:term-taikyaku-vanguard-retire) — ritirata /
+  rimozione dal campo
 
 ## Espressioni ricorrenti
 
@@ -65,6 +67,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
   Vanguard
 - `もしグレード{{1|いち}}を{{持|も}}っていたら` — se hai una unità di grado 1
 - `アタックに{{成功|せいこう}}すると` — quando l'attacco riesce
+- `リアガードへのアタックがヒットしたなら` — se l'attacco al rear-guard va a
+  segno
 
 ---
 
@@ -232,6 +236,13 @@ ridotto. In `{{相手|あいて}}のリアガードを{{減|へ}}らす`, l'ogge
 è il gruppo di rear-guard dell'avversario. La forma `{{減|へ}}らしたり` usa
 `〜たり`, che elenca quell'azione dentro una serie di effetti possibili.
 
+Un secondo prompt porta lo stesso tema su una singola unità:
+リアガードへのアタックがヒットしたなら、そのリアガードは[{{退却|たいきゃく}}](term:term-taikyaku-vanguard-retire).
+`への` aggancia l'attacco al bersaglio rear-guard, `ヒットしたなら` apre la
+condizione "se ha colpito" e `そのリアガードは` riprende proprio quel bersaglio.
+[{{退却|たいきゃく}}](term:term-taikyaku-vanguard-retire) è il risultato
+operativo: quel rear-guard viene rimosso dal campo.
+
 :::example_sentence
 jp: >-
   アタックに{{成功|せいこう}}すると、{{相手|あいて}}のリアガードを{{減|へ}}らしたり、{{相手|あいて}}にダメージを{{与|あた}}えられるよ。
@@ -240,11 +251,22 @@ translation_it: >-
   infliggere danno all'avversario.
 :::
 
+:::example_sentence
+jp: >-
+  リアガードへのアタックがヒットしたなら、そのリアガードは{{退却|たいきゃく}}。
+translation_it: >-
+  Se l'attacco al rear-guard va a segno, quel rear-guard viene ritirato.
+:::
+
 #### 🧠 Gancio cognitivo
 
 Pensa a [{{減|へ}}らす](term:term-herasu) come a un contatore che scende. Se
 l'oggetto è `リアガード`, la frase sta guardando quante unità restano presenti
 sul campo.
+
+Pensa a [{{退却|たいきゃく}}](term:term-taikyaku-vanguard-retire) come alla
+singola carta che lascia il campo: il focus passa dal numero di unità alla
+carta precisa che viene ritirata.
 
 ## Nota finale
 

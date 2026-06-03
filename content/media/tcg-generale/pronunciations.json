@@ -192,6 +192,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-taikyaku-vanguard-retire",
+      "audio_src": "assets/audio/term/term-taikyaku-vanguard-retire/forvo-strawberrybrown-たいきゃく.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "strawberrybrown",
+      "audio_attribution": "strawberrybrown via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%80%80%E5%8D%B4/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-tomoni",
       "audio_src": "assets/audio/term/term-tomoni/forvo-pantera3-ともに.mp3",
       "audio_source": "forvo",

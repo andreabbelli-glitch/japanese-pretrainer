@@ -190,6 +190,20 @@ notes_it: >-
 level_hint: n4
 :::
 
+:::term
+id: term-taikyaku-vanguard-retire
+lemma: 退却
+reading: たいきゃく
+romaji: taikyaku
+meaning_it: ritirata / rimozione dal campo
+pos: suru-noun
+notes_it: >-
+  {{退却|たいきゃく}} indica che una unità viene tolta dal campo. Nel prompt
+  `そのリアガードは{{退却|たいきゃく}}`, il rear-guard appena colpito è la carta da
+  ritirare.
+level_hint: n3
+:::
+
 :::card
 id: card-kakegoe-recognition
 lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
@@ -427,5 +441,23 @@ notes_it: >-
   {{減|へ}}らす guarda alla quantità che scende. Qui il bersaglio è
   `{{相手|あいて}}のリアガード`: l'attacco riuscito può far diminuire le unità
   presenti sul campo avversario.
+tags: [vanguard, tutorial, attack]
+:::
+
+:::card
+id: card-taikyaku-vanguard-retire-recognition
+lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
+entry_type: term
+entry_id: term-taikyaku-vanguard-retire
+card_type: recognition
+front: '{{退却|たいきゃく}}'
+back: 'ritirata; rimozione dal campo'
+example_jp: >-
+  リアガードへのアタックがヒットしたなら、そのリアガードは{{退却|たいきゃく}}。
+example_it: >-
+  Se l'attacco al rear-guard va a segno, quel rear-guard viene ritirato.
+notes_it: >-
+  {{退却|たいきゃく}} è il risultato sul campo: il rear-guard indicato viene
+  rimosso dalla sua posizione dopo l'attacco riuscito.
 tags: [vanguard, tutorial, attack]
 :::
