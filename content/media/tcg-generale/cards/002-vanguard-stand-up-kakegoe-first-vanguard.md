@@ -218,6 +218,20 @@ notes_it: >-
 level_hint: n3
 :::
 
+:::term
+id: term-mekuru-vanguard-reveal
+lemma: めくる
+reading: めくる
+romaji: mekuru
+meaning_it: girare / scoprire una carta
+pos: verb
+notes_it: >-
+  めくる indica il gesto di voltare o scoprire qualcosa che era coperto. Nel
+  drive check, `{{山札|やまふだ}}の{{上|うえ}}を{{1枚|いちまい}}めくって` fa
+  uscire una carta dalla cima del mazzo prima di metterla nella trigger zone.
+level_hint: n3
+:::
+
 :::card
 id: card-kakegoe-recognition
 lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
@@ -493,4 +507,22 @@ notes_it: >-
   presenta il drive check come evento che scatta in quel momento, con `んだ`
   che suona esplicativo.
 tags: [vanguard, tutorial, attack]
+:::
+
+:::card
+id: card-mekuru-vanguard-reveal-recognition
+lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
+entry_type: term
+entry_id: term-mekuru-vanguard-reveal
+card_type: recognition
+front: 'めくる'
+back: 'girare; scoprire una carta'
+example_jp: >-
+  {{山札|やまふだ}}の{{上|うえ}}を{{1枚|いちまい}}めくってトリガーゾーンに{{置|お}}く。
+example_it: >-
+  Scopri una carta dalla cima del mazzo e mettila nella trigger zone.
+notes_it: >-
+  めくって è la forma in `て`: prima scopri la carta dalla cima del mazzo, poi
+  la metti nella zona indicata da `トリガーゾーンに`.
+tags: [vanguard, tutorial, drive-check]
 :::

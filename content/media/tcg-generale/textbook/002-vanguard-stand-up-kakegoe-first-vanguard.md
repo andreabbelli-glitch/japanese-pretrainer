@@ -52,6 +52,7 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
 - [{{減|へ}}らす](term:term-herasu) — ridurre / diminuire, far calare una quantità
 - [{{退却|たいきゃく}}](term:term-taikyaku-vanguard-retire) — ritirata /
   rimozione dal campo
+- [めくる](term:term-mekuru-vanguard-reveal) — girare / scoprire una carta
 
 ## Espressioni ricorrenti
 
@@ -71,6 +72,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
   segno
 - ヴァンガードがアタックするとドライブチェックが[{{発生|はっせい}}するんだ](term:term-hassei-suru-nda-vanguard-occurs)
   — quando il Vanguard attacca, si verifica il drive check
+- {{山札|やまふだ}}の{{上|うえ}}を{{1枚|いちまい}}[めくって](term:term-mekuru-vanguard-reveal)トリガーゾーンに{{置|お}}く
+  — scopri una carta dalla cima del mazzo e mettila nella trigger zone
 
 ---
 
@@ -254,6 +257,14 @@ lo presenta come qualcosa che si verifica in quel momento. Il `んだ` finale d�
 alla frase un tono esplicativo, come una regola che il tutorial sta rendendo
 chiara.
 
+Il passaggio successivo trasforma il drive check in una sequenza fisica:
+{{山札|やまふだ}}の{{上|うえ}}を{{1枚|いちまい}}[めくって](term:term-mekuru-vanguard-reveal)トリガーゾーンに{{置|お}}く.
+`{{山札|やまふだ}}の{{上|うえ}}` indica la cima del mazzo, mentre
+`{{1枚|いちまい}}` usa il contatore `枚` per una singola carta. [めくる](term:term-mekuru-vanguard-reveal)
+è il gesto di girare o scoprire quella carta; nella forma `めくって`, si
+aggancia al verbo finale `{{置|お}}く`, cioè "mettere" nella zona indicata da
+`トリガーゾーンに`.
+
 :::example_sentence
 jp: >-
   アタックに{{成功|せいこう}}すると、{{相手|あいて}}のリアガードを{{減|へ}}らしたり、{{相手|あいて}}にダメージを{{与|あた}}えられるよ。
@@ -276,6 +287,13 @@ translation_it: >-
   Quando il Vanguard attacca, si verifica il drive check.
 :::
 
+:::example_sentence
+jp: >-
+  {{山札|やまふだ}}の{{上|うえ}}を{{1枚|いちまい}}めくってトリガーゾーンに{{置|お}}く。
+translation_it: >-
+  Scopri una carta dalla cima del mazzo e mettila nella trigger zone.
+:::
+
 #### 🧠 Gancio cognitivo
 
 Pensa a [{{減|へ}}らす](term:term-herasu) come a un contatore che scende. Se
@@ -289,6 +307,10 @@ carta precisa che viene ritirata.
 Pensa a [{{発生|はっせい}}するんだ](term:term-hassei-suru-nda-vanguard-occurs)
 come al momento in cui un evento si accende nella sequenza del turno: attacca
 il Vanguard, quindi parte il drive check.
+
+Pensa a [めくる](term:term-mekuru-vanguard-reveal) come al gesto che rende
+visibile la carta successiva: parte coperta in cima al mazzo, poi passa verso
+la trigger zone.
 
 ## Nota finale
 

@@ -2321,6 +2321,15 @@
       "updatedAt": "2026-06-02T23:19:06.594Z"
     },
     {
+      "entryId": "term-mekuru-vanguard-reveal",
+      "entryKind": "term",
+      "label": "めくる",
+      "mediaSlug": "tcg-generale",
+      "reading": "めくる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-06-03T22:47:17.933Z"
+    },
+    {
       "entryId": "term-vanguard-mulligan-full",
       "entryKind": "term",
       "label": "いらないカードがあったらファイト開始前に一度だけ引き直しができるよ",

@@ -158,6 +158,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-mekuru-vanguard-reveal",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Jiten",
+      "pitch_accent_page_url": "https://jiten.moe/vocabulary/1257810/1",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-moshi-vanguard-if",
       "audio_src": "assets/audio/term/term-moshi-vanguard-if/forvo-obaka-もし.mp3",
       "audio_source": "forvo",
