@@ -44,6 +44,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
   impertinente
 - [{{守護者|しゅごしゃ}}](term:term-shugosha-vanguard-guardian) — guardiano /
   protettore
+- [{{更|さら}}に](term:term-sarani-vanguard-further) — in più / ulteriormente
+- [{{1億|いちおく}}](term:term-ichioku-vanguard-hundred-million) — cento milioni
 - [ともに](term:term-tomoni) — insieme / assieme; mette più elementi nella
   stessa azione
 - [{{低|ひく}}い](term:term-hikui-low-grade) — basso / inferiore, qui riferito
@@ -86,6 +88,8 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
   — quando il Vanguard attacca, si verifica il drive check
 - {{山札|やまふだ}}の{{上|うえ}}を{{1枚|いちまい}}[めくって](term:term-mekuru-vanguard-reveal)トリガーゾーンに{{置|お}}く
   — scopri una carta dalla cima del mazzo e mettila nella trigger zone
+- このオーバートリガーは[{{更|さら}}に](term:term-sarani-vanguard-further)もう{{1体|いったい}}{{追加|ついか}}で[{{+1億|プラスいちおく}}](term:term-ichioku-vanguard-hundred-million){{出来|でき}}るんだよ
+  — l'over trigger può aggiungere ancora un'altra unità e darle +100 milioni
 
 ---
 
@@ -321,6 +325,15 @@ Il passaggio successivo trasforma il drive check in una sequenza fisica:
 aggancia al verbo finale `{{置|お}}く`, cioè "mettere" nella zona indicata da
 `トリガーゾーンに`.
 
+L'over trigger alza ancora la scala del bonus:
+このオーバートリガーは[{{更|さら}}に](term:term-sarani-vanguard-further)もう{{1体|いったい}}{{追加|ついか}}で[{{+1億|プラスいちおく}}](term:term-ichioku-vanguard-hundred-million){{出来|でき}}るんだよ.
+[{{更|さら}}に](term:term-sarani-vanguard-further) aggiunge un livello in più a
+un effetto già forte; `もう{{1体|いったい}}{{追加|ついか}}で` dice che entra un'altra
+unità come bersaglio e [{{+1億|プラスいちおく}}](term:term-ichioku-vanguard-hundred-million){{出来|でき}}る
+traduce quel bonus in una cifra enorme, cento milioni di potenza. Il `んだよ`
+finale mantiene il tono spiegato dal tutorial e porta enfasi sul punto forte
+dell'effetto.
+
 :::example_sentence
 jp: >-
   アタックに{{成功|せいこう}}すると、{{相手|あいて}}のリアガードを{{減|へ}}らしたり、{{相手|あいて}}にダメージを{{与|あた}}えられるよ。
@@ -350,6 +363,13 @@ translation_it: >-
   Scopri una carta dalla cima del mazzo e mettila nella trigger zone.
 :::
 
+:::example_sentence
+jp: >-
+  このオーバートリガーは{{更|さら}}にもう{{1体|いったい}}{{追加|ついか}}で{{+1億|プラスいちおく}}{{出来|でき}}るんだよ。
+translation_it: >-
+  Questo over trigger può aggiungere ancora un'altra unità e darle +100 milioni.
+:::
+
 #### 🧠 Gancio cognitivo
 
 Pensa a [{{減|へ}}らす](term:term-herasu) come a un contatore che scende. Se
@@ -367,6 +387,10 @@ il Vanguard, quindi parte il drive check.
 Pensa a [めくる](term:term-mekuru-vanguard-reveal) come al gesto che rende
 visibile la carta successiva: parte coperta in cima al mazzo, poi passa verso
 la trigger zone.
+
+Pensa a [{{更|さら}}に](term:term-sarani-vanguard-further) come a "c'è ancora un
+passo": dopo l'effetto base, la frase apre un'aggiunta. [{{1億|いちおく}}](term:term-ichioku-vanguard-hundred-million)
+è la scala numerica di quell'aggiunta, cento milioni.
 
 ## Nota finale
 

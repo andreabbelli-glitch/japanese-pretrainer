@@ -288,6 +288,34 @@ notes_it: >-
 level_hint: n3
 :::
 
+:::term
+id: term-sarani-vanguard-further
+lemma: 更に
+reading: さらに
+romaji: sarani
+meaning_it: in più / ulteriormente
+pos: adverb
+notes_it: >-
+  {{更|さら}}に aggiunge un passo ulteriore a ciò che è già stato detto. Nel
+  prompt sull'over trigger, segnala che oltre all'effetto base arriva ancora
+  un'aggiunta: un'altra unità può ricevere il bonus.
+level_hint: n3
+:::
+
+:::term
+id: term-ichioku-vanguard-hundred-million
+lemma: 1億
+reading: いちおく
+romaji: ichioku
+meaning_it: cento milioni
+pos: numeral
+notes_it: >-
+  {{1億|いちおく}} combina `{{1|いち}}` con `{{億|おく}}`, l'unità da cento
+  milioni. In `{{+1億|プラスいちおく}}`, il numero diventa un aumento enorme di
+  potenza.
+level_hint: n3
+:::
+
 :::card
 id: card-kakegoe-recognition
 lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
@@ -655,4 +683,40 @@ notes_it: >-
   `{{守護者|しゅごしゃ}}と{{書|か}}かれたカード` identifica una carta tramite la
   dicitura stampata. `{{手札|てふだ}}に` restringe la ricerca alla mano.
 tags: [vanguard, tutorial, defense]
+:::
+
+:::card
+id: card-sarani-vanguard-further-recognition
+lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
+entry_type: term
+entry_id: term-sarani-vanguard-further
+card_type: recognition
+front: '{{更|さら}}に'
+back: 'in più; ulteriormente; ancora'
+example_jp: >-
+  このオーバートリガーは{{更|さら}}にもう{{1体|いったい}}{{追加|ついか}}で{{+1億|プラスいちおく}}{{出来|でき}}るんだよ。
+example_it: >-
+  Questo over trigger può aggiungere ancora un'altra unità e darle +100 milioni.
+notes_it: >-
+  {{更|さら}}に sposta la frase su un'aggiunta ulteriore. Qui introduce il
+  secondo bersaglio possibile dell'over trigger, oltre a quello già previsto.
+tags: [vanguard, tutorial, over-trigger]
+:::
+
+:::card
+id: card-ichioku-vanguard-hundred-million-recognition
+lesson_id: lesson-tcg-generale-vanguard-stand-up-kakegoe-first-vanguard
+entry_type: term
+entry_id: term-ichioku-vanguard-hundred-million
+card_type: recognition
+front: '{{1億|いちおく}}'
+back: 'cento milioni'
+example_jp: >-
+  このオーバートリガーは{{更|さら}}にもう{{1体|いったい}}{{追加|ついか}}で{{+1億|プラスいちおく}}{{出来|でき}}るんだよ。
+example_it: >-
+  Questo over trigger può aggiungere ancora un'altra unità e darle +100 milioni.
+notes_it: >-
+  `{{+1億|プラスいちおく}}` indica un aumento di cento milioni. In Vanguard è un
+  numero volutamente enorme, legato alla forza esplosiva dell'over trigger.
+tags: [vanguard, tutorial, over-trigger]
 :::

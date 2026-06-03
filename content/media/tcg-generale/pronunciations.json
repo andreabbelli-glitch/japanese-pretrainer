@@ -47,6 +47,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-ichioku-vanguard-hundred-million",
+      "audio_src": "assets/audio/term/term-ichioku-vanguard-hundred-million/forvo-mezashi-いちおく.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%84%E3%81%A1%E3%81%8A%E3%81%8F/#ja",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Shirabe Jisho",
+      "pitch_accent_page_url": "https://shirabe.app/",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-iranai-card-ga-attara",
       "pitch_accent_status": "miss"
     },
@@ -222,6 +235,19 @@
       "audio_attribution": "strawberrybrown via Forvo",
       "audio_page_url": "https://forvo.com/word/%E7%94%9F%E6%84%8F%E6%B0%97/#ja",
       "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-sarani-vanguard-further",
+      "audio_src": "assets/audio/term/term-sarani-vanguard-further/tofugu-wanikani-更に.mp3",
+      "audio_source": "tofugu_wanikani",
+      "audio_license": "CC-BY-SA-4.0",
+      "audio_attribution": "Tofugu and WaniKani",
+      "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E6%9B%B4%E3%81%AB%E3%80%90%E3%81%95%E3%82%89%E3%81%AB%E3%80%91.mp3",
+      "pitch_accent": 1,
       "pitch_accent_source": "Kanjium",
       "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
