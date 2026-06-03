@@ -46,6 +46,20 @@ level_hint: n4
 :::
 
 :::term
+id: term-motomoto
+lemma: 元々
+reading: もともと
+romaji: motomoto
+meaning_it: originariamente / fin dall'inizio
+pos: adverb
+notes_it: >-
+  {{元々|もともと}} indica che qualcosa parte da uno stato iniziale o
+  preesistente. Nel contesto del ride deck, `{{元々|もともと}}ライドデッキにある`
+  segnala che quella carta era già lì prima dell'azione attuale.
+level_hint: n3
+:::
+
+:::term
 id: term-janken
 lemma: じゃんけん
 reading: じゃんけん
@@ -194,6 +208,24 @@ example_it: >-
 notes_it: >-
   `{{自動|じどう}}{{的|てき}}に` modifica il verbo: non descrive la carta, ma il
   modo in cui viene collocata. Qui il piazzamento è eseguito dal sistema.
+tags: [vanguard, tutorial, setup]
+:::
+
+:::card
+id: card-motomoto-recognition
+lesson_id: lesson-tcg-generale-vanguard-tutorial-ride-deck-and-starting-order
+entry_type: term
+entry_id: term-motomoto
+card_type: recognition
+front: '{{元々|もともと}}'
+back: "originariamente; fin dall'inizio"
+example_jp: >-
+  このカードは{{元々|もともと}}ライドデッキにあるよ。
+example_it: >-
+  Questa carta si trova già nel ride deck fin dall'inizio.
+notes_it: >-
+  {{元々|もともと}} guarda allo stato di partenza. In una frase sul ride deck,
+  indica che la carta era già lì prima della scelta o dell'azione attuale.
 tags: [vanguard, tutorial, setup]
 :::
 
