@@ -63,6 +63,20 @@ notes_it: >-
 level_hint: n3
 :::
 
+:::term
+id: term-kouretsu-vanguard-back-row
+lemma: 後列
+reading: こうれつ
+romaji: kouretsu
+meaning_it: fila posteriore / retrofila
+pos: noun
+notes_it: >-
+  {{後列|こうれつ}} indica la fila dietro in una disposizione a righe. In un TCG
+  distingue le unità messe sulla linea posteriore da quelle in
+  {{前列|ぜんれつ}}.
+level_hint: n3
+:::
+
 :::card
 id: card-moshi-vanguard-if-recognition
 lesson_id: lesson-tcg-generale-vanguard-grade-one-behind-call
@@ -116,6 +130,24 @@ example_it: >-
 notes_it: >-
   {{目|め}}の{{前|まえ}} parte dal punto di vista di chi guarda o gioca. Qui
   indica una unità vicina e direttamente davanti al giocatore.
+tags: [vanguard, tutorial, position]
+:::
+
+:::card
+id: card-kouretsu-vanguard-back-row-recognition
+lesson_id: lesson-tcg-generale-vanguard-grade-one-behind-call
+entry_type: term
+entry_id: term-kouretsu-vanguard-back-row
+card_type: recognition
+front: '{{後列|こうれつ}}'
+back: 'fila posteriore; retrofila'
+example_jp: >-
+  {{後列|こうれつ}}にユニットをコールする。
+example_it: >-
+  Chiami una unità nella fila posteriore.
+notes_it: >-
+  {{後列|こうれつ}} è una posizione del campo. Con `に`, diventa la destinazione
+  dove mettere una unità.
 tags: [vanguard, tutorial, position]
 :::
 

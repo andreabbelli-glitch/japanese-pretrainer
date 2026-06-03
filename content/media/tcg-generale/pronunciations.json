@@ -114,6 +114,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-kouretsu-vanguard-back-row",
+      "audio_src": "assets/audio/term/term-kouretsu-vanguard-back-row/forvo-mezashi-こうれつ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%BE%8C%E5%88%97/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-kousei",
       "audio_src": "assets/audio/term/term-kousei/tofugu-wanikani-構成.mp3",
       "audio_source": "tofugu_wanikani",
