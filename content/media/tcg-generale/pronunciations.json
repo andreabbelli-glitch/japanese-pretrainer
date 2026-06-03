@@ -49,6 +49,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-kakutei",
+      "audio_src": "assets/audio/term/term-kakutei/forvo-akitomo-かくてい.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "akitomo",
+      "audio_attribution": "akitomo via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%A2%BA%E5%AE%9A/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-katta-hou",
       "pitch_accent_status": "miss"
     },
