@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-036-sv-prestudy-l23a-verbi-operativi-sistema-e-menu
 media_id: media-pokemon-scarlet-violet
 slug: 036-sv-prestudy-l23a-verbi-operativi-sistema-e-menu
-title: SV Pre-study L23A - verbi operativi, sistema e menu
+title: Comandi di menu, sistema e movimento
 order: 66
 segment_ref: scarlet-violet-prestudy
 ---
@@ -428,8 +428,10 @@ reading: ひくい
 romaji: hikui
 meaning_it: basso
 notes_it: >-
-  Aggettivo in -い per valori bassi, quote basse o percentuali basse. In lotta
-  colloca bene con 命中率が低い.
+  Aggettivo in -い per qualcosa che sta in basso o ha un valore basso. In
+  contesti spaziali indica altezza o posizione bassa; in questa frase Pokémon
+  si applica invece a un valore numerico: {{命中|めいちゅう}}{{率|りつ}}が
+  {{低|ひく}}い.
 :::
 :::card
 id: card-v408-hikui-recognition
@@ -438,7 +440,7 @@ entry_type: term
 entry_id: term-v408-hikui
 card_type: recognition
 front: "{{低|ひく}}い"
-back: basso
+back: basso; in basso / di valore basso
 example_jp: >-
   この {{技|わざ}}は {{命中率|めいちゅうりつ}}が {{低|ひく}}いです。
 example_it: >-

@@ -195,11 +195,11 @@ I bonus dei panini e le risorse dell'interfaccia sono spesso label compatte. Sem
 
 ## 5. Formule rapide di dialogo: provare, affidare, partire
 
-Nei tutorial e nei dialoghi di accompagnamento, il gioco non usa solo comandi secchi. Usa formule che propongono un primo passo, distribuiscono responsabilità o restringono il campo d'azione.
+Nei tutorial e nei dialoghi di accompagnamento, il gioco affianca ai comandi secchi formule che propongono un primo passo, distribuiscono responsabilità o restringono il campo d'azione.
 
 ### A. Provare a controllare: `{{見|み}}てみよう`
 
-[{{見|み}}てみよう](term:term-e075-mitemiyou) combina {{見|み}}る con Vてみる, il pattern del "provare a fare". La forma volitiva みよう rende la frase un invito morbido: "proviamo a vedere", "andiamo a controllare". Non è un ordine secco; è il modo in cui un personaggio o un tutorial apre un'azione esplorativa senza chiudere subito il risultato.
+[{{見|み}}てみよう](term:term-e075-mitemiyou) combina {{見|み}}る con Vてみる, il pattern del "provare a fare". La forma volitiva みよう rende la frase un invito morbido: "proviamo a vedere", "andiamo a controllare". Un personaggio o un tutorial la usa per aprire un'azione esplorativa senza chiudere subito il risultato.
 
 :::example_sentence
 jp: >-
@@ -253,7 +253,7 @@ Alcune frasi operative non ti dicono solo che cosa fare: ti dicono che cosa evit
 
 ### B. Consiglio pratico: `～ほうがいい`
 
-[～ほうがいい](grammar:grammar-g081-e-meglio-fare) introduce un consiglio pratico. In {{先|さき}}にポケモンを{{回復|かいふく}}したほうがいい, il parlante non impone un comando da menu: valuta l'opzione migliore prima di procedere. La forma prima di ほうがいい è spesso passata piana, ma dentro questo pattern non significa per forza che l'azione sia già successa.
+[～ほうがいい](grammar:grammar-g081-e-meglio-fare) introduce un consiglio pratico. In {{先|さき}}にポケモンを{{回復|かいふく}}したほうがいい, il parlante valuta l'opzione migliore prima di procedere. La forma prima di ほうがいい è spesso passata piana; dentro questo pattern può indicare l'azione consigliata anche quando deve ancora avvenire.
 
 :::example_sentence
 jp: >-
@@ -265,7 +265,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{先|さき}}に` ➔ **Ordine temporale** (prima, in anticipo rispetto all'azione successiva).
-*   ポケモンを{{回復|かいふく}}した ➔ **Azione consigliata** (forma passata piana usata prima di [～ほうがいい](grammar:grammar-g081-e-meglio-fare); qui non indica per forza un'azione già avvenuta).
+*   ポケモンを{{回復|かいふく}}した ➔ **Azione consigliata** (forma passata piana usata prima di [～ほうがいい](grammar:grammar-g081-e-meglio-fare); qui può indicare l'azione da fare prima di procedere).
 *   `ほうがいい` ➔ **Valutazione pratica** (presenta quell'azione come scelta migliore).
 
 ### C. Desiderio osservato: `～たがる`

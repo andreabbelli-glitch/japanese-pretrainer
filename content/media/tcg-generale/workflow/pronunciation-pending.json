@@ -1,8 +1,8 @@
 {
   "version": 1,
   "media_slug": "tcg-generale",
-  "total_targets": 18,
-  "audio_backed_count": 8,
+  "total_targets": 19,
+  "audio_backed_count": 9,
   "known_missing_count": 5,
   "pending_count": 5,
   "pending": [
