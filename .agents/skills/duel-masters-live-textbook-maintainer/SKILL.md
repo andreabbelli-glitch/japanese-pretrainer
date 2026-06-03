@@ -485,7 +485,12 @@ Practical card-selection rules:
   attempted through the Anki/addon-style flow first: dedicated Anki helper,
   `Play(...)` candidates, speaker ranking, direct audio download, and OGG -> MP3
   conversion when needed. Manual download is only an extreme fallback for a
-  specific blocked item.
+  specific blocked item. If the run adds or replaces local audio under
+  `content/media/duel-masters-dm25/assets/audio/**`, run
+  `./scripts/with-node.sh pnpm media-audio:sync` and
+  `./scripts/with-node.sh pnpm media-audio:check` before completion unless the
+  next step is already `./scripts/with-node.sh pnpm dev` or
+  `./scripts/with-node.sh pnpm build`.
 - After adding or revising cards, regenerate
   `content/media/duel-masters-dm25/workflow/pronunciation-pending.json`
   with:
@@ -678,6 +683,15 @@ resolve every new or revised card entry before completion:
 ./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug duel-masters-dm25 --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media duel-masters-dm25 --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
+```
+
+If pronunciation resolution added or replaced local audio, run the static audio
+copy gate before completion, unless the next step is already
+`./scripts/with-node.sh pnpm dev` or `./scripts/with-node.sh pnpm build`:
+
+```bash
+./scripts/with-node.sh pnpm media-audio:sync
+./scripts/with-node.sh pnpm media-audio:check
 ```
 
 Then import the changed lesson or lessons into the configured target database

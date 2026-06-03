@@ -132,6 +132,11 @@ Per un singolo item:
   `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <page-slug>`
 - risoluzione pronunce per le flashcard create o riviste:
   `./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug web-giapponese --entry <new-term-or-grammar-id>`
+- se la risoluzione pronunce aggiunge o sostituisce audio locale:
+  `./scripts/with-node.sh pnpm media-audio:sync` e
+  `./scripts/with-node.sh pnpm media-audio:check`, salvo che il prossimo step
+  sia gia `./scripts/with-node.sh pnpm dev` o
+  `./scripts/with-node.sh pnpm build`
 - fetch dei pitch accent solo per le flashcard create o riviste, preferendo gli
   ID entry:
   `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`

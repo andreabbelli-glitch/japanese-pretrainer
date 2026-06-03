@@ -9,6 +9,22 @@ sua entry non ha un audio locale nel Markdown o in `pronunciations.json`, oppure
 una richiesta Forvo `word-add` registrata in `data/forvo-requested-word-add.json`
 quando Forvo non espone ancora la pronuncia.
 
+La source of truth degli audio resta `content/media/<slug>/assets/audio/**`.
+L'app pero serve le pronunce da `public/media-audio/<slug>/audio/**`, una copia
+generata e ignorata da git. Se una run reale aggiunge o sostituisce audio
+locale, esegui questi comandi salvo che il prossimo step sia gia
+`./scripts/with-node.sh pnpm dev` o `./scripts/with-node.sh pnpm build`:
+
+```bash
+./scripts/with-node.sh pnpm media-audio:sync
+./scripts/with-node.sh pnpm media-audio:check
+```
+
+`pnpm dev` e `pnpm build` eseguono gia il sync prima di Next. Gli URL runtime
+emessi da review, glossary, textbook e consolidation devono restare
+`/media-audio/...` con `?v=<updatedAt>` quando disponibile, non
+`/media/[mediaSlug]/assets/audio/...`.
+
 ## Obiettivo
 
 Quando arriva una richiesta del tipo "aggiungi le pronunce mancanti",
@@ -30,7 +46,13 @@ usa il resolver del repo. Il workflow effettivo e':
    `data/forvo-known-missing.json`;
 7. importare periodicamente le richieste Forvo storiche che sono state
    soddisfatte;
-8. aggiornare manifest, asset locali, pending list e storico word-add.
+8. aggiornare manifest, asset locali, pending list e storico word-add;
+9. se sono stati aggiunti o sostituiti file audio locali, riallineare
+   `public/media-audio/` con
+   `./scripts/with-node.sh pnpm media-audio:sync` e
+   `./scripts/with-node.sh pnpm media-audio:check`, salvo che il prossimo step
+   sia gia `./scripts/with-node.sh pnpm dev` o
+   `./scripts/with-node.sh pnpm build`.
 
 Per card appena create o revisionate, lo stesso ordine e obbligatorio ma lo
 scope deve essere limitato alle entry toccate o alla lesson appena modificata.
@@ -141,7 +163,12 @@ dell'addon Anki Forvo:
 - convertire OGG -> MP3 quando il candidato migliore non e' gia MP3;
 - salvare il file sotto `content/media/<slug>/assets/audio/...`;
 - aggiornare `pronunciations.json` e
-  `workflow/pronunciation-pending.json`.
+  `workflow/pronunciation-pending.json`;
+- riallineare la copia runtime generata con
+  `./scripts/with-node.sh pnpm media-audio:sync` e
+  `./scripts/with-node.sh pnpm media-audio:check` se la run ha scritto o
+  rimpiazzato audio locale, salvo che il prossimo step sia gia
+  `./scripts/with-node.sh pnpm dev` o `./scripts/with-node.sh pnpm build`.
 
 Questo percorso non va sostituito con `curl`, scraping HTTP ad hoc o Playwright
 headless per batch reali. La logica standard resta Anki/addon-style; il browser

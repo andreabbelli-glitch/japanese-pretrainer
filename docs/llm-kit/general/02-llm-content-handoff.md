@@ -157,7 +157,13 @@ Workflow consigliato:
    `./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry <new-term-or-grammar-id>`;
 4. il download manuale Forvo resta solo fallback estremo per casi singoli in cui
    il fetch Anki-style o l'import diretto falliscono;
-5. i metadata audio vengono salvati con asset e provenance reali, non
+5. se la pipeline locale aggiunge o sostituisce audio sotto
+   `content/media/<slug>/assets/audio/**`, riallinea la copia runtime generata
+   con `./scripts/with-node.sh pnpm media-audio:sync` e verifica con
+   `./scripts/with-node.sh pnpm media-audio:check`, salvo che il prossimo step
+   sia gia `./scripts/with-node.sh pnpm dev` o
+   `./scripts/with-node.sh pnpm build`;
+6. i metadata audio vengono salvati con asset e provenance reali, non
    inventati.
 
 Regola operativa:

@@ -335,6 +335,12 @@ Regole pratiche:
   richiesta `word-add`;
 - per entry ID esatti usa
   `./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug <media-slug> --entry <new-term-or-grammar-id>`;
+- se il workflow aggiunge o sostituisce audio sotto
+  `content/media/<slug>/assets/audio/**`, riallinea la copia runtime generata con
+  `./scripts/with-node.sh pnpm media-audio:sync` e verifica con
+  `./scripts/with-node.sh pnpm media-audio:check`, salvo che il prossimo step
+  sia gia `./scripts/with-node.sh pnpm dev` o
+  `./scripts/with-node.sh pnpm build`;
 - il download manuale Forvo e solo fallback estremo per casi singoli in cui il
   fetch Anki-style o l'import diretto falliscono, non un percorso standard;
 - se il batch crea o rivede flashcard, cerca anche il pitch accent solo per le

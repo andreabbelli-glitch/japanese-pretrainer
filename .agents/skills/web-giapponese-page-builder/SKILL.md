@@ -98,7 +98,12 @@ Optional:
     through the Anki/addon-style flow first: dedicated Anki helper, `Play(...)`
     candidates, speaker ranking, direct audio download, and OGG -> MP3
     conversion when needed. Manual download is only an extreme fallback for a
-    specific blocked item.
+    specific blocked item. If the run adds or replaces local audio under
+    `content/media/web-giapponese/assets/audio/**`, run
+    `./scripts/with-node.sh pnpm media-audio:sync` and
+    `./scripts/with-node.sh pnpm media-audio:check` before completion unless the
+    next step is already `./scripts/with-node.sh pnpm dev` or
+    `./scripts/with-node.sh pnpm build`.
 11. Regenerate
     `content/media/web-giapponese/workflow/pronunciation-pending.json` with:
     `./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese`
@@ -120,8 +125,8 @@ Optional:
     Use the broader media-scoped import only when the task changed media-wide
     ordering or other content that must apply archive/prune to all
     `web-giapponese` lessons/cards.
-15. Treat the work as incomplete if pronunciation resolution, pitch accent fetch,
-    import, or cache
+15. Treat the work as incomplete if pronunciation resolution, static audio
+    sync/check when applicable, pitch accent fetch, import, or cache
     revalidation fails.
 16. After a completed item/card workflow with passing required checks, commit
     and push the relevant changes to `main` before closing the task. Stage only
@@ -285,6 +290,15 @@ lesson into the configured target database:
 ./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id> [--entry <new-term-or-grammar-id> ...]
 ./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <new-or-revised-lesson-slug> --import
+```
+
+If pronunciation resolution added or replaced local audio, run the static audio
+copy gate before closing, unless the next step is already
+`./scripts/with-node.sh pnpm dev` or `./scripts/with-node.sh pnpm build`:
+
+```bash
+./scripts/with-node.sh pnpm media-audio:sync
+./scripts/with-node.sh pnpm media-audio:check
 ```
 
 If the touched file set is not obvious, run the read-only scope helper before

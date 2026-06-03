@@ -80,6 +80,11 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 - il profilo Anki dedicato in `data/forvo-anki-profile/` contiene l'add-on
   helper e una collection minima isolata dal profilo Anki personale;
 - salva l'audio in `content/media/<slug>/assets/audio/...`;
+- dopo una run reale che aggiunge o sostituisce audio locale, riallinea la copia
+  statica generata con `./scripts/with-node.sh pnpm media-audio:sync` e verifica
+  con `./scripts/with-node.sh pnpm media-audio:check`, salvo che il prossimo
+  step sia gia `./scripts/with-node.sh pnpm dev` o
+  `./scripts/with-node.sh pnpm build`;
 - aggiorna `content/media/<slug>/pronunciations.json` con `audio_source: "forvo"`.
 - aggiorna anche `content/media/<slug>/workflow/pronunciation-pending.json`
   con le entry ancora aperte e non marcate come missing.
@@ -197,7 +202,12 @@ L'importer:
 - aggiorna `pronunciations.json`, rimuove le entry risolte da
   `data/forvo-known-missing.json`, marca le richieste in
   `data/forvo-requested-word-add.json` con `resolvedAt` e aggiorna
-  `workflow/pronunciation-pending.json`.
+  `workflow/pronunciation-pending.json`;
+- se importa o rimpiazza audio locale, richiede poi
+  `./scripts/with-node.sh pnpm media-audio:sync` e
+  `./scripts/with-node.sh pnpm media-audio:check` quando non stai gia per
+  eseguire `./scripts/with-node.sh pnpm dev` o
+  `./scripts/with-node.sh pnpm build`.
 
 Usa prima `--dry-run` quando l'indice e' nuovo o costruito con euristiche
 diverse:

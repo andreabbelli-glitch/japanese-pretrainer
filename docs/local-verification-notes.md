@@ -139,7 +139,8 @@ non sostituisce un audit completo e aggiornato del codice.
 - Gli audio locali delle pronunce devono essere serviti da `/media-audio/...`,
   non dalla route dinamica `/media/[mediaSlug]/assets/audio/...`. Dopo una run
   che aggiunge o sostituisce audio, `./scripts/with-node.sh pnpm media-audio:sync`
-  riallinea `public/media-audio/`;
+  riallinea `public/media-audio/`, salvo che il prossimo step sia gia
+  `./scripts/with-node.sh pnpm dev` o `./scripts/with-node.sh pnpm build`;
   `./scripts/with-node.sh pnpm media-audio:check` segnala copie mancanti, stale
   o extra. In Network, review e consolidation devono mostrare `Cache-Control:
   public, max-age=31536000, immutable` sugli audio statici.

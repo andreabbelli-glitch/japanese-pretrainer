@@ -23,6 +23,10 @@ runtime display code separate from content workflow code.
   because it exposes workflow, Forvo, filesystem, and maintenance helpers.
 - Do not introduce a second pronunciation facade in small hardening slices; the
   current display boundary is `@/features/pronunciation/model/data`.
+- Runtime pronunciation audio URLs must be emitted as `/media-audio/...`, with
+  `?v=<updatedAt>` when available. Do not route pronunciation audio through
+  `/media/[mediaSlug]/assets/audio/...`; that route remains for images and
+  compatibility assets.
 
 ## Pronunciation Workflow Boundary
 
@@ -37,5 +41,11 @@ runtime display code separate from content workflow code.
 - `./scripts/with-node.sh pnpm pronunciations:forvo` is low-level maintenance
   or debug only. Do not use it as the normal workflow for review, next lesson,
   textbook page, or targeted pronunciation batches.
+- After a real pronunciation workflow adds or replaces
+  `content/media/<slug>/assets/audio/**`, refresh the generated runtime copy with
+  `./scripts/with-node.sh pnpm media-audio:sync` and verify it with
+  `./scripts/with-node.sh pnpm media-audio:check`, unless the next step is
+  already `./scripts/with-node.sh pnpm dev` or
+  `./scripts/with-node.sh pnpm build`.
 - Content workflow runs must keep edits scoped to the requested media and use
   the verification commands declared by the relevant skill or workflow docs.

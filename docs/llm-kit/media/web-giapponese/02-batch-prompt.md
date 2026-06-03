@@ -73,13 +73,18 @@ Comandi operativi obbligatori dopo la scrittura:
 - esegui il check combinato della lesson:
   `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <page-slug>`;
 - esegui `./scripts/with-node.sh pnpm pronunciations:resolve-entries -- --media-slug web-giapponese --entry <new-term-or-grammar-id>` per ogni entry flashcard appena creata o rivista;
+- se la risoluzione pronunce aggiunge o sostituisce audio locale, esegui
+  `./scripts/with-node.sh pnpm media-audio:sync` e
+  `./scripts/with-node.sh pnpm media-audio:check`, salvo che il prossimo step sia
+  gia `./scripts/with-node.sh pnpm dev` o
+  `./scripts/with-node.sh pnpm build`;
 - esegui `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>` per ogni entry flashcard appena creata o rivista;
 - se il pitch accent fetch stampa `review_required`, valuta i candidati,
   consulta un'altra fonte se serve, e salva manualmente l'accento solo quando e
   giustificato;
 - esegui `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <page-slug> --import`;
-- considera il lavoro incompleto se pronunce, pitch accent fetch, import o
-  cache revalidation falliscono.
+- considera il lavoro incompleto se pronunce, static audio sync/check quando
+  applicabile, pitch accent fetch, import o cache revalidation falliscono.
 
 Regole di formato obbligatorie:
 - Non cambiare il formato.

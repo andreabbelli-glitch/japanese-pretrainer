@@ -77,11 +77,17 @@ riusa audio locali/cross-media, importa match Tofugu/WaniKani e manda a Forvo
 solo il residuo. `forvo:preflight` e opzionale:
 usalo prima di batch Forvo incerti o grandi per capire se i target sono gia
 audio-backed, known-missing o gia richiesti; saltalo per target piccoli e
-chiari. Per Duel Masters TCG, `dm:card-fetch` riduce una pagina ufficiale
-Takara Tomy a campi, testo abilita, immagine e check compatti; usalo solo come
-helper di acquisizione e verifica sempre contro screenshot/testo utente,
-soprattutto quando la carta puo essere da Duel Masters Play's o da una stampa
-corretta nel tempo. Per nuove lesson live-card Duel Masters, usa
+chiari. Quando il workflow locale aggiunge o sostituisce audio sotto
+`content/media/<slug>/assets/audio/**`,
+`./scripts/with-node.sh pnpm media-audio:sync` e
+`./scripts/with-node.sh pnpm media-audio:check` riallineano la copia runtime
+generata in `public/media-audio/`, salvo che il prossimo step sia gia
+`./scripts/with-node.sh pnpm dev` o `./scripts/with-node.sh pnpm build`. Per
+Duel Masters TCG, `dm:card-fetch` riduce una pagina ufficiale Takara Tomy a
+campi, testo abilita, immagine e check compatti; usalo solo come helper di
+acquisizione e verifica sempre contro screenshot/testo utente, soprattutto
+quando la carta puo essere da Duel Masters Play's o da una stampa corretta nel
+tempo. Per nuove lesson live-card Duel Masters, usa
 `dm:live-card-scaffold` come piano iniziale: e' vincolato a
 `duel-masters-dm25`/`live-duel-encounters`, resta plan-only salvo `--write`,
 scrive solo il textbook shell e non crea cards o asset. Quando hai gia testo
@@ -148,7 +154,13 @@ Nota pratica:
 > reale sotto `assets/`; se lo screenshot e visibile nel prompt ma non esiste
 > come file, usalo solo come fonte testuale e ometti il blocco immagine. Per
 > l'audio lascia i campi assenti salvo che asset e provenance reali siano gia
-> stati forniti esplicitamente.
+> stati forniti esplicitamente. Se la pipeline locale aggiunge o sostituisce
+> audio reale, la source of truth resta `content/media/**`; la copia
+> `public/media-audio/` e generata e va riallineata con
+> `./scripts/with-node.sh pnpm media-audio:sync` e verificata con
+> `./scripts/with-node.sh pnpm media-audio:check`, salvo che il prossimo step sia
+> gia `./scripts/with-node.sh pnpm dev` o
+> `./scripts/with-node.sh pnpm build`.
 
 > [!IMPORTANT]
 > Le flashcard devono allenare soprattutto giapponese generalizzabile. Di

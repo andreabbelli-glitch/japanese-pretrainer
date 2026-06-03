@@ -75,8 +75,9 @@ Comandi diretti:
 ./scripts/with-node.sh pnpm media-audio:check
 ```
 
-Usa `media-audio:sync` dopo workflow che aggiungono o sostituiscono file audio
-mentre il dev server e' gia attivo. `media-audio:check` deve passare prima di
+Usa `media-audio:sync` dopo workflow che aggiungono o sostituiscono file audio,
+salvo che il prossimo step sia gia `./scripts/with-node.sh pnpm dev` o
+`./scripts/with-node.sh pnpm build`. `media-audio:check` deve passare prima di
 considerare allineata una build o una verifica cache. Gli URL emessi da review,
 glossary, textbook e consolidation devono usare `/media-audio/...` con
 `?v=<updatedAt>` quando il timestamp entry e' disponibile; immagini e altri

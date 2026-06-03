@@ -270,6 +270,8 @@ pnpm dev
 pnpm build
 pnpm start
 pnpm start:e2e
+pnpm media-audio:sync
+pnpm media-audio:check
 pnpm lint
 pnpm format
 pnpm format:check
@@ -358,6 +360,23 @@ conversione OGG -> MP3 quando serve.
 Ogni workflow che crea o modifica flashcard deve anche risolvere le pronunce
 delle entry toccate: audio locale quando disponibile, altrimenti richiesta Forvo
 `word-add` registrata. Una nuova card non va lasciata muta senza questo passaggio.
+
+Gli audio delle pronunce restano sorgente versionata in
+`content/media/<slug>/assets/audio/**`, ma a runtime vengono copiati nella
+directory generata e ignorata `public/media-audio/<slug>/audio/**`. Dopo una run
+reale che aggiunge o sostituisce audio locale, riallinea la copia statica con
+questi comandi, salvo che il prossimo step sia gia
+`./scripts/with-node.sh pnpm dev` o `./scripts/with-node.sh pnpm build`:
+
+```sh
+./scripts/with-node.sh pnpm media-audio:sync
+./scripts/with-node.sh pnpm media-audio:check
+```
+
+`pnpm dev` e `pnpm build` eseguono gia il sync prima di Next. Review, glossary,
+textbook e consolidation devono usare URL runtime `/media-audio/...` con
+`?v=<updatedAt>` quando disponibile, non
+`/media/[mediaSlug]/assets/audio/...`.
 
 `pnpm pronunciations:forvo` resta disponibile come comando low-level per target
 mirati del fetcher. Il recupero manuale va usato solo come extrema ratio per un

@@ -47,7 +47,9 @@
   distingue le richieste risolte tramite campo `resolvedAt`.
 - Workflow pronunce: dopo aver aggiunto o sostituito audio locale, eseguire
   `./scripts/with-node.sh pnpm media-audio:sync` e poi
-  `./scripts/with-node.sh pnpm media-audio:check`.
+  `./scripts/with-node.sh pnpm media-audio:check`, salvo che il prossimo step
+  sia gia `./scripts/with-node.sh pnpm dev` o
+  `./scripts/with-node.sh pnpm build`.
 - Workflow pronunce: `next-lesson` usa la prima lesson non completata del media
   e `lesson-url` accetta la route textbook dell'app senza scraping esterno.
 - Root review `/review`: apre la queue globale reale su tutti i subject e, se

@@ -16,6 +16,8 @@ Use this skill for the Japanese Custom Study repo when the user wants Codex to:
 - use the Anki/addon-style Forvo helper and the normal browser for word-add;
 - process a list of words or entry ids;
 - write audio files into `content/media/<slug>/assets/audio/...`;
+- refresh the generated ignored runtime copy under `public/media-audio/` when
+  local audio files changed;
 - update `content/media/<slug>/pronunciations.json`.
 
 This is the only canonical pronunciation skill for this repo. It replaces the
@@ -204,6 +206,8 @@ typically at:
   extracted index.
 - Never disable the word-add request prefill for missing entries.
 - Do not invent new asset locations or manifest formats; use the repo conventions already implemented by the command.
+- Do not edit `public/media-audio/` by hand. It is generated runtime/static
+  output from `content/media/<slug>/assets/audio/**`.
 - If Forvo returns no candidate for a word, record it as a miss, open/register
   `word-add`, and continue.
 - A historical `word-add` row whose URL no longer matches the current
@@ -225,6 +229,16 @@ For normal skill runs that only update pronunciation artifacts such as
 `content/media/<slug>/workflow/pronunciation-pending.json`,
 `data/forvo-known-missing.json`, or `data/forvo-requested-word-add.json`, do not
 run the full `pnpm check` or `pnpm release:check` suites.
+
+If the run added or replaced any `content/media/<slug>/assets/audio/**` file,
+refresh and verify the generated static copy before completion, unless the next
+step is already `./scripts/with-node.sh pnpm dev` or
+`./scripts/with-node.sh pnpm build`:
+
+```bash
+./scripts/with-node.sh pnpm media-audio:sync
+./scripts/with-node.sh pnpm media-audio:check
+```
 
 For each media bundle whose pronunciation manifest or audio assets changed,
 minimize import scope. When the run touched entries across review, multiple
