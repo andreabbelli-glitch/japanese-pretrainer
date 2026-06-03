@@ -136,6 +136,13 @@ non sostituisce un audit completo e aggiornato del codice.
   seleziona i target attesi, esclude le entry gia coperte, prova riuso
   cross-media e dataset Tofugu/WaniKani se gia presente, ma non scarica o copia
   file.
+- Gli audio locali delle pronunce devono essere serviti da `/media-audio/...`,
+  non dalla route dinamica `/media/[mediaSlug]/assets/audio/...`. Dopo una run
+  che aggiunge o sostituisce audio, `./scripts/with-node.sh pnpm media-audio:sync`
+  riallinea `public/media-audio/`;
+  `./scripts/with-node.sh pnpm media-audio:check` segnala copie mancanti, stale
+  o extra. In Network, review e consolidation devono mostrare `Cache-Control:
+  public, max-age=31536000, immutable` sugli audio statici.
 - Le voci gia marcate come `known missing` restano eleggibili per riuso
   cross-media e Tofugu/WaniKani; vengono escluse solo dal passaggio Forvo.
 - Aggiungendo `--retry-known-missing` allo stesso comando, quelle entry

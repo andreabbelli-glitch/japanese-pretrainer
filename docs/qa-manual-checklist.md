@@ -45,6 +45,9 @@
 - Workflow pronunce: dopo una run reale, il registry
   `data/forvo-requested-word-add.json` continua a contenere lo storico ma
   distingue le richieste risolte tramite campo `resolvedAt`.
+- Workflow pronunce: dopo aver aggiunto o sostituito audio locale, eseguire
+  `./scripts/with-node.sh pnpm media-audio:sync` e poi
+  `./scripts/with-node.sh pnpm media-audio:check`.
 - Workflow pronunce: `next-lesson` usa la prima lesson non completata del media
   e `lesson-url` accetta la route textbook dell'app senza scraping esterno.
 - Root review `/review`: apre la queue globale reale su tutti i subject e, se
@@ -183,6 +186,10 @@
 - Review: se `Settings -> Audio alla risposta` e` attivo, cliccare
   `Mostra risposta` su una card con pronuncia fa partire l'audio subito; se il
   toggle e` disattivo resta solo il player manuale.
+- Review/consolidation: aprendo DevTools Network, gli audio delle pronunce
+  devono essere richiesti da `/media-audio/...`, con
+  `Cache-Control: public, max-age=31536000, immutable`, e non da
+  `/media/[mediaSlug]/assets/audio/...`.
 - Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione subito, senza flash di pagina completa, e in caso di errore ripristina la card precedente con messaggio chiaro.
 - Review: dopo `Mostra risposta` compare il controllo compatto `+ Contrasto`;
   `C` apre/chiude il picker e `Esc` lo chiude senza rompere il flusso.

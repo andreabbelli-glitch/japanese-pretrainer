@@ -60,6 +60,28 @@ Verifica completa del setup:
 ./scripts/tooling-doctor.sh
 ```
 
+## Audio pronunce statico
+
+Gli audio locali delle pronunce restano versionati in
+`content/media/<slug>/assets/audio/**`, ma l'app li serve a runtime da
+`public/media-audio/<slug>/audio/**`. La directory `public/media-audio/` e'
+generata, ignorata da git e viene ricostruita prima di `pnpm dev` e
+`pnpm build`.
+
+Comandi diretti:
+
+```sh
+./scripts/with-node.sh pnpm media-audio:sync
+./scripts/with-node.sh pnpm media-audio:check
+```
+
+Usa `media-audio:sync` dopo workflow che aggiungono o sostituiscono file audio
+mentre il dev server e' gia attivo. `media-audio:check` deve passare prima di
+considerare allineata una build o una verifica cache. Gli URL emessi da review,
+glossary, textbook e consolidation devono usare `/media-audio/...` con
+`?v=<updatedAt>` quando il timestamp entry e' disponibile; immagini e altri
+asset continuano invece a usare `/media/[mediaSlug]/assets/...`.
+
 La suite Vitest esegue i file test in sequenza in `vitest.config.ts`. Molti
 test creano database SQLite temporanei, eseguono migrazioni e importano bundle
 reali; su macchine locali e sandbox Codex il parallelismo per file rende i test
