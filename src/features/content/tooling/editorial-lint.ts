@@ -399,6 +399,10 @@ function collectCardTextSpans(
     lessonId: card.lessonId
   };
 
+  addRichTextSpan(spans, card.front, {
+    ...cardContext,
+    path: `${context.path}.card(${card.id}).front`
+  });
   addRichTextSpan(spans, card.back, {
     ...cardContext,
     path: `${context.path}.card(${card.id}).back`

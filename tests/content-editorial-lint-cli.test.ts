@@ -116,6 +116,41 @@ describe("content editorial lint CLI", () => {
     expect(stdout).not.toContain("002-clean.md");
   });
 
+  it("flags learner-facing prose in card fronts", async () => {
+    const contentRoot = await writeEditorialLintFixture(tempDirs);
+    const targetPath = path.join(
+      contentRoot,
+      "media",
+      "lint-media",
+      "cards",
+      "001-meta.md"
+    );
+    const source = await readFile(targetPath, "utf8");
+    await writeFile(
+      targetPath,
+      source.replace(
+        'front: "{{受|う}}ける"',
+        'front: "In questa lesson vedremo {{受|う}}ける"'
+      )
+    );
+
+    const { stdout } = await runNodeCli(
+      [
+        "--experimental-strip-types",
+        editorialLintScriptPath,
+        "--content-root",
+        contentRoot,
+        "--path",
+        targetPath
+      ],
+      { timeoutMs: 60_000 }
+    );
+
+    expect(stdout).toContain("EDITORIAL_LINT warnings=4");
+    expect(stdout).toContain("WARNING P0 meta.lesson-object");
+    expect(stdout).toContain("card(card-ukeru).front");
+  });
+
   it("keeps lesson-scoped linting usable when unrelated files have parse issues", async () => {
     const contentRoot = await writeEditorialLintFixture(tempDirs);
     await writeBrokenUnrelatedLesson(contentRoot);

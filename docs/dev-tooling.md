@@ -296,12 +296,13 @@ Masters, preferisci `dm:official-text-compare` a un fetch raw: e' read-only,
 riusa il parser di `dm:card-fetch`, rifiuta run senza input visibile e segnala
 solo se la pagina ufficiale contraddice lo screenshot/testo utente.
 
-`content:editorial-lint` scansiona Markdown e blocchi strutturati già parsati e
-stampa warning editoriali su meta-discorso, frasi povere, contrasti stock,
-esempi `example_jp` metalinguistici e accenti italiani degradati. Usalo prima
-di importare o caricare una lesson appena creata o revisionata; i warning sono
-promemoria editoriali da valutare e correggere seriamente, non un gate da
-aggirare con rinomini superficiali o soppressioni.
+`content:editorial-lint` scansiona Markdown e blocchi strutturati già parsati,
+incluse le card (`front`, `back`, esempi e note), e stampa warning editoriali
+su meta-discorso, frasi povere, contrasti stock, esempi `example_jp`
+metalinguistici e accenti italiani degradati. Usalo prima di importare o
+caricare una lesson appena creata o revisionata; i warning sono promemoria
+editoriali da valutare e correggere seriamente, non un gate da aggirare con
+rinomini superficiali o soppressioni.
 
 `content:scope` traduce i file modificati in comandi minimi di verifica/import:
 di default legge `git status` su `content/media/**`; puoi anche passare path
