@@ -618,7 +618,7 @@ entry_type: term
 entry_id: term-hakki-vanguard-effect
 card_type: recognition
 front: '{{発揮|はっき}}'
-back: 'manifestazione; efficacia espressa; far valere un effetto'
+back: 'show of power; manifestazione; efficacia espressa; far valere un effetto'
 example_jp: >-
   その{{能力|のうりょく}}は{{効果|こうか}}を{{発揮|はっき}}する。
 example_it: >-
