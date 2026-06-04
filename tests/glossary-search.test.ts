@@ -24,7 +24,7 @@ function createResolvedEntry(input: {
     })),
     cardCount: input.hasCards ? 1 : 0,
     hasCards: input.hasCards,
-    href: `/media/${input.mediaSlug}/glossary` as Route,
+    href: `/glossary?media=${input.mediaSlug}` as Route,
     id: input.id,
     internalId: input.id,
     kind: "term",

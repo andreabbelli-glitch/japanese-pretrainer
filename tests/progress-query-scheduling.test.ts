@@ -305,9 +305,12 @@ describe("progress query scheduling", () => {
       getStudySettings: vi.fn(settingsGate.loader())
     }));
     vi.doMock("@/features/navigation", () => ({
-      mediaGlossaryHref: (slug: string) => `/media/${slug}/glossary`,
+      mediaGlossaryHref: (slug: string) => `/glossary?media=${slug}`,
       mediaHref: (slug: string) => `/media/${slug}`,
-      mediaStudyHref: (slug: string, area: string) => `/media/${slug}/${area}`,
+      mediaStudyHref: (slug: string, area: string) =>
+        area === "glossary"
+          ? `/glossary?media=${slug}`
+          : `/media/${slug}/${area}`,
       mediaTextbookLessonHref: (slug: string, lesson: string) =>
         `/media/${slug}/textbook/${lesson}`,
       reviewHref: () => "/review"

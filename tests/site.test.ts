@@ -228,13 +228,13 @@ describe("site helpers", () => {
       )
     ).toBe("/consolidation");
     expect(resolveActivePrimaryNavHref("/media/fixture-tcg/glossary")).toBe(
-      "/glossary"
+      "/media"
     );
     expect(
       resolveActivePrimaryNavHref(
         "/media/fixture-tcg/glossary/term/term-fixture-iku"
       )
-    ).toBe("/glossary");
+    ).toBe("/media");
     expect(resolveActivePrimaryNavHref("/media/fixture-tcg/review")).toBe(
       "/review"
     );
@@ -288,10 +288,15 @@ describe("site helpers", () => {
     expect(
       resolveReturnToContext("/media/fixture-tcg/glossary?q=iku")
     ).toMatchObject({
-      href: "/media/fixture-tcg/glossary?q=iku",
-      kind: "localGlossary",
-      pathname: "/media/fixture-tcg/glossary"
+      href: "/media/fixture-tcg",
+      kind: "media",
+      pathname: "/media/fixture-tcg"
     });
+    expect(
+      resolveReturnToLabel(
+        resolveReturnToContext("/media/fixture-tcg/glossary?q=iku")
+      )
+    ).toBe("Torna al Media");
     expect(
       resolveReturnToLabel(resolveReturnToContext("/glossary?q=iku"))
     ).toBe("Torna al Glossary");
@@ -360,7 +365,7 @@ describe("site helpers", () => {
   it("derives glossary back navigation from explicit return context with safe fallbacks", () => {
     expect(
       resolveGlossaryBackNavigation({
-        localGlossaryHref: mediaGlossaryHref("fixture-tcg"),
+        glossaryHref: mediaGlossaryHref("fixture-tcg"),
         mediaHref: mediaHref("fixture-tcg"),
         mediaTitle: "Fixture TCG",
         page: "index",
@@ -376,7 +381,7 @@ describe("site helpers", () => {
 
     expect(
       resolveGlossaryBackNavigation({
-        localGlossaryHref: mediaGlossaryHref("fixture-tcg"),
+        glossaryHref: mediaGlossaryHref("fixture-tcg"),
         mediaHref: mediaHref("fixture-tcg"),
         mediaTitle: "Fixture TCG",
         page: "detail",
@@ -392,7 +397,23 @@ describe("site helpers", () => {
 
     expect(
       resolveGlossaryBackNavigation({
-        localGlossaryHref: mediaGlossaryHref("fixture-tcg"),
+        glossaryHref: mediaGlossaryHref("fixture-tcg"),
+        mediaHref: mediaHref("fixture-tcg"),
+        mediaTitle: "Fixture TCG",
+        page: "detail",
+        returnTo: "/media/fixture-tcg/glossary?q=iku" as Route
+      })
+    ).toMatchObject({
+      backHref: "/media/fixture-tcg",
+      backLabel: "Torna a Fixture TCG",
+      returnContext: {
+        kind: "media"
+      }
+    });
+
+    expect(
+      resolveGlossaryBackNavigation({
+        glossaryHref: mediaGlossaryHref("fixture-tcg"),
         mediaHref: mediaHref("fixture-tcg"),
         mediaTitle: "Fixture TCG",
         page: "detail"
@@ -419,12 +440,12 @@ describe("site helpers", () => {
     );
   });
 
-  it("resolves review return targets even when they are nested inside a glossary workspace href", () => {
+  it("resolves review return targets only through supported global glossary hrefs", () => {
     expect(
       resolveGlossaryReviewReturnTo(
         "/media/fixture-tcg/glossary?q=iku&segment=segment_fixture_starter_core&returnTo=%2Fmedia%2Ffixture-tcg%2Freview%3Fanswered%3D3%26card%3Dcard-iku"
       )
-    ).toBe("/media/fixture-tcg/review?answered=3&card=card-iku");
+    ).toBeNull();
     expect(
       resolveGlossaryReviewReturnTo(
         "/glossary?q=iku&returnTo=&returnTo=https%3A%2F%2Fevil.test%2Freview&returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku"
@@ -437,7 +458,7 @@ describe("site helpers", () => {
     ).toBeNull();
   });
 
-  it("renders glossary as the active primary nav item on global and local glossary routes", () => {
+  it("renders glossary as active only on supported global glossary routes", () => {
     pathname = "/glossary";
 
     const globalMarkup = renderToStaticMarkup(
@@ -455,10 +476,10 @@ describe("site helpers", () => {
     );
 
     expect(localMarkup).toContain(
-      '<a aria-current="page" class="site-nav__link site-nav__link--active" href="/glossary">'
+      '<a aria-current="page" class="site-nav__link site-nav__link--active" href="/media">'
     );
     expect(localMarkup).not.toContain(
-      '<a aria-current="page" class="site-nav__link site-nav__link--active" href="/review">'
+      '<a aria-current="page" class="site-nav__link site-nav__link--active" href="/glossary">'
     );
   });
 

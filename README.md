@@ -42,7 +42,8 @@ Il glossary pubblico e solo globale: `/glossary` mostra l'enciclopedia
 ricercabile cross-media e le CTA dei media puntano a `/glossary?media=<slug>`.
 Le vecchie route `/media/[mediaSlug]/glossary` e detail locali restano solo
 stub di compatibilita nel router e restituiscono `404`: non sono piu una
-superficie supportata.
+superficie supportata e non vengono trattate come contesto Glossary da nav o
+`returnTo`.
 
 Termini e pattern grammaticali vengono raggruppati automaticamente per
 superficie grafica normalizzata. Le occorrenze editoriali restano locali al

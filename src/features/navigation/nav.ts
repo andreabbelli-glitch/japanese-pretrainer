@@ -97,11 +97,7 @@ export function resolveActivePrimaryNavHref(pathname: string): NavItem["href"] {
     return "/pitch-accent";
   }
 
-  if (
-    pathname === "/glossary" ||
-    pathname.startsWith("/glossary/") ||
-    /^\/media\/[^/]+\/glossary(?:\/|$)/.test(pathname)
-  ) {
+  if (pathname === "/glossary" || pathname.startsWith("/glossary/")) {
     return "/glossary";
   }
 

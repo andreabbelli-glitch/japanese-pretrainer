@@ -3,7 +3,6 @@ import type { Route } from "next";
 export type ReturnToContextKind =
   | "review"
   | "globalGlossary"
-  | "localGlossary"
   | "mediaLibrary"
   | "media"
   | "other";
@@ -100,11 +99,13 @@ export function resolveReturnToContext(
     };
   }
 
-  if (/^\/media\/[^/]+\/glossary(?:\/|$)/.test(pathname)) {
+  const unsupportedLocalGlossaryMediaHref =
+    resolveUnsupportedLocalGlossaryMediaHref(pathname);
+  if (unsupportedLocalGlossaryMediaHref) {
     return {
-      href,
-      kind: "localGlossary",
-      pathname
+      href: unsupportedLocalGlossaryMediaHref,
+      kind: "media",
+      pathname: unsupportedLocalGlossaryMediaHref
     };
   }
 
@@ -139,6 +140,12 @@ function normalizeInternalPathname(pathname: string) {
   return pathname.replace(/\/+$/, "");
 }
 
+function resolveUnsupportedLocalGlossaryMediaHref(pathname: string) {
+  const match = pathname.match(/^\/media\/([^/]+)\/glossary(?:\/|$)/);
+
+  return match ? (`/media/${match[1]}` as Route) : null;
+}
+
 export function resolveReturnToLabel(
   context: ReturnToContext | null
 ): string | null {
@@ -150,7 +157,6 @@ export function resolveReturnToLabel(
     case "review":
       return "Torna alla Review";
     case "globalGlossary":
-    case "localGlossary":
       return "Torna al Glossary";
     case "mediaLibrary":
       return "Torna ai Media";
@@ -182,10 +188,7 @@ export function resolveGlossaryReviewReturnTo(
       return currentContext.href;
     }
 
-    if (
-      currentContext?.kind !== "globalGlossary" &&
-      currentContext?.kind !== "localGlossary"
-    ) {
+    if (currentContext?.kind !== "globalGlossary") {
       return null;
     }
 
@@ -196,7 +199,7 @@ export function resolveGlossaryReviewReturnTo(
 }
 
 export function resolveGlossaryBackNavigation(input: {
-  localGlossaryHref: Route;
+  glossaryHref: Route;
   mediaHref: Route;
   mediaTitle: string;
   page: "index" | "detail";
@@ -212,7 +215,6 @@ export function resolveGlossaryBackNavigation(input: {
         returnContext
       };
     case "globalGlossary":
-    case "localGlossary":
       return {
         backHref: returnContext.href,
         backLabel: "Torna al Glossary",
@@ -234,7 +236,7 @@ export function resolveGlossaryBackNavigation(input: {
     case undefined:
       return {
         backHref:
-          input.page === "detail" ? input.localGlossaryHref : input.mediaHref,
+          input.page === "detail" ? input.glossaryHref : input.mediaHref,
         backLabel:
           input.page === "detail"
             ? "Torna al Glossary"

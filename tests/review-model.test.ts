@@ -22,7 +22,7 @@ describe("review model", () => {
         [
           "grammar:grammar-takei",
           {
-            href: "/media/demo/glossary/grammar/grammar-takei",
+            href: "/glossary/grammar/%E3%81%9F%E5%BD%A2?media=demo&source=grammar-takei",
             id: "grammar-takei",
             kind: "grammar",
             label: "た形",

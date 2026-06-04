@@ -11,7 +11,7 @@ describe("return-to helpers", () => {
     expect(resolveGlossaryReviewReturnTo(cyclicHref)).toBeNull();
   });
 
-  it("returns null instead of looping on multi-step glossary returnTo cycles", () => {
+  it("does not traverse legacy local glossary returnTo chains", () => {
     const firstHref =
       "/glossary?q=iku&returnTo=%2Fmedia%2Ffixture-tcg%2Fglossary%3Fq%3Diku" as Route;
     const secondHref =

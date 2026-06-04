@@ -27,7 +27,7 @@ export function GlossaryDetailPage({
   returnTo
 }: GlossaryDetailPageProps) {
   const backNavigation = resolveGlossaryBackNavigation({
-    localGlossaryHref: data.media.glossaryHref,
+    glossaryHref: data.media.glossaryHref,
     mediaHref: data.media.glossaryHref,
     mediaTitle: data.media.title,
     page: "detail",
@@ -108,8 +108,7 @@ export function GlossaryDetailPanels({
               ) : null}
             </div>
           ) : null}
-          {pitchAccent &&
-          pronunciation?.pitchAccentSource ? (
+          {pitchAccent && pronunciation?.pitchAccentSource ? (
             <p className="glossary-entry-hero__pitch-accent-source">
               <span>Pitch accent da {pronunciation.pitchAccentSource}</span>
               {pronunciation.pitchAccentPageUrl ? (

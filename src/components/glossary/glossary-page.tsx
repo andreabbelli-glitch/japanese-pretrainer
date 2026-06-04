@@ -25,7 +25,7 @@ type GlossaryPageProps = {
 export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
   const hasEntries = data.resultSummary.total > 0;
   const backNavigation = resolveGlossaryBackNavigation({
-    localGlossaryHref: data.media.glossaryHref,
+    glossaryHref: data.media.glossaryHref,
     mediaHref: mediaHref(data.media.slug),
     mediaTitle: data.media.title,
     page: "index",

@@ -116,7 +116,8 @@ non sostituisce un audit completo e aggiornato del codice.
   più media.
 - Il glossary è globale: le CTA locali dei media devono portare a
   `/glossary?media=<slug>`, mentre `/media/[mediaSlug]/glossary` deve risultare
-  non disponibile.
+  non disponibile e non deve essere interpretato come contesto Glossary da nav
+  o `returnTo`.
 - Su DB già esistenti, il comportamento della review deve restare compatibile
   con lo storico legacy: la migrazione deve preservare i soggetti già introdotti
   e non deve far ricomparire card già contate nel limite giornaliero.

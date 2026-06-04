@@ -331,7 +331,7 @@ function buildFirstCandidateReviewPageData(
 function buildReviewMedia(scope: "global" | "media"): ReviewPageData["media"] {
   return {
     glossaryHref:
-      scope === "media" ? "/media/duel-masters-dm25/glossary" : "/glossary",
+      scope === "media" ? "/glossary?media=duel-masters-dm25" : "/glossary",
     href: scope === "media" ? "/media/duel-masters-dm25" : "/",
     id: scope === "media" ? "media-duel-masters" : undefined,
     reviewHref:
