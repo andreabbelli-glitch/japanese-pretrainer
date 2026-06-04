@@ -20,7 +20,6 @@ audio_speaker: Test Native Speaker
 audio_license: Forvo terms
 audio_attribution: Test Native Speaker via Forvo
 audio_page_url: https://forvo.com/word/%E9%A3%9F%E3%81%B9%E3%82%8B/#ja
-pitch_accent: 2
 :::
 
 :::card

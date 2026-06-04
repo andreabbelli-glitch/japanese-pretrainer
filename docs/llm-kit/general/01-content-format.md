@@ -789,7 +789,6 @@ Campi opzionali:
 - `notes_it`
 - `level_hint`
 - `aliases`
-- `segment_ref`
 - `audio_src`
 - `audio_source`
 - `audio_speaker`
@@ -850,7 +849,6 @@ Campi opzionali:
 - `notes_it`
 - `level_hint`
 - `aliases`
-- `segment_ref`
 - `audio_src`
 - `audio_source`
 - `audio_speaker`

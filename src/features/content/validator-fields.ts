@@ -140,38 +140,6 @@ export function readRequiredInteger(
   return value;
 }
 
-export function readOptionalPitchAccent(
-  values: Record<string, unknown>,
-  filePath: string,
-  sourcePath: string,
-  issues: ValidationIssue[],
-  range?: SourceRange
-) {
-  const value = values.pitch_accent;
-
-  if (value === undefined || value === null || value === "") {
-    return undefined;
-  }
-
-  if (typeof value === "number" && Number.isInteger(value) && value >= 0) {
-    return value;
-  }
-
-  issues.push(
-    createIssue({
-      code: "structured-block.invalid-pitch-accent",
-      category: "schema",
-      message:
-        "Field 'pitch_accent' must be an integer greater than or equal to 0.",
-      filePath,
-      path: `${sourcePath}.pitch_accent`,
-      range
-    })
-  );
-
-  return undefined;
-}
-
 export function reportUnknownKeys(
   raw: Record<string, unknown>,
   allowedKeys: string[],

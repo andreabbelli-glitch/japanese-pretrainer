@@ -116,6 +116,92 @@ describe("content validator and issue reporting", () => {
     }
   });
 
+  it("rejects segment_ref overrides inside term and grammar blocks", async () => {
+    const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-segment-"));
+    const contentRoot = path.join(tempRoot, "content");
+
+    try {
+      await cp(validContentRoot, contentRoot, { recursive: true });
+
+      const mediaDirectory = path.join(contentRoot, "media", "sample-anime");
+      const cardsPath = path.join(mediaDirectory, "cards", "001-core.md");
+      const lessonPath = path.join(mediaDirectory, "textbook", "001-intro.md");
+      const cardsSource = await readFile(cardsPath, "utf8");
+      const lessonSource = await readFile(lessonPath, "utf8");
+
+      await writeFile(
+        cardsPath,
+        cardsSource.replace(
+          "meaning_it: mangiare\n",
+          "meaning_it: mangiare\nsegment_ref: unsupported-term-override\n"
+        )
+      );
+      await writeFile(
+        lessonPath,
+        lessonSource.replace(
+          "meaning_it: azione in corso o stato risultante\n",
+          "meaning_it: azione in corso o stato risultante\nsegment_ref: unsupported-grammar-override\n"
+        )
+      );
+
+      const result = await parseMediaDirectory(mediaDirectory);
+
+      expect(result.ok).toBe(false);
+      expect(
+        result.issues.filter(
+          (issue) =>
+            issue.code === "schema.unknown-field" &&
+            issue.message === "Unknown field 'segment_ref'."
+        )
+      ).toHaveLength(2);
+    } finally {
+      await rm(tempRoot, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects pitch_accent inside term and grammar blocks", async () => {
+    const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-pitch-"));
+    const contentRoot = path.join(tempRoot, "content");
+
+    try {
+      await cp(validContentRoot, contentRoot, { recursive: true });
+
+      const mediaDirectory = path.join(contentRoot, "media", "sample-anime");
+      const cardsPath = path.join(mediaDirectory, "cards", "001-core.md");
+      const lessonPath = path.join(mediaDirectory, "textbook", "001-intro.md");
+      const cardsSource = await readFile(cardsPath, "utf8");
+      const lessonSource = await readFile(lessonPath, "utf8");
+
+      await writeFile(
+        cardsPath,
+        cardsSource.replace(
+          "meaning_it: mangiare\n",
+          "meaning_it: mangiare\npitch_accent: 2\n"
+        )
+      );
+      await writeFile(
+        lessonPath,
+        lessonSource.replace(
+          "meaning_it: azione in corso o stato risultante\n",
+          "meaning_it: azione in corso o stato risultante\npitch_accent: 0\n"
+        )
+      );
+
+      const result = await parseMediaDirectory(mediaDirectory);
+
+      expect(result.ok).toBe(false);
+      expect(
+        result.issues.filter(
+          (issue) =>
+            issue.code === "schema.unknown-field" &&
+            issue.message === "Unknown field 'pitch_accent'."
+        )
+      ).toHaveLength(2);
+    } finally {
+      await rm(tempRoot, { recursive: true, force: true });
+    }
+  });
+
   it("returns a structured issue when the media root is missing", async () => {
     const contentRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-root-"));
 

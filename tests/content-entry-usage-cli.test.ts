@@ -78,7 +78,7 @@ describe("content entry usage CLI", () => {
       expect.arrayContaining([
         expect.objectContaining({
           field: "card.notes_it",
-          line: 47,
+          line: 46,
           card_id: "card-teiru-concept"
         })
       ])

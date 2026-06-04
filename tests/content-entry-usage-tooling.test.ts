@@ -235,7 +235,7 @@ describe("content entry usage tooling", () => {
       expect.objectContaining({
         card_id: "card-teiru-concept",
         field: "card.notes_it",
-        line: 47
+        line: 46
       })
     ]);
   });

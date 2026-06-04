@@ -110,7 +110,7 @@ La policy e volutamente diversa per record content-owned e user-owned.
 ## Segmenti
 
 In v1 non esiste ancora un file sorgente dedicato ai segmenti. L'importer li
-deriva dai `segment_ref` presenti in lesson, term, grammar e cards:
+deriva dai `segment_ref` presenti nel frontmatter di lesson e cards:
 
 - `slug`: il valore di `segment_ref`
 - `segment_type`: `media.segment_kind`

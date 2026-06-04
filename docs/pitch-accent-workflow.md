@@ -106,8 +106,8 @@ non presente come alias locale, il risultato resta `review_required`.
 
 Quando compare `review_required`, l'LLM deve valutare i candidati stampati,
 consultare un'altra fonte se c'e dubbio, e salvare manualmente `pitch_accent`
-solo quando il valore e giustificato. Il comando non scrive `miss` per questi
-casi, quindi restano ritentabili.
+in `pronunciations.json` solo quando il valore e giustificato. Il comando non
+scrive `miss` per questi casi, quindi restano ritentabili.
 
 ## Stati possibili
 

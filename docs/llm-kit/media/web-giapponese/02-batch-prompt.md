@@ -80,8 +80,8 @@ Comandi operativi obbligatori dopo la scrittura:
   `./scripts/with-node.sh pnpm build`;
 - esegui `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>` per ogni entry flashcard appena creata o rivista;
 - se il pitch accent fetch stampa `review_required`, valuta i candidati,
-  consulta un'altra fonte se serve, e salva manualmente l'accento solo quando e
-  giustificato;
+  consulta un'altra fonte se serve, e salva manualmente l'accento in
+  `pronunciations.json` solo quando e giustificato;
 - esegui `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <page-slug> --import`;
 - considera il lavoro incompleto se pronunce, static audio sync/check quando
   applicabile, pitch accent fetch, import o cache revalidation falliscono.

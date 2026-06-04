@@ -437,7 +437,6 @@ function normalizeTerm(value: unknown): NormalizedTerm | null {
     notesIt: normalizeRichTextFragment(value.notesIt) ?? undefined,
     levelHint: typeof value.levelHint === "string" ? value.levelHint : undefined,
     aliases: normalizeStringArray(value.aliases),
-    segmentRef: typeof value.segmentRef === "string" ? value.segmentRef : undefined,
     source: {
       filePath:
         isRecord(value.source) && typeof value.source.filePath === "string"
@@ -462,6 +461,8 @@ function normalizeTerm(value: unknown): NormalizedTerm | null {
       segmentRef:
         isRecord(value.source) && typeof value.source.segmentRef === "string"
           ? value.source.segmentRef
+          : typeof value.segmentRef === "string"
+            ? value.segmentRef
           : undefined
     }
   };
@@ -491,7 +492,6 @@ function normalizeGrammar(value: unknown): NormalizedGrammarPattern | null {
     notesIt: normalizeRichTextFragment(value.notesIt) ?? undefined,
     levelHint: typeof value.levelHint === "string" ? value.levelHint : undefined,
     aliases: normalizeStringArray(value.aliases),
-    segmentRef: typeof value.segmentRef === "string" ? value.segmentRef : undefined,
     source: {
       filePath:
         isRecord(value.source) && typeof value.source.filePath === "string"
@@ -516,6 +516,8 @@ function normalizeGrammar(value: unknown): NormalizedGrammarPattern | null {
       segmentRef:
         isRecord(value.source) && typeof value.source.segmentRef === "string"
           ? value.source.segmentRef
+          : typeof value.segmentRef === "string"
+            ? value.segmentRef
           : undefined
     }
   };

@@ -240,7 +240,6 @@ export interface NormalizedTerm {
   notesIt?: RichTextFragment;
   levelHint?: string;
   aliases: string[];
-  segmentRef?: string;
   audio?: EntryAudioMetadata;
   pitchAccent?: number;
   pitchAccentSource?: string;
@@ -260,7 +259,6 @@ export interface NormalizedGrammarPattern {
   notesIt?: RichTextFragment;
   levelHint?: string;
   aliases: string[];
-  segmentRef?: string;
   audio?: EntryAudioMetadata;
   pitchAccent?: number;
   pitchAccentSource?: string;

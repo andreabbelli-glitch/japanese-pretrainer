@@ -314,8 +314,8 @@ narrower command.
 `pitch-accents:fetch` tries Kanjium, optional local Shirabe Jisho, Jiten,
 Wiktionary, then OJAD. If it prints `review_required`, do not treat it as a
 resolved accent or a miss: inspect the printed candidates, consult another
-source if needed, and only then add `pitch_accent` manually when the value is
-well supported.
+source if needed, and only then add `pitch_accent` manually in
+`pronunciations.json` when the value is well supported.
 
 Repeat `--lesson-slug` if the item update legitimately spans multiple
 textbook routes. Do not broaden the import when the touched lesson set is known.

@@ -141,7 +141,8 @@ Per un singolo item:
   ID entry:
   `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese --entry <new-term-or-grammar-id>`
 - se il fetch stampa `review_required`, valuta i candidati, consulta un'altra
-  fonte se serve, e salva manualmente `pitch_accent` solo quando il valore e
-  giustificato; non trattarlo come risolto automaticamente;
+  fonte se serve, e salva manualmente `pitch_accent` in `pronunciations.json`
+  solo quando il valore e giustificato; non trattarlo come risolto
+  automaticamente;
 - import lesson-scoped nel DB target con lo stesso check:
   `./scripts/with-node.sh pnpm content:lesson-workflow-check -- --media-slug web-giapponese --lesson-slug <page-slug> --import`

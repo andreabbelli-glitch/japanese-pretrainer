@@ -14,8 +14,7 @@ import {
   normalizeGrammarSearchText,
   normalizeSearchText,
   normalizeSourceFile,
-  renderLessonHtml,
-  resolveEntrySegmentRef
+  renderLessonHtml
 } from "./render.ts";
 import type {
   CardImportPlan,
@@ -232,20 +231,14 @@ function buildSegmentRows(bundle: NormalizedMediaBundle) {
 
   for (const term of bundle.terms) {
     register(
-      resolveEntrySegmentRef({
-        segmentRef: term.segmentRef,
-        sourceSegmentRef: term.source.segmentRef
-      }),
+      term.source.segmentRef,
       term.source.documentOrder ?? Number.MAX_SAFE_INTEGER
     );
   }
 
   for (const grammarPattern of bundle.grammarPatterns) {
     register(
-      resolveEntrySegmentRef({
-        segmentRef: grammarPattern.segmentRef,
-        sourceSegmentRef: grammarPattern.source.segmentRef
-      }),
+      grammarPattern.source.segmentRef,
       grammarPattern.source.documentOrder ?? Number.MAX_SAFE_INTEGER
     );
   }
@@ -376,10 +369,7 @@ function buildTermPlan(input: {
     }),
     (alias) => `${alias.aliasType}\u001f${alias.aliasNorm}`
   );
-  const segmentRef = resolveEntrySegmentRef({
-    segmentRef: input.term.segmentRef,
-    sourceSegmentRef: input.term.source.segmentRef
-  });
+  const segmentRef = input.term.source.segmentRef;
   const crossMediaGroupId = buildCrossMediaGroupId(
     "term",
     buildCanonicalTermGroupKey(input.term.lemma)
@@ -451,10 +441,7 @@ function buildGrammarPlan(input: {
     }),
     (alias) => alias.aliasNorm
   );
-  const segmentRef = resolveEntrySegmentRef({
-    segmentRef: input.grammarPattern.segmentRef,
-    sourceSegmentRef: input.grammarPattern.source.segmentRef
-  });
+  const segmentRef = input.grammarPattern.source.segmentRef;
   const crossMediaGroupId = buildCrossMediaGroupId(
     "grammar",
     buildCanonicalGrammarGroupKey(input.grammarPattern.pattern)

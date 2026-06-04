@@ -347,7 +347,8 @@ Regole pratiche:
   entry appena create o aggiornate con
   `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --entry <new-term-or-grammar-id>`;
 - se il fetch stampa `review_required`, valuta i candidati, consulta un'altra
-  fonte se serve, e salva manualmente l'accento solo quando e giustificato;
+  fonte se serve, e salva manualmente l'accento in `pronunciations.json` solo
+  quando e giustificato;
 - passa piu `--entry` per piu card nuove; usa `--word` o `--words-file` solo
   se non hai una lista affidabile di ID;
 - salva metadata Forvo solo dopo aver creato asset e provenance reali.

@@ -248,7 +248,6 @@ audio_speaker: Fixture Speaker
 audio_license: Forvo terms
 audio_attribution: Fixture Speaker via Forvo
 audio_page_url: https://forvo.com/word/%E6%98%8E%E3%81%8B%E3%82%8A/#ja
-pitch_accent: 0
 :::
 
 :::card

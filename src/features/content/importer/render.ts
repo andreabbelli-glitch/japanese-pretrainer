@@ -68,13 +68,6 @@ export function inferTermAliasType(
   return "alt";
 }
 
-export function resolveEntrySegmentRef(input: {
-  segmentRef?: string;
-  sourceSegmentRef?: string;
-}) {
-  return input.segmentRef ?? input.sourceSegmentRef ?? undefined;
-}
-
 export function humanizeSegmentSlug(slug: string): string {
   return slug
     .split(/[-_]+/)
