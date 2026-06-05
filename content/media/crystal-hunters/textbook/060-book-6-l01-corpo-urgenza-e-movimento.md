@@ -52,9 +52,8 @@ devono spiegare, contrastare e agire in fretta.
 
 ## 1. Quando la minaccia non è ancora visibile
 
-[{{潜|ひそ}}む](term:term-ch-b6-mu-19) è un verbo utile perché descrive una
-presenza nascosta, più che una semplice posizione. La minaccia è già entrata
-nella scena, anche se deve ancora manifestarsi pienamente.
+[{{潜|ひそ}}む](term:term-ch-b6-mu-19) è un verbo utile perché non dice solo
+"stare in un posto". Dice che qualcosa resta nascosto. La minaccia e' gia' entrata nella scena, anche se deve ancora manifestarsi pienamente.
 
 :::example_sentence
 jp: >-

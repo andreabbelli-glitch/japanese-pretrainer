@@ -79,11 +79,10 @@ possono sembrare avverbi o formule di cortesia, ma nel dialogo giapponese
 decidono il ritmo della scena.
 
 *   [さっそく](term:term-v235-sassoku) (**subito / senza perdere tempo**) appare
-    quando un personaggio taglia l'attesa e avvia il prossimo passo. Rispetto a
-    un timing neutro come `すぐ`, porta l'idea di cogliere l'occasione e
-    *mettersi subito a fare* ciò che è appena stato deciso. Se dopo una
-    spiegazione leggi `さっそく`, preparati a una destinazione, una prova o
-    un'azione pratica.
+    quando un personaggio taglia l'attesa e avvia il prossimo passo. Non dice
+    solo "presto" in senso neutro: porta l'idea di *mettersi subito a fare* ciò
+    che è appena stato deciso. Se dopo una spiegazione leggi `さっそく`, preparati
+    a una destinazione, una prova o un'azione pratica.
 *   [ぜひ](term:term-v238-zehi) (**assolutamente / ti prego**) rafforza un invito.
     Non è un ordine secco come un comando di menu: è il parlante che spinge
     perché l'altra persona accetti, partecipi o provi qualcosa. In una battuta
@@ -206,9 +205,9 @@ quale valore numerico sta cambiando.
     meta, un luogo in cui succede qualcosa o il punto da cui arriva
     un'informazione.
 *   [ライドポケモン](term:term-v239-raidopokemon) (**Pokémon cavalcatura**) unisce
-    `ライド` (*ride*) e `ポケモン`. Nei tutorial e nei dialoghi pratici segnala la
-    funzione di movimento che ti permette di correre, saltare, nuotare o
-    superare ostacoli.
+    `ライド` (*ride*) e `ポケモン`. Nei tutorial e nei dialoghi pratici non indica
+    un Pokémon qualunque, ma la funzione di movimento che ti permette di
+    correre, saltare, nuotare o superare ostacoli.
 *   [ゴースト](term:term-v241-goosuto) e [ノーマル](term:term-v249-noomaru) sono
     categorie di tipo. Il katakana qui non è decorativo: segnala nomi di tipi
     usati nelle lotte, nelle mosse e nelle compatibilità.
@@ -250,8 +249,8 @@ informazioni, registrazioni, esistenze, relazioni e cambiamenti.
     indica ciò che il personaggio sa e può usare per decidere il passo
     successivo.
 *   [{{記録|きろく}}](term:term-v246-kiroku) (**record / registrazione**) è ciò che
-    resta tracciato: risultati, dati salvati, appunti o log. Il centro è una
-    traccia consultabile che il sistema o i personaggi possono riprendere.
+    resta tracciato: risultati, dati salvati, appunti o log. Il centro non è la
+    memoria personale, ma una traccia consultabile.
 *   [{{存在|そんざい}}](term:term-v248-sonzai) (**esistenza / presenza**) segnala
     che qualcuno o qualcosa non è solo un'idea: esiste nella scena, nel mondo o
     nelle informazioni disponibili.
@@ -315,12 +314,12 @@ presenza fuori dal comune.
     preoccuparsi. In frasi come `{{心配|しんぱい}}しないで`, invece, il personaggio
     rassicura: *non preoccuparti*.
 *   [{{有名|ゆうめい}}](term:term-v254-yuumei) (**famoso**) riguarda la reputazione
-    o la riconoscibilità. La parola dice che una persona, un luogo o un fenomeno
-    è conosciuto; forza e affidabilità vanno dedotte da altri indizi.
+    o la riconoscibilità. Non significa automaticamente forte, buono o
+    affidabile: dice che una persona, un luogo o un fenomeno è conosciuto.
 *   [{{意外|いがい}}](term:term-v242-igai) (**inaspettato**) marca uno scarto
     rispetto alle aspettative. Quando una persona fa qualcosa di
-    [{{意外|いがい}}](term:term-v242-igai), chi parla si sorprende perché l'azione
-    supera le aspettative.
+    [{{意外|いがい}}](term:term-v242-igai), il punto non è che l'azione sia
+    impossibile, ma che sorprende chi parla.
 *   [{{特別|とくべつ}}](term:term-v245-tokubetsu) (**speciale**) isola qualcosa dal
     normale sfondo della scena. Può indicare un oggetto raro, una situazione
     non ordinaria o una persona trattata come fuori dal comune.
