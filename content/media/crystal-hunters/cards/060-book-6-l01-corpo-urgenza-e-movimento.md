@@ -54,8 +54,8 @@ romaji: umoreru
 meaning_it: 'essere sepolto; essere coperto'
 pos: verb
 notes_it: >-
-  {{埋|う}}もれる è intransitivo: il soggetto è ciò che finisce coperto o
-  nascosto sotto qualcosa. Non indica l'azione di seppellire qualcun altro.
+  {{埋|う}}もれる è intransitivo: il soggetto finisce coperto o nascosto sotto
+  qualcosa. Chi seppellisce resta fuori fuoco.
 level_hint: n2
 :::
 
@@ -235,8 +235,8 @@ back: 'ひそむ — nascondersi; restare in agguato'
 example_jp: '{{怪物|かいぶつ}}が{{水|みず}}に{{潜|ひそ}}む。'
 example_it: 'Un mostro resta nascosto nell''acqua.'
 notes_it: >-
-  {{潜|ひそ}}む porta con sé l'idea di una presenza nascosta. Non descrive solo
-  posizione, ma tensione prima dell'attacco.
+  {{潜|ひそ}}む porta con sé l'idea di una presenza nascosta: posizione e
+  tensione prima dell'attacco arrivano insieme.
 tags: [crystal-hunters, book-6, lesson-01]
 :::
 
@@ -251,8 +251,8 @@ back: 'こおりつく — congelarsi; bloccarsi'
 example_jp: '{{水|みず}}が{{凍|こお}}りつく。'
 example_it: 'L''acqua si congela.'
 notes_it: >-
-  Il soggetto è ciò che finisce ghiacciato o bloccato. La forma non dice chi
-  causa il congelamento.
+  Il soggetto è ciò che finisce ghiacciato o bloccato; l'agente del
+  congelamento resta fuori frase.
 tags: [crystal-hunters, book-6, lesson-01]
 :::
 
@@ -311,7 +311,9 @@ entry_type: term
 entry_id: term-ch-b6-sugu-5
 card_type: recognition
 front: 'すぐ'
-back: 'すぐ — subito; presto'
+back: >-
+  すぐ — subito; in questo preciso istante. Il tema è temporale e oggettivo:
+  colloca l'azione vicino al presente, senza aggiungere entusiasmo o slancio.
 example_jp: '{{今|いま}}すぐ{{行|い}}く。'
 example_it: 'Vado subito.'
 notes_it: >-

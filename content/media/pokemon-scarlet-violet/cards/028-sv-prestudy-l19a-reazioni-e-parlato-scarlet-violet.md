@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-028-sv-prestudy-l19a-reazioni-e-parlato-scarlet-violet
 media_id: media-pokemon-scarlet-violet
 slug: 028-sv-prestudy-l19a-reazioni-e-parlato-scarlet-violet
-title: SV Pre-study L19A - reazioni e parlato, Scarlet/Violet
+title: Reazioni, conferme e cambiamenti nei dialoghi di Paldea
 order: 58
 segment_ref: scarlet-violet-prestudy
 ---
@@ -152,7 +152,9 @@ entry_type: term
 entry_id: term-v235-sassoku
 card_type: recognition
 front: 'さっそく'
-back: subito / senza perdere tempo
+back: >-
+  さっそく — subito / senza perdere tempo. La sfumatura aggiunge slancio: chi
+  parla coglie l'occasione e parte con entusiasmo.
 example_jp: >-
   さっそく {{行|い}}こう。
 example_it: >-
@@ -210,7 +212,7 @@ romaji: kawa ru
 meaning_it: cambiare
 notes_it: >-
   変わる è intransitivo: il soggetto cambia da solo o risulta diverso, come
-  見た目が変わる. Non significa "cambiare qualcosa", che richiederebbe 変える.
+  見た目が変わる. Per "cambiare qualcosa" serve invece 変える.
 :::
 :::card
 id: card-v240-kawa-ru-recognition
