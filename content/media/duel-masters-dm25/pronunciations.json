@@ -23,6 +23,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-battle-zone-ni-oita-mama",
+      "audio_src": "assets/audio/grammar/grammar-battle-zone-ni-oita-mama/forvo-mezashi-ハ-トルソ-ーンにおいたまま.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%90%E3%83%88%E3%83%AB%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AB%E7%BD%AE%E3%81%84%E3%81%9F%E3%81%BE%E3%81%BE/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -742,6 +747,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-uramuki-ni-shite",
+      "audio_src": "assets/audio/grammar/grammar-uramuki-ni-shite/forvo-mezashi-うらむきにして.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A3%8F%E5%90%91%E3%81%8D%E3%81%AB%E3%81%97%E3%81%A6/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -3570,6 +3580,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-smash-burst",
+      "audio_src": "assets/audio/term/term-smash-burst/forvo-mezashi-すまっしゅは-ーすと.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B9%E3%83%9E%E3%83%83%E3%82%B7%E3%83%A5%E3%83%BB%E3%83%90%E3%83%BC%E3%82%B9%E3%83%88/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -3615,6 +3630,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-spell-side",
+      "audio_src": "assets/audio/term/term-spell-side/forvo-mezashi-し-ゅもんか-わ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%91%AA%E6%96%87%E5%81%B4/#ja",
       "pitch_accent_status": "miss"
     },
     {

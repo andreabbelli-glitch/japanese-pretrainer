@@ -31,7 +31,10 @@
       "label": "何なんだ",
       "mediaSlug": "crystal-hunters",
       "requestUrl": "https://forvo.com/word-add/%E4%BD%95%E3%81%AA%E3%82%93%E3%81%A0/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:14:44.204Z"
+      "requestedAt": "2026-05-24T15:14:44.204Z",
+      "resolvedAt": "2026-06-06T12:47:35.630Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-ch-b8-nan-nanda/forvo-mezashi-何なんた.mp3"
     },
     {
       "entryId": "grammar-ch-b9-nani-o-shitara-ii",
@@ -39,7 +42,10 @@
       "label": "何をしたらいい",
       "mediaSlug": "crystal-hunters",
       "requestUrl": "https://forvo.com/word-add/%E4%BD%95%E3%82%92%E3%81%97%E3%81%9F%E3%82%89%E3%81%84%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:14:57.465Z"
+      "requestedAt": "2026-05-24T15:14:57.465Z",
+      "resolvedAt": "2026-06-06T12:47:35.876Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-ch-b9-nani-o-shitara-ii/forvo-mezashi-何をしたらいい.mp3"
     },
     {
       "entryId": "grammar-ch-b9-ni-kuwae",
@@ -47,7 +53,10 @@
       "label": "Nに加え",
       "mediaSlug": "crystal-hunters",
       "requestUrl": "https://forvo.com/word-add/%E3%81%AB%E5%8A%A0%E3%81%88/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:15:08.139Z"
+      "requestedAt": "2026-05-24T15:15:08.139Z",
+      "resolvedAt": "2026-06-06T12:47:36.070Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-ch-b9-ni-kuwae/forvo-mezashi-nに加え.mp3"
     },
     {
       "entryId": "grammar-ch-ga-with-iru-need",
@@ -55,7 +64,10 @@
       "label": "Nが要る",
       "mediaSlug": "crystal-hunters",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8C%E8%A6%81%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:13:04.474Z"
+      "requestedAt": "2026-05-24T15:13:04.474Z",
+      "resolvedAt": "2026-06-06T12:47:36.310Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-ch-ga-with-iru-need/forvo-mezashi-nか-要る.mp3"
     },
     {
       "entryId": "grammar-ch-honorary-topic-ima-wa",
@@ -63,7 +75,10 @@
       "label": "今は",
       "mediaSlug": "crystal-hunters",
       "requestUrl": "https://forvo.com/word-add/%E4%BB%8A%E3%81%AF/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:13:17.524Z"
+      "requestedAt": "2026-05-24T15:13:17.524Z",
+      "resolvedAt": "2026-06-06T12:47:36.609Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-ch-honorary-topic-ima-wa/forvo-mezashi-今は.mp3"
     },
     {
       "entryId": "term-ch-b4-entry-14",
@@ -72,7 +87,10 @@
       "mediaSlug": "crystal-hunters",
       "reading": "まほうがっこう",
       "requestUrl": "https://forvo.com/word-add/%E9%AD%94%E6%B3%95%E5%AD%A6%E6%A0%A1/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T14:42:46.909Z"
+      "requestedAt": "2026-05-24T14:42:46.909Z",
+      "resolvedAt": "2026-06-06T12:47:36.841Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-ch-b4-entry-14/forvo-mezashi-まほうか-っこう.mp3"
     },
     {
       "entryId": "term-ch-b7-an-i-ni",
@@ -81,7 +99,10 @@
       "mediaSlug": "crystal-hunters",
       "reading": "あんいに",
       "requestUrl": "https://forvo.com/word-add/%E5%AE%89%E6%98%93%E3%81%AB/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T14:48:37.543Z"
+      "requestedAt": "2026-05-24T14:48:37.543Z",
+      "resolvedAt": "2026-06-06T12:47:37.050Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-ch-b7-an-i-ni/forvo-mezashi-あんいに.mp3"
     },
     {
       "entryId": "term-ch-b7-mahousui",
@@ -90,7 +111,10 @@
       "mediaSlug": "crystal-hunters",
       "reading": "まほうすい",
       "requestUrl": "https://forvo.com/word-add/%E9%AD%94%E6%B3%95%E6%B0%B4/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T14:46:36.431Z"
+      "requestedAt": "2026-05-24T14:46:36.431Z",
+      "resolvedAt": "2026-06-06T12:47:37.282Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-ch-b7-mahousui/forvo-mezashi-まほうすい.mp3"
     },
     {
       "entryId": "term-ch-b8-osoi-kakaru",
@@ -99,7 +123,10 @@
       "mediaSlug": "crystal-hunters",
       "reading": "おそいかかる",
       "requestUrl": "https://forvo.com/word-add/%E8%A5%B2%E3%81%84%E6%8E%9B%E3%81%8B%E3%82%8B/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T14:51:07.629Z"
+      "requestedAt": "2026-05-24T14:51:07.629Z",
+      "resolvedAt": "2026-06-06T12:47:37.511Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-ch-b8-osoi-kakaru/forvo-mezashi-おそいかかる.mp3"
     },
     {
       "entryId": "term-ch-b8-tayorikiru",
@@ -108,7 +135,10 @@
       "mediaSlug": "crystal-hunters",
       "reading": "たよりきる",
       "requestUrl": "https://forvo.com/word-add/%E9%A0%BC%E3%82%8A%E3%81%8D%E3%82%8B/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T14:51:31.402Z"
+      "requestedAt": "2026-05-24T14:51:31.402Z",
+      "resolvedAt": "2026-06-06T12:47:37.771Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-ch-b8-tayorikiru/forvo-mezashi-たよりきる.mp3"
     },
     {
       "entryId": "term-ch-b9-saku-o-utsu",
@@ -117,7 +147,10 @@
       "mediaSlug": "crystal-hunters",
       "reading": "さくをうつ",
       "requestUrl": "https://forvo.com/word-add/%E7%AD%96%E3%82%92%E6%89%93%E3%81%A4/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T14:53:12.697Z"
+      "requestedAt": "2026-05-24T14:53:12.697Z",
+      "resolvedAt": "2026-06-06T12:47:37.930Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-ch-b9-saku-o-utsu/forvo-mezashi-さくをうつ.mp3"
     },
     {
       "entryId": "term-ch-b9-yowasugiru",
@@ -126,7 +159,10 @@
       "mediaSlug": "crystal-hunters",
       "reading": "よわすぎる",
       "requestUrl": "https://forvo.com/word-add/%E5%BC%B1%E3%81%99%E3%81%8E%E3%82%8B/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T14:52:37.769Z"
+      "requestedAt": "2026-05-24T14:52:37.769Z",
+      "resolvedAt": "2026-06-06T12:47:38.065Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-ch-b9-yowasugiru/forvo-mezashi-よわすき-る.mp3"
     },
     {
       "entryId": "term-kiritsukeru",
@@ -171,7 +207,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "バトルゾーンにおいたまま",
       "requestUrl": "https://forvo.com/word-add/%E3%83%90%E3%83%88%E3%83%AB%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AB%E7%BD%AE%E3%81%84%E3%81%9F%E3%81%BE%E3%81%BE/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:16:07.053Z"
+      "requestedAt": "2026-05-24T15:16:07.053Z",
+      "resolvedAt": "2026-06-06T12:47:38.241Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-battle-zone-ni-oita-mama/forvo-mezashi-ハ-トルソ-ーンにおいたまま.mp3"
     },
     {
       "entryId": "grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card",
@@ -638,7 +677,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "うらむきにして",
       "requestUrl": "https://forvo.com/word-add/%E8%A3%8F%E5%90%91%E3%81%8D%E3%81%AB%E3%81%97%E3%81%A6/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:16:09.771Z"
+      "requestedAt": "2026-05-24T15:16:09.771Z",
+      "resolvedAt": "2026-06-06T12:47:38.423Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-uramuki-ni-shite/forvo-mezashi-うらむきにして.mp3"
     },
     {
       "entryId": "grammar-uramuki-no-mama",
@@ -1985,7 +2027,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "すまっしゅばーすと",
       "requestUrl": "https://forvo.com/word-add/%E3%82%B9%E3%83%9E%E3%83%83%E3%82%B7%E3%83%A5%E3%83%BB%E3%83%90%E3%83%BC%E3%82%B9%E3%83%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:15:58.183Z"
+      "requestedAt": "2026-05-24T15:15:58.183Z",
+      "resolvedAt": "2026-06-06T12:47:38.588Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-smash-burst/forvo-mezashi-すまっしゅは-ーすと.mp3"
     },
     {
       "entryId": "term-sofa-softysonia",
@@ -2030,7 +2075,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "じゅもんがわ",
       "requestUrl": "https://forvo.com/word-add/%E5%91%AA%E6%96%87%E5%81%B4/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:16:01.022Z"
+      "requestedAt": "2026-05-24T15:16:01.022Z",
+      "resolvedAt": "2026-06-06T12:47:38.724Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-spell-side/forvo-mezashi-し-ゅもんか-わ.mp3"
     },
     {
       "entryId": "term-stage-select",
@@ -2878,7 +2926,10 @@
       "label": "～かなあ",
       "mediaSlug": "pokemon-scarlet-violet",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8B%E3%81%AA%E3%81%82/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:33:48.741Z"
+      "requestedAt": "2026-05-24T16:33:48.741Z",
+      "resolvedAt": "2026-06-06T12:47:38.942Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-g055-mi-chiedo-proprio/forvo-mezashi-かなあ.mp3"
     },
     {
       "entryId": "grammar-g065-difficile-da-fare",
@@ -2886,7 +2937,10 @@
       "label": "～にくい",
       "mediaSlug": "pokemon-scarlet-violet",
       "requestUrl": "https://forvo.com/word-add/%E3%81%AB%E3%81%8F%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:34:14.212Z"
+      "requestedAt": "2026-05-24T16:34:14.212Z",
+      "resolvedAt": "2026-06-06T12:47:39.132Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-g065-difficile-da-fare/forvo-mezashi-にくい.mp3"
     },
     {
       "entryId": "grammar-g070-qualcosa-e-stato-fatto-intenzionalmente",
@@ -2902,7 +2956,10 @@
       "label": "～予定だ",
       "mediaSlug": "pokemon-scarlet-violet",
       "requestUrl": "https://forvo.com/word-add/%E4%BA%88%E5%AE%9A%E3%81%A0/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:34:31.858Z"
+      "requestedAt": "2026-05-24T16:34:31.858Z",
+      "resolvedAt": "2026-06-06T12:47:39.376Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-g073-essere-previsto/forvo-mezashi-予定た.mp3"
     },
     {
       "entryId": "grammar-g097-per-allo-scopo-di",
@@ -2910,7 +2967,10 @@
       "label": "～ために",
       "mediaSlug": "pokemon-scarlet-violet",
       "requestUrl": "https://forvo.com/word-add/%E3%81%9F%E3%82%81%E3%81%AB/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:35:30.009Z"
+      "requestedAt": "2026-05-24T16:35:30.009Z",
+      "resolvedAt": "2026-06-06T12:47:39.601Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-g097-per-allo-scopo-di/forvo-mezashi-ために.mp3"
     },
     {
       "entryId": "grammar-g103-mentre-finche",
@@ -2926,7 +2986,10 @@
       "label": "～だぜ",
       "mediaSlug": "pokemon-scarlet-violet",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A0%E3%81%9C/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:35:57.597Z"
+      "requestedAt": "2026-05-24T16:35:57.597Z",
+      "resolvedAt": "2026-06-06T12:47:39.866Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-g105-finale-ruvida-maschile/forvo-mezashi-た-せ.mp3"
     },
     {
       "entryId": "grammar-g106-registro-samurai-comico",
@@ -2934,7 +2997,10 @@
       "label": "～でござる",
       "mediaSlug": "pokemon-scarlet-violet",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A7%E3%81%94%E3%81%96%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:36:12.317Z"
+      "requestedAt": "2026-05-24T16:36:12.317Z",
+      "resolvedAt": "2026-06-06T12:47:40.118Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-g106-registro-samurai-comico/forvo-mezashi-て-こ-さ-る.mp3"
     },
     {
       "entryId": "grammar-g113-non-e-che-non-sara-che",
@@ -2974,7 +3040,10 @@
       "label": "～てあげる",
       "mediaSlug": "pokemon-scarlet-violet",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A6%E3%81%82%E3%81%92%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:36:47.118Z"
+      "requestedAt": "2026-05-24T16:36:47.118Z",
+      "resolvedAt": "2026-06-06T12:47:40.352Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-te-ageru/forvo-mezashi-てあけ-る.mp3"
     },
     {
       "entryId": "grammar-te-kudasai",
@@ -3009,7 +3078,10 @@
       "label": "～づくし",
       "mediaSlug": "pokemon-scarlet-violet",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A5%E3%81%8F%E3%81%97/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:36:44.404Z"
+      "requestedAt": "2026-05-24T16:36:44.404Z",
+      "resolvedAt": "2026-06-06T12:47:40.605Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-zukushi/forvo-mezashi-つ-くし.mp3"
     },
     {
       "entryId": "term-anki-l07-nibai",
@@ -3018,7 +3090,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "にばい",
       "requestUrl": "https://forvo.com/word-add/2%E5%80%8D/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:25:38.573Z"
+      "requestedAt": "2026-05-24T16:25:38.573Z",
+      "resolvedAt": "2026-06-06T12:47:40.814Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-anki-l07-nibai/forvo-mezashi-には-い.mp3"
     },
     {
       "entryId": "term-anki-l08-eeai",
@@ -3027,7 +3102,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "エーアイ",
       "requestUrl": "https://forvo.com/word-add/%E3%82%A8%E3%83%BC%E3%82%A2%E3%82%A4/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:25:55.848Z"
+      "requestedAt": "2026-05-24T16:25:55.848Z",
+      "resolvedAt": "2026-06-06T12:47:41.033Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-anki-l08-eeai/forvo-mezashi-エーアイ.mp3"
     },
     {
       "entryId": "term-anki-l09-omise",
@@ -3036,7 +3114,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "おみせ",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8A%E5%BA%97/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:26:45.666Z"
+      "requestedAt": "2026-05-24T16:26:45.666Z",
+      "resolvedAt": "2026-06-06T12:47:41.219Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-anki-l09-omise/forvo-mezashi-おみせ.mp3"
     },
     {
       "entryId": "term-anki-l11-kisho",
@@ -3045,7 +3126,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "きしょ",
       "requestUrl": "https://forvo.com/word-add/%E5%A5%87%E6%9B%B8/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:27:33.070Z"
+      "requestedAt": "2026-05-24T16:27:33.070Z",
+      "resolvedAt": "2026-06-06T12:47:41.441Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-anki-l11-kisho/forvo-mezashi-きしょ.mp3"
     },
     {
       "entryId": "term-anki-l20-funbyou",
@@ -3075,7 +3159,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ちからをつかいはたす",
       "requestUrl": "https://forvo.com/word-add/%E5%8A%9B%E3%82%92%E4%BD%BF%E3%81%84%E6%9E%9C%E3%81%9F%E3%81%99/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:32:52.491Z"
+      "requestedAt": "2026-05-24T16:32:52.491Z",
+      "resolvedAt": "2026-06-06T12:47:41.651Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-chikara-o-tsukai-hatasu/forvo-mezashi-ちからをつかいはたす.mp3"
     },
     {
       "entryId": "term-dougu",
@@ -3180,7 +3267,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "おつかれさまでスター",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8A%E7%96%B2%E3%82%8C%E3%81%95%E3%81%BE%E3%81%A7%E3%82%B9%E3%82%BF%E3%83%BC/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:59:12.538Z"
+      "requestedAt": "2026-05-24T15:59:12.538Z",
+      "resolvedAt": "2026-06-06T12:47:41.952Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e037-otsukaresamadesutaa/forvo-mezashi-おつかれさまて-スター.mp3"
     },
     {
       "entryId": "term-e042-shiteageru",
@@ -3243,7 +3333,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "それって",
       "requestUrl": "https://forvo.com/word-add/%E3%81%9D%E3%82%8C%E3%81%A3%E3%81%A6/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:59:25.975Z"
+      "requestedAt": "2026-05-24T15:59:25.975Z",
+      "resolvedAt": "2026-06-06T12:47:42.231Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e054-sorette/forvo-mezashi-それって.mp3"
     },
     {
       "entryId": "term-e059-shiteokou",
@@ -3252,7 +3345,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜しておこう",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%8A%E3%81%93%E3%81%86/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:00:24.907Z"
+      "requestedAt": "2026-05-24T16:00:24.907Z",
+      "resolvedAt": "2026-06-06T12:47:42.489Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e059-shiteokou/forvo-mezashi-しておこう.mp3"
     },
     {
       "entryId": "term-e063-docchi",
@@ -3282,7 +3378,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "なんで？",
       "requestUrl": "https://forvo.com/word-add/%E3%81%AA%E3%82%93%E3%81%A7%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:02:06.263Z"
+      "requestedAt": "2026-05-24T16:02:06.263Z",
+      "resolvedAt": "2026-06-06T12:47:42.709Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e065-nande/forvo-mezashi-なんて.mp3"
     },
     {
       "entryId": "term-e066-shibaraku-omachikudasai",
@@ -3291,7 +3390,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "しばらく おまちください",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%B0%E3%82%89%E3%81%8F%20%E3%81%8A%E5%BE%85%E3%81%A1%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:02:08.940Z"
+      "requestedAt": "2026-05-24T16:02:08.940Z",
+      "resolvedAt": "2026-06-06T12:47:42.954Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e066-shibaraku-omachikudasai/forvo-mezashi-しは-らく-おまちくた-さい.mp3"
     },
     {
       "entryId": "term-e068-kitto-daijoubu",
@@ -3300,7 +3402,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "きっとだいじょうぶ",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8D%E3%81%A3%E3%81%A8%E5%A4%A7%E4%B8%88%E5%A4%AB/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:02:14.314Z"
+      "requestedAt": "2026-05-24T16:02:14.314Z",
+      "resolvedAt": "2026-06-06T12:47:43.232Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e068-kitto-daijoubu/forvo-mezashi-きっとた-いし-ょうふ.mp3"
     },
     {
       "entryId": "term-e069-ha-douda",
@@ -3309,7 +3414,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜は どうだ？",
       "requestUrl": "https://forvo.com/word-add/%E3%81%AF%20%E3%81%A9%E3%81%86%E3%81%A0%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:03:13.379Z"
+      "requestedAt": "2026-05-24T16:03:13.379Z",
+      "resolvedAt": "2026-06-06T12:47:43.508Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e069-ha-douda/forvo-mezashi-は-と-うた.mp3"
     },
     {
       "entryId": "term-e071-tekagen-shinaiyo",
@@ -3318,7 +3426,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "てかげんしないよ",
       "requestUrl": "https://forvo.com/word-add/%E6%89%8B%E5%8A%A0%E6%B8%9B%E3%81%97%E3%81%AA%E3%81%84%E3%82%88/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:03:59.964Z"
+      "requestedAt": "2026-05-24T16:03:59.964Z",
+      "resolvedAt": "2026-06-06T12:47:43.769Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e071-tekagen-shinaiyo/forvo-mezashi-てかけ-んしないよ.mp3"
     },
     {
       "entryId": "term-e073-noyarikata",
@@ -3336,7 +3447,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ほんとうに よろしいですか",
       "requestUrl": "https://forvo.com/word-add/%E6%9C%AC%E5%BD%93%E3%81%AB%20%E3%82%88%E3%82%8D%E3%81%97%E3%81%84%E3%81%A7%E3%81%99%E3%81%8B%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:04:08.352Z"
+      "requestedAt": "2026-05-24T16:04:08.352Z",
+      "resolvedAt": "2026-06-06T12:47:44.036Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e074-hontouni-yoroshiidesuka/forvo-mezashi-ほんとうに-よろしいて-すか.mp3"
     },
     {
       "entryId": "term-e075-mitemiyou",
@@ -3345,7 +3459,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "みてみよう",
       "requestUrl": "https://forvo.com/word-add/%E8%A6%8B%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:04:54.259Z"
+      "requestedAt": "2026-05-24T16:04:54.259Z",
+      "resolvedAt": "2026-06-06T12:47:44.311Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e075-mitemiyou/forvo-mezashi-みてみよう.mp3"
     },
     {
       "entryId": "term-e076-atoha-makase-te",
@@ -3354,7 +3471,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "あとはまかせて",
       "requestUrl": "https://forvo.com/word-add/%E3%81%82%E3%81%A8%E3%81%AF%E4%BB%BB%E3%81%9B%E3%81%A6/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:04:56.928Z"
+      "requestedAt": "2026-05-24T16:04:56.928Z",
+      "resolvedAt": "2026-06-06T12:47:44.645Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e076-atoha-makase-te/forvo-mezashi-あとはまかせて.mp3"
     },
     {
       "entryId": "term-e077-mazuhakokokara",
@@ -3363,7 +3483,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "まずはここから",
       "requestUrl": "https://forvo.com/word-add/%E3%81%BE%E3%81%9A%E3%81%AF%E3%81%93%E3%81%93%E3%81%8B%E3%82%89/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:04:59.608Z"
+      "requestedAt": "2026-05-24T16:04:59.608Z",
+      "resolvedAt": "2026-06-06T12:47:44.869Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e077-mazuhakokokara/forvo-mezashi-ます-はここから.mp3"
     },
     {
       "entryId": "term-e078-hayaku",
@@ -3372,7 +3495,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "はやく！",
       "requestUrl": "https://forvo.com/word-add/%E6%97%A9%E3%81%8F%EF%BC%81/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:05:50.552Z"
+      "requestedAt": "2026-05-24T16:05:50.552Z",
+      "resolvedAt": "2026-06-06T12:47:45.100Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e078-hayaku/forvo-mezashi-はやく.mp3"
     },
     {
       "entryId": "term-e079-tsugi-hadare",
@@ -3381,7 +3507,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "つぎはだれ？",
       "requestUrl": "https://forvo.com/word-add/%E6%AC%A1%E3%81%AF%E3%81%A0%E3%82%8C%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:05:53.236Z"
+      "requestedAt": "2026-05-24T16:05:53.236Z",
+      "resolvedAt": "2026-06-06T12:47:45.326Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e079-tsugi-hadare/forvo-mezashi-つき-はた-れ.mp3"
     },
     {
       "entryId": "term-e081-kimi-shidai",
@@ -3390,7 +3519,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "きみしだい",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8D%E3%81%BF%E6%AC%A1%E7%AC%AC/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:06:42.008Z"
+      "requestedAt": "2026-05-24T16:06:42.008Z",
+      "resolvedAt": "2026-06-06T12:47:45.590Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e081-kimi-shidai/forvo-mezashi-きみした-い.mp3"
     },
     {
       "entryId": "term-e083-zenryoku-deikou",
@@ -3399,7 +3531,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ぜんりょくでいこう",
       "requestUrl": "https://forvo.com/word-add/%E5%85%A8%E5%8A%9B%E3%81%A7%E3%81%84%E3%81%93%E3%81%86/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:06:47.539Z"
+      "requestedAt": "2026-05-24T16:06:47.539Z",
+      "resolvedAt": "2026-06-06T12:47:45.818Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e083-zenryoku-deikou/forvo-mezashi-せ-んりょくて-いこう.mp3"
     },
     {
       "entryId": "term-e084-mada-owari-janai",
@@ -3408,7 +3543,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "まだおわりじゃない",
       "requestUrl": "https://forvo.com/word-add/%E3%81%BE%E3%81%A0%E7%B5%82%E3%82%8F%E3%82%8A%E3%81%98%E3%82%83%E3%81%AA%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:06:50.262Z"
+      "requestedAt": "2026-05-24T16:06:50.262Z",
+      "resolvedAt": "2026-06-06T12:47:46.155Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e084-mada-owari-janai/forvo-mezashi-また-おわりし-ゃない.mp3"
     },
     {
       "entryId": "term-e085-himitsu-dayo",
@@ -3417,7 +3555,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ひみつだよ",
       "requestUrl": "https://forvo.com/word-add/%E7%A7%98%E5%AF%86%E3%81%A0%E3%82%88/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:07:50.490Z"
+      "requestedAt": "2026-05-24T16:07:50.490Z",
+      "resolvedAt": "2026-06-06T12:47:46.379Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e085-himitsu-dayo/forvo-mezashi-ひみつた-よ.mp3"
     },
     {
       "entryId": "term-e086-shitemoraeru",
@@ -3426,7 +3567,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜してもらえる？",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%82%82%E3%82%89%E3%81%88%E3%82%8B%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:07:53.178Z"
+      "requestedAt": "2026-05-24T16:07:53.178Z",
+      "resolvedAt": "2026-06-06T12:47:46.622Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e086-shitemoraeru/forvo-mezashi-してもらえる.mp3"
     },
     {
       "entryId": "term-e090-kuyashiikedo",
@@ -3435,7 +3579,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "くやしいけど",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8F%E3%82%84%E3%81%97%E3%81%84%E3%81%91%E3%81%A9/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:12:57.777Z"
+      "requestedAt": "2026-05-24T16:12:57.777Z",
+      "resolvedAt": "2026-06-06T12:47:46.920Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e090-kuyashiikedo/forvo-mezashi-くやしいけと.mp3"
     },
     {
       "entryId": "term-e091-shitemimashou",
@@ -3444,7 +3591,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜してみましょう",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%BF%E3%81%BE%E3%81%97%E3%82%87%E3%81%86/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:13:00.464Z"
+      "requestedAt": "2026-05-24T16:13:00.464Z",
+      "resolvedAt": "2026-06-06T12:47:47.157Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e091-shitemimashou/forvo-mezashi-してみましょう.mp3"
     },
     {
       "entryId": "term-e094-shiteagemashou",
@@ -3453,7 +3603,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜してあげましょう",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%82%E3%81%92%E3%81%BE%E3%81%97%E3%82%87%E3%81%86/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:13:56.470Z"
+      "requestedAt": "2026-05-24T16:13:56.470Z",
+      "resolvedAt": "2026-06-06T12:47:47.424Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e094-shiteagemashou/forvo-mezashi-してあけ-ましょう.mp3"
     },
     {
       "entryId": "term-e095-o-kakuninshitemimashou",
@@ -3462,7 +3615,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜を かくにんしてみましょう！",
       "requestUrl": "https://forvo.com/word-add/%E3%82%92%20%E7%A2%BA%E8%AA%8D%E3%81%97%E3%81%A6%E3%81%BF%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%EF%BC%81/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:13:59.189Z"
+      "requestedAt": "2026-05-24T16:13:59.189Z",
+      "resolvedAt": "2026-06-06T12:47:47.660Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e095-o-kakuninshitemimashou/forvo-mezashi-を-かくにんしてみましょう.mp3"
     },
     {
       "entryId": "term-e096-korede-okee",
@@ -3480,7 +3636,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "なくなってしまいますが よろしいですか",
       "requestUrl": "https://forvo.com/word-add/%E3%81%AA%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%84%E3%81%BE%E3%81%99%E3%81%8C%20%E3%82%88%E3%82%8D%E3%81%97%E3%81%84%E3%81%A7%E3%81%99%E3%81%8B%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:14:01.921Z"
+      "requestedAt": "2026-05-24T16:14:01.921Z",
+      "resolvedAt": "2026-06-06T12:47:47.883Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e097-nakunatteshimaimasuga-yoroshiidesuka/forvo-mezashi-なくなってしまいますか-よろしいて-すか.mp3"
     },
     {
       "entryId": "term-e098-shitemiyouyo",
@@ -3489,7 +3648,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜してみようよ",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86%E3%82%88/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:14:04.670Z"
+      "requestedAt": "2026-05-24T16:14:04.670Z",
+      "resolvedAt": "2026-06-06T12:47:48.121Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e098-shitemiyouyo/forvo-mezashi-してみようよ.mp3"
     },
     {
       "entryId": "term-e099-kigakawattara-yoroshikune",
@@ -3498,7 +3660,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "きがかわったら よろしくね",
       "requestUrl": "https://forvo.com/word-add/%E6%B0%97%E3%81%8C%E5%A4%89%E3%82%8F%E3%81%A3%E3%81%9F%E3%82%89%20%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%AD/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:15:04.004Z"
+      "requestedAt": "2026-05-24T16:15:04.004Z",
+      "resolvedAt": "2026-06-06T12:47:48.339Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e099-kigakawattara-yoroshikune/forvo-mezashi-きか-かわったら-よろしくね.mp3"
     },
     {
       "entryId": "term-e100-jugyou-wo-omoidasu",
@@ -3507,7 +3672,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "じゅぎょうを おもいだす",
       "requestUrl": "https://forvo.com/word-add/%E6%8E%88%E6%A5%AD%E3%82%92%E6%80%9D%E3%81%84%E5%87%BA%E3%81%99/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:11:37.959Z"
+      "requestedAt": "2026-05-24T16:11:37.959Z",
+      "resolvedAt": "2026-06-06T12:47:48.554Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e100-jugyou-wo-omoidasu/forvo-mezashi-し-ゅき-ょうを-おもいた-す.mp3"
     },
     {
       "entryId": "term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai",
@@ -3516,7 +3684,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "していの きょうしつへ むかってください",
       "requestUrl": "https://forvo.com/word-add/%E6%8C%87%E5%AE%9A%E3%81%AE%E6%95%99%E5%AE%A4%E3%81%B8%20%E5%90%91%E3%81%8B%E3%81%A3%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:15:06.738Z"
+      "requestedAt": "2026-05-24T16:15:06.738Z",
+      "resolvedAt": "2026-06-06T12:47:48.784Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai/forvo-mezashi-していの-きょうしつへ-むかってくた-さい.mp3"
     },
     {
       "entryId": "term-e102-shitemo-iishi",
@@ -3525,7 +3696,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜しても いいし",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%82%82%20%E3%81%84%E3%81%84%E3%81%97/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:15:09.459Z"
+      "requestedAt": "2026-05-24T16:15:09.459Z",
+      "resolvedAt": "2026-06-06T12:47:48.999Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e102-shitemo-iishi/forvo-mezashi-しても-いいし.mp3"
     },
     {
       "entryId": "term-e103-honki-de",
@@ -3534,7 +3708,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ほんきで？",
       "requestUrl": "https://forvo.com/word-add/%E6%9C%AC%E6%B0%97%E3%81%A7%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:16:11.150Z"
+      "requestedAt": "2026-05-24T16:16:11.150Z",
+      "resolvedAt": "2026-06-06T12:47:49.220Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e103-honki-de/forvo-mezashi-ほんきて.mp3"
     },
     {
       "entryId": "term-e105-dono-narabini-kaemasuka",
@@ -3543,7 +3720,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "どの ならびに かえますか",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A9%E3%81%AE%20%E3%81%AA%E3%82%89%E3%81%B3%E3%81%AB%20%E3%81%8B%E3%81%88%E3%81%BE%E3%81%99%E3%81%8B%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:16:16.776Z"
+      "requestedAt": "2026-05-24T16:16:16.776Z",
+      "resolvedAt": "2026-06-06T12:47:49.452Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e105-dono-narabini-kaemasuka/forvo-mezashi-と-の-ならひ-に-かえますか.mp3"
     },
     {
       "entryId": "term-e106-dono-wazao-kaifukusuru",
@@ -3552,7 +3732,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "どの わざを かいふくする",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A9%E3%81%AE%20%E6%8A%80%E3%82%92%20%E5%9B%9E%E5%BE%A9%E3%81%99%E3%82%8B%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:17:20.390Z"
+      "requestedAt": "2026-05-24T16:17:20.390Z",
+      "resolvedAt": "2026-06-06T12:47:49.720Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e106-dono-wazao-kaifukusuru/forvo-mezashi-と-の-わさ-を-かいふくする.mp3"
     },
     {
       "entryId": "term-e107-shitemoiikarane",
@@ -3561,7 +3744,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜してもいいからね",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%81%8B%E3%82%89%E3%81%AD/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:17:23.089Z"
+      "requestedAt": "2026-05-24T16:17:23.089Z",
+      "resolvedAt": "2026-06-06T12:47:49.947Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e107-shitemoiikarane/forvo-mezashi-してもいいからね.mp3"
     },
     {
       "entryId": "term-e112-nantoiukotodeshou",
@@ -3570,7 +3756,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "なんということでしょう",
       "requestUrl": "https://forvo.com/word-add/%E3%81%AA%E3%82%93%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%A7%E3%81%97%E3%82%87%E3%81%86/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:21:42.808Z"
+      "requestedAt": "2026-05-24T16:21:42.808Z",
+      "resolvedAt": "2026-06-06T12:47:50.233Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e112-nantoiukotodeshou/forvo-mezashi-なんということて-しょう.mp3"
     },
     {
       "entryId": "term-friendly-shop",
@@ -3603,7 +3792,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "へたりこむ",
       "requestUrl": "https://forvo.com/word-add/%E3%81%B8%E3%81%9F%E3%82%8A%E3%81%93%E3%82%80/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:32:55.210Z"
+      "requestedAt": "2026-05-24T16:32:55.210Z",
+      "resolvedAt": "2026-06-06T12:47:50.451Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-hetarikomu/forvo-mezashi-へたりこむ.mp3"
     },
     {
       "entryId": "term-hinshi",
@@ -3648,7 +3840,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "リーグペイ",
       "requestUrl": "https://forvo.com/word-add/%E3%83%AA%E3%83%BC%E3%82%B0%E3%83%9A%E3%82%A4/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-04-11T21:40:00.000Z"
+      "requestedAt": "2026-04-11T21:40:00.000Z",
+      "resolvedAt": "2026-06-06T12:47:50.647Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-lp/forvo-mezashi-リーク-ヘ-イ.mp3"
     },
     {
       "entryId": "term-mochimono",
@@ -3717,7 +3912,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "そしつあり",
       "requestUrl": "https://forvo.com/word-add/%E7%B4%A0%E8%B3%AA%E3%82%A2%E3%83%AA/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:32:24.948Z"
+      "requestedAt": "2026-05-24T16:32:24.948Z",
+      "resolvedAt": "2026-06-06T12:47:50.844Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-soshitsu-ari/forvo-mezashi-そしつあり.mp3"
     },
     {
       "entryId": "term-taisetsu-na-mono",
@@ -4032,7 +4230,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "すたーだすと★すとりーと",
       "requestUrl": "https://forvo.com/word-add/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%80%E3%82%B9%E3%83%88%E2%98%85%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:58:59.211Z"
+      "requestedAt": "2026-05-24T15:58:59.211Z",
+      "resolvedAt": "2026-06-06T12:47:51.056Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v147-sutaadasutosutoriito/forvo-mezashi-すたーた-すと-すとりーと.mp3"
     },
     {
       "entryId": "term-v148-chanpionroodo",
@@ -4041,7 +4242,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ちゃんぴおんろーど",
       "requestUrl": "https://forvo.com/word-add/%E3%83%81%E3%83%A3%E3%83%B3%E3%83%94%E3%82%AA%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:59:01.911Z"
+      "requestedAt": "2026-05-24T15:59:01.911Z",
+      "resolvedAt": "2026-06-06T12:47:51.249Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v148-chanpionroodo/forvo-mezashi-ちゃんひ-おんろーと.mp3"
     },
     {
       "entryId": "term-v149-rejiendoruuto",
@@ -4050,7 +4254,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "れじぇんどるーと",
       "requestUrl": "https://forvo.com/word-add/%E3%83%AC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%89%E3%83%AB%E3%83%BC%E3%83%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:59:04.567Z"
+      "requestedAt": "2026-05-24T15:59:04.567Z",
+      "resolvedAt": "2026-06-06T12:47:51.439Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v149-rejiendoruuto/forvo-mezashi-れし-ぇんと-るーと.mp3"
     },
     {
       "entryId": "term-v167-nushi",
@@ -4059,7 +4266,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ヌシ",
       "requestUrl": "https://forvo.com/word-add/%E3%83%8C%E3%82%B7/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:59:07.223Z"
+      "requestedAt": "2026-05-24T15:59:07.223Z",
+      "resolvedAt": "2026-06-06T12:47:51.691Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v167-nushi/forvo-mezashi-ヌシ.mp3"
     },
     {
       "entryId": "term-v187-pokemonriigu",
@@ -4068,7 +4278,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ぽけもんりーぐ",
       "requestUrl": "https://forvo.com/word-add/%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%83%AA%E3%83%BC%E3%82%B0/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:59:09.876Z"
+      "requestedAt": "2026-05-24T15:59:09.876Z",
+      "resolvedAt": "2026-06-06T12:47:51.943Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v187-pokemonriigu/forvo-mezashi-ほ-けもんりーく.mp3"
     },
     {
       "entryId": "term-v201-terapiisu",
@@ -4077,7 +4290,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "テラピース",
       "requestUrl": "https://forvo.com/word-add/%E3%83%86%E3%83%A9%E3%83%94%E3%83%BC%E3%82%B9/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:59:15.222Z"
+      "requestedAt": "2026-05-24T15:59:15.222Z",
+      "resolvedAt": "2026-06-06T12:47:52.140Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v201-terapiisu/forvo-mezashi-テラヒ-ース.mp3"
     },
     {
       "entryId": "term-v221-kizu-gusuri",
@@ -4098,7 +4314,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ライドわざ",
       "requestUrl": "https://forvo.com/word-add/%E3%83%A9%E3%82%A4%E3%83%89%E6%8A%80/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-04T12:48:16.827Z"
+      "requestedAt": "2026-05-04T12:48:16.827Z",
+      "resolvedAt": "2026-06-06T12:47:52.350Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v226-raidowaza/forvo-mezashi-ライト-わさ.mp3"
     },
     {
       "entryId": "term-v236-zerorabo",
@@ -4107,7 +4326,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ゼロラボ",
       "requestUrl": "https://forvo.com/word-add/%E3%82%BC%E3%83%AD%E3%83%A9%E3%83%9C/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:59:17.882Z"
+      "requestedAt": "2026-05-24T15:59:17.882Z",
+      "resolvedAt": "2026-06-06T12:47:52.539Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v236-zerorabo/forvo-mezashi-セ-ロラホ.mp3"
     },
     {
       "entryId": "term-v239-raidopokemon",
@@ -4116,7 +4338,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ライドポケモン",
       "requestUrl": "https://forvo.com/word-add/%E3%83%A9%E3%82%A4%E3%83%89%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:59:20.565Z"
+      "requestedAt": "2026-05-24T15:59:20.565Z",
+      "resolvedAt": "2026-06-06T12:47:52.717Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v239-raidopokemon/forvo-mezashi-ライト-ホ-ケモン.mp3"
     },
     {
       "entryId": "term-v257-hagane",
@@ -4137,7 +4362,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ひこう",
       "requestUrl": "https://forvo.com/word-add/%E3%81%B2%E3%81%93%E3%81%86/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-04T12:56:02.279Z"
+      "requestedAt": "2026-05-04T12:56:02.279Z",
+      "resolvedAt": "2026-06-06T12:47:52.922Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v265-hikou/forvo-mezashi-ひこう.mp3"
     },
     {
       "entryId": "term-v272-teeburushitei",
@@ -4146,7 +4374,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "てーぶるしてぃ",
       "requestUrl": "https://forvo.com/word-add/%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%82%B7%E3%83%86%E3%82%A3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:59:23.231Z"
+      "requestedAt": "2026-05-24T15:59:23.231Z",
+      "resolvedAt": "2026-06-06T12:47:53.116Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v272-teeburushitei/forvo-mezashi-てーふ-るしてぃ.mp3"
     },
     {
       "entryId": "term-v273-kakutou",
@@ -4155,7 +4386,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "かくとう",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8B%E3%81%8F%E3%81%A8%E3%81%86/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-04T12:57:14.916Z"
+      "requestedAt": "2026-05-04T12:57:14.916Z",
+      "resolvedAt": "2026-06-06T12:47:53.321Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v273-kakutou/forvo-mezashi-かくとう.mp3"
     },
     {
       "entryId": "term-v280-kakkuu",
@@ -4164,7 +4398,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "かっくう",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8B%E3%81%A3%E3%81%8F%E3%81%86/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T15:59:50.302Z"
+      "requestedAt": "2026-05-24T15:59:50.302Z",
+      "resolvedAt": "2026-06-06T12:47:53.563Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v280-kakkuu/forvo-mezashi-かっくう.mp3"
     },
     {
       "entryId": "term-v288-mappuapuri",
@@ -4173,7 +4410,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "マップアプリ",
       "requestUrl": "https://forvo.com/word-add/%E3%83%9E%E3%83%83%E3%83%97%E3%82%A2%E3%83%97%E3%83%AA/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:00:11.556Z"
+      "requestedAt": "2026-05-24T16:00:11.556Z",
+      "resolvedAt": "2026-06-06T12:47:53.751Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v288-mappuapuri/forvo-mezashi-マッフ-アフ-リ.mp3"
     },
     {
       "entryId": "term-v306-waza-mashinmashin",
@@ -4182,7 +4422,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "わざましんましん",
       "requestUrl": "https://forvo.com/word-add/%E3%82%8F%E3%81%96%E3%83%9E%E3%82%B7%E3%83%B3%E3%83%9E%E3%82%B7%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:00:51.845Z"
+      "requestedAt": "2026-05-24T16:00:51.845Z",
+      "resolvedAt": "2026-06-06T12:47:53.923Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v306-waza-mashinmashin/forvo-mezashi-わさ-ましんましん.mp3"
     },
     {
       "entryId": "term-v316-mahi",
@@ -4191,7 +4434,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "まひ",
       "requestUrl": "https://forvo.com/word-add/%E3%81%BE%E3%81%B2/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:01:26.192Z"
+      "requestedAt": "2026-05-24T16:01:26.192Z",
+      "resolvedAt": "2026-06-06T12:47:54.155Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v316-mahi/forvo-mezashi-まひ.mp3"
     },
     {
       "entryId": "term-v318-gakenobori",
@@ -4200,7 +4446,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "がけのぼり",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8C%E3%81%91%E3%81%AE%E3%81%BC%E3%82%8A/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:01:31.592Z"
+      "requestedAt": "2026-05-24T16:01:31.592Z",
+      "resolvedAt": "2026-06-06T12:47:54.350Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v318-gakenobori/forvo-mezashi-か-けのほ-り.mp3"
     },
     {
       "entryId": "term-v336-aikotoba",
@@ -4209,7 +4458,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "あいことば",
       "requestUrl": "https://forvo.com/word-add/%E3%81%82%E3%81%84%E3%81%93%E3%81%A8%E3%81%B0/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:02:25.222Z"
+      "requestedAt": "2026-05-24T16:02:25.222Z",
+      "resolvedAt": "2026-06-06T12:47:54.547Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v336-aikotoba/forvo-mezashi-あいことは.mp3"
     },
     {
       "entryId": "term-v340-kameraapuri",
@@ -4218,7 +4470,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "カメラアプリ",
       "requestUrl": "https://forvo.com/word-add/%E3%82%AB%E3%83%A1%E3%83%A9%E3%82%A2%E3%83%97%E3%83%AA/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:02:36.211Z"
+      "requestedAt": "2026-05-24T16:02:36.211Z",
+      "resolvedAt": "2026-06-06T12:47:54.760Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v340-kameraapuri/forvo-mezashi-カメラアフ-リ.mp3"
     },
     {
       "entryId": "term-v341-chanpiontesuto",
@@ -4227,7 +4482,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ちゃんぴおんてすと",
       "requestUrl": "https://forvo.com/word-add/%E3%83%81%E3%83%A3%E3%83%B3%E3%83%94%E3%82%AA%E3%83%B3%E3%83%86%E3%82%B9%E3%83%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:02:38.951Z"
+      "requestedAt": "2026-05-24T16:02:38.951Z",
+      "resolvedAt": "2026-06-06T12:47:54.988Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v341-chanpiontesuto/forvo-mezashi-ちゃんひ-おんてすと.mp3"
     },
     {
       "entryId": "term-v344-jibun-dake",
@@ -4236,7 +4494,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "じぶんだけ",
       "requestUrl": "https://forvo.com/word-add/%E8%87%AA%E5%88%86%E3%81%A0%E3%81%91/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:02:41.631Z"
+      "requestedAt": "2026-05-24T16:02:41.631Z",
+      "resolvedAt": "2026-06-06T12:47:55.153Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v344-jibun-dake/forvo-mezashi-し-ふ-んた-け.mp3"
     },
     {
       "entryId": "term-v346-koukabatsugun",
@@ -4245,7 +4506,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "こうかバツグン",
       "requestUrl": "https://forvo.com/word-add/%E5%8A%B9%E6%9E%9C%E3%83%90%E3%83%84%E3%82%B0%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:02:47.053Z"
+      "requestedAt": "2026-05-24T16:02:47.053Z",
+      "resolvedAt": "2026-06-06T12:47:55.341Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v346-koukabatsugun/forvo-mezashi-こうかハ-ツク-ン.mp3"
     },
     {
       "entryId": "term-v352-yunionsaakuru",
@@ -4254,7 +4518,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ユニオンサークル",
       "requestUrl": "https://forvo.com/word-add/%E3%83%A6%E3%83%8B%E3%82%AA%E3%83%B3%E3%82%B5%E3%83%BC%E3%82%AF%E3%83%AB/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:03:00.284Z"
+      "requestedAt": "2026-05-24T16:03:00.284Z",
+      "resolvedAt": "2026-06-06T12:47:55.520Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v352-yunionsaakuru/forvo-mezashi-ユニオンサークル.mp3"
     },
     {
       "entryId": "term-v355-terasutaruenerugii",
@@ -4263,7 +4530,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "てらすたるえねるぎー",
       "requestUrl": "https://forvo.com/word-add/%E3%83%86%E3%83%A9%E3%82%B9%E3%82%BF%E3%83%AB%E3%82%A8%E3%83%8D%E3%83%AB%E3%82%AE%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:03:22.036Z"
+      "requestedAt": "2026-05-24T16:03:22.036Z",
+      "resolvedAt": "2026-06-06T12:47:55.702Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v355-terasutaruenerugii/forvo-mezashi-てらすたるえねるき-ー.mp3"
     },
     {
       "entryId": "term-v363-densetsunopokemon",
@@ -4272,7 +4542,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "でんせつのポケモン",
       "requestUrl": "https://forvo.com/word-add/%E4%BC%9D%E8%AA%AC%E3%81%AE%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:03:38.428Z"
+      "requestedAt": "2026-05-24T16:03:38.428Z",
+      "resolvedAt": "2026-06-06T12:47:55.893Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v363-densetsunopokemon/forvo-mezashi-て-んせつのホ-ケモン.mp3"
     },
     {
       "entryId": "term-v374-hokakupawaa",
@@ -4281,7 +4554,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ほかくパワー",
       "requestUrl": "https://forvo.com/word-add/%E3%81%BB%E3%81%8B%E3%81%8F%E3%83%91%E3%83%AF%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:04:11.027Z"
+      "requestedAt": "2026-05-24T16:04:11.027Z",
+      "resolvedAt": "2026-06-06T12:47:56.070Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v374-hokakupawaa/forvo-mezashi-ほかくハ-ワー.mp3"
     },
     {
       "entryId": "term-v378-nemuri",
@@ -4290,7 +4566,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ねむり",
       "requestUrl": "https://forvo.com/word-add/%E3%81%AD%E3%82%80%E3%82%8A/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:04:18.914Z"
+      "requestedAt": "2026-05-24T16:04:18.914Z",
+      "resolvedAt": "2026-06-06T12:47:56.257Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v378-nemuri/forvo-mezashi-ねむり.mp3"
     },
     {
       "entryId": "term-v382-zerogeeto",
@@ -4299,7 +4578,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ゼロゲート",
       "requestUrl": "https://forvo.com/word-add/%E3%82%BC%E3%83%AD%E3%82%B2%E3%83%BC%E3%83%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:04:29.954Z"
+      "requestedAt": "2026-05-24T16:04:29.954Z",
+      "resolvedAt": "2026-06-06T12:47:56.422Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v382-zerogeeto/forvo-mezashi-セ-ロケ-ート.mp3"
     },
     {
       "entryId": "term-v392-danrasshu",
@@ -4308,7 +4590,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "だんラッシュ",
       "requestUrl": "https://forvo.com/word-add/%E5%9B%A3%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:04:51.559Z"
+      "requestedAt": "2026-05-24T16:04:51.559Z",
+      "resolvedAt": "2026-06-06T12:47:56.597Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v392-danrasshu/forvo-mezashi-た-んラッシュ.mp3"
     },
     {
       "entryId": "term-v395-kagayakipawaa",
@@ -4317,7 +4602,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "かがやきパワー",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8B%E3%81%8C%E3%82%84%E3%81%8D%E3%83%91%E3%83%AF%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:05:07.703Z"
+      "requestedAt": "2026-05-24T16:05:07.703Z",
+      "resolvedAt": "2026-06-06T12:47:56.774Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v395-kagayakipawaa/forvo-mezashi-かか-やきハ-ワー.mp3"
     },
     {
       "entryId": "term-v398-paradokkusupokemon",
@@ -4326,7 +4614,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "パラドックスポケモン",
       "requestUrl": "https://forvo.com/word-add/%E3%83%91%E3%83%A9%E3%83%89%E3%83%83%E3%82%AF%E3%82%B9%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:05:13.178Z"
+      "requestedAt": "2026-05-24T16:05:13.178Z",
+      "resolvedAt": "2026-06-06T12:47:56.966Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v398-paradokkusupokemon/forvo-mezashi-ハ-ラト-ックスホ-ケモン.mp3"
     },
     {
       "entryId": "term-v399-souguupawaa",
@@ -4335,7 +4626,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "そうぐうパワー",
       "requestUrl": "https://forvo.com/word-add/%E3%81%9D%E3%81%86%E3%81%90%E3%81%86%E3%83%91%E3%83%AF%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:05:15.908Z"
+      "requestedAt": "2026-05-24T16:05:15.908Z",
+      "resolvedAt": "2026-06-06T12:47:57.144Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v399-souguupawaa/forvo-mezashi-そうく-うハ-ワー.mp3"
     },
     {
       "entryId": "term-v400-tsuushinkoukan",
@@ -4344,7 +4638,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "つうしんこうかん",
       "requestUrl": "https://forvo.com/word-add/%E9%80%9A%E4%BF%A1%E4%BA%A4%E6%8F%9B/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:05:18.569Z"
+      "requestedAt": "2026-05-24T16:05:18.569Z",
+      "resolvedAt": "2026-06-06T12:47:57.290Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v400-tsuushinkoukan/forvo-mezashi-つうしんこうかん.mp3"
     },
     {
       "entryId": "term-v402-riigupei",
@@ -4353,7 +4650,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "りーぐぺい",
       "requestUrl": "https://forvo.com/word-add/%E3%83%AA%E3%83%BC%E3%82%B0%E3%83%9A%E3%82%A4/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:05:23.885Z"
+      "requestedAt": "2026-05-24T16:05:23.885Z",
+      "resolvedAt": "2026-06-06T12:47:57.458Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v402-riigupei/forvo-mezashi-りーく-へ-い.mp3"
     },
     {
       "entryId": "term-v405-otoshimonopawaa",
@@ -4362,7 +4662,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "おとしものパワー",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8A%E3%81%A8%E3%81%97%E3%82%82%E3%81%AE%E3%83%91%E3%83%AF%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:05:31.941Z"
+      "requestedAt": "2026-05-24T16:05:31.941Z",
+      "resolvedAt": "2026-06-06T12:47:57.890Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v405-otoshimonopawaa/forvo-mezashi-おとしものハ-ワー.mp3"
     },
     {
       "entryId": "term-v412-zukan-kansei",
@@ -4371,7 +4674,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ずかんかんせい",
       "requestUrl": "https://forvo.com/word-add/%E5%9B%B3%E9%91%91%E5%AE%8C%E6%88%90/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:05:47.844Z"
+      "requestedAt": "2026-05-24T16:05:47.844Z",
+      "resolvedAt": "2026-06-06T12:47:58.108Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v412-zukan-kansei/forvo-mezashi-す-かんかんせい.mp3"
     },
     {
       "entryId": "term-v413-keikenchipawaa",
@@ -4380,7 +4686,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "けいけんちパワー",
       "requestUrl": "https://forvo.com/word-add/%E3%81%91%E3%81%84%E3%81%91%E3%82%93%E3%81%A1%E3%83%91%E3%83%AF%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:05:59.048Z"
+      "requestedAt": "2026-05-24T16:05:59.048Z",
+      "resolvedAt": "2026-06-06T12:47:58.271Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v413-keikenchipawaa/forvo-mezashi-けいけんちハ-ワー.mp3"
     },
     {
       "entryId": "term-v414-reidopawaa",
@@ -4389,7 +4698,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "レイドパワー",
       "requestUrl": "https://forvo.com/word-add/%E3%83%AC%E3%82%A4%E3%83%89%E3%83%91%E3%83%AF%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:06:01.726Z"
+      "requestedAt": "2026-05-24T16:06:01.726Z",
+      "resolvedAt": "2026-06-06T12:47:58.445Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v414-reidopawaa/forvo-mezashi-レイト-ハ-ワー.mp3"
     },
     {
       "entryId": "term-v419-tamagopawaa",
@@ -4398,7 +4710,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "タマゴパワー",
       "requestUrl": "https://forvo.com/word-add/%E3%82%BF%E3%83%9E%E3%82%B4%E3%83%91%E3%83%AF%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:06:12.346Z"
+      "requestedAt": "2026-05-24T16:06:12.346Z",
+      "resolvedAt": "2026-06-06T12:47:58.633Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v419-tamagopawaa/forvo-mezashi-タマコ-ハ-ワー.mp3"
     },
     {
       "entryId": "term-v429-omakasekaifuku",
@@ -4407,7 +4722,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "おまかせかいふく",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8A%E3%81%BE%E3%81%8B%E3%81%9B%E5%9B%9E%E5%BE%A9/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:06:33.735Z"
+      "requestedAt": "2026-05-24T16:06:33.735Z",
+      "resolvedAt": "2026-06-06T12:47:58.824Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v429-omakasekaifuku/forvo-mezashi-おまかせかいふく.mp3"
     },
     {
       "entryId": "term-v462-kaifuku-saseru",
@@ -4416,7 +4734,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "かいふくさせる",
       "requestUrl": "https://forvo.com/word-add/%E5%9B%9E%E5%BE%A9%E3%81%95%E3%81%9B%E3%82%8B/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:08:19.622Z"
+      "requestedAt": "2026-05-24T16:08:19.622Z",
+      "resolvedAt": "2026-06-06T12:47:59.034Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v462-kaifuku-saseru/forvo-mezashi-かいふくさせる.mp3"
     },
     {
       "entryId": "term-v464-pokemon-nootoshimono",
@@ -4425,7 +4746,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ぽけもんのおとしもの",
       "requestUrl": "https://forvo.com/word-add/%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E3%81%8A%E3%81%A8%E3%81%97%E3%82%82%E3%81%AE/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:08:25.003Z"
+      "requestedAt": "2026-05-24T16:08:25.003Z",
+      "resolvedAt": "2026-06-06T12:47:59.201Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v464-pokemon-nootoshimono/forvo-mezashi-ほ-けもんのおとしもの.mp3"
     },
     {
       "entryId": "term-v466-kakkuukeitai",
@@ -4434,7 +4758,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "かっくうけいたい",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8B%E3%81%A3%E3%81%8F%E3%81%86%E3%81%91%E3%81%84%E3%81%9F%E3%81%84/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:08:30.326Z"
+      "requestedAt": "2026-05-24T16:08:30.326Z",
+      "resolvedAt": "2026-06-06T12:47:59.399Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v466-kakkuukeitai/forvo-mezashi-かっくうけいたい.mp3"
     },
     {
       "entryId": "term-v467-shissoukeitai",
@@ -4443,7 +4770,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "しっそうけいたい",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A3%E3%81%9D%E3%81%86%E3%81%91%E3%81%84%E3%81%9F%E3%81%84/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:08:32.999Z"
+      "requestedAt": "2026-05-24T16:08:32.999Z",
+      "resolvedAt": "2026-06-06T12:47:59.624Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v467-shissoukeitai/forvo-mezashi-しっそうけいたい.mp3"
     },
     {
       "entryId": "term-v468-yuueikeitai",
@@ -4452,7 +4782,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ゆうえいけいたい",
       "requestUrl": "https://forvo.com/word-add/%E3%82%86%E3%81%86%E3%81%88%E3%81%84%E3%81%91%E3%81%84%E3%81%9F%E3%81%84/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:08:35.681Z"
+      "requestedAt": "2026-05-24T16:08:35.681Z",
+      "resolvedAt": "2026-06-06T12:48:00.058Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v468-yuueikeitai/forvo-mezashi-ゆうえいけいたい.mp3"
     },
     {
       "entryId": "term-v469-guraidomoodo",
@@ -4461,7 +4794,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ぐらいどもーど",
       "requestUrl": "https://forvo.com/word-add/%E3%82%B0%E3%83%A9%E3%82%A4%E3%83%89%E3%83%A2%E3%83%BC%E3%83%89/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:08:38.448Z"
+      "requestedAt": "2026-05-24T16:08:38.448Z",
+      "resolvedAt": "2026-06-06T12:48:00.338Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v469-guraidomoodo/forvo-mezashi-く-らいと-もーと.mp3"
     },
     {
       "entryId": "term-v470-doraibumoodo",
@@ -4470,7 +4806,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "どらいぶもーど",
       "requestUrl": "https://forvo.com/word-add/%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A2%E3%83%BC%E3%83%89/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:08:41.119Z"
+      "requestedAt": "2026-05-24T16:08:41.119Z",
+      "resolvedAt": "2026-06-06T12:48:00.531Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v470-doraibumoodo/forvo-mezashi-と-らいふ-もーと.mp3"
     },
     {
       "entryId": "term-v471-furootomoodo",
@@ -4479,7 +4818,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ふろーともーど",
       "requestUrl": "https://forvo.com/word-add/%E3%83%95%E3%83%AD%E3%83%BC%E3%83%88%E3%83%A2%E3%83%BC%E3%83%89/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:08:43.803Z"
+      "requestedAt": "2026-05-24T16:08:43.803Z",
+      "resolvedAt": "2026-06-06T12:48:00.726Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v471-furootomoodo/forvo-mezashi-ふろーともーと.mp3"
     },
     {
       "entryId": "term-v473-narabekae",
@@ -4488,7 +4830,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ならべかえ",
       "requestUrl": "https://forvo.com/word-add/%E4%B8%A6%E3%81%B9%E3%81%8B%E3%81%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:08:49.165Z"
+      "requestedAt": "2026-05-24T16:08:49.165Z",
+      "resolvedAt": "2026-06-06T12:48:00.911Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v473-narabekae/forvo-mezashi-ならへ-かえ.mp3"
     },
     {
       "entryId": "term-v476-kitakami",
@@ -4497,7 +4842,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "キタカミ",
       "requestUrl": "https://forvo.com/word-add/%E3%82%AD%E3%82%BF%E3%82%AB%E3%83%9F/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:08:59.671Z"
+      "requestedAt": "2026-05-24T16:08:59.671Z",
+      "resolvedAt": "2026-06-06T12:48:01.080Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v476-kitakami/forvo-mezashi-キタカミ.mp3"
     },
     {
       "entryId": "term-v477-buruuberiigakuen",
@@ -4506,7 +4854,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ブルーベリーがくえん",
       "requestUrl": "https://forvo.com/word-add/%E3%83%96%E3%83%AB%E3%83%BC%E3%83%99%E3%83%AA%E3%83%BC%E5%AD%A6%E5%9C%92/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:09:02.355Z"
+      "requestedAt": "2026-05-24T16:09:02.355Z",
+      "resolvedAt": "2026-06-06T12:48:01.267Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v477-buruuberiigakuen/forvo-mezashi-フ-ルーヘ-リーか-くえん.mp3"
     },
     {
       "entryId": "term-v478-oogapon",
@@ -4515,7 +4866,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "オーガポン",
       "requestUrl": "https://forvo.com/word-add/%E3%82%AA%E3%83%BC%E3%82%AC%E3%83%9D%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:09:05.004Z"
+      "requestedAt": "2026-05-24T16:09:05.004Z",
+      "resolvedAt": "2026-06-06T12:48:01.475Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v478-oogapon/forvo-mezashi-オーカ-ホ-ン.mp3"
     },
     {
       "entryId": "term-v481-biipii",
@@ -4524,7 +4878,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "びーぴー",
       "requestUrl": "https://forvo.com/word-add/%E3%81%B3%E3%83%BC%E3%81%B4%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:09:13.125Z"
+      "requestedAt": "2026-05-24T16:09:13.125Z",
+      "resolvedAt": "2026-06-06T12:48:01.708Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v481-biipii/forvo-mezashi-ひ-ーひ-ー.mp3"
     },
     {
       "entryId": "term-v486-terariumudoomu",
@@ -4533,7 +4890,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "テラリウムドーム",
       "requestUrl": "https://forvo.com/word-add/%E3%83%86%E3%83%A9%E3%83%AA%E3%82%A6%E3%83%A0%E3%83%89%E3%83%BC%E3%83%A0/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:09:21.345Z"
+      "requestedAt": "2026-05-24T16:09:21.345Z",
+      "resolvedAt": "2026-06-06T12:48:01.941Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v486-terariumudoomu/forvo-mezashi-テラリウムト-ーム.mp3"
     },
     {
       "entryId": "term-v488-koosutoeria",
@@ -4542,7 +4902,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "コーストエリア",
       "requestUrl": "https://forvo.com/word-add/%E3%82%B3%E3%83%BC%E3%82%B9%E3%83%88%E3%82%A8%E3%83%AA%E3%82%A2/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:09:26.693Z"
+      "requestedAt": "2026-05-24T16:09:26.693Z",
+      "resolvedAt": "2026-06-06T12:48:02.169Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v488-koosutoeria/forvo-mezashi-コーストエリア.mp3"
     },
     {
       "entryId": "term-v490-omodaka",
@@ -4551,7 +4914,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "おもだか",
       "requestUrl": "https://forvo.com/word-add/%E3%82%AA%E3%83%A2%E3%83%80%E3%82%AB/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:09:32.101Z"
+      "requestedAt": "2026-05-24T16:09:32.101Z",
+      "resolvedAt": "2026-06-06T12:48:02.394Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v490-omodaka/forvo-mezashi-おもた-か.mp3"
     },
     {
       "entryId": "term-v491-sabanaeria",
@@ -4560,7 +4926,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "サバンナエリア",
       "requestUrl": "https://forvo.com/word-add/%E3%82%B5%E3%83%90%E3%83%B3%E3%83%8A%E3%82%A8%E3%83%AA%E3%82%A2/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:09:34.773Z"
+      "requestedAt": "2026-05-24T16:09:34.773Z",
+      "resolvedAt": "2026-06-06T12:48:02.570Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v491-sabanaeria/forvo-mezashi-サハ-ンナエリア.mp3"
     },
     {
       "entryId": "term-v492-pooraeria",
@@ -4569,7 +4938,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ポーラエリア",
       "requestUrl": "https://forvo.com/word-add/%E3%83%9D%E3%83%BC%E3%83%A9%E3%82%A8%E3%83%AA%E3%82%A2/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:09:37.448Z"
+      "requestedAt": "2026-05-24T16:09:37.448Z",
+      "resolvedAt": "2026-06-06T12:48:02.766Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v492-pooraeria/forvo-mezashi-ホ-ーラエリア.mp3"
     },
     {
       "entryId": "term-v496-burureku",
@@ -4578,7 +4950,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ブルレク",
       "requestUrl": "https://forvo.com/word-add/%E3%83%96%E3%83%AB%E3%83%AC%E3%82%AF/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:09:48.316Z"
+      "requestedAt": "2026-05-24T16:09:48.316Z",
+      "resolvedAt": "2026-06-06T12:48:02.995Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v496-burureku/forvo-mezashi-フ-ルレク.mp3"
     },
     {
       "entryId": "term-v498-kyanioneria",
@@ -4587,7 +4962,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "キャニオンエリア",
       "requestUrl": "https://forvo.com/word-add/%E3%82%AD%E3%83%A3%E3%83%8B%E3%82%AA%E3%83%B3%E3%82%A8%E3%83%AA%E3%82%A2/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:09:53.680Z"
+      "requestedAt": "2026-05-24T16:09:53.680Z",
+      "resolvedAt": "2026-06-06T12:48:03.243Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v498-kyanioneria/forvo-mezashi-キャニオンエリア.mp3"
     },
     {
       "entryId": "term-v509-takarashokudou",
@@ -4596,7 +4974,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "たからしょくどう",
       "requestUrl": "https://forvo.com/word-add/%E5%AE%9D%E9%A3%9F%E5%A0%82/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:10:20.180Z"
+      "requestedAt": "2026-05-24T16:10:20.180Z",
+      "resolvedAt": "2026-06-06T12:48:03.458Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v509-takarashokudou/forvo-mezashi-たからしょくと-う.mp3"
     },
     {
       "entryId": "term-v511-reidobatoru",
@@ -4605,7 +4986,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "レイドバトル",
       "requestUrl": "https://forvo.com/word-add/%E3%83%AC%E3%82%A4%E3%83%89%E3%83%90%E3%83%88%E3%83%AB/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:10:22.952Z"
+      "requestedAt": "2026-05-24T16:10:22.952Z",
+      "resolvedAt": "2026-06-06T12:48:03.651Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v511-reidobatoru/forvo-mezashi-レイト-ハ-トル.mp3"
     },
     {
       "entryId": "term-v513-gureepuakademii",
@@ -4614,7 +4998,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ぐれーぷあかでみー",
       "requestUrl": "https://forvo.com/word-add/%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%97%E3%82%A2%E3%82%AB%E3%83%87%E3%83%9F%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:10:28.436Z"
+      "requestedAt": "2026-05-24T16:10:28.436Z",
+      "resolvedAt": "2026-06-06T12:48:03.881Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v513-gureepuakademii/forvo-mezashi-く-れーふ-あかて-みー.mp3"
     },
     {
       "entryId": "term-v515-batoruchiimu",
@@ -4623,7 +5010,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "バトルチーム",
       "requestUrl": "https://forvo.com/word-add/%E3%83%90%E3%83%88%E3%83%AB%E3%83%81%E3%83%BC%E3%83%A0/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:10:33.858Z"
+      "requestedAt": "2026-05-24T16:10:33.858Z",
+      "resolvedAt": "2026-06-06T12:48:04.117Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v515-batoruchiimu/forvo-mezashi-ハ-トルチーム.mp3"
     },
     {
       "entryId": "term-v530-shitappa",
@@ -4632,7 +5022,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "したっぱ",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%9F%E3%81%A3%E3%81%B1/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:11:14.104Z"
+      "requestedAt": "2026-05-24T16:11:14.104Z",
+      "resolvedAt": "2026-06-06T12:48:04.336Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v530-shitappa/forvo-mezashi-したっは.mp3"
     },
     {
       "entryId": "term-v532-uketori",
@@ -4641,7 +5034,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "うけとり",
       "requestUrl": "https://forvo.com/word-add/%E5%8F%97%E3%81%91%E3%81%A8%E3%82%8A/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:11:19.491Z"
+      "requestedAt": "2026-05-24T16:11:19.491Z",
+      "resolvedAt": "2026-06-06T12:48:04.662Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v532-uketori/forvo-mezashi-うけとり.mp3"
     },
     {
       "entryId": "term-v543-pokemonwosshu",
@@ -4650,7 +5046,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ポケモンウォッシュ",
       "requestUrl": "https://forvo.com/word-add/%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%A6%E3%82%A9%E3%83%83%E3%82%B7%E3%83%A5/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:11:45.910Z"
+      "requestedAt": "2026-05-24T16:11:45.910Z",
+      "resolvedAt": "2026-06-06T12:48:04.866Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v543-pokemonwosshu/forvo-mezashi-ホ-ケモンウォッシュ.mp3"
     },
     {
       "entryId": "term-v548-himitsunomenyuu",
@@ -4659,7 +5058,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ひみつのメニュー",
       "requestUrl": "https://forvo.com/word-add/%E7%A7%98%E5%AF%86%E3%81%AE%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:11:59.314Z"
+      "requestedAt": "2026-05-24T16:11:59.314Z",
+      "resolvedAt": "2026-06-06T12:48:05.055Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v548-himitsunomenyuu/forvo-mezashi-ひみつのメニュー.mp3"
     },
     {
       "entryId": "term-v552-ouen",
@@ -4668,7 +5070,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "おうえん",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8A%E3%81%86%E3%81%88%E3%82%93/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:12:10.049Z"
+      "requestedAt": "2026-05-24T16:12:10.049Z",
+      "resolvedAt": "2026-06-06T12:48:05.241Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v552-ouen/forvo-mezashi-おうえん.mp3"
     },
     {
       "entryId": "term-v558-onitaijifesu",
@@ -4677,7 +5082,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "おにたいじフェス",
       "requestUrl": "https://forvo.com/word-add/%E9%AC%BC%E9%80%80%E6%B2%BB%E3%83%95%E3%82%A7%E3%82%B9/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:12:23.208Z"
+      "requestedAt": "2026-05-24T16:12:23.208Z",
+      "resolvedAt": "2026-06-06T12:48:05.430Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v558-onitaijifesu/forvo-mezashi-おにたいし-フェス.mp3"
     },
     {
       "entryId": "term-v565-nouryokuhenka",
@@ -4686,7 +5094,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "のうりょくへんか",
       "requestUrl": "https://forvo.com/word-add/%E8%83%BD%E5%8A%9B%E5%A4%89%E5%8C%96/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:12:41.899Z"
+      "requestedAt": "2026-05-24T16:12:41.899Z",
+      "resolvedAt": "2026-06-06T12:48:05.654Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v565-nouryokuhenka/forvo-mezashi-のうりょくへんか.mp3"
     },
     {
       "entryId": "term-v567-majikarukoukan",
@@ -4695,7 +5106,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "マジカルこうかん",
       "requestUrl": "https://forvo.com/word-add/%E3%83%9E%E3%82%B8%E3%82%AB%E3%83%AB%E4%BA%A4%E6%8F%9B/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:12:47.277Z"
+      "requestedAt": "2026-05-24T16:12:47.277Z",
+      "resolvedAt": "2026-06-06T12:48:05.814Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v567-majikarukoukan/forvo-mezashi-マシ-カルこうかん.mp3"
     },
     {
       "entryId": "term-v573-deribaadopoochi",
@@ -4704,7 +5118,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "デリバードポーチ",
       "requestUrl": "https://forvo.com/word-add/%E3%83%87%E3%83%AA%E3%83%90%E3%83%BC%E3%83%89%E3%83%9D%E3%83%BC%E3%83%81/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:13:19.166Z"
+      "requestedAt": "2026-05-24T16:13:19.166Z",
+      "resolvedAt": "2026-06-06T12:48:06.022Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v573-deribaadopoochi/forvo-mezashi-テ-リハ-ート-ホ-ーチ.mp3"
     },
     {
       "entryId": "term-v582-tokubetsukoushi",
@@ -4713,7 +5130,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "とくべつこうし",
       "requestUrl": "https://forvo.com/word-add/%E7%89%B9%E5%88%A5%E8%AC%9B%E5%B8%AB/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:13:40.420Z"
+      "requestedAt": "2026-05-24T16:13:40.420Z",
+      "resolvedAt": "2026-06-06T12:48:06.265Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v582-tokubetsukoushi/forvo-mezashi-とくへ-つこうし.mp3"
     },
     {
       "entryId": "term-v589-shinkuromashin",
@@ -4722,7 +5142,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "シンクロマシン",
       "requestUrl": "https://forvo.com/word-add/%E3%82%B7%E3%83%B3%E3%82%AF%E3%83%AD%E3%83%9E%E3%82%B7%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:13:53.774Z"
+      "requestedAt": "2026-05-24T16:13:53.774Z",
+      "resolvedAt": "2026-06-06T12:48:06.494Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v589-shinkuromashin/forvo-mezashi-シンクロマシン.mp3"
     },
     {
       "entryId": "term-v594-tsuushintaisen",
@@ -4731,7 +5154,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "つうしんたいせん",
       "requestUrl": "https://forvo.com/word-add/%E9%80%9A%E4%BF%A1%E5%AF%BE%E6%88%A6/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:14:12.749Z"
+      "requestedAt": "2026-05-24T16:14:12.749Z",
+      "resolvedAt": "2026-06-06T12:48:06.692Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v594-tsuushintaisen/forvo-mezashi-つうしんたいせん.mp3"
     },
     {
       "entryId": "term-v600-chibichibipawaa",
@@ -4740,7 +5166,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ちびちびパワー",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A1%E3%81%B3%E3%81%A1%E3%81%B3%E3%83%91%E3%83%AF%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:14:26.408Z"
+      "requestedAt": "2026-05-24T16:14:26.408Z",
+      "resolvedAt": "2026-06-06T12:48:06.877Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v600-chibichibipawaa/forvo-mezashi-ちひ-ちひ-ハ-ワー.mp3"
     },
     {
       "entryId": "term-v601-dekadekapawaa",
@@ -4749,7 +5178,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "でかでかパワー",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A7%E3%81%8B%E3%81%A7%E3%81%8B%E3%83%91%E3%83%AF%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:14:29.097Z"
+      "requestedAt": "2026-05-24T16:14:29.097Z",
+      "resolvedAt": "2026-06-06T12:48:07.126Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v601-dekadekapawaa/forvo-mezashi-て-かて-かハ-ワー.mp3"
     },
     {
       "entryId": "term-v602-nitsunapawaa",
@@ -4758,7 +5190,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "につなパワー",
       "requestUrl": "https://forvo.com/word-add/%E4%BA%8C%E3%81%A4%E5%90%8D%E3%83%91%E3%83%AF%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:14:31.790Z"
+      "requestedAt": "2026-05-24T16:14:31.790Z",
+      "resolvedAt": "2026-06-06T12:48:07.445Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v602-nitsunapawaa/forvo-mezashi-につなハ-ワー.mp3"
     },
     {
       "entryId": "term-v605-dokujoutai",
@@ -4767,7 +5202,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "どくじょうたい",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A9%E3%81%8F%E7%8A%B6%E6%85%8B/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:14:39.829Z"
+      "requestedAt": "2026-05-24T16:14:39.829Z",
+      "resolvedAt": "2026-06-06T12:48:07.667Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v605-dokujoutai/forvo-mezashi-と-くし-ょうたい.mp3"
     },
     {
       "entryId": "term-v608-dougupurintaa",
@@ -4776,7 +5214,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "どうぐプリンター",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A9%E3%81%86%E3%81%90%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:14:47.836Z"
+      "requestedAt": "2026-05-24T16:14:47.836Z",
+      "resolvedAt": "2026-06-06T12:48:07.889Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v608-dougupurintaa/forvo-mezashi-と-うく-フ-リンター.mp3"
     },
     {
       "entryId": "term-v610-kitae-ta",
@@ -4785,7 +5226,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "きたえた",
       "requestUrl": "https://forvo.com/word-add/%E9%8D%9B%E3%81%88%E3%81%9F/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:14:53.215Z"
+      "requestedAt": "2026-05-24T16:14:53.215Z",
+      "resolvedAt": "2026-06-06T12:48:08.133Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v610-kitae-ta/forvo-mezashi-きたえた.mp3"
     },
     {
       "entryId": "term-v611-pokepootaru",
@@ -4794,7 +5238,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ポケポータル",
       "requestUrl": "https://forvo.com/word-add/%E3%83%9D%E3%82%B1%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:14:55.916Z"
+      "requestedAt": "2026-05-24T16:14:55.916Z",
+      "resolvedAt": "2026-06-06T12:48:08.356Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v611-pokepootaru/forvo-mezashi-ホ-ケホ-ータル.mp3"
     },
     {
       "entryId": "term-v613-tairyouhassei",
@@ -4803,7 +5250,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "たいりょうはっせい",
       "requestUrl": "https://forvo.com/word-add/%E5%A4%A7%E9%87%8F%E7%99%BA%E7%94%9F/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:14:58.633Z"
+      "requestedAt": "2026-05-24T16:14:58.633Z",
+      "resolvedAt": "2026-06-06T12:48:08.577Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v613-tairyouhassei/forvo-mezashi-たいりょうはっせい.mp3"
     },
     {
       "entryId": "term-v623-rentaruchiimu",
@@ -4812,7 +5262,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "レンタルチーム",
       "requestUrl": "https://forvo.com/word-add/%E3%83%AC%E3%83%B3%E3%82%BF%E3%83%AB%E3%83%81%E3%83%BC%E3%83%A0/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:15:30.840Z"
+      "requestedAt": "2026-05-24T16:15:30.840Z",
+      "resolvedAt": "2026-06-06T12:48:08.771Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v623-rentaruchiimu/forvo-mezashi-レンタルチーム.mp3"
     },
     {
       "entryId": "term-v636-honkou",
@@ -4821,7 +5274,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ほんこう",
       "requestUrl": "https://forvo.com/word-add/%E6%9C%AC%E6%A0%A1/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:16:05.588Z"
+      "requestedAt": "2026-05-24T16:16:05.588Z",
+      "resolvedAt": "2026-06-06T12:48:09.016Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v636-honkou/forvo-mezashi-ほんこう.mp3"
     },
     {
       "entryId": "term-v639-shienboodo",
@@ -4830,7 +5286,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "しえんボード",
       "requestUrl": "https://forvo.com/word-add/%E6%94%AF%E6%8F%B4%E3%83%9C%E3%83%BC%E3%83%89/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:16:22.467Z"
+      "requestedAt": "2026-05-24T16:16:22.467Z",
+      "resolvedAt": "2026-06-06T12:48:09.257Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v639-shienboodo/forvo-mezashi-しえんホ-ート.mp3"
     },
     {
       "entryId": "term-v641-kirikaeru",
@@ -4839,7 +5298,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "きりかえる",
       "requestUrl": "https://forvo.com/word-add/%E5%88%87%E3%82%8A%E3%81%8B%E3%81%88%E3%82%8B/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:16:27.945Z"
+      "requestedAt": "2026-05-24T16:16:27.945Z",
+      "resolvedAt": "2026-06-06T12:48:09.478Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v641-kirikaeru/forvo-mezashi-きりかえる.mp3"
     },
     {
       "entryId": "term-v642-purofiiruapuri",
@@ -4848,7 +5310,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "プロフィールアプリ",
       "requestUrl": "https://forvo.com/word-add/%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%97%E3%83%AA/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:16:30.668Z"
+      "requestedAt": "2026-05-24T16:16:30.668Z",
+      "resolvedAt": "2026-06-06T12:48:09.719Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v642-purofiiruapuri/forvo-mezashi-フ-ロフィールアフ-リ.mp3"
     },
     {
       "entryId": "term-v649-koukanaite",
@@ -4857,7 +5322,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "こうかんあいて",
       "requestUrl": "https://forvo.com/word-add/%E4%BA%A4%E6%8F%9B%E7%9B%B8%E6%89%8B/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:16:46.851Z"
+      "requestedAt": "2026-05-24T16:16:46.851Z",
+      "resolvedAt": "2026-06-06T12:48:09.934Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v649-koukanaite/forvo-mezashi-こうかんあいて.mp3"
     },
     {
       "entryId": "term-v662-dentougyouji",
@@ -4866,7 +5334,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "でんとうぎょうじ",
       "requestUrl": "https://forvo.com/word-add/%E4%BC%9D%E7%B5%B1%E8%A1%8C%E4%BA%8B/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:17:31.282Z"
+      "requestedAt": "2026-05-24T16:17:31.282Z",
+      "resolvedAt": "2026-06-06T12:48:10.109Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v662-dentougyouji/forvo-mezashi-て-んとうき-ょうし.mp3"
     },
     {
       "entryId": "term-v664-matomeuri",
@@ -4875,7 +5346,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "まとめうり",
       "requestUrl": "https://forvo.com/word-add/%E3%81%BE%E3%81%A8%E3%82%81%E5%A3%B2%E3%82%8A/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:17:36.624Z"
+      "requestedAt": "2026-05-24T16:17:36.624Z",
+      "resolvedAt": "2026-06-06T12:48:10.372Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v664-matomeuri/forvo-mezashi-まとめうり.mp3"
     },
     {
       "entryId": "term-v665-zensentaku",
@@ -4884,7 +5358,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ぜんせんたく",
       "requestUrl": "https://forvo.com/word-add/%E5%85%A8%E9%81%B8%E6%8A%9E/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:17:39.341Z"
+      "requestedAt": "2026-05-24T16:17:39.341Z",
+      "resolvedAt": "2026-06-06T12:48:10.567Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v665-zensentaku/forvo-mezashi-せ-んせんたく.mp3"
     },
     {
       "entryId": "term-v668-uketorikanou",
@@ -4893,7 +5370,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "うけとりかのう",
       "requestUrl": "https://forvo.com/word-add/%E5%8F%97%E3%81%91%E3%81%A8%E3%82%8A%E5%8F%AF%E8%83%BD/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:17:47.583Z"
+      "requestedAt": "2026-05-24T16:17:47.583Z",
+      "resolvedAt": "2026-06-06T12:48:10.783Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v668-uketorikanou/forvo-mezashi-うけとりかのう.mp3"
     },
     {
       "entryId": "term-v669-uketorizumi",
@@ -4902,7 +5382,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "うけとりずみ",
       "requestUrl": "https://forvo.com/word-add/%E5%8F%97%E3%81%91%E3%81%A8%E3%82%8A%E6%B8%88%E3%81%BF/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:17:50.282Z"
+      "requestedAt": "2026-05-24T16:17:50.282Z",
+      "resolvedAt": "2026-06-06T12:48:10.970Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v669-uketorizumi/forvo-mezashi-うけとりす-み.mp3"
     },
     {
       "entryId": "term-v674-oiharau",
@@ -4911,7 +5394,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "おいはらう",
       "requestUrl": "https://forvo.com/word-add/%E8%BF%BD%E3%81%84%E3%81%AF%E3%82%89%E3%81%86/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:18:03.646Z"
+      "requestedAt": "2026-05-24T16:18:03.646Z",
+      "resolvedAt": "2026-06-06T12:48:11.171Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v674-oiharau/forvo-mezashi-おいはらう.mp3"
     },
     {
       "entryId": "term-v684-bourutaun",
@@ -4920,7 +5406,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ボウルタウン",
       "requestUrl": "https://forvo.com/word-add/%E3%83%9C%E3%82%A6%E3%83%AB%E3%82%BF%E3%82%A6%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:18:30.210Z"
+      "requestedAt": "2026-05-24T16:18:30.210Z",
+      "resolvedAt": "2026-06-06T12:48:11.358Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v684-bourutaun/forvo-mezashi-ホ-ウルタウン.mp3"
     },
     {
       "entryId": "term-v685-nappeyama",
@@ -4929,7 +5418,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ナッペやま",
       "requestUrl": "https://forvo.com/word-add/%E3%83%8A%E3%83%83%E3%83%9A%E5%B1%B1/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:18:32.900Z"
+      "requestedAt": "2026-05-24T16:18:32.900Z",
+      "resolvedAt": "2026-06-06T12:48:11.578Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v685-nappeyama/forvo-mezashi-ナッヘ-やま.mp3"
     },
     {
       "entryId": "term-v686-kimenshuu",
@@ -4938,7 +5430,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "きめんしゅう",
       "requestUrl": "https://forvo.com/word-add/%E9%AC%BC%E9%9D%A2%E8%A1%86/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:18:35.643Z"
+      "requestedAt": "2026-05-24T16:18:35.643Z",
+      "resolvedAt": "2026-06-06T12:48:11.780Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v686-kimenshuu/forvo-mezashi-きめんしゅう.mp3"
     },
     {
       "entryId": "term-v687-chanpurutaun",
@@ -4947,7 +5442,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "チャンプルタウン",
       "requestUrl": "https://forvo.com/word-add/%E3%83%81%E3%83%A3%E3%83%B3%E3%83%97%E3%83%AB%E3%82%BF%E3%82%A6%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:18:38.377Z"
+      "requestedAt": "2026-05-24T16:18:38.377Z",
+      "resolvedAt": "2026-06-06T12:48:11.986Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v687-chanpurutaun/forvo-mezashi-チャンフ-ルタウン.mp3"
     },
     {
       "entryId": "term-v688-suiryokutaun",
@@ -4956,7 +5454,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "スイリョクタウン",
       "requestUrl": "https://forvo.com/word-add/%E3%82%B9%E3%82%A4%E3%83%AA%E3%83%A7%E3%82%AF%E3%82%BF%E3%82%A6%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:18:41.106Z"
+      "requestedAt": "2026-05-24T16:18:41.106Z",
+      "resolvedAt": "2026-06-06T12:48:12.218Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v688-suiryokutaun/forvo-mezashi-スイリョクタウン.mp3"
     },
     {
       "entryId": "term-v689-hakkoushiti",
@@ -4965,7 +5466,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ハッコウシティ",
       "requestUrl": "https://forvo.com/word-add/%E3%83%8F%E3%83%83%E3%82%B3%E3%82%A6%E3%82%B7%E3%83%86%E3%82%A3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:18:43.860Z"
+      "requestedAt": "2026-05-24T16:18:43.860Z",
+      "resolvedAt": "2026-06-06T12:48:12.487Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v689-hakkoushiti/forvo-mezashi-ハッコウシティ.mp3"
     },
     {
       "entryId": "term-v690-beikutaun",
@@ -4974,7 +5478,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ベイクタウン",
       "requestUrl": "https://forvo.com/word-add/%E3%83%99%E3%82%A4%E3%82%AF%E3%82%BF%E3%82%A6%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:18:46.561Z"
+      "requestedAt": "2026-05-24T16:18:46.561Z",
+      "resolvedAt": "2026-06-06T12:48:12.730Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v690-beikutaun/forvo-mezashi-ヘ-イクタウン.mp3"
     },
     {
       "entryId": "term-v691-karafushiti",
@@ -4983,7 +5490,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "カラフシティ",
       "requestUrl": "https://forvo.com/word-add/%E3%82%AB%E3%83%A9%E3%83%95%E3%82%B7%E3%83%86%E3%82%A3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:18:49.287Z"
+      "requestedAt": "2026-05-24T16:18:49.287Z",
+      "resolvedAt": "2026-06-06T12:48:12.988Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v691-karafushiti/forvo-mezashi-カラフシティ.mp3"
     },
     {
       "entryId": "term-v694-serukurutaun",
@@ -4992,7 +5502,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "セルクルタウン",
       "requestUrl": "https://forvo.com/word-add/%E3%82%BB%E3%83%AB%E3%82%AF%E3%83%AB%E3%82%BF%E3%82%A6%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:18:57.244Z"
+      "requestedAt": "2026-05-24T16:18:57.244Z",
+      "resolvedAt": "2026-06-06T12:48:13.336Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v694-serukurutaun/forvo-mezashi-セルクルタウン.mp3"
     },
     {
       "entryId": "term-v695-furijjitaun",
@@ -5001,7 +5514,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "フリッジタウン",
       "requestUrl": "https://forvo.com/word-add/%E3%83%95%E3%83%AA%E3%83%83%E3%82%B8%E3%82%BF%E3%82%A6%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:18:59.935Z"
+      "requestedAt": "2026-05-24T16:18:59.935Z",
+      "resolvedAt": "2026-06-06T12:48:13.579Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v695-furijjitaun/forvo-mezashi-フリッシ-タウン.mp3"
     },
     {
       "entryId": "term-v696-kosajitaun",
@@ -5010,7 +5526,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "コサジタウン",
       "requestUrl": "https://forvo.com/word-add/%E3%82%B3%E3%82%B5%E3%82%B8%E3%82%BF%E3%82%A6%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:19:02.662Z"
+      "requestedAt": "2026-05-24T16:19:02.662Z",
+      "resolvedAt": "2026-06-06T12:48:13.803Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v696-kosajitaun/forvo-mezashi-コサシ-タウン.mp3"
     },
     {
       "entryId": "term-v697-sumahokabaa",
@@ -5019,7 +5538,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "スマホカバー",
       "requestUrl": "https://forvo.com/word-add/%E3%82%B9%E3%83%9E%E3%83%9B%E3%82%AB%E3%83%90%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:19:05.406Z"
+      "requestedAt": "2026-05-24T16:19:05.406Z",
+      "resolvedAt": "2026-06-06T12:48:14.149Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v697-sumahokabaa/forvo-mezashi-スマホカハ-ー.mp3"
     },
     {
       "entryId": "term-v698-oojanomizuumi",
@@ -5028,7 +5550,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "オージャのみずうみ",
       "requestUrl": "https://forvo.com/word-add/%E3%82%AA%E3%83%BC%E3%82%B8%E3%83%A3%E3%81%AE%E6%B9%96/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:19:08.111Z"
+      "requestedAt": "2026-05-24T16:19:08.111Z",
+      "resolvedAt": "2026-06-06T12:48:14.508Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v698-oojanomizuumi/forvo-mezashi-オーシ-ャのみす-うみ.mp3"
     },
     {
       "entryId": "term-v699-saakurumisshon",
@@ -5037,7 +5562,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "サークルミッション",
       "requestUrl": "https://forvo.com/word-add/%E3%82%B5%E3%83%BC%E3%82%AF%E3%83%AB%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:19:10.795Z"
+      "requestedAt": "2026-05-24T16:19:10.795Z",
+      "resolvedAt": "2026-06-06T12:48:14.746Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v699-saakurumisshon/forvo-mezashi-サークルミッション.mp3"
     },
     {
       "entryId": "term-v702-puratotaun",
@@ -5046,7 +5574,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "プラトタウン",
       "requestUrl": "https://forvo.com/word-add/%E3%83%97%E3%83%A9%E3%83%88%E3%82%BF%E3%82%A6%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:19:18.757Z"
+      "requestedAt": "2026-05-24T16:19:18.757Z",
+      "resolvedAt": "2026-06-06T12:48:15.111Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v702-puratotaun/forvo-mezashi-フ-ラトタウン.mp3"
     },
     {
       "entryId": "term-v705-atonoseefekuto",
@@ -5055,7 +5586,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "あとのせエフェクト",
       "requestUrl": "https://forvo.com/word-add/%E3%81%82%E3%81%A8%E3%81%AE%E3%81%9B%E3%82%A8%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:19:24.097Z"
+      "requestedAt": "2026-05-24T16:19:24.097Z",
+      "resolvedAt": "2026-06-06T12:48:15.371Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v705-atonoseefekuto/forvo-mezashi-あとのせエフェクト.mp3"
     },
     {
       "entryId": "term-v706-dekofureemu",
@@ -5064,7 +5598,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "デコフレーム",
       "requestUrl": "https://forvo.com/word-add/%E3%83%87%E3%82%B3%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:19:26.809Z"
+      "requestedAt": "2026-05-24T16:19:26.809Z",
+      "resolvedAt": "2026-06-06T12:48:15.624Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v706-dekofureemu/forvo-mezashi-テ-コフレーム.mp3"
     },
     {
       "entryId": "term-v707-sentaasukuea",
@@ -5073,7 +5610,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "センタースクエア",
       "requestUrl": "https://forvo.com/word-add/%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%B9%E3%82%AF%E3%82%A8%E3%82%A2/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:19:29.539Z"
+      "requestedAt": "2026-05-24T16:19:29.539Z",
+      "resolvedAt": "2026-06-06T12:48:15.828Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v707-sentaasukuea/forvo-mezashi-センタースクエア.mp3"
     },
     {
       "entryId": "term-v709-kinomidai",
@@ -5091,7 +5631,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ピケタウン",
       "requestUrl": "https://forvo.com/word-add/%E3%83%94%E3%82%B1%E3%82%BF%E3%82%A6%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:19:37.651Z"
+      "requestedAt": "2026-05-24T16:19:37.651Z",
+      "resolvedAt": "2026-06-06T12:48:16.077Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v710-piketaun/forvo-mezashi-ヒ-ケタウン.mp3"
     },
     {
       "entryId": "term-v711-rotoribou",
@@ -5100,7 +5643,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ロトりぼう",
       "requestUrl": "https://forvo.com/word-add/%E3%83%AD%E3%83%88%E3%82%8A%E3%81%BC%E3%81%86/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:19:40.363Z"
+      "requestedAt": "2026-05-24T16:19:40.363Z",
+      "resolvedAt": "2026-06-06T12:48:16.335Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v711-rotoribou/forvo-mezashi-ロトりほ-う.mp3"
     },
     {
       "entryId": "term-v716-kimeraretakazu",
@@ -5109,7 +5655,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "きめられたかず",
       "requestUrl": "https://forvo.com/word-add/%E6%B1%BA%E3%82%81%E3%82%89%E3%82%8C%E3%81%9F%E6%95%B0/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:19:54.128Z"
+      "requestedAt": "2026-05-24T16:19:54.128Z",
+      "resolvedAt": "2026-06-06T12:48:16.553Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v716-kimeraretakazu/forvo-mezashi-きめられたかす.mp3"
     },
     {
       "entryId": "term-v720-okotowaririsuto",
@@ -5118,7 +5667,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "おことわりリスト",
       "requestUrl": "https://forvo.com/word-add/%E3%81%8A%E3%81%93%E3%81%A8%E3%82%8F%E3%82%8A%E3%83%AA%E3%82%B9%E3%83%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:20:04.731Z"
+      "requestedAt": "2026-05-24T16:20:04.731Z",
+      "resolvedAt": "2026-06-06T12:48:16.832Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v720-okotowaririsuto/forvo-mezashi-おことわりリスト.mp3"
     },
     {
       "entryId": "term-v722-boonasumisshon",
@@ -5127,7 +5679,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "ボーナスミッション",
       "requestUrl": "https://forvo.com/word-add/%E3%83%9C%E3%83%BC%E3%83%8A%E3%82%B9%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:20:10.094Z"
+      "requestedAt": "2026-05-24T16:20:10.094Z",
+      "resolvedAt": "2026-06-06T12:48:17.038Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v722-boonasumisshon/forvo-mezashi-ホ-ーナスミッション.mp3"
     },
     {
       "entryId": "term-v725-ugokikata",
@@ -5136,7 +5691,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "うごきかた",
       "requestUrl": "https://forvo.com/word-add/%E5%8B%95%E3%81%8D%E6%96%B9/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:20:18.231Z"
+      "requestedAt": "2026-05-24T16:20:18.231Z",
+      "resolvedAt": "2026-06-06T12:48:17.290Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v725-ugokikata/forvo-mezashi-うこ-きかた.mp3"
     },
     {
       "entryId": "term-v730-katsudoumenbaa",
@@ -5145,7 +5703,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "かつどうメンバー",
       "requestUrl": "https://forvo.com/word-add/%E6%B4%BB%E5%8B%95%E3%83%A1%E3%83%B3%E3%83%90%E3%83%BC/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:20:32.093Z"
+      "requestedAt": "2026-05-24T16:20:32.093Z",
+      "resolvedAt": "2026-06-06T12:48:17.636Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v730-katsudoumenbaa/forvo-mezashi-かつと-うメンハ-ー.mp3"
     },
     {
       "entryId": "term-v733-koukankanryou",
@@ -5154,7 +5715,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "こうかんかんりょう",
       "requestUrl": "https://forvo.com/word-add/%E4%BA%A4%E6%8F%9B%E5%AE%8C%E4%BA%86/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:20:40.079Z"
+      "requestedAt": "2026-05-24T16:20:40.079Z",
+      "resolvedAt": "2026-06-06T12:48:17.862Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v733-koukankanryou/forvo-mezashi-こうかんかんりょう.mp3"
     },
     {
       "entryId": "term-v734-gakusekibangou",
@@ -5163,7 +5727,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "がくせきばんごう",
       "requestUrl": "https://forvo.com/word-add/%E5%AD%A6%E7%B1%8D%E7%95%AA%E5%8F%B7/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:21:13.316Z"
+      "requestedAt": "2026-05-24T16:21:13.316Z",
+      "resolvedAt": "2026-06-06T12:48:18.080Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v734-gakusekibangou/forvo-mezashi-か-くせきは-んこ-う.mp3"
     },
     {
       "entryId": "term-v761-ayashii",
@@ -5172,7 +5739,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "あやしい",
       "requestUrl": "https://forvo.com/word-add/%E3%81%82%E3%82%84%E3%81%97%E3%81%84/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:22:33.399Z"
+      "requestedAt": "2026-05-24T16:22:33.399Z",
+      "resolvedAt": "2026-06-06T12:48:18.287Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v761-ayashii/forvo-mezashi-あやしい.mp3"
     },
     {
       "entryId": "term-v765-omae",
@@ -5181,7 +5751,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "オマエ",
       "requestUrl": "https://forvo.com/word-add/%E3%82%AA%E3%83%9E%E3%82%A8/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T16:22:57.074Z"
+      "requestedAt": "2026-05-24T16:22:57.074Z",
+      "resolvedAt": "2026-06-06T12:48:18.494Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-v765-omae/forvo-mezashi-オマエ.mp3"
     },
     {
       "entryId": "term-waza-machine",
@@ -5310,7 +5883,10 @@
       "mediaSlug": "web-giapponese",
       "reading": "たべながら",
       "requestUrl": "https://forvo.com/word-add/%E9%A3%9F%E3%81%B9%E3%81%AA%E3%81%8C%E3%82%89/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T10:48:27.070Z"
+      "requestedAt": "2026-05-24T10:48:27.070Z",
+      "resolvedAt": "2026-06-06T12:48:18.696Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-tabenagara/forvo-mezashi-たへ-なか-ら.mp3"
     },
     {
       "entryId": "grammar-te-mite-ne",
@@ -5550,7 +6126,10 @@
       "mediaSlug": "web-giapponese",
       "reading": "さいきんっぽい",
       "requestUrl": "https://forvo.com/word-add/%E6%9C%80%E8%BF%91%E3%81%A3%E3%81%BD%E3%81%84/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T10:04:24.079Z"
+      "requestedAt": "2026-05-24T10:04:24.079Z",
+      "resolvedAt": "2026-06-06T12:48:18.878Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-saikin-ppoi/forvo-mezashi-さいきんっほ-い.mp3"
     },
     {
       "entryId": "term-shoban-osusume-kiji",
