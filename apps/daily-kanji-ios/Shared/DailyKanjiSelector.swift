@@ -35,8 +35,10 @@ struct DailyKanjiSelector {
         case .appOpen:
             return candidates.first
         case .widgetTimeline:
-            let windowSize = min(max(widgetRotationWindow, 1), candidates.count)
-            let window = Array(candidates.prefix(windowSize))
+            let pitchKnownCandidates = candidates.filter { $0.entry.pitchAccent != nil }
+            let widgetCandidates = pitchKnownCandidates.isEmpty ? candidates : pitchKnownCandidates
+            let windowSize = min(max(widgetRotationWindow, 1), widgetCandidates.count)
+            let window = Array(widgetCandidates.prefix(windowSize))
             let slot = Int((now.timeIntervalSince1970 / widgetSlotDuration).rounded(.down))
             let index = abs(slot) % window.count
             return window[index]

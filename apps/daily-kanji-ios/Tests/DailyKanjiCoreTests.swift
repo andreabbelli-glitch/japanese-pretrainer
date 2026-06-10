@@ -50,6 +50,46 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(second?.cardId, "stable")
     }
 
+    func testWidgetSelectionPrefersPitchKnownCardsInsidePriorityWindow() throws {
+        let cards = try Self.rankedCards(
+            count: 3,
+            pitchAccents: [nil, 1, nil]
+        )
+
+        let appSelected = DailyKanjiSelector.select(
+            cards: cards,
+            history: [],
+            now: Date(timeIntervalSince1970: 0),
+            mode: .appOpen,
+            widgetRotationWindow: 3
+        )
+        let widgetSelected = DailyKanjiSelector.select(
+            cards: cards,
+            history: [],
+            now: Date(timeIntervalSince1970: 0),
+            mode: .widgetTimeline,
+            widgetRotationWindow: 3
+        )
+
+        XCTAssertEqual(appSelected?.cardId, "card-0")
+        XCTAssertNil(appSelected?.entry.pitchAccent)
+        XCTAssertEqual(widgetSelected?.cardId, "card-1")
+        XCTAssertEqual(widgetSelected?.entry.pitchAccent, 1)
+    }
+
+    func testWidgetSelectionFallsBackWhenNoCardsHaveKnownPitch() throws {
+        let cards = try Self.rankedCards(count: 2)
+
+        let widgetSelected = DailyKanjiSelector.select(
+            cards: cards,
+            history: [],
+            now: Date(timeIntervalSince1970: 0),
+            mode: .widgetTimeline
+        )
+
+        XCTAssertEqual(widgetSelected?.cardId, "card-0")
+    }
+
     func testSelectionKeepsRecentHardAgainAheadOfHigherScoreNonRecentCards() throws {
         let cards = try Self.recentBucketRegressionCards()
 
@@ -652,6 +692,7 @@ final class DailyKanjiCoreTests: XCTestCase {
             "kind": "term",
             "label": "安定",
             "meaning": "stable",
+            "pitchAccent": 0,
             "reading": "あんてい"
           },
           "srs": {
@@ -715,11 +756,18 @@ final class DailyKanjiCoreTests: XCTestCase {
         return try DailyKanjiDataset.decode(jsonData: json).cards[0]
     }
 
-    private static func rankedCards(count: Int) throws -> [DailyKanjiCard] {
+    private static func rankedCards(count: Int, pitchAccents: [Int?]? = nil) throws -> [DailyKanjiCard] {
         let base = try DailyKanjiDataset.decode(jsonData: datasetJSON).cards[0]
 
         return (0..<count).map { index in
-            DailyKanjiCard(
+            let pitchAccent: Int?
+            if let pitchAccents, index < pitchAccents.count {
+                pitchAccent = pitchAccents[index]
+            } else {
+                pitchAccent = nil
+            }
+
+            return DailyKanjiCard(
                 cardId: "card-\(index)",
                 subjectKey: "term:card-\(index)",
                 media: base.media,
@@ -734,7 +782,7 @@ final class DailyKanjiCoreTests: XCTestCase {
                     kind: .term,
                     label: "Card \(index)",
                     meaning: "Meaning \(index)",
-                    pitchAccent: nil,
+                    pitchAccent: pitchAccent,
                     pitchAccentSource: nil,
                     reading: "reading \(index)"
                 ),
