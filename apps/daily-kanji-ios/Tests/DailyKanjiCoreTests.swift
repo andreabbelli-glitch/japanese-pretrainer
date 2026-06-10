@@ -233,6 +233,27 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(model.recentHistory.first?.source, .app)
     }
 
+    @MainActor
+    func testDeepLinkSelectionSurvivesFollowUpActivation() throws {
+        let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let store = DailyKanjiHistoryStore(defaults: defaults)
+        let model = DailyKanjiAppModel(cards: cards, historyStore: store, now: now)
+
+        model.openDeepLink(
+            DailyKanjiDeepLink.cardURL(cardId: "stable"),
+            now: now.addingTimeInterval(60)
+        )
+        model.activate(now: now.addingTimeInterval(61))
+
+        XCTAssertEqual(model.selectedCard?.cardId, "stable")
+    }
+
     func testHistoryStoreRecordsNewestFirstAndPrunesOldEntries() {
         let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: defaultsName)!

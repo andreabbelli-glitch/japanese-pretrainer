@@ -9,6 +9,8 @@ final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var recentHistory: [DailyKanjiPresentationHistoryItem] = []
 
     private let historyStore: DailyKanjiHistoryStore
+    private let deepLinkActivationSuppressionInterval: TimeInterval = 5
+    private var suppressActivationUntil: Date?
     private var recentSelectionHistory: [DailyKanjiHistoryItem] = []
 
     init(
@@ -33,6 +35,10 @@ final class DailyKanjiAppModel: ObservableObject {
 
     func activate(now: Date = .now) {
         refreshHistory(now: now)
+        if shouldSuppressActivationSelection(now: now) {
+            return
+        }
+
         guard
             let card = DailyKanjiSelector.select(
                 cards: cards,
@@ -66,6 +72,7 @@ final class DailyKanjiAppModel: ObservableObject {
         }
 
         select(card: card, shownAt: now)
+        suppressActivationUntil = now.addingTimeInterval(deepLinkActivationSuppressionInterval)
     }
 
     func card(for historyItem: DailyKanjiPresentationHistoryItem) -> DailyKanjiCard? {
@@ -87,6 +94,15 @@ final class DailyKanjiAppModel: ObservableObject {
         historyStore.record(cardId: card.cardId, shownAt: shownAt)
         refreshHistory(now: shownAt)
         WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    private func shouldSuppressActivationSelection(now: Date) -> Bool {
+        guard let suppressActivationUntil else {
+            return false
+        }
+
+        self.suppressActivationUntil = nil
+        return now <= suppressActivationUntil
     }
 
     private func refreshHistory(now: Date) {
