@@ -112,6 +112,25 @@ extension DailyKanjiCard {
         return "Pitch \(pitchAccent)"
     }
 
+    var lockScreenPitchAccentText: String? {
+        guard let pitchAccent = entry.pitchAccent else {
+            return nil
+        }
+
+        return "P\(pitchAccent)"
+    }
+
+    var lockScreenMetadataText: String {
+        let metadataParts: [String?] = [entry.reading, lockScreenPitchAccentText]
+        let parts = metadataParts.compactMap { $0 }.filter { !$0.isEmpty }
+
+        if !parts.isEmpty {
+            return parts.joined(separator: " - ")
+        }
+
+        return priorityText
+    }
+
     var sourceText: String {
         "\(media.title) - \(lesson.title)"
     }
@@ -143,7 +162,7 @@ extension DailyKanjiCard {
     }
 
     var lockScreenExplanationText: String? {
-        compactExplanationText?.dailyKanjiCondensed(maxLength: 44)
+        compactExplanationText?.dailyKanjiCondensed(maxLength: 64)
     }
 
     var homeWidgetExplanationText: String? {

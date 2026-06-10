@@ -60,43 +60,35 @@ struct DailyKanjiWidgetView: View {
         case .accessoryInline:
             Text("\(entry.card.displayFront) \(entry.card.back)")
         case .accessoryRectangular:
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 1) {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
                     Text(entry.card.displayFront)
-                        .font(.system(size: 25, weight: .semibold, design: .serif))
-                        .minimumScaleFactor(0.5)
+                        .font(.system(size: 29, weight: .semibold, design: .serif))
+                        .minimumScaleFactor(0.42)
                         .lineLimit(1)
+                        .layoutPriority(2)
 
                     Spacer(minLength: 2)
 
-                    Text(entry.card.readingText)
-                        .font(.caption2.weight(.medium))
+                    Text(entry.card.lockScreenMetadataText)
+                        .font(.system(size: 10, weight: .medium, design: .rounded))
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.7)
+                        .minimumScaleFactor(0.62)
+                        .layoutPriority(1)
                 }
 
                 Text(entry.card.back)
                     .font(.caption.weight(.semibold))
-                    .lineLimit(2)
+                    .lineLimit(1)
                     .minimumScaleFactor(0.75)
 
-                HStack(spacing: 4) {
-                    Text(entry.card.pitchAccentText)
+                if let compactExplanation = entry.card.lockScreenExplanationText {
+                    Text(compactExplanation)
                         .font(.caption2)
                         .foregroundStyle(.secondary)
-                        .lineLimit(1)
-
-                    if let compactExplanation = entry.card.lockScreenExplanationText {
-                        Text("-")
-                            .font(.caption2)
-                            .foregroundStyle(.tertiary)
-                        Text(compactExplanation)
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.75)
-                    }
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.68)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -137,6 +129,7 @@ struct DailyKanjiWidgetView: View {
                     .lineLimit(1)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .padding(10)
         }
     }
 }
@@ -151,6 +144,7 @@ struct DailyKanjiWidget: Widget {
         .configurationDisplayName("Daily Kanji")
         .description("Shows one study kanji.")
         .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryInline, .accessoryRectangular])
+        .contentMarginsDisabled()
     }
 }
 

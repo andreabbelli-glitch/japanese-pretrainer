@@ -158,7 +158,17 @@ final class DailyKanjiCoreTests: XCTestCase {
             with: "This note is intentionally long and contains enough detail to overflow a lock screen widget."
         )
 
-        XCTAssertEqual(card.lockScreenExplanationText, "This note is intentionally long and...")
+        XCTAssertEqual(
+            card.lockScreenExplanationText,
+            "This note is intentionally long and contains enough detail..."
+        )
+    }
+
+    func testLockScreenMetadataUsesCompactReadingAndPitchAccent() throws {
+        let card = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards[0]
+
+        XCTAssertEqual(card.lockScreenPitchAccentText, "P2")
+        XCTAssertEqual(card.lockScreenMetadataText, "かんてん - P2")
     }
 
     func testHomeWidgetExplanationTextAllowsMoreContextThanLockScreen() throws {
