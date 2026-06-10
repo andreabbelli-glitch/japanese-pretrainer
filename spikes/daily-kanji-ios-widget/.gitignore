@@ -1,0 +1,6 @@
+DailyKanjiWidgetSpike.xcodeproj
+build/
+DerivedData/
+*.xcuserdata
+*.xcuserstate
+

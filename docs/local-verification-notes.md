@@ -182,6 +182,26 @@ ma il browser non parte per limiti del sandbox, segnala esplicitamente che gli
 E2E browser non sono eseguibili in quell'ambiente e completa il resto delle
 verifiche disponibili.
 
+## Spike iOS Widget
+
+Lo spike privato per validare app iPhone nativa + WidgetKit + Sideloadly vive in
+`spikes/daily-kanji-ios-widget/`. Non fa parte del gate applicativo Next.js:
+serve solo a verificare sul Mac locale la disponibilita di Xcode completo,
+XcodeGen, Sideloadly, packaging IPA e installazione su iPhone personale.
+
+Comandi locali:
+
+```sh
+cd spikes/daily-kanji-ios-widget
+./scripts/doctor.sh
+xcodegen generate
+./scripts/package-ipa.sh
+```
+
+Il Mac deve puntare a `/Applications/Xcode.app/Contents/Developer`, non a
+Command Line Tools. Se manca Xcode completo, lo spike resta bloccato prima della
+build e va segnalato come limite concreto della verifica.
+
 ## Gate Canonico Di Verifica
 
 Per eseguire il controllo locale piu completo:
