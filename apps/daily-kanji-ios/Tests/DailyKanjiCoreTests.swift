@@ -186,6 +186,17 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
+    func testPresentationHistoryFormatsMetadataText() {
+        let now = Date(timeIntervalSince1970: 1_800_000_000)
+        let item = DailyKanjiPresentationHistoryItem(
+            cardId: "hard",
+            shownAt: now.addingTimeInterval(-(12 * 60)),
+            source: .widget
+        )
+
+        XCTAssertEqual(item.metadataText(now: now), "Widget slot - 12m ago")
+    }
+
     func testAppSelectionUsesOnlyTheCurrentWidgetSlotAsRecentWidgetHistory() throws {
         let cards = try Self.rankedCards(count: 9)
         let now = Date(timeIntervalSince1970: (72 * 60 * 60) + 60)

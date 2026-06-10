@@ -85,6 +85,10 @@ struct DailyKanjiPresentationHistoryItem: Equatable, Identifiable {
 
         return "\(Int(elapsedSeconds / (24 * 60 * 60)))d ago"
     }
+
+    func metadataText(now: Date = .now) -> String {
+        "\(source.label) - \(shownAtText(now: now))"
+    }
 }
 
 enum DailyKanjiPresentationHistory {

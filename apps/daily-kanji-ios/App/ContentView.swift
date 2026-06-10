@@ -127,26 +127,18 @@ struct ContentView: View {
                                         .font(.system(size: 26, weight: .semibold, design: .serif))
                                         .frame(width: 72, alignment: .leading)
                                     VStack(alignment: .leading, spacing: 2) {
-                                        HStack(spacing: 6) {
-                                            Text(card.back)
-                                                .font(.subheadline.weight(.medium))
-                                                .lineLimit(1)
+                                        Text(card.back)
+                                            .font(.subheadline.weight(.medium))
+                                            .lineLimit(1)
 
-                                            Text(item.source.label)
-                                                .font(.caption2.weight(.semibold))
-                                                .foregroundStyle(.secondary)
-                                                .padding(.horizontal, 6)
-                                                .padding(.vertical, 2)
-                                                .background(Color(.tertiarySystemGroupedBackground))
-                                                .clipShape(Capsule())
-
-                                            Text(item.shownAtText())
-                                                .font(.caption2)
-                                                .foregroundStyle(.tertiary)
-                                        }
                                         Text(card.readingText)
                                             .font(.caption)
                                             .foregroundStyle(.secondary)
+                                            .lineLimit(1)
+
+                                        Text(item.metadataText())
+                                            .font(.caption2)
+                                            .foregroundStyle(.tertiary)
                                             .lineLimit(1)
                                     }
                                     Spacer(minLength: 0)
