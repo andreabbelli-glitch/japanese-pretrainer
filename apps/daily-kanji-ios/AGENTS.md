@@ -36,6 +36,17 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   -derivedDataPath build/SimulatorDerivedData build
 ```
 
+Unit test iOS:
+
+```sh
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
+  xcodebuild -project DailyKanji.xcodeproj \
+  -scheme DailyKanji \
+  -configuration Debug \
+  -destination 'platform=iOS Simulator,name=iPhone 17' \
+  -derivedDataPath build/SimulatorDerivedData test
+```
+
 Rinnovo/install su iPhone personale via CoreDevice:
 
 ```sh
@@ -58,8 +69,8 @@ cd ../..
 
 ## Verifica per slice
 
-- Cambi a Swift/UI/widget: build simulatore e, se toccano widget/signing,
-  `./scripts/xcode-renew.sh` su device fisico.
+- Cambi a Swift/UI/widget: test simulatore e, se toccano widget/signing,
+  `./scripts/xcode-renew.sh` su device fisico quando serve validare il device.
 - Cambi a exporter/API/webapp: dalla root repo usa
   `./scripts/with-node.sh pnpm check`; per route/API anche
   `./scripts/with-node.sh pnpm release:check`.

@@ -8,6 +8,7 @@ nome app, bundle id, scheme e documentazione sono quelli di **Daily Kanji**.
 ## Stato attuale
 
 - App SwiftUI + estensione WidgetKit iOS.
+- Target unit test iOS per modello dataset, ranking, storico e deep link.
 - Progetto Xcode generato da XcodeGen (`project.yml`).
 - Bundle app: `dev.local.daily-kanji`.
 - Bundle widget: `dev.local.daily-kanji.widget`.
@@ -19,9 +20,11 @@ nome app, bundle id, scheme e documentazione sono quelli di **Daily Kanji**.
 - Sideloadly resta solo diagnostico: su questo setup installa la app principale
   ma non registra la WidgetKit extension nella gallery widget.
 
-Il contenuto e' ancora un placeholder hardcoded (`学`). Le prossime slice
-sostituiranno il sample con dataset esportato, refresh JSON leggero, storico
-locale e audio bundled.
+La app e il widget leggono `daily-kanji-cards.json` quando e' stato esportato.
+Se il file non e' presente usano un sample locale (`学`) per mantenere build e
+preview funzionanti. Lo storico locale dell'app copre gli ultimi 3 giorni e
+serve a evitare ripetizioni quando l'app viene aperta; il widget resta senza App
+Group per non introdurre entitlement fragili con Personal Team.
 
 ## Obiettivo v1
 
@@ -117,6 +120,19 @@ apps/daily-kanji-ios/App/Resources/daily-kanji-cards.json
 
 Il JSON e' generato dal DB runtime configurato (`DATABASE_URL`) e resta ignorato
 da git per evitare di committare snapshot personali di review state.
+Durante la build Xcode il JSON viene copiato sia nel bundle app sia nel bundle
+WidgetKit extension.
+
+Unit test iOS:
+
+```sh
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
+  xcodebuild -project DailyKanji.xcodeproj \
+  -scheme DailyKanji \
+  -configuration Debug \
+  -destination 'platform=iOS Simulator,name=iPhone 17' \
+  -derivedDataPath build/SimulatorDerivedData test
+```
 
 ## Note widget
 
@@ -124,6 +140,8 @@ da git per evitare di committare snapshot personali di review state.
 - Per Lock Screen, la famiglia primaria sara `accessoryRectangular`, usando tutto
   lo spazio che iOS assegna a quel family. iOS non consente a un widget singolo
   di espandersi oltre le dimensioni del family selezionato.
+- Il widget usa deep link `dailykanji://card/<card-id>` per aprire la card
+  completa nell'app.
 - Dopo reinstallazioni importanti puo essere necessario rimuovere e riaggiungere
   il widget per evitare preview cacheate di WidgetKit.
 - `devicectl` puo installare e lanciare la app, ma non puo aprire la widget
@@ -136,6 +154,7 @@ La v1 deve restare personale e leggera:
 - dataset full e audio locali vengono packaged nell'app;
 - endpoint remoto, quando presente, restituisce solo overlay JSON di priorita;
 - nessuna scrittura FSRS da iOS;
+- nessun entitlement App Group o Associated Domains;
 - nessun polling aggressivo dal widget;
 - fallback offline sempre disponibile.
 
@@ -155,7 +174,7 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   -scheme DailyKanji \
   -configuration Debug \
   -destination 'platform=iOS Simulator,name=iPhone 17' \
-  -derivedDataPath build/SimulatorDerivedData build
+  -derivedDataPath build/SimulatorDerivedData test
 ```
 
 Per slice che toccano signing/widget su device:
