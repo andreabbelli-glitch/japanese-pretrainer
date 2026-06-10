@@ -146,6 +146,17 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(card.lockScreenExplanationText, "This note is intentionally long and...")
     }
 
+    func testHomeWidgetExplanationTextAllowsMoreContextThanLockScreen() throws {
+        let card = try Self.cardReplacingNotes(
+            with: "This note is intentionally long and contains enough detail to overflow a lock screen widget but still fit a medium home widget."
+        )
+
+        XCTAssertEqual(
+            card.homeWidgetExplanationText,
+            "This note is intentionally long and contains enough detail to overflow a lock screen widget..."
+        )
+    }
+
     func testDetailExampleLinesKeepItalianExampleWhenJapaneseExampleIsMissing() throws {
         let card = try Self.cardReplacingExamples(exampleJp: nil, exampleIt: "Solo esempio italiano.")
 

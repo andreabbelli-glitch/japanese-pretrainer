@@ -141,7 +141,8 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
 
 ## Note widget
 
-- Per Home Screen, la famiglia primaria sara `systemMedium`.
+- Per Home Screen, la famiglia primaria sara `systemMedium` e mostra fronte,
+  retro, reading, pitch accent e una spiegazione breve.
 - Per Lock Screen, la famiglia primaria sara `accessoryRectangular`, usando tutto
   lo spazio che iOS assegna a quel family. iOS non consente a un widget singolo
   di espandersi oltre le dimensioni del family selezionato.

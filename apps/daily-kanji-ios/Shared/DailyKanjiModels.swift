@@ -145,6 +145,10 @@ extension DailyKanjiCard {
         compactExplanationText?.dailyKanjiCondensed(maxLength: 44)
     }
 
+    var homeWidgetExplanationText: String? {
+        compactExplanationText?.dailyKanjiCondensed(maxLength: 96)
+    }
+
     var priorityText: String {
         if srs.priorityReasons.contains(.recentHardAgain) {
             return "Recent hard/again"

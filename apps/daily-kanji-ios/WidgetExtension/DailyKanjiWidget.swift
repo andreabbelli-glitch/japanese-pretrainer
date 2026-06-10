@@ -121,6 +121,14 @@ struct DailyKanjiWidgetView: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
 
+                if let explanation = entry.card.homeWidgetExplanationText {
+                    Text(explanation)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.8)
+                }
+
                 Spacer(minLength: 0)
 
                 Text(entry.card.sourceText)
