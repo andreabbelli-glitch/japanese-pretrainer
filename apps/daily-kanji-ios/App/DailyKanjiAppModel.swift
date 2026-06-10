@@ -72,7 +72,15 @@ final class DailyKanjiAppModel: ObservableObject {
             return
         }
 
-        select(card: card, shownAt: now)
+        select(
+            card: card,
+            shownAt: now,
+            context: DailyKanjiPresentationHistoryItem(
+                cardId: card.cardId,
+                shownAt: DailyKanjiSelector.currentWidgetSlotStart(for: now),
+                source: .widget
+            )
+        )
         suppressActivationUntil = now.addingTimeInterval(deepLinkActivationSuppressionInterval)
     }
 

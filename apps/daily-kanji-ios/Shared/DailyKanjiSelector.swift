@@ -154,7 +154,7 @@ struct DailyKanjiSelector {
         }
     }
 
-    private static func currentWidgetSlotStart(for date: Date) -> Date {
+    static func currentWidgetSlotStart(for date: Date) -> Date {
         let slot = floor(date.timeIntervalSince1970 / widgetSlotDuration)
         return Date(timeIntervalSince1970: slot * widgetSlotDuration)
     }
