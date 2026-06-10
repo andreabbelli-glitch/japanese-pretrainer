@@ -139,10 +139,18 @@ final class DailyKanjiHistoryStore {
         self.maxItems = maxItems
     }
 
-    func record(cardId: String, shownAt: Date = .now) {
+    @discardableResult
+    func record(cardId: String, shownAt: Date = .now) -> DailyKanjiHistoryItem {
+        let item = DailyKanjiHistoryItem(cardId: cardId, shownAt: shownAt)
         var items = allItems()
-        items.insert(DailyKanjiHistoryItem(cardId: cardId, shownAt: shownAt), at: 0)
+        items.insert(item, at: 0)
         save(Array(items.prefix(maxItems)))
+        return item
+    }
+
+    func remove(eventId: String) {
+        let remainingItems = allItems().filter { $0.eventId != eventId }
+        save(remainingItems)
     }
 
     func recentItems(now: Date = .now, days: Int = 3) -> [DailyKanjiHistoryItem] {

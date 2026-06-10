@@ -158,23 +158,107 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
-    func testVisibleRecentHistoryKeepsThreeDaysOfHourlyWidgetSlots() throws {
+    func testFirstActivationRecordsInitialAppSelectionAndThreeDaysOfHourlyWidgetSlots() throws {
         let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: defaultsName)!
         defer {
             defaults.removePersistentDomain(forName: defaultsName)
         }
 
+        let now = Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
         let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
         let model = DailyKanjiAppModel(
             cards: cards,
             historyStore: DailyKanjiHistoryStore(defaults: defaults),
-            now: Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
+            now: now
         )
 
-        XCTAssertEqual(model.recentHistory.count, 72)
-        XCTAssertEqual(model.recentHistory.first?.shownAt, Date(timeIntervalSince1970: 72 * 60 * 60))
+        model.activate(now: now)
+
+        XCTAssertEqual(model.recentHistory.count, 73)
+        XCTAssertEqual(model.recentHistory.first?.source, .app)
+        XCTAssertEqual(model.recentHistory.first?.shownAt, now)
+        XCTAssertEqual(model.recentHistory.dropFirst().first?.source, .widget)
+        XCTAssertEqual(model.recentHistory.dropFirst().first?.shownAt, Date(timeIntervalSince1970: 72 * 60 * 60))
         XCTAssertEqual(model.recentHistory.last?.shownAt, Date(timeIntervalSince1970: 60 * 60))
+    }
+
+    @MainActor
+    func testColdWidgetDeepLinkDoesNotRecordInitialAppSelection() throws {
+        let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+
+        let cards = try Self.rankedCards(count: 3)
+        let launchTime = Date(timeIntervalSince1970: 72 * 60 * 60)
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            now: launchTime
+        )
+
+        XCTAssertEqual(model.selectedCard?.cardId, "card-1")
+
+        model.openDeepLink(
+            DailyKanjiDeepLink.cardURL(cardId: "card-2"),
+            now: launchTime.addingTimeInterval(1)
+        )
+
+        let appHistoryItems = model.recentHistory.filter { $0.source == .app }
+        XCTAssertEqual(appHistoryItems.map(\.cardId), ["card-2"])
+    }
+
+    @MainActor
+    func testFirstActivationRecordsPreparedSelectionAcrossWidgetSlotBoundary() throws {
+        let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+
+        let cards = try Self.rankedCards(count: 3)
+        let launchTime = Date(timeIntervalSince1970: (72 * 60 * 60) - 1)
+        let activationTime = Date(timeIntervalSince1970: (72 * 60 * 60) + 1)
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            now: launchTime
+        )
+
+        XCTAssertEqual(model.selectedCard?.cardId, "card-0")
+
+        model.activate(now: activationTime)
+
+        let appHistoryItems = model.recentHistory.filter { $0.source == .app }
+        XCTAssertEqual(appHistoryItems.map(\.cardId), ["card-0"])
+    }
+
+    @MainActor
+    func testColdWidgetDeepLinkAfterInitialActivationRemovesTransientInitialSelection() throws {
+        let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+
+        let cards = try Self.rankedCards(count: 3)
+        let launchTime = Date(timeIntervalSince1970: 72 * 60 * 60)
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            now: launchTime
+        )
+
+        model.activate(now: launchTime.addingTimeInterval(1))
+        model.openDeepLink(
+            DailyKanjiDeepLink.cardURL(cardId: "card-2"),
+            now: launchTime.addingTimeInterval(2)
+        )
+
+        let appHistoryItems = model.recentHistory.filter { $0.source == .app }
+        XCTAssertEqual(appHistoryItems.map(\.cardId), ["card-2"])
     }
 
     func testPresentationHistoryMergesAppAndWidgetExposureEventsNewestFirst() {

@@ -12,7 +12,9 @@ final class DailyKanjiAppModel: ObservableObject {
     private let historyStore: DailyKanjiHistoryStore
     private let deepLinkActivationSuppressionInterval: TimeInterval = 5
     private var suppressActivationUntil: Date?
+    private var pendingPreparedSelectionCardId: String?
     private var recentSelectionHistory: [DailyKanjiHistoryItem] = []
+    private var transientInitialActivationEvent: DailyKanjiHistoryItem?
 
     init(
         repository: DailyKanjiRepository = DailyKanjiRepository(),
@@ -40,6 +42,14 @@ final class DailyKanjiAppModel: ObservableObject {
             return
         }
 
+        if let pendingPreparedSelectionCardId {
+            self.pendingPreparedSelectionCardId = nil
+            if let card = cards.first(where: { $0.cardId == pendingPreparedSelectionCardId }) {
+                select(card: card, shownAt: now, tracksTransientInitialActivation: true)
+                return
+            }
+        }
+
         guard
             let card = DailyKanjiSelector.select(
                 cards: cards,
@@ -61,6 +71,7 @@ final class DailyKanjiAppModel: ObservableObject {
             return
         }
 
+        pendingPreparedSelectionCardId = nil
         select(card: card, shownAt: now, context: item)
     }
 
@@ -72,6 +83,8 @@ final class DailyKanjiAppModel: ObservableObject {
             return
         }
 
+        pendingPreparedSelectionCardId = nil
+        removeTransientInitialActivationIfNeeded(now: now)
         select(
             card: card,
             shownAt: now,
@@ -102,13 +115,17 @@ final class DailyKanjiAppModel: ObservableObject {
                 shownAt: now,
                 source: .app
             )
+            pendingPreparedSelectionCardId = selectedCard.cardId
+        } else {
+            pendingPreparedSelectionCardId = nil
         }
     }
 
     private func select(
         card: DailyKanjiCard,
         shownAt: Date,
-        context: DailyKanjiPresentationHistoryItem? = nil
+        context: DailyKanjiPresentationHistoryItem? = nil,
+        tracksTransientInitialActivation: Bool = false
     ) {
         selectedCard = card
         selectedHistoryContext = context ?? DailyKanjiPresentationHistoryItem(
@@ -116,9 +133,27 @@ final class DailyKanjiAppModel: ObservableObject {
             shownAt: shownAt,
             source: .app
         )
-        historyStore.record(cardId: card.cardId, shownAt: shownAt)
+        let historyItem = historyStore.record(cardId: card.cardId, shownAt: shownAt)
+        transientInitialActivationEvent = tracksTransientInitialActivation ? historyItem : nil
         refreshHistory(now: shownAt)
         WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    private func removeTransientInitialActivationIfNeeded(now: Date) {
+        guard let transientInitialActivationEvent else {
+            return
+        }
+
+        self.transientInitialActivationEvent = nil
+
+        guard
+            now.timeIntervalSince(transientInitialActivationEvent.shownAt)
+                <= deepLinkActivationSuppressionInterval
+        else {
+            return
+        }
+
+        historyStore.remove(eventId: transientInitialActivationEvent.eventId)
     }
 
     private func shouldSuppressActivationSelection(now: Date) -> Bool {
