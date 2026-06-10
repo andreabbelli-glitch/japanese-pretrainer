@@ -64,6 +64,21 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(selected?.cardId, "recent-only")
     }
 
+    func testSelectionBreaksPriorityTiesByEarliestDueDate() throws {
+        let cards = try Self.dueDateTieBreakerCards()
+
+        let rankedCards = DailyKanjiSelector.rank(cards)
+        let selected = DailyKanjiSelector.select(
+            cards: cards,
+            history: [],
+            now: now,
+            mode: .appOpen
+        )
+
+        XCTAssertEqual(rankedCards.map(\.cardId), ["z-overdue", "a-future"])
+        XCTAssertEqual(selected?.cardId, "z-overdue")
+    }
+
     func testWidgetRefreshUsesNextRotationSlotBoundary() {
         let date = Date(timeIntervalSince1970: (6 * 60 * 60) + 123)
 
@@ -558,6 +573,91 @@ final class DailyKanjiCoreTests: XCTestCase {
                     scheduledDays: 0,
                     stability: 0,
                     state: .relearning
+                )
+            )
+        ]
+    }
+
+    private static func dueDateTieBreakerCards() throws -> [DailyKanjiCard] {
+        let base = try DailyKanjiDataset.decode(jsonData: datasetJSON).cards[0]
+
+        return [
+            DailyKanjiCard(
+                cardId: "a-future",
+                subjectKey: "term:a-future",
+                media: base.media,
+                lesson: base.lesson,
+                segment: base.segment,
+                front: "未来",
+                back: "future",
+                kanji: ["未", "来"],
+                entry: DailyKanjiCard.Entry(
+                    audioSrc: nil,
+                    id: "entry-a-future",
+                    kind: .term,
+                    label: "未来",
+                    meaning: "future",
+                    pitchAccent: nil,
+                    pitchAccentSource: nil,
+                    reading: "みらい"
+                ),
+                exampleIt: nil,
+                exampleJp: nil,
+                notes: nil,
+                srs: DailyKanjiCard.SRS(
+                    difficulty: 7,
+                    dueAt: "2026-06-11T08:00:00.000Z",
+                    lapses: 0,
+                    lastHardAgainAt: nil,
+                    lastInteractionAt: "2026-06-08T11:00:00.000Z",
+                    lastReviewedAt: "2026-06-08T11:00:00.000Z",
+                    learningSteps: 0,
+                    priorityReasons: [.highDifficulty],
+                    priorityScore: 9000,
+                    recentHardAgainCount: 0,
+                    reps: 4,
+                    scheduledDays: 2,
+                    stability: 3,
+                    state: .review
+                )
+            ),
+            DailyKanjiCard(
+                cardId: "z-overdue",
+                subjectKey: "term:z-overdue",
+                media: base.media,
+                lesson: base.lesson,
+                segment: base.segment,
+                front: "期限",
+                back: "deadline",
+                kanji: ["期", "限"],
+                entry: DailyKanjiCard.Entry(
+                    audioSrc: nil,
+                    id: "entry-z-overdue",
+                    kind: .term,
+                    label: "期限",
+                    meaning: "deadline",
+                    pitchAccent: nil,
+                    pitchAccentSource: nil,
+                    reading: "きげん"
+                ),
+                exampleIt: nil,
+                exampleJp: nil,
+                notes: nil,
+                srs: DailyKanjiCard.SRS(
+                    difficulty: 7,
+                    dueAt: "2026-06-10T08:00:00.000Z",
+                    lapses: 0,
+                    lastHardAgainAt: nil,
+                    lastInteractionAt: "2026-06-08T11:00:00.000Z",
+                    lastReviewedAt: "2026-06-08T11:00:00.000Z",
+                    learningSteps: 0,
+                    priorityReasons: [.highDifficulty],
+                    priorityScore: 9000,
+                    recentHardAgainCount: 0,
+                    reps: 4,
+                    scheduledDays: 2,
+                    stability: 3,
+                    state: .review
                 )
             )
         ]

@@ -146,6 +146,10 @@ struct DailyKanjiSelector {
                 return (lhs.srs.lastHardAgainAt ?? "") > (rhs.srs.lastHardAgainAt ?? "")
             }
 
+            if lhs.srs.dueAt != rhs.srs.dueAt {
+                return (lhs.srs.dueAt ?? "9999") < (rhs.srs.dueAt ?? "9999")
+            }
+
             return lhs.cardId < rhs.cardId
         }
     }
