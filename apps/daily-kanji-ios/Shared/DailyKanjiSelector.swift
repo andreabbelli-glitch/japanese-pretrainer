@@ -9,9 +9,9 @@ struct DailyKanjiSelector {
     static let defaultHistoryLookbackDays = 3
     static let defaultWidgetRotationWindow = 8
     static let defaultWidgetSelectionHistoryMaxItems = 1
-    static let widgetSlotDuration: TimeInterval = 6 * 60 * 60
-    static let defaultWidgetHistoryMaxItems = 16
-    static let defaultWidgetTimelineEntryCount = 12
+    static let widgetSlotDuration: TimeInterval = 60 * 60
+    static let defaultWidgetHistoryMaxItems = 72
+    static let defaultWidgetTimelineEntryCount = 72
 
     static func select(
         cards: [DailyKanjiCard],

@@ -147,6 +147,9 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
 - Per Lock Screen, la famiglia primaria sara `accessoryRectangular`, usando tutto
   lo spazio che iOS assegna a quel family. iOS non consente a un widget singolo
   di espandersi oltre le dimensioni del family selezionato.
+- La rotazione widget usa slot offline di 1 ora, precompilando 72 entry di
+  timeline per coprire circa 3 giorni senza chiamate di rete. WidgetKit non
+  garantisce un cambio card a ogni singolo wake/sblocco del telefono.
 - Il widget usa deep link `dailykanji://card/<card-id>` per aprire la card
   completa nell'app.
 - Senza App Group, l'app non puo sapere se il widget lockscreen e' stato

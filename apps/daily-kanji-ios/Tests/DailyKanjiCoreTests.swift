@@ -41,7 +41,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         let second = DailyKanjiSelector.select(
             cards: cards,
             history: [],
-            now: Date(timeIntervalSince1970: 6 * 60 * 60),
+            now: Date(timeIntervalSince1970: 60 * 60),
             mode: .widgetTimeline
         )
 
@@ -80,24 +80,24 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     func testWidgetRefreshUsesNextRotationSlotBoundary() {
-        let date = Date(timeIntervalSince1970: (6 * 60 * 60) + 123)
+        let date = Date(timeIntervalSince1970: (60 * 60) + 123)
 
         XCTAssertEqual(
             DailyKanjiSelector.nextWidgetRefreshDate(after: date),
-            Date(timeIntervalSince1970: 12 * 60 * 60)
+            Date(timeIntervalSince1970: 2 * 60 * 60)
         )
     }
 
     func testWidgetTimelineDatesPrebuildFutureRotationSlots() {
-        let now = Date(timeIntervalSince1970: (6 * 60 * 60) + 123)
+        let now = Date(timeIntervalSince1970: (60 * 60) + 123)
 
         XCTAssertEqual(
             DailyKanjiSelector.widgetTimelineDates(startingAt: now, count: 4),
             [
                 now,
-                Date(timeIntervalSince1970: 12 * 60 * 60),
-                Date(timeIntervalSince1970: 18 * 60 * 60),
-                Date(timeIntervalSince1970: 24 * 60 * 60)
+                Date(timeIntervalSince1970: 2 * 60 * 60),
+                Date(timeIntervalSince1970: 3 * 60 * 60),
+                Date(timeIntervalSince1970: 4 * 60 * 60)
             ]
         )
     }
@@ -115,9 +115,21 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(items.map(\.source), [.widget, .widget, .widget])
         XCTAssertEqual(items.map(\.shownAt), [
             Date(timeIntervalSince1970: 72 * 60 * 60),
-            Date(timeIntervalSince1970: 66 * 60 * 60),
-            Date(timeIntervalSince1970: 60 * 60 * 60)
+            Date(timeIntervalSince1970: 71 * 60 * 60),
+            Date(timeIntervalSince1970: 70 * 60 * 60)
         ])
+    }
+
+    func testRecentWidgetTimelineHistoryDefaultCoversThreeDaysOfHourlySlots() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let items = DailyKanjiSelector.recentWidgetTimelineItems(
+            cards: cards,
+            now: Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
+        )
+
+        XCTAssertEqual(items.count, 72)
+        XCTAssertEqual(items.first?.shownAt, Date(timeIntervalSince1970: 72 * 60 * 60))
+        XCTAssertEqual(items.last?.shownAt, Date(timeIntervalSince1970: 60 * 60))
     }
 
     func testPresentationHistoryMergesAppAndWidgetExposureEventsNewestFirst() {
@@ -212,8 +224,8 @@ final class DailyKanjiCoreTests: XCTestCase {
             mode: .appOpen
         )
 
-        XCTAssertEqual(widgetSelectionHistory.map(\.cardId), ["card-4"])
-        XCTAssertEqual(selected?.cardId, "card-0")
+        XCTAssertEqual(widgetSelectionHistory.map(\.cardId), ["card-0"])
+        XCTAssertEqual(selected?.cardId, "card-1")
     }
 
     func testLockScreenExplanationTextKeepsFullRectangularContext() throws {
@@ -354,7 +366,7 @@ final class DailyKanjiCoreTests: XCTestCase {
             model.selectedHistoryContext,
             DailyKanjiPresentationHistoryItem(
                 cardId: "stable",
-                shownAt: Date(timeIntervalSince1970: 72 * 60 * 60),
+                shownAt: Date(timeIntervalSince1970: 74 * 60 * 60),
                 source: .widget
             )
         )
