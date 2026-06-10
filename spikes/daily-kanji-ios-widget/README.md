@@ -27,8 +27,22 @@ Stato aggiornato dello spike su questo Mac:
 - Installazione e launch su simulatore riusciti per bundle
   `dev.local.daily-kanji-spike`; screenshot verificato con app non vuota e
   kanji hardcoded `学`.
-- Al momento della verifica Xcode non rilevava iPhone collegati:
-  `xcrun devicectl list devices` ha restituito `No devices found`.
+- iPhone fisico rilevato da Xcode/CoreDevice:
+  `iPhone di Andrea (3)`, iPhone 15, iOS 26.5, Developer Mode attiva.
+- Installazione privata via Sideloadly riuscita con Apple ID personale gratuito.
+  Sideloadly ha riscritto il bundle id installato in
+  `dev.local.daily-kanji-spike.F5U46464YH`.
+- Primo launch bloccato finche il profilo sviluppatore non e' stato autorizzato
+  da iOS in `Impostazioni > Generali > VPN e gestione dispositivo`.
+- Dopo il trust manuale del profilo, il launch da `devicectl` e' riuscito:
+  l'app `Daily Kanji Spike` si apre sul device fisico.
+- Il bundle IPA contiene la WidgetKit extension
+  `Daily Kanji Widget.appex` con extension point
+  `com.apple.widgetkit-extension`.
+- La verifica CLI non puo aprire o pilotare la widget gallery iOS. Durante il
+  polling dei processi non e' comparso `Daily Kanji Widget.appex`; questo non
+  prova il fallimento del widget, ma lascia da confermare manualmente che
+  `Daily Kanji` appaia nella gallery e mostri `学`.
 
 Gli script usano
 automaticamente `/Applications/Xcode.app/Contents/Developer` tramite
@@ -115,9 +129,15 @@ Apri Sideloadly, trascina l'IPA, usa il tuo Apple ID personale e avvia
 l'installazione. Dopo l'installazione, aggiungi il widget "Daily Kanji" dalla
 schermata Home o Lock Screen.
 
-Per continuare la verifica end-to-end serve un iPhone collegato al Mac e fidato
-dal dispositivo. Senza iPhone collegato non e' possibile provare firma,
-installazione e auto-refresh Sideloadly.
+Alla prima installazione sideloaded, iOS puo negare il launch finche non approvi
+il profilo sviluppatore in `Impostazioni > Generali > VPN e gestione
+dispositivo`. Dopo il trust, il launch da Mac e l'apertura manuale dell'app
+funzionano.
+
+Per concludere la verifica end-to-end serve confermare manualmente dal telefono
+che il widget "Daily Kanji" compaia nella gallery e si possa aggiungere alla
+Home o Lock Screen. `devicectl` puo vedere l'app installata e lanciarla, ma non
+puo aprire la widget gallery o aggiungere widget alla Home Screen.
 
 Smoke simulator opzionale:
 
