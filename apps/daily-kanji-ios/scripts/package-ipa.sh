@@ -2,10 +2,10 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PROJECT="$ROOT/DailyKanjiWidgetSpike.xcodeproj"
+PROJECT="$ROOT/DailyKanji.xcodeproj"
 DERIVED_DATA="$ROOT/build/DerivedData"
 IPA_ROOT="$ROOT/build/ipa"
-IPA_PATH="$ROOT/build/DailyKanjiWidgetSpike.ipa"
+IPA_PATH="$ROOT/build/DailyKanji.ipa"
 CONFIGURATION="${CONFIGURATION:-Release}"
 
 if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Developer ]; then
@@ -35,7 +35,7 @@ rm -rf "$DERIVED_DATA" "$IPA_ROOT" "$IPA_PATH"
 
 xcodebuild \
   -project "$PROJECT" \
-  -scheme DailyKanjiWidgetSpike \
+  -scheme DailyKanji \
   -configuration "$CONFIGURATION" \
   -destination "generic/platform=iOS" \
   -derivedDataPath "$DERIVED_DATA" \

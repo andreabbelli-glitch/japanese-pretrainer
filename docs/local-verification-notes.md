@@ -182,25 +182,36 @@ ma il browser non parte per limiti del sandbox, segnala esplicitamente che gli
 E2E browser non sono eseguibili in quell'ambiente e completa il resto delle
 verifiche disponibili.
 
-## Spike iOS Widget
+## Daily Kanji iOS
 
-Lo spike privato per validare app iPhone nativa + WidgetKit + Sideloadly vive in
-`spikes/daily-kanji-ios-widget/`. Non fa parte del gate applicativo Next.js:
-serve solo a verificare sul Mac locale la disponibilita di Xcode completo,
-XcodeGen, Sideloadly, packaging IPA e installazione su iPhone personale.
+La app iOS privata + WidgetKit vive in `apps/daily-kanji-ios/`. Non fa parte del
+gate applicativo Next.js quando si tocca solo Swift/UI iOS, ma va verificata con
+Xcode quando cambiano progetto, signing, widget o risorse native.
 
 Comandi locali:
 
 ```sh
-cd spikes/daily-kanji-ios-widget
+cd apps/daily-kanji-ios
 ./scripts/doctor.sh
 xcodegen generate
 ./scripts/package-ipa.sh
 ```
 
 Il Mac deve puntare a `/Applications/Xcode.app/Contents/Developer`, non a
-Command Line Tools. Se manca Xcode completo, lo spike resta bloccato prima della
-build e va segnalato come limite concreto della verifica.
+Command Line Tools. Se manca Xcode completo, la build iOS resta bloccata e va
+segnalata come limite concreto della verifica.
+
+Per validare il percorso che registra davvero il widget su iPhone fisico:
+
+```sh
+cd apps/daily-kanji-ios
+./scripts/xcode-renew.sh
+```
+
+Su questo setup il rinnovo da CLI e' stato verificato via CoreDevice anche senza
+cavo quando l'iPhone risulta `transportType: localNetwork`. Sideloadly rimane
+diagnostico: installa la app principale, ma non registra la WidgetKit extension
+nella gallery widget.
 
 ## Gate Canonico Di Verifica
 

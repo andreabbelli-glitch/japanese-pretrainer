@@ -3,10 +3,10 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
-            Text("Daily Kanji Spike")
+            Text("Daily Kanji")
                 .font(.largeTitle.bold())
 
-            Text("WidgetKit install test")
+            Text("Personal kanji recall")
                 .font(.title3)
                 .foregroundStyle(.secondary)
 
@@ -24,7 +24,7 @@ struct ContentView: View {
                 }
             }
 
-            Text("If this app and its widget install on the iPhone, the free sideloading path is viable enough for the real Daily Kanji app.")
+            Text("Private iPhone app and widget for passive recall of difficult kanji-bearing flashcards.")
                 .font(.body)
                 .foregroundStyle(.secondary)
         }
@@ -35,4 +35,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-

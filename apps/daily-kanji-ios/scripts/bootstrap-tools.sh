@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DOWNLOAD_DIR="$ROOT/../../.tmp/ios-spike-downloads"
+DOWNLOAD_DIR="$ROOT/../../.tmp/daily-kanji-ios-downloads"
 SIDELOADLY_DMG="$DOWNLOAD_DIR/SideloadlySetup.dmg"
 SIDELOADLY_URL="https://sideloadly.io/SideloadlySetup.dmg"
 SIDELOADLY_VOLUME="/Volumes/Sideloadly! v0.60 Setup"
@@ -33,4 +33,3 @@ if [ ! -d /Applications/Sideloadly.app ]; then
 fi
 
 "$ROOT/scripts/doctor.sh"
-

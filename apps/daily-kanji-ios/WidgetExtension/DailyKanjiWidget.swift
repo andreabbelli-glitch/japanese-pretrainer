@@ -32,7 +32,7 @@ struct KanjiProvider: TimelineProvider {
         character: "学",
         keyword: "study, learning",
         reading: "がく / まな.ぶ",
-        source: "Spike"
+        source: "Daily Kanji"
     )
 }
 

@@ -32,10 +32,22 @@ check_path() {
   fi
 }
 
+check_optional_path() {
+  local label="$1"
+  local path="$2"
+  local hint="$3"
+
+  if [ -e "$path" ]; then
+    printf "ok   %s: %s\n" "$label" "$path"
+  else
+    printf "warn %s: %s\n" "$label" "$hint"
+  fi
+}
+
 check_command xcodegen "brew install xcodegen"
 check_command ditto "ditto e' incluso in macOS"
 check_path Xcode.app /Applications/Xcode.app "install Xcode da App Store o Apple Developer Downloads"
-check_path Sideloadly.app /Applications/Sideloadly.app "install Sideloadly se vuoi testare auto-refresh gratuito"
+check_optional_path Sideloadly.app /Applications/Sideloadly.app "opzionale; utile solo per diagnostica IPA, non per validare WidgetKit"
 
 if command -v xcode-select >/dev/null 2>&1; then
   developer_dir="$(xcode-select -p 2>/dev/null || true)"
@@ -73,7 +85,7 @@ else
 fi
 
 if [ "$failures" -gt 0 ]; then
-  printf "\n%d prerequisiti mancanti. Lo spike non e' ancora buildabile su questo Mac.\n" "$failures"
+  printf "\n%d prerequisiti mancanti. Daily Kanji iOS non e' ancora buildabile su questo Mac.\n" "$failures"
   exit 1
 fi
 

@@ -1,11 +1,10 @@
 import SwiftUI
 
 @main
-struct DailyKanjiWidgetSpikeApp: App {
+struct DailyKanjiApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
 }
-

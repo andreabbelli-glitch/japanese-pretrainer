@@ -2,10 +2,10 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PROJECT="$ROOT/DailyKanjiWidgetSpike.xcodeproj"
+PROJECT="$ROOT/DailyKanji.xcodeproj"
 DERIVED_DATA="${DERIVED_DATA:-$ROOT/build/WifiRenewDerivedData}"
 DEVICE_ID="${DEVICE_ID:-D584E119-3362-5913-B704-DE927F58EF18}"
-SCHEME="${SCHEME:-DailyKanjiWidgetSpike}"
+SCHEME="${SCHEME:-DailyKanji}"
 CONFIGURATION="${CONFIGURATION:-Debug}"
 
 if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Developer ]; then
@@ -25,10 +25,13 @@ fi
 cd "$ROOT"
 xcodegen generate
 
-transport="$(
-  xcrun devicectl device info details --device "$DEVICE_ID" 2>/dev/null \
-    | awk -F': ' '/transportType/ {print $2; exit}'
-)"
+if ! device_details="$(xcrun devicectl device info details --device "$DEVICE_ID" 2>/dev/null)"; then
+  echo "Device $DEVICE_ID non raggiungibile da CoreDevice." >&2
+  echo "Metti iPhone e Mac sulla stessa Wi-Fi oppure collega il cavo." >&2
+  exit 1
+fi
+
+transport="$(printf "%s\n" "$device_details" | awk -F': ' '/transportType/ {print $2; exit}')"
 
 if [ -z "$transport" ]; then
   echo "Device $DEVICE_ID non raggiungibile da CoreDevice." >&2
@@ -47,7 +50,7 @@ xcodebuild \
   -allowProvisioningUpdates \
   build
 
-APP_PATH="$DERIVED_DATA/Build/Products/$CONFIGURATION-iphoneos/Daily Kanji Spike.app"
+APP_PATH="$DERIVED_DATA/Build/Products/$CONFIGURATION-iphoneos/Daily Kanji.app"
 
 if [ ! -d "$APP_PATH" ]; then
   echo "Build completata ma app non trovata: $APP_PATH" >&2

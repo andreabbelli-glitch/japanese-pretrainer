@@ -1,4 +1,4 @@
-name: DailyKanjiWidgetSpike
+name: DailyKanji
 options:
   bundleIdPrefix: dev.local
   deploymentTarget:
@@ -11,7 +11,7 @@ settings:
     MARKETING_VERSION: "0.1.2"
     SWIFT_VERSION: "5.10"
 targets:
-  DailyKanjiWidgetSpike:
+  DailyKanji:
     type: application
     platform: iOS
     sources:
@@ -24,8 +24,8 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         INFOPLIST_FILE: App/Info.plist
-        PRODUCT_BUNDLE_IDENTIFIER: dev.local.daily-kanji-spike
-        PRODUCT_NAME: Daily Kanji Spike
+        PRODUCT_BUNDLE_IDENTIFIER: dev.local.daily-kanji
+        PRODUCT_NAME: Daily Kanji
         TARGETED_DEVICE_FAMILY: "1"
   DailyKanjiWidgetExtension:
     type: app-extension
@@ -40,15 +40,15 @@ targets:
         APPLICATION_EXTENSION_API_ONLY: YES
         INFOPLIST_FILE: WidgetExtension/Info.plist
         LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks"
-        PRODUCT_BUNDLE_IDENTIFIER: dev.local.daily-kanji-spike.widget
+        PRODUCT_BUNDLE_IDENTIFIER: dev.local.daily-kanji.widget
         PRODUCT_MODULE_NAME: DailyKanjiWidgetExtension
         PRODUCT_NAME: Daily Kanji Widget
         SKIP_INSTALL: YES
 schemes:
-  DailyKanjiWidgetSpike:
+  DailyKanji:
     build:
       targets:
-        DailyKanjiWidgetSpike: all
+        DailyKanji: all
         DailyKanjiWidgetExtension: all
     run:
       config: Debug
