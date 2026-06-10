@@ -282,6 +282,32 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
+    func testSelectingRecentHistoryItemPreservesItsReviewContext() throws {
+        let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            now: now
+        )
+        let widgetHistoryItem = DailyKanjiPresentationHistoryItem(
+            cardId: "stable",
+            shownAt: now.addingTimeInterval(-(6 * 60 * 60)),
+            source: .widget
+        )
+
+        model.selectHistoryItem(widgetHistoryItem, now: now.addingTimeInterval(60))
+
+        XCTAssertEqual(model.selectedCard?.cardId, "stable")
+        XCTAssertEqual(model.selectedHistoryContext, widgetHistoryItem)
+    }
+
+    @MainActor
     func testDeepLinkSelectionSurvivesFollowUpActivation() throws {
         let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: defaultsName)!

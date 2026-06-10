@@ -57,6 +57,12 @@ struct ContentView: View {
                 .disabled(!audioPlayer.hasBundledAudio(card: card))
             }
 
+            if let selectedHistoryContext = model.selectedHistoryContext {
+                Label(selectedHistoryContext.metadataText(), systemImage: "clock")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
             if !card.detailExampleLines.isEmpty {
                 VStack(alignment: .leading, spacing: 6) {
                     ForEach(Array(card.detailExampleLines.enumerated()), id: \.offset) { index, line in

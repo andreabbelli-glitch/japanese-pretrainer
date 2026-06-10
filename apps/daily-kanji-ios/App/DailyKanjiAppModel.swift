@@ -6,6 +6,7 @@ import WidgetKit
 final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var cards: [DailyKanjiCard]
     @Published private(set) var selectedCard: DailyKanjiCard?
+    @Published private(set) var selectedHistoryContext: DailyKanjiPresentationHistoryItem?
     @Published private(set) var recentHistory: [DailyKanjiPresentationHistoryItem] = []
 
     private let historyStore: DailyKanjiHistoryStore
@@ -60,7 +61,7 @@ final class DailyKanjiAppModel: ObservableObject {
             return
         }
 
-        select(card: card, shownAt: now)
+        select(card: card, shownAt: now, context: item)
     }
 
     func openDeepLink(_ url: URL, now: Date = .now) {
@@ -87,10 +88,26 @@ final class DailyKanjiAppModel: ObservableObject {
             now: now,
             mode: .appOpen
         )
+        if let selectedCard {
+            selectedHistoryContext = DailyKanjiPresentationHistoryItem(
+                cardId: selectedCard.cardId,
+                shownAt: now,
+                source: .app
+            )
+        }
     }
 
-    private func select(card: DailyKanjiCard, shownAt: Date) {
+    private func select(
+        card: DailyKanjiCard,
+        shownAt: Date,
+        context: DailyKanjiPresentationHistoryItem? = nil
+    ) {
         selectedCard = card
+        selectedHistoryContext = context ?? DailyKanjiPresentationHistoryItem(
+            cardId: card.cardId,
+            shownAt: shownAt,
+            source: .app
+        )
         historyStore.record(cardId: card.cardId, shownAt: shownAt)
         refreshHistory(now: shownAt)
         WidgetCenter.shared.reloadAllTimelines()
