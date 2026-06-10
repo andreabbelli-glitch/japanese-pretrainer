@@ -168,14 +168,14 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(selected?.cardId, "card-0")
     }
 
-    func testLockScreenExplanationTextCondensesLongNotes() throws {
+    func testLockScreenExplanationTextKeepsFullRectangularContext() throws {
         let card = try Self.cardReplacingNotes(
             with: "This note is intentionally long and contains enough detail to overflow a lock screen widget."
         )
 
         XCTAssertEqual(
             card.lockScreenExplanationText,
-            "This note is intentionally long and contains enough detail..."
+            "This note is intentionally long and contains enough detail to overflow a lock screen..."
         )
     }
 

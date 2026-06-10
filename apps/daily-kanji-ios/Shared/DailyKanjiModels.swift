@@ -162,7 +162,7 @@ extension DailyKanjiCard {
     }
 
     var lockScreenExplanationText: String? {
-        compactExplanationText?.dailyKanjiCondensed(maxLength: 64)
+        compactExplanationText?.dailyKanjiCondensed(maxLength: 88)
     }
 
     var homeWidgetExplanationText: String? {
