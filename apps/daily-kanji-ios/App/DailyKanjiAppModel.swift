@@ -18,13 +18,17 @@ final class DailyKanjiAppModel: ObservableObject {
     ) {
         self.cards = repository.loadCards()
         self.historyStore = historyStore
-        refreshHistory(now: now)
-        selectedCard = DailyKanjiSelector.select(
-            cards: cards,
-            history: selectionHistoryItems(),
-            now: now,
-            mode: .appOpen
-        )
+        prepareInitialSelection(now: now)
+    }
+
+    init(
+        cards: [DailyKanjiCard],
+        historyStore: DailyKanjiHistoryStore = DailyKanjiHistoryStore(),
+        now: Date = .now
+    ) {
+        self.cards = cards
+        self.historyStore = historyStore
+        prepareInitialSelection(now: now)
     }
 
     func activate(now: Date = .now) {
@@ -36,6 +40,16 @@ final class DailyKanjiAppModel: ObservableObject {
                 now: now,
                 mode: .appOpen
             )
+        else {
+            return
+        }
+
+        select(card: card, shownAt: now)
+    }
+
+    func selectHistoryItem(_ item: DailyKanjiPresentationHistoryItem, now: Date = .now) {
+        guard
+            let card = cards.first(where: { $0.cardId == item.cardId })
         else {
             return
         }
@@ -56,6 +70,16 @@ final class DailyKanjiAppModel: ObservableObject {
 
     func card(for historyItem: DailyKanjiPresentationHistoryItem) -> DailyKanjiCard? {
         cards.first { $0.cardId == historyItem.cardId }
+    }
+
+    private func prepareInitialSelection(now: Date) {
+        refreshHistory(now: now)
+        selectedCard = DailyKanjiSelector.select(
+            cards: cards,
+            history: selectionHistoryItems(),
+            now: now,
+            mode: .appOpen
+        )
     }
 
     private func select(card: DailyKanjiCard, shownAt: Date) {

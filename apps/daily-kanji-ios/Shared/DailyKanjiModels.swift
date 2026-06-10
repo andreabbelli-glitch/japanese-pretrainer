@@ -115,6 +115,16 @@ extension DailyKanjiCard {
         "\(media.title) - \(lesson.title)"
     }
 
+    var detailExampleLines: [String] {
+        [exampleJp, exampleIt].compactMap { value in
+            guard let value, !value.isEmpty else {
+                return nil
+            }
+
+            return value
+        }
+    }
+
     var compactExplanationText: String? {
         if let notes, !notes.isEmpty {
             return notes

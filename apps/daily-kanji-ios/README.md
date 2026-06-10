@@ -23,8 +23,9 @@ nome app, bundle id, scheme e documentazione sono quelli di **Daily Kanji**.
 La app e il widget leggono `daily-kanji-cards.json` quando e' stato esportato.
 Se il file non e' presente usano un sample locale (`学`) per mantenere build e
 preview funzionanti. Lo storico locale dell'app copre gli ultimi 3 giorni e
-serve a evitare ripetizioni quando l'app viene aperta; il widget resta senza App
-Group per non introdurre entitlement fragili con Personal Team.
+serve a evitare ripetizioni quando l'app viene aperta; le righe recenti sono
+tappabili per riaprire la card completa e fare una mini-review locale. Il widget
+resta senza App Group per non introdurre entitlement fragili con Personal Team.
 
 ## Obiettivo v1
 

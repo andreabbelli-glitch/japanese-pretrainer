@@ -146,6 +146,36 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(card.lockScreenExplanationText, "This note is intentionally long and...")
     }
 
+    func testDetailExampleLinesKeepItalianExampleWhenJapaneseExampleIsMissing() throws {
+        let card = try Self.cardReplacingExamples(exampleJp: nil, exampleIt: "Solo esempio italiano.")
+
+        XCTAssertEqual(card.detailExampleLines, ["Solo esempio italiano."])
+    }
+
+    @MainActor
+    func testSelectingRecentHistoryItemPromotesCardForReview() throws {
+        let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let store = DailyKanjiHistoryStore(defaults: defaults)
+        store.record(cardId: "stable", shownAt: now.addingTimeInterval(-60 * 60))
+        let model = DailyKanjiAppModel(cards: cards, historyStore: store, now: now)
+
+        guard let historyItem = model.recentHistory.first(where: { $0.cardId == "stable" }) else {
+            return XCTFail("Expected stable card in recent history")
+        }
+
+        model.selectHistoryItem(historyItem, now: now.addingTimeInterval(60))
+
+        XCTAssertEqual(model.selectedCard?.cardId, "stable")
+        XCTAssertEqual(model.recentHistory.first?.cardId, "stable")
+        XCTAssertEqual(model.recentHistory.first?.source, .app)
+    }
+
     func testHistoryStoreRecordsNewestFirstAndPrunesOldEntries() {
         let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: defaultsName)!
@@ -293,6 +323,24 @@ final class DailyKanjiCoreTests: XCTestCase {
             .replacingOccurrences(
                 of: "\"Plain note\"",
                 with: "\"\(notes)\""
+            )
+            .data(using: .utf8)!
+
+        return try DailyKanjiDataset.decode(jsonData: json).cards[0]
+    }
+
+    private static func cardReplacingExamples(
+        exampleJp: String?,
+        exampleIt: String?
+    ) throws -> DailyKanjiCard {
+        let json = String(data: datasetJSON, encoding: .utf8)!
+            .replacingOccurrences(
+                of: "\"exampleJp\": \"観点を変える。\"",
+                with: exampleJp.map { "\"exampleJp\": \"\($0)\"" } ?? "\"exampleJp\": null"
+            )
+            .replacingOccurrences(
+                of: "\"exampleIt\": \"Cambiare punto di vista.\"",
+                with: exampleIt.map { "\"exampleIt\": \"\($0)\"" } ?? "\"exampleIt\": null"
             )
             .data(using: .utf8)!
 
