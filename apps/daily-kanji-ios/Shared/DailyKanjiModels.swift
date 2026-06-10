@@ -80,6 +80,7 @@ enum DailyKanjiPriorityReason: String, Codable, Equatable {
     case recentHardAgain = "recent-hard-again"
     case learning
     case relearning
+    case highDifficulty = "high-difficulty"
     case lowStability = "low-stability"
     case lapses
 }
@@ -164,6 +165,10 @@ extension DailyKanjiCard {
 
         if srs.priorityReasons.contains(.lowStability) {
             return "Low stability"
+        }
+
+        if srs.priorityReasons.contains(.highDifficulty) {
+            return "High difficulty"
         }
 
         return "Review"

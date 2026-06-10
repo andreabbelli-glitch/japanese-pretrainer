@@ -13,6 +13,7 @@ import { stripInlineMarkdown } from "../../study/model/inline-markdown.ts";
 const datasetVersion = 1 as const;
 const defaultRecentMistakeLookbackDays = 3;
 const defaultExportLimit = 250;
+const highDifficultyThreshold = 7;
 const lowStabilityThreshold = 5;
 
 type DailyKanjiExportRow = {
@@ -221,6 +222,10 @@ function mapDailyKanjiExportRow(
 
   const priority = calculatePriority(row, nowIso);
 
+  if (priority.reasons.length === 0) {
+    return [];
+  }
+
   return [
     {
       cardId: row.cardId,
@@ -308,6 +313,12 @@ function calculatePriority(row: DailyKanjiExportRow, nowIso: string) {
 
   if (row.stability !== null && row.stability <= lowStabilityThreshold) {
     reasons.push("low-stability");
+    score += 2000 + (lowStabilityThreshold - row.stability) * 200;
+  }
+
+  if (row.difficulty !== null && row.difficulty >= highDifficultyThreshold) {
+    reasons.push("high-difficulty");
+    score += 1000 + (row.difficulty - highDifficultyThreshold) * 250;
   }
 
   score += Math.max(0, 2000 - (row.stability ?? 20) * 150);
@@ -332,6 +343,14 @@ function compareDailyKanjiExportCards(
   left: DailyKanjiExportCard,
   right: DailyKanjiExportCard
 ) {
+  const recentBucketDifference =
+    Number(right.srs.recentHardAgainCount > 0) -
+    Number(left.srs.recentHardAgainCount > 0);
+
+  if (recentBucketDifference !== 0) {
+    return recentBucketDifference;
+  }
+
   const scoreDifference = right.srs.priorityScore - left.srs.priorityScore;
 
   if (scoreDifference !== 0) {

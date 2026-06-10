@@ -122,6 +122,12 @@ struct DailyKanjiSelector {
 
     static func rank(_ cards: [DailyKanjiCard]) -> [DailyKanjiCard] {
         cards.sorted { lhs, rhs in
+            let lhsHasRecentHardAgain = lhs.srs.recentHardAgainCount > 0
+            let rhsHasRecentHardAgain = rhs.srs.recentHardAgainCount > 0
+            if lhsHasRecentHardAgain != rhsHasRecentHardAgain {
+                return lhsHasRecentHardAgain
+            }
+
             if lhs.srs.priorityScore != rhs.srs.priorityScore {
                 return lhs.srs.priorityScore > rhs.srs.priorityScore
             }

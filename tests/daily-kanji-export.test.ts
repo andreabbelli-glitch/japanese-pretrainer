@@ -38,7 +38,7 @@ describe("daily kanji iOS export", () => {
         expect(dataset.cards.map((entry) => entry.cardId)).toEqual([
           "card_daily_recent_again",
           developmentFixture.primaryCardId,
-          "card_daily_stable"
+          "card_daily_high_difficulty"
         ]);
 
         const recentAgain = dataset.cards[0]!;
@@ -66,10 +66,22 @@ describe("daily kanji iOS export", () => {
         ]);
         expect(recentAgain.notes).toBe("観点 note");
 
+        const highDifficulty = dataset.cards.find(
+          (entry) => entry.cardId === "card_daily_high_difficulty"
+        );
+        expect(highDifficulty?.srs.priorityReasons).toEqual([
+          "high-difficulty"
+        ]);
+        expect(highDifficulty?.srs.difficulty).toBe(9);
+        expect(highDifficulty?.srs.stability).toBe(8);
+
         expect(
           dataset.cards.find(
             (entry) => entry.cardId === "card_daily_recent_again_old_sibling"
           )
+        ).toBeUndefined();
+        expect(
+          dataset.cards.find((entry) => entry.cardId === "card_daily_stable")
         ).toBeUndefined();
         expect(
           dataset.cards.find((entry) => entry.cardId === "card_daily_kana")
@@ -112,6 +124,30 @@ describe("daily kanji iOS export", () => {
       }
     );
   });
+
+  it("keeps recent hard-again cards ahead of intense non-recent cards before limiting", async () => {
+    await withTestDatabase(
+      {
+        markDevelopmentLessonCompleted: true,
+        prefix: "jcs-daily-kanji-recent-bucket-",
+        seedDevelopmentFixture: true
+      },
+      async ({ database }) => {
+        await seedRecentBucketRegressionCards(database);
+
+        const dataset = await buildDailyKanjiDataset({
+          database,
+          limit: 1,
+          nowIso,
+          recentMistakeLookbackDays: 3
+        });
+
+        expect(dataset.cards.map((entry) => entry.cardId)).toEqual([
+          "card_daily_recent_only"
+        ]);
+      }
+    );
+  });
 });
 
 type TestDatabase = DatabaseClient;
@@ -145,6 +181,15 @@ async function seedDailyKanjiCards(database: TestDatabase) {
       pitchAccentSource: "Kanjium",
       reading: "あんてい",
       romaji: "antei"
+    }),
+    buildTerm({
+      id: "term_daily_fukuzatsu",
+      lemma: "複雑",
+      meaningIt: "complesso",
+      pitchAccent: 0,
+      pitchAccentSource: "Kanjium",
+      reading: "ふくざつ",
+      romaji: "fukuzatsu"
     }),
     buildTerm({
       id: "term_daily_kana",
@@ -187,19 +232,24 @@ async function seedDailyKanjiCards(database: TestDatabase) {
       orderIndex: 11
     }),
     buildCard({
+      front: "複雑",
+      id: "card_daily_high_difficulty",
+      orderIndex: 12
+    }),
+    buildCard({
       front: "かな",
       id: "card_daily_kana",
-      orderIndex: 12
+      orderIndex: 13
     }),
     buildCard({
       front: "手動",
       id: "card_daily_manual",
-      orderIndex: 13
+      orderIndex: 14
     }),
     buildCard({
       front: "停止",
       id: "card_daily_suspended",
-      orderIndex: 14
+      orderIndex: 15
     })
   ]);
 
@@ -212,6 +262,7 @@ async function seedDailyKanjiCards(database: TestDatabase) {
         "term_daily_kanten"
       ),
       buildCardEntryLink("card_daily_stable", "term_daily_antei"),
+      buildCardEntryLink("card_daily_high_difficulty", "term_daily_fukuzatsu"),
       buildCardEntryLink("card_daily_kana", "term_daily_kana"),
       buildCardEntryLink("card_daily_manual", "term_daily_manual"),
       buildCardEntryLink("card_daily_suspended", "term_daily_suspended")
@@ -237,6 +288,16 @@ async function seedDailyKanjiCards(database: TestDatabase) {
       lastInteractionAt: "2026-06-08T11:00:00.000Z",
       reps: 8,
       stability: 10,
+      state: "review"
+    }),
+    buildReviewState({
+      cardId: "card_daily_high_difficulty",
+      difficulty: 9,
+      dueAt: "2026-06-11T08:00:00.000Z",
+      entryId: "term_daily_fukuzatsu",
+      lastInteractionAt: "2026-06-08T11:00:00.000Z",
+      reps: 8,
+      stability: 8,
       state: "review"
     }),
     buildReviewState({
@@ -290,6 +351,80 @@ async function seedDailyKanjiCards(database: TestDatabase) {
       rating: "again"
     })
   ]);
+}
+
+async function seedRecentBucketRegressionCards(database: TestDatabase) {
+  await database.insert(term).values([
+    buildTerm({
+      id: "term_daily_recent_only",
+      lemma: "直近",
+      meaningIt: "recente",
+      reading: "ちょっきん",
+      romaji: "chokkin"
+    }),
+    buildTerm({
+      id: "term_daily_intense_nonrecent",
+      lemma: "難解",
+      meaningIt: "molto difficile",
+      reading: "なんかい",
+      romaji: "nankai"
+    })
+  ]);
+
+  await database.insert(card).values([
+    buildCard({
+      front: "直近",
+      id: "card_daily_recent_only",
+      orderIndex: 20
+    }),
+    buildCard({
+      front: "難解",
+      id: "card_daily_intense_nonrecent",
+      orderIndex: 21
+    })
+  ]);
+
+  await database.insert(cardEntryLink).values([
+    buildCardEntryLink("card_daily_recent_only", "term_daily_recent_only"),
+    buildCardEntryLink(
+      "card_daily_intense_nonrecent",
+      "term_daily_intense_nonrecent"
+    )
+  ]);
+
+  await database.insert(reviewSubjectState).values([
+    buildReviewState({
+      cardId: "card_daily_recent_only",
+      difficulty: 0,
+      dueAt: "2026-06-11T08:00:00.000Z",
+      entryId: "term_daily_recent_only",
+      lastInteractionAt: "2026-06-09T11:00:00.000Z",
+      reps: 4,
+      stability: 20,
+      state: "review"
+    }),
+    buildReviewState({
+      cardId: "card_daily_intense_nonrecent",
+      difficulty: 10,
+      dueAt: "2026-06-10T08:00:00.000Z",
+      entryId: "term_daily_intense_nonrecent",
+      lapses: 1,
+      lastInteractionAt: "2026-06-08T11:00:00.000Z",
+      reps: 4,
+      stability: 0,
+      state: "relearning"
+    })
+  ]);
+
+  await database.insert(reviewSubjectLog).values(
+    buildReviewLog({
+      answeredAt: "2026-06-09T11:00:00.000Z",
+      cardId: "card_daily_recent_only",
+      entryId: "term_daily_recent_only",
+      id: "review_log_daily_recent_only_hard",
+      rating: "hard"
+    })
+  );
 }
 
 function buildTerm(input: {
@@ -409,13 +544,18 @@ function buildReviewState(input: {
 
 function buildReviewLog(input: {
   answeredAt: string;
+  cardId?: string;
+  entryId?: string;
   id: string;
   rating: "again" | "hard";
 }) {
+  const cardId = input.cardId ?? "card_daily_recent_again";
+  const entryId = input.entryId ?? "term_daily_kanten";
+
   return {
     id: input.id,
     answeredAt: input.answeredAt,
-    cardId: "card_daily_recent_again",
+    cardId,
     elapsedDays: 0.1,
     newState: "relearning" as const,
     previousState: "review" as const,
@@ -423,6 +563,6 @@ function buildReviewLog(input: {
     responseMs: 4200,
     scheduledDueAt: "2026-06-10T08:00:00.000Z",
     schedulerVersion: "fsrs_v1" as const,
-    subjectKey: "entry:term:term_daily_kanten"
+    subjectKey: `entry:term:${entryId}`
   };
 }

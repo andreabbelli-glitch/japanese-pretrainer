@@ -4,6 +4,7 @@ export type DailyKanjiPriorityReason =
   | "recent-hard-again"
   | "learning"
   | "relearning"
+  | "high-difficulty"
   | "low-stability"
   | "lapses";
 

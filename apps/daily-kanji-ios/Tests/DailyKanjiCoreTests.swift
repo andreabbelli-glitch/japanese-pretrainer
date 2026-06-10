@@ -49,6 +49,21 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(second?.cardId, "stable")
     }
 
+    func testSelectionKeepsRecentHardAgainAheadOfHigherScoreNonRecentCards() throws {
+        let cards = try Self.recentBucketRegressionCards()
+
+        let rankedCards = DailyKanjiSelector.rank(cards)
+        let selected = DailyKanjiSelector.select(
+            cards: cards,
+            history: [],
+            now: now,
+            mode: .appOpen
+        )
+
+        XCTAssertEqual(rankedCards.map(\.cardId), ["recent-only", "intense-nonrecent"])
+        XCTAssertEqual(selected?.cardId, "recent-only")
+    }
+
     func testWidgetRefreshUsesNextRotationSlotBoundary() {
         let date = Date(timeIntervalSince1970: (6 * 60 * 60) + 123)
 
@@ -161,6 +176,12 @@ final class DailyKanjiCoreTests: XCTestCase {
         let card = try Self.cardReplacingExamples(exampleJp: nil, exampleIt: "Solo esempio italiano.")
 
         XCTAssertEqual(card.detailExampleLines, ["Solo esempio italiano."])
+    }
+
+    func testPriorityTextLabelsHighDifficultySignal() throws {
+        let card = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards[1]
+
+        XCTAssertEqual(card.priorityText, "High difficulty")
     }
 
     @MainActor
@@ -341,14 +362,14 @@ final class DailyKanjiCoreTests: XCTestCase {
             "reading": "あんてい"
           },
           "srs": {
-            "difficulty": 4.0,
+            "difficulty": 9.0,
             "dueAt": null,
             "lapses": 0,
             "lastHardAgainAt": null,
             "lastInteractionAt": "2026-06-09T09:00:00.000Z",
             "lastReviewedAt": "2026-06-09T09:00:00.000Z",
             "learningSteps": 0,
-            "priorityReasons": ["low-stability"],
+            "priorityReasons": ["high-difficulty"],
             "priorityScore": 90,
             "recentHardAgainCount": 0,
             "reps": 10,
@@ -445,5 +466,90 @@ final class DailyKanjiCoreTests: XCTestCase {
                 )
             )
         }
+    }
+
+    private static func recentBucketRegressionCards() throws -> [DailyKanjiCard] {
+        let base = try DailyKanjiDataset.decode(jsonData: datasetJSON).cards[0]
+
+        return [
+            DailyKanjiCard(
+                cardId: "recent-only",
+                subjectKey: "term:recent-only",
+                media: base.media,
+                lesson: base.lesson,
+                segment: base.segment,
+                front: "直近",
+                back: "recent",
+                kanji: ["直", "近"],
+                entry: DailyKanjiCard.Entry(
+                    audioSrc: nil,
+                    id: "entry-recent-only",
+                    kind: .term,
+                    label: "直近",
+                    meaning: "recent",
+                    pitchAccent: nil,
+                    pitchAccentSource: nil,
+                    reading: "ちょっきん"
+                ),
+                exampleIt: nil,
+                exampleJp: nil,
+                notes: nil,
+                srs: DailyKanjiCard.SRS(
+                    difficulty: 0,
+                    dueAt: "2026-06-11T08:00:00.000Z",
+                    lapses: 0,
+                    lastHardAgainAt: "2026-06-09T11:00:00.000Z",
+                    lastInteractionAt: "2026-06-09T11:00:00.000Z",
+                    lastReviewedAt: "2026-06-09T11:00:00.000Z",
+                    learningSteps: 0,
+                    priorityReasons: [.recentHardAgain],
+                    priorityScore: 10500,
+                    recentHardAgainCount: 1,
+                    reps: 4,
+                    scheduledDays: 3,
+                    stability: 20,
+                    state: .review
+                )
+            ),
+            DailyKanjiCard(
+                cardId: "intense-nonrecent",
+                subjectKey: "term:intense-nonrecent",
+                media: base.media,
+                lesson: base.lesson,
+                segment: base.segment,
+                front: "難解",
+                back: "very difficult",
+                kanji: ["難", "解"],
+                entry: DailyKanjiCard.Entry(
+                    audioSrc: nil,
+                    id: "entry-intense-nonrecent",
+                    kind: .term,
+                    label: "難解",
+                    meaning: "very difficult",
+                    pitchAccent: nil,
+                    pitchAccentSource: nil,
+                    reading: "なんかい"
+                ),
+                exampleIt: nil,
+                exampleJp: nil,
+                notes: nil,
+                srs: DailyKanjiCard.SRS(
+                    difficulty: 10,
+                    dueAt: "2026-06-10T08:00:00.000Z",
+                    lapses: 1,
+                    lastHardAgainAt: nil,
+                    lastInteractionAt: "2026-06-08T11:00:00.000Z",
+                    lastReviewedAt: "2026-06-08T11:00:00.000Z",
+                    learningSteps: 0,
+                    priorityReasons: [.relearning, .lowStability, .highDifficulty, .lapses],
+                    priorityScore: 10700,
+                    recentHardAgainCount: 0,
+                    reps: 4,
+                    scheduledDays: 0,
+                    stability: 0,
+                    state: .relearning
+                )
+            )
+        ]
     }
 }
