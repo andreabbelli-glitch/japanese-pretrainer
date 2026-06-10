@@ -1,3 +1,4 @@
+import WidgetKit
 import XCTest
 @testable import DailyKanji
 
@@ -100,6 +101,15 @@ final class DailyKanjiCoreTests: XCTestCase {
                 Date(timeIntervalSince1970: 4 * 60 * 60)
             ]
         )
+    }
+
+    func testSupportedWidgetFamiliesKeepLockScreenOnRectangularLayout() {
+        XCTAssertEqual(
+            DailyKanjiWidgetFamilies.supported,
+            [.systemSmall, .systemMedium, .accessoryRectangular]
+        )
+        XCTAssertFalse(DailyKanjiWidgetFamilies.supported.contains(.accessoryCircular))
+        XCTAssertFalse(DailyKanjiWidgetFamilies.supported.contains(.accessoryInline))
     }
 
     func testRecentWidgetTimelineHistoryPreservesNewestSlots() throws {

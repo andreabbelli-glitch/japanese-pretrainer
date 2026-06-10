@@ -142,7 +142,7 @@ struct DailyKanjiWidget: Widget {
         }
         .configurationDisplayName("Daily Kanji")
         .description("Shows one study kanji.")
-        .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryInline, .accessoryRectangular])
+        .supportedFamilies(DailyKanjiWidgetFamilies.supported)
         .contentMarginsDisabled()
     }
 }
