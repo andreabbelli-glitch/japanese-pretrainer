@@ -60,37 +60,38 @@ struct DailyKanjiWidgetView: View {
         case .accessoryInline:
             Text("\(entry.card.displayFront) \(entry.card.back)")
         case .accessoryRectangular:
-            HStack(alignment: .top, spacing: 8) {
+            HStack(alignment: .center, spacing: 7) {
                 Text(entry.card.displayFront)
-                    .font(.system(size: 36, weight: .semibold, design: .serif))
-                    .minimumScaleFactor(0.38)
+                    .font(.system(size: 40, weight: .semibold, design: .serif))
+                    .minimumScaleFactor(0.32)
                     .lineLimit(2)
-                    .frame(minWidth: 44, maxWidth: 72, alignment: .topLeading)
+                    .frame(width: 62, alignment: .leading)
                     .layoutPriority(2)
 
                 VStack(alignment: .leading, spacing: 1) {
                     Text(entry.card.back)
-                        .font(.system(size: 13, weight: .semibold, design: .rounded))
+                        .font(.system(size: 12, weight: .semibold, design: .rounded))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.72)
+                        .minimumScaleFactor(0.68)
 
                     Text(entry.card.lockScreenMetadataText)
-                        .font(.system(size: 10, weight: .medium, design: .rounded))
+                        .font(.system(size: 9.5, weight: .medium, design: .rounded))
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.64)
+                        .minimumScaleFactor(0.62)
 
                     if let compactExplanation = entry.card.lockScreenExplanationText {
                         Text(compactExplanation)
-                            .font(.system(size: 10, weight: .regular, design: .rounded))
+                            .font(.system(size: 9.5, weight: .regular, design: .rounded))
                             .foregroundStyle(.secondary)
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.62)
+                            .lineLimit(3)
+                            .minimumScaleFactor(0.56)
                     }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                 .layoutPriority(1)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         default:
             VStack(alignment: .leading, spacing: 8) {
                 Text(entry.card.displayFront)

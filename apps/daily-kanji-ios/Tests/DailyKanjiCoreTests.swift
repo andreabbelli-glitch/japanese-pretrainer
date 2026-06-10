@@ -275,12 +275,12 @@ final class DailyKanjiCoreTests: XCTestCase {
 
     func testLockScreenExplanationTextKeepsFullRectangularContext() throws {
         let card = try Self.cardReplacingNotes(
-            with: "This note is intentionally long and contains enough detail to overflow a lock screen widget."
+            with: "This note is intentionally long and contains enough detail to use the full rectangular lock screen widget budget before truncating."
         )
 
         XCTAssertEqual(
             card.lockScreenExplanationText,
-            "This note is intentionally long and contains enough detail to overflow a lock screen..."
+            "This note is intentionally long and contains enough detail to use the full rectangular lock screen widget budget..."
         )
     }
 
@@ -298,7 +298,7 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         XCTAssertEqual(
             card.homeWidgetExplanationText,
-            "This note is intentionally long and contains enough detail to overflow a lock screen widget..."
+            "This note is intentionally long and contains enough detail to overflow a lock screen widget but still fit a medium home widget."
         )
     }
 
