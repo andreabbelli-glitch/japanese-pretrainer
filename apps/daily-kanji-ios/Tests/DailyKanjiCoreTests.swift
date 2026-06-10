@@ -132,6 +132,26 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(items.last?.shownAt, Date(timeIntervalSince1970: 60 * 60))
     }
 
+    @MainActor
+    func testVisibleRecentHistoryKeepsThreeDaysOfHourlyWidgetSlots() throws {
+        let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            now: Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
+        )
+
+        XCTAssertEqual(model.recentHistory.count, 72)
+        XCTAssertEqual(model.recentHistory.first?.shownAt, Date(timeIntervalSince1970: 72 * 60 * 60))
+        XCTAssertEqual(model.recentHistory.last?.shownAt, Date(timeIntervalSince1970: 60 * 60))
+    }
+
     func testPresentationHistoryMergesAppAndWidgetExposureEventsNewestFirst() {
         let appItems = [
             DailyKanjiHistoryItem(

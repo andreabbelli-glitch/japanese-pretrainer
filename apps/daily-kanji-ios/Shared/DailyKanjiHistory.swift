@@ -92,7 +92,7 @@ struct DailyKanjiPresentationHistoryItem: Equatable, Identifiable {
 }
 
 enum DailyKanjiPresentationHistory {
-    static let defaultMaxItems = 24
+    static let defaultMaxItems = 96
 
     static func merge(
         appItems: [DailyKanjiHistoryItem],

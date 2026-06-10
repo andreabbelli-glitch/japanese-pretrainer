@@ -23,8 +23,9 @@ nome app, bundle id, scheme e documentazione sono quelli di **Daily Kanji**.
 La app e il widget leggono `daily-kanji-cards.json` quando e' stato esportato.
 Se il file non e' presente usano un sample locale (`学`) per mantenere build e
 preview funzionanti. Lo storico locale dell'app conserva le esposizioni recenti
-degli ultimi 3 giorni, anche quando la stessa card viene mostrata piu volte, e
-serve a evitare ripetizioni quando l'app viene aperta; le righe recenti sono
+degli ultimi 3 giorni, includendo la finestra widget oraria da 72 slot e le
+aperture manuali dell'app, anche quando la stessa card viene mostrata piu volte.
+Serve a evitare ripetizioni quando l'app viene aperta; le righe recenti sono
 tappabili per riaprire la card completa e fare una mini-review locale. Il widget
 resta senza App Group per non introdurre entitlement fragili con Personal Team.
 
@@ -144,9 +145,10 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
 
 - Per Home Screen, la famiglia primaria sara `systemMedium` e mostra fronte,
   retro, reading, pitch accent e una spiegazione breve.
-- Per Lock Screen, la famiglia primaria sara `accessoryRectangular`, usando tutto
-  lo spazio che iOS assegna a quel family. iOS non consente a un widget singolo
-  di espandersi oltre le dimensioni del family selezionato.
+- Per Lock Screen, la famiglia primaria sara `accessoryRectangular`, trattata
+  come unico widget dell'utente e quindi progettata per sfruttare tutto lo
+  spazio che iOS assegna a quel family. iOS non consente a un widget singolo di
+  espandersi oltre le dimensioni del family selezionato.
 - La rotazione widget usa slot offline di 1 ora, precompilando 72 entry di
   timeline per coprire circa 3 giorni senza chiamate di rete. WidgetKit non
   garantisce un cambio card a ogni singolo wake/sblocco del telefono.
