@@ -52,6 +52,20 @@ else
   failures=$((failures + 1))
 fi
 
+if xcrun --sdk iphoneos --show-sdk-path >/dev/null 2>&1; then
+  printf "ok   iphoneos SDK: %s\n" "$(xcrun --sdk iphoneos --show-sdk-path)"
+else
+  printf "miss iphoneos SDK: Xcode completo deve includere la piattaforma iOS\n"
+  failures=$((failures + 1))
+fi
+
+if xcrun --sdk iphonesimulator --show-sdk-path >/dev/null 2>&1; then
+  printf "ok   iphonesimulator SDK: %s\n" "$(xcrun --sdk iphonesimulator --show-sdk-path)"
+else
+  printf "miss iphonesimulator SDK: installa i componenti iOS da Xcode se richiesto al primo avvio\n"
+  failures=$((failures + 1))
+fi
+
 if [ "$failures" -gt 0 ]; then
   printf "\n%d prerequisiti mancanti. Lo spike non e' ancora buildabile su questo Mac.\n" "$failures"
   exit 1

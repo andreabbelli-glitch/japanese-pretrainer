@@ -32,6 +32,7 @@ I tentativi automatici hanno trovato questi limiti:
 - `mas install 497799835` richiede privilegi root e si blocca senza password
   admin interattiva.
 - `xcodes install 26.5 --no-superuser --select` richiede Apple ID/password.
+- `xcodes download 26.5` richiede Apple ID/password anche per il solo download.
 - Command Line Tools non include gli SDK `iphoneos` e `iphonesimulator`, quindi
   non puo compilare WidgetKit iOS.
 
