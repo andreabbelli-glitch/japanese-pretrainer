@@ -65,6 +65,21 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(selected?.cardId, "recent-only")
     }
 
+    func testSelectionKeepsLowStabilityAheadOfHigherScoreStableCards() throws {
+        let cards = try Self.lowStabilityRegressionCards()
+
+        let rankedCards = DailyKanjiSelector.rank(cards)
+        let selected = DailyKanjiSelector.select(
+            cards: cards,
+            history: [],
+            now: now,
+            mode: .appOpen
+        )
+
+        XCTAssertEqual(rankedCards.map(\.cardId), ["low-stability", "stable-high-score"])
+        XCTAssertEqual(selected?.cardId, "low-stability")
+    }
+
     func testSelectionBreaksPriorityTiesByEarliestDueDate() throws {
         let cards = try Self.dueDateTieBreakerCards()
 
@@ -742,6 +757,91 @@ final class DailyKanjiCoreTests: XCTestCase {
                     scheduledDays: 0,
                     stability: 0,
                     state: .relearning
+                )
+            )
+        ]
+    }
+
+    private static func lowStabilityRegressionCards() throws -> [DailyKanjiCard] {
+        let base = try DailyKanjiDataset.decode(jsonData: datasetJSON).cards[0]
+
+        return [
+            DailyKanjiCard(
+                cardId: "low-stability",
+                subjectKey: "term:low-stability",
+                media: base.media,
+                lesson: base.lesson,
+                segment: base.segment,
+                front: "不安定",
+                back: "unstable",
+                kanji: ["不", "安", "定"],
+                entry: DailyKanjiCard.Entry(
+                    audioSrc: nil,
+                    id: "entry-low-stability",
+                    kind: .term,
+                    label: "不安定",
+                    meaning: "unstable",
+                    pitchAccent: nil,
+                    pitchAccentSource: nil,
+                    reading: "ふあんてい"
+                ),
+                exampleIt: nil,
+                exampleJp: nil,
+                notes: nil,
+                srs: DailyKanjiCard.SRS(
+                    difficulty: 1,
+                    dueAt: "2026-06-11T08:00:00.000Z",
+                    lapses: 0,
+                    lastHardAgainAt: nil,
+                    lastInteractionAt: "2026-06-08T11:00:00.000Z",
+                    lastReviewedAt: "2026-06-08T11:00:00.000Z",
+                    learningSteps: 0,
+                    priorityReasons: [.lowStability],
+                    priorityScore: 100,
+                    recentHardAgainCount: 0,
+                    reps: 4,
+                    scheduledDays: 1,
+                    stability: 5,
+                    state: .review
+                )
+            ),
+            DailyKanjiCard(
+                cardId: "stable-high-score",
+                subjectKey: "term:stable-high-score",
+                media: base.media,
+                lesson: base.lesson,
+                segment: base.segment,
+                front: "高得点",
+                back: "high score",
+                kanji: ["高", "得", "点"],
+                entry: DailyKanjiCard.Entry(
+                    audioSrc: nil,
+                    id: "entry-stable-high-score",
+                    kind: .term,
+                    label: "高得点",
+                    meaning: "high score",
+                    pitchAccent: nil,
+                    pitchAccentSource: nil,
+                    reading: "こうとくてん"
+                ),
+                exampleIt: nil,
+                exampleJp: nil,
+                notes: nil,
+                srs: DailyKanjiCard.SRS(
+                    difficulty: 10,
+                    dueAt: "2026-06-10T08:00:00.000Z",
+                    lapses: 10,
+                    lastHardAgainAt: nil,
+                    lastInteractionAt: "2026-06-08T11:00:00.000Z",
+                    lastReviewedAt: "2026-06-08T11:00:00.000Z",
+                    learningSteps: 0,
+                    priorityReasons: [.highDifficulty, .lapses],
+                    priorityScore: 1_000,
+                    recentHardAgainCount: 0,
+                    reps: 4,
+                    scheduledDays: 3,
+                    stability: 20,
+                    state: .review
                 )
             )
         ]

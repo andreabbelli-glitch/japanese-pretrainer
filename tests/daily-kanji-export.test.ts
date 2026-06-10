@@ -148,6 +148,36 @@ describe("daily kanji iOS export", () => {
       }
     );
   });
+
+  it("keeps low-stability cards ahead of higher-score stable cards before limiting", async () => {
+    await withTestDatabase(
+      {
+        markDevelopmentLessonCompleted: true,
+        prefix: "jcs-daily-kanji-low-stability-bucket-",
+        seedDevelopmentFixture: true
+      },
+      async ({ database }) => {
+        await seedLowStabilityBucketRegressionCards(database);
+
+        const dataset = await buildDailyKanjiDataset({
+          database,
+          limit: 10,
+          nowIso,
+          recentMistakeLookbackDays: 3
+        });
+        const lowStabilityIndex = dataset.cards.findIndex(
+          (entry) => entry.cardId === "card_daily_low_stability"
+        );
+        const stableHighScoreIndex = dataset.cards.findIndex(
+          (entry) => entry.cardId === "card_daily_stable_high_score"
+        );
+
+        expect(lowStabilityIndex).toBeGreaterThanOrEqual(0);
+        expect(stableHighScoreIndex).toBeGreaterThanOrEqual(0);
+        expect(lowStabilityIndex).toBeLessThan(stableHighScoreIndex);
+      }
+    );
+  });
 });
 
 type TestDatabase = DatabaseClient;
@@ -425,6 +455,70 @@ async function seedRecentBucketRegressionCards(database: TestDatabase) {
       rating: "hard"
     })
   );
+}
+
+async function seedLowStabilityBucketRegressionCards(database: TestDatabase) {
+  await database.insert(term).values([
+    buildTerm({
+      id: "term_daily_low_stability",
+      lemma: "不安定",
+      meaningIt: "instabile",
+      reading: "ふあんてい",
+      romaji: "fuantei"
+    }),
+    buildTerm({
+      id: "term_daily_stable_high_score",
+      lemma: "高得点",
+      meaningIt: "punteggio alto",
+      reading: "こうとくてん",
+      romaji: "koutokuten"
+    })
+  ]);
+
+  await database.insert(card).values([
+    buildCard({
+      front: "不安定",
+      id: "card_daily_low_stability",
+      orderIndex: 30
+    }),
+    buildCard({
+      front: "高得点",
+      id: "card_daily_stable_high_score",
+      orderIndex: 31
+    })
+  ]);
+
+  await database.insert(cardEntryLink).values([
+    buildCardEntryLink("card_daily_low_stability", "term_daily_low_stability"),
+    buildCardEntryLink(
+      "card_daily_stable_high_score",
+      "term_daily_stable_high_score"
+    )
+  ]);
+
+  await database.insert(reviewSubjectState).values([
+    buildReviewState({
+      cardId: "card_daily_low_stability",
+      difficulty: 1,
+      dueAt: "2026-06-11T08:00:00.000Z",
+      entryId: "term_daily_low_stability",
+      lastInteractionAt: "2026-06-08T11:00:00.000Z",
+      reps: 4,
+      stability: 5,
+      state: "review"
+    }),
+    buildReviewState({
+      cardId: "card_daily_stable_high_score",
+      difficulty: 10,
+      dueAt: "2026-06-10T08:00:00.000Z",
+      entryId: "term_daily_stable_high_score",
+      lapses: 20,
+      lastInteractionAt: "2026-06-08T11:00:00.000Z",
+      reps: 4,
+      stability: 20,
+      state: "review"
+    })
+  ]);
 }
 
 function buildTerm(input: {

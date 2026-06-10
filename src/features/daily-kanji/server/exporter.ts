@@ -352,6 +352,14 @@ function compareDailyKanjiExportCards(
     return recentBucketDifference;
   }
 
+  const lowStabilityBucketDifference =
+    Number(right.srs.priorityReasons.includes("low-stability")) -
+    Number(left.srs.priorityReasons.includes("low-stability"));
+
+  if (lowStabilityBucketDifference !== 0) {
+    return lowStabilityBucketDifference;
+  }
+
   const scoreDifference = right.srs.priorityScore - left.srs.priorityScore;
 
   if (scoreDifference !== 0) {

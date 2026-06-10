@@ -128,6 +128,12 @@ struct DailyKanjiSelector {
                 return lhsHasRecentHardAgain
             }
 
+            let lhsHasLowStability = lhs.srs.priorityReasons.contains(.lowStability)
+            let rhsHasLowStability = rhs.srs.priorityReasons.contains(.lowStability)
+            if lhsHasLowStability != rhsHasLowStability {
+                return lhsHasLowStability
+            }
+
             if lhs.srs.priorityScore != rhs.srs.priorityScore {
                 return lhs.srs.priorityScore > rhs.srs.priorityScore
             }
