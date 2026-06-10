@@ -174,6 +174,10 @@ trascurabile rispetto ai free tier Vercel/Turso: pochi KB per apertura app o
 refresh, non download audio o contenuti pesanti. Se usi solo il package offline,
 l'app iOS non effettua traffico runtime.
 
+Il contratto offline e' dichiarato in `offline-contract.json` e verificato da
+`tests/daily-kanji-ios-offline-contract.test.ts`: il test blocca l'introduzione
+accidentale di API di rete runtime, App Group o Associated Domains nella app iOS.
+
 ## Verifica per agenti
 
 Per slice che toccano solo iOS:

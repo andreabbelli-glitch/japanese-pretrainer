@@ -1,0 +1,8 @@
+{
+  "entitlements": {
+    "appGroups": false,
+    "associatedDomains": false
+  },
+  "remoteServices": [],
+  "runtimeNetwork": "none"
+}
