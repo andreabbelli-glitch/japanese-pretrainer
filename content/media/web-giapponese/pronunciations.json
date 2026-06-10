@@ -4,6 +4,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-da-to-kanjiru",
+      "audio_src": "assets/audio/grammar/grammar-da-to-kanjiru/forvo-tanks104-た-とかんし-る.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A0%E3%81%A8%E3%81%8B%E3%82%93%E3%81%98%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -71,6 +76,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-te-mite-ne",
+      "audio_src": "assets/audio/grammar/grammar-te-mite-ne/forvo-tanks104-してみてね.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%97%E3%81%A6%E3%81%BF%E3%81%A6%E3%81%AD/#ja",
       "pitch_accent_status": "miss"
     },
     {

@@ -9,6 +9,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-dake-ja-dame",
+      "audio_src": "assets/audio/grammar/grammar-dake-ja-dame/forvo-tanks104-た-けし-ゃ-タ-メ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A0%E3%81%91%E3%81%98%E3%82%83%20%E3%83%80%E3%83%A1/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -97,6 +102,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g014-si-puo-va-bene-fare",
+      "audio_src": "assets/audio/grammar/grammar-g014-si-puo-va-bene-fare/forvo-tanks104-てもいい.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%82%82%E3%81%84%E3%81%84/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -4081,11 +4091,21 @@
     {
       "entry_type": "term",
       "entry_id": "term-e021-shitemitara",
+      "audio_src": "assets/audio/term/term-e021-shitemitara/forvo-tanks104-してみたら.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%E3%82%89%EF%BC%9F/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
       "entry_id": "term-e022-shitekureru",
+      "audio_src": "assets/audio/term/term-e022-shitekureru/forvo-tanks104-してくれる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%82%8B%EF%BC%9F/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -4110,6 +4130,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-e025-dekiruyouninatta",
+      "audio_src": "assets/audio/term/term-e025-dekiruyouninatta/forvo-tanks104-て-きるようになった.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -4124,6 +4149,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-e027-sasete",
+      "audio_src": "assets/audio/term/term-e027-sasete/forvo-tanks104-させて.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%95%E3%81%9B%E3%81%A6/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -4290,6 +4320,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-e042-shiteageru",
+      "audio_src": "assets/audio/term/term-e042-shiteageru/forvo-tanks104-してあけ-る.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%97%E3%81%A6%E3%81%82%E3%81%92%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -4402,6 +4437,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-e053-shitemite",
+      "audio_src": "assets/audio/term/term-e053-shitemite/forvo-tanks104-してみて.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%97%E3%81%A6%E3%81%BF%E3%81%A6/#ja",
       "pitch_accent_status": "miss"
     },
     {

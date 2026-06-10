@@ -546,7 +546,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "そのかずだけ",
       "requestUrl": "https://forvo.com/word-add/%E3%81%9D%E3%81%AE%E6%95%B0%E3%81%A0%E3%81%91/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-06-01T16:04:22.998Z"
+      "requestedAt": "2026-06-01T16:04:22.998Z",
+      "resolvedAt": "2026-06-10T14:08:07.264Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-sono-kazu-dake/forvo-tanks104-そのかす-た-け.mp3"
     },
     {
       "entryId": "grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba",
@@ -2855,7 +2858,10 @@
       "label": "～だけじゃ ダメ",
       "mediaSlug": "pokemon-scarlet-violet",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A0%E3%81%91%E3%81%98%E3%82%83%20%E3%83%80%E3%83%A1/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:25:46.831Z"
+      "requestedAt": "2026-05-24T18:25:46.831Z",
+      "resolvedAt": "2026-06-10T14:06:55.476Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-dake-ja-dame/forvo-tanks104-た-けし-ゃ-タ-メ.mp3"
     },
     {
       "entryId": "grammar-g003-stato-in-corso-stato-risultante",
@@ -2874,7 +2880,10 @@
       "label": "～てもいい",
       "mediaSlug": "pokemon-scarlet-violet",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A6%E3%82%82%E3%81%84%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:26:03.163Z"
+      "requestedAt": "2026-05-24T18:26:03.163Z",
+      "resolvedAt": "2026-06-10T14:09:13.829Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-g014-si-puo-va-bene-fare/forvo-tanks104-てもいい.mp3"
     },
     {
       "entryId": "grammar-g017-pensare-che",
@@ -3219,7 +3228,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜してみたら？",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%E3%82%89%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:26:52.097Z"
+      "requestedAt": "2026-05-24T18:26:52.097Z",
+      "resolvedAt": "2026-06-10T14:07:00.572Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e021-shitemitara/forvo-tanks104-してみたら.mp3"
     },
     {
       "entryId": "term-e022-shitekureru",
@@ -3228,7 +3240,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜してくれる？",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%82%8B%EF%BC%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:27:00.259Z"
+      "requestedAt": "2026-05-24T18:27:00.259Z",
+      "resolvedAt": "2026-06-10T14:07:03.435Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e022-shitekureru/forvo-tanks104-してくれる.mp3"
     },
     {
       "entryId": "term-e024-dono-pokemoni-tsukaimasuka",
@@ -3249,7 +3264,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜できるようになった",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:27:08.410Z"
+      "requestedAt": "2026-05-24T18:27:08.410Z",
+      "resolvedAt": "2026-06-10T14:07:06.184Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e025-dekiruyouninatta/forvo-tanks104-て-きるようになった.mp3"
     },
     {
       "entryId": "term-e027-sasete",
@@ -3258,7 +3276,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜させて",
       "requestUrl": "https://forvo.com/word-add/%E3%81%95%E3%81%9B%E3%81%A6/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:27:16.564Z"
+      "requestedAt": "2026-05-24T18:27:16.564Z",
+      "resolvedAt": "2026-06-10T14:07:08.929Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e027-sasete/forvo-tanks104-させて.mp3"
     },
     {
       "entryId": "term-e037-otsukaresamadesutaa",
@@ -3279,7 +3300,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜してあげる",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%82%E3%81%92%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:27:24.720Z"
+      "requestedAt": "2026-05-24T18:27:24.720Z",
+      "resolvedAt": "2026-06-10T14:07:11.720Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e042-shiteageru/forvo-tanks104-してあけ-る.mp3"
     },
     {
       "entryId": "term-e045-shimatta",
@@ -3324,7 +3348,10 @@
       "mediaSlug": "pokemon-scarlet-violet",
       "reading": "〜してみて",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%BF%E3%81%A6/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:27:32.878Z"
+      "requestedAt": "2026-05-24T18:27:32.878Z",
+      "resolvedAt": "2026-06-10T14:07:14.522Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-e053-shitemite/forvo-tanks104-してみて.mp3"
     },
     {
       "entryId": "term-e054-sorette",
@@ -5787,7 +5814,10 @@
       "mediaSlug": "tcg-generale",
       "reading": "はっせいするんだ",
       "requestUrl": "https://forvo.com/word-add/%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E3%82%93%E3%81%A0/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-06-03T22:40:16.679Z"
+      "requestedAt": "2026-06-03T22:40:16.679Z",
+      "resolvedAt": "2026-06-10T14:08:34.772Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-hassei-suru-nda-vanguard-occurs/forvo-tanks104-はっせいするんた.mp3"
     },
     {
       "entryId": "term-iranai-card-ga-attara",
@@ -5814,7 +5844,10 @@
       "mediaSlug": "tcg-generale",
       "reading": "かったほう",
       "requestUrl": "https://forvo.com/word-add/%E5%8B%9D%E3%81%A3%E3%81%9F%E6%96%B9/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-06-02T23:03:39.965Z"
+      "requestedAt": "2026-06-02T23:03:39.965Z",
+      "resolvedAt": "2026-06-10T14:08:32.051Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-katta-hou/forvo-tanks104-かったほう.mp3"
     },
     {
       "entryId": "term-kettei-shimasu",
@@ -5850,7 +5883,10 @@
       "mediaSlug": "web-giapponese",
       "reading": "だとかんじる",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A0%E3%81%A8%E3%81%8B%E3%82%93%E3%81%98%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:27:57.344Z"
+      "requestedAt": "2026-05-24T18:27:57.344Z",
+      "resolvedAt": "2026-06-10T14:07:48.041Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-da-to-kanjiru/forvo-tanks104-た-とかんし-る.mp3"
     },
     {
       "entryId": "grammar-noun-coordination",
@@ -5895,7 +5931,10 @@
       "mediaSlug": "web-giapponese",
       "reading": "してみてね",
       "requestUrl": "https://forvo.com/word-add/%E3%81%97%E3%81%A6%E3%81%BF%E3%81%A6%E3%81%AD/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:28:05.501Z"
+      "requestedAt": "2026-05-24T18:28:05.501Z",
+      "resolvedAt": "2026-06-10T14:07:45.289Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-te-mite-ne/forvo-tanks104-してみてね.mp3"
     },
     {
       "entryId": "grammar-you-to-shite-iru",

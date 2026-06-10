@@ -17,6 +17,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-hassei-suru-nda-vanguard-occurs",
+      "audio_src": "assets/audio/term/term-hassei-suru-nda-vanguard-occurs/forvo-tanks104-はっせいするんた.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E3%82%93%E3%81%A0/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -120,6 +125,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-katta-hou",
+      "audio_src": "assets/audio/term/term-katta-hou/forvo-tanks104-かったほう.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "tanks104",
+      "audio_attribution": "tanks104 via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8B%9D%E3%81%A3%E3%81%9F%E6%96%B9/#ja",
       "pitch_accent_status": "miss"
     },
     {
