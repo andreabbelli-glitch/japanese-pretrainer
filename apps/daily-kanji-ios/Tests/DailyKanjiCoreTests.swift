@@ -202,6 +202,49 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(store.recentItems(now: now, days: 3).map(\.cardId), ["newest", "newer"])
     }
 
+    func testHistoryStorePreservesRepeatedAppExposureEventsNewestFirst() {
+        let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+
+        let store = DailyKanjiHistoryStore(defaults: defaults)
+        let firstExposure = now.addingTimeInterval(-2 * 60)
+        let secondExposure = now.addingTimeInterval(-60)
+        store.record(cardId: "hard", shownAt: firstExposure)
+        store.record(cardId: "hard", shownAt: secondExposure)
+
+        let recentItems = store.recentItems(now: now, days: 3)
+
+        XCTAssertEqual(recentItems.map(\.cardId), ["hard", "hard"])
+        XCTAssertEqual(recentItems.map(\.shownAt), [secondExposure, firstExposure])
+    }
+
+    func testHistoryStoreGivesRepeatedSameSecondExposureEventsUniquePresentationIds() {
+        let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+
+        let store = DailyKanjiHistoryStore(defaults: defaults)
+        let exposureTime = now.addingTimeInterval(-60)
+        store.record(cardId: "hard", shownAt: exposureTime)
+        store.record(cardId: "hard", shownAt: exposureTime)
+
+        let recentItems = store.recentItems(now: now, days: 3)
+        let presentationItems = DailyKanjiPresentationHistory.merge(
+            appItems: recentItems,
+            widgetItems: []
+        )
+
+        XCTAssertEqual(recentItems.count, 2)
+        XCTAssertEqual(Set(recentItems.map(\.id)).count, 2)
+        XCTAssertEqual(presentationItems.count, 2)
+        XCTAssertEqual(Set(presentationItems.map(\.id)).count, 2)
+    }
+
     func testDeepLinkRoundTripEncodesCardId() throws {
         let cardId = "card/with space"
 

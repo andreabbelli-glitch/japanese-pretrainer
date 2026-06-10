@@ -1,10 +1,31 @@
 import Foundation
 
 struct DailyKanjiHistoryItem: Codable, Equatable, Identifiable {
-    var id: String { "\(cardId)-\(shownAt.timeIntervalSince1970)" }
+    var id: String { eventId }
 
+    let eventId: String
     let cardId: String
     let shownAt: Date
+
+    init(eventId: String = UUID().uuidString, cardId: String, shownAt: Date) {
+        self.eventId = eventId
+        self.cardId = cardId
+        self.shownAt = shownAt
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case eventId
+        case cardId
+        case shownAt
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        cardId = try container.decode(String.self, forKey: .cardId)
+        shownAt = try container.decode(Date.self, forKey: .shownAt)
+        eventId = try container.decodeIfPresent(String.self, forKey: .eventId)
+            ?? "\(cardId)-\(shownAt.timeIntervalSince1970)"
+    }
 }
 
 enum DailyKanjiPresentationSource: String, Equatable {
@@ -22,11 +43,30 @@ enum DailyKanjiPresentationSource: String, Equatable {
 }
 
 struct DailyKanjiPresentationHistoryItem: Equatable, Identifiable {
-    var id: String { "\(source.rawValue)-\(cardId)-\(shownAt.timeIntervalSince1970)" }
+    var id: String {
+        if let eventId {
+            return "\(source.rawValue)-\(eventId)"
+        }
 
+        return "\(source.rawValue)-\(cardId)-\(shownAt.timeIntervalSince1970)"
+    }
+
+    let eventId: String?
     let cardId: String
     let shownAt: Date
     let source: DailyKanjiPresentationSource
+
+    init(
+        eventId: String? = nil,
+        cardId: String,
+        shownAt: Date,
+        source: DailyKanjiPresentationSource
+    ) {
+        self.eventId = eventId
+        self.cardId = cardId
+        self.shownAt = shownAt
+        self.source = source
+    }
 }
 
 enum DailyKanjiPresentationHistory {
@@ -39,6 +79,7 @@ enum DailyKanjiPresentationHistory {
     ) -> [DailyKanjiPresentationHistoryItem] {
         let appPresentationItems = appItems.map {
             DailyKanjiPresentationHistoryItem(
+                eventId: $0.id,
                 cardId: $0.cardId,
                 shownAt: $0.shownAt,
                 source: .app
@@ -77,7 +118,7 @@ final class DailyKanjiHistoryStore {
     }
 
     func record(cardId: String, shownAt: Date = .now) {
-        var items = allItems().filter { $0.cardId != cardId }
+        var items = allItems()
         items.insert(DailyKanjiHistoryItem(cardId: cardId, shownAt: shownAt), at: 0)
         save(Array(items.prefix(maxItems)))
     }

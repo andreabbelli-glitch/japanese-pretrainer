@@ -22,7 +22,8 @@ nome app, bundle id, scheme e documentazione sono quelli di **Daily Kanji**.
 
 La app e il widget leggono `daily-kanji-cards.json` quando e' stato esportato.
 Se il file non e' presente usano un sample locale (`学`) per mantenere build e
-preview funzionanti. Lo storico locale dell'app copre gli ultimi 3 giorni e
+preview funzionanti. Lo storico locale dell'app conserva le esposizioni recenti
+degli ultimi 3 giorni, anche quando la stessa card viene mostrata piu volte, e
 serve a evitare ripetizioni quando l'app viene aperta; le righe recenti sono
 tappabili per riaprire la card completa e fare una mini-review locale. Il widget
 resta senza App Group per non introdurre entitlement fragili con Personal Team.
@@ -35,8 +36,8 @@ resta senza App Group per non introdurre entitlement fragili con Personal Team.
 - Escludere card nuove mai viste, `known_manual`, sospese, manual override e
   card ormai stabili/note.
 - Tenere la app iOS read-only rispetto alla review FSRS.
-- Minimizzare traffico: dataset e audio packaged, refresh remoto solo come JSON
-  piccolo e opzionale.
+- Azzerare il traffico runtime iOS v1: dataset e audio packaged nel bundle,
+  senza refresh remoto dall'app o dal widget.
 - Restare comodamente nei piani gratuiti Vercel e Turso per uso personale.
 
 ## Prerequisiti
@@ -163,16 +164,17 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
 La v1 deve restare personale e leggera:
 
 - dataset full e audio locali vengono packaged nell'app;
-- endpoint remoto, quando presente, restituisce solo overlay JSON di priorita;
+- zero chiamate di rete runtime da app iOS o widget;
 - nessuna scrittura FSRS da iOS;
 - nessun entitlement App Group o Associated Domains;
-- nessun polling aggressivo dal widget;
+- nessun polling dal widget;
 - fallback offline sempre disponibile.
 
-Con questa architettura, il traffico mensile atteso per uso personale e'
-trascurabile rispetto ai free tier Vercel/Turso: pochi KB per apertura app o
-refresh, non download audio o contenuti pesanti. Se usi solo il package offline,
-l'app iOS non effettua traffico runtime.
+Con questa architettura, l'app iOS installata non consuma traffico runtime e non
+tocca Turso durante l'uso quotidiano. Vercel/Turso entrano solo nel workflow di
+export/package quando rigeneri il bundle personale; per un uso monoutente questo
+resta ampiamente sotto i free tier, perche' non ci sono aperture app, refresh
+widget, audio o contenuti pesanti scaricati dal telefono.
 
 Il contratto offline e' dichiarato in `offline-contract.json` e verificato da
 `tests/daily-kanji-ios-offline-contract.test.ts`: il test blocca l'introduzione
