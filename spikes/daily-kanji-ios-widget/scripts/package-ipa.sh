@@ -6,6 +6,11 @@ PROJECT="$ROOT/DailyKanjiWidgetSpike.xcodeproj"
 DERIVED_DATA="$ROOT/build/DerivedData"
 IPA_ROOT="$ROOT/build/ipa"
 IPA_PATH="$ROOT/build/DailyKanjiWidgetSpike.ipa"
+CONFIGURATION="${CONFIGURATION:-Release}"
+
+if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Developer ]; then
+  export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+fi
 
 if ! command -v xcodebuild >/dev/null 2>&1; then
   echo "xcodebuild non trovato. Installa Xcode completo e selezionalo con xcode-select." >&2
@@ -31,7 +36,7 @@ rm -rf "$DERIVED_DATA" "$IPA_ROOT" "$IPA_PATH"
 xcodebuild \
   -project "$PROJECT" \
   -scheme DailyKanjiWidgetSpike \
-  -configuration Debug \
+  -configuration "$CONFIGURATION" \
   -destination "generic/platform=iOS" \
   -derivedDataPath "$DERIVED_DATA" \
   CODE_SIGNING_ALLOWED=NO \
@@ -39,16 +44,16 @@ xcodebuild \
   CODE_SIGN_IDENTITY="" \
   build
 
-APP_PATH="$(find "$DERIVED_DATA/Build/Products/Debug-iphoneos" -maxdepth 1 -name "*.app" -type d -print -quit)"
+APP_PATH="$(find "$DERIVED_DATA/Build/Products/$CONFIGURATION-iphoneos" -maxdepth 1 -name "*.app" -type d -print -quit)"
 
 if [ -z "$APP_PATH" ]; then
-  echo "Build completata ma .app non trovato in $DERIVED_DATA/Build/Products/Debug-iphoneos" >&2
+  echo "Build completata ma .app non trovato in $DERIVED_DATA/Build/Products/$CONFIGURATION-iphoneos" >&2
   exit 1
 fi
 
 mkdir -p "$IPA_ROOT/Payload"
 cp -R "$APP_PATH" "$IPA_ROOT/Payload/"
 
-(cd "$IPA_ROOT" && ditto -c -k --sequesterRsrc --keepParent Payload "$IPA_PATH")
+(cd "$IPA_ROOT" && ditto -c -k --norsrc --keepParent Payload "$IPA_PATH")
 
 printf "IPA pronta: %s\n" "$IPA_PATH"

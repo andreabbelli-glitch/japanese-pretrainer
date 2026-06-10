@@ -15,19 +15,28 @@ firma/installazione/widget, non ancora l'integrazione con il backend Next.js.
 
 Stato aggiornato dello spike su questo Mac:
 
+- Xcode 26.5 installato in `/Applications/Xcode.app`.
+- SDK `iphoneos` e `iphonesimulator` disponibili.
 - XcodeGen installato via Homebrew.
 - `mas`, `xcodes` e `aria2` installati via Homebrew.
 - Sideloadly v0.60 installato da `https://sideloadly.io/SideloadlySetup.dmg`.
 - Sideloadly si avvia, anche se `spctl` lo valuta come app non firmata.
-- Xcode completo non e' installato; il Mac ha ancora solo Command Line Tools:
+- `./scripts/package-ipa.sh` genera correttamente
+  `build/DailyKanjiWidgetSpike.ipa` con app + WidgetKit extension.
+- Build iOS Simulator riuscita su `iPhone 17 Simulator (26.5)`.
+- Installazione e launch su simulatore riusciti per bundle
+  `dev.local.daily-kanji-spike`; screenshot verificato con app non vuota e
+  kanji hardcoded `学`.
+- Al momento della verifica Xcode non rilevava iPhone collegati:
+  `xcrun devicectl list devices` ha restituito `No devices found`.
 
-```sh
-xcode-select -p
-# /Library/Developer/CommandLineTools
-```
+Gli script usano
+automaticamente `/Applications/Xcode.app/Contents/Developer` tramite
+`DEVELOPER_DIR` quando Xcode e' presente ma `xcode-select` punta ancora ai
+Command Line Tools.
 
-Serve Xcode completo prima di poter compilare o creare l'IPA.
-I tentativi automatici hanno trovato questi limiti:
+I tentativi automatici precedenti avevano trovato questi limiti, ora superati
+dall'installazione manuale di Xcode:
 
 - `mas install 497799835` richiede privilegi root e si blocca senza password
   admin interattiva.
@@ -95,9 +104,31 @@ Output atteso:
 build/DailyKanjiWidgetSpike.ipa
 ```
 
+Di default lo script crea una build `Release`. Per forzare un'altra
+configurazione:
+
+```sh
+CONFIGURATION=Debug ./scripts/package-ipa.sh
+```
+
 Apri Sideloadly, trascina l'IPA, usa il tuo Apple ID personale e avvia
 l'installazione. Dopo l'installazione, aggiungi il widget "Daily Kanji" dalla
 schermata Home o Lock Screen.
+
+Per continuare la verifica end-to-end serve un iPhone collegato al Mac e fidato
+dal dispositivo. Senza iPhone collegato non e' possibile provare firma,
+installazione e auto-refresh Sideloadly.
+
+Smoke simulator opzionale:
+
+```sh
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
+  xcodebuild -project DailyKanjiWidgetSpike.xcodeproj \
+  -scheme DailyKanjiWidgetSpike \
+  -configuration Debug \
+  -destination 'platform=iOS Simulator,name=iPhone 17' \
+  -derivedDataPath build/SimulatorDerivedData build
+```
 
 ## Criteri di successo
 

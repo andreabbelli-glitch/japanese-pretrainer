@@ -3,6 +3,10 @@ set -euo pipefail
 
 failures=0
 
+if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Developer ]; then
+  export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+fi
+
 check_command() {
   local name="$1"
   local hint="$2"
@@ -37,10 +41,12 @@ if command -v xcode-select >/dev/null 2>&1; then
   developer_dir="$(xcode-select -p 2>/dev/null || true)"
   printf "info xcode-select: %s\n" "$developer_dir"
 
-  if [[ "$developer_dir" == "/Applications/Xcode.app/Contents/Developer" ]]; then
+  if [[ "${DEVELOPER_DIR:-}" == "/Applications/Xcode.app/Contents/Developer" ]]; then
+    printf "ok   DEVELOPER_DIR: %s\n" "$DEVELOPER_DIR"
+  elif [[ "$developer_dir" == "/Applications/Xcode.app/Contents/Developer" ]]; then
     printf "ok   active developer dir: full Xcode\n"
   else
-    printf "miss active developer dir: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer\n"
+    printf "miss active developer dir: export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer or sudo xcode-select -s /Applications/Xcode.app/Contents/Developer\n"
     failures=$((failures + 1))
   fi
 fi
