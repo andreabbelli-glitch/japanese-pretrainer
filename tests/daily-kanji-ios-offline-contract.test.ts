@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
+import { parse } from "yaml";
 import { describe, expect, it } from "vitest";
 
 import {
@@ -10,6 +11,7 @@ import {
 
 const iosRoot = path.join(process.cwd(), "apps", "daily-kanji-ios");
 const contractPath = path.join(iosRoot, "offline-contract.json");
+const projectConfigPath = path.join(iosRoot, "project.yml");
 const scannedSourceDirs = ["App", "Shared", "WidgetExtension"].map((segment) =>
   path.join(iosRoot, segment)
 );
@@ -29,6 +31,20 @@ const forbiddenEntitlementPatterns = [
   /^\s*entitlements\s*:/,
   /com\.apple\.security\.application-groups/,
   /com\.apple\.developer\.associated-domains/
+];
+const forbiddenDatabasePatterns = [
+  /\bCoreData\b/,
+  /\bSwiftData\b/,
+  /\bModelContext\b/,
+  /\bModelContainer\b/,
+  /\bNSPersistentContainer\b/,
+  /\bSQLite\b/,
+  /\bSQLite3\b/,
+  /\bsqlite3_[A-Za-z0-9_]*\b/,
+  /\blibsqlite3(?:\.\d+)?\.tbd\b/i,
+  /\bFMDB\b/,
+  /\bGRDB\b/,
+  /\blibsql[A-Za-z0-9_]*\b/i
 ];
 
 describe("daily kanji iOS offline contract", () => {
@@ -94,17 +110,36 @@ describe("daily kanji iOS offline contract", () => {
     expect(violations).toEqual([]);
   });
 
+  it("keeps maintained iOS runtime sources free of database APIs", async () => {
+    const sourceFiles = await listFiles(scannedSourceDirs, [".swift"]);
+    const violations = await matchingLines(
+      sourceFiles,
+      forbiddenDatabasePatterns
+    );
+
+    expect(violations).toEqual([]);
+  });
+
+  it("keeps the iOS project config free of database frameworks and packages", async () => {
+    const violations = await matchingLines(
+      [projectConfigPath],
+      forbiddenDatabasePatterns
+    );
+
+    expect(violations).toEqual([]);
+  });
+
   it("detects common Swift runtime-network escape hatches without blocking bundled file reads", () => {
     const blockedSamples = [
-      "AsyncImage(url: URL(string: \"https://example.test/card.png\"))",
+      'AsyncImage(url: URL(string: "https://example.test/card.png"))',
       "let request = URLRequest(url: url)",
       "let session = URLSession.shared",
-      "let data = try Data(contentsOf: URL(string: \"https://example.test/cards.json\")!)",
-      "let remote = URL(string: \"http://example.test/cards.json\")"
+      'let data = try Data(contentsOf: URL(string: "https://example.test/cards.json")!)',
+      'let remote = URL(string: "http://example.test/cards.json")'
     ];
     const allowedSamples = [
       "let data = try Data(contentsOf: url)",
-      "return URL(string: \"\\(scheme)://\\(cardHost)/\\(encodedCardId)\")!"
+      'return URL(string: "\\(scheme)://\\(cardHost)/\\(encodedCardId)")!'
     ];
 
     expect(
@@ -117,6 +152,32 @@ describe("daily kanji iOS offline contract", () => {
         forbiddenRuntimeNetworkPatterns.some((pattern) => pattern.test(line))
       )
     ).toEqual([]);
+  });
+
+  it("detects common Swift and XcodeGen database escape hatches", () => {
+    const blockedSamples = [
+      "import CoreData",
+      "let container = ModelContainer(for: DailyKanjiCard.self)",
+      "let context: ModelContext",
+      'let persistent = NSPersistentContainer(name: "Cards")',
+      "import SQLite3",
+      "sqlite3_open(path, &database)",
+      "import LibSQL",
+      "let client = LibsqlClient()",
+      "import GRDB",
+      "import FMDB",
+      "- sdk: libsqlite3.tbd",
+      "- sdk: CoreData.framework",
+      "- package: https://github.com/groue/GRDB.swift.git",
+      "- package: https://github.com/stephencelis/SQLite.swift.git",
+      "- package: https://github.com/libsql/libsql-client-swift.git"
+    ];
+
+    expect(
+      blockedSamples.filter((line) =>
+        forbiddenDatabasePatterns.some((pattern) => pattern.test(line))
+      )
+    ).toEqual(blockedSamples);
   });
 
   it("keeps the iOS project free of App Group and Associated Domains entitlements", async () => {
@@ -133,6 +194,25 @@ describe("daily kanji iOS offline contract", () => {
     );
 
     expect(violations).toEqual([]);
+  });
+
+  it("keeps the app and widget targets iPhone-only", async () => {
+    const projectConfig = await readFile(projectConfigPath, "utf8");
+
+    expect(
+      readYamlTargetBaseSetting(
+        projectConfig,
+        "DailyKanji",
+        "TARGETED_DEVICE_FAMILY"
+      )
+    ).toBe("1");
+    expect(
+      readYamlTargetBaseSetting(
+        projectConfig,
+        "DailyKanjiWidgetExtension",
+        "TARGETED_DEVICE_FAMILY"
+      )
+    ).toBe("1");
   });
 });
 
@@ -182,4 +262,30 @@ async function matchingLines(files: string[], patterns: RegExp[]) {
   );
 
   return results.flat();
+}
+
+function readYamlTargetBaseSetting(
+  source: string,
+  targetName: string,
+  settingName: string
+) {
+  const project = parse(source) as {
+    targets?: Record<
+      string,
+      {
+        settings?: {
+          base?: Record<string, unknown>;
+        };
+      }
+    >;
+  };
+  const value = project.targets?.[targetName]?.settings?.base?.[settingName];
+
+  if (value === undefined) {
+    throw new Error(
+      `Missing XcodeGen target setting: ${targetName}.${settingName}`
+    );
+  }
+
+  return String(value);
 }

@@ -55,6 +55,7 @@ targets:
         PRODUCT_MODULE_NAME: DailyKanjiWidgetExtension
         PRODUCT_NAME: Daily Kanji Widget
         SKIP_INSTALL: YES
+        TARGETED_DEVICE_FAMILY: "1"
   DailyKanjiTests:
     type: bundle.unit-test
     platform: iOS
