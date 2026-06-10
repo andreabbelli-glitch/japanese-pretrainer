@@ -42,7 +42,16 @@ struct DailyKanjiWidgetView: View {
     @Environment(\.widgetFamily) private var family
 
     var body: some View {
+        content
+            .containerBackground(.background, for: .widget)
+    }
+
+    @ViewBuilder
+    private var content: some View {
         switch family {
+        case .accessoryCircular:
+            Text(entry.item.character)
+                .font(.headline)
         case .accessoryInline:
             Text("\(entry.item.character) \(entry.item.keyword)")
         case .accessoryRectangular:
@@ -71,7 +80,6 @@ struct DailyKanjiWidgetView: View {
                     .foregroundStyle(.tertiary)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .containerBackground(.background, for: .widget)
         }
     }
 }
@@ -85,7 +93,7 @@ struct DailyKanjiWidget: Widget {
         }
         .configurationDisplayName("Daily Kanji")
         .description("Shows one study kanji.")
-        .supportedFamilies([.systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular])
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryInline, .accessoryRectangular])
     }
 }
 
@@ -95,4 +103,3 @@ struct DailyKanjiWidgetBundle: WidgetBundle {
         DailyKanjiWidget()
     }
 }
-

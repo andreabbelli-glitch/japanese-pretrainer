@@ -29,9 +29,9 @@ Stato aggiornato dello spike su questo Mac:
   kanji hardcoded `学`.
 - iPhone fisico rilevato da Xcode/CoreDevice:
   `iPhone di Andrea (3)`, iPhone 15, iOS 26.5, Developer Mode attiva.
-- Installazione privata via Sideloadly riuscita con Apple ID personale gratuito.
-  Sideloadly ha riscritto il bundle id installato in
-  `dev.local.daily-kanji-spike.F5U46464YH`.
+- Installazione privata via Sideloadly riuscita con Apple ID personale gratuito,
+  sia con bundle id automatico (`dev.local.daily-kanji-spike.F5U46464YH`) sia
+  con bundle id manuale (`dev.local.daily-kanji-spike`).
 - Primo launch bloccato finche il profilo sviluppatore non e' stato autorizzato
   da iOS in `Impostazioni > Generali > VPN e gestione dispositivo`.
 - Dopo il trust manuale del profilo, il launch da `devicectl` e' riuscito:
@@ -39,10 +39,15 @@ Stato aggiornato dello spike su questo Mac:
 - Il bundle IPA contiene la WidgetKit extension
   `Daily Kanji Widget.appex` con extension point
   `com.apple.widgetkit-extension`.
-- La verifica CLI non puo aprire o pilotare la widget gallery iOS. Durante il
-  polling dei processi non e' comparso `Daily Kanji Widget.appex`; questo non
-  prova il fallimento del widget, ma lascia da confermare manualmente che
-  `Daily Kanji` appaia nella gallery e mostri `学`.
+- Con Sideloadly, anche mantenendo il bundle id manuale e senza rimuovere i
+  PlugIns, iOS non mostra `Daily Kanji` nella widget gallery. La app principale
+  funziona, ma la WidgetKit extension non risulta registrata dal device.
+- Con Xcode + Apple ID personale gratuito/Personal Team, la stessa app viene
+  firmata con profili separati per app e widget; il widget compare e funziona
+  sulla Home Screen.
+- La build `0.1.2`/`3` applica `containerBackground` a tutte le famiglie widget
+  e aggiunge `accessoryCircular`; questo corregge il messaggio Lock Screen
+  "Please adopt containerBackground API" visto sulla preview `accessory`.
 
 Gli script usano
 automaticamente `/Applications/Xcode.app/Contents/Developer` tramite
@@ -134,10 +139,27 @@ il profilo sviluppatore in `Impostazioni > Generali > VPN e gestione
 dispositivo`. Dopo il trust, il launch da Mac e l'apertura manuale dell'app
 funzionano.
 
-Per concludere la verifica end-to-end serve confermare manualmente dal telefono
-che il widget "Daily Kanji" compaia nella gallery e si possa aggiungere alla
-Home o Lock Screen. `devicectl` puo vedere l'app installata e lanciarla, ma non
-puo aprire la widget gallery o aggiungere widget alla Home Screen.
+Nota importante: su questo Mac/iPhone Sideloadly installa e lancia l'app, ma non
+registra la WidgetKit extension nella gallery widget. Per provare il widget su
+iPhone fisico serve installare da Xcode con il Personal Team.
+
+## Installa da Xcode per il widget
+
+```sh
+cd spikes/daily-kanji-ios-widget
+xcodegen generate
+open DailyKanjiWidgetSpike.xcodeproj
+```
+
+In Xcode seleziona `iPhone di Andrea (3)` e premi Run. Il progetto e'
+configurato con `Automatically manage signing` e Team ID `F5U46464YH`, ricavato
+dal Personal Team configurato localmente in Xcode. Se lo spike viene clonato su
+un altro Mac, aggiorna `DEVELOPMENT_TEAM` in `project.yml`.
+
+Dopo ogni reinstallazione, rimuovi e riaggiungi il widget dalla Home o dalla
+Lock Screen per evitare preview cacheate di WidgetKit. `devicectl` puo vedere
+l'app installata e lanciarla, ma non puo aprire la widget gallery o aggiungere
+widget alla Home Screen.
 
 Smoke simulator opzionale:
 
@@ -155,9 +177,9 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
 - La app "Daily Kanji Spike" si apre su iPhone.
 - Il widget "Daily Kanji" e' disponibile nella gallery widget.
 - Il widget mostra il kanji hardcoded `学`.
-- Sideloadly vede l'app installata e l'auto-refresh e' attivabile.
-- Dopo un refresh manuale in Sideloadly, l'app resta installabile senza passare
-  da Xcode.
+- Xcode installa app e WidgetKit extension con Apple ID personale gratuito.
+- Sideloadly resta utilizzabile per installare la app principale, ma non e'
+  sufficiente per validare widget iOS su questo setup.
 
 ## Cosa prova e cosa non prova
 
@@ -165,8 +187,8 @@ Prova:
 
 - toolchain Xcode sul Mac aziendale;
 - packaging app + WidgetKit extension;
-- compatibilita' del widget con sideload gratuito;
-- flusso Sideloadly su iPhone personale.
+- compatibilita' del widget con Apple ID personale gratuito via Xcode;
+- limite pratico di Sideloadly per questo widget: app ok, widget non registrato.
 
 Non prova ancora:
 

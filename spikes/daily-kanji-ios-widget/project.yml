@@ -6,9 +6,9 @@ options:
 settings:
   base:
     CODE_SIGN_STYLE: Automatic
-    CURRENT_PROJECT_VERSION: "1"
-    DEVELOPMENT_TEAM: ""
-    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "3"
+    DEVELOPMENT_TEAM: F5U46464YH
+    MARKETING_VERSION: "0.1.2"
     SWIFT_VERSION: "5.10"
 targets:
   DailyKanjiWidgetSpike:
@@ -22,6 +22,7 @@ targets:
     settings:
       base:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         INFOPLIST_FILE: App/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: dev.local.daily-kanji-spike
         PRODUCT_NAME: Daily Kanji Spike
@@ -53,4 +54,3 @@ schemes:
       config: Debug
     archive:
       config: Release
-
