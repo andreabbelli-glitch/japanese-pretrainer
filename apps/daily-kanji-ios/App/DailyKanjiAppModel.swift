@@ -6,9 +6,10 @@ import WidgetKit
 final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var cards: [DailyKanjiCard]
     @Published private(set) var selectedCard: DailyKanjiCard?
-    @Published private(set) var recentHistory: [DailyKanjiHistoryItem] = []
+    @Published private(set) var recentHistory: [DailyKanjiPresentationHistoryItem] = []
 
     private let historyStore: DailyKanjiHistoryStore
+    private var recentSelectionHistory: [DailyKanjiHistoryItem] = []
 
     init(
         repository: DailyKanjiRepository = DailyKanjiRepository(),
@@ -20,7 +21,7 @@ final class DailyKanjiAppModel: ObservableObject {
         refreshHistory(now: now)
         selectedCard = DailyKanjiSelector.select(
             cards: cards,
-            history: recentHistory,
+            history: selectionHistoryItems(),
             now: now,
             mode: .appOpen
         )
@@ -31,7 +32,7 @@ final class DailyKanjiAppModel: ObservableObject {
         guard
             let card = DailyKanjiSelector.select(
                 cards: cards,
-                history: recentHistory,
+                history: selectionHistoryItems(),
                 now: now,
                 mode: .appOpen
             )
@@ -53,7 +54,7 @@ final class DailyKanjiAppModel: ObservableObject {
         select(card: card, shownAt: now)
     }
 
-    func card(for historyItem: DailyKanjiHistoryItem) -> DailyKanjiCard? {
+    func card(for historyItem: DailyKanjiPresentationHistoryItem) -> DailyKanjiCard? {
         cards.first { $0.cardId == historyItem.cardId }
     }
 
@@ -65,6 +66,27 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     private func refreshHistory(now: Date) {
-        recentHistory = historyStore.recentItems(now: now, days: DailyKanjiSelector.defaultHistoryLookbackDays)
+        let appItems = historyStore.recentItems(
+            now: now,
+            days: DailyKanjiSelector.defaultHistoryLookbackDays
+        )
+        let widgetItems = DailyKanjiSelector.recentWidgetTimelineItems(
+            cards: cards,
+            now: now,
+            days: DailyKanjiSelector.defaultHistoryLookbackDays
+        )
+
+        recentHistory = DailyKanjiPresentationHistory.merge(
+            appItems: appItems,
+            widgetItems: widgetItems
+        )
+        recentSelectionHistory = appItems + DailyKanjiSelector.recentWidgetSelectionItems(
+            cards: cards,
+            now: now
+        )
+    }
+
+    private func selectionHistoryItems() -> [DailyKanjiHistoryItem] {
+        recentSelectionHistory
     }
 }

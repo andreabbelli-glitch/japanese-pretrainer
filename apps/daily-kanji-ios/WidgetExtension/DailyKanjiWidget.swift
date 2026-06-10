@@ -20,9 +20,14 @@ struct KanjiProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<KanjiEntry>) -> Void) {
         let now = Date()
-        let entry = KanjiEntry(date: now, card: selectedCard(now: now))
-        let refresh = Calendar.current.date(byAdding: .hour, value: 6, to: now) ?? now
-        completion(Timeline(entries: [entry], policy: .after(refresh)))
+        let entries = DailyKanjiSelector.widgetTimelineDates(startingAt: now).map {
+            KanjiEntry(date: $0, card: selectedCard(now: $0))
+        }
+        let refresh = entries.last.map {
+            DailyKanjiSelector.nextWidgetRefreshDate(after: $0.date)
+        } ?? DailyKanjiSelector.nextWidgetRefreshDate(after: now)
+
+        completion(Timeline(entries: entries, policy: .after(refresh)))
     }
 
     private func selectedCard(now: Date) -> DailyKanjiCard {
@@ -55,28 +60,46 @@ struct DailyKanjiWidgetView: View {
         case .accessoryInline:
             Text("\(entry.card.displayFront) \(entry.card.back)")
         case .accessoryRectangular:
-            HStack(alignment: .center, spacing: 7) {
-                Text(entry.card.displayFront)
-                    .font(.system(size: 24, weight: .semibold, design: .serif))
-                    .minimumScaleFactor(0.45)
-                    .lineLimit(2)
-                    .frame(width: 54, alignment: .leading)
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(alignment: .firstTextBaseline, spacing: 6) {
+                    Text(entry.card.displayFront)
+                        .font(.system(size: 25, weight: .semibold, design: .serif))
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
 
-                VStack(alignment: .leading, spacing: 1) {
-                    Text(entry.card.back)
-                        .font(.caption.weight(.semibold))
-                        .lineLimit(1)
+                    Spacer(minLength: 2)
+
                     Text(entry.card.readingText)
-                        .font(.caption2)
+                        .font(.caption2.weight(.medium))
+                        .foregroundStyle(.secondary)
                         .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                }
+
+                Text(entry.card.back)
+                    .font(.caption.weight(.semibold))
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.75)
+
+                HStack(spacing: 4) {
                     Text(entry.card.pitchAccentText)
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
+
+                    if let compactExplanation = entry.card.lockScreenExplanationText {
+                        Text("-")
+                            .font(.caption2)
+                            .foregroundStyle(.tertiary)
+                        Text(compactExplanation)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.75)
+                    }
                 }
-                Spacer(minLength: 0)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         default:
             VStack(alignment: .leading, spacing: 8) {
                 Text(entry.card.displayFront)

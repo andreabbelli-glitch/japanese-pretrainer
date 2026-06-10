@@ -146,6 +146,11 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   di espandersi oltre le dimensioni del family selezionato.
 - Il widget usa deep link `dailykanji://card/<card-id>` per aprire la card
   completa nell'app.
+- Senza App Group, l'app non puo sapere se il widget lockscreen e' stato
+  davvero visibile. Lo storico mostra quindi gli slot widget offline ricostruiti,
+  mentre la selezione in-app tratta solo lo slot widget corrente come esposizione
+  recente per ridurre ripetizioni immediate senza bloccare tutta la finestra dei
+  kanji piu prioritari.
 - Dopo reinstallazioni importanti puo essere necessario rimuovere e riaggiungere
   il widget per evitare preview cacheate di WidgetKit.
 - `devicectl` puo installare e lanciare la app, ma non puo aprire la widget

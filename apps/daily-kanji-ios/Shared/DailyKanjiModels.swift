@@ -115,6 +115,26 @@ extension DailyKanjiCard {
         "\(media.title) - \(lesson.title)"
     }
 
+    var compactExplanationText: String? {
+        if let notes, !notes.isEmpty {
+            return notes
+        }
+
+        if let exampleIt, !exampleIt.isEmpty {
+            return exampleIt
+        }
+
+        if let exampleJp, !exampleJp.isEmpty {
+            return exampleJp
+        }
+
+        return nil
+    }
+
+    var lockScreenExplanationText: String? {
+        compactExplanationText?.dailyKanjiCondensed(maxLength: 44)
+    }
+
     var priorityText: String {
         if srs.priorityReasons.contains(.recentHardAgain) {
             return "Recent hard/again"
@@ -133,5 +153,25 @@ extension DailyKanjiCard {
         }
 
         return "Review"
+    }
+}
+
+private extension String {
+    func dailyKanjiCondensed(maxLength: Int) -> String {
+        let compacted = split(whereSeparator: { $0.isWhitespace }).joined(separator: " ")
+        guard compacted.count > maxLength else {
+            return compacted
+        }
+
+        let suffixLength = 3
+        let prefixLength = max(maxLength - suffixLength, 0)
+        let endIndex = compacted.index(compacted.startIndex, offsetBy: prefixLength)
+        let prefix = compacted[..<endIndex]
+
+        if let lastSpace = prefix.lastIndex(of: " "), lastSpace > prefix.startIndex {
+            return "\(prefix[..<lastSpace])..."
+        }
+
+        return "\(prefix)..."
     }
 }

@@ -7,6 +7,60 @@ struct DailyKanjiHistoryItem: Codable, Equatable, Identifiable {
     let shownAt: Date
 }
 
+enum DailyKanjiPresentationSource: String, Equatable {
+    case app
+    case widget
+
+    var label: String {
+        switch self {
+        case .app:
+            return "App"
+        case .widget:
+            return "Widget slot"
+        }
+    }
+}
+
+struct DailyKanjiPresentationHistoryItem: Equatable, Identifiable {
+    var id: String { "\(source.rawValue)-\(cardId)-\(shownAt.timeIntervalSince1970)" }
+
+    let cardId: String
+    let shownAt: Date
+    let source: DailyKanjiPresentationSource
+}
+
+enum DailyKanjiPresentationHistory {
+    static let defaultMaxItems = 24
+
+    static func merge(
+        appItems: [DailyKanjiHistoryItem],
+        widgetItems: [DailyKanjiPresentationHistoryItem],
+        maxItems: Int = defaultMaxItems
+    ) -> [DailyKanjiPresentationHistoryItem] {
+        let appPresentationItems = appItems.map {
+            DailyKanjiPresentationHistoryItem(
+                cardId: $0.cardId,
+                shownAt: $0.shownAt,
+                source: .app
+            )
+        }
+
+        let sorted = (appPresentationItems + widgetItems).sorted { lhs, rhs in
+            if lhs.shownAt != rhs.shownAt {
+                return lhs.shownAt > rhs.shownAt
+            }
+
+            if lhs.source != rhs.source {
+                return lhs.source == .app
+            }
+
+            return lhs.cardId < rhs.cardId
+        }
+
+        return Array(sorted.prefix(maxItems))
+    }
+}
+
 final class DailyKanjiHistoryStore {
     private let defaults: UserDefaults
     private let key: String

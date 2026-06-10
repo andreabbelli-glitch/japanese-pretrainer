@@ -49,6 +49,103 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(second?.cardId, "stable")
     }
 
+    func testWidgetRefreshUsesNextRotationSlotBoundary() {
+        let date = Date(timeIntervalSince1970: (6 * 60 * 60) + 123)
+
+        XCTAssertEqual(
+            DailyKanjiSelector.nextWidgetRefreshDate(after: date),
+            Date(timeIntervalSince1970: 12 * 60 * 60)
+        )
+    }
+
+    func testWidgetTimelineDatesPrebuildFutureRotationSlots() {
+        let now = Date(timeIntervalSince1970: (6 * 60 * 60) + 123)
+
+        XCTAssertEqual(
+            DailyKanjiSelector.widgetTimelineDates(startingAt: now, count: 4),
+            [
+                now,
+                Date(timeIntervalSince1970: 12 * 60 * 60),
+                Date(timeIntervalSince1970: 18 * 60 * 60),
+                Date(timeIntervalSince1970: 24 * 60 * 60)
+            ]
+        )
+    }
+
+    func testRecentWidgetTimelineHistoryPreservesNewestSlots() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let items = DailyKanjiSelector.recentWidgetTimelineItems(
+            cards: cards,
+            now: Date(timeIntervalSince1970: (72 * 60 * 60) + 60),
+            days: 1,
+            maxItems: 3
+        )
+
+        XCTAssertEqual(items.map(\.cardId), ["hard", "stable", "hard"])
+        XCTAssertEqual(items.map(\.source), [.widget, .widget, .widget])
+        XCTAssertEqual(items.map(\.shownAt), [
+            Date(timeIntervalSince1970: 72 * 60 * 60),
+            Date(timeIntervalSince1970: 66 * 60 * 60),
+            Date(timeIntervalSince1970: 60 * 60 * 60)
+        ])
+    }
+
+    func testPresentationHistoryMergesAppAndWidgetExposureEventsNewestFirst() {
+        let appItems = [
+            DailyKanjiHistoryItem(
+                cardId: "stable",
+                shownAt: Date(timeIntervalSince1970: (12 * 60 * 60) + 120)
+            )
+        ]
+        let widgetItems = [
+            DailyKanjiPresentationHistoryItem(
+                cardId: "hard",
+                shownAt: Date(timeIntervalSince1970: 12 * 60 * 60),
+                source: .widget
+            ),
+            DailyKanjiPresentationHistoryItem(
+                cardId: "stable",
+                shownAt: Date(timeIntervalSince1970: 6 * 60 * 60),
+                source: .widget
+            )
+        ]
+
+        let merged = DailyKanjiPresentationHistory.merge(
+            appItems: appItems,
+            widgetItems: widgetItems
+        )
+
+        XCTAssertEqual(merged.map(\.cardId), ["stable", "hard", "stable"])
+        XCTAssertEqual(merged.map(\.source), [.app, .widget, .widget])
+    }
+
+    func testAppSelectionUsesOnlyTheCurrentWidgetSlotAsRecentWidgetHistory() throws {
+        let cards = try Self.rankedCards(count: 9)
+        let now = Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
+
+        let widgetSelectionHistory = DailyKanjiSelector.recentWidgetSelectionItems(
+            cards: cards,
+            now: now
+        )
+        let selected = DailyKanjiSelector.select(
+            cards: cards,
+            history: widgetSelectionHistory,
+            now: now,
+            mode: .appOpen
+        )
+
+        XCTAssertEqual(widgetSelectionHistory.map(\.cardId), ["card-4"])
+        XCTAssertEqual(selected?.cardId, "card-0")
+    }
+
+    func testLockScreenExplanationTextCondensesLongNotes() throws {
+        let card = try Self.cardReplacingNotes(
+            with: "This note is intentionally long and contains enough detail to overflow a lock screen widget."
+        )
+
+        XCTAssertEqual(card.lockScreenExplanationText, "This note is intentionally long and...")
+    }
+
     func testHistoryStoreRecordsNewestFirstAndPrunesOldEntries() {
         let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: defaultsName)!
@@ -189,5 +286,62 @@ final class DailyKanjiCoreTests: XCTestCase {
             .data(using: .utf8)!
 
         return try DailyKanjiDataset.decode(jsonData: json).cards[0]
+    }
+
+    private static func cardReplacingNotes(with notes: String) throws -> DailyKanjiCard {
+        let json = String(data: datasetJSON, encoding: .utf8)!
+            .replacingOccurrences(
+                of: "\"Plain note\"",
+                with: "\"\(notes)\""
+            )
+            .data(using: .utf8)!
+
+        return try DailyKanjiDataset.decode(jsonData: json).cards[0]
+    }
+
+    private static func rankedCards(count: Int) throws -> [DailyKanjiCard] {
+        let base = try DailyKanjiDataset.decode(jsonData: datasetJSON).cards[0]
+
+        return (0..<count).map { index in
+            DailyKanjiCard(
+                cardId: "card-\(index)",
+                subjectKey: "term:card-\(index)",
+                media: base.media,
+                lesson: base.lesson,
+                segment: base.segment,
+                front: "Card \(index)",
+                back: "Meaning \(index)",
+                kanji: ["Card \(index)"],
+                entry: DailyKanjiCard.Entry(
+                    audioSrc: nil,
+                    id: "entry-\(index)",
+                    kind: .term,
+                    label: "Card \(index)",
+                    meaning: "Meaning \(index)",
+                    pitchAccent: nil,
+                    pitchAccentSource: nil,
+                    reading: "reading \(index)"
+                ),
+                exampleIt: nil,
+                exampleJp: nil,
+                notes: nil,
+                srs: DailyKanjiCard.SRS(
+                    difficulty: 8,
+                    dueAt: nil,
+                    lapses: 0,
+                    lastHardAgainAt: nil,
+                    lastInteractionAt: "2026-06-10T09:00:00.000Z",
+                    lastReviewedAt: nil,
+                    learningSteps: 0,
+                    priorityReasons: [.lowStability],
+                    priorityScore: Double(100 - index),
+                    recentHardAgainCount: 0,
+                    reps: 0,
+                    scheduledDays: 1,
+                    stability: 1,
+                    state: .review
+                )
+            )
+        }
     }
 }
