@@ -13,7 +13,13 @@ firma/installazione/widget, non ancora l'integrazione con il backend Next.js.
 
 ## Stato rilevato su questo Mac
 
-Al momento questo Mac ha solo Command Line Tools:
+Stato aggiornato dello spike su questo Mac:
+
+- XcodeGen installato via Homebrew.
+- `mas`, `xcodes` e `aria2` installati via Homebrew.
+- Sideloadly v0.60 installato da `https://sideloadly.io/SideloadlySetup.dmg`.
+- Sideloadly si avvia, anche se `spctl` lo valuta come app non firmata.
+- Xcode completo non e' installato; il Mac ha ancora solo Command Line Tools:
 
 ```sh
 xcode-select -p
@@ -21,6 +27,13 @@ xcode-select -p
 ```
 
 Serve Xcode completo prima di poter compilare o creare l'IPA.
+I tentativi automatici hanno trovato questi limiti:
+
+- `mas install 497799835` richiede privilegi root e si blocca senza password
+  admin interattiva.
+- `xcodes install 26.5 --no-superuser --select` richiede Apple ID/password.
+- Command Line Tools non include gli SDK `iphoneos` e `iphonesimulator`, quindi
+  non puo compilare WidgetKit iOS.
 
 ## Prerequisiti
 
@@ -44,6 +57,16 @@ Serve Xcode completo prima di poter compilare o creare l'IPA.
    trust del computer.
 
 Usa un Apple ID personale dedicato al sideload, non l'Apple ID aziendale.
+
+Per reinstallare gli strumenti automatizzabili:
+
+```sh
+cd spikes/daily-kanji-ios-widget
+./scripts/bootstrap-tools.sh
+```
+
+Il bootstrap non installa Xcode completo perche richiede credenziali Apple o
+interazione App Store.
 
 ## Genera il progetto
 
@@ -103,4 +126,3 @@ Non prova ancora:
 Se lo spike passa, il prossimo step e' sostituire il provider hardcoded del
 widget con una chiamata HTTPS a un endpoint read-only del backend, protetto da
 token revocabile.
-
