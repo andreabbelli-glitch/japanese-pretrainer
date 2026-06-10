@@ -60,38 +60,40 @@ struct DailyKanjiWidgetView: View {
         case .accessoryInline:
             Text("\(entry.card.displayFront) \(entry.card.back)")
         case .accessoryRectangular:
-            HStack(alignment: .center, spacing: 7) {
-                Text(entry.card.displayFront)
-                    .font(.system(size: 40, weight: .semibold, design: .serif))
-                    .minimumScaleFactor(0.32)
-                    .lineLimit(2)
-                    .frame(width: 62, alignment: .leading)
-                    .layoutPriority(2)
-
-                VStack(alignment: .leading, spacing: 1) {
-                    Text(entry.card.back)
-                        .font(.system(size: 12, weight: .semibold, design: .rounded))
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(alignment: .center, spacing: 6) {
+                    Text(entry.card.displayFront)
+                        .font(.system(size: 32, weight: .semibold, design: .serif))
+                        .minimumScaleFactor(0.38)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.68)
+                        .frame(minWidth: 34, maxWidth: 58, alignment: .leading)
+                        .layoutPriority(2)
 
-                    Text(entry.card.lockScreenMetadataText)
-                        .font(.system(size: 9.5, weight: .medium, design: .rounded))
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.62)
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(entry.card.back)
+                            .font(.system(size: 12, weight: .semibold, design: .rounded))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.62)
 
-                    if let compactExplanation = entry.card.lockScreenExplanationText {
-                        Text(compactExplanation)
-                            .font(.system(size: 9.5, weight: .regular, design: .rounded))
+                        Text(entry.card.lockScreenMetadataText)
+                            .font(.system(size: 9, weight: .medium, design: .rounded))
                             .foregroundStyle(.secondary)
-                            .lineLimit(3)
-                            .minimumScaleFactor(0.56)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.58)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .layoutPriority(1)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                .layoutPriority(1)
+
+                if let compactExplanation = entry.card.lockScreenExplanationText {
+                    Text(compactExplanation)
+                        .font(.system(size: 8.8, weight: .regular, design: .rounded))
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.54)
+                }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         default:
             VStack(alignment: .leading, spacing: 8) {
                 Text(entry.card.displayFront)

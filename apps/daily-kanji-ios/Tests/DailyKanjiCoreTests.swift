@@ -399,12 +399,12 @@ final class DailyKanjiCoreTests: XCTestCase {
 
     func testLockScreenExplanationTextKeepsFullRectangularContext() throws {
         let card = try Self.cardReplacingNotes(
-            with: "This note is intentionally long and contains enough detail to use the full rectangular lock screen widget budget before truncating."
+            with: "This note is intentionally long and uses the full rectangular lock screen widget budget across the bottom line without being cut early."
         )
 
         XCTAssertEqual(
             card.lockScreenExplanationText,
-            "This note is intentionally long and contains enough detail to use the full rectangular lock screen widget budget..."
+            "This note is intentionally long and uses the full rectangular lock screen widget budget across the bottom line without being cut early."
         )
     }
 
