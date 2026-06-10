@@ -139,6 +139,10 @@ struct ContentView: View {
                                                 .padding(.vertical, 2)
                                                 .background(Color(.tertiarySystemGroupedBackground))
                                                 .clipShape(Capsule())
+
+                                            Text(item.shownAtText())
+                                                .font(.caption2)
+                                                .foregroundStyle(.tertiary)
                                         }
                                         Text(card.readingText)
                                             .font(.caption)

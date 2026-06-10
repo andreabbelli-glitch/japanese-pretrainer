@@ -67,6 +67,24 @@ struct DailyKanjiPresentationHistoryItem: Equatable, Identifiable {
         self.shownAt = shownAt
         self.source = source
     }
+
+    func shownAtText(now: Date = .now) -> String {
+        let elapsedSeconds = max(0, now.timeIntervalSince(shownAt))
+
+        if elapsedSeconds < 60 {
+            return "Just now"
+        }
+
+        if elapsedSeconds < 60 * 60 {
+            return "\(Int(elapsedSeconds / 60))m ago"
+        }
+
+        if elapsedSeconds < 24 * 60 * 60 {
+            return "\(Int(elapsedSeconds / (60 * 60)))h ago"
+        }
+
+        return "\(Int(elapsedSeconds / (24 * 60 * 60)))d ago"
+    }
 }
 
 enum DailyKanjiPresentationHistory {

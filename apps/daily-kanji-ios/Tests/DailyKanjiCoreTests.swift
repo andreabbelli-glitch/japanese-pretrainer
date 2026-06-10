@@ -149,6 +149,43 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(merged.map(\.source), [.app, .widget, .widget])
     }
 
+    func testPresentationHistoryFormatsRelativeShownTime() {
+        let now = Date(timeIntervalSince1970: 1_800_000_000)
+
+        XCTAssertEqual(
+            DailyKanjiPresentationHistoryItem(
+                cardId: "just-now",
+                shownAt: now.addingTimeInterval(-42),
+                source: .app
+            ).shownAtText(now: now),
+            "Just now"
+        )
+        XCTAssertEqual(
+            DailyKanjiPresentationHistoryItem(
+                cardId: "minutes",
+                shownAt: now.addingTimeInterval(-(12 * 60)),
+                source: .app
+            ).shownAtText(now: now),
+            "12m ago"
+        )
+        XCTAssertEqual(
+            DailyKanjiPresentationHistoryItem(
+                cardId: "hours",
+                shownAt: now.addingTimeInterval(-(3 * 60 * 60)),
+                source: .widget
+            ).shownAtText(now: now),
+            "3h ago"
+        )
+        XCTAssertEqual(
+            DailyKanjiPresentationHistoryItem(
+                cardId: "days",
+                shownAt: now.addingTimeInterval(-(2 * 24 * 60 * 60)),
+                source: .widget
+            ).shownAtText(now: now),
+            "2d ago"
+        )
+    }
+
     func testAppSelectionUsesOnlyTheCurrentWidgetSlotAsRecentWidgetHistory() throws {
         let cards = try Self.rankedCards(count: 9)
         let now = Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
