@@ -156,6 +156,31 @@ configurato con `Automatically manage signing` e Team ID `F5U46464YH`, ricavato
 dal Personal Team configurato localmente in Xcode. Se lo spike viene clonato su
 un altro Mac, aggiorna `DEVELOPMENT_TEAM` in `project.yml`.
 
+Per rinnovare/reinstallare da CLI, anche via Wi-Fi quando CoreDevice vede
+l'iPhone come `transportType: localNetwork`:
+
+```sh
+cd spikes/daily-kanji-ios-widget
+./scripts/xcode-renew.sh
+```
+
+Lo script rigenera il progetto con XcodeGen, compila con provisioning automatico
+e installa overwrite lo stesso bundle id sul device. Su questo Mac il rinnovo
+via rete locale e' stato verificato sia con i comandi Xcode/devicectl manuali
+sia con `./scripts/xcode-renew.sh`, con:
+
+```text
+transportType: localNetwork
+tunnelTransportProtocol: tcp
+tunnelState: connected
+```
+
+Per usare un altro device:
+
+```sh
+DEVICE_ID=<coredevice-id-or-udid> ./scripts/xcode-renew.sh
+```
+
 Dopo ogni reinstallazione, rimuovi e riaggiungi il widget dalla Home o dalla
 Lock Screen per evitare preview cacheate di WidgetKit. `devicectl` puo vedere
 l'app installata e lanciarla, ma non puo aprire la widget gallery o aggiungere
