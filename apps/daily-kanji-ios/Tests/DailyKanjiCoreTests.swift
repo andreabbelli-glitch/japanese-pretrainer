@@ -72,6 +72,33 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(DailyKanjiDeepLink.cardId(from: url), cardId)
     }
 
+    func testAudioBundlePathPreservesMediaSlugAndRelativeAudioSource() throws {
+        let card = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards[0]
+
+        XCTAssertEqual(
+            DailyKanjiAudioResource.bundleRelativePath(for: card),
+            "daily-kanji-audio__media-one__assets_audio_term_hard__7d32ed581a549660.mp3"
+        )
+    }
+
+    func testAudioBundlePathRejectsNonAudioResourceSources() throws {
+        XCTAssertNil(
+            DailyKanjiAudioResource.bundleRelativePath(
+                for: try Self.cardReplacingAudioSrc(with: "workflow/notes.mp3")
+            )
+        )
+        XCTAssertNil(
+            DailyKanjiAudioResource.bundleRelativePath(
+                for: try Self.cardReplacingAudioSrc(with: "assets/audio/term/not-audio.txt")
+            )
+        )
+        XCTAssertNil(
+            DailyKanjiAudioResource.bundleRelativePath(
+                for: try Self.cardReplacingAudioSrc(with: "assets/audio/term/settings.ogg")
+            )
+        )
+    }
+
     private static let datasetJSON = """
     {
       "version": 1,
@@ -88,7 +115,7 @@ final class DailyKanjiCoreTests: XCTestCase {
           "back": "point of view",
           "kanji": ["観", "点"],
           "entry": {
-            "audioSrc": "media-audio/media-one/hard.mp3",
+            "audioSrc": "assets/audio/term/hard.mp3",
             "id": "entry-hard",
             "kind": "term",
             "label": "観点",
@@ -152,4 +179,15 @@ final class DailyKanjiCoreTests: XCTestCase {
       ]
     }
     """.data(using: .utf8)!
+
+    private static func cardReplacingAudioSrc(with audioSrc: String) throws -> DailyKanjiCard {
+        let json = String(data: datasetJSON, encoding: .utf8)!
+            .replacingOccurrences(
+                of: "\"assets/audio/term/hard.mp3\"",
+                with: "\"\(audioSrc)\""
+            )
+            .data(using: .utf8)!
+
+        return try DailyKanjiDataset.decode(jsonData: json).cards[0]
+    }
 }

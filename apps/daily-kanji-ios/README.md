@@ -109,19 +109,23 @@ Rigenerazione dataset offline packaged:
 
 ```sh
 cd ../..
-./scripts/with-node.sh pnpm daily-kanji:export
+./scripts/with-node.sh pnpm daily-kanji:package
 ```
 
-Output predefinito:
+Output predefiniti:
 
 ```text
 apps/daily-kanji-ios/App/Resources/daily-kanji-cards.json
+apps/daily-kanji-ios/App/Resources/Audio/
 ```
 
-Il JSON e' generato dal DB runtime configurato (`DATABASE_URL`) e resta ignorato
-da git per evitare di committare snapshot personali di review state.
-Durante la build Xcode il JSON viene copiato sia nel bundle app sia nel bundle
-WidgetKit extension.
+Il JSON e' generato dal DB runtime configurato (`DATABASE_URL`). Gli audio iOS
+playable sono copiati da `content/media/<media-slug>/assets/audio/**` solo per
+le card presenti nel dataset; formati non supportati da iOS, come OGG, vengono
+saltati e l'app disabilita il pulsante audio per quelle card. JSON e audio
+restano ignorati da git per evitare di committare snapshot personali o asset
+duplicati. Durante la build Xcode queste risorse vengono copiate sia nel bundle
+app sia nel bundle WidgetKit extension.
 
 Unit test iOS:
 
@@ -160,7 +164,8 @@ La v1 deve restare personale e leggera:
 
 Con questa architettura, il traffico mensile atteso per uso personale e'
 trascurabile rispetto ai free tier Vercel/Turso: pochi KB per apertura app o
-refresh, non download audio o contenuti pesanti.
+refresh, non download audio o contenuti pesanti. Se usi solo il package offline,
+l'app iOS non effettua traffico runtime.
 
 ## Verifica per agenti
 

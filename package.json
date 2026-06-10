@@ -26,6 +26,8 @@
     "agent:verify": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/agent-verify.ts",
     "app:progress-brief": "node --disable-warning=DEP0040 --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/app-progress-brief.ts",
     "daily-kanji:export": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/export-daily-kanji-ios-dataset.ts",
+    "daily-kanji:export-audio": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/export-daily-kanji-ios-audio.ts",
+    "daily-kanji:package": "pnpm daily-kanji:export && pnpm daily-kanji:export-audio",
     "docs:agent-orientation": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/generate-agent-orientation.ts",
     "docs:agent-orientation:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/generate-agent-orientation.ts --check",
     "db:generate": "drizzle-kit generate --config=drizzle.config.ts",

@@ -59,12 +59,12 @@ Package IPA diagnostico:
 ./scripts/package-ipa.sh
 ```
 
-Rigenera il dataset JSON locale packaged prima delle build realmente usate sul
-telefono:
+Rigenera dataset JSON e audio locali packaged prima delle build realmente usate
+sul telefono:
 
 ```sh
 cd ../..
-./scripts/with-node.sh pnpm daily-kanji:export
+./scripts/with-node.sh pnpm daily-kanji:package
 ```
 
 ## Verifica per slice

@@ -49,12 +49,12 @@ struct ContentView: View {
                 Spacer(minLength: 0)
 
                 Button {
-                    audioPlayer.play(audioSrc: card.entry.audioSrc)
+                    audioPlayer.play(card: card)
                 } label: {
                     Label("Audio", systemImage: "speaker.wave.2.fill")
                 }
                 .buttonStyle(.bordered)
-                .disabled(!audioPlayer.hasBundledAudio(audioSrc: card.entry.audioSrc))
+                .disabled(!audioPlayer.hasBundledAudio(card: card))
             }
 
             if let exampleJp = card.exampleJp {
