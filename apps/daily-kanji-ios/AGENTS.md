@@ -48,6 +48,14 @@ Package IPA diagnostico:
 ./scripts/package-ipa.sh
 ```
 
+Rigenera il dataset JSON locale packaged prima delle build realmente usate sul
+telefono:
+
+```sh
+cd ../..
+./scripts/with-node.sh pnpm daily-kanji:export
+```
+
 ## Verifica per slice
 
 - Cambi a Swift/UI/widget: build simulatore e, se toccano widget/signing,

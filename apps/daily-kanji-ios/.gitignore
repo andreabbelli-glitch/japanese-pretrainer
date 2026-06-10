@@ -1,4 +1,5 @@
 DailyKanji.xcodeproj
+App/Resources/daily-kanji-cards.json
 build/
 DerivedData/
 *.xcuserdata

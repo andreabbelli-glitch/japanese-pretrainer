@@ -213,6 +213,15 @@ cavo quando l'iPhone risulta `transportType: localNetwork`. Sideloadly rimane
 diagnostico: installa la app principale, ma non registra la WidgetKit extension
 nella gallery widget.
 
+Per aggiornare lo snapshot offline usato dall'app iOS:
+
+```sh
+./scripts/with-node.sh pnpm daily-kanji:export
+```
+
+Lo script scrive `apps/daily-kanji-ios/App/Resources/daily-kanji-cards.json`,
+ignorato da git perche' contiene stato personale derivato dal DB runtime.
+
 ## Gate Canonico Di Verifica
 
 Per eseguire il controllo locale piu completo:

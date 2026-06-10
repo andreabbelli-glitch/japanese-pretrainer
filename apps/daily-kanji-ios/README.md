@@ -102,6 +102,22 @@ Output atteso:
 build/DailyKanji.ipa
 ```
 
+Rigenerazione dataset offline packaged:
+
+```sh
+cd ../..
+./scripts/with-node.sh pnpm daily-kanji:export
+```
+
+Output predefinito:
+
+```text
+apps/daily-kanji-ios/App/Resources/daily-kanji-cards.json
+```
+
+Il JSON e' generato dal DB runtime configurato (`DATABASE_URL`) e resta ignorato
+da git per evitare di committare snapshot personali di review state.
+
 ## Note widget
 
 - Per Home Screen, la famiglia primaria sara `systemMedium`.

@@ -1,0 +1,1 @@
+export { buildDailyKanjiDataset } from "./exporter";
