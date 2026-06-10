@@ -10,9 +10,9 @@ import type {
 } from "../types.ts";
 import { stripInlineMarkdown } from "../../study/model/inline-markdown.ts";
 
-const datasetVersion = 1 as const;
-const defaultRecentMistakeLookbackDays = 3;
-const defaultExportLimit = 250;
+export const dailyKanjiDatasetVersion = 1 as const;
+export const dailyKanjiDefaultRecentMistakeLookbackDays = 3;
+export const dailyKanjiDefaultExportLimit = 250;
 const highDifficultyThreshold = 7;
 const lowStabilityThreshold = 5;
 
@@ -60,8 +60,9 @@ export async function buildDailyKanjiDataset(input: {
 }): Promise<DailyKanjiDataset> {
   const nowIso = input.nowIso ?? new Date().toISOString();
   const recentMistakeLookbackDays =
-    input.recentMistakeLookbackDays ?? defaultRecentMistakeLookbackDays;
-  const limit = input.limit ?? defaultExportLimit;
+    input.recentMistakeLookbackDays ??
+    dailyKanjiDefaultRecentMistakeLookbackDays;
+  const limit = input.limit ?? dailyKanjiDefaultExportLimit;
   const cutoffIso = subtractDaysIso(nowIso, recentMistakeLookbackDays);
   const rows = await listDailyKanjiExportRows({
     database: input.database,
@@ -74,7 +75,7 @@ export async function buildDailyKanjiDataset(input: {
     .slice(0, limit);
 
   return {
-    version: datasetVersion,
+    version: dailyKanjiDatasetVersion,
     generatedAt: nowIso,
     recentMistakeLookbackDays,
     cards

@@ -3,6 +3,11 @@ import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 
+import {
+  dailyKanjiDefaultExportLimit,
+  dailyKanjiDefaultRecentMistakeLookbackDays
+} from "@/features/daily-kanji/server/exporter";
+
 const iosRoot = path.join(process.cwd(), "apps", "daily-kanji-ios");
 const contractPath = path.join(iosRoot, "offline-contract.json");
 const scannedSourceDirs = ["App", "Shared", "WidgetExtension"].map((segment) =>
@@ -33,6 +38,20 @@ describe("daily kanji iOS offline contract", () => {
         appGroups: boolean;
         associatedDomains: boolean;
       };
+      freeTierBudget: {
+        monthlyRuntime: {
+          tursoQueries: number;
+          vercelRequests: number;
+        };
+        packageWorkflow: {
+          defaultCardLimit: number;
+          defaultRecentMistakeLookbackDays: number;
+          expectedRemoteQueriesPerPackageRun: number;
+          generatedArtifacts: string[];
+          trigger: string;
+          vercelRequestsPerPackageRun: number;
+        };
+      };
       remoteServices: string[];
       runtimeNetwork: string;
     };
@@ -41,6 +60,24 @@ describe("daily kanji iOS offline contract", () => {
       entitlements: {
         appGroups: false,
         associatedDomains: false
+      },
+      freeTierBudget: {
+        monthlyRuntime: {
+          tursoQueries: 0,
+          vercelRequests: 0
+        },
+        packageWorkflow: {
+          defaultCardLimit: dailyKanjiDefaultExportLimit,
+          defaultRecentMistakeLookbackDays:
+            dailyKanjiDefaultRecentMistakeLookbackDays,
+          expectedRemoteQueriesPerPackageRun: 1,
+          generatedArtifacts: [
+            "App/Resources/daily-kanji-cards.json",
+            "App/Resources/Audio/"
+          ],
+          trigger: "manual-only",
+          vercelRequestsPerPackageRun: 0
+        }
       },
       remoteServices: [],
       runtimeNetwork: "none"

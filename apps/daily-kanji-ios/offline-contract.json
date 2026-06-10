@@ -3,6 +3,23 @@
     "appGroups": false,
     "associatedDomains": false
   },
+  "freeTierBudget": {
+    "monthlyRuntime": {
+      "tursoQueries": 0,
+      "vercelRequests": 0
+    },
+    "packageWorkflow": {
+      "defaultCardLimit": 250,
+      "defaultRecentMistakeLookbackDays": 3,
+      "expectedRemoteQueriesPerPackageRun": 1,
+      "generatedArtifacts": [
+        "App/Resources/daily-kanji-cards.json",
+        "App/Resources/Audio/"
+      ],
+      "trigger": "manual-only",
+      "vercelRequestsPerPackageRun": 0
+    }
+  },
   "remoteServices": [],
   "runtimeNetwork": "none"
 }

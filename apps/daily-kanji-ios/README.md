@@ -179,6 +179,12 @@ widget, audio o contenuti pesanti scaricati dal telefono.
 Il contratto offline e' dichiarato in `offline-contract.json` e verificato da
 `tests/daily-kanji-ios-offline-contract.test.ts`: il test blocca l'introduzione
 accidentale di API di rete runtime, App Group o Associated Domains nella app iOS.
+Lo stesso contratto dichiara anche il budget free-tier atteso: 0 richieste
+runtime mensili a Vercel, 0 query runtime mensili a Turso, export/package solo
+manuale, 1 query remota attesa per run di export se `DATABASE_URL` punta a Turso,
+0 richieste Vercel per run di package e limite default di 250 card packaged.
+Il test confronta quel limite con il default reale dell'exporter, cosi' il
+contratto non puo divergere silenziosamente dallo script `daily-kanji:package`.
 
 ## Verifica per agenti
 

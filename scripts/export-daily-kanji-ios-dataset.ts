@@ -4,6 +4,12 @@ import { existsSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+import {
+  buildDailyKanjiDataset,
+  dailyKanjiDefaultExportLimit,
+  dailyKanjiDefaultRecentMistakeLookbackDays
+} from "../src/features/daily-kanji/server/exporter.ts";
+
 class DailyKanjiExportCliError extends Error {
   readonly exitCode: number;
 
@@ -31,8 +37,6 @@ try {
 
   const { closeDatabaseClient, createDatabaseClient } =
     await import("../src/db/create-client.ts");
-  const { buildDailyKanjiDataset } =
-    await import("../src/features/daily-kanji/server/exporter.ts");
   const database = createDatabaseClient({
     databaseUrl: location.configuredPath
   });
@@ -76,8 +80,8 @@ type DatabaseLocation = {
 };
 
 function resolveCliOptions(args: string[]): CliOptions {
-  let limit = 250;
-  let lookbackDays = 3;
+  let limit = dailyKanjiDefaultExportLimit;
+  let lookbackDays = dailyKanjiDefaultRecentMistakeLookbackDays;
   let outputPath = defaultOutputPath;
 
   for (let index = 0; index < args.length; index += 1) {
