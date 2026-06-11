@@ -167,22 +167,105 @@ private struct DailyKanjiPitchAccentReadingView: View {
     let pattern: DailyKanjiPitchAccentPattern
 
     var body: some View {
-        HStack(alignment: .bottom, spacing: 0) {
-            ForEach(pattern.moras) { mora in
-                VStack(spacing: 2) {
-                    Capsule()
-                        .fill(mora.isHigh ? Color(red: 0.22, green: 0.86, blue: 0.42) : Color.clear)
-                        .frame(width: barWidth(for: mora), height: 2.5)
+        VStack(spacing: 2) {
+            ZStack(alignment: .topLeading) {
+                ForEach(Array(pattern.upperRails.enumerated()), id: \.offset) { _, rail in
+                    railView(rail)
+                        .offset(x: railX(for: rail), y: upperRailY)
+                }
 
+                ForEach(Array(pattern.lowerRails.enumerated()), id: \.offset) { _, rail in
+                    railView(rail)
+                        .offset(x: railX(for: rail), y: lowerRailY)
+                }
+
+                ForEach(Array(pattern.connectors.enumerated()), id: \.offset) { _, connector in
+                    connectorView(connector)
+                        .offset(x: connectorX(for: connector), y: upperRailY)
+                }
+            }
+            .frame(width: totalWidth, height: traceHeight, alignment: .topLeading)
+
+            HStack(alignment: .bottom, spacing: 0) {
+                ForEach(pattern.moras) { mora in
                     Text(mora.text)
                         .font(.system(size: fontSize, weight: .semibold, design: .rounded))
                         .lineLimit(1)
                         .minimumScaleFactor(0.75)
+                        .frame(width: segmentWidth)
                 }
-                .frame(width: segmentWidth)
             }
+            .frame(width: totalWidth)
         }
         .frame(maxWidth: .infinity, alignment: .center)
+    }
+
+    @ViewBuilder
+    private func railView(_ rail: DailyKanjiPitchAccentPattern.Rail) -> some View {
+        if rail.length > 0 {
+            Capsule()
+                .fill(traceColor)
+                .frame(width: railWidth(for: rail), height: traceSize)
+        }
+    }
+
+    private func connectorView(_ connector: DailyKanjiPitchAccentPattern.Connector) -> some View {
+        Rectangle()
+            .fill(traceColor)
+            .frame(width: traceSize, height: connectorHeight)
+    }
+
+    private var traceColor: Color {
+        Color(red: 0.48, green: 0.75, blue: 0.18)
+    }
+
+    private var traceSize: CGFloat {
+        2.4
+    }
+
+    private var traceHeight: CGFloat {
+        max(fontSize * 0.44, 11)
+    }
+
+    private var connectorHeight: CGFloat {
+        lowerRailY - upperRailY + traceSize
+    }
+
+    private var upperRailY: CGFloat {
+        0
+    }
+
+    private var lowerRailY: CGFloat {
+        traceHeight - traceSize
+    }
+
+    private var totalWidth: CGFloat {
+        CGFloat(pattern.moras.count) * segmentWidth
+    }
+
+    private var railInset: CGFloat {
+        traceSize / 2
+    }
+
+    private var railEndTrim: CGFloat {
+        traceSize / 2
+    }
+
+    private var railTailTrim: CGFloat {
+        max(segmentWidth * 0.1, 2.5)
+    }
+
+    private func railX(for rail: DailyKanjiPitchAccentPattern.Rail) -> CGFloat {
+        CGFloat(rail.start) * segmentWidth + railInset
+    }
+
+    private func railWidth(for rail: DailyKanjiPitchAccentPattern.Rail) -> CGFloat {
+        let trim = rail.tail ? railTailTrim : railEndTrim
+        return max(CGFloat(rail.length) * segmentWidth - railInset - trim, traceSize)
+    }
+
+    private func connectorX(for connector: DailyKanjiPitchAccentPattern.Connector) -> CGFloat {
+        CGFloat(connector.boundary) * segmentWidth - (traceSize / 2)
     }
 
     private var fontSize: CGFloat {
@@ -220,10 +303,6 @@ private struct DailyKanjiPitchAccentReadingView: View {
         }
 
         return width
-    }
-
-    private func barWidth(for mora: DailyKanjiPitchAccentPattern.Mora) -> CGFloat {
-        mora.text.count > 1 ? segmentWidth * 0.82 : segmentWidth * 0.65
     }
 }
 

@@ -80,7 +80,92 @@ struct DailyKanjiPitchAccentPattern: Equatable {
         var id: Int { index }
     }
 
+    struct Rail: Equatable {
+        let start: Int
+        let length: Int
+        let tail: Bool
+    }
+
+    struct Connector: Equatable {
+        enum Kind: Equatable {
+            case drop
+            case rise
+        }
+
+        let boundary: Int
+        let kind: Kind
+    }
+
+    let downstep: Int
     let moras: [Mora]
+
+    var upperRails: [Rail] {
+        if downstep == 0 {
+            return [
+                Rail(start: 1, length: max(moras.count - 1, 0), tail: true)
+            ]
+        }
+
+        if downstep == 1 {
+            return [
+                Rail(start: 0, length: 1, tail: false)
+            ]
+        }
+
+        return [
+            Rail(
+                start: 1,
+                length: max(downstep - 1, 0),
+                tail: false
+            )
+        ]
+    }
+
+    var lowerRails: [Rail] {
+        var rails: [Rail] = []
+
+        if downstep == 0 {
+            rails.append(Rail(start: 0, length: 1, tail: false))
+            return rails
+        }
+
+        if downstep > 1 {
+            rails.append(Rail(start: 0, length: 1, tail: false))
+        }
+
+        if downstep < moras.count {
+            rails.append(
+                Rail(
+                    start: downstep,
+                    length: moras.count - downstep,
+                    tail: true
+                )
+            )
+        }
+
+        return rails
+    }
+
+    var connectors: [Connector] {
+        var connectors: [Connector] = []
+
+        if downstep == 0 {
+            connectors.append(Connector(boundary: 1, kind: .rise))
+            return connectors
+        }
+
+        if downstep > 1 {
+            connectors.append(Connector(boundary: 1, kind: .rise))
+        }
+
+        if downstep < moras.count {
+            connectors.append(Connector(boundary: downstep, kind: .drop))
+            return connectors
+        }
+
+        connectors.append(Connector(boundary: moras.count, kind: .drop))
+        return connectors
+    }
 }
 
 enum DailyKanjiEntryKind: String, Codable {
@@ -283,6 +368,7 @@ private extension DailyKanjiPitchAccentPattern {
             return nil
         }
 
+        downstep = pitchAccent
         moras = moraTexts.enumerated().map { index, text in
             Mora(
                 index: index,

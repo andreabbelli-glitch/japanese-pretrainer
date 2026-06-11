@@ -827,6 +827,63 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(pattern.moras.map(\.isHigh), [false, true, true, true])
     }
 
+    func testLockScreenPitchAccentPatternBuildsContinuousHeibanTrace() throws {
+        let card = try Self.cardReplacingReadingAndPitchAccent(
+            reading: "けが",
+            pitchAccent: 0
+        )
+        let pattern = try XCTUnwrap(card.lockScreenPitchAccentPattern)
+
+        XCTAssertEqual(pattern.lowerRails, [
+            DailyKanjiPitchAccentPattern.Rail(start: 0, length: 1, tail: false)
+        ])
+        XCTAssertEqual(pattern.upperRails, [
+            DailyKanjiPitchAccentPattern.Rail(start: 1, length: 1, tail: true)
+        ])
+        XCTAssertEqual(pattern.connectors, [
+            DailyKanjiPitchAccentPattern.Connector(boundary: 1, kind: .rise)
+        ])
+    }
+
+    func testLockScreenPitchAccentPatternBuildsContinuousNakadakaTrace() throws {
+        let card = try Self.cardReplacingReadingAndPitchAccent(
+            reading: "しんか",
+            pitchAccent: 2
+        )
+        let pattern = try XCTUnwrap(card.lockScreenPitchAccentPattern)
+
+        XCTAssertEqual(pattern.lowerRails, [
+            DailyKanjiPitchAccentPattern.Rail(start: 0, length: 1, tail: false),
+            DailyKanjiPitchAccentPattern.Rail(start: 2, length: 1, tail: true)
+        ])
+        XCTAssertEqual(pattern.upperRails, [
+            DailyKanjiPitchAccentPattern.Rail(start: 1, length: 1, tail: false)
+        ])
+        XCTAssertEqual(pattern.connectors, [
+            DailyKanjiPitchAccentPattern.Connector(boundary: 1, kind: .rise),
+            DailyKanjiPitchAccentPattern.Connector(boundary: 2, kind: .drop)
+        ])
+    }
+
+    func testLockScreenPitchAccentPatternBuildsContinuousOdakaTrace() throws {
+        let card = try Self.cardReplacingReadingAndPitchAccent(
+            reading: "かんてん",
+            pitchAccent: 4
+        )
+        let pattern = try XCTUnwrap(card.lockScreenPitchAccentPattern)
+
+        XCTAssertEqual(pattern.lowerRails, [
+            DailyKanjiPitchAccentPattern.Rail(start: 0, length: 1, tail: false)
+        ])
+        XCTAssertEqual(pattern.upperRails, [
+            DailyKanjiPitchAccentPattern.Rail(start: 1, length: 3, tail: false)
+        ])
+        XCTAssertEqual(pattern.connectors, [
+            DailyKanjiPitchAccentPattern.Connector(boundary: 1, kind: .rise),
+            DailyKanjiPitchAccentPattern.Connector(boundary: 4, kind: .drop)
+        ])
+    }
+
     func testLockScreenPitchAccentPatternAllowsFinalMoraDrop() throws {
         let card = try Self.cardReplacingReadingAndPitchAccent(
             reading: "かんてん",
