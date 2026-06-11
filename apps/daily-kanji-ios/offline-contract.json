@@ -5,8 +5,10 @@
   },
   "freeTierBudget": {
     "monthlyRuntime": {
-      "tursoQueries": 0,
-      "vercelRequests": 0
+      "appSyncRequests": 200,
+      "tursoQueries": 400,
+      "vercelRequests": 400,
+      "widgetSyncRequests": 200
     },
     "packageWorkflow": {
       "defaultCardLimit": 250,
@@ -20,6 +22,8 @@
       "vercelRequestsPerPackageRun": 0
     }
   },
-  "remoteServices": [],
-  "runtimeNetwork": "none"
+  "remoteServices": [
+    "private-daily-kanji-ios-dataset-api"
+  ],
+  "runtimeNetwork": "offline-first"
 }

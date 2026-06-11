@@ -32,27 +32,30 @@ widget timeline slots.
 Move from offline-only to offline-first.
 
 The packaged bundle remains the boot fallback. The app adds a private sync
-client that downloads the same ranked dataset from the webapp, writes it to a
-local shared cache, and asks WidgetKit to reload timelines. The widget never
-uses network APIs; it only reads the shared cache and falls back to the packaged
-bundle if the cache is missing or invalid.
+client that downloads the same ranked dataset from the webapp and writes it to a
+local app cache. The widget cannot share that cache on the current free signing
+path, so it gets its own small sync/cache layer inside the widget extension. Both
+clients use the same endpoint and the same 4-hour freshness rule.
 
 ```mermaid
 flowchart LR
   DB["Turso / local DB"] --> API["Private Next.js dataset API"]
   API --> APP["iOS app sync client"]
-  APP --> CACHE["App Group JSON cache"]
-  CACHE --> APP
-  CACHE --> WIDGET["WidgetKit extension"]
+  API --> WIDGETSYNC["Widget sync client"]
+  APP --> APPCACHE["App JSON cache"]
+  WIDGETSYNC --> WIDGETCACHE["Widget JSON cache"]
+  APPCACHE --> APP
+  WIDGETCACHE --> WIDGET["WidgetKit extension"]
   BUNDLE["Packaged JSON fallback"] --> APP
   BUNDLE --> WIDGET
 ```
 
 Apple's iOS capability table documents that provisioning profile capabilities
 depend on membership and lists App Groups as available for ADP, ADEP, and Apple
-Developer membership. The implementation still needs a device signing spike with
-the current Personal Team, because Xcode provisioning can fail for local account
-or bundle-id-specific reasons.
+Developer membership. The device signing spike on this workspace still failed:
+the cached Personal Team provisioning profiles did not include the App Groups
+capability and `xcodebuild -allowProvisioningUpdates` could not regenerate them
+from CLI. The zero-cost implementation therefore avoids App Groups.
 
 Source: https://developer.apple.com/help/account/reference/supported-capabilities-ios/
 
@@ -80,7 +83,7 @@ The route:
 Token handling should match the existing `CRON_SECRET` pattern:
 
 - use constant-time comparison through `matchesSecret`;
-- parse only `Authorization: Bearer ...`;
+- parse only `Authorization: Bearer <token>`;
 - document `DAILY_KANJI_IOS_SYNC_TOKEN` in `.env.example` and iOS setup notes.
 
 ## iOS App Design
@@ -90,7 +93,7 @@ Add a small sync layer with four responsibilities:
 - decide whether a refresh is due;
 - call the private endpoint;
 - validate/decode the dataset;
-- atomically write it to the shared cache.
+- atomically write it to the app-local cache.
 
 Refresh policy v1:
 
@@ -112,17 +115,21 @@ dataset. iOS keeps only lightweight rotation and local exposure history.
 
 ## Widget Design
 
-The widget remains network-free.
+The widget remains database-free and keeps network usage bounded. It may call the
+private dataset endpoint only when its own local cache is stale or missing.
 
 It should use this loading order:
 
-1. shared cached dataset from App Group;
-2. packaged bundle dataset;
-3. sample card only for previews or broken development builds.
+1. widget-local cached dataset;
+2. remote dataset if cache is stale and sync config is available;
+3. packaged bundle dataset;
+4. sample card only for previews or broken development builds.
 
-When the app writes a new dataset, it calls `WidgetCenter.shared.reloadAllTimelines()`.
-The widget timeline still rotates using hourly slots. iOS still does not
-guarantee a new card on every physical pickup or unlock.
+When the app writes a new dataset, it may call
+`WidgetCenter.shared.reloadAllTimelines()` to ask WidgetKit to re-evaluate the
+timeline, but the widget still owns its own cache. The widget timeline still
+rotates using hourly slots. iOS still does not guarantee a new card on every
+physical pickup or unlock.
 
 ## Audio Design
 
@@ -141,7 +148,8 @@ cards.
 
 The new runtime budget is intentionally low:
 
-- widget: 0 network requests;
+- widget: at most one successful sync per 4 hours when WidgetKit asks for a
+  timeline;
 - app: at most one successful sync per 4 hours during normal use;
 - server: one DB export query per sync request;
 - payload: ranked JSON only, no audio blobs;
@@ -150,27 +158,21 @@ The new runtime budget is intentionally low:
 The previous `offline-contract.json` must be replaced or evolved into an
 `offline-first-contract.json` style contract:
 
-- runtime network is allowed only in the app target;
-- widget network remains forbidden;
+- runtime network is allowed only in the app target and widget extension;
+- shared Swift sources remain network-free because they compile into both
+  targets;
 - database frameworks remain forbidden on iOS;
-- App Group entitlement is expected;
+- App Group entitlement remains forbidden for the zero-cost path;
 - associated domains remain forbidden;
 - remote services are the private webapp dataset API and Turso through the
   server only.
 
-## Fallback If App Group Fails With Personal Team
+## App Group Decision
 
-If Xcode cannot provision App Groups on the free Personal Team, use this fallback
-without adding a paid account:
-
-- app syncs into its own local Documents/Application Support cache;
-- widget continues to use packaged data only;
-- the app becomes current immediately, while the widget remains current only
-  after packaging/reinstall;
-- document the limitation clearly.
-
-This fallback is worse for the widget, so the App Group signing spike is the
-first implementation task.
+The first implementation slice tested App Groups and found they are not usable
+from the current CLI/free-signing path. We will not require a paid Developer
+Program membership for this personal app. The widget gets its own sync path
+instead of reading app-written files.
 
 ## Security
 
@@ -194,25 +196,25 @@ Server tests:
 
 iOS unit tests:
 
-- repository prefers shared synced cache over bundled fallback;
-- invalid shared JSON falls back safely;
+- repository prefers synced cache over bundled fallback;
+- invalid synced JSON falls back safely;
 - stale cache metadata is interpreted correctly;
 - sync policy gates refresh at 4 hours and after day change;
 - app triggers timeline reload after a successful write.
 
 Contract tests:
 
-- app target may use `URLSession`;
-- widget target must not use `URLSession`, `URLRequest`, `AsyncImage`, or remote
-  URL reads;
+- app and widget targets may use `URLSession`;
+- shared Swift sources must not use `URLSession`, `URLRequest`, `AsyncImage`, or
+  remote URL reads;
 - database APIs/frameworks remain forbidden in all iOS targets;
-- App Group entitlement is present if the signing spike succeeds.
+- App Group and Associated Domains entitlements remain absent.
 
 Manual QA:
 
 - launch app with no cache: packaged data appears;
 - tap "Aggiorna ora": synced data appears and last sync time updates;
-- lock-screen widget refreshes after app sync;
+- lock-screen widget refreshes from its own sync/cache path;
 - offline launch after a previous sync still works;
 - wrong token shows a recoverable sync error without breaking the app.
 
@@ -221,11 +223,11 @@ Manual QA:
 Each implementation slice must have an independent reviewer loop until green
 before commit.
 
-1. App Group signing spike and project contract update.
+1. App Group signing spike, fallback decision, and project contract update.
 2. Private server endpoint and route tests.
-3. Shared cache repository on iOS, with fallback tests.
+3. Local cache repository on iOS, with fallback tests.
 4. Sync policy and app sync client, with unit tests.
-5. Widget loader migration to shared cache, with contract tests.
+5. Widget sync/cache migration, with contract tests.
 6. UI polish for sync status and manual refresh.
 7. Final device QA and docs/runbook update.
 
@@ -233,7 +235,7 @@ before commit.
 
 - iOS grading/review writes back to FSRS.
 - Background push or silent notifications.
-- Widget direct network calls.
+- Unbounded widget polling, background push, or direct widget database access.
 - Remote audio download/cache.
 - macOS widget.
 - Public App Store distribution.

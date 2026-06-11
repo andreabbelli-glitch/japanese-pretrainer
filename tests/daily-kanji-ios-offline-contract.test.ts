@@ -13,10 +13,13 @@ const iosRoot = path.join(process.cwd(), "apps", "daily-kanji-ios");
 const contractPath = path.join(iosRoot, "offline-contract.json");
 const packageJsonPath = path.join(process.cwd(), "package.json");
 const projectConfigPath = path.join(iosRoot, "project.yml");
-const scannedSourceDirs = ["App", "Shared", "WidgetExtension"].map((segment) =>
+const databaseScannedSourceDirs = ["App", "Shared", "WidgetExtension"].map(
+  (segment) => path.join(iosRoot, segment)
+);
+const sharedSourceDirs = ["Shared"].map((segment) =>
   path.join(iosRoot, segment)
 );
-const forbiddenRuntimeNetworkPatterns = [
+const forbiddenSharedNetworkPatterns = [
   /\bAsyncImage\s*\(/,
   /\bURLSession\b/,
   /\bURLRequest\b/,
@@ -27,10 +30,7 @@ const forbiddenRuntimeNetworkPatterns = [
   /\bURL\s*\(\s*string:\s*"https?:\/\//,
   /\bData\s*\(\s*contentsOf:\s*URL\s*\(/
 ];
-const forbiddenEntitlementPatterns = [
-  /CODE_SIGN_ENTITLEMENTS/,
-  /^\s*entitlements\s*:/,
-  /com\.apple\.security\.application-groups/,
+const forbiddenAssociatedDomainPatterns = [
   /com\.apple\.developer\.associated-domains/
 ];
 const forbiddenDatabasePatterns = [
@@ -49,7 +49,7 @@ const forbiddenDatabasePatterns = [
 ];
 
 describe("daily kanji iOS offline contract", () => {
-  it("declares a zero-runtime-network personal app contract", async () => {
+  it("declares an offline-first personal app contract", async () => {
     const contract = JSON.parse(await readFile(contractPath, "utf8")) as {
       entitlements: {
         appGroups: boolean;
@@ -57,8 +57,10 @@ describe("daily kanji iOS offline contract", () => {
       };
       freeTierBudget: {
         monthlyRuntime: {
+          appSyncRequests: number;
           tursoQueries: number;
           vercelRequests: number;
+          widgetSyncRequests: number;
         };
         packageWorkflow: {
           defaultCardLimit: number;
@@ -80,8 +82,10 @@ describe("daily kanji iOS offline contract", () => {
       },
       freeTierBudget: {
         monthlyRuntime: {
-          tursoQueries: 0,
-          vercelRequests: 0
+          appSyncRequests: 200,
+          tursoQueries: 400,
+          vercelRequests: 400,
+          widgetSyncRequests: 200
         },
         packageWorkflow: {
           defaultCardLimit: dailyKanjiDefaultExportLimit,
@@ -96,23 +100,23 @@ describe("daily kanji iOS offline contract", () => {
           vercelRequestsPerPackageRun: 0
         }
       },
-      remoteServices: [],
-      runtimeNetwork: "none"
+      remoteServices: ["private-daily-kanji-ios-dataset-api"],
+      runtimeNetwork: "offline-first"
     });
   });
 
-  it("keeps maintained iOS runtime sources free of networking APIs", async () => {
-    const sourceFiles = await listFiles(scannedSourceDirs, [".swift"]);
+  it("keeps shared runtime sources free of networking APIs", async () => {
+    const sourceFiles = await listFiles(sharedSourceDirs, [".swift"]);
     const violations = await matchingLines(
       sourceFiles,
-      forbiddenRuntimeNetworkPatterns
+      forbiddenSharedNetworkPatterns
     );
 
     expect(violations).toEqual([]);
   });
 
   it("keeps maintained iOS runtime sources free of database APIs", async () => {
-    const sourceFiles = await listFiles(scannedSourceDirs, [".swift"]);
+    const sourceFiles = await listFiles(databaseScannedSourceDirs, [".swift"]);
     const violations = await matchingLines(
       sourceFiles,
       forbiddenDatabasePatterns
@@ -130,7 +134,7 @@ describe("daily kanji iOS offline contract", () => {
     expect(violations).toEqual([]);
   });
 
-  it("detects common Swift runtime-network escape hatches without blocking bundled file reads", () => {
+  it("detects shared-disallowed Swift runtime-network escape hatches without blocking bundled file reads", () => {
     const blockedSamples = [
       'AsyncImage(url: URL(string: "https://example.test/card.png"))',
       "let request = URLRequest(url: url)",
@@ -145,12 +149,12 @@ describe("daily kanji iOS offline contract", () => {
 
     expect(
       blockedSamples.filter((line) =>
-        forbiddenRuntimeNetworkPatterns.some((pattern) => pattern.test(line))
+        forbiddenSharedNetworkPatterns.some((pattern) => pattern.test(line))
       )
     ).toEqual(blockedSamples);
     expect(
       allowedSamples.filter((line) =>
-        forbiddenRuntimeNetworkPatterns.some((pattern) => pattern.test(line))
+        forbiddenSharedNetworkPatterns.some((pattern) => pattern.test(line))
       )
     ).toEqual([]);
   });
@@ -191,7 +195,12 @@ describe("daily kanji iOS offline contract", () => {
     ];
     const violations = await matchingLines(
       configFiles,
-      forbiddenEntitlementPatterns
+      [
+        /CODE_SIGN_ENTITLEMENTS/,
+        /^\s*entitlements\s*:/,
+        /com\.apple\.security\.application-groups/,
+        ...forbiddenAssociatedDomainPatterns
+      ]
     );
 
     expect(violations).toEqual([]);

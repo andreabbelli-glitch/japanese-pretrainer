@@ -149,9 +149,11 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   trattata come unico widget dell'utente e quindi progettata per sfruttare tutto
   lo spazio che iOS assegna a quel family. iOS non consente a un widget singolo
   di espandersi oltre le dimensioni del family selezionato.
-- La rotazione widget usa slot offline di 1 ora, precompilando 72 entry di
-  timeline per coprire circa 3 giorni senza chiamate di rete. WidgetKit non
-  garantisce un cambio card a ogni singolo wake/sblocco del telefono.
+- La rotazione widget usa slot di 1 ora. Nella versione offline-only questi slot
+  sono ricostruiti dal bundle packaged; nella milestone smart-sync il widget
+  potra aggiornare una propria cache locale dal dataset privato quando la cache
+  e' stale. WidgetKit non garantisce un cambio card a ogni singolo wake/sblocco
+  del telefono.
 - Il widget usa deep link `dailykanji://card/<card-id>` per aprire la card
   completa nell'app.
 - Senza App Group, l'app non puo sapere se il widget lockscreen e' stato
@@ -166,30 +168,33 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
 
 ## Limiti gratuiti e traffico
 
-La v1 deve restare personale e leggera:
+La v1 offline-only resta personale e leggera; la milestone smart-sync evolve il
+contratto in offline-first senza introdurre vendita, multiutente o sync FSRS da
+iOS:
 
-- dataset full e audio locali vengono packaged nell'app;
-- zero chiamate di rete runtime da app iOS o widget;
+- dataset full e audio locali restano packaged nell'app come fallback;
+- app e widget possono scaricare un piccolo JSON privato quando la cache locale
+  e' stale;
 - nessuna scrittura FSRS da iOS;
 - nessun entitlement App Group o Associated Domains;
-- nessun polling dal widget;
+- nessun polling illimitato dal widget;
 - fallback offline sempre disponibile.
 
-Con questa architettura, l'app iOS installata non consuma traffico runtime e non
-tocca Turso durante l'uso quotidiano. Vercel/Turso entrano solo nel workflow di
-export/package quando rigeneri il bundle personale; per un uso monoutente questo
-resta ampiamente sotto i free tier, perche' non ci sono aperture app, refresh
-widget, audio o contenuti pesanti scaricati dal telefono.
+Con il contratto offline-first, l'app iOS installata puo consumare traffico
+runtime solo per il JSON del dataset privato. Il budget atteso resta ampiamente
+sotto i free tier per uso monoutente: sync automatico massimo ogni 4 ore per app
+e widget, payload JSON piccolo, nessun download audio e nessun accesso diretto a
+Turso dal telefono.
 
-Il contratto offline e' dichiarato in `offline-contract.json` e verificato da
-`tests/daily-kanji-ios-offline-contract.test.ts`: il test blocca l'introduzione
-accidentale di API di rete runtime, App Group o Associated Domains nella app iOS.
-Lo stesso contratto dichiara anche il budget free-tier atteso: 0 richieste
-runtime mensili a Vercel, 0 query runtime mensili a Turso, export/package solo
-manuale, 1 query remota attesa per run di export se `DATABASE_URL` punta a Turso,
-0 richieste Vercel per run di package e limite default di 250 card packaged.
-Il test confronta quel limite con il default reale dell'exporter, cosi' il
-contratto non puo divergere silenziosamente dallo script `daily-kanji:package`.
+Il contratto offline-first e' dichiarato in `offline-contract.json` e verificato
+da `tests/daily-kanji-ios-offline-contract.test.ts`: il test blocca
+l'introduzione accidentale di database runtime iOS, App Group o Associated
+Domains. Le API di rete restano vietate in `Shared/` per evitare che codice
+network venga linkato implicitamente sia da app sia da widget; i client di rete
+devono vivere nei target `App/` o `WidgetExtension/`. Lo stesso contratto
+dichiara il budget free-tier atteso: 200 sync app e 200 sync widget mensili come
+budget automatico modellato, 400 richieste Vercel / 400 query Turso massime
+attese lato endpoint, piu export/package manuale.
 
 ## Verifica per agenti
 
