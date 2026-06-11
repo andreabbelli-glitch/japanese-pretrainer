@@ -188,6 +188,12 @@ La app iOS privata + WidgetKit vive in `apps/daily-kanji-ios/`. Non fa parte del
 gate applicativo Next.js quando si tocca solo Swift/UI iOS, ma va verificata con
 Xcode quando cambiano progetto, signing, widget o risorse native.
 
+La milestone smart-sync usa l'App Group `group.dev.local.daily-kanji`: l'app
+scarica il JSON privato e lo scrive nella cache condivisa, mentre il widget resta
+senza rete e legge cache condivisa -> bundle packaged -> sample. Il token di
+sync va trattato come segreto: non e' committato, ma un'IPA buildata con token
+configurato lo contiene nei build setting espansi.
+
 Comandi locali:
 
 ```sh
@@ -212,6 +218,18 @@ Su questo setup il rinnovo da CLI e' stato verificato via CoreDevice anche senza
 cavo quando l'iPhone risulta `transportType: localNetwork`. Sideloadly rimane
 diagnostico: installa la app principale, ma non registra la WidgetKit extension
 nella gallery widget.
+
+Per abilitare la sync runtime privata nella build locale, imposta questi build
+setting in Xcode o passali a `xcodebuild`/script wrapper:
+
+```sh
+DAILY_KANJI_IOS_SYNC_ENDPOINT=https://<deployment>/api/daily-kanji/ios-dataset
+DAILY_KANJI_IOS_SYNC_TOKEN=<secret>
+```
+
+Se i valori restano assenti o placeholder, l'app continua a funzionare con cache
+o bundle locale e mostra `Sync non configurato`; il widget continua a leggere
+solo la cache condivisa o il bundle.
 
 Per aggiornare lo snapshot offline e gli audio packaged usati dall'app iOS:
 
