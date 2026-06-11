@@ -13,6 +13,7 @@ import {
 const INTERNAL_CONTENT_CACHE_REVALIDATE_PATH =
   "/api/internal/content-cache/revalidate";
 const INTERNAL_FSRS_OPTIMIZER_RUN_PATH = "/api/internal/fsrs-optimizer/run";
+const DAILY_KANJI_IOS_DATASET_PATH = "/api/daily-kanji/ios-dataset";
 const STATIC_MEDIA_AUDIO_PATH_PREFIX = "/media-audio";
 
 export function proxy(request: NextRequest) {
@@ -37,6 +38,7 @@ export function proxy(request: NextRequest) {
     pathname === INTERNAL_CONTENT_CACHE_REVALIDATE_PATH;
   const isInternalFsrsOptimizerRun =
     pathname === INTERNAL_FSRS_OPTIMIZER_RUN_PATH;
+  const isDailyKanjiIosDataset = pathname === DAILY_KANJI_IOS_DATASET_PATH;
   const sessionToken = request.cookies.get(AUTH_SESSION_COOKIE)?.value;
   const isAuthenticated = hasValidSessionToken(sessionToken);
 
@@ -48,7 +50,8 @@ export function proxy(request: NextRequest) {
     isLoginPage ||
     isAuthenticated ||
     isInternalContentCacheRevalidate ||
-    isInternalFsrsOptimizerRun
+    isInternalFsrsOptimizerRun ||
+    isDailyKanjiIosDataset
   ) {
     return continueRequest(requestHeaders);
   }

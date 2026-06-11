@@ -37,6 +37,17 @@ describe("proxy", () => {
     expect(response.headers.get("location")).toBeNull();
   });
 
+  it("lets the Daily Kanji iOS dataset route reach its own bearer-token auth", () => {
+    enableAuth();
+
+    const response = proxy(
+      new NextRequest("https://example.test/api/daily-kanji/ios-dataset")
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("location")).toBeNull();
+  });
+
   it("keeps redirecting regular unauthenticated app requests to login", () => {
     enableAuth();
 
