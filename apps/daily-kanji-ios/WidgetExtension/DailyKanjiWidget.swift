@@ -102,7 +102,7 @@ private struct DailyKanjiHomeMediumWidgetView: View {
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
             Text(card.displayFront)
-                .font(.system(size: 66, weight: .semibold, design: .serif))
+                .font(.system(size: 66, weight: .semibold))
                 .foregroundStyle(.white)
                 .lineLimit(1)
                 .minimumScaleFactor(0.28)
@@ -157,7 +157,7 @@ private struct DailyKanjiHomeSmallWidgetView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 7) {
             Text(card.displayFront)
-                .font(.system(size: 58, weight: .semibold, design: .serif))
+                .font(.system(size: 58, weight: .semibold))
                 .foregroundStyle(.white)
                 .lineLimit(1)
                 .minimumScaleFactor(0.28)
@@ -186,7 +186,7 @@ private struct DailyKanjiLockScreenCardView: View {
 
     var body: some View {
         Text(card.lockScreenFrontText)
-            .font(.system(size: 56, weight: .semibold, design: .serif))
+            .font(.system(size: 56, weight: .semibold))
             .minimumScaleFactor(0.26)
             .lineLimit(1)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)

@@ -1129,6 +1129,14 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertFalse(frontBlock.contains(".lineLimit(2)"))
     }
 
+    func testJapaneseFrontTypographyUsesSystemDefaultInsteadOfSerif() throws {
+        let appSource = try Self.appSourceFileContents()
+        let widgetSource = try Self.widgetSourceFileContents()
+
+        XCTAssertFalse(appSource.contains("design: .serif"))
+        XCTAssertFalse(widgetSource.contains("design: .serif"))
+    }
+
     func testDetailExampleLinesKeepItalianExampleWhenJapaneseExampleIsMissing() throws {
         let card = try Self.cardReplacingExamples(exampleJp: nil, exampleIt: "Solo esempio italiano.")
 

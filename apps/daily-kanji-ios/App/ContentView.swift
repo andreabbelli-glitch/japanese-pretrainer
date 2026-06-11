@@ -72,7 +72,7 @@ struct ContentView: View {
     private func selectedCardView(_ card: DailyKanjiCard) -> some View {
         VStack(alignment: .leading, spacing: 20) {
             Text(card.displayFront)
-                .font(.system(size: 84, weight: .semibold, design: .serif))
+                .font(.system(size: 84, weight: .semibold))
                 .minimumScaleFactor(0.32)
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -181,7 +181,7 @@ struct ContentView: View {
                             } label: {
                                 HStack(alignment: .center, spacing: 14) {
                                     Text(card.displayFront)
-                                        .font(.system(size: 34, weight: .semibold, design: .serif))
+                                        .font(.system(size: 34, weight: .semibold))
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.45)
                                         .allowsTightening(true)
