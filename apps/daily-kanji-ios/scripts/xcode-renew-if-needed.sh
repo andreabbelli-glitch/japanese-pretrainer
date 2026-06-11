@@ -12,6 +12,10 @@ LOCK_DIR="$STATE_DIR/renew.lock"
 LAST_SUCCESS_FILE="$STATE_DIR/last-renew-success.epoch"
 FORCE=0
 
+if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Developer ]; then
+  export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+fi
+
 usage() {
   cat <<'USAGE'
 Usage: xcode-renew-if-needed.sh [--force] [--status] [--mark-success-now]

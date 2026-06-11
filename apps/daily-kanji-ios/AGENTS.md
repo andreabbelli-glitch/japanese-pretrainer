@@ -64,12 +64,15 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh --mark-succ
 Il LaunchAgent utente controlla ogni 6 ore, ma il wrapper esegue la build/install
 solo se l'ultimo rinnovo riuscito ha almeno 5 giorni e l'iPhone e' raggiungibile
 via CoreDevice. Il `DEVICE_ID` viene scritto nel file locale non versionato
-`~/Library/Application Support/DailyKanji/renew.env`; il primo install crea anche
-il marker `last-renew-success.epoch`, quindi `RunAtLoad` non scatena un build
-immediato. Quando il rinnovo e' davvero dovuto, il wrapper esegue prima
-`pnpm daily-kanji:package` e poi `scripts/xcode-renew.sh`, cosi' il verifier non
-blocca risorse packaged stale. Se il device non e' disponibile, il job termina
-senza errore e riprova al giro successivo. Per rimuoverlo:
+`~/Library/Application Support/DailyKanji/renew.env`; lo stesso file puo
+contenere `DAILY_KANJI_IOS_SYNC_ENDPOINT` e `DAILY_KANJI_IOS_SYNC_TOKEN`, che
+`scripts/xcode-renew.sh` passa come build settings locali senza committare
+segreti. Il primo install crea anche il marker `last-renew-success.epoch`, quindi
+`RunAtLoad` non scatena un build immediato. Quando il rinnovo e' davvero dovuto,
+il wrapper esegue prima `pnpm daily-kanji:package` e poi
+`scripts/xcode-renew.sh`, cosi' il verifier non blocca risorse packaged stale. Se
+il device non e' disponibile, il job termina senza errore e riprova al giro
+successivo. Per rimuoverlo:
 
 ```sh
 ./scripts/install-renew-launchd.sh --uninstall

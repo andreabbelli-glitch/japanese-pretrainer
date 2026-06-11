@@ -158,9 +158,20 @@ DAILY_KANJI_IOS_SYNC_ENDPOINT=https://<deployment>/api/daily-kanji/ios-dataset
 DAILY_KANJI_IOS_SYNC_TOKEN=<secret>
 ```
 
-Questi valori vanno impostati come build settings locali o passati a
-`xcodebuild`; i placeholder non configurati vengono ignorati e l'app resta sul
-fallback packaged/cache. Il token non va committato.
+Questi valori vanno impostati come build settings locali, passati a `xcodebuild`
+oppure salvati nel file locale non versionato:
+
+```sh
+~/Library/Application Support/DailyKanji/renew.env
+```
+
+`scripts/xcode-renew.sh` legge `renew.env` e passa endpoint/token alla build
+Xcode. I placeholder non configurati vengono ignorati e l'app resta sul fallback
+packaged/cache. Il token non va committato. Dopo una build installata con questi
+valori, l'app prova il sync quando viene aperta o riportata in foreground: al
+massimo ogni 4 ore nello stesso giorno, sempre a cambio giorno, oppure subito
+quando l'utente preme "Aggiorna ora". Il widget non fa rete direttamente; legge
+la cache condivisa App Group scritta dall'app.
 
 Unit test iOS:
 

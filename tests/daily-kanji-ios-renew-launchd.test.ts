@@ -9,6 +9,7 @@ const renewIfNeededScriptPath = path.join(
   "scripts",
   "xcode-renew-if-needed.sh"
 );
+const renewScriptPath = path.join(iosRoot, "scripts", "xcode-renew.sh");
 const installLaunchdScriptPath = path.join(
   iosRoot,
   "scripts",
@@ -76,5 +77,39 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect(docs).toContain("./scripts/xcode-renew-if-needed.sh --status");
     expect(docs).toContain("./scripts/xcode-renew-if-needed.sh --force");
     expect(docs).toContain("renew.env");
+  });
+
+  it("lets the private sync endpoint and token flow into local Xcode installs", async () => {
+    const source = await readFile(renewScriptPath, "utf8");
+
+    expect(source).toContain('CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"');
+    expect(source).toContain("config_value DAILY_KANJI_IOS_SYNC_ENDPOINT");
+    expect(source).toContain("config_value DAILY_KANJI_IOS_SYNC_TOKEN");
+    expect(source).toContain("DAILY_KANJI_IOS_SYNC_ENDPOINT=");
+    expect(source).toContain("DAILY_KANJI_IOS_SYNC_TOKEN=");
+    expect(source).toContain("mktemp");
+    expect(source).toContain("daily-kanji-sync.XXXXXX");
+    expect(source).toContain("chmod 600");
+    expect(source).toContain("-quiet");
+    expect(source).toContain("-xcconfig");
+    expect(source).toContain("cleanup_sync_xcconfig");
+    expect(source).not.toContain('"${sync_build_settings[@]}"');
+    expect(source).not.toContain("XXXXXX.xcconfig");
+    expect(source).not.toContain("https://");
+    expect(source).not.toContain("daily-kanji-secret");
+  });
+
+  it("uses the full Xcode developer directory before checking CoreDevice reachability", async () => {
+    const source = await readFile(renewIfNeededScriptPath, "utf8");
+    const developerDirIndex = source.indexOf(
+      "export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer"
+    );
+    const devicectlIndex = source.indexOf(
+      "xcrun devicectl device info details"
+    );
+
+    expect(developerDirIndex).toBeGreaterThanOrEqual(0);
+    expect(devicectlIndex).toBeGreaterThanOrEqual(0);
+    expect(developerDirIndex).toBeLessThan(devicectlIndex);
   });
 });
