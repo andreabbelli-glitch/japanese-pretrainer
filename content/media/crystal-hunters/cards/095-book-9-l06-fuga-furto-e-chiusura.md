@@ -64,11 +64,12 @@ id: term-ch-b9-temochi
 lemma: 手持ち
 reading: てもち
 romaji: temochi
-meaning_it: ciò che si ha con sé; risorse in mano
+meaning_it: ciò che si ha con sé; risorse disponibili/in stock
 pos: noun
 notes_it: >-
   {{手持|ても}}ち indica ciò che hai a disposizione adesso: denaro, oggetti,
-  strumenti o risorse.
+  strumenti, scorte o risorse. Prima di un nome può anche descrivere qualcosa
+  da tenere in mano o portatile.
 level_hint: n2
 :::
 
@@ -202,11 +203,13 @@ entry_type: term
 entry_id: term-ch-b9-temochi
 card_type: recognition
 front: '{{手持|ても}}ち'
-back: 'てもち — risorse in mano; ciò che si ha con sé'
+back: >-
+  てもち — ciò che si ha in mano o con sé; risorse disponibili, scorte o stock.
+  Prima di un nome può anche voler dire "portatile/da tenere in mano".
 example_jp: '{{手持|ても}}ちの{{金|かね}}がない。'
 example_it: Non ho denaro con me.
 notes_it: >-
-  Ciò che hai a disposizione adesso.
+  Ciò che hai a disposizione adesso: denaro, oggetti, strumenti o scorte.
 tags: [crystal-hunters, book-9, lesson-06]
 :::
 
