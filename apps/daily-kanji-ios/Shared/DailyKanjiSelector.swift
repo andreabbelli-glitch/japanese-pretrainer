@@ -8,10 +8,11 @@ enum DailyKanjiSelectionMode {
 struct DailyKanjiSelector {
     static let defaultHistoryLookbackDays = 3
     static let defaultWidgetRotationWindow = 8
-    static let defaultWidgetSelectionHistoryMaxItems = 1
-    static let widgetSlotDuration: TimeInterval = 60 * 60
-    static let defaultWidgetHistoryMaxItems = 72
-    static let defaultWidgetTimelineEntryCount = 72
+    static let defaultWidgetNoRepeatLookbackDays = 1
+    static let defaultWidgetSelectionHistoryMaxItems = 96
+    static let widgetSlotDuration: TimeInterval = 15 * 60
+    static let defaultWidgetHistoryMaxItems = 96
+    static let defaultWidgetTimelineEntryCount = 96
 
     static func select(
         cards: [DailyKanjiCard],
@@ -26,7 +27,7 @@ struct DailyKanjiSelector {
             return nil
         }
 
-        let cutoff = Calendar.current.date(byAdding: .day, value: -historyLookbackDays, to: now) ?? now
+        let cutoff = lookbackCutoff(for: now, days: historyLookbackDays)
         let recentCardIds = Set(history.filter { $0.shownAt >= cutoff }.map(\.cardId))
         let freshCandidates = ordered.filter { !recentCardIds.contains($0.cardId) }
         let candidates = freshCandidates.isEmpty ? ordered : freshCandidates
@@ -72,40 +73,62 @@ struct DailyKanjiSelector {
         return dates
     }
 
+    static func widgetTimelineCards(
+        cards: [DailyKanjiCard],
+        dates: [Date],
+        historyLookbackDays: Int = defaultWidgetNoRepeatLookbackDays,
+        widgetRotationWindow: Int = defaultWidgetRotationWindow
+    ) -> [DailyKanjiCard] {
+        widgetTimelineSelections(
+            cards: cards,
+            dates: dates,
+            historyLookbackDays: historyLookbackDays,
+            widgetRotationWindow: widgetRotationWindow
+        ).map { $0.card }
+    }
+
     static func recentWidgetTimelineItems(
         cards: [DailyKanjiCard],
         now: Date,
-        days: Int = defaultHistoryLookbackDays,
+        days: Int = defaultWidgetNoRepeatLookbackDays,
         maxItems: Int = defaultWidgetHistoryMaxItems,
         widgetRotationWindow: Int = defaultWidgetRotationWindow
     ) -> [DailyKanjiPresentationHistoryItem] {
-        let cutoff = Calendar.current.date(byAdding: .day, value: -days, to: now) ?? now
-        var slotStart = currentWidgetSlotStart(for: now)
-        var items: [DailyKanjiPresentationHistoryItem] = []
-
-        while slotStart >= cutoff && items.count < maxItems {
-            if
-                let card = select(
-                    cards: cards,
-                    history: [],
-                    now: slotStart,
-                    mode: .widgetTimeline,
-                    widgetRotationWindow: widgetRotationWindow
-                )
-            {
-                items.append(
-                    DailyKanjiPresentationHistoryItem(
-                        cardId: card.cardId,
-                        shownAt: slotStart,
-                        source: .widget
-                    )
-                )
-            }
-
-            slotStart = slotStart.addingTimeInterval(-widgetSlotDuration)
+        let cutoff = lookbackCutoff(for: now, days: days)
+        let currentSlotStart = currentWidgetSlotStart(for: now)
+        var firstSlotStart = currentWidgetSlotStart(for: cutoff)
+        if firstSlotStart < cutoff {
+            firstSlotStart = firstSlotStart.addingTimeInterval(widgetSlotDuration)
         }
 
-        return items
+        var dates: [Date] = []
+        var slotStart = firstSlotStart
+        while slotStart <= currentSlotStart {
+            dates.append(slotStart)
+            slotStart = slotStart.addingTimeInterval(widgetSlotDuration)
+        }
+
+        var seenCardIds = Set<String>()
+        let newestUniqueItems = widgetTimelineSelections(
+            cards: cards,
+            dates: dates,
+            historyLookbackDays: days,
+            widgetRotationWindow: widgetRotationWindow
+        )
+        .reversed()
+        .compactMap { selection -> DailyKanjiPresentationHistoryItem? in
+            guard seenCardIds.insert(selection.card.cardId).inserted else {
+                return nil
+            }
+
+            return DailyKanjiPresentationHistoryItem(
+                cardId: selection.card.cardId,
+                shownAt: selection.date,
+                source: .widget
+            )
+        }
+
+        return Array(newestUniqueItems.prefix(maxItems))
     }
 
     static func recentWidgetSelectionItems(
@@ -165,5 +188,37 @@ struct DailyKanjiSelector {
     static func currentWidgetSlotStart(for date: Date) -> Date {
         let slot = floor(date.timeIntervalSince1970 / widgetSlotDuration)
         return Date(timeIntervalSince1970: slot * widgetSlotDuration)
+    }
+
+    private static func widgetTimelineSelections(
+        cards: [DailyKanjiCard],
+        dates: [Date],
+        historyLookbackDays: Int,
+        widgetRotationWindow: Int
+    ) -> [(date: Date, card: DailyKanjiCard)] {
+        let ordered = rank(cards)
+        guard !ordered.isEmpty else {
+            return []
+        }
+
+        let poolSize = min(
+            ordered.count,
+            max(widgetRotationWindow, defaultWidgetTimelineEntryCount)
+        )
+        let pool = Array(ordered.prefix(poolSize))
+
+        return dates.map { date in
+            let slot = Int(floor(date.timeIntervalSince1970 / widgetSlotDuration))
+            let index = positiveModulo(slot, pool.count)
+            return (date: date, card: pool[index])
+        }
+    }
+
+    private static func lookbackCutoff(for date: Date, days: Int) -> Date {
+        date.addingTimeInterval(-TimeInterval(days) * 24 * 60 * 60)
+    }
+
+    private static func positiveModulo(_ value: Int, _ divisor: Int) -> Int {
+        ((value % divisor) + divisor) % divisor
     }
 }

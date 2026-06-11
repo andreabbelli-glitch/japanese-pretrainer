@@ -20,8 +20,14 @@ struct KanjiProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<KanjiEntry>) -> Void) {
         let now = Date()
-        let entries = DailyKanjiSelector.widgetTimelineDates(startingAt: now).map {
-            KanjiEntry(date: $0, card: selectedCard(now: $0))
+        let dates = DailyKanjiSelector.widgetTimelineDates(startingAt: now)
+        let cards = DailyKanjiSelector.widgetTimelineCards(
+            cards: repository.loadCards(),
+            dates: dates
+        )
+        let entries = dates.enumerated().map { index, date in
+            let card = index < cards.count ? cards[index] : DailyKanjiSampleData.card
+            return KanjiEntry(date: date, card: card)
         }
         let refresh = entries.last.map {
             DailyKanjiSelector.nextWidgetRefreshDate(after: $0.date)

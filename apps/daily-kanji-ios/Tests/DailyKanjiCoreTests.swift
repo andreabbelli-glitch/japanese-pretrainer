@@ -394,7 +394,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         let second = DailyKanjiSelector.select(
             cards: cards,
             history: [],
-            now: Date(timeIntervalSince1970: 60 * 60),
+            now: Date(timeIntervalSince1970: 15 * 60),
             mode: .widgetTimeline
         )
 
@@ -492,22 +492,66 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         XCTAssertEqual(
             DailyKanjiSelector.nextWidgetRefreshDate(after: date),
-            Date(timeIntervalSince1970: 2 * 60 * 60)
+            Date(timeIntervalSince1970: (60 * 60) + (15 * 60))
         )
     }
 
-    func testWidgetTimelineDatesPrebuildFutureRotationSlots() {
+    func testWidgetTimelineDatesPrebuildFutureFifteenMinuteRotationSlots() {
         let now = Date(timeIntervalSince1970: (60 * 60) + 123)
 
         XCTAssertEqual(
             DailyKanjiSelector.widgetTimelineDates(startingAt: now, count: 4),
             [
                 now,
-                Date(timeIntervalSince1970: 2 * 60 * 60),
-                Date(timeIntervalSince1970: 3 * 60 * 60),
-                Date(timeIntervalSince1970: 4 * 60 * 60)
+                Date(timeIntervalSince1970: (60 * 60) + (15 * 60)),
+                Date(timeIntervalSince1970: (60 * 60) + (30 * 60)),
+                Date(timeIntervalSince1970: (60 * 60) + (45 * 60))
             ]
         )
+    }
+
+    func testWidgetTimelineCardsAvoidRepeatingCardsAcrossTwentyFourHoursWhenPossible() throws {
+        let cards = try Self.rankedCards(count: 120)
+        let dates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: Date(timeIntervalSince1970: (72 * 60 * 60) + 60),
+            count: 96
+        )
+
+        let selectedCards = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: dates
+        )
+
+        XCTAssertEqual(selectedCards.count, 96)
+        XCTAssertEqual(Set(selectedCards.map(\.cardId)).count, 96)
+    }
+
+    func testWidgetTimelineRegenerationDoesNotRepeatAlreadyShownOverlappingSlots() throws {
+        let cards = try Self.rankedCards(count: 120)
+        let firstTimelineDates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: Date(timeIntervalSince1970: 0),
+            count: 8
+        )
+        let firstTimelineCards = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: firstTimelineDates
+        )
+        let reloadTime = Date(timeIntervalSince1970: 30 * 60)
+        let regeneratedDates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: reloadTime,
+            count: 8
+        )
+        let regeneratedCards = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: regeneratedDates
+        )
+        let alreadyShownBeforeReload = Set(
+            zip(firstTimelineDates, firstTimelineCards)
+                .filter { date, _ in date < reloadTime }
+                .map { _, card in card.cardId }
+        )
+
+        XCTAssertFalse(alreadyShownBeforeReload.contains(regeneratedCards[0].cardId))
     }
 
     func testSupportedWidgetFamiliesKeepLockScreenOnRectangularLayout() {
@@ -524,38 +568,53 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertFalse(DailyKanjiWidgetFamilies.readingSupported.contains(.systemMedium))
     }
 
-    func testRecentWidgetTimelineHistoryPreservesNewestSlots() throws {
-        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+    func testRecentWidgetTimelineHistoryPreservesUniqueNewestFifteenMinuteSlots() throws {
+        let cards = try Self.rankedCards(count: 120)
         let items = DailyKanjiSelector.recentWidgetTimelineItems(
             cards: cards,
             now: Date(timeIntervalSince1970: (72 * 60 * 60) + 60),
             days: 1,
-            maxItems: 3
+            maxItems: 24
         )
 
-        XCTAssertEqual(items.map(\.cardId), ["hard", "stable", "hard"])
-        XCTAssertEqual(items.map(\.source), [.widget, .widget, .widget])
-        XCTAssertEqual(items.map(\.shownAt), [
-            Date(timeIntervalSince1970: 72 * 60 * 60),
-            Date(timeIntervalSince1970: 71 * 60 * 60),
-            Date(timeIntervalSince1970: 70 * 60 * 60)
-        ])
+        XCTAssertEqual(items.count, 24)
+        XCTAssertEqual(Set(items.map(\.cardId)).count, 24)
+        XCTAssertTrue(items.allSatisfy { $0.source == .widget })
+        XCTAssertEqual(items.first?.shownAt, Date(timeIntervalSince1970: 72 * 60 * 60))
+        XCTAssertEqual(
+            items.dropFirst().first?.shownAt,
+            Date(timeIntervalSince1970: (72 * 60 * 60) - (15 * 60))
+        )
     }
 
-    func testRecentWidgetTimelineHistoryDefaultCoversThreeDaysOfHourlySlots() throws {
-        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+    func testRecentWidgetTimelineHistoryDefaultCoversOneDayOfFifteenMinuteSlots() throws {
+        let cards = try Self.rankedCards(count: 120)
         let items = DailyKanjiSelector.recentWidgetTimelineItems(
             cards: cards,
             now: Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
         )
 
-        XCTAssertEqual(items.count, 72)
+        XCTAssertEqual(items.count, 96)
         XCTAssertEqual(items.first?.shownAt, Date(timeIntervalSince1970: 72 * 60 * 60))
-        XCTAssertEqual(items.last?.shownAt, Date(timeIntervalSince1970: 60 * 60))
+        XCTAssertEqual(
+            items.last?.shownAt,
+            Date(timeIntervalSince1970: (72 * 60 * 60) - (95 * 15 * 60))
+        )
+    }
+
+    func testRecentWidgetTimelineHistoryKeepsNinetySixSlotsAcrossDaylightSavingTransition() throws {
+        let cards = try Self.rankedCards(count: 120)
+        let items = DailyKanjiSelector.recentWidgetTimelineItems(
+            cards: cards,
+            now: Self.isoDate("2026-03-29T12:00:00.000Z")
+        )
+
+        XCTAssertEqual(items.count, 96)
+        XCTAssertEqual(Set(items.map(\.cardId)).count, 96)
     }
 
     @MainActor
-    func testFirstActivationRecordsInitialAppSelectionAndThreeDaysOfHourlyWidgetSlots() throws {
+    func testFirstActivationRecordsInitialAppSelectionAndUniqueRecentWidgetCards() throws {
         let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: defaultsName)!
         defer {
@@ -572,12 +631,14 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         model.activate(now: now)
 
-        XCTAssertEqual(model.recentHistory.count, 73)
+        XCTAssertEqual(model.recentHistory.count, 2)
         XCTAssertEqual(model.recentHistory.first?.source, .app)
         XCTAssertEqual(model.recentHistory.first?.shownAt, now)
         XCTAssertEqual(model.recentHistory.dropFirst().first?.source, .widget)
-        XCTAssertEqual(model.recentHistory.dropFirst().first?.shownAt, Date(timeIntervalSince1970: 72 * 60 * 60))
-        XCTAssertEqual(model.recentHistory.last?.shownAt, Date(timeIntervalSince1970: 60 * 60))
+        XCTAssertEqual(
+            model.recentHistory.dropFirst().first?.shownAt,
+            Date(timeIntervalSince1970: (72 * 60 * 60) - (15 * 60))
+        )
     }
 
     @MainActor
@@ -596,7 +657,7 @@ final class DailyKanjiCoreTests: XCTestCase {
             now: launchTime
         )
 
-        XCTAssertEqual(model.selectedCard?.cardId, "card-1")
+        XCTAssertEqual(model.selectedCard?.cardId, "card-0")
 
         model.openDeepLink(
             DailyKanjiDeepLink.cardURL(cardId: "card-2"),
@@ -658,11 +719,15 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(appHistoryItems.map(\.cardId), ["card-2"])
     }
 
-    func testPresentationHistoryMergesAppAndWidgetExposureEventsNewestFirst() {
+    func testPresentationHistoryMergesNewestUniqueCardExposureEventsFirst() {
         let appItems = [
             DailyKanjiHistoryItem(
                 cardId: "stable",
                 shownAt: Date(timeIntervalSince1970: (12 * 60 * 60) + 120)
+            ),
+            DailyKanjiHistoryItem(
+                cardId: "hard",
+                shownAt: Date(timeIntervalSince1970: (12 * 60 * 60) + 30)
             )
         ]
         let widgetItems = [
@@ -683,8 +748,8 @@ final class DailyKanjiCoreTests: XCTestCase {
             widgetItems: widgetItems
         )
 
-        XCTAssertEqual(merged.map(\.cardId), ["stable", "hard", "stable"])
-        XCTAssertEqual(merged.map(\.source), [.app, .widget, .widget])
+        XCTAssertEqual(merged.map(\.cardId), ["stable", "hard"])
+        XCTAssertEqual(merged.map(\.source), [.app, .app])
     }
 
     func testPresentationHistoryFormatsRelativeShownTime() {
@@ -735,8 +800,8 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(item.metadataText(now: now), "Widget slot - 12m ago")
     }
 
-    func testAppSelectionUsesOnlyTheCurrentWidgetSlotAsRecentWidgetHistory() throws {
-        let cards = try Self.rankedCards(count: 9)
+    func testAppSelectionUsesTheLastTwentyFourHoursOfWidgetHistory() throws {
+        let cards = try Self.rankedCards(count: 120)
         let now = Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
 
         let widgetSelectionHistory = DailyKanjiSelector.recentWidgetSelectionItems(
@@ -750,8 +815,9 @@ final class DailyKanjiCoreTests: XCTestCase {
             mode: .appOpen
         )
 
-        XCTAssertEqual(widgetSelectionHistory.map(\.cardId), ["card-0"])
-        XCTAssertEqual(selected?.cardId, "card-1")
+        XCTAssertEqual(widgetSelectionHistory.count, 96)
+        XCTAssertEqual(Set(widgetSelectionHistory.map(\.cardId)).count, 96)
+        XCTAssertFalse(Set(widgetSelectionHistory.map(\.cardId)).contains(selected?.cardId ?? ""))
     }
 
     func testLockScreenExplanationTextKeepsFullRectangularContext() throws {
@@ -1153,7 +1219,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(recentItems.map(\.shownAt), [secondExposure, firstExposure])
     }
 
-    func testHistoryStoreGivesRepeatedSameSecondExposureEventsUniquePresentationIds() {
+    func testPresentationHistoryKeepsOnlyNewestRepeatedSameCardExposure() {
         let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: defaultsName)!
         defer {
@@ -1173,8 +1239,8 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         XCTAssertEqual(recentItems.count, 2)
         XCTAssertEqual(Set(recentItems.map(\.id)).count, 2)
-        XCTAssertEqual(presentationItems.count, 2)
-        XCTAssertEqual(Set(presentationItems.map(\.id)).count, 2)
+        XCTAssertEqual(presentationItems.count, 1)
+        XCTAssertEqual(presentationItems.first?.cardId, "hard")
     }
 
     func testDeepLinkRoundTripEncodesCardId() throws {

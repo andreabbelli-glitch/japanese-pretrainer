@@ -120,7 +120,21 @@ enum DailyKanjiPresentationHistory {
             return lhs.cardId < rhs.cardId
         }
 
-        return Array(sorted.prefix(maxItems))
+        var seenCardIds = Set<String>()
+        var uniqueItems: [DailyKanjiPresentationHistoryItem] = []
+
+        for item in sorted {
+            guard seenCardIds.insert(item.cardId).inserted else {
+                continue
+            }
+
+            uniqueItems.append(item)
+            if uniqueItems.count == maxItems {
+                break
+            }
+        }
+
+        return uniqueItems
     }
 }
 
