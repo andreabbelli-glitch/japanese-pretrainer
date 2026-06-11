@@ -1065,8 +1065,68 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         XCTAssertLessThan(frontStart.lowerBound, translationStart.lowerBound)
 
+        let frontBlock = String(viewBlock[frontStart.lowerBound..<translationStart.lowerBound])
+        XCTAssertTrue(frontBlock.contains(".lineLimit(1)"))
+        XCTAssertFalse(frontBlock.contains(".lineLimit(2)"))
+
         let explanationBlock = String(viewBlock[explanationStart.lowerBound...])
         XCTAssertTrue(explanationBlock.contains(".lineLimit(2)"))
+    }
+
+    func testHomeSmallWidgetKeepsFrontOnOneLine() throws {
+        let source = try Self.widgetSourceFileContents()
+        guard let viewStart = source.range(of: "private struct DailyKanjiHomeSmallWidgetView") else {
+            XCTFail("Could not find the dedicated small home widget view.")
+            return
+        }
+
+        let viewSource = source[viewStart.lowerBound...]
+        guard let viewEnd = viewSource.range(of: "\nprivate struct DailyKanjiLockScreenCardView") else {
+            XCTFail("Could not isolate the small home widget view.")
+            return
+        }
+
+        let viewBlock = String(viewSource[..<viewEnd.lowerBound])
+        guard
+            let frontStart = viewBlock.range(of: "Text(card.displayFront)"),
+            let translationStart = viewBlock.range(of: "Text(card.lockScreenTranslationText)")
+        else {
+            XCTFail("Could not find the front and translation text in the small widget view.")
+            return
+        }
+
+        let frontBlock = String(viewBlock[frontStart.lowerBound..<translationStart.lowerBound])
+        XCTAssertTrue(frontBlock.contains(".lineLimit(1)"))
+        XCTAssertTrue(frontBlock.contains(".minimumScaleFactor"))
+        XCTAssertFalse(frontBlock.contains(".lineLimit(2)"))
+    }
+
+    func testRecentHistoryRowsKeepFrontOnOneLine() throws {
+        let source = try Self.appSourceFileContents()
+        guard let viewStart = source.range(of: "private var historyView") else {
+            XCTFail("Could not find historyView.")
+            return
+        }
+
+        let viewSource = source[viewStart.lowerBound...]
+        guard let viewEnd = viewSource.range(of: "\n}\n\n#Preview") else {
+            XCTFail("Could not isolate historyView.")
+            return
+        }
+
+        let viewBlock = String(viewSource[..<viewEnd.lowerBound])
+        guard
+            let frontStart = viewBlock.range(of: "Text(card.displayFront)"),
+            let detailsStart = viewBlock.range(of: "VStack(alignment: .leading, spacing: 2)")
+        else {
+            XCTFail("Could not find the recent row front and details column.")
+            return
+        }
+
+        let frontBlock = String(viewBlock[frontStart.lowerBound..<detailsStart.lowerBound])
+        XCTAssertTrue(frontBlock.contains(".lineLimit(1)"))
+        XCTAssertTrue(frontBlock.contains(".minimumScaleFactor"))
+        XCTAssertFalse(frontBlock.contains(".lineLimit(2)"))
     }
 
     func testDetailExampleLinesKeepItalianExampleWhenJapaneseExampleIsMissing() throws {

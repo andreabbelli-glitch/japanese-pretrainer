@@ -179,10 +179,13 @@ struct ContentView: View {
                             Button {
                                 model.selectHistoryItem(item)
                             } label: {
-                                HStack(alignment: .firstTextBaseline, spacing: 12) {
+                                HStack(alignment: .center, spacing: 14) {
                                     Text(card.displayFront)
-                                        .font(.system(size: 26, weight: .semibold, design: .serif))
-                                        .frame(width: 72, alignment: .leading)
+                                        .font(.system(size: 34, weight: .semibold, design: .serif))
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.45)
+                                        .allowsTightening(true)
+                                        .frame(width: 116, alignment: .leading)
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text(card.back)
                                             .font(.subheadline.weight(.medium))
