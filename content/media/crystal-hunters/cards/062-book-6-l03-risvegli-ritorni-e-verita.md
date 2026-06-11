@@ -54,8 +54,8 @@ romaji: ikikaeru
 meaning_it: 'tornare in vita; rivivere'
 pos: verb
 notes_it: >-
-  {{生|い}}き{{返|かえ}}る combina vivere e tornare indietro: non è
-  semplicemente guarire, ma ritornare alla vita.
+  {{生|い}}き{{返|かえ}}る combina vivere e tornare indietro: indica un ritorno
+  alla vita, più specifico di una semplice guarigione.
 level_hint: n3
 :::
 
@@ -116,11 +116,11 @@ id: term-ch-b6-maru-36
 lemma: '決まる'
 reading: 'きまる'
 romaji: kimaru
-meaning_it: 'essere deciso; essere stabilito'
+meaning_it: 'venire deciso; essere stabilito'
 pos: verb
 notes_it: >-
-  {{決|き}}まる è intransitivo: una decisione si stabilisce. Non dice chi
-  decide; guarda il risultato ormai fissato.
+  {{決|き}}まる è intransitivo: una decisione si stabilisce. La frase resta sul
+  risultato ormai fissato, senza mettere a fuoco chi decide.
 level_hint: n4
 :::
 
@@ -330,7 +330,7 @@ entry_type: term
 entry_id: term-ch-b6-maru-36
 card_type: recognition
 front: '{{決|き}}まる'
-back: 'きまる — essere deciso; essere stabilito'
+back: 'きまる — venire deciso; essere stabilito'
 example_jp: '{{行|い}}くことが{{決|き}}まる。'
 example_it: 'Si decide di andare.'
 notes_it: >-
