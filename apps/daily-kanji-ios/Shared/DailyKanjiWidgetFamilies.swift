@@ -6,4 +6,8 @@ enum DailyKanjiWidgetFamilies {
         .systemMedium,
         .accessoryRectangular
     ]
+
+    static let readingSupported: [WidgetFamily] = [
+        .accessoryRectangular
+    ]
 }

@@ -71,6 +71,18 @@ struct DailyKanjiCard: Codable, Identifiable, Equatable {
     let srs: SRS
 }
 
+struct DailyKanjiPitchAccentPattern: Equatable {
+    struct Mora: Equatable, Identifiable {
+        let index: Int
+        let text: String
+        let isHigh: Bool
+
+        var id: Int { index }
+    }
+
+    let moras: [Mora]
+}
+
 enum DailyKanjiEntryKind: String, Codable {
     case term
     case grammar
@@ -113,11 +125,18 @@ extension DailyKanjiCard {
     }
 
     var lockScreenPitchAccentText: String? {
-        guard let pitchAccent = entry.pitchAccent else {
+        guard let pitchAccent = entry.pitchAccent, lockScreenPitchAccentPattern != nil else {
             return nil
         }
 
         return "P\(pitchAccent)"
+    }
+
+    var lockScreenPitchAccentPattern: DailyKanjiPitchAccentPattern? {
+        DailyKanjiPitchAccentPattern(
+            reading: entry.reading,
+            pitchAccent: entry.pitchAccent
+        )
     }
 
     var lockScreenMetadataText: String {
@@ -211,5 +230,65 @@ private extension String {
         }
 
         return "\(prefix)..."
+    }
+}
+
+private extension DailyKanjiPitchAccentPattern {
+    init?(reading: String?, pitchAccent: Int?) {
+        guard let reading, let pitchAccent else {
+            return nil
+        }
+
+        let moraTexts = Self.moras(from: reading)
+        guard !moraTexts.isEmpty, pitchAccent >= 0, pitchAccent <= moraTexts.count else {
+            return nil
+        }
+
+        moras = moraTexts.enumerated().map { index, text in
+            Mora(
+                index: index,
+                text: text,
+                isHigh: Self.isHigh(moraIndex: index + 1, pitchAccent: pitchAccent)
+            )
+        }
+    }
+
+    static func moras(from reading: String) -> [String] {
+        var moras: [String] = []
+
+        let compactReading = reading
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .filter { !$0.isWhitespace }
+
+        for scalar in compactReading.map(String.init) {
+            if isContractedKana(scalar), let last = moras.indices.last {
+                moras[last] += scalar
+            } else {
+                moras.append(scalar)
+            }
+        }
+
+        return moras
+    }
+
+    static func isHigh(moraIndex: Int, pitchAccent: Int) -> Bool {
+        if pitchAccent == 0 {
+            return moraIndex > 1
+        }
+
+        if pitchAccent == 1 {
+            return moraIndex == 1
+        }
+
+        return moraIndex > 1 && moraIndex <= pitchAccent
+    }
+
+    static func isContractedKana(_ character: String) -> Bool {
+        [
+            "ゃ", "ゅ", "ょ", "ャ", "ュ", "ョ",
+            "ぁ", "ぃ", "ぅ", "ぇ", "ぉ",
+            "ァ", "ィ", "ゥ", "ェ", "ォ",
+            "ゎ", "ヮ"
+        ].contains(character)
     }
 }

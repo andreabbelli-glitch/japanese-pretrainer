@@ -515,8 +515,13 @@ final class DailyKanjiCoreTests: XCTestCase {
             DailyKanjiWidgetFamilies.supported,
             [.systemSmall, .systemMedium, .accessoryRectangular]
         )
+        XCTAssertEqual(
+            DailyKanjiWidgetFamilies.readingSupported,
+            [.accessoryRectangular]
+        )
         XCTAssertFalse(DailyKanjiWidgetFamilies.supported.contains(.accessoryCircular))
         XCTAssertFalse(DailyKanjiWidgetFamilies.supported.contains(.accessoryInline))
+        XCTAssertFalse(DailyKanjiWidgetFamilies.readingSupported.contains(.systemMedium))
     }
 
     func testRecentWidgetTimelineHistoryPreservesNewestSlots() throws {
@@ -765,6 +770,85 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         XCTAssertEqual(card.lockScreenPitchAccentText, "P2")
         XCTAssertEqual(card.lockScreenMetadataText, "かんてん - P2")
+    }
+
+    func testLockScreenPitchAccentPatternMarksDropAfterAccentMora() throws {
+        let card = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards[0]
+        let pattern = try XCTUnwrap(card.lockScreenPitchAccentPattern)
+
+        XCTAssertEqual(pattern.moras.map(\.text), ["か", "ん", "て", "ん"])
+        XCTAssertEqual(pattern.moras.map(\.isHigh), [false, true, false, false])
+    }
+
+    func testLockScreenPitchAccentPatternCombinesContractedKana() throws {
+        let card = try Self.cardReplacingReadingAndPitchAccent(
+            reading: "きょう",
+            pitchAccent: 1
+        )
+        let pattern = try XCTUnwrap(card.lockScreenPitchAccentPattern)
+
+        XCTAssertEqual(pattern.moras.map(\.text), ["きょ", "う"])
+        XCTAssertEqual(pattern.moras.map(\.isHigh), [true, false])
+    }
+
+    func testLockScreenPitchAccentPatternMarksHeibanAfterFirstMoraHigh() throws {
+        let card = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards[1]
+        let pattern = try XCTUnwrap(card.lockScreenPitchAccentPattern)
+
+        XCTAssertEqual(pattern.moras.map(\.text), ["あ", "ん", "て", "い"])
+        XCTAssertEqual(pattern.moras.map(\.isHigh), [false, true, true, true])
+    }
+
+    func testLockScreenPitchAccentPatternAllowsFinalMoraDrop() throws {
+        let card = try Self.cardReplacingReadingAndPitchAccent(
+            reading: "かんてん",
+            pitchAccent: 4
+        )
+        let pattern = try XCTUnwrap(card.lockScreenPitchAccentPattern)
+
+        XCTAssertEqual(pattern.moras.map(\.isHigh), [false, true, true, true])
+    }
+
+    func testLockScreenPitchAccentPatternRequiresReadingAndValidPitch() throws {
+        XCTAssertNil(
+            try Self.cardReplacingReadingAndPitchAccent(
+                reading: nil,
+                pitchAccent: 2
+            ).lockScreenPitchAccentPattern
+        )
+        XCTAssertNil(
+            try Self.cardReplacingReadingAndPitchAccent(
+                reading: "かんてん",
+                pitchAccent: nil
+            ).lockScreenPitchAccentPattern
+        )
+        XCTAssertNil(
+            try Self.cardReplacingReadingAndPitchAccent(
+                reading: "かんてん",
+                pitchAccent: 5
+            ).lockScreenPitchAccentPattern
+        )
+    }
+
+    func testLockScreenPitchAccentLabelRequiresValidPattern() throws {
+        XCTAssertNil(
+            try Self.cardReplacingReadingAndPitchAccent(
+                reading: nil,
+                pitchAccent: 2
+            ).lockScreenPitchAccentText
+        )
+        XCTAssertNil(
+            try Self.cardReplacingReadingAndPitchAccent(
+                reading: "かんてん",
+                pitchAccent: -1
+            ).lockScreenPitchAccentText
+        )
+        XCTAssertNil(
+            try Self.cardReplacingReadingAndPitchAccent(
+                reading: "かんてん",
+                pitchAccent: 5
+            ).lockScreenPitchAccentText
+        )
     }
 
     func testHomeWidgetExplanationTextAllowsMoreContextThanLockScreen() throws {
@@ -1102,6 +1186,24 @@ final class DailyKanjiCoreTests: XCTestCase {
             .replacingOccurrences(
                 of: "\"exampleIt\": \"Cambiare punto di vista.\"",
                 with: exampleIt.map { "\"exampleIt\": \"\($0)\"" } ?? "\"exampleIt\": null"
+            )
+            .data(using: .utf8)!
+
+        return try DailyKanjiDataset.decode(jsonData: json).cards[0]
+    }
+
+    private static func cardReplacingReadingAndPitchAccent(
+        reading: String?,
+        pitchAccent: Int?
+    ) throws -> DailyKanjiCard {
+        let json = String(data: datasetJSON, encoding: .utf8)!
+            .replacingOccurrences(
+                of: "\"pitchAccent\": 2",
+                with: pitchAccent.map { "\"pitchAccent\": \($0)" } ?? "\"pitchAccent\": null"
+            )
+            .replacingOccurrences(
+                of: "\"reading\": \"かんてん\"",
+                with: reading.map { "\"reading\": \"\($0)\"" } ?? "\"reading\": null"
             )
             .data(using: .utf8)!
 

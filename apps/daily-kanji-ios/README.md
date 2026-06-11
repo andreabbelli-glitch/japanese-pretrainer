@@ -159,10 +159,14 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
 
 - Per Home Screen, la famiglia primaria sara `systemMedium` e mostra fronte,
   retro, reading, pitch accent e una spiegazione breve.
-- Per Lock Screen, l'unica famiglia supportata e' `accessoryRectangular`,
-  trattata come unico widget dell'utente e quindi progettata per sfruttare tutto
-  lo spazio che iOS assegna a quel family. iOS non consente a un widget singolo
-  di espandersi oltre le dimensioni del family selezionato.
+- Per Lock Screen, iOS espone solo slot `accessoryRectangular`: la app pubblica
+  quindi due widget coordinati che l'utente puo affiancare. `Daily Kanji`
+  mostra card/kanji grande, mentre `Daily Kanji Reading` mostra lettura, pitch
+  accent con linee sopra le mora alte e spiegazione breve. I due widget usano lo
+  stesso provider e la stessa selezione deterministica per slot orario, quindi
+  puntano alla stessa card quando WidgetKit li aggiorna per lo stesso slot. iOS
+  non consente a un widget singolo di espandersi oltre le dimensioni del family
+  selezionato.
 - La rotazione widget usa slot di 1 ora. Il widget legge prima la cache
   condivisa App Group scritta dall'app, poi il bundle packaged, poi il sample di
   sviluppo. WidgetKit non garantisce un cambio card a ogni singolo wake/sblocco
