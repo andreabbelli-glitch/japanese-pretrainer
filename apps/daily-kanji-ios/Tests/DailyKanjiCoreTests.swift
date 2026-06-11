@@ -14,6 +14,105 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(dataset.cards[0].srs.priorityReasons, [.recentHardAgain, .relearning])
     }
 
+    func testRepositoryPrefersSyncedCacheOverBundle() throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let bundle = try Self.makeBundle(
+            containing: try DailyKanjiDataset.decode(jsonData: Self.datasetJSON),
+            in: temporaryDirectory
+        )
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let cachedDataset = DailyKanjiDataset(
+            version: 1,
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        try cacheStore.write(dataset: cachedDataset, cachedAt: now)
+
+        let repository = DailyKanjiRepository(bundle: bundle, cacheStore: cacheStore)
+
+        XCTAssertEqual(repository.loadCards().map(\.cardId), ["card-0"])
+    }
+
+    func testRepositoryReportsSyncedDatasetSourceMetadata() throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let cacheStore = DailyKanjiCacheStore(directoryURL: temporaryDirectory)
+        let cachedAt = Date(timeIntervalSince1970: 1_800_000_000)
+        let dataset = DailyKanjiDataset(
+            version: 1,
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        try cacheStore.write(dataset: dataset, cachedAt: cachedAt)
+
+        let repository = DailyKanjiRepository(cacheStore: cacheStore)
+
+        XCTAssertEqual(
+            repository.loadDatasetSource(),
+            .cache(
+                metadata: DailyKanjiCachedDatasetMetadata(
+                    cachedAt: cachedAt,
+                    generatedAt: "2026-06-11T08:00:00.000Z",
+                    cardCount: 1
+                )
+            )
+        )
+    }
+
+    func testRepositoryFallsBackToBundleWhenCacheIsInvalid() throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let bundle = try Self.makeBundle(
+            containing: try DailyKanjiDataset.decode(jsonData: Self.datasetJSON),
+            in: temporaryDirectory
+        )
+        let cacheDirectory = temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        try FileManager.default.createDirectory(
+            at: cacheDirectory,
+            withIntermediateDirectories: true
+        )
+        try Data("not-json".utf8).write(
+            to: cacheDirectory.appendingPathComponent(DailyKanjiCacheStore.datasetFileName)
+        )
+
+        let repository = DailyKanjiRepository(
+            bundle: bundle,
+            cacheStore: DailyKanjiCacheStore(directoryURL: cacheDirectory)
+        )
+
+        XCTAssertEqual(repository.loadCards().map(\.cardId), ["hard", "stable"])
+    }
+
+    func testCacheStoreWritesDatasetAtomicallyWithMetadata() throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let cacheStore = DailyKanjiCacheStore(directoryURL: temporaryDirectory)
+        let cachedAt = Date(timeIntervalSince1970: 1_800_000_000)
+        let dataset = DailyKanjiDataset(
+            version: 1,
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+
+        try cacheStore.write(dataset: dataset, cachedAt: cachedAt)
+
+        XCTAssertEqual(cacheStore.loadDataset()?.cards.map(\.cardId), ["card-0"])
+        XCTAssertEqual(
+            cacheStore.loadMetadata(),
+            DailyKanjiCachedDatasetMetadata(
+                cachedAt: cachedAt,
+                generatedAt: "2026-06-11T08:00:00.000Z",
+                cardCount: 1
+            )
+        )
+    }
+
     func testAppSelectionAvoidsCardsSeenInTheLastThreeDays() throws {
         let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
         let history = [
@@ -1062,5 +1161,68 @@ final class DailyKanjiCoreTests: XCTestCase {
                 )
             )
         ]
+    }
+
+    private static func makeTemporaryDirectory() throws -> URL {
+        let directoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(
+            "DailyKanjiTests-\(UUID().uuidString)",
+            isDirectory: true
+        )
+        try FileManager.default.createDirectory(
+            at: directoryURL,
+            withIntermediateDirectories: true
+        )
+        return directoryURL
+    }
+
+    private static func removeTemporaryDirectory(_ directoryURL: URL) {
+        try? FileManager.default.removeItem(at: directoryURL)
+    }
+
+    private static func makeBundle(
+        containing dataset: DailyKanjiDataset,
+        in directoryURL: URL
+    ) throws -> Bundle {
+        let bundleURL = directoryURL.appendingPathComponent(
+            "DailyKanjiTest-\(UUID().uuidString).bundle",
+            isDirectory: true
+        )
+        try FileManager.default.createDirectory(
+            at: bundleURL,
+            withIntermediateDirectories: true
+        )
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.sortedKeys]
+        try encoder
+            .encode(dataset)
+            .write(to: bundleURL.appendingPathComponent("daily-kanji-cards.json"))
+
+        let bundleIdentifier = "dev.local.daily-kanji.tests.\(UUID().uuidString)"
+        let infoPlist = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <dict>
+          <key>CFBundleIdentifier</key>
+          <string>\(bundleIdentifier)</string>
+          <key>CFBundleName</key>
+          <string>DailyKanjiTest</string>
+          <key>CFBundlePackageType</key>
+          <string>BNDL</string>
+        </dict>
+        </plist>
+        """.data(using: .utf8)!
+        try infoPlist.write(to: bundleURL.appendingPathComponent("Info.plist"))
+
+        guard let bundle = Bundle(url: bundleURL) else {
+            throw NSError(
+                domain: "DailyKanjiTests",
+                code: 1,
+                userInfo: [NSLocalizedDescriptionKey: "Could not create test bundle."]
+            )
+        }
+
+        return bundle
     }
 }

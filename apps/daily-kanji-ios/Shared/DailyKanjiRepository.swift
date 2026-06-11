@@ -1,23 +1,69 @@
 import Foundation
 
+enum DailyKanjiDatasetSource: Equatable {
+    case cache(metadata: DailyKanjiCachedDatasetMetadata?)
+    case bundle
+    case sample
+}
+
 struct DailyKanjiRepository {
     private let bundle: Bundle
+    private let cacheStore: DailyKanjiCacheStore
 
-    init(bundle: Bundle = .main) {
+    init(
+        bundle: Bundle = .main,
+        cacheStore: DailyKanjiCacheStore = DailyKanjiCacheStore()
+    ) {
         self.bundle = bundle
+        self.cacheStore = cacheStore
     }
 
     func loadCards() -> [DailyKanjiCard] {
+        if let dataset = loadCachedDataset() {
+            return dataset.cards
+        }
+
+        if let dataset = loadBundledDataset() {
+            return dataset.cards
+        }
+
+        return DailyKanjiSampleData.cards
+    }
+
+    func loadDatasetSource() -> DailyKanjiDatasetSource {
+        if loadCachedDataset() != nil {
+            return .cache(metadata: cacheStore.loadMetadata())
+        }
+
+        if loadBundledDataset() != nil {
+            return .bundle
+        }
+
+        return .sample
+    }
+
+    private func loadCachedDataset() -> DailyKanjiDataset? {
+        guard
+            let dataset = cacheStore.loadDataset(),
+            !dataset.cards.isEmpty
+        else {
+            return nil
+        }
+
+        return dataset
+    }
+
+    private func loadBundledDataset() -> DailyKanjiDataset? {
         guard
             let url = bundle.url(forResource: "daily-kanji-cards", withExtension: "json"),
             let data = try? Data(contentsOf: url),
             let dataset = try? DailyKanjiDataset.decode(jsonData: data),
             !dataset.cards.isEmpty
         else {
-            return DailyKanjiSampleData.cards
+            return nil
         }
 
-        return dataset.cards
+        return dataset
     }
 }
 
