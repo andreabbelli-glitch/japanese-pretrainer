@@ -220,10 +220,16 @@ Per aggiornare lo snapshot offline e gli audio packaged usati dall'app iOS:
 ```
 
 Il comando scrive `apps/daily-kanji-ios/App/Resources/daily-kanji-cards.json`
-e `apps/daily-kanji-ios/App/Resources/Audio/`, ignorati da git perche'
-contengono stato personale derivato dal DB runtime e copie audio generate. Gli
-audio in formati non riproducibili dal runtime iOS, per esempio OGG, vengono
-segnalati come skipped e non abilitano il pulsante audio nell'app.
+e `apps/daily-kanji-ios/App/Resources/Audio/`, poi esegue
+`daily-kanji:verify-resources`. I due workflow iOS `scripts/package-ipa.sh` e
+`scripts/xcode-renew.sh` rieseguono lo stesso verifier prima di `xcodegen
+generate`, cosi' una build/install viene bloccata se il bundle contiene ancora
+la card sample, un dataset stale, o audio referenziati ma non packaged. Le
+risorse sono ignorate da git perche' contengono stato personale derivato dal DB
+runtime e copie audio generate. Gli audio in formati non riproducibili dal
+runtime iOS, per esempio OGG, vengono segnalati come skipped e non abilitano il
+pulsante audio nell'app. Per una build intenzionalmente stale usa
+`DAILY_KANJI_ALLOW_STALE_RESOURCES=1`, evitando di renderlo il default.
 
 ## Gate Canonico Di Verifica
 

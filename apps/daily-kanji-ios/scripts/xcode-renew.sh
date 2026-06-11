@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(cd "$ROOT/../.." && pwd)"
 PROJECT="$ROOT/DailyKanji.xcodeproj"
 DERIVED_DATA="${DERIVED_DATA:-$ROOT/build/WifiRenewDerivedData}"
 DEVICE_ID="${DEVICE_ID:-D584E119-3362-5913-B704-DE927F58EF18}"
@@ -23,6 +24,7 @@ if ! command -v xcodegen >/dev/null 2>&1; then
 fi
 
 cd "$ROOT"
+"$REPO_ROOT/scripts/with-node.sh" pnpm daily-kanji:verify-resources -- --ios-root "$ROOT"
 xcodegen generate
 
 if ! device_details="$(xcrun devicectl device info details --device "$DEVICE_ID" 2>/dev/null)"; then

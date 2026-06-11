@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(cd "$ROOT/../.." && pwd)"
 PROJECT="$ROOT/DailyKanji.xcodeproj"
 DERIVED_DATA="$ROOT/build/DerivedData"
 IPA_ROOT="$ROOT/build/ipa"
@@ -29,6 +30,7 @@ if ! command -v xcodegen >/dev/null 2>&1; then
 fi
 
 cd "$ROOT"
+"$REPO_ROOT/scripts/with-node.sh" pnpm daily-kanji:verify-resources -- --ios-root "$ROOT"
 xcodegen generate
 
 rm -rf "$DERIVED_DATA" "$IPA_ROOT" "$IPA_PATH"

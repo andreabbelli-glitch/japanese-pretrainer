@@ -67,6 +67,12 @@ cd ../..
 ./scripts/with-node.sh pnpm daily-kanji:package
 ```
 
+Prima di `xcodegen generate`, `scripts/xcode-renew.sh` e `scripts/package-ipa.sh`
+eseguono il verifier root `daily-kanji:verify-resources`: blocca build/install
+con dataset sample, dataset stale o audio referenziati non presenti nel bundle.
+Per una build intenzionalmente stale usa
+`DAILY_KANJI_ALLOW_STALE_RESOURCES=1`, ma non renderlo il default.
+
 ## Verifica per slice
 
 - Cambi a Swift/UI/widget: test simulatore e, se toccano widget/signing,

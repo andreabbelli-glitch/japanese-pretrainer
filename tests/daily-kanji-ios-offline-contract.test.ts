@@ -11,6 +11,7 @@ import {
 
 const iosRoot = path.join(process.cwd(), "apps", "daily-kanji-ios");
 const contractPath = path.join(iosRoot, "offline-contract.json");
+const packageJsonPath = path.join(process.cwd(), "package.json");
 const projectConfigPath = path.join(iosRoot, "project.yml");
 const scannedSourceDirs = ["App", "Shared", "WidgetExtension"].map((segment) =>
   path.join(iosRoot, segment)
@@ -213,6 +214,33 @@ describe("daily kanji iOS offline contract", () => {
         "TARGETED_DEVICE_FAMILY"
       )
     ).toBe("1");
+  });
+
+  it("verifies packaged resources before iOS build or install workflows", async () => {
+    const packageJson = JSON.parse(await readFile(packageJsonPath, "utf8")) as {
+      scripts?: Record<string, string>;
+    };
+    const workflowScriptPaths = [
+      path.join(iosRoot, "scripts", "package-ipa.sh"),
+      path.join(iosRoot, "scripts", "xcode-renew.sh")
+    ];
+
+    expect(packageJson.scripts?.["daily-kanji:verify-resources"]).toBe(
+      "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/verify-daily-kanji-ios-resources.ts"
+    );
+    expect(packageJson.scripts?.["daily-kanji:package"]).toBe(
+      "pnpm daily-kanji:export && pnpm daily-kanji:export-audio && pnpm daily-kanji:verify-resources"
+    );
+
+    for (const workflowScriptPath of workflowScriptPaths) {
+      const source = await readFile(workflowScriptPath, "utf8");
+      const verifyIndex = source.indexOf("daily-kanji:verify-resources");
+      const xcodegenIndex = source.indexOf("xcodegen generate");
+
+      expect(verifyIndex).toBeGreaterThanOrEqual(0);
+      expect(xcodegenIndex).toBeGreaterThanOrEqual(0);
+      expect(verifyIndex).toBeLessThan(xcodegenIndex);
+    }
   });
 });
 
