@@ -973,6 +973,43 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(card.detailExampleLines, ["Solo esempio italiano."])
     }
 
+    func testSelectedCardViewStacksFrontAboveDetailsAndAudio() throws {
+        let source = try Self.appSourceFileContents()
+        guard let viewStart = source.range(of: "private func selectedCardView") else {
+            XCTFail("Could not find selectedCardView.")
+            return
+        }
+
+        let viewSource = source[viewStart.lowerBound...]
+        guard let viewEnd = viewSource.range(of: "\n    private func studySignalsView") else {
+            XCTFail("Could not isolate selectedCardView.")
+            return
+        }
+
+        let viewBlock = String(viewSource[..<viewEnd.lowerBound])
+        XCTAssertFalse(viewBlock.contains("HStack(alignment: .firstTextBaseline"))
+
+        guard
+            let frontStart = viewBlock.range(of: "Text(card.displayFront)"),
+            let detailsStart = viewBlock.range(of: "Text(card.back)"),
+            let audioStart = viewBlock.range(
+                of: "Label(\"Audio\", systemImage: \"speaker.wave.2.fill\")"
+            )
+        else {
+            XCTFail("Could not find the selected card front, detail text, and audio button.")
+            return
+        }
+
+        XCTAssertLessThan(frontStart.lowerBound, detailsStart.lowerBound)
+        XCTAssertLessThan(detailsStart.lowerBound, audioStart.lowerBound)
+
+        let frontBlock = String(viewBlock[frontStart.lowerBound..<detailsStart.lowerBound])
+        XCTAssertTrue(frontBlock.contains(".lineLimit(1)"))
+        XCTAssertFalse(frontBlock.contains(".lineLimit(2)"))
+        XCTAssertFalse(frontBlock.contains("Label(\"Audio\""))
+        XCTAssertTrue(frontBlock.contains(".frame(maxWidth: .infinity, alignment: .leading)"))
+    }
+
     func testPriorityTextLabelsHighDifficultySignal() throws {
         let card = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards[1]
 
@@ -1682,6 +1719,15 @@ final class DailyKanjiCoreTests: XCTestCase {
             "WidgetExtension/DailyKanjiWidget.swift"
         )
         return try String(contentsOf: widgetSourceURL, encoding: .utf8)
+    }
+
+    private static func appSourceFileContents() throws -> String {
+        let testFileURL = URL(fileURLWithPath: #filePath)
+        let projectURL = testFileURL
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let appSourceURL = projectURL.appendingPathComponent("App/ContentView.swift")
+        return try String(contentsOf: appSourceURL, encoding: .utf8)
     }
 
     private static func makeBundle(

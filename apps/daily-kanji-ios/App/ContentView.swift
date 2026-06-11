@@ -70,21 +70,25 @@ struct ContentView: View {
     }
 
     private func selectedCardView(_ card: DailyKanjiCard) -> some View {
-        VStack(alignment: .leading, spacing: 18) {
-            HStack(alignment: .firstTextBaseline, spacing: 16) {
-                Text(card.displayFront)
-                    .font(.system(size: 72, weight: .semibold, design: .serif))
-                    .minimumScaleFactor(0.45)
-                    .lineLimit(2)
+        VStack(alignment: .leading, spacing: 20) {
+            Text(card.displayFront)
+                .font(.system(size: 84, weight: .semibold, design: .serif))
+                .minimumScaleFactor(0.32)
+                .lineLimit(1)
+                .frame(maxWidth: .infinity, alignment: .leading)
 
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(card.back)
-                        .font(.title3.weight(.semibold))
+            VStack(alignment: .leading, spacing: 10) {
+                Text(card.back)
+                    .font(.title3.weight(.semibold))
+                    .fixedSize(horizontal: false, vertical: true)
+
+                HStack(alignment: .lastTextBaseline, spacing: 8) {
                     Text(card.readingText)
                         .font(.body)
                         .foregroundStyle(.secondary)
+
                     Text(card.pitchAccentText)
-                        .font(.caption)
+                        .font(.caption.weight(.medium))
                         .foregroundStyle(.secondary)
                 }
             }
