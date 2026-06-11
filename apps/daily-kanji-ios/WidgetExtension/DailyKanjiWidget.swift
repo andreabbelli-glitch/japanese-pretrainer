@@ -153,7 +153,7 @@ private struct DailyKanjiLockScreenReadingView: View {
 
             Text(card.lockScreenTranslationText)
                 .font(.system(size: 11, weight: .medium, design: .rounded))
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.white)
                 .lineLimit(2)
                 .minimumScaleFactor(0.65)
                 .multilineTextAlignment(.center)

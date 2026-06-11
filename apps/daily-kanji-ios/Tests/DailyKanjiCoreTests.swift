@@ -800,6 +800,26 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(card.lockScreenTranslationText, "ferita")
     }
 
+    func testLockScreenReadingWidgetTranslationUsesWhiteForeground() throws {
+        let source = try Self.widgetSourceFileContents()
+        guard let textStart = source.range(of: "Text(card.lockScreenTranslationText)") else {
+            XCTFail("Could not find the lock screen translation text view.")
+            return
+        }
+
+        let textBlockSource = source[textStart.lowerBound...]
+        guard let textBlockEnd = textBlockSource.range(
+            of: "\n        }\n        .frame(maxWidth: .infinity"
+        ) else {
+            XCTFail("Could not isolate the lock screen translation text view.")
+            return
+        }
+
+        let textBlock = String(textBlockSource[..<textBlockEnd.lowerBound])
+        XCTAssertTrue(textBlock.contains(".foregroundStyle(.white)"))
+        XCTAssertFalse(textBlock.contains(".foregroundStyle(.secondary)"))
+    }
+
     func testLockScreenPitchAccentPatternMarksDropAfterAccentMora() throws {
         let card = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards[0]
         let pattern = try XCTUnwrap(card.lockScreenPitchAccentPattern)
@@ -1651,6 +1671,17 @@ final class DailyKanjiCoreTests: XCTestCase {
 
     private static func removeTemporaryDirectory(_ directoryURL: URL) {
         try? FileManager.default.removeItem(at: directoryURL)
+    }
+
+    private static func widgetSourceFileContents() throws -> String {
+        let testFileURL = URL(fileURLWithPath: #filePath)
+        let projectURL = testFileURL
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let widgetSourceURL = projectURL.appendingPathComponent(
+            "WidgetExtension/DailyKanjiWidget.swift"
+        )
+        return try String(contentsOf: widgetSourceURL, encoding: .utf8)
     }
 
     private static func makeBundle(
