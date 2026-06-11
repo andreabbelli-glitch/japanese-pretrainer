@@ -311,6 +311,61 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(syncer.fetchCount, 4)
     }
 
+    func testSyncStatusPresentationShowsSharedCacheSourceAndLastSync() {
+        let metadata = DailyKanjiCachedDatasetMetadata(
+            cachedAt: now,
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            cardCount: 42
+        )
+
+        let presentation = DailyKanjiSyncStatusPresentation(
+            syncState: .idle(source: .cache(metadata: metadata))
+        )
+
+        XCTAssertEqual(presentation.title, "Sincronizzato")
+        XCTAssertEqual(presentation.subtitle, "Cache condivisa - 42 card")
+        XCTAssertEqual(presentation.lastSyncAt, now)
+        XCTAssertEqual(presentation.systemImage, "checkmark.icloud")
+        XCTAssertFalse(presentation.isRefreshing)
+        XCTAssertTrue(presentation.canRefresh)
+    }
+
+    func testSyncStatusPresentationDisablesRefreshWhileSyncing() {
+        let presentation = DailyKanjiSyncStatusPresentation(
+            syncState: .syncing(source: .bundle)
+        )
+
+        XCTAssertEqual(presentation.title, "Sincronizzo")
+        XCTAssertEqual(presentation.subtitle, "Snapshot incluso")
+        XCTAssertTrue(presentation.isRefreshing)
+        XCTAssertFalse(presentation.canRefresh)
+    }
+
+    func testSyncStatusPresentationKeepsFailureRefreshable() {
+        let presentation = DailyKanjiSyncStatusPresentation(
+            syncState: .failed(
+                message: "Sync server returned HTTP 401.",
+                source: .bundle
+            )
+        )
+
+        XCTAssertEqual(presentation.title, "Cache non aggiornata")
+        XCTAssertEqual(presentation.subtitle, "Sync server returned HTTP 401.")
+        XCTAssertEqual(presentation.systemImage, "exclamationmark.triangle")
+        XCTAssertFalse(presentation.isRefreshing)
+        XCTAssertTrue(presentation.canRefresh)
+    }
+
+    func testSyncStatusPresentationDisablesRefreshWhenSyncIsUnavailable() {
+        let presentation = DailyKanjiSyncStatusPresentation(syncState: .unavailable)
+
+        XCTAssertEqual(presentation.title, "Sync non configurato")
+        XCTAssertEqual(presentation.subtitle, "Uso cache o bundle locale")
+        XCTAssertEqual(presentation.systemImage, "wifi.slash")
+        XCTAssertFalse(presentation.isRefreshing)
+        XCTAssertFalse(presentation.canRefresh)
+    }
+
     func testAppSelectionAvoidsCardsSeenInTheLastThreeDays() throws {
         let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
         let history = [

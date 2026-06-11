@@ -8,6 +8,8 @@ struct ContentView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
+                    syncStatusView
+
                     if let card = model.selectedCard {
                         selectedCardView(card)
                     }
@@ -20,6 +22,51 @@ struct ContentView: View {
             .navigationBarTitleDisplayMode(.inline)
             .background(Color(.systemGroupedBackground))
         }
+    }
+
+    private var syncStatusView: some View {
+        let presentation = DailyKanjiSyncStatusPresentation(syncState: model.syncState)
+
+        return HStack(alignment: .center, spacing: 12) {
+            Image(systemName: presentation.systemImage)
+                .font(.body.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .frame(width: 22)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(presentation.title)
+                    .font(.subheadline.weight(.semibold))
+
+                Text(presentation.subtitle)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+
+                if let lastSyncAt = presentation.lastSyncAt {
+                    Text("Ultimo sync \(lastSyncAt, style: .relative)")
+                        .font(.caption2)
+                        .foregroundStyle(.tertiary)
+                }
+            }
+
+            Spacer(minLength: 12)
+
+            Button {
+                model.refreshNow()
+            } label: {
+                if presentation.isRefreshing {
+                    ProgressView()
+                        .controlSize(.small)
+                } else {
+                    Label("Aggiorna ora", systemImage: "arrow.clockwise")
+                        .labelStyle(.iconOnly)
+                }
+            }
+            .buttonStyle(.bordered)
+            .disabled(!presentation.canRefresh)
+            .accessibilityLabel("Aggiorna ora")
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private func selectedCardView(_ card: DailyKanjiCard) -> some View {
@@ -164,6 +211,94 @@ struct ContentView: View {
 
 #Preview {
     ContentView(model: DailyKanjiAppModel())
+}
+
+struct DailyKanjiSyncStatusPresentation: Equatable {
+    let title: String
+    let subtitle: String
+    let lastSyncAt: Date?
+    let systemImage: String
+    let isRefreshing: Bool
+    let canRefresh: Bool
+
+    init(syncState: DailyKanjiSyncState) {
+        switch syncState {
+        case .unavailable:
+            self.title = "Sync non configurato"
+            self.subtitle = "Uso cache o bundle locale"
+            self.lastSyncAt = nil
+            self.systemImage = "wifi.slash"
+            self.isRefreshing = false
+            self.canRefresh = false
+        case .idle(let source):
+            self.title = Self.title(for: source)
+            self.subtitle = Self.subtitle(for: source)
+            self.lastSyncAt = Self.lastSyncAt(for: source)
+            self.systemImage = Self.systemImage(for: source)
+            self.isRefreshing = false
+            self.canRefresh = true
+        case .syncing(let source):
+            self.title = "Sincronizzo"
+            self.subtitle = Self.subtitle(for: source)
+            self.lastSyncAt = Self.lastSyncAt(for: source)
+            self.systemImage = "arrow.clockwise"
+            self.isRefreshing = true
+            self.canRefresh = false
+        case .failed(let message, let source):
+            self.title = "Cache non aggiornata"
+            self.subtitle = message
+            self.lastSyncAt = Self.lastSyncAt(for: source)
+            self.systemImage = "exclamationmark.triangle"
+            self.isRefreshing = false
+            self.canRefresh = true
+        }
+    }
+
+    private static func title(for source: DailyKanjiDatasetSource) -> String {
+        switch source {
+        case .cache:
+            return "Sincronizzato"
+        case .bundle:
+            return "Bundle"
+        case .sample:
+            return "Sample"
+        }
+    }
+
+    private static func subtitle(for source: DailyKanjiDatasetSource) -> String {
+        switch source {
+        case .cache(let metadata):
+            guard let metadata else {
+                return "Cache condivisa"
+            }
+
+            return "Cache condivisa - \(metadata.cardCount) card"
+        case .bundle:
+            return "Snapshot incluso"
+        case .sample:
+            return "Dataset non esportato"
+        }
+    }
+
+    private static func lastSyncAt(for source: DailyKanjiDatasetSource) -> Date? {
+        switch source {
+        case .cache(let metadata):
+            return metadata?.cachedAt
+        case .bundle, .sample:
+            return nil
+        }
+    }
+
+    private static func systemImage(for source: DailyKanjiDatasetSource) -> String {
+        switch source {
+        case .cache:
+            return "checkmark.icloud"
+        case .bundle:
+            return "shippingbox"
+        case .sample:
+            return "exclamationmark.circle"
+        }
+    }
 }
 
 private extension DailyKanjiCard.SRS {
