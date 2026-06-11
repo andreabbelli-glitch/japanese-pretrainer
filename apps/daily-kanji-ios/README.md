@@ -161,12 +161,13 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   retro, reading, pitch accent e una spiegazione breve.
 - Per Lock Screen, iOS espone solo slot `accessoryRectangular`: la app pubblica
   quindi due widget coordinati che l'utente puo affiancare. `Daily Kanji`
-  mostra card/kanji grande, mentre `Daily Kanji Reading` mostra lettura, pitch
-  accent con linee sopra le mora alte e spiegazione breve. I due widget usano lo
-  stesso provider e la stessa selezione deterministica per slot orario, quindi
-  puntano alla stessa card quando WidgetKit li aggiorna per lo stesso slot. iOS
-  non consente a un widget singolo di espandersi oltre le dimensioni del family
-  selezionato.
+  mostra solo il fronte/card in grande, mentre `Daily Kanji Reading` mostra
+  lettura hiragana, pitch accent con linee sopra le mora alte e traduzione breve.
+  Note e spiegazioni restano nell'app e nel widget Home Screen. I due widget
+  usano lo stesso provider e la stessa selezione deterministica per slot orario,
+  quindi puntano alla stessa card quando WidgetKit li aggiorna per lo stesso
+  slot. iOS non consente a un widget singolo di espandersi oltre le dimensioni
+  del family selezionato.
 - La rotazione widget usa slot di 1 ora. Il widget legge prima la cache
   condivisa App Group scritta dall'app, poi il bundle packaged, poi il sample di
   sviluppo. WidgetKit non garantisce un cambio card a ogni singolo wake/sblocco

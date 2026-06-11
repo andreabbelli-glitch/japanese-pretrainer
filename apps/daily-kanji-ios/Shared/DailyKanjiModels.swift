@@ -108,6 +108,10 @@ extension DailyKanjiCard {
         front.isEmpty ? entry.label : front
     }
 
+    var lockScreenFrontText: String {
+        displayFront
+    }
+
     var kanjiText: String {
         kanji.isEmpty ? displayFront : kanji.joined(separator: " ")
     }
@@ -137,6 +141,17 @@ extension DailyKanjiCard {
             reading: entry.reading,
             pitchAccent: entry.pitchAccent
         )
+    }
+
+    var lockScreenTranslationText: String {
+        let meaning = entry.meaning.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !meaning.isEmpty {
+            return meaning.dailyKanjiCondensed(maxLength: 72)
+        }
+
+        return back
+            .dailyKanjiTranslationFallback(reading: entry.reading)
+            .dailyKanjiCondensed(maxLength: 72)
     }
 
     var lockScreenMetadataText: String {
@@ -230,6 +245,30 @@ private extension String {
         }
 
         return "\(prefix)..."
+    }
+
+    func dailyKanjiTranslationFallback(reading: String?) -> String {
+        let trimmed = trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if let reading {
+            let readingPrefix = reading.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !readingPrefix.isEmpty {
+                for separator in [" — ", " - ", " – ", ": "] {
+                    let prefix = "\(readingPrefix)\(separator)"
+                    if trimmed.hasPrefix(prefix) {
+                        return String(trimmed.dropFirst(prefix.count))
+                    }
+                }
+            }
+        }
+
+        for separator in [" — ", " - ", " – "] {
+            if let range = trimmed.range(of: separator) {
+                return String(trimmed[range.upperBound...])
+            }
+        }
+
+        return trimmed
     }
 }
 

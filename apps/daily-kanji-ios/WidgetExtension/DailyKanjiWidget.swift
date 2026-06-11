@@ -126,21 +126,11 @@ private struct DailyKanjiLockScreenCardView: View {
     let card: DailyKanjiCard
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 1) {
-            Text(card.displayFront)
-                .font(.system(size: 38, weight: .semibold, design: .serif))
-                .minimumScaleFactor(0.32)
-                .lineLimit(1)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .layoutPriority(2)
-
-            Text(card.back)
-                .font(.system(size: 11, weight: .semibold, design: .rounded))
-                .lineLimit(1)
-                .minimumScaleFactor(0.55)
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        Text(card.lockScreenFrontText)
+            .font(.system(size: 56, weight: .semibold, design: .serif))
+            .minimumScaleFactor(0.26)
+            .lineLimit(1)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
 }
 
@@ -148,37 +138,28 @@ private struct DailyKanjiLockScreenReadingView: View {
     let card: DailyKanjiCard
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            HStack(alignment: .bottom, spacing: 4) {
-                if let pattern = card.lockScreenPitchAccentPattern {
-                    DailyKanjiPitchAccentReadingView(pattern: pattern)
-                        .layoutPriority(2)
-                } else {
-                    Text(card.readingText)
-                        .font(.system(size: 16, weight: .semibold, design: .rounded))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.55)
-                        .layoutPriority(2)
-                }
-
-                Spacer(minLength: 0)
-
-                if let pitchAccent = card.lockScreenPitchAccentText {
-                    Text(pitchAccent)
-                        .font(.system(size: 8, weight: .bold, design: .rounded))
-                        .foregroundStyle(.secondary)
-                        .padding(.bottom, 1)
-                }
+        VStack(alignment: .center, spacing: 5) {
+            if let pattern = card.lockScreenPitchAccentPattern {
+                DailyKanjiPitchAccentReadingView(pattern: pattern)
+                    .layoutPriority(2)
+            } else {
+                Text(card.readingText)
+                    .font(.system(size: 25, weight: .semibold, design: .rounded))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.55)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .layoutPriority(2)
             }
 
-            Text(card.lockScreenExplanationText ?? card.back)
-                .font(.system(size: 8.5, weight: .regular, design: .rounded))
+            Text(card.lockScreenTranslationText)
+                .font(.system(size: 11, weight: .medium, design: .rounded))
                 .foregroundStyle(.secondary)
-                .lineLimit(3)
-                .minimumScaleFactor(0.55)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(2)
+                .minimumScaleFactor(0.65)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, alignment: .center)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
 }
 
@@ -186,35 +167,63 @@ private struct DailyKanjiPitchAccentReadingView: View {
     let pattern: DailyKanjiPitchAccentPattern
 
     var body: some View {
-        HStack(alignment: .bottom, spacing: 1) {
+        HStack(alignment: .bottom, spacing: 0) {
             ForEach(pattern.moras) { mora in
-                VStack(spacing: 1) {
+                VStack(spacing: 2) {
                     Capsule()
                         .fill(mora.isHigh ? Color(red: 0.22, green: 0.86, blue: 0.42) : Color.clear)
-                        .frame(height: 2)
-                        .padding(.horizontal, 1)
+                        .frame(width: barWidth(for: mora), height: 2.5)
 
                     Text(mora.text)
                         .font(.system(size: fontSize, weight: .semibold, design: .rounded))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.7)
+                        .minimumScaleFactor(0.75)
                 }
+                .frame(width: segmentWidth)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 
     private var fontSize: CGFloat {
         switch pattern.moras.count {
-        case 0...5:
-            return 15
-        case 6...7:
-            return 13
-        case 8...9:
-            return 11.5
+        case 0...2:
+            return 27
+        case 3...4:
+            return 23
+        case 5...6:
+            return 18.5
+        case 7...8:
+            return 15.5
         default:
-            return 10
+            return 13
         }
+    }
+
+    private var segmentWidth: CGFloat {
+        let width: CGFloat
+        switch pattern.moras.count {
+        case 0...2:
+            width = 34
+        case 3...4:
+            width = 28
+        case 5...6:
+            width = 23
+        case 7...8:
+            width = 19
+        default:
+            width = 16
+        }
+
+        if pattern.moras.contains(where: { $0.text.count > 1 }) {
+            return width + 6
+        }
+
+        return width
+    }
+
+    private func barWidth(for mora: DailyKanjiPitchAccentPattern.Mora) -> CGFloat {
+        mora.text.count > 1 ? segmentWidth * 0.82 : segmentWidth * 0.65
     }
 }
 
@@ -240,7 +249,7 @@ struct DailyKanjiReadingWidget: Widget {
             DailyKanjiWidgetView(entry: entry, lockScreenRole: .reading)
         }
         .configurationDisplayName("Daily Kanji Reading")
-        .description("Shows reading, pitch accent, and note.")
+        .description("Shows reading, pitch accent, and translation.")
         .supportedFamilies(DailyKanjiWidgetFamilies.readingSupported)
         .contentMarginsDisabled()
     }

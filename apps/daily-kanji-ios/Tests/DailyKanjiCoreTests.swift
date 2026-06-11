@@ -772,6 +772,34 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(card.lockScreenMetadataText, "かんてん - P2")
     }
 
+    func testLockScreenCardWidgetUsesOnlyTheFrontText() throws {
+        let card = try Self.cardReplacingBackAndMeaning(
+            back: "けが — ferita",
+            meaning: "ferita"
+        )
+
+        XCTAssertEqual(card.lockScreenFrontText, "観点")
+    }
+
+    func testLockScreenReadingWidgetUsesShortTranslationInsteadOfNotes() throws {
+        let card = try Self.cardReplacingBackMeaningAndNotes(
+            back: "けが — ferita",
+            meaning: "ferita",
+            notes: "Long note that should stay out of the lock screen reading widget."
+        )
+
+        XCTAssertEqual(card.lockScreenTranslationText, "ferita")
+    }
+
+    func testLockScreenTranslationFallsBackByStrippingLeadingReading() throws {
+        let card = try Self.cardReplacingBackAndMeaning(
+            back: "けが — ferita",
+            meaning: ""
+        )
+
+        XCTAssertEqual(card.lockScreenTranslationText, "ferita")
+    }
+
     func testLockScreenPitchAccentPatternMarksDropAfterAccentMora() throws {
         let card = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards[0]
         let pattern = try XCTUnwrap(card.lockScreenPitchAccentPattern)
@@ -1186,6 +1214,40 @@ final class DailyKanjiCoreTests: XCTestCase {
             .replacingOccurrences(
                 of: "\"exampleIt\": \"Cambiare punto di vista.\"",
                 with: exampleIt.map { "\"exampleIt\": \"\($0)\"" } ?? "\"exampleIt\": null"
+            )
+            .data(using: .utf8)!
+
+        return try DailyKanjiDataset.decode(jsonData: json).cards[0]
+    }
+
+    private static func cardReplacingBackAndMeaning(
+        back: String,
+        meaning: String
+    ) throws -> DailyKanjiCard {
+        try cardReplacingBackMeaningAndNotes(
+            back: back,
+            meaning: meaning,
+            notes: "Plain note"
+        )
+    }
+
+    private static func cardReplacingBackMeaningAndNotes(
+        back: String,
+        meaning: String,
+        notes: String
+    ) throws -> DailyKanjiCard {
+        let json = String(data: datasetJSON, encoding: .utf8)!
+            .replacingOccurrences(
+                of: "\"back\": \"point of view\"",
+                with: "\"back\": \"\(back)\""
+            )
+            .replacingOccurrences(
+                of: "\"meaning\": \"point of view\"",
+                with: "\"meaning\": \"\(meaning)\""
+            )
+            .replacingOccurrences(
+                of: "\"Plain note\"",
+                with: "\"\(notes)\""
             )
             .data(using: .utf8)!
 
