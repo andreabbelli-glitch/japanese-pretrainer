@@ -99,6 +99,24 @@ Per usare un altro device CoreDevice:
 DEVICE_ID=<coredevice-id-or-udid> ./scripts/xcode-renew.sh
 ```
 
+Automazione rinnovo firma via launchd:
+
+```sh
+DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh --mark-success-now
+./scripts/xcode-renew-if-needed.sh --status
+./scripts/xcode-renew-if-needed.sh --force
+```
+
+Il LaunchAgent controlla ogni 6 ore, ma esegue il package + build/install solo
+quando l'ultimo rinnovo riuscito ha almeno 5 giorni e l'iPhone e' raggiungibile
+via CoreDevice. Il device id resta in
+`~/Library/Application Support/DailyKanji/renew.env`, non nel repo. Per rimuovere
+l'automazione:
+
+```sh
+./scripts/install-renew-launchd.sh --uninstall
+```
+
 Package IPA diagnostico:
 
 ```sh

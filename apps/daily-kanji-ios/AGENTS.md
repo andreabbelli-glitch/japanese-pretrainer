@@ -53,6 +53,28 @@ Rinnovo/install su iPhone personale via CoreDevice:
 ./scripts/xcode-renew.sh
 ```
 
+Automazione launchd per rinnovo firma a basso consumo:
+
+```sh
+DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh --mark-success-now
+./scripts/xcode-renew-if-needed.sh --status
+./scripts/xcode-renew-if-needed.sh --force
+```
+
+Il LaunchAgent utente controlla ogni 6 ore, ma il wrapper esegue la build/install
+solo se l'ultimo rinnovo riuscito ha almeno 5 giorni e l'iPhone e' raggiungibile
+via CoreDevice. Il `DEVICE_ID` viene scritto nel file locale non versionato
+`~/Library/Application Support/DailyKanji/renew.env`; il primo install crea anche
+il marker `last-renew-success.epoch`, quindi `RunAtLoad` non scatena un build
+immediato. Quando il rinnovo e' davvero dovuto, il wrapper esegue prima
+`pnpm daily-kanji:package` e poi `scripts/xcode-renew.sh`, cosi' il verifier non
+blocca risorse packaged stale. Se il device non e' disponibile, il job termina
+senza errore e riprova al giro successivo. Per rimuoverlo:
+
+```sh
+./scripts/install-renew-launchd.sh --uninstall
+```
+
 Package IPA diagnostico:
 
 ```sh
