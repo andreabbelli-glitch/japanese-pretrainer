@@ -1,14 +1,15 @@
 {
   "entitlements": {
-    "appGroups": false,
+    "appGroupIdentifier": "group.dev.local.daily-kanji",
+    "appGroups": true,
     "associatedDomains": false
   },
   "freeTierBudget": {
     "monthlyRuntime": {
       "appSyncRequests": 200,
-      "tursoQueries": 400,
-      "vercelRequests": 400,
-      "widgetSyncRequests": 200
+      "tursoQueries": 200,
+      "vercelRequests": 200,
+      "widgetSyncRequests": 0
     },
     "packageWorkflow": {
       "defaultCardLimit": 250,

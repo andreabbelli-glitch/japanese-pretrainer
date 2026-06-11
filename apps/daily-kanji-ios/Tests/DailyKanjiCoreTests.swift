@@ -113,6 +113,204 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
+    func testCacheStoreDeclaresTheSharedAppGroupIdentifier() {
+        XCTAssertEqual(
+            DailyKanjiCacheStore.appGroupIdentifier,
+            "group.dev.local.daily-kanji"
+        )
+    }
+
+    func testSyncPolicyRefreshesWhenCacheIsOlderThanFourHours() {
+        let policy = DailyKanjiSyncPolicy()
+        let metadata = DailyKanjiCachedDatasetMetadata(
+            cachedAt: now.addingTimeInterval(-(4 * 60 * 60) - 1),
+            generatedAt: "2026-06-11T04:00:00.000Z",
+            cardCount: 1
+        )
+
+        XCTAssertTrue(
+            policy.shouldSync(
+                now: now,
+                metadata: metadata,
+                lastFailureAt: nil,
+                consecutiveFailureCount: 0,
+                force: false
+            )
+        )
+    }
+
+    func testSyncPolicyRefreshesAfterCalendarDayChange() {
+        let policy = DailyKanjiSyncPolicy()
+        let metadata = DailyKanjiCachedDatasetMetadata(
+            cachedAt: Self.isoDate("2026-06-10T23:30:00.000Z"),
+            generatedAt: "2026-06-10T23:30:00.000Z",
+            cardCount: 1
+        )
+
+        XCTAssertTrue(
+            policy.shouldSync(
+                now: Self.isoDate("2026-06-11T00:05:00.000Z"),
+                metadata: metadata,
+                lastFailureAt: nil,
+                consecutiveFailureCount: 0,
+                force: false
+            )
+        )
+    }
+
+    func testSyncPolicyBacksOffAfterFailure() {
+        let policy = DailyKanjiSyncPolicy()
+        let metadata = DailyKanjiCachedDatasetMetadata(
+            cachedAt: now.addingTimeInterval(-60),
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            cardCount: 1
+        )
+        let lastFailureAt = now.addingTimeInterval(-(14 * 60))
+
+        XCTAssertFalse(
+            policy.shouldSync(
+                now: now,
+                metadata: metadata,
+                lastFailureAt: lastFailureAt,
+                consecutiveFailureCount: 1,
+                force: false
+            )
+        )
+        XCTAssertTrue(
+            policy.shouldSync(
+                now: now,
+                metadata: metadata,
+                lastFailureAt: lastFailureAt,
+                consecutiveFailureCount: 1,
+                force: true
+            )
+        )
+    }
+
+    func testSyncPolicyExponentiallyBacksOffRepeatedFailures() {
+        let policy = DailyKanjiSyncPolicy()
+        let metadata = DailyKanjiCachedDatasetMetadata(
+            cachedAt: now.addingTimeInterval(-(5 * 60 * 60)),
+            generatedAt: "2026-06-11T04:00:00.000Z",
+            cardCount: 1
+        )
+
+        XCTAssertFalse(
+            policy.shouldSync(
+                now: now,
+                metadata: metadata,
+                lastFailureAt: now.addingTimeInterval(-(29 * 60)),
+                consecutiveFailureCount: 2,
+                force: false
+            )
+        )
+        XCTAssertFalse(
+            policy.shouldSync(
+                now: now,
+                metadata: metadata,
+                lastFailureAt: now.addingTimeInterval(-(59 * 60)),
+                consecutiveFailureCount: 3,
+                force: false
+            )
+        )
+        XCTAssertTrue(
+            policy.shouldSync(
+                now: now,
+                metadata: metadata,
+                lastFailureAt: now.addingTimeInterval(-(61 * 60)),
+                consecutiveFailureCount: 3,
+                force: false
+            )
+        )
+    }
+
+    @MainActor
+    func testManualRefreshWritesCacheUpdatesSelectionAndReloadsTimelines() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let bundle = try Self.makeBundle(
+            containing: try DailyKanjiDataset.decode(jsonData: Self.datasetJSON),
+            in: temporaryDirectory
+        )
+        let syncedDataset = DailyKanjiDataset(
+            version: 1,
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        let syncer = MockDailyKanjiSyncer(result: .success(syncedDataset))
+        var reloadCount = 0
+        let model = DailyKanjiAppModel(
+            repository: DailyKanjiRepository(bundle: bundle, cacheStore: cacheStore),
+            cacheStore: cacheStore,
+            syncer: syncer,
+            reloadTimelines: { reloadCount += 1 },
+            now: now
+        )
+
+        await model.syncNow(now: now, force: true)
+
+        XCTAssertEqual(syncer.fetchCount, 1)
+        XCTAssertEqual(model.cards.map(\.cardId), ["card-0"])
+        XCTAssertEqual(model.selectedCard?.cardId, "card-0")
+        XCTAssertEqual(cacheStore.loadMetadata()?.cardCount, 1)
+        XCTAssertEqual(reloadCount, 1)
+        XCTAssertEqual(model.syncState, .idle(source: .cache(metadata: cacheStore.loadMetadata())))
+    }
+
+    @MainActor
+    func testAutomaticRefreshUsesExponentialFailureBackoff() async throws {
+        let cards = try Self.rankedCards(count: 1)
+        let syncer = MockDailyKanjiSyncer(result: .failure(DailyKanjiSyncClientError.invalidResponse))
+        let model = DailyKanjiAppModel(cards: cards, syncer: syncer, now: now)
+
+        await model.syncNow(now: now, force: false)
+        await model.syncNow(now: now.addingTimeInterval(14 * 60), force: false)
+        await model.syncNow(now: now.addingTimeInterval(16 * 60), force: false)
+        await model.syncNow(now: now.addingTimeInterval(45 * 60), force: false)
+        await model.syncNow(now: now.addingTimeInterval(47 * 60), force: false)
+
+        XCTAssertEqual(syncer.fetchCount, 3)
+    }
+
+    @MainActor
+    func testSuccessfulRefreshResetsFailureBackoff() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let syncedDataset = DailyKanjiDataset(
+            version: 1,
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        let syncer = MockDailyKanjiSyncer(results: [
+            .failure(DailyKanjiSyncClientError.invalidResponse),
+            .success(syncedDataset),
+            .failure(DailyKanjiSyncClientError.invalidResponse),
+            .success(syncedDataset)
+        ])
+        let model = DailyKanjiAppModel(
+            cards: syncedDataset.cards,
+            cacheStore: cacheStore,
+            syncer: syncer,
+            now: now
+        )
+
+        await model.syncNow(now: now, force: false)
+        await model.syncNow(now: now.addingTimeInterval(16 * 60), force: false)
+        await model.syncNow(now: now.addingTimeInterval((4 * 60 * 60) + (17 * 60)), force: false)
+        await model.syncNow(now: now.addingTimeInterval((4 * 60 * 60) + (31 * 60)), force: false)
+        await model.syncNow(now: now.addingTimeInterval((4 * 60 * 60) + (33 * 60)), force: false)
+
+        XCTAssertEqual(syncer.fetchCount, 4)
+    }
+
     func testAppSelectionAvoidsCardsSeenInTheLastThreeDays() throws {
         let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
         let history = [
@@ -1225,4 +1423,38 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         return bundle
     }
+
+    private static func isoDate(_ value: String) -> Date {
+        ISO8601DateFormatter.dailyKanjiTestFormatter.date(from: value)!
+    }
+}
+
+private final class MockDailyKanjiSyncer: DailyKanjiSyncing {
+    private var results: [Result<DailyKanjiDataset, Error>]
+    private(set) var fetchCount = 0
+
+    init(result: Result<DailyKanjiDataset, Error>) {
+        self.results = [result]
+    }
+
+    init(results: [Result<DailyKanjiDataset, Error>]) {
+        self.results = results
+    }
+
+    func fetchDataset() async throws -> DailyKanjiDataset {
+        fetchCount += 1
+        guard results.count > 1 else {
+            return try results[0].get()
+        }
+
+        return try results.removeFirst().get()
+    }
+}
+
+private extension ISO8601DateFormatter {
+    static let dailyKanjiTestFormatter: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter
+    }()
 }

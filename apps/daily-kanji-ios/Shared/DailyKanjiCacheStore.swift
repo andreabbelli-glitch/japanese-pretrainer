@@ -7,6 +7,7 @@ struct DailyKanjiCachedDatasetMetadata: Codable, Equatable {
 }
 
 struct DailyKanjiCacheStore {
+    static let appGroupIdentifier = "group.dev.local.daily-kanji"
     static let datasetFileName = "daily-kanji-cards.json"
     static let metadataFileName = "daily-kanji-cache-metadata.json"
 
@@ -98,6 +99,15 @@ struct DailyKanjiCacheStore {
     }
 
     private static func defaultDirectoryURL() -> URL {
+        if let appGroupURL = FileManager.default.containerURL(
+            forSecurityApplicationGroupIdentifier: appGroupIdentifier
+        ) {
+            return appGroupURL.appendingPathComponent(
+                "DailyKanji",
+                isDirectory: true
+            )
+        }
+
         if let applicationSupportURL = try? FileManager.default.url(
             for: .applicationSupportDirectory,
             in: .userDomainMask,

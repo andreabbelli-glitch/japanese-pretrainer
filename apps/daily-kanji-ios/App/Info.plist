@@ -12,6 +12,10 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
+	<key>DAILY_KANJI_IOS_SYNC_ENDPOINT</key>
+	<string>$(DAILY_KANJI_IOS_SYNC_ENDPOINT)</string>
+	<key>DAILY_KANJI_IOS_SYNC_TOKEN</key>
+	<string>$(DAILY_KANJI_IOS_SYNC_TOKEN)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

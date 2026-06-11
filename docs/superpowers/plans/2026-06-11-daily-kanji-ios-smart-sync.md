@@ -4,7 +4,7 @@
 
 **Goal:** Make Daily Kanji iOS offline-first: the app and widget refresh the ranked study dataset from a private web endpoint when useful, while packaged data remains the fallback.
 
-**Architecture:** Keep the packaged JSON/audio bundle as a fallback. Add a private Next.js API that reuses `buildDailyKanjiDataset`; add target-local JSON caches for the app and widget because App Groups failed under the current free signing path; add 4-hour/day-change/manual refresh policy for the app and 4-hour timeline refresh policy for the widget.
+**Architecture:** Keep the packaged JSON/audio bundle as a fallback. Add a private Next.js API that reuses `buildDailyKanjiDataset`; add an App Group shared JSON cache written by the app and read by the widget; add 4-hour/day-change/manual refresh policy for the app. The widget stays network-free and reloads from the shared cache.
 
 **Tech Stack:** Next.js App Router route handlers, Vitest, SwiftUI, WidgetKit, XcodeGen, XCTest.
 
@@ -14,15 +14,16 @@
 
 - `src/app/api/daily-kanji/ios-dataset/route.ts`: private dataset endpoint.
 - `tests/daily-kanji-ios-dataset-route.test.ts`: route auth/cache/status tests.
-- `apps/daily-kanji-ios/project.yml`: generated config files and signing settings without App Group entitlements.
-- `apps/daily-kanji-ios/Shared/DailyKanjiCacheStore.swift`: target-local JSON cache paths, metadata, atomic writes.
+- `apps/daily-kanji-ios/project.yml`: generated config files and signing settings with scoped App Group entitlements.
+- `apps/daily-kanji-ios/DailyKanji.entitlements`: app App Group entitlement.
+- `apps/daily-kanji-ios/DailyKanjiWidgetExtension.entitlements`: widget App Group entitlement.
+- `apps/daily-kanji-ios/Shared/DailyKanjiCacheStore.swift`: shared App Group JSON cache path, metadata, atomic writes.
 - `apps/daily-kanji-ios/Shared/DailyKanjiRepository.swift`: loading order local cache -> bundle -> sample.
 - `apps/daily-kanji-ios/Shared/DailyKanjiSyncPolicy.swift`: 4-hour/day-change/backoff decision logic.
 - `apps/daily-kanji-ios/App/DailyKanjiSyncClient.swift`: app-only `URLSession` dataset fetch.
 - `apps/daily-kanji-ios/App/DailyKanjiAppModel.swift`: async sync orchestration and UI state.
 - `apps/daily-kanji-ios/App/ContentView.swift`: sync status and manual refresh control.
-- `apps/daily-kanji-ios/WidgetExtension/DailyKanjiWidgetSyncClient.swift`: widget-only fetch/cache helper.
-- `apps/daily-kanji-ios/WidgetExtension/DailyKanjiWidget.swift`: provider uses widget-local cache and bounded remote refresh.
+- `apps/daily-kanji-ios/WidgetExtension/DailyKanjiWidget.swift`: provider reads shared cache through `DailyKanjiRepository`.
 - `apps/daily-kanji-ios/Tests/DailyKanjiCoreTests.swift`: cache/repository/sync policy/model tests.
 - `tests/daily-kanji-ios-offline-contract.test.ts`: evolve offline-only contract into offline-first contract.
 - `apps/daily-kanji-ios/offline-contract.json`: update runtime budget and entitlement expectations.
@@ -42,12 +43,14 @@ Update `tests/daily-kanji-ios-offline-contract.test.ts` so it expects:
 
 ```ts
 expect(contract.entitlements).toEqual({
-  appGroups: false,
+  appGroupIdentifier: "group.dev.local.daily-kanji",
+  appGroups: true,
   associatedDomains: false
 });
 expect(contract.runtimeNetwork).toBe("offline-first");
-expect(contract.freeTierBudget.monthlyRuntime.vercelRequests).toBeLessThanOrEqual(400);
-expect(contract.freeTierBudget.monthlyRuntime.tursoQueries).toBeLessThanOrEqual(400);
+expect(contract.freeTierBudget.monthlyRuntime.widgetSyncRequests).toBe(0);
+expect(contract.freeTierBudget.monthlyRuntime.vercelRequests).toBeLessThanOrEqual(200);
+expect(contract.freeTierBudget.monthlyRuntime.tursoQueries).toBeLessThanOrEqual(200);
 ```
 
 Also keep network APIs out of `Shared/` because those files compile into both
@@ -70,11 +73,10 @@ Run:
 
 Expected: FAIL until `offline-contract.json` is updated.
 
-- [ ] **Step 3: Verify App Group is not viable on this free-signing path**
+- [x] **Step 3: Verify App Group availability on this free-signing path**
 
-Run a short-lived local probe with App Group entitlements. If `xcodebuild`
-reports provisioning profiles do not include `com.apple.security.application-groups`,
-remove the probe files and keep the zero-cost fallback.
+Manual Apple Developer setup made `group.dev.local.daily-kanji` available for
+the personal app and widget. Keep that group as the only allowed App Group.
 
 - [ ] **Step 4: Update contract JSON**
 
@@ -84,20 +86,20 @@ Set:
 {
   "runtimeNetwork": "offline-first",
   "entitlements": {
-    "appGroups": false,
+    "appGroupIdentifier": "group.dev.local.daily-kanji",
+    "appGroups": true,
     "associatedDomains": false
   },
   "remoteServices": ["private-daily-kanji-ios-dataset-api"]
 }
 ```
 
-Monthly runtime budget should state the expected automated budget: app sync and
-widget sync each have a 4-hour freshness policy, modeled as 200 successful
-requests per month, for a default expected maximum of 400 Vercel requests / 400
-Turso export queries per month. Manual refresh is user-controlled and not
-hard-capped in this slice.
+Monthly runtime budget should state the expected automated budget: app sync has
+a 4-hour freshness policy, modeled as 200 successful requests per month. Widget
+sync is 0 because the widget reads the app-written App Group cache. Manual
+refresh is user-controlled and not hard-capped in this slice.
 
-- [ ] **Step 5: Verify generated project and signing without App Group**
+- [ ] **Step 5: Verify generated project and signing with scoped App Group**
 
 Run:
 
@@ -112,7 +114,7 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   -derivedDataPath build/AppGroupProbeDerivedData build
 ```
 
-Expected: PASS without App Group entitlements.
+Expected: PASS with the `group.dev.local.daily-kanji` entitlements.
 
 - [ ] **Step 6: Run verification**
 
@@ -284,8 +286,9 @@ struct DailyKanjiCacheStore {
 }
 ```
 
-Use `Application Support/DailyKanji/` for production and an injected directory
-for tests. Write to temporary files, then replace/move into
+Use `FileManager.containerURL(forSecurityApplicationGroupIdentifier:)` for
+production with `Application Support/DailyKanji/` only as a local fallback, and
+use an injected directory for tests. Write to temporary files, then replace/move into
 `daily-kanji-cards.json` and `daily-kanji-cache-metadata.json`.
 
 - [ ] **Step 4: Update repository loading order**
@@ -441,15 +444,14 @@ Run reviewer loop until green.
 Commit:
 
 ```sh
-git add apps/daily-kanji-ios/Shared/DailyKanjiSyncPolicy.swift apps/daily-kanji-ios/App/DailyKanjiSyncClient.swift apps/daily-kanji-ios/App/DailyKanjiAppModel.swift apps/daily-kanji-ios/Tests/DailyKanjiCoreTests.swift
+git add apps/daily-kanji-ios/Shared/DailyKanjiSyncPolicy.swift apps/daily-kanji-ios/App/DailyKanjiSyncClient.swift apps/daily-kanji-ios/App/DailyKanjiAppModel.swift apps/daily-kanji-ios/App/Info.plist apps/daily-kanji-ios/Shared/DailyKanjiCacheStore.swift apps/daily-kanji-ios/Tests/DailyKanjiCoreTests.swift apps/daily-kanji-ios/offline-contract.json tests/daily-kanji-ios-offline-contract.test.ts apps/daily-kanji-ios/project.yml apps/daily-kanji-ios/DailyKanji.entitlements apps/daily-kanji-ios/DailyKanjiWidgetExtension.entitlements apps/daily-kanji-ios/README.md docs/superpowers/specs/2026-06-11-daily-kanji-ios-smart-sync-design.md docs/superpowers/plans/2026-06-11-daily-kanji-ios-smart-sync.md
 git commit -m "Sync Daily Kanji iOS dataset on app activation"
 git push
 ```
 
-## Task 5: Widget Sync Cache And Sync UI
+## Task 5: Widget Shared Cache And Sync UI
 
 **Files:**
-- Create: `apps/daily-kanji-ios/WidgetExtension/DailyKanjiWidgetSyncClient.swift`
 - Modify: `apps/daily-kanji-ios/WidgetExtension/DailyKanjiWidget.swift`
 - Modify: `apps/daily-kanji-ios/App/ContentView.swift`
 - Modify: `apps/daily-kanji-ios/Tests/DailyKanjiCoreTests.swift`
@@ -467,11 +469,11 @@ Assert shared source files still do not contain:
 
 but shared local file reads remain allowed.
 
-- [ ] **Step 2: Add widget-local sync/cache**
+- [ ] **Step 2: Verify widget shared-cache loading**
 
-Add widget-only fetch/cache code under `WidgetExtension/`, not `Shared/`.
-The provider should use widget cached JSON when fresh, fetch the private endpoint
-when stale and configured, then fall back to bundled JSON.
+Keep widget-only networking absent. The provider should use
+`DailyKanjiRepository`, which loads the App Group shared cache first, then falls
+back to bundled JSON.
 
 - [ ] **Step 3: Add sync UI**
 
@@ -504,7 +506,7 @@ Run reviewer loop until green.
 Commit:
 
 ```sh
-git add apps/daily-kanji-ios/WidgetExtension/DailyKanjiWidgetSyncClient.swift apps/daily-kanji-ios/WidgetExtension/DailyKanjiWidget.swift apps/daily-kanji-ios/App/ContentView.swift apps/daily-kanji-ios/Tests/DailyKanjiCoreTests.swift tests/daily-kanji-ios-offline-contract.test.ts
+git add apps/daily-kanji-ios/WidgetExtension/DailyKanjiWidget.swift apps/daily-kanji-ios/App/ContentView.swift apps/daily-kanji-ios/Tests/DailyKanjiCoreTests.swift tests/daily-kanji-ios-offline-contract.test.ts
 git commit -m "Surface Daily Kanji iOS sync status"
 git push
 ```
@@ -529,7 +531,7 @@ and clarify:
 
 - app syncs on launch/foreground at most every 4 hours;
 - manual refresh is available;
-- widget reads its own target-local synced cache;
+- widget reads the shared App Group synced cache;
 - bundled snapshot remains fallback;
 - audio is still bundled-only.
 
@@ -576,7 +578,7 @@ Manual checks on iPhone:
 
 - app opens with current dataset;
 - manual refresh succeeds when endpoint/token are configured;
-- lock-screen widget shows synced cards through its own sync/cache path;
+- lock-screen widget shows synced cards through the shared App Group cache;
 - home widget still works;
 - audio button remains enabled only for bundled audio;
 - offline mode still shows cached or bundled data.

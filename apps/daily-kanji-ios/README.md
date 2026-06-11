@@ -26,8 +26,10 @@ preview funzionanti. Lo storico locale dell'app conserva le esposizioni recenti
 degli ultimi 3 giorni, includendo la finestra widget oraria da 72 slot e le
 aperture manuali dell'app, anche quando la stessa card viene mostrata piu volte.
 Serve a evitare ripetizioni quando l'app viene aperta; le righe recenti sono
-tappabili per riaprire la card completa e fare una mini-review locale. Il widget
-resta senza App Group per non introdurre entitlement fragili con Personal Team.
+tappabili per riaprire la card completa e fare una mini-review locale. App e
+widget condividono la cache JSON tramite App Group
+`group.dev.local.daily-kanji`, cosi il widget puo rileggere il dataset scaricato
+dall'app senza fare sync di rete separati.
 
 ## Obiettivo v1
 
@@ -37,8 +39,9 @@ resta senza App Group per non introdurre entitlement fragili con Personal Team.
 - Escludere card nuove mai viste, `known_manual`, sospese, manual override e
   card ormai stabili/note.
 - Tenere la app iOS read-only rispetto alla review FSRS.
-- Azzerare il traffico runtime iOS v1: dataset e audio packaged nel bundle,
-  senza refresh remoto dall'app o dal widget.
+- Restare offline-first: dataset e audio packaged nel bundle come fallback, con
+  refresh remoto solo dall'app quando la cache e' stale o quando l'utente forza
+  "Aggiorna ora".
 - Restare comodamente nei piani gratuiti Vercel e Turso per uso personale.
 
 ## Prerequisiti
@@ -130,6 +133,17 @@ restano ignorati da git per evitare di committare snapshot personali o asset
 duplicati. Durante la build Xcode queste risorse vengono copiate sia nel bundle
 app sia nel bundle WidgetKit extension.
 
+Sync runtime privato:
+
+```sh
+DAILY_KANJI_IOS_SYNC_ENDPOINT=https://<deployment>/api/daily-kanji/ios-dataset
+DAILY_KANJI_IOS_SYNC_TOKEN=<secret>
+```
+
+Questi valori vanno impostati come build settings locali o passati a
+`xcodebuild`; i placeholder non configurati vengono ignorati e l'app resta sul
+fallback packaged/cache. Il token non va committato.
+
 Unit test iOS:
 
 ```sh
@@ -149,18 +163,17 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   trattata come unico widget dell'utente e quindi progettata per sfruttare tutto
   lo spazio che iOS assegna a quel family. iOS non consente a un widget singolo
   di espandersi oltre le dimensioni del family selezionato.
-- La rotazione widget usa slot di 1 ora. Nella versione offline-only questi slot
-  sono ricostruiti dal bundle packaged; nella milestone smart-sync il widget
-  potra aggiornare una propria cache locale dal dataset privato quando la cache
-  e' stale. WidgetKit non garantisce un cambio card a ogni singolo wake/sblocco
+- La rotazione widget usa slot di 1 ora. Il widget legge prima la cache
+  condivisa App Group scritta dall'app, poi il bundle packaged, poi il sample di
+  sviluppo. WidgetKit non garantisce un cambio card a ogni singolo wake/sblocco
   del telefono.
 - Il widget usa deep link `dailykanji://card/<card-id>` per aprire la card
   completa nell'app.
-- Senza App Group, l'app non puo sapere se il widget lockscreen e' stato
-  davvero visibile. Lo storico mostra quindi gli slot widget offline ricostruiti,
-  mentre la selezione in-app tratta solo lo slot widget corrente come esposizione
-  recente per ridurre ripetizioni immediate senza bloccare tutta la finestra dei
-  kanji piu prioritari.
+- L'app non puo sapere con certezza se il widget lockscreen e' stato davvero
+  visibile. Lo storico mostra quindi gli slot widget ricostruiti, mentre la
+  selezione in-app tratta solo lo slot widget corrente come esposizione recente
+  per ridurre ripetizioni immediate senza bloccare tutta la finestra dei kanji
+  piu prioritari.
 - Dopo reinstallazioni importanti puo essere necessario rimuovere e riaggiungere
   il widget per evitare preview cacheate di WidgetKit.
 - `devicectl` puo installare e lanciare la app, ma non puo aprire la widget
@@ -168,33 +181,35 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
 
 ## Limiti gratuiti e traffico
 
-La v1 offline-only resta personale e leggera; la milestone smart-sync evolve il
+La v1 resta personale e leggera; la milestone smart-sync evolve il
 contratto in offline-first senza introdurre vendita, multiutente o sync FSRS da
 iOS:
 
 - dataset full e audio locali restano packaged nell'app come fallback;
-- app e widget possono scaricare un piccolo JSON privato quando la cache locale
-  e' stale;
+- solo l'app scarica un piccolo JSON privato quando la cache condivisa e' stale
+  o quando l'utente forza il refresh;
+- il widget legge la cache condivisa App Group e non fa richieste di rete;
 - nessuna scrittura FSRS da iOS;
-- nessun entitlement App Group o Associated Domains;
+- App Group limitato a `group.dev.local.daily-kanji`;
+- nessun Associated Domains;
 - nessun polling illimitato dal widget;
 - fallback offline sempre disponibile.
 
 Con il contratto offline-first, l'app iOS installata puo consumare traffico
 runtime solo per il JSON del dataset privato. Il budget atteso resta ampiamente
-sotto i free tier per uso monoutente: sync automatico massimo ogni 4 ore per app
-e widget, payload JSON piccolo, nessun download audio e nessun accesso diretto a
-Turso dal telefono.
+sotto i free tier per uso monoutente: sync automatico massimo ogni 4 ore solo
+quando l'app viene aperta/foregrounded, payload JSON piccolo, nessun download
+audio e nessun accesso diretto a Turso dal telefono.
 
 Il contratto offline-first e' dichiarato in `offline-contract.json` e verificato
 da `tests/daily-kanji-ios-offline-contract.test.ts`: il test blocca
-l'introduzione accidentale di database runtime iOS, App Group o Associated
-Domains. Le API di rete restano vietate in `Shared/` per evitare che codice
-network venga linkato implicitamente sia da app sia da widget; i client di rete
-devono vivere nei target `App/` o `WidgetExtension/`. Lo stesso contratto
-dichiara il budget free-tier atteso: 200 sync app e 200 sync widget mensili come
-budget automatico modellato, 400 richieste Vercel / 400 query Turso massime
-attese lato endpoint, piu export/package manuale.
+l'introduzione accidentale di database runtime iOS, Associated Domains o App
+Group diversi da quello atteso. Le API di rete restano vietate in `Shared/` per
+evitare che codice network venga linkato implicitamente sia da app sia da
+widget; il client di rete deve vivere nel target `App/`. Lo stesso contratto
+dichiara il budget free-tier atteso: 200 sync app mensili come budget automatico
+modellato, 0 sync widget, 200 richieste Vercel / 200 query Turso massime attese
+lato endpoint, piu export/package manuale.
 
 ## Verifica per agenti
 

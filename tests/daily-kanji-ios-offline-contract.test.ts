@@ -16,7 +16,7 @@ const projectConfigPath = path.join(iosRoot, "project.yml");
 const databaseScannedSourceDirs = ["App", "Shared", "WidgetExtension"].map(
   (segment) => path.join(iosRoot, segment)
 );
-const sharedSourceDirs = ["Shared"].map((segment) =>
+const networkFreeRuntimeSourceDirs = ["Shared", "WidgetExtension"].map((segment) =>
   path.join(iosRoot, segment)
 );
 const forbiddenSharedNetworkPatterns = [
@@ -52,6 +52,7 @@ describe("daily kanji iOS offline contract", () => {
   it("declares an offline-first personal app contract", async () => {
     const contract = JSON.parse(await readFile(contractPath, "utf8")) as {
       entitlements: {
+        appGroupIdentifier: string;
         appGroups: boolean;
         associatedDomains: boolean;
       };
@@ -77,15 +78,16 @@ describe("daily kanji iOS offline contract", () => {
 
     expect(contract).toEqual({
       entitlements: {
-        appGroups: false,
+        appGroupIdentifier: "group.dev.local.daily-kanji",
+        appGroups: true,
         associatedDomains: false
       },
       freeTierBudget: {
         monthlyRuntime: {
           appSyncRequests: 200,
-          tursoQueries: 400,
-          vercelRequests: 400,
-          widgetSyncRequests: 200
+          tursoQueries: 200,
+          vercelRequests: 200,
+          widgetSyncRequests: 0
         },
         packageWorkflow: {
           defaultCardLimit: dailyKanjiDefaultExportLimit,
@@ -105,8 +107,8 @@ describe("daily kanji iOS offline contract", () => {
     });
   });
 
-  it("keeps shared runtime sources free of networking APIs", async () => {
-    const sourceFiles = await listFiles(sharedSourceDirs, [".swift"]);
+  it("keeps shared and widget runtime sources free of networking APIs", async () => {
+    const sourceFiles = await listFiles(networkFreeRuntimeSourceDirs, [".swift"]);
     const violations = await matchingLines(
       sourceFiles,
       forbiddenSharedNetworkPatterns
@@ -185,7 +187,12 @@ describe("daily kanji iOS offline contract", () => {
     ).toEqual(blockedSamples);
   });
 
-  it("keeps the iOS project free of App Group and Associated Domains entitlements", async () => {
+  it("keeps App Groups scoped and Associated Domains absent", async () => {
+    const contract = JSON.parse(await readFile(contractPath, "utf8")) as {
+      entitlements: {
+        appGroupIdentifier: string;
+      };
+    };
     const entitlementFiles = await listFiles([iosRoot], [".entitlements"]);
     const configFiles = [
       path.join(iosRoot, "project.yml"),
@@ -193,17 +200,43 @@ describe("daily kanji iOS offline contract", () => {
       path.join(iosRoot, "WidgetExtension", "Info.plist"),
       ...entitlementFiles
     ];
-    const violations = await matchingLines(
+    const associatedDomainViolations = await matchingLines(
       configFiles,
-      [
-        /CODE_SIGN_ENTITLEMENTS/,
-        /^\s*entitlements\s*:/,
-        /com\.apple\.security\.application-groups/,
-        ...forbiddenAssociatedDomainPatterns
-      ]
+      forbiddenAssociatedDomainPatterns
+    );
+    const entitlementGroups = Object.fromEntries(
+      await Promise.all(
+        entitlementFiles.map(async (file) => [
+          path.relative(iosRoot, file),
+          extractPlistStringArray(
+            await readFile(file, "utf8"),
+            "com.apple.security.application-groups"
+          )
+        ])
+      )
     );
 
-    expect(violations).toEqual([]);
+    expect(associatedDomainViolations).toEqual([]);
+    expect(entitlementGroups).toEqual({
+      "DailyKanji.entitlements": [contract.entitlements.appGroupIdentifier],
+      "DailyKanjiWidgetExtension.entitlements": [
+        contract.entitlements.appGroupIdentifier
+      ]
+    });
+    expect(
+      readYamlTargetBaseSetting(
+        await readFile(projectConfigPath, "utf8"),
+        "DailyKanji",
+        "CODE_SIGN_ENTITLEMENTS"
+      )
+    ).toBe("DailyKanji.entitlements");
+    expect(
+      readYamlTargetBaseSetting(
+        await readFile(projectConfigPath, "utf8"),
+        "DailyKanjiWidgetExtension",
+        "CODE_SIGN_ENTITLEMENTS"
+      )
+    ).toBe("DailyKanjiWidgetExtension.entitlements");
   });
 
   it("keeps the app and widget targets iPhone-only", async () => {
@@ -325,4 +358,22 @@ function readYamlTargetBaseSetting(
   }
 
   return String(value);
+}
+
+function extractPlistStringArray(source: string, key: string) {
+  const keyPattern = new RegExp(
+    `<key>\\s*${escapeRegExp(key)}\\s*</key>\\s*<array>([\\s\\S]*?)</array>`
+  );
+  const match = source.match(keyPattern);
+  if (!match) {
+    return [];
+  }
+
+  return Array.from(match[1]!.matchAll(/<string>([\s\S]*?)<\/string>/g))
+    .map((entry) => entry[1]!.trim())
+    .sort();
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
