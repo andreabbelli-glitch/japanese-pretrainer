@@ -1033,6 +1033,42 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
+    func testHomeMediumWidgetUsesSideBySideReadableLayoutWithoutSourceFooter() throws {
+        let source = try Self.widgetSourceFileContents()
+        guard let viewStart = source.range(of: "private struct DailyKanjiHomeMediumWidgetView") else {
+            XCTFail("Could not find the dedicated medium home widget view.")
+            return
+        }
+
+        let viewSource = source[viewStart.lowerBound...]
+        guard let viewEnd = viewSource.range(of: "\nprivate struct DailyKanjiHomeSmallWidgetView") else {
+            XCTFail("Could not isolate the medium home widget view.")
+            return
+        }
+
+        let viewBlock = String(viewSource[..<viewEnd.lowerBound])
+        XCTAssertTrue(viewBlock.contains("HStack(alignment: .center"))
+        XCTAssertTrue(viewBlock.contains("Text(card.displayFront)"))
+        XCTAssertTrue(viewBlock.contains("Text(card.lockScreenTranslationText)"))
+        XCTAssertTrue(viewBlock.contains("DailyKanjiPitchAccentReadingView"))
+        XCTAssertFalse(viewBlock.contains("Text(card.sourceText)"))
+        XCTAssertFalse(viewBlock.contains("Spacer(minLength: 0)"))
+
+        guard
+            let frontStart = viewBlock.range(of: "Text(card.displayFront)"),
+            let translationStart = viewBlock.range(of: "Text(card.lockScreenTranslationText)"),
+            let explanationStart = viewBlock.range(of: "Text(explanation)")
+        else {
+            XCTFail("Could not find the front, translation, and explanation text in the medium widget view.")
+            return
+        }
+
+        XCTAssertLessThan(frontStart.lowerBound, translationStart.lowerBound)
+
+        let explanationBlock = String(viewBlock[explanationStart.lowerBound...])
+        XCTAssertTrue(explanationBlock.contains(".lineLimit(2)"))
+    }
+
     func testDetailExampleLinesKeepItalianExampleWhenJapaneseExampleIsMissing() throws {
         let card = try Self.cardReplacingExamples(exampleJp: nil, exampleIt: "Solo esempio italiano.")
 

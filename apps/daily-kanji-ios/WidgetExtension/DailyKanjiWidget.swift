@@ -86,45 +86,96 @@ struct DailyKanjiWidgetView: View {
             case .reading:
                 DailyKanjiLockScreenReadingView(card: entry.card)
             }
+        case .systemSmall:
+            DailyKanjiHomeSmallWidgetView(card: entry.card)
+        case .systemMedium:
+            DailyKanjiHomeMediumWidgetView(card: entry.card)
         default:
-            VStack(alignment: .leading, spacing: 8) {
-                Text(entry.card.displayFront)
-                    .font(.system(size: 64, weight: .semibold, design: .serif))
-                    .minimumScaleFactor(0.45)
+            DailyKanjiHomeMediumWidgetView(card: entry.card)
+        }
+    }
+}
+
+private struct DailyKanjiHomeMediumWidgetView: View {
+    let card: DailyKanjiCard
+
+    var body: some View {
+        HStack(alignment: .center, spacing: 12) {
+            Text(card.displayFront)
+                .font(.system(size: 66, weight: .semibold, design: .serif))
+                .foregroundStyle(.white)
+                .lineLimit(2)
+                .minimumScaleFactor(0.32)
+                .multilineTextAlignment(.center)
+                .frame(width: 120, alignment: .center)
+                .frame(maxHeight: .infinity, alignment: .center)
+                .layoutPriority(3)
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text(card.lockScreenTranslationText)
+                    .font(.system(size: 21, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.white)
                     .lineLimit(2)
+                    .minimumScaleFactor(0.65)
+                    .layoutPriority(3)
 
-                Text(entry.card.back)
-                    .font(.headline)
-                    .lineLimit(2)
-
-                Text(entry.card.readingText)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-
-                Text(entry.card.pitchAccentText)
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-
-                if let explanation = entry.card.homeWidgetExplanationText {
-                    Text(explanation)
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.8)
+                if let pattern = card.lockScreenPitchAccentPattern {
+                    DailyKanjiPitchAccentReadingView(
+                        pattern: pattern,
+                        horizontalAlignment: .leading
+                    )
+                    .layoutPriority(2)
+                } else {
+                    Text(card.readingText)
+                        .font(.system(size: 19, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.88))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.65)
+                        .layoutPriority(2)
                 }
 
-                Spacer(minLength: 0)
-
-                Text(entry.card.sourceText)
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
-                    .lineLimit(1)
+                if let explanation = card.homeWidgetExplanationText {
+                    Text(explanation)
+                        .font(.system(size: 12, weight: .medium, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.82))
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.72)
+                }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .padding(10)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
+    }
+}
+
+private struct DailyKanjiHomeSmallWidgetView: View {
+    let card: DailyKanjiCard
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 7) {
+            Text(card.displayFront)
+                .font(.system(size: 58, weight: .semibold, design: .serif))
+                .foregroundStyle(.white)
+                .lineLimit(2)
+                .minimumScaleFactor(0.34)
+                .layoutPriority(3)
+
+            Text(card.lockScreenTranslationText)
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                .foregroundStyle(.white)
+                .lineLimit(2)
+                .minimumScaleFactor(0.65)
+
+            Text(card.readingText)
+                .font(.system(size: 13, weight: .medium, design: .rounded))
+                .foregroundStyle(.white.opacity(0.82))
+                .lineLimit(1)
+                .minimumScaleFactor(0.65)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .padding(12)
     }
 }
 
@@ -171,6 +222,15 @@ private struct DailyKanjiLockScreenReadingView: View {
 
 private struct DailyKanjiPitchAccentReadingView: View {
     let pattern: DailyKanjiPitchAccentPattern
+    let horizontalAlignment: Alignment
+
+    init(
+        pattern: DailyKanjiPitchAccentPattern,
+        horizontalAlignment: Alignment = .center
+    ) {
+        self.pattern = pattern
+        self.horizontalAlignment = horizontalAlignment
+    }
 
     var body: some View {
         VStack(spacing: 2) {
@@ -203,7 +263,7 @@ private struct DailyKanjiPitchAccentReadingView: View {
             }
             .frame(width: totalWidth)
         }
-        .frame(maxWidth: .infinity, alignment: .center)
+        .frame(maxWidth: .infinity, alignment: horizontalAlignment)
     }
 
     @ViewBuilder
