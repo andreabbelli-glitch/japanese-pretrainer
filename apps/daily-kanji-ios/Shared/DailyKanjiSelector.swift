@@ -62,8 +62,9 @@ struct DailyKanjiSelector {
             return []
         }
 
-        var dates = [now]
-        var nextDate = nextWidgetRefreshDate(after: now)
+        let currentSlotStart = currentWidgetSlotStart(for: now)
+        var dates = [currentSlotStart]
+        var nextDate = currentSlotStart.addingTimeInterval(widgetSlotDuration)
 
         while dates.count < count {
             dates.append(nextDate)

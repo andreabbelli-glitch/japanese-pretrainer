@@ -256,10 +256,7 @@ private struct DailyKanjiPitchAccentReadingView: View {
 
             HStack(alignment: .bottom, spacing: 0) {
                 ForEach(pattern.moras) { mora in
-                    Text(mora.text)
-                        .font(.system(size: fontSize, weight: .semibold, design: .rounded))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.75)
+                    DailyKanjiMoraTextView(text: mora.text, fontSize: fontSize)
                         .frame(width: segmentWidth)
                 }
             }
@@ -371,6 +368,50 @@ private struct DailyKanjiPitchAccentReadingView: View {
         }
 
         return width
+    }
+}
+
+private struct DailyKanjiMoraTextView: View {
+    let text: String
+    let fontSize: CGFloat
+
+    var body: some View {
+        HStack(alignment: .lastTextBaseline, spacing: characterSpacing) {
+            ForEach(Array(characters.enumerated()), id: \.offset) { _, character in
+                Text(character)
+                    .font(
+                        .system(
+                            size: characterFontSize(for: character),
+                            weight: .semibold,
+                            design: .rounded
+                        )
+                    )
+                    .lineLimit(1)
+                    .fixedSize(horizontal: true, vertical: false)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+
+    private var characters: [String] {
+        text.map(String.init)
+    }
+
+    private var characterSpacing: CGFloat {
+        text.count > 1 ? -max(fontSize * 0.18, 3) : 0
+    }
+
+    private func characterFontSize(for character: String) -> CGFloat {
+        isContractedKana(character) ? fontSize * 0.86 : fontSize
+    }
+
+    private func isContractedKana(_ character: String) -> Bool {
+        [
+            "ゃ", "ゅ", "ょ", "ャ", "ュ", "ョ",
+            "ぁ", "ぃ", "ぅ", "ぇ", "ぉ",
+            "ァ", "ィ", "ゥ", "ェ", "ォ",
+            "ゎ", "ヮ"
+        ].contains(character)
     }
 }
 

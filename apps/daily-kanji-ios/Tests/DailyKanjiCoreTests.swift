@@ -496,18 +496,65 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
-    func testWidgetTimelineDatesPrebuildFutureFifteenMinuteRotationSlots() {
+    func testWidgetTimelineDatesPrebuildCanonicalFifteenMinuteRotationSlots() {
         let now = Date(timeIntervalSince1970: (60 * 60) + 123)
 
         XCTAssertEqual(
             DailyKanjiSelector.widgetTimelineDates(startingAt: now, count: 4),
             [
-                now,
+                Date(timeIntervalSince1970: 60 * 60),
                 Date(timeIntervalSince1970: (60 * 60) + (15 * 60)),
                 Date(timeIntervalSince1970: (60 * 60) + (30 * 60)),
                 Date(timeIntervalSince1970: (60 * 60) + (45 * 60))
             ]
         )
+    }
+
+    func testWidgetTimelineDatesStaySynchronizedWithinTheSameRotationSlot() throws {
+        let cards = try Self.rankedCards(count: 120)
+        let earlyRequest = Date(timeIntervalSince1970: (72 * 60 * 60) + 1)
+        let lateRequest = Date(timeIntervalSince1970: (72 * 60 * 60) + (14 * 60) + 59)
+
+        let earlyDates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: earlyRequest,
+            count: 8
+        )
+        let lateDates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: lateRequest,
+            count: 8
+        )
+
+        XCTAssertEqual(earlyDates, lateDates)
+        XCTAssertEqual(
+            DailyKanjiSelector.widgetTimelineCards(cards: cards, dates: earlyDates).map(\.cardId),
+            DailyKanjiSelector.widgetTimelineCards(cards: cards, dates: lateDates).map(\.cardId)
+        )
+    }
+
+    func testWidgetTimelineDatesKeepOverlappingBoundarySlotsSynchronized() throws {
+        let cards = try Self.rankedCards(count: 120)
+        let beforeBoundary = Date(timeIntervalSince1970: (72 * 60 * 60) + (14 * 60) + 59)
+        let afterBoundary = Date(timeIntervalSince1970: (72 * 60 * 60) + (15 * 60) + 1)
+
+        let beforeDates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: beforeBoundary,
+            count: 4
+        )
+        let afterDates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: afterBoundary,
+            count: 4
+        )
+        let beforeCards = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: beforeDates
+        )
+        let afterCards = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: afterDates
+        )
+
+        XCTAssertEqual(beforeDates[1], afterDates[0])
+        XCTAssertEqual(beforeCards[1].cardId, afterCards[0].cardId)
     }
 
     func testWidgetTimelineCardsAvoidRepeatingCardsAcrossTwentyFourHoursWhenPossible() throws {
@@ -903,6 +950,25 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         XCTAssertEqual(pattern.moras.map(\.text), ["きょ", "う"])
         XCTAssertEqual(pattern.moras.map(\.isHigh), [true, false])
+    }
+
+    func testLockScreenPitchAccentRendererKeepsContractedMoraReadable() throws {
+        let source = try Self.widgetSourceFileContents()
+        guard let viewStart = source.range(of: "private struct DailyKanjiPitchAccentReadingView") else {
+            XCTFail("Could not find the pitch accent reading view.")
+            return
+        }
+
+        let viewSource = source[viewStart.lowerBound...]
+        guard let viewEnd = viewSource.range(of: "\nstruct DailyKanjiWidget") else {
+            XCTFail("Could not isolate the pitch accent reading view.")
+            return
+        }
+
+        let viewBlock = String(viewSource[..<viewEnd.lowerBound])
+        XCTAssertTrue(viewBlock.contains("DailyKanjiMoraTextView(text: mora.text"))
+        XCTAssertFalse(viewBlock.contains("Text(mora.text)"))
+        XCTAssertTrue(viewBlock.contains("isContractedKana"))
     }
 
     func testLockScreenPitchAccentPatternMarksHeibanAfterFirstMoraHigh() throws {
