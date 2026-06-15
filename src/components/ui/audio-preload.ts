@@ -1,5 +1,7 @@
 const preloadedAudioElements = new Map<string, HTMLAudioElement>();
-const MAX_PRELOADED_AUDIO_SOURCE_MARKERS = 128;
+// Keep this near the review prefetch horizon: long-lived iOS sessions get
+// unreliable when the page retains many media elements.
+const MAX_PRELOADED_AUDIO_ELEMENTS = 24;
 let lastPlayedAudioElement: HTMLAudioElement | null = null;
 
 export function preloadAudioSources(
@@ -80,16 +82,16 @@ function getOrCreatePreloadedAudioElement(
     return existingAudio;
   }
 
-  while (
-    preloadedAudioElements.size >= MAX_PRELOADED_AUDIO_SOURCE_MARKERS
-  ) {
-    const oldestSource = preloadedAudioElements.keys().next().value;
+  while (preloadedAudioElements.size >= MAX_PRELOADED_AUDIO_ELEMENTS) {
+    const oldestEntry = preloadedAudioElements.entries().next().value;
 
-    if (!oldestSource) {
+    if (!oldestEntry) {
       break;
     }
 
+    const [oldestSource, oldestAudio] = oldestEntry;
     preloadedAudioElements.delete(oldestSource);
+    releaseAudioElement(oldestAudio);
   }
 
   try {
@@ -105,6 +107,30 @@ function getOrCreatePreloadedAudioElement(
 }
 
 export function resetAudioPreloadCacheForTests() {
+  for (const audio of preloadedAudioElements.values()) {
+    releaseAudioElement(audio);
+  }
+
   preloadedAudioElements.clear();
   lastPlayedAudioElement = null;
+}
+
+function releaseAudioElement(audio: HTMLAudioElement) {
+  stopAudioElement(audio);
+
+  try {
+    audio.removeAttribute("src");
+  } catch {
+    // Ignore browser-specific media element teardown failures.
+  }
+
+  try {
+    audio.load();
+  } catch {
+    // Reloading after clearing src lets browsers release media resources.
+  }
+
+  if (lastPlayedAudioElement === audio) {
+    lastPlayedAudioElement = null;
+  }
 }

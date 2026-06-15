@@ -12,6 +12,7 @@ type MockAudioElement = {
   pause: ReturnType<typeof vi.fn>;
   play: ReturnType<typeof vi.fn>;
   preload: string;
+  removeAttribute?: ReturnType<typeof vi.fn>;
   src: string;
 };
 
@@ -164,5 +165,69 @@ describe("preloadAudioSources", () => {
     expect(AudioMock).toHaveBeenLastCalledWith(
       "/media/a/assets/audio/0.mp3"
     );
+  });
+
+  it("keeps the active audio cache near the review prefetch horizon", () => {
+    const AudioMock = vi.fn(function (
+      this: {
+        load: () => void;
+        preload: string;
+        src: string;
+      },
+      src: string
+    ) {
+      this.load = vi.fn();
+      this.preload = "";
+      this.src = src;
+    });
+    vi.stubGlobal("Audio", AudioMock);
+
+    playPreloadedAudioSource("/media/a/assets/audio/0.mp3");
+    preloadAudioSources(
+      Array.from(
+        { length: 24 },
+        (_, index) => `/media/a/assets/audio/${index + 1}.mp3`
+      )
+    );
+    preloadAudioSources(["/media/a/assets/audio/0.mp3"]);
+
+    expect(AudioMock).toHaveBeenCalledTimes(26);
+    expect(AudioMock).toHaveBeenLastCalledWith(
+      "/media/a/assets/audio/0.mp3"
+    );
+  });
+
+  it("releases evicted audio elements so long review sessions do not keep stale media alive", () => {
+    const audioElements: MockAudioElement[] = [];
+    const AudioMock = vi.fn(function (
+      this: MockAudioElement,
+      src: string
+    ) {
+      this.currentTime = 1.25;
+      this.load = vi.fn();
+      this.pause = vi.fn();
+      this.play = vi.fn().mockResolvedValue(undefined);
+      this.preload = "";
+      this.removeAttribute = vi.fn();
+      this.src = src;
+      audioElements.push(this);
+    });
+    vi.stubGlobal("Audio", AudioMock);
+
+    playPreloadedAudioSource("/media/a/assets/audio/0.mp3");
+    preloadAudioSources(
+      Array.from(
+        { length: 128 },
+        (_, index) => `/media/a/assets/audio/${index + 1}.mp3`
+      )
+    );
+
+    expect(audioElements[0]?.pause).toHaveBeenCalledTimes(1);
+    expect(audioElements[0]?.removeAttribute).toHaveBeenCalledWith("src");
+    expect(audioElements[0]?.load).toHaveBeenCalledTimes(2);
+
+    playPreloadedAudioSource("/media/a/assets/audio/129.mp3");
+
+    expect(audioElements[0]?.pause).toHaveBeenCalledTimes(1);
   });
 });
