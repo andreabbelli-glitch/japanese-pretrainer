@@ -18,6 +18,8 @@ export type ReviewCardEntryKind = "term" | "grammar";
 
 export type ReviewScope = "global" | "media";
 
+export type ReviewPageMode = "review" | "prestudy";
+
 export type ReviewForcedContrastPayload = {
   source: "review-grading";
   targetLabel?: string;
@@ -133,6 +135,7 @@ export type ReviewOverviewSnapshot = {
 };
 
 export type ReviewPageData = {
+  mode?: ReviewPageMode;
   scope: ReviewScope;
   media: {
     glossaryHref: MediaGlossaryHref;
@@ -169,6 +172,13 @@ export type ReviewPageData = {
     extraNewCount: number;
     forcedContrast?: ReviewForcedContrastResolution;
     notice?: string;
+    prestudy?: {
+      lessonHref: MediaStudyHref;
+      lessonId: string;
+      lessonSlug: string;
+      lessonTitle: string;
+      totalCards: number;
+    } | null;
     segmentId?: string | null;
   };
 };
@@ -225,6 +235,7 @@ export type ReviewFirstCandidateSelectedCardContext = Omit<
 
 export type ReviewFirstCandidatePageData = {
   media: ReviewPageData["media"];
+  mode?: ReviewPageMode;
   nextCardId?: string | null;
   queueCardIds: string[];
   queue: ReviewFirstCandidateQueueSnapshot;

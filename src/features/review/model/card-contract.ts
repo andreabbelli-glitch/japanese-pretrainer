@@ -11,7 +11,11 @@ export type ReviewCardLessonProgressSource = {
 };
 
 export type ReviewCardLessonSource = {
+  id?: string | null;
+  orderIndex?: number | null;
+  slug?: string | null;
   status?: string | null;
+  title?: string | null;
   progress?: ReviewCardLessonProgressSource | null;
 };
 

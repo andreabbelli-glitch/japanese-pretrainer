@@ -20,6 +20,7 @@ export function buildReviewSessionHref(input: {
   extraNewAnchorCount?: number | null;
   extraNewCount?: number;
   mediaSlug: string;
+  mode?: "prestudy" | "review";
   segmentId?: string | null;
   showAnswer?: boolean;
 }): Route {
@@ -31,6 +32,7 @@ export function buildGlobalReviewSessionHref(input: {
   cardId?: string | null;
   extraNewAnchorCount?: number | null;
   extraNewCount?: number;
+  mode?: "prestudy" | "review";
   segmentId?: string | null;
   showAnswer?: boolean;
 }): Route {
@@ -60,6 +62,7 @@ export function buildCanonicalReviewSessionHref(input: {
   extraNewCount?: number;
   isQueueCard: boolean;
   mediaSlug: string;
+  mode?: "prestudy" | "review";
   position: number | null;
   segmentId?: string | null;
   showAnswer?: boolean;
@@ -70,6 +73,7 @@ export function buildCanonicalReviewSessionHref(input: {
     extraNewAnchorCount: input.extraNewAnchorCount,
     extraNewCount: input.extraNewCount,
     mediaSlug: input.mediaSlug,
+    mode: input.mode,
     segmentId: input.segmentId,
     showAnswer: input.showAnswer
   });
@@ -82,6 +86,7 @@ export function buildCanonicalReviewSessionHrefForBase(input: {
   extraNewAnchorCount?: number | null;
   extraNewCount?: number;
   isQueueCard: boolean;
+  mode?: "prestudy" | "review";
   position: number | null;
   segmentId?: string | null;
   showAnswer?: boolean;
@@ -91,6 +96,7 @@ export function buildCanonicalReviewSessionHrefForBase(input: {
     cardId: shouldPersistReviewSessionCard(input) ? input.cardId : null,
     extraNewAnchorCount: input.extraNewAnchorCount,
     extraNewCount: input.extraNewCount,
+    mode: input.mode,
     segmentId: input.segmentId,
     showAnswer: input.showAnswer
   });
@@ -103,6 +109,7 @@ function buildReviewSessionHrefForBase(
     cardId?: string | null;
     extraNewAnchorCount?: number | null;
     extraNewCount?: number;
+    mode?: "prestudy" | "review";
     segmentId?: string | null;
     showAnswer?: boolean;
   }
@@ -126,6 +133,10 @@ function buildReviewSessionHrefForBase(
       ) {
         params.set("extraNewAnchor", String(input.extraNewAnchorCount));
       }
+    }
+
+    if (input.mode === "prestudy") {
+      params.set("mode", "prestudy");
     }
 
     if (input.segmentId) {

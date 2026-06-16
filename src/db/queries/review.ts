@@ -62,6 +62,29 @@ const reviewCardSelection = {
   }
 } as const;
 
+const prestudyReviewCardSelection = {
+  ...reviewCardSelection,
+  with: {
+    ...reviewCardSelection.with,
+    lesson: {
+      columns: {
+        id: true,
+        orderIndex: true,
+        slug: true,
+        status: true,
+        title: true
+      },
+      with: {
+        progress: {
+          columns: {
+            status: true
+          }
+        }
+      }
+    }
+  }
+} as const;
+
 const reviewCardDetailSelection = {
   ...reviewCardSelection,
   with: {
@@ -134,6 +157,17 @@ export async function listReviewCardsByMediaId(
   return database.query.card.findMany({
     where: and(eq(card.mediaId, mediaId), ne(card.status, "archived")),
     ...reviewCardSelection,
+    orderBy: [asc(card.orderIndex), asc(card.createdAt)]
+  });
+}
+
+export async function listPrestudyReviewCardsByMediaId(
+  database: Pick<DatabaseQueryClient, "query">,
+  mediaId: string
+) {
+  return database.query.card.findMany({
+    where: and(eq(card.mediaId, mediaId), ne(card.status, "archived")),
+    ...prestudyReviewCardSelection,
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
   });
 }

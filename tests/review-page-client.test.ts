@@ -234,6 +234,126 @@ describe("review page client hydration", () => {
     expect(markup).toContain("+ Contrasto");
   });
 
+  it("renders prestudy controls without FSRS grading actions", () => {
+    const data = buildFullReviewPageData({
+      cardId: "card-a",
+      showAnswer: true
+    });
+    const prestudyCard = {
+      ...data.selectedCard!,
+      bucket: "new" as const,
+      bucketDetail: "Card della prossima lezione da studiare.",
+      bucketLabel: "Prestudio",
+      effectiveState: "new" as const,
+      effectiveStateLabel: "Prestudio",
+      rawReviewLabel: "Prestudio"
+    };
+    const nextCard = {
+      ...prestudyCard,
+      front: "札",
+      id: "card-b",
+      href: "/media/duel-masters-dm25/review/card/card-b" as Route
+    };
+    const prestudyData = {
+      ...data,
+      media: {
+        ...data.media,
+        href: "/media/duel-masters-dm25" as Route,
+        reviewHref: "/media/duel-masters-dm25/review" as Route,
+        slug: "duel-masters-dm25",
+        title: "Duel Masters"
+      },
+      mode: "prestudy" as const,
+      queue: {
+        ...data.queue,
+        advanceCards: [nextCard],
+        cards: [prestudyCard, nextCard],
+        queueCount: 2
+      },
+      queueCardIds: ["card-a", "card-b"],
+      scope: "media" as const,
+      selectedCard: prestudyCard,
+      selectedCardContext: {
+        ...data.selectedCardContext,
+        bucket: "new",
+        remainingCount: 1,
+        showAnswer: true
+      },
+      session: {
+        ...data.session,
+        prestudy: {
+          lessonHref: "/media/duel-masters-dm25/textbook/lesson-one" as Route,
+          lessonId: "lesson-one",
+          lessonSlug: "lesson-one",
+          lessonTitle: "Lesson One",
+          totalCards: 2
+        }
+      }
+    } satisfies ReviewPageData;
+
+    const stageMarkup = renderToStaticMarkup(
+      ReviewPageStage({
+        additionalNewCount: 0,
+        contextualGlossaryHref: "/glossary",
+        forcedContrastInputRef: { current: null },
+        forcedContrastListboxId: "review-contrast-listbox",
+        forcedContrastQuery: "",
+        forcedContrastSelection: null,
+        forcedContrastShouldShowSuggestions: false,
+        forcedContrastSuggestions: [],
+        fullSelectedCard: prestudyData.selectedCard,
+        gradePreviewLookup: new Map(),
+        handleGradeCard: () => {},
+        handleCloseForcedContrast: () => {},
+        handleForcedContrastQueryChange: () => {},
+        handleForcedContrastSelect: () => {},
+        handleMarkKnown: () => {},
+        handleOpenForcedContrast: () => {},
+        handleResetCard: () => {},
+        handleRevealAnswer: () => {},
+        handleRemoveForcedContrast: () => {},
+        handleSetLearning: () => {},
+        handleToggleSuspended: () => {},
+        hasSupportCards: false,
+        isAnswerRevealed: true,
+        isForcedContrastOpen: false,
+        isFullReviewPageData: true,
+        isGlobalReview: false,
+        isGradeControlsDisabled: false,
+        isHydratingFullData: false,
+        isPending: false,
+        remainingCount: prestudyData.queue.queueCount,
+        sessionHref: "/media/duel-masters-dm25/review?mode=prestudy" as Route,
+        showCompletionState: false,
+        showFrontFurigana: true,
+        viewData: prestudyData
+      })
+    );
+    const sidebarMarkup = renderToStaticMarkup(
+      ReviewPageSidebar({
+        clientError: null,
+        isGlobalReview: false,
+        isPending: false,
+        viewData: prestudyData
+      })
+    );
+
+    expect(stageMarkup).toContain("Prestudio");
+    expect(stageMarkup).toContain("Lesson One");
+    expect(stageMarkup).toContain("1 flashcard rimanente");
+    expect(stageMarkup).toContain("Prossima card");
+    expect(stageMarkup).toContain("mode=prestudy");
+    expect(stageMarkup).not.toContain("review-grade-grid");
+    expect(stageMarkup).not.toContain("+ Contrasto");
+    expect(stageMarkup).not.toContain("Segna già nota");
+
+    expect(sidebarMarkup).toContain("Review");
+    expect(sidebarMarkup).toContain("Prestudy");
+    expect(sidebarMarkup).toContain("Card lesson");
+    expect(sidebarMarkup).toContain("Rimanenti");
+    expect(sidebarMarkup).toContain('aria-current="page"');
+  });
+
   it("labels the stage counter as the current queue total", () => {
     const baseData = buildFullReviewPageData({
       cardId: "card-a"
@@ -307,7 +427,13 @@ describe("review page client hydration", () => {
     });
     const selection: Pick<
       GlobalGlossaryAutocompleteSuggestion,
-      "kind" | "label" | "meaning" | "reading" | "resultKey" | "romaji" | "title"
+      | "kind"
+      | "label"
+      | "meaning"
+      | "reading"
+      | "resultKey"
+      | "romaji"
+      | "title"
     > = {
       kind: "term",
       label: "コスト",
@@ -521,22 +647,23 @@ function buildFirstCandidateReviewPageData(input: {
   cardId: string;
   showAnswer?: boolean;
 }) {
-    return {
-      media: {
-        glossaryHref: "/glossary",
-        href: "/",
-        reviewHref: "/review",
-        slug: "global-review",
-        title: "Review globale"
-      },
-      nextCardId: null,
-      queueCardIds: ["card-a", "card-b"],
-      queue: {
-        advanceCards: [
-          {
-            back: "deck",
+  return {
+    media: {
+      glossaryHref: "/glossary",
+      href: "/",
+      reviewHref: "/review",
+      slug: "global-review",
+      title: "Review globale"
+    },
+    nextCardId: null,
+    queueCardIds: ["card-a", "card-b"],
+    queue: {
+      advanceCards: [
+        {
+          back: "deck",
           bucket: "new",
-          bucketDetail: "Pronta per entrare nella coda giornaliera senza perdere il legame con il Glossary.",
+          bucketDetail:
+            "Pronta per entrare nella coda giornaliera senza perdere il legame con il Glossary.",
           bucketLabel: "Nuova",
           createdAt: "2026-04-02T00:00:00.000Z",
           dueAt: null,
@@ -569,13 +696,13 @@ function buildFirstCandidateReviewPageData(input: {
       introLabel: "1 card da ripassare adesso.",
       manualCount: 0,
       newAvailableCount: 1,
-        newQueuedCount: 1,
-        queueCount: 1,
-        queueLabel: "1 card da ripassare adesso.",
-        suspendedCount: 0,
-        tomorrowCount: 0,
-        upcomingCount: 0
-      },
+      newQueuedCount: 1,
+      queueCount: 1,
+      queueLabel: "1 card da ripassare adesso.",
+      suspendedCount: 0,
+      tomorrowCount: 0,
+      upcomingCount: 0
+    },
     scope: "global",
     selectedCard: {
       back: "mazzo / deck",

@@ -8,6 +8,7 @@ type ReviewSearchState = {
   answeredCount: number;
   extraNewAnchorCount: number | null;
   extraNewCount: number;
+  mode: "review" | "prestudy";
   noticeCode: string | null;
   segmentId: string | null;
   selectedCardId: string | null;
@@ -37,13 +38,18 @@ export function normalizeReviewSearchState(
     readPositiveIntegerSearchParam(searchParams.extraNew) ?? 0;
   const extraNewAnchorCount =
     extraNewCount > 0
-      ? readNonNegativeIntegerSearchParam(searchParams.extraNewAnchor) ?? null
+      ? (readNonNegativeIntegerSearchParam(searchParams.extraNewAnchor) ?? null)
       : null;
 
   return {
     answeredCount,
     extraNewAnchorCount,
     extraNewCount,
+    mode:
+      readMatchingSearchParam(
+        searchParams.mode,
+        (value): value is "prestudy" => value === "prestudy"
+      ) ?? "review",
     noticeCode: readSearchParam(searchParams, "notice") || null,
     segmentId: readSearchParam(searchParams, "segment") || null,
     selectedCardId: readSearchParam(searchParams, "card") || null,

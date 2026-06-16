@@ -149,6 +149,7 @@ export function buildReviewControllerSnapshot(
     extraNewAnchorCount: viewData.session.extraNewAnchorCount,
     extraNewCount: viewData.session.extraNewCount,
     isQueueCard,
+    mode: viewData.mode,
     position,
     segmentId: viewData.session.segmentId,
     showAnswer: isAnswerRevealed

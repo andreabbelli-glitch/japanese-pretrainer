@@ -47,6 +47,7 @@ import {
   type LoadedGlobalReviewPageWorkspace,
   type ReviewPageLoadOptions
 } from "@/features/review/server/loader";
+import { loadPrestudyReviewPageData } from "@/features/review/server/prestudy-page-data";
 import type {
   GlobalReviewFirstCandidateLoadResult,
   GlobalReviewPageLoadResult,
@@ -389,6 +390,20 @@ export async function getReviewPageData(
 
   if (!media) {
     return null;
+  }
+
+  if (searchState.mode === "prestudy") {
+    const settings = await settingsPromise;
+
+    return loadPrestudyReviewPageData({
+      database,
+      media,
+      mediaRows,
+      now,
+      profiler: options.profiler,
+      settings,
+      searchState
+    });
   }
 
   const [settings, workspace] = await Promise.all([

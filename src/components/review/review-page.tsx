@@ -18,5 +18,5 @@ export function ReviewPage({ data, searchParams }: ReviewPageProps) {
 }
 
 function buildReviewPageClientKey(data: ReviewPageData) {
-  return [data.scope, data.media.slug].join(":");
+  return [data.scope, data.media.slug, data.mode ?? "review"].join(":");
 }

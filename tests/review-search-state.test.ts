@@ -17,6 +17,19 @@ describe("review search state", () => {
     });
   });
 
+  it("normalizes prestudy mode and falls back to standard review mode", () => {
+    expect(
+      normalizeReviewSearchState({
+        mode: "prestudy"
+      }).mode
+    ).toBe("prestudy");
+    expect(
+      normalizeReviewSearchState({
+        mode: "unknown"
+      }).mode
+    ).toBe("review");
+  });
+
   it("rejects malformed numeric counters instead of partially parsing them", () => {
     expect(
       normalizeReviewSearchState({

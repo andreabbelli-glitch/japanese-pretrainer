@@ -5,7 +5,10 @@ import type { RefObject } from "react";
 import { GlossaryAutocompleteDropdown } from "@/features/glossary/ui/client/glossary-autocomplete-dropdown";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 import type { ReviewQueueCard } from "@/features/review/client";
-import { renderFurigana, stripInlineMarkdown } from "@/features/study/ui/furigana";
+import {
+  renderFurigana,
+  stripInlineMarkdown
+} from "@/features/study/ui/furigana";
 import {
   appendReturnToParam,
   buildCanonicalReviewSessionHrefForBase
@@ -99,12 +102,31 @@ export function ReviewPageStage({
   viewData: ReviewPageClientData;
 }) {
   const selectedCard = viewData.selectedCard;
+  const isPrestudy = viewData.mode === "prestudy";
   const isQueueCard = selectedCard
     ? viewData.selectedCardContext.isQueueCard
     : false;
   const showCompactPronunciation = fullSelectedCard
     ? fullSelectedCard.pronunciations.length <= 1
     : false;
+  const nextPrestudyCard = isPrestudy
+    ? (viewData.queue.advanceCards[0] ?? null)
+    : null;
+  const nextPrestudyHref =
+    nextPrestudyCard && viewData.selectedCardContext.position !== null
+      ? buildCanonicalReviewSessionHrefForBase({
+          answeredCount: viewData.session.answeredCount + 1,
+          baseHref: viewData.media.reviewHref,
+          cardId: nextPrestudyCard.id,
+          isQueueCard: true,
+          mode: "prestudy",
+          position: viewData.selectedCardContext.position + 1,
+          showAnswer: false
+        })
+      : null;
+  const displayRemainingCount = isPrestudy
+    ? viewData.selectedCardContext.remainingCount
+    : remainingCount;
 
   return (
     <SurfaceCard className="review-stage" testId="review-stage" variant="hero">
@@ -120,13 +142,18 @@ export function ReviewPageStage({
               {viewData.scope === "global" ? (
                 <span className="meta-pill">{selectedCard.mediaTitle}</span>
               ) : null}
+              {viewData.session.prestudy ? (
+                <span className="meta-pill">
+                  {viewData.session.prestudy.lessonTitle}
+                </span>
+              ) : null}
               {selectedCard.segmentTitle ? (
                 <span className="meta-pill">{selectedCard.segmentTitle}</span>
               ) : null}
             </div>
-            {remainingCount > 0 ? (
+            {displayRemainingCount > 0 ? (
               <p className="review-stage__position">
-                {formatRemainingCardsLabel(remainingCount)}
+                {formatRemainingCardsLabel(displayRemainingCount)}
               </p>
             ) : null}
           </div>
@@ -215,7 +242,46 @@ export function ReviewPageStage({
             )}
           </div>
 
-          {isQueueCard && isAnswerRevealed ? (
+          {isPrestudy && isAnswerRevealed ? (
+            <div className="review-stage__actions">
+              {nextPrestudyHref ? (
+                <Link
+                  className="button button--primary"
+                  href={nextPrestudyHref}
+                >
+                  Prossima card
+                </Link>
+              ) : viewData.session.prestudy ? (
+                <Link
+                  className="button button--primary"
+                  href={viewData.session.prestudy.lessonHref}
+                >
+                  Apri la lezione
+                </Link>
+              ) : null}
+
+              {nextPrestudyHref && viewData.session.prestudy ? (
+                <Link
+                  className="button button--ghost"
+                  href={viewData.session.prestudy.lessonHref}
+                >
+                  Vai al textbook
+                </Link>
+              ) : null}
+
+              {fullSelectedCard
+                ? fullSelectedCard.entries.map((entry) => (
+                    <Link
+                      key={entry.id}
+                      className="button button--ghost button--small"
+                      href={appendReturnToParam(entry.href, sessionHref)}
+                    >
+                      Apri Glossary
+                    </Link>
+                  ))
+                : null}
+            </div>
+          ) : isQueueCard && isAnswerRevealed ? (
             <>
               <div className="review-stage__contrast">
                 <p className="eyebrow">Contrasto</p>
@@ -330,7 +396,7 @@ export function ReviewPageStage({
             </div>
           ) : null}
 
-          {isFullReviewPageData ? (
+          {isFullReviewPageData && !isPrestudy ? (
             <>
               <div className="review-stage__actions">
                 {selectedCard.bucket === "manual" ? (
@@ -404,24 +470,28 @@ export function ReviewPageStage({
       ) : showCompletionState ? (
         <EmptyState
           title={
-            isGlobalReview
-              ? viewData.session.answeredCount > 0
-                ? "Sessione chiusa, ora sei in pari su tutta la Review."
-                : "Oggi sei in pari su tutta la Review."
-              : viewData.session.answeredCount > 0
-                ? "Sessione chiusa, ora sei in pari."
-                : "Oggi sei in pari."
+            isPrestudy
+              ? "Non ci sono card di prestudy per la prossima lezione."
+              : isGlobalReview
+                ? viewData.session.answeredCount > 0
+                  ? "Sessione chiusa, ora sei in pari su tutta la Review."
+                  : "Oggi sei in pari su tutta la Review."
+                : viewData.session.answeredCount > 0
+                  ? "Sessione chiusa, ora sei in pari."
+                  : "Oggi sei in pari."
           }
           description={
-            additionalNewCount > 0
-              ? isGlobalReview
-                ? `La coda di oggi è finita. Puoi chiudere qui oppure aggiungere subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} alla rotazione attuale della review globale.`
-                : `La coda di oggi è finita. Puoi chiudere qui oppure aggiungere subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} alla rotazione attuale di questo media.`
-              : hasSupportCards
-                ? "La coda di oggi non richiede altre risposte. Se ti serve intervenire su card già note, sospese o fuori finestra, puoi farlo dal Glossary o dalle impostazioni di studio."
-                : isGlobalReview
-                  ? "La review globale non ha ancora card da lavorare o mantenere adesso."
-                  : "Per questo media non ci sono altre card da lavorare o mantenere adesso."
+            isPrestudy
+              ? "Quando la prossima lezione con card attive sarà disponibile, questa modalità mostrerà automaticamente quelle card."
+              : additionalNewCount > 0
+                ? isGlobalReview
+                  ? `La coda di oggi è finita. Puoi chiudere qui oppure aggiungere subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} alla rotazione attuale della review globale.`
+                  : `La coda di oggi è finita. Puoi chiudere qui oppure aggiungere subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} alla rotazione attuale di questo media.`
+                : hasSupportCards
+                  ? "La coda di oggi non richiede altre risposte. Se ti serve intervenire su card già note, sospese o fuori finestra, puoi farlo dal Glossary o dalle impostazioni di studio."
+                  : isGlobalReview
+                    ? "La review globale non ha ancora card da lavorare o mantenere adesso."
+                    : "Per questo media non ci sono altre card da lavorare o mantenere adesso."
           }
           action={
             <>
@@ -435,6 +505,7 @@ export function ReviewPageStage({
                     extraNewCount:
                       viewData.session.extraNewCount + additionalNewCount,
                     isQueueCard: true,
+                    mode: viewData.mode,
                     position: 1,
                     segmentId: viewData.session.segmentId
                   })}
