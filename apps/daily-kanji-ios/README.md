@@ -37,7 +37,9 @@ card della prossima lesson non completata del media selezionato, `Last 3` mostra
 le card valutate Hard/Again nelle ultime 3 lesson completate di quel media. Il
 cambio di modalita/media resta in bozza finche l'utente non preme `Applica`;
 solo allora viene salvato nell'App Group e ricarica subito le timeline WidgetKit,
-cosi i widget usano lo stesso scope confermato nell'app.
+cosi i widget usano lo stesso scope confermato nell'app. Quando si cambia
+modalita, la bozza media viene riportata al default coerente con quella modalita:
+`All media` per `Daily`, primo media disponibile per le modalita media-scoped.
 
 ## Obiettivo v1
 

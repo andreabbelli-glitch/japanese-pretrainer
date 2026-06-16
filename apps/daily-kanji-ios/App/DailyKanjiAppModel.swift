@@ -233,7 +233,7 @@ final class DailyKanjiAppModel: ObservableObject {
         }
 
         draftStudyMode = mode
-        normalizeDraftMediaForCurrentMode(preferCurrentModeMatch: true)
+        draftMediaSlug = defaultMediaSlug(for: mode)
     }
 
     func setDraftSelectedMediaSlug(_ mediaSlug: String?) {
@@ -488,6 +488,17 @@ final class DailyKanjiAppModel: ObservableObject {
         }
 
         return modeOptions.first?.slug ?? pickerOptions.first?.slug
+    }
+
+    private func defaultMediaSlug(for studyMode: DailyKanjiStudyMode) -> String? {
+        if studyMode == .daily {
+            return nil
+        }
+
+        return DailyKanjiSelector.mediaOptions(
+            cards: cards,
+            studyMode: studyMode
+        ).first?.slug ?? mediaPickerOptions.first?.slug
     }
 
     private func restoreSavedScope() {

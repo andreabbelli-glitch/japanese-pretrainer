@@ -629,6 +629,35 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
+    func testDraftModeChangesResetMediaSelectionForTheNewMode() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
+        let defaultsName = "DailyKanjiScope-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            now: now
+        )
+
+        model.setDraftStudyMode(.prestudy)
+        XCTAssertEqual(model.draftStudyMode, .prestudy)
+        XCTAssertEqual(model.draftMediaSlug, "media-one")
+
+        model.applyStudyScope(now: now)
+        model.setDraftStudyMode(.daily)
+        XCTAssertEqual(model.draftStudyMode, .daily)
+        XCTAssertNil(model.draftMediaSlug)
+
+        model.applyStudyScope(now: now)
+        model.setDraftStudyMode(.lastLessonsHardAgain)
+        XCTAssertEqual(model.draftStudyMode, .lastLessonsHardAgain)
+        XCTAssertEqual(model.draftMediaSlug, "media-one")
+    }
+
+    @MainActor
     func testApplyingStudyScopePersistsAndReloadsWidgetTimelines() throws {
         let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
         let defaultsName = "DailyKanjiScope-\(UUID().uuidString)"
