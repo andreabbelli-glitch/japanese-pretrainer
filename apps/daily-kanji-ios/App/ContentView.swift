@@ -88,22 +88,24 @@ struct ContentView: View {
             .pickerStyle(.segmented)
 
             HStack(spacing: 12) {
-                Picker(
-                    "Media",
-                    selection: Binding<String?>(
-                        get: { model.draftMediaSlug },
-                        set: { model.setDraftSelectedMediaSlug($0) }
-                    )
-                ) {
-                    if model.draftStudyMode == .daily {
-                        Text("All media").tag(String?.none)
+                if model.draftStudyModeUsesMediaSelection {
+                    Picker(
+                        "Media",
+                        selection: Binding<String?>(
+                            get: { model.draftMediaSlug },
+                            set: { model.setDraftSelectedMediaSlug($0) }
+                        )
+                    ) {
+                        ForEach(model.mediaPickerOptions) { option in
+                            Text(option.title).tag(Optional(option.slug))
+                        }
                     }
-
-                    ForEach(model.mediaPickerOptions) { option in
-                        Text(option.title).tag(Optional(option.slug))
-                    }
+                    .pickerStyle(.menu)
+                } else {
+                    Label("All media", systemImage: "rectangle.stack")
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(.secondary)
                 }
-                .pickerStyle(.menu)
 
                 Spacer(minLength: 0)
 

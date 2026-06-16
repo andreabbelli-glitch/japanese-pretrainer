@@ -234,8 +234,10 @@ struct DailyKanjiSelector {
         mediaSlug: String?,
         studyMode: DailyKanjiStudyMode
     ) -> [DailyKanjiCard] {
-        cards.filter { card in
-            if let mediaSlug, card.media.slug != mediaSlug {
+        let scopedMediaSlug = studyMode.usesMediaSelection ? mediaSlug : nil
+
+        return cards.filter { card in
+            if let scopedMediaSlug, card.media.slug != scopedMediaSlug {
                 return false
             }
 

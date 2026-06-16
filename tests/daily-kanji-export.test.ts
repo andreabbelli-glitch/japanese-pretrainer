@@ -7,8 +7,10 @@ import {
   cardEntryLink,
   lesson,
   lessonProgress,
+  media,
   reviewSubjectLog,
   reviewSubjectState,
+  segment,
   term
 } from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
@@ -181,7 +183,7 @@ describe("daily kanji iOS export", () => {
     );
   });
 
-  it("exports prestudy cards and recent hard-again cards from the last three completed lessons as media modes", async () => {
+  it("exports prestudy cards and global recent hard-again cards from the last three matching lessons", async () => {
     await withTestDatabase(
       {
         markDevelopmentLessonCompleted: true,
@@ -224,6 +226,11 @@ describe("daily kanji iOS export", () => {
         expect(
           dataset.cards.find(
             (entry) => entry.cardId === "card_daily_mode_recent_one"
+          )?.studyModes?.lastLessonsHardAgain
+        ).toBeUndefined();
+        expect(
+          dataset.cards.find(
+            (entry) => entry.cardId === "card_daily_mode_other_old"
           )?.studyModes?.lastLessonsHardAgain
         ).toBeUndefined();
       }
@@ -580,6 +587,28 @@ async function seedLowStabilityBucketRegressionCards(database: TestDatabase) {
 }
 
 async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
+  await database.insert(media).values({
+    id: "media_daily_mode_other",
+    slug: "daily-mode-other",
+    title: "Daily Mode Other",
+    mediaType: "game",
+    segmentKind: "chapter",
+    language: "ja",
+    baseExplanationLanguage: "it",
+    description: "Other media fixture for Daily Kanji modes.",
+    status: "active",
+    createdAt: nowIso,
+    updatedAt: nowIso
+  });
+  await database.insert(segment).values({
+    id: "segment_daily_mode_other",
+    mediaId: "media_daily_mode_other",
+    slug: "other-core",
+    title: "Other Core",
+    orderIndex: 1,
+    segmentType: "chapter",
+    notes: null
+  });
   await database.insert(lesson).values([
     buildLesson({
       id: "lesson_daily_mode_one",
@@ -610,16 +639,35 @@ async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
       orderIndex: 304,
       slug: "daily-mode-prestudy",
       title: "Daily Mode Prestudy"
+    }),
+    buildLesson({
+      id: "lesson_daily_mode_other_old",
+      mediaId: "media_daily_mode_other",
+      orderIndex: 999,
+      segmentId: "segment_daily_mode_other",
+      slug: "daily-mode-other-old",
+      title: "Daily Mode Other Old"
     })
   ]);
   await database
     .insert(lessonProgress)
     .values([
-      buildLessonProgress("lesson_daily_mode_one", "completed"),
-      buildLessonProgress("lesson_daily_mode_two", "completed"),
-      buildLessonProgress("lesson_daily_mode_three", "completed"),
-      buildLessonProgress("lesson_daily_mode_four", "completed"),
-      buildLessonProgress("lesson_daily_mode_prestudy", "in_progress")
+      buildLessonProgress("lesson_daily_mode_one", "completed", {
+        completedAt: "2026-06-06T12:00:00.000Z"
+      }),
+      buildLessonProgress("lesson_daily_mode_two", "completed", {
+        completedAt: "2026-06-07T12:00:00.000Z"
+      }),
+      buildLessonProgress("lesson_daily_mode_three", "completed", {
+        completedAt: "2026-06-08T12:00:00.000Z"
+      }),
+      buildLessonProgress("lesson_daily_mode_four", "completed", {
+        completedAt: "2026-06-09T12:00:00.000Z"
+      }),
+      buildLessonProgress("lesson_daily_mode_prestudy", "in_progress"),
+      buildLessonProgress("lesson_daily_mode_other_old", "completed", {
+        completedAt: "2026-06-05T12:00:00.000Z"
+      })
     ]);
   await database.insert(term).values([
     buildTerm({
@@ -656,6 +704,15 @@ async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
       meaningIt: "prestudio",
       reading: "よしゅう",
       romaji: "yoshuu"
+    }),
+    buildTerm({
+      id: "term_daily_mode_other_old",
+      lemma: "古傷",
+      mediaId: "media_daily_mode_other",
+      meaningIt: "vecchia ferita",
+      reading: "ふるきず",
+      romaji: "furukizu",
+      segmentId: "segment_daily_mode_other"
     })
   ]);
   await database.insert(card).values([
@@ -688,6 +745,14 @@ async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
       id: "card_daily_mode_prestudy",
       lessonId: "lesson_daily_mode_prestudy",
       orderIndex: 1
+    }),
+    buildCard({
+      front: "古傷",
+      id: "card_daily_mode_other_old",
+      lessonId: "lesson_daily_mode_other_old",
+      mediaId: "media_daily_mode_other",
+      orderIndex: 1,
+      segmentId: "segment_daily_mode_other"
     })
   ]);
   await database
@@ -700,7 +765,11 @@ async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
         "term_daily_mode_three"
       ),
       buildCardEntryLink("card_daily_mode_recent_four", "term_daily_mode_four"),
-      buildCardEntryLink("card_daily_mode_prestudy", "term_daily_mode_prestudy")
+      buildCardEntryLink("card_daily_mode_prestudy", "term_daily_mode_prestudy"),
+      buildCardEntryLink(
+        "card_daily_mode_other_old",
+        "term_daily_mode_other_old"
+      )
     ]);
   await database.insert(reviewSubjectState).values([
     buildReviewState({
@@ -742,6 +811,16 @@ async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
       reps: 2,
       stability: 9,
       state: "review"
+    }),
+    buildReviewState({
+      cardId: "card_daily_mode_other_old",
+      difficulty: 2,
+      dueAt: "2026-06-10T08:00:00.000Z",
+      entryId: "term_daily_mode_other_old",
+      lastInteractionAt: "2026-06-09T09:00:00.000Z",
+      reps: 2,
+      stability: 9,
+      state: "review"
     })
   ]);
   await database.insert(reviewSubjectLog).values([
@@ -772,13 +851,22 @@ async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
       entryId: "term_daily_mode_four",
       id: "review_log_daily_mode_four_again",
       rating: "again"
+    }),
+    buildReviewLog({
+      answeredAt: "2026-06-09T08:00:00.000Z",
+      cardId: "card_daily_mode_other_old",
+      entryId: "term_daily_mode_other_old",
+      id: "review_log_daily_mode_other_old_hard",
+      rating: "hard"
     })
   ]);
 }
 
 function buildLesson(input: {
   id: string;
+  mediaId?: string;
   orderIndex: number;
+  segmentId?: string;
   slug: string;
   title: string;
 }) {
@@ -786,9 +874,9 @@ function buildLesson(input: {
     id: input.id,
     createdAt: nowIso,
     difficulty: "beginner",
-    mediaId: developmentFixture.mediaId,
+    mediaId: input.mediaId ?? developmentFixture.mediaId,
     orderIndex: input.orderIndex,
-    segmentId: developmentFixture.segmentId,
+    segmentId: input.segmentId ?? developmentFixture.segmentId,
     slug: input.slug,
     sourceFile: `tests/fixtures/daily-kanji/${input.slug}.md`,
     status: "active" as const,
@@ -800,10 +888,13 @@ function buildLesson(input: {
 
 function buildLessonProgress(
   lessonId: string,
-  status: "completed" | "in_progress"
+  status: "completed" | "in_progress",
+  input: {
+    completedAt?: string;
+  } = {}
 ) {
   return {
-    completedAt: status === "completed" ? nowIso : null,
+    completedAt: status === "completed" ? (input.completedAt ?? nowIso) : null,
     lastOpenedAt: nowIso,
     lessonId,
     startedAt: nowIso,
@@ -815,11 +906,13 @@ function buildTerm(input: {
   audioSrc?: string;
   id: string;
   lemma: string;
+  mediaId?: string;
   meaningIt: string;
   pitchAccent?: number;
   pitchAccentSource?: string;
   reading: string;
   romaji: string;
+  segmentId?: string;
 }) {
   return {
     id: input.id,
@@ -835,7 +928,7 @@ function buildTerm(input: {
     lemma: input.lemma,
     meaningIt: input.meaningIt,
     meaningLiteralIt: null,
-    mediaId: developmentFixture.mediaId,
+    mediaId: input.mediaId ?? developmentFixture.mediaId,
     notesIt: null,
     pitchAccent: input.pitchAccent ?? null,
     pitchAccentPageUrl: null,
@@ -846,7 +939,7 @@ function buildTerm(input: {
     searchLemmaNorm: input.lemma,
     searchReadingNorm: input.reading,
     searchRomajiNorm: input.romaji,
-    segmentId: developmentFixture.segmentId,
+    segmentId: input.segmentId ?? developmentFixture.segmentId,
     sourceId: input.id,
     updatedAt: nowIso
   };
@@ -856,8 +949,10 @@ function buildCard(input: {
   front: string;
   id: string;
   lessonId?: string;
+  mediaId?: string;
   notes?: string;
   orderIndex: number;
+  segmentId?: string;
 }) {
   return {
     id: input.id,
@@ -868,11 +963,11 @@ function buildCard(input: {
     exampleJp: `${input.front}を見た。`,
     front: input.front,
     lessonId: input.lessonId ?? developmentFixture.lessonId,
-    mediaId: developmentFixture.mediaId,
+    mediaId: input.mediaId ?? developmentFixture.mediaId,
     normalizedFront: input.front,
     notesIt: input.notes ?? `${input.front} note`,
     orderIndex: input.orderIndex,
-    segmentId: developmentFixture.segmentId,
+    segmentId: input.segmentId ?? developmentFixture.segmentId,
     sourceFile: `tests/fixtures/daily-kanji/${input.id}.md`,
     status: "active" as const,
     updatedAt: nowIso

@@ -115,6 +115,10 @@ final class DailyKanjiAppModel: ObservableObject {
         cardsForScope(mediaSlug: draftMediaSlug, studyMode: draftStudyMode).count
     }
 
+    var draftStudyModeUsesMediaSelection: Bool {
+        draftStudyMode.usesMediaSelection
+    }
+
     var hasStudyScopeDraftChanges: Bool {
         selectedStudyMode != draftStudyMode || selectedMediaSlug != draftMediaSlug
     }
@@ -464,15 +468,15 @@ final class DailyKanjiAppModel: ObservableObject {
         for studyMode: DailyKanjiStudyMode,
         preferCurrentModeMatch: Bool
     ) -> String? {
+        guard studyMode.usesMediaSelection else {
+            return nil
+        }
+
         let pickerOptions = mediaPickerOptions
         let modeOptions = DailyKanjiSelector.mediaOptions(
             cards: cards,
             studyMode: studyMode
         )
-
-        if studyMode == .daily && mediaSlug == nil {
-            return nil
-        }
 
         if let mediaSlug,
            pickerOptions.contains(where: { $0.slug == mediaSlug }) {
@@ -491,7 +495,7 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     private func defaultMediaSlug(for studyMode: DailyKanjiStudyMode) -> String? {
-        if studyMode == .daily {
+        guard studyMode.usesMediaSelection else {
             return nil
         }
 

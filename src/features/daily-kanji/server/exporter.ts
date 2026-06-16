@@ -372,15 +372,26 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
         AND rsl.answered_at <= ${quoteSqlString(input.nowIso)}
       GROUP BY rsl.subject_key
     ),
+    lesson_hard_again AS (
+      SELECT DISTINCT
+        l.id AS lessonId
+      FROM lesson l
+      INNER JOIN card c
+        ON c.lesson_id = l.id
+      INNER JOIN subject_identity si
+        ON si.card_id = c.id
+      INNER JOIN recent_hard_again rha
+        ON rha.subjectKey = si.subject_key
+      WHERE l.status = 'active'
+        AND c.status = 'active'
+    ),
     recent_lessons AS (
       SELECT
         l.id AS lessonId,
-        l.media_id AS mediaId,
         ROW_NUMBER() OVER (
-          PARTITION BY l.media_id
           ORDER BY
-            COALESCE(l.order_index, -2147483648) DESC,
             COALESCE(lp.completed_at, lp.last_opened_at, l.updated_at) DESC,
+            COALESCE(l.order_index, -2147483648) DESC,
             l.id DESC
         ) AS lessonRank
       FROM lesson l
@@ -388,6 +399,8 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
         ON m.id = l.media_id
       INNER JOIN lesson_progress lp
         ON lp.lesson_id = l.id
+      INNER JOIN lesson_hard_again lha
+        ON lha.lessonId = l.id
       WHERE l.status = 'active'
         AND m.status = 'active'
         AND lp.status = 'completed'

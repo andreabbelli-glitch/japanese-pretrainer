@@ -556,7 +556,7 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
-    func testAppModelSelectsMediaScopedPrestudyAndLastLessonsModes() throws {
+    func testAppModelSelectsMediaScopedPrestudyAndGlobalLastLessonsModes() throws {
         let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
         let model = DailyKanjiAppModel(cards: cards, now: now)
 
@@ -581,13 +581,15 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         model.setDraftStudyMode(.lastLessonsHardAgain)
         model.applyStudyScope(now: now)
-        XCTAssertEqual(model.selectedMediaSlug, "media-one")
+        XCTAssertNil(model.selectedMediaSlug)
         XCTAssertEqual(model.selectedCard?.cardId, "last-one")
+        XCTAssertEqual(model.scopedCardCount, 2)
 
         model.setDraftSelectedMediaSlug("media-two")
         model.applyStudyScope(now: now)
         XCTAssertEqual(model.selectedStudyMode, .lastLessonsHardAgain)
-        XCTAssertEqual(model.selectedCard?.cardId, "last-two")
+        XCTAssertNil(model.selectedMediaSlug)
+        XCTAssertEqual(model.selectedCard?.cardId, "last-one")
 
         model.setDraftStudyMode(.daily)
         model.setDraftSelectedMediaSlug(nil)
@@ -654,7 +656,10 @@ final class DailyKanjiCoreTests: XCTestCase {
         model.applyStudyScope(now: now)
         model.setDraftStudyMode(.lastLessonsHardAgain)
         XCTAssertEqual(model.draftStudyMode, .lastLessonsHardAgain)
-        XCTAssertEqual(model.draftMediaSlug, "media-one")
+        XCTAssertNil(model.draftMediaSlug)
+
+        model.setDraftSelectedMediaSlug("media-two")
+        XCTAssertNil(model.draftMediaSlug)
     }
 
     @MainActor

@@ -245,6 +245,10 @@ enum DailyKanjiStudyMode: String, CaseIterable, Identifiable {
             return "Last 3"
         }
     }
+
+    var usesMediaSelection: Bool {
+        self == .prestudy
+    }
 }
 
 extension DailyKanjiCard {
