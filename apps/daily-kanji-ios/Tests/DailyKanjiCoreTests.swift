@@ -40,6 +40,10 @@ final class DailyKanjiCoreTests: XCTestCase {
     func testRepositoryReportsSyncedDatasetSourceMetadata() throws {
         let temporaryDirectory = try Self.makeTemporaryDirectory()
         defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let bundle = try Self.makeBundle(
+            containing: try DailyKanjiDataset.decode(jsonData: Self.datasetJSON),
+            in: temporaryDirectory
+        )
         let cacheStore = DailyKanjiCacheStore(directoryURL: temporaryDirectory)
         let cachedAt = Date(timeIntervalSince1970: 1_800_000_000)
         let dataset = DailyKanjiDataset(
@@ -50,7 +54,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
         try cacheStore.write(dataset: dataset, cachedAt: cachedAt)
 
-        let repository = DailyKanjiRepository(cacheStore: cacheStore)
+        let repository = DailyKanjiRepository(bundle: bundle, cacheStore: cacheStore)
 
         XCTAssertEqual(
             repository.loadDatasetSource(),
@@ -86,6 +90,33 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
 
         XCTAssertEqual(repository.loadCards().map(\.cardId), ["hard", "stable"])
+    }
+
+    func testRepositoryFallsBackToStudyModeBundleWhenCacheDoesNotDeclareModes() throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let bundle = try Self.makeBundle(
+            containing: try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON),
+            in: temporaryDirectory
+        )
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let legacyDataset = DailyKanjiDataset(
+            version: 1,
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        try cacheStore.write(dataset: legacyDataset, cachedAt: now)
+
+        let repository = DailyKanjiRepository(bundle: bundle, cacheStore: cacheStore)
+
+        XCTAssertEqual(
+            repository.loadCards().map(\.cardId),
+            ["daily-global", "prestudy-one", "last-one", "last-two"]
+        )
+        XCTAssertEqual(repository.loadDatasetSource(), .bundle)
     }
 
     func testCacheStoreWritesDatasetAtomicallyWithMetadata() throws {
@@ -262,6 +293,48 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
+    func testManualRefreshRejectsLegacySyncDatasetWhenBundleRequiresStudyModes() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let bundle = try Self.makeBundle(
+            containing: try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON),
+            in: temporaryDirectory
+        )
+        let legacySyncedDataset = DailyKanjiDataset(
+            version: 1,
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        let syncer = MockDailyKanjiSyncer(result: .success(legacySyncedDataset))
+        let model = DailyKanjiAppModel(
+            repository: DailyKanjiRepository(bundle: bundle, cacheStore: cacheStore),
+            cacheStore: cacheStore,
+            syncer: syncer,
+            now: now
+        )
+
+        await model.syncNow(now: now, force: true)
+
+        XCTAssertEqual(syncer.fetchCount, 1)
+        XCTAssertEqual(
+            model.cards.map(\.cardId),
+            ["daily-global", "prestudy-one", "last-one", "last-two"]
+        )
+        XCTAssertNil(cacheStore.loadDataset())
+        XCTAssertEqual(
+            model.syncState,
+            .failed(
+                message: "Downloaded dataset does not include Daily Kanji study modes.",
+                source: .bundle
+            )
+        )
+    }
+
+    @MainActor
     func testAutomaticRefreshUsesExponentialFailureBackoff() async throws {
         let cards = try Self.rankedCards(count: 1)
         let syncer = MockDailyKanjiSyncer(result: .failure(DailyKanjiSyncClientError.invalidResponse))
@@ -283,12 +356,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         let cacheStore = DailyKanjiCacheStore(
             directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
         )
-        let syncedDataset = DailyKanjiDataset(
-            version: 1,
-            generatedAt: "2026-06-11T08:00:00.000Z",
-            recentMistakeLookbackDays: 3,
-            cards: try Self.rankedCards(count: 1)
-        )
+        let syncedDataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
         let syncer = MockDailyKanjiSyncer(results: [
             .failure(DailyKanjiSyncClientError.invalidResponse),
             .success(syncedDataset),
@@ -493,9 +561,19 @@ final class DailyKanjiCoreTests: XCTestCase {
         let model = DailyKanjiAppModel(cards: cards, now: now)
 
         XCTAssertEqual(model.availableMedia.map(\.slug), ["media-one", "media-two"])
+        XCTAssertEqual(model.mediaPickerOptions.map(\.slug), ["media-one", "media-two"])
 
         model.setStudyMode(.prestudy)
         XCTAssertEqual(model.selectedMediaSlug, "media-one")
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+
+        model.setSelectedMediaSlug("media-two")
+        XCTAssertEqual(model.mediaPickerOptions.map(\.slug), ["media-one", "media-two"])
+        XCTAssertEqual(model.selectedMediaSlug, "media-two")
+        XCTAssertEqual(model.scopedCardCount, 0)
+        XCTAssertNil(model.selectedCard)
+
+        model.setSelectedMediaSlug("media-one")
         XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
 
         model.setStudyMode(.lastLessonsHardAgain)
@@ -512,6 +590,40 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(model.selectedCard?.cardId, "daily-global")
     }
 
+    @MainActor
+    func testStudyScopeChangesPersistAndReloadWidgetTimelines() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
+        let defaultsName = "DailyKanjiScope-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let scopeStore = DailyKanjiStudyScopeStore(defaults: defaults)
+        var reloadCount = 0
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            scopeStore: scopeStore,
+            reloadTimelines: { reloadCount += 1 },
+            now: now
+        )
+
+        model.setStudyMode(.prestudy)
+
+        XCTAssertEqual(
+            scopeStore.load(),
+            DailyKanjiStudyScope(studyMode: .prestudy, mediaSlug: "media-one")
+        )
+        XCTAssertEqual(reloadCount, 1)
+
+        model.setSelectedMediaSlug("media-two")
+
+        XCTAssertEqual(
+            scopeStore.load(),
+            DailyKanjiStudyScope(studyMode: .prestudy, mediaSlug: "media-two")
+        )
+        XCTAssertEqual(reloadCount, 2)
+    }
+
     func testWidgetTimelineUsesOnlyDailyModeCards() throws {
         let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
         let dates = DailyKanjiSelector.widgetTimelineDates(
@@ -525,6 +637,23 @@ final class DailyKanjiCoreTests: XCTestCase {
         ).map(\.cardId)
 
         XCTAssertEqual(timelineCardIds, Array(repeating: "daily-global", count: 4))
+    }
+
+    func testWidgetTimelineUsesPersistedStudyScopeInputs() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
+        let dates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: Date(timeIntervalSince1970: 0),
+            count: 4
+        )
+
+        let timelineCardIds = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: dates,
+            mediaSlug: "media-one",
+            studyMode: .prestudy
+        ).map(\.cardId)
+
+        XCTAssertEqual(timelineCardIds, Array(repeating: "prestudy-one", count: 4))
     }
 
     func testWidgetRefreshUsesNextRotationSlotBoundary() {

@@ -82,12 +82,16 @@ struct DailyKanjiSelector {
     static func widgetTimelineCards(
         cards: [DailyKanjiCard],
         dates: [Date],
+        mediaSlug: String? = nil,
+        studyMode: DailyKanjiStudyMode = .daily,
         historyLookbackDays: Int = defaultWidgetNoRepeatLookbackDays,
         widgetRotationWindow: Int = defaultWidgetRotationWindow
     ) -> [DailyKanjiCard] {
         widgetTimelineSelections(
             cards: cards,
             dates: dates,
+            mediaSlug: mediaSlug,
+            studyMode: studyMode,
             historyLookbackDays: historyLookbackDays,
             widgetRotationWindow: widgetRotationWindow
         ).map { $0.card }
@@ -96,6 +100,8 @@ struct DailyKanjiSelector {
     static func recentWidgetTimelineItems(
         cards: [DailyKanjiCard],
         now: Date,
+        mediaSlug: String? = nil,
+        studyMode: DailyKanjiStudyMode = .daily,
         days: Int = defaultWidgetNoRepeatLookbackDays,
         maxItems: Int = defaultWidgetHistoryMaxItems,
         widgetRotationWindow: Int = defaultWidgetRotationWindow
@@ -118,6 +124,8 @@ struct DailyKanjiSelector {
         let newestUniqueItems = widgetTimelineSelections(
             cards: cards,
             dates: dates,
+            mediaSlug: mediaSlug,
+            studyMode: studyMode,
             historyLookbackDays: days,
             widgetRotationWindow: widgetRotationWindow
         )
@@ -140,11 +148,15 @@ struct DailyKanjiSelector {
     static func recentWidgetSelectionItems(
         cards: [DailyKanjiCard],
         now: Date,
+        mediaSlug: String? = nil,
+        studyMode: DailyKanjiStudyMode = .daily,
         maxItems: Int = defaultWidgetSelectionHistoryMaxItems
     ) -> [DailyKanjiHistoryItem] {
         recentWidgetTimelineItems(
             cards: cards,
             now: now,
+            mediaSlug: mediaSlug,
+            studyMode: studyMode,
             maxItems: maxItems
         ).map {
             DailyKanjiHistoryItem(cardId: $0.cardId, shownAt: $0.shownAt)
@@ -265,10 +277,15 @@ struct DailyKanjiSelector {
     private static func widgetTimelineSelections(
         cards: [DailyKanjiCard],
         dates: [Date],
+        mediaSlug: String?,
+        studyMode: DailyKanjiStudyMode,
         historyLookbackDays: Int,
         widgetRotationWindow: Int
     ) -> [(date: Date, card: DailyKanjiCard)] {
-        let ordered = rank(scopedCards(cards, mediaSlug: nil, studyMode: .daily))
+        let ordered = order(
+            scopedCards(cards, mediaSlug: mediaSlug, studyMode: studyMode),
+            for: studyMode
+        )
         guard !ordered.isEmpty else {
             return []
         }

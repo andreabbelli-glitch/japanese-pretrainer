@@ -8,6 +8,7 @@ struct KanjiEntry: TimelineEntry {
 
 struct KanjiProvider: TimelineProvider {
     private let repository = DailyKanjiRepository()
+    private let scopeStore = DailyKanjiStudyScopeStore()
 
     func placeholder(in context: Context) -> KanjiEntry {
         KanjiEntry(date: .now, card: DailyKanjiSampleData.card)
@@ -20,10 +21,13 @@ struct KanjiProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<KanjiEntry>) -> Void) {
         let now = Date()
+        let scope = scopeStore.load()
         let dates = DailyKanjiSelector.widgetTimelineDates(startingAt: now)
         let cards = DailyKanjiSelector.widgetTimelineCards(
             cards: repository.loadCards(),
-            dates: dates
+            dates: dates,
+            mediaSlug: scope.mediaSlug,
+            studyMode: scope.studyMode
         )
         let entries = dates.enumerated().map { index, date in
             let card = index < cards.count ? cards[index] : DailyKanjiSampleData.card
@@ -37,11 +41,14 @@ struct KanjiProvider: TimelineProvider {
     }
 
     private func selectedCard(now: Date) -> DailyKanjiCard {
-        DailyKanjiSelector.select(
+        let scope = scopeStore.load()
+        return DailyKanjiSelector.select(
             cards: repository.loadCards(),
             history: [],
             now: now,
-            mode: .widgetTimeline
+            mode: .widgetTimeline,
+            mediaSlug: scope.mediaSlug,
+            studyMode: scope.studyMode
         ) ?? DailyKanjiSampleData.card
     }
 }

@@ -19,11 +19,14 @@ struct DailyKanjiRepository {
     }
 
     func loadCards() -> [DailyKanjiCard] {
-        if let dataset = loadCachedDataset() {
+        let bundledDataset = loadBundledDataset()
+        if let dataset = loadCachedDataset(
+            requiresStudyModes: bundledDataset?.supportsMediaStudyModes == true
+        ) {
             return dataset.cards
         }
 
-        if let dataset = loadBundledDataset() {
+        if let dataset = bundledDataset {
             return dataset.cards
         }
 
@@ -31,22 +34,33 @@ struct DailyKanjiRepository {
     }
 
     func loadDatasetSource() -> DailyKanjiDatasetSource {
-        if loadCachedDataset() != nil {
+        let bundledDataset = loadBundledDataset()
+        if loadCachedDataset(
+            requiresStudyModes: bundledDataset?.supportsMediaStudyModes == true
+        ) != nil {
             return .cache(metadata: cacheStore.loadMetadata())
         }
 
-        if loadBundledDataset() != nil {
+        if bundledDataset != nil {
             return .bundle
         }
 
         return .sample
     }
 
-    private func loadCachedDataset() -> DailyKanjiDataset? {
+    func requiresStudyModeAwareSync() -> Bool {
+        loadBundledDataset()?.supportsMediaStudyModes == true
+    }
+
+    private func loadCachedDataset(requiresStudyModes: Bool = false) -> DailyKanjiDataset? {
         guard
             let dataset = cacheStore.loadDataset(),
             !dataset.cards.isEmpty
         else {
+            return nil
+        }
+
+        if requiresStudyModes && !dataset.supportsMediaStudyModes {
             return nil
         }
 

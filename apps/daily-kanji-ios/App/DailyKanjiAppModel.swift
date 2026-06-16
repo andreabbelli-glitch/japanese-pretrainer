@@ -22,6 +22,7 @@ final class DailyKanjiAppModel: ObservableObject {
     private let repository: DailyKanjiRepository
     private let cacheStore: DailyKanjiCacheStore
     private let historyStore: DailyKanjiHistoryStore
+    private let scopeStore: DailyKanjiStudyScopeStore
     private let syncPolicy: DailyKanjiSyncPolicy
     private let syncer: DailyKanjiSyncing?
     private let reloadTimelines: () -> Void
@@ -38,6 +39,7 @@ final class DailyKanjiAppModel: ObservableObject {
         repository: DailyKanjiRepository? = nil,
         cacheStore: DailyKanjiCacheStore = DailyKanjiCacheStore(),
         historyStore: DailyKanjiHistoryStore = DailyKanjiHistoryStore(),
+        scopeStore: DailyKanjiStudyScopeStore = DailyKanjiStudyScopeStore(),
         syncPolicy: DailyKanjiSyncPolicy = DailyKanjiSyncPolicy(),
         syncer: DailyKanjiSyncing? = DailyKanjiSyncClient(),
         reloadTimelines: @escaping () -> Void = {
@@ -50,6 +52,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.cacheStore = cacheStore
         self.cards = resolvedRepository.loadCards()
         self.historyStore = historyStore
+        self.scopeStore = scopeStore
         self.syncPolicy = syncPolicy
         self.syncer = syncer
         self.reloadTimelines = reloadTimelines
@@ -57,6 +60,8 @@ final class DailyKanjiAppModel: ObservableObject {
             syncer: syncer,
             source: resolvedRepository.loadDatasetSource()
         )
+        restoreSavedScope()
+        persistCurrentScope()
         prepareInitialSelection(now: now)
     }
 
@@ -64,6 +69,7 @@ final class DailyKanjiAppModel: ObservableObject {
         cards: [DailyKanjiCard],
         historyStore: DailyKanjiHistoryStore = DailyKanjiHistoryStore(),
         cacheStore: DailyKanjiCacheStore = DailyKanjiCacheStore(),
+        scopeStore: DailyKanjiStudyScopeStore = DailyKanjiStudyScopeStore(),
         syncPolicy: DailyKanjiSyncPolicy = DailyKanjiSyncPolicy(),
         syncer: DailyKanjiSyncing? = nil,
         reloadTimelines: @escaping () -> Void = {
@@ -75,15 +81,22 @@ final class DailyKanjiAppModel: ObservableObject {
         self.cacheStore = cacheStore
         self.cards = cards
         self.historyStore = historyStore
+        self.scopeStore = scopeStore
         self.syncPolicy = syncPolicy
         self.syncer = syncer
         self.reloadTimelines = reloadTimelines
         self.syncState = Self.initialSyncState(syncer: syncer, source: .sample)
+        restoreSavedScope()
+        persistCurrentScope()
         prepareInitialSelection(now: now)
     }
 
     var availableMedia: [DailyKanjiMediaOption] {
         DailyKanjiSelector.mediaOptions(cards: cards)
+    }
+
+    var mediaPickerOptions: [DailyKanjiMediaOption] {
+        availableMedia
     }
 
     var availableMediaForCurrentMode: [DailyKanjiMediaOption] {
@@ -159,6 +172,12 @@ final class DailyKanjiAppModel: ObservableObject {
             guard !dataset.cards.isEmpty else {
                 throw DailyKanjiAppSyncError.emptyDataset
             }
+            guard
+                !repository.requiresStudyModeAwareSync()
+                    || dataset.supportsMediaStudyModes
+            else {
+                throw DailyKanjiAppSyncError.missingStudyModes
+            }
 
             try cacheStore.write(dataset: dataset, cachedAt: now)
             cards = dataset.cards
@@ -167,6 +186,7 @@ final class DailyKanjiAppModel: ObservableObject {
             pendingPreparedSelectionCardId = nil
             transientInitialActivationEvent = nil
             normalizeSelectedMediaForCurrentMode()
+            persistCurrentScope()
             prepareInitialSelection(now: now)
             syncState = .idle(source: currentDatasetSource())
             reloadTimelines()
@@ -202,8 +222,10 @@ final class DailyKanjiAppModel: ObservableObject {
         selectedStudyMode = mode
         pendingPreparedSelectionCardId = nil
         transientInitialActivationEvent = nil
-        normalizeSelectedMediaForCurrentMode()
+        normalizeSelectedMediaForCurrentMode(preferCurrentModeMatch: true)
+        persistCurrentScope()
         prepareInitialSelection(now: now)
+        reloadTimelines()
     }
 
     func setSelectedMediaSlug(_ mediaSlug: String?, now: Date = .now) {
@@ -214,8 +236,10 @@ final class DailyKanjiAppModel: ObservableObject {
         selectedMediaSlug = mediaSlug
         pendingPreparedSelectionCardId = nil
         transientInitialActivationEvent = nil
-        normalizeSelectedMediaForCurrentMode()
+        normalizeSelectedMediaForCurrentMode(preferCurrentModeMatch: false)
+        persistCurrentScope()
         prepareInitialSelection(now: now)
+        reloadTimelines()
     }
 
     func openDeepLink(_ url: URL, now: Date = .now) {
@@ -359,6 +383,8 @@ final class DailyKanjiAppModel: ObservableObject {
         let widgetItems = DailyKanjiSelector.recentWidgetTimelineItems(
             cards: cards,
             now: now,
+            mediaSlug: selectedMediaSlug,
+            studyMode: selectedStudyMode,
             days: DailyKanjiSelector.defaultHistoryLookbackDays
         )
 
@@ -368,7 +394,9 @@ final class DailyKanjiAppModel: ObservableObject {
         )
         recentSelectionHistory = appItems + DailyKanjiSelector.recentWidgetSelectionItems(
             cards: cards,
-            now: now
+            now: now,
+            mediaSlug: selectedMediaSlug,
+            studyMode: selectedStudyMode
         )
     }
 
@@ -380,19 +408,46 @@ final class DailyKanjiAppModel: ObservableObject {
         )
     }
 
-    private func normalizeSelectedMediaForCurrentMode() {
-        let options = availableMediaForCurrentMode
+    private func normalizeSelectedMediaForCurrentMode(
+        preferCurrentModeMatch: Bool = false
+    ) {
+        let pickerOptions = mediaPickerOptions
+        let modeOptions = availableMediaForCurrentMode
 
         if selectedStudyMode == .daily && selectedMediaSlug == nil {
             return
         }
 
         if let selectedMediaSlug,
-           options.contains(where: { $0.slug == selectedMediaSlug }) {
-            return
+           pickerOptions.contains(where: { $0.slug == selectedMediaSlug }) {
+            let selectedHasCurrentModeCards = modeOptions.contains {
+                $0.slug == selectedMediaSlug
+            }
+
+            if !preferCurrentModeMatch
+                || selectedHasCurrentModeCards
+                || modeOptions.isEmpty {
+                return
+            }
         }
 
-        selectedMediaSlug = options.first?.slug
+        selectedMediaSlug = modeOptions.first?.slug ?? pickerOptions.first?.slug
+    }
+
+    private func restoreSavedScope() {
+        let scope = scopeStore.load()
+        selectedStudyMode = scope.studyMode
+        selectedMediaSlug = scope.mediaSlug
+        normalizeSelectedMediaForCurrentMode(preferCurrentModeMatch: false)
+    }
+
+    private func persistCurrentScope() {
+        scopeStore.save(
+            DailyKanjiStudyScope(
+                studyMode: selectedStudyMode,
+                mediaSlug: selectedMediaSlug
+            )
+        )
     }
 
     private func selectionHistoryItems() -> [DailyKanjiHistoryItem] {
@@ -426,11 +481,14 @@ final class DailyKanjiAppModel: ObservableObject {
 
 private enum DailyKanjiAppSyncError: LocalizedError {
     case emptyDataset
+    case missingStudyModes
 
     var errorDescription: String? {
         switch self {
         case .emptyDataset:
             return "Downloaded dataset has no cards."
+        case .missingStudyModes:
+            return "Downloaded dataset does not include Daily Kanji study modes."
         }
     }
 }

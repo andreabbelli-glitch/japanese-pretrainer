@@ -100,6 +100,17 @@ struct DailyKanjiMediaOption: Identifiable, Equatable {
     var id: String { slug }
 }
 
+struct DailyKanjiStudyScope: Equatable {
+    var studyMode: DailyKanjiStudyMode
+    var mediaSlug: String?
+}
+
+extension DailyKanjiDataset {
+    var supportsMediaStudyModes: Bool {
+        cards.contains { $0.studyModes != nil }
+    }
+}
+
 struct DailyKanjiPitchAccentPattern: Equatable {
     struct Mora: Equatable, Identifiable {
         let index: Int

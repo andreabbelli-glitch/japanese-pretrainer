@@ -99,7 +99,7 @@ struct ContentView: View {
                         Text("All media").tag(String?.none)
                     }
 
-                    ForEach(model.availableMediaForCurrentMode) { option in
+                    ForEach(model.mediaPickerOptions) { option in
                         Text(option.title).tag(Optional(option.slug))
                     }
                 }

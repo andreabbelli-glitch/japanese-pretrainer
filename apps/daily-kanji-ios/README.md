@@ -35,7 +35,8 @@ La schermata principale dell'app ha selettori locali per media e modalita':
 `Daily` usa il ranking globale Hard/Again/low-stability, `Prestudy` mostra le
 card della prossima lesson non completata del media selezionato, `Last 3` mostra
 le card valutate Hard/Again nelle ultime 3 lesson completate di quel media. Il
-widget resta intenzionalmente sul ranking globale e non eredita questi filtri.
+cambio di modalita/media viene salvato nell'App Group e ricarica subito le
+timeline WidgetKit, cosi i widget usano lo stesso scope scelto nell'app.
 
 ## Obiettivo v1
 
@@ -161,6 +162,8 @@ Il dataset esporta anche metadata opzionali `studyModes`: le card legacy senza
 metadata restano valide come `Daily`, mentre le nuove card possono essere taggate
 per `prestudy` o `lastLessonsHardAgain` senza rompere cache o app che ignorano
 campi JSON sconosciuti.
+Quando il bundle installato contiene questi metadata, l'app ignora cache/sync
+legacy senza `studyModes` per non perdere Prestudy/Last 3 dopo un refresh.
 
 Sync runtime privato:
 
