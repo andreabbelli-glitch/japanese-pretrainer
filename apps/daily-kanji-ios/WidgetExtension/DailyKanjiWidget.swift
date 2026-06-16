@@ -364,10 +364,23 @@ private struct DailyKanjiPitchAccentReadingView: View {
         }
 
         if pattern.moras.contains(where: { $0.text.count > 1 }) {
-            return width + 6
+            return width + contractedMoraWidthExpansion
         }
 
         return width
+    }
+
+    private var contractedMoraWidthExpansion: CGFloat {
+        switch pattern.moras.count {
+        case 0...4:
+            return 12
+        case 5...6:
+            return 9
+        case 7...8:
+            return 7
+        default:
+            return 5
+        }
     }
 }
 
@@ -398,7 +411,11 @@ private struct DailyKanjiMoraTextView: View {
     }
 
     private var characterSpacing: CGFloat {
-        text.count > 1 ? -max(fontSize * 0.18, 3) : 0
+        text.count > 1 ? contractedCharacterSpacing : 0
+    }
+
+    private var contractedCharacterSpacing: CGFloat {
+        max(fontSize * 0.04, 1)
     }
 
     private func characterFontSize(for character: String) -> CGFloat {

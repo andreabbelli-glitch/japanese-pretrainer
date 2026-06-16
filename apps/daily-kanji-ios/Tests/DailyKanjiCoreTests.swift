@@ -969,6 +969,9 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertTrue(viewBlock.contains("DailyKanjiMoraTextView(text: mora.text"))
         XCTAssertFalse(viewBlock.contains("Text(mora.text)"))
         XCTAssertTrue(viewBlock.contains("isContractedKana"))
+        XCTAssertTrue(viewBlock.contains("contractedMoraWidthExpansion"))
+        XCTAssertTrue(viewBlock.contains("contractedCharacterSpacing"))
+        XCTAssertFalse(viewBlock.contains("-max(fontSize"))
     }
 
     func testLockScreenPitchAccentPatternMarksHeibanAfterFirstMoraHigh() throws {
