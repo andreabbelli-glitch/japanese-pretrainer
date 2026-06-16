@@ -14,6 +14,8 @@ final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var cards: [DailyKanjiCard]
     @Published private(set) var selectedCard: DailyKanjiCard?
     @Published private(set) var selectedHistoryContext: DailyKanjiPresentationHistoryItem?
+    @Published private(set) var selectedMediaSlug: String?
+    @Published private(set) var selectedStudyMode: DailyKanjiStudyMode = .daily
     @Published private(set) var recentHistory: [DailyKanjiPresentationHistoryItem] = []
     @Published private(set) var syncState: DailyKanjiSyncState
 
@@ -80,6 +82,18 @@ final class DailyKanjiAppModel: ObservableObject {
         prepareInitialSelection(now: now)
     }
 
+    var availableMedia: [DailyKanjiMediaOption] {
+        DailyKanjiSelector.mediaOptions(cards: cards)
+    }
+
+    var availableMediaForCurrentMode: [DailyKanjiMediaOption] {
+        DailyKanjiSelector.mediaOptions(cards: cards, studyMode: selectedStudyMode)
+    }
+
+    var scopedCardCount: Int {
+        cardsForCurrentScope().count
+    }
+
     func activate(now: Date = .now) {
         refreshHistory(now: now)
         defer {
@@ -103,7 +117,9 @@ final class DailyKanjiAppModel: ObservableObject {
                 cards: cards,
                 history: selectionHistoryItems(),
                 now: now,
-                mode: .appOpen
+                mode: .appOpen,
+                mediaSlug: selectedMediaSlug,
+                studyMode: selectedStudyMode
             )
         else {
             return
@@ -150,6 +166,7 @@ final class DailyKanjiAppModel: ObservableObject {
             consecutiveFailureCount = 0
             pendingPreparedSelectionCardId = nil
             transientInitialActivationEvent = nil
+            normalizeSelectedMediaForCurrentMode()
             prepareInitialSelection(now: now)
             syncState = .idle(source: currentDatasetSource())
             reloadTimelines()
@@ -175,6 +192,30 @@ final class DailyKanjiAppModel: ObservableObject {
 
         pendingPreparedSelectionCardId = nil
         select(card: card, shownAt: now, context: item)
+    }
+
+    func setStudyMode(_ mode: DailyKanjiStudyMode, now: Date = .now) {
+        guard selectedStudyMode != mode else {
+            return
+        }
+
+        selectedStudyMode = mode
+        pendingPreparedSelectionCardId = nil
+        transientInitialActivationEvent = nil
+        normalizeSelectedMediaForCurrentMode()
+        prepareInitialSelection(now: now)
+    }
+
+    func setSelectedMediaSlug(_ mediaSlug: String?, now: Date = .now) {
+        guard selectedMediaSlug != mediaSlug else {
+            return
+        }
+
+        selectedMediaSlug = mediaSlug
+        pendingPreparedSelectionCardId = nil
+        transientInitialActivationEvent = nil
+        normalizeSelectedMediaForCurrentMode()
+        prepareInitialSelection(now: now)
     }
 
     func openDeepLink(_ url: URL, now: Date = .now) {
@@ -209,7 +250,9 @@ final class DailyKanjiAppModel: ObservableObject {
             cards: cards,
             history: selectionHistoryItems(),
             now: now,
-            mode: .appOpen
+            mode: .appOpen,
+            mediaSlug: selectedMediaSlug,
+            studyMode: selectedStudyMode
         )
         if let selectedCard {
             selectedHistoryContext = DailyKanjiPresentationHistoryItem(
@@ -327,6 +370,29 @@ final class DailyKanjiAppModel: ObservableObject {
             cards: cards,
             now: now
         )
+    }
+
+    private func cardsForCurrentScope() -> [DailyKanjiCard] {
+        DailyKanjiSelector.scopedCards(
+            cards,
+            mediaSlug: selectedMediaSlug,
+            studyMode: selectedStudyMode
+        )
+    }
+
+    private func normalizeSelectedMediaForCurrentMode() {
+        let options = availableMediaForCurrentMode
+
+        if selectedStudyMode == .daily && selectedMediaSlug == nil {
+            return
+        }
+
+        if let selectedMediaSlug,
+           options.contains(where: { $0.slug == selectedMediaSlug }) {
+            return
+        }
+
+        selectedMediaSlug = options.first?.slug
     }
 
     private func selectionHistoryItems() -> [DailyKanjiHistoryItem] {

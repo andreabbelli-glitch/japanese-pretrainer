@@ -9,9 +9,12 @@ struct ContentView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     syncStatusView
+                    studyScopeView
 
                     if let card = model.selectedCard {
                         selectedCardView(card)
+                    } else {
+                        emptyScopeView
                     }
 
                     historyView
@@ -67,6 +70,52 @@ struct ContentView: View {
             .accessibilityLabel("Aggiorna ora")
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var studyScopeView: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Picker(
+                "Modalità",
+                selection: Binding(
+                    get: { model.selectedStudyMode },
+                    set: { model.setStudyMode($0) }
+                )
+            ) {
+                ForEach(DailyKanjiStudyMode.allCases) { mode in
+                    Text(mode.label).tag(mode)
+                }
+            }
+            .pickerStyle(.segmented)
+
+            HStack(spacing: 12) {
+                Picker(
+                    "Media",
+                    selection: Binding<String?>(
+                        get: { model.selectedMediaSlug },
+                        set: { model.setSelectedMediaSlug($0) }
+                    )
+                ) {
+                    if model.selectedStudyMode == .daily {
+                        Text("All media").tag(String?.none)
+                    }
+
+                    ForEach(model.availableMediaForCurrentMode) { option in
+                        Text(option.title).tag(Optional(option.slug))
+                    }
+                }
+                .pickerStyle(.menu)
+
+                Spacer(minLength: 0)
+
+                Text("\(model.scopedCardCount) card")
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(14)
+        .background(Color(.secondarySystemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 
     private func selectedCardView(_ card: DailyKanjiCard) -> some View {
@@ -140,6 +189,16 @@ struct ContentView: View {
         .padding(18)
         .background(Color(.secondarySystemGroupedBackground))
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+    }
+
+    private var emptyScopeView: some View {
+        Text("Nessuna card per questa selezione.")
+            .font(.callout)
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(18)
+            .background(Color(.secondarySystemGroupedBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 
     private func studySignalsView(_ card: DailyKanjiCard) -> some View {

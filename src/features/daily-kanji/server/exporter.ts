@@ -6,7 +6,8 @@ import {
 import type {
   DailyKanjiDataset,
   DailyKanjiExportCard,
-  DailyKanjiPriorityReason
+  DailyKanjiPriorityReason,
+  DailyKanjiStudyModes
 } from "../types.ts";
 import { stripInlineMarkdown } from "../../study/model/inline-markdown.ts";
 
@@ -33,6 +34,7 @@ type DailyKanjiExportRow = {
   lastInteractionAt: string;
   lastReviewedAt: string | null;
   learningSteps: number;
+  lessonOrderIndex: number | null;
   lessonSlug: string;
   lessonTitle: string;
   meaning: string | null;
@@ -52,6 +54,8 @@ type DailyKanjiExportRow = {
   subjectKey: string;
 };
 
+type DailyKanjiExportMode = "daily" | "prestudy" | "lastLessonsHardAgain";
+
 export async function buildDailyKanjiDataset(input: {
   database: Pick<DatabaseQueryClient, "all">;
   limit?: number;
@@ -69,10 +73,30 @@ export async function buildDailyKanjiDataset(input: {
     cutoffIso,
     nowIso
   });
-  const cards = rows
-    .flatMap((row) => mapDailyKanjiExportRow(row, nowIso))
+  const dailyCards = rows
+    .flatMap((row) => mapDailyKanjiExportRow(row, nowIso, "daily"))
     .sort(compareDailyKanjiExportCards)
     .slice(0, limit);
+  const prestudyCards = (
+    await listDailyKanjiPrestudyRows({
+      database: input.database,
+      nowIso
+    })
+  ).flatMap((row) => mapDailyKanjiExportRow(row, nowIso, "prestudy"));
+  const lastLessonsHardAgainCards = (
+    await listDailyKanjiLastLessonsHardAgainRows({
+      database: input.database,
+      cutoffIso,
+      nowIso
+    })
+  ).flatMap((row) =>
+    mapDailyKanjiExportRow(row, nowIso, "lastLessonsHardAgain")
+  );
+  const cards = mergeDailyKanjiExportCards([
+    ...dailyCards,
+    ...prestudyCards,
+    ...lastLessonsHardAgainCards
+  ]);
 
   return {
     version: dailyKanjiDatasetVersion,
@@ -116,6 +140,7 @@ async function listDailyKanjiExportRows(input: {
         m.title AS mediaTitle,
         l.slug AS lessonSlug,
         l.title AS lessonTitle,
+        l.order_index AS lessonOrderIndex,
         s.title AS segmentTitle,
         rss.state AS state,
         rss.stability AS stability,
@@ -203,9 +228,283 @@ async function listDailyKanjiExportRows(input: {
   `);
 }
 
+async function listDailyKanjiPrestudyRows(input: {
+  database: Pick<DatabaseQueryClient, "all">;
+  nowIso: string;
+}) {
+  return input.database.all<DailyKanjiExportRow>(`
+    WITH ${buildReviewSubjectIdentityCteSql()},
+    next_lessons AS (
+      SELECT
+        l.id AS lessonId,
+        l.media_id AS mediaId,
+        ROW_NUMBER() OVER (
+          PARTITION BY l.media_id
+          ORDER BY
+            COALESCE(l.order_index, 2147483647) ASC,
+            l.created_at ASC,
+            l.id ASC
+        ) AS lessonRank
+      FROM lesson l
+      INNER JOIN media m
+        ON m.id = l.media_id
+      LEFT JOIN lesson_progress lp
+        ON lp.lesson_id = l.id
+      WHERE l.status = 'active'
+        AND m.status = 'active'
+        AND COALESCE(lp.status, 'not_started') != 'completed'
+    ),
+    candidate_cards AS (
+      SELECT
+        si.card_id AS cardId,
+        si.subject_key AS subjectKey,
+        si.entry_type AS entryKind,
+        si.entry_id AS entryId,
+        c.front AS front,
+        c.back AS back,
+        c.example_jp AS exampleJp,
+        c.example_it AS exampleIt,
+        c.notes_it AS notes,
+        c.order_index AS orderIndex,
+        m.slug AS mediaSlug,
+        m.title AS mediaTitle,
+        l.slug AS lessonSlug,
+        l.title AS lessonTitle,
+        l.order_index AS lessonOrderIndex,
+        s.title AS segmentTitle,
+        'learning' AS state,
+        NULL AS stability,
+        NULL AS difficulty,
+        NULL AS dueAt,
+        NULL AS lastReviewedAt,
+        ${quoteSqlString(input.nowIso)} AS lastInteractionAt,
+        0 AS scheduledDays,
+        0 AS learningSteps,
+        0 AS lapses,
+        0 AS reps,
+        0 AS recentHardAgainCount,
+        NULL AS lastHardAgainAt,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.lemma
+          WHEN si.entry_type = 'grammar' THEN gp.pattern
+          ELSE NULL
+        END AS label,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.reading
+          WHEN si.entry_type = 'grammar' THEN gp.reading
+          ELSE NULL
+        END AS reading,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.meaning_it
+          WHEN si.entry_type = 'grammar' THEN gp.meaning_it
+          ELSE NULL
+        END AS meaning,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.audio_src
+          WHEN si.entry_type = 'grammar' THEN gp.audio_src
+          ELSE NULL
+        END AS audioSrc,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.pitch_accent
+          WHEN si.entry_type = 'grammar' THEN gp.pitch_accent
+          ELSE NULL
+        END AS pitchAccent,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.pitch_accent_source
+          WHEN si.entry_type = 'grammar' THEN gp.pitch_accent_source
+          ELSE NULL
+        END AS pitchAccentSource,
+        ROW_NUMBER() OVER (
+          PARTITION BY si.subject_key
+          ORDER BY
+            COALESCE(c.order_index, 2147483647) ASC,
+            c.created_at ASC,
+            c.id ASC
+        ) AS subjectRowNumber
+      FROM subject_identity si
+      INNER JOIN card c
+        ON c.id = si.card_id
+      INNER JOIN media m
+        ON m.id = c.media_id
+      INNER JOIN lesson l
+        ON l.id = c.lesson_id
+      INNER JOIN next_lessons nl
+        ON nl.lessonId = l.id
+       AND nl.lessonRank = 1
+      LEFT JOIN segment s
+        ON s.id = c.segment_id
+      LEFT JOIN term t
+        ON si.entry_type = 'term'
+       AND t.id = si.entry_id
+      LEFT JOIN grammar_pattern gp
+        ON si.entry_type = 'grammar'
+       AND gp.id = si.entry_id
+      WHERE c.status = 'active'
+        AND m.status = 'active'
+        AND l.status = 'active'
+    )
+    SELECT *
+    FROM candidate_cards
+    WHERE subjectRowNumber = 1
+    ORDER BY
+      mediaTitle ASC,
+      COALESCE(lessonOrderIndex, 2147483647) ASC,
+      COALESCE(orderIndex, 2147483647) ASC,
+      cardId ASC
+  `);
+}
+
+async function listDailyKanjiLastLessonsHardAgainRows(input: {
+  database: Pick<DatabaseQueryClient, "all">;
+  cutoffIso: string;
+  nowIso: string;
+}) {
+  return input.database.all<DailyKanjiExportRow>(`
+    WITH ${buildReviewSubjectIdentityCteSql()},
+    recent_hard_again AS (
+      SELECT
+        rsl.subject_key AS subjectKey,
+        COUNT(*) AS recentHardAgainCount,
+        MAX(rsl.answered_at) AS lastHardAgainAt
+      FROM review_subject_log rsl
+      WHERE rsl.rating IN ('again', 'hard')
+        AND rsl.answered_at >= ${quoteSqlString(input.cutoffIso)}
+        AND rsl.answered_at <= ${quoteSqlString(input.nowIso)}
+      GROUP BY rsl.subject_key
+    ),
+    recent_lessons AS (
+      SELECT
+        l.id AS lessonId,
+        l.media_id AS mediaId,
+        ROW_NUMBER() OVER (
+          PARTITION BY l.media_id
+          ORDER BY
+            COALESCE(l.order_index, -2147483648) DESC,
+            COALESCE(lp.completed_at, lp.last_opened_at, l.updated_at) DESC,
+            l.id DESC
+        ) AS lessonRank
+      FROM lesson l
+      INNER JOIN media m
+        ON m.id = l.media_id
+      INNER JOIN lesson_progress lp
+        ON lp.lesson_id = l.id
+      WHERE l.status = 'active'
+        AND m.status = 'active'
+        AND lp.status = 'completed'
+    ),
+    candidate_cards AS (
+      SELECT
+        si.card_id AS cardId,
+        si.subject_key AS subjectKey,
+        si.entry_type AS entryKind,
+        si.entry_id AS entryId,
+        c.front AS front,
+        c.back AS back,
+        c.example_jp AS exampleJp,
+        c.example_it AS exampleIt,
+        c.notes_it AS notes,
+        c.order_index AS orderIndex,
+        m.slug AS mediaSlug,
+        m.title AS mediaTitle,
+        l.slug AS lessonSlug,
+        l.title AS lessonTitle,
+        l.order_index AS lessonOrderIndex,
+        s.title AS segmentTitle,
+        rss.state AS state,
+        rss.stability AS stability,
+        rss.difficulty AS difficulty,
+        rss.due_at AS dueAt,
+        rss.last_reviewed_at AS lastReviewedAt,
+        rss.last_interaction_at AS lastInteractionAt,
+        rss.scheduled_days AS scheduledDays,
+        rss.learning_steps AS learningSteps,
+        rss.lapses AS lapses,
+        rss.reps AS reps,
+        COALESCE(rha.recentHardAgainCount, 0) AS recentHardAgainCount,
+        rha.lastHardAgainAt AS lastHardAgainAt,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.lemma
+          WHEN si.entry_type = 'grammar' THEN gp.pattern
+          ELSE NULL
+        END AS label,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.reading
+          WHEN si.entry_type = 'grammar' THEN gp.reading
+          ELSE NULL
+        END AS reading,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.meaning_it
+          WHEN si.entry_type = 'grammar' THEN gp.meaning_it
+          ELSE NULL
+        END AS meaning,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.audio_src
+          WHEN si.entry_type = 'grammar' THEN gp.audio_src
+          ELSE NULL
+        END AS audioSrc,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.pitch_accent
+          WHEN si.entry_type = 'grammar' THEN gp.pitch_accent
+          ELSE NULL
+        END AS pitchAccent,
+        CASE
+          WHEN si.entry_type = 'term' THEN t.pitch_accent_source
+          WHEN si.entry_type = 'grammar' THEN gp.pitch_accent_source
+          ELSE NULL
+        END AS pitchAccentSource,
+        ROW_NUMBER() OVER (
+          PARTITION BY si.subject_key
+          ORDER BY
+            CASE WHEN rss.card_id = c.id THEN 0 ELSE 1 END ASC,
+            COALESCE(c.order_index, 2147483647) ASC,
+            c.created_at ASC,
+            c.id ASC
+        ) AS subjectRowNumber
+      FROM subject_identity si
+      INNER JOIN card c
+        ON c.id = si.card_id
+      INNER JOIN media m
+        ON m.id = c.media_id
+      INNER JOIN lesson l
+        ON l.id = c.lesson_id
+      INNER JOIN recent_lessons rl
+        ON rl.lessonId = l.id
+       AND rl.lessonRank <= 3
+      INNER JOIN review_subject_state rss
+        ON rss.subject_key = si.subject_key
+      INNER JOIN recent_hard_again rha
+        ON rha.subjectKey = si.subject_key
+      LEFT JOIN segment s
+        ON s.id = c.segment_id
+      LEFT JOIN term t
+        ON si.entry_type = 'term'
+       AND t.id = si.entry_id
+      LEFT JOIN grammar_pattern gp
+        ON si.entry_type = 'grammar'
+       AND gp.id = si.entry_id
+      WHERE c.status = 'active'
+        AND m.status = 'active'
+        AND l.status = 'active'
+        AND rss.state IN ('learning', 'review', 'relearning')
+        AND rss.reps > 0
+        AND COALESCE(rss.manual_override, 0) = 0
+        AND COALESCE(rss.suspended, 0) = 0
+    )
+    SELECT *
+    FROM candidate_cards
+    WHERE subjectRowNumber = 1
+    ORDER BY
+      mediaTitle ASC,
+      COALESCE(lessonOrderIndex, -2147483648) DESC,
+      lastHardAgainAt DESC,
+      cardId ASC
+  `);
+}
+
 function mapDailyKanjiExportRow(
   row: DailyKanjiExportRow,
-  nowIso: string
+  nowIso: string,
+  mode: DailyKanjiExportMode
 ): DailyKanjiExportCard[] {
   const front = stripInlineMarkdown(row.front).trim();
   const back = stripInlineMarkdown(row.back).trim();
@@ -231,11 +530,13 @@ function mapDailyKanjiExportRow(
     {
       cardId: row.cardId,
       subjectKey: row.subjectKey,
+      cardOrderIndex: row.orderIndex,
       media: {
         slug: row.mediaSlug,
         title: row.mediaTitle
       },
       lesson: {
+        orderIndex: row.lessonOrderIndex,
         slug: row.lessonSlug,
         title: row.lessonTitle
       },
@@ -268,6 +569,7 @@ function mapDailyKanjiExportRow(
         ? { exampleJp: stripInlineMarkdown(row.exampleJp) }
         : {}),
       ...(row.notes ? { notes: stripInlineMarkdown(row.notes) } : {}),
+      studyModes: buildStudyModes(row, mode),
       srs: {
         difficulty: row.difficulty,
         dueAt: row.dueAt,
@@ -286,6 +588,48 @@ function mapDailyKanjiExportRow(
       }
     }
   ];
+}
+
+function buildStudyModes(
+  row: DailyKanjiExportRow,
+  mode: DailyKanjiExportMode
+): DailyKanjiStudyModes {
+  if (mode === "daily") {
+    return { daily: true };
+  }
+
+  const scope = {
+    lessonOrderIndex: row.lessonOrderIndex,
+    lessonSlug: row.lessonSlug,
+    lessonTitle: row.lessonTitle,
+    order: row.orderIndex
+  };
+
+  if (mode === "prestudy") {
+    return { prestudy: scope };
+  }
+
+  return { lastLessonsHardAgain: scope };
+}
+
+function mergeDailyKanjiExportCards(cards: DailyKanjiExportCard[]) {
+  const byCardId = new Map<string, DailyKanjiExportCard>();
+
+  for (const card of cards) {
+    const existing = byCardId.get(card.cardId);
+
+    if (!existing) {
+      byCardId.set(card.cardId, card);
+      continue;
+    }
+
+    existing.studyModes = {
+      ...existing.studyModes,
+      ...card.studyModes
+    };
+  }
+
+  return Array.from(byCardId.values());
 }
 
 function collectKanji(input: string) {

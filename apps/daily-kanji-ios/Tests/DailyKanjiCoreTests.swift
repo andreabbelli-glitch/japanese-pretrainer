@@ -487,6 +487,46 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(selected?.cardId, "z-overdue")
     }
 
+    @MainActor
+    func testAppModelSelectsMediaScopedPrestudyAndLastLessonsModes() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
+        let model = DailyKanjiAppModel(cards: cards, now: now)
+
+        XCTAssertEqual(model.availableMedia.map(\.slug), ["media-one", "media-two"])
+
+        model.setStudyMode(.prestudy)
+        XCTAssertEqual(model.selectedMediaSlug, "media-one")
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+
+        model.setStudyMode(.lastLessonsHardAgain)
+        XCTAssertEqual(model.selectedMediaSlug, "media-one")
+        XCTAssertEqual(model.selectedCard?.cardId, "last-one")
+
+        model.setSelectedMediaSlug("media-two")
+        XCTAssertEqual(model.selectedStudyMode, .lastLessonsHardAgain)
+        XCTAssertEqual(model.selectedCard?.cardId, "last-two")
+
+        model.setStudyMode(.daily)
+        model.setSelectedMediaSlug(nil)
+        XCTAssertNil(model.selectedMediaSlug)
+        XCTAssertEqual(model.selectedCard?.cardId, "daily-global")
+    }
+
+    func testWidgetTimelineUsesOnlyDailyModeCards() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
+        let dates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: Date(timeIntervalSince1970: 0),
+            count: 4
+        )
+
+        let timelineCardIds = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: dates
+        ).map(\.cardId)
+
+        XCTAssertEqual(timelineCardIds, Array(repeating: "daily-global", count: 4))
+    }
+
     func testWidgetRefreshUsesNextRotationSlotBoundary() {
         let date = Date(timeIntervalSince1970: (60 * 60) + 123)
 
@@ -1526,6 +1566,174 @@ final class DailyKanjiCoreTests: XCTestCase {
             "reps": 10,
             "scheduledDays": 5,
             "stability": 4.2,
+            "state": "review"
+          }
+        }
+      ]
+    }
+    """.data(using: .utf8)!
+
+    private static let modeScopedDatasetJSON = """
+    {
+      "version": 1,
+      "generatedAt": "2026-06-11T08:00:00.000Z",
+      "recentMistakeLookbackDays": 3,
+      "cards": [
+        {
+          "cardId": "daily-global",
+          "subjectKey": "entry:term:daily-global",
+          "media": { "slug": "media-two", "title": "Media Two" },
+          "lesson": { "slug": "daily", "title": "Daily", "orderIndex": 10 },
+          "cardOrderIndex": 1,
+          "front": "全体",
+          "back": "ぜんたい — globale",
+          "kanji": ["全", "体"],
+          "entry": {
+            "id": "daily-global",
+            "kind": "term",
+            "label": "全体",
+            "meaning": "globale",
+            "reading": "ぜんたい"
+          },
+          "notes": "Daily global",
+          "studyModes": { "daily": true },
+          "srs": {
+            "difficulty": 9,
+            "dueAt": "2026-06-11T08:00:00.000Z",
+            "lapses": 0,
+            "lastHardAgainAt": null,
+            "lastInteractionAt": "2026-06-11T08:00:00.000Z",
+            "lastReviewedAt": "2026-06-11T08:00:00.000Z",
+            "learningSteps": 0,
+            "priorityReasons": ["high-difficulty"],
+            "priorityScore": 9000,
+            "recentHardAgainCount": 0,
+            "reps": 3,
+            "scheduledDays": 1,
+            "stability": 8,
+            "state": "review"
+          }
+        },
+        {
+          "cardId": "prestudy-one",
+          "subjectKey": "entry:term:prestudy-one",
+          "media": { "slug": "media-one", "title": "Media One" },
+          "lesson": { "slug": "next", "title": "Next Lesson", "orderIndex": 20 },
+          "cardOrderIndex": 1,
+          "front": "予習",
+          "back": "よしゅう — prestudio",
+          "kanji": ["予", "習"],
+          "entry": {
+            "id": "prestudy-one",
+            "kind": "term",
+            "label": "予習",
+            "meaning": "prestudio",
+            "reading": "よしゅう"
+          },
+          "studyModes": {
+            "prestudy": {
+              "lessonSlug": "next",
+              "lessonTitle": "Next Lesson",
+              "lessonOrderIndex": 20,
+              "order": 1
+            }
+          },
+          "srs": {
+            "difficulty": null,
+            "dueAt": null,
+            "lapses": 0,
+            "lastHardAgainAt": null,
+            "lastInteractionAt": "2026-06-11T08:00:00.000Z",
+            "lastReviewedAt": null,
+            "learningSteps": 0,
+            "priorityReasons": [],
+            "priorityScore": 0,
+            "recentHardAgainCount": 0,
+            "reps": 0,
+            "scheduledDays": 0,
+            "stability": null,
+            "state": "learning"
+          }
+        },
+        {
+          "cardId": "last-one",
+          "subjectKey": "entry:term:last-one",
+          "media": { "slug": "media-one", "title": "Media One" },
+          "lesson": { "slug": "recent", "title": "Recent Lesson", "orderIndex": 18 },
+          "cardOrderIndex": 1,
+          "front": "復習",
+          "back": "ふくしゅう — ripasso",
+          "kanji": ["復", "習"],
+          "entry": {
+            "id": "last-one",
+            "kind": "term",
+            "label": "復習",
+            "meaning": "ripasso",
+            "reading": "ふくしゅう"
+          },
+          "studyModes": {
+            "lastLessonsHardAgain": {
+              "lessonSlug": "recent",
+              "lessonTitle": "Recent Lesson",
+              "lessonOrderIndex": 18,
+              "order": 1
+            }
+          },
+          "srs": {
+            "difficulty": 4,
+            "dueAt": "2026-06-11T08:00:00.000Z",
+            "lapses": 0,
+            "lastHardAgainAt": "2026-06-10T08:00:00.000Z",
+            "lastInteractionAt": "2026-06-10T08:00:00.000Z",
+            "lastReviewedAt": "2026-06-10T08:00:00.000Z",
+            "learningSteps": 0,
+            "priorityReasons": ["recent-hard-again"],
+            "priorityScore": 10000,
+            "recentHardAgainCount": 1,
+            "reps": 3,
+            "scheduledDays": 1,
+            "stability": 8,
+            "state": "review"
+          }
+        },
+        {
+          "cardId": "last-two",
+          "subjectKey": "entry:term:last-two",
+          "media": { "slug": "media-two", "title": "Media Two" },
+          "lesson": { "slug": "recent-two", "title": "Recent Two", "orderIndex": 18 },
+          "cardOrderIndex": 1,
+          "front": "苦手",
+          "back": "にがて — debolezza",
+          "kanji": ["苦", "手"],
+          "entry": {
+            "id": "last-two",
+            "kind": "term",
+            "label": "苦手",
+            "meaning": "debolezza",
+            "reading": "にがて"
+          },
+          "studyModes": {
+            "lastLessonsHardAgain": {
+              "lessonSlug": "recent-two",
+              "lessonTitle": "Recent Two",
+              "lessonOrderIndex": 18,
+              "order": 1
+            }
+          },
+          "srs": {
+            "difficulty": 4,
+            "dueAt": "2026-06-11T08:00:00.000Z",
+            "lapses": 0,
+            "lastHardAgainAt": "2026-06-10T08:00:00.000Z",
+            "lastInteractionAt": "2026-06-10T08:00:00.000Z",
+            "lastReviewedAt": "2026-06-10T08:00:00.000Z",
+            "learningSteps": 0,
+            "priorityReasons": ["recent-hard-again"],
+            "priorityScore": 10000,
+            "recentHardAgainCount": 1,
+            "reps": 3,
+            "scheduledDays": 1,
+            "stability": 8,
             "state": "review"
           }
         }

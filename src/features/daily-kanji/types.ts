@@ -15,14 +15,29 @@ export type DailyKanjiDataset = {
   cards: DailyKanjiExportCard[];
 };
 
+export type DailyKanjiModeScope = {
+  lessonOrderIndex: number | null;
+  lessonSlug: string;
+  lessonTitle: string;
+  order: number | null;
+};
+
+export type DailyKanjiStudyModes = {
+  daily?: true;
+  prestudy?: DailyKanjiModeScope;
+  lastLessonsHardAgain?: DailyKanjiModeScope;
+};
+
 export type DailyKanjiExportCard = {
   cardId: string;
   subjectKey: string;
+  cardOrderIndex?: number | null;
   media: {
     slug: string;
     title: string;
   };
   lesson: {
+    orderIndex?: number | null;
     slug: string;
     title: string;
   };
@@ -45,6 +60,7 @@ export type DailyKanjiExportCard = {
   exampleIt?: string;
   exampleJp?: string;
   notes?: string;
+  studyModes?: DailyKanjiStudyModes;
   srs: {
     difficulty: number | null;
     dueAt: string | null;

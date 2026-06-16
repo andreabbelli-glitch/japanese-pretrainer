@@ -20,6 +20,13 @@ struct DailyKanjiCard: Codable, Identifiable, Equatable {
     struct Lesson: Codable, Equatable {
         let slug: String
         let title: String
+        let orderIndex: Int?
+
+        init(slug: String, title: String, orderIndex: Int? = nil) {
+            self.slug = slug
+            self.title = title
+            self.orderIndex = orderIndex
+        }
     }
 
     struct Segment: Codable, Equatable {
@@ -54,10 +61,24 @@ struct DailyKanjiCard: Codable, Identifiable, Equatable {
         let state: DailyKanjiStudyState
     }
 
+    struct StudyModeScope: Codable, Equatable {
+        let lessonOrderIndex: Int?
+        let lessonSlug: String
+        let lessonTitle: String
+        let order: Int?
+    }
+
+    struct StudyModes: Codable, Equatable {
+        let daily: Bool?
+        let prestudy: StudyModeScope?
+        let lastLessonsHardAgain: StudyModeScope?
+    }
+
     var id: String { cardId }
 
     let cardId: String
     let subjectKey: String
+    var cardOrderIndex: Int? = nil
     let media: Media
     let lesson: Lesson
     let segment: Segment?
@@ -68,7 +89,15 @@ struct DailyKanjiCard: Codable, Identifiable, Equatable {
     let exampleIt: String?
     let exampleJp: String?
     let notes: String?
+    var studyModes: StudyModes? = nil
     let srs: SRS
+}
+
+struct DailyKanjiMediaOption: Identifiable, Equatable {
+    let slug: String
+    let title: String
+
+    var id: String { slug }
 }
 
 struct DailyKanjiPitchAccentPattern: Equatable {
@@ -188,7 +217,52 @@ enum DailyKanjiStudyState: String, Codable, Equatable {
     case relearning
 }
 
+enum DailyKanjiStudyMode: String, CaseIterable, Identifiable {
+    case daily
+    case prestudy
+    case lastLessonsHardAgain
+
+    var id: String { rawValue }
+
+    var label: String {
+        switch self {
+        case .daily:
+            return "Daily"
+        case .prestudy:
+            return "Prestudy"
+        case .lastLessonsHardAgain:
+            return "Last 3"
+        }
+    }
+}
+
 extension DailyKanjiCard {
+    func supportsStudyMode(_ mode: DailyKanjiStudyMode) -> Bool {
+        switch mode {
+        case .daily:
+            guard let studyModes else {
+                return true
+            }
+
+            return studyModes.daily == true
+        case .prestudy:
+            return studyModes?.prestudy != nil
+        case .lastLessonsHardAgain:
+            return studyModes?.lastLessonsHardAgain != nil
+        }
+    }
+
+    func studyModeOrder(for mode: DailyKanjiStudyMode) -> Int {
+        switch mode {
+        case .daily:
+            return Int(srs.priorityScore)
+        case .prestudy:
+            return studyModes?.prestudy?.order ?? cardOrderIndex ?? Int.max
+        case .lastLessonsHardAgain:
+            return studyModes?.lastLessonsHardAgain?.order ?? cardOrderIndex ?? Int.max
+        }
+    }
+
     var displayFront: String {
         front.isEmpty ? entry.label : front
     }
@@ -289,6 +363,14 @@ extension DailyKanjiCard {
     }
 
     var priorityText: String {
+        if studyModes?.prestudy != nil && studyModes?.daily != true {
+            return "Prestudy"
+        }
+
+        if studyModes?.lastLessonsHardAgain != nil && studyModes?.daily != true {
+            return "Last lessons"
+        }
+
         if srs.priorityReasons.contains(.recentHardAgain) {
             return "Recent hard/again"
         }

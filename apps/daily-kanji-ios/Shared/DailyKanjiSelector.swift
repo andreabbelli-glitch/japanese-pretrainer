@@ -19,10 +19,15 @@ struct DailyKanjiSelector {
         history: [DailyKanjiHistoryItem],
         now: Date,
         mode: DailyKanjiSelectionMode,
+        mediaSlug: String? = nil,
+        studyMode: DailyKanjiStudyMode = .daily,
         historyLookbackDays: Int = defaultHistoryLookbackDays,
         widgetRotationWindow: Int = defaultWidgetRotationWindow
     ) -> DailyKanjiCard? {
-        let ordered = rank(cards)
+        let ordered = order(
+            scopedCards(cards, mediaSlug: mediaSlug, studyMode: studyMode),
+            for: studyMode
+        )
         guard !ordered.isEmpty else {
             return nil
         }
@@ -186,6 +191,72 @@ struct DailyKanjiSelector {
         }
     }
 
+    static func mediaOptions(
+        cards: [DailyKanjiCard],
+        studyMode: DailyKanjiStudyMode? = nil
+    ) -> [DailyKanjiMediaOption] {
+        var bySlug: [String: DailyKanjiMediaOption] = [:]
+
+        for card in cards {
+            if let studyMode, !card.supportsStudyMode(studyMode) {
+                continue
+            }
+
+            bySlug[card.media.slug] = DailyKanjiMediaOption(
+                slug: card.media.slug,
+                title: card.media.title
+            )
+        }
+
+        return bySlug.values.sorted { lhs, rhs in
+            if lhs.title != rhs.title {
+                return lhs.title < rhs.title
+            }
+
+            return lhs.slug < rhs.slug
+        }
+    }
+
+    static func scopedCards(
+        _ cards: [DailyKanjiCard],
+        mediaSlug: String?,
+        studyMode: DailyKanjiStudyMode
+    ) -> [DailyKanjiCard] {
+        cards.filter { card in
+            if let mediaSlug, card.media.slug != mediaSlug {
+                return false
+            }
+
+            return card.supportsStudyMode(studyMode)
+        }
+    }
+
+    static func order(
+        _ cards: [DailyKanjiCard],
+        for studyMode: DailyKanjiStudyMode
+    ) -> [DailyKanjiCard] {
+        switch studyMode {
+        case .daily, .lastLessonsHardAgain:
+            return rank(cards)
+        case .prestudy:
+            return cards.sorted { lhs, rhs in
+                let lhsLessonOrder = lhs.lesson.orderIndex ?? Int.max
+                let rhsLessonOrder = rhs.lesson.orderIndex ?? Int.max
+                if lhsLessonOrder != rhsLessonOrder {
+                    return lhsLessonOrder < rhsLessonOrder
+                }
+
+                let lhsOrder = lhs.studyModeOrder(for: .prestudy)
+                let rhsOrder = rhs.studyModeOrder(for: .prestudy)
+                if lhsOrder != rhsOrder {
+                    return lhsOrder < rhsOrder
+                }
+
+                return lhs.cardId < rhs.cardId
+            }
+        }
+    }
+
     static func currentWidgetSlotStart(for date: Date) -> Date {
         let slot = floor(date.timeIntervalSince1970 / widgetSlotDuration)
         return Date(timeIntervalSince1970: slot * widgetSlotDuration)
@@ -197,7 +268,7 @@ struct DailyKanjiSelector {
         historyLookbackDays: Int,
         widgetRotationWindow: Int
     ) -> [(date: Date, card: DailyKanjiCard)] {
-        let ordered = rank(cards)
+        let ordered = rank(scopedCards(cards, mediaSlug: nil, studyMode: .daily))
         guard !ordered.isEmpty else {
             return []
         }

@@ -31,6 +31,12 @@ widget condividono la cache JSON tramite App Group
 `group.dev.local.daily-kanji`, cosi il widget puo rileggere il dataset scaricato
 dall'app senza fare sync di rete separati.
 
+La schermata principale dell'app ha selettori locali per media e modalita':
+`Daily` usa il ranking globale Hard/Again/low-stability, `Prestudy` mostra le
+card della prossima lesson non completata del media selezionato, `Last 3` mostra
+le card valutate Hard/Again nelle ultime 3 lesson completate di quel media. Il
+widget resta intenzionalmente sul ranking globale e non eredita questi filtri.
+
 ## Obiettivo v1
 
 - Mostrare nel widget una card con kanji difficile/instabile.
@@ -150,6 +156,11 @@ saltati e l'app disabilita il pulsante audio per quelle card. JSON e audio
 restano ignorati da git per evitare di committare snapshot personali o asset
 duplicati. Durante la build Xcode queste risorse vengono copiate sia nel bundle
 app sia nel bundle WidgetKit extension.
+
+Il dataset esporta anche metadata opzionali `studyModes`: le card legacy senza
+metadata restano valide come `Daily`, mentre le nuove card possono essere taggate
+per `prestudy` o `lastLessonsHardAgain` senza rompere cache o app che ignorano
+campi JSON sconosciuti.
 
 Sync runtime privato:
 

@@ -5,6 +5,8 @@ import type { DatabaseClient } from "@/db";
 import {
   card,
   cardEntryLink,
+  lesson,
+  lessonProgress,
   reviewSubjectLog,
   reviewSubjectState,
   term
@@ -175,6 +177,55 @@ describe("daily kanji iOS export", () => {
         expect(lowStabilityIndex).toBeGreaterThanOrEqual(0);
         expect(stableHighScoreIndex).toBeGreaterThanOrEqual(0);
         expect(lowStabilityIndex).toBeLessThan(stableHighScoreIndex);
+      }
+    );
+  });
+
+  it("exports prestudy cards and recent hard-again cards from the last three completed lessons as media modes", async () => {
+    await withTestDatabase(
+      {
+        markDevelopmentLessonCompleted: true,
+        prefix: "jcs-daily-kanji-media-modes-",
+        seedDevelopmentFixture: true
+      },
+      async ({ database }) => {
+        await seedDailyKanjiMediaModeCards(database);
+
+        const dataset = await buildDailyKanjiDataset({
+          database,
+          limit: 1,
+          nowIso,
+          recentMistakeLookbackDays: 3
+        });
+
+        const prestudyCard = dataset.cards.find(
+          (entry) => entry.cardId === "card_daily_mode_prestudy"
+        );
+        expect(prestudyCard?.studyModes?.prestudy).toEqual({
+          lessonOrderIndex: 304,
+          lessonSlug: "daily-mode-prestudy",
+          lessonTitle: "Daily Mode Prestudy",
+          order: 1
+        });
+        expect(prestudyCard?.studyModes?.daily).toBeUndefined();
+        expect(prestudyCard?.srs.reps).toBe(0);
+
+        const lastLessonCards = dataset.cards
+          .filter((entry) => entry.studyModes?.lastLessonsHardAgain)
+          .map((entry) => entry.cardId);
+
+        expect(new Set(lastLessonCards)).toEqual(
+          new Set([
+            "card_daily_mode_recent_two",
+            "card_daily_mode_recent_three",
+            "card_daily_mode_recent_four"
+          ])
+        );
+        expect(
+          dataset.cards.find(
+            (entry) => entry.cardId === "card_daily_mode_recent_one"
+          )?.studyModes?.lastLessonsHardAgain
+        ).toBeUndefined();
       }
     );
   });
@@ -414,13 +465,15 @@ async function seedRecentBucketRegressionCards(database: TestDatabase) {
     })
   ]);
 
-  await database.insert(cardEntryLink).values([
-    buildCardEntryLink("card_daily_recent_only", "term_daily_recent_only"),
-    buildCardEntryLink(
-      "card_daily_intense_nonrecent",
-      "term_daily_intense_nonrecent"
-    )
-  ]);
+  await database
+    .insert(cardEntryLink)
+    .values([
+      buildCardEntryLink("card_daily_recent_only", "term_daily_recent_only"),
+      buildCardEntryLink(
+        "card_daily_intense_nonrecent",
+        "term_daily_intense_nonrecent"
+      )
+    ]);
 
   await database.insert(reviewSubjectState).values([
     buildReviewState({
@@ -488,13 +541,18 @@ async function seedLowStabilityBucketRegressionCards(database: TestDatabase) {
     })
   ]);
 
-  await database.insert(cardEntryLink).values([
-    buildCardEntryLink("card_daily_low_stability", "term_daily_low_stability"),
-    buildCardEntryLink(
-      "card_daily_stable_high_score",
-      "term_daily_stable_high_score"
-    )
-  ]);
+  await database
+    .insert(cardEntryLink)
+    .values([
+      buildCardEntryLink(
+        "card_daily_low_stability",
+        "term_daily_low_stability"
+      ),
+      buildCardEntryLink(
+        "card_daily_stable_high_score",
+        "term_daily_stable_high_score"
+      )
+    ]);
 
   await database.insert(reviewSubjectState).values([
     buildReviewState({
@@ -519,6 +577,238 @@ async function seedLowStabilityBucketRegressionCards(database: TestDatabase) {
       state: "review"
     })
   ]);
+}
+
+async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
+  await database.insert(lesson).values([
+    buildLesson({
+      id: "lesson_daily_mode_one",
+      orderIndex: 300,
+      slug: "daily-mode-one",
+      title: "Daily Mode One"
+    }),
+    buildLesson({
+      id: "lesson_daily_mode_two",
+      orderIndex: 301,
+      slug: "daily-mode-two",
+      title: "Daily Mode Two"
+    }),
+    buildLesson({
+      id: "lesson_daily_mode_three",
+      orderIndex: 302,
+      slug: "daily-mode-three",
+      title: "Daily Mode Three"
+    }),
+    buildLesson({
+      id: "lesson_daily_mode_four",
+      orderIndex: 303,
+      slug: "daily-mode-four",
+      title: "Daily Mode Four"
+    }),
+    buildLesson({
+      id: "lesson_daily_mode_prestudy",
+      orderIndex: 304,
+      slug: "daily-mode-prestudy",
+      title: "Daily Mode Prestudy"
+    })
+  ]);
+  await database
+    .insert(lessonProgress)
+    .values([
+      buildLessonProgress("lesson_daily_mode_one", "completed"),
+      buildLessonProgress("lesson_daily_mode_two", "completed"),
+      buildLessonProgress("lesson_daily_mode_three", "completed"),
+      buildLessonProgress("lesson_daily_mode_four", "completed"),
+      buildLessonProgress("lesson_daily_mode_prestudy", "in_progress")
+    ]);
+  await database.insert(term).values([
+    buildTerm({
+      id: "term_daily_mode_one",
+      lemma: "一番",
+      meaningIt: "numero uno",
+      reading: "いちばん",
+      romaji: "ichiban"
+    }),
+    buildTerm({
+      id: "term_daily_mode_two",
+      lemma: "二番",
+      meaningIt: "numero due",
+      reading: "にばん",
+      romaji: "niban"
+    }),
+    buildTerm({
+      id: "term_daily_mode_three",
+      lemma: "三番",
+      meaningIt: "numero tre",
+      reading: "さんばん",
+      romaji: "sanban"
+    }),
+    buildTerm({
+      id: "term_daily_mode_four",
+      lemma: "四番",
+      meaningIt: "numero quattro",
+      reading: "よんばん",
+      romaji: "yonban"
+    }),
+    buildTerm({
+      id: "term_daily_mode_prestudy",
+      lemma: "予習",
+      meaningIt: "prestudio",
+      reading: "よしゅう",
+      romaji: "yoshuu"
+    })
+  ]);
+  await database.insert(card).values([
+    buildCard({
+      front: "一番",
+      id: "card_daily_mode_recent_one",
+      lessonId: "lesson_daily_mode_one",
+      orderIndex: 1
+    }),
+    buildCard({
+      front: "二番",
+      id: "card_daily_mode_recent_two",
+      lessonId: "lesson_daily_mode_two",
+      orderIndex: 1
+    }),
+    buildCard({
+      front: "三番",
+      id: "card_daily_mode_recent_three",
+      lessonId: "lesson_daily_mode_three",
+      orderIndex: 1
+    }),
+    buildCard({
+      front: "四番",
+      id: "card_daily_mode_recent_four",
+      lessonId: "lesson_daily_mode_four",
+      orderIndex: 1
+    }),
+    buildCard({
+      front: "予習",
+      id: "card_daily_mode_prestudy",
+      lessonId: "lesson_daily_mode_prestudy",
+      orderIndex: 1
+    })
+  ]);
+  await database
+    .insert(cardEntryLink)
+    .values([
+      buildCardEntryLink("card_daily_mode_recent_one", "term_daily_mode_one"),
+      buildCardEntryLink("card_daily_mode_recent_two", "term_daily_mode_two"),
+      buildCardEntryLink(
+        "card_daily_mode_recent_three",
+        "term_daily_mode_three"
+      ),
+      buildCardEntryLink("card_daily_mode_recent_four", "term_daily_mode_four"),
+      buildCardEntryLink("card_daily_mode_prestudy", "term_daily_mode_prestudy")
+    ]);
+  await database.insert(reviewSubjectState).values([
+    buildReviewState({
+      cardId: "card_daily_mode_recent_one",
+      difficulty: 2,
+      dueAt: "2026-06-10T08:00:00.000Z",
+      entryId: "term_daily_mode_one",
+      lastInteractionAt: "2026-06-09T09:00:00.000Z",
+      reps: 2,
+      stability: 9,
+      state: "review"
+    }),
+    buildReviewState({
+      cardId: "card_daily_mode_recent_two",
+      difficulty: 2,
+      dueAt: "2026-06-10T08:00:00.000Z",
+      entryId: "term_daily_mode_two",
+      lastInteractionAt: "2026-06-09T09:00:00.000Z",
+      reps: 2,
+      stability: 9,
+      state: "review"
+    }),
+    buildReviewState({
+      cardId: "card_daily_mode_recent_three",
+      difficulty: 2,
+      dueAt: "2026-06-10T08:00:00.000Z",
+      entryId: "term_daily_mode_three",
+      lastInteractionAt: "2026-06-09T09:00:00.000Z",
+      reps: 2,
+      stability: 9,
+      state: "review"
+    }),
+    buildReviewState({
+      cardId: "card_daily_mode_recent_four",
+      difficulty: 2,
+      dueAt: "2026-06-10T08:00:00.000Z",
+      entryId: "term_daily_mode_four",
+      lastInteractionAt: "2026-06-09T09:00:00.000Z",
+      reps: 2,
+      stability: 9,
+      state: "review"
+    })
+  ]);
+  await database.insert(reviewSubjectLog).values([
+    buildReviewLog({
+      answeredAt: "2026-06-09T08:00:00.000Z",
+      cardId: "card_daily_mode_recent_one",
+      entryId: "term_daily_mode_one",
+      id: "review_log_daily_mode_one_hard",
+      rating: "hard"
+    }),
+    buildReviewLog({
+      answeredAt: "2026-06-09T08:00:00.000Z",
+      cardId: "card_daily_mode_recent_two",
+      entryId: "term_daily_mode_two",
+      id: "review_log_daily_mode_two_hard",
+      rating: "hard"
+    }),
+    buildReviewLog({
+      answeredAt: "2026-06-09T08:00:00.000Z",
+      cardId: "card_daily_mode_recent_three",
+      entryId: "term_daily_mode_three",
+      id: "review_log_daily_mode_three_again",
+      rating: "again"
+    }),
+    buildReviewLog({
+      answeredAt: "2026-06-09T08:00:00.000Z",
+      cardId: "card_daily_mode_recent_four",
+      entryId: "term_daily_mode_four",
+      id: "review_log_daily_mode_four_again",
+      rating: "again"
+    })
+  ]);
+}
+
+function buildLesson(input: {
+  id: string;
+  orderIndex: number;
+  slug: string;
+  title: string;
+}) {
+  return {
+    id: input.id,
+    createdAt: nowIso,
+    difficulty: "beginner",
+    mediaId: developmentFixture.mediaId,
+    orderIndex: input.orderIndex,
+    segmentId: developmentFixture.segmentId,
+    slug: input.slug,
+    sourceFile: `tests/fixtures/daily-kanji/${input.slug}.md`,
+    status: "active" as const,
+    summary: input.title,
+    title: input.title,
+    updatedAt: nowIso
+  };
+}
+
+function buildLessonProgress(
+  lessonId: string,
+  status: "completed" | "in_progress"
+) {
+  return {
+    completedAt: status === "completed" ? nowIso : null,
+    lastOpenedAt: nowIso,
+    lessonId,
+    startedAt: nowIso,
+    status
+  };
 }
 
 function buildTerm(input: {
@@ -565,6 +855,7 @@ function buildTerm(input: {
 function buildCard(input: {
   front: string;
   id: string;
+  lessonId?: string;
   notes?: string;
   orderIndex: number;
 }) {
@@ -576,7 +867,7 @@ function buildCard(input: {
     exampleIt: `${input.front} esempio`,
     exampleJp: `${input.front}を見た。`,
     front: input.front,
-    lessonId: developmentFixture.lessonId,
+    lessonId: input.lessonId ?? developmentFixture.lessonId,
     mediaId: developmentFixture.mediaId,
     normalizedFront: input.front,
     notesIt: input.notes ?? `${input.front} note`,
