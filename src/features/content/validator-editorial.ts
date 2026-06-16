@@ -135,6 +135,144 @@ function validateCardsDocument(
   issues: ValidationIssue[]
 ) {
   validateMarkdownDocument(document.body, document.sourceFile, issues);
+  validateSwappedLearnerNotes(document, issues);
+}
+
+type LearnerNoteOwner = {
+  ownerType: "entry" | "card";
+  id: string;
+  label: string;
+  note: RichTextFragment;
+  context: EditorialTextContext;
+};
+
+function validateSwappedLearnerNotes(
+  document: NormalizedCardsDocument,
+  issues: ValidationIssue[]
+) {
+  const entryNotes: LearnerNoteOwner[] = [];
+  const cardNotes: LearnerNoteOwner[] = [];
+
+  for (const [index, block] of document.body.blocks.entries()) {
+    const baseContext = {
+      filePath: document.sourceFile,
+      path: `body.blocks[${index}].notes_it`,
+      range: block.position
+    };
+
+    switch (block.type) {
+      case "termDefinition":
+        if (block.entry.notesIt) {
+          entryNotes.push({
+            context: baseContext,
+            id: block.entry.id,
+            label: block.entry.lemma,
+            note: block.entry.notesIt,
+            ownerType: "entry"
+          });
+        }
+        break;
+      case "grammarDefinition":
+        if (block.entry.notesIt) {
+          entryNotes.push({
+            context: baseContext,
+            id: block.entry.id,
+            label: block.entry.pattern,
+            note: block.entry.notesIt,
+            ownerType: "entry"
+          });
+        }
+        break;
+      case "cardDefinition":
+        if (block.card.notesIt) {
+          cardNotes.push({
+            context: baseContext,
+            id: block.card.id,
+            label: inlineNodesToComparableText(block.card.front.nodes),
+            note: block.card.notesIt,
+            ownerType: "card"
+          });
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  reportSwappedLearnerNotes(entryNotes, issues);
+  reportSwappedLearnerNotes(cardNotes, issues);
+}
+
+function reportSwappedLearnerNotes(
+  owners: LearnerNoteOwner[],
+  issues: ValidationIssue[]
+) {
+  for (let leftIndex = 0; leftIndex < owners.length; leftIndex += 1) {
+    for (
+      let rightIndex = leftIndex + 1;
+      rightIndex < owners.length;
+      rightIndex += 1
+    ) {
+      const left = owners[leftIndex]!;
+      const right = owners[rightIndex]!;
+
+      if (!areLearnerNotesSwapped(left, right)) {
+        continue;
+      }
+
+      reportSwappedLearnerNote(left, right, issues);
+      reportSwappedLearnerNote(right, left, issues);
+    }
+  }
+}
+
+function areLearnerNotesSwapped(
+  left: LearnerNoteOwner,
+  right: LearnerNoteOwner
+) {
+  return (
+    richTextStartsWithLabel(left.note, right.label) &&
+    richTextStartsWithLabel(right.note, left.label) &&
+    !richTextStartsWithLabel(left.note, left.label) &&
+    !richTextStartsWithLabel(right.note, right.label)
+  );
+}
+
+function reportSwappedLearnerNote(
+  current: LearnerNoteOwner,
+  matched: LearnerNoteOwner,
+  issues: ValidationIssue[]
+) {
+  issues.push(
+    createIssue({
+      code: "editorial.swapped-notes",
+      category: "schema",
+      message:
+        "Learner-facing notes appear to be swapped with another entry or card in the same cards document.",
+      filePath: current.context.filePath,
+      path: current.context.path,
+      range: current.context.range,
+      hint: "Move notes_it back under the matching entry/card, or rewrite the note so it starts from the current label.",
+      details: {
+        currentId: current.id,
+        currentLabel: current.label,
+        matchedId: matched.id,
+        matchedLabel: matched.label,
+        ownerType: current.ownerType
+      }
+    })
+  );
+}
+
+function richTextStartsWithLabel(fragment: RichTextFragment, label: string) {
+  const normalizedLabel = normalizeComparableJapaneseText(label);
+
+  return (
+    normalizedLabel.length >= 2 &&
+    normalizeComparableJapaneseText(
+      inlineNodesToComparableText(fragment.nodes)
+    ).startsWith(normalizedLabel)
+  );
 }
 
 function validateMarkdownDocument(
@@ -380,6 +518,38 @@ function normalizeEditorialText(value: string) {
 
 function inlineNodesToText(nodes: InlineNode[]): string {
   return nodes.map(inlineNodeToText).join("");
+}
+
+function inlineNodesToComparableText(nodes: InlineNode[]): string {
+  return nodes.map(inlineNodeToComparableText).join("");
+}
+
+function inlineNodeToComparableText(node: InlineNode): string {
+  switch (node.type) {
+    case "text":
+      return node.value;
+    case "furigana":
+      return node.base;
+    case "reference":
+    case "emphasis":
+    case "strong":
+    case "inlineCode":
+    case "link":
+      return inlineNodesToComparableText(node.children);
+    case "break":
+      return " ";
+  }
+}
+
+function normalizeComparableJapaneseText(value: string) {
+  return value
+    .normalize("NFKC")
+    .toLocaleLowerCase("it")
+    .replace(/[\s\u3000]+/gu, "")
+    .replace(
+      /[「」『』【】\[\]（）()｛｝{}・,，、。.!！?？:：;；'"“”‘’`~〜～\-–—_]/gu,
+      ""
+    );
 }
 
 function inlineNodeToText(node: InlineNode): string {

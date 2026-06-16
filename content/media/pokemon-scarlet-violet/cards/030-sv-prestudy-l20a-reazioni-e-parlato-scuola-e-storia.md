@@ -412,8 +412,8 @@ reading: りゆう
 romaji: riyuu
 meaning_it: motivo
 notes_it: >-
-  宝物 è un tesoro personale o qualcosa di prezioso per qualcuno. Rispetto a 宝,
-  mette più peso sul legame affettivo o individuale.
+  理由 è il motivo o la ragione. 理由は何ですか chiede la spiegazione dietro una
+  scelta o un fatto.
 :::
 :::card
 id: card-v285-riyuu-recognition
@@ -435,8 +435,8 @@ reading: たからもの
 romaji: takaramono
 meaning_it: tesoro personale
 notes_it: >-
-  理由 è il motivo o la ragione. 理由は何ですか chiede la spiegazione dietro una
-  scelta o un fatto.
+  宝物 è un tesoro personale o qualcosa di prezioso per qualcuno. Rispetto a 宝,
+  mette più peso sul legame affettivo o individuale.
 :::
 :::card
 id: card-v286-takaramono-recognition

@@ -430,6 +430,105 @@ example_it: >-
     }
   });
 
+  it("rejects glossary notes that are swapped between adjacent entries", async () => {
+    const mediaRoot = await mkdtemp(path.join(tmpdir(), "jcs-swapped-notes-"));
+    const mediaDirectory = path.join(mediaRoot, "swap-demo");
+    const textbookDirectory = path.join(mediaDirectory, "textbook");
+    const cardsDirectory = path.join(mediaDirectory, "cards");
+
+    try {
+      await mkdir(textbookDirectory, { recursive: true });
+      await mkdir(cardsDirectory, { recursive: true });
+      await writeFile(
+        path.join(mediaDirectory, "media.md"),
+        `---
+id: media-swap-demo
+slug: swap-demo
+title: Swap Demo
+media_type: game
+segment_kind: lesson
+language: ja
+base_explanation_language: it
+---
+`
+      );
+      await writeFile(
+        path.join(textbookDirectory, "001-intro.md"),
+        `---
+id: lesson-swap-demo
+media_id: media-swap-demo
+slug: intro
+title: Intro
+order: 1
+---
+
+# Intro
+
+[理由](term:term-riyuu) e [宝物](term:term-takaramono).
+`
+      );
+      await writeFile(
+        path.join(cardsDirectory, "001-core.md"),
+        `---
+id: cards-swap-demo
+media_id: media-swap-demo
+slug: core
+title: Core cards
+order: 1
+---
+
+:::term
+id: term-riyuu
+lemma: 理由
+reading: りゆう
+romaji: riyuu
+meaning_it: motivo
+notes_it: >-
+  宝物 è un tesoro personale o qualcosa di prezioso.
+:::
+
+:::term
+id: term-takaramono
+lemma: 宝物
+reading: たからもの
+romaji: takaramono
+meaning_it: tesoro personale
+notes_it: >-
+  理由 è il motivo o la ragione di una scelta.
+:::
+`
+      );
+
+      const result = await parseMediaDirectory(mediaDirectory);
+      const swappedIssues = result.issues.filter(
+        (issue) => issue.code === "editorial.swapped-notes"
+      );
+
+      expect(result.ok).toBe(false);
+      expect(swappedIssues).toHaveLength(2);
+      expect(swappedIssues).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            path: "body.blocks[0].notes_it",
+            details: expect.objectContaining({
+              currentId: "term-riyuu",
+              matchedId: "term-takaramono"
+            })
+          }),
+          expect.objectContaining({
+            path: "body.blocks[1].notes_it",
+            details: expect.objectContaining({
+              currentId: "term-takaramono",
+              matchedId: "term-riyuu"
+            })
+          })
+        ])
+      );
+    } finally {
+      await rm(mediaRoot, { recursive: true, force: true });
+    }
+  });
+
   it("keeps exact toxic authoring examples out of content instructions", async () => {
     const roots = [
       path.join(repositoryRoot, "content"),
