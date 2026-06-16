@@ -7,7 +7,9 @@ import {
 } from "@/components/ui/audio-preload";
 
 type MockAudioElement = {
+  addEventListener?: ReturnType<typeof vi.fn>;
   currentTime: number;
+  error?: MediaError | null;
   load: ReturnType<typeof vi.fn>;
   pause: ReturnType<typeof vi.fn>;
   play: ReturnType<typeof vi.fn>;
@@ -30,19 +32,20 @@ describe("preloadAudioSources", () => {
     ).not.toThrow();
   });
 
-  it("preloads each source once and ignores blank sources", () => {
-    const load = vi.fn();
+  it("arms the current source without building a pool of media elements", () => {
+    const audioElements: MockAudioElement[] = [];
     const AudioMock = vi.fn(function (
-      this: {
-        load: () => void;
-        preload: string;
-        src: string;
-      },
+      this: MockAudioElement,
       src: string
     ) {
-      this.load = load;
+      this.currentTime = 0;
+      this.load = vi.fn();
+      this.pause = vi.fn();
+      this.play = vi.fn().mockResolvedValue(undefined);
       this.preload = "";
+      this.removeAttribute = vi.fn();
       this.src = src;
+      audioElements.push(this);
     });
     vi.stubGlobal("Audio", AudioMock);
 
@@ -54,16 +57,9 @@ describe("preloadAudioSources", () => {
     ]);
     preloadAudioSources(["/media/a/assets/audio/b.mp3"]);
 
-    expect(AudioMock).toHaveBeenCalledTimes(2);
-    expect(AudioMock).toHaveBeenNthCalledWith(
-      1,
-      "/media/a/assets/audio/a.mp3"
-    );
-    expect(AudioMock).toHaveBeenNthCalledWith(
-      2,
-      "/media/a/assets/audio/b.mp3"
-    );
-    expect(load).toHaveBeenCalledTimes(2);
+    expect(AudioMock).toHaveBeenCalledTimes(1);
+    expect(audioElements[0]?.src).toBe("/media/a/assets/audio/b.mp3");
+    expect(audioElements[0]?.load).toHaveBeenCalledTimes(2);
   });
 
   it("reuses preloaded audio for immediate playback", () => {
@@ -91,7 +87,7 @@ describe("preloadAudioSources", () => {
     expect(audioElements[0]?.play).toHaveBeenCalledTimes(1);
   });
 
-  it("stops the previous autoplayed source before playing another one", () => {
+  it("reuses the current playback element when switching sources", () => {
     const audioElements: MockAudioElement[] = [];
     const AudioMock = vi.fn(function (
       this: MockAudioElement,
@@ -110,14 +106,15 @@ describe("preloadAudioSources", () => {
     playPreloadedAudioSource("/media/a/assets/audio/a.mp3");
     playPreloadedAudioSource("/media/a/assets/audio/b.mp3");
 
+    expect(AudioMock).toHaveBeenCalledTimes(1);
     expect(audioElements[0]?.pause).toHaveBeenCalledTimes(1);
+    expect(audioElements[0]?.src).toBe("/media/a/assets/audio/b.mp3");
     expect(audioElements[0]?.currentTime).toBe(0);
-    expect(audioElements[1]?.pause).not.toHaveBeenCalled();
-    expect(audioElements[1]?.play).toHaveBeenCalledTimes(1);
+    expect(audioElements[0]?.play).toHaveBeenCalledTimes(2);
   });
 
-  it("swallows playback rejections", async () => {
-    const play = vi.fn().mockRejectedValue(new Error("NotAllowedError"));
+  it("recreates a source after rejected playback so Safari can recover", async () => {
+    const audioElements: MockAudioElement[] = [];
     const AudioMock = vi.fn(function (
       this: MockAudioElement,
       src: string
@@ -125,79 +122,127 @@ describe("preloadAudioSources", () => {
       this.currentTime = 0;
       this.load = vi.fn();
       this.pause = vi.fn();
-      this.play = play;
+      this.play =
+        audioElements.length === 0
+          ? vi.fn().mockRejectedValue(new Error("NotAllowedError"))
+          : vi.fn().mockResolvedValue(undefined);
       this.preload = "";
+      this.removeAttribute = vi.fn();
       this.src = src;
+      audioElements.push(this);
     });
     vi.stubGlobal("Audio", AudioMock);
 
     expect(playPreloadedAudioSource("/media/a/assets/audio/a.mp3")).toBe(true);
     await Promise.resolve();
 
-    expect(play).toHaveBeenCalledTimes(1);
+    expect(audioElements[0]?.play).toHaveBeenCalledTimes(1);
+    expect(audioElements[0]?.pause).toHaveBeenCalledTimes(1);
+    expect(audioElements[0]?.removeAttribute).toHaveBeenCalledWith("src");
+
+    expect(playPreloadedAudioSource("/media/a/assets/audio/a.mp3")).toBe(true);
+
+    expect(AudioMock).toHaveBeenCalledTimes(2);
+    expect(audioElements[1]?.play).toHaveBeenCalledTimes(1);
   });
 
-  it("bounds the remembered source set so old URLs can be retried", () => {
-    const load = vi.fn();
+  it("does not keep a rejected synchronous playback element in the current slot", () => {
+    const audioElements: MockAudioElement[] = [];
     const AudioMock = vi.fn(function (
-      this: {
-        load: () => void;
-        preload: string;
-        src: string;
-      },
+      this: MockAudioElement,
       src: string
     ) {
-      this.load = load;
-      this.preload = "";
-      this.src = src;
-    });
-    vi.stubGlobal("Audio", AudioMock);
-
-    preloadAudioSources(
-      Array.from(
-        { length: 129 },
-        (_, index) => `/media/a/assets/audio/${index}.mp3`
-      )
-    );
-    preloadAudioSources(["/media/a/assets/audio/0.mp3"]);
-
-    expect(AudioMock).toHaveBeenCalledTimes(130);
-    expect(AudioMock).toHaveBeenLastCalledWith(
-      "/media/a/assets/audio/0.mp3"
-    );
-  });
-
-  it("keeps the active audio cache near the review prefetch horizon", () => {
-    const AudioMock = vi.fn(function (
-      this: {
-        load: () => void;
-        preload: string;
-        src: string;
-      },
-      src: string
-    ) {
+      this.currentTime = 0;
       this.load = vi.fn();
+      this.pause = vi.fn();
+      this.play =
+        audioElements.length === 0
+          ? vi.fn(() => {
+              throw new Error("MediaError");
+            })
+          : vi.fn().mockResolvedValue(undefined);
       this.preload = "";
+      this.removeAttribute = vi.fn();
       this.src = src;
+      audioElements.push(this);
     });
     vi.stubGlobal("Audio", AudioMock);
 
-    playPreloadedAudioSource("/media/a/assets/audio/0.mp3");
-    preloadAudioSources(
-      Array.from(
-        { length: 24 },
-        (_, index) => `/media/a/assets/audio/${index + 1}.mp3`
-      )
-    );
-    preloadAudioSources(["/media/a/assets/audio/0.mp3"]);
+    expect(playPreloadedAudioSource("/media/a/assets/audio/a.mp3")).toBe(false);
+    expect(audioElements[0]?.removeAttribute).toHaveBeenCalledWith("src");
 
-    expect(AudioMock).toHaveBeenCalledTimes(26);
-    expect(AudioMock).toHaveBeenLastCalledWith(
-      "/media/a/assets/audio/0.mp3"
-    );
+    expect(playPreloadedAudioSource("/media/a/assets/audio/a.mp3")).toBe(true);
+
+    expect(AudioMock).toHaveBeenCalledTimes(2);
+    expect(audioElements[1]?.play).toHaveBeenCalledTimes(1);
   });
 
-  it("releases evicted audio elements so long review sessions do not keep stale media alive", () => {
+  it("releases an idle errored current slot before reveal playback", () => {
+    const audioElements: MockAudioElement[] = [];
+    const listeners: { error?: () => void } = {};
+    const AudioMock = vi.fn(function (
+      this: MockAudioElement,
+      src: string
+    ) {
+      this.addEventListener = vi.fn(
+        (eventName: string, handler: EventListenerOrEventListenerObject) => {
+          if (eventName === "error" && typeof handler === "function") {
+            listeners.error = handler as () => void;
+          }
+        }
+      );
+      this.currentTime = 0;
+      this.error = null;
+      this.load = vi.fn();
+      this.pause = vi.fn();
+      this.play = vi.fn().mockResolvedValue(undefined);
+      this.preload = "";
+      this.removeAttribute = vi.fn();
+      this.src = src;
+      audioElements.push(this);
+    });
+    vi.stubGlobal("Audio", AudioMock);
+
+    preloadAudioSources(["/media/a/assets/audio/a.mp3"], { role: "current" });
+    audioElements[0]!.error = { code: 3 } as MediaError;
+    listeners.error?.();
+
+    expect(audioElements[0]?.pause).toHaveBeenCalledTimes(1);
+    expect(audioElements[0]?.removeAttribute).toHaveBeenCalledWith("src");
+
+    expect(playPreloadedAudioSource("/media/a/assets/audio/a.mp3")).toBe(true);
+
+    expect(AudioMock).toHaveBeenCalledTimes(2);
+    expect(audioElements[1]?.play).toHaveBeenCalledTimes(1);
+  });
+
+  it("keeps media elements bounded across a 100-card review session", () => {
+    const audioElements: MockAudioElement[] = [];
+    const AudioMock = vi.fn(function (
+      this: MockAudioElement,
+      src: string
+    ) {
+      this.currentTime = 0;
+      this.load = vi.fn();
+      this.pause = vi.fn();
+      this.play = vi.fn().mockResolvedValue(undefined);
+      this.preload = "";
+      this.removeAttribute = vi.fn();
+      this.src = src;
+      audioElements.push(this);
+    });
+    vi.stubGlobal("Audio", AudioMock);
+
+    for (let index = 0; index < 100; index += 1) {
+      preloadAudioSources([`/media/a/assets/audio/${index}.mp3`]);
+    }
+
+    expect(AudioMock).toHaveBeenCalledTimes(1);
+    expect(audioElements[0]?.src).toBe("/media/a/assets/audio/99.mp3");
+    expect(audioElements[0]?.load).toHaveBeenCalledTimes(100);
+  });
+
+  it("keeps next-card warming from replacing the current card audio", () => {
     const audioElements: MockAudioElement[] = [];
     const AudioMock = vi.fn(function (
       this: MockAudioElement,
@@ -214,20 +259,79 @@ describe("preloadAudioSources", () => {
     });
     vi.stubGlobal("Audio", AudioMock);
 
-    playPreloadedAudioSource("/media/a/assets/audio/0.mp3");
-    preloadAudioSources(
-      Array.from(
-        { length: 128 },
-        (_, index) => `/media/a/assets/audio/${index + 1}.mp3`
-      )
+    preloadAudioSources(["/media/a/assets/audio/current.mp3"], {
+      role: "current"
+    });
+    preloadAudioSources(["/media/a/assets/audio/next.mp3"], { role: "next" });
+
+    expect(AudioMock).toHaveBeenCalledTimes(2);
+
+    expect(playPreloadedAudioSource("/media/a/assets/audio/current.mp3")).toBe(
+      true
     );
+
+    expect(audioElements[0]?.src).toBe("/media/a/assets/audio/current.mp3");
+    expect(audioElements[0]?.play).toHaveBeenCalledTimes(1);
+    expect(audioElements[1]?.src).toBe("/media/a/assets/audio/next.mp3");
+    expect(audioElements[1]?.play).not.toHaveBeenCalled();
+  });
+
+  it("promotes warmed next-card audio for immediate playback", () => {
+    const audioElements: MockAudioElement[] = [];
+    const AudioMock = vi.fn(function (
+      this: MockAudioElement,
+      src: string
+    ) {
+      this.currentTime = 0.75;
+      this.load = vi.fn();
+      this.pause = vi.fn();
+      this.play = vi.fn().mockResolvedValue(undefined);
+      this.preload = "";
+      this.removeAttribute = vi.fn();
+      this.src = src;
+      audioElements.push(this);
+    });
+    vi.stubGlobal("Audio", AudioMock);
+
+    preloadAudioSources(["/media/a/assets/audio/current.mp3"], {
+      role: "current"
+    });
+    preloadAudioSources(["/media/a/assets/audio/next.mp3"], { role: "next" });
+
+    expect(playPreloadedAudioSource("/media/a/assets/audio/next.mp3")).toBe(true);
+
+    expect(AudioMock).toHaveBeenCalledTimes(2);
+    expect(audioElements[1]?.play).toHaveBeenCalledTimes(1);
+    expect(audioElements[1]?.currentTime).toBe(0);
+  });
+
+  it("releases all hot audio slots on reset", () => {
+    const audioElements: MockAudioElement[] = [];
+    const AudioMock = vi.fn(function (
+      this: MockAudioElement,
+      src: string
+    ) {
+      this.currentTime = 1.25;
+      this.load = vi.fn();
+      this.pause = vi.fn();
+      this.play = vi.fn().mockResolvedValue(undefined);
+      this.preload = "";
+      this.removeAttribute = vi.fn();
+      this.src = src;
+      audioElements.push(this);
+    });
+    vi.stubGlobal("Audio", AudioMock);
+
+    preloadAudioSources(["/media/a/assets/audio/current.mp3"], {
+      role: "current"
+    });
+    preloadAudioSources(["/media/a/assets/audio/next.mp3"], { role: "next" });
+
+    resetAudioPreloadCacheForTests();
 
     expect(audioElements[0]?.pause).toHaveBeenCalledTimes(1);
     expect(audioElements[0]?.removeAttribute).toHaveBeenCalledWith("src");
-    expect(audioElements[0]?.load).toHaveBeenCalledTimes(2);
-
-    playPreloadedAudioSource("/media/a/assets/audio/129.mp3");
-
-    expect(audioElements[0]?.pause).toHaveBeenCalledTimes(1);
+    expect(audioElements[1]?.pause).toHaveBeenCalledTimes(1);
+    expect(audioElements[1]?.removeAttribute).toHaveBeenCalledWith("src");
   });
 });

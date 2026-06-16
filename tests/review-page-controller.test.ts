@@ -493,6 +493,11 @@ describe("useReviewPageController first-candidate grading", () => {
       await Promise.resolve();
     });
 
+    expect(mocks.preloadAudioSources).toHaveBeenCalledWith(
+      ["/media/duel-masters-dm25/assets/audio/card-a.mp3"],
+      { role: "current" }
+    );
+
     const controller = () => {
       if (!latestController) {
         throw new Error("controller not mounted");
@@ -641,6 +646,11 @@ describe("useReviewPageController first-candidate grading", () => {
       );
       await Promise.resolve();
     });
+
+    expect(mocks.preloadAudioSources).toHaveBeenCalledWith(
+      ["/media/duel-masters-dm25/assets/audio/card-a.mp3"],
+      { role: "current" }
+    );
 
     const controller = () => {
       if (!latestController) {

@@ -84,9 +84,10 @@ describe("useReviewQueuedCardPrefetch", () => {
     });
 
     expect(prefetchedCardIds()).toEqual(["card-c"]);
-    expect(mocks.preloadAudioSources).toHaveBeenCalledWith([
-      "/media/duel-masters-dm25/assets/audio/card-b.mp3"
-    ]);
+    expect(mocks.preloadAudioSources).toHaveBeenCalledWith(
+      ["/media/duel-masters-dm25/assets/audio/card-b.mp3"],
+      { role: "next" }
+    );
   });
 
   it("preloads audio from newly accepted prefetched cards", async () => {
@@ -111,9 +112,10 @@ describe("useReviewQueuedCardPrefetch", () => {
     });
 
     expect(controller().getPrefetchedCards().has("card-b")).toBe(true);
-    expect(mocks.preloadAudioSources).toHaveBeenCalledWith([
-      "/media/duel-masters-dm25/assets/audio/card-b.mp3"
-    ]);
+    expect(mocks.preloadAudioSources).toHaveBeenCalledWith(
+      ["/media/duel-masters-dm25/assets/audio/card-b.mp3"],
+      { role: "next" }
+    );
   });
 
   it("does not refetch cards that are already buffered or already in flight", async () => {

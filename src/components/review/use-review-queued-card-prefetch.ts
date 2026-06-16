@@ -75,7 +75,7 @@ export function useReviewQueuedCardPrefetch({
       return;
     }
 
-    preloadAudioSources(serverAdvanceAudioSources);
+    preloadAudioSources(serverAdvanceAudioSources, { role: "next" });
   }, [serverAdvanceCards]);
 
   useEffect(() => {
@@ -112,7 +112,11 @@ export function useReviewQueuedCardPrefetch({
           }
 
           prefetchBufferRef.current.set(cardId, card);
-          preloadAudioSources(collectReviewCardAudioSources([card]));
+
+          const cardAudioSources = collectReviewCardAudioSources([card]);
+          if (cardAudioSources.length > 0) {
+            preloadAudioSources(cardAudioSources, { role: "next" });
+          }
         })
         .catch((error) => {
           console.error(error);

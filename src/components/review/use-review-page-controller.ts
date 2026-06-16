@@ -217,12 +217,14 @@ export function useReviewPageController(input: {
   });
 
   useEffect(() => {
-    if (!selectedCard) {
+    if (!selectedCard || !viewData.settings.reviewAutoplayAudioOnReveal) {
       return;
     }
 
-    preloadAudioSources(collectReviewCardAudioSources([selectedCard]));
-  }, [selectedCard]);
+    preloadAudioSources(collectReviewCardAudioSources([selectedCard]), {
+      role: "current"
+    });
+  }, [selectedCard, viewData.settings.reviewAutoplayAudioOnReveal]);
 
   useReviewPageDataSync({
     currentSearchParams,
