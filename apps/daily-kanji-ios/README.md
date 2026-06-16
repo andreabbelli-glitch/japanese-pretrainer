@@ -35,8 +35,9 @@ La schermata principale dell'app ha selettori locali per media e modalita':
 `Daily` usa il ranking globale Hard/Again/low-stability, `Prestudy` mostra le
 card della prossima lesson non completata del media selezionato, `Last 3` mostra
 le card valutate Hard/Again nelle ultime 3 lesson completate di quel media. Il
-cambio di modalita/media viene salvato nell'App Group e ricarica subito le
-timeline WidgetKit, cosi i widget usano lo stesso scope scelto nell'app.
+cambio di modalita/media resta in bozza finche l'utente non preme `Applica`;
+solo allora viene salvato nell'App Group e ricarica subito le timeline WidgetKit,
+cosi i widget usano lo stesso scope confermato nell'app.
 
 ## Obiettivo v1
 

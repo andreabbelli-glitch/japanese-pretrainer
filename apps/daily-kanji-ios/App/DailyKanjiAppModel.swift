@@ -16,6 +16,8 @@ final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var selectedHistoryContext: DailyKanjiPresentationHistoryItem?
     @Published private(set) var selectedMediaSlug: String?
     @Published private(set) var selectedStudyMode: DailyKanjiStudyMode = .daily
+    @Published private(set) var draftMediaSlug: String?
+    @Published private(set) var draftStudyMode: DailyKanjiStudyMode = .daily
     @Published private(set) var recentHistory: [DailyKanjiPresentationHistoryItem] = []
     @Published private(set) var syncState: DailyKanjiSyncState
 
@@ -61,6 +63,7 @@ final class DailyKanjiAppModel: ObservableObject {
             source: resolvedRepository.loadDatasetSource()
         )
         restoreSavedScope()
+        resetStudyScopeDraft()
         persistCurrentScope()
         prepareInitialSelection(now: now)
     }
@@ -87,6 +90,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.reloadTimelines = reloadTimelines
         self.syncState = Self.initialSyncState(syncer: syncer, source: .sample)
         restoreSavedScope()
+        resetStudyScopeDraft()
         persistCurrentScope()
         prepareInitialSelection(now: now)
     }
@@ -105,6 +109,14 @@ final class DailyKanjiAppModel: ObservableObject {
 
     var scopedCardCount: Int {
         cardsForCurrentScope().count
+    }
+
+    var draftScopedCardCount: Int {
+        cardsForScope(mediaSlug: draftMediaSlug, studyMode: draftStudyMode).count
+    }
+
+    var hasStudyScopeDraftChanges: Bool {
+        selectedStudyMode != draftStudyMode || selectedMediaSlug != draftMediaSlug
     }
 
     func activate(now: Date = .now) {
@@ -186,6 +198,7 @@ final class DailyKanjiAppModel: ObservableObject {
             pendingPreparedSelectionCardId = nil
             transientInitialActivationEvent = nil
             normalizeSelectedMediaForCurrentMode()
+            resetStudyScopeDraft()
             persistCurrentScope()
             prepareInitialSelection(now: now)
             syncState = .idle(source: currentDatasetSource())
@@ -214,32 +227,43 @@ final class DailyKanjiAppModel: ObservableObject {
         select(card: card, shownAt: now, context: item)
     }
 
-    func setStudyMode(_ mode: DailyKanjiStudyMode, now: Date = .now) {
-        guard selectedStudyMode != mode else {
+    func setDraftStudyMode(_ mode: DailyKanjiStudyMode) {
+        guard draftStudyMode != mode else {
             return
         }
 
-        selectedStudyMode = mode
+        draftStudyMode = mode
+        normalizeDraftMediaForCurrentMode(preferCurrentModeMatch: true)
+    }
+
+    func setDraftSelectedMediaSlug(_ mediaSlug: String?) {
+        guard draftMediaSlug != mediaSlug else {
+            return
+        }
+
+        draftMediaSlug = mediaSlug
+        normalizeDraftMediaForCurrentMode(preferCurrentModeMatch: false)
+    }
+
+    func applyStudyScope(now: Date = .now) {
+        normalizeDraftMediaForCurrentMode(preferCurrentModeMatch: false)
+        guard hasStudyScopeDraftChanges else {
+            return
+        }
+
+        selectedStudyMode = draftStudyMode
+        selectedMediaSlug = draftMediaSlug
         pendingPreparedSelectionCardId = nil
         transientInitialActivationEvent = nil
-        normalizeSelectedMediaForCurrentMode(preferCurrentModeMatch: true)
         persistCurrentScope()
         prepareInitialSelection(now: now)
         reloadTimelines()
     }
 
-    func setSelectedMediaSlug(_ mediaSlug: String?, now: Date = .now) {
-        guard selectedMediaSlug != mediaSlug else {
-            return
-        }
-
-        selectedMediaSlug = mediaSlug
-        pendingPreparedSelectionCardId = nil
-        transientInitialActivationEvent = nil
-        normalizeSelectedMediaForCurrentMode(preferCurrentModeMatch: false)
-        persistCurrentScope()
-        prepareInitialSelection(now: now)
-        reloadTimelines()
+    func resetStudyScopeDraft() {
+        draftStudyMode = selectedStudyMode
+        draftMediaSlug = selectedMediaSlug
+        normalizeDraftMediaForCurrentMode(preferCurrentModeMatch: false)
     }
 
     func openDeepLink(_ url: URL, now: Date = .now) {
@@ -401,37 +425,69 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     private func cardsForCurrentScope() -> [DailyKanjiCard] {
+        cardsForScope(mediaSlug: selectedMediaSlug, studyMode: selectedStudyMode)
+    }
+
+    private func cardsForScope(
+        mediaSlug: String?,
+        studyMode: DailyKanjiStudyMode
+    ) -> [DailyKanjiCard] {
         DailyKanjiSelector.scopedCards(
             cards,
-            mediaSlug: selectedMediaSlug,
-            studyMode: selectedStudyMode
+            mediaSlug: mediaSlug,
+            studyMode: studyMode
         )
     }
 
     private func normalizeSelectedMediaForCurrentMode(
         preferCurrentModeMatch: Bool = false
     ) {
-        let pickerOptions = mediaPickerOptions
-        let modeOptions = availableMediaForCurrentMode
+        selectedMediaSlug = normalizedMediaSlug(
+            selectedMediaSlug,
+            for: selectedStudyMode,
+            preferCurrentModeMatch: preferCurrentModeMatch
+        )
+    }
 
-        if selectedStudyMode == .daily && selectedMediaSlug == nil {
-            return
+    private func normalizeDraftMediaForCurrentMode(
+        preferCurrentModeMatch: Bool = false
+    ) {
+        draftMediaSlug = normalizedMediaSlug(
+            draftMediaSlug,
+            for: draftStudyMode,
+            preferCurrentModeMatch: preferCurrentModeMatch
+        )
+    }
+
+    private func normalizedMediaSlug(
+        _ mediaSlug: String?,
+        for studyMode: DailyKanjiStudyMode,
+        preferCurrentModeMatch: Bool
+    ) -> String? {
+        let pickerOptions = mediaPickerOptions
+        let modeOptions = DailyKanjiSelector.mediaOptions(
+            cards: cards,
+            studyMode: studyMode
+        )
+
+        if studyMode == .daily && mediaSlug == nil {
+            return nil
         }
 
-        if let selectedMediaSlug,
-           pickerOptions.contains(where: { $0.slug == selectedMediaSlug }) {
+        if let mediaSlug,
+           pickerOptions.contains(where: { $0.slug == mediaSlug }) {
             let selectedHasCurrentModeCards = modeOptions.contains {
-                $0.slug == selectedMediaSlug
+                $0.slug == mediaSlug
             }
 
             if !preferCurrentModeMatch
                 || selectedHasCurrentModeCards
                 || modeOptions.isEmpty {
-                return
+                return mediaSlug
             }
         }
 
-        selectedMediaSlug = modeOptions.first?.slug ?? pickerOptions.first?.slug
+        return modeOptions.first?.slug ?? pickerOptions.first?.slug
     }
 
     private func restoreSavedScope() {

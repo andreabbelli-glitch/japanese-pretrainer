@@ -563,35 +563,41 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(model.availableMedia.map(\.slug), ["media-one", "media-two"])
         XCTAssertEqual(model.mediaPickerOptions.map(\.slug), ["media-one", "media-two"])
 
-        model.setStudyMode(.prestudy)
+        model.setDraftStudyMode(.prestudy)
+        model.applyStudyScope(now: now)
         XCTAssertEqual(model.selectedMediaSlug, "media-one")
         XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
 
-        model.setSelectedMediaSlug("media-two")
+        model.setDraftSelectedMediaSlug("media-two")
+        model.applyStudyScope(now: now)
         XCTAssertEqual(model.mediaPickerOptions.map(\.slug), ["media-one", "media-two"])
         XCTAssertEqual(model.selectedMediaSlug, "media-two")
         XCTAssertEqual(model.scopedCardCount, 0)
         XCTAssertNil(model.selectedCard)
 
-        model.setSelectedMediaSlug("media-one")
+        model.setDraftSelectedMediaSlug("media-one")
+        model.applyStudyScope(now: now)
         XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
 
-        model.setStudyMode(.lastLessonsHardAgain)
+        model.setDraftStudyMode(.lastLessonsHardAgain)
+        model.applyStudyScope(now: now)
         XCTAssertEqual(model.selectedMediaSlug, "media-one")
         XCTAssertEqual(model.selectedCard?.cardId, "last-one")
 
-        model.setSelectedMediaSlug("media-two")
+        model.setDraftSelectedMediaSlug("media-two")
+        model.applyStudyScope(now: now)
         XCTAssertEqual(model.selectedStudyMode, .lastLessonsHardAgain)
         XCTAssertEqual(model.selectedCard?.cardId, "last-two")
 
-        model.setStudyMode(.daily)
-        model.setSelectedMediaSlug(nil)
+        model.setDraftStudyMode(.daily)
+        model.setDraftSelectedMediaSlug(nil)
+        model.applyStudyScope(now: now)
         XCTAssertNil(model.selectedMediaSlug)
         XCTAssertEqual(model.selectedCard?.cardId, "daily-global")
     }
 
     @MainActor
-    func testStudyScopeChangesPersistAndReloadWidgetTimelines() throws {
+    func testStudyScopeChangesWaitForExplicitApplyBeforeReloadingWidgets() throws {
         let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
         let defaultsName = "DailyKanjiScope-\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: defaultsName)!
@@ -607,7 +613,40 @@ final class DailyKanjiCoreTests: XCTestCase {
             now: now
         )
 
-        model.setStudyMode(.prestudy)
+        model.setDraftStudyMode(.prestudy)
+
+        XCTAssertEqual(model.selectedStudyMode, .daily)
+        XCTAssertNil(model.selectedMediaSlug)
+        XCTAssertEqual(scopeStore.load(), DailyKanjiStudyScope(studyMode: .daily, mediaSlug: nil))
+        XCTAssertEqual(reloadCount, 0)
+
+        model.setDraftSelectedMediaSlug("media-two")
+
+        XCTAssertEqual(model.selectedStudyMode, .daily)
+        XCTAssertNil(model.selectedMediaSlug)
+        XCTAssertEqual(scopeStore.load(), DailyKanjiStudyScope(studyMode: .daily, mediaSlug: nil))
+        XCTAssertEqual(reloadCount, 0)
+    }
+
+    @MainActor
+    func testApplyingStudyScopePersistsAndReloadsWidgetTimelines() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
+        let defaultsName = "DailyKanjiScope-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let scopeStore = DailyKanjiStudyScopeStore(defaults: defaults)
+        var reloadCount = 0
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            scopeStore: scopeStore,
+            reloadTimelines: { reloadCount += 1 },
+            now: now
+        )
+
+        model.setDraftStudyMode(.prestudy)
+        model.applyStudyScope(now: now)
 
         XCTAssertEqual(
             scopeStore.load(),
@@ -615,7 +654,8 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
         XCTAssertEqual(reloadCount, 1)
 
-        model.setSelectedMediaSlug("media-two")
+        model.setDraftSelectedMediaSlug("media-two")
+        model.applyStudyScope(now: now)
 
         XCTAssertEqual(
             scopeStore.load(),

@@ -77,8 +77,8 @@ struct ContentView: View {
             Picker(
                 "Modalità",
                 selection: Binding(
-                    get: { model.selectedStudyMode },
-                    set: { model.setStudyMode($0) }
+                    get: { model.draftStudyMode },
+                    set: { model.setDraftStudyMode($0) }
                 )
             ) {
                 ForEach(DailyKanjiStudyMode.allCases) { mode in
@@ -91,11 +91,11 @@ struct ContentView: View {
                 Picker(
                     "Media",
                     selection: Binding<String?>(
-                        get: { model.selectedMediaSlug },
-                        set: { model.setSelectedMediaSlug($0) }
+                        get: { model.draftMediaSlug },
+                        set: { model.setDraftSelectedMediaSlug($0) }
                     )
                 ) {
-                    if model.selectedStudyMode == .daily {
+                    if model.draftStudyMode == .daily {
                         Text("All media").tag(String?.none)
                     }
 
@@ -107,9 +107,28 @@ struct ContentView: View {
 
                 Spacer(minLength: 0)
 
-                Text("\(model.scopedCardCount) card")
+                Text("\(model.draftScopedCardCount) card")
                     .font(.caption.weight(.medium))
                     .foregroundStyle(.secondary)
+            }
+
+            HStack(spacing: 10) {
+                if model.hasStudyScopeDraftChanges {
+                    Button {
+                        model.resetStudyScopeDraft()
+                    } label: {
+                        Label("Annulla", systemImage: "xmark")
+                    }
+                    .buttonStyle(.bordered)
+                }
+
+                Button {
+                    model.applyStudyScope()
+                } label: {
+                    Label("Applica", systemImage: "checkmark")
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(!model.hasStudyScopeDraftChanges)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
