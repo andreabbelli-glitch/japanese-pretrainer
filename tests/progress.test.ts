@@ -185,7 +185,7 @@ describe("progress, settings, and study controls", () => {
     previewEntriesSpy.mockRestore();
   });
 
-  it("recommends review when the queue has only new cards", async () => {
+  it("opens the textbook index when completed media has no review queue", async () => {
     await database
       .update(reviewSubjectState)
       .set({
@@ -230,9 +230,15 @@ describe("progress, settings, and study controls", () => {
     expect(data?.review.dueCount).toBe(0);
     expect(data?.review.queueCount).toBe(0);
     expect(data?.review.newQueuedCount).toBe(0);
+    expect(data?.resume.resumeLesson).toBeNull();
     expect(data?.resume.recommendedArea).toBe("textbook");
     expect(data?.resume.recommendedHref).toBe(
-      `/media/${developmentFixture.mediaSlug}/textbook/core-vocab`
+      `/media/${developmentFixture.mediaSlug}/textbook`
+    );
+    expect(data?.resume.recommendedLabel).toBe("Apri Textbook");
+    expect(data?.resume.recommendedTitle).toBe("Percorso completato");
+    expect(data?.resume.recommendedBody).toBe(
+      "Hai completato tutte le lesson: apri il Textbook per rileggere dall'inizio."
     );
   });
 

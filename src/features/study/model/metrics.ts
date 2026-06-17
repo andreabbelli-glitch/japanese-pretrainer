@@ -201,7 +201,7 @@ export function buildLessonMetrics(lessons: LessonMetricsListItem[]) {
   }
 
   const activeLesson = mapLessonTarget(activeLessonRaw);
-  const nextLesson = mapLessonTarget(nextLessonRaw ?? lessons.at(0) ?? null);
+  const nextLesson = mapLessonTarget(nextLessonRaw);
 
   return {
     activeLesson,

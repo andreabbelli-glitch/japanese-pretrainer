@@ -28,13 +28,69 @@ describe("dashboard home", () => {
     expect(markup).toContain("Media Fixture");
     expect(markup).toContain('href="/media/media-fixture/textbook/seconda"');
   });
+
+  it("opens the textbook index without continue copy when completed media has no resume lesson", () => {
+    const markup = renderToStaticMarkup(
+      DashboardHome({ data: buildDashboardData() })
+    );
+
+    expect(markup).toContain(
+      '<a class="button button--primary" href="/media/media-fixture/textbook">Apri Textbook</a>'
+    );
+    expect(markup).toContain(
+      "Percorso completato. Apri il Textbook per rileggere dall&#x27;inizio."
+    );
+  });
+
+  it("keeps the primary continue CTA for incomplete media with a resume lesson", () => {
+    const markup = renderToStaticMarkup(
+      DashboardHome({
+        data: buildDashboardData({
+          focusMedia: buildMediaSnapshot({
+            lessonsCompleted: 1,
+            lessonsTotal: 2,
+            nextLesson: {
+              slug: "seconda",
+              title: "Seconda Lesson",
+              summary: "Seconda",
+              excerpt: "Seconda",
+              status: "not_started" as const,
+              statusLabel: "Da iniziare",
+              segmentTitle: "Percorso principale"
+            },
+            resumeLesson: {
+              slug: "seconda",
+              title: "Seconda Lesson",
+              summary: "Seconda",
+              excerpt: "Seconda",
+              status: "not_started" as const,
+              statusLabel: "Da iniziare",
+              segmentTitle: "Percorso principale"
+            },
+            textbookProgressPercent: 50
+          })
+        })
+      })
+    );
+
+    expect(markup).toContain(
+      '<a class="button button--primary" href="/media/media-fixture/textbook/seconda">Continua il percorso</a>'
+    );
+    expect(markup).toContain("Prossimo passo: Seconda Lesson");
+  });
 });
 
-function buildDashboardData(): DashboardData {
+function buildDashboardData(
+  overrides: Partial<Pick<DashboardData, "focusMedia" | "reviewMedia" | "media">> = {}
+): DashboardData {
+  const focusMedia = overrides.focusMedia ?? buildMediaSnapshot();
+  const reviewMedia = overrides.reviewMedia ?? buildMediaSnapshot();
+  const media = overrides.media ?? [focusMedia];
+
   return {
-    focusMedia: buildMediaSnapshot(),
-    reviewMedia: buildMediaSnapshot(),
-    media: [buildMediaSnapshot()],
+    focusMedia,
+    reviewMedia,
+    media,
     review: {
       activeReviewCards: 0,
       cardsDue: 0,
@@ -73,7 +129,9 @@ function buildDashboardData(): DashboardData {
   };
 }
 
-function buildMediaSnapshot() {
+function buildMediaSnapshot(
+  overrides: Partial<NonNullable<DashboardData["focusMedia"]>> = {}
+): NonNullable<DashboardData["focusMedia"]> {
   return {
     id: "media_fixture",
     slug: "media-fixture",
@@ -98,24 +156,8 @@ function buildMediaSnapshot() {
     inProgressLessons: 0,
     activeLesson: null,
     lastOpenedLesson: null,
-    resumeLesson: {
-      slug: "intro",
-      title: "Intro",
-      summary: "Intro",
-      excerpt: "Intro",
-      status: "completed" as const,
-      statusLabel: "Completata",
-      segmentTitle: "Percorso principale"
-    },
-    nextLesson: {
-      slug: "intro",
-      title: "Intro",
-      summary: "Intro",
-      excerpt: "Intro",
-      status: "completed" as const,
-      statusLabel: "Completata",
-      segmentTitle: "Percorso principale"
-    },
+    resumeLesson: null,
+    nextLesson: null,
     segments: [],
     previewEntries: [],
     glossary: {
@@ -130,6 +172,7 @@ function buildMediaSnapshot() {
       entriesTotal: 2,
       previewEntries: [],
       progressPercent: 100
-    }
+    },
+    ...overrides
   };
 }

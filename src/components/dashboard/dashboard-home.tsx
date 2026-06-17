@@ -42,6 +42,9 @@ export function DashboardHome({ data }: DashboardHomeProps) {
   const focusResumeHref = focusMedia.resumeLesson
     ? mediaTextbookLessonHref(focusMedia.slug, focusMedia.resumeLesson.slug)
     : mediaStudyHref(focusMedia.slug, "textbook");
+  const focusResumeLabel = focusMedia.resumeLesson
+    ? "Continua il percorso"
+    : "Apri Textbook";
   const reviewPriorityNote = reviewMedia
     ? `Piu urgente: ${reviewMedia.title}.`
     : "La queue globale si popolera con le prime card.";
@@ -61,12 +64,15 @@ export function DashboardHome({ data }: DashboardHomeProps) {
           <p className="dashboard-hero__resume">
             {focusMedia.resumeLesson
               ? `Prossimo passo: ${focusMedia.resumeLesson.title}`
-              : "Apri il media e scegli il primo passo di studio."}
+              : focusMedia.lessonsTotal > 0 &&
+                  focusMedia.lessonsCompleted >= focusMedia.lessonsTotal
+                ? "Percorso completato. Apri il Textbook per rileggere dall'inizio."
+                : "Apri il media e scegli il primo passo di studio."}
           </p>
 
           <div className="hero-actions">
             <Link className="button button--primary" href={focusResumeHref}>
-              Continua il percorso
+              {focusResumeLabel}
             </Link>
             <Link
               className="button button--ghost"

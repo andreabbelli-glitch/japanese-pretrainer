@@ -198,6 +198,8 @@ function buildMediaProgressPageData(
   );
   const resume = buildResumeModel({
     globalReview,
+    lessonsCompleted: sharedMedia.lessonsCompleted,
+    lessonsTotal: sharedMedia.lessonsTotal,
     resumeLesson: sharedMedia.resumeLesson,
     mediaSlug: sharedMedia.slug,
     nextLesson: sharedMedia.nextLesson
@@ -266,6 +268,8 @@ function buildMediaProgressPageData(
 
 function buildResumeModel(input: {
   globalReview: ProgressPageData["globalReview"];
+  lessonsCompleted: number;
+  lessonsTotal: number;
   resumeLesson: LessonResumeTarget | null;
   mediaSlug: string;
   nextLesson: LessonResumeTarget | null;
@@ -302,6 +306,17 @@ function buildResumeModel(input: {
       recommendedHref: mediaTextbookLessonHref(input.mediaSlug, lesson.slug),
       recommendedLabel: "Continua il percorso",
       recommendedTitle: lesson.title
+    };
+  }
+
+  if (input.lessonsTotal > 0 && input.lessonsCompleted >= input.lessonsTotal) {
+    return {
+      recommendedArea: "textbook" as const,
+      recommendedBody:
+        "Hai completato tutte le lesson: apri il Textbook per rileggere dall'inizio.",
+      recommendedHref: mediaStudyHref(input.mediaSlug, "textbook"),
+      recommendedLabel: "Apri Textbook",
+      recommendedTitle: "Percorso completato"
     };
   }
 
