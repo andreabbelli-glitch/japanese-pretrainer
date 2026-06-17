@@ -1158,12 +1158,24 @@ final class DailyKanjiCoreTests: XCTestCase {
 
     func testLockScreenReadingWidgetTranslationUsesWhiteForeground() throws {
         let source = try Self.widgetSourceFileContents()
-        guard let textStart = source.range(of: "Text(card.lockScreenTranslationText)") else {
+        guard let viewStart = source.range(of: "private struct DailyKanjiLockScreenReadingView") else {
+            XCTFail("Could not find the lock screen reading widget view.")
+            return
+        }
+
+        let viewSource = source[viewStart.lowerBound...]
+        guard let viewEnd = viewSource.range(of: "\nprivate struct DailyKanjiPitchAccentReadingView") else {
+            XCTFail("Could not isolate the lock screen reading widget view.")
+            return
+        }
+
+        let viewBlock = String(viewSource[..<viewEnd.lowerBound])
+        guard let textStart = viewBlock.range(of: "Text(card.lockScreenTranslationText)") else {
             XCTFail("Could not find the lock screen translation text view.")
             return
         }
 
-        let textBlockSource = source[textStart.lowerBound...]
+        let textBlockSource = viewBlock[textStart.lowerBound...]
         guard let textBlockEnd = textBlockSource.range(
             of: "\n        }\n        .frame(maxWidth: .infinity"
         ) else {
@@ -1343,6 +1355,56 @@ final class DailyKanjiCoreTests: XCTestCase {
             card.homeWidgetExplanationText,
             "This note is intentionally long and contains enough detail to overflow a lock screen widget but still fit a medium home widget."
         )
+    }
+
+    func testHomeWidgetForegroundsUseSemanticSystemColors() throws {
+        let source = try Self.widgetSourceFileContents()
+        guard let mediumStart = source.range(of: "private struct DailyKanjiHomeMediumWidgetView") else {
+            XCTFail("Could not find the dedicated medium home widget view.")
+            return
+        }
+
+        let mediumSource = source[mediumStart.lowerBound...]
+        guard let mediumEnd = mediumSource.range(of: "\nprivate struct DailyKanjiHomeSmallWidgetView") else {
+            XCTFail("Could not isolate the medium home widget view.")
+            return
+        }
+
+        let mediumBlock = String(mediumSource[..<mediumEnd.lowerBound])
+        XCTAssertFalse(mediumBlock.contains(".foregroundStyle(.white"))
+        XCTAssertTrue(mediumBlock.contains(".foregroundStyle(.primary)"))
+        XCTAssertTrue(mediumBlock.contains(".foregroundStyle(.secondary)"))
+
+        guard
+            let mediumPitchStart = mediumBlock.range(of: "DailyKanjiPitchAccentReadingView("),
+            let mediumPitchEnd = mediumBlock[mediumPitchStart.lowerBound...].range(
+                of: "\n                    .layoutPriority(2)"
+            )
+        else {
+            XCTFail("Could not isolate the medium home pitch accent branch.")
+            return
+        }
+
+        let mediumPitchBlock = String(
+            mediumBlock[mediumPitchStart.lowerBound..<mediumPitchEnd.lowerBound]
+        )
+        XCTAssertTrue(mediumPitchBlock.contains(".foregroundStyle(.secondary)"))
+
+        guard let smallStart = source.range(of: "private struct DailyKanjiHomeSmallWidgetView") else {
+            XCTFail("Could not find the dedicated small home widget view.")
+            return
+        }
+
+        let smallSource = source[smallStart.lowerBound...]
+        guard let smallEnd = smallSource.range(of: "\nprivate struct DailyKanjiLockScreenCardView") else {
+            XCTFail("Could not isolate the small home widget view.")
+            return
+        }
+
+        let smallBlock = String(smallSource[..<smallEnd.lowerBound])
+        XCTAssertFalse(smallBlock.contains(".foregroundStyle(.white"))
+        XCTAssertTrue(smallBlock.contains(".foregroundStyle(.primary)"))
+        XCTAssertTrue(smallBlock.contains(".foregroundStyle(.secondary)"))
     }
 
     func testHomeMediumWidgetUsesSideBySideReadableLayoutWithoutSourceFooter() throws {

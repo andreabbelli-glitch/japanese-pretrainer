@@ -110,7 +110,7 @@ private struct DailyKanjiHomeMediumWidgetView: View {
         HStack(alignment: .center, spacing: 12) {
             Text(card.displayFront)
                 .font(.system(size: 66, weight: .semibold))
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.28)
                 .allowsTightening(true)
@@ -122,7 +122,7 @@ private struct DailyKanjiHomeMediumWidgetView: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(card.lockScreenTranslationText)
                     .font(.system(size: 21, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
                     .lineLimit(2)
                     .minimumScaleFactor(0.65)
                     .layoutPriority(3)
@@ -132,11 +132,12 @@ private struct DailyKanjiHomeMediumWidgetView: View {
                         pattern: pattern,
                         horizontalAlignment: .leading
                     )
+                    .foregroundStyle(.secondary)
                     .layoutPriority(2)
                 } else {
                     Text(card.readingText)
                         .font(.system(size: 19, weight: .semibold, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.88))
+                        .foregroundStyle(.secondary)
                         .lineLimit(1)
                         .minimumScaleFactor(0.65)
                         .layoutPriority(2)
@@ -145,7 +146,7 @@ private struct DailyKanjiHomeMediumWidgetView: View {
                 if let explanation = card.homeWidgetExplanationText {
                     Text(explanation)
                         .font(.system(size: 12, weight: .medium, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.82))
+                        .foregroundStyle(.secondary)
                         .lineLimit(2)
                         .minimumScaleFactor(0.72)
                 }
@@ -165,7 +166,7 @@ private struct DailyKanjiHomeSmallWidgetView: View {
         VStack(alignment: .leading, spacing: 7) {
             Text(card.displayFront)
                 .font(.system(size: 58, weight: .semibold))
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.28)
                 .allowsTightening(true)
@@ -173,13 +174,13 @@ private struct DailyKanjiHomeSmallWidgetView: View {
 
             Text(card.lockScreenTranslationText)
                 .font(.system(size: 16, weight: .semibold, design: .rounded))
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
                 .lineLimit(2)
                 .minimumScaleFactor(0.65)
 
             Text(card.readingText)
                 .font(.system(size: 13, weight: .medium, design: .rounded))
-                .foregroundStyle(.white.opacity(0.82))
+                .foregroundStyle(.secondary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.65)
         }
