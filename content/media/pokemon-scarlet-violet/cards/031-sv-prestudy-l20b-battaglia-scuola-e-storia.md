@@ -205,13 +205,16 @@ example_it: >-
 :::
 :::term
 id: term-v296-aku
-lemma: あく
+lemma: 悪
 reading: あく
 romaji: aku
-meaning_it: buio
+meaning_it: tipo Buio; male / cattiveria
+aliases: [あく, あくタイプ, 悪タイプ]
 notes_it: >-
-  あく è il tipo Buio. In あくタイプ la parola prima di タイプ stabilisce la
-  categoria di battaglia.
+  Nel gioco il tipo può apparire in kana come あく, ma la lettura rimanda a
+  {{悪|あく}}: male, cattiveria, ciò che è "malvagio". La localizzazione
+  Pokémon lo rende come tipo Buio; non è {{闇|やみ}}, cioè l'oscurità fisica o
+  poetica.
 :::
 :::card
 id: card-v296-aku-recognition
@@ -219,8 +222,8 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-031-sv-prestudy-l20b-battag
 entry_type: term
 entry_id: term-v296-aku
 card_type: recognition
-front: "あく"
-back: buio
+front: "{{悪|あく}}"
+back: tipo Buio; letteralmente 悪 è male / cattiveria, non oscurità fisica
 example_jp: >-
   あくタイプの わざを {{受|う}}ける。
 example_it: >-
