@@ -292,17 +292,62 @@ struct DailyKanjiSelector {
             return []
         }
 
-        let poolSize = min(
+        let targetPoolSize = min(
             ordered.count,
             max(widgetRotationWindow, defaultWidgetTimelineEntryCount)
         )
-        let pool = Array(ordered.prefix(poolSize))
+        let pool = pitchPreferredTimelinePool(
+            ordered,
+            targetPoolSize: targetPoolSize
+        )
 
         return dates.map { date in
             let slot = Int(floor(date.timeIntervalSince1970 / widgetSlotDuration))
             let index = positiveModulo(slot, pool.count)
             return (date: date, card: pool[index])
         }
+    }
+
+    private static func pitchPreferredTimelinePool(
+        _ ordered: [DailyKanjiCard],
+        targetPoolSize: Int
+    ) -> [DailyKanjiCard] {
+        let poolSize = min(ordered.count, max(targetPoolSize, 0))
+        guard poolSize > 0 else {
+            return []
+        }
+
+        let pitchKnownCards = ordered.filter { $0.entry.pitchAccent != nil }
+        guard !pitchKnownCards.isEmpty else {
+            return Array(ordered.prefix(poolSize))
+        }
+
+        var seenCardIds = Set<String>()
+        var pool: [DailyKanjiCard] = []
+
+        for card in pitchKnownCards {
+            guard seenCardIds.insert(card.cardId).inserted else {
+                continue
+            }
+
+            pool.append(card)
+            if pool.count == poolSize {
+                return pool
+            }
+        }
+
+        for card in ordered {
+            guard seenCardIds.insert(card.cardId).inserted else {
+                continue
+            }
+
+            pool.append(card)
+            if pool.count == poolSize {
+                return pool
+            }
+        }
+
+        return pool
     }
 
     private static func lookbackCutoff(for date: Date, days: Int) -> Date {

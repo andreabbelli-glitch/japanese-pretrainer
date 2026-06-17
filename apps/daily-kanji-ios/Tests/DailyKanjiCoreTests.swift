@@ -816,6 +816,44 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(Set(selectedCards.map(\.cardId)).count, 96)
     }
 
+    func testWidgetTimelineCardsPreferPitchKnownCardsWhileFillingTwentyFourHourPool() throws {
+        let pitchKnownIndices = Set([10, 30])
+        let pitchAccents: [Int?] = (0..<120).map { index in
+            pitchKnownIndices.contains(index) ? 1 : nil
+        }
+        let cards = try Self.rankedCards(count: 120, pitchAccents: pitchAccents)
+        let dates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: Date(timeIntervalSince1970: 0),
+            count: 96
+        )
+
+        let selectedCards = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: dates
+        )
+
+        XCTAssertEqual(selectedCards.count, 96)
+        XCTAssertEqual(Set(selectedCards.map(\.cardId)).count, 96)
+        XCTAssertEqual(selectedCards.prefix(2).map(\.cardId), ["card-10", "card-30"])
+        XCTAssertTrue(selectedCards.prefix(2).allSatisfy { $0.entry.pitchAccent != nil })
+        XCTAssertTrue(selectedCards.dropFirst(2).contains { $0.entry.pitchAccent == nil })
+    }
+
+    func testWidgetTimelineCardsFallBackToRankedCardsWhenNoCardsHaveKnownPitch() throws {
+        let cards = try Self.rankedCards(count: 4)
+        let dates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: Date(timeIntervalSince1970: 0),
+            count: 4
+        )
+
+        let timelineCardIds = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: dates
+        ).map(\.cardId)
+
+        XCTAssertEqual(timelineCardIds, ["card-0", "card-1", "card-2", "card-3"])
+    }
+
     func testWidgetTimelineRegenerationDoesNotRepeatAlreadyShownOverlappingSlots() throws {
         let cards = try Self.rankedCards(count: 120)
         let firstTimelineDates = DailyKanjiSelector.widgetTimelineDates(
