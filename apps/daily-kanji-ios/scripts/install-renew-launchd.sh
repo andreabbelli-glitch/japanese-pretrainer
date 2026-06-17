@@ -57,6 +57,42 @@ config_value() {
   }' "$CONFIG_FILE"
 }
 
+write_config_value() {
+  local key="$1"
+  local value="$2"
+  local temp
+
+  temp="$(mktemp "$CONFIG_FILE.XXXXXX")"
+  chmod 600 "$temp"
+
+  if [ -f "$CONFIG_FILE" ]; then
+    if ! awk -F= -v key="$key" -v value="$value" '
+      BEGIN { written = 0 }
+      $1 == key {
+        if (!written) {
+          print key "=" value
+          written = 1
+        }
+        next
+      }
+      { print }
+      END {
+        if (!written) {
+          print key "=" value
+        }
+      }
+    ' "$CONFIG_FILE" > "$temp"; then
+      rm -f "$temp"
+      return 1
+    fi
+  elif ! printf "%s=%s\n" "$key" "$value" > "$temp"; then
+    rm -f "$temp"
+    return 1
+  fi
+
+  mv "$temp" "$CONFIG_FILE"
+}
+
 validate_device_id() {
   if [[ ! "$DEVICE_ID" =~ ^[A-Za-z0-9._:-]+$ ]]; then
     printf "Invalid DEVICE_ID. Use a CoreDevice id or UDID with letters, digits, dot, colon, underscore, or dash.\n" >&2
@@ -112,9 +148,9 @@ fi
 
 validate_device_id
 
-mkdir -p "$(dirname "$PLIST")" "$STATE_DIR" "$LOG_DIR"
+mkdir -p "$(dirname "$PLIST")" "$STATE_DIR" "$LOG_DIR" "$(dirname "$CONFIG_FILE")"
 umask 077
-printf "DEVICE_ID=%s\n" "$DEVICE_ID" > "$CONFIG_FILE"
+write_config_value DEVICE_ID "$DEVICE_ID"
 
 if [ "$MARK_SUCCESS_NOW" -eq 1 ] || [ ! -f "$STATE_DIR/last-renew-success.epoch" ]; then
   "$ROOT/scripts/xcode-renew-if-needed.sh" --mark-success-now

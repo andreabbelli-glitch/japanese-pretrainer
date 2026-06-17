@@ -120,7 +120,9 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh --mark-succ
 Il LaunchAgent controlla ogni 6 ore, ma esegue il package + build/install solo
 quando l'ultimo rinnovo riuscito ha almeno 5 giorni e l'iPhone e' raggiungibile
 via CoreDevice. Il device id resta in
-`~/Library/Application Support/DailyKanji/renew.env`, non nel repo. Per rimuovere
+`~/Library/Application Support/DailyKanji/renew.env`, non nel repo. Rieseguire
+`install-renew-launchd.sh` aggiorna solo `DEVICE_ID` e conserva eventuali
+endpoint/token di sync gia' presenti nello stesso file. Per rimuovere
 l'automazione:
 
 ```sh

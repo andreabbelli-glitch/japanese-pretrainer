@@ -1,7 +1,18 @@
-import { readFile } from "node:fs/promises";
+import { execFile } from "node:child_process";
+import {
+  chmod,
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  stat,
+  writeFile
+} from "node:fs/promises";
+import { tmpdir } from "node:os";
 import path from "node:path";
+import { promisify } from "node:util";
 
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
 const iosRoot = path.join(process.cwd(), "apps", "daily-kanji-ios");
 const renewIfNeededScriptPath = path.join(
@@ -16,8 +27,18 @@ const installLaunchdScriptPath = path.join(
   "install-renew-launchd.sh"
 );
 const iosAgentDocsPath = path.join(iosRoot, "AGENTS.md");
+const execFileAsync = promisify(execFile);
 
 describe("Daily Kanji iOS launchd renew automation", () => {
+  const tempDirs: string[] = [];
+
+  afterEach(async () => {
+    await Promise.all(
+      tempDirs.map((tempDir) => rm(tempDir, { force: true, recursive: true }))
+    );
+    tempDirs.length = 0;
+  });
+
   it("keeps the periodic renew check cheap until a renewal is actually due", async () => {
     const source = await readFile(renewIfNeededScriptPath, "utf8");
     const reachabilityIndex = source.indexOf(
@@ -58,7 +79,7 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect(source).toContain("--device-id");
     expect(source).toContain('CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"');
     expect(source).toContain("DEVICE_ID is required for install");
-    expect(source).toContain("printf \"DEVICE_ID=%s\\n\"");
+    expect(source).toContain("write_config_value DEVICE_ID");
     expect(source).toContain("<key>RunAtLoad</key>");
     expect(source).toContain("<key>LowPriorityIO</key>");
     expect(source).toContain("<key>ProcessType</key>");
@@ -66,6 +87,72 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect(source).toContain("<key>Nice</key>");
     expect(source).toContain("launchctl bootstrap");
     expect(source).not.toContain("D584E119");
+  });
+
+  it("updates only DEVICE_ID in renew.env when reinstalling the LaunchAgent", async () => {
+    const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-daily-kanji-renew-"));
+    tempDirs.push(tempRoot);
+    const homeDir = path.join(tempRoot, "home");
+    const stateDir = path.join(tempRoot, "state");
+    const logDir = path.join(tempRoot, "logs");
+    const binDir = path.join(tempRoot, "bin");
+    const configFile = path.join(stateDir, "renew.env");
+    await mkdir(stateDir, { recursive: true });
+    await mkdir(binDir, { recursive: true });
+    await writeFile(path.join(stateDir, "last-renew-success.epoch"), "1\n");
+    await writeExecutable(
+      path.join(binDir, "launchctl"),
+      "#!/usr/bin/env bash\nexit 0\n"
+    );
+    await writeExecutable(
+      path.join(binDir, "plutil"),
+      "#!/usr/bin/env bash\nexit 0\n"
+    );
+    await writeFile(
+      configFile,
+      [
+        "# existing sync config",
+        "DAILY_KANJI_IOS_SYNC_ENDPOINT=https://example.test/api",
+        "DEVICE_ID=OLD_DEVICE",
+        "UNKNOWN_KEY=keep-me",
+        "",
+        "DAILY_KANJI_IOS_SYNC_TOKEN=secret-token",
+        "DEVICE_ID=OLDER_DEVICE",
+        "# trailing comment"
+      ].join("\n") + "\n",
+      { mode: 0o600 }
+    );
+
+    await execFileAsync(
+      "bash",
+      [installLaunchdScriptPath, "--device-id", "NEW_DEVICE"],
+      {
+        env: {
+          ...process.env,
+          CONFIG_FILE: configFile,
+          HOME: homeDir,
+          LOG_DIR: logDir,
+          PATH: `${binDir}:${process.env.PATH ?? ""}`,
+          STATE_DIR: stateDir
+        }
+      }
+    );
+
+    const updatedConfig = await readFile(configFile, "utf8");
+    expect(updatedConfig.split("\n")).toEqual([
+      "# existing sync config",
+      "DAILY_KANJI_IOS_SYNC_ENDPOINT=https://example.test/api",
+      "DEVICE_ID=NEW_DEVICE",
+      "UNKNOWN_KEY=keep-me",
+      "",
+      "DAILY_KANJI_IOS_SYNC_TOKEN=secret-token",
+      "# trailing comment",
+      ""
+    ]);
+    expect(updatedConfig.match(/^DEVICE_ID=/gm)).toHaveLength(1);
+    expect(updatedConfig).not.toContain("OLD_DEVICE");
+    expect(updatedConfig).not.toContain("OLDER_DEVICE");
+    expect((await stat(configFile)).mode & 0o777).toBe(0o600);
   });
 
   it("documents install, status, and force-run commands for the agent", async () => {
@@ -113,3 +200,8 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect(developerDirIndex).toBeLessThan(devicectlIndex);
   });
 });
+
+async function writeExecutable(filePath: string, contents: string) {
+  await writeFile(filePath, contents);
+  await chmod(filePath, 0o755);
+}
