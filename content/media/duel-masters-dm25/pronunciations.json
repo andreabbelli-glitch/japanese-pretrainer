@@ -43,11 +43,21 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-de-hajimaru",
+      "audio_src": "assets/audio/grammar/grammar-de-hajimaru/forvo-mezashi-て-はし-まる.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A7%E5%A7%8B%E3%81%BE%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-de-nai",
+      "audio_src": "assets/audio/grammar/grammar-de-nai/forvo-mezashi-て-ない.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A7%E3%81%AA%E3%81%84/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -781,6 +791,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-x-wo-motsu-y",
+      "audio_src": "assets/audio/grammar/grammar-x-wo-motsu-y/forvo-mezashi-xをもつy.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%92%E3%82%82%E3%81%A4/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -2462,6 +2477,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-kinjutsu",
+      "audio_src": "assets/audio/term/term-kinjutsu/forvo-mezashi-きんし-ゅつ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%A6%81%E8%A1%93/#ja",
       "pitch_accent_status": "miss"
     },
     {

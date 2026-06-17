@@ -60,24 +60,6 @@
       "updatedAt": "2026-04-25T14:40:17.899Z"
     },
     {
-      "entryId": "grammar-de-hajimaru",
-      "entryKind": "grammar",
-      "label": "～で始まる",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ではじまる",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-19T22:26:09.790Z"
-    },
-    {
-      "entryId": "grammar-de-nai",
-      "entryKind": "grammar",
-      "label": "～でない",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "でない",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-23T23:53:17.758Z"
-    },
-    {
       "entryId": "grammar-demo-demo-nai",
       "entryKind": "grammar",
       "label": "～でも～でもない",
@@ -275,15 +257,6 @@
       "updatedAt": "2026-05-31T16:52:19.112Z"
     },
     {
-      "entryId": "grammar-x-wo-motsu-y",
-      "entryKind": "grammar",
-      "label": "Xを持つY",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "XをもつY",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-06-01T16:04:26.148Z"
-    },
-    {
       "entryId": "term-b-a-d-two",
       "entryKind": "term",
       "label": "B・A・D 2",
@@ -309,15 +282,6 @@
       "reading": "ど すもんまー",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-03-23T23:52:26.328Z"
-    },
-    {
-      "entryId": "term-kinjutsu",
-      "entryKind": "term",
-      "label": "禁術",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "きんじゅつ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-31T18:08:37.151Z"
     },
     {
       "entryId": "term-sayuu-sakasama",
@@ -491,24 +455,6 @@
       "updatedAt": "2026-05-24T16:19:34.936Z"
     },
     {
-      "entryId": "term-iranai-card-ga-attara",
-      "entryKind": "term",
-      "label": "いらないカードがあったら",
-      "mediaSlug": "tcg-generale",
-      "reading": "いらないカードがあったら",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-06-03T09:39:58.300Z"
-    },
-    {
-      "entryId": "term-kaishi-mae",
-      "entryKind": "term",
-      "label": "開始前",
-      "mediaSlug": "tcg-generale",
-      "reading": "かいしまえ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-06-03T09:40:01.102Z"
-    },
-    {
       "entryId": "term-kettei-shimasu",
       "entryKind": "term",
       "label": "決定します",
@@ -543,15 +489,6 @@
       "reading": "ようとしている",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-05-03T20:23:11.220Z"
-    },
-    {
-      "entryId": "term-hard-mode-dewa-sarani-kyouryoku-na-monster-ga-shutsugen",
-      "entryKind": "term",
-      "label": "ハードモードではさらに強力なモンスターが出現",
-      "mediaSlug": "web-giapponese",
-      "reading": "ハードモードではさらにきょうりょくなモンスターがしゅつげん",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-02T13:36:51.889Z"
     }
   ]
 }

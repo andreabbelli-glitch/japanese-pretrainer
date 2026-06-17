@@ -237,7 +237,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "ではじまる",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A7%E5%A7%8B%E3%81%BE%E3%82%8B/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:22:55.603Z"
+      "requestedAt": "2026-05-24T18:22:55.603Z",
+      "resolvedAt": "2026-06-17T21:46:37.332Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-de-hajimaru/forvo-mezashi-て-はし-まる.mp3"
     },
     {
       "entryId": "grammar-de-nai",
@@ -246,7 +249,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "でない",
       "requestUrl": "https://forvo.com/word-add/%E3%81%A7%E3%81%AA%E3%81%84/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-24T18:23:03.744Z"
+      "requestedAt": "2026-05-24T18:23:03.744Z",
+      "resolvedAt": "2026-06-17T21:46:40.152Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-de-nai/forvo-mezashi-て-ない.mp3"
     },
     {
       "entryId": "grammar-deck-empty-demo-makenai",
@@ -716,7 +722,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "XをもつY",
       "requestUrl": "https://forvo.com/word-add/%E3%82%92%E3%82%82%E3%81%A4/?jcs_lang=ja&jcs_phrase=1&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-06-01T16:04:26.168Z"
+      "requestedAt": "2026-06-01T16:04:26.168Z",
+      "resolvedAt": "2026-06-17T21:46:32.574Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/grammar/grammar-x-wo-motsu-y/forvo-mezashi-xをもつy.mp3"
     },
     {
       "entryId": "grammar-yamafuda-no-ue-ka-shita-no-dochiraka-ni-modosu",
@@ -1508,7 +1517,10 @@
       "mediaSlug": "duel-masters-dm25",
       "reading": "きんじゅつ",
       "requestUrl": "https://forvo.com/word-add/%E7%A6%81%E8%A1%93/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-31T18:08:37.161Z"
+      "requestedAt": "2026-05-31T18:08:37.161Z",
+      "resolvedAt": "2026-06-17T21:46:42.944Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-kinjutsu/forvo-mezashi-きんし-ゅつ.mp3"
     },
     {
       "entryId": "term-kirifudash",
@@ -5826,7 +5838,10 @@
       "mediaSlug": "tcg-generale",
       "reading": "いらないカードがあったら",
       "requestUrl": "https://forvo.com/word-add/%E3%81%84%E3%82%89%E3%81%AA%E3%81%84%E3%82%AB%E3%83%BC%E3%83%89%E3%81%8C%E3%81%82%E3%81%A3%E3%81%9F%E3%82%89/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-06-03T09:39:58.311Z"
+      "requestedAt": "2026-06-03T09:39:58.311Z",
+      "resolvedAt": "2026-06-17T21:47:08.048Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-iranai-card-ga-attara/forvo-mezashi-いらないカート-か-あったら.mp3"
     },
     {
       "entryId": "term-kaishi-mae",
@@ -5835,7 +5850,10 @@
       "mediaSlug": "tcg-generale",
       "reading": "かいしまえ",
       "requestUrl": "https://forvo.com/word-add/%E9%96%8B%E5%A7%8B%E5%89%8D/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-06-03T09:40:01.110Z"
+      "requestedAt": "2026-06-03T09:40:01.110Z",
+      "resolvedAt": "2026-06-17T21:47:05.154Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-kaishi-mae/forvo-mezashi-かいしまえ.mp3"
     },
     {
       "entryId": "term-katta-hou",
@@ -6048,7 +6066,10 @@
       "mediaSlug": "web-giapponese",
       "reading": "ハードモードではさらにきょうりょくなモンスターがしゅつげん",
       "requestUrl": "https://forvo.com/word-add/%E3%83%8F%E3%83%BC%E3%83%89%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E3%81%AF%E3%81%95%E3%82%89%E3%81%AB%E5%BC%B7%E5%8A%9B%E3%81%AA%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%8C%E5%87%BA%E7%8F%BE/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
-      "requestedAt": "2026-05-02T13:36:51.893Z"
+      "requestedAt": "2026-05-02T13:36:51.893Z",
+      "resolvedAt": "2026-06-17T21:45:53.614Z",
+      "resolvedAudioSource": "forvo",
+      "resolvedAudioSrc": "assets/audio/term/term-hard-mode-dewa-sarani-kyouryoku-na-monster-ga-shutsugen/forvo-mezashi-ハート-モート-て-はさらにきょうりょくなモンスターか-しゅつけ-ん.mp3"
     },
     {
       "entryId": "term-hard-mode-ga-kaihou-saremashita",

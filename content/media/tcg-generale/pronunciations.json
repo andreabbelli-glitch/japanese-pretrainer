@@ -66,6 +66,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-iranai-card-ga-attara",
+      "audio_src": "assets/audio/term/term-iranai-card-ga-attara/forvo-mezashi-いらないカート-か-あったら.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%84%E3%82%89%E3%81%AA%E3%81%84%E3%82%AB%E3%83%BC%E3%83%89%E3%81%8C%E3%81%82%E3%81%A3%E3%81%9F%E3%82%89/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -94,6 +99,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-kaishi-mae",
+      "audio_src": "assets/audio/term/term-kaishi-mae/forvo-mezashi-かいしまえ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%96%8B%E5%A7%8B%E5%89%8D/#ja",
       "pitch_accent_status": "miss"
     },
     {
