@@ -564,16 +564,18 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(model.mediaPickerOptions.map(\.slug), ["media-one", "media-two"])
 
         model.setDraftStudyMode(.prestudy)
+        XCTAssertEqual(model.mediaPickerOptions.map(\.slug), ["media-one"])
         model.applyStudyScope(now: now)
         XCTAssertEqual(model.selectedMediaSlug, "media-one")
         XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+        XCTAssertEqual(model.scopedCardCount, 1)
 
         model.setDraftSelectedMediaSlug("media-two")
         model.applyStudyScope(now: now)
-        XCTAssertEqual(model.mediaPickerOptions.map(\.slug), ["media-one", "media-two"])
-        XCTAssertEqual(model.selectedMediaSlug, "media-two")
-        XCTAssertEqual(model.scopedCardCount, 0)
-        XCTAssertNil(model.selectedCard)
+        XCTAssertEqual(model.mediaPickerOptions.map(\.slug), ["media-one"])
+        XCTAssertEqual(model.selectedMediaSlug, "media-one")
+        XCTAssertEqual(model.scopedCardCount, 1)
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
 
         model.setDraftSelectedMediaSlug("media-one")
         model.applyStudyScope(now: now)
@@ -619,6 +621,7 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         XCTAssertEqual(model.selectedStudyMode, .daily)
         XCTAssertNil(model.selectedMediaSlug)
+        XCTAssertEqual(model.draftMediaSlug, "media-one")
         XCTAssertEqual(scopeStore.load(), DailyKanjiStudyScope(studyMode: .daily, mediaSlug: nil))
         XCTAssertEqual(reloadCount, 0)
 
@@ -626,6 +629,7 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         XCTAssertEqual(model.selectedStudyMode, .daily)
         XCTAssertNil(model.selectedMediaSlug)
+        XCTAssertEqual(model.draftMediaSlug, "media-one")
         XCTAssertEqual(scopeStore.load(), DailyKanjiStudyScope(studyMode: .daily, mediaSlug: nil))
         XCTAssertEqual(reloadCount, 0)
     }
@@ -693,9 +697,108 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         XCTAssertEqual(
             scopeStore.load(),
+            DailyKanjiStudyScope(studyMode: .prestudy, mediaSlug: "media-one")
+        )
+        XCTAssertEqual(model.selectedMediaSlug, "media-one")
+        XCTAssertEqual(model.scopedCardCount, 1)
+        XCTAssertEqual(reloadCount, 1)
+    }
+
+    @MainActor
+    func testStartupNormalizesPersistedEmptyPrestudyScopeAndPersistsCorrection() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
+        let defaultsName = "DailyKanjiScope-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let scopeStore = DailyKanjiStudyScopeStore(defaults: defaults)
+        scopeStore.save(DailyKanjiStudyScope(studyMode: .prestudy, mediaSlug: "media-two"))
+        var reloadCount = 0
+
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            scopeStore: scopeStore,
+            reloadTimelines: { reloadCount += 1 },
+            now: now
+        )
+
+        XCTAssertEqual(model.selectedStudyMode, .prestudy)
+        XCTAssertEqual(model.selectedMediaSlug, "media-one")
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+        XCTAssertEqual(model.scopedCardCount, 1)
+        XCTAssertEqual(
+            scopeStore.load(),
+            DailyKanjiStudyScope(studyMode: .prestudy, mediaSlug: "media-one")
+        )
+        XCTAssertEqual(reloadCount, 1)
+    }
+
+    @MainActor
+    func testStartupFallsBackToDailyWhenPersistedPrestudyHasNoAvailableCards() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let defaultsName = "DailyKanjiScope-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let scopeStore = DailyKanjiStudyScopeStore(defaults: defaults)
+        scopeStore.save(DailyKanjiStudyScope(studyMode: .prestudy, mediaSlug: "media-one"))
+        var reloadCount = 0
+
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            scopeStore: scopeStore,
+            reloadTimelines: { reloadCount += 1 },
+            now: now
+        )
+
+        XCTAssertEqual(model.selectedStudyMode, .daily)
+        XCTAssertNil(model.selectedMediaSlug)
+        XCTAssertEqual(model.selectedCard?.cardId, "hard")
+        XCTAssertEqual(model.scopedCardCount, 2)
+        XCTAssertEqual(scopeStore.load(), DailyKanjiStudyScope(studyMode: .daily, mediaSlug: nil))
+        XCTAssertEqual(reloadCount, 1)
+    }
+
+    @MainActor
+    func testSuccessfulSyncNormalizesPersistedScopeAfterCardReplacement() async throws {
+        let initialDataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let syncedDataset = Self.datasetMovingPrestudyCardToMediaTwo(initialDataset)
+        let defaultsName = "DailyKanjiScope-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let scopeStore = DailyKanjiStudyScopeStore(defaults: defaults)
+        scopeStore.save(DailyKanjiStudyScope(studyMode: .prestudy, mediaSlug: "media-one"))
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let syncer = MockDailyKanjiSyncer(result: .success(syncedDataset))
+        var reloadCount = 0
+        let model = DailyKanjiAppModel(
+            cards: initialDataset.cards,
+            cacheStore: cacheStore,
+            scopeStore: scopeStore,
+            syncer: syncer,
+            reloadTimelines: { reloadCount += 1 },
+            now: now
+        )
+
+        await model.syncNow(now: now, force: true)
+
+        XCTAssertEqual(model.selectedStudyMode, .prestudy)
+        XCTAssertEqual(model.selectedMediaSlug, "media-two")
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+        XCTAssertEqual(model.scopedCardCount, 1)
+        XCTAssertEqual(
+            scopeStore.load(),
             DailyKanjiStudyScope(studyMode: .prestudy, mediaSlug: "media-two")
         )
-        XCTAssertEqual(reloadCount, 2)
+        XCTAssertEqual(reloadCount, 1)
     }
 
     func testWidgetTimelineUsesOnlyDailyModeCards() throws {
@@ -728,6 +831,30 @@ final class DailyKanjiCoreTests: XCTestCase {
         ).map(\.cardId)
 
         XCTAssertEqual(timelineCardIds, Array(repeating: "prestudy-one", count: 4))
+    }
+
+    func testWidgetTimelineResolvesStalePrestudyScopeBeforeSelectingCards() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
+        let rawScope = DailyKanjiStudyScope(studyMode: .prestudy, mediaSlug: "media-two")
+        let resolvedScope = DailyKanjiStudyScopeResolver.resolve(rawScope, cards: cards)
+        let dates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: Date(timeIntervalSince1970: 0),
+            count: 4
+        )
+
+        let timelineCardIds = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: dates,
+            mediaSlug: resolvedScope.mediaSlug,
+            studyMode: resolvedScope.studyMode
+        ).map(\.cardId)
+
+        XCTAssertEqual(
+            resolvedScope,
+            DailyKanjiStudyScope(studyMode: .prestudy, mediaSlug: "media-one")
+        )
+        XCTAssertEqual(timelineCardIds, Array(repeating: "prestudy-one", count: 4))
+        XCTAssertFalse(timelineCardIds.contains(DailyKanjiSampleData.card.cardId))
     }
 
     func testWidgetRefreshUsesNextRotationSlotBoundary() {
@@ -2187,6 +2314,52 @@ final class DailyKanjiCoreTests: XCTestCase {
                 )
             )
         }
+    }
+
+    private static func datasetMovingPrestudyCardToMediaTwo(
+        _ dataset: DailyKanjiDataset
+    ) -> DailyKanjiDataset {
+        DailyKanjiDataset(
+            version: dataset.version,
+            generatedAt: dataset.generatedAt,
+            recentMistakeLookbackDays: dataset.recentMistakeLookbackDays,
+            cards: dataset.cards.map { card in
+                guard card.cardId == "prestudy-one" else {
+                    return card
+                }
+
+                return Self.card(
+                    card,
+                    replacingMedia: DailyKanjiCard.Media(
+                        slug: "media-two",
+                        title: "Media Two"
+                    )
+                )
+            }
+        )
+    }
+
+    private static func card(
+        _ card: DailyKanjiCard,
+        replacingMedia media: DailyKanjiCard.Media
+    ) -> DailyKanjiCard {
+        DailyKanjiCard(
+            cardId: card.cardId,
+            subjectKey: card.subjectKey,
+            cardOrderIndex: card.cardOrderIndex,
+            media: media,
+            lesson: card.lesson,
+            segment: card.segment,
+            front: card.front,
+            back: card.back,
+            kanji: card.kanji,
+            entry: card.entry,
+            exampleIt: card.exampleIt,
+            exampleJp: card.exampleJp,
+            notes: card.notes,
+            studyModes: card.studyModes,
+            srs: card.srs
+        )
     }
 
     private static func recentBucketRegressionCards() throws -> [DailyKanjiCard] {

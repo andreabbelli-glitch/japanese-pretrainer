@@ -62,10 +62,13 @@ final class DailyKanjiAppModel: ObservableObject {
             syncer: syncer,
             source: resolvedRepository.loadDatasetSource()
         )
-        restoreSavedScope()
+        let restoredScopeWasCorrected = restoreSavedScope()
         resetStudyScopeDraft()
         persistCurrentScope()
         prepareInitialSelection(now: now)
+        if restoredScopeWasCorrected {
+            reloadTimelines()
+        }
     }
 
     init(
@@ -89,10 +92,13 @@ final class DailyKanjiAppModel: ObservableObject {
         self.syncer = syncer
         self.reloadTimelines = reloadTimelines
         self.syncState = Self.initialSyncState(syncer: syncer, source: .sample)
-        restoreSavedScope()
+        let restoredScopeWasCorrected = restoreSavedScope()
         resetStudyScopeDraft()
         persistCurrentScope()
         prepareInitialSelection(now: now)
+        if restoredScopeWasCorrected {
+            reloadTimelines()
+        }
     }
 
     var availableMedia: [DailyKanjiMediaOption] {
@@ -100,7 +106,14 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     var mediaPickerOptions: [DailyKanjiMediaOption] {
-        availableMedia
+        guard draftStudyMode.usesMediaSelection else {
+            return availableMedia
+        }
+
+        return DailyKanjiSelector.mediaOptions(
+            cards: cards,
+            studyMode: draftStudyMode
+        )
     }
 
     var availableMediaForCurrentMode: [DailyKanjiMediaOption] {
@@ -201,7 +214,7 @@ final class DailyKanjiAppModel: ObservableObject {
             consecutiveFailureCount = 0
             pendingPreparedSelectionCardId = nil
             transientInitialActivationEvent = nil
-            normalizeSelectedMediaForCurrentMode()
+            normalizeSelectedStudyScope()
             resetStudyScopeDraft()
             persistCurrentScope()
             prepareInitialSelection(now: now)
@@ -237,7 +250,8 @@ final class DailyKanjiAppModel: ObservableObject {
         }
 
         draftStudyMode = mode
-        draftMediaSlug = defaultMediaSlug(for: mode)
+        draftMediaSlug = nil
+        normalizeDraftStudyScope()
     }
 
     func setDraftSelectedMediaSlug(_ mediaSlug: String?) {
@@ -246,11 +260,11 @@ final class DailyKanjiAppModel: ObservableObject {
         }
 
         draftMediaSlug = mediaSlug
-        normalizeDraftMediaForCurrentMode(preferCurrentModeMatch: false)
+        normalizeDraftStudyScope()
     }
 
     func applyStudyScope(now: Date = .now) {
-        normalizeDraftMediaForCurrentMode(preferCurrentModeMatch: false)
+        normalizeDraftStudyScope()
         guard hasStudyScopeDraftChanges else {
             return
         }
@@ -267,7 +281,7 @@ final class DailyKanjiAppModel: ObservableObject {
     func resetStudyScopeDraft() {
         draftStudyMode = selectedStudyMode
         draftMediaSlug = selectedMediaSlug
-        normalizeDraftMediaForCurrentMode(preferCurrentModeMatch: false)
+        normalizeDraftStudyScope()
     }
 
     func openDeepLink(_ url: URL, now: Date = .now) {
@@ -443,73 +457,48 @@ final class DailyKanjiAppModel: ObservableObject {
         )
     }
 
-    private func normalizeSelectedMediaForCurrentMode(
-        preferCurrentModeMatch: Bool = false
-    ) {
-        selectedMediaSlug = normalizedMediaSlug(
-            selectedMediaSlug,
-            for: selectedStudyMode,
-            preferCurrentModeMatch: preferCurrentModeMatch
+    @discardableResult
+    private func normalizeSelectedStudyScope() -> Bool {
+        let currentScope = DailyKanjiStudyScope(
+            studyMode: selectedStudyMode,
+            mediaSlug: selectedMediaSlug
         )
+        let resolvedScope = resolveStudyScope(currentScope)
+
+        selectedStudyMode = resolvedScope.studyMode
+        selectedMediaSlug = resolvedScope.mediaSlug
+
+        return currentScope != resolvedScope
     }
 
-    private func normalizeDraftMediaForCurrentMode(
-        preferCurrentModeMatch: Bool = false
-    ) {
-        draftMediaSlug = normalizedMediaSlug(
-            draftMediaSlug,
-            for: draftStudyMode,
-            preferCurrentModeMatch: preferCurrentModeMatch
+    @discardableResult
+    private func normalizeDraftStudyScope() -> Bool {
+        let currentScope = DailyKanjiStudyScope(
+            studyMode: draftStudyMode,
+            mediaSlug: draftMediaSlug
         )
+        let resolvedScope = resolveStudyScope(currentScope)
+
+        draftStudyMode = resolvedScope.studyMode
+        draftMediaSlug = resolvedScope.mediaSlug
+
+        return currentScope != resolvedScope
     }
 
-    private func normalizedMediaSlug(
-        _ mediaSlug: String?,
-        for studyMode: DailyKanjiStudyMode,
-        preferCurrentModeMatch: Bool
-    ) -> String? {
-        guard studyMode.usesMediaSelection else {
-            return nil
-        }
-
-        let pickerOptions = mediaPickerOptions
-        let modeOptions = DailyKanjiSelector.mediaOptions(
-            cards: cards,
-            studyMode: studyMode
-        )
-
-        if let mediaSlug,
-           pickerOptions.contains(where: { $0.slug == mediaSlug }) {
-            let selectedHasCurrentModeCards = modeOptions.contains {
-                $0.slug == mediaSlug
-            }
-
-            if !preferCurrentModeMatch
-                || selectedHasCurrentModeCards
-                || modeOptions.isEmpty {
-                return mediaSlug
-            }
-        }
-
-        return modeOptions.first?.slug ?? pickerOptions.first?.slug
-    }
-
-    private func defaultMediaSlug(for studyMode: DailyKanjiStudyMode) -> String? {
-        guard studyMode.usesMediaSelection else {
-            return nil
-        }
-
-        return DailyKanjiSelector.mediaOptions(
-            cards: cards,
-            studyMode: studyMode
-        ).first?.slug ?? mediaPickerOptions.first?.slug
-    }
-
-    private func restoreSavedScope() {
+    private func restoreSavedScope() -> Bool {
         let scope = scopeStore.load()
-        selectedStudyMode = scope.studyMode
-        selectedMediaSlug = scope.mediaSlug
-        normalizeSelectedMediaForCurrentMode(preferCurrentModeMatch: false)
+        let resolvedScope = resolveStudyScope(scope)
+
+        selectedStudyMode = resolvedScope.studyMode
+        selectedMediaSlug = resolvedScope.mediaSlug
+
+        return scope != resolvedScope
+    }
+
+    private func resolveStudyScope(
+        _ scope: DailyKanjiStudyScope
+    ) -> DailyKanjiStudyScope {
+        DailyKanjiStudyScopeResolver.resolve(scope, cards: cards)
     }
 
     private func persistCurrentScope() {

@@ -33,3 +33,100 @@ struct DailyKanjiStudyScopeStore {
         }
     }
 }
+
+struct DailyKanjiStudyScopeResolver {
+    static func resolve(
+        _ scope: DailyKanjiStudyScope,
+        cards: [DailyKanjiCard]
+    ) -> DailyKanjiStudyScope {
+        let normalizedScope = normalize(scope, cards: cards)
+
+        if cards.isEmpty || hasCards(normalizedScope, cards: cards) {
+            return normalizedScope
+        }
+
+        return firstNonEmptyScope(cards: cards) ?? normalizedScope
+    }
+
+    private static func normalize(
+        _ scope: DailyKanjiStudyScope,
+        cards: [DailyKanjiCard]
+    ) -> DailyKanjiStudyScope {
+        guard scope.studyMode.usesMediaSelection else {
+            return DailyKanjiStudyScope(
+                studyMode: scope.studyMode,
+                mediaSlug: nil
+            )
+        }
+
+        let mediaOptions = DailyKanjiSelector.mediaOptions(
+            cards: cards,
+            studyMode: scope.studyMode
+        )
+
+        if let mediaSlug = scope.mediaSlug,
+           mediaOptions.contains(where: { $0.slug == mediaSlug }) {
+            return DailyKanjiStudyScope(
+                studyMode: scope.studyMode,
+                mediaSlug: mediaSlug
+            )
+        }
+
+        return DailyKanjiStudyScope(
+            studyMode: scope.studyMode,
+            mediaSlug: mediaOptions.first?.slug
+        )
+    }
+
+    private static func firstNonEmptyScope(
+        cards: [DailyKanjiCard]
+    ) -> DailyKanjiStudyScope? {
+        for studyMode in fallbackStudyModes {
+            if !studyMode.usesMediaSelection {
+                let scope = DailyKanjiStudyScope(
+                    studyMode: studyMode,
+                    mediaSlug: nil
+                )
+
+                if hasCards(scope, cards: cards) {
+                    return scope
+                }
+
+                continue
+            }
+
+            for mediaOption in DailyKanjiSelector.mediaOptions(
+                cards: cards,
+                studyMode: studyMode
+            ) {
+                let scope = DailyKanjiStudyScope(
+                    studyMode: studyMode,
+                    mediaSlug: mediaOption.slug
+                )
+
+                if hasCards(scope, cards: cards) {
+                    return scope
+                }
+            }
+        }
+
+        return nil
+    }
+
+    private static func hasCards(
+        _ scope: DailyKanjiStudyScope,
+        cards: [DailyKanjiCard]
+    ) -> Bool {
+        !DailyKanjiSelector.scopedCards(
+            cards,
+            mediaSlug: scope.mediaSlug,
+            studyMode: scope.studyMode
+        ).isEmpty
+    }
+
+    private static let fallbackStudyModes: [DailyKanjiStudyMode] = [
+        .daily,
+        .lastLessonsHardAgain,
+        .prestudy
+    ]
+}
