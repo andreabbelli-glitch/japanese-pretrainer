@@ -325,9 +325,12 @@ id: term-v231-denki
 lemma: でんき
 reading: でんき
 romaji: denki
-meaning_it: elettro
+meaning_it: elettricità; tipo Elettro
+aliases: [でんき, でんきタイプ, 電気タイプ]
 notes_it: >-
-  でんき è il tipo Elettro. In でんきタイプのわざ, specifica il tipo della mossa.
+  {{電気|でんき}} significa elettricità o corrente elettrica. Nei nomi di tipo può
+  apparire in kana come でんき: in でんきタイプ diventa la categoria Pokémon
+  localizzata come tipo Elettro.
 :::
 :::card
 id: card-v231-denki-recognition
@@ -336,7 +339,7 @@ entry_type: term
 entry_id: term-v231-denki
 card_type: recognition
 front: 'でんき'
-back: elettro
+back: elettricità; in Pokémon IT, tipo Elettro
 example_jp: >-
   でんきタイプの わざを {{使|つか}}います。
 example_it: >-

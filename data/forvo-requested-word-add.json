@@ -4391,8 +4391,8 @@
       "requestUrl": "https://forvo.com/word-add/%E3%81%AF%E3%81%8C%E3%81%AD/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
       "requestedAt": "2026-05-04T12:54:31.104Z",
       "resolvedAt": "2026-05-24T12:20:27.277Z",
-      "resolvedAudioSource": "forvo",
-      "resolvedAudioSrc": "assets/audio/term/term-v257-hagane/forvo-mezashi-はか-ね.mp3"
+      "resolvedAudioSource": "tofugu_wanikani",
+      "resolvedAudioSrc": "assets/audio/term/term-v257-hagane/tofugu-wanikani-鋼.mp3"
     },
     {
       "entryId": "term-v265-hikou",
@@ -4404,7 +4404,7 @@
       "requestedAt": "2026-05-04T12:56:02.279Z",
       "resolvedAt": "2026-06-06T12:47:52.922Z",
       "resolvedAudioSource": "forvo",
-      "resolvedAudioSrc": "assets/audio/term/term-v265-hikou/forvo-mezashi-ひこう.mp3"
+      "resolvedAudioSrc": "assets/audio/term/term-v265-hikou/forvo-usako_usagiclub-ひこう.mp3"
     },
     {
       "entryId": "term-v272-teeburushitei",
@@ -4428,7 +4428,7 @@
       "requestedAt": "2026-05-04T12:57:14.916Z",
       "resolvedAt": "2026-06-06T12:47:53.321Z",
       "resolvedAudioSource": "forvo",
-      "resolvedAudioSrc": "assets/audio/term/term-v273-kakutou/forvo-mezashi-かくとう.mp3"
+      "resolvedAudioSrc": "assets/audio/term/term-v273-kakutou/forvo-strawberrybrown-かくとう.mp3"
     },
     {
       "entryId": "term-v280-kakkuu",

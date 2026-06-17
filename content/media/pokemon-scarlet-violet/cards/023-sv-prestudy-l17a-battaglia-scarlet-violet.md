@@ -150,10 +150,12 @@ id: term-v160-kusa
 lemma: くさ
 reading: くさ
 romaji: kusa
-meaning_it: erba
+meaning_it: erba; tipo Erba
+aliases: [くさ, くさタイプ, 草タイプ]
 notes_it: >-
-  くさ è il tipo Erba. In くさタイプのわざ, specifica il tipo della mossa e quindi
-  quali avversari può colpire meglio o peggio.
+  {{草|くさ}} significa erba, piante basse o vegetazione. Nei nomi di tipo può
+  essere scritto in kana come くさ: in くさタイプ diventa la categoria Pokémon
+  localizzata come tipo Erba.
 :::
 :::card
 id: card-v160-kusa-recognition
@@ -162,7 +164,7 @@ entry_type: term
 entry_id: term-v160-kusa
 card_type: recognition
 front: 'くさ'
-back: erba
+back: erba / vegetazione; in Pokémon IT, tipo Erba
 example_jp: >-
   くさタイプの わざを {{使|つか}}います。
 example_it: >-
@@ -344,10 +346,12 @@ id: term-v170-honoo
 lemma: ほのお
 reading: ほのお
 romaji: honoo
-meaning_it: fuoco
+meaning_it: fiamma; tipo Fuoco
+aliases: [ほのお, ほのおタイプ, 炎タイプ]
 notes_it: >-
-  ほのお è il tipo Fuoco. In ほのおタイプのわざ, specifica il tipo della mossa e il
-  suo rapporto con debolezze e resistenze.
+  {{炎|ほのお}} è la fiamma, il fuoco visibile che brucia. Nei nomi di tipo può
+  apparire in kana come ほのお: in ほのおタイプ diventa la categoria Pokémon
+  localizzata come tipo Fuoco.
 :::
 :::card
 id: card-v170-honoo-recognition
@@ -356,7 +360,7 @@ entry_type: term
 entry_id: term-v170-honoo
 card_type: recognition
 front: 'ほのお'
-back: fuoco
+back: fiamma / fuoco; in Pokémon IT, tipo Fuoco
 example_jp: >-
   ほのおタイプの わざを {{使|つか}}います。
 example_it: >-
@@ -413,9 +417,11 @@ id: term-v173-mizu
 lemma: みず
 reading: みず
 romaji: mizu
-meaning_it: acqua
+meaning_it: acqua; tipo Acqua
+aliases: [みず, みずタイプ, 水タイプ]
 notes_it: >-
-  みず è il tipo Acqua. In みずタイプのわざ, specifica il tipo della mossa.
+  {{水|みず}} significa acqua. Nei nomi di tipo può apparire in kana come みず:
+  in みずタイプ diventa la categoria Pokémon localizzata come tipo Acqua.
 :::
 :::card
 id: card-v173-mizu-recognition
@@ -424,7 +430,7 @@ entry_type: term
 entry_id: term-v173-mizu
 card_type: recognition
 front: 'みず'
-back: acqua
+back: acqua; in Pokémon IT, tipo Acqua
 example_jp: >-
   みずタイプの わざを {{使|つか}}います。
 example_it: >-

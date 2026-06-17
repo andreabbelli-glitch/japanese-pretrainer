@@ -223,9 +223,12 @@ id: term-v200-mushi
 lemma: むし
 reading: むし
 romaji: mushi
-meaning_it: coleottero / tipo insetto
+meaning_it: insetto; tipo Coleottero
+aliases: [むし, むしタイプ, 虫タイプ]
 notes_it: >-
-  むし è il tipo Insetto. In むしタイプのわざ, specifica il tipo della mossa.
+  {{虫|むし}} significa insetto o piccolo animale simile. Nei nomi di tipo può
+  apparire in kana come むし: in むしタイプ è la categoria Pokémon localizzata in
+  italiano come tipo Coleottero.
 :::
 :::card
 id: card-v200-mushi-recognition
@@ -234,11 +237,11 @@ entry_type: term
 entry_id: term-v200-mushi
 card_type: recognition
 front: 'むし'
-back: coleottero / tipo insetto
+back: insetto; in Pokémon IT, tipo Coleottero
 example_jp: >-
   むしタイプの わざを {{使|つか}}います。
 example_it: >-
-  Uso una mossa di tipo Insetto.
+  Uso una mossa di tipo Coleottero.
 :::
 :::term
 id: term-v201-terapiisu
@@ -302,9 +305,11 @@ id: term-v204-koori
 lemma: こおり
 reading: こおり
 romaji: koori
-meaning_it: ghiaccio
+meaning_it: ghiaccio; tipo Ghiaccio
+aliases: [こおり, こおりタイプ, 氷タイプ]
 notes_it: >-
-  こおり è il tipo Ghiaccio. In こおりタイプのわざ, specifica il tipo della mossa.
+  {{氷|こおり}} significa ghiaccio. Nei nomi di tipo può apparire in kana come
+  こおり: in こおりタイプ diventa la categoria Pokémon localizzata come tipo Ghiaccio.
 :::
 :::card
 id: card-v204-koori-recognition
@@ -313,7 +318,7 @@ entry_type: term
 entry_id: term-v204-koori
 card_type: recognition
 front: 'こおり'
-back: ghiaccio
+back: ghiaccio; in Pokémon IT, tipo Ghiaccio
 example_jp: >-
   こおりタイプの わざを {{使|つか}}います。
 example_it: >-

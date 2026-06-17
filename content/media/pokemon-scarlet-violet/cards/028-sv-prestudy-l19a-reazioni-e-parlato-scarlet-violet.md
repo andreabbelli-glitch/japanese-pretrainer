@@ -232,10 +232,10 @@ id: term-v241-goosuto
 lemma: ゴースト
 reading: ゴースト
 romaji: goosuto
-meaning_it: spettro
+meaning_it: ghost, fantasma; tipo Spettro
 notes_it: >-
-  ゴースト è il tipo Spettro. In nomi come ゴーストタイプ, la parola prima di タイプ
-  decide compatibilità e effetto della mossa.
+  ゴースト è un prestito da "ghost": fantasma o spettro. Nei nomi di tipo,
+  ゴーストタイプ è la categoria Pokémon localizzata in italiano come tipo Spettro.
 :::
 :::card
 id: card-v241-goosuto-recognition
@@ -244,7 +244,7 @@ entry_type: term
 entry_id: term-v241-goosuto
 card_type: recognition
 front: 'ゴースト'
-back: spettro
+back: ghost / fantasma; in Pokémon IT, tipo Spettro
 example_jp: >-
   ゴーストタイプの わざを {{受|う}}ける。
 example_it: >-
@@ -397,10 +397,11 @@ id: term-v249-noomaru
 lemma: ノーマル
 reading: ノーマル
 romaji: noomaru
-meaning_it: normale
+meaning_it: normal, normale; tipo Normale
 notes_it: >-
-  ノーマル è il tipo Normale scritto in katakana. Va distinto da 普通, che significa
-  "normale/di solito" nel parlato comune.
+  ノーマル è un prestito da "normal": normale. Nei nomi di tipo, ノーマルタイプ è la
+  categoria Pokémon localizzata come tipo Normale. Va distinto da {{普通|ふつう}},
+  che significa "normale/di solito" nel parlato comune.
 :::
 :::card
 id: card-v249-noomaru-recognition
@@ -409,7 +410,7 @@ entry_type: term
 entry_id: term-v249-noomaru
 card_type: recognition
 front: 'ノーマル'
-back: normale
+back: normal / normale; in Pokémon IT, tipo Normale
 example_jp: >-
   ノーマルタイプの わざを {{使|つか}}う。
 example_it: >-

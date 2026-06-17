@@ -152,10 +152,12 @@ id: term-v154-iwa
 lemma: いわ
 reading: いわ
 romaji: iwa
-meaning_it: roccia
+meaning_it: roccia; tipo Roccia
+aliases: [いわ, いわタイプ, 岩タイプ]
 notes_it: >-
-  いわ è il tipo Roccia. In いわタイプのわざ, specifica il tipo della mossa e quindi
-  il rapporto di efficacia in battaglia.
+  {{岩|いわ}} significa roccia o masso. Nei nomi di tipo può apparire in kana
+  come いわ: in いわタイプ la parola diventa l'etichetta Pokémon localizzata come
+  tipo Roccia.
 :::
 :::card
 id: card-v154-iwa-recognition
@@ -164,7 +166,7 @@ entry_type: term
 entry_id: term-v154-iwa
 card_type: recognition
 front: 'いわ'
-back: roccia
+back: roccia / masso; in Pokémon IT, tipo Roccia
 example_jp: >-
   いわタイプの わざで {{攻撃|こうげき}}します。
 example_it: >-

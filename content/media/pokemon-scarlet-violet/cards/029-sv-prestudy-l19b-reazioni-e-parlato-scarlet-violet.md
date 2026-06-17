@@ -152,10 +152,11 @@ id: term-v256-fearii
 lemma: フェアリー
 reading: フェアリー
 romaji: fearii
-meaning_it: folletto
+meaning_it: fairy, fata; tipo Folletto
 notes_it: >-
-  フェアリー è il tipo Folletto. In フェアリータイプ, la parola prima di タイプ decide
-  il rapporto con mosse, resistenze e debolezze.
+  フェアリー è un prestito da "fairy": fata o creatura fatata. Nei nomi di tipo,
+  フェアリータイプ è la categoria Pokémon localizzata in italiano come tipo
+  Folletto.
 :::
 :::card
 id: card-v256-fearii-recognition
@@ -164,7 +165,7 @@ entry_type: term
 entry_id: term-v256-fearii
 card_type: recognition
 front: 'フェアリー'
-back: folletto
+back: fairy / fata; in Pokémon IT, tipo Folletto
 example_jp: >-
   フェアリータイプの わざを {{使|つか}}う。
 example_it: >-
@@ -175,10 +176,11 @@ id: term-v257-hagane
 lemma: はがね
 reading: はがね
 romaji: hagane
-meaning_it: acciaio
+meaning_it: acciaio; tipo Acciaio
+aliases: [はがね, はがねタイプ, 鋼タイプ]
 notes_it: >-
-  はがね è il tipo Acciaio; compare in kana nei nomi di tipo e va letto come
-  categoria di battaglia, non come materiale generico.
+  {{鋼|はがね}} significa acciaio. Nei nomi di tipo può apparire in kana come
+  はがね: in はがねタイプ diventa la categoria Pokémon localizzata come tipo Acciaio.
 :::
 :::card
 id: card-v257-hagane-recognition
@@ -187,7 +189,7 @@ entry_type: term
 entry_id: term-v257-hagane
 card_type: recognition
 front: 'はがね'
-back: acciaio
+back: acciaio; in Pokémon IT, tipo Acciaio
 example_jp: >-
   はがねタイプの わざを {{受|う}}ける。
 example_it: >-
@@ -336,10 +338,12 @@ id: term-v265-hikou
 lemma: ひこう
 reading: ひこう
 romaji: hikou
-meaning_it: volo
+meaning_it: volo / aviazione; tipo Volante
+aliases: [ひこう, ひこうタイプ, 飛行タイプ]
 notes_it: >-
-  ひこう è il tipo Volante e compare in nomi di tipo, mosse e compatibilità. Non
-  va confuso con 飛行 scritto in kanji nei testi più generali.
+  {{飛行|ひこう}} significa volo o aviazione. Nei nomi di tipo può apparire in
+  kana come ひこう: in ひこうタイプ diventa la categoria Pokémon localizzata come
+  tipo Volante.
 :::
 :::card
 id: card-v265-hikou-recognition
@@ -348,7 +352,7 @@ entry_type: term
 entry_id: term-v265-hikou
 card_type: recognition
 front: 'ひこう'
-back: volo
+back: volo / aviazione; in Pokémon IT, tipo Volante
 example_jp: >-
   ひこうタイプの ポケモンが {{出|で}}る。
 example_it: >-
@@ -508,10 +512,12 @@ id: term-v273-kakutou
 lemma: かくとう
 reading: かくとう
 romaji: kakutou
-meaning_it: lotta
+meaning_it: combattimento corpo a corpo; tipo Lotta
+aliases: [かくとう, かくとうタイプ, 格闘タイプ]
 notes_it: >-
-  かくとう è il tipo Lotta. In かくとうタイプ segnala la categoria di battaglia usata
-  per compatibilità e mosse.
+  {{格闘|かくとう}} indica un combattimento fisico ravvicinato, una lotta corpo a
+  corpo. Nei nomi di tipo può apparire in kana come かくとう: in かくとうタイプ è la
+  categoria Pokémon localizzata come tipo Lotta.
 :::
 :::card
 id: card-v273-kakutou-recognition
@@ -520,7 +526,7 @@ entry_type: term
 entry_id: term-v273-kakutou
 card_type: recognition
 front: 'かくとう'
-back: lotta
+back: combattimento corpo a corpo; in Pokémon IT, tipo Lotta
 example_jp: >-
   かくとうタイプの わざを {{受|う}}ける。
 example_it: >-

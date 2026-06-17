@@ -101,10 +101,11 @@ id: term-v178-doragon
 lemma: ドラゴン
 reading: ドラゴン
 romaji: doragon
-meaning_it: drago
+meaning_it: dragon, drago; tipo Drago
 notes_it: >-
-  ドラゴン è il tipo Drago. In ドラゴンタイプのわざ, specifica il tipo della mossa e
-  quindi il suo rapporto con debolezze e resistenze.
+  ドラゴン è un prestito da "dragon": drago. Nei nomi di tipo, ドラゴンタイプ è la
+  categoria Pokémon localizzata come tipo Drago. Resta diverso da {{竜|りゅう}},
+  parola giapponese più narrativa o mitologica.
 :::
 :::card
 id: card-v178-doragon-recognition
@@ -113,7 +114,7 @@ entry_type: term
 entry_id: term-v178-doragon
 card_type: recognition
 front: 'ドラゴン'
-back: drago
+back: dragon / drago; in Pokémon IT, tipo Drago
 example_jp: >-
   ドラゴンタイプの わざを {{使|つか}}います。
 example_it: >-
@@ -170,9 +171,11 @@ id: term-v182-doku
 lemma: どく
 reading: どく
 romaji: doku
-meaning_it: veleno
+meaning_it: veleno; tipo Veleno
+aliases: [どく, どくタイプ, 毒タイプ]
 notes_it: >-
-  どく è il tipo Veleno. In どくタイプのわざ, specifica il tipo della mossa.
+  {{毒|どく}} significa veleno. Nei nomi di tipo può apparire in kana come どく:
+  in どくタイプ diventa la categoria Pokémon localizzata come tipo Veleno.
 :::
 :::card
 id: card-v182-doku-recognition
@@ -181,7 +184,7 @@ entry_type: term
 entry_id: term-v182-doku
 card_type: recognition
 front: 'どく'
-back: veleno
+back: veleno; in Pokémon IT, tipo Veleno
 example_jp: >-
   どくタイプの わざを {{使|つか}}います。
 example_it: >-

@@ -205,10 +205,10 @@ example_it: >-
 :::
 :::term
 id: term-v296-aku
-lemma: 悪
+lemma: あく
 reading: あく
 romaji: aku
-meaning_it: tipo Buio; male / cattiveria
+meaning_it: male / cattiveria; tipo Buio
 aliases: [あく, あくタイプ, 悪タイプ]
 notes_it: >-
   Nel gioco il tipo può apparire in kana come あく, ma la lettura rimanda a
@@ -222,8 +222,8 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-031-sv-prestudy-l20b-battag
 entry_type: term
 entry_id: term-v296-aku
 card_type: recognition
-front: "{{悪|あく}}"
-back: tipo Buio; letteralmente 悪 è male / cattiveria, non oscurità fisica
+front: "あく"
+back: male / cattiveria; in Pokémon IT, tipo Buio (non oscurità fisica)
 example_jp: >-
   あくタイプの わざを {{受|う}}ける。
 example_it: >-
@@ -280,10 +280,11 @@ id: term-v299-esupaa
 lemma: エスパー
 reading: エスパー
 romaji: esupaa
-meaning_it: psico
+meaning_it: esper, sensitivo; tipo Psico
 notes_it: >-
-  エスパー è il tipo Psico. In nomi di tipo e mosse si legge come categoria
-  tecnica, non come persona con poteri psichici.
+  エスパー è un prestito da "esper": una persona con poteri extrasensoriali o
+  psichici. Nei nomi di tipo, エスパータイプ è la categoria Pokémon localizzata in
+  italiano come tipo Psico.
 :::
 :::card
 id: card-v299-esupaa-recognition
@@ -292,7 +293,7 @@ entry_type: term
 entry_id: term-v299-esupaa
 card_type: recognition
 front: "エスパー"
-back: psico
+back: esper / sensitivo; in Pokémon IT, tipo Psico
 example_jp: >-
   エスパータイプの {{相手|あいて}}と {{対戦|たいせん}}する。
 example_it: >-
@@ -543,10 +544,12 @@ id: term-v312-jimen
 lemma: じめん
 reading: じめん
 romaji: jimen
-meaning_it: terra
+meaning_it: suolo / terreno; tipo Terra
+aliases: [じめん, じめんタイプ, 地面タイプ]
 notes_it: >-
-  じめん è il tipo Terra. In じめんタイプ indica la categoria di mosse o Pokémon
-  usata per compatibilità e debolezze.
+  {{地面|じめん}} significa suolo, terreno, superficie della terra sotto i piedi.
+  Nei nomi di tipo può apparire in kana come じめん: in じめんタイプ è la categoria
+  Pokémon localizzata come tipo Terra.
 :::
 :::card
 id: card-v312-jimen-recognition
@@ -555,7 +558,7 @@ entry_type: term
 entry_id: term-v312-jimen
 card_type: recognition
 front: "じめん"
-back: terra
+back: suolo / terreno; in Pokémon IT, tipo Terra
 example_jp: >-
   じめんタイプの わざを {{使|つか}}う。
 example_it: >-
