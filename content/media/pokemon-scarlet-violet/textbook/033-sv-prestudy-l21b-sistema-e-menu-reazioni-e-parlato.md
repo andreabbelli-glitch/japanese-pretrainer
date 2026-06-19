@@ -139,20 +139,21 @@ parole giapponesi molto concrete. Il risultato è una UI che sembra semplice,
 ma in cui ogni termine stabilisce un ruolo: il canale, il codice, il tipo di
 partecipazione e il tono dell'invito.
 
-*   [インターネット](term:term-v348-intaanetto) non è solo una parola facile da
-    riconoscere: in un menu separa il gioco in rete dalla comunicazione locale.
+*   [インターネット](term:term-v348-intaanetto) sembra una parola facile da
+    riconoscere; in un menu separa il gioco in rete dalla comunicazione locale.
     Quando compare, la schermata sta dicendo quale infrastruttura userai per
     scambi, lotte o sessioni condivise.
 *   [ユニオンサークル](term:term-v352-yunionsaakuru) nomina lo spazio sociale in cui
-    più giocatori entrano nello stesso ambiente. Non leggerlo come un semplice
-    "menu online": è il contenitore della sessione condivisa.
+    più giocatori entrano nello stesso ambiente. La lettura utile è
+    "contenitore della sessione condivisa", oltre la semplice etichetta da menu
+    online.
 *   [{{協力|きょうりょく}}](term:term-v345-kyouryoku) porta l'idea di agire insieme.
     In `{{協力|きょうりょく}}プレイ`, il primo pezzo spiega la relazione tra
     giocatori, il secondo lo rende una modalità di gioco.
 *   [あいことば](term:term-v336-aikotoba) significa letteralmente una parola
-    concordata tra persone; nella UI diventa il codice link. Il punto non è la
-    segretezza assoluta, ma il fatto che chi inserisce la stessa parola entra
-    nello stesso canale.
+    concordata tra persone; nella UI diventa il codice link. Conta soprattutto
+    il fatto che chi inserisce la stessa parola entra nello stesso canale, più
+    della segretezza assoluta.
 
 :::example_sentence
 jp: >-
@@ -174,10 +175,9 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[～ませんか](grammar:grammar-g068-non-vuoi-ti-va-di) contiene una forma negativa,
-ma in questo uso non significa "non iniziamo". È la forma cortese di un invito:
-`はじめませんか` si legge come "ti va di iniziare?" o "perché non iniziamo?".
-La negazione ammorbidisce, non blocca.
+[～ませんか](grammar:grammar-g068-non-vuoi-ti-va-di) usa la forma negativa per
+costruire un invito cortese. In `はじめませんか`, la lettura pratica è "ti va di
+iniziare?" o "perché non iniziamo?". La negazione ammorbidisce la proposta.
 
 #### 🧠 Gancio cognitivo
 
@@ -235,8 +235,8 @@ stessa battaglia.
 #### 🧠 Gancio cognitivo
 
 `{{率|りつ}}` è la parte da riconoscere come "tasso" o "percentuale". Quando lo
-vedi in un parametro, immagina un numero dietro le quinte: non l'azione stessa,
-ma la probabilità che quell'azione o quell'esito si verifichi.
+vedi in un parametro, immagina un numero dietro le quinte: il tasso di
+probabilità associato a quell'azione o a quell'esito.
 
 ## 4. Colloqui e reazioni: quando la voce cambia ritmo
 
@@ -251,9 +251,9 @@ succede.
     colloquio, quindi promette domande e risposte prima o accanto alla prova di
     forza. Se lo leggi nella Lega, non aspettarti subito solo turni di battaglia:
     il gioco sta mettendo in scena una verifica dialogica.
-*   [ライバル](term:term-v334-raibaru) è trasparente, ma non significa
-    semplicemente "nemico". In un'avventura Pokémon il rivale è chi ti misura,
-    ti provoca, ti accompagna nella crescita e dà peso ai progressi.
+*   [ライバル](term:term-v334-raibaru) è trasparente e in un'avventura Pokémon
+    porta il ruolo del rivale: qualcuno che ti misura, ti provoca, ti accompagna
+    nella crescita e dà peso ai progressi.
 *   [{{自分|じぶん}}だけ](term:term-v344-jibun-dake) restringe il campo a "solo io"
     o "solo per me". `だけ` chiude fuori gli altri: in un dialogo può far sentire
     isolamento, responsabilità personale o una scelta che riguarda soltanto il
@@ -286,10 +286,11 @@ translation_it: >-
 #### ⚖️ Contrasto operativo
 
 [なんで？](term:term-e065-nande) punta al motivo con una spinta più immediata:
-"perché mai?". [どうして？](term:term-e067-doushite) chiede comunque la ragione,
-ma può suonare più neutro o più aperto. In un testo senza audio, guarda la
-scena: sorpresa, irritazione e comicità spingono spesso verso `なんで？`; una
-richiesta più seria di spiegazione può rendere naturale `どうして？`.
+"perché mai?". [どうして？](term:term-e067-doushite) resta una richiesta di
+ragione con un tono spesso più neutro o più aperto. In un testo senza audio,
+guarda la scena: sorpresa, irritazione e comicità spingono spesso verso
+`なんで？`; una richiesta più seria di spiegazione può rendere naturale
+`どうして？`.
 
 #### 🧠 Gancio cognitivo
 
@@ -309,7 +310,7 @@ lontano.
     formula di sospensione cortese. `しばらく` significa "per un po'",
     `お{{待|ま}}ち` rende l'attesa più cortese, `ください` la trasforma in una
     richiesta. Quando appare, il sistema sta caricando, cercando o collegandosi:
-    non è un dialogo emotivo, è una pausa operativa.
+    la lettura pratica è una pausa operativa.
 *   [～てある](grammar:grammar-g070-qualcosa-e-stato-fatto-intenzionalmente)
     legge uno stato come risultato predisposto. Se qualcosa è `してある`, qualcuno
     l'ha fatto apposta prima, e ora quel risultato resta lì.

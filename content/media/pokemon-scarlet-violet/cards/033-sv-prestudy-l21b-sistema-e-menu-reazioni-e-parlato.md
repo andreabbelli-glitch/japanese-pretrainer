@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato
 media_id: media-pokemon-scarlet-violet
 slug: 033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato
-title: SV Pre-study L21B - sistema e menu, reazioni e parlato
+title: "Menu, condizioni e reazioni: leggere blocchi, inviti e stati"
 order: 63
 segment_ref: scarlet-violet-prestudy
 ---
@@ -160,7 +160,7 @@ back: qualcosa è stato fatto intenzionalmente
 example_jp: >-
   ここに {{名前|なまえ}}が {{書|か}}いてある。
 example_it: >-
-  Qui il nome è scritto.
+  Qui c’è scritto il nome.
 :::
 :::term
 id: term-v333-muri
