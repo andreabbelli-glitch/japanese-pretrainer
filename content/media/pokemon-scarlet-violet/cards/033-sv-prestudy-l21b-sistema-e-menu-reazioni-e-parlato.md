@@ -160,7 +160,7 @@ back: qualcosa è stato fatto intenzionalmente
 example_jp: >-
   ここに {{名前|なまえ}}が {{書|か}}いてある。
 example_it: >-
-  Qui c’è scritto il nome.
+  Qui c’è scritto il nome
 :::
 :::term
 id: term-v333-muri
