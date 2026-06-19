@@ -100,6 +100,7 @@ export async function prefetchReviewCardSessionAction(input: {
 }
 
 export async function loadReviewPageDataSessionAction(input: {
+  bypassCache?: boolean;
   mediaSlug?: string;
   scope: "global" | "media";
   searchParams: Record<string, string | string[] | undefined>;

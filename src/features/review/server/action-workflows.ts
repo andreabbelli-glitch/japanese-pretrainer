@@ -148,6 +148,7 @@ export function prefetchReviewCardSessionWorkflow(input: {
 }
 
 export function loadReviewPageDataSessionWorkflow(input: {
+  bypassCache?: boolean;
   mediaSlug?: string;
   scope: "global" | "media";
   searchParams: Record<string, string | string[] | undefined>;

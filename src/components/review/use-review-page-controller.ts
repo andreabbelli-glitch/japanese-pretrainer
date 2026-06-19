@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 
 import {
+  loadReviewPageDataSessionAction,
   markLinkedEntryKnownSessionAction,
   resetReviewCardSessionAction,
   setLinkedEntryLearningSessionAction,
@@ -68,6 +69,7 @@ export type ReviewPageControllerResult = {
   handleResetCard: () => void;
   handleRevealAnswer: () => void;
   handleRemoveForcedContrast: () => void;
+  handleRefreshQueue: () => void;
   handleSetLearning: () => void;
   handleToggleSuspended: () => void;
   hasSupportCards: boolean;
@@ -261,6 +263,24 @@ export function useReviewPageController(input: {
     });
   }
 
+  function handleRefreshQueue() {
+    const refreshSearchParams = buildReviewRefreshSearchParams(viewData);
+
+    runSessionUpdate(
+      () =>
+        loadReviewPageDataSessionAction({
+          bypassCache: true,
+          mediaSlug:
+            viewData.scope === "media" ? viewData.media.slug : undefined,
+          scope: viewData.scope,
+          searchParams: refreshSearchParams
+        }),
+      {
+        acceptSameProgressSelectionChange: true
+      }
+    );
+  }
+
   function handleRevealAnswer() {
     if (!selectedCard) {
       return;
@@ -381,6 +401,7 @@ export function useReviewPageController(input: {
     handleResetCard,
     handleRevealAnswer,
     handleRemoveForcedContrast: forcedContrast.handleRemoveForcedContrast,
+    handleRefreshQueue,
     handleSetLearning,
     handleToggleSuspended,
     hasSupportCards,
@@ -397,4 +418,34 @@ export function useReviewPageController(input: {
     showFrontFurigana,
     viewData
   };
+}
+
+function buildReviewRefreshSearchParams(data: ReviewPageClientData) {
+  const params: Record<string, string> = {};
+
+  if (data.session.answeredCount > 0) {
+    params.answered = String(data.session.answeredCount);
+  }
+
+  if (data.session.extraNewCount > 0) {
+    params.extraNew = String(data.session.extraNewCount);
+
+    if (
+      data.session.extraNewAnchorCount !== null &&
+      data.session.extraNewAnchorCount !== undefined &&
+      data.session.extraNewAnchorCount >= 0
+    ) {
+      params.extraNewAnchor = String(data.session.extraNewAnchorCount);
+    }
+  }
+
+  if (data.mode === "prestudy") {
+    params.mode = "prestudy";
+  }
+
+  if (data.session.segmentId) {
+    params.segment = data.session.segmentId;
+  }
+
+  return params;
 }

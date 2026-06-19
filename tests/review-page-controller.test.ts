@@ -1,5 +1,6 @@
 import { createElement, act, useEffect } from "react";
 import { createRoot } from "react-dom/client";
+import type { Route } from "next";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { createDeferred, flushMicrotasks } from "./helpers/async";
@@ -816,6 +817,89 @@ describe("useReviewPageController first-candidate grading", () => {
         rating: "good"
       })
     );
+  });
+
+  it("refreshes the completed queue with uncached clean session search params", async () => {
+    mocks.loadReviewPageDataSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Keep the refresh pending while inspecting the action payload.
+        })
+    );
+
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    const data = {
+      ...buildFullReviewPageData("card-a"),
+      media: {
+        glossaryHref: "/media/duel-masters-dm25/glossary" as Route,
+        href: "/media/duel-masters-dm25" as Route,
+        id: "media-duel-masters",
+        reviewHref: "/media/duel-masters-dm25/review" as Route,
+        slug: "duel-masters-dm25",
+        title: "Duel Masters"
+      },
+      scope: "media",
+      session: {
+        answeredCount: 3,
+        extraNewAnchorCount: 1,
+        extraNewCount: 2,
+        segmentId: "segment-a"
+      }
+    } satisfies ReviewPageData;
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data,
+          searchParams: {
+            card: "card-a",
+            show: "answer"
+          }
+        })
+      );
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRefreshQueue();
+    });
+
+    expect(mocks.loadReviewPageDataSessionAction).toHaveBeenLastCalledWith({
+      bypassCache: true,
+      mediaSlug: "duel-masters-dm25",
+      scope: "media",
+      searchParams: {
+        answered: "3",
+        extraNew: "2",
+        extraNewAnchor: "1",
+        segment: "segment-a"
+      }
+    });
+    expect(controller().isPending).toBe(true);
   });
 
   it("surfaces allowlisted forced contrast validation errors without advancing the card", async () => {

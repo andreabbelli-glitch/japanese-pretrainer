@@ -34,7 +34,7 @@ type HydratedReviewCardOutcome =
     };
 
 export async function resolvePostGradeReviewSessionPageData(input: {
-  gradeResult: Pick<ReviewGradeResult, "forcedContrast">;
+  gradeResult: Pick<ReviewGradeResult, "dueAt" | "forcedContrast">;
   resolvedMedia?: ResolvedReviewScopeMedia;
   sessionInput: ReviewSessionInput;
 }): Promise<ReviewPageData> {
@@ -48,10 +48,12 @@ export async function resolvePostGradeReviewSessionPageData(input: {
     sessionInput.sessionSettings
   ) {
     const now = new Date();
-    const updatedQueue = buildIncrementalQueueUpdate(
-      sessionInput.sessionQueue,
-      sessionInput.gradedCardBucket
-    );
+    const updatedQueue = buildIncrementalQueueUpdate({
+      currentQueue: sessionInput.sessionQueue,
+      gradedCardBucket: sessionInput.gradedCardBucket,
+      gradedDueAt: input.gradeResult.dueAt,
+      now
+    });
     const hydratedAdvanceCandidate = await resolveHydratedAdvanceCandidate({
       candidateCardIds: sessionInput.candidateCardIds ?? [],
       canonicalCandidateCardIds:
@@ -277,12 +279,23 @@ export async function requireMediaIdForSlug(mediaSlug: string) {
   return (await requireMediaForSlug(mediaSlug)).id;
 }
 
-function buildIncrementalQueueUpdate(
-  currentQueue: ReviewPageData["queue"],
-  gradedCardBucket: ReviewQueueCard["bucket"]
-): ReviewPageData["queue"] {
+function buildIncrementalQueueUpdate(input: {
+  currentQueue: ReviewPageData["queue"];
+  gradedCardBucket: ReviewQueueCard["bucket"];
+  gradedDueAt: string | null;
+  now: Date;
+}): ReviewPageData["queue"] {
+  const { currentQueue, gradedCardBucket } = input;
   const isQueuedBucket =
     gradedCardBucket === "due" || gradedCardBucket === "new";
+  const gradedDueAt = isQueuedBucket ? input.gradedDueAt : null;
+  const gradedDueTime = gradedDueAt ? new Date(gradedDueAt).getTime() : NaN;
+  const gradedBecomesUpcoming =
+    Number.isFinite(gradedDueTime) && gradedDueTime > input.now.getTime();
+  const nextDueAt = resolveEarliestDueAt(
+    currentQueue.nextDueAt ?? null,
+    gradedDueAt
+  );
 
   return {
     ...currentQueue,
@@ -299,8 +312,43 @@ function buildIncrementalQueueUpdate(
       gradedCardBucket === "new"
         ? Math.max(0, currentQueue.newQueuedCount - 1)
         : currentQueue.newQueuedCount,
-    queueCount: Math.max(0, currentQueue.queueCount - (isQueuedBucket ? 1 : 0))
+    nextDueAt,
+    queueCount: Math.max(0, currentQueue.queueCount - (isQueuedBucket ? 1 : 0)),
+    tomorrowCount:
+      currentQueue.tomorrowCount +
+      (gradedBecomesUpcoming && isDueTomorrow(gradedDueAt!, input.now) ? 1 : 0),
+    upcomingCount: currentQueue.upcomingCount + (gradedBecomesUpcoming ? 1 : 0)
   };
+}
+
+function resolveEarliestDueAt(
+  currentDueAt: string | null,
+  candidateDueAt: string | null
+) {
+  if (!candidateDueAt) {
+    return currentDueAt;
+  }
+
+  if (!currentDueAt) {
+    return candidateDueAt;
+  }
+
+  return candidateDueAt < currentDueAt ? candidateDueAt : currentDueAt;
+}
+
+function isDueTomorrow(dueAt: string, now: Date) {
+  const tomorrowStart = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1
+  );
+  const tomorrowEnd = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 2
+  );
+
+  return dueAt >= tomorrowStart.toISOString() && dueAt < tomorrowEnd.toISOString();
 }
 
 async function resolveHydratedAdvanceCandidate(input: {

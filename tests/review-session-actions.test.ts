@@ -431,11 +431,23 @@ describe("review session actions", () => {
     expect(completionResult.queue.queueCount).toBe(0);
     expect(completionResult.session.extraNewCount).toBe(0);
 
+    const firstGradedState =
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${fixture.termIds[0]}`
+        )
+      });
+
+    expect(completionResult.queue.nextDueAt).toBe(firstGradedState?.dueAt);
+    expect(completionResult.queue.upcomingCount).toBeGreaterThanOrEqual(1);
+
     const completionMarkup = renderToStaticMarkup(
       ReviewPage({ data: completionResult })
     );
 
     expect(completionMarkup).toContain("Aggiungi altre 2 nuove");
+    expect(completionMarkup).toContain("Prossime card");
     expect(completionMarkup).toContain(
       "alla rotazione attuale di questo media"
     );
@@ -648,6 +660,68 @@ describe("review session actions", () => {
       expect(freshTopUp?.session.extraNewAnchorCount).toBe(2);
       expect(freshTopUp?.queue.newQueuedCount).toBe(1);
       expect(freshTopUp?.queueCardIds).toHaveLength(1);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("keeps a one-card Again completion out of the queue until its next due time", async () => {
+    const fixture = await createIsolatedNewMediaFixture(database, {
+      cardCount: 1,
+      mediaId: "terminal_again_media",
+      mediaSlug: "terminal-again-media",
+      title: "Terminal Again Media"
+    });
+
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-03-11T13:00:00.000Z"));
+
+    try {
+      const initialPage = await getReviewPageData(
+        fixture.mediaSlug,
+        {},
+        database
+      );
+      const { gradeReviewCardSessionAction, reviewPageCalls } =
+        await loadReviewActionsForDatabase(database);
+
+      const completionResult = await gradeReviewCardSessionAction({
+        answeredCount: initialPage?.session.answeredCount ?? 0,
+        cardId: fixture.cardIds[0],
+        cardMediaSlug: fixture.mediaSlug,
+        extraNewCount: initialPage?.session.extraNewCount ?? 0,
+        gradedCardBucket: initialPage?.selectedCard?.bucket,
+        mediaSlug: fixture.mediaSlug,
+        nextCardId: null,
+        rating: "again",
+        scope: "media",
+        sessionMedia: initialPage?.media,
+        sessionQueue: initialPage?.queue,
+        sessionSettings: initialPage?.settings
+      });
+
+      expect(reviewPageCalls).toEqual([]);
+      expect(completionResult.selectedCard).toBeNull();
+      expect(completionResult.selectedCardContext.showAnswer).toBe(false);
+      expect(completionResult.queue.queueCount).toBe(0);
+      expect(completionResult.queue.nextDueAt).toEqual(expect.any(String));
+      expect(completionResult.queue.upcomingCount).toBeGreaterThanOrEqual(1);
+
+      vi.setSystemTime(
+        new Date(new Date(completionResult.queue.nextDueAt!).getTime() + 1_000)
+      );
+
+      const dueRefresh = await getReviewPageData(
+        fixture.mediaSlug,
+        {
+          answered: String(completionResult.session.answeredCount)
+        },
+        database
+      );
+
+      expect(dueRefresh?.selectedCard?.id).toBe(fixture.cardIds[0]);
+      expect(dueRefresh?.selectedCard?.bucket).toBe("due");
+      expect(dueRefresh?.selectedCardContext.showAnswer).toBe(false);
     } finally {
       vi.useRealTimers();
     }

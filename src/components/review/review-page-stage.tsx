@@ -1,6 +1,6 @@
 import type { Route } from "next";
 import Link from "next/link";
-import type { RefObject } from "react";
+import { useEffect, useState, type RefObject } from "react";
 
 import { GlossaryAutocompleteDropdown } from "@/features/glossary/ui/client/glossary-autocomplete-dropdown";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
@@ -20,6 +20,7 @@ import { SurfaceCard } from "../ui/surface-card";
 import {
   formatRemainingCardsLabel,
   formatTopUpLabel,
+  resolveReviewQueueRefreshState,
   reviewGradeRatingCopy,
   type ReviewGradeValue
 } from "./review-page-helpers";
@@ -48,6 +49,7 @@ export function ReviewPageStage({
   handleResetCard,
   handleRevealAnswer,
   handleRemoveForcedContrast,
+  handleRefreshQueue,
   handleSetLearning,
   handleToggleSuspended,
   hasSupportCards,
@@ -85,6 +87,7 @@ export function ReviewPageStage({
   handleResetCard: () => void;
   handleRevealAnswer: () => void;
   handleRemoveForcedContrast: () => void;
+  handleRefreshQueue: () => void;
   handleSetLearning: () => void;
   handleToggleSuspended: () => void;
   hasSupportCards: boolean;
@@ -513,6 +516,14 @@ export function ReviewPageStage({
                   {formatTopUpLabel(additionalNewCount)}
                 </Link>
               ) : null}
+              {!isPrestudy ? (
+                <ReviewQueueRefreshButton
+                  key={viewData.queue.nextDueAt ?? "no-next-due"}
+                  isPending={isPending}
+                  nextDueAt={viewData.queue.nextDueAt ?? null}
+                  onRefresh={handleRefreshQueue}
+                />
+              ) : null}
               <Link
                 className="button button--ghost"
                 href={contextualGlossaryHref}
@@ -546,4 +557,62 @@ export function ReviewPageStage({
       )}
     </SurfaceCard>
   );
+}
+
+function ReviewQueueRefreshButton({
+  isPending,
+  nextDueAt,
+  onRefresh
+}: {
+  isPending: boolean;
+  nextDueAt: string | null;
+  onRefresh: () => void;
+}) {
+  const now = useReviewQueueRefreshClock({
+    nextDueAt
+  });
+  const queueRefreshState = resolveReviewQueueRefreshState({
+    isPending,
+    nextDueAt,
+    now
+  });
+
+  return (
+    <button
+      className="button button--primary"
+      disabled={!queueRefreshState.canRefresh}
+      type="button"
+      onClick={onRefresh}
+    >
+      {queueRefreshState.label}
+    </button>
+  );
+}
+
+function useReviewQueueRefreshClock(input: { nextDueAt: string | null }) {
+  const [now, setNow] = useState(() => new Date());
+
+  useEffect(() => {
+    if (!input.nextDueAt) {
+      return;
+    }
+
+    const dueTime = new Date(input.nextDueAt).getTime();
+    const msUntilDue = dueTime - now.getTime();
+
+    if (!Number.isFinite(msUntilDue) || msUntilDue <= 0) {
+      return;
+    }
+
+    const timeout = window.setTimeout(
+      () => setNow(new Date()),
+      Math.max(1_000, Math.min(msUntilDue, 60_000))
+    );
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  }, [input.nextDueAt, now]);
+
+  return now;
 }

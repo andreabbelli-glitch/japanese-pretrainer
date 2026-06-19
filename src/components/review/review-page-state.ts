@@ -56,9 +56,12 @@ export function mergeReviewPageData(
   currentData: ReviewPageClientData,
   nextData: ReviewPageData
 ): ReviewPageData {
+  const isSameReviewStep =
+    currentData.session.answeredCount === nextData.session.answeredCount;
   const showAnswer = shouldKeepRevealedReviewAnswer({
     currentCardId: currentData.selectedCard?.id ?? null,
-    currentShowAnswer: currentData.selectedCardContext.showAnswer,
+    currentShowAnswer:
+      isSameReviewStep && currentData.selectedCardContext.showAnswer,
     nextCardId: nextData.selectedCard?.id ?? null,
     nextShowAnswer: nextData.selectedCardContext.showAnswer
   });

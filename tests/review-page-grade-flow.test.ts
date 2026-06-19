@@ -138,6 +138,38 @@ describe("buildReviewGradeSubmissionPlan", () => {
     expect(plan.actionInput.sessionSettings).toBe(currentData.settings);
   });
 
+  it("optimistically completes a terminal queue card without waiting for a full rebuild", () => {
+    const currentData = buildFullReviewPageData("card-a", {
+      queueCardIds: ["card-a"]
+    });
+
+    const plan = buildReviewGradeSubmissionPlan({
+      activeQueueCardIds: ["card-a"],
+      advanceWindowCardIds: [],
+      forcedContrastSelection: null,
+      fullViewData: currentData,
+      gradedCardIds: ["card-a"],
+      isHydratingFullData: false,
+      isQueueCard: true,
+      pendingGradeSubmissionCount: 0,
+      prefetchedCards: new Map(),
+      rating: "again",
+      selectedCard: currentData.selectedCard!,
+      sessionViewData: currentData
+    });
+
+    expect(plan.kind).toBe("advance-queue");
+    if (plan.kind !== "advance-queue") {
+      throw new Error("Expected an advance-queue plan.");
+    }
+
+    expect(plan.canOptimisticallyAdvance).toBe(true);
+    expect(plan.nextCardId).toBeNull();
+    expect(plan.optimisticViewData?.selectedCard).toBeNull();
+    expect(plan.optimisticViewData?.queue.queueCount).toBe(0);
+    expect(plan.optimisticViewData?.selectedCardContext.showAnswer).toBe(false);
+  });
+
   it("adds forced contrast payloads and disables optimistic advance", () => {
     const currentData = buildFullReviewPageData("card-a");
     const forcedContrastSelection: ReviewForcedContrastSelection = {
@@ -229,6 +261,7 @@ function buildFullReviewPageData(
   options?: {
     bucket?: ReviewQueueCard["bucket"];
     isQueueCard?: boolean;
+    queueCardIds?: string[];
     scope?: "global" | "media";
   }
 ): ReviewPageData {
@@ -236,9 +269,15 @@ function buildFullReviewPageData(
   const selectedCard = buildQueueCard(selectedCardId, {
     bucket: options?.bucket ?? "due"
   });
-  const advanceCards = ["card-b", "card-c"]
+  const queueCardIds = options?.queueCardIds ?? [
+    selectedCard.id,
+    "card-b",
+    "card-c"
+  ];
+  const advanceCards = queueCardIds
     .filter((cardId) => cardId !== selectedCardId)
     .map((cardId) => buildQueueCard(cardId));
+  const queueCount = queueCardIds.length;
 
   return {
     media: buildReviewMedia(scope),
@@ -246,22 +285,22 @@ function buildFullReviewPageData(
       advanceCards,
       cards: [selectedCard, ...advanceCards],
       dailyLimit: 20,
-      dueCount: 3,
+      dueCount: queueCount,
       effectiveDailyLimit: 20,
-      introLabel: "3 card da ripassare adesso.",
+      introLabel: `${queueCount} card da ripassare adesso.`,
       manualCards: [],
       manualCount: 0,
       newAvailableCount: 0,
       newQueuedCount: 0,
-      queueCount: 3,
-      queueLabel: "3 card da ripassare adesso.",
+      queueCount,
+      queueLabel: `${queueCount} card da ripassare adesso.`,
       suspendedCards: [],
       suspendedCount: 0,
       tomorrowCount: 0,
       upcomingCards: [],
       upcomingCount: 0
     },
-    queueCardIds: [selectedCard.id, ...advanceCards.map((card) => card.id)],
+    queueCardIds,
     scope,
     selectedCard,
     selectedCardContext: {

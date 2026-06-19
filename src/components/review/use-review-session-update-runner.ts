@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useTransition } from "react";
+import { useCallback, useRef, useState, useTransition } from "react";
 
 import type { ReviewPageData } from "@/features/review/client";
 
@@ -39,7 +39,8 @@ export function useReviewSessionUpdateRunner(input: {
   const gradeQueueTailRef = useRef<Promise<void>>(Promise.resolve());
   const gradeQueueActiveRef = useRef(false);
   const gradeQueueFailedRef = useRef(false);
-  const [isPending, startTransition] = useTransition();
+  const [transitionIsPending, startTransition] = useTransition();
+  const [inFlightUpdateCount, setInFlightUpdateCount] = useState(0);
 
   const resetQueuedGradeFailure = useCallback(() => {
     gradeQueueFailedRef.current = false;
@@ -53,10 +54,8 @@ export function useReviewSessionUpdateRunner(input: {
     const rollbackOptimisticUpdate = options?.optimisticUpdate?.();
 
     startTransition(() => {
-      void executeSessionUpdate(
-        loadNextData,
-        options,
-        rollbackOptimisticUpdate
+      void trackSessionUpdate(
+        executeSessionUpdate(loadNextData, options, rollbackOptimisticUpdate)
       );
     });
   }
@@ -73,18 +72,20 @@ export function useReviewSessionUpdateRunner(input: {
         return Promise.resolve();
       }
 
-      return executeSessionUpdate(
-        loadNextData,
-        {
-          ...options,
-          onError: () => {
-            gradeQueueFailedRef.current = true;
-            options?.onError?.();
-          }
-        },
-        rollbackOptimisticUpdate
-          ? () => rollbackOptimisticUpdate({ force: true })
-          : undefined
+      return trackSessionUpdate(
+        executeSessionUpdate(
+          loadNextData,
+          {
+            ...options,
+            onError: () => {
+              gradeQueueFailedRef.current = true;
+              options?.onError?.();
+            }
+          },
+          rollbackOptimisticUpdate
+            ? () => rollbackOptimisticUpdate({ force: true })
+            : undefined
+        )
       );
     };
 
@@ -99,6 +100,14 @@ export function useReviewSessionUpdateRunner(input: {
       }
     });
     gradeQueueTailRef.current = trackedTail;
+  }
+
+  function trackSessionUpdate(promise: Promise<void>) {
+    setInFlightUpdateCount((count) => count + 1);
+
+    return promise.finally(() => {
+      setInFlightUpdateCount((count) => Math.max(0, count - 1));
+    });
   }
 
   function executeSessionUpdate(
@@ -150,7 +159,7 @@ export function useReviewSessionUpdateRunner(input: {
 
   return {
     enqueueOptimisticGradeSessionUpdate,
-    isPending,
+    isPending: transitionIsPending || inFlightUpdateCount > 0,
     resetQueuedGradeFailure,
     runSessionUpdate
   };

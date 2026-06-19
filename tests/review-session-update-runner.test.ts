@@ -132,6 +132,38 @@ describe("useReviewSessionUpdateRunner", () => {
     expect(controller().queueCardIds).toEqual(["card-b"]);
   });
 
+  it("keeps isPending true while a session update promise is unresolved", async () => {
+    const initialData = buildReviewPageData({
+      answeredCount: 0,
+      queueCardIds: ["card-a", "card-b"],
+      selectedCardId: "card-a"
+    });
+    const nextData = buildReviewPageData({
+      answeredCount: 1,
+      queueCardIds: ["card-b"],
+      selectedCardId: "card-b"
+    });
+    const persistence = createDeferred<ReviewPageData>();
+    const controller = await renderRunner(initialData);
+
+    expect(controller().isPending).toBe(false);
+
+    await act(async () => {
+      controller().runSessionUpdate(() => persistence.promise);
+      await flushMicrotasks(1);
+    });
+
+    expect(controller().isPending).toBe(true);
+
+    await act(async () => {
+      persistence.resolve(nextData);
+      await flushMicrotasks(3);
+    });
+
+    expect(controller().isPending).toBe(false);
+    expect(controller().viewData.selectedCard?.id).toBe("card-b");
+  });
+
   it("handles errors with rollback, callbacks, default and custom messages, and controlled logging", async () => {
     const consoleErrorSpy = vi
       .spyOn(console, "error")

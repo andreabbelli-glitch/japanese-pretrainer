@@ -194,6 +194,7 @@ export function areReviewPageSidebarPropsEqual(
     previousQueue.dueCount === nextQueue.dueCount &&
     previousQueue.newAvailableCount === nextQueue.newAvailableCount &&
     previousQueue.newQueuedCount === nextQueue.newQueuedCount &&
+    previousQueue.nextDueAt === nextQueue.nextDueAt &&
     previousQueue.manualCount === nextQueue.manualCount &&
     previousQueue.suspendedCount === nextQueue.suspendedCount &&
     previousQueue.tomorrowCount === nextQueue.tomorrowCount &&

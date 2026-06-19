@@ -7,6 +7,7 @@ import {
   pruneQueuedPrefetchedCardMap,
   pruneQueuedPrefetchingCardIds,
   prioritizeReviewAdvanceCandidateCardIds,
+  resolveReviewQueueRefreshState,
   resolveOptimisticReviewAdvanceCardForClientData,
   resolveOptimisticReviewAdvanceCard,
   resolveReviewQueuePosition,
@@ -19,6 +20,47 @@ import type {
   ReviewPageData,
   ReviewQueueCard
 } from "@/features/review/types";
+
+describe("resolveReviewQueueRefreshState", () => {
+  it("enables the completion refresh when the next due time has passed", () => {
+    expect(
+      resolveReviewQueueRefreshState({
+        isPending: false,
+        nextDueAt: "2026-04-02T12:00:00.000Z",
+        now: new Date("2026-04-02T12:00:01.000Z")
+      })
+    ).toEqual({
+      canRefresh: true,
+      label: "Controlla card pronte"
+    });
+  });
+
+  it("shows the wait in the disabled completion refresh button", () => {
+    expect(
+      resolveReviewQueueRefreshState({
+        isPending: false,
+        nextDueAt: "2026-04-02T12:05:01.000Z",
+        now: new Date("2026-04-02T12:00:00.000Z")
+      })
+    ).toEqual({
+      canRefresh: false,
+      label: "Prossime card tra 6 min"
+    });
+  });
+
+  it("keeps the completion refresh disabled while a session update is pending", () => {
+    expect(
+      resolveReviewQueueRefreshState({
+        isPending: true,
+        nextDueAt: "2026-04-02T12:00:00.000Z",
+        now: new Date("2026-04-02T12:00:01.000Z")
+      })
+    ).toEqual({
+      canRefresh: false,
+      label: "Aggiorno queue..."
+    });
+  });
+});
 
 describe("resolveReviewQueuePosition", () => {
   it("prefers the optimistic queue when the selected card is still present", () => {

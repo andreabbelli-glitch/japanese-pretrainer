@@ -177,6 +177,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
                                   data.media.slug,
                                   lesson.slug
                                 )}
+                                prefetch={false}
                               >
                                 Apri
                               </Link>

@@ -331,6 +331,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
       manualCount: queueSnapshot.manualCount,
       newAvailableCount: queueSnapshot.newAvailableCount,
       newQueuedCount: queueSnapshot.newQueuedCount,
+      nextDueAt: queueSnapshot.nextDueAt ?? null,
       queueCount: queueSnapshot.queueCount,
       queueLabel: queueSnapshot.introLabel,
       suspendedCards: [],
@@ -452,6 +453,7 @@ export async function getReviewPageData(
 
 export async function loadReviewPageDataSession(
   input: {
+    bypassCache?: boolean;
     mediaSlug?: string;
     scope: ReviewScope;
     searchParams: Record<string, string | string[] | undefined>;
@@ -460,7 +462,7 @@ export async function loadReviewPageDataSession(
 ): Promise<ReviewPageData> {
   if (input.scope === "global") {
     return getGlobalReviewPageData(input.searchParams, database, {
-      bypassCache: false
+      bypassCache: input.bypassCache ?? false
     });
   }
 
@@ -473,7 +475,7 @@ export async function loadReviewPageDataSession(
     input.searchParams,
     database,
     {
-      bypassCache: false
+      bypassCache: input.bypassCache ?? false
     }
   );
 
@@ -646,6 +648,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
       manualCount: queueSnapshot.manualCount,
       newAvailableCount: queueSnapshot.newAvailableCount,
       newQueuedCount: queueSnapshot.newQueuedCount,
+      nextDueAt: queueSnapshot.nextDueAt ?? null,
       queueCount: queueSnapshot.queueCount,
       queueLabel: queueSnapshot.introLabel,
       suspendedCount: queueSnapshot.suspendedCount,
@@ -817,6 +820,7 @@ export async function getReviewQueueSnapshotForMedia(
     manualCount: snapshot.manualCount,
     newAvailableCount: snapshot.newAvailableCount,
     newQueuedCount: snapshot.newQueuedCount,
+    nextDueAt: snapshot.nextDueAt ?? null,
     queueLabel: snapshot.introLabel,
     queueCount: snapshot.queueCount,
     suspendedCount: snapshot.suspendedCount,

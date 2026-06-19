@@ -166,6 +166,7 @@ export function buildReviewQueueSnapshot(input: {
     manualCount: snapshot.manualCount,
     newAvailableCount: snapshot.newAvailableCount,
     newQueuedCount: snapshot.newQueuedCount,
+    nextDueAt: snapshot.nextDueAt ?? null,
     queueLabel: snapshot.introLabel,
     queueCount: snapshot.queueCount,
     suspendedCards: snapshot.suspendedModels.map((model) =>

@@ -316,6 +316,7 @@ export function buildReviewOverviewSnapshot(input: {
   const newQueuedCount = queuedNewModels.length;
   const manualCount = classifiedModels.manualModels.length;
   const upcomingCount = classifiedModels.upcomingModels.length;
+  const nextDueAt = resolveNextDueAt(classifiedModels.upcomingModels);
   const queueLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,
     dueCount,
@@ -335,6 +336,7 @@ export function buildReviewOverviewSnapshot(input: {
     manualCount,
     newAvailableCount: classifiedModels.visibleNewModels.length,
     newQueuedCount,
+    nextDueAt,
     nextCardFront: firstQueueModel?.card.front
       ? stripInlineMarkdown(firstQueueModel.card.front)
       : undefined,
@@ -422,6 +424,7 @@ export function buildReviewQueueSubjectSnapshot(input: {
     classifiedModels.upcomingModels
   );
   const mappedDueModels = mapModelsForDisplay(classifiedModels.dueModels);
+  const nextDueAt = resolveNextDueAt(mappedUpcomingModels);
 
   // queuedNewModels are already resolved for display inside buildQueuedNewReviewSubjectModels if visibleMediaId is provided.
   const queueModels = [...mappedDueModels, ...queuedNewModels];
@@ -443,6 +446,7 @@ export function buildReviewQueueSubjectSnapshot(input: {
     manualModels: mappedManualModels,
     newAvailableCount: classifiedModels.visibleNewModels.length,
     newQueuedCount: queuedNewModels.length,
+    nextDueAt,
     queueCount: queueModels.length,
     queueModels,
     subjectModels: visibleSubjectModels,
@@ -456,6 +460,10 @@ export function buildReviewQueueSubjectSnapshot(input: {
     upcomingModels: mappedUpcomingModels,
     visibleMediaId: input.visibleMediaId
   };
+}
+
+function resolveNextDueAt(models: ReviewSubjectModel[]) {
+  return models[0]?.queueStateSnapshot.dueAt ?? null;
 }
 
 export function bucketAndSortReviewSubjectModels(models: ReviewSubjectModel[]) {

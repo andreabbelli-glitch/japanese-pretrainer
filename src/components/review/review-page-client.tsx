@@ -44,6 +44,7 @@ export function ReviewPageClient({
           handleResetCard={controller.handleResetCard}
           handleRevealAnswer={controller.handleRevealAnswer}
           handleRemoveForcedContrast={controller.handleRemoveForcedContrast}
+          handleRefreshQueue={controller.handleRefreshQueue}
           handleSetLearning={controller.handleSetLearning}
           handleToggleSuspended={controller.handleToggleSuspended}
           hasSupportCards={controller.hasSupportCards}

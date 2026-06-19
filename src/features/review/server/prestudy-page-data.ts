@@ -150,6 +150,7 @@ function buildPrestudyReviewPageData(input: {
       manualCount: 0,
       newAvailableCount: queueCount,
       newQueuedCount: queueCount,
+      nextDueAt: null,
       queueCount,
       queueLabel: formatPrestudyQueueLabel(queueCount),
       suspendedCards: [],

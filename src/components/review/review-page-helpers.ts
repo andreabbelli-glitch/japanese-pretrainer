@@ -420,6 +420,61 @@ export function formatTopUpLabel(count: number) {
     : `Aggiungi altre ${count} nuove`;
 }
 
+export function resolveReviewQueueRefreshState(input: {
+  isPending: boolean;
+  nextDueAt: string | null;
+  now: Date;
+}) {
+  if (input.isPending) {
+    return {
+      canRefresh: false,
+      label: "Aggiorno queue..."
+    };
+  }
+
+  if (!input.nextDueAt) {
+    return {
+      canRefresh: false,
+      label: "Nessuna card pronta"
+    };
+  }
+
+  const dueTime = new Date(input.nextDueAt).getTime();
+  const nowTime = input.now.getTime();
+
+  if (!Number.isFinite(dueTime) || dueTime <= nowTime) {
+    return {
+      canRefresh: true,
+      label: "Controlla card pronte"
+    };
+  }
+
+  return {
+    canRefresh: false,
+    label: `Prossime card ${formatReviewQueueRefreshWait(dueTime - nowTime)}`
+  };
+}
+
+export function formatReviewQueueRefreshWait(diffMs: number) {
+  if (!Number.isFinite(diffMs) || diffMs <= 60_000) {
+    return "tra 1 min";
+  }
+
+  if (diffMs < 60 * 60_000) {
+    return `tra ${Math.ceil(diffMs / 60_000)} min`;
+  }
+
+  const diffHours = Math.ceil(diffMs / (60 * 60_000));
+
+  if (diffHours < 24) {
+    return diffHours === 1 ? "tra 1 ora" : `tra ${diffHours} ore`;
+  }
+
+  const diffDays = Math.ceil(diffMs / (24 * 60 * 60_000));
+
+  return diffDays === 1 ? "domani" : `tra ${diffDays} giorni`;
+}
+
 export function isReviewPageData(
   data: ReviewPageClientData
 ): data is ReviewPageData {

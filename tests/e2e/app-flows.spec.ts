@@ -208,7 +208,7 @@ test.describe("review flows", () => {
     expect(frontTop).toBeLessThan(360);
   });
 
-  test("keeps the revealed review answer mounted while the answer URL is synchronized", async ({
+  test("keeps the revealed review answer mounted without serializing local reveal", async ({
     page
   }) => {
     await page.goto("/media/duel-masters-dm25/review");
@@ -223,9 +223,7 @@ test.describe("review flows", () => {
     const expectAnswerStayedConnected =
       await startElementConnectionStabilityWatch(answer);
 
-    await expect(page).toHaveURL(
-      /\/media\/duel-masters-dm25\/review\?show=answer$/
-    );
+    await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review$/);
     await expectAnswerStayedConnected();
   });
 });

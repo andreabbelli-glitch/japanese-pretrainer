@@ -135,10 +135,29 @@ describe("buildReviewControllerSnapshot", () => {
 
     expect(snapshot.isAnswerRevealed).toBe(true);
     expect(snapshot.sessionHref).toBe(
-      "/review?answered=2&card=card-a&extraNew=1&segment=segment-a&show=answer"
+      "/review?answered=2&card=card-a&extraNew=1&segment=segment-a"
     );
     expect(snapshot.contextualGlossaryHref).toBe(
-      "/glossary?returnTo=%2Freview%3Fanswered%3D2%26card%3Dcard-a%26extraNew%3D1%26segment%3Dsegment-a%26show%3Danswer"
+      "/glossary?returnTo=%2Freview%3Fanswered%3D2%26card%3Dcard-a%26extraNew%3D1%26segment%3Dsegment-a"
+    );
+  });
+
+  it("preserves explicit answer reveal search params without writing local reveal state into the URL", () => {
+    const snapshot = buildReviewControllerSnapshot(
+      buildSnapshotInput({
+        currentSearchParams: {
+          show: "answer"
+        },
+        viewData: buildFullReviewPageData("card-a", {
+          answeredCount: 2,
+          showAnswer: true
+        })
+      })
+    );
+
+    expect(snapshot.isAnswerRevealed).toBe(true);
+    expect(snapshot.sessionHref).toBe(
+      "/review?answered=2&card=card-a&show=answer"
     );
   });
 

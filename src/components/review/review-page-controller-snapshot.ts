@@ -116,6 +116,8 @@ export function buildReviewControllerSnapshot(
   const isAnswerRevealed = selectedCard
     ? selectedCardContext.showAnswer || revealedCardId === selectedCardId
     : false;
+  const shouldPersistAnswerReveal =
+    isAnswerRevealed && hasExplicitAnswerRevealSearchParam(currentSearchParams);
   const advanceWindowCardIds =
     isQueueCard && queueIndex >= 0
       ? collectQueuedAdvanceCandidateCardIds({
@@ -152,7 +154,7 @@ export function buildReviewControllerSnapshot(
     mode: viewData.mode,
     position,
     segmentId: viewData.session.segmentId,
-    showAnswer: isAnswerRevealed
+    showAnswer: shouldPersistAnswerReveal
   });
   const contextualGlossaryHref = appendReturnToParam(
     viewData.media.glossaryHref,
@@ -208,4 +210,16 @@ export function buildReviewControllerSnapshot(
     showCompletionState,
     showFrontFurigana
   };
+}
+
+function hasExplicitAnswerRevealSearchParam(
+  searchParams?: Record<string, string | string[] | undefined>
+) {
+  const rawValue = searchParams?.show;
+
+  if (Array.isArray(rawValue)) {
+    return rawValue.some((value) => value.trim() === "answer");
+  }
+
+  return rawValue?.trim() === "answer";
 }

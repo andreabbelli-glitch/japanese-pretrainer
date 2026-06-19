@@ -43,9 +43,14 @@ export function shouldPersistReviewSessionCard(input: {
   cardId?: string | null;
   isQueueCard: boolean;
   position: number | null;
+  showAnswer?: boolean;
 }) {
   if (!input.cardId) {
     return false;
+  }
+
+  if (input.showAnswer) {
+    return true;
   }
 
   if (!input.isQueueCard) {

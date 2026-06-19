@@ -48,6 +48,9 @@ describe("review page state", () => {
       },
       selectedCardContext: {
         showAnswer: true
+      },
+      session: {
+        answeredCount: 0
       }
     } as ReviewPageClientData;
 
@@ -58,12 +61,46 @@ describe("review page state", () => {
       selectedCardContext: {
         gradePreviews: [],
         showAnswer: false
+      },
+      session: {
+        answeredCount: 0
       }
     } as unknown as ReviewPageData;
 
     expect(mergeReviewPageData(currentData, nextData).selectedCardContext.showAnswer).toBe(
       false
     );
+  });
+
+  it("does not carry the revealed answer onto a new review step for the same card", () => {
+    const currentData = {
+      selectedCard: {
+        id: "card-a"
+      },
+      selectedCardContext: {
+        showAnswer: true
+      },
+      session: {
+        answeredCount: 0
+      }
+    } as ReviewPageClientData;
+
+    const nextData = {
+      selectedCard: {
+        id: "card-a"
+      },
+      selectedCardContext: {
+        gradePreviews: [],
+        showAnswer: false
+      },
+      session: {
+        answeredCount: 1
+      }
+    } as unknown as ReviewPageData;
+
+    expect(
+      mergeReviewPageData(currentData, nextData).selectedCardContext.showAnswer
+    ).toBe(false);
   });
 
   it("accepts same-progress server data so settings and notices can refresh", () => {

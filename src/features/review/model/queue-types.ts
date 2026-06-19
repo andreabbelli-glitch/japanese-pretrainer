@@ -17,6 +17,7 @@ export type ReviewQueueSubjectSnapshot = {
   manualModels: ReviewSubjectModel[];
   newAvailableCount: number;
   newQueuedCount: number;
+  nextDueAt?: string | null;
   queueCount: number;
   queueModels: ReviewSubjectModel[];
   subjectModels: ReviewSubjectModel[];

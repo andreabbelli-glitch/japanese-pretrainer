@@ -119,9 +119,11 @@ export function buildReviewGradeSubmissionPlan(input: {
   const optimisticSourceData =
     input.fullViewData ??
     (input.isHydratingFullData ? input.sessionViewData : null);
+  const canOptimisticallyCompleteQueue =
+    nextQueueCardIds.length === 0 && nextCardId === null;
   const canOptimisticallyAdvance =
     optimisticSourceData !== null &&
-    optimisticNextCard !== null &&
+    (optimisticNextCard !== null || canOptimisticallyCompleteQueue) &&
     forcedKanjiClashContrast === undefined;
   const optimisticViewData = canOptimisticallyAdvance
     ? buildOptimisticViewData({
@@ -253,7 +255,7 @@ function buildBaseGradeActionInput(input: {
 function buildOptimisticViewData(input: {
   currentData: ReviewPageClientData | null;
   gradedCardBucket: ReviewQueueCard["bucket"];
-  nextCard: ReviewQueueCard;
+  nextCard: ReviewQueueCard | null;
   nextQueueCardIds: string[];
   nextQueuePosition: number | null;
 }): ReviewPageClientData | null {
