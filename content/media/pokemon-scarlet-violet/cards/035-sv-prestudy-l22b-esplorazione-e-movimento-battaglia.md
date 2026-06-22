@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-035-sv-prestudy-l22b-esplorazione-e-movimento-battaglia
 media_id: media-pokemon-scarlet-violet
 slug: 035-sv-prestudy-l22b-esplorazione-e-movimento-battaglia
-title: SV Pre-study L22B - esplorazione e movimento, battaglia
+title: "Esplorazione e sfide: flashcard di movimento, battaglia e conferme"
 order: 65
 segment_ref: scarlet-violet-prestudy
 ---
@@ -11,9 +11,9 @@ id: term-e071-tekagen-shinaiyo
 lemma: 手加減しないよ
 reading: てかげんしないよ
 romaji: tekagen shinaiyo
-meaning_it: non avrò pietà
+meaning_it: non mi tratterrò
 notes_it: >-
-  Linea tipica da sfida seria.
+  Battuta da sfida: il personaggio avvisa che non ci andrà piano.
 :::
 :::card
 id: card-e071-tekagen-shinaiyo-recognition
@@ -22,20 +22,20 @@ entry_type: term
 entry_id: term-e071-tekagen-shinaiyo
 card_type: recognition
 front: "{{手加減|て.か.げん}}しないよ"
-back: non avrò pietà
+back: non mi tratterrò
 example_jp: >-
   {{手加減|て.か.げん}}しないよ。
 example_it: >-
-  Non avrò pietà.
+  Non mi tratterrò.
 :::
 :::term
 id: term-e072-shitekurenai
 lemma: 〜してくれない？
 reading: 〜してくれない？
 romaji: ~ shitekurenai？
-meaning_it: non è che potresti farlo?
+meaning_it: non è che potresti...?
 notes_it: >-
-  Richiesta ancora più soft.
+  Richiesta morbida che presenta l'azione come favore verso chi parla.
 :::
 :::card
 id: card-e072-shitekurenai-recognition
@@ -44,20 +44,20 @@ entry_type: term
 entry_id: term-e072-shitekurenai
 card_type: recognition
 front: "〜してくれない？"
-back: non è che potresti farlo?
+back: non è che potresti...?
 example_jp: >-
   {{少|すこ}}し {{近|ちか}}づいてくれない？
 example_it: >-
-  Puoi avvicinarti un po'?
+  Non potresti avvicinarti un po'?
 :::
 :::term
 id: term-e073-noyarikata
 lemma: 〜のやり方
 reading: 〜のやりかた
 romaji: noyarikata
-meaning_it: come si fa…
+meaning_it: come si fa / metodo
 notes_it: >-
-  Titolo/tutorial su una funzione
+  Formula da titolo o tutorial per spiegare il metodo di un'azione.
 :::
 :::card
 id: card-e073-noyarikata-recognition
@@ -70,7 +70,7 @@ back: come si fa
 example_jp: >-
   {{回復|かいふく}}の やり{{方|かた}}を {{見|み}}る。
 example_it: >-
-  Guardo come recuperare.
+  Guardo come si recupera.
 :::
 :::term
 id: term-e074-hontouni-yoroshiidesuka
@@ -79,7 +79,7 @@ reading: ほんとうに よろしいですか
 romaji: hontouni yoroshiidesuka
 meaning_it: sei sicuro?
 notes_it: >-
-  Conferma importante
+  Formula cortese usata quando la UI chiede conferma prima di procedere.
 :::
 :::card
 id: card-e074-hontouni-yoroshiidesuka-recognition
@@ -98,10 +98,10 @@ example_it: >-
 id: grammar-g075-si-decide-che-finire-per
 pattern: ～ことになる
 title: Si decide che / viene stabilito che
-meaning_it: si finisce per... / viene deciso che...
+meaning_it: si finisce per... / viene stabilito che...
 notes_it: >-
   Indica un risultato deciso da circostanze esterne, regole o decisioni altrui:
-  "si finisce per...", "viene stabilito che...". Non e la decisione volontaria
+  "si finisce per...", "viene stabilito che...". Non è la decisione volontaria
   del parlante.
 :::
 :::card
@@ -111,11 +111,11 @@ entry_type: grammar
 entry_id: grammar-g075-si-decide-che-finire-per
 card_type: concept
 front: "～ことになる"
-back: si finisce per... / viene deciso che...
+back: si finisce per... / viene stabilito che...
 example_jp: >-
   {{来週|らいしゅう}} テストを {{受|う}}けることになる。
 example_it: >-
-  Finirà che la prossima settimana dovrò sostenere il test.
+  È stato stabilito che la prossima settimana farò il test.
 :::
 :::grammar
 id: grammar-g076-decidere-di-fare
@@ -146,7 +146,7 @@ title: Fare in modo di
 meaning_it: cercare di... / fare in modo di...
 notes_it: >-
   Indica uno sforzo abituale o intenzionale: "cercare di fare", "fare in modo
-  di". E comune in consigli, promemoria e abitudini che si vuole mantenere.
+  di". È comune in consigli, promemoria e abitudini che si vuole mantenere.
 :::
 :::card
 id: card-g077-fare-in-modo-di-concept
@@ -215,14 +215,14 @@ back: consiglio
 example_jp: >-
   アドバイスを {{読|よ}}んでから {{進|すす}}みます。
 example_it: >-
-  Leggo il consiglio e poi avanzo.
+  Leggo il consiglio, poi vado avanti.
 :::
 :::term
 id: term-v378-nemuri
 lemma: ねむり
 reading: ねむり
 romaji: nemuri
-meaning_it: sonno
+meaning_it: sonno / stato di sonno
 notes_it: >-
   ねむり è il sonno come stato alterato. Con ねむりになる il Pokémon entra in quella
   condizione.
@@ -234,18 +234,18 @@ entry_type: term
 entry_id: term-v378-nemuri
 card_type: recognition
 front: "ねむり"
-back: sonno
+back: sonno / stato di sonno
 example_jp: >-
   バトルで ねむりに なる。
 example_it: >-
-  In battaglia entra in stato di sonno.
+  In battaglia finisce addormentato.
 :::
 :::term
 id: term-v379-mawari
 lemma: 周り
 reading: まわり
 romaji: mawari
-meaning_it: intorno
+meaning_it: dintorni / zona circostante
 notes_it: >-
   周り indica ciò che sta intorno al punto o personaggio di riferimento. 周りに
   ポケモンがいる localizza presenze vicine.
@@ -257,11 +257,11 @@ entry_type: term
 entry_id: term-v379-mawari
 card_type: recognition
 front: "{{周|まわ}}り"
-back: intorno
+back: dintorni / zona circostante
 example_jp: >-
   {{周|まわ}}りに ポケモンが います。
 example_it: >-
-  Ci sono Pokémon intorno.
+  Ci sono Pokémon nei dintorni.
 :::
 :::term
 id: term-v380-chikazu-ku
@@ -291,7 +291,7 @@ id: term-v381-isshun
 lemma: 一瞬
 reading: いっしゅん
 romaji: isshun
-meaning_it: un istante
+meaning_it: un istante / un attimo
 notes_it: >-
   一瞬 è un istante brevissimo. Con 一瞬で descrive un'azione che avviene quasi
   subito.
@@ -303,11 +303,11 @@ entry_type: term
 entry_id: term-v381-isshun
 card_type: recognition
 front: "{{一瞬|いっしゅん}}"
-back: un istante
+back: un istante / un attimo
 example_jp: >-
   {{一瞬|いっしゅん}}で {{近|ちか}}づく。
 example_it: >-
-  Mi avvicino in un istante.
+  Mi avvicino in un attimo.
 :::
 :::term
 id: term-v382-zerogeeto
@@ -324,10 +324,10 @@ id: term-v383-hiroi
 lemma: 広い
 reading: ひろい
 romaji: hiroi
-meaning_it: ampio / largo
+meaning_it: ampio / spazioso
 notes_it: >-
-  広い descrive uno spazio ampio o largo. In esplorazione spesso qualifica aree,
-  sale o percorsi.
+  広い descrive uno spazio ampio o spazioso. In esplorazione spesso qualifica
+  aree, sale o percorsi.
 :::
 :::card
 id: card-v383-hiroi-recognition
@@ -336,11 +336,11 @@ entry_type: term
 entry_id: term-v383-hiroi
 card_type: recognition
 front: "{{広|ひろ}}い"
-back: ampio / largo
+back: ampio / spazioso
 example_jp: >-
   {{広|ひろ}}い {{草原|そうげん}}を {{歩|ある}}く。
 example_it: >-
-  Cammino in una prateria ampia.
+  Attraverso un'ampia prateria.
 :::
 :::term
 id: term-v384-suijou
@@ -370,7 +370,7 @@ id: term-v385-ikki-ni
 lemma: 一気に
 reading: いっきに
 romaji: ikki ni
-meaning_it: tutto d'un colpo
+meaning_it: di slancio / tutto d'un colpo
 notes_it: >-
   一気に indica che l'azione avviene tutta in una volta, senza fasi intermedie.
   Con 近づく descrive un avvicinamento rapido.
@@ -382,11 +382,11 @@ entry_type: term
 entry_id: term-v385-ikki-ni
 card_type: recognition
 front: "{{一気|いっき}}に"
-back: tutto d'un colpo
+back: di slancio / tutto d'un colpo
 example_jp: >-
   {{一気|いっき}}に {{近|ちか}}づく。
 example_it: >-
-  Mi avvicino tutto d'un colpo.
+  Mi avvicino di slancio.
 :::
 :::term
 id: term-v386-kyouryoku
@@ -414,12 +414,12 @@ example_it: >-
 :::term
 id: term-v387-oojanpu
 lemma: 大ジャンプ
-reading: おおジャンプ
-romaji: oojanpu
-meaning_it: super salto
+reading: だいジャンプ
+romaji: daijanpu
+meaning_it: salto potenziato
 notes_it: >-
-  大ジャンプ è un salto più grande del normale. 大 modifica ジャンプ e indica
-  estensione o altezza maggiore.
+  大ジャンプ si legge だいジャンプ: 大 qui funziona come prefisso di scala e indica
+  un salto più potente o più alto del normale.
 :::
 :::card
 id: card-v387-oojanpu-recognition
@@ -427,12 +427,12 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-035-sv-prestudy-l22b-esplor
 entry_type: term
 entry_id: term-v387-oojanpu
 card_type: recognition
-front: "{{大|おお}}ジャンプ"
-back: super salto
+front: "{{大|だい}}ジャンプ"
+back: salto potenziato
 example_jp: >-
-  {{大|おお}}ジャンプします。
+  {{大|だい}}ジャンプします。
 example_it: >-
-  Faccio un super salto.
+  Eseguo un salto potenziato.
 :::
 :::term
 id: term-v388-tsuku
@@ -508,7 +508,7 @@ id: term-v391-sodate-ru
 lemma: 育てる
 reading: そだてる
 romaji: sodate ru
-meaning_it: allenare / crescere
+meaning_it: allenare / far crescere
 notes_it: >-
   育てる è far crescere o allenare. Con ポケモンを育てる include esperienza, cura e
   sviluppo nel tempo.
@@ -520,7 +520,7 @@ entry_type: term
 entry_id: term-v391-sodate-ru
 card_type: recognition
 front: "{{育|そだ}}てる"
-back: allenare / crescere
+back: allenare / far crescere
 example_jp: >-
   ポケモンを {{育|そだ}}てる。
 example_it: >-

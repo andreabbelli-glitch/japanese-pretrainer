@@ -28,15 +28,15 @@ La stessa lingua collega il campo aperto, il tutorial della cavalcatura, la batt
 
 - [{{謎|なぞ}}](term:term-v376-nazo) — mistero / cosa non ancora chiarita
 - [アドバイス](term:term-v377-adobaisu) — consiglio
-- [ねむり](term:term-v378-nemuri) — sonno
-- [{{周|まわ}}り](term:term-v379-mawari) — intorno / zona circostante
+- [ねむり](term:term-v378-nemuri) — sonno / stato di sonno
+- [{{周|まわ}}り](term:term-v379-mawari) — dintorni / zona circostante
 - [{{近|ちか}}づく](term:term-v380-chikazu-ku) — avvicinarsi
-- [{{一瞬|いっしゅん}}](term:term-v381-isshun) — un istante
-- [{{広|ひろ}}い](term:term-v383-hiroi) — ampio / largo
+- [{{一瞬|いっしゅん}}](term:term-v381-isshun) — un istante / un attimo
+- [{{広|ひろ}}い](term:term-v383-hiroi) — ampio / spazioso
 - [{{水上|すいじょう}}](term:term-v384-suijou) — sull'acqua
-- [{{一気|いっき}}に](term:term-v385-ikki-ni) — tutto d'un colpo
+- [{{一気|いっき}}に](term:term-v385-ikki-ni) — di slancio / tutto d'un colpo
 - [{{強力|きょうりょく}}](term:term-v386-kyouryoku) — potente
-- [{{大|おお}}ジャンプ](term:term-v387-oojanpu) — super salto
+- [{{大|だい}}ジャンプ](term:term-v387-oojanpu) — salto potenziato
 - [{{着|つ}}く](term:term-v388-tsuku) — arrivare
 - [{{危|あぶ}}ない](term:term-v389-abunai) — pericoloso
 - [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka) — cristallizzazione
@@ -45,13 +45,13 @@ La stessa lingua collega il campo aperto, il tutorial della cavalcatura, la batt
 ## Espressioni ricorrenti
 
 - [{{手加減|てかげん}}しないよ](term:term-e071-tekagen-shinaiyo) — non mi tratterrò
-- [〜してくれない？](term:term-e072-shitekurenai) — non è che potresti farlo?
+- [〜してくれない？](term:term-e072-shitekurenai) — non è che potresti...?
 - [〜のやり{{方|かた}}](term:term-e073-noyarikata) — come si fa / il modo di fare
 - [{{本当|ほんとう}}に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) — sei davvero sicuro?
 
 ## Pattern grammaticali chiave
 
-- [～ことになる](grammar:grammar-g075-si-decide-che-finire-per) — si decide che / finire per
+- [～ことになる](grammar:grammar-g075-si-decide-che-finire-per) — viene stabilito che / finire per
 - [～ことにする](grammar:grammar-g076-decidere-di-fare) — decidere di fare
 - [～ようにする](grammar:grammar-g077-fare-in-modo-di) — fare in modo di
 
@@ -65,7 +65,7 @@ La stessa lingua collega il campo aperto, il tutorial della cavalcatura, la batt
 
 ## 1. La schermata come mappa: dintorni, distanza e arrivo
 
-Quando il gioco ti orienta sul campo, le parole non indicano solo "dove sei": dicono anche quale rapporto hai con lo spazio intorno a te. Paldea è piena di messaggi che ti chiedono di controllare l'area vicina, avvicinarti a un punto o capire se sei finalmente arrivato.
+Quando il gioco ti orienta sul campo, [{{周|まわ}}り](term:term-v379-mawari), [{{近|ちか}}づく](term:term-v380-chikazu-ku) e [{{着|つ}}く](term:term-v388-tsuku) separano tre istruzioni pratiche: controllare l'area vicina, ridurre la distanza da un bersaglio e riconoscere l'arrivo alla meta.
 
 *   [{{周|まわ}}り](term:term-v379-mawari) apre la zona circostante. Non è una meta precisa come una città o un edificio: è ciò che sta intorno al personaggio, alla telecamera o al punto segnalato. Quando un dialogo ti invita a guardare [{{周|まわ}}り](term:term-v379-mawari), la lettura giusta è "controlla l'ambiente vicino", non "raggiungi un luogo chiamato così".
 *   [{{近|ちか}}づく](term:term-v380-chikazu-ku) contiene l'idea di diventare vicino. La base {{近|ちか}}い dice "vicino", mentre づく porta il cambiamento di stato: ridurre la distanza. In gioco è un verbo molto pratico, perché spesso il testo non ti chiede di essere già accanto a qualcosa, ma di muoverti verso di esso.
@@ -97,9 +97,9 @@ Per [{{周|まわ}}り](term:term-v379-mawari), immagina la telecamera che ruota
 interfaccia: Il termine indica un bonus di interfaccia che modifica la lotta. Quando lo trovi vicino a panini, pasti o poteri attivi,
 leggilo come etichetta di effetto temporaneo.
 
-[ゼロゲート](term:term-v382-zerogeeto) è invece un landmark: il nome non chiede
-di interpretare "zero" in astratto, ma di riconoscere il punto fisso verso cui
-il testo ti sta guidando.
+[ゼロゲート](term:term-v382-zerogeeto) è un landmark: nei dialoghi e negli
+obiettivi funziona come punto fisso legato all'Area Zero, cioè il luogo verso
+cui il testo orienta il movimento.
 
 ## 2. Attraversare Paldea: spazio aperto, acqua e slancio
 
@@ -108,13 +108,13 @@ Le parole di movimento diventano ancora più concrete quando il terreno cambia. 
 *   [{{広|ひろ}}い](term:term-v383-hiroi) qualifica uno spazio aperto e largo. Non è solo "grande" in senso generico: su una mappa suggerisce distanza da coprire, visuale più ampia e possibilità di perdere l'orientamento se non controlli bene i dintorni.
 *   [{{水上|すいじょう}}](term:term-v384-suijou) unisce {{水|すい}} e {{上|じょう}}: `水上` indica la superficie dell'acqua come spazio attraversabile. In *Scarlet & Violet* questo è il linguaggio naturale per tutorial e istruzioni legate a fiumi, laghi e mare.
 *   [{{一気|いっき}}に](term:term-v385-ikki-ni) descrive il modo dell'azione: tutto d'un colpo, senza spezzare il movimento in più passaggi. [{{一瞬|いっしゅん}}](term:term-v381-isshun), invece, parla della durata brevissima. Uno segnala lo slancio continuo, l'altro il tempo quasi istantaneo.
-*   [{{大|おお}}ジャンプ](term:term-v387-oojanpu) è un salto potenziato. Il prefisso {{大|おお}} qui funziona come "grande" o "super", quindi il testo non sta nominando un salto normale. Quando compare vicino a [{{危|あぶ}}ない](term:term-v389-abunai), la schermata non sta facendo atmosfera: sta avvisando che quella traiettoria può diventare un problema.
+*   [{{大|だい}}ジャンプ](term:term-v387-oojanpu) è un salto potenziato. Qui {{大|だい}} funziona come prefisso di scala, quindi il testo non sta nominando un salto normale. Quando compare vicino a [{{危|あぶ}}ない](term:term-v389-abunai), la schermata non sta facendo atmosfera: sta avvisando che quella traiettoria può diventare un problema.
 
 :::example_sentence
 jp: >-
   {{広|ひろ}}い {{水上|すいじょう}}を {{一気|いっき}}に {{進|すす}}む。
 translation_it: >-
-  Avanzo tutto d'un colpo su un'ampia zona d'acqua.
+  Avanzo di slancio su un'ampia zona d'acqua.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -125,16 +125,16 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{危|あぶ}}ないから、ここで {{大|おお}}ジャンプしない。
+  {{危|あぶ}}ないから、ここで {{大|だい}}ジャンプしない。
 translation_it: >-
-  Siccome è pericoloso, qui non faccio il super salto.
+  Siccome è pericoloso, qui non eseguo il salto potenziato.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `{{危|あぶ}}ないから` ➔ **Ragione della scelta**: `から` trasforma il pericolo nella motivazione.
 *   `ここで` ➔ **Luogo dell'azione**: la cautela vale in questo punto preciso, non in assoluto.
-*   `{{大|おお}}ジャンプしない` ➔ **Azione evitata**: `しない` nega il salto potenziato.
+*   `{{大|だい}}ジャンプしない` ➔ **Azione evitata**: `しない` nega il salto potenziato.
 
 #### ⚖️ Contrasto operativo
 
@@ -192,7 +192,7 @@ Le battute dei personaggi cambiano postura con pochissime sillabe. Una frase pu�
 
 *   [{{手加減|てかげん}}しないよ](term:term-e071-tekagen-shinaiyo) è una dichiarazione da sfida. {{手|て}}{{加減|かげん}} è il dosare la mano, cioè trattenersi; しない lo nega, e よ porta l'affermazione verso l'altro personaggio. Il risultato `手加減しないよ` dichiara che il personaggio andra' fino in fondo nella sfida.
 *   [〜してくれない？](term:term-e072-shitekurenai) costruisce una richiesta morbida. くれる presenta l'azione come fatta a beneficio del parlante, mentre la domanda negativa attenua il comando. Nei dialoghi suona più come "non è che potresti...?" che come un ordine secco.
-*   [〜のやり{{方|かた}}](term:term-e073-noyarikata) trasforma un'azione nel suo metodo. やる è "fare", {{方|かた}} è "modo": insieme diventano "come si fa". Se il gioco parla di {{大|おお}}ジャンプのやり{{方|かた}}, non sta nominando il salto come azione da eseguire subito, ma il modo per farlo.
+*   [〜のやり{{方|かた}}](term:term-e073-noyarikata) trasforma un'azione nel suo metodo. やる è "fare", {{方|かた}} è "modo": insieme diventano "come si fa". Se il gioco parla di {{大|だい}}ジャンプのやり{{方|かた}}, non sta nominando il salto come azione da eseguire subito, ma il modo per farlo.
 *   [アドバイス](term:term-v377-adobaisu) entra bene nei dialoghi di supporto: un personaggio non sta necessariamente dando un comando, ma una lettura utile della situazione. Accanto a [{{謎|なぞ}}](term:term-v376-nazo), può indicare una pista su qualcosa che non è ancora chiaro.
 
 :::example_sentence
@@ -210,14 +210,14 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{大|おお}}ジャンプの やり{{方|かた}}を {{教|おし}}えてくれない？
+  {{大|だい}}ジャンプの やり{{方|かた}}を {{教|おし}}えてくれない？
 translation_it: >-
-  Non potresti insegnarmi come si fa il super salto?
+  Non potresti insegnarmi come si fa il salto potenziato?
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `{{大|おお}}ジャンプの` ➔ **Azione di riferimento**: `の` collega il metodo al salto potenziato.
+*   `{{大|だい}}ジャンプの` ➔ **Azione di riferimento**: `の` collega il metodo al salto potenziato.
 *   `やり{{方|かた}}を` ➔ **Oggetto della richiesta**: ciò che si vuole sapere è il modo di fare, non il salto già eseguito.
 *   `{{教|おし}}えてくれない？` ➔ **Richiesta attenuata**: il parlante chiede all'altro di fare qualcosa per lui.
 
@@ -252,7 +252,7 @@ translation_it: >-
 
 ### B. Quando scegli tu: [～ことにする](grammar:grammar-g076-decidere-di-fare)
 
-[～ことにする](grammar:grammar-g076-decidere-di-fare) porta la decisione sul soggetto. La struttura è simile a [～ことになる](grammar:grammar-g075-si-decide-che-finire-per), ma la postura cambia: non è solo "si è arrivati a questa conclusione", è "decido di fare così".
+[～ことにする](grammar:grammar-g076-decidere-di-fare) porta la decisione sul soggetto. Rispetto a [～ことになる](grammar:grammar-g075-si-decide-che-finire-per), la frase mette in primo piano una scelta attiva: "decido di fare così".
 
 :::example_sentence
 jp: >-
@@ -269,7 +269,7 @@ translation_it: >-
 
 ### C. Quando imposti un comportamento: [～ようにする](grammar:grammar-g077-fare-in-modo-di)
 
-[～ようにする](grammar:grammar-g077-fare-in-modo-di) non dice soltanto "decido". Dice che organizzi il comportamento perché un risultato diventi possibile, abituale o evitabile. In un tutorial può suonare come "fai in modo di..." o "cerca di...".
+[～ようにする](grammar:grammar-g077-fare-in-modo-di) descrive un comportamento regolato per rendere possibile, abituale o evitabile un risultato. In un tutorial può suonare come "fai in modo di..." o "cerca di...".
 
 :::example_sentence
 jp: >-
@@ -355,4 +355,4 @@ translation_it: >-
 
 ## Nota finale
 
-Questa parte di *Scarlet & Violet* fa lavorare insieme orientamento, battaglia e decisione. [{{周|まわ}}り](term:term-v379-mawari), [{{近|ちか}}づく](term:term-v380-chikazu-ku) e [{{着|つ}}く](term:term-v388-tsuku) ti dicono come leggere lo spazio; [{{水上|すいじょう}}](term:term-v384-suijou), [{{大|おお}}ジャンプ](term:term-v387-oojanpu) e [{{危|あぶ}}ない](term:term-v389-abunai) trasformano il terreno in scelta pratica; [ねむり](term:term-v378-nemuri), [{{強力|きょうりょく}}](term:term-v386-kyouryoku) e [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka) leggono lo stato di battaglia; [～ことにする](grammar:grammar-g076-decidere-di-fare), [～ようにする](grammar:grammar-g077-fare-in-modo-di) e [{{本当|ほんとう}}に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) chiariscono se il testo sta descrivendo una decisione, una cautela o una conferma prima dell'azione.
+Questa parte di *Scarlet & Violet* fa lavorare insieme orientamento, battaglia e decisione. [{{周|まわ}}り](term:term-v379-mawari), [{{近|ちか}}づく](term:term-v380-chikazu-ku) e [{{着|つ}}く](term:term-v388-tsuku) ti dicono come leggere lo spazio; [{{水上|すいじょう}}](term:term-v384-suijou), [{{大|だい}}ジャンプ](term:term-v387-oojanpu) e [{{危|あぶ}}ない](term:term-v389-abunai) trasformano il terreno in scelta pratica; [ねむり](term:term-v378-nemuri), [{{強力|きょうりょく}}](term:term-v386-kyouryoku) e [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka) leggono lo stato di battaglia; [～ことにする](grammar:grammar-g076-decidere-di-fare), [～ようにする](grammar:grammar-g077-fare-in-modo-di) e [{{本当|ほんとう}}に よろしいですか？](term:term-e074-hontouni-yoroshiidesuka) chiariscono se il testo sta descrivendo una decisione, una cautela o una conferma prima dell'azione.
