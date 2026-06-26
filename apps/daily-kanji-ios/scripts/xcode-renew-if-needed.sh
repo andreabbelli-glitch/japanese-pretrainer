@@ -8,6 +8,8 @@ LOG_DIR="${LOG_DIR:-$HOME/Library/Logs/DailyKanji}"
 CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"
 RENEW_MIN_AGE_SECONDS="${RENEW_MIN_AGE_SECONDS:-432000}"
 LOCK_MAX_AGE_SECONDS="${LOCK_MAX_AGE_SECONDS:-21600}"
+COREDEVICE_INFO_TIMEOUT_SECONDS="${COREDEVICE_INFO_TIMEOUT_SECONDS:-60}"
+DDI_MOUNT_TIMEOUT_SECONDS="${DDI_MOUNT_TIMEOUT_SECONDS:-120}"
 LOCK_DIR="$STATE_DIR/renew.lock"
 LAST_SUCCESS_FILE="$STATE_DIR/last-renew-success.epoch"
 FORCE=0
@@ -30,6 +32,8 @@ Environment:
   CONFIG_FILE               Default: ~/Library/Application Support/DailyKanji/renew.env.
   RENEW_MIN_AGE_SECONDS     Default: 432000 (5 days).
   LOCK_MAX_AGE_SECONDS      Default: 21600 (6 hours).
+  COREDEVICE_INFO_TIMEOUT_SECONDS Default: 60.
+  DDI_MOUNT_TIMEOUT_SECONDS       Default: 120.
   STATE_DIR                 Default: ~/Library/Application Support/DailyKanji.
   LOG_DIR                   Default: ~/Library/Logs/DailyKanji.
 USAGE
@@ -87,7 +91,7 @@ should_renew() {
 
   local last_success
   if ! last_success="$(last_success_epoch)"; then
-    return 1
+    return 0
   fi
 
   local age_seconds
@@ -101,7 +105,33 @@ device_reachable() {
     return 1
   fi
 
-  xcrun devicectl device info details --device "$DEVICE_ID" >/dev/null 2>&1
+  xcrun devicectl device info details \
+    --device "$DEVICE_ID" \
+    --timeout "$COREDEVICE_INFO_TIMEOUT_SECONDS" >/dev/null 2>&1
+}
+
+developer_disk_image_ready() {
+  local output
+
+  if output="$(xcrun devicectl device info ddiServices \
+    --device "$DEVICE_ID" \
+    --auto-mount-ddis \
+    --timeout "$DDI_MOUNT_TIMEOUT_SECONDS" 2>&1)"; then
+    printf "Daily Kanji developer disk image services ready.\n"
+    return 0
+  fi
+
+  if [[ "$output" == *"kAMDMobileImageMounterDeviceLocked"* ]] ||
+    [[ "$output" == *"device is locked"* ]] ||
+    [[ "$output" == *"The device is locked"* ]]; then
+    printf "Daily Kanji iPhone bloccato: sblocca l'iPhone e lascialo acceso, poi il rinnovo riprovera' al prossimo giro.\n"
+    printf "%s\n" "$output"
+    return 1
+  fi
+
+  printf "Daily Kanji developer disk image non pronta; il rinnovo riprovera' al prossimo giro.\n"
+  printf "%s\n" "$output"
+  return 1
 }
 
 print_status() {
@@ -115,6 +145,8 @@ print_status() {
   printf "State file: %s\n" "$LAST_SUCCESS_FILE"
   printf "Renew min age: %ss\n" "$RENEW_MIN_AGE_SECONDS"
   printf "Lock max age: %ss\n" "$LOCK_MAX_AGE_SECONDS"
+  printf "CoreDevice info timeout: %ss\n" "$COREDEVICE_INFO_TIMEOUT_SECONDS"
+  printf "DDI mount timeout: %ss\n" "$DDI_MOUNT_TIMEOUT_SECONDS"
 
   local last_success
   if last_success="$(last_success_epoch)"; then
@@ -275,6 +307,10 @@ fi
 
 if ! device_reachable; then
   printf "Daily Kanji device %s not reachable; skipping.\n" "$DEVICE_ID"
+  exit 0
+fi
+
+if ! developer_disk_image_ready; then
   exit 0
 fi
 

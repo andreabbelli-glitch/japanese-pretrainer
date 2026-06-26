@@ -119,16 +119,32 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh --mark-succ
 
 Il LaunchAgent controlla ogni 6 ore, ma esegue il package + build/install solo
 quando l'ultimo rinnovo riuscito ha almeno 5 giorni e l'iPhone e' raggiungibile
-via CoreDevice; il package viene lanciato dalla root del repo anche quando
-launchd avvia il job da un'altra directory. Il device id resta in
+via CoreDevice, via cavo oppure stessa Wi-Fi `localNetwork`; prima del package
+preflighta anche il mount della Developer Disk Image. Il package viene lanciato
+dalla root del repo anche quando launchd avvia il job da un'altra directory. Il device id resta in
 `~/Library/Application Support/DailyKanji/renew.env`, non nel repo. Rieseguire
 `install-renew-launchd.sh` aggiorna solo `DEVICE_ID` e conserva eventuali
-endpoint/token di sync gia' presenti nello stesso file. Per rimuovere
-l'automazione:
+endpoint/token di sync gia' presenti nello stesso file. Usa `--mark-success-now`
+solo dopo un rinnovo/install manuale gia riuscito: se il marker di successo
+manca o e' corrotto, il rinnovo e' considerato dovuto. Se l'iPhone e' bloccato
+durante il mount DDI, il job non marca successo, logga di sbloccare il telefono
+e riprova al giro successivo. Per rimuovere l'automazione:
 
 ```sh
 ./scripts/install-renew-launchd.sh --uninstall
 ```
+
+Log e diagnosi:
+
+```sh
+tail -n 80 ~/Library/Logs/DailyKanji/xcode-renew.out.log
+tail -n 80 ~/Library/Logs/DailyKanji/xcode-renew.err.log
+```
+
+Se `xcodebuild` segnala `No Accounts` o `No profiles`, apri Xcode Settings >
+Accounts, verifica il Personal Team, apri `DailyKanji.xcodeproj` e lascia Xcode
+rigenerare i profili per `dev.local.daily-kanji` e
+`dev.local.daily-kanji.widget`.
 
 Package IPA diagnostico:
 

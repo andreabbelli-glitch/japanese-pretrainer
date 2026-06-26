@@ -9,6 +9,8 @@ STATE_DIR="${STATE_DIR:-$HOME/Library/Application Support/DailyKanji}"
 CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"
 SCHEME="${SCHEME:-DailyKanji}"
 CONFIGURATION="${CONFIGURATION:-Debug}"
+COREDEVICE_INFO_TIMEOUT_SECONDS="${COREDEVICE_INFO_TIMEOUT_SECONDS:-60}"
+DDI_MOUNT_TIMEOUT_SECONDS="${DDI_MOUNT_TIMEOUT_SECONDS:-120}"
 
 config_value() {
   local key="$1"
@@ -25,13 +27,14 @@ config_value() {
 }
 
 CONFIG_DEVICE_ID="$(config_value DEVICE_ID || true)"
-DEVICE_ID="${DEVICE_ID:-${CONFIG_DEVICE_ID:-D584E119-3362-5913-B704-DE927F58EF18}}"
+DEVICE_ID="${DEVICE_ID:-$CONFIG_DEVICE_ID}"
 CONFIG_SYNC_ENDPOINT="$(config_value DAILY_KANJI_IOS_SYNC_ENDPOINT || true)"
 CONFIG_SYNC_TOKEN="$(config_value DAILY_KANJI_IOS_SYNC_TOKEN || true)"
 DAILY_KANJI_IOS_SYNC_ENDPOINT="${DAILY_KANJI_IOS_SYNC_ENDPOINT:-$CONFIG_SYNC_ENDPOINT}"
 DAILY_KANJI_IOS_SYNC_TOKEN="${DAILY_KANJI_IOS_SYNC_TOKEN:-$CONFIG_SYNC_TOKEN}"
 sync_xcconfig=""
 sync_xcconfig_args=()
+xcodebuild_args=()
 
 cleanup_sync_xcconfig() {
   if [ -n "$sync_xcconfig" ] && [ -f "$sync_xcconfig" ]; then
@@ -79,6 +82,11 @@ if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Develope
   export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
 fi
 
+if [ -z "${DEVICE_ID:-}" ]; then
+  echo "DEVICE_ID non configurato. Imposta DEVICE_ID oppure installa l'automazione con scripts/install-renew-launchd.sh --device-id <coredevice-id-or-udid>." >&2
+  exit 2
+fi
+
 if ! command -v xcodebuild >/dev/null 2>&1; then
   echo "xcodebuild non trovato. Installa Xcode completo." >&2
   exit 1
@@ -89,11 +97,54 @@ if ! command -v xcodegen >/dev/null 2>&1; then
   exit 1
 fi
 
-cd "$ROOT"
-"$REPO_ROOT/scripts/with-node.sh" pnpm daily-kanji:verify-resources -- --ios-root "$ROOT"
-xcodegen generate
+print_xcodebuild_failure_hint() {
+  local output="$1"
 
-if ! device_details="$(xcrun devicectl device info details --device "$DEVICE_ID" 2>/dev/null)"; then
+  if [[ "$output" == *"No Accounts"* ]] ||
+    [[ "$output" == *"No profiles"* ]] ||
+    [[ "$output" == *"provisioning profile"* ]] ||
+    [[ "$output" == *"Provisioning profile"* ]] ||
+    [[ "$output" == *"Signing for"* ]] ||
+    [[ "$output" == *"requires a development team"* ]]; then
+    cat >&2 <<'HINT'
+
+Daily Kanji signing/provisioning non pronto.
+- Apri Xcode Settings > Accounts e verifica che il Personal Team sia loggato.
+- Apri apps/daily-kanji-ios/DailyKanji.xcodeproj e lascia Xcode rigenerare i provisioning profile.
+- Controlla che il DEVELOPMENT_TEAM in project.yml corrisponda al team dell'account Apple Development installato.
+- I bundle id da firmare sono dev.local.daily-kanji e dev.local.daily-kanji.widget.
+- Dopo il refresh dei profili, rilancia scripts/xcode-renew.sh o scripts/xcode-renew-if-needed.sh --force.
+HINT
+  fi
+}
+
+developer_disk_image_ready() {
+  local output
+
+  if output="$(xcrun devicectl device info ddiServices \
+    --device "$DEVICE_ID" \
+    --auto-mount-ddis \
+    --timeout "$DDI_MOUNT_TIMEOUT_SECONDS" 2>&1)"; then
+    printf "Daily Kanji developer disk image services ready.\n"
+    return 0
+  fi
+
+  if [[ "$output" == *"kAMDMobileImageMounterDeviceLocked"* ]] ||
+    [[ "$output" == *"device is locked"* ]] ||
+    [[ "$output" == *"The device is locked"* ]]; then
+    printf "Daily Kanji iPhone bloccato: sblocca l'iPhone e lascialo acceso, poi rilancia il rinnovo.\n"
+    printf "%s\n" "$output"
+    return 1
+  fi
+
+  printf "Daily Kanji developer disk image non pronta; correggi CoreDevice/DDI e rilancia il rinnovo.\n"
+  printf "%s\n" "$output"
+  return 1
+}
+
+if ! device_details="$(xcrun devicectl device info details \
+  --device "$DEVICE_ID" \
+  --timeout "$COREDEVICE_INFO_TIMEOUT_SECONDS" 2>/dev/null)"; then
   echo "Device $DEVICE_ID non raggiungibile da CoreDevice." >&2
   echo "Metti iPhone e Mac sulla stessa Wi-Fi oppure collega il cavo." >&2
   exit 1
@@ -108,22 +159,46 @@ if [ -z "$transport" ]; then
 fi
 
 printf "Device raggiunto via: %s\n" "$transport"
+if ! developer_disk_image_ready; then
+  exit 75
+fi
+
 if [ "${#sync_xcconfig_args[@]}" -gt 0 ]; then
   printf "Daily Kanji runtime sync: configurato\n"
 else
   printf "Daily Kanji runtime sync: non configurato, uso fallback packaged/cache\n"
 fi
 
-xcodebuild \
-  -quiet \
+cd "$ROOT"
+"$REPO_ROOT/scripts/with-node.sh" pnpm daily-kanji:verify-resources -- --ios-root "$ROOT"
+xcodegen generate
+
+xcodebuild_args=(
+  -quiet
   -project "$PROJECT" \
   -scheme "$SCHEME" \
   -configuration "$CONFIGURATION" \
   -destination "id=$DEVICE_ID" \
   -derivedDataPath "$DERIVED_DATA" \
-  -allowProvisioningUpdates \
-  "${sync_xcconfig_args[@]}" \
-  build
+  -allowProvisioningUpdates
+)
+
+if [ "${#sync_xcconfig_args[@]}" -gt 0 ]; then
+  xcodebuild_args+=("${sync_xcconfig_args[@]}")
+fi
+
+xcodebuild_args+=(build)
+
+set +e
+xcodebuild_output="$(xcodebuild "${xcodebuild_args[@]}" 2>&1)"
+xcodebuild_status=$?
+set -e
+
+if [ "$xcodebuild_status" -ne 0 ]; then
+  printf "%s\n" "$xcodebuild_output" >&2
+  print_xcodebuild_failure_hint "$xcodebuild_output"
+  exit "$xcodebuild_status"
+fi
 
 APP_PATH="$DERIVED_DATA/Build/Products/$CONFIGURATION-iphoneos/Daily Kanji.app"
 

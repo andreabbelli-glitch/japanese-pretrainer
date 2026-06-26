@@ -152,7 +152,7 @@ mkdir -p "$(dirname "$PLIST")" "$STATE_DIR" "$LOG_DIR" "$(dirname "$CONFIG_FILE"
 umask 077
 write_config_value DEVICE_ID "$DEVICE_ID"
 
-if [ "$MARK_SUCCESS_NOW" -eq 1 ] || [ ! -f "$STATE_DIR/last-renew-success.epoch" ]; then
+if [ "$MARK_SUCCESS_NOW" -eq 1 ]; then
   "$ROOT/scripts/xcode-renew-if-needed.sh" --mark-success-now
 fi
 

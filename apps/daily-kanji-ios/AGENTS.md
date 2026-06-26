@@ -62,19 +62,21 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh --mark-succ
 ```
 
 Il LaunchAgent utente controlla ogni 6 ore, ma il wrapper esegue la build/install
-solo se l'ultimo rinnovo riuscito ha almeno 5 giorni e l'iPhone e' raggiungibile
-via CoreDevice. Il `DEVICE_ID` viene scritto nel file locale non versionato
+solo se l'ultimo rinnovo riuscito ha almeno 5 giorni, l'iPhone e' raggiungibile
+via CoreDevice e la Developer Disk Image e' montabile. Il `DEVICE_ID` viene scritto nel file locale non versionato
 `~/Library/Application Support/DailyKanji/renew.env`; lo stesso file puo
 contenere `DAILY_KANJI_IOS_SYNC_ENDPOINT` e `DAILY_KANJI_IOS_SYNC_TOKEN`, che
 `scripts/xcode-renew.sh` passa come build settings locali senza committare
 segreti. Rieseguire `scripts/install-renew-launchd.sh` aggiorna solo
-`DEVICE_ID` e conserva le altre righe del file. Il primo install crea anche il
-marker `last-renew-success.epoch`, quindi `RunAtLoad` non scatena un build
-immediato. Quando il rinnovo e' davvero dovuto, il wrapper esegue prima
+`DEVICE_ID` e conserva le altre righe del file. Usa `--mark-success-now` solo
+dopo un rinnovo/install manuale gia riuscito: scrive il marker
+`last-renew-success.epoch` e impedisce a `RunAtLoad` di rifare subito un build.
+Se il marker manca o e' corrotto, il rinnovo e' considerato dovuto. Quando il
+rinnovo e' davvero dovuto, il wrapper preflighta CoreDevice/DDI, poi esegue
 `pnpm daily-kanji:package` dalla root del repo e poi
 `scripts/xcode-renew.sh`, cosi' il verifier non blocca risorse packaged stale. Se
-il device non e' disponibile, il job termina senza errore e riprova al giro
-successivo. Per rimuoverlo:
+il device non e' disponibile o l'iPhone e' bloccato durante il mount DDI, il job
+termina senza marcare successo e riprova al giro successivo. Per rimuoverlo:
 
 ```sh
 ./scripts/install-renew-launchd.sh --uninstall

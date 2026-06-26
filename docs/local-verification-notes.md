@@ -219,6 +219,21 @@ cavo quando l'iPhone risulta `transportType: localNetwork`. Sideloadly rimane
 diagnostico: installa la app principale, ma non registra la WidgetKit extension
 nella gallery widget.
 
+Il rinnovo automatico launchd controlla ogni 6 ore e rinnova solo quando il
+marker `~/Library/Application Support/DailyKanji/last-renew-success.epoch` ha
+almeno 5 giorni. Se il marker manca o e' corrotto, il rinnovo e' dovuto. Prima
+del package/build il wrapper preflighta CoreDevice e monta la Developer Disk
+Image: se l'iPhone e' bloccato, il job termina senza marcare successo e riprova
+al giro successivo. Per evitare un build immediato dopo un rinnovo manuale gia
+riuscito, installare o reinstallare il LaunchAgent con `--mark-success-now`.
+I log unattended sono in `~/Library/Logs/DailyKanji/xcode-renew.out.log` e
+`~/Library/Logs/DailyKanji/xcode-renew.err.log`.
+
+Se il rinnovo fallisce con `No Accounts`, `No profiles` o errori di provisioning,
+aprire Xcode Settings > Accounts, verificare il Personal Team, aprire
+`apps/daily-kanji-ios/DailyKanji.xcodeproj` e lasciare Xcode rigenerare i profili
+per `dev.local.daily-kanji` e `dev.local.daily-kanji.widget`.
+
 Per abilitare la sync runtime privata nella build locale, imposta questi build
 setting in Xcode o passali a `xcodebuild`/script wrapper:
 
