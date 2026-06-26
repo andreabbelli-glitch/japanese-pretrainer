@@ -155,6 +155,82 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect((await stat(configFile)).mode & 0o777).toBe(0o600);
   });
 
+  it("runs due launchd renew work from the repository root even when started elsewhere", async () => {
+    const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-daily-kanji-cwd-"));
+    tempDirs.push(tempRoot);
+    const repoRoot = path.join(tempRoot, "repo");
+    const tempIosScriptsRoot = path.join(
+      repoRoot,
+      "apps",
+      "daily-kanji-ios",
+      "scripts"
+    );
+    const tempRepoScriptsRoot = path.join(repoRoot, "scripts");
+    const stateDir = path.join(tempRoot, "state");
+    const binDir = path.join(tempRoot, "bin");
+    const callLogPath = path.join(tempRoot, "calls.log");
+    await mkdir(tempIosScriptsRoot, { recursive: true });
+    await mkdir(tempRepoScriptsRoot, { recursive: true });
+    await mkdir(stateDir, { recursive: true });
+    await mkdir(binDir, { recursive: true });
+    await writeFile(path.join(stateDir, "renew.env"), "DEVICE_ID=TEST_DEVICE\n");
+    await writeFile(path.join(stateDir, "last-renew-success.epoch"), "1\n");
+    await writeFile(
+      path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh"),
+      await readFile(renewIfNeededScriptPath, "utf8")
+    );
+    await chmod(path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh"), 0o755);
+    await writeExecutable(
+      path.join(tempRepoScriptsRoot, "with-node.sh"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'if [ "$PWD" != "$EXPECTED_REPO_ROOT" ]; then',
+        '  echo "with-node cwd=$PWD" >&2',
+        "  exit 43",
+        "fi",
+        'printf "with-node:%s:%s\\n" "$PWD" "$*" >> "$CALL_LOG"'
+      ].join("\n") + "\n"
+    );
+    await writeExecutable(
+      path.join(tempIosScriptsRoot, "xcode-renew.sh"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'if [ "$PWD" != "$EXPECTED_REPO_ROOT" ]; then',
+        '  echo "xcode-renew cwd=$PWD" >&2',
+        "  exit 44",
+        "fi",
+        'printf "xcode-renew:%s:%s\\n" "$PWD" "${DEVICE_ID:-}" >> "$CALL_LOG"'
+      ].join("\n") + "\n"
+    );
+    await writeExecutable(
+      path.join(binDir, "xcrun"),
+      "#!/usr/bin/env bash\nexit 0\n"
+    );
+
+    await execFileAsync("bash", [
+      path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh")
+    ], {
+      cwd: "/",
+      env: {
+        ...process.env,
+        CALL_LOG: callLogPath,
+        EXPECTED_REPO_ROOT: repoRoot,
+        PATH: `${binDir}:${process.env.PATH ?? ""}`,
+        STATE_DIR: stateDir
+      }
+    });
+
+    expect(await readFile(callLogPath, "utf8")).toBe(
+      [
+        `with-node:${repoRoot}:pnpm daily-kanji:package`,
+        `xcode-renew:${repoRoot}:TEST_DEVICE`,
+        ""
+      ].join("\n")
+    );
+  });
+
   it("documents install, status, and force-run commands for the agent", async () => {
     const docs = await readFile(iosAgentDocsPath, "utf8");
 

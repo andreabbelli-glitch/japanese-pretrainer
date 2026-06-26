@@ -71,7 +71,7 @@ segreti. Rieseguire `scripts/install-renew-launchd.sh` aggiorna solo
 `DEVICE_ID` e conserva le altre righe del file. Il primo install crea anche il
 marker `last-renew-success.epoch`, quindi `RunAtLoad` non scatena un build
 immediato. Quando il rinnovo e' davvero dovuto, il wrapper esegue prima
-`pnpm daily-kanji:package` e poi
+`pnpm daily-kanji:package` dalla root del repo e poi
 `scripts/xcode-renew.sh`, cosi' il verifier non blocca risorse packaged stale. Se
 il device non e' disponibile, il job termina senza errore e riprova al giro
 successivo. Per rimuoverlo:

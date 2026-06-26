@@ -278,6 +278,7 @@ if ! device_reachable; then
   exit 0
 fi
 
+cd "$REPO_ROOT"
 "$REPO_ROOT/scripts/with-node.sh" pnpm daily-kanji:package
 DEVICE_ID="$DEVICE_ID" "$ROOT/scripts/xcode-renew.sh"
 mark_success_now
