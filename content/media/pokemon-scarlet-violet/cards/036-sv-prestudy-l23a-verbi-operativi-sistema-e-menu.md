@@ -444,7 +444,7 @@ back: basso; in basso / di valore basso
 example_jp: >-
   この {{技|わざ}}は {{命中率|めいちゅうりつ}}が {{低|ひく}}いです。
 example_it: >-
-  La precisione di questa mossa è bassa.
+  Questa mossa ha un hit rate basso.
 :::
 :::term
 id: term-v409-massugu

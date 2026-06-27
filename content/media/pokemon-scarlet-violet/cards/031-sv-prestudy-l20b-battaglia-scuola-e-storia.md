@@ -521,10 +521,10 @@ id: term-v311-meichuuritsu
 lemma: 命中率
 reading: めいちゅうりつ
 romaji: meichuuritsu
-meaning_it: precisione
+meaning_it: hit rate
 notes_it: >-
-  命中率 è la percentuale di precisione di una mossa. 高い o 低い cambia la
-  probabilità che colpisca.
+  命中率 è l'hit rate di una mossa. 高い o 低い cambia la probabilità che
+  colpisca.
 :::
 :::card
 id: card-v311-meichuuritsu-recognition
@@ -533,11 +533,11 @@ entry_type: term
 entry_id: term-v311-meichuuritsu
 card_type: recognition
 front: "{{命中率|めい.ちゅう.りつ}}"
-back: precisione
+back: hit rate
 example_jp: >-
   この わざは {{命中率|めい.ちゅう.りつ}}が たかいです。
 example_it: >-
-  Questa mossa ha un'alta precisione.
+  Questa mossa ha un hit rate alto.
 :::
 :::term
 id: term-v312-jimen

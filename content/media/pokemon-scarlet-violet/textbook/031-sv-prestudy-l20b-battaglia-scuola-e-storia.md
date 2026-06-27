@@ -42,7 +42,7 @@ Il trucco è leggere ogni blocco come una piccola istruzione di scena. Se compar
 - [{{数学|すうがく}}](term:term-v307-suugaku) — matematica
 - [{{経験|けいけん}}](term:term-v309-keiken) — esperienza
 - [{{期待|きたい}}](term:term-v310-kitai) — attesa / aspettativa
-- [{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) — precisione
+- [{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) — hit rate
 - [じめん](term:term-v312-jimen) — Terra
 
 ## Espressioni ricorrenti
@@ -141,7 +141,7 @@ translation_it: >-
 - `ポケモンを {{交換|こうかん}}してから` ➔ `を` indica l'oggetto scambiato; `してから` crea la sequenza "dopo aver fatto".
 - {{対戦|たいせん}}してみよう ➔ [{{対戦|たいせん}}](term:term-v297-taisen) diventa verbo con する; してみよう aggiunge il tono di proposta: "proviamo a fare un match".
 
-### C. Precisione e informazione riportata
+### C. Hit rate e informazione riportata
 
 [{{命中|めいちゅう}}{{率|りつ}}](term:term-v311-meichuuritsu) è formato da {{命中|めいちゅう}}, "colpire il bersaglio", e {{率|りつ}}, "tasso / percentuale". In battaglia non misura la potenza della mossa: misura la probabilità che vada a segno. {{命中|めいちゅう}}{{率|りつ}}が{{高|たか}}い segnala affidabilità; {{低|ひく}}い segnala rischio di mancare.
 
@@ -149,13 +149,13 @@ translation_it: >-
 jp: >-
   じめんタイプの わざは {{命中|めいちゅう}}{{率|りつ}}が {{高|たか}}いそうだ。
 translation_it: >-
-  Pare che la mossa di tipo Terra abbia una precisione alta.
+  Pare che la mossa di tipo Terra abbia un hit rate alto.
 :::
 
 #### 🗺️ Anatomia della frase
 
 - `じめんタイプの わざは` ➔ `は` mette come tema la mossa di tipo Terra: è ciò di cui si sta parlando.
-- `{{命中|めいちゅう}}{{率|りつ}}が {{高|たか}}い` ➔ frase completa con soggetto interno `{{命中|めいちゅう}}{{率|りつ}}が`: "la precisione è alta".
+- `{{命中|めいちゅう}}{{率|りつ}}が {{高|たか}}い` ➔ frase completa con soggetto interno `{{命中|めいちゅう}}{{率|りつ}}が`: "l'hit rate è alto".
 - そうだ ➔ qui segue {{高|たか}}い con い ancora presente, quindi è [～そうだ (si dice)](grammar:grammar-g063-si-dice-che-pare-che): informazione riportata, non impressione visiva.
 
 #### ⚖️ Contrasto operativo
@@ -306,7 +306,7 @@ translation_it: >-
 jp: >-
   じめんタイプの わざは {{命中|めいちゅう}}{{率|りつ}}が {{低|ひく}}そうだから、 {{設定|せってい}}を {{見|み}}ておこう。
 translation_it: >-
-  La mossa di tipo Terra sembra avere una precisione bassa, quindi controlliamo prima le impostazioni.
+  La mossa di tipo Terra sembra avere un hit rate basso, quindi controlliamo prima le impostazioni.
 :::
 
 ---
