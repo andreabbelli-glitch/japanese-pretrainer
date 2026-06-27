@@ -28,6 +28,12 @@ export type ReviewCardSource = {
   cardType: string;
   createdAt: string;
   entryLinks: ReviewCardEntryLink[];
+  exampleAudioAttribution?: string | null;
+  exampleAudioLicense?: string | null;
+  exampleAudioPageUrl?: string | null;
+  exampleAudioSource?: string | null;
+  exampleAudioSpeaker?: string | null;
+  exampleAudioSrc?: string | null;
   exampleIt: string | null;
   exampleJp: string | null;
   front: string;

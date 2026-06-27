@@ -278,6 +278,7 @@ export interface NormalizedCard {
   back: RichTextFragment;
   exampleJp?: RichTextFragment;
   exampleIt?: RichTextFragment;
+  exampleAudio?: EntryAudioMetadata;
   notesIt?: RichTextFragment;
   tags: string[];
   source: DefinitionSource;

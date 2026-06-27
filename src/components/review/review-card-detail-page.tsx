@@ -100,6 +100,14 @@ export function ReviewCardDetailPage({
               <p className="reader-example-sentence__jp jp-inline">
                 {renderFurigana(data.card.exampleJp)}
               </p>
+              {data.card.exampleAudio ? (
+                <PronunciationAudio
+                  audio={data.card.exampleAudio}
+                  preload="metadata"
+                  showPitchAccent={false}
+                  title="Audio frase"
+                />
+              ) : null}
               <details className="reader-example-sentence__translation">
                 <summary>Mostra traduzione italiana</summary>
                 <div className="reader-example-sentence__translation-body">

@@ -308,6 +308,7 @@ export function mapQueueCard(
       ? []
       : buildReviewCardPronunciations(card, entryLookup, sortedEntryLinks);
   const reading = resolveReviewCardReading(card, entryLookup, sortedEntryLinks);
+  const exampleAudio = buildReviewCardExampleAudio(card, cardMedia.slug);
 
   return {
     back: buildAggregatedReviewBack(card, subjectCards, mediaById),
@@ -325,6 +326,7 @@ export function mapQueueCard(
       resolved.effectiveState,
       resolved.effectiveState === "known_manual"
     ),
+    exampleAudio,
     exampleIt: card.exampleIt ?? undefined,
     exampleJp: card.exampleJp ?? undefined,
     entries,
@@ -348,6 +350,32 @@ export function mapQueueCard(
     segmentTitle: card.segment?.title ?? undefined,
     typeLabel: capitalizeToken(card.cardType)
   };
+}
+
+export function buildReviewCardExampleAudio(
+  card: Pick<
+    ReviewCardSource,
+    | "exampleAudioAttribution"
+    | "exampleAudioLicense"
+    | "exampleAudioPageUrl"
+    | "exampleAudioSource"
+    | "exampleAudioSpeaker"
+    | "exampleAudioSrc"
+    | "updatedAt"
+  >,
+  mediaSlug: string
+) {
+  return (
+    buildPronunciationData(mediaSlug, {
+      audioAttribution: card.exampleAudioAttribution,
+      audioLicense: card.exampleAudioLicense,
+      audioPageUrl: card.exampleAudioPageUrl,
+      audioSource: card.exampleAudioSource,
+      audioSpeaker: card.exampleAudioSpeaker,
+      audioSrc: card.exampleAudioSrc,
+      audioUpdatedAt: card.updatedAt
+    }) ?? undefined
+  );
 }
 
 function buildAggregatedReviewBack(

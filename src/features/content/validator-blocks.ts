@@ -27,6 +27,7 @@ import {
   type GrammarRecord,
   type TermRecord
 } from "./validator-entry-blocks.ts";
+import { normalizeEntryAudioMetadata } from "./pronunciations-manifest.ts";
 import {
   readOptionalString,
   readOptionalStringArray,
@@ -140,7 +141,12 @@ const structuredBlockResolvers: Record<string, StructuredBlockResolver> = {
     };
   },
   card: async (rawBlock, sourceContext, sourcePath, issues) => {
-    const card = normalizeCardBlock(rawBlock, sourceContext, sourcePath, issues);
+    const card = await normalizeCardBlock(
+      rawBlock,
+      sourceContext,
+      sourcePath,
+      issues
+    );
 
     if (!card) {
       return null;
@@ -202,12 +208,12 @@ export function getStructuredBlockResolver(blockType: string) {
   );
 }
 
-export function normalizeCardBlock(
+export async function normalizeCardBlock(
   rawBlock: RawStructuredBlock,
   sourceContext: DocumentSourceContext,
   sourcePath: string,
   issues: ValidationIssue[]
-): (CardRecord & { references: CollectedReference[] }) | null {
+): Promise<(CardRecord & { references: CollectedReference[] }) | null> {
   if (!rawBlock.data) {
     return null;
   }
@@ -224,6 +230,12 @@ export function normalizeCardBlock(
       "back",
       "example_jp",
       "example_it",
+      "example_audio_src",
+      "example_audio_source",
+      "example_audio_speaker",
+      "example_audio_license",
+      "example_audio_attribution",
+      "example_audio_page_url",
       "tags",
       "notes_it"
     ],
@@ -331,6 +343,23 @@ export function normalizeCardBlock(
     issues,
     rawBlock.position
   );
+  const exampleAudioValues = {
+    audio_src: rawBlock.data.example_audio_src,
+    audio_source: rawBlock.data.example_audio_source,
+    audio_speaker: rawBlock.data.example_audio_speaker,
+    audio_license: rawBlock.data.example_audio_license,
+    audio_attribution: rawBlock.data.example_audio_attribution,
+    audio_page_url: rawBlock.data.example_audio_page_url
+  };
+  const exampleAudio = await normalizeEntryAudioMetadata({
+    filePath: sourceContext.filePath,
+    mediaDirectory: sourceContext.mediaDirectory,
+    range: rawBlock.position,
+    sourcePath,
+    values: exampleAudioValues
+  });
+
+  issues.push(...exampleAudio.issues);
 
   if ((exampleJp && !exampleIt) || (!exampleJp && exampleIt)) {
     issues.push(
@@ -475,6 +504,7 @@ export function normalizeCardBlock(
       back: backFragment.fragment,
       exampleJp: exampleJpFragment?.fragment,
       exampleIt: exampleItFragment?.fragment,
+      exampleAudio: exampleAudio.value ?? undefined,
       notesIt: notesFragment?.fragment,
       tags,
       source: {

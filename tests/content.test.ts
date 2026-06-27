@@ -50,6 +50,50 @@ describe("content parser and validator integration", () => {
     );
   });
 
+  it("accepts optional example audio metadata on card blocks", async () => {
+    const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-card-audio-"));
+    const contentRoot = path.join(tempRoot, "content");
+    const cardsPath = path.join(
+      contentRoot,
+      "media",
+      "sample-anime",
+      "cards",
+      "001-core.md"
+    );
+
+    try {
+      await cp(validContentRoot, contentRoot, { recursive: true });
+
+      const cardsSource = await readFile(cardsPath, "utf8");
+      await writeFile(
+        cardsPath,
+        cardsSource.replace(
+          "example_it: \"Mangio il pane.\"",
+          [
+            "example_it: \"Mangio il pane.\"",
+            "example_audio_src: assets/audio/term/term-taberu/term-taberu.ogg",
+            "example_audio_source: kaishi",
+            "example_audio_attribution: Kaishi 1.5k sample sentence audio"
+          ].join("\n")
+        )
+      );
+
+      const result = await parseMediaDirectory(
+        path.join(contentRoot, "media", "sample-anime")
+      );
+
+      expect(result.ok).toBe(true);
+      expect(result.issues).toEqual([]);
+      expect(result.data.cards[0]?.exampleAudio).toEqual({
+        audioAttribution: "Kaishi 1.5k sample sentence audio",
+        audioSource: "kaishi",
+        audioSrc: "assets/audio/term/term-taberu/term-taberu.ogg"
+      });
+    } finally {
+      await rm(tempRoot, { recursive: true, force: true });
+    }
+  });
+
   it("tracks semantic references declared inside grammar notes", async () => {
     const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-notes-"));
     const contentRoot = path.join(tempRoot, "content");

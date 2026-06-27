@@ -20,6 +20,7 @@ import {
 
 import {
   buildReviewCardContexts,
+  buildReviewCardExampleAudio,
   buildReviewCardPronunciations,
   mapQueueCard,
   resolveReviewCardMedia,
@@ -93,6 +94,7 @@ export function mapReviewQueueSubjectCardPreview(input: {
       input.queueStateSnapshot.effectiveState,
       input.queueStateSnapshot.effectiveState === "known_manual"
     ),
+    exampleAudio: buildReviewCardExampleAudio(input.card, cardMedia.slug),
     exampleIt: input.card.exampleIt ?? undefined,
     exampleJp: input.card.exampleJp ?? undefined,
     front: input.card.front,

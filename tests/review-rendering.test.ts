@@ -1,5 +1,6 @@
 import { revalidatePathMock } from "./helpers/review-next-mocks";
 
+import { cp, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import { eq } from "drizzle-orm";
@@ -139,6 +140,68 @@ describe("review rendering", () => {
     expect(markup).toContain(
       "/media-audio/sample-anime/audio/term/term-taberu/term-taberu.ogg"
     );
+  });
+
+  it("renders example sentence audio when a review card defines it", async () => {
+    const contentRoot = path.join(tempDir, "content-with-example-audio");
+    const cardsPath = path.join(
+      contentRoot,
+      "media",
+      "sample-anime",
+      "cards",
+      "001-core.md"
+    );
+
+    await cp(validContentRoot, contentRoot, { recursive: true });
+    const cardsSource = await readFile(cardsPath, "utf8");
+    await writeFile(
+      cardsPath,
+      cardsSource.replace(
+        "example_it: \"Mangio il pane.\"",
+        [
+          "example_it: \"Mangio il pane.\"",
+          "example_audio_src: assets/audio/term/term-taberu/term-taberu.ogg",
+          "example_audio_source: kaishi",
+          "example_audio_attribution: Kaishi 1.5k sample sentence audio"
+        ].join("\n")
+      )
+    );
+
+    try {
+      const imported = await importContentWorkspace({
+        contentRoot,
+        database,
+        mediaSlugs: ["sample-anime"]
+      });
+
+      expect(imported.status).toBe("completed");
+      await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
+
+      const reviewPage = await getReviewPageData(
+        "sample-anime",
+        {
+          card: "card-taberu-recognition",
+          show: "answer"
+        },
+        database
+      );
+
+      expect(reviewPage?.selectedCard?.exampleAudio?.src).toEqual(
+        expect.stringMatching(
+          /^\/media-audio\/sample-anime\/audio\/term\/term-taberu\/term-taberu\.ogg\?v=.+/u
+        )
+      );
+
+      const markup = renderToStaticMarkup(ReviewPage({ data: reviewPage! }));
+
+      expect(markup).toContain("Audio frase");
+      expect(markup).toContain("Kaishi 1.5k sample sentence audio");
+      expect(markup).toContain(
+        "/media-audio/sample-anime/audio/term/term-taberu/term-taberu.ogg"
+      );
+    } finally {
+      await rm(contentRoot, { recursive: true, force: true });
+    }
   });
 
   it("keeps non-canonical entry-linked cards separate and hides borrowed reading metadata", async () => {

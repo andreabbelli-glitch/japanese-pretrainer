@@ -81,6 +81,7 @@ export type ReviewQueueCard = {
   dueLabel?: string;
   effectiveState: EffectiveReviewState["state"];
   effectiveStateLabel: string;
+  exampleAudio?: PronunciationData;
   exampleIt?: string;
   exampleJp?: string;
   entries: ReviewCardEntrySummary[];
@@ -195,6 +196,7 @@ export type ReviewFirstCandidateCard = {
   dueLabel?: string;
   effectiveState: EffectiveReviewState["state"];
   effectiveStateLabel: string;
+  exampleAudio?: PronunciationData;
   exampleIt?: string;
   exampleJp?: string;
   front: string;
@@ -264,6 +266,7 @@ export type ReviewCardDetailData = {
     back: string;
     bucketLabel?: string;
     dueLabel?: string;
+    exampleAudio?: PronunciationData;
     exampleIt?: string;
     exampleJp?: string;
     front: string;

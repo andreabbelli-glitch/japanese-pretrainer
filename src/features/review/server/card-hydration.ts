@@ -377,6 +377,7 @@ export async function getReviewCardDetailData(
           ? undefined
           : selectedCard.bucketLabel,
       dueLabel: selectedCard.dueLabel,
+      exampleAudio: selectedCard.exampleAudio,
       exampleIt: selectedCard.exampleIt,
       exampleJp: selectedCard.exampleJp,
       front: selectedCard.front,

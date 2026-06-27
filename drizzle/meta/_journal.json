@@ -225,6 +225,13 @@
       "when": 1779703173289,
       "tag": "0031_happy_stardust",
       "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "6",
+      "when": 1782595937326,
+      "tag": "0032_rapid_maverick",
+      "breakpoints": true
     }
   ]
 }

@@ -119,6 +119,12 @@ export const cardComparisonKeys = [
   "back",
   "exampleJp",
   "exampleIt",
+  "exampleAudioSrc",
+  "exampleAudioSource",
+  "exampleAudioSpeaker",
+  "exampleAudioLicense",
+  "exampleAudioAttribution",
+  "exampleAudioPageUrl",
   "notesIt",
   "status",
   "orderIndex"

@@ -40,6 +40,12 @@ export const card = sqliteTable(
     back: text("back").notNull(),
     exampleJp: text("example_jp"),
     exampleIt: text("example_it"),
+    exampleAudioSrc: text("example_audio_src"),
+    exampleAudioSource: text("example_audio_source"),
+    exampleAudioSpeaker: text("example_audio_speaker"),
+    exampleAudioLicense: text("example_audio_license"),
+    exampleAudioAttribution: text("example_audio_attribution"),
+    exampleAudioPageUrl: text("example_audio_page_url"),
     notesIt: text("notes_it"),
     status: text("status", { enum: cardStatusValues })
       .notNull()
