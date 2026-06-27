@@ -1,5 +1,6 @@
 import {
   calculatePercent,
+  compareIsoDates,
   formatMediaTypeLabel,
   formatSegmentKindLabel,
   formatStatusLabel
@@ -58,6 +59,7 @@ export type MediaShellSnapshot = {
   inProgressLessons: number;
   activeLesson: LessonResumeTarget | null;
   lastOpenedLesson: LessonResumeTarget | null;
+  latestCompletedLessonAt: string | null;
   resumeLesson: LessonResumeTarget | null;
   nextLesson: LessonResumeTarget | null;
   segments: SegmentStudyPreview[];
@@ -127,6 +129,15 @@ function buildReviewShellSignals(input: {
 
 export function pickFocusMedia(media: MediaShellSnapshot[]) {
   return pickBestBy(media, (left, right) => {
+    const completedDifference = compareIsoDates(
+      left.latestCompletedLessonAt,
+      right.latestCompletedLessonAt
+    );
+
+    if (completedDifference !== 0) {
+      return -completedDifference;
+    }
+
     return scoreMediaFocus(left) - scoreMediaFocus(right);
   });
 }
@@ -164,6 +175,7 @@ export function mapMediaShellSnapshotFromCounts(input: {
     lessonsTotal,
     activeLesson,
     lastOpenedLesson,
+    latestCompletedLessonAt,
     resumeLesson,
     nextLesson,
     segments
@@ -203,6 +215,7 @@ export function mapMediaShellSnapshotFromCounts(input: {
     inProgressLessons,
     activeLesson,
     lastOpenedLesson,
+    latestCompletedLessonAt,
     resumeLesson,
     nextLesson,
     segments,

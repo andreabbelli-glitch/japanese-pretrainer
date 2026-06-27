@@ -97,6 +97,43 @@ describe("buildLessonMetrics", () => {
     expect(metrics.segments).toHaveLength(1);
     expect(metrics.segments[0]?.currentLessonTitle).toBe("Dialoghi");
   });
+
+  it("tracks the most recent completed lesson timestamp", () => {
+    const metrics = buildLessonMetrics([
+      buildLesson({
+        id: "lesson-1",
+        slug: "intro",
+        title: "Intro",
+        orderIndex: 1,
+        progress: {
+          status: "completed",
+          lastOpenedAt: "2026-04-10T08:00:00.000Z"
+        }
+      }),
+      buildLesson({
+        id: "lesson-2",
+        slug: "dialogues",
+        title: "Dialoghi",
+        orderIndex: 2,
+        progress: {
+          status: "completed",
+          lastOpenedAt: "2026-04-12T09:00:00.000Z"
+        }
+      }),
+      buildLesson({
+        id: "lesson-3",
+        slug: "boss",
+        title: "Boss",
+        orderIndex: 3,
+        progress: {
+          status: "in_progress",
+          lastOpenedAt: "2026-04-13T09:00:00.000Z"
+        }
+      })
+    ]);
+
+    expect(metrics.latestCompletedLessonAt).toBe("2026-04-12T09:00:00.000Z");
+  });
 });
 
 function buildLesson(input: {

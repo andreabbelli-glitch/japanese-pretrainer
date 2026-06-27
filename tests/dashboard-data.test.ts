@@ -289,6 +289,7 @@ function buildMediaSnapshot(
     id,
     inProgressLessons: 0,
     lastOpenedLesson: null,
+    latestCompletedLessonAt: null,
     lessonsCompleted: 0,
     lessonsTotal: 0,
     mediaType: "game",

@@ -156,6 +156,7 @@ function buildMediaSnapshot(
     inProgressLessons: 0,
     activeLesson: null,
     lastOpenedLesson: null,
+    latestCompletedLessonAt: null,
     resumeLesson: null,
     nextLesson: null,
     segments: [],

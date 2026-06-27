@@ -116,6 +116,7 @@ export function buildLessonMetrics(lessons: LessonMetricsListItem[]) {
   let activeLessonRaw: LessonMetricsListItem | null = null;
   let nextLessonRaw: LessonMetricsListItem | null = null;
   let lastOpenedLessonRaw: LessonMetricsListItem | null = null;
+  let latestCompletedLessonAt: string | null = null;
 
   const groups = new Map<string, SegmentStudyPreview>();
   const segmentCurrentLessonOpenedAt = new Map<string, string | null>();
@@ -128,6 +129,15 @@ export function buildLessonMetrics(lessons: LessonMetricsListItem[]) {
 
     if (isCompleted) {
       lessonsCompleted++;
+
+      if (
+        compareIsoDates(
+          lesson.progress?.completedAt ?? null,
+          latestCompletedLessonAt
+        ) > 0
+      ) {
+        latestCompletedLessonAt = lesson.progress?.completedAt ?? null;
+      }
     }
 
     if (isInProgress) {
@@ -207,6 +217,7 @@ export function buildLessonMetrics(lessons: LessonMetricsListItem[]) {
     activeLesson,
     inProgressLessons,
     lastOpenedLesson: mapLessonTarget(lastOpenedLessonRaw),
+    latestCompletedLessonAt,
     lessonsCompleted,
     lessonsTotal: lessons.length,
     nextLesson,
