@@ -39,6 +39,7 @@ describe("settings page", () => {
     const markup = renderToStaticMarkup(
       createElement(SettingsPage, {
         fsrsOptimizerStatus: buildFsrsOptimizerStatus(),
+        fsrsReschedulePreview: buildFsrsReschedulePreview(),
         saved: false,
         settings: {
           furiganaMode: "hover",
@@ -64,6 +65,11 @@ describe("settings page", () => {
     expect(markup).toContain("Dimensione predefinita drill manuale");
     expect(markup).toContain("FSRS optimizer");
     expect(markup).toContain("Desired retention");
+    expect(markup).toContain("Riallineamento calendario FSRS");
+    expect(markup).toContain("Applica riallineamento FSRS");
+    expect(markup).toContain("Delta 7 giorni");
+    expect(markup).toContain("2026-01-21");
+    expect(markup).toContain("aria-label=\"Impatto giornaliero del riallineamento FSRS\"");
     expect(markup).toContain("Esci dall&#x27;account");
     expect(markup).toContain(">Esci<");
     expect(markup.indexOf("Salva preferenze")).toBeLessThan(
@@ -77,6 +83,7 @@ describe("settings page", () => {
     const markup = renderToStaticMarkup(
       createElement(SettingsPage, {
         fsrsOptimizerStatus: buildFsrsOptimizerStatus(),
+        fsrsReschedulePreview: buildFsrsReschedulePreview(),
         saved: false,
         settings: {
           furiganaMode: "hover",
@@ -103,6 +110,7 @@ describe("settings page", () => {
         fsrsOptimizerStatus: buildFsrsOptimizerStatus({
           enabled: false
         }),
+        fsrsReschedulePreview: buildFsrsReschedulePreview(),
         saved: false,
         settings: {
           furiganaMode: "hover",
@@ -128,6 +136,7 @@ describe("settings page", () => {
     const markup = renderToStaticMarkup(
       createElement(SettingsPage, {
         fsrsOptimizerStatus: buildFsrsOptimizerStatus(),
+        fsrsReschedulePreview: buildFsrsReschedulePreview(),
         saved: false,
         settings: {
           furiganaMode: "hover",
@@ -143,6 +152,35 @@ describe("settings page", () => {
     );
 
     expect(markup).toContain('<option value="7" selected="">7 nuove</option>');
+  });
+
+  it("shows FSRS reschedule action feedback notices", () => {
+    clearAuthEnv();
+
+    const markup = renderToStaticMarkup(
+      createElement(SettingsPage, {
+        fsrsOptimizerStatus: buildFsrsOptimizerStatus(),
+        fsrsReschedulePreview: buildFsrsReschedulePreview({
+          affectedSubjects: 0
+        }),
+        fsrsRescheduleStatus: "applied",
+        saved: false,
+        settings: {
+          furiganaMode: "hover",
+          glossaryDefaultSort: "lesson_order",
+          kanjiClashDailyNewLimit: 5,
+          kanjiClashDefaultScope: "global",
+          kanjiClashManualDefaultSize: 20,
+          reviewAutoplayAudioOnReveal: true,
+          reviewFrontFurigana: true,
+          reviewDailyLimit: 20
+        }
+      })
+    );
+
+    expect(markup).toContain("Calendario FSRS riallineato.");
+    expect(markup).toContain("disabled=\"\"");
+    expect(markup).toContain("Nessuna card da riallineare");
   });
 });
 
@@ -192,5 +230,50 @@ function buildFsrsOptimizerStatus(
       totalEligibleReviewsAtLastTraining: 500
     },
     totalEligibleReviews: 542
+  };
+}
+
+function buildFsrsReschedulePreview(
+  overrides: Partial<{
+    affectedSubjects: number;
+  }> = {}
+) {
+  const affectedSubjects = overrides.affectedSubjects ?? 2;
+
+  return {
+    days: [
+      {
+        currentCount: 1,
+        date: "2026-01-21",
+        delta: -1,
+        proposedCount: 0
+      },
+      {
+        currentCount: 1,
+        date: "2026-01-22",
+        delta: 2,
+        proposedCount: 3
+      }
+    ],
+    fsrsCacheKeyPart: "config|recognition|concept",
+    generatedAt: "2026-01-21T10:00:00.000Z",
+    horizonDays: 30,
+    summary: {
+      affectedSubjects,
+      currentDue30Days: 2,
+      currentDue7Days: 2,
+      currentDueToday: 1,
+      delta30Days: 1,
+      delta7Days: 1,
+      deltaDueToday: -1,
+      eligibleSubjects: 5,
+      movedEarlier: 1,
+      movedLater: 1,
+      proposedDue30Days: 3,
+      proposedDue7Days: 3,
+      proposedDueToday: 0,
+      skippedNoHistory: 0,
+      unchangedSubjects: 3
+    }
   };
 }

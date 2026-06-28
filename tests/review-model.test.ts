@@ -2,7 +2,11 @@ import { describe, expect, it } from "vitest";
 
 import { getLocalDayBounds } from "@/db/queries/review-query-helpers";
 import { resolveReviewCardReading } from "@/features/review/server/card-hydration";
-import { scheduleReview } from "@/features/review/model/scheduler";
+import {
+  replayReviewHistory,
+  reviewSchedulerConfig,
+  scheduleReview
+} from "@/features/review/model/scheduler";
 
 describe("review model", () => {
   it("derives grammar card reading from annotated fronts when the glossary reading is missing", () => {
@@ -130,6 +134,46 @@ describe("review model", () => {
     expect(dueTimes[2]).toBeLessThanOrEqual(dueTimes[3]);
     expect(scheduled[2]?.scheduledDays).toBe(1);
     expect(scheduled[3]?.scheduledDays).toBe(1);
+  });
+
+  it("replays review history with a caller-provided scheduler config", () => {
+    const logs = [
+      {
+        answeredAt: "2026-01-01T09:00:00.000Z",
+        cardType: "recognition",
+        id: "log-1",
+        previousState: "new",
+        rating: "good",
+        responseMs: null
+      },
+      {
+        answeredAt: "2026-01-03T09:00:00.000Z",
+        cardType: "recognition",
+        id: "log-2",
+        previousState: "learning",
+        rating: "good",
+        responseMs: null
+      },
+      {
+        answeredAt: "2026-01-08T09:00:00.000Z",
+        cardType: "recognition",
+        id: "log-3",
+        previousState: "review",
+        rating: "good",
+        responseMs: null
+      }
+    ] as const;
+    const defaultReplay = replayReviewHistory(logs);
+    const optimizedReplay = replayReviewHistory(logs, {
+      scheduler: () => ({
+        desiredRetention: 0.8,
+        weights: [...reviewSchedulerConfig.fsrs.w]
+      })
+    });
+
+    expect(defaultReplay?.state.scheduledDays).toBe(18);
+    expect(optimizedReplay?.state.scheduledDays).toBe(60);
+    expect(optimizedReplay?.state.dueAt).toBe("2026-03-09T00:00:00.000Z");
   });
 
   it("derives study-day boundaries from the runtime local timezone", () => {

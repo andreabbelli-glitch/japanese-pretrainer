@@ -78,6 +78,7 @@ export type ScheduleReviewResult = {
 
 export type ReviewLogReplayInput = {
   answeredAt: string;
+  cardType?: string | null;
   id: string;
   previousState: ReviewState | null;
   rating: ReviewRating;
@@ -102,6 +103,15 @@ export type ReplayedReviewHistory = {
     dueAt: string;
     lastReviewedAt: string;
   };
+};
+
+export type ReplayReviewHistoryOptions = {
+  scheduler?:
+    | ReviewSchedulerRuntimeConfig
+    | ((
+        log: ReviewLogReplayInput,
+        index: number
+      ) => ReviewSchedulerRuntimeConfig | null | undefined);
 };
 
 export function scheduleReview(
@@ -255,7 +265,8 @@ function mapReviewRating(value: ReviewRating) {
 }
 
 export function replayReviewHistory(
-  logs: readonly ReviewLogReplayInput[]
+  logs: readonly ReviewLogReplayInput[],
+  options: ReplayReviewHistoryOptions = {}
 ): ReplayedReviewHistory | null {
   if (logs.length === 0) {
     return null;
@@ -285,7 +296,9 @@ export function replayReviewHistory(
       card = createEmptyCard(reviewAt);
     }
 
-    const result = getReviewScheduler().next(
+    const result = getReviewScheduler(
+      resolveReplayReviewSchedulerConfig(options, log, index)
+    ).next(
       card,
       reviewAt,
       mapReviewRating(log.rating)
@@ -327,6 +340,18 @@ export function replayReviewHistory(
       state: mapFsrsState(card.state)
     }
   };
+}
+
+function resolveReplayReviewSchedulerConfig(
+  options: ReplayReviewHistoryOptions,
+  log: ReviewLogReplayInput,
+  index: number
+) {
+  if (typeof options.scheduler === "function") {
+    return options.scheduler(log, index) ?? undefined;
+  }
+
+  return options.scheduler;
 }
 
 function clampDifficulty(value: number) {

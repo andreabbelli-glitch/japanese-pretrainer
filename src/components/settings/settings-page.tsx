@@ -3,19 +3,28 @@ import { saveStudySettingsAction } from "@/actions/settings";
 import type { Route } from "next";
 import Link from "next/link";
 import { isAuthEnabled } from "@/features/auth/server";
-import type { FsrsOptimizerStatus } from "@/features/fsrs-optimizer/server";
+import type {
+  FsrsOptimizerStatus,
+  FsrsReschedulePreview
+} from "@/features/fsrs-optimizer/server";
 import type { StudySettings } from "@/features/settings/server";
 import { resolveReturnToContext, resolveReturnToLabel } from "@/features/navigation";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { Section } from "../ui/section";
 import { SurfaceCard } from "../ui/surface-card";
+import {
+  FsrsManualReschedulePanel,
+  type FsrsRescheduleStatus
+} from "./fsrs-manual-reschedule-panel";
 import { FsrsOptimizerStatusPanel } from "./fsrs-optimizer-status-panel";
 import { KanjiClashSettingsPanel } from "./kanji-clash-settings-panel";
 import { SaveSettingsButton } from "./save-settings-button";
 
 type SettingsPageProps = {
   fsrsOptimizerStatus: FsrsOptimizerStatus;
+  fsrsReschedulePreview: FsrsReschedulePreview;
+  fsrsRescheduleStatus?: FsrsRescheduleStatus | null;
   returnTo?: Route | null;
   saved: boolean;
   settings: StudySettings;
@@ -88,6 +97,8 @@ const reviewLimitOptions = [10, 20, 30, 40, 60] as const;
 
 export function SettingsPage({
   fsrsOptimizerStatus,
+  fsrsReschedulePreview,
+  fsrsRescheduleStatus,
   returnTo,
   saved,
   settings
@@ -290,12 +301,25 @@ export function SettingsPage({
             </div>
           </SurfaceCard>
 
-          <FsrsOptimizerStatusPanel status={fsrsOptimizerStatus} />
-
           <div className="settings-form__footer">
             <SaveSettingsButton />
           </div>
         </form>
+      </Section>
+
+      <Section
+        eyebrow="Review"
+        title="FSRS"
+        description="Stato optimizer e riallineamento manuale del calendario."
+      >
+        <div className="settings-form">
+          <FsrsOptimizerStatusPanel status={fsrsOptimizerStatus} />
+          <FsrsManualReschedulePanel
+            preview={fsrsReschedulePreview}
+            returnTo={returnTo}
+            status={fsrsRescheduleStatus}
+          />
+        </div>
       </Section>
 
       {showAccountSettings ? (

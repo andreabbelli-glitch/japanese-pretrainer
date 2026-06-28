@@ -51,11 +51,20 @@ export {
   countEligibleFsrsOptimizerReviews,
   loadFsrsOptimizerLogRows
 } from "./training-data.ts";
+export {
+  applyFsrsReschedule,
+  buildFsrsReschedulePreview
+} from "./reschedule.ts";
 export type {
   FsrsOptimizerLogRow,
   FsrsTrainingDataset,
   FsrsTrainingReview
 } from "./training-data.ts";
+export type {
+  FsrsRescheduleApplyResult,
+  FsrsRescheduleDayDelta,
+  FsrsReschedulePreview
+} from "./reschedule.ts";
 
 export type FsrsOptimizerPresetStatus = {
   desiredRetention: number;

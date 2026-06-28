@@ -1,10 +1,17 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const { redirectMock, updateSettingsCacheMock, updateStudySettingsMock } =
-  vi.hoisted(() => ({
+const {
+  applyFsrsRescheduleMock,
+  redirectMock,
+  updateReviewSummaryCacheMock,
+  updateSettingsCacheMock,
+  updateStudySettingsMock
+} = vi.hoisted(() => ({
+    applyFsrsRescheduleMock: vi.fn(),
     redirectMock: vi.fn((href: string) => {
       throw new Error(`redirect:${href}`);
     }),
+    updateReviewSummaryCacheMock: vi.fn(),
     updateSettingsCacheMock: vi.fn(),
     updateStudySettingsMock: vi.fn()
   }));
@@ -14,8 +21,19 @@ vi.mock("next/navigation", () => ({
 }));
 
 vi.mock("@/features/cache/server/data-cache", () => ({
+  updateReviewSummaryCache: updateReviewSummaryCacheMock,
   updateSettingsCache: updateSettingsCacheMock
 }));
+
+vi.mock("@/features/fsrs-optimizer/server", async (importOriginal) => {
+  const actual =
+    await importOriginal<typeof import("@/features/fsrs-optimizer/server")>();
+
+  return {
+    ...actual,
+    applyFsrsReschedule: applyFsrsRescheduleMock
+  };
+});
 
 vi.mock("@/features/settings/server", async (importOriginal) => {
   const actual = await importOriginal<typeof import("@/features/settings/server")>();
@@ -26,12 +44,17 @@ vi.mock("@/features/settings/server", async (importOriginal) => {
   };
 });
 
-import { saveStudySettingsAction } from "@/actions/settings";
+import {
+  applyFsrsRescheduleAction,
+  saveStudySettingsAction
+} from "@/actions/settings";
 import { defaultStudySettings } from "@/features/settings/server";
 
 describe("settings actions", () => {
   beforeEach(() => {
     redirectMock.mockClear();
+    applyFsrsRescheduleMock.mockReset();
+    updateReviewSummaryCacheMock.mockClear();
     updateSettingsCacheMock.mockClear();
     updateStudySettingsMock.mockReset();
   });
@@ -88,5 +111,43 @@ describe("settings actions", () => {
         reviewAutoplayAudioOnReveal: false
       })
     );
+  });
+
+  it("applies FSRS reschedule from a separate settings action", async () => {
+    applyFsrsRescheduleMock.mockResolvedValue({
+      affectedSubjects: 3,
+      fsrsCacheKeyPart: "next-cache-key",
+      status: "applied"
+    });
+
+    const formData = new FormData();
+    formData.set("fsrsCacheKeyPart", "config|recognition|concept");
+    formData.set("returnTo", "/review?answered=2");
+
+    await expect(applyFsrsRescheduleAction(formData)).rejects.toThrow(
+      "redirect:/settings?fsrsRescheduled=1&returnTo=%2Freview%3Fanswered%3D2"
+    );
+
+    expect(applyFsrsRescheduleMock).toHaveBeenCalledWith({
+      expectedFsrsCacheKeyPart: "config|recognition|concept"
+    });
+    expect(updateReviewSummaryCacheMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("redirects with a stale notice when FSRS params changed before applying", async () => {
+    applyFsrsRescheduleMock.mockResolvedValue({
+      affectedSubjects: 0,
+      fsrsCacheKeyPart: "next-cache-key",
+      status: "stale"
+    });
+
+    const formData = new FormData();
+    formData.set("fsrsCacheKeyPart", "old-cache-key");
+
+    await expect(applyFsrsRescheduleAction(formData)).rejects.toThrow(
+      "redirect:/settings?fsrsRescheduleStale=1"
+    );
+
+    expect(updateReviewSummaryCacheMock).not.toHaveBeenCalled();
   });
 });

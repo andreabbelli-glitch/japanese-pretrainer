@@ -1,4 +1,14 @@
-import { and, asc, eq, gte, inArray, lt, ne, sql } from "drizzle-orm";
+import {
+  and,
+  asc,
+  eq,
+  gte,
+  inArray,
+  lt,
+  ne,
+  notInArray,
+  sql
+} from "drizzle-orm";
 
 import type { DatabaseClient, DatabaseQueryClient } from "../client.ts";
 import { card, reviewSubjectLog, reviewSubjectState } from "../schema/index.ts";
@@ -11,6 +21,27 @@ export type ReviewSubjectEntryRef = {
 };
 
 export type ReviewSubjectStateRecord = typeof reviewSubjectState.$inferSelect;
+export type ReviewSubjectFsrsReplayLogRecord = Pick<
+  typeof reviewSubjectLog.$inferSelect,
+  | "answeredAt"
+  | "cardId"
+  | "elapsedDays"
+  | "id"
+  | "newState"
+  | "previousState"
+  | "rating"
+  | "responseMs"
+  | "scheduledDueAt"
+  | "subjectKey"
+> & {
+  cardType: string;
+};
+export type ReviewSubjectFsrsReplaySubject = {
+  cardStatus: string;
+  cardType: string;
+  logs: ReviewSubjectFsrsReplayLogRecord[];
+  state: ReviewSubjectStateRecord;
+};
 
 export async function getReviewSubjectStateByKey(
   database: DatabaseQueryClient,
@@ -36,6 +67,75 @@ export async function listReviewSubjectStatesByKeys(
   });
 
   return new Map(rows.map((row) => [row.subjectKey, row]));
+}
+
+export async function listReviewSubjectFsrsReplaySubjects(
+  database: Pick<DatabaseClient, "select">
+): Promise<ReviewSubjectFsrsReplaySubject[]> {
+  const stateRows = await database
+    .select({
+      cardStatus: card.status,
+      cardType: card.cardType,
+      state: reviewSubjectState
+    })
+    .from(reviewSubjectState)
+    .innerJoin(card, eq(card.id, reviewSubjectState.cardId))
+    .where(
+      and(
+        eq(card.status, "active"),
+        eq(reviewSubjectState.manualOverride, false),
+        eq(reviewSubjectState.suspended, false),
+        notInArray(reviewSubjectState.state, [
+          "new",
+          "known_manual",
+          "suspended"
+        ])
+      )
+    )
+    .orderBy(asc(reviewSubjectState.subjectKey));
+
+  if (stateRows.length === 0) {
+    return [];
+  }
+
+  const subjectKeys = stateRows.map((row) => row.state.subjectKey);
+  const logRows = await database
+    .select({
+      answeredAt: reviewSubjectLog.answeredAt,
+      cardId: reviewSubjectLog.cardId,
+      cardType: card.cardType,
+      elapsedDays: reviewSubjectLog.elapsedDays,
+      id: reviewSubjectLog.id,
+      newState: reviewSubjectLog.newState,
+      previousState: reviewSubjectLog.previousState,
+      rating: reviewSubjectLog.rating,
+      responseMs: reviewSubjectLog.responseMs,
+      scheduledDueAt: reviewSubjectLog.scheduledDueAt,
+      subjectKey: reviewSubjectLog.subjectKey
+    })
+    .from(reviewSubjectLog)
+    .innerJoin(card, eq(card.id, reviewSubjectLog.cardId))
+    .where(inArray(reviewSubjectLog.subjectKey, subjectKeys))
+    .orderBy(
+      asc(reviewSubjectLog.subjectKey),
+      asc(reviewSubjectLog.answeredAt),
+      asc(reviewSubjectLog.id)
+    );
+  const logsBySubjectKey = new Map<string, ReviewSubjectFsrsReplayLogRecord[]>();
+
+  for (const log of logRows) {
+    const logs = logsBySubjectKey.get(log.subjectKey) ?? [];
+
+    logs.push(log);
+    logsBySubjectKey.set(log.subjectKey, logs);
+  }
+
+  return stateRows.map((row) => ({
+    cardStatus: row.cardStatus,
+    cardType: row.cardType,
+    logs: logsBySubjectKey.get(row.state.subjectKey) ?? [],
+    state: row.state
+  }));
 }
 
 export async function listReviewCardIdsByEntryRefs(

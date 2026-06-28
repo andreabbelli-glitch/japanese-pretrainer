@@ -3,7 +3,11 @@
 import { redirect } from "next/navigation";
 
 import { readOptionalInternalHref, readRequiredString } from "./form-data.ts";
-import { invalidateStudySettingsSaved } from "@/features/cache/server";
+import {
+  invalidateReviewMutationCaches,
+  invalidateStudySettingsSaved
+} from "@/features/cache/server";
+import { applyFsrsReschedule } from "@/features/fsrs-optimizer/server";
 import { buildHrefWithSearch } from "@/features/navigation";
 import {
   normalizeFuriganaMode,
@@ -52,6 +56,35 @@ export async function saveStudySettingsAction(formData: FormData) {
   redirect(
     buildHrefWithSearch("/settings", (params) => {
       params.set("saved", "1");
+
+      if (returnTo) {
+        params.set("returnTo", returnTo);
+      }
+    })
+  );
+}
+
+export async function applyFsrsRescheduleAction(formData: FormData) {
+  const returnTo = readOptionalInternalHref(formData, "returnTo");
+  const result = await applyFsrsReschedule({
+    expectedFsrsCacheKeyPart: readRequiredString(formData, "fsrsCacheKeyPart")
+  });
+
+  if (result.status === "applied") {
+    invalidateReviewMutationCaches({
+      policy: "review"
+    });
+  }
+
+  redirect(
+    buildHrefWithSearch("/settings", (params) => {
+      if (result.status === "applied") {
+        params.set("fsrsRescheduled", "1");
+      } else if (result.status === "stale") {
+        params.set("fsrsRescheduleStale", "1");
+      } else {
+        params.set("fsrsRescheduleNoop", "1");
+      }
 
       if (returnTo) {
         params.set("returnTo", returnTo);

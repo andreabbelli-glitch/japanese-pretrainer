@@ -120,7 +120,7 @@ export async function getFsrsOptimizerRuntimeSnapshot(
 }
 
 export async function getFsrsOptimizerCacheKeyPart(
-  database: DatabaseClient = db
+  database: FsrsSettingsReader = db
 ): Promise<string> {
   return buildFsrsOptimizerCacheKeyPartFromRows(
     await loadFsrsOptimizerRows(
