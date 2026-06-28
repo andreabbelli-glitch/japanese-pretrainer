@@ -3,6 +3,11 @@
   "entries": [
     {
       "entry_type": "term",
+      "entry_id": "term-grade-zero",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-hakki-vanguard-effect",
       "audio_src": "assets/audio/term/term-hakki-vanguard-effect/forvo-strawberrybrown-はっき.mp3",
       "audio_source": "forvo",
@@ -72,6 +77,14 @@
       "audio_attribution": "mezashi via Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%81%84%E3%82%89%E3%81%AA%E3%81%84%E3%82%AB%E3%83%BC%E3%83%89%E3%81%8C%E3%81%82%E3%81%A3%E3%81%9F%E3%82%89/#ja",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-janken",
+      "pitch_accent": 3,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%98%E3%82%83%E3%82%93%E3%81%91%E3%82%93",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -175,6 +188,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-koukou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-kouretsu-vanguard-back-row",
       "audio_src": "assets/audio/term/term-kouretsu-vanguard-back-row/forvo-mezashi-こうれつ.mp3",
       "audio_source": "forvo",
@@ -261,6 +282,11 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-ride-deck",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-sarani-vanguard-further",
       "audio_src": "assets/audio/term/term-sarani-vanguard-further/tofugu-wanikani-更に.mp3",
       "audio_source": "tofugu_wanikani",
@@ -268,6 +294,14 @@
       "audio_attribution": "Tofugu and WaniKani",
       "audio_page_url": "https://github.com/tofugu/japanese-vocabulary-pronunciation-audio/blob/master/lib/mp3/%E6%9B%B4%E3%81%AB%E3%80%90%E3%81%95%E3%82%89%E3%81%AB%E3%80%91.mp3",
       "pitch_accent": 1,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-senkou",
+      "pitch_accent": 0,
       "pitch_accent_source": "Kanjium",
       "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
       "pitch_accent_status": "resolved"
