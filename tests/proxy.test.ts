@@ -1,7 +1,12 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { NextRequest } from "next/server";
 
-import { config, isStaticMediaAudioPath, proxy } from "@/proxy";
+import {
+  config,
+  isMobileReviewApiPath,
+  isStaticMediaAudioPath,
+  proxy
+} from "@/proxy";
 
 const AUTH_ENV_KEYS = [
   "AUTH_PASSWORD",
@@ -48,6 +53,24 @@ describe("proxy", () => {
     expect(response.headers.get("location")).toBeNull();
   });
 
+  it("lets Daily Kanji mobile review routes reach their own bearer-token auth", () => {
+    enableAuth();
+
+    for (const pathname of [
+      "/api/mobile/review/session",
+      "/api/mobile/review/grade",
+      "/api/mobile/review/device-token",
+      "/api/internal/mobile-review-notifications/run"
+    ]) {
+      const response = proxy(
+        new NextRequest(`https://example.test${pathname}`)
+      );
+
+      expect(response.status).toBe(200);
+      expect(response.headers.get("location")).toBeNull();
+    }
+  });
+
   it("keeps redirecting regular unauthenticated app requests to login", () => {
     enableAuth();
 
@@ -86,6 +109,8 @@ describe("proxy", () => {
     expect(isStaticMediaAudioPath("/media/sample/assets/audio/yomu.mp3")).toBe(
       false
     );
+    expect(isMobileReviewApiPath("/api/mobile/review/session")).toBe(true);
+    expect(isMobileReviewApiPath("/api/mobile/reviewx")).toBe(false);
   });
 });
 

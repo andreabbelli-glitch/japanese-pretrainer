@@ -13,7 +13,10 @@ import {
 const INTERNAL_CONTENT_CACHE_REVALIDATE_PATH =
   "/api/internal/content-cache/revalidate";
 const INTERNAL_FSRS_OPTIMIZER_RUN_PATH = "/api/internal/fsrs-optimizer/run";
+const INTERNAL_MOBILE_REVIEW_NOTIFICATIONS_RUN_PATH =
+  "/api/internal/mobile-review-notifications/run";
 const DAILY_KANJI_IOS_DATASET_PATH = "/api/daily-kanji/ios-dataset";
+const MOBILE_REVIEW_API_PATH_PREFIX = "/api/mobile/review";
 const STATIC_MEDIA_AUDIO_PATH_PREFIX = "/media-audio";
 
 export function proxy(request: NextRequest) {
@@ -38,7 +41,10 @@ export function proxy(request: NextRequest) {
     pathname === INTERNAL_CONTENT_CACHE_REVALIDATE_PATH;
   const isInternalFsrsOptimizerRun =
     pathname === INTERNAL_FSRS_OPTIMIZER_RUN_PATH;
+  const isInternalMobileReviewNotificationsRun =
+    pathname === INTERNAL_MOBILE_REVIEW_NOTIFICATIONS_RUN_PATH;
   const isDailyKanjiIosDataset = pathname === DAILY_KANJI_IOS_DATASET_PATH;
+  const isMobileReviewApi = isMobileReviewApiPath(pathname);
   const sessionToken = request.cookies.get(AUTH_SESSION_COOKIE)?.value;
   const isAuthenticated = hasValidSessionToken(sessionToken);
 
@@ -51,7 +57,9 @@ export function proxy(request: NextRequest) {
     isAuthenticated ||
     isInternalContentCacheRevalidate ||
     isInternalFsrsOptimizerRun ||
-    isDailyKanjiIosDataset
+    isInternalMobileReviewNotificationsRun ||
+    isDailyKanjiIosDataset ||
+    isMobileReviewApi
   ) {
     return continueRequest(requestHeaders);
   }
@@ -76,6 +84,13 @@ export function isStaticMediaAudioPath(pathname: string) {
   return (
     pathname === STATIC_MEDIA_AUDIO_PATH_PREFIX ||
     pathname.startsWith(`${STATIC_MEDIA_AUDIO_PATH_PREFIX}/`)
+  );
+}
+
+export function isMobileReviewApiPath(pathname: string) {
+  return (
+    pathname === MOBILE_REVIEW_API_PATH_PREFIX ||
+    pathname.startsWith(`${MOBILE_REVIEW_API_PATH_PREFIX}/`)
   );
 }
 
