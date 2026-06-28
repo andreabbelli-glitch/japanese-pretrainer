@@ -315,7 +315,7 @@ entry_type: term
 entry_id: term-v523-shien
 card_type: recognition
 front: "{{支援|しえん}}"
-back: supporto / sostegno
+back: supporto materiale / sostegno concreto
 example_jp: >-
   {{先生|せんせい}}が {{新入生|しんにゅうせい}}を {{支援|しえん}}します。
 example_it: >-
@@ -680,7 +680,7 @@ entry_type: term
 entry_id: term-v539-ouen
 card_type: recognition
 front: "{{応援|おうえん}}"
-back: incoraggiamento / supporto
+back: supporto emotivo / fare il tifo
 example_jp: >-
   レイドバトルで {{味方|みかた}}を {{応援|おうえん}}します。
 example_it: >-

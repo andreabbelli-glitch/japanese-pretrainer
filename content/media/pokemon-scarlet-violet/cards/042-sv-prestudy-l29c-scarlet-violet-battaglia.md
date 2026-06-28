@@ -294,7 +294,7 @@ entry_type: term
 entry_id: term-v552-ouen
 card_type: recognition
 front: "おうえん"
-back: incitamento / supporto
+back: supporto emotivo / fare il tifo
 example_jp: >-
   テラレイドバトルで おうえんを {{使|つか}}うと、{{味方|みかた}}の
   HPが {{回復|かいふく}}する。
