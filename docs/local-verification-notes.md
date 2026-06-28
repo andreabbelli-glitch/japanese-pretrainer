@@ -278,8 +278,10 @@ con cache o bundle locale e mostra `Sync non configurato`; il widget continua a
 leggere solo la cache condivisa o il bundle. Se i valori `MOBILE_API_*` restano
 assenti o placeholder, la review live mostra `Live review non configurata` e non
 abilita grading nativo. La richiesta permesso notifiche viene fatta solo quando
-`MOBILE_API_*` e' configurato; l'app target dichiara `aps-environment` per APNs,
-mentre la widget extension resta senza push e senza rete.
+`MOBILE_API_*` e' configurato e la build e' firmata con entitlement
+`aps-environment`. Le build Personal Team usano il default senza push; imposta
+`DAILY_KANJI_ENABLE_APNS=1` solo con un Apple Developer team/provisioning che
+supporta Push Notifications. La widget extension resta senza push e senza rete.
 
 Per aggiornare lo snapshot offline e gli audio packaged usati dall'app iOS:
 

@@ -214,8 +214,11 @@ la review live resta non configurata; senza `DAILY_KANJI_IOS_SYNC_*` l'app usa
 fallback packaged/cache per Daily Kanji e widget. I token non vanno committati.
 Dopo una build installata con `MOBILE_API_*`, l'app carica la review globale
 live ogni volta che viene aperta o riportata in foreground; il grading nativo
-richiede rete. Le notifiche push usano APNs e l'app target dichiara
-`aps-environment=development`; il widget resta senza push e senza rete. Dopo una
+richiede rete. Le notifiche push usano APNs solo nelle build firmate con un
+Apple Developer team che supporta Push Notifications: le build Personal Team
+restano installabili senza `aps-environment`, mentre `DAILY_KANJI_ENABLE_APNS=1`
+fa usare `DailyKanjiPush.entitlements` quando il provisioning lo supporta. Il
+widget resta senza push e senza rete. Dopo una
 build installata con `DAILY_KANJI_IOS_SYNC_*`, l'app prova il sync dataset al
 massimo ogni 4 ore nello stesso giorno, sempre a cambio giorno, oppure subito
 quando l'utente preme "Aggiorna ora". Il widget non fa rete direttamente; legge

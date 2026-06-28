@@ -346,7 +346,13 @@ protocol DailyKanjiNotificationRegistering {
 }
 
 struct DailyKanjiPushNotificationRegistrar: DailyKanjiNotificationRegistering {
+    var isRemoteNotificationEnabled: () -> Bool = Self.defaultRemoteNotificationConfigurationCheck
+
     func requestAuthorizationAndRegister() async {
+        guard isRemoteNotificationEnabled() else {
+            return
+        }
+
         do {
             let granted = try await UNUserNotificationCenter.current().requestAuthorization(
                 options: [.alert, .badge, .sound]
@@ -360,6 +366,19 @@ struct DailyKanjiPushNotificationRegistrar: DailyKanjiNotificationRegistering {
             }
         } catch {
             return
+        }
+    }
+
+    private static func defaultRemoteNotificationConfigurationCheck() -> Bool {
+        guard let value = Bundle.main.object(forInfoDictionaryKey: "DAILY_KANJI_ENABLE_APNS") as? String else {
+            return false
+        }
+
+        switch value.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() {
+        case "1", "true", "yes":
+            return true
+        default:
+            return false
         }
     }
 }

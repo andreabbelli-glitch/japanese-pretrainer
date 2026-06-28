@@ -546,6 +546,7 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect(docs).toContain("./scripts/xcode-renew-if-needed.sh --status");
     expect(docs).toContain("./scripts/xcode-renew-if-needed.sh --force");
     expect(docs).toContain("renew.env");
+    expect(docs).toContain("DAILY_KANJI_ENABLE_APNS=1");
   });
 
   it("lets the private sync endpoint and token flow into local Xcode installs", async () => {
@@ -560,6 +561,8 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect(source).toContain("DAILY_KANJI_IOS_SYNC_TOKEN=");
     expect(source).toContain("MOBILE_API_ENDPOINT=");
     expect(source).toContain("MOBILE_API_TOKEN=");
+    expect(source).toContain("DAILY_KANJI_ENABLE_APNS");
+    expect(source).toContain("DailyKanjiPush.entitlements");
     expect(source).toContain("mktemp");
     expect(source).toContain("daily-kanji-runtime.XXXXXX");
     expect(source).toContain("chmod 600");

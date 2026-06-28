@@ -37,6 +37,10 @@ describe("mobile review notification monitor workflow", () => {
       MONITOR_URL: "${{ secrets.MOBILE_REVIEW_NOTIFICATION_MONITOR_URL }}"
     });
     expect(source).toContain("curl --fail --silent --show-error");
+    expect(source).toContain(
+      "Mobile review notification monitor is not configured; skipping tick."
+    );
+    expect(source).toContain("exit 0");
     expect(source).not.toContain("actions/checkout");
     expect(source).not.toContain("actions/setup-node");
     expect(source).not.toContain("TURSO_");

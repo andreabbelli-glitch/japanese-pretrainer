@@ -1,10 +1,11 @@
 {
   "entitlements": {
-    "apsEnvironment": "development",
     "appGroupIdentifier": "group.dev.local.daily-kanji",
     "appGroups": true,
     "associatedDomains": false,
-    "pushNotifications": true
+    "defaultApsEnvironment": null,
+    "optionalApsEnvironment": "development",
+    "pushNotifications": "optional-paid-team"
   },
   "freeTierBudget": {
     "monthlyRuntime": {

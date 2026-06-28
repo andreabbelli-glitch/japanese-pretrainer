@@ -36,6 +36,8 @@ CONFIG_MOBILE_API_ENDPOINT="$(config_value MOBILE_API_ENDPOINT || true)"
 CONFIG_MOBILE_API_TOKEN="$(config_value MOBILE_API_TOKEN || true)"
 MOBILE_API_ENDPOINT="${MOBILE_API_ENDPOINT:-$CONFIG_MOBILE_API_ENDPOINT}"
 MOBILE_API_TOKEN="${MOBILE_API_TOKEN:-$CONFIG_MOBILE_API_TOKEN}"
+CONFIG_ENABLE_APNS="$(config_value DAILY_KANJI_ENABLE_APNS || true)"
+DAILY_KANJI_ENABLE_APNS="${DAILY_KANJI_ENABLE_APNS:-$CONFIG_ENABLE_APNS}"
 runtime_xcconfig=""
 runtime_xcconfig_args=()
 xcodebuild_args=()
@@ -84,11 +86,30 @@ if [ -n "${MOBILE_API_ENDPOINT:-}" ] || [ -n "${MOBILE_API_TOKEN:-}" ]; then
   validate_xcconfig_value MOBILE_API_TOKEN "$MOBILE_API_TOKEN"
 fi
 
-if [ -n "${DAILY_KANJI_IOS_SYNC_ENDPOINT:-}" ] || [ -n "${MOBILE_API_ENDPOINT:-}" ]; then
+case "${DAILY_KANJI_ENABLE_APNS:-}" in
+  ""|0|false|FALSE|no|NO)
+    DAILY_KANJI_ENABLE_APNS=0
+    ;;
+  1|true|TRUE|yes|YES)
+    DAILY_KANJI_ENABLE_APNS=1
+    ;;
+  *)
+    echo "DAILY_KANJI_ENABLE_APNS deve essere 1/true/yes oppure 0/false/no." >&2
+    exit 1
+    ;;
+esac
+
+if [ -n "${DAILY_KANJI_IOS_SYNC_ENDPOINT:-}" ] || [ -n "${MOBILE_API_ENDPOINT:-}" ] || [ "$DAILY_KANJI_ENABLE_APNS" = "1" ]; then
   runtime_xcconfig="$(mktemp "${TMPDIR:-/tmp}/daily-kanji-runtime.XXXXXX")"
   chmod 600 "$runtime_xcconfig"
 
   {
+    printf "DAILY_KANJI_ENABLE_APNS = %s\n" "$DAILY_KANJI_ENABLE_APNS"
+
+    if [ "$DAILY_KANJI_ENABLE_APNS" = "1" ]; then
+      printf "CODE_SIGN_ENTITLEMENTS = DailyKanjiPush.entitlements\n"
+    fi
+
     if [ -n "${DAILY_KANJI_IOS_SYNC_ENDPOINT:-}" ]; then
       printf "DAILY_KANJI_IOS_SYNC_ENDPOINT = %s\n" "$(xcconfig_value "$DAILY_KANJI_IOS_SYNC_ENDPOINT")"
       printf "DAILY_KANJI_IOS_SYNC_TOKEN = %s\n" "$(xcconfig_value "$DAILY_KANJI_IOS_SYNC_TOKEN")"
@@ -197,6 +218,12 @@ if [ -n "${MOBILE_API_ENDPOINT:-}" ]; then
   printf "Daily Kanji live review API: configurata\n"
 else
   printf "Daily Kanji live review API: non configurata\n"
+fi
+
+if [ "$DAILY_KANJI_ENABLE_APNS" = "1" ]; then
+  printf "Daily Kanji APNs entitlement: abilitato\n"
+else
+  printf "Daily Kanji APNs entitlement: disabilitato per build Personal Team\n"
 fi
 
 cd "$ROOT"

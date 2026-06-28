@@ -72,8 +72,11 @@ solo se l'ultimo rinnovo riuscito ha almeno 5 giorni, l'iPhone e' raggiungibile
 via CoreDevice e la Developer Disk Image e' montabile. Il `DEVICE_ID` viene scritto nel file locale non versionato
 `~/Library/Application Support/DailyKanji/renew.env`; lo stesso file puo
 contenere `DAILY_KANJI_IOS_SYNC_ENDPOINT`, `DAILY_KANJI_IOS_SYNC_TOKEN`,
-`MOBILE_API_ENDPOINT` e `MOBILE_API_TOKEN`, che `scripts/xcode-renew.sh` passa
-come build settings locali senza committare segreti. Rieseguire
+`MOBILE_API_ENDPOINT`, `MOBILE_API_TOKEN` e opzionalmente
+`DAILY_KANJI_ENABLE_APNS=1`, che `scripts/xcode-renew.sh` passa come build
+settings locali senza committare segreti. Lascia APNs disabilitato per Personal
+Team; abilitalo solo con provisioning Apple Developer che supporta Push
+Notifications. Rieseguire
 `scripts/install-renew-launchd.sh` aggiorna solo `DEVICE_ID` e conserva le altre
 righe del file. Usa `--mark-success-now` solo
 dopo un rinnovo/install manuale gia riuscito: scrive il marker

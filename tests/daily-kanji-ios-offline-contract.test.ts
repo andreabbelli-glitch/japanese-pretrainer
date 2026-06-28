@@ -52,11 +52,12 @@ describe("daily kanji iOS offline contract", () => {
   it("declares an offline-first personal app contract", async () => {
     const contract = JSON.parse(await readFile(contractPath, "utf8")) as {
       entitlements: {
-        apsEnvironment: string;
         appGroupIdentifier: string;
         appGroups: boolean;
         associatedDomains: boolean;
-        pushNotifications: boolean;
+        defaultApsEnvironment: null;
+        optionalApsEnvironment: string;
+        pushNotifications: string;
       };
       freeTierBudget: {
         monthlyRuntime: {
@@ -80,11 +81,12 @@ describe("daily kanji iOS offline contract", () => {
 
     expect(contract).toEqual({
       entitlements: {
-        apsEnvironment: "development",
         appGroupIdentifier: "group.dev.local.daily-kanji",
         appGroups: true,
         associatedDomains: false,
-        pushNotifications: true
+        defaultApsEnvironment: null,
+        optionalApsEnvironment: "development",
+        pushNotifications: "optional-paid-team"
       },
       freeTierBudget: {
         monthlyRuntime: {
@@ -199,6 +201,8 @@ describe("daily kanji iOS offline contract", () => {
     const contract = JSON.parse(await readFile(contractPath, "utf8")) as {
       entitlements: {
         appGroupIdentifier: string;
+        defaultApsEnvironment: null;
+        optionalApsEnvironment: string;
       };
     };
     const entitlementFiles = await listFiles([iosRoot], [".entitlements"]);
@@ -235,12 +239,14 @@ describe("daily kanji iOS offline contract", () => {
     expect(associatedDomainViolations).toEqual([]);
     expect(entitlementGroups).toEqual({
       "DailyKanji.entitlements": [contract.entitlements.appGroupIdentifier],
+      "DailyKanjiPush.entitlements": [contract.entitlements.appGroupIdentifier],
       "DailyKanjiWidgetExtension.entitlements": [
         contract.entitlements.appGroupIdentifier
       ]
     });
     expect(apsEnvironments).toEqual({
-      "DailyKanji.entitlements": "development",
+      "DailyKanji.entitlements": contract.entitlements.defaultApsEnvironment,
+      "DailyKanjiPush.entitlements": contract.entitlements.optionalApsEnvironment,
       "DailyKanjiWidgetExtension.entitlements": null
     });
     expect(

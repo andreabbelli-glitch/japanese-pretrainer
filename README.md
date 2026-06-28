@@ -526,7 +526,9 @@ La cadenza vale circa `288` chiamate al giorno e `8.640` al mese; il server deve
 tenerla a una singola due-count check Turso per run. Endpoint e secret vivono
 solo nei secret Actions `MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
 `MOBILE_NOTIFICATION_MONITOR_SECRET`; secret APNs/mobile/monitor e token Turso
-non devono mai essere committati. Riferimenti:
+non devono mai essere committati. Se i secret monitor non sono ancora
+configurati, la workflow deve fare skip con successo invece di fallire a ogni
+tick. Riferimenti:
 [Vercel Cron usage and pricing](https://vercel.com/docs/cron-jobs/usage-and-pricing)
 e [GitHub Actions workflow syntax](https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions).
 

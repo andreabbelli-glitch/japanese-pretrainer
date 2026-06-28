@@ -454,8 +454,10 @@ La workflow deve restare un tick minimale: niente checkout, niente setup Node,
 niente credenziali Turso o APNs, niente logica di review. Esegue solo un
 `curl` `POST` verso l'endpoint protetto configurato nei secret GitHub
 `MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
-`MOBILE_NOTIFICATION_MONITOR_SECRET`. Non committare mai URL privati, secret
-APNs/mobile/monitor o token Turso in YAML, `.env*`, script o documentazione.
+`MOBILE_NOTIFICATION_MONITOR_SECRET`; se questi secret mancano, deve fare skip
+con successo per evitare failure schedulate rumorose. Non committare mai URL
+privati, secret APNs/mobile/monitor o token Turso in YAML, `.env*`, script o
+documentazione.
 
 Mantieni la cadenza a `5` minuti salvo revisione intenzionale del budget:
 significa circa `288` chiamate al giorno e `8.640` chiamate al mese. Il runtime

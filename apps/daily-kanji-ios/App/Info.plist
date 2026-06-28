@@ -16,6 +16,8 @@
 	<string>$(DAILY_KANJI_IOS_SYNC_ENDPOINT)</string>
 	<key>DAILY_KANJI_IOS_SYNC_TOKEN</key>
 	<string>$(DAILY_KANJI_IOS_SYNC_TOKEN)</string>
+	<key>DAILY_KANJI_ENABLE_APNS</key>
+	<string>$(DAILY_KANJI_ENABLE_APNS)</string>
 	<key>MOBILE_API_ENDPOINT</key>
 	<string>$(MOBILE_API_ENDPOINT)</string>
 	<key>MOBILE_API_TOKEN</key>
