@@ -702,6 +702,50 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
+    func testLiveReviewGradeKeepsCurrentCardVisibleWhileSubmitting() async throws {
+        let liveSession = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let nextSession = DailyKanjiLiveReviewSession(
+            source: "live",
+            queue: DailyKanjiLiveReviewQueue(dueCount: 0, queueCount: 0, nextDueAt: nil),
+            selectedCard: nil
+        )
+        let gradeResult = DailyKanjiLiveReviewGradeResult(
+            grade: DailyKanjiLiveReviewGradeResult.Grade(cardId: "live-card", rating: .good),
+            session: nextSession
+        )
+        let liveClient = MockDailyKanjiLiveReviewClient(
+            fetchResults: [.success(liveSession)],
+            gradeResults: [.success(gradeResult)],
+            pauseGradesUntilResolved: true
+        )
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: liveClient,
+            now: now
+        )
+
+        await model.fetchLiveReviewSession()
+        model.gradeLiveReview(.good)
+        await Self.waitUntil {
+            liveClient.gradeRequests.count == 1
+        }
+
+        XCTAssertEqual(model.liveReviewState, .submitting(session: liveSession, rating: .good))
+        XCTAssertFalse(model.liveReviewState.canGrade)
+        XCTAssertEqual(model.liveReviewState.session?.selectedCard?.cardId, "live-card")
+
+        liveClient.resolvePendingGrade()
+        await Self.waitUntil {
+            model.liveReviewState == .ready(session: nextSession)
+        }
+
+        XCTAssertEqual(model.liveReviewState, .ready(session: nextSession))
+    }
+
+    @MainActor
     func testNotificationRegistrationRequiresConfiguredLiveReviewClient() async throws {
         let cards = try Self.rankedCards(count: 1)
         let unconfiguredRegistrar = MockDailyKanjiNotificationRegistrar()
@@ -3162,16 +3206,20 @@ private final class MockDailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
 
     private var fetchResults: [Result<DailyKanjiLiveReviewSession, Error>]
     private var gradeResults: [Result<DailyKanjiLiveReviewGradeResult, Error>]
+    private let pauseGradesUntilResolved: Bool
+    private var pendingGradeContinuation: CheckedContinuation<Void, Never>?
     private(set) var fetchCount = 0
     private(set) var gradeRequests: [GradeRequest] = []
     private(set) var registeredDeviceTokens: [String] = []
 
     init(
         fetchResults: [Result<DailyKanjiLiveReviewSession, Error>] = [],
-        gradeResults: [Result<DailyKanjiLiveReviewGradeResult, Error>] = []
+        gradeResults: [Result<DailyKanjiLiveReviewGradeResult, Error>] = [],
+        pauseGradesUntilResolved: Bool = false
     ) {
         self.fetchResults = fetchResults
         self.gradeResults = gradeResults
+        self.pauseGradesUntilResolved = pauseGradesUntilResolved
     }
 
     func fetchSession() async throws -> DailyKanjiLiveReviewSession {
@@ -3197,11 +3245,21 @@ private final class MockDailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
                 responseMs: responseMs
             )
         )
+        if pauseGradesUntilResolved {
+            await withCheckedContinuation { continuation in
+                pendingGradeContinuation = continuation
+            }
+        }
         guard gradeResults.count > 1 else {
             return try gradeResults[0].get()
         }
 
         return try gradeResults.removeFirst().get()
+    }
+
+    func resolvePendingGrade() {
+        pendingGradeContinuation?.resume()
+        pendingGradeContinuation = nil
     }
 
     func registerDeviceToken(_ deviceToken: String) async throws {

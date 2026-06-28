@@ -5,6 +5,7 @@ struct ContentView: View {
     @StateObject private var audioPlayer = DailyKanjiAudioPlayer()
     @State private var selectedAppSection: DailyKanjiAppSection = .review
     @State private var liveReviewAnswerRevealed = false
+    private let liveReviewBaseURL = DailyKanjiMobileReviewConfiguration.load().endpointURL
 
     var body: some View {
         NavigationStack {
@@ -39,7 +40,7 @@ struct ContentView: View {
                     resetAndPreloadCurrentLiveReviewAudio()
                 }
             }
-            .onChange(of: model.liveReviewState.session?.selectedCard?.cardId) { _, _ in
+            .onChange(of: currentLiveReviewCardKey) { _, _ in
                 liveReviewAnswerRevealed = false
                 resetAndPreloadCurrentLiveReviewAudio()
             }
@@ -203,7 +204,7 @@ struct ContentView: View {
                 .disabled(!model.liveReviewState.canGrade)
             }
         }
-        .opacity(model.liveReviewState.canGrade ? 1 : 0.72)
+        .opacity(model.liveReviewState.canGrade || model.liveReviewState.isSubmitting ? 1 : 0.72)
     }
 
     @ViewBuilder
@@ -233,7 +234,7 @@ struct ContentView: View {
                         .labelStyle(.iconOnly)
                 }
                 .buttonStyle(.bordered)
-                .disabled(presentation.primaryAudioURL(baseURL: configuredLiveReviewBaseURL) == nil)
+                .disabled(presentation.primaryAudioURL(baseURL: liveReviewBaseURL) == nil)
                 .accessibilityLabel("Audio")
             }
 
@@ -285,26 +286,28 @@ struct ContentView: View {
         _ rating: DailyKanjiLiveReviewRating,
         presentation: DailyKanjiLiveReviewCardPresentation
     ) -> some View {
+        let isSubmitting = model.liveReviewState.submittingRating == rating
+
         if rating == .good || rating == .easy {
             Button {
-                liveReviewAnswerRevealed = false
                 model.gradeLiveReview(rating)
             } label: {
                 liveReviewGradeButtonLabel(
                     rating,
-                    nextReviewLabel: presentation.nextReviewLabel(for: rating)
+                    nextReviewLabel: presentation.nextReviewLabel(for: rating),
+                    isSubmitting: isSubmitting
                 )
             }
             .buttonStyle(.borderedProminent)
             .disabled(!model.liveReviewState.canGrade || !liveReviewAnswerRevealed)
         } else {
             Button {
-                liveReviewAnswerRevealed = false
                 model.gradeLiveReview(rating)
             } label: {
                 liveReviewGradeButtonLabel(
                     rating,
-                    nextReviewLabel: presentation.nextReviewLabel(for: rating)
+                    nextReviewLabel: presentation.nextReviewLabel(for: rating),
+                    isSubmitting: isSubmitting
                 )
             }
             .buttonStyle(.bordered)
@@ -314,12 +317,18 @@ struct ContentView: View {
 
     private func liveReviewGradeButtonLabel(
         _ rating: DailyKanjiLiveReviewRating,
-        nextReviewLabel: String?
+        nextReviewLabel: String?,
+        isSubmitting: Bool
     ) -> some View {
         VStack(spacing: 3) {
-            Text(rating.label)
-                .font(.headline)
-                .lineLimit(1)
+            if isSubmitting {
+                ProgressView()
+                    .controlSize(.small)
+            } else {
+                Text(rating.label)
+                    .font(.headline)
+                    .lineLimit(1)
+            }
 
             Text(rating.detail)
                 .font(.caption2)
@@ -337,8 +346,12 @@ struct ContentView: View {
         .frame(maxWidth: .infinity, minHeight: 72)
     }
 
-    private var configuredLiveReviewBaseURL: URL? {
-        DailyKanjiMobileReviewConfiguration.load().endpointURL
+    private var currentLiveReviewCardKey: String? {
+        guard let card = model.liveReviewState.session?.selectedCard else {
+            return nil
+        }
+
+        return "\(card.cardId):\(card.reviewStateUpdatedAt ?? "")"
     }
 
     private func revealLiveReviewAnswer(for card: DailyKanjiLiveReviewCard) {
@@ -351,7 +364,7 @@ struct ContentView: View {
     }
 
     private func playLiveReviewAudio(_ presentation: DailyKanjiLiveReviewCardPresentation) {
-        guard let url = presentation.primaryAudioURL(baseURL: configuredLiveReviewBaseURL) else {
+        guard let url = presentation.primaryAudioURL(baseURL: liveReviewBaseURL) else {
             return
         }
 
@@ -369,7 +382,7 @@ struct ContentView: View {
             card: card,
             isAnswerRevealed: true
         )
-        audioPlayer.preload(url: presentation.primaryAudioURL(baseURL: configuredLiveReviewBaseURL))
+        audioPlayer.preload(url: presentation.primaryAudioURL(baseURL: liveReviewBaseURL))
     }
 
     private var studyScopeView: some View {
@@ -732,6 +745,13 @@ struct DailyKanjiLiveReviewStatusPresentation: Equatable {
             self.subtitle = Self.queueSubtitle(for: session)
             self.emptyText = "Caricamento..."
             self.systemImage = "arrow.clockwise"
+            self.isRefreshing = true
+            self.canRefresh = false
+        case .submitting(let session, let rating):
+            self.title = "Invio \(rating.label)"
+            self.subtitle = Self.queueSubtitle(for: session)
+            self.emptyText = "Invio voto..."
+            self.systemImage = "paperplane"
             self.isRefreshing = true
             self.canRefresh = false
         case .ready(let session):

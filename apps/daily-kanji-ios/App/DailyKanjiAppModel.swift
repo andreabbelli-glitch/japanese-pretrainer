@@ -309,7 +309,11 @@ final class DailyKanjiAppModel: ObservableObject {
         let responseMs = liveCardPresentedAt.map {
             max(Int(Date.now.timeIntervalSince($0) * 1000), 0)
         }
-        liveReviewState = .loading(staleSession: liveReviewState.session)
+        if let currentSession = liveReviewState.session {
+            liveReviewState = .submitting(session: currentSession, rating: rating)
+        } else {
+            liveReviewState = .loading(staleSession: nil)
+        }
 
         do {
             let result = try await liveReviewClient.grade(

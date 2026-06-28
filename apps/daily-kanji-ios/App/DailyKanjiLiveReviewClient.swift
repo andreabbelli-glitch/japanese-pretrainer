@@ -117,6 +117,7 @@ struct DailyKanjiLiveReviewGradeResult: Codable, Equatable {
 enum DailyKanjiLiveReviewState: Equatable {
     case unavailable
     case loading(staleSession: DailyKanjiLiveReviewSession?)
+    case submitting(session: DailyKanjiLiveReviewSession, rating: DailyKanjiLiveReviewRating)
     case ready(session: DailyKanjiLiveReviewSession)
     case failed(message: String, staleSession: DailyKanjiLiveReviewSession?)
 
@@ -126,11 +127,25 @@ enum DailyKanjiLiveReviewState: Equatable {
             return nil
         case .loading(let staleSession):
             return staleSession
+        case .submitting(let session, _):
+            return session
         case .ready(let session):
             return session
         case .failed(_, let staleSession):
             return staleSession
         }
+    }
+
+    var submittingRating: DailyKanjiLiveReviewRating? {
+        if case .submitting(_, let rating) = self {
+            return rating
+        }
+
+        return nil
+    }
+
+    var isSubmitting: Bool {
+        submittingRating != nil
     }
 
     var canGrade: Bool {
