@@ -120,5 +120,7 @@ export const userSettingKeys = [
   "fsrs_optimizer_config",
   "fsrs_optimizer_state",
   "fsrs_params_recognition",
-  "fsrs_params_concept"
+  "fsrs_params_concept",
+  "mobile_review_apns_device_token",
+  "mobile_review_notification_state"
 ] as const;

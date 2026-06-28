@@ -187,11 +187,18 @@ campi JSON sconosciuti.
 Quando il bundle installato contiene questi metadata, l'app ignora cache/sync
 legacy senza `studyModes` per non perdere Prestudy/Last 3 dopo un refresh.
 
-Sync runtime privato:
+Sync dataset runtime privato:
 
 ```sh
 DAILY_KANJI_IOS_SYNC_ENDPOINT=https://<deployment>/api/daily-kanji/ios-dataset
 DAILY_KANJI_IOS_SYNC_TOKEN=<secret>
+```
+
+Review live runtime privata:
+
+```sh
+MOBILE_API_ENDPOINT=https://<deployment>
+MOBILE_API_TOKEN=<secret>
 ```
 
 Questi valori vanno impostati come build settings locali, passati a `xcodebuild`
@@ -202,9 +209,14 @@ oppure salvati nel file locale non versionato:
 ```
 
 `scripts/xcode-renew.sh` legge `renew.env` e passa endpoint/token alla build
-Xcode. I placeholder non configurati vengono ignorati e l'app resta sul fallback
-packaged/cache. Il token non va committato. Dopo una build installata con questi
-valori, l'app prova il sync quando viene aperta o riportata in foreground: al
+Xcode. I placeholder non configurati vengono ignorati: senza `MOBILE_API_*`
+la review live resta non configurata; senza `DAILY_KANJI_IOS_SYNC_*` l'app usa
+fallback packaged/cache per Daily Kanji e widget. I token non vanno committati.
+Dopo una build installata con `MOBILE_API_*`, l'app carica la review globale
+live ogni volta che viene aperta o riportata in foreground; il grading nativo
+richiede rete. Le notifiche push usano APNs e l'app target dichiara
+`aps-environment=development`; il widget resta senza push e senza rete. Dopo una
+build installata con `DAILY_KANJI_IOS_SYNC_*`, l'app prova il sync dataset al
 massimo ogni 4 ore nello stesso giorno, sempre a cambio giorno, oppure subito
 quando l'utente preme "Aggiorna ora". Il widget non fa rete direttamente; legge
 la cache condivisa App Group scritta dall'app.
@@ -258,18 +270,22 @@ iOS:
 - dataset full e audio locali restano packaged nell'app come fallback;
 - solo l'app scarica un piccolo JSON privato quando la cache condivisa e' stale
   o quando l'utente forza il refresh;
+- la review live e' online-only e usa `MOBILE_API_*`, separata dal dataset
+  packaged/cache;
+- le notifiche APNs sono app-only; il widget resta network-free;
 - il widget legge la cache condivisa App Group e non fa richieste di rete;
-- nessuna scrittura FSRS da iOS;
+- nessuna scrittura FSRS offline da iOS;
 - App Group limitato a `group.dev.local.daily-kanji`;
 - nessun Associated Domains;
 - nessun polling illimitato dal widget;
 - fallback offline sempre disponibile.
 
 Con il contratto offline-first, l'app iOS installata puo consumare traffico
-runtime solo per il JSON del dataset privato. Il budget atteso resta ampiamente
-sotto i free tier per uso monoutente: sync automatico massimo ogni 4 ore solo
-quando l'app viene aperta/foregrounded, payload JSON piccolo, nessun download
-audio e nessun accesso diretto a Turso dal telefono.
+runtime solo per il JSON del dataset privato e per la review live quando
+configurata. Il budget atteso resta ampiamente sotto i free tier per uso
+monoutente: sync automatico massimo ogni 4 ore solo quando l'app viene
+aperta/foregrounded, payload JSON piccolo, nessun download audio e nessun
+accesso diretto a Turso dal telefono.
 
 Il contratto offline-first e' dichiarato in `offline-contract.json` e verificato
 da `tests/daily-kanji-ios-offline-contract.test.ts`: il test blocca

@@ -9,6 +9,7 @@ struct ContentView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     syncStatusView
+                    liveReviewView
                     studyScopeView
 
                     if let card = model.selectedCard {
@@ -70,6 +71,126 @@ struct ContentView: View {
             .accessibilityLabel("Aggiorna ora")
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var liveReviewView: some View {
+        let presentation = DailyKanjiLiveReviewStatusPresentation(
+            state: model.liveReviewState
+        )
+
+        return VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .center, spacing: 12) {
+                Image(systemName: presentation.systemImage)
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .frame(width: 22)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(presentation.title)
+                        .font(.subheadline.weight(.semibold))
+
+                    Text(presentation.subtitle)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer(minLength: 12)
+
+                Button {
+                    model.refreshLiveReviewNow()
+                } label: {
+                    if presentation.isRefreshing {
+                        ProgressView()
+                            .controlSize(.small)
+                    } else {
+                        Label("Aggiorna review", systemImage: "arrow.clockwise")
+                            .labelStyle(.iconOnly)
+                    }
+                }
+                .buttonStyle(.bordered)
+                .disabled(!presentation.canRefresh)
+                .accessibilityLabel("Aggiorna review")
+            }
+
+            if let card = model.liveReviewState.session?.selectedCard {
+                liveReviewCardView(card)
+            } else {
+                Text(presentation.emptyText)
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(14)
+        .background(Color(.secondarySystemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+    }
+
+    private func liveReviewCardView(_ card: DailyKanjiLiveReviewCard) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text(card.front)
+                .font(.system(size: 64, weight: .semibold))
+                .minimumScaleFactor(0.32)
+                .lineLimit(1)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text(card.back)
+                    .font(.headline)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Text(card.mediaTitle)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.secondary)
+            }
+
+            if let exampleJp = card.exampleJp, !exampleJp.isEmpty {
+                Text(exampleJp)
+                    .font(.body)
+            }
+
+            if let exampleIt = card.exampleIt, !exampleIt.isEmpty {
+                Text(exampleIt)
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+            }
+
+            if let notes = card.notes, !notes.isEmpty {
+                Text(notes)
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+            }
+
+            HStack(spacing: 8) {
+                ForEach(DailyKanjiLiveReviewRating.allCases, id: \.self) { rating in
+                    liveReviewGradeButton(rating)
+                }
+            }
+        }
+        .opacity(model.liveReviewState.canGrade ? 1 : 0.72)
+    }
+
+    @ViewBuilder
+    private func liveReviewGradeButton(_ rating: DailyKanjiLiveReviewRating) -> some View {
+        if rating == .good {
+            Button {
+                model.gradeLiveReview(rating)
+            } label: {
+                Text(rating.label)
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(!model.liveReviewState.canGrade)
+        } else {
+            Button {
+                model.gradeLiveReview(rating)
+            } label: {
+                Text(rating.label)
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .disabled(!model.liveReviewState.canGrade)
+        }
     }
 
     private var studyScopeView: some View {
@@ -298,6 +419,81 @@ struct ContentView: View {
 
 #Preview {
     ContentView(model: DailyKanjiAppModel())
+}
+
+private extension DailyKanjiLiveReviewRating {
+    var label: String {
+        switch self {
+        case .again:
+            return "Again"
+        case .hard:
+            return "Hard"
+        case .good:
+            return "Good"
+        case .easy:
+            return "Easy"
+        }
+    }
+}
+
+struct DailyKanjiLiveReviewStatusPresentation: Equatable {
+    let title: String
+    let subtitle: String
+    let emptyText: String
+    let systemImage: String
+    let isRefreshing: Bool
+    let canRefresh: Bool
+
+    init(state: DailyKanjiLiveReviewState) {
+        let session = state.session
+
+        switch state {
+        case .unavailable:
+            self.title = "Live review non configurata"
+            self.subtitle = "Uso solo dataset locale"
+            self.emptyText = "Configura endpoint e token per la review live."
+            self.systemImage = "wifi.slash"
+            self.isRefreshing = false
+            self.canRefresh = false
+        case .loading:
+            self.title = "Carico review live"
+            self.subtitle = Self.queueSubtitle(for: session)
+            self.emptyText = "Caricamento..."
+            self.systemImage = "arrow.clockwise"
+            self.isRefreshing = true
+            self.canRefresh = false
+        case .ready(let session):
+            self.title = "Review live"
+            self.subtitle = Self.queueSubtitle(for: session)
+            self.emptyText = "Nessuna card live in coda."
+            self.systemImage = "checkmark.circle"
+            self.isRefreshing = false
+            self.canRefresh = true
+        case .failed(let message, let staleSession):
+            self.title = "Review live offline"
+            self.subtitle = staleSession == nil ? message : "\(message) - sola lettura"
+            self.emptyText = "Review live non disponibile."
+            self.systemImage = "exclamationmark.triangle"
+            self.isRefreshing = false
+            self.canRefresh = true
+        }
+    }
+
+    private static func queueSubtitle(for session: DailyKanjiLiveReviewSession?) -> String {
+        guard let session else {
+            return "Connessione al server"
+        }
+
+        if session.queue.queueCount > 0 {
+            return "\(session.queue.queueCount) in coda - \(session.queue.dueCount) due"
+        }
+
+        if let nextDueAt = session.queue.nextDueAt, !nextDueAt.isEmpty {
+            return "Prossima due \(nextDueAt)"
+        }
+
+        return "Coda vuota"
+    }
 }
 
 struct DailyKanjiSyncStatusPresentation: Equatable {

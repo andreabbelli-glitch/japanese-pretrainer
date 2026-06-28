@@ -1,8 +1,10 @@
 {
   "entitlements": {
+    "apsEnvironment": "development",
     "appGroupIdentifier": "group.dev.local.daily-kanji",
     "appGroups": true,
-    "associatedDomains": false
+    "associatedDomains": false,
+    "pushNotifications": true
   },
   "freeTierBudget": {
     "monthlyRuntime": {
@@ -24,7 +26,9 @@
     }
   },
   "remoteServices": [
-    "private-daily-kanji-ios-dataset-api"
+    "private-daily-kanji-ios-dataset-api",
+    "private-mobile-live-review-api",
+    "apns"
   ],
-  "runtimeNetwork": "offline-first"
+  "runtimeNetwork": "offline-first-dataset-live-review-online-only"
 }

@@ -52,9 +52,11 @@ describe("daily kanji iOS offline contract", () => {
   it("declares an offline-first personal app contract", async () => {
     const contract = JSON.parse(await readFile(contractPath, "utf8")) as {
       entitlements: {
+        apsEnvironment: string;
         appGroupIdentifier: string;
         appGroups: boolean;
         associatedDomains: boolean;
+        pushNotifications: boolean;
       };
       freeTierBudget: {
         monthlyRuntime: {
@@ -78,9 +80,11 @@ describe("daily kanji iOS offline contract", () => {
 
     expect(contract).toEqual({
       entitlements: {
+        apsEnvironment: "development",
         appGroupIdentifier: "group.dev.local.daily-kanji",
         appGroups: true,
-        associatedDomains: false
+        associatedDomains: false,
+        pushNotifications: true
       },
       freeTierBudget: {
         monthlyRuntime: {
@@ -102,8 +106,12 @@ describe("daily kanji iOS offline contract", () => {
           vercelRequestsPerPackageRun: 0
         }
       },
-      remoteServices: ["private-daily-kanji-ios-dataset-api"],
-      runtimeNetwork: "offline-first"
+      remoteServices: [
+        "private-daily-kanji-ios-dataset-api",
+        "private-mobile-live-review-api",
+        "apns"
+      ],
+      runtimeNetwork: "offline-first-dataset-live-review-online-only"
     });
   });
 
@@ -215,6 +223,14 @@ describe("daily kanji iOS offline contract", () => {
         ])
       )
     );
+    const apsEnvironments = Object.fromEntries(
+      await Promise.all(
+        entitlementFiles.map(async (file) => [
+          path.relative(iosRoot, file),
+          extractPlistString(await readFile(file, "utf8"), "aps-environment")
+        ])
+      )
+    );
 
     expect(associatedDomainViolations).toEqual([]);
     expect(entitlementGroups).toEqual({
@@ -222,6 +238,10 @@ describe("daily kanji iOS offline contract", () => {
       "DailyKanjiWidgetExtension.entitlements": [
         contract.entitlements.appGroupIdentifier
       ]
+    });
+    expect(apsEnvironments).toEqual({
+      "DailyKanji.entitlements": "development",
+      "DailyKanjiWidgetExtension.entitlements": null
     });
     expect(
       readYamlTargetBaseSetting(
@@ -372,6 +392,15 @@ function extractPlistStringArray(source: string, key: string) {
   return Array.from(match[1]!.matchAll(/<string>([\s\S]*?)<\/string>/g))
     .map((entry) => entry[1]!.trim())
     .sort();
+}
+
+function extractPlistString(source: string, key: string) {
+  const keyPattern = new RegExp(
+    `<key>\\s*${escapeRegExp(key)}\\s*</key>\\s*<string>([\\s\\S]*?)</string>`
+  );
+  const match = source.match(keyPattern);
+
+  return match ? match[1]!.trim() : null;
 }
 
 function escapeRegExp(value: string) {

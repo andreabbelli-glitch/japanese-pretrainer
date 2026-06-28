@@ -558,12 +558,14 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect(source).toContain("config_value DAILY_KANJI_IOS_SYNC_TOKEN");
     expect(source).toContain("DAILY_KANJI_IOS_SYNC_ENDPOINT=");
     expect(source).toContain("DAILY_KANJI_IOS_SYNC_TOKEN=");
+    expect(source).toContain("MOBILE_API_ENDPOINT=");
+    expect(source).toContain("MOBILE_API_TOKEN=");
     expect(source).toContain("mktemp");
-    expect(source).toContain("daily-kanji-sync.XXXXXX");
+    expect(source).toContain("daily-kanji-runtime.XXXXXX");
     expect(source).toContain("chmod 600");
     expect(source).toContain("-quiet");
     expect(source).toContain("-xcconfig");
-    expect(source).toContain("cleanup_sync_xcconfig");
+    expect(source).toContain("cleanup_runtime_xcconfig");
     expect(source).not.toContain('"${sync_build_settings[@]}"');
     expect(source).not.toContain("XXXXXX.xcconfig");
     expect(source).not.toContain("https://");

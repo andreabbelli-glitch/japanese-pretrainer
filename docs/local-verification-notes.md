@@ -219,6 +219,30 @@ cavo quando l'iPhone risulta `transportType: localNetwork`. Sideloadly rimane
 diagnostico: installa la app principale, ma non registra la WidgetKit extension
 nella gallery widget.
 
+### Monitor Review Live
+
+La near-real-time push per le review mobile e monitorata da
+[`.github/workflows/mobile-review-notifications.yml`](../.github/workflows/mobile-review-notifications.yml):
+GitHub Actions esegue un `POST` ogni `5` minuti verso l'endpoint protetto
+configurato dai secret `MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
+`MOBILE_NOTIFICATION_MONITOR_SECRET`.
+
+Questa scelta e intenzionale per restare dentro i piani gratuiti: Vercel Hobby
+Cron non viene usato per push near-real-time, perche i limiti/costi vanno
+considerati dalla documentazione ufficiale
+<https://vercel.com/docs/cron-jobs/usage-and-pricing>. La sintassi della
+schedule GitHub Actions segue
+<https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions>.
+La cadenza di `5` minuti produce circa `288` chiamate al giorno e `8.640` al
+mese; non aumentarla senza rivalutare esplicitamente quota Actions, costo
+Vercel e carico Turso.
+
+Il monitor deve restare minuscolo: nessun setup Node, nessuna credenziale DB,
+nessuna credenziale APNs e nessuna logica di review nel workflow. Il lavoro
+server-side dietro l'endpoint deve fare una sola due-count check Turso per run
+e inviare push solo se serve. Secret APNs/mobile/monitor e token Turso non
+devono mai essere committati.
+
 Il rinnovo automatico launchd controlla ogni 6 ore e rinnova solo quando il
 marker `~/Library/Application Support/DailyKanji/last-renew-success.epoch` ha
 almeno 5 giorni. Se il marker manca o e' corrotto, il rinnovo e' dovuto. Prima
@@ -234,17 +258,28 @@ aprire Xcode Settings > Accounts, verificare il Personal Team, aprire
 `apps/daily-kanji-ios/DailyKanji.xcodeproj` e lasciare Xcode rigenerare i profili
 per `dev.local.daily-kanji` e `dev.local.daily-kanji.widget`.
 
-Per abilitare la sync runtime privata nella build locale, imposta questi build
-setting in Xcode o passali a `xcodebuild`/script wrapper:
+Per abilitare la sync dataset runtime privata nella build locale, imposta questi
+build setting in Xcode o passali a `xcodebuild`/script wrapper:
 
 ```sh
 DAILY_KANJI_IOS_SYNC_ENDPOINT=https://<deployment>/api/daily-kanji/ios-dataset
 DAILY_KANJI_IOS_SYNC_TOKEN=<secret>
 ```
 
-Se i valori restano assenti o placeholder, l'app continua a funzionare con cache
-o bundle locale e mostra `Sync non configurato`; il widget continua a leggere
-solo la cache condivisa o il bundle.
+Per abilitare la review live nativa, configura separatamente:
+
+```sh
+MOBILE_API_ENDPOINT=https://<deployment>
+MOBILE_API_TOKEN=<secret>
+```
+
+Se i valori dataset restano assenti o placeholder, l'app continua a funzionare
+con cache o bundle locale e mostra `Sync non configurato`; il widget continua a
+leggere solo la cache condivisa o il bundle. Se i valori `MOBILE_API_*` restano
+assenti o placeholder, la review live mostra `Live review non configurata` e non
+abilita grading nativo. La richiesta permesso notifiche viene fatta solo quando
+`MOBILE_API_*` e' configurato; l'app target dichiara `aps-environment` per APNs,
+mentre la widget extension resta senza push e senza rete.
 
 Per aggiornare lo snapshot offline e gli audio packaged usati dall'app iOS:
 

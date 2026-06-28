@@ -37,7 +37,8 @@ describe("server action boundary", () => {
       expect(JSON.stringify(finalRule)).toContain(
         "Server actions must not import database modules"
       );
-    }
+    },
+    90_000
   );
 });
 

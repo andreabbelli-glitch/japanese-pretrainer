@@ -434,6 +434,255 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertFalse(presentation.canRefresh)
     }
 
+    func testLiveReviewClientFetchesSessionWithBearerAuth() async throws {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [MockURLProtocol.self]
+        let urlSession = URLSession(configuration: configuration)
+        let capturedRequest = LockedBox<URLRequest?>(nil)
+        MockURLProtocol.requestHandler = { request in
+            capturedRequest.value = request
+            return (
+                HTTPURLResponse(
+                    url: request.url!,
+                    statusCode: 200,
+                    httpVersion: nil,
+                    headerFields: nil
+                )!,
+                Self.liveReviewSessionJSON
+            )
+        }
+        defer {
+            MockURLProtocol.requestHandler = nil
+        }
+
+        let client = DailyKanjiLiveReviewClient(
+            baseURL: URL(string: "https://example.test")!,
+            bearerToken: "mobile-token",
+            session: urlSession
+        )
+
+        let session = try await client.fetchSession()
+
+        XCTAssertEqual(capturedRequest.value?.url?.path, "/api/mobile/review/session")
+        XCTAssertEqual(capturedRequest.value?.httpMethod, "GET")
+        XCTAssertEqual(
+            capturedRequest.value?.value(forHTTPHeaderField: "Authorization"),
+            "Bearer mobile-token"
+        )
+        XCTAssertEqual(session.selectedCard?.cardId, "live-card")
+        XCTAssertEqual(session.queue.dueCount, 1)
+    }
+
+    func testLiveReviewClientPostsGradePayload() async throws {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [MockURLProtocol.self]
+        let urlSession = URLSession(configuration: configuration)
+        let capturedRequest = LockedBox<URLRequest?>(nil)
+        let capturedBody = LockedBox<Data?>(nil)
+        MockURLProtocol.requestHandler = { request in
+            capturedRequest.value = request
+            capturedBody.value = request.httpBody ?? Self.data(from: request.httpBodyStream)
+            return (
+                HTTPURLResponse(
+                    url: request.url!,
+                    statusCode: 200,
+                    httpVersion: nil,
+                    headerFields: nil
+                )!,
+                Self.liveReviewGradeResponseJSON
+            )
+        }
+        defer {
+            MockURLProtocol.requestHandler = nil
+        }
+
+        let client = DailyKanjiLiveReviewClient(
+            baseURL: URL(string: "https://example.test")!,
+            bearerToken: "mobile-token",
+            session: urlSession
+        )
+
+        let result = try await client.grade(
+            cardId: "live-card",
+            rating: .good,
+            expectedUpdatedAt: "2026-06-28T08:00:00.000Z",
+            responseMs: 1200
+        )
+        let body = try XCTUnwrap(capturedBody.value)
+        let payload = try JSONSerialization.jsonObject(with: body) as? [String: Any]
+
+        XCTAssertEqual(capturedRequest.value?.url?.path, "/api/mobile/review/grade")
+        XCTAssertEqual(capturedRequest.value?.httpMethod, "POST")
+        XCTAssertEqual(payload?["cardId"] as? String, "live-card")
+        XCTAssertEqual(payload?["rating"] as? String, "good")
+        XCTAssertEqual(payload?["expectedUpdatedAt"] as? String, "2026-06-28T08:00:00.000Z")
+        XCTAssertEqual(payload?["responseMs"] as? Int, 1200)
+        XCTAssertEqual(result.grade.rating, .good)
+    }
+
+    func testLiveReviewClientIncludesNullFreshnessTokenForNewCards() async throws {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [MockURLProtocol.self]
+        let urlSession = URLSession(configuration: configuration)
+        let capturedBody = LockedBox<Data?>(nil)
+        MockURLProtocol.requestHandler = { request in
+            capturedBody.value = request.httpBody ?? Self.data(from: request.httpBodyStream)
+            return (
+                HTTPURLResponse(
+                    url: request.url!,
+                    statusCode: 200,
+                    httpVersion: nil,
+                    headerFields: nil
+                )!,
+                Self.liveReviewGradeResponseJSON
+            )
+        }
+        defer {
+            MockURLProtocol.requestHandler = nil
+        }
+
+        let client = DailyKanjiLiveReviewClient(
+            baseURL: URL(string: "https://example.test")!,
+            bearerToken: "mobile-token",
+            session: urlSession
+        )
+
+        _ = try await client.grade(
+            cardId: "new-live-card",
+            rating: .again,
+            expectedUpdatedAt: nil,
+            responseMs: nil
+        )
+        let body = try XCTUnwrap(capturedBody.value)
+        let payload = try JSONSerialization.jsonObject(with: body) as? [String: Any]
+
+        XCTAssertEqual(payload?["cardId"] as? String, "new-live-card")
+        XCTAssertEqual(payload?["rating"] as? String, "again")
+        XCTAssertTrue(payload?.keys.contains("expectedUpdatedAt") ?? false)
+        XCTAssertTrue(payload?["expectedUpdatedAt"] is NSNull)
+    }
+
+    @MainActor
+    func testAppModelFetchesLiveReviewWithoutReplacingOfflineDataset() async throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let liveSession = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let liveClient = MockDailyKanjiLiveReviewClient(fetchResults: [.success(liveSession)])
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            liveReviewClient: liveClient,
+            now: now
+        )
+
+        await model.fetchLiveReviewSession()
+
+        XCTAssertEqual(liveClient.fetchCount, 1)
+        XCTAssertEqual(model.cards.map(\.cardId), ["hard", "stable"])
+        XCTAssertEqual(model.liveReviewState, .ready(session: liveSession))
+        XCTAssertTrue(model.liveReviewState.canGrade)
+    }
+
+    @MainActor
+    func testLiveReviewFailureKeepsStaleSessionReadOnly() async throws {
+        let liveSession = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let liveClient = MockDailyKanjiLiveReviewClient(fetchResults: [
+            .success(liveSession),
+            .failure(DailyKanjiLiveReviewClientError.invalidResponse)
+        ])
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: liveClient,
+            now: now
+        )
+
+        await model.fetchLiveReviewSession()
+        await model.fetchLiveReviewSession()
+
+        XCTAssertEqual(
+            model.liveReviewState,
+            .failed(
+                message: "Review server returned an invalid response.",
+                staleSession: liveSession
+            )
+        )
+        XCTAssertFalse(model.liveReviewState.canGrade)
+        XCTAssertEqual(model.liveReviewState.session?.selectedCard?.cardId, "live-card")
+    }
+
+    @MainActor
+    func testLiveReviewGradeUsesExpectedUpdatedAtAndAdvancesSession() async throws {
+        let liveSession = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let nextSession = DailyKanjiLiveReviewSession(
+            source: "live",
+            queue: DailyKanjiLiveReviewQueue(dueCount: 0, queueCount: 0, nextDueAt: nil),
+            selectedCard: nil
+        )
+        let gradeResult = DailyKanjiLiveReviewGradeResult(
+            grade: DailyKanjiLiveReviewGradeResult.Grade(cardId: "live-card", rating: .easy),
+            session: nextSession
+        )
+        let liveClient = MockDailyKanjiLiveReviewClient(
+            fetchResults: [.success(liveSession)],
+            gradeResults: [.success(gradeResult)]
+        )
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: liveClient,
+            now: now
+        )
+
+        await model.fetchLiveReviewSession()
+        await model.gradeLiveReviewNow(card: liveSession.selectedCard!, rating: .easy)
+
+        XCTAssertEqual(liveClient.gradeRequests.count, 1)
+        XCTAssertEqual(liveClient.gradeRequests[0].cardId, "live-card")
+        XCTAssertEqual(liveClient.gradeRequests[0].rating, .easy)
+        XCTAssertEqual(
+            liveClient.gradeRequests[0].expectedUpdatedAt,
+            "2026-06-28T08:00:00.000Z"
+        )
+        XCTAssertNotNil(liveClient.gradeRequests[0].responseMs)
+        XCTAssertEqual(model.liveReviewState, .ready(session: nextSession))
+    }
+
+    @MainActor
+    func testNotificationRegistrationRequiresConfiguredLiveReviewClient() async throws {
+        let cards = try Self.rankedCards(count: 1)
+        let unconfiguredRegistrar = MockDailyKanjiNotificationRegistrar()
+        let unconfiguredModel = DailyKanjiAppModel(
+            cards: cards,
+            liveReviewClient: nil,
+            notificationRegistrar: unconfiguredRegistrar,
+            now: now
+        )
+
+        unconfiguredModel.requestNotificationRegistration()
+        await Task.yield()
+
+        XCTAssertEqual(unconfiguredRegistrar.requestCount, 0)
+
+        let configuredRegistrar = MockDailyKanjiNotificationRegistrar()
+        let configuredModel = DailyKanjiAppModel(
+            cards: cards,
+            liveReviewClient: MockDailyKanjiLiveReviewClient(),
+            notificationRegistrar: configuredRegistrar,
+            now: now
+        )
+
+        configuredModel.requestNotificationRegistration()
+        await Task.yield()
+
+        XCTAssertEqual(configuredRegistrar.requestCount, 1)
+    }
+
     func testAppSelectionAvoidsCardsSeenInTheLastThreeDays() throws {
         let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
         let history = [
@@ -1921,6 +2170,64 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
+    private static let liveReviewSessionJSON = """
+    {
+      "ok": true,
+      "source": "live",
+      "queue": {
+        "dueCount": 1,
+        "queueCount": 3,
+        "nextDueAt": "2026-06-28T09:00:00.000Z"
+      },
+      "selectedCard": {
+        "cardId": "live-card",
+        "front": "観点",
+        "back": "punto di vista",
+        "mediaSlug": "media-one",
+        "mediaTitle": "Media One",
+        "reviewStateUpdatedAt": "2026-06-28T08:00:00.000Z",
+        "entries": [
+          {
+            "id": "term-1",
+            "kind": "term",
+            "label": "観点",
+            "meaning": "punto di vista",
+            "reading": "かんてん"
+          }
+        ],
+        "pronunciations": [
+          {
+            "audioSrc": "/audio/kanten.mp3",
+            "label": "観点",
+            "reading": "かんてん",
+            "source": "bundle"
+          }
+        ],
+        "exampleJp": "別の観点から見る。",
+        "exampleIt": "Guardare da un altro punto di vista.",
+        "notes": "Live review card."
+      }
+    }
+    """.data(using: .utf8)!
+
+    private static let liveReviewGradeResponseJSON = """
+    {
+      "ok": true,
+      "grade": {
+        "cardId": "live-card",
+        "rating": "good"
+      },
+      "session": {
+        "source": "live",
+        "queue": {
+          "dueCount": 0,
+          "queueCount": 0
+        },
+        "selectedCard": null
+      }
+    }
+    """.data(using: .utf8)!
+
     private static let datasetJSON = """
     {
       "version": 1,
@@ -2703,6 +3010,33 @@ final class DailyKanjiCoreTests: XCTestCase {
     private static func isoDate(_ value: String) -> Date {
         ISO8601DateFormatter.dailyKanjiTestFormatter.date(from: value)!
     }
+
+    private static func data(from stream: InputStream?) -> Data? {
+        guard let stream else {
+            return nil
+        }
+
+        stream.open()
+        defer {
+            stream.close()
+        }
+
+        var data = Data()
+        var buffer = [UInt8](repeating: 0, count: 1024)
+        while stream.hasBytesAvailable {
+            let readCount = stream.read(&buffer, maxLength: buffer.count)
+            if readCount < 0 {
+                return nil
+            }
+            if readCount == 0 {
+                break
+            }
+
+            data.append(buffer, count: readCount)
+        }
+
+        return data
+    }
 }
 
 private final class MockDailyKanjiSyncer: DailyKanjiSyncing {
@@ -2725,6 +3059,135 @@ private final class MockDailyKanjiSyncer: DailyKanjiSyncing {
 
         return try results.removeFirst().get()
     }
+}
+
+private final class MockDailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
+    struct GradeRequest: Equatable {
+        let cardId: String
+        let rating: DailyKanjiLiveReviewRating
+        let expectedUpdatedAt: String?
+        let responseMs: Int?
+    }
+
+    private var fetchResults: [Result<DailyKanjiLiveReviewSession, Error>]
+    private var gradeResults: [Result<DailyKanjiLiveReviewGradeResult, Error>]
+    private(set) var fetchCount = 0
+    private(set) var gradeRequests: [GradeRequest] = []
+    private(set) var registeredDeviceTokens: [String] = []
+
+    init(
+        fetchResults: [Result<DailyKanjiLiveReviewSession, Error>] = [],
+        gradeResults: [Result<DailyKanjiLiveReviewGradeResult, Error>] = []
+    ) {
+        self.fetchResults = fetchResults
+        self.gradeResults = gradeResults
+    }
+
+    func fetchSession() async throws -> DailyKanjiLiveReviewSession {
+        fetchCount += 1
+        guard fetchResults.count > 1 else {
+            return try fetchResults[0].get()
+        }
+
+        return try fetchResults.removeFirst().get()
+    }
+
+    func grade(
+        cardId: String,
+        rating: DailyKanjiLiveReviewRating,
+        expectedUpdatedAt: String?,
+        responseMs: Int?
+    ) async throws -> DailyKanjiLiveReviewGradeResult {
+        gradeRequests.append(
+            GradeRequest(
+                cardId: cardId,
+                rating: rating,
+                expectedUpdatedAt: expectedUpdatedAt,
+                responseMs: responseMs
+            )
+        )
+        guard gradeResults.count > 1 else {
+            return try gradeResults[0].get()
+        }
+
+        return try gradeResults.removeFirst().get()
+    }
+
+    func registerDeviceToken(_ deviceToken: String) async throws {
+        registeredDeviceTokens.append(deviceToken)
+    }
+}
+
+private final class MockDailyKanjiNotificationRegistrar: DailyKanjiNotificationRegistering {
+    private let lock = NSLock()
+    private var storedRequestCount = 0
+
+    var requestCount: Int {
+        lock.withLock {
+            storedRequestCount
+        }
+    }
+
+    func requestAuthorizationAndRegister() async {
+        lock.withLock {
+            storedRequestCount += 1
+        }
+    }
+}
+
+private final class LockedBox<Value> {
+    private let lock = NSLock()
+    private var storedValue: Value
+
+    init(_ value: Value) {
+        self.storedValue = value
+    }
+
+    var value: Value {
+        get {
+            lock.withLock {
+                storedValue
+            }
+        }
+        set {
+            lock.withLock {
+                storedValue = newValue
+            }
+        }
+    }
+}
+
+private final class MockURLProtocol: URLProtocol {
+    static var requestHandler: ((URLRequest) throws -> (HTTPURLResponse, Data))?
+
+    override class func canInit(with request: URLRequest) -> Bool {
+        true
+    }
+
+    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+        request
+    }
+
+    override func startLoading() {
+        guard let requestHandler = Self.requestHandler else {
+            client?.urlProtocol(
+                self,
+                didFailWithError: URLError(.badServerResponse)
+            )
+            return
+        }
+
+        do {
+            let (response, data) = try requestHandler(request)
+            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+            client?.urlProtocol(self, didLoad: data)
+            client?.urlProtocolDidFinishLoading(self)
+        } catch {
+            client?.urlProtocol(self, didFailWithError: error)
+        }
+    }
+
+    override func stopLoading() {}
 }
 
 private extension ISO8601DateFormatter {

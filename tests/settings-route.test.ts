@@ -1,6 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
 
-const { getFsrsOptimizerStatusMock, getStudySettingsMock } = vi.hoisted(() => ({
+const {
+  buildFsrsReschedulePreviewMock,
+  getFsrsOptimizerStatusMock,
+  getStudySettingsMock
+} = vi.hoisted(() => ({
+  buildFsrsReschedulePreviewMock: vi.fn(),
   getFsrsOptimizerStatusMock: vi.fn(),
   getStudySettingsMock: vi.fn()
 }));
@@ -10,6 +15,7 @@ vi.mock("@/components/settings/settings-page", () => ({
 }));
 
 vi.mock("@/features/fsrs-optimizer/server", () => ({
+  buildFsrsReschedulePreview: buildFsrsReschedulePreviewMock,
   getFsrsOptimizerStatus: getFsrsOptimizerStatusMock
 }));
 
@@ -68,6 +74,29 @@ describe("settings route", () => {
       reviewFrontFurigana: true,
       reviewDailyLimit: 20
     });
+    buildFsrsReschedulePreviewMock.mockResolvedValue({
+      days: [],
+      fsrsCacheKeyPart: "config|recognition|concept",
+      generatedAt: "2026-01-21T10:00:00.000Z",
+      horizonDays: 30,
+      summary: {
+        affectedSubjects: 0,
+        currentDue30Days: 0,
+        currentDue7Days: 0,
+        currentDueToday: 0,
+        delta30Days: 0,
+        delta7Days: 0,
+        deltaDueToday: 0,
+        eligibleSubjects: 0,
+        movedEarlier: 0,
+        movedLater: 0,
+        proposedDue30Days: 0,
+        proposedDue7Days: 0,
+        proposedDueToday: 0,
+        skippedNoHistory: 0,
+        unchangedSubjects: 0
+      }
+    });
 
     const element = await SettingsRoute({
       searchParams: Promise.resolve({
@@ -77,6 +106,9 @@ describe("settings route", () => {
     });
 
     expect(element.props).toMatchObject({
+      fsrsReschedulePreview: {
+        fsrsCacheKeyPart: "config|recognition|concept"
+      },
       returnTo: "/review?answered=2&card=card-iku",
       saved: true
     });

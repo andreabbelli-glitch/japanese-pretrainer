@@ -32,17 +32,21 @@ CONFIG_SYNC_ENDPOINT="$(config_value DAILY_KANJI_IOS_SYNC_ENDPOINT || true)"
 CONFIG_SYNC_TOKEN="$(config_value DAILY_KANJI_IOS_SYNC_TOKEN || true)"
 DAILY_KANJI_IOS_SYNC_ENDPOINT="${DAILY_KANJI_IOS_SYNC_ENDPOINT:-$CONFIG_SYNC_ENDPOINT}"
 DAILY_KANJI_IOS_SYNC_TOKEN="${DAILY_KANJI_IOS_SYNC_TOKEN:-$CONFIG_SYNC_TOKEN}"
-sync_xcconfig=""
-sync_xcconfig_args=()
+CONFIG_MOBILE_API_ENDPOINT="$(config_value MOBILE_API_ENDPOINT || true)"
+CONFIG_MOBILE_API_TOKEN="$(config_value MOBILE_API_TOKEN || true)"
+MOBILE_API_ENDPOINT="${MOBILE_API_ENDPOINT:-$CONFIG_MOBILE_API_ENDPOINT}"
+MOBILE_API_TOKEN="${MOBILE_API_TOKEN:-$CONFIG_MOBILE_API_TOKEN}"
+runtime_xcconfig=""
+runtime_xcconfig_args=()
 xcodebuild_args=()
 
-cleanup_sync_xcconfig() {
-  if [ -n "$sync_xcconfig" ] && [ -f "$sync_xcconfig" ]; then
-    rm -f "$sync_xcconfig"
+cleanup_runtime_xcconfig() {
+  if [ -n "$runtime_xcconfig" ] && [ -f "$runtime_xcconfig" ]; then
+    rm -f "$runtime_xcconfig"
   fi
 }
 
-trap cleanup_sync_xcconfig EXIT
+trap cleanup_runtime_xcconfig EXIT
 
 validate_xcconfig_value() {
   local label="$1"
@@ -68,14 +72,34 @@ if [ -n "${DAILY_KANJI_IOS_SYNC_ENDPOINT:-}" ] || [ -n "${DAILY_KANJI_IOS_SYNC_T
 
   validate_xcconfig_value DAILY_KANJI_IOS_SYNC_ENDPOINT "$DAILY_KANJI_IOS_SYNC_ENDPOINT"
   validate_xcconfig_value DAILY_KANJI_IOS_SYNC_TOKEN "$DAILY_KANJI_IOS_SYNC_TOKEN"
+fi
 
-  sync_xcconfig="$(mktemp "${TMPDIR:-/tmp}/daily-kanji-sync.XXXXXX")"
-  chmod 600 "$sync_xcconfig"
+if [ -n "${MOBILE_API_ENDPOINT:-}" ] || [ -n "${MOBILE_API_TOKEN:-}" ]; then
+  if [ -z "${MOBILE_API_ENDPOINT:-}" ] || [ -z "${MOBILE_API_TOKEN:-}" ]; then
+    echo "MOBILE_API_ENDPOINT e MOBILE_API_TOKEN devono essere configurati insieme." >&2
+    exit 1
+  fi
+
+  validate_xcconfig_value MOBILE_API_ENDPOINT "$MOBILE_API_ENDPOINT"
+  validate_xcconfig_value MOBILE_API_TOKEN "$MOBILE_API_TOKEN"
+fi
+
+if [ -n "${DAILY_KANJI_IOS_SYNC_ENDPOINT:-}" ] || [ -n "${MOBILE_API_ENDPOINT:-}" ]; then
+  runtime_xcconfig="$(mktemp "${TMPDIR:-/tmp}/daily-kanji-runtime.XXXXXX")"
+  chmod 600 "$runtime_xcconfig"
+
   {
-    printf "DAILY_KANJI_IOS_SYNC_ENDPOINT = %s\n" "$(xcconfig_value "$DAILY_KANJI_IOS_SYNC_ENDPOINT")"
-    printf "DAILY_KANJI_IOS_SYNC_TOKEN = %s\n" "$(xcconfig_value "$DAILY_KANJI_IOS_SYNC_TOKEN")"
-  } > "$sync_xcconfig"
-  sync_xcconfig_args=("-xcconfig" "$sync_xcconfig")
+    if [ -n "${DAILY_KANJI_IOS_SYNC_ENDPOINT:-}" ]; then
+      printf "DAILY_KANJI_IOS_SYNC_ENDPOINT = %s\n" "$(xcconfig_value "$DAILY_KANJI_IOS_SYNC_ENDPOINT")"
+      printf "DAILY_KANJI_IOS_SYNC_TOKEN = %s\n" "$(xcconfig_value "$DAILY_KANJI_IOS_SYNC_TOKEN")"
+    fi
+
+    if [ -n "${MOBILE_API_ENDPOINT:-}" ]; then
+      printf "MOBILE_API_ENDPOINT = %s\n" "$(xcconfig_value "$MOBILE_API_ENDPOINT")"
+      printf "MOBILE_API_TOKEN = %s\n" "$(xcconfig_value "$MOBILE_API_TOKEN")"
+    fi
+  } > "$runtime_xcconfig"
+  runtime_xcconfig_args=("-xcconfig" "$runtime_xcconfig")
 fi
 
 if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Developer ]; then
@@ -163,10 +187,16 @@ if ! developer_disk_image_ready; then
   exit 75
 fi
 
-if [ "${#sync_xcconfig_args[@]}" -gt 0 ]; then
-  printf "Daily Kanji runtime sync: configurato\n"
+if [ -n "${DAILY_KANJI_IOS_SYNC_ENDPOINT:-}" ]; then
+  printf "Daily Kanji dataset sync: configurato\n"
 else
-  printf "Daily Kanji runtime sync: non configurato, uso fallback packaged/cache\n"
+  printf "Daily Kanji dataset sync: non configurato, uso fallback packaged/cache\n"
+fi
+
+if [ -n "${MOBILE_API_ENDPOINT:-}" ]; then
+  printf "Daily Kanji live review API: configurata\n"
+else
+  printf "Daily Kanji live review API: non configurata\n"
 fi
 
 cd "$ROOT"
@@ -183,8 +213,8 @@ xcodebuild_args=(
   -allowProvisioningUpdates
 )
 
-if [ "${#sync_xcconfig_args[@]}" -gt 0 ]; then
-  xcodebuild_args+=("${sync_xcconfig_args[@]}")
+if [ "${#runtime_xcconfig_args[@]}" -gt 0 ]; then
+  xcodebuild_args+=("${runtime_xcconfig_args[@]}")
 fi
 
 xcodebuild_args+=(build)

@@ -290,15 +290,35 @@ function safeRevalidateTag(tag: string) {
     "revalidateTag" in nextCache &&
     typeof nextCache.revalidateTag === "function"
   ) {
-    nextCache.revalidateTag(tag, "max");
+    try {
+      nextCache.revalidateTag(tag, "max");
+    } catch (error) {
+      if (!isMissingNextCacheContextError(error)) {
+        throw error;
+      }
+    }
   }
 }
 
 function safeUpdateTag(tag: string) {
   if ("updateTag" in nextCache && typeof nextCache.updateTag === "function") {
-    nextCache.updateTag(tag);
-    return;
+    try {
+      nextCache.updateTag(tag);
+      return;
+    } catch (error) {
+      if (!isMissingNextCacheContextError(error)) {
+        throw error;
+      }
+    }
   }
 
   safeRevalidateTag(tag);
+}
+
+function isMissingNextCacheContextError(error: unknown) {
+  return (
+    error instanceof Error &&
+    (error.message.includes("static generation store missing") ||
+      error.message.includes("can only be called from within a Server Action"))
+  );
 }

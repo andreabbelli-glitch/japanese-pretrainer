@@ -20,6 +20,7 @@ final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var draftStudyMode: DailyKanjiStudyMode = .daily
     @Published private(set) var recentHistory: [DailyKanjiPresentationHistoryItem] = []
     @Published private(set) var syncState: DailyKanjiSyncState
+    @Published private(set) var liveReviewState: DailyKanjiLiveReviewState
 
     private let repository: DailyKanjiRepository
     private let cacheStore: DailyKanjiCacheStore
@@ -27,15 +28,21 @@ final class DailyKanjiAppModel: ObservableObject {
     private let scopeStore: DailyKanjiStudyScopeStore
     private let syncPolicy: DailyKanjiSyncPolicy
     private let syncer: DailyKanjiSyncing?
+    private let liveReviewClient: DailyKanjiLiveReviewing?
+    private let notificationRegistrar: DailyKanjiNotificationRegistering?
     private let reloadTimelines: () -> Void
     private let deepLinkActivationSuppressionInterval: TimeInterval = 5
     private var syncTask: Task<Void, Never>?
+    private var liveReviewTask: Task<Void, Never>?
+    private var notificationRegistrationTask: Task<Void, Never>?
+    private var deviceTokenTask: Task<Void, Never>?
     private var lastFailureAt: Date?
     private var consecutiveFailureCount = 0
     private var suppressActivationUntil: Date?
     private var pendingPreparedSelectionCardId: String?
     private var recentSelectionHistory: [DailyKanjiHistoryItem] = []
     private var transientInitialActivationEvent: DailyKanjiHistoryItem?
+    private var liveCardPresentedAt: Date?
 
     init(
         repository: DailyKanjiRepository? = nil,
@@ -44,6 +51,9 @@ final class DailyKanjiAppModel: ObservableObject {
         scopeStore: DailyKanjiStudyScopeStore = DailyKanjiStudyScopeStore(),
         syncPolicy: DailyKanjiSyncPolicy = DailyKanjiSyncPolicy(),
         syncer: DailyKanjiSyncing? = DailyKanjiSyncClient(),
+        liveReviewClient: DailyKanjiLiveReviewing? = DailyKanjiLiveReviewClient(),
+        notificationRegistrar: DailyKanjiNotificationRegistering? =
+            DailyKanjiPushNotificationRegistrar(),
         reloadTimelines: @escaping () -> Void = {
             WidgetCenter.shared.reloadAllTimelines()
         },
@@ -57,11 +67,14 @@ final class DailyKanjiAppModel: ObservableObject {
         self.scopeStore = scopeStore
         self.syncPolicy = syncPolicy
         self.syncer = syncer
+        self.liveReviewClient = liveReviewClient
+        self.notificationRegistrar = notificationRegistrar
         self.reloadTimelines = reloadTimelines
         self.syncState = Self.initialSyncState(
             syncer: syncer,
             source: resolvedRepository.loadDatasetSource()
         )
+        self.liveReviewState = Self.initialLiveReviewState(liveReviewClient: liveReviewClient)
         let restoredScopeWasCorrected = restoreSavedScope()
         resetStudyScopeDraft()
         persistCurrentScope()
@@ -78,6 +91,8 @@ final class DailyKanjiAppModel: ObservableObject {
         scopeStore: DailyKanjiStudyScopeStore = DailyKanjiStudyScopeStore(),
         syncPolicy: DailyKanjiSyncPolicy = DailyKanjiSyncPolicy(),
         syncer: DailyKanjiSyncing? = nil,
+        liveReviewClient: DailyKanjiLiveReviewing? = nil,
+        notificationRegistrar: DailyKanjiNotificationRegistering? = nil,
         reloadTimelines: @escaping () -> Void = {
             WidgetCenter.shared.reloadAllTimelines()
         },
@@ -90,8 +105,11 @@ final class DailyKanjiAppModel: ObservableObject {
         self.scopeStore = scopeStore
         self.syncPolicy = syncPolicy
         self.syncer = syncer
+        self.liveReviewClient = liveReviewClient
+        self.notificationRegistrar = notificationRegistrar
         self.reloadTimelines = reloadTimelines
         self.syncState = Self.initialSyncState(syncer: syncer, source: .sample)
+        self.liveReviewState = Self.initialLiveReviewState(liveReviewClient: liveReviewClient)
         let restoredScopeWasCorrected = restoreSavedScope()
         resetStudyScopeDraft()
         persistCurrentScope()
@@ -138,6 +156,7 @@ final class DailyKanjiAppModel: ObservableObject {
 
     func activate(now: Date = .now) {
         refreshHistory(now: now)
+        startLiveReviewTask()
         defer {
             startSyncTask(now: now, force: false)
         }
@@ -172,6 +191,10 @@ final class DailyKanjiAppModel: ObservableObject {
 
     func refreshNow(now: Date = .now) {
         startSyncTask(now: now, force: true)
+    }
+
+    func refreshLiveReviewNow() {
+        startLiveReviewTask(force: true)
     }
 
     func syncNow(now: Date = .now, force: Bool = false) async {
@@ -230,6 +253,110 @@ final class DailyKanjiAppModel: ObservableObject {
                 message: Self.syncFailureMessage(for: error),
                 source: currentDatasetSource()
             )
+        }
+    }
+
+    func fetchLiveReviewSession() async {
+        guard let liveReviewClient else {
+            liveReviewState = .unavailable
+            return
+        }
+
+        liveReviewState = .loading(staleSession: liveReviewState.session)
+
+        do {
+            let session = try await liveReviewClient.fetchSession()
+            liveReviewState = .ready(session: session)
+            liveCardPresentedAt = session.selectedCard == nil ? nil : .now
+        } catch {
+            liveReviewState = .failed(
+                message: Self.liveReviewFailureMessage(for: error),
+                staleSession: liveReviewState.session
+            )
+        }
+    }
+
+    func gradeLiveReview(_ rating: DailyKanjiLiveReviewRating) {
+        guard liveReviewTask == nil else {
+            return
+        }
+        guard
+            liveReviewState.canGrade,
+            let card = liveReviewState.session?.selectedCard
+        else {
+            return
+        }
+
+        liveReviewTask = Task { @MainActor [weak self] in
+            guard let self else {
+                return
+            }
+
+            await self.gradeLiveReviewNow(card: card, rating: rating)
+            self.liveReviewTask = nil
+        }
+    }
+
+    func gradeLiveReviewNow(
+        card: DailyKanjiLiveReviewCard,
+        rating: DailyKanjiLiveReviewRating
+    ) async {
+        guard let liveReviewClient else {
+            liveReviewState = .unavailable
+            return
+        }
+
+        let responseMs = liveCardPresentedAt.map {
+            max(Int(Date.now.timeIntervalSince($0) * 1000), 0)
+        }
+        liveReviewState = .loading(staleSession: liveReviewState.session)
+
+        do {
+            let result = try await liveReviewClient.grade(
+                cardId: card.cardId,
+                rating: rating,
+                expectedUpdatedAt: card.reviewStateUpdatedAt,
+                responseMs: responseMs
+            )
+            liveReviewState = .ready(session: result.session)
+            liveCardPresentedAt = result.session.selectedCard == nil ? nil : .now
+        } catch {
+            liveReviewState = .failed(
+                message: Self.liveReviewFailureMessage(for: error),
+                staleSession: liveReviewState.session
+            )
+        }
+    }
+
+    func requestNotificationRegistration() {
+        guard notificationRegistrationTask == nil else {
+            return
+        }
+        guard liveReviewClient != nil else {
+            return
+        }
+        guard let notificationRegistrar else {
+            return
+        }
+
+        notificationRegistrationTask = Task { @MainActor [weak self] in
+            guard let self else {
+                return
+            }
+
+            await notificationRegistrar.requestAuthorizationAndRegister()
+            self.notificationRegistrationTask = nil
+        }
+    }
+
+    func registerDeviceToken(_ deviceToken: String) {
+        guard let liveReviewClient else {
+            return
+        }
+
+        deviceTokenTask?.cancel()
+        deviceTokenTask = Task { [liveReviewClient] in
+            try? await liveReviewClient.registerDeviceToken(deviceToken)
         }
     }
 
@@ -365,6 +492,26 @@ final class DailyKanjiAppModel: ObservableObject {
 
             await self.syncNow(now: now, force: force)
             self.syncTask = nil
+        }
+    }
+
+    private func startLiveReviewTask(force: Bool = false) {
+        guard liveReviewTask == nil || force else {
+            return
+        }
+        guard liveReviewClient != nil else {
+            liveReviewState = .unavailable
+            return
+        }
+
+        liveReviewTask?.cancel()
+        liveReviewTask = Task { @MainActor [weak self] in
+            guard let self else {
+                return
+            }
+
+            await self.fetchLiveReviewSession()
+            self.liveReviewTask = nil
         }
     }
 
@@ -529,6 +676,16 @@ final class DailyKanjiAppModel: ObservableObject {
         return .idle(source: source)
     }
 
+    private static func initialLiveReviewState(
+        liveReviewClient: DailyKanjiLiveReviewing?
+    ) -> DailyKanjiLiveReviewState {
+        guard liveReviewClient != nil else {
+            return .unavailable
+        }
+
+        return .loading(staleSession: nil)
+    }
+
     private static func syncFailureMessage(for error: Error) -> String {
         if let description = (error as? LocalizedError)?.errorDescription,
            !description.isEmpty {
@@ -536,6 +693,15 @@ final class DailyKanjiAppModel: ObservableObject {
         }
 
         return "Could not refresh Daily Kanji."
+    }
+
+    private static func liveReviewFailureMessage(for error: Error) -> String {
+        if let description = (error as? LocalizedError)?.errorDescription,
+           !description.isEmpty {
+            return description
+        }
+
+        return "Could not refresh live review."
     }
 }
 

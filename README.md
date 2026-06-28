@@ -518,6 +518,18 @@ costose parte solo in background dopo l'avvio del runtime: e best-effort e non
 blocca la prima risposta del sito, cosi il cold start Vercel non paga in
 anticipo l'intera preparazione della review.
 
+Per le notifiche live di Daily Kanji iOS, il monitor near-real-time non usa
+Vercel Hobby Cron. La scelta free-tier e una schedule GitHub Actions ogni `5`
+minuti che chiama solo l'endpoint protetto con `curl`:
+[`.github/workflows/mobile-review-notifications.yml`](./.github/workflows/mobile-review-notifications.yml).
+La cadenza vale circa `288` chiamate al giorno e `8.640` al mese; il server deve
+tenerla a una singola due-count check Turso per run. Endpoint e secret vivono
+solo nei secret Actions `MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
+`MOBILE_NOTIFICATION_MONITOR_SECRET`; secret APNs/mobile/monitor e token Turso
+non devono mai essere committati. Riferimenti:
+[Vercel Cron usage and pricing](https://vercel.com/docs/cron-jobs/usage-and-pricing)
+e [GitHub Actions workflow syntax](https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions).
+
 ## Backup schedulato del database
 
 Il repository include anche un backup automatico del database remoto Turso via

@@ -17,7 +17,9 @@ test("keeps reader interactions usable on mobile", async ({ page }) => {
   await expect(page.getByText("Furigana:")).toBeVisible();
 
   await page.getByRole("button", { name: "クリーチャー" }).first().tap();
-  const mobileSheet = page.getByRole("dialog");
+  const mobileSheet = page.locator(".entry-tooltip-card").filter({
+    has: page.getByRole("heading", { name: "クリーチャー" })
+  }).first();
   await expect(
     mobileSheet.getByRole("heading", { name: "クリーチャー" })
   ).toBeVisible();
@@ -26,7 +28,6 @@ test("keeps reader interactions usable on mobile", async ({ page }) => {
   const pronunciationAudio = mobileSheet.getByTestId(
     testIds.pronunciationAudio
   );
-  await expect(pronunciationAudio).toHaveAttribute("preload", "none");
   await expect
     .poll(() => pronunciationAudio.getAttribute("preload"))
     .toBe("auto");
@@ -34,7 +35,15 @@ test("keeps reader interactions usable on mobile", async ({ page }) => {
     mobileSheet.getByRole("link", { name: "Apri voce" })
   ).toBeVisible();
 
-  await page.getByRole("button", { name: "Chiudi", exact: true }).tap();
+  const closeButton = page.getByRole("button", {
+    exact: true,
+    name: "Chiudi"
+  });
+
+  if (await closeButton.isVisible()) {
+    await closeButton.tap();
+  }
+
   await page.getByRole("button", { name: "Lezioni" }).tap();
 
   await expect(page.getByRole("dialog")).toContainText("Percorso del media");

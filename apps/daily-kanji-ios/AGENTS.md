@@ -16,6 +16,12 @@ difficili/instabili esportate da Japanese Custom Study.
   esplicita di sync bidirezionale.
 - Le risorse audio packaged sono build artifact generati: non committare
   dump audio duplicati dentro questa cartella senza una decisione esplicita.
+- Il monitor GitHub Actions delle notifiche review live resta nel workflow root
+  `.github/workflows/mobile-review-notifications.yml`: deve fare solo un `POST`
+  ogni `5` minuti all'endpoint protetto tramite secret Actions
+  `MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
+  `MOBILE_NOTIFICATION_MONITOR_SECRET`, senza Node, Turso, APNs o logica review
+  nel workflow. Non committare mai secret APNs/mobile/monitor.
 
 ## Comandi canonici
 
@@ -65,10 +71,11 @@ Il LaunchAgent utente controlla ogni 6 ore, ma il wrapper esegue la build/instal
 solo se l'ultimo rinnovo riuscito ha almeno 5 giorni, l'iPhone e' raggiungibile
 via CoreDevice e la Developer Disk Image e' montabile. Il `DEVICE_ID` viene scritto nel file locale non versionato
 `~/Library/Application Support/DailyKanji/renew.env`; lo stesso file puo
-contenere `DAILY_KANJI_IOS_SYNC_ENDPOINT` e `DAILY_KANJI_IOS_SYNC_TOKEN`, che
-`scripts/xcode-renew.sh` passa come build settings locali senza committare
-segreti. Rieseguire `scripts/install-renew-launchd.sh` aggiorna solo
-`DEVICE_ID` e conserva le altre righe del file. Usa `--mark-success-now` solo
+contenere `DAILY_KANJI_IOS_SYNC_ENDPOINT`, `DAILY_KANJI_IOS_SYNC_TOKEN`,
+`MOBILE_API_ENDPOINT` e `MOBILE_API_TOKEN`, che `scripts/xcode-renew.sh` passa
+come build settings locali senza committare segreti. Rieseguire
+`scripts/install-renew-launchd.sh` aggiorna solo `DEVICE_ID` e conserva le altre
+righe del file. Usa `--mark-success-now` solo
 dopo un rinnovo/install manuale gia riuscito: scrive il marker
 `last-renew-success.epoch` e impedisce a `RunAtLoad` di rifare subito un build.
 Se il marker manca o e' corrotto, il rinnovo e' considerato dovuto. Quando il

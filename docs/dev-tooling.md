@@ -436,6 +436,33 @@ Per Turso remoto, non usare i workflow GitHub come sync generico a ogni push:
 `Sync Turso On Main` e limitato a migrazioni e import media-scoped, mentre il
 backup remoto e manuale perche `turso db export` puo consumare molte `Rows Read`.
 
+Workflow monitor notifiche mobile:
+
+```sh
+.github/workflows/mobile-review-notifications.yml
+```
+
+La review live di Daily Kanji iOS non usa Vercel Hobby Cron per near-real-time
+push: la cadenza gratuita di Vercel Cron non e pensata per un tick ogni pochi
+minuti e va riletta nella pagina ufficiale
+<https://vercel.com/docs/cron-jobs/usage-and-pricing> prima di cambiare
+strategia. Il monitor scelto e invece una schedule GitHub Actions ogni `5`
+minuti, compatibile con la sintassi cron documentata da GitHub in
+<https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions>.
+
+La workflow deve restare un tick minimale: niente checkout, niente setup Node,
+niente credenziali Turso o APNs, niente logica di review. Esegue solo un
+`curl` `POST` verso l'endpoint protetto configurato nei secret GitHub
+`MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
+`MOBILE_NOTIFICATION_MONITOR_SECRET`. Non committare mai URL privati, secret
+APNs/mobile/monitor o token Turso in YAML, `.env*`, script o documentazione.
+
+Mantieni la cadenza a `5` minuti salvo revisione intenzionale del budget:
+significa circa `288` chiamate al giorno e `8.640` chiamate al mese. Il runtime
+server deve mantenere ogni tick altrettanto piccolo: una sola due-count check
+su Turso per run, seguita da eventuale invio APNs solo quando ci sono review
+mobile davvero dovute.
+
 Workflow dataset `Kanji Clash` per kanji simili:
 
 ```sh
