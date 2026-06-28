@@ -2,29 +2,65 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var model: DailyKanjiAppModel
-    private let audioPlayer = DailyKanjiAudioPlayer()
+    @StateObject private var audioPlayer = DailyKanjiAudioPlayer()
+    @State private var selectedAppSection: DailyKanjiAppSection = .review
+    @State private var liveReviewAnswerRevealed = false
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    syncStatusView
-                    liveReviewView
-                    studyScopeView
-
-                    if let card = model.selectedCard {
-                        selectedCardView(card)
-                    } else {
-                        emptyScopeView
+                    switch selectedAppSection {
+                    case .daily:
+                        dailyStudyView
+                    case .review:
+                        liveReviewView
                     }
-
-                    historyView
                 }
                 .padding(20)
             }
             .navigationTitle("Daily Kanji")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Picker("Modalità", selection: $selectedAppSection) {
+                        ForEach(DailyKanjiAppSection.allCases) { section in
+                            Text(section.label).tag(section)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .frame(width: 220)
+                }
+            }
             .background(Color(.systemGroupedBackground))
+            .onChange(of: selectedAppSection) { _, section in
+                if section == .review {
+                    model.refreshLiveReviewNow()
+                    resetAndPreloadCurrentLiveReviewAudio()
+                }
+            }
+            .onChange(of: model.liveReviewState.session?.selectedCard?.cardId) { _, _ in
+                liveReviewAnswerRevealed = false
+                resetAndPreloadCurrentLiveReviewAudio()
+            }
+            .onAppear {
+                resetAndPreloadCurrentLiveReviewAudio()
+            }
+        }
+    }
+
+    private var dailyStudyView: some View {
+        VStack(alignment: .leading, spacing: 24) {
+            syncStatusView
+            studyScopeView
+
+            if let card = model.selectedCard {
+                selectedCardView(card)
+            } else {
+                emptyScopeView
+            }
+
+            historyView
         }
     }
 
@@ -127,70 +163,213 @@ struct ContentView: View {
     }
 
     private func liveReviewCardView(_ card: DailyKanjiLiveReviewCard) -> some View {
-        VStack(alignment: .leading, spacing: 14) {
-            Text(card.front)
-                .font(.system(size: 64, weight: .semibold))
-                .minimumScaleFactor(0.32)
-                .lineLimit(1)
-                .frame(maxWidth: .infinity, alignment: .leading)
+        let presentation = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: liveReviewAnswerRevealed
+        )
 
-            VStack(alignment: .leading, spacing: 6) {
-                Text(card.back)
-                    .font(.headline)
-                    .fixedSize(horizontal: false, vertical: true)
-
+        return VStack(alignment: .leading, spacing: 18) {
+            HStack(spacing: 8) {
                 Text(card.mediaTitle)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+
+                Spacer(minLength: 0)
+
+                Text("\(model.liveReviewState.session?.queue.queueCount ?? 0) in coda")
                     .font(.caption.weight(.medium))
                     .foregroundStyle(.secondary)
             }
 
-            if let exampleJp = card.exampleJp, !exampleJp.isEmpty {
-                Text(exampleJp)
-                    .font(.body)
-            }
+            Text(presentation.frontText)
+                .font(.system(size: 78, weight: .semibold))
+                .minimumScaleFactor(0.32)
+                .lineLimit(2)
+                .frame(maxWidth: .infinity, alignment: .leading)
 
-            if let exampleIt = card.exampleIt, !exampleIt.isEmpty {
-                Text(exampleIt)
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-            }
-
-            if let notes = card.notes, !notes.isEmpty {
-                Text(notes)
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-            }
-
-            HStack(spacing: 8) {
-                ForEach(DailyKanjiLiveReviewRating.allCases, id: \.self) { rating in
-                    liveReviewGradeButton(rating)
+            if presentation.shouldShowAnswer {
+                liveReviewAnswerView(presentation)
+                liveReviewGradeGrid(presentation)
+            } else {
+                Button {
+                    revealLiveReviewAnswer(for: card)
+                } label: {
+                    Label("Rivela", systemImage: "eye.fill")
+                        .frame(maxWidth: .infinity)
                 }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .disabled(!model.liveReviewState.canGrade)
             }
         }
         .opacity(model.liveReviewState.canGrade ? 1 : 0.72)
     }
 
     @ViewBuilder
-    private func liveReviewGradeButton(_ rating: DailyKanjiLiveReviewRating) -> some View {
-        if rating == .good {
+    private func liveReviewAnswerView(
+        _ presentation: DailyKanjiLiveReviewCardPresentation
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .firstTextBaseline, spacing: 10) {
+                if let readingText = presentation.readingText {
+                    Text(readingText)
+                        .font(.title3.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                }
+
+                if let pitchAccentText = presentation.pitchAccentText {
+                    Text(pitchAccentText)
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer(minLength: 0)
+
+                Button {
+                    playLiveReviewAudio(presentation)
+                } label: {
+                    Label("Audio", systemImage: "speaker.wave.2.fill")
+                        .labelStyle(.iconOnly)
+                }
+                .buttonStyle(.bordered)
+                .disabled(presentation.primaryAudioURL(baseURL: configuredLiveReviewBaseURL) == nil)
+                .accessibilityLabel("Audio")
+            }
+
+            if let pitchAccent = presentation.pitchAccent {
+                DailyKanjiLiveReviewPitchAccentView(pitchAccent: pitchAccent)
+            }
+
+            Text(presentation.backText)
+                .font(.title3.weight(.semibold))
+                .fixedSize(horizontal: false, vertical: true)
+
+            if let exampleJp = presentation.card.exampleJp, !exampleJp.isEmpty {
+                Text(DailyKanjiReviewTextFormatter.displayText(exampleJp))
+                    .font(.body)
+            }
+
+            if let exampleIt = presentation.card.exampleIt, !exampleIt.isEmpty {
+                Text(DailyKanjiReviewTextFormatter.displayText(exampleIt))
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+            }
+
+            if let notes = presentation.card.notes, !notes.isEmpty {
+                Text(DailyKanjiReviewTextFormatter.displayText(notes))
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    private func liveReviewGradeGrid(
+        _ presentation: DailyKanjiLiveReviewCardPresentation
+    ) -> some View {
+        LazyVGrid(
+            columns: [
+                GridItem(.flexible(), spacing: 8),
+                GridItem(.flexible(), spacing: 8)
+            ],
+            spacing: 8
+        ) {
+            ForEach(DailyKanjiLiveReviewRating.reviewDisplayOrder, id: \.self) { rating in
+                liveReviewGradeButton(rating, presentation: presentation)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func liveReviewGradeButton(
+        _ rating: DailyKanjiLiveReviewRating,
+        presentation: DailyKanjiLiveReviewCardPresentation
+    ) -> some View {
+        if rating == .good || rating == .easy {
             Button {
+                liveReviewAnswerRevealed = false
                 model.gradeLiveReview(rating)
             } label: {
-                Text(rating.label)
-                    .frame(maxWidth: .infinity)
+                liveReviewGradeButtonLabel(
+                    rating,
+                    nextReviewLabel: presentation.nextReviewLabel(for: rating)
+                )
             }
             .buttonStyle(.borderedProminent)
-            .disabled(!model.liveReviewState.canGrade)
+            .disabled(!model.liveReviewState.canGrade || !liveReviewAnswerRevealed)
         } else {
             Button {
+                liveReviewAnswerRevealed = false
                 model.gradeLiveReview(rating)
             } label: {
-                Text(rating.label)
-                    .frame(maxWidth: .infinity)
+                liveReviewGradeButtonLabel(
+                    rating,
+                    nextReviewLabel: presentation.nextReviewLabel(for: rating)
+                )
             }
             .buttonStyle(.bordered)
-            .disabled(!model.liveReviewState.canGrade)
+            .disabled(!model.liveReviewState.canGrade || !liveReviewAnswerRevealed)
         }
+    }
+
+    private func liveReviewGradeButtonLabel(
+        _ rating: DailyKanjiLiveReviewRating,
+        nextReviewLabel: String?
+    ) -> some View {
+        VStack(spacing: 3) {
+            Text(rating.label)
+                .font(.headline)
+                .lineLimit(1)
+
+            Text(rating.detail)
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+
+            if let nextReviewLabel {
+                Text(nextReviewLabel)
+                    .font(.caption2.weight(.medium))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+            }
+        }
+        .frame(maxWidth: .infinity, minHeight: 72)
+    }
+
+    private var configuredLiveReviewBaseURL: URL? {
+        DailyKanjiMobileReviewConfiguration.load().endpointURL
+    }
+
+    private func revealLiveReviewAnswer(for card: DailyKanjiLiveReviewCard) {
+        liveReviewAnswerRevealed = true
+        let presentation = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: true
+        )
+        playLiveReviewAudio(presentation)
+    }
+
+    private func playLiveReviewAudio(_ presentation: DailyKanjiLiveReviewCardPresentation) {
+        guard let url = presentation.primaryAudioURL(baseURL: configuredLiveReviewBaseURL) else {
+            return
+        }
+
+        audioPlayer.play(url: url)
+    }
+
+    private func resetAndPreloadCurrentLiveReviewAudio() {
+        guard selectedAppSection == .review,
+              let card = model.liveReviewState.session?.selectedCard
+        else {
+            return
+        }
+
+        let presentation = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: true
+        )
+        audioPlayer.preload(url: presentation.primaryAudioURL(baseURL: configuredLiveReviewBaseURL))
     }
 
     private var studyScopeView: some View {
@@ -421,7 +600,30 @@ struct ContentView: View {
     ContentView(model: DailyKanjiAppModel())
 }
 
+private enum DailyKanjiAppSection: String, CaseIterable, Identifiable {
+    case daily
+    case review
+
+    var id: String { rawValue }
+
+    var label: String {
+        switch self {
+        case .daily:
+            return "Daily"
+        case .review:
+            return "Review"
+        }
+    }
+}
+
 private extension DailyKanjiLiveReviewRating {
+    static let reviewDisplayOrder: [DailyKanjiLiveReviewRating] = [
+        .easy,
+        .good,
+        .hard,
+        .again
+    ]
+
     var label: String {
         switch self {
         case .again:
@@ -433,6 +635,76 @@ private extension DailyKanjiLiveReviewRating {
         case .easy:
             return "Easy"
         }
+    }
+
+    var detail: String {
+        switch self {
+        case .again:
+            return "Torna subito"
+        case .hard:
+            return "Fragile"
+        case .good:
+            return "Avanza"
+        case .easy:
+            return "Intervallo lungo"
+        }
+    }
+}
+
+private struct DailyKanjiLiveReviewPitchAccentView: View {
+    let pitchAccent: DailyKanjiLiveReviewCard.Pronunciation.Audio.PitchAccent
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(alignment: .bottom, spacing: 6) {
+                ForEach(Array(pitchAccent.morae.enumerated()), id: \.offset) { index, mora in
+                    VStack(spacing: 4) {
+                        Circle()
+                            .fill(isHigh(index: index) ? Color.accentColor : Color.secondary)
+                            .frame(width: 7, height: 7)
+                            .offset(y: isHigh(index: index) ? -9 : 0)
+
+                        Text(mora)
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.secondary)
+                    }
+                    .frame(minWidth: 20)
+                }
+            }
+            .padding(.top, 8)
+
+            if let source = pitchAccentSourceText {
+                Text(source)
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+            }
+        }
+    }
+
+    private var pitchAccentSourceText: String? {
+        guard let shape = pitchAccent.shape else {
+            return nil
+        }
+
+        return "\(shape.capitalized) pattern"
+    }
+
+    private func isHigh(index: Int) -> Bool {
+        if let level = pitchAccent.levels?[safe: index] {
+            return level == "high"
+        }
+
+        let moraIndex = index + 1
+
+        if pitchAccent.downstep == 0 {
+            return moraIndex > 1
+        }
+
+        if pitchAccent.downstep == 1 {
+            return moraIndex == 1
+        }
+
+        return moraIndex > 1 && moraIndex <= pitchAccent.downstep
     }
 }
 
@@ -581,6 +853,12 @@ struct DailyKanjiSyncStatusPresentation: Equatable {
         case .sample:
             return "exclamationmark.circle"
         }
+    }
+}
+
+private extension Array {
+    subscript(safe index: Index) -> Element? {
+        indices.contains(index) ? self[index] : nil
     }
 }
 

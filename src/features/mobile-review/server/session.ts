@@ -7,8 +7,10 @@ import {
   applyReviewGrade,
   getGlobalReviewPageLoadResult
 } from "@/features/review/server";
+import type { ReviewGradePreview } from "@/features/review/model/grade-previews";
 import type {
   ReviewPageData,
+  ReviewCardPronunciation,
   ReviewQueueCard
 } from "@/features/review/types";
 import type { ReviewRating } from "@/features/review/model/scheduler";
@@ -25,14 +27,17 @@ export type MobileReviewCard = {
   exampleIt?: string;
   exampleJp?: string;
   front: string;
+  gradePreviews: ReviewGradePreview[];
   mediaSlug: string;
   mediaTitle: string;
   notes?: string;
-  pronunciations: Array<{
-    kind: string;
-    label: string;
-    meaning: string;
-  }>;
+  pronunciations: Array<
+    Pick<
+      ReviewCardPronunciation,
+      "audio" | "kind" | "label" | "meaning" | "relationshipLabel"
+    >
+  >;
+  reading?: string;
   reviewStateUpdatedAt?: string | null;
 };
 
@@ -141,12 +146,17 @@ function mapReviewPageDataToMobileSession(
       queueLabel: data.queue.queueLabel,
       upcomingCount: data.queue.upcomingCount
     },
-    selectedCard: data.selectedCard ? mapReviewQueueCard(data.selectedCard) : null,
+    selectedCard: data.selectedCard
+      ? mapReviewQueueCard(data.selectedCard, data.selectedCardContext.gradePreviews)
+      : null,
     source: "live"
   };
 }
 
-function mapReviewQueueCard(card: ReviewQueueCard): MobileReviewCard {
+function mapReviewQueueCard(
+  card: ReviewQueueCard,
+  gradePreviews: ReviewGradePreview[] = []
+): MobileReviewCard {
   return {
     back: card.back,
     cardId: card.id,
@@ -160,14 +170,18 @@ function mapReviewQueueCard(card: ReviewQueueCard): MobileReviewCard {
     exampleIt: card.exampleIt,
     exampleJp: card.exampleJp,
     front: card.front,
+    gradePreviews,
     mediaSlug: card.mediaSlug,
     mediaTitle: card.mediaTitle,
     notes: card.notes,
     pronunciations: card.pronunciations.map((pronunciation) => ({
+      audio: pronunciation.audio,
       kind: pronunciation.kind,
       label: pronunciation.label,
-      meaning: pronunciation.meaning
+      meaning: pronunciation.meaning,
+      relationshipLabel: pronunciation.relationshipLabel
     })),
+    reading: card.reading,
     reviewStateUpdatedAt: card.reviewStateUpdatedAt ?? null
   };
 }

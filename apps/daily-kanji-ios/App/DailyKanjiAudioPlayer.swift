@@ -1,8 +1,13 @@
 import AVFoundation
+import Combine
 import Foundation
 
-final class DailyKanjiAudioPlayer {
+@MainActor
+final class DailyKanjiAudioPlayer: ObservableObject {
     private var player: AVAudioPlayer?
+    private var remotePlayer: AVPlayer?
+    private var cachedRemoteAudioData: [URL: Data] = [:]
+    private var preloadTasks: [URL: Task<Void, Never>] = [:]
 
     func play(card: DailyKanjiCard) {
         guard let url = DailyKanjiAudioResource.url(for: card) else {
@@ -12,6 +17,52 @@ final class DailyKanjiAudioPlayer {
         player = try? AVAudioPlayer(contentsOf: url)
         player?.prepareToPlay()
         player?.play()
+    }
+
+    func play(url: URL) {
+        remotePlayer = nil
+
+        if let data = cachedRemoteAudioData[url],
+           let audioPlayer = try? AVAudioPlayer(data: data) {
+            player = audioPlayer
+            player?.prepareToPlay()
+            player?.play()
+            return
+        }
+
+        remotePlayer = AVPlayer(url: url)
+        remotePlayer?.play()
+        preload(url: url)
+    }
+
+    func preload(url: URL?) {
+        guard let url, cachedRemoteAudioData[url] == nil, preloadTasks[url] == nil else {
+            return
+        }
+
+        preloadTasks[url] = Task { [weak self] in
+            do {
+                let (data, response) = try await URLSession.shared.data(from: url)
+                guard
+                    let httpResponse = response as? HTTPURLResponse,
+                    (200..<300).contains(httpResponse.statusCode)
+                else {
+                    await MainActor.run {
+                        self?.preloadTasks[url] = nil
+                    }
+                    return
+                }
+
+                await MainActor.run {
+                    self?.cachedRemoteAudioData[url] = data
+                    self?.preloadTasks[url] = nil
+                }
+            } catch {
+                await MainActor.run {
+                    self?.preloadTasks[url] = nil
+                }
+            }
+        }
     }
 
     func hasBundledAudio(card: DailyKanjiCard) -> Bool {

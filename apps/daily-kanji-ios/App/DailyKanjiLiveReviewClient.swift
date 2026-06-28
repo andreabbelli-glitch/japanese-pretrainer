@@ -16,6 +16,11 @@ struct DailyKanjiLiveReviewQueue: Codable, Equatable {
 }
 
 struct DailyKanjiLiveReviewCard: Codable, Equatable, Identifiable {
+    struct GradePreview: Codable, Equatable {
+        let nextReviewLabel: String
+        let rating: DailyKanjiLiveReviewRating
+    }
+
     struct Entry: Codable, Equatable, Identifiable {
         let id: String
         let kind: String?
@@ -25,10 +30,51 @@ struct DailyKanjiLiveReviewCard: Codable, Equatable, Identifiable {
     }
 
     struct Pronunciation: Codable, Equatable {
+        struct Audio: Codable, Equatable {
+            struct PitchAccent: Codable, Equatable, Identifiable {
+                let downstep: Int
+                let levels: [String]?
+                let morae: [String]
+                let shape: String?
+                let trailingLevel: String?
+
+                var id: String {
+                    "\(morae.joined(separator: "|")):\(downstep)"
+                }
+            }
+
+            let attribution: String?
+            let label: String?
+            let license: String?
+            let pageUrl: String?
+            let pitchAccent: PitchAccent?
+            let pitchAccentPageUrl: String?
+            let pitchAccentSource: String?
+            let source: String?
+            let speaker: String?
+            let src: String?
+        }
+
+        let audio: Audio?
         let audioSrc: String?
+        let kind: String?
         let label: String?
+        let meaning: String?
         let reading: String?
+        let relationshipLabel: String?
         let source: String?
+
+        var resolvedAudioSource: String? {
+            audio?.src ?? audioSrc
+        }
+
+        var resolvedReading: String? {
+            reading ?? audio?.pitchAccent?.morae.joined()
+        }
+
+        var resolvedPitchAccent: Audio.PitchAccent? {
+            audio?.pitchAccent
+        }
     }
 
     var id: String { cardId }
@@ -41,6 +87,8 @@ struct DailyKanjiLiveReviewCard: Codable, Equatable, Identifiable {
     let reviewStateUpdatedAt: String?
     let entries: [Entry]?
     let pronunciations: [Pronunciation]?
+    let reading: String?
+    let gradePreviews: [GradePreview]?
     let exampleJp: String?
     let exampleIt: String?
     let notes: String?
@@ -92,6 +140,157 @@ enum DailyKanjiLiveReviewState: Equatable {
 
         return false
     }
+}
+
+enum DailyKanjiReviewTextFormatter {
+    static func displayText(_ value: String) -> String {
+        var output = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        let patterns = [
+            #"\{\{([^{}|]+)\|([^{}]+)\}\}"#,
+            #"\{([^{}|]+)\|([^{}]+)\}"#
+        ]
+
+        for _ in 0..<4 {
+            let previous = output
+
+            for pattern in patterns {
+                output = output.replacingOccurrences(
+                    of: pattern,
+                    with: "$1",
+                    options: .regularExpression
+                )
+            }
+
+            if output == previous {
+                break
+            }
+        }
+
+        return output
+            .replacingOccurrences(of: "{{", with: "")
+            .replacingOccurrences(of: "}}", with: "")
+            .replacingOccurrences(of: "{", with: "")
+            .replacingOccurrences(of: "}", with: "")
+    }
+}
+
+struct DailyKanjiLiveReviewCardPresentation: Equatable {
+    let card: DailyKanjiLiveReviewCard
+    let isAnswerRevealed: Bool
+
+    var frontText: String {
+        DailyKanjiReviewTextFormatter.displayText(card.front)
+    }
+
+    var backText: String {
+        DailyKanjiReviewTextFormatter.displayText(card.back)
+    }
+
+    var shouldShowAnswer: Bool {
+        isAnswerRevealed
+    }
+
+    var canGrade: Bool {
+        isAnswerRevealed
+    }
+
+    var readingText: String? {
+        nonEmpty(card.reading)
+            ?? card.pronunciations?.compactMap { nonEmpty($0.resolvedReading) }.first
+            ?? card.entries?.compactMap { nonEmpty($0.reading) }.first
+    }
+
+    var pitchAccent: DailyKanjiLiveReviewCard.Pronunciation.Audio.PitchAccent? {
+        card.pronunciations?.compactMap(\.resolvedPitchAccent).first
+    }
+
+    var pitchAccentText: String? {
+        guard let pitchAccent else {
+            return nil
+        }
+
+        let shape = pitchAccent.shape.map(Self.formatPitchAccentShape) ?? "Pitch"
+        return "\(shape) (\(pitchAccent.downstep))"
+    }
+
+    var primaryAudioSource: String? {
+        guard isAnswerRevealed else {
+            return nil
+        }
+
+        return card.pronunciations?.compactMap { nonEmpty($0.resolvedAudioSource) }.first
+    }
+
+    var answerDetailRows: [String] {
+        guard isAnswerRevealed else {
+            return []
+        }
+
+        return [
+            readingText,
+            pitchAccentText,
+            nonEmpty(card.mediaTitle)
+        ].compactMap { $0 }
+    }
+
+    func nextReviewLabel(for rating: DailyKanjiLiveReviewRating) -> String? {
+        card.gradePreviews?.first { $0.rating == rating }?.nextReviewLabel
+    }
+
+    func primaryAudioURL(baseURL: URL?) -> URL? {
+        DailyKanjiLiveReviewAudioSource.remoteURL(
+            for: primaryAudioSource,
+            baseURL: baseURL
+        )
+    }
+
+    private static func formatPitchAccentShape(_ shape: String) -> String {
+        switch shape {
+        case "heiban":
+            return "Heiban"
+        case "atamadaka":
+            return "Atamadaka"
+        case "nakadaka":
+            return "Nakadaka"
+        case "odaka":
+            return "Odaka"
+        default:
+            return "Pitch"
+        }
+    }
+}
+
+enum DailyKanjiLiveReviewAudioSource {
+    static func configuredRemoteURL(for source: String?) -> URL? {
+        remoteURL(
+            for: source,
+            baseURL: DailyKanjiMobileReviewConfiguration.load().endpointURL
+        )
+    }
+
+    static func remoteURL(for source: String?, baseURL: URL?) -> URL? {
+        guard let normalized = nonEmpty(source) else {
+            return nil
+        }
+
+        if let absoluteURL = URL(string: normalized),
+           let scheme = absoluteURL.scheme?.lowercased(),
+           scheme == "https" || scheme == "http" {
+            return absoluteURL
+        }
+
+        guard let baseURL else {
+            return nil
+        }
+
+        return URL(string: normalized, relativeTo: baseURL)?.absoluteURL
+    }
+}
+
+private func nonEmpty(_ value: String?) -> String? {
+    let trimmed = value?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+
+    return trimmed.isEmpty ? nil : trimmed
 }
 
 protocol DailyKanjiLiveReviewing {

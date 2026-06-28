@@ -562,6 +562,54 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertTrue(payload?["expectedUpdatedAt"] is NSNull)
     }
 
+    func testLiveReviewFormatterStripsFuriganaMarkup() {
+        XCTAssertEqual(
+            DailyKanjiReviewTextFormatter.displayText(
+                "{{観測|かんそく}}データを {{確認|かくにん}}します。"
+            ),
+            "観測データを 確認します。"
+        )
+        XCTAssertEqual(
+            DailyKanjiReviewTextFormatter.displayText("{古い|ふるい}表記"),
+            "古い表記"
+        )
+    }
+
+    func testLiveReviewPresentationKeepsAnswerHiddenUntilReveal() throws {
+        let session = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let card = try XCTUnwrap(session.selectedCard)
+        let hidden = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: false
+        )
+        let revealed = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: true
+        )
+
+        XCTAssertEqual(hidden.frontText, "観測")
+        XCTAssertFalse(hidden.shouldShowAnswer)
+        XCTAssertFalse(hidden.canGrade)
+        XCTAssertNil(hidden.primaryAudioSource)
+        XCTAssertEqual(hidden.answerDetailRows, [])
+
+        XCTAssertEqual(revealed.backText, "osservazione / rilevamento")
+        XCTAssertEqual(revealed.readingText, "かんそく")
+        XCTAssertEqual(revealed.pitchAccentText, "Heiban (0)")
+        XCTAssertEqual(revealed.nextReviewLabel(for: .good), "Domani alle 09:00")
+        XCTAssertEqual(
+            revealed.primaryAudioURL(
+                baseURL: URL(string: "https://daily-kanji.example")!
+            )?.absoluteString,
+            "https://daily-kanji.example/media-audio/media-one/audio/term/kansoku.mp3?v=2026"
+        )
+        XCTAssertTrue(revealed.shouldShowAnswer)
+        XCTAssertTrue(revealed.canGrade)
+    }
+
     @MainActor
     func testAppModelFetchesLiveReviewWithoutReplacingOfflineDataset() async throws {
         let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
@@ -678,7 +726,9 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
 
         configuredModel.requestNotificationRegistration()
-        await Task.yield()
+        await Self.waitUntil {
+            configuredRegistrar.requestCount == 1
+        }
 
         XCTAssertEqual(configuredRegistrar.requestCount, 1)
     }
@@ -2181,30 +2231,63 @@ final class DailyKanjiCoreTests: XCTestCase {
       },
       "selectedCard": {
         "cardId": "live-card",
-        "front": "観点",
-        "back": "punto di vista",
+        "front": "{{観測|かんそく}}",
+        "back": "osservazione / rilevamento",
         "mediaSlug": "media-one",
         "mediaTitle": "Media One",
         "reviewStateUpdatedAt": "2026-06-28T08:00:00.000Z",
+        "reading": "かんそく",
+        "gradePreviews": [
+          {
+            "nextReviewLabel": "Subito",
+            "rating": "again"
+          },
+          {
+            "nextReviewLabel": "Tra 10 min",
+            "rating": "hard"
+          },
+          {
+            "nextReviewLabel": "Domani alle 09:00",
+            "rating": "good"
+          },
+          {
+            "nextReviewLabel": "Tra 4 giorni",
+            "rating": "easy"
+          }
+        ],
         "entries": [
           {
             "id": "term-1",
             "kind": "term",
-            "label": "観点",
-            "meaning": "punto di vista",
-            "reading": "かんてん"
+            "label": "観測",
+            "meaning": "osservazione / rilevamento",
+            "reading": "かんそく"
           }
         ],
         "pronunciations": [
           {
-            "audioSrc": "/audio/kanten.mp3",
-            "label": "観点",
-            "reading": "かんてん",
-            "source": "bundle"
+            "audio": {
+              "label": "bundle",
+              "pitchAccent": {
+                "downstep": 0,
+                "levels": ["low", "high", "high", "high"],
+                "morae": ["か", "ん", "そ", "く"],
+                "shape": "heiban",
+                "trailingLevel": "high"
+              },
+              "pitchAccentSource": "fixture",
+              "source": "bundle",
+              "src": "/media-audio/media-one/audio/term/kansoku.mp3?v=2026"
+            },
+            "kind": "term",
+            "label": "観測",
+            "meaning": "osservazione / rilevamento",
+            "reading": "かんそく",
+            "relationshipLabel": "Termine"
           }
         ],
-        "exampleJp": "別の観点から見る。",
-        "exampleIt": "Guardare da un altro punto di vista.",
+        "exampleJp": "{{観測|かんそく}}データを {{確認|かくにん}}します。",
+        "exampleIt": "Controllo i dati osservati.",
         "notes": "Live review card."
       }
     }
@@ -3036,6 +3119,14 @@ final class DailyKanjiCoreTests: XCTestCase {
         }
 
         return data
+    }
+
+    private static func waitUntil(
+        condition: @escaping () -> Bool
+    ) async {
+        for _ in 0..<50 where !condition() {
+            try? await Task.sleep(nanoseconds: 10_000_000)
+        }
     }
 }
 

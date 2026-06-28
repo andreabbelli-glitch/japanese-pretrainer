@@ -6,7 +6,7 @@ import {
   type DatabaseClient
 } from "@/db";
 import { developmentFixture } from "@/db/seed";
-import { reviewSubjectLog, reviewSubjectState } from "@/db/schema";
+import { reviewSubjectLog, reviewSubjectState, term } from "@/db/schema";
 import { withTestDatabase } from "./helpers/test-db";
 
 const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
@@ -47,6 +47,15 @@ describe("mobile review API", () => {
       },
       async ({ database, databasePath }) => {
         await makePrimaryCardDue(database);
+        await database
+          .update(term)
+          .set({
+            audioSource: "fixture",
+            audioSrc: "assets/audio/term/term-iku/iku.mp3",
+            pitchAccent: 0,
+            pitchAccentSource: "fixture"
+          })
+          .where(eq(term.id, developmentFixture.termDbId));
         const { GET } = await importSessionRouteForDatabase(databasePath);
 
         const response = await GET(
@@ -73,7 +82,45 @@ describe("mobile review API", () => {
             back: expect.any(String),
             cardId: developmentFixture.primaryCardId,
             front: expect.any(String),
+            gradePreviews: [
+              {
+                nextReviewLabel: expect.any(String),
+                rating: "again"
+              },
+              {
+                nextReviewLabel: expect.any(String),
+                rating: "hard"
+              },
+              {
+                nextReviewLabel: expect.any(String),
+                rating: "good"
+              },
+              {
+                nextReviewLabel: expect.any(String),
+                rating: "easy"
+              }
+            ],
             mediaSlug: developmentFixture.mediaSlug,
+            pronunciations: [
+              {
+                audio: {
+                  pitchAccent: {
+                    downstep: 0,
+                    morae: ["い", "く"],
+                    shape: "heiban"
+                  },
+                  pitchAccentSource: "fixture",
+                  source: "fixture",
+                  src: expect.stringMatching(
+                    /^\/media-audio\/fixture-tcg\/audio\/term\/term-iku\/iku\.mp3(?:\?v=.+)?$/u
+                  )
+                },
+                kind: "term",
+                label: "行く",
+                meaning: "andare"
+              }
+            ],
+            reading: "いく",
             reviewStateUpdatedAt: expect.any(String)
           }
         });
