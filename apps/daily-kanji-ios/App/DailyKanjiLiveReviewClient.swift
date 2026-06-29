@@ -95,12 +95,64 @@ struct DailyKanjiLiveReviewCard: Codable, Equatable, Identifiable {
 }
 
 struct DailyKanjiLiveReviewSession: Codable, Equatable {
+    let advanceCards: [DailyKanjiLiveReviewCard]
     let source: String
     let queue: DailyKanjiLiveReviewQueue
     let selectedCard: DailyKanjiLiveReviewCard?
 
+    init(
+        source: String,
+        queue: DailyKanjiLiveReviewQueue,
+        selectedCard: DailyKanjiLiveReviewCard?,
+        advanceCards: [DailyKanjiLiveReviewCard] = []
+    ) {
+        self.advanceCards = advanceCards
+        self.source = source
+        self.queue = queue
+        self.selectedCard = selectedCard
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case advanceCards
+        case queue
+        case selectedCard
+        case source
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        self.advanceCards = try container.decodeIfPresent(
+            [DailyKanjiLiveReviewCard].self,
+            forKey: .advanceCards
+        ) ?? []
+        self.source = try container.decode(String.self, forKey: .source)
+        self.queue = try container.decode(DailyKanjiLiveReviewQueue.self, forKey: .queue)
+        self.selectedCard = try container.decodeIfPresent(
+            DailyKanjiLiveReviewCard.self,
+            forKey: .selectedCard
+        )
+    }
+
     var isLive: Bool {
         source == "live"
+    }
+
+    func optimisticallyAdvancingAfterGrade() -> DailyKanjiLiveReviewSession? {
+        guard let nextCard = advanceCards.first else {
+            return nil
+        }
+
+        return DailyKanjiLiveReviewSession(
+            source: source,
+            queue: DailyKanjiLiveReviewQueue(
+                dueCount: max(queue.dueCount - 1, 0),
+                queueCount: max(queue.queueCount - 1, 0),
+                nextDueAt: queue.nextDueAt
+            ),
+            selectedCard: nextCard,
+            advanceCards: Array(advanceCards.dropFirst())
+        )
     }
 }
 
@@ -146,6 +198,15 @@ enum DailyKanjiLiveReviewState: Equatable {
 
     var isSubmitting: Bool {
         submittingRating != nil
+    }
+
+    var canReveal: Bool {
+        switch self {
+        case .ready(let session), .submitting(let session, _):
+            return session.isLive && session.selectedCard != nil
+        case .unavailable, .loading, .failed:
+            return false
+        }
     }
 
     var canGrade: Bool {
@@ -321,6 +382,7 @@ protocol DailyKanjiLiveReviewing {
 
 struct DailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
     private struct SessionResponse: Decodable {
+        let advanceCards: [DailyKanjiLiveReviewCard]?
         let ok: Bool
         let source: String
         let queue: DailyKanjiLiveReviewQueue
@@ -410,7 +472,8 @@ struct DailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
         return DailyKanjiLiveReviewSession(
             source: response.source,
             queue: response.queue,
-            selectedCard: response.selectedCard
+            selectedCard: response.selectedCard,
+            advanceCards: response.advanceCards ?? []
         )
     }
 

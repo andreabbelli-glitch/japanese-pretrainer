@@ -201,7 +201,7 @@ struct ContentView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
-                .disabled(!model.liveReviewState.canGrade)
+                .disabled(!model.liveReviewState.canReveal)
             }
         }
         .opacity(model.liveReviewState.canGrade || model.liveReviewState.isSubmitting ? 1 : 0.72)

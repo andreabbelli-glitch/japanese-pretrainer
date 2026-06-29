@@ -703,14 +703,21 @@ final class DailyKanjiCoreTests: XCTestCase {
 
     @MainActor
     func testLiveReviewGradeKeepsCurrentCardVisibleWhileSubmitting() async throws {
-        let liveSession = try JSONDecoder().decode(
+        let bufferedSession = try JSONDecoder().decode(
             DailyKanjiLiveReviewSession.self,
             from: Self.liveReviewSessionJSON
+        )
+        let liveSession = DailyKanjiLiveReviewSession(
+            source: bufferedSession.source,
+            queue: bufferedSession.queue,
+            selectedCard: bufferedSession.selectedCard,
+            advanceCards: []
         )
         let nextSession = DailyKanjiLiveReviewSession(
             source: "live",
             queue: DailyKanjiLiveReviewQueue(dueCount: 0, queueCount: 0, nextDueAt: nil),
-            selectedCard: nil
+            selectedCard: nil,
+            advanceCards: []
         )
         let gradeResult = DailyKanjiLiveReviewGradeResult(
             grade: DailyKanjiLiveReviewGradeResult.Grade(cardId: "live-card", rating: .good),
@@ -743,6 +750,57 @@ final class DailyKanjiCoreTests: XCTestCase {
         }
 
         XCTAssertEqual(model.liveReviewState, .ready(session: nextSession))
+    }
+
+    @MainActor
+    func testLiveReviewGradeShowsBufferedNextCardWhileSubmitting() async throws {
+        let liveSession = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let nextCard = try XCTUnwrap(liveSession.advanceCards.first)
+        let optimisticSession = DailyKanjiLiveReviewSession(
+            source: "live",
+            queue: DailyKanjiLiveReviewQueue(
+                dueCount: 0,
+                queueCount: 2,
+                nextDueAt: "2026-06-28T09:00:00.000Z"
+            ),
+            selectedCard: nextCard,
+            advanceCards: []
+        )
+        let gradeResult = DailyKanjiLiveReviewGradeResult(
+            grade: DailyKanjiLiveReviewGradeResult.Grade(cardId: "live-card", rating: .good),
+            session: optimisticSession
+        )
+        let liveClient = MockDailyKanjiLiveReviewClient(
+            fetchResults: [.success(liveSession)],
+            gradeResults: [.success(gradeResult)],
+            pauseGradesUntilResolved: true
+        )
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: liveClient,
+            now: now
+        )
+
+        await model.fetchLiveReviewSession()
+        model.gradeLiveReview(.good)
+        await Self.waitUntil {
+            liveClient.gradeRequests.count == 1
+        }
+
+        XCTAssertEqual(model.liveReviewState, .submitting(session: optimisticSession, rating: .good))
+        XCTAssertTrue(model.liveReviewState.canReveal)
+        XCTAssertFalse(model.liveReviewState.canGrade)
+        XCTAssertEqual(model.liveReviewState.session?.selectedCard?.cardId, "next-live-card")
+
+        liveClient.resolvePendingGrade()
+        await Self.waitUntil {
+            model.liveReviewState == .ready(session: optimisticSession)
+        }
+
+        XCTAssertEqual(model.liveReviewState, .ready(session: optimisticSession))
     }
 
     @MainActor
@@ -2333,7 +2391,49 @@ final class DailyKanjiCoreTests: XCTestCase {
         "exampleJp": "{{観測|かんそく}}データを {{確認|かくにん}}します。",
         "exampleIt": "Controllo i dati osservati.",
         "notes": "Live review card."
-      }
+      },
+      "advanceCards": [
+        {
+          "cardId": "next-live-card",
+          "front": "{{確認|かくにん}}",
+          "back": "conferma / controllo",
+          "mediaSlug": "media-one",
+          "mediaTitle": "Media One",
+          "reviewStateUpdatedAt": "2026-06-28T08:05:00.000Z",
+          "reading": "かくにん",
+          "gradePreviews": [
+            {
+              "nextReviewLabel": "Subito",
+              "rating": "again"
+            },
+            {
+              "nextReviewLabel": "Tra 10 min",
+              "rating": "hard"
+            },
+            {
+              "nextReviewLabel": "Domani alle 09:00",
+              "rating": "good"
+            },
+            {
+              "nextReviewLabel": "Tra 4 giorni",
+              "rating": "easy"
+            }
+          ],
+          "entries": [
+            {
+              "id": "term-2",
+              "kind": "term",
+              "label": "確認",
+              "meaning": "conferma / controllo",
+              "reading": "かくにん"
+            }
+          ],
+          "pronunciations": [],
+          "exampleJp": "{{確認|かくにん}}します。",
+          "exampleIt": "Controllo.",
+          "notes": "Buffered next card."
+        }
+      ]
     }
     """.data(using: .utf8)!
 

@@ -310,7 +310,12 @@ final class DailyKanjiAppModel: ObservableObject {
             max(Int(Date.now.timeIntervalSince($0) * 1000), 0)
         }
         if let currentSession = liveReviewState.session {
-            liveReviewState = .submitting(session: currentSession, rating: rating)
+            if let optimisticSession = currentSession.optimisticallyAdvancingAfterGrade() {
+                liveReviewState = .submitting(session: optimisticSession, rating: rating)
+                liveCardPresentedAt = optimisticSession.selectedCard == nil ? nil : .now
+            } else {
+                liveReviewState = .submitting(session: currentSession, rating: rating)
+            }
         } else {
             liveReviewState = .loading(staleSession: nil)
         }
@@ -322,8 +327,13 @@ final class DailyKanjiAppModel: ObservableObject {
                 expectedUpdatedAt: card.reviewStateUpdatedAt,
                 responseMs: responseMs
             )
+            let currentlyVisibleCardId = liveReviewState.session?.selectedCard?.cardId
             liveReviewState = .ready(session: result.session)
-            liveCardPresentedAt = result.session.selectedCard == nil ? nil : .now
+            if result.session.selectedCard == nil {
+                liveCardPresentedAt = nil
+            } else if result.session.selectedCard?.cardId != currentlyVisibleCardId {
+                liveCardPresentedAt = .now
+            }
         } catch {
             liveReviewState = .failed(
                 message: Self.liveReviewFailureMessage(for: error),

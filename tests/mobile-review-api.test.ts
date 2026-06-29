@@ -10,6 +10,7 @@ import { reviewSubjectLog, reviewSubjectState, term } from "@/db/schema";
 import { withTestDatabase } from "./helpers/test-db";
 
 const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
+const secondarySubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
 
 describe("mobile review API", () => {
   const previousDatabaseUrl = process.env.DATABASE_URL;
@@ -46,7 +47,7 @@ describe("mobile review API", () => {
         seedDevelopmentFixture: true
       },
       async ({ database, databasePath }) => {
-        await makePrimaryCardDue(database);
+        await makePrimaryAndSecondaryCardsDue(database);
         await database
           .update(term)
           .set({
@@ -74,6 +75,15 @@ describe("mobile review API", () => {
         expect(body).toMatchObject({
           ok: true,
           source: "live",
+          advanceCards: [
+            {
+              cardId: developmentFixture.secondaryCardId,
+              front: expect.any(String),
+              gradePreviews: expect.any(Array),
+              mediaSlug: developmentFixture.mediaSlug,
+              reviewStateUpdatedAt: expect.any(String)
+            }
+          ],
           queue: {
             dueCount: expect.any(Number),
             queueCount: expect.any(Number)
@@ -256,20 +266,46 @@ describe("mobile review API", () => {
 });
 
 async function makePrimaryCardDue(database: DatabaseClient) {
-  const updatedAt = "2026-04-02T12:00:00.000Z";
+  await makeReviewSubjectDue(database, primarySubjectKey, {
+    dueAt: "2000-01-01T00:00:00.000Z",
+    updatedAt: "2026-04-02T12:00:00.000Z"
+  });
 
+  return "2026-04-02T12:00:00.000Z";
+}
+
+async function makeSecondaryCardDue(database: DatabaseClient) {
+  await makeReviewSubjectDue(database, secondarySubjectKey, {
+    dueAt: "2000-01-02T00:00:00.000Z",
+    updatedAt: "2026-04-02T12:05:00.000Z"
+  });
+}
+
+async function makeReviewSubjectDue(
+  database: DatabaseClient,
+  subjectKey: string,
+  input: {
+    dueAt: string;
+    updatedAt: string;
+  }
+) {
   await database
     .update(reviewSubjectState)
     .set({
-      dueAt: "2000-01-01T00:00:00.000Z",
+      dueAt: input.dueAt,
       manualOverride: false,
       state: "learning",
       suspended: false,
-      updatedAt
+      updatedAt: input.updatedAt
     })
-    .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+    .where(eq(reviewSubjectState.subjectKey, subjectKey));
+}
 
-  return updatedAt;
+async function makePrimaryAndSecondaryCardsDue(database: DatabaseClient) {
+  const primaryUpdatedAt = await makePrimaryCardDue(database);
+  await makeSecondaryCardDue(database);
+
+  return primaryUpdatedAt;
 }
 
 async function importSessionRouteWithMockedDatabase() {

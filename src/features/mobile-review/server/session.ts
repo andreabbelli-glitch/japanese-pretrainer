@@ -42,6 +42,7 @@ export type MobileReviewCard = {
 };
 
 export type MobileReviewSession = {
+  advanceCards: MobileReviewCard[];
   generatedAt: string;
   ok: true;
   queue: {
@@ -77,6 +78,7 @@ export async function loadMobileReviewSession(
 
   if (loadResult.kind !== "ready") {
     return {
+      advanceCards: [],
       generatedAt,
       ok: true,
       queue: {
@@ -137,6 +139,9 @@ function mapReviewPageDataToMobileSession(
   generatedAt: string
 ): MobileReviewSession {
   return {
+    advanceCards: data.queue.advanceCards.map((card) =>
+      mapReviewQueueCard(card, card.gradePreviews)
+    ),
     generatedAt,
     ok: true,
     queue: {
