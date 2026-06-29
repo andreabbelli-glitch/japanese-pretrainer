@@ -68,7 +68,7 @@ sta parlando di identità reale, apparenza sospetta o fastidio causato ad altri.
 ## Etichette da riconoscere
 
 - [{{研究所|けんきゅうじょ}}](term:term-v549-kenkyuujo) — laboratorio o istituto di ricerca
-- [{{探索|たんさく}}](term:term-v554-tansaku) — esplorazione mirata di un'area
+- [{{探索|たんさく}}](term:term-v554-tansaku) — probe / enquiry / investigation
 - [{{探検|たんけん}}](term:term-v568-tanken) — spedizione dal tono più avventuroso
 - [シェア](term:term-v555-shiea) — condivisione di codice, profilo o schermata
 - [{{開催|かいさい}}](term:term-v559-kaisai) — svolgimento di un evento
@@ -322,8 +322,9 @@ l'evento osservabile che può richiedere una spiegazione.
 ## 5. Movimento e luoghi: esplorare, invitare, partecipare
 
 Le parole di movimento vicino alle battaglie dicono anche che tipo di attività
-sta iniziando. [{{探索|たんさく}}](term:term-v554-tansaku) è una ricerca
-mirata: si entra in un'area per trovare informazioni, oggetti o una causa.
+sta iniziando. [{{探索|たんさく}}](term:term-v554-tansaku) si avvicina a
+`probe / enquiry / investigation`: si entra in un'area per trovare
+informazioni, oggetti o una causa.
 [{{探検|たんけん}}](term:term-v568-tanken) ha un tono più da spedizione:
 l'area stessa è da attraversare e scoprire. In una storia che alterna
 Accademia, Area Zero e DLC, questa distinzione cambia l'aspettativa della
@@ -361,9 +362,9 @@ translation_it: >-
 #### 🧠 Gancio cognitivo
 
 [{{探索|たんさく}}](term:term-v554-tansaku) contiene
-l'idea di cercare qualcosa; [{{探検|たんけん}}](term:term-v568-tanken) suona
-come entrare in territorio da esplorare. È un trucco di lettura, non una
-separazione rigida in ogni contesto.
+l'idea di cercare qualcosa in chiave `probe / enquiry / investigation`;
+[{{探検|たんけん}}](term:term-v568-tanken) suona come entrare in territorio da
+esplorare. È un trucco di lettura, non una separazione rigida in ogni contesto.
 
 ## Esempi guidati di riepilogo
 

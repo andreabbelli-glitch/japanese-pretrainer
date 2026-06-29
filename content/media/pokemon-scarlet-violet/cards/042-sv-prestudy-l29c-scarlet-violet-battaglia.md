@@ -331,10 +331,10 @@ id: term-v554-tansaku
 lemma: 探索
 reading: たんさく
 romaji: tansaku
-meaning_it: esplorazione
+meaning_it: probe / enquiry / investigation
 notes_it: >-
-  Indica l'esplorazione sistematica di una zona: cercare Pokémon, oggetti,
-  indizi o l'uscita di un'area.
+  Vale probe / enquiry / investigation quando il testo parla di cercare in modo
+  mirato Pokémon, oggetti, indizi o l'uscita di un'area.
 :::
 :::card
 id: card-v554-tansaku-recognition
@@ -343,7 +343,7 @@ entry_type: term
 entry_id: term-v554-tansaku
 card_type: recognition
 front: "{{探索|たんさく}}"
-back: esplorazione / ricerca sul campo
+back: probe / enquiry / investigation
 example_jp: >-
   エリアゼロを {{探索|たんさく}}して、{{強|つよ}}い ポケモンの
   {{様子|ようす}}を {{調|しら}}べる。
