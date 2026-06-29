@@ -56,7 +56,7 @@ sta parlando di identità reale, apparenza sospetta o fastidio causato ad altri.
 
 ## Espressioni ricorrenti
 
-- [{{授業|じゅぎょう}}を{{思|おも}}い{{出|だ}}す](term:term-e100-jugyou-wo-omoidasu) — richiamare una lezione già vista
+- [{{授業|じゅぎょう}}を{{思|おも}}い{{出|だ}}す](term:term-e100-jugyou-wo-omoidasu) — richiamare un'attività scolastica già vista
 
 ## Pattern grammaticali chiave
 
@@ -140,7 +140,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Qui "speciale" non vuol dire raro o sorprendente.
+Qui "speciale" indica una categoria tecnica, distinta dall'idea di raro o sorprendente.
 Leggi [{{特殊|とくしゅ}}](term:term-v550-tokushu) come un cartello che manda gli
 occhi verso `{{特攻|とくこう}}` e `{{特防|とくぼう}}`.
 
@@ -148,8 +148,7 @@ occhi verso `{{特攻|とくこう}}` e `{{特防|とくぼう}}`.
 
 [{{能力|のうりょく}}{{変化|へんか}}](term:term-v565-nouryokuhenka) è un composto
 operativo: `{{能力|のうりょく}}` è la capacità o statistica, `{{変化|へんか}}` è
-il cambiamento. Da solo non dice la direzione. Per sapere se la situazione
-migliora o peggiora devi agganciare il verbo o il nome successivo:
+il cambiamento. La direzione si ricava dal verbo o dal nome successivo:
 [{{上昇|じょうしょう}}](term:term-v569-joushou) porta la lettura verso
 l'aumento, mentre forme come `{{下|さ}}がる` o `{{低下|ていか}}` porterebbero
 verso il calo.

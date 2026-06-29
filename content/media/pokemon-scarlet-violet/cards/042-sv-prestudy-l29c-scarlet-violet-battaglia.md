@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-042-sv-prestudy-l29c-scarlet-violet-battaglia
 media_id: media-pokemon-scarlet-violet
 slug: 042-sv-prestudy-l29c-scarlet-violet-battaglia
-title: SV Pre-study L29C - Scarlet/Violet, battaglia
+title: "Leggere la battaglia: bersagli, stati e risultati"
 order: 72
 segment_ref: scarlet-violet-prestudy
 ---
@@ -11,9 +11,9 @@ id: term-e100-jugyou-wo-omoidasu
 lemma: 授業を思い出す
 reading: じゅぎょうを おもいだす
 romaji: jugyou wo omoidasu
-meaning_it: ripassare / ricordare la lezione
+meaning_it: ripassare / ricordare un'attività scolastica
 notes_it: >-
-  Voce del menu scolastico: riapre una lezione già vista o permette di
+  Voce del menu scolastico: riapre un'attività già vista o permette di
   ripassarla prima di continuare le classi dell'accademia.
 :::
 :::term
@@ -140,7 +140,7 @@ entry_type: term
 entry_id: term-v545-youi
 card_type: recognition
 front: "{{用意|ようい}}"
-back: preparazione / essere pronto
+back: preparazione / getting ready
 example_jp: >-
   {{勝負|しょうぶ}}の {{用意|ようい}}が できたら ジムリーダーに
   {{話|はな}}しかける。
