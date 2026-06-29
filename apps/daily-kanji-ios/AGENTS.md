@@ -16,9 +16,11 @@ difficili/instabili esportate da Japanese Custom Study.
   esplicita di sync bidirezionale.
 - Le risorse audio packaged sono build artifact generati: non committare
   dump audio duplicati dentro questa cartella senza una decisione esplicita.
-- Il monitor GitHub Actions delle notifiche review live resta nel workflow root
-  `.github/workflows/mobile-review-notifications.yml`: deve fare solo un `POST`
-  ogni `5` minuti all'endpoint protetto tramite secret Actions
+- Il monitor GitHub Actions delle notifiche review live e sospeso finche
+  APNs/notifiche non sono affidabili. Il workflow root
+  `.github/workflows/mobile-review-notifications.yml` deve restare manuale
+  (`workflow_dispatch`), senza schedule automatica. Quando lanciato a mano deve
+  fare solo un `POST` all'endpoint protetto tramite secret Actions
   `MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
   `MOBILE_NOTIFICATION_MONITOR_SECRET`, senza Node, Turso, APNs o logica review
   nel workflow. Non committare mai secret APNs/mobile/monitor.

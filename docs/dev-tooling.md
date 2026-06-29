@@ -446,24 +446,26 @@ La review live di Daily Kanji iOS non usa Vercel Hobby Cron per near-real-time
 push: la cadenza gratuita di Vercel Cron non e pensata per un tick ogni pochi
 minuti e va riletta nella pagina ufficiale
 <https://vercel.com/docs/cron-jobs/usage-and-pricing> prima di cambiare
-strategia. Il monitor scelto e invece una schedule GitHub Actions ogni `5`
-minuti, compatibile con la sintassi cron documentata da GitHub in
+strategia. Per ora il monitor GitHub Actions e sospeso perche le notifiche
+mobile/APNs non sono ancora affidabili: il workflow espone solo
+`workflow_dispatch` manuale e deve generare `0 chiamate automatiche` verso
+Vercel. La sintassi GitHub Actions resta documentata in
 <https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions>.
 
 La workflow deve restare un tick minimale: niente checkout, niente setup Node,
 niente credenziali Turso o APNs, niente logica di review. Esegue solo un
-`curl` `POST` verso l'endpoint protetto configurato nei secret GitHub
+`curl` `POST` manuale verso l'endpoint protetto configurato nei secret GitHub
 `MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
 `MOBILE_NOTIFICATION_MONITOR_SECRET`; se questi secret mancano, deve fare skip
-con successo per evitare failure schedulate rumorose. Non committare mai URL
+con successo per evitare failure rumorose. Non committare mai URL
 privati, secret APNs/mobile/monitor o token Turso in YAML, `.env*`, script o
 documentazione.
 
-Mantieni la cadenza a `5` minuti salvo revisione intenzionale del budget:
-significa circa `288` chiamate al giorno e `8.640` chiamate al mese. Il runtime
-server deve mantenere ogni tick altrettanto piccolo: una sola due-count check
-su Turso per run, seguita da eventuale invio APNs solo quando ci sono review
-mobile davvero dovute.
+Se il monitor verra riattivato, mantieni la cadenza a `5` minuti salvo revisione
+intenzionale del budget: significa circa `288` chiamate al giorno e `8.640`
+chiamate al mese. Il runtime server deve mantenere ogni tick altrettanto
+piccolo: una sola due-count check su Turso per run, seguita da eventuale invio
+APNs solo quando ci sono review mobile davvero dovute.
 
 Workflow dataset `Kanji Clash` per kanji simili:
 

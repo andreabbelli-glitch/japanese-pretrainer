@@ -1,9 +1,12 @@
 name: Mobile Review Notifications Monitor
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"
   workflow_dispatch:
+    inputs:
+      reason:
+        description: "Optional reason for a manual monitor tick."
+        required: false
+        type: string
 
 concurrency:
   group: mobile-review-notifications-monitor

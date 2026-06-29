@@ -221,10 +221,13 @@ nella gallery widget.
 
 ### Monitor Review Live
 
-La near-real-time push per le review mobile e monitorata da
-[`.github/workflows/mobile-review-notifications.yml`](../.github/workflows/mobile-review-notifications.yml):
-GitHub Actions esegue un `POST` ogni `5` minuti verso l'endpoint protetto
-configurato dai secret `MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
+La near-real-time push per le review mobile e sospesa finche APNs/notifiche non
+sono affidabili. Il workflow
+[`.github/workflows/mobile-review-notifications.yml`](../.github/workflows/mobile-review-notifications.yml)
+resta manuale tramite `workflow_dispatch`: non deve avere una schedule attiva e
+deve produrre `0 chiamate automatiche` verso Vercel. Quando viene lanciato a
+mano, esegue un `POST` verso l'endpoint protetto configurato dai secret
+`MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
 `MOBILE_NOTIFICATION_MONITOR_SECRET`.
 
 Questa scelta e intenzionale per restare dentro i piani gratuiti: Vercel Hobby
@@ -233,9 +236,9 @@ considerati dalla documentazione ufficiale
 <https://vercel.com/docs/cron-jobs/usage-and-pricing>. La sintassi della
 schedule GitHub Actions segue
 <https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions>.
-La cadenza di `5` minuti produce circa `288` chiamate al giorno e `8.640` al
-mese; non aumentarla senza rivalutare esplicitamente quota Actions, costo
-Vercel e carico Turso.
+Se il monitor verra riattivato, una cadenza di `5` minuti produce circa `288`
+chiamate al giorno e `8.640` al mese; non aumentarla senza rivalutare
+esplicitamente quota Actions, costo Vercel e carico Turso.
 
 Il monitor deve restare minuscolo: nessun setup Node, nessuna credenziale DB,
 nessuna credenziale APNs e nessuna logica di review nel workflow. Il lavoro

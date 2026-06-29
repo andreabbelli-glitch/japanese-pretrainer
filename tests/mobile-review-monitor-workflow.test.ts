@@ -12,7 +12,7 @@ const workflowPath = path.join(
 );
 
 describe("mobile review notification monitor workflow", () => {
-  it("stays a tiny free-tier scheduled curl monitor", async () => {
+  it("stays a suspended manual-only free-tier curl monitor", async () => {
     const source = await readFile(workflowPath, "utf8");
     const workflow = parse(source) as {
       jobs?: Record<
@@ -23,15 +23,15 @@ describe("mobile review notification monitor workflow", () => {
         }
       >;
       on?: {
+        workflow_dispatch?: unknown;
         schedule?: Array<{ cron?: string }>;
       };
     };
     const monitor = workflow.jobs?.monitor;
     const steps = monitor?.steps ?? [];
 
-    expect(workflow.on?.schedule?.map((entry) => entry.cron)).toEqual([
-      "*/5 * * * *"
-    ]);
+    expect(workflow.on?.schedule).toBeUndefined();
+    expect(workflow.on?.workflow_dispatch).toBeDefined();
     expect(monitor?.env).toMatchObject({
       MONITOR_SECRET: "${{ secrets.MOBILE_NOTIFICATION_MONITOR_SECRET }}",
       MONITOR_URL: "${{ secrets.MOBILE_REVIEW_NOTIFICATION_MONITOR_URL }}"
@@ -45,10 +45,11 @@ describe("mobile review notification monitor workflow", () => {
     expect(source).not.toContain("actions/setup-node");
     expect(source).not.toContain("TURSO_");
     expect(source).not.toContain("APNS");
+    expect(source).not.toContain("cron:");
     expect(steps).toHaveLength(1);
   });
 
-  it("documents free-tier volume and secret boundaries", async () => {
+  it("documents the suspension, free-tier boundaries, and secret boundaries", async () => {
     const [readme, devTooling, verificationNotes] = await Promise.all([
       readFile(path.join(process.cwd(), "README.md"), "utf8"),
       readFile(path.join(process.cwd(), "docs", "dev-tooling.md"), "utf8"),
@@ -59,6 +60,9 @@ describe("mobile review notification monitor workflow", () => {
     ]);
     const combined = `${readme}\n${devTooling}\n${verificationNotes}`;
 
+    expect(combined).toContain("sospes");
+    expect(combined).toContain("manual");
+    expect(combined).toContain("0 chiamate automatiche");
     expect(combined).toContain("288");
     expect(combined).toContain("8.640");
     expect(combined).toContain("MOBILE_REVIEW_NOTIFICATION_MONITOR_URL");

@@ -518,17 +518,21 @@ costose parte solo in background dopo l'avvio del runtime: e best-effort e non
 blocca la prima risposta del sito, cosi il cold start Vercel non paga in
 anticipo l'intera preparazione della review.
 
-Per le notifiche live di Daily Kanji iOS, il monitor near-real-time non usa
-Vercel Hobby Cron. La scelta free-tier e una schedule GitHub Actions ogni `5`
-minuti che chiama solo l'endpoint protetto con `curl`:
+Per le notifiche live di Daily Kanji iOS, il monitor GitHub near-real-time e
+sospeso finche APNs/notifiche non sono affidabili. Il workflow resta disponibile
+solo come avvio manuale con `workflow_dispatch`:
 [`.github/workflows/mobile-review-notifications.yml`](./.github/workflows/mobile-review-notifications.yml).
-La cadenza vale circa `288` chiamate al giorno e `8.640` al mese; il server deve
-tenerla a una singola due-count check Turso per run. Endpoint e secret vivono
-solo nei secret Actions `MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
+Il volume corrente deve quindi restare a `0 chiamate automatiche` verso Vercel.
+Se il monitor verra riattivato, non usare Vercel Hobby Cron per tick ravvicinati
+e mantieni una cadenza gratuita GitHub Actions di `5` minuti solo dopo una
+revisione esplicita: quella cadenza vale circa `288` chiamate al giorno e
+`8.640` al mese. Il server deve tenerla a una singola due-count check Turso per
+run. Endpoint e secret vivono solo nei secret Actions
+`MOBILE_REVIEW_NOTIFICATION_MONITOR_URL` e
 `MOBILE_NOTIFICATION_MONITOR_SECRET`; secret APNs/mobile/monitor e token Turso
 non devono mai essere committati. Se i secret monitor non sono ancora
-configurati, la workflow deve fare skip con successo invece di fallire a ogni
-tick. Riferimenti:
+configurati, la workflow manuale deve fare skip con successo invece di fallire.
+Riferimenti:
 [Vercel Cron usage and pricing](https://vercel.com/docs/cron-jobs/usage-and-pricing)
 e [GitHub Actions workflow syntax](https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions).
 
