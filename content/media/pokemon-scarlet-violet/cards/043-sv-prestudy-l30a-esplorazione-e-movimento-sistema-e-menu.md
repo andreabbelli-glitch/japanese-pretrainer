@@ -342,8 +342,8 @@ example_it: >-
 :::term
 id: term-v576-gumimiawase
 lemma: 組み合わせ
-reading: ぐみみあわせ
-romaji: gumimiawase
+reading: くみあわせ
+romaji: kumiawase
 meaning_it: combinazione
 notes_it: >-
   Indica come elementi diversi stanno insieme: mosse, oggetti, colori o opzioni
@@ -355,10 +355,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-043-sv-prestudy-l30a-esplor
 entry_type: term
 entry_id: term-v576-gumimiawase
 card_type: recognition
-front: "{{組|ぐ}}み{{合|みあ}}わせ"
+front: "{{組|く}}み{{合|あ}}わせ"
 back: combinazione
 example_jp: >-
-  わざの {{組|ぐ}}み{{合|みあ}}わせを {{変|か}}えます。
+  わざの {{組|く}}み{{合|あ}}わせを {{変|か}}えます。
 example_it: >-
   Cambio la combinazione delle mosse.
 :::
