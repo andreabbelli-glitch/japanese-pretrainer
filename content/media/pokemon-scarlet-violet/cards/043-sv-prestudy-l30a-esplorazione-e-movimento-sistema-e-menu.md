@@ -367,7 +367,7 @@ id: term-v577-taiou
 lemma: 対応
 reading: たいおう
 romaji: taiou
-meaning_it: compatibilità / corrispondenza
+meaning_it: equivalenza / matching
 notes_it: >-
   In UI, `対応` segnala che una funzione, un formato o un dispositivo è
   supportato e funziona con una certa opzione.
@@ -379,7 +379,7 @@ entry_type: term
 entry_id: term-v577-taiou
 card_type: recognition
 front: "{{対応|たいおう}}"
-back: compatibilità / corrispondenza
+back: equivalenza / matching
 example_jp: >-
   この コントローラーは {{対応|たいおう}}しています。
 example_it: >-

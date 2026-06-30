@@ -41,7 +41,7 @@ Il filo comune è operativo: alcune parole ti dicono che tipo di movimento o fun
 - [プロフィール](term:term-v574-purofiiru) — profilo
 - [{{別|べつ}}に](term:term-v575-betsuni) — non particolarmente
 - [{{組|く}}み{{合|あ}}わせ](term:term-v576-gumimiawase) — combinazione
-- [{{対応|たいおう}}](term:term-v577-taiou) — compatibilità / corrispondenza
+- [{{対応|たいおう}}](term:term-v577-taiou) — equivalenza / matching
 - [{{自撮|じど}}り](term:term-v580-jidori) — selfie / autoscatto
 - [{{装置|そうち}}](term:term-v579-souchi) — dispositivo / apparecchio
 - [{{特別講師|とくべつこうし}}](term:term-v582-tokubetsukoushi) — docente speciale
@@ -152,7 +152,7 @@ Il gioco usa molte schermate che non sono né negozio né mappa: profili, assett
 *   [プロフィール](term:term-v574-purofiiru) è katakana trasparente, ma nel gioco non è solo "profilo" in astratto. È la schermata in cui nome, icona, commento e dati del giocatore vengono presentati. Se compare con {{確認|かくにん}}する, il senso è "controllare le informazioni del profilo", non parlare della personalità del personaggio.
 *   [{{自撮|じど}}り](term:term-v580-jidori) appartiene allo stesso spazio visivo. {{自|じ}} porta l'idea di sé e {{撮|ど}}り viene dal fotografare: la parola distingue uno scatto del proprio personaggio da una foto panoramica o da un'immagine di un altro soggetto.
 *   [{{組|くみ}}](term:term-v572-kumi) e [{{組|く}}み{{合|あ}}わせ](term:term-v576-gumimiawase) condividono l'idea di elementi messi insieme, ma non sono intercambiabili. [{{組|くみ}}](term:term-v572-kumi) può indicare un gruppo organizzato, come una classe o una squadra; [{{組|く}}み{{合|あ}}わせ](term:term-v576-gumimiawase) indica il risultato della combinazione tra pezzi diversi, per esempio mosse, colori, opzioni o strumenti.
-*   [{{対応|たいおう}}](term:term-v577-taiou), [{{装置|そうち}}](term:term-v579-souchi) e [シンクロマシン](term:term-v589-shinkuromashin) portano la lettura verso compatibilità e funzioni. In UI, [{{対応|たいおう}}](term:term-v577-taiou) segnala che una funzione, un formato o un controller è supportato. [{{装置|そうち}}](term:term-v579-souchi) nomina un dispositivo, mentre [シンクロマシン](term:term-v589-shinkuromashin) indica la macchina o modalità legata alla sincronizzazione tra giocatore e Pokémon.
+*   [{{対応|たいおう}}](term:term-v577-taiou), [{{装置|そうち}}](term:term-v579-souchi) e [シンクロマシン](term:term-v589-shinkuromashin) portano la lettura verso matching e funzioni. In UI, [{{対応|たいおう}}](term:term-v577-taiou) segnala che una funzione, un formato o un controller è supportato. [{{装置|そうち}}](term:term-v579-souchi) nomina un dispositivo, mentre [シンクロマシン](term:term-v589-shinkuromashin) indica la macchina o modalità legata alla sincronizzazione tra giocatore e Pokémon.
 *   [{{特別講師|とくべつこうし}}](term:term-v582-tokubetsukoushi) appartiene al lato scolastico del gioco. {{特別|とくべつ}} marca qualcosa di speciale o non ordinario, {{講師|こうし}} indica chi insegna: insieme, la parola segnala un docente invitato o assegnato a un corso specifico.
 
 :::example_sentence
