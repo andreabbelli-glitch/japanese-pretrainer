@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-043-sv-prestudy-l30a-esplorazione-e-movimento-sistema-e-menu
 media_id: media-pokemon-scarlet-violet
 slug: 043-sv-prestudy-l30a-esplorazione-e-movimento-sistema-e-menu
-title: SV Pre-study L30A - esplorazione e movimento, sistema e menu
+title: Percorsi, menu e risposte di sistema
 order: 73
 segment_ref: scarlet-violet-prestudy
 ---
@@ -220,7 +220,8 @@ reading: ぬけみち
 romaji: nukemichi
 meaning_it: scorciatoia / passaggio alternativo
 notes_it: >-
-  Utile nei cartelli che indicano percorsi alternativi e shortcut.
+  Nei cartelli, `抜け道` segnala una via laterale che fa uscire dal percorso
+  principale o aggira un tratto bloccato.
 :::
 :::card
 id: card-v503-nukemichi-recognition
@@ -368,9 +369,8 @@ reading: たいおう
 romaji: taiou
 meaning_it: compatibilità / corrispondenza
 notes_it: >-
-  Segnala che una funzione, un formato o un dispositivo è supportato. In UI
-  `対応` non significa solo "rispondere": dice che quella voce funziona con una
-  certa opzione.
+  In UI, `対応` segnala che una funzione, un formato o un dispositivo è
+  supportato e funziona con una certa opzione.
 :::
 :::card
 id: card-v577-taiou-recognition
@@ -392,8 +392,8 @@ reading: さかみち
 romaji: sakamichi
 meaning_it: strada in salita
 notes_it: >-
-  Indica una strada inclinata o in salita. Nei percorsi serve a leggere
-  dislivelli reali, non una direzione astratta sulla mappa.
+  `坂道` descrive una strada con pendenza: nei percorsi avvisa che il movimento
+  segue un dislivello reale sulla mappa.
 :::
 :::card
 id: card-v578-sakamichi-recognition
@@ -484,7 +484,7 @@ reading: とくべつこうし
 romaji: tokubetsukoushi
 meaning_it: docente speciale
 notes_it: >-
-  Indica un docente invitato o assegnato a una lezione speciale. In accademia
+  Indica un docente invitato o assegnato a un corso speciale. In accademia
   chiarisce che non stai parlando con un insegnante ordinario della classe.
 :::
 :::card
@@ -505,7 +505,7 @@ id: term-v583-naiyou
 lemma: 内容
 reading: ないよう
 romaji: naiyou
-meaning_it: contenuto
+meaning_it: contenuto / dettagli
 notes_it: >-
   Indica il contenuto o i dettagli di una schermata. Se appare in `内容を確認`,
   il gioco sta chiedendo di controllare cosa c'è dentro prima di confermare.
@@ -517,7 +517,7 @@ entry_type: term
 entry_id: term-v583-naiyou
 card_type: recognition
 front: "{{内容|ないよう}}"
-back: contenuto
+back: contenuto / dettagli
 example_jp: >-
   {{内容|ないよう}}を {{確認|かくにん}}してから {{決|き}}めます。
 example_it: >-
@@ -553,8 +553,8 @@ reading: いきとまり
 romaji: ikitomari
 meaning_it: vicolo cieco
 notes_it: >-
-  Indica un passaggio senza uscita. In esplorazione segnala che il percorso non
-  continua e che devi cambiare direzione.
+  `行き止まり` marca un punto in cui il percorso si chiude: dopo quel cartello o
+  quella schermata devi tornare indietro o cambiare direzione.
 :::
 :::card
 id: card-v585-ikitomari-recognition
@@ -622,8 +622,8 @@ reading: フィルター
 romaji: firutaa
 meaning_it: filtro
 notes_it: >-
-  Indica un filtro che restringe ciò che viene mostrato. Nei menu serve a far
-  comparire solo certe voci, tipi o risultati.
+  Nei menu, `フィルター` applica una condizione alla lista e mostra solo le voci,
+  i tipi o i risultati che la rispettano.
 :::
 :::card
 id: card-v588-firutaa-recognition

@@ -69,7 +69,7 @@ Il filo comune è operativo: alcune parole ti dicono che tipo di movimento o fun
 
 ## 1. Percorsi e movimento: capire se si passa, si arriva o ci si ferma
 
-Quando il testo parla di strade, il verbo non indica solo che il personaggio si muove: precisa che tipo di spazio stai leggendo e che cosa succede dopo.
+Quando il testo parla di strade, il verbo precisa il tipo di spazio che stai leggendo e la conseguenza pratica del movimento.
 
 *   [{{抜|ぬ}}ける](term:term-v485-nukeru) non è un generico "andare". Porta l'idea di passare attraverso qualcosa e uscirne dall'altra parte: una strada stretta, una grotta, una zona erbosa o un corridoio naturale. Se lo incontri in un cartello o in una battuta legata alla mappa, preparati a leggere un attraversamento, non una semplice posizione.
 *   [{{抜|ぬ}}け{{道|みち}}](term:term-v503-nukemichi) nasce dallo stesso gesto: è una {{道|みち}} che permette di {{抜|ぬ}}ける, cioè una via che fa uscire dal percorso principale. In gioco funziona come scorciatoia, passaggio laterale o strada alternativa da cercare quando il percorso normale sembra lungo o bloccato.
@@ -107,7 +107,7 @@ Nei negozi e nei menu la domanda cambia: non stai più chiedendo "dove porta que
 *   [{{内容|ないよう}}](term:term-v583-naiyou) è il contenuto da aprire o controllare: dettagli di un acquisto, descrizione di una funzione, testo di una schermata. Quando compare con {{確認|かくにん}}する, la scena ti chiede di leggere prima di confermare.
 *   [{{支払|しはら}}い](term:term-v571-shiharai) nomina il pagamento come azione da completare. Se lo vedi vicino a prezzo, LP o denaro, la frase parla del costo da saldare, non dell'oggetto ricevuto.
 *   [{{使用|しよう}}](term:term-v584-shiyou) distingue il possesso dall'attivazione. Avere un oggetto nello zaino non è ancora {{使用|しよう}}: il termine entra quando lo usi davvero, lo consumi o attivi una funzione.
-*   [{{表示|ひょうじ}}](term:term-v586-hyouji) sposta il focus su ciò che appare a schermo. [フィルター](term:term-v588-firutaa) restringe le voci mostrate, mentre {{非表示|ひひょうじ}} le nasconde: `表示` e `非表示` riguardano la visibilita' nella UI.
+*   [{{表示|ひょうじ}}](term:term-v586-hyouji) sposta il focus su ciò che appare a schermo. [フィルター](term:term-v588-firutaa) restringe le voci mostrate, mentre {{非表示|ひひょうじ}} le nasconde: `表示` e `非表示` riguardano la visibilità nella UI.
 
 :::example_sentence
 jp: >-
@@ -126,7 +126,7 @@ translation_it: >-
 
 *   [{{内容|ないよう}}](term:term-v583-naiyou) è ciò che controlli prima della decisione.
 *   [{{支払|しはら}}い](term:term-v571-shiharai) è la transazione che chiudi dopo aver deciso.
-*   [{{使用|しよう}}](term:term-v584-shiyou) non significa "avere nello zaino": se una schermata chiede {{使用|しよう}}しますか, sta chiedendo se vuoi usare o attivare davvero quella funzione o quell'oggetto.
+*   [{{使用|しよう}}](term:term-v584-shiyou) marca l'attivazione concreta: se una schermata chiede {{使用|しよう}}しますか, sta chiedendo se vuoi usare davvero quella funzione o quell'oggetto.
 
 :::example_sentence
 jp: >-
@@ -152,8 +152,8 @@ Il gioco usa molte schermate che non sono né negozio né mappa: profili, assett
 *   [プロフィール](term:term-v574-purofiiru) è katakana trasparente, ma nel gioco non è solo "profilo" in astratto. È la schermata in cui nome, icona, commento e dati del giocatore vengono presentati. Se compare con {{確認|かくにん}}する, il senso è "controllare le informazioni del profilo", non parlare della personalità del personaggio.
 *   [{{自撮|じど}}り](term:term-v580-jidori) appartiene allo stesso spazio visivo. {{自|じ}} porta l'idea di sé e {{撮|ど}}り viene dal fotografare: la parola distingue uno scatto del proprio personaggio da una foto panoramica o da un'immagine di un altro soggetto.
 *   [{{組|くみ}}](term:term-v572-kumi) e [{{組|く}}み{{合|あ}}わせ](term:term-v576-gumimiawase) condividono l'idea di elementi messi insieme, ma non sono intercambiabili. [{{組|くみ}}](term:term-v572-kumi) può indicare un gruppo organizzato, come una classe o una squadra; [{{組|く}}み{{合|あ}}わせ](term:term-v576-gumimiawase) indica il risultato della combinazione tra pezzi diversi, per esempio mosse, colori, opzioni o strumenti.
-*   [{{対応|たいおう}}](term:term-v577-taiou), [{{装置|そうち}}](term:term-v579-souchi) e [シンクロマシン](term:term-v589-shinkuromashin) portano la lettura verso compatibilità e funzioni. [{{対応|たいおう}}](term:term-v577-taiou) in UI non vuol dire solo "risposta": segnala che una funzione, un formato o un controller è supportato. [{{装置|そうち}}](term:term-v579-souchi) nomina un dispositivo, mentre [シンクロマシン](term:term-v589-shinkuromashin) indica la macchina o modalità legata alla sincronizzazione tra giocatore e Pokémon.
-*   [{{特別講師|とくべつこうし}}](term:term-v582-tokubetsukoushi) appartiene al lato scolastico del gioco. {{特別|とくべつ}} marca qualcosa di speciale o non ordinario, {{講師|こうし}} indica chi insegna: insieme, la parola segnala un docente invitato o assegnato a una lezione specifica, non un insegnante qualunque incontrato in corridoio.
+*   [{{対応|たいおう}}](term:term-v577-taiou), [{{装置|そうち}}](term:term-v579-souchi) e [シンクロマシン](term:term-v589-shinkuromashin) portano la lettura verso compatibilità e funzioni. In UI, [{{対応|たいおう}}](term:term-v577-taiou) segnala che una funzione, un formato o un controller è supportato. [{{装置|そうち}}](term:term-v579-souchi) nomina un dispositivo, mentre [シンクロマシン](term:term-v589-shinkuromashin) indica la macchina o modalità legata alla sincronizzazione tra giocatore e Pokémon.
+*   [{{特別講師|とくべつこうし}}](term:term-v582-tokubetsukoushi) appartiene al lato scolastico del gioco. {{特別|とくべつ}} marca qualcosa di speciale o non ordinario, {{講師|こうし}} indica chi insegna: insieme, la parola segnala un docente invitato o assegnato a un corso specifico.
 
 :::example_sentence
 jp: >-
@@ -164,7 +164,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   わざの {{組|く}}み{{合|あ}}わせを ➔ **Assetto combinato** ([{{組|く}}み{{合|あ}}わせ](term:term-v576-gumimiawase) `組み合わせ` indica il rapporto tra piu' mosse.
+*   わざの {{組|く}}み{{合|あ}}わせを ➔ **Assetto combinato** ([{{組|く}}み{{合|あ}}わせ](term:term-v576-gumimiawase) `組み合わせ` indica il rapporto tra più mosse).
 *   {{変|か}}えるために ➔ **Scopo intenzionale** ([～ために](grammar:grammar-g097-per-allo-scopo-di) lega l'azione successiva a un obiettivo: controllo qualcosa per poter cambiare l'assetto).
 *   `プロフィールを {{確認|かくにん}}します` ➔ **Schermata consultata** (il profilo è l'area informativa aperta; `{{確認|かくにん}}` funziona come controllo prima dell'azione).
 
@@ -176,7 +176,7 @@ translation_it: >-
 
 ## 4. Scopo, risultato e tono nei dialoghi
 
-Alcune frasi non descrivono solo oggetti o schermate: spiegano lo scopo dell'azione o la reazione emotiva del personaggio. Qui i pattern grammaticali fanno il lavoro più importante.
+Qui il segnale da cercare è la forma: [～ために](grammar:grammar-g097-per-allo-scopo-di) aggancia un obiettivo intenzionale, [～ように](grammar:grammar-g093-in-modo-da-affinche) punta al risultato da ottenere o evitare, e [〜してみましょう](term:term-e091-shitemimashou) dà alla frase il tono di una proposta guidata.
 
 ### A. Scopo intenzionale e risultato desiderato
 
