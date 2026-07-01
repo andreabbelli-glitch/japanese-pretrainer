@@ -549,8 +549,8 @@ example_it: >-
 :::term
 id: term-v585-ikitomari
 lemma: 行き止まり
-reading: いきとまり
-romaji: ikitomari
+reading: いきどまり
+romaji: ikidomari
 meaning_it: vicolo cieco
 notes_it: >-
   `行き止まり` marca un punto in cui il percorso si chiude: dopo quel cartello o
@@ -562,10 +562,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-043-sv-prestudy-l30a-esplor
 entry_type: term
 entry_id: term-v585-ikitomari
 card_type: recognition
-front: "{{行|い}}き{{止|と}}まり"
+front: "{{行|い}}き{{止|ど}}まり"
 back: vicolo cieco
 example_jp: >-
-  この{{先|さき}}に {{行|い}}き{{止|と}}まりが あります。
+  この{{先|さき}}に {{行|い}}き{{止|ど}}まりが あります。
 example_it: >-
   Più avanti c'è il vicolo cieco.
 :::
