@@ -33,7 +33,7 @@ Il punto non è memorizzare parole isolate. [きみ{{次第|しだい}}](term:te
 - [{{覚|おぼ}}える](term:term-v432-oboe-ru) — imparare / ricordare
 - [{{覚|おぼ}}えさせる](term:term-v441-oboe-saseru) — far imparare
 - [{{習|なら}}う](term:term-v446-narau) — imparare da qualcuno
-- [{{鍛|きた}}える](term:term-v433-kitae-ru) — allenare / temprare
+- [{{鍛|きた}}える](term:term-v433-kitae-ru) — forgiare / temprare
 - [{{検索|けんさく}}](term:term-v443-kensaku) — ricerca
 - [{{閉|と}}じる](term:term-v445-tojiru) — chiudere
 - [{{門|もん}}](term:term-v439-mon) — cancello / porta monumentale
@@ -73,9 +73,9 @@ Il punto non è memorizzare parole isolate. [きみ{{次第|しだい}}](term:te
 
 La scena di partenza mette insieme ruolo del giocatore e modalità di viaggio. Prima capisci chi sta vivendo l'azione, poi il testo apre una biforcazione: giocare connesso, restare nel locale, prendere una decisione e muoverti.
 
-*   [{{主人公|しゅじんこう}}](term:term-v442-shujinkou) (**protagonista**) è il personaggio attraverso cui il viaggio viene visto. Il composto si legge tutto insieme: {{主人公|しゅじんこう}}, non come un blocco inventato su {{人公|じんこう}}. Nei riassunti di storia o nei menu, questa parola non indica un NPC qualunque: indica la figura che controlli o segui.
+*   [{{主人公|しゅじんこう}}](term:term-v442-shujinkou) (**protagonista**) è il personaggio attraverso cui il viaggio viene visto. Il composto si legge tutto insieme: {{主人公|しゅじんこう}}; evita di separarlo in un blocco artificiale come {{人公|じんこう}}. Nei riassunti di storia o nei menu, questa parola segnala la figura che controlli o segui.
 *   [きみ{{次第|しだい}}](term:term-e081-kimi-shidai) (**dipende da te**) sposta la responsabilità sul giocatore. きみ è "tu"; {{次第|しだい}} dice che l'esito cambia in base a una condizione o decisione. In una scena Pokémon, questa formula prepara una scelta pratica più che un incoraggiamento generico.
-*   [オンライン](term:term-v436-onrain) e [オフライン](term:term-v440-ofurain) sembrano katakana immediati, ma nella UI decidono il perimetro dell'azione. [オンライン](term:term-v436-onrain) apre connessioni, scambi e altri giocatori; [オフライン](term:term-v440-ofurain) riporta la scena al gioco locale. Quando compaiono accanto a un prompt, non stanno solo descrivendo uno stato tecnico: stanno dicendo che tipo di mondo verrà caricato dopo la scelta.
+*   [オンライン](term:term-v436-onrain) e [オフライン](term:term-v440-ofurain) sembrano katakana immediati, ma nella UI decidono il perimetro dell'azione. [オンライン](term:term-v436-onrain) apre connessioni, scambi e altri giocatori; [オフライン](term:term-v440-ofurain) riporta la scena al gioco locale. Accanto a un prompt descrivono lo stato tecnico e anticipano che tipo di mondo verrà caricato dopo la scelta.
 
 :::example_sentence
 jp: >-
@@ -100,14 +100,14 @@ translation_it: >-
 
 ---
 
-## 2. Preparare il Pokémon: imparare, far imparare, allenare
+## 2. Preparare il Pokémon: imparare, far imparare, temprare
 
 Prima di lasciare una zona sicura, il gioco parla spesso di mosse, allenamento e crescita. Qui i verbi di apprendimento non sono sinonimi: cambiano chi agisce, chi riceve l'effetto e quale tipo di preparazione sta avvenendo.
 
 *   [{{覚|おぼ}}える](term:term-v432-oboe-ru) (**imparare / ricordare**) guarda il Pokémon o la persona che acquisisce qualcosa. In un messaggio su una mossa, il focus è il repertorio che si arricchisce: una nuova わざ entra tra le possibilità disponibili.
-*   [{{覚|おぼ}}えさせる](term:term-v441-oboe-saseru) (**far imparare**) aggiunge il causativo させる. Non dice solo che il Pokémon impara: dice che qualcuno fa sì che impari. Se nella frase compare このポケモンに, il に marca il destinatario dell'apprendimento; se compare わざを, il を marca ciò che viene fatto imparare.
-*   [{{習|なら}}う](term:term-v446-narau) (**imparare da qualcuno**) mette l'apprendimento dentro un rapporto con una fonte: un insegnante, una lezione, una pratica guidata. È più "apprendere da" che "registrare una mossa".
-*   [{{鍛|きた}}える](term:term-v433-kitae-ru) (**allenare / temprare**) sposta il campo dallo studio alla resistenza. In Pokémon può riguardare corpo, statistiche, abilità o determinazione: `鍛える` porta al risultato di essere piu' pronti a reggere lotta o percorso.
+*   [{{覚|おぼ}}えさせる](term:term-v441-oboe-saseru) (**far imparare**) aggiunge il causativo させる. Il Pokémon impara perché qualcuno fa sì che impari. Se nella frase compare このポケモンに, il に marca il destinatario dell'apprendimento; se compare わざを, il を marca ciò che viene fatto imparare.
+*   [{{習|なら}}う](term:term-v446-narau) (**imparare da qualcuno**) mette l'apprendimento dentro un rapporto con una fonte: un insegnante, una pratica guidata, una dimostrazione. È più "apprendere da" che "registrare una mossa".
+*   [{{鍛|きた}}える](term:term-v433-kitae-ru) (**forgiare / temprare**) sposta il campo dallo studio alla resistenza. In Pokémon può riguardare corpo, statistiche, abilità o determinazione: `鍛える` porta al risultato di essere più pronti a reggere lotta o percorso.
 
 :::example_sentence
 jp: >-
@@ -226,7 +226,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-*   [{{降|お}}りる](term:term-v434-ori-ru) non significa semplicemente "muoversi". Se il testo parla di [{{崖|がけ}}](term:term-v444-gake), [{{降|お}}りる](term:term-v434-ori-ru) ti fa leggere il dislivello; se parla di cavalcatura o piattaforma, ti dice che lasci quella posizione.
+*   [{{降|お}}りる](term:term-v434-ori-ru) segnala un movimento verso il basso o l'uscita da una posizione. Se il testo parla di [{{崖|がけ}}](term:term-v444-gake), [{{降|お}}りる](term:term-v434-ori-ru) ti fa leggere il dislivello; se parla di cavalcatura o piattaforma, ti dice che lasci quella posizione.
 
 #### 🧠 Gancio cognitivo
 

@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-038-sv-prestudy-l24a-esplorazione-e-movimento-verbi-operativi
 media_id: media-pokemon-scarlet-violet
 slug: 038-sv-prestudy-l24a-esplorazione-e-movimento-verbi-operativi
-title: SV Pre-study L24A - esplorazione e movimento, verbi operativi
+title: Verbi operativi tra mosse, menu e movimento
 order: 68
 segment_ref: scarlet-violet-prestudy
 ---
@@ -208,9 +208,9 @@ id: term-v433-kitae-ru
 lemma: 鍛える
 reading: きたえる
 romaji: kitae ru
-meaning_it: allenare / temprare
+meaning_it: forgiare / temprare
 notes_it: >-
-  鍛える è allenare o temprare qualcuno/qualcosa perché diventi più forte:
+  鍛える è forgiare o temprare qualcuno/qualcosa perché diventi più forte:
   Pokémon, corpo, tecnica o abilità.
 :::
 :::card
@@ -220,11 +220,11 @@ entry_type: term
 entry_id: term-v433-kitae-ru
 card_type: recognition
 front: "{{鍛|きた}}える"
-back: allenare / temprare
+back: forgiare / temprare
 example_jp: >-
   ポケモンを {{鍛|きた}}える。
 example_it: >-
-  Alleno il Pokémon.
+  Tempro il Pokémon.
 :::
 :::term
 id: term-v434-ori-ru
@@ -600,7 +600,7 @@ reading: みなみ
 romaji: minami
 meaning_it: sud
 notes_it: >-
-  Direzione cardinale utile per leggere mappe, cartelli e indicazioni di
+  南 si legge みなみ e marca il sud su mappe, cartelli e indicazioni di
   percorso.
 :::
 :::card

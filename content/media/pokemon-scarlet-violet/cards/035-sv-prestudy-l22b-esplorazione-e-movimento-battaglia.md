@@ -508,9 +508,9 @@ id: term-v391-sodate-ru
 lemma: 育てる
 reading: そだてる
 romaji: sodate ru
-meaning_it: allenare / far crescere
+meaning_it: allevare / far crescere
 notes_it: >-
-  育てる è far crescere o allenare. Con ポケモンを育てる include esperienza, cura e
+  育てる è allevare o far crescere. Con ポケモンを育てる include esperienza, cura e
   sviluppo nel tempo.
 :::
 :::card
@@ -520,11 +520,11 @@ entry_type: term
 entry_id: term-v391-sodate-ru
 card_type: recognition
 front: "{{育|そだ}}てる"
-back: allenare / far crescere
+back: allevare / far crescere
 example_jp: >-
   ポケモンを {{育|そだ}}てる。
 example_it: >-
-  Alleno un Pokémon.
+  Allevo un Pokémon.
 :::
 :::term
 id: term-v392-danrasshu

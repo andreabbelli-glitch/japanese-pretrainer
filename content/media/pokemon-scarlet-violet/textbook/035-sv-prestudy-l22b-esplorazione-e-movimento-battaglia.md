@@ -40,7 +40,7 @@ La stessa lingua collega il campo aperto, il tutorial della cavalcatura, la batt
 - [{{着|つ}}く](term:term-v388-tsuku) — arrivare
 - [{{危|あぶ}}ない](term:term-v389-abunai) — pericoloso
 - [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka) — cristallizzazione
-- [{{育|そだ}}てる](term:term-v391-sodate-ru) — allenare / far crescere
+- [{{育|そだ}}てる](term:term-v391-sodate-ru) — allevare / far crescere
 
 ## Espressioni ricorrenti
 
@@ -151,7 +151,7 @@ In battaglia la stessa precisione serve per leggere lo stato dei Pokémon e il v
 *   [ねむり](term:term-v378-nemuri) è lo stato di sonno. In una scena narrativa può sembrare solo "dormire", ma nel linguaggio di battaglia è una condizione tecnica: il Pokémon addormentato non agisce normalmente, e il testo spesso la tratta come stato da riconoscere prima di scegliere la mossa.
 *   [{{強力|きょうりょく}}](term:term-v386-kyouryoku) è potenza concentrata. {{強|きょう}} porta l'idea di forza, {{力|りょく}} quella di capacità o potere; con な davanti a un nome diventa "potente", come in {{強力|きょうりょく}}なわざ.
 *   [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka) non è solo "cristallo" come oggetto. Il suffisso {{化|か}} indica trasformazione in uno stato: qualcosa diventa cristallino. Nel contesto di *Scarlet & Violet*, il richiamo alla Teracristallizzazione è immediato.
-*   [{{育|そだ}}てる](term:term-v391-sodate-ru) è un verbo transitivo: il giocatore alleva, allena o fa crescere un Pokémon. La forma ti fa cercare un oggetto marcato da を, perché qualcuno sta facendo crescere qualcosa.
+*   [{{育|そだ}}てる](term:term-v391-sodate-ru) è un verbo transitivo: il giocatore alleva o fa crescere un Pokémon. La forma ti fa cercare un oggetto marcato da を, perché qualcuno sta facendo crescere qualcosa.
 
 :::example_sentence
 jp: >-
@@ -170,17 +170,17 @@ translation_it: >-
 jp: >-
   {{強力|きょうりょく}}な ポケモンを {{育|そだ}}てる。
 translation_it: >-
-  Alleno un Pokémon potente.
+  Allevo un Pokémon potente.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `{{強力|きょうりょく}}な ポケモンを` ➔ **Bersaglio dell'allenamento**: `な` qualifica il Pokémon, `を` lo rende oggetto dell'azione.
-*   `{{育|そだ}}てる` ➔ **Crescita causata**: il soggetto non cresce da solo; qualcuno lo allena o lo fa crescere.
+*   `{{強力|きょうりょく}}な ポケモンを` ➔ **Bersaglio dell'allevamento**: `な` qualifica il Pokémon, `を` lo rende oggetto dell'azione.
+*   `{{育|そだ}}てる` ➔ **Crescita causata**: il soggetto non cresce da solo; qualcuno lo alleva o lo fa crescere.
 
 #### ⚖️ Contrasto operativo
 
-[{{育|そだ}}てる](term:term-v391-sodate-ru) e {{育|そだ}}つ si leggono in direzioni diverse. ポケモンを{{育|そだ}}てる significa "allenare/far crescere un Pokémon"; ポケモンが{{育|そだ}}つ significa "il Pokémon cresce". La particella è il primo segnale: を indica l'oggetto che viene fatto crescere, が il soggetto che cresce.
+[{{育|そだ}}てる](term:term-v391-sodate-ru) e {{育|そだ}}つ si leggono in direzioni diverse. ポケモンを{{育|そだ}}てる significa "allevare/far crescere un Pokémon"; ポケモンが{{育|そだ}}つ significa "il Pokémon cresce". La particella è il primo segnale: を indica l'oggetto che viene fatto crescere, が il soggetto che cresce.
 
 #### 🧠 Gancio cognitivo
 
