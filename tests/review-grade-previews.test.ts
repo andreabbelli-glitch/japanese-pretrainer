@@ -6,9 +6,9 @@ const { scheduleReviewMock } = vi.hoisted(() => ({
 }));
 
 vi.mock("@/features/review/model/scheduler", async () => {
-  const actual = await vi.importActual<typeof import("@/features/review/model/scheduler")>(
-    "@/features/review/model/scheduler"
-  );
+  const actual = await vi.importActual<
+    typeof import("@/features/review/model/scheduler")
+  >("@/features/review/model/scheduler");
 
   return {
     ...actual,
@@ -42,9 +42,8 @@ describe("review grade previews", () => {
   });
 
   it("keeps minute countdowns for intervals just below one hour", async () => {
-    const { buildReviewGradePreviews } = await import(
-      "@/features/review/model/grade-previews"
-    );
+    const { buildReviewGradePreviews } =
+      await import("@/features/review/model/grade-previews");
     const now = new Date("2026-04-10T10:00:00.000Z");
     scheduleReviewMock.mockImplementation(({ rating }: { rating: string }) => ({
       dueAt:
@@ -53,20 +52,16 @@ describe("review grade previews", () => {
           : new Date(now.getTime() + 2 * 60 * 60_000).toISOString()
     }));
 
-    const previews = buildReviewGradePreviews(
-      baseSeedState,
-      now
-    );
+    const previews = buildReviewGradePreviews(baseSeedState, now);
 
-    expect(previews.some((preview) => preview.nextReviewLabel === "Tra 60 min")).toBe(
-      true
-    );
+    expect(
+      previews.some((preview) => preview.nextReviewLabel === "Tra 60 min")
+    ).toBe(true);
   });
 
   it("does not label intervals above five minutes as immediate", async () => {
-    const { buildReviewGradePreviews } = await import(
-      "@/features/review/model/grade-previews"
-    );
+    const { buildReviewGradePreviews } =
+      await import("@/features/review/model/grade-previews");
     const now = new Date("2026-04-10T10:00:00.000Z");
     scheduleReviewMock.mockImplementation(({ rating }: { rating: string }) => ({
       dueAt:
@@ -75,23 +70,19 @@ describe("review grade previews", () => {
           : new Date(now.getTime() + 2 * 60 * 60_000).toISOString()
     }));
 
-    const previews = buildReviewGradePreviews(
-      baseSeedState,
-      now
-    );
+    const previews = buildReviewGradePreviews(baseSeedState, now);
 
-    expect(previews.some((preview) => preview.nextReviewLabel === "Tra 6 min")).toBe(
-      true
-    );
-    expect(previews.every((preview) => preview.nextReviewLabel !== "Subito")).toBe(
-      true
-    );
+    expect(
+      previews.some((preview) => preview.nextReviewLabel === "Tra 6 min")
+    ).toBe(true);
+    expect(
+      previews.every((preview) => preview.nextReviewLabel !== "Subito")
+    ).toBe(true);
   });
 
   it("formats fallback dates using the local calendar day", async () => {
-    const { buildReviewGradePreviews } = await import(
-      "@/features/review/model/grade-previews"
-    );
+    const { buildReviewGradePreviews } =
+      await import("@/features/review/model/grade-previews");
     const now = new Date("2026-04-10T10:00:00.000Z");
     scheduleReviewMock.mockImplementation(({ rating }: { rating: string }) => ({
       dueAt:
@@ -102,15 +93,14 @@ describe("review grade previews", () => {
 
     const previews = buildReviewGradePreviews(baseSeedState, now);
 
-    expect(previews.some((preview) => preview.nextReviewLabel === "Il 2026-05-02")).toBe(
-      true
-    );
+    expect(
+      previews.some((preview) => preview.nextReviewLabel === "Il 2026-05-02")
+    ).toBe(true);
   });
 
   it("labels tomorrow by local calendar date across the spring DST boundary", async () => {
-    const { buildReviewGradePreviews } = await import(
-      "@/features/review/model/grade-previews"
-    );
+    const { buildReviewGradePreviews } =
+      await import("@/features/review/model/grade-previews");
     const now = new Date(2026, 2, 29, 12, 0, 0);
     const tomorrowMorning = new Date(2026, 2, 30, 10, 0, 0);
     scheduleReviewMock.mockImplementation(({ rating }: { rating: string }) => ({
@@ -126,6 +116,27 @@ describe("review grade previews", () => {
       previews.some(
         (preview) => preview.nextReviewLabel === "Domani alle 10:00"
       )
+    ).toBe(true);
+  });
+
+  it("uses hours for sub-48-hour previews that cross two local calendar dates", async () => {
+    const { buildReviewGradePreviews } =
+      await import("@/features/review/model/grade-previews");
+    const now = new Date("2026-07-03T18:03:00.000Z");
+    scheduleReviewMock.mockImplementation(({ rating }: { rating: string }) => ({
+      dueAt:
+        rating === "good"
+          ? "2026-07-05T00:00:00.000Z"
+          : new Date(now.getTime() + 2 * 60 * 60_000).toISOString()
+    }));
+
+    const previews = buildReviewGradePreviews(baseSeedState, now);
+
+    expect(
+      previews.some((preview) => preview.nextReviewLabel === "Tra 30 ore")
+    ).toBe(true);
+    expect(
+      previews.every((preview) => preview.nextReviewLabel !== "Tra 2 giorni")
     ).toBe(true);
   });
 });

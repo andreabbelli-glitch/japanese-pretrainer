@@ -113,6 +113,266 @@ describe("fsrs reschedule preview", () => {
     expect(logsAfter).toHaveLength(logsBefore.length);
   });
 
+  it("does not downgrade legacy one-step review subjects into expired learning steps", async () => {
+    await database.insert(card).values({
+      id: "legacy-one-step-card",
+      mediaId: "reschedule-media",
+      lessonId: "reschedule-lesson",
+      segmentId: null,
+      sourceFile: "tests/fsrs-reschedule.md",
+      cardType: "recognition",
+      front: "legacy",
+      normalizedFront: "legacy",
+      back: "legacy",
+      exampleJp: null,
+      exampleIt: null,
+      notesIt: null,
+      status: "active",
+      orderIndex: 20,
+      createdAt: "2026-01-01T09:00:00.000Z",
+      updatedAt: "2026-01-01T09:00:00.000Z"
+    });
+    await database.insert(reviewSubjectState).values({
+      subjectKey: "card:legacy-one-step-card",
+      subjectType: "card",
+      entryType: null,
+      crossMediaGroupId: null,
+      entryId: null,
+      cardId: "legacy-one-step-card",
+      state: "review",
+      stability: 6,
+      difficulty: 4,
+      dueAt: "2026-01-24T00:00:00.000Z",
+      lastReviewedAt: "2026-01-01T09:00:00.000Z",
+      lastInteractionAt: "2026-01-01T09:00:00.000Z",
+      scheduledDays: 23,
+      learningSteps: 0,
+      lapses: 0,
+      reps: 1,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      suspended: false,
+      createdAt: "2026-01-01T09:00:00.000Z",
+      updatedAt: "2026-01-01T09:00:00.000Z"
+    });
+    await database.insert(reviewSubjectLog).values({
+      id: "legacy-one-step-card-log-1",
+      subjectKey: "card:legacy-one-step-card",
+      cardId: "legacy-one-step-card",
+      answeredAt: "2026-01-01T09:00:00.000Z",
+      rating: "good",
+      previousState: "new",
+      newState: "review",
+      scheduledDueAt: "2026-01-24T00:00:00.000Z",
+      elapsedDays: null,
+      responseMs: null,
+      schedulerVersion: "fsrs_v1"
+    });
+
+    const preview = await buildFsrsReschedulePreview({
+      database,
+      now: new Date("2026-01-21T10:00:00.000Z")
+    });
+    const result = await applyFsrsReschedule({
+      database,
+      expectedFsrsCacheKeyPart: preview.fsrsCacheKeyPart,
+      now: new Date("2026-01-21T10:05:00.000Z")
+    });
+    const legacyState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, "card:legacy-one-step-card")
+    });
+
+    expect(preview.summary).toMatchObject({
+      affectedSubjects: 1,
+      eligibleSubjects: 3,
+      unchangedSubjects: 2
+    });
+    expect(result).toMatchObject({
+      affectedSubjects: 1,
+      status: "applied"
+    });
+    expect(legacyState).toMatchObject({
+      dueAt: "2026-01-24T00:00:00.000Z",
+      learningSteps: 0,
+      scheduledDays: 23,
+      state: "review",
+      updatedAt: "2026-01-01T09:00:00.000Z"
+    });
+  });
+
+  it("repairs legacy review subjects already downgraded into expired learning steps", async () => {
+    await database.insert(card).values({
+      id: "legacy-downgraded-card",
+      mediaId: "reschedule-media",
+      lessonId: "reschedule-lesson",
+      segmentId: null,
+      sourceFile: "tests/fsrs-reschedule.md",
+      cardType: "recognition",
+      front: "downgraded",
+      normalizedFront: "downgraded",
+      back: "downgraded",
+      exampleJp: null,
+      exampleIt: null,
+      notesIt: null,
+      status: "active",
+      orderIndex: 21,
+      createdAt: "2026-01-01T09:00:00.000Z",
+      updatedAt: "2026-01-01T09:00:00.000Z"
+    });
+    await database.insert(reviewSubjectState).values({
+      subjectKey: "card:legacy-downgraded-card",
+      subjectType: "card",
+      entryType: null,
+      crossMediaGroupId: null,
+      entryId: null,
+      cardId: "legacy-downgraded-card",
+      state: "learning",
+      stability: 2.307,
+      difficulty: 2.118,
+      dueAt: "2026-01-01T09:10:00.000Z",
+      lastReviewedAt: "2026-01-01T09:00:00.000Z",
+      lastInteractionAt: "2026-01-01T09:00:00.000Z",
+      scheduledDays: 0,
+      learningSteps: 1,
+      lapses: 0,
+      reps: 1,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      suspended: false,
+      createdAt: "2026-01-01T09:00:00.000Z",
+      updatedAt: "2026-01-21T10:05:00.000Z"
+    });
+    await database.insert(reviewSubjectLog).values({
+      id: "legacy-downgraded-card-log-1",
+      subjectKey: "card:legacy-downgraded-card",
+      cardId: "legacy-downgraded-card",
+      answeredAt: "2026-01-01T09:00:00.000Z",
+      rating: "good",
+      previousState: "new",
+      newState: "review",
+      scheduledDueAt: "2026-01-24T00:00:00.000Z",
+      elapsedDays: null,
+      responseMs: null,
+      schedulerVersion: "fsrs_v1"
+    });
+
+    const preview = await buildFsrsReschedulePreview({
+      database,
+      now: new Date("2026-01-21T10:00:00.000Z")
+    });
+    const result = await applyFsrsReschedule({
+      database,
+      expectedFsrsCacheKeyPart: preview.fsrsCacheKeyPart,
+      now: new Date("2026-01-21T10:05:00.000Z")
+    });
+    const legacyState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, "card:legacy-downgraded-card")
+    });
+
+    expect(preview.summary).toMatchObject({
+      affectedSubjects: 2,
+      eligibleSubjects: 3
+    });
+    expect(result).toMatchObject({
+      affectedSubjects: 2,
+      status: "applied"
+    });
+    expect(legacyState).toMatchObject({
+      dueAt: "2026-01-24T00:00:00.000Z",
+      learningSteps: 0,
+      scheduledDays: 23,
+      state: "review",
+      updatedAt: "2026-01-21T10:05:00.000Z"
+    });
+  });
+
+  it("keeps genuine learning subjects in learning during reschedule", async () => {
+    await database.insert(card).values({
+      id: "genuine-learning-card",
+      mediaId: "reschedule-media",
+      lessonId: "reschedule-lesson",
+      segmentId: null,
+      sourceFile: "tests/fsrs-reschedule.md",
+      cardType: "recognition",
+      front: "learning",
+      normalizedFront: "learning",
+      back: "learning",
+      exampleJp: null,
+      exampleIt: null,
+      notesIt: null,
+      status: "active",
+      orderIndex: 22,
+      createdAt: "2026-01-21T09:00:00.000Z",
+      updatedAt: "2026-01-21T09:00:00.000Z"
+    });
+    await database.insert(reviewSubjectState).values({
+      subjectKey: "card:genuine-learning-card",
+      subjectType: "card",
+      entryType: null,
+      crossMediaGroupId: null,
+      entryId: null,
+      cardId: "genuine-learning-card",
+      state: "learning",
+      stability: 2.307,
+      difficulty: 2.118,
+      dueAt: "2026-01-21T09:10:00.000Z",
+      lastReviewedAt: "2026-01-21T09:00:00.000Z",
+      lastInteractionAt: "2026-01-21T09:00:00.000Z",
+      scheduledDays: 0,
+      learningSteps: 1,
+      lapses: 0,
+      reps: 1,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      suspended: false,
+      createdAt: "2026-01-21T09:00:00.000Z",
+      updatedAt: "2026-01-21T09:00:00.000Z"
+    });
+    await database.insert(reviewSubjectLog).values({
+      id: "genuine-learning-card-log-1",
+      subjectKey: "card:genuine-learning-card",
+      cardId: "genuine-learning-card",
+      answeredAt: "2026-01-21T09:00:00.000Z",
+      rating: "good",
+      previousState: "new",
+      newState: "learning",
+      scheduledDueAt: "2026-01-21T09:10:00.000Z",
+      elapsedDays: null,
+      responseMs: null,
+      schedulerVersion: "fsrs_v1"
+    });
+
+    const preview = await buildFsrsReschedulePreview({
+      database,
+      now: new Date("2026-01-21T10:00:00.000Z")
+    });
+    const result = await applyFsrsReschedule({
+      database,
+      expectedFsrsCacheKeyPart: preview.fsrsCacheKeyPart,
+      now: new Date("2026-01-21T10:05:00.000Z")
+    });
+    const learningState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, "card:genuine-learning-card")
+    });
+
+    expect(preview.summary).toMatchObject({
+      affectedSubjects: 1,
+      eligibleSubjects: 3,
+      unchangedSubjects: 2
+    });
+    expect(result).toMatchObject({
+      affectedSubjects: 1,
+      status: "applied"
+    });
+    expect(learningState).toMatchObject({
+      dueAt: "2026-01-21T09:10:00.000Z",
+      learningSteps: 1,
+      scheduledDays: 0,
+      state: "learning",
+      updatedAt: "2026-01-21T09:00:00.000Z"
+    });
+  });
+
   it("skips manual, suspended, new, and no-history subjects", async () => {
     const expectStateUnchanged = async (cardId: string) => {
       const state = await database.query.reviewSubjectState.findFirst({

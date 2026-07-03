@@ -75,6 +75,10 @@ function formatScheduledReviewPreview(dueAt: string, now: Date) {
     return `Domani alle ${formatShortTime(dueDate)}`;
   }
 
+  if (diffMs < 48 * 60 * 60_000) {
+    return formatHourCountdown(diffMs);
+  }
+
   const dayDiff = Math.round(
     (startOfLocalDay(dueDate).getTime() - startOfLocalDay(now).getTime()) /
       86_400_000
@@ -109,6 +113,12 @@ const localDateFormatter = new Intl.DateTimeFormat("sv-SE", {
 
 function formatShortTime(value: Date) {
   return shortTimeFormatter.format(value);
+}
+
+function formatHourCountdown(diffMs: number) {
+  const hours = Math.ceil(diffMs / 60 / 60_000);
+
+  return hours === 1 ? "Tra 1 ora" : `Tra ${hours} ore`;
 }
 
 function formatLocalDate(value: Date) {

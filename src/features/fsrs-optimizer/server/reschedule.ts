@@ -3,6 +3,7 @@ import { eq } from "drizzle-orm";
 import { db, type DatabaseClient } from "@/db";
 import {
   listReviewSubjectFsrsReplaySubjects,
+  type ReviewSubjectFsrsReplayLogRecord,
   type ReviewSubjectFsrsReplaySubject
 } from "@/db/queries";
 import { reviewSubjectState } from "@/db/schema";
@@ -25,6 +26,7 @@ import {
 } from "./settings-store";
 
 const FSRS_RESCHEDULE_HORIZON_DAYS = 30;
+const DAY = 24 * 60 * 60_000;
 
 type FsrsRescheduleTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]
@@ -79,10 +81,12 @@ type FsrsReschedulePlan = FsrsReschedulePreview & {
   candidates: FsrsRescheduleCandidate[];
 };
 
-export async function buildFsrsReschedulePreview(input: {
-  database?: DatabaseClient;
-  now?: Date;
-} = {}): Promise<FsrsReschedulePreview> {
+export async function buildFsrsReschedulePreview(
+  input: {
+    database?: DatabaseClient;
+    now?: Date;
+  } = {}
+): Promise<FsrsReschedulePreview> {
   const plan = await buildFsrsReschedulePlan({
     database: input.database ?? db,
     now: input.now ?? new Date()
@@ -133,7 +137,6 @@ export async function applyFsrsReschedule(input: {
       status: "applied" as const
     };
   });
-
 }
 
 async function buildFsrsReschedulePlan(input: {
@@ -177,15 +180,20 @@ async function buildFsrsReschedulePlan(input: {
       continue;
     }
 
-    currentDueDates.push(subject.state.dueAt);
-    proposedDueDates.push(replayed.state.dueAt);
+    const projected = resolveLifecycleSafeProjectedState(
+      subject,
+      replayed.state
+    );
 
-    if (!isRescheduleCandidateChanged(subject, replayed.state)) {
+    currentDueDates.push(subject.state.dueAt);
+    proposedDueDates.push(projected.dueAt);
+
+    if (!isRescheduleCandidateChanged(subject, projected)) {
       unchangedSubjects += 1;
       continue;
     }
 
-    const direction = compareDueDates(replayed.state.dueAt, subject.state.dueAt);
+    const direction = compareDueDates(projected.dueAt, subject.state.dueAt);
 
     if (direction < 0) {
       movedEarlier += 1;
@@ -195,7 +203,7 @@ async function buildFsrsReschedulePlan(input: {
 
     candidates.push({
       currentDueAt: subject.state.dueAt,
-      projected: replayed.state,
+      projected,
       subject
     });
   }
@@ -284,6 +292,108 @@ function mapReplayLog(
   };
 }
 
+function resolveLifecycleSafeProjectedState(
+  subject: ReviewSubjectFsrsReplaySubject,
+  projected: ReplayedReviewHistory["state"]
+): ReplayedReviewHistory["state"] {
+  if (projected.state === "review") {
+    return projected;
+  }
+
+  const latestLog = subject.logs.at(-1);
+
+  if (latestLog?.newState !== "review") {
+    return projected;
+  }
+
+  if (subject.state.state === "review") {
+    return buildProjectionFromCurrentReviewState(subject, projected);
+  }
+
+  if (isLikelyPriorRescheduleLifecycleDowngrade(subject, latestLog)) {
+    return buildProjectionFromLoggedReviewTransition(
+      subject,
+      projected,
+      latestLog
+    );
+  }
+
+  return projected;
+}
+
+function buildProjectionFromCurrentReviewState(
+  subject: ReviewSubjectFsrsReplaySubject,
+  projected: ReplayedReviewHistory["state"]
+): ReplayedReviewHistory["state"] {
+  const state = subject.state;
+
+  return {
+    difficulty: state.difficulty ?? projected.difficulty,
+    dueAt: state.dueAt ?? projected.dueAt,
+    lapses: state.lapses,
+    learningSteps: 0,
+    lastReviewedAt: state.lastReviewedAt ?? projected.lastReviewedAt,
+    reps: state.reps,
+    scheduledDays: state.scheduledDays,
+    schedulerVersion: "fsrs_v1",
+    stability: state.stability ?? projected.stability,
+    state: "review"
+  };
+}
+
+function isLikelyPriorRescheduleLifecycleDowngrade(
+  subject: ReviewSubjectFsrsReplaySubject,
+  latestLog: ReviewSubjectFsrsReplayLogRecord
+) {
+  return (
+    subject.state.lastReviewedAt === latestLog.answeredAt &&
+    subject.state.lastInteractionAt === latestLog.answeredAt
+  );
+}
+
+function buildProjectionFromLoggedReviewTransition(
+  subject: ReviewSubjectFsrsReplaySubject,
+  projected: ReplayedReviewHistory["state"],
+  latestLog: ReviewSubjectFsrsReplayLogRecord
+): ReplayedReviewHistory["state"] {
+  const dueAt =
+    latestLog.scheduledDueAt ?? subject.state.dueAt ?? projected.dueAt;
+  const scheduledDays = inferScheduledReviewDays(
+    latestLog.answeredAt,
+    dueAt,
+    subject.state.scheduledDays || projected.scheduledDays
+  );
+
+  return {
+    difficulty: projected.difficulty,
+    dueAt,
+    lapses: projected.lapses,
+    learningSteps: 0,
+    lastReviewedAt: latestLog.answeredAt,
+    reps: projected.reps,
+    scheduledDays,
+    schedulerVersion: "fsrs_v1",
+    stability: Math.max(projected.stability, scheduledDays),
+    state: "review"
+  };
+}
+
+function inferScheduledReviewDays(
+  answeredAt: string,
+  dueAt: string,
+  fallback: number
+) {
+  const answeredAtTime = new Date(answeredAt).getTime();
+  const dueAtTime = new Date(dueAt).getTime();
+  const diffDays = (dueAtTime - answeredAtTime) / DAY;
+
+  if (Number.isFinite(diffDays) && diffDays > 0) {
+    return Math.max(1, Math.round(diffDays));
+  }
+
+  return Math.max(1, Math.round(fallback));
+}
+
 function isRescheduleCandidateChanged(
   subject: ReviewSubjectFsrsReplaySubject,
   projected: ReplayedReviewHistory["state"]
@@ -306,7 +416,9 @@ function isRescheduleCandidateChanged(
 
 function compareDueDates(left: string | null, right: string | null) {
   const leftTime = left ? new Date(left).getTime() : Number.POSITIVE_INFINITY;
-  const rightTime = right ? new Date(right).getTime() : Number.POSITIVE_INFINITY;
+  const rightTime = right
+    ? new Date(right).getTime()
+    : Number.POSITIVE_INFINITY;
 
   if (!Number.isFinite(leftTime) || !Number.isFinite(rightTime)) {
     return 0;
