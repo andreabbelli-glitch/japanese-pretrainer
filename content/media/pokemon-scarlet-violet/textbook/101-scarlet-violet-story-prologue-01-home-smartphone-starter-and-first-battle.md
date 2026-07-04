@@ -112,8 +112,8 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{校長|こうちょう}}{{先生|せんせい}}が` ➔ **Soggetto rispettoso** (non indica
-    solo una persona, ma il suo ruolo scolastico).
+*   `{{校長|こうちょう}}{{先生|せんせい}}が` ➔ **Soggetto istituzionale** (il nome
+    porta insieme la persona e il suo ruolo scolastico).
 *   `{{転入|てんにゅう}}の {{案内|あんない}}を` ➔ **Oggetto consegnato** (le
     informazioni riguardano il tuo ingresso nell'Accademia).
 *   `{{届|とど}}けに {{来|き}}てくれた` ➔ **Azione a tuo favore** (qualcuno è
@@ -227,16 +227,16 @@ più diretto e pieno di agganci sociali: ti colloca come vicino, interpreta lo
 starter come partner e trasforma quasi subito la presentazione in lotta.
 
 *   [ご{{近所|きんじょ}}](term:term-gokinjo), o
-    `ご{{近所|きんじょ}}{{同士|どうし}}`, non dice soltanto che abitate vicino.
-    `{{近所|きんじょ}}` crea una relazione di quartiere e il prefisso `ご` la
+    `ご{{近所|きんじょ}}{{同士|どうし}}`, crea una relazione di quartiere.
+    `{{近所|きんじょ}}` lega due persone alla stessa zona e il prefisso `ご` la
     rende socialmente morbida: Nemona usa la geografia per accorciare la
     distanza tra voi.
-*   [{{勝負|しょうぶ}}](term:term-shoubu) va letto come match concreto, non come
-    "competizione" astratta. In `{{勝負|しょうぶ}}しよう` la parola diventa verbo
-    con `する`; in `{{勝負|しょうぶ}}の {{準備|じゅんび}}は いい？`,
+*   [{{勝負|しょうぶ}}](term:term-shoubu) qui nomina il match concreto. In
+    `{{勝負|しょうぶ}}しよう` la parola diventa verbo con `する`; in
+    `{{勝負|しょうぶ}}の {{準備|じゅんび}}は いい？`,
     [{{準備|じゅんび}}](term:term-junbi) controlla se puoi entrare nella fase
-    successiva. La domanda non chiede se sei psicologicamente motivato: chiede
-    se hai scelto il Pokémon e puoi scendere verso il combattimento.
+    successiva: starter scelto, posizione raggiunta e passaggio verso il
+    combattimento.
 
 :::example_sentence
 jp: >-
@@ -248,7 +248,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-Il soggetto grammaticale e' l'essere pronti per il match.
+Il soggetto grammaticale è l'essere pronti per il match.
 *   `できたら` ➔ **Condizione completata** (quando la preparazione è fatta,
     scatta il passaggio successivo).
 *   `{{下|した}}の ビーチへ {{来|き}}てね` ➔ **Direzione più invito amichevole**
@@ -256,8 +256,8 @@ Il soggetto grammaticale e' l'essere pronti per il match.
 
 La scelta dello starter usa un giapponese più osservativo. Clavell commenta
 `この {{子|こ}}は きみを {{気|き}}に {{入|い}}った みたいですね`.
-[～みたい](grammar:grammar-mitai) non certifica un fatto con tono assoluto:
-dice "sembra", "dà l'impressione". La scena lascia che il comportamento del
+[～みたい](grammar:grammar-mitai) presenta la lettura come impressione osservata:
+"sembra", "dà l'impressione". La scena lascia che il comportamento del
 Pokémon sembri una preferenza, e quella preferenza rende naturale la tua
 scelta.
 
@@ -290,16 +290,16 @@ caption: >-
 
 `{{気|き}}に {{入|い}}った` riguarda il piacere o la simpatia verso qualcuno;
 [～みたい](grammar:grammar-mitai) indica che il parlante lo deduce da ciò che
-vede. Non leggere la frase come una decisione fredda del sistema: è
-un'osservazione messa in bocca al personaggio.
+vede. La frase suona quindi come un'osservazione messa in bocca al personaggio,
+non come una decisione fredda del sistema.
 
 Nemona carica poi il primo match come [デビュー{{戦|せん}}](term:term-debyuu-sen).
-`デビュー` resta katakana trasparente, ma `{{戦|せん}}` lo trasforma in una prova
-di battaglia: non è solo "il debutto" del partner, è la sua prima sfida in
-campo. Dopo il match, [{{素質|そしつ}}アリ](term:term-soshitsu-ari) compatta il
+`デビュー` nomina l'esordio e `{{戦|せん}}` lo aggancia alla prova di battaglia:
+è il debutto del partner come prima sfida in campo. Dopo il
+match, [{{素質|そしつ}}アリ](term:term-soshitsu-ari) compatta il
 giudizio di Nemona: `{{素質|そしつ}}` è la predisposizione, `アリ` è il "c'è /
-presente" colloquiale. La frase non dice che sei già forte; dice che nel modo
-in cui combatti si vede potenziale.
+presente" colloquiale. Nel modo in cui combatti Nemona vede potenziale, più che
+una forza già compiuta.
 
 ## 4. Spiaggia e tipi: debolezza, superefficacia e autocontrollo
 
@@ -330,8 +330,8 @@ translation_it: >-
     debolezza appartiene all'avversario).
 *   `{{突|つ}}ける わざなら` ➔ **Condizione sul tipo di mossa** (se la mossa può
     "colpire" quel punto debole).
-*   `こうかは ばつぐんだ！` ➔ **Conferma di sistema** (l'effetto non è buono in
-    generale, è amplificato dal rapporto tra tipi).
+*   `こうかは ばつぐんだ！` ➔ **Conferma di sistema** (l'effetto è amplificato dal
+    rapporto tra tipi).
 
 :::image
 src: assets/story/nemona-first-battle-beach.webp
@@ -370,7 +370,7 @@ translation_it: >-
     tutorial, ma il Pokémon che userebbe di solito).
 *   `{{繰|く}}り{{出|だ}}しちゃう` ➔ **Azione quasi sfuggita di mano**
     (`{{繰|く}}り{{出|だ}}してしまう` contratto: finire per mandarlo in campo).
-*   `ところでした` ➔ **Quasi-evento** (`ところでした` indica un quasi-evento: e' mancato poco che accadesse).
+*   `ところでした` ➔ **Quasi-evento** (`ところでした` indica un quasi-evento: è mancato poco che accadesse).
 
 #### 🧠 Gancio cognitivo
 

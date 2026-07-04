@@ -17,9 +17,9 @@ summary: >-
 # Dal Pokémon Center al primo Terastal: servizi, campo e sfide guidate
 
 Da プラトタウン alla strada che porta a [テーブルシティ](term:term-v272-teeburushitei),
-Scarlet / Violet cambia passo: il viaggio non è più soltanto camminare verso
-la scuola, ma leggere una catena di servizi, risorse, comandi sul campo e prove
-di battaglia. Il [ポケモンセンター](term:term-pokemon-center) cura e ricarica, il
+Scarlet / Violet cambia passo: il viaggio diventa una catena di servizi,
+risorse, comandi sul campo e prove di battaglia. Il
+[ポケモンセンター](term:term-pokemon-center) cura e ricarica, il
 [フレンドリィショップ](term:term-friendly-shop) introduce il lessico degli acquisti,
 [レッツゴー](term:term-lets-go) porta il Pokémon fuori dal turno classico e
 Nemona usa una nuova [{{勝負|しょうぶ}}](term:term-shoubu) per misurare quanto sei
@@ -125,12 +125,12 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo: `{{回復|かいふく}}` come cura di servizio e come effetto
 
-[{{回復|かいふく}}](term:term-kaifuku) non significa sempre la stessa operazione
-pratica. Al [ポケモンセンター](term:term-pokemon-center) indica il ripristino
-della squadra: PS, PP e condizioni vengono rimessi a posto come servizio. In
-battaglia, invece, può descrivere un effetto dentro il turno, come recuperare
-PS dopo una mossa o un'abilità. La parola è la stessa, ma il frame cambia:
-banco di servizio oppure effetto di combattimento.
+[{{回復|かいふく}}](term:term-kaifuku) cambia valore operativo in base al frame.
+Al [ポケモンセンター](term:term-pokemon-center) indica il ripristino della
+squadra: PS, PP e condizioni vengono rimessi a posto come servizio. In
+battaglia può descrivere un effetto dentro il turno, come recuperare PS dopo
+una mossa o un'abilità. La parola è la stessa, ma il frame cambia: banco di
+servizio oppure effetto di combattimento.
 
 ### LP, おとしもの e わざマシン: leggere il costo
 
@@ -175,7 +175,7 @@ translation_it: >-
     "creare una MT" e lo trasforma nella condizione da soddisfare.
 *   `LPと ポケモンの おとしものが` ➔ **soggetto del bisogno**: `と` unisce valuta
     e materiali nella stessa lista di costo.
-*   `{{必要|ひつよう}}だ` ➔ **necessità dichiarata**: `必要だ` dichiara una necessita'.
+*   `{{必要|ひつよう}}だ` ➔ **necessità dichiarata**: `必要だ` dichiara una necessità.
 
 #### 🧠 Gancio cognitivo: おとしもの come "ciò che cade dal percorso"
 
@@ -247,14 +247,14 @@ non tutto passa da una schermata di battaglia completa.
 
 Immagina [～てくる](grammar:grammar-te-kuru) come un elastico narrativo: il
 Pokémon si allontana, fa qualcosa e il risultato torna verso il protagonista.
-Non è etimologia, è un'immagine pratica per non leggere `{{拾|ひろ}}ってきて`
-come un semplice "raccoglie".
+È un'immagine pratica per leggere `{{拾|ひろ}}ってきて` come azione con ritorno,
+non come un semplice "raccoglie".
 
 ## 3. Nemona legge la strada come prova di crescita
 
-Dopo {{南|みなみ}}{{1番|いちばん}}エリア, Nemona non usa la seconda
-[{{勝負|しょうぶ}}](term:term-shoubu) solo per ripetere il primo duello. La scena
-parte da quello che hai appena fatto: camminare, combattere, curare,
+Dopo {{南|みなみ}}{{1番|いちばん}}エリア, la seconda
+[{{勝負|しょうぶ}}](term:term-shoubu) di Nemona riprende quello che hai appena
+fatto: camminare, combattere, curare,
 raccogliere e usare il partner sul campo. La grammatica del suo parlato lega
 esperienza e verifica: se hai attraversato la salita, allora si può provare a
 misurare quanto sei diventato forte.
@@ -330,8 +330,8 @@ translation_it: >-
 
 *   `{{町|まち}}を {{見|み}}てまわったら` ➔ **gate completato**:
     [～たら](grammar:grammar-tara) aggancia il ritrovo al completamento del giro.
-*   `{{学校|がっこう}}の {{前|まえ}}で` ➔ **luogo di incontro**: il punto non è
-    l'intera scuola, ma lo spazio davanti all'edificio.
+*   `{{学校|がっこう}}の {{前|まえ}}で` ➔ **luogo di incontro**: il punto è lo
+    spazio davanti all'edificio, usato come riferimento preciso per il ritrovo.
 *   `{{集合|しゅうごう}}しよう` ➔ **proposta condivisa**: `しよう` suona come
     "ritroviamoci", non come comando impersonale.
 

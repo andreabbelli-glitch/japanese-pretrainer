@@ -24,10 +24,10 @@ uffici portano il tono dell'autorità scolastica e il dormitorio trasforma
 l'arrivo in una routine da studente.
 
 Il giapponese di questa sequenza funziona come segnaletica narrativa. Un nome
-di stanza non dice soltanto "vai lì": ti prepara al tipo di dialogo che sta per
-partire. Una formula come `{{案内|あんない}}するように {{言|い}}われた` non è una
-semplice spiegazione di movimento: segnala che qualcuno sta agendo perché ha
-ricevuto un incarico dalla scuola.
+di stanza ti prepara al tipo di dialogo che sta per partire: mensa, sala
+docenti e ufficio del preside non aprono lo stesso registro. Una formula come
+`{{案内|あんない}}するように {{言|い}}われた` segnala che qualcuno sta agendo perché
+ha ricevuto un incarico dalla scuola.
 
 ## Termini chiave
 
@@ -36,7 +36,7 @@ ricevuto un incarico dalla scuola.
 - [{{通学|つうがく}}](term:term-tsuugaku) — andare a scuola da casa
 - [{{担任|たんにん}}](term:term-tannin) — docente referente della classe
 - [{{目指|めざ}}す](term:term-mezasu) — puntare a / mirare a diventare
-- [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) — lezione sul campo / attività fuori aula
+- [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) — attività extracurricolare / attività fuori aula
 
 ## Espressioni ricorrenti
 
@@ -65,9 +65,8 @@ ricevuto un incarico dalla scuola.
 src: assets/story/academy-campus-exterior.webp
 alt: "Edificio principale dell'accademia di Paldea visto dall'esterno."
 caption: >-
-  L'accademia entra qui come spazio reale del prologo: non è solo sfondo
-  scolastico, ma il nodo da cui partono aula, uffici, dormitorio e i primi
-  briefing della storia.
+  L'accademia entra qui come spazio reale del prologo: è il nodo da cui
+  partono aula, uffici, dormitorio e i primi briefing della storia.
 :::
 
 ## 1. L'aula: il referente, la classe e il futuro che nomini
@@ -89,8 +88,8 @@ traiettoria.
 - [{{目指|めざ}}す](term:term-mezasu) aggiunge direzione. {{目|め}} sono gli
   occhi e `{{指|さ}}す` è "puntare / indicare"; nel verbo composto la lettura
   diventa [{{目指|めざ}}す](term:term-mezasu). In una domanda sul futuro, non
-  significa soltanto "mi piacerebbe": dice che stai puntando verso un certo
-  tipo di Allenatore e che le tue scelte possono orientarsi in quella direzione.
+  resta nel desiderio generico: dice che stai puntando verso un certo tipo di
+  Allenatore e che le tue scelte possono orientarsi in quella direzione.
 
 :::example_sentence
 jp: >-
@@ -166,8 +165,8 @@ che incontrerai.
   permessi, decisioni e scene che fanno avanzare il prologo su un piano più
   istituzionale.
 - [{{施設|しせつ}}](term:term-shisetsu) tiene insieme tutte queste aree come
-  strutture funzionali. Non significa solo "edifici" da guardare: nel campus
-  indica servizi che puoi usare, luoghi che attivano eventi e spazi che rendono
+  strutture funzionali. Nel campus indica servizi che puoi usare, luoghi che
+  attivano eventi e spazi che rendono
   la scuola un sistema pratico.
 
 :::example_sentence
@@ -184,8 +183,8 @@ translation_it: >-
     marca il luogo da raggiungere perché la scena possa partire).
 *   `{{行|い}}くと` ➔ **Condizione naturale** (`と` crea il rapporto "quando ci
     vai, succede questo").
-*   `ペパーの {{話|はなし}}が` ➔ **Filo di storia** (`{{話|はなし}}` qui non è una
-    singola battuta, ma la conversazione legata a quel personaggio).
+*   `ペパーの {{話|はなし}}が` ➔ **Filo di storia** (`{{話|はなし}}` qui indica la
+    conversazione legata a quel personaggio, come segmento narrativo).
 *   `{{進|すす}}みはじめる` ➔ **Avvio della progressione** (`{{進|すす}}む`
     "avanzare" + `はじめる` "iniziare").
 
@@ -194,8 +193,8 @@ jp: >-
   {{校長|こうちょう}}{{室|しつ}}に {{呼|よ}}ばれると {{大事|だいじ}}な
   {{話|はなし}}が {{始|はじ}}まる ことが {{多|おお}}い。
 translation_it: >-
-  Quando vieni chiamato nell'ufficio del preside, spesso comincia una
-  conversazione importante.
+  Quando una scena ti convoca nell'ufficio del preside, di solito parte un
+  briefing ufficiale o una decisione della storia.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -205,7 +204,7 @@ translation_it: >-
 *   `{{呼|よ}}ばれると` ➔ **Passivo più condizione** (qualcuno ti chiama, e
     quella convocazione apre la conseguenza).
 *   `{{大事|だいじ}}な {{話|はなし}}が {{始|はじ}}まる` ➔ **Tipo di evento atteso**
-    (la stanza prepara una conversazione importante, non una visita libera).
+    (la stanza prepara una conversazione importante o un briefing ufficiale).
 
 #### ⚖️ Contrasto operativo
 
@@ -239,7 +238,7 @@ singola, ma una vita quotidiana dentro il campus.
   studenti. Quando il prologo ti porta lì, la camera diventa un punto di
   riposo, cambio di giornata e ripartenza della storia.
 - [{{寮生活|りょうせいかつ}}](term:term-ryouseikatsu) aggiunge {{生活|せいかつ}},
-  "vita quotidiana". La parte centrale e' la vita quotidiana nello spazio abitativo.
+  "vita quotidiana". La parte centrale è la vita quotidiana nello spazio abitativo.
 - [{{通学|つうがく}}](term:term-tsuugaku) è il contrasto naturale. {{通|つう}}
   porta l'idea di passare o andare attraverso, `{{学|がく}}` richiama la
   scuola: il composto indica il tragitto regolare di chi va a scuola da casa.
@@ -289,8 +288,8 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[～{{放題|ほうだい}}](grammar:grammar-houdai) non significa automaticamente
-"gratis". Il centro è l'assenza di limite pratico: `{{食|た}}べ{{放題|ほうだい}}`
+[～{{放題|ほうだい}}](grammar:grammar-houdai) indica assenza di limite pratico,
+non prezzo. `{{食|た}}べ{{放題|ほうだい}}`
 è "mangiare quanto vuoi", mentre `{{使|つか}}い{{放題|ほうだい}}` è "usare
 liberamente". Nel campus, la lettura giusta riguarda disponibilità e accesso,
 non prezzo.
@@ -354,7 +353,7 @@ jp: >-
   {{進|すす}}める。
 translation_it: >-
   Quando ti dicono di riposare nella stanza del dormitorio, puoi avanzare al
-  giorno seguente e alla lezione sul campo.
+  giorno seguente e all'attività fuori aula.
 :::
 
 #### 🗺️ Anatomia della frase

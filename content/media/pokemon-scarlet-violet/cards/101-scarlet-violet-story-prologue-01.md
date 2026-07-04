@@ -159,7 +159,7 @@ notes_it: >-
   È il telefono del protagonista in Scarlet / Violet. Quando il gioco nomina
   `スマホロトム`, non indica solo un oggetto narrativo: è l'interfaccia da cui si
   aprono mappa e [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan). Nel gioco segnala
-  quindi funzioni di orientamento, registrazione e stato.
+  quindi funzioni di orientamento, registrazione è stato.
 :::
 :::term
 id: term-touroku
@@ -169,7 +169,7 @@ romaji: touroku
 meaning_it: registrazione
 notes_it: >-
   Vuol dire inserire ufficialmente un dato nel sistema. Nel prologo compare
-  soprattutto con la [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan): i Pokemon
+  soprattutto con la [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan): i Pokémon
   catturati vengono aggiunti automaticamente all'app senza inserimento
   manuale.
 :::
@@ -184,7 +184,7 @@ back: registrazione
 example_jp: >-
   {{捕|つか}}まえた ポケモンは ポケモン{{図鑑|ずかん}}に {{登録|とうろく}}される。
 example_it: >-
-  I Pokemon catturati vengono registrati nel Pokedex.
+  I Pokémon catturati vengono registrati nel Pokédex.
 :::
 :::term
 id: term-shoubu
@@ -219,7 +219,7 @@ romaji: junbi
 meaning_it: preparazione / essere pronti
 notes_it: >-
   Segnala un check prima dell'azione successiva: mettere la divisa, scegliere il
-  Pokemon o confermare l'ingresso in battaglia. Nel prologo compare spesso
+  Pokémon o confermare l'ingresso in battaglia. Nel prologo compare spesso
   subito prima di un passaggio di stato.
 :::
 :::card
@@ -242,7 +242,7 @@ reading: じゃくてん
 romaji: jakuten
 meaning_it: debolezza / punto debole
 notes_it: >-
-  In battaglia indica il tipo contro cui un Pokemon subisce più danni. Nel
+  In battaglia indica il tipo contro cui un Pokémon subisce più danni. Nel
   primo match con Nemona collega la teoria dei tipi al risultato del turno: se
   colpisci la `{{弱点|じゃくてん}}`, il danno sale e compare spesso [こうかは
   ばつぐんだ！](term:term-kouka-wa-batsugun).
@@ -267,10 +267,10 @@ reading: くりだす
 romaji: kuridasu
 meaning_it: mandare in campo / far uscire
 notes_it: >-
-  Nel giapponese Pokemon descrive l'atto di far scendere in campo un Pokemon o
+  Nel giapponese Pokémon descrive l'atto di far scendere in campo un Pokémon o
   di lanciare una [わざ](term:term-waza). Nel prologo appare nella forma
   colloquiale `くりだしちゃう`: Nemona segnala che, per abitudine, stava quasi
-  mandando in campo un Pokemon troppo forte.
+  mandando in campo un Pokémon troppo forte.
 :::
 :::card
 id: card-kuridasu-recognition
@@ -283,7 +283,7 @@ back: mandare in campo / far uscire
 example_jp: >-
   うっかり いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところだった。
 example_it: >-
-  Per poco non mandavo in campo il mio solito Pokemon senza pensarci.
+  Per poco non mandavo in campo il mio solito Pokémon senza pensarci.
 :::
 :::term
 id: term-gokinjo
@@ -317,7 +317,7 @@ romaji: debyuu sen
 meaning_it: match di debutto / prima sfida ufficiale
 notes_it: >-
   Combina il prestito `デビュー` con `{{戦|せん}}` per marcare la prima vera prova di
-  un Pokemon o di un allenatore. Nemona lo usa per caricare il primo match di
+  un Pokémon o di un allenatore. Nemona lo usa per caricare il primo match di
   valore inaugurale.
 :::
 :::card
@@ -331,7 +331,7 @@ back: match di debutto / prima sfida ufficiale
 example_jp: >-
   さっきの {{子|こ}}の デビュー{{戦|せん}}だから {{見守|みまも}}ってあげよう。
 example_it: >-
-  È la partita di debutto di quel Pokemon, quindi guardiamola con attenzione.
+  È la partita di debutto di quel Pokémon, quindi guardiamola con attenzione.
 :::
 :::term
 id: term-soshitsu-ari
@@ -389,7 +389,7 @@ meaning_it: sembra / pare
 notes_it: >-
   Compare spesso nei dialoghi per valutare una situazione senza dirla in modo
   assoluto. In apertura lo senti con oggetti non ancora arrivati o con i
-  Pokemon che sembrano aver preso simpatia per il protagonista; il valore è di
+  Pokémon che sembrano aver preso simpatia per il protagonista; il valore è di
   impressione, non di certezza secca.
 :::
 :::card
@@ -403,7 +403,7 @@ back: sembra / pare
 example_jp: >-
   この {{子|こ}}は きみに {{気|き}}に {{入|い}}った みたいですね。
 example_it: >-
-  Sembra proprio che questo Pokemon abbia preso simpatia per te.
+  Sembra proprio che questo Pokémon abbia preso simpatia per te.
 :::
 :::grammar
 id: grammar-te-shimau
@@ -452,7 +452,7 @@ back: avere appena fatto / appena iniziato
 example_jp: >-
   ポケモンを {{始|はじ}}めたばかり だから まずは {{基本|きほん}}を {{覚|おぼ}}えよう。
 example_it: >-
-  Hai appena iniziato con i Pokemon, quindi prima impariamo le basi.
+  Hai appena iniziato con i Pokémon, quindi prima impariamo le basi.
 :::
 :::term
 id: term-you-check
@@ -485,7 +485,7 @@ reading: てがき
 romaji: tegaki
 meaning_it: scritto a mano / compilato a mano
 notes_it: >-
-  In questo prologo serve a far percepire il contrasto tra il vecchio Pokedex
+  In questo prologo serve a far percepire il contrasto tra il vecchio Pokédex
   compilato a mano e l'app automatica dello [スマホロトム](term:term-smartphone-
   rotom).
 :::
@@ -500,7 +500,7 @@ back: scritto a mano / compilato a mano
 example_jp: >-
   {{昔|むかし}}の {{図鑑|ずかん}}は ノートに {{手書|てが}}き だったらしい。
 example_it: >-
-  Pare che una volta il Pokedex venisse compilato a mano su un quaderno.
+  Pare che una volta il Pokédex venisse compilato a mano su un quaderno.
 :::
 :::term
 id: term-obentou
@@ -556,12 +556,12 @@ entry_type: term
 entry_id: term-pokemon-zukan
 card_type: recognition
 front: "ポケモン{{図鑑|ずかん}}"
-back: Pokedex
+back: Pokédex
 example_jp: >-
   ポケモン{{図鑑|ずかん}}には {{捕|つか}}まえた ポケモンが {{自動|じどう}}で
   {{登録|とうろく}}される。
 example_it: >-
-  Nel Pokedex i Pokemon catturati vengono registrati automaticamente.
+  Nel Pokédex i Pokémon catturati vengono registrati automaticamente.
 notes_it: >-
   Nel prologo non è solo una collezione: è un'app attiva dello
   [スマホロトム](term:term-smartphone-rotom) che aggiorna automaticamente le

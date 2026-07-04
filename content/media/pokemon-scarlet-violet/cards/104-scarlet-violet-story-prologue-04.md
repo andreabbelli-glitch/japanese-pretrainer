@@ -38,8 +38,8 @@ reading: しょくいんしつ
 romaji: shokuinshitsu
 meaning_it: sala insegnanti / ufficio docenti
 notes_it: >-
-  E la stanza del personale scolastico. In Scarlet / Violet segnala spesso un
-  luogo di spiegazione, autorizzazione o briefing piu formale, non un semplice
+  È la stanza del personale scolastico. In Scarlet / Violet segnala spesso un
+  luogo di spiegazione, autorizzazione o briefing più formale, non un semplice
   passaggio di sfondo nel campus.
 :::
 :::card
@@ -77,8 +77,8 @@ example_jp: >-
   {{校長室|こう.ちょう.しつ}}に {{呼|よ}}ばれると {{大事|だいじ}}な
   {{話|はなし}}が {{始|はじ}}まる ことが {{多|おお}}い。
 example_it: >-
-  Quando vieni chiamato nell'ufficio del preside, spesso comincia una
-  conversazione importante.
+  Quando una scena ti convoca nell'ufficio del preside, di solito parte un
+  briefing ufficiale o una decisione della storia.
 :::
 :::term
 id: term-gakusei-ryou
@@ -87,7 +87,7 @@ reading: がくせいりょう
 romaji: gakusei ryou
 meaning_it: dormitorio studentesco
 notes_it: >-
-  E la zona abitativa degli studenti. Nel prologo non e solo ambientazione:
+  È la zona abitativa degli studenti. Nel prologo funziona anche come gate:
   riposare nella `{{学生寮|がく.せい.りょう}}` avanza il tempo di gioco e prepara
   l'apertura della [{{課外授業|か.がい.じゅ.ぎょう}}](term:term-kagai-jugyou).
 :::
@@ -233,7 +233,7 @@ meaning_it: essere incaricati / sentirsi dire di fare qualcosa
 aliases: [～ように言う]
 notes_it: >-
   Nei dialoghi di scuola e quest questo pattern segnala una consegna ricevuta da
-  qualcuno che ha autorita o ruolo guida. Se un personaggio dice che gli e stato
+  qualcuno che ha autorità o ruolo guida. Se un personaggio dice che gli è stato
   `～ように {{言|い}}われた`, non sta improvvisando: sta eseguendo un compito o una
   direttiva precisa.
 :::

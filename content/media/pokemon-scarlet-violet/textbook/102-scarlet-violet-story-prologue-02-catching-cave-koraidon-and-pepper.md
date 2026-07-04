@@ -22,11 +22,11 @@ presentazione e diventa campo di gioco. Il tratto verso
 percorso, indizi sonori e spiegazioni sullo stato del Pokémon misterioso che
 compare nella grotta.
 
-Il cambio di voce è netto. Nemona parla come una compagna che ti mette in mano
-strumenti e procedure; Pepper entra invece con frasi più tagliate, sospettose e
-ruvide. Per seguire bene la scena devi distinguere quando il giapponese ti sta
-dicendo "prova questa azione", quando ti segnala un pericolo reale, quando
-descrive uno stato fisico e quando lascia emergere il carattere del personaggio.
+Il cambio di voce separa subito i ruoli. Nemona usa [{{捕獲|ほかく}}](term:term-hokaku),
+[{{弱|よわ}}らせる](term:term-yowaraseru) e ボール come procedura guidata; Pepper
+porta [{{姿|すがた}}](term:term-sugata), `{{戦|たたか}}えねえ` e
+[{{制御|せいぎょ}}する](term:term-seigyo-suru) dentro sospetto, stato fisico e
+controllo del Pokémon misterioso.
 
 ## Termini chiave
 
@@ -128,8 +128,8 @@ l'azione.
 #### 🧠 Gancio cognitivo
 
 Pensa a [{{弱|よわ}}らせる](term:term-yowaraseru) come a "far diventare debole".
-Nel frame Pokémon, "debole" non significa per forza "sconfitto": significa
-pronto per il lancio della Ball.
+Nel frame Pokémon, "debole" significa pronto per il lancio della Ball, con
+abbastanza margine perché la cattura possa riuscire.
 
 ## 2. Il percorso parla con avvisi, habitat e suoni
 
@@ -161,7 +161,7 @@ non rumore generico, bensì traccia di una presenza viva.
 src: assets/story/inlet-cave-houndour-warning.webp
 alt: "Area della grotta iniziale vicino al faro con ambiente roccioso e Pokémon selvatici del luogo."
 caption: >-
-  `{{生息|せいそく}}する` presenta quell'area come habitat dei Pokemon.
+  `{{生息|せいそく}}する` presenta quell'area come habitat dei Pokémon.
 :::
 
 :::example_sentence
@@ -176,7 +176,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 - `{{鳴|な}}き{{声|ごえ}}が {{聞|き}}こえても` ➔ concessione: anche se il suono si sente, non decide da solo l'azione corretta.
-- `{{危|あぶ}}ない ポケモンが {{生息|せいそく}}している {{場所|ばしょ}}` ➔ luogo qualificato: non è un posto qualunque, è un habitat di Pokémon pericolosi.
+- `{{危|あぶ}}ない ポケモンが {{生息|せいそく}}している {{場所|ばしょ}}` ➔ luogo qualificato: è un habitat di Pokémon pericolosi, quindi il luogo stesso diventa informazione di rischio.
 - {{入|はい}}らないように ➔ prevenzione: [～ないように](grammar:grammar-nai-you-ni) indica il comportamento da evitare.
 
 #### ⚖️ Contrasto operativo: いる vs [{{生息|せいそく}}する](term:term-seisoku-suru)
@@ -188,10 +188,10 @@ esplorazione: lì puoi aspettarti incontri e rischi legati a quella specie.
 
 Il movimento verso il faro si legge bene anche con
 [～ながら](grammar:grammar-nagara). Una frase come
-`ポケモンを {{捕|つか}}まえながら {{進|すす}}む` non divide cattura e spostamento in
-due scene separate: dice che avanzi facendo catture lungo la strada. È una
-struttura che aderisce bene a Scarlet / Violet, dove esplorazione, raccolta e
-lotta si sovrappongono nello stesso tratto di campo.
+`ポケモンを {{捕|つか}}まえながら {{進|すす}}む` fonde cattura e spostamento nella
+stessa azione: avanzi facendo catture lungo la strada. È una struttura che
+aderisce bene a Scarlet / Violet, dove esplorazione, raccolta e lotta si
+sovrappongono nello stesso tratto di campo.
 
 :::example_sentence
 jp: >-
@@ -205,30 +205,28 @@ translation_it: >-
 *   `ポケモンを` ➔ **Oggetto catturato** (`を` marca ciò che viene preso lungo il
     percorso).
 *   {{捕|つか}}まえながら ➔ **Azione parallela** ([～ながら](grammar:grammar-nagara)
-    lega la cattura al movimento: non prima una scena e poi l'altra, ma due
-    azioni sovrapposte).
+    lega cattura e movimento come due azioni sovrapposte nello stesso tratto).
 *   `{{灯台|とうだい}}へ {{向|む}}かおう` ➔ **Direzione condivisa** (`へ` punta il
     faro come meta; `{{向|む}}かおう` chiude con un invito a muoversi insieme).
 
 ## 3. La grotta trasforma l'aspetto in stato
 
-Nella {{入|い}}り{{江|え}}の ほら{{穴|あな}}, il lessico smette di parlare solo di
-percorso e comincia a spiegare che cosa succede al Pokémon misterioso.
-[{{姿|すがた}}](term:term-sugata) è la parola che cambia la lettura: non indica
-solo "aspetto" come apparenza esterna, ma una forma o condizione visibile che
-cambia ciò che il Pokémon può fare.
+Nella {{入|い}}り{{江|え}}の ほら{{穴|あな}}, il lessico passa dal percorso alla
+condizione del Pokémon misterioso.
+[{{姿|すがた}}](term:term-sugata) è la parola che cambia la lettura: indica una
+forma o condizione visibile che cambia ciò che il Pokémon può fare.
 
 Quando Pepper dice qualcosa come `この {{姿|すがた}}じゃ {{戦|たたか}}えねえ`, il
 centro della frase è `この {{姿|すがた}}じゃ`, cioè "in questa forma / in questo
 stato". La negazione ruvida `{{戦|たたか}}えねえ` corrisponde allo standard
-`{{戦|たたか}}えない`: non può combattere. La difficoltà non è il contenuto
-grammaticale, ma il registro contratto con cui Pepper lo formula.
+`{{戦|たたか}}えない`: la forma attuale gli impedisce di combattere. La
+difficoltà sta nel registro contratto con cui Pepper lo formula.
 
 La causa si legge in
 [{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu).
 `{{力|ちから}}` è la forza, `{{使|つか}}う` è usare, e `{{果|は}}たす` porta l'idea
-di arrivare fino in fondo. L'espressione non dice "è un po' stanco": dice che
-ha consumato la sua forza fino al limite. Subito dopo,
+di arrivare fino in fondo. L'espressione dice che ha consumato la sua forza
+fino al limite. Subito dopo,
 [へたりこむ](term:term-hetarikomu) rende fisico il risultato: le forze cedono e
 il corpo si accascia sul posto.
 
@@ -236,7 +234,7 @@ il corpo si accascia sul posto.
 src: assets/story/weakened-legendary-cave-scene.webp
 alt: "Koraidon in una forma speciale del prologo accanto al protagonista."
 caption: >-
-  Qui [{{姿|すがた}}](term:term-sugata) va letto come stato operativo: la forma visibile del Pokémon spiega perché non può ancora combattere normalmente.
+  Qui [{{姿|すがた}}](term:term-sugata) va letto come stato operativo: la forma visibile del Pokémon determina quali azioni sono disponibili in quel momento.
 :::
 
 :::example_sentence
@@ -275,14 +273,12 @@ adatta a cadute, consumo di risorse e crolli di energia.
 
 ## 4. Pepper legge la scena come controllo e cattivo presagio
 
-Con Pepper entra un altro lessico: non più solo catturare Pokémon selvatici, ma
-capire una Ball speciale e un rapporto di controllo. Il verbo
-[{{制御|せいぎょ}}する](term:term-seigyo-suru) non è sinonimo neutro di
-[{{捕獲|ほかく}}](term:term-hokaku). [{{制御|せいぎょ}}する](term:term-seigyo-suru)
-vuol dire tenere qualcosa sotto controllo, regolarne il comportamento o
-contenerne la forza. Se la Ball serve a `{{制御|せいぎょ}}するため`, il punto non è
-"ho appena preso un Pokémon normale", ma "questo oggetto gestisce una creatura
-fuori scala".
+Con Pepper entra il lessico del controllo: la scena collega una Ball speciale
+alla gestione di un Pokémon fuori scala. Il verbo
+[{{制御|せいぎょ}}する](term:term-seigyo-suru) appartiene a un frame diverso da
+[{{捕獲|ほかく}}](term:term-hokaku): tenere qualcosa sotto controllo, regolarne
+il comportamento o contenerne la forza. Se la Ball serve a
+`{{制御|せいぎょ}}するため`, l'oggetto gestisce una creatura fuori scala.
 
 :::image
 src: assets/story/pepper-control-ball.webp
@@ -337,7 +333,7 @@ translation_it: >-
 
 - `{{見|み}}れば {{見|み}}るほど` ➔ correlazione crescente: più continua l'osservazione, più cresce l'impressione.
 - `{{不思議|ふしぎ}}な ポケモンだし` ➔ valutazione più collegamento: `し` aggiunge una ragione o un elemento alla constatazione.
-- `{{先|さき}}が {{思|おも}}いやられるな` ➔ giudizio sul futuro: `先が思いやられる` e' un brutto presagio ricavato dalla scena.
+- `{{先|さき}}が {{思|おも}}いやられるな` ➔ giudizio sul futuro: `先が思いやられる` è un brutto presagio ricavato dalla scena.
 
 Accanto al dialogo, [わざマシン](term:term-waza-machine) riporta il blocco verso
 la progressione di sistema. Una `わざマシン` insegna una mossa, ma in Scarlet /

@@ -10,8 +10,8 @@ status: active
 tags: [pokemon, scarlet-violet, prologue, story, academy]
 prerequisites: []
 summary: >-
-  Leggere il passaggio dal dormitorio al Treasure Hunt: lezione sul campo,
-  Champion Rank, route e destinazione sulla mappa.
+  Leggere il passaggio dal dormitorio al Treasure Hunt: attività fuori dal
+  campus, Champion Rank, route e destinazione sulla mappa.
 ---
 
 # Dal dormitorio al Treasure Hunt: la scuola apre Paldea
@@ -32,7 +32,7 @@ passo in una [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) da fiss
 
 ## Termini chiave
 
-- [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) — lezione sul campo / attività fuori dal campus
+- [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) — attività extracurricolare / attività fuori dal campus
 - [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi) — Treasure Hunt / ricerca del proprio tesoro
 - [{{目指|めざ}}す](term:term-mezasu) — puntare a / mirare a un obiettivo
 - [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) — destinazione / punto da raggiungere
@@ -41,7 +41,7 @@ passo in una [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) da fiss
 
 - [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi)とは いっても... — anche se lo chiamiamo Treasure Hunt...
 - [チャンピオンランク](term:term-champion-rank)ってのは... — il Champion Rank sarebbe...
-- `{{授業|じゅぎょう}}を {{受|う}}けるだけじゃ ダメ` — non basta limitarsi a frequentare le lezioni
+- `{{授業|じゅぎょう}}を {{受|う}}けるだけじゃ ダメ` — non basta limitarsi a frequentare i corsi
 - [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi)を {{登録|とうろく}}してみよう — proviamo a registrare una destinazione
 
 ## Pattern grammaticali chiave
@@ -62,7 +62,7 @@ passo in una [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) da fiss
 
 ---
 
-## 1. Dal dormitorio alla lezione fuori dal campus
+## 1. Dal dormitorio all'attività fuori dal campus
 
 La scena parte da una parola tranquilla, ma molto precisa:
 [{{学生|がくせい}}{{寮|りょう}}](term:term-gakusei-ryou). Non è soltanto "la tua
@@ -72,32 +72,31 @@ il gioco ti fa dormire lì, chiude il primo blocco di orientamento e prepara il
 momento in cui l'accademia smette di essere solo un edificio.
 
 - [{{学生|がくせい}}{{寮|りょう}}](term:term-gakusei-ryou) funziona come base narrativa: è il luogo sicuro in cui il protagonista entra davvero nella vita dell'accademia. Se lo leggi come semplice "camera", perdi il valore di passaggio: da qui il gioco può far partire un giorno nuovo, con regole nuove e scala più ampia.
-- [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) è la parola che spiega perché l'uscita in Paldea resta una cosa scolastica. {{課外|かがい}} porta l'idea di "fuori dal corso o dal perimetro ordinario"; {{授業|じゅぎょう}} resta "lezione". Insieme non dicono "vacanza", ma "lezione svolta fuori": l'avventura viene autorizzata dalla scuola, non separata dalla scuola.
+- [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) è la parola che spiega perché l'uscita in Paldea resta una cosa scolastica. {{課外|かがい}} porta l'idea di "fuori dal corso o dal perimetro ordinario"; {{授業|じゅぎょう}} resta attività didattica. Insieme indicano un'attività svolta fuori dal campus: l'avventura viene autorizzata dalla scuola, non separata dalla scuola.
 
 :::example_sentence
 jp: >-
   {{学生|がくせい}}{{寮|りょう}}で {{休|やす}}んだ {{翌日|よくじつ}}、
   {{課外|かがい}}{{授業|じゅぎょう}}が {{始|はじ}}まる。
 translation_it: >-
-  Il giorno dopo aver riposato nel dormitorio, comincia la lezione sul campo.
+  Il giorno dopo aver riposato nel dormitorio, comincia l'attività fuori dal campus.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `{{学生|がくせい}}{{寮|りょう}}で` ➔ **Luogo dell'azione** (`で` marca il posto in cui avviene il riposo, quindi la scena resta dentro la vita del campus).
 *   `{{休|やす}}んだ {{翌日|よくじつ}}` ➔ **Tempo costruito dal verbo** (`{{休|やす}}んだ` modifica `{{翌日|よくじつ}}`: non un giorno qualunque, ma il giorno successivo al riposo).
-*   `{{課外|かがい}}{{授業|じゅぎょう}}が {{始|はじ}}まる` ➔ **Evento che si apre** (`が` mette in primo piano l'inizio della lezione fuori dal campus).
+*   `{{課外|かがい}}{{授業|じゅぎょう}}が {{始|はじ}}まる` ➔ **Evento che si apre** (`が` mette in primo piano l'inizio dell'attività fuori dal campus).
 
 #### ⚖️ Contrasto operativo
 
 [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) non va letto come un club
 opzionale o una commissione secondaria. Nel prologo è il nome istituzionale
-dell'uscita nel mondo: resta `{{授業|じゅぎょう}}`, ma il luogo della lezione
-diventa Paldea.
+dell'uscita nel mondo: resta attività scolastica, ma il luogo diventa Paldea.
 
 #### 🧠 Gancio cognitivo
 
-Per ricordare `{{課外|かがい}}`, immagina la lezione che varca la porta della
+Per ricordare `{{課外|かがい}}`, immagina l'attività didattica che varca la porta della
 classe. È un trucco mnemonico, non una definizione etimologica completa: serve
 a fissare l'idea di "fuori dal perimetro normale" senza staccarla da
 `{{授業|じゅぎょう}}`.
@@ -106,7 +105,7 @@ a fissare l'idea di "fuori dal perimetro normale" senza staccarla da
 src: assets/story/academy-treasure-hunt-announcement.webp
 alt: "Raduno degli studenti dell'accademia durante l'annuncio del Treasure Hunt."
 caption: >-
-  Il raduno rende visibile il valore di [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou): la scuola non sparisce, ma sposta la lezione fuori dal campus e la collega al [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi).
+  Il raduno rende visibile il valore di [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou): la scuola non sparisce, ma sposta l'attività fuori dal campus e la collega al [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi).
 :::
 
 ## 2. Treasure Hunt: un nome che corregge la lettura letterale
@@ -116,7 +115,7 @@ caption: >-
 modo più largo. Non ti sta mandando verso un solo forziere o un solo premio; ti
 sta dando un nome comune per più percorsi possibili.
 
-- [～とはいっても](grammar:grammar-to-wa-itte-mo) è il freno che impedisce la lettura troppo letterale. In una frase come [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi)とは いっても..., il parlante riprende il nome appena pronunciato e lo ridimensiona: "anche se lo chiamiamo così...". Il valore `とはいっても` ridimensiona il titolo e spiega che copre piu' cose di quanto sembri.
+- [～とはいっても](grammar:grammar-to-wa-itte-mo) è il freno che impedisce la lettura troppo letterale. In una frase come [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi)とは いっても..., il parlante riprende il nome appena pronunciato e lo ridimensiona: "anche se lo chiamiamo così...". Il valore `とはいっても` ridimensiona il titolo e spiega che copre più cose di quanto sembri.
 - [～たり ～たりする](grammar:grammar-tari-tari-suru) mostra questa ampiezza in azione. Quando il gioco elenca azioni come sfidare palestre o aiutare persone in difficoltà, たり non chiude una lista completa. Apre esempi rappresentativi: cose del tipo A, B e altre ancora, tutte possibili dentro lo stesso Treasure Hunt.
 
 :::example_sentence
@@ -188,12 +187,12 @@ jp: >-
   {{授業|じゅぎょう}}を {{受|う}}けるだけじゃ ダメで ジムバッジも
   {{集|あつ}}めないと いけない。
 translation_it: >-
-  Non basta frequentare le lezioni: devi anche raccogliere le Medaglie Palestra.
+  Non basta frequentare i corsi: devi anche raccogliere le Medaglie Palestra.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `{{授業|じゅぎょう}}を {{受|う}}けるだけ` ➔ **Azione limitata** (`だけ` restringe tutto al solo frequentare lezioni).
+*   `{{授業|じゅぎょう}}を {{受|う}}けるだけ` ➔ **Azione limitata** (`だけ` restringe tutto al solo frequentare i corsi).
 *   じゃ ダメで ➔ **Insufficienza** ([～だけじゃ ダメ](grammar:grammar-dake-ja-dame) dice che quella condizione da sola non basta).
 *   `ジムバッジも {{集|あつ}}めないと いけない` ➔ **Requisito aggiunto** (`も` aggiunge i badge; `ないと いけない` li rende necessari).
 
@@ -280,7 +279,7 @@ jp: >-
   {{課外|かがい}}{{授業|じゅぎょう}}が {{始|はじ}}まると {{学校|がっこう}}の
   {{外|そと}}で {{自由|じゆう}}に {{学|まな}}べるようになる。
 translation_it: >-
-  Quando comincia la lezione sul campo, puoi imparare liberamente fuori dalla
+  Quando comincia l'attività fuori dal campus, puoi imparare liberamente fuori dalla
   scuola.
 :::
 

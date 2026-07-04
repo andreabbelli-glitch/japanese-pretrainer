@@ -11,11 +11,11 @@ id: term-kagai-jugyou
 lemma: 課外授業
 reading: かがいじゅぎょう
 romaji: kagai jugyou
-meaning_it: lezione sul campo / attivita scolastica fuori dal campus
+meaning_it: attività extracurricolare / attività scolastica fuori dal campus
 notes_it: >-
   In Scarlet / Violet indica il programma ufficiale dell'accademia per
   l'esplorazione esterna. Quando compare `{{課外授業|か.がい.じゅ.ぎょう}}`, la scena
-  segna il passaggio da attivita interne al campus a progressione libera nel
+  segna il passaggio da attività interne al campus a progressione libera nel
   mondo di Paldea.
 :::
 :::card
@@ -25,12 +25,12 @@ entry_type: term
 entry_id: term-kagai-jugyou
 card_type: recognition
 front: '{{課外授業|か.がい.じゅ.ぎょう}}'
-back: lezione sul campo / attivita fuori dal campus
+back: attività extracurricolare / attività fuori dal campus
 example_jp: >-
   {{課外授業|か.がい.じゅ.ぎょう}}が {{始|はじ}}まると {{学校|がっこう}}の
   {{外|そと}}で {{自由|じゆう}}に {{学|まな}}べるようになる。
 example_it: >-
-  Quando comincia la lezione sul campo, puoi imparare liberamente fuori dalla
+  Quando comincia l'attività fuori dal campus, puoi imparare liberamente fuori dalla
   scuola.
 :::
 :::term
@@ -51,7 +51,7 @@ reading: チャンピオンランク
 romaji: chanpion ranku
 meaning_it: rango Campione
 notes_it: >-
-  In Paldea indica un rango ufficiale riconosciuto dalla Lega Pokemon dopo il
+  In Paldea indica un rango ufficiale riconosciuto dalla Lega Pokémon dopo il
   percorso Gym e il test finale. Quando il dialogo usa `チャンピオンランク` o
   `{{目指|めざ}}してみない`, la scena sta aprendo un obiettivo di progressione preciso,
   non un incoraggiamento generico.
@@ -64,8 +64,8 @@ romaji: jimu bajji
 meaning_it: Medaglia Palestra
 notes_it: >-
   Segna il superamento di una Palestra, non un semplice souvenir. Nel flusso di
-  Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemona e, piu avanti,
-  incidono anche su quali Pokemon forti ti obbediscono senza problemi.
+  Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemona e, più avanti,
+  incidono anche su quali Pokémon forti ti obbediscono senza problemi.
 :::
 :::card
 id: card-gym-badge-recognition
@@ -79,7 +79,7 @@ example_jp: >-
   ジムバッジが {{増|ふ}}えると {{言|い}}うことを {{聞|き}}く ポケモンも
   {{増|ふ}}えていく。
 example_it: >-
-  Quando aumentano le Medaglie Palestra, aumenta anche il numero di Pokemon che
+  Quando aumentano le Medaglie Palestra, aumenta anche il numero di Pokémon che
   ti obbediscono senza problemi.
 :::
 :::grammar
@@ -105,7 +105,7 @@ example_jp: >-
   {{強|つよ}}い トレーナーの ことだよ。
 example_it: >-
   Il rango Campione sarebbe il rango degli Allenatori forti riconosciuti dalla
-  Lega Pokemon.
+  Lega Pokémon.
 :::
 :::grammar
 id: grammar-dake-ja-dame
@@ -115,7 +115,7 @@ meaning_it: non è sufficiente limitarsi a...
 aliases: [～だけではダメ]
 notes_it: >-
   Questo pattern segnala che una condizione da sola non basta. Nei dialoghi
-  chiarisce bene i gate di progressione: fare una sola cosa non e sufficiente,
+  chiarisce bene i gate di progressione: fare una sola cosa non è sufficiente,
   serve anche qualcos'altro.
 :::
 :::card
@@ -130,7 +130,7 @@ example_jp: >-
   {{授業|じゅぎょう}}を {{受|う}}けるだけじゃ ダメで ジムバッジも
   {{集|あつ}}めないと いけない。
 example_it: >-
-  Non basta frequentare le lezioni: devi anche raccogliere le Medaglie Palestra.
+  Non basta frequentare i corsi: devi anche raccogliere le Medaglie Palestra.
 :::
 :::grammar
 id: grammar-tari-tari-suru
@@ -139,7 +139,7 @@ title: Fare cose come...
 meaning_it: fare azioni del tipo A, B, ecc.
 notes_it: >-
   Elenca esempi senza chiudere la lista. Vuol dire "fare cose come A e B",
-  lasciando intendere che ce ne possano essere altre. Non e una lista completa.
+  lasciando intendere che ce ne possano essere altre. Non è una lista completa.
 :::
 :::card
 id: card-tari-tari-suru-concept
@@ -162,7 +162,7 @@ pattern: ～とはいっても
 title: Anche se si chiama / anche se si dice
 meaning_it: anche se si dice X, in realtà...
 notes_it: >-
-  Corregge una lettura troppo letterale di quello che e stato appena detto:
+  Corregge una lettura troppo letterale di quello che è stato appena detto:
   "anche se si dice X, in realtà...". Serve a precisare o ridimensionare un
   termine precedente.
 :::

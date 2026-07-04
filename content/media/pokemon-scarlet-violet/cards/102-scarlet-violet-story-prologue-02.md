@@ -13,7 +13,7 @@ reading: ほかく
 romaji: hokaku
 meaning_it: cattura
 notes_it: >-
-  È il nome dell'attività di catturare Pokemon, non il verbo in sé. Quando un
+  È il nome dell'attività di catturare Pokémon, non il verbo in sé. Quando un
   personaggio parla di `ポケモンの {{捕獲|ほかく}}`, il gioco sta valutando come sta
   andando la raccolta di specie nuove, non solo se stai vincendo le lotte.
 :::
@@ -40,7 +40,7 @@ meaning_it: Poké Ball / Monster Ball
 notes_it: >-
   È il nome giapponese standard della Pokeball. Nel tutorial e nei dialoghi di
   viaggio segnala lo strumento concreto con cui puoi passare dalla semplice
-  lotta alla cattura di un Pokemon selvatico.
+  lotta alla cattura di un Pokémon selvatico.
 :::
 :::card
 id: card-monster-ball-recognition
@@ -54,7 +54,7 @@ example_jp: >-
   {{弱|よわ}}った タイミングで モンスターボールを {{投|な}}げると
   {{捕|つか}}まえやすい。
 example_it: >-
-  Se lanci la Pokeball quando il Pokemon è indebolito, è più facile catturarlo.
+  Se lanci la Pokeball quando il Pokémon è indebolito, è più facile catturarlo.
 :::
 :::term
 id: term-yowaraseru
@@ -64,7 +64,7 @@ romaji: yowaraseru
 meaning_it: indebolire
 notes_it: >-
   Nel contesto di cattura indica la riduzione degli HP del bersaglio fino a una
-  soglia che aumenta la probabilita di presa, senza arrivare per forza al KO.
+  soglia che aumenta la probabilità di presa, senza arrivare per forza al KO.
   Operativamente separa il turno di setup della Ball dal turno di chiusura del
   combattimento.
 :::
@@ -88,7 +88,7 @@ reading: きをつける
 romaji: ki o tsukeru
 meaning_it: fare attenzione / stare attenti
 notes_it: >-
-  Nei giochi Pokemon è un avviso operativo molto ricorrente. Quando un NPC ti
+  Nei giochi Pokémon è un avviso operativo molto ricorrente. Quando un NPC ti
   dice `{{気|き}}をつけて`, sta segnalando pericolo reale sul percorso, in battaglia
   o in una zona nuova, non una formula di cortesia vuota.
 :::
@@ -113,7 +113,7 @@ romaji: seisoku suru
 meaning_it: vivere in una zona / abitare un habitat
 notes_it: >-
   Descrive la presenza naturale di una specie in un'area. Quando compare in
-  dialoghi o Pokedex, quel luogo e marcato come habitat effettivo: li sono
+  dialoghi o Pokédex, quel luogo e marcato come habitat effettivo: li sono
   previsti incontri, rischi e risorse collegati a quella specie.
 :::
 :::card
@@ -128,18 +128,18 @@ example_jp: >-
   この {{洞窟|どうくつ}}には {{気性|きしょう}}の {{荒|あら}}い ポケモンが
   {{生息|せいそく}}している。
 example_it: >-
-  In questa grotta vivono Pokemon dal temperamento aggressivo.
+  In questa grotta vivono Pokémon dal temperamento aggressivo.
 :::
 :::term
 id: term-nakigoe
 lemma: 鳴き声
 reading: なきごえ
 romaji: nakigoe
-meaning_it: verso / richiamo di un animale o Pokemon
+meaning_it: verso / richiamo di un animale o Pokémon
 notes_it: >-
   In questo capitolo segnala un suono non ancora identificato che spinge il
   giocatore a investigare. Non è puro colore sonoro: funziona come indizio di
-  presenza e direzione di un Pokemon misterioso.
+  presenza e direzione di un Pokémon misterioso.
 :::
 :::card
 id: card-nakigoe-recognition
@@ -161,7 +161,7 @@ reading: わざマシン
 romaji: waza mashin
 meaning_it: MT / oggetto per insegnare una mossa
 notes_it: >-
-  In Scarlet / Violet una `わざマシン` serve a insegnare una mossa a un Pokemon. In
+  In Scarlet / Violet una `わざマシン` serve a insegnare una mossa a un Pokémon. In
   questo capitolo compare come premio subito dopo la grotta: non è un oggetto
   decorativo, ma un primo assaggio della personalizzazione del team e del
   fatto che in questo titolo la MT si consuma quando viene usata.
@@ -186,8 +186,8 @@ reading: すがた
 romaji: sugata
 meaning_it: aspetto / forma / stato visibile
 notes_it: >-
-  In Pokemon `{{姿|すがた}}` non descrive solo come qualcosa appare. Spesso
-  segnala una forma o uno stato che cambia il comportamento del Pokemon. Nel
+  In Pokémon `{{姿|すがた}}` non descrive solo come qualcosa appare. Spesso
+  segnala una forma o uno stato che cambia il comportamento del Pokémon. Nel
   prologo Pepper lo usa per distinguere la condizione indebolita di Koraidon /
   Miraidon dalla forma in cui può davvero combattere.
 :::
@@ -228,7 +228,7 @@ back: esaurire tutte le proprie forze
 example_jp: >-
   あの ポケモンは {{力|ちから}}を {{使|つか}}い{{果|は}}たして {{倒|たお}}れていた。
 example_it: >-
-  Quel Pokemon era crollato dopo aver esaurito completamente le sue forze.
+  Quel Pokémon era crollato dopo aver esaurito completamente le sue forze.
 :::
 :::term
 id: term-hetarikomu
@@ -261,9 +261,9 @@ reading: せいぎょする
 romaji: seigyo suru
 meaning_it: controllare / tenere sotto controllo
 notes_it: >-
-  `{{制御|せいぎょ}}する` indica gestione stabile di un Pokemon, non semplice cattura.
+  `{{制御|せいぎょ}}する` indica gestione stabile di un Pokémon, non semplice cattura.
   Nella scena con Pepper la Ball non registra una presa standard: limita e
-  contiene il Pokemon in uno stato speciale.
+  contiene il Pokémon in uno stato speciale.
 :::
 :::card
 id: card-seigyo-suru-recognition
@@ -276,7 +276,8 @@ back: controllare / tenere sotto controllo
 example_jp: >-
   その ボールは あの ポケモンを {{制御|せいぎょ}}するための ものなんだ。
 example_it: >-
-  Quella Ball serve a tenere sotto controllo quel Pokemon.
+  Quella Ball contiene quel Pokémon speciale e ne limita lo stato, invece di
+  registrare una cattura standard.
 :::
 :::term
 id: term-sainan
@@ -394,7 +395,7 @@ example_jp: >-
   {{野生|やせい}}の ポケモンを {{探|さが}}しながら {{灯台|とうだい}}へ
   {{向|む}}かおう。
 example_it: >-
-  Andiamo verso il faro mentre cerchiamo Pokemon selvatici.
+  Andiamo verso il faro mentre cerchiamo Pokémon selvatici.
 :::
 :::grammar
 id: grammar-ba-hodo
@@ -404,7 +405,7 @@ meaning_it: più succede X, più aumenta Y
 notes_it: >-
   Collega due movimenti che crescono insieme. In questo arco è perfetto per
   leggere osservazioni come `{{見|み}}れば {{見|み}}るほど`: più Pepper osserva il
-  Pokemon misterioso, più lo trova strano o degno di attenzione.
+  Pokémon misterioso, più lo trova strano o degno di attenzione.
 :::
 :::card
 id: card-ba-hodo-concept
@@ -417,7 +418,7 @@ back: più..., più...
 example_jp: >-
   {{見|み}}れば {{見|み}}るほど {{不思議|ふしぎ}}な ポケモンだ。
 example_it: >-
-  Più lo guardi, più sembra un Pokemon misterioso.
+  Più lo guardi, più sembra un Pokémon misterioso.
 :::
 :::card
 id: card-yasei-prologue-02-recognition
@@ -430,10 +431,10 @@ back: selvatico / wild
 example_jp: >-
   {{野生|やせい}}の ポケモンは {{近|ちか}}づくと バトルに なる ことが ある。
 example_it: >-
-  Con i Pokemon selvatici può iniziare una lotta se ti avvicini troppo.
+  Con i Pokémon selvatici può iniziare una lotta se ti avvicini troppo.
 notes_it: >-
   `{{野生|やせい}}` marca un incontro non scriptato. Nel flusso di gioco segnala
-  che avvicinarsi puo aprire una battaglia e avviare la finestra di cattura.
+  che avvicinarsi può aprire una battaglia e avviare la finestra di cattura.
 :::
 :::card
 id: card-tsukamaeru-prologue-02-recognition
@@ -450,7 +451,7 @@ example_it: >-
 notes_it: >-
   `{{捕|つか}}まえる` indica un obiettivo diverso dal semplice KO. In pratica il
   combattimento passa da riduzione HP a lancio Ball per aggiungere la specie al
-  team o al Pokedex.
+  team o al Pokédex.
 :::
 :::card
 id: card-te-miru-prologue-02-concept
@@ -463,7 +464,7 @@ back: 'provare a fare e vedere che succede'
 example_jp: >-
   まずは {{野生|やせい}}の ポケモンと {{戦|たたか}}ってみて！
 example_it: >-
-  Per iniziare, prova a combattere contro un Pokemon selvatico!
+  Per iniziare, prova a combattere contro un Pokémon selvatico!
 notes_it: >-
   Qui `～てみる` funziona come invito a testare subito un'azione: entrare nel
   combattimento e vedere che cosa succede. Nel flusso tutorial apre un comando
@@ -483,6 +484,6 @@ example_it: >-
   Una MT, quando la usi una volta, sparisce.
 notes_it: >-
   Qui il pattern marca un esito completato e irreversibile: la MT viene
-  consumata dopo l'uso. In altri punti della scena puo anche segnalare un
+  consumata dopo l'uso. In altri punti della scena può anche segnalare un
   risultato imprevisto o indesiderato.
 :::
