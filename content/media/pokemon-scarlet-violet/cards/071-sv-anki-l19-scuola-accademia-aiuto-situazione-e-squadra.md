@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-071-sv-anki-l19-scuola-accademia-aiuto-situazione-e-squadra
 media_id: media-pokemon-scarlet-violet
 slug: 071-sv-anki-l19-scuola-accademia-aiuto-situazione-e-squadra
-title: SV Anki L19 - Scuola, Accademia, aiuto, situazione e squadra
+title: "Accademia, aiuto e squadra: leggere chi fa cosa a Paldea"
 order: 101
 segment_ref: scarlet-violet-prestudy
 ---
@@ -21,9 +21,9 @@ id: term-anki-l19-jugyou-o-ukeru
 lemma: 授業を受ける
 reading: じゅぎょうをうける
 romaji: jugyou o ukeru
-meaning_it: seguire una lezione
+meaning_it: seguire un corso; partecipare a un'attività in aula
 notes_it: >-
-  Il verbo {{受|う}}ける letteralmente significa "ricevere" o "sottoporsi a", ed è il termine standard per indicare l'assistere a un corso o sostenere un esame. Chi insegna usa invece {{授|じゅ}}{{業|ぎょう}}をする (fare lezione).
+  Il verbo {{受|う}}ける letteralmente significa "ricevere" o "sottoporsi a", ed è il termine standard per indicare la partecipazione a un corso o a un'attività in aula, oppure il sostenere un esame. Chi insegna usa invece {{授|じゅ}}{{業|ぎょう}}をする (tenere il corso).
 level_hint: custom
 :::
 :::term
@@ -141,13 +141,13 @@ entry_id: term-anki-l19-jugyou-o-ukeru
 card_type: recognition
 front: '{{授|じゅ}}{{業|ぎょう}}を{{受|う}}ける'
 back: >-
-  じゅぎょうをうける — seguire una lezione. La lezione ({{授|じゅ}}{{業|ぎょう}}) è l'oggetto diretto (を) e il verbo ricevere ({{受|う}}ける) indica la partecipazione come studente.
+  じゅぎょうをうける — seguire un corso / partecipare a un'attività in aula. {{授|じゅ}}{{業|ぎょう}} è l'oggetto diretto (を) e il verbo ricevere ({{受|う}}ける) indica la partecipazione come studente.
 example_jp: >-
   アカデミーで {{歴|れき}}{{史|し}}の {{授|じゅ}}{{業|ぎょう}}を{{受|う}}けると、パルデアの ことが よく わかる。
 example_it: >-
-  Se segui una lezione di storia all'Accademia, capisci meglio Paldea.
+  Se segui un corso di storia all'Accademia, capisci meglio Paldea.
 notes_it: >-
-  Il verbo {{受|う}}ける letteralmente significa "ricevere" o "sottoporsi a", ed è il termine standard per indicare l'assistere a un corso o sostenere un esame. Chi insegna usa invece {{授|じゅ}}{{業|ぎょう}}をする (fare lezione).
+  Il verbo {{受|う}}ける letteralmente significa "ricevere" o "sottoporsi a", ed è il termine standard per indicare la partecipazione a un corso o a un'attività in aula, oppure il sostenere un esame. Chi insegna usa invece {{授|じゅ}}{{業|ぎょう}}をする (tenere il corso).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-19]
 :::
 :::card

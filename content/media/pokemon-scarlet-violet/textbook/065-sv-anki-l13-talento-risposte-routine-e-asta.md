@@ -67,7 +67,7 @@ routine e conseguenze.
 
 ## Etichette da riconoscere
 
-- [アカデミー](term:term-v020-akademii) — cornice scolastica di lezioni, quiz e docenti
+- [アカデミー](term:term-v020-akademii) — cornice scolastica di corsi, quiz e docenti
 - パルデア — regione in cui esplorazione, santuario e routine si intrecciano
 - Porto Marinada — area delle aste, dove l'offerta diventa risultato
 
@@ -85,7 +85,7 @@ usato o in quale stadio si trova un cambiamento di battaglia.
     una statistica numerica. Il frame più leggibile è
     `{{才能|さいのう}}がある`: `が` presenta il talento come qualcosa che "c'è" in
     una persona, in un Allenatore o in un modo di combattere. Se il testo dice
-    `{{才能|さいのう}}がない`, `才能がない` presenta assenza di talento come qualita' della persona.
+    `{{才能|さいのう}}がない`, `才能がない` presenta assenza di talento come qualità della persona.
 *   [{{使|つか}}える](term:term-anki-l13-tsukaeru) è la forma potenziale di
     `{{使|つか}}う`, quindi parte dall'idea di "poter usare". Nei menu può
     indicare che uno strumento funziona su un bersaglio; nel parlato può

@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-successo-azioni-e-fantasia
 media_id: media-pokemon-scarlet-violet
 slug: 069-sv-anki-l17-asta-successo-azioni-e-fantasia
-title: SV Anki L17 - Asta, successo, azioni e fantasia
+title: "Aste, scoperte e inviti: azioni che fanno avanzare Paldea"
 order: 99
 segment_ref: scarlet-violet-prestudy
 ---
@@ -182,7 +182,7 @@ entry_id: term-anki-l17-yuushou
 card_type: recognition
 front: '{{優|ゆう}}{{勝|しょう}}'
 back: >-
-  ゆうしょう — ゆうしょう — vittoria finale, trionfo; indica il primo posto complessivo in una competizione organizzata o in un torneo.
+  ゆうしょう — vittoria finale, trionfo; indica il primo posto complessivo in una competizione organizzata o in un torneo.
 example_jp: >-
   ポケモンリーグで {{優|ゆう}}{{勝|しょう}}して、チャンピオンになる。
 example_it: >-

@@ -78,7 +78,7 @@ translation_it: >-
 
 `ご{{存知|ぞんじ}}` non sostituisce liberamente `{{知|し}}っている`. Se vuoi dire "lo so" di te stesso, `ご{{存知|ぞんじ}}です` risulta fuori posto perché mette rispetto su un'azione propria.
 
-Accanto al sapere formale, [{{理解|りかい}}](term:term-anki-l18-rikai) sposta il fuoco sul processo mentale. Come parola compatta indica una comprensione articolata, adatta a lezioni, regole e punti di vista da assimilare. In una frase con {{理解|りかい}}できた, non stai solo dicendo che qualcosa "ti è chiaro": stai verificando se il contenuto è stato afferrato in modo ragionato.
+Accanto al sapere formale, [{{理解|りかい}}](term:term-anki-l18-rikai) sposta il fuoco sul processo mentale. Come parola compatta indica una comprensione articolata, adatta a corsi, regole e punti di vista da assimilare. In una frase con {{理解|りかい}}できた, non stai solo dicendo che qualcosa "ti è chiaro": stai verificando se il contenuto è stato afferrato in modo ragionato.
 
 :::example_sentence
 jp: >-
@@ -93,7 +93,7 @@ translation_it: >-
 *   `{{理解|りかい}} できた` ➔ **Comprensione riuscita** (`できた` valuta il risultato: la comprensione è riuscita o no).
 *   `かな` ➔ **Chiusura morbida** (la domanda controlla lo stato del destinatario senza suonare come interrogatorio secco).
 
-[{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) appartiene allo stesso registro riflessivo. `興味深い` segnala qualcosa che merita indagine. È naturale nelle lezioni di storia, nelle leggende di Paldea e nei commenti di chi osserva un fenomeno da studioso.
+[{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) appartiene allo stesso registro riflessivo. `興味深い` segnala qualcosa che merita indagine. È naturale nei corsi di storia, nelle leggende di Paldea e nei commenti di chi osserva un fenomeno da studioso.
 
 :::example_sentence
 jp: >-
@@ -150,7 +150,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `チャンピオンランクでの` ➔ **Contesto trasformato in attributo** (`での` rende il rango il campo in cui si immagina l'azione futura).
-*   `{{活躍|かつやく}}を` ➔ **Oggetto dell'aspettativa** (`活躍を` e' il contributo attivo atteso da qualcuno).
+*   `{{活躍|かつやく}}を` ➔ **Oggetto dell'aspettativa** (`活躍を` è il contributo attivo atteso da qualcuno).
 *   `{{期待|きたい}}して いる` ➔ **Aspettativa in corso** (il parlante ti sta collocando dentro una prospettiva di crescita).
 
 [{{合格者|ごうかくしゃ}}](term:term-anki-l18-goukakusha) è più istituzionale. Indica la persona che ha superato una prova e quindi possiede quello status: "chi è stato promosso / ammesso". In una schermata o in un dialogo di accesso, questa parola decide chi può entrare, continuare o ricevere il prossimo permesso.

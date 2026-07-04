@@ -74,7 +74,7 @@ porta dentro un'asta, [{{発|はっ}}{{見|けん}}](term:term-anki-l17-hakken)
 porta alla luce qualcosa, [{{補|ほ}}{{給|きゅう}}](term:term-anki-l17-hokyuu)
 sposta l'attenzione sulle risorse da reintegrare.
 
-- [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) `入札` e' l'atto di fare un'offerta dentro l'asta. In una frase come `セリで{{入|にゅう}}{{札|さつ}}する`,
+- [{{入|にゅう}}{{札|さつ}}](term:term-anki-l17-nyuusatsu) è l'atto di fare un'offerta dentro l'asta. In una frase come `セリで{{入|にゅう}}{{札|さつ}}する`,
   [{{競|せ}}り](term:term-anki-l08-seri) è l'evento dell'asta, で dà la
   cornice dell'azione e [{{入|にゅう}}{{札|さつ}}する](term:term-anki-l17-nyuusatsu)
   dice che il giocatore partecipa con un rilancio concreto.
@@ -166,8 +166,8 @@ translation_it: >-
     nell'ambiente scolastico).
 *   `とても {{優|ゆう}}{{秀|しゅう}}な` ➔ **Aggettivo qualificante** (`とても`
     intensifica; `な` collega l'aggettivo al nome che segue).
-*   `{{生|せい}}{{徒|と}}ですね` ➔ **Constatazione cortese** (`ですね` non chiede
-    una conferma forte: accompagna il riconoscimento della qualità).
+*   `{{生|せい}}{{徒|と}}ですね` ➔ **Constatazione cortese** (`ですね` accompagna
+    il riconoscimento della qualità con tono condiviso).
 
 :::example_sentence
 jp: >-
@@ -178,8 +178,8 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `ポケモンリーグで` ➔ **Campo della competizione** (`で` non indica solo un
-    luogo fisico, ma la cornice in cui si conquista il risultato).
+*   `ポケモンリーグで` ➔ **Campo della competizione** (`で` marca la cornice in
+    cui si conquista il risultato).
 *   `{{優|ゆう}}{{勝|しょう}}して` ➔ **Trionfo in sequenza** (`{{優|ゆう}}{{勝|しょう}}する`
     in forma in `-te`: la vittoria apre la conseguenza successiva).
 *   `チャンピオンになる` ➔ **Cambio di stato** (`になる` dice che dopo il trionfo

@@ -74,10 +74,9 @@ quale legame viene chiamato in causa e quanto è profonda l'esperienza descritta
 
 ## 1. Corpo e nervosismo: quando la prova si sente addosso
 
-Prima di una lotta, di un test o di una scena importante, il gioco può passare
-dal corpo visibile allo stato emotivo. In italiano diciamo facilmente
-"tensione" sia per i muscoli sia per l'ansia; in giapponese questi due piani
-vanno distinti con più attenzione.
+Prima di una lotta o di un test, il gioco può passare dal corpo visibile allo
+stato emotivo. In italiano diciamo facilmente "tensione" sia per i muscoli sia
+per l'ansia; in giapponese questi due piani vanno distinti con più attenzione.
 
 *   [{{筋肉|きんにく}}](term:term-anki-l16-kinniku) resta sul piano fisico:
     indica i muscoli come parte del corpo allenabile, quindi funziona in frasi
@@ -127,8 +126,8 @@ partendo e che il parlante sta inquadrando il gruppo come destinatario del
 discorso.
 
 *   [{{今|いま}}から](term:term-anki-l16-imakara) unisce {{今|いま}}, "ora",
-    e `から`, "da". In un annuncio non vale solo come "adesso": marca una linea
-    di partenza. Se compare prima di un test, una lezione o una spiegazione, il
+    e `から`, "da". In un annuncio marca una linea di partenza immediata. Se
+    compare prima di un test, di un'attività in aula o di una spiegazione, il
     testo sta dicendo che l'evento comincia da quel momento preciso.
 *   [{{諸君|しょくん}}](term:term-anki-l16-shokun) trasforma il gruppo in
     platea. È una forma solenne o autorevole per rivolgersi a più persone,
@@ -162,8 +161,8 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{生徒|せいと}}{{諸君|しょくん}}` ➔ **Allocuzione al gruppo**: non è una
-    descrizione sugli studenti, ma un richiamo rivolto agli studenti.
+*   `{{生徒|せいと}}{{諸君|しょくん}}` ➔ **Allocuzione al gruppo**: un richiamo
+    diretto rivolto agli studenti.
 *   `{{自分|じぶん}}だけの {{宝|たから}}を` ➔ **Oggetto personale**: "un tesoro
     soltanto vostro", quindi qualcosa che riguarda il percorso individuale.
 *   `{{見|み}}つけてください` ➔ **Richiesta cortese**: l'autorità non sta solo
@@ -200,9 +199,10 @@ ti dicono dove va appoggiato il significato.
     profondo: il testo dice che il rapporto ha radici forti o una connessione
     intensa.
 *   [{{人生|じんせい}}](term:term-anki-l16-jinsei) restringe "vita" alla vita
-    umana come percorso biografico. Non è `{{命|いのち}}` nel senso di vita
-    biologica, e non è `{{生|せい}}{{活|かつ}}`, la vita quotidiana: nei discorsi
-    dell'Accademia parla di crescita, scelte, futuro e memoria personale.
+    umana come percorso biografico. Nei discorsi dell'Accademia parla di
+    crescita, scelte, futuro e memoria personale; per la vita biologica guarda
+    a `{{命|いのち}}`, mentre per la vita quotidiana guarda a
+    `{{生|せい}}{{活|かつ}}`.
 
 :::example_sentence
 jp: >-
@@ -262,17 +262,16 @@ diretta, quantità ampia e relazione tra persone dello stesso ruolo.
 
 *   [{{体験|たいけん}}](term:term-anki-l16-taiken) indica un'esperienza vissuta
     in prima persona, con il corpo o sul campo. Il primo kanji `{{体|たい}}` ti
-    orienta: L'espressione indica sapere per esperienza diretta. Per questo
+    orienta: l'espressione indica sapere per esperienza diretta. Per questo
     funziona bene con attività extracurricolari, esplorazione e prove pratiche.
 *   [{{多|おお}}く](term:term-anki-l16-ooku) nasce da {{多|おお}}い, ma nel
     frame `{{多|おお}}くの + nome` prepara un referente plurale o ampio:
-    `{{多|おお}}くのポケモン` non dice "i Pokémon sono molti" come predicato;
-    dice "molti Pokémon" prima di continuare la frase. La posizione prima del
-    nome è il segnale da guardare.
+    `{{多|おお}}くのポケモン` presenta "molti Pokémon" prima di continuare la
+    frase. La posizione prima del nome è il segnale da guardare.
 *   [{{同士|どうし}}](term:term-anki-l16-doushi) si attacca a un nome e crea
     un rapporto orizzontale: `ライバル{{同士|どうし}}` vuol dire "tra rivali",
-    non "un rivale e basta". Il suffisso sposta l'attenzione dal singolo
-    individuo alla relazione tra persone che condividono lo stesso ruolo.
+    con l'attenzione sulla relazione tra persone che condividono lo stesso
+    ruolo.
 
 :::example_sentence
 jp: >-
@@ -317,8 +316,8 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `ライバル{{同士|どうし}}` ➔ **Relazione tra pari**: il suffisso non indica un
-    singolo rivale, ma il rapporto tra persone nello stesso ruolo.
+*   `ライバル{{同士|どうし}}` ➔ **Relazione tra pari**: il suffisso evidenzia il
+    rapporto tra persone nello stesso ruolo.
 *   `{{全力|ぜんりょく}}で` ➔ **Modo dell'azione**: la lotta va fatta "con tutta
     la forza".
 *   `バトルしようぜ` ➔ **Invito energico**: `しよう` propone l'azione, `ぜ`
@@ -356,7 +355,7 @@ translation_it: >-
 jp: >-
   {{今|いま}}から {{諸君|しょくん}}に、{{大切|たいせつ}}なことを {{話|はな}}します。
 translation_it: >-
-  Da adesso vi parlerò di una cosa importante.
+  Da adesso vi parlerò di ciò che conta per il vostro percorso.
 :::
 
 :::example_sentence

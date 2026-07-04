@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acquisti-errori-e-memoria
 media_id: media-pokemon-scarlet-violet
 slug: 067-sv-anki-l15-media-acquisti-errori-e-memoria
-title: SV Anki L15 - Media, acquisti, errori e memoria
+title: Video, acquisti e memoria nelle scene di Paldea
 order: 97
 segment_ref: scarlet-violet-prestudy
 ---
@@ -43,7 +43,7 @@ reading: ふせいかい
 romaji: fuseikai
 meaning_it: risposta sbagliata
 notes_it: >-
-  {{不|ふ}}{{正|せい}}{{解|かい}} è l'esatto contrario di {{正|せい}}{{解|かい}}, “risposta corretta”. Il prefisso {{不|ふ}} ha una funzione di negazione, simile all'italiano “in-” o “s-”. Durante lezioni ed esami dell'Accademia, questo termine appare quando una risposta è sbagliata.
+  {{不|ふ}}{{正|せい}}{{解|かい}} è l'esatto contrario di {{正|せい}}{{解|かい}}, “risposta corretta”. Il prefisso {{不|ふ}} ha una funzione di negazione, simile all'italiano “in-” o “s-”. Durante corsi ed esami dell'Accademia, questo termine appare quando una risposta è sbagliata.
 level_hint: custom
 :::
 :::term
@@ -171,7 +171,7 @@ example_jp: >-
 example_it: >-
   La risposta del test era sbagliata.
 notes_it: >-
-  {{不|ふ}}{{正|せい}}{{解|かい}} è l'esatto contrario di {{正|せい}}{{解|かい}}, “risposta corretta”. Il prefisso {{不|ふ}} ha una funzione di negazione, simile all'italiano “in-” o “s-”. Durante lezioni ed esami dell'Accademia, questo termine appare quando una risposta è sbagliata.
+  {{不|ふ}}{{正|せい}}{{解|かい}} è l'esatto contrario di {{正|せい}}{{解|かい}}, “risposta corretta”. Il prefisso {{不|ふ}} ha una funzione di negazione, simile all'italiano “in-” o “s-”. Durante corsi ed esami dell'Accademia, questo termine appare quando una risposta è sbagliata.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::
 :::card

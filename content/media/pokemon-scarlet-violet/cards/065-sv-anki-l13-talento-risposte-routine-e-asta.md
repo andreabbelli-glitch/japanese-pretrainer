@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-065-sv-anki-l13-talento-risposte-routine-e-asta
 media_id: media-pokemon-scarlet-violet
 slug: 065-sv-anki-l13-talento-risposte-routine-e-asta
-title: SV Anki L13 - Talento, risposte, routine e asta
+title: Talento, risposte e routine tra Accademia, lotte e aste
 order: 95
 segment_ref: scarlet-violet-prestudy
 ---

@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi-gruppi-e-invii
 media_id: media-pokemon-scarlet-violet
 slug: 066-sv-anki-l14-esami-paesi-gruppi-e-invii
-title: SV Anki L14 - Esami, paesi, gruppi e invii
+title: Esami, gruppi e trasferimenti nelle scene di Paldea
 order: 96
 segment_ref: scarlet-violet-prestudy
 ---

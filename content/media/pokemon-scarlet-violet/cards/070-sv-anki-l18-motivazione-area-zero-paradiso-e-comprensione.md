@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione-area-zero-paradiso-e-comprensione
 media_id: media-pokemon-scarlet-violet
 slug: 070-sv-anki-l18-motivazione-area-zero-paradiso-e-comprensione
-title: SV Anki L18 - Motivazione, Area Zero, paradiso e comprensione
+title: "Motivazione, Area Zero e comprensione: parlato formale, prove e leggende"
 order: 100
 segment_ref: scarlet-violet-prestudy
 ---
@@ -54,7 +54,7 @@ reading: かつやく
 romaji: katsuyaku
 meaning_it: distinguersi; avere un ruolo attivo; successo/prestazione notevole
 notes_it: >-
-  `活躍` indica distinguersi attivamente con un ruolo visibile. Il termine è spesso impiegato da presidi, professori e leader per augurare o lodare l'impatto positivo di un alunno nel mondo pokemon.
+  `活躍` indica distinguersi attivamente con un ruolo visibile. Il termine è spesso impiegato da presidi, professori e leader per augurare o lodare l'impatto positivo di un alunno nel mondo Pokémon.
 level_hint: custom
 :::
 :::term
@@ -199,7 +199,7 @@ example_jp: >-
 example_it: >-
   Mi aspetto grandi cose da te nel rango Campione.
 notes_it: >-
-  `活躍` indica distinguersi attivamente con un ruolo visibile. Il termine è spesso impiegato da presidi, professori e leader per augurare o lodare l'impatto positivo di un alunno nel mondo pokemon.
+  `活躍` indica distinguersi attivamente con un ruolo visibile. Il termine è spesso impiegato da presidi, professori e leader per augurare o lodare l'impatto positivo di un alunno nel mondo Pokémon.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-18]
 :::
 :::card
@@ -210,7 +210,7 @@ entry_id: term-anki-l18-kyoumibukai
 card_type: recognition
 front: '{{興|きょう}}{{味|み}}{{深|ぶか}}い'
 back: >-
-  きょうみぶかい — molto interessante. Aggettivo in -i che combina {{興|きょう}}{{味|み}} (interesse) e {{深|ふか}}い (profondo), descrivendo una curiosita' intellettuale forte per un fenomeno.
+  きょうみぶかい — molto interessante. Aggettivo in -i che combina {{興|きょう}}{{味|み}} (interesse) e {{深|ふか}}い (profondo), descrivendo una curiosità intellettuale forte per un fenomeno.
 example_jp: >-
   パルデアの {{伝|でん}}{{承|しょう}}は とても {{興|きょう}}{{味|み}}{{深|ぶか}}い ね。
 example_it: >-

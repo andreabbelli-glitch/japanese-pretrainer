@@ -65,10 +65,9 @@ succede, entro quale limite e verso dove si muove qualcosa.
 
 ## 1. Limiti e quantità: quando il gioco mette un confine
 
-Nelle sfide a tempo e nelle istruzioni di sistema, il giapponese spesso non
-dice soltanto "fai questa cosa": dice quanto margine hai. Qui entrano in gioco
-parole che trasformano numeri, conteggi e oggetti della scena in vincoli
-leggibili.
+Nelle sfide a tempo e nelle istruzioni di sistema, il giapponese può mettere
+subito in primo piano il margine disponibile. Qui entrano in gioco parole che
+trasformano numeri, conteggi e oggetti della scena in vincoli leggibili.
 
 - [{{以|い}}{{内|ない}}](term:term-anki-l14-inai) si attacca dopo una quantità,
   un tempo o una distanza e chiude il confine massimo. `{{10分以内|じゅっぷんいない}}`
@@ -78,7 +77,7 @@ leggibili.
 - [{{計|けい}}{{算|さん}}](term:term-anki-l14-keisan) indica il calcolo come
   procedura o risultato mentale. Da solo è un sostantivo; con `する` diventa
   `{{計|けい}}{{算|さん}}する`, calcolare. In una battaglia può riferirsi a danni,
-  turni, statistiche o conseguenze di una scelta: Qui il termine indica un valore astratto: turni, statistiche o conseguenze di una scelta.
+  turni, statistiche o conseguenze di una scelta.
 - [{{花|はな}}](term:term-anki-l14-hana) è semplice come parola, ma la particella
   decide il suo ruolo nella frase. Con `を` diventa ciò che trovi, raccogli o
   mostri; con `に` può diventare il punto verso cui va un'azione. In una scena
@@ -124,10 +123,10 @@ descrizione o una procedura ufficiale.
   essere la prova per ottenere un riconoscimento. `{{試|し}}{{験|けん}}を{{受|う}}ける`
   significa sostenere un esame, mentre `{{試|し}}{{験|けん}}をはじめます` annuncia
   l'avvio della procedura.
-- [{{視|し}}{{察|さつ}}](term:term-anki-l14-shisatsu) ha un tono più ufficiale di
-  un semplice "guardare". Qualcuno con autorità va a controllare una struttura,
-  un'attività o una situazione. In `ジムの{{視|し}}{{察|さつ}}`, `の` collega il
-  sopralluogo alla Palestra: non è curiosità generica, è verifica sul posto.
+- [{{視|し}}{{察|さつ}}](term:term-anki-l14-shisatsu) porta un tono ufficiale:
+  qualcuno con autorità va a controllare una struttura, un'attività o una
+  situazione. In `ジムの{{視|し}}{{察|さつ}}`, `の` collega il sopralluogo alla
+  Palestra e segnala una verifica sul posto.
 - [{{国|くに}}](term:term-anki-l14-kuni) allarga la scena oltre il luogo
   immediato. Con `{{遠|とお}}い{{国|くに}}から`, la frase segnala provenienza da un
   paese lontano: utile quando il gioco parla di scambi, personaggi stranieri o
@@ -241,7 +240,7 @@ destinazione: il Pokémon non si sposta da solo, viene trasferito.
   {{送|おく}}る, la frase mette in primo piano l'atto di trasferimento.
 - `ボックスに{{送|おく}}る` è un blocco molto leggibile nei sistemi Pokémon:
   l'oggetto della frase lascia la posizione corrente e viene mandato nel Box.
-  Il dettaglio importante e' il cambiamento di destinazione o stato.
+  Il dettaglio importante è il cambiamento di destinazione o stato.
 - Lo stesso verbo può funzionare anche fuori dai menu. In una scena narrativa
   [{{送|おく}}る](term:term-anki-l14-okuru) può mandare un messaggio, una persona
   o un oggetto; nel sistema di gioco, spesso sposta dati o Pokémon verso una

@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensione-fiducia-e-vita
 media_id: media-pokemon-scarlet-violet
 slug: 068-sv-anki-l16-corpo-tensione-fiducia-e-vita
-title: SV Anki L16 - Corpo, tensione, fiducia e vita
+title: Corpo, tensione e fiducia nei discorsi di Paldea
 order: 98
 segment_ref: scarlet-violet-prestudy
 ---

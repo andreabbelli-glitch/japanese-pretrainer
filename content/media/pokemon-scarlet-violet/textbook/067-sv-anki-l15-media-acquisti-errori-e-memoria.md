@@ -133,7 +133,7 @@ translation_it: >-
 
 *   `ジムバッジを` ➔ **Oggetto raccolto** (`を` marca ciò che entra nel progresso del giocatore).
 *   `{{8|やっ}}つ` ➔ **Quantità generica** (conta otto unità del referente appena nominato, senza un classificatore più tecnico).
-*   `{{集|あつ}}めた` ➔ **Risultato raggiunto** (passato di `{{集|あつ}}める`, raccogliere: la quantità non è un piano futuro, è già stata raggiunta).
+*   `{{集|あつ}}めた` ➔ **Risultato raggiunto** (passato di `{{集|あつ}}める`, raccogliere: la quantità è già stata raggiunta).
 
 :::example_sentence
 jp: >-
@@ -152,7 +152,7 @@ translation_it: >-
 
 *   `ドアを{{開|あ}}ける` ➔ apertura fisica: porta, contenitore, coperchio, accesso concreto.
 *   `メニューを{{開|ひら}}く` ➔ apertura di una schermata: non stai spostando un oggetto, stai facendo apparire una vista.
-*   `{{買|か}}いものをする` ➔ azione di negozio: `買いものをする` colloca il personaggio nell'attivita' di negozio.
+*   `{{買|か}}いものをする` ➔ azione di negozio: `買いものをする` colloca il personaggio nell'attività di negozio.
 
 #### 🧠 Gancio cognitivo
 
@@ -160,7 +160,7 @@ translation_it: >-
 
 ## 3. Accademia e ruoli: quando il testo chiude un esito
 
-Le lezioni dell'Accademia e i dialoghi sui ruoli usano parole che chiudono uno stato: una risposta è corretta o no, una persona continua o si ritira. Il giapponese separa bene l'esito classificato dall'azione di sbagliare.
+I corsi dell'Accademia e i dialoghi sui ruoli usano parole che chiudono uno stato: una risposta è corretta o no, una persona continua o si ritira. Il giapponese separa bene l'esito classificato dall'azione di sbagliare.
 
 *   [{{不正解|ふせいかい}}](term:term-anki-l15-fuseikai) si legge bene se vedi prima il nucleo {{正解|せいかい}}: risposta corretta. Il prefisso {{不|ふ}} nega quel valore, quindi trasforma la risposta in "non corretta". In una domanda dell'Accademia, il termine non giudica la persona: classifica l'esito della risposta.
 *   [{{引退|いんたい}}](term:term-anki-l15-intai) indica il ritiro da un ruolo attivo, professionale o agonistico. Con する diventa azione, e il ruolo lasciato può prendere を: トレーナーを{{引退|いんたい}}する. In un dialogo su Allenatori o Capipalestra, `引退する` significa lasciare un ruolo attivo, professionale o agonistico.

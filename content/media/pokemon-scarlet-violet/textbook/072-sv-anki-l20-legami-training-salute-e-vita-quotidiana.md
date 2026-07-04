@@ -103,8 +103,8 @@ translation_it: >-
   gruppo, mentre `を` lo mette come bersaglio dell'azione successiva).
 - `{{見|み}}{{捨|す}}てる` ➔ **Abbandono consapevole** ("vedere e lasciare":
   qualcuno viene riconosciuto in difficoltà e poi lasciato indietro).
-- `わけにはいかない` ➔ **Impossibilità morale** (non è "non riesco" in
-  senso fisico, ma "non posso permettermi di farlo").
+- `わけにはいかない` ➔ **Impossibilità morale** ("non posso permettermi di
+  farlo", per ragioni pratiche o etiche).
 
 #### ⚖️ Contrasto operativo
 
@@ -150,9 +150,10 @@ Dopo il legame viene la preparazione. Nei dialoghi di Paldea un allenatore può
 allenarsi in vista di una prova, bloccarsi davanti a una scelta di squadra,
 oppure leggere una soglia di PS come punto in cui la battaglia cambia ritmo.
 
-- [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun) non indica pratica generica.
-  `{{特|とく}}` porta l'idea di speciale e `{{訓|くん}}` quella di addestramento:
-  insieme formano un training intensivo, spesso orientato a una prova concreta.
+- [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun) indica un addestramento
+  speciale. `{{特|とく}}` porta l'idea di speciale e `{{訓|くん}}` quella di
+  addestramento: insieme formano un training intensivo, spesso orientato a una
+  prova concreta.
   La collocazione più naturale è
   [{{特|とっ}}{{訓|くん}}](term:term-anki-l20-tokkun)をする, "fare allenamento
   speciale".
@@ -290,14 +291,14 @@ incontrano.
 jp: >-
   アカデミーの {{保健|ほけん}}の {{授業|じゅぎょう}}では、ポケモンと {{人|ひと}}の {{体|からだ}}の ことを {{学|まな}}ぶ。
 translation_it: >-
-  Nelle lezioni di educazione sanitaria dell'Accademia si studia il corpo delle persone e dei Pokémon.
+  Nei corsi di educazione sanitaria dell'Accademia si studia il corpo delle persone e dei Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
 
 - `アカデミーの {{保健|ほけん}}の {{授業|じゅぎょう}}では` ➔ **Cornice scolastica**
-  (`では` presenta il contesto-tema: "quanto alle lezioni di educazione
-  sanitaria dell'Accademia").
+  (`では` presenta il contesto-tema: "quanto ai corsi di educazione sanitaria
+  dell'Accademia").
 - `ポケモンと {{人|ひと}}の {{体|からだ}}の ことを` ➔ **Oggetto dello studio**
   (`のこと` allarga il bersaglio a "le cose riguardanti" il corpo).
 - `{{学|まな}}ぶ` ➔ **Studio strutturato** (non è solo leggere un messaggio:

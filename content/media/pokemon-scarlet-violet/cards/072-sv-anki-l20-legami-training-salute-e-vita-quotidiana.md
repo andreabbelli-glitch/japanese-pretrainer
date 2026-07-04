@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-training-salute-e-vita-quotidiana
 media_id: media-pokemon-scarlet-violet
 slug: 072-sv-anki-l20-legami-training-salute-e-vita-quotidiana
-title: SV Anki L20 - Legami, training, salute e vita quotidiana
+title: Legami, training e vita quotidiana a Paldea
 order: 102
 segment_ref: scarlet-violet-prestudy
 ---
@@ -254,7 +254,7 @@ back: >-
 example_jp: >-
   アカデミーの {{保|ほ}}{{健|けん}}の {{授|じゅ}}{{業|ぎょう}}では、ポケモンと {{人|ひと}}の {{体|からだ}}の ことを {{学|まな}}ぶ。
 example_it: >-
-  Nelle lezioni di educazione sanitaria dell'Accademia si studia il corpo delle persone e dei Pokémon.
+  Nei corsi di educazione sanitaria dell'Accademia si studia il corpo delle persone e dei Pokémon.
 notes_it: >-
   La radice {{保|ほ}} significa 'preservare', mentre {{健|けん}} indica la 'salute robusta'. `保健` lega la salute come materia alla `保健室`, lo spazio scolastico della cura.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]

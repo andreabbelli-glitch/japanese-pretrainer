@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-19]
 prerequisites: []
 summary: >-
-  Leggere lezioni, aiuto e gruppi a Paldea distinguendo chi partecipa, chi viene aiutato e chi è incluso.
+  Leggere corsi, aiuto e gruppi a Paldea distinguendo chi partecipa, chi viene aiutato e chi è incluso.
 ---
 
 # Accademia, aiuto e squadra: leggere chi fa cosa a Paldea
 
-Dentro l'Accademia di *Pokémon Scarlet & Violet*, il giapponese cambia registro senza avvisare troppo: una frase può suonare come discorso ufficiale del preside, come battuta pratica tra compagni o come report su ciò che sta succedendo fuori dal campus. La stessa scena può nominare una lezione, una difficoltà, un gruppo di studenti o una squadra del Team Star.
+Dentro l'Accademia di *Pokémon Scarlet & Violet*, il giapponese cambia registro senza avvisare troppo: una frase può suonare come discorso ufficiale del preside, come battuta pratica tra compagni o come report su ciò che sta succedendo fuori dal campus. La stessa scena può nominare un corso, una difficoltà, un gruppo di studenti o una squadra del Team Star.
 
 Le parole di questo blocco servono a fare tre letture in tempo reale: chi riceve l'insegnamento, chi viene sollevato da un problema, e quanto è ampio il gruppo coinvolto. Quando riconosci [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru), [{{助|たす}}かる](term:term-anki-l19-tasukaru) o [{{全員|ぜんいん}}](term:term-anki-l19-zenin), non stai solo traducendo una gloss: stai decidendo da quale lato della scena guardare l'azione.
 
@@ -34,7 +34,7 @@ Le parole di questo blocco servono a fare tre letture in tempo reale: chi riceve
 
 ## Espressioni ricorrenti
 
-- [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) — seguire o frequentare una lezione
+- [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) — seguire o frequentare un corso
 - [{{親愛|しんあい}}](term:term-anki-l19-shinai)なる — caro / amato, in indirizzi formali
 - [{{正直|しょうじき}}](term:term-anki-l19-shoujiki)に{{言|い}}うと — a dire il vero / francamente
 
@@ -63,44 +63,44 @@ Le parole di questo blocco servono a fare tre letture in tempo reale: chi riceve
 
 ---
 
-## 1. Accademia: età, lezioni e tono pubblico
+## 1. Accademia: età, corsi e tono pubblico
 
 Quando la scena entra in aula, il giapponese separa subito tre cose: l'impressione sulle persone, il ruolo dello studente e il tono con cui un adulto si rivolge al gruppo. L'Accademia non è solo un luogo: è una cornice linguistica in cui le battute diventano più scolastiche, istituzionali o cerimoniali.
 
 *   [{{若|わか}}い](term:term-anki-l19-wakai) descrive una persona giovane, o una persona che agli occhi del parlante sembra ancora inesperta. In {{若|わか}}い{{先生|せんせい}}, il focus è sull'età o sull'impressione del docente; in una battuta più valutativa può suggerire "ancora acerbo". Non usarlo per oggetti appena ottenuti: una ricetta nuova, una mossa nuova o una città appena scoperta richiedono normalmente {{新|あたら}}しい, non [{{若|わか}}い](term:term-anki-l19-wakai).
-*   [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) mette lo studente dal lato di chi riceve l'insegnamento. {{授業|じゅぎょう}} è la lezione, を marca ciò che arriva verso il soggetto, e {{受|う}}ける qui non è "prendere un oggetto": è partecipare come destinatario. Se la frase parla del professore, la costruzione cambia: chi tiene la lezione fa {{授業|じゅぎょう}}をする o insegna qualcosa, non la "riceve".
+*   [{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) mette lo studente dal lato di chi riceve l'insegnamento. {{授業|じゅぎょう}} è il corso o l'attività in aula, を marca ciò che arriva verso il soggetto, e {{受|う}}ける qui non è "prendere un oggetto": è partecipare come destinatario. Se la frase parla del professore, la costruzione cambia: chi tiene il corso fa {{授業|じゅぎょう}}をする o insegna qualcosa, non lo "riceve".
 *   [{{親愛|しんあい}}](term:term-anki-l19-shinai) diventa naturale in formule come {{親愛|しんあい}}なる, "cari / amati", tipiche di lettere, annunci e discorsi solenni. In bocca a Clavel o a una figura adulta `親愛なる` apre un indirizzo formale, affettuoso e distante.
 
 :::example_sentence
 jp: >-
   {{親愛|しんあい}}なる {{生徒|せいと}}たちよ、きょうも アカデミーで {{授業|じゅぎょう}}を{{受|う}}けよう。
 translation_it: >-
-  Cari studenti, anche oggi seguiamo le lezioni all'Accademia.
+  Cari studenti, anche oggi partecipiamo ai corsi dell'Accademia.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `{{親愛|しんあい}}なる` ➔ **Indirizzo formale**: apre la frase con un tono solenne, non con una semplice emozione privata.
 *   `{{生徒|せいと}}たちよ` ➔ **Gruppo chiamato in causa**: `たち` pluralizza il gruppo, `よ` dà il sapore di appello diretto.
-*   `アカデミーで` ➔ **Luogo dell'azione**: `で` colloca la lezione dentro l'Accademia.
-*   `{{授業|じゅぎょう}}を{{受|う}}けよう` ➔ **Invito a partecipare**: `を{{受|う}}ける` guarda la lezione dal lato dello studente; `よう` la trasforma in proposta condivisa.
+*   `アカデミーで` ➔ **Luogo dell'azione**: `で` colloca l'attività dentro l'Accademia.
+*   `{{授業|じゅぎょう}}を{{受|う}}けよう` ➔ **Invito a partecipare**: `を{{受|う}}ける` guarda l'insegnamento dal lato dello studente; `よう` lo trasforma in proposta condivisa.
 
 :::example_sentence
 jp: >-
   {{若|わか}}い {{先生|せんせい}}の {{授業|じゅぎょう}}を{{受|う}}けると、パルデアの ことが よく わかる。
 translation_it: >-
-  Se segui la lezione di un insegnante giovane, capisci meglio Paldea.
+  Se segui il corso di un insegnante giovane, capisci meglio Paldea.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   {{若|わか}}い {{先生|せんせい}}の ➔ **Persona qualificata**: [{{若|わか}}い](term:term-anki-l19-wakai) descrive il docente, non la lezione come cosa nuova.
-*   `{{授業|じゅぎょう}}を{{受|う}}けると` ➔ **Condizione scolastica**: "quando/se segui la lezione", dal lato di chi partecipa.
-*   `パルデアの ことが よく わかる` ➔ **Risultato di comprensione**: la lezione produce una lettura migliore del mondo di gioco.
+*   {{若|わか}}い {{先生|せんせい}}の ➔ **Persona qualificata**: [{{若|わか}}い](term:term-anki-l19-wakai) descrive il docente, non il corso come cosa nuova.
+*   `{{授業|じゅぎょう}}を{{受|う}}けると` ➔ **Condizione scolastica**: "quando/se segui il corso", dal lato di chi partecipa.
+*   `パルデアの ことが よく わかる` ➔ **Risultato di comprensione**: il corso produce una lettura migliore del mondo di gioco.
 
-#### ⚖️ Contrasto operativo: ricevere una lezione o tenerla
+#### ⚖️ Contrasto operativo: seguire un corso o tenerlo
 
-[{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) è la prospettiva dello studente. {{授業|じゅぎょう}}をする è la prospettiva di chi tiene la lezione. Quando leggi を{{受|う}}ける, cerca chi riceve l'insegnamento; quando leggi をする, cerca chi lo eroga.
+[{{授業|じゅぎょう}}を{{受|う}}ける](term:term-anki-l19-jugyou-o-ukeru) è la prospettiva dello studente. {{授業|じゅぎょう}}をする è la prospettiva di chi tiene il corso. Quando leggi を{{受|う}}ける, cerca chi riceve l'insegnamento; quando leggi をする, cerca chi lo eroga.
 
 #### 🧠 Gancio cognitivo: una persona ancora verde
 
@@ -108,7 +108,7 @@ Per [{{若|わか}}い](term:term-anki-l19-wakai), immagina una persona ancora "
 
 ## 2. Aiuto e quadro generale: cosa sta succedendo davvero
 
-Fuori dall'aula, le battute cominciano a misurare il peso della situazione: c'è qualcuno nei guai, un'informazione da riferire, una condizione che rende più facile andare avanti. Qui il giapponese non chiede solo "che cosa succede?", ma anche chi viene aiutato e che tipo di quadro stai guardando.
+Fuori dall'aula, le battute cominciano a misurare il peso della situazione: c'è qualcuno nei guai, un'informazione da riferire, una condizione che rende più facile andare avanti. Qui il giapponese ti fa leggere sia che cosa succede sia chi viene aiutato e che tipo di quadro stai guardando.
 
 *   [{{助|たす}}かる](term:term-anki-l19-tasukaru) è intransitivo: `助かる` esprime il sollievo di chi evita un problema. In ポケモンセンターが あると {{助|たす}}かる, il Centro Pokémon è la condizione che rende tutto più gestibile; il sollievo ricade su chi parla o sul gruppo in difficoltà.
 *   [{{状況|じょうきょう}}](term:term-anki-l19-joukyou) guarda al quadro complessivo: chi è presente, che cosa è successo, quali condizioni rendono urgente una decisione. Non è solo lo stato fisico di un Pokémon o di una persona; è la fotografia della scena, abbastanza ampia da poter essere comunicata a un preside, a un compagno o a una squadra.
@@ -211,7 +211,7 @@ translation_it: >-
 
 *   `{{正直|しょうじき}}に {{言|い}}うと` ➔ **Cornice confessionale**: il parlante abbassa il filtro e prepara un giudizio personale.
 *   `ネモの バトルへの {{情|じょう}}{{熱|ねつ}}には` ➔ **Tema marcato con limite**: `には` mette a tema proprio la passione di Nemona per le lotte.
-*   `ついていけない` ➔ **Difficoltà a reggere il ritmo**: `ついていけない` indica difficolta' a reggere il ritmo di qualcuno.
+*   `ついていけない` ➔ **Difficoltà a reggere il ritmo**: `ついていけない` indica difficoltà a reggere il ritmo di qualcuno.
 
 :::example_sentence
 jp: >-
@@ -242,7 +242,7 @@ Le stesse parole diventano più leggibili quando lavorano insieme: scuola, aiuto
 jp: >-
   {{若|わか}}い {{先生|せんせい}}の {{授業|じゅぎょう}}を{{受|う}}けて、パルデアでの {{生|い}}き{{方|かた}}を {{学|まな}}ぶ。
 translation_it: >-
-  Seguo la lezione di un insegnante giovane e imparo come vivere a Paldea.
+  Seguo il corso di un insegnante giovane e imparo come vivere a Paldea.
 :::
 
 :::example_sentence
@@ -270,4 +270,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando il testo torna all'Accademia, cerca chi riceve la lezione e con quale tono qualcuno si rivolge al gruppo. Quando compare una difficoltà, guarda se [{{助|たす}}かる](term:term-anki-l19-tasukaru) descrive il sollievo di chi viene aiutato o se [{{状況|じょうきょう}}](term:term-anki-l19-joukyou) allarga il quadro. Quando la battuta nomina una fazione, controlla se parla di [{{全員|ぜんいん}}](term:term-anki-l19-zenin), di una [{{隊|たい}}](term:term-anki-l19-tai) o di singoli [{{団員|だんいん}}](term:term-anki-l19-danin). Così parole come [{{若|わか}}い](term:term-anki-l19-wakai), [{{正直|しょうじき}}](term:term-anki-l19-shoujiki) e [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu) smettono di essere definizioni isolate e diventano segnali pratici per leggere Paldea.
+Quando il testo torna all'Accademia, cerca chi riceve l'insegnamento e con quale tono qualcuno si rivolge al gruppo. Quando compare una difficoltà, guarda se [{{助|たす}}かる](term:term-anki-l19-tasukaru) descrive il sollievo di chi viene aiutato o se [{{状況|じょうきょう}}](term:term-anki-l19-joukyou) allarga il quadro. Quando la battuta nomina una fazione, controlla se parla di [{{全員|ぜんいん}}](term:term-anki-l19-zenin), di una [{{隊|たい}}](term:term-anki-l19-tai) o di singoli [{{団員|だんいん}}](term:term-anki-l19-danin). Così parole come [{{若|わか}}い](term:term-anki-l19-wakai), [{{正直|しょうじき}}](term:term-anki-l19-shoujiki) e [{{名物|めいぶつ}}](term:term-anki-l19-meibutsu) smettono di essere definizioni isolate e diventano segnali pratici per leggere Paldea.
