@@ -46,7 +46,7 @@ Anche i dialoghi dell'Accademia e delle funzioni competitive lavorano nello stes
 - [{{障害物|しょうがいぶつ}}](term:term-v632-shougaibutsu) — ostacolo
 - [{{固定|こてい}}](term:term-v633-kotei) — fissare / bloccare
 - [ヘルプ](term:term-v634-herupu) — aiuto
-- [{{頭文字|あたまもじ}}](term:term-v635-atamamoji) — iniziale / primo carattere
+- [{{頭文字|かしらもじ}}](term:term-v635-atamamoji) — prima lettera di una parola
 - [{{本校|ほんこう}}](term:term-v636-honkou) — sede principale della scuola
 - [{{待機中|たいきちゅう}}](term:term-v637-taikinaka) — in attesa
 
@@ -61,7 +61,7 @@ Anche i dialoghi dell'Accademia e delle funzioni competitive lavorano nello stes
 - [～らしい](grammar:grammar-g102-pare-che-tipico-di) — pare che / tipico di
 - [～うちに](grammar:grammar-g103-mentre-finche) — mentre... / finché...
 - [～っしょ](grammar:grammar-g104-vero-no-immagino-che) — vero? / no? / immagino che...
-- [～だぜ](grammar:grammar-g105-finale-ruvida-maschile) — finale ruvida / maschile
+- [～ぜ / ～だぜ](grammar:grammar-g105-finale-ruvida-maschile) — finale ruvida / maschile
 
 ## Etichette da riconoscere
 
@@ -94,7 +94,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{不在|ふざい}}](term:term-v624-fuzai) non significa "non esiste". Significa che nel punto previsto quella persona o funzione non è presente ora. Se il sistema mostra questa parola, la lettura pratica è: l'interazione attesa non può partire in quel luogo o in quel momento.
+[{{不在|ふざい}}](term:term-v624-fuzai) parte dalla presenza nel luogo previsto: la persona o funzione esiste, ma in quel momento manca da lì. Se il sistema mostra questa parola, la lettura pratica è che l'interazione attesa resta chiusa in quel luogo o in quel momento.
 
 ---
 
@@ -131,7 +131,7 @@ translation_it: >-
 Sul campo, i sostantivi spaziali fanno più che descrivere il paesaggio. Preparano il modo in cui devi muoverti: attraversare una zona aperta, aggirare un ostacolo, guardare alle spalle o cambiare postura.
 
 *   [{{岩山|いわやま}}](term:term-v620-iwayama) (**Montagna rocciosa**) non è una montagna qualsiasi. {{岩|いわ}} porta la roccia, {{山|やま}} la massa montuosa: in esplorazione segnala pendii, pareti, passaggi stretti o zone dove il movimento può essere limitato.
-*   [{{広大|こうだい}}](term:term-v629-koudai) (**Vastissimo / ampio**) descrive una scala grande e aperta. In Paldea, questa parola non dice solo "bello da vedere": ti prepara a distanze ampie, orientamento e spostamenti lunghi.
+*   [{{広大|こうだい}}](term:term-v629-koudai) (**Vastissimo / ampio**) descrive una scala grande e aperta. In Paldea, questa parola inquadra distanze ampie, orientamento e spostamenti lunghi.
 *   [{{障害物|しょうがいぶつ}}](term:term-v632-shougaibutsu) (**Ostacolo**) trasforma un impedimento in oggetto concreto. {{障害|しょうがい}} è l'ostacolo o impedimento, {{物|ぶつ}} lo rende una cosa fisica: qualcosa che può bloccare vista, movimento o traiettoria.
 *   [{{背後|はいご}}](term:term-v626-haigo) (**Retro / alle spalle**) punta al lato dietro una persona o un oggetto. Non è un generico "là": è la parte non direttamente visibile se guardi avanti.
 *   [しゃがむ](term:term-v617-shagamu) (**Accovacciarsi**) cambia la postura del corpo. Il personaggio non è semplicemente fermo: si abbassa, spesso per nascondersi, avvicinarsi o passare in spazi bassi.
@@ -165,11 +165,11 @@ Nelle funzioni competitive, il gioco separa il sistema generale dalla tua posizi
 
 *   [ランキング](term:term-v627-rankingu) (**Classifica**) è la struttura ordinata: lista, stagione, graduatoria o schermata competitiva. È il contenitore.
 *   [{{順位|じゅんい}}](term:term-v631-juni) (**Posizione in classifica**) è il punto occupato dentro quella struttura. {{順|じゅん}} indica l'ordine, {{位|い}} la posizione: se la frase contiene numeri o piazzamenti, di solito il focus è qui.
-*   [{{有利|ゆうり}}](term:term-v628-yuuri) (**Vantaggioso / favorevole**) non significa "forte" in assoluto. {{有|ゆう}} porta l'idea di avere, {{利|り}} quella di vantaggio: qualcosa è favorevole rispetto a un confronto concreto, come matchup, tipo, regola o posizione.
+*   [{{有利|ゆうり}}](term:term-v628-yuuri) (**Vantaggioso / favorevole**) mette al centro un vantaggio relativo. {{有|ゆう}} porta l'idea di avere, {{利|り}} quella di vantaggio: qualcosa è favorevole rispetto a un confronto concreto, come matchup, tipo, regola o posizione.
 *   [{{連携|れんけい}}](term:term-v621-renkei) (**Coordinazione**) mette insieme azioni che funzionano in rapporto tra loro. Non descrive una mossa isolata: suggerisce collaborazione, combinazione o sincronia.
 *   [レンタルチーム](term:term-v623-rentaruchiimu) (**Team a noleggio**) è una label di funzione. レンタル segnala uso temporaneo, チーム il gruppo già preparato: lo usi senza possederne necessariamente i membri o averlo costruito da zero.
-*   [{{頭文字|あたまもじ}}](term:term-v635-atamamoji) (**Iniziale / primo carattere**) indica il carattere con cui filtrare o cercare un nome. [ヘルプ](term:term-v634-herupu) apre invece la spiegazione della schermata, non un'azione sul team.
-*   [{{待機中|たいきちゅう}}](term:term-v637-taikinaka) (**In attesa**) è uno stato in corso. {{待機|たいき}} è l'attesa operativa, {{中|ちゅう}} dice che ci sei dentro adesso: il sistema non chiede subito una nuova scelta, sta aspettando che qualcosa prosegua.
+*   [{{頭文字|かしらもじ}}](term:term-v635-atamamoji) (**Prima lettera di una parola**) indica il carattere con cui filtrare o cercare un nome. [ヘルプ](term:term-v634-herupu) apre invece la spiegazione della schermata, non un'azione sul team.
+*   [{{待機中|たいきちゅう}}](term:term-v637-taikinaka) (**In attesa**) è uno stato in corso. {{待機|たいき}} è l'attesa operativa, {{中|ちゅう}} dice che ci sei dentro adesso: il sistema resta in attesa prima che qualcosa prosegua.
 
 :::example_sentence
 jp: >-
@@ -265,9 +265,9 @@ translation_it: >-
 *   `{{忘|わす}}れないうちに` ➔ **Finestra temporale** (l'azione deve avvenire finché la condizione "non ho dimenticato" è ancora vera).
 *   `{{書|か}}く` ➔ **Azione principale** (scrivere per fissare l'informazione prima che cambi lo stato mentale).
 
-### D. Chiusure colloquiali: `～っしょ` e `～だぜ`
+### D. Chiusure colloquiali: `～っしょ` e `～ぜ / ～だぜ`
 
-[～っしょ](grammar:grammar-g104-vero-no-immagino-che) è una forma colloquiale vicina a でしょう: chiede complicità, conferma o assenso, spesso con tono molto parlato. [～だぜ](grammar:grammar-g105-finale-ruvida-maschile) invece non rende il contenuto incerto; rende più marcata la voce del parlante, con sicurezza, energia o ruvidità.
+[～っしょ](grammar:grammar-g104-vero-no-immagino-che) è una forma colloquiale vicina a でしょう: chiede complicità, conferma o assenso, spesso con tono molto parlato. [～ぜ / ～だぜ](grammar:grammar-g105-finale-ruvida-maschile) invece non rende il contenuto incerto; rende più marcata la voce del parlante, con sicurezza, energia o ruvidità.
 
 :::example_sentence
 jp: >-
@@ -284,7 +284,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[～らしい](grammar:grammar-g102-pare-che-tipico-di) cambia il rapporto con l'informazione: la rende indiretta o dedotta. [～っしょ](grammar:grammar-g104-vero-no-immagino-che) cerca complicità con chi ascolta. [～だぜ](grammar:grammar-g105-finale-ruvida-maschile) cambia invece il colore della voce: più sicura, ruvida o spavalda, senza trasformare il fatto in dubbio.
+[～らしい](grammar:grammar-g102-pare-che-tipico-di) cambia il rapporto con l'informazione: la rende indiretta o dedotta. [～っしょ](grammar:grammar-g104-vero-no-immagino-che) cerca complicità con chi ascolta. [～ぜ / ～だぜ](grammar:grammar-g105-finale-ruvida-maschile) cambia invece il colore della voce: più sicura, ruvida o spavalda, senza trasformare il fatto in dubbio.
 
 ---
 
@@ -324,4 +324,4 @@ translation_it: >-
 
 ## Nota finale
 
-Queste schermate diventano più leggibili quando separi quattro segnali. [{{同級生|どうきゅうせい}}](term:term-v615-doukyuusei), [{{面接官|めんせつかん}}](term:term-v625-mensetsukan) e [{{不在|ふざい}}](term:term-v624-fuzai) dicono chi può interagire; [{{保存|ほぞん}}](term:term-v619-hozon), [リセット](term:term-v630-risetto) e [リタイア](term:term-v616-ritaia) decidono l'azione di sistema; [{{背後|はいご}}](term:term-v626-haigo), [{{空中|くうちゅう}}](term:term-v622-kuuchuu) e [{{待機中|たいきちゅう}}](term:term-v637-taikinaka) fissano lo stato della scena; [〜しても いいし](term:term-e102-shitemo-iishi), [～らしい](grammar:grammar-g102-pare-che-tipico-di), [～っしょ](grammar:grammar-g104-vero-no-immagino-che) e [～だぜ](grammar:grammar-g105-finale-ruvida-maschile) ti dicono come suona la scelta.
+Queste schermate diventano più leggibili quando separi quattro segnali. [{{同級生|どうきゅうせい}}](term:term-v615-doukyuusei), [{{面接官|めんせつかん}}](term:term-v625-mensetsukan) e [{{不在|ふざい}}](term:term-v624-fuzai) dicono chi può interagire; [{{保存|ほぞん}}](term:term-v619-hozon), [リセット](term:term-v630-risetto) e [リタイア](term:term-v616-ritaia) decidono l'azione di sistema; [{{背後|はいご}}](term:term-v626-haigo), [{{空中|くうちゅう}}](term:term-v622-kuuchuu) e [{{待機中|たいきちゅう}}](term:term-v637-taikinaka) fissano lo stato della scena; [〜しても いいし](term:term-e102-shitemo-iishi), [～らしい](grammar:grammar-g102-pare-che-tipico-di), [～っしょ](grammar:grammar-g104-vero-no-immagino-che) e [～ぜ / ～だぜ](grammar:grammar-g105-finale-ruvida-maschile) ti dicono come suona la scelta.

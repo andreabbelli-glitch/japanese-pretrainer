@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet
 media_id: media-pokemon-scarlet-violet
 slug: 045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet
-title: SV Pre-study L30C - sistema e menu, Scarlet/Violet
+title: "Menu, scuola e scelte: leggere azioni e tono in Paldea"
 order: 75
 segment_ref: scarlet-violet-prestudy
 ---
@@ -78,7 +78,7 @@ card_type: concept
 front: "～らしい"
 back: pare che / tipico di
 example_jp: >-
-  ネモは もう {{来|く}}たらしい。
+  ネモは もう {{来|き}}たらしい。
 example_it: >-
   Pare che Nemona sia già arrivata.
 :::
@@ -130,14 +130,16 @@ example_it: >-
 :::
 :::grammar
 id: grammar-g105-finale-ruvida-maschile
-pattern: ～だぜ
+pattern: ～ぜ / ～だぜ
 title: Finale ruvida / maschile
 meaning_it: finale ruvida / maschile
 aliases:
 - 〜だよ / 〜だな
 notes_it: >-
-  Finale colloquiale e marcata, spesso maschile o spavalda. Non aggiunge un dato
-  nuovo alla frase: cambia il modo in cui il personaggio occupa la scena.
+  Finale colloquiale e marcata, spesso maschile o spavalda. Dopo verbi e
+  aggettivi in -i appare di solito come ぜ; dopo nomi e aggettivi in -na come
+  だぜ. Non aggiunge un dato nuovo alla frase: cambia il modo in cui il
+  personaggio occupa la scena.
 :::
 :::card
 id: card-g105-finale-ruvida-maschile-concept
@@ -145,10 +147,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistem
 entry_type: grammar
 entry_id: grammar-g105-finale-ruvida-maschile
 card_type: concept
-front: "～だぜ"
+front: "～ぜ / ～だぜ"
 back: finale ruvida / maschile
 example_jp: >-
-  {{次|つぎ}}は ぜったい {{勝|か}}つだぜ。
+  {{次|つぎ}}は ぜったい {{勝|か}}つぜ。
 example_it: >-
   La prossima volta vinco di sicuro, vedrai.
 :::
@@ -297,8 +299,9 @@ reading: れんけい
 romaji: renkei
 meaning_it: coordinazione
 notes_it: >-
-  Indica coordinazione tra persone, Pokemon o funzioni. In lotta e missioni
-  segnala azioni che funzionano insieme, non mosse isolate.
+  連携 indica coordinazione tra persone, Pokemon o funzioni. In lotta e missioni
+  mette in rapporto azioni che dipendono l'una dall'altra, invece di presentarle
+  come mosse isolate.
 :::
 :::card
 id: card-v621-renkei-recognition
@@ -538,8 +541,8 @@ reading: しょうがいぶつ
 romaji: shougaibutsu
 meaning_it: ostacolo
 notes_it: >-
-  Indica un ostacolo fisico sul percorso. In movimento segnala ciò che blocca,
-  rallenta o richiede un'abilità per essere superato.
+  障害物 indica un ostacolo fisico sul percorso. In movimento richiama un oggetto
+  che blocca, rallenta o richiede un'abilità per essere superato.
 :::
 :::card
 id: card-v632-shougaibutsu-recognition
@@ -603,12 +606,12 @@ example_it: >-
 :::term
 id: term-v635-atamamoji
 lemma: 頭文字
-reading: あたまもじ
-romaji: atamamoji
-meaning_it: iniziale
+reading: かしらもじ
+romaji: kashiramoji
+meaning_it: prima lettera di una parola
 notes_it: >-
-  Indica la prima lettera o il primo carattere. In ordinamenti e filtri serve a
-  cercare nomi per iniziale.
+  頭文字 indica la prima lettera o il primo carattere di una parola o di un nome.
+  In ordinamenti e filtri richiama il carattere iniziale da cui parte la ricerca.
 :::
 :::card
 id: card-v635-atamamoji-recognition
@@ -616,12 +619,12 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistem
 entry_type: term
 entry_id: term-v635-atamamoji
 card_type: recognition
-front: "{{頭文字|あたま.も.じ}}"
-back: iniziale
+front: "{{頭文字|かしら.も.じ}}"
+back: prima lettera di una parola
 example_jp: >-
-  {{頭文字|あたま.も.じ}}を {{確認|かくにん}}します。
+  {{頭文字|かしら.も.じ}}を {{確認|かくにん}}します。
 example_it: >-
-  Controllo l'iniziale.
+  Controllo la prima lettera della parola.
 :::
 :::term
 id: term-v636-honkou
@@ -649,12 +652,12 @@ example_it: >-
 :::term
 id: term-v637-taikinaka
 lemma: 待機中
-reading: たいきなか
-romaji: taikinaka
+reading: たいきちゅう
+romaji: taikichuu
 meaning_it: in attesa
 notes_it: >-
-  Indica che il sistema o un giocatore sta aspettando. In matchmaking e menu
-  online segnala uno stato temporaneo, prima che l'azione prosegua.
+  待機中 indica che il sistema o un giocatore sta aspettando. In matchmaking e
+  menu online descrive lo stato temporaneo prima che l'azione prosegua.
 :::
 :::card
 id: card-v637-taikinaka-recognition
@@ -662,10 +665,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistem
 entry_type: term
 entry_id: term-v637-taikinaka
 card_type: recognition
-front: "{{待機中|たい.き.なか}}"
+front: "{{待機中|たい.き.ちゅう}}"
 back: in attesa
 example_jp: >-
-  {{今|いま}}は {{待機中|たい.き.なか}}です。
+  {{今|いま}}は {{待機中|たい.き.ちゅう}}です。
 example_it: >-
   Ora è in attesa.
 :::
