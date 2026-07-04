@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-linguistica-umani-e-macchine
 media_id: media-pokemon-scarlet-violet
 slug: 058-sv-anki-l06-voci-linguistica-umani-e-macchine
-title: SV Anki L06 - Voci, linguistica, umani e macchine
+title: "Voci, persone e macchine tra Accademia e Area Zero"
 order: 88
 segment_ref: scarlet-violet-prestudy
 ---
@@ -131,11 +131,11 @@ entry_id: term-anki-l06-gengogaku
 card_type: recognition
 front: '{{言|げん}}{{語|ご}}{{学|がく}}'
 back: >-
-  げんごがく — linguistica. È una materia di studio e si abbina a verbi come “studiare/imparare”; con la particella の modifica un nome, come in una “lezione di linguistica”.
+  げんごがく — linguistica. È una materia di studio e si abbina a verbi come “studiare/imparare”; con la particella の modifica un nome, come in un “corso di linguistica”.
 example_jp: >-
   セイジ{{先|せん}}{{生|せい}}の {{言|げん}}{{語|ご}}{{学|がく}}の {{授|じゅ}}{{業|ぎょう}}は おもしろい ですよ。
 example_it: >-
-  Le lezioni di linguistica del professor Zim sono interessanti.
+  I corsi di linguistica del professor Zim sono interessanti.
 notes_it: >-
   Composto da {{言|げん}}{{語|ご}} (lingua/linguaggio) e il suffisso {{学|まな}} (studio/scienza). Nel contesto dell'Accademia, richiama la materia di linguistica insegnata da professori come セイジ (Zim).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
@@ -237,7 +237,7 @@ back: >-
 example_jp: >-
   {{今日|きょう}}の {{授|じゅ}}{{業|ぎょう}}は これで {{終|お}}わりです。 {{解|かい}}{{散|さん}}！
 example_it: >-
-  La lezione di oggi finisce qui. Siete liberi di andare!
+  L'incontro di oggi finisce qui. Siete liberi di andare!
 notes_it: >-
   Un termine che sentirai spesso da direttori o insegnanti. Ordina a un gruppo radunato di disperdersi o dichiara la fine di un'attività. Da non confondere con la distruzione fisica di qualcosa.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]

@@ -10,13 +10,13 @@ status: active
 tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-06]
 prerequisites: []
 summary: >-
-  Leggere voci, lezioni, registro sociale e parole di fiducia quando dialoghi,
+  Leggere voci, corsi, registro sociale e parole di fiducia quando dialoghi,
   scuola e Area Zero spostano il focus su persone e macchine.
 ---
 
 # Voci, persone e macchine tra Accademia e Area Zero
 
-In *Pokémon Scarlet & Violet* la lingua cambia volto appena ti sposti dai corridoi dell'Accademia ai racconti su Area Zero. Una [{{噂|うわさ}}](term:term-anki-l06-uwasa) non pesa come un fatto confermato, [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) non è una parola generica sulle lingue, e un nome seguito da [{{氏|し}}](term:term-anki-l06-shi) mette subito più distanza di un semplice さん.
+In *Pokémon Scarlet & Violet* la lingua cambia volto appena ti sposti dai corridoi dell'Accademia ai racconti su Area Zero. Una [{{噂|うわさ}}](term:term-anki-l06-uwasa) resta una voce da confermare, [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) porta dentro una materia scolastica, e un nome seguito da [{{氏|し}}](term:term-anki-l06-shi) mette subito più distanza di un semplice さん.
 
 Lo stesso vale per le scene più emotive o tecnologiche: un valore che [{{上|あ}}がる](term:term-anki-l06-agaru), un personaggio che [{{食|く}}う](term:term-anki-l06-kuu), qualcuno che [{{信|しん}}じる](term:term-anki-l06-shinjiru), oppure una [{{機械|きかい}}](term:term-anki-l06-kikai) legata alla trama. Queste forme ti dicono chi parla, quanto è ruvido o formale il tono, e se la frase sta guardando persone, gruppi o apparati troppo complessi per essere semplici strumenti.
 
@@ -42,14 +42,14 @@ Lo stesso vale per le scene più emotive o tecnologiche: un valore che [{{上|�
 
 ## Pattern grammaticali chiave
 
-- `NのN` — collega fonte, appartenenza o categoria: voce su un Pokémon, lezione di una materia, comunicazione da una persona
+- `NのN` — collega fonte, appartenenza o categoria: voce su un Pokémon, corso di una materia, comunicazione da una persona
 - `Vると` — crea una condizione naturale o automatica: quando fai X, succede Y
 - `Vてくる / Vてきました` — mostra un'azione che continua fino al presente della scena
 - `Vたら` — apre il momento del "quando / se" dopo il completamento di un'azione
 
 ## Etichette da riconoscere
 
-- `セイジ{{先生|せんせい}}` — il professore associato alle lezioni di lingua
+- `セイジ{{先生|せんせい}}` — il professore associato ai corsi di lingua
 - [クラベル](term:term-v069-kuraberu){{氏|し}} — Clavel citato con registro formale e distanziato
 - `タイムマシン` — la macchina del tempo legata alla tecnologia di Area Zero
 
@@ -57,11 +57,11 @@ Lo stesso vale per le scene più emotive o tecnologiche: un valore che [{{上|�
 
 [クラベル](term:term-v069-kuraberu){{氏|し}} mostra come un nome proprio cambi tono con il suffisso: Clavel non viene avvicinato, viene citato in modo più formale.
 
-## 1. Voci, lezioni e nomi: da dove arriva l'informazione
+## 1. Voci, corsi e nomi: da dove arriva l'informazione
 
-All'Accademia e nelle città di Paldea molte battute ruotano intorno a informazioni ricevute da altri: qualcuno ha sentito parlare di un Pokémon, un professore introduce una materia, una comunicazione nomina una figura in modo ufficiale. Qui la grammatica non serve solo a tradurre: serve a capire quanto è solida l'informazione e che rapporto sociale sta mettendo in scena.
+All'Accademia e nelle città di Paldea molte battute ruotano intorno a informazioni ricevute da altri: qualcuno ha sentito parlare di un Pokémon, un professore introduce una materia, una comunicazione nomina una figura in modo ufficiale. Qui la grammatica indica insieme solidità dell'informazione e rapporto sociale messo in scena.
 
-*   [{{噂|うわさ}}](term:term-anki-l06-uwasa) indica una voce che circola prima di diventare certezza. `噂` indica cio' che circola come voce prima di diventare certezza.
+*   [{{噂|うわさ}}](term:term-anki-l06-uwasa) indica ciò che circola come voce prima di diventare certezza.
 *   [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) porta la lettura dentro la scuola. Il composto si apre bene in due pezzi: {{言語|げんご}} è "lingua / linguaggio", mentre {{学|がく}} funziona come suffisso di disciplina, cioè "studio di". In un dialogo dell'Accademia, quindi, [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) non nomina semplicemente delle parole: identifica una materia, un'aula, un insegnante e un tipo di spiegazione.
 *   [{{氏|し}}](term:term-anki-l06-shi) dopo un nome proprio cambia il registro. さん resta quotidiano e relazionale; [{{氏|し}}](term:term-anki-l06-shi) suona più rigido, da comunicazione, rapporto o riferimento istituzionale. Se leggi クラベル{{氏|し}}, il testo non sta rendendo Clavel più vicino: lo sta nominando con una distanza formale.
 
@@ -82,13 +82,13 @@ translation_it: >-
 jp: >-
   セイジ{{先生|せんせい}}の {{言語|げんご}}{{学|がく}}の {{授業|じゅぎょう}}は おもしろい ですよ。
 translation_it: >-
-  Le lezioni di linguistica del professor Zim sono interessanti.
+  I corsi di linguistica del professor Zim sono interessanti.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `セイジ{{先生|せんせい}}の` ➔ **Fonte personale** (il primo `の` attribuisce la lezione al professore).
-*   `{{言語|げんご}}{{学|がく}}の {{授業|じゅぎょう}}` ➔ **Categoria scolastica** (il secondo `の` specifica la materia: non "linguistica" isolata, ma "lezione di linguistica").
+*   `セイジ{{先生|せんせい}}の` ➔ **Fonte personale** (il primo `の` attribuisce il corso al professore).
+*   `{{言語|げんご}}{{学|がく}}の {{授業|じゅぎょう}}` ➔ **Categoria scolastica** (il secondo `の` specifica la materia: non "linguistica" isolata, ma "corso di linguistica").
 *   `おもしろい ですよ` ➔ **Giudizio condiviso** (`ですよ` rende la valutazione gentile e leggermente esplicativa, come se il parlante la offrisse all'interlocutore).
 
 :::example_sentence
@@ -169,10 +169,10 @@ Per [{{信|しん}}じる](term:term-anki-l06-shinjiru), immagina che la frase c
 
 ## 3. Persone, gruppi e attese: il lato umano della scena
 
-Quando il gioco parla di persone, non usa sempre lo stesso livello di astrazione. A volte guarda un individuo qualunque, altre volte mette in scena gli esseri umani come categoria accanto ai Pokémon. Allo stesso modo, una classe può sciogliersi con una parola secca, mentre un evento futuro può diventare qualcosa che un personaggio tiene davanti a sé con entusiasmo.
+Quando il gioco parla di persone, scala tra individuo concreto, gruppo riunito e categoria umana accanto ai Pokémon. Allo stesso modo, una classe può sciogliersi con una parola secca, mentre un evento futuro può diventare qualcosa che un personaggio tiene davanti a sé con entusiasmo.
 
 *   [{{人間|にんげん}}](term:term-anki-l06-ningen) non è semplicemente {{人|ひと}}. {{人|ひと}} può indicare una persona concreta o "qualcuno"; [{{人間|にんげん}}](term:term-anki-l06-ningen) guarda l'essere umano come categoria. In frasi con ポケモンと, crea spesso una coppia concettuale: Pokémon e umani, due gruppi che convivono, si aiutano o vengono messi a confronto.
-*   [{{解散|かいさん}}](term:term-anki-l06-kaisan) descrive un gruppo che smette di essere riunito. Non è una cosa che si rompe in pezzi: è una classe, una squadra, un incontro o un raduno che si scioglie. Per questo può funzionare quasi come comando alla fine di una lezione o di una comunicazione: la situazione comune è chiusa, ognuno può andare.
+*   [{{解散|かいさん}}](term:term-anki-l06-kaisan) descrive un gruppo che smette di essere riunito: una classe, una squadra, un incontro o un raduno che si scioglie. Per questo può funzionare quasi come comando alla fine di un incontro o di una comunicazione: la situazione comune è chiusa, ognuno può andare.
 *   [{{楽|たの}}しみ](term:term-anki-l06-tanoshimi) trasforma il piacere in attesa. Deriva dalla stessa famiglia di {{楽|たの}}しい, ma come nome può indicare "la cosa che aspetto con gioia". La formula [{{楽|たの}}しみ](term:term-anki-l06-tanoshimi)に している rende bene il senso di "non vedere l'ora", perché il parlante tiene quell'evento come fonte futura di entusiasmo.
 
 :::example_sentence
@@ -192,13 +192,13 @@ translation_it: >-
 jp: >-
   {{今日|きょう}}の {{授業|じゅぎょう}}は これで {{終|お}}わりです。 {{解散|かいさん}}！
 translation_it: >-
-  La lezione di oggi finisce qui. Siete liberi di andare!
+  L'incontro di oggi finisce qui. Siete liberi di andare!
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `{{今日|きょう}}の {{授業|じゅぎょう}}は` ➔ **Cornice della sessione** (`の` collega "oggi" alla lezione; `は` presenta la lezione come tema).
-*   `これで {{終|お}}わりです` ➔ **Chiusura della fase** (`これで` vale "con questo / a questo punto", quindi segna la fine della lezione).
+*   `{{今日|きょう}}の {{授業|じゅぎょう}}は` ➔ **Cornice della sessione** (`の` collega "oggi" all'incontro; `は` presenta l'attività come tema).
+*   `これで {{終|お}}わりです` ➔ **Chiusura della fase** (`これで` vale "con questo / a questo punto", quindi segna la fine dell'incontro).
 *   `{{解散|かいさん}}！` ➔ **Congedo del gruppo** (una sola parola basta perché il raduno ha già una cornice condivisa).
 
 :::example_sentence
@@ -265,7 +265,7 @@ Usa [{{機械|きかい}}](term:term-anki-l06-kikai) come segnale di meccanismo 
 
 ## Esempi guidati di riepilogo
 
-Le stesse forme diventano più facili da leggere quando si combinano: una voce può arrivare da una persona nominata formalmente, una lezione può chiudersi con un congedo, e una macchina può produrre un aumento misurabile.
+Le stesse forme diventano più facili da leggere quando si combinano: una voce può arrivare da una persona nominata formalmente, un incontro può chiudersi con un congedo, e una macchina può produrre un aumento misurabile.
 
 :::example_sentence
 jp: >-
@@ -278,7 +278,7 @@ translation_it: >-
 jp: >-
   {{言語|げんご}}{{学|がく}}の {{授業|じゅぎょう}}が {{終|お}}わったら、 すぐ {{解散|かいさん}}です。
 translation_it: >-
-  Quando finisce la lezione di linguistica, tutti liberi subito.
+  Quando finisce il corso di linguistica, tutti liberi subito.
 :::
 
 :::example_sentence

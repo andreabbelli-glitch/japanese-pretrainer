@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-negozi-numeri-e-regole
 media_id: media-pokemon-scarlet-violet
 slug: 059-sv-anki-l07-luoghi-negozi-numeri-e-regole
-title: SV Anki L07 - Luoghi, negozi, numeri e regole
+title: "Luoghi, regole e quantità tra Paldea e l'Accademia"
 order: 89
 segment_ref: scarlet-violet-prestudy
 ---

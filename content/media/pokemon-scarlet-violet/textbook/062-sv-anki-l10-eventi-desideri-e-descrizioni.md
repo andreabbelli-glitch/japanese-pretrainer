@@ -62,7 +62,7 @@ Il giapponese di queste situazioni non lavora per parole isolate. [{{先|さき}
 Quando una battuta nomina una rivista, un'opera, una sede o un mercato, il testo sta prima di tutto restringendo il campo. Prima ancora dell'azione, ti dice se devi immaginare un oggetto consultabile in Accademia, un risultato creativo, un'area allestita per una prova o un sistema di scambio.
 
 *   [{{雑|ざっ}}{{誌|し}}](term:term-anki-l10-zasshi) indica una rivista o pubblicazione periodica, non un libro qualunque. In Accademia può comparire insieme a オカルト o ad altri temi da consultare: オカルト{{雑|ざっ}}{{誌|し}} ti fa cercare mentalmente un periodico esposto, letto o citato, non una materia scolastica.
-*   [{{作|さく}}{{品|ひん}}](term:term-anki-l10-sakuhin) unisce {{作|さく}} "creazione" e {{品|ひん}} "oggetto, prodotto". Davanti alle opere di コルサ o nelle lezioni d'arte, la parola punta al risultato finito: una scultura, un lavoro degli studenti, qualcosa che può essere osservato e valutato.
+*   [{{作|さく}}{{品|ひん}}](term:term-anki-l10-sakuhin) unisce {{作|さく}} "creazione" e {{品|ひん}} "oggetto, prodotto". Davanti alle opere di コルサ o nelle attività d'arte, la parola punta al risultato finito: una scultura, un lavoro degli studenti, qualcosa che può essere osservato e valutato.
 *   [{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) contiene {{会|かい}} "riunione, evento" e {{場|じょう}} "luogo". Con [evento]の {{会|かい}}{{場|じょう}}, la particella の non aggiunge solo possesso: aggancia la sede all'evento specifico. ジムテストの {{会|かい}}{{場|じょう}} è quindi l'area della prova, non un punto qualunque della città.
 *   [{{市|し}}{{場|じょう}}](term:term-anki-l10-shijou) legge il mercato come ambito generale: prezzi, circolazione, disponibilità di oggetti. Quando il gioco parla del mercato fisico di una località, può emergere la lettura いちば; [{{市|し}}{{場|じょう}}](term:term-anki-l10-shijou) suona più astratto o economico.
 
@@ -142,7 +142,7 @@ translation_it: >-
 In battaglia, il verso del cambiamento è grammatica concreta. Una statistica può scendere come effetto osservato, oppure qualcuno può alzarla con una mossa, uno strumento o una scelta. La differenza tra [{{落|お}}ちる](term:term-anki-l10-ochiru) e [{{高|たか}}める](term:term-anki-l10-takameru) passa soprattutto da が e を.
 
 *   [{{落|お}}ちる](term:term-anki-l10-ochiru) è intransitivo: il soggetto cade, scende o si abbassa. In una lotta Pokémon, すばやさが {{落|お}}ちる guarda la velocità che cala; la frase non deve per forza dire chi l'ha fatta calare.
-*   [{{高|たか}}める](term:term-anki-l10-takameru) è transitivo: qualcuno o qualcosa rende più alto un valore. こうげきを {{高|たか}}める `高める` e' transitivo: qualcuno o qualcosa alza un valore.
+*   [{{高|たか}}める](term:term-anki-l10-takameru) è transitivo: qualcuno o qualcosa rende più alto un valore. In こうげきを {{高|たか}}める, `を` marca la statistica che viene alzata.
 
 :::example_sentence
 jp: >-
@@ -182,7 +182,7 @@ In [{{高|たか}}める](term:term-anki-l10-takameru) riconosci {{高|たか}}�
 
 Alcune parole sembrano descrittive, ma nel gioco portano con sé tono e cornice sociale. [{{子|こ}}{{供|ども}}](term:term-anki-l10-kodomo) separa o supera la distinzione tra età diverse; [{{長|なが}}い](term:term-anki-l10-nagai) misura spazio o tempo e può far sentire il peso del viaggio.
 
-*   [{{子|こ}}{{供|ども}}](term:term-anki-l10-kodomo) non indica soltanto una persona giovane. In un'Accademia dove adulti e ragazzi studiano nello stesso spazio, il contrasto con {{大人|おとな}} può servire a dire che età, esperienza e ruolo sociale non decidono tutto.
+*   [{{子|こ}}{{供|ども}}](term:term-anki-l10-kodomo) parte dall'idea di persona giovane. In un'Accademia dove adulti e ragazzi studiano nello stesso spazio, il contrasto con {{大人|おとな}} può servire a dire che età, esperienza e ruolo sociale non decidono tutto.
 *   [{{長|なが}}い](term:term-anki-l10-nagai) è un aggettivo in い che si mette prima del nome: {{長|なが}}い {{道|みち}}, {{長|なが}}い {{旅|たび}}, {{長|なが}}い {{冒|ぼう}}{{険|けん}}. Se descrive una strada, misura estensione; se descrive un'avventura, misura durata e fatica narrativa.
 
 :::example_sentence

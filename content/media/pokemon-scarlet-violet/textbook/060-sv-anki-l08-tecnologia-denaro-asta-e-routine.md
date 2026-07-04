@@ -60,7 +60,7 @@ Nei dialoghi più quotidiani, lo stesso principio vale per tempo, tono e routine
 Nelle scene dell'Area Zero, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) non funziona come semplice parola fantascientifica. È una sigla inglese scritta nel testo giapponese con lettura エーアイ, e proprio questa forma fredda la distingue da un personaggio umano: quando la frase parte da {{Ａ|エー}}{{Ｉ|アイ}}が, il testo sta assegnando a un sistema artificiale il ruolo di soggetto.
 
 *   [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) compare bene dove il gioco vuole far sentire una presenza tecnica che parla, analizza o gestisce. Se il soggetto fosse una persona, ti aspetteresti un nome proprio, un titolo o una descrizione umana; con {{Ａ|エー}}{{Ｉ|アイ}}, invece, la battuta mette davanti un'entità costruita, capace di compiere azioni operative.
-*   Il punto da leggere Con `AI` marcato da `が`, guarda che cosa fa il sistema nella frase. Con が, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) può controllare, spiegare, bloccare o guidare una procedura. In una scena tesa, questo cambia il peso della battuta: non stai ascoltando un commento neutro, stai leggendo il comportamento di un sistema.
+*   Con `AI` marcato da `が`, guarda che cosa fa il sistema nella frase. Con が, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) può controllare, spiegare, bloccare o guidare una procedura. In una scena tesa, questo cambia il peso della battuta: stai leggendo il comportamento di un sistema, non un semplice commento di sfondo.
 
 :::example_sentence
 jp: >-
@@ -130,7 +130,7 @@ Per [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu), pensa a {{�
 Le battute tra allenatori e compagni usano piccoli segnali per farti sentire distanza temporale, energia della voce e atteggiamento verso l'esperienza. [この{{前|まえ}}](term:term-anki-l08-konomae), [{{押|おっ}}{{忍|す}}](term:term-anki-l08-ossu) e [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu) sono utili perché non danno solo contenuto: danno anche temperatura alla scena.
 
 *   [この{{前|まえ}}](term:term-anki-l08-konomae) colloca l'evento in un passato recente. Non è {{昔|むかし}}, che spinge il ricordo lontano; è "l'altro giorno", qualcosa che nel dialogo resta ancora vicino al parlante. Può aprire la frase da solo, come cornice: この{{前|まえ}}、ネモと....
-*   [{{押|おっ}}{{忍|す}}](term:term-anki-l08-ossu) è un saluto energico, ruvido e molto informale. In bocca a un allenatore o in un ambiente sportivo non significa solo "ciao": segnala postura, voce e desiderio di entrare subito nell'azione. Non aspettarti la distanza cortese di un commesso o di un insegnante.
+*   [{{押|おっ}}{{忍|す}}](term:term-anki-l08-ossu) è un saluto energico, ruvido e molto informale. In bocca a un allenatore o in un ambiente sportivo segnala postura, voce e desiderio di entrare subito nell'azione, con una distanza molto diversa da quella di un commesso o di un insegnante.
 *   [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu) è transitivo: l'esperienza goduta prende を. Questo lo distingue da {{楽|たの}}しい, che descrive una cosa come divertente. バトルを{{楽|たの}}しむ dice che qualcuno vive la lotta come esperienza da assaporare, non solo che la lotta ha una qualità piacevole.
 
 :::example_sentence
@@ -230,7 +230,7 @@ translation_it: >-
 jp: >-
   ハッサク{{先生|せんせい}}の {{芸|げい}}{{術|じゅつ}}の {{授業|じゅぎょう}}を {{受|う}}ける。
 translation_it: >-
-  Seguo la lezione di arte del professor Hassel.
+  Seguo il corso di arte del professor Hassel.
 :::
 
 :::example_sentence

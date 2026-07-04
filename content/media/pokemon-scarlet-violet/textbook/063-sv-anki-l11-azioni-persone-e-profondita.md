@@ -60,7 +60,7 @@ Il filo da seguire è il movimento della frase. [{{渡|わた}}す](term:term-an
 
 ## 1. Passare oggetti e centrare bersagli
 
-Le richieste dell'Accademia e le schermate di battaglia separano due movimenti molto diversi: una consegna va da una persona a un'altra, mentre un attacco o una risposta arriva sul punto giusto. Il giapponese ti aiuta a non confonderli perché cambia particelle, verbo e punto di vista.
+Le richieste dell'Accademia e le schermate di battaglia separano due movimenti molto diversi: una consegna va da una persona a un'altra, mentre un attacco o una risposta arriva sul punto giusto. Particelle, verbo e punto di vista mostrano subito quale movimento sta guidando la frase.
 
 *   [{{渡|わた}}す](term:term-anki-l11-watasu) è un verbo di trasferimento: qualcuno mette un oggetto nella sfera di qualcun altro. La struttura naturale è XをYに{{渡|わた}}す: を marca la cosa consegnata, に marca il destinatario. In un incarico scolastico, quindi, non basta pensare "passare": devi cercare che cosa cambia mano e verso quale persona si muove.
 *   [{{当|あ}}たる](term:term-anki-l11-ataru) guarda invece il risultato. Una mossa [{{当|あ}}たる](term:term-anki-l11-ataru) quando va a segno; una previsione [{{当|あ}}たる](term:term-anki-l11-ataru) quando si rivela giusta; un premio può [{{当|あ}}たる](term:term-anki-l11-ataru) quando "capita" a qualcuno. È un verbo intransitivo: `当たる` guarda il risultato: qualcosa raggiunge il bersaglio o si rivela giusto.
@@ -142,7 +142,7 @@ translation_it: >-
 
 Quando la trama si avvicina ai misteri di Paldea, il giapponese cambia ritmo: alcune frasi chiedono di ripetere un'azione, altre trattano un libro come fonte insolita, altre ancora fissano il nome con cui un luogo è conosciuto.
 
-*   [もう{{一度|いちど}}](term:term-anki-l11-mouichido) combina もう, "ancora / di nuovo", con {{一度|いちど}}, "una volta". Nei prompt e nei dialoghi non indica una ripetizione vaga: prepara un secondo tentativo, un nuovo ascolto, un ritorno a un'interazione appena disponibile.
+*   [もう{{一度|いちど}}](term:term-anki-l11-mouichido) combina もう, "ancora / di nuovo", con {{一度|いちど}}, "una volta". Nei prompt e nei dialoghi prepara un secondo tentativo, un nuovo ascolto, un ritorno a un'interazione appena disponibile.
 *   [{{奇書|きしょ}}](term:term-anki-l11-kisho) porta un tono narrativo più marcato. {{奇|き}} richiama anomalia o stranezza, {{書|しょ}} è "scritto / libro"; insieme indicano un testo insolito, difficile da trattare come fonte ordinaria. Quando la trama parla del Libro Scarlatto o Violetto come [{{奇書|きしょ}}](term:term-anki-l11-kisho), il giapponese suggerisce che quel contenuto è affascinante, sospetto o fuori scala rispetto alla conoscenza normale.
 *   [{{呼|よ}}ばれる](term:term-anki-l11-yobareru) usa la [{{受|う}}け{{身|み}}](grammar:grammar-g087-forma-passiva) di {{呼|よ}}ぶ: non importa chi chiama così quella cosa, importa che quel nome è stabilito nell'uso. Il frame da riconoscere è Xと{{呼|よ}}ばれるY, cioè "un Y chiamato X".
 

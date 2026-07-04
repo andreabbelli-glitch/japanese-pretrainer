@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-persone-e-profondita
 media_id: media-pokemon-scarlet-violet
 slug: 063-sv-anki-l11-azioni-persone-e-profondita
-title: SV Anki L11 - Azioni, persone e profondità
+title: "Azioni, persone e profondità nei dialoghi di Paldea"
 order: 93
 segment_ref: scarlet-violet-prestudy
 ---
@@ -114,7 +114,7 @@ entry_id: term-anki-l11-watasu
 card_type: recognition
 front: '{{渡|わた}}す'
 back: >-
-  わたす — consegnare; passare Verbo transitivo (lo usi con を) per il passaggio fisico di un oggetto da una persona all'altra. Implica che chi riceve lo prenda in mano.
+  わたす — consegnare; passare. Verbo transitivo (lo usi con を) per il passaggio fisico di un oggetto da una persona all'altra. Implica che chi riceve lo prenda in mano.
 example_jp: >-
   このモンスターボールを {{校|こう}}{{長|ちょう}}に {{渡|わた}}す ように たのまれた。
 example_it: >-
@@ -131,7 +131,7 @@ entry_id: term-anki-l11-ataru
 card_type: recognition
 front: '{{当|あ}}たる'
 back: >-
-  あたる — colpire; indovinare Verbo intransitivo (prende に). Significa che qualcosa 'colpisce il bersaglio', letteralmente (una mossa in lotta) o metaforicamente (indovinare una risposta o vincere un premio).
+  あたる — colpire; indovinare. Verbo intransitivo (prende に). Significa che qualcosa 'colpisce il bersaglio', letteralmente (una mossa in lotta) o metaforicamente (indovinare una risposta o vincere un premio).
 example_jp: >-
   この わざは ぜったいに {{当|あ}}たる！
 example_it: >-
@@ -148,7 +148,7 @@ entry_id: term-anki-l11-kanojo
 card_type: recognition
 front: '{{彼|かの}}{{女|じょ}}'
 back: >-
-  かのじょ — lei; fidanzata Pronome di terza persona femminile o 'fidanzata'. Nel parlato degli NPC, spesso usato per riferirsi a una ragazza di cui si sta parlando.
+  かのじょ — lei; fidanzata. Pronome di terza persona femminile o 'fidanzata'. Nel parlato degli NPC, spesso usato per riferirsi a una ragazza di cui si sta parlando.
 example_jp: >-
   {{彼|かの}}{{女|じょ}}は いつも ポケモンバトルを したがっている。
 example_it: >-
@@ -165,7 +165,7 @@ entry_id: term-anki-l11-kowai
 card_type: recognition
 front: '{{怖|こわ}}い'
 back: >-
-  こわい — spaventoso; pauroso Aggettivo in -i usato per esprimere paura. Definisce sia una qualità oggettiva ('quella cosa fa paura') sia una sensazione soggettiva ('io ho paura').
+  こわい — spaventoso; pauroso. Aggettivo in -i usato per esprimere paura. Definisce sia una qualità oggettiva ('quella cosa fa paura') sia una sensazione soggettiva ('io ho paura').
 example_jp: >-
   エリアゼロの {{最|さい}}{{深|しん}}{{部|ぶ}}には {{怖|こわ}}い ポケモンが いる らしい。
 example_it: >-
@@ -199,7 +199,7 @@ entry_id: term-anki-l11-mouichido
 card_type: recognition
 front: 'もう{{一|いち}}{{度|ど}}'
 back: >-
-  もういちど — ancora una volta Avverbio di tempo formato da もう (di nuovo/ancora) e {{一|いち}}{{度|ど}} (una volta). Si usa per ripetere un'azione appena successa o chiedere un'altra prova.
+  もういちど — ancora una volta. Avverbio di tempo formato da もう (di nuovo/ancora) e {{一|いち}}{{度|ど}} (una volta). Si usa per ripetere un'azione appena successa o chiedere un'altra prova.
 example_jp: >-
   {{準|じゅん}}{{備|び}}が できたら、もう{{一|いち}}{{度|ど}} {{話|はな}}しかけて くれ。
 example_it: >-
@@ -216,7 +216,7 @@ entry_id: term-anki-l11-kisho
 card_type: recognition
 front: '{{奇|き}}{{書|しょ}}'
 back: >-
-  きしょ — libro strano/insolito Sostantivo composto da {{奇|き}} (strano, bizzarro) e {{書|か}} (libro, testo). Si riferisce a tomi antichi dai contenuti dubbi o misteriosi.
+  きしょ — libro strano/insolito. Sostantivo composto da {{奇|き}} (strano, bizzarro) e {{書|か}} (libro, testo). Si riferisce a tomi antichi dai contenuti dubbi o misteriosi.
 example_jp: >-
   ペパーが {{持|も}}って いる のは、エリアゼロに ついて {{書|か}}かれた {{奇|き}}{{書|しょ}}だ。
 example_it: >-
@@ -233,7 +233,7 @@ entry_id: term-anki-l11-yobareru
 card_type: recognition
 front: '{{呼|よ}}ばれる'
 back: >-
-  よばれる — essere chiamato Forma passiva di {{呼|よ}}ぶ (chiamare). Si usa per introdurre il nome proprio o il soprannome con cui qualcosa è noto al pubblico.
+  よばれる — essere chiamato. Forma passiva di {{呼|よ}}ぶ (chiamare). Si usa per introdurre il nome proprio o il soprannome con cui qualcosa è noto al pubblico.
 example_jp: >-
   ここは パルデアの {{大|おお}}{{穴|あな}}と {{呼|よ}}ばれる {{場|ば}}{{所|しょ}}だ。
 example_it: >-
@@ -250,7 +250,7 @@ entry_id: term-anki-l11-saishinbu
 card_type: recognition
 front: '{{最|さい}}{{深|しん}}{{部|ぶ}}'
 back: >-
-  さいしんぶ — parte più profonda Composto da {{最|さい}} (il più), {{深|ふか}} (profondo), e {{部|ぶ}} (sezione/area). Identifica il fondo geografico e inesplorato di un dungeon o cratere.
+  さいしんぶ — parte più profonda. Composto da {{最|さい}} (il più), {{深|ふか}} (profondo), e {{部|ぶ}} (sezione/area). Identifica il fondo geografico e inesplorato di un dungeon o cratere.
 example_jp: >-
   {{最|さい}}{{深|しん}}{{部|ぶ}}には タイムマシンが {{隠|かく}}されて いた。
 example_it: >-
@@ -267,7 +267,7 @@ entry_id: term-anki-l11-shigoto
 card_type: recognition
 front: '{{仕|し}}{{事|ごと}}'
 back: >-
-  しごと — lavoro Sostantivo generale per 'lavoro' come professione o 'incarico' temporaneo. Si applica sia al lavoro d'ufficio sia a compiti specifici nel gioco.
+  しごと — lavoro. Sostantivo generale per 'lavoro' come professione o 'incarico' temporaneo. Si applica sia al lavoro d'ufficio sia a compiti specifici nel gioco.
 example_jp: >-
   ジムリーダーの {{仕|し}}{{事|ごと}}は チャレンジャーの {{実|じつ}}{{力|りょく}}を {{試|ため}}す こと です。
 example_it: >-

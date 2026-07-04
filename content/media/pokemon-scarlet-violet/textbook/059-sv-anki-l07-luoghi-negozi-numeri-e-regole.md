@@ -16,7 +16,7 @@ summary: >-
 
 # Luoghi, regole e quantità tra Paldea e l'Accademia
 
-Tra una visita a Mesapoli, una lezione dell'Accademia e una lotta contro il Team Star, *Pokémon Scarlet & Violet* usa parole molto concrete per farti capire dove sei, che cosa puoi fare e quale regola sta governando la scena. Un [{{店|みせ}}](term:term-anki-l07-mise) non è solo un negozio: con la particella giusta diventa una meta, il luogo dell'acquisto o il punto da cui parte una risorsa per il viaggio.
+Tra una visita a Mesapoli, un incontro all'Accademia e una lotta contro il Team Star, *Pokémon Scarlet & Violet* usa parole molto concrete per farti capire dove sei, che cosa puoi fare e quale regola sta governando la scena. Un [{{店|みせ}}](term:term-anki-l07-mise) diventa una meta, il luogo dell'acquisto o il punto da cui parte una risorsa per il viaggio in base alla particella che lo accompagna.
 
 Lo stesso succede con i numeri e con i ruoli. `2倍`, `4つ`, `教師`, `掟` e `優しい` spostano la lettura tra battaglia, conteggio, scuola, appartenenza e tono umano.
 
@@ -85,7 +85,7 @@ translation_it: >-
 
 *   この {{雪山|ゆきやま}}には ➔ **Luogo messo a tema** (この restringe a "questa" montagna; [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) marca il luogo di esistenza e は lo mette in primo piano).
 *   こおりタイプの ポケモンが ➔ **Nome specificato da [の](grammar:grammar-g030-possesso-collegamento-tra-nomi)** (こおりタイプ non è ghiaccio generico: specifica il tipo dei Pokémon presenti).
-*   `たくさん いる` ➔ **Esistenza di esseri animati** (`いる` si usa per creature e persone; con i Pokémon il gioco non usa `ある`).
+*   `たくさん いる` ➔ **Esistenza di esseri animati** (`いる` si usa per creature e persone; con i Pokémon è il verbo naturale per dire che sono presenti).
 
 #### ⚖️ Contrasto operativo
 
@@ -100,7 +100,7 @@ Pensa a [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) come 
 Quando una schermata ti dà un comando, il verbo e la particella devono essere letti insieme. [{{止|と}}める](term:term-anki-l07-tomeru) è transitivo: qualcuno ferma qualcosa. Questo lo separa da {{止|と}}まる, dove la cosa si ferma o viene descritta come ferma senza mettere in primo piano chi interviene.
 
 - In un messaggio come {{進化|しんか}}を {{止|と}}める, [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene bloccato. Non è "l'evoluzione si ferma" in modo neutro: il testo sta dicendo che il giocatore può intervenire su quel processo.
-- [で](grammar:grammar-g027-luogo-dell-azione-mezzo) può indicare anche il mezzo. Bボタンで `Bボタンで` usa `で` come mezzo operativo: il tasto B e' lo strumento. Nei menu, questo valore di [で](grammar:grammar-g027-luogo-dell-azione-mezzo) compare spesso accanto a pulsanti, funzioni e comandi.
+- [で](grammar:grammar-g027-luogo-dell-azione-mezzo) può indicare anche il mezzo. `Bボタンで` usa `で` come mezzo operativo: il tasto B è lo strumento. Nei menu, questo valore di [で](grammar:grammar-g027-luogo-dell-azione-mezzo) compare spesso accanto a pulsanti, funzioni e comandi.
 - [～ことができる](grammar:grammar-koto-ga-dekiru) trasforma un verbo in possibilità. {{止|と}}める ことが できる non è una riflessione astratta su ciò che esiste: in una UI significa "questa azione è disponibile adesso".
 
 :::example_sentence
@@ -130,7 +130,7 @@ I numeri in *Pokémon Scarlet & Violet* non servono solo a contare oggetti. A vo
 
 - [{{倍|ばい}}](term:term-anki-l07-bai) è il pezzo dei moltiplicatori. Con un numero davanti, come [{{2倍|にばい}}](term:term-anki-l07-nibai), dice "due volte" e quindi "doppio". In battaglia non conta due oggetti: modifica l'intensità di un effetto, per esempio il danno in base all'efficacia dei tipi.
 - [{{4|よっ}}つ](term:term-anki-l07-yottsu) usa il contatore generale つ. È adatto a "cose" o elementi non specializzati: mosse disponibili, opzioni, punti di una lista. Non conta persone come {{人|にん}} e non conta Pokémon con un classificatore specifico; qui il valore pratico è "quattro elementi".
-- [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) è importante anche nei numeri. {{2倍|にばい}}の ダメージ non significa "due danni": [{{2倍|にばい}}](term:term-anki-l07-nibai) specifica il tipo di danno, cioè danno raddoppiato.
+- [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) è importante anche nei numeri. {{2倍|にばい}}の ダメージ va letto come "danno raddoppiato": [{{2倍|にばい}}](term:term-anki-l07-nibai) specifica il tipo di danno, non una quantità separata.
 
 :::example_sentence
 jp: >-
@@ -174,7 +174,7 @@ Quando il testo passa dai menu ai dialoghi, le parole non servono solo a comanda
 
 - [{{教師|きょうし}}](term:term-anki-l07-kyoushi) nomina l'insegnante come professione. Nei dialoghi dell'Accademia sentirai spesso {{先生|せんせい}} come titolo rivolto a una persona; [{{教師|きょうし}}](term:term-anki-l07-kyoushi), invece, classifica il ruolo istituzionale. La differenza è utile: {{先生|せんせい}} può suonare come "professore!", mentre [{{教師|きょうし}}](term:term-anki-l07-kyoushi) parla della categoria.
 - [{{掟|おきて}}](term:term-anki-l07-okite) pesa più di ルール. ルール può essere una regola tecnica, una norma di gioco o un'impostazione; [{{掟|おきて}}](term:term-anki-l07-okite) suona come un codice interno che il gruppo sente come vincolante. Per il Team Star, questo tono è naturale: `掟` suona come codice interno sentito come vincolante dal gruppo.
-- [{{優|やさ}}しい](term:term-anki-l07-yasashii) descrive gentilezza o premura. Non confonderlo con {{易|やさ}}しい, che si legge allo stesso modo ma significa "facile". Se Pepe viene descritto come [{{優|やさ}}しい](term:term-anki-l07-yasashii), la frase non dice che è facile da battere o da capire: dice che sotto il tono brusco c'è attenzione per gli altri.
+- [{{優|やさ}}しい](term:term-anki-l07-yasashii) descrive gentilezza o premura. L'omofono {{易|やさ}}しい significa "facile", mentre [{{優|やさ}}しい](term:term-anki-l07-yasashii) porta il focus sul carattere: se Pepe viene descritto così, sotto il tono brusco c'è attenzione per gli altri.
 
 :::example_sentence
 jp: >-

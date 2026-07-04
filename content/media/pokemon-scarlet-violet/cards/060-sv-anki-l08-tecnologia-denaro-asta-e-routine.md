@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-denaro-asta-e-routine
 media_id: media-pokemon-scarlet-violet
 slug: 060-sv-anki-l08-tecnologia-denaro-asta-e-routine
-title: SV Anki L08 - Tecnologia, denaro, asta e routine
+title: "Tecnologia, denaro e routine nelle scene di Paldea"
 order: 90
 segment_ref: scarlet-violet-prestudy
 ---
@@ -220,7 +220,7 @@ back: >-
 example_jp: >-
   ハッサク{{先生|せんせい}}の {{芸|げい}}{{術|じゅつ}}の {{授業|じゅぎょう}}を {{受|う}}ける。
 example_it: >-
-  Seguo la lezione di arte del professor Hassel.
+  Seguo il corso di arte del professor Hassel.
 notes_it: >-
   {{芸|げい}}{{術|じゅつ}} indica l'arte come disciplina o campo espressivo. All'Accademia è una materia scolastica insegnata da ハッサク{{先生|せんせい}}; nelle Palestre richiama invece figure artistiche come コルサ, senza confondere il ruolo di docente con quello di Capopalestra.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-08]

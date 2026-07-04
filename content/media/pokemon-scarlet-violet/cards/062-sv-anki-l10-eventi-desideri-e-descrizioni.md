@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-062-sv-anki-l10-eventi-desideri-e-descrizioni
 media_id: media-pokemon-scarlet-violet
 slug: 062-sv-anki-l10-eventi-desideri-e-descrizioni
-title: SV Anki L10 - Eventi, desideri e descrizioni
+title: "Eventi, desideri e descrizioni tra Accademia e viaggio"
 order: 92
 segment_ref: scarlet-violet-prestudy
 ---
@@ -220,7 +220,7 @@ back: >-
 example_jp: >-
   {{美|び}}{{術|じゅつ}}の {{授|じゅ}}{{業|ぎょう}}で {{素|す}}{{晴|ば}}らしい {{作|さく}}{{品|ひん}}を {{作|つく}}ったね。
 example_it: >-
-  Hai creato un'opera magnifica durante la lezione di educazione artistica.
+  Hai creato un'opera magnifica durante l'attività di educazione artistica.
 notes_it: >-
   Il termine {{作|さく}}{{品|ひん}} copre qualsiasi produzione artistica o artigianale. Sentirai questa parola specialmente dal Professor Hassel (ハッサク) quando valuta le sculture di Brassius (コルサ) o l'espressività degli studenti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]

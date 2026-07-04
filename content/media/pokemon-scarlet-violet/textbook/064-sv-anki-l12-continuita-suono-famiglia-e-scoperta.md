@@ -139,7 +139,7 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-In `Nにする`, pensa a `に` come a una freccia verso il risultato: In `Nにする`, `に` punta alla forma finale scelta. È un trucco mnemonico, non una definizione storica della particella.
+In `Nにする`, pensa a `に` come a una freccia verso il risultato: `に` punta alla forma finale scelta. È un trucco mnemonico, non una definizione storica della particella.
 
 ## 3. Accademia e relazioni: infermeria, famiglia, sogni e ringraziamenti
 
@@ -201,7 +201,7 @@ In `お{{礼|れい}}に`, pensa a `に` come al ponte verso il gesto successivo
 
 ## 4. Scoperta e incertezza: ciò che non è ancora confermato
 
-Nelle zone di ricerca e nelle informazioni su Pokémon insoliti, il testo cambia registro: Nelle zone di ricerca, il registro passa a informazioni ancora da verificare o scoprire.
+Nelle zone di ricerca e nelle informazioni su Pokémon insoliti, il registro passa a informazioni ancora da verificare o scoprire.
 
 *   [{{未確認|みかくにん}}](term:term-anki-l12-mikakunin) è costruito in modo trasparente: {{未|み}} vale "non ancora" e {{確認|かくにん}} è conferma o verifica. In {{未確認|みかくにん}}のポケモン, il の trasforma tutto il blocco in una descrizione del nome successivo: non "un Pokémon conferma", ma "un Pokémon non ancora confermato / identificato".
 *   [{{見|み}}つかる](term:term-anki-l12-mitsukaru) descrive il venire alla luce di qualcosa. È intransitivo: スパイスが{{見|み}}つかる dice che la spezia viene trovata o salta fuori, non che qualcuno la trova attivamente. Se il testo vuole mettere davanti chi cerca e ciò che trova, il verbo naturale è {{見|み}}つける.
