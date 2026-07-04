@@ -77,7 +77,7 @@ Il gioco alterna tre registri molto riconoscibili. I consigli di esplorazione us
 
 Quando il gioco apre una nuova porzione di mondo, raramente ti spinge con un ordine secco. Il parlato dei personaggi preferisce suggerimenti, priorità temporanee e inviti a muoversi: devi capire se qualcuno ti sta dando una rotta definitiva, un primo appoggio o una chiamata personale.
 
-*   [とりあえず](term:term-e109-toriaezu) mette la frase nel campo del "per ora". Non significa che il personaggio stia scegliendo a caso: significa che, con le informazioni disponibili, quella è la prima mossa sensata. In un consiglio di esplorazione, [とりあえず](term:term-e109-toriaezu) ti fa leggere la meta come punto di partenza provvisorio, non come percorso obbligatorio.
+*   [とりあえず](term:term-e109-toriaezu) mette la frase nel campo del "per ora". Il valore è "per cominciare facciamo questo": con le informazioni disponibili, quella è la prima mossa sensata. In un consiglio di esplorazione, [とりあえず](term:term-e109-toriaezu) ti fa leggere la meta come punto di partenza provvisorio, non come percorso obbligatorio.
 *   [オススメ](term:term-e110-osusume) è la raccomandazione compatta che il gioco usa per rendere più visibile un'opzione. Nei menu può sembrare una semplice etichetta, ma nel parlato funziona come "questa è la scelta che ti conviene guardare adesso". Non descrive solo il gusto del personaggio: orienta la tua attenzione verso un luogo, un'azione o una funzione.
 *   [{{旅立|たびだ}}つ](term:term-v756-tabidatsu) unisce {{旅|たび}} "viaggio" e {{立|た}}つ "alzarsi / partire". Rispetto a un semplice "uscire", porta l'idea di mettersi davvero in cammino. Vicino alla scuola o al campus, il contrasto è netto: lasci il punto sicuro e trasformi l'ambiente in viaggio.
 *   [おいで](term:term-e111-oide) è una chiamata morbida: "vieni", "passa pure", "raggiungimi". Se la trovi in bocca a un personaggio, non leggerla come pulsante di sistema; è una voce che accorcia la distanza tra te, il luogo e la persona che ti sta invitando.
@@ -100,7 +100,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[とりあえず](term:term-e109-toriaezu) non equivale a "senza criterio". La sfumatura è "per cominciare facciamo questo": la frase resta intenzionale anche se il piano è provvisorio. Se lo traduci come casualità, perdi il modo in cui il personaggio ti costruisce una prima rotta leggibile.
+[とりあえず](term:term-e109-toriaezu) vale "per cominciare", non "senza criterio". La frase resta intenzionale anche se il piano è provvisorio. Se lo traduci come casualità, perdi il modo in cui il personaggio ti costruisce una prima rotta leggibile.
 
 ---
 
@@ -108,9 +108,9 @@ translation_it: >-
 
 Fuori dal campus, la lingua descrive lo spazio come qualcosa da attraversare: puoi tornare indietro, il meteo cambia le condizioni, una strada può intrecciarsi e la direzione può diventare incerta. Qui la forma giapponese ti dice se stai leggendo una possibilità, una proprietà del luogo o una conseguenza sul giocatore.
 
-*   [{{戻|もど}}れる](term:term-v746-modoreru) è la forma potenziale di {{戻|もど}}る. Non racconta "torno", ma "posso tornare". Nei dialoghi di esplorazione questo cambia la lettura: il testo non descrive un movimento già iniziato, segnala che una via di ritorno resta aperta.
+*   [{{戻|もど}}れる](term:term-v746-modoreru) è la forma potenziale di {{戻|もど}}る. Il valore è "posso tornare". Nei dialoghi di esplorazione questo cambia la lettura: il testo parla di una via di ritorno ancora aperta, non di un movimento già iniziato.
 *   [{{入|い}}り{{組|く}}む](term:term-v750-irikumu) descrive un percorso che entra, si intreccia e diventa complicato: vicoli, interni, grotte o strade piene di svolte. Quando compare vicino a [{{迷|まよ}}う](term:term-v751-mayou), il giapponese passa dalla forma del luogo alla tua esperienza: il posto è intricato, quindi puoi perderti o restare indeciso.
-*   [{{天気|てんき}}](term:term-v749-tenki) Il meteo diventa una variabile che puo' cambiare incontri, ritmo o comportamento dei Pokemon.
+*   [{{天気|てんき}}](term:term-v749-tenki): il meteo diventa una variabile che può cambiare incontri, ritmo o comportamento dei Pokémon.
 
 :::example_sentence
 jp: >-
@@ -139,9 +139,9 @@ Per [～によって](grammar:grammar-g101-a-seconda-di-in-base-a), immagina una
 
 ## 3. Aiuto, ricompense e sfide affrontabili
 
-Molti NPC trasformano azioni semplici in piccoli scambi sociali: aiuti qualcuno, ricevi qualcosa, scopri che una lotta è alla tua portata o che puoi finalmente provarci. Il punto non è solo tradurre il verbo: devi capire se la frase parla di gesto, premio, risultato possibile o accesso alla sfida.
+Molti NPC trasformano azioni semplici in piccoli scambi sociali: aiuti qualcuno, ricevi qualcosa, scopri che una lotta è alla tua portata o che puoi finalmente provarci. Il punto va oltre la traduzione del verbo: devi capire se la frase parla di gesto, premio, risultato possibile o accesso alla sfida.
 
-*   [{{人助|ひとだす}}け](term:term-v743-hitodasuke) unisce {{人|ひと}} "persona" e {{助|たす}}け "aiuto". Non è un generico "essere buoni": è l'atto concreto di dare una mano a qualcuno. Se l'NPC lo usa dopo un problema risolto, il focus resta sul gesto sociale, non sulla meccanica del premio.
+*   [{{人助|ひとだす}}け](term:term-v743-hitodasuke) unisce {{人|ひと}} "persona" e {{助|たす}}け "aiuto". È l'atto concreto di dare una mano a qualcuno. Se l'NPC lo usa dopo un problema risolto, il focus resta sul gesto sociale, non sulla meccanica del premio.
 *   [プレゼント](term:term-v744-purezento) può essere un regalo affettuoso o una ricompensa consegnata dopo un'azione. Il katakana è trasparente, ma la scena decide il valore: in un dialogo caldo è dono, in uno scambio operativo può essere premio.
 *   [{{勝|か}}てる](term:term-v745-kateru) e [{{挑|いど}}める](term:term-v757-idomeru) sono forme potenziali, ma guardano due momenti diversi. [{{勝|か}}てる](term:term-v745-kateru) guarda al risultato possibile: riuscire a vincere. [{{挑|いど}}める](term:term-v757-idomeru) guarda all'accesso o al coraggio di iniziare: poter sfidare. In una palestra, questa differenza separa "puoi batterlo" da "puoi affrontarlo".
 
@@ -160,7 +160,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{勝|か}}てる](term:term-v745-kateru) non è [{{挑|いど}}める](term:term-v757-idomeru). Il primo valuta la riuscita della lotta; il secondo apre la possibilità di affrontarla. Se li scambi, puoi leggere come promessa di vittoria una frase che in realtà ti sta solo dicendo che la sfida è accessibile.
+[{{勝|か}}てる](term:term-v745-kateru) e [{{挑|いど}}める](term:term-v757-idomeru) puntano a momenti diversi. Il primo valuta la riuscita della lotta; il secondo apre la possibilità di affrontarla. Se li scambi, puoi leggere come promessa di vittoria una frase che in realtà ti sta solo dicendo che la sfida è accessibile.
 
 ---
 
@@ -168,8 +168,8 @@ translation_it: >-
 
 Le scene di picnic portano in primo piano un giapponese domestico: ingredienti, condimenti, riposo e porzioni condivise. Sono parole piccole, ma fanno vedere come il gioco costruisce cura quotidiana attorno al team: non solo battaglie, ma preparazione, pausa e attenzione verso chi viaggia con te.
 
-*   [{{思|おも}}いつく](term:term-v747-omoitsuku) descrive un'idea che viene in mente. {{思|おも}}い richiama il pensare, mentre つく aggiunge l'idea di arrivare e attaccarsi a un punto. In una scena di sandwich, non significa conoscere già tutto: significa che una soluzione o una combinazione ti viene in mente in quel momento.
-*   [{{調味料|ちょうみりょう}}](term:term-v748-choumiryou) è il condimento. {{調|ちょう}} rimanda al regolare o aggiustare, {{味|み}} al sapore, {{料|りょう}} al materiale. Nel sandwich, quindi, non è l'ingrediente principale: è ciò che regola il gusto e completa la preparazione.
+*   [{{思|おも}}いつく](term:term-v747-omoitsuku) descrive un'idea che viene in mente. {{思|おも}}い richiama il pensare, mentre つく aggiunge l'idea di arrivare e attaccarsi a un punto. In una scena di sandwich, una soluzione o una combinazione ti arriva in quel momento, invece di essere già nota dall'inizio.
+*   [{{調味料|ちょうみりょう}}](term:term-v748-choumiryou) è il condimento. {{調|ちょう}} rimanda al regolare o aggiustare, {{味|み}} al sapore, {{料|りょう}} al materiale. Nel sandwich regola il gusto e completa la preparazione, mentre l'ingrediente principale resta un altro pezzo.
 *   [おすそわけ](term:term-v758-osusowake) indica condividere una parte di ciò che si ha già. Il prefisso お ammorbidisce la parola, mentre すそわけ porta l'idea di distribuire una porzione. È diverso da [プレゼント](term:term-v744-purezento): un regalo può essere pensato apposta per te; [おすそわけ](term:term-v758-osusowake) nasce da qualcosa che il parlante possiede e divide.
 *   [{{休息|きゅうそく}}](term:term-v759-kyuusoku) è riposo come pausa recuperativa. Se compare in una scena di picnic, il testo non sta solo dicendo "fermarsi": sta dando valore al tempo in cui il gruppo si ricarica, mangia o torna in forma prima di ripartire.
 
@@ -184,25 +184,25 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `バッグに {{食材|しょくざい}}を` ➔ **Luogo e oggetto dell'azione**: la borsa è la destinazione, gli ingredienti sono ciò che viene inserito.
-*   つめすぎちゃった ➔ **Eccesso già avvenuto**: [～すぎる](grammar:grammar-g061-troppo) segnala "troppo", mentre ちゃった aggiunge una sfumatura di completamento ormai fatto.
+*   つめすぎちゃった ➔ **Eccesso già avvenuto**: [～すぎる](grammar:grammar-g061-troppo) marca il "troppo", mentre ちゃった aggiunge una sfumatura di completamento ormai fatto.
 *   `おすそわけして` ➔ **Condivisione di una porzione**: il parlante non crea un regalo dal nulla, divide qualcosa che ha in più.
 *   あげるね ➔ **Favore verso l'altro**: [～てあげる](grammar:grammar-te-ageru) presenta l'azione come beneficio per chi riceve, e ね mantiene un tono caldo.
 
 #### ⚖️ Contrasto operativo
 
-[おすそわけ](term:term-v758-osusowake) non è un semplice [プレゼント](term:term-v744-purezento). Con [おすそわけ](term:term-v758-osusowake) leggi una distribuzione da ciò che il parlante ha già; con [プレゼント](term:term-v744-purezento) leggi un dono o premio più autonomo. Il risultato può sembrare simile, ma il rapporto sociale cambia.
+[おすそわけ](term:term-v758-osusowake) differisce da [プレゼント](term:term-v744-purezento): con [おすそわけ](term:term-v758-osusowake) leggi una distribuzione da ciò che il parlante ha già; con [プレゼント](term:term-v744-purezento) leggi un dono o premio più autonomo. Il risultato può sembrare simile, ma il rapporto sociale cambia.
 
 #### 🧠 Gancio cognitivo
 
-Per [{{調味料|ちょうみりょう}}](term:term-v748-choumiryou), pensa al condimento come alla "manopola del gusto": non sostituisce il panino, ne regola il sapore. È un'immagine mnemonica utile per non confonderlo con gli ingredienti principali.
+Per [{{調味料|ちょうみりょう}}](term:term-v748-choumiryou), pensa al condimento come alla "manopola del gusto": regola il sapore del panino senza diventare ingrediente principale. È un'immagine mnemonica utile per non confonderlo con gli ingredienti principali.
 
 ---
 
 ## 5. Compagni Pokémon e informazioni personali
 
-Quando il gioco parla del rapporto con il team, la frase si sposta dal sistema alla relazione. Le parole non dicono solo chi combatte: dicono chi viaggia con te, che cosa puoi scoprire e quanto la compagnia si sta trasformando in affiatamento.
+Quando il gioco parla del rapporto con il team, la frase si sposta dal sistema alla relazione. Le parole raccontano chi combatte, chi viaggia con te, che cosa puoi scoprire e quanto la compagnia si sta trasformando in affiatamento.
 
-*   [{{相棒|あいぼう}}](term:term-v752-aibou) è più caldo di un generico "alleato". Indica un partner fidato, qualcuno con cui agisci fianco a fianco. In *Scarlet & Violet* funziona bene per il Pokémon che ti accompagna perché non dice soltanto "è dalla tua parte": dice "è il tuo compagno di viaggio".
+*   [{{相棒|あいぼう}}](term:term-v752-aibou) è più caldo di un generico "alleato". Indica un partner fidato, qualcuno con cui agisci fianco a fianco. In *Scarlet & Violet* funziona bene per il Pokémon che ti accompagna perché esprime il valore di compagno di viaggio, non solo di alleato.
 *   [{{知|し}}れる](term:term-v753-shireru) è il potenziale di {{知|し}}る: "poter sapere", "riuscire a venire a conoscenza". Quando un personaggio dice che qualcosa {{知|し}}れる, non sta dicendo che lo sai già; sta dicendo che la situazione ti permette di scoprirlo.
 *   [なかよし](term:term-v754-nakayoshi) descrive una relazione buona e affiatata. Con なれる, la frase non fotografa solo uno stato: mostra il passaggio verso quello stato, "poter diventare più in sintonia". [{{近況|きんきょう}}](term:term-v755-kinkyou), invece, raccoglie aggiornamenti recenti: come stanno andando le cose in questo periodo, non la biografia completa.
 
@@ -233,7 +233,7 @@ Non tutti gli incontri quotidiani sono teneri o affidabili. Alcuni NPC si presen
 
 *   [{{自称|じしょう}}](term:term-v760-jishou) combina {{自|じ}} "sé" e {{称|しょう}} "chiamare / denominare": qualcuno si definisce da solo in un certo modo. In italiano "sedicente" funziona bene perché contiene già un dubbio: il testo riporta l'etichetta, ma non la conferma.
 *   [あやしい](term:term-v761-ayashii) copre "sospetto", "losco", "poco chiaro". Può modificare una persona, un servizio o un'offerta. Se appare vicino a un invito troppo cortese o troppo entusiasta, prepara una lettura prudente della scena.
-*   [なんということでしょう](term:term-e112-nantoiukotodeshou) è una formula esclamativa teatrale: letteralmente suona come "che cosa mai è questa cosa?". Nel parlato dà effetto da presentatore o reazione esagerata; non è una domanda normale a cui il giocatore deve rispondere.
+*   [なんということでしょう](term:term-e112-nantoiukotodeshou) è una formula esclamativa teatrale: letteralmente suona come "che cosa mai è questa cosa?". Nel parlato dà effetto da presentatore o reazione esagerata, più che domanda rivolta al giocatore.
 
 :::example_sentence
 jp: >-
@@ -251,7 +251,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[あやしい](term:term-v761-ayashii) non significa solo "strano". Se modifica una persona o un servizio, aggiunge dubbio sulla fiducia: puoi aspettarti ambiguità, piccola truffa, esagerazione o una presentazione volutamente poco credibile.
+[あやしい](term:term-v761-ayashii) vale più di "strano". Se modifica una persona o un servizio, aggiunge dubbio sulla fiducia: puoi aspettarti ambiguità, piccola truffa, esagerazione o una presentazione volutamente poco credibile.
 
 ---
 

@@ -28,7 +28,7 @@ La cosa da seguire non è solo il significato delle singole parole. È il tipo d
 
 - [{{引|ひ}}き{{返|かえ}}す](term:term-v661-hikikaesu) — tornare indietro sui propri passi
 - [{{伝統|でんとう}}{{行事|ぎょうじ}}](term:term-v662-dentougyouji) — evento tramandato / tradizione scolastica
-- [{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou) — attività fuori dalla lezione ordinaria
+- [{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou) — attività extrascolastica / fuori dall'aula
 - [まとめ{{売|う}}り](term:term-v664-matomeuri) — vendita in blocco
 - [{{全選択|ぜんせんたく}}](term:term-v665-zensentaku) — selezione di tutte le voci
 - [{{勝敗|しょうはい}}](term:term-v666-shouhai) — esito complessivo: vittoria o sconfitta
@@ -59,7 +59,7 @@ La cosa da seguire non è solo il significato delle singole parole. È il tipo d
 ## Pattern grammaticali chiave
 
 - [～ってば](grammar:grammar-g109-ti-sto-dicendo-che) — ti sto dicendo che...
-- [～わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) — non è che… / non significa che…
+- [～わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) — conclusione da ridimensionare / mica per forza...
 - [{{使役|しえき}}](grammar:grammar-g111-far-fare-lasciar-fare) — far fare / lasciar fare
 
 ## Etichette da riconoscere
@@ -101,7 +101,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{全選択|ぜんせんたく}}](term:term-v665-zensentaku) non significa "scegliere la soluzione migliore". Parla di ampiezza, non di qualità: tutto ciò che rientra nella lista selezionabile viene incluso nell'azione successiva. Per la "soluzione migliore" il gioco usa un'altra logica, come [{{最適解|さいてきかい}}](term:term-v679-saitekikai), dove il punto è l'efficacia della scelta.
+[{{全選択|ぜんせんたく}}](term:term-v665-zensentaku) vale "selezionare tutto", non "scegliere la soluzione migliore". Parla di ampiezza, non di qualità: tutto ciò che rientra nella lista selezionabile viene incluso nell'azione successiva. Per la "soluzione migliore" il gioco usa un'altra logica, come [{{最適解|さいてきかい}}](term:term-v679-saitekikai), dove il punto è l'efficacia della scelta.
 
 Gli stati di ricezione lavorano in modo simile, ma sul tempo dell'azione. [{{受|う}}けとり{{可能|かのう}}](term:term-v668-uketorikanou) segnala che qualcosa può ancora essere preso in consegna; [{{受|う}}けとり{{済|ず}}み](term:term-v669-uketorizumi) segnala che l'operazione è già stata completata. [{{常設|じょうせつ}}](term:term-v677-jousetsu) aggiunge un'altra informazione: `常設` indica una funzione o presenza stabile.
 
@@ -141,8 +141,8 @@ translation_it: >-
 
 Fuori dai menu, *Scarlet & Violet* usa parole scolastiche per dare forma all'esplorazione. L'Accademia non è solo uno sfondo: incornicia il viaggio, le regole di comportamento e l'uscita nel mondo aperto. Qui conviene leggere i composti per blocchi, perché ogni metà delimita il tipo di attività.
 
-- [{{伝統|でんとう}}{{行事|ぎょうじ}}](term:term-v662-dentougyouji) combina {{伝統|でんとう}}, ciò che viene tramandato, e {{行事|ぎょうじ}}, un evento organizzato. Nel contesto scolastico non indica una festa casuale: dà all'evento un peso istituzionale, come qualcosa che l'Accademia riconosce e ripete.
-- [{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou) si legge come {{課外|かがい}}, fuori dal corso o dalla lezione ordinaria, più {{活動|かつどう}}, attività. In Paldea non va ristretto automaticamente a "club": può indicare proprio l'uscita esplorativa che porta lo studente fuori dall'aula.
+- [{{伝統|でんとう}}{{行事|ぎょうじ}}](term:term-v662-dentougyouji) combina {{伝統|でんとう}}, ciò che viene tramandato, e {{行事|ぎょうじ}}, un evento organizzato. Nel contesto scolastico dà all'evento un peso istituzionale, come qualcosa che l'Accademia riconosce e ripete.
+- [{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou) si legge come {{課外|かがい}}, fuori dal corso ordinario e dall'aula, più {{活動|かつどう}}, attività. In Paldea può indicare proprio l'uscita esplorativa che porta lo studente nel mondo aperto, oltre al caso dei club scolastici.
 - [{{風紀|ふうき}}](term:term-v667-fuuki) porta il focus su disciplina, ordine e comportamento atteso. Se compare in bocca a personale scolastico o dentro una regola, la frase non sta parlando di forza in battaglia, ma di come uno studente deve stare dentro gli spazi e le norme dell'Accademia.
 
 :::example_sentence
@@ -173,7 +173,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{課外|かがい}}{{活動|かつどう}}では` ➔ **Cornice dell'azione** (`では` restringe la regola al contesto dell'attività fuori lezione).
+*   `{{課外|かがい}}{{活動|かつどう}}では` ➔ **Cornice dell'azione** (`では` restringe la regola al contesto dell'attività extrascolastica).
 *   `{{困難|こんなん}}な {{道|みち}}でも` ➔ **Concessione** (`でも` vale come "anche su", quindi include perfino un percorso difficile).
 *   `{{引|ひ}}き{{返|かえ}}すことができます` ➔ **Possibilità di ritorno** (`ことができます` presenta il tornare indietro come opzione disponibile).
 
@@ -186,7 +186,7 @@ translation_it: >-
 Le frasi più corte dei personaggi spesso sono quelle che cambiano di più il tono. Una domanda di recupero mossa è pratica, [おつかれさま](term:term-e108-otsukaresama) riconosce uno sforzo, [〜してもいいからね](term:term-e107-shitemoiikarane) ammorbidisce un permesso, mentre [～ってば](grammar:grammar-g109-ti-sto-dicendo-che) e [～わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) regolano la pressione del parlante.
 
 - [どの {{技|わざ}}を {{回復|かいふく}}する？](term:term-e106-dono-wazao-kaifukusuru) è una domanda di selezione. どの chiede "quale" dentro un set, {{技|わざ}}を marca la mossa come oggetto, e {{回復|かいふく}}する non vuol dire "curare" in astratto: nel contesto delle mosse indica recuperare una risorsa o ripristinare l'uso.
-- [おつかれさま](term:term-e108-otsukaresama) contiene つかれ, fatica o stanchezza, ma nel parlato funziona come riconoscimento dello sforzo. Dopo una sfida, una lezione o un'attività, non è un semplice saluto neutro: dice che l'impegno è stato visto.
+- [おつかれさま](term:term-e108-otsukaresama) contiene つかれ, fatica o stanchezza, ma nel parlato funziona come riconoscimento dello sforzo. Dopo una sfida, un corso o un'attività, dà l'idea che l'impegno sia stato visto.
 - [〜してもいいからね](term:term-e107-shitemoiikarane) combina 〜してもいい, "anche se fai così va bene", con からね, che aggiunge una spiegazione morbida e condivisa. Invece di dare un ordine, il personaggio crea spazio: ti sta dicendo che puoi fare quell'azione senza sentirla come una violazione.
 
 :::example_sentence
@@ -214,7 +214,7 @@ translation_it: >-
 *   `{{休|やす}}んでも` ➔ **Forma concessiva** (`〜ても` vale come "anche se riposi").
 *   `いいからね` ➔ **Permesso rassicurante** (`いい` dà l'ok, `からね` lo rende più morbido e spiegato).
 
-Nel parlato più emotivo, [～ってば](grammar:grammar-g109-ti-sto-dicendo-che) aumenta la pressione su qualcosa che il parlante sente di aver già chiarito. Non cambia il verbo principale; cambia l'urgenza con cui viene presentato. [～わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) fa quasi il movimento opposto: nega una conclusione troppo forte senza sostituirla per forza con il contrario.
+Nel parlato più emotivo, [～ってば](grammar:grammar-g109-ti-sto-dicendo-che) aumenta la pressione su qualcosa che il parlante sente di aver già chiarito. Non cambia il verbo principale; cambia l'urgenza con cui viene presentato. [～わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) fa quasi il movimento opposto: ridimensiona una conclusione troppo forte senza sostituirla per forza con il contrario.
 
 :::example_sentence
 jp: >-
@@ -233,14 +233,14 @@ translation_it: >-
 jp: >-
   きらいな わけじゃない。
 translation_it: >-
-  Non è che lo odi / non è che non mi piaccia.
+  Mica lo odi / mica ti dispiace davvero.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `きらいな` ➔ **Giudizio possibile** (la lettura che qualcuno potrebbe attribuire al parlante).
 *   `わけ` ➔ **Conclusione o ragione implicita** ("il fatto è che...").
-*   `じゃない` ➔ **Negazione della conclusione** (non trasforma automaticamente la frase in "mi piace"; blocca solo la lettura troppo netta).
+*   `じゃない` ➔ **Negazione della conclusione** (blocca una lettura troppo netta senza trasformarla automaticamente nel contrario).
 
 #### ⚖️ Contrasto operativo
 
@@ -269,8 +269,8 @@ Per riconoscere il [{{使役|しえき}}](grammar:grammar-g111-far-fare-lasciar-
 
 Quando il testo parla di lotte, raid o attraversamento del campo, i termini non indicano solo "difficile" o "muoversi". Separano esito, cooperazione, sforzo richiesto, scelta efficace e libertà di movimento. Questa distinzione evita di leggere tutto come semplice flavor: spesso il gioco ti sta dicendo che cosa aspettarti dalla situazione.
 
-- [{{勝敗|しょうはい}}](term:term-v666-shouhai) unisce vittoria e sconfitta in un unico concetto: l'esito complessivo. `勝敗` e' l'esito complessivo della sfida.
-- [{{共闘|きょうとう}}](term:term-v671-kyoutou) combina {{共|きょう}}, insieme, e {{闘|とう}}, combattere. In un raid o in una missione non basta essere nello stesso luogo: il termine segnala che più partecipanti agiscono contro un avversario o un problema comune.
+- [{{勝敗|しょうはい}}](term:term-v666-shouhai) unisce vittoria e sconfitta in un unico concetto: l'esito complessivo. `勝敗` è l'esito complessivo della sfida.
+- [{{共闘|きょうとう}}](term:term-v671-kyoutou) combina {{共|きょう}}, insieme, e {{闘|とう}}, combattere. In un raid o in una missione richiede più che stare nello stesso luogo: il termine segnala che più partecipanti agiscono contro un avversario o un problema comune.
 - [{{困難|こんなん}}](term:term-v672-konnan), [{{一苦労|ひとくろう}}](term:term-v681-hitokurou) e [{{最適解|さいてきかい}}](term:term-v679-saitekikai) misurano tre cose diverse. [{{困難|こんなん}}](term:term-v672-konnan) nomina un ostacolo serio o strutturale; [{{一苦労|ひとくろう}}](term:term-v681-hitokurou) suona come "sarà una bella fatica"; [{{最適解|さいてきかい}}](term:term-v679-saitekikai) indica la risposta più efficace dentro quelle condizioni.
 - [{{腕|うで}}を{{磨|みが}}く](term:term-v680-ude-wo-migaku) usa {{腕|うで}}, braccio o abilità pratica, e {{磨|みが}}く, lucidare o affinare. Nei dialoghi di allenamento non parla di pulire qualcosa: descrive il migliorare le proprie capacità con pratica e scontri.
 

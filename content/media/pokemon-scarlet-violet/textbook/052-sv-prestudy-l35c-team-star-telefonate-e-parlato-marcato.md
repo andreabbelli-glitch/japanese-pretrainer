@@ -22,15 +22,15 @@ summary: >-
 # Telefonate, identità nascoste e parlato marcato
 
 Nel filone Team Star, *Pokémon Scarlet & Violet* cambia il modo in cui una
-conversazione comincia. Il Rotom Phone non è più solo un telefono comodo: può
-diventare un canale forzato, controllato da una voce che sa già dove ti trovi e
-che cosa stai facendo.
+conversazione comincia. Il Rotom Phone passa da telefono comodo a canale
+forzato, controllato da una voce che sa già dove ti trovi e che cosa stai
+facendo.
 
 La scena si legge bene quando tieni insieme tre livelli: l'accesso tecnico al
 dispositivo, l'identità scelta da chi parla e il tono con cui quella voce si
-impone. [ハッキング](term:term-v762-hakkingu) non descrive una chiamata
-normale, [カシオペア](term:term-v764-kashiopea) non è solo un nome proprio, e
-[オマエ](term:term-v765-omae) non ha la stessa distanza di キミ o あなた.
+impone. [ハッキング](term:term-v762-hakkingu) porta la chiamata fuori dal canale
+normale, [カシオペア](term:term-v764-kashiopea) funziona come identità dichiarata,
+e [オマエ](term:term-v765-omae) ha una distanza molto diversa da キミ o あなた.
 
 ## Termini chiave
 
@@ -50,7 +50,7 @@ normale, [カシオペア](term:term-v764-kashiopea) non è solo un nome proprio
 ## Pattern grammaticali chiave
 
 - [～っぽい](grammar:grammar-g112-sembra-ha-l-aria-di) — sembra / ha l'aria di / da...
-- [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che) — non è che...? / non sarà che...?
+- [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che) — forse...? / ipotesi colloquiale
 - [～つもりはない](grammar:grammar-g114-non-ho-intenzione-di) — non ho intenzione di...
 
 ## Etichette da riconoscere
@@ -61,15 +61,15 @@ normale, [カシオペア](term:term-v764-kashiopea) non è solo un nome proprio
 
 ## 1. Il contatto forzato: quando la voce prende il telefono
 
-La chiamata va letta come ingresso di qualcuno nella scena a distanza. Il giapponese lo segnala con parole tecniche
+La chiamata va letta come ingresso di qualcuno nella scena a distanza. Il giapponese lo mostra con parole tecniche
 molto dirette.
 
 *   [ハッキング](term:term-v762-hakkingu) resta katakana, quindi il valore
-    tecnico è immediato: hacking, intrusione, accesso non normale. In una frase
+    tecnico è immediato: hacking, intrusione, accesso forzato. In una frase
     con `スマホを ハッキングして`, la particella `を` marca lo smartphone come
     bersaglio dell'azione e la forma in `-te` collega l'intrusione alla chiamata
-    che segue. Il risultato pratico è chiaro: la comunicazione non è stata
-    accettata da chi riceve, è stata forzata da chi parla.
+    che segue. Il risultato pratico è chiaro: la comunicazione è forzata da chi
+    parla invece che accettata da chi riceve.
 *   [{{監視|かんし}}カメラ](term:term-v763-kanshikamera) aggiunge la prova visiva.
     `{{監視|かんし}}` è sorveglianza, `カメラ` è il supporto fisico, e insieme
     indicano una scena osservata a distanza. Quando la voce cita le telecamere,
@@ -111,8 +111,8 @@ translation_it: >-
     catturata, non la persona fisicamente presente davanti al parlante.
 *   `{{映|うつ}}っていた` ➔ **Stato registrato nel passato**: la tua immagine era
     già comparsa nelle riprese quando la voce commenta la scena.
-*   `よ` ➔ **Conferma marcata**: il parlante non chiede se è successo; lo
-    comunica come informazione che possiede.
+*   `よ` ➔ **Conferma marcata**: il parlante comunica il fatto come informazione
+    già in suo possesso, senza chiedere conferma.
 
 #### ⚖️ Contrasto operativo
 
@@ -179,7 +179,7 @@ translation_it: >-
 
 *   キミ può essere diretto ma relativamente neutro; [オマエ](term:term-v765-omae)
     sposta la relazione verso rudezza, dominio o familiarità aggressiva. In
-    italiano non basta tradurlo sempre con "tu": serve ascoltare che tipo di
+    in italiano serve più del semplice "tu": ascolta che tipo di
     posizione si prende chi parla.
 
 #### 🧠 Gancio cognitivo
@@ -196,11 +196,11 @@ spostano un incarico su di te: gestire una situazione, continuare a proteggere
 un Pokémon, accettare che una responsabilità resti aperta dopo la scena.
 
 *   [{{管理|かんり}}](term:term-v766-kanri) è gestione, controllo, amministrazione
-    responsabile. Se compare con un Pokémon come oggetto, non indica affetto:
-    indica la capacità di tenere sotto controllo una situazione o una creatura
-    che richiede attenzione.
+    responsabile. Se compare con un Pokémon come oggetto, guarda alla capacità
+    di tenere sotto controllo una situazione o una creatura che richiede
+    attenzione, più che all'affetto.
 *   [{{引|ひ}}き{{続|つづ}}き](term:term-v767-hikitsuzuki) spinge l'azione oltre
-    il momento della battuta. Non è un "ancora" generico: vuol dire "continuando
+    il momento della battuta. Ha un valore più specifico di "ancora": vuol dire "continuando
     da qui", "da questo punto in avanti". Quando apre una richiesta, prepara il
     lettore a un compito che non finisce con la conversazione.
 *   [かわいがる](term:term-v768-kawaigaru) cambia registro rispetto a
@@ -330,8 +330,8 @@ non aggiungono informazioni nuove, ma cambiano il modo in cui la battuta arriva.
     prima di una constatazione, aspettati che il parlante stia valutando la
     scena dall'alto.
 *   [やるっきゃない](term:term-e114-yarukkyanai) comprime una decisione colloquiale.
-    `やる` è "fare"; `っきゃない` viene da `しかない`, "non c'è altro che". Non è
-    un dovere burocratico, ma una formula da momento pratico: a questo punto le
+    `やる` è "fare"; `っきゃない` viene da `しかない`, "non c'è altro che". È una
+    formula da momento pratico, più che un dovere burocratico: a questo punto le
     alternative sono finite e bisogna agire.
 
 :::example_sentence
@@ -363,7 +363,7 @@ translation_it: >-
 #### 🧠 Gancio cognitivo
 
 *   Per [やるっきゃない](term:term-e114-yarukkyanai), immagina una porta che si
-    chiude dietro al personaggio. Non è etimologia, è un gancio: aiuta a sentire
+    chiude dietro al personaggio. È un gancio: aiuta a sentire
     il valore "ormai si va".
 
 ## Esempi guidati di riepilogo

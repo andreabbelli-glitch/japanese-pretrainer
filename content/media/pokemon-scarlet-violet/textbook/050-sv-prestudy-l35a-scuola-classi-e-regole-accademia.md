@@ -21,9 +21,9 @@ summary: >-
 
 # Aula, classi e regole dell'accademia
 
-L'accademia di *Pokémon Scarlet & Violet* non è solo lo sfondo da cui parte il
-viaggio: è il luogo in cui il gioco ti insegna a leggere classificazioni,
-ruoli, spostamenti e regole. Una lezione di lotta può spiegare la differenza tra
+L'accademia di *Pokémon Scarlet & Violet* parte come ambiente narrativo e
+diventa anche il luogo in cui il gioco ti insegna a leggere classificazioni,
+ruoli, spostamenti e regole. Un corso di lotta può spiegare la differenza tra
 [{{物理|ぶつり}}](term:term-v730-butsuri) e
 [{{分類|ぶんるい}}](term:term-v731-bunrui); subito dopo, un avviso di corridoio può
 spingerti verso l'aula con [{{始業|しぎょう}}](term:term-v738-shigyou) e
@@ -46,7 +46,7 @@ battuta tra compagni, ma in una scena regolata dall'accademia.
 - [{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) — numero di
   matricola
 - [{{敬語|けいご}}](term:term-v736-keigo) — linguaggio cortese / onorifico
-- [{{始業|しぎょう}}](term:term-v738-shigyou) — inizio delle lezioni / inizio
+- [{{始業|しぎょう}}](term:term-v738-shigyou) — inizio dell'attività / inizio
   attività
 - [{{急|いそ}}ぐ](term:term-v739-isogu) — affrettarsi / correre
 - [{{立|た}}ち{{入|い}}り](term:term-v740-tachiiri) — accesso / ingresso in
@@ -62,7 +62,7 @@ battuta tra compagni, ma in una scena regolata dall'accademia.
 - [{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou)を
   {{呼|よ}}ばれる — essere chiamati tramite numero di matricola
 - [{{始業|しぎょう}}](term:term-v738-shigyou){{時間|じかん}}です — è l'ora di
-  inizio delle lezioni
+  inizio dell'attività in aula
 - [{{校則|こうそく}}](term:term-v741-kousoku)
   [{{違反|いはん}}](term:term-v742-ihan)です — è una violazione del regolamento
   scolastico
@@ -99,7 +99,7 @@ griglia per leggere le mosse durante il gioco.
     divisione tecnica, non a una descrizione del mondo.
 *   [{{分類|ぶんるい}}](term:term-v731-bunrui) è il contenitore astratto di quella
     divisione. `{{分|ぶん}}` richiama il separare, `{{類|るい}}` il tipo o gruppo:
-    il risultato è una classificazione. In aula, questa parola segnala che la
+    il risultato è una classificazione. In aula, questa parola mostra che la
     frase non sta commentando una mossa singola, ma il criterio con cui il gioco
     organizza molte mosse insieme.
 
@@ -142,8 +142,7 @@ parlare in modo amichevole fuori dall'aula, ma quando la frase usa termini da
 registro scolastico cambia la distanza.
 
 *   [{{担当|たんとう}}](term:term-v733-tantou) vuol dire "essere responsabile di".
-    Non dice solo che un personaggio insegna: assegna una materia, un compito o
-    un'area a una persona. In `バトル{{学|がく}}{{担当|たんとう}}`, la parte prima di
+    Assegna una materia, un compito o un'area a una persona. In `バトル{{学|がく}}{{担当|たんとう}}`, la parte prima di
     [{{担当|たんとう}}](term:term-v733-tantou) è l'ambito; il termine finale dice chi
     lo ha in carico.
 *   [{{学籍|がくせき}}{{番号|ばんごう}}](term:term-v734-gakusekibangou) è molto più
@@ -153,7 +152,7 @@ registro scolastico cambia la distanza.
     o procedura, non da conversazione tra amici.
 *   [{{敬語|けいご}}](term:term-v736-keigo) è il linguaggio cortese o onorifico.
     In aula non serve solo a "essere educati": marca distanza, ruolo e
-    controllo della situazione. Se appare accanto a professori, lezioni o
+    controllo della situazione. Se appare accanto a professori, corsi o
     risposte formali, la frase ti sta dicendo come cambia il rapporto tra i
     personaggi.
 
@@ -198,14 +197,14 @@ jp: >-
   {{授業中|じゅぎょうちゅう}}って {{友達|ともだち}}にも なんか
   {{敬語|けいご}}に なっちゃう。
 translation_it: >-
-  Durante la lezione finisci per usare un linguaggio più cortese perfino con gli
+  Durante l'ora di corso finisci per usare un linguaggio più cortese perfino con gli
   amici.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `{{授業中|じゅぎょうちゅう}}って` ➔ **Tema colloquiale** (`って` apre il discorso:
-    "quando sei durante una lezione...").
+    "quando sei in piena attività in aula...").
 *   `{{友達|ともだち}}にも` ➔ **Estensione inattesa** (`にも` porta l'effetto perfino
     sugli amici, non solo sui professori).
 *   {{敬語|けいご}}に なっちゃう ➔ **Cambio involontario di registro** (に
@@ -246,7 +245,7 @@ sta spingendo verso una destinazione prima che inizi qualcosa.
     o raduni all'aperto.
 *   [{{始業|しぎょう}}](term:term-v738-shigyou) unisce {{始|し}}, "iniziare", e
     `{{業|ぎょう}}`, "attività / lavoro scolastico". In un avviso non è una
-    data generica: è il momento in cui la lezione o la giornata scolastica
+    data generica: è il momento in cui il corso o la giornata scolastica
     entra in funzione.
 *   [{{急|いそ}}ぐ](term:term-v739-isogu) non è semplicemente "correre": è
     affrettarsi perché un orario o una situazione crea pressione. Con una
@@ -274,7 +273,7 @@ translation_it: >-
 jp: >-
   そろそろ {{始業|しぎょう}}{{時間|じかん}}です。
 translation_it: >-
-  Tra poco è l'ora di inizio delle lezioni.
+  Tra poco è l'ora di inizio dell'attività in aula.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -304,11 +303,11 @@ spiega il motivo e poi applica una categoria ufficiale.
     Se leggi `〜への{{立|た}}ち{{入|い}}り`, guarda il pezzo prima di `への`: quello è
     il luogo verso cui l'ingresso viene regolato.
 *   [{{校則|こうそく}}](term:term-v741-kousoku) trasforma la scena in regolamento
-    scolastico. `{{校|こう}}` richiama la scuola, `{{則|そく}}` la regola: non è
-    una preferenza personale di un professore, ma una norma dell'istituzione.
+    scolastico. `{{校|こう}}` richiama la scuola, `{{則|そく}}` la regola: è una
+    norma dell'istituzione, non una preferenza personale di un professore.
 *   [{{違反|いはん}}](term:term-v742-ihan) è il superamento della regola. Quando
-    compare insieme a [{{校則|こうそく}}](term:term-v741-kousoku), la frase non dice
-    "meglio evitare"; classifica l'azione come infrazione.
+    compare insieme a [{{校則|こうそく}}](term:term-v741-kousoku), la frase supera il
+    semplice "meglio evitare" e classifica l'azione come infrazione.
 
 :::example_sentence
 jp: >-
@@ -334,7 +333,7 @@ translation_it: >-
 
 `{{危|あぶ}}ないので やめてください` chiede di fermarsi perché qualcosa è
 pericoloso. `{{校則|こうそく}}{{違反|いはん}}です` aggiunge un'etichetta ufficiale:
-l'azione non è solo sconsigliata, supera una regola dell'accademia. La causa
+l'azione supera il semplice consiglio prudente e oltrepassa una regola dell'accademia. La causa
 spiega il rischio, la conclusione stabilisce la norma.
 
 #### 🧠 Gancio cognitivo
@@ -374,7 +373,7 @@ jp: >-
   なる。
 translation_it: >-
   Quando vieni chiamato con il numero di matricola, l'atmosfera diventa quella
-  del linguaggio cortese da lezione.
+  del linguaggio cortese da aula.
 :::
 
 :::example_sentence
@@ -382,7 +381,7 @@ jp: >-
   {{始業|しぎょう}}{{時間|じかん}}が {{近|ちか}}いので、
   {{教室|きょうしつ}}まで {{急|いそ}}いでください。
 translation_it: >-
-  Sta per iniziare la lezione, quindi affrettatevi a raggiungere l'aula.
+  Sta per iniziare l'attività in aula, quindi affrettatevi a raggiungere l'aula.
 :::
 
 :::example_sentence

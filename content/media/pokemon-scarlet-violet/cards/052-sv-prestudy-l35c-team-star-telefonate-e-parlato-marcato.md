@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-052-sv-prestudy-l35c-team-star-telefonate-e-parlato-marcato
 media_id: media-pokemon-scarlet-violet
 slug: 052-sv-prestudy-l35c-team-star-telefonate-e-parlato-marcato
-title: SV Pre-study L35C - Team Star, telefonate e parlato marcato
+title: "Telefonate, identità nascoste e parlato marcato"
 order: 82
 segment_ref: scarlet-violet-prestudy
 ---
@@ -14,8 +14,7 @@ romaji: oyaoya
 meaning_it: oh? ma guarda...
 notes_it: >-
   Espressione ricorrente di sorpresa composta e un po' ironica. Nel tono di
-  Clavell o di altri adulti non suona agitata: segnala osservazione calma ma
-  marcata.
+  Clavell o di altri adulti suona come osservazione calma ma marcata.
 :::
 :::card
 id: card-e113-oyaoya-recognition
@@ -37,7 +36,8 @@ reading: やるっきゃない
 romaji: yarukkyanai
 meaning_it: non resta che farlo
 notes_it: >-
-  Formula colloquiale energica: La formula colloquiale spinge il parlante verso l'azione immediata.
+  Formula colloquiale energica: chi parla sente che le alternative sono finite e
+  passa all'azione immediata.
 :::
 :::card
 id: card-e114-yarukkyanai-recognition
@@ -60,7 +60,7 @@ romaji: hakkingu
 meaning_it: hacking / intrusione informatica
 notes_it: >-
   Spiega subito che una chiamata o un accesso non stanno avvenendo in modo
-  normale. In Scarlet / Violet e un segnale forte di mistero e controllo remoto.
+  normale. In Scarlet / Violet è un segnale forte di mistero e controllo remoto.
 :::
 :::card
 id: card-v762-hakkingu-recognition
@@ -107,8 +107,8 @@ reading: カシオペア
 romaji: kashiopea
 meaning_it: Cassiopeia
 notes_it: >-
-  Nome scelto e usato come identita di scena. Va riconosciuto subito perche non
-  e un NPC qualsiasi: e il segnale di un filone narrativo specifico.
+  Nome scelto e usato come identità di scena. Va riconosciuto subito perché non
+  è un NPC qualsiasi: è il segnale di un filone narrativo specifico.
 :::
 :::card
 id: card-v764-kashiopea-recognition
@@ -121,7 +121,7 @@ back: Cassiopeia
 example_jp: >-
   わたしの {{名|な}}は カシオペア。
 example_it: >-
-  Il mio nome e Cassiopeia.
+  Il mio nome è Cassiopeia.
 :::
 :::term
 id: term-v765-omae
@@ -130,8 +130,8 @@ reading: オマエ
 romaji: omae
 meaning_it: tu, in tono brusco
 notes_it: >-
-  Non e un semplice pronome neutro. In questi dialoghi marca distanza,
-  aggressivita o familiarita ruvida, quindi cambia subito il ritratto del
+  È un pronome diretto e ruvido. In questi dialoghi marca distanza,
+  aggressività o familiarità brusca, quindi cambia subito il ritratto del
   personaggio che parla.
 :::
 :::card
@@ -154,7 +154,7 @@ reading: かんり
 romaji: kanri
 meaning_it: gestione / controllo
 notes_it: >-
-  In queste scene, `管理` indica controllo effettivo di un Pokemon, di un dispositivo o di una situazione che richiede responsabilità.
+  In queste scene, `管理` indica controllo effettivo di un Pokémon, di un dispositivo o di una situazione che richiede responsabilità.
 :::
 :::card
 id: card-v766-kanri-recognition
@@ -168,7 +168,7 @@ example_jp: >-
   しかし {{今|いま}} ワタシは その ポケモンを {{管理|かんり}}できない
   {{状況|じょうきょう}}に いてね。
 example_it: >-
-  In questo momento non sono in grado di gestire quel Pokemon.
+  In questo momento non sono in grado di gestire quel Pokémon.
 :::
 :::term
 id: term-v767-hikitsuzuki
@@ -177,8 +177,8 @@ reading: ひきつづき
 romaji: hikitsuzuki
 meaning_it: da qui in poi / continuando
 notes_it: >-
-  Serve a leggere una continuita di responsabilita o di compito. Qui segnala
-  che una relazione o una consegna non si chiudono nella scena presente.
+  Continuità di responsabilità o di compito. Qui mostra che una relazione o una
+  consegna proseguono oltre la scena presente.
 :::
 :::card
 id: card-v767-hikitsuzuki-recognition
@@ -200,7 +200,7 @@ reading: かわいがる
 romaji: kawaigaru
 meaning_it: trattare con affetto / prendersi bene cura
 notes_it: >-
-  Ha un tono piu personale di un generico "accudire". Nelle scene con i Pokemon
+  Ha un tono più personale di un generico "accudire". Nelle scene con i Pokémon
   suggerisce affetto visibile e rapporto ravvicinato.
 :::
 :::card
@@ -223,7 +223,7 @@ reading: なのる
 romaji: nanoru
 meaning_it: dichiarare il proprio nome / presentarsi
 notes_it: >-
-  Non e solo "dire il nome": spesso implica scegliere se rivelarsi, presentarsi
+  Non è solo "dire il nome": spesso implica scegliere se rivelarsi, presentarsi
   formalmente o negare all'altro questo diritto.
 :::
 :::card
@@ -265,11 +265,11 @@ example_it: >-
 :::grammar
 id: grammar-g113-non-e-che-non-sara-che
 pattern: ～んじゃない？
-title: Non sarà che...? / forse...?
+title: Ipotesi colloquiale / forse...?
 meaning_it: ipotesi colloquiale o constatazione morbida
 notes_it: >-
   Forma molto comune nel parlato per avanzare un'ipotesi senza dirla in modo
-  secco. A seconda del tono puo voler dire "non sara che...?", "forse...?",
+  secco. A seconda del tono può voler dire "non sarà che...?", "forse...?",
   oppure una constatazione morbida.
 :::
 :::card
@@ -279,12 +279,12 @@ entry_type: grammar
 entry_id: grammar-g113-non-e-che-non-sara-che
 card_type: concept
 front: "～んじゃない？"
-back: non sarà che...? / forse...?
+back: forse...? / ipotesi colloquiale
 example_jp: >-
   {{坂道|さかみち}}の トレーナーたちと {{戦|たたか}}って ポケモン
   {{成長|せいちょう}}したんじゃない？
 example_it: >-
-  Non è che i tuoi Pokémon sono cresciuti combattendo contro gli allenatori lungo la salita?
+  Forse i tuoi Pokémon sono cresciuti combattendo contro gli allenatori lungo la salita?
 :::
 :::grammar
 id: grammar-g114-non-ho-intenzione-di

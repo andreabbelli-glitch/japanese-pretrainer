@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-050-sv-prestudy-l35a-scuola-classi-e-regole-accademia
 media_id: media-pokemon-scarlet-violet
 slug: 050-sv-prestudy-l35a-scuola-classi-e-regole-accademia
-title: SV Pre-study L35A - scuola, classi e regole d'accademia
+title: "Aula, classi e regole dell'accademia"
 order: 80
 segment_ref: scarlet-violet-prestudy
 ---
@@ -29,7 +29,7 @@ example_jp: >-
   {{物理|ぶつり}}は ポケモンの {{攻撃|こうげき}}が {{高|たか}}ければ
   {{相手|あいて}}に {{与|あた}}える ダメージが {{大|おお}}きい。
 example_it: >-
-  Le mosse fisiche fanno piu danni se il Pokemon ha un Attacco alto.
+  Le mosse fisiche fanno più danni se il Pokémon ha un Attacco alto.
 :::
 :::term
 id: term-v731-bunrui
@@ -63,8 +63,8 @@ reading: かいだん
 romaji: kaidan
 meaning_it: scala / scalinata
 notes_it: >-
-  Nella scena del campus nomina un ostacolo molto concreto. Non e lessico
-  decorativo: segnala orientamento, fatica dello spostamento e cambio di scena.
+  Quando appare in campus, cerca scale o scalinata come passaggio obbligato:
+  salire, scendere o prepararsi a uno spostamento faticoso.
 :::
 :::card
 id: card-v732-kaidan-recognition
@@ -78,7 +78,7 @@ example_jp: >-
   {{学校|がっこう}}の {{前|まえ}}に {{集合|しゅうごう}}！ {{階段|かいだん}}が
   すごいから {{覚悟|かくご}}してね。
 example_it: >-
-  Ci vediamo davanti alla scuola: preparati, perche c'e una scalinata notevole.
+  Ci vediamo davanti alla scuola: preparati, perché c'è una scalinata notevole.
 :::
 :::term
 id: term-v733-tantou
@@ -87,8 +87,8 @@ reading: たんとう
 romaji: tantou
 meaning_it: responsabile / docente di materia
 notes_it: >-
-  Nella scuola ti dice chi segue una materia o un compito. Serve a capire il
-  ruolo preciso del personaggio in scena, non solo il suo nome.
+  In espressioni come `バトル学担当`, la parola dopo l'ambito identifica chi ha
+  in carico quella materia o quel compito.
 :::
 :::card
 id: card-v733-tantou-recognition
@@ -101,7 +101,7 @@ back: responsabile / docente di materia
 example_jp: >-
   バトル{{学|がく}}{{担当|たんとう}}は キハダ{{先生|せんせい}}だ。
 example_it: >-
-  La docente responsabile della classe di lotta e la professoressa Dendra.
+  La docente responsabile della classe di lotta è la professoressa Dendra.
 :::
 :::term
 id: term-v734-gakusekibangou
@@ -110,7 +110,7 @@ reading: がくせきばんごう
 romaji: gakuseki bangou
 meaning_it: numero di matricola
 notes_it: >-
-  E il numero identificativo dello studente. Quando compare, il tono della
+  È il numero identificativo dello studente. Quando compare, il tono della
   scena diventa chiaramente istituzionale o amministrativo.
 :::
 :::card
@@ -158,7 +158,7 @@ reading: けいご
 romaji: keigo
 meaning_it: linguaggio cortese / honorific speech
 notes_it: >-
-  Non e grammatica astratta da manuale: fa notare il cambio di tono che scatta
+  Non è grammatica astratta da manuale: fa notare il cambio di tono che scatta
   in classe o davanti agli adulti dell'accademia.
 :::
 :::card
@@ -173,14 +173,14 @@ example_jp: >-
   {{授業中|じゅ.ぎょう.ちゅう}}って {{友達|ともだち}}にも なんか
   {{敬語|けいご}}に なっちゃう。
 example_it: >-
-  Durante la lezione finisci per usare un linguaggio piu cortese perfino con gli amici.
+  Durante l'ora di corso finisci per usare un linguaggio più cortese perfino con gli amici.
 :::
 :::term
 id: term-v738-shigyou
 lemma: 始業
 reading: しぎょう
 romaji: shigyou
-meaning_it: inizio delle lezioni / inizio attivita
+meaning_it: inizio dell'attività / inizio giornata
 notes_it: >-
   Segna il momento in cui la giornata scolastica entra davvero in funzione.
   Negli avvisi dell'accademia marca l'inizio di lezioni, orari e spostamenti
@@ -193,11 +193,11 @@ entry_type: term
 entry_id: term-v738-shigyou
 card_type: recognition
 front: "{{始業|し.ぎょう}}"
-back: inizio delle lezioni / inizio attivita
+back: inizio dell'attività / inizio giornata
 example_jp: >-
   そろそろ {{始業|し.ぎょう}}{{時間|じかん}}です。
 example_it: >-
-  Sta per iniziare la lezione.
+  Sta per iniziare l'attività in aula.
 :::
 :::term
 id: term-v739-isogu
@@ -230,7 +230,7 @@ romaji: tachiiri
 meaning_it: accesso / ingresso in un'area
 notes_it: >-
   Compare negli avvisi quando il gioco delimita una zona. In pratica ti dice
-  che uno spazio non e solo lontano o difficile: e proprio regolato.
+  che uno spazio non è solo lontano o difficile: è proprio regolato.
 :::
 :::card
 id: card-v740-tachiiri-recognition
@@ -244,7 +244,7 @@ example_jp: >-
   パルデアの {{大穴|おおあな}}への {{立|た}}ち{{入|い}}りは
   {{危|あぶ}}ないので やめてくださいね。
 example_it: >-
-  Non bisogna entrare nel Grande Cratere di Paldea, perche e pericoloso.
+  Non bisogna entrare nel Grande Cratere di Paldea, perché è pericoloso.
 :::
 :::term
 id: term-v741-kousoku
@@ -253,8 +253,8 @@ reading: こうそく
 romaji: kousoku
 meaning_it: regolamento scolastico
 notes_it: >-
-  E il lessico che trasforma un consiglio in una regola vera del campus. Nei
-  dialoghi dell'accademia segnala un divieto ufficiale, non una preferenza.
+  È il lessico che trasforma un consiglio in una regola vera del campus. Nei
+  dialoghi dell'accademia porta un divieto ufficiale, non una preferenza.
 :::
 :::card
 id: card-v741-kousoku-recognition
@@ -293,6 +293,6 @@ example_jp: >-
   {{立|た}}ち{{入|い}}りは {{危|あぶ}}ないので
   {{校則|こうそく}}{{違反|いはん}}ですからねー。
 example_it: >-
-  Entrare li e pericoloso e costituisce una violazione del regolamento
+  Entrare lì è pericoloso e costituisce una violazione del regolamento
   scolastico.
 :::

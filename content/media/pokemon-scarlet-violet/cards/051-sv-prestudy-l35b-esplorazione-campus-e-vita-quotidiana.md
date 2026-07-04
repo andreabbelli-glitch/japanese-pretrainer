@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana
 media_id: media-pokemon-scarlet-violet
 slug: 051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana
-title: SV Pre-study L35B - esplorazione, campus e vita quotidiana
+title: "Esplorazione, campus e vita quotidiana a Paldea"
 order: 81
 segment_ref: scarlet-violet-prestudy
 ---
@@ -14,7 +14,7 @@ romaji: toriaezu
 meaning_it: per ora / intanto
 notes_it: >-
   Espressione ricorrente di orientamento pratico. Quando compare, il
-  personaggio sta fissando una priorita provvisoria senza presentarla come
+  personaggio sta fissando una priorità provvisoria senza presentarla come
   decisione finale.
 :::
 :::card
@@ -38,8 +38,8 @@ reading: オススメ
 romaji: osusume
 meaning_it: consiglio / raccomandazione
 notes_it: >-
-  Nei dialoghi leggeri di campus e citta segnala il posto, il negozio o il
-  percorso che un personaggio ti suggerisce di provare.
+  Nei dialoghi leggeri di campus e città mette in evidenza il posto, il negozio
+  o il percorso che un personaggio ti suggerisce di provare.
 :::
 :::card
 id: card-e110-osusume-recognition
@@ -62,7 +62,7 @@ reading: おいで
 romaji: oide
 meaning_it: vieni pure / passa pure
 notes_it: >-
-  Invito morbido e colloquiale. Nelle scene di picnic o ristoro suona piu
+  Invito morbido e colloquiale. Nelle scene di picnic o ristoro suona più
   accogliente di un semplice `来て`.
 :::
 :::card
@@ -108,8 +108,8 @@ reading: ひとだすけ
 romaji: hitodasuke
 meaning_it: aiutare qualcuno / gesto di aiuto
 notes_it: >-
-  Nomina un aiuto concreto dato a una persona. Serve a commentare un'azione del
-  protagonista e a valutarne il tono.
+  Aiuto concreto dato a una persona. Dopo un intervento del protagonista, la
+  parola valuta il gesto sociale prima ancora della ricompensa.
 :::
 :::card
 id: card-v743-hitodasuke-recognition
@@ -154,8 +154,8 @@ reading: かてる
 romaji: kateru
 meaning_it: poter vincere / riuscire a battere
 notes_it: >-
-  E la forma potenziale di `勝つ`. Serve a leggere incoraggiamento e fiducia nel
-  successo in modo piu concreto di un semplice "forte".
+  È la forma potenziale di `勝つ`. Serve a leggere incoraggiamento e fiducia nel
+  successo in modo più concreto di un semplice "forte".
 :::
 :::card
 id: card-v745-kateru-recognition
@@ -201,8 +201,8 @@ reading: おもいつく
 romaji: omoitsuku
 meaning_it: avere un'idea / trovare una soluzione
 notes_it: >-
-  Verbo utile quando un personaggio inventa una ricetta, una soluzione o un
-  piano sul momento. Fa capire il lampo di intuizione, non solo il pensiero.
+  Idea che arriva sul momento: ricetta, soluzione o piano improvvisato. Nel
+  blocco sandwich fa sentire il lampo di intuizione.
 :::
 :::card
 id: card-v747-omoitsuku-recognition
@@ -215,7 +215,7 @@ back: avere un'idea / trovare una soluzione
 example_jp: >-
   {{新|あたら}}しい レシピを {{思|おも}}いついたよ！
 example_it: >-
-  Mi e venuta in mente una nuova ricetta!
+  Mi è venuta in mente una nuova ricetta!
 :::
 :::term
 id: term-v748-choumiryou
@@ -238,7 +238,7 @@ back: condimento / spezia per insaporire
 example_jp: >-
   {{具材|ぐざい}}を こうして…… {{調味料|ちょう.み.りょう}}を ああすれば……。
 example_it: >-
-  Se metti cosi gli ingredienti e sistemi cosi il condimento...
+  Se metti così gli ingredienti e sistemi così il condimento...
 :::
 :::term
 id: term-v749-tenki
@@ -247,7 +247,7 @@ reading: てんき
 romaji: tenki
 meaning_it: tempo atmosferico
 notes_it: >-
-  In Scarlet / Violet non e solo sfondo: il meteo cambia incontri e ritmo
+  In Scarlet / Violet il meteo cambia incontri e ritmo
   dell'esplorazione. Per questo vale la pena riconoscerlo subito.
 :::
 :::card
@@ -262,7 +262,7 @@ example_jp: >-
   {{時間|じかん}}や {{天気|てんき}}によって {{野生|やせい}}ポケモンの
   {{行動|こうどう}}が {{変|か}}わるそうじゃ。
 example_it: >-
-  Pare che i Pokemon selvatici cambino comportamento a seconda dell'ora e del meteo.
+  Pare che i Pokémon selvatici cambino comportamento a seconda dell'ora e del meteo.
 :::
 :::term
 id: term-v750-irikumu
@@ -272,7 +272,7 @@ romaji: irikumu
 meaning_it: essere intricato / pieno di svolte
 notes_it: >-
   Descrive una zona con passaggi complessi. Negli avvisi sulle aree rocciose
-  segnala strade piene di curve o incroci difficili da seguire.
+  porta verso strade piene di curve o incroci difficili da seguire.
 :::
 :::card
 id: card-v750-irikumu-recognition
@@ -294,7 +294,7 @@ reading: まよう
 romaji: mayou
 meaning_it: perdersi / esitare sulla strada
 notes_it: >-
-  Nel mondo aperto puo voler dire sia "perdersi" in senso letterale sia
+  Nel mondo aperto può voler dire sia "perdersi" in senso letterale sia
   "esitare" su dove andare. Qui vale soprattutto il primo.
 :::
 :::card
@@ -308,7 +308,7 @@ back: perdersi / esitare sulla strada
 example_jp: >-
   {{迷|まよ}}いやすいから {{注意|ちゅうい}}してね。
 example_it: >-
-  E facile perdersi li, quindi fai attenzione.
+  È facile perdersi lì, quindi fai attenzione.
 :::
 :::term
 id: term-v752-aibou
@@ -317,8 +317,8 @@ reading: あいぼう
 romaji: aibou
 meaning_it: partner / compagno fidato
 notes_it: >-
-  Ha un tono piu affettivo di un semplice "compagno". Quando compare con i
-  Pokemon, segnala un legame forte e personale.
+  Ha un tono più affettivo di un semplice "compagno". Quando compare con i
+  Pokémon, porta un legame forte e personale.
 :::
 :::card
 id: card-v752-aibou-recognition
@@ -331,7 +331,7 @@ back: partner / compagno fidato
 example_jp: >-
   カントー{{地方|ちほう}}で {{相棒|あいぼう}}の ポケモンと レッツゴー！
 example_it: >-
-  A Kanto, vai all'avventura insieme al tuo Pokemon partner!
+  A Kanto, vai all'avventura insieme al tuo Pokémon partner!
 :::
 :::term
 id: term-v753-shireru
@@ -341,7 +341,7 @@ romaji: shireru
 meaning_it: riuscire a conoscere / scoprire
 notes_it: >-
   Potenziale di `知る`. Compare soprattutto quando il gioco parla di capire
-  meglio i tuoi Pokemon.
+  meglio i tuoi Pokémon.
 :::
 :::card
 id: card-v753-shireru-recognition
@@ -355,7 +355,7 @@ example_jp: >-
   ポケモンのこと もっと {{深|ふか}}く {{知|し}}れる {{方法|ほうほう}}を
   {{教|おし}}えちゃいますねえ。
 example_it: >-
-  Ti spiego un modo per conoscere meglio i Pokemon.
+  Ti spiego un modo per conoscere meglio i Pokémon.
 :::
 :::term
 id: term-v754-nakayoshi
@@ -364,8 +364,8 @@ reading: なかよし
 romaji: nakayoshi
 meaning_it: molto in sintonia / in buoni rapporti
 notes_it: >-
-  Qui non indica solo una simpatia generica: e il linguaggio della relazione
-  positiva tra giocatore e Pokemon nel quotidiano.
+  Qui va oltre una simpatia generica: è il linguaggio della relazione positiva
+  tra giocatore e Pokémon nel quotidiano.
 :::
 :::card
 id: card-v754-nakayoshi-recognition
@@ -379,7 +379,7 @@ example_jp: >-
   {{一緒|いっしょ}}に {{歩|ある}}いて {{冒険|ぼうけん}}すると もっと
   なかよしさんに なれます。
 example_it: >-
-  Camminando e viaggiando insieme, si puo diventare ancora piu affiatati.
+  Camminando e viaggiando insieme, si può diventare ancora più affiatati.
 :::
 :::term
 id: term-v755-kinkyou
@@ -434,7 +434,7 @@ reading: いどめる
 romaji: idomeru
 meaning_it: poter sfidare
 notes_it: >-
-  Potenziale di `挑む`. Nei consigli di percorso ti dice che una prova e ormai
+  Potenziale di `挑む`. Nei consigli di percorso ti dice che una prova è ormai
   alla tua portata.
 :::
 :::card
@@ -455,10 +455,10 @@ id: term-v758-osusowake
 lemma: おすそわけ
 reading: おすそわけ
 romaji: osusowake
-meaning_it: condividere un po' di cio che si ha
+meaning_it: condividere un po' di ciò che si ha
 notes_it: >-
-  Espressione molto quotidiana e gentile. Nel blocco sandwich segnala una
-  condivisione amichevole, non uno scambio formale di risorse.
+  Condivisione quotidiana e gentile. Nel blocco sandwich indica una porzione
+  data in modo amichevole, non uno scambio formale di risorse.
 :::
 :::card
 id: card-v758-osusowake-recognition
@@ -467,7 +467,7 @@ entry_type: term
 entry_id: term-v758-osusowake
 card_type: recognition
 front: "おすそわけ"
-back: condividere un po' di cio che si ha
+back: condividere un po' di ciò che si ha
 example_jp: >-
   バッグに {{食材|しょくざい}}を つめすぎちゃった！ おすそわけして
   あげるね。
@@ -496,7 +496,7 @@ example_jp: >-
   このまま {{一緒|いっしょ}}に ピクニックして ちょっと {{休息|きゅうそく}}
   していったら？
 example_it: >-
-  Perche non facciamo un picnic e ci riposiamo un po'?
+  Perché non facciamo un picnic e ci riposiamo un po'?
 :::
 :::term
 id: term-v760-jishou
@@ -505,8 +505,8 @@ reading: じしょう
 romaji: jishou
 meaning_it: sedicente / che si definisce da solo
 notes_it: >-
-  Segnala subito che la credibilita del personaggio e dubbia. E un ottimo
-  marcatore di diffidenza nei piccoli incontri con NPC strani.
+  Marca subito la credibilità dubbia del personaggio. È un ottimo marcatore di
+  diffidenza nei piccoli incontri con NPC strani.
 :::
 :::card
 id: card-v760-jishou-recognition
@@ -543,5 +543,5 @@ back: sospetto / losco
 example_jp: >-
   やっぱり あやしいですよね……。
 example_it: >-
-  In effetti e piuttosto sospetto, vero...?
+  In effetti è piuttosto sospetto, vero...?
 :::

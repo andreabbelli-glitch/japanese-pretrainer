@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarlet-violet-sistema-e-menu
 media_id: media-pokemon-scarlet-violet
 slug: 049-sv-prestudy-l34b-scarlet-violet-sistema-e-menu
-title: SV Pre-study L34B - Scarlet/Violet, sistema e menu
+title: "Sistema, scuola e menu quando il gioco cambia registro"
 order: 79
 segment_ref: scarlet-violet-prestudy
 ---
@@ -298,7 +298,7 @@ back: serio / a tutti gli effetti
 example_jp: >-
   {{課外授業|かがいじゅぎょう}}が {{本格的|ほんかくてき}}に {{始|はじ}}まる。
 example_it: >-
-  La lezione extracurricolare inizia sul serio.
+  L'attività extracurricolare inizia sul serio.
 :::
 :::term
 id: term-v724-yuusendo
@@ -506,7 +506,7 @@ reading: こうかんかんりょう
 romaji: koukankanryou
 meaning_it: scambio completato
 notes_it: >-
-  Formula di stato dopo uno scambio: segnala che l'operazione è conclusa. Va
+  Formula di stato dopo uno scambio: conferma che l'operazione è conclusa. Va
   letta come messaggio completivo tipo "Scambio completato!", non come invito a
   iniziare lo scambio.
 :::

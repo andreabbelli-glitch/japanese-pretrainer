@@ -52,7 +52,7 @@ Queste parole vanno lette come comandi di orientamento. [{{落下|らっか}}](t
 
 - [～でござる](grammar:grammar-g106-registro-samurai-comico) — registro samurai / comico
 - [～について](grammar:grammar-g107-riguardo-a-su) — riguardo a / su
-- [～ばっかり](grammar:grammar-g108-solo-nientaltro-che) — solo... / nient'altro che...
+- [～ばっかり](grammar:grammar-g108-solo-nientaltro-che) — ripetizione sbilanciata / sempre quello
 
 ## Etichette da riconoscere
 
@@ -103,8 +103,8 @@ translation_it: >-
 
 Quando il testo lascia il terreno e passa a battaglie o scene narrative, lo stesso blocco lessicale descrive l'esito dell'azione.
 
-*   [{{退|しりぞ}}ける](term:term-v651-shirizoke-ru) (**Respingere / sconfiggere**): con un oggetto marcato da を, come {{相手|あいて}}を{{退|しりぞ}}ける, il verbo non dice solo "evitare". L'avversario diventa bersaglio dell'azione e viene allontanato come minaccia.
-*   [{{勝|か}}ち{{負|ま}}け](term:term-v654-kachimake) (**Esito vittoria/sconfitta**): unisce {{勝|か}}ち e {{負|ま}}け, quindi non indica una sola vittoria. In schermate o dialoghi sulla prestazione, segnala il risultato complessivo: chi vince, chi perde, come finisce il confronto.
+*   [{{退|しりぞ}}ける](term:term-v651-shirizoke-ru) (**Respingere / sconfiggere**): con un oggetto marcato da を, come {{相手|あいて}}を{{退|しりぞ}}ける, il verbo va oltre il semplice "evitare". L'avversario diventa bersaglio dell'azione e viene allontanato come minaccia.
+*   [{{勝|か}}ち{{負|ま}}け](term:term-v654-kachimake) (**Esito vittoria/sconfitta**): unisce {{勝|か}}ち e {{負|ま}}け, quindi nomina l'intero asse vittoria-sconfitta. In schermate o dialoghi sulla prestazione, segnala il risultato complessivo: chi vince, chi perde, come finisce il confronto.
 *   [{{退場|たいじょう}}](term:term-v659-taijou) (**Uscita di scena**): {{場|じょう}} richiama il luogo/scena e {{退|たい}} l'uscita o il ritiro. Non stabilisce da solo chi ha vinto: dice che qualcuno lascia il campo, la sfida o la scena.
 
 :::example_sentence
@@ -149,13 +149,13 @@ translation_it: >-
 
 *   [{{開催中|かいさいちゅう}}](term:term-v644-kaisaichuu) usa {{中|ちゅう}} come "in corso".
 *   [{{中止|ちゅうし}}](term:term-v645-chuushi) è un composto diverso: `中止` significa interruzione o annullamento.
-*   [{{非表示|ひひょうじ}}](term:term-v652-hihyouji) nasconde dalla visualizzazione; non dice automaticamente che la notifica o il dato siano stati eliminati.
+*   [{{非表示|ひひょうじ}}](term:term-v652-hihyouji) nasconde dalla visualizzazione; la notifica o il dato restano nel sistema anche se spariscono dalla vista.
 
 Le schermate di elenco e negozio aggiungono un altro tipo di lettura: non chiedono solo "che cosa c'è?", ma "in che ordine, in quale blocco, dentro quale offerta?".
 
 *   [{{一覧|いちらん}}](term:term-v653-ichiran) (**Elenco**): è una vista ordinata di elementi consultabili. Quando lo vedi in una UI, aspettati una lista da scorrere, filtrare o controllare.
 *   [ラインナップ](term:term-v656-rainnappu) (**Lista disponibile / offerta**): katakana da *lineup*, ma in negozio o servizio indica ciò che è messo a disposizione. Non è solo una lista astratta: è l'assortimento disponibile.
-*   [まとめ{{買|か}}い](term:term-v655-matomekai) (**Acquisto in blocco**): まとめ raggruppa, {{買|か}}い è l'acquisto. Il focus `まとめ買い` descrive il modo dell'azione: acquistare piu' cose insieme.
+*   [まとめ{{買|か}}い](term:term-v655-matomekai) (**Acquisto in blocco**): まとめ raggruppa, {{買|か}}い è l'acquisto. Il focus `まとめ買い` descrive il modo dell'azione: acquistare più cose insieme.
 
 :::example_sentence
 jp: >-
@@ -220,7 +220,7 @@ translation_it: >-
 *   `スター{{団|だん}}への` ➔ **Direzione sociale** (`へ` indica verso quale gruppo porta il reclutamento).
 *   `{{勧誘|かんゆう}}について` ➔ **Argomento della conversazione** (`について` incornicia il tema: si parla del reclutamento).
 *   `{{教員|きょういん}}に` ➔ **Interlocutore/consultato** (`に` marca la persona a cui ci si rivolge).
-*   `{{相談|そうだん}}します` ➔ **Azione di consultare** (la frase non dice che il problema è risolto: dice che lo porti a un docente).
+*   `{{相談|そうだん}}します` ➔ **Azione di consultare** (la frase porta il problema a un docente senza presentarlo come già risolto).
 
 ## 4. Reazioni, congedi e voce dei personaggi
 
@@ -255,7 +255,7 @@ I tre pattern grammaticali di questa schermata e dei dialoghi vicini lavorano su
 
 *   [～でござる](grammar:grammar-g106-registro-samurai-comico) (**Registro samurai / comico**): sostituisce una copula normale con un registro teatrale o arcaizzante. Il contenuto della frase resta prima di でござる; il pattern ti dice come suona chi parla.
 *   [～について](grammar:grammar-g107-riguardo-a-su) (**Riguardo a / su**): incornicia l'argomento di spiegazione, consultazione o tutorial. In Xについて{{説明|せつめい}}する, X non è oggetto diretto dell'azione: è il tema su cui verte la spiegazione.
-*   [～ばっかり](grammar:grammar-g108-solo-nientaltro-che) (**Solo... / nient'altro che...**): concentra la frase su una ripetizione e spesso porta sfumatura critica. {{遊|あそ}}んでばっかりいる non dice solo che qualcuno gioca: dice che non fa altro che giocare.
+*   [～ばっかり](grammar:grammar-g108-solo-nientaltro-che) (**Ripetizione sbilanciata / sempre quello**): concentra la frase su una ripetizione e spesso porta sfumatura critica. {{遊|あそ}}んでばっかりいる fa sentire che qualcuno passa il tempo a giocare e lascia il resto fuori quadro.
 
 :::example_sentence
 jp: >-

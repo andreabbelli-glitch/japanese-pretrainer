@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-047-sv-prestudy-l30e-sistema-e-menu-verbi-operativi
 media_id: media-pokemon-scarlet-violet
 slug: 047-sv-prestudy-l30e-sistema-e-menu-verbi-operativi
-title: SV Pre-study L30E - sistema e menu, verbi operativi
+title: "Menu, scuola e comandi: leggere che cosa il gioco ti lascia fare"
 order: 77
 segment_ref: scarlet-violet-prestudy
 ---
@@ -78,8 +78,8 @@ pattern: ～ってば
 title: Ti sto dicendo che...
 meaning_it: ti sto dicendo che...
 notes_it: >-
-  Formazione: colloquiale enfatico. Raro ma utile se compare in un personaggio
-  molto espressivo.
+  Particella colloquiale enfatica. Quando appare, il personaggio sta insistendo
+  su qualcosa che considera già detto o evidente.
 :::
 :::card
 id: card-g109-ti-sto-dicendo-che-concept
@@ -97,8 +97,8 @@ example_it: >-
 :::grammar
 id: grammar-g110-non-e-che-non-significa-che
 pattern: ～わけじゃない
-title: Non è che… / non significa che…
-meaning_it: non è che… / non significa che…
+title: Conclusione attenuata con わけじゃない
+meaning_it: mica per forza... / conclusione da ridimensionare
 aliases:
 - 〜わけではない
 notes_it: >-
@@ -112,11 +112,11 @@ entry_type: grammar
 entry_id: grammar-g110-non-e-che-non-significa-che
 card_type: concept
 front: "～わけじゃない"
-back: non è che… / non significa che…
+back: mica per forza... / conclusione da ridimensionare
 example_jp: >-
   きらいな わけじゃない。
 example_it: >-
-  Non è che lo odi.
+  Mica lo odi.
 :::
 :::grammar
 id: grammar-g111-far-fare-lasciar-fare
@@ -124,8 +124,8 @@ pattern: 使役
 title: Far fare / lasciar fare
 meaning_it: far fare / lasciar fare
 notes_it: >-
-  Formazione: V-causativo. Meno frequente, ma utile se compare in spiegazioni o
-  dialoghi di comando.
+  Forma causativa del verbo. Fa leggere chi provoca, permette o impone l'azione
+  a qualcun altro.
 :::
 :::card
 id: card-g111-far-fare-lasciar-fare-concept
@@ -147,8 +147,8 @@ reading: ひきかえす
 romaji: hikikaesu
 meaning_it: tornare indietro
 notes_it: >-
-  Indica tornare sui propri passi. Nei percorsi segnala che il gioco consiglia o
-  impone di rientrare invece di avanzare.
+  Tornare sui propri passi dopo aver già preso una direzione. Nei percorsi può
+  orientare verso il rientro invece che verso l'avanzamento.
 :::
 :::card
 id: card-v661-hikikaesu-recognition
@@ -193,7 +193,7 @@ reading: かがいかつどう
 romaji: kagaikatsudou
 meaning_it: attività extrascolastica
 notes_it: >-
-  Indica un'attività fuori dalla lezione ordinaria. In Scarlet / Violet può
+  Attività fuori dal corso ordinario e dall'aula. In Scarlet / Violet può
   coincidere con uscire nel mondo, non solo con un club scolastico.
 :::
 :::card
@@ -400,8 +400,8 @@ reading: こんなん
 romaji: konnan
 meaning_it: difficile / complesso
 notes_it: >-
-  Indica qualcosa di difficile da superare. In percorsi o sfide segnala
-  complessità reale, non solo fastidio momentaneo.
+  Ostacolo difficile da superare. In percorsi o sfide porta l'idea di
+  complessità reale, non di fastidio momentaneo.
 :::
 :::card
 id: card-v672-konnan-recognition
@@ -607,8 +607,8 @@ reading: ひとくろう
 romaji: hitokurou
 meaning_it: una bella fatica
 notes_it: >-
-  Indica un compito faticoso o laborioso. In viaggio segnala che raggiungere un
-  punto o superare una prova richiederà impegno.
+  Compito faticoso o laborioso. In viaggio prepara a un percorso o a una prova
+  che richiede impegno.
 :::
 :::card
 id: card-v681-hitokurou-recognition

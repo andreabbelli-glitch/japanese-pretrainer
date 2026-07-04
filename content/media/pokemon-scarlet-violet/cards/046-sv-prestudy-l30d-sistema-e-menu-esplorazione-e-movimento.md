@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-046-sv-prestudy-l30d-sistema-e-menu-esplorazione-e-movimento
 media_id: media-pokemon-scarlet-violet
 slug: 046-sv-prestudy-l30d-sistema-e-menu-esplorazione-e-movimento
-title: SV Pre-study L30D - sistema e menu, esplorazione e movimento
+title: "Menu, stati e movimento: leggere cosa puoi fare adesso"
 order: 76
 segment_ref: scarlet-violet-prestudy
 ---
@@ -80,7 +80,7 @@ meaning_it: modo di parlare teatrale, samurai o comico
 aliases:
 - registro personaggio
 notes_it: >-
-  E una variante marcata di です, usata per dare un tono teatrale, antiquato o
+  È una variante marcata di です, usata per dare un tono teatrale, antiquato o
   da samurai. Il significato di base resta quello della frase: cambia
   soprattutto il personaggio che senti parlare.
 :::
@@ -104,7 +104,7 @@ title: Riguardo a / su
 meaning_it: riguardo a / su
 notes_it: >-
   Introduce l'argomento di una spiegazione, ricerca o discussione: "riguardo a
-  X", "su X". E molto comune in lezioni, tutorial e testi informativi.
+  X", "su X". È molto comune in corsi, tutorial e testi informativi.
 :::
 :::card
 id: card-g107-riguardo-a-su-concept
@@ -151,8 +151,8 @@ reading: らっか
 romaji: rakka
 meaning_it: caduta
 notes_it: >-
-  Indica una caduta o il rischio di cadere. In percorsi verticali segnala un
-  pericolo fisico, non un semplice cambio di direzione.
+  Caduta o rischio di cadere. In percorsi verticali porta il focus su un
+  pericolo fisico, non su un semplice cambio di direzione.
 :::
 :::card
 id: card-v638-rakka-recognition
@@ -197,8 +197,8 @@ reading: かりる
 romaji: kariru
 meaning_it: prendere in prestito
 notes_it: >-
-  Indica prendere qualcosa in prestito e poi restituirlo. In menu o dialoghi
-  scolastici segnala uso temporaneo, non possesso definitivo.
+  Prendere qualcosa in prestito e poi restituirlo. In menu o dialoghi
+  scolastici il valore è uso temporaneo, non possesso definitivo.
 :::
 :::card
 id: card-v640-kariru-recognition
@@ -312,8 +312,8 @@ reading: ちゅうし
 romaji: chuushi
 meaning_it: interruzione / annullamento
 notes_it: >-
-  Indica interruzione o annullamento di un evento, servizio o azione prevista.
-  In UI segnala che qualcosa non procede più.
+  Interruzione o annullamento di un evento, servizio o azione prevista. In UI
+  il valore operativo è che qualcosa non procede più.
 :::
 :::card
 id: card-v645-chuushi-recognition
@@ -381,8 +381,8 @@ reading: つうち
 romaji: tsuuchi
 meaning_it: notifica
 notes_it: >-
-  Indica una notifica ricevuta dal sistema. In smartphone e menu segnala un
-  messaggio da leggere, non un dialogo già aperto.
+  Notifica ricevuta dal sistema. In smartphone e menu è un messaggio da leggere,
+  non un dialogo già aperto.
 :::
 :::card
 id: card-v648-tsuuchi-recognition
@@ -427,8 +427,8 @@ reading: かこう
 romaji: kakou
 meaning_it: discesa
 notes_it: >-
-  Indica un movimento verso il basso o una riduzione. In percorsi segnala
-  discesa; in statistiche può indicare calo.
+  Movimento verso il basso o riduzione. Nei percorsi vale come discesa; nelle
+  statistiche può indicare un calo.
 :::
 :::card
 id: card-v650-kakou-recognition
@@ -450,8 +450,8 @@ reading: しりぞける
 romaji: shirizoke ru
 meaning_it: respingere / sconfiggere
 notes_it: >-
-  Indica respingere o mandare via un avversario. In battaglia e storia non
-  significa solo evitare: comporta vincere lo scontro o allontanare la minaccia.
+  Respingere o mandare via un avversario. In battaglia e storia comporta
+  vincere lo scontro o allontanare la minaccia, più che evitare il contatto.
 :::
 :::card
 id: card-v651-shirizoke-ru-recognition

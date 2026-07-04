@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-048-sv-prestudy-l34a-luoghi-e-mappe-dlc-e-contenuti-extra
 media_id: media-pokemon-scarlet-violet
 slug: 048-sv-prestudy-l34a-luoghi-e-mappe-dlc-e-contenuti-extra
-title: SV Pre-study L34A - luoghi e mappe, DLC e contenuti extra
+title: "Mappe, basi e contenuti extra: leggere Paldea e i DLC"
 order: 78
 segment_ref: scarlet-violet-prestudy
 ---
@@ -94,8 +94,8 @@ reading: もよう
 romaji: moyou
 meaning_it: motivo / pattern visivo
 notes_it: >-
-  Descrive un motivo visivo su Pokémon, abiti, icone o decorazioni; in contesto
-  serve a distinguere aspetto, variante o dettaglio grafico.
+  Motivo visivo su Pokémon, abiti, icone o decorazioni. Quando compare, guarda
+  la superficie o la variante mostrata, non l'azione di disegnare.
 :::
 :::card
 id: card-v692-moyou-recognition
@@ -203,8 +203,8 @@ reading: サークルミッション
 romaji: saakurumisshon
 meaning_it: missione di gruppo
 notes_it: >-
-  Missione da completare in una sessione di gruppo; nei menu DLC segnala un
-  obiettivo condiviso, spesso con ricompense o condizioni specifiche.
+  Missione da completare in una sessione di gruppo; nei menu DLC è un obiettivo
+  condiviso, spesso con ricompense o condizioni specifiche.
 :::
 :::card
 id: card-v699-saakurumisshon-recognition
@@ -381,8 +381,8 @@ reading: きのみだい
 romaji: kinomidai
 meaning_it: supporto per bacche
 notes_it: >-
-  Banco o supporto legato alle bacche; in minigiochi o eventi segnala il punto
-  in cui raccogliere, depositare o usare una risorsa.
+  Banco o supporto legato alle bacche; in minigiochi o eventi è il punto in cui
+  raccogliere, depositare o usare una risorsa.
 :::
 :::term
 id: term-v710-piketaun

@@ -102,11 +102,11 @@ translation_it: >-
 
 ## 2. Menu online: condividere, filtrare, confermare
 
-Quando il dialogo lascia la scena e passa ai menu, le frasi diventano compatte. Label brevi, liste e messaggi di stato sostituiscono la prosa narrativa: Nei menu, l'informazione centrale e' l'operazione che il sistema permette, blocca o conferma.
+Quando il dialogo lascia la scena e passa ai menu, le frasi diventano compatte. Label brevi, liste e messaggi di stato sostituiscono la prosa narrativa: nei menu, l'informazione centrale è l'operazione che il sistema permette, blocca o conferma.
 
-*   [{{共有|きょうゆう}}](term:term-v714-kyouyuu) compare con dati, impostazioni o informazioni. In {{情報|じょうほう}}を{{共有|きょうゆう}}する, l'informazione marcata da を viene messa a disposizione di un altro giocatore o gruppo: non è possesso privato, è disponibilità comune.
+*   [{{共有|きょうゆう}}](term:term-v714-kyouyuu) compare con dati, impostazioni o informazioni. In {{情報|じょうほう}}を{{共有|きょうゆう}}する, l'informazione marcata da を viene messa a disposizione di un altro giocatore o gruppo: il punto è la disponibilità comune, non il possesso privato.
 *   [おことわりリスト](term:term-v720-okotowaririsuto) unisce おことわり, rifiuto espresso in forma cortese, e リスト. Il tono della parola è morbido, ma la funzione di menu è netta: filtrare, bloccare o rifiutare una certa interazione.
-*   [{{活動|かつどう}}メンバー](term:term-v730-katsudoumenbaa) non significa "tutti gli amici". {{活動|かつどう}} restringe il campo ai membri attivi nella sessione, nel gruppo o nella selezione corrente; メンバー ti dice che stai leggendo una lista di partecipanti, non una descrizione narrativa.
+*   [{{活動|かつどう}}メンバー](term:term-v730-katsudoumenbaa) equivale ai membri attivi nella sessione, nel gruppo o nella selezione corrente; メンバー ti dice che stai leggendo una lista di partecipanti, non una descrizione narrativa.
 *   [チームＩＤ](term:term-v729-chiimuid) è un campo tecnico. ＩＤ va letto come codice identificativo: quando appare vicino a una squadra, non aggiunge lore al nome, ma ti dà il dato con cui riconoscere o condividere quel gruppo.
 *   [{{交換完了|こうかんかんりょう}}](term:term-v733-koukankanryou) combina {{交換|こうかん}} "scambio" e {{完了|かんりょう}} "completamento". Dopo una comunicazione, questa label non ti invita a iniziare lo scambio: conferma che l'azione è già andata a buon fine.
 *   [{{入|い}}れ{{替|か}}わる](term:term-v715-irekawaru) descrive un cambio di posto o sostituzione. In una schermata con membri, slot o elementi di squadra, il valore pratico è capire che una cosa prende il posto di un'altra, non che entrambe restano semplicemente presenti.
@@ -133,7 +133,7 @@ In [{{交換完了|こうかんかんりょう}}](term:term-v733-koukankanryou),
 La parte scolastica di Paldea usa parole amministrative, ma dentro il gioco hanno effetti molto pratici: dicono chi appartiene a un elenco, quanti elementi devi selezionare e quando un'attività smette di essere preparazione e diventa fase vera.
 
 *   [{{在籍|ざいせき}}](term:term-v721-zaiseki) indica appartenenza registrata. アカデミーに{{在籍|ざいせき}}している non vuol dire solo "trovarsi a scuola" in quel momento: significa risultare iscritti, essere parte ufficiale dell'Accademia.
-*   [{{単位|たんい}}](term:term-v717-tani) sono i crediti scolastici. In {{授業|じゅぎょう}}を{{受|う}}けて{{単位|たんい}}を{{取|と}}る, {{取|と}}る `単位を取る` significa ottenere crediti dopo lezione, test o attivita'.
+*   [{{単位|たんい}}](term:term-v717-tani) sono i crediti scolastici. In {{授業|じゅぎょう}}を{{受|う}}けて{{単位|たんい}}を{{取|と}}る, {{取|と}}る `単位を取る` significa ottenere crediti dopo corsi, test o attività.
 *   [{{決|き}}められた{{数|かず}}](term:term-v716-kimeraretakazu) contiene {{決|き}}められた, forma passiva di "decidere / stabilire". In un prompt di selezione, la quantità non è lasciata alla tua scelta: il sistema l'ha già fissata e tu devi riempire quel numero.
 *   [{{本格的|ほんかくてき}}](term:term-v723-honkakuteki) segnala il passaggio alla fase seria. {{本格的|ほんかくてき}}に{{始|はじ}}まる `本格的に始まる` indica l'avvio della fase seria, dopo preparazione o prove.
 *   [{{守護者|しゅごしゃ}}](term:term-v728-shugosha) è un titolo narrativo: {{守|まも}}る porta l'idea di proteggere, {{者|しゃ}} quella di persona o figura. Quando compare vicino a luoghi, tesori o ruoli speciali, leggilo come "guardiano", non come addetto tecnico a un menu.
@@ -153,7 +153,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{決|き}}められた{{数|かず}}](term:term-v716-kimeraretakazu) non dice "scegli un numero". Dice che il numero esiste già come vincolo: in una schermata di selezione devi completare lo spazio richiesto, non cambiare la regola.
+[{{決|き}}められた{{数|かず}}](term:term-v716-kimeraretakazu) ti chiede di usare un numero già fissato: in una schermata di selezione devi completare lo spazio richiesto, non cambiare la regola.
 
 ## 4. Territorio, controllo e gruppi problematici
 
@@ -186,7 +186,7 @@ translation_it: >-
 Nei minigiochi, nelle prove e nelle istruzioni operative, la lingua ordina quantità, obiettivi e precedenza. Il valore pratico sta nel capire se il gioco ti chiede di puntare a un punteggio, prepararti prima o leggere quale azione parte per prima.
 
 *   [ボーナスミッション](term:term-v722-boonasumisshon) è un obiettivo extra rispetto al percorso principale. Se compare con クリアすると, il testo ti sta dicendo che completarlo produce un risultato, una ricompensa o un vantaggio aggiuntivo.
-*   [{{高得点|こうとくてん}}](term:term-v726-koutokuten) combina {{高|こう}} "alto" e {{得点|とくてん}} "punteggio". {{高得点|こうとくてん}}をねらう significa mirare a un risultato alto: non basta partecipare o vincere in modo generico, il focus è il valore ottenuto.
+*   [{{高得点|こうとくてん}}](term:term-v726-koutokuten) combina {{高|こう}} "alto" e {{得点|とくてん}} "punteggio". {{高得点|こうとくてん}}をねらう significa mirare a un risultato alto: il focus supera il semplice partecipare o vincere in modo generico e si sposta sul valore ottenuto.
 *   [{{勝率|しょうりつ}}](term:term-v727-shouritsu) è una percentuale di vittoria. {{勝率|しょうりつ}}が{{上|あ}}がる aumenta, {{勝率|しょうりつ}}が{{下|さ}}がる diminuisce: il testo sta ragionando su una statistica nel tempo, non su una singola lotta.
 *   [{{優先度|ゆうせんど}}](term:term-v724-yuusendo) decide quale azione viene prima. In battaglia, {{技|わざ}}の{{優先度|ゆうせんど}}が{{高|たか}}い spiega perché una mossa può partire prima anche se la velocità non sembrava bastare.
 *   [{{動|うご}}き{{方|かた}}](term:term-v725-ugokikata) è "modo di muoversi": {{方|かた}} dopo la radice verbale trasforma l'azione in metodo. ライドポケモンの{{動|うご}}き{{方|かた}} parla del controllo concreto della cavalcatura, non del fatto astratto che si muova.

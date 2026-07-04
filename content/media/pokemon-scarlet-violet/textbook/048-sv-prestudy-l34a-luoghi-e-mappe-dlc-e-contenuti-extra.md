@@ -45,7 +45,7 @@ La lettura diventa più semplice quando separi tre livelli: coordinate della map
 ## Pattern grammaticali chiave
 
 - `NのN` — collega un nome di luogo, gruppo o stato al nome che lo segue
-- `Nに{{出|で}}る` — segnala che un'informazione compare su una schermata o sulla mappa
+- `Nに{{出|で}}る` — mostra che un'informazione compare su una schermata o sulla mappa
 - `Nに{{戻|もど}}る` — indica il ritorno a uno stato, una forma o un punto di riferimento
 - `Vえる{{可能性|かのうせい}}がある` — trasforma un evento possibile in ipotesi, non in promessa
 
@@ -105,7 +105,7 @@ Dopo il nome del luogo, spesso arriva la funzione. [{{拠点|きょてん}}](ter
 - [{{拠点|きょてん}}](term:term-v704-kyoten) indica un punto d'appoggio operativo. Nei testi legati al Team Star o agli hub del DLC, non leggerlo come "posto qualsiasi": è un luogo controllato da qualcuno, usato per partire, tornare, sfidare o organizzare un'attività.
 - [{{配達|はいたつ}}](term:term-v700-haitatsu) è una consegna: qualcosa deve arrivare da qualche parte. Per questo si combina naturalmente con {{場所|ばしょ}}, destinazioni e controlli sulla mappa; quando leggi [{{配達|はいたつ}}の{{場所|ばしょ}}](term:term-v700-haitatsu), il nome dopo の `配達の場所` indica il punto da trovare per la consegna.
 - [サークルミッション](term:term-v699-saakurumisshon) unisce サークル, il gruppo/sessione, e ミッション, l'obiettivo. La parola ti prepara a un'attività condivisa, non a una missione solitaria della storia principale: in UI, il valore operativo è "questa cosa si fa dentro il gruppo".
-- [{{鬼面衆|きめんしゅう}}](term:term-v686-kimenshuu) è un nome contestuale del DLC: {{鬼|き}} richiama l'orco, {{面|めん}} la maschera e {{衆|しゅう}} un gruppo di persone. Non serve trasformarlo in una definizione enciclopedica; nella frase segnala personaggi, prove o sfide legati all'evento delle maschere.
+- [{{鬼面衆|きめんしゅう}}](term:term-v686-kimenshuu) è un nome contestuale del DLC: {{鬼|き}} richiama l'orco, {{面|めん}} la maschera e {{衆|しゅう}} un gruppo di persone. Nella frase porta verso personaggi, prove o sfide legati all'evento delle maschere.
 
 :::example_sentence
 jp: >-
@@ -116,7 +116,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-- `スター{{団|だん}}の` ➔ **Possessore/funzione** (`の` collega il gruppo alla base: non è una base generica, è del Team Star).
+- `スター{{団|だん}}の` ➔ **Possessore/funzione** (`の` collega il gruppo alla base: è proprio la base del Team Star).
 - `{{拠点|きょてん}}が` ➔ **Elemento che appare** (`が` marca ciò che diventa rilevante nella schermata).
 - `マップに {{出|で}}ます` ➔ **Punto di comparsa** (`に` indica dove l'informazione diventa visibile: sulla mappa).
 
@@ -160,7 +160,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`{{可能性|かのうせい}}がある` non significa "succederà". Se la mappa o un dialogo usa questa forma, l'informazione resta una probabilità aperta: vale la pena controllare, ma il testo non garantisce il risultato.
+`{{可能性|かのうせい}}がある` va letto come eventualità, non come promessa. Se la mappa o un dialogo usa questa forma, l'informazione resta una probabilità aperta: vale la pena controllare, ma il testo non garantisce il risultato.
 
 ### B. `{{通常|つうじょう}}` e `{{変身|へんしん}}`: forma base e cambio di forma
 
