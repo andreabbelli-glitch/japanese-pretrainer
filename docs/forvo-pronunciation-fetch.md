@@ -334,6 +334,23 @@ Per il workflow del repo si puo quindi inserire un ranking prima dei voti, ad
 esempio privilegiando una lista locale di utenti affidabili quando presenti e
 poi ricadendo su voti/origine/ordine Forvo.
 
+Il 2026-07-05 e' stato scaricato da AnkiWeb il pacchetto aggiornato
+`1784714388` tramite l'endpoint usato da Anki
+`https://ankiweb.net/shared/download/1784714388?v=2.1&p=250904`. Il sorgente
+aggiornato conferma ancora il pattern sopra: `src/Forvo.py` crea una
+`QWebEngineView`, aspetta `loadFinished`, legge `page.toHtml(...)` e poi
+decodifica i `Play(...)`. Non c'e' una nuova API primaria o un endpoint Forvo
+stabile da usare al posto del browser Qt.
+
+Nello stesso test, il helper batch del repo e' stato portato da `urllib` diretto
+a `QWebEngineView`. Questo rimuove il vecchio errore immediato
+`HTTP Error 403: Forbidden`, ma Forvo puo comunque fermarsi sulla challenge
+Cloudflare `Just a moment...` dentro Qt; in quel caso il batch restituisce
+`query_error` con anteprima HTML diagnostica invece di lasciare solo un errore
+generico di plugin Anki. Per `交代` il dry-run del 2026-07-05 ha mostrato proprio
+questa challenge, quindi l'automazione Anki-style non e' ancora affidabile per
+quel target senza una sessione Qt che superi Cloudflare.
+
 Nel batch sperimentale successivo sul media `web-giapponese`, la lista speaker
 preferita e' stata:
 

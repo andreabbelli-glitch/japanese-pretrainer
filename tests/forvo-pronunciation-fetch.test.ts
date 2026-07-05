@@ -1,4 +1,5 @@
 import { execFile } from "node:child_process";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
 
@@ -27,6 +28,14 @@ const validContentRoot = path.join(
   "content",
   "valid",
   "content"
+);
+const forvoFetcherSourcePath = path.join(
+  process.cwd(),
+  "src",
+  "features",
+  "pronunciation",
+  "tooling",
+  "forvo-fetch.ts"
 );
 
 describe("forvo pronunciation helpers", () => {
@@ -255,6 +264,20 @@ describe("forvo pronunciation helpers", () => {
         stdoutIsTTY: true
       })
     ).toThrow(/word-add request prefill/iu);
+  });
+
+  it("generates the Anki helper to render Forvo pages in QWebEngine", async () => {
+    const source = await readFile(forvoFetcherSourcePath, "utf8");
+
+    expect(source).toContain("QWebEngineView");
+    expect(source).toContain("view.load(QUrl(build_page_url(query)))");
+    expect(source).not.toContain("urllib.request.Request(\n        build_page_url(query)");
+  });
+
+  it("removes stale generated Anki helper bytecode before reinstalling", async () => {
+    const source = await readFile(forvoFetcherSourcePath, "utf8");
+
+    expect(source).toContain('rm(path.join(addonDir, "__pycache__")');
   });
 
   it("fails the manual CLI before content work when no TTY is attached", async () => {

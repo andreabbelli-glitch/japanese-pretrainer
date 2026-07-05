@@ -831,6 +831,10 @@ async function installForvoAnkiHelperAddon(ankiBaseDir: string) {
   const addonDir = path.join(ankiBaseDir, "addons21", "jcs_forvo_batch");
 
   await mkdir(addonDir, { recursive: true });
+  await rm(path.join(addonDir, "__pycache__"), {
+    force: true,
+    recursive: true
+  });
   await writeFile(
     path.join(addonDir, "__init__.py"),
     forvoAnkiHelperAddonSource,
@@ -1735,6 +1739,7 @@ import base64
 import json
 import os
 import re
+import time
 import traceback
 import urllib.parse
 import urllib.request
@@ -1742,7 +1747,7 @@ from pathlib import Path
 from urllib.error import HTTPError
 
 from aqt import gui_hooks, mw
-from aqt.qt import QTimer
+from aqt.qt import QEventLoop, QTimer, QUrl, QWebEngineView
 from bs4 import BeautifulSoup
 
 
@@ -1750,6 +1755,9 @@ TARGETS_PATH = os.environ.get("JCS_FORVO_TARGETS_PATH")
 RESULT_PATH = os.environ.get("JCS_FORVO_RESULT_PATH")
 TARGET_LANGUAGE = os.environ.get("JCS_FORVO_LANGUAGE", "ja")
 ENTRY_DELAY_MS = int(os.environ.get("JCS_FORVO_ENTRY_DELAY_MS", "2500"))
+FORVO_RENDER_TIMEOUT_MS = int(os.environ.get("JCS_FORVO_RENDER_TIMEOUT_MS", "45000"))
+FORVO_RENDER_MIN_WAIT_MS = int(os.environ.get("JCS_FORVO_RENDER_MIN_WAIT_MS", "2500"))
+FORVO_RENDER_POLL_MS = 750
 KEEP_OPEN = os.environ.get("JCS_FORVO_KEEP_OPEN") == "1"
 PREFERRED_USERS = ["strawberrybrown", "mezashi"]
 
@@ -1757,6 +1765,7 @@ state = {
     "index": 0,
     "results": [],
     "targets": [],
+    "views": [],
 }
 
 
@@ -1914,26 +1923,142 @@ def build_page_url(query):
     return "https://forvo.com/word/" + urllib.parse.quote(query, safe="") + "/#ja"
 
 
-def load_forvo_soup(query):
-    request = urllib.request.Request(
-        build_page_url(query),
-        headers={
-            "Accept-Language": "ja,en-US;q=0.9,en;q=0.8",
-            "User-Agent": (
-                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0 Safari/537.36"
-            ),
-        },
+def is_cloudflare_challenge_html(text):
+    lowered = str(text or "").lower()
+
+    return (
+        "cf-browser-verification" in lowered
+        or "checking your browser" in lowered
+        or "just a moment" in lowered
     )
 
-    with urllib.request.urlopen(request, timeout=30) as response:
-        html = response.read()
 
-    text = html.decode("utf8", errors="ignore")
-    lowered = text.lower()
+def has_forvo_pronunciation_container(text):
+    return f'language-container-{TARGET_LANGUAGE}' in str(text or "")
 
-    if "cf-browser-verification" in lowered or "just a moment" in lowered:
-        raise RuntimeError("Forvo returned a Cloudflare challenge page")
+
+def summarize_rendered_html(text):
+    normalized = re.sub(r"\s+", " ", str(text or "")).strip()
+
+    if not normalized:
+        return "<empty>"
+
+    return normalized[:500]
+
+
+def run_qt_event_loop(loop):
+    execute = getattr(loop, "exec", None) or getattr(loop, "exec_", None)
+
+    if execute:
+        execute()
+
+
+def load_rendered_forvo_html(query):
+    loop = QEventLoop()
+    view = QWebEngineView()
+    view.setWindowTitle("JCS Forvo Browser")
+    view.resize(1024, 768)
+    state["views"].append(view)
+    started_at = time.monotonic()
+    result = {
+        "done": False,
+        "error": None,
+        "html": "",
+        "loaded": False,
+        "polling": False,
+    }
+
+    def complete(html=None, error=None):
+        if result["done"]:
+            return
+
+        if html:
+            result["html"] = html
+        result["error"] = error
+        result["done"] = True
+        loop.quit()
+
+    def read_html(callback):
+        def handle_html(html):
+            if html:
+                result["html"] = html
+            callback(result["html"])
+
+        view.page().toHtml(handle_html)
+
+    def poll_html():
+        if result["done"]:
+            return
+
+        def after_html(html):
+            if result["done"]:
+                return
+
+            elapsed_ms = int((time.monotonic() - started_at) * 1000)
+
+            if has_forvo_pronunciation_container(html):
+                complete(html)
+                return
+
+            if (
+                result["loaded"]
+                and elapsed_ms >= FORVO_RENDER_MIN_WAIT_MS
+                and not is_cloudflare_challenge_html(html)
+            ):
+                complete(html)
+                return
+
+            if elapsed_ms >= FORVO_RENDER_TIMEOUT_MS:
+                if html and not is_cloudflare_challenge_html(html):
+                    complete(html)
+                    return
+
+                complete(
+                    html,
+                    (
+                        "Forvo page did not finish rendering in the Anki Qt "
+                        f"browser. Rendered HTML preview: {summarize_rendered_html(html)}"
+                    ),
+                )
+                return
+
+            QTimer.singleShot(FORVO_RENDER_POLL_MS, poll_html)
+
+        read_html(after_html)
+
+    def ensure_polling():
+        if result["polling"]:
+            return
+
+        result["polling"] = True
+        QTimer.singleShot(FORVO_RENDER_POLL_MS, poll_html)
+
+    def handle_load_finished(ok):
+        result["loaded"] = True
+        ensure_polling()
+
+    view.loadFinished.connect(handle_load_finished)
+    view.load(QUrl(build_page_url(query)))
+    view.show()
+    view.raise_()
+    view.activateWindow()
+    ensure_polling()
+    run_qt_event_loop(loop)
+
+    try:
+        state["views"].remove(view)
+    except ValueError:
+        pass
+    view.deleteLater()
+
+    if result["error"]:
+        raise RuntimeError(result["error"])
+
+    return result["html"]
+
+
+def load_forvo_soup(query):
+    text = load_rendered_forvo_html(query)
 
     return BeautifulSoup(text, "html.parser")
 
