@@ -246,20 +246,27 @@ server-side dietro l'endpoint deve fare una sola due-count check Turso per run
 e inviare push solo se serve. Secret APNs/mobile/monitor e token Turso non
 devono mai essere committati.
 
-Il rinnovo automatico launchd controlla ogni 15 minuti e rinnova solo dopo la
-scadenza reale dei provisioning profile embedded registrata in
-`~/Library/Application Support/DailyKanji/profile-expiry.epoch`, con un piccolo
-grace period. Il marker
+Il rinnovo automatico launchd non fa polling continuo: il plist viene generato
+con `StartCalendarInterval` alla scadenza reale dei provisioning profile
+embedded registrata in
+`~/Library/Application Support/DailyKanji/profile-expiry.epoch`, piu' un piccolo
+grace period. `StartCalendarInterval` non contiene un campo anno: questa
+automazione e' pensata per profili Xcode Personal Team short-lived, circa 7
+giorni. Il marker
 `~/Library/Application Support/DailyKanji/last-renew-success.epoch` resta
-diagnostico; non decide piu' quando rinnovare. Se `profile-expiry.epoch` manca o
-e' corrotto, il rinnovo e' dovuto. Prima del package/build il wrapper preflighta
-CoreDevice e monta la Developer Disk Image: se l'iPhone e' bloccato, il job
-termina senza marcare successo e riprova al giro successivo. Dopo un install
-riuscito, `xcode-renew.sh` registra la scadenza minima tra app e widget leggendo
-gli `embedded.mobileprovision`; se non riesce, il job non marca successo e
-riprova al giro successivo. Per aggiornare il marker diagnostico dopo un rinnovo
-manuale gia riuscito, installare o reinstallare il LaunchAgent con
-`--mark-success-now`. I log unattended sono in
+diagnostico; non decide piu' quando rinnovare. Se `profile-expiry.epoch` manca,
+e' corrotto o e' gia passato, l'install interattivo fa un run immediato e
+programma una retry futura; quando il job gira da launchd, rischedula con
+`--reschedule-only` senza rilanciarsi subito. Prima del package/build il wrapper
+preflighta CoreDevice e monta la Developer Disk Image: se l'iPhone e' bloccato,
+il job termina senza marcare successo e programma una retry dopo
+`RENEW_RETRY_DELAY_SECONDS` (default 30 minuti). Dopo un install riuscito,
+`xcode-renew.sh` registra la scadenza minima tra app e widget leggendo gli
+`embedded.mobileprovision`; il wrapper poi riscrive il calendario launchd sulla
+nuova data. Errori durante la rischedulazione launchd finiscono nel log stderr.
+Per aggiornare il marker diagnostico dopo un rinnovo manuale gia riuscito,
+installare o reinstallare il LaunchAgent con `--mark-success-now`. I log
+unattended sono in
 `~/Library/Logs/DailyKanji/xcode-renew.out.log` e
 `~/Library/Logs/DailyKanji/xcode-renew.err.log`.
 

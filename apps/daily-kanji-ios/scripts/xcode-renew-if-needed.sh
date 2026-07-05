@@ -8,13 +8,18 @@ LOG_DIR="${LOG_DIR:-$HOME/Library/Logs/DailyKanji}"
 CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"
 RENEW_MIN_AGE_SECONDS="${RENEW_MIN_AGE_SECONDS:-432000}"
 RENEW_AFTER_EXPIRY_GRACE_SECONDS="${RENEW_AFTER_EXPIRY_GRACE_SECONDS:-120}"
+RENEW_RETRY_DELAY_SECONDS="${RENEW_RETRY_DELAY_SECONDS:-1800}"
 LOCK_MAX_AGE_SECONDS="${LOCK_MAX_AGE_SECONDS:-21600}"
 COREDEVICE_INFO_TIMEOUT_SECONDS="${COREDEVICE_INFO_TIMEOUT_SECONDS:-60}"
 DDI_MOUNT_TIMEOUT_SECONDS="${DDI_MOUNT_TIMEOUT_SECONDS:-120}"
+DAILY_KANJI_AUTO_RESCHEDULE_LAUNCHD="${DAILY_KANJI_AUTO_RESCHEDULE_LAUNCHD:-0}"
+DAILY_KANJI_LAUNCHD_RESCHEDULE_DELAY_SECONDS="${DAILY_KANJI_LAUNCHD_RESCHEDULE_DELAY_SECONDS:-2}"
+DAILY_KANJI_LAUNCHD_RESCHEDULE_SYNCHRONOUS="${DAILY_KANJI_LAUNCHD_RESCHEDULE_SYNCHRONOUS:-0}"
 LOCK_DIR="$STATE_DIR/renew.lock"
 LAST_SUCCESS_FILE="$STATE_DIR/last-renew-success.epoch"
 PROFILE_EXPIRY_FILE="${PROFILE_EXPIRY_FILE:-$STATE_DIR/profile-expiry.epoch}"
 FORCE=0
+RESCHEDULE_LAUNCHD_ON_EXIT=0
 
 if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Developer ]; then
   export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
@@ -35,9 +40,11 @@ Environment:
   RENEW_MIN_AGE_SECONDS     Default: 432000 (5 days).
                             Kept for compatibility; profile expiry is primary.
   RENEW_AFTER_EXPIRY_GRACE_SECONDS Default: 120.
+  RENEW_RETRY_DELAY_SECONDS Default: 1800 (30 minutes).
   LOCK_MAX_AGE_SECONDS      Default: 21600 (6 hours).
   COREDEVICE_INFO_TIMEOUT_SECONDS Default: 60.
   DDI_MOUNT_TIMEOUT_SECONDS       Default: 120.
+  DAILY_KANJI_AUTO_RESCHEDULE_LAUNCHD Default: 0.
   STATE_DIR                 Default: ~/Library/Application Support/DailyKanji.
   LOG_DIR                   Default: ~/Library/Logs/DailyKanji.
 USAGE
@@ -142,14 +149,52 @@ developer_disk_image_ready() {
   if [[ "$output" == *"kAMDMobileImageMounterDeviceLocked"* ]] ||
     [[ "$output" == *"device is locked"* ]] ||
     [[ "$output" == *"The device is locked"* ]]; then
-    printf "Daily Kanji iPhone bloccato: sblocca l'iPhone e lascialo acceso, poi il rinnovo riprovera' al prossimo giro.\n"
+    printf "Daily Kanji iPhone bloccato: sblocca l'iPhone e lascialo acceso, poi il rinnovo verra' riprogrammato.\n"
     printf "%s\n" "$output"
     return 1
   fi
 
-  printf "Daily Kanji developer disk image non pronta; il rinnovo riprovera' al prossimo giro.\n"
+  printf "Daily Kanji developer disk image non pronta; il rinnovo verra' riprogrammato.\n"
   printf "%s\n" "$output"
   return 1
+}
+
+reschedule_launchd() {
+  if [ "$DAILY_KANJI_AUTO_RESCHEDULE_LAUNCHD" != "1" ]; then
+    return 0
+  fi
+
+  local installer="$ROOT/scripts/install-renew-launchd.sh"
+  local stdout_log="$LOG_DIR/xcode-renew.out.log"
+  local stderr_log="$LOG_DIR/xcode-renew.err.log"
+  local status
+
+  ensure_directories
+
+  if [ ! -x "$installer" ]; then
+    printf "Daily Kanji LaunchAgent reschedule skipped: installer missing at %s\n" "$installer" >&2
+    return 0
+  fi
+
+  if [ "$DAILY_KANJI_LAUNCHD_RESCHEDULE_SYNCHRONOUS" = "1" ]; then
+    if "$installer" --reschedule-only; then
+      return 0
+    fi
+    status="$?"
+    printf "Daily Kanji LaunchAgent reschedule failed with exit %s\n" "$status" >&2
+    return "$status"
+  fi
+
+  (
+    set +e
+    sleep "$DAILY_KANJI_LAUNCHD_RESCHEDULE_DELAY_SECONDS"
+    "$installer" --reschedule-only
+    status="$?"
+    if [ "$status" -ne 0 ]; then
+      printf "Daily Kanji LaunchAgent reschedule failed with exit %s\n" "$status" >&2
+    fi
+    exit "$status"
+  ) >> "$stdout_log" 2>> "$stderr_log" &
 }
 
 print_status() {
@@ -164,6 +209,7 @@ print_status() {
   printf "Profile expiry file: %s\n" "$PROFILE_EXPIRY_FILE"
   printf "Renew min age: %ss\n" "$RENEW_MIN_AGE_SECONDS"
   printf "Renew after expiry grace: %ss\n" "$RENEW_AFTER_EXPIRY_GRACE_SECONDS"
+  printf "Renew retry delay: %ss\n" "$RENEW_RETRY_DELAY_SECONDS"
   printf "Lock max age: %ss\n" "$LOCK_MAX_AGE_SECONDS"
   printf "CoreDevice info timeout: %ss\n" "$COREDEVICE_INFO_TIMEOUT_SECONDS"
   printf "DDI mount timeout: %ss\n" "$DDI_MOUNT_TIMEOUT_SECONDS"
@@ -251,6 +297,20 @@ remove_lock_dir() {
   rmdir "$LOCK_DIR" 2>/dev/null || true
 }
 
+cleanup_after_renew() {
+  local exit_code="$?"
+
+  remove_lock_dir
+
+  if [ "$RESCHEDULE_LAUNCHD_ON_EXIT" -eq 1 ]; then
+    set +e
+    reschedule_launchd
+    set -e
+  fi
+
+  return "$exit_code"
+}
+
 recover_stale_lock_if_needed() {
   local epoch
   local age_seconds
@@ -321,9 +381,13 @@ ensure_directories
 
 if ! acquire_lock; then
   printf "Daily Kanji renew already running; skipping.\n"
+  set +e
+  reschedule_launchd
+  set -e
   exit 0
 fi
-trap 'remove_lock_dir' EXIT
+RESCHEDULE_LAUNCHD_ON_EXIT=1
+trap cleanup_after_renew EXIT
 
 if ! should_renew; then
   printf "Daily Kanji renew not due; skipping.\n"

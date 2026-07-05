@@ -69,31 +69,38 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh --mark-succ
 ./scripts/xcode-renew-if-needed.sh --force
 ```
 
-Il LaunchAgent utente controlla ogni 15 minuti, ma il wrapper resta leggero
-finche' la scadenza reale dei provisioning profile embedded non e' passata. Il
-rinnovo automatico parte solo dopo la scadenza registrata in
-`~/Library/Application Support/DailyKanji/profile-expiry.epoch`, con un piccolo
-grace period, e solo se l'iPhone e' raggiungibile via CoreDevice e la Developer
-Disk Image e' montabile. Il `DEVICE_ID` viene scritto nel file locale non
-versionato `~/Library/Application Support/DailyKanji/renew.env`; lo stesso file
-puo contenere `DAILY_KANJI_IOS_SYNC_ENDPOINT`,
-`DAILY_KANJI_IOS_SYNC_TOKEN`, `MOBILE_API_ENDPOINT`, `MOBILE_API_TOKEN` e
-opzionalmente `DAILY_KANJI_ENABLE_APNS=1`, che `scripts/xcode-renew.sh` passa
-come build settings locali senza committare segreti. Lascia APNs disabilitato
-per Personal Team; abilitalo solo con provisioning Apple Developer che supporta
-Push Notifications. Rieseguire `scripts/install-renew-launchd.sh` aggiorna solo
+Il LaunchAgent utente non fa polling continuo: `install-renew-launchd.sh` genera
+un `StartCalendarInterval` alla prossima scadenza reale dei provisioning profile
+embedded registrata in
+`~/Library/Application Support/DailyKanji/profile-expiry.epoch`, piu' un piccolo
+grace period. `StartCalendarInterval` non contiene un campo anno, quindi questa
+automazione e' intenzionalmente tarata sui profili Xcode Personal Team
+short-lived, che scadono circa 7 giorni dopo l'install. Se la scadenza manca, e'
+corrotta o e' gia passata, l'install interattivo fa un run immediato e programma
+una retry futura; quando il job gira da launchd, riscrive il calendario con
+`--reschedule-only` senza rilanciarsi subito. Il rinnovo automatico parte solo se
+l'iPhone e' raggiungibile via CoreDevice e la Developer Disk Image e'
+montabile. Il `DEVICE_ID` viene scritto nel file locale non versionato
+`~/Library/Application Support/DailyKanji/renew.env`; lo stesso file puo
+contenere `DAILY_KANJI_IOS_SYNC_ENDPOINT`, `DAILY_KANJI_IOS_SYNC_TOKEN`,
+`MOBILE_API_ENDPOINT`, `MOBILE_API_TOKEN` e opzionalmente
+`DAILY_KANJI_ENABLE_APNS=1`, che `scripts/xcode-renew.sh` passa come build
+settings locali senza committare segreti. Lascia APNs disabilitato per Personal
+Team; abilitalo solo con provisioning Apple Developer che supporta Push
+Notifications. Rieseguire `scripts/install-renew-launchd.sh` aggiorna solo
 `DEVICE_ID` e conserva le altre righe del file. Usa `--mark-success-now` solo
 dopo un rinnovo/install manuale gia riuscito: scrive solo il marker diagnostico
 `last-renew-success.epoch`; la decisione automatica resta basata sulla scadenza
-dei profili embedded. Se `profile-expiry.epoch` manca o e' corrotto, il rinnovo
-e' considerato dovuto. Quando il rinnovo e' davvero dovuto, il wrapper
-preflighta CoreDevice/DDI, poi esegue `pnpm daily-kanji:package` dalla root del
-repo e poi `scripts/xcode-renew.sh`, cosi' il verifier non blocca risorse
-packaged stale. Dopo l'install, `xcode-renew.sh` registra la scadenza minima tra
-app e widget leggendo gli `embedded.mobileprovision`; se non riesce, il job non
-marca successo e riprova al giro successivo. Se il device non e' disponibile o
-l'iPhone e' bloccato durante il mount DDI, il job termina senza marcare successo
-e riprova al giro successivo. Per rimuoverlo:
+dei profili embedded. Quando il rinnovo e' davvero dovuto, il wrapper preflighta
+CoreDevice/DDI, poi esegue `pnpm daily-kanji:package` dalla root del repo e poi
+`scripts/xcode-renew.sh`, cosi' il verifier non blocca risorse packaged stale.
+Dopo l'install, `xcode-renew.sh` registra la scadenza minima tra app e widget
+leggendo gli `embedded.mobileprovision`; il wrapper poi rischedula launchd sulla
+nuova data. Se non riesce, se il device non e' disponibile o se l'iPhone e'
+bloccato durante il mount DDI, il job termina senza marcare successo e programma
+una retry dopo `RENEW_RETRY_DELAY_SECONDS` (default 30 minuti). Errori durante
+la rischedulazione launchd finiscono in
+`~/Library/Logs/DailyKanji/xcode-renew.err.log`. Per rimuoverlo:
 
 ```sh
 ./scripts/install-renew-launchd.sh --uninstall
