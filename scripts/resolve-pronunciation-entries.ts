@@ -30,6 +30,7 @@ const resolveOnlyValueFlags = new Set([
 ]);
 const resolveOnlyBooleanFlags = new Set([
   "--dry-run",
+  "--keep-browser-open",
   "--no-tofugu",
   "--no-tofugu-download",
   "--no-open",
@@ -313,7 +314,11 @@ function readNonNegativeIntegerOption(
   return value;
 }
 
-function readPositiveIntegerOption(argv: string[], index: number, flag: string) {
+function readPositiveIntegerOption(
+  argv: string[],
+  index: number,
+  flag: string
+) {
   const value = readOptionValue(argv, index, flag);
 
   if (!/^[1-9]\d*$/u.test(value)) {
@@ -349,13 +354,7 @@ function dedupe(values: string[]) {
 }
 
 function formatPnpmCommand(scriptName: string, args: string[]) {
-  return [
-    "./scripts/with-node.sh",
-    "pnpm",
-    scriptName,
-    "--",
-    ...args
-  ]
+  return ["./scripts/with-node.sh", "pnpm", scriptName, "--", ...args]
     .map(quoteShellArg)
     .join(" ");
 }

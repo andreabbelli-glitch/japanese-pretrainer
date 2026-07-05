@@ -201,6 +201,7 @@ describe("pronunciation resolve", () => {
             `--content-root=${contentRoot}`,
             ...isolatedPronunciationWorkflowArgs(tempDir),
             "--dry-run",
+            "--keep-browser-open",
             "--limit=0",
             "--no-tofugu",
             "--no-open",

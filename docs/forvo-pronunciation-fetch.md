@@ -152,6 +152,9 @@ Opzioni utili:
 - `--anki-python /path/to/python`: usa un runtime Python Anki diverso dal
   default locale per inizializzare il profilo quando e' vuoto;
 - `--browser-timeout-ms 120000`: cambia il timeout massimo del batch Anki;
+- `--keep-browser-open`: lascia la finestra Qt del profilo helper aperta, utile
+  quando Forvo mostra una challenge Cloudflare da risolvere manualmente o con
+  Computer Use;
 - `--known-missing-file /path`: file JSON dove salvare i miss persistenti;
 - `--tofugu-dataset-dir /path`: clone locale Tofugu/WaniKani alternativo per
   `pnpm pronunciations:resolve`;
@@ -344,12 +347,15 @@ stabile da usare al posto del browser Qt.
 
 Nello stesso test, il helper batch del repo e' stato portato da `urllib` diretto
 a `QWebEngineView`. Questo rimuove il vecchio errore immediato
-`HTTP Error 403: Forbidden`, ma Forvo puo comunque fermarsi sulla challenge
-Cloudflare `Just a moment...` dentro Qt; in quel caso il batch restituisce
-`query_error` con anteprima HTML diagnostica invece di lasciare solo un errore
-generico di plugin Anki. Per `交代` il dry-run del 2026-07-05 ha mostrato proprio
-questa challenge, quindi l'automazione Anki-style non e' ancora affidabile per
-quel target senza una sessione Qt che superi Cloudflare.
+`HTTP Error 403: Forbidden`; quando Forvo si ferma sulla challenge Cloudflare
+`Just a moment...`, usare `--keep-browser-open` insieme a un
+`--browser-timeout-ms` abbastanza lungo. Il profilo helper viene lanciato con
+`-b data/forvo-anki-profile -p "User 1"` e legge una config file-backed sotto
+`addons21/jcs_forvo_batch/run-config.json`, quindi funziona anche con
+`/Applications/Anki.app/Contents/MacOS/launcher`, che filtra parte
+dell'ambiente. Per `交代`, il dry-run del 2026-07-05 arriva alla checkbox
+Cloudflare dentro la finestra `JCS Forvo Browser`; la risoluzione della
+challenge richiede conferma action-time prima del click.
 
 Nel batch sperimentale successivo sul media `web-giapponese`, la lista speaker
 preferita e' stata:

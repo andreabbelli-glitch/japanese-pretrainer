@@ -270,14 +270,32 @@ describe("forvo pronunciation helpers", () => {
     const source = await readFile(forvoFetcherSourcePath, "utf8");
 
     expect(source).toContain("QWebEngineView");
+    expect(source).toContain("QDialog(main_window)");
+    expect(source).toContain(
+      "main_window.jcs_forvo_view = QWebEngineView(dialog)"
+    );
+    expect(source).toContain('register_start_hook("profile_did_open")');
     expect(source).toContain("view.load(QUrl(build_page_url(query)))");
-    expect(source).not.toContain("urllib.request.Request(\n        build_page_url(query)");
+    expect(source).not.toContain("QEventLoop");
+    expect(source).not.toContain(
+      "urllib.request.Request(\n        build_page_url(query)"
+    );
   });
 
   it("removes stale generated Anki helper bytecode before reinstalling", async () => {
     const source = await readFile(forvoFetcherSourcePath, "utf8");
 
     expect(source).toContain('rm(path.join(addonDir, "__pycache__")');
+  });
+
+  it("writes a file-backed Anki helper run config for app bundle launches", async () => {
+    const source = await readFile(forvoFetcherSourcePath, "utf8");
+
+    expect(source).toContain("writeForvoAnkiHelperRunConfig");
+    expect(source).toContain('"run-config.json"');
+    expect(source).toContain("RUN_CONFIG = read_run_config()");
+    expect(source).toContain("renderTimeoutMs: input.timeoutMs");
+    expect(source).toContain('return ["-b", ankiBaseDir, "-p", "User 1"]');
   });
 
   it("fails the manual CLI before content work when no TTY is attached", async () => {

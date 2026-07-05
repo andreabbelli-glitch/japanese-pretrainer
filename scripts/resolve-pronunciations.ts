@@ -18,6 +18,7 @@ type CliOptions = {
   contentRoot: string;
   controlPort: number;
   dryRun: boolean;
+  keepBrowserOpen: boolean;
   knownMissingPath: string;
   lessonUrl?: string;
   limit?: number;
@@ -91,6 +92,7 @@ if (!options.openWordAddOnSkip) {
           ankiBaseDir: path.resolve(options.ankiBaseDir),
           ankiPythonPath: options.ankiPythonPath,
           browserTimeoutMs: options.browserTimeoutMs,
+          keepBrowserOpen: options.keepBrowserOpen,
           knownMissingPath: path.resolve(options.knownMissingPath),
           openWordAddOnMiss: options.openWordAddOnSkip,
           requestRegistryPath: path.resolve(options.requestRegistryPath),
@@ -171,6 +173,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     controlPort: 3210,
     dryRun: false,
     entryIds: [],
+    keepBrowserOpen: false,
     knownMissingPath: path.join("data", "forvo-known-missing.json"),
     manualDownloadsDir: path.join(os.homedir(), "Downloads"),
     manualOpenUrls: true,
@@ -333,6 +336,11 @@ function parseCliOptions(argv: string[]): CliOptions {
         "--browser-timeout-ms"
       );
       index += 1;
+      continue;
+    }
+
+    if (argument === "--keep-browser-open") {
+      options.keepBrowserOpen = true;
       continue;
     }
 

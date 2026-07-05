@@ -48,17 +48,18 @@ describe("pronunciation resolve entries CLI", () => {
   });
 
   it("supports entry files while preserving explicit resolver flags", async () => {
-    const tempDir = await mkdtemp(
-      path.join(tmpdir(), "jcs-resolve-entries-")
-    );
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-resolve-entries-"));
     tempDirs.push(tempDir);
     const entriesFile = path.join(tempDir, "entries.txt");
 
     await writeFile(
       entriesFile,
-      ["# new card entries", "term-taberu", "grammar-teiru", "term-taberu"].join(
-        "\n"
-      )
+      [
+        "# new card entries",
+        "term-taberu",
+        "grammar-teiru",
+        "term-taberu"
+      ].join("\n")
     );
 
     const { stdout } = await runResolveEntriesCli([
@@ -67,6 +68,7 @@ describe("pronunciation resolve entries CLI", () => {
       "--entries-file",
       entriesFile,
       "--dry-run",
+      "--keep-browser-open",
       "--limit",
       "0",
       "--no-tofugu",
@@ -77,7 +79,7 @@ describe("pronunciation resolve entries CLI", () => {
       "PRONUNCIATION_RESOLVE_ENTRIES media=sample-anime entries=2 preflight=false run=true"
     );
     expect(stdout).toContain(
-      `--dry-run --limit 0 --no-tofugu --mode targeted --media sample-anime --entry term-taberu --entry grammar-teiru`
+      `--dry-run --keep-browser-open --limit 0 --no-tofugu --mode targeted --media sample-anime --entry term-taberu --entry grammar-teiru`
     );
   });
 
@@ -122,12 +124,7 @@ describe("pronunciation resolve entries CLI", () => {
 
   it("rejects non-entry selector flags", async () => {
     await expect(
-      runResolveEntriesCli([
-        "--media",
-        "sample-anime",
-        "--word",
-        "食べる"
-      ])
+      runResolveEntriesCli(["--media", "sample-anime", "--word", "食べる"])
     ).rejects.toMatchObject({
       stderr: expect.stringContaining(
         "pronunciations:resolve-entries does not accept --word"

@@ -755,12 +755,21 @@ async function runForvoAnkiBatch(input: {
     JSON.stringify({ targets: input.targets }, null, 2),
     "utf8"
   );
+  const runConfigPath = await writeForvoAnkiHelperRunConfig({
+    ankiBaseDir,
+    entryDelayMs: input.entryDelayMs,
+    keepAnkiOpen: input.keepAnkiOpen,
+    renderTimeoutMs: input.timeoutMs,
+    resultPath,
+    targetsPath
+  });
 
-  const child = spawn(ankiCommandPath, [], {
+  const child = spawn(ankiCommandPath, buildForvoAnkiLaunchArgs(ankiBaseDir), {
     env: buildForvoAnkiBatchEnvironment({
       ankiBaseDir,
       entryDelayMs: input.entryDelayMs,
       keepAnkiOpen: input.keepAnkiOpen,
+      runConfigPath,
       resultPath,
       targetsPath
     }),
@@ -778,6 +787,10 @@ async function runForvoAnkiBatch(input: {
     stderr: () => stderr,
     timeoutMs: input.timeoutMs ?? 120000
   });
+}
+
+function buildForvoAnkiLaunchArgs(ankiBaseDir: string) {
+  return ["-b", ankiBaseDir, "-p", "User 1"];
 }
 
 async function resolveAnkiCommandPath(explicitPath?: string) {
@@ -811,6 +824,7 @@ function buildForvoAnkiBatchEnvironment(input: {
   ankiBaseDir: string;
   entryDelayMs?: number;
   keepAnkiOpen?: boolean;
+  runConfigPath: string;
   resultPath: string;
   targetsPath: string;
 }) {
@@ -822,6 +836,7 @@ function buildForvoAnkiBatchEnvironment(input: {
       JCS_FORVO_KEEP_OPEN: input.keepAnkiOpen ? "1" : "0",
       JCS_FORVO_LANGUAGE: "ja",
       JCS_FORVO_RESULT_PATH: input.resultPath,
+      JCS_FORVO_RUN_CONFIG_PATH: input.runConfigPath,
       JCS_FORVO_TARGETS_PATH: input.targetsPath
     }
   }.env;
@@ -840,6 +855,37 @@ async function installForvoAnkiHelperAddon(ankiBaseDir: string) {
     forvoAnkiHelperAddonSource,
     "utf8"
   );
+}
+
+async function writeForvoAnkiHelperRunConfig(input: {
+  ankiBaseDir: string;
+  entryDelayMs?: number;
+  keepAnkiOpen?: boolean;
+  renderTimeoutMs?: number;
+  resultPath: string;
+  targetsPath: string;
+}) {
+  const addonDir = path.join(input.ankiBaseDir, "addons21", "jcs_forvo_batch");
+  const configPath = path.join(addonDir, "run-config.json");
+
+  await writeFile(
+    configPath,
+    JSON.stringify(
+      {
+        entryDelayMs: input.entryDelayMs ?? 2500,
+        keepOpen: Boolean(input.keepAnkiOpen),
+        language: "ja",
+        renderTimeoutMs: input.renderTimeoutMs ?? 120000,
+        resultPath: input.resultPath,
+        targetsPath: input.targetsPath
+      },
+      null,
+      2
+    ),
+    "utf8"
+  );
+
+  return configPath;
 }
 
 async function ensureForvoAnkiProfileReady(input: {
@@ -1014,7 +1060,7 @@ async function waitForForvoAnkiResult(input: {
       );
     }
 
-    if (childExit.value) {
+    if (childExit.value && childExit.value.code !== 0) {
       throw new Error(
         `Anki exited before producing a completed Forvo result (code=${childExit.value.code ?? "null"} signal=${childExit.value.signal ?? "null"} status=${result?.status ?? "missing_result"}). ${input.stderr()}`
       );
@@ -1735,6 +1781,7 @@ async function openUrlInDefaultBrowser(url: string) {
 }
 
 const forvoAnkiHelperAddonSource = String.raw`
+import aqt
 import base64
 import json
 import os
@@ -1746,24 +1793,81 @@ import urllib.request
 from pathlib import Path
 from urllib.error import HTTPError
 
-from aqt import gui_hooks, mw
-from aqt.qt import QEventLoop, QTimer, QUrl, QWebEngineView
+from aqt import gui_hooks
+from aqt.qt import QDialog, QTimer, QUrl, QVBoxLayout, QWebEngineView
 from bs4 import BeautifulSoup
 
 
-TARGETS_PATH = os.environ.get("JCS_FORVO_TARGETS_PATH")
-RESULT_PATH = os.environ.get("JCS_FORVO_RESULT_PATH")
-TARGET_LANGUAGE = os.environ.get("JCS_FORVO_LANGUAGE", "ja")
-ENTRY_DELAY_MS = int(os.environ.get("JCS_FORVO_ENTRY_DELAY_MS", "2500"))
-FORVO_RENDER_TIMEOUT_MS = int(os.environ.get("JCS_FORVO_RENDER_TIMEOUT_MS", "45000"))
-FORVO_RENDER_MIN_WAIT_MS = int(os.environ.get("JCS_FORVO_RENDER_MIN_WAIT_MS", "2500"))
+ADDON_DIR = Path(__file__).parent
+DEBUG_LOG_PATH = ADDON_DIR / "startup.log"
+
+
+def log_debug(message):
+    try:
+        with open(DEBUG_LOG_PATH, "a", encoding="utf8") as handle:
+            handle.write(f"{time.time():.3f} {message}\n")
+    except Exception:
+        pass
+
+
+log_debug("imported jcs_forvo_batch")
+
+
+def read_run_config():
+    config_path = os.environ.get("JCS_FORVO_RUN_CONFIG_PATH") or str(
+        ADDON_DIR / "run-config.json"
+    )
+
+    try:
+        with open(config_path, encoding="utf8") as handle:
+            payload = json.load(handle)
+
+        if isinstance(payload, dict):
+            return payload
+    except Exception:
+        return {}
+
+    return {}
+
+
+def config_bool(value):
+    if isinstance(value, bool):
+        return value
+
+    return str(value or "").lower() in ("1", "true", "yes")
+
+
+RUN_CONFIG = read_run_config()
+TARGETS_PATH = os.environ.get("JCS_FORVO_TARGETS_PATH") or RUN_CONFIG.get("targetsPath")
+RESULT_PATH = os.environ.get("JCS_FORVO_RESULT_PATH") or RUN_CONFIG.get("resultPath")
+TARGET_LANGUAGE = (
+    os.environ.get("JCS_FORVO_LANGUAGE") or RUN_CONFIG.get("language") or "ja"
+)
+ENTRY_DELAY_MS = int(
+    os.environ.get("JCS_FORVO_ENTRY_DELAY_MS")
+    or RUN_CONFIG.get("entryDelayMs")
+    or "2500"
+)
+FORVO_RENDER_TIMEOUT_MS = int(
+    os.environ.get("JCS_FORVO_RENDER_TIMEOUT_MS")
+    or RUN_CONFIG.get("renderTimeoutMs")
+    or "45000"
+)
+FORVO_RENDER_MIN_WAIT_MS = int(
+    os.environ.get("JCS_FORVO_RENDER_MIN_WAIT_MS")
+    or RUN_CONFIG.get("renderMinWaitMs")
+    or "2500"
+)
 FORVO_RENDER_POLL_MS = 750
-KEEP_OPEN = os.environ.get("JCS_FORVO_KEEP_OPEN") == "1"
+KEEP_OPEN = config_bool(
+    os.environ.get("JCS_FORVO_KEEP_OPEN") or RUN_CONFIG.get("keepOpen")
+)
 PREFERRED_USERS = ["strawberrybrown", "mezashi"]
 
 state = {
     "index": 0,
     "results": [],
+    "started": False,
     "targets": [],
     "views": [],
 }
@@ -1805,7 +1909,10 @@ def finish(status="done"):
     if KEEP_OPEN:
         return
 
-    QTimer.singleShot(1500, mw.close)
+    main_window = aqt.mw
+
+    if main_window is not None:
+        QTimer.singleShot(1500, main_window.close)
 
 
 def decode_audio_candidates(onclick):
@@ -1946,37 +2053,53 @@ def summarize_rendered_html(text):
     return normalized[:500]
 
 
-def run_qt_event_loop(loop):
-    execute = getattr(loop, "exec", None) or getattr(loop, "exec_", None)
+def load_rendered_forvo_html(query, on_success, on_error):
+    main_window = aqt.mw
 
-    if execute:
-        execute()
+    if main_window is None:
+        on_error("Anki main window is not ready for the Forvo browser.")
+        return
 
-
-def load_rendered_forvo_html(query):
-    loop = QEventLoop()
-    view = QWebEngineView()
-    view.setWindowTitle("JCS Forvo Browser")
-    view.resize(1024, 768)
-    state["views"].append(view)
+    dialog = main_window.jcs_forvo_dialog = QDialog(main_window)
+    dialog.setWindowTitle("JCS Forvo Browser")
+    dialog.resize(1024, 768)
+    layout = QVBoxLayout(dialog)
+    view = main_window.jcs_forvo_view = QWebEngineView(dialog)
+    layout.addWidget(view)
+    state["views"].append(dialog)
     started_at = time.monotonic()
     result = {
         "done": False,
-        "error": None,
         "html": "",
         "loaded": False,
         "polling": False,
     }
 
-    def complete(html=None, error=None):
+    def cleanup():
+        try:
+            state["views"].remove(dialog)
+        except ValueError:
+            pass
+        dialog.close()
+        view.deleteLater()
+        dialog.deleteLater()
+
+    def complete(html):
         if result["done"]:
             return
 
-        if html:
-            result["html"] = html
-        result["error"] = error
         result["done"] = True
-        loop.quit()
+        result["html"] = html or result["html"]
+        cleanup()
+        on_success(result["html"])
+
+    def fail(message):
+        if result["done"]:
+            return
+
+        result["done"] = True
+        cleanup()
+        on_error(message)
 
     def read_html(callback):
         def handle_html(html):
@@ -2013,8 +2136,7 @@ def load_rendered_forvo_html(query):
                     complete(html)
                     return
 
-                complete(
-                    html,
+                fail(
                     (
                         "Forvo page did not finish rendering in the Anki Qt "
                         f"browser. Rendered HTML preview: {summarize_rendered_html(html)}"
@@ -2039,28 +2161,17 @@ def load_rendered_forvo_html(query):
 
     view.loadFinished.connect(handle_load_finished)
     view.load(QUrl(build_page_url(query)))
-    view.show()
-    view.raise_()
-    view.activateWindow()
+    dialog.show()
+    dialog.raise_()
+    dialog.activateWindow()
     ensure_polling()
-    run_qt_event_loop(loop)
-
-    try:
-        state["views"].remove(view)
-    except ValueError:
-        pass
-    view.deleteLater()
-
-    if result["error"]:
-        raise RuntimeError(result["error"])
-
-    return result["html"]
 
 
-def load_forvo_soup(query):
-    text = load_rendered_forvo_html(query)
+def load_forvo_soup(query, on_success, on_error):
+    def handle_html(text):
+        on_success(BeautifulSoup(text, "html.parser"))
 
-    return BeautifulSoup(text, "html.parser")
+    load_rendered_forvo_html(query, handle_html, on_error)
 
 
 def extract_raw_candidates(soup, query):
@@ -2191,80 +2302,116 @@ def run_query(target, queries, query_index):
 
     query = queries[query_index]
 
-    try:
-        soup = load_forvo_soup(query)
-        raw_rows = extract_raw_candidates(soup, query)
-        candidates = []
+    def handle_query_error(message):
+        append_result(
+            {
+                **target,
+                "error": str(message),
+                "queries": queries,
+                "query": query,
+                "status": "query_error",
+            }
+        )
+        QTimer.singleShot(ENTRY_DELAY_MS, run_next)
 
-        for index, raw in enumerate(raw_rows):
-            candidate = enrich_candidate(raw, query, index)
+    def handle_soup(soup):
+        try:
+            raw_rows = extract_raw_candidates(soup, query)
+            candidates = []
 
-            if candidate:
-                candidates.append(candidate)
-    except HTTPError as error:
-        if error.code == 404:
+            for index, raw in enumerate(raw_rows):
+                candidate = enrich_candidate(raw, query, index)
+
+                if candidate:
+                    candidates.append(candidate)
+        except Exception:
+            traceback.print_exc()
+            append_result(
+                {
+                    **target,
+                    "error": traceback.format_exc(),
+                    "queries": queries,
+                    "query": query,
+                    "status": "query_error",
+                }
+            )
+            QTimer.singleShot(ENTRY_DELAY_MS, run_next)
+            return
+
+        if not candidates:
             QTimer.singleShot(500, lambda: run_query(target, queries, query_index + 1))
             return
 
-        traceback.print_exc()
+        selected = select_candidate(candidates)
         append_result(
             {
                 **target,
-                "error": traceback.format_exc(),
+                "candidates": candidates,
+                "pageUrl": candidates[0].get("pageUrl"),
                 "queries": queries,
                 "query": query,
-                "status": "query_error",
+                "selected": selected,
+                "status": "downloaded",
             }
         )
         QTimer.singleShot(ENTRY_DELAY_MS, run_next)
-        return
-    except Exception:
-        traceback.print_exc()
-        append_result(
-            {
-                **target,
-                "error": traceback.format_exc(),
-                "queries": queries,
-                "query": query,
-                "status": "query_error",
-            }
-        )
-        QTimer.singleShot(ENTRY_DELAY_MS, run_next)
-        return
 
-    if not candidates:
-        QTimer.singleShot(500, lambda: run_query(target, queries, query_index + 1))
-        return
-
-    selected = select_candidate(candidates)
-    append_result(
-        {
-            **target,
-            "candidates": candidates,
-            "pageUrl": candidates[0].get("pageUrl"),
-            "queries": queries,
-            "query": query,
-            "selected": selected,
-            "status": "downloaded",
-        }
-    )
-    QTimer.singleShot(ENTRY_DELAY_MS, run_next)
+    load_forvo_soup(query, handle_soup, handle_query_error)
 
 
 def start_batch():
+    log_debug("start_batch called")
+
+    if state["started"]:
+        log_debug("start_batch skipped: already started")
+        return
+
+    state["started"] = True
+
     if not TARGETS_PATH or not RESULT_PATH:
+        log_debug("start_batch skipped: missing paths")
         return
 
     try:
         state["targets"] = read_targets()
+        log_debug(f"loaded {len(state['targets'])} target(s)")
         write_result("running")
         run_next()
     except Exception:
         traceback.print_exc()
+        log_debug("start_batch failed")
         append_result({"error": traceback.format_exc(), "status": "startup_error"})
         finish("error")
 
 
+def schedule_start_batch():
+    log_debug("schedule_start_batch called")
+
+    if state["started"]:
+        log_debug("schedule_start_batch skipped: already started")
+        return
+
+    if aqt.mw is None:
+        log_debug("schedule_start_batch waiting for mw")
+        QTimer.singleShot(500, schedule_start_batch)
+        return
+
+    log_debug("schedule_start_batch scheduled start")
+    QTimer.singleShot(2000, start_batch)
+
+
+def register_start_hook(name):
+    hook = getattr(gui_hooks, name, None)
+
+    if hook is not None:
+        log_debug(f"registered hook {name}")
+        hook.append(lambda *args: schedule_start_batch())
+    else:
+        log_debug(f"missing hook {name}")
+
+
 if TARGETS_PATH and RESULT_PATH:
-    gui_hooks.main_window_did_init.append(lambda: QTimer.singleShot(2000, start_batch))
+    register_start_hook("profile_did_open")
+    register_start_hook("main_window_did_init")
+    QTimer.singleShot(1000, schedule_start_batch)
 `;
