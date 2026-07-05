@@ -64,7 +64,7 @@ Queste parole vanno lette come comandi di orientamento. [{{落下|らっか}}](t
 - [{{交換相手|こうかんあいて}}](term:term-v649-koukanaite) — partner di scambio
 - [{{非表示|ひひょうじ}}](term:term-v652-hihyouji) — nascondi / non visualizzare
 - [{{一覧|いちらん}}](term:term-v653-ichiran) — elenco
-- [まとめ{{買|か}}い](term:term-v655-matomekai) — acquisto in blocco
+- [まとめ{{買|が}}い](term:term-v655-matomekai) — acquisto in blocco
 - [ラインナップ](term:term-v656-rainnappu) — lista disponibile
 
 ---
@@ -163,7 +163,7 @@ Le schermate di elenco e negozio aggiungono un altro tipo di lettura: non chiedo
 
 *   [{{一覧|いちらん}}](term:term-v653-ichiran) (**Elenco**): è una vista ordinata di elementi consultabili. Quando lo vedi in una UI, aspettati una lista da scorrere, filtrare o controllare.
 *   [ラインナップ](term:term-v656-rainnappu) (**Lista disponibile / offerta**): katakana da *lineup*, ma in negozio o servizio indica ciò che è messo a disposizione. Non è solo una lista astratta: è l'assortimento disponibile.
-*   [まとめ{{買|か}}い](term:term-v655-matomekai) (**Acquisto in blocco**): まとめ raggruppa, {{買|か}}い è l'acquisto. Il focus `まとめ買い` descrive il modo dell'azione: acquistare più cose insieme.
+*   [まとめ{{買|が}}い](term:term-v655-matomekai) (**Acquisto in blocco**): まとめ raggruppa, {{買|が}}い è l'acquisto. Il focus `まとめ買い` descrive il modo dell'azione: acquistare più cose insieme.
 
 :::example_sentence
 jp: >-

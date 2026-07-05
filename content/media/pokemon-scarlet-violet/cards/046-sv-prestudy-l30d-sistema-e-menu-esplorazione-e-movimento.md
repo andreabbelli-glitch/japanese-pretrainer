@@ -538,8 +538,8 @@ example_it: >-
 :::term
 id: term-v655-matomekai
 lemma: まとめ買い
-reading: まとめかい
-romaji: matomekai
+reading: まとめがい
+romaji: matomegai
 meaning_it: acquisto in blocco
 notes_it: >-
   Indica comprare più unità in una sola operazione. Nei negozi cambia quantità e
@@ -551,10 +551,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-046-sv-prestudy-l30d-sistem
 entry_type: term
 entry_id: term-v655-matomekai
 card_type: recognition
-front: "まとめ{{買|か}}い"
+front: "まとめ{{買|が}}い"
 back: acquisto in blocco
 example_jp: >-
-  まとめ{{買|か}}いです。
+  まとめ{{買|が}}いです。
 example_it: >-
   È un acquisto in blocco.
 :::
