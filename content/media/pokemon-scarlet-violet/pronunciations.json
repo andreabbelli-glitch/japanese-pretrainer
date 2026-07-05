@@ -13317,10 +13317,9 @@
     {
       "entry_type": "term",
       "entry_id": "term-v651-shirizoke-ru",
-      "audio_src": "assets/audio/term/term-v651-shirizoke-ru/forvo-yonghwa1-しりそ-ける.mp3",
+      "audio_src": "assets/audio/term/term-v651-shirizoke-ru/forvo-manual-退ける-しりぞける.mp3",
       "audio_source": "forvo",
-      "audio_speaker": "Yonghwa1",
-      "audio_attribution": "Yonghwa1 via Forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E9%80%80%E3%81%91%E3%82%8B/#ja",
       "pitch_accent": 4,
       "pitch_accent_source": "Wiktionary",
