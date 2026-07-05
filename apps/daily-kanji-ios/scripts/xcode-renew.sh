@@ -7,6 +7,7 @@ PROJECT="$ROOT/DailyKanji.xcodeproj"
 DERIVED_DATA="${DERIVED_DATA:-$ROOT/build/WifiRenewDerivedData}"
 STATE_DIR="${STATE_DIR:-$HOME/Library/Application Support/DailyKanji}"
 CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"
+PROFILE_EXPIRY_FILE="${PROFILE_EXPIRY_FILE:-$STATE_DIR/profile-expiry.epoch}"
 SCHEME="${SCHEME:-DailyKanji}"
 CONFIGURATION="${CONFIGURATION:-Debug}"
 COREDEVICE_INFO_TIMEOUT_SECONDS="${COREDEVICE_INFO_TIMEOUT_SECONDS:-60}"
@@ -163,6 +164,62 @@ HINT
   fi
 }
 
+profile_expiry_epoch_for_file() {
+  local profile_path="$1"
+  local profile_plist
+  local expiry_iso
+
+  profile_plist="$(mktemp "${TMPDIR:-/tmp}/daily-kanji-profile.XXXXXX")"
+  if ! security cms -D -i "$profile_path" > "$profile_plist"; then
+    rm -f "$profile_plist"
+    printf "Impossibile leggere il provisioning profile embedded: %s\n" "$profile_path" >&2
+    return 1
+  fi
+
+  if ! expiry_iso="$(plutil -extract ExpirationDate raw -o - "$profile_plist")"; then
+    rm -f "$profile_plist"
+    printf "Impossibile leggere ExpirationDate dal provisioning profile: %s\n" "$profile_path" >&2
+    return 1
+  fi
+  rm -f "$profile_plist"
+
+  if ! date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$expiry_iso" +%s; then
+    printf "ExpirationDate non parsabile per %s: %s\n" "$profile_path" "$expiry_iso" >&2
+    return 1
+  fi
+}
+
+record_embedded_profile_expiry() {
+  local app_path="$1"
+  local profile_count=0
+  local min_expiry=""
+  local profile_path
+  local expiry_epoch
+  local expiry_label
+
+  while IFS= read -r -d '' profile_path; do
+    if ! expiry_epoch="$(profile_expiry_epoch_for_file "$profile_path")"; then
+      return 1
+    fi
+
+    if [ -z "$min_expiry" ] || [ "$expiry_epoch" -lt "$min_expiry" ]; then
+      min_expiry="$expiry_epoch"
+    fi
+
+    profile_count=$(( profile_count + 1 ))
+  done < <(find "$app_path" -name embedded.mobileprovision -print0)
+
+  if [ "$profile_count" -lt 2 ]; then
+    printf "Profili embedded incompleti: trovati %s, attesi app e widget in %s\n" "$profile_count" "$app_path" >&2
+    return 1
+  fi
+
+  mkdir -p "$STATE_DIR"
+  printf "%s\n" "$min_expiry" > "$PROFILE_EXPIRY_FILE"
+  expiry_label="$(date -r "$min_expiry" "+%Y-%m-%d %H:%M:%S %Z" 2>/dev/null || printf "%s" "$min_expiry")"
+  printf "Daily Kanji profile expiry recorded: %s (%s)\n" "$min_expiry" "$expiry_label"
+}
+
 developer_disk_image_ready() {
   local output
 
@@ -265,5 +322,6 @@ if [ ! -d "$APP_PATH" ]; then
 fi
 
 xcrun devicectl device install app --device "$DEVICE_ID" "$APP_PATH"
+record_embedded_profile_expiry "$APP_PATH"
 
 printf "Rinnovo/install completato: %s\n" "$APP_PATH"

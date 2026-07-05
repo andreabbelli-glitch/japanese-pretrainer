@@ -246,14 +246,21 @@ server-side dietro l'endpoint deve fare una sola due-count check Turso per run
 e inviare push solo se serve. Secret APNs/mobile/monitor e token Turso non
 devono mai essere committati.
 
-Il rinnovo automatico launchd controlla ogni 6 ore e rinnova solo quando il
-marker `~/Library/Application Support/DailyKanji/last-renew-success.epoch` ha
-almeno 5 giorni. Se il marker manca o e' corrotto, il rinnovo e' dovuto. Prima
-del package/build il wrapper preflighta CoreDevice e monta la Developer Disk
-Image: se l'iPhone e' bloccato, il job termina senza marcare successo e riprova
-al giro successivo. Per evitare un build immediato dopo un rinnovo manuale gia
-riuscito, installare o reinstallare il LaunchAgent con `--mark-success-now`.
-I log unattended sono in `~/Library/Logs/DailyKanji/xcode-renew.out.log` e
+Il rinnovo automatico launchd controlla ogni 15 minuti e rinnova solo dopo la
+scadenza reale dei provisioning profile embedded registrata in
+`~/Library/Application Support/DailyKanji/profile-expiry.epoch`, con un piccolo
+grace period. Il marker
+`~/Library/Application Support/DailyKanji/last-renew-success.epoch` resta
+diagnostico; non decide piu' quando rinnovare. Se `profile-expiry.epoch` manca o
+e' corrotto, il rinnovo e' dovuto. Prima del package/build il wrapper preflighta
+CoreDevice e monta la Developer Disk Image: se l'iPhone e' bloccato, il job
+termina senza marcare successo e riprova al giro successivo. Dopo un install
+riuscito, `xcode-renew.sh` registra la scadenza minima tra app e widget leggendo
+gli `embedded.mobileprovision`; se non riesce, il job non marca successo e
+riprova al giro successivo. Per aggiornare il marker diagnostico dopo un rinnovo
+manuale gia riuscito, installare o reinstallare il LaunchAgent con
+`--mark-success-now`. I log unattended sono in
+`~/Library/Logs/DailyKanji/xcode-renew.out.log` e
 `~/Library/Logs/DailyKanji/xcode-renew.err.log`.
 
 Se il rinnovo fallisce con `No Accounts`, `No profiles` o errori di provisioning,

@@ -72,12 +72,15 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect(reachabilityIndex).toBeLessThan(heavyRenewIndex);
   });
 
-  it("installs a low-priority user LaunchAgent with infrequent checks", async () => {
+  it("installs a low-priority user LaunchAgent with lightweight expiry checks", async () => {
     const source = await readFile(installLaunchdScriptPath, "utf8");
 
     expect(source).toContain("dev.local.daily-kanji.renew");
     expect(source).toContain("<key>StartInterval</key>");
-    expect(source).toContain("${START_INTERVAL_SECONDS:-21600}");
+    expect(source).toContain("${START_INTERVAL_SECONDS:-900}");
+    expect(source).toContain("RENEW_AFTER_EXPIRY_GRACE_SECONDS");
+    expect(source).toContain("embedded provisioning profile expiry");
+    expect(source).not.toContain("since the last success");
     expect(source).toContain("--device-id");
     expect(source).toContain(
       'CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"'
@@ -535,6 +538,293 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect(callLog).toContain("xcrun:devicectl device info ddiServices");
     expect(callLog).toContain("with-node:pnpm daily-kanji:package");
     expect(callLog).toContain("xcode-renew:TEST_DEVICE");
+  });
+
+  it("runs after the recorded embedded profile expiry even when the success marker is fresh", async () => {
+    const tempRoot = await mkdtemp(
+      path.join(tmpdir(), "jcs-daily-kanji-expired-profile-")
+    );
+    tempDirs.push(tempRoot);
+    const repoRoot = path.join(tempRoot, "repo");
+    const tempIosScriptsRoot = path.join(
+      repoRoot,
+      "apps",
+      "daily-kanji-ios",
+      "scripts"
+    );
+    const tempRepoScriptsRoot = path.join(repoRoot, "scripts");
+    const stateDir = path.join(tempRoot, "state");
+    const binDir = path.join(tempRoot, "bin");
+    const callLogPath = path.join(tempRoot, "calls.log");
+    const nowEpoch = Math.floor(Date.now() / 1000);
+    await mkdir(tempIosScriptsRoot, { recursive: true });
+    await mkdir(tempRepoScriptsRoot, { recursive: true });
+    await mkdir(stateDir, { recursive: true });
+    await mkdir(binDir, { recursive: true });
+    await writeFile(
+      path.join(stateDir, "renew.env"),
+      "DEVICE_ID=TEST_DEVICE\n"
+    );
+    await writeFile(
+      path.join(stateDir, "last-renew-success.epoch"),
+      `${nowEpoch}\n`
+    );
+    await writeFile(
+      path.join(stateDir, "profile-expiry.epoch"),
+      `${nowEpoch - 180}\n`
+    );
+    await writeFile(
+      path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh"),
+      await readFile(renewIfNeededScriptPath, "utf8")
+    );
+    await chmod(
+      path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh"),
+      0o755
+    );
+    await writeExecutable(
+      path.join(tempRepoScriptsRoot, "with-node.sh"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'printf "with-node:%s\\n" "$*" >> "$CALL_LOG"'
+      ].join("\n") + "\n"
+    );
+    await writeExecutable(
+      path.join(tempIosScriptsRoot, "xcode-renew.sh"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'printf "xcode-renew:%s\\n" "${DEVICE_ID:-}" >> "$CALL_LOG"'
+      ].join("\n") + "\n"
+    );
+    await writeExecutable(
+      path.join(binDir, "xcrun"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'printf "xcrun:%s\\n" "$*" >> "$CALL_LOG"',
+        "exit 0"
+      ].join("\n") + "\n"
+    );
+
+    await execFileAsync(
+      "bash",
+      [path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh")],
+      {
+        cwd: "/",
+        env: {
+          ...process.env,
+          CALL_LOG: callLogPath,
+          PATH: `${binDir}:${process.env.PATH ?? ""}`,
+          STATE_DIR: stateDir
+        }
+      }
+    );
+
+    const callLog = await readFile(callLogPath, "utf8");
+    expect(callLog).toContain("xcrun:devicectl device info details");
+    expect(callLog).toContain("xcrun:devicectl device info ddiServices");
+    expect(callLog).toContain("with-node:pnpm daily-kanji:package");
+    expect(callLog).toContain("xcode-renew:TEST_DEVICE");
+  });
+
+  it("skips before the recorded embedded profile expiry even when the success marker is old", async () => {
+    const tempRoot = await mkdtemp(
+      path.join(tmpdir(), "jcs-daily-kanji-future-profile-")
+    );
+    tempDirs.push(tempRoot);
+    const repoRoot = path.join(tempRoot, "repo");
+    const tempIosScriptsRoot = path.join(
+      repoRoot,
+      "apps",
+      "daily-kanji-ios",
+      "scripts"
+    );
+    const tempRepoScriptsRoot = path.join(repoRoot, "scripts");
+    const stateDir = path.join(tempRoot, "state");
+    const binDir = path.join(tempRoot, "bin");
+    const callLogPath = path.join(tempRoot, "calls.log");
+    const nowEpoch = Math.floor(Date.now() / 1000);
+    await mkdir(tempIosScriptsRoot, { recursive: true });
+    await mkdir(tempRepoScriptsRoot, { recursive: true });
+    await mkdir(stateDir, { recursive: true });
+    await mkdir(binDir, { recursive: true });
+    await writeFile(
+      path.join(stateDir, "renew.env"),
+      "DEVICE_ID=TEST_DEVICE\n"
+    );
+    await writeFile(path.join(stateDir, "last-renew-success.epoch"), "1\n");
+    await writeFile(
+      path.join(stateDir, "profile-expiry.epoch"),
+      `${nowEpoch + 3600}\n`
+    );
+    await writeFile(
+      path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh"),
+      await readFile(renewIfNeededScriptPath, "utf8")
+    );
+    await chmod(
+      path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh"),
+      0o755
+    );
+    await writeExecutable(
+      path.join(tempRepoScriptsRoot, "with-node.sh"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'printf "with-node:%s\\n" "$*" >> "$CALL_LOG"'
+      ].join("\n") + "\n"
+    );
+    await writeExecutable(
+      path.join(tempIosScriptsRoot, "xcode-renew.sh"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'printf "xcode-renew:%s\\n" "${DEVICE_ID:-}" >> "$CALL_LOG"'
+      ].join("\n") + "\n"
+    );
+    await writeExecutable(
+      path.join(binDir, "xcrun"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'printf "xcrun:%s\\n" "$*" >> "$CALL_LOG"',
+        "exit 0"
+      ].join("\n") + "\n"
+    );
+
+    const result = await execFileAsync(
+      "bash",
+      [path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh")],
+      {
+        cwd: "/",
+        env: {
+          ...process.env,
+          CALL_LOG: callLogPath,
+          PATH: `${binDir}:${process.env.PATH ?? ""}`,
+          STATE_DIR: stateDir
+        }
+      }
+    );
+
+    expect(`${result.stdout}\n${result.stderr}`).toContain(
+      "Daily Kanji renew not due"
+    );
+    await expect(readFile(callLogPath, "utf8")).rejects.toThrow(/ENOENT/);
+  });
+
+  it("records the minimum embedded profile expiry after a standalone renew install", async () => {
+    const tempRoot = await mkdtemp(
+      path.join(tmpdir(), "jcs-daily-kanji-profile-record-")
+    );
+    tempDirs.push(tempRoot);
+    const repoRoot = path.join(tempRoot, "repo");
+    const tempIosRoot = path.join(repoRoot, "apps", "daily-kanji-ios");
+    const tempIosScriptsRoot = path.join(tempIosRoot, "scripts");
+    const tempRepoScriptsRoot = path.join(repoRoot, "scripts");
+    const stateDir = path.join(tempRoot, "state");
+    const binDir = path.join(tempRoot, "bin");
+    const derivedData = path.join(tempRoot, "DerivedData");
+    const callLogPath = path.join(tempRoot, "calls.log");
+    const expectedMinExpiry = Math.floor(
+      Date.parse("2026-07-10T08:00:00Z") / 1000
+    );
+    await mkdir(tempIosScriptsRoot, { recursive: true });
+    await mkdir(tempRepoScriptsRoot, { recursive: true });
+    await mkdir(stateDir, { recursive: true });
+    await mkdir(binDir, { recursive: true });
+    await writeFile(
+      path.join(stateDir, "renew.env"),
+      "DEVICE_ID=TEST_DEVICE\n"
+    );
+    await writeFile(
+      path.join(tempIosScriptsRoot, "xcode-renew.sh"),
+      await readFile(renewScriptPath, "utf8")
+    );
+    await chmod(path.join(tempIosScriptsRoot, "xcode-renew.sh"), 0o755);
+    await writeExecutable(
+      path.join(tempRepoScriptsRoot, "with-node.sh"),
+      "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+    );
+    await writeExecutable(
+      path.join(binDir, "xcodegen"),
+      "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+    );
+    await writeExecutable(
+      path.join(binDir, "xcrun"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'printf "xcrun:%s\\n" "$*" >> "$CALL_LOG"',
+        'case "$*" in',
+        '  *"device info details"*)',
+        '    printf "    • transportType: localNetwork\\n"',
+        "    exit 0",
+        "    ;;",
+        '  *"device info ddiServices"*) exit 0 ;;',
+        '  *"device install app"*) exit 0 ;;',
+        "esac",
+        "exit 1"
+      ].join("\n") + "\n"
+    );
+    await writeExecutable(
+      path.join(binDir, "xcodebuild"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'app="$DERIVED_DATA/Build/Products/Debug-iphoneos/Daily Kanji.app"',
+        'mkdir -p "$app/PlugIns/Daily Kanji Widget.appex"',
+        'touch "$app/embedded.mobileprovision"',
+        'touch "$app/PlugIns/Daily Kanji Widget.appex/embedded.mobileprovision"'
+      ].join("\n") + "\n"
+    );
+    await writeExecutable(
+      path.join(binDir, "security"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'input=""',
+        'while [ "$#" -gt 0 ]; do',
+        '  if [ "$1" = "-i" ]; then',
+        "    shift",
+        '    input="${1:-}"',
+        "  fi",
+        "  shift || true",
+        "done",
+        'expiry="2026-07-12T08:00:00Z"',
+        'case "$input" in',
+        '  *".appex/embedded.mobileprovision") expiry="2026-07-10T08:00:00Z" ;;',
+        "esac",
+        "cat <<PLIST",
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">',
+        '<plist version="1.0">',
+        "<dict>",
+        "  <key>ExpirationDate</key>",
+        "  <date>$expiry</date>",
+        "</dict>",
+        "</plist>",
+        "PLIST"
+      ].join("\n") + "\n"
+    );
+
+    await execFileAsync(
+      "bash",
+      [path.join(tempIosScriptsRoot, "xcode-renew.sh")],
+      {
+        env: {
+          ...process.env,
+          CALL_LOG: callLogPath,
+          CONFIG_FILE: path.join(stateDir, "renew.env"),
+          DERIVED_DATA: derivedData,
+          PATH: `${binDir}:${process.env.PATH ?? ""}`,
+          STATE_DIR: stateDir
+        }
+      }
+    );
+
+    expect(
+      await readFile(path.join(stateDir, "profile-expiry.epoch"), "utf8")
+    ).toBe(`${expectedMinExpiry}\n`);
   });
 
   it("documents install, status, and force-run commands for the agent", async () => {

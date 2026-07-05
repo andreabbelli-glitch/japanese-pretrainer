@@ -69,26 +69,31 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh --mark-succ
 ./scripts/xcode-renew-if-needed.sh --force
 ```
 
-Il LaunchAgent utente controlla ogni 6 ore, ma il wrapper esegue la build/install
-solo se l'ultimo rinnovo riuscito ha almeno 5 giorni, l'iPhone e' raggiungibile
-via CoreDevice e la Developer Disk Image e' montabile. Il `DEVICE_ID` viene scritto nel file locale non versionato
-`~/Library/Application Support/DailyKanji/renew.env`; lo stesso file puo
-contenere `DAILY_KANJI_IOS_SYNC_ENDPOINT`, `DAILY_KANJI_IOS_SYNC_TOKEN`,
-`MOBILE_API_ENDPOINT`, `MOBILE_API_TOKEN` e opzionalmente
-`DAILY_KANJI_ENABLE_APNS=1`, che `scripts/xcode-renew.sh` passa come build
-settings locali senza committare segreti. Lascia APNs disabilitato per Personal
-Team; abilitalo solo con provisioning Apple Developer che supporta Push
-Notifications. Rieseguire
-`scripts/install-renew-launchd.sh` aggiorna solo `DEVICE_ID` e conserva le altre
-righe del file. Usa `--mark-success-now` solo
-dopo un rinnovo/install manuale gia riuscito: scrive il marker
-`last-renew-success.epoch` e impedisce a `RunAtLoad` di rifare subito un build.
-Se il marker manca o e' corrotto, il rinnovo e' considerato dovuto. Quando il
-rinnovo e' davvero dovuto, il wrapper preflighta CoreDevice/DDI, poi esegue
-`pnpm daily-kanji:package` dalla root del repo e poi
-`scripts/xcode-renew.sh`, cosi' il verifier non blocca risorse packaged stale. Se
-il device non e' disponibile o l'iPhone e' bloccato durante il mount DDI, il job
-termina senza marcare successo e riprova al giro successivo. Per rimuoverlo:
+Il LaunchAgent utente controlla ogni 15 minuti, ma il wrapper resta leggero
+finche' la scadenza reale dei provisioning profile embedded non e' passata. Il
+rinnovo automatico parte solo dopo la scadenza registrata in
+`~/Library/Application Support/DailyKanji/profile-expiry.epoch`, con un piccolo
+grace period, e solo se l'iPhone e' raggiungibile via CoreDevice e la Developer
+Disk Image e' montabile. Il `DEVICE_ID` viene scritto nel file locale non
+versionato `~/Library/Application Support/DailyKanji/renew.env`; lo stesso file
+puo contenere `DAILY_KANJI_IOS_SYNC_ENDPOINT`,
+`DAILY_KANJI_IOS_SYNC_TOKEN`, `MOBILE_API_ENDPOINT`, `MOBILE_API_TOKEN` e
+opzionalmente `DAILY_KANJI_ENABLE_APNS=1`, che `scripts/xcode-renew.sh` passa
+come build settings locali senza committare segreti. Lascia APNs disabilitato
+per Personal Team; abilitalo solo con provisioning Apple Developer che supporta
+Push Notifications. Rieseguire `scripts/install-renew-launchd.sh` aggiorna solo
+`DEVICE_ID` e conserva le altre righe del file. Usa `--mark-success-now` solo
+dopo un rinnovo/install manuale gia riuscito: scrive solo il marker diagnostico
+`last-renew-success.epoch`; la decisione automatica resta basata sulla scadenza
+dei profili embedded. Se `profile-expiry.epoch` manca o e' corrotto, il rinnovo
+e' considerato dovuto. Quando il rinnovo e' davvero dovuto, il wrapper
+preflighta CoreDevice/DDI, poi esegue `pnpm daily-kanji:package` dalla root del
+repo e poi `scripts/xcode-renew.sh`, cosi' il verifier non blocca risorse
+packaged stale. Dopo l'install, `xcode-renew.sh` registra la scadenza minima tra
+app e widget leggendo gli `embedded.mobileprovision`; se non riesce, il job non
+marca successo e riprova al giro successivo. Se il device non e' disponibile o
+l'iPhone e' bloccato durante il mount DDI, il job termina senza marcare successo
+e riprova al giro successivo. Per rimuoverlo:
 
 ```sh
 ./scripts/install-renew-launchd.sh --uninstall

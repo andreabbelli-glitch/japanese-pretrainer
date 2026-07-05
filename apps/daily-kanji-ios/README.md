@@ -117,18 +117,25 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh --mark-succ
 ./scripts/xcode-renew-if-needed.sh --force
 ```
 
-Il LaunchAgent controlla ogni 6 ore, ma esegue il package + build/install solo
-quando l'ultimo rinnovo riuscito ha almeno 5 giorni e l'iPhone e' raggiungibile
-via CoreDevice, via cavo oppure stessa Wi-Fi `localNetwork`; prima del package
-preflighta anche il mount della Developer Disk Image. Il package viene lanciato
-dalla root del repo anche quando launchd avvia il job da un'altra directory. Il device id resta in
+Il LaunchAgent controlla ogni 15 minuti, ma resta leggero finche' la scadenza
+reale dei provisioning profile embedded non e' passata. Esegue package +
+build/install solo dopo la scadenza registrata in
+`~/Library/Application Support/DailyKanji/profile-expiry.epoch`, con un piccolo
+grace period, e solo quando l'iPhone e' raggiungibile via CoreDevice, via cavo
+oppure stessa Wi-Fi `localNetwork`; prima del package preflighta anche il mount
+della Developer Disk Image. Il package viene lanciato dalla root del repo anche
+quando launchd avvia il job da un'altra directory. Il device id resta in
 `~/Library/Application Support/DailyKanji/renew.env`, non nel repo. Rieseguire
 `install-renew-launchd.sh` aggiorna solo `DEVICE_ID` e conserva eventuali
 endpoint/token di sync gia' presenti nello stesso file. Usa `--mark-success-now`
-solo dopo un rinnovo/install manuale gia riuscito: se il marker di successo
-manca o e' corrotto, il rinnovo e' considerato dovuto. Se l'iPhone e' bloccato
-durante il mount DDI, il job non marca successo, logga di sbloccare il telefono
-e riprova al giro successivo. Per rimuovere l'automazione:
+solo dopo un rinnovo/install manuale gia riuscito: aggiorna il marker
+diagnostico `last-renew-success.epoch`, ma non sostituisce la scadenza reale dei
+profili. Se `profile-expiry.epoch` manca o e' corrotto, il rinnovo e'
+considerato dovuto. Dopo un install riuscito, `xcode-renew.sh` registra la
+scadenza minima tra app e widget leggendo gli `embedded.mobileprovision`; se non
+riesce, il job non marca successo e riprova al giro successivo. Se l'iPhone e'
+bloccato durante il mount DDI, il job non marca successo, logga di sbloccare il
+telefono e riprova al giro successivo. Per rimuovere l'automazione:
 
 ```sh
 ./scripts/install-renew-launchd.sh --uninstall

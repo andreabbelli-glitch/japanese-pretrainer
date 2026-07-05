@@ -7,11 +7,13 @@ STATE_DIR="${STATE_DIR:-$HOME/Library/Application Support/DailyKanji}"
 LOG_DIR="${LOG_DIR:-$HOME/Library/Logs/DailyKanji}"
 CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"
 RENEW_MIN_AGE_SECONDS="${RENEW_MIN_AGE_SECONDS:-432000}"
+RENEW_AFTER_EXPIRY_GRACE_SECONDS="${RENEW_AFTER_EXPIRY_GRACE_SECONDS:-120}"
 LOCK_MAX_AGE_SECONDS="${LOCK_MAX_AGE_SECONDS:-21600}"
 COREDEVICE_INFO_TIMEOUT_SECONDS="${COREDEVICE_INFO_TIMEOUT_SECONDS:-60}"
 DDI_MOUNT_TIMEOUT_SECONDS="${DDI_MOUNT_TIMEOUT_SECONDS:-120}"
 LOCK_DIR="$STATE_DIR/renew.lock"
 LAST_SUCCESS_FILE="$STATE_DIR/last-renew-success.epoch"
+PROFILE_EXPIRY_FILE="${PROFILE_EXPIRY_FILE:-$STATE_DIR/profile-expiry.epoch}"
 FORCE=0
 
 if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Developer ]; then
@@ -23,7 +25,7 @@ usage() {
 Usage: xcode-renew-if-needed.sh [--force] [--status] [--mark-success-now]
 
 Runs the expensive Xcode renew/install only when all conditions are true:
-  - the last successful renew is older than RENEW_MIN_AGE_SECONDS
+  - the last recorded embedded profile expiry has passed
   - the configured iPhone is reachable through CoreDevice
   - no other renew job is currently running
 
@@ -31,6 +33,8 @@ Environment:
   DEVICE_ID                 CoreDevice identifier of the target iPhone.
   CONFIG_FILE               Default: ~/Library/Application Support/DailyKanji/renew.env.
   RENEW_MIN_AGE_SECONDS     Default: 432000 (5 days).
+                            Kept for compatibility; profile expiry is primary.
+  RENEW_AFTER_EXPIRY_GRACE_SECONDS Default: 120.
   LOCK_MAX_AGE_SECONDS      Default: 21600 (6 hours).
   COREDEVICE_INFO_TIMEOUT_SECONDS Default: 60.
   DDI_MOUNT_TIMEOUT_SECONDS       Default: 120.
@@ -84,20 +88,34 @@ last_success_epoch() {
   printf "%s\n" "$value"
 }
 
+profile_expiry_epoch() {
+  if [ ! -f "$PROFILE_EXPIRY_FILE" ]; then
+    return 1
+  fi
+
+  local value
+  value="$(cat "$PROFILE_EXPIRY_FILE")"
+  if [[ ! "$value" =~ ^[0-9]+$ ]]; then
+    return 1
+  fi
+
+  printf "%s\n" "$value"
+}
+
 should_renew() {
   if [ "$FORCE" -eq 1 ]; then
     return 0
   fi
 
-  local last_success
-  if ! last_success="$(last_success_epoch)"; then
+  local profile_expiry
+  if ! profile_expiry="$(profile_expiry_epoch)"; then
     return 0
   fi
 
-  local age_seconds
-  age_seconds=$(( $(now_epoch) - last_success ))
+  local renew_epoch
+  renew_epoch=$(( profile_expiry + RENEW_AFTER_EXPIRY_GRACE_SECONDS ))
 
-  [ "$age_seconds" -ge "$RENEW_MIN_AGE_SECONDS" ]
+  [ "$(now_epoch)" -ge "$renew_epoch" ]
 }
 
 device_reachable() {
@@ -143,7 +161,9 @@ print_status() {
   fi
   printf "Config file: %s\n" "$CONFIG_FILE"
   printf "State file: %s\n" "$LAST_SUCCESS_FILE"
+  printf "Profile expiry file: %s\n" "$PROFILE_EXPIRY_FILE"
   printf "Renew min age: %ss\n" "$RENEW_MIN_AGE_SECONDS"
+  printf "Renew after expiry grace: %ss\n" "$RENEW_AFTER_EXPIRY_GRACE_SECONDS"
   printf "Lock max age: %ss\n" "$LOCK_MAX_AGE_SECONDS"
   printf "CoreDevice info timeout: %ss\n" "$COREDEVICE_INFO_TIMEOUT_SECONDS"
   printf "DDI mount timeout: %ss\n" "$DDI_MOUNT_TIMEOUT_SECONDS"
@@ -156,6 +176,16 @@ print_status() {
     printf "Last success age: %ss\n" "$age_seconds"
   else
     printf "Last success epoch: none\n"
+  fi
+
+  local profile_expiry
+  if profile_expiry="$(profile_expiry_epoch)"; then
+    local until_renew_seconds
+    until_renew_seconds=$(( profile_expiry + RENEW_AFTER_EXPIRY_GRACE_SECONDS - $(now_epoch) ))
+    printf "Profile expiry epoch: %s\n" "$profile_expiry"
+    printf "Profile renew in: %ss\n" "$until_renew_seconds"
+  else
+    printf "Profile expiry epoch: none\n"
   fi
 
   if should_renew; then

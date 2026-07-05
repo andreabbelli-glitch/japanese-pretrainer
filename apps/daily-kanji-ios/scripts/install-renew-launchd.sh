@@ -8,8 +8,9 @@ STATE_DIR="${STATE_DIR:-$HOME/Library/Application Support/DailyKanji}"
 LOG_DIR="${LOG_DIR:-$HOME/Library/Logs/DailyKanji}"
 CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"
 DEVICE_ID="${DEVICE_ID:-}"
-START_INTERVAL_SECONDS="${START_INTERVAL_SECONDS:-21600}"
+START_INTERVAL_SECONDS="${START_INTERVAL_SECONDS:-900}"
 RENEW_MIN_AGE_SECONDS="${RENEW_MIN_AGE_SECONDS:-432000}"
+RENEW_AFTER_EXPIRY_GRACE_SECONDS="${RENEW_AFTER_EXPIRY_GRACE_SECONDS:-120}"
 MARK_SUCCESS_NOW=0
 UNINSTALL=0
 
@@ -18,15 +19,16 @@ usage() {
 Usage: install-renew-launchd.sh [--device-id <id>] [--mark-success-now] [--uninstall]
 
 Installs a user LaunchAgent that periodically runs xcode-renew-if-needed.sh.
-The agent checks every START_INTERVAL_SECONDS, but the wrapper only performs
-the expensive renew/install after RENEW_MIN_AGE_SECONDS since the last success.
+The agent checks every START_INTERVAL_SECONDS, but the wrapper stays cheap until
+the recorded embedded provisioning profile expiry has passed.
 The device id is stored in a local, untracked config file.
 
 Environment:
   DEVICE_ID                  CoreDevice identifier of the target iPhone.
   CONFIG_FILE                Default: ~/Library/Application Support/DailyKanji/renew.env.
-  START_INTERVAL_SECONDS      Default: 21600 (6 hours).
+  START_INTERVAL_SECONDS      Default: 900 (15 minutes).
   RENEW_MIN_AGE_SECONDS       Default: 432000 (5 days).
+  RENEW_AFTER_EXPIRY_GRACE_SECONDS Default: 120.
 USAGE
 }
 
@@ -183,6 +185,8 @@ cat > "$PLIST" <<PLIST
     <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
     <key>RENEW_MIN_AGE_SECONDS</key>
     <string>$RENEW_MIN_AGE_SECONDS</string>
+    <key>RENEW_AFTER_EXPIRY_GRACE_SECONDS</key>
+    <string>$RENEW_AFTER_EXPIRY_GRACE_SECONDS</string>
   </dict>
   <key>RunAtLoad</key>
   <true/>
@@ -211,6 +215,6 @@ launchctl enable "gui/$(id -u)/$LABEL"
 printf "Installed Daily Kanji LaunchAgent: %s\n" "$PLIST"
 printf "Label: %s\n" "$LABEL"
 printf "Check interval: %ss\n" "$START_INTERVAL_SECONDS"
-printf "Renew min age: %ss\n" "$RENEW_MIN_AGE_SECONDS"
+printf "Renew after profile expiry grace: %ss\n" "$RENEW_AFTER_EXPIRY_GRACE_SECONDS"
 printf "Config: %s\n" "$CONFIG_FILE"
 printf "Logs:\n  %s\n  %s\n" "$LOG_DIR/xcode-renew.out.log" "$LOG_DIR/xcode-renew.err.log"
