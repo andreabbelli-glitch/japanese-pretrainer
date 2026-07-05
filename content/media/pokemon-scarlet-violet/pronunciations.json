@@ -14791,6 +14791,18 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-v770-koutai",
+      "audio_src": "assets/audio/term/term-v770-koutai/forvo-manual-こうたい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BA%A4%E4%BB%A3/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Kanjium",
+      "pitch_accent_page_url": "https://github.com/mifunetoshiro/kanjium/blob/master/data/source_files/raw/accents.txt",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-wasureru",
       "audio_src": "assets/audio/term/term-wasureru/forvo-manual-わすれる.mp3",
       "audio_source": "forvo",

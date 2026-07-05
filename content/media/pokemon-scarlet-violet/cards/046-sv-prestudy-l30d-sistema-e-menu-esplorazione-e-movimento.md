@@ -673,3 +673,27 @@ example_jp: >-
 example_it: >-
   Nemona è un modello per tutti.
 :::
+:::term
+id: term-v770-koutai
+lemma: 交代
+reading: こうたい
+romaji: koutai
+meaning_it: cambio / sostituzione
+notes_it: >-
+  Indica l'alternanza tra chi lascia il posto e chi entra. In battaglia o nel
+  menu squadra marca il cambio del Pokémon attivo, distinto dallo scambio di
+  possesso 交換.
+:::
+:::card
+id: card-v770-koutai-recognition
+lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-046-sv-prestudy-l30d-sistema-e-menu-esplorazione-e-movimento
+entry_type: term
+entry_id: term-v770-koutai
+card_type: recognition
+front: "{{交代|こうたい}}"
+back: cambio / sostituzione
+example_jp: >-
+  ここで {{交代|こうたい}}します。
+example_it: >-
+  Qui cambio Pokémon.
+:::

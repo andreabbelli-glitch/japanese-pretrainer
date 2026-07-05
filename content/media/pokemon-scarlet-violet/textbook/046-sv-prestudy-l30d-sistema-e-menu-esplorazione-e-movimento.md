@@ -31,6 +31,7 @@ Queste parole vanno lette come comandi di orientamento. [{{落下|らっか}}](t
 - [{{支援|しえん}}ボード](term:term-v639-shienboodo) — bacheca dei supporti
 - [{{借|か}}りる](term:term-v640-kariru) — prendere in prestito
 - [{{切|き}}りかえる](term:term-v641-kirikaeru) — cambiare modalità / switchare
+- [{{交代|こうたい}}](term:term-v770-koutai) — cambio / sostituzione
 - [とくに](term:term-v643-tokuni) — soprattutto
 - [{{教員|きょういん}}](term:term-v647-kyouin) — insegnante / corpo docente
 - [{{勧誘|かんゆう}}](term:term-v646-kanyuu) — reclutamento
@@ -103,6 +104,7 @@ translation_it: >-
 
 Quando il testo lascia il terreno e passa a battaglie o scene narrative, lo stesso blocco lessicale descrive l'esito dell'azione.
 
+*   [{{交代|こうたい}}](term:term-v770-koutai) (**Cambio / sostituzione**): {{交|こう}} porta l'idea di alternanza e {{代|たい}} quella di prendere il posto. In lotta o nel menu squadra indica il cambio del Pokémon attivo: qualcuno lascia il posto e qualcun altro entra in campo.
 *   [{{退|しりぞ}}ける](term:term-v651-shirizoke-ru) (**Respingere / sconfiggere**): con un oggetto marcato da を, come {{相手|あいて}}を{{退|しりぞ}}ける, il verbo va oltre il semplice "evitare". L'avversario diventa bersaglio dell'azione e viene allontanato come minaccia.
 *   [{{勝|か}}ち{{負|ま}}け](term:term-v654-kachimake) (**Esito vittoria/sconfitta**): unisce {{勝|か}}ち e {{負|ま}}け, quindi nomina l'intero asse vittoria-sconfitta. In schermate o dialoghi sulla prestazione, segnala il risultato complessivo: chi vince, chi perde, come finisce il confronto.
 *   [{{退場|たいじょう}}](term:term-v659-taijou) (**Uscita di scena**): {{場|じょう}} richiama il luogo/scena e {{退|たい}} l'uscita o il ritiro. Non stabilisce da solo chi ha vinto: dice che qualcuno lascia il campo, la sfida o la scena.
@@ -120,6 +122,12 @@ translation_it: >-
 *   `{{退|しりぞ}}けて` ➔ **Azione collegata** (forma in `-te`: l'azione di respingere prepara la conseguenza successiva).
 *   `{{勝|か}}ち{{負|ま}}けが` ➔ **Soggetto dell'esito** (`が` presenta il risultato vittoria/sconfitta come ciò che viene deciso).
 *   `{{決|き}}まります` ➔ **Esito che si fissa** (non una scelta del giocatore nella frase, ma il risultato che viene determinato).
+
+#### ⚖️ Contrasto operativo
+
+*   [{{交代|こうたい}}](term:term-v770-koutai) cambia chi occupa il posto attivo in campo.
+*   [{{交換相手|こうかんあいて}}](term:term-v649-koukanaite) appartiene invece alla logica dello scambio: identifica la controparte con cui fai una transazione.
+*   [{{切|き}}りかえる](term:term-v641-kirikaeru) resta più da interfaccia: cambia modalità, scheda o visualizzazione.
 
 ## 2. Menu, liste e stati dell'interfaccia
 
