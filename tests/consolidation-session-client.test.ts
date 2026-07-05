@@ -35,6 +35,23 @@ vi.mock("next/link", async () => {
   };
 });
 
+vi.mock("@/components/ui/pitch-accent-notation", async () => {
+  const React = await import("react");
+
+  return {
+    PitchAccentNotation: ({
+      pitchAccent
+    }: {
+      pitchAccent: { downstep: number; morae: string[] };
+    }) =>
+      React.createElement(
+        "span",
+        {},
+        `Pitch ${pitchAccent.morae.join("")} ${pitchAccent.downstep}`
+      )
+  };
+});
+
 import { ConsolidationSessionClient } from "@/components/consolidation/consolidation-session-client";
 
 describe("ConsolidationSessionClient", () => {
@@ -174,6 +191,27 @@ describe("ConsolidationSessionClient", () => {
     expect(container?.textContent).toContain("2かく");
   });
 
+  it("renders pitch accent notation beside visible hiragana reading options", async () => {
+    await act(async () => {
+      root!.render(
+        createElement(ConsolidationSessionClient, {
+          data: buildData({
+            distractorPitchAccentDownstep: 0,
+            pitchAccentDownstep: 1
+          })
+        })
+      );
+    });
+
+    await act(async () => {
+      vi.advanceTimersByTime(2000);
+      await Promise.resolve();
+    });
+
+    expect(container?.textContent).toContain("Pitch よむ 1");
+    expect(container?.textContent).toContain("Pitch かく 0");
+  });
+
   it("submits visible answers with number keys during the answering phase", async () => {
     mocks.submitConsolidationAnswerAction.mockResolvedValue({
       attemptCount: 1,
@@ -218,9 +256,11 @@ describe("ConsolidationSessionClient", () => {
 function buildData(
   overrides: {
     canMarkKnown?: boolean;
+    distractorPitchAccentDownstep?: number;
     front?: string;
     lessonId?: string;
     lessonTitle?: string;
+    pitchAccentDownstep?: number;
     reading?: string;
     subjectKey?: string;
   } = {}
@@ -256,11 +296,38 @@ function buildData(
               {
                 kind: "term",
                 label: reading,
+                pitchAccent:
+                  overrides.pitchAccentDownstep === undefined
+                    ? undefined
+                    : {
+                        downstep: overrides.pitchAccentDownstep,
+                        levels:
+                          overrides.pitchAccentDownstep === 1
+                            ? ["high", "low"]
+                            : ["low", "high"],
+                        morae: [...reading],
+                        shape:
+                          overrides.pitchAccentDownstep === 0
+                            ? "heiban"
+                            : "atamadaka",
+                        trailingLevel:
+                          overrides.pitchAccentDownstep === 0 ? "high" : "low"
+                      },
                 subjectKey
               },
               {
                 kind: "term",
                 label: "かく",
+                pitchAccent:
+                  overrides.distractorPitchAccentDownstep === undefined
+                    ? undefined
+                    : {
+                        downstep: overrides.distractorPitchAccentDownstep,
+                        levels: ["low", "high"],
+                        morae: ["か", "く"],
+                        shape: "heiban",
+                        trailingLevel: "high"
+                      },
                 subjectKey: "entry:term:term-kaku"
               }
             ],

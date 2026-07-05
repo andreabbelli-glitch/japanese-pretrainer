@@ -20,6 +20,7 @@ import {
   isActivationKeyboardTarget,
   isEditableKeyboardTarget
 } from "@/features/shared/ui/keyboard-targets";
+import { PitchAccentNotation } from "@/components/ui/pitch-accent-notation";
 import styles from "./consolidation-session.module.css";
 import { useConsolidationMeaningAudio } from "./use-consolidation-meaning-audio";
 
@@ -363,7 +364,16 @@ export function ConsolidationSessionClient({
                     onClick={() => void handleAnswer(option)}
                   >
                     <span className={styles.optionShortcut}>{index + 1}</span>
-                    <span className={styles.optionLabel}>{option.label}</span>
+                    <span className={styles.optionLabel}>
+                      {currentStep.step === "reading" && option.pitchAccent ? (
+                        <PitchAccentNotation
+                          compact
+                          pitchAccent={option.pitchAccent}
+                        />
+                      ) : (
+                        option.label
+                      )}
+                    </span>
                   </button>
                 );
               })}

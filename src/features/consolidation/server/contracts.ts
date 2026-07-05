@@ -1,6 +1,7 @@
 import { preReviewConsolidationState, type EntryType } from "@/db/schema";
 import type { DatabaseClient } from "@/db";
 import type { AppHref } from "@/features/navigation";
+import type { PitchAccentData } from "@/features/pitch-accent/model";
 import type { PronunciationData } from "@/features/pronunciation/model/data";
 
 export type PreReviewConsolidationStatus =
@@ -41,6 +42,7 @@ export type ConsolidationHubData = {
 export type ConsolidationOption = {
   kind: ConsolidationOptionKind;
   label: string;
+  pitchAccent?: PitchAccentData;
   subjectKey: string;
 };
 

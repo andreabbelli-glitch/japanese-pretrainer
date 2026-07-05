@@ -247,6 +247,9 @@ function addOption(
   options.set(normalizedLabel, {
     kind: presentation.kind,
     label,
+    ...(step === "reading" && presentation.pronunciation?.pitchAccent
+      ? { pitchAccent: presentation.pronunciation.pitchAccent }
+      : {}),
     subjectKey: presentation.subjectKey
   });
 }
