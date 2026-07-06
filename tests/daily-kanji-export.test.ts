@@ -5,6 +5,7 @@ import type { DatabaseClient } from "@/db";
 import {
   card,
   cardEntryLink,
+  crossMediaGroup,
   lesson,
   lessonProgress,
   media,
@@ -233,6 +234,94 @@ describe("daily kanji iOS export", () => {
             (entry) => entry.cardId === "card_daily_mode_other_old"
           )?.studyModes?.lastLessonsHardAgain
         ).toBeUndefined();
+      }
+    );
+  });
+
+  it("includes a compact complete glossary snapshot for the iOS app", async () => {
+    await withTestDatabase(
+      {
+        markDevelopmentLessonCompleted: true,
+        prefix: "jcs-daily-kanji-glossary-",
+        seedDevelopmentFixture: true
+      },
+      async ({ database }) => {
+        await seedCrossMediaGlossarySearchEntries(database);
+
+        const dataset = await buildDailyKanjiDataset({
+          database,
+          limit: 1,
+          nowIso,
+          recentMistakeLookbackDays: 3
+        });
+
+        expect(dataset.glossary).toMatchObject({
+          entryCount: 3,
+          generatedAt: nowIso,
+          version: 1
+        });
+        const termEntry = dataset.glossary?.entries.find(
+          (entry) => entry.id === `term:${developmentFixture.termDbId}`
+        );
+        const grammarEntry = dataset.glossary?.entries.find(
+          (entry) => entry.id === `grammar:${developmentFixture.grammarDbId}`
+        );
+        const sharedEntry = dataset.glossary?.entries.find(
+          (entry) => entry.id === "term:daily-glossary-shared"
+        );
+
+        expect(termEntry).toEqual({
+          aliases: [
+            { text: "いきます", type: "inflected" },
+            { text: "iku", type: "romaji" }
+          ],
+          id: `term:${developmentFixture.termDbId}`,
+          kind: "term",
+          label: "行く",
+          meaning: "andare",
+          media: [
+            {
+              entryId: developmentFixture.termDbId,
+              mediaSlug: developmentFixture.mediaSlug,
+              mediaTitle: "Fixture TCG",
+              segmentTitle: "Starter Core",
+              sourceId: developmentFixture.termId
+            }
+          ],
+          notes: "Verbo base molto frequente.",
+          pitchAccent: null,
+          pitchAccentSource: null,
+          reading: "いく",
+          romaji: "iku",
+          searchText:
+            "行く いく iku andare muoversi verso una destinazione Verbo base molto frequente. いきます Fixture TCG Starter Core"
+        });
+        expect(grammarEntry).toEqual({
+          aliases: [{ text: "〜てる" }],
+          id: `grammar:${developmentFixture.grammarDbId}`,
+          kind: "grammar",
+          label: "〜ている",
+          meaning: "azione in corso o stato risultante",
+          media: [
+            {
+              entryId: developmentFixture.grammarDbId,
+              mediaSlug: developmentFixture.mediaSlug,
+              mediaTitle: "Fixture TCG",
+              segmentTitle: "Starter Core",
+              sourceId: developmentFixture.grammarId
+            }
+          ],
+          notes: "Pattern base usato molto presto in quasi ogni corso.",
+          pitchAccent: null,
+          pitchAccentSource: null,
+          reading: null,
+          romaji: "teiru",
+          searchText:
+            "〜ている Progressive / resultant state teiru azione in corso o stato risultante Pattern base usato molto presto in quasi ogni corso. 〜てる Fixture TCG Starter Core",
+          title: "Progressive / resultant state"
+        });
+        expect(sharedEntry?.searchText).toContain("voce primaria");
+        expect(sharedEntry?.searchText).toContain("testo solo secondario");
       }
     );
   });
@@ -862,6 +951,34 @@ async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
   ]);
 }
 
+async function seedCrossMediaGlossarySearchEntries(database: TestDatabase) {
+  await database.insert(crossMediaGroup).values({
+    id: "group_daily_glossary_search",
+    createdAt: nowIso,
+    entryType: "term",
+    groupKey: "daily-glossary-shared",
+    updatedAt: nowIso
+  });
+  await database.insert(term).values([
+    buildTerm({
+      crossMediaGroupId: "group_daily_glossary_search",
+      id: "term_daily_glossary_search_primary",
+      lemma: "共有",
+      meaningIt: "voce primaria",
+      reading: "きょうゆう",
+      romaji: "kyouyuu"
+    }),
+    buildTerm({
+      crossMediaGroupId: "group_daily_glossary_search",
+      id: "term_daily_glossary_search_secondary",
+      lemma: "共有",
+      meaningIt: "testo solo secondario",
+      reading: "きょうゆう",
+      romaji: "kyouyuu"
+    })
+  ]);
+}
+
 function buildLesson(input: {
   id: string;
   mediaId?: string;
@@ -904,6 +1021,7 @@ function buildLessonProgress(
 
 function buildTerm(input: {
   audioSrc?: string;
+  crossMediaGroupId?: string;
   id: string;
   lemma: string;
   mediaId?: string;
@@ -923,7 +1041,7 @@ function buildTerm(input: {
     audioSource: null,
     audioSpeaker: null,
     createdAt: nowIso,
-    crossMediaGroupId: null,
+    crossMediaGroupId: input.crossMediaGroupId ?? null,
     levelHint: null,
     lemma: input.lemma,
     meaningIt: input.meaningIt,

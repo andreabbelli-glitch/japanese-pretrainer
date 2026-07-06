@@ -19,18 +19,30 @@ struct DailyKanjiRepository {
     }
 
     func loadCards() -> [DailyKanjiCard] {
-        let bundledDataset = loadBundledDataset()
-        if let dataset = loadCachedDataset(
-            requiresStudyModes: bundledDataset?.supportsMediaStudyModes == true
-        ) {
-            return dataset.cards
-        }
-
-        if let dataset = bundledDataset {
+        if let dataset = loadPreferredDataset() {
             return dataset.cards
         }
 
         return DailyKanjiSampleData.cards
+    }
+
+    func loadGlossaryEntries() -> [DailyKanjiGlossaryEntry] {
+        loadPreferredDataset()?.glossary?.entries ?? []
+    }
+
+    private func loadPreferredDataset() -> DailyKanjiDataset? {
+        let bundledDataset = loadBundledDataset()
+        if let dataset = loadCachedDataset(
+            requiresStudyModes: bundledDataset?.supportsMediaStudyModes == true
+        ) {
+            return dataset
+        }
+
+        if let dataset = bundledDataset {
+            return dataset
+        }
+
+        return nil
     }
 
     func loadDatasetSource() -> DailyKanjiDatasetSource {

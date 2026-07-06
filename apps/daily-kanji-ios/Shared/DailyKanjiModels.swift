@@ -5,9 +5,88 @@ struct DailyKanjiDataset: Codable {
     let generatedAt: String
     let recentMistakeLookbackDays: Int
     let cards: [DailyKanjiCard]
+    let glossary: DailyKanjiGlossarySnapshot?
+
+    init(
+        version: Int,
+        generatedAt: String,
+        recentMistakeLookbackDays: Int,
+        cards: [DailyKanjiCard],
+        glossary: DailyKanjiGlossarySnapshot? = nil
+    ) {
+        self.version = version
+        self.generatedAt = generatedAt
+        self.recentMistakeLookbackDays = recentMistakeLookbackDays
+        self.cards = cards
+        self.glossary = glossary
+    }
 
     static func decode(jsonData: Data) throws -> DailyKanjiDataset {
         try JSONDecoder().decode(DailyKanjiDataset.self, from: jsonData)
+    }
+}
+
+struct DailyKanjiGlossarySnapshot: Codable, Equatable {
+    let version: Int
+    let generatedAt: String
+    let entryCount: Int
+    let entries: [DailyKanjiGlossaryEntry]
+}
+
+struct DailyKanjiGlossaryEntry: Codable, Identifiable, Equatable {
+    struct Alias: Codable, Equatable {
+        let text: String
+        let type: String?
+    }
+
+    struct MediaRef: Codable, Equatable {
+        let entryId: String
+        let sourceId: String
+        let mediaSlug: String
+        let mediaTitle: String
+        let segmentTitle: String?
+    }
+
+    let aliases: [Alias]
+    let id: String
+    let kind: DailyKanjiEntryKind
+    let label: String
+    let meaning: String
+    let media: [MediaRef]
+    let notes: String?
+    let pitchAccent: Int?
+    let pitchAccentSource: String?
+    let reading: String?
+    let romaji: String?
+    let searchText: String
+    let title: String?
+}
+
+enum DailyKanjiGlossaryIndex {
+    static func search(
+        entries: [DailyKanjiGlossaryEntry],
+        query: String
+    ) -> [DailyKanjiGlossaryEntry] {
+        let tokens = query
+            .split(whereSeparator: \.isWhitespace)
+            .map { normalized(String($0)) }
+            .filter { !$0.isEmpty }
+
+        guard !tokens.isEmpty else {
+            return entries
+        }
+
+        return entries.filter { entry in
+            let haystack = normalized(entry.searchText)
+            return tokens.allSatisfy { haystack.contains($0) }
+        }
+    }
+
+    private static func normalized(_ value: String) -> String {
+        value.folding(
+            options: [.caseInsensitive, .diacriticInsensitive, .widthInsensitive],
+            locale: .current
+        )
     }
 }
 

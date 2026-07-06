@@ -13,6 +13,43 @@ export type DailyKanjiDataset = {
   generatedAt: string;
   recentMistakeLookbackDays: number;
   cards: DailyKanjiExportCard[];
+  glossary?: DailyKanjiGlossarySnapshot;
+};
+
+export type DailyKanjiGlossaryAlias = {
+  text: string;
+  type?: string;
+};
+
+export type DailyKanjiGlossaryMediaRef = {
+  entryId: string;
+  mediaSlug: string;
+  mediaTitle: string;
+  segmentTitle?: string;
+  sourceId: string;
+};
+
+export type DailyKanjiGlossaryEntry = {
+  aliases: DailyKanjiGlossaryAlias[];
+  id: string;
+  kind: DailyKanjiEntryKind;
+  label: string;
+  meaning: string;
+  media: DailyKanjiGlossaryMediaRef[];
+  notes?: string;
+  pitchAccent: number | null;
+  pitchAccentSource: string | null;
+  reading: string | null;
+  romaji: string | null;
+  searchText: string;
+  title?: string;
+};
+
+export type DailyKanjiGlossarySnapshot = {
+  version: 1;
+  generatedAt: string;
+  entryCount: number;
+  entries: DailyKanjiGlossaryEntry[];
 };
 
 export type DailyKanjiModeScope = {

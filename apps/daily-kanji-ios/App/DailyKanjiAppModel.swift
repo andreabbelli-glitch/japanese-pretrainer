@@ -12,6 +12,7 @@ enum DailyKanjiSyncState: Equatable {
 @MainActor
 final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var cards: [DailyKanjiCard]
+    @Published private(set) var glossaryEntries: [DailyKanjiGlossaryEntry]
     @Published private(set) var selectedCard: DailyKanjiCard?
     @Published private(set) var selectedHistoryContext: DailyKanjiPresentationHistoryItem?
     @Published private(set) var selectedMediaSlug: String?
@@ -63,6 +64,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.repository = resolvedRepository
         self.cacheStore = cacheStore
         self.cards = resolvedRepository.loadCards()
+        self.glossaryEntries = resolvedRepository.loadGlossaryEntries()
         self.historyStore = historyStore
         self.scopeStore = scopeStore
         self.syncPolicy = syncPolicy
@@ -101,6 +103,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.repository = DailyKanjiRepository(cacheStore: cacheStore)
         self.cacheStore = cacheStore
         self.cards = cards
+        self.glossaryEntries = []
         self.historyStore = historyStore
         self.scopeStore = scopeStore
         self.syncPolicy = syncPolicy
@@ -233,6 +236,7 @@ final class DailyKanjiAppModel: ObservableObject {
 
             try cacheStore.write(dataset: dataset, cachedAt: now)
             cards = dataset.cards
+            glossaryEntries = dataset.glossary?.entries ?? []
             lastFailureAt = nil
             consecutiveFailureCount = 0
             pendingPreparedSelectionCardId = nil

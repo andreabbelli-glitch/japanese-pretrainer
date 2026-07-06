@@ -1,6 +1,6 @@
 import { and, asc, eq, inArray, type SQL } from "drizzle-orm";
 
-import type { DatabaseClient, DatabaseQueryClient } from "../client.ts";
+import type { DatabaseQueryClient } from "../client.ts";
 import {
   crossMediaGroup,
   grammarAlias,
@@ -195,17 +195,17 @@ async function queryGlossaryEntry(
 }
 
 export async function listGlossaryEntriesByKind(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   kind: "term",
   options: ListGlossaryEntriesOptions
 ): Promise<TermGlossaryRow[]>;
 export async function listGlossaryEntriesByKind(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   kind: "grammar",
   options: ListGlossaryEntriesOptions
 ): Promise<GrammarGlossaryRow[]>;
 export async function listGlossaryEntriesByKind(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   kind: EntryType,
   options: ListGlossaryEntriesOptions = {}
 ) {
@@ -217,7 +217,7 @@ export async function listGlossaryEntriesByKind(
 }
 
 export async function listGlossarySegmentsByMediaId(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   mediaId: string
 ) {
   return database.query.segment.findMany({
@@ -336,7 +336,7 @@ function buildGrammarSummarySelection(includeExtendedFields: boolean) {
 }
 
 export async function listTermEntrySummaries(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   options: ListGlossaryEntriesOptions = {}
 ) {
   return database
@@ -350,7 +350,7 @@ export async function listTermEntrySummaries(
 }
 
 export async function listTermEntryReviewSummaries(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   options: ListGlossaryEntriesOptions = {}
 ) {
   return database
@@ -364,7 +364,7 @@ export async function listTermEntryReviewSummaries(
 }
 
 export async function listGrammarEntrySummaries(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   options: ListGlossaryEntriesOptions = {}
 ) {
   return database
@@ -381,7 +381,7 @@ export async function listGrammarEntrySummaries(
 }
 
 export async function listGrammarEntryReviewSummaries(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   options: ListGlossaryEntriesOptions = {}
 ) {
   return database

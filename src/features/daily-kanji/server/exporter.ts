@@ -10,6 +10,7 @@ import type {
   DailyKanjiStudyModes
 } from "../types.ts";
 import { stripInlineMarkdown } from "../../study/model/inline-markdown.ts";
+import { buildDailyKanjiGlossarySnapshot } from "./glossary-exporter.ts";
 
 export const dailyKanjiDatasetVersion = 1 as const;
 export const dailyKanjiDefaultRecentMistakeLookbackDays = 3;
@@ -57,7 +58,7 @@ type DailyKanjiExportRow = {
 type DailyKanjiExportMode = "daily" | "prestudy" | "lastLessonsHardAgain";
 
 export async function buildDailyKanjiDataset(input: {
-  database: Pick<DatabaseQueryClient, "all">;
+  database: DatabaseQueryClient;
   limit?: number;
   nowIso?: string;
   recentMistakeLookbackDays?: number;
@@ -102,7 +103,11 @@ export async function buildDailyKanjiDataset(input: {
     version: dailyKanjiDatasetVersion,
     generatedAt: nowIso,
     recentMistakeLookbackDays,
-    cards
+    cards,
+    glossary: await buildDailyKanjiGlossarySnapshot({
+      database: input.database,
+      nowIso
+    })
   };
 }
 

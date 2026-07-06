@@ -14,6 +14,30 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(dataset.cards[0].srs.priorityReasons, [.recentHardAgain, .relearning])
     }
 
+    func testDecodesGlossarySnapshotAndSearchesLocally() throws {
+        let dataset = try DailyKanjiDataset.decode(jsonData: Self.glossaryDatasetJSON)
+        let glossary = try XCTUnwrap(dataset.glossary)
+
+        XCTAssertEqual(glossary.version, 1)
+        XCTAssertEqual(glossary.entryCount, 2)
+        XCTAssertEqual(glossary.entries.map(\.label), ["行く", "〜ている"])
+        XCTAssertEqual(glossary.entries[0].aliases.map(\.text), ["いきます", "iku"])
+        XCTAssertEqual(glossary.entries[0].media.map(\.mediaTitle), ["Fixture TCG"])
+
+        XCTAssertEqual(
+            DailyKanjiGlossaryIndex.search(entries: glossary.entries, query: "iku").map(\.id),
+            ["term:term_fixture_iku"]
+        )
+        XCTAssertEqual(
+            DailyKanjiGlossaryIndex.search(entries: glossary.entries, query: "stato").map(\.id),
+            ["grammar:grammar_fixture_teiru"]
+        )
+        XCTAssertEqual(
+            DailyKanjiGlossaryIndex.search(entries: glossary.entries, query: "   ").map(\.id),
+            ["term:term_fixture_iku", "grammar:grammar_fixture_teiru"]
+        )
+    }
+
     func testRepositoryPrefersSyncedCacheOverBundle() throws {
         let temporaryDirectory = try Self.makeTemporaryDirectory()
         defer { Self.removeTemporaryDirectory(temporaryDirectory) }
@@ -2534,6 +2558,105 @@ final class DailyKanjiCoreTests: XCTestCase {
           }
         }
       ]
+    }
+    """.data(using: .utf8)!
+
+    private static let glossaryDatasetJSON = """
+    {
+      "version": 1,
+      "generatedAt": "2026-06-10T12:00:00.000Z",
+      "recentMistakeLookbackDays": 3,
+      "cards": [
+        {
+          "cardId": "hard",
+          "subjectKey": "term:hard",
+          "media": { "slug": "media-one", "title": "Media One" },
+          "lesson": { "slug": "lesson-one", "title": "Lesson One" },
+          "front": "観点",
+          "back": "point of view",
+          "kanji": ["観", "点"],
+          "entry": {
+            "id": "entry-hard",
+            "kind": "term",
+            "label": "観点",
+            "meaning": "point of view",
+            "reading": "かんてん"
+          },
+          "srs": {
+            "difficulty": 8.2,
+            "dueAt": "2026-06-10T10:00:00.000Z",
+            "lapses": 2,
+            "lastHardAgainAt": "2026-06-10T09:00:00.000Z",
+            "lastInteractionAt": "2026-06-10T09:00:00.000Z",
+            "lastReviewedAt": "2026-06-10T09:00:00.000Z",
+            "learningSteps": 1,
+            "priorityReasons": ["recent-hard-again", "relearning"],
+            "priorityScore": 180,
+            "recentHardAgainCount": 2,
+            "reps": 6,
+            "scheduledDays": 1,
+            "stability": 0.9,
+            "state": "relearning"
+          }
+        }
+      ],
+      "glossary": {
+        "version": 1,
+        "generatedAt": "2026-06-10T12:00:00.000Z",
+        "entryCount": 2,
+        "entries": [
+          {
+            "id": "term:term_fixture_iku",
+            "kind": "term",
+            "label": "行く",
+            "reading": "いく",
+            "romaji": "iku",
+            "meaning": "andare",
+            "notes": "Verbo base molto frequente.",
+            "pitchAccent": null,
+            "pitchAccentSource": null,
+            "aliases": [
+              { "text": "いきます", "type": "inflected" },
+              { "text": "iku", "type": "romaji" }
+            ],
+            "media": [
+              {
+                "entryId": "term_fixture_iku",
+                "sourceId": "term_fixture_iku",
+                "mediaSlug": "fixture-tcg",
+                "mediaTitle": "Fixture TCG",
+                "segmentTitle": "Starter Core"
+              }
+            ],
+            "searchText": "行く いく iku andare muoversi verso una destinazione Verbo base molto frequente. いきます iku Fixture TCG Starter Core"
+          },
+          {
+            "id": "grammar:grammar_fixture_teiru",
+            "kind": "grammar",
+            "label": "〜ている",
+            "title": "Progressive / resultant state",
+            "reading": null,
+            "romaji": "teiru",
+            "meaning": "azione in corso o stato risultante",
+            "notes": "Pattern base usato molto presto in quasi ogni corso.",
+            "pitchAccent": null,
+            "pitchAccentSource": null,
+            "aliases": [
+              { "text": "〜てる" }
+            ],
+            "media": [
+              {
+                "entryId": "grammar_fixture_teiru",
+                "sourceId": "grammar_fixture_teiru",
+                "mediaSlug": "fixture-tcg",
+                "mediaTitle": "Fixture TCG",
+                "segmentTitle": "Starter Core"
+              }
+            ],
+            "searchText": "〜ている Progressive / resultant state teiru azione in corso o stato risultante Pattern base usato molto presto in quasi ogni corso. 〜てる Fixture TCG Starter Core"
+          }
+        ]
+      }
     }
     """.data(using: .utf8)!
 

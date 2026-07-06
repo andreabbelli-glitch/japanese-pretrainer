@@ -4,6 +4,7 @@ struct ContentView: View {
     @ObservedObject var model: DailyKanjiAppModel
     @StateObject private var audioPlayer = DailyKanjiAudioPlayer()
     @State private var selectedAppSection: DailyKanjiAppSection = .review
+    @State private var glossaryQuery = ""
     @State private var liveReviewAnswerRevealed = false
     private let liveReviewBaseURL = DailyKanjiMobileReviewConfiguration.load().endpointURL
 
@@ -16,6 +17,8 @@ struct ContentView: View {
                         dailyStudyView
                     case .review:
                         liveReviewView
+                    case .glossary:
+                        glossaryView
                     }
                 }
                 .padding(20)
@@ -30,7 +33,7 @@ struct ContentView: View {
                         }
                     }
                     .pickerStyle(.segmented)
-                    .frame(width: 220)
+                    .frame(maxWidth: 320)
                 }
             }
             .background(Color(.systemGroupedBackground))
@@ -48,6 +51,122 @@ struct ContentView: View {
                 resetAndPreloadCurrentLiveReviewAudio()
             }
         }
+    }
+
+    private var glossaryView: some View {
+        let results = glossaryResults
+
+        return VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .center, spacing: 12) {
+                Image(systemName: "text.magnifyingglass")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .frame(width: 22)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Glossario")
+                        .font(.subheadline.weight(.semibold))
+
+                    Text("\(results.count) / \(model.glossaryEntries.count) voci")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer(minLength: 0)
+            }
+
+            TextField("Cerca", text: $glossaryQuery)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+                .textFieldStyle(.roundedBorder)
+
+            if model.glossaryEntries.isEmpty {
+                Text("Glossario non disponibile nello snapshot.")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+            } else if results.isEmpty {
+                Text("Nessun risultato.")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+            } else {
+                LazyVStack(alignment: .leading, spacing: 10) {
+                    ForEach(results) { entry in
+                        glossaryEntryRow(entry)
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(14)
+        .background(Color(.secondarySystemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+    }
+
+    private var glossaryResults: [DailyKanjiGlossaryEntry] {
+        DailyKanjiGlossaryIndex.search(
+            entries: model.glossaryEntries,
+            query: glossaryQuery
+        )
+    }
+
+    private func glossaryEntryRow(_ entry: DailyKanjiGlossaryEntry) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .firstTextBaseline, spacing: 10) {
+                Text(entry.label)
+                    .font(.title3.weight(.semibold))
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.7)
+
+                Spacer(minLength: 0)
+
+                Text(entry.kind.glossaryLabel)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+            }
+
+            if let title = entry.title, !title.isEmpty {
+                Text(title)
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(.secondary)
+            }
+
+            if let readingText = entry.readingLine {
+                Text(readingText)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            Text(entry.meaning)
+                .font(.body)
+                .fixedSize(horizontal: false, vertical: true)
+
+            if let notes = entry.notes, !notes.isEmpty {
+                Text(notes)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            if !entry.media.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 6) {
+                        ForEach(entry.media, id: \.stableId) { media in
+                            Label(media.displayText, systemImage: "rectangle.stack")
+                                .font(.caption2.weight(.medium))
+                                .foregroundStyle(.secondary)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color(.tertiarySystemGroupedBackground))
+                                .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                        }
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(12)
+        .background(Color(.systemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 
     private var dailyStudyView: some View {
@@ -616,6 +735,7 @@ struct ContentView: View {
 private enum DailyKanjiAppSection: String, CaseIterable, Identifiable {
     case daily
     case review
+    case glossary
 
     var id: String { rawValue }
 
@@ -625,7 +745,51 @@ private enum DailyKanjiAppSection: String, CaseIterable, Identifiable {
             return "Daily"
         case .review:
             return "Review"
+        case .glossary:
+            return "Glossario"
         }
+    }
+}
+
+private extension DailyKanjiEntryKind {
+    var glossaryLabel: String {
+        switch self {
+        case .term:
+            return "Termine"
+        case .grammar:
+            return "Grammar"
+        }
+    }
+}
+
+private extension DailyKanjiGlossaryEntry {
+    var readingLine: String? {
+        let parts = [reading, romaji].compactMap { value -> String? in
+            guard let value, !value.isEmpty else {
+                return nil
+            }
+            return value
+        }
+
+        guard !parts.isEmpty else {
+            return nil
+        }
+
+        return parts.joined(separator: " / ")
+    }
+}
+
+private extension DailyKanjiGlossaryEntry.MediaRef {
+    var stableId: String {
+        "\(entryId):\(mediaSlug):\(segmentTitle ?? "")"
+    }
+
+    var displayText: String {
+        guard let segmentTitle, !segmentTitle.isEmpty else {
+            return mediaTitle
+        }
+
+        return "\(mediaTitle) - \(segmentTitle)"
     }
 }
 
