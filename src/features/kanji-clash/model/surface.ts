@@ -1,4 +1,4 @@
-import { stripInlineMarkdown } from "@/features/study/model/inline-markdown";
+import { stripInlineMarkdown } from "../../study/model/inline-markdown.ts";
 
 import { dedupeStable } from "./shared-utils.ts";
 

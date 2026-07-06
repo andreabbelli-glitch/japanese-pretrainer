@@ -1,3 +1,8 @@
+import { execFile } from "node:child_process";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { promisify } from "node:util";
+
 import { eq } from "drizzle-orm";
 import { describe, expect, it } from "vitest";
 
@@ -19,6 +24,12 @@ import { buildDailyKanjiDataset } from "@/features/daily-kanji/server/exporter";
 import { withTestDatabase } from "./helpers/test-db";
 
 const nowIso = "2026-06-10T12:00:00.000Z";
+const execFileAsync = promisify(execFile);
+const exportScriptPath = path.join(
+  process.cwd(),
+  "scripts",
+  "export-daily-kanji-ios-dataset.ts"
+);
 
 describe("daily kanji iOS export", () => {
   it("exports eligible kanji flashcards ordered by recent hard-again signal and instability", async () => {
@@ -322,6 +333,47 @@ describe("daily kanji iOS export", () => {
         });
         expect(sharedEntry?.searchText).toContain("voce primaria");
         expect(sharedEntry?.searchText).toContain("testo solo secondario");
+      }
+    );
+  });
+
+  it("runs the standalone export CLI under Node strip-types", async () => {
+    await withTestDatabase(
+      {
+        markDevelopmentLessonCompleted: true,
+        prefix: "jcs-daily-kanji-export-cli-",
+        seedDevelopmentFixture: true
+      },
+      async ({ databasePath, tempDir }) => {
+        const outputPath = path.join(tempDir, "daily-kanji-cards.json");
+        const { stdout } = await execFileAsync(
+          process.execPath,
+          [
+            "--disable-warning=MODULE_TYPELESS_PACKAGE_JSON",
+            "--experimental-strip-types",
+            exportScriptPath,
+            "--out",
+            outputPath,
+            "--limit",
+            "1"
+          ],
+          {
+            env: {
+              ...process.env,
+              DATABASE_URL: databasePath
+            }
+          }
+        );
+        const dataset = JSON.parse(await readFile(outputPath, "utf8")) as {
+          cards: unknown[];
+          glossary?: { entryCount: number };
+        };
+
+        expect(stdout).toContain(
+          `Wrote ${dataset.cards.length} Daily Kanji cards`
+        );
+        expect(dataset.cards.length).toBe(1);
+        expect(dataset.glossary?.entryCount).toBeGreaterThan(0);
       }
     );
   });
@@ -738,26 +790,24 @@ async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
       title: "Daily Mode Other Old"
     })
   ]);
-  await database
-    .insert(lessonProgress)
-    .values([
-      buildLessonProgress("lesson_daily_mode_one", "completed", {
-        completedAt: "2026-06-06T12:00:00.000Z"
-      }),
-      buildLessonProgress("lesson_daily_mode_two", "completed", {
-        completedAt: "2026-06-07T12:00:00.000Z"
-      }),
-      buildLessonProgress("lesson_daily_mode_three", "completed", {
-        completedAt: "2026-06-08T12:00:00.000Z"
-      }),
-      buildLessonProgress("lesson_daily_mode_four", "completed", {
-        completedAt: "2026-06-09T12:00:00.000Z"
-      }),
-      buildLessonProgress("lesson_daily_mode_prestudy", "in_progress"),
-      buildLessonProgress("lesson_daily_mode_other_old", "completed", {
-        completedAt: "2026-06-05T12:00:00.000Z"
-      })
-    ]);
+  await database.insert(lessonProgress).values([
+    buildLessonProgress("lesson_daily_mode_one", "completed", {
+      completedAt: "2026-06-06T12:00:00.000Z"
+    }),
+    buildLessonProgress("lesson_daily_mode_two", "completed", {
+      completedAt: "2026-06-07T12:00:00.000Z"
+    }),
+    buildLessonProgress("lesson_daily_mode_three", "completed", {
+      completedAt: "2026-06-08T12:00:00.000Z"
+    }),
+    buildLessonProgress("lesson_daily_mode_four", "completed", {
+      completedAt: "2026-06-09T12:00:00.000Z"
+    }),
+    buildLessonProgress("lesson_daily_mode_prestudy", "in_progress"),
+    buildLessonProgress("lesson_daily_mode_other_old", "completed", {
+      completedAt: "2026-06-05T12:00:00.000Z"
+    })
+  ]);
   await database.insert(term).values([
     buildTerm({
       id: "term_daily_mode_one",
@@ -854,7 +904,10 @@ async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
         "term_daily_mode_three"
       ),
       buildCardEntryLink("card_daily_mode_recent_four", "term_daily_mode_four"),
-      buildCardEntryLink("card_daily_mode_prestudy", "term_daily_mode_prestudy"),
+      buildCardEntryLink(
+        "card_daily_mode_prestudy",
+        "term_daily_mode_prestudy"
+      ),
       buildCardEntryLink(
         "card_daily_mode_other_old",
         "term_daily_mode_other_old"
