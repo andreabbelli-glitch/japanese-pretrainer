@@ -14,6 +14,21 @@ final class DailyKanjiAudioPlayer: ObservableObject {
             return
         }
 
+        playBundled(url: url)
+    }
+
+    func play(mediaSlug: String, audioSrc: String) {
+        guard let url = DailyKanjiAudioResource.url(
+            mediaSlug: mediaSlug,
+            audioSrc: audioSrc
+        ) else {
+            return
+        }
+
+        playBundled(url: url)
+    }
+
+    private func playBundled(url: URL) {
         player = try? AVAudioPlayer(contentsOf: url)
         player?.prepareToPlay()
         player?.play()
@@ -68,6 +83,14 @@ final class DailyKanjiAudioPlayer: ObservableObject {
     func hasBundledAudio(card: DailyKanjiCard) -> Bool {
         DailyKanjiAudioResource.url(for: card) != nil
     }
+
+    func hasBundledAudio(mediaSlug: String, audioSrc: String?) -> Bool {
+        guard let audioSrc else {
+            return false
+        }
+
+        return DailyKanjiAudioResource.url(mediaSlug: mediaSlug, audioSrc: audioSrc) != nil
+    }
 }
 
 enum DailyKanjiAudioResource {
@@ -79,6 +102,18 @@ enum DailyKanjiAudioResource {
             return nil
         }
 
+        return url(forRelativePath: relativePath, in: bundle)
+    }
+
+    static func url(mediaSlug: String, audioSrc: String, in bundle: Bundle = .main) -> URL? {
+        guard let relativePath = bundleRelativePath(mediaSlug: mediaSlug, audioSrc: audioSrc) else {
+            return nil
+        }
+
+        return url(forRelativePath: relativePath, in: bundle)
+    }
+
+    private static func url(forRelativePath relativePath: String, in bundle: Bundle) -> URL? {
         let url = bundle.url(
             forResource: (relativePath as NSString).deletingPathExtension,
             withExtension: (relativePath as NSString).pathExtension
@@ -94,13 +129,26 @@ enum DailyKanjiAudioResource {
     static func bundleRelativePath(for card: DailyKanjiCard) -> String? {
         guard
             let audioSrc = card.entry.audioSrc,
-            isSafeMediaSlug(card.media.slug),
+            let relativePath = bundleRelativePath(
+                mediaSlug: card.media.slug,
+                audioSrc: audioSrc
+            )
+        else {
+            return nil
+        }
+
+        return relativePath
+    }
+
+    static func bundleRelativePath(mediaSlug: String, audioSrc: String) -> String? {
+        guard
+            isSafeMediaSlug(mediaSlug),
             isSafeAudioSrc(audioSrc)
         else {
             return nil
         }
 
-        return buildBundleFileName(mediaSlug: card.media.slug, audioSrc: audioSrc)
+        return buildBundleFileName(mediaSlug: mediaSlug, audioSrc: audioSrc)
     }
 
     private static func isSafeMediaSlug(_ mediaSlug: String) -> Bool {

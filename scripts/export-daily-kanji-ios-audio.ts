@@ -33,7 +33,7 @@ try {
   if (result.missing.length > 0) {
     for (const missing of result.missing.slice(0, 20)) {
       console.error(
-        `Missing Daily Kanji audio for ${missing.cardId}: ${missing.sourcePath}`
+        `Missing Daily Kanji audio for ${missing.referenceId}: ${missing.sourcePath}`
       );
     }
 

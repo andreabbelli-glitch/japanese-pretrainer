@@ -22,6 +22,7 @@ export type DailyKanjiGlossaryAlias = {
 };
 
 export type DailyKanjiGlossaryMediaRef = {
+  audioSrc?: string;
   entryId: string;
   mediaSlug: string;
   mediaTitle: string;

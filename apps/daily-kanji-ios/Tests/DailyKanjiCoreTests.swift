@@ -23,6 +23,10 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(glossary.entries.map(\.label), ["行く", "〜ている"])
         XCTAssertEqual(glossary.entries[0].aliases.map(\.text), ["いきます", "iku"])
         XCTAssertEqual(glossary.entries[0].media.map(\.mediaTitle), ["Fixture TCG"])
+        XCTAssertEqual(
+            glossary.entries[0].media[0].audioSrc,
+            "assets/audio/term/term-fixture-iku/iku.mp3"
+        )
 
         XCTAssertEqual(
             DailyKanjiGlossaryIndex.search(entries: glossary.entries, query: "iku").map(\.id),
@@ -36,6 +40,26 @@ final class DailyKanjiCoreTests: XCTestCase {
             DailyKanjiGlossaryIndex.search(entries: glossary.entries, query: "   ").map(\.id),
             ["term:term_fixture_iku", "grammar:grammar_fixture_teiru"]
         )
+    }
+
+    func testAudioBundlePathSupportsGlossaryMediaReferences() throws {
+        let dataset = try DailyKanjiDataset.decode(jsonData: Self.glossaryDatasetJSON)
+        let glossary = try XCTUnwrap(dataset.glossary)
+        let media = glossary.entries[0].media[0]
+        let audioSrc = try XCTUnwrap(media.audioSrc)
+        let relativePath = try XCTUnwrap(
+            DailyKanjiAudioResource.bundleRelativePath(
+                mediaSlug: media.mediaSlug,
+                audioSrc: audioSrc
+            )
+        )
+
+        XCTAssertTrue(
+            relativePath.hasPrefix(
+                "daily-kanji-audio__fixture-tcg__assets_audio_term_term-fixture-iku_iku__"
+            )
+        )
+        XCTAssertTrue(relativePath.hasSuffix(".mp3"))
     }
 
     func testRepositoryPrefersSyncedCacheOverBundle() throws {
@@ -2621,6 +2645,7 @@ final class DailyKanjiCoreTests: XCTestCase {
             ],
             "media": [
               {
+                "audioSrc": "assets/audio/term/term-fixture-iku/iku.mp3",
                 "entryId": "term_fixture_iku",
                 "sourceId": "term_fixture_iku",
                 "mediaSlug": "fixture-tcg",

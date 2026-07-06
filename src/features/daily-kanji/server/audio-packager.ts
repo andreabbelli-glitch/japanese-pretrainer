@@ -17,6 +17,7 @@ const dailyKanjiKnownAudioSourceExtensions = new Set([
   ".aac",
   ".m4a",
   ".mp3",
+  ".oga",
   ".ogg",
   ".wav"
 ]);
@@ -29,16 +30,16 @@ const dailyKanjiIosPlayableAudioExtensions = new Set([
 
 export type DailyKanjiAudioMissingFile = {
   audioSrc: string;
-  cardId: string;
   mediaSlug: string;
+  referenceId: string;
   sourcePath: string;
 };
 
 export type DailyKanjiAudioUnsupportedFile = {
   audioSrc: string;
-  cardId: string;
   extension: string;
   mediaSlug: string;
+  referenceId: string;
 };
 
 export type DailyKanjiAudioCopyResult = {
@@ -56,8 +57,8 @@ type DailyKanjiAudioAssetPaths = {
 
 type DailyKanjiAudioReference = {
   audioSrc: string;
-  cardId: string;
   mediaSlug: string;
+  referenceId: string;
 };
 
 export async function copyDailyKanjiAudioAssets(input: {
@@ -198,8 +199,8 @@ async function listMissingAudioFiles(
     } catch {
       missing.push({
         audioSrc: copy.audioSrc,
-        cardId: copy.cardId,
         mediaSlug: copy.mediaSlug,
+        referenceId: copy.referenceId,
         sourcePath: copy.paths.sourcePath
       });
     }
@@ -258,29 +259,27 @@ function collectDailyKanjiAudioReferences(
       continue;
     }
 
-    assertSafeMediaSlug(card.media.slug);
-    assertSafeAudioSrc(audioSrc);
+    appendDailyKanjiAudioReference({
+      audioSrc,
+      mediaSlug: card.media.slug,
+      playableByDestination,
+      referenceId: `card:${card.cardId}`,
+      unsupportedByDestination
+    });
+  }
 
-    const key = `${card.media.slug}/${audioSrc}`;
-
-    if (!isIosPlayableAudioSrc(audioSrc)) {
-      if (!unsupportedByDestination.has(key)) {
-        unsupportedByDestination.set(key, {
-          audioSrc,
-          cardId: card.cardId,
-          extension: path.posix.extname(audioSrc).toLowerCase(),
-          mediaSlug: card.media.slug
-        });
+  for (const entry of dataset.glossary?.entries ?? []) {
+    for (const media of entry.media) {
+      if (!media.audioSrc) {
+        continue;
       }
 
-      continue;
-    }
-
-    if (!playableByDestination.has(key)) {
-      playableByDestination.set(key, {
-        audioSrc,
-        cardId: card.cardId,
-        mediaSlug: card.media.slug
+      appendDailyKanjiAudioReference({
+        audioSrc: media.audioSrc,
+        mediaSlug: media.mediaSlug,
+        playableByDestination,
+        referenceId: `glossary:${entry.id}:${media.entryId}`,
+        unsupportedByDestination
       });
     }
   }
@@ -289,6 +288,40 @@ function collectDailyKanjiAudioReferences(
     playableReferences: [...playableByDestination.values()],
     unsupported: [...unsupportedByDestination.values()]
   };
+}
+
+function appendDailyKanjiAudioReference(input: {
+  audioSrc: string;
+  mediaSlug: string;
+  playableByDestination: Map<string, DailyKanjiAudioReference>;
+  referenceId: string;
+  unsupportedByDestination: Map<string, DailyKanjiAudioUnsupportedFile>;
+}) {
+  assertSafeMediaSlug(input.mediaSlug);
+  assertSafeAudioSrc(input.audioSrc);
+
+  const key = `${input.mediaSlug}/${input.audioSrc}`;
+
+  if (!isIosPlayableAudioSrc(input.audioSrc)) {
+    if (!input.unsupportedByDestination.has(key)) {
+      input.unsupportedByDestination.set(key, {
+        audioSrc: input.audioSrc,
+        extension: path.posix.extname(input.audioSrc).toLowerCase(),
+        mediaSlug: input.mediaSlug,
+        referenceId: input.referenceId
+      });
+    }
+
+    return;
+  }
+
+  if (!input.playableByDestination.has(key)) {
+    input.playableByDestination.set(key, {
+      audioSrc: input.audioSrc,
+      mediaSlug: input.mediaSlug,
+      referenceId: input.referenceId
+    });
+  }
 }
 
 async function prepareGeneratedOutputRoot(outputRoot: string) {

@@ -257,6 +257,14 @@ describe("daily kanji iOS export", () => {
         seedDevelopmentFixture: true
       },
       async ({ database }) => {
+        await database
+          .update(term)
+          .set({
+            audioSrc: "assets/audio/term/term-fixture-iku/iku.mp3",
+            pitchAccent: 0,
+            pitchAccentSource: "Kanjium"
+          })
+          .where(eq(term.id, developmentFixture.termDbId));
         await seedCrossMediaGlossarySearchEntries(database);
 
         const dataset = await buildDailyKanjiDataset({
@@ -292,6 +300,7 @@ describe("daily kanji iOS export", () => {
           meaning: "andare",
           media: [
             {
+              audioSrc: "assets/audio/term/term-fixture-iku/iku.mp3",
               entryId: developmentFixture.termDbId,
               mediaSlug: developmentFixture.mediaSlug,
               mediaTitle: "Fixture TCG",
@@ -300,8 +309,8 @@ describe("daily kanji iOS export", () => {
             }
           ],
           notes: "Verbo base molto frequente.",
-          pitchAccent: null,
-          pitchAccentSource: null,
+          pitchAccent: 0,
+          pitchAccentSource: "Kanjium",
           reading: "いく",
           romaji: "iku",
           searchText:

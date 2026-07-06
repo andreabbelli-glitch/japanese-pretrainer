@@ -40,6 +40,7 @@ struct DailyKanjiGlossaryEntry: Codable, Identifiable, Equatable {
     }
 
     struct MediaRef: Codable, Equatable {
+        let audioSrc: String?
         let entryId: String
         let sourceId: String
         let mediaSlug: String
@@ -533,7 +534,7 @@ private extension String {
     }
 }
 
-private extension DailyKanjiPitchAccentPattern {
+extension DailyKanjiPitchAccentPattern {
     init?(reading: String?, pitchAccent: Int?) {
         guard let reading, let pitchAccent else {
             return nil

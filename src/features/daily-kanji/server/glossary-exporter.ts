@@ -132,6 +132,7 @@ function mapGlossaryMediaRef(
   entry: TermGlossaryEntry | GrammarGlossaryEntry
 ): DailyKanjiGlossaryMediaRef {
   return {
+    ...(entry.audioSrc ? { audioSrc: entry.audioSrc } : {}),
     entryId: entry.id,
     mediaSlug: entry.media.slug,
     mediaTitle: entry.media.title,

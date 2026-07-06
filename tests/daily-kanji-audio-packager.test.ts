@@ -11,6 +11,7 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
+  buildDailyKanjiAudioBundleFileName,
   copyDailyKanjiAudioAssets,
   dailyKanjiAudioGeneratedMarker,
   resolveDailyKanjiAudioAssetPaths
@@ -92,6 +93,68 @@ describe("daily kanji iOS audio packager", () => {
     );
   });
 
+  it("copies glossary media audio files into the generated iOS resources tree", async () => {
+    await writeContentAudio(
+      "media-one/assets/audio/term/card/pronunciation.mp3",
+      "card"
+    );
+    await writeContentAudio(
+      "media-one/assets/audio/term/glossary/pronunciation.mp3",
+      "glossary"
+    );
+
+    const result = await copyDailyKanjiAudioAssets({
+      contentRoot: contentRoot(),
+      dataset: buildDataset(
+        [
+          {
+            audioSrc: "assets/audio/term/card/pronunciation.mp3",
+            cardId: "card-one",
+            mediaSlug: "media-one"
+          }
+        ],
+        {
+          entries: [
+            {
+              id: "term:glossary-one",
+              media: [
+                {
+                  audioSrc: "assets/audio/term/glossary/pronunciation.mp3",
+                  entryId: "term-glossary-one",
+                  mediaSlug: "media-one",
+                  mediaTitle: "Media One",
+                  sourceId: "term-glossary-one"
+                }
+              ]
+            }
+          ]
+        }
+      ),
+      outputRoot: outputRoot()
+    });
+
+    expect(result).toEqual({
+      copied: 2,
+      missing: [],
+      outputRoot: outputRoot(),
+      unsupported: []
+    });
+    await expectOutputFile(
+      buildDailyKanjiAudioBundleFileName({
+        audioSrc: "assets/audio/term/card/pronunciation.mp3",
+        mediaSlug: "media-one"
+      }),
+      "card"
+    );
+    await expectOutputFile(
+      buildDailyKanjiAudioBundleFileName({
+        audioSrc: "assets/audio/term/glossary/pronunciation.mp3",
+        mediaSlug: "media-one"
+      }),
+      "glossary"
+    );
+  });
+
   it("reports missing referenced audio files without writing a partial stale tree", async () => {
     await mkdir(outputRoot(), { recursive: true });
     await writeFile(
@@ -117,8 +180,8 @@ describe("daily kanji iOS audio packager", () => {
     expect(result.missing).toEqual([
       {
         audioSrc: "assets/audio/term/missing.mp3",
-        cardId: "missing-card",
         mediaSlug: "media-one",
+        referenceId: "card:missing-card",
         sourcePath: path.join(
           contentRoot(),
           "media",
@@ -136,6 +199,7 @@ describe("daily kanji iOS audio packager", () => {
 
   it("skips known audio formats that are not playable in the iOS app", async () => {
     await writeContentAudio("media-one/assets/audio/term/settings.ogg", "ogg");
+    await writeContentAudio("media-one/assets/audio/term/settings.oga", "oga");
 
     const result = await copyDailyKanjiAudioAssets({
       contentRoot: contentRoot(),
@@ -143,6 +207,11 @@ describe("daily kanji iOS audio packager", () => {
         {
           audioSrc: "assets/audio/term/settings.ogg",
           cardId: "ogg-card",
+          mediaSlug: "media-one"
+        },
+        {
+          audioSrc: "assets/audio/term/settings.oga",
+          cardId: "oga-card",
           mediaSlug: "media-one"
         }
       ]),
@@ -156,9 +225,15 @@ describe("daily kanji iOS audio packager", () => {
       unsupported: [
         {
           audioSrc: "assets/audio/term/settings.ogg",
-          cardId: "ogg-card",
           extension: ".ogg",
-          mediaSlug: "media-one"
+          mediaSlug: "media-one",
+          referenceId: "card:ogg-card"
+        },
+        {
+          audioSrc: "assets/audio/term/settings.oga",
+          extension: ".oga",
+          mediaSlug: "media-one",
+          referenceId: "card:oga-card"
         }
       ]
     });
@@ -257,7 +332,19 @@ function buildDataset(
     audioSrc?: string;
     cardId: string;
     mediaSlug: string;
-  }>
+  }>,
+  glossary?: {
+    entries: Array<{
+      id: string;
+      media: Array<{
+        audioSrc?: string;
+        entryId: string;
+        mediaSlug: string;
+        mediaTitle: string;
+        sourceId: string;
+      }>;
+    }>;
+  }
 ): DailyKanjiDataset {
   return {
     cards: cards.map((card) => ({
@@ -297,7 +384,29 @@ function buildDataset(
         state: "review"
       },
       subjectKey: `term:${card.cardId}`
-    })),
+      })),
+    ...(glossary
+      ? {
+          glossary: {
+            entries: glossary.entries.map((entry) => ({
+              aliases: [],
+              id: entry.id,
+              kind: "term",
+              label: "観点",
+              meaning: "meaning",
+              media: entry.media,
+              pitchAccent: null,
+              pitchAccentSource: null,
+              reading: "かんてん",
+              romaji: "kanten",
+              searchText: "観点 かんてん kanten meaning Media One"
+            })),
+            entryCount: glossary.entries.length,
+            generatedAt: "2026-06-10T12:00:00.000Z",
+            version: 1
+          }
+        }
+      : {}),
     generatedAt: "2026-06-10T12:00:00.000Z",
     recentMistakeLookbackDays: 3,
     version: 1

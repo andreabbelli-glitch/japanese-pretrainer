@@ -4,6 +4,7 @@ struct ContentView: View {
     @ObservedObject var model: DailyKanjiAppModel
     @StateObject private var audioPlayer = DailyKanjiAudioPlayer()
     @State private var selectedAppSection: DailyKanjiAppSection = .review
+    @State private var selectedGlossaryEntry: DailyKanjiGlossaryEntry?
     @State private var glossaryQuery = ""
     @State private var liveReviewAnswerRevealed = false
     private let liveReviewBaseURL = DailyKanjiMobileReviewConfiguration.load().endpointURL
@@ -49,6 +50,20 @@ struct ContentView: View {
             }
             .onAppear {
                 resetAndPreloadCurrentLiveReviewAudio()
+            }
+            .sheet(item: $selectedGlossaryEntry) { entry in
+                NavigationStack {
+                    glossaryDetailView(entry)
+                        .navigationTitle("Glossario")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .confirmationAction) {
+                                Button("Chiudi") {
+                                    selectedGlossaryEntry = nil
+                                }
+                            }
+                        }
+                }
             }
         }
     }
@@ -110,31 +125,63 @@ struct ContentView: View {
     }
 
     private func glossaryEntryRow(_ entry: DailyKanjiGlossaryEntry) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Button {
+                selectedGlossaryEntry = entry
+            } label: {
+                glossaryEntrySummary(entry)
+            }
+            .buttonStyle(.plain)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .accessibilityLabel("Apri \(entry.label)")
+
+            VStack(spacing: 8) {
+                if let audioRef = entry.primaryAudioMedia {
+                    Button {
+                        playGlossaryAudio(audioRef)
+                    } label: {
+                        Label("Audio", systemImage: "speaker.wave.2.fill")
+                            .labelStyle(.iconOnly)
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(
+                        !audioPlayer.hasBundledAudio(
+                            mediaSlug: audioRef.mediaSlug,
+                            audioSrc: audioRef.audioSrc
+                        )
+                    )
+                    .accessibilityLabel("Riproduci audio di \(entry.label)")
+                }
+
+                Button {
+                    selectedGlossaryEntry = entry
+                } label: {
+                    Image(systemName: "chevron.right")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .frame(width: 30, height: 30)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Apri dettaglio di \(entry.label)")
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(12)
+        .background(Color(.systemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+    }
+
+    private func glossaryEntrySummary(_ entry: DailyKanjiGlossaryEntry) -> some View {
         VStack(alignment: .leading, spacing: 8) {
-            HStack(alignment: .firstTextBaseline, spacing: 10) {
-                Text(entry.label)
-                    .font(.title3.weight(.semibold))
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.7)
-
-                Spacer(minLength: 0)
-
-                Text(entry.kind.glossaryLabel)
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.secondary)
-            }
-
-            if let title = entry.title, !title.isEmpty {
-                Text(title)
-                    .font(.subheadline.weight(.medium))
-                    .foregroundStyle(.secondary)
-            }
+            glossaryTitleLine(entry)
 
             if let readingText = entry.readingLine {
                 Text(readingText)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
+
+            glossarySignalLine(entry)
 
             Text(entry.meaning)
                 .font(.body)
@@ -164,9 +211,212 @@ struct ContentView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(12)
+    }
+
+    private func glossaryTitleLine(_ entry: DailyKanjiGlossaryEntry) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .firstTextBaseline, spacing: 10) {
+                Text(entry.label)
+                    .font(.title3.weight(.semibold))
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.7)
+
+                Spacer(minLength: 0)
+
+                Text(entry.kind.glossaryLabel)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+            }
+
+            if let title = entry.title, !title.isEmpty {
+                Text(title)
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func glossarySignalLine(_ entry: DailyKanjiGlossaryEntry) -> some View {
+        let hasAudio = entry.primaryAudioMedia?.audioSrc != nil
+        let pitchText = entry.pitchAccentText
+
+        if pitchText != nil || hasAudio {
+            HStack(spacing: 10) {
+                if let pitchText {
+                    Label(pitchText, systemImage: "waveform.path.ecg")
+                }
+
+                if hasAudio {
+                    Label("Audio", systemImage: "speaker.wave.2.fill")
+                }
+            }
+            .font(.caption2.weight(.medium))
+            .foregroundStyle(.secondary)
+        }
+    }
+
+    private func glossaryDetailView(_ entry: DailyKanjiGlossaryEntry) -> some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 18) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(entry.kind.glossaryLabel)
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+
+                    Text(entry.label)
+                        .font(.system(size: 46, weight: .semibold))
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.55)
+
+                    if let title = entry.title, !title.isEmpty {
+                        Text(title)
+                            .font(.title3.weight(.medium))
+                            .foregroundStyle(.secondary)
+                    }
+
+                    if let readingText = entry.readingLine {
+                        Text(readingText)
+                            .font(.body)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                if entry.pitchAccent != nil || entry.primaryAudioMedia != nil {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack(alignment: .center, spacing: 10) {
+                            if let pitchText = entry.pitchAccentText {
+                                Label(pitchText, systemImage: "waveform.path.ecg")
+                                    .font(.caption.weight(.semibold))
+                                    .foregroundStyle(.secondary)
+                            }
+
+                            Spacer(minLength: 0)
+
+                            if let audioRef = entry.primaryAudioMedia {
+                                Button {
+                                    playGlossaryAudio(audioRef)
+                                } label: {
+                                    Label("Audio", systemImage: "speaker.wave.2.fill")
+                                }
+                                .buttonStyle(.bordered)
+                                .disabled(
+                                    !audioPlayer.hasBundledAudio(
+                                        mediaSlug: audioRef.mediaSlug,
+                                        audioSrc: audioRef.audioSrc
+                                    )
+                                )
+                            }
+                        }
+
+                        if let pattern = entry.pitchAccentPattern {
+                            DailyKanjiGlossaryPitchAccentView(pattern: pattern)
+                        }
+
+                        if let source = entry.pitchAccentSourceText {
+                            Text(source)
+                                .font(.caption2)
+                                .foregroundStyle(.tertiary)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(12)
+                    .background(Color(.secondarySystemGroupedBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                }
+
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Significato")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+
+                    Text(entry.meaning)
+                        .font(.body)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
+                if let notes = entry.notes, !notes.isEmpty {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Note")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.secondary)
+
+                        Text(notes)
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+
+                if !entry.aliases.isEmpty {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Alias")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.secondary)
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 6) {
+                                ForEach(entry.aliases, id: \.stableId) { alias in
+                                    Text(alias.displayText)
+                                        .font(.caption.weight(.medium))
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 4)
+                                        .background(Color(.tertiarySystemGroupedBackground))
+                                        .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if !entry.media.isEmpty {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Media")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.secondary)
+
+                        ForEach(entry.media, id: \.stableId) { media in
+                            HStack(alignment: .center, spacing: 10) {
+                                Label(media.displayText, systemImage: "rectangle.stack")
+                                    .font(.caption.weight(.medium))
+                                    .foregroundStyle(.secondary)
+
+                                Spacer(minLength: 0)
+
+                                if media.audioSrc != nil {
+                                    Button {
+                                        playGlossaryAudio(media)
+                                    } label: {
+                                        Label("Audio", systemImage: "speaker.wave.2.fill")
+                                            .labelStyle(.iconOnly)
+                                    }
+                                    .buttonStyle(.bordered)
+                                    .disabled(
+                                        !audioPlayer.hasBundledAudio(
+                                            mediaSlug: media.mediaSlug,
+                                            audioSrc: media.audioSrc
+                                        )
+                                    )
+                                    .accessibilityLabel("Riproduci audio da \(media.displayText)")
+                                }
+                            }
+                            .padding(.vertical, 6)
+                        }
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(20)
+        }
         .background(Color(.systemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+    }
+
+    private func playGlossaryAudio(_ media: DailyKanjiGlossaryEntry.MediaRef) {
+        guard let audioSrc = media.audioSrc else {
+            return
+        }
+
+        audioPlayer.play(mediaSlug: media.mediaSlug, audioSrc: audioSrc)
     }
 
     private var dailyStudyView: some View {
@@ -777,11 +1027,58 @@ private extension DailyKanjiGlossaryEntry {
 
         return parts.joined(separator: " / ")
     }
+
+    var primaryAudioMedia: MediaRef? {
+        media.first { media in
+            guard let audioSrc = media.audioSrc else {
+                return false
+            }
+
+            return !audioSrc.isEmpty
+        }
+    }
+
+    var pitchAccentText: String? {
+        guard let pitchAccent else {
+            return nil
+        }
+
+        return "Pitch \(pitchAccent)"
+    }
+
+    var pitchAccentSourceText: String? {
+        guard let pitchAccentSource, !pitchAccentSource.isEmpty else {
+            return nil
+        }
+
+        return pitchAccentSource
+    }
+
+    var pitchAccentPattern: DailyKanjiPitchAccentPattern? {
+        DailyKanjiPitchAccentPattern(
+            reading: reading,
+            pitchAccent: pitchAccent
+        )
+    }
+}
+
+private extension DailyKanjiGlossaryEntry.Alias {
+    var stableId: String {
+        "\(text):\(type ?? "")"
+    }
+
+    var displayText: String {
+        guard let type, !type.isEmpty else {
+            return text
+        }
+
+        return "\(text) - \(type)"
+    }
 }
 
 private extension DailyKanjiGlossaryEntry.MediaRef {
     var stableId: String {
-        "\(entryId):\(mediaSlug):\(segmentTitle ?? "")"
+        "\(entryId):\(sourceId):\(mediaSlug):\(segmentTitle ?? "")"
     }
 
     var displayText: String {
@@ -790,6 +1087,29 @@ private extension DailyKanjiGlossaryEntry.MediaRef {
         }
 
         return "\(mediaTitle) - \(segmentTitle)"
+    }
+}
+
+private struct DailyKanjiGlossaryPitchAccentView: View {
+    let pattern: DailyKanjiPitchAccentPattern
+
+    var body: some View {
+        HStack(alignment: .bottom, spacing: 6) {
+            ForEach(pattern.moras) { mora in
+                VStack(spacing: 4) {
+                    Circle()
+                        .fill(mora.isHigh ? Color.accentColor : Color.secondary)
+                        .frame(width: 7, height: 7)
+                        .offset(y: mora.isHigh ? -9 : 0)
+
+                    Text(mora.text)
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                }
+                .frame(minWidth: 20)
+            }
+        }
+        .padding(.top, 8)
     }
 }
 
