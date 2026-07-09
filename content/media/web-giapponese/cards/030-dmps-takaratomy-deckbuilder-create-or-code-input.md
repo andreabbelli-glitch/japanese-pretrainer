@@ -106,11 +106,11 @@ entry_type: term
 entry_id: term-deck-code
 card_type: recognition
 front: 'デッキコード'
-back: 'codice del mazzo'
+back: 'codice del mazzo; deck code'
 example_jp: >-
   サイトに{{載|の}}っている{{強|つよ}}いデッキコードをコピーして、ゲームに{{入力|にゅうりょく}}する。
 example_it: >-
-  Copio dal sito il codice di un mazzo forte e lo inserisco nel gioco.
+  Copio dal sito il deck code di un mazzo forte e lo inserisco nel gioco.
 notes_it: >-
   [デッキコード](term:term-deck-code) non è il nome libero del mazzo: è una
   stringa tecnica che richiama una lista precisa.

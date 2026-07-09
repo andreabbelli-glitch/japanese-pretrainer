@@ -109,7 +109,7 @@ entry_type: term
 entry_id: term-party-composition
 card_type: recognition
 front: 'パーティー{{編成|へんせい}}'
-back: 'composizione della squadra; configurazione del party'
+back: 'composizione della squadra; party build'
 example_jp: >-
   このパーティー{{編成|へんせい}}なら、{{最高|さいこう}}レアがいなくてもストーリーをクリアできる。
 example_it: >-
@@ -207,7 +207,7 @@ entry_type: term
 entry_id: term-collab
 card_type: recognition
 front: 'コラボ{{開催|かいさい}}'
-back: 'collaborazione in corso; evento collaborativo'
+back: 'collaborazione in corso; evento collab'
 example_jp: >-
   {{期間限定|き.かん.げん.てい}}のコラボイベントが{{開催|かいさい}}されたので、{{忘|わす}}れずにログインする。
 example_it: >-
@@ -238,7 +238,7 @@ entry_type: term
 entry_id: term-shoban
 card_type: recognition
 front: '{{序盤|じょばん}}'
-back: 'fase iniziale; inizio del gioco'
+back: 'fase iniziale; early game'
 example_jp: >-
   ゲームの{{序盤|じょばん}}は、{{育成素材|いく.せい.そ.ざい}}が{{足|た}}りなくてレベル{{上|あ}}げが{{本当|ほんとう}}にむずかしい。
 example_it: >-
@@ -397,7 +397,7 @@ entry_type: term
 entry_id: term-frontline
 card_type: recognition
 front: '{{前衛|ぜんえい}}'
-back: 'prima linea; avanguardia'
+back: 'prima linea; avanguardia / frontline'
 example_jp: >-
   HPが{{高|たか}}く{{防御力|ぼう.ぎょ.りょく}}のあるキャラクターを、パーティーの{{前衛|ぜんえい}}におく。
 example_it: >-
@@ -584,7 +584,7 @@ entry_type: term
 entry_id: term-strategy-battle
 card_type: recognition
 front: 'ストラテジー{{戦|せん}}'
-back: 'battaglia strategica'
+back: 'battaglia strategica; strategy battle'
 example_jp: >-
   ユニットの{{配置|はいち}}がいちばん{{大切|たいせつ}}になるストラテジー{{戦|せん}}で、{{最後|さいご}}まで{{勝|か}}ち{{残|のこ}}る。
 example_it: >-
@@ -648,7 +648,7 @@ entry_type: term
 entry_id: term-rank-battle
 card_type: recognition
 front: 'ランク{{戦|せん}}'
-back: 'partita classificata; battaglia di rango'
+back: 'partita classificata; ranked match'
 example_jp: >-
   {{強|つよ}}いプレイヤーと{{戦|たたか}}って{{自分|じぶん}}の{{実力|じつりょく}}を{{試|ため}}すために、ランク{{戦|せん}}にでることにした。
 example_it: >-
@@ -679,7 +679,7 @@ entry_type: term
 entry_id: term-shoshinsha
 card_type: recognition
 front: '{{初心者|しょしんしゃ}}'
-back: 'principiante; persona alle prime armi'
+back: 'principiante; beginner'
 example_jp: >-
   この{{記事|きじ}}はガチャの{{仕組|しく}}みが{{初心者|しょしんしゃ}}でもわかるように、ていねいに{{解説|かいせつ}}されている。
 example_it: >-

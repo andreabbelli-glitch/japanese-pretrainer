@@ -395,11 +395,11 @@ entry_type: term
 entry_id: term-hard-mode-ga-kaihou-saremashita
 card_type: recognition
 front: 'ハードモードが{{解放|かいほう}}されました'
-back: 'la modalità Difficile è stata sbloccata'
+back: "l'hard mode è stato sbloccato"
 example_jp: >-
   ハードモードが{{解放|かいほう}}されました。
 example_it: >-
-  La modalità Difficile è stata sbloccata.
+  L'hard mode è stato sbloccato.
 notes_it: >-
   `されました` rende l'avviso un risultato già completato: la modalità è ora
   disponibile.
@@ -413,11 +413,11 @@ entry_type: term
 entry_id: term-hard-mode-dewa-sarani-kyouryoku-na-monster-ga-shutsugen
 card_type: recognition
 front: 'ハードモードではさらに{{強力|きょうりょく}}なモンスターが{{出現|しゅつげん}}'
-back: 'nella modalità Difficile compaiono mostri ancora più potenti'
+back: "nell'hard mode compaiono mostri ancora più potenti"
 example_jp: >-
   ハードモードではさらに{{強力|きょうりょく}}なモンスターが{{出現|しゅつげん}}。
 example_it: >-
-  Nella modalità Difficile compaiono mostri ancora più potenti.
+  Nell'hard mode compaiono mostri ancora più potenti.
 notes_it: >-
   `では` limita la frase alla modalità hard, mentre `さらに` aggiunge il senso
   di “ancora di più” rispetto alla difficoltà precedente.
@@ -435,7 +435,7 @@ back: 'comparsa; apparizione'
 example_jp: >-
   ハードモードでモンスターが{{出現|しゅつげん}}した。
 example_it: >-
-  Nella modalità Difficile è comparso un mostro.
+  In hard mode è comparso un mostro.
 notes_it: >-
   [{{出現|しゅつげん}}](term:term-shutsugen) presenta l'arrivo del mostro come
   comparsa nella scena o nella modalità.

@@ -142,11 +142,11 @@ entry_type: term
 entry_id: term-bunny-charles-hyoka-seino
 card_type: recognition
 front: 'バニーシャルルの{{評価|ひょうか}}と{{性能|せいのう}}'
-back: 'valutazione e prestazioni di Bunny Charles'
+back: 'valutazione e performance di Bunny Charles'
 example_jp: >-
   バニーシャルルの{{評価|ひょうか}}と{{性能|せいのう}}を{{見|み}}て、パーティーに{{入|い}}れる。
 example_it: >-
-  Guardo la valutazione e le prestazioni di Bunny Charles, poi la inserisco nel
+  Guardo la valutazione e le performance di Bunny Charles, poi la inserisco nel
   party.
 notes_it: >-
   Questo heading mette insieme il referente della pagina e il primo blocco di
@@ -198,7 +198,7 @@ entry_type: term
 entry_id: term-tsukaimichi
 card_type: recognition
 front: '{{使|つか}}い{{道|みち}}'
-back: 'uso; impiego; applicazione pratica'
+back: 'uso; impiego; use case'
 example_jp: >-
   このサポートキャラは、{{高難易度|こう.なん.い.ど}}クエストでの{{使|つか}}い{{道|みち}}がとても{{広|ひろ}}い。
 example_it: >-
@@ -216,11 +216,11 @@ entry_type: term
 entry_id: term-bunny-charles-tsuyosa-tsukaimichi
 card_type: recognition
 front: 'バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}'
-back: 'punti di forza e impieghi di Bunny Charles'
+back: 'punti di forza e use case di Bunny Charles'
 example_jp: >-
   {{高難易度|こう.なん.い.ど}}クエストで、バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}が{{分|わ}}かる。
 example_it: >-
-  Nelle missioni ad alta difficoltà emergono i punti di forza e gli impieghi di
+  Nelle missioni ad alta difficoltà emergono i punti di forza e gli use case di
   Bunny Charles.
 notes_it: >-
   Questo heading apre la parte in cui la guida trasforma dati e skill in lettura

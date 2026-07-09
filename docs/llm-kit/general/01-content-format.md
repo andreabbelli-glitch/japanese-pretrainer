@@ -662,6 +662,11 @@ Regola review obbligatoria per `:::card`:
 
 - ogni card deve avere sia `example_jp` sia `example_it`;
 - i due campi si compilano sempre insieme e non vanno omessi;
+- nei `back` e negli esempi italiani, conserva le etichette inglesi che sono
+  comuni nel dominio o immediatamente comprensibili al learner (`deck`,
+  `battle`, `reward`, `claim`, `skill`, `pack` e simili); non italianizzarle per
+  principio. Traducile solo quando l'italiano rende davvero il testo più chiaro
+  o quando l'inglese sarebbe ambiguo nel contesto specifico;
 - `example_jp` deve essere una frase giapponese completa e contestuale, non una
   parola isolata, non una pseudo-definizione e non una semplice ripetizione del
   `front`;

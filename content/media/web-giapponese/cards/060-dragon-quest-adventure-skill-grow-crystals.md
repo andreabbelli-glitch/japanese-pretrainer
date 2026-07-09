@@ -97,7 +97,7 @@ back: 'ottenere; mettere le mani su'
 example_jp: >-
   アイテムを{{手|て}}に{{入|い}}れる。
 example_it: >-
-  Ottengo un oggetto.
+  Ottengo un item.
 notes_it: >-
   [{{手|て}}に{{入|い}}れる](term:term-te-ni-ireru) è più idiomatico di una
   traduzione parola per parola: l'immagine è “far entrare nelle mani”, ma il
@@ -173,7 +173,7 @@ back: >-
 example_jp: >-
   アイテムを{{手|て}}に{{入|い}}れると、スキルがふえる。
 example_it: >-
-  Quando ottieni un oggetto, aumentano le abilità disponibili.
+  Quando ottieni un item, aumentano le skill disponibili.
 notes_it: >-
   In `{{敵|てき}}をたおすと、アイテムを{{落|お}}とす`, `と` non significa “e”:
   introduce la condizione che fa scattare la conseguenza. È lo stesso schema di

@@ -788,11 +788,11 @@ card_type: recognition
 front: >-
   {{戦績|せんせき}}
 back: >-
-  risultati di battaglia; storico degli incontri
+  risultati di battaglia; storico degli incontri / match record
 example_jp: >-
   {{戦績|せんせき}}を{{見|み}}て{{次|つぎ}}のデッキを{{考|かんが}}える。
 example_it: >-
-  Guardo i risultati e preparo il mazzo per la prossima partita.
+  Guardo i risultati e preparo il deck per la prossima partita.
 notes_it: >-
   Non è lore o contorno: è il riepilogo pratico che ti fa rileggere come sono
   andate davvero le partite precedenti e se il deck mantiene rendimento.
@@ -853,7 +853,7 @@ back: >-
 example_jp: >-
   {{自軍|じぐん}}{{戦力|せんりょく}}ゲージが{{残|のこ}}り{{少|すく}}ないなら、{{無理|むり}}に{{攻|せ}}めず{{戦艦|せんかん}}の{{防衛|ぼうえい}}を{{優先|ゆうせん}}します。
 example_it: >-
-  Se la barra alleata è quasi esaurita, dai priorità alla difesa della
+  Se la gauge alleata è quasi esaurita, dai priorità alla difesa della
   nave invece di forzare l'attacco.
 notes_it: >-
   Riassume la resistenza residua di basi e nave alleate. Non è un semplice HP personale di un'unità: ti dice quanto sei vicino alla sconfitta.
@@ -873,7 +873,7 @@ back: >-
 example_jp: >-
   {{敵軍|てきぐん}}{{戦力|せんりょく}}ゲージがわずかなら、{{制圧|せいあつ}}を{{通|とお}}して{{戦艦|せんかん}}を{{狙|ねら}}う{{判断|はんだん}}になります。
 example_it: >-
-  Se la barra nemica è quasi esaurita, conviene far passare un'unità di
+  Se la gauge nemica è quasi esaurita, conviene far passare un'unità di
   soppressione e puntare alla nave.
 notes_it: >-
   Ti dice quanto danno complessivo manca per chiudere la partita. Se la nave nemica cade, la battaglia finisce subito a tuo favore.
@@ -988,7 +988,7 @@ card_type: recognition
 front: >-
   {{前線|ぜんせん}}
 back: >-
-  prima linea; fronte
+  prima linea; fronte / frontline
 example_jp: >-
   アーセナルベースでは、{{前線|ぜんせん}}で{{戦|たたか}}うユニットの{{役割|やくわり}}をどう{{決|き}}めるかが{{重要|じゅうよう}}だ。
 example_it: >-
@@ -1008,7 +1008,7 @@ card_type: recognition
 front: >-
   {{戦闘|せんとう}}
 back: >-
-  combattimento; scontro
+  combattimento; scontro / combat
 example_jp: >-
   {{近距離|きん.きょ.り}}{{戦闘|せんとう}}が{{強|つよ}}いMSを{{前線|ぜんせん}}に{{出|だ}}す。
 example_it: >-
@@ -1074,7 +1074,7 @@ back: >-
 example_jp: >-
   {{新|あたら}}しいデッキを{{試|ため}}す{{日|ひ}}は、まずチャレンジモードで{{操作|そうさ}}と{{役割|やくわり}}を{{確認|かくにん}}します。
 example_it: >-
-  Quando provo un mazzo nuovo, verifico prima comandi e ruoli in Challenge
+  Quando provo un deck nuovo, verifico prima input e ruoli in Challenge
   Mode.
 notes_it: >-
   È la modalità ideale per rendere stabili input, ruoli e lettura della schermata prima di pensare ai risultati in classifica.
