@@ -951,7 +951,7 @@ back: mazzo costruito / deck
 example_jp: >-
   {{初心|しょしん}}{{者|しゃ}}にはすぐ{{戦|たたか}}える{{構築|こうちく}}{{済|ず}}みデッキをおすすめする。
 example_it: >-
-  Per i principianti si consiglia un deck pre-costruito e pronto all'uso.
+  Per i principianti si consiglia un deck precostruito e pronto all'uso.
 notes_it: >-
   In app indica la tua lista di gioco, non [{{山札|やまふだ}}](term:term-deck)
   come zona di partita. Questa distinzione evita molte confusioni inutili.
@@ -989,7 +989,7 @@ back: costruzione / modifica del mazzo
 example_jp: >-
   デッキ{{編成|へんせい}}で{{40枚|よんじゅうまい}}に{{調整|ちょうせい}}する。
 example_it: >-
-  Nel deck edit, regola il mazzo fino a 40 carte.
+  Nel deck edit, porta il deck a 40 carte.
 notes_it: >-
   Va letto come composto: `デッキ` nomina il mazzo, `{{編成|へんせい}}` la sua
   organizzazione. Quindi il label intero indica l'area in cui sistemi la lista
@@ -1027,7 +1027,7 @@ back: acquisto / comprare
 example_jp: >-
   ジュエルで{{新|あたら}}しい{{構築|こうちく}}{{済|ず}}みデッキを{{購入|こうにゅう}}する。
 example_it: >-
-  Acquisto un deck pre-costruito usando i jewel.
+  Acquisto un deck precostruito usando i jewel.
 notes_it: >-
   È il verbo-base dell'acquisto nell'app. In frasi con `ジェムで` o
   `チケットで`, la particella `で` marca la risorsa consumata e
@@ -1046,7 +1046,7 @@ back: acquisto carte / card purchase
 example_jp: >-
   カード{{購入|こうにゅう}}の{{画面|がめん}}を{{開|ひら}}く。
 example_it: >-
-  Apri la schermata acquisto carte.
+  Apri la schermata di acquisto delle carte.
 notes_it: >-
   Il punto chiave è `{{購入|こうにゅう}}`: qui stai comprando, non scambiando o
   craftando. La distinzione operativa è tra acquisto diretto e flusso specifico
@@ -1473,11 +1473,11 @@ entry_type: grammar
 entry_id: grammar-mi-prefix
 card_type: concept
 front: '{{未|み}}～'
-back: non ancora / ancora non disponibile
+back: non ancora; non ancora sbloccato o completato
 example_jp: >-
   {{条件|じょうけん}}を{{達成|たっせい}}するまで、そのミッションは{{未解放|み.かい.ほう}}のままになる。
 example_it: >-
-  Finché non raggiungi i requisiti, la missione rimarrà non sbloccata.
+  Finché non soddisfi i requisiti, la missione resterà bloccata.
 notes_it: >-
   `{{未|み}}` ribalta il valore del nome che segue: `{{未解放|み.かい.ほう}}` è non
   ancora sbloccato, `{{未達成|み.たっ.せい}}` non ancora completato. L'app segnala

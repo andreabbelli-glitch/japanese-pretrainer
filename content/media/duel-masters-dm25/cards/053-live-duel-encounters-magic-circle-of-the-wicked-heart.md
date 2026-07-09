@@ -33,12 +33,9 @@ card_type: concept
 front: かのように
 back: come se / come se fosse davvero così
 example_jp: >-
-  `かのように`が{{入|はい}}ると、{{後|うし}}ろの{{文|ぶん}}は
-  `{{本当|ほんとう}}にそうである`と{{断定|だんてい}}するのでなく、
-  そのように{{扱|あつか}}って{{読|よ}}む。
+  このタマシードをクリーチャーであるかのように{{扱|あつか}}う。
 example_it: >-
-  Quando compare `ka no you ni`, la frase seguente non dice che la cosa è
-  davvero così in senso assoluto, ma che va trattata in quel modo.
+  Tratta questo Tamaseed come se fosse una creatura.
 notes_it: >-
   Questo chunk è importante perché insegna una sfumatura generale del
   giapponese che nel rules text diventa molto pratica. Su questa carta la

@@ -109,10 +109,10 @@ front: >-
   クリーチャーではないカードを{{2枚|にまい}}まで{{選|えら}}ぶ
 back: scegli fino a 2 carte non creatura
 example_jp: >-
-  `{{2枚|にまい}}まで`だから、{{0枚|ぜろまい}}でも{{1枚|いちまい}}でも
-  {{2枚|にまい}}でもよい。
+  {{相手|あいて}}のクリーチャーではないカードを
+  {{2枚|にまい}}まで{{選|えら}}ぶ。
 example_it: >-
-  Dato che è 'fino a 2', puoi sceglierne 0, 1 oppure 2.
+  Scegli fino a due carte non creatura dell'avversario.
 notes_it: >-
   Il punto da fissare non e` il verbo `{{選|えら}}ぶ`, che esiste gia`, ma il
   modo in cui `まで` trasforma il numero in un tetto massimo. La carta non ti
@@ -130,11 +130,10 @@ front: >-
   それらを{{持|も}}ち{{主|ぬし}}のマナゾーンにタップして{{置|お}}く
 back: metti quelle carte tappate nella mana zone dei rispettivi proprietari
 example_jp: >-
-  `{{持|も}}ち{{主|ぬし}}のマナゾーン`だから、{{相手|あいて}}のカードなら
-  {{相手|あいて}}のマナに{{戻|もど}}る。
+  {{相手|あいて}}のカードを{{持|も}}ち{{主|ぬし}}のマナゾーンに
+  タップして{{置|お}}く。
 example_it: >-
-  Dato che è la mana zone del proprietario, se la carta è dell'avversario torna nella mana
-  zone dell'avversario.
+  Metti la carta avversaria tappata nella mana zone del suo proprietario.
 notes_it: >-
   Questo chunk unisce due cose utili: il referente di `それら` e il valore
   preciso di `{{持|も}}ち{{主|ぬし}}`. La frase non parla di un mana generico:
@@ -150,7 +149,7 @@ entry_type: grammar
 entry_id: grammar-sareta-toki
 card_type: concept
 front: 'カードが{{置|お}}かれた{{時|とき}}'
-back: quando una carta viene messa / quando una carta e` stata messa
+back: quando una carta viene messa / quando una carta è stata messa
 example_jp: >-
   バトルゾーンから{{自分|じぶん}}のマナゾーンにカードが{{置|お}}かれた
   {{時|とき}}、カードを{{1枚|いちまい}}{{引|ひ}}く。

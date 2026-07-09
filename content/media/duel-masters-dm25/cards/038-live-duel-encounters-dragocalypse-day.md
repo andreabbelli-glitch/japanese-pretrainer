@@ -91,10 +91,10 @@ card_type: recognition
 front: '{{状態|じょうたい}}'
 back: stato / condizione / situazione definita
 example_jp: >-
-  `{{2人以上|ふたり.い.じょう}}の{{相手|あいて}}がいる{{状態|じょうたい}}`は、
-  その{{場面|ばめん}}を{{1|ひと}}まとまりにしている。
+  {{相手|あいて}}が{{2人以上|ふたり.い.じょう}}いる{{状態|じょうたい}}で
+  ゲームを{{始|はじ}}める。
 example_it: >-
-  La condizione con due o più avversari tratta quella situazione come un unico blocco.
+  Inizia la partita con due o più avversari presenti.
 notes_it: >-
   Il punto importante non è un generico `situazione`: qui `{{状態|じょうたい}}`
   prende un'intera configurazione del tavolo e la trasforma nel contesto dentro
@@ -111,11 +111,11 @@ card_type: concept
 front: '{{状態|じょうたい}}で{{始|はじ}}まっていて'
 back: essendo iniziato in quello stato / se era partito così
 example_jp: >-
-  `{{始|はじ}}まっていて`だから、ゲームが{{始|はじ}}まった{{時点|じてん}}の
-  {{形|かたち}}を{{後|あと}}から{{参照|さんしょう}}している。
+  ゲームは{{相手|あいて}}が{{2人以上|ふたり.い.じょう}}いる
+  {{状態|じょうたい}}で{{始|はじ}}まっていて、{{今|いま}}は
+  {{1人|ひとり}}だけ{{残|のこ}}っている。
 example_it: >-
-  Siccome c'è `hajimatte ite`, il testo richiama in seguito la configurazione
-  che il gioco aveva al momento dell'inizio.
+  La partita è iniziata con due o più avversari, ma ora ne rimane soltanto uno.
 notes_it: >-
   Questa è la lettura da fissare bene: non vuol dire che la partita `stia
   iniziando` adesso, ma che il testo porta avanti come premessa valida il modo
@@ -134,11 +134,10 @@ front: >-
   {{状態|じょうたい}}で{{始|はじ}}まっていて
 back: se la partita è iniziata con due o più avversari presenti
 example_jp: >-
-  この{{条件|じょうけん}}は、いまの{{人数|にんずう}}より
-  {{開始時|かい.し.じ}}の{{設定|せってい}}を{{見|み}}る。
+  このゲームが{{2人以上|ふたり.い.じょう}}の{{相手|あいて}}がいる
+  {{状態|じょうたい}}で{{始|はじ}}まっていて、S・トリガーを{{使|つか}}える。
 example_it: >-
-  Questa condizione considera l'impostazione iniziale più che il numero attuale di
-  giocatori.
+  La partita è iniziata con due o più avversari, quindi puoi usare S-Trigger.
 notes_it: >-
   Il chunk va letto come blocco unico. `{{状態|じょうたい}}` nominalizza la
   situazione, `で` la collega a `{{始|はじ}}まる`, e `{{始|はじ}}まっていて`

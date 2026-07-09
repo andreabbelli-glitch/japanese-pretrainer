@@ -82,11 +82,10 @@ card_type: recognition
 front: '{{最大|さいだい}}'
 back: massimo / al massimo / fino a quel limite
 example_jp: >-
-  `{{最大|さいだい}}`が{{数|かず}}の{{前|まえ}}にあると、
-  `そこまで{{許|ゆる}}される`という{{上限|じょうげん}}の{{意味|いみ}}になりやすい。
+  この{{効果|こうか}}で{{最大|さいだい}}{{2体|にたい}}の
+  クリーチャーを{{選|えら}}ぶ。
 example_it: >-
-  Quando `saidai` sta davanti a un numero, tende a dare l'idea di un limite
-  massimo consentito.
+  Con questo effetto scegli al massimo due creature.
 notes_it: >-
   In questa carta il valore utile è pratico: `{{最大|さいだい}}` non ordina di
   riempire il numero che segue, ma apre un tetto massimo.
@@ -103,11 +102,9 @@ front: '{{最大|さいだい}}{{1体|いったい}}ずつ{{選|えら}}び'
 back: scegli al massimo una creatura per ciascun giocatore
 example_jp: >-
   [{{各|かく}}](term:term-kaku)プレイヤーの[クリーチャー](term:term-creature)を
-  `{{最大|さいだい}}{{1体|いったい}}ずつ`だから、
-  {{片方|かたほう}}だけ{{2体|にたい}}{{選|えら}}ぶことはできない。
+  {{最大|さいだい}}{{1体|いったい}}ずつ{{選|えら}}ぶ。
 example_it: >-
-  Siccome c'è `al massimo una per ciascuno`, non puoi sceglierne due solo da un
-  lato.
+  Scegli al massimo una creatura per ciascun giocatore.
 notes_it: >-
   Qui `最大` lavora insieme alla quantita' indicata e fissa un tetto. Il numero viene distribuito separatamente su
   ogni giocatore e resta facoltativo entro quel limite.
@@ -123,11 +120,10 @@ card_type: concept
 front: このようにして
 back: in questo modo / tramite questa procedura
 example_jp: >-
-  `このようにして`が{{入|はい}}ると、{{次|つぎ}}の{{処理|しょり}}は
-  {{直前|ちょくぜん}}の{{手順|てじゅん}}を{{受|う}}けて{{始|はじ}}まる。
+  {{各|かく}}プレイヤーがクリーチャーを{{1体|いったい}}ずつ{{選|えら}}ぶ。
+  このようにして{{選|えら}}ばれたクリーチャーを{{山札|やまふだ}}に{{戻|もど}}す。
 example_it: >-
-  Quando compare `kono you ni shite`, il passo seguente parte come conseguenza
-  diretta della procedura appena fatta.
+  Ogni giocatore sceglie una creatura; rimetti nel mazzo le creature scelte in questo modo.
 notes_it: >-
   In Aqua Gyakutenpointer questo chunk evita una ripetizione lunga: il testo
   dice `in questo modo` e restringe la seconda metà dell'effetto solo ai
@@ -144,11 +140,10 @@ card_type: concept
 front: '{{自身|じしん}}のクリーチャーが{{選|えら}}ばれたプレイヤーは'
 back: quanto al giocatore di cui è stata scelta una propria creatura
 example_jp: >-
-  `{{選|えら}}ばれた`は{{受身|うけみ}}で、プレイヤー{{本人|ほんにん}}ではなく
-  そのプレイヤーの[クリーチャー](term:term-creature)に
-  {{選択|せんたく}}が{{起|お}}きたことを{{示|しめ}}している。
+  {{自身|じしん}}の[クリーチャー](term:term-creature)が{{選|えら}}ばれたプレイヤーは、
+  カードを{{1枚|いちまい}}{{引|ひ}}く。
 example_it: >-
-  `Erabareta` è passivo: `選ばれた` e' passivo: la creatura riceve lo stato di essere stata scelta.
+  Il giocatore di cui è stata scelta una creatura pesca una carta.
 notes_it: >-
   Questo è il chunk giusto da fissare se `選ばれた` ti confonde. La forma
   passiva serve da etichetta relativa e costruisce `il giocatore per cui è
@@ -165,12 +160,10 @@ card_type: concept
 front: 'クリーチャーが{{出|で}}るまで{{表向|おもてむ}}きにし'
 back: gira carte a faccia in su finché non compare una creatura
 example_jp: >-
-  `{{表向|おもてむ}}きにし`の`し`は{{理由|りゆう}}ではなく
-  {{接続|せつぞく}}で、{{続|つづ}}く
-  `そのクリーチャーを{{出|だ}}す`にそのままつながる。
+  {{山札|やまふだ}}の{{上|うえ}}から、クリーチャーが{{出|で}}るまで
+  カードを{{表向|おもてむ}}きにし、そのクリーチャーを{{出|だ}}す。
 example_it: >-
-  Il `shi` di `omotemuki ni shi` non esprime una ragione: collega direttamente
-  al passo successivo `poi metti in campo quella creatura`.
+  Gira carte dalla cima del mazzo finché non compare una creatura, poi mettila in gioco.
 notes_it: >-
   Questo è il chunk da memorizzare intero. `まで` fissa il punto in cui fermarsi
   e `し` tiene aperta la procedura fino all'uscita della creatura rivelata.

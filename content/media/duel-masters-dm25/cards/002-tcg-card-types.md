@@ -361,11 +361,11 @@ entry_type: term
 entry_id: term-crossgear
 card_type: recognition
 front: クロスギア
-back: Cross Gear
+back: Cross Gear; equipaggiamento per creature
 example_jp: >-
   このクロスギアをクリーチャーにクロスする。
 example_it: >-
-  Incrocia questo Cross Gear con una creatura.
+  Equipaggia questo Cross Gear a una creatura.
 notes_it: >-
   La parola chiave da agganciare è proprio `クロスする`. Non è una carta che
   combatte da sola: è un pezzo che resta nel campo e si attacca a un corpo già

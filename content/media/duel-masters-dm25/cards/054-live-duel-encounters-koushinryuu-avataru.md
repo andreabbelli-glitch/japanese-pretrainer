@@ -33,10 +33,10 @@ card_type: recognition
 front: '{{化|か}}す'
 back: trasformare in / far diventare
 example_jp: >-
-  `{{化|か}}す`は、あるものを{{別|べつ}}の{{状態|じょうたい}}や
-  {{役割|やくわり}}に{{変|か}}える{{時|とき}}に{{使|つか}}う。
+  この{{能力|のうりょく}}で{{手札|てふだ}}を{{1枚|いちまい}}
+  シールド{{化|か}}してもよい。
 example_it: >-
-  `Kasu` si usa quando fai diventare qualcosa un altro stato o un altro ruolo.
+  Con questa abilità puoi trasformare una carta della mano in uno scudo.
 notes_it: >-
   Qui il valore da fissare è il verbo base. Nella carta poi si specializza in
   `シールド{{化|か}}する`: trasformare una carta in scudo.

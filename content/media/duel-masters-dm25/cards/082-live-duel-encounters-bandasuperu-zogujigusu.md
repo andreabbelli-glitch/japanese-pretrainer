@@ -115,10 +115,7 @@ entry_id: grammar-sono-kazu-dake
 card_type: concept
 front: 'その{{数|かず}}だけ'
 back: >-
-  in quantità pari a quel numero. だけ (dake): "nella misura di" (crea una
-  proporzione 1:1). Indica che l'effetto della carta, come pescare,
-  distruggere, infliggere danni o rimbalzare creature, si applica un numero
-  esatto di volte pari al totale contato nell'azione precedente.
+  in quantità pari a quel numero; altrettanti
 example_jp: >-
   その{{数|かず}}だけ、カードを{{引|ひ}}いてもよい。
 example_it: >-
@@ -137,7 +134,7 @@ entry_type: grammar
 entry_id: grammar-x-wo-motsu-y
 card_type: concept
 front: 'Xを{{持|も}}つY'
-back: Y possiede la caratteristica X
+back: Y che possiede la caratteristica X
 example_jp: >-
   {{自分|じぶん}}の{{手札|てふだ}}の{{枚数|まいすう}}{{以下|いか}}の
   [コスト](term:term-cost)を{{持|も}}つ[{{呪文|じゅもん}}](term:term-spell)を、

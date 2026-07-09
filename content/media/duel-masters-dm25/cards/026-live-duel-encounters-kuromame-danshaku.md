@@ -61,14 +61,14 @@ entry_type: term
 entry_id: term-kuromame-danshaku
 card_type: recognition
 front: '{{黒豆|くろまめ}}だんしゃく'
-back: Kuromame Danshaku / Twinpact che sposta nel mana i trigger di ingresso
+back: Kuromame Danshaku / Twinpact che manda nel mana le creature con abilità d'ingresso
 example_jp: >-
   {{黒豆|くろまめ}}だんしゃくがいると、{{相手|あいて}}は
   このクリーチャーが{{出|で}}た{{時|とき}}の{{能力|のうりょく}}を{{持|も}}つ
   クリーチャーを{{出|だ}}す{{前|まえ}}に{{考|かんが}}える。
 example_it: >-
-  Se c'e Kuromame Danshaku, l'avversario ci pensa meglio prima di giocare
-  creature con abilita di ingresso.
+  Se c'è Kuromame Danshaku, l'avversario ci pensa meglio prima di giocare
+  creature con abilità d'ingresso.
 notes_it: >-
   Il nome va fissato come nome proprio utile, non solo come battuta sul cibo:
   nel corpus indica una carta che punisce una famiglia precisa di trigger.
@@ -82,13 +82,12 @@ entry_type: term
 entry_id: term-ability
 card_type: recognition
 front: '{{能力|のうりょく}}'
-back: abilita / testo di effetto che la carta possiede
+back: abilità / testo di effetto che la carta possiede
 example_jp: >-
-  {{能力|のうりょく}}を{{持|も}}つクリーチャーと{{書|か}}いてあれば、その
-  カードがどんな{{効果|こうか}}を{{持|も}}っているかを{{見|み}}る。
+  このクリーチャーの{{能力|のうりょく}}で、{{相手|あいて}}のカードを
+  {{墓地|ぼち}}に{{置|お}}く。
 example_it: >-
-  Se leggi "creatura con un'abilita", devi guardare quale effetto possiede
-  quella carta.
+  Con l'abilità di questa creatura, metti una carta avversaria nel cimitero.
 notes_it: >-
   `{{能力|のうりょく}}` e una parola piccola ma centrale: molte frasi tecniche
   non filtrano il nome della carta, ma il tipo di effetto che quella carta ha.
@@ -104,14 +103,12 @@ card_type: concept
 front: >-
   「このクリーチャーが{{出|で}}た{{時|とき}}」で{{始|はじ}}まる
   {{能力|のうりょく}}
-back: abilita che comincia con "quando questa creatura entra"
+back: abilità che comincia con "quando questa creatura entra"
 example_jp: >-
-  `で{{始|はじ}}まる`があるから、{{能力|のうりょく}}の
-  {{最初|さいしょ}}の{{言|い}}い{{方|かた}}そのものを
-  {{確認|かくにん}}する。
+  この{{能力|のうりょく}}は「このクリーチャーが{{出|で}}た{{時|とき}}」で
+  {{始|はじ}}まる。
 example_it: >-
-  Siccome c'e `de hajimaru`, devi controllare proprio l'inizio letterale
-  dell'abilita.
+  Questa abilità comincia con «quando questa creatura entra».
 notes_it: >-
   Questo e il vero pezzo da allenare: il filtro non dice soltanto "abilita di
   ingresso", ma ti costringe a riconoscere la formula con cui l'effetto si

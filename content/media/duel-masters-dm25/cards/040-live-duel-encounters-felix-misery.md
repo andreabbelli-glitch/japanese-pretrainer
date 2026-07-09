@@ -115,11 +115,10 @@ front: >-
   NEO{{進化|しんか}}クリーチャーとして{{召喚|しょうかん}}する{{場合|ばあい}}
 back: nel caso in cui la evochi come creatura NEO evolution
 example_jp: >-
-  `{{場合|ばあい}}`だから、どんな{{召喚|しょうかん}}でもよいのではなく、
-  NEO{{進化|しんか}}として{{出|だ}}す{{時|とき}}だけを{{指|さ}}している。
+  NEO{{進化|しんか}}クリーチャーとして{{召喚|しょうかん}}する
+  {{場合|ばあい}}、{{墓地|ぼち}}から{{出|だ}}してもよい。
 example_it: >-
-  Siccome c'è baai, non vale per ogni evocazione: indica solo il caso in cui la evochi
-  come creatura NEO Evolution.
+  Nel caso in cui la evochi come creatura NEO Evolution, puoi metterla in gioco dal cimitero.
 notes_it: >-
   Il punto da allenare è proprio la cornice. `{{場合|ばあい}}` fissa lo
   scenario, `として` dice `in quel ruolo`, e solo dentro quella finestra si
@@ -157,11 +156,10 @@ front: >-
   {{自分|じぶん}}の{{闇|やみ}}のクリーチャーが{{2体以上|に.たい.い.じょう}}あれば
 back: se hai due o più creature Darkness
 example_jp: >-
-  `あれば`だから、まず{{場|ば}}の{{数|かず}}を{{見|み}}て、
-  {{条件|じょうけん}}を{{満|み}}たした{{後|あと}}で{{続|つづ}}きを{{読|よ}}む。
+  {{自分|じぶん}}の{{闇|やみ}}のクリーチャーが{{2体以上|に.たい.い.じょう}}あれば、
+  このクリーチャーを{{墓地|ぼち}}から{{召喚|しょうかん}}できる。
 example_it: >-
-  Siccome c'è `areba`, prima controlli il numero sul campo e solo dopo leggi la
-  conseguenza.
+  Se hai due o più creature Darkness, puoi evocare questa creatura dal cimitero.
 notes_it: >-
   Questo chunk vale la pena di essere memorizzato intero: gruppo filtrato
   `{{闇|やみ}}のクリーチャー`, soglia `{{2体以上|に.たい.い.じょう}}` e
@@ -220,7 +218,7 @@ back: ridurre / diminuire / rendere meno
 example_jp: >-
   [コスト](term:term-cost)を{{2|ふた}}つ{{少|すく}}なくする。
 example_it: >-
-  Ridurre il costo di 2.
+  Riduci il costo di 2.
 notes_it: >-
   Il blocco viene dal giapponese generale, non da una keyword speciale:
   `少ない` descrive qualcosa di "scarso / poco", e `少なくする` significa farlo
@@ -239,11 +237,10 @@ front: >-
   コスト{{6以下|ろくいか}}の、{{進化|しんか}}でない{{闇|やみ}}のクリーチャー{{1枚|いちまい}}
 back: una creatura Darkness non evolution di costo 6 o meno
 example_jp: >-
-  `{{進化|しんか}}でない`があるので、{{闇|やみ}}なら{{何|なん}}でもよいのではなく、
-  {{進化|しんか}}クリーチャーは{{除外|じょがい}}される。
+  コスト{{6以下|ろくいか}}の、{{進化|しんか}}でない{{闇|やみ}}の
+  クリーチャーを{{墓地|ぼち}}から{{出|だ}}す。
 example_it: >-
-  Siccome c'è `shinka de nai`, non basta che sia Darkness: le evolution
-  creature vengono escluse.
+  Metti in gioco dal cimitero una creatura Darkness non evolution di costo 6 o meno.
 notes_it: >-
   Qui `でない` è il filtro decisivo. La carta accumula più restrizioni sullo
   stesso bersaglio, ma il pezzo davvero facile da perdere è proprio

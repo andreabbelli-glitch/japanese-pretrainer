@@ -1014,7 +1014,7 @@ back: evoluzione
 example_jp: >-
   {{自分|じぶん}}のクリーチャーの{{上|うえ}}に、{{進化|しんか}}クリーチャーを{{置|お}}く。
 example_it: >-
-  Metto una creatura evoluzione sopra una propria creatura.
+  Metto una creatura evoluzione sopra una delle mie creature.
 notes_it: >-
   Ti dice che la carta va messa sopra una base valida. Se compare, controlla
   sempre quale carta deve stare sotto e quali condizioni servono.
@@ -1345,7 +1345,7 @@ entry_type: term
 entry_id: term-self
 card_type: recognition
 front: '{{自分|じぶん}}'
-back: se stessi / tu
+back: sé stessi; proprio; nel testo delle carte, tu o le tue
 example_jp: >-
   {{自分|じぶん}}のクリーチャーを{{1体|いったい}} {{選|えら}}ぶ。
 example_it: >-
@@ -1892,11 +1892,11 @@ entry_type: grammar
 entry_id: grammar-kawarini
 card_type: concept
 front: かわりに
-back: invece di / al posto di
+back: invece di; al posto di; in cambio
 example_jp: >-
   カードを{{1枚|いちまい}} {{引|ひ}}く。かわりに、{{手札|てふだ}}を{{1枚|いちまい}} {{捨|す}}てる。
 example_it: >-
-  Pesca 1 carta. Invece, scarta 1 carta dalla mano.
+  Pesca 1 carta; in cambio, scarta 1 carta dalla mano.
 notes_it: >-
   Va letto come sostituzione, non come aggiunta. Un evento prende il posto di un
   altro.
@@ -1950,7 +1950,7 @@ back: se / quando
 example_jp: >-
   タップ{{状態|じょうたい}}でいたら、その{{条件|じょうけん}}を{{満|み}}たす。
 example_it: >-
-  Se era in stato tapped, soddisfa quella condizione.
+  Se si trova in stato tapped, soddisfa quella condizione.
 notes_it: >-
   Apre una condizione reale nel rules text. Dopo `～たら` va controllato se lo
   stato o l'evento nominato si è davvero verificato.

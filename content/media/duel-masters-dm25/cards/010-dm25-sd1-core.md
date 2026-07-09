@@ -311,7 +311,7 @@ entry_type: term
 entry_id: term-henkou
 card_type: recognition
 front: '{{変更|へんこう}}'
-back: modifica / cambiamento
+back: modifica; cambiamento
 example_jp: >-
   そのクリーチャーに{{攻撃先|こう.げき.さき}}を{{変更|へんこう}}する。
 example_it: >-

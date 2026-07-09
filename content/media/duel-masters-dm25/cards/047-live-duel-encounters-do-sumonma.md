@@ -117,11 +117,10 @@ card_type: concept
 front: '{{次|つぎ}}のうち'
 back: fra le seguenti opzioni / tra quanto segue
 example_jp: >-
-  `{{次|つぎ}}のうち`があるから、すぐ{{下|した}}の{{選択肢|せん.たく.し}}が
-  {{選|えら}}ぶ{{対象|たいしょう}}になる。
+  {{次|つぎ}}のうち、カードを{{引|ひ}}くか、クリーチャーを
+  {{破壊|はかい}}するか、いずれか{{1|ひと}}つを{{選|えら}}ぶ。
 example_it: >-
-  Se leggi `fra le seguenti opzioni`, le righe subito sotto diventano il set da
-  cui scegliere.
+  Tra le opzioni seguenti, scegli se pescare una carta o distruggere una creatura.
 notes_it: >-
   Qui non basta `{{次|つぎ}}の` da sola. Il valore nuovo nasce da `のうち`,
   che chiude il gruppo e lo rende il bacino da cui prendere una sola opzione.
@@ -137,10 +136,10 @@ card_type: concept
 front: 'いずれか{{1|ひと}}つ'
 back: uno dei candidati / una sola delle opzioni
 example_jp: >-
-  `いずれか{{1|ひと}}つ`は、{{候補|こうほ}}の{{中|なか}}から
-  {{1個|いっこ}}だけ{{選|えら}}ぶことを{{示|しめ}}す。
+  カードを{{引|ひ}}くか、クリーチャーを{{破壊|はかい}}するか、
+  いずれか{{1|ひと}}つを{{選|えら}}ぶ。
 example_it: >-
-  `Uno dei candidati` indica che devi prenderne soltanto uno dal gruppo.
+  Scegli una sola opzione: pescare una carta oppure distruggere una creatura.
 notes_it: >-
   Qui `いずれか` porta l'idea di `uno qualsiasi fra le alternative`, mentre
   `{{1|ひと}}つ` fissa la quantita`. La flashcard sta sul blocco intermedio

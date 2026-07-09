@@ -93,7 +93,7 @@ example_jp: >-
   [スピードアタッカー](term:term-speed-attacker)で、{{攻撃|こうげき}}する
   {{時|とき}}に{{相手|あいて}}のエレメントを{{1|ひと}}つ{{壊|こわ}}せる。
 example_it: >-
-  Bolzard Superhero ha Speed Attacker e, quando attacca, puo` rompere un
+  Bolzard Superhero ha Speed Attacker e, quando attacca, può rompere un
   element avversario.
 notes_it: >-
   Il nome del lato creatura vale la pena di essere fissato come blocco unico.
@@ -130,7 +130,7 @@ entry_type: term
 entry_id: term-shoukan-yoi
 card_type: recognition
 front: '{{召喚|しょうかん}}{{酔|よ}}い'
-back: summoning sickness / stato della creatura appena evocata che non puo` attaccare subito
+back: summoning sickness / stato della creatura appena evocata che non può attaccare subito
 example_jp: >-
   {{召喚|しょうかん}}{{酔|よ}}いがあると、そのターンはまだ
   {{攻撃|こうげき}}できない。
@@ -170,7 +170,7 @@ entry_type: grammar
 entry_id: grammar-dewanai
 card_type: concept
 front: ドラゴンではないエレメント
-back: un element che non e` un drago
+back: un element che non è un drago
 example_jp: >-
   コスト{{6以下|ろくいか}}のドラゴンではないエレメントを{{1|ひと}}つ
   {{選|えら}}び、{{破壊|はかい}}してもよい。

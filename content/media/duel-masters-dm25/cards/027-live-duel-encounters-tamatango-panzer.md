@@ -119,12 +119,12 @@ entry_type: term
 entry_id: term-tamatango-panzer
 card_type: recognition
 front: タマタンゴ・パンツァー
-back: Tamatango Panzer / Gransect che forza gli attacchi su di se
+back: Tamatango Panzer / Gransect che forza gli attacchi su di sé
 example_jp: >-
   タマタンゴ・パンツァーがいれば、{{相手|あいて}}は{{可能|かのう}}ならそれを
   {{攻撃|こうげき}}する。
 example_it: >-
-  Se c'e Tamatango Panzer, l'avversario deve attaccarlo se puo farlo.
+  Se c'è Tamatango Panzer, l'avversario deve attaccarlo se può farlo.
 notes_it: >-
   Il nome va fissato come nome proprio completo. In questa carta quel nome
   coincide con una lettura molto riconoscibile: ingresso tapped, attacco
@@ -144,7 +144,7 @@ back: Gransect / razza naturale della carta
 example_jp: >-
   グランセクトは{{自然|しぜん}}の{{大型|おおがた}}クリーチャーに{{多|おお}}い。
 example_it: >-
-  Gransect compare spesso sulle grandi creature della civilta naturale.
+  Gransect compare spesso sulle grandi creature della civiltà naturale.
 notes_it: >-
   Questa parola e utile per leggere subito la riga `{{種族|しゅぞく}}`. Quando
   compare, pensa a una categoria di razza che puo contare per filtri, supporti
@@ -184,7 +184,7 @@ example_jp: >-
   {{相手|あいて}}のクリーチャーが{{攻撃|こうげき}}する{{場合|ばあい}}、
   {{可能|かのう}}ならこのクリーチャーを{{攻撃|こうげき}}する。
 example_it: >-
-  Nel caso in cui una creatura avversaria attacchi, se puo farlo deve attaccare
+  Nel caso in cui una creatura avversaria attacchi, se può farlo deve attaccare
   questa creatura.
 notes_it: >-
   Significato base: un caso o una situazione presa come cornice. Nel TCG serve
@@ -223,7 +223,7 @@ example_jp: >-
   {{相手|あいて}}のクリーチャーが{{攻撃|こうげき}}する[{{場合|ばあい}}](term:term-baai)、
   {{可能|かのう}}ならこのクリーチャーを{{攻撃|こうげき}}する。
 example_it: >-
-  Quando una creatura avversaria attacca, se puo farlo deve attaccare questa
+  Quando una creatura avversaria attacca, se può farlo deve attaccare questa
   creatura.
 notes_it: >-
   `{{可能|かのう}}なら` non vuol dire "forse". Vuol dire che l'obbligo vale ogni

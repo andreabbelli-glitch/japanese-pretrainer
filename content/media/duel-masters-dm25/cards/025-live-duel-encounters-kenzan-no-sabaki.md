@@ -127,11 +127,10 @@ card_type: recognition
 front: '{{裁|さば}}きの{{紋章|もんしょう}}'
 back: Judgment Emblem / razza dei Sabaki spell
 example_jp: >-
-  {{裁|さば}}きの{{紋章|もんしょう}}と{{書|か}}いてあれば、
-  サバキ{{系統|けいとう}}のカードだと{{気|き}}づきやすい。
+  この{{呪文|じゅもん}}は{{裁|さば}}きの{{紋章|もんしょう}}を
+  {{持|も}}っている。
 example_it: >-
-  Se leggi `Judgment Emblem`, è più facile accorgerti che la carta appartiene
-  alla linea Sabaki.
+  Questo spell ha Judgment Emblem.
 notes_it: >-
   Vale la pena fissarlo perché compare nella riga di razza di molte carte
   collegate. Riconoscerlo al volo riduce il carico quando rileggi spell e
@@ -174,11 +173,10 @@ back: >-
   Tra quelle carte, puoi mostrare all'avversario 1 spell oppure 1 Metallica e
   poi aggiungerla alla mano.
 example_jp: >-
-  `{{見|み}}せてから`だから、{{先|さき}}に{{手札|てふだ}}へ{{入|い}}れる
-  のではなく、まず{{公開|こうかい}}する。
+  {{呪文|じゅもん}}を{{相手|あいて}}に{{見|み}}せてから、
+  {{手札|てふだ}}に{{加|くわ}}える。
 example_it: >-
-  Siccome c'è `{{見|み}}せてから`, non la metti prima in mano: la devi mostrare
-  per prima.
+  Mostra lo spell all'avversario e poi aggiungilo alla mano.
 notes_it: >-
   Questa frase vale la pena di essere fissata come chunk unico: `または`
   unisce due categorie valide, ma è `{{見|み}}せてから` che impone la sequenza

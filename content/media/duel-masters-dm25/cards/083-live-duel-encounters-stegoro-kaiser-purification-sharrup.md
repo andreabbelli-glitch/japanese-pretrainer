@@ -14,7 +14,7 @@ entry_type: grammar
 entry_id: grammar-soudenakereba
 card_type: concept
 front: 'そうではなければ'
-back: 'Altrimenti / Se non è così (clausola condizionale "otherwise")'
+back: 'altrimenti; se non è così'
 example_jp: >-
   [{{墓地|ぼち}}](term:term-graveyard)からカードを
   {{1枚以上|いちまいいじょう}}[{{選|えら}}んだ](term:term-erabu)なら、

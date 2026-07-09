@@ -37,7 +37,7 @@ example_jp: >-
   コストを{{5|ご}}{{少|すく}}なくする。
 example_it: >-
   Durante il turno del player, se gli scudi del player sono tre o meno, riduce
-  di cinque il costo della prima carta del player che viene eseguita.
+  di cinque il costo della prima carta che il player esegue.
 notes_it: >-
   `{{実行|じっこう}}する` è più tecnico di `{{使|つか}}う`: descrive il momento in
   cui l'azione viene effettivamente eseguita. In `{{初|はじ}}めて

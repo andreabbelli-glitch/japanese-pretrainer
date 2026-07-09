@@ -363,7 +363,7 @@ entry_type: term
 entry_id: term-g-strike
 card_type: recognition
 front: G・ストライク
-back: G-Strike / keyword difensiva da risposta
+back: G-Strike; abilità difensiva
 example_jp: >-
   このクリーチャーの{{攻撃中|こう.げき.ちゅう}}、{{相手|あいて}}は
   「G・ストライク」を{{使|つか}}えない。
@@ -383,7 +383,7 @@ entry_type: term
 entry_id: term-kaku
 card_type: recognition
 front: '{{各|かく}}'
-back: ciascun / ogni singolo
+back: ciascun; ogni
 example_jp: >-
   {{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の
   {{終|お}}わりに、このクリーチャーをアンタップする。
@@ -404,7 +404,7 @@ entry_type: term
 entry_id: term-saisho
 card_type: recognition
 front: '{{最初|さいしょ}}'
-back: il primo / l'evento iniziale
+back: primo; iniziale
 example_jp: >-
   このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、
   {{能力|のうりょく}}が{{使|つか}}える。
@@ -423,7 +423,7 @@ entry_type: term
 entry_id: term-owari
 card_type: recognition
 front: '{{終|お}}わり'
-back: fine / momento conclusivo
+back: fine; conclusione
 example_jp: >-
   このクリーチャーの{{攻撃|こうげき}}の{{終|お}}わりに、
   {{一番上|いち.ばん.うえ}}のカードを{{破壊|はかい}}する。
@@ -442,7 +442,7 @@ entry_type: term
 entry_id: term-ichiban-ue
 card_type: recognition
 front: '{{一番上|いち.ばん.うえ}}'
-back: la cima / il punto più in alto
+back: la cima; la parte più alta
 example_jp: >-
   {{山札|やまふだ}}の{{一番上|いち.ばん.うえ}}を{{見|み}}て、{{手札|てふだ}}に{{加|くわ}}える。
 example_it: >-

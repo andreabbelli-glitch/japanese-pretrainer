@@ -113,11 +113,10 @@ card_type: concept
 front: '{{合計6|ごうけいむっ}}つ{{選|えら}}ぶ'
 back: scegliere sei in totale
 example_jp: >-
-  {{合計6|ごうけいむっ}}つだから、バトルゾーンと
-  {{墓地|ぼち}}の{{内訳|うちわけ}}は{{自由|じゆう}}でもよい。
+  バトルゾーンと{{墓地|ぼち}}から{{魔導具|ま.どう.ぐ}}を
+  {{合計6|ごうけいむっ}}つ{{選|えら}}ぶ。
 example_it: >-
-  Siccome è un totale di sei, la ripartizione fra battle zone e cimitero può
-  essere libera.
+  Scegli in totale sei Magic Tool dalla battle zone e dal cimitero.
 notes_it: >-
   Qui [{{合計|ごうけい}}](term:term-goukei) è il pezzo che chiude il dubbio
   sulla distribuzione. A differenza di

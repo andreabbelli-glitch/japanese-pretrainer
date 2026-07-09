@@ -205,11 +205,10 @@ front: >-
   バトルゾーンと{{墓地|ぼち}}から{{2|ふた}}つずつ{{選|えら}}ぶ
 back: scegli due dal battle zone e due dal cimitero
 example_jp: >-
-  `{{2|ふた}}つずつ`だから、{{片方|かたほう}}だけから{{4枚|よんまい}}は
-  {{選|えら}}べない。
+  バトルゾーンと{{墓地|ぼち}}から{{魔導具|ま.どう.ぐ}}を
+  {{2枚|にまい}}ずつ{{選|えら}}ぶ。
 example_it: >-
-  Siccome c'è `{{2|ふた}}つずつ`, non puoi sceglierne quattro tutte dalla
-  stessa zona.
+  Scegli due Magic Tool dalla battle zone e due dal cimitero.
 notes_it: >-
   `ずつ` distribuisce la quantità in modo rigido. Qui è il pezzo grammaticale
   che impedisce una lettura vaga del costo di

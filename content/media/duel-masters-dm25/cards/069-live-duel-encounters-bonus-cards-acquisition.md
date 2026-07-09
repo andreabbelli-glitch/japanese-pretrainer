@@ -130,11 +130,11 @@ entry_type: term
 entry_id: term-nyuushu
 card_type: recognition
 front: '{{入手|にゅうしゅ}}'
-back: 'ottenere, entrare in possesso'
+back: 'ottenere; entrare in possesso'
 example_jp: >-
   パックから{{入手|にゅうしゅ}}する。
 example_it: >-
-  Ottenerle da un pacchetto.
+  Le ottieni da un pacchetto.
 notes_it: >-
   Termine standard per "ottenere" oggetti o carte nel gioco.
 tags: [live-duel, ui, verb]
@@ -149,9 +149,9 @@ card_type: recognition
 front: '{{下記|かき}}'
 back: 'il seguente, scritto sotto'
 example_jp: >-
-  {{下記|かき}}に{{表示|ひょうじ}}しているカード。
+  {{下記|かき}}に{{表示|ひょうじ}}しているカードを{{選|えら}}ぶ。
 example_it: >-
-  Le carte visualizzate qui sotto.
+  Scegli le carte visualizzate qui sotto.
 notes_it: >-
   Molto comune nei testi informativi per rimandare a contenuti sottostanti.
 tags: [live-duel, ui, noun]
@@ -164,11 +164,11 @@ entry_type: term
 entry_id: term-hyoujishiteiru
 card_type: concept
 front: '{{表示|ひょうじ}}している'
-back: 'visualizzato, mostrato'
+back: 'visualizzato; mostrato'
 example_jp: >-
-  {{画面|がめん}}に{{表示|ひょうじ}}しているカード。
+  {{画面|がめん}}に{{表示|ひょうじ}}しているカードを{{確認|かくにん}}する。
 example_it: >-
-  La carta visualizzata sullo schermo.
+  Controlla la carta visualizzata sullo schermo.
 notes_it: >-
   Usa lo stato continuo (`している`) per indicare qualcosa che si trova "attualmente in stato di visualizzazione".
 tags: [live-duel, ui, verb]
@@ -198,7 +198,7 @@ entry_type: term
 entry_id: term-tokuten
 card_type: recognition
 front: '{{特典|とくてん}}'
-back: 'bonus, privilegio'
+back: 'bonus; privilegio'
 example_jp: >-
   {{特典|とくてん}}カードを{{獲得|かくとく}}します。
 example_it: >-
@@ -219,7 +219,7 @@ back: 'ottenere da un pacchetto'
 example_jp: >-
   パックから{{入手|にゅうしゅ}}、または{{生成|せいせい}}する。
 example_it: >-
-  Ottenerle da un pacchetto oppure generarle.
+  Puoi ottenerle da un pacchetto oppure generarle.
 notes_it: >-
   Espressione chiave per distinguere l'apertura delle buste (`パックから`) dal crafting (`生成`).
 tags: [live-duel, ui, chunk]

@@ -114,7 +114,7 @@ example_jp: >-
   {{残|のこ}}りをランダムな{{順番|じゅんばん}}で
   {{山札|やまふだ}}の{{一番下|いち.ばん.した}}に{{置|お}}く。
 example_it: >-
-  Mette il resto in fondo al mazzo in ordine casuale.
+  Metti il resto in fondo al mazzo in ordine casuale.
 notes_it: >-
   In giapponese generale `{{順番|じゅんばん}}` e l'ordine in cui le cose si
   susseguono. In questa carta conta perche il testo ti toglie il controllo

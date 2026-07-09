@@ -176,8 +176,8 @@ example_jp: >-
   {{小|ちい}}さいカードを{{公開|こうかい}}させ、
   {{終了時|しゅう.りょう.じ}}にはシールドまで{{削|けず}}れる。
 example_it: >-
-  Jenny Jane fa rivelare la carta di costo piu` alto e quella di costo piu`
-  basso, e a fine turno puo` persino mangiare uno scudo.
+  Jenny Jane fa rivelare la carta di costo più alto e quella di costo più
+  basso, e a fine turno può persino mangiare uno scudo.
 notes_it: >-
   Il nome va fissato come blocco unico. In questa lezione richiama subito il
   doppio superlativo sui costi, il riflessivo `{{自身|じしん}}` e la soglia
@@ -217,7 +217,7 @@ example_jp: >-
   スレイヤーを{{持|も}}つなら、{{大|おお}}きいクリーチャーと
   バトルしても{{道連|みちづ}}れにしやすい。
 example_it: >-
-  Se ha Slayer, anche combattendo contro creature grandi puo` trascinarle con
+  Se ha Slayer, anche combattendo contro creature grandi può trascinarle con
   sé nella distruzione.
 notes_it: >-
   Il punto utile e` che la keyword cambia il senso del battle: il rischio non
@@ -233,13 +233,12 @@ entry_id: term-mottomo-ookii
 card_type: recognition
 front: '{{最|もっと}}もコストの{{大|おお}}きい'
 back: >-
-  il costo piu` alto / il piu` grande in termini di costo
+  il costo più alto / il maggiore in termini di costo
 example_jp: >-
-  {{最|もっと}}もコストの{{大|おお}}きいカードを{{先|さき}}に
-  {{見|み}}るから、{{高|たか}}い{{札|ふだ}}がどれかすぐわかる。
+  {{相手|あいて}}は{{最|もっと}}もコストの{{大|おお}}きいカードを
+  {{公開|こうかい}}する。
 example_it: >-
-  Siccome guardi la carta di costo piu` alto, capisci subito qual e` la carta
-  piu` pesante della mano.
+  L'avversario rivela la carta dal costo più alto.
 notes_it: >-
   Qui `{{大|おお}}きい` non va letto come dimensione fisica. Il chunk completo
   fissa il massimo valore di costo dentro il gruppo osservato.
@@ -253,13 +252,12 @@ entry_type: term
 entry_id: term-mottomo-chiisai
 card_type: recognition
 front: '{{最|もっと}}もコストの{{小|ちい}}さい'
-back: il costo piu` basso / il minimo in termini di costo
+back: il costo più basso / il minimo in termini di costo
 example_jp: >-
-  {{最|もっと}}もコストの{{小|ちい}}さいカードも{{別|べつ}}に{{見|み}}るので、
-  {{安|やす}}い{{札|ふだ}}まで{{隠|かく}}せない。
+  {{相手|あいて}}は{{最|もっと}}もコストの{{小|ちい}}さいカードも
+  {{公開|こうかい}}する。
 example_it: >-
-  Siccome guardi anche la carta di costo piu` basso, non puoi nascondere
-  neppure la carta piu` economica della mano.
+  L'avversario rivela anche la carta dal costo più basso.
 notes_it: >-
   Il contrasto con `{{最|もっと}}もコストの{{大|おお}}きい` e` molto utile:
   la carta sta esplicitamente coprendo anche l'estremo minimo del gruppo.
@@ -294,11 +292,10 @@ card_type: recognition
 front: '{{自身|じしん}}'
 back: se stesso / la propria stessa parte
 example_jp: >-
-  {{相手|あいて}}が{{自身|じしん}}の{{手札|てふだ}}を{{捨|す}}てた{{時|とき}}、
-  ここでの `{{自身|じしん}}` は{{相手|あいて}}を{{指|さ}}す。
+  {{相手|あいて}}が{{自身|じしん}}の{{手札|てふだ}}を
+  {{1枚|いちまい}}{{捨|す}}てる。
 example_it: >-
-  Quando l'avversario scarta dalla propria mano, qui `jishin` indica proprio
-  l'avversario.
+  L'avversario scarta una carta dalla propria mano.
 notes_it: >-
   Vale la pena di fissarlo proprio per evitare l'errore classico: leggerlo come
   `tu`. In questa frase il riflessivo resta agganciato al soggetto iniziale
@@ -318,7 +315,7 @@ example_jp: >-
   {{手札|てふだ}}が{{5枚以下|ご.まい.い.か}}なら、
   {{同|おな}}じ{{枚数|まいすう}}のカードを{{引|ひ}}く。
 example_it: >-
-  Se la mano e` di 5 carte o meno, peschi lo stesso numero di carte.
+  Se la mano è di 5 carte o meno, peschi lo stesso numero di carte.
 notes_it: >-
   Qui `なら` non introduce un esempio o un tema generico: apre proprio il ramo
   che vale solo se la soglia numerica e` soddisfatta in quel momento.

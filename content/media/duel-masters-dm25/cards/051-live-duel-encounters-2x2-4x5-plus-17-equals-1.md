@@ -50,12 +50,10 @@ card_type: concept
 front: '{{一度|いちど}}しか'
 back: non più di una volta / solo una volta
 example_jp: >-
-  `{{一度|いちど}}しか`だけでは{{意味|いみ}}がまだ{{閉|と}}じず、
-  {{後|うし}}ろの`{{攻撃|こうげき}}できない`まで{{読|よ}}んで、
-  はじめて`{{一度|いちど}}より{{多|おお}}くはだめ`という{{意味|いみ}}になる。
+  このターンは{{一度|いちど}}しか{{攻撃|こうげき}}できないので、
+  {{攻撃|こうげき}}するクリーチャーを{{選|えら}}ぶ。
 example_it: >-
-  `Ichido shika` da solo non chiude ancora il senso: solo leggendo fino a
-  `non può attaccare` capisci che il limite è `non più di una volta`.
+  In questo turno puoi attaccare una sola volta, quindi scegli la creatura con cui attaccare.
 notes_it: >-
   Questo è il punto importante di `しか`: non funziona come un avverbio positivo
   autonomo. Appena lo vedi, devi aspettare la negazione successiva. Qui

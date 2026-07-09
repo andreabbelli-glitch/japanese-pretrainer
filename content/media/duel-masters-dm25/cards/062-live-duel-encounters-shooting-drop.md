@@ -33,11 +33,10 @@ card_type: concept
 front: ～ものとして
 back: considerando che / trattando come se / assumendo come valido
 example_jp: >-
-  `～ものとして`が{{入|はい}}ると、その{{前|まえ}}の{{内容|ないよう}}を
-  {{成立|せいりつ}}したものとして{{次|つぎ}}の{{処理|しょり}}を{{読|よ}}む。
+  コストを{{支払|しはら}}ったものとして、このクリーチャーを
+  {{召喚|しょうかん}}する。
 example_it: >-
-  Quando compare `mono to shite`, leggi il passo successivo trattando il
-  contenuto precedente come già valido.
+  Evoca questa creatura come se il costo fosse stato pagato.
 notes_it: >-
   In giapponese generale questo pattern costruisce una cornice: non dice per
   forza che il fatto sia avvenuto materialmente proprio in quel momento, ma che
@@ -76,12 +75,11 @@ card_type: concept
 front: "コストを{{支払|しはら}}ったものとして"
 back: come se il costo fosse stato pagato
 example_jp: >-
+  {{水|みず}}{{1|いち}}を{{支払|しはら}}い、
   [{{コスト|こすと}}](term:term-cost)を{{支払|しはら}}った[ものとして](grammar:grammar-monotoshite)
-  [{{召喚|しょうかん}}](term:term-summon)するから、
-  いまここで{{改|あらた}}めて{{支払|しはら}}うという{{読|よ}}みにはならない。
+  [{{召喚|しょうかん}}](term:term-summon)する。
 example_it: >-
-  Siccome la evochi come se il costo fosse stato pagato, qui non leggi la frase
-  come un nuovo pagamento da fare in questo momento.
+  Paga Water 1 ed evoca la creatura come se il costo fosse stato pagato.
 notes_it: >-
   In giapponese generale `{{支払|しはら}}ったものとして` vuol dire `trattando come
   se fosse stato pagato`. In Shooting Drop questo significato si restringe in

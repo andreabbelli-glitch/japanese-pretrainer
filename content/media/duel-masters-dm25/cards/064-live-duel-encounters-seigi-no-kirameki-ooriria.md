@@ -97,12 +97,10 @@ card_type: recognition
 front: '{{数|かず}}'
 back: numero / quantità / conteggio
 example_jp: >-
-  シールドの{{数|かず}}を{{見|み}}る{{時|とき}}は、
-  {{何枚|なんまい}}あるかを{{数|かぞ}}えてから
-  {{条件|じょうけん}}を{{確|たし}}かめる。
+  シールドの{{数|かず}}を{{数|かぞ}}えて、{{相手|あいて}}より
+  {{多|おお}}いか{{確|たし}}かめる。
 example_it: >-
-  Quando il testo ti fa guardare il numero degli scudi, prima conti quante
-  carte ci sono e poi controlli la condizione.
+  Conta gli scudi e verifica se ne hai più dell'avversario.
 notes_it: >-
   In generale `{{数|かず}}` è il numero di qualcosa. Nel rules text torna utile
   perché chiude un gruppo appena nominato e lo trasforma nel dato che il gioco
@@ -120,12 +118,10 @@ front: >-
   {{自分|じぶん}}のシールドの{{数|かず}}が{{相手|あいて}}より{{多|おお}}ければ
 back: se il numero dei tuoi scudi è maggiore di quello dell'avversario
 example_jp: >-
-  `より`が{{比較|ひかく}}の{{基準|きじゅん}}で、
-  `{{多|おお}}ければ`がその{{数|かず}}を{{上回|うわまわ}}るかどうかを
-  {{見|み}}ている。
+  {{自分|じぶん}}のシールドの{{数|かず}}が{{相手|あいて}}より
+  {{多|おお}}ければ、{{追加|ついか}}の{{効果|こうか}}を{{使|つか}}える。
 example_it: >-
-  `Yori` fissa il benchmark del confronto, e `ookereba` controlla se il tuo
-  conteggio lo supera davvero.
+  Se hai più scudi dell'avversario, puoi usare l'effetto aggiuntivo.
 notes_it: >-
   Questa è la lettura da fissare per intero. Il punto non è il solo
   `あれば`: qui la carta non controlla una soglia assoluta, ma un confronto

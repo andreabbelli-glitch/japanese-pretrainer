@@ -343,10 +343,10 @@ card_type: recognition
 front: これら
 back: questi / il gruppo appena menzionato
 example_jp: >-
-  これらと{{書|か}}いてあれば、すぐ{{前|まえ}}に{{出|で}}てきた
-  カードたちをまとめて{{指|さ}}している。
+  これらを{{好|す}}きな{{順序|じゅんじょ}}で
+  {{山札|やまふだ}}の{{下|した}}に{{置|お}}く。
 example_it: >-
-  Quando leggi `これら`, sta indicando insieme le carte nominate subito prima.
+  Metti queste carte in fondo al mazzo nell'ordine che preferisci.
 notes_it: >-
   È piccolo ma decisivo: nei testi di effetto serve a chiudere lo scope su un
   gruppo preciso senza riscriverlo da capo.
@@ -362,11 +362,10 @@ card_type: concept
 front: '{{出|で}}ることによって{{起|お}}こる{{効果|こうか}}'
 back: effetti che si verificano proprio perché qualcosa entra in gioco
 example_jp: >-
-  {{出|で}}ることによって{{起|お}}こる{{効果|こうか}}なら、
-  {{登場|とうじょう}}そのものが{{原因|げんいん}}になっている。
+  クリーチャーが{{出|で}}ることによって、この{{効果|こうか}}が
+  {{起|お}}こる。
 example_it: >-
-  Se si tratta di effetti che si verificano per l'ingresso, l'ingresso stesso è
-  la causa che li accende.
+  Questo effetto si verifica quando entra una creatura.
 notes_it: >-
   `ことによって` lega evento e conseguenza. Qui non devi pensare a `effetti
   della carta` in generale, ma al sottoinsieme di effetti causati da

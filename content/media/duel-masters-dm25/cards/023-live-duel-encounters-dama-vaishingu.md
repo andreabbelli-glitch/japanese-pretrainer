@@ -82,11 +82,10 @@ card_type: recognition
 front: '{{堕魔|だーま}}'
 back: prefisso delle creature Magic Tool oscure
 example_jp: >-
-  {{堕魔|だーま}}の{{名前|なまえ}}が{{見|み}}えたら、{{魔導具|ま.どう.ぐ}}の
-  {{仲間|なかま}}だと{{考|かんが}}えやすい。
+  {{堕魔|だーま}}をバトルゾーンに{{出|だ}}して、
+  {{無月|むげつ}}の{{門|もん}}を{{使|つか}}う。
 example_it: >-
-  Quando vedi il prefisso `{{堕魔|だーま}}`, è facile pensare a una carta del
-  gruppo Magic Tool.
+  Metti un Dama nella battle zone e usa Gate of Moonless Night.
 notes_it: >-
   Questa parte e' un indizio di famiglia utile prima ancora della funzione della carta.
 tags: [live-duel, archetype, naming]
@@ -102,10 +101,9 @@ front: >-
   それ{{以外|いがい}}なら{{手札|てふだ}}に{{加|くわ}}える
 back: altrimenti la aggiungi alla mano
 example_jp: >-
-  {{条件|じょうけん}}を{{満|み}}たさないなら、`それ{{以外|いがい}}なら`で
-  {{手札|てふだ}}に{{加|くわ}}える。
+  それ{{以外|いがい}}なら、{{手札|てふだ}}に{{加|くわ}}える。
 example_it: >-
-  Se non soddisfa la condizione, il ramo `それ{{以外|いがい}}なら` la manda in mano.
+  Altrimenti, aggiungila alla mano.
 notes_it: >-
   `それ{{以外|いがい}}なら` è il modo compatto con cui il rules text chiude un
   bivio: stesso bersaglio, uscita alternativa.

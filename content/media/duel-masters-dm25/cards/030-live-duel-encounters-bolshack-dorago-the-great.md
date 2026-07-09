@@ -67,7 +67,7 @@ back: il numero di carte pari al numero di avversari
 example_jp: >-
   {{相手|あいて}}のクリーチャーと{{同|おな}}じ{{枚数|まいすう}}のカードを、{{墓地|ぼち}}から{{選|えら}}ぶ。
 example_it: >-
-  Scegli dal cimitero un numero di carte uguale a quello delle creature dell'avversario.
+  Scegli dal cimitero un numero di carte pari al numero delle creature avversarie.
 notes_it: >-
   Qui `と同じ枚数` non significa semplicemente "molte carte": il testo ti fa
   agganciare la quantità a un conteggio preciso già presente nel turno.

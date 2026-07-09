@@ -72,10 +72,7 @@ entry_type: term
 entry_id: term-kanarazu
 card_type: recognition
 front: '{{必|かなら}}ず'
-back: >-
-  sicuramente / certamente / inevitabilmente. Esprime certezza oggettiva o
-  inevitabilità logica: "senza fallo", con certezza al 100%, perché poggia su
-  fatti, leggi di natura o requisiti rigidi.
+back: sicuramente; certamente; senza fallo
 example_jp: >-
   {{仲間|なかま}}がいるなら、{{俺|おれ}}たちも
   [{{必|かなら}}ず](term:term-kanarazu){{勝|か}}つ。

@@ -40,13 +40,10 @@ back: >-
   puoi ridurre di 1 il costo di evocazione delle tue creature Light e di 1
   quello delle tue creature Fire
 example_jp: >-
-  この{{読|よ}}みでは、{{最初|さいしょ}}の`{{1|いち}}、`のあとで
-  {{文|ぶん}}が{{切|き}}れず、{{最後|さいご}}の
-  `{{少|すく}}なくしてもよい`が{{前半|ぜんはん}}と{{後半|こうはん}}の
-  {{両方|りょうほう}}にかかる。
+  {{自分|じぶん}}の{{光|ひかり}}のクリーチャーと{{火|ひ}}のクリーチャーの
+  {{召喚|しょうかん}}コストを{{1|いち}}{{少|すく}}なくしてもよい。
 example_it: >-
-  In questa lettura, dopo il primo `1,` la frase non finisce: il finale
-  `puoi ridurre` vale sia per la metà iniziale sia per quella successiva.
+  Puoi ridurre di 1 il costo di evocazione delle tue creature Light e Fire.
 notes_it: >-
   Qui la punteggiatura è il punto didattico vero. In giapponese generale la
   virgola può coordinare due blocchi paralleli prima del verbo finale. In Star

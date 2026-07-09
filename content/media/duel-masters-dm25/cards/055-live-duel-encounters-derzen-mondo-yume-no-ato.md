@@ -51,12 +51,10 @@ card_type: concept
 front: '{{残|のこ}}りのゲーム{{中|ちゅう}}'
 back: per il resto della partita
 example_jp: >-
-  `{{残|のこ}}りのゲーム{{中|ちゅう}}`と{{書|か}}かれていたら、
-  その{{後|あと}}の{{文|ぶん}}は{{今|いま}}のターンだけでなく
-  {{対戦|たいせん}}の{{最後|さいご}}まで{{続|つづ}}く。
+  {{残|のこ}}りのゲーム{{中|ちゅう}}、{{自分|じぶん}}は
+  {{山札|やまふだ}}がなくても{{負|ま}}けない。
 example_it: >-
-  Se trovi `nokori no game chuu`, la frase seguente non vale solo per questo
-  turno ma continua fino alla fine della partita.
+  Per il resto della partita, non perdi la partita anche se il tuo mazzo si esaurisce.
 notes_it: >-
   Questo non è un semplice `durante il gioco`. `{{残|のこ}}り` aggiunge l'idea
   di `da qui in avanti, per tutto quello che resta`. In questa spell la frase

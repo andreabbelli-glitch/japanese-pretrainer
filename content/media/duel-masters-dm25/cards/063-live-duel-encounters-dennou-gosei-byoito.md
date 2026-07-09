@@ -79,11 +79,10 @@ front: >-
   「ブロッカー」を{{持|も}}つ{{光|ひかり}}または{{水|みず}}のシールドカード
 back: le carte scudo Luce o Acqua che hanno "Blocker"
 example_jp: >-
-  `「ブロッカー」を{{持|も}}つ`が{{後|うし}}ろの{{全部|ぜんぶ}}にかかるので、
-  {{光|ひかり}}だけでなく{{水|みず}}のシールドカードにも{{条件|じょうけん}}がかかる。
+  「ブロッカー」を{{持|も}}つ{{光|ひかり}}または{{水|みず}}の
+  シールドカードを{{手札|てふだ}}に{{加|くわ}}える。
 example_it: >-
-  Siccome `ha Blocker` modifica tutto ciò che segue, la condizione vale non
-  solo per Luce ma anche per le carte scudo Acqua.
+  Aggiungi alla mano una carta scudo Light o Water con Blocker.
 notes_it: >-
   Questo è il pezzo che evita l'errore di scope. In giapponese le descrizioni
   si impilano prima del nome: qui il nome vero è `シールドカード`, mentre
@@ -101,11 +100,9 @@ card_type: concept
 front: 'すべてに「S・トリガー」を{{与|あた}}える'
 back: conferire "S-Trigger" a tutto il gruppo / a tutte quelle carte
 example_jp: >-
-  `に`だから、ここは{{受|う}}け{{手|て}}を{{示|しめ}}している。`を`は
-  {{与|あた}}えるもの、つまり `S・トリガー` の{{側|がわ}}につく。
+  それらすべてに「S・トリガー」を{{与|あた}}える。
 example_it: >-
-  Siccome c'è `ni`, qui il testo marca il destinatario. `Wo` resta sul lato di
-  ciò che viene conferito, cioè `S-Trigger`.
+  Conferisci S-Trigger a tutte quelle carte.
 notes_it: >-
   `すべてに` include anche la particella `に`: l'effetto viene assegnato a tutti i destinatari. `に` funziona come il
   nostro `a`: il gruppo lungo costruito prima diventa il ricevente del verbo
@@ -124,11 +121,11 @@ front: >-
 back: >-
   conferisce "S-Trigger" a tutte le carte scudo Luce o Acqua con "Blocker" che aggiungi alla tua mano
 example_jp: >-
-  {{前半|ぜんはん}}で{{対象|たいしょう}}を{{細|こま}}かくしぼり、
-  {{最後|さいご}}の `すべてに` でその{{全部|ぜんぶ}}を{{受|う}}け{{手|て}}として{{閉|と}}じている。
+  {{手札|てふだ}}に{{加|くわ}}える、ブロッカーを{{持|も}}つ
+  {{光|ひかり}}または{{水|みず}}のシールドカードすべてに、
+  「S・トリガー」を{{与|あた}}える。
 example_it: >-
-  La prima metà restringe con precisione il gruppo bersaglio, e l'ultimo
-  `subete ni` chiude tutto quel gruppo come destinatario.
+  Conferisci S-Trigger a tutte le carte scudo Light o Water con Blocker che aggiungi alla mano.
 notes_it: >-
   Questa è la lettura completa da fissare. L'ordine giapponese è rovesciato
   rispetto all'italiano: prima arrivi alle carte che finiscono in mano, poi

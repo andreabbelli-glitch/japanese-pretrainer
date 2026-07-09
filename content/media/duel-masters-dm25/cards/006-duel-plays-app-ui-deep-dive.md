@@ -517,11 +517,11 @@ entry_type: term
 entry_id: term-deadline
 card_type: recognition
 front: '{{期限|きげん}}'
-back: scadenza / termine valido
+back: scadenza; termine
 example_jp: >-
   {{受|う}}け{{取|と}}り{{期限|きげん}}が{{切|き}}れる{{前|まえ}}にプレゼントを{{開|ひら}}く。
 example_it: >-
-  Apro i regali prima che la scadenza per il ritiro passi.
+  Apro i regali prima che scada il termine per il ritiro.
 notes_it: >-
   È il nucleo lessicale che poi ritrovi dentro molti label più lunghi. Se lo
   riconosci, la UI sta parlando di tempo residuo.
@@ -535,7 +535,7 @@ entry_type: term
 entry_id: term-kakutoku
 card_type: recognition
 front: '{{獲得|かくとく}}'
-back: ottenere / guadagnare
+back: ottenere; guadagnare
 example_jp: >-
   このステージで{{100PT|ひゃくぴーてぃー}} {{獲得|かくとく}}できる。
 example_it: >-
@@ -626,7 +626,7 @@ entry_type: term
 entry_id: term-use
 card_type: recognition
 front: '{{使用|しよう}}'
-back: usare / impiegare
+back: usare; impiegare
 example_jp: >-
   {{4枚|よんまい}}を{{使用|しよう}}してパックを{{購入|こうにゅう}}する。
 example_it: >-
@@ -717,7 +717,7 @@ back: già costruito / prebuilt
 example_jp: >-
   {{初心|しょしん}}{{者|しゃ}}には、すぐに{{対戦|たいせん}}できる{{構築|こうちく}}{{済|ず}}みデッキをすすめる。
 example_it: >-
-  Ai principianti consiglio un deck pre-costruito pronto a combattere.
+  Ai principianti consiglio un deck precostruito pronto per giocare.
 notes_it: >-
   Letto da solo, chiarisce subito i label composti che lo contengono:
   l'oggetto è già pronto e non richiede deck building.
@@ -786,7 +786,7 @@ entry_type: term
 entry_id: term-shortage
 card_type: recognition
 front: '{{不足|ふそく}}'
-back: insufficienza / mancanza
+back: insufficienza; mancanza
 example_jp: >-
   カードを{{生成|せいせい}}するためのDMポイントが{{不足|ふそく}}している。
 example_it: >-
@@ -807,7 +807,7 @@ back: carta chiave / key card
 example_jp: >-
   キーカードを{{見|み}}てデッキの{{特徴|とくちょう}}を{{知|し}}る。
 example_it: >-
-  Guarda la key card per capire il carattere del deck.
+  Guarda la key card per capire le caratteristiche del deck.
 notes_it: >-
   È un pannello di sintesi visiva: mostra il tema del mazzo prima di aprire
   dettagli e lista completa.
@@ -894,7 +894,7 @@ back: livello intermedio / intermediate tier
 example_jp: >-
   {{中級|ちゅうきゅう}}はチケット{{2枚|にまい}}で{{挑戦|ちょうせん}}する。
 example_it: >-
-  Il livello intermedio richiede 2 ticket per tentare la sfida.
+  Per affrontare il livello intermedio servono due ticket.
 notes_it: >-
   Ti prepara a un costo e a un impegno maggiori rispetto a `{{初級|しょきゅう}}`.
 tags: [duel-plays, app, ui, stage]

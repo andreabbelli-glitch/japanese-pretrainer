@@ -71,11 +71,10 @@ card_type: recognition
 front: '{{大|おお}}きい'
 back: grande / alto; con il costo = più alto numericamente
 example_jp: >-
-  コストが{{大|おお}}きいクリーチャーと{{言|い}}うとき、
-  {{体|からだ}}が{{大|おお}}きいのではなく、
-  コストの{{数字|すうじ}}が{{高|たか}}いという{{意味|いみ}}になる。
+  コストが{{大|おお}}きいクリーチャーは、マナが{{少|すく}}ないと
+  {{出|だ}}しにくい。
 example_it: >-
-  Quando una carta dice `creatura dal costo alto`, `costo alto` riguarda il valore numerico della carta.
+  Una creatura dal costo alto è difficile da giocare quando hai poco mana.
 notes_it: >-
   È importante non tradurlo in automatico come `grossa creatura`. In una frase
   sui costi, `{{大|おお}}きい` prende il senso di `più alto`, `più grande come
@@ -119,12 +118,10 @@ back: >-
   quando, nel turno avversario, sta per entrare una creatura avversaria il cui costo è
   maggiore del numero di carte nella zona mana dell'avversario
 example_jp: >-
-  `{{出|で}}る{{時|とき}}`だから、
-  {{入|はい}}ってからではなく{{入|はい}}る{{瞬間|しゅんかん}}に
-  {{判定|はんてい}}する。
+  {{相手|あいて}}のマナが{{5枚|ごまい}}なら、コスト{{6|ろく}}の
+  クリーチャーが{{出|で}}る{{時|とき}}に{{能力|のうりょく}}を{{使|つか}}う。
 example_it: >-
-  Siccome dice `quando entra`, il controllo avviene nel momento dell'ingresso,
-  non dopo che la creatura è già rimasta sul campo.
+  Se l'avversario ha cinque carte nel mana, usa l'abilità quando sta per entrare una creatura di costo 6.
 notes_it: >-
   Questa è la card-sintesi del blocco completo. `{{相手|あいて}}のターン{{中|ちゅう}}に`
   chiude la finestra temporale,

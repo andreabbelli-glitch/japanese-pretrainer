@@ -108,11 +108,10 @@ card_type: recognition
 front: '{{終了時|しゅう.りょう.じ}}'
 back: alla fine / al momento in cui il turno o la fase si chiude
 example_jp: >-
-  {{自分|じぶん}}のターン{{終了時|しゅう.りょう.じ}}なら、
-  そのターンのしめくくりで{{効果|こうか}}を{{見|み}}る。
+  {{自分|じぶん}}のターン{{終了時|しゅう.りょう.じ}}に、
+  この{{呪文|じゅもん}}を{{唱|とな}}える。
 example_it: >-
-  Se dice 'alla fine del tuo turno', l'effetto viene controllato quando quel turno si
-  chiude.
+  Lancia questo spell alla fine del tuo turno.
 notes_it: >-
   Vale la pena fissarlo perche` `{{終|お}}わり` da solo puo` sembrare vago,
   mentre `{{終了時|しゅう.りょう.じ}}` nel rules text e` un timing preciso e
@@ -172,11 +171,10 @@ front: >-
   {{手札|てふだ}}に{{加|くわ}}え
 back: tra quelle carte, aggiungi alla mano tutti i Metallica, i Draghi e gli spell
 example_jp: >-
-  ここは{{1枚|いちまい}}{{選|えら}}ぶのではなく、
-  {{条件|じょうけん}}に{{合|あ}}うものをすべて{{集|あつ}}める。
+  その{{中|なか}}から、{{条件|じょうけん}}に{{合|あ}}うカードを
+  すべて{{手札|てふだ}}に{{加|くわ}}える。
 example_it: >-
-  Qui non scegli una sola carta: raccogli tutto quello che corrisponde alle
-  categorie valide.
+  Tra quelle, aggiungi alla mano tutte le carte che soddisfano le condizioni.
 notes_it: >-
   Il punto da allenare e` `すべて`. Il primo effetto non richiede una scelta
   singola dentro le tre carte rivelate: prende in blocco tutto cio` che passa
@@ -195,10 +193,10 @@ front: >-
   {{1枚|いちまい}}、コストを{{支払|しはら}}わずに{{唱|とな}}えてもよい
 back: puoi lanciare dalla tua mano 1 Judgment Emblem senza pagarne il costo
 example_jp: >-
-  `{{唱|とな}}えてもよい`だから、
-  {{無料|むりょう}}で{{使|つか}}えるが{{強制|きょうせい}}ではない。
+  {{手札|てふだ}}に{{裁|さば}}きの{{紋章|もんしょう}}があれば、
+  コストを{{支払|しはら}}わずに{{唱|とな}}えてもよい。
 example_it: >-
-  Siccome c'è `puoi lanciare`, lo usi gratis ma non sei obbligato a farlo.
+  Se hai in mano un Judgment Emblem, puoi lanciarlo senza pagarne il costo.
 notes_it: >-
   Qui `てもよい` si appoggia a un chunk molto concreto: dalla tua mano, una
   sola `{{裁|さば}}きの{{紋章|もんしょう}}`, senza pagare il costo. Il punto
@@ -218,11 +216,10 @@ front: >-
   {{合計|ごうけい}}が{{3枚以上|さん.まい.い.じょう}}なら
 back: se il totale delle carte face-up presenti in tutte le shield zone è 3 o più
 example_jp: >-
-  `{{合計|ごうけい}}`だから、シールドごとに{{別々|べつべつ}}ではなく、
-  {{全部|ぜんぶ}}を{{足|た}}した{{数|かず}}を{{見|み}}る。
+  すべてのシールドゾーンにある{{表向|おもてむ}}きのカードの
+  {{合計|ごうけい}}が{{3枚以上|さん.まい.い.じょう}}なら、この{{能力|のうりょく}}を{{使|つか}}える。
 example_it: >-
-  Siccome c'è `totale`, non fai un controllo separato per ogni scudo: guardi
-  il numero ottenuto sommando tutto.
+  Se nelle shield zone ci sono in totale almeno tre carte face-up, puoi usare questa abilità.
 notes_it: >-
   Questo e` il cuore del terzo effetto. `すべてのシールドゾーンにある` allarga il
   campo da osservare, `{{表向|おもてむ}}き` filtra solo le carte scoperte e
@@ -247,11 +244,10 @@ back: >-
   puoi distruggere questa creatura; se lo fai, metti nella battle zone 1 Drago di Luce
   dalla mano
 example_jp: >-
-  `そうしたら`だから、{{前|まえ}}の{{破壊|はかい}}をほんとうにやった
-  {{後|あと}}だけ、ドラゴンを{{出|だ}}せる。
+  このクリーチャーを{{破壊|はかい}}したら、{{手札|てふだ}}から
+  {{光|ひかり}}のドラゴンを{{出|だ}}す。
 example_it: >-
-  Siccome c'è `soushitara`, puoi mettere il Drago in campo solo se hai davvero
-  eseguito l'autodistruzione precedente.
+  Se distruggi questa creatura, metti in campo un Drago di Luce dalla mano.
 notes_it: >-
   Qui il valore da fissare e` il legame stretto tra i due passi. La carta non
   dice semplicemente `puoi distruggere questo e poi anche mettere un Drago`:

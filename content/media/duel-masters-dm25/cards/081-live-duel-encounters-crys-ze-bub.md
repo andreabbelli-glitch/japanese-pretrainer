@@ -86,7 +86,7 @@ example_jp: >-
   [コスト](term:term-cost)の{{大|おお}}きさを{{比|くら}}べて
   [バトル](term:term-battle)する。
 example_it: >-
-  Fai battle confrontando la grandezza del costo.
+  Fai battle confrontando il valore del costo.
 notes_it: >-
   `{{大|おお}}きさ` prende l'aggettivo `{{大|おお}}きい` e lo trasforma in nome:
   "grandezza", "entità". Con [コスト](term:term-cost), la frase guarda il valore
@@ -107,7 +107,7 @@ example_jp: >-
   [コスト](term:term-cost)の{{大|おお}}きさを{{比|くら}}べて
   [バトル](term:term-battle)する。
 example_it: >-
-  Le creature fanno battle confrontando la grandezza del costo invece della
+  Le creature fanno battle confrontando il valore del costo invece della
   power.
 notes_it: >-
   `{{比|くら}}べて` collega il confronto al verbo successivo. Qui `を` marca
@@ -129,7 +129,7 @@ example_jp: >-
   [ではなく](grammar:grammar-dewanaku)[コスト](term:term-cost)の
   {{大|おお}}きさを{{比|くら}}べる。
 example_it: >-
-  Le creature confrontano la grandezza del costo invece della power.
+  Le creature confrontano il valore del costo invece della power.
 notes_it: >-
   In `パワーではなくコスト`, il blocco prima di `では` viene escluso come criterio
   e il nome successivo prende il ruolo operativo. Questa forma è molto utile
@@ -145,11 +145,11 @@ entry_type: grammar
 entry_id: grammar-power-dewanaku-cost-no-ookisa-o-kurabete-battle-suru
 card_type: concept
 front: 'クリーチャーは、パワーではなくコストの{{大|おお}}きさを{{比|くら}}べてバトルする。'
-back: 'Le creature fanno battle confrontando la grandezza del costo invece della power.'
+back: 'Le creature fanno battle confrontando il valore del costo invece della power.'
 example_jp: >-
   クリーチャーは、パワーではなくコストの{{大|おお}}きさを{{比|くら}}べてバトルする。
 example_it: >-
-  Le creature fanno battle confrontando la grandezza del costo invece della
+  Le creature fanno battle confrontando il valore del costo invece della
   power.
 notes_it: >-
   La frase intera separa tema, criterio e azione. `クリーチャーは` mette le

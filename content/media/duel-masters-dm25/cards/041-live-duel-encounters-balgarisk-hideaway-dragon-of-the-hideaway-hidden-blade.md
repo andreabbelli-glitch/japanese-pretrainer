@@ -117,12 +117,11 @@ front: >-
   {{能力|のうりょく}}を{{使|つか}}っていなければ
 back: se hai almeno 8 carte in mana e durante quell'attacco non hai ancora usato Ninja Strike
 example_jp: >-
-  `あり`は`ある`のつながる{{形|かたち}}で、{{条件|じょうけん}}をまだ
-  {{続|つづ}}ける。{{次|つぎ}}に`{{使|つか}}っていなければ`で{{二|ふた}}つ{{目|め}}の
-  {{門|もん}}がかかる。
+  マナが{{8枚以上|はち.まい.い.じょう}}あり、その{{攻撃中|こう.げき.ちゅう}}に
+  ニンジャ・ストライクを{{使|つか}}っていなければ、このシノビを{{召喚|しょうかん}}できる。
 example_it: >-
-  `あり` è la forma di collegamento di `ある` e mantiene aperta la condizione; poi `使っていなければ`
-  aggiunge il secondo requisito.
+  Se hai almeno otto carte nel mana e non hai usato Ninja Strike durante quell'attacco,
+  puoi evocare questo Shinobi.
 notes_it: >-
   Questo è il punto più importante della finestra di Ninja Strike. `あり` tiene
   aperta la catena delle condizioni; `{{使|つか}}っていなければ` è invece il
@@ -162,11 +161,10 @@ front: >-
   {{持|も}}つドラゴン・エレメント
 back: un Dragon Element che ha un costo pari o inferiore al numero di carte nel tuo mana
 example_jp: >-
-  `{{持|も}}つ`がドラゴン・エレメントを{{後|うし}}ろから
-  {{説明|せつめい}}していて、どのカードが{{合格|ごうかく}}かを{{絞|しぼ}}っている。
+  {{自分|じぶん}}のマナの{{枚数|まいすう}}{{以下|いか}}のコストを
+  {{持|も}}つドラゴン・エレメントを{{出|だ}}す。
 example_it: >-
-  `Motsu` sta descrivendo da dietro `Dragon Element` e restringe quali carte
-  passano il controllo.
+  Metti in gioco un Dragon Element con costo pari o inferiore al numero di carte nel tuo mana.
 notes_it: >-
   Qui vale la pena memorizzare il chunk intero. Prima il testo fissa il limite
   `{{枚数|まいすう}}{{以下|いか}}`, poi con `{{持|も}}つ` attacca quel limite al
@@ -185,12 +183,10 @@ front: >-
   そうでなければ、[タップ](term:term-tap)して[マナゾーン](term:term-mana-zone)に{{置|お}}く
 back: altrimenti, mettila tappata nel mana zone
 example_jp: >-
-  `そう`は{{前|まえ}}の{{判定|はんてい}}を{{受|う}}ける。だから
-  `そうでなければ`が{{出|で}}たら、{{直前|ちょくぜん}}の{{条件|じょうけん}}に
-  {{落|お}}ちた{{時|とき}}の{{処理|しょり}}だとわかる。
+  ドラゴン・エレメントなら{{出|だ}}す。そうでなければ、
+  タップしてマナゾーンに{{置|お}}く。
 example_it: >-
-  `Sou` riprende il controllo appena fatto; quindi `sou de nakereba` ti dice
-  subito che stai leggendo il ramo di fallback.
+  Se è un Dragon Element, mettilo in gioco; altrimenti, mettilo tappato nella mana zone.
 notes_it: >-
   Questo chunk va riconosciuto in blocco. `そう` non indica una cosa nuova:
   punta al contenuto del `なら` appena prima. Se quella carta non è il Dragon

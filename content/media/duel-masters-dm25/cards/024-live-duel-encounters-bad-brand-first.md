@@ -158,10 +158,10 @@ front: '{{1枚目|いちまいめ}}'
 back: >-
   la prima carta; `{{目|め}}` marca la posizione nell'ordine
 example_jp: >-
-  `{{1枚目|いちまいめ}}`の`{{目|め}}`は、{{1枚|いちまい}}を
-  「{{最初|さいしょ}}の{{1枚|いちまい}}」にする。
+  {{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}を
+  {{表|おもて}}{{向|む}}きにする。
 example_it: >-
-  In `1枚目`, `{{目|め}}` trasforma `1枚` in "la prima carta" invece di "una carta".
+  Metti a faccia in su la prima carta del mazzo.
 notes_it: >-
   Questa e una distinzione molto utile: `{{1枚|いちまい}}` conta una carta,
   `{{1枚目|いちまいめ}}` indica quale carta nella fila o nella pila. Su Bad
@@ -196,7 +196,7 @@ entry_type: term
 entry_id: term-ichiban-shita
 card_type: recognition
 front: '{{一番下|いち.ばん.した}}'
-back: il punto piu in basso; il fondo
+back: il punto più in basso; il fondo
 example_jp: >-
   {{山札|やまふだ}}の{{一番下|いち.ばん.した}}に{{置|お}}くと、すぐには
   {{見|み}}えなくなる。

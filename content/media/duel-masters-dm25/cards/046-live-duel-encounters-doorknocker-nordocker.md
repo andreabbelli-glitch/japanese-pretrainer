@@ -99,13 +99,12 @@ entry_type: grammar
 entry_id: grammar-tsugi-no
 card_type: concept
 front: '{{次|つぎ}}の{{能力|のうりょく}}'
-back: l'abilita seguente
+back: l'abilità seguente
 example_jp: >-
-  `{{次|つぎ}}の{{能力|のうりょく}}`と{{書|か}}いてあれば、すぐ{{下|した}}に
-  {{書|か}}かれた{{能力|のうりょく}}を{{指|さ}}している。
+  {{次|つぎ}}の{{能力|のうりょく}}で、{{相手|あいて}}のクリーチャーを
+  {{1体|いったい}}{{破壊|はかい}}する。
 example_it: >-
-  Se leggi `la seguente abilita`, il testo sta indicando proprio l'abilita
-  scritta immediatamente sotto.
+  Con l'abilità seguente, distruggi una creatura avversaria.
 notes_it: >-
   `{{次|つぎ}}の` crea una referenza in avanti verso il testo che segue e
   prepara l'abilità indicata subito dopo.
@@ -119,12 +118,12 @@ entry_type: grammar
 entry_id: grammar-nikai-okonau
 card_type: concept
 front: '{{次|つぎ}}の{{能力|のうりょく}}を{{2回|にかい}}{{行|おこな}}う'
-back: esegui due volte l'abilita che segue
+back: esegui due volte l'abilità che segue
 example_jp: >-
   このクリーチャーが{{出|で}}た{{時|とき}}、
   {{次|つぎ}}の{{能力|のうりょく}}を{{2回|にかい}}{{行|おこな}}う。
 example_it: >-
-  Quando questa creatura entra, esegui due volte l'abilita seguente.
+  Quando questa creatura entra, esegui due volte l'abilità seguente.
 notes_it: >-
   Qui il focus non e` il solo `{{2回|にかい}}{{行|おこな}}う`, gia` coperto nel
   corpus, ma la combinazione con `{{次|つぎ}}の{{能力|のうりょく}}`: il testo
