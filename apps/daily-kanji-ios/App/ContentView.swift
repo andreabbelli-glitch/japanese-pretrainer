@@ -7,6 +7,7 @@ struct ContentView: View {
     @StateObject private var glossarySearch: DailyKanjiGlossarySearchModel
     @State private var selectedGlossaryEntry: DailyKanjiGlossaryEntry?
     @State private var liveReviewAnswerRevealed = false
+    @ScaledMetric(relativeTo: .largeTitle) private var featuredKanjiSize = 104
     private let liveReviewBaseURL = DailyKanjiMobileReviewConfiguration.load().endpointURL
 
     @MainActor
@@ -30,7 +31,9 @@ struct ContentView: View {
                         glossaryView
                     }
                 }
-                .padding(20)
+                .padding(.horizontal, 20)
+                .padding(.top, 14)
+                .padding(.bottom, 36)
             }
             .navigationTitle("Daily Kanji")
             .navigationBarTitleDisplayMode(.inline)
@@ -51,7 +54,7 @@ struct ContentView: View {
                     .frame(maxWidth: 320)
                 }
             }
-            .background(Color(.systemGroupedBackground))
+            .background(Color(.systemBackground))
             .onChange(of: model.selectedAppSection) { _, section in
                 if section != .glossary {
                     selectedGlossaryEntry = nil
@@ -100,7 +103,7 @@ struct ContentView: View {
     private var glossaryView: some View {
         let results = glossarySearch.results
 
-        return VStack(alignment: .leading, spacing: 14) {
+        return VStack(alignment: .leading, spacing: 18) {
             HStack(alignment: .center, spacing: 12) {
                 Image(systemName: "text.magnifyingglass")
                     .font(.body.weight(.semibold))
@@ -128,7 +131,10 @@ struct ContentView: View {
             )
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
-                .textFieldStyle(.roundedBorder)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 12)
+                .background(Color(.secondarySystemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
 
             if model.glossaryEntries.isEmpty {
                 Text("Glossario non disponibile nello snapshot.")
@@ -139,7 +145,7 @@ struct ContentView: View {
                     .font(.callout)
                     .foregroundStyle(.secondary)
             } else {
-                LazyVStack(alignment: .leading, spacing: 10) {
+                LazyVStack(alignment: .leading, spacing: 0) {
                     ForEach(results) { entry in
                         glossaryEntryRow(entry)
                     }
@@ -147,9 +153,6 @@ struct ContentView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(14)
-        .background(Color(.secondarySystemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 
     private func glossaryEntryRow(_ entry: DailyKanjiGlossaryEntry) -> some View {
@@ -194,9 +197,10 @@ struct ContentView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(12)
-        .background(Color(.systemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .padding(.vertical, 16)
+        .overlay(alignment: .bottom) {
+            Divider()
+        }
     }
 
     private func glossaryEntrySummary(_ entry: DailyKanjiGlossaryEntry) -> some View {
@@ -448,63 +452,92 @@ struct ContentView: View {
     }
 
     private var dailyStudyView: some View {
-        VStack(alignment: .leading, spacing: 24) {
-            syncStatusView
-            studyScopeView
+        VStack(alignment: .leading, spacing: 32) {
+            dailyHeaderView
 
             if let card = model.selectedCard {
                 selectedCardView(card)
+                    .id(card.cardId)
+                    .transition(.opacity.combined(with: .move(edge: .trailing)))
             } else {
                 emptyScopeView
             }
 
+            studyScopeView
             historyView
         }
+        .animation(.snappy(duration: 0.34), value: model.selectedCard?.cardId)
     }
 
-    private var syncStatusView: some View {
+    private var dailyHeaderView: some View {
         let presentation = DailyKanjiSyncStatusPresentation(syncState: model.syncState)
 
-        return HStack(alignment: .center, spacing: 12) {
-            Image(systemName: presentation.systemImage)
-                .font(.body.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .frame(width: 22)
+        return VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .center, spacing: 16) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Oggi")
+                        .font(.largeTitle.bold())
 
-            VStack(alignment: .leading, spacing: 2) {
-                Text(presentation.title)
-                    .font(.subheadline.weight(.semibold))
+                    Text(activeStudyScopeSummary)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer(minLength: 0)
+
+                Button {
+                    model.refreshNow()
+                } label: {
+                    if presentation.isRefreshing {
+                        ProgressView()
+                            .controlSize(.small)
+                            .frame(width: 20, height: 20)
+                    } else {
+                        Image(systemName: "arrow.clockwise")
+                            .font(.body.weight(.semibold))
+                            .frame(width: 20, height: 20)
+                    }
+                }
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.circle)
+                .disabled(!presentation.canRefresh)
+                .accessibilityLabel("Aggiorna ora")
+            }
+
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(spacing: 8) {
+                    Label(presentation.title, systemImage: presentation.systemImage)
+                        .fontWeight(.medium)
+
+                    if let lastSyncAt = presentation.lastSyncAt {
+                        Text("· \(lastSyncAt, style: .relative)")
+                            .foregroundStyle(.tertiary)
+                    }
+                }
 
                 Text(presentation.subtitle)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-
-                if let lastSyncAt = presentation.lastSyncAt {
-                    Text("Ultimo sync \(lastSyncAt, style: .relative)")
-                        .font(.caption2)
-                        .foregroundStyle(.tertiary)
-                }
+                    .fixedSize(horizontal: false, vertical: true)
             }
-
-            Spacer(minLength: 12)
-
-            Button {
-                model.refreshNow()
-            } label: {
-                if presentation.isRefreshing {
-                    ProgressView()
-                        .controlSize(.small)
-                } else {
-                    Label("Aggiorna ora", systemImage: "arrow.clockwise")
-                        .labelStyle(.iconOnly)
-                }
-            }
-            .buttonStyle(.bordered)
-            .disabled(!presentation.canRefresh)
-            .accessibilityLabel("Aggiorna ora")
+            .font(.caption)
+            .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var activeStudyScopeSummary: String {
+        var parts = [model.selectedStudyMode.label]
+
+        if let selectedMediaSlug = model.selectedMediaSlug,
+           let media = model.availableMediaForCurrentMode.first(where: {
+               $0.slug == selectedMediaSlug
+           }) {
+            parts.append(media.title)
+        } else {
+            parts.append("Tutti i media")
+        }
+
+        parts.append("\(model.scopedCardCount) card")
+        return parts.joined(separator: " · ")
     }
 
     private var liveReviewView: some View {
@@ -555,9 +588,6 @@ struct ContentView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(14)
-        .background(Color(.secondarySystemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 
     private func liveReviewCardView(_ card: DailyKanjiLiveReviewCard) -> some View {
@@ -785,7 +815,16 @@ struct ContentView: View {
     }
 
     private var studyScopeView: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 3) {
+                Text("Percorso")
+                    .font(.headline)
+
+                Text("Scegli da quale gruppo estrarre il prossimo kanji.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
             Picker(
                 "Modalità",
                 selection: Binding(
@@ -798,6 +837,8 @@ struct ContentView: View {
                 }
             }
             .pickerStyle(.segmented)
+
+            Divider()
 
             HStack(spacing: 12) {
                 if model.draftStudyModeUsesMediaSelection {
@@ -821,73 +862,80 @@ struct ContentView: View {
 
                 Spacer(minLength: 0)
 
-                Text("\(model.draftScopedCardCount) card")
+                Text("\(model.draftScopedCardCount) card disponibili")
                     .font(.caption.weight(.medium))
                     .foregroundStyle(.secondary)
             }
 
-            HStack(spacing: 10) {
-                if model.hasStudyScopeDraftChanges {
+            if model.hasStudyScopeDraftChanges {
+                HStack(spacing: 10) {
+                    Spacer(minLength: 0)
+
                     Button {
                         model.resetStudyScopeDraft()
                     } label: {
-                        Label("Annulla", systemImage: "xmark")
+                        Text("Annulla")
                     }
                     .buttonStyle(.bordered)
-                }
 
-                Button {
-                    model.applyStudyScope()
-                } label: {
-                    Label("Applica", systemImage: "checkmark")
+                    Button {
+                        model.applyStudyScope()
+                    } label: {
+                        Label("Applica", systemImage: "checkmark")
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
-                .buttonStyle(.borderedProminent)
-                .disabled(!model.hasStudyScopeDraftChanges)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(14)
-        .background(Color(.secondarySystemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .padding(18)
+        .background(Color(.secondarySystemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .animation(.easeInOut(duration: 0.18), value: model.hasStudyScopeDraftChanges)
     }
 
     private func selectedCardView(_ card: DailyKanjiCard) -> some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text(card.displayFront)
-                .font(.system(size: 84, weight: .semibold))
-                .minimumScaleFactor(0.32)
-                .lineLimit(1)
-                .frame(maxWidth: .infinity, alignment: .leading)
+        VStack(alignment: .leading, spacing: 26) {
+            VStack(alignment: .leading, spacing: 14) {
+                Text(card.priorityText.uppercased())
+                    .font(.caption2.weight(.bold))
+                    .tracking(0.8)
+                    .foregroundStyle(.tint)
 
-            VStack(alignment: .leading, spacing: 10) {
+                Text(card.displayFront)
+                    .font(.system(size: featuredKanjiSize, weight: .semibold))
+                    .minimumScaleFactor(0.28)
+                    .lineLimit(1)
+                    .allowsTightening(true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
                 Text(card.back)
-                    .font(.title3.weight(.semibold))
+                    .font(.title2.weight(.semibold))
                     .fixedSize(horizontal: false, vertical: true)
 
-                HStack(alignment: .lastTextBaseline, spacing: 8) {
+                HStack(alignment: .center, spacing: 10) {
                     Text(card.readingText)
-                        .font(.body)
+                        .font(.title3.weight(.medium))
                         .foregroundStyle(.secondary)
 
                     Text(card.pitchAccentText)
                         .font(.caption.weight(.medium))
                         .foregroundStyle(.secondary)
+
+                    Spacer(minLength: 0)
+
+                    Button {
+                        audioPlayer.play(card: card)
+                    } label: {
+                        Label("Audio", systemImage: "speaker.wave.2.fill")
+                            .labelStyle(.iconOnly)
+                            .frame(width: 20, height: 20)
+                    }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.circle)
+                    .disabled(!audioPlayer.hasBundledAudio(card: card))
+                    .accessibilityLabel("Riproduci \(card.readingText)")
                 }
-            }
-
-            HStack(spacing: 10) {
-                Label(card.priorityText, systemImage: "target")
-                    .font(.caption.weight(.medium))
-
-                Spacer(minLength: 0)
-
-                Button {
-                    audioPlayer.play(card: card)
-                } label: {
-                    Label("Audio", systemImage: "speaker.wave.2.fill")
-                }
-                .buttonStyle(.bordered)
-                .disabled(!audioPlayer.hasBundledAudio(card: card))
             }
 
             if let selectedHistoryContext = model.selectedHistoryContext {
@@ -897,13 +945,23 @@ struct ContentView: View {
             }
 
             if !card.detailExampleLines.isEmpty {
-                VStack(alignment: .leading, spacing: 6) {
-                    ForEach(Array(card.detailExampleLines.enumerated()), id: \.offset) { index, line in
-                        Text(line)
-                            .font(index == 0 ? .body : .callout)
-                            .foregroundStyle(index == 0 ? .primary : .secondary)
+                HStack(alignment: .top, spacing: 14) {
+                    Capsule()
+                        .fill(.tint)
+                        .frame(width: 3)
+
+                    VStack(alignment: .leading, spacing: 7) {
+                        ForEach(
+                            Array(card.detailExampleLines.enumerated()),
+                            id: \.offset
+                        ) { index, line in
+                            Text(line)
+                                .font(index == 0 ? .body : .callout)
+                                .foregroundStyle(index == 0 ? .primary : .secondary)
+                        }
                     }
                 }
+                .fixedSize(horizontal: false, vertical: true)
             }
 
             if let notes = card.notes {
@@ -919,53 +977,78 @@ struct ContentView: View {
                 .foregroundStyle(.tertiary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(18)
-        .background(Color(.secondarySystemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 
     private var emptyScopeView: some View {
-        Text("Nessuna card per questa selezione.")
-            .font(.callout)
-            .foregroundStyle(.secondary)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(18)
-            .background(Color(.secondarySystemGroupedBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        ContentUnavailableView(
+            "Nessuna card",
+            systemImage: "rectangle.stack.badge.minus",
+            description: Text("Cambia percorso per continuare lo studio.")
+        )
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 28)
     }
 
     private func studySignalsView(_ card: DailyKanjiCard) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            metricRow("Difficulty", value: card.srs.difficultyText)
-            metricRow("Stability", value: card.srs.stabilityText)
-            metricRow("Hard/again", value: "\(card.srs.recentHardAgainCount)")
-            metricRow("Lapses", value: "\(card.srs.lapses)")
+        VStack(alignment: .leading, spacing: 14) {
+            Divider()
+
+            Text("SEGNALI DI STUDIO")
+                .font(.caption2.weight(.bold))
+                .tracking(0.7)
+                .foregroundStyle(.secondary)
+
+            LazyVGrid(
+                columns: [
+                    GridItem(.flexible(), alignment: .leading),
+                    GridItem(.flexible(), alignment: .leading)
+                ],
+                alignment: .leading,
+                spacing: 16
+            ) {
+                metricItem("Difficoltà", value: card.srs.difficultyText)
+                metricItem("Stabilità", value: card.srs.stabilityText)
+                metricItem("Hard / again", value: "\(card.srs.recentHardAgainCount)")
+                metricItem("Errori", value: "\(card.srs.lapses)")
+            }
         }
-        .font(.caption)
-        .foregroundStyle(.secondary)
-        .padding(.top, 2)
     }
 
-    private func metricRow(_ label: String, value: String) -> some View {
-        HStack {
-            Text(label)
-            Spacer(minLength: 12)
+    private func metricItem(_ label: String, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 3) {
             Text(value)
-                .fontWeight(.medium)
+                .font(.title3.weight(.semibold))
+
+            Text(label)
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var historyView: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Recent")
-                .font(.headline)
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(alignment: .firstTextBaseline) {
+                Text("Recenti")
+                    .font(.headline)
+
+                Spacer(minLength: 0)
+
+                if !model.recentHistory.isEmpty {
+                    Text("\(model.recentHistory.count)")
+                        .font(.caption.weight(.medium))
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding(.bottom, 8)
 
             if model.recentHistory.isEmpty {
-                Text("No recent cards yet.")
+                Text("Nessuna card recente.")
                     .font(.callout)
                     .foregroundStyle(.secondary)
+                    .padding(.vertical, 12)
             } else {
-                VStack(spacing: 8) {
+                VStack(spacing: 0) {
                     ForEach(model.recentHistory) { item in
                         if let card = model.card(for: item) {
                             Button {
@@ -977,7 +1060,7 @@ struct ContentView: View {
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.45)
                                         .allowsTightening(true)
-                                        .frame(width: 116, alignment: .leading)
+                                        .frame(width: 96, alignment: .leading)
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text(card.back)
                                             .font(.subheadline.weight(.medium))
@@ -994,11 +1077,17 @@ struct ContentView: View {
                                             .lineLimit(1)
                                     }
                                     Spacer(minLength: 0)
+
+                                    Image(systemName: "chevron.right")
+                                        .font(.caption.weight(.semibold))
+                                        .foregroundStyle(.tertiary)
                                 }
                                 .contentShape(Rectangle())
                             }
                             .buttonStyle(.plain)
-                            .padding(.vertical, 6)
+                            .padding(.vertical, 12)
+
+                            Divider()
                         }
                     }
                 }
