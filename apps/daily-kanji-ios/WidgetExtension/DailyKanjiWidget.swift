@@ -9,6 +9,7 @@ struct KanjiEntry: TimelineEntry {
 struct KanjiProvider: TimelineProvider {
     private let repository = DailyKanjiRepository()
     private let scopeStore = DailyKanjiStudyScopeStore()
+    private let widgetHistoryStore = DailyKanjiWidgetTimelineHistoryStore()
 
     func placeholder(in context: Context) -> KanjiEntry {
         KanjiEntry(date: .now, card: DailyKanjiSampleData.card)
@@ -46,6 +47,15 @@ struct KanjiProvider: TimelineProvider {
             DailyKanjiSelector.nextWidgetRefreshDate(after: $0.date)
         } ?? DailyKanjiSelector.nextWidgetRefreshDate(after: now)
 
+        widgetHistoryStore.replaceTimeline(
+            entries: entries.map {
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: $0.date,
+                    cardId: $0.card.cardId
+                )
+            },
+            generatedAt: now
+        )
         completion(Timeline(entries: entries, policy: .after(refresh)))
     }
 

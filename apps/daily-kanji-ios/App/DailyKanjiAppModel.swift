@@ -27,6 +27,7 @@ final class DailyKanjiAppModel: ObservableObject {
     private let repository: DailyKanjiRepository
     private let cacheStore: DailyKanjiCacheStore
     private let historyStore: DailyKanjiHistoryStore
+    private let widgetHistoryStore: DailyKanjiWidgetTimelineHistoryStore
     private let scopeStore: DailyKanjiStudyScopeStore
     private let syncPolicy: DailyKanjiSyncPolicy
     private let syncer: DailyKanjiSyncing?
@@ -73,6 +74,8 @@ final class DailyKanjiAppModel: ObservableObject {
         repository: DailyKanjiRepository? = nil,
         cacheStore: DailyKanjiCacheStore = DailyKanjiCacheStore(),
         historyStore: DailyKanjiHistoryStore = DailyKanjiHistoryStore(),
+        widgetHistoryStore: DailyKanjiWidgetTimelineHistoryStore =
+            DailyKanjiWidgetTimelineHistoryStore(),
         scopeStore: DailyKanjiStudyScopeStore = DailyKanjiStudyScopeStore(),
         syncPolicy: DailyKanjiSyncPolicy = DailyKanjiSyncPolicy(),
         syncer: DailyKanjiSyncing? = DailyKanjiSyncClient(),
@@ -91,6 +94,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.cards = resolvedRepository.loadCards()
         self.glossaryEntries = resolvedRepository.loadGlossaryEntries()
         self.historyStore = historyStore
+        self.widgetHistoryStore = widgetHistoryStore
         self.scopeStore = scopeStore
         self.syncPolicy = syncPolicy
         self.syncer = syncer
@@ -116,6 +120,8 @@ final class DailyKanjiAppModel: ObservableObject {
     init(
         cards: [DailyKanjiCard],
         historyStore: DailyKanjiHistoryStore = DailyKanjiHistoryStore(),
+        widgetHistoryStore: DailyKanjiWidgetTimelineHistoryStore =
+            DailyKanjiWidgetTimelineHistoryStore.emptyTransientStore(),
         cacheStore: DailyKanjiCacheStore = DailyKanjiCacheStore(),
         scopeStore: DailyKanjiStudyScopeStore = DailyKanjiStudyScopeStore(),
         syncPolicy: DailyKanjiSyncPolicy = DailyKanjiSyncPolicy(),
@@ -133,6 +139,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.cards = cards
         self.glossaryEntries = []
         self.historyStore = historyStore
+        self.widgetHistoryStore = widgetHistoryStore
         self.scopeStore = scopeStore
         self.syncPolicy = syncPolicy
         self.syncer = syncer
@@ -851,28 +858,28 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     private func refreshHistory(now: Date) {
-        let appItems = historyStore.recentItems(
-            now: now,
-            days: DailyKanjiSelector.defaultHistoryLookbackDays
-        )
-        let widgetItems = DailyKanjiSelector.recentWidgetTimelineItems(
-            cards: cards,
-            now: now,
-            mediaSlug: selectedMediaSlug,
-            studyMode: selectedStudyMode,
-            days: DailyKanjiSelector.defaultHistoryLookbackDays
-        )
+        let availableCardIds = Set(cards.map(\.cardId))
+        let appItems = historyStore
+            .recentItems(
+                now: now,
+                days: DailyKanjiSelector.defaultHistoryLookbackDays
+            )
+            .filter { availableCardIds.contains($0.cardId) }
+        let widgetItems = widgetHistoryStore
+            .recentPresentationItems(
+                now: now,
+                days: DailyKanjiSelector.defaultHistoryLookbackDays
+            )
+            .filter { availableCardIds.contains($0.cardId) }
+        let widgetSelectionItems = widgetHistoryStore
+            .recentSelectionItems(now: now)
+            .filter { availableCardIds.contains($0.cardId) }
 
         recentHistory = DailyKanjiPresentationHistory.merge(
             appItems: appItems,
             widgetItems: widgetItems
         )
-        recentSelectionHistory = appItems + DailyKanjiSelector.recentWidgetSelectionItems(
-            cards: cards,
-            now: now,
-            mediaSlug: selectedMediaSlug,
-            studyMode: selectedStudyMode
-        )
+        recentSelectionHistory = appItems + widgetSelectionItems
     }
 
     private func cardsForCurrentScope() -> [DailyKanjiCard] {

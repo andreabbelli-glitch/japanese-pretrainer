@@ -11,7 +11,6 @@ struct DailyKanjiSelector {
     static let defaultWidgetNoRepeatLookbackDays = 1
     static let defaultWidgetSelectionHistoryMaxItems = 96
     static let widgetSlotDuration: TimeInterval = 15 * 60
-    static let defaultWidgetHistoryMaxItems = 96
     static let defaultWidgetTimelineEntryCount = 96
 
     static func select(
@@ -95,72 +94,6 @@ struct DailyKanjiSelector {
             historyLookbackDays: historyLookbackDays,
             widgetRotationWindow: widgetRotationWindow
         ).map { $0.card }
-    }
-
-    static func recentWidgetTimelineItems(
-        cards: [DailyKanjiCard],
-        now: Date,
-        mediaSlug: String? = nil,
-        studyMode: DailyKanjiStudyMode = .daily,
-        days: Int = defaultWidgetNoRepeatLookbackDays,
-        maxItems: Int = defaultWidgetHistoryMaxItems,
-        widgetRotationWindow: Int = defaultWidgetRotationWindow
-    ) -> [DailyKanjiPresentationHistoryItem] {
-        let cutoff = lookbackCutoff(for: now, days: days)
-        let currentSlotStart = currentWidgetSlotStart(for: now)
-        var firstSlotStart = currentWidgetSlotStart(for: cutoff)
-        if firstSlotStart < cutoff {
-            firstSlotStart = firstSlotStart.addingTimeInterval(widgetSlotDuration)
-        }
-
-        var dates: [Date] = []
-        var slotStart = firstSlotStart
-        while slotStart <= currentSlotStart {
-            dates.append(slotStart)
-            slotStart = slotStart.addingTimeInterval(widgetSlotDuration)
-        }
-
-        var seenCardIds = Set<String>()
-        let newestUniqueItems = widgetTimelineSelections(
-            cards: cards,
-            dates: dates,
-            mediaSlug: mediaSlug,
-            studyMode: studyMode,
-            historyLookbackDays: days,
-            widgetRotationWindow: widgetRotationWindow
-        )
-        .reversed()
-        .compactMap { selection -> DailyKanjiPresentationHistoryItem? in
-            guard seenCardIds.insert(selection.card.cardId).inserted else {
-                return nil
-            }
-
-            return DailyKanjiPresentationHistoryItem(
-                cardId: selection.card.cardId,
-                shownAt: selection.date,
-                source: .widget
-            )
-        }
-
-        return Array(newestUniqueItems.prefix(maxItems))
-    }
-
-    static func recentWidgetSelectionItems(
-        cards: [DailyKanjiCard],
-        now: Date,
-        mediaSlug: String? = nil,
-        studyMode: DailyKanjiStudyMode = .daily,
-        maxItems: Int = defaultWidgetSelectionHistoryMaxItems
-    ) -> [DailyKanjiHistoryItem] {
-        recentWidgetTimelineItems(
-            cards: cards,
-            now: now,
-            mediaSlug: mediaSlug,
-            studyMode: studyMode,
-            maxItems: maxItems
-        ).map {
-            DailyKanjiHistoryItem(cardId: $0.cardId, shownAt: $0.shownAt)
-        }
     }
 
     static func rank(_ cards: [DailyKanjiCard]) -> [DailyKanjiCard] {

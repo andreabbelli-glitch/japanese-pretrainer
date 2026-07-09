@@ -195,3 +195,165 @@ final class DailyKanjiHistoryStore {
         defaults.set(data, forKey: key)
     }
 }
+
+struct DailyKanjiWidgetTimelineHistoryItem: Codable, Equatable, Identifiable {
+    let slotStart: Date
+    let cardId: String
+
+    var id: String {
+        "widget-slot-\(Int(slotStart.timeIntervalSince1970))"
+    }
+}
+
+private struct DailyKanjiWidgetTimelineHistoryState: Codable {
+    let version: Int
+    let generatedAt: Date
+    let items: [DailyKanjiWidgetTimelineHistoryItem]
+}
+
+final class DailyKanjiWidgetTimelineHistoryStore {
+    private static let lock = NSLock()
+    private static let stateVersion = 1
+
+    private let defaults: UserDefaults
+    private let key: String
+    private let retentionDays: Int
+
+    init(
+        defaults: UserDefaults =
+            UserDefaults(suiteName: DailyKanjiCacheStore.appGroupIdentifier) ?? .standard,
+        key: String = "daily-kanji.widget-timeline-history.v1",
+        retentionDays: Int = DailyKanjiSelector.defaultHistoryLookbackDays
+    ) {
+        self.defaults = defaults
+        self.key = key
+        self.retentionDays = retentionDays
+    }
+
+    static func emptyTransientStore() -> DailyKanjiWidgetTimelineHistoryStore {
+        DailyKanjiWidgetTimelineHistoryStore(
+            defaults: .standard,
+            key: "daily-kanji.widget-timeline-history.transient.\(UUID().uuidString)"
+        )
+    }
+
+    func replaceTimeline(
+        entries: [DailyKanjiWidgetTimelineHistoryItem],
+        generatedAt: Date
+    ) {
+        Self.lock.lock()
+        defer { Self.lock.unlock() }
+
+        let existingState = loadState()
+        guard (existingState?.generatedAt ?? .distantPast) <= generatedAt else {
+            return
+        }
+
+        let currentSlotStart = DailyKanjiSelector.currentWidgetSlotStart(for: generatedAt)
+        let retentionCutoff = cutoff(now: generatedAt, days: retentionDays)
+        var itemsBySlotStart: [Date: DailyKanjiWidgetTimelineHistoryItem] = [:]
+        for item in existingState?.items ?? []
+        where item.slotStart >= retentionCutoff && item.slotStart < currentSlotStart {
+            itemsBySlotStart[item.slotStart] = item
+        }
+
+        for entry in entries where entry.slotStart >= currentSlotStart {
+            itemsBySlotStart[entry.slotStart] = entry
+        }
+
+        save(
+            DailyKanjiWidgetTimelineHistoryState(
+                version: Self.stateVersion,
+                generatedAt: generatedAt,
+                items: itemsBySlotStart.values.sorted { lhs, rhs in
+                    lhs.slotStart < rhs.slotStart
+                }
+            )
+        )
+    }
+
+    func recentItems(
+        now: Date = .now,
+        days: Int = DailyKanjiSelector.defaultHistoryLookbackDays,
+        maxItems: Int? = nil
+    ) -> [DailyKanjiWidgetTimelineHistoryItem] {
+        Self.lock.lock()
+        defer { Self.lock.unlock() }
+
+        let currentSlotStart = DailyKanjiSelector.currentWidgetSlotStart(for: now)
+        let recentItems = (loadState()?.items ?? [])
+            .filter {
+                $0.slotStart >= cutoff(now: now, days: days)
+                    && $0.slotStart <= currentSlotStart
+            }
+            .sorted { lhs, rhs in
+                lhs.slotStart > rhs.slotStart
+            }
+
+        guard let maxItems else {
+            return recentItems
+        }
+
+        return Array(recentItems.prefix(max(maxItems, 0)))
+    }
+
+    func recentPresentationItems(
+        now: Date = .now,
+        days: Int = DailyKanjiSelector.defaultHistoryLookbackDays
+    ) -> [DailyKanjiPresentationHistoryItem] {
+        recentItems(now: now, days: days).map {
+            DailyKanjiPresentationHistoryItem(
+                eventId: $0.id,
+                cardId: $0.cardId,
+                shownAt: $0.slotStart,
+                source: .widget
+            )
+        }
+    }
+
+    func recentSelectionItems(
+        now: Date = .now,
+        days: Int = DailyKanjiSelector.defaultWidgetNoRepeatLookbackDays,
+        maxItems: Int = DailyKanjiSelector.defaultWidgetSelectionHistoryMaxItems
+    ) -> [DailyKanjiHistoryItem] {
+        recentItems(now: now, days: days, maxItems: maxItems).map {
+            DailyKanjiHistoryItem(
+                eventId: $0.id,
+                cardId: $0.cardId,
+                shownAt: $0.slotStart
+            )
+        }
+    }
+
+    private func cutoff(now: Date, days: Int) -> Date {
+        now.addingTimeInterval(-TimeInterval(max(days, 0)) * 24 * 60 * 60)
+    }
+
+    private func loadState() -> DailyKanjiWidgetTimelineHistoryState? {
+        guard let data = defaults.data(forKey: key) else {
+            return nil
+        }
+
+        let decoder = JSONDecoder()
+        guard
+            let state = try? decoder.decode(
+                DailyKanjiWidgetTimelineHistoryState.self,
+                from: data
+            ),
+            state.version == Self.stateVersion
+        else {
+            return nil
+        }
+
+        return state
+    }
+
+    private func save(_ state: DailyKanjiWidgetTimelineHistoryState) {
+        let encoder = JSONEncoder()
+        guard let data = try? encoder.encode(state) else {
+            return
+        }
+
+        defaults.set(data, forKey: key)
+    }
+}

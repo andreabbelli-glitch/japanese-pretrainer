@@ -1105,6 +1105,34 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
+    func testControllableLiveReviewClientBuffersResolutionBeforeContinuationRegistration()
+        async throws {
+        let session = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let liveClient = ControllableDailyKanjiLiveReviewClient(
+            pausesBeforeContinuationRegistration: true
+        )
+        let fetchTask = Task {
+            try await liveClient.fetchSession()
+        }
+
+        await Self.waitUntil {
+            liveClient.pausedRegistrationIndexes.contains(0)
+        }
+        XCTAssertEqual(liveClient.fetchCount, 1)
+
+        liveClient.resolveFetch(at: 0, with: .success(session))
+        XCTAssertFalse(liveClient.completedFetches.contains(0))
+        liveClient.resumeFetchRegistration(at: 0)
+
+        let resolvedSession = try await fetchTask.value
+        XCTAssertEqual(resolvedSession, session)
+        XCTAssertTrue(liveClient.completedFetches.contains(0))
+    }
+
+    @MainActor
     func testSupersededLiveReviewFetchCannotPublishOrClearNewerHandle() async throws {
         let staleSession = try JSONDecoder().decode(
             DailyKanjiLiveReviewSession.self,
@@ -1497,7 +1525,18 @@ final class DailyKanjiCoreTests: XCTestCase {
     @MainActor
     func testAppModelSelectsMediaScopedPrestudyAndGlobalLastLessonsModes() throws {
         let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
-        let model = DailyKanjiAppModel(cards: cards, now: now)
+        let defaultsName = "DailyKanjiScope.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            widgetHistoryStore: DailyKanjiWidgetTimelineHistoryStore(defaults: defaults),
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            now: now
+        )
 
         XCTAssertEqual(model.availableMedia.map(\.slug), ["media-one", "media-two"])
         XCTAssertEqual(model.mediaPickerOptions.map(\.slug), ["media-one", "media-two"])
@@ -1985,49 +2024,132 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertFalse(DailyKanjiWidgetFamilies.readingSupported.contains(.systemMedium))
     }
 
-    func testRecentWidgetTimelineHistoryPreservesUniqueNewestFifteenMinuteSlots() throws {
-        let cards = try Self.rankedCards(count: 120)
-        let items = DailyKanjiSelector.recentWidgetTimelineItems(
-            cards: cards,
-            now: Date(timeIntervalSince1970: (72 * 60 * 60) + 60),
-            days: 1,
-            maxItems: 24
+    func testWidgetTimelineHistoryPreservesCompletedSlotsAndReplacesCurrentAndFuture() {
+        let defaultsName = "DailyKanjiWidgetHistory.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let store = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
+        let firstSlot = Date(timeIntervalSince1970: 72 * 60 * 60)
+        let secondSlot = firstSlot.addingTimeInterval(15 * 60)
+        let thirdSlot = secondSlot.addingTimeInterval(15 * 60)
+
+        store.replaceTimeline(
+            entries: [
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: firstSlot,
+                    cardId: "first-original"
+                ),
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: secondSlot,
+                    cardId: "second-original"
+                ),
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: thirdSlot,
+                    cardId: "third-original"
+                )
+            ],
+            generatedAt: firstSlot.addingTimeInterval(60)
+        )
+        store.replaceTimeline(
+            entries: [
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: secondSlot,
+                    cardId: "second-replacement"
+                ),
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: thirdSlot,
+                    cardId: "third-replacement"
+                )
+            ],
+            generatedAt: secondSlot.addingTimeInterval(60)
         )
 
-        XCTAssertEqual(items.count, 24)
-        XCTAssertEqual(Set(items.map(\.cardId)).count, 24)
-        XCTAssertTrue(items.allSatisfy { $0.source == .widget })
-        XCTAssertEqual(items.first?.shownAt, Date(timeIntervalSince1970: 72 * 60 * 60))
+        let items = store.recentItems(now: thirdSlot.addingTimeInterval(60))
         XCTAssertEqual(
-            items.dropFirst().first?.shownAt,
-            Date(timeIntervalSince1970: (72 * 60 * 60) - (15 * 60))
+            items.map(\.cardId),
+            ["third-replacement", "second-replacement", "first-original"]
+        )
+        XCTAssertEqual(items.map(\.slotStart), [thirdSlot, secondSlot, firstSlot])
+    }
+
+    func testWidgetTimelineHistoryRejectsOlderWritesAndDoesNotExposeFutureSlots() {
+        let defaultsName = "DailyKanjiWidgetHistory.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let store = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
+        let currentSlot = Date(timeIntervalSince1970: 72 * 60 * 60)
+        let futureSlot = currentSlot.addingTimeInterval(15 * 60)
+
+        store.replaceTimeline(
+            entries: [
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: currentSlot,
+                    cardId: "current-new"
+                ),
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: futureSlot,
+                    cardId: "future-new"
+                )
+            ],
+            generatedAt: currentSlot.addingTimeInterval(0.8)
+        )
+        store.replaceTimeline(
+            entries: [
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: currentSlot,
+                    cardId: "stale-current"
+                )
+            ],
+            generatedAt: currentSlot.addingTimeInterval(0.2)
+        )
+
+        XCTAssertEqual(
+            store.recentItems(now: currentSlot.addingTimeInterval(180)).map(\.cardId),
+            ["current-new"]
+        )
+        XCTAssertEqual(
+            store.recentItems(now: futureSlot.addingTimeInterval(60)).map(\.cardId),
+            ["future-new", "current-new"]
         )
     }
 
-    func testRecentWidgetTimelineHistoryDefaultCoversOneDayOfFifteenMinuteSlots() throws {
-        let cards = try Self.rankedCards(count: 120)
-        let items = DailyKanjiSelector.recentWidgetTimelineItems(
-            cards: cards,
-            now: Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
+    func testWidgetTimelineHistoryPrunesCompletedSlotsOutsideRetention() {
+        let defaultsName = "DailyKanjiWidgetHistory.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let store = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults, retentionDays: 3)
+        let expiredSlot = Date(timeIntervalSince1970: 0)
+        let currentSlot = expiredSlot.addingTimeInterval((4 * 24 * 60 * 60) + (15 * 60))
+
+        store.replaceTimeline(
+            entries: [
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: expiredSlot,
+                    cardId: "expired"
+                )
+            ],
+            generatedAt: expiredSlot.addingTimeInterval(60)
+        )
+        store.replaceTimeline(
+            entries: [
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: currentSlot,
+                    cardId: "current"
+                )
+            ],
+            generatedAt: currentSlot.addingTimeInterval(60)
         )
 
-        XCTAssertEqual(items.count, 96)
-        XCTAssertEqual(items.first?.shownAt, Date(timeIntervalSince1970: 72 * 60 * 60))
         XCTAssertEqual(
-            items.last?.shownAt,
-            Date(timeIntervalSince1970: (72 * 60 * 60) - (95 * 15 * 60))
+            store.recentItems(now: currentSlot.addingTimeInterval(60)).map(\.cardId),
+            ["current"]
         )
-    }
-
-    func testRecentWidgetTimelineHistoryKeepsNinetySixSlotsAcrossDaylightSavingTransition() throws {
-        let cards = try Self.rankedCards(count: 120)
-        let items = DailyKanjiSelector.recentWidgetTimelineItems(
-            cards: cards,
-            now: Self.isoDate("2026-03-29T12:00:00.000Z")
-        )
-
-        XCTAssertEqual(items.count, 96)
-        XCTAssertEqual(Set(items.map(\.cardId)).count, 96)
     }
 
     @MainActor
@@ -2040,9 +2162,26 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         let now = Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
         let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let widgetHistoryStore = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
+        let currentSlot = DailyKanjiSelector.currentWidgetSlotStart(for: now)
+        let previousSlot = currentSlot.addingTimeInterval(-15 * 60)
+        widgetHistoryStore.replaceTimeline(
+            entries: [
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: previousSlot,
+                    cardId: "stable"
+                ),
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: currentSlot,
+                    cardId: "hard"
+                )
+            ],
+            generatedAt: previousSlot.addingTimeInterval(60)
+        )
         let model = DailyKanjiAppModel(
             cards: cards,
             historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            widgetHistoryStore: widgetHistoryStore,
             now: now
         )
 
@@ -2054,8 +2193,142 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(model.recentHistory.dropFirst().first?.source, .widget)
         XCTAssertEqual(
             model.recentHistory.dropFirst().first?.shownAt,
-            Date(timeIntervalSince1970: (72 * 60 * 60) - (15 * 60))
+            previousSlot
         )
+    }
+
+    @MainActor
+    func testPersistedWidgetHistoryDoesNotChangeWithTheCurrentStudyScope() throws {
+        let defaultsName = "DailyKanjiWidgetHistory.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
+        let scopeStore = DailyKanjiStudyScopeStore(defaults: defaults)
+        scopeStore.save(
+            DailyKanjiStudyScope(studyMode: .prestudy, mediaSlug: "media-one")
+        )
+        let widgetHistoryStore = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
+        let pastSlot = DailyKanjiSelector.currentWidgetSlotStart(for: now)
+            .addingTimeInterval(-15 * 60)
+        widgetHistoryStore.replaceTimeline(
+            entries: [
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: pastSlot,
+                    cardId: "daily-global"
+                )
+            ],
+            generatedAt: pastSlot.addingTimeInterval(60)
+        )
+
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            widgetHistoryStore: widgetHistoryStore,
+            scopeStore: scopeStore,
+            now: now
+        )
+
+        XCTAssertEqual(model.selectedStudyMode, .prestudy)
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+        XCTAssertEqual(
+            model.recentHistory.filter { $0.source == .widget }.map(\.cardId),
+            ["daily-global"]
+        )
+        XCTAssertEqual(
+            model.recentHistory.first { $0.source == .widget }?.shownAt,
+            pastSlot
+        )
+    }
+
+    @MainActor
+    func testPersistedWidgetHistorySurvivesRerankingAndDrivesAntiRepeat() throws {
+        let defaultsName = "DailyKanjiWidgetHistory.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let cards = try Self.rankedCards(count: 2)
+        let widgetHistoryStore = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
+        let pastSlot = DailyKanjiSelector.currentWidgetSlotStart(for: now)
+            .addingTimeInterval(-15 * 60)
+        widgetHistoryStore.replaceTimeline(
+            entries: [
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: pastSlot,
+                    cardId: "card-0"
+                )
+            ],
+            generatedAt: pastSlot.addingTimeInterval(60)
+        )
+
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            widgetHistoryStore: widgetHistoryStore,
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            now: now
+        )
+
+        XCTAssertEqual(model.selectedCard?.cardId, "card-1")
+        XCTAssertEqual(
+            model.recentHistory.filter { $0.source == .widget }.map(\.cardId),
+            ["card-0"]
+        )
+    }
+
+    @MainActor
+    func testRemovedWidgetHistoryCardIsDroppedInsteadOfSubstituted() throws {
+        let defaultsName = "DailyKanjiWidgetHistory.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let cards = try Self.rankedCards(count: 2)
+        let widgetHistoryStore = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
+        let pastSlot = DailyKanjiSelector.currentWidgetSlotStart(for: now)
+            .addingTimeInterval(-15 * 60)
+        widgetHistoryStore.replaceTimeline(
+            entries: [
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: pastSlot,
+                    cardId: "removed-card"
+                )
+            ],
+            generatedAt: pastSlot.addingTimeInterval(60)
+        )
+
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            widgetHistoryStore: widgetHistoryStore,
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            now: now
+        )
+
+        XCTAssertFalse(model.recentHistory.contains { $0.source == .widget })
+        XCTAssertEqual(model.selectedCard?.cardId, "card-0")
+    }
+
+    @MainActor
+    func testEmptyWidgetHistoryDoesNotSynthesizeLegacyRows() throws {
+        let defaultsName = "DailyKanjiWidgetHistory.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 2),
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            widgetHistoryStore: DailyKanjiWidgetTimelineHistoryStore(defaults: defaults),
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            now: now
+        )
+
+        XCTAssertTrue(model.recentHistory.isEmpty)
+        XCTAssertEqual(model.selectedCard?.cardId, "card-0")
     }
 
     @MainActor
@@ -2220,11 +2493,32 @@ final class DailyKanjiCoreTests: XCTestCase {
     func testAppSelectionUsesTheLastTwentyFourHoursOfWidgetHistory() throws {
         let cards = try Self.rankedCards(count: 120)
         let now = Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
-
-        let widgetSelectionHistory = DailyKanjiSelector.recentWidgetSelectionItems(
-            cards: cards,
-            now: now
+        let defaultsName = "DailyKanjiWidgetHistory.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let store = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
+        let firstSlot = DailyKanjiSelector.currentWidgetSlotStart(for: now)
+            .addingTimeInterval(-95 * 15 * 60)
+        let dates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: firstSlot,
+            count: 96
         )
+        let timelineCards = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: dates
+        )
+        store.replaceTimeline(
+            entries: zip(dates, timelineCards).map { date, card in
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: date,
+                    cardId: card.cardId
+                )
+            },
+            generatedAt: firstSlot.addingTimeInterval(60)
+        )
+        let widgetSelectionHistory = store.recentSelectionItems(now: now)
         let selected = DailyKanjiSelector.select(
             cards: cards,
             history: widgetSelectionHistory,
@@ -2862,6 +3156,29 @@ final class DailyKanjiCoreTests: XCTestCase {
         store.record(cardId: "newest", shownAt: now)
 
         XCTAssertEqual(store.recentItems(now: now, days: 3).map(\.cardId), ["newest", "newer"])
+    }
+
+    func testHistoryStoreStillDecodesLegacyAppItemsWithoutEventIds() throws {
+        let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let legacyJSON = """
+        [
+          {
+            "cardId": "legacy-card",
+            "shownAt": "2027-01-15T08:00:00Z"
+          }
+        ]
+        """.data(using: .utf8)!
+        defaults.set(legacyJSON, forKey: "daily-kanji.history.v1")
+
+        let item = try XCTUnwrap(DailyKanjiHistoryStore(defaults: defaults).allItems().first)
+
+        XCTAssertEqual(item.cardId, "legacy-card")
+        XCTAssertEqual(item.shownAt, Self.isoDate("2027-01-15T08:00:00.000Z"))
+        XCTAssertFalse(item.eventId.isEmpty)
     }
 
     func testHistoryStorePreservesRepeatedAppExposureEventsNewestFirst() {
@@ -4121,21 +4438,75 @@ private final class MockDailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
 }
 
 private final class ControllableDailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
-    private var pendingFetches: [
+    private let lock = NSLock()
+    private let pausesBeforeContinuationRegistration: Bool
+    private var storedPendingFetches: [
         Int: CheckedContinuation<DailyKanjiLiveReviewSession, Error>
     ] = [:]
-    private(set) var fetchCount = 0
-    private(set) var completedFetches: Set<Int> = []
+    private var storedEarlyFetchResults: [
+        Int: Result<DailyKanjiLiveReviewSession, Error>
+    ] = [:]
+    private var storedRegistrationPauseContinuations: [
+        Int: CheckedContinuation<Void, Never>
+    ] = [:]
+    private var storedPausedRegistrationIndexes: Set<Int> = []
+    private var storedFetchCount = 0
+    private var storedCompletedFetches: Set<Int> = []
+
+    init(pausesBeforeContinuationRegistration: Bool = false) {
+        self.pausesBeforeContinuationRegistration = pausesBeforeContinuationRegistration
+    }
+
+    var fetchCount: Int {
+        lock.withLock {
+            storedFetchCount
+        }
+    }
+
+    var completedFetches: Set<Int> {
+        lock.withLock {
+            storedCompletedFetches
+        }
+    }
+
+    var pausedRegistrationIndexes: Set<Int> {
+        lock.withLock {
+            storedPausedRegistrationIndexes
+        }
+    }
 
     func fetchSession() async throws -> DailyKanjiLiveReviewSession {
-        let fetchIndex = fetchCount
-        fetchCount += 1
+        let fetchIndex = lock.withLock {
+            let index = storedFetchCount
+            storedFetchCount += 1
+            return index
+        }
+        if pausesBeforeContinuationRegistration {
+            await withCheckedContinuation { continuation in
+                lock.withLock {
+                    _ = storedPausedRegistrationIndexes.insert(fetchIndex)
+                    storedRegistrationPauseContinuations[fetchIndex] = continuation
+                }
+            }
+        }
         defer {
-            completedFetches.insert(fetchIndex)
+            lock.withLock {
+                _ = storedCompletedFetches.insert(fetchIndex)
+            }
         }
 
         return try await withCheckedThrowingContinuation { continuation in
-            pendingFetches[fetchIndex] = continuation
+            let earlyResult: Result<DailyKanjiLiveReviewSession, Error>? = lock.withLock {
+                if let result = storedEarlyFetchResults.removeValue(forKey: fetchIndex) {
+                    return result
+                }
+
+                storedPendingFetches[fetchIndex] = continuation
+                return nil
+            }
+            if let earlyResult {
+                continuation.resume(with: earlyResult)
+            }
         }
     }
 
@@ -4143,7 +4514,25 @@ private final class ControllableDailyKanjiLiveReviewClient: DailyKanjiLiveReview
         at index: Int,
         with result: Result<DailyKanjiLiveReviewSession, Error>
     ) {
-        pendingFetches.removeValue(forKey: index)?.resume(with: result)
+        let continuation: CheckedContinuation<DailyKanjiLiveReviewSession, Error>? = lock.withLock {
+            if let continuation = storedPendingFetches.removeValue(forKey: index) {
+                return continuation
+            }
+
+            if index >= 0, index < storedFetchCount, storedEarlyFetchResults[index] == nil {
+                storedEarlyFetchResults[index] = result
+            }
+            return nil
+        }
+        continuation?.resume(with: result)
+    }
+
+    func resumeFetchRegistration(at index: Int) {
+        let continuation = lock.withLock {
+            _ = storedPausedRegistrationIndexes.remove(index)
+            return storedRegistrationPauseContinuations.removeValue(forKey: index)
+        }
+        continuation?.resume()
     }
 
     func grade(

@@ -22,9 +22,9 @@ nome app, bundle id, scheme e documentazione sono quelli di **Daily Kanji**.
 
 La app e il widget leggono `daily-kanji-cards.json` quando e' stato esportato.
 Se il file non e' presente usano un sample locale (`学`) per mantenere build e
-preview funzionanti. Lo storico locale dell'app conserva le esposizioni recenti
-degli ultimi 3 giorni, includendo la finestra widget oraria da 72 slot e le
-aperture manuali dell'app, anche quando la stessa card viene mostrata piu volte.
+preview funzionanti. Lo storico locale conserva le aperture manuali dell'app e
+gli slot dei timeline effettivamente pianificati dall'estensione WidgetKit negli
+ultimi 3 giorni, anche quando la stessa card viene mostrata piu volte.
 Serve a evitare ripetizioni quando l'app viene aperta; le righe recenti sono
 tappabili per riaprire la card completa e fare una mini-review locale. App e
 widget condividono la cache JSON tramite App Group
@@ -271,10 +271,10 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
 - Il widget usa deep link `dailykanji://card/<card-id>` per aprire la card
   completa nell'app.
 - L'app non puo sapere con certezza se il widget lockscreen e' stato davvero
-  visibile. Lo storico mostra quindi gli slot widget ricostruiti, mentre la
-  selezione in-app tratta solo lo slot widget corrente come esposizione recente
-  per ridurre ripetizioni immediate senza bloccare tutta la finestra dei kanji
-  piu prioritari.
+  visibile. Lo storico conserva quindi gli slot pianificati da WidgetKit, senza
+  ricostruire retroattivamente il passato dal dataset o dallo scope correnti; la
+  selezione in-app usa gli slot persistiti dell'ultimo giorno per ridurre le
+  ripetizioni immediate.
 - Dopo reinstallazioni importanti puo essere necessario rimuovere e riaggiungere
   il widget per evitare preview cacheate di WidgetKit.
 - `devicectl` puo installare e lanciare la app, ma non puo aprire la widget
