@@ -1,5 +1,10 @@
 import Foundation
 
+enum DailyKanjiRepositoryMode: Sendable {
+    case app
+    case widget
+}
+
 enum DailyKanjiDatasetSource: Equatable, Sendable {
     case cache(metadata: DailyKanjiCachedDatasetMetadata?)
     case bundle
@@ -29,17 +34,20 @@ struct DailyKanjiRepositorySnapshot: Sendable {
 }
 
 struct DailyKanjiRepository: Sendable {
+    private let mode: DailyKanjiRepositoryMode
     private let bundle: Bundle
     private let cacheStore: DailyKanjiCacheStore
     private let decodeDataset: DailyKanjiDatasetDecoder
 
     init(
+        mode: DailyKanjiRepositoryMode = .app,
         bundle: Bundle = .main,
         cacheStore: DailyKanjiCacheStore = DailyKanjiCacheStore(),
         decodeDataset: @escaping DailyKanjiDatasetDecoder = {
             try DailyKanjiDataset.decode(jsonData: $0)
         }
     ) {
+        self.mode = mode
         self.bundle = bundle
         self.cacheStore = cacheStore
         self.decodeDataset = decodeDataset
@@ -51,6 +59,7 @@ struct DailyKanjiRepository: Sendable {
 
     func loadSnapshot(now: Date = .now) -> DailyKanjiRepositorySnapshot {
         let cachedSnapshot = cacheStore.loadSnapshot(
+            mode: mode,
             now: now,
             decodeDataset: decodeDataset
         )
@@ -111,8 +120,16 @@ struct DailyKanjiRepository: Sendable {
     }
 
     private func loadBundledDataset() -> DailyKanjiDataset? {
+        let resourceName: String
+        switch mode {
+        case .app:
+            resourceName = "daily-kanji-cards"
+        case .widget:
+            resourceName = "daily-kanji-widget-cards"
+        }
+
         guard
-            let url = bundle.url(forResource: "daily-kanji-cards", withExtension: "json"),
+            let url = bundle.url(forResource: resourceName, withExtension: "json"),
             let data = try? Data(contentsOf: url),
             let dataset = try? decodeDataset(data),
             dataset.version == DailyKanjiDataset.supportedVersion,

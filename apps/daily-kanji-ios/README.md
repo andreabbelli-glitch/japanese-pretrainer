@@ -20,16 +20,20 @@ nome app, bundle id, scheme e documentazione sono quelli di **Daily Kanji**.
 - Sideloadly resta solo diagnostico: su questo setup installa la app principale
   ma non registra la WidgetKit extension nella gallery widget.
 
-La app e il widget leggono `daily-kanji-cards.json` quando e' stato esportato.
-Se il file non e' presente usano un sample locale (`学`) per mantenere build e
+La app legge il dataset completo `daily-kanji-cards.json`; il widget riceve
+invece `daily-kanji-widget-cards.json`, una proiezione cards-only dello stesso
+export senza glossary; il target widget non include gli asset audio. Se il file
+dedicato non e' presente usa un sample locale (`学`) per mantenere build e
 preview funzionanti. Lo storico locale conserva le aperture manuali dell'app e
 gli slot dei timeline effettivamente pianificati dall'estensione WidgetKit negli
 ultimi 3 giorni, anche quando la stessa card viene mostrata piu volte.
 Serve a evitare ripetizioni quando l'app viene aperta; le righe recenti sono
 tappabili per riaprire la card completa e fare una mini-review locale. App e
 widget condividono la cache JSON tramite App Group
-`group.dev.local.daily-kanji`, cosi il widget puo rileggere il dataset scaricato
-dall'app senza fare sync di rete separati.
+`group.dev.local.daily-kanji`, cosi il widget puo rileggere la proiezione del
+dataset scaricato dall'app senza fare sync di rete separati. La scrittura della
+cache aggiorna sia il dataset completo dell'app sia la proiezione ridotta letta
+dal widget.
 
 La schermata principale dell'app ha selettori locali per media e modalita':
 `Daily` usa il ranking globale Hard/Again/low-stability, `Prestudy` mostra le
@@ -186,6 +190,7 @@ Output predefiniti:
 ```text
 apps/daily-kanji-ios/App/Resources/daily-kanji-cards.json
 apps/daily-kanji-ios/App/Resources/Audio/
+apps/daily-kanji-ios/WidgetExtension/Resources/daily-kanji-widget-cards.json
 ```
 
 Il JSON e' generato dal DB runtime configurato (`DATABASE_URL`). Gli audio iOS
@@ -193,8 +198,9 @@ playable sono copiati da `content/media/<media-slug>/assets/audio/**` solo per
 le card presenti nel dataset; formati non supportati da iOS, come OGG, vengono
 saltati e l'app disabilita il pulsante audio per quelle card. JSON e audio
 restano ignorati da git per evitare di committare snapshot personali o asset
-duplicati. Durante la build Xcode queste risorse vengono copiate sia nel bundle
-app sia nel bundle WidgetKit extension.
+duplicati. Durante la build Xcode il dataset completo e gli audio vengono
+copiati solo nel bundle app; la WidgetKit extension contiene esclusivamente il
+JSON cards-only, cosi non duplica glossary e circa 93 MB di audio packaged.
 
 Il dataset esporta anche metadata opzionali `studyModes`: le card legacy senza
 metadata restano valide come `Daily`, mentre le nuove card possono essere taggate
@@ -264,10 +270,11 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   quindi puntano alla stessa card quando WidgetKit li aggiorna per lo stesso
   slot. iOS non consente a un widget singolo di espandersi oltre le dimensioni
   del family selezionato.
-- La rotazione widget usa slot di 1 ora. Il widget legge prima la cache
-  condivisa App Group scritta dall'app, poi il bundle packaged, poi il sample di
-  sviluppo. WidgetKit non garantisce un cambio card a ogni singolo wake/sblocco
-  del telefono.
+- La rotazione widget usa slot di 15 minuti. Il widget legge prima la cache
+  cards-only condivisa App Group scritta dall'app, poi il bundle cards-only
+  packaged, poi il sample di sviluppo. Non carica il glossary o gli audio
+  dell'app. WidgetKit non garantisce un cambio card a ogni singolo
+  wake/sblocco del telefono.
 - Il widget usa deep link `dailykanji://card/<card-id>` per aprire la card
   completa nell'app.
 - L'app non puo sapere con certezza se il widget lockscreen e' stato davvero
@@ -286,13 +293,15 @@ La v1 resta personale e leggera; la milestone smart-sync evolve il
 contratto in offline-first senza introdurre vendita, multiutente o sync FSRS da
 iOS:
 
-- dataset full e audio locali restano packaged nell'app come fallback;
+- dataset full e audio locali restano packaged solo nell'app come fallback;
+- il widget package contiene solo la proiezione cards-only dello stesso export;
 - solo l'app scarica un piccolo JSON privato quando la cache condivisa e' stale
   o quando l'utente forza il refresh;
 - la review live e' online-only e usa `MOBILE_API_*`, separata dal dataset
   packaged/cache;
 - le notifiche APNs sono app-only; il widget resta network-free;
-- il widget legge la cache condivisa App Group e non fa richieste di rete;
+- il widget legge la cache cards-only condivisa App Group e non fa richieste di
+  rete;
 - nessuna scrittura FSRS offline da iOS;
 - App Group limitato a `group.dev.local.daily-kanji`;
 - nessun Associated Domains;

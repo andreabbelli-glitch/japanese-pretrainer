@@ -27,6 +27,14 @@ const defaultOutputPath = path.join(
   "Resources",
   "daily-kanji-cards.json"
 );
+const defaultWidgetOutputPath = path.join(
+  process.cwd(),
+  "apps",
+  "daily-kanji-ios",
+  "WidgetExtension",
+  "Resources",
+  "daily-kanji-widget-cards.json"
+);
 
 try {
   const options = resolveCliOptions(process.argv.slice(2));
@@ -48,16 +56,30 @@ try {
       recentMistakeLookbackDays: options.lookbackDays
     });
     const outputPath = path.resolve(options.outputPath);
+    const widgetOutputPath = path.resolve(options.widgetOutputPath);
+    const widgetDataset = buildWidgetDataset(dataset);
 
-    await mkdir(path.dirname(outputPath), { recursive: true });
-    await writeFile(
-      outputPath,
-      `${JSON.stringify(dataset, null, 2)}\n`,
-      "utf8"
-    );
+    if (outputPath === widgetOutputPath) {
+      throw new Error(
+        "The app and widget Daily Kanji dataset outputs must be different files."
+      );
+    }
+
+    await Promise.all([
+      mkdir(path.dirname(outputPath), { recursive: true }),
+      mkdir(path.dirname(widgetOutputPath), { recursive: true })
+    ]);
+    await Promise.all([
+      writeFile(outputPath, `${JSON.stringify(dataset, null, 2)}\n`, "utf8"),
+      writeFile(
+        widgetOutputPath,
+        `${JSON.stringify(widgetDataset, null, 2)}\n`,
+        "utf8"
+      )
+    ]);
 
     process.stdout.write(
-      `Wrote ${dataset.cards.length} Daily Kanji cards to ${outputPath}\n`
+      `Wrote ${dataset.cards.length} Daily Kanji cards to ${outputPath} and cards-only widget dataset to ${widgetOutputPath}\n`
     );
   } finally {
     closeDatabaseClient(database);
@@ -71,6 +93,7 @@ type CliOptions = {
   limit: number;
   lookbackDays: number;
   outputPath: string;
+  widgetOutputPath: string;
 };
 
 type DatabaseLocation = {
@@ -83,6 +106,7 @@ function resolveCliOptions(args: string[]): CliOptions {
   let limit = dailyKanjiDefaultExportLimit;
   let lookbackDays = dailyKanjiDefaultRecentMistakeLookbackDays;
   let outputPath = defaultOutputPath;
+  let widgetOutputPath: string | undefined;
 
   for (let index = 0; index < args.length; index += 1) {
     const value = args[index]!;
@@ -109,6 +133,12 @@ function resolveCliOptions(args: string[]): CliOptions {
       continue;
     }
 
+    if (value === "--widget-out") {
+      widgetOutputPath = readOptionValue(args, index, "--widget-out");
+      index += 1;
+      continue;
+    }
+
     if (value.startsWith("--")) {
       throw new Error(`Unknown argument: ${value}`);
     }
@@ -119,8 +149,22 @@ function resolveCliOptions(args: string[]): CliOptions {
   return {
     limit,
     lookbackDays,
-    outputPath
+    outputPath,
+    widgetOutputPath:
+      widgetOutputPath ??
+      (outputPath === defaultOutputPath
+        ? defaultWidgetOutputPath
+        : path.join(path.dirname(outputPath), "daily-kanji-widget-cards.json"))
   };
+}
+
+function buildWidgetDataset(
+  dataset: Awaited<ReturnType<typeof buildDailyKanjiDataset>>
+) {
+  const widgetDataset = { ...dataset };
+  delete widgetDataset.glossary;
+
+  return widgetDataset;
 }
 
 function assertReadableDatabaseLocation(location: DatabaseLocation) {

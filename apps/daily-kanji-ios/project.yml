@@ -40,7 +40,9 @@ targets:
     sources:
       - path: Shared
       - path: WidgetExtension
-      - path: App/Resources
+        excludes:
+          - Resources
+      - path: WidgetExtension/Resources
         buildPhase: resources
         excludes:
           - .gitkeep

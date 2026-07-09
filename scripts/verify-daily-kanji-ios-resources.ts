@@ -1,6 +1,7 @@
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { isDeepStrictEqual } from "node:util";
 
 import type { DailyKanjiDataset } from "../src/features/daily-kanji/types.ts";
 import { buildDailyKanjiAudioBundleFileName } from "../src/features/daily-kanji/server/audio-packager.ts";
@@ -29,12 +30,20 @@ export async function verifyDailyKanjiIosResources(input: VerificationInput) {
     "daily-kanji-cards.json"
   );
   const audioRoot = path.join(iosRoot, "App", "Resources", "Audio");
+  const widgetDatasetPath = path.join(
+    iosRoot,
+    "WidgetExtension",
+    "Resources",
+    "daily-kanji-widget-cards.json"
+  );
   const maxAgeHours = input.maxAgeHours ?? defaultMaxAgeHours;
   const minCards = input.minCards ?? defaultMinCards;
   const now = input.now ?? new Date();
-  const dataset = await readDataset(datasetPath);
+  const dataset = await readDataset(datasetPath, "app");
+  const widgetDataset = await readDataset(widgetDatasetPath, "widget");
 
   validateDatasetShape(dataset, minCards);
+  validateWidgetDataset(widgetDataset, dataset);
   validateGeneratedAt(dataset.generatedAt, {
     allowStale: input.allowStale,
     maxAgeHours,
@@ -45,17 +54,21 @@ export async function verifyDailyKanjiIosResources(input: VerificationInput) {
   return {
     audioReferences: countPlayableAudioReferences(dataset),
     cards: dataset.cards.length,
-    generatedAt: dataset.generatedAt
+    generatedAt: dataset.generatedAt,
+    widgetCards: widgetDataset.cards.length
   };
 }
 
-async function readDataset(datasetPath: string): Promise<DailyKanjiDataset> {
+async function readDataset(
+  datasetPath: string,
+  target: "app" | "widget"
+): Promise<DailyKanjiDataset> {
   let raw: string;
   try {
     raw = await readFile(datasetPath, "utf8");
   } catch {
     throw new DailyKanjiResourceVerificationError(
-      `Missing Daily Kanji iOS dataset: ${datasetPath}\nRun ./scripts/with-node.sh pnpm daily-kanji:package before building the iOS app.`
+      `Missing Daily Kanji iOS ${target} dataset: ${datasetPath}\nRun ./scripts/with-node.sh pnpm daily-kanji:package before building the iOS app.`
     );
   }
 
@@ -63,7 +76,26 @@ async function readDataset(datasetPath: string): Promise<DailyKanjiDataset> {
     return JSON.parse(raw) as DailyKanjiDataset;
   } catch {
     throw new DailyKanjiResourceVerificationError(
-      `Invalid Daily Kanji iOS dataset JSON: ${datasetPath}`
+      `Invalid Daily Kanji iOS ${target} dataset JSON: ${datasetPath}`
+    );
+  }
+}
+
+function validateWidgetDataset(
+  widgetDataset: DailyKanjiDataset,
+  appDataset: DailyKanjiDataset
+) {
+  if (Object.hasOwn(widgetDataset, "glossary")) {
+    throw new DailyKanjiResourceVerificationError(
+      "Daily Kanji widget dataset must not contain the full glossary snapshot. Run ./scripts/with-node.sh pnpm daily-kanji:package."
+    );
+  }
+
+  const expectedWidgetDataset = { ...appDataset };
+  delete expectedWidgetDataset.glossary;
+  if (!isDeepStrictEqual(widgetDataset, expectedWidgetDataset)) {
+    throw new DailyKanjiResourceVerificationError(
+      "Daily Kanji widget dataset does not match the cards-only projection of the app dataset. Run ./scripts/with-node.sh pnpm daily-kanji:package."
     );
   }
 }
@@ -263,7 +295,7 @@ async function main() {
     parseArgs(process.argv.slice(2))
   );
   process.stdout.write(
-    `Daily Kanji iOS resources verified: ${result.cards} card(s), ${result.audioReferences} playable audio reference(s), generatedAt ${result.generatedAt}\n`
+    `Daily Kanji iOS resources verified: ${result.cards} app card(s), ${result.widgetCards} widget card(s), ${result.audioReferences} playable audio reference(s), generatedAt ${result.generatedAt}\n`
   );
 }
 

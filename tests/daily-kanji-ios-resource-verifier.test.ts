@@ -27,7 +27,9 @@ describe("daily kanji iOS resource verifier", () => {
   });
 
   it("accepts a fresh packaged personal dataset", async () => {
-    await writeDataset(buildDataset({ generatedAt: "2026-06-10T12:00:00.000Z" }));
+    await writeDataset(
+      buildDataset({ generatedAt: "2026-06-10T12:00:00.000Z" })
+    );
 
     await expect(
       verifyDailyKanjiIosResources({
@@ -38,8 +40,65 @@ describe("daily kanji iOS resource verifier", () => {
     ).resolves.toMatchObject({
       audioReferences: 0,
       cards: 1,
+      generatedAt: "2026-06-10T12:00:00.000Z",
+      widgetCards: 1
+    });
+  });
+
+  it("requires a cards-only widget dataset", async () => {
+    const dataset = buildDataset({
       generatedAt: "2026-06-10T12:00:00.000Z"
     });
+    await writeAppDataset(dataset);
+
+    await expect(
+      verifyDailyKanjiIosResources({
+        iosRoot: tempRoot,
+        minCards: 1,
+        now: new Date("2026-06-11T12:00:00.000Z")
+      })
+    ).rejects.toThrow(/Missing Daily Kanji iOS widget dataset/);
+  });
+
+  it("rejects widget cards that diverge from the app projection", async () => {
+    const dataset = buildDataset({
+      generatedAt: "2026-06-10T12:00:00.000Z"
+    });
+    await writeAppDataset(dataset);
+    await writeWidgetDataset({
+      ...buildWidgetProjection(dataset),
+      generatedAt: "2026-06-10T12:01:00.000Z"
+    });
+
+    await expect(
+      verifyDailyKanjiIosResources({
+        iosRoot: tempRoot,
+        minCards: 1,
+        now: new Date("2026-06-11T12:00:00.000Z")
+      })
+    ).rejects.toThrow(/does not match the cards-only projection/);
+  });
+
+  it("rejects a widget payload that includes the full glossary", async () => {
+    const dataset = {
+      ...buildDataset({ generatedAt: "2026-06-10T12:00:00.000Z" }),
+      glossary: {
+        entries: [],
+        entryCount: 0,
+        generatedAt: "2026-06-10T12:00:00.000Z",
+        version: 1
+      }
+    };
+    await writeAppDataset(dataset);
+    await writeWidgetDataset(dataset);
+
+    await expect(
+      verifyDailyKanjiIosResources({
+        iosRoot: tempRoot,
+        minCards: 1,
+        now: new Date("2026-06-11T12:00:00.000Z")
+      })
+    ).rejects.toThrow(/must not contain the full glossary/);
   });
 
   it("rejects the sample dataset before build or install", async () => {
@@ -61,7 +120,9 @@ describe("daily kanji iOS resource verifier", () => {
   });
 
   it("rejects stale resources unless explicitly allowed", async () => {
-    await writeDataset(buildDataset({ generatedAt: "2026-06-01T12:00:00.000Z" }));
+    await writeDataset(
+      buildDataset({ generatedAt: "2026-06-01T12:00:00.000Z" })
+    );
 
     await expect(
       verifyDailyKanjiIosResources({
@@ -112,7 +173,9 @@ describe("daily kanji iOS resource verifier", () => {
   });
 
   it("runs as a CLI from repository paths that contain spaces", async () => {
-    await writeDataset(buildDataset({ generatedAt: "2026-06-10T12:00:00.000Z" }));
+    await writeDataset(
+      buildDataset({ generatedAt: "2026-06-10T12:00:00.000Z" })
+    );
 
     const result = await execFileAsync(process.execPath, [
       "--disable-warning=MODULE_TYPELESS_PACKAGE_JSON",
@@ -126,10 +189,19 @@ describe("daily kanji iOS resource verifier", () => {
       "2026-06-11T12:00:00.000Z"
     ]);
 
-    expect(result.stdout).toContain("Daily Kanji iOS resources verified: 1 card(s)");
+    expect(result.stdout).toContain(
+      "Daily Kanji iOS resources verified: 1 app card(s), 1 widget card(s)"
+    );
   });
 
   async function writeDataset(dataset: unknown) {
+    await Promise.all([
+      writeAppDataset(dataset),
+      writeWidgetDataset(buildWidgetProjection(dataset))
+    ]);
+  }
+
+  async function writeAppDataset(dataset: unknown) {
     const resourcesRoot = path.join(tempRoot, "App", "Resources");
     await mkdir(resourcesRoot, { recursive: true });
     await writeFile(
@@ -137,7 +209,23 @@ describe("daily kanji iOS resource verifier", () => {
       JSON.stringify(dataset)
     );
   }
+
+  async function writeWidgetDataset(dataset: unknown) {
+    const resourcesRoot = path.join(tempRoot, "WidgetExtension", "Resources");
+    await mkdir(resourcesRoot, { recursive: true });
+    await writeFile(
+      path.join(resourcesRoot, "daily-kanji-widget-cards.json"),
+      JSON.stringify(dataset)
+    );
+  }
 });
+
+function buildWidgetProjection(dataset: unknown) {
+  const widgetDataset = { ...(dataset as Record<string, unknown>) };
+  delete widgetDataset.glossary;
+
+  return widgetDataset;
+}
 
 function buildDataset(input: {
   audioSrc?: string;

@@ -7,7 +7,7 @@ struct KanjiEntry: TimelineEntry {
 }
 
 struct KanjiProvider: TimelineProvider {
-    private let repository = DailyKanjiRepository()
+    private let repository = DailyKanjiRepository(mode: .widget)
     private let scopeStore = DailyKanjiStudyScopeStore()
     private let widgetHistoryStore = DailyKanjiWidgetTimelineHistoryStore()
 
@@ -16,33 +16,15 @@ struct KanjiProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (KanjiEntry) -> Void) {
-        let card = selectedCard(now: .now)
-        completion(KanjiEntry(date: .now, card: card))
+        let now = Date()
+        let entry = timelineEntries(startingAt: now, count: 1).first
+            ?? KanjiEntry(date: now, card: DailyKanjiSampleData.card)
+        completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<KanjiEntry>) -> Void) {
         let now = Date()
-        let cards = repository.loadCards()
-        let scope = DailyKanjiStudyScopeResolver.resolve(
-            scopeStore.load(),
-            cards: cards
-        )
-        let dates = DailyKanjiSelector.widgetTimelineDates(startingAt: now)
-        let timelineCards = DailyKanjiSelector.widgetTimelineCards(
-            cards: cards,
-            dates: dates,
-            mediaSlug: scope.mediaSlug,
-            studyMode: scope.studyMode
-        )
-        let entries = dates.enumerated().map { index, date in
-            let card: DailyKanjiCard
-            if index < timelineCards.count {
-                card = timelineCards[index]
-            } else {
-                card = DailyKanjiSampleData.card
-            }
-            return KanjiEntry(date: date, card: card)
-        }
+        let entries = timelineEntries(startingAt: now)
         let refresh = entries.last.map {
             DailyKanjiSelector.nextWidgetRefreshDate(after: $0.date)
         } ?? DailyKanjiSelector.nextWidgetRefreshDate(after: now)
@@ -59,20 +41,34 @@ struct KanjiProvider: TimelineProvider {
         completion(Timeline(entries: entries, policy: .after(refresh)))
     }
 
-    private func selectedCard(now: Date) -> DailyKanjiCard {
+    private func timelineEntries(
+        startingAt now: Date,
+        count: Int = DailyKanjiSelector.defaultWidgetTimelineEntryCount
+    ) -> [KanjiEntry] {
         let cards = repository.loadCards()
         let scope = DailyKanjiStudyScopeResolver.resolve(
             scopeStore.load(),
             cards: cards
         )
-        return DailyKanjiSelector.select(
+        let dates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: now,
+            count: count
+        )
+        let timelineCards = DailyKanjiSelector.widgetTimelineCards(
             cards: cards,
-            history: [],
-            now: now,
-            mode: .widgetTimeline,
+            dates: dates,
             mediaSlug: scope.mediaSlug,
             studyMode: scope.studyMode
-        ) ?? DailyKanjiSampleData.card
+        )
+        return dates.enumerated().map { index, date in
+            let card: DailyKanjiCard
+            if index < timelineCards.count {
+                card = timelineCards[index]
+            } else {
+                card = DailyKanjiSampleData.card
+            }
+            return KanjiEntry(date: date, card: card)
+        }
     }
 }
 

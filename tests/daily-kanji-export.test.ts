@@ -355,6 +355,10 @@ describe("daily kanji iOS export", () => {
       },
       async ({ databasePath, tempDir }) => {
         const outputPath = path.join(tempDir, "daily-kanji-cards.json");
+        const derivedWidgetOutputPath = path.join(
+          tempDir,
+          "daily-kanji-widget-cards.json"
+        );
         const { stdout } = await execFileAsync(
           process.execPath,
           [
@@ -376,13 +380,56 @@ describe("daily kanji iOS export", () => {
         const dataset = JSON.parse(await readFile(outputPath, "utf8")) as {
           cards: unknown[];
           glossary?: { entryCount: number };
+          [key: string]: unknown;
         };
+        const widgetDataset = JSON.parse(
+          await readFile(derivedWidgetOutputPath, "utf8")
+        ) as Record<string, unknown>;
+        const expectedWidgetDataset = { ...dataset };
+        delete expectedWidgetDataset.glossary;
 
         expect(stdout).toContain(
           `Wrote ${dataset.cards.length} Daily Kanji cards`
         );
         expect(dataset.cards.length).toBe(1);
         expect(dataset.glossary?.entryCount).toBeGreaterThan(0);
+        expect(widgetDataset).toEqual(expectedWidgetDataset);
+        expect(widgetDataset).not.toHaveProperty("glossary");
+
+        const explicitOutputPath = path.join(tempDir, "explicit", "app.json");
+        const explicitWidgetOutputPath = path.join(
+          tempDir,
+          "explicit-widget",
+          "cards.json"
+        );
+        const explicitResult = await execFileAsync(
+          process.execPath,
+          [
+            "--disable-warning=MODULE_TYPELESS_PACKAGE_JSON",
+            "--experimental-strip-types",
+            exportScriptPath,
+            "--out",
+            explicitOutputPath,
+            "--widget-out",
+            explicitWidgetOutputPath,
+            "--limit",
+            "1"
+          ],
+          {
+            env: {
+              ...process.env,
+              DATABASE_URL: databasePath
+            }
+          }
+        );
+
+        expect(explicitResult.stdout).toContain(explicitWidgetOutputPath);
+        await expect(readFile(explicitOutputPath, "utf8")).resolves.toContain(
+          '"glossary"'
+        );
+        await expect(
+          readFile(explicitWidgetOutputPath, "utf8")
+        ).resolves.not.toContain('"glossary"');
       }
     );
   });

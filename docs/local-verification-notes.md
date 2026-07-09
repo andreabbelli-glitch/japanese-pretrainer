@@ -292,9 +292,10 @@ MOBILE_API_TOKEN=<secret>
 
 Se i valori dataset restano assenti o placeholder, l'app continua a funzionare
 con cache o bundle locale e mostra `Sync non configurato`; il widget continua a
-leggere solo la cache condivisa o il bundle. Se i valori `MOBILE_API_*` restano
-assenti o placeholder, la review live mostra `Live review non configurata` e non
-abilita grading nativo. La richiesta permesso notifiche viene fatta solo quando
+leggere solo la cache cards-only condivisa o il bundle cards-only. Se i valori
+`MOBILE_API_*` restano assenti o placeholder, la review live mostra
+`Live review non configurata` e non abilita grading nativo. La richiesta
+permesso notifiche viene fatta solo quando
 `MOBILE_API_*` e' configurato e la build e' firmata con entitlement
 `aps-environment`. Le build Personal Team usano il default senza push; imposta
 `DAILY_KANJI_ENABLE_APNS=1` solo con un Apple Developer team/provisioning che
@@ -306,14 +307,19 @@ Per aggiornare lo snapshot offline e gli audio packaged usati dall'app iOS:
 ./scripts/with-node.sh pnpm daily-kanji:package
 ```
 
-Il comando scrive `apps/daily-kanji-ios/App/Resources/daily-kanji-cards.json`
-e `apps/daily-kanji-ios/App/Resources/Audio/`, poi esegue
+Il comando scrive `apps/daily-kanji-ios/App/Resources/daily-kanji-cards.json`,
+`apps/daily-kanji-ios/App/Resources/Audio/` e la proiezione cards-only
+`apps/daily-kanji-ios/WidgetExtension/Resources/daily-kanji-widget-cards.json`,
+poi esegue
 `daily-kanji:verify-resources`. I due workflow iOS `scripts/package-ipa.sh` e
 `scripts/xcode-renew.sh` rieseguono lo stesso verifier prima di `xcodegen
 generate`, cosi' una build/install viene bloccata se il bundle contiene ancora
-la card sample, un dataset stale, o audio referenziati ma non packaged. Le
-risorse sono ignorate da git perche' contengono stato personale derivato dal DB
-runtime e copie audio generate. Gli audio in formati non riproducibili dal
+la card sample, un dataset stale, audio referenziati ma non packaged, oppure una
+proiezione widget assente, divergente o contenente il glossary. Le risorse sono
+ignorate da git perche' contengono stato personale derivato dal DB runtime e
+copie audio generate. Xcode include dataset completo e audio solo nel bundle
+app; il bundle widget riceve esclusivamente il JSON cards-only, senza glossary o
+audio duplicati. Gli audio in formati non riproducibili dal
 runtime iOS, per esempio OGG, vengono segnalati come skipped e non abilitano il
 pulsante audio nell'app. Per una build intenzionalmente stale usa
 `DAILY_KANJI_ALLOW_STALE_RESOURCES=1`, evitando di renderlo il default.

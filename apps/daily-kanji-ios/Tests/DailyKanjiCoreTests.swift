@@ -558,6 +558,89 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(writtenMetadata, snapshot.metadata)
     }
 
+    func testCacheWriterCreatesFullAppAndCardsOnlyWidgetSnapshots() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let cacheStore = DailyKanjiCacheStore(directoryURL: temporaryDirectory)
+        let modeDataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let glossary = try XCTUnwrap(
+            DailyKanjiDataset.decode(jsonData: Self.glossaryDatasetJSON).glossary
+        )
+        let dataset = DailyKanjiDataset(
+            version: modeDataset.version,
+            generatedAt: modeDataset.generatedAt,
+            recentMistakeLookbackDays: modeDataset.recentMistakeLookbackDays,
+            cards: modeDataset.cards,
+            glossary: glossary
+        )
+
+        _ = try await cacheStore.makeWriter().write(dataset: dataset, cachedAt: now)
+
+        let appSnapshot = try XCTUnwrap(cacheStore.loadSnapshot(mode: .app, now: now))
+        let widgetSnapshot = try XCTUnwrap(cacheStore.loadSnapshot(mode: .widget, now: now))
+
+        XCTAssertEqual(appSnapshot.dataset.glossary, glossary)
+        XCTAssertNil(widgetSnapshot.dataset.glossary)
+        XCTAssertEqual(widgetSnapshot.dataset.cards, appSnapshot.dataset.cards)
+        XCTAssertEqual(widgetSnapshot.dataset.generatedAt, appSnapshot.dataset.generatedAt)
+        XCTAssertEqual(widgetSnapshot.metadata, appSnapshot.metadata)
+    }
+
+    func testWidgetRepositoryPrefersCardsOnlySyncedCache() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let bundledDataset = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON)
+        let bundle = try Self.makeBundle(
+            containing: bundledDataset.widgetProjection,
+            in: temporaryDirectory,
+            resourceName: "daily-kanji-widget-cards"
+        )
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let cachedDataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        _ = try await cacheStore.makeWriter().write(dataset: cachedDataset, cachedAt: now)
+
+        let snapshot = DailyKanjiRepository(
+            mode: .widget,
+            bundle: bundle,
+            cacheStore: cacheStore
+        ).loadSnapshot(now: now)
+
+        XCTAssertEqual(snapshot.cards.map(\.cardId), cachedDataset.cards.map(\.cardId))
+        XCTAssertTrue(snapshot.glossaryEntries.isEmpty)
+        XCTAssertEqual(snapshot.source, .cache(metadata: snapshot.cacheMetadata))
+    }
+
+    func testWidgetRepositoryNeverFallsBackToTheFullAppCache() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let bundledDataset = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON)
+        let bundle = try Self.makeBundle(
+            containing: bundledDataset.widgetProjection,
+            in: temporaryDirectory,
+            resourceName: "daily-kanji-widget-cards"
+        )
+        let cacheDirectory = temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        let cacheStore = DailyKanjiCacheStore(directoryURL: cacheDirectory)
+        let fullCacheDataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        _ = try await cacheStore.makeWriter().write(dataset: fullCacheDataset, cachedAt: now)
+        try FileManager.default.removeItem(
+            at: cacheDirectory.appendingPathComponent(
+                DailyKanjiCacheStore.widgetDatasetFileName
+            )
+        )
+
+        let snapshot = DailyKanjiRepository(
+            mode: .widget,
+            bundle: bundle,
+            cacheStore: cacheStore
+        ).loadSnapshot(now: now)
+
+        XCTAssertEqual(snapshot.cards.map(\.cardId), bundledDataset.cards.map(\.cardId))
+        XCTAssertEqual(snapshot.source, .bundle)
+    }
+
     func testCacheStoreDeclaresTheSharedAppGroupIdentifier() {
         XCTAssertEqual(
             DailyKanjiCacheStore.appGroupIdentifier,
@@ -2564,6 +2647,65 @@ final class DailyKanjiCoreTests: XCTestCase {
                 Date(timeIntervalSince1970: (60 * 60) + (45 * 60))
             ]
         )
+    }
+
+    func testWidgetSnapshotAndTimelineUseTheSameFullRotationPool() throws {
+        let cards = try Self.rankedCards(count: 120)
+        let now = Date(
+            timeIntervalSince1970: 50 * DailyKanjiSelector.widgetSlotDuration
+        )
+        let snapshotDates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: now,
+            count: 1
+        )
+        let timelineDates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: now
+        )
+        let snapshotCard = try XCTUnwrap(
+            DailyKanjiSelector.widgetTimelineCards(
+                cards: cards,
+                dates: snapshotDates
+            ).first
+        )
+        let firstTimelineCard = try XCTUnwrap(
+            DailyKanjiSelector.widgetTimelineCards(
+                cards: cards,
+                dates: timelineDates
+            ).first
+        )
+        let legacyWindowCard = DailyKanjiSelector.select(
+            cards: cards,
+            history: [],
+            now: now,
+            mode: .widgetTimeline
+        )
+
+        XCTAssertEqual(snapshotCard.cardId, firstTimelineCard.cardId)
+        XCTAssertEqual(snapshotCard.cardId, "card-50")
+        XCTAssertNotEqual(snapshotCard.cardId, legacyWindowCard?.cardId)
+    }
+
+    func testWidgetProviderUsesOneTimelineBuilderForSnapshotAndTimeline() throws {
+        let source = try Self.widgetSourceFileContents()
+        guard
+            let providerStart = source.range(of: "struct KanjiProvider"),
+            let providerEnd = source.range(of: "\nenum DailyKanjiLockScreenWidgetRole")
+        else {
+            XCTFail("Could not isolate KanjiProvider.")
+            return
+        }
+        let providerBlock = String(
+            source[providerStart.lowerBound..<providerEnd.lowerBound]
+        )
+
+        XCTAssertTrue(providerBlock.contains("DailyKanjiRepository(mode: .widget)"))
+        XCTAssertTrue(
+            providerBlock.contains("timelineEntries(startingAt: now, count: 1)")
+        )
+        XCTAssertTrue(
+            providerBlock.contains("let entries = timelineEntries(startingAt: now)")
+        )
+        XCTAssertFalse(providerBlock.contains("mode: .widgetTimeline"))
     }
 
     func testWidgetTimelineDatesStaySynchronizedWithinTheSameRotationSlot() throws {
@@ -4931,7 +5073,8 @@ final class DailyKanjiCoreTests: XCTestCase {
 
     private static func makeBundle(
         containing dataset: DailyKanjiDataset,
-        in directoryURL: URL
+        in directoryURL: URL,
+        resourceName: String = "daily-kanji-cards"
     ) throws -> Bundle {
         let bundleURL = directoryURL.appendingPathComponent(
             "DailyKanjiTest-\(UUID().uuidString).bundle",
@@ -4946,7 +5089,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         encoder.outputFormatting = [.sortedKeys]
         try encoder
             .encode(dataset)
-            .write(to: bundleURL.appendingPathComponent("daily-kanji-cards.json"))
+            .write(to: bundleURL.appendingPathComponent("\(resourceName).json"))
 
         let bundleIdentifier = "dev.local.daily-kanji.tests.\(UUID().uuidString)"
         let infoPlist = """

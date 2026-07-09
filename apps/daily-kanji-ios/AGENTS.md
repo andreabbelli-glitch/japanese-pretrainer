@@ -14,8 +14,11 @@ difficili/instabili esportate da Japanese Custom Study.
   extension nella gallery.
 - Mantieni la app read-only rispetto alla review FSRS fino a una milestone
   esplicita di sync bidirezionale.
-- Le risorse audio packaged sono build artifact generati: non committare
-  dump audio duplicati dentro questa cartella senza una decisione esplicita.
+- Dataset e risorse audio packaged sono build artifact generati: non committare
+  snapshot o dump audio duplicati. Il target app include dataset full e audio;
+  il target widget deve includere solo
+  `WidgetExtension/Resources/daily-kanji-widget-cards.json`, mai
+  `App/Resources`.
 - Il monitor GitHub Actions delle notifiche review live e sospeso finche
   APNs/notifiche non sono affidabili. Il workflow root
   `.github/workflows/mobile-review-notifications.yml` deve restare manuale
@@ -120,10 +123,15 @@ cd ../..
 ./scripts/with-node.sh pnpm daily-kanji:package
 ```
 
+Il package genera il dataset completo e gli audio sotto `App/Resources/` e una
+proiezione cards-only sotto `WidgetExtension/Resources/`. Il verifier richiede
+che la proiezione widget corrisponda esattamente alle card del dataset completo
+e non contenga il glossary.
+
 Prima di `xcodegen generate`, `scripts/xcode-renew.sh` e `scripts/package-ipa.sh`
 eseguono il verifier root `daily-kanji:verify-resources`: blocca build/install
-con dataset sample, dataset stale o audio referenziati non presenti nel bundle.
-Per una build intenzionalmente stale usa
+con dataset sample, dataset stale, audio referenziati non presenti nel bundle o
+proiezione widget non coerente. Per una build intenzionalmente stale usa
 `DAILY_KANJI_ALLOW_STALE_RESOURCES=1`, ma non renderlo il default.
 
 ## Verifica per slice

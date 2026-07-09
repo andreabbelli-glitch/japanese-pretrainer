@@ -20,7 +20,8 @@
       "expectedRemoteQueriesPerPackageRun": 1,
       "generatedArtifacts": [
         "App/Resources/daily-kanji-cards.json",
-        "App/Resources/Audio/"
+        "App/Resources/Audio/",
+        "WidgetExtension/Resources/daily-kanji-widget-cards.json"
       ],
       "trigger": "manual-only",
       "vercelRequestsPerPackageRun": 0

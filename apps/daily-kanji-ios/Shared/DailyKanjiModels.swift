@@ -26,6 +26,16 @@ struct DailyKanjiDataset: Codable, Sendable {
     static func decode(jsonData: Data) throws -> DailyKanjiDataset {
         try JSONDecoder().decode(DailyKanjiDataset.self, from: jsonData)
     }
+
+    var widgetProjection: DailyKanjiDataset {
+        DailyKanjiDataset(
+            version: version,
+            generatedAt: generatedAt,
+            recentMistakeLookbackDays: recentMistakeLookbackDays,
+            cards: cards,
+            glossary: nil
+        )
+    }
 }
 
 struct DailyKanjiGlossarySnapshot: Codable, Equatable, Sendable {

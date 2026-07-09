@@ -38,6 +38,7 @@ actor DailyKanjiCacheWriter: DailyKanjiCacheWriting {
 struct DailyKanjiCacheStore: Sendable {
     static let appGroupIdentifier = "group.dev.local.daily-kanji"
     static let datasetFileName = "daily-kanji-cards.json"
+    static let widgetDatasetFileName = "daily-kanji-widget-cards.json"
     static let metadataFileName = "daily-kanji-cache-metadata.json"
 
     private let directoryURL: URL
@@ -47,13 +48,14 @@ struct DailyKanjiCacheStore: Sendable {
     }
 
     func loadSnapshot(
+        mode: DailyKanjiRepositoryMode = .app,
         now: Date = .now,
         decodeDataset: DailyKanjiDatasetDecoder = {
             try DailyKanjiDataset.decode(jsonData: $0)
         }
     ) -> DailyKanjiCachedDatasetSnapshot? {
         guard
-            let data = try? Data(contentsOf: datasetURL),
+            let data = try? Data(contentsOf: datasetURL(for: mode)),
             let dataset = try? decodeDataset(data),
             dataset.version == DailyKanjiDataset.supportedVersion
         else {
@@ -109,13 +111,22 @@ struct DailyKanjiCacheStore: Sendable {
             cardCount: dataset.cards.count
         )
 
+        let datasetData = try encoder.encode(dataset)
+        let widgetDatasetData = try encoder.encode(dataset.widgetProjection)
+        let metadataData = try encoder.encode(metadata)
+
         try writeAtomically(
-            try encoder.encode(dataset),
+            datasetData,
             to: datasetURL,
             fileManager: fileManager
         )
         try writeAtomically(
-            try encoder.encode(metadata),
+            widgetDatasetData,
+            to: widgetDatasetURL,
+            fileManager: fileManager
+        )
+        try writeAtomically(
+            metadataData,
             to: metadataURL,
             fileManager: fileManager
         )
@@ -125,6 +136,19 @@ struct DailyKanjiCacheStore: Sendable {
 
     private var datasetURL: URL {
         directoryURL.appendingPathComponent(Self.datasetFileName)
+    }
+
+    private var widgetDatasetURL: URL {
+        directoryURL.appendingPathComponent(Self.widgetDatasetFileName)
+    }
+
+    private func datasetURL(for mode: DailyKanjiRepositoryMode) -> URL {
+        switch mode {
+        case .app:
+            return datasetURL
+        case .widget:
+            return widgetDatasetURL
+        }
     }
 
     private var metadataURL: URL {

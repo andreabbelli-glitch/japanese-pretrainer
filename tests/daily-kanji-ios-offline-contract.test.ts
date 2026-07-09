@@ -16,8 +16,8 @@ const projectConfigPath = path.join(iosRoot, "project.yml");
 const databaseScannedSourceDirs = ["App", "Shared", "WidgetExtension"].map(
   (segment) => path.join(iosRoot, segment)
 );
-const networkFreeRuntimeSourceDirs = ["Shared", "WidgetExtension"].map((segment) =>
-  path.join(iosRoot, segment)
+const networkFreeRuntimeSourceDirs = ["Shared", "WidgetExtension"].map(
+  (segment) => path.join(iosRoot, segment)
 );
 const forbiddenSharedNetworkPatterns = [
   /\bAsyncImage\s*\(/,
@@ -102,7 +102,8 @@ describe("daily kanji iOS offline contract", () => {
           expectedRemoteQueriesPerPackageRun: 1,
           generatedArtifacts: [
             "App/Resources/daily-kanji-cards.json",
-            "App/Resources/Audio/"
+            "App/Resources/Audio/",
+            "WidgetExtension/Resources/daily-kanji-widget-cards.json"
           ],
           trigger: "manual-only",
           vercelRequestsPerPackageRun: 0
@@ -118,7 +119,9 @@ describe("daily kanji iOS offline contract", () => {
   });
 
   it("keeps shared and widget runtime sources free of networking APIs", async () => {
-    const sourceFiles = await listFiles(networkFreeRuntimeSourceDirs, [".swift"]);
+    const sourceFiles = await listFiles(networkFreeRuntimeSourceDirs, [
+      ".swift"
+    ]);
     const violations = await matchingLines(
       sourceFiles,
       forbiddenSharedNetworkPatterns
@@ -246,7 +249,8 @@ describe("daily kanji iOS offline contract", () => {
     });
     expect(apsEnvironments).toEqual({
       "DailyKanji.entitlements": contract.entitlements.defaultApsEnvironment,
-      "DailyKanjiPush.entitlements": contract.entitlements.optionalApsEnvironment,
+      "DailyKanjiPush.entitlements":
+        contract.entitlements.optionalApsEnvironment,
       "DailyKanjiWidgetExtension.entitlements": null
     });
     expect(
@@ -282,6 +286,36 @@ describe("daily kanji iOS offline contract", () => {
         "TARGETED_DEVICE_FAMILY"
       )
     ).toBe("1");
+  });
+
+  it("packages only the cards projection in the widget extension", async () => {
+    const project = parse(await readFile(projectConfigPath, "utf8")) as {
+      targets?: Record<
+        string,
+        {
+          sources?: Array<{
+            buildPhase?: string;
+            excludes?: string[];
+            path: string;
+          }>;
+        }
+      >;
+    };
+
+    expect(project.targets?.DailyKanjiWidgetExtension?.sources).toEqual([
+      { path: "Shared" },
+      { excludes: ["Resources"], path: "WidgetExtension" },
+      {
+        buildPhase: "resources",
+        excludes: [".gitkeep"],
+        path: "WidgetExtension/Resources"
+      }
+    ]);
+    expect(
+      project.targets?.DailyKanjiWidgetExtension?.sources?.some(
+        (source) => source.path === "App/Resources"
+      )
+    ).toBe(false);
   });
 
   it("verifies packaged resources before iOS build or install workflows", async () => {
