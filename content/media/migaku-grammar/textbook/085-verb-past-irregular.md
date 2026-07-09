@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 085.
+  Le principali forme passate irregolari dei verbi di base.
 ---
-
 # The past tense of irregular verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-past-irregular`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Le forme principali sono する→した, 来る→来た（きた）, 行く→行った e ある→あった. Le prime due sono irregolari; 行く è un godan con eccezione nel passato, mentre ある forma regolarmente あった.
 
-- Tema: The past tense of irregular verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-085-verb-past-irregular)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-085-verb-past-irregular) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `する→した／来る→来た／行く→行った／ある→あった`. Il punto da riconoscere è [不規則動詞](grammar:grammar-085-verb-past-irregular).
 
 :::example_sentence
 jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  {{昨日|きのう}}、{{友達|ともだち}}が{{家|いえ}}に{{来|き}}た。
 translation_it: >-
-  Questa è la forma 不規則動詞.
+  Ieri un amico è venuto a casa mia.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   {{不規則|ふきそく}}{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+来る prende la forma irregolare 来た, letta きた. Il soggetto è 友達 e 家に indica la destinazione.
+
+## Sfumature e limiti
+
+In 来た cambia anche la lettura del kanji, da く in 来る a き. 行く dà 行った, non *行いた. ある→あった segue il cambio regolare dei godan in る, ma ある resta importante perché la sua negazione è speciale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

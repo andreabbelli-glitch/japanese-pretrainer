@@ -12,9 +12,10 @@ id: grammar-070-hodo-2-indicate-degree-action-state
 pattern: "ほど"
 title: "「ほど」(2) Indicate the degree of an action or state"
 reading: "ほど"
-meaning_it: "(2) Indicate the degree of an action or state"
+meaning_it: >-
+  Esprime una correlazione: «più A, più (o meno) B»
 notes_it: >-
-  ほど va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo / aggettivo / nome + ほど + conseguenza. Con i な-aggettivi si trova なほど o であるほど. Il legame è proporzionale, non una semplice comparazione isolata: occorre leggere insieme le due scale A e B.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-070-hodo-2-indicate-degree-action-state
 card_type: concept
 front: "ほど"
 back: >-
-  (2) Indicate the degree of an action or state
+  Esprime una correlazione: «più A, più (o meno) B»
 example_jp: >-
-  これほどいいものはない。
+  {{練習|れんしゅう}}するほど{{上手|じょうず}}になる。
 example_it: >-
-  Non c'è nulla di così buono.
+  Più ci si esercita, più si diventa bravi.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  練習するほど aumenta idealmente la quantità di pratica; 上手になる esprime il miglioramento che cresce insieme ad essa. Con i な-aggettivi si trova なほど o であるほど. Il legame è proporzionale, non una semplice comparazione isolata: occorre leggere insieme le due scale A e B.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series, particles]
 :::

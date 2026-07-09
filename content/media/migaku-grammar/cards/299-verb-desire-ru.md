@@ -12,9 +12,10 @@ id: grammar-299-verb-desire-ru
 pattern: "る動詞"
 title: "The “desire” form of る verbs"
 reading: "るどうし"
-meaning_it: "The desire form of る verbs"
+meaning_it: >-
+  Desiderio di compiere un'azione con un verbo ichidan
 notes_it: >-
-  る{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  radice del verbo ichidan + たい. La parte たい è un い-aggettivo e forma 食べたくない, 食べたかった. Il desiderio di terze persone richiede normalmente たがる o un'espressione evidenziale.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-299-verb-desire-ru
 card_type: concept
 front: "る{{動詞|どうし}}"
 back: >-
-  The desire form of る verbs
+  Desiderio di compiere un'azione con un verbo ichidan
 example_jp: >-
-  パンをたべる。
+  {{今夜|こんや}}は{{寿司|すし}}を{{食|た}}べたい。
 example_it: >-
-  Mangio il pane.
+  Stasera voglio mangiare sushi.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  食べる perde る e prende たい; 寿司を resta l'oggetto dell'azione desiderata. La parte たい è un い-aggettivo e forma 食べたくない, 食べたかった. Il desiderio di terze persone richiede normalmente たがる o un'espressione evidenziale.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 :::

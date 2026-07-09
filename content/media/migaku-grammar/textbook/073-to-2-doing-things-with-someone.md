@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 073.
+  Uso comitativo di と per azioni e relazioni svolte con qualcuno.
 ---
-
 # 「と」(2) Do something with someone
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/to-2-doing-things-with-someone`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+La particella と segue il partecipante con cui il soggetto compie un'azione o intrattiene una relazione. Ricorre con verbi come 会う, 話す, 結婚する e con espressioni di somiglianza o differenza.
 
-- Tema: (2) Do something with someone
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [と](grammar:grammar-073-to-2-doing-things-with-someone)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [と](grammar:grammar-073-to-2-doing-things-with-someone) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `persona + と + azione o relazione`. Il punto da riconoscere è [と](grammar:grammar-073-to-2-doing-things-with-someone).
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  {{週末|しゅうまつ}}、{{友達|ともだち}}と{{映画|えいが}}を{{見|み}}る。
 translation_it: >-
-  Vado con Mika.
+  Nel fine settimana guardo un film con un amico.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   と -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+友達 è il compagno dell'azione e と lo collega al verbo 見る. Il soggetto, omesso, guarda il film insieme all'amico.
+
+## Sfumature e limiti
+
+Quando il sintagma in と diventa tema, si usa とは: spesso introduce contrasto («con quella persona, diversamente dalle altre»). Non va confuso con il と citativo o congiuntivo.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -12,9 +12,9 @@ id: grammar-256-nakunaru-it-comes-undone
 pattern: "なくなる"
 title: "「なくなる」”Cease to be/occur\""
 reading: "なくなる"
-meaning_it: "Cease to be/occur"
+meaning_it: "Cessare di fare o diventare non più in uno stato con なくなる"
 notes_it: >-
-  なくなる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Nel negativo verbale si sostituisce ない con なくなる: 飲まない → 飲まなくなる. Con il potenziale indica perdita di capacità; con aggettivi in い si usa くなくなる, con nomi/aggettivi in な じゃなくなる.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-256-nakunaru-it-comes-undone
 card_type: concept
 front: "なくなる"
 back: >-
-  Cease to be/occur
+  〜なくなる significa «non fare più / diventare non… / non riuscire più».
 example_jp: >-
-  パンをたべない。
+  コーヒーを{{飲|の}}まなくなった。
 example_it: >-
-  Non mangio il pane.
+  Ho smesso di bere caffè.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  書けなくなった significa «non riesco più a scrivere»; 静かじゃなくなった «non è più tranquillo». なる porta tempo e modalità.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

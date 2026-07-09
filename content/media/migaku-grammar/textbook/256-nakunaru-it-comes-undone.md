@@ -10,45 +10,22 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 256.
+  Cessazione o passaggio a uno stato negativo con nakunaru.
 ---
 
-# 「なくなる」”Cease to be/occur"
+# 「なくなる」It comes undone
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nakunaru-it-comes-undone`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Sostituire ない con なくなる
 
-## Punto da riconoscere
-
-- Tema: Cease to be/occur
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [なくなる](grammar:grammar-256-nakunaru-it-comes-undone)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [なくなる](grammar:grammar-256-nakunaru-it-comes-undone) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Nel negativo verbale, なくなる indica che l'azione non avviene più: 飲まない → 飲まなくなる. Con un potenziale segnala perdita di capacità: 書けない → 書けなくなる.
 
 :::example_sentence
 jp: >-
-  パンをたべない。
+  コーヒーを{{飲|の}}まなくなった。
 translation_it: >-
-  Non mangio il pane.
+  Ho smesso di bere caffè.
 :::
 
-#### Anatomia rapida
+## Altre categorie
 
-*   なくなる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Aggettivo in い: 高い → 高くなくなる, «cessare di essere costoso». Nome o aggettivo in な: 学生じゃなくなる, 静かじゃなくなる. È なる a portare tempo e modalità.

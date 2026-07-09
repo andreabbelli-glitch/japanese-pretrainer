@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 348.
+  Verbi composti che dirigono un'azione verso una persona o ne avviano il contatto.
 ---
 
-# 「かける」(1) Indicate that an action is directed at someone
+# 「かける」(1) Exerting influence
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kakeru-exerting-influence`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+In questi composti かける proietta l'azione del primo verbo verso un altro partecipante oppure ne segnala l'avvio percettivo.
 
-- Tema: (1) Indicate that an action is directed at someone
-- Sezione: stem form series
-- Livello: JLPT-N5
-- Pattern allenabile: [かける](grammar:grammar-348-kakeru-exerting-influence)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Radice + かける: 話す→話しかける.
+- Bersaglio + に + composto: 人に呼びかける.
+- Collocazioni da apprendere: 話しかける, 呼びかける, 問いかける, 見かける.
 
-Il centro del ripasso è riconoscere [かける](grammar:grammar-348-kakeru-exerting-influence) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはかけるのかたちだ。
+  {{困|こま}}っている{{人|ひと}}に{{話|はな}}しかけた。
 translation_it: >-
-  Questa è la forma かける.
+  Ho rivolto la parola a una persona in difficoltà.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   かける -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+話しかける trasforma il semplice «parlare» nell'atto di iniziare a parlare rivolgendosi alla persona.
+
+## Sfumature d'uso
+
+- Il significato non è sempre perfettamente compositivo: 見かける significa «scorgere / vedere per caso».
+- Con molti verbi, la stessa forma può anche significare azione incompleta; decide la collocazione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

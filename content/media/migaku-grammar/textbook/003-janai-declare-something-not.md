@@ -10,45 +10,27 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 003.
+  Negazione piana della copula con じゃない.
 ---
 
 # 「じゃない」Declare something is not
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/janai-declare-something-not`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Forma e funzione
 
-## Punto da riconoscere
+じゃない è la controparte negativa piana di だ: afferma che qualcosa «non è» un nome o una qualità espressa da un aggettivo in な.
 
-- Tema: Declare something is not
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [じゃない](grammar:grammar-003-janai-declare-something-not)
+- nome + じゃない: {{先生|せんせい}}じゃない, «non è un insegnante»
+- aggettivo in な + じゃない: きれいじゃない, «non è bello / pulito»
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [じゃない](grammar:grammar-003-janai-declare-something-not) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+ではない esprime la stessa struttura in una forma più formale o tipica dello scritto. Verbi e aggettivi in い hanno invece negazioni proprie.
 
 :::example_sentence
 jp: >-
-  これはペンじゃない。
+  これは{{猫|ねこ}}じゃない。
 translation_it: >-
-  Questa non è una penna.
+  Questo non è un gatto.
 :::
 
-#### Anatomia rapida
+## Da ricordare
 
-*   じゃない -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Il soggetto può essere omesso: la persona e il numero della traduzione italiana dipendono dal contesto.

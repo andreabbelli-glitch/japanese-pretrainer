@@ -10,45 +10,26 @@ status: active
 tags: [migaku, grammar, academy-level-1, jlpt-n5]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 001.
+  I nomi giapponesi non marcano da soli numero, articolo o genere.
 ---
 
 # Japanese Nouns
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nouns`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Come funzionano
 
-## Punto da riconoscere
+I nomi giapponesi non cambiano forma tra singolare e plurale e non richiedono articoli. {{学生|がくせい}} può quindi indicare «uno studente» o «degli studenti»; {{犬|いぬ}} può essere «un cane», «il cane» o «i cani». Numero e determinatezza arrivano dal contesto, oppure da numerali e quantificatori.
 
-- Tema: Japanese Nouns
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [{{名詞|めいし}}](grammar:grammar-001-japanese-nouns)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{名詞|めいし}}](grammar:grammar-001-japanese-nouns) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Non esiste neppure il genere grammaticale dei nomi. La categoria comprende nomi comuni e propri, nomi verbali che si combinano con する, pronomi, dimostrativi, interrogativi e nomi relazionali come {{上|うえ}} e {{中|なか}}. I pronomi personali vengono spesso omessi quando il referente è già chiaro.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{学生|がくせい}}がいる。
 translation_it: >-
-  Questa è una penna.
+  C'è uno studente / Ci sono studenti.
 :::
 
-#### Anatomia rapida
+## Da ricordare
 
-*   {{名詞|めいし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- La forma del nome non basta per scegliere singolare o plurale.
+- In italiano occorre aggiungere l'articolo richiesto dal contesto.
+- La lettura dei kanji e soprattutto dei nomi propri va verificata, non indovinata.

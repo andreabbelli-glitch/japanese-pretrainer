@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 131.
+  Successione temporale fra eventi, con le sfumature di relazione e semplice posteriorità.
 ---
 
-# 「あとで・に」”After..."
+# 「あとで・に」Something later with
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/atode-ni-after-that`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+あとで e あとに collegano due eventi in ordine cronologico. L'evento davanti ad あと è già compiuto quando avviene quello della frase principale.
 
-- Tema: After...
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [あとで・に](grammar:grammar-131-atode-ni-after-that)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo in forma piana passata + あとで／あとに: 食べたあとで.
+- Nome + のあとで／あとに: 会議のあとに.
+- Schema: evento A + あとで／あとに + evento B.
 
-Il centro del ripasso è riconoscere [あとで・に](grammar:grammar-131-atode-ni-after-that) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  カフェでたべる。
+  {{夕飯|ゆうはん}}を{{食|た}}べたあとで、{{散歩|さんぽ}}した。
 translation_it: >-
-  Mangio al caffè.
+  Dopo aver cenato, ho fatto una passeggiata.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   あとで・に -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+食べた presenta la cena come evento concluso; あとで colloca la passeggiata nel momento successivo.
+
+## Sfumature d'uso
+
+- あとで sottolinea il momento successivo e ammette anche eventi solo accidentalmente consecutivi.
+- あとに suggerisce più facilmente che B segua A come conseguenza, traccia o passo collegato; in molti contesti entrambe le forme sono possibili.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

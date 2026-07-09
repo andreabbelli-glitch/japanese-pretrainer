@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 345.
+  Somiglianze ed esempi colloquiali che modificano verbi, aggettivi o nomi.
 ---
 
-# 「みたいに・な」"(Do/be) like an X"
+# 「みたいに・な」Something is like something or an example of it
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/mitaini-na-something-like-something-example-it`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+みたい crea una somiglianza accessibile e colloquiale. に rende l'esempio avverbiale, な lo collega attributivamente a un nome.
 
-- Tema: (Do/be) like an X
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [みたいに・な](grammar:grammar-345-mitaini-na-something-like-something-example-it)
+## Formazione e restrizioni
 
-## Lettura operativa
+- N + みたいに + verbo/aggettivo: 魚みたいに泳ぐ.
+- N + みたいな + nome: 夢みたいな話.
+- Fine frase: 本物みたいだ.
 
-Il centro del ripasso è riconoscere [みたいに・な](grammar:grammar-345-mitaini-na-something-like-something-example-it) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{彼|かれ}}は{{魚|さかな}}みたいに{{泳|およ}}ぐ。
 translation_it: >-
-  Vado al caffè.
+  Nuota come un pesce.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   みたいに・な -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+魚 è il modello di confronto e みたいに descrive il modo in cui il soggetto nuota.
+
+## Sfumature d'uso
+
+- Non confondere il に di みたいに con una destinazione: trasforma la similitudine in modificatore del predicato.
+- In uno scritto formale è spesso preferibile ように／ような.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

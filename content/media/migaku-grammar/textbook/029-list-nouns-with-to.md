@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 029.
+  Uso di と per elencare in modo esaustivo nomi.
 ---
 
-# 「と」(1) List nouns and noun phrases
+# 「と」(1) List things
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/list-nouns-with-to`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Elenco completo
 
-## Punto da riconoscere
-
-- Tema: (1) List nouns and noun phrases
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [と](grammar:grammar-029-list-nouns-with-to)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [と](grammar:grammar-029-list-nouns-with-to) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+A と B collega nomi o sintagmi nominali con «e». L'elenco è tendenzialmente esaustivo: presenta gli elementi nominati come l'insieme rilevante, a differenza di forme come や che lasciano aperta la lista.
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  {{猫|ねこ}}と{{犬|いぬ}}は{{動物|どうぶつ}}だ。
 translation_it: >-
-  Vado con Mika.
+  Gatti e cani sono animali.
 :::
 
-#### Anatomia rapida
+Con tre elementi si usa A と B と C. Un と anche dopo l'ultimo nome è grammaticalmente possibile, ma poco frequente.
 
-*   と -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Limite
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Questo uso di と collega soltanto nomi o sintagmi nominali. Non si può dire 安いとおいしい per «economico e buono»: gli aggettivi richiedono la loro forma di collegamento, per esempio 安くておいしい.

@@ -12,9 +12,10 @@ id: grammar-260-wakeda-make-logical-judgement
 pattern: "わけだ"
 title: "「わけだ」Make logical deductions"
 reading: "わけだ"
-meaning_it: "Make logical deductions"
+meaning_it: >-
+  Conclusione logica o presa di coscienza: «ecco perché / non c'è da stupirsi»
 notes_it: >-
-  わけだ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  forma piana + わけだ; nome + というわけだ. Non introduce semplicemente una causa: mette a fuoco il ragionamento che rende il risultato comprensibile. というわけだ e ってわけだ sono varianti, la seconda colloquiale.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-260-wakeda-make-logical-judgement
 card_type: concept
 front: "わけだ"
 back: >-
-  Make logical deductions
+  Conclusione logica o presa di coscienza: «ecco perché / non c'è da stupirsi»
 example_jp: >-
-  これはペンだ。
+  {{毎日|まいにち}}{{練習|れんしゅう}}しているのか。{{上手|じょうず}}なわけだ。
 example_it: >-
-  Questa è una penna.
+  Ti alleni ogni giorno, capisco. Ecco perché sei bravo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La nuova informazione 毎日練習している permette di dedurre 上手なわけだ come conseguenza naturale. Non introduce semplicemente una causa: mette a fuoco il ragionamento che rende il risultato comprensibile. というわけだ e ってわけだ sono varianti, la seconda colloquiale.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 :::

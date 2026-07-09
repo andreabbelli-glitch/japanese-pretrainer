@@ -12,9 +12,10 @@ id: grammar-343-sugu-express-short-distance-time
 pattern: "すぐ"
 title: "「すぐ」Express a short distance or time"
 reading: "すぐ"
-meaning_it: "Express a short distance or time"
+meaning_it: >-
+  Subito; presto; proprio vicino
 notes_it: >-
-  すぐ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Come avverbio temporale: すぐ行く, すぐ戻る. Davanti a un'espressione spaziale: すぐ隣, すぐ近く. Con Vたらすぐ significa «non appena». La grafia 直ぐ esiste ma il kana è comune. È neutro e molto frequente.
 level_hint: jlpt-n1
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-343-sugu-express-short-distance-time
 card_type: concept
 front: "すぐ"
 back: >-
-  Express a short distance or time
+  すぐ segnala che fra due punti c'è pochissimo tempo o spazio.
 example_jp: >-
-  これはすぐのかたちだ。
+  すぐ{{戻|もど}}ります。
 example_it: >-
-  Questa è la forma すぐ.
+  Torno subito.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Come avverbio temporale: すぐ行く, すぐ戻る. Davanti a un'espressione spaziale: すぐ隣, すぐ近く. Con Vたらすぐ significa «non appena». La grafia 直ぐ esiste ma il kana è comune. È neutro e molto frequente.
 tags: [migaku, grammar, jlpt-n1, academy-level-1]
 :::

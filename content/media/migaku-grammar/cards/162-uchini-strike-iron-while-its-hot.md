@@ -12,9 +12,10 @@ id: grammar-162-uchini-strike-iron-while-its-hot
 pattern: "うちに"
 title: "「うちに」Do something while (a certain condition remains true)"
 reading: "うちに"
-meaning_it: "Do something while (a certain condition remains true)"
+meaning_it: >-
+  Finché…; mentre…; prima che lo stato cambi
 notes_it: >-
-  うちに va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: V non-passato／Vている／Vない + うちに; Aい + うちに; Aな + なうちに; Nome + のうちに. Può invitare ad agire prima di un cambiamento oppure descrivere un cambiamento che avviene gradualmente durante A. Registro neutro.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-162-uchini-strike-iron-while-its-hot
 card_type: concept
 front: "うちに"
 back: >-
-  Do something while (a certain condition remains true)
+  AうちにB colloca B entro il periodo in cui A resta vero, spesso prima che quell'occasione finisca.
 example_jp: >-
-  カフェにいく。
+  {{温|あたた}}かいうちに{{食|た}}べてください。
 example_it: >-
-  Vado al caffè.
+  Mangialo finché è caldo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: V non-passato／Vている／Vない + うちに; Aい + うちに; Aな + なうちに; Nome + のうちに. Può invitare ad agire prima di un cambiamento oppure descrivere un cambiamento che avviene gradualmente durante A. Registro neutro.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

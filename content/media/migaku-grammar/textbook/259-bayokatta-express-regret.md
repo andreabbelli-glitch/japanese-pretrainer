@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 259.
+  Rimpianto retrospettivo con la costruzione ばよかった.
 ---
+# 「ばよかった」\"If only I had…\"
 
-# 「ばよかった」"If only I had…"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/bayokatta-express-regret`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+La forma condizionale in ば seguita da よかった valuta retrospettivamente come migliore un'alternativa che non si è realizzata.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: If only I had…
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [ばよかった](grammar:grammar-259-bayokatta-express-regret)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ばよかった](grammar:grammar-259-bayokatta-express-regret) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo in forma ば + よかった`. Il punto da riconoscere è [ばよかった](grammar:grammar-259-bayokatta-express-regret).
 
 :::example_sentence
 jp: >-
-  いけばわかる。
+  もっと{{早|はや}}く{{出|で}}ればよかった。
 translation_it: >-
-  Se ci vai, capirai.
+  Avrei dovuto uscire prima.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ばよかった -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+出る diventa 出れば; よかった segnala che uscire prima sarebbe stata l'opzione migliore, ma non è avvenuta.
+
+## Sfumature e limiti
+
+Esprime un rimpianto sul passato, non un semplice consiglio futuro. Vてよかった ha il senso opposto: «sono contento di aver fatto V».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -2,7 +2,7 @@
 id: lesson-migaku-grammar-382-gozaimasu-something-exists
 media_id: media-migaku-grammar
 slug: 382-gozaimasu-something-exists
-title: "「ございます」A polite version of いる・ある"
+title: "「ございます」A polite version of ある"
 order: 3820
 segment_ref: polite-language
 difficulty: jlpt-n4
@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, polite-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 382.
+  Esistenza cortese di cose e forma copulare molto formale usata nel servizio e negli annunci.
 ---
 
-# 「ございます」A polite version of いる・ある
+# 「ございます」Something is or exists
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/gozaimasu-something-exists`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ございます ricorre nel servizio clienti, negli annunci e in formule molto cortesi. È più formale di あります e です.
 
-- Tema: A polite version of いる・ある
-- Sezione: polite language
-- Livello: JLPT-N4
-- Pattern allenabile: [ございます](grammar:grammar-382-gozaimasu-something-exists)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Nがございます: 在庫がございます, ご質問がございます.
+- Nome/Aな + でございます: こちらが入口でございます.
+- Passato: ございました; negativo: ございません.
 
-Il centro del ripasso è riconoscere [ございます](grammar:grammar-382-gozaimasu-something-exists) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  パンをたべます。
+  ご{{質問|しつもん}}はございますか。
 translation_it: >-
-  Mangio il pane.
+  Ha domande?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ございます -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+ご質問は tematizza l'eventuale domanda; ございます rende la richiesta molto cortese.
+
+## Sfumature d'uso
+
+- Per esseri animati, scegliere おります／いらっしゃいます secondo la direzione del rispetto.
+- ござる senza ます è oggi soprattutto storico o caratterizzante.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

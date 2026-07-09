@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 109.
+  Coordinazione dei な-aggettivi con で e forma negativa じゃなくて.
 ---
-
 # The て-form of な-adjectives
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/na-adjectives-te-form`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Per coordinare un な-aggettivo si usa で al posto di な: 静か→静かで. La forma collega la prima qualità al predicato o alla descrizione seguente.
 
-- Tema: The て-form of な-adjectives
-- Sezione: form series
-- Livello: JLPT-N5
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `な-aggettivo + で + qualità successiva`. Il punto da riconoscere è `て-forma dei な-aggettivi`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  この{{町|まち}}は{{静|しず}}かで{{便利|べんり}}だ。
 translation_it: >-
-  Questa è una penna.
+  Questa città è tranquilla e comoda.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+静か prende で per collegarsi a 便利だ. Il だ finale chiude la predicazione delle due qualità.
+
+## Sfumature e limiti
+
+La forma negativa è じゃなくて, ottenuta da じゃない cambiando い in くて. Davanti al nome, solo l'ultimo な-aggettivo prende な: 親切で静かな人.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

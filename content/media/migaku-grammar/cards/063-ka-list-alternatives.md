@@ -12,9 +12,9 @@ id: grammar-063-ka-list-alternatives
 pattern: "か"
 title: "「か」(2) Mark something as an alternative"
 reading: "か"
-meaning_it: "(2) Mark something as an alternative"
+meaning_it: "Collegare alternative con か: «o», «se… oppure…»"
 notes_it: >-
-  か va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A か B (か) presenta alternative tra nomi o clausole. Il secondo か è facoltativo. Inserita prima di 決める, 分かる e simili, la struttura può significare «se A o B / quale alternativa».
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-063-ka-list-alternatives
 card_type: concept
 front: "か"
 back: >-
-  (2) Mark something as an alternative
+  か collega due opzioni: A oppure B; può anche introdurre una domanda indiretta.
 example_jp: >-
-  これはかのかたちだ。
+  {{家|いえ}}で{{食|た}}べるか、レストランに{{行|い}}くか{{決|き}}める。
 example_it: >-
-  Questa è la forma か.
+  Deciderò se mangiare a casa o andare al ristorante.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con nomi: ケーキかご飯. Con clausole: 食べるか行くか. Non confondere il primo か alternativo con il solo か finale interrogativo.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 :::

@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 061.
+  Struttura focalizzante A のは B だ.
 ---
 
-# 「のは～だ」Introduce new and important information
+# 「のは～だ」Give new and important information
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nohada-introduce-new-information`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Informazione nuova in B
 
-## Punto da riconoscere
-
-- Tema: Introduce new and important information
-- Sezione: series
-- Livello: JLPT-N4
-- Pattern allenabile: [のは～だ](grammar:grammar-061-nohada-introduce-new-information)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [のは～だ](grammar:grammar-061-nohada-introduce-new-information) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+A のは B だ nominalizza A con の, lo tematizza con は e identifica B come informazione nuova e importante. È una costruzione scissa simile a «chi/cosa… è B».
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  この{{学校|がっこう}}で{{一番|いちばん}}{{可愛|かわい}}いのは{{彼女|かのじょ}}だ。
 translation_it: >-
-  Questa è una penna.
+  La più carina di questa scuola è lei.
 :::
 
-#### Anatomia rapida
+Con un nome o aggettivo in な davanti a のは serve な: 学生なのは…, 静かなのは…. Al passato, si usa la forma piana corrispondente.
 
-*   のは～だ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Presentare una causa
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+A のは B からだ mette a fuoco il motivo: «la ragione per cui A è che B». Nel blocco identificato dopo は, が e を non si aggiungono al nome immediatamente prima della copula; altre particelle possono far parte dell'informazione focalizzata.

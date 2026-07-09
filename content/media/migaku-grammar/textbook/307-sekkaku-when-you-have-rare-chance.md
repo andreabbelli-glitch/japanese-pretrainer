@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n2, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 307.
+  Occasioni preziose, sforzo e risultati sprecati con せっかく.
 ---
+# 「せっかく」”Since we’re (in a rare situation)\"
 
-# 「せっかく」”Since we’re (in a rare situation)"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/sekkaku-when-you-have-rare-chance`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+せっかく presenta una situazione come rara, ottenuta con fatica o degna di essere sfruttata. Con だから／なので motiva l'approfittarne; con のに evidenzia uno spreco deludente.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: Since we’re (in a rare situation)
-- Sezione: jlpt n2
-- Livello: JLPT-N2
-- Pattern allenabile: [せっかく](grammar:grammar-307-sekkaku-when-you-have-rare-chance)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [せっかく](grammar:grammar-307-sekkaku-when-you-have-rare-chance) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `せっかく（の + nome）／せっかく…のに・だから`. Il punto da riconoscere è [せっかく](grammar:grammar-307-sekkaku-when-you-have-rare-chance).
 
 :::example_sentence
 jp: >-
-  これはせっかくのかたちだ。
+  せっかく{{京都|きょうと}}まで{{来|き}}たのだから、{{寺|てら}}を{{見|み}}よう。
 translation_it: >-
-  Questa è la forma せっかく.
+  Visto che siamo venuti fin qui a Kyoto, visitiamo un tempio.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   せっかく -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+せっかく valorizza lo sforzo di arrivare fino a Kyoto; だから introduce la decisione di sfruttare l'occasione.
+
+## Sfumature e limiti
+
+せっかくの modifica direttamente un nome, come せっかくの休み. La traduzione varia: «visto che ci siamo», «dopo tutta questa fatica», «una preziosa occasione».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

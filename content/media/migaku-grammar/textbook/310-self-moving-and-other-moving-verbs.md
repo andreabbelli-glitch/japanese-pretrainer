@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 310.
+  Particelle e prospettiva nelle coppie verbali transitive e intransitive.
 ---
-
 # “Self-moving” and “other-moving”  verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/self-moving-and-other-moving-verbs`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+I 他動詞 transitivi prendono un oggetto in を e descrivono qualcuno che causa l'evento; i 自動詞 intransitivi presentano l'entità che cambia come soggetto in が.
 
-- Tema: Self-moving and other-moving  verbs
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [{{自動詞|じどうし}}・{{他動詞|たどうし}}](grammar:grammar-310-self-moving-and-other-moving-verbs)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{自動詞|じどうし}}・{{他動詞|たどうし}}](grammar:grammar-310-self-moving-and-other-moving-verbs) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `agente が + oggetto を + transitivo／soggetto が + intransitivo`. Il punto da riconoscere è [自動詞・他動詞](grammar:grammar-310-self-moving-and-other-moving-verbs).
 
 :::example_sentence
 jp: >-
-  これは{{自動詞|じどうし}}・{{他動詞|たどうし}}のかたちだ。
+  {{私|わたし}}が{{窓|まど}}を{{開|あ}}けると、{{風|かぜ}}でドアが{{開|あ}}いた。
 translation_it: >-
-  Questa è la forma 自動詞・他動詞.
+  Quando ho aperto la finestra, la porta si è aperta per il vento.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   {{自動詞|じどうし}}・{{他動詞|たどうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+窓を開ける usa il transitivo 開ける con oggetto; ドアが開いた usa l'intransitivo 開く per il cambiamento della porta.
+
+## Sfumature e limiti
+
+Molti verbi formano coppie lessicali da imparare, come 開ける／開く, 落とす／落ちる e 出す／出る. La scelta non è una semplice coniugazione e influenza particelle e prospettiva.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

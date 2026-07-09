@@ -12,9 +12,10 @@ id: grammar-151-hazu-express-expectation
 pattern: "はず"
 title: "「はず」Express an expectation"
 reading: "はず"
-meaning_it: "Express an expectation"
+meaning_it: >-
+  Dovrebbe…; è previsto/logico che…
 notes_it: >-
-  はず va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: V／Aい + はず; Aな + なはず; Nome + のはず. La negazione può stare prima (来ないはず) oppure in はずがない／はずはない, che nega la possibilità con forza. Non esprime dovere morale: per «dover fare» servono costruzioni di obbligo.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-151-hazu-express-expectation
 card_type: concept
 front: "はず"
 back: >-
-  Express an expectation
+  Forma attributiva + はずだ esprime un'aspettativa fondata su informazioni, piani o ragionamento.
 example_jp: >-
-  これはペンだ。
+  {{田中|たなか}}さんはもう{{駅|えき}}に{{着|つ}}いているはずだ。
 example_it: >-
-  Questa è una penna.
+  Tanaka dovrebbe essere già arrivato alla stazione.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: V／Aい + はず; Aな + なはず; Nome + のはず. La negazione può stare prima (来ないはず) oppure in はずがない／はずはない, che nega la possibilità con forza. Non esprime dovere morale: per «dover fare» servono costruzioni di obbligo.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

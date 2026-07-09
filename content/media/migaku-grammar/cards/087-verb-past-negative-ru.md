@@ -12,9 +12,10 @@ id: grammar-087-verb-past-negative-ru
 pattern: "る動詞"
 title: "The negative past tense of る verbs"
 reading: "るどうし"
-meaning_it: "The negative past tense of る verbs"
+meaning_it: >-
+  Passato negativo piano dei verbi ichidan: «non fece»
 notes_it: >-
-  る{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  radice del verbo ichidan + なかった. La regola presuppone che il verbo sia davvero ichidan. Il valore temporale e la polarità sono entrambi contenuti in なかった: negativo e passato.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-087-verb-past-negative-ru
 card_type: concept
 front: "る{{動詞|どうし}}"
 back: >-
-  The negative past tense of る verbs
+  Passato negativo piano dei verbi ichidan: «non fece»
 example_jp: >-
-  パンをたべる。
+  {{今朝|けさ}}、{{何|なに}}も{{食|た}}べなかった。
 example_it: >-
-  Mangio il pane.
+  Stamattina non ho mangiato niente.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  食べる perde る e diventa 食べなかった. 何も, accompagnato dal negativo, significa «niente». La regola presuppone che il verbo sia davvero ichidan. Il valore temporale e la polarità sono entrambi contenuti in なかった: negativo e passato.
 tags: [migaku, grammar, academy-level-1, jlpt-n5, verbs]
 :::

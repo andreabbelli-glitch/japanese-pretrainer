@@ -1,0 +1,1834 @@
+{
+  "version": 1,
+  "media_slug": "migaku-grammar",
+  "total_targets": 304,
+  "audio_backed_count": 0,
+  "known_missing_count": 0,
+  "pending_count": 304,
+  "pending": [
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-001-japanese-nouns",
+      "label": "名詞",
+      "reading": "めいし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-002-da-declare-something-is",
+      "label": "だ",
+      "reading": "だ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-003-janai-declare-something-not",
+      "label": "じゃない",
+      "reading": "じゃない"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-004-ga-subject-marker",
+      "label": "が",
+      "reading": "が"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-005-topic-marker-wa",
+      "label": "は",
+      "reading": "は"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-006-inclusive-particle-mo",
+      "label": "も",
+      "reading": "も"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-007-possessive-particle-no",
+      "label": "の",
+      "reading": "の"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-008-names-in-japanese",
+      "label": "名前",
+      "reading": "なまえ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-009-san-address-someone-politely",
+      "label": "さん",
+      "reading": "さん"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-010-chan-address-someone-cutely",
+      "label": "ちゃん",
+      "reading": "ちゃん"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-011-kore-this",
+      "label": "これ",
+      "reading": "これ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-012-sore-that",
+      "label": "それ",
+      "reading": "それ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-013-are-that-over-there",
+      "label": "あれ",
+      "reading": "あれ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-014-i-adjective-basics",
+      "label": "い形容詞",
+      "reading": "いけいようし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-015-i-adjective-negation",
+      "label": "い形容詞",
+      "reading": "いけいようし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-016-introduction-to-verbs",
+      "label": "う動詞",
+      "reading": "うどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-017-ru-verbs",
+      "label": "る動詞",
+      "reading": "るどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-018-irregular-verbs",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-019-direct-object-particle-wo",
+      "label": "を",
+      "reading": "を"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-020-subject-omission",
+      "label": "主語省略",
+      "reading": "しゅごしょうりゃく"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-021-writing-kanji-words-in-hiragana",
+      "label": "ひらがな書き",
+      "reading": "ひらがながき"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-022-location-marker-de",
+      "label": "で",
+      "reading": "で"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-023-ni-indicate-destination-direction",
+      "label": "に",
+      "reading": "に"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-024-ni-show-location-existence",
+      "label": "に",
+      "reading": "に"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-025-sentence-structure",
+      "label": "文の構造",
+      "reading": "ぶんのこうぞう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-026-koko-soko-asoko",
+      "label": "ここ・そこ・あそこ",
+      "reading": "ここ・そこ・あそこ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-027-ga-assign-qualities",
+      "label": "が",
+      "reading": "が"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-028-kono-sono-ano",
+      "label": "この・その・あの",
+      "reading": "この・その・あの"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-029-list-nouns-with-to",
+      "label": "と",
+      "reading": "と"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-030-direction-marker-he",
+      "label": "へ",
+      "reading": "へ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-031-dake-set-limits",
+      "label": "だけ",
+      "reading": "だけ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-032-u-verbs-negation",
+      "label": "う動詞",
+      "reading": "うどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-033-ru-verbs-negation",
+      "label": "る動詞",
+      "reading": "るどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-034-irregular-verbs-negation",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-035-ka-ask-questions",
+      "label": "か",
+      "reading": "か"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-036-kara-show-reasons",
+      "label": "から",
+      "reading": "から"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-037-kedo-indicate-contrast",
+      "label": "けど",
+      "reading": "けど"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-038-dakedo-however",
+      "label": "だけど",
+      "reading": "だけど"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-039-multiple-people-suffix-tachi",
+      "label": "たち",
+      "reading": "たち"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-040-na-adjectives-basics",
+      "label": "な形容詞",
+      "reading": "なけいようし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-041-na-adjectives-negation",
+      "label": "な形容詞",
+      "reading": "なけいようし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-042-suru-turn-nouns-into-verbs",
+      "label": "する",
+      "reading": "する"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-043-i-adjectives-as-adverbs",
+      "label": "い形容詞",
+      "reading": "いけいようし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-044-na-adjectives-as-toverbs",
+      "label": "な形容詞",
+      "reading": "なけいようし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-045-japanese-adverbs",
+      "label": "副詞",
+      "reading": "ふくし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-046-sa-adjectives-to-nouns",
+      "label": "〜さ",
+      "reading": "〜さ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-047-mi-adjectives-to-nouns",
+      "label": "〜み",
+      "reading": "〜み"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-048-make-a-supposition-about-the-truth",
+      "label": "なら",
+      "reading": "なら"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-049-sorenara-in-that-case",
+      "label": "それなら",
+      "reading": "それなら"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-050-ni-mark-indirect-object",
+      "label": "に",
+      "reading": "に"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-051-no-indefinite-pronoun",
+      "label": "の",
+      "reading": "の"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-052-naru-to-become",
+      "label": "なる",
+      "reading": "なる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-053-ga-express-preferences",
+      "label": "が",
+      "reading": "が"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-054-yori-comparisons",
+      "label": "より",
+      "reading": "より"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-058-dearu-declare-something-is",
+      "label": "である",
+      "reading": "である"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-059-koto-nominalization",
+      "label": "こと",
+      "reading": "こと"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-060-no-nominalization",
+      "label": "の",
+      "reading": "の"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-061-nohada-introduce-new-information",
+      "label": "のは～だ",
+      "reading": "のは～だ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-062-kocchi-socchi-acchi-here-there-over-there",
+      "label": "こっち・そっち・あっち",
+      "reading": "こっち・そっち・あっち"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-063-ka-list-alternatives",
+      "label": "か",
+      "reading": "か"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-064-amari-not-very",
+      "label": "あまり",
+      "reading": "あまり"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-065-kun-address-someone-lower-in-status",
+      "label": "くん",
+      "reading": "くん"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-067-nado-express-something-like",
+      "label": "など",
+      "reading": "など"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-068-momo-list-same-parts-speech",
+      "label": "も~も",
+      "reading": "も~も"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-069-hodo-1-express-extent",
+      "label": "ほど",
+      "reading": "ほど"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-070-hodo-2-indicate-degree-action-state",
+      "label": "ほど",
+      "reading": "ほど"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-072-dropping-particles",
+      "label": "助詞省略",
+      "reading": "じょししょうりゃく"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-073-to-2-doing-things-with-someone",
+      "label": "と",
+      "reading": "と"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-074-shika-when-there-nothing-else",
+      "label": "しか",
+      "reading": "しか"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-075-soretomo-show-alternatives",
+      "label": "それとも",
+      "reading": "それとも"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-076-nisuru-decide-on-something",
+      "label": "にする",
+      "reading": "にする"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-077-kotogaaru-1-there-are-times-when",
+      "label": "ことがある",
+      "reading": "ことがある"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-078-kotogadekiru-yes-you-can",
+      "label": "ことができる",
+      "reading": "ことができる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-079-tokoroda-when-you-are-just-about-do-something",
+      "label": "ところだ",
+      "reading": "ところだ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-080-tsumori-show-intent",
+      "label": "つもり",
+      "reading": "つもり"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-081-datta-declare-past-state-of-being",
+      "label": "だった",
+      "reading": "だった"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-082-janakatta-declare-something-was-not",
+      "label": "じゃなかった",
+      "reading": "じゃなかった"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-083-verb-past-u",
+      "label": "う動詞",
+      "reading": "うどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-084-verb-past-ru",
+      "label": "る動詞",
+      "reading": "るどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-085-verb-past-irregular",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-086-verb-past-negative-u",
+      "label": "う動詞",
+      "reading": "うどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-087-verb-past-negative-ru",
+      "label": "る動詞",
+      "reading": "るどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-088-verb-past-negative-irregulars",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-089-i-adjectives-past",
+      "label": "い形容詞",
+      "reading": "いけいようし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-090-i-adjectives-past-negative",
+      "label": "い形容詞",
+      "reading": "いけいようし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-091-na-adjectives-past",
+      "label": "な形容詞",
+      "reading": "なけいようし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-095-ninaru-become-something",
+      "label": "になる",
+      "reading": "になる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-096-koto-2-express-thing",
+      "label": "こと",
+      "reading": "こと"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-097-kotogaaru-2-reminisce-about-past",
+      "label": "ことがある",
+      "reading": "ことがある"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-098-kotoninaru-express-involuntary-event",
+      "label": "ことになる",
+      "reading": "ことになる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-099-kotonisuru-decide-do-something",
+      "label": "ことにする",
+      "reading": "ことにする"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-100-mou-express-change-state",
+      "label": "もう",
+      "reading": "もう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-102-mama-something-stays-way-it-is",
+      "label": "まま",
+      "reading": "まま"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-103-tatte-even-if",
+      "label": "たって",
+      "reading": "たって"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-104-dou-ask-how",
+      "label": "どう",
+      "reading": "どう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-107-verb-te-form-irregulars",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-110-naide-do-b-without-doing-a",
+      "label": "ないで",
+      "reading": "ないで"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-111-nakute-negative-te-form",
+      "label": "なくて",
+      "reading": "なくて"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-112-janakute-correct-information",
+      "label": "じゃなくて",
+      "reading": "じゃなくて"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-113-shimau-finish-doing-something",
+      "label": "しまう",
+      "reading": "しまう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-116-ageru-teageru-give-something",
+      "label": "あげる・てあげる",
+      "reading": "あげる・てあげる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-117-kureru-tekureru-someone-gives-you-something",
+      "label": "くれる・てくれる",
+      "reading": "くれる・てくれる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-118-ni-mark-source",
+      "label": "に",
+      "reading": "に"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-119-morau-temorau-receive-something",
+      "label": "もらう・てもらう",
+      "reading": "もらう・てもらう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-121-youda-something-seems-like",
+      "label": "ようだ",
+      "reading": "ようだ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-122-souda-you-heard-something",
+      "label": "そうだ",
+      "reading": "そうだ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-123-rashii-make-conjecture",
+      "label": "らしい",
+      "reading": "らしい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-124-if",
+      "label": "たら",
+      "reading": "たら"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-125-dattara-if-thats-the-case",
+      "label": "だったら",
+      "reading": "だったら"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-126-moshi-add-uncertainty",
+      "label": "もし",
+      "reading": "もし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-127-shi-express-and-more-emphatically",
+      "label": "し",
+      "reading": "し"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-128-tari-create-inexhaustive-list-actions-states",
+      "label": "たり",
+      "reading": "たり"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-129-ato-after",
+      "label": "あと",
+      "reading": "あと"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-130-ato-in-addition",
+      "label": "あと",
+      "reading": "あと"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-131-atode-ni-after-that",
+      "label": "あとで・に",
+      "reading": "あとで・に"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-134-taradou-how-about",
+      "label": "たらどう",
+      "reading": "たらどう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-135-kamoshirenai-might-happen",
+      "label": "かもしれない",
+      "reading": "かもしれない"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-136-darou-will-probably-happen",
+      "label": "だろう(か)",
+      "reading": "だろう(か)"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-138-tekara-doing-something-after-something-else",
+      "label": "てから",
+      "reading": "てから"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-139-sorekara-and-after-that",
+      "label": "それから",
+      "reading": "それから"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-140-teiru-1-expressing-continuous-state-action",
+      "label": "ている",
+      "reading": "ている"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-141-teiru-2-the-casual-past-form",
+      "label": "てる",
+      "reading": "てる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-142-temiru-trying-something",
+      "label": "てみる",
+      "reading": "てみる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-143-tekuru-1-do-action-come",
+      "label": "てくる",
+      "reading": "てくる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-144-teiku-1-do-action-go",
+      "label": "ていく",
+      "reading": "ていく"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-146-monoda-express-strong-emotions",
+      "label": "ものだ",
+      "reading": "ものだ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-147-nishiteha-express-deviation-from-standard",
+      "label": "にしては",
+      "reading": "にしては"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-148-suru-2-describe-someones-attributes",
+      "label": "する",
+      "reading": "する"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-149-noda-explain-ask-for-explanations",
+      "label": "のだ",
+      "reading": "のだ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-150-mada-something-keeps-its-state",
+      "label": "まだ",
+      "reading": "まだ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-151-hazu-express-expectation",
+      "label": "はず",
+      "reading": "はず"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-152-bakari-something-only-thing",
+      "label": "ばかり",
+      "reading": "ばかり"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-153-tokoroda-when-you-arewere-just-about-do-something",
+      "label": "ところだ",
+      "reading": "ところだ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-154-kadouka-asking-yes-no-question",
+      "label": "かどうか",
+      "reading": "かどうか"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-155-wo-2-moving-space",
+      "label": "を",
+      "reading": "を"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-156-wo-3-indicate-starting-place-motion",
+      "label": "を",
+      "reading": "を"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-157-wo-4-mark-cause-emotion",
+      "label": "を",
+      "reading": "を"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-158-toshite-as",
+      "label": "として",
+      "reading": "として"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-159-make-a-comparison-from-a-certain-standard",
+      "label": "としては",
+      "reading": "としては"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-160-3-making-something-take-place",
+      "label": "する",
+      "reading": "する"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-161-no-4-ask-questions-explain",
+      "label": "の",
+      "reading": "の"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-162-uchini-strike-iron-while-its-hot",
+      "label": "うちに",
+      "reading": "うちに"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-163-youni-do-something-certain-way-so-that",
+      "label": "ように",
+      "reading": "ように"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-164-temo-even-if",
+      "label": "ても",
+      "reading": "ても"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-165-demo-even",
+      "label": "でも",
+      "reading": "でも"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-167-noka-ask-more-questions",
+      "label": "のか",
+      "reading": "のか"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-169-soshite-connecting-sentences",
+      "label": "そして",
+      "reading": "そして"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-170-suru-4-express-perception",
+      "label": "する",
+      "reading": "する"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-173-ni-indicate-point-time",
+      "label": "に",
+      "reading": "に"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-178-de-2-indicate-time",
+      "label": "で",
+      "reading": "で"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-180-kara-indicate-starting-point",
+      "label": "から",
+      "reading": "から"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-182-de-3-the-tools-trade",
+      "label": "で",
+      "reading": "で"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-185-made-expressing-until-to",
+      "label": "まで",
+      "reading": "まで"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-186-madeni-set-time-limit",
+      "label": "までに",
+      "reading": "までに"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-187-teiku-2-an-action-state-keeps-changing",
+      "label": "ていく",
+      "reading": "ていく"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-188-tekuru-2-an-action-state-keeps-changing",
+      "label": "てくる",
+      "reading": "てくる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-189-yori-2-indicate-set-point",
+      "label": "より",
+      "reading": "より"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-190-doko-asking-where",
+      "label": "どこ",
+      "reading": "どこ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-193-ka-3-making-question-words-unspecific",
+      "label": "か",
+      "reading": "か"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-194-mo-2-question-words-encompass-everything-nothing",
+      "label": "も",
+      "reading": "も"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-195-demo-question-words",
+      "label": "でも",
+      "reading": "でも"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-196-nimo-question-words",
+      "label": "にも",
+      "reading": "にも"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-197-suru-5-indicate-cost",
+      "label": "する",
+      "reading": "する"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-198-kana-you-can-start-wondering",
+      "label": "かな",
+      "reading": "かな"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-199-kurai-gurai-express-approximation",
+      "label": "くらい・ぐらい",
+      "reading": "くらい・ぐらい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-201-goro-indicating-approximate-point-time",
+      "label": "ごろ",
+      "reading": "ごろ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-202-gotoni-another-way-say-every",
+      "label": "ごとに",
+      "reading": "ごとに"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-203-okini-indicate-time-between-two-events",
+      "label": "おきに",
+      "reading": "おきに"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-204-tokoroda-express-that-it-takes-certain-time-from-a-b",
+      "label": "ところだ",
+      "reading": "ところだ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-205-verb-hajimeru-u",
+      "label": "う動詞",
+      "reading": "うどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-207-verb-hajimeru-irregulars",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-210-ni-go-somewhere-do-something",
+      "label": "に",
+      "reading": "に"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-211-tameni-indicate-benefit",
+      "label": "ために",
+      "reading": "ために"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-214-tsudzukeru-continue-doing-something",
+      "label": "つづける",
+      "reading": "つづける"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-215-owaru-finish-doing-something",
+      "label": "おわる",
+      "reading": "おわる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-220-konna-sonna-anna-this-that-kind-thing",
+      "label": "こんな・そんな・あんな",
+      "reading": "こんな・そんな・あんな"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-221-konnani-sonnani-annani-emphasize-verbs-adjectives",
+      "label": "こんなに・そんなに・あんなに",
+      "reading": "こんなに・そんなに・あんなに"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-222-nagara-do-something-while-doing-something-else",
+      "label": "ながら",
+      "reading": "ながら"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-224-sou-something-looks-like-its-about-do-something",
+      "label": "そう",
+      "reading": "そう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-226-ato-3-requirement-fulfill-condition",
+      "label": "あと",
+      "reading": "あと"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-230-hodo-3-express-approximation",
+      "label": "ほど",
+      "reading": "ほど"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-231-zutsu-distribute-quantity-equally",
+      "label": "ずつ",
+      "reading": "ずつ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-234-mo-3-emphasize-something",
+      "label": "も",
+      "reading": "も"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-235-tte-introduce-topic-colloquially",
+      "label": "って",
+      "reading": "って"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-236-toka-make-inexhaustive-list",
+      "label": "とか",
+      "reading": "とか"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-237-ya-make-inexhaustive-list",
+      "label": "や",
+      "reading": "や"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-238-nanka-doing-just-about-anything",
+      "label": "なんか",
+      "reading": "なんか"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-239-ne-ask-for-confirmation-isnt-it",
+      "label": "ね",
+      "reading": "ね"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-240-yo-inform-someone-something-new",
+      "label": "よ",
+      "reading": "よ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-241-wa-make-weak-assertion",
+      "label": "わ",
+      "reading": "わ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-242-na-seek-confirmation-more",
+      "label": "な",
+      "reading": "な"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-243-sa-be-like-different",
+      "label": "さ",
+      "reading": "さ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-244-kashira-wondering",
+      "label": "かしら",
+      "reading": "かしら"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-245-dakedenaku-not-only",
+      "label": "だけでなく",
+      "reading": "だけでなく"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-246-de-4-express-reason",
+      "label": "で",
+      "reading": "で"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-248-verb-potential-ru",
+      "label": "る動詞",
+      "reading": "るどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-249-verb-potential-irregular",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-250-verb-potential-slang",
+      "label": "られる → れる",
+      "reading": "られる → れる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-251-to-express-if",
+      "label": "と",
+      "reading": "と"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-252-suruto-if-you-do-this-then",
+      "label": "すると",
+      "reading": "すると"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-255-youni-express-likeness",
+      "label": "ように",
+      "reading": "ように"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-256-nakunaru-it-comes-undone",
+      "label": "なくなる",
+      "reading": "なくなる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-257-nakute-state-cause-reason",
+      "label": "なくて",
+      "reading": "なくて"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-258-ba-create-condition",
+      "label": "ば",
+      "reading": "ば"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-259-bayokatta-express-regret",
+      "label": "ばよかった",
+      "reading": "ばよかった"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-260-wakeda-make-logical-judgement",
+      "label": "わけだ",
+      "reading": "わけだ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-261-yahari-yappari-something-expected",
+      "label": "やはり・やっぱり",
+      "reading": "やはり・やっぱり"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-262-youninaru-express-change",
+      "label": "ようになる",
+      "reading": "ようになる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-263-younisuru-cause-circumstance-change",
+      "label": "ようにする",
+      "reading": "ようにする"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-264-verb-imperatives-level-2-u",
+      "label": "う動詞",
+      "reading": "うどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-265-verb-imperatives-level-2-ru",
+      "label": "る動詞",
+      "reading": "るどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-266-verb-imperatives-level-2-irregular",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-267-tell-someone-to-not-do-something",
+      "label": "な",
+      "reading": "な"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-269-2-dont-do-x",
+      "label": "ないで",
+      "reading": "ないで"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-270-kure-imperative-form",
+      "label": "くれ",
+      "reading": "くれ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-275-verb-volitional-u",
+      "label": "う動詞",
+      "reading": "うどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-276-verb-volitional-ru",
+      "label": "る動詞",
+      "reading": "るどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-277-verb-volitional-irregular",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-278-verb-causative-u",
+      "label": "う動詞",
+      "reading": "うどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-279-verb-causative-ru",
+      "label": "る動詞",
+      "reading": "るどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-280-verb-causative-irregular",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-281-verb-receptive-u",
+      "label": "う動詞",
+      "reading": "うどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-282-verb-receptive-ru",
+      "label": "る動詞",
+      "reading": "るどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-283-verb-receptive-irregular",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-285-sorede-give-reason-while-connecting-sentences",
+      "label": "それで",
+      "reading": "それで"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-286-soredeha-if-that-case",
+      "label": "それでは",
+      "reading": "それでは"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-287-to-quote-someone",
+      "label": "と",
+      "reading": "と"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-288-tte-quote-someone-colloquially",
+      "label": "って",
+      "reading": "って"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-289-toieba-make-something-just-mentioned-topic",
+      "label": "といえば",
+      "reading": "といえば"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-290-yaru-give-do-something",
+      "label": "やる",
+      "reading": "やる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-291-youtosuru-try-be-about-do-something",
+      "label": "ようとする",
+      "reading": "ようとする"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-294-toiu-give-more-information",
+      "label": "という",
+      "reading": "という"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-298-verb-desire-u",
+      "label": "う動詞",
+      "reading": "うどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-299-verb-desire-ru",
+      "label": "る動詞",
+      "reading": "るどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-300-verb-desire-irregular",
+      "label": "不規則動詞",
+      "reading": "ふきそくどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-301-dore-ask-for-decision-between-things",
+      "label": "どれ",
+      "reading": "どれ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-302-dono-dochira-dotchi-ask-for-decision-between-things",
+      "label": "どの・どちら・どっち",
+      "reading": "どの・どちら・どっち"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-303-ni-express-action-on-surface",
+      "label": "に",
+      "reading": "に"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-304-tearu-something-current-state",
+      "label": "～てある",
+      "reading": "～てある"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-305-teoku-do-something-advance",
+      "label": "～ておく",
+      "reading": "～ておく"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-306-noni-something-contrary-what-one-would-expect",
+      "label": "のに",
+      "reading": "のに"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-307-sekkaku-when-you-have-rare-chance",
+      "label": "せっかく",
+      "reading": "せっかく"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-309-how-describe-locations",
+      "label": "場所説明",
+      "reading": "ばしょせつめい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-310-self-moving-and-other-moving-verbs",
+      "label": "自動詞・他動詞",
+      "reading": "じどうし・たどうし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-311-noni-in-order-do-something",
+      "label": "のに",
+      "reading": "のに"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-312-ikenai-prohibit-something",
+      "label": "いけない",
+      "reading": "いけない"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-313-naranai-prohibit-something-stronger",
+      "label": "ならない",
+      "reading": "ならない"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-314-dame-prohibit-something-casually",
+      "label": "だめ",
+      "reading": "だめ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-315-cha-ja-casual-abbreviation-for-teha-deha",
+      "label": "ちゃ・じゃ",
+      "reading": "ちゃ・じゃ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-316-chimau-jimau-finish-doing-something",
+      "label": "ちまう・じまう",
+      "reading": "ちまう・じまう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-317-chau-jau-finish-doing-something",
+      "label": "ちゃう・じゃう",
+      "reading": "ちゃう・じゃう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-318-nakuteha-something-necessary",
+      "label": "なくては",
+      "reading": "なくては"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-319-nakutehaikenai-naranai-dame-something-must-be-done",
+      "label": "なくてはいけない・ならない・だめ",
+      "reading": "なくてはいけない・ならない・だめ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-320-dehanakute-correct-information",
+      "label": "ではなくて",
+      "reading": "ではなくて"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-321-garu-someone-shows-signs-something",
+      "label": "がる",
+      "reading": "がる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-322-kai-ask-yes-or-no-question",
+      "label": "かい",
+      "reading": "かい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-323-dai-make-interrogative-question",
+      "label": "だい",
+      "reading": "だい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-327-shouganai-nothing-you-can-do",
+      "label": "しょうがない",
+      "reading": "しょうがない"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-329-kitto-express-that-something-will-surely-happen",
+      "label": "きっと",
+      "reading": "きっと"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-330-chanto-something-appropriate",
+      "label": "ちゃんと",
+      "reading": "ちゃんと"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-331-5-so-well-and-then",
+      "label": "で",
+      "reading": "で"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-340-i-see-indeed",
+      "label": "なるほど",
+      "reading": "なるほど"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-341-mazu-at-first",
+      "label": "まず",
+      "reading": "まず"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-342-mazu-probably",
+      "label": "まず",
+      "reading": "まず"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-343-sugu-express-short-distance-time",
+      "label": "すぐ",
+      "reading": "すぐ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-344-mousugu-pretty-soon",
+      "label": "もうすぐ",
+      "reading": "もうすぐ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-345-mitaini-na-something-like-something-example-it",
+      "label": "みたいに・な",
+      "reading": "みたいに・な"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-347-kakeru-kakaru-general-overview",
+      "label": "かける・かかる",
+      "reading": "かける・かかる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-348-kakeru-exerting-influence",
+      "label": "かける",
+      "reading": "かける"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-349-kakeru-do-something-halfway-almost",
+      "label": "かける",
+      "reading": "かける"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-350-indicate-that-something-is-in-progress",
+      "label": "かけ",
+      "reading": "かけ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-352-an-introduction-politeness-japanese",
+      "label": "丁寧さ",
+      "reading": "ていねいさ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-353-desu-end-sentence-politely",
+      "label": "です",
+      "reading": "です"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-354-masu-creating-polite-form",
+      "label": "ます",
+      "reading": "ます"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-355-the-why-questions",
+      "label": "なぜ",
+      "reading": "なぜ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-356-dou-ask-in-what-way",
+      "label": "どう",
+      "reading": "どう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-357-itadaku-when-you-receive-something",
+      "label": "いただく",
+      "reading": "いただく"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-358-o-make-word-more-polite",
+      "label": "お",
+      "reading": "お"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-359-go-make-noun-more-polite",
+      "label": "ご",
+      "reading": "ご"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-360-deshou-express-amount-certainty",
+      "label": "でしょう",
+      "reading": "でしょう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-361-mashou-show-volition",
+      "label": "ましょう",
+      "reading": "ましょう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-362-4-but-however",
+      "label": "が",
+      "reading": "が"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-363-kudasai-make-polite-request",
+      "label": "ください",
+      "reading": "ください"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-364-zehi-certainly",
+      "label": "ぜひ",
+      "reading": "ぜひ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-365-how-give-direction-japanese",
+      "label": "道案内",
+      "reading": "みちあんない"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-366-nakerebanaranai-express-necessity-do-something",
+      "label": "なければならない",
+      "reading": "なければならない"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-367-choudai-make-request",
+      "label": "ちょうだい",
+      "reading": "ちょうだい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-368-nasai-make-polite-command",
+      "label": "なさい",
+      "reading": "なさい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-369-taradoudesuka-suggest-something",
+      "label": "たらどうですか",
+      "reading": "たらどうですか"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-370-sama-call-someone-politely",
+      "label": "さま",
+      "reading": "さま"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-371-node-express-reason-cause",
+      "label": "ので",
+      "reading": "ので"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-372-naraba-express-if",
+      "label": "ならば",
+      "reading": "ならば"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-373-keredomo-express-contradiction",
+      "label": "けれども",
+      "reading": "けれども"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-374-moshikashitara-express-chance",
+      "label": "もしかしたら",
+      "reading": "もしかしたら"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-375-youto-attempt-do-something",
+      "label": "ようと",
+      "reading": "ようと"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-376-oru-express-existence-more-humbly",
+      "label": "おる",
+      "reading": "おる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-377-osuru-do-action-for-someone-politely",
+      "label": "お～する",
+      "reading": "お～する"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-378-oitasu-do-action-for-someone-more-politely",
+      "label": "お～いたす",
+      "reading": "お～いたす"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-379-oninaru-describe-someones-state-politely",
+      "label": "お～になる",
+      "reading": "お～になる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-380-okudasai-ask-someone-do-give-something",
+      "label": "お～ください",
+      "reading": "お～ください"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-381-being-more-polite-with-receptive-form",
+      "label": "受け身",
+      "reading": "うけみ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-382-gozaimasu-something-exists",
+      "label": "ございます",
+      "reading": "ございます"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-383-kochira-sochira-achira-dochira-refer-places-people",
+      "label": "こちら・そちら・あちら・どちら",
+      "reading": "こちら・そちら・あちら・どちら"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-384-greetings",
+      "label": "あいさつ",
+      "reading": "あいさつ"
+    }
+  ]
+}

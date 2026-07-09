@@ -12,9 +12,10 @@ id: grammar-123-rashii-make-conjecture
 pattern: "らしい"
 title: "「らしい」Make a conjecture"
 reading: "らしい"
-meaning_it: "Make a conjecture"
+meaning_it: >-
+  «Pare / a quanto sembra», con informazione indiretta e incerta; anche «tipico di»
 notes_it: >-
-  らしい va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo / い-aggettivo in forma piana + らしい; nome / な-aggettivo + らしい. Nel valore congetturale è meno neutro del そうだ di pura citazione: il parlante lascia margine d'incertezza. Nel valore «tipico di», らしい si comporta come un い-aggettivo: 子供らしくない.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-123-rashii-make-conjecture
 card_type: concept
 front: "らしい"
 back: >-
-  Make a conjecture
+  «Pare / a quanto sembra», con informazione indiretta e incerta; anche «tipico di»
 example_jp: >-
-  これはらしいのかたちだ。
+  {{田中|たなか}}さんは{{今日|きょう}}は{{休|やす}}むらしい。
 example_it: >-
-  Questa è la forma らしい.
+  A quanto pare, oggi Tanaka si prende un giorno libero.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  休むらしい trasmette un'informazione non confermata sul programma di Tanaka; il soggetto resta prudente sulla sua certezza. Nel valore congetturale è meno neutro del そうだ di pura citazione: il parlante lascia margine d'incertezza. Nel valore «tipico di», らしい si comporta come un い-aggettivo: 子供らしくない.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

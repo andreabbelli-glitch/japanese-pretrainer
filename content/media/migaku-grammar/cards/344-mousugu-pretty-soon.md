@@ -12,9 +12,10 @@ id: grammar-344-mousugu-pretty-soon
 pattern: "もうすぐ"
 title: "「もうすぐ」”Pretty soon\""
 reading: "もうすぐ"
-meaning_it: "Pretty soon"
+meaning_it: >-
+  Fra poco; ormai quasi; presto
 notes_it: >-
-  もうすぐ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Precede normalmente un predicato futuro o una situazione imminente: もうすぐ始まる. Il punto di riferimento è il presente e l'intervallo è breve secondo il contesto. Rispetto a すぐ, non implica necessariamente azione immediata; もう contribuisce all'idea che si sia ormai vicini al limite.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-344-mousugu-pretty-soon
 card_type: concept
 front: "もうすぐ"
 back: >-
-  Pretty soon
+  もうすぐ indica che manca poco al verificarsi di un evento atteso.
 example_jp: >-
-  ぼくもいく。
+  もうすぐ{{電車|でんしゃ}}が{{来|き}}ます。
 example_it: >-
-  Vado anche io.
+  Il treno arriverà fra poco.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Precede normalmente un predicato futuro o una situazione imminente: もうすぐ始まる. Il punto di riferimento è il presente e l'intervallo è breve secondo il contesto. Rispetto a すぐ, non implica necessariamente azione immediata; もう contribuisce all'idea che si sia ormai vicini al limite.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n2, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 159.
+  Giudizi formulati entro una prospettiva o categoria messa a contrasto.
 ---
 
-# 「としては」Make a comparison from a certain standard
+# 「としては」Make a comparison
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AF`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+としては aggiunge は a として e rende il ruolo o la categoria una cornice tematica. La seconda parte è un giudizio valido rispetto a quella cornice, spesso in contrasto con altre.
 
-- Tema: Make a comparison from a certain standard
-- Sezione: jlpt n2
-- Livello: JLPT-N2
-- Pattern allenabile: [としては](grammar:grammar-159-make-a-comparison-from-a-certain-standard)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Nome + としては + giudizio: 初心者向けとしては難しい.
+- Punto di vista personale/istituzionale: 私としては賛成だ, 会社としては認められない.
+- Il confronto può rimanere implicito: la categoria A stabilisce lo standard rilevante.
 
-Il centro del ripasso è riconoscere [としては](grammar:grammar-159-make-a-comparison-from-a-certain-standard) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{一人暮|ひとりぐ}}らしの{{部屋|へや}}としては、かなり{{広|ひろ}}い。
 translation_it: >-
-  Questa è una penna.
+  Per essere un appartamento per una persona sola, è piuttosto spazioso.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   としては -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+La stanza viene valutata non in assoluto, ma entro la categoria degli alloggi per una persona sola.
+
+## Sfumature d'uso
+
+- にしては mette più chiaramente in risalto un risultato inatteso; としては può limitarsi a dichiarare la prospettiva.
+- は introduce facilmente contrasto: il giudizio potrebbe cambiare se si adottasse un altro ruolo o standard.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 245.
+  Non solo A, ma anche B con dakedenaku.
 ---
 
-# 「だけでなく」Add another item beyond the first one
+# 「だけでなく」Not only
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dakedenaku-not-only`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Superare il limite A
 
-## Punto da riconoscere
-
-- Tema: aggiungere un elemento oltre al primo
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [だけでなく](grammar:grammar-245-dakedenaku-not-only)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [だけでなく](grammar:grammar-245-dakedenaku-not-only) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+A だけで(は)なく B も nega che l'affermazione si limiti ad A e aggiunge B.
 
 :::example_sentence
 jp: >-
-  カフェでたべる。
+  {{彼|かれ}}は{{英語|えいご}}だけでなく、{{日本語|にほんご}}も{{話|はな}}せる。
 translation_it: >-
-  Mangio al caffè.
+  Sa parlare non solo inglese, ma anche giapponese.
 :::
 
-#### Anatomia rapida
+は nella prima metà è facoltativo; anche も può cadere quando il parallelismo è evidente.
 
-*   だけでなく -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Formazione
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Verbi e aggettivi in い precedono だけ direttamente. Gli aggettivi in な usano なだけでなく; nomi e forme passate si collegano nella loro normale forma piana.

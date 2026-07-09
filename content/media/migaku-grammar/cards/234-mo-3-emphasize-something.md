@@ -12,9 +12,9 @@ id: grammar-234-mo-3-emphasize-something
 pattern: "も"
 title: "「も」(3) Emphasize something"
 reading: "も"
-meaning_it: "(3) Emphasize something"
+meaning_it: "も enfatico: «perfino», «ben», «neanche uno»"
 notes_it: >-
-  も va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Dopo nomi e quantità, も segnala che il valore è sorprendentemente alto o basso. Con negazione può significare «neanche»; tra base verbale e しない rafforza «non fare nemmeno».
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-234-mo-3-emphasize-something
 card_type: concept
 front: "も"
 back: >-
-  (3) Emphasize something
+  X も presenta X come quantità o caso notevole: «addirittura / perfino / neanche».
 example_jp: >-
-  ぼくもいく。
+  ビールを{{十本|じゅっぽん}}も{{飲|の}}んだ。
 example_it: >-
-  Vado anche io.
+  Ha bevuto addirittura dieci birre.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Una stessa quantità cambia lettura con la polarità: 十本も飲んだ «ben dieci»; 一本も飲まなかった «neanche una».
 tags: [migaku, grammar, jlpt-n4, academy-level-1, particles]
 :::

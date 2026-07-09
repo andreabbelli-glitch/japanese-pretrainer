@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 033.
+  Formazione del negativo piano dei verbi in る.
 ---
 
-# The negative form of る verbs
+# Verb Negatives - Ru
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ru-verbs-negation`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Formazione
 
-## Punto da riconoscere
+Per un verbo della classe in る o 一段, si elimina il る finale e si aggiunge ない.
 
-- Tema: The negative form of る verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [る{{動詞|どうし}}](grammar:grammar-033-ru-verbs-negation)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [る{{動詞|どうし}}](grammar:grammar-033-ru-verbs-negation) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- 食べる → 食べない
+- 出る → 出ない
+- 起きる → 起きない
 
 :::example_sentence
 jp: >-
-  パンをたべる。
+  {{彼女|かのじょ}}はご{{飯|はん}}を{{食|た}}べない。
 translation_it: >-
-  Mangio il pane.
+  Lei non mangia / non mangerà.
 :::
 
-#### Anatomia rapida
-
-*   る{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+All'interno della classe non ci sono eccezioni, ma bisogna prima classificare bene il verbo. 帰る termina in る ma è un verbo in う, quindi il suo negativo è 帰らない, non 帰ない.

@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 012.
+  Uso di それ per indicare una cosa vicina all'ascoltatore.
 ---
 
-# 「それ」”That"
+# 「それ」For that
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/sore-that`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Punto di vista
 
-## Punto da riconoscere
-
-- Tema: That
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [それ](grammar:grammar-012-sore-that)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [それ](grammar:grammar-012-sore-that) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+それ è un pronome dimostrativo per una cosa vicina all'ascoltatore, in suo possesso o associata alla sua sfera. In italiano corrisponde spesso a «quello / quella».
 
 :::example_sentence
 jp: >-
-  これはそれのかたちだ。
+  それは{{本|ほん}}だ。
 translation_it: >-
-  Questa è la forma それ.
+  Quello è un libro.
 :::
 
-#### Anatomia rapida
+Come tutti i pronomi della serie -れ, それ sostituisce il nome. Davanti a un nome occorre invece その: その本, «quel libro».
 
-*   それ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Contrasto
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+La serie そ- segnala qualcosa distante dal parlante ma vicino all'interlocutore. Numero e genere della traduzione italiana si ricavano dal referente, non dalla forma それ.

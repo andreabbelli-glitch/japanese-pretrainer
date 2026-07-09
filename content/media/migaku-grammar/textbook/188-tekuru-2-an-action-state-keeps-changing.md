@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 188.
+  Processi iniziati prima e giunti fino al presente o ormai percepibili.
 ---
 
 # 「てくる」(2) An action or state keeps changing
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tekuru-2-an-action-state-keeps-changing`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+てくる orienta il cambiamento verso il punto di vista del parlante. Il risultato o la tendenza «arriva» fino al presente e diventa osservabile.
 
-- Tema: (2) An action or state keeps changing
-- Sezione: form series
-- Livello: JLPT-N4
-- Pattern allenabile: [てくる](grammar:grammar-188-tekuru-2-an-action-state-keeps-changing)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Passato → presente: 勉強してきた, 暖かくなってきた.
+- Cambiamento atteso che si manifesterà: 運動すると体が温かくなってくる.
+- Progressione anteriore a un punto passato: 続けてきていた.
 
-Il centro del ripasso è riconoscere [てくる](grammar:grammar-188-tekuru-2-an-action-state-keeps-changing) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはてくるのかたちだ。
+  {{最近|さいきん}}、{{日|ひ}}が{{長|なが}}くなってきた。
 translation_it: >-
-  Questa è la forma てくる.
+  Ultimamente le giornate si sono allungate.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   てくる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+最近 delimita un periodo che arriva a ora; 長くなってきた presenta l'allungamento come cambiamento ormai percepibile.
+
+## Sfumature d'uso
+
+- La traduzione italiana usa spesso passato prossimo, «cominciare a» o «diventare», senza rendere letteralmente «venire».
+- 〜ていく guarda dal presente verso ciò che seguirà; 〜てくる guarda ciò che conduce al punto di osservazione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

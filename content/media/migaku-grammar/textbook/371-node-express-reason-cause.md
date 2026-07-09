@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 371.
+  Cause e motivazioni presentate con tono esplicativo e generalmente meno assertivo.
 ---
 
 # 「ので」Express a reason or cause
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/node-express-reason-cause`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ので collega una circostanza al suo risultato evitando di presentare la ragione come imposizione personale troppo netta.
 
-- Tema: Express a reason or cause
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [ので](grammar:grammar-371-node-express-reason-cause)
+## Formazione e restrizioni
 
-## Lettura operativa
+- V/Aい + ので: 行くので, 高いので.
+- Nome/Aな + なので: 学生なので, 静かなので.
+- Passato: 行ったので, 学生だったので; colloquiale んで.
 
-Il centro del ripasso è riconoscere [ので](grammar:grammar-371-node-express-reason-cause) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ぼくのペンだ。
+  {{雨|あめ}}が{{降|ふ}}っているので、{{出|で}}かけません。
 translation_it: >-
-  È la mia penna.
+  Dato che piove, non esco.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ので -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+La pioggia è presentata come circostanza che motiva la decisione di non uscire.
+
+## Sfumature d'uso
+
+- Con ordini molto diretti, から può risultare più naturale; ので favorisce spiegazione e attenuazione.
+- La causa precede normalmente il risultato, ma il contesto può omettere la seconda parte.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

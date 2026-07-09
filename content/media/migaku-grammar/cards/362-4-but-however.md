@@ -12,9 +12,10 @@ id: grammar-362-4-but-however
 pattern: "が"
 title: "「が」(4) \"But…” / “however…\""
 reading: "が"
-meaning_it: "(4) But… / however…"
+meaning_it: >-
+  Ma; però; e, con esitazione
 notes_it: >-
-  が va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Con V/Aい si aggiunge が alla forma piana o cortese; con Nome/Aな: だが／ですが. A fine frase が può lasciare il seguito implicito e ammorbidire una richiesta. È più formale di けど; non ogni collegamento è realmente contrastivo.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-362-4-but-however
 card_type: concept
 front: "が"
 back: >-
-  (4) But… / however…
+  Proposizione + が collega un contrasto oppure introduce con cautela una richiesta o un argomento.
 example_jp: >-
-  ネコがいる。
+  {{少|すこ}}し{{高|たか}}いですが、とても{{便利|べんり}}です。
 example_it: >-
-  C'è un gatto.
+  È un po' caro, ma molto comodo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con V/Aい si aggiunge が alla forma piana o cortese; con Nome/Aな: だが／ですが. A fine frase が può lasciare il seguito implicito e ammorbidire una richiesta. È più formale di けど; non ogni collegamento è realmente contrastivo.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 :::

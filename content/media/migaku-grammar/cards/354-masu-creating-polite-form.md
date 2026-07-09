@@ -12,9 +12,10 @@ id: grammar-354-masu-creating-polite-form
 pattern: "ます"
 title: "「ます」Creating the polite form of verbs"
 reading: "ます"
-meaning_it: "Creating the polite form of verbs"
+meaning_it: >-
+  Forma cortese dei verbi
 notes_it: >-
-  ます va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Radice: verbi in う passano alla mora in い (書く→書き), verbi in る del secondo gruppo perdono る (食べる→食べ), する→し, 来る→来（き）. ます è non-passato affermativo; ません negativo; ました passato; ませんでした passato negativo. Si usa in fine di frase, non dentro una relativa attributiva.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-354-masu-creating-polite-form
 card_type: concept
 front: "ます"
 back: >-
-  Creating the polite form of verbs
+  Radice verbale + ます／ません／ました／ませんでした crea le quattro forme cortesi fondamentali.
 example_jp: >-
-  パンをたべます。
+  {{毎朝|まいあさ}}{{七時|しちじ}}に{{起|お}}きます。
 example_it: >-
-  Mangio il pane.
+  Ogni mattina mi alzo alle sette.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Radice: verbi in う passano alla mora in い (書く→書き), verbi in る del secondo gruppo perdono る (食べる→食べ), する→し, 来る→来（き）. ます è non-passato affermativo; ません negativo; ました passato; ませんでした passato negativo. Si usa in fine di frase, non dentro una relativa attributiva.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, stem-form-series, polite-language]
 :::

@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 016.
+  Caratteristiche dei verbi in う e valore della forma dizionario.
 ---
 
-# Introduction to う verbs
+# Verb Basics - U
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/u-verbs`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Verbi e non-passato
 
-## Punto da riconoscere
-
-- Tema: Introduction to う verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [う{{動詞|どうし}}](grammar:grammar-016-introduction-to-verbs)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [う{{動詞|どうし}}](grammar:grammar-016-introduction-to-verbs) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Il verbo chiude normalmente la proposizione e non cambia in base a persona o numero. La forma dizionario è non-passata: il contesto decide se descrive un'abitudine, uno stato attuale o un evento futuro.
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{彼|かれ}}は{{毎日|まいにち}}{{本|ほん}}を{{読|よ}}む。
 translation_it: >-
-  Vado al caffè.
+  Lui legge un libro ogni giorno.
 :::
 
-#### Anatomia rapida
+Senza 毎日, 読む potrebbe anche significare «leggerà». Il giapponese non possiede una coniugazione futura separata paragonabile a quella italiana.
 
-*   う{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Classe in う
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+I verbi in う, o 五段, terminano in un kana della serie u: す, く, ぐ, ぶ, つ, む, ぬ, う oppure る. Ogni verbo che non finisce in る appartiene a questa classe; tra quelli in る, molti con -aru, -uru o -oru sono ugualmente in う. La classe va imparata insieme al verbo.

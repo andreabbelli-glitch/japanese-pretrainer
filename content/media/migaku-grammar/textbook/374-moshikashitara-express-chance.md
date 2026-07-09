@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 374.
+  Possibilità incerta introdotta con prudenza e spesso conclusa da una forma dubitativa.
 ---
 
-# 「もしかしたら」Express a possibility
+# 「もしかしたら」Express chance
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/moshikashitara-express-chance`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+もしかしたら segnala che il parlante sta avanzando una possibilità senza fiducia sufficiente per affermarla.
 
-- Tema: Express a possibility
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [もしかしたら](grammar:grammar-374-moshikashitara-express-chance)
+## Formazione e restrizioni
 
-## Lettura operativa
+- もしかしたら + proposizione + かもしれない.
+- もしかしたら + domanda: もしかしたら田中さんですか.
+- Varianti colloquiali o stilistiche: もしかして, もしかすると, ひょっとすると.
 
-Il centro del ripasso è riconoscere [もしかしたら](grammar:grammar-374-moshikashitara-express-chance) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  もしかしたら、{{会議|かいぎ}}は{{中止|ちゅうし}}かもしれません。
 translation_it: >-
-  Vado anche io.
+  Forse la riunione verrà annullata.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   もしかしたら -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+L'avverbio apre l'ipotesi e かもしれません mantiene esplicitamente bassa la certezza.
+
+## Sfumature d'uso
+
+- In italiano spesso basta un solo «forse», mentre il giapponese può usare sia l'avverbio sia かもしれない.
+- Con una conclusione assertiva senza attenuazione può risultare incoerente.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

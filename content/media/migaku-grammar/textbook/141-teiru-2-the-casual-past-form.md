@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, casual-speech, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 141.
+  Contrazioni colloquiali delle forme continuative, incluse passato e negazione.
 ---
 
-# 「てる」(2) The casual form ている
+# 「ている」(2) The casual and past form
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/teiru-2-the-casual-past-form`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Nel parlato spontaneo la い di 〜ている viene spesso omessa. La funzione grammaticale non cambia: cambia soltanto il grado di colloquialità.
 
-- Tema: (2) The casual form ている
-- Sezione: form series
-- Livello: JLPT-N5
-- Pattern allenabile: [てる](grammar:grammar-141-teiru-2-the-casual-past-form)
+## Formazione e restrizioni
 
-## Lettura operativa
+- 〜ている → 〜てる: 食べている → 食べてる.
+- Passato: 〜ていた → 〜てた; negativo: 〜ていない → 〜てない; passato negativo: 〜ていなかった → 〜てなかった.
+- La congiuntiva 〜ていて può contrarsi in 〜てて.
 
-Il centro del ripasso è riconoscere [てる](grammar:grammar-141-teiru-2-the-casual-past-form) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  いまパンをたべている。
+  さっきまで{{何|なに}}をしてたの？
 translation_it: >-
-  Sto mangiando il pane adesso.
+  Che cosa stavi facendo fino a poco fa?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   てる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+してた è la contrazione di していた e colloca l'attività in corso nel periodo che arrivava fino a poco prima.
+
+## Sfumature d'uso
+
+- La contrazione è molto comune tra pari e nei dialoghi; in un testo formale o con です／ます si mantiene 〜ている／〜ています.
+- Non confondere 〜てた con una semplice forma passata: contiene il valore continuativo o risultativo di 〜ている.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

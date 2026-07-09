@@ -12,9 +12,10 @@ id: grammar-318-nakuteha-something-necessary
 pattern: "なくては"
 title: "「なくては」”Can’t Y Without X\""
 reading: "なくては"
-meaning_it: "Can’t Y Without X"
+meaning_it: >-
+  Presenta A come condizione necessaria: «senza A, B non è possibile»
 notes_it: >-
-  なくては va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo negativo senza い + くては／い-aggettivo + くなくては／nome + でなくては. La conseguenza negativa esplicita o sottintesa rende A una condizione necessaria; l'obbligo emerge quando seguono いけない／ならない／だめ. Nel parlato なくては si contrae spesso in なくちゃ.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-318-nakuteha-something-necessary
 card_type: concept
 front: "なくては"
 back: >-
-  Can’t Y Without X
+  Presenta A come condizione necessaria: «senza A, B non è possibile»
 example_jp: >-
-  これはペンだ。
+  {{静|しず}}かでなくては{{集中|しゅうちゅう}}できない。
 example_it: >-
-  Questa è una penna.
+  Se non c'è silenzio, non riesco a concentrarmi.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  静か è un な-aggettivo e prende でなくては; 集中できない mostra l'esito impossibile senza quella condizione. La conseguenza negativa esplicita o sottintesa rende A una condizione necessaria; l'obbligo emerge quando seguono いけない／ならない／だめ. Nel parlato なくては si contrae spesso in なくちゃ.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

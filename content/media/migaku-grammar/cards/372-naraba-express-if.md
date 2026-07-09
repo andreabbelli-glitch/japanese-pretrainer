@@ -12,9 +12,10 @@ id: grammar-372-naraba-express-if
 pattern: "ならば"
 title: "「ならば」Another way to say “if\""
 reading: "ならば"
-meaning_it: "Another way to say if"
+meaning_it: >-
+  Se; se è così; nel caso in cui
 notes_it: >-
-  ならば va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  ならば è la forma piena di なら e ha tono più scritto, formale o enfatico. Si unisce a Nome/Aな direttamente e a V/Aい in forma piana; のならば può rendere più esplicita la nominalizzazione. Spesso riprende una premessa proposta dall'interlocutore, non una semplice successione temporale.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-372-naraba-express-if
 card_type: concept
 front: "ならば"
 back: >-
-  Another way to say if
+  AならばB assume A come condizione o informazione data e dichiara ciò che vale in quel caso.
 example_jp: >-
-  それならいく。
+  {{時間|じかん}}がないならば、{{明日|あした}}にしましょう。
 example_it: >-
-  Se è così, vado.
+  Se non c'è tempo, rimandiamo a domani.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  ならば è la forma piena di なら e ha tono più scritto, formale o enfatico. Si unisce a Nome/Aな direttamente e a V/Aい in forma piana; のならば può rendere più esplicita la nominalizzazione. Spesso riprende una premessa proposta dall'interlocutore, non una semplice successione temporale.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

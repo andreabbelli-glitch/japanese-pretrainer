@@ -12,9 +12,9 @@ id: grammar-021-writing-kanji-words-in-hiragana
 pattern: "ひらがな書き"
 title: "Writing kanji words in hiragana"
 reading: "ひらがながき"
-meaning_it: "Writing kanji words in hiragana"
+meaning_it: "Scrivere in hiragana parole che possiedono anche una grafia in kanji"
 notes_it: >-
-  ひらがな{{書|が}}き va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Una parola può essere scritta in hiragana per leggibilità, pubblico, registro o stile. La scelta non è sempre intercambiabile: talvolta grafia in kanji e kana distinguono usi concreti e grammaticali; gli ausiliari tendono ai kana.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-021-writing-kanji-words-in-hiragana
 card_type: concept
 front: "ひらがな{{書|が}}き"
 back: >-
-  Writing kanji words in hiragana
+  La grafia in hiragana può sostituire i kanji per ragioni lessicali, stilistiche o grammaticali senza cambiare necessariamente la parola.
 example_jp: >-
-  ネコがいる。
+  {{田中|たなか}}さんがくる。
 example_it: >-
-  C'è un gatto.
+  Arriva Tanaka.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  くる corrisponde qui a 来る. Nei materiali reali la grafia in kana non rende la parola meno corretta; bisogna riconoscere entrambe le forme.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

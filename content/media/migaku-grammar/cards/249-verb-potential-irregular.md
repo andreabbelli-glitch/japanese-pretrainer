@@ -12,9 +12,9 @@ id: grammar-249-verb-potential-irregular
 pattern: "不規則動詞"
 title: "The potential form of irregular verbs"
 reading: "ふきそくどうし"
-meaning_it: "The potential form of irregular verbs"
+meaning_it: "Potenziale irregolare: できる, 来られる, 行ける"
 notes_it: >-
-  {{不規則|ふきそく}}{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Le forme da imparare sono する → できる; 来る → 来られる, letto こられる; 行く → 行ける. Queste forme si coniugano poi come verbi in る.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-249-verb-potential-irregular
 card_type: concept
 front: "{{不規則|ふきそく}}{{動詞|どうし}}"
 back: >-
-  The potential form of irregular verbs
+  Le principali forme potenziali speciali esprimono «poter fare/venire/andare».
 example_jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  {{今日|きょう}}は{{来|こ}}られない。
 example_it: >-
-  Questa è la forma 不規則動詞.
+  Oggi non posso venire.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con できる l'oggetto della capacità prende が: 料理ができる. 行く segue il modello regolare dei verbi in う.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

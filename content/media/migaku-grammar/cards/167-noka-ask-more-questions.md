@@ -12,9 +12,10 @@ id: grammar-167-noka-ask-more-questions
 pattern: "のか"
 title: "「のか」Ask indirect questions"
 reading: "のか"
-meaning_it: "Ask indirect questions"
+meaning_it: >-
+  È forse che…?; chiedersi/indicare quale…
 notes_it: >-
-  のか va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: V／Aい + のか; Nome／Aな + なのか. Come domanda diretta può essere forte o riflessiva secondo intonazione e contesto; come clausola incorporata non richiede risposta immediata. んですか è una variante cortese e conversazionale per molte domande esplicative.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-167-noka-ask-more-questions
 card_type: concept
 front: "のか"
 back: >-
-  Ask indirect questions
+  Forma piana + のか può formulare una domanda esplicativa o incorporare una questione in un'altra frase.
 example_jp: >-
-  ぼくのペンだ。
+  {{彼|かれ}}が{{本当|ほんとう}}に{{来|く}}るのか、まだ{{分|わ}}からない。
 example_it: >-
-  È la mia penna.
+  Non so ancora se verrà davvero.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: V／Aい + のか; Nome／Aな + なのか. Come domanda diretta può essere forte o riflessiva secondo intonazione e contesto; come clausola incorporata non richiede risposta immediata. んですか è una variante cortese e conversazionale per molte domande esplicative.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 :::

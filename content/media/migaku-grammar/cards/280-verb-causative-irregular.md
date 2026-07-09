@@ -12,9 +12,10 @@ id: grammar-280-verb-causative-irregular
 pattern: "不規則動詞"
 title: "The causative form of irregular verbs"
 reading: "ふきそくどうし"
-meaning_it: "The causative form of irregular verbs"
+meaning_it: >-
+  Causativi fondamentali: させる, 来させる e 行かせる
 notes_it: >-
-  {{不規則|ふきそく}}{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  する→させる／来る→来させる／行く→行かせる. Tutte le forme risultanti coniugano come ichidan. Anche qui il contesto distingue costrizione e permesso; non basta la sola forma verbale.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-280-verb-causative-irregular
 card_type: concept
 front: "{{不規則|ふきそく}}{{動詞|どうし}}"
 back: >-
-  The causative form of irregular verbs
+  Causativi fondamentali: させる, 来させる e 行かせる
 example_jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  {{先生|せんせい}}は{{学生|がくせい}}に{{発表|はっぴょう}}させた。
 example_it: >-
-  Questa è la forma 不規則動詞.
+  L'insegnante ha fatto fare una presentazione allo studente.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  発表する prende il causativo させた; 先生は è il causante e 学生に chi esegue la presentazione. Tutte le forme risultanti coniugano come ichidan. Anche qui il contesto distingue costrizione e permesso; non basta la sola forma verbale.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

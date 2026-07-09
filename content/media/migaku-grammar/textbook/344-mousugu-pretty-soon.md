@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 344.
+  Evento futuro vicino al presente ma non necessariamente immediato.
 ---
 
-# 「もうすぐ」”Pretty soon"
+# 「もうすぐ」Pretty soon
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/mousugu-pretty-soon`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+もうすぐ guarda un processo già avanzato verso il suo esito. L'evento resta da realizzarsi e viene percepito come prossimo.
 
-- Tema: Pretty soon
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [もうすぐ](grammar:grammar-344-mousugu-pretty-soon)
+## Formazione e restrizioni
 
-## Lettura operativa
+- もうすぐ + evento: もうすぐ始まる.
+- もうすぐ + stato raggiunto: もうすぐ春だ.
+- Può accompagnare quantità o età prossime a un limite secondo il contesto.
 
-Il centro del ripasso è riconoscere [もうすぐ](grammar:grammar-344-mousugu-pretty-soon) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  もうすぐ{{電車|でんしゃ}}が{{来|き}}ます。
 translation_it: >-
-  Vado anche io.
+  Il treno arriverà fra poco.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   もうすぐ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+もうすぐ colloca l'arrivo del treno nel futuro molto vicino.
+
+## Sfumature d'uso
+
+- すぐ può significare «immediatamente»; もうすぐ è più vicino a «fra poco».
+- È adatto a un futuro vicino; la sola certezza di un evento lontano non basta.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

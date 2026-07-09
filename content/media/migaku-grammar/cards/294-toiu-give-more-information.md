@@ -12,9 +12,10 @@ id: grammar-294-toiu-give-more-information
 pattern: "という"
 title: "「という」”An X that is called...\""
 reading: "という"
-meaning_it: "An X that is called..."
+meaning_it: >-
+  Chiama qualcosa con un nome o specifica il contenuto di un'informazione
 notes_it: >-
-  という va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  nome o contenuto + という + nome-categoria. La forma collega sempre l'informazione A al nome B che la classifica, come 噂, 話, 名前 o ゲーム. Nel parlato si riduce a っていう o って.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-294-toiu-give-more-information
 card_type: concept
 front: "という"
 back: >-
-  An X that is called...
+  Chiama qualcosa con un nome o specifica il contenuto di un'informazione
 example_jp: >-
-  ミカといく。
+  「さくら」という{{名前|なまえ}}の{{店|みせ}}だ。
 example_it: >-
-  Vado con Mika.
+  È un negozio che si chiama «Sakura».
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  さくら è il nome citato; という lo collega a 名前 e l'intero sintagma descrive 店. La forma collega sempre l'informazione A al nome B che la classifica, come 噂, 話, 名前 o ゲーム. Nel parlato si riduce a っていう o って.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

@@ -12,9 +12,9 @@ id: grammar-207-verb-hajimeru-irregulars
 pattern: "不規則動詞"
 title: "Irregular verbs + はじめる"
 reading: "ふきそくどうし"
-meaning_it: "Irregular verbs + はじめる"
+meaning_it: "Cominciare con verbi irregolari: し始める, 来始める, 行き始める"
 notes_it: >-
-  {{不規則|ふきそく}}{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Le basi richieste sono し per する, 来（き） per 来る e 行き per 行く. A esse si aggiunge 始める, che porta la coniugazione dell'intero composto.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-207-verb-hajimeru-irregulars
 card_type: concept
 front: "{{不規則|ふきそく}}{{動詞|どうし}}"
 back: >-
-  Irregular verbs + はじめる
+  Verbo irregolare alla base + 始める significa «cominciare a…».
 example_jp: >-
-  これはペンだ。
+  {{宿題|しゅくだい}}をし{{始|はじ}}めた。
 example_it: >-
-  Questa è una penna.
+  Ho cominciato a fare i compiti.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La lettura di 来 cambia da くる a き in 来始める. 行く segue qui il normale modello in う: 行き始める.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series]
 :::

@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 278.
+  Formazione del causativo godan e particelle di causante, esecutore e oggetto.
 ---
-
 # The causative form of う verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-causative-u`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il causativo godan usa la base in a + せる: 書く→書かせる, 飲む→飲ませる, 買う→買わせる. Il soggetto causante è marcato da は／が.
 
-- Tema: The causative form of う verbs
-- Sezione: verbs
-- Livello: JLPT-N4
-- Pattern allenabile: [う{{動詞|どうし}}](grammar:grammar-278-verb-causative-u)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [う{{動詞|どうし}}](grammar:grammar-278-verb-causative-u) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `base godan in a + せる`. Il punto da riconoscere è [う動詞](grammar:grammar-278-verb-causative-u).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{母|はは}}は{{弟|おとうと}}に{{本|ほん}}を{{読|よ}}ませた。
 translation_it: >-
-  Vado al caffè.
+  Mia madre ha fatto leggere un libro a mio fratello minore.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   う{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+読む è godan e forma il causativo 読ませた; 弟に marca chi legge, 本を l'oggetto e 母は la causante.
+
+## Sfumature e limiti
+
+Il valore «costringere» o «permettere» dipende dal contesto. Con un verbo transitivo, chi compie l'azione prende normalmente に e l'oggetto resta in を; con un intransitivo può comparire を, mentre に tende a favorire la lettura permissiva.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

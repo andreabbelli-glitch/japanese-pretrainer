@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 068.
+  Inclusione e negazione coordinata con la struttura AもBも.
 ---
-
 # 「も~も」List out the same parts of speech
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/momo-list-same-parts-speech`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+La ripetizione AもBも mette sullo stesso piano elementi della stessa funzione. Con un predicato affermativo li include entrambi; con un predicato negativo la negazione vale per entrambi.
 
-- Tema: List out the same parts of speech
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [も~も](grammar:grammar-068-momo-list-same-parts-speech)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [も~も](grammar:grammar-068-momo-list-same-parts-speech) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `A + も + B + も + predicato`. Il punto da riconoscere è [も~も](grammar:grammar-068-momo-list-same-parts-speech).
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  {{猫|ねこ}}も{{犬|いぬ}}も{{好|す}}きだ。
 translation_it: >-
-  Vado anche io.
+  Mi piacciono sia i gatti sia i cani.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   も~も -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Il primo も include 猫 e il secondo include 犬 nello stesso predicato 好きだ. Se il predicato fosse 好きじゃない, la frase significherebbe «non mi piacciono né i gatti né i cani».
+
+## Sfumature e limiti
+
+Con nomi basta も; gli い-aggettivi prendono くも e i な-aggettivi でも. La costruzione è naturale per liste brevi, in genere non oltre tre o quattro elementi.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

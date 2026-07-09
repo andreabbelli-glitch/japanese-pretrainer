@@ -10,45 +10,27 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, adjectives]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 046.
+  Nominalizzazione del grado di una qualità con 〜さ.
 ---
 
 # 「〜さ」Indicate an amount with adjectives
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/sa-adjectives-to-nouns`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Formazione
 
-## Punto da riconoscere
+〜さ trasforma una qualità nel nome del suo grado o della sua quantità.
 
-- Tema: Indicate an amount with adjectives
-- Sezione: adjectives
-- Livello: JLPT-N4
-- Pattern allenabile: [〜さ](grammar:grammar-046-sa-adjectives-to-nouns)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [〜さ](grammar:grammar-046-sa-adjectives-to-nouns) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- aggettivo in い: togliere い + さ — 重い → 重さ
+- aggettivo in な: aggiungere さ — 敏感 → 敏感さ
 
 :::example_sentence
 jp: >-
-  これは〜さのかたちだ。
+  この{{車|くるま}}の{{遅|おそ}}さがひどい。
 translation_it: >-
-  Questa è la forma 〜さ.
+  La lentezza di quest'auto è terribile.
 :::
 
-#### Anatomia rapida
+重さ può indicare il peso misurabile; 明るさ la luminosità; 面白さ il grado o l'aspetto interessante. いい segue la radice よ- e forma よさ.
 
-*   〜さ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Sfumatura
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+〜さ presenta la qualità in modo relativamente neutro e quantificabile. Il nuovo elemento è un nome e può ricevere particelle come が, を e の.

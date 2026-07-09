@@ -12,9 +12,10 @@ id: grammar-327-shouganai-nothing-you-can-do
 pattern: "しょうがない"
 title: "「しょうがない」”It can’t be helped\""
 reading: "しょうがない"
-meaning_it: "It can’t be helped"
+meaning_it: >-
+  Non c'è niente da fare; non si può evitare
 notes_it: >-
-  しょうがない va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  È la contrazione colloquiale di 仕様がない; 仕方がない è una variante molto comune e leggermente più neutra. Può essere una battuta autonoma o precedere から. Il tono può comunicare comprensione oppure critica («sei incorreggibile»), quindi conta il contesto.
 level_hint: jlpt-n2
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-327-shouganai-nothing-you-can-do
 card_type: concept
 front: "しょうがない"
 back: >-
-  It can’t be helped
+  しょうがない esprime accettazione, frustrazione o rassegnazione quando non esiste una soluzione pratica.
 example_jp: >-
-  ネコがいる。
+  {{電車|でんしゃ}}が{{止|と}}まったなら、しょうがない。
 example_it: >-
-  C'è un gatto.
+  Se il treno si è fermato, non c'è niente da fare.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  È la contrazione colloquiale di 仕様がない; 仕方がない è una variante molto comune e leggermente più neutra. Può essere una battuta autonoma o precedere から. Il tono può comunicare comprensione oppure critica («sei incorreggibile»), quindi conta il contesto.
 tags: [migaku, grammar, jlpt-n2, academy-level-1]
 :::

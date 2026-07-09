@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, humble-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 367.
+  Richieste intime e colloquiali di oggetti, azioni o astensioni.
 ---
 
-# 「ちょうだい」Another way to say “please"
+# 「ちょうだい」Make a request
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/choudai-make-request`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ちょうだい porta il verbo «ricevere» dentro una richiesta: il parlante chiede che l'altro gli dia una cosa o compia un'azione.
 
-- Tema: Another way to say please
-- Sezione: humble language
-- Livello: JLPT-N3
-- Pattern allenabile: [ちょうだい](grammar:grammar-367-choudai-make-request)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Nを + ちょうだい: 水をちょうだい.
+- Vて + ちょうだい: 見せてちょうだい.
+- Vないで + ちょうだい: 忘れないでちょうだい.
 
-Il centro del ripasso è riconoscere [ちょうだい](grammar:grammar-367-choudai-make-request) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはちょうだいのかたちだ。
+  その{{本|ほん}}を{{貸|か}}してちょうだい。
 translation_it: >-
-  Questa è la forma ちょうだい.
+  Prestami quel libro, per favore.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ちょうだい -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+貸して è il favore richiesto e ちょうだい lo presenta come qualcosa che il parlante vuole ricevere.
+
+## Sfumature d'uso
+
+- Con estranei o in servizio al cliente è normalmente troppo familiare; usare ください o forme interrogative.
+- Il tono può renderlo affettuoso, insistente o autoritario.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, series, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 078.
+  Capacità e possibilità con verbo + ことができる.
 ---
-
 # 「ことができる」Indicate what you can do
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kotogadekiru-yes-you-can`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il verbo in forma dizionario viene nominalizzato con こと; ができる afferma che quell'azione è possibile o rientra nelle capacità del soggetto.
 
-- Tema: Indicate what you can do
-- Sezione: series
-- Livello: JLPT-N4
-- Pattern allenabile: [ことができる](grammar:grammar-078-kotogadekiru-yes-you-can)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ことができる](grammar:grammar-078-kotogadekiru-yes-you-can) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo in forma dizionario + ことができる`. Il punto da riconoscere è [ことができる](grammar:grammar-078-kotogadekiru-yes-you-can).
 
 :::example_sentence
 jp: >-
-  ネコがいる。
+  この{{図書館|としょかん}}では{{無料|むりょう}}で{{本|ほん}}を{{借|か}}りることができる。
 translation_it: >-
-  C'è un gatto.
+  In questa biblioteca si possono prendere libri in prestito gratuitamente.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ことができる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+本を借りる è l'azione nominalizzata; ことができる ne dichiara la possibilità nelle condizioni indicate da この図書館では.
+
+## Sfumature e limiti
+
+La costruzione è generalmente più esplicita e formale della forma potenziale del verbo. La negazione ことができない indica impossibilità o incapacità.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

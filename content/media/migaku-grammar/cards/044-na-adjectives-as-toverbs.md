@@ -12,9 +12,9 @@ id: grammar-044-na-adjectives-as-toverbs
 pattern: "な形容詞"
 title: "Using な adjectives to describe verbs"
 reading: "なけいようし"
-meaning_it: "Using な adjectives to describe verbs"
+meaning_it: "Trasformare un aggettivo in な in forma avverbiale con に"
 notes_it: >-
-  な{{形容詞|けいようし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Aggettivo in な + に descrive il modo in cui avviene l'azione o lo stato risultante. Il verbo modificato può trovarsi più avanti nella frase, con altri elementi in mezzo.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-044-na-adjectives-as-toverbs
 card_type: concept
 front: "な{{形容詞|けいようし}}"
 back: >-
-  Using な adjectives to describe verbs
+  Aggettivo in な + に modifica un verbo: «in modo…».
 example_jp: >-
-  ここはしずかだ。
+  {{図書館|としょかん}}で{{静|しず}}かに{{小説|しょうせつ}}を{{読|よ}}む。
 example_it: >-
-  Qui è tranquillo.
+  Leggo un romanzo in silenzio in biblioteca.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  静かな本 usa な davanti a un nome; 静かに読む usa に davanti a un verbo. Non confondere questo に formativo con il marcatore di destinazione.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 :::

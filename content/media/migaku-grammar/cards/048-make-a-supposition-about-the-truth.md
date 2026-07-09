@@ -12,9 +12,9 @@ id: grammar-048-make-a-supposition-about-the-truth
 pattern: "なら"
 title: "「なら」Make a supposition about the truth"
 reading: "なら"
-meaning_it: "Make a supposition about the truth"
+meaning_it: "Condizionale なら: «se è vero che / se si dà il caso che»"
 notes_it: >-
-  なら va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A なら B assume A come ipotesi o circostanza rilevante e dice B nel caso che A valga. Dopo verbi e aggettivi in い può comparire (の)なら; nomi e aggettivi in な prendono direttamente なら.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-048-make-a-supposition-about-the-truth
 card_type: concept
 front: "なら"
 back: >-
-  Make a supposition about the truth
+  なら costruisce una conseguenza o decisione sulla supposizione che A sia vera.
 example_jp: >-
-  それならいく。
+  {{時間|じかん}}がかかるなら、{{今日|きょう}}は{{勉強|べんきょう}}しない。
 example_it: >-
-  Se è così, vado.
+  Se ci vuole tempo, oggi non studierò.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Deve esserci un'ipotesi sensata: なら non è il connettivo adatto per un evento certo o per raccontare un risultato già causato direttamente da A.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

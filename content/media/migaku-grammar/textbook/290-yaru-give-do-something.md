@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 290.
+  Principali valori di やる e sfumature sociali della forma てやる.
 ---
-
 # 「やる」Give or do something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/yaru-give-do-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+やる è un verbo colloquiale ampio: può significare fare, giocare, mandare o dare. Vてやる presenta un'azione compiuta a favore di qualcuno o, con tono ostile, contro qualcuno.
 
-- Tema: Give or do something
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [やる](grammar:grammar-290-yaru-give-do-something)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [やる](grammar:grammar-290-yaru-give-do-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `destinatario に oggetto を やる／verbo in て-forma + やる`. Il punto da riconoscere è [やる](grammar:grammar-290-yaru-give-do-something).
 
 :::example_sentence
 jp: >-
-  これはやるのかたちだ。
+  {{弟|おとうと}}に{{古|ふる}}いゲームをやった。
 translation_it: >-
-  Questa è la forma やる.
+  Ho dato un vecchio videogioco a mio fratello minore.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   やる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+弟に è il destinatario e ゲームを l'oggetto. La relazione discendente rende plausibile il colloquiale やる.
+
+## Sfumature e limiti
+
+Nel senso di «dare» è naturale verso animali, piante, bambini o persone di status inferiore; con adulti può suonare rude o condiscendente. てやる è più brusco di てあげる.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

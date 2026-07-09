@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 331.
+  Connettivo conversazionale per proseguire un racconto, chiedere il seguito o introdurre un punto.
 ---
 
-# 「で」(5) “So?” / “Well?” / “And then?"
+# 「で」(8) So?
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/de-so`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Questo で funziona a livello discorsivo e presuppone un contesto già aperto. Segnala che il parlante vuole continuare da lì.
 
-- Tema: (5) So? / Well? / And then?
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [で](grammar:grammar-331-5-so-well-and-then)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Inizio battuta: で、どうだった？
+- Passaggio a una conseguenza o richiesta: で、お願いがあるんだけど.
+- Forma più piena: それで.
 
-Il centro del ripasso è riconoscere [で](grammar:grammar-331-5-so-well-and-then) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  カフェでたべる。
+  で、{{次|つぎ}}はどうする？
 translation_it: >-
-  Mangio al caffè.
+  E quindi, che facciamo adesso?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   で -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+で riprende quanto detto prima e sollecita la decisione sul passo successivo.
+
+## Sfumature d'uso
+
+- Da solo, で？ può suonare impaziente o sfidante: «e allora?».
+- Nello scritto formale si preferiscono connettivi che esplicitano la relazione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

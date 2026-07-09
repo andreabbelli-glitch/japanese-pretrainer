@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 119.
+  Struttura e prospettiva del ricevente con もらう e てもらう.
 ---
-
 # 「もらう・てもらう」Receive something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/morau-temorau-receive-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Con もらう il soggetto è il ricevente; il donatore è marcato da に o から e l'oggetto da を. Vてもらう presenta il soggetto come beneficiario dell'azione compiuta dall'altra persona.
 
-- Tema: Receive something
-- Sezione: form series
-- Livello: JLPT-N5
-- Pattern allenabile: [もらう・てもらう](grammar:grammar-119-morau-temorau-receive-something)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [もらう・てもらう](grammar:grammar-119-morau-temorau-receive-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `ricevente は donatore に／から oggetto を もらう／Vてもらう`. Il punto da riconoscere è [もらう・てもらう](grammar:grammar-119-morau-temorau-receive-something).
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  {{先生|せんせい}}に{{作文|さくぶん}}を{{直|なお}}してもらった。
 translation_it: >-
-  Vado anche io.
+  Mi sono fatto correggere il tema dall'insegnante.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   もらう・てもらう -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Il soggetto implicito riceve il beneficio; 先生に identifica chi corregge e 作文を直して l'azione ottenuta.
+
+## Sfumature e limiti
+
+に suggerisce spesso un rapporto diretto con il donatore; から è naturale per enti e fonti impersonali. Vてもらう può implicare che il beneficiario abbia chiesto o organizzato il favore, diversamente dalla prospettiva di てくれる.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

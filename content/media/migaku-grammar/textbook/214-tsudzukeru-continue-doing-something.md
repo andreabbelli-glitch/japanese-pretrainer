@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 214.
+  Continuare un'azione con tsuzukeru.
 ---
 
 # 「つづける」Continue doing something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tsudzukeru-continue-doing-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Base verbale + 続ける
 
-## Punto da riconoscere
-
-- Tema: Continue doing something
-- Sezione: stem form series
-- Livello: JLPT-N4
-- Pattern allenabile: [つづける](grammar:grammar-214-tsudzukeru-continue-doing-something)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [つづける](grammar:grammar-214-tsudzukeru-continue-doing-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Si usa la base in i dei verbi in う, la base senza る dei verbi in る e le basi し/来（き） degli irregolari. 続ける segnala che l'azione prosegue.
 
 :::example_sentence
 jp: >-
-  これはつづけるのかたちだ。
+  {{彼|かれ}}は{{走|はし}}り{{続|つづ}}けた。
 translation_it: >-
-  Questa è la forma つづける.
+  Ha continuato a correre.
 :::
 
-#### Anatomia rapida
+続ける porta la coniugazione: 働き続けている, «continua a lavorare»; 食べ続けない, «non continua a mangiare».
 
-*   つづける -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Sfumatura
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+La costruzione tratta l'attività come un processo mantenuto nel tempo, non come ripetizioni necessariamente separate.

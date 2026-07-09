@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 125.
+  Reazione condizionale a un'informazione precedente con だったら.
 ---
+# 「だったら」\"If that is the case\"
 
-# 「だったら」"If that is the case"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dattara-if-thats-the-case`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+All'inizio di una risposta, だったら prende come condizione ciò che l'interlocutore ha appena detto e introduce una conseguenza o decisione coerente.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: If that is the case
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [だったら](grammar:grammar-125-dattara-if-thats-the-case)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [だったら](grammar:grammar-125-dattara-if-thats-the-case) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `だったら、+ conseguenza`. Il punto da riconoscere è [だったら](grammar:grammar-125-dattara-if-thats-the-case).
 
 :::example_sentence
 jp: >-
-  これはペンだった。
+  {{明日|あした}}は{{休|やす}}み？ だったら、{{一緒|いっしょ}}に{{出|で}}かけよう。
 translation_it: >-
-  Questa era una penna.
+  Domani sei libero? In tal caso, usciamo insieme.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   だったら -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+だったら recupera come condizione la risposta positiva implicita a 明日は休み e da essa deriva la proposta 出かけよう.
+
+## Sfumature e limiti
+
+それなら e それでは possono svolgere una funzione simile, con registro e tono diversi. だったら può anche seguire direttamente un nome o un な-aggettivo come forma in たら.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

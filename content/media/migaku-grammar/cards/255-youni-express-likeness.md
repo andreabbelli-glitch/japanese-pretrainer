@@ -12,9 +12,9 @@ id: grammar-255-youni-express-likeness
 pattern: "ように"
 title: "「ように」”Do (something) like a…\""
 reading: "ように"
-meaning_it: "Do (something) like a…"
+meaning_it: "Somiglianza con ように e ような: «come / simile a»"
 notes_it: >-
-  ように va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A ように modifica un verbo o aggettivo; A ような modifica un nome. I nomi richiedono のように/な; gli aggettivi in な usano なように/な. Il paragone può essere figurato.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-255-youni-express-likeness
 card_type: concept
 front: "ように"
 back: >-
-  Do (something) like a…
+  ように descrive modo o grado simile; ような introduce un nome simile a qualcosa.
 example_jp: >-
-  カフェにいく。
+  {{彼|かれ}}はプロのように{{上手|じょうず}}に{{歌|うた}}う。
 example_it: >-
-  Vado al caffè.
+  Canta bene come un professionista.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  よう non afferma identità: può descrivere un'apparenza o una metafora. Scegli に davanti a predicato e な davanti a nome.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

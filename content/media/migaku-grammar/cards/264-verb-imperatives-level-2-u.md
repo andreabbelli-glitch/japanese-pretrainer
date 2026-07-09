@@ -12,9 +12,10 @@ id: grammar-264-verb-imperatives-level-2-u
 pattern: "う動詞"
 title: "The imperative form of う verbs"
 reading: "うどうし"
-meaning_it: "The imperative form of う verbs"
+meaning_it: >-
+  Imperativo forte dei verbi godan
 notes_it: >-
-  う{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  base godan in e. È un comando diretto e brusco, naturale in emergenze, istruzioni severe, sport o rabbia. In una conversazione normale può risultare aggressivo.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-264-verb-imperatives-level-2-u
 card_type: concept
 front: "う{{動詞|どうし}}"
 back: >-
-  The imperative form of う verbs
+  Imperativo forte dei verbi godan
 example_jp: >-
-  カフェにいく。
+  ここに{{名前|なまえ}}を{{書|か}}け。
 example_it: >-
-  Vado al caffè.
+  Scrivi qui il tuo nome.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  書く passa dalla finale く alla base in e 書け, che impartisce un ordine netto. È un comando diretto e brusco, naturale in emergenze, istruzioni severe, sport o rabbia. In una conversazione normale può risultare aggressivo.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

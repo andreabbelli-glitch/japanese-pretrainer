@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 351.
+  Ripetizione correttiva di un'azione e pochi composti lessicali di rivalutazione.
 ---
 
-# 「Verb + 直す」Redo something
+# 「直す」Redo something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/naosu-redo-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+直す conserva l'idea di riparazione e la applica al risultato del primo verbo. L'azione viene eseguita di nuovo perché la prima versione non è adeguata.
 
-- Tema: Redo something
-- Sezione: stem form series
-- Livello: JLPT-N4
+## Formazione e restrizioni
 
-## Lettura operativa
+- Radice + 直す: 書き直す, 考え直す, やり直す.
+- Coniugazione: 読み直した, 読み直さない.
+- Composti lessicali: 見直す può significare riesaminare o rivalutare.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{間違|まちが}}えた{{漢字|かんじ}}を{{書|か}}き{{直|なお}}した。
 translation_it: >-
-  Questa è una penna.
+  Ho riscritto correttamente il kanji che avevo sbagliato.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+書き直した indica una seconda scrittura motivata dall'errore precedente.
+
+## Sfumature d'uso
+
+- Non ogni ripetizione usa 直す: serve una sfumatura di correzione, revisione o nuovo inizio.
+- 聞き直す può significare chiedere/riprendere ad ascoltare per capire meglio.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

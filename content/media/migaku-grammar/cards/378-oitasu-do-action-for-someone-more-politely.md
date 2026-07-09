@@ -12,9 +12,10 @@ id: grammar-378-oitasu-do-action-for-someone-more-politely
 pattern: "お～いたす"
 title: "「お～いたす」Very humbly do something for someone"
 reading: "お～いたす"
-meaning_it: "Very humbly do something for someone"
+meaning_it: >-
+  Compiere un'azione con umiltà più formale
 notes_it: >-
-  お～いたす va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: お + radice + いたす; ご + nome sino-giapponese + いたす. Nella pratica si usa spesso いたします. Conserva i vincoli della forma umile: soggetto del proprio lato e azione collegata alla persona rispettata. Accumulare prefissi o altre forme di keigo senza necessità può produrre espressioni ridondanti.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-378-oitasu-do-action-for-someone-more-politely
 card_type: concept
 front: "お～いたす"
 back: >-
-  Very humbly do something for someone
+  お／ご + radice o nome + いたす è la variante più formale di お／ご〜する.
 example_jp: >-
-  これはお～いたすのかたちだ。
+  {{後|のち}}ほどご{{説明|せつめい}}いたします。
 example_it: >-
-  Questa è la forma お～いたす.
+  Le fornirò una spiegazione più tardi.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: お + radice + いたす; ご + nome sino-giapponese + いたす. Nella pratica si usa spesso いたします. Conserva i vincoli della forma umile: soggetto del proprio lato e azione collegata alla persona rispettata. Accumulare prefissi o altre forme di keigo senza necessità può produrre espressioni ridondanti.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, humble-language]
 :::

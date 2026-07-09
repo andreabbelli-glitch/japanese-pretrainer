@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 210.
+  Spostarsi con lo scopo di fare un'azione.
 ---
 
 # 「に」(6) Go somewhere to do something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ni-go-somewhere-do-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Base verbale + に + movimento
 
-## Punto da riconoscere
-
-- Tema: (6) Go somewhere to do something
-- Sezione: series
-- Livello: JLPT-N4
-- Pattern allenabile: [に](grammar:grammar-210-ni-go-somewhere-do-something)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [に](grammar:grammar-210-ni-go-somewhere-do-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La base del verbo seguita da に e da 行く, 来る, 帰る o un altro verbo di spostamento indica lo scopo del viaggio.
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{本|ほん}}を{{買|か}}いに{{行|い}}く。
 translation_it: >-
-  Vado al caffè.
+  Vado a comprare un libro.
 :::
 
-#### Anatomia rapida
+Il luogo può comparire prima o restare implicito: 店に食べに行く, «andare al locale per mangiare». Per tematizzare lo scopo, に e は formano には e aggiungono contrasto.
 
-*   に -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Limite
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+泳ぐ e 走る descrivono il modo di muoversi, non di norma uno spostamento verso una meta in questa costruzione.

@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 363.
+  Richieste di oggetti, azioni e astensioni con una forma cortese ma diretta.
 ---
 
-# 「ください」Make polite requests
+# 「ください」Make polite request
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kudasai-make-polite-request`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ください presenta ciò che l'interlocutore dà o fa come favore richiesto dal parlante. La forma precedente determina se si chiede una cosa, un'azione o un'astensione.
 
-- Tema: Make polite requests
-- Sezione: form series
-- Livello: JLPT-N5
-- Pattern allenabile: [ください](grammar:grammar-363-kudasai-make-polite-request)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Nをください: 水をください.
+- Vて + ください: 書いてください.
+- Vないで + ください: 入らないでください; più attenuato くださいませんか.
 
-Il centro del ripasso è riconoscere [ください](grammar:grammar-363-kudasai-make-polite-request) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ここでまってください。
+  ここにお{{名前|なまえ}}を{{書|か}}いてください。
 translation_it: >-
-  La prego di aspettare qui.
+  Scriva qui il suo nome, per favore.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ください -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+書いて è la forma in て dell'azione richiesta; ください la rende una richiesta cortese.
+
+## Sfumature d'uso
+
+- Con superiori, una domanda con いただけますか è spesso più deferente.
+- Per offrire qualcosa non si usa ください dal punto di vista di chi dà.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

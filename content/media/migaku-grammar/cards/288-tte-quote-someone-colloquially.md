@@ -12,9 +12,10 @@ id: grammar-288-tte-quote-someone-colloquially
 pattern: "って"
 title: "「って」(2) Informally make direct quotations"
 reading: "って"
-meaning_it: "(2) Informally make direct quotations"
+meaning_it: >-
+  Marcatore colloquiale di citazione
 notes_it: >-
-  って va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  contenuto citato + って（言う）. È colloquiale ed enfatico. Se il verbo sottinteso non è 言う, va espresso: って思う. Nello scritto formale si preferisce と.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-288-tte-quote-someone-colloquially
 card_type: concept
 front: "って"
 back: >-
-  (2) Informally make direct quotations
+  Marcatore colloquiale di citazione
 example_jp: >-
-  これはってのかたちだ。
+  {{田中|たなか}}さんは{{明日|あした}}{{来|く}}るって。
 example_it: >-
-  Questa è la forma って.
+  Dicono che Tanaka verrà domani.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  って chiude il contenuto 田中さんは明日来る e lascia sottinteso un verbo come 言っていた／言う. È colloquiale ed enfatico. Se il verbo sottinteso non è 言う, va espresso: って思う. Nello scritto formale si preferisce と.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 :::

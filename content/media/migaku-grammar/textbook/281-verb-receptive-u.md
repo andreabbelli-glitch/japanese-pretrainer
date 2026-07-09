@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 281.
+  Formazione del passivo godan e uso avversativo tipico del giapponese.
 ---
-
 # The receptive form of う verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-receptive-u`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il passivo godan si forma con la base in a + れる: 書く→書かれる, 飲む→飲まれる, 買う→買われる. Il soggetto riceve o subisce l'azione; l'agente è spesso marcato da に.
 
-- Tema: The receptive form of う verbs
-- Sezione: verbs
-- Livello: JLPT-N4
-- Pattern allenabile: [う{{動詞|どうし}}](grammar:grammar-281-verb-receptive-u)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [う{{動詞|どうし}}](grammar:grammar-281-verb-receptive-u) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `base godan in a + れる`. Il punto da riconoscere è [う動詞](grammar:grammar-281-verb-receptive-u).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{私|わたし}}は{{友達|ともだち}}に{{秘密|ひみつ}}をばらされた。
 translation_it: >-
-  Vado al caffè.
+  Un amico ha rivelato il mio segreto, con mio grande disappunto.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   う{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+私は è la persona coinvolta negativamente, 友達に l'agente e 秘密を l'oggetto mantenuto: è un tipico passivo avversativo.
+
+## Sfumature e limiti
+
+Oltre al passivo diretto, il giapponese usa un passivo avversativo per un evento che danneggia o disturba il soggetto, conservando talvolta l'oggetto in を. La forma risultante coniuga come ichidan.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

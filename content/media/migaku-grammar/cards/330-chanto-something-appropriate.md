@@ -12,9 +12,10 @@ id: grammar-330-chanto-something-appropriate
 pattern: "ちゃんと"
 title: "「ちゃんと」Indicate that something is proper/appropriate"
 reading: "ちゃんと"
-meaning_it: "Indicate that something is proper/appropriate"
+meaning_it: >-
+  Bene; correttamente; come si deve
 notes_it: >-
-  ちゃんと va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Come avverbio precede il predicato: ちゃんとする／聞く／片づける. Può implicare completezza, disciplina o conformità alle attese. ちゃんとした + nome descrive qualcosa di affidabile o socialmente adeguato. È colloquiale-neutro e spesso usato in richiami.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-330-chanto-something-appropriate
 card_type: concept
 front: "ちゃんと"
 back: >-
-  Indicate that something is proper/appropriate
+  ちゃんと indica che un'azione soddisfa regole o aspettative; ちゃんとした + nome significa serio, adeguato o rispettabile.
 example_jp: >-
-  ミカといく。
+  {{薬|くすり}}をちゃんと{{飲|の}}んでください。
 example_it: >-
-  Vado con Mika.
+  Prenda le medicine come prescritto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Come avverbio precede il predicato: ちゃんとする／聞く／片づける. Può implicare completezza, disciplina o conformità alle attese. ちゃんとした + nome descrive qualcosa di affidabile o socialmente adeguato. È colloquiale-neutro e spesso usato in richiami.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

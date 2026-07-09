@@ -12,9 +12,9 @@ id: grammar-222-nagara-do-something-while-doing-something-else
 pattern: "ながら"
 title: "「ながら」Do something while doing something else"
 reading: "ながら"
-meaning_it: "Do something while doing something else"
+meaning_it: "Fare due azioni contemporaneamente con ながら"
 notes_it: >-
-  ながら va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A ながら B usa la base verbale di A. A è l'attività secondaria, B quella principale; entrambe devono avere lo stesso soggetto.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-222-nagara-do-something-while-doing-something-else
 card_type: concept
 front: "ながら"
 back: >-
-  Do something while doing something else
+  Base verbale + ながら collega un'azione secondaria simultanea a quella principale.
 example_jp: >-
-  ネコがいる。
+  {{音楽|おんがく}}を{{聞|き}}きながら{{勉強|べんきょう}}する。
 example_it: >-
-  C'è un gatto.
+  Studio ascoltando musica.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Se le due azioni hanno soggetti diversi, ながら non è adatto: si usa una costruzione temporale come 間.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series]
 :::

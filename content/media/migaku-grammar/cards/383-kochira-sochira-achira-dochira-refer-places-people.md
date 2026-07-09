@@ -12,9 +12,10 @@ id: grammar-383-kochira-sochira-achira-dochira-refer-places-people
 pattern: "こちら・そちら・あちら・どちら"
 title: "「こちら・そちら・あちら・どちら」Politely Refer to places and people"
 reading: "こちら・そちら・あちら・どちら"
-meaning_it: "Politely Refer to places and people"
+meaning_it: >-
+  Questa parte; quella parte; laggiù; quale parte
 notes_it: >-
-  こちら・そちら・あちら・どちら va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  こちら è vicino/al lato del parlante; そちら vicino o relativo all'interlocutore; あちら lontano da entrambi; どちら interrogativo. Possono indicare direzione, luogo, persona, azienda o parte conversazionale. Per persone è più cortese aggiungere 方 o 様 secondo contesto. Non tradurre sempre con un luogo.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-383-kochira-sochira-achira-dochira-refer-places-people
 card_type: concept
 front: "こちら・そちら・あちら・どちら"
 back: >-
-  Politely Refer to places and people
+  こちら・そちら・あちら・どちら sono versioni cortesi di こっち・そっち・あっち・どっち e possono riferirsi anche a persone.
 example_jp: >-
-  これはこちら・そちら・あちら・どちらのかたちだ。
+  お{{手洗|てあら}}いはこちらです。
 example_it: >-
-  Questa è la forma こちら・そちら・あちら・どちら.
+  Il bagno è da questa parte.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  こちら è vicino/al lato del parlante; そちら vicino o relativo all'interlocutore; あちら lontano da entrambi; どちら interrogativo. Possono indicare direzione, luogo, persona, azienda o parte conversazionale. Per persone è più cortese aggiungere 方 o 様 secondo contesto. Non tradurre sempre con un luogo.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, polite-language]
 :::

@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 289.
+  Ripresa di un tema e associazioni introdotte da といえば.
 ---
+# 「といえば」”Speaking of which…\"
 
-# 「といえば」”Speaking of which…"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/toieba-make-something-just-mentioned-topic`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+Nといえば richiama un tema appena menzionato o facilmente associato e introduce una nuova informazione collegata a esso.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: Speaking of which…
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [といえば](grammar:grammar-289-toieba-make-something-just-mentioned-topic)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [といえば](grammar:grammar-289-toieba-make-something-just-mentioned-topic) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `tema + といえば`. Il punto da riconoscere è [といえば](grammar:grammar-289-toieba-make-something-just-mentioned-topic).
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  {{京都|きょうと}}といえば、{{秋|あき}}の{{紅葉|こうよう}}が{{有名|ゆうめい}}だ。
 translation_it: >-
-  Vado con Mika.
+  A proposito di Kyoto, è famoso il foliage autunnale.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   といえば -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+京都 viene ripreso come tema; ciò che segue aggiunge l'associazione rilevante con i colori delle foglie in autunno.
+
+## Sfumature e limiti
+
+Letteralmente deriva da と言えば «se si dice», ma funziona come marcatore discorsivo. っていえば è la variante colloquiale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

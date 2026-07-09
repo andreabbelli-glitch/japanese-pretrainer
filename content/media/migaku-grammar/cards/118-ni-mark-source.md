@@ -12,9 +12,10 @@ id: grammar-118-ni-mark-source
 pattern: "に"
 title: "「に」(4) Mark the source of something"
 reading: "に"
-meaning_it: "(4) Mark the source of something"
+meaning_it: >-
+  Marca la persona da cui si riceve, apprende o sente qualcosa
 notes_it: >-
-  に va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  fonte / agente + に + verbo ricettivo. La stessa persona può essere resa con から quando si enfatizza semplicemente la provenienza. Tematizzando la fonte si ottiene には, spesso con contrasto rispetto ad altre possibili fonti.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-118-ni-mark-source
 card_type: concept
 front: "に"
 back: >-
-  (4) Mark the source of something
+  Marca la persona da cui si riceve, apprende o sente qualcosa
 example_jp: >-
-  カフェにいく。
+  {{先生|せんせい}}に{{日本語|にほんご}}を{{習|なら}}った。
 example_it: >-
-  Vado al caffè.
+  Ho imparato il giapponese da un insegnante.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  先生 è la fonte dell'insegnamento e prende に; 日本語を è il contenuto appreso e 習った il verbo ricettivo. La stessa persona può essere resa con から quando si enfatizza semplicemente la provenienza. Tematizzando la fonte si ottiene には, spesso con contrasto rispetto ad altre possibili fonti.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series, particles]
 :::

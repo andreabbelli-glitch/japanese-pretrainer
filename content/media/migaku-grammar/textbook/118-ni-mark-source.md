@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 118.
+  Uso di に per contrassegnare la fonte con verbi di ricezione e apprendimento.
 ---
-
 # 「に」(4) Mark the source of something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ni-mark-source`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Con verbi ricettivi come 習う, 借りる, 教わる, 聞く e もらう, に può indicare la fonte o la persona che fornisce l'azione o l'oggetto.
 
-- Tema: (4) Mark the source of something
-- Sezione: series
-- Livello: JLPT-N4
-- Pattern allenabile: [に](grammar:grammar-118-ni-mark-source)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [に](grammar:grammar-118-ni-mark-source) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `fonte / agente + に + verbo ricettivo`. Il punto da riconoscere è [に](grammar:grammar-118-ni-mark-source).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{先生|せんせい}}に{{日本語|にほんご}}を{{習|なら}}った。
 translation_it: >-
-  Vado al caffè.
+  Ho imparato il giapponese da un insegnante.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   に -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+先生 è la fonte dell'insegnamento e prende に; 日本語を è il contenuto appreso e 習った il verbo ricettivo.
+
+## Sfumature e limiti
+
+La stessa persona può essere resa con から quando si enfatizza semplicemente la provenienza. Tematizzando la fonte si ottiene には, spesso con contrasto rispetto ad altre possibili fonti.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

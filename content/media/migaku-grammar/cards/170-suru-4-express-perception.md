@@ -12,9 +12,10 @@ id: grammar-170-suru-4-express-perception
 pattern: "する"
 title: "「する」(4) Express things you perceive"
 reading: "する"
-meaning_it: "(4) Express things you perceive"
+meaning_it: >-
+  Sentire, avere odore/sapore o una sensazione
 notes_it: >-
-  する va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Schema: 声／音／匂い／味／感じ + がする. Il percepito è marcato da が e する assume una resa italiana sensoriale. Onomatopee e descrittori possono usare 〜している (つるつるしている). Per caratteristiche visive è frequente invece 〜をしている. Registro neutro.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-170-suru-4-express-perception
 card_type: concept
 front: "する"
 back: >-
-  (4) Express things you perceive
+  Nome di suono, odore, sapore o sensazione + がする esprime ciò che viene percepito.
 example_jp: >-
-  ゲームをする。
+  {{外|そと}}からいい{{匂|にお}}いがする。
 example_it: >-
-  Faccio una partita.
+  Da fuori viene un buon profumo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Schema: 声／音／匂い／味／感じ + がする. Il percepito è marcato da が e する assume una resa italiana sensoriale. Onomatopee e descrittori possono usare 〜している (つるつるしている). Per caratteristiche visive è frequente invece 〜をしている. Registro neutro.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

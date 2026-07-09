@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 143.
+  Movimento verso il parlante e azioni compiute fuori con successivo ritorno.
 ---
 
-# 「てくる」(1) Do something and come somewhere
+# 「てくる」(1) Do an action and come
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tekuru-1-do-action-come`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+てくる unisce l'azione del primo verbo a un movimento che arriva verso il punto di riferimento del parlante. In contesti quotidiani segnala spesso un breve allontanamento con ritorno.
 
-- Tema: (1) Do something and come somewhere
-- Sezione: form series
-- Livello: JLPT-N4
-- Pattern allenabile: [てくる](grammar:grammar-143-tekuru-1-do-action-come)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Movimento verso il parlante: 子供が走ってくる («il bambino viene correndo»).
+- Azione fuori + ritorno: 水を買ってくる («vado a comprare acqua e torno»).
+- Modo di arrivo: 歩いてくる («venire a piedi»).
 
-Il centro del ripasso è riconoscere [てくる](grammar:grammar-143-tekuru-1-do-action-come) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはてくるのかたちだ。
+  ちょっとコンビニで{{水|みず}}を{{買|か}}ってくる。
 translation_it: >-
-  Questa è la forma てくる.
+  Vado un attimo a comprare dell'acqua al konbini e torno.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   てくる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+買ってくる comprende sia l'acquisto sia il ritorno al luogo da cui il parlante sta parlando.
+
+## Sfumature d'uso
+
+- La direzione è essenziale: くる converge verso il punto di vista; いく se ne allontana.
+- Nel parlato l'intenzione di tornare può essere implicita anche se non viene tradotta parola per parola.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 116.
+  Direzione e struttura di あげる e del benefattivo てあげる.
 ---
-
 # 「あげる・てあげる」Give something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ageru-teageru-give-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Con あげる, il soggetto dà un oggetto a un destinatario: destinatario に, oggetto を. Vてあげる presenta invece l'azione V come favore compiuto dal soggetto per quel beneficiario.
 
-- Tema: Give something
-- Sezione: form series
-- Livello: JLPT-N4
-- Pattern allenabile: [あげる・てあげる](grammar:grammar-116-ageru-teageru-give-something)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [あげる・てあげる](grammar:grammar-116-ageru-teageru-give-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `datore は destinatario に oggetto を あげる／Vてあげる`. Il punto da riconoscere è [あげる・てあげる](grammar:grammar-116-ageru-teageru-give-something).
 
 :::example_sentence
 jp: >-
-  これはあげる・てあげるのかたちだ。
+  {{私|わたし}}は{{友達|ともだち}}に{{傘|かさ}}を{{貸|か}}してあげた。
 translation_it: >-
-  Questa è la forma あげる・てあげる.
+  Ho prestato un ombrello a un amico per aiutarlo.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   あげる・てあげる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+私は è chi compie il favore, 友達に il beneficiario e 貸して l'azione; あげた orienta il beneficio dal parlante verso l'amico.
+
+## Sfumature e limiti
+
+Nella prospettiva di base il destinatario non è il parlante: per qualcosa dato a «me/noi» si usa くれる. Vてあげる può suonare paternalistico se si enfatizza un favore non richiesto, quindi va scelto secondo il rapporto.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

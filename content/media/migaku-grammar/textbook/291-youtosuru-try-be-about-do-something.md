@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 291.
+  Tentativo e imminenza espressi dalla forma volitiva più とする.
 ---
-
 # 「ようとする」Try to do something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/youtosuru-try-be-about-do-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+La forma volitiva seguita da とする presenta l'avvio o il tentativo di un'azione. Al passato indica spesso un tentativo non necessariamente riuscito; in ている può descrivere un'azione imminente.
 
-- Tema: Try to do something
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [ようとする](grammar:grammar-291-youtosuru-try-be-about-do-something)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ようとする](grammar:grammar-291-youtosuru-try-be-about-do-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo in forma volitiva + とする`. Il punto da riconoscere è [ようとする](grammar:grammar-291-youtosuru-try-be-about-do-something).
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  {{猫|ねこ}}が{{窓|まど}}から{{出|で}}ようとしている。
 translation_it: >-
-  Vado con Mika.
+  Il gatto sta cercando di uscire dalla finestra.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ようとする -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+出る diventa 出よう; としている mostra il tentativo in corso, che potrebbe non riuscire.
+
+## Sfumature e limiti
+
+Il contesto distingue lo sforzo intenzionale dall'imminenza. Con verbi non agentivi, come 雨が降ろうとしている, prevale «sta per».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

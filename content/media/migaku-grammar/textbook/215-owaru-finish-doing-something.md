@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 215.
+  Terminare un'azione con owaru.
 ---
 
 # 「おわる」Finish doing something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/owaru-finish-doing-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Base verbale + 終わる
 
-## Punto da riconoscere
-
-- Tema: Finish doing something
-- Sezione: stem form series
-- Livello: JLPT-N4
-- Pattern allenabile: [おわる](grammar:grammar-215-owaru-finish-doing-something)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [おわる](grammar:grammar-215-owaru-finish-doing-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La base del verbo si combina con 終わる per indicare che l'azione giunge alla fine: 食べ終わる, 読み終わる, し終わる.
 
 :::example_sentence
 jp: >-
-  これはおわるのかたちだ。
+  この{{本|ほん}}を{{読|よ}}み{{終|お}}わった。
 translation_it: >-
-  Questa è la forma おわる.
+  Ho finito di leggere questo libro.
 :::
 
-#### Anatomia rapida
+終わる è un verbo in う: il passato è 終わった. È lui a portare la coniugazione dell'intero composto.
 
-*   おわる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Variante
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+終える può sostituirlo con azioni volontarie, ma suona più formale. 宿題をし終えた mette maggiormente a fuoco il completamento intenzionale.

@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 299.
+  Regola del desiderativo ichidan e coniugazione di たい.
 ---
-
 # The “desire” form of る verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-desire-ru`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Per i verbi ichidan si elimina る e si aggiunge たい: 食べる→食べたい, 出る→出たい.
 
-- Tema: The desire form of る verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [る{{動詞|どうし}}](grammar:grammar-299-verb-desire-ru)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [る{{動詞|どうし}}](grammar:grammar-299-verb-desire-ru) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `radice del verbo ichidan + たい`. Il punto da riconoscere è [る動詞](grammar:grammar-299-verb-desire-ru).
 
 :::example_sentence
 jp: >-
-  パンをたべる。
+  {{今夜|こんや}}は{{寿司|すし}}を{{食|た}}べたい。
 translation_it: >-
-  Mangio il pane.
+  Stasera voglio mangiare sushi.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   る{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+食べる perde る e prende たい; 寿司を resta l'oggetto dell'azione desiderata.
+
+## Sfumature e limiti
+
+La parte たい è un い-aggettivo e forma 食べたくない, 食べたかった. Il desiderio di terze persone richiede normalmente たがる o un'espressione evidenziale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

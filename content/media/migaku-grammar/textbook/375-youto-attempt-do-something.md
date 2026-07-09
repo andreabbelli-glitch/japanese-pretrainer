@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 375.
+  Tentativo o intenzione immediata espressi dalla forma volitiva seguita dalla particella.
 ---
 
 # 「ようと」Attempt to do something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/youto-attempt-do-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il volitivo rappresenta l'obiettivo che il soggetto si dispone a realizzare; と lo collega al gesto o al tentativo concreto.
 
-- Tema: Attempt to do something
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [ようと](grammar:grammar-375-youto-attempt-do-something)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Volitivo + とする: 食べようとする.
+- Volitivo + と + azione: 取ろうと手を伸ばす.
+- Passato e contrasto: 開けようとしたが〜.
 
-Il centro del ripasso è riconoscere [ようと](grammar:grammar-375-youto-attempt-do-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  ドアを{{開|あ}}けようとしたが、{{鍵|かぎ}}がかかっていた。
 translation_it: >-
-  Vado con Mika.
+  Ho provato ad aprire la porta, ma era chiusa a chiave.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ようと -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+開けよう esprime l'obiettivo; とした segnala il tentativo, mentre が introduce il suo impedimento.
+
+## Sfumature d'uso
+
+- 〜ようとする può anche descrivere un evento sul punto di avvenire, secondo il soggetto e il verbo.
+- Il successo resta aperto; per «provare e vedere com'è» si usa 〜てみる.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

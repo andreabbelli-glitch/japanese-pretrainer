@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 355.
+  Tre modi di chiedere la ragione, distinti per emozione, registro e mezzo espressivo.
 ---
 
-# “Why” in Japanese
+# The why questions
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/the-why-questions`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Le tre parole condividono la richiesta di una causa, ma posizionano diversamente il parlante rispetto all'emozione e al registro.
 
-- Tema: Why in Japanese
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [なぜ](grammar:grammar-355-the-why-questions)
+## Formazione e restrizioni
 
-## Lettura operativa
+- なぜ + domanda: tono razionale, scritto o formale.
+- どうして + domanda: neutro nel parlato ma facilmente emotivo.
+- なんで + domanda: colloquiale; なにで può chiedere il mezzo.
 
-Il centro del ripasso è riconoscere [なぜ](grammar:grammar-355-the-why-questions) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはなぜのかたちだ。
+  なぜこの{{方法|ほうほう}}を{{選|えら}}んだのですか。
 translation_it: >-
-  Questa è la forma なぜ.
+  Perché ha scelto questo metodo?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   なぜ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+なぜ presenta la scelta del metodo come informazione da motivare, mentre のですか richiede una spiegazione contestuale.
+
+## Sfumature d'uso
+
+- Una domanda con どうして può essere retorica se l'emozione domina sulla richiesta di risposta.
+- Con superiori, なんで può risultare troppo casuale; なぜ〜のですか è più controllato.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

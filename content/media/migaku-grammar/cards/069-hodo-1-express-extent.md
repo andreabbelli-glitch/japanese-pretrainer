@@ -12,9 +12,10 @@ id: grammar-069-hodo-1-express-extent
 pattern: "ほど"
 title: "「ほど」(1) Express extent"
 reading: "ほど"
-meaning_it: "(1) Express extent"
+meaning_it: >-
+  Indica grado o estensione: «quanto», «al punto da» oppure «circa»
 notes_it: >-
-  ほど va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  nome / proposizione / quantità + ほど. La resa dipende dalla struttura: confronto di grado con un nome, conseguenza estrema con una proposizione, approssimazione con un contatore. Non va ridotto a una sola traduzione fissa.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-069-hodo-1-express-extent
 card_type: concept
 front: "ほど"
 back: >-
-  (1) Express extent
+  Indica grado o estensione: «quanto», «al punto da» oppure «circa»
 example_jp: >-
-  これほどいいものはない。
+  {{私|わたし}}は{{兄|あに}}ほど{{背|せ}}が{{高|たか}}くない。
 example_it: >-
-  Non c'è nulla di così buono.
+  Non sono alto quanto mio fratello.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  兄ほど stabilisce nel fratello il grado di riferimento; 高くない nega che l'altezza del parlante raggiunga quel livello. La resa dipende dalla struttura: confronto di grado con un nome, conseguenza estrema con una proposizione, approssimazione con un contatore. Non va ridotto a una sola traduzione fissa.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series, particles]
 :::

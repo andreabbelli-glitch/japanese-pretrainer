@@ -10,44 +10,29 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, numbers-and-counters]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 225.
+  Contatori giapponesi e principali letture irregolari.
 ---
 
-# How to count things in Japanese
+# The counters
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/the-counters`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Numero + classificatore
 
-## Punto da riconoscere
+In giapponese il numero si combina con un contatore scelto in base a ciò che viene contato. Tra i più comuni:
 
-- Tema: How to count things in Japanese
-- Sezione: numbers and counters
-- Livello: JLPT-N5
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- 人 per persone: 一人 ひとり, 二人 ふたり, poi ～にん
+- 本 per oggetti lunghi e cilindrici: 一本 いっぽん, 三本 さんぼん
+- 台 per veicoli e macchine; 冊 per libri
+- 回 per occorrenze; 階 per piani
+- 個 per piccoli oggetti; 枚 per oggetti piatti
+- 匹 per piccoli animali; 歳 per l'età
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{猫|ねこ}}が{{三匹|さんびき}}いる。
 translation_it: >-
-  Questa è una penna.
+  Ci sono tre gatti.
 :::
 
-#### Anatomia rapida
+## Letture da apprendere
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+I cambi fonetici non sono sempre prevedibili: 六本 è ろっぽん, 一冊 いっさつ, 一匹 いっぴき. Per vent'anni, 二十歳 si legge spesso はたち nel parlato e にじゅっさい in elenchi o registri formali. Impara numero e contatore come blocco sonoro.

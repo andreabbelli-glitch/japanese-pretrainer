@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, polite-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 353.
+  Copula cortese con nomi e aggettivi, incluse forme passate e negative.
 ---
 
 # 「です」End a sentence politely
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/desu-end-sentence-politely`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+です marca cortesia a fine predicato nominale o aggettivale. Non è sempre una semplice traduzione di «essere», perché con gli aggettivi in い funge soprattutto da marcatore di registro.
 
-- Tema: End a sentence politely
-- Sezione: polite language
-- Livello: JLPT-N5
-- Pattern allenabile: [です](grammar:grammar-353-desu-end-sentence-politely)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Nome/Aな: 学生です, 静かです; passato 学生でした.
+- Negativo: 学生ではありません／学生じゃないです.
+- Aい: 高いです, 高くないです, 高かったです, 高くなかったです.
 
-Il centro del ripasso è riconoscere [です](grammar:grammar-353-desu-end-sentence-politely) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ここはしずかです。
+  この{{店|みせ}}は{{静|しず}}かです。
 translation_it: >-
-  Qui è tranquillo.
+  Questo locale è tranquillo.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   です -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+静か è un aggettivo in な; です sostituisce la copula piana だ e rende cortese l'enunciato.
+
+## Sfumature d'uso
+
+- じゃありません è cortese ma meno formale di ではありません.
+- Dopo un verbo si usa 行きます, non *行くです.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

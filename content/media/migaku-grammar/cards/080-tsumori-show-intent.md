@@ -12,9 +12,10 @@ id: grammar-080-tsumori-show-intent
 pattern: "つもり"
 title: "「つもり」Show intent"
 reading: "つもり"
-meaning_it: "Show intent"
+meaning_it: >-
+  Esprime l'intenzione del soggetto: «avere intenzione di…»
 notes_it: >-
-  つもり va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo non passato, affermativo o negativo + つもりだ. つもり è un nome dipendente. そのつもり sostituisce un'intenzione già menzionata. Con un nome + の o un な-aggettivo + な può assumere il senso di «con l'idea di / credendosi», non semplicemente quello di progetto futuro.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-080-tsumori-show-intent
 card_type: concept
 front: "つもり"
 back: >-
-  Show intent
+  Esprime l'intenzione del soggetto: «avere intenzione di…»
 example_jp: >-
-  ぼくもいく。
+  {{来年|らいねん}}、{{日本|にほん}}へ{{留学|りゅうがく}}するつもりだ。
 example_it: >-
-  Vado anche io.
+  L'anno prossimo ho intenzione di studiare in Giappone.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  留学する è l'azione progettata; つもりだ la presenta come intenzione personale, mentre 来年 ne fissa l'orizzonte temporale. つもり è un nome dipendente. そのつもり sostituisce un'intenzione già menzionata. Con un nome + の o un な-aggettivo + な può assumere il senso di «con l'idea di / credendosi», non semplicemente quello di progetto futuro.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

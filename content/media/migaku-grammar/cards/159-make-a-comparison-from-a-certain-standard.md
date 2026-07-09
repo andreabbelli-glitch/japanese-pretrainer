@@ -12,9 +12,10 @@ id: grammar-159-make-a-comparison-from-a-certain-standard
 pattern: "としては"
 title: "「としては」Make a comparison from a certain standard"
 reading: "としては"
-meaning_it: "Make a comparison from a certain standard"
+meaning_it: >-
+  Dal punto di vista di…; per essere/come categoria…
 notes_it: >-
-  としては va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: Nome + としては + valutazione. は tematizza e spesso contrasta il ruolo espresso da として. Può rendere un punto di vista («per quanto mi riguarda») o valutare qualcosa entro una categoria. Diversamente da にしては, lo scarto dall'aspettativa non è obbligatorio, anche se è frequente.
 level_hint: jlpt-n2
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-159-make-a-comparison-from-a-certain-standard
 card_type: concept
 front: "としては"
 back: >-
-  Make a comparison from a certain standard
+  Nome + としては isola un ruolo o una categoria come cornice rispetto alla quale si formula un giudizio.
 example_jp: >-
-  これはペンだ。
+  {{一人暮|ひとりぐ}}らしの{{部屋|へや}}としては、かなり{{広|ひろ}}い。
 example_it: >-
-  Questa è una penna.
+  Per essere un appartamento per una persona sola, è piuttosto spazioso.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: Nome + としては + valutazione. は tematizza e spesso contrasta il ruolo espresso da として. Può rendere un punto di vista («per quanto mi riguarda») o valutare qualcosa entro una categoria. Diversamente da にしては, lo scarto dall'aspettativa non è obbligatorio, anche se è frequente.
 tags: [migaku, grammar, jlpt-n2, academy-level-1]
 :::

@@ -12,9 +12,10 @@ id: grammar-081-datta-declare-past-state-of-being
 pattern: "だった"
 title: "「だった」Declare something “was\""
 reading: "だった"
-meaning_it: "Declare something was"
+meaning_it: >-
+  Copula piana al passato per nomi e な-aggettivi: «era / fu»
 notes_it: >-
-  だった va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  nome / な-aggettivo + だった. Non si aggiunge agli い-aggettivi né ai verbi, che hanno una propria forma passata. La た finale è un segnale ricorrente del passato nelle forme piane.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-081-datta-declare-past-state-of-being
 card_type: concept
 front: "だった"
 back: >-
-  Declare something was
+  Copula piana al passato per nomi e な-aggettivi: «era / fu»
 example_jp: >-
-  これはペンだった。
+  ここは{{昔|むかし}}、{{映画館|えいがかん}}だった。
 example_it: >-
-  Questa era una penna.
+  Un tempo qui c'era un cinema.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  映画館 è il nome che identifica il luogo; だった colloca quella identità nel passato, mentre 昔 rafforza il riferimento temporale. Non si aggiunge agli い-aggettivi né ai verbi, che hanno una propria forma passata. La た finale è un segnale ricorrente del passato nelle forme piane.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

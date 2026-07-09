@@ -12,9 +12,10 @@ id: grammar-079-tokoroda-when-you-are-just-about-do-something
 pattern: "ところだ"
 title: "「ところだ」(1) \"Just about to\""
 reading: "ところだ"
-meaning_it: "(1) Just about to"
+meaning_it: >-
+  Indica che si è proprio sul punto di fare qualcosa
 notes_it: >-
-  ところだ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in forma dizionario + ところだ. La forma del verbo prima di ところ cambia il rapporto temporale: Vているところ e Vたところ hanno altri valori. Con V in forma dizionario, il valore è «stare per».
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-079-tokoroda-when-you-are-just-about-do-something
 card_type: concept
 front: "ところだ"
 back: >-
-  (1) Just about to
+  Indica che si è proprio sul punto di fare qualcosa
 example_jp: >-
-  これはペンだ。
+  {{今|いま}}、{{家|いえ}}を{{出|で}}るところだ。
 example_it: >-
-  Questa è una penna.
+  Sto proprio per uscire di casa.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  今 rafforza l'immediatezza; 出る in forma non passata colloca l'uscita nel momento immediatamente successivo. La forma del verbo prima di ところ cambia il rapporto temporale: Vているところ e Vたところ hanno altri valori. Con V in forma dizionario, il valore è «stare per».
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

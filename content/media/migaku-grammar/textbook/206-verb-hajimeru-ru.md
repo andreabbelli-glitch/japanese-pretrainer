@@ -10,44 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 206.
+  Cominciare con un verbo in ru e hajimeru.
 ---
 
-# る verb + はじめる
+# Verb はじめる - Ru
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-hajimeru-ru`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Base senza る
 
-## Punto da riconoscere
-
-- Tema: る verb + はじめる
-- Sezione: stem form series
-- Livello: JLPT-N4
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Per un verbo in る, si elimina il る finale e si aggiunge 始める: 食べる → 食べ始める, 逃げる → 逃げ始める.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{犬|いぬ}}が{{逃|に}}げ{{始|はじ}}めた。
 translation_it: >-
-  Questa è una penna.
+  Il cane ha cominciato a scappare.
 :::
 
-#### Anatomia rapida
+È 始める a portare passato, negazione e altre forme. La base del primo verbo resta invariata: 食べ始めた, 食べ始めない.
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+## Da ricordare
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+La regola funziona soltanto dopo aver identificato correttamente la classe: un verbo in う terminante in る usa invece la base in i.

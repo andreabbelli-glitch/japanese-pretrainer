@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 222.
+  Due azioni simultanee dello stesso soggetto con nagara.
 ---
 
 # 「ながら」Do something while doing something else
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nagara-do-something-while-doing-something-else`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Azione secondaria ながら azione principale
 
-## Punto da riconoscere
-
-- Tema: Do something while doing something else
-- Sezione: stem form series
-- Livello: JLPT-N4
-- Pattern allenabile: [ながら](grammar:grammar-222-nagara-do-something-while-doing-something-else)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ながら](grammar:grammar-222-nagara-do-something-while-doing-something-else) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+ながら segue la base verbale. L'azione prima di ながら fa da sfondo; quella dopo è l'attività principale.
 
 :::example_sentence
 jp: >-
-  ネコがいる。
+  {{音楽|おんがく}}を{{聞|き}}きながら{{勉強|べんきょう}}する。
 translation_it: >-
-  C'è un gatto.
+  Studio ascoltando musica.
 :::
 
-#### Anatomia rapida
+I verbi in う usano la base in i, quelli in る la base senza る. Tempo e modalità sono espressi dal verbo principale.
 
-*   ながら -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Vincolo
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Le due azioni devono condividere il soggetto. Se persone diverse fanno A e B, serve una costruzione come 間, non ながら.

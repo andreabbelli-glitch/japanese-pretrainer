@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 006.
+  La particella も include un referente: «anche» o, con negazione, «neppure».
 ---
 
-# 「も」(1) Express inclusion
+# 「も」(1) Being inclusive
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/inclusive-particle-mo`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Forma e funzione
 
-## Punto da riconoscere
-
-- Tema: (1) Express inclusion
-- Sezione: particles
-- Livello: JLPT-N5
-- Pattern allenabile: [も](grammar:grammar-006-inclusive-particle-mo)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [も](grammar:grammar-006-inclusive-particle-mo) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Nome + も segnala che quel referente appartiene allo stesso insieme o condivide una proprietà già attribuita ad altri. In una frase affermativa si rende spesso con «anche», «pure» o «inoltre».
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  {{私|わたし}}も{{学生|がくせい}}だ。
 translation_it: >-
-  Vado anche io.
+  Anch'io sono uno studente.
 :::
 
-#### Anatomia rapida
+In questo uso も prende il posto di は o が sul nome incluso. In una frase negativa la resa naturale può diventare «neanche / neppure»: 私も行かない, «neanch'io vado».
 
-*   も -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Da ricordare
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+L'elemento incluso deve essere recuperabile dal discorso: も presuppone sempre un termine di confronto, anche se non viene ripetuto.

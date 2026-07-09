@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 164.
+  Concessioni in cui una condizione non modifica il risultato principale.
 ---
 
-# 「ても」"Even if"
+# 「ても」Even if
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/temo-even-if`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ても ammette una condizione e contemporaneamente ne nega l'effetto atteso. Il parlante afferma che il risultato principale non cambierà.
 
-- Tema: Even if
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [ても](grammar:grammar-164-temo-even-if)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo in forma て + も: 行っても, 降っても.
+- Aggettivo in い: 高い → 高くても; negativo: 行かなくても, 高くなくても.
+- Nome/aggettivo in な + でも: 学生でも, 静かでも.
 
-Il centro del ripasso è riconoscere [ても](grammar:grammar-164-temo-even-if) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  {{雨|あめ}}が{{降|ふ}}っても、{{試合|しあい}}は{{続|つづ}}ける。
 translation_it: >-
-  Vado anche io.
+  Anche se piove, continueremo la partita.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ても -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+La pioggia farebbe normalmente interrompere una partita; ても afferma che in questo caso non cambierà la decisione.
+
+## Sfumature d'uso
+
+- La proposizione principale deve contrastare con la conseguenza normalmente attesa dalla condizione.
+- Vてもいい è una costruzione di permesso («si può…»), non sempre traducibile come concessiva.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

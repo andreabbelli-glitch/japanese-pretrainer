@@ -10,45 +10,28 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 041.
+  Negazione piana degli aggettivi in な.
 ---
 
-# The negative form of な adjectives
+# な-Adjectives, but negative
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/na-adjectives-negation`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Formazione
 
-## Punto da riconoscere
+Gli aggettivi in な si negano come i nomi: alla radice si aggiunge じゃない, senza inserire な.
 
-- Tema: The negative form of な adjectives
-- Sezione: adjectives
-- Livello: JLPT-N5
-- Pattern allenabile: [な{{形容詞|けいようし}}](grammar:grammar-041-na-adjectives-negation)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [な{{形容詞|けいようし}}](grammar:grammar-041-na-adjectives-negation) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- 静かだ → 静かじゃない
+- きれいだ → きれいじゃない
+- 楽だ → 楽じゃない
 
 :::example_sentence
 jp: >-
-  ここはしずかだ。
+  {{図書館|としょかん}}は{{静|しず}}かじゃない。
 translation_it: >-
-  Qui è tranquillo.
+  La biblioteca non è tranquilla.
 :::
 
-#### Anatomia rapida
+La forma può anche precedere un nome: きれいじゃない人, «una persona che non è bella». Non usare *きれいなじゃない.
 
-*   な{{形容詞|けいようし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Nota di registro
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+大丈夫じゃない è la negazione regolare di 大丈夫. La forma giocosa だいじょうばない compare nello slang per analogia con verbi in ぶ, ma non è una regola grammaticale da applicare ad altri aggettivi.

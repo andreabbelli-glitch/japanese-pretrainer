@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 151.
+  Aspettative fondate su informazioni o ragionamento, incluse le forme negative.
 ---
 
 # 「はず」Express an expectation
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/hazu-express-expectation`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+はず trasforma una premessa affidabile in aspettativa. Il parlante non sta semplicemente sperando o tirando a indovinare: ritiene che il fatto segua logicamente da ciò che sa.
 
-- Tema: Express an expectation
-- Sezione: series
-- Livello: JLPT-N4
-- Pattern allenabile: [はず](grammar:grammar-151-hazu-express-expectation)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo o aggettivo in い + はずだ: 来るはずだ, 安いはずだ.
+- Aggettivo in な + なはずだ: 静かなはずだ; Nome + のはずだ: 学生のはずだ.
+- Negazione prevista: 来ないはずだ; impossibilità forte: 来るはずがない.
 
-Il centro del ripasso è riconoscere [はず](grammar:grammar-151-hazu-express-expectation) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{田中|たなか}}さんはもう{{駅|えき}}に{{着|つ}}いているはずだ。
 translation_it: >-
-  Questa è una penna.
+  Tanaka dovrebbe essere già arrivato alla stazione.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   はず -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+L'arrivo di Tanaka è dedotto da informazioni precedenti; はずだ segnala questa aspettativa fondata.
+
+## Sfumature d'uso
+
+- はず non equivale a べき o 〜なければならない: descrive ciò che ci si aspetta vero, non ciò che qualcuno è tenuto a fare.
+- Se l'aspettativa viene smentita, はずだった può rendere «avrebbe dovuto / era previsto che».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

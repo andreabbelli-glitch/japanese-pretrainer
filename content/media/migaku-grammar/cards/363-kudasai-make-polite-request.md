@@ -12,9 +12,10 @@ id: grammar-363-kudasai-make-polite-request
 pattern: "ください"
 title: "「ください」Make polite requests"
 reading: "ください"
-meaning_it: "Make polite requests"
+meaning_it: >-
+  Per favore; mi dia; faccia
 notes_it: >-
-  ください va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  ください è l'imperativo onorifico di くださる. Forme: Nをください; Vてください; Vないでください. È cortese ma può essere diretto, soprattutto senza contesto; くださいませんか o いただけますか attenuano. Nelle istruzioni pubbliche può funzionare come comando cortese.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-363-kudasai-make-polite-request
 card_type: concept
 front: "ください"
 back: >-
-  Make polite requests
+  Nomeをください chiede un oggetto; Vてください chiede un'azione; Vないでください chiede di non farla.
 example_jp: >-
-  ここでまってください。
+  ここにお{{名前|なまえ}}を{{書|か}}いてください。
 example_it: >-
-  La prego di aspettare qui.
+  Scriva qui il suo nome, per favore.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  ください è l'imperativo onorifico di くださる. Forme: Nをください; Vてください; Vないでください. È cortese ma può essere diretto, soprattutto senza contesto; くださいませんか o いただけますか attenuano. Nelle istruzioni pubbliche può funzionare come comando cortese.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, form-series]
 :::

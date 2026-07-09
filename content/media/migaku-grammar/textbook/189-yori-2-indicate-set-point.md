@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 189.
+  Confini spaziali o temporali assunti come punto di riferimento.
 ---
 
-# 「より」(2) Indicate a boundary
+# 「より」(2) Indicate a set point
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/yori-2-indicate-set-point`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+より pone un confine e interpreta posizione o tempo in relazione a esso. La stessa logica comparativa di base diventa «da questo punto in qua/in là» oppure «prima/dopo questo punto».
 
-- Tema: (2) Indicate a boundary
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [より](grammar:grammar-189-yori-2-indicate-set-point)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Confine spaziale + より + direzione: 線より内側／外側.
+- Punto temporale + より + relazione: 五時より早く, 明日より後.
+- Origine formale: 九時より開始します («inizieremo dalle nove»), spesso sostituibile con から.
 
-Il centro del ripasso è riconoscere [より](grammar:grammar-189-yori-2-indicate-set-point) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはよりのかたちだ。
+  この{{線|せん}}より{{内側|うちがわ}}に{{入|はい}}らないでください。
 translation_it: >-
-  Questa è la forma より.
+  Non entri oltre questa linea.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   より -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+La linea è lo standard spaziale; より内側 identifica la zona proibita oltre quel confine.
+
+## Sfumature d'uso
+
+- In avvisi e stile formale, より come «da» è frequente; nel parlato quotidiano から è più comune.
+- In 五時より早く, より fa parte del confronto «prima delle cinque» e non può essere rimpiazzato meccanicamente da から.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

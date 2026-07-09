@@ -12,9 +12,10 @@ id: grammar-076-nisuru-decide-on-something
 pattern: "にする"
 title: "「にする」\"Decide to X\""
 reading: "にする"
-meaning_it: "Decide to X"
+meaning_it: >-
+  Scegliere o decidere per qualcosa: «prendo / scelgo…»
 notes_it: >-
-  にする va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  nome + にする. Con un'azione si nominalizza la proposizione: verbo + ことにする, trattato separatamente. に indica l'esito scelto, mentre する presenta la decisione come volontaria.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-076-nisuru-decide-on-something
 card_type: concept
 front: "にする"
 back: >-
-  Decide to X
+  Scegliere o decidere per qualcosa: «prendo / scelgo…»
 example_jp: >-
-  カフェにいく。
+  {{飲|の}}み{{物|もの}}はお{{茶|ちゃ}}にする。
 example_it: >-
-  Vado al caffè.
+  Come bevanda scelgo il tè.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  飲み物 è il tema della scelta; お茶にする fissa il tè come opzione selezionata dal parlante. Con un'azione si nominalizza la proposizione: verbo + ことにする, trattato separatamente. に indica l'esito scelto, mentre する presenta la decisione come volontaria.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

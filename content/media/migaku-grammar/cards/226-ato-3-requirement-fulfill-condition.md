@@ -12,9 +12,9 @@ id: grammar-226-ato-3-requirement-fulfill-condition
 pattern: "あと"
 title: "「あと」(3) Indicate a requirement for a condition to be fulfilled"
 reading: "あと"
-meaning_it: "(3) Indicate a requirement for a condition to be fulfilled"
+meaning_it: "Quantità ancora necessaria o parte rimanente con あと"
 notes_it: >-
-  あと va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  あと + quantità indica quanto manca prima che una condizione sia raggiunta. Davanti a un nome che designa «il resto» si usa あとの + nome.
 level_hint: jlpt-n2
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-226-ato-3-requirement-fulfill-condition
 card_type: concept
 front: "あと"
 back: >-
-  (3) Indicate a requirement for a condition to be fulfilled
+  あと + quantità significa «ancora quella quantità / ne mancano…».
 example_jp: >-
-  ミカといく。
+  あと{{三日|みっか}}でテストだ。
 example_it: >-
-  Vado con Mika.
+  Mancano tre giorni al test.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  あとちょっとで significa «manca poco». あとの箱 indica «le scatole rimanenti»; non confondere con あと temporale «dopo».
 tags: [migaku, grammar, jlpt-n2, academy-level-1, numbers-and-counters]
 :::

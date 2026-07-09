@@ -12,9 +12,10 @@ id: grammar-370-sama-call-someone-politely
 pattern: "さま"
 title: "「さま」Refer to someone politely"
 reading: "さま"
-meaning_it: "Refer to someone politely"
+meaning_it: >-
+  Signore/a; suffisso onorifico molto rispettoso
 notes_it: >-
-  さま va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Si aggiunge a nomi o ruoli: 田中様, お客様, 神様. Non è normale fra amici e può creare distanza o ironia se usato fuori contesto. In indirizzi e servizio clienti è standard. Compare anche in formule fisse come お疲れ様, おかげ様 e ごちそうさま, dove non va tradotto separatamente.
 level_hint: jlpt-n1
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-370-sama-call-someone-politely
 card_type: concept
 front: "さま"
 back: >-
-  Refer to someone politely
+  Nome + さま mostra un rispetto superiore a さん ed è comune con clienti, destinatari e titoli formali.
 example_jp: >-
-  これはさまのかたちだ。
+  {{田中|たなか}}{{様|さま}}がお{{見|み}}えです。
 example_it: >-
-  Questa è la forma さま.
+  È arrivato il signor Tanaka.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Si aggiunge a nomi o ruoli: 田中様, お客様, 神様. Non è normale fra amici e può creare distanza o ironia se usato fuori contesto. In indirizzi e servizio clienti è standard. Compare anche in formule fisse come お疲れ様, おかげ様 e ごちそうさま, dove non va tradotto separatamente.
 tags: [migaku, grammar, jlpt-n1, academy-level-1, name-suffixes, polite-language]
 :::

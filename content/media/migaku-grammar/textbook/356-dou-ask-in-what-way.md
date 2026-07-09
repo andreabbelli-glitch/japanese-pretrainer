@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 356.
+  Domande sul modo, sul procedimento o sulla valutazione di una situazione.
 ---
 
-# 「どう」(2) Ask "in what way?"
+# 「どう」(2) Ask 'in what way?'
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dou-ask-in-what-way`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+どう sostituisce il modo ignoto. La risposta deve descrivere una maniera, una procedura, una condizione o una valutazione.
 
-- Tema: (2) Ask in what way?
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [どう](grammar:grammar-356-dou-ask-in-what-way)
+## Formazione e restrizioni
 
-## Lettura operativa
+- どう + verbo: どう読む, どう行く.
+- どう + copula/valutazione: 具合はどうですか.
+- Clausola incorporata: どう答えればいいか分からない.
 
-Il centro del ripasso è riconoscere [どう](grammar:grammar-356-dou-ask-in-what-way) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはどうのかたちだ。
+  この{{漢字|かんじ}}はどう{{読|よ}}みますか。
 translation_it: >-
-  Questa è la forma どう.
+  Come si legge questo kanji?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   どう -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+どう occupa il posto del modo di lettura; 読みますか rende la domanda cortese.
+
+## Sfumature d'uso
+
+- どうですか può chiedere un'opinione o fare una proposta; il contesto decide.
+- どうやって insiste sul procedimento concreto, mentre どう è più ampio.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

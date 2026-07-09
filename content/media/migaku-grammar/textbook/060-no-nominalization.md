@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 060.
+  Nominalizzazione di una clausola con の.
 ---
 
-# 「の」(3) Nominalize verbs
+# 「の」(3) Nominalize things
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/no-nominalization`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Clausola + の
 
-## Punto da riconoscere
-
-- Tema: (3) Nominalize verbs
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [の](grammar:grammar-060-no-nominalization)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [の](grammar:grammar-060-no-nominalization) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+の può trasformare una clausola piana in un sintagma nominale. Questo sintagma può essere tema con は, soggetto con が o oggetto con を.
 
 :::example_sentence
 jp: >-
-  ぼくのペンだ。
+  {{中国語|ちゅうごくご}}を{{教|おし}}えるのは{{難|むずか}}しい。
 translation_it: >-
-  È la mia penna.
+  Insegnare il cinese è difficile.
 :::
 
-#### Anatomia rapida
+L'intera attività 中国語を教える viene tematizzata da のは. Con un aggettivo in な si usa なの; al passato, 静かだったの. Verbi e aggettivi in い si collegano direttamente.
 
-*   の -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## の e こと
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Entrambi nominalizzano, ma の tende a risultare più concreto, immediato o percettivo, mentre こと presenta facilmente fatti generali e astratti. Alcuni predicati impongono l'uno o l'altro, quindi non sono sempre intercambiabili.

@@ -12,9 +12,10 @@ id: grammar-126-moshi-add-uncertainty
 pattern: "もし"
 title: "「もし」Add uncertainty to a statement"
 reading: "もし"
-meaning_it: "Add uncertainty to a statement"
+meaning_it: >-
+  Rafforza il carattere ipotetico di una condizione: «se mai / se per caso»
 notes_it: >-
-  もし va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  もし + condizione condizionale + conseguenza. È facoltativo: togliendolo, la struttura condizionale resta completa. もしも è più enfatico e si usa per eventualità remote o temute.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-126-moshi-add-uncertainty
 card_type: concept
 front: "もし"
 back: >-
-  Add uncertainty to a statement
+  Rafforza il carattere ipotetico di una condizione: «se mai / se per caso»
 example_jp: >-
-  ぼくもいく。
+  もし{{時間|じかん}}があったら、{{手伝|てつだ}}ってください。
 example_it: >-
-  Vado anche io.
+  Se per caso hai tempo, aiutami, per favore.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La condizione grammaticale è 時間があったら; もし la presenta con maggiore cautela, senza presupporre che l'interlocutore sia libero. È facoltativo: togliendolo, la struttura condizionale resta completa. もしも è più enfatico e si usa per eventualità remote o temute.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

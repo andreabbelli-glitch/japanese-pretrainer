@@ -12,9 +12,10 @@ id: grammar-286-soredeha-if-that-case
 pattern: "それでは"
 title: "「それでは」\"If that is the case…\""
 reading: "それでは"
-meaning_it: "If that is the case…"
+meaning_it: >-
+  «In tal caso / allora», per reagire, passare oltre o congedarsi
 notes_it: >-
-  それでは va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  situazione。 それでは、conseguenza. それじゃ è la forma colloquiale; では e じゃ sono ulteriori riduzioni. Da solo, それでは può introdurre un saluto di commiato.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-286-soredeha-if-that-case
 card_type: concept
 front: "それでは"
 back: >-
-  If that is the case…
+  «In tal caso / allora», per reagire, passare oltre o congedarsi
 example_jp: >-
-  これはペンだ。
+  {{雨|あめ}}ですね。それでは、{{予定|よてい}}を{{変|か}}えましょう。
 example_it: >-
-  Questa è una penna.
+  Piove, vero? In tal caso, cambiamo programma.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  それでは assume la pioggia come nuova premessa e introduce la decisione conseguente di modificare il piano. それじゃ è la forma colloquiale; では e じゃ sono ulteriori riduzioni. Da solo, それでは può introdurre un saluto di commiato.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 323.
+  Domande informative colloquiali con parole interrogative e un registro fortemente caratterizzato.
 ---
 
-# 「だい」Casually make an interrogative question
+# 「だい」Make an interrogative question
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dai-make-interrogative-question`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+だい forma domande che chiedono un contenuto, non un semplice sì o no. Compare soprattutto in registri familiari caratterizzati e nei dialoghi di finzione.
 
-- Tema: Casually make an interrogative question
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [だい](grammar:grammar-323-dai-make-interrogative-question)
+## Formazione e restrizioni
 
-## Lettura operativa
+- V／Aい + んだい: どこへ行くんだい, なぜ高いんだい.
+- Nome／Aな + だい: 何だい, どんな気分だい; passato: 何だったんだい.
+- La parola interrogativa fornisce la variabile da completare.
 
-Il centro del ripasso è riconoscere [だい](grammar:grammar-323-dai-make-interrogative-question) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはだいのかたちだ。
+  {{今日|きょう}}はどこへ{{行|い}}くんだい？
 translation_it: >-
-  Questa è la forma だい.
+  Dove vai oggi?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   だい -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+どこ richiede un luogo come risposta; 行くんだい aggiunge il tono colloquiale marcato.
+
+## Sfumature d'uso
+
+- La contrapposizione didattica è かい per sì/no e だい per domande informative.
+- In conversazione neutra sono più comuni どこへ行くの？ o どこへ行きますか.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

@@ -12,9 +12,9 @@ id: grammar-205-verb-hajimeru-u
 pattern: "う動詞"
 title: "う verbs + はじめる"
 reading: "うどうし"
-meaning_it: "う verbs + はじめる"
+meaning_it: "Cominciare un'azione: base in i del verbo in う + 始める"
 notes_it: >-
-  う{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Con i verbi in う si porta l'ultimo kana alla colonna i e si aggiunge 始める: 書く → 書き始める, 読む → 読み始める. È 始める a portare tempo e negazione.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-205-verb-hajimeru-u
 card_type: concept
 front: "う{{動詞|どうし}}"
 back: >-
-  う verbs + はじめる
+  Base in i del verbo in う + はじめる significa «cominciare a fare».
 example_jp: >-
-  これはペンだ。
+  {{雨|あめ}}が{{降|ふ}}り{{始|はじ}}めた。
 example_it: >-
-  Questa è una penna.
+  Ha cominciato a piovere.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  始める è un verbo in る e si coniuga regolarmente: 読み始めた, 読み始めない. Il primo verbo resta nella base.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs, stem-form-series]
 :::

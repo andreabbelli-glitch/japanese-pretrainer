@@ -12,9 +12,10 @@ id: grammar-307-sekkaku-when-you-have-rare-chance
 pattern: "せっかく"
 title: "「せっかく」”Since we’re (in a rare situation)\""
 reading: "せっかく"
-meaning_it: "Since we’re (in a rare situation)"
+meaning_it: >-
+  Sottolinea un'occasione preziosa o uno sforzo che non va sprecato
 notes_it: >-
-  せっかく va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  せっかく（の + nome）／せっかく…のに・だから. せっかくの modifica direttamente un nome, come せっかくの休み. La traduzione varia: «visto che ci siamo», «dopo tutta questa fatica», «una preziosa occasione».
 level_hint: jlpt-n2
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-307-sekkaku-when-you-have-rare-chance
 card_type: concept
 front: "せっかく"
 back: >-
-  Since we’re (in a rare situation)
+  Sottolinea un'occasione preziosa o uno sforzo che non va sprecato
 example_jp: >-
-  これはせっかくのかたちだ。
+  せっかく{{京都|きょうと}}まで{{来|き}}たのだから、{{寺|てら}}を{{見|み}}よう。
 example_it: >-
-  Questa è la forma せっかく.
+  Visto che siamo venuti fin qui a Kyoto, visitiamo un tempio.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  せっかく valorizza lo sforzo di arrivare fino a Kyoto; だから introduce la decisione di sfruttare l'occasione. せっかくの modifica direttamente un nome, come せっかくの休み. La traduzione varia: «visto che ci siamo», «dopo tutta questa fatica», «una preziosa occasione».
 tags: [migaku, grammar, jlpt-n2, academy-level-1]
 :::

@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 365.
+  Indicazioni stradali con svolte, attraversamenti, punti successivi e percorsi rettilinei.
 ---
 
-# How to give directions In Japanese
+# How to give direction in Japanese
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/how-give-direction-japanese`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Dare indicazioni richiede di distinguere il luogo del cambio di direzione, la direzione stessa e il tragitto da percorrere.
 
-- Tema: How to give directions In Japanese
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [{{道案内|みちあんない}}](grammar:grammar-365-how-give-direction-japanese)
+## Formazione e restrizioni
 
-## Lettura operativa
+- 次の + luogo: 次の交差点.
+- Luogoを + direzioneに + 曲がる: 角を右に曲がる.
+- Spazioを渡る; percorsoをまっすぐ行く／進む; Vと + punto incontrato.
 
-Il centro del ripasso è riconoscere [{{道案内|みちあんない}}](grammar:grammar-365-how-give-direction-japanese) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これは{{道案内|みちあんない}}のかたちだ。
+  {{次|つぎ}}の{{角|かど}}を{{右|みぎ}}に{{曲|ま}}がってください。
 translation_it: >-
-  Questa è la forma 道案内.
+  Giri a destra al prossimo angolo.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   {{道案内|みちあんない}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+角を identifica il punto della svolta e 右に ne indica la direzione.
+
+## Sfumature d'uso
+
+- を marca il punto/percorso attraversato; に marca la direzione della svolta.
+- La sequenza in て evita di ripetere frasi separate e mantiene l'ordine delle istruzioni.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

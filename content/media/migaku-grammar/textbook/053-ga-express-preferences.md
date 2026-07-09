@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 053.
+  が con predicati di preferenza, desiderio e necessità.
 ---
 
-# 「が」(3) State your preferences
+# 「が」(3) Express preferences
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ga-express-preferences`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Struttura X が predicato
 
-## Punto da riconoscere
-
-- Tema: (3) State your preferences
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [が](grammar:grammar-053-ga-express-preferences)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [が](grammar:grammar-053-ga-express-preferences) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+In giapponese 好き, 嫌い, 欲しい e 必要 si comportano come predicati di qualità o stato. Ciò che piace, non piace, si desidera o serve viene normalmente marcato da が, non da を.
 
 :::example_sentence
 jp: >-
-  ネコがいる。
+  {{私|わたし}}は{{野菜|やさい}}が{{嫌|きら}}いだ。
 translation_it: >-
-  C'è un gatto.
+  Non mi piacciono le verdure.
 :::
 
-#### Anatomia rapida
+私は indica chi prova la preferenza; 野菜が è il referente a cui si applica 嫌い. Se la persona è il parlante ed è ovvia, può essere omessa: ケーキが好き, «mi piace la torta».
 
-*   が -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Traduzione
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+L'italiano trasforma spesso questo schema in un verbo con oggetto o complemento. Conserva l'analisi giapponese per scegliere correttamente la particella.

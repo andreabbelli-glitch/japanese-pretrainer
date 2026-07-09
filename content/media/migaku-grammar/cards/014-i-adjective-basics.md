@@ -12,9 +12,9 @@ id: grammar-014-i-adjective-basics
 pattern: "い形容詞"
 title: "Introduction to い adjectives"
 reading: "いけいようし"
-meaning_it: "Introduction to い adjectives"
+meaning_it: "Aggettivi in い: descrivere direttamente un nome o fungere da predicato"
 notes_it: >-
-  い{{形容詞|けいようし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Un vero aggettivo in い termina in い nella forma dizionario e può precedere direttamente un nome. Attenzione a parole come きれい e 嫌い: finiscono graficamente in い ma sono aggettivi in な.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-014-i-adjective-basics
 card_type: concept
 front: "い{{形容詞|けいようし}}"
 back: >-
-  Introduction to い adjectives
+  Gli aggettivi in い si collocano direttamente prima del nome, senza particella né copula.
 example_jp: >-
-  これはたかい。
+  {{先生|せんせい}}は{{優|やさ}}しい{{人|ひと}}だ。
 example_it: >-
-  Questo è costoso.
+  L'insegnante è una persona gentile.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La radice si ottiene togliendo l'い finale, ma per riconoscere la classe non basta guardare l'ultimo kana: esistono eccezioni in な.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 :::

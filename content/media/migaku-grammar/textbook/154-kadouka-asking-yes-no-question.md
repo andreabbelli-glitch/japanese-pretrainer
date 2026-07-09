@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 154.
+  Domande sì o no incorporate come contenuto di sapere, verificare o decidere.
 ---
 
-# 「かどうか」”Whether or not"
+# 「かどうか」Asking a yes-no question
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kadouka-asking-yes-no-question`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+かどうか racchiude due possibilità — affermazione e negazione — in un'unica clausola. Tale clausola diventa l'oggetto di sapere, verificare, decidere e simili.
 
-- Tema: Whether or not
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [かどうか](grammar:grammar-154-kadouka-asking-yes-no-question)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo o aggettivo in い piano + かどうか: 行くかどうか, 高いかどうか.
+- Nome o aggettivo in な senza だ al presente: 学生かどうか, 静かかどうか; al passato: 学生だったかどうか.
+- La clausola è seguita spesso da un predicato cognitivo o decisionale: 分からない, 確認する, 決める.
 
-Il centro del ripasso è riconoscere [かどうか](grammar:grammar-154-kadouka-asking-yes-no-question) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはかどうかのかたちだ。
+  {{明日|あした}}{{雨|あめ}}が{{降|ふ}}るかどうか、まだ{{分|わ}}からない。
 translation_it: >-
-  Questa è la forma かどうか.
+  Non so ancora se domani pioverà oppure no.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   かどうか -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+雨が降るかどうか è la questione incerta incorporata come contenuto di 分からない.
+
+## Sfumature d'uso
+
+- Se l'alternativa non è semplicemente sì/no, si esplicitano le opzioni con か: 電車で行くか、バスで行くか.
+- In italiano «o no» può essere omesso, ma かどうか mantiene sempre la polarità delle due possibilità.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

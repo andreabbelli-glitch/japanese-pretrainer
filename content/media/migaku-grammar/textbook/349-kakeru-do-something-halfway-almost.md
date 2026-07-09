@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 349.
+  Azioni iniziate ma non concluse e stati che stanno per verificarsi.
 ---
 
-# 「かける」(2) "Do X halfway" or “almost X’d"
+# 「かける」(2) Do something halfway or almost
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kakeru-do-something-halfway-almost`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+かける focalizza la soglia fra non aver iniziato e aver completato. La natura volontaria o puntuale del primo verbo determina la lettura più naturale.
 
-- Tema: (2) Do X halfway or almost X’d
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [かける](grammar:grammar-349-kakeru-do-something-halfway-almost)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Radice + かける: 読みかける, 書きかける.
+- Stato imminente: 倒れかけている, 消えかける.
+- Il composto si coniuga: 書きかけた, 書きかけない.
 
-Il centro del ripasso è riconoscere [かける](grammar:grammar-349-kakeru-do-something-halfway-almost) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはかけるのかたちだ。
+  メールを{{書|か}}きかけたところで{{電話|でんわ}}が{{鳴|な}}った。
 translation_it: >-
-  Questa è la forma かける.
+  Avevo appena iniziato a scrivere l'e-mail quando è squillato il telefono.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   かける -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+書きかけた mostra che la scrittura era iniziata ma è stata interrotta dallo squillo.
+
+## Sfumature d'uso
+
+- Con un verbo puntuale, かける colloca il soggetto appena prima dello stato risultante: 死にかけている = quasi morto.
+- 話しかける è lessicalizzato come azione diretta verso qualcuno e va appreso separatamente.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

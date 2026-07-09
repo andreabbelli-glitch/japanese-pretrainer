@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 294.
+  Denominazioni e contenuti informativi costruiti con という.
 ---
+# 「という」”An X that is called...\"
 
-# 「という」”An X that is called..."
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/toiu-give-more-information`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+AというB presenta A come nome di B oppure come contenuto appartenente alla categoria B: «un B chiamato A / il fatto A che…».
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: An X that is called...
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [という](grammar:grammar-294-toiu-give-more-information)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [という](grammar:grammar-294-toiu-give-more-information) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `nome o contenuto + という + nome-categoria`. Il punto da riconoscere è [という](grammar:grammar-294-toiu-give-more-information).
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  「さくら」という{{名前|なまえ}}の{{店|みせ}}だ。
 translation_it: >-
-  Vado con Mika.
+  È un negozio che si chiama «Sakura».
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   という -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+さくら è il nome citato; という lo collega a 名前 e l'intero sintagma descrive 店.
+
+## Sfumature e limiti
+
+La forma collega sempre l'informazione A al nome B che la classifica, come 噂, 話, 名前 o ゲーム. Nel parlato si riduce a っていう o って.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

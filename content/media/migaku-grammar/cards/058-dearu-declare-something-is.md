@@ -12,9 +12,9 @@ id: grammar-058-dearu-declare-something-is
 pattern: "である"
 title: "「である」Say something \"is\""
 reading: "である"
-meaning_it: "Say something is"
+meaning_it: "Copula formale o scritta である: «essere»"
 notes_it: >-
-  である va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  である segue nomi e aggettivi in な. Esprime la stessa predicazione di だ con tono formale, assertivo e tipico della prosa; può apparire anche nel parlato formale.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-058-dearu-declare-something-is
 card_type: concept
 front: "である"
 back: >-
-  Say something is
+  Nome/aggettivo in な + である significa «è / sono» in stile formale o scritto.
 example_jp: >-
-  カフェでたべる。
+  この{{本|ほん}}は{{傑作|けっさく}}である。
 example_it: >-
-  Mangio al caffè.
+  Questo libro è un capolavoro.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Forme principali: ではない, であった, ではなかった. Non confondere il で di である con il marcatore di luogo dell'azione.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

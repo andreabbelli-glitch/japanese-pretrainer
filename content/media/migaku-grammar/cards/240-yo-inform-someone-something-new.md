@@ -12,9 +12,9 @@ id: grammar-240-yo-inform-someone-something-new
 pattern: "よ"
 title: "「よ」Inform someone of something new"
 reading: "よ"
-meaning_it: "Inform someone of something new"
+meaning_it: "Finale よ: presentare informazione, enfasi o avvertimento"
 notes_it: >-
-  よ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  よ segnala che il parlante offre l'informazione come rilevante per l'ascoltatore. Secondo intonazione e contesto può informare, insistere, avvertire, invitare o criticare.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-240-yo-inform-someone-something-new
 card_type: concept
 front: "よ"
 back: >-
-  Inform someone of something new
+  Frase + よ richiama l'attenzione dell'ascoltatore su ciò che viene affermato.
 example_jp: >-
-  これはよのかたちだ。
+  {{明日|あした}}は{{休|やす}}みだよ。
 example_it: >-
-  Questa è la forma よ.
+  Domani è festa, sai.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  L'italiano spesso non traduce よ con una parola fissa. Evita di renderlo sempre «sai»: conserva l'effetto pragmatico più naturale.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, sentence-enders]
 :::

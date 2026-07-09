@@ -12,9 +12,10 @@ id: grammar-265-verb-imperatives-level-2-ru
 pattern: "る動詞"
 title: "The imperative form of る verbs"
 reading: "るどうし"
-meaning_it: "The imperative form of る verbs"
+meaning_it: >-
+  Imperativo forte dei verbi ichidan
 notes_it: >-
-  る{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  radice del verbo ichidan + ろ. La variante in よ, come 答えよ, appartiene soprattutto a istruzioni scritte, proclami o stile letterario. La forma in ろ è diretta e può essere brusca.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-265-verb-imperatives-level-2-ru
 card_type: concept
 front: "る{{動詞|どうし}}"
 back: >-
-  The imperative form of る verbs
+  Imperativo forte dei verbi ichidan
 example_jp: >-
-  パンをたべる。
+  {{早|はや}}く{{起|お}}きろ。
 example_it: >-
-  Mangio il pane.
+  Alzati presto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  起きる perde る e prende ろ, formando 起きろ; 早く specifica il modo o il momento richiesto. La variante in よ, come 答えよ, appartiene soprattutto a istruzioni scritte, proclami o stile letterario. La forma in ろ è diretta e può essere brusca.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

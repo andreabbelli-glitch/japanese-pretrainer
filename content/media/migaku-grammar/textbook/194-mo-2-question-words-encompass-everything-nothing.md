@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 194.
+  Totalità o assenza con parola interrogativa più mo.
 ---
 
-# 「も」(2) "Everything, everyone, everywhere, everytime"
+# 「も」(2) Question words encompass everything or nothing
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/mo-2-question-words-encompass-everything-nothing`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## La polarità decide il valore
 
-## Punto da riconoscere
-
-- Tema: (2) Everything, everyone, everywhere, everytime
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [も](grammar:grammar-194-mo-2-question-words-encompass-everything-nothing)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [も](grammar:grammar-194-mo-2-question-words-encompass-everything-nothing) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Parola interrogativa + も estende il riferimento a tutta la categoria. Con un predicato affermativo può significare «tutto/sempre/ovunque»; con una negazione, «niente/mai/da nessuna parte».
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  {{誰|だれ}}も{{来|こ}}なかった。
 translation_it: >-
-  Vado anche io.
+  Non è venuto nessuno.
 :::
 
-#### Anatomia rapida
+いつも si usa affermativamente per «sempre». どこも compare con entrambe le polarità. 何も e 誰も sono invece soprattutto negativi: 何もない, 誰もいない.
 
-*   も -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Lettura operativa
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Non tradurre il gruppo prima di aver letto il predicato: la stessa struttura totalizzante produce in italiano una parola positiva o negativa.

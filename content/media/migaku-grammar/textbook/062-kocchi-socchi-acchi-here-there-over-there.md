@@ -10,45 +10,26 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 062.
+  Uso colloquiale di こっち, そっち e あっち.
 ---
 
-# 「こっち・そっち・あっち」"Here, there and over there"
+# 「こっち・そっち・あっち」Here, there and over there
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kocchi-socchi-acchi-here-there-over-there`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Lato e direzione
 
-## Punto da riconoscere
+- こっち: da questa parte, nella sfera del parlante
+- そっち: da quella parte, nella sfera dell'ascoltatore
+- あっち: da quella parte laggiù, lontano da entrambi
 
-- Tema: Here, there and over there
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [こっち・そっち・あっち](grammar:grammar-062-kocchi-socchi-acchi-here-there-over-there)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [こっち・そっち・あっち](grammar:grammar-062-kocchi-socchi-acchi-here-there-over-there) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Sono forme colloquiali di こちら, そちら e あちら. Possono ricevere particelle come に, へ, の e が.
 
 :::example_sentence
 jp: >-
-  これはこっち・そっち・あっちのかたちだ。
+  {{車|くるま}}があっちへ{{行|い}}く。
 translation_it: >-
-  Questa è la forma こっち・そっち・あっち.
+  L'auto va da quella parte laggiù.
 :::
 
-#### Anatomia rapida
+## Riferimento a persone
 
-*   こっち・そっち・あっち -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Per estensione, こっち può indicare «io/noi», そっち «tu/voi» e あっち «lui/lei/loro». Questo uso è informale e, rivolto direttamente a una persona, può risultare brusco; こちら e le altre forme in -ら sono più cortesi.

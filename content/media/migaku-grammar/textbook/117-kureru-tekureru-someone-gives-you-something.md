@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 117.
+  Doni e azioni benefiche dirette verso il parlante con くれる.
 ---
-
 # 「くれる・てくれる」Someone gives you something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kureru-tekureru-someone-gives-you-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+くれる descrive un dono diretto al parlante o a una persona del suo 内. Vてくれる presenta l'azione del soggetto come beneficio ricevuto dal parlante o dal suo gruppo.
 
-- Tema: Someone gives you something
-- Sezione: form series
-- Livello: JLPT-N4
-- Pattern allenabile: [くれる・てくれる](grammar:grammar-117-kureru-tekureru-someone-gives-you-something)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [くれる・てくれる](grammar:grammar-117-kureru-tekureru-someone-gives-you-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `datore が destinatario に oggetto を くれる／Vてくれる`. Il punto da riconoscere è [くれる・てくれる](grammar:grammar-117-kureru-tekureru-someone-gives-you-something).
 
 :::example_sentence
 jp: >-
-  これはくれる・てくれるのかたちだ。
+  {{友達|ともだち}}が{{駅|えき}}まで{{送|おく}}ってくれた。
 translation_it: >-
-  Questa è la forma くれる・てくれる.
+  Un amico mi ha accompagnato fino alla stazione.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   くれる・てくれる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+友達が è chi agisce; il beneficiario «me» resta implicito. 送ってくれた presenta l'accompagnamento come favore diretto al parlante.
+
+## Sfumature e limiti
+
+Il destinatario «io» è spesso omesso perché implicito nella scelta di くれる. Se il beneficiario è anche oggetto diretto, prende を: 私を手伝ってくれた. La forma mette in luce il beneficio percepito.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

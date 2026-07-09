@@ -12,9 +12,9 @@ id: grammar-250-verb-potential-slang
 pattern: "られる → れる"
 title: "「られる → れる」 The abbreviated potential form of Japanese verbs"
 reading: "られる → れる"
-meaning_it: "The abbreviated potential form of Japanese verbs"
+meaning_it: "Potenziale colloquiale senza ら: 食べれる"
 notes_it: >-
-  られる → れる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Nel parlato informale, le forme potenziali in られる spesso perdono ら: 食べられる → 食べれる, 見られる → 見れる. Il fenomeno è detto ら抜き言葉.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-250-verb-potential-slang
 card_type: concept
 front: "られる → れる"
 back: >-
-  The abbreviated potential form of Japanese verbs
+  Base del verbo in る + れる è un potenziale colloquiale diffuso.
 example_jp: >-
-  これはられる → れるのかたちだ。
+  この{{魚|さかな}}は{{生|なま}}で{{食|た}}べれる。
 example_it: >-
-  Questa è la forma られる → れる.
+  Questo pesce si può mangiare crudo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Nello scritto sorvegliato e nel registro formale è preferibile 食べられる. Non applicare la riduzione alle forme potenziali dei verbi in う.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

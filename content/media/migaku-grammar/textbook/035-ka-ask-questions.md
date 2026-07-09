@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 035.
+  Uso della particella finale か per porre domande.
 ---
 
-# 「か」(1) Turn statements into questions
+# 「か」(1) Ask questions
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ka-ask-questions`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Struttura
 
-## Punto da riconoscere
-
-- Tema: (1) Turn statements into questions
-- Sezione: particles
-- Livello: JLPT-N5
-- Pattern allenabile: [か](grammar:grammar-035-ka-ask-questions)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [か](grammar:grammar-035-ka-ask-questions) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Aggiungere か alla fine trasforma una frase in domanda senza cambiarne l'ordine. Può seguire un verbo, un aggettivo o un nome.
 
 :::example_sentence
 jp: >-
-  これはかのかたちだ。
+  その{{店|みせ}}で{{弁当|べんとう}}を{{買|か}}うか？
 translation_it: >-
-  Questa è la forma か.
+  Comprerai un bentō in quel negozio?
 :::
 
-#### Anatomia rapida
+野菜を食べるか può chiedere «mangi/mangerai verdure?» e, secondo il contesto, anche sondare la volontà dell'interlocutore. Tempo e persona restano affidati alla situazione.
 
-*   か -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Registro
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Nel parlato le domande possono basarsi sulla sola intonazione e omettere か. Una forma piana + か è diretta e può risultare brusca fuori da rapporti informali; la versione cortese verrà trattata separatamente.

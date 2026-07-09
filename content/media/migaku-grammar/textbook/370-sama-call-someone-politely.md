@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n1, academy-level-1, name-suffixes, polite-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 370.
+  Suffisso di rispetto elevato per clienti, destinatari e figure trattate con grande deferenza.
 ---
 
-# 「さま」Refer to someone politely
+# 「さま」Call someone politely
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/sama-call-someone-politely`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+さま eleva il referente e segnala una relazione formale o una deferenza marcata. La resa italiana dipende dal contesto più che dal genere grammaticale.
 
-- Tema: Refer to someone politely
-- Sezione: name suffixes
-- Livello: JLPT-N1
-- Pattern allenabile: [さま](grammar:grammar-370-sama-call-someone-politely)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Nome proprio + 様: 田中様.
+- Ruolo/titolo + 様: お客様, 王様, 神様.
+- Formule lessicalizzate: お疲れ様, おかげ様, ごちそうさま.
 
-Il centro del ripasso è riconoscere [さま](grammar:grammar-370-sama-call-someone-politely) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはさまのかたちだ。
+  {{田中|たなか}}{{様|さま}}がお{{見|み}}えです。
 translation_it: >-
-  Questa è la forma さま.
+  È arrivato il signor Tanaka.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   さま -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+田中様 identifica Tanaka come persona trattata con rispetto elevato; お見えです è a sua volta onorifico.
+
+## Sfumature d'uso
+
+- È più rispettoso e distanziante di さん; non sostituisce automaticamente さん.
+- Nelle e-mail commerciali segue spesso il nome del destinatario, ma non quello del mittente.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

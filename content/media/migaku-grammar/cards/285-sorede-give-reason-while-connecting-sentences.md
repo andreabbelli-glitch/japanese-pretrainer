@@ -12,9 +12,10 @@ id: grammar-285-sorede-give-reason-while-connecting-sentences
 pattern: "それで"
 title: "「それで」 Connect two sentences by listing a reason"
 reading: "それで"
-meaning_it: "Connect two sentences by listing a reason"
+meaning_it: >-
+  Collega una causa al risultato: «perciò / e quindi»
 notes_it: >-
-  それで va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  causa。 それで、risultato. Nel dialogo può anche sollecitare il seguito: «e allora?». In questo uso non afferma necessariamente un nuovo rapporto causale, ma invita l'altro a continuare.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-285-sorede-give-reason-while-connecting-sentences
 card_type: concept
 front: "それで"
 back: >-
-  Connect two sentences by listing a reason
+  Collega una causa al risultato: «perciò / e quindi»
 example_jp: >-
-  カフェでたべる。
+  {{電車|でんしゃ}}が{{止|と}}まった。それで、{{会議|かいぎ}}に{{遅|おく}}れた。
 example_it: >-
-  Mangio al caffè.
+  Il treno si è fermato; perciò sono arrivato tardi alla riunione.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La prima frase fornisce la causa; それで introduce il ritardo come conseguenza. Nel dialogo può anche sollecitare il seguito: «e allora?». In questo uso non afferma necessariamente un nuovo rapporto causale, ma invita l'altro a continuare.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

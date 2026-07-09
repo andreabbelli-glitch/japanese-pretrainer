@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 059.
+  Nominalizzazione di azioni e fatti con こと.
 ---
 
-# 「こと」(1) Nominalize verbs and adjectives
+# 「こと」(1) Nominalize things
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/koto-nominalization`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Da clausola a nome
 
-## Punto da riconoscere
-
-- Tema: (1) Nominalize verbs and adjectives
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [こと](grammar:grammar-059-koto-nominalization)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [こと](grammar:grammar-059-koto-nominalization) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Una forma piana seguita da こと diventa un sintagma nominale: «il fatto / l'atto di…». Può quindi ricevere particelle e svolgere i normali ruoli di un nome.
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  {{食|た}}べることが{{好|す}}きだ。
 translation_it: >-
-  Vado con Mika.
+  Mi piace mangiare.
 :::
 
-#### Anatomia rapida
+食べること è il soggetto di 好き. Con un aggettivo in な serve なこと: 静かなこと; al passato si conserva だったこと. Verbi e aggettivi in い precedono こと direttamente.
 
-*   こと -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Sfumatura
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+こと presenta facilmente azioni, abitudini o fatti in modo generale e astratto. La traduzione italiana può usare un infinito o una subordinata invece di «il fatto di».

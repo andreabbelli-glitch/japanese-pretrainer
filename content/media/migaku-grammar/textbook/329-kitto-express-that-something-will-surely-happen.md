@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 329.
+  Aspettative molto forti, speranze e previsioni ritenute quasi certe.
 ---
 
-# 「きっと」”Surely; undoubtedly"
+# 「きっと」Express that something will surely happen
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kitto-express-that-something-will-surely-happen`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+きっと comunica che il parlante si aspetta con grande fiducia un risultato. La forza può derivare da dati, speranza o incoraggiamento.
 
-- Tema: Surely; undoubtedly
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [きっと](grammar:grammar-329-kitto-express-that-something-will-surely-happen)
+## Formazione e restrizioni
 
-## Lettura operativa
+- きっと + previsione: きっと来る.
+- きっと〜だろう／でしょう／はずだ per esplicitare la valutazione.
+- Negativo: きっと忘れない («di sicuro non dimenticherà»).
 
-Il centro del ripasso è riconoscere [きっと](grammar:grammar-329-kitto-express-that-something-will-surely-happen) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  きっと{{試験|しけん}}に{{合格|ごうかく}}するよ。
 translation_it: >-
-  Vado con Mika.
+  Supererai sicuramente l'esame.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   きっと -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+きっと presenta il superamento dell'esame come esito fortemente atteso e serve anche a rassicurare.
+
+## Sfumature d'uso
+
+- È più forte di 多分, ma resta una valutazione del parlante e può essere smentita.
+- Con promesse o incoraggiamenti può avere una componente affettiva oltre alla probabilità.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

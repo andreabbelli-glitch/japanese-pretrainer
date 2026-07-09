@@ -12,9 +12,10 @@ id: grammar-160-3-making-something-take-place
 pattern: "する"
 title: "「する」(3) Making something take place"
 reading: "する"
-meaning_it: "(3) Making something take place"
+meaning_it: >-
+  Rendere; scegliere; svolgere un ruolo; indossare alcuni accessori
 notes_it: >-
-  する va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Per causare un cambiamento: Aい senza い + くする (明るくする); Aな/Nome + にする (静かにする, 部屋を教室にする). Contrasta con なる, che descrive il cambiamento del soggetto. Nome + をする può anche significare svolgere un ruolo o indossare piccoli accessori; il valore dipende dalla collocazione.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-160-3-making-something-take-place
 card_type: concept
 front: "する"
 back: >-
-  (3) Making something take place
+  する può causare uno stato: Aい→くする, Aな／Nome→にする; in collocazioni come 学生をする o ネクタイをする assume valori lessicali.
 example_jp: >-
-  ゲームをする。
+  {{部屋|へや}}をもう{{少|すこ}}し{{明|あか}}るくする。
 example_it: >-
-  Faccio una partita.
+  Renderò la stanza un po' più luminosa.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Per causare un cambiamento: Aい senza い + くする (明るくする); Aな/Nome + にする (静かにする, 部屋を教室にする). Contrasta con なる, che descrive il cambiamento del soggetto. Nome + をする può anche significare svolgere un ruolo o indossare piccoli accessori; il valore dipende dalla collocazione.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

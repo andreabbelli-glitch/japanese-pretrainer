@@ -12,9 +12,10 @@ id: grammar-121-youda-something-seems-like
 pattern: "ようだ"
 title: "「ようだ」\"Something seems like\""
 reading: "ようだ"
-meaning_it: "Something seems like"
+meaning_it: >-
+  Sembra / pare, come inferenza da indizi; anche «è come…»
 notes_it: >-
-  ようだ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo / い-aggettivo + ようだ; な-aggettivo + なようだ; nome + のようだ. Il parlante interpreta gli indizi: non riporta semplicemente una notizia. Il tempo prima di ようだ resta quello del contenuto inferito, come 行ったようだ «sembra che sia andato».
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-121-youda-something-seems-like
 card_type: concept
 front: "ようだ"
 back: >-
-  Something seems like
+  Sembra / pare, come inferenza da indizi; anche «è come…»
 example_jp: >-
-  これはペンだ。
+  {{道|みち}}が{{濡|ぬ}}れている。{{雨|あめ}}が{{降|ふ}}ったようだ。
 example_it: >-
-  Questa è una penna.
+  La strada è bagnata. Sembra che abbia piovuto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La strada bagnata è l'indizio visibile; 雨が降ったようだ è l'inferenza formulata dal parlante, non una notizia citata. Il parlante interpreta gli indizi: non riporta semplicemente una notizia. Il tempo prima di ようだ resta quello del contenuto inferito, come 行ったようだ «sembra che sia andato».
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

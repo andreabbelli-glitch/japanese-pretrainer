@@ -10,45 +10,27 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 051.
+  Uso sostitutivo di の per un nome già noto.
 ---
 
-# 「の」(2) Make indefinite pronouns
+# 「の」(2) The indefinite pronoun
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/no-indefinite-pronoun`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Evitare la ripetizione
 
-## Punto da riconoscere
+Quando il referente è già chiaro, の può sostituire il nome dopo un modificatore, come «quello / quella / quelli» in italiano.
 
-- Tema: (2) Make indefinite pronouns
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [の](grammar:grammar-051-no-indefinite-pronoun)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [の](grammar:grammar-051-no-indefinite-pronoun) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- aggettivo in い + の: 安いの, «quello economico»
+- aggettivo in な + なの: 丈夫なの, «quello resistente»
 
 :::example_sentence
 jp: >-
-  ぼくのペンだ。
+  {{服|ふく}}は{{可愛|かわい}}いのを{{着|き}}る。
 translation_it: >-
-  È la mia penna.
+  Quanto ai vestiti, ne indosserò uno carino.
 :::
 
-#### Anatomia rapida
+のを riceve を perché l'intero sintagma 可愛いの è l'oggetto di 着る. Il nome 服 potrebbe essere ripetuto, ma suonerebbe ridondante.
 
-*   の -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Limite
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+In questo uso の non compare senza un modificatore. Con gli aggettivi in な, il な è obbligatorio: きれいなの, non *きれいの.

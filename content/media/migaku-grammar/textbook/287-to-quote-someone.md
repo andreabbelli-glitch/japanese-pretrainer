@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 287.
+  Uso di と per citazioni, pensieri, testi e modi dell'azione.
 ---
-
 # 「と」(4) Make direct quotations
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/to-quote-someone`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+と chiude il contenuto citato prima di verbi come 言う, 思う, 聞く, 書く o 説明する. La citazione può essere diretta tra virgolette oppure indiretta in forma piana.
 
-- Tema: (4) Make direct quotations
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [と](grammar:grammar-287-to-quote-someone)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [と](grammar:grammar-287-to-quote-someone) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `contenuto citato + と + verbo di dire/pensare`. Il punto da riconoscere è [と](grammar:grammar-287-to-quote-someone).
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  {{田中|たなか}}さんは「{{明日|あした}}{{行|い}}く」と{{言|い}}った。
 translation_it: >-
-  Vado con Mika.
+  Tanaka ha detto: «Domani andrò».
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   と -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Le parole tra virgolette sono il contenuto; と le collega al verbo 言った e 田中さんは identifica chi parla.
+
+## Sfumature e limiti
+
+Con onomatopee e avverbi, と può marcare il modo o suono dell'azione. Diversamente dal colloquiale って, con と il verbo citativo non si omette normalmente.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -12,9 +12,10 @@ id: grammar-072-dropping-particles
 pattern: "助詞省略"
 title: "Dropping particles from sentences"
 reading: "じょししょうりゃく"
-meaning_it: "Dropping particles from sentences"
+meaning_it: >-
+  Omissione colloquiale di particelle recuperabili dal contesto
 notes_it: >-
-  {{助詞|じょし}}{{省略|しょうりゃく}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  sintagma + （particella omessa） + predicato. L'omissione è tipica della conversazione spontanea, non una regola per eliminare liberamente le particelle. In scrittura, in registro formale o quando i ruoli potrebbero confondersi, è preferibile mantenerle.
 level_hint: custom
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-072-dropping-particles
 card_type: concept
 front: "{{助詞|じょし}}{{省略|しょうりゃく}}"
 back: >-
-  Dropping particles from sentences
+  Omissione colloquiale di particelle recuperabili dal contesto
 example_jp: >-
-  これは{{助詞|じょし}}{{省略|しょうりゃく}}のかたちだ。
+  {{今日|きょう}}、{{友達|ともだち}}と{{映画|えいが}}{{見|み}}る。
 example_it: >-
-  Questa è la forma 助詞省略.
+  Oggi guardo un film con un amico.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Dopo 映画 è sottinteso を: la forma completa è 映画を見る. Il verbo 見る rende comunque chiaro che 映画 è l'oggetto. L'omissione è tipica della conversazione spontanea, non una regola per eliminare liberamente le particelle. In scrittura, in registro formale o quando i ruoli potrebbero confondersi, è preferibile mantenerle.
 tags: [migaku, grammar, academy-level-1]
 :::

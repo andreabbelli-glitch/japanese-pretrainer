@@ -12,9 +12,10 @@ id: grammar-347-kakeru-kakaru-general-overview
 pattern: "かける・かかる"
 title: "An introduction to「かける・かかる」"
 reading: "かける・かかる"
-meaning_it: "An introduction to"
+meaning_it: >-
+  Impiegare/far agire; richiedere/essere applicato
 notes_it: >-
-  かける・かかる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Per tempo/denaro: AにBをかける («spendere B per A») contro AにBがかかる («A richiede B»). Per telefonare: 人に電話をかける e 電話がかかる. Sono verbi molto polisemici, spesso scritti in kana; la coppia transitivo/intransitivo aiuta ma ogni collocazione va appresa.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-347-kakeru-kakaru-general-overview
 card_type: concept
 front: "かける・かかる"
 back: >-
-  An introduction to
+  かける presenta un agente che applica qualcosa; かかる presenta il costo, tempo o effetto che ricade sul soggetto.
 example_jp: >-
-  これはかける・かかるのかたちだ。
+  {{修理|しゅうり}}に{{三日|みっか}}かかる。
 example_it: >-
-  Questa è la forma かける・かかる.
+  La riparazione richiede tre giorni.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Per tempo/denaro: AにBをかける («spendere B per A») contro AにBがかかる («A richiede B»). Per telefonare: 人に電話をかける e 電話がかかる. Sono verbi molto polisemici, spesso scritti in kana; la coppia transitivo/intransitivo aiuta ma ogni collocazione va appresa.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

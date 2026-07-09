@@ -12,9 +12,10 @@ id: grammar-117-kureru-tekureru-someone-gives-you-something
 pattern: "くれる・てくれる"
 title: "「くれる・てくれる」Someone gives you something"
 reading: "くれる・てくれる"
-meaning_it: "Someone gives you something"
+meaning_it: >-
+  Qualcuno dà qualcosa o compie un favore verso il parlante o il suo gruppo
 notes_it: >-
-  くれる・てくれる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  datore が destinatario に oggetto を くれる／Vてくれる. Il destinatario «io» è spesso omesso perché implicito nella scelta di くれる. Se il beneficiario è anche oggetto diretto, prende を: 私を手伝ってくれた. La forma mette in luce il beneficio percepito.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-117-kureru-tekureru-someone-gives-you-something
 card_type: concept
 front: "くれる・てくれる"
 back: >-
-  Someone gives you something
+  Qualcuno dà qualcosa o compie un favore verso il parlante o il suo gruppo
 example_jp: >-
-  これはくれる・てくれるのかたちだ。
+  {{友達|ともだち}}が{{駅|えき}}まで{{送|おく}}ってくれた。
 example_it: >-
-  Questa è la forma くれる・てくれる.
+  Un amico mi ha accompagnato fino alla stazione.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  友達が è chi agisce; il beneficiario «me» resta implicito. 送ってくれた presenta l'accompagnamento come favore diretto al parlante. Il destinatario «io» è spesso omesso perché implicito nella scelta di くれる. Se il beneficiario è anche oggetto diretto, prende を: 私を手伝ってくれた. La forma mette in luce il beneficio percepito.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 :::

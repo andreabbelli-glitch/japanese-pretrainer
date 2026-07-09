@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 170.
+  Percezioni di suono, odore, sapore e sensazione espresse con una costruzione esistenziale.
 ---
 
-# 「する」(4) Express things you perceive
+# 「する」(4) Express perception
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/suru-4-express-perception`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Con nomi sensoriali, する indica che una percezione si manifesta al soggetto. L'italiano sceglie il verbo naturale — sentire, avere sapore, emanare odore — invece di tradurre «fare».
 
-- Tema: (4) Express things you perceive
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [する](grammar:grammar-170-suru-4-express-perception)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Nome sensoriale + がする: 音がする, 変な味がする, 寒い感じがする.
+- Passato: 声がした («si è sentita una voce»); negativo: 匂いがしない.
+- Onomatopea + している per una qualità: 表面がつるつるしている.
 
-Il centro del ripasso è riconoscere [する](grammar:grammar-170-suru-4-express-perception) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ゲームをする。
+  {{外|そと}}からいい{{匂|にお}}いがする。
 translation_it: >-
-  Faccio una partita.
+  Da fuori viene un buon profumo.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   する -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+いい匂いがする presenta il profumo come percezione che arriva dall'esterno; qui する descrive l'emergere involontario della sensazione.
+
+## Sfumature d'uso
+
+- La fonte o provenienza può essere marcata con から: 台所から匂いがする.
+- Per un attributo visivo si usa spesso 色／形 + をしている, non がする.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

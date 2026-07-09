@@ -12,9 +12,10 @@ id: grammar-282-verb-receptive-ru
 pattern: "る動詞"
 title: "The receptive form of る verbs"
 reading: "るどうし"
-meaning_it: "The receptive form of る verbs"
+meaning_it: >-
+  Passivo dei verbi ichidan e sua possibile lettura avversativa
 notes_it: >-
-  る{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  radice del verbo ichidan + られる. La forma coincide con il potenziale ichidan; l'agente in に e la struttura della frase aiutano a riconoscere il passivo. Con il passivo avversativo, il soggetto può essere colpito indirettamente dall'azione.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-282-verb-receptive-ru
 card_type: concept
 front: "る{{動詞|どうし}}"
 back: >-
-  The receptive form of る verbs
+  Passivo dei verbi ichidan e sua possibile lettura avversativa
 example_jp: >-
-  パンをたべる。
+  ケーキを{{妹|いもうと}}に{{食|た}}べられた。
 example_it: >-
-  Mangio il pane.
+  Mia sorella minore mi ha mangiato la torta.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Il parlante sottinteso subisce l'evento; 妹に è l'agente e ケーキを resta l'oggetto di 食べる, segnalando il passivo avversativo. La forma coincide con il potenziale ichidan; l'agente in に e la struttura della frase aiutano a riconoscere il passivo. Con il passivo avversativo, il soggetto può essere colpito indirettamente dall'azione.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

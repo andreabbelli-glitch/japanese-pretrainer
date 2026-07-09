@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n2, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 334.
+  Conclusioni soggettive molto forti, spesso emotive o usate per contraddire.
 ---
 
-# 「に決まっている」Express that you’re certain of something
+# 「に決まっている」When you are certain of something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nikimatteiru-when-you-are-certain-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+La costruzione deriva da 決まる, «essere deciso». Il parlante tratta quindi una propria inferenza come se la risposta fosse già stabilita.
 
-- Tema: Express that you’re certain of something
-- Sezione: jlpt n2
-- Livello: JLPT-N2
+## Formazione e restrizioni
 
-## Lettura operativa
+- V／Aい + に決まっている: 来るに決まっている.
+- Nome／Aな + に決まっている: 彼に決まっている, 簡単に決まっている.
+- Colloquiale: に決まってる; enfatico: に決まっているじゃないか.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{鍵|かぎ}}を{{持|も}}っているのは{{田中|たなか}}さんに{{決|き}}まっている。
 translation_it: >-
-  Questa è una penna.
+  È ovvio che le chiavi le abbia Tanaka.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Il parlante presenta Tanaka come unica risposta possibile alla domanda su chi possieda le chiavi.
+
+## Sfumature d'uso
+
+- La certezza è soggettiva e spesso emotiva, non una prova oggettiva.
+- In contesti formali o delicati è preferibile una formulazione meno categorica.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

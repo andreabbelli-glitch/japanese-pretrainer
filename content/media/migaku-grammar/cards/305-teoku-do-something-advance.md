@@ -12,9 +12,10 @@ id: grammar-305-teoku-do-something-advance
 pattern: "～ておく"
 title: "「～ておく」Do something in advance"
 reading: "～ておく"
-meaning_it: "Do something in advance"
+meaning_it: >-
+  Fare qualcosa in anticipo o lasciare uno stato così com'è
 notes_it: >-
-  ～ておく va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in て-forma + おく. Nel parlato ておく si contrae in とく e でおく in どく: 食べとく, 読んどく. Il tempo e la volontà si esprimono con おく.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-305-teoku-do-something-advance
 card_type: concept
 front: "～ておく"
 back: >-
-  Do something in advance
+  Fare qualcosa in anticipo o lasciare uno stato così com'è
 example_jp: >-
-  メモをしておく。
+  {{旅行|りょこう}}の{{前|まえ}}にホテルを{{予約|よやく}}しておく。
 example_it: >-
-  Prendo nota in anticipo.
+  Prenoto l'hotel in anticipo, prima del viaggio.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  予約しておく indica che la prenotazione viene completata ora per rendere più agevole il viaggio futuro. Nel parlato ておく si contrae in とく e でおく in どく: 食べとく, 読んどく. Il tempo e la volontà si esprimono con おく.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 :::

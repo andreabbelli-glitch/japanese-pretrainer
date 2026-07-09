@@ -12,9 +12,10 @@ id: grammar-074-shika-when-there-nothing-else
 pattern: "しか"
 title: "「しか」Indicate “only” or “and nothing else”"
 reading: "しか"
-meaning_it: "Indicate only or and nothing else"
+meaning_it: >-
+  «Solo, nient'altro che», obbligatoriamente con un predicato negativo
 notes_it: >-
-  しか va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  nome (+ eventuale particella) + しか + predicato negativo. Dopo un verbo, V-dizionario + しかない significa «non resta che V / bisogna per forza V». Una particella come に può restare prima di しか: 東京にしかない.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-074-shika-when-there-nothing-else
 card_type: concept
 front: "しか"
 back: >-
-  Indicate only or and nothing else
+  «Solo, nient'altro che», obbligatoriamente con un predicato negativo
 example_jp: >-
-  これしかない。
+  {{冷蔵庫|れいぞうこ}}には{{卵|たまご}}しかない。
 example_it: >-
-  Non c'è altro che questo.
+  Nel frigorifero ci sono soltanto uova.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  卵 è l'unico contenuto ammesso da しか; ない fornisce la negazione richiesta. には tematizza e delimita il frigorifero. Dopo un verbo, V-dizionario + しかない significa «non resta che V / bisogna per forza V». Una particella come に può restare prima di しか: 東京にしかない.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, particles]
 :::

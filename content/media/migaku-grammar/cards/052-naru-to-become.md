@@ -12,9 +12,9 @@ id: grammar-052-naru-to-become
 pattern: "なる"
 title: "「なる」Express a change in state"
 reading: "なる"
-meaning_it: "Express a change in state"
+meaning_it: "Esprimere un cambiamento di stato con なる"
 notes_it: >-
-  なる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  なる significa «diventare». Gli aggettivi in い passano alla forma in く + なる; nomi e aggettivi in な usano に + なる. いい forma よくなる.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-052-naru-to-become
 card_type: concept
 front: "なる"
 back: >-
-  Express a change in state
+  〜くなる / 〜になる indica che qualcuno o qualcosa passa a un nuovo stato.
 example_jp: >-
-  しずかになる。
+  {{子供|こども}}は{{静|しず}}かになる。
 example_it: >-
-  Diventa tranquillo.
+  I bambini diventano tranquilli.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  新しい → 新しくなる; 元気 → 元気になる; 先生 → 先生になる. La costruzione descrive il cambiamento, non chi lo provoca.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 :::

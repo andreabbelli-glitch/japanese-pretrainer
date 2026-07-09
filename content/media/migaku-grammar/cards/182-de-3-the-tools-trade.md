@@ -12,9 +12,10 @@ id: grammar-182-de-3-the-tools-trade
 pattern: "で"
 title: "「で」(3) Indicate the means by which something is done"
 reading: "で"
-meaning_it: "(3) Indicate the means by which something is done"
+meaning_it: >-
+  Con; tramite; usando; per (mezzo, materiale, costo)
 notes_it: >-
-  で va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Schema: mezzo/materiale/costo + で + azione. Esempi: 箸で食べる, 電車で行く, 木で作る, 千円で買う, 一日で終える. Il valore preciso deriva dal nome e dal predicato. 何で si legge なにで («con che cosa?») oppure なんで («perché?») secondo il contesto.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-182-de-3-the-tools-trade
 card_type: concept
 front: "で"
 back: >-
-  (3) Indicate the means by which something is done
+  Nome + で indica lo strumento, il mezzo, il metodo, il materiale o la quantità impiegata per realizzare un'azione.
 example_jp: >-
-  カフェでたべる。
+  {{毎朝|まいあさ}}、{{電車|でんしゃ}}で{{会社|かいしゃ}}へ{{行|い}}く。
 example_it: >-
-  Mangio al caffè.
+  Ogni mattina vado al lavoro in treno.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Schema: mezzo/materiale/costo + で + azione. Esempi: 箸で食べる, 電車で行く, 木で作る, 千円で買う, 一日で終える. Il valore preciso deriva dal nome e dal predicato. 何で si legge なにで («con che cosa?») oppure なんで («perché?») secondo il contesto.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

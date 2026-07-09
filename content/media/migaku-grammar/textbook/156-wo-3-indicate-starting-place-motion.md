@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 156.
+  Luoghi lasciati come punto iniziale di un movimento o distacco.
 ---
 
 # 「を」(3) Indicate the starting place of a motion
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/wo-3-indicate-starting-place-motion`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Con alcuni verbi di moto, を marca il luogo dal quale il soggetto si stacca. Questa funzione è collegata al percorso: il movimento prende avvio dentro o presso quel luogo e procede fuori.
 
-- Tema: (3) Indicate the starting place of a motion
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [を](grammar:grammar-156-wo-3-indicate-starting-place-motion)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Origine + を + 出る／離れる／降りる: 家を出る, バスを降りる.
+- Con 卒業する, 学校を卒業する presenta l'istituzione lasciata al termine del percorso.
+- La meta eventuale resta distinta: 家を出て、駅に向かう.
 
-Il centro del ripasso è riconoscere [を](grammar:grammar-156-wo-3-indicate-starting-place-motion) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  パンをたべる。
+  {{今朝|けさ}}は{{七時|しちじ}}に{{家|いえ}}を{{出|で}}た。
 translation_it: >-
-  Mangio il pane.
+  Stamattina sono uscito di casa alle sette.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   を -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+家を identifica il luogo lasciato alle sette; l'eventuale destinazione resta da ricavare dal seguito.
+
+## Sfumature d'uso
+
+- から può esplicitare il punto iniziale; alcune collocazioni richiedono を, come 電車を降りる.
+- Con は il luogo diventa tema o contrasto e la frase richiede un contesto adatto.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

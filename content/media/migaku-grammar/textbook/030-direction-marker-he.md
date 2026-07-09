@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 030.
+  Uso di へ per la direzione di un movimento.
 ---
 
-# 「へ」Indicate a direction
+# 「へ」Show a direction
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/direction-marker-he`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Forma e sfumatura
 
-## Punto da riconoscere
-
-- Tema: Indicate a direction
-- Sezione: particles
-- Livello: JLPT-N5
-- Pattern allenabile: [へ](grammar:grammar-030-direction-marker-he)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [へ](grammar:grammar-030-direction-marker-he) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Come particella, へ si pronuncia え. Luogo + へ con un verbo di movimento mette in rilievo la direzione o il percorso verso quel luogo.
 
 :::example_sentence
 jp: >-
-  うちへかえる。
+  {{父|ちち}}が{{山|やま}}へ{{行|い}}く。
 translation_it: >-
-  Torno verso casa.
+  Mio padre va verso la montagna.
 :::
 
-#### Anatomia rapida
+東京に行く presenta Tokyo come destinazione; 東京へ行く orienta il movimento verso Tokyo e non insiste altrettanto sul raggiungimento. In molti contesti entrambe le frasi si traducono comunque «andare a Tokyo».
 
-*   へ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Tema e contrasto
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Con は si forma へは: 山へは父が行く, «verso la montagna, invece, va mio padre». は può contrapporre quella direzione ad altre.

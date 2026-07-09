@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 230.
+  Approssimazione di quantità con hodo.
 ---
 
-# 「ほど」(3) Make an approximation
+# 「ほど」(3) Express approximation
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/hodo-3-express-approximation`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Contatore + ほど
 
-## Punto da riconoscere
-
-- Tema: (3) Make an approximation
-- Sezione: series
-- Livello: JLPT-N3
-- Pattern allenabile: [ほど](grammar:grammar-230-hodo-3-express-approximation)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ほど](grammar:grammar-230-hodo-3-express-approximation) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+ほど dopo una quantità esprime una stima: «circa». Il tono può risultare più neutro o formale di くらい.
 
 :::example_sentence
 jp: >-
-  これほどいいものはない。
+  {{二時間|にじかん}}ほどかかる。
 translation_it: >-
-  Non c'è nulla di così buono.
+  Ci vogliono circa due ore.
 :::
 
-#### Anatomia rapida
+In altre costruzioni, ほど può anche indicare il grado di un'azione o di uno stato. Dopo una quantità, come in questo uso, presenta invece una stima.
 
-*   ほど -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Limite temporale
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Con il tempo, ほど approssima una durata, non un'ora del giorno. 八時ごろに帰った è «sono tornato verso le otto»; 八時間ほど寝た è «ho dormito circa otto ore».

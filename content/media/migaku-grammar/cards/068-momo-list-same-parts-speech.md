@@ -12,9 +12,10 @@ id: grammar-068-momo-list-same-parts-speech
 pattern: "も~も"
 title: "「も~も」List out the same parts of speech"
 reading: "も~も"
-meaning_it: "List out the same parts of speech"
+meaning_it: >-
+  «Sia A sia B» in frase affermativa; «né A né B» in frase negativa
 notes_it: >-
-  も~も va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A + も + B + も + predicato. Con nomi basta も; gli い-aggettivi prendono くも e i な-aggettivi でも. La costruzione è naturale per liste brevi, in genere non oltre tre o quattro elementi.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-068-momo-list-same-parts-speech
 card_type: concept
 front: "も~も"
 back: >-
-  List out the same parts of speech
+  «Sia A sia B» in frase affermativa; «né A né B» in frase negativa
 example_jp: >-
-  ぼくもいく。
+  {{猫|ねこ}}も{{犬|いぬ}}も{{好|す}}きだ。
 example_it: >-
-  Vado anche io.
+  Mi piacciono sia i gatti sia i cani.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Il primo も include 猫 e il secondo include 犬 nello stesso predicato 好きだ. Se il predicato fosse 好きじゃない, la frase significherebbe «non mi piacciono né i gatti né i cani». Con nomi basta も; gli い-aggettivi prendono くも e i な-aggettivi でも. La costruzione è naturale per liste brevi, in genere non oltre tre o quattro elementi.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

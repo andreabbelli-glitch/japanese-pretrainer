@@ -2,7 +2,7 @@
 id: lesson-migaku-grammar-257-nakute-state-cause-reason
 media_id: media-migaku-grammar
 slug: 257-nakute-state-cause-reason
-title: "「なくて」(3) “Because X isn’t/can’t/didn’t\""
+title: "「なくて」(2) “Because X isn’t/can’t/didn’t\""
 order: 2570
 segment_ref: verbs
 difficulty: jlpt-n4
@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 257.
+  Uso causale della forma negativa in なくて e differenza rispetto a ないで.
 ---
+# 「なくて」(2) “Because X isn’t/can’t/didn’t\"
 
-# 「なくて」(3) “Because X isn’t/can’t/didn’t"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nakute-state-cause-reason`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+AなくてB presenta la mancata realizzazione o lo stato negativo A come causa di B. Si forma dalla negazione in ない sostituendo la い finale con くて.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: (3) Because X isn’t/can’t/didn’t
-- Sezione: verbs
-- Livello: JLPT-N4
-- Pattern allenabile: [なくて](grammar:grammar-257-nakute-state-cause-reason)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [なくて](grammar:grammar-257-nakute-state-cause-reason) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `forma negativa senza い + くて`. Il punto da riconoscere è [なくて](grammar:grammar-257-nakute-state-cause-reason).
 
 :::example_sentence
 jp: >-
-  パンをたべない。
+  {{電車|でんしゃ}}が{{来|こ}}なくて、{{会社|かいしゃ}}に{{遅|おく}}れた。
 translation_it: >-
-  Non mangio il pane.
+  Il treno non è arrivato e per questo ho fatto tardi al lavoro.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   なくて -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+来ない diventa 来なくて; la mancata venuta del treno spiega il ritardo espresso da 会社に遅れた.
+
+## Sfumature e limiti
+
+Il legame causale è spesso più morbido e contestuale di ないから o ないので. Per una scelta deliberata del tipo «fare B senza fare A» si usa normalmente ないで.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -12,9 +12,9 @@ id: grammar-040-na-adjectives-basics
 pattern: "な形容詞"
 title: "Introduction to な adjectives"
 reading: "なけいようし"
-meaning_it: "Introduction to な adjectives"
+meaning_it: "Aggettivi in な: な davanti al nome, だ come predicato piano"
 notes_it: >-
-  な{{形容詞|けいようし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Gli aggettivi in な si comportano in parte come nomi. Davanti a un nome richiedono な; a fine frase usano spesso だ. きれい e 嫌い appartengono a questa classe nonostante finiscano in い.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-040-na-adjectives-basics
 card_type: concept
 front: "な{{形容詞|けいようし}}"
 back: >-
-  Introduction to な adjectives
+  Aggettivo in な + な + nome; come predicato piano: aggettivo + だ.
 example_jp: >-
-  ここはしずかだ。
+  この{{学校|がっこう}}は{{静|しず}}かだ。
 example_it: >-
-  Qui è tranquillo.
+  Questa scuola è tranquilla.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  大きな e 小さな sono forme prenominali speciali: devono precedere un nome e non possono chiudere la frase come *大きだ o *小さだ.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 :::

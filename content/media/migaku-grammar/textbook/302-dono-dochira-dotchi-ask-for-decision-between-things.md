@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 302.
+  Differenze sintattiche e di registro tra どの, どちら e どっち.
 ---
+# 「どの・どちら・どっち」Other ways to ask  ”which one?\"
 
-# 「どの・どちら・どっち」Other ways to ask  ”which one?"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dono-dochira-dotchi-ask-for-decision-between-things`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+どの deve precedere un nome e chiede quale elemento di una categoria. どちら è un pronome cortese usato soprattutto fra due opzioni; どっち è la variante colloquiale.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: Other ways to ask  which one?
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [どの・どちら・どっち](grammar:grammar-302-dono-dochira-dotchi-ask-for-decision-between-things)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [どの・どちら・どっち](grammar:grammar-302-dono-dochira-dotchi-ask-for-decision-between-things) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `どの + nome／どちら・どっち + particella`. Il punto da riconoscere è [どの・どちら・どっち](grammar:grammar-302-dono-dochira-dotchi-ask-for-decision-between-things).
 
 :::example_sentence
 jp: >-
-  ぼくのペンだ。
+  {{赤|あか}}と{{青|あお}}なら、どちらが{{好|す}}き？
 translation_it: >-
-  È la mia penna.
+  Tra rosso e blu, quale preferisci?
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   どの・どちら・どっち -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Le due opzioni sono esplicite; どちら le sostituisce come pronome e が introduce ciò che è preferito.
+
+## Sfumature e limiti
+
+どの è tipico per tre o più alternative. どちら può anche chiedere direzione, persona o provenienza in registro cortese, quindi il contesto ne decide il valore.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

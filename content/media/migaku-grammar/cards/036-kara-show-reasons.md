@@ -12,9 +12,9 @@ id: grammar-036-kara-show-reasons
 pattern: "から"
 title: "「から」(1) Indicate the reason for something"
 reading: "から"
-meaning_it: "(1) Indicate the reason for something"
+meaning_it: "Esprimere causa o motivo con から: «perché», «dato che»"
 notes_it: >-
-  から va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  La struttura A から B presenta A come causa e B come conseguenza. Dopo verbi e aggettivi in い, から si attacca alla forma piana; nomi e aggettivi in な richiedono だ o だった prima di から.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-036-kara-show-reasons
 card_type: concept
 front: "から"
 back: >-
-  (1) Indicate the reason for something
+  から collega una ragione al suo risultato; il risultato può restare sottinteso.
 example_jp: >-
-  あめだからいかない。
+  {{今日|きょう}}は{{時間|じかん}}がないから{{図書館|としょかん}}に{{行|い}}かない。
 example_it: >-
-  Non vado perché piove.
+  Oggi non vado in biblioteca perché non ho tempo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Nome/aggettivo in な + だから; verbo/aggettivo in い + から. In risposta a «perché?», la sola clausola causale può chiudersi con から.
 tags: [migaku, grammar, academy-level-1, jlpt-n5, particles]
 :::

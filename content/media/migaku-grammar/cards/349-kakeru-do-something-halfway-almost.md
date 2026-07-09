@@ -12,9 +12,10 @@ id: grammar-349-kakeru-do-something-halfway-almost
 pattern: "かける"
 title: "「かける」(2) \"Do X halfway\" or “almost X’d\""
 reading: "かける"
-meaning_it: "(2) Do X halfway or almost X’d"
+meaning_it: >-
+  Cominciare senza finire; essere sul punto di
 notes_it: >-
-  かける va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Con azioni volontarie, Vかける significa che l'esecuzione è iniziata ma non terminata. Con cambiamenti non volontari, indica che lo stato è imminente: 倒れかける, 死にかける. Si coniuga come un verbo in る e compare spesso in 〜かけている.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-349-kakeru-do-something-halfway-almost
 card_type: concept
 front: "かける"
 back: >-
-  (2) Do X halfway or almost X’d
+  Radice + かける indica un'azione già avviata ma incompleta, oppure uno stato involontario quasi raggiunto.
 example_jp: >-
-  これはかけるのかたちだ。
+  メールを{{書|か}}きかけたところで{{電話|でんわ}}が{{鳴|な}}った。
 example_it: >-
-  Questa è la forma かける.
+  Avevo appena iniziato a scrivere l'e-mail quando è squillato il telefono.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con azioni volontarie, Vかける significa che l'esecuzione è iniziata ma non terminata. Con cambiamenti non volontari, indica che lo stato è imminente: 倒れかける, 死にかける. Si coniuga come un verbo in る e compare spesso in 〜かけている.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

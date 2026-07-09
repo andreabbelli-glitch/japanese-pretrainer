@@ -10,45 +10,38 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 142.
+  Tentativi esplorativi compiuti per verificarne concretamente il risultato.
 ---
 
-# 「てみる」Express that you’re trying to do something
+# 「てみる」Trying something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/temiru-trying-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+てみる combina un'azione con l'idea di «vedere» metaforicamente il risultato. Il soggetto prova concretamente qualcosa che non conosce ancora bene.
 
-- Tema: Express that you’re trying to do something
-- Sezione: form series
-- Livello: JLPT-N4
-- Pattern allenabile: [てみる](grammar:grammar-142-temiru-trying-something)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo in forma て + みる: 読んでみる, 食べてみる.
+- Si coniuga みる: 試してみた («ho provato»), 行ってみたい («vorrei provare ad andare»), やってみて («prova a farlo»).
 
-Il centro del ripasso è riconoscere [てみる](grammar:grammar-142-temiru-trying-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはてみるのかたちだ。
+  この{{料理|りょうり}}を{{少|すこ}}し{{食|た}}べてみる。
 translation_it: >-
-  Questa è la forma てみる.
+  Proverò ad assaggiare un po' questo piatto.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   てみる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+食べてみる indica che il parlante assaggerà davvero il piatto per scoprirne il sapore.
+
+## Sfumature d'uso
+
+- Quando funziona da ausiliare, la grafia みる rende chiaro che non si tratta letteralmente di guardare.
+- Per «tentare ma non riuscire necessariamente a compiere l'azione» possono servire altre costruzioni, come 〜ようとする.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

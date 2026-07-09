@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 321.
+  Emozioni e desideri di terze persone descritti come segnali osservabili.
 ---
-
 # 「がる」Someone shows signs of something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/garu-someone-shows-signs-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Con molti い-aggettivi emotivi si sostituisce い con がる; たい diventa たがる e ほしい diventa ほしがる. La forma descrive ciò che una terza persona manifesta.
 
-- Tema: Someone shows signs of something
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [がる](grammar:grammar-321-garu-someone-shows-signs-something)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [がる](grammar:grammar-321-garu-someone-shows-signs-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `radice emotiva + がる／verbo in たい senza い + がる`. Il punto da riconoscere è [がる](grammar:grammar-321-garu-someone-shows-signs-something).
 
 :::example_sentence
 jp: >-
-  ネコがいる。
+  {{妹|いもうと}}は{{新|あたら}}しい{{靴|くつ}}をほしがっている。
 translation_it: >-
-  C'è un gatto.
+  Mia sorella minore mostra di volere delle scarpe nuove.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   がる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+ほしい perde い e diventa ほしがる; 靴 prende を e がっている descrive segnali osservabili del desiderio.
+
+## Sfumature e limiti
+
+Non afferma accesso diretto allo stato interiore, ma un'inferenza dal comportamento. Con ほしがる l'oggetto prende を, non il が di ほしい. がる coniuga come un godan.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

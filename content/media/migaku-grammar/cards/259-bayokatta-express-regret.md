@@ -12,9 +12,10 @@ id: grammar-259-bayokatta-express-regret
 pattern: "ばよかった"
 title: "「ばよかった」\"If only I had…\""
 reading: "ばよかった"
-meaning_it: "If only I had…"
+meaning_it: >-
+  Rimpianto per un'azione non compiuta: «avrei dovuto…»
 notes_it: >-
-  ばよかった va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in forma ば + よかった. Esprime un rimpianto sul passato, non un semplice consiglio futuro. Vてよかった ha il senso opposto: «sono contento di aver fatto V».
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-259-bayokatta-express-regret
 card_type: concept
 front: "ばよかった"
 back: >-
-  If only I had…
+  Rimpianto per un'azione non compiuta: «avrei dovuto…»
 example_jp: >-
-  いけばわかる。
+  もっと{{早|はや}}く{{出|で}}ればよかった。
 example_it: >-
-  Se ci vai, capirai.
+  Avrei dovuto uscire prima.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  出る diventa 出れば; よかった segnala che uscire prima sarebbe stata l'opzione migliore, ma non è avvenuta. Esprime un rimpianto sul passato, non un semplice consiglio futuro. Vてよかった ha il senso opposto: «sono contento di aver fatto V».
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

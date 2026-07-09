@@ -12,9 +12,9 @@ id: grammar-053-ga-express-preferences
 pattern: "が"
 title: "「が」(3) State your preferences"
 reading: "が"
-meaning_it: "(3) State your preferences"
+meaning_it: "Marcare con が ciò che piace, non piace, si desidera o serve"
 notes_it: >-
-  が va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Con 好き, 嫌い, 欲しい, 必要 e predicati simili, が marca l'oggetto della preferenza o del bisogno. La persona che prova il sentimento è spesso tema con は oppure resta sottintesa.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-053-ga-express-preferences
 card_type: concept
 front: "が"
 back: >-
-  (3) State your preferences
+  X が好き significa letteralmente che X è gradito e naturalmente «mi/ti piace X».
 example_jp: >-
-  ネコがいる。
+  {{私|わたし}}は{{野菜|やさい}}が{{嫌|きら}}いだ。
 example_it: >-
-  C'è un gatto.
+  Non mi piacciono le verdure.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  野菜 non è oggetto con を: è il referente a cui si applica 嫌い. Chi prova la preferenza si ricava da 私は o dal contesto.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

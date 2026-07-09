@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 366.
+  Obbligo e necessità costruiti tramite una doppia negazione, con varianti colloquiali.
 ---
 
 # 「なければならない」Express necessity to do something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nakerebanaranai-express-necessity-do-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+La costruzione afferma che, se la condizione negativa si verificasse, la situazione non andrebbe bene. Da questa doppia negazione deriva l'obbligo.
 
-- Tema: Express necessity to do something
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [なければならない](grammar:grammar-366-nakerebanaranai-express-necessity-do-something)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Vない → Vなければならない: 出さない→出さなければならない.
+- Aい: 安くなければならない; Nome/Aな: 学生でなければならない.
+- Varianti: なければいけない, なきゃいけない, なくちゃ.
 
-Il centro del ripasso è riconoscere [なければならない](grammar:grammar-366-nakerebanaranai-express-necessity-do-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  それならいく。
+  {{明日|あした}}までにレポートを{{出|だ}}さなければならない。
 translation_it: >-
-  Se è così, vado.
+  Devo consegnare la relazione entro domani.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   なければならない -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+出さなければならない rende la consegna obbligatoria; までに stabilisce la scadenza.
+
+## Sfumature d'uso
+
+- ならない tende a suonare più formale o oggettivo; いけない è comune nel parlato.
+- なくてもいい significa «non occorre», mentre てはいけない significa «non si deve».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

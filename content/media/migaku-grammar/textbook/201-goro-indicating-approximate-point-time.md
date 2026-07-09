@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 201.
+  Momenti approssimativi e periodi con goro o koro.
 ---
 
 # 「ごろ」Indicating an approximate point in time
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/goro-indicating-approximate-point-time`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Intorno a un momento
 
-## Punto da riconoscere
-
-- Tema: Indicating an approximate point in time
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [ごろ](grammar:grammar-201-goro-indicating-approximate-point-time)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ごろ](grammar:grammar-201-goro-indicating-approximate-point-time) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+ごろ/ころ segue un'ora, una data o un nome temporale e indica un punto approssimativo: «verso», «intorno a».
 
 :::example_sentence
 jp: >-
-  これはごろのかたちだ。
+  {{七時|しちじ}}ごろ{{帰|かえ}}る。
 translation_it: >-
-  Questa è la forma ごろ.
+  Tornerò verso le sette.
 :::
 
-#### Anatomia rapida
+Con nome + のころ può evocare una fase più ampia: 子供のころ, «quando ero bambino».
 
-*   ごろ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Confronto con くらい
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+ごろ non esprime durate o distanze. 四時間くらい寝た significa «ho dormito circa quattro ore»; 四時ごろ寝た, «sono andato a dormire verso le quattro».

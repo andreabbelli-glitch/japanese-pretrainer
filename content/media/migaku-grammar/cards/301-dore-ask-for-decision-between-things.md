@@ -12,9 +12,10 @@ id: grammar-301-dore-ask-for-decision-between-things
 pattern: "どれ"
 title: "「どれ」”Which one?\""
 reading: "どれ"
-meaning_it: "Which one?"
+meaning_it: >-
+  Pronome interrogativo «quale?» fra più oggetti
 notes_it: >-
-  どれ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  どれ + particella. È tipico quando le opzioni sono tre o più; con due si preferisce どちら／どっち, anche se nell'uso reale la separazione non è assoluta. La ripetizione どれどれ significa «fammi vedere».
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-301-dore-ask-for-decision-between-things
 card_type: concept
 front: "どれ"
 back: >-
-  Which one?
+  Pronome interrogativo «quale?» fra più oggetti
 example_jp: >-
-  これはどれのかたちだ。
+  どれが{{一番|いちばん}}{{安|やす}}いですか。
 example_it: >-
-  Questa è la forma どれ.
+  Qual è il più economico?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  どれ sostituisce l'oggetto tra le opzioni e が lo marca come soggetto della proprietà 一番安い. È tipico quando le opzioni sono tre o più; con due si preferisce どちら／どっち, anche se nell'uso reale la separazione non è assoluta. La ripetizione どれどれ significa «fammi vedere».
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

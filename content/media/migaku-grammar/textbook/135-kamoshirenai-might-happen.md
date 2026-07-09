@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 135.
+  Possibilità incerta, con formazione, contrazione colloquiale e grado di certezza.
 ---
 
-# 「かもしれない」”Might"
+# 「かもしれない」Express 'might'
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kamoshirenai-might-happen`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+かもしれない segnala che il parlante considera possibile un fatto senza sostenerlo con grande certezza. La traduzione dipende dal contesto: «forse», «potrebbe», «può darsi che».
 
-- Tema: Might
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [かもしれない](grammar:grammar-135-kamoshirenai-might-happen)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo piano + かもしれない: 降る／降ったかもしれない.
+- Aggettivo in い piano + かもしれない: 高いかもしれない.
+- Nome o aggettivo in な senza だ al presente: 学生かもしれない, 静かかもしれない; al passato: 学生だったかもしれない.
 
-Il centro del ripasso è riconoscere [かもしれない](grammar:grammar-135-kamoshirenai-might-happen) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  {{午後|ごご}}は{{雨|あめ}}が{{降|ふ}}るかもしれない。
 translation_it: >-
-  Vado anche io.
+  Nel pomeriggio potrebbe piovere.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   かもしれない -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+降るかもしれない non afferma che pioverà: presenta la pioggia come una possibilità aperta.
+
+## Sfumature d'uso
+
+- Nella scala orientativa della certezza, かもしれない è più prudente di だろう e molto meno categorico di に違いない.
+- かも è comune tra amici; かもしれません mantiene la stessa possibilità in registro cortese.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

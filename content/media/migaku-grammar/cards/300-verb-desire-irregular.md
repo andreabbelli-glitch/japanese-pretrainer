@@ -12,9 +12,10 @@ id: grammar-300-verb-desire-irregular
 pattern: "不規則動詞"
 title: "The “desire” form of irregular verbs"
 reading: "ふきそくどうし"
-meaning_it: "The desire form of irregular verbs"
+meaning_it: >-
+  Desiderativi fondamentali: したい, 来たい e 行きたい
 notes_it: >-
-  {{不規則|ふきそく}}{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  する→したい／来る→来たい／行く→行きたい. Anche queste forme coniugano come い-aggettivi. 来たい usa la lettura き; le affermazioni sul desiderio di terzi richiedono cautela o たがる.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-300-verb-desire-irregular
 card_type: concept
 front: "{{不規則|ふきそく}}{{動詞|どうし}}"
 back: >-
-  The desire form of irregular verbs
+  Desiderativi fondamentali: したい, 来たい e 行きたい
 example_jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  もっと{{日本語|にほんご}}を{{勉強|べんきょう}}したい。
 example_it: >-
-  Questa è la forma 不規則動詞.
+  Voglio studiare di più il giapponese.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  勉強する prende したい; もっと indica l'aumento desiderato nella quantità di studio. Anche queste forme coniugano come い-aggettivi. 来たい usa la lettura き; le affermazioni sul desiderio di terzi richiedono cautela o たがる.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 :::

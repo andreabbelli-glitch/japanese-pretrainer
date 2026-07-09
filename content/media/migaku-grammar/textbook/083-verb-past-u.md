@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 083.
+  Cambi fonetici per formare il passato piano dei verbi godan.
 ---
-
 # The past tense of う verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-past-u`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il passato affermativo dei verbi godan dipende dalla sillaba finale: う・つ・る→った, む・ぶ・ぬ→んだ, く→いた, ぐ→いだ, す→した.
 
-- Tema: The past tense of う verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [う{{動詞|どうし}}](grammar:grammar-083-verb-past-u)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [う{{動詞|どうし}}](grammar:grammar-083-verb-past-u) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `radice godan con cambio fonetico + た／だ`. Il punto da riconoscere è [う動詞](grammar:grammar-083-verb-past-u).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{昨日|きのう}}、{{新|あたら}}しい{{本|ほん}}を{{買|か}}った。
 translation_it: >-
-  Vado al caffè.
+  Ieri ho comprato un libro nuovo.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   う{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+買う termina in う, quindi il gruppo う・つ・る cambia in った: 買う → 買った. 昨日 colloca l'acquisto nel passato.
+
+## Sfumature e limiti
+
+La forma esprime un'azione conclusa nel passato. 行く costituisce l'eccezione più importante a く→いた e diventa 行った. Verbi ichidan che terminano in る seguono invece la regola del gruppo successivo.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

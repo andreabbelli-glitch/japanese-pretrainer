@@ -12,9 +12,10 @@ id: grammar-082-janakatta-declare-something-was-not
 pattern: "じゃなかった"
 title: "「じゃなかった」Declare something \"was not\""
 reading: "じゃなかった"
-meaning_it: "Declare something was not"
+meaning_it: >-
+  Copula piana negativa al passato: «non era / non fu»
 notes_it: >-
-  じゃなかった va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  nome / な-aggettivo + じゃなかった. じゃ è la contrazione di では ed è comune nel parlato. ではなかった è meno colloquiale; per maggiore cortesia si incontra じゃなかったです o ではありませんでした.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-082-janakatta-declare-something-was-not
 card_type: concept
 front: "じゃなかった"
 back: >-
-  Declare something was not
+  Copula piana negativa al passato: «non era / non fu»
 example_jp: >-
-  これはペンじゃなかった。
+  {{昨日|きのう}}は{{休|やす}}みじゃなかった。
 example_it: >-
-  Questa non era una penna.
+  Ieri non era un giorno di riposo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  休み è il nome negato; じゃなかった dice che la condizione «essere giorno libero» non valeva ieri. じゃ è la contrazione di では ed è comune nel parlato. ではなかった è meno colloquiale; per maggiore cortesia si incontra じゃなかったです o ではありませんでした.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

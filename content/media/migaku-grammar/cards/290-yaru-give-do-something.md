@@ -12,9 +12,10 @@ id: grammar-290-yaru-give-do-something
 pattern: "やる"
 title: "「やる」Give or do something"
 reading: "やる"
-meaning_it: "Give or do something"
+meaning_it: >-
+  Fare, dare o mandare; nella forma てやる, fare qualcosa per qualcuno
 notes_it: >-
-  やる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  destinatario に oggetto を やる／verbo in て-forma + やる. Nel senso di «dare» è naturale verso animali, piante, bambini o persone di status inferiore; con adulti può suonare rude o condiscendente. てやる è più brusco di てあげる.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-290-yaru-give-do-something
 card_type: concept
 front: "やる"
 back: >-
-  Give or do something
+  Fare, dare o mandare; nella forma てやる, fare qualcosa per qualcuno
 example_jp: >-
-  これはやるのかたちだ。
+  {{弟|おとうと}}に{{古|ふる}}いゲームをやった。
 example_it: >-
-  Questa è la forma やる.
+  Ho dato un vecchio videogioco a mio fratello minore.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  弟に è il destinatario e ゲームを l'oggetto. La relazione discendente rende plausibile il colloquiale やる. Nel senso di «dare» è naturale verso animali, piante, bambini o persone di status inferiore; con adulti può suonare rude o condiscendente. てやる è più brusco di てあげる.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

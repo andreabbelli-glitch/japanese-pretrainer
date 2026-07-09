@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 080.
+  Intenzioni affermative e negative espresse con つもりだ.
 ---
-
 # 「つもり」Show intent
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tsumori-show-intent`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+V-dizionario + つもりだ indica l'intenzione di compiere l'azione; V-negativo + つもりだ indica l'intenzione di non compierla. Parla dell'orientamento mentale del soggetto, non garantisce un piano già fissato.
 
-- Tema: Show intent
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [つもり](grammar:grammar-080-tsumori-show-intent)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [つもり](grammar:grammar-080-tsumori-show-intent) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo non passato, affermativo o negativo + つもりだ`. Il punto da riconoscere è [つもり](grammar:grammar-080-tsumori-show-intent).
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  {{来年|らいねん}}、{{日本|にほん}}へ{{留学|りゅうがく}}するつもりだ。
 translation_it: >-
-  Vado anche io.
+  L'anno prossimo ho intenzione di studiare in Giappone.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   つもり -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+留学する è l'azione progettata; つもりだ la presenta come intenzione personale, mentre 来年 ne fissa l'orizzonte temporale.
+
+## Sfumature e limiti
+
+つもり è un nome dipendente. そのつもり sostituisce un'intenzione già menzionata. Con un nome + の o un な-aggettivo + な può assumere il senso di «con l'idea di / credendosi», non semplicemente quello di progetto futuro.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

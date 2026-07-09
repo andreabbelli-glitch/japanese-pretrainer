@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 025.
+  Principi dell'ordine delle parole nella frase giapponese.
 ---
 
 # Sentence structure in Japanese
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/sentence-structure`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Predicato finale
 
-## Punto da riconoscere
-
-- Tema: Sentence structure in Japanese
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [{{文|ぶん}}の{{構造|こうぞう}}](grammar:grammar-025-sentence-structure)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{文|ぶん}}の{{構造|こうぞう}}](grammar:grammar-025-sentence-structure) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Il verbo principale viene alla fine della proposizione. Un ordine neutro frequente è soggetto–oggetto–verbo, ma le particelle permettono di riconoscere i ruoli anche quando i blocchi vengono spostati.
 
 :::example_sentence
 jp: >-
-  ぼくのペンだ。
+  {{私|わたし}}はレストランでご{{飯|はん}}を{{食|た}}べる。
 translation_it: >-
-  È la mia penna.
+  Mangio al ristorante.
 :::
 
-#### Anatomia rapida
+私は è il tema, ご飯を l'oggetto, レストランで il luogo dell'azione e 食べる il predicato. Anche 私はご飯をレストランで食べる conserva gli stessi ruoli, ma cambia leggermente il rilievo informativo.
 
-*   {{文|ぶん}}の{{構造|こうぞう}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Flessibilità e omissione
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Sono possibili ordini SOV, OSV, SV, OV e perfino il solo verbo, se gli elementi mancanti sono chiari. Le particelle seguono sempre il blocco a cui si applicano. Articoli e molte informazioni di numero non sono espressi e vanno ricostruiti dal contesto.

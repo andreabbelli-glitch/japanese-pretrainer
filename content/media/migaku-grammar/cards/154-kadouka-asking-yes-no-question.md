@@ -12,9 +12,10 @@ id: grammar-154-kadouka-asking-yes-no-question
 pattern: "かどうか"
 title: "「かどうか」”Whether or not\""
 reading: "かどうか"
-meaning_it: "Whether or not"
+meaning_it: >-
+  Se… oppure no; se sia o non sia
 notes_it: >-
-  かどうか va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Si unisce a forme piane: V／Aい + かどうか; Nome／Aな senza だ al presente (学生かどうか, 静かかどうか), con だった al passato. È spesso seguito da 分かる, 知る, 覚える, 決める, 確認する. Non richiede una domanda diretta né intonazione interrogativa.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-154-kadouka-asking-yes-no-question
 card_type: concept
 front: "かどうか"
 back: >-
-  Whether or not
+  Proposizione piana + かどうか trasforma una domanda sì/no in una clausola incorporata.
 example_jp: >-
-  これはかどうかのかたちだ。
+  {{明日|あした}}{{雨|あめ}}が{{降|ふ}}るかどうか、まだ{{分|わ}}からない。
 example_it: >-
-  Questa è la forma かどうか.
+  Non so ancora se domani pioverà oppure no.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Si unisce a forme piane: V／Aい + かどうか; Nome／Aな senza だ al presente (学生かどうか, 静かかどうか), con だった al passato. È spesso seguito da 分かる, 知る, 覚える, 決める, 確認する. Non richiede una domanda diretta né intonazione interrogativa.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

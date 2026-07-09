@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 204.
+  Distanza espressa come tempo necessario con no tokoro da.
 ---
 
 # 「ところだ」(3) Express that it takes a certain time from A to B
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tokoroda-express-that-it-takes-certain-time-from-a-b`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Localizzare tramite il viaggio
 
-## Punto da riconoscere
-
-- Tema: (3) Express that it takes a certain time from A to B
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [ところだ](grammar:grammar-204-tokoroda-express-that-it-takes-certain-time-from-a-b)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ところだ](grammar:grammar-204-tokoroda-express-that-it-takes-certain-time-from-a-b) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura origine から + mezzo o modo + durata + のところだ descrive dove si trova una meta in base al tempo necessario per raggiungerla.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{駅|えき}}はここから{{歩|ある}}いて{{十分|じゅっぷん}}のところだ。
 translation_it: >-
-  Questa è una penna.
+  La stazione è a dieci minuti a piedi da qui.
 :::
 
-#### Anatomia rapida
+ところだ abbrevia ところにある, «si trova in un luogo». È possibile anche la forma più breve ここから歩いて十分だ.
 
-*   ところだ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Da distinguere
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Qui ところ indica una posizione, non il momento imminente di una azione come in 食べるところだ.

@@ -12,9 +12,9 @@ id: grammar-017-ru-verbs
 pattern: "る動詞"
 title: "Introduction to る verbs"
 reading: "るどうし"
-meaning_it: "Introduction to る verbs"
+meaning_it: "Verbi in る: classe 一段 e forma dizionario non-passata"
 notes_it: >-
-  る{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  I verbi in る, detti anche 一段, finiscono sempre in る, spesso preceduto da una vocale i o e. La regola è utile ma non assoluta: 帰る, 切る, 知る, 入る e altri sono invece verbi in う.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-017-ru-verbs
 card_type: concept
 front: "る{{動詞|どうし}}"
 back: >-
-  Introduction to る verbs
+  La forma dizionario di un verbo in る può esprimere azione abituale o futura.
 example_jp: >-
-  パンをたべる。
+  {{猫|ねこ}}も{{魚|さかな}}を{{食|た}}べる。
 example_it: >-
-  Mangio il pane.
+  Anche i gatti mangiano il pesce.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  食べる e 起きる sono in る; non classificare automaticamente ogni finale -iru/-eru, perché esistono comuni eccezioni in う.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 :::

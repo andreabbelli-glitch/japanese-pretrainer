@@ -12,9 +12,10 @@ id: grammar-161-no-4-ask-questions-explain
 pattern: "の"
 title: "「の」(4) Ask or assert more emphatically"
 reading: "の"
-meaning_it: "(4) Ask or assert more emphatically"
+meaning_it: >-
+  Chiedere o spiegare con coinvolgimento contestuale
 notes_it: >-
-  の va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: V／Aい + の; Nome／Aな + なの. Con intonazione ascendente forma una domanda contestuale; con intonazione discendente può dare una spiegazione dal tono morbido. È colloquiale: nella dichiarativa finale può suonare particolarmente dolce; in registro neutro/cortese si preferiscono のだ／んです.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-161-no-4-ask-questions-explain
 card_type: concept
 front: "の"
 back: >-
-  (4) Ask or assert more emphatically
+  La forma piana + の a fine frase può chiedere una spiegazione o presentarla in tono colloquiale.
 example_jp: >-
-  ぼくのペンだ。
+  どうして{{泣|な}}いているの？
 example_it: >-
-  È la mia penna.
+  Perché stai piangendo?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: V／Aい + の; Nome／Aな + なの. Con intonazione ascendente forma una domanda contestuale; con intonazione discendente può dare una spiegazione dal tono morbido. È colloquiale: nella dichiarativa finale può suonare particolarmente dolce; in registro neutro/cortese si preferiscono のだ／んです.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

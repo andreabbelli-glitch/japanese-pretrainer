@@ -12,9 +12,10 @@ id: grammar-146-monoda-express-strong-emotions
 pattern: "ものだ"
 title: "「ものだ」Express strong emotions"
 reading: "ものだ"
-meaning_it: "Express strong emotions"
+meaning_it: >-
+  Davvero…; si deve…; una volta si era soliti…
 notes_it: >-
-  ものだ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Si aggiunge a una forma piana; con Nome／Aな al presente compare だ prima di もの: 静かなものだ è attributivo, 静かだものだ appartiene ad altri usi e va valutato nel contesto. V passato + ものだ richiama spesso abitudini nostalgiche; V non-passato + ものだ può enunciare una norma. Nel parlato emotivo もの si contrae in もん.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-146-monoda-express-strong-emotions
 card_type: concept
 front: "ものだ"
 back: >-
-  Express strong emotions
+  ものだ può esprimere meraviglia, una norma generale o nostalgia per un'abitudine passata; il valore dipende dal tempo e dal contesto.
 example_jp: >-
-  これはペンだ。
+  {{子供|こども}}の{{成長|せいちょう}}は{{早|はや}}いものだ。
 example_it: >-
-  Questa è una penna.
+  Quanto crescono in fretta i bambini!
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Si aggiunge a una forma piana; con Nome／Aな al presente compare だ prima di もの: 静かなものだ è attributivo, 静かだものだ appartiene ad altri usi e va valutato nel contesto. V passato + ものだ richiama spesso abitudini nostalgiche; V non-passato + ものだ può enunciare una norma. Nel parlato emotivo もの si contrae in もん.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 :::

@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 282.
+  Passivo ichidan, ambiguità con il potenziale e lettura avversativa.
 ---
-
 # The receptive form of る verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-receptive-ru`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Per i verbi ichidan si elimina る e si aggiunge られる: 食べる→食べられる, 見る→見られる.
 
-- Tema: The receptive form of る verbs
-- Sezione: verbs
-- Livello: JLPT-N4
-- Pattern allenabile: [る{{動詞|どうし}}](grammar:grammar-282-verb-receptive-ru)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [る{{動詞|どうし}}](grammar:grammar-282-verb-receptive-ru) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `radice del verbo ichidan + られる`. Il punto da riconoscere è [る動詞](grammar:grammar-282-verb-receptive-ru).
 
 :::example_sentence
 jp: >-
-  パンをたべる。
+  ケーキを{{妹|いもうと}}に{{食|た}}べられた。
 translation_it: >-
-  Mangio il pane.
+  Mia sorella minore mi ha mangiato la torta.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   る{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Il parlante sottinteso subisce l'evento; 妹に è l'agente e ケーキを resta l'oggetto di 食べる, segnalando il passivo avversativo.
+
+## Sfumature e limiti
+
+La forma coincide con il potenziale ichidan; l'agente in に e la struttura della frase aiutano a riconoscere il passivo. Con il passivo avversativo, il soggetto può essere colpito indirettamente dall'azione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, numbers-and-counters]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 176.
+  Nomi e letture dei dodici mesi, incluse le tre eccezioni principali.
 ---
 
 # The months of the year
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/the-months-year`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Per nominare un mese del calendario si combina il numero con 月, letto がつ. Tre mesi conservano letture che non coincidono con le varianti numeriche più produttive.
 
-- Tema: The months of the year
-- Sezione: numbers and counters
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- 1月〜3月: いちがつ, にがつ, さんがつ; 4月 しがつ; 5月 ごがつ; 6月 ろくがつ.
+- 7月 しちがつ; 8月 はちがつ; 9月 くがつ; 10月 じゅうがつ; 11月 じゅういちがつ; 12月 じゅうにがつ.
+- Termini utili: 先月（せんげつ）, 今月（こんげつ）, 来月（らいげつ）: qui 月 si legge げつ.
 
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{九月|くがつ}}に{{京都|きょうと}}へ{{旅行|りょこう}}する。
 translation_it: >-
-  Questa è una penna.
+  A settembre farò un viaggio a Kyoto.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+九月 si legge くがつ; に colloca il viaggio nel mese indicato.
+
+## Sfumature d'uso
+
+- Numero + 月（がつ） nomina il mese; la durata in mesi usa 〜か月（かげつ） e letture diverse.
+- La grafia araba (9月) e quella in kanji (九月) hanno la stessa lettura.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

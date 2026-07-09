@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, humble-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 357.
+  Ricevere in modo umile, beneficiare di un'azione e chiedere permesso con deferenza.
 ---
 
-# 「いただく」The humble word for “to receive"
+# 「いただく」When you receive something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/itadaku-when-you-receive-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+いただく abbassa il ricevente e, per relazione, mostra rispetto verso chi concede il bene, il favore o il permesso.
 
-- Tema: The humble word for to receive
-- Sezione: humble language
-- Livello: JLPT-N3
-- Pattern allenabile: [いただく](grammar:grammar-357-itadaku-when-you-receive-something)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Personaに／から + Nをいただく.
+- Vて + いただく: 教えていただく; richiesta: 教えていただけますか.
+- Causativo-て + いただく: 説明させていただきます.
 
-Il centro del ripasso è riconoscere [いただく](grammar:grammar-357-itadaku-when-you-receive-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはいただくのかたちだ。
+  {{先生|せんせい}}に{{本|ほん}}をいただきました。
 translation_it: >-
-  Questa è la forma いただく.
+  Ho ricevuto un libro dal professore.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   いただく -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+先生に identifica la fonte rispettata e いただきました presenta umilmente il ricevere il libro.
+
+## Sfumature d'uso
+
+- させていただく è appropriato quando esistono beneficio o autorizzazione; l'uso automatico può risultare ridondante.
+- Prima dei pasti いただきます è una formula convenzionale collegata allo stesso verbo.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

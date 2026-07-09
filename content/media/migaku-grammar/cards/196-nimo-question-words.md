@@ -12,9 +12,9 @@ id: grammar-196-nimo-question-words
 pattern: "にも"
 title: "「にも」”Nobody, nowhere, nothing\""
 reading: "にも"
-meaning_it: "Nobody, nowhere, nothing"
+meaning_it: "Parola interrogativa + にも, soprattutto con negazione: «a nessuno / da nessuna parte»"
 notes_it: >-
-  にも va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  誰にも, どこにも e なんにも compaiono quasi sempre con un predicato negativo e includono ogni possibile destinatario, luogo o cosa nella negazione. 何にも si legge normalmente なんにも in questo uso.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-196-nimo-question-words
 card_type: concept
 front: "にも"
 back: >-
-  Nobody, nowhere, nothing
+  QW + にも + negazione significa «a nessuno, da nessuna parte, niente affatto».
 example_jp: >-
-  ぼくもいく。
+  {{誰|だれ}}にも{{言|い}}わない。
 example_it: >-
-  Vado anche io.
+  Non lo dirò a nessuno.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Esistono locuzioni affermative fisse come 何にも勝る «superare ogni cosa»; いつにも è quasi limitato a いつにも増して.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

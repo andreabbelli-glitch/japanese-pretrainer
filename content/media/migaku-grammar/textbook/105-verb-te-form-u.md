@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 105.
+  Cambi fonetici della て-forma dei verbi godan e uso sequenziale.
 ---
-
 # The て-form う-verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-te-form-u`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+La て-forma dei verbi godan segue gli stessi cambi fonetici del passato, sostituendo た／だ con て／で: う・つ・る→って, む・ぶ・ぬ→んで, く→いて, ぐ→いで, す→して.
 
-- Tema: The て-form う-verbs
-- Sezione: form series
-- Livello: JLPT-N5
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `radice godan con cambio fonetico + て／で`. Il punto da riconoscere è `て-forma dei verbi godan`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{駅|えき}}まで{{歩|ある}}いて、{{電車|でんしゃ}}に{{乗|の}}った。
 translation_it: >-
-  Questa è una penna.
+  Ho camminato fino alla stazione e poi sono salito sul treno.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+歩く termina in く e diventa 歩いて; la forma collega la prima azione a 乗った, che pone l'intera sequenza al passato.
+
+## Sfumature e limiti
+
+Collegando AてB, il tempo complessivo è espresso dal predicato finale B. 行く è l'eccezione: 行って, non *行いて. La て-forma ha molti altri usi, ma qui serve da connettore sequenziale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

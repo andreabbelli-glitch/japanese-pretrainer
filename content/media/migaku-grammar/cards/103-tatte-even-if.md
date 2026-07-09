@@ -12,9 +12,10 @@ id: grammar-103-tatte-even-if
 pattern: "たって"
 title: "「たって」”Even if\""
 reading: "たって"
-meaning_it: "Even if"
+meaning_it: >-
+  Concessivo colloquiale: «anche se / perfino se»
 notes_it: >-
-  たって va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  V-passato + って; い-aggettivo + くたって; nome / な-aggettivo + だって. È una forma colloquiale collegata a ても／でも. N + だって può anche significare «perfino N», come in 先生だって人間だ. Il contesto distingue concessione e inclusione enfatica.
 level_hint: jlpt-n2
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-103-tatte-even-if
 card_type: concept
 front: "たって"
 back: >-
-  Even if
+  Concessivo colloquiale: «anche se / perfino se»
 example_jp: >-
-  これはたってのかたちだ。
+  {{雨|あめ}}が{{降|ふ}}ったって、{{試合|しあい}}に{{行|い}}く。
 example_it: >-
-  Questa è la forma たって.
+  Anche se piove, andrò alla partita.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  雨が降ったって presenta la pioggia come condizione che non modifica la decisione espressa da 試合に行く. È una forma colloquiale collegata a ても／でも. N + だって può anche significare «perfino N», come in 先生だって人間だ. Il contesto distingue concessione e inclusione enfatica.
 tags: [migaku, grammar, jlpt-n2, academy-level-1]
 :::

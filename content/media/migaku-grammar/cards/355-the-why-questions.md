@@ -12,9 +12,10 @@ id: grammar-355-the-why-questions
 pattern: "なぜ"
 title: "“Why” in Japanese"
 reading: "なぜ"
-meaning_it: "Why in Japanese"
+meaning_it: >-
+  Perché? con sfumature diverse
 notes_it: >-
-  なぜ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  なぜ è frequente nello scritto, nelle spiegazioni e nelle domande razionali. どうして può esprimere sorpresa, dolore o frustrazione oltre alla richiesta di causa. なんで è molto comune nel parlato casuale e può significare anche «con che cosa?» se è 何 + で; contesto e intonazione distinguono.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-355-the-why-questions
 card_type: concept
 front: "なぜ"
 back: >-
-  Why in Japanese
+  なぜ è neutro-scritto, どうして più emotivo e なんで colloquiale; tutti chiedono una ragione.
 example_jp: >-
-  これはなぜのかたちだ。
+  なぜこの{{方法|ほうほう}}を{{選|えら}}んだのですか。
 example_it: >-
-  Questa è la forma なぜ.
+  Perché ha scelto questo metodo?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  なぜ è frequente nello scritto, nelle spiegazioni e nelle domande razionali. どうして può esprimere sorpresa, dolore o frustrazione oltre alla richiesta di causa. なんで è molto comune nel parlato casuale e può significare anche «con che cosa?» se è 何 + で; contesto e intonazione distinguono.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

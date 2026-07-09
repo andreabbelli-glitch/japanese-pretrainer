@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 162.
+  Azioni compiute durante una condizione temporanea o prima che essa cambi.
 ---
 
-# 「うちに」Do something while (a certain condition remains true)
+# 「うちに」Strike the iron while it's hot
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/uchini-strike-iron-while-its-hot`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+うち significa «interno, periodo». La costruzione sfrutta una condizione temporanea: B avviene mentre quella condizione dura o prima che smetta di valere.
 
-- Tema: Do something while (a certain condition remains true)
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [うちに](grammar:grammar-162-uchini-strike-iron-while-its-hot)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Vている + うちに: 日本に住んでいるうちに.
+- Vない + うちに: 忘れないうちに («prima di dimenticare»).
+- Aい + うちに: 若いうちに; Aな + なうちに: 元気なうちに; Nome + のうちに: 休みのうちに.
 
-Il centro del ripasso è riconoscere [うちに](grammar:grammar-162-uchini-strike-iron-while-its-hot) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{温|あたた}}かいうちに{{食|た}}べてください。
 translation_it: >-
-  Vado al caffè.
+  Mangialo finché è caldo.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   うちに -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+温かい è uno stato destinato a finire; うちに invita a mangiare prima che il cibo si raffreddi.
+
+## Sfumature d'uso
+
+- Con un'azione intenzionale, B sfrutta l'occasione prima che A cambi; con un cambiamento non intenzionale, B può svilupparsi gradualmente durante A.
+- Rispetto ad 間に, うちに mette più facilmente in primo piano il limite o il cambiamento della condizione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

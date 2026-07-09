@@ -12,9 +12,9 @@ id: grammar-214-tsudzukeru-continue-doing-something
 pattern: "つづける"
 title: "「つづける」Continue doing something"
 reading: "つづける"
-meaning_it: "Continue doing something"
+meaning_it: "Continuare un'azione con la base verbale + 続ける"
 notes_it: >-
-  つづける va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  La base in i dei verbi in う e la base senza る dei verbi in る precedono 続ける. L'azione espressa dal primo verbo prosegue nel tempo senza essere considerata conclusa.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-214-tsudzukeru-continue-doing-something
 card_type: concept
 front: "つづける"
 back: >-
-  Continue doing something
+  Base verbale + 続ける significa «continuare a fare / continuare facendo».
 example_jp: >-
-  これはつづけるのかたちだ。
+  {{彼|かれ}}は{{走|はし}}り{{続|つづ}}けた。
 example_it: >-
-  Questa è la forma つづける.
+  Ha continuato a correre.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  続ける porta tempo, negazione e cortesia dell'intero composto. Con する e 来る si usano le basi し e 来（き）.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series]
 :::

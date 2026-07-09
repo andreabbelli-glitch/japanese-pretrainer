@@ -12,9 +12,9 @@ id: grammar-220-konna-sonna-anna-this-that-kind-thing
 pattern: "こんな・そんな・あんな"
 title: "「こんな・そんな・あんな」This and that kind of thing"
 reading: "こんな・そんな・あんな"
-meaning_it: "This and that kind of thing"
+meaning_it: "«Questo/quel tipo di…» con こんな・そんな・あんな"
 notes_it: >-
-  こんな・そんな・あんな va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Le forme seguono la distanza こ・そ・あ e precedono un nome. Possono riferirsi a vicinanza fisica o discorsiva e veicolare sorpresa, ammirazione, disprezzo o umiltà, secondo il contesto.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-220-konna-sonna-anna-this-that-kind-thing
 card_type: concept
 front: "こんな・そんな・あんな"
 back: >-
-  This and that kind of thing
+  こんな・そんな・あんな + nome significa «questo/quel genere di nome».
 example_jp: >-
-  これはこんな・そんな・あんなのかたちだ。
+  こんな{{本|ほん}}を{{読|よ}}むのは{{初|はじ}}めてだ。
 example_it: >-
-  Questa è la forma こんな・そんな・あんな.
+  È la prima volta che leggo un libro del genere.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  こんな riguarda la sfera del parlante; そんな ciò che l'interlocutore ha detto o ha vicino; あんな qualcosa distante o ricordato come tale.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

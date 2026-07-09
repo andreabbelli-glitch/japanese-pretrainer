@@ -12,9 +12,10 @@ id: grammar-289-toieba-make-something-just-mentioned-topic
 pattern: "といえば"
 title: "「といえば」”Speaking of which…\""
 reading: "といえば"
-meaning_it: "Speaking of which…"
+meaning_it: >-
+  Riprende un elemento: «a proposito di / parlando di»
 notes_it: >-
-  といえば va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  tema + といえば. Letteralmente deriva da と言えば «se si dice», ma funziona come marcatore discorsivo. っていえば è la variante colloquiale.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-289-toieba-make-something-just-mentioned-topic
 card_type: concept
 front: "といえば"
 back: >-
-  Speaking of which…
+  Riprende un elemento: «a proposito di / parlando di»
 example_jp: >-
-  ミカといく。
+  {{京都|きょうと}}といえば、{{秋|あき}}の{{紅葉|こうよう}}が{{有名|ゆうめい}}だ。
 example_it: >-
-  Vado con Mika.
+  A proposito di Kyoto, è famoso il foliage autunnale.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  京都 viene ripreso come tema; ciò che segue aggiunge l'associazione rilevante con i colori delle foglie in autunno. Letteralmente deriva da と言えば «se si dice», ma funziona come marcatore discorsivo. っていえば è la variante colloquiale.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

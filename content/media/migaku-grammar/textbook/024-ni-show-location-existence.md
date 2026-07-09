@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 024.
+  Uso di に per il luogo di esistenza.
 ---
 
-# 「に」(2) Indicate where something exists
+# 「に」(2) Show the location of existence
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ni-show-location-existence`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Struttura di esistenza
 
-## Punto da riconoscere
-
-- Tema: (2) Indicate where something exists
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [に](grammar:grammar-024-ni-show-location-existence)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [に](grammar:grammar-024-ni-show-location-existence) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Luogo + に indica dove si trova o vive qualcuno o qualcosa. L'entità esistente è spesso marcata da が; いる si usa per esseri animati, ある per oggetti e realtà inanimate.
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{図書館|としょかん}}に{{本|ほん}}がある。
 translation_it: >-
-  Vado al caffè.
+  In biblioteca c'è un libro.
 :::
 
-#### Anatomia rapida
+La struttura generale è luogo に + entità が + いる/ある. 住む usa ugualmente に per il luogo in cui si abita. Con un pesce, 魚がいる lo presenta vivo, mentre 魚がある può trattarlo come cibo.
 
-*   に -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## に o で
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+に localizza l'esistenza; で localizza un'azione. 図書館に勉強する è quindi scorretto per «studiare in biblioteca»: serve 図書館で勉強する. Con は, に diventa には e può aggiungere contrasto.

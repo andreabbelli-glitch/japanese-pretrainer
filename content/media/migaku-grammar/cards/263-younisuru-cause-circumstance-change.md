@@ -12,9 +12,10 @@ id: grammar-263-younisuru-cause-circumstance-change
 pattern: "ようにする"
 title: "「ようにする」Cause a change in circumstance"
 reading: "ようにする"
-meaning_it: "Cause a change in circumstance"
+meaning_it: >-
+  Fare in modo di; impegnarsi a mantenere un comportamento
 notes_it: >-
-  ようにする va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo non passato, affermativo o negativo + ようにする. ようにしている indica uno sforzo o un'abitudine mantenuti nel tempo. Si distingue da ようになる, che presenta il cambiamento come esito, senza mettere in primo piano la volontà.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-263-younisuru-cause-circumstance-change
 card_type: concept
 front: "ようにする"
 back: >-
-  Cause a change in circumstance
+  Fare in modo di; impegnarsi a mantenere un comportamento
 example_jp: >-
-  カフェにいく。
+  {{毎日|まいにち}}{{野菜|やさい}}を{{食|た}}べるようにしている。
 example_it: >-
-  Vado al caffè.
+  Cerco di mangiare verdure ogni giorno.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  食べるようにしている presenta il consumo quotidiano come regola che il parlante si sforza di mantenere. ようにしている indica uno sforzo o un'abitudine mantenuti nel tempo. Si distingue da ようになる, che presenta il cambiamento come esito, senza mettere in primo piano la volontà.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

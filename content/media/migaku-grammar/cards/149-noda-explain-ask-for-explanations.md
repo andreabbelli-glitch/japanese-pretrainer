@@ -12,9 +12,10 @@ id: grammar-149-noda-explain-ask-for-explanations
 pattern: "のだ"
 title: "「のだ」Explain or ask for explanations"
 reading: "のだ"
-meaning_it: "Explain or ask for explanations"
+meaning_it: >-
+  È che…; il fatto è che… (spiegazione o richiesta di spiegazione)
 notes_it: >-
-  のだ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: V／Aい + のだ; Nome／Aな + なのだ. Nel parlato の si contrae spesso in ん: んだ, んです, んですか. La forma aggiunge valore esplicativo o contestuale; non va inserita in ogni frase dichiarativa. んです è cortese, んだ casuale.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-149-noda-explain-ask-for-explanations
 card_type: concept
 front: "のだ"
 back: >-
-  Explain or ask for explanations
+  La forma piana + のだ／んだ collega il fatto al contesto, dandone una spiegazione o chiedendola.
 example_jp: >-
-  これはペンだ。
+  {{今日|きょう}}は{{行|い}}けないんだ。{{仕事|しごと}}がある。
 example_it: >-
-  Questa è una penna.
+  Oggi non posso venire: è che devo lavorare.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: V／Aい + のだ; Nome／Aな + なのだ. Nel parlato の si contrae spesso in ん: んだ, んです, んですか. La forma aggiunge valore esplicativo o contestuale; non va inserita in ogni frase dichiarativa. んです è cortese, んだ casuale.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, particles]
 :::

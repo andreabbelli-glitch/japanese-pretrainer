@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 132.
+  Uso temporale e spaziale di «prima» e «davanti», con scelta della particella.
 ---
 
-# 「前に」”Before…"
+# 「前に・で」Express 'before'
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/maeni-before-that`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+前（まえ） è il contrario temporale e spaziale di 後. Con un verbo indica che l'azione principale avviene prima dell'evento espresso davanti a 前; con un nome può significare anche «davanti a».
 
-- Tema: Before…
-- Sezione: jlpt n5
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo in forma piana non-passata + 前に: 寝る前に.
+- Nome + の前に: テストの前に («prima del test») o 駅の前に («davanti alla stazione», con esistenza).
+- Nome + の前で: 玄関の前で話す («parlare davanti all'ingresso», luogo di un'azione).
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{寝|ね}}る{{前|まえ}}に、{{歯|は}}を{{磨|みが}}く。
 translation_it: >-
-  Questa è una penna.
+  Mi lavo i denti prima di dormire.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+寝る è non-passato perché il sonno è ancora successivo rispetto all'azione di lavarsi i denti.
+
+## Sfumature d'uso
+
+- Il tempo dell'intera frase non cambia la forma davanti a 前: 寝る前に歯を磨いた è al passato, ma 寝る resta non-passato.
+- Nel valore spaziale, に marca esistenza/destinazione; で marca il luogo in cui avviene un'azione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

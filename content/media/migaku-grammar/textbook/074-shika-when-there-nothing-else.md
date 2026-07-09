@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 074.
+  Esclusività e assenza di alternative con しか…ない.
 ---
-
 # 「しか」Indicate “only” or “and nothing else”
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/shika-when-there-nothing-else`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Aしか…ない presenta A come l'unica possibilità o l'unico elemento disponibile. Anche se la resa italiana è affermativa («solo A»), in giapponese il predicato deve essere negativo.
 
-- Tema: Indicate only or and nothing else
-- Sezione: particles
-- Livello: JLPT-N4
-- Pattern allenabile: [しか](grammar:grammar-074-shika-when-there-nothing-else)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [しか](grammar:grammar-074-shika-when-there-nothing-else) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `nome (+ eventuale particella) + しか + predicato negativo`. Il punto da riconoscere è [しか](grammar:grammar-074-shika-when-there-nothing-else).
 
 :::example_sentence
 jp: >-
-  これしかない。
+  {{冷蔵庫|れいぞうこ}}には{{卵|たまご}}しかない。
 translation_it: >-
-  Non c'è altro che questo.
+  Nel frigorifero ci sono soltanto uova.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   しか -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+卵 è l'unico contenuto ammesso da しか; ない fornisce la negazione richiesta. には tematizza e delimita il frigorifero.
+
+## Sfumature e limiti
+
+Dopo un verbo, V-dizionario + しかない significa «non resta che V / bisogna per forza V». Una particella come に può restare prima di しか: 東京にしかない.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 336.
+  Eccezioni esplicite e giudizi che dichiarano un'azione inadatta alla situazione presente.
 ---
 
-# 「場合」(2) Express exceptions, condemn actions
+# 「場合」(2) In this situation
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/%E5%A0%B4%E5%90%88-%E3%81%B0%E3%81%82%E3%81%84-2`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+場合 può delimitare un'eccezione oppure fungere da «situazione adatta». Negando quest'ultima, il parlante richiama a un'azione più urgente.
 
-- Tema: (2) Express exceptions, condemn actions
-- Sezione: jlpt n4
-- Livello: JLPT-N4
+## Formazione e restrizioni
 
-## Lettura operativa
+- A場合を除いてB: «eccetto nel caso A, vale B».
+- Vている場合ではない／じゃない: «non è il momento di stare facendo V».
+- La forma con じゃない è colloquiale; ではありません è più formale.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{今|いま}}は{{遊|あそ}}んでいる{{場合|ばあい}}じゃない。
 translation_it: >-
-  Questa è una penna.
+  Adesso non è il momento di giocare.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+遊んでいる場合じゃない giudica il gioco incompatibile con l'urgenza attuale.
+
+## Sfumature d'uso
+
+- 場合じゃない è spesso un rimprovero e presuppone una priorità più importante.
+- L'eccezione con 除いて è descrittiva e non porta necessariamente lo stesso tono emotivo.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

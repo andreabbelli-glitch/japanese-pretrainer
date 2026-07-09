@@ -12,9 +12,10 @@ id: grammar-129-ato-after
 pattern: "あと"
 title: "「あと」 (1) “After” or “behind\""
 reading: "あと"
-meaning_it: "(1) After or behind"
+meaning_it: >-
+  Dopo; dietro (in senso temporale o spaziale)
 notes_it: >-
-  あと va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: Nome + のあと; Verbo in forma piana passata + あと. Con un nome può indicare ordine temporale o posizione fisica; dopo un verbo la lettura è temporale. È neutro e comune sia nel parlato sia nello scritto.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-129-ato-after
 card_type: concept
 front: "あと"
 back: >-
-  (1) After or behind
+  あと è un nome: Nome + のあと indica ciò che viene dopo o dietro; Verbo al passato piano + あと significa «dopo aver fatto…».
 example_jp: >-
-  ミカといく。
+  {{仕事|しごと}}のあと、{{図書館|としょかん}}で{{勉強|べんきょう}}した。
 example_it: >-
-  Vado con Mika.
+  Dopo il lavoro ho studiato in biblioteca.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: Nome + のあと; Verbo in forma piana passata + あと. Con un nome può indicare ordine temporale o posizione fisica; dopo un verbo la lettura è temporale. È neutro e comune sia nel parlato sia nello scritto.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

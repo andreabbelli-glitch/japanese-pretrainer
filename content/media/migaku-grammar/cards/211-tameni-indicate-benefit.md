@@ -12,9 +12,9 @@ id: grammar-211-tameni-indicate-benefit
 pattern: "ために"
 title: "「ために」Indicate a benefit"
 reading: "ために"
-meaning_it: "Indicate a benefit"
+meaning_it: "ため(に): causa, scopo oppure beneficio"
 notes_it: >-
-  ために va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A ため(に) B può presentare A come causa di B, come obiettivo per cui si compie B o come beneficiario di B. Nomi richiedono のために; aggettivi in な richiedono なために.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-211-tameni-indicate-benefit
 card_type: concept
 front: "ために"
 back: >-
-  Indicate a benefit
+  ため(に) collega una causa o uno scopo all'esito o all'azione principale.
 example_jp: >-
-  カフェにいく。
+  {{日本語|にほんご}}を{{勉強|べんきょう}}するために{{日本|にほん}}へ{{来|き}}た。
 example_it: >-
-  Vado al caffè.
+  Sono venuto in Giappone per studiare giapponese.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con uno scopo intenzionale si usa spesso verbo non-passato + ために. Con cause non controllabili e forme passate, il valore tende a essere «a causa di».
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

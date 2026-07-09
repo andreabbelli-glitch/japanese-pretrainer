@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 020.
+  Omissione del soggetto quando è recuperabile dal contesto.
 ---
 
-# Omitting the subject of sentences
+# Omitting the Subject
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/subject-omission`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Principio
 
-## Punto da riconoscere
-
-- Tema: Omitting the subject of sentences
-- Sezione: grammar general
-- Livello: CUSTOM
-- Pattern allenabile: [{{主語|しゅご}}{{省略|しょうりゃく}}](grammar:grammar-020-subject-omission)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{主語|しゅご}}{{省略|しょうりゃく}}](grammar:grammar-020-subject-omission) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Il giapponese omette facilmente soggetto, oggetto e altre informazioni già chiare. Una forma verbale da sola può essere una frase completa; non contiene però dentro di sé la persona grammaticale.
 
 :::example_sentence
 jp: >-
-  これは{{主語|しゅご}}{{省略|しょうりゃく}}のかたちだ。
+  {{明日|あした}}{{買|か}}う。
 translation_it: >-
-  Questa è la forma 主語省略.
+  Lo comprerò domani.
 :::
 
-#### Anatomia rapida
+Secondo il contesto, 買う potrebbe invece voler dire «lo compra», «li compriamo» e così via. La traduzione italiana deve ricostruire gli elementi indispensabili, senza presumere che siano espliciti in giapponese.
 
-*   {{主語|しゅご}}{{省略|しょうりゃく}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Naturalezza
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+In una presentazione, 私の名前はトムです è grammaticalmente possibile ma spesso ridondante: トムです o トムと申します sono più naturali, perché è ovvio che si sta parlando di sé.

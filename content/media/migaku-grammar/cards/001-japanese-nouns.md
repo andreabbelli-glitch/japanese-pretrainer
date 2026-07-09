@@ -12,9 +12,9 @@ id: grammar-001-japanese-nouns
 pattern: "名詞"
 title: "Japanese Nouns"
 reading: "めいし"
-meaning_it: "Japanese Nouns"
+meaning_it: "Nomi giapponesi: numero e determinazione dipendono dal contesto"
 notes_it: >-
-  {{名詞|めいし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  I nomi giapponesi non cambiano forma tra singolare e plurale e non hanno articoli né genere grammaticale. Quantità e determinatezza si ricavano dal contesto o da parole come numerali e quantificatori.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-001-japanese-nouns
 card_type: concept
 front: "{{名詞|めいし}}"
 back: >-
-  Japanese Nouns
+  Un nome giapponese mantiene la stessa forma al singolare e al plurale; può inoltre corrispondere a «un», «il» o nessun articolo in italiano.
 example_jp: >-
-  これはペンだ。
+  {{学生|がくせい}}がいる。
 example_it: >-
-  Questa è una penna.
+  C'è uno studente / Ci sono studenti.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  学生 non contiene da solo l'informazione di numero: è il contesto a decidere quale resa italiana sia appropriata.
 tags: [migaku, grammar, academy-level-1, jlpt-n5]
 :::

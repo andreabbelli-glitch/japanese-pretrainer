@@ -10,45 +10,26 @@ status: active
 tags: [migaku, grammar, academy-level-1, jlpt-n5, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 036.
+  Uso causale di から con verbi, aggettivi e nomi.
 ---
 
-# 「から」(1) Indicate the reason for something
+# 「から」(1) Show the reason for something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kara-show-reasons`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Ragione から risultato
 
-## Punto da riconoscere
-
-- Tema: (1) Indicate the reason for something
-- Sezione: particles
-- Livello: JLPT-N5
-- Pattern allenabile: [から](grammar:grammar-036-kara-show-reasons)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [から](grammar:grammar-036-kara-show-reasons) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La clausola prima di から fornisce la causa; ciò che segue è la conseguenza. In italiano l'ordine può diventare «B perché A» oppure «dato che A, B».
 
 :::example_sentence
 jp: >-
-  あめだからいかない。
+  {{今日|きょう}}は{{時間|じかん}}がないから{{図書館|としょかん}}に{{行|い}}かない。
 translation_it: >-
-  Non vado perché piove.
+  Oggi non vado in biblioteca perché non ho tempo.
 :::
 
-#### Anatomia rapida
+## Formazione
 
-*   から -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+- verbo + から: 行くから
+- aggettivo in い + から: 安いから
+- nome/aggettivo in な + だから: 学生だから, 静かだから
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Al passato, nomi e aggettivi in な usano だったから. Il risultato può restare implicito: 新しい商品だから, «perché è un prodotto nuovo».

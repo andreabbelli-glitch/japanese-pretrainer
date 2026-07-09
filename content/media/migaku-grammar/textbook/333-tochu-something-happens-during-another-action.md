@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n2, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 333.
+  Eventi che avvengono durante un percorso o prima del completamento di un'attività.
 ---
 
-# 「途中」”To be in the middle of X"
+# 「途中」Something happens during another action
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tochu-something-happens-during-another-action`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+途中 indica una fase intermedia: il tragitto o l'attività A è già iniziato ma non è terminato quando avviene B.
 
-- Tema: To be in the middle of X
-- Sezione: jlpt n2
-- Livello: JLPT-N2
+## Formazione e restrizioni
 
-## Lettura operativa
+- V dizionario + 途中で: 帰る途中で.
+- Nome + の途中で: 会議の途中で.
+- Percorso + 途中に per qualcosa incontrato lungo la strada; particella omessa in stile conciso.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{駅|えき}}へ{{行|い}}く{{途中|とちゅう}}で{{雨|あめ}}が{{降|ふ}}り{{始|はじ}}めた。
 translation_it: >-
-  Questa è una penna.
+  Mentre andavo alla stazione ha cominciato a piovere.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Il tragitto verso la stazione era in corso quando l'inizio della pioggia è intervenuto.
+
+## Sfumature d'uso
+
+- 途中で può implicare interruzione, ma non necessariamente: l'evento intermedio può non fermare A.
+- Per un'attività durativa simultanea senza idea di percorso o incompletezza, 間／間に può essere più adatto.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

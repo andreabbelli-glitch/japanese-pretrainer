@@ -12,9 +12,10 @@ id: grammar-303-ni-express-action-on-surface
 pattern: "に"
 title: "「に」(7) Indicate on what an action occurs"
 reading: "に"
-meaning_it: "(7) Indicate on what an action occurs"
+meaning_it: >-
+  Marca la superficie o il punto su cui termina un'azione
 notes_it: >-
-  に va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  superficie + に + oggetto + verbo. で indica invece il luogo generale in cui si svolge l'azione. 道に絵を描く significa disegnare sulla strada; 道で絵を描く, disegnare trovandosi per strada.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-303-ni-express-action-on-surface
 card_type: concept
 front: "に"
 back: >-
-  (7) Indicate on what an action occurs
+  Marca la superficie o il punto su cui termina un'azione
 example_jp: >-
-  カフェにいく。
+  ノートに{{名前|なまえ}}を{{書|か}}いた。
 example_it: >-
-  Vado al caffè.
+  Ho scritto il nome sul quaderno.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  ノートに è la superficie che riceve la scrittura; 名前を è il contenuto scritto. で indica invece il luogo generale in cui si svolge l'azione. 道に絵を描く significa disegnare sulla strada; 道で絵を描く, disegnare trovandosi per strada.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 :::

@@ -2,7 +2,7 @@
 id: lesson-migaku-grammar-112-janakute-correct-information
 media_id: media-migaku-grammar
 slug: 112-janakute-correct-information
-title: "「なくて」(2) Correct an incorrect statement"
+title: "「じゃなくて」Correct information"
 order: 1120
 segment_ref: adjectives
 difficulty: jlpt-n4
@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, adjectives]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 112.
+  Correzioni e struttura «non solo… ma anche» con じゃなくて.
 ---
+# 「じゃなくて」Correct information
 
-# 「なくて」(2) Correct an incorrect statement
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/janakute-correct-information`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+AじゃなくてB rifiuta A, espresso da un nome o un な-aggettivo, e presenta B come correzione. È la て-forma di じゃない.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: (2) Correct an incorrect statement
-- Sezione: adjectives
-- Livello: JLPT-N4
-- Pattern allenabile: [なくて](grammar:grammar-112-janakute-correct-information)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [なくて](grammar:grammar-112-janakute-correct-information) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `informazione errata + じゃなくて + informazione corretta`. Il punto da riconoscere è [じゃなくて](grammar:grammar-112-janakute-correct-information).
 
 :::example_sentence
 jp: >-
-  パンをたべない。
+  これは{{水|みず}}じゃなくて、お{{茶|ちゃ}}だ。
 translation_it: >-
-  Non mangio il pane.
+  È tè, non acqua.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   なくて -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+水 viene negato da じゃなくて; お茶だ fornisce l'identificazione corretta dell'oggetto.
+
+## Sfumature e limiti
+
+La combinazione AだけじゃなくてB significa «non solo A, ma anche B». In registro più formale si può usare ではなくて o ではなく.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

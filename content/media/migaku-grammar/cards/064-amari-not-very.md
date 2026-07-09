@@ -12,9 +12,9 @@ id: grammar-064-amari-not-very
 pattern: "あまり"
 title: "「あまり」Indicate a low degree of something"
 reading: "あまり"
-meaning_it: "Indicate a low degree of something"
+meaning_it: "あまり + negazione: «non molto», «non particolarmente»"
 notes_it: >-
-  あまり va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Come avverbio di grado, あまり compare soprattutto con un predicato negativo e attenua la quantità o qualità: あまり〜ない. あんまり è una variante fonologica più colloquiale.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-064-amari-not-very
 card_type: concept
 front: "あまり"
 back: >-
-  Indicate a low degree of something
+  あまり + forma negativa significa «non molto / non così…».
 example_jp: >-
-  これはあまりのかたちだ。
+  {{酒|さけ}}はあまり{{飲|の}}まない。
 example_it: >-
-  Questa è la forma あまり.
+  Non bevo molto alcol.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  それはあまりだ è un'espressione distinta: «questo è davvero troppo / è crudele». あまり può anche indicare un avanzo, ma è un uso lessicale limitato.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

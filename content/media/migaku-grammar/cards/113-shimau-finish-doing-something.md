@@ -12,9 +12,10 @@ id: grammar-113-shimau-finish-doing-something
 pattern: "しまう"
 title: "「しまう」Finish doing something"
 reading: "しまう"
-meaning_it: "Finish doing something"
+meaning_it: >-
+  Vてしまう completa l'azione V e può presentarla come involontaria o spiacevole
 notes_it: >-
-  しまう va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in て-forma + しまう. Il valore neutro di completamento e quello emotivo si distinguono dal contesto. しまう è un verbo godan: しまった al passato. Nel parlato てしまう e でしまう si contraggono spesso in ちゃう e じゃう.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-113-shimau-finish-doing-something
 card_type: concept
 front: "しまう"
 back: >-
-  Finish doing something
+  Vてしまう completa l'azione V e può presentarla come involontaria o spiacevole
 example_jp: >-
-  これはしまうのかたちだ。
+  {{大切|たいせつ}}な{{写真|しゃしん}}を{{消|け}}してしまった。
 example_it: >-
-  Questa è la forma しまう.
+  Ho cancellato per sbaglio una foto a cui tenevo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  消して indica l'azione; しまった la presenta come conclusa e, dato 大切な写真, fa emergere il rammarico per l'esito. Il valore neutro di completamento e quello emotivo si distinguono dal contesto. しまう è un verbo godan: しまった al passato. Nel parlato てしまう e でしまう si contraggono spesso in ちゃう e じゃう.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 :::

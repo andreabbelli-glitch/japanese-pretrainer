@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 311.
+  Scopo e requisito espressi dal nominalizzatore の seguito da に.
 ---
+# 「のに」(2) “In order to X\"
 
-# 「のに」(2) “In order to X"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/noni-in-order-do-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+Qui の nominalizza l'azione e に ne marca lo scopo o parametro: Vのに seguito da 必要だ, 使う, 便利だ o かかる significa «per V».
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: (2) In order to X
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [のに](grammar:grammar-311-noni-in-order-do-something)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [のに](grammar:grammar-311-noni-in-order-do-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo in forma piana + のに + requisito/valutazione`. Il punto da riconoscere è [のに](grammar:grammar-311-noni-in-order-do-something).
 
 :::example_sentence
 jp: >-
-  ぼくのペンだ。
+  この{{瓶|びん}}を{{開|あ}}けるのに{{道具|どうぐ}}が{{必要|ひつよう}}だ。
 translation_it: >-
-  È la mia penna.
+  Per aprire questa bottiglia serve un attrezzo.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   のに -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+開けるの nominalizza l'apertura; に la presenta come scopo rispetto al requisito 道具が必要だ.
+
+## Sfumature e limiti
+
+È distinto dal のに concessivo «sebbene»: la frase non oppone aspettative, ma valuta ciò che serve, costa o è utile per l'azione nominalizzata.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

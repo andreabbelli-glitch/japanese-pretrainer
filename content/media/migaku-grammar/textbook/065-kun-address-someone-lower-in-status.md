@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, name-suffixes]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 065.
+  Uso e limiti del suffisso onorifico くん con nomi di persona.
 ---
-
 # 「くん」Refer to people lower in rank than you
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kun-address-someone-lower-in-status`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il suffisso 君（くん）si aggiunge al nome o al cognome della persona chiamata. Segnala familiarità insieme a una relazione non ascendente: è tipico verso ragazzi, coetanei più giovani, compagni o subordinati.
 
-- Tema: Refer to people lower in rank than you
-- Sezione: name suffixes
-- Livello: JLPT-N4
-- Pattern allenabile: [くん](grammar:grammar-065-kun-address-someone-lower-in-status)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [くん](grammar:grammar-065-kun-address-someone-lower-in-status) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `nome proprio + 君（くん）`. Il punto da riconoscere è [くん](grammar:grammar-065-kun-address-someone-lower-in-status).
 
 :::example_sentence
 jp: >-
-  これはくんのかたちだ。
+  {{田中|たなか}}{{君|くん}}は{{学生|がくせい}}だ。
 translation_it: >-
-  Questa è la forma くん.
+  Tanaka-kun è uno studente.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   くん -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+田中 è il cognome; 君 è il suffisso con cui il parlante si rivolge a Tanaka o lo nomina in modo informale, presupponendo un rapporto tra pari o una posizione inferiore di Tanaka.
+
+## Sfumature e limiti
+
+È usato soprattutto per persone di genere maschile, ma può riferirsi anche a donne. Non è appropriato rivolgersi così a un insegnante o a un superiore quando si occupa una posizione più bassa.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

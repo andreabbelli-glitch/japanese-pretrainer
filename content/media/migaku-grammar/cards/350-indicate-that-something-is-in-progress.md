@@ -12,9 +12,10 @@ id: grammar-350-indicate-that-something-is-in-progress
 pattern: "かけ"
 title: "「かけ」Indicate that something is in progress"
 reading: "かけ"
-meaning_it: "Indicate that something is in progress"
+meaning_it: >-
+  Incompiuto; iniziato; sul punto di
 notes_it: >-
-  かけ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  かけ è la radice nominale di かける: V-radice + かけの + N, oppure V-radice + かけだ. Esempi: 読みかけの本, 食べかけのパン, 腐りかけの果物. Il tipo di verbo decide fra «a metà» e «sul punto di».
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-350-indicate-that-something-is-in-progress
 card_type: concept
 front: "かけ"
 back: >-
-  Indicate that something is in progress
+  Radice + かけの + nome descrive qualcosa su cui l'azione è iniziata ma non conclusa.
 example_jp: >-
-  これはかけのかたちだ。
+  {{読|よ}}みかけの{{本|ほん}}が{{机|つくえ}}の{{上|うえ}}にある。
 example_it: >-
-  Questa è la forma かけ.
+  Sul tavolo c'è un libro che ho iniziato ma non finito.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  かけ è la radice nominale di かける: V-radice + かけの + N, oppure V-radice + かけだ. Esempi: 読みかけの本, 食べかけのパン, 腐りかけの果物. Il tipo di verbo decide fra «a metà» e «sul punto di».
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 092.
+  Passato negativo dei な-aggettivi con じゃなかった.
 ---
-
 # な-Adjectives Past-Negative
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/na-adjectives-past-negative`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Per negare nel passato un な-aggettivo si aggiunge じゃなかった: 静か→静かじゃなかった. È la stessa copula negativa passata usata con i nomi.
 
-- Tema: な-Adjectives Past-Negative
-- Sezione: adjectives
-- Livello: JLPT-N5
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `な-aggettivo + じゃなかった`. Il punto da riconoscere è `な-aggettivo + じゃなかった`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  ホテルは{{清潔|せいけつ}}じゃなかった。
 translation_it: >-
-  Questa è una penna.
+  L'hotel non era pulito.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+清潔 è un な-aggettivo; じゃなかった nega nel passato la pulizia attribuita all'hotel.
+
+## Sfumature e limiti
+
+In registro meno colloquiale si usa ではなかった. Davanti a un nome la forma intera costituisce una relativa: 親切じゃなかった店員 «il commesso che non era gentile».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

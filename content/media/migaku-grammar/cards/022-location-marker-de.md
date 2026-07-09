@@ -12,9 +12,9 @@ id: grammar-022-location-marker-de
 pattern: "で"
 title: "「で」(1) Indicate where an action takes place"
 reading: "で"
-meaning_it: "(1) Indicate where an action takes place"
+meaning_it: "Marcare con で il luogo o ambito in cui avviene un'azione"
 notes_it: >-
-  で va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Luogo + で indica la sede di un evento o di un'azione. Il luogo può essere fisico, temporale o concettuale; per il semplice luogo di esistenza con いる/ある si usa invece に.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-022-location-marker-de
 card_type: concept
 front: "で"
 back: >-
-  (1) Indicate where an action takes place
+  で segue il luogo in cui qualcuno compie un'azione: «a, in, su».
 example_jp: >-
-  カフェでたべる。
+  {{家|いえ}}で{{本|ほん}}を{{読|よ}}む。
 example_it: >-
-  Mangio al caffè.
+  Leggo un libro a casa.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Luogo + で localizza un'azione; con いる／ある il luogo di esistenza prende に. Con は, では può tematizzare o contrapporre il luogo.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 :::

@@ -12,9 +12,10 @@ id: grammar-342-mazu-probably
 pattern: "まず"
 title: "「まず」(2) “Probably”"
 reading: "まず"
-meaning_it: "(2) Probably"
+meaning_it: >-
+  Quasi certamente; con ogni probabilità
 notes_it: >-
-  まず va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Ricorre spesso in まず〜ない／まず〜ないだろう («quasi certamente non») e con asserzioni basate su esperienza. Senza だろう può risultare ancora più deciso. Non è il まず sequenziale «prima di tutto»; la posizione e il predicato chiariscono il valore.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-342-mazu-probably
 card_type: concept
 front: "まず"
 back: >-
-  (2) Probably
+  まず con una congettura o una negazione forte indica che il parlante considera l'esito praticamente certo.
 example_jp: >-
-  これはまずのかたちだ。
+  この{{計画|けいかく}}が{{失敗|しっぱい}}することはまずない。
 example_it: >-
-  Questa è la forma まず.
+  È quasi impossibile che questo piano fallisca.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Ricorre spesso in まず〜ない／まず〜ないだろう («quasi certamente non») e con asserzioni basate su esperienza. Senza だろう può risultare ancora più deciso. Non è il まず sequenziale «prima di tutto»; la posizione e il predicato chiariscono il valore.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

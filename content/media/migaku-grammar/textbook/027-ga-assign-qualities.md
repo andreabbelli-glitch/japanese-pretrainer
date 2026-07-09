@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 027.
+  が marca l'elemento che possiede una qualità.
 ---
 
-# 「が」(2) Express the quality something possesses
+# 「が」(2) Something has a quality
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ga-assign-qualities`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Struttura A が qualità
 
-## Punto da riconoscere
-
-- Tema: (2) Express the quality something possesses
-- Sezione: particles
-- Livello: JLPT-N5
-- Pattern allenabile: [が](grammar:grammar-027-ga-assign-qualities)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [が](grammar:grammar-027-ga-assign-qualities) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Quando il predicato è un aggettivo, が marca ciò a cui appartiene la qualità: カバンが高い, «la borsa è costosa»; 弁当がおいしい, «il bentō è buono».
 
 :::example_sentence
 jp: >-
-  ネコがいる。
+  この{{店|みせ}}は{{弁当|べんとう}}がおいしい。
 translation_it: >-
-  C'è un gatto.
+  Questo locale ha dei bentō deliziosi.
 :::
 
-#### Anatomia rapida
+Il tema dell'esempio è 店; dentro la spiegazione, 弁当 è il soggetto di おいしい. L'italiano rende naturalmente la relazione con «avere», ma la struttura letterale è «quanto a questo locale, i bentō sono buoni».
 
-*   が -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Da ricordare
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Non associare una particella a una sola traduzione. が segnala il rapporto grammaticale; la resa finale dipende dall'intera configurazione tema–spiegazione.

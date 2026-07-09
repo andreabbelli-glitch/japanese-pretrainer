@@ -12,9 +12,9 @@ id: grammar-244-kashira-wondering
 pattern: "かしら"
 title: "「かしら」”I wonder...\""
 reading: "かしら"
-meaning_it: "I wonder..."
+meaning_it: "Finale かしら: «mi chiedo / chissà»"
 notes_it: >-
-  かしら va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  かしら chiude una frase interrogativa rivolta soprattutto a sé stessi. È tradizionalmente associato a parlanti donne e può suonare marcato a seconda dell'età e del contesto.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-244-kashira-wondering
 card_type: concept
 front: "かしら"
 back: >-
-  I wonder...
+  Frase + かしら esprime una domanda pensata ad alta voce: «chissà…».
 example_jp: >-
-  これはかしらのかたちだ。
+  {{鍵|かぎ}}はどこかしら。
 example_it: >-
-  Questa è la forma かしら.
+  Chissà dove sono le chiavi.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Non richiede necessariamente una risposta. かな esprime un dubbio simile con distribuzione sociolinguistica diversa.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, sentence-enders]
 :::

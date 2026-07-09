@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 322.
+  Domande sì o no in stile colloquiale marcato, con formazione e limiti di registro.
 ---
 
 # 「かい」Ask a yes-or-no question
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kai-ask-yes-or-no-question`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+かい segnala una domanda polare: l'interlocutore deve confermare o negare. La struttura interrogativa è semplice, mentre la scelta di かい caratterizza fortemente il tono sul piano sociolinguistico.
 
-- Tema: Ask a yes-or-no question
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [かい](grammar:grammar-322-kai-ask-yes-or-no-question)
+## Formazione e restrizioni
 
-## Lettura operativa
+- V／Aい piano + かい: 行くかい, 高かったかい.
+- Nome／Aな + かい al presente: 本当かい, 静かかい; passato: 学生だったかい.
+- Variante esplicativa: V + のかい; Nome／Aな + なのかい.
 
-Il centro del ripasso è riconoscere [かい](grammar:grammar-322-kai-ask-yes-or-no-question) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはかいのかたちだ。
+  もう{{宿題|しゅくだい}}は{{終|お}}わったかい？
 translation_it: >-
-  Questa è la forma かい.
+  Hai già finito i compiti?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   かい -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+終わったかい chiede soltanto se il completamento è avvenuto e mantiene un tono familiare marcato.
+
+## Sfumature d'uso
+
+- Con parole interrogative come 何 o どこ, la forma tradizionale corrispondente è だい.
+- Può suonare affettuoso, antiquato o teatrale; con estranei serve una domanda cortese.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

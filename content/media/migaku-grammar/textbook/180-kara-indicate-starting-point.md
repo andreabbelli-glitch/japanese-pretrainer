@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 180.
+  Punti iniziali fisici, temporali o astratti di un movimento o intervallo.
 ---
 
 # 「から」(2) Indicate a starting point
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kara-indicate-starting-point`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+から stabilisce l'origine dalla quale si misura uno spostamento o un intervallo. Il punto finale può restare implicito se è già noto o irrilevante.
 
-- Tema: (2) Indicate a starting point
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [から](grammar:grammar-180-kara-indicate-starting-point)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Luogo + から: 家から駅まで歩く.
+- Tempo + から: 九時から働く.
+- Intervallo completo: AからBまで («da A a B»).
 
-Il centro del ripasso è riconoscere [から](grammar:grammar-180-kara-indicate-starting-point) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  あめだからいかない。
+  {{店|みせ}}は{{九時|くじ}}から{{開|あ}}く。
 translation_it: >-
-  Non vado perché piove.
+  Il negozio apre alle nove.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   から -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+九時から fissa le nove come inizio dell'orario di apertura del negozio.
+
+## Sfumature d'uso
+
+- Con un verbo come 開く, から presenta esplicitamente l'ora dalla quale vale l'apertura.
+- Dopo una frase piana, から può esprimere causa; qui l'elemento precedente è invece il punto iniziale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

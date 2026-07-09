@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 037.
+  Uso di けど per collegare fatti in contrasto.
 ---
 
 # 「けど」Express contradiction
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kedo-indicate-contrast`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Contrasto tra clausole
 
-## Punto da riconoscere
-
-- Tema: Express contradiction
-- Sezione: particles
-- Livello: JLPT-N5
-- Pattern allenabile: [けど](grammar:grammar-037-kedo-indicate-contrast)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [けど](grammar:grammar-037-kedo-indicate-contrast) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+けど introduce un fatto che non segue l'aspettativa creata dalla prima clausola. Si traduce con «ma», «però», «anche se» o «sebbene», secondo la struttura italiana.
 
 :::example_sentence
 jp: >-
-  いきたいけど、いけない。
+  この{{本|ほん}}は{{安|やす}}いけど、{{面白|おもしろ}}い。
 translation_it: >-
-  Vorrei andare, ma non posso.
+  Questo libro costa poco, ma è interessante.
 :::
 
-#### Anatomia rapida
+La formazione è verbo/aggettivo in い + けど; con nome o aggettivo in な compare la copula: 学生だけど, きれいだけど.
 
-*   けど -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Sfumatura
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Il secondo fatto non deve contraddire logicamente il primo: basta che sorprenda rispetto a un'aspettativa. Nel parlato, chiudere con けど può lasciare una richiesta o un'obiezione intenzionalmente sospesa.

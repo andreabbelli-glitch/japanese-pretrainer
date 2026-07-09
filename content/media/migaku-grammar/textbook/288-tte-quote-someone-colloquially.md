@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 288.
+  Citazioni colloquiali e omissione del verbo いう con って.
 ---
-
 # 「って」(2) Informally make direct quotations
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tte-quote-someone-colloquially`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+って sostituisce il と citativo nel parlato e introduce parole, pensieri o informazioni riportate. Può comparire prima di 言う／思う oppure chiudere da solo la frase con 言う sottinteso.
 
-- Tema: (2) Informally make direct quotations
-- Sezione: particles
-- Livello: JLPT-N5
-- Pattern allenabile: [って](grammar:grammar-288-tte-quote-someone-colloquially)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [って](grammar:grammar-288-tte-quote-someone-colloquially) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `contenuto citato + って（言う）`. Il punto da riconoscere è [って](grammar:grammar-288-tte-quote-someone-colloquially).
 
 :::example_sentence
 jp: >-
-  これはってのかたちだ。
+  {{田中|たなか}}さんは{{明日|あした}}{{来|く}}るって。
 translation_it: >-
-  Questa è la forma って.
+  Dicono che Tanaka verrà domani.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   って -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+って chiude il contenuto 田中さんは明日来る e lascia sottinteso un verbo come 言っていた／言う.
+
+## Sfumature e limiti
+
+È colloquiale ed enfatico. Se il verbo sottinteso non è 言う, va espresso: って思う. Nello scritto formale si preferisce と.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

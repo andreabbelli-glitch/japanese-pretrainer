@@ -12,9 +12,10 @@ id: grammar-316-chimau-jimau-finish-doing-something
 pattern: "ちまう・じまう"
 title: "「ちまう・じまう」Casual abbreviations of てしまう"
 reading: "ちまう・じまう"
-meaning_it: "Casual abbreviations of てしまう"
+meaning_it: >-
+  Contrazione ruvida di てしまう／でしまう: completare o finire per fare
 notes_it: >-
-  ちまう・じまう va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Vてしまう→Vちまう／Vでしまう→Vじまう. È colloquiale, spesso ruvido o maschile, più marcato del comune ちゃう／じゃう. ちまう e じまう coniugano come verbi godan.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-316-chimau-jimau-finish-doing-something
 card_type: concept
 front: "ちまう・じまう"
 back: >-
-  Casual abbreviations of てしまう
+  Contrazione ruvida di てしまう／でしまう: completare o finire per fare
 example_jp: >-
-  これはちまう・じまうのかたちだ。
+  もう{{全部|ぜんぶ}}{{食|た}}べちまった。
 example_it: >-
-  Questa è la forma ちまう・じまう.
+  Ho già mangiato tutto quanto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  食べてしまった si contrae in 食べちまった; もう e 全部 rafforzano il completamento totale. È colloquiale, spesso ruvido o maschile, più marcato del comune ちゃう／じゃう. ちまう e じまう coniugano come verbi godan.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, spoken-language]
 :::

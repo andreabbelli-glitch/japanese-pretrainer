@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 140.
+  Azioni in corso, stati risultanti e abitudini, distinti in base al verbo e al contesto.
 ---
 
-# 「ている」(1) Express a continuous state or action
+# 「ている」(1) Expressing a continuous state or action
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/teiru-1-expressing-continuous-state-action`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ている non corrisponde automaticamente al gerundio italiano. Il suo nucleo è la continuità: può continuare l'azione stessa, il risultato lasciato da un cambiamento oppure una pratica ripetuta.
 
-- Tema: (1) Express a continuous state or action
-- Sezione: form series
-- Livello: JLPT-N5
-- Pattern allenabile: [ている](grammar:grammar-140-teiru-1-expressing-continuous-state-action)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo in forma て + いる: 読んでいる.
+- Con un'azione durativa: 今読んでいる («sta leggendo ora»).
+- Con un cambiamento puntuale: 結婚している («è sposato»), 知っている («sa»), 東京に行っている («è andato a Tokyo e si trova là»).
 
-Il centro del ripasso è riconoscere [ている](grammar:grammar-140-teiru-1-expressing-continuous-state-action) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  いまパンをたべている。
+  {{今|いま}}、{{妹|いもうと}}は{{本|ほん}}を{{読|よ}}んでいる。
 translation_it: >-
-  Sto mangiando il pane adesso.
+  In questo momento mia sorella minore sta leggendo un libro.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ている -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+今 seleziona la lettura progressiva: 読んでいる descrive la lettura mentre è in corso.
+
+## Sfumature d'uso
+
+- Gli indicatori temporali chiariscono la lettura: 今 favorisce l'azione in corso; 毎日 quella abituale.
+- Per rendere una negazione o il passato si coniuga いる: 〜ていない, 〜ていた, 〜ていなかった.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

@@ -12,9 +12,9 @@ id: grammar-042-suru-turn-nouns-into-verbs
 pattern: "する"
 title: "「する」(1) Use nouns as verbs"
 reading: "する"
-meaning_it: "(1) Use nouns as verbs"
+meaning_it: "Trasformare un nome verbale in predicato con する"
 notes_it: >-
-  する va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Molti nomi di attività possono combinarsi con する, «fare», e diventare predicati. Tra il nome e する, を è spesso possibile ma facoltativo: 勉強する e 勉強をする.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-042-suru-turn-nouns-into-verbs
 card_type: concept
 front: "する"
 back: >-
-  (1) Use nouns as verbs
+  Nome verbale + (を)する esprime «fare quell'attività».
 example_jp: >-
-  ゲームをする。
+  {{今|いま}}、{{運動|うんどう}}する。
 example_it: >-
-  Faccio una partita.
+  Adesso faccio attività fisica.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Non ogni nome accetta liberamente する: i dizionari segnalano i nomi verbali. する porta tutte le coniugazioni, per esempio 勉強しない.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs, series]
 :::

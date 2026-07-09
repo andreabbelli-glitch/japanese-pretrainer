@@ -12,9 +12,10 @@ id: grammar-360-deshou-express-amount-certainty
 pattern: "でしょう"
 title: "「でしょう」Express relative certainty"
 reading: "でしょう"
-meaning_it: "Express relative certainty"
+meaning_it: >-
+  Probabilmente; vero?; immagino che
 notes_it: >-
-  でしょう va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Si aggiunge a V/Aい piani e direttamente a Nome/Aな al presente: 来るでしょう, 静かでしょう. È la controparte cortese di だろう. Intonazione discendente: congettura; ascendente o forma でしょ？: conferma. Può mostrare empatia nel dedurre l'esperienza altrui.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-360-deshou-express-amount-certainty
 card_type: concept
 front: "でしょう"
 back: >-
-  Express relative certainty
+  Forma piana + でしょう esprime previsione; con intonazione ascendente cerca accordo o conferma.
 example_jp: >-
-  カフェでたべる。
+  {{明日|あした}}は{{雨|あめ}}が{{降|ふ}}るでしょう。
 example_it: >-
-  Mangio al caffè.
+  Domani probabilmente pioverà.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Si aggiunge a V/Aい piani e direttamente a Nome/Aな al presente: 来るでしょう, 静かでしょう. È la controparte cortese di だろう. Intonazione discendente: congettura; ascendente o forma でしょ？: conferma. Può mostrare empatia nel dedurre l'esperienza altrui.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

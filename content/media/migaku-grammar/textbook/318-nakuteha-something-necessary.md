@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 318.
+  Condizioni necessarie e conseguenze impossibili con なくては.
 ---
+# 「なくては」”Can’t Y Without X\"
 
-# 「なくては」”Can’t Y Without X"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nakuteha-something-necessary`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+AなくてはB indica che, se manca A, si produce B, spesso indesiderabile o impossibile. Nomi e な-aggettivi usano でなくては.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: Can’t Y Without X
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [なくては](grammar:grammar-318-nakuteha-something-necessary)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [なくては](grammar:grammar-318-nakuteha-something-necessary) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo negativo senza い + くては／い-aggettivo + くなくては／nome + でなくては`. Il punto da riconoscere è [なくては](grammar:grammar-318-nakuteha-something-necessary).
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{静|しず}}かでなくては{{集中|しゅうちゅう}}できない。
 translation_it: >-
-  Questa è una penna.
+  Se non c'è silenzio, non riesco a concentrarmi.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   なくては -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+静か è un な-aggettivo e prende でなくては; 集中できない mostra l'esito impossibile senza quella condizione.
+
+## Sfumature e limiti
+
+La conseguenza negativa esplicita o sottintesa rende A una condizione necessaria; l'obbligo emerge quando seguono いけない／ならない／だめ. Nel parlato なくては si contrae spesso in なくちゃ.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

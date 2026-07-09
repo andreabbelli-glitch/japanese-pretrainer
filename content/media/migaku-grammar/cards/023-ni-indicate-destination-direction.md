@@ -12,9 +12,9 @@ id: grammar-023-ni-indicate-destination-direction
 pattern: "に"
 title: "「に」(1) Indicate an action's destination or direction"
 reading: "に"
-meaning_it: "(1) Indicate an action's destination or direction"
+meaning_it: "Marcare con に la destinazione o il punto d'arrivo di un movimento"
 notes_it: >-
-  に va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Con un verbo di movimento, luogo + に presenta quel luogo come meta o punto d'arrivo. La particella focalizza il bersaglio del movimento più che il percorso.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-023-ni-indicate-destination-direction
 card_type: concept
 front: "に"
 back: >-
-  (1) Indicate an action's destination or direction
+  に segue la destinazione verso cui si dirige il movimento.
 example_jp: >-
-  カフェにいく。
+  {{先生|せんせい}}が{{町|まち}}に{{行|い}}く。
 example_it: >-
-  Vado al caffè.
+  L'insegnante va in città.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Per tematizzare o contrapporre la meta, に si combina con は: には. Non confondere questo uso con に di esistenza o di destinatario.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 :::

@@ -12,9 +12,10 @@ id: grammar-331-5-so-well-and-then
 pattern: "で"
 title: "「で」(5) “So?” / “Well?” / “And then?\""
 reading: "で"
-meaning_it: "(5) So? / Well? / And then?"
+meaning_it: >-
+  E quindi?; allora; e poi
 notes_it: >-
-  で va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Schema: で、+ frase. Nel parlato può chiedere il seguito («e quindi?»), introdurre una conseguenza o passare alla richiesta centrale. È colloquiale; それで è più esplicito. Non va confuso con la particella で interna alla frase.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-331-5-so-well-and-then
 card_type: concept
 front: "で"
 back: >-
-  (5) So? / Well? / And then?
+  で a inizio battuta collega il discorso precedente a ciò che segue ed è spesso una contrazione colloquiale di それで.
 example_jp: >-
-  カフェでたべる。
+  で、{{次|つぎ}}はどうする？
 example_it: >-
-  Mangio al caffè.
+  E quindi, che facciamo adesso?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Schema: で、+ frase. Nel parlato può chiedere il seguito («e quindi?»), introdurre una conseguenza o passare alla richiesta centrale. È colloquiale; それで è più esplicito. Non va confuso con la particella で interna alla frase.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series, particles]
 :::

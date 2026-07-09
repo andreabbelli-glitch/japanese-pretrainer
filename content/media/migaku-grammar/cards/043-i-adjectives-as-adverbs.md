@@ -12,9 +12,9 @@ id: grammar-043-i-adjectives-as-adverbs
 pattern: "い形容詞"
 title: "Using い adjectives to describe verbs"
 reading: "いけいようし"
-meaning_it: "Using い adjectives to describe verbs"
+meaning_it: "Trasformare un aggettivo in い in forma avverbiale con く"
 notes_it: >-
-  い{{形容詞|けいようし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Si elimina l'い finale e si aggiunge く. La forma risultante descrive il modo o la circostanza del verbo. いい è irregolare nelle coniugazioni e dà よく.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-043-i-adjectives-as-adverbs
 card_type: concept
 front: "い{{形容詞|けいようし}}"
 back: >-
-  Using い adjectives to describe verbs
+  Radice dell'aggettivo in い + く modifica un verbo: «in modo…».
 example_jp: >-
-  これはたかい。
+  {{朝|あさ}}ご{{飯|はん}}を{{早|はや}}く{{食|た}}べる。
 example_it: >-
-  Questo è costoso.
+  Faccio colazione in fretta.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  早い → 早く; 可愛い → 可愛く; いい → よく. La forma avverbiale non deve necessariamente trovarsi subito accanto al verbo.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 :::

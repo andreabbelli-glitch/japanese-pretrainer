@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 077.
+  Eventi occasionali espressi con la prima costruzione ことがある.
 ---
+# 「ことがある」(1) \"There are times when…\"
 
-# 「ことがある」(1) "There are times when…"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kotogaaru-1-there-are-times-when`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+Una proposizione seguita da ことがある esprime un evento o uno stato occasionale, non abituale. Avverbi come たまに e 時々 precedono la proposizione; よく può comparire in ことがよくある.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: (1) There are times when…
-- Sezione: series
-- Livello: JLPT-N4
-- Pattern allenabile: [ことがある](grammar:grammar-077-kotogaaru-1-there-are-times-when)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ことがある](grammar:grammar-077-kotogaaru-1-there-are-times-when) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `proposizione in forma piana + ことがある`. Il punto da riconoscere è [ことがある](grammar:grammar-077-kotogaaru-1-there-are-times-when).
 
 :::example_sentence
 jp: >-
-  ネコがいる。
+  {{週末|しゅうまつ}}も{{仕事|しごと}}をすることがある。
 translation_it: >-
-  C'è un gatto.
+  A volte mi capita di lavorare anche nel fine settimana.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ことがある -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+仕事をする è l'evento nominalizzato da こと; がある dice che esistono occasioni in cui esso si verifica.
+
+## Sfumature e limiti
+
+Non va confuso con V-past + ことがある, che descrive un'esperienza già avuta. Qui la forma non passata presenta episodi che possono verificarsi di tanto in tanto.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

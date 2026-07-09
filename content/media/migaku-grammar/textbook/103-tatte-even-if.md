@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n2, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 103.
+  Concessione informale con たって, だって e forme correlate.
 ---
+# 「たって」”Even if\"
 
-# 「たって」”Even if"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tatte-even-if`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+AたってB afferma che B vale indipendentemente da A. Con i verbi la forma concreta segue il passato + って (買ったって, 飲んだって); con gli い-aggettivi si usa くたって.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: Even if
-- Sezione: jlpt n2
-- Livello: JLPT-N2
-- Pattern allenabile: [たって](grammar:grammar-103-tatte-even-if)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [たって](grammar:grammar-103-tatte-even-if) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `V-passato + って; い-aggettivo + くたって; nome / な-aggettivo + だって`. Il punto da riconoscere è [たって](grammar:grammar-103-tatte-even-if).
 
 :::example_sentence
 jp: >-
-  これはたってのかたちだ。
+  {{雨|あめ}}が{{降|ふ}}ったって、{{試合|しあい}}に{{行|い}}く。
 translation_it: >-
-  Questa è la forma たって.
+  Anche se piove, andrò alla partita.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   たって -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+雨が降ったって presenta la pioggia come condizione che non modifica la decisione espressa da 試合に行く.
+
+## Sfumature e limiti
+
+È una forma colloquiale collegata a ても／でも. N + だって può anche significare «perfino N», come in 先生だって人間だ. Il contesto distingue concessione e inclusione enfatica.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

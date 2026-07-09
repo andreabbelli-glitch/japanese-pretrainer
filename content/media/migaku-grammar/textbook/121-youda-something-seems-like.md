@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 121.
+  Inferenze da indizi e somiglianze espresse con ようだ.
 ---
+# 「ようだ」\"Something seems like\"
 
-# 「ようだ」"Something seems like"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/youda-something-seems-like`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+ようだ esprime una conclusione prudente basata su indizi osservati o su informazioni disponibili. Con un nome, Nのようだ può anche stabilire una somiglianza.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: Something seems like
-- Sezione: series
-- Livello: JLPT-N4
-- Pattern allenabile: [ようだ](grammar:grammar-121-youda-something-seems-like)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ようだ](grammar:grammar-121-youda-something-seems-like) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo / い-aggettivo + ようだ; な-aggettivo + なようだ; nome + のようだ`. Il punto da riconoscere è [ようだ](grammar:grammar-121-youda-something-seems-like).
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{道|みち}}が{{濡|ぬ}}れている。{{雨|あめ}}が{{降|ふ}}ったようだ。
 translation_it: >-
-  Questa è una penna.
+  La strada è bagnata. Sembra che abbia piovuto.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ようだ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+La strada bagnata è l'indizio visibile; 雨が降ったようだ è l'inferenza formulata dal parlante, non una notizia citata.
+
+## Sfumature e limiti
+
+Il parlante interpreta gli indizi: non riporta semplicemente una notizia. Il tempo prima di ようだ resta quello del contenuto inferito, come 行ったようだ «sembra che sia andato».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

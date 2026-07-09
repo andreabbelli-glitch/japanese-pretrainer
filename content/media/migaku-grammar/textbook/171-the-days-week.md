@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 171.
+  Nomi, letture e abbreviazioni dei sette giorni della settimana.
 ---
 
 # The days of the week
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/the-days-week`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+I nomi dei giorni combinano un kanji tradizionalmente associato a un astro/elemento con 曜日（ようび）. La parte 曜日 resta invariata.
 
-- Tema: The days of the week
-- Sezione: jlpt n5
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- 月曜日（げつようび） lunedì; 火曜日（かようび） martedì; 水曜日（すいようび） mercoledì.
+- 木曜日（もくようび） giovedì; 金曜日（きんようび） venerdì; 土曜日（どようび） sabato; 日曜日（にちようび） domenica.
+- Abbreviazioni comuni: 月曜 e 月; analogamente per gli altri giorni.
 
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{会議|かいぎ}}は{{木曜日|もくようび}}にあります。
 translation_it: >-
-  Questa è una penna.
+  La riunione è giovedì.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+木曜日 identifica giovedì e に lo presenta come punto temporale della riunione.
+
+## Sfumature d'uso
+
+- La particella に è possibile quando si indica il giorno di un evento: 木曜日に会う; nel parlato può essere omessa.
+- Il kanji isolato su calendari e orari va interpretato come abbreviazione, non con la lettura lessicale usuale del singolo carattere.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

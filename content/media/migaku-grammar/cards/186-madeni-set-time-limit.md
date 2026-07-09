@@ -12,9 +12,10 @@ id: grammar-186-madeni-set-time-limit
 pattern: "までに"
 title: "「までに」Set a deadline"
 reading: "までに"
-meaning_it: "Set a deadline"
+meaning_it: >-
+  Entro; non oltre; prima di una scadenza
 notes_it: >-
-  までに va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: tempo/evento + までに + azione puntuale o completabile. L'azione può avvenire in qualsiasi momento precedente al limite. Non si usa normalmente per uno stato che continua senza completarsi: 六時まで待つ, non *六時までに待つ. Registro neutro.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-186-madeni-set-time-limit
 card_type: concept
 front: "までに"
 back: >-
-  Set a deadline
+  Limite + までに indica la scadenza entro la quale un'azione deve essere compiuta.
 example_jp: >-
-  カフェでたべる。
+  {{金曜日|きんようび}}までにレポートを{{出|だ}}してください。
 example_it: >-
-  Mangio al caffè.
+  Consegni la relazione entro venerdì.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: tempo/evento + までに + azione puntuale o completabile. L'azione può avvenire in qualsiasi momento precedente al limite. Non si usa normalmente per uno stato che continua senza completarsi: 六時まで待つ, non *六時までに待つ. Registro neutro.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

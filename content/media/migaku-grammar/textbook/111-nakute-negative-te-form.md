@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, adjectives, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 111.
+  Formazione e valori coordinativo-causali di なくて.
 ---
-
 # 「なくて」(1) Link a negative state to the next clause
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nakute-negative-te-form`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Dalla forma negativa in ない si sostituisce la い finale con くて: 分からない→分からなくて. La forma collega una condizione negativa a ciò che segue.
 
-- Tema: collegare uno stato negativo alla frase successiva
-- Sezione: adjectives
-- Livello: JLPT-N4
-- Pattern allenabile: [なくて](grammar:grammar-111-nakute-negative-te-form)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [なくて](grammar:grammar-111-nakute-negative-te-form) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `forma negativa senza い + くて`. Il punto da riconoscere è [なくて](grammar:grammar-111-nakute-negative-te-form).
 
 :::example_sentence
 jp: >-
-  じかんがなくて、いけない。
+  {{道|みち}}が{{分|わ}}からなくて、{{駅員|えきいん}}に{{聞|き}}いた。
 translation_it: >-
-  Non ho tempo, quindi non posso andare.
+  Non conoscendo la strada, ho chiesto a un addetto della stazione.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   なくて -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+分からなくて presenta il non sapere come causa di 駅員に聞いた. La forma deriva da 分からない.
+
+## Sfumature e limiti
+
+Il rapporto può essere coordinativo («non A, ma B») oppure causale («poiché non A, B»). Per un'azione deliberatamente omessa mentre se ne compie un'altra si preferisce spesso ないで.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

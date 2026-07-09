@@ -12,9 +12,9 @@ id: grammar-002-da-declare-something-is
 pattern: "だ"
 title: "「だ」Declare the state-of-being"
 reading: "だ"
-meaning_it: "Declare the state-of-being"
+meaning_it: "Copula piana: affermare che qualcosa è o si trova in un certo stato"
 notes_it: >-
-  だ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  だ si unisce direttamente a nomi e aggettivi in な. È una copula assertiva di registro piano; in italiano spesso corrisponde a «essere», ma può restare implicita nella traduzione.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-002-da-declare-something-is
 card_type: concept
 front: "だ"
 back: >-
-  Declare the state-of-being
+  だ chiude una predicazione nominale o con aggettivo in な in stile piano: «è / sono».
 example_jp: >-
-  これはペンだ。
+  {{私|わたし}}は{{学生|がくせい}}だ。
 example_it: >-
-  Questa è una penna.
+  Sono uno studente.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: nome + だ oppure aggettivo in な senza な + だ. Non si aggiunge だ dopo un aggettivo in い al presente affermativo.
 tags: [migaku, grammar, academy-level-1, jlpt-n5]
 :::

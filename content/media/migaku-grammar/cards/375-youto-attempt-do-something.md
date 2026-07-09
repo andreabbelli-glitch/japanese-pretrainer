@@ -12,9 +12,10 @@ id: grammar-375-youto-attempt-do-something
 pattern: "ようと"
 title: "「ようと」Attempt to do something"
 reading: "ようと"
-meaning_it: "Attempt to do something"
+meaning_it: >-
+  Tentare di; con l'intenzione di
 notes_it: >-
-  ようと va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: volitivo + と + する／思う／動作, per esempio 開けようとする, 取ろうと手を伸ばす. La struttura indica intenzione o tentativo ma non garantisce il successo; con 〜ようとしたが è spesso fallito. Non va confusa con ように di scopo.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-375-youto-attempt-do-something
 card_type: concept
 front: "ようと"
 back: >-
-  Attempt to do something
+  Forma volitiva + と + verbo d'azione presenta un gesto compiuto nel tentativo di raggiungere l'obiettivo.
 example_jp: >-
-  ミカといく。
+  ドアを{{開|あ}}けようとしたが、{{鍵|かぎ}}がかかっていた。
 example_it: >-
-  Vado con Mika.
+  Ho provato ad aprire la porta, ma era chiusa a chiave.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: volitivo + と + する／思う／動作, per esempio 開けようとする, 取ろうと手を伸ばす. La struttura indica intenzione o tentativo ma non garantisce il successo; con 〜ようとしたが è spesso fallito. Non va confusa con ように di scopo.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

@@ -12,9 +12,10 @@ id: grammar-188-tekuru-2-an-action-state-keeps-changing
 pattern: "てくる"
 title: "「てくる」(2) An action or state keeps changing"
 reading: "てくる"
-meaning_it: "(2) An action or state keeps changing"
+meaning_it: >-
+  Essere venuto a; cambiare fino ad ora; cominciare a manifestarsi
 notes_it: >-
-  てくる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Dal presente si usa spesso 〜てきた per un processo iniziato prima e arrivato fin qui. 〜てくる può descrivere un cambiamento che si manifesterà avvicinandosi al punto futuro; 〜てきていた colloca una progressione conclusa prima di un riferimento passato. Contrasta con 〜ていく, orientato in avanti.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-188-tekuru-2-an-action-state-keeps-changing
 card_type: concept
 front: "てくる"
 back: >-
-  (2) An action or state keeps changing
+  Vて + くる presenta un processo che dal passato arriva al presente o un cambiamento che si avvicina e diventa percepibile.
 example_jp: >-
-  これはてくるのかたちだ。
+  {{最近|さいきん}}、{{日|ひ}}が{{長|なが}}くなってきた。
 example_it: >-
-  Questa è la forma てくる.
+  Ultimamente le giornate si sono allungate.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Dal presente si usa spesso 〜てきた per un processo iniziato prima e arrivato fin qui. 〜てくる può descrivere un cambiamento che si manifesterà avvicinandosi al punto futuro; 〜てきていた colloca una progressione conclusa prima di un riferimento passato. Contrasta con 〜ていく, orientato in avanti.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 :::

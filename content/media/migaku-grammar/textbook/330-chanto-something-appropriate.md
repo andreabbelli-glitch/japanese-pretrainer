@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 330.
+  Azioni svolte correttamente e in modo sufficiente, oltre a persone o cose affidabili.
 ---
 
-# 「ちゃんと」Indicate that something is proper/appropriate
+# 「ちゃんと」Something is appropriate
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/chanto-something-appropriate`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ちゃんと valuta non solo l'esecuzione tecnica ma anche il rispetto di ciò che è dovuto. La traduzione cambia con l'aspettativa rilevante.
 
-- Tema: Indicate that something is proper/appropriate
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [ちゃんと](grammar:grammar-330-chanto-something-appropriate)
+## Formazione e restrizioni
 
-## Lettura operativa
+- ちゃんと + verbo: ちゃんと勉強する, ちゃんと聞く.
+- ちゃんとした + nome: ちゃんとした仕事, ちゃんとした人.
+- Risposta autonoma o richiamo: ちゃんとして！ («comportati come si deve!»).
 
-Il centro del ripasso è riconoscere [ちゃんと](grammar:grammar-330-chanto-something-appropriate) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  {{薬|くすり}}をちゃんと{{飲|の}}んでください。
 translation_it: >-
-  Vado con Mika.
+  Prenda le medicine come prescritto.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ちゃんと -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+ちゃんと飲む implica rispettare dose, orario o istruzioni, non semplicemente ingerire la medicina.
+
+## Sfumature d'uso
+
+- Può suonare rimproverante perché presuppone che l'azione rischi di essere fatta male o trascurata.
+- Non equivale sempre a 上手に: riguarda adeguatezza e completezza, non abilità.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

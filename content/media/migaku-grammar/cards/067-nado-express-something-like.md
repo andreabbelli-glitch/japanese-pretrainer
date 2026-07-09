@@ -12,9 +12,10 @@ id: grammar-067-nado-express-something-like
 pattern: "など"
 title: "「など」\"Something like X\""
 reading: "など"
-meaning_it: "Something like X"
+meaning_it: >-
+  «Eccetera», «tra le altre cose»; anche «uno come…» con distacco o modestia
 notes_it: >-
-  など va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  nome o sintagma + など. In un elenco corrisponde spesso a «eccetera». 私など abbassa il parlante («uno come me»); con predicato negativo può svalutare l'elemento. なんか e なんて sono varianti più colloquiali.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-067-nado-express-something-like
 card_type: concept
 front: "など"
 back: >-
-  Something like X
+  «Eccetera», «tra le altre cose»; anche «uno come…» con distacco o modestia
 example_jp: >-
-  パンなどをかう。
+  {{机|つくえ}}の{{上|うえ}}に{{本|ほん}}、ノートなどがある。
 example_it: >-
-  Compro cose come il pane.
+  Sulla scrivania ci sono libri, quaderni e altro.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  本 e ノート sono esempi della categoria; など comunica che sulla scrivania potrebbero esserci anche altri oggetti non elencati. In un elenco corrisponde spesso a «eccetera». 私など abbassa il parlante («uno come me»); con predicato negativo può svalutare l'elemento. なんか e なんて sono varianti più colloquiali.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

@@ -12,9 +12,10 @@ id: grammar-147-nishiteha-express-deviation-from-standard
 pattern: "にしては"
 title: "「にしては」Express deviation from a standard"
 reading: "にしては"
-meaning_it: "Express deviation from a standard"
+meaning_it: >-
+  Per essere…; considerato che…
 notes_it: >-
-  にしては va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione comune: Nome + にしては; anche una proposizione piana può precederlo. A stabilisce lo standard, B contiene un risultato sorprendente o contrario all'aspettativa. È neutro ma porta con sé una valutazione; rivolto a una persona può sembrare un complimento limitativo.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-147-nishiteha-express-deviation-from-standard
 card_type: concept
 front: "にしては"
 back: >-
-  Express deviation from a standard
+  AにしてはB confronta B con ciò che normalmente ci si aspetterebbe da A e segnala uno scarto.
 example_jp: >-
-  これはペンだ。
+  {{初心者|しょしんしゃ}}にしては、ずいぶん{{上手|じょうず}}に{{弾|ひ}}ける。
 example_it: >-
-  Questa è una penna.
+  Per essere un principiante, sa suonare davvero bene.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione comune: Nome + にしては; anche una proposizione piana può precederlo. A stabilisce lo standard, B contiene un risultato sorprendente o contrario all'aspettativa. È neutro ma porta con sé una valutazione; rivolto a una persona può sembrare un complimento limitativo.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

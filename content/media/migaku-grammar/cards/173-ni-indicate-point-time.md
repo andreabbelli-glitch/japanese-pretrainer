@@ -12,9 +12,10 @@ id: grammar-173-ni-indicate-point-time
 pattern: "に"
 title: "「に」(5) Indicate a point in time"
 reading: "に"
-meaning_it: "(5) Indicate a point in time"
+meaning_it: >-
+  A, in, di (punto temporale di un evento)
 notes_it: >-
-  に va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Schema: tempo definito + に + predicato, per esempio 六時に, 月曜日に, 春に. に è normalmente omesso con avverbi relativi come 今日, 明日, 昨日 e spesso con espressioni ricorrenti come 毎日. Con は diventa には e aggiunge tema o contrasto. Registro neutro.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-173-ni-indicate-point-time
 card_type: concept
 front: "に"
 back: >-
-  (5) Indicate a point in time
+  Un'espressione temporale + に marca il momento preciso in cui avviene un evento.
 example_jp: >-
-  カフェにいく。
+  {{会議|かいぎ}}は{{木曜日|もくようび}}の{{三時|さんじ}}に{{始|はじ}}まる。
 example_it: >-
-  Vado al caffè.
+  La riunione comincia giovedì alle tre.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Schema: tempo definito + に + predicato, per esempio 六時に, 月曜日に, 春に. に è normalmente omesso con avverbi relativi come 今日, 明日, 昨日 e spesso con espressioni ricorrenti come 毎日. Con は diventa には e aggiunge tema o contrasto. Registro neutro.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

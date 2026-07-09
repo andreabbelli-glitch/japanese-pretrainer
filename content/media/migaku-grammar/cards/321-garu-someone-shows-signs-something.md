@@ -12,9 +12,10 @@ id: grammar-321-garu-someone-shows-signs-something
 pattern: "がる"
 title: "「がる」Someone shows signs of something"
 reading: "がる"
-meaning_it: "Someone shows signs of something"
+meaning_it: >-
+  Mostrare segni osservabili di un'emozione, sensazione o desiderio
 notes_it: >-
-  がる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  radice emotiva + がる／verbo in たい senza い + がる. Non afferma accesso diretto allo stato interiore, ma un'inferenza dal comportamento. Con ほしがる l'oggetto prende を, non il が di ほしい. がる coniuga come un godan.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-321-garu-someone-shows-signs-something
 card_type: concept
 front: "がる"
 back: >-
-  Someone shows signs of something
+  Mostrare segni osservabili di un'emozione, sensazione o desiderio
 example_jp: >-
-  ネコがいる。
+  {{妹|いもうと}}は{{新|あたら}}しい{{靴|くつ}}をほしがっている。
 example_it: >-
-  C'è un gatto.
+  Mia sorella minore mostra di volere delle scarpe nuove.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  ほしい perde い e diventa ほしがる; 靴 prende を e がっている descrive segnali osservabili del desiderio. Non afferma accesso diretto allo stato interiore, ma un'inferenza dal comportamento. Con ほしがる l'oggetto prende を, non il が di ほしい. がる coniuga come un godan.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, numbers-and-counters]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 181.
+  Durate in minuti, ore, giorni, settimane, mesi e anni, con letture irregolari.
 ---
 
-# Express a duration of time
+# Express Time Durations
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/express-time-durations`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Una durata risponde a «per quanto tempo?» e si distingue dal punto temporale espresso da «quando?». Le unità temporali diventano contatori e si collocano direttamente vicino al predicato.
 
-- Tema: Express a duration of time
-- Sezione: numbers and counters
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- Ore: 二時間; minuti: 三十分／三十分間; giorni: 三日／三日間; settimane: 二週間; anni: 二年／二年間.
+- Mesi: 一か月（いっかげつ）, 六か月（ろっかげつ）, 十か月（じゅっかげつ）; grafie ヶ月, カ月, か月 sono tutte possibili.
+- 半 dopo l'unità: 二時間半, 一か月半.
 
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{日本語|にほんご}}を{{二年間|にねんかん}}{{勉強|べんきょう}}している。
 translation_it: >-
-  Questa è una penna.
+  Studio giapponese da due anni.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+二年間 quantifica la durata dello studio e si collega direttamente al predicato; に è riservato ai punti del calendario.
+
+## Sfumature d'uso
+
+- 〜間 enfatizza l'intervallo continuativo, ma non è obbligatorio con tutte le unità e in tutti i contesti.
+- Per dire «da due anni fino a oggi» il giapponese può usare 二年間〜ている; la traduzione italiana richiede spesso «da».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

@@ -9,9 +9,11 @@ base_explanation_language: it
 status: active
 tags: [migaku, grammar, textbook, reference]
 description: >-
-  Percorso locale di prestudio per la Japanese Grammar Reference di Migaku, organizzato per sezioni grammaticali.
+  Percorso locale di prestudio basato su Migaku Academy - Level 1, con spiegazioni italiane e una selezione di flashcard grammaticali.
 ---
 
 # Migaku Grammar
 
-Questo media organizza la Japanese Grammar Reference di Migaku come percorso progressivo di forme, esempi e ripasso grammaticale in italiano.
+Questo media organizza in italiano le lezioni di Migaku Academy - Level 1. Le pagine textbook accompagnano l'intero percorso; le flashcard si concentrano sui punti selezionati per il ripasso grammaticale.
+
+Fonte di controllo: Migaku Academy - Level 1. URL: `https://study.migaku.com/collection/course/20463397959936`.

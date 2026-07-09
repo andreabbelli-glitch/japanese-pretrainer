@@ -10,45 +10,26 @@ status: active
 tags: [migaku, grammar, jlpt-n5, particles, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 004.
+  La particella が marca il soggetto e spesso lo presenta come nuovo o focalizzato.
 ---
 
 # 「が」(1) Mark the subject
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ga-subject-marker`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Forma e funzione
 
-## Punto da riconoscere
+Nome + が marca il soggetto: chi compie un'azione o chi possiede lo stato descritto dal predicato. が è particolarmente naturale quando il referente viene introdotto, è ignoto oppure deve essere identificato in contrasto con altre possibilità.
 
-- Tema: (1) Mark the subject
-- Sezione: particles
-- Livello: JLPT-N5
-- Pattern allenabile: [が](grammar:grammar-004-ga-subject-marker)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [が](grammar:grammar-004-ga-subject-marker) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Per questo accompagna normalmente parole interrogative come {{誰|だれ}} e {{何|なに}}; nella risposta, が mette a fuoco proprio l'elemento richiesto.
 
 :::example_sentence
 jp: >-
-  ネコがいる。
+  {{誰|だれ}}が{{先生|せんせい}}だ？
 translation_it: >-
-  C'è un gatto.
+  Chi è l'insegnante?
 :::
 
-#### Anatomia rapida
+Una risposta possibile è 田中さんが先生だ, «È Tanaka l'insegnante». Qui が non vale una parola italiana autonoma: chiarisce il ruolo e il fuoco informativo del nome.
 
-*   が -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Da ricordare
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+は introduce invece un tema già accessibile e può creare contrasto. La distinzione が/は non coincide semplicemente con «soggetto/non soggetto».

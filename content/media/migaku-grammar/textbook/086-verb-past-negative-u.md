@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 086.
+  Formazione del passato negativo per i verbi godan.
 ---
-
 # The negative past tense of う verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-past-negative-u`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Si parte dalla forma negativa in ない e si cambia ない in なかった. Equivalentemente, si porta la sillaba finale alla colonna in a e si aggiunge なかった.
 
-- Tema: The negative past tense of う verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [う{{動詞|どうし}}](grammar:grammar-086-verb-past-negative-u)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [う{{動詞|どうし}}](grammar:grammar-086-verb-past-negative-u) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `radice in a del verbo godan + なかった`. Il punto da riconoscere è [う動詞](grammar:grammar-086-verb-past-negative-u).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{昨日|きのう}}は{{酒|さけ}}を{{飲|の}}まなかった。
 translation_it: >-
-  Vado al caffè.
+  Ieri non ho bevuto alcolici.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   う{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+飲む passa alla base 飲ま- e prende なかった: 飲まなかった. は presenta ieri come cornice contrastiva.
+
+## Sfumature e limiti
+
+Con i verbi in う la base usa わ, non あ: 買う→買わなかった. La coniugazione negativa è uniforme rispetto ai diversi cambi del passato affermativo.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

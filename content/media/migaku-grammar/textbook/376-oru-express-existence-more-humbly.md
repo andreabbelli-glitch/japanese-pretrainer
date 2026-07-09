@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, humble-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 376.
+  Forma umile o cortese dell'esistenza e dell'aspetto continuativo riferita al proprio lato.
 ---
 
-# 「おる」A humble version of いる
+# 「おる」Express existence more humbly
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/oru-express-existence-more-humbly`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+おる abbassa il riferimento al soggetto del proprio lato, contribuendo alla deferenza verso l'interlocutore.
 
-- Tema: A humble version of いる
-- Sezione: humble language
-- Livello: JLPT-N3
-- Pattern allenabile: [おる](grammar:grammar-376-oru-express-existence-more-humbly)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Luogoに + おる／おります: 事務所におります.
+- Vて + おる／おります: お待ちしております.
+- Passato: おりました; negativo: おりません.
 
-Il centro del ripasso è riconoscere [おる](grammar:grammar-376-oru-express-existence-more-humbly) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはおるのかたちだ。
+  {{私|わたし}}は{{受付|うけつけ}}におります。
 translation_it: >-
-  Questa è la forma おる.
+  Mi trovo alla reception.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   おる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Il parlante usa おります per localizzare umilmente sé stesso alla reception.
+
+## Sfumature d'uso
+
+- Non si usa per elevare la presenza dell'interlocutore: lì servono いらっしゃる o おいでになる.
+- L'uso dialettale privo di umiltà non va interpretato automaticamente come keigo.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

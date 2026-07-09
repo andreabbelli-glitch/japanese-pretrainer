@@ -10,45 +10,29 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 045.
+  Uso degli avverbi lessicali non derivati direttamente da aggettivi.
 ---
 
 # Using other adverbs to describe verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/japanese-adverbs`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Parole da apprendere intere
 
-## Punto da riconoscere
+Molti avverbi non derivano dalle trasformazioni in く o に e hanno forme proprie. Descrivono grado, modo, ritmo o successione.
 
-- Tema: Using other adverbs to describe verbs
-- Sezione: adjectives
-- Livello: JLPT-N5
-- Pattern allenabile: [{{副詞|ふくし}}](grammar:grammar-045-japanese-adverbs)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{副詞|ふくし}}](grammar:grammar-045-japanese-adverbs) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- 一生懸命: con grande impegno
+- 結構: piuttosto
+- のんびり: con calma
+- かなり: considerevolmente
+- 徐々に: gradualmente
+- 次々に: uno dopo l'altro
 
 :::example_sentence
 jp: >-
-  ゆっくりたべる。
+  この{{猫|ねこ}}は{{結構|けっこう}}{{可愛|かわい}}い。
 translation_it: >-
-  Mangio lentamente.
+  Questo gatto è piuttosto carino.
 :::
 
-#### Anatomia rapida
+## Da ricordare
 
-*   {{副詞|ふくし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Alcuni avverbi richiedono に e altri no: la forma va imparata insieme alla parola. Possono trovarsi lontano dall'elemento modificato se il legame è comprensibile.

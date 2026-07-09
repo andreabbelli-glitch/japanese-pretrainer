@@ -12,9 +12,9 @@ id: grammar-013-are-that-over-there
 pattern: "あれ"
 title: "「あれ」\"That over there\""
 reading: "あれ"
-meaning_it: "That over there"
+meaning_it: "«Quello laggiù»: pronome dimostrativo lontano da entrambi"
 notes_it: >-
-  あれ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  あれ è un pronome dimostrativo autonomo per una cosa distante sia dal parlante sia dall'ascoltatore. Può riferirsi anche a un referente condiviso ma non presente, se il contesto lo consente.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-013-are-that-over-there
 card_type: concept
 front: "あれ"
 back: >-
-  That over there
+  あれ significa «quello / quella laggiù», lontano da entrambe le persone.
 example_jp: >-
-  これはあれのかたちだ。
+  あれは{{山|やま}}だ。
 example_it: >-
-  Questa è la forma あれ.
+  Quella laggiù è una montagna.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La serie あ- indica distanza dalla sfera di entrambi. Per «quel + nome laggiù» si usa あの.
 tags: [migaku, grammar, academy-level-1, jlpt-n5, series]
 :::

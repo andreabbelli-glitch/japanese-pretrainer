@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 325.
+  Limiti massimi inclusivi applicati a tempo, prezzo, distanza e quantità.
 ---
 
 # 「以内」Inside something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/inai-inside-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+以内 colloca una quantità all'interno di un intervallo che include il punto finale. È quindi preciso e non equivale genericamente a «circa».
 
-- Tema: Inside something
-- Sezione: jlpt n4
-- Livello: JLPT-N4
+## Formazione e restrizioni
 
-## Lettura operativa
+- Numero-contatore + 以内: 五千円以内, 四人以内, 十キロ以内.
+- Durata + 以内に + compimento: 一時間以内に終える.
+- Opposizione: 十人以内 = dieci compresi; 十人未満 = meno di dieci.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  この{{仕事|しごと}}は{{一時間以内|いちじかんいない}}に{{終|お}}わります。
 translation_it: >-
-  Questa è una penna.
+  Questo lavoro finirà entro un'ora.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+一時間以内 include qualunque durata fino a sessanta minuti compresi.
+
+## Sfumature d'uso
+
+- La particella に è richiesta quando l'espressione funge da scadenza di un'azione.
+- 以内 indica un massimo, non un intervallo con minimo e massimo entrambi espliciti.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

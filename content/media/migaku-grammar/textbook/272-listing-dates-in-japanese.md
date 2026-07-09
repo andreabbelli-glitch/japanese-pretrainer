@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, numbers-and-counters]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 272.
+  Ordine e principali irregolarità nella lettura delle date giapponesi.
 ---
-
 # Listing dates in Japanese
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/Dates`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Una data completa segue l'ordine 年→月→日. L'anno prende ねん; il mese usa il numero + がつ; diversi giorni del mese hanno letture lessicali da memorizzare.
 
-- Tema: Listing dates in Japanese
-- Sezione: numbers and counters
-- Livello: JLPT-N5
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `anno + 年 + mese + 月 + giorno + 日`. Il punto da riconoscere è `date giapponesi`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{今日|きょう}}は{{2026年|にせんにじゅうろくねん}}{{7月|しちがつ}}{{9日|ここのか}}だ。
 translation_it: >-
-  Questa è una penna.
+  Oggi è il 9 luglio 2026.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+La data procede dal blocco più grande al più piccolo: anno, mese e giorno; 9日 usa la lettura speciale ここのか.
+
+## Sfumature e limiti
+
+L'ordine è opposto a quello italiano. Giorni come 1日, 2日, 3日 e 9日 si leggono ついたち, ふつか, みっか e ここのか, non con la semplice lettura numerale + にち.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

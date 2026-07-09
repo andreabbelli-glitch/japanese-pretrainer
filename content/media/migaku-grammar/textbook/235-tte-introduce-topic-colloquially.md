@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 235.
+  Tema colloquiale introdotto da tte.
 ---
 
 # 「って」(1) Introduce a topic colloquially
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tte-introduce-topic-colloquially`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## A proposito di A
 
-## Punto da riconoscere
-
-- Tema: (1) Introduce a topic colloquially
-- Sezione: particles
-- Livello: JLPT-N3
-- Pattern allenabile: [って](grammar:grammar-235-tte-introduce-topic-colloquially)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [って](grammar:grammar-235-tte-introduce-topic-colloquially) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+A って presenta colloquialmente il tema su cui segue un commento. Con un nome è vicino a は, ma appartiene nettamente al parlato.
 
 :::example_sentence
 jp: >-
-  これはってのかたちだ。
+  {{田中|たなか}}さんって{{面白|おもしろ}}いね。
 translation_it: >-
-  Questa è la forma って.
+  Tanaka è interessante, vero?
 :::
 
-#### Anatomia rapida
+Può seguire anche una clausola: お金がないって辛い, «non avere soldi è dura». In questa funzione introduce spesso una valutazione o reazione del parlante.
 
-*   って -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Altri usi
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+って può anche marcare una citazione o riportare ciò che si è sentito. Qui va riconosciuto come tema dalla struttura complessiva; non si traduce con una parola fissa.

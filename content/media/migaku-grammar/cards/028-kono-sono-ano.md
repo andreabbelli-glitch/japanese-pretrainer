@@ -12,9 +12,9 @@ id: grammar-028-kono-sono-ano
 pattern: "この・その・あの"
 title: "「この・その・あの」\"This, that and that over there\""
 reading: "この・その・あの"
-meaning_it: "This, that and that over there"
+meaning_it: "Dimostrativi attributivi: «questo + nome», «quel + nome»"
 notes_it: >-
-  この・その・あの va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  この, その e あの devono essere seguiti da un nome. La distanza segue la stessa serie: こ- vicino al parlante, そ- vicino all'ascoltatore, あ- lontano da entrambi.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-028-kono-sono-ano
 card_type: concept
 front: "この・その・あの"
 back: >-
-  This, that and that over there
+  この・その・あの precedono sempre il nome che determinano.
 example_jp: >-
-  ぼくのペンだ。
+  あの{{店|みせ}}で{{本|ほん}}を{{買|か}}う。
 example_it: >-
-  È la mia penna.
+  Comprerò un libro in quel negozio laggiù.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  これ/それ/あれ sono pronomi autonomi; この/その/あの non possono comparire senza il nome successivo.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

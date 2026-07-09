@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 127.
+  Liste cumulative di motivi e proprietà costruite con し.
 ---
+# 「し」Express “and\" more emphatically
 
-# 「し」Express “and" more emphatically
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/shi-express-and-more-emphatically`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+し segue una proposizione in forma piana e permette di accumulare motivi o caratteristiche. Ogni elemento contribuisce alla conclusione o alla descrizione senza essere necessariamente l'unico.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: Express and more emphatically
-- Sezione: particles
-- Livello: JLPT-N4
-- Pattern allenabile: [し](grammar:grammar-127-shi-express-and-more-emphatically)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [し](grammar:grammar-127-shi-express-and-more-emphatically) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo / い-aggettivo + し; nome / な-aggettivo + だし`. Il punto da riconoscere è [し](grammar:grammar-127-shi-express-and-more-emphatically).
 
 :::example_sentence
 jp: >-
-  これはしのかたちだ。
+  この{{店|みせ}}は{{安|やす}}いし、おいしいし、{{店員|てんいん}}も{{親切|しんせつ}}だ。
 translation_it: >-
-  Questa è la forma し.
+  Questo locale è economico, si mangia bene e anche il personale è gentile.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   し -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+安いし e おいしいし accumulano qualità sullo stesso piano; 店員も親切だ completa la descrizione.
+
+## Sfumature e limiti
+
+Le ragioni elencate dovrebbero avere peso comparabile. Una frase che termina in し può attenuare il tono e lasciare intendere «e poi ci sarebbe altro». Il passato resta prima di し.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

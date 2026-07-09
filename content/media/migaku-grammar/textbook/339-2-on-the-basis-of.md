@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 339.
+  Classificazione o trattamento distinto di elementi secondo una categoria.
 ---
 
-# 「別に」(2) “On the basis of…"
+# 「別に」(2) Separate things
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/%E5%88%A5%E3%81%AB-%E3%81%B9%E3%81%A4%E3%81%AB-2`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il suffisso 別 crea categorie separate; 別に indica che il predicato viene applicato secondo quelle categorie.
 
-- Tema: (2) On the basis of…
-- Sezione: jlpt n3
-- Livello: JLPT-N3
+## Formazione e restrizioni
 
-## Lettura operativa
+- Criterio + 別に + azione: 年齢別に分ける.
+- Esempi produttivi: 地域別に, 男女別に, クラス別に.
+- Come attributivo si usa A別のB: 地域別のデータ.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{参加者|さんかしゃ}}を{{年齢別|ねんれいべつ}}に{{分|わ}}けた。
 translation_it: >-
-  Questa è una penna.
+  Abbiamo diviso i partecipanti per fascia d'età.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+年齢 è il criterio; 別に richiede gruppi separati e 分けた esprime la suddivisione.
+
+## Sfumature d'uso
+
+- La lettura è normalmente べつ e il composto si interpreta come «per A / distinto secondo A».
+- Non confonderlo con 別に〜ない, che è un avverbio pragmatico e non una classificazione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

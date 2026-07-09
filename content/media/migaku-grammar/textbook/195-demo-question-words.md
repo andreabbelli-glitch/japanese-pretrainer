@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 195.
+  Qualunque referente con parola interrogativa più demo.
 ---
 
-# 「でも」(2) “Anything, anyone, anywhere, anytime"
+# 「でも」Question words
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/demo-question-words`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Scelta senza restrizioni
 
-## Punto da riconoscere
-
-- Tema: (2) Anything, anyone, anywhere, anytime
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [でも](grammar:grammar-195-demo-question-words)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [でも](grammar:grammar-195-demo-question-words) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+何でも, 誰でも, どこでも e いつでも significano rispettivamente «qualsiasi cosa», «chiunque», «ovunque» e «in qualsiasi momento». Il modello si usa normalmente in frasi affermative.
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  いつでも{{電話|でんわ}}していい。
 translation_it: >-
-  Vado anche io.
+  Puoi telefonarmi in qualunque momento.
 :::
 
-#### Anatomia rapida
+Altre parole o particelle possono inserirsi nella struttura: どこの店でも significa «in qualunque negozio / in ogni negozio».
 
-*   でも -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Da distinguere
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+QW + も tende a interagire con la negazione; QW + でも apre invece la scelta a qualsiasi membro della categoria.

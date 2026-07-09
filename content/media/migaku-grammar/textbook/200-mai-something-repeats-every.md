@@ -10,44 +10,22 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 200.
+  Il prefisso mai per ricorrenze regolari.
 ---
 
-# 「毎」Something repeats “every (period of time)"
+# 「毎」Sometimes repeats 'every'
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/mai-something-repeats-every`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Prefisso «ogni»
 
-## Punto da riconoscere
-
-- Tema: Something repeats every (period of time)
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+毎, letto まい, precede alcuni nomi di tempo o ricorrenza e forma espressioni lessicalizzate: 毎日 «ogni giorno», 毎朝 «ogni mattina», 毎晩 «ogni sera», 毎回 «ogni volta», 毎月 «ogni mese».
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{私|わたし}}は{{毎朝|まいあさ}}パンを{{食|た}}べる。
 translation_it: >-
-  Questa è una penna.
+  Mangio pane ogni mattina.
 :::
 
-#### Anatomia rapida
+## Da imparare come parole
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+毎 non si combina liberamente con qualsiasi nome: conviene memorizzare le forme comuni. 毎度 può significare «ogni volta», ma nei negozi compare anche in formule di ringraziamento per la clientela abituale.

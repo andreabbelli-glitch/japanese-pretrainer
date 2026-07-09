@@ -12,9 +12,10 @@ id: grammar-116-ageru-teageru-give-something
 pattern: "あげる・てあげる"
 title: "「あげる・てあげる」Give something"
 reading: "あげる・てあげる"
-meaning_it: "Give something"
+meaning_it: >-
+  Dare qualcosa o compiere un'azione a beneficio di qualcuno
 notes_it: >-
-  あげる・てあげる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  datore は destinatario に oggetto を あげる／Vてあげる. Nella prospettiva di base il destinatario non è il parlante: per qualcosa dato a «me/noi» si usa くれる. Vてあげる può suonare paternalistico se si enfatizza un favore non richiesto, quindi va scelto secondo il rapporto.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-116-ageru-teageru-give-something
 card_type: concept
 front: "あげる・てあげる"
 back: >-
-  Give something
+  Dare qualcosa o compiere un'azione a beneficio di qualcuno
 example_jp: >-
-  これはあげる・てあげるのかたちだ。
+  {{私|わたし}}は{{友達|ともだち}}に{{傘|かさ}}を{{貸|か}}してあげた。
 example_it: >-
-  Questa è la forma あげる・てあげる.
+  Ho prestato un ombrello a un amico per aiutarlo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  私は è chi compie il favore, 友達に il beneficiario e 貸して l'azione; あげた orienta il beneficio dal parlante verso l'amico. Nella prospettiva di base il destinatario non è il parlante: per qualcosa dato a «me/noi» si usa くれる. Vてあげる può suonare paternalistico se si enfatizza un favore non richiesto, quindi va scelto secondo il rapporto.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 :::

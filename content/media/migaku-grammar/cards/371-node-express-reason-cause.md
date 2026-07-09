@@ -12,9 +12,10 @@ id: grammar-371-node-express-reason-cause
 pattern: "ので"
 title: "「ので」Express a reason or cause"
 reading: "ので"
-meaning_it: "Express a reason or cause"
+meaning_it: >-
+  Poiché; siccome; dato che
 notes_it: >-
-  ので va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: V/Aい piani + ので; Nome/Aな + なので al presente; al passato だったので. Nel parlato si contrae spesso in んで. Rispetto a から, ので tende a suonare più esplicativo, oggettivo o attenuato, perciò è frequente in richieste e giustificazioni cortesi.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-371-node-express-reason-cause
 card_type: concept
 front: "ので"
 back: >-
-  Express a reason or cause
+  AのでB presenta A come causa o circostanza che spiega il risultato B.
 example_jp: >-
-  ぼくのペンだ。
+  {{雨|あめ}}が{{降|ふ}}っているので、{{出|で}}かけません。
 example_it: >-
-  È la mia penna.
+  Dato che piove, non esco.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: V/Aい piani + ので; Nome/Aな + なので al presente; al passato だったので. Nel parlato si contrae spesso in んで. Rispetto a から, ので tende a suonare più esplicativo, oggettivo o attenuato, perciò è frequente in richieste e giustificazioni cortesi.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

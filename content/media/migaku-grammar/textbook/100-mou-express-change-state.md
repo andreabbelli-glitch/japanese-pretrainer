@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 100.
+  Cambiamento di stato espresso da もう nelle frasi affermative e negative.
 ---
-
 # 「もう」Indicate a change in state
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/mou-express-change-state`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+もう indica che la situazione ha superato un punto di cambiamento. Con un'affermazione, spesso equivale a «già»; con un predicato negativo, a «non più / non… ancora oltre».
 
-- Tema: Indicate a change in state
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [もう](grammar:grammar-100-mou-express-change-state)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [もう](grammar:grammar-100-mou-express-change-state) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `もう + predicato affermativo o negativo`. Il punto da riconoscere è [もう](grammar:grammar-100-mou-express-change-state).
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  {{宿題|しゅくだい}}はもう{{終|お}}わった。
 translation_it: >-
-  Vado anche io.
+  Ho già finito i compiti.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   もう -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+終わった esprime il completamento; もう segnala che il passaggio allo stato «finito» è già avvenuto rispetto all'attesa.
+
+## Sfumature e limiti
+
+La traduzione dipende dal tempo e dalla polarità: もう食べた «ho già mangiato», もう食べない «non mangio più». Senza もう, la frase negativa non implica necessariamente che lo stato fosse diverso prima.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

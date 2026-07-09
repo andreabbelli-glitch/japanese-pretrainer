@@ -12,9 +12,10 @@ id: grammar-322-kai-ask-yes-or-no-question
 pattern: "かい"
 title: "「かい」Ask a yes-or-no question"
 reading: "かい"
-meaning_it: "Ask a yes-or-no question"
+meaning_it: >-
+  Domanda sì/no colloquiale e tradizionalmente maschile
 notes_it: >-
-  かい va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Con V e Aい si aggiunge かい alla forma piana; con Nome e Aな al presente si omette だ, mentre al passato compare だった. のかい／なのかい è possibile. È associato soprattutto a parlato maschile tradizionale, anziani o personaggi narrativi; non è una scelta neutra nella conversazione moderna.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-322-kai-ask-yes-or-no-question
 card_type: concept
 front: "かい"
 back: >-
-  Ask a yes-or-no question
+  La forma piana + かい crea una domanda a risposta sì/no dal tono informale, oggi spesso letterario o caratterizzante.
 example_jp: >-
-  これはかいのかたちだ。
+  もう{{宿題|しゅくだい}}は{{終|お}}わったかい？
 example_it: >-
-  Questa è la forma かい.
+  Hai già finito i compiti?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con V e Aい si aggiunge かい alla forma piana; con Nome e Aな al presente si omette だ, mentre al passato compare だった. のかい／なのかい è possibile. È associato soprattutto a parlato maschile tradizionale, anziani o personaggi narrativi; non è una scelta neutra nella conversazione moderna.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

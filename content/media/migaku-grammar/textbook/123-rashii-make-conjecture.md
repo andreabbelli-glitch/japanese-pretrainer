@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 123.
+  Congettura incerta e valore «tipico di» della forma らしい.
 ---
-
 # 「らしい」Make a conjecture
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/rashii-make-conjecture`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Dopo una proposizione, らしい presenta una congettura sostenuta da voci o indizi ma non confermata. Dopo un nome può anche significare «tipico, degno di N».
 
-- Tema: Make a conjecture
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [らしい](grammar:grammar-123-rashii-make-conjecture)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [らしい](grammar:grammar-123-rashii-make-conjecture) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo / い-aggettivo in forma piana + らしい; nome / な-aggettivo + らしい`. Il punto da riconoscere è [らしい](grammar:grammar-123-rashii-make-conjecture).
 
 :::example_sentence
 jp: >-
-  これはらしいのかたちだ。
+  {{田中|たなか}}さんは{{今日|きょう}}は{{休|やす}}むらしい。
 translation_it: >-
-  Questa è la forma らしい.
+  A quanto pare, oggi Tanaka si prende un giorno libero.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   らしい -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+休むらしい trasmette un'informazione non confermata sul programma di Tanaka; il soggetto resta prudente sulla sua certezza.
+
+## Sfumature e limiti
+
+Nel valore congetturale è meno neutro del そうだ di pura citazione: il parlante lascia margine d'incertezza. Nel valore «tipico di», らしい si comporta come un い-aggettivo: 子供らしくない.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

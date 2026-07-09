@@ -12,9 +12,9 @@ id: grammar-204-tokoroda-express-that-it-takes-certain-time-from-a-b
 pattern: "ところだ"
 title: "「ところだ」(3) Express that it takes a certain time from A to B"
 reading: "ところだ"
-meaning_it: "(3) Express that it takes a certain time from A to B"
+meaning_it: "Indicare a quale distanza temporale si trova un luogo con 〜のところだ"
 notes_it: >-
-  ところだ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  La struttura punto di partenza + から + mezzo/modo + durata + のところだ localizza una meta in base al tempo necessario per raggiungerla. ところだ abbrevia ところにある.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-204-tokoroda-express-that-it-takes-certain-time-from-a-b
 card_type: concept
 front: "ところだ"
 back: >-
-  (3) Express that it takes a certain time from A to B
+  〜から… durata のところだ significa «si trova a … di distanza da qui/lì».
 example_jp: >-
-  これはペンだ。
+  {{駅|えき}}はここから{{歩|ある}}いて{{十分|じゅっぷん}}のところだ。
 example_it: >-
-  Questa è una penna.
+  La stazione è a dieci minuti a piedi da qui.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La forma può abbreviarsi ulteriormente in ここから歩いて十分だ. Non è il ところだ temporale di «stare per fare».
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

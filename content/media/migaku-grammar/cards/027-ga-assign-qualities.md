@@ -12,9 +12,9 @@ id: grammar-027-ga-assign-qualities
 pattern: "が"
 title: "「が」(2) Express the quality something possesses"
 reading: "が"
-meaning_it: "(2) Express the quality something possesses"
+meaning_it: "Usare が per indicare l'elemento che possiede una qualità"
 notes_it: >-
-  が va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Nella struttura A が aggettivo, が marca ciò a cui appartiene la qualità. Dentro una frase con tema は può produrre una resa italiana possessiva: X は Y が Z, «quanto a X, Y è Z / X ha Y Z».
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-027-ga-assign-qualities
 card_type: concept
 front: "が"
 back: >-
-  (2) Express the quality something possesses
+  A が + aggettivo presenta A come portatore della qualità espressa.
 example_jp: >-
-  ネコがいる。
+  この{{店|みせ}}は{{弁当|べんとう}}がおいしい。
 example_it: >-
-  C'è un gatto.
+  Questo locale ha dei bentō deliziosi.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  店 è il tema generale; 弁当 è il soggetto di おいしい. La traduzione italiana naturale non deve calcare la struttura parola per parola.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 :::

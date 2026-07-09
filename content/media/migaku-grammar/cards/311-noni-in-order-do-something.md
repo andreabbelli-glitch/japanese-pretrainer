@@ -12,9 +12,10 @@ id: grammar-311-noni-in-order-do-something
 pattern: "のに"
 title: "「のに」(2) “In order to X\""
 reading: "のに"
-meaning_it: "(2) In order to X"
+meaning_it: >-
+  «Per fare / allo scopo di», davanti a necessità, utilità o costo
 notes_it: >-
-  のに va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in forma piana + のに + requisito/valutazione. È distinto dal のに concessivo «sebbene»: la frase non oppone aspettative, ma valuta ciò che serve, costa o è utile per l'azione nominalizzata.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-311-noni-in-order-do-something
 card_type: concept
 front: "のに"
 back: >-
-  (2) In order to X
+  «Per fare / allo scopo di», davanti a necessità, utilità o costo
 example_jp: >-
-  ぼくのペンだ。
+  この{{瓶|びん}}を{{開|あ}}けるのに{{道具|どうぐ}}が{{必要|ひつよう}}だ。
 example_it: >-
-  È la mia penna.
+  Per aprire questa bottiglia serve un attrezzo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  開けるの nominalizza l'apertura; に la presenta come scopo rispetto al requisito 道具が必要だ. È distinto dal のに concessivo «sebbene»: la frase non oppone aspettative, ma valuta ciò che serve, costa o è utile per l'azione nominalizzata.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

@@ -12,9 +12,10 @@ id: grammar-091-na-adjectives-past
 pattern: "な形容詞"
 title: "The past tense of な adjectives"
 reading: "なけいようし"
-meaning_it: "The past tense of な adjectives"
+meaning_it: >-
+  Passato affermativo dei な-aggettivi: «era / è stato…»
 notes_it: >-
-  な{{形容詞|けいようし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  な-aggettivo + だった. Davanti a un nome, una descrizione passata forma una relativa senza な: 親切だった人 «una persona che era gentile». Per una qualità non passata si usa invece 親切な人.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-091-na-adjectives-past
 card_type: concept
 front: "な{{形容詞|けいようし}}"
 back: >-
-  The past tense of な adjectives
+  Passato affermativo dei な-aggettivi: «era / è stato…»
 example_jp: >-
-  ここはしずかだ。
+  その{{部屋|へや}}は{{静|しず}}かだった。
 example_it: >-
-  Qui è tranquillo.
+  Quella stanza era silenziosa.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  静か è un な-aggettivo; だった lo rende predicativo e passato. Non si dice *静かなだった. Davanti a un nome, una descrizione passata forma una relativa senza な: 親切だった人 «una persona che era gentile». Per una qualità non passata si usa invece 親切な人.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 :::

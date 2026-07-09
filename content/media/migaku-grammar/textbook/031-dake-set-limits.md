@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 031.
+  Uso di だけ per limitare a un elemento o fatto.
 ---
 
-# 「だけ」Indicate a limit
+# 「だけ」Show a limit
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dake-set-limits`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Forma e valore
 
-## Punto da riconoscere
-
-- Tema: Indicate a limit
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [だけ](grammar:grammar-031-dake-set-limits)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [だけ](grammar:grammar-031-dake-set-limits) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+だけ segue ciò che viene delimitato e significa «solo», «soltanto», «nient'altro che». Può seguire nomi, verbi, aggettivi in い e aggettivi in な con な.
 
 :::example_sentence
 jp: >-
-  これだけください。
+  {{学生|がくせい}}だけが{{韓国|かんこく}}へ{{行|い}}く。
 translation_it: >-
-  Mi dia solo questo.
+  Solo gli studenti andranno in Corea.
 :::
 
-#### Anatomia rapida
+Con verbi e aggettivi può voler dire «è tutto»: 高いだけだ, «è soltanto costoso»; 行くだけだ, «andrò e basta».
 
-*   だけ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Particelle
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+が, を e は possono talvolta sparire accanto a だけ; に e で restano. L'ordine cambia il fuoco: アルコールでだけ動く limita il mezzo («solo con l'alcol»), mentre アルコールだけで動く dice che il solo alcol basta a farlo funzionare.

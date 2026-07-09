@@ -12,9 +12,10 @@ id: grammar-136-darou-will-probably-happen
 pattern: "だろう(か)"
 title: "「だろう(か)」Make an uninformed conjecture"
 reading: "だろう(か)"
-meaning_it: "Make an uninformed conjecture"
+meaning_it: >-
+  Probabilmente; immagino che…; chissà se…
 notes_it: >-
-  だろう(か) va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Si aggiunge alla forma piana: V／Aい + だろう; Nome／Aな + だろう, senza un ulteriore だ. Esprime più convinzione di かもしれない ma non certezza. だろう è casuale e può suonare assertivo; でしょう è la variante cortese, mentre だろうか vale «mi chiedo se».
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-136-darou-will-probably-happen
 card_type: concept
 front: "だろう(か)"
 back: >-
-  Make an uninformed conjecture
+  Proposizione piana + だろう esprime una previsione abbastanza plausibile; だろうか formula un dubbio riflessivo.
 example_jp: >-
-  これはだろう(か)のかたちだ。
+  もうすぐ{{電車|でんしゃ}}が{{来|く}}るだろう。
 example_it: >-
-  Questa è la forma だろう(か).
+  Probabilmente il treno arriverà tra poco.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Si aggiunge alla forma piana: V／Aい + だろう; Nome／Aな + だろう, senza un ulteriore だ. Esprime più convinzione di かもしれない ma non certezza. だろう è casuale e può suonare assertivo; でしょう è la variante cortese, mentre だろうか vale «mi chiedo se».
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

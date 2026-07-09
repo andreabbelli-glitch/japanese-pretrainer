@@ -12,9 +12,9 @@ id: grammar-203-okini-indicate-time-between-two-events
 pattern: "おきに"
 title: "「おきに」Indicate the time between two events"
 reading: "おきに"
-meaning_it: "Indicate the time between two events"
+meaning_it: "Indicare con おきに l'intervallo lasciato tra ricorrenze"
 notes_it: >-
-  おきに va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A おきに B mette A come spazio temporale o fisico tra un'occorrenza di B e la successiva. Secondo l'unità, si rende «ogni», «a intervalli di» o «un A sì e uno no».
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-203-okini-indicate-time-between-two-events
 card_type: concept
 front: "おきに"
 back: >-
-  Indicate the time between two events
+  Durata/distanza + おきに indica il divario regolare tra due eventi o punti.
 example_jp: >-
-  カフェにいく。
+  {{一日|いちにち}}おきに{{走|はし}}る。
 example_it: >-
-  Vado al caffè.
+  Corro un giorno sì e uno no.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Confronta 三時間ごとに, «ogni tre ore», con 三時間おきに, che mette in primo piano tre ore di intervallo tra le occorrenze.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

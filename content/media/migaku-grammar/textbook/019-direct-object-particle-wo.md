@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 019.
+  Uso di を per marcare l'oggetto diretto.
 ---
 
-# 「を」(1) Mark the direct object
+# 「を」(1) Marking the direct object
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/direct-object-particle-wo`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Forma e funzione
 
-## Punto da riconoscere
-
-- Tema: (1) Mark the direct object
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [を](grammar:grammar-019-direct-object-particle-wo)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [を](grammar:grammar-019-direct-object-particle-wo) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Nome + を indica ciò che riceve direttamente l'azione di un verbo transitivo. Come particella, を si pronuncia お. Normalmente compare una sola volta nella stessa proposizione.
 
 :::example_sentence
 jp: >-
-  パンをたべる。
+  {{彼|かれ}}がご{{飯|はん}}を{{食|た}}べる。
 translation_it: >-
-  Mangio il pane.
+  Lui mangia un pasto.
 :::
 
-#### Anatomia rapida
+ご飯 è ciò che viene mangiato, quindi porta を. Se l'oggetto diventa il tema, は sostituisce を: 弁当は私も食べる, «quanto al bentō, lo mangio anch'io».
 
-*   を -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Limite
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Le categorie non coincidono sempre con l'italiano: in alcune costruzioni, come 日本語が話せる, il giapponese usa が dove la traduzione italiana sembra avere un oggetto.

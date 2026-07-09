@@ -12,9 +12,10 @@ id: grammar-270-kure-imperative-form
 pattern: "くれ"
 title: "「くれ」”Give\" in imperative form"
 reading: "くれ"
-meaning_it: "Give in imperative form"
+meaning_it: >-
+  Imperativo di くれる; dopo la て-forma significa «fammi il favore di…»
 notes_it: >-
-  くれ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  oggetto を くれ／verbo in て-forma + くれ. È familiare, spesso maschile e può suonare brusco. てください o てもらえますか sono alternative più cortesi.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-270-kure-imperative-form
 card_type: concept
 front: "くれ"
 back: >-
-  Give in imperative form
+  Imperativo di くれる; dopo la て-forma significa «fammi il favore di…»
 example_jp: >-
-  これはくれのかたちだ。
+  もう{{少|すこ}}し{{待|ま}}ってくれ。
 example_it: >-
-  Questa è la forma くれ.
+  Aspetta ancora un po', per favore.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  待って esprime l'azione richiesta; くれ la presenta come favore rivolto al parlante, con tono diretto. È familiare, spesso maschile e può suonare brusco. てください o てもらえますか sono alternative più cortesi.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

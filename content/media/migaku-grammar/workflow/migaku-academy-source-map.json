@@ -1,0 +1,2749 @@
+{
+  "schema_version": 1,
+  "media_slug": "migaku-grammar",
+  "source": {
+    "platform": "Migaku",
+    "course": "Academy - Level 1",
+    "url": "https://study.migaku.com/collection/course/20463397959936",
+    "captured_at": "2026-07-09T20:05:01.965Z"
+  },
+  "purpose": "Mappatura editoriale non learner-facing usata per verificare ogni lezione locale contro la raccolta autenticata.",
+  "lessons": [
+    {
+      "local_index": 1,
+      "local_slug": "001-japanese-nouns",
+      "local_file": "001-japanese-nouns.md",
+      "source_lesson": "2.1",
+      "source_title": "Japanese Nouns"
+    },
+    {
+      "local_index": 2,
+      "local_slug": "002-da-declare-something-is",
+      "local_file": "002-da-declare-something-is.md",
+      "source_lesson": "2.3",
+      "source_title": "「だ」Declare the state-of-being"
+    },
+    {
+      "local_index": 3,
+      "local_slug": "003-janai-declare-something-not",
+      "local_file": "003-janai-declare-something-not.md",
+      "source_lesson": "2.4",
+      "source_title": "「じゃない」Declare something is not"
+    },
+    {
+      "local_index": 4,
+      "local_slug": "004-ga-subject-marker",
+      "local_file": "004-ga-subject-marker.md",
+      "source_lesson": "2.5",
+      "source_title": "「が」(1) Mark the subject"
+    },
+    {
+      "local_index": 5,
+      "local_slug": "005-topic-marker-wa",
+      "local_file": "005-topic-marker-wa.md",
+      "source_lesson": "2.6",
+      "source_title": "「は」Mark the topic"
+    },
+    {
+      "local_index": 6,
+      "local_slug": "006-inclusive-particle-mo",
+      "local_file": "006-inclusive-particle-mo.md",
+      "source_lesson": "2.7",
+      "source_title": "「も」(1) Being inclusive"
+    },
+    {
+      "local_index": 7,
+      "local_slug": "007-possessive-particle-no",
+      "local_file": "007-possessive-particle-no.md",
+      "source_lesson": "2.8",
+      "source_title": "「の」(1) Being possessive"
+    },
+    {
+      "local_index": 8,
+      "local_slug": "008-names-in-japanese",
+      "local_file": "008-names-in-japanese.md",
+      "source_lesson": "2.9",
+      "source_title": "Names in Japanese"
+    },
+    {
+      "local_index": 9,
+      "local_slug": "009-san-address-someone-politely",
+      "local_file": "009-san-address-someone-politely.md",
+      "source_lesson": "2.10",
+      "source_title": "「さん」Refer to someone politely"
+    },
+    {
+      "local_index": 10,
+      "local_slug": "010-chan-address-someone-cutely",
+      "local_file": "010-chan-address-someone-cutely.md",
+      "source_lesson": "2.11",
+      "source_title": "「ちゃん」Refer to someone in a cute way"
+    },
+    {
+      "local_index": 11,
+      "local_slug": "011-kore-this",
+      "local_file": "011-kore-this.md",
+      "source_lesson": "2.12",
+      "source_title": "「これ」For this"
+    },
+    {
+      "local_index": 12,
+      "local_slug": "012-sore-that",
+      "local_file": "012-sore-that.md",
+      "source_lesson": "2.13",
+      "source_title": "「それ」For that"
+    },
+    {
+      "local_index": 13,
+      "local_slug": "013-are-that-over-there",
+      "local_file": "013-are-that-over-there.md",
+      "source_lesson": "2.14",
+      "source_title": "「あれ」For that over there"
+    },
+    {
+      "local_index": 14,
+      "local_slug": "014-i-adjective-basics",
+      "local_file": "014-i-adjective-basics.md",
+      "source_lesson": "2.15",
+      "source_title": "い-Adjectives Basics"
+    },
+    {
+      "local_index": 15,
+      "local_slug": "015-i-adjective-negation",
+      "local_file": "015-i-adjective-negation.md",
+      "source_lesson": "2.16",
+      "source_title": "い-Adjectives, but negative"
+    },
+    {
+      "local_index": 16,
+      "local_slug": "016-introduction-to-verbs",
+      "local_file": "016-introduction-to-verbs.md",
+      "source_lesson": "2.17",
+      "source_title": "Verb Basics - U"
+    },
+    {
+      "local_index": 17,
+      "local_slug": "017-ru-verbs",
+      "local_file": "017-ru-verbs.md",
+      "source_lesson": "2.18",
+      "source_title": "Verb Basics - Ru"
+    },
+    {
+      "local_index": 18,
+      "local_slug": "018-irregular-verbs",
+      "local_file": "018-irregular-verbs.md",
+      "source_lesson": "2.19",
+      "source_title": "Verb Basics - Irregular"
+    },
+    {
+      "local_index": 19,
+      "local_slug": "019-direct-object-particle-wo",
+      "local_file": "019-direct-object-particle-wo.md",
+      "source_lesson": "3.1",
+      "source_title": "「を」(1) Marking the direct object"
+    },
+    {
+      "local_index": 20,
+      "local_slug": "020-subject-omission",
+      "local_file": "020-subject-omission.md",
+      "source_lesson": "3.2",
+      "source_title": "Omitting the Subject"
+    },
+    {
+      "local_index": 21,
+      "local_slug": "021-writing-kanji-words-in-hiragana",
+      "local_file": "021-writing-kanji-words-in-hiragana.md",
+      "source_lesson": "3.3",
+      "source_title": "Writing Kanji Words In Hiragana"
+    },
+    {
+      "local_index": 22,
+      "local_slug": "022-location-marker-de",
+      "local_file": "022-location-marker-de.md",
+      "source_lesson": "3.4",
+      "source_title": "「で」(1) Indicate a location where an action takes place"
+    },
+    {
+      "local_index": 23,
+      "local_slug": "023-ni-indicate-destination-direction",
+      "local_file": "023-ni-indicate-destination-direction.md",
+      "source_lesson": "3.5",
+      "source_title": "「に」(1) Indicate a destination or direction of an action"
+    },
+    {
+      "local_index": 24,
+      "local_slug": "024-ni-show-location-existence",
+      "local_file": "024-ni-show-location-existence.md",
+      "source_lesson": "3.6",
+      "source_title": "「に」(2) Show the location of existence"
+    },
+    {
+      "local_index": 25,
+      "local_slug": "025-sentence-structure",
+      "local_file": "025-sentence-structure.md",
+      "source_lesson": "3.7",
+      "source_title": "Sentence structure in Japanese"
+    },
+    {
+      "local_index": 26,
+      "local_slug": "026-koko-soko-asoko",
+      "local_file": "026-koko-soko-asoko.md",
+      "source_lesson": "3.8",
+      "source_title": "「ここ・そこ・あそこ」Here, there and over there"
+    },
+    {
+      "local_index": 27,
+      "local_slug": "027-ga-assign-qualities",
+      "local_file": "027-ga-assign-qualities.md",
+      "source_lesson": "3.9",
+      "source_title": "「が」(2) Something has a quality"
+    },
+    {
+      "local_index": 28,
+      "local_slug": "028-kono-sono-ano",
+      "local_file": "028-kono-sono-ano.md",
+      "source_lesson": "3.10",
+      "source_title": "「この・その・あの」This, that and that over there"
+    },
+    {
+      "local_index": 29,
+      "local_slug": "029-list-nouns-with-to",
+      "local_file": "029-list-nouns-with-to.md",
+      "source_lesson": "3.11",
+      "source_title": "「と」(1) List things"
+    },
+    {
+      "local_index": 30,
+      "local_slug": "030-direction-marker-he",
+      "local_file": "030-direction-marker-he.md",
+      "source_lesson": "3.12",
+      "source_title": "「へ」Show a direction"
+    },
+    {
+      "local_index": 31,
+      "local_slug": "031-dake-set-limits",
+      "local_file": "031-dake-set-limits.md",
+      "source_lesson": "3.13",
+      "source_title": "「だけ」Show a limit"
+    },
+    {
+      "local_index": 32,
+      "local_slug": "032-u-verbs-negation",
+      "local_file": "032-u-verbs-negation.md",
+      "source_lesson": "3.15",
+      "source_title": "Verb Negatives - U"
+    },
+    {
+      "local_index": 33,
+      "local_slug": "033-ru-verbs-negation",
+      "local_file": "033-ru-verbs-negation.md",
+      "source_lesson": "3.16",
+      "source_title": "Verb Negatives - Ru"
+    },
+    {
+      "local_index": 34,
+      "local_slug": "034-irregular-verbs-negation",
+      "local_file": "034-irregular-verbs-negation.md",
+      "source_lesson": "3.17",
+      "source_title": "Verb Negatives - Irregulars"
+    },
+    {
+      "local_index": 35,
+      "local_slug": "035-ka-ask-questions",
+      "local_file": "035-ka-ask-questions.md",
+      "source_lesson": "3.18",
+      "source_title": "「か」(1) Ask questions"
+    },
+    {
+      "local_index": 36,
+      "local_slug": "036-kara-show-reasons",
+      "local_file": "036-kara-show-reasons.md",
+      "source_lesson": "3.19",
+      "source_title": "「から」(1) Show the reason for something"
+    },
+    {
+      "local_index": 37,
+      "local_slug": "037-kedo-indicate-contrast",
+      "local_file": "037-kedo-indicate-contrast.md",
+      "source_lesson": "3.20",
+      "source_title": "「けど」Express contradiction"
+    },
+    {
+      "local_index": 38,
+      "local_slug": "038-dakedo-however",
+      "local_file": "038-dakedo-however.md",
+      "source_lesson": "3.21",
+      "source_title": "「だけど」However"
+    },
+    {
+      "local_index": 39,
+      "local_slug": "039-multiple-people-suffix-tachi",
+      "local_file": "039-multiple-people-suffix-tachi.md",
+      "source_lesson": "3.22",
+      "source_title": "「たち」Refer to multiple people"
+    },
+    {
+      "local_index": 40,
+      "local_slug": "040-na-adjectives-basics",
+      "local_file": "040-na-adjectives-basics.md",
+      "source_lesson": "3.23",
+      "source_title": "な-Adjectives Basics"
+    },
+    {
+      "local_index": 41,
+      "local_slug": "041-na-adjectives-negation",
+      "local_file": "041-na-adjectives-negation.md",
+      "source_lesson": "3.24",
+      "source_title": "な-Adjectives, but negative"
+    },
+    {
+      "local_index": 42,
+      "local_slug": "042-suru-turn-nouns-into-verbs",
+      "local_file": "042-suru-turn-nouns-into-verbs.md",
+      "source_lesson": "3.25",
+      "source_title": "「する」(1) Use nouns as verbs"
+    },
+    {
+      "local_index": 43,
+      "local_slug": "043-i-adjectives-as-adverbs",
+      "local_file": "043-i-adjectives-as-adverbs.md",
+      "source_lesson": "3.26",
+      "source_title": "Using い-adjectives to describe verbs"
+    },
+    {
+      "local_index": 44,
+      "local_slug": "044-na-adjectives-as-toverbs",
+      "local_file": "044-na-adjectives-as-toverbs.md",
+      "source_lesson": "3.27",
+      "source_title": "Using な-adjectives to describe verbs"
+    },
+    {
+      "local_index": 45,
+      "local_slug": "045-japanese-adverbs",
+      "local_file": "045-japanese-adverbs.md",
+      "source_lesson": "3.28",
+      "source_title": "Using other adverbs to describe verbs"
+    },
+    {
+      "local_index": 46,
+      "local_slug": "046-sa-adjectives-to-nouns",
+      "local_file": "046-sa-adjectives-to-nouns.md",
+      "source_lesson": "4.1",
+      "source_title": "「〜さ」Indicate an amount with adjectives"
+    },
+    {
+      "local_index": 47,
+      "local_slug": "047-mi-adjectives-to-nouns",
+      "local_file": "047-mi-adjectives-to-nouns.md",
+      "source_lesson": "4.2",
+      "source_title": "「〜み」Show subjective quality with adjectives"
+    },
+    {
+      "local_index": 48,
+      "local_slug": "048-make-a-supposition-about-the-truth",
+      "local_file": "048-make-a-supposition-about-the-truth.md",
+      "source_lesson": "4.3",
+      "source_title": "「なら」Make a supposition about the truth"
+    },
+    {
+      "local_index": 49,
+      "local_slug": "049-sorenara-in-that-case",
+      "local_file": "049-sorenara-in-that-case.md",
+      "source_lesson": "4.4",
+      "source_title": "「それなら」If that is the case"
+    },
+    {
+      "local_index": 50,
+      "local_slug": "050-ni-mark-indirect-object",
+      "local_file": "050-ni-mark-indirect-object.md",
+      "source_lesson": "4.5",
+      "source_title": "「に」(3) Mark an indirect object"
+    },
+    {
+      "local_index": 51,
+      "local_slug": "051-no-indefinite-pronoun",
+      "local_file": "051-no-indefinite-pronoun.md",
+      "source_lesson": "4.6",
+      "source_title": "「の」(2) The indefinite pronoun"
+    },
+    {
+      "local_index": 52,
+      "local_slug": "052-naru-to-become",
+      "local_file": "052-naru-to-become.md",
+      "source_lesson": "4.7",
+      "source_title": "「なる」The state or condition changes"
+    },
+    {
+      "local_index": 53,
+      "local_slug": "053-ga-express-preferences",
+      "local_file": "053-ga-express-preferences.md",
+      "source_lesson": "4.8",
+      "source_title": "「が」(3) Express preferences"
+    },
+    {
+      "local_index": 54,
+      "local_slug": "054-yori-comparisons",
+      "local_file": "054-yori-comparisons.md",
+      "source_lesson": "4.9",
+      "source_title": "「より」(1) Compare things"
+    },
+    {
+      "local_index": 55,
+      "local_slug": "055-hou-comparisons",
+      "local_file": "055-hou-comparisons.md",
+      "source_lesson": "4.10",
+      "source_title": "「方」Compare things"
+    },
+    {
+      "local_index": 56,
+      "local_slug": "056-gayori-comparisons",
+      "local_file": "056-gayori-comparisons.md",
+      "source_lesson": "4.11",
+      "source_title": "「～方が～より」Compare things"
+    },
+    {
+      "local_index": 57,
+      "local_slug": "057-ichiban-superlative",
+      "local_file": "057-ichiban-superlative.md",
+      "source_lesson": "4.12",
+      "source_title": "「一番」Express a superlative"
+    },
+    {
+      "local_index": 58,
+      "local_slug": "058-dearu-declare-something-is",
+      "local_file": "058-dearu-declare-something-is.md",
+      "source_lesson": "4.13",
+      "source_title": "「である」Say something 'is'"
+    },
+    {
+      "local_index": 59,
+      "local_slug": "059-koto-nominalization",
+      "local_file": "059-koto-nominalization.md",
+      "source_lesson": "4.14",
+      "source_title": "「こと」(1) Nominalize things"
+    },
+    {
+      "local_index": 60,
+      "local_slug": "060-no-nominalization",
+      "local_file": "060-no-nominalization.md",
+      "source_lesson": "4.15",
+      "source_title": "「の」(3) Nominalize things"
+    },
+    {
+      "local_index": 61,
+      "local_slug": "061-nohada-introduce-new-information",
+      "local_file": "061-nohada-introduce-new-information.md",
+      "source_lesson": "4.16",
+      "source_title": "「のは～だ」Give new and important information"
+    },
+    {
+      "local_index": 62,
+      "local_slug": "062-kocchi-socchi-acchi-here-there-over-there",
+      "local_file": "062-kocchi-socchi-acchi-here-there-over-there.md",
+      "source_lesson": "4.17",
+      "source_title": "「こっち・そっち・あっち」Here, there and over there"
+    },
+    {
+      "local_index": 63,
+      "local_slug": "063-ka-list-alternatives",
+      "local_file": "063-ka-list-alternatives.md",
+      "source_lesson": "4.18",
+      "source_title": "「か」(2) Mark alternatives"
+    },
+    {
+      "local_index": 64,
+      "local_slug": "064-amari-not-very",
+      "local_file": "064-amari-not-very.md",
+      "source_lesson": "4.19",
+      "source_title": "「あまり」Indicate a low degree of something"
+    },
+    {
+      "local_index": 65,
+      "local_slug": "065-kun-address-someone-lower-in-status",
+      "local_file": "065-kun-address-someone-lower-in-status.md",
+      "source_lesson": "4.20",
+      "source_title": "「くん」Refer to people"
+    },
+    {
+      "local_index": 66,
+      "local_slug": "066-ya-shops-and-people-suffix",
+      "local_file": "066-ya-shops-and-people-suffix.md",
+      "source_lesson": "4.21",
+      "source_title": "「屋」Refer to shops and people engaged in certain occupations"
+    },
+    {
+      "local_index": 67,
+      "local_slug": "067-nado-express-something-like",
+      "local_file": "067-nado-express-something-like.md",
+      "source_lesson": "4.22",
+      "source_title": "「など」Express something like"
+    },
+    {
+      "local_index": 68,
+      "local_slug": "068-momo-list-same-parts-speech",
+      "local_file": "068-momo-list-same-parts-speech.md",
+      "source_lesson": "4.23",
+      "source_title": "「も~も」List same parts of speech"
+    },
+    {
+      "local_index": 69,
+      "local_slug": "069-hodo-1-express-extent",
+      "local_file": "069-hodo-1-express-extent.md",
+      "source_lesson": "4.24",
+      "source_title": "「ほど」(1) Express extent"
+    },
+    {
+      "local_index": 70,
+      "local_slug": "070-hodo-2-indicate-degree-action-state",
+      "local_file": "070-hodo-2-indicate-degree-action-state.md",
+      "source_lesson": "4.25",
+      "source_title": "「ほど」(2) Indicate the degree of an action or state"
+    },
+    {
+      "local_index": 71,
+      "local_slug": "071-ooi-sukunai-express-high-low-quantity-something",
+      "local_file": "071-ooi-sukunai-express-high-low-quantity-something.md",
+      "source_lesson": "4.26",
+      "source_title": "「多い・少ない」Express a high or low quantity of something"
+    },
+    {
+      "local_index": 72,
+      "local_slug": "072-dropping-particles",
+      "local_file": "072-dropping-particles.md",
+      "source_lesson": "4.27",
+      "source_title": "Dropping particles"
+    },
+    {
+      "local_index": 73,
+      "local_slug": "073-to-2-doing-things-with-someone",
+      "local_file": "073-to-2-doing-things-with-someone.md",
+      "source_lesson": "4.28",
+      "source_title": "「と」(2) Doing things with someone"
+    },
+    {
+      "local_index": 74,
+      "local_slug": "074-shika-when-there-nothing-else",
+      "local_file": "074-shika-when-there-nothing-else.md",
+      "source_lesson": "4.29",
+      "source_title": "「しか」When there is nothing else"
+    },
+    {
+      "local_index": 75,
+      "local_slug": "075-soretomo-show-alternatives",
+      "local_file": "075-soretomo-show-alternatives.md",
+      "source_lesson": "4.30",
+      "source_title": "「それとも」Show alternatives"
+    },
+    {
+      "local_index": 76,
+      "local_slug": "076-nisuru-decide-on-something",
+      "local_file": "076-nisuru-decide-on-something.md",
+      "source_lesson": "4.31",
+      "source_title": "「にする」Decide on something"
+    },
+    {
+      "local_index": 77,
+      "local_slug": "077-kotogaaru-1-there-are-times-when",
+      "local_file": "077-kotogaaru-1-there-are-times-when.md",
+      "source_lesson": "4.32",
+      "source_title": "「ことがある」(1) There are times when"
+    },
+    {
+      "local_index": 78,
+      "local_slug": "078-kotogadekiru-yes-you-can",
+      "local_file": "078-kotogadekiru-yes-you-can.md",
+      "source_lesson": "4.33",
+      "source_title": "「ことができる」Yes you can"
+    },
+    {
+      "local_index": 79,
+      "local_slug": "079-tokoroda-when-you-are-just-about-do-something",
+      "local_file": "079-tokoroda-when-you-are-just-about-do-something.md",
+      "source_lesson": "4.34",
+      "source_title": "「ところだ」(1) When you are just about to do something"
+    },
+    {
+      "local_index": 80,
+      "local_slug": "080-tsumori-show-intent",
+      "local_file": "080-tsumori-show-intent.md",
+      "source_lesson": "4.35",
+      "source_title": "「つもり」Show intent"
+    },
+    {
+      "local_index": 81,
+      "local_slug": "081-datta-declare-past-state-of-being",
+      "local_file": "081-datta-declare-past-state-of-being.md",
+      "source_lesson": "4.36",
+      "source_title": "「だった」Declare the past state-of-being"
+    },
+    {
+      "local_index": 82,
+      "local_slug": "082-janakatta-declare-something-was-not",
+      "local_file": "082-janakatta-declare-something-was-not.md",
+      "source_lesson": "4.37",
+      "source_title": "「じゃなかった」Declare something was not"
+    },
+    {
+      "local_index": 83,
+      "local_slug": "083-verb-past-u",
+      "local_file": "083-verb-past-u.md",
+      "source_lesson": "4.38",
+      "source_title": "Verb Past - U"
+    },
+    {
+      "local_index": 84,
+      "local_slug": "084-verb-past-ru",
+      "local_file": "084-verb-past-ru.md",
+      "source_lesson": "4.39",
+      "source_title": "Verb Past - Ru"
+    },
+    {
+      "local_index": 85,
+      "local_slug": "085-verb-past-irregular",
+      "local_file": "085-verb-past-irregular.md",
+      "source_lesson": "4.40",
+      "source_title": "Verb Past - Irregular"
+    },
+    {
+      "local_index": 86,
+      "local_slug": "086-verb-past-negative-u",
+      "local_file": "086-verb-past-negative-u.md",
+      "source_lesson": "4.41",
+      "source_title": "Verb Past Negative - U"
+    },
+    {
+      "local_index": 87,
+      "local_slug": "087-verb-past-negative-ru",
+      "local_file": "087-verb-past-negative-ru.md",
+      "source_lesson": "4.42",
+      "source_title": "Verb Past Negative - Ru"
+    },
+    {
+      "local_index": 88,
+      "local_slug": "088-verb-past-negative-irregulars",
+      "local_file": "088-verb-past-negative-irregulars.md",
+      "source_lesson": "4.43",
+      "source_title": "Verb Past Negative - Irregulars"
+    },
+    {
+      "local_index": 89,
+      "local_slug": "089-i-adjectives-past",
+      "local_file": "089-i-adjectives-past.md",
+      "source_lesson": "4.44",
+      "source_title": "い-Adjectives Past"
+    },
+    {
+      "local_index": 90,
+      "local_slug": "090-i-adjectives-past-negative",
+      "local_file": "090-i-adjectives-past-negative.md",
+      "source_lesson": "4.45",
+      "source_title": "い-Adjectives Past-Negative"
+    },
+    {
+      "local_index": 91,
+      "local_slug": "091-na-adjectives-past",
+      "local_file": "091-na-adjectives-past.md",
+      "source_lesson": "4.46",
+      "source_title": "な-Adjectives Past"
+    },
+    {
+      "local_index": 92,
+      "local_slug": "092-na-adjectives-past-negative",
+      "local_file": "092-na-adjectives-past-negative.md",
+      "source_lesson": "4.47",
+      "source_title": "な-Adjectives Past-Negative"
+    },
+    {
+      "local_index": 93,
+      "local_slug": "093-relative-clauses",
+      "local_file": "093-relative-clauses.md",
+      "source_lesson": "5.1",
+      "source_title": "Relative Clauses"
+    },
+    {
+      "local_index": 94,
+      "local_slug": "094-toki-describe-time-when",
+      "local_file": "094-toki-describe-time-when.md",
+      "source_lesson": "5.2",
+      "source_title": "「時」Describe a time when"
+    },
+    {
+      "local_index": 95,
+      "local_slug": "095-ninaru-become-something",
+      "local_file": "095-ninaru-become-something.md",
+      "source_lesson": "5.3",
+      "source_title": "「になる」Become something"
+    },
+    {
+      "local_index": 96,
+      "local_slug": "096-koto-2-express-thing",
+      "local_file": "096-koto-2-express-thing.md",
+      "source_lesson": "5.4",
+      "source_title": "「こと」(2) Express a 'thing'"
+    },
+    {
+      "local_index": 97,
+      "local_slug": "097-kotogaaru-2-reminisce-about-past",
+      "local_file": "097-kotogaaru-2-reminisce-about-past.md",
+      "source_lesson": "5.5",
+      "source_title": "「ことがある」(2) Reminisce about the past"
+    },
+    {
+      "local_index": 98,
+      "local_slug": "098-kotoninaru-express-involuntary-event",
+      "local_file": "098-kotoninaru-express-involuntary-event.md",
+      "source_lesson": "5.6",
+      "source_title": "「ことになる」Express an involuntary event"
+    },
+    {
+      "local_index": 99,
+      "local_slug": "099-kotonisuru-decide-do-something",
+      "local_file": "099-kotonisuru-decide-do-something.md",
+      "source_lesson": "5.7",
+      "source_title": "「ことにする」Decide to do something"
+    },
+    {
+      "local_index": 100,
+      "local_slug": "100-mou-express-change-state",
+      "local_file": "100-mou-express-change-state.md",
+      "source_lesson": "5.8",
+      "source_title": "「もう」(1) Express a change of state"
+    },
+    {
+      "local_index": 101,
+      "local_slug": "101-kawarini-something-place-something-else",
+      "local_file": "101-kawarini-something-place-something-else.md",
+      "source_lesson": "5.9",
+      "source_title": "「代わりに」Something in place of something else"
+    },
+    {
+      "local_index": 102,
+      "local_slug": "102-mama-something-stays-way-it-is",
+      "local_file": "102-mama-something-stays-way-it-is.md",
+      "source_lesson": "5.10",
+      "source_title": "「まま」Something stays the way it is"
+    },
+    {
+      "local_index": 103,
+      "local_slug": "103-tatte-even-if",
+      "local_file": "103-tatte-even-if.md",
+      "source_lesson": "5.12",
+      "source_title": "「たって」Even if"
+    },
+    {
+      "local_index": 104,
+      "local_slug": "104-dou-ask-how",
+      "local_file": "104-dou-ask-how.md",
+      "source_lesson": "5.13",
+      "source_title": "「どう」(1) Ask 'how?'"
+    },
+    {
+      "local_index": 105,
+      "local_slug": "105-verb-te-form-u",
+      "local_file": "105-verb-te-form-u.md",
+      "source_lesson": "5.14",
+      "source_title": "Verb て-Form - U"
+    },
+    {
+      "local_index": 106,
+      "local_slug": "106-verb-te-form-ru",
+      "local_file": "106-verb-te-form-ru.md",
+      "source_lesson": "5.15",
+      "source_title": "Verb て-Form - Ru"
+    },
+    {
+      "local_index": 107,
+      "local_slug": "107-verb-te-form-irregulars",
+      "local_file": "107-verb-te-form-irregulars.md",
+      "source_lesson": "5.16",
+      "source_title": "Verb て-Form - Irregulars"
+    },
+    {
+      "local_index": 108,
+      "local_slug": "108-i-adjectives-te-form",
+      "local_file": "108-i-adjectives-te-form.md",
+      "source_lesson": "5.17",
+      "source_title": "い-Adjectives て-Form"
+    },
+    {
+      "local_index": 109,
+      "local_slug": "109-na-adjectives-te-form",
+      "local_file": "109-na-adjectives-te-form.md",
+      "source_lesson": "5.18",
+      "source_title": "な-Adjectives て-Form"
+    },
+    {
+      "local_index": 110,
+      "local_slug": "110-naide-do-b-without-doing-a",
+      "local_file": "110-naide-do-b-without-doing-a.md",
+      "source_lesson": "5.19",
+      "source_title": "「ないで」Do B without doing A"
+    },
+    {
+      "local_index": 111,
+      "local_slug": "111-nakute-negative-te-form",
+      "local_file": "111-nakute-negative-te-form.md",
+      "source_lesson": "5.20",
+      "source_title": "「なくて」(1) Connect actions"
+    },
+    {
+      "local_index": 112,
+      "local_slug": "112-janakute-correct-information",
+      "local_file": "112-janakute-correct-information.md",
+      "source_lesson": "5.21",
+      "source_title": "「じゃなくて」Correct information"
+    },
+    {
+      "local_index": 113,
+      "local_slug": "113-shimau-finish-doing-something",
+      "local_file": "113-shimau-finish-doing-something.md",
+      "source_lesson": "5.22",
+      "source_title": "「しまう」Finish doing something"
+    },
+    {
+      "local_index": 114,
+      "local_slug": "114-tamaranai-unbearable",
+      "local_file": "114-tamaranai-unbearable.md",
+      "source_lesson": "5.24",
+      "source_title": "「堪らない・たまらない」Something is unbearable"
+    },
+    {
+      "local_index": 115,
+      "local_slug": "115-uchi-and-soto-in-japanese",
+      "local_file": "115-uchi-and-soto-in-japanese.md",
+      "source_lesson": "5.25",
+      "source_title": "Understanding ウチ and ソト in Japanese"
+    },
+    {
+      "local_index": 116,
+      "local_slug": "116-ageru-teageru-give-something",
+      "local_file": "116-ageru-teageru-give-something.md",
+      "source_lesson": "5.26",
+      "source_title": "「あげる・てあげる」Give something"
+    },
+    {
+      "local_index": 117,
+      "local_slug": "117-kureru-tekureru-someone-gives-you-something",
+      "local_file": "117-kureru-tekureru-someone-gives-you-something.md",
+      "source_lesson": "5.27",
+      "source_title": "「くれる・てくれる」Someone gives you something"
+    },
+    {
+      "local_index": 118,
+      "local_slug": "118-ni-mark-source",
+      "local_file": "118-ni-mark-source.md",
+      "source_lesson": "5.28",
+      "source_title": "「に」(4) Mark the source"
+    },
+    {
+      "local_index": 119,
+      "local_slug": "119-morau-temorau-receive-something",
+      "local_file": "119-morau-temorau-receive-something.md",
+      "source_lesson": "5.29",
+      "source_title": "「もらう・てもらう」Receive something"
+    },
+    {
+      "local_index": 120,
+      "local_slug": "120-iru-necessity",
+      "local_file": "120-iru-necessity.md",
+      "source_lesson": "6.1",
+      "source_title": "「要る・いる」Something is needed"
+    },
+    {
+      "local_index": 121,
+      "local_slug": "121-youda-something-seems-like",
+      "local_file": "121-youda-something-seems-like.md",
+      "source_lesson": "6.2",
+      "source_title": "「ようだ」Something seems like"
+    },
+    {
+      "local_index": 122,
+      "local_slug": "122-souda-you-heard-something",
+      "local_file": "122-souda-you-heard-something.md",
+      "source_lesson": "6.3",
+      "source_title": "「そうだ」You heard something"
+    },
+    {
+      "local_index": 123,
+      "local_slug": "123-rashii-make-conjecture",
+      "local_file": "123-rashii-make-conjecture.md",
+      "source_lesson": "6.4",
+      "source_title": "「らしい」Make a conjecture"
+    },
+    {
+      "local_index": 124,
+      "local_slug": "124-if",
+      "local_file": "124-if.md",
+      "source_lesson": "6.5",
+      "source_title": "「たら」If"
+    },
+    {
+      "local_index": 125,
+      "local_slug": "125-dattara-if-thats-the-case",
+      "local_file": "125-dattara-if-thats-the-case.md",
+      "source_lesson": "6.6",
+      "source_title": "「だったら」If that is the case"
+    },
+    {
+      "local_index": 126,
+      "local_slug": "126-moshi-add-uncertainty",
+      "local_file": "126-moshi-add-uncertainty.md",
+      "source_lesson": "6.7",
+      "source_title": "「もし」Add uncertainty"
+    },
+    {
+      "local_index": 127,
+      "local_slug": "127-shi-express-and-more-emphatically",
+      "local_file": "127-shi-express-and-more-emphatically.md",
+      "source_lesson": "6.8",
+      "source_title": "「し」Express 'and' more emphatically"
+    },
+    {
+      "local_index": 128,
+      "local_slug": "128-tari-create-inexhaustive-list-actions-states",
+      "local_file": "128-tari-create-inexhaustive-list-actions-states.md",
+      "source_lesson": "6.9",
+      "source_title": "「たり」Create an inexhaustive list of actions or states"
+    },
+    {
+      "local_index": 129,
+      "local_slug": "129-ato-after",
+      "local_file": "129-ato-after.md",
+      "source_lesson": "6.10",
+      "source_title": "「あと」 (1) After"
+    },
+    {
+      "local_index": 130,
+      "local_slug": "130-ato-in-addition",
+      "local_file": "130-ato-in-addition.md",
+      "source_lesson": "6.11",
+      "source_title": "「あと」 (2) In addition"
+    },
+    {
+      "local_index": 131,
+      "local_slug": "131-atode-ni-after-that",
+      "local_file": "131-atode-ni-after-that.md",
+      "source_lesson": "6.12",
+      "source_title": "「あとで・に」Something later with"
+    },
+    {
+      "local_index": 132,
+      "local_slug": "132-maeni-before-that",
+      "local_file": "132-maeni-before-that.md",
+      "source_lesson": "6.13",
+      "source_title": "「前に・で」Express 'before'"
+    },
+    {
+      "local_index": 133,
+      "local_slug": "133-hougaii-you-better-do-something",
+      "local_file": "133-hougaii-you-better-do-something.md",
+      "source_lesson": "6.14",
+      "source_title": "「方がいい」You better do something"
+    },
+    {
+      "local_index": 134,
+      "local_slug": "134-taradou-how-about",
+      "local_file": "134-taradou-how-about.md",
+      "source_lesson": "6.15",
+      "source_title": "「たらどう」Express 'how about doing X?'"
+    },
+    {
+      "local_index": 135,
+      "local_slug": "135-kamoshirenai-might-happen",
+      "local_file": "135-kamoshirenai-might-happen.md",
+      "source_lesson": "6.16",
+      "source_title": "「かもしれない」Express 'might'"
+    },
+    {
+      "local_index": 136,
+      "local_slug": "136-darou-will-probably-happen",
+      "local_file": "136-darou-will-probably-happen.md",
+      "source_lesson": "6.17",
+      "source_title": "「だろう(か)」Make an uninformed conjecture"
+    },
+    {
+      "local_index": 137,
+      "local_slug": "137-nichigainai-show-there-no-doubt",
+      "local_file": "137-nichigainai-show-there-no-doubt.md",
+      "source_lesson": "6.18",
+      "source_title": "「に違いない・にちがいない」Show there is no doubt"
+    },
+    {
+      "local_index": 138,
+      "local_slug": "138-tekara-doing-something-after-something-else",
+      "local_file": "138-tekara-doing-something-after-something-else.md",
+      "source_lesson": "6.19",
+      "source_title": "「てから」Doing something after something else"
+    },
+    {
+      "local_index": 139,
+      "local_slug": "139-sorekara-and-after-that",
+      "local_file": "139-sorekara-and-after-that.md",
+      "source_lesson": "6.20",
+      "source_title": "「それから」And after that"
+    },
+    {
+      "local_index": 140,
+      "local_slug": "140-teiru-1-expressing-continuous-state-action",
+      "local_file": "140-teiru-1-expressing-continuous-state-action.md",
+      "source_lesson": "6.21",
+      "source_title": "「ている」(1) Expressing a continuous state or action"
+    },
+    {
+      "local_index": 141,
+      "local_slug": "141-teiru-2-the-casual-past-form",
+      "local_file": "141-teiru-2-the-casual-past-form.md",
+      "source_lesson": "6.22",
+      "source_title": "「ている」(2) The casual and past form"
+    },
+    {
+      "local_index": 142,
+      "local_slug": "142-temiru-trying-something",
+      "local_file": "142-temiru-trying-something.md",
+      "source_lesson": "6.23",
+      "source_title": "「てみる」Trying something"
+    },
+    {
+      "local_index": 143,
+      "local_slug": "143-tekuru-1-do-action-come",
+      "local_file": "143-tekuru-1-do-action-come.md",
+      "source_lesson": "6.24",
+      "source_title": "「てくる」(1) Do an action and come"
+    },
+    {
+      "local_index": 144,
+      "local_slug": "144-teiku-1-do-action-go",
+      "local_file": "144-teiku-1-do-action-go.md",
+      "source_lesson": "6.25",
+      "source_title": "「ていく」(1) Do an action and go"
+    },
+    {
+      "local_index": 145,
+      "local_slug": "145-aidani-express-something-happens-during",
+      "local_file": "145-aidani-express-something-happens-during.md",
+      "source_lesson": "7.1",
+      "source_title": "「間」Express something happens during"
+    },
+    {
+      "local_index": 146,
+      "local_slug": "146-monoda-express-strong-emotions",
+      "local_file": "146-monoda-express-strong-emotions.md",
+      "source_lesson": "7.2",
+      "source_title": "「ものだ」Express strong emotions"
+    },
+    {
+      "local_index": 147,
+      "local_slug": "147-nishiteha-express-deviation-from-standard",
+      "local_file": "147-nishiteha-express-deviation-from-standard.md",
+      "source_lesson": "7.3",
+      "source_title": "「にしては」Express deviation from a standard"
+    },
+    {
+      "local_index": 148,
+      "local_slug": "148-suru-2-describe-someones-attributes",
+      "local_file": "148-suru-2-describe-someones-attributes.md",
+      "source_lesson": "7.4",
+      "source_title": "「する」(2) Describe someone's attributes"
+    },
+    {
+      "local_index": 149,
+      "local_slug": "149-noda-explain-ask-for-explanations",
+      "local_file": "149-noda-explain-ask-for-explanations.md",
+      "source_lesson": "7.5",
+      "source_title": "「のだ」Explain or ask for explanations"
+    },
+    {
+      "local_index": 150,
+      "local_slug": "150-mada-something-keeps-its-state",
+      "local_file": "150-mada-something-keeps-its-state.md",
+      "source_lesson": "7.6",
+      "source_title": "「まだ」Something keeps its state"
+    },
+    {
+      "local_index": 151,
+      "local_slug": "151-hazu-express-expectation",
+      "local_file": "151-hazu-express-expectation.md",
+      "source_lesson": "7.7",
+      "source_title": "「はず」Express an expectation"
+    },
+    {
+      "local_index": 152,
+      "local_slug": "152-bakari-something-only-thing",
+      "local_file": "152-bakari-something-only-thing.md",
+      "source_lesson": "7.8",
+      "source_title": "「ばかり」Something is the only thing"
+    },
+    {
+      "local_index": 153,
+      "local_slug": "153-tokoroda-when-you-arewere-just-about-do-something",
+      "local_file": "153-tokoroda-when-you-arewere-just-about-do-something.md",
+      "source_lesson": "7.9",
+      "source_title": "「ところだ」(2) When you are/were just about to do something"
+    },
+    {
+      "local_index": 154,
+      "local_slug": "154-kadouka-asking-yes-no-question",
+      "local_file": "154-kadouka-asking-yes-no-question.md",
+      "source_lesson": "7.10",
+      "source_title": "「かどうか」Asking a yes-no question"
+    },
+    {
+      "local_index": 155,
+      "local_slug": "155-wo-2-moving-space",
+      "local_file": "155-wo-2-moving-space.md",
+      "source_lesson": "7.11",
+      "source_title": "「を」(2) Moving in a space"
+    },
+    {
+      "local_index": 156,
+      "local_slug": "156-wo-3-indicate-starting-place-motion",
+      "local_file": "156-wo-3-indicate-starting-place-motion.md",
+      "source_lesson": "7.12",
+      "source_title": "「を」(3) Indicate the starting place of a motion"
+    },
+    {
+      "local_index": 157,
+      "local_slug": "157-wo-4-mark-cause-emotion",
+      "local_file": "157-wo-4-mark-cause-emotion.md",
+      "source_lesson": "7.13",
+      "source_title": "「を」(4) Mark the cause of emotion"
+    },
+    {
+      "local_index": 158,
+      "local_slug": "158-toshite-as",
+      "local_file": "158-toshite-as.md",
+      "source_lesson": "7.14",
+      "source_title": "「として」As a"
+    },
+    {
+      "local_index": 159,
+      "local_slug": "159-make-a-comparison-from-a-certain-standard",
+      "local_file": "159-make-a-comparison-from-a-certain-standard.md",
+      "source_lesson": "7.15",
+      "source_title": "「としては」Make a comparison"
+    },
+    {
+      "local_index": 160,
+      "local_slug": "160-3-making-something-take-place",
+      "local_file": "160-3-making-something-take-place.md",
+      "source_lesson": "7.16",
+      "source_title": "「する」(3) Making something take place"
+    },
+    {
+      "local_index": 161,
+      "local_slug": "161-no-4-ask-questions-explain",
+      "local_file": "161-no-4-ask-questions-explain.md",
+      "source_lesson": "7.17",
+      "source_title": "「の」(4) Ask questions or explain"
+    },
+    {
+      "local_index": 162,
+      "local_slug": "162-uchini-strike-iron-while-its-hot",
+      "local_file": "162-uchini-strike-iron-while-its-hot.md",
+      "source_lesson": "7.18",
+      "source_title": "「うちに」Strike the iron while it's hot"
+    },
+    {
+      "local_index": 163,
+      "local_slug": "163-youni-do-something-certain-way-so-that",
+      "local_file": "163-youni-do-something-certain-way-so-that.md",
+      "source_lesson": "7.19",
+      "source_title": "「ように」Do something in a certain way so that"
+    },
+    {
+      "local_index": 164,
+      "local_slug": "164-temo-even-if",
+      "local_file": "164-temo-even-if.md",
+      "source_lesson": "7.20",
+      "source_title": "「ても」Even if"
+    },
+    {
+      "local_index": 165,
+      "local_slug": "165-demo-even",
+      "local_file": "165-demo-even.md",
+      "source_lesson": "7.21",
+      "source_title": "「でも」Even"
+    },
+    {
+      "local_index": 166,
+      "local_slug": "166-asking-questions-plain-form",
+      "local_file": "166-asking-questions-plain-form.md",
+      "source_lesson": "7.23",
+      "source_title": "Asking questions in plain form"
+    },
+    {
+      "local_index": 167,
+      "local_slug": "167-noka-ask-more-questions",
+      "local_file": "167-noka-ask-more-questions.md",
+      "source_lesson": "7.24",
+      "source_title": "「のか」Ask more questions"
+    },
+    {
+      "local_index": 168,
+      "local_slug": "168-zi4-fen1-talk-about-self",
+      "local_file": "168-zi4-fen1-talk-about-self.md",
+      "source_lesson": "7.25",
+      "source_title": "「自分」Talk about the self"
+    },
+    {
+      "local_index": 169,
+      "local_slug": "169-soshite-connecting-sentences",
+      "local_file": "169-soshite-connecting-sentences.md",
+      "source_lesson": "7.26",
+      "source_title": "「そして」Connecting sentences"
+    },
+    {
+      "local_index": 170,
+      "local_slug": "170-suru-4-express-perception",
+      "local_file": "170-suru-4-express-perception.md",
+      "source_lesson": "7.27",
+      "source_title": "「する」(4) Express perception"
+    },
+    {
+      "local_index": 171,
+      "local_slug": "171-the-days-week",
+      "local_file": "171-the-days-week.md",
+      "source_lesson": "8.1",
+      "source_title": "The days of the week"
+    },
+    {
+      "local_index": 172,
+      "local_slug": "172-ittai-what-hell",
+      "local_file": "172-ittai-what-hell.md",
+      "source_lesson": "8.2",
+      "source_title": "「一体」What the hell"
+    },
+    {
+      "local_index": 173,
+      "local_slug": "173-ni-indicate-point-time",
+      "local_file": "173-ni-indicate-point-time.md",
+      "source_lesson": "8.3",
+      "source_title": "「に」(5) Indicate a point in time"
+    },
+    {
+      "local_index": 174,
+      "local_slug": "174-the-numbers-1",
+      "local_file": "174-the-numbers-1.md",
+      "source_lesson": "8.4",
+      "source_title": "The Numbers (1)"
+    },
+    {
+      "local_index": 175,
+      "local_slug": "175-the-numbers-2",
+      "local_file": "175-the-numbers-2.md",
+      "source_lesson": "8.5",
+      "source_title": "The Numbers (2)"
+    },
+    {
+      "local_index": 176,
+      "local_slug": "176-the-months-year",
+      "local_file": "176-the-months-year.md",
+      "source_lesson": "8.6",
+      "source_title": "The months of the year"
+    },
+    {
+      "local_index": 177,
+      "local_slug": "177-telling-time",
+      "local_file": "177-telling-time.md",
+      "source_lesson": "8.7",
+      "source_title": "Time"
+    },
+    {
+      "local_index": 178,
+      "local_slug": "178-de-2-indicate-time",
+      "local_file": "178-de-2-indicate-time.md",
+      "source_lesson": "8.9",
+      "source_title": "「で」(5) Indicate a point in time"
+    },
+    {
+      "local_index": 179,
+      "local_slug": "179-the-native-japanese-numbers",
+      "local_file": "179-the-native-japanese-numbers.md",
+      "source_lesson": "8.10",
+      "source_title": "The native Japanese numbers"
+    },
+    {
+      "local_index": 180,
+      "local_slug": "180-kara-indicate-starting-point",
+      "local_file": "180-kara-indicate-starting-point.md",
+      "source_lesson": "8.11",
+      "source_title": "「から」(2) Indicate a starting point"
+    },
+    {
+      "local_index": 181,
+      "local_slug": "181-express-time-durations",
+      "local_file": "181-express-time-durations.md",
+      "source_lesson": "8.12",
+      "source_title": "Express Time Durations"
+    },
+    {
+      "local_index": 182,
+      "local_slug": "182-de-3-the-tools-trade",
+      "local_file": "182-de-3-the-tools-trade.md",
+      "source_lesson": "8.13",
+      "source_title": "「で」(6) The tools of the trade"
+    },
+    {
+      "local_index": 183,
+      "local_slug": "183-days-month",
+      "local_file": "183-days-month.md",
+      "source_lesson": "8.14",
+      "source_title": "Days of the month"
+    },
+    {
+      "local_index": 184,
+      "local_slug": "184-expressing-distances",
+      "local_file": "184-expressing-distances.md",
+      "source_lesson": "8.15",
+      "source_title": "Expressing distances"
+    },
+    {
+      "local_index": 185,
+      "local_slug": "185-made-expressing-until-to",
+      "local_file": "185-made-expressing-until-to.md",
+      "source_lesson": "8.16",
+      "source_title": "「まで」Expressing 'until' or 'to'"
+    },
+    {
+      "local_index": 186,
+      "local_slug": "186-madeni-set-time-limit",
+      "local_file": "186-madeni-set-time-limit.md",
+      "source_lesson": "8.17",
+      "source_title": "「までに」Set a time limit"
+    },
+    {
+      "local_index": 187,
+      "local_slug": "187-teiku-2-an-action-state-keeps-changing",
+      "local_file": "187-teiku-2-an-action-state-keeps-changing.md",
+      "source_lesson": "8.18",
+      "source_title": "「ていく」(2) An action or state keeps changing"
+    },
+    {
+      "local_index": 188,
+      "local_slug": "188-tekuru-2-an-action-state-keeps-changing",
+      "local_file": "188-tekuru-2-an-action-state-keeps-changing.md",
+      "source_lesson": "8.19",
+      "source_title": "「てくる」(2) An action or state keeps changing"
+    },
+    {
+      "local_index": 189,
+      "local_slug": "189-yori-2-indicate-set-point",
+      "local_file": "189-yori-2-indicate-set-point.md",
+      "source_lesson": "8.20",
+      "source_title": "「より」(2) Indicate a set point"
+    },
+    {
+      "local_index": 190,
+      "local_slug": "190-doko-asking-where",
+      "local_file": "190-doko-asking-where.md",
+      "source_lesson": "8.21",
+      "source_title": "「どこ」Asking 'where'"
+    },
+    {
+      "local_index": 191,
+      "local_slug": "191-go-after",
+      "local_file": "191-go-after.md",
+      "source_lesson": "8.22",
+      "source_title": "「後」After"
+    },
+    {
+      "local_index": 192,
+      "local_slug": "192-time-duration-distance-questions",
+      "local_file": "192-time-duration-distance-questions.md",
+      "source_lesson": "8.23",
+      "source_title": "Time, duration and distance questions"
+    },
+    {
+      "local_index": 193,
+      "local_slug": "193-ka-3-making-question-words-unspecific",
+      "local_file": "193-ka-3-making-question-words-unspecific.md",
+      "source_lesson": "8.24",
+      "source_title": "「か」(3) Making question words unspecific"
+    },
+    {
+      "local_index": 194,
+      "local_slug": "194-mo-2-question-words-encompass-everything-nothing",
+      "local_file": "194-mo-2-question-words-encompass-everything-nothing.md",
+      "source_lesson": "8.25",
+      "source_title": "「も」(2) Question words encompass everything or nothing"
+    },
+    {
+      "local_index": 195,
+      "local_slug": "195-demo-question-words",
+      "local_file": "195-demo-question-words.md",
+      "source_lesson": "8.26",
+      "source_title": "「でも」Question words"
+    },
+    {
+      "local_index": 196,
+      "local_slug": "196-nimo-question-words",
+      "local_file": "196-nimo-question-words.md",
+      "source_lesson": "8.27",
+      "source_title": "「にも」Question words"
+    },
+    {
+      "local_index": 197,
+      "local_slug": "197-suru-5-indicate-cost",
+      "local_file": "197-suru-5-indicate-cost.md",
+      "source_lesson": "8.28",
+      "source_title": "「する」(5) Indicate a cost"
+    },
+    {
+      "local_index": 198,
+      "local_slug": "198-kana-you-can-start-wondering",
+      "local_file": "198-kana-you-can-start-wondering.md",
+      "source_lesson": "8.29",
+      "source_title": "「かな」You can start wondering"
+    },
+    {
+      "local_index": 199,
+      "local_slug": "199-kurai-gurai-express-approximation",
+      "local_file": "199-kurai-gurai-express-approximation.md",
+      "source_lesson": "8.30",
+      "source_title": "「くらい・ぐらい」Express approximation"
+    },
+    {
+      "local_index": 200,
+      "local_slug": "200-mai-something-repeats-every",
+      "local_file": "200-mai-something-repeats-every.md",
+      "source_lesson": "8.31",
+      "source_title": "「毎」Sometimes repeats 'every'"
+    },
+    {
+      "local_index": 201,
+      "local_slug": "201-goro-indicating-approximate-point-time",
+      "local_file": "201-goro-indicating-approximate-point-time.md",
+      "source_lesson": "8.32",
+      "source_title": "「ごろ」Indicating an approximate point in time"
+    },
+    {
+      "local_index": 202,
+      "local_slug": "202-gotoni-another-way-say-every",
+      "local_file": "202-gotoni-another-way-say-every.md",
+      "source_lesson": "8.33",
+      "source_title": "「ごとに」Another way to say 'every'"
+    },
+    {
+      "local_index": 203,
+      "local_slug": "203-okini-indicate-time-between-two-events",
+      "local_file": "203-okini-indicate-time-between-two-events.md",
+      "source_lesson": "8.34",
+      "source_title": "「おきに」Indicate the time between two events"
+    },
+    {
+      "local_index": 204,
+      "local_slug": "204-tokoroda-express-that-it-takes-certain-time-from-a-b",
+      "local_file": "204-tokoroda-express-that-it-takes-certain-time-from-a-b.md",
+      "source_lesson": "8.35",
+      "source_title": "「ところだ」(3) Express that it takes a certain time from A to B"
+    },
+    {
+      "local_index": 205,
+      "local_slug": "205-verb-hajimeru-u",
+      "local_file": "205-verb-hajimeru-u.md",
+      "source_lesson": "9.1",
+      "source_title": "Verb はじめる - U"
+    },
+    {
+      "local_index": 206,
+      "local_slug": "206-verb-hajimeru-ru",
+      "local_file": "206-verb-hajimeru-ru.md",
+      "source_lesson": "9.2",
+      "source_title": "Verb はじめる - Ru"
+    },
+    {
+      "local_index": 207,
+      "local_slug": "207-verb-hajimeru-irregulars",
+      "local_file": "207-verb-hajimeru-irregulars.md",
+      "source_lesson": "9.3",
+      "source_title": "Verb はじめる - Irregulars"
+    },
+    {
+      "local_index": 208,
+      "local_slug": "208-using-verb-stems-as-nouns",
+      "local_file": "208-using-verb-stems-as-nouns.md",
+      "source_lesson": "9.4",
+      "source_title": "Using verb stems as nouns"
+    },
+    {
+      "local_index": 209,
+      "local_slug": "209-compound-verbs",
+      "local_file": "209-compound-verbs.md",
+      "source_lesson": "9.5",
+      "source_title": "Compound-Verbs"
+    },
+    {
+      "local_index": 210,
+      "local_slug": "210-ni-go-somewhere-do-something",
+      "local_file": "210-ni-go-somewhere-do-something.md",
+      "source_lesson": "9.6",
+      "source_title": "「に」(6) Go somewhere to do something"
+    },
+    {
+      "local_index": 211,
+      "local_slug": "211-tameni-indicate-benefit",
+      "local_file": "211-tameni-indicate-benefit.md",
+      "source_lesson": "9.7",
+      "source_title": "「ために」Indicate a benefit"
+    },
+    {
+      "local_index": 212,
+      "local_slug": "212-agaru-something-extreme-finished",
+      "local_file": "212-agaru-something-extreme-finished.md",
+      "source_lesson": "9.8",
+      "source_title": "「上がる」Something is extreme or finished"
+    },
+    {
+      "local_index": 213,
+      "local_slug": "213-ageru-something-finished",
+      "local_file": "213-ageru-something-finished.md",
+      "source_lesson": "9.9",
+      "source_title": "「上げる」Something is finished"
+    },
+    {
+      "local_index": 214,
+      "local_slug": "214-tsudzukeru-continue-doing-something",
+      "local_file": "214-tsudzukeru-continue-doing-something.md",
+      "source_lesson": "9.10",
+      "source_title": "「つづける」Continue doing something"
+    },
+    {
+      "local_index": 215,
+      "local_slug": "215-owaru-finish-doing-something",
+      "local_file": "215-owaru-finish-doing-something.md",
+      "source_lesson": "9.11",
+      "source_title": "「おわる」Finish doing something"
+    },
+    {
+      "local_index": 216,
+      "local_slug": "216-kata-the-way-doing-something",
+      "local_file": "216-kata-the-way-doing-something.md",
+      "source_lesson": "9.12",
+      "source_title": "「方・かた」The way of doing something"
+    },
+    {
+      "local_index": 217,
+      "local_slug": "217-nikui-something-hard-do",
+      "local_file": "217-nikui-something-hard-do.md",
+      "source_lesson": "9.13",
+      "source_title": "「難い」Something is hard to do"
+    },
+    {
+      "local_index": 218,
+      "local_slug": "218-yasui-something-easy-do",
+      "local_file": "218-yasui-something-easy-do.md",
+      "source_lesson": "9.14",
+      "source_title": "「易い」Something is easy to do"
+    },
+    {
+      "local_index": 219,
+      "local_slug": "219-sugiru-something-excessive",
+      "local_file": "219-sugiru-something-excessive.md",
+      "source_lesson": "9.15",
+      "source_title": "「過ぎる」Something is excessive"
+    },
+    {
+      "local_index": 220,
+      "local_slug": "220-konna-sonna-anna-this-that-kind-thing",
+      "local_file": "220-konna-sonna-anna-this-that-kind-thing.md",
+      "source_lesson": "9.16",
+      "source_title": "「こんな・そんな・あんな」This and that kind of thing"
+    },
+    {
+      "local_index": 221,
+      "local_slug": "221-konnani-sonnani-annani-emphasize-verbs-adjectives",
+      "local_file": "221-konnani-sonnani-annani-emphasize-verbs-adjectives.md",
+      "source_lesson": "9.17",
+      "source_title": "「こんなに・そんなに・あんなに」Emphasize verbs and adjectives"
+    },
+    {
+      "local_index": 222,
+      "local_slug": "222-nagara-do-something-while-doing-something-else",
+      "local_file": "222-nagara-do-something-while-doing-something-else.md",
+      "source_lesson": "9.18",
+      "source_title": "「ながら」Do something while doing something else"
+    },
+    {
+      "local_index": 223,
+      "local_slug": "223-dasu-something-that-was-dormant-started",
+      "local_file": "223-dasu-something-that-was-dormant-started.md",
+      "source_lesson": "9.19",
+      "source_title": "「出す」Something that was dormant started"
+    },
+    {
+      "local_index": 224,
+      "local_slug": "224-sou-something-looks-like-its-about-do-something",
+      "local_file": "224-sou-something-looks-like-its-about-do-something.md",
+      "source_lesson": "9.20",
+      "source_title": "「そう」Something looks like it's about to do something"
+    },
+    {
+      "local_index": 225,
+      "local_slug": "225-the-counters",
+      "local_file": "225-the-counters.md",
+      "source_lesson": "9.21",
+      "source_title": "The counters"
+    },
+    {
+      "local_index": 226,
+      "local_slug": "226-ato-3-requirement-fulfill-condition",
+      "local_file": "226-ato-3-requirement-fulfill-condition.md",
+      "source_lesson": "9.22",
+      "source_title": "「あと」(3) Requirement to fulfill a condition"
+    },
+    {
+      "local_index": 227,
+      "local_slug": "227-jyuu-1-the-whole-place-space",
+      "local_file": "227-jyuu-1-the-whole-place-space.md",
+      "source_lesson": "9.23",
+      "source_title": "「中・じゅう」 (1) The whole place or space"
+    },
+    {
+      "local_index": 228,
+      "local_slug": "228-chyuu-2-in-process-of",
+      "local_file": "228-chyuu-2-in-process-of.md",
+      "source_lesson": "9.24",
+      "source_title": "「中・ちゅう」 (2) In the process of"
+    },
+    {
+      "local_index": 229,
+      "local_slug": "229-chyuu-jyuu-3-whole-part-time",
+      "local_file": "229-chyuu-jyuu-3-whole-part-time.md",
+      "source_lesson": "9.25",
+      "source_title": "「中・ちゅう・じゅう」(3) Whole or part time"
+    },
+    {
+      "local_index": 230,
+      "local_slug": "230-hodo-3-express-approximation",
+      "local_file": "230-hodo-3-express-approximation.md",
+      "source_lesson": "9.26",
+      "source_title": "「ほど」(3) Express approximation"
+    },
+    {
+      "local_index": 231,
+      "local_slug": "231-zutsu-distribute-quantity-equally",
+      "local_file": "231-zutsu-distribute-quantity-equally.md",
+      "source_lesson": "9.27",
+      "source_title": "「ずつ」Distribute quantity equally"
+    },
+    {
+      "local_index": 232,
+      "local_slug": "232-basic-math-japanese",
+      "local_file": "232-basic-math-japanese.md",
+      "source_lesson": "10.1",
+      "source_title": "Basic math in Japanese"
+    },
+    {
+      "local_index": 233,
+      "local_slug": "233-fractions-decimals-japanese",
+      "local_file": "233-fractions-decimals-japanese.md",
+      "source_lesson": "10.2",
+      "source_title": "Fractions and decimals in Japanese"
+    },
+    {
+      "local_index": 234,
+      "local_slug": "234-mo-3-emphasize-something",
+      "local_file": "234-mo-3-emphasize-something.md",
+      "source_lesson": "10.3",
+      "source_title": "「も」(3) Emphasize something"
+    },
+    {
+      "local_index": 235,
+      "local_slug": "235-tte-introduce-topic-colloquially",
+      "local_file": "235-tte-introduce-topic-colloquially.md",
+      "source_lesson": "10.4",
+      "source_title": "「って」(1) Introduce a topic colloquially"
+    },
+    {
+      "local_index": 236,
+      "local_slug": "236-toka-make-inexhaustive-list",
+      "local_file": "236-toka-make-inexhaustive-list.md",
+      "source_lesson": "10.5",
+      "source_title": "「とか」Make an inexhaustive list"
+    },
+    {
+      "local_index": 237,
+      "local_slug": "237-ya-make-inexhaustive-list",
+      "local_file": "237-ya-make-inexhaustive-list.md",
+      "source_lesson": "10.6",
+      "source_title": "「や」Make an inexhaustive list"
+    },
+    {
+      "local_index": 238,
+      "local_slug": "238-nanka-doing-just-about-anything",
+      "local_file": "238-nanka-doing-just-about-anything.md",
+      "source_lesson": "10.7",
+      "source_title": "「なんか」Doing just about anything"
+    },
+    {
+      "local_index": 239,
+      "local_slug": "239-ne-ask-for-confirmation-isnt-it",
+      "local_file": "239-ne-ask-for-confirmation-isnt-it.md",
+      "source_lesson": "10.8",
+      "source_title": "「ね」Ask for confirmation, isn't it?"
+    },
+    {
+      "local_index": 240,
+      "local_slug": "240-yo-inform-someone-something-new",
+      "local_file": "240-yo-inform-someone-something-new.md",
+      "source_lesson": "10.9",
+      "source_title": "「よ」Inform someone of something new"
+    },
+    {
+      "local_index": 241,
+      "local_slug": "241-wa-make-weak-assertion",
+      "local_file": "241-wa-make-weak-assertion.md",
+      "source_lesson": "10.10",
+      "source_title": "「わ」Make a weak assertion"
+    },
+    {
+      "local_index": 242,
+      "local_slug": "242-na-seek-confirmation-more",
+      "local_file": "242-na-seek-confirmation-more.md",
+      "source_lesson": "10.11",
+      "source_title": "「な」Seek confirmation and more"
+    },
+    {
+      "local_index": 243,
+      "local_slug": "243-sa-be-like-different",
+      "local_file": "243-sa-be-like-different.md",
+      "source_lesson": "10.12",
+      "source_title": "「さ」Be 'like' different"
+    },
+    {
+      "local_index": 244,
+      "local_slug": "244-kashira-wondering",
+      "local_file": "244-kashira-wondering.md",
+      "source_lesson": "10.13",
+      "source_title": "「かしら」Wondering"
+    },
+    {
+      "local_index": 245,
+      "local_slug": "245-dakedenaku-not-only",
+      "local_file": "245-dakedenaku-not-only.md",
+      "source_lesson": "10.14",
+      "source_title": "「だけでなく」Not only"
+    },
+    {
+      "local_index": 246,
+      "local_slug": "246-de-4-express-reason",
+      "local_file": "246-de-4-express-reason.md",
+      "source_lesson": "10.15",
+      "source_title": "「で」(7) Express a reason"
+    },
+    {
+      "local_index": 247,
+      "local_slug": "247-verb-potential-u",
+      "local_file": "247-verb-potential-u.md",
+      "source_lesson": "10.16",
+      "source_title": "Verb Potential - U"
+    },
+    {
+      "local_index": 248,
+      "local_slug": "248-verb-potential-ru",
+      "local_file": "248-verb-potential-ru.md",
+      "source_lesson": "10.17",
+      "source_title": "Verb Potential - Ru"
+    },
+    {
+      "local_index": 249,
+      "local_slug": "249-verb-potential-irregular",
+      "local_file": "249-verb-potential-irregular.md",
+      "source_lesson": "10.18",
+      "source_title": "Verb Potential - Irregular"
+    },
+    {
+      "local_index": 250,
+      "local_slug": "250-verb-potential-slang",
+      "local_file": "250-verb-potential-slang.md",
+      "source_lesson": "10.19",
+      "source_title": "Verb Potential - Slang"
+    },
+    {
+      "local_index": 251,
+      "local_slug": "251-to-express-if",
+      "local_file": "251-to-express-if.md",
+      "source_lesson": "11.1",
+      "source_title": "「と」(3) Express 'if'"
+    },
+    {
+      "local_index": 252,
+      "local_slug": "252-suruto-if-you-do-this-then",
+      "local_file": "252-suruto-if-you-do-this-then.md",
+      "source_lesson": "11.3",
+      "source_title": "「すると」If you do this then..."
+    },
+    {
+      "local_index": 253,
+      "local_slug": "253-mieru-something-visible",
+      "local_file": "253-mieru-something-visible.md",
+      "source_lesson": "11.4",
+      "source_title": "「見える」Something is visible"
+    },
+    {
+      "local_index": 254,
+      "local_slug": "254-kikoeru-something-audiable",
+      "local_file": "254-kikoeru-something-audiable.md",
+      "source_lesson": "11.5",
+      "source_title": "「聞こえる」Something is audible"
+    },
+    {
+      "local_index": 255,
+      "local_slug": "255-youni-express-likeness",
+      "local_file": "255-youni-express-likeness.md",
+      "source_lesson": "11.7",
+      "source_title": "「ように・な」Express likeness"
+    },
+    {
+      "local_index": 256,
+      "local_slug": "256-nakunaru-it-comes-undone",
+      "local_file": "256-nakunaru-it-comes-undone.md",
+      "source_lesson": "11.8",
+      "source_title": "「なくなる」It comes undone"
+    },
+    {
+      "local_index": 257,
+      "local_slug": "257-nakute-state-cause-reason",
+      "local_file": "257-nakute-state-cause-reason.md",
+      "source_lesson": "11.9",
+      "source_title": "「なくて」(2) State a cause or a reason"
+    },
+    {
+      "local_index": 258,
+      "local_slug": "258-ba-create-condition",
+      "local_file": "258-ba-create-condition.md",
+      "source_lesson": "11.10",
+      "source_title": "「ば」 Create a condition"
+    },
+    {
+      "local_index": 259,
+      "local_slug": "259-bayokatta-express-regret",
+      "local_file": "259-bayokatta-express-regret.md",
+      "source_lesson": "11.11",
+      "source_title": "「ばよかった」Express regret"
+    },
+    {
+      "local_index": 260,
+      "local_slug": "260-wakeda-make-logical-judgement",
+      "local_file": "260-wakeda-make-logical-judgement.md",
+      "source_lesson": "11.12",
+      "source_title": "「わけだ」Make a logical judgement"
+    },
+    {
+      "local_index": 261,
+      "local_slug": "261-yahari-yappari-something-expected",
+      "local_file": "261-yahari-yappari-something-expected.md",
+      "source_lesson": "11.13",
+      "source_title": "「やはり・やっぱり」Something is expected"
+    },
+    {
+      "local_index": 262,
+      "local_slug": "262-youninaru-express-change",
+      "local_file": "262-youninaru-express-change.md",
+      "source_lesson": "11.14",
+      "source_title": "「ようになる」 Express a change"
+    },
+    {
+      "local_index": 263,
+      "local_slug": "263-younisuru-cause-circumstance-change",
+      "local_file": "263-younisuru-cause-circumstance-change.md",
+      "source_lesson": "11.15",
+      "source_title": "「ようにする」Cause a circumstance to change"
+    },
+    {
+      "local_index": 264,
+      "local_slug": "264-verb-imperatives-level-2-u",
+      "local_file": "264-verb-imperatives-level-2-u.md",
+      "source_lesson": "11.16",
+      "source_title": "Verb Imperatives Level 2 - U"
+    },
+    {
+      "local_index": 265,
+      "local_slug": "265-verb-imperatives-level-2-ru",
+      "local_file": "265-verb-imperatives-level-2-ru.md",
+      "source_lesson": "11.17",
+      "source_title": "Verb Imperatives Level 2 - Ru"
+    },
+    {
+      "local_index": 266,
+      "local_slug": "266-verb-imperatives-level-2-irregular",
+      "local_file": "266-verb-imperatives-level-2-irregular.md",
+      "source_lesson": "11.18",
+      "source_title": "Verb Imperatives Level 2 - Irregular"
+    },
+    {
+      "local_index": 267,
+      "local_slug": "267-tell-someone-to-not-do-something",
+      "local_file": "267-tell-someone-to-not-do-something.md",
+      "source_lesson": "11.19",
+      "source_title": "「な」 Tell someone to not do something"
+    },
+    {
+      "local_index": 268,
+      "local_slug": "268-imperative-level-1",
+      "local_file": "268-imperative-level-1.md",
+      "source_lesson": "11.20",
+      "source_title": "Imperatives Level 1"
+    },
+    {
+      "local_index": 269,
+      "local_slug": "269-2-dont-do-x",
+      "local_file": "269-2-dont-do-x.md",
+      "source_lesson": "11.21",
+      "source_title": "「ないで」 Don't do something"
+    },
+    {
+      "local_index": 270,
+      "local_slug": "270-kure-imperative-form",
+      "local_file": "270-kure-imperative-form.md",
+      "source_lesson": "11.22",
+      "source_title": "「くれ」Give in imperative form"
+    },
+    {
+      "local_index": 271,
+      "local_slug": "271-numbers-100-9999",
+      "local_file": "271-numbers-100-9999.md",
+      "source_lesson": "11.23",
+      "source_title": "The numbers 100 - 9,999"
+    },
+    {
+      "local_index": 272,
+      "local_slug": "272-listing-dates-in-japanese",
+      "local_file": "272-listing-dates-in-japanese.md",
+      "source_lesson": "11.24",
+      "source_title": "Dates"
+    },
+    {
+      "local_index": 273,
+      "local_slug": "273-numbers-10000-99999999",
+      "local_file": "273-numbers-10000-99999999.md",
+      "source_lesson": "11.25",
+      "source_title": "The numbers 10,000 - 99,999,999"
+    },
+    {
+      "local_index": 274,
+      "local_slug": "274-even-bigger-numbers",
+      "local_file": "274-even-bigger-numbers.md",
+      "source_lesson": "11.26",
+      "source_title": "Even bigger numbers"
+    },
+    {
+      "local_index": 275,
+      "local_slug": "275-verb-volitional-u",
+      "local_file": "275-verb-volitional-u.md",
+      "source_lesson": "11.27",
+      "source_title": "Verb Volitional - U"
+    },
+    {
+      "local_index": 276,
+      "local_slug": "276-verb-volitional-ru",
+      "local_file": "276-verb-volitional-ru.md",
+      "source_lesson": "11.28",
+      "source_title": "Verb Volitional - Ru"
+    },
+    {
+      "local_index": 277,
+      "local_slug": "277-verb-volitional-irregular",
+      "local_file": "277-verb-volitional-irregular.md",
+      "source_lesson": "11.29",
+      "source_title": "Verb Volitional - Irregular"
+    },
+    {
+      "local_index": 278,
+      "local_slug": "278-verb-causative-u",
+      "local_file": "278-verb-causative-u.md",
+      "source_lesson": "11.30",
+      "source_title": "Verb Causative - U"
+    },
+    {
+      "local_index": 279,
+      "local_slug": "279-verb-causative-ru",
+      "local_file": "279-verb-causative-ru.md",
+      "source_lesson": "11.31",
+      "source_title": "Verb Causative - Ru"
+    },
+    {
+      "local_index": 280,
+      "local_slug": "280-verb-causative-irregular",
+      "local_file": "280-verb-causative-irregular.md",
+      "source_lesson": "11.32",
+      "source_title": "Verb Causative - Irregular"
+    },
+    {
+      "local_index": 281,
+      "local_slug": "281-verb-receptive-u",
+      "local_file": "281-verb-receptive-u.md",
+      "source_lesson": "11.33",
+      "source_title": "Verb Receptive - U"
+    },
+    {
+      "local_index": 282,
+      "local_slug": "282-verb-receptive-ru",
+      "local_file": "282-verb-receptive-ru.md",
+      "source_lesson": "11.34",
+      "source_title": "Verb Receptive - Ru"
+    },
+    {
+      "local_index": 283,
+      "local_slug": "283-verb-receptive-irregular",
+      "local_file": "283-verb-receptive-irregular.md",
+      "source_lesson": "11.35",
+      "source_title": "Verb Receptive - Irregular"
+    },
+    {
+      "local_index": 284,
+      "local_slug": "284-the-causative-receptive",
+      "local_file": "284-the-causative-receptive.md",
+      "source_lesson": "11.36",
+      "source_title": "The Causative-Receptive"
+    },
+    {
+      "local_index": 285,
+      "local_slug": "285-sorede-give-reason-while-connecting-sentences",
+      "local_file": "285-sorede-give-reason-while-connecting-sentences.md",
+      "source_lesson": "12.1",
+      "source_title": "「それで」 Give a reason while connecting sentences"
+    },
+    {
+      "local_index": 286,
+      "local_slug": "286-soredeha-if-that-case",
+      "local_file": "286-soredeha-if-that-case.md",
+      "source_lesson": "12.2",
+      "source_title": "「それでは」If that is the case"
+    },
+    {
+      "local_index": 287,
+      "local_slug": "287-to-quote-someone",
+      "local_file": "287-to-quote-someone.md",
+      "source_lesson": "12.3",
+      "source_title": "「と」(4) Quote someone"
+    },
+    {
+      "local_index": 288,
+      "local_slug": "288-tte-quote-someone-colloquially",
+      "local_file": "288-tte-quote-someone-colloquially.md",
+      "source_lesson": "12.4",
+      "source_title": "「って」(2) Quote someone colloquially"
+    },
+    {
+      "local_index": 289,
+      "local_slug": "289-toieba-make-something-just-mentioned-topic",
+      "local_file": "289-toieba-make-something-just-mentioned-topic.md",
+      "source_lesson": "12.5",
+      "source_title": "「といえば」Make something just mentioned the topic"
+    },
+    {
+      "local_index": 290,
+      "local_slug": "290-yaru-give-do-something",
+      "local_file": "290-yaru-give-do-something.md",
+      "source_lesson": "12.6",
+      "source_title": "「やる」Give or do something"
+    },
+    {
+      "local_index": 291,
+      "local_slug": "291-youtosuru-try-be-about-do-something",
+      "local_file": "291-youtosuru-try-be-about-do-something.md",
+      "source_lesson": "12.7",
+      "source_title": "「ようとする」Try to or be about to do something"
+    },
+    {
+      "local_index": 292,
+      "local_slug": "292-youtoomou-decide-desire-do-something",
+      "local_file": "292-youtoomou-decide-desire-do-something.md",
+      "source_lesson": "12.8",
+      "source_title": "「ようと思う」Decide to or desire to do something"
+    },
+    {
+      "local_index": 293,
+      "local_slug": "293-maitoomou-decide-desire-not-do-something",
+      "local_file": "293-maitoomou-decide-desire-not-do-something.md",
+      "source_lesson": "12.9",
+      "source_title": "「まいと思う」Decide or desire to not do something"
+    },
+    {
+      "local_index": 294,
+      "local_slug": "294-toiu-give-more-information",
+      "local_file": "294-toiu-give-more-information.md",
+      "source_lesson": "12.10",
+      "source_title": "「という」Give more information"
+    },
+    {
+      "local_index": 295,
+      "local_slug": "295-youniiu-tell-someone-do-something",
+      "local_file": "295-youniiu-tell-someone-do-something.md",
+      "source_lesson": "12.11",
+      "source_title": "「ように言う」Tell someone to do something"
+    },
+    {
+      "local_index": 296,
+      "local_slug": "296-hoshii-express-your-desires",
+      "local_file": "296-hoshii-express-your-desires.md",
+      "source_lesson": "12.12",
+      "source_title": "「欲しい・ほしい」Express your desires"
+    },
+    {
+      "local_index": 297,
+      "local_slug": "297-tehoshii-when-you-want-someone-do-something",
+      "local_file": "297-tehoshii-when-you-want-someone-do-something.md",
+      "source_lesson": "12.13",
+      "source_title": "「て欲しい・てほしい」When you want someone to do something"
+    },
+    {
+      "local_index": 298,
+      "local_slug": "298-verb-desire-u",
+      "local_file": "298-verb-desire-u.md",
+      "source_lesson": "12.14",
+      "source_title": "Verb Desire - U"
+    },
+    {
+      "local_index": 299,
+      "local_slug": "299-verb-desire-ru",
+      "local_file": "299-verb-desire-ru.md",
+      "source_lesson": "12.15",
+      "source_title": "Verb Desire - Ru"
+    },
+    {
+      "local_index": 300,
+      "local_slug": "300-verb-desire-irregular",
+      "local_file": "300-verb-desire-irregular.md",
+      "source_lesson": "12.16",
+      "source_title": "Verb Desire - Irregular"
+    },
+    {
+      "local_index": 301,
+      "local_slug": "301-dore-ask-for-decision-between-things",
+      "local_file": "301-dore-ask-for-decision-between-things.md",
+      "source_lesson": "12.17",
+      "source_title": "「どれ」Ask for a decision between things"
+    },
+    {
+      "local_index": 302,
+      "local_slug": "302-dono-dochira-dotchi-ask-for-decision-between-things",
+      "local_file": "302-dono-dochira-dotchi-ask-for-decision-between-things.md",
+      "source_lesson": "12.18",
+      "source_title": "「どの・どちら・どっち」Ask for a decision between things"
+    },
+    {
+      "local_index": 303,
+      "local_slug": "303-ni-express-action-on-surface",
+      "local_file": "303-ni-express-action-on-surface.md",
+      "source_lesson": "12.19",
+      "source_title": "「に」(7) Express an action on a surface"
+    },
+    {
+      "local_index": 304,
+      "local_slug": "304-tearu-something-current-state",
+      "local_file": "304-tearu-something-current-state.md",
+      "source_lesson": "12.20",
+      "source_title": "「てある」Something is in the current state"
+    },
+    {
+      "local_index": 305,
+      "local_slug": "305-teoku-do-something-advance",
+      "local_file": "305-teoku-do-something-advance.md",
+      "source_lesson": "12.21",
+      "source_title": "「ておく」Do something in advance"
+    },
+    {
+      "local_index": 306,
+      "local_slug": "306-noni-something-contrary-what-one-would-expect",
+      "local_file": "306-noni-something-contrary-what-one-would-expect.md",
+      "source_lesson": "12.22",
+      "source_title": "「のに」(1) Something is contrary to what one would expect"
+    },
+    {
+      "local_index": 307,
+      "local_slug": "307-sekkaku-when-you-have-rare-chance",
+      "local_file": "307-sekkaku-when-you-have-rare-chance.md",
+      "source_lesson": "12.23",
+      "source_title": "「せっかく」When you have a rare chance"
+    },
+    {
+      "local_index": 308,
+      "local_slug": "308-me-show-order",
+      "local_file": "308-me-show-order.md",
+      "source_lesson": "12.24",
+      "source_title": "「目」Show order"
+    },
+    {
+      "local_index": 309,
+      "local_slug": "309-how-describe-locations",
+      "local_file": "309-how-describe-locations.md",
+      "source_lesson": "12.25",
+      "source_title": "How to describe locations"
+    },
+    {
+      "local_index": 310,
+      "local_slug": "310-self-moving-and-other-moving-verbs",
+      "local_file": "310-self-moving-and-other-moving-verbs.md",
+      "source_lesson": "12.26",
+      "source_title": "Self-Moving And Other-Moving Verbs"
+    },
+    {
+      "local_index": 311,
+      "local_slug": "311-noni-in-order-do-something",
+      "local_file": "311-noni-in-order-do-something.md",
+      "source_lesson": "12.27",
+      "source_title": "「のに」(2) In order to do something"
+    },
+    {
+      "local_index": 312,
+      "local_slug": "312-ikenai-prohibit-something",
+      "local_file": "312-ikenai-prohibit-something.md",
+      "source_lesson": "12.28",
+      "source_title": "「いけない」Prohibit something"
+    },
+    {
+      "local_index": 313,
+      "local_slug": "313-naranai-prohibit-something-stronger",
+      "local_file": "313-naranai-prohibit-something-stronger.md",
+      "source_lesson": "12.29",
+      "source_title": "「ならない」Prohibit something stronger"
+    },
+    {
+      "local_index": 314,
+      "local_slug": "314-dame-prohibit-something-casually",
+      "local_file": "314-dame-prohibit-something-casually.md",
+      "source_lesson": "12.30",
+      "source_title": "「だめ」Prohibit something casually"
+    },
+    {
+      "local_index": 315,
+      "local_slug": "315-cha-ja-casual-abbreviation-for-teha-deha",
+      "local_file": "315-cha-ja-casual-abbreviation-for-teha-deha.md",
+      "source_lesson": "12.31",
+      "source_title": "「ちゃ・じゃ」A casual abbreviation for ては・では"
+    },
+    {
+      "local_index": 316,
+      "local_slug": "316-chimau-jimau-finish-doing-something",
+      "local_file": "316-chimau-jimau-finish-doing-something.md",
+      "source_lesson": "12.32",
+      "source_title": "「ちまう・じまう」Finish doing something"
+    },
+    {
+      "local_index": 317,
+      "local_slug": "317-chau-jau-finish-doing-something",
+      "local_file": "317-chau-jau-finish-doing-something.md",
+      "source_lesson": "12.33",
+      "source_title": "「ちゃう・じゃう」Finish doing something"
+    },
+    {
+      "local_index": 318,
+      "local_slug": "318-nakuteha-something-necessary",
+      "local_file": "318-nakuteha-something-necessary.md",
+      "source_lesson": "12.34",
+      "source_title": "「なくては」Something is necessary"
+    },
+    {
+      "local_index": 319,
+      "local_slug": "319-nakutehaikenai-naranai-dame-something-must-be-done",
+      "local_file": "319-nakutehaikenai-naranai-dame-something-must-be-done.md",
+      "source_lesson": "12.35",
+      "source_title": "「なくてはいけない・ならない・だめ」Something must be done"
+    },
+    {
+      "local_index": 320,
+      "local_slug": "320-dehanakute-correct-information",
+      "local_file": "320-dehanakute-correct-information.md",
+      "source_lesson": "12.36",
+      "source_title": "「ではなくて」Correct information"
+    },
+    {
+      "local_index": 321,
+      "local_slug": "321-garu-someone-shows-signs-something",
+      "local_file": "321-garu-someone-shows-signs-something.md",
+      "source_lesson": "13.1",
+      "source_title": "「がる」Someone shows signs of something"
+    },
+    {
+      "local_index": 322,
+      "local_slug": "322-kai-ask-yes-or-no-question",
+      "local_file": "322-kai-ask-yes-or-no-question.md",
+      "source_lesson": "13.2",
+      "source_title": "「かい」Ask a yes-or-no question"
+    },
+    {
+      "local_index": 323,
+      "local_slug": "323-dai-make-interrogative-question",
+      "local_file": "323-dai-make-interrogative-question.md",
+      "source_lesson": "13.3",
+      "source_title": "「だい」Make an interrogative question"
+    },
+    {
+      "local_index": 324,
+      "local_slug": "324-igai-except-something",
+      "local_file": "324-igai-except-something.md",
+      "source_lesson": "13.4",
+      "source_title": "「以外」Except something"
+    },
+    {
+      "local_index": 325,
+      "local_slug": "325-inai-inside-something",
+      "local_file": "325-inai-inside-something.md",
+      "source_lesson": "13.5",
+      "source_title": "「以内」Inside something"
+    },
+    {
+      "local_index": 326,
+      "local_slug": "326-taihen-something-pretty-extreme",
+      "local_file": "326-taihen-something-pretty-extreme.md",
+      "source_lesson": "13.6",
+      "source_title": "「大変」Something is pretty extreme"
+    },
+    {
+      "local_index": 327,
+      "local_slug": "327-shouganai-nothing-you-can-do",
+      "local_file": "327-shouganai-nothing-you-can-do.md",
+      "source_lesson": "13.7",
+      "source_title": "「しょうがない」Nothing you can do"
+    },
+    {
+      "local_index": 328,
+      "local_slug": "328-tabun-express-high-probablility",
+      "local_file": "328-tabun-express-high-probablility.md",
+      "source_lesson": "13.8",
+      "source_title": "「多分」Express a high probablility"
+    },
+    {
+      "local_index": 329,
+      "local_slug": "329-kitto-express-that-something-will-surely-happen",
+      "local_file": "329-kitto-express-that-something-will-surely-happen.md",
+      "source_lesson": "13.9",
+      "source_title": "「きっと」Express that something will surely happen"
+    },
+    {
+      "local_index": 330,
+      "local_slug": "330-chanto-something-appropriate",
+      "local_file": "330-chanto-something-appropriate.md",
+      "source_lesson": "13.10",
+      "source_title": "「ちゃんと」Something is appropriate"
+    },
+    {
+      "local_index": 331,
+      "local_slug": "331-5-so-well-and-then",
+      "local_file": "331-5-so-well-and-then.md",
+      "source_lesson": "13.11",
+      "source_title": "「で」(8) So?"
+    },
+    {
+      "local_index": 332,
+      "local_slug": "332-tokiniha-not-always-but-sometimes",
+      "local_file": "332-tokiniha-not-always-but-sometimes.md",
+      "source_lesson": "13.12",
+      "source_title": "「時には」Not always, but sometimes"
+    },
+    {
+      "local_index": 333,
+      "local_slug": "333-tochu-something-happens-during-another-action",
+      "local_file": "333-tochu-something-happens-during-another-action.md",
+      "source_lesson": "13.13",
+      "source_title": "「途中」Something happens during another action"
+    },
+    {
+      "local_index": 334,
+      "local_slug": "334-nikimatteiru-when-you-are-certain-something",
+      "local_file": "334-nikimatteiru-when-you-are-certain-something.md",
+      "source_lesson": "13.14",
+      "source_title": "「に決まっている」When you are certain of something"
+    },
+    {
+      "local_index": 335,
+      "local_slug": "335-baai-in-this-situation",
+      "local_file": "335-baai-in-this-situation.md",
+      "source_lesson": "13.15",
+      "source_title": "「場合」(1) In this situation"
+    },
+    {
+      "local_index": 336,
+      "local_slug": "336-2-express-exceptions-condemn-actions",
+      "local_file": "336-2-express-exceptions-condemn-actions.md",
+      "source_lesson": "13.16",
+      "source_title": "「場合」(2) In this situation"
+    },
+    {
+      "local_index": 337,
+      "local_slug": "337-1-not-particularly",
+      "local_file": "337-1-not-particularly.md",
+      "source_lesson": "13.17",
+      "source_title": "「別に」(1) Not particularly"
+    },
+    {
+      "local_index": 338,
+      "local_slug": "338-explicitly-state-an-exception",
+      "local_file": "338-explicitly-state-an-exception.md",
+      "source_lesson": "13.18",
+      "source_title": "「とは別に」Except this"
+    },
+    {
+      "local_index": 339,
+      "local_slug": "339-2-on-the-basis-of",
+      "local_file": "339-2-on-the-basis-of.md",
+      "source_lesson": "13.19",
+      "source_title": "「別に」(2) Separate things"
+    },
+    {
+      "local_index": 340,
+      "local_slug": "340-i-see-indeed",
+      "local_file": "340-i-see-indeed.md",
+      "source_lesson": "13.20",
+      "source_title": "「なるほど」Be convinced"
+    },
+    {
+      "local_index": 341,
+      "local_slug": "341-mazu-at-first",
+      "local_file": "341-mazu-at-first.md",
+      "source_lesson": "13.21",
+      "source_title": "「まず」(1) At first"
+    },
+    {
+      "local_index": 342,
+      "local_slug": "342-mazu-probably",
+      "local_file": "342-mazu-probably.md",
+      "source_lesson": "13.22",
+      "source_title": "「まず」(2) Probably"
+    },
+    {
+      "local_index": 343,
+      "local_slug": "343-sugu-express-short-distance-time",
+      "local_file": "343-sugu-express-short-distance-time.md",
+      "source_lesson": "13.23",
+      "source_title": "「すぐ」Express a short distance or time"
+    },
+    {
+      "local_index": 344,
+      "local_slug": "344-mousugu-pretty-soon",
+      "local_file": "344-mousugu-pretty-soon.md",
+      "source_lesson": "13.24",
+      "source_title": "「もうすぐ」Pretty soon"
+    },
+    {
+      "local_index": 345,
+      "local_slug": "345-mitaini-na-something-like-something-example-it",
+      "local_file": "345-mitaini-na-something-like-something-example-it.md",
+      "source_lesson": "13.25",
+      "source_title": "「みたいに・な」Something is like something or an example of it"
+    },
+    {
+      "local_index": 346,
+      "local_slug": "346-komu-something-enters-put-into",
+      "local_file": "346-komu-something-enters-put-into.md",
+      "source_lesson": "13.26",
+      "source_title": "「込む」Something enters or is put into"
+    },
+    {
+      "local_index": 347,
+      "local_slug": "347-kakeru-kakaru-general-overview",
+      "local_file": "347-kakeru-kakaru-general-overview.md",
+      "source_lesson": "13.27",
+      "source_title": "「かける・かかる」General overview"
+    },
+    {
+      "local_index": 348,
+      "local_slug": "348-kakeru-exerting-influence",
+      "local_file": "348-kakeru-exerting-influence.md",
+      "source_lesson": "13.28",
+      "source_title": "「かける」(1) Exerting influence"
+    },
+    {
+      "local_index": 349,
+      "local_slug": "349-kakeru-do-something-halfway-almost",
+      "local_file": "349-kakeru-do-something-halfway-almost.md",
+      "source_lesson": "13.29",
+      "source_title": "「かける」(2) Do something halfway or almost"
+    },
+    {
+      "local_index": 350,
+      "local_slug": "350-indicate-that-something-is-in-progress",
+      "local_file": "350-indicate-that-something-is-in-progress.md",
+      "source_lesson": "13.30",
+      "source_title": "「かけ」Something is in progress"
+    },
+    {
+      "local_index": 351,
+      "local_slug": "351-naosu-redo-something",
+      "local_file": "351-naosu-redo-something.md",
+      "source_lesson": "13.31",
+      "source_title": "「直す」Redo something"
+    },
+    {
+      "local_index": 352,
+      "local_slug": "352-an-introduction-politeness-japanese",
+      "local_file": "352-an-introduction-politeness-japanese.md",
+      "source_lesson": "14.1",
+      "source_title": "An introduction to politeness in Japanese"
+    },
+    {
+      "local_index": 353,
+      "local_slug": "353-desu-end-sentence-politely",
+      "local_file": "353-desu-end-sentence-politely.md",
+      "source_lesson": "14.2",
+      "source_title": "「です」End a sentence politely"
+    },
+    {
+      "local_index": 354,
+      "local_slug": "354-masu-creating-polite-form",
+      "local_file": "354-masu-creating-polite-form.md",
+      "source_lesson": "14.3",
+      "source_title": "「ます」Creating the polite form"
+    },
+    {
+      "local_index": 355,
+      "local_slug": "355-the-why-questions",
+      "local_file": "355-the-why-questions.md",
+      "source_lesson": "14.4",
+      "source_title": "The why questions"
+    },
+    {
+      "local_index": 356,
+      "local_slug": "356-dou-ask-in-what-way",
+      "local_file": "356-dou-ask-in-what-way.md",
+      "source_lesson": "14.5",
+      "source_title": "「どう」(2) Ask 'in what way?'"
+    },
+    {
+      "local_index": 357,
+      "local_slug": "357-itadaku-when-you-receive-something",
+      "local_file": "357-itadaku-when-you-receive-something.md",
+      "source_lesson": "14.6",
+      "source_title": "「いただく」When you receive something"
+    },
+    {
+      "local_index": 358,
+      "local_slug": "358-o-make-word-more-polite",
+      "local_file": "358-o-make-word-more-polite.md",
+      "source_lesson": "14.7",
+      "source_title": "「お」Make a word more polite"
+    },
+    {
+      "local_index": 359,
+      "local_slug": "359-go-make-noun-more-polite",
+      "local_file": "359-go-make-noun-more-polite.md",
+      "source_lesson": "14.8",
+      "source_title": "「ご」Make a noun more polite"
+    },
+    {
+      "local_index": 360,
+      "local_slug": "360-deshou-express-amount-certainty",
+      "local_file": "360-deshou-express-amount-certainty.md",
+      "source_lesson": "14.9",
+      "source_title": "「でしょう」Express an amount of certainty"
+    },
+    {
+      "local_index": 361,
+      "local_slug": "361-mashou-show-volition",
+      "local_file": "361-mashou-show-volition.md",
+      "source_lesson": "14.10",
+      "source_title": "「ましょう」Show volition"
+    },
+    {
+      "local_index": 362,
+      "local_slug": "362-4-but-however",
+      "local_file": "362-4-but-however.md",
+      "source_lesson": "14.11",
+      "source_title": "「が」(4) But..."
+    },
+    {
+      "local_index": 363,
+      "local_slug": "363-kudasai-make-polite-request",
+      "local_file": "363-kudasai-make-polite-request.md",
+      "source_lesson": "14.12",
+      "source_title": "「ください」Make polite request"
+    },
+    {
+      "local_index": 364,
+      "local_slug": "364-zehi-certainly",
+      "local_file": "364-zehi-certainly.md",
+      "source_lesson": "14.13",
+      "source_title": "「ぜひ」Certainly!"
+    },
+    {
+      "local_index": 365,
+      "local_slug": "365-how-give-direction-japanese",
+      "local_file": "365-how-give-direction-japanese.md",
+      "source_lesson": "14.14",
+      "source_title": "How to give direction in Japanese"
+    },
+    {
+      "local_index": 366,
+      "local_slug": "366-nakerebanaranai-express-necessity-do-something",
+      "local_file": "366-nakerebanaranai-express-necessity-do-something.md",
+      "source_lesson": "14.15",
+      "source_title": "「なければならない」Express necessity to do something"
+    },
+    {
+      "local_index": 367,
+      "local_slug": "367-choudai-make-request",
+      "local_file": "367-choudai-make-request.md",
+      "source_lesson": "14.16",
+      "source_title": "「ちょうだい」Make a request"
+    },
+    {
+      "local_index": 368,
+      "local_slug": "368-nasai-make-polite-command",
+      "local_file": "368-nasai-make-polite-command.md",
+      "source_lesson": "14.17",
+      "source_title": "「なさい」Make a polite command"
+    },
+    {
+      "local_index": 369,
+      "local_slug": "369-taradoudesuka-suggest-something",
+      "local_file": "369-taradoudesuka-suggest-something.md",
+      "source_lesson": "14.18",
+      "source_title": "「たらどうですか」Suggest something"
+    },
+    {
+      "local_index": 370,
+      "local_slug": "370-sama-call-someone-politely",
+      "local_file": "370-sama-call-someone-politely.md",
+      "source_lesson": "14.19",
+      "source_title": "「さま」Call someone politely"
+    },
+    {
+      "local_index": 371,
+      "local_slug": "371-node-express-reason-cause",
+      "local_file": "371-node-express-reason-cause.md",
+      "source_lesson": "14.20",
+      "source_title": "「ので」Express a reason or cause"
+    },
+    {
+      "local_index": 372,
+      "local_slug": "372-naraba-express-if",
+      "local_file": "372-naraba-express-if.md",
+      "source_lesson": "14.21",
+      "source_title": "「ならば」Express 'if'"
+    },
+    {
+      "local_index": 373,
+      "local_slug": "373-keredomo-express-contradiction",
+      "local_file": "373-keredomo-express-contradiction.md",
+      "source_lesson": "14.22",
+      "source_title": "「けれども」Express contradiction"
+    },
+    {
+      "local_index": 374,
+      "local_slug": "374-moshikashitara-express-chance",
+      "local_file": "374-moshikashitara-express-chance.md",
+      "source_lesson": "14.23",
+      "source_title": "「もしかしたら」Express chance"
+    },
+    {
+      "local_index": 375,
+      "local_slug": "375-youto-attempt-do-something",
+      "local_file": "375-youto-attempt-do-something.md",
+      "source_lesson": "14.24",
+      "source_title": "「ようと」Attempt to do something"
+    },
+    {
+      "local_index": 376,
+      "local_slug": "376-oru-express-existence-more-humbly",
+      "local_file": "376-oru-express-existence-more-humbly.md",
+      "source_lesson": "14.25",
+      "source_title": "「おる」Express existence more humbly"
+    },
+    {
+      "local_index": 377,
+      "local_slug": "377-osuru-do-action-for-someone-politely",
+      "local_file": "377-osuru-do-action-for-someone-politely.md",
+      "source_lesson": "14.26",
+      "source_title": "「お～する」Do an action for someone politely"
+    },
+    {
+      "local_index": 378,
+      "local_slug": "378-oitasu-do-action-for-someone-more-politely",
+      "local_file": "378-oitasu-do-action-for-someone-more-politely.md",
+      "source_lesson": "14.27",
+      "source_title": "「お～いたす」Do an action for someone more politely"
+    },
+    {
+      "local_index": 379,
+      "local_slug": "379-oninaru-describe-someones-state-politely",
+      "local_file": "379-oninaru-describe-someones-state-politely.md",
+      "source_lesson": "14.28",
+      "source_title": "「お～になる」Describe someones state politely"
+    },
+    {
+      "local_index": 380,
+      "local_slug": "380-okudasai-ask-someone-do-give-something",
+      "local_file": "380-okudasai-ask-someone-do-give-something.md",
+      "source_lesson": "14.29",
+      "source_title": "「お～ください」Ask someone to do or give something"
+    },
+    {
+      "local_index": 381,
+      "local_slug": "381-being-more-polite-with-receptive-form",
+      "local_file": "381-being-more-polite-with-receptive-form.md",
+      "source_lesson": "14.30",
+      "source_title": "Being more polite with the receptive form"
+    },
+    {
+      "local_index": 382,
+      "local_slug": "382-gozaimasu-something-exists",
+      "local_file": "382-gozaimasu-something-exists.md",
+      "source_lesson": "14.31",
+      "source_title": "「ございます」Something is or exists"
+    },
+    {
+      "local_index": 383,
+      "local_slug": "383-kochira-sochira-achira-dochira-refer-places-people",
+      "local_file": "383-kochira-sochira-achira-dochira-refer-places-people.md",
+      "source_lesson": "14.32",
+      "source_title": "「こちら・そちら・あちら・どちら」Refer to places and people"
+    },
+    {
+      "local_index": 384,
+      "local_slug": "384-greetings",
+      "local_file": "384-greetings.md",
+      "source_lesson": "14.33",
+      "source_title": "Greetings"
+    },
+    {
+      "local_index": 385,
+      "local_slug": "385-humble-language",
+      "local_file": "385-humble-language.md",
+      "source_lesson": "14.34",
+      "source_title": "Humble language"
+    },
+    {
+      "local_index": 386,
+      "local_slug": "386-honorific-language",
+      "local_file": "386-honorific-language.md",
+      "source_lesson": "14.35",
+      "source_title": "Honorific language"
+    }
+  ],
+  "unmapped_source_pages": [
+    {
+      "number": "2.2",
+      "title": "Struggling with kanji?"
+    },
+    {
+      "number": "3.14",
+      "title": "Stems in Japanese"
+    },
+    {
+      "number": "5.11",
+      "title": "「で」(2) Do something in a certain manner"
+    },
+    {
+      "number": "5.23",
+      "title": "「で」(3) Mark the scope or setting"
+    },
+    {
+      "number": "7.22",
+      "title": "「で」(4) Indicates the agent of an action"
+    },
+    {
+      "number": "8.8",
+      "title": "「もう」(2) It's already that late!"
+    },
+    {
+      "number": "11.2",
+      "title": "「もう」(3) In addition"
+    },
+    {
+      "number": "11.6",
+      "title": "Personal pronouns and how to choose"
+    }
+  ]
+}

@@ -12,9 +12,10 @@ id: grammar-090-i-adjectives-past-negative
 pattern: "い形容詞"
 title: "The negative past tense of い adjectives"
 reading: "いけいようし"
-meaning_it: "The negative past tense of い adjectives"
+meaning_it: >-
+  Passato negativo degli い-aggettivi: «non era / non è stato…»
 notes_it: >-
-  い{{形容詞|けいようし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  radice dell'い-aggettivo + くなかった. Anche qui いい usa la base よ-: よくなかった. Non si usa *おいしいじゃなかった, perché じゃなかった nega nomi e な-aggettivi, non gli い-aggettivi.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-090-i-adjectives-past-negative
 card_type: concept
 front: "い{{形容詞|けいようし}}"
 back: >-
-  The negative past tense of い adjectives
+  Passato negativo degli い-aggettivi: «non era / non è stato…»
 example_jp: >-
-  これはたかい。
+  {{昨日|きのう}}は{{寒|さむ}}くなかった。
 example_it: >-
-  Questo è costoso.
+  Ieri non faceva freddo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  寒い diventa prima 寒くない e poi 寒くなかった; は imposta ieri come cornice temporale. Anche qui いい usa la base よ-: よくなかった. Non si usa *おいしいじゃなかった, perché じゃなかった nega nomi e な-aggettivi, non gli い-aggettivi.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 :::

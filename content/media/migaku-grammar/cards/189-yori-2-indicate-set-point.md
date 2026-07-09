@@ -12,9 +12,10 @@ id: grammar-189-yori-2-indicate-set-point
 pattern: "より"
 title: "「より」(2) Indicate a boundary"
 reading: "より"
-meaning_it: "(2) Indicate a boundary"
+meaning_it: >-
+  Rispetto a/oltre un confine; a partire da (formale)
 notes_it: >-
-  より va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Qui より non confronta due qualità, ma fissa un punto di riferimento: 線より内側, 五時より前. Per un'origine spaziale o temporale può equivalere al più formale «da» e spesso essere sostituito da から; quando significa «prima/più interno rispetto a», から non è sempre possibile.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-189-yori-2-indicate-set-point
 card_type: concept
 front: "より"
 back: >-
-  (2) Indicate a boundary
+  Punto + より stabilisce un confine spaziale o temporale rispetto al quale vale ciò che segue.
 example_jp: >-
-  これはよりのかたちだ。
+  この{{線|せん}}より{{内側|うちがわ}}に{{入|はい}}らないでください。
 example_it: >-
-  Questa è la forma より.
+  Non entri oltre questa linea.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Qui より non confronta due qualità, ma fissa un punto di riferimento: 線より内側, 五時より前. Per un'origine spaziale o temporale può equivalere al più formale «da» e spesso essere sostituito da から; quando significa «prima/più interno rispetto a», から non è sempre possibile.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 071.
+  Costruzione predicativa e limiti attributivi degli aggettivi di quantità.
 ---
-
 # 「多い・少ない」Express a high or low quantity of something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ooi-sukunai-express-high-low-quantity-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il nome quantificato è normalmente marcato da が e 多い o 少ない funge da predicato: Aが多い／少ない. Per dire «molti A» davanti a un nome si può usare 多くのA.
 
-- Tema: Express a high or low quantity of something
-- Sezione: jlpt n5
-- Livello: JLPT-N5
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `elemento quantificato + が + 多い／少ない`. Il punto da riconoscere è `多い／少ない`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  この{{町|まち}}は{{観光客|かんこうきゃく}}が{{多|おお}}い。
 translation_it: >-
-  Questa è una penna.
+  In questa città ci sono molti turisti.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+観光客 è ciò di cui si valuta il numero e prende が; 多い predica che quella quantità è alta. Il tema generale è この町.
+
+## Sfumature e limiti
+
+多い e 少ない di norma non si collocano direttamente davanti al nome nel senso di «molti/pochi A». 多くの ha uso attributivo, mentre non esiste un parallelo produttivo *少なくの.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

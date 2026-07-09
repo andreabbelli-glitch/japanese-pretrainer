@@ -12,9 +12,9 @@ id: grammar-004-ga-subject-marker
 pattern: "が"
 title: "「が」(1) Mark the subject"
 reading: "が"
-meaning_it: "(1) Mark the subject"
+meaning_it: "Marcare il soggetto, soprattutto se nuovo, ignoto o messo a fuoco"
 notes_it: >-
-  が va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  が indica chi compie l'azione o presenta lo stato descritto. È tipico per introdurre un referente nuovo, con parole interrogative e nelle risposte che identificano proprio quel referente.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-004-ga-subject-marker
 card_type: concept
 front: "が"
 back: >-
-  (1) Mark the subject
+  Nome + が marca il soggetto grammaticale e può metterlo a fuoco come informazione nuova o risposta a una domanda.
 example_jp: >-
-  ネコがいる。
+  {{誰|だれ}}が{{先生|せんせい}}だ？
 example_it: >-
-  C'è un gatto.
+  Chi è l'insegnante?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con 誰, 何 e altri interrogativi si usa normalmente が, non は, perché il referente non è ancora noto.
 tags: [migaku, grammar, jlpt-n5, particles, academy-level-1]
 :::

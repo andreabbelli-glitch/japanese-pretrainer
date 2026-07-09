@@ -10,44 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 254.
+  Udibilità spontanea con kikoeru.
 ---
 
-# 「聞こえる」Express that something is audible
+# 「聞こえる」Something is audible
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kikoeru-something-audiable`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Essere udibile
 
-## Punto da riconoscere
-
-- Tema: Express that something is audible
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+聞こえる indica che un suono raggiunge spontaneamente l'udito. La fonte o il suono udibile è marcato da が.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{外|そと}}から{{音楽|おんがく}}が{{聞|き}}こえる。
 translation_it: >-
-  Questa è una penna.
+  Da fuori si sente della musica.
 :::
 
-#### Anatomia rapida
+耳が聞こえない significa «non sentire / essere sordo», senza riferimento alla volontà.
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Confronto
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+聞ける, potenziale di 聞く, esprime la possibilità di ascoltare intenzionalmente: 音楽番組が聞ける, «posso ascoltare il programma musicale». 聞こえる descrive invece disponibilità percettiva.

@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 173.
+  Momenti precisi del calendario o dell'orologio usati per collocare un evento.
 ---
 
 # 「に」(5) Indicate a point in time
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ni-indicate-point-time`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+に punta a un momento del calendario o dell'orologio e vi colloca l'evento. È la controparte temporale della particella che marca una destinazione o un punto di esistenza.
 
-- Tema: (5) Indicate a point in time
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [に](grammar:grammar-173-ni-indicate-point-time)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Ora/data/giorno + に: 三時に, 四月に, 金曜日に.
+- Espressioni relative come 今日, 明日, 来週 non prendono normalmente に: 明日行く.
+- Tempo + には tematizza o contrasta: 土曜日には帰る («quanto a sabato, tornerò»).
 
-Il centro del ripasso è riconoscere [に](grammar:grammar-173-ni-indicate-point-time) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{会議|かいぎ}}は{{木曜日|もくようび}}の{{三時|さんじ}}に{{始|はじ}}まる。
 translation_it: >-
-  Vado al caffè.
+  La riunione comincia giovedì alle tre.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   に -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+木曜日の三時に identifica un unico punto temporale al quale viene ancorato l'inizio della riunione.
+
+## Sfumature d'uso
+
+- Con alcuni periodi ampi o giorni della settimana に può essere facoltativo nel parlato; con un'ora precisa è normalmente naturale.
+- に indica il punto in cui accade l'evento, non la durata necessaria né il limite finale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

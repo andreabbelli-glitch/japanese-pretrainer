@@ -10,45 +10,27 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 058.
+  Uso formale e scritto della copula である.
 ---
 
-# 「である」Say something "is"
+# 「である」Say something 'is'
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dearu-declare-something-is`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Registro e formazione
 
-## Punto da riconoscere
-
-- Tema: Say something is
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [である](grammar:grammar-058-dearu-declare-something-is)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [である](grammar:grammar-058-dearu-declare-something-is) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Nome o aggettivo in な + である esprime una predicazione equivalente a だ, ma con tono formale, assertivo e tipico della prosa espositiva. Può comparire anche in discorsi solenni o formali.
 
 :::example_sentence
 jp: >-
-  カフェでたべる。
+  この{{本|ほん}}は{{傑作|けっさく}}である。
 translation_it: >-
-  Mangio al caffè.
+  Questo libro è un capolavoro.
 :::
 
-#### Anatomia rapida
+## Paradigma essenziale
 
-*   である -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+- non-passato affermativo: である
+- non-passato negativo: ではない
+- passato affermativo: であった
+- passato negativo: ではなかった
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Le varianti であります／ではありません aggiungono cortesia. Il で fa parte della copula e non è il marcatore del luogo di un'azione.

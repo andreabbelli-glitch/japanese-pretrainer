@@ -12,9 +12,10 @@ id: grammar-368-nasai-make-polite-command
 pattern: "なさい"
 title: "「なさい」Make a polite command"
 reading: "なさい"
-meaning_it: "Make a polite command"
+meaning_it: >-
+  Fa'; esegui (comando)
 notes_it: >-
-  なさい va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: radice in forma ます + なさい: 読みなさい, 食べなさい, しなさい. È meno ruvido dell'imperativo nudo, ma non è una richiesta rispettosa verso il destinatario. Si usa dall'alto verso il basso o in istruzioni autorevoli. Per chiedere a un superiore si usa Vてください o una forma più deferente.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-368-nasai-make-polite-command
 card_type: concept
 front: "なさい"
 back: >-
-  Make a polite command
+  Radice verbale + なさい dà un ordine, tipicamente da genitore, insegnante o superiore.
 example_jp: >-
-  これはなさいのかたちだ。
+  {{早|はや}}く{{寝|ね}}なさい。
 example_it: >-
-  Questa è la forma なさい.
+  Vai subito a dormire.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: radice in forma ます + なさい: 読みなさい, 食べなさい, しなさい. È meno ruvido dell'imperativo nudo, ma non è una richiesta rispettosa verso il destinatario. Si usa dall'alto verso il basso o in istruzioni autorevoli. Per chiedere a un superiore si usa Vてください o una forma più deferente.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series, polite-language]
 :::

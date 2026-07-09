@@ -12,9 +12,9 @@ id: grammar-029-list-nouns-with-to
 pattern: "と"
 title: "「と」(1) List nouns and noun phrases"
 reading: "と"
-meaning_it: "(1) List nouns and noun phrases"
+meaning_it: "Collegare con と un elenco completo di nomi"
 notes_it: >-
-  と va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A と B enumera nomi o sintagmi nominali con il valore di «A e B». L'elenco è tendenzialmente esaustivo: presenta gli elementi scelti come l'insieme rilevante.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-029-list-nouns-with-to
 card_type: concept
 front: "と"
 back: >-
-  (1) List nouns and noun phrases
+  と collega due o più nomi in un elenco completo.
 example_jp: >-
-  ミカといく。
+  {{猫|ねこ}}と{{犬|いぬ}}は{{動物|どうぶつ}}だ。
 example_it: >-
-  Vado con Mika.
+  Gatti e cani sono animali.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Il と dopo l'ultimo elemento è possibile ma raro. Questo uso non collega aggettivi o proposizioni: per quelli servono altre forme.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 :::

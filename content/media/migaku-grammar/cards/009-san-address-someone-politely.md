@@ -12,9 +12,9 @@ id: grammar-009-san-address-someone-politely
 pattern: "さん"
 title: "「さん」Refer to someone politely"
 reading: "さん"
-meaning_it: "Refer to someone politely"
+meaning_it: "Titolo rispettoso e neutro aggiunto al nome o a un ruolo"
 notes_it: >-
-  さん va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  さん segue cognomi, nomi propri e talvolta professioni o titoli. Mostra rispetto senza specificare genere o stato civile; di norma non si aggiunge al proprio nome parlando di sé.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-009-san-address-someone-politely
 card_type: concept
 front: "さん"
 back: >-
-  Refer to someone politely
+  Nome + さん è un modo cortese e quotidiano di riferirsi a una persona.
 example_jp: >-
-  これはさんのかたちだ。
+  {{田中|たなか}}さんは{{先生|せんせい}}だ。
 example_it: >-
-  Questa è la forma さん.
+  Tanaka è un insegnante.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La traduzione italiana spesso omette さん; il rispetto resta però parte della relazione espressa in giapponese.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, name-suffixes]
 :::

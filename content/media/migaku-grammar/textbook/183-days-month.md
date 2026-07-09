@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, numbers-and-counters]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 183.
+  Date del mese e durate in giorni, con tutte le principali letture irregolari.
 ---
 
 # Days of the month
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/days-month`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+日 combina letture native e sino-giapponesi. La stessa forma può indicare una data del mese o un numero di giorni; contesto e particelle decidono il valore.
 
-- Tema: Days of the month
-- Sezione: numbers and counters
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- 1日: ついたち («il primo») / いちにち («un giorno»); 2日〜10日: ふつか, みっか, よっか, いつか, むいか, なのか, ようか, ここのか, とおか.
+- Eccezioni successive: 14日 じゅうよっか; 20日 はつか; 24日 にじゅうよっか.
+- Altre date: 11日 じゅういちにち, 25日 にじゅうごにち; 17/27 possono avere 七 letto しち o なな secondo uso e contesto.
 
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{会議|かいぎ}}は{{二十日|はつか}}にあります。
 translation_it: >-
-  Questa è una penna.
+  La riunione è il giorno venti.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+二十日 ha la lettura speciale はつか; に lo presenta come data della riunione.
+
+## Sfumature d'uso
+
+- 日間 può rendere esplicita una durata: 三日間; con molte forme native 三日 basta già.
+- に dopo la data colloca un evento: 二十日に会う.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

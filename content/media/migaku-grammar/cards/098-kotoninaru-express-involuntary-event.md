@@ -12,9 +12,10 @@ id: grammar-098-kotoninaru-express-involuntary-event
 pattern: "ことになる"
 title: "「ことになる」Express an involuntary event"
 reading: "ことになる"
-meaning_it: "Express an involuntary event"
+meaning_it: >-
+  Una decisione o un esito viene stabilito da circostanze esterne
 notes_it: >-
-  ことになる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo non passato + ことになる. Con ことにする il soggetto si presenta come decisore; in ことになる il decisore resta fuori fuoco, anche quando una persona concreta ha preso la decisione.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-098-kotoninaru-express-involuntary-event
 card_type: concept
 front: "ことになる"
 back: >-
-  Express an involuntary event
+  Una decisione o un esito viene stabilito da circostanze esterne
 example_jp: >-
-  カフェにいく。
+  {{来月|らいげつ}}、{{大阪|おおさか}}へ{{転勤|てんきん}}することになった。
 example_it: >-
-  Vado al caffè.
+  È stato deciso che il mese prossimo sarò trasferito a Osaka.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  転勤する è l'evento nominalizzato; ことになった lo presenta come disposizione ormai stabilita, con la scelta personale fuori fuoco. Con ことにする il soggetto si presenta come decisore; in ことになる il decisore resta fuori fuoco, anche quando una persona concreta ha preso la decisione.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 :::

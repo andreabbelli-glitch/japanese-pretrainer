@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 260.
+  Deduzioni e realizzazioni logiche espresse dalla costruzione わけだ.
 ---
-
 # 「わけだ」Make logical deductions
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/wakeda-make-logical-judgement`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Aわけだ presenta A come conclusione naturale ricavata da informazioni, calcoli o una spiegazione appena ricevuta. Può esprimere sia una realizzazione dialogica sia una deduzione esplicativa.
 
-- Tema: Make logical deductions
-- Sezione: series
-- Livello: JLPT-N3
-- Pattern allenabile: [わけだ](grammar:grammar-260-wakeda-make-logical-judgement)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [わけだ](grammar:grammar-260-wakeda-make-logical-judgement) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `forma piana + わけだ; nome + というわけだ`. Il punto da riconoscere è [わけだ](grammar:grammar-260-wakeda-make-logical-judgement).
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{毎日|まいにち}}{{練習|れんしゅう}}しているのか。{{上手|じょうず}}なわけだ。
 translation_it: >-
-  Questa è una penna.
+  Ti alleni ogni giorno, capisco. Ecco perché sei bravo.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   わけだ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+La nuova informazione 毎日練習している permette di dedurre 上手なわけだ come conseguenza naturale.
+
+## Sfumature e limiti
+
+Non introduce semplicemente una causa: mette a fuoco il ragionamento che rende il risultato comprensibile. というわけだ e ってわけだ sono varianti, la seconda colloquiale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -12,9 +12,10 @@ id: grammar-086-verb-past-negative-u
 pattern: "う動詞"
 title: "The negative past tense of う verbs"
 reading: "うどうし"
-meaning_it: "The negative past tense of う verbs"
+meaning_it: >-
+  Passato negativo piano dei verbi godan: «non fece»
 notes_it: >-
-  う{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  radice in a del verbo godan + なかった. Con i verbi in う la base usa わ, non あ: 買う→買わなかった. La coniugazione negativa è uniforme rispetto ai diversi cambi del passato affermativo.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-086-verb-past-negative-u
 card_type: concept
 front: "う{{動詞|どうし}}"
 back: >-
-  The negative past tense of う verbs
+  Passato negativo piano dei verbi godan: «non fece»
 example_jp: >-
-  カフェにいく。
+  {{昨日|きのう}}は{{酒|さけ}}を{{飲|の}}まなかった。
 example_it: >-
-  Vado al caffè.
+  Ieri non ho bevuto alcolici.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  飲む passa alla base 飲ま- e prende なかった: 飲まなかった. は presenta ieri come cornice contrastiva. Con i verbi in う la base usa わ, non あ: 買う→買わなかった. La coniugazione negativa è uniforme rispetto ai diversi cambi del passato affermativo.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 :::

@@ -12,9 +12,10 @@ id: grammar-085-verb-past-irregular
 pattern: "不規則動詞"
 title: "The past tense of irregular verbs"
 reading: "ふきそくどうし"
-meaning_it: "The past tense of irregular verbs"
+meaning_it: >-
+  Passati fondamentali da memorizzare: した, 来た, 行った e あった
 notes_it: >-
-  {{不規則|ふきそく}}{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  する→した／来る→来た／行く→行った／ある→あった. する e 来る sono irregolari; 行く è un godan con il passato eccezionale 行った. ある→あった segue invece il normale cambio dei godan in る, anche se ある è speciale nella negazione.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-085-verb-past-irregular
 card_type: concept
 front: "{{不規則|ふきそく}}{{動詞|どうし}}"
 back: >-
-  The past tense of irregular verbs
+  Passati fondamentali da memorizzare: した, 来た, 行った e あった
 example_jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  {{昨日|きのう}}、{{友達|ともだち}}が{{家|いえ}}に{{来|き}}た。
 example_it: >-
-  Questa è la forma 不規則動詞.
+  Ieri un amico è venuto a casa mia.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  来る prende la forma irregolare 来た, letta きた. Il soggetto è 友達 e 家に indica la destinazione. する e 来る sono irregolari; 行く è un godan con il passato eccezionale 行った. ある→あった segue invece il normale cambio dei godan in る.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 :::

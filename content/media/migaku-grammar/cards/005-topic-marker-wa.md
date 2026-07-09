@@ -12,9 +12,9 @@ id: grammar-005-topic-marker-wa
 pattern: "は"
 title: "「は」Mark the topic"
 reading: "は"
-meaning_it: "Mark the topic"
+meaning_it: "Marcare il tema di cui si parla; spesso aggiunge contrasto"
 notes_it: >-
-  は va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  は, pronunciato わ quando è particella, presenta un referente già accessibile come tema: «quanto a…». Può anche contrapporlo implicitamente ad altre possibilità; tema e soggetto non coincidono sempre.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-005-topic-marker-wa
 card_type: concept
 front: "は"
 back: >-
-  Mark the topic
+  X は introduce X come punto di partenza noto della frase: «quanto a X…».
 example_jp: >-
-  これはペンだ。
+  {{彼|かれ}}は{{先生|せんせい}}だ。
 example_it: >-
-  Questa è una penna.
+  Lui è un insegnante.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  は sostituisce spesso が o を quando tematizza il loro nome; con に, で e へ si combina: には, では, へは.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 :::

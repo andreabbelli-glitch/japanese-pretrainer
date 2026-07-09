@@ -12,9 +12,10 @@ id: grammar-309-how-describe-locations
 pattern: "場所説明"
 title: "How to describe locations"
 reading: "ばしょせつめい"
-meaning_it: "How to describe locations"
+meaning_it: >-
+  Descrivere una posizione rispetto a un punto di riferimento
 notes_it: >-
-  {{場所|ばしょ}}{{説明|せつめい}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  riferimento の + direzione + に + entità が + いる／ある. いる si usa per esseri animati e ある per oggetti inanimati. から marca un punto di partenza; direzioneからnumero+目 indica una posizione contata da quel lato.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-309-how-describe-locations
 card_type: concept
 front: "{{場所|ばしょ}}{{説明|せつめい}}"
 back: >-
-  How to describe locations
+  Descrivere una posizione rispetto a un punto di riferimento
 example_jp: >-
-  これは{{場所|ばしょ}}{{説明|せつめい}}のかたちだ。
+  {{駅|えき}}の{{隣|となり}}にコンビニがある。
 example_it: >-
-  Questa è la forma 場所説明.
+  Accanto alla stazione c'è un minimarket.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  駅 è il riferimento, 隣 la posizione relativa, に la localizza e ある esprime l'esistenza dell'oggetto inanimato コンビニ. いる si usa per esseri animati e ある per oggetti inanimati. から marca un punto di partenza; direzioneからnumero+目 indica una posizione contata da quel lato.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

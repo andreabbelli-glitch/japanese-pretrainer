@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 158.
+  Ruoli, punti di vista e funzioni effettive attribuiti a persone o cose.
 ---
 
-# 「として」"As a (noun)"
+# 「として」As a
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/toshite-as`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+として inquadra una persona o cosa secondo un ruolo riconosciuto, una prospettiva o uno scopo. La proposizione successiva vale precisamente sotto quella qualifica.
 
-- Tema: As a (noun)
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [として](grammar:grammar-158-toshite-as)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Nome + として + predicato: 教師として働く.
+- Uso/funzione: この箱を机として使う («usare questa scatola come tavolo»).
+- Punto di vista o responsabilità: 親として心配だ («come genitore, sono preoccupato»).
 
-Il centro del ripasso è riconoscere [として](grammar:grammar-158-toshite-as) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  {{留学生|りゅうがくせい}}として{{日本|にほん}}に{{来|き}}た。
 translation_it: >-
-  Vado con Mika.
+  Sono venuto in Giappone come studente straniero.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   として -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+留学生として specifica lo status con cui il soggetto è venuto in Giappone.
+
+## Sfumature d'uso
+
+- Il ruolo può essere temporaneo o stabile, ma deve essere pertinente all'azione descritta.
+- Per una semplice similitudine si usano forme come みたいに／ように, non necessariamente として.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

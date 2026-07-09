@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, numbers-and-counters]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 179.
+  Letture numeriche native e contatore generico per oggetti da uno a dieci.
 ---
 
 # The native Japanese numbers
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/the-native-japanese-numbers`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Accanto ai numeri sino-giapponesi esiste una serie nativa. Il suo uso più produttivo per principianti è il contatore generico 〜つ, limitato normalmente a uno–dieci.
 
-- Tema: The native Japanese numbers
-- Sezione: numbers and counters
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- 一つ（ひとつ）, 二つ（ふたつ）, 三つ（みっつ）, 四つ（よっつ）, 五つ（いつつ）.
+- 六つ（むっつ）, 七つ（ななつ）, 八つ（やっつ）, 九つ（ここのつ）, 十（とお）.
+- Schema: oggetto + を + numero in 〜つ, oppure numero + の + nome secondo la sintassi della frase.
 
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  りんごを{{三|みっ}}つください。
 translation_it: >-
-  Questa è una penna.
+  Mi dia tre mele, per favore.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+三つ conta le mele in modo generico; la lettura è みっつ, non さんつ.
+
+## Sfumature d'uso
+
+- 〜つ è utile per oggetti generici, ma persone, animali, libri, macchine e molti altri nomi hanno contatori specifici.
+- Zero non ha una normale forma *ゼロつ; per quantità nulla si usano espressioni come 一つもない.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

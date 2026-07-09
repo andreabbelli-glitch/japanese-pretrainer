@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 364.
+  Desiderio forte in inviti, richieste e speranze rivolte ad azioni umane.
 ---
 
-# 「ぜひ」”Certainly!"
+# 「ぜひ」Certainly!
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/zehi-certainly`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ぜひ non descrive probabilità: esprime la forza con cui il parlante auspica, invita o raccomanda un'azione.
 
-- Tema: Certainly!
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [ぜひ](grammar:grammar-364-zehi-certainly)
+## Formazione e restrizioni
 
-## Lettura operativa
+- ぜひ + richiesta: ぜひ来てください.
+- ぜひ + desiderio/invito: ぜひ会いたい, ぜひ参加しませんか.
+- Risposta positiva: ぜひ！ («molto volentieri»).
 
-Il centro del ripasso è riconoscere [ぜひ](grammar:grammar-364-zehi-certainly) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはぜひのかたちだ。
+  ぜひ{{遊|あそ}}びに{{来|き}}てください。
 translation_it: >-
-  Questa è la forma ぜひ.
+  Venga assolutamente a trovarci.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ぜひ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+ぜひ rafforza l'invito a venire e comunica un desiderio sincero del parlante.
+
+## Sfumature d'uso
+
+- Per una previsione certa si usa きっと, non ぜひ.
+- Con una negazione come *ぜひ来ないで risulta normalmente innaturale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

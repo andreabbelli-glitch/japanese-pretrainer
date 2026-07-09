@@ -12,9 +12,10 @@ id: grammar-329-kitto-express-that-something-will-surely-happen
 pattern: "きっと"
 title: "「きっと」”Surely; undoubtedly\""
 reading: "きっと"
-meaning_it: "Surely; undoubtedly"
+meaning_it: >-
+  Sicuramente; di certo; sono certo che
 notes_it: >-
-  きっと va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  È un avverbio spesso associato a だろう／でしょう, はず, と思う o forme future. Esprime forte fiducia soggettiva, non necessariamente certezza dimostrata. È naturale anche per incoraggiare qualcuno. In una frase negativa può significare «di certo non».
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-329-kitto-express-that-something-will-surely-happen
 card_type: concept
 front: "きっと"
 back: >-
-  Surely; undoubtedly
+  きっと rafforza una previsione o speranza e mostra una convinzione superiore a quella espressa da 多分.
 example_jp: >-
-  ミカといく。
+  きっと{{試験|しけん}}に{{合格|ごうかく}}するよ。
 example_it: >-
-  Vado con Mika.
+  Supererai sicuramente l'esame.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  È un avverbio spesso associato a だろう／でしょう, はず, と思う o forme future. Esprime forte fiducia soggettiva, non necessariamente certezza dimostrata. È naturale anche per incoraggiare qualcuno. In una frase negativa può significare «di certo non».
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

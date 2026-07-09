@@ -12,9 +12,9 @@ id: grammar-003-janai-declare-something-not
 pattern: "じゃない"
 title: "「じゃない」Declare something is not"
 reading: "じゃない"
-meaning_it: "Declare something is not"
+meaning_it: "Copula negativa piana: dire che qualcosa non è"
 notes_it: >-
-  じゃない va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  じゃない è la forma negativa piana della copula per nomi e aggettivi in な. Nel parlato significa «non è / non sono»; ではない è una variante più formale o scritta.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-003-janai-declare-something-not
 card_type: concept
 front: "じゃない"
 back: >-
-  Declare something is not
+  Nome o aggettivo in な + じゃない esprime una predicazione negativa in registro piano.
 example_jp: >-
-  これはペンじゃない。
+  これは{{猫|ねこ}}じゃない。
 example_it: >-
-  Questa non è una penna.
+  Questo non è un gatto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Non usare じゃない per negare direttamente un verbo o un aggettivo in い: quelle classi hanno coniugazioni negative proprie.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

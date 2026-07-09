@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 122.
+  Discorso riportato e formazione del そうだ di hearsay.
 ---
-
 # 「そうだ」Express an indirect source of information
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/souda-you-heard-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Una proposizione in forma piana seguita da そうだ segnala che il contenuto proviene da una fonte esterna. Il parlante lo trasmette senza presentarlo come propria inferenza.
 
-- Tema: Express an indirect source of information
-- Sezione: series
-- Livello: JLPT-N3
-- Pattern allenabile: [そうだ](grammar:grammar-122-souda-you-heard-something)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [そうだ](grammar:grammar-122-souda-you-heard-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `proposizione piana + そうだ; nome / な-aggettivo + だそうだ`. Il punto da riconoscere è [そうだ](grammar:grammar-122-souda-you-heard-something).
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{天気予報|てんきよほう}}によると、{{明日|あした}}は{{雪|ゆき}}が{{降|ふ}}るそうだ。
 translation_it: >-
-  Questa è una penna.
+  Secondo le previsioni, domani nevicherà.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   そうだ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+天気予報によると esplicita la fonte; 雪が降るそうだ riporta fedelmente ciò che è stato comunicato.
+
+## Sfumature e limiti
+
+Con nomi e な-aggettivi il だ del contenuto resta: 学生だそうだ. Questo そうだ di hearsay va distinto dal そうだ di apparenza, che si aggancia alle radici con una formazione diversa.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

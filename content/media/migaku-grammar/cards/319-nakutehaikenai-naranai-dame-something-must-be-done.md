@@ -12,9 +12,10 @@ id: grammar-319-nakutehaikenai-naranai-dame-something-must-be-done
 pattern: "なくてはいけない・ならない・だめ"
 title: "「なくてはいけない・ならない・だめ」”X must be done\""
 reading: "なくてはいけない・ならない・だめ"
-meaning_it: "X must be done"
+meaning_it: >-
+  Obbligo: «dover fare»
 notes_it: >-
-  なくてはいけない・ならない・だめ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo negativo senza い + くては + いけない／ならない／だめ. ならない è più formale e normativo, だめ più colloquiale, いけない neutro. Nel parlato sono comuni なくちゃ e forme ulteriormente ridotte come なきゃ.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-319-nakutehaikenai-naranai-dame-something-must-be-done
 card_type: concept
 front: "なくてはいけない・ならない・だめ"
 back: >-
-  X must be done
+  Obbligo: «dover fare»
 example_jp: >-
-  これはペンだ。
+  {{明日|あした}}までにこの{{本|ほん}}を{{返|かえ}}さなくてはいけない。
 example_it: >-
-  Questa è una penna.
+  Devo restituire questo libro entro domani.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  返さない diventa 返さなくては; いけない nega la possibilità di non restituire, creando l'obbligo. ならない è più formale e normativo, だめ più colloquiale, いけない neutro. Nel parlato sono comuni なくちゃ e forme ulteriormente ridotte come なきゃ.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

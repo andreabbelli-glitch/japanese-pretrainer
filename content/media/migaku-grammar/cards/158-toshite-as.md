@@ -12,9 +12,10 @@ id: grammar-158-toshite-as
 pattern: "として"
 title: "「として」\"As a (noun)\""
 reading: "として"
-meaning_it: "As a (noun)"
+meaning_it: >-
+  In qualità di; come; con la funzione di
 notes_it: >-
-  として va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: Nome + として. Il nome A definisce il ruolo o l'uso sotto cui vale la frase B: 先生として, 道具として使う. È neutro e comune anche nello scritto formale. Il valore è quello di un ruolo effettivo o assunto nel contesto; la semplice somiglianza usa altre costruzioni.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-158-toshite-as
 card_type: concept
 front: "として"
 back: >-
-  As a (noun)
+  Nome + として indica il ruolo, la posizione, il punto di vista o la funzione con cui qualcuno o qualcosa agisce.
 example_jp: >-
-  ミカといく。
+  {{留学生|りゅうがくせい}}として{{日本|にほん}}に{{来|き}}た。
 example_it: >-
-  Vado con Mika.
+  Sono venuto in Giappone come studente straniero.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: Nome + として. Il nome A definisce il ruolo o l'uso sotto cui vale la frase B: 先生として, 道具として使う. È neutro e comune anche nello scritto formale. Il valore è quello di un ruolo effettivo o assunto nel contesto; la semplice somiglianza usa altre costruzioni.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

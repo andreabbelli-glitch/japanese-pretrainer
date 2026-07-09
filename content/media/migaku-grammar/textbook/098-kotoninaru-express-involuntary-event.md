@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 098.
+  Decisioni esterne, programmi ed esiti con ことになる.
 ---
-
 # 「ことになる」Express an involuntary event
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kotoninaru-express-involuntary-event`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+V + ことになる presenta un programma, una decisione o una conseguenza come risultato della situazione, senza mettere in primo piano la volontà del soggetto. Al passato ことになった segnala che l'esito è stato stabilito.
 
-- Tema: Express an involuntary event
-- Sezione: series
-- Livello: JLPT-N3
-- Pattern allenabile: [ことになる](grammar:grammar-098-kotoninaru-express-involuntary-event)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ことになる](grammar:grammar-098-kotoninaru-express-involuntary-event) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo non passato + ことになる`. Il punto da riconoscere è [ことになる](grammar:grammar-098-kotoninaru-express-involuntary-event).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{来月|らいげつ}}、{{大阪|おおさか}}へ{{転勤|てんきん}}することになった。
 translation_it: >-
-  Vado al caffè.
+  È stato deciso che il mese prossimo sarò trasferito a Osaka.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ことになる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+転勤する è l'evento nominalizzato; ことになった lo presenta come disposizione ormai stabilita, con la scelta personale fuori fuoco.
+
+## Sfumature e limiti
+
+Con ことにする il soggetto si presenta come decisore; in ことになる il decisore resta fuori fuoco, anche quando una persona concreta ha preso la decisione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

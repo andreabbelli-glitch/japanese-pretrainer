@@ -12,9 +12,10 @@ id: grammar-364-zehi-certainly
 pattern: "ぜひ"
 title: "「ぜひ」”Certainly!\""
 reading: "ぜひ"
-meaning_it: "Certainly!"
+meaning_it: >-
+  Assolutamente; senz'altro; mi raccomando
 notes_it: >-
-  ぜひ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Si combina spesso con Vてください, Vてほしい, たい o inviti. È orientato a desideri e azioni volontarie; non è normale con semplici dichiarazioni d'intenzione del parlante, desideri negativi o fenomeni non controllabili. La grafia 是非 esiste, ma il kana è comune.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-364-zehi-certainly
 card_type: concept
 front: "ぜひ"
 back: >-
-  Certainly!
+  ぜひ rafforza inviti, richieste e desideri: il parlante vuole vivamente che l'azione avvenga.
 example_jp: >-
-  これはぜひのかたちだ。
+  ぜひ{{遊|あそ}}びに{{来|き}}てください。
 example_it: >-
-  Questa è la forma ぜひ.
+  Venga assolutamente a trovarci.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Si combina spesso con Vてください, Vてほしい, たい o inviti. È orientato a desideri e azioni volontarie; non è normale con semplici dichiarazioni d'intenzione del parlante, desideri negativi o fenomeni non controllabili. La grafia 是非 esiste, ma il kana è comune.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

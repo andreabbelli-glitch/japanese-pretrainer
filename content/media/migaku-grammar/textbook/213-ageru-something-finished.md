@@ -10,44 +10,22 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 213.
+  Composti in ageru: sollevare o portare a compimento.
 ---
 
 # 「上げる」Something is finished
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ageru-something-finished`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Base verbale + 上げる
 
-## Punto da riconoscere
-
-- Tema: Something is finished
-- Sezione: stem form series
-- Livello: JLPT-N3
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+上げる può indicare movimento verso l'alto o il completamento intenzionale di un'azione: 取り上げる «sollevare/togliere», 書き上げる «finire di scrivere», 焼き上げる «cuocere fino in fondo».
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{娘|むすめ}}はパンを{{焼|や}}き{{上|あ}}げた。
 translation_it: >-
-  Questa è una penna.
+  Mia figlia ha finito di cuocere il pane.
 :::
 
-#### Anatomia rapida
+## Contrasto con 上がる
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+パンが焼き上がった mette a fuoco il pane ormai pronto; 娘がパンを焼き上げた mette a fuoco chi ha completato l'azione e marca l'oggetto con を. La scelta riflette la transitività del composto.

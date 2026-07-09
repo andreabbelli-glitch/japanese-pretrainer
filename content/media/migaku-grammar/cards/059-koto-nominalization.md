@@ -12,9 +12,9 @@ id: grammar-059-koto-nominalization
 pattern: "こと"
 title: "「こと」(1) Nominalize verbs and adjectives"
 reading: "こと"
-meaning_it: "(1) Nominalize verbs and adjectives"
+meaning_it: "Nominalizzare un'azione, fatto o qualità con こと"
 notes_it: >-
-  こと va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Una clausola piana + こと diventa un sintagma nominale e può ricevere が, は, を e altre particelle. Con un aggettivo in な serve なこと; al passato si conserva la forma piana.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-059-koto-nominalization
 card_type: concept
 front: "こと"
 back: >-
-  (1) Nominalize verbs and adjectives
+  こと trasforma ciò che precede in «il fatto / l'atto di…».
 example_jp: >-
-  ミカといく。
+  {{食|た}}べることが{{好|す}}きだ。
 example_it: >-
-  Vado con Mika.
+  Mi piace mangiare.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  こと tende a presentare l'azione o il fatto in modo generale e astratto. 食べること è un nome frasale, non una nuova coniugazione del verbo.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

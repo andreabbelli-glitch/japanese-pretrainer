@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 076.
+  Scelte volontarie espresse con nome + にする.
 ---
+# 「にする」\"Decide to X\"
 
-# 「にする」"Decide to X"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nisuru-decide-on-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+N + にする indica che il soggetto seleziona N fra più possibilità o decide di farne il risultato. È frequente quando si ordina, si sceglie un vestito o si stabilisce un'opzione.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: Decide to X
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [にする](grammar:grammar-076-nisuru-decide-on-something)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [にする](grammar:grammar-076-nisuru-decide-on-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `nome + にする`. Il punto da riconoscere è [にする](grammar:grammar-076-nisuru-decide-on-something).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{飲|の}}み{{物|もの}}はお{{茶|ちゃ}}にする。
 translation_it: >-
-  Vado al caffè.
+  Come bevanda scelgo il tè.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   にする -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+飲み物 è il tema della scelta; お茶にする fissa il tè come opzione selezionata dal parlante.
+
+## Sfumature e limiti
+
+Con un'azione si nominalizza la proposizione: verbo + ことにする, trattato separatamente. に indica l'esito scelto, mentre する presenta la decisione come volontaria.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

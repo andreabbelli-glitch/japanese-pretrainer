@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 326.
+  Intensità elevata, situazioni difficili e nomi qualificati come gravi o eccezionali.
 ---
 
-# 「大変」Indicate that something is extreme
+# 「大変」Something is pretty extreme
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/taihen-something-pretty-extreme`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+大変 segnala uno scarto notevole dalla normalità. La sintassi decide se è un intensificatore, un aggettivo che qualifica un nome o un commento sulla difficoltà.
 
-- Tema: Indicate that something is extreme
-- Sezione: jlpt n5
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- Avverbio: 大変忙しい, 大変驚いた.
+- Aggettivo in な: 大変な仕事, 大変な事態.
+- Predicato: それは大変だ («è grave / dev'essere dura»).
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{昨日|きのう}}は{{大変|たいへん}}な{{一日|いちにち}}だった。
 translation_it: >-
-  Questa è una penna.
+  Ieri è stata una giornata davvero pesante.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+大変な qualifica l'intera giornata come eccezionalmente faticosa.
+
+## Sfumature d'uso
+
+- Nel parlato quotidiano とても e すごく sono spesso più spontanei come semplici intensificatori.
+- 大変ですね può mostrare solidarietà verso la difficoltà altrui.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

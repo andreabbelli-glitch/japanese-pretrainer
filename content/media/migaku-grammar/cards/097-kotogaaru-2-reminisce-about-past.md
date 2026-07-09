@@ -12,9 +12,10 @@ id: grammar-097-kotogaaru-2-reminisce-about-past
 pattern: "ことがある"
 title: "「ことがある」(2) Reminisce about the past"
 reading: "ことがある"
-meaning_it: "(2) Reminisce about the past"
+meaning_it: >-
+  Esprime un'esperienza avuta almeno una volta: «aver mai fatto»
 notes_it: >-
-  ことがある va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in forma piana passata + ことがある／ない. La forma passata prima di こと distingue questo uso da V-non passato + ことがある, che significa «capita di fare». L'attenzione è sull'esperienza, non sulla data precisa.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-097-kotogaaru-2-reminisce-about-past
 card_type: concept
 front: "ことがある"
 back: >-
-  (2) Reminisce about the past
+  Esprime un'esperienza avuta almeno una volta: «aver mai fatto»
 example_jp: >-
-  ネコがいる。
+  {{京都|きょうと}}に{{行|い}}ったことがある。
 example_it: >-
-  C'è un gatto.
+  Sono già stato a Kyoto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  行った è il passato di 行く; ことがある afferma che l'andare a Kyoto fa parte delle esperienze del parlante. La forma passata prima di こと distingue questo uso da V-non passato + ことがある, che significa «capita di fare». L'attenzione è sull'esperienza, non sulla data precisa.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

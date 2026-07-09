@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 093.
+  Ordine, particelle e forme piane nelle proposizioni relative giapponesi.
 ---
-
 # Introduction to relative clauses
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/relative-clauses`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+In giapponese la proposizione relativa precede direttamente il nome modificato, senza un pronome relativo equivalente a «che». Il predicato interno resta in forma piana e può essere affermativo, negativo, presente o passato.
 
-- Tema: Introduction to relative clauses
-- Sezione: jlpt n5
-- Livello: JLPT-N5
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `[proposizione in forma piana] + nome`. Il punto da riconoscere è `proposizione relativa`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{昨日|きのう}}{{買|か}}った{{本|ほん}}は{{面白|おもしろ}}い。
 translation_it: >-
-  Questa è una penna.
+  Il libro che ho comprato ieri è interessante.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+昨日買った precede e descrive 本; non serve una parola per «che». は appartiene alla frase principale e tematizza l'intero sintagma 本.
+
+## Sfumature e limiti
+
+All'interno della relativa il soggetto è normalmente marcato da が, talvolta sostituibile con の; は non marca quel soggetto. Il nome descritto assume poi la propria particella nella frase principale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

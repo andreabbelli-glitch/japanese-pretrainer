@@ -12,9 +12,10 @@ id: grammar-281-verb-receptive-u
 pattern: "う動詞"
 title: "The receptive form of う verbs"
 reading: "うどうし"
-meaning_it: "The receptive form of う verbs"
+meaning_it: >-
+  Passivo e passivo avversativo dei verbi godan
 notes_it: >-
-  う{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  base godan in a + れる. Oltre al passivo diretto, il giapponese usa un passivo avversativo per un evento che danneggia o disturba il soggetto, conservando talvolta l'oggetto in を. La forma risultante coniuga come ichidan.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-281-verb-receptive-u
 card_type: concept
 front: "う{{動詞|どうし}}"
 back: >-
-  The receptive form of う verbs
+  Passivo e passivo avversativo dei verbi godan
 example_jp: >-
-  カフェにいく。
+  {{私|わたし}}は{{友達|ともだち}}に{{秘密|ひみつ}}をばらされた。
 example_it: >-
-  Vado al caffè.
+  Un amico ha rivelato il mio segreto, con mio grande disappunto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  私は è la persona coinvolta negativamente, 友達に l'agente e 秘密を l'oggetto mantenuto: è un tipico passivo avversativo. Oltre al passivo diretto, il giapponese usa un passivo avversativo per un evento che danneggia o disturba il soggetto, conservando talvolta l'oggetto in を. La forma risultante coniuga come ichidan.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

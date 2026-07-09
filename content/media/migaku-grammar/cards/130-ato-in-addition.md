@@ -12,9 +12,10 @@ id: grammar-130-ato-in-addition
 pattern: "あと"
 title: "「あと」 (2) \"In addition\""
 reading: "あと"
-meaning_it: "(2) In addition"
+meaning_it: >-
+  Inoltre; ah, e poi… (aggiunta o ripensamento)
 notes_it: >-
-  あと va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Qui あと apre una nuova frase o battuta: あと、〜. Non esprime necessariamente successione temporale, ma aggiunge un punto al tema già discusso. È molto comune nel parlato informale; in uno scritto formale sono più adatti また o さらに.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-130-ato-in-addition
 card_type: concept
 front: "あと"
 back: >-
-  (2) In addition
+  A inizio enunciato, あと introduce un'informazione aggiuntiva o qualcosa ricordato all'ultimo momento: «inoltre», «ah, e poi…».
 example_jp: >-
-  ミカといく。
+  パンを{{買|か}}ってきて。あと、{{牛乳|ぎゅうにゅう}}もお{{願|ねが}}い。
 example_it: >-
-  Vado con Mika.
+  Compra del pane. Ah, e prendi anche il latte, per favore.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Qui あと apre una nuova frase o battuta: あと、〜. Non esprime necessariamente successione temporale, ma aggiunge un punto al tema già discusso. È molto comune nel parlato informale; in uno scritto formale sono più adatti また o さらに.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

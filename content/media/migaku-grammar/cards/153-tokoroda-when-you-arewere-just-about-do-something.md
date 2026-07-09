@@ -12,9 +12,10 @@ id: grammar-153-tokoroda-when-you-arewere-just-about-do-something
 pattern: "ところだ"
 title: "「ところだ」\"is/was about to X\""
 reading: "ところだ"
-meaning_it: "is/was about to X"
+meaning_it: >-
+  Essere sul punto di, nel mezzo di o aver appena fatto
 notes_it: >-
-  ところだ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: Vる + ところだ («sta per»); Vている + ところだ («è nel mezzo di»); Vた + ところだ («ha appena»). Vる + ところだった indica che si stava per fare qualcosa, spesso senza arrivare a farla; Vていたところだ colloca un'attività in corso nel passato. Registro neutro.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-153-tokoroda-when-you-arewere-just-about-do-something
 card_type: concept
 front: "ところだ"
 back: >-
-  is/was about to X
+  La forma del verbo davanti a ところだ localizza l'azione: Vる prima, Vている durante, Vた subito dopo.
 example_jp: >-
-  これはペンだ。
+  {{今|いま}}、{{駅|えき}}に{{着|つ}}いたところだ。
 example_it: >-
-  Questa è una penna.
+  Sono appena arrivato alla stazione.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: Vる + ところだ («sta per»); Vている + ところだ («è nel mezzo di»); Vた + ところだ («ha appena»). Vる + ところだった indica che si stava per fare qualcosa, spesso senza arrivare a farla; Vていたところだ colloca un'attività in corso nel passato. Registro neutro.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

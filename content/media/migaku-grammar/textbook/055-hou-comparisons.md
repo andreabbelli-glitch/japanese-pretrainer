@@ -10,44 +10,27 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 055.
+  Uso di hou per scegliere il termine che risulta comparativamente migliore o diverso.
 ---
 
-# 「方」"X is comparatively Y"
+# 「方」Compare things
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/hou-comparisons`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Il «lato / modo» scelto
 
-## Punto da riconoscere
+方, letto ほう, indica il lato o l'alternativa che possiede maggiormente la qualità espressa. Nella struttura A 方が B, A è l'opzione selezionata dal confronto.
 
-- Tema: X is comparatively Y
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- nome + の方: このビールの方
+- aggettivo in な + な方: 静かな方
+- aggettivo in い + 方: 高い方
+- verbo piano + 方: 食べる方, 食べた方, 食べない方
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  このビールの{{方|ほう}}がおいしい。
 translation_it: >-
-  Questa è una penna.
+  Questa birra è più gustosa.
 :::
 
-#### Anatomia rapida
+## Consiglio con 方がいい
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Verbo al passato + 方がいい formula spesso una raccomandazione decisa: 運動した方がいい, «faresti meglio a fare esercizio». La forma negativa indica che è meglio non fare qualcosa: 飲まない方がいい.

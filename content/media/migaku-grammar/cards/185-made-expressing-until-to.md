@@ -12,9 +12,10 @@ id: grammar-185-made-expressing-until-to
 pattern: "まで"
 title: "「まで」Expressing “until\" or “to\""
 reading: "まで"
-meaning_it: "Expressing until or to"
+meaning_it: >-
+  Fino a; fino al punto di; al massimo
 notes_it: >-
-  まで va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: Nome/tempo/luogo + まで; V non-passato + まで per «finché/non prima che». Con から forma AからBまで. L'azione può continuare fino al limite; con numeri può indicare un massimo incluso. È neutro e non richiede に per il semplice valore di «fino a».
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-185-made-expressing-until-to
 card_type: concept
 front: "まで"
 back: >-
-  Expressing until or to
+  Tempo, luogo o limite + まで indica l'estremo finale raggiunto da un'azione, intervallo o quantità.
 example_jp: >-
-  カフェでたべる。
+  {{図書館|としょかん}}は{{六時|ろくじ}}まで{{開|あ}}いている。
 example_it: >-
-  Mangio al caffè.
+  La biblioteca è aperta fino alle sei.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: Nome/tempo/luogo + まで; V non-passato + まで per «finché/non prima che». Con から forma AからBまで. L'azione può continuare fino al limite; con numeri può indicare un massimo incluso. È neutro e non richiede に per il semplice valore di «fino a».
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

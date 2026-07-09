@@ -12,9 +12,9 @@ id: grammar-237-ya-make-inexhaustive-list
 pattern: "や"
 title: "「や」Make an inexhaustive list"
 reading: "や"
-meaning_it: "Make an inexhaustive list"
+meaning_it: "Elenco aperto di nomi con や"
 notes_it: >-
-  や va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A や B collega nomi come esempi rappresentativi e lascia aperta la lista: «A, B e altre cose simili». A differenza di と, non pretende di enumerare tutto.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-237-ya-make-inexhaustive-list
 card_type: concept
 front: "や"
 back: >-
-  Make an inexhaustive list
+  A や B forma un elenco non esaustivo di nomi.
 example_jp: >-
-  これはやのかたちだ。
+  {{机|つくえ}}の{{上|うえ}}に{{本|ほん}}やノートがある。
 example_it: >-
-  Questa è la forma や.
+  Sulla scrivania ci sono libri, quaderni e altro.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  や collega nomi o sintagmi nominali, non direttamente clausole. Spesso l'ultimo elemento è seguito dalla particella richiesta dalla frase.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 :::

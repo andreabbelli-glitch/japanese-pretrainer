@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, numbers-and-counters]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 174.
+  Letture di base dei numeri da zero a dieci e principali varianti contestuali.
 ---
 
-# The numbers 1–10
+# The Numbers (1)
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/the-numbers-1`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Le letture sino-giapponesi sono la base della maggior parte dei numeri composti e dei contatori. Imparare una forma utile per ciascuna cifra non elimina le varianti lessicali.
 
-- Tema: The numbers 1–10
-- Sezione: numbers and counters
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- 0 零（れい）／ゼロ; 1 一（いち）; 2 二（に）; 3 三（さん）; 4 四（よん）; 5 五（ご）.
+- 6 六（ろく）; 7 七（なな）; 8 八（はち）; 9 九（きゅう）; 10 十（じゅう）.
+- Varianti frequenti ma dipendenti dal contesto: 四（し）, 七（しち）, 九（く）.
 
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{教室|きょうしつ}}に{{学生|がくせい}}が{{七人|しちにん}}いる。
 translation_it: >-
-  Questa è una penna.
+  In aula ci sono sette studenti.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+七人 si legge normalmente しちにん: l'esempio mostra perché la lettura del numero va appresa insieme al contatore.
+
+## Sfumature d'uso
+
+- 〇 è un simbolo usato spesso per le cifre in sequenza, per esempio in anni o percentuali; ゼロ è comune nel parlato moderno.
+- Davanti ai contatori possono verificarsi cambi fonetici: 一分 è いっぷん, non una semplice concatenazione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

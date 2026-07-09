@@ -12,9 +12,10 @@ id: grammar-369-taradoudesuka-suggest-something
 pattern: "たらどうですか"
 title: "「たらどうですか」Suggest that something be done"
 reading: "たらどうですか"
-meaning_it: "Suggest that something be done"
+meaning_it: >-
+  Che ne dice di; perché non
 notes_it: >-
-  たらどうですか va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: forma passata piana + らどうですか. È più cortese di 〜たらどう／〜たら？, ma il contenuto o l'intonazione possono comunque comunicare critica. Più deferenti: 〜たらどうでしょうか, 〜てはいかがでしょうか. Non descrive un passato reale: たら è condizionale.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-369-taradoudesuka-suggest-something
 card_type: concept
 front: "たらどうですか"
 back: >-
-  Suggest that something be done
+  Vた + らどうですか propone un'azione chiedendo come sarebbe compierla.
 example_jp: >-
-  ここでまったらどうですか。
+  {{少|すこ}}し{{休|やす}}んだらどうですか。
 example_it: >-
-  Perché non aspetti qui?
+  Che ne dice di riposarsi un po'?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: forma passata piana + らどうですか. È più cortese di 〜たらどう／〜たら？, ma il contenuto o l'intonazione possono comunque comunicare critica. Più deferenti: 〜たらどうでしょうか, 〜てはいかがでしょうか. Non descrive un passato reale: たら è condizionale.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, polite-language]
 :::

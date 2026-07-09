@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 113.
+  Completamento, involontarietà e rammarico espressi da てしまう.
 ---
-
 # 「しまう」Finish doing something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/shimau-finish-doing-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Vて + しまう presenta l'azione come completamente conclusa. In molti contesti aggiunge la prospettiva del parlante: il risultato è inatteso, involontario o spiacevole.
 
-- Tema: Finish doing something
-- Sezione: form series
-- Livello: JLPT-N4
-- Pattern allenabile: [しまう](grammar:grammar-113-shimau-finish-doing-something)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [しまう](grammar:grammar-113-shimau-finish-doing-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo in て-forma + しまう`. Il punto da riconoscere è [しまう](grammar:grammar-113-shimau-finish-doing-something).
 
 :::example_sentence
 jp: >-
-  これはしまうのかたちだ。
+  {{大切|たいせつ}}な{{写真|しゃしん}}を{{消|け}}してしまった。
 translation_it: >-
-  Questa è la forma しまう.
+  Ho cancellato per sbaglio una foto a cui tenevo.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   しまう -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+消して indica l'azione; しまった la presenta come conclusa e, dato 大切な写真, fa emergere il rammarico per l'esito.
+
+## Sfumature e limiti
+
+Il valore neutro di completamento e quello emotivo si distinguono dal contesto. しまう è un verbo godan: しまった al passato. Nel parlato てしまう e でしまう si contraggono spesso in ちゃう e じゃう.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

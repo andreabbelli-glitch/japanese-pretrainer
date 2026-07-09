@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 293.
+  Volitivo negativo letterario まい e decisioni di non agire.
 ---
-
 # 「まいと思う」Decide or desire to not do something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/maitoomou-decide-desire-not-do-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+まい è un volitivo negativo. Nei godan segue la forma dizionario; negli ichidan può seguire la radice o la forma dizionario. Con と思う esprime la decisione di non agire.
 
-- Tema: Decide or desire to not do something
-- Sezione: jlpt n4
-- Livello: JLPT-N4
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo + まい + と思う`. Il punto da riconoscere è `まいと思う`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  もう{{二度|にど}}と{{嘘|うそ}}をつくまいと{{思|おも}}った。
 translation_it: >-
-  Questa è una penna.
+  Decisi che non avrei mai più mentito.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+つくまい nega volitivamente l'azione futura; と思った colloca nel passato la decisione del parlante.
+
+## Sfumature e limiti
+
+È poco comune nella conversazione moderna e ricorre soprattutto in narrativa, monologo o stile solenne. するまい／すまい e 来るまい／来まい sono varianti possibili.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

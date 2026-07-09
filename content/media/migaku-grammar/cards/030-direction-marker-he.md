@@ -12,9 +12,9 @@ id: grammar-030-direction-marker-he
 pattern: "へ"
 title: "「へ」Indicate a direction"
 reading: "へ"
-meaning_it: "Indicate a direction"
+meaning_it: "Indicare con へ la direzione di un movimento"
 notes_it: >-
-  へ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Come particella, へ si pronuncia え. Segue un luogo e mette in rilievo l'orientamento o il percorso verso di esso; に tende invece a presentarlo più nettamente come destinazione.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-030-direction-marker-he
 card_type: concept
 front: "へ"
 back: >-
-  Indicate a direction
+  Luogo + へ + verbo di movimento significa «verso / in direzione di quel luogo».
 example_jp: >-
-  うちへかえる。
+  {{父|ちち}}が{{山|やま}}へ{{行|い}}く。
 example_it: >-
-  Torno verso casa.
+  Mio padre va verso la montagna.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  へ non garantisce necessariamente il raggiungimento della meta. Con は si combina in へは per tematizzare o contrapporre la direzione.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 :::

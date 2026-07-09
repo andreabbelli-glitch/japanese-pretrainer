@@ -10,44 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 056.
+  Confronto esplicito con la struttura hou ga... yori.
 ---
 
-# 「～方が～より」Compare two things
+# 「～方が～より」Compare things
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/gayori-comparisons`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Due termini espressi
 
-## Punto da riconoscere
-
-- Tema: Compare two things
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+A 方が B より + qualità significa che A possiede quella qualità più di B. 方が marca l'alternativa vincente; より marca la base superata.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{家|いえ}}を{{買|か}}う{{方|ほう}}が、{{家|いえ}}を{{借|か}}りるより{{安|やす}}い。
 translation_it: >-
-  Questa è una penna.
+  Comprare casa costa meno che affittarla.
 :::
 
-#### Anatomia rapida
+L'ordine può invertirsi senza cambiare i ruoli: B より A 方が + qualità. Per i nomi serve の方; per gli aggettivi in な, な方; verbi e aggettivi in い precedono 方 direttamente.
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Lettura operativa
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Individua prima より, cioè il termine di paragone, poi 方が, cioè l'alternativa che viene valutata come maggiore, migliore, più economica e così via.

@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 022.
+  Uso di で per il luogo o l'ambito di un'azione.
 ---
 
-# 「で」(1) Indicate where an action takes place
+# 「で」(1) Indicate a location where an action takes place
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/location-marker-de`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Forma e funzione
 
-## Punto da riconoscere
-
-- Tema: (1) Indicate where an action takes place
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [で](grammar:grammar-022-location-marker-de)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [で](grammar:grammar-022-location-marker-de) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Luogo + で indica dove si svolge un'azione o un evento. In italiano può diventare «a», «in» o «su»; non possiede una traduzione fissa.
 
 :::example_sentence
 jp: >-
-  カフェでたべる。
+  {{家|いえ}}で{{本|ほん}}を{{読|よ}}む。
 translation_it: >-
-  Mangio al caffè.
+  Leggo un libro a casa.
 :::
 
-#### Anatomia rapida
+Il «luogo» può essere anche un ambito concettuale o temporale, come una gara o una riunione. Per indicare soltanto dove qualcuno o qualcosa esiste con いる/ある, si usa invece に.
 
-*   で -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Tema e contrasto
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Con は, で diventa では: 図書館では本を読む può presentare una generalizzazione sulla biblioteca oppure contrapporre quel luogo ad altri. Struttura di base: luogo で + oggetto を + verbo.

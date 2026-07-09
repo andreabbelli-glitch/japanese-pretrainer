@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, academy-level-1, name-suffixes, jlpt-n4]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 066.
+  Come il suffisso や forma nomi di negozi, mestieri e tipi di persona.
 ---
-
 # 「屋」Refer to shops and people engaged in certain occupations
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ya-shops-and-people-suffix`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+屋（や）si unisce a un nome per indicare il negozio che vende quel prodotto o, per estensione, chi svolge quell'attività. In composti come 恥ずかしがり屋 descrive anche una persona incline a un certo comportamento.
 
-- Tema: Refer to shops and people engaged in certain occupations
-- Sezione: name suffixes
-- Livello: JLPT-N4
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `nome + 屋（や）`. Il punto da riconoscere è `屋（や）`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{駅|えき}}の{{前|まえ}}のパン{{屋|や}}でパンを{{買|か}}う。
 translation_it: >-
-  Questa è una penna.
+  Compro il pane nella panetteria davanti alla stazione.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+パン «pane» più 屋 forma パン屋, cioè il negozio specializzato nel pane. La particella で marca il luogo in cui avviene l'acquisto.
+
+## Sfumature e limiti
+
+Il composto può indicare il luogo (本屋, libreria), l'addetto (本屋さん, il libraio o la persona del negozio) oppure un tipo di persona. È il contesto a selezionare la lettura concreta.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

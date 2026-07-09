@@ -12,9 +12,9 @@ id: grammar-252-suruto-if-you-do-this-then
 pattern: "すると"
 title: "「すると」\"If you do (thing), then…\""
 reading: "すると"
-meaning_it: "If you do (thing), then…"
+meaning_it: "Connettivo すると: «allora / a quel punto»"
 notes_it: >-
-  すると va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  すると collega una frase alla successiva e indica che il secondo evento avviene subito dopo il primo o ne costituisce una conseguenza/inferenza naturale.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-252-suruto-if-you-do-this-then
 card_type: concept
 front: "すると"
 back: >-
-  If you do (thing), then…
+  Frase. すると、frase significa «accadde questo; allora / e a quel punto…».
 example_jp: >-
-  ミカといく。
+  ドアを{{開|あ}}けた。すると、{{猫|ねこ}}がいた。
 example_it: >-
-  Vado con Mika.
+  Ho aperto la porta. A quel punto ho visto che c'era un gatto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  È un connettivo fra frasi, non semplicemente する «fare» seguito dalla particella と in analisi separata.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 342.
+  Convinzione molto forte che un evento sia improbabile o quasi certo.
 ---
 
-# 「まず」(2) “Probably”
+# 「まず」(2) Probably
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/mazu-probably`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+In questo uso まず valuta la probabilità e presenta l'alternativa contraria come remota. È particolarmente comune con la negazione.
 
-- Tema: (2) Probably
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [まず](grammar:grammar-342-mazu-probably)
+## Formazione e restrizioni
 
-## Lettura operativa
+- まず〜ない: まず問題ない, まず失敗しない.
+- まず〜ないだろう: congettura fortemente negativa.
+- Con affermazioni: まず大丈夫だ («quasi certamente andrà bene»).
 
-Il centro del ripasso è riconoscere [まず](grammar:grammar-342-mazu-probably) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはまずのかたちだ。
+  この{{計画|けいかく}}が{{失敗|しっぱい}}することはまずない。
 translation_it: >-
-  Questa è la forma まず.
+  È quasi impossibile che questo piano fallisca.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   まず -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+まずない colloca il fallimento fuori dagli esiti ragionevolmente attesi.
+
+## Sfumature d'uso
+
+- Il grado è forte ma resta una valutazione, non una garanzia logica.
+- Con una sequenza d'azioni, まず torna al significato «prima».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

@@ -12,9 +12,10 @@ id: grammar-276-verb-volitional-ru
 pattern: "る動詞"
 title: "The volitional form of る verbs"
 reading: "るどうし"
-meaning_it: "The volitional form of る verbs"
+meaning_it: >-
+  Volitivo dei verbi ichidan: «facciamo / ho intenzione di»
 notes_it: >-
-  る{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  radice del verbo ichidan + よう. La forma può invitare l'interlocutore oppure esprimere una decisione del parlante. Il contesto e l'intonazione distinguono «facciamo» da «farò».
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-276-verb-volitional-ru
 card_type: concept
 front: "る{{動詞|どうし}}"
 back: >-
-  The volitional form of る verbs
+  Volitivo dei verbi ichidan: «facciamo / ho intenzione di»
 example_jp: >-
-  パンをたべる。
+  このケーキを{{一緒|いっしょ}}に{{食|た}}べよう。
 example_it: >-
-  Mangio il pane.
+  Mangiamo insieme questa torta.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  食べる perde る e prende よう; 一緒に mostra che il parlante include l'interlocutore nella proposta. La forma può invitare l'interlocutore oppure esprimere una decisione del parlante. Il contesto e l'intonazione distinguono «facciamo» da «farò».
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

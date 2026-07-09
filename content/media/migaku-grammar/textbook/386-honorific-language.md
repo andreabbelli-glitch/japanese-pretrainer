@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, honorific-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 386.
+  Sostituzioni lessicali che elevano le azioni e gli stati della persona rispettata.
 ---
 
-# 「尊敬語」An introduction to honorific language
+# Honorific language
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/honorific-language`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Le forme onorifiche cambiano il verbo per rappresentare rispettosamente l'azione del soggetto elevato. Sono distinte dalle forme umili, che agiscono sul lato del parlante.
 
-- Tema: An introduction to honorific language
-- Sezione: honorific language
-- Livello: JLPT-N4
+## Formazione e restrizioni
 
-## Lettura operativa
+- 見る→ご覧になる; する→なさる; 言う→おっしゃる.
+- 行く・来る・いる→いらっしゃる／おいでになる; 会う→お会いになる.
+- 知る→ご存じだ; 食べる・飲む→召し上がる.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{先生|せんせい}}はもう{{資料|しりょう}}をご{{覧|らん}}になりました。
 translation_it: >-
-  Questa è una penna.
+  Il professore ha già esaminato i documenti.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Il soggetto è il professore; ご覧になりました eleva la sua azione di esaminare.
+
+## Sfumature d'uso
+
+- Il soggetto deve essere la persona rispettata; 私がご覧になります sarebbe improprio.
+- Evitare doppio keigo come *おっしゃられる; scegliere una sola forma onorifica corretta.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

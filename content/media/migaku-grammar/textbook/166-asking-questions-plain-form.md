@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 166.
+  Domande colloquiali costruite con forme piane, intonazione e contesto.
 ---
 
 # Asking questions in plain form
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/asking-questions-plain-form`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+In conversazione il giapponese non richiede sempre una particella interrogativa. Intonazione, contesto e forma piana sono sufficienti a segnalare la domanda.
 
-- Tema: Asking questions in plain form
-- Sezione: jlpt n5
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- Frase piana + intonazione ascendente: 行く？, 食べた？
+- Forma negativa interrogativa: 行かない？ può invitare («non vieni?»), 行かなかった？ può chiedere conferma su un fatto passato.
+- か rende la domanda più marcata; の aggiunge interesse per circostanze o spiegazione.
 
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  もう{{昼|ひる}}ご{{飯|はん}}{{食|た}}べた？
 translation_it: >-
-  Questa è una penna.
+  Hai già pranzato?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+食べた è formalmente una frase piana passata; l'intonazione interrogativa la trasforma in «hai mangiato?».
+
+## Sfumature d'uso
+
+- Senza です／ます il registro è informale: usarlo con estranei o superiori può risultare brusco.
+- Nello scritto l'intonazione manca, quindi il punto interrogativo o il contesto devono rendere chiara la funzione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 202.
+  Ricorrenza e distribuzione con gotoni.
 ---
 
-# 「ごとに」Another way to say “every (period of time)"
+# 「ごとに」Another way to say 'every'
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/gotoni-another-way-say-every`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Ogni intervallo o elemento
 
-## Punto da riconoscere
-
-- Tema: Another way to say every (period of time)
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [ごとに](grammar:grammar-202-gotoni-another-way-say-every)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ごとに](grammar:grammar-202-gotoni-another-way-say-every) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+A ごとに B dice che B avviene a ogni A o per ciascun A. Può seguire contatori e una gamma di nomi più ampia rispetto al prefisso 毎.
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{三時間|さんじかん}}ごとに{{水|みず}}を{{飲|の}}む。
 translation_it: >-
-  Vado al caffè.
+  Bevo acqua ogni tre ore.
 :::
 
-#### Anatomia rapida
+Con un nome può distribuire una proprietà: 部屋ごとに significa «per ogni stanza». In alcune espressioni verbali, 見るごとに vale «ogni volta che vedo».
 
-*   ごとに -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Schema
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Intervallo ごとに + evento. L'enfasi è sulla regolarità con cui ogni unità innesca una nuova occorrenza.

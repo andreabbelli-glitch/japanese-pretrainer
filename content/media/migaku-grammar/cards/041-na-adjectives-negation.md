@@ -12,9 +12,9 @@ id: grammar-041-na-adjectives-negation
 pattern: "な形容詞"
 title: "The negative form of な adjectives"
 reading: "なけいようし"
-meaning_it: "The negative form of な adjectives"
+meaning_it: "Negativo piano degli aggettivi in な con じゃない"
 notes_it: >-
-  な{{形容詞|けいようし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Gli aggettivi in な si negano come i nomi: si aggiunge じゃない direttamente alla radice, senza な. La stessa forma può essere predicativa o precedere un nome: きれいじゃない人.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-041-na-adjectives-negation
 card_type: concept
 front: "な{{形容詞|けいようし}}"
 back: >-
-  The negative form of な adjectives
+  Aggettivo in な + じゃない significa «non è… / non …».
 example_jp: >-
-  ここはしずかだ。
+  {{図書館|としょかん}}は{{静|しず}}かじゃない。
 example_it: >-
-  Qui è tranquillo.
+  La biblioteca non è tranquilla.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  大丈夫じゃない è la forma regolare. だいじょうばない esiste come slang giocoso, ma non è una coniugazione standard da generalizzare.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 :::

@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n2, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 327.
+  Rassegnazione davanti a circostanze inevitabili e alternative ormai assenti.
 ---
 
-# 「しょうがない」”It can’t be helped"
+# 「しょうがない」Nothing you can do
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/shouganai-nothing-you-can-do`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+しょうがない valuta una situazione come fuori dal controllo del parlante. Non descrive un'impossibilità grammaticale, ma l'assenza percepita di alternative utili.
 
-- Tema: It can’t be helped
-- Sezione: jlpt n2
-- Livello: JLPT-N2
-- Pattern allenabile: [しょうがない](grammar:grammar-327-shouganai-nothing-you-can-do)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Frase autonoma: しょうがない。
+- Causa accettata + なら／から + しょうがない.
+- Varianti: 仕方がない, 仕様がない; colloquiale ancora più ridotto しゃあない in alcune parlate.
 
-Il centro del ripasso è riconoscere [しょうがない](grammar:grammar-327-shouganai-nothing-you-can-do) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ネコがいる。
+  {{電車|でんしゃ}}が{{止|と}}まったなら、しょうがない。
 translation_it: >-
-  C'è un gatto.
+  Se il treno si è fermato, non c'è niente da fare.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   しょうがない -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Il fermo del treno è presentato come circostanza non controllabile, quindi il parlante rinuncia a cercare un'alternativa.
+
+## Sfumature d'uso
+
+- Può giustificare una concessione: しょうがないから手伝う.
+- Rivolto a una persona, しょうがない人 può significare «persona senza speranza/incorreggibile».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

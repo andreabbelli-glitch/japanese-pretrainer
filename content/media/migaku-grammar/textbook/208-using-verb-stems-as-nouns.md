@@ -10,44 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 208.
+  Basi verbali usate come nomi.
 ---
 
 # Using verb stems as nouns
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/using-verb-stems-as-nouns`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Dall'azione al nome
 
-## Punto da riconoscere
-
-- Tema: Using verb stems as nouns
-- Sezione: stem form series
-- Livello: JLPT-N4
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Molte basi verbali funzionano anche come nomi lessicali: 流れる → 流れ «flusso», 泳ぐ → 泳ぎ «nuoto», 考える → 考え «pensiero/idea». Come nomi possono ricevere は, が, を e altre particelle.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{私|わたし}}は{{泳|およ}}ぎが{{得意|とくい}}じゃない。
 translation_it: >-
-  Questa è una penna.
+  Non sono bravo a nuotare.
 :::
 
-#### Anatomia rapida
+Composti come 読み書き «lettura e scrittura», やりとり «scambio» e 浮き沈み «alti e bassi» uniscono basi dal significato collegato o opposto.
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+## Limite
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Il valore nominale è spesso lessicalizzato: non basta trasformare qualunque verbo e presumere un significato naturale. Va verificato come voce d'uso.

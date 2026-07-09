@@ -12,9 +12,10 @@ id: grammar-275-verb-volitional-u
 pattern: "う動詞"
 title: "The volitional form of う verbs"
 reading: "うどうし"
-meaning_it: "The volitional form of う verbs"
+meaning_it: >-
+  Volitivo dei verbi godan: proposta «facciamo» o intenzione «farò»
 notes_it: >-
-  う{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  base godan in o + う. Con un interlocutore propone un'azione condivisa; in monologo esprime decisione o slancio del parlante. Non possiede un passato autonomo.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-275-verb-volitional-u
 card_type: concept
 front: "う{{動詞|どうし}}"
 back: >-
-  The volitional form of う verbs
+  Volitivo dei verbi godan: proposta «facciamo» o intenzione «farò»
 example_jp: >-
-  カフェにいく。
+  {{明日|あした}}、{{一緒|いっしょ}}に{{海|うみ}}へ{{行|い}}こう。
 example_it: >-
-  Vado al caffè.
+  Domani andiamo insieme al mare.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  行く passa alla base 行こ- e aggiunge う: 行こう. 一緒に rende evidente la proposta condivisa. Con un interlocutore propone un'azione condivisa; in monologo esprime decisione o slancio del parlante. Non possiede un passato autonomo.
 tags: [migaku, grammar, academy-level-1, verbs, jlpt-n4]
 :::

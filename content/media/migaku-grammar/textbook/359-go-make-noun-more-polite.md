@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, polite-language, humble-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 359.
+  Prefisso cortese o rispettoso usato soprattutto con parole di origine sino-giapponese.
 ---
 
-# 「ご」Another prefix that makes nouns polite
+# 「ご」Make a noun more polite
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/go-make-noun-more-polite`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ご svolge funzioni simili a お, ma si associa in via generale al lessico sino-giapponese. Il referente stabilisce se il valore è estetico, cortese o onorifico.
 
-- Tema: Another prefix that makes nouns polite
-- Sezione: polite language
-- Livello: JLPT-N3
-- Pattern allenabile: [ご](grammar:grammar-359-go-make-noun-more-polite)
+## Formazione e restrizioni
 
-## Lettura operativa
+- ご + nome sino-giapponese: ご家族, ご連絡, ご説明.
+- In verbi in する: ご説明する, ご利用になる.
+- Imparare la forma insieme alla parola per gestire le eccezioni.
 
-Il centro del ripasso è riconoscere [ご](grammar:grammar-359-go-make-noun-more-polite) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはごのかたちだ。
+  ご{{家族|かぞく}}はお{{元気|げんき}}ですか。
 translation_it: >-
-  Questa è la forma ご.
+  La sua famiglia sta bene?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ご -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+ご家族 mostra rispetto verso la famiglia dell'interlocutore; お元気 è la forma convenzionale del saluto.
+
+## Sfumature d'uso
+
+- Non usare ご per elevare i propri beni davanti a un esterno, salvo forme umili convenzionali.
+- お電話 e ごゆっくり mostrano che l'origine lessicale non è una regola assoluta.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

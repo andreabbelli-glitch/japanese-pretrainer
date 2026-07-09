@@ -12,9 +12,10 @@ id: grammar-142-temiru-trying-something
 pattern: "てみる"
 title: "「てみる」Express that you’re trying to do something"
 reading: "てみる"
-meaning_it: "Express that you’re trying to do something"
+meaning_it: >-
+  Provare a fare qualcosa per vedere com'è o cosa succede
 notes_it: >-
-  てみる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: Verbo in forma て + みる; みる si coniuga come un verbo in る: 〜てみた, 〜てみたい, 〜てみて. Di norma si scrive in hiragana quando è ausiliare. Non esprime soltanto «sforzarsi»: implica fare una prova per scoprirne l'esito.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-142-temiru-trying-something
 card_type: concept
 front: "てみる"
 back: >-
-  Express that you’re trying to do something
+  Vて + みる indica un tentativo esplorativo: si compie davvero l'azione per verificarne il risultato.
 example_jp: >-
-  これはてみるのかたちだ。
+  この{{料理|りょうり}}を{{少|すこ}}し{{食|た}}べてみる。
 example_it: >-
-  Questa è la forma てみる.
+  Proverò ad assaggiare un po' questo piatto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: Verbo in forma て + みる; みる si coniuga come un verbo in る: 〜てみた, 〜てみたい, 〜てみて. Di norma si scrive in hiragana quando è ausiliare. Non esprime soltanto «sforzarsi»: implica fare una prova per scoprirne l'esito.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 :::

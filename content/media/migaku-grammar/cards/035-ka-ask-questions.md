@@ -12,9 +12,9 @@ id: grammar-035-ka-ask-questions
 pattern: "か"
 title: "「か」(1) Turn statements into questions"
 reading: "か"
-meaning_it: "(1) Turn statements into questions"
+meaning_it: "Trasformare una frase in domanda con か"
 notes_it: >-
-  か va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Aggiunto alla fine di una frase, か la presenta come domanda senza cambiarne l'ordine. Può seguire un verbo, un aggettivo o un nome; nel parlato piano il tono e il contesto incidono molto sul registro.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-035-ka-ask-questions
 card_type: concept
 front: "か"
 back: >-
-  (1) Turn statements into questions
+  Frase + か segnala una domanda: «…?».
 example_jp: >-
-  これはかのかたちだ。
+  その{{店|みせ}}で{{弁当|べんとう}}を{{買|か}}うか？
 example_it: >-
-  Questa è la forma か.
+  Comprerai un bentō in quel negozio?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Le domande colloquiali possono anche omettere か e affidarsi all'intonazione. Con una forma piana, か può suonare diretto: va scelto in base alla relazione.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 :::

@@ -12,9 +12,9 @@ id: grammar-241-wa-make-weak-assertion
 pattern: "わ"
 title: "「わ」Make a weak assertion"
 reading: "わ"
-meaning_it: "Make a weak assertion"
+meaning_it: "Finale わ: esprimere decisione, emozione o valutazione personale"
 notes_it: >-
-  わ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  わ aggiunge una sfumatura emotiva o assertiva alla frase. Intonazione, regione, età e genere cambiano molto l'effetto: non è universalmente ed esclusivamente femminile.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-241-wa-make-weak-assertion
 card_type: concept
 front: "わ"
 back: >-
-  Make a weak assertion
+  Frase + わ presenta una reazione o presa di posizione personale.
 example_jp: >-
-  これはわのかたちだ。
+  このケーキ、おいしいわ。
 example_it: >-
-  Questa è la forma わ.
+  Questa torta è proprio buona.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  わ esprime il sentimento del parlante e non serve a impartire comandi. La resa italiana dipende da voce e situazione.
 tags: [migaku, grammar, academy-level-1, sentence-enders, jlpt-n3]
 :::

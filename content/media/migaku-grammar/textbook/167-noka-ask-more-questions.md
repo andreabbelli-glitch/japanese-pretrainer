@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 167.
+  Domande esplicative e interrogative incorporate, con formazione e registro.
 ---
 
-# 「のか」Ask indirect questions
+# 「のか」Ask more questions
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/noka-ask-more-questions`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+の aggiunge una cornice esplicativa e か la rende interrogativa. Il risultato può essere una domanda diretta oppure una questione inserita come contenuto di sapere, capire o domandarsi.
 
-- Tema: Ask indirect questions
-- Sezione: particles
-- Livello: JLPT-N5
-- Pattern allenabile: [のか](grammar:grammar-167-noka-ask-more-questions)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo o aggettivo in い + のか: 来るのか, 高いのか.
+- Nome o aggettivo in な + なのか: 学生なのか, 静かなのか.
+- Clausola interrogativa + predicato: どこへ行ったのか分からない.
 
-Il centro del ripasso è riconoscere [のか](grammar:grammar-167-noka-ask-more-questions) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ぼくのペンだ。
+  {{彼|かれ}}が{{本当|ほんとう}}に{{来|く}}るのか、まだ{{分|わ}}からない。
 translation_it: >-
-  È la mia penna.
+  Non so ancora se verrà davvero.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   のか -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+彼が本当に来るのか è una questione incorporata; 分からない dichiara che la risposta non è nota.
+
+## Sfumature d'uso
+
+- Una domanda diretta in のか può suonare brusca, autoritaria o introspettiva; んですか è spesso più adatto in conversazione cortese.
+- Rispetto a かどうか, のか può conservare una domanda informativa più ricca, soprattutto con parole come どこ, なぜ, 何.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

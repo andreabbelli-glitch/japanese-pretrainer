@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 064.
+  Uso di あまり per un grado o una quantità bassi.
 ---
 
 # 「あまり」Indicate a low degree of something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/amari-not-very`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## あまり〜ない
 
-## Punto da riconoscere
-
-- Tema: Indicate a low degree of something
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [あまり](grammar:grammar-064-amari-not-very)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [あまり](grammar:grammar-064-amari-not-very) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Come avverbio di grado, あまり si combina soprattutto con una forma negativa e significa «non molto», «non tanto», «non particolarmente».
 
 :::example_sentence
 jp: >-
-  これはあまりのかたちだ。
+  {{酒|さけ}}はあまり{{飲|の}}まない。
 translation_it: >-
-  Questa è la forma あまり.
+  Non bevo molto alcol.
 :::
 
-#### Anatomia rapida
+この猫はあまり可愛くない significa «questo gatto non è molto carino». あんまり è una variante fonologica più colloquiale con lo stesso valore.
 
-*   あまり -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Altri usi
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+それはあまりだ è una locuzione: «questo è davvero troppo / è crudele». あまり può inoltre entrare in composti con il senso di «avanzo», come あまりご飯, ma l'uso è limitato e non va esteso liberamente a qualsiasi nome.

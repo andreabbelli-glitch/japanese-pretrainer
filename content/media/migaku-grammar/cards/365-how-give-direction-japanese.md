@@ -12,9 +12,10 @@ id: grammar-365-how-give-direction-japanese
 pattern: "道案内"
 title: "How to give directions In Japanese"
 reading: "みちあんない"
-meaning_it: "How to give directions In Japanese"
+meaning_it: >-
+  Strutture fondamentali per dare indicazioni stradali
 notes_it: >-
-  {{道案内|みちあんない}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Forme chiave: 次の + punto; 交差点を右／左に曲がる; 道／橋を渡る; 道をまっすぐ行く／進む. La forma in て collega i passaggi e Vと introduce ciò che si incontra seguendo il percorso. ください rende l'istruzione cortese.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-365-how-give-direction-japanese
 card_type: concept
 front: "{{道案内|みちあんない}}"
 back: >-
-  How to give directions In Japanese
+  Le indicazioni combinano 次の, luogoをdirezioneに曲がる, spazioを渡る e percorsoをまっすぐ進む.
 example_jp: >-
-  これは{{道案内|みちあんない}}のかたちだ。
+  {{次|つぎ}}の{{角|かど}}を{{右|みぎ}}に{{曲|ま}}がってください。
 example_it: >-
-  Questa è la forma 道案内.
+  Giri a destra al prossimo angolo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Forme chiave: 次の + punto; 交差点を右／左に曲がる; 道／橋を渡る; 道をまっすぐ行く／進む. La forma in て collega i passaggi e Vと introduce ciò che si incontra seguendo il percorso. ください rende l'istruzione cortese.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

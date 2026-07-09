@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 300.
+  Desiderativi di する e くる, con il caso regolare di いく.
 ---
-
 # The “desire” form of irregular verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-desire-irregular`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+する forma したい e 来る forma 来たい（きたい）. 行く segue regolarmente il modello godan e diventa 行きたい.
 
-- Tema: The desire form of irregular verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-300-verb-desire-irregular)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-300-verb-desire-irregular) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `する→したい／来る→来たい／行く→行きたい`. Il punto da riconoscere è [不規則動詞](grammar:grammar-300-verb-desire-irregular).
 
 :::example_sentence
 jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  もっと{{日本語|にほんご}}を{{勉強|べんきょう}}したい。
 translation_it: >-
-  Questa è la forma 不規則動詞.
+  Voglio studiare di più il giapponese.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   {{不規則|ふきそく}}{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+勉強する prende したい; もっと indica l'aumento desiderato nella quantità di studio.
+
+## Sfumature e limiti
+
+Anche queste forme coniugano come い-aggettivi. 来たい usa la lettura き; le affermazioni sul desiderio di terzi richiedono cautela o たがる.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

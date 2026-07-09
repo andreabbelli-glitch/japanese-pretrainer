@@ -10,45 +10,27 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 032.
+  Formazione del negativo piano dei verbi in う.
 ---
 
-# The negative form of う verbs
+# Verb Negatives - U
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/u-verbs-negation`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Base in a + ない
 
-## Punto da riconoscere
+Per il negativo piano si porta l'ultimo kana dalla colonna u alla corrispondente colonna a e si aggiunge ない.
 
-- Tema: The negative form of う verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [う{{動詞|どうし}}](grammar:grammar-032-u-verbs-negation)
+- 書く → 書かない
+- 読む → 読まない
+- 帰る → 帰らない
+- 立つ → 立たない
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [う{{動詞|どうし}}](grammar:grammar-032-u-verbs-negation) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+I verbi in う fanno eccezione nel passaggio fonetico: う diventa わ, quindi 買う → 買わない.
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{私|わたし}}は{{国|くに}}へ{{帰|かえ}}らない。
 translation_it: >-
-  Vado al caffè.
+  Non tornerò nel mio Paese.
 :::
 
-#### Anatomia rapida
-
-*   う{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+La forma è non-passata e può indicare presente abituale o futuro. La persona non è codificata dal verbo.

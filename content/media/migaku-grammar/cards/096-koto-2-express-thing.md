@@ -12,9 +12,10 @@ id: grammar-096-koto-2-express-thing
 pattern: "こと"
 title: "「こと」(2) \" An (adjective) thing\""
 reading: "こと"
-meaning_it: "(2)  An (adjective) thing"
+meaning_it: >-
+  «Cosa / fatto» di natura astratta, evento o contenuto
 notes_it: >-
-  こと va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  descrizione in forma piana + こと. Si distingue da もの, che tende a indicare un oggetto concreto e percepibile. 面白いこと è «qualcosa di interessante» come fatto o attività; 赤いもの è «una cosa rossa» materiale.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-096-koto-2-express-thing
 card_type: concept
 front: "こと"
 back: >-
-  (2)  An (adjective) thing
+  «Cosa / fatto» di natura astratta, evento o contenuto
 example_jp: >-
-  ミカといく。
+  {{昨日|きのう}}、{{面白|おもしろ}}いことがあった。
 example_it: >-
-  Vado con Mika.
+  Ieri è successa una cosa interessante.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  面白い descrive こと, qui un evento astratto; があった dice che quel fatto si è verificato. Si distingue da もの, che tende a indicare un oggetto concreto e percepibile. 面白いこと è «qualcosa di interessante» come fatto o attività; 赤いもの è «una cosa rossa» materiale.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

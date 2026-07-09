@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n3, sentence-enders, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 242.
+  Riflessione e ricerca di accordo con na.
 ---
 
-# 「な」A masculine version of ね
+# 「な」Seek confirmation and more
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/na-seek-confirmation-more`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Commento pensato ad alta voce
 
-## Punto da riconoscere
-
-- Tema: A masculine version of ね
-- Sezione: sentence enders
-- Livello: JLPT-N3
-- Pattern allenabile: [な](grammar:grammar-242-na-seek-confirmation-more)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [な](grammar:grammar-242-na-seek-confirmation-more) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+な a fine frase può chiedere condivisione, mostrare che il parlante considera un fatto o esprimere una reazione emotiva. È particolarmente associato al parlato maschile informale.
 
 :::example_sentence
 jp: >-
-  これはなのかたちだ。
+  {{今日|きょう}}は{{寒|さむ}}いな。
 translation_it: >-
-  Questa è la forma な.
+  Che freddo oggi.
 :::
 
-#### Anatomia rapida
+Può essere vicino a ね, ma spesso suona più introspettivo o ruvido. Il contesto decide se vi sia una vera richiesta di conferma.
 
-*   な -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Da distinguere
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Verbo dizionario + な può anche essere un divieto («non fare!»). Quella costruzione ha intonazione e funzione diverse dal finale riflessivo studiato qui.

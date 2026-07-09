@@ -12,9 +12,9 @@ id: grammar-193-ka-3-making-question-words-unspecific
 pattern: "か"
 title: "「か」(3) \"Something, someone, somewhere, sometime\""
 reading: "か"
-meaning_it: "(3) Something, someone, somewhere, sometime"
+meaning_it: "Rendere indefinita una parola interrogativa con か"
 notes_it: >-
-  か va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Parola interrogativa + か non formula una domanda, ma indica un referente non specificato: 何か «qualcosa», 誰か «qualcuno», どこか «da qualche parte», いつか «prima o poi».
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-193-ka-3-making-question-words-unspecific
 card_type: concept
 front: "か"
 back: >-
-  (3) Something, someone, somewhere, sometime
+  Parola interrogativa + か significa «qualcosa/qualcuno/qualche luogo o momento».
 example_jp: >-
-  これはかのかたちだ。
+  {{誰|だれ}}かがドアをノックした。
 example_it: >-
-  Questa è la forma か.
+  Qualcuno ha bussato alla porta.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Le particelle richieste dal ruolo sintattico seguono l'intero indefinito: 誰かが, どこかに, 何かを.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

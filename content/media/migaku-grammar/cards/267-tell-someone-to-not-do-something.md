@@ -12,9 +12,10 @@ id: grammar-267-tell-someone-to-not-do-something
 pattern: "な"
 title: "「な」 Tell someone to not do something"
 reading: "な"
-meaning_it: "Tell someone to not do something"
+meaning_it: >-
+  Imperativo negativo forte: «non fare!»
 notes_it: >-
-  な va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in forma dizionario + な. È brusco, emotivo e frequente in ordini maschili, avvertimenti o segnali. なよ può attenuare leggermente, ma resta colloquiale e diretto.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-267-tell-someone-to-not-do-something
 card_type: concept
 front: "な"
 back: >-
-  Tell someone to not do something
+  Imperativo negativo forte: «non fare!»
 example_jp: >-
-  これはなのかたちだ。
+  ここで{{写真|しゃしん}}を{{撮|と}}るな。
 example_it: >-
-  Questa è la forma な.
+  Non scattare fotografie qui.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  撮る resta in forma dizionario; な aggiunge il divieto forte. Non va confuso con la particella finale な di altri usi. È brusco, emotivo e frequente in ordini maschili, avvertimenti o segnali. なよ può attenuare leggermente, ma resta colloquiale e diretto.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, sentence-enders]
 :::

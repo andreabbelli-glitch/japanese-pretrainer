@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 384.
+  Saluti quotidiani interpretati come formule legate a incontro, pasti, partenza e ritorno.
 ---
 
-# 12 basic Japanese greetings
+# Greetings
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/greetings`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Molti saluti sono frasi grammaticalmente analizzabili ma ormai convenzionali. Si scelgono in base al momento e al ruolo conversazionale.
 
-- Tema: 12 basic Japanese greetings
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [あいさつ](grammar:grammar-384-greetings)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Primo incontro: はじめまして; よろしくお願いします.
+- Pasti: いただきます prima, ごちそうさまでした dopo.
+- Casa/partenza: 行ってきます ↔ 行ってらっしゃい; ただいま ↔ お帰りなさい.
 
-Il centro del ripasso è riconoscere [あいさつ](grammar:grammar-384-greetings) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  おはよう。
+  はじめまして。{{田中|たなか}}と{{申|もう}}します。
 translation_it: >-
-  Buongiorno.
+  Piacere. Mi chiamo Tanaka.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   あいさつ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+はじめまして apre un primo incontro; 申します presenta umilmente il nome del parlante.
+
+## Sfumature d'uso
+
+- こんにちは e こんばんは si scrivono con は finale perché derivano da espressioni topicali.
+- Le abbreviazioni casuali esistono, ma vanno adeguate a rapporto e situazione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

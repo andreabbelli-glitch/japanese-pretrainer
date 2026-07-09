@@ -2,7 +2,7 @@
 id: lesson-migaku-grammar-381-being-more-polite-with-receptive-form
 media_id: media-migaku-grammar
 slug: 381-being-more-polite-with-receptive-form
-title: "The reciptive form in honorific statements"
+title: "The passive form in honorific statements"
 order: 3810
 segment_ref: honorific-language
 difficulty: jlpt-n4
@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, honorific-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 381.
+  Uso onorifico della forma passiva per le azioni altrui, con limiti e possibili ambiguità.
 ---
 
-# The reciptive form in honorific statements
+# Being more polite with the passive form
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/being-more-polite-with-receptive-form`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+れる／られる può spostare il verbo in registro rispettoso senza modificare la struttura argomentale. La stessa forma, però, ha altri valori grammaticali.
 
-- Tema: The reciptive form in honorific statements
-- Sezione: honorific language
-- Livello: JLPT-N4
-- Pattern allenabile: [{{受|う}}け{{身|み}}](grammar:grammar-381-being-more-polite-with-receptive-form)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo in forma passiva con soggetto rispettato: 先生が来られる.
+- Particelle come nella frase attiva: 先生が資料を読まれる.
+- Alternativa più elevata: お読みになる, いらっしゃる.
 
-Il centro del ripasso è riconoscere [{{受|う}}け{{身|み}}](grammar:grammar-381-being-more-polite-with-receptive-form) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これは{{受|う}}け{{身|み}}のかたちだ。
+  {{先生|せんせい}}は{{何時|なんじ}}に{{来|こ}}られますか。
 translation_it: >-
-  Questa è la forma 受け身.
+  A che ora arriverà il professore?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   {{受|う}}け{{身|み}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Il soggetto rispettato è il professore; 来られます è letto onorificamente, non come passivo.
+
+## Sfumature d'uso
+
+- 来られる può significare «può venire» o essere onorifico; contesto e soggetto decidono.
+- Non sommare questa forma a un verbo già onorifico se produce doppio keigo.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

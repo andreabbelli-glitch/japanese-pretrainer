@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 082.
+  Negazione piana al passato di nomi e な-aggettivi con じゃなかった.
 ---
+# 「じゃなかった」Declare something \"was not\"
 
-# 「じゃなかった」Declare something "was not"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/janakatta-declare-something-was-not`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+じゃなかった è il passato di じゃない: si elimina la い finale di ない e si aggiunge かった. Nega nel passato un nome o un な-aggettivo.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: Declare something was not
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [じゃなかった](grammar:grammar-082-janakatta-declare-something-was-not)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [じゃなかった](grammar:grammar-082-janakatta-declare-something-was-not) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `nome / な-aggettivo + じゃなかった`. Il punto da riconoscere è [じゃなかった](grammar:grammar-082-janakatta-declare-something-was-not).
 
 :::example_sentence
 jp: >-
-  これはペンじゃなかった。
+  {{昨日|きのう}}は{{休|やす}}みじゃなかった。
 translation_it: >-
-  Questa non era una penna.
+  Ieri non era un giorno di riposo.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   じゃなかった -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+休み è il nome negato; じゃなかった dice che la condizione «essere giorno libero» non valeva ieri.
+
+## Sfumature e limiti
+
+じゃ è la contrazione di では ed è comune nel parlato. ではなかった è meno colloquiale; per maggiore cortesia si incontra じゃなかったです o ではありませんでした.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

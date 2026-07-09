@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 328.
+  Supposizioni probabili ma non certe, con posizione flessibile e combinazioni frequenti.
 ---
 
 # 「多分」Express a high probablility
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tabun-express-high-probablility`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+多分 presenta una previsione come l'esito ritenuto più plausibile, lasciando comunque un margine d'incertezza.
 
-- Tema: Express a high probablility
-- Sezione: jlpt n5
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- 多分 + proposizione: 多分来る.
+- 多分〜だろう／でしょう: previsione esplicitamente attenuata.
+- 多分〜と思う: giudizio personale prudente.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{多分|たぶん}}、{{明日|あした}}は{{晴|は}}れる。
 translation_it: >-
-  Questa è una penna.
+  Probabilmente domani farà bel tempo.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+多分 attenua la previsione del bel tempo e lascia aperta la possibilità contraria.
+
+## Sfumature d'uso
+
+- In italiano può essere «forse» o «probabilmente» secondo la sicurezza espressa dall'intera frase.
+- 多分 avverbiale vale «forse / probabilmente»; たくさん esprime invece «molto».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

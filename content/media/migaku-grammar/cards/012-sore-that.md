@@ -12,9 +12,9 @@ id: grammar-012-sore-that
 pattern: "それ"
 title: "「それ」”That\""
 reading: "それ"
-meaning_it: "That"
+meaning_it: "«Quello»: pronome dimostrativo per qualcosa vicino all'ascoltatore"
 notes_it: >-
-  それ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  それ è un pronome dimostrativo autonomo. Indica una cosa vicina all'ascoltatore, in suo possesso o comunque associata alla sua sfera.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-012-sore-that
 card_type: concept
 front: "それ"
 back: >-
-  That
+  それ significa «quello / quella» per una cosa vicina all'ascoltatore.
 example_jp: >-
-  これはそれのかたちだ。
+  それは{{本|ほん}}だ。
 example_it: >-
-  Questa è la forma それ.
+  Quello è un libro.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La serie そ- segnala distanza dal parlante o vicinanza all'interlocutore. Per «quel + nome» si usa その.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

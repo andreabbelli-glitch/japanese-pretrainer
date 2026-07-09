@@ -12,9 +12,10 @@ id: grammar-138-tekara-doing-something-after-something-else
 pattern: "てから"
 title: "「てから」”Do X after Y\""
 reading: "てから"
-meaning_it: "Do X after Y"
+meaning_it: >-
+  Dopo aver…; una volta fatto…
 notes_it: >-
-  てから va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: Verbo in forma て + から, seguito dall'azione successiva. L'ordine A→B è vincolante e spesso le due azioni appartengono allo stesso piano o sono logicamente collegate. Non si attacca direttamente ai nomi. Registro neutro e molto comune.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-138-tekara-doing-something-after-something-else
 card_type: concept
 front: "てから"
 back: >-
-  Do X after Y
+  Vて + から collega due azioni: B avviene dopo che A è stata completata.
 example_jp: >-
-  あめだからいかない。
+  {{宿題|しゅくだい}}を{{終|お}}えてから、ゲームをする。
 example_it: >-
-  Non vado perché piove.
+  Giocherò dopo aver finito i compiti.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: Verbo in forma て + から, seguito dall'azione successiva. L'ordine A→B è vincolante e spesso le due azioni appartengono allo stesso piano o sono logicamente collegate. Non si attacca direttamente ai nomi. Registro neutro e molto comune.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, form-series]
 :::

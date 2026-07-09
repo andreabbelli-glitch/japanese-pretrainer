@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 314.
+  Divieti quotidiani e tono colloquiale della forma てはだめ.
 ---
-
 # 「だめ」Casually prohibit something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dame-prohibit-something-casually`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Vてはだめ giudica l'azione inaccettabile e quindi la vieta. È comune nella conversazione quotidiana.
 
-- Tema: Casually prohibit something
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [だめ](grammar:grammar-314-dame-prohibit-something-casually)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [だめ](grammar:grammar-314-dame-prohibit-something-casually) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo in て-forma + はだめ（だ）`. Il punto da riconoscere è [だめ](grammar:grammar-314-dame-prohibit-something-casually).
 
 :::example_sentence
 jp: >-
-  これはだめのかたちだ。
+  ここで{{泳|およ}}いではだめだ。
 translation_it: >-
-  Questa è la forma だめ.
+  Qui non si può nuotare.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   だめ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+泳いで termina in で, seguito da はだめ; la frase dichiara inaccettabile nuotare in questo luogo.
+
+## Sfumature e limiti
+
+È più casuale di てはいけない e てはならない, ma può comunque risultare fermo. ダメ è una grafia frequente e l'intonazione regola la severità.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

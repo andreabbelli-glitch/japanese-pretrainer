@@ -12,9 +12,10 @@ id: grammar-084-verb-past-ru
 pattern: "る動詞"
 title: "The past tense of る verbs"
 reading: "るどうし"
-meaning_it: "The past tense of る verbs"
+meaning_it: >-
+  Forma piana passata dei verbi ichidan (verbi in -ru)
 notes_it: >-
-  る{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  radice del verbo ichidan + た. Non ogni verbo che termina in る è ichidan: 帰る e 走る, per esempio, sono godan e formano 帰った, 走った. Occorre conoscere il gruppo lessicale del verbo.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-084-verb-past-ru
 card_type: concept
 front: "る{{動詞|どうし}}"
 back: >-
-  The past tense of る verbs
+  Forma piana passata dei verbi ichidan (verbi in -ru)
 example_jp: >-
-  パンをたべる。
+  {{朝|あさ}}ご{{飯|はん}}を{{食|た}}べた。
 example_it: >-
-  Mangio il pane.
+  Ho fatto colazione.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  食べる è ichidan: tolta る resta 食べ, a cui si aggiunge た per ottenere 食べた. Non ogni verbo che termina in る è ichidan: 帰る e 走る, per esempio, sono godan e formano 帰った, 走った. Occorre conoscere il gruppo lessicale del verbo.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 :::

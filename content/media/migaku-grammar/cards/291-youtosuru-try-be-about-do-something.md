@@ -12,9 +12,10 @@ id: grammar-291-youtosuru-try-be-about-do-something
 pattern: "ようとする"
 title: "「ようとする」Try to do something"
 reading: "ようとする"
-meaning_it: "Try to do something"
+meaning_it: >-
+  Tentare di fare o essere sul punto di fare
 notes_it: >-
-  ようとする va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in forma volitiva + とする. Il contesto distingue lo sforzo intenzionale dall'imminenza. Con verbi non agentivi, come 雨が降ろうとしている, prevale «sta per».
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-291-youtosuru-try-be-about-do-something
 card_type: concept
 front: "ようとする"
 back: >-
-  Try to do something
+  Tentare di fare o essere sul punto di fare
 example_jp: >-
-  ミカといく。
+  {{猫|ねこ}}が{{窓|まど}}から{{出|で}}ようとしている。
 example_it: >-
-  Vado con Mika.
+  Il gatto sta cercando di uscire dalla finestra.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  出る diventa 出よう; としている mostra il tentativo in corso, che potrebbe non riuscire. Il contesto distingue lo sforzo intenzionale dall'imminenza. Con verbi non agentivi, come 雨が降ろうとしている, prevale «sta per».
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

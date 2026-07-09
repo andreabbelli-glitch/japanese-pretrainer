@@ -12,9 +12,9 @@ id: grammar-197-suru-5-indicate-cost
 pattern: "する"
 title: "「する」(5) Indicate a cost"
 reading: "する"
-meaning_it: "(5) Indicate a cost"
+meaning_it: "Usare する per indicare costo o durata"
 notes_it: >-
-  する va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Dopo un'espressione di prezzo o durata, する significa «costare / richiedere quel tempo». Il soggetto è la cosa valutata e la quantità precede direttamente する.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-197-suru-5-indicate-cost
 card_type: concept
 front: "する"
 back: >-
-  (5) Indicate a cost
+  Quantità di denaro o tempo + する indica quanto qualcosa costa o dura.
 example_jp: >-
-  ゲームをする。
+  このバッグは{{五千円|ごせんえん}}する。
 example_it: >-
-  Faccio una partita.
+  Questa borsa costa cinquemila yen.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  In quantità + する, する vale «costare» o «richiedere tempo»; l'unità distingue denaro e durata.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

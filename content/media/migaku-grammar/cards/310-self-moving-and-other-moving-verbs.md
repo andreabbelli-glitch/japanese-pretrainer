@@ -12,9 +12,10 @@ id: grammar-310-self-moving-and-other-moving-verbs
 pattern: "自動詞・他動詞"
 title: "“Self-moving” and “other-moving”  verbs"
 reading: "じどうし・たどうし"
-meaning_it: "Self-moving and other-moving  verbs"
+meaning_it: >-
+  Distinzione tra verbi che agiscono su un oggetto e verbi di cambiamento autonomo
 notes_it: >-
-  {{自動詞|じどうし}}・{{他動詞|たどうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  agente が + oggetto を + transitivo／soggetto が + intransitivo. Molti verbi formano coppie lessicali da imparare, come 開ける／開く, 落とす／落ちる e 出す／出る. La scelta non è una semplice coniugazione e influenza particelle e prospettiva.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-310-self-moving-and-other-moving-verbs
 card_type: concept
 front: "{{自動詞|じどうし}}・{{他動詞|たどうし}}"
 back: >-
-  Self-moving and other-moving  verbs
+  Distinzione tra verbi che agiscono su un oggetto e verbi di cambiamento autonomo
 example_jp: >-
-  これは{{自動詞|じどうし}}・{{他動詞|たどうし}}のかたちだ。
+  {{私|わたし}}が{{窓|まど}}を{{開|あ}}けると、{{風|かぜ}}でドアが{{開|あ}}いた。
 example_it: >-
-  Questa è la forma 自動詞・他動詞.
+  Quando ho aperto la finestra, la porta si è aperta per il vento.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  窓を開ける usa il transitivo 開ける con oggetto; ドアが開いた usa l'intransitivo 開く per il cambiamento della porta. Molti verbi formano coppie lessicali da imparare, come 開ける／開く, 落とす／落ちる e 出す／出る. La scelta non è una semplice coniugazione e influenza particelle e prospettiva.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

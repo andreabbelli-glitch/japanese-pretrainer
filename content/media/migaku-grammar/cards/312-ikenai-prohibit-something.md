@@ -12,9 +12,10 @@ id: grammar-312-ikenai-prohibit-something
 pattern: "いけない"
 title: "「いけない」Indicate that something is prohibited"
 reading: "いけない"
-meaning_it: "Indicate that something is prohibited"
+meaning_it: >-
+  Divieto standard: «non si deve / è vietato»
 notes_it: >-
-  いけない va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in て-forma + はいけない. Può esprimere regole o ammonimenti personali. Nel parlato ては e では si contraggono in ちゃ e じゃ; il tono cambia con cortesia e particelle finali.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-312-ikenai-prohibit-something
 card_type: concept
 front: "いけない"
 back: >-
-  Indicate that something is prohibited
+  Divieto standard: «non si deve / è vietato»
 example_jp: >-
-  パンをたべない。
+  ここに{{車|くるま}}を{{止|と}}めてはいけない。
 example_it: >-
-  Non mangio il pane.
+  Qui non si può parcheggiare.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  止めて è la て-forma transitiva di 止める; はいけない proibisce l'azione nel luogo indicato. Può esprimere regole o ammonimenti personali. Nel parlato ては e では si contraggono in ちゃ e じゃ; il tono cambia con cortesia e particelle finali.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

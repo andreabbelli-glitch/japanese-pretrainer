@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 341.
+  Prima azione di una sequenza e soluzione provvisoria adottata per il momento.
 ---
 
-# 「まず」(1) “First” or “For Now"
+# 「まず」(1) At first
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/mazu-at-first`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+まず stabilisce ciò che viene prima per ordine, priorità o gestione pratica. Non specifica necessariamente cosa avverrà dopo, ma lo lascia aperto.
 
-- Tema: (1) First or For Now
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [まず](grammar:grammar-341-mazu-at-first)
+## Formazione e restrizioni
 
-## Lettura operativa
+- まず + prima azione: まず確認する.
+- Sequenza: まずA、それからB.
+- Valore provvisorio: これでまず安心だ («per ora possiamo stare tranquilli»).
 
-Il centro del ripasso è riconoscere [まず](grammar:grammar-341-mazu-at-first) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはまずのかたちだ。
+  まず、{{説明|せつめい}}を{{読|よ}}んでください。
 translation_it: >-
-  Questa è la forma まず.
+  Per prima cosa, legga le istruzioni.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   まず -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+まず assegna alla lettura delle istruzioni la priorità rispetto alle azioni successive.
+
+## Sfumature d'uso
+
+- Nel valore temporale è vicino a «anzitutto», non a «per la prima volta».
+- Un altro まず esprime forte probabilità soprattutto con negazioni e congetture; va distinto dal contesto.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

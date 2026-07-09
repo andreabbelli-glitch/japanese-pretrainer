@@ -2,7 +2,7 @@
 id: cards-migaku-grammar-382-gozaimasu-something-exists
 media_id: media-migaku-grammar
 slug: 382-gozaimasu-something-exists
-title: "「ございます」A polite version of いる・ある"
+title: "「ございます」A polite version of ある"
 order: 3820
 segment_ref: polite-language
 ---
@@ -10,11 +10,12 @@ segment_ref: polite-language
 :::grammar
 id: grammar-382-gozaimasu-something-exists
 pattern: "ございます"
-title: "「ございます」A polite version of いる・ある"
+title: "「ございます」A polite version of ある"
 reading: "ございます"
-meaning_it: "A polite version of いる・ある"
+meaning_it: >-
+  Essere/esistere in forma molto cortese
 notes_it: >-
-  ございます va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Nがございます indica l'esistenza o disponibilità di cose, idee e occasioni. Nome/Aな + でございます corrisponde a una copula molto formale. Nel giapponese standard moderno non sostituisce normalmente いる per persone: per il proprio lato si usa おります, per una persona rispettata いらっしゃいます. Si scrive di solito in kana.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-382-gozaimasu-something-exists
 card_type: concept
 front: "ございます"
 back: >-
-  A polite version of いる・ある
+  ございます è la forma cortese di ある; でございます è una copula più formale di です.
 example_jp: >-
-  パンをたべます。
+  ご{{質問|しつもん}}はございますか。
 example_it: >-
-  Mangio il pane.
+  Ha domande?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Nがございます indica l'esistenza o disponibilità di cose, idee e occasioni. Nome/Aな + でございます corrisponde a una copula molto formale. Nel giapponese standard moderno non sostituisce normalmente いる per persone: per il proprio lato si usa おります, per una persona rispettata いらっしゃいます. Si scrive di solito in kana.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, polite-language]
 :::

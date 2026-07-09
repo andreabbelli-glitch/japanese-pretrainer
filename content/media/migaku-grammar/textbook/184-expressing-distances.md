@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, numbers-and-counters]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 184.
+  Distanze e misure metriche, con abbreviazioni e cambi fonetici frequenti.
 ---
 
 # Expressing distances
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/expressing-distances`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Le distanze metriche si esprimono combinando il numero con l'unità in katakana. La sintassi può quantificare lunghezza, altezza o distanza da un punto.
 
-- Tema: Expressing distances
-- Sezione: numbers and counters
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- Centimetri: 一センチ（いっセンチ）, 八センチ（はっセンチ）, 十センチ（じゅっセンチ）.
+- Metri: 三メートル; chilometri: 二キロ, 六キロ（ろっキロ）, 十キロ（じゅっキロ）.
+- Distanza fra punti: AからBまで二キロある; dimensione: 高さは三メートルだ.
 
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{駅|えき}}まで{{二|に}}キロある。
 translation_it: >-
-  Questa è una penna.
+  Fino alla stazione ci sono due chilometri.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+駅まで delimita la meta e 二キロ quantifica la distanza che separa il punto attuale dalla stazione.
+
+## Sfumature d'uso
+
+- Le pronunce con consonante geminata variano in parte nell'uso, ma いっ／ろっ／はっ／じゅっ sono molto comuni davanti a queste unità.
+- キロ isolato è ambiguo fra chilometri e chilogrammi; il tipo di oggetto o il verbo risolve l'ambiguità.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

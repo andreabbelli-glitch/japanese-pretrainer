@@ -12,9 +12,9 @@ id: grammar-202-gotoni-another-way-say-every
 pattern: "ごとに"
 title: "「ごとに」Another way to say “every (period of time)\""
 reading: "ごとに"
-meaning_it: "Another way to say every (period of time)"
+meaning_it: "Esprimere ricorrenza o ripartizione con ごとに: «ogni»"
 notes_it: >-
-  ごとに va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A ごとに B indica che B avviene a ogni intervallo o per ciascun membro di A. Si unisce a contatori, nomi e alcune espressioni verbali; ha una portata più ampia del prefisso 毎.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-202-gotoni-another-way-say-every
 card_type: concept
 front: "ごとに"
 back: >-
-  Another way to say every (period of time)
+  A ごとに B significa «ogni A, accade B / per ciascun A».
 example_jp: >-
-  カフェにいく。
+  {{三時間|さんじかん}}ごとに{{水|みず}}を{{飲|の}}む。
 example_it: >-
-  Vado al caffè.
+  Bevo acqua ogni tre ore.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con una durata, il valore è ricorrenza a intervalli regolari. Con un nome, può distributivamente significare «per ciascun…».
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 308.
+  Formazione degli ordinali aggiungendo め a un contatore.
 ---
-
 # 「目」Indicate the order of something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/me-show-order`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il suffisso 目（め）si aggiunge a un'espressione con contatore per indicarne la posizione in una sequenza.
 
-- Tema: Indicate the order of something
-- Sezione: jlpt n5
-- Livello: JLPT-N5
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `numero + contatore + 目（め）`. Il punto da riconoscere è `め ordinale`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  これは{{今日|きょう}}{{三杯目|さんばいめ}}のコーヒーだ。
 translation_it: >-
-  Questa è una penna.
+  Questo è il terzo caffè di oggi.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+三杯 conta tre tazze o bicchieri; 目 trasforma la quantità nella posizione ordinale «il terzo».
+
+## Sfumature e limiti
+
+Il contatore deve essere adatto all'elemento: 二杯目 «il secondo bicchiere», 二列目 «la seconda fila», 三回目 «la terza volta».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

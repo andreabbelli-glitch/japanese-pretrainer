@@ -12,9 +12,9 @@ id: grammar-038-dakedo-however
 pattern: "だけど"
 title: "「だけど」”However\""
 reading: "だけど"
-meaning_it: "However"
+meaning_it: "Connettivo iniziale だけど: «però», «tuttavia»"
 notes_it: >-
-  だけど va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A inizio frase, だけど collega ciò che segue a un'affermazione precedente e segnala un esito contrario alle aspettative. È un connettivo colloquiale formato storicamente da だ + けど.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-038-dakedo-however
 card_type: concept
 front: "だけど"
 back: >-
-  However
+  だけど introduce una nuova frase in contrasto con quella precedente.
 example_jp: >-
-  いきたいけど、いけない。
+  {{彼|かれ}}は{{僕|ぼく}}の{{上司|じょうし}}だ。だけど、とても{{優|やさ}}しい。
 example_it: >-
-  Vorrei andare, ma non posso.
+  È il mio superiore. Però è molto gentile.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Non confondere il connettivo autonomo con だけ («solo»). All'interno di una frase, nome o aggettivo in な + だけど è la forma di けど dopo la copula.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 :::

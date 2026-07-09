@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 043.
+  Forma avverbiale in く degli aggettivi in い.
 ---
 
-# Using い adjectives to describe verbs
+# Using い-adjectives to describe verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/i-adjectives-as-adverbs`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Formazione
 
-## Punto da riconoscere
+Per descrivere come avviene un'azione, si elimina l'い finale dell'aggettivo e si aggiunge く.
 
-- Tema: Using い adjectives to describe verbs
-- Sezione: adjectives
-- Livello: JLPT-N5
-- Pattern allenabile: [い{{形容詞|けいようし}}](grammar:grammar-043-i-adjectives-as-adverbs)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [い{{形容詞|けいようし}}](grammar:grammar-043-i-adjectives-as-adverbs) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- 早い → 早く, «velocemente / presto»
+- 可愛い → 可愛く, «in modo carino»
+- 遅い → 遅く, «tardi / lentamente»
 
 :::example_sentence
 jp: >-
-  これはたかい。
+  {{朝|あさ}}ご{{飯|はん}}を{{早|はや}}く{{食|た}}べる。
 translation_it: >-
-  Questo è costoso.
+  Faccio colazione in fretta.
 :::
 
-#### Anatomia rapida
-
-*   い{{形容詞|けいようし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+いい segue la radice よ- e forma よく. La forma avverbiale può essere separata dal verbo da altri sintagmi, purché il rapporto resti chiaro.

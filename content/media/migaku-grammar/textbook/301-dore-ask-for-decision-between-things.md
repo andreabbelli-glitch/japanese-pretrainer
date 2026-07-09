@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 301.
+  Scelta tra più oggetti con il pronome interrogativo どれ.
 ---
+# 「どれ」”Which one?\"
 
-# 「どれ」”Which one?"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dore-ask-for-decision-between-things`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+どれ sostituisce il nome dell'oggetto da scegliere e prende direttamente la particella richiesta dalla frase, come どれが o どれを.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: Which one?
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [どれ](grammar:grammar-301-dore-ask-for-decision-between-things)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [どれ](grammar:grammar-301-dore-ask-for-decision-between-things) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `どれ + particella`. Il punto da riconoscere è [どれ](grammar:grammar-301-dore-ask-for-decision-between-things).
 
 :::example_sentence
 jp: >-
-  これはどれのかたちだ。
+  どれが{{一番|いちばん}}{{安|やす}}いですか。
 translation_it: >-
-  Questa è la forma どれ.
+  Qual è il più economico?
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   どれ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+どれ sostituisce l'oggetto tra le opzioni e が lo marca come soggetto della proprietà 一番安い.
+
+## Sfumature e limiti
+
+È tipico quando le opzioni sono tre o più; con due si preferisce どちら／どっち, anche se nell'uso reale la separazione non è assoluta. La ripetizione どれどれ significa «fammi vedere».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

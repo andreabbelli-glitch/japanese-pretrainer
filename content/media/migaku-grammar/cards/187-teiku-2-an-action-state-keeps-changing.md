@@ -12,9 +12,10 @@ id: grammar-187-teiku-2-an-action-state-keeps-changing
 pattern: "ていく"
 title: "「ていく」(2) An action or state keeps changing"
 reading: "ていく"
-meaning_it: "(2) An action or state keeps changing"
+meaning_it: >-
+  Continuare/cambiare da ora in avanti
 notes_it: >-
-  ていく va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  In questo uso non descrive movimento fisico. Dal presente, 〜ていく indica sviluppo futuro; da un punto passato, 〜ていった segue il processo che avanzò da lì. Ricorre spesso con これから, だんだん e verbi di cambiamento. Si contrappone a 〜てくる, che guarda a un processo arrivato fino al presente.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-187-teiku-2-an-action-state-keeps-changing
 card_type: concept
 front: "ていく"
 back: >-
-  (2) An action or state keeps changing
+  Vて + いく presenta un processo che procede dal punto di riferimento verso il futuro o si allontana nel tempo.
 example_jp: >-
-  これはていくのかたちだ。
+  これからもっと{{暑|あつ}}くなっていく。
 example_it: >-
-  Questa è la forma ていく.
+  Da ora in poi farà sempre più caldo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  In questo uso non descrive movimento fisico. Dal presente, 〜ていく indica sviluppo futuro; da un punto passato, 〜ていった segue il processo che avanzò da lì. Ricorre spesso con これから, だんだん e verbi di cambiamento. Si contrappone a 〜てくる, che guarda a un processo arrivato fino al presente.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 :::

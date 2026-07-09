@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 305.
+  Preparazione anticipata, mantenimento di stato e contrazioni di ておく.
 ---
-
 # 「～ておく」Do something in advance
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/teoku-do-something-advance`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Vておく presenta V come preparazione utile per una situazione futura. In altri contesti significa lasciare intenzionalmente una persona o cosa nello stato risultante.
 
-- Tema: Do something in advance
-- Sezione: form series
-- Livello: JLPT-N4
-- Pattern allenabile: [～ておく](grammar:grammar-305-teoku-do-something-advance)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [～ておく](grammar:grammar-305-teoku-do-something-advance) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo in て-forma + おく`. Il punto da riconoscere è [～ておく](grammar:grammar-305-teoku-do-something-advance).
 
 :::example_sentence
 jp: >-
-  メモをしておく。
+  {{旅行|りょこう}}の{{前|まえ}}にホテルを{{予約|よやく}}しておく。
 translation_it: >-
-  Prendo nota in anticipo.
+  Prenoto l'hotel in anticipo, prima del viaggio.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ～ておく -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+予約しておく indica che la prenotazione viene completata ora per rendere più agevole il viaggio futuro.
+
+## Sfumature e limiti
+
+Nel parlato ておく si contrae in とく e でおく in どく: 食べとく, 読んどく. Il tempo e la volontà si esprimono con おく.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

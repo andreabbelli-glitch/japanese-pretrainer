@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 269.
+  Richieste e ordini negativi formulati con ないで.
 ---
+# 「ないで」(2) \"Don't do X\"
 
-# 「ないで」(2) "Don't do X"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/%E3%81%AA%E3%81%84%E3%81%A7-2`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+La forma negativa piana del verbo seguita da で può chiudere la frase e chiedere di non compiere l'azione.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: (2) Don't do X
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [ないで](grammar:grammar-269-2-dont-do-x)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ないで](grammar:grammar-269-2-dont-do-x) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo in forma negativa + で`. Il punto da riconoscere è [ないで](grammar:grammar-269-2-dont-do-x).
 
 :::example_sentence
 jp: >-
-  カフェでたべる。
+  そのボタンを{{押|お}}さないで。
 translation_it: >-
-  Mangio al caffè.
+  Non premere quel pulsante.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ないで -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+押す diventa 押さない; で trasforma la negazione in una richiesta di astenersi dall'azione.
+
+## Sfumature e limiti
+
+Con ください diventa una richiesta esplicita e più cortese; senza, il tono varia da supplica familiare a ordine. È distinto dal ないで con una seconda azione, «fare B senza A».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

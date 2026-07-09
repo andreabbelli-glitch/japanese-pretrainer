@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 283.
+  Passivi di する e くる, con il caso regolare di いく.
 ---
-
 # The receptive form of irregular verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-receptive-irregular`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+する diventa される e 来る diventa 来られる（こられる）. 行く segue la regola godan e forma 行かれる.
 
-- Tema: The receptive form of irregular verbs
-- Sezione: verbs
-- Livello: JLPT-N4
-- Pattern allenabile: [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-283-verb-receptive-irregular)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-283-verb-receptive-irregular) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `する→される／来る→来られる／行く→行かれる`. Il punto da riconoscere è [不規則動詞](grammar:grammar-283-verb-receptive-irregular).
 
 :::example_sentence
 jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  その{{計画|けいかく}}は{{社長|しゃちょう}}に{{変更|へんこう}}された。
 translation_it: >-
-  Questa è la forma 不規則動詞.
+  Quel piano è stato modificato dal presidente dell'azienda.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   {{不規則|ふきそく}}{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+変更する diventa 変更された; 計画は è ciò che subisce la modifica e 社長に l'agente.
+
+## Sfumature e limiti
+
+来られる coincide anche con il potenziale «poter venire»; agente, particelle e contesto disambiguano. される è molto comune con i nomi verbali in する.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

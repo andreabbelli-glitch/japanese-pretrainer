@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 284.
+  Formazione e prospettiva coercitiva del causativo-passivo.
 ---
-
 # The causative-receptive verb form
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/the-causative-receptive`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il causativo-passivo combina il causativo con il passivo: dalla forma in させる si elimina る e si aggiunge られる, ottenendo させられる.
 
-- Tema: The causative-receptive verb form
-- Sezione: verbs
-- Livello: JLPT-N4
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `radice causativa + られる`. Il punto da riconoscere è `causativo-passivo`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{私|わたし}}は{{上司|じょうし}}に{{残業|ざんぎょう}}させられた。
 translation_it: >-
-  Questa è una penna.
+  Sono stato costretto dal mio superiore a fare gli straordinari.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+私は riceve la costrizione, 上司に ne è la fonte e 残業させられた esprime l'azione imposta.
+
+## Sfumature e limiti
+
+La lettura è coercitiva, non permissiva. Nei godan sono comuni contrazioni come 書かされる accanto a 書かせられる. Chi costringe è marcato da に; chi è costretto da は／が.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

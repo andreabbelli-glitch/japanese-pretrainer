@@ -12,9 +12,9 @@ id: grammar-231-zutsu-distribute-quantity-equally
 pattern: "ずつ"
 title: "「ずつ」Distribute something equally"
 reading: "ずつ"
-meaning_it: "Distribute something equally"
+meaning_it: "Distribuire quantità uguali con ずつ"
 notes_it: >-
-  ずつ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  ずつ segue un quantificatore e mette a fuoco una ripartizione regolare: «ciascuno», «alla volta», «per volta». 少しずつ significa «poco alla volta».
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-231-zutsu-distribute-quantity-equally
 card_type: concept
 front: "ずつ"
 back: >-
-  Distribute something equally
+  Quantità + ずつ indica che quella quantità viene assegnata o ripetuta in modo uniforme.
 example_jp: >-
-  これはずつのかたちだ。
+  {{子供|こども}}にリンゴを{{二個|にこ}}ずつあげた。
 example_it: >-
-  Questa è la forma ずつ.
+  Ho dato due mele a ciascun bambino.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Senza ずつ la quantità può restare vera, ma l'uguaglianza della distribuzione non è esplicitamente evidenziata.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

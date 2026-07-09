@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, academy-level-1, jlpt-n5, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 087.
+  Regola del passato negativo per i verbi ichidan.
 ---
-
 # The negative past tense of る verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-past-negative-ru`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Per i verbi ichidan si elimina る e si aggiunge なかった alla radice: 食べる→食べなかった, 出る→出なかった.
 
-- Tema: The negative past tense of る verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [る{{動詞|どうし}}](grammar:grammar-087-verb-past-negative-ru)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [る{{動詞|どうし}}](grammar:grammar-087-verb-past-negative-ru) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `radice del verbo ichidan + なかった`. Il punto da riconoscere è [る動詞](grammar:grammar-087-verb-past-negative-ru).
 
 :::example_sentence
 jp: >-
-  パンをたべる。
+  {{今朝|けさ}}、{{何|なに}}も{{食|た}}べなかった。
 translation_it: >-
-  Mangio il pane.
+  Stamattina non ho mangiato niente.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   る{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+食べる perde る e diventa 食べなかった. 何も, accompagnato dal negativo, significa «niente».
+
+## Sfumature e limiti
+
+La regola presuppone che il verbo sia davvero ichidan. Il valore temporale e la polarità sono entrambi contenuti in なかった: negativo e passato.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

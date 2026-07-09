@@ -12,9 +12,9 @@ id: grammar-019-direct-object-particle-wo
 pattern: "を"
 title: "「を」(1) Mark the direct object"
 reading: "を"
-meaning_it: "(1) Mark the direct object"
+meaning_it: "Marcare con を l'oggetto direttamente coinvolto dall'azione"
 notes_it: >-
-  を va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  を, pronunciato お come particella, segue il nome che riceve direttamente l'azione di un verbo transitivo. In una singola proposizione compare normalmente un solo oggetto marcato da を.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-019-direct-object-particle-wo
 card_type: concept
 front: "を"
 back: >-
-  (1) Mark the direct object
+  Nome + を marca l'oggetto diretto del verbo.
 example_jp: >-
-  パンをたべる。
+  {{彼|かれ}}がご{{飯|はん}}を{{食|た}}べる。
 example_it: >-
-  Mangio il pane.
+  Lui mangia un pasto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Quando l'oggetto diventa tema, は sostituisce を. Non trasferire alla cieca l'analisi italiana: alcune costruzioni giapponesi marcano con が ciò che in italiano sembra oggetto.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 :::

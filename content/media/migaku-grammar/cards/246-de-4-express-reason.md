@@ -12,9 +12,9 @@ id: grammar-246-de-4-express-reason
 pattern: "で"
 title: "「で」(4) Express a reason"
 reading: "で"
-meaning_it: "(4) Express a reason"
+meaning_it: "Marcare con で una causa o circostanza: «a causa di / per»"
 notes_it: >-
-  で va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Nome + で può indicare la causa che produce il risultato successivo. È comune con eventi, condizioni, incidenti, malattie e motivi concreti.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-246-de-4-express-reason
 card_type: concept
 front: "で"
 back: >-
-  (4) Express a reason
+  Causa + で + risultato significa «a causa di / per quella causa».
 example_jp: >-
-  カフェでたべる。
+  {{事故|じこ}}で{{電車|でんしゃ}}が{{止|と}}まった。
 example_it: >-
-  Mangio al caffè.
+  Il treno si è fermato a causa di un incidente.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Il valore causale si distingue dal mezzo o luogo grazie al significato di nome e predicato. Per cause espresse da clausole servono altre costruzioni.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

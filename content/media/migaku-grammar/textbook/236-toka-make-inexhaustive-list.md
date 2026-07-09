@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 236.
+  Esempi non esaustivi con toka.
 ---
 
 # 「とか」Make an inexhaustive list
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/toka-make-inexhaustive-list`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Lista aperta
 
-## Punto da riconoscere
-
-- Tema: Make an inexhaustive list
-- Sezione: particles
-- Livello: JLPT-N4
-- Pattern allenabile: [とか](grammar:grammar-236-toka-make-inexhaustive-list)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [とか](grammar:grammar-236-toka-make-inexhaustive-list) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+とか segue nomi o forme piane verbali e propone esempi: «cose come A e B», «A o B, per esempio». La lista non pretende di essere completa.
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  パンとか{{果物|くだもの}}を{{買|か}}った。
 translation_it: >-
-  Vado con Mika.
+  Ho comprato cose come pane e frutta.
 :::
 
-#### Anatomia rapida
+Con i verbi: テレビを見るとか本を読むとかする, «fare cose come guardare la TV o leggere».
 
-*   とか -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Confronto
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+たり descrive bene una serie di azioni o stati rappresentativi e può rendere alternanza; とか classifica invece esempi nominati nel discorso. Il とか finale può essere ripetuto o omesso.

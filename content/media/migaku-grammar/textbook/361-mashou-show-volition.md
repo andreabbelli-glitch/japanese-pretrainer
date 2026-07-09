@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 361.
+  Proposta, invito o offerta cortese costruita dalla radice verbale.
 ---
 
-# 「ましょう」A formal way to say “let’s do X"
+# 「ましょう」Show volition
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/mashou-show-volition`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ましょう è il volitivo cortese. Il soggetto può includere interlocutore e parlante oppure essere il solo parlante quando offre aiuto.
 
-- Tema: A formal way to say let’s do X
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [ましょう](grammar:grammar-361-mashou-show-volition)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Radice + ましょう: 帰りましょう, 見ましょう.
+- Offerta/domanda: 荷物を持ちましょうか.
+- Proposta negativa: 行かないでおきましょう／行くのはやめましょう.
 
-Il centro del ripasso è riconoscere [ましょう](grammar:grammar-361-mashou-show-volition) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはましょうのかたちだ。
+  {{一緒|いっしょ}}に{{昼|ひる}}ご{{飯|はん}}を{{食|た}}べましょう。
 translation_it: >-
-  Questa è la forma ましょう.
+  Pranziamo insieme.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ましょう -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+一緒に rende esplicito che la volontà comprende entrambi gli interlocutori.
+
+## Sfumature d'uso
+
+- Un invito più aperto può usare ませんか; ましょう può suonare più orientato alla decisione.
+- Il contesto chiarisce se significa «facciamo» o «farò io».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

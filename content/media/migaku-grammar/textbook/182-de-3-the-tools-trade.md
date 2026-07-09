@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 182.
+  Strumenti, mezzi, materiali, metodi e costi impiegati per compiere un'azione.
 ---
 
-# 「で」(3) Indicate the means by which something is done
+# 「で」(6) The tools of the trade
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/de-3-the-tools-trade`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+で presenta ciò che rende possibile o delimita l'azione: strumento, veicolo, metodo, materiale, costo o tempo impiegato. In italiano la preposizione cambia, ma la relazione giapponese resta la stessa.
 
-- Tema: (3) Indicate the means by which something is done
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [で](grammar:grammar-182-de-3-the-tools-trade)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Strumento/mezzo + で: 箸で食べる, 電車で行く.
+- Materiale/metodo + で: 木で作る, 日本語で話す.
+- Costo o risorsa + で: 千円で買う, 一日で終える.
 
-Il centro del ripasso è riconoscere [で](grammar:grammar-182-de-3-the-tools-trade) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  カフェでたべる。
+  {{毎朝|まいあさ}}、{{電車|でんしゃ}}で{{会社|かいしゃ}}へ{{行|い}}く。
 translation_it: >-
-  Mangio al caffè.
+  Ogni mattina vado al lavoro in treno.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   で -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+電車で identifica il mezzo di trasporto mediante il quale il soggetto raggiunge l'azienda.
+
+## Sfumature d'uso
+
+- で marca lo strumento o il mezzo; la compagnia personale usa と: 友達と rispetto a 箸で.
+- 何で è ambiguo senza contesto: なにで chiede il mezzo, なんで chiede la ragione.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

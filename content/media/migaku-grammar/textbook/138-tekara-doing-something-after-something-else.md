@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 138.
+  Due azioni in sequenza vincolata, con completamento della prima prima della seconda.
 ---
 
-# 「てから」”Do X after Y"
+# 「てから」Doing something after something else
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tekara-doing-something-after-something-else`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+てから stabilisce esplicitamente che l'azione davanti a から si completa prima che inizi quella successiva. È utile per istruzioni, sequenze e decisioni.
 
-- Tema: Do X after Y
-- Sezione: form series
-- Livello: JLPT-N5
-- Pattern allenabile: [てから](grammar:grammar-138-tekara-doing-something-after-something-else)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo in forma て + から + evento B: 食べてから出かける.
+- Il soggetto può essere lo stesso o diverso, ma la lettura normale mantiene l'ordine cronologico A→B.
+- Con un nome si usa invece Nome + のあとで／あとに.
 
-Il centro del ripasso è riconoscere [てから](grammar:grammar-138-tekara-doing-something-after-something-else) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  あめだからいかない。
+  {{宿題|しゅくだい}}を{{終|お}}えてから、ゲームをする。
 translation_it: >-
-  Non vado perché piove.
+  Giocherò dopo aver finito i compiti.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   てから -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+終えてから rende il completamento dei compiti la condizione temporale che precede il gioco.
+
+## Sfumature d'uso
+
+- Rispetto ad あとで, てから mette più direttamente in sequenza le azioni e spesso suggerisce che B dipenda dal completamento di A.
+- Non confonderlo con 〜てから nel senso di «da quando», che richiede un contesto durativo e viene approfondito altrove.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

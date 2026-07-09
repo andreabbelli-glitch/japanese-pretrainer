@@ -12,9 +12,10 @@ id: grammar-190-doko-asking-where
 pattern: "どこ"
 title: "「どこ」”Where\""
 reading: "どこ"
-meaning_it: "Where"
+meaning_it: >-
+  Dove; quale luogo
 notes_it: >-
-  どこ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Forme essenziali: どこに per destinazione/esistenza, どこで per luogo di un'azione, どこから «da dove», どこまで «fino a dove», どこの + nome «di quale luogo/organizzazione». La particella non va scelta traducendo solo «dove», ma seguendo il predicato. Registro neutro.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-190-doko-asking-where
 card_type: concept
 front: "どこ"
 back: >-
-  Where
+  どこ è l'interrogativo di luogo della serie こ・そ・あ・ど e si combina con la particella richiesta dal verbo.
 example_jp: >-
-  これはどこのかたちだ。
+  {{駅|えき}}はどこにありますか。
 example_it: >-
-  Questa è la forma どこ.
+  Dov'è la stazione?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Forme essenziali: どこに per destinazione/esistenza, どこで per luogo di un'azione, どこから «da dove», どこまで «fino a dove», どこの + nome «di quale luogo/organizzazione». La particella non va scelta traducendo solo «dove», ma seguendo il predicato. Registro neutro.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 263.
+  Sforzi volontari e abitudini mantenute con ようにする.
 ---
-
 # 「ようにする」Cause a change in circumstance
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/younisuru-cause-circumstance-change`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Vようにする presenta un'azione come obiettivo volontario: il soggetto si adopera perché quella situazione si realizzi o non si realizzi.
 
-- Tema: Cause a change in circumstance
-- Sezione: series
-- Livello: JLPT-N4
-- Pattern allenabile: [ようにする](grammar:grammar-263-younisuru-cause-circumstance-change)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ようにする](grammar:grammar-263-younisuru-cause-circumstance-change) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo non passato, affermativo o negativo + ようにする`. Il punto da riconoscere è [ようにする](grammar:grammar-263-younisuru-cause-circumstance-change).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{毎日|まいにち}}{{野菜|やさい}}を{{食|た}}べるようにしている。
 translation_it: >-
-  Vado al caffè.
+  Cerco di mangiare verdure ogni giorno.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ようにする -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+食べるようにしている presenta il consumo quotidiano come regola che il parlante si sforza di mantenere.
+
+## Sfumature e limiti
+
+ようにしている indica uno sforzo o un'abitudine mantenuti nel tempo. Si distingue da ようになる, che presenta il cambiamento come esito, senza mettere in primo piano la volontà.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

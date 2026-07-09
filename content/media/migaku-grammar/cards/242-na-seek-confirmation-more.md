@@ -12,9 +12,9 @@ id: grammar-242-na-seek-confirmation-more
 pattern: "な"
 title: "「な」A masculine version of ね"
 reading: "な"
-meaning_it: "A masculine version of ね"
+meaning_it: "Finale な: riflessione, emozione o ricerca di accordo"
 notes_it: >-
-  な va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  な a fine frase può comunicare che il parlante considera un fatto, ne resta colpito o cerca condivisione. È particolarmente associato al parlato maschile informale.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-242-na-seek-confirmation-more
 card_type: concept
 front: "な"
 back: >-
-  A masculine version of ね
+  Frase + な vale spesso «eh / vero / però…» come commento riflessivo.
 example_jp: >-
-  これはなのかたちだ。
+  {{今日|きょう}}は{{寒|さむ}}いな。
 example_it: >-
-  Questa è la forma な.
+  Che freddo oggi.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Non confondere questo finale con il proibitivo verbo dizionario + な, che significa «non fare» e ha funzione diversa.
 tags: [migaku, grammar, jlpt-n3, sentence-enders, academy-level-1]
 :::

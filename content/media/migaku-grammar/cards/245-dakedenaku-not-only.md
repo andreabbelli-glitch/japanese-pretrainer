@@ -12,9 +12,9 @@ id: grammar-245-dakedenaku-not-only
 pattern: "だけでなく"
 title: "「だけでなく」\"aggiungere un elemento oltre al primo\""
 reading: "だけでなく"
-meaning_it: "aggiungere un elemento oltre al primo"
+meaning_it: "A だけで(は)なく B も: «non solo A, ma anche B»"
 notes_it: >-
-  だけでなく va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  La costruzione nega che il limite sia soltanto A e aggiunge B. は è facoltativo e anche も può essere omesso se il parallelismo resta chiaro.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-245-dakedenaku-not-only
 card_type: concept
 front: "だけでなく"
 back: >-
-  aggiungere un elemento oltre al primo
+  A だけで(は)なく B も significa «non solo A, ma anche B».
 example_jp: >-
-  カフェでたべる。
+  {{彼|かれ}}は{{英語|えいご}}だけでなく、{{日本語|にほんご}}も{{話|はな}}せる。
 example_it: >-
-  Mangio al caffè.
+  Sa parlare non solo inglese, ma anche giapponese.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Dopo un aggettivo in な serve なだけでなく. Le forme passate restano prima di だけ: 食べただけでなく.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

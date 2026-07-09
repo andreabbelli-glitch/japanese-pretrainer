@@ -12,9 +12,10 @@ id: grammar-077-kotogaaru-1-there-are-times-when
 pattern: "ことがある"
 title: "「ことがある」(1) \"There are times when…\""
 reading: "ことがある"
-meaning_it: "(1) There are times when…"
+meaning_it: >-
+  Indica che qualcosa accade talvolta: «capita di…»
 notes_it: >-
-  ことがある va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  proposizione in forma piana + ことがある. Non va confuso con V-past + ことがある, che descrive un'esperienza già avuta. Qui la forma non passata presenta episodi che possono verificarsi di tanto in tanto.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-077-kotogaaru-1-there-are-times-when
 card_type: concept
 front: "ことがある"
 back: >-
-  (1) There are times when…
+  Indica che qualcosa accade talvolta: «capita di…»
 example_jp: >-
-  ネコがいる。
+  {{週末|しゅうまつ}}も{{仕事|しごと}}をすることがある。
 example_it: >-
-  C'è un gatto.
+  A volte mi capita di lavorare anche nel fine settimana.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  仕事をする è l'evento nominalizzato da こと; がある dice che esistono occasioni in cui esso si verifica. Non va confuso con V-past + ことがある, che descrive un'esperienza già avuta. Qui la forma non passata presenta episodi che possono verificarsi di tanto in tanto.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

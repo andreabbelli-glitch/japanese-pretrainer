@@ -12,9 +12,10 @@ id: grammar-144-teiku-1-do-action-go
 pattern: "ていく"
 title: "「ていく」(1) Do something and go somewhere"
 reading: "ていく"
-meaning_it: "(1) Do something and go somewhere"
+meaning_it: >-
+  Andare facendo…; fare qualcosa prima di andare
 notes_it: >-
-  ていく va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: Verbo in forma て + いく／行く. Può indicare allontanamento (走っていく), modo di partire, oppure fare/prendere qualcosa e portarlo con sé (持っていく). Il punto di vista è il luogo del parlante; registro neutro.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-144-teiku-1-do-action-go
 card_type: concept
 front: "ていく"
 back: >-
-  (1) Do something and go somewhere
+  Vて + いく descrive un movimento che si allontana dal parlante o un'azione compiuta prima/proseguendo verso la destinazione.
 example_jp: >-
-  これはていくのかたちだ。
+  {{雨|あめ}}が{{降|ふ}}りそうだから、{{傘|かさ}}を{{持|も}}っていく。
 example_it: >-
-  Questa è la forma ていく.
+  Sembra che pioverà, quindi porterò con me un ombrello.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: Verbo in forma て + いく／行く. Può indicare allontanamento (走っていく), modo di partire, oppure fare/prendere qualcosa e portarlo con sé (持っていく). Il punto di vista è il luogo del parlante; registro neutro.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 :::

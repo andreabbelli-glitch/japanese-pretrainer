@@ -12,9 +12,10 @@ id: grammar-353-desu-end-sentence-politely
 pattern: "です"
 title: "「です」End a sentence politely"
 reading: "です"
-meaning_it: "End a sentence politely"
+meaning_it: >-
+  Essere in forma cortese; chiusura cortese non verbale
 notes_it: >-
-  です va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Nome/Aな: だ→です; passato でした; negativo comune ではありません／じゃないです; passato negativo ではありませんでした／じゃなかったです. Aい mantiene la propria flessione e aggiunge です: 高いです, 高かったです. In giapponese standard non si aggiunge です dopo un verbo finito: si usa la forma in ます.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-353-desu-end-sentence-politely
 card_type: concept
 front: "です"
 back: >-
-  End a sentence politely
+  です sostituisce だ con nomi e aggettivi in な e segue gli aggettivi in い per rendere cortese la frase.
 example_jp: >-
-  ここはしずかです。
+  この{{店|みせ}}は{{静|しず}}かです。
 example_it: >-
-  Qui è tranquillo.
+  Questo locale è tranquillo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Nome/Aな: だ→です; passato でした; negativo comune ではありません／じゃないです; passato negativo ではありませんでした／じゃなかったです. Aい mantiene la propria flessione e aggiunge です: 高いです, 高かったです. In giapponese standard non si aggiunge です dopo un verbo finito: si usa la forma in ます.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, polite-language]
 :::

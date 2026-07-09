@@ -12,9 +12,10 @@ id: grammar-345-mitaini-na-something-like-something-example-it
 pattern: "みたいに・な"
 title: "「みたいに・な」\"(Do/be) like an X\""
 reading: "みたいに・な"
-meaning_it: "(Do/be) like an X"
+meaning_it: >-
+  Come; simile a; del tipo di
 notes_it: >-
-  みたいに・な va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: N + みたいに + V/A; N + みたいな + N. La frase può finire in みたい／みたいだ. È colloquiale e basato sull'apparenza o sull'esempio; ように／ような è più neutro-formale. In questo uso didattico si aggancia soprattutto a nomi.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-345-mitaini-na-something-like-something-example-it
 card_type: concept
 front: "みたいに・な"
 back: >-
-  (Do/be) like an X
+  Nome + みたいに modifica un verbo/aggettivo; Nome + みたいな modifica un nome.
 example_jp: >-
-  カフェにいく。
+  {{彼|かれ}}は{{魚|さかな}}みたいに{{泳|およ}}ぐ。
 example_it: >-
-  Vado al caffè.
+  Nuota come un pesce.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: N + みたいに + V/A; N + みたいな + N. La frase può finire in みたい／みたいだ. È colloquiale e basato sull'apparenza o sull'esempio; ように／ような è più neutro-formale. In questo uso didattico si aggancia soprattutto a nomi.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

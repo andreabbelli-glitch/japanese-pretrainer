@@ -12,9 +12,10 @@ id: grammar-152-bakari-something-only-thing
 pattern: "ばかり"
 title: "「ばかり」”X, and nothing else\""
 reading: "ばかり"
-meaning_it: "X, and nothing else"
+meaning_it: >-
+  Solo; nient'altro che; appena
 notes_it: >-
-  ばかり va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Usi principali: Nome + ばかり; Vて + ばかりいる («non fare altro che»); Vた + ばかり («aver appena fatto»); V dizionario + ばかりだ per un andamento unidirezionale. Nel parlato emotivo compare ばっかり. Spesso comunica critica o impressione soggettiva, diversamente da だけ.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-152-bakari-something-only-thing
 card_type: concept
 front: "ばかり"
 back: >-
-  X, and nothing else
+  ばかり limita a un elemento o un'azione; dopo Vた significa invece «aver appena fatto».
 example_jp: >-
-  いけばわかる。
+  {{弟|おとうと}}はゲームばかりしている。
 example_it: >-
-  Se ci vai, capirai.
+  Mio fratello minore non fa altro che giocare ai videogiochi.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Usi principali: Nome + ばかり; Vて + ばかりいる («non fare altro che»); Vた + ばかり («aver appena fatto»); V dizionario + ばかりだ per un andamento unidirezionale. Nel parlato emotivo compare ばっかり. Spesso comunica critica o impressione soggettiva, diversamente da だけ.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 :::

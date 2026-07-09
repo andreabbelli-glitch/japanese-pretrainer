@@ -12,9 +12,10 @@ id: grammar-283-verb-receptive-irregular
 pattern: "不規則動詞"
 title: "The receptive form of irregular verbs"
 reading: "ふきそくどうし"
-meaning_it: "The receptive form of irregular verbs"
+meaning_it: >-
+  Passivi fondamentali: される, 来られる e 行かれる
 notes_it: >-
-  {{不規則|ふきそく}}{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  する→される／来る→来られる／行く→行かれる. 来られる coincide anche con il potenziale «poter venire»; agente, particelle e contesto disambiguano. される è molto comune con i nomi verbali in する.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-283-verb-receptive-irregular
 card_type: concept
 front: "{{不規則|ふきそく}}{{動詞|どうし}}"
 back: >-
-  The receptive form of irregular verbs
+  Passivi fondamentali: される, 来られる e 行かれる
 example_jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  その{{計画|けいかく}}は{{社長|しゃちょう}}に{{変更|へんこう}}された。
 example_it: >-
-  Questa è la forma 不規則動詞.
+  Quel piano è stato modificato dal presidente dell'azienda.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  変更する diventa 変更された; 計画は è ciò che subisce la modifica e 社長に l'agente. 来られる coincide anche con il potenziale «poter venire»; agente, particelle e contesto disambiguano. される è molto comune con i nomi verbali in する.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

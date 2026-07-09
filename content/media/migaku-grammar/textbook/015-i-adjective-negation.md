@@ -10,45 +10,26 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 015.
+  Formazione del negativo piano degli aggettivi in い.
 ---
 
-# The negative form of い adjectives
+# い-Adjectives, but negative
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/i-adjective-negation`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Formazione
 
-## Punto da riconoscere
+Per il negativo piano si elimina l'い finale e si aggiunge くない.
 
-- Tema: The negative form of い adjectives
-- Sezione: adjectives
-- Livello: JLPT-N5
-- Pattern allenabile: [い{{形容詞|けいようし}}](grammar:grammar-015-i-adjective-negation)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [い{{形容詞|けいようし}}](grammar:grammar-015-i-adjective-negation) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- 速い → 速くない, «non veloce»
+- 高い → 高くない, «non costoso / non alto»
+- おいしい → おいしくない, «non buono»
 
 :::example_sentence
 jp: >-
-  これはたかい。
+  {{先生|せんせい}}の{{車|くるま}}は{{速|はや}}くない。
 translation_it: >-
-  Questo è costoso.
+  L'auto dell'insegnante non è veloce.
 :::
 
-#### Anatomia rapida
+## Eccezione
 
-*   い{{形容詞|けいようし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+いい, «buono», coniuga dalla forma storica よい: il negativo è よくない, mai いくない. La grafia 良い può essere letta いい o よい.

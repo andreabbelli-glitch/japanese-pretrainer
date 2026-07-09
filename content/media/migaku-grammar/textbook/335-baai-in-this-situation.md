@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 335.
+  Casi e condizioni selezionati fra diverse possibilità, incluse eventualità non frequenti.
 ---
 
-# 「場合」(1) “In the case of…"
+# 「場合」(1) In this situation
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/baai-in-this-situation`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+場合 tratta una situazione come uno dei casi possibili e permette di dichiarare cosa vale precisamente in quel caso.
 
-- Tema: (1) In the case of…
-- Sezione: jlpt n4
-- Livello: JLPT-N4
+## Formazione e restrizioni
 
-## Lettura operativa
+- V／Aい + 場合: 遅れる場合, 難しい場合.
+- Aな + な場合: 必要な場合; Nome + の場合: 雨の場合.
+- A場合がある: «può capitare che A».
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{雨|あめ}}の{{場合|ばあい}}は{{試合|しあい}}を{{中止|ちゅうし}}します。
 translation_it: >-
-  Questa è una penna.
+  In caso di pioggia annulleremo la partita.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+雨の場合 isola la pioggia come condizione che attiva l'annullamento.
+
+## Sfumature d'uso
+
+- Rispetto a 時, 場合 è più astratto e condizionale, meno legato a un semplice momento temporale.
+- È frequente in regolamenti perché separa chiaramente condizioni e conseguenze.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

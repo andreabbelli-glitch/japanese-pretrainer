@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 332.
+  Eventi occasionali presentati in contrasto con l'andamento abituale.
 ---
 
-# 「時には」Sometimes, depending on the occasion
+# 「時には」Sometimes
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tokiniha-not-always-but-sometimes`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+時には seleziona alcune occasioni dentro una regola generale. La sfumatura contrastiva distingue l'eccezione dall'abitudine.
 
-- Tema: a volte, secondo occasione o contesto
-- Sezione: jlpt n4
-- Livello: JLPT-N4
+## Formazione e restrizioni
 
-## Lettura operativa
+- 時には + frase: 時には失敗することもある.
+- は può cadere: 時に厳しく言う.
+- Spesso compare con も／こともある per rafforzare l'occasionalità.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{時|とき}}には{{一人|ひとり}}で{{休|やす}}むことも{{大切|たいせつ}}だ。
 translation_it: >-
-  Questa è una penna.
+  Ogni tanto, anche riposarsi da soli ha il suo valore.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+時には presenta il riposo solitario come scelta occasionale che emerge dall'andamento abituale.
+
+## Sfumature d'uso
+
+- ときどき è più neutro come semplice frequenza; 時には mette maggiormente in rilievo l'eccezione.
+- 時には qui è avverbiale; nello schema proposizione + 時に, 時 significa invece «quando».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

@@ -12,9 +12,10 @@ id: grammar-089-i-adjectives-past
 pattern: "い形容詞"
 title: "The past tense of い adjectives"
 reading: "いけいようし"
-meaning_it: "The past tense of い adjectives"
+meaning_it: >-
+  Passato affermativo degli い-aggettivi: «era / è stato…»
 notes_it: >-
-  い{{形容詞|けいようし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  radice dell'い-aggettivo + かった. いい／よい è irregolare nella superficie: il passato è よかった, non *いかった. かった appartiene all'aggettivo, quindi non si aggiunge anche だった.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-089-i-adjectives-past
 card_type: concept
 front: "い{{形容詞|けいようし}}"
 back: >-
-  The past tense of い adjectives
+  Passato affermativo degli い-aggettivi: «era / è stato…»
 example_jp: >-
-  これはたかい。
+  {{昨日|きのう}}の{{試験|しけん}}は{{難|むずか}}しかった。
 example_it: >-
-  Questo è costoso.
+  L'esame di ieri era difficile.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  難しい perde la い finale e prende かった: 難しかった. 昨日の colloca l'esame nel passato. いい／よい è irregolare nella superficie: il passato è よかった, non *いかった. かった appartiene all'aggettivo, quindi non si aggiunge anche だった.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 :::

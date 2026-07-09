@@ -12,9 +12,9 @@ id: grammar-046-sa-adjectives-to-nouns
 pattern: "〜さ"
 title: "「〜さ」Indicate an amount with adjectives"
 reading: "〜さ"
-meaning_it: "Indicate an amount with adjectives"
+meaning_it: "Nominalizzare una qualità come grado o misura con 〜さ"
 notes_it: >-
-  〜さ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Con gli aggettivi in い si sostituisce い con さ; con quelli in な si aggiunge さ direttamente. Il risultato è un nome che rappresenta il grado o la quantità della qualità, spesso misurabile.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-046-sa-adjectives-to-nouns
 card_type: concept
 front: "〜さ"
 back: >-
-  Indicate an amount with adjectives
+  〜さ trasforma un aggettivo nel nome della sua qualità o del suo grado.
 example_jp: >-
-  これは〜さのかたちだ。
+  この{{車|くるま}}の{{遅|おそ}}さがひどい。
 example_it: >-
-  Questa è la forma 〜さ.
+  La lentezza di quest'auto è terribile.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  重い → 重さ «peso»; 明るい → 明るさ «luminosità»; 敏感 → 敏感さ «sensibilità». いい forma よさ.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, adjectives]
 :::

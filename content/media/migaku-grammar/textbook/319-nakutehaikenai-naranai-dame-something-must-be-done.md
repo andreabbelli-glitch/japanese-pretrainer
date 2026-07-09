@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 319.
+  Obblighi, registri e contrazioni delle forme in なくては.
 ---
+# 「なくてはいけない・ならない・だめ」”X must be done\"
 
-# 「なくてはいけない・ならない・だめ」”X must be done"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nakutehaikenai-naranai-dame-something-must-be-done`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+La negazione in なくては seguita da いけない, ならない o だめ crea una doppia negazione: «se non faccio, non va bene», quindi «devo fare».
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: X must be done
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [なくてはいけない・ならない・だめ](grammar:grammar-319-nakutehaikenai-naranai-dame-something-must-be-done)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [なくてはいけない・ならない・だめ](grammar:grammar-319-nakutehaikenai-naranai-dame-something-must-be-done) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo negativo senza い + くては + いけない／ならない／だめ`. Il punto da riconoscere è [なくてはいけない・ならない・だめ](grammar:grammar-319-nakutehaikenai-naranai-dame-something-must-be-done).
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{明日|あした}}までにこの{{本|ほん}}を{{返|かえ}}さなくてはいけない。
 translation_it: >-
-  Questa è una penna.
+  Devo restituire questo libro entro domani.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   なくてはいけない・ならない・だめ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+返さない diventa 返さなくては; いけない nega la possibilità di non restituire, creando l'obbligo.
+
+## Sfumature e limiti
+
+ならない è più formale e normativo, だめ più colloquiale, いけない neutro. Nel parlato sono comuni なくちゃ e forme ulteriormente ridotte come なきゃ.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -12,9 +12,9 @@ id: grammar-194-mo-2-question-words-encompass-everything-nothing
 pattern: "も"
 title: "「も」(2) \"Everything, everyone, everywhere, everytime\""
 reading: "も"
-meaning_it: "(2) Everything, everyone, everywhere, everytime"
+meaning_it: "Parola interrogativa + も: totalità in affermativo o assenza con negazione"
 notes_it: >-
-  も va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Con も, la parola interrogativa abbraccia l'intera categoria. いつも significa «sempre»; どこも può essere «ovunque» o «da nessuna parte»; 誰も e 何も compaiono soprattutto con una negazione: «nessuno», «niente».
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-194-mo-2-question-words-encompass-everything-nothing
 card_type: concept
 front: "も"
 back: >-
-  (2) Everything, everyone, everywhere, everytime
+  Il valore di QW + も dipende dalla polarità: «tutto/tutti» oppure, con negazione, «niente/nessuno».
 example_jp: >-
-  ぼくもいく。
+  {{誰|だれ}}も{{来|こ}}なかった。
 example_it: >-
-  Vado anche io.
+  Non è venuto nessuno.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Non tradurre も da solo: controlla il predicato. 誰もいる sarebbe affermativo ma è raro; 誰もいない è il modello comune.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

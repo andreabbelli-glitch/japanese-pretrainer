@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 069.
+  I principali valori di ほど: grado, limite e quantità approssimativa.
 ---
-
 # 「ほど」(1) Express extent
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/hodo-1-express-extent`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ほど prende come riferimento un nome, una proposizione o una quantità e misura fino a quale grado vale ciò che segue. Nelle comparazioni negative Aほど…ない significa «non … quanto A»; dopo un numerale vale «circa».
 
-- Tema: (1) Express extent
-- Sezione: series
-- Livello: JLPT-N3
-- Pattern allenabile: [ほど](grammar:grammar-069-hodo-1-express-extent)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ほど](grammar:grammar-069-hodo-1-express-extent) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `nome / proposizione / quantità + ほど`. Il punto da riconoscere è [ほど](grammar:grammar-069-hodo-1-express-extent).
 
 :::example_sentence
 jp: >-
-  これほどいいものはない。
+  {{私|わたし}}は{{兄|あに}}ほど{{背|せ}}が{{高|たか}}くない。
 translation_it: >-
-  Non c'è nulla di così buono.
+  Non sono alto quanto mio fratello.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ほど -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+兄ほど stabilisce nel fratello il grado di riferimento; 高くない nega che l'altezza del parlante raggiunga quel livello.
+
+## Sfumature e limiti
+
+La resa dipende dalla struttura: confronto di grado con un nome, conseguenza estrema con una proposizione, approssimazione con un contatore. Non va ridotto a una sola traduzione fissa.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

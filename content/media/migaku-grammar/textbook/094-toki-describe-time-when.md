@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 094.
+  Rapporto tra forma non passata e passata nelle frasi temporali con とき.
 ---
+# 「時」Describe a time with “when\"
 
-# 「時」Describe a time with “when"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/toki-describe-time-when`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+A時B colloca B nel momento associato ad A. Con un verbo d'azione, A in forma dizionario indica che l'azione non è ancora conclusa rispetto a B; A al passato indica che è già conclusa prima di B.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: Describe a time with when
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo piano / い-aggettivo + 時; な-aggettivo + な時; nome + の時`. Il punto da riconoscere è `時（とき）`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{家|いえ}}に{{帰|かえ}}った{{時|とき}}、{{誰|だれ}}もいなかった。
 translation_it: >-
-  Questa è una penna.
+  Quando sono tornato a casa, non c'era nessuno.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+帰った時 segnala che il rientro era già compiuto quando il parlante ha constatato 誰もいなかった. Con 帰る時 il punto di vista sarebbe prima o durante il rientro.
+
+## Sfumature e limiti
+
+Il tempo della principale B situa l'intera frase rispetto al momento del discorso; il tempo prima di 時 ordina A rispetto a B. 時に è possibile e mette più a fuoco il momento.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

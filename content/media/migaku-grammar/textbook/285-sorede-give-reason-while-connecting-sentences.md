@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 285.
+  Connessione causale e funzione conversazionale di それで.
 ---
-
 # 「それで」 Connect two sentences by listing a reason
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/sorede-give-reason-while-connecting-sentences`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Dopo una frase, それで introduce una conseguenza che il parlante presenta come naturale rispetto a quanto appena detto.
 
-- Tema: Connect two sentences by listing a reason
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [それで](grammar:grammar-285-sorede-give-reason-while-connecting-sentences)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [それで](grammar:grammar-285-sorede-give-reason-while-connecting-sentences) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `causa。 それで、risultato`. Il punto da riconoscere è [それで](grammar:grammar-285-sorede-give-reason-while-connecting-sentences).
 
 :::example_sentence
 jp: >-
-  カフェでたべる。
+  {{電車|でんしゃ}}が{{止|と}}まった。それで、{{会議|かいぎ}}に{{遅|おく}}れた。
 translation_it: >-
-  Mangio al caffè.
+  Il treno si è fermato; perciò sono arrivato tardi alla riunione.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   それで -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+La prima frase fornisce la causa; それで introduce il ritardo come conseguenza.
+
+## Sfumature e limiti
+
+Nel dialogo può anche sollecitare il seguito: «e allora?». In questo uso non afferma necessariamente un nuovo rapporto causale, ma invita l'altro a continuare.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

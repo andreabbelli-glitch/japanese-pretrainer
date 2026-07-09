@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 193.
+  Parole interrogative rese indefinite con ka.
 ---
 
-# 「か」(3) "Something, someone, somewhere, sometime"
+# 「か」(3) Making question words unspecific
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ka-3-making-question-words-unspecific`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Da domanda a indefinito
 
-## Punto da riconoscere
-
-- Tema: (3) Something, someone, somewhere, sometime
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [か](grammar:grammar-193-ka-3-making-question-words-unspecific)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [か](grammar:grammar-193-ka-3-making-question-words-unspecific) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Aggiungendo か a una parola interrogativa, il referente non viene più richiesto ma lasciato non specificato: 何か «qualcosa», 誰か «qualcuno», どこか «da qualche parte», いつか «prima o poi».
 
 :::example_sentence
 jp: >-
-  これはかのかたちだ。
+  {{誰|だれ}}かがドアをノックした。
 translation_it: >-
-  Questa è la forma か.
+  Qualcuno ha bussato alla porta.
 :::
 
-#### Anatomia rapida
+La particella che marca il ruolo segue l'intero gruppo: 誰かが è soggetto, 何かを oggetto, どこかに destinazione.
 
-*   か -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Da distinguere
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+La stessa か può chiudere una domanda, ma qui è incorporata nella parola indefinita. Il contesto sintattico rende chiara la funzione.

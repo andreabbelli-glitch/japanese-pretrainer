@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 145.
+  Eventi simultanei o inseriti in un intervallo, con la differenza prodotta dalla particella.
 ---
 
-# 「間」Express something happens during a certain time
+# 「間」Express something happens during
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/aidani-express-something-happens-during`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+間（あいだ） delimita un intervallo. La presenza di に cambia il profilo dell'evento: 間 mette due durate in parallelo, 間に inserisce un evento delimitato all'interno della prima.
 
-- Tema: Express something happens during a certain time
-- Sezione: jlpt n3
-- Livello: JLPT-N3
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo continuativo + 間（に）: 勉強している間（に）.
+- Aggettivo in い + 間（に）: 若い間に; aggettivo in な + な間（に）: 静かな間に.
+- Nome + の間（に）: 夏休みの間.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{母|はは}}が{{料理|りょうり}}している{{間|あいだ}}、{{私|わたし}}は{{皿|さら}}を{{洗|あら}}っていた。
 translation_it: >-
-  Questa è una penna.
+  Mentre mia madre cucinava, io lavavo i piatti.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+料理している間 e 皿を洗っていた sono entrambe attività durative e simultanee; perciò non serve に.
+
+## Sfumature d'uso
+
+- A間B: B continua durante l'intero intervallo di A, o almeno viene presentato come attività parallela.
+- A間にB: B accade in un momento compreso nell'intervallo, spesso come evento breve o cambiamento.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

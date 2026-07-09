@@ -10,45 +10,38 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 134.
+  Proposte e consigli colloquiali, con formazione e possibili sfumature di impazienza.
 ---
 
-# 「たらどう」"how about doing X?"
+# 「たらどう」Express 'how about doing X?'
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/taradou-how-about`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+たらどう usa la condizionale たら insieme a どう per chiedere come sarebbe compiere un'azione. In pratica serve a formulare una proposta o un consiglio.
 
-- Tema: how about doing X?
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [たらどう](grammar:grammar-134-taradou-how-about)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo in forma piana passata + らどう: 行ったらどう.
+- Varianti: 〜たらどうだ (diretta), 〜たらどうですか (più cortese), 〜たら？ (ellittica e colloquiale).
 
-Il centro del ripasso è riconoscere [たらどう](grammar:grammar-134-taradou-how-about) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  あめなら、いかない。
+  {{疲|つか}}れているなら、{{少|すこ}}し{{休|やす}}んだらどう？
 translation_it: >-
-  Se piove, non vado.
+  Se sei stanco, che ne dici di riposarti un po'?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   たらどう -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+休んだら presenta il riposarsi come ipotesi; どう invita l'interlocutore a valutarla.
+
+## Sfumature d'uso
+
+- Non tradurre letteralmente la forma passata: 行ったらどう riguarda normalmente un'azione futura.
+- Con intonazione dura può implicare «perché non lo fai e basta?»; il contesto determina la cortesia.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

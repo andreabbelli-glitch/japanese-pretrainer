@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 021.
+  Perché una parola con kanji può essere scritta in hiragana.
 ---
 
-# Writing kanji words in hiragana
+# Writing Kanji Words In Hiragana
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/writing-kanji-words-in-hiragana`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Una parola, più grafie
 
-## Punto da riconoscere
-
-- Tema: Writing kanji words in hiragana
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [ひらがな{{書|が}}き](grammar:grammar-021-writing-kanji-words-in-hiragana)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ひらがな{{書|が}}き](grammar:grammar-021-writing-kanji-words-in-hiragana) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Molte parole possiedono sia una grafia in kanji sia una resa in hiragana. La scelta può dipendere dalla rarità del carattere, dal pubblico, dal registro, dallo stile o dalla funzione grammaticale.
 
 :::example_sentence
 jp: >-
-  ネコがいる。
+  {{田中|たなか}}さんがくる。
 translation_it: >-
-  C'è un gatto.
+  Arriva Tanaka.
 :::
 
-#### Anatomia rapida
+Qui くる è la stessa parola di 来る. Nei testi per bambini o in battute infantili i kana possono facilitare la lettura; in messaggi informali possono dare un'impressione più morbida. Nei documenti si tende invece ai kanji d'uso comune.
 
-*   ひらがな{{書|が}}き -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Differenze da rispettare
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+La grafia può anche distinguere significati o funzioni. 所 indica più facilmente un luogo fisico, mentre ところ compare spesso in usi astratti e grammaticali. Gli ausiliari si scrivono di norma in kana: 食べすぎる è più comune di 食べ過ぎる quando すぎる funziona come elemento grammaticale.

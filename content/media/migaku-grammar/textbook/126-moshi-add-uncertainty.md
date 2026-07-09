@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 126.
+  Ruolo facoltativo di もし nell'aumentare l'incertezza di una condizione.
 ---
-
 # 「もし」Add uncertainty to a statement
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/moshi-add-uncertainty`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+もし si colloca prima di una condizione già espressa da たら, なら, と o un'altra forma condizionale. Non crea da solo il rapporto «se… allora»: aggiunge incertezza o distanza dall'ipotesi.
 
-- Tema: Add uncertainty to a statement
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [もし](grammar:grammar-126-moshi-add-uncertainty)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [もし](grammar:grammar-126-moshi-add-uncertainty) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `もし + condizione condizionale + conseguenza`. Il punto da riconoscere è [もし](grammar:grammar-126-moshi-add-uncertainty).
 
 :::example_sentence
 jp: >-
-  ぼくもいく。
+  もし{{時間|じかん}}があったら、{{手伝|てつだ}}ってください。
 translation_it: >-
-  Vado anche io.
+  Se per caso hai tempo, aiutami, per favore.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   もし -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+La condizione grammaticale è 時間があったら; もし la presenta con maggiore cautela, senza presupporre che l'interlocutore sia libero.
+
+## Sfumature e limiti
+
+È facoltativo: togliendolo, la struttura condizionale resta completa. もしも è più enfatico e si usa per eventualità remote o temute.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

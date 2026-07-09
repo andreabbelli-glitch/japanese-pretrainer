@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 190.
+  Domande di luogo combinate con la particella richiesta dal predicato.
 ---
 
-# 「どこ」”Where"
+# 「どこ」Asking 'where'
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/doko-asking-where`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Quando il luogo è ignoto, どこ sostituisce ここ, そこ o あそこ. La sua funzione sintattica viene precisata dalla particella successiva.
 
-- Tema: Where
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [どこ](grammar:grammar-190-doko-asking-where)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Esistenza/destinazione: どこにある？ どこに行く？
+- Luogo dell'azione: どこで食べる？; origine/limite: どこから／どこまで.
+- Specificazione: どこの会社？ («di quale azienda / quale azienda?»).
 
-Il centro del ripasso è riconoscere [どこ](grammar:grammar-190-doko-asking-where) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはどこのかたちだ。
+  {{駅|えき}}はどこにありますか。
 translation_it: >-
-  Questa è la forma どこ.
+  Dov'è la stazione?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   どこ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+ある richiede に per il luogo di esistenza; perciò la domanda usa どこに.
+
+## Sfumature d'uso
+
+- Nel registro cortese, どちら può sostituire どこ in alcune domande di luogo.
+- Omettere la particella è possibile nel parlato casuale, ma imparare la combinazione completa evita ambiguità.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

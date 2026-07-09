@@ -12,9 +12,9 @@ id: grammar-039-multiple-people-suffix-tachi
 pattern: "たち"
 title: "「たち」Refer to multiple people"
 reading: "たち"
-meaning_it: "Refer to multiple people"
+meaning_it: "Indicare un gruppo di persone rappresentato dal nome che precede"
 notes_it: >-
-  たち va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  たち segue pronomi o nomi di persona. Con 私, 僕, 俺 forma «noi»; con あなた, 君, お前 forma un «voi»; con un nome proprio indica quella persona e il suo gruppo, non più persone con lo stesso nome.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-039-multiple-people-suffix-tachi
 card_type: concept
 front: "たち"
 back: >-
-  Refer to multiple people
+  X たち indica «X e le persone associate a X».
 example_jp: >-
-  これはたちのかたちだ。
+  {{山田|やまだ}}さんたちが{{来|く}}る。
 example_it: >-
-  Questa è la forma たち.
+  Arrivano Yamada e gli altri.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  たち si usa per persone, non per pluralizzare oggetti. Il plurale giapponese non è normalmente obbligatorio, quindi va aggiunto solo quando serve.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, name-suffixes]
 :::

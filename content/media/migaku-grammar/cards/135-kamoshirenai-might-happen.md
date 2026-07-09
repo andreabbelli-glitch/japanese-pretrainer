@@ -12,9 +12,10 @@ id: grammar-135-kamoshirenai-might-happen
 pattern: "かもしれない"
 title: "「かもしれない」”Might\""
 reading: "かもしれない"
-meaning_it: "Might"
+meaning_it: >-
+  Forse; potrebbe darsi che…
 notes_it: >-
-  かもしれない va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Si unisce alla forma piana di verbi e aggettivi; con nomi e aggettivi in な al presente affermativo non si usa だ: 学生かもしれない, 静かかもしれない. Nel parlato informale si abbrevia spesso in かも. Registro neutro; かもしれません è cortese.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-135-kamoshirenai-might-happen
 card_type: concept
 front: "かもしれない"
 back: >-
-  Might
+  Una proposizione piana + かもしれない esprime una possibilità incerta, generalmente più debole di だろう.
 example_jp: >-
-  ぼくもいく。
+  {{午後|ごご}}は{{雨|あめ}}が{{降|ふ}}るかもしれない。
 example_it: >-
-  Vado anche io.
+  Nel pomeriggio potrebbe piovere.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Si unisce alla forma piana di verbi e aggettivi; con nomi e aggettivi in な al presente affermativo non si usa だ: 学生かもしれない, 静かかもしれない. Nel parlato informale si abbrevia spesso in かも. Registro neutro; かもしれません è cortese.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

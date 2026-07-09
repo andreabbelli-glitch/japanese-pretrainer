@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 172.
+  Domande intensificate da sorpresa, sconcerto o impazienza, con cautele di registro.
 ---
 
-# 「一体」"What the heck"
+# 「一体」What the hell
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ittai-what-hell`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+一体 segnala che il parlante non riesce a conciliare la situazione con le proprie aspettative. Rafforza la richiesta di spiegazione, senza cambiare la struttura grammaticale della domanda.
 
-- Tema: What the heck
-- Sezione: jlpt n3
-- Livello: JLPT-N3
+## Formazione e restrizioni
 
-## Lettura operativa
+- 一体 + parola interrogativa + domanda: 一体誰が, 一体どうして, 一体何を.
+- Può coesistere con のだ／んだ per una richiesta esplicativa: 一体どうしたんだ.
+- Forma più forte e meno comune: 一体全体.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{一体|いったい}}{{何|なに}}が{{起|お}}きたの？
 translation_it: >-
-  Questa è una penna.
+  Ma che cosa è successo?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+一体 amplifica 何が起きたの e comunica che l'accaduto è inatteso o incomprensibile.
+
+## Sfumature d'uso
+
+- La traduzione italiana deve seguire l'intensità reale: «mai» o «ma» in tono moderato, «che diavolo» solo se il registro lo giustifica.
+- In contesti cortesi l'enfasi può risultare accusatoria; va usato quando sorpresa o frustrazione sono appropriate.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

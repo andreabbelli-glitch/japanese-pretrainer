@@ -12,9 +12,10 @@ id: grammar-379-oninaru-describe-someones-state-politely
 pattern: "お～になる"
 title: "「お～になる」Respectfully describe what someone does"
 reading: "お～になる"
-meaning_it: "Respectfully describe what someone does"
+meaning_it: >-
+  Fare/essere in forma onorifica
 notes_it: >-
-  お～になる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: お + radice in forma ます + になる. Il soggetto è la persona rispettata, mai il parlante che vuole elevare sé stesso. Con verbi sino-giapponesi in する: ご + nome + なさる, spesso ご結婚なさる. Verbi molto brevi o irregolari preferiscono forme lessicali come ご覧になる, いらっしゃる.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-379-oninaru-describe-someones-state-politely
 card_type: concept
 front: "お～になる"
 back: >-
-  Respectfully describe what someone does
+  お + radice + になる eleva l'azione di un'altra persona; per molti verbi in する si usa ご〜なさる.
 example_jp: >-
-  カフェにいく。
+  {{先生|せんせい}}はもうお{{帰|かえ}}りになりました。
 example_it: >-
-  Vado al caffè.
+  Il professore è già rientrato.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: お + radice in forma ます + になる. Il soggetto è la persona rispettata, mai il parlante che vuole elevare sé stesso. Con verbi sino-giapponesi in する: ご + nome + なさる, spesso ご結婚なさる. Verbi molto brevi o irregolari preferiscono forme lessicali come ご覧になる, いらっしゃる.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, honorific-language]
 :::

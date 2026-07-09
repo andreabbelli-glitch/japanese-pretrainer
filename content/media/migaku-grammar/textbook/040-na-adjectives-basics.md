@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 040.
+  Forma attributiva e predicativa degli aggettivi in な.
 ---
 
-# Introduction to な adjectives
+# な-Adjectives Basics
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/na-adjectives-basics`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Due posizioni
 
-## Punto da riconoscere
-
-- Tema: Introduction to な adjectives
-- Sezione: adjectives
-- Livello: JLPT-N5
-- Pattern allenabile: [な{{形容詞|けいようし}}](grammar:grammar-040-na-adjectives-basics)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [な{{形容詞|けいようし}}](grammar:grammar-040-na-adjectives-basics) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Davanti a un nome, l'aggettivo in な richiede な: きれいな人, «una persona bella». Come predicato piano, perde な e usa spesso だ.
 
 :::example_sentence
 jp: >-
-  ここはしずかだ。
+  この{{学校|がっこう}}は{{静|しず}}かだ。
 translation_it: >-
-  Qui è tranquillo.
+  Questa scuola è tranquilla.
 :::
 
-#### Anatomia rapida
+きれい e 嫌い finiscono in い ma appartengono a questa classe; non vanno coniugati come aggettivi in い.
 
-*   な{{形容詞|けいようし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Eccezioni prenominali
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+大きな e 小さな derivano da 大きい e 小さい ma funzionano soltanto davanti a un nome: 大きな家, 小さな犬. Non possono diventare predicati come *大きだ o *小さだ; in quel ruolo si usano 大きい e 小さい.

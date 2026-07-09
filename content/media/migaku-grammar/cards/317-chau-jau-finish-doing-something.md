@@ -12,9 +12,10 @@ id: grammar-317-chau-jau-finish-doing-something
 pattern: "ちゃう・じゃう"
 title: "「ちゃう・じゃう」Casual abbreviations of てしまう"
 reading: "ちゃう・じゃう"
-meaning_it: "Casual abbreviations of てしまう"
+meaning_it: >-
+  Contrazione colloquiale di てしまう／でしまう
 notes_it: >-
-  ちゃう・じゃう va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Vてしまう→Vちゃう／Vでしまう→Vじゃう. È comunissima nel parlato e meno ruvida di ちまう／じまう. Coniuga come godan: ちゃった, じゃわない, じゃおう.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-317-chau-jau-finish-doing-something
 card_type: concept
 front: "ちゃう・じゃう"
 back: >-
-  Casual abbreviations of てしまう
+  Contrazione colloquiale di てしまう／でしまう
 example_jp: >-
-  これはちゃう・じゃうのかたちだ。
+  また{{鍵|かぎ}}を{{忘|わす}}れちゃった。
 example_it: >-
-  Questa è la forma ちゃう・じゃう.
+  Ho dimenticato di nuovo le chiavi.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  忘れてしまった si riduce a 忘れちゃった; また e il contesto fanno emergere il rammarico per l'errore ripetuto. È comunissima nel parlato e meno ruvida di ちまう／じまう. Coniuga come godan: ちゃった, じゃわない, じゃおう.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, spoken-language, casual-speech]
 :::

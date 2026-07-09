@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 150.
+  Persistenza di uno stato e mancato verificarsi di un cambiamento atteso.
 ---
 
-# 「まだ」”X is still Y"
+# 「まだ」Something keeps its state
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/mada-something-keeps-its-state`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+まだ guarda una situazione come invariata rispetto a prima. Se il predicato è negativo, il parlante attende un cambiamento che fino a quel momento non si è prodotto.
 
-- Tema: X is still Y
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [まだ](grammar:grammar-150-mada-something-keeps-its-state)
+## Formazione e restrizioni
 
-## Lettura operativa
+- まだ + affermativo: まだ会社にいる («è ancora in ufficio»).
+- まだ + negativo: まだ終わっていない («non è ancora finito»).
+- Risposta autonoma: もう食べた？—まだ。 («Hai già mangiato?» — «Non ancora»).
 
-Il centro del ripasso è riconoscere [まだ](grammar:grammar-150-mada-something-keeps-its-state) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  まだ{{宿題|しゅくだい}}が{{終|お}}わっていない。
 translation_it: >-
-  Questa è una penna.
+  Non ho ancora finito i compiti.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   まだ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+終わっていない descrive il mancato completamento; まだ mostra che questa condizione persiste fino ad ora.
+
+## Sfumature d'uso
+
+- Non confonderlo con また («di nuovo»): la vocale lunga o breve non cambia la grafia, ma la consonante e il significato sì.
+- Con un numero può avere altri valori («ancora altri…»), da interpretare nel contesto.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

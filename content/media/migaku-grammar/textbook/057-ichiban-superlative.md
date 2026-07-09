@@ -10,44 +10,28 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 057.
+  Uso di ichiban per esprimere il grado massimo.
 ---
 
 # 「一番」Express a superlative
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ichiban-superlative`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Formazione
 
-## Punto da riconoscere
+一番, letto いちばん, precede l'aggettivo o il predicato di grado e significa «il più / la più».
 
-- Tema: Express a superlative
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- 一番面白い: il più interessante
+- 一番高い: il più costoso / alto
+- 一番静か: il più tranquillo
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  その{{本|ほん}}が{{一番|いちばん}}{{面白|おもしろ}}い。
 translation_it: >-
-  Questa è una penna.
+  Quel libro è il più interessante.
 :::
 
-#### Anatomia rapida
+Il gruppo rispetto al quale vale il superlativo può essere espresso con で: 父がこの家で一番うるさい, «mio padre è il più rumoroso di questa casa».
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Limite
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Nella struttura studiata, 一番 non si attacca come suffisso al nome: modifica la qualità attribuita a quel nome.

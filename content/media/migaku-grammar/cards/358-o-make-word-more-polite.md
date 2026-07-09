@@ -12,9 +12,10 @@ id: grammar-358-o-make-word-more-polite
 pattern: "お"
 title: "「お」The politeness prefix"
 reading: "お"
-meaning_it: "The politeness prefix"
+meaning_it: >-
+  Prefisso di cortesia o abbellimento
 notes_it: >-
-  お va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Regola orientativa: お + parola di origine giapponese, come お名前, お手紙, お忙しい. Alcune forme sono stabilizzate (お金, お茶) e non sembrano più opzionali; altre sono impossibili o innaturali. Può essere 美化語 o parte di strutture onorifiche: il valore dipende dal referente e dal contesto.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-358-o-make-word-more-polite
 card_type: concept
 front: "お"
 back: >-
-  The politeness prefix
+  お precede molte parole native per renderle cortesi, rispettose o più curate, ma alcune combinazioni sono lessicalizzate.
 example_jp: >-
-  これはおのかたちだ。
+  お{{名前|なまえ}}をお{{願|ねが}}いします。
 example_it: >-
-  Questa è la forma お.
+  Mi dice il suo nome, per favore?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Regola orientativa: お + parola di origine giapponese, come お名前, お手紙, お忙しい. Alcune forme sono stabilizzate (お金, お茶) e non sembrano più opzionali; altre sono impossibili o innaturali. Può essere 美化語 o parte di strutture onorifiche: il valore dipende dal referente e dal contesto.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, polite-language, humble-language]
 :::

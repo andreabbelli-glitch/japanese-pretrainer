@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, humble-language, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 377.
+  Azione propria presentata umilmente quando è rivolta a una persona rispettata.
 ---
 
-# 「お～する」Humbly do something for someone
+# 「お～する」Do an action for someone politely
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/osuru-do-action-for-someone-politely`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+La costruzione abbassa l'azione propria e, indirettamente, eleva la persona che ne riceve l'effetto.
 
-- Tema: Humbly do something for someone
-- Sezione: stem form series
-- Livello: JLPT-N4
-- Pattern allenabile: [お～する](grammar:grammar-377-osuru-do-action-for-someone-politely)
+## Formazione e restrizioni
 
-## Lettura operativa
+- お + radice + する: お持ちする, お返しする.
+- ご + nome sino-giapponese + する: ご説明する, ご案内する.
+- Coniugazione sul verbo finale: お持ちしました, お持ちしません.
 
-Il centro del ripasso è riconoscere [お～する](grammar:grammar-377-osuru-do-action-for-someone-politely) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ゲームをする。
+  お{{荷物|にもつ}}をお{{持|も}}ちします。
 translation_it: >-
-  Faccio una partita.
+  Le porterò i bagagli.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   お～する -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Il parlante è agente del trasporto e i bagagli appartengono alla persona rispettata, quindi お持ちします è appropriato.
+
+## Sfumature d'uso
+
+- Il destinatario rispettato deve essere pertinente; *一人でお読みします per una lettura privata è inappropriato.
+- Alcuni verbi hanno forme umili lessicali preferite, come 伺う o 拝見する.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

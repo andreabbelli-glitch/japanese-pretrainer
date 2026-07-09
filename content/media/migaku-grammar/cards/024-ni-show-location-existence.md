@@ -12,9 +12,9 @@ id: grammar-024-ni-show-location-existence
 pattern: "に"
 title: "「に」(2) Indicate where something exists"
 reading: "に"
-meaning_it: "(2) Indicate where something exists"
+meaning_it: "Marcare con に il luogo in cui qualcuno o qualcosa esiste"
 notes_it: >-
-  に va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Luogo + に accompagna soprattutto いる, ある e 住む per indicare dove si trova o vive un referente. L'esistente è spesso marcato da が; いる si usa per esseri animati, ある per oggetti inanimati.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-024-ni-show-location-existence
 card_type: concept
 front: "に"
 back: >-
-  (2) Indicate where something exists
+  に indica il luogo di esistenza, non il luogo dove si svolge un'azione.
 example_jp: >-
-  カフェにいく。
+  {{図書館|としょかん}}に{{本|ほん}}がある。
 example_it: >-
-  Vado al caffè.
+  In biblioteca c'è un libro.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Per «studiare in biblioteca» serve 図書館で勉強する, perché 勉強する è un'azione. に + は forma には e può aggiungere contrasto.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 :::

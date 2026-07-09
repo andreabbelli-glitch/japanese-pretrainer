@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, stem-form-series, polite-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 354.
+  Coniugazione cortese dei verbi al presente, passato e nelle rispettive negazioni.
 ---
 
-# 「ます」Creating the polite form of verbs
+# 「ます」Creating the polite form
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/masu-creating-polite-form`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+La forma in ます rende cortese il predicato verbale senza cambiare i partecipanti o il contenuto di base dell'azione.
 
-- Tema: Creating the polite form of verbs
-- Sezione: stem form series
-- Livello: JLPT-N5
-- Pattern allenabile: [ます](grammar:grammar-354-masu-creating-polite-form)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Radice + ます: 書きます, 食べます, します, 来ます.
+- Negativo ません; passato ました; passato negativo ませんでした.
+- Relativa: 昨日借りた本, non *昨日借りました本.
 
-Il centro del ripasso è riconoscere [ます](grammar:grammar-354-masu-creating-polite-form) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  パンをたべます。
+  {{毎朝|まいあさ}}{{七時|しちじ}}に{{起|お}}きます。
 translation_it: >-
-  Mangio il pane.
+  Ogni mattina mi alzo alle sette.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ます -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+起きる perde る e la radice 起き riceve ます; に marca l'ora precisa.
+
+## Sfumature d'uso
+
+- Non è di per sé linguaggio onorifico o umile: è 丁寧語, cortesia generale.
+- Il soggetto può essere omesso come nelle forme piane; ます non aggiunge un pronome.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

@@ -12,9 +12,10 @@ id: grammar-165-demo-even
 pattern: "でも"
 title: "「でも」(1) “Even (noun)\""
 reading: "でも"
-meaning_it: "(1) Even (noun)"
+meaning_it: >-
+  Anche; perfino (con nomi e aggettivi in な)
 notes_it: >-
-  でも va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: Nome + でも; radice dell'aggettivo in な + でも (静かでも). Come concessiva corrisponde alla forma in て + も della copula. Va distinta dalla semplice sequenza particella で + も, dove で mantiene il proprio valore di luogo/mezzo e も significa «anche».
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-165-demo-even
 card_type: concept
 front: "でも"
 back: >-
-  (1) Even (noun)
+  Nome／Aな + でも include persino un caso considerato estremo o inatteso.
 example_jp: >-
-  ぼくもいく。
+  この{{説明|せつめい}}なら、{{子供|こども}}でも{{分|わ}}かる。
 example_it: >-
-  Vado anche io.
+  Con questa spiegazione, perfino un bambino può capire.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: Nome + でも; radice dell'aggettivo in な + でも (静かでも). Come concessiva corrisponde alla forma in て + も della copula. Va distinta dalla semplice sequenza particella で + も, dove で mantiene il proprio valore di luogo/mezzo e も significa «anche».
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

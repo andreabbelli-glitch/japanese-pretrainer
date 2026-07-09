@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 147.
+  Valutazioni sorprendenti rispetto a uno standard o a un'aspettativa implicita.
 ---
 
 # 「にしては」Express deviation from a standard
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nishiteha-express-deviation-from-standard`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+にしては valuta un caso rispetto allo standard suggerito da A. La seconda parte non coincide con ciò che il parlante considera normale per quella categoria o circostanza.
 
-- Tema: Express deviation from a standard
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [にしては](grammar:grammar-147-nishiteha-express-deviation-from-standard)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Nome + にしては + valutazione inattesa: 初心者にしては上手だ.
+- Proposizione piana + にしては: 日本に長く住んでいたにしては、日本語をあまり話さない.
+- La copula presente davanti a にしては normalmente non compare come だ.
 
-Il centro del ripasso è riconoscere [にしては](grammar:grammar-147-nishiteha-express-deviation-from-standard) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{初心者|しょしんしゃ}}にしては、ずいぶん{{上手|じょうず}}に{{弾|ひ}}ける。
 translation_it: >-
-  Questa è una penna.
+  Per essere un principiante, sa suonare davvero bene.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   にしては -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Essere principiante crea un'attesa di abilità limitata; 上手に弾ける la contraddice.
+
+## Sfumature d'uso
+
+- L'elemento di sorpresa è essenziale: senza uno scarto rispetto all'aspettativa, にしては risulta poco motivato.
+- Può sottintendere uno stereotipo o uno standard personale; va usato con tatto quando si giudicano persone.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

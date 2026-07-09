@@ -12,9 +12,10 @@ id: grammar-099-kotonisuru-decide-do-something
 pattern: "ことにする"
 title: "「ことにする」Decide to do something"
 reading: "ことにする"
-meaning_it: "Decide to do something"
+meaning_it: >-
+  Decidere volontariamente di fare o non fare qualcosa
 notes_it: >-
-  ことにする va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo non passato, affermativo o negativo + ことにする. Vことにしなかった significa «non ho deciso di V», diverso da Vないことにした «ho deciso di non V». ことにしている indica una regola o decisione mantenuta nel tempo.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-099-kotonisuru-decide-do-something
 card_type: concept
 front: "ことにする"
 back: >-
-  Decide to do something
+  Decidere volontariamente di fare o non fare qualcosa
 example_jp: >-
-  カフェにいく。
+  {{今日|きょう}}は{{早|はや}}く{{寝|ね}}ることにした。
 example_it: >-
-  Vado al caffè.
+  Ho deciso che oggi andrò a letto presto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  寝る è l'azione scelta; ことにした mostra che il parlante ha preso personalmente la decisione. Vことにしなかった significa «non ho deciso di V», diverso da Vないことにした «ho deciso di non V». ことにしている indica una regola o decisione mantenuta nel tempo.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 :::

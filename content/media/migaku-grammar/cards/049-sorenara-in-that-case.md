@@ -12,9 +12,9 @@ id: grammar-049-sorenara-in-that-case
 pattern: "それなら"
 title: "「それなら」\"If that is the case\""
 reading: "それなら"
-meaning_it: "If that is the case"
+meaning_it: "Reagire a quanto appena detto: «se è così», «allora»"
 notes_it: >-
-  それなら va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  それなら riprende come condizione una situazione esposta dall'interlocutore e introduce la decisione o conseguenza del parlante. Non formula un'ipotesi nuova: si appoggia al discorso precedente.
 level_hint: jlpt-n2
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-049-sorenara-in-that-case
 card_type: concept
 front: "それなら"
 back: >-
-  If that is the case
+  それなら significa «se è così / in tal caso, allora…».
 example_jp: >-
-  それならいく。
+  それなら、{{静|しず}}かにする。
 example_it: >-
-  Se è così, vado.
+  Allora farò silenzio.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  È tipico nelle risposte: prima qualcuno fornisce un fatto, poi il parlante adegua ciò che farà a quel fatto.
 tags: [migaku, grammar, jlpt-n2, academy-level-1]
 :::

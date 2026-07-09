@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 362.
+  Contrasto formale, prefazione a una richiesta e chiusura esitante che lascia implicito il seguito.
 ---
 
-# 「が」(4) "But…” / “however…"
+# 「が」(4) But...
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ga-but`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+が congiuntivo segnala che la seconda parte non segue pienamente l'aspettativa creata dalla prima, oppure crea spazio pragmatico prima di una richiesta.
 
-- Tema: (4) But… / however…
-- Sezione: particles
-- Livello: JLPT-N5
-- Pattern allenabile: [が](grammar:grammar-362-4-but-however)
+## Formazione e restrizioni
 
-## Lettura operativa
+- V/Aい + が: 行きたいが, 高いですが.
+- Nome/Aな + だが／ですが: 学生だが, 静かですが.
+- Finale sospeso: お願いがあるんですが….
 
-Il centro del ripasso è riconoscere [が](grammar:grammar-362-4-but-however) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ネコがいる。
+  {{少|すこ}}し{{高|たか}}いですが、とても{{便利|べんり}}です。
 translation_it: >-
-  C'è un gatto.
+  È un po' caro, ma molto comodo.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   が -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Il prezzo crea un'aspettativa negativa; が introduce la qualità positiva che la controbilancia.
+
+## Sfumature d'uso
+
+- Nella conversazione けど è più comune e casuale; が mantiene un tono controllato.
+- Il finale in が non è incompleto per errore: invita l'altro a inferire o attendere la richiesta.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

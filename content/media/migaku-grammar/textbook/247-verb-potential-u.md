@@ -10,44 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 247.
+  Potenziale dei verbi in u con base in e più ru.
 ---
 
-# The potential form of う-verbs
+# Verb Potential - U
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-potential-u`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Base in e + る
 
-## Punto da riconoscere
-
-- Tema: The potential form of う-verbs
-- Sezione: verbs
-- Livello: JLPT-N4
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Per un verbo in う si porta l'ultimo kana alla colonna e e si aggiunge る: 書く → 書ける, 読む → 読める, 帰る → 帰れる, 買う → 買える.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{日本語|にほんご}}が{{読|よ}}める。
 translation_it: >-
-  Questa è una penna.
+  So leggere il giapponese.
 :::
 
-#### Anatomia rapida
+La forma potenziale risultante si coniuga come verbo in る: 読めない, 読めた, 読めれば.
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+## Particelle
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+L'oggetto della capacità è tradizionalmente marcato da が, come 日本語が読める. を è però comune in molti usi moderni; registro e costruzione influenzano la scelta.

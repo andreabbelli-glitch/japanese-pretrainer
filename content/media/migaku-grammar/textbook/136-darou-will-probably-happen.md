@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 136.
+  Previsioni plausibili e dubbi riflessivi, con formazione, certezza e registro.
 ---
 
 # 「だろう(か)」Make an uninformed conjecture
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/darou-will-probably-happen`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+だろう presenta una conclusione o previsione che il parlante ritiene verosimile. Con か, だろうか rende spesso un dubbio interiore, «chissà se…», che può restare senza risposta dell'interlocutore.
 
-- Tema: Make an uninformed conjecture
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [だろう(か)](grammar:grammar-136-darou-will-probably-happen)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo o aggettivo in い in forma piana + だろう: 来るだろう, 高いだろう.
+- Nome o aggettivo in な + だろう: 学生だろう, 静かだろう.
+- Proposizione + だろうか per una domanda attenuata o riflessiva.
 
-Il centro del ripasso è riconoscere [だろう(か)](grammar:grammar-136-darou-will-probably-happen) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはだろう(か)のかたちだ。
+  もうすぐ{{電車|でんしゃ}}が{{来|く}}るだろう。
 translation_it: >-
-  Questa è la forma だろう(か).
+  Probabilmente il treno arriverà tra poco.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   だろう(か) -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+来るだろう comunica una previsione del parlante, con certezza inferiore a una promessa o a un fatto verificato.
+
+## Sfumature d'uso
+
+- È più sicuro di かもしれない, ma meno categorico di に違いない.
+- Nel parlato だろう può diventare だろ; con interlocutori non intimi è preferibile でしょう.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

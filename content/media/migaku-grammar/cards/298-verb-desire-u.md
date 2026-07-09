@@ -12,9 +12,10 @@ id: grammar-298-verb-desire-u
 pattern: "う動詞"
 title: "The “desire” form of う verbs"
 reading: "うどうし"
-meaning_it: "The desire form of う verbs"
+meaning_it: >-
+  Desiderio di compiere un'azione con un verbo godan
 notes_it: >-
-  う{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  base godan in i + たい. たい coniuga come un い-aggettivo: たくない, たかった. L'oggetto può essere in を; が è possibile quando viene messo a fuoco come cosa desiderata. Le affermazioni semplici riguardano normalmente il parlante.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-298-verb-desire-u
 card_type: concept
 front: "う{{動詞|どうし}}"
 back: >-
-  The desire form of う verbs
+  Desiderio di compiere un'azione con un verbo godan
 example_jp: >-
-  カフェにいく。
+  {{夏休|なつやす}}みに{{北海道|ほっかいどう}}へ{{行|い}}きたい。
 example_it: >-
-  Vado al caffè.
+  Durante le vacanze estive voglio andare in Hokkaido.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  行く passa alla base 行き- e prende たい; la destinazione è marcata da へ. たい coniuga come un い-aggettivo: たくない, たかった. L'oggetto può essere in を; が è possibile quando viene messo a fuoco come cosa desiderata. Le affermazioni semplici riguardano normalmente il parlante.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 :::

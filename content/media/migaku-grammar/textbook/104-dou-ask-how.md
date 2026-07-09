@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 104.
+  Domande di valutazione e proposte formulate con どう.
 ---
+# 「どう」(1) Ask “how?\"
 
-# 「どう」(1) Ask “how?"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dou-ask-how`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+どう è un avverbio interrogativo che chiede una valutazione, una condizione o una reazione. Nはどう？ può domandare «com'è N?» oppure proporre N: «che ne dici di N?».
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: (1) Ask how?
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [どう](grammar:grammar-104-dou-ask-how)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [どう](grammar:grammar-104-dou-ask-how) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `tema + は + どう（だ）？`. Il punto da riconoscere è [どう](grammar:grammar-104-dou-ask-how).
 
 :::example_sentence
 jp: >-
-  これはどうのかたちだ。
+  {{新|あたら}}しい{{仕事|しごと}}はどう？
 translation_it: >-
-  Questa è la forma どう.
+  Com'è il nuovo lavoro?
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   どう -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+新しい仕事 è il tema; どう chiede all'interlocutore di valutarne andamento o qualità, lasciando al contesto il parametro preciso.
+
+## Sfumature e limiti
+
+La domanda breve è semanticamente aperta e il contesto decide la lettura. コーヒーはどう？ può chiedere un giudizio sul caffè già servito oppure offrirne uno.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

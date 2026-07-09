@@ -12,9 +12,9 @@ id: grammar-037-kedo-indicate-contrast
 pattern: "けど"
 title: "「けど」Express contradiction"
 reading: "けど"
-meaning_it: "Express contradiction"
+meaning_it: "Collegare due clausole in contrasto: «ma», «anche se»"
 notes_it: >-
-  けど va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  けど introduce una seconda informazione diversa da quella attesa dalla prima. Segue direttamente verbi e aggettivi in い; con nomi e aggettivi in な compare come だけど.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-037-kedo-indicate-contrast
 card_type: concept
 front: "けど"
 back: >-
-  Express contradiction
+  Clausola + けど + clausola esprime contrasto o concessione.
 example_jp: >-
-  いきたいけど、いけない。
+  この{{本|ほん}}は{{安|やす}}いけど、{{面白|おもしろ}}い。
 example_it: >-
-  Vorrei andare, ma non posso.
+  Questo libro costa poco, ma è interessante.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Il secondo fatto non deve negare logicamente il primo: basta che contrasti un'aspettativa. Nel parlato けど può anche lasciare la frase sospesa.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 :::

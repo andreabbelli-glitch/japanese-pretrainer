@@ -12,9 +12,10 @@ id: grammar-315-cha-ja-casual-abbreviation-for-teha-deha
 pattern: "ちゃ・じゃ"
 title: "「ちゃ・じゃ」Casual abbreviations of ては・では"
 reading: "ちゃ・じゃ"
-meaning_it: "Casual abbreviations of ては・では"
+meaning_it: >-
+  Contrazioni colloquiali di ては e では
 notes_it: >-
-  ちゃ・じゃ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  ては→ちゃ／では→じゃ. La scelta dipende dalla て-forma: 食べては→食べちゃ, 飲んでは→飲んじゃ. Sono forme colloquiali; in contesti formali si mantengono ては／では.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-315-cha-ja-casual-abbreviation-for-teha-deha
 card_type: concept
 front: "ちゃ・じゃ"
 back: >-
-  Casual abbreviations of ては・では
+  Contrazioni colloquiali di ては e では
 example_jp: >-
-  これはペンだ。
+  この{{薬|くすり}}を{{一度|いちど}}に{{全部|ぜんぶ}}{{飲|の}}んじゃだめだ。
 example_it: >-
-  Questa è una penna.
+  Non devi prendere tutta questa medicina in una volta.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  飲んでは si contrae in 飲んじゃ perché la て-forma termina in で; だめ completa il divieto. La scelta dipende dalla て-forma: 食べては→食べちゃ, 飲んでは→飲んじゃ. Sono forme colloquiali; in contesti formali si mantengono ては／では.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

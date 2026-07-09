@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 304.
+  Stati risultanti intenzionali con verbo transitivo più てある.
 ---
+# 「～てある」”X is (in a state)\"
 
-# 「～てある」”X is (in a state)"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tearu-something-current-state`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+Un verbo transitivo in て-forma + ある descrive un oggetto che si trova nello stato prodotto deliberatamente da qualcuno.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: X is (in a state)
-- Sezione: form series
-- Livello: JLPT-N4
-- Pattern allenabile: [～てある](grammar:grammar-304-tearu-something-current-state)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [～てある](grammar:grammar-304-tearu-something-current-state) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo transitivo in て-forma + ある`. Il punto da riconoscere è [～てある](grammar:grammar-304-tearu-something-current-state).
 
 :::example_sentence
 jp: >-
-  ドアがあけてある。
+  {{窓|まど}}が{{開|あ}}けてある。
 translation_it: >-
-  La porta è stata lasciata aperta.
+  La finestra è stata lasciata aperta apposta.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ～てある -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+開ける è transitivo; 開けてある indica che qualcuno ha aperto la finestra intenzionalmente e che lo stato persiste.
+
+## Sfumature e limiti
+
+L'oggetto è spesso in が／は: 窓が開けてある. A differenza di 窓が開いている, che constata soltanto lo stato, てある implica preparazione o intenzione. を resta possibile quando si mette a fuoco l'azione preparatoria.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

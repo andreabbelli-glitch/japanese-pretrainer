@@ -12,9 +12,10 @@ id: grammar-095-ninaru-become-something
 pattern: "になる"
 title: "「になる」Become something"
 reading: "になる"
-meaning_it: "Become something"
+meaning_it: >-
+  Diventare o trasformarsi in qualcosa
 notes_it: >-
-  になる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  nome / な-aggettivo + に + なる. Per gli い-aggettivi si usa la forma avverbiale in く: 寒くなる «diventare freddo». Il passato になった indica che il cambiamento si è realizzato.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-095-ninaru-become-something
 card_type: concept
 front: "になる"
 back: >-
-  Become something
+  Diventare o trasformarsi in qualcosa
 example_jp: >-
-  カフェにいく。
+  {{妹|いもうと}}は{{来年|らいねん}}、{{大学生|だいがくせい}}になる。
 example_it: >-
-  Vado al caffè.
+  L'anno prossimo mia sorella minore diventerà studentessa universitaria.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  大学生 è il nuovo ruolo e prende に; なる esprime il passaggio a quello stato, previsto per 来年. Per gli い-aggettivi si usa la forma avverbiale in く: 寒くなる «diventare freddo». Il passato になった indica che il cambiamento si è realizzato.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

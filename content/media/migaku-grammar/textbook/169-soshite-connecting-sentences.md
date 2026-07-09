@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 169.
+  Coordinazione di frasi per aggiungere informazioni o far avanzare una sequenza.
 ---
 
-# 「そして」A structure to connect sentences
+# 「そして」Connecting sentences
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/soshite-connecting-sentences`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+そして coordina due enunciati sullo stesso filo discorsivo. La relazione può essere additiva («e inoltre») oppure temporale («e poi»), ma non esprime da solo causa o contrasto.
 
-- Tema: A structure to connect sentences
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [そして](grammar:grammar-169-soshite-connecting-sentences)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Frase A。そして、frase B.
+- Può seguire una pausa netta o un punto; non richiede una particolare coniugazione nella frase precedente.
+- そうして è simile ma può mettere più enfasi sul modo o sul processo appena descritto.
 
-Il centro del ripasso è riconoscere [そして](grammar:grammar-169-soshite-connecting-sentences) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはそしてのかたちだ。
+  {{店|みせ}}は{{安|やす}}い。そして、{{駅|えき}}から{{近|ちか}}い。
 translation_it: >-
-  Questa è la forma そして.
+  Il negozio è economico. Inoltre è vicino alla stazione.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   そして -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+そして aggiunge la vicinanza alla stazione come seconda qualità del negozio, senza presentarla come conseguenza del prezzo.
+
+## Sfumature d'uso
+
+- Se B è conseguenza di A, それで può essere più preciso; se si sottolinea la successione, それから è spesso più esplicito.
+- Nella conversazione ripetere そして molte volte può suonare narrativo o scolastico.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

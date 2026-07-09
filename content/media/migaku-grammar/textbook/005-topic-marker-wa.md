@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 005.
+  La particella は presenta il tema noto della frase e può creare contrasto.
 ---
 
 # 「は」Mark the topic
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/topic-marker-wa`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Forma e funzione
 
-## Punto da riconoscere
-
-- Tema: Mark the topic
-- Sezione: particles
-- Livello: JLPT-N5
-- Pattern allenabile: [は](grammar:grammar-005-topic-marker-wa)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [は](grammar:grammar-005-topic-marker-wa) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+は si scrive con l'hiragana は ma, come particella, si pronuncia わ. Presenta un referente già accessibile come tema: «quanto a X, …». Il resto della frase fornisce una spiegazione su quel tema.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{彼|かれ}}は{{先生|せんせい}}だ。
 translation_it: >-
-  Questa è una penna.
+  Lui è un insegnante.
 :::
 
-#### Anatomia rapida
+Con が la stessa persona può essere informazione nuova o focalizzata; con は è il punto di partenza già noto. は può inoltre evocare un contrasto implicito: «lui, quanto a lui, è insegnante (non studente)».
 
-*   は -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Combinazione con altre particelle
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Quando tematizza un elemento marcato da が o を, は di solito le sostituisce. Con に, で e へ si combina invece in には, では e へは. Tema e soggetto grammaticale non devono coincidere.

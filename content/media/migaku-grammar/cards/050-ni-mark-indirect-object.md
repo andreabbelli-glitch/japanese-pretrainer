@@ -12,9 +12,9 @@ id: grammar-050-ni-mark-indirect-object
 pattern: "に"
 title: "「に」(3) Mark the indirect object"
 reading: "に"
-meaning_it: "(3) Mark the indirect object"
+meaning_it: "Marcare con に il destinatario, beneficiario o bersaglio di un'azione"
 notes_it: >-
-  に va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Persona/cosa + に indica verso chi o che cosa è diretta un'azione. È comune con trasferimenti e comunicazione: あげる, 教える, 見せる, 話す, 電話する, 投げる.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-050-ni-mark-indirect-object
 card_type: concept
 front: "に"
 back: >-
-  (3) Mark the indirect object
+  に segue il ricevente o bersaglio indiretto dell'azione: «a / per».
 example_jp: >-
-  カフェにいく。
+  {{先生|せんせい}}が{{娘|むすめ}}に{{日本語|にほんご}}を{{教|おし}}える。
 example_it: >-
-  Vado al caffè.
+  L'insegnante insegna giapponese a mia figlia.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con は si forma には e il destinatario può diventare tema o contrasto. Il ruolo preciso dipende dal verbo: destinatario, beneficiario o bersaglio.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 091.
+  Passato piano dei な-aggettivi con だった.
 ---
-
 # The past tense of な adjectives
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/na-adjectives-past`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+I な-aggettivi formano il passato piano aggiungendo だった, il passato della copula だ. In posizione predicativa non compare な.
 
-- Tema: The past tense of な adjectives
-- Sezione: adjectives
-- Livello: JLPT-N5
-- Pattern allenabile: [な{{形容詞|けいようし}}](grammar:grammar-091-na-adjectives-past)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [な{{形容詞|けいようし}}](grammar:grammar-091-na-adjectives-past) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `な-aggettivo + だった`. Il punto da riconoscere è [な形容詞](grammar:grammar-091-na-adjectives-past).
 
 :::example_sentence
 jp: >-
-  ここはしずかだ。
+  その{{部屋|へや}}は{{静|しず}}かだった。
 translation_it: >-
-  Qui è tranquillo.
+  Quella stanza era silenziosa.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   な{{形容詞|けいようし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+静か è un な-aggettivo; だった lo rende predicativo e passato. Non si dice *静かなだった.
+
+## Sfumature e limiti
+
+Davanti a un nome, una descrizione passata forma una relativa senza な: 親切だった人 «una persona che era gentile». Per una qualità non passata si usa invece 親切な人.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

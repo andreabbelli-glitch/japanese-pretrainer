@@ -12,9 +12,9 @@ id: grammar-008-names-in-japanese
 pattern: "名前"
 title: "Names in Japanese"
 reading: "なまえ"
-meaning_it: "Names in Japanese"
+meaning_it: "Nomi giapponesi: ordine, scrittura e letture"
 notes_it: >-
-  {{名前|なまえ}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  In giapponese il cognome precede il nome. I nomi sono spesso in kanji, ma le letture non sono prevedibili con sicurezza; per rivolgersi a qualcuno si usa di frequente cognome + titolo onorifico.
 level_hint: custom
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-008-names-in-japanese
 card_type: concept
 front: "{{名前|なまえ}}"
 back: >-
-  Names in Japanese
+  L'ordine usuale è cognome + nome; la lettura dei kanji di un nome va verificata, non indovinata.
 example_jp: >-
-  これは{{名前|なまえ}}のかたちだ。
+  {{山本|やまもと}}{{綾子|あやこ}}さんは{{先生|せんせい}}だ。
 example_it: >-
-  Questa è la forma 名前.
+  Yamamoto Ayako è un'insegnante.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  I nomi stranieri si scrivono normalmente in katakana; i nomi giapponesi possono apparire anche in hiragana o katakana.
 tags: [migaku, grammar, academy-level-1, name-suffixes]
 :::

@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, academy-level-1, jlpt-n4]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 268.
+  Uso della て-forma finale come richiesta informale.
 ---
-
 # Make Commands With て-form Verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/imperative-level-1`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Una て-forma lasciata a fine frase può chiedere all'interlocutore di compiere l'azione. ください è sottinteso, ma la forma breve è familiare e dipende molto dall'intonazione.
 
-- Tema: Make Commands With て-form Verbs
-- Sezione: jlpt n4
-- Livello: JLPT-N4
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo in て-forma（+ ください sottinteso）`. Il punto da riconoscere è `て-forma come richiesta`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  ちょっと{{待|ま}}って。
 translation_it: >-
-  Questa è una penna.
+  Aspetta un momento.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+待つ diventa 待って; la frase termina lì e il contesto fa interpretare la て-forma come richiesta.
+
+## Sfumature e limiti
+
+Non è automaticamente cortese: tra amici può essere una richiesta naturale, mentre con tono duro diventa un ordine. Per maggiore cortesia si esplicita てください.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

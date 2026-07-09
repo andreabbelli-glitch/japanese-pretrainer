@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, numbers-and-counters]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 274.
+  Unità numeriche superiori a まん e raggruppamento per quattro cifre.
 ---
-
 # Numbers bigger than 100 million
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/Even-Bigger-Numbers`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Dopo 万, il sistema continua per potenze di 10.000: 億（おく）vale 10^8, 兆（ちょう）10^12 e 京（けい）10^16.
 
-- Tema: Numbers bigger than 100 million
-- Sezione: numbers and counters
-- Livello: JLPT-N5
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `numero + おく／ちょう／けい`. Il punto da riconoscere è `おく・ちょう・けい`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  その{{会社|かいしゃ}}の{{売上|うりあげ}}は{{1億円|いちおくえん}}を{{超|こ}}えた。
 translation_it: >-
-  Questa è una penna.
+  Il fatturato di quell'azienda ha superato i cento milioni di yen.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+1億 indica 100.000.000; 円 specifica la valuta e 超えた segnala il superamento di quella soglia.
+
+## Sfumature e limiti
+
+億 è relativamente comune in notizie economiche e demografiche; 兆 compare per bilanci molto grandi, mentre 京 è raro nella vita quotidiana. Anche qui si ragiona per blocchi di quattro cifre.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

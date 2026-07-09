@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 265.
+  Imperativo forte dei verbi ichidan e variante scritta in よ.
 ---
-
 # The imperative form of る verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-imperatives-level-2-ru`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Per i verbi ichidan si elimina る e si aggiunge ろ: 食べる→食べろ, 起きる→起きろ.
 
-- Tema: The imperative form of る verbs
-- Sezione: verbs
-- Livello: JLPT-N4
-- Pattern allenabile: [る{{動詞|どうし}}](grammar:grammar-265-verb-imperatives-level-2-ru)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [る{{動詞|どうし}}](grammar:grammar-265-verb-imperatives-level-2-ru) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `radice del verbo ichidan + ろ`. Il punto da riconoscere è [る動詞](grammar:grammar-265-verb-imperatives-level-2-ru).
 
 :::example_sentence
 jp: >-
-  パンをたべる。
+  {{早|はや}}く{{起|お}}きろ。
 translation_it: >-
-  Mangio il pane.
+  Alzati presto.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   る{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+起きる perde る e prende ろ, formando 起きろ; 早く specifica il modo o il momento richiesto.
+
+## Sfumature e limiti
+
+La variante in よ, come 答えよ, appartiene soprattutto a istruzioni scritte, proclami o stile letterario. La forma in ろ è diretta e può essere brusca.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

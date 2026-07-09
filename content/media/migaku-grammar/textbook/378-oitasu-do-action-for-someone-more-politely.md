@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, humble-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 378.
+  Variante più formale della costruzione umile, con il verbo umile per «fare».
 ---
 
-# 「お～いたす」Very humbly do something for someone
+# 「お～いたす」Do an action for someone more politely
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/oitasu-do-action-for-someone-more-politely`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+いたす è la forma umile di する e aumenta il grado di formalità della costruzione senza cambiarne la direzione del rispetto.
 
-- Tema: Very humbly do something for someone
-- Sezione: humble language
-- Livello: JLPT-N4
-- Pattern allenabile: [お～いたす](grammar:grammar-378-oitasu-do-action-for-someone-more-politely)
+## Formazione e restrizioni
 
-## Lettura operativa
+- お + radice + いたす: お待ちいたす.
+- ご + nome + いたす: ご説明いたす.
+- Forma cortese usuale: お待ちいたします, ご案内いたします.
 
-Il centro del ripasso è riconoscere [お～いたす](grammar:grammar-378-oitasu-do-action-for-someone-more-politely) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはお～いたすのかたちだ。
+  {{後|のち}}ほどご{{説明|せつめい}}いたします。
 translation_it: >-
-  Questa è la forma お～いたす.
+  Le fornirò una spiegazione più tardi.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   お～いたす -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+ご説明 è l'azione rivolta all'interlocutore e いたします la presenta umilmente in registro formale.
+
+## Sfumature d'uso
+
+- Non è onorifico per l'azione altrui: descrive l'azione del parlante o del suo gruppo.
+- In contesti ordinari お〜します può essere sufficiente e più naturale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

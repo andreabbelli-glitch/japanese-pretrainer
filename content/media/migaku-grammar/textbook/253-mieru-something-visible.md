@@ -10,44 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 253.
+  Visibilità spontanea con mieru.
 ---
 
-# 「見える」Express that something is visible
+# 「見える」Something is visible
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/mieru-something-visible`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Essere visibile
 
-## Punto da riconoscere
-
-- Tema: Express that something is visible
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+見える indica che qualcosa entra naturalmente nel campo visivo o possiede la qualità di poter essere visto, senza mettere a fuoco uno sforzo intenzionale.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  ここから{{山|やま}}が{{見|み}}える。
 translation_it: >-
-  Questa è una penna.
+  Da qui si vede la montagna.
 :::
 
-#### Anatomia rapida
+Ciò che è visibile prende が. 目が見えない significa «non vedere / essere cieco» indipendentemente dalla volontà.
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Confronto
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+見られる, potenziale di 見る, riguarda la possibilità di guardare volontariamente: 番組が見られない, «non posso guardare il programma». 見える è invece percezione disponibile spontaneamente.

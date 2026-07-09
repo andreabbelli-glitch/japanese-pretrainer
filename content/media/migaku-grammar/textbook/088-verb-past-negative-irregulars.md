@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 088.
+  Forme negative passate dei principali verbi irregolari.
 ---
-
 # The negative past tense of irregular verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-past-negative-irregulars`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Si sostituisce ない con なかった nelle forme di base: しない→しなかった, 来ない→来なかった（こなかった）, 行かない→行かなかった e ない→なかった. する e 来る sono irregolari; 行く segue qui la regola godan, mentre ある ha la negazione speciale ない.
 
-- Tema: The negative past tense of irregular verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-088-verb-past-negative-irregulars)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-088-verb-past-negative-irregulars) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `forma negativa di base senza い + かった`. Il punto da riconoscere è [不規則動詞](grammar:grammar-088-verb-past-negative-irregulars).
 
 :::example_sentence
 jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  {{昨日|きのう}}、{{彼|かれ}}は{{来|こ}}なかった。
 translation_it: >-
-  Questa è la forma 不規則動詞.
+  Ieri lui non è venuto.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   {{不規則|ふきそく}}{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+来る usa la base negativa irregolare こ-; con なかった forma 来なかった, letta こなかった.
+
+## Sfumature e limiti
+
+La lettura di 来 cambia: 来る è くる, ma 来なかった è こなかった. 行く forma regolarmente 行かなかった; per ある non si usa *あらない, bensì ない e al passato なかった.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

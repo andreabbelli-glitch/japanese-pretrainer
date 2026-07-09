@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, numbers-and-counters]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 175.
+  Formazione compositiva dei numeri da undici a cento.
 ---
 
-# The numbers 11–100
+# The Numbers (2)
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/the-numbers-2`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il sistema decimale giapponese è compositivo: l'ordine dei kanji riflette moltiplicazione e somma. 二十八 equivale a «due decine più otto».
 
-- Tema: The numbers 11–100
-- Sezione: numbers and counters
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- 11–19: 十一（じゅういち）…十九（じゅうきゅう）.
+- Multipli di dieci: 二十（にじゅう）, 三十（さんじゅう）…九十（きゅうじゅう）.
+- Numero intermedio: decina + unità, per esempio 五十六（ごじゅうろく）; 100: 百（ひゃく）.
 
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{教室|きょうしつ}}に{{学生|がくせい}}が{{二十八人|にじゅうはちにん}}いる。
 translation_it: >-
-  Questa è una penna.
+  In aula ci sono ventotto studenti.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+二十八 combina 二十 e 八; 人 aggiunge il contatore per persone senza cambiare la lettura di 八 in questo caso.
+
+## Sfumature d'uso
+
+- Non si mette 一 davanti a 十 per 10 né davanti a 百 per 100.
+- Quando il numero accompagna un contatore, leggere l'intero gruppo: 二十八人 è にじゅうはちにん.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

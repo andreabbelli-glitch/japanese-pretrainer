@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 106.
+  Regola della て-forma per i verbi ichidan e dipendenza dal predicato finale.
 ---
-
 # The て-form of る-verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-te-form-ru`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Per formare la て-forma di un verbo ichidan si elimina る e si aggiunge て: 食べる→食べて, 出る→出て.
 
-- Tema: The て-form of る-verbs
-- Sezione: form series
-- Livello: JLPT-N5
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `radice del verbo ichidan + て`. Il punto da riconoscere è `て-forma dei verbi ichidan`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{窓|まど}}を{{開|あ}}けて、{{部屋|へや}}を{{掃除|そうじ}}した。
 translation_it: >-
-  Questa è una penna.
+  Ho aperto la finestra e poi ho pulito la stanza.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+開ける è ichidan: eliminando る si ottiene 開けて. 掃除した, alla fine, colloca entrambe le azioni nel passato.
+
+## Sfumature e limiti
+
+In AてB, la forma A non esprime da sola il tempo: è il predicato finale a renderla presente, passata o negativa. Occorre distinguere gli ichidan dai godan in る, come 帰る→帰って.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -12,9 +12,9 @@ id: grammar-062-kocchi-socchi-acchi-here-there-over-there
 pattern: "こっち・そっち・あっち"
 title: "「こっち・そっち・あっち」\"Here, there and over there\""
 reading: "こっち・そっち・あっち"
-meaning_it: "Here, there and over there"
+meaning_it: "Forme colloquiali per lato, luogo o direzione: «qui», «lì», «laggiù»"
 notes_it: >-
-  こっち・そっち・あっち va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  こっち indica la parte del parlante, そっち quella dell'ascoltatore, あっち una parte lontana da entrambi. Sono forme colloquiali di こちら, そちら, あちら e possono anche riferirsi alle persone di quelle sfere.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-062-kocchi-socchi-acchi-here-there-over-there
 card_type: concept
 front: "こっち・そっち・あっち"
 back: >-
-  Here, there and over there
+  こっち・そっち・あっち indicano informalmente «da questa parte / da quella parte / laggiù».
 example_jp: >-
-  これはこっち・そっち・あっちのかたちだ。
+  {{車|くるま}}があっちへ{{行|い}}く。
 example_it: >-
-  Questa è la forma こっち・そっち・あっち.
+  L'auto va da quella parte laggiù.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Riferite a persone possono valere «io/noi», «tu/voi», «lui/lei/loro», ma il tono è informale e può risultare brusco.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

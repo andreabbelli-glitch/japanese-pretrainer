@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 303.
+  Uso di に per la superficie bersaglio e contrasto con il luogo in で.
 ---
-
 # 「に」(7) Indicate on what an action occurs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ni-express-action-on-surface`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Con verbi come 書く, 描く, 置く o 貼る, に identifica la superficie o destinazione concreta dell'azione.
 
-- Tema: (7) Indicate on what an action occurs
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [に](grammar:grammar-303-ni-express-action-on-surface)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [に](grammar:grammar-303-ni-express-action-on-surface) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `superficie + に + oggetto + verbo`. Il punto da riconoscere è [に](grammar:grammar-303-ni-express-action-on-surface).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  ノートに{{名前|なまえ}}を{{書|か}}いた。
 translation_it: >-
-  Vado al caffè.
+  Ho scritto il nome sul quaderno.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   に -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+ノートに è la superficie che riceve la scrittura; 名前を è il contenuto scritto.
+
+## Sfumature e limiti
+
+で indica invece il luogo generale in cui si svolge l'azione. 道に絵を描く significa disegnare sulla strada; 道で絵を描く, disegnare trovandosi per strada.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

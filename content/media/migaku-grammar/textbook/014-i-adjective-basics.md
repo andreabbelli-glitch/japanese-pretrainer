@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 014.
+  Forma base e uso attributivo degli aggettivi in い.
 ---
 
-# Introduction to い adjectives
+# い-Adjectives Basics
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/i-adjective-basics`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Forma e uso
 
-## Punto da riconoscere
-
-- Tema: Introduction to い adjectives
-- Sezione: adjectives
-- Livello: JLPT-N5
-- Pattern allenabile: [い{{形容詞|けいようし}}](grammar:grammar-014-i-adjective-basics)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [い{{形容詞|けいようし}}](grammar:grammar-014-i-adjective-basics) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Un aggettivo in い termina in い nella forma dizionario e può precedere direttamente il nome che descrive: 高い車, «un'auto costosa». Non serve una particella tra aggettivo e nome.
 
 :::example_sentence
 jp: >-
-  これはたかい。
+  {{先生|せんせい}}は{{優|やさ}}しい{{人|ひと}}だ。
 translation_it: >-
-  Questo è costoso.
+  L'insegnante è una persona gentile.
 :::
 
-#### Anatomia rapida
+Può anche fungere da predicato senza だ: この本は面白い, «questo libro è interessante». La radice usata nelle coniugazioni si ottiene togliendo l'い finale.
 
-*   い{{形容詞|けいようし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Attenzione
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Non tutte le parole che finiscono graficamente in い appartengono a questa classe. きれい e 嫌い sono comuni aggettivi in な e seguono regole diverse.

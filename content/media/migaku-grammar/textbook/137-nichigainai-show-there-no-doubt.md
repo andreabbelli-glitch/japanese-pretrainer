@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 137.
+  Deduzioni molto convincenti, con formazione e confronto fra diversi gradi di certezza.
 ---
 
-# 「に違いない・にちがいない」State that there is no doubt about something
+# 「に違いない・にちがいない」Show there is no doubt
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nichigainai-show-there-no-doubt`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+に違いない presenta una conclusione come praticamente indubitabile agli occhi del parlante. Deriva da 違い («differenza, errore») + ない: l'idea è «non può essere altrimenti».
 
-- Tema: State that there is no doubt about something
-- Sezione: jlpt n3
-- Livello: JLPT-N3
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo o aggettivo in い piano + に違いない: 来るに違いない, 高いに違いない.
+- Nome o aggettivo in な + に違いない al presente: 学生に違いない, 静かに違いない; al passato si usa だった.
+- La grafia può essere に違いない o interamente in kana にちがいない.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{電気|でんき}}が{{消|き}}えている。もう{{寝|ね}}たに{{違|ちが}}いない。
 translation_it: >-
-  Questa è una penna.
+  La luce è spenta. Dev'essere già andato a dormire.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+La luce spenta è l'indizio da cui il parlante deduce con forte convinzione che la persona sia già a letto.
+
+## Sfumature d'uso
+
+- Esprime una deduzione molto forte, ma resta il giudizio del parlante; non equivale a una prova oggettiva.
+- Scala orientativa: かもしれない < だろう／でしょう < に違いない.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

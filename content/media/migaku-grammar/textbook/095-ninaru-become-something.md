@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 095.
+  Cambiamenti di stato o ruolo con nome + になる.
 ---
-
 # 「になる」Become something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ninaru-become-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+N + になる presenta N come il nuovo stato, ruolo o risultato raggiunto dal soggetto. に marca l'esito della trasformazione e なる esprime il cambiamento.
 
-- Tema: Become something
-- Sezione: jlpt n5
-- Livello: JLPT-N5
-- Pattern allenabile: [になる](grammar:grammar-095-ninaru-become-something)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [になる](grammar:grammar-095-ninaru-become-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `nome / な-aggettivo + に + なる`. Il punto da riconoscere è [になる](grammar:grammar-095-ninaru-become-something).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{妹|いもうと}}は{{来年|らいねん}}、{{大学生|だいがくせい}}になる。
 translation_it: >-
-  Vado al caffè.
+  L'anno prossimo mia sorella minore diventerà studentessa universitaria.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   になる -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+大学生 è il nuovo ruolo e prende に; なる esprime il passaggio a quello stato, previsto per 来年.
+
+## Sfumature e limiti
+
+Per gli い-aggettivi si usa la forma avverbiale in く: 寒くなる «diventare freddo». Il passato になった indica che il cambiamento si è realizzato.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -12,9 +12,10 @@ id: grammar-266-verb-imperatives-level-2-irregular
 pattern: "不規則動詞"
 title: "The imperative form of irregular verbs"
 reading: "ふきそくどうし"
-meaning_it: "The imperative form of irregular verbs"
+meaning_it: >-
+  Imperativi fondamentali: しろ, 来い e 行け
 notes_it: >-
-  {{不規則|ふきそく}}{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  する→しろ／来る→来い／行く→行け. Sono ordini forti. ある ha l'imperativo あれ, raro e limitato a espressioni solenni o cristallizzate.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-266-verb-imperatives-level-2-irregular
 card_type: concept
 front: "{{不規則|ふきそく}}{{動詞|どうし}}"
 back: >-
-  The imperative form of irregular verbs
+  Imperativi fondamentali: しろ, 来い e 行け
 example_jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  すぐに{{来|こ}}い。
 example_it: >-
-  Questa è la forma 不規則動詞.
+  Vieni subito.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  来る cambia lettura e forma in 来い, pronunciato こい; すぐに rende l'ordine urgente. Sono ordini forti. ある ha l'imperativo あれ, raro e limitato a espressioni solenni o cristallizzate.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

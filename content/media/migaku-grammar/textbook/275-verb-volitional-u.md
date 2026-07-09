@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, academy-level-1, verbs, jlpt-n4]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 275.
+  Formazione e valori propositivo-intenzionali del volitivo godan.
 ---
-
 # The volitional form of う verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-volitional-u`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+I verbi godan passano alla base in o e aggiungono う: 書く→書こう, 読む→読もう, 買う→買おう.
 
-- Tema: The volitional form of う verbs
-- Sezione: verbs
-- Livello: JLPT-N4
-- Pattern allenabile: [う{{動詞|どうし}}](grammar:grammar-275-verb-volitional-u)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [う{{動詞|どうし}}](grammar:grammar-275-verb-volitional-u) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `base godan in o + う`. Il punto da riconoscere è [う動詞](grammar:grammar-275-verb-volitional-u).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{明日|あした}}、{{一緒|いっしょ}}に{{海|うみ}}へ{{行|い}}こう。
 translation_it: >-
-  Vado al caffè.
+  Domani andiamo insieme al mare.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   う{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+行く passa alla base 行こ- e aggiunge う: 行こう. 一緒に rende evidente la proposta condivisa.
+
+## Sfumature e limiti
+
+Con un interlocutore propone un'azione condivisa; in monologo esprime decisione o slancio del parlante. Non possiede un passato autonomo.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

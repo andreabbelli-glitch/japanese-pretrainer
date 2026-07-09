@@ -12,9 +12,10 @@ id: grammar-163-youni-do-something-certain-way-so-that
 pattern: "ように"
 title: "「ように」\"Do something in a certain way so that\""
 reading: "ように"
-meaning_it: "Do something in a certain way so that"
+meaning_it: >-
+  Affinché; in modo da/non…
 notes_it: >-
-  ように va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione tipica: V potenziale/non-volitivo + ように; V negativo + ように. La proposizione prima di ように esprime il risultato desiderato, quella dopo il mezzo o l'accorgimento. È preferita quando il risultato non è sotto controllo diretto; per scopi volontari con lo stesso soggetto è frequente ために.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-163-youni-do-something-certain-way-so-that
 card_type: concept
 front: "ように"
 back: >-
-  Do something in a certain way so that
+  Obiettivo + ように + azione indica che si agisce in modo da rendere possibile o evitare quel risultato.
 example_jp: >-
-  カフェにいく。
+  {{忘|わす}}れないように、{{予定|よてい}}をメモしておく。
 example_it: >-
-  Vado al caffè.
+  Segno l'appuntamento per non dimenticarlo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione tipica: V potenziale/non-volitivo + ように; V negativo + ように. La proposizione prima di ように esprime il risultato desiderato, quella dopo il mezzo o l'accorgimento. È preferita quando il risultato non è sotto controllo diretto; per scopi volontari con lo stesso soggetto è frequente ために.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

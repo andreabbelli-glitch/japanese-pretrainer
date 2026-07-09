@@ -12,9 +12,10 @@ id: grammar-088-verb-past-negative-irregulars
 pattern: "不規則動詞"
 title: "The negative past tense of irregular verbs"
 reading: "ふきそくどうし"
-meaning_it: "The negative past tense of irregular verbs"
+meaning_it: >-
+  Passati negativi fondamentali: しなかった, 来なかった, 行かなかった, なかった
 notes_it: >-
-  {{不規則|ふきそく}}{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  forma negativa di base senza い + かった. する e 来る hanno basi irregolari; 行く segue regolarmente 行かない→行かなかった. Per ある la negazione è ない e il passato negativo なかった.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-088-verb-past-negative-irregulars
 card_type: concept
 front: "{{不規則|ふきそく}}{{動詞|どうし}}"
 back: >-
-  The negative past tense of irregular verbs
+  Passati negativi fondamentali: しなかった, 来なかった, 行かなかった, なかった
 example_jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  {{昨日|きのう}}、{{彼|かれ}}は{{来|こ}}なかった。
 example_it: >-
-  Questa è la forma 不規則動詞.
+  Ieri lui non è venuto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  来る usa la base negativa irregolare こ-; con なかった forma 来なかった, letta こなかった. 行く segue invece la normale base godan 行か-. Per ある la negazione è ない, da cui なかった.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 :::

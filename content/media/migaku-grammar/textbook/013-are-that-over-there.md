@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, academy-level-1, jlpt-n5, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 013.
+  Uso di あれ per una cosa lontana da parlante e ascoltatore.
 ---
 
-# 「あれ」"That over there"
+# 「あれ」For that over there
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/are-that-over-there`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Punto di vista
 
-## Punto da riconoscere
-
-- Tema: That over there
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [あれ](grammar:grammar-013-are-that-over-there)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [あれ](grammar:grammar-013-are-that-over-there) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+あれ è il pronome dimostrativo usato quando la cosa indicata è lontana sia dal parlante sia dall'ascoltatore. La resa «quello laggiù» rende esplicita questa distanza.
 
 :::example_sentence
 jp: >-
-  これはあれのかたちだ。
+  あれは{{山|やま}}だ。
 translation_it: >-
-  Questa è la forma あれ.
+  Quella laggiù è una montagna.
 :::
 
-#### Anatomia rapida
+Per modificare direttamente un nome si usa あの: あの山, «quella montagna laggiù». あれ, come これ e それ, si scrive normalmente in hiragana.
 
-*   あれ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Da ricordare
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+La serie あ- colloca il referente fuori dalla sfera immediata di entrambe le persone; il contesto può estendere questa distanza anche a ricordi condivisi.

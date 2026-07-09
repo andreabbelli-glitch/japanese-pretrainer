@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, sentence-enders]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 244.
+  Dubbio pensato ad alta voce con kashira.
 ---
 
-# 「かしら」”I wonder..."
+# 「かしら」Wondering
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kashira-wondering`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## «Mi chiedo…»
 
-## Punto da riconoscere
-
-- Tema: I wonder...
-- Sezione: sentence enders
-- Livello: JLPT-N4
-- Pattern allenabile: [かしら](grammar:grammar-244-kashira-wondering)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [かしら](grammar:grammar-244-kashira-wondering) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+かしら alla fine esprime una domanda rivolta soprattutto a sé stessi: curiosità, incertezza o ricerca mentale.
 
 :::example_sentence
 jp: >-
-  これはかしらのかたちだ。
+  {{鍵|かぎ}}はどこかしら。
 translation_it: >-
-  Questa è la forma かしら.
+  Chissà dove sono le chiavi.
 :::
 
-#### Anatomia rapida
+Non richiede necessariamente che qualcuno risponda. Può seguire una frase piana o una parola interrogativa.
 
-*   かしら -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Voce sociale
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+È tradizionalmente percepito come femminile e può risultare marcato per età o stile. かな copre un valore simile con distribuzione diversa.

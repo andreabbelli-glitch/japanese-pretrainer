@@ -12,9 +12,10 @@ id: grammar-134-taradou-how-about
 pattern: "たらどう"
 title: "「たらどう」\"how about doing X?\""
 reading: "たらどう"
-meaning_it: "how about doing X?"
+meaning_it: >-
+  Che ne dici di…?; perché non…?
 notes_it: >-
-  たらどう va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: forma piana passata + らどう（だ／ですか）. La sequenza è la condizionale in たら seguita da どう. È una proposta colloquiale e diretta; 〜たら？ è ancora più ellittico. A seconda del tono può sembrare consiglio, critica o impazienza.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-134-taradou-how-about
 card_type: concept
 front: "たらどう"
 back: >-
-  how about doing X?
+  Vた + らどう propone un'azione: «che ne dici di fare…?». Nel parlato どう può essere sottinteso.
 example_jp: >-
-  あめなら、いかない。
+  {{疲|つか}}れているなら、{{少|すこ}}し{{休|やす}}んだらどう？
 example_it: >-
-  Se piove, non vado.
+  Se sei stanco, che ne dici di riposarti un po'?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: forma piana passata + らどう（だ／ですか）. La sequenza è la condizionale in たら seguita da どう. È una proposta colloquiale e diretta; 〜たら？ è ancora più ellittico. A seconda del tono può sembrare consiglio, critica o impazienza.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

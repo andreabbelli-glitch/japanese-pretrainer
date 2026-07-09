@@ -12,9 +12,9 @@ id: grammar-230-hodo-3-express-approximation
 pattern: "ほど"
 title: "「ほど」(3) Make an approximation"
 reading: "ほど"
-meaning_it: "(3) Make an approximation"
+meaning_it: "Approssimare una quantità con ほど"
 notes_it: >-
-  ほど va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Contatore + ほど significa «circa» e ha tono spesso più formale di くらい. Con il tempo si applica a durate, non a ore come punti del giorno; per quelle si usa ごろ.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-230-hodo-3-express-approximation
 card_type: concept
 front: "ほど"
 back: >-
-  (3) Make an approximation
+  Quantità con contatore + ほど indica una stima approssimativa.
 example_jp: >-
-  これほどいいものはない。
+  {{二時間|にじかん}}ほどかかる。
 example_it: >-
-  Non c'è nulla di così buono.
+  Ci vogliono circa due ore.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con una quantità, ほど presenta una stima; in altri schemi può indicare il grado. Per dire «verso le otto» si usa 八時ごろ, non 八時ほど.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 :::

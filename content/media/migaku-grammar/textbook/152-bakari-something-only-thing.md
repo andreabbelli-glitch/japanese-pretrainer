@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 152.
+  Limitazione, attività eccessivamente ripetuta e azione appena conclusa.
 ---
 
-# 「ばかり」”X, and nothing else"
+# 「ばかり」Something is the only thing
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/bakari-something-only-thing`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ばかり mette in primo piano l'impressione che non ci sia quasi altro oltre all'elemento indicato. La forma del verbo cambia radicalmente il significato della costruzione.
 
-- Tema: X, and nothing else
-- Sezione: series
-- Livello: JLPT-N3
-- Pattern allenabile: [ばかり](grammar:grammar-152-bakari-something-only-thing)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Nome + ばかり: 甘い物ばかり食べる («mangiare solo dolci»).
+- Vて + ばかりいる: 遊んでばかりいる («non fare altro che divertirsi»).
+- Vた + ばかり: 着いたばかり («essere appena arrivato»); V dizionario + ばかりだ: 悪くなるばかりだ («non fa che peggiorare»).
 
-Il centro del ripasso è riconoscere [ばかり](grammar:grammar-152-bakari-something-only-thing) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  いけばわかる。
+  {{弟|おとうと}}はゲームばかりしている。
 translation_it: >-
-  Se ci vai, capirai.
+  Mio fratello minore non fa altro che giocare ai videogiochi.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ばかり -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+ゲームばかりしている presenta il gioco come attività eccessivamente dominante, con possibile sfumatura critica.
+
+## Sfumature d'uso
+
+- La limitazione è spesso percepita o valutativa, non necessariamente matematica; だけ è più neutro e oggettivo.
+- ばっかり è colloquiale ed enfatizza l'insoddisfazione o l'insistenza.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

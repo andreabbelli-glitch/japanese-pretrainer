@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 205.
+  Cominciare con un verbo in u e hajimeru.
 ---
 
-# う verbs + はじめる
+# Verb はじめる - U
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-hajimeru-u`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Base in i + 始める
 
-## Punto da riconoscere
-
-- Tema: う verbs + はじめる
-- Sezione: stem form series
-- Livello: JLPT-N4
-- Pattern allenabile: [う{{動詞|どうし}}](grammar:grammar-205-verb-hajimeru-u)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [う{{動詞|どうし}}](grammar:grammar-205-verb-hajimeru-u) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Per un verbo in う, si sposta l'ultimo kana alla colonna i e si aggiunge 始める: 書く → 書き始める, 読む → 読み始める, 降る → 降り始める.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{雨|あめ}}が{{降|ふ}}り{{始|はじ}}めた。
 translation_it: >-
-  Questa è una penna.
+  Ha cominciato a piovere.
 :::
 
-#### Anatomia rapida
+始める porta la coniugazione dell'intero composto ed è un verbo in る: 読み始めた, 読み始めない, 読み始めれば.
 
-*   う{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Sfumatura
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+La costruzione focalizza l'inizio dell'azione. Il soggetto e il grado di intenzionalità dipendono dal primo verbo e dal contesto.

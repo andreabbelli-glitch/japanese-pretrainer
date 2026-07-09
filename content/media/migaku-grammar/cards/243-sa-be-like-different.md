@@ -12,9 +12,9 @@ id: grammar-243-sa-be-like-different
 pattern: "さ"
 title: "「さ」A sentence ending particle for getting attention"
 reading: "さ"
-meaning_it: "A sentence ending particle for getting attention"
+meaning_it: "さ colloquiale: richiamare attenzione o dare enfasi"
 notes_it: >-
-  さ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  さ compare come riempitivo dopo un tema o a fine frase. Può equivalere a «ehi / dunque / sai / tipo» e aggiunge enfasi informale senza un significato lessicale stabile.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-243-sa-be-like-different
 card_type: concept
 front: "さ"
 back: >-
-  A sentence ending particle for getting attention
+  さ richiama l'interlocutore o colora informalmente ciò che si dice.
 example_jp: >-
-  これはさのかたちだ。
+  あのさ、ちょっと{{聞|き}}いて。
 example_it: >-
-  Questa è la forma さ.
+  Senti, ascoltami un attimo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  È comune nel parlato giovane, specialmente nell'area di Tokyo, ma l'abuso suona trasandato. Va evitato in registro formale.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, sentence-enders]
 :::

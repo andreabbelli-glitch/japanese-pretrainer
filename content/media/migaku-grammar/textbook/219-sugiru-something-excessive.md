@@ -10,44 +10,26 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 219.
+  Superare il grado desiderato con sugiru.
 ---
 
 # 「過ぎる」Something is excessive
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/sugiru-something-excessive`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Formazione affermativa
 
-## Punto da riconoscere
-
-- Tema: Something is excessive
-- Sezione: stem form series
-- Livello: JLPT-N5
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- base verbale + すぎる: 食べすぎる, mangiare troppo
+- radice dell'aggettivo in い + すぎる: 高すぎる, troppo costoso
+- aggettivo in な + すぎる: 静かすぎる, troppo silenzioso
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  この{{服|ふく}}は{{大|おお}}きすぎる。
 translation_it: >-
-  Questa è una penna.
+  Questo vestito è troppo grande.
 :::
 
-#### Anatomia rapida
+いい usa la radice よ-: よすぎる. すぎる si coniuga come verbo in る.
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Con forme negative
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Verbo negativo: 読まない → 読まなすぎる, «leggere troppo poco». ない aggettivale diventa なさすぎる; perciò 高くない → 高くなさすぎる e 静かじゃない → 静かじゃなさすぎる. Nell'uso reale esiste oscillazione, soprattutto con i verbi.

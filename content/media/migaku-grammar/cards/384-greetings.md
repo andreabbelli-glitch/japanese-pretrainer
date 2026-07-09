@@ -12,9 +12,10 @@ id: grammar-384-greetings
 pattern: "あいさつ"
 title: "12 basic Japanese greetings"
 reading: "あいさつ"
-meaning_it: "12 basic Japanese greetings"
+meaning_it: >-
+  Saluti e formule fisse di uso quotidiano
 notes_it: >-
-  あいさつ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formule essenziali: はじめまして al primo incontro; よろしくお願いします per affidare la relazione; おはようございます al mattino; こんにちは／こんばんは; いただきます prima del pasto e ごちそうさまでした dopo; 行ってきます／行ってらっしゃい alla partenza; ただいま／お帰りなさい al rientro. Le traduzioni sono funzionali, non letterali.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-384-greetings
 card_type: concept
 front: "あいさつ"
 back: >-
-  12 basic Japanese greetings
+  I saluti giapponesi dipendono dalla situazione: incontro, ora del giorno, pasto, uscita o rientro.
 example_jp: >-
-  おはよう。
+  はじめまして。{{田中|たなか}}と{{申|もう}}します。
 example_it: >-
-  Buongiorno.
+  Piacere. Mi chiamo Tanaka.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formule essenziali: はじめまして al primo incontro; よろしくお願いします per affidare la relazione; おはようございます al mattino; こんにちは／こんばんは; いただきます prima del pasto e ごちそうさまでした dopo; 行ってきます／行ってらっしゃい alla partenza; ただいま／お帰りなさい al rientro. Le traduzioni sono funzionali, non letterali.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

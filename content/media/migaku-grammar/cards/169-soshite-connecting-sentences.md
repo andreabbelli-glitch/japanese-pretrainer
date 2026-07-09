@@ -12,9 +12,10 @@ id: grammar-169-soshite-connecting-sentences
 pattern: "そして"
 title: "「そして」A structure to connect sentences"
 reading: "そして"
-meaning_it: "A structure to connect sentences"
+meaning_it: >-
+  E; inoltre; e poi
 notes_it: >-
-  そして va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Si usa come connettivo fra enunciati: A。そして、B. Può aggiungere un'informazione coordinata o introdurre il passo seguente. È neutro, comune nella narrazione e nell'esposizione; nel parlato quotidiano possono risultare più spontanei それで, それから o la semplice forma in て, secondo il rapporto logico.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-169-soshite-connecting-sentences
 card_type: concept
 front: "そして"
 back: >-
-  A structure to connect sentences
+  そして collega frasi aggiungendo un fatto o facendo avanzare una sequenza narrativa.
 example_jp: >-
-  これはそしてのかたちだ。
+  {{店|みせ}}は{{安|やす}}い。そして、{{駅|えき}}から{{近|ちか}}い。
 example_it: >-
-  Questa è la forma そして.
+  Il negozio è economico. Inoltre è vicino alla stazione.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Si usa come connettivo fra enunciati: A。そして、B. Può aggiungere un'informazione coordinata o introdurre il passo seguente. È neutro, comune nella narrazione e nell'esposizione; nel parlato quotidiano possono risultare più spontanei それで, それから o la semplice forma in て, secondo il rapporto logico.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

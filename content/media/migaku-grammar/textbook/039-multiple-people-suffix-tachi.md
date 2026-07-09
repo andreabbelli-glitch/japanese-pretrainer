@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, name-suffixes]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 039.
+  Uso di たち per un gruppo di persone.
 ---
 
 # 「たち」Refer to multiple people
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/multiple-people-suffix-tachi`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Gruppo centrato su X
 
-## Punto da riconoscere
-
-- Tema: Refer to multiple people
-- Sezione: name suffixes
-- Livello: JLPT-N5
-- Pattern allenabile: [たち](grammar:grammar-039-multiple-people-suffix-tachi)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [たち](grammar:grammar-039-multiple-people-suffix-tachi) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+たち, anche scritto 達, segue pronomi o nomi riferiti a persone. 私たち, 僕たち e 俺たち formano «noi»; あなたたち e 君たち formano «voi».
 
 :::example_sentence
 jp: >-
-  これはたちのかたちだ。
+  {{山田|やまだ}}さんたちが{{来|く}}る。
 translation_it: >-
-  Questa è la forma たち.
+  Arrivano Yamada e gli altri.
 :::
 
-#### Anatomia rapida
+山田さんたち designa il gruppo rappresentato da Yamada: Yamada e chi è con lui/lei. Analogamente, 先生たち indica un gruppo di insegnanti.
 
-*   たち -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Limite
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+たち non è un marcatore generale di plurale e non si applica agli oggetti. Anche con le persone il plurale viene espresso soltanto quando è informativamente utile.

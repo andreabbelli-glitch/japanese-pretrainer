@@ -12,9 +12,10 @@ id: grammar-306-noni-something-contrary-what-one-would-expect
 pattern: "のに"
 title: "「のに」(1) Something is contrary to expectations"
 reading: "のに"
-meaning_it: "(1) Something is contrary to expectations"
+meaning_it: >-
+  Contrasto inatteso: «sebbene / eppure»
 notes_it: >-
-  のに va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo / い-aggettivo + のに; nome / な-aggettivo + なのに. La conseguenza può essere omessa e lasciata intendere. Nella principale non si usano normalmente ordini, richieste, suggerimenti o domande; per un semplice contrasto neutro si preferisce けど.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-306-noni-something-contrary-what-one-would-expect
 card_type: concept
 front: "のに"
 back: >-
-  (1) Something is contrary to expectations
+  Contrasto inatteso: «sebbene / eppure»
 example_jp: >-
-  ぼくのペンだ。
+  {{薬|くすり}}を{{飲|の}}んだのに、まだ{{頭|あたま}}が{{痛|いた}}い。
 example_it: >-
-  È la mia penna.
+  Nonostante abbia preso la medicina, mi fa ancora male la testa.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  薬を飲んだ crea l'aspettativa di miglioramento; まだ頭が痛い la smentisce, producendo il contrasto emotivo di のに. La conseguenza può essere omessa e lasciata intendere. Nella principale non si usano normalmente ordini, richieste, suggerimenti o domande; per un semplice contrasto neutro si preferisce けど.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

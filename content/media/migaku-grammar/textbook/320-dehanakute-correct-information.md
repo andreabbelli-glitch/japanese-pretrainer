@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 320.
+  Correzioni con ではなくて e formazione secondo la classe grammaticale.
 ---
+# 「ではなくて」\"It isn't X, but Y\"
 
-# 「ではなくて」"It isn't X, but Y"
+## Funzione
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dehanakute-correct-information`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+AではなくてB nega A e presenta B come informazione corretta. Con nomi e な-aggettivi si aggiunge direttamente ではなくて.
 
-## Punto da riconoscere
+## Formazione
 
-- Tema: It isn't X, but Y
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [ではなくて](grammar:grammar-320-dehanakute-correct-information)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [ではなくて](grammar:grammar-320-dehanakute-correct-information) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `nome / な-aggettivo + ではなくて; verbo / い-aggettivo + のではなくて`. Il punto da riconoscere è [ではなくて](grammar:grammar-320-dehanakute-correct-information).
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{原因|げんいん}}は{{故障|こしょう}}ではなくて、{{設定|せってい}}です。
 translation_it: >-
-  Questa è una penna.
+  La causa è la configurazione, anziché un guasto.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   ではなくて -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+故障 viene negato da ではなくて; 設定です fornisce la diagnosi corretta in registro neutro-formale.
+
+## Sfumature e limiti
+
+Con verbi e い-aggettivi si usa のではなくて, spesso ridotto nel parlato a んじゃなくて. じゃなくて è la variante conversazionale generale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

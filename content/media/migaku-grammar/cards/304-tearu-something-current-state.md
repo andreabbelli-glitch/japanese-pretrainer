@@ -12,9 +12,10 @@ id: grammar-304-tearu-something-current-state
 pattern: "～てある"
 title: "「～てある」”X is (in a state)\""
 reading: "～てある"
-meaning_it: "X is (in a state)"
+meaning_it: >-
+  Stato risultante da un'azione intenzionale
 notes_it: >-
-  ～てある va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo transitivo in て-forma + ある. L'oggetto è spesso in が／は: 窓が開けてある. A differenza di 窓が開いている, che constata soltanto lo stato, てある implica preparazione o intenzione. を resta possibile quando si mette a fuoco l'azione preparatoria.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-304-tearu-something-current-state
 card_type: concept
 front: "～てある"
 back: >-
-  X is (in a state)
+  Stato risultante da un'azione intenzionale
 example_jp: >-
-  ドアがあけてある。
+  {{窓|まど}}が{{開|あ}}けてある。
 example_it: >-
-  La porta è stata lasciata aperta.
+  La finestra è stata lasciata aperta apposta.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  開ける è transitivo; 開けてある indica che qualcuno ha aperto la finestra intenzionalmente e che lo stato persiste. L'oggetto è spesso in が／は: 窓が開けてある. A differenza di 窓が開いている, che constata soltanto lo stato, てある implica preparazione o intenzione. を resta possibile quando si mette a fuoco l'azione preparatoria.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 :::

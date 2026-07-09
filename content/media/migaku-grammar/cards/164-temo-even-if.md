@@ -12,9 +12,10 @@ id: grammar-164-temo-even-if
 pattern: "ても"
 title: "「ても」\"Even if\""
 reading: "ても"
-meaning_it: "Even if"
+meaning_it: >-
+  Anche se; perfino nel caso in cui
 notes_it: >-
-  ても va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: Vて + も; Aい → くても; negativo Vなくても／Aくなくても. Con Nome e Aな si usa でも. La costruzione è concessiva: B resta valido nonostante A. Vてもいい ha invece il valore convenzionale di permesso. Registro neutro.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-164-temo-even-if
 card_type: concept
 front: "ても"
 back: >-
-  Even if
+  Forma in て + も introduce una condizione che non cambia l'esito della frase principale.
 example_jp: >-
-  ぼくもいく。
+  {{雨|あめ}}が{{降|ふ}}っても、{{試合|しあい}}は{{続|つづ}}ける。
 example_it: >-
-  Vado anche io.
+  Anche se piove, continueremo la partita.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: Vて + も; Aい → くても; negativo Vなくても／Aくなくても. Con Nome e Aな si usa でも. La costruzione è concessiva: B resta valido nonostante A. Vてもいい ha invece il valore convenzionale di permesso. Registro neutro.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

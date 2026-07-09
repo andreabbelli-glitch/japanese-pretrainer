@@ -12,9 +12,10 @@ id: grammar-141-teiru-2-the-casual-past-form
 pattern: "てる"
 title: "「てる」(2) The casual form ている"
 reading: "てる"
-meaning_it: "(2) The casual form ている"
+meaning_it: >-
+  Contrazione colloquiale di 〜ている e sue coniugazioni
 notes_it: >-
-  てる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  La contrazione elimina い da いる: 食べている→食べてる. Si coniuga il residuo る: てる, てた, てない, てなかった; la forma in て può diventare てて. È normale nella conversazione informale, ma va evitata nello scritto formale e nel registro cortese.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-141-teiru-2-the-casual-past-form
 card_type: concept
 front: "てる"
 back: >-
-  (2) The casual form ている
+  Nel parlato casuale 〜ている perde spesso い: 〜てる, 〜てた, 〜てない, 〜てなかった.
 example_jp: >-
-  いまパンをたべている。
+  さっきまで{{何|なに}}をしてたの？
 example_it: >-
-  Sto mangiando il pane adesso.
+  Che cosa stavi facendo fino a poco fa?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La contrazione elimina い da いる: 食べている→食べてる. Si coniuga il residuo る: てる, てた, てない, てなかった; la forma in て può diventare てて. È normale nella conversazione informale, ma va evitata nello scritto formale e nel registro cortese.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, casual-speech, form-series]
 :::

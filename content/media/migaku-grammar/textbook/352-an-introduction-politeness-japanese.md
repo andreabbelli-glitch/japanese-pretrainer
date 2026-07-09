@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, polite-language, humble-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 352.
+  Panoramica dei registri cortese, rispettoso, umile ed estetico e del rapporto interno-esterno.
 ---
 
-# An introduction to politeness and formality
+# An introduction to politeness in Japanese
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/an-introduction-politeness-japanese`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+La cortesia giapponese non è una scala unica di parole «più gentili». Alcune forme elevano l'interlocutore, altre descrivono umilmente le proprie azioni e altre rendono soltanto la frase cortese.
 
-- Tema: An introduction to politeness and formality
-- Sezione: polite language
-- Livello: JLPT-N5
-- Pattern allenabile: [{{丁寧|ていねい}}さ](grammar:grammar-352-an-introduction-politeness-japanese)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Forma piana per rapporti intimi e contesti informali; 丁寧語 con です／ます per cortesia generale.
+- 尊敬語 per le azioni della persona rispettata; 謙譲語 per le proprie azioni o quelle del proprio gruppo.
+- 美化語 con prefissi come お／ご per rendere l'espressione più curata.
 
-Il centro del ripasso è riconoscere [{{丁寧|ていねい}}さ](grammar:grammar-352-an-introduction-politeness-japanese) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これは{{丁寧|ていねい}}さのかたちだ。
+  {{初対面|しょたいめん}}の{{人|ひと}}には{{丁寧|ていねい}}に{{話|はな}}します。
 translation_it: >-
-  Questa è la forma 丁寧さ.
+  Con le persone che incontro per la prima volta parlo cortesemente.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   {{丁寧|ていねい}}さ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+丁寧に話す descrive il registro scelto verso persone con cui non esiste ancora confidenza.
+
+## Sfumature d'uso
+
+- Non si usa 尊敬語 per elevare sé stessi o il proprio gruppo davanti a un esterno.
+- Passare alla forma piana è una scelta relazionale, non un automatismo legato al tempo di conoscenza.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

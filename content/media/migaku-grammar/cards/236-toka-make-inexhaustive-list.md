@@ -12,9 +12,9 @@ id: grammar-236-toka-make-inexhaustive-list
 pattern: "とか"
 title: "「とか」Make an inexhaustive list"
 reading: "とか"
-meaning_it: "Make an inexhaustive list"
+meaning_it: "Elenco aperto di esempi con とか"
 notes_it: >-
-  とか va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  とか segue nomi o forme piane verbali e presenta esempi non esaustivi: «cose come A e B / A o B, per esempio». Può ripetersi dopo ogni elemento.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-236-toka-make-inexhaustive-list
 card_type: concept
 front: "とか"
 back: >-
-  Make an inexhaustive list
+  A とか B とか elenca esempi lasciando intendere che ce ne sono altri.
 example_jp: >-
-  ミカといく。
+  パンとか{{果物|くだもの}}を{{買|か}}った。
 example_it: >-
-  Vado con Mika.
+  Ho comprato cose come pane e frutta.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con i verbi, とか può elencare attività esemplificative. たり è più adatto a descrivere un insieme di azioni o stati alternati.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, particles]
 :::

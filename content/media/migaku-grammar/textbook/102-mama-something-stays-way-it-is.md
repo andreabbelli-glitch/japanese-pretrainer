@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 102.
+  Persistenza di uno stato con まま e le sue diverse formazioni.
 ---
-
 # 「まま」Indicate that a state has not changed
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/mama-something-stays-way-it-is`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Aまま presenta A come condizione che continua senza cambiare. Con un'azione compiuta si usa spesso V-passato + まま; con una mancata azione, V-negativo non passato + まま.
 
-- Tema: Indicate that a state has not changed
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-- Pattern allenabile: [まま](grammar:grammar-102-mama-something-stays-way-it-is)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [まま](grammar:grammar-102-mama-something-stays-way-it-is) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `V-passato / V-negativo + まま; な-aggettivo + なまま; nome + のまま`. Il punto da riconoscere è [まま](grammar:grammar-102-mama-something-stays-way-it-is).
 
 :::example_sentence
 jp: >-
-  これはままのかたちだ。
+  {{電気|でんき}}をつけたまま{{寝|ね}}た。
 translation_it: >-
-  Questa è la forma まま.
+  Ho dormito lasciando la luce accesa.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   まま -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+つけた indica lo stato risultante «accesa»; まま dice che tale stato non è cambiato durante 寝た.
+
+## Sfumature e limiti
+
+まんま è una variante colloquiale. Il verbo prima di まま descrive lo stato risultante, non il tempo principale della frase: il tempo globale è dato dal predicato finale.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

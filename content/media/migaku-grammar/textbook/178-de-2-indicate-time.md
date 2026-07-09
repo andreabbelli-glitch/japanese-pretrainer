@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 178.
+  Confini temporali e durate necessarie per completare un'azione.
 ---
 
-# 「で」(2) Indicate a time
+# 「で」(5) Indicate a point in time
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/de-2-indicate-time`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il で temporale delimita l'intervallo o il punto oltre il quale una situazione cambia. Può indicare quanto tempo basta per completare qualcosa oppure il momento che chiude una fase.
 
-- Tema: (2) Indicate a time
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [で](grammar:grammar-178-de-2-indicate-time)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Durata + で + compimento: 三時間で終わる, 一日で作る.
+- Momento/confine + で: 今日で卒業する («con oggi termino gli studi»).
+- Tempo + では tematizza e contrasta il limite: 九時では終わらない («per le nove non finirà»).
 
-Il centro del ripasso è riconoscere [で](grammar:grammar-178-de-2-indicate-time) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  カフェでたべる。
+  この{{仕事|しごと}}は{{三時間|さんじかん}}で{{終|お}}わる。
 translation_it: >-
-  Mangio al caffè.
+  Questo lavoro finirà in tre ore.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   で -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+三時間で misura l'intervallo necessario perché il lavoro arrivi al completamento.
+
+## Sfumature d'uso
+
+- に localizza un evento a un'ora precisa; で guarda spesso al tratto che conduce fino al completamento o al confine.
+- Non confondere questo uso con で di luogo, mezzo o causa: il nome temporale e il tipo di predicato chiariscono la lettura.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

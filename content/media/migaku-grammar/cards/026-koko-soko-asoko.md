@@ -12,9 +12,9 @@ id: grammar-026-koko-soko-asoko
 pattern: "ここ・そこ・あそこ"
 title: "「ここ・そこ・あそこ」\"Here, there and over there\""
 reading: "ここ・そこ・あそこ"
-meaning_it: "Here, there and over there"
+meaning_it: "Luoghi dimostrativi: «qui», «lì», «laggiù»"
 notes_it: >-
-  ここ・そこ・あそこ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  ここ indica il luogo del parlante; そこ un luogo distante dal parlante o vicino all'ascoltatore; あそこ un luogo lontano da entrambi. Sono nomi di luogo e possono ricevere particelle.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-026-koko-soko-asoko
 card_type: concept
 front: "ここ・そこ・あそこ"
 back: >-
-  Here, there and over there
+  ここ, そこ e あそこ localizzano uno spazio rispetto a parlante e ascoltatore.
 example_jp: >-
-  これはここ・そこ・あそこのかたちだ。
+  あそこに{{宝|たから}}がある。
 example_it: >-
-  Questa è la forma ここ・そこ・あそこ.
+  Laggiù c'è un tesoro.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con の possono specificare un nome: あそこの弁当, «il bentō di quel posto». Non confonderli con i pronomi これ/それ/あれ.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

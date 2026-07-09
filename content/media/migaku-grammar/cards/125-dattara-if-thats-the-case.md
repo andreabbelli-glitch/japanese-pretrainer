@@ -12,9 +12,10 @@ id: grammar-125-dattara-if-thats-the-case
 pattern: "だったら"
 title: "「だったら」\"If that is the case\""
 reading: "だったら"
-meaning_it: "If that is the case"
+meaning_it: >-
+  Riprende un'informazione e conclude: «se è così / in tal caso»
 notes_it: >-
-  だったら va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  だったら、+ conseguenza. それなら e それでは possono svolgere una funzione simile, con registro e tono diversi. だったら può anche seguire direttamente un nome o un な-aggettivo come forma in たら.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-125-dattara-if-thats-the-case
 card_type: concept
 front: "だったら"
 back: >-
-  If that is the case
+  Riprende un'informazione e conclude: «se è così / in tal caso»
 example_jp: >-
-  これはペンだった。
+  {{明日|あした}}は{{休|やす}}み？ だったら、{{一緒|いっしょ}}に{{出|で}}かけよう。
 example_it: >-
-  Questa era una penna.
+  Domani sei libero? In tal caso, usciamo insieme.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  だったら recupera come condizione la risposta positiva implicita a 明日は休み e da essa deriva la proposta 出かけよう. それなら e それでは possono svolgere una funzione simile, con registro e tono diversi. だったら può anche seguire direttamente un nome o un な-aggettivo come forma in たら.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

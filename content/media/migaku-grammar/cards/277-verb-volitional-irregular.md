@@ -12,9 +12,10 @@ id: grammar-277-verb-volitional-irregular
 pattern: "不規則動詞"
 title: "The volitional form of irregular verbs"
 reading: "ふきそくどうし"
-meaning_it: "The volitional form of irregular verbs"
+meaning_it: >-
+  Volitivi fondamentali: しよう, 来よう e 行こう
 notes_it: >-
-  {{不規則|ふきそく}}{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  する→しよう／来る→来よう／行く→行こう. 来よう usa la lettura こ. Come le altre forme volitive, esprime proposta o intenzione presente verso un'azione futura, non un passato.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-277-verb-volitional-irregular
 card_type: concept
 front: "{{不規則|ふきそく}}{{動詞|どうし}}"
 back: >-
-  The volitional form of irregular verbs
+  Volitivi fondamentali: しよう, 来よう e 行こう
 example_jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  {{今夜|こんや}}は{{家|いえ}}で{{料理|りょうり}}しよう。
 example_it: >-
-  Questa è la forma 不規則動詞.
+  Stasera cucinerò a casa.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  する cambia in しよう; qui il parlante formula per sé una decisione, non invita necessariamente altre persone. 来よう usa la lettura こ. Come le altre forme volitive, esprime proposta o intenzione presente verso un'azione futura, non un passato.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

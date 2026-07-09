@@ -12,9 +12,10 @@ id: grammar-139-sorekara-and-after-that
 pattern: "それから"
 title: "「それから」\"And after that\""
 reading: "それから"
-meaning_it: "And after that"
+meaning_it: >-
+  Dopodiché; e poi
 notes_it: >-
-  それから va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Si colloca fra frasi o clausole: A。それから、B. Presenta B come passo successivo nel racconto o come aggiunta. In dialogo, それから？ invita l'altro a continuare. È neutro nel parlato; in prosa molto formale si preferiscono connettivi più espliciti.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-139-sorekara-and-after-that
 card_type: concept
 front: "それから"
 back: >-
-  And after that
+  それから collega eventi o informazioni successive; da solo può chiedere «e poi?».
 example_jp: >-
-  あめだからいかない。
+  {{朝|あさ}}ご{{飯|はん}}を{{食|た}}べた。それから、{{駅|えき}}へ{{向|む}}かった。
 example_it: >-
-  Non vado perché piove.
+  Ho fatto colazione. Dopodiché mi sono diretto alla stazione.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Si colloca fra frasi o clausole: A。それから、B. Presenta B come passo successivo nel racconto o come aggiunta. In dialogo, それから？ invita l'altro a continuare. È neutro nel parlato; in prosa molto formale si preferiscono connettivi più espliciti.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

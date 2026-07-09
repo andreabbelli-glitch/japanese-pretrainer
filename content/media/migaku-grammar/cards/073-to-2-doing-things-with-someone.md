@@ -12,9 +12,10 @@ id: grammar-073-to-2-doing-things-with-someone
 pattern: "と"
 title: "「と」(2) Do something with someone"
 reading: "と"
-meaning_it: "(2) Do something with someone"
+meaning_it: >-
+  Marca la persona con cui si compie un'azione: «con»
 notes_it: >-
-  と va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  persona + と + azione o relazione. Quando il sintagma in と diventa tema, si usa とは: spesso introduce contrasto («con quella persona, diversamente dalle altre»). Non va confuso con il と citativo o congiuntivo.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-073-to-2-doing-things-with-someone
 card_type: concept
 front: "と"
 back: >-
-  (2) Do something with someone
+  Marca la persona con cui si compie un'azione: «con»
 example_jp: >-
-  ミカといく。
+  {{週末|しゅうまつ}}、{{友達|ともだち}}と{{映画|えいが}}を{{見|み}}る。
 example_it: >-
-  Vado con Mika.
+  Nel fine settimana guardo un film con un amico.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  友達 è il compagno dell'azione e と lo collega al verbo 見る. Il soggetto, omesso, guarda il film insieme all'amico. Quando il sintagma in と diventa tema, si usa とは: spesso introduce contrasto («con quella persona, diversamente dalle altre»). Non va confuso con il と citativo o congiuntivo.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

@@ -12,9 +12,10 @@ id: grammar-269-2-dont-do-x
 pattern: "ないで"
 title: "「ないで」(2) \"Don't do X\""
 reading: "ないで"
-meaning_it: "(2) Don't do X"
+meaning_it: >-
+  Richiesta negativa: «non fare…»
 notes_it: >-
-  ないで va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in forma negativa + で. Con ください diventa una richiesta esplicita e più cortese; senza, il tono varia da supplica familiare a ordine. È distinto dal ないで con una seconda azione, «fare B senza A».
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-269-2-dont-do-x
 card_type: concept
 front: "ないで"
 back: >-
-  (2) Don't do X
+  Richiesta negativa: «non fare…»
 example_jp: >-
-  カフェでたべる。
+  そのボタンを{{押|お}}さないで。
 example_it: >-
-  Mangio al caffè.
+  Non premere quel pulsante.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  押す diventa 押さない; で trasforma la negazione in una richiesta di astenersi dall'azione. Con ください diventa una richiesta esplicita e più cortese; senza, il tono varia da supplica familiare a ordine. È distinto dal ないで con una seconda azione, «fare B senza A».
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

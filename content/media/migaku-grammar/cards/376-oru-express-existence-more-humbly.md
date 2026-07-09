@@ -12,9 +12,10 @@ id: grammar-376-oru-express-existence-more-humbly
 pattern: "おる"
 title: "「おる」A humble version of いる"
 reading: "おる"
-meaning_it: "A humble version of いる"
+meaning_it: >-
+  Essere; trovarsi; stare facendo, in forma umile
 notes_it: >-
-  おる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Luogoにおる／おります indica la presenza di persone del lato del parlante. Vておる／おります sostituisce Vている／います. Nel giapponese standard di servizio è umile; in alcuni dialetti おる è invece un normale verbo di esistenza senza valore onorifico, quindi il contesto è essenziale.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-376-oru-express-existence-more-humbly
 card_type: concept
 front: "おる"
 back: >-
-  A humble version of いる
+  おる è la forma umile di いる e descrive il parlante o il suo gruppo; Vておる rende umile 〜ている.
 example_jp: >-
-  これはおるのかたちだ。
+  {{私|わたし}}は{{受付|うけつけ}}におります。
 example_it: >-
-  Questa è la forma おる.
+  Mi trovo alla reception.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Luogoにおる／おります indica la presenza di persone del lato del parlante. Vておる／おります sostituisce Vている／います. Nel giapponese standard di servizio è umile; in alcuni dialetti おる è invece un normale verbo di esistenza senza valore onorifico, quindi il contesto è essenziale.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, humble-language]
 :::

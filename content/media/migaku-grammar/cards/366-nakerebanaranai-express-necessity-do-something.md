@@ -12,9 +12,10 @@ id: grammar-366-nakerebanaranai-express-necessity-do-something
 pattern: "なければならない"
 title: "「なければならない」Express necessity to do something"
 reading: "なければならない"
-meaning_it: "Express necessity to do something"
+meaning_it: >-
+  Dovere; essere necessario
 notes_it: >-
-  なければならない va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Vない: togliere い e aggiungere ければならない (行かなければならない). Aい negativo nello stesso modo; Nome/Aな + でなければならない. いけない può sostituire ならない. Nel parlato: なきゃ／なくちゃ（いけない）. «Non è necessario» si rende con なくてもいい, non negando semplicemente l'intera forma.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-366-nakerebanaranai-express-necessity-do-something
 card_type: concept
 front: "なければならない"
 back: >-
-  Express necessity to do something
+  Negativo senza い + ければならない esprime che non compiere l'azione non è accettabile, quindi «dover fare».
 example_jp: >-
-  それならいく。
+  {{明日|あした}}までにレポートを{{出|だ}}さなければならない。
 example_it: >-
-  Se è così, vado.
+  Devo consegnare la relazione entro domani.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Vない: togliere い e aggiungere ければならない (行かなければならない). Aい negativo nello stesso modo; Nome/Aな + でなければならない. いけない può sostituire ならない. Nel parlato: なきゃ／なくちゃ（いけない）. «Non è necessario» si rende con なくてもいい, non negando semplicemente l'intera forma.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

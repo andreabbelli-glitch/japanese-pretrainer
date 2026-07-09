@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 306.
+  Contrasto con un risultato inatteso espresso dal のに concessivo.
 ---
-
 # 「のに」(1) Something is contrary to expectations
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/noni-something-contrary-what-one-would-expect`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+AのにB presenta B come risultato contrario a ciò che A farebbe normalmente prevedere, spesso con sorpresa, delusione o protesta del parlante.
 
-- Tema: (1) Something is contrary to expectations
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [のに](grammar:grammar-306-noni-something-contrary-what-one-would-expect)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [のに](grammar:grammar-306-noni-something-contrary-what-one-would-expect) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo / い-aggettivo + のに; nome / な-aggettivo + なのに`. Il punto da riconoscere è [のに](grammar:grammar-306-noni-something-contrary-what-one-would-expect).
 
 :::example_sentence
 jp: >-
-  ぼくのペンだ。
+  {{薬|くすり}}を{{飲|の}}んだのに、まだ{{頭|あたま}}が{{痛|いた}}い。
 translation_it: >-
-  È la mia penna.
+  Nonostante abbia preso la medicina, mi fa ancora male la testa.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   のに -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+薬を飲んだ crea l'aspettativa di miglioramento; まだ頭が痛い la smentisce, producendo il contrasto emotivo di のに.
+
+## Sfumature e limiti
+
+La conseguenza può essere omessa e lasciata intendere. Nella principale non si usano normalmente ordini, richieste, suggerimenti o domande; per un semplice contrasto neutro si preferisce けど.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

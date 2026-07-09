@@ -10,45 +10,27 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 034.
+  Forme negative dei verbi irregolari e speciali.
 ---
 
-# The negative form of irregular verbs
+# Verb Negatives - Irregulars
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/irregular-verbs-negation`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Forme da memorizzare
 
-## Punto da riconoscere
+- する → しない, «non fare»
+- 来る → 来ない, letto こない, «non venire»
+- 行く → 行かない, «non andare»
+- ある → ない, «non esserci»
 
-- Tema: The negative form of irregular verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-034-irregular-verbs-negation)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-034-irregular-verbs-negation) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+行く segue qui la normale regola dei verbi in う; ある, invece, non diventa *あらない ma viene sostituito da ない.
 
 :::example_sentence
 jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  ここに{{机|つくえ}}がない。
 translation_it: >-
-  Questa è la forma 不規則動詞.
+  Qui non c'è una scrivania.
 :::
 
-#### Anatomia rapida
+## Da ricordare
 
-*   {{不規則|ふきそく}}{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Nella grafia 来ない il kanji resta identico, ma la lettura della radice cambia da く in 来る a こ nel negativo.

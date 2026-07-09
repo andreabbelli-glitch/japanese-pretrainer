@@ -12,9 +12,9 @@ id: grammar-238-nanka-doing-just-about-anything
 pattern: "なんか"
 title: "「なんか」\"Someone like” or “something like\""
 reading: "なんか"
-meaning_it: "Someone like or something like"
+meaning_it: "なんか: «una cosa/persona come…» con distanza emotiva"
 notes_it: >-
-  なんか va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  なんか segue un nome o una frase nominalizzata e può esprimere disprezzo, modestia, incredulità o forte coinvolgimento. La sfumatura nasce dal contesto e dall'intonazione.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-238-nanka-doing-just-about-anything
 card_type: concept
 front: "なんか"
 back: >-
-  Someone like or something like
+  X なんか presenta X come «uno/una cosa come X», spesso con valutazione emotiva.
 example_jp: >-
-  これはなんかのかたちだ。
+  {{私|わたし}}なんか{{役|やく}}に{{立|た}}たない。
 example_it: >-
-  Questa è la forma なんか.
+  Uno come me non è di alcun aiuto.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  なんて può avere usi molto simili. Non rendere automaticamente なんか con disprezzo: con il proprio io può essere auto-abbassamento.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, particles]
 :::

@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 144.
+  Movimento lontano dal parlante e azioni preparatorie compiute prima di partire.
 ---
 
-# 「ていく」(1) Do something and go somewhere
+# 「ていく」(1) Do an action and go
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/teiku-1-do-action-go`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ていく combina il primo verbo con un movimento che procede lontano dal punto di riferimento. Può descrivere la maniera dell'allontanamento o un'azione preparatoria compiuta prima di partire.
 
-- Tema: (1) Do something and go somewhere
-- Sezione: form series
-- Livello: JLPT-N4
-- Pattern allenabile: [ていく](grammar:grammar-144-teiku-1-do-action-go)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Allontanamento: 鳥が飛んでいく («l'uccello vola via»).
+- Azione prima di andare: お土産を買っていく («comprare un regalo e portarlo con sé»).
+- Modo del movimento: 歩いていく («andare a piedi»).
 
-Il centro del ripasso è riconoscere [ていく](grammar:grammar-144-teiku-1-do-action-go) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはていくのかたちだ。
+  {{雨|あめ}}が{{降|ふ}}りそうだから、{{傘|かさ}}を{{持|も}}っていく。
 translation_it: >-
-  Questa è la forma ていく.
+  Sembra che pioverà, quindi porterò con me un ombrello.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ていく -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+持っていく indica che l'ombrello accompagnerà il parlante mentre si allontana verso la destinazione.
+
+## Sfumature d'uso
+
+- いく orienta il movimento lontano dal parlante; くる lo orienta verso di lui.
+- 持っていく significa portare qualcosa dal punto attuale verso un'altra destinazione, non «venire a prenderla».
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

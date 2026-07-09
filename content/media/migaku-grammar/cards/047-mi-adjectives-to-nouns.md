@@ -12,9 +12,9 @@ id: grammar-047-mi-adjectives-to-nouns
 pattern: "〜み"
 title: "「〜み」Indicate subjective quality with adjectives"
 reading: "〜み"
-meaning_it: "Indicate subjective quality with adjectives"
+meaning_it: "Nominalizzare una qualità percepita o soggettiva con 〜み"
 notes_it: >-
-  〜み va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  〜み crea nomi di qualità vissute o percepite, spesso non quantificabili, come 重み «peso/importanza» o 悲しみ «tristezza». La formazione è lessicalmente selettiva: non ogni aggettivo ammette naturalmente み.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-047-mi-adjectives-to-nouns
 card_type: concept
 front: "〜み"
 back: >-
-  Indicate subjective quality with adjectives
+  〜み presenta la qualità come esperienza o caratteristica intrinseca, non come semplice grado misurabile.
 example_jp: >-
-  これは〜みのかたちだ。
+  この{{言葉|ことば}}には{{重|おも}}みがある。
 example_it: >-
-  Questa è la forma 〜み.
+  Queste parole hanno peso.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  重さ può essere un peso misurabile; 重み è il peso avvertito o figurato. La preferenza tra さ e み va imparata con le singole parole.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, adjectives]
 :::

@@ -12,9 +12,10 @@ id: grammar-340-i-see-indeed
 pattern: "なるほど"
 title: "「なるほど」”I see” / “indeed\""
 reading: "なるほど"
-meaning_it: "I see / indeed"
+meaning_it: >-
+  Capisco; ecco; in effetti
 notes_it: >-
-  なるほど va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  È spesso una risposta autonoma o precede una conclusione: なるほど、それで〜. Comunica comprensione soddisfatta, non semplice ascolto. Con superiori, un なるほど isolato può sembrare valutativo; è più sicuro aggiungere よく分かりました o usare おっしゃる通りです quando si concorda.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-340-i-see-indeed
 card_type: concept
 front: "なるほど"
 back: >-
-  I see / indeed
+  なるほど mostra che una spiegazione ha convinto il parlante o ha reso comprensibile una situazione.
 example_jp: >-
-  これほどいいものはない。
+  なるほど、それで{{遅|おく}}れたんですね。
 example_it: >-
-  Non c'è nulla di così buono.
+  Capisco, ecco perché ha fatto tardi.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  È spesso una risposta autonoma o precede una conclusione: なるほど、それで〜. Comunica comprensione soddisfatta, non semplice ascolto. Con superiori, un なるほど isolato può sembrare valutativo; è più sicuro aggiungere よく分かりました o usare おっしゃる通りです quando si concorda.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

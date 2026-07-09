@@ -12,9 +12,9 @@ id: grammar-031-dake-set-limits
 pattern: "だけ"
 title: "「だけ」Indicate a limit"
 reading: "だけ"
-meaning_it: "Indicate a limit"
+meaning_it: "Limitare a un solo elemento o fatto: «solo», «soltanto»"
 notes_it: >-
-  だけ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  だけ segue nomi, verbi e aggettivi e delimita ciò che vale. Con un aggettivo in な serve なだけ. が, を e は possono talvolta essere omessi accanto a だけ; altre particelle restano necessarie e la loro posizione cambia la sfumatura.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-031-dake-set-limits
 card_type: concept
 front: "だけ"
 back: >-
-  Indicate a limit
+  だけ restringe l'affermazione a ciò che lo precede: «solo X / non più di X».
 example_jp: >-
-  これだけください。
+  {{学生|がくせい}}だけが{{韓国|かんこく}}へ{{行|い}}く。
 example_it: >-
-  Mi dia solo questo.
+  Solo gli studenti andranno in Corea.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  アルコールでだけ動く significa «funziona solo con l'alcol»; アルコールだけで動く, «funziona con il solo alcol». L'ordine delle particelle conta.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 :::

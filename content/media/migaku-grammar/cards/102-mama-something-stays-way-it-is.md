@@ -12,9 +12,10 @@ id: grammar-102-mama-something-stays-way-it-is
 pattern: "まま"
 title: "「まま」Indicate that a state has not changed"
 reading: "まま"
-meaning_it: "Indicate that a state has not changed"
+meaning_it: >-
+  Uno stato rimane invariato mentre avviene qualcos'altro
 notes_it: >-
-  まま va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  V-passato / V-negativo + まま; な-aggettivo + なまま; nome + のまま. まんま è una variante colloquiale. Il verbo prima di まま descrive lo stato risultante, non il tempo principale della frase: il tempo globale è dato dal predicato finale.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-102-mama-something-stays-way-it-is
 card_type: concept
 front: "まま"
 back: >-
-  Indicate that a state has not changed
+  Uno stato rimane invariato mentre avviene qualcos'altro
 example_jp: >-
-  これはままのかたちだ。
+  {{電気|でんき}}をつけたまま{{寝|ね}}た。
 example_it: >-
-  Questa è la forma まま.
+  Ho dormito lasciando la luce accesa.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  つけた indica lo stato risultante «accesa»; まま dice che tale stato non è cambiato durante 寝た. まんま è una variante colloquiale. Il verbo prima di まま descrive lo stato risultante, non il tempo principale della frase: il tempo globale è dato dal predicato finale.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

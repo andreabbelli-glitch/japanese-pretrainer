@@ -10,44 +10,22 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 229.
+  Intero periodo o punto interno al periodo con juu e chuu.
 ---
 
-# 「中・ちゅう・じゅう」(3) Indicate an entire duration of time
+# 「中・ちゅう・じゅう」(3) Whole or part time
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/chyuu-jyuu-3-whole-part-time`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Tutta la durata: じゅう
 
-## Punto da riconoscere
-
-- Tema: (3) Indicate an entire duration of time
-- Sezione: jlpt n3
-- Livello: JLPT-N3
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+A 中 letto じゅう indica che l'azione continua per l'intero periodo: 一日中 «tutto il giorno», 一晩中 «tutta la notte».
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{一日中|いちにちじゅう}}{{働|はたら}}いた。
 translation_it: >-
-  Questa è una penna.
+  Ho lavorato tutto il giorno.
 :::
 
-#### Anatomia rapida
+## Durante un punto del periodo: ちゅう
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+A 中（に） letto ちゅう può collocare un evento in una parte del periodo, senza coprirlo tutto. La lettura dipende dalla combinazione lessicale, quindi forme frequenti come 一日中 e 週末中 vanno imparate insieme alla pronuncia.

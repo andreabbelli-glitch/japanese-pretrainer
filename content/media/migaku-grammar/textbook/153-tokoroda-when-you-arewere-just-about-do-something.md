@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 153.
+  Collocazione di un'azione immediatamente prima, durante o subito dopo il suo svolgimento.
 ---
 
-# 「ところだ」"is/was about to X"
+# 「ところだ」(2) When you are/were just about to do something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/tokoroda-when-you-arewere-just-about-do-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ところ («luogo, fase») fotografa un'azione in un punto preciso del suo svolgimento. Il tempo e l'aspetto del verbo precedente scelgono il momento: immediatamente prima, durante o immediatamente dopo.
 
-- Tema: is/was about to X
-- Sezione: series
-- Livello: JLPT-N4
-- Pattern allenabile: [ところだ](grammar:grammar-153-tokoroda-when-you-arewere-just-about-do-something)
+## Formazione e restrizioni
 
-## Lettura operativa
+- V dizionario + ところだ: 出かけるところだ («sto per uscire»).
+- Vている + ところだ: 食べているところだ («sto proprio mangiando»).
+- Vた + ところだ: 着いたところだ («sono appena arrivato»); V dizionario + ところだった: 転ぶところだった («stavo per cadere»).
 
-Il centro del ripasso è riconoscere [ところだ](grammar:grammar-153-tokoroda-when-you-arewere-just-about-do-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{今|いま}}、{{駅|えき}}に{{着|つ}}いたところだ。
 translation_it: >-
-  Questa è una penna.
+  Sono appena arrivato alla stazione.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ところだ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+着いた è compiuto e 今 restringe il momento: ところだ colloca il parlante immediatamente dopo l'arrivo.
+
+## Sfumature d'uso
+
+- Vたところだ esprime un'immediatezza più oggettiva di Vたばかり, che può coprire un intervallo percepito come breve.
+- Con ところだった il contesto spesso implica che l'evento sia stato evitato, ma non è una regola assoluta.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

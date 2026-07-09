@@ -12,9 +12,9 @@ id: grammar-235-tte-introduce-topic-colloquially
 pattern: "って"
 title: "「って」(1) Introduce a topic colloquially"
 reading: "って"
-meaning_it: "(1) Introduce a topic colloquially"
+meaning_it: "Introdurre un tema colloquiale con って"
 notes_it: >-
-  って va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A って presenta A come argomento del commento, vicino a は ma più colloquiale: «quanto a A / a proposito di A». Può seguire anche una clausola e spesso accompagna una valutazione del parlante.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-235-tte-introduce-topic-colloquially
 card_type: concept
 front: "って"
 back: >-
-  (1) Introduce a topic colloquially
+  A って introduce informalmente ciò di cui si sta per parlare.
 example_jp: >-
-  これはってのかたちだ。
+  {{田中|たなか}}さんって{{面白|おもしろ}}いね。
 example_it: >-
-  Questa è la forma って.
+  Tanaka è interessante, vero?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  って ha anche funzioni di citazione non trattate qui. Come marcatore di tema appartiene al parlato e non è adatto a prosa formale.
 tags: [migaku, grammar, jlpt-n3, academy-level-1, particles]
 :::

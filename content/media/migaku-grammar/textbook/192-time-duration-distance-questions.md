@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 192.
+  Domande su momento, data, durata e distanza costruite con contatori.
 ---
 
-# Questions about time, duration and distance
+# Time, duration and distance questions
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/time-duration-distance-questions`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Le domande quantitative sostituiscono il numero con 何, di solito letto なん davanti al contatore. La domanda generica sul momento usa invece いつ.
 
-- Tema: Questions about time, duration and distance
-- Sezione: jlpt n5
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- Momento/data: いつ, 何時（なんじ）, 何日（なんにち）, 何月（なんがつ）, 何年（なんねん）.
+- Durata: 何分（なんぷん）, 何時間（なんじかん）, 何日, 何週間（なんしゅうかん）, 何か月（なんかげつ）, 何年.
+- Distanza/misura: 何キロ, 何メートル, 何センチ; spesso con かかる, 離れている, ある.
 
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  ここから{{駅|えき}}まで{{何分|なんぷん}}かかりますか。
 translation_it: >-
-  Questa è una penna.
+  Quanto tempo ci vuole da qui alla stazione?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+何分 sostituisce il numero di minuti; かかります chiede la durata necessaria per raggiungere la stazione.
+
+## Sfumature d'uso
+
+- 何日 può significare «che giorno del mese?» o «quanti giorni?»; 何年 può chiedere l'anno oppure la durata in anni.
+- いつ non prende un contatore e chiede un momento non specificato; 何時 richiede una risposta in ore.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

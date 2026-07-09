@@ -12,9 +12,9 @@ id: grammar-011-kore-this
 pattern: "これ"
 title: "「これ」”This\""
 reading: "これ"
-meaning_it: "This"
+meaning_it: "«Questo»: pronome dimostrativo per qualcosa vicino al parlante"
 notes_it: >-
-  これ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  これ è un pronome dimostrativo autonomo. Indica un oggetto vicino al parlante, oppure vicino sia al parlante sia all'ascoltatore; non precede direttamente un nome.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-011-kore-this
 card_type: concept
 front: "これ"
 back: >-
-  This
+  これ significa «questo / questa» e sostituisce il nome di una cosa vicina al parlante.
 example_jp: >-
-  これはこれのかたちだ。
+  これは{{私|わたし}}のカバンだ。
 example_it: >-
-  Questa è la forma これ.
+  Questa è la mia borsa.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La serie こ- indica prossimità al parlante. Per «questo + nome» si usa この, non これ.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

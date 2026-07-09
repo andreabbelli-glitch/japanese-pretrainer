@@ -12,9 +12,10 @@ id: grammar-279-verb-causative-ru
 pattern: "る動詞"
 title: "The causative form of る verbs"
 reading: "るどうし"
-meaning_it: "The causative form of る verbs"
+meaning_it: >-
+  Far fare o lasciare fare con un verbo ichidan
 notes_it: >-
-  る{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  radice del verbo ichidan + させる. La forma risultante coniuga come un ichidan. La particella e il contesto chiariscono se la persona è costretta o autorizzata; con un oggetto in を, l'esecutore è normalmente in に.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-279-verb-causative-ru
 card_type: concept
 front: "る{{動詞|どうし}}"
 back: >-
-  The causative form of る verbs
+  Far fare o lasciare fare con un verbo ichidan
 example_jp: >-
-  パンをたべる。
+  {{母|はは}}は{{子供|こども}}に{{野菜|やさい}}を{{食|た}}べさせた。
 example_it: >-
-  Mangio il pane.
+  La madre ha fatto mangiare le verdure al bambino.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  食べる diventa 食べさせた; 子供に è chi mangia sotto l'influenza di 母は, mentre 野菜を è l'oggetto. La forma risultante coniuga come un ichidan. La particella e il contesto chiariscono se la persona è costretta o autorizzata; con un oggetto in を, l'esecutore è normalmente in に.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::

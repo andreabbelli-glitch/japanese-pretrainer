@@ -10,44 +10,26 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, stem-form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 212.
+  Composti in agaru: salita, completamento o intensificazione.
 ---
 
-# 「上がる」Upward motion, completion, or “welling up"
+# 「上がる」Something is extreme or finished
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/agaru-something-extreme-finished`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Base verbale + 上がる
 
-## Punto da riconoscere
+上がる può aggiungere tre valori, determinati lessicalmente dal primo verbo:
 
-- Tema: Upward motion, completion, or welling up
-- Sezione: stem form series
-- Livello: JLPT-N3
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+- movimento verso l'alto: 飛び上がる, «balzare»
+- completamento come risultato: 焼き上がる, «essere cotto/pronto»
+- intensificazione o emersione: 湧き上がる, «sgorgare, levarsi»
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  パンが{{焼|や}}き{{上|あ}}がった。
 translation_it: >-
-  Questa è una penna.
+  Il pane è cotto.
 :::
 
-#### Anatomia rapida
+## Prospettiva
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
-
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Nei composti di completamento, 上がる è intransitivo: mette a fuoco il risultato finito, non l'agente che lo produce. La combinazione e il significato vanno appresi come unità lessicale.

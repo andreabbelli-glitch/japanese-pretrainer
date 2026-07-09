@@ -12,9 +12,10 @@ id: grammar-287-to-quote-someone
 pattern: "と"
 title: "「と」(4) Make direct quotations"
 reading: "と"
-meaning_it: "(4) Make direct quotations"
+meaning_it: >-
+  Marca parole, pensieri, testi o modi riprodotti come citazione
 notes_it: >-
-  と va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  contenuto citato + と + verbo di dire/pensare. Con onomatopee e avverbi, と può marcare il modo o suono dell'azione. Diversamente dal colloquiale って, con と il verbo citativo non si omette normalmente.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-287-to-quote-someone
 card_type: concept
 front: "と"
 back: >-
-  (4) Make direct quotations
+  Marca parole, pensieri, testi o modi riprodotti come citazione
 example_jp: >-
-  ミカといく。
+  {{田中|たなか}}さんは「{{明日|あした}}{{行|い}}く」と{{言|い}}った。
 example_it: >-
-  Vado con Mika.
+  Tanaka ha detto: «Domani andrò».
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Le parole tra virgolette sono il contenuto; と le collega al verbo 言った e 田中さんは identifica chi parla. Con onomatopee e avverbi, と può marcare il modo o suono dell'azione. Diversamente dal colloquiale って, con と il verbo citativo non si omette normalmente.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 :::

@@ -10,45 +10,26 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 048.
+  Uso del condizionale なら per un'ipotesi contestuale.
 ---
 
 # 「なら」Make a supposition about the truth
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nara-if`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Ipotesi A, conseguenza B
 
-## Punto da riconoscere
-
-- Tema: Make a supposition about the truth
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [なら](grammar:grammar-048-make-a-supposition-about-the-truth)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [なら](grammar:grammar-048-make-a-supposition-about-the-truth) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+A なら B significa «se è vero che A / se si dà il caso che A, allora B». Il parlante assume A come circostanza possibile e decide o afferma B sotto quella condizione.
 
 :::example_sentence
 jp: >-
-  それならいく。
+  {{時間|じかん}}がかかるなら、{{今日|きょう}}は{{勉強|べんきょう}}しない。
 translation_it: >-
-  Se è così, vado.
+  Se ci vuole tempo, oggi non studierò.
 :::
 
-#### Anatomia rapida
+## Formazione
 
-*   なら -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Verbi e aggettivi in い prendono なら o (の)なら; il の è facoltativo nel giapponese moderno. Nomi e aggettivi in な prendono direttamente なら. Al passato: 食べたなら, 高かったなら, 学生だったなら.
 
-## Controllo attivo
+## Limiti
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Deve esistere un'ipotesi ragionevole. なら non è naturale per un fatto inevitabile né per narrare che un evento già avvenuto ha prodotto direttamente il risultato osservato.

@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 251.
+  Condizione regolare o inevitabile con to.
 ---
 
-# 「と」(3) “if"
+# 「と」(3) Express 'if'
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/to-express-if`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## A と B
 
-## Punto da riconoscere
-
-- Tema: (3) if
-- Sezione: series
-- Livello: JLPT-N4
-- Pattern allenabile: [と](grammar:grammar-251-to-express-if)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [と](grammar:grammar-251-to-express-if) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+と presenta B come conseguenza regolare, automatica, abituale o prevedibile di A: «quando/se A, B». La condizione resta al non-passato anche se B è al passato.
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  {{春|はる}}になると{{花|はな}}が{{咲|さ}}く。
 translation_it: >-
-  Vado con Mika.
+  Quando arriva la primavera, sbocciano i fiori.
 :::
 
-#### Anatomia rapida
+Verbi e aggettivi in い prendono と direttamente; nomi e aggettivi in な usano だと.
 
-*   と -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Vincolo
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+La clausola B non accoglie normalmente ordini, inviti o decisioni volontarie del parlante, perché と presenta il risultato come conseguenza stabile. Per quei casi servono たら, なら o altre forme.

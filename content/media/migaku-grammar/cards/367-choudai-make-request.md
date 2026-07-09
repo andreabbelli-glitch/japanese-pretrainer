@@ -12,9 +12,10 @@ id: grammar-367-choudai-make-request
 pattern: "ちょうだい"
 title: "「ちょうだい」Another way to say “please\""
 reading: "ちょうだい"
-meaning_it: "Another way to say please"
+meaning_it: >-
+  Dammi; fammi il favore di
 notes_it: >-
-  ちょうだい va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Forme: Nをちょうだい; Vてちょうだい; Vないでちょうだい. È più intimo e meno formale di ください, comune nel linguaggio familiare, infantile o in stili percepiti come morbidi; può essere usato da vari parlanti ma resta marcato dal rapporto. In formule umili formali 頂戴する significa «ricevere».
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-367-choudai-make-request
 card_type: concept
 front: "ちょうだい"
 back: >-
-  Another way to say please
+  Nをちょうだい e Vてちょうだい formulano una richiesta colloquiale verso una persona vicina.
 example_jp: >-
-  これはちょうだいのかたちだ。
+  その{{本|ほん}}を{{貸|か}}してちょうだい。
 example_it: >-
-  Questa è la forma ちょうだい.
+  Prestami quel libro, per favore.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Forme: Nをちょうだい; Vてちょうだい; Vないでちょうだい. È più intimo e meno formale di ください, comune nel linguaggio familiare, infantile o in stili percepiti come morbidi; può essere usato da vari parlanti ma resta marcato dal rapporto. In formule umili formali 頂戴する significa «ricevere».
 tags: [migaku, grammar, jlpt-n3, academy-level-1, humble-language]
 :::

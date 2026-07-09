@@ -12,9 +12,9 @@ id: grammar-224-sou-something-looks-like-its-about-do-something
 pattern: "そう"
 title: "「そう」Something looks like it's about to do something"
 reading: "そう"
-meaning_it: "Something looks like it's about to do something"
+meaning_it: "そう da evidenza diretta: «sembra / sta per»"
 notes_it: >-
-  そう va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Con verbi, そう segue la base e spesso indica un evento imminente; con aggettivi descrive l'apparenza. Per gli aggettivi in い si toglie い; いい → よさそう, ない → なさそう.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-224-sou-something-looks-like-its-about-do-something
 card_type: concept
 front: "そう"
 back: >-
-  Something looks like it's about to do something
+  Base verbale o aggettivale + そうだ esprime un'impressione fondata su ciò che si osserva.
 example_jp: >-
-  これはそうのかたちだ。
+  {{雨|あめ}}が{{降|ふ}}りそうだ。
 example_it: >-
-  Questa è la forma そう.
+  Sembra che stia per piovere.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Non è il そうだ di «ho sentito che». La forma visiva si attacca alla base; le negazioni richiedono なそう o なさそう secondo la categoria.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series]
 :::

@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, polite-language, humble-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 358.
+  Prefisso cortese o estetico usato soprattutto con parole di origine giapponese.
 ---
 
-# 「お」The politeness prefix
+# 「お」Make a word more polite
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/o-make-word-more-polite`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+お non aggiunge un significato lessicale unico: segnala cura espressiva, cortesia o rispetto secondo la parola e la situazione.
 
-- Tema: The politeness prefix
-- Sezione: polite language
-- Livello: JLPT-N3
-- Pattern allenabile: [お](grammar:grammar-358-o-make-word-more-polite)
+## Formazione e restrizioni
 
-## Lettura operativa
+- お + nome nativo: お名前, お手紙.
+- お + aggettivo in formule ammesse: お忙しい.
+- Con verbi entra in schemi come お〜する, お〜になる, trattati separatamente.
 
-Il centro del ripasso è riconoscere [お](grammar:grammar-358-o-make-word-more-polite) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはおのかたちだ。
+  お{{名前|なまえ}}をお{{願|ねが}}いします。
 translation_it: >-
-  Questa è la forma お.
+  Mi dice il suo nome, per favore?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   お -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+お名前 è una collocazione cortese; お願いします trasforma la domanda implicita in una richiesta convenzionale.
+
+## Sfumature d'uso
+
+- Non si può anteporre お liberamente a qualunque parola; le collocazioni vanno apprese.
+- La regola origine nativa = お è utile ma presenta numerose eccezioni.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

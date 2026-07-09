@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives, form-series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 108.
+  Coordinazione affermativa e negativa degli い-aggettivi con くて.
 ---
-
 # The て-form of い-adjectives
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/i-adjectives-te-form`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Si elimina la い finale e si aggiunge くて: 高い→高くて. La forma permette di coordinare proprietà dello stesso referente e, in certi contesti, di esprimere una causa.
 
-- Tema: The て-form of い-adjectives
-- Sezione: form series
-- Livello: JLPT-N5
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `radice dell'い-aggettivo + くて`. Il punto da riconoscere è `て-forma degli い-aggettivi`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  この{{部屋|へや}}は{{広|ひろ}}くて{{明|あか}}るい。
 translation_it: >-
-  Questa è una penna.
+  Questa stanza è spaziosa e luminosa.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+広い diventa 広くて e si collega ad 明るい; entrambe le qualità descrivono この部屋.
+
+## Sfumature e limiti
+
+Il negativo parte da くない e diventa くなくて. いい／よい è irregolare: よくて e よくなくて. Il predicato finale determina tempo e polarità complessivi.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 018.
+  Introduzione ai paradigmi irregolari e ai casi speciali.
 ---
 
-# Introduction to irregular verbs
+# Verb Basics - Irregular
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/irregular-verbs`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Quali verbi
 
-## Punto da riconoscere
-
-- Tema: Introduction to irregular verbs
-- Sezione: verbs
-- Livello: JLPT-N5
-- Pattern allenabile: [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-018-irregular-verbs)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{不規則|ふきそく}}{{動詞|どうし}}](grammar:grammar-018-irregular-verbs) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+する, «fare», e 来る, «venire», hanno paradigmi realmente irregolari e vanno imparati separatamente. Il corso include tra i casi speciali anche ある, «esserci», e 行く, «andare», perché alcune forme molto frequenti deviano dal modello atteso; molte grammatiche li classificano però tra i verbi in う con eccezioni.
 
 :::example_sentence
 jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  {{明日|あした}}{{先生|せんせい}}が{{来|く}}る。
 translation_it: >-
-  Questa è la forma 不規則動詞.
+  Domani verrà l'insegnante.
 :::
 
-#### Anatomia rapida
+La forma dizionario resta non-passata: する può significare «fa / farà», 来る «viene / verrà». Le differenze emergono nelle successive coniugazioni.
 
-*   {{不規則|ふきそく}}{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Da ricordare
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Non applicare meccanicamente la trasformazione dei verbi in う o in る a questi paradigmi; registra ogni forma speciale quando viene introdotta.

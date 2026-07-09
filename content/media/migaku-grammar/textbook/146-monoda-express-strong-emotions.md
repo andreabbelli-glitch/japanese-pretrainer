@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 146.
+  Esclamazioni, norme generali e ricordi abituali, distinti tramite tempo e contesto.
 ---
 
 # 「ものだ」Express strong emotions
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/monoda-express-strong-emotions`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ものだ presenta un fatto come qualcosa di generale o emotivamente saliente. Non ha una traduzione unica: intonazione, tempo verbale e tipo di enunciato determinano se esprime stupore, norma o ricordo.
 
-- Tema: Express strong emotions
-- Sezione: series
-- Livello: JLPT-N3
-- Pattern allenabile: [ものだ](grammar:grammar-146-monoda-express-strong-emotions)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Forma piana + ものだ: 早いものだ, よく遊んだものだ.
+- V non-passato + ものだ può formulare una regola o un comportamento atteso: 人には挨拶するものだ.
+- V passato + ものだ richiama spesso un'abitudine del passato: 昔よく歩いたものだ.
 
-Il centro del ripasso è riconoscere [ものだ](grammar:grammar-146-monoda-express-strong-emotions) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{子供|こども}}の{{成長|せいちょう}}は{{早|はや}}いものだ。
 translation_it: >-
-  Questa è una penna.
+  Quanto crescono in fretta i bambini!
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ものだ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+早いものだ non classifica la crescita come un «oggetto»: trasforma l'osservazione in un'esclamazione sentita.
+
+## Sfumature d'uso
+
+- In esclamazioni rende «davvero», «quanto…!» senza descrivere un oggetto concreto.
+- もんだ／もん è colloquiale e più emotivo; non va usato indiscriminatamente in contesti formali.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

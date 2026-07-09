@@ -12,9 +12,9 @@ id: grammar-215-owaru-finish-doing-something
 pattern: "おわる"
 title: "「おわる」Finish doing something"
 reading: "おわる"
-meaning_it: "Finish doing something"
+meaning_it: "Concludere un'azione con la base verbale + 終わる"
 notes_it: >-
-  おわる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  La base in i dei verbi in う o la base senza る dei verbi in る si combina con 終わる per indicare che l'azione è stata portata alla fine. 終わる si coniuga come verbo in う.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-215-owaru-finish-doing-something
 card_type: concept
 front: "おわる"
 back: >-
-  Finish doing something
+  Base verbale + 終わる significa «finire di fare».
 example_jp: >-
-  これはおわるのかたちだ。
+  この{{本|ほん}}を{{読|よ}}み{{終|お}}わった。
 example_it: >-
-  Questa è la forma おわる.
+  Ho finito di leggere questo libro.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  終える può sostituire 終わる in contesti più formali e con azioni volontarie. Il passato comune è 読み終わった.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, stem-form-series]
 :::

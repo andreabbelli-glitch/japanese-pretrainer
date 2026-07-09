@@ -12,9 +12,9 @@ id: grammar-061-nohada-introduce-new-information
 pattern: "のは～だ"
 title: "「のは～だ」Introduce new and important information"
 reading: "のは～だ"
-meaning_it: "Introduce new and important information"
+meaning_it: "Struttura focalizzante A のは B だ: identificare B come informazione nuova"
 notes_it: >-
-  のは～だ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A のは B だ nominalizza e tematizza A, poi identifica B come risposta messa a fuoco. Dopo nomi e aggettivi in な si usa なのは. Con B からだ, la struttura introduce la ragione.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-061-nohada-introduce-new-information
 card_type: concept
 front: "のは～だ"
 back: >-
-  Introduce new and important information
+  A のは B だ significa «ciò/la persona che A è B» e mette B in rilievo.
 example_jp: >-
-  これはペンだ。
+  この{{学校|がっこう}}で{{一番|いちばん}}{{可愛|かわい}}いのは{{彼女|かのじょ}}だ。
 example_it: >-
-  Questa è una penna.
+  La più carina di questa scuola è lei.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  In A のは B からだ, B è la causa: «il motivo per cui A è che B». Non analizzare のは come una singola particella.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

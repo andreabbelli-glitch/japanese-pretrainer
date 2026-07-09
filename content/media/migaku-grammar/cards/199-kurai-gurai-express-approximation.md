@@ -12,9 +12,9 @@ id: grammar-199-kurai-gurai-express-approximation
 pattern: "くらい・ぐらい"
 title: "「くらい・ぐらい」Make approximations"
 reading: "くらい・ぐらい"
-meaning_it: "Make approximations"
+meaning_it: "Approssimare quantità, durata o misura con くらい / ぐらい"
 notes_it: >-
-  くらい・ぐらい va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  くらい e ぐらい sono intercambiabili in questo uso e seguono numeri con contatore, parole interrogative o dimostrativi. Indicano «circa / più o meno».
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-199-kurai-gurai-express-approximation
 card_type: concept
 front: "くらい・ぐらい"
 back: >-
-  Make approximations
+  Quantità + くらい/ぐらい significa «circa quella quantità».
 example_jp: >-
-  これはくらい・ぐらいのかたちだ。
+  {{駅|えき}}まで{{十分|じゅっぷん}}ぐらいかかる。
 example_it: >-
-  Questa è la forma くらい・ぐらい.
+  Ci vogliono circa dieci minuti per arrivare alla stazione.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Per un punto preciso nel tempo, come «verso le sette», si preferisce ごろ; くらい indica quantità o durata.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

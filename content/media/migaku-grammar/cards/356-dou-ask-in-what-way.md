@@ -12,9 +12,10 @@ id: grammar-356-dou-ask-in-what-way
 pattern: "どう"
 title: "「どう」(2) Ask \"in what way?\""
 reading: "どう"
-meaning_it: "(2) Ask in what way?"
+meaning_it: >-
+  Come; in quale modo
 notes_it: >-
-  どう va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Schema: どう + V／predicato, per esempio どう読む, どうする, どう思う. In domande incorporate compare どう〜か分からない. Non richiede la particella で: どうやって rende più esplicito il mezzo o procedimento. Il registro dipende dalla chiusura della frase.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-356-dou-ask-in-what-way
 card_type: concept
 front: "どう"
 back: >-
-  (2) Ask in what way?
+  どう modifica un predicato o introduce una domanda sul modo in cui qualcosa si fa o si presenta.
 example_jp: >-
-  これはどうのかたちだ。
+  この{{漢字|かんじ}}はどう{{読|よ}}みますか。
 example_it: >-
-  Questa è la forma どう.
+  Come si legge questo kanji?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Schema: どう + V／predicato, per esempio どう読む, どうする, どう思う. In domande incorporate compare どう〜か分からない. Non richiede la particella で: どうやって rende più esplicito il mezzo o procedimento. Il registro dipende dalla chiusura della frase.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

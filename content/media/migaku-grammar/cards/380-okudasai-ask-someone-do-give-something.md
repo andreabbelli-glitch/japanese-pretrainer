@@ -12,9 +12,10 @@ id: grammar-380-okudasai-ask-someone-do-give-something
 pattern: "お～ください"
 title: "「お～ください」Respectfully ask someone to do something"
 reading: "お～ください"
-meaning_it: "Respectfully ask someone to do something"
+meaning_it: >-
+  La prego di; faccia cortesemente
 notes_it: >-
-  お～ください va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Formazione: お + radice in forma ます + ください; per verbi sino-giapponesi in する, ご + nome + ください. È più rispettoso del semplice Vてください. Con radici di una sola mora come 見る o 寝る la forma regolare è evitata: usare forme lessicali, per esempio ご覧ください.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-380-okudasai-ask-someone-do-give-something
 card_type: concept
 front: "お～ください"
 back: >-
-  Respectfully ask someone to do something
+  お／ご + radice o nome + ください formula una richiesta onorifica verso l'interlocutore.
 example_jp: >-
-  ここでまってください。
+  こちらでお{{待|ま}}ちください。
 example_it: >-
-  La prego di aspettare qui.
+  La prego di attendere qui.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Formazione: お + radice in forma ます + ください; per verbi sino-giapponesi in する, ご + nome + ください. È più rispettoso del semplice Vてください. Con radici di una sola mora come 見る o 寝る la forma regolare è evitata: usare forme lessicali, per esempio ご覧ください.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, honorific-language]
 :::

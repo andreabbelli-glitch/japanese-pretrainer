@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 072.
+  Quando e perché le particelle possono essere omesse nel parlato.
 ---
-
 # Dropping particles from sentences
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/dropping-particles`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Nel parlato informale una particella può cadere quando la sua funzione è ovvia e l'omissione non crea ambiguità. La relazione grammaticale resta implicita e viene ricostruita dal contesto.
 
-- Tema: Dropping particles from sentences
-- Sezione: grammar general
-- Livello: CUSTOM
-- Pattern allenabile: [{{助詞|じょし}}{{省略|しょうりゃく}}](grammar:grammar-072-dropping-particles)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [{{助詞|じょし}}{{省略|しょうりゃく}}](grammar:grammar-072-dropping-particles) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `sintagma + （particella omessa） + predicato`. Il punto da riconoscere è [助詞省略](grammar:grammar-072-dropping-particles).
 
 :::example_sentence
 jp: >-
-  これは{{助詞|じょし}}{{省略|しょうりゃく}}のかたちだ。
+  {{今日|きょう}}、{{友達|ともだち}}と{{映画|えいが}}{{見|み}}る。
 translation_it: >-
-  Questa è la forma 助詞省略.
+  Oggi guardo un film con un amico.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   {{助詞|じょし}}{{省略|しょうりゃく}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+Dopo 映画 è sottinteso を: la forma completa è 映画を見る. Il verbo 見る rende comunque chiaro che 映画 è l'oggetto.
+
+## Sfumature e limiti
+
+L'omissione è tipica della conversazione spontanea, non una regola per eliminare liberamente le particelle. In scrittura, in registro formale o quando i ruoli potrebbero confondersi, è preferibile mantenerle.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

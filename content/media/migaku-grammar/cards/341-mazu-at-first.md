@@ -12,9 +12,10 @@ id: grammar-341-mazu-at-first
 pattern: "まず"
 title: "「まず」(1) “First” or “For Now\""
 reading: "まず"
-meaning_it: "(1) First or For Now"
+meaning_it: >-
+  Prima di tutto; anzitutto; per ora
 notes_it: >-
-  まず va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Come avverbio precede il primo passo: まずA、それからB. Può anche significare «per ora / in ogni caso» quando si chiude una questione immediata senza risolverla definitivamente. È neutro e frequente sia nel parlato sia nello scritto.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-341-mazu-at-first
 card_type: concept
 front: "まず"
 back: >-
-  (1) First or For Now
+  まず ordina la prima priorità oppure presenta una conclusione provvisoria valida per il momento.
 example_jp: >-
-  これはまずのかたちだ。
+  まず、{{説明|せつめい}}を{{読|よ}}んでください。
 example_it: >-
-  Questa è la forma まず.
+  Per prima cosa, legga le istruzioni.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Come avverbio precede il primo passo: まずA、それからB. Può anche significare «per ora / in ogni caso» quando si chiude una questione immediata senza risolverla definitivamente. È neutro e frequente sia nel parlato sia nello scritto.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

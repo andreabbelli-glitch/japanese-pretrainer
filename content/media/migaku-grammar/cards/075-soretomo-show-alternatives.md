@@ -12,9 +12,10 @@ id: grammar-075-soretomo-show-alternatives
 pattern: "それとも"
 title: "「それとも」Offer an alternative"
 reading: "それとも"
-meaning_it: "Offer an alternative"
+meaning_it: >-
+  Introduce un'alternativa tra due opzioni: «oppure»
 notes_it: >-
-  それとも va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  A（か）？ それとも B（か）？. È tipico quando si chiede all'interlocutore di scegliere. Non è il semplice «o» interno a qualsiasi elenco: mette in contrasto opzioni formulate come alternative complete.
 level_hint: jlpt-n3
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-075-soretomo-show-alternatives
 card_type: concept
 front: "それとも"
 back: >-
-  Offer an alternative
+  Introduce un'alternativa tra due opzioni: «oppure»
 example_jp: >-
-  ぼくもいく。
+  {{電車|でんしゃ}}で{{行|い}}く？それとも、{{歩|ある}}く？
 example_it: >-
-  Vado anche io.
+  Andiamo in treno? Oppure andiamo a piedi?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  La prima domanda propone il treno; それとも apre la seconda opzione, 歩く, chiedendo una scelta tra le due. È tipico quando si chiede all'interlocutore di scegliere. Non è il semplice «o» interno a qualsiasi elenco: mette in contrasto opzioni formulate come alternative complete.
 tags: [migaku, grammar, jlpt-n3, academy-level-1]
 :::

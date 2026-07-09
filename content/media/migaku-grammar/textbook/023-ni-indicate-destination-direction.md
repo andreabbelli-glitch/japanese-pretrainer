@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 023.
+  Uso di に per la destinazione di un movimento.
 ---
 
-# 「に」(1) Indicate an action's destination or direction
+# 「に」(1) Indicate a destination or direction of an action
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ni-indicate-destination-direction`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Il luogo come bersaglio
 
-## Punto da riconoscere
-
-- Tema: (1) Indicate an action's destination or direction
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [に](grammar:grammar-023-ni-indicate-destination-direction)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [に](grammar:grammar-023-ni-indicate-destination-direction) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+Con un verbo di movimento, luogo + に presenta quel luogo come meta o punto d'arrivo. La particella funziona come un bersaglio posto sulla destinazione.
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  {{先生|せんせい}}が{{町|まち}}に{{行|い}}く。
 translation_it: >-
-  Vado al caffè.
+  L'insegnante va in città.
 :::
 
-#### Anatomia rapida
+Verbi frequenti in questa struttura sono 行く, 来る e 帰る. へ può spesso sostituire に, ma mette più enfasi sulla direzione o sul tragitto che sulla meta.
 
-*   に -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Tema e contrasto
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Per tematizzare la destinazione, に si conserva davanti a は: 店には私が行く, «al negozio, invece, vado io». には può contrapporre sia la meta sia, insieme a が, chi se ne occuperà.

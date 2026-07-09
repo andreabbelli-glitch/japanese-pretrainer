@@ -12,9 +12,9 @@ id: grammar-239-ne-ask-for-confirmation-isnt-it
 pattern: "ね"
 title: "「ね」Question tags"
 reading: "ね"
-meaning_it: "Question tags"
+meaning_it: "Finale ね: cercare condivisione, conferma o accordo"
 notes_it: >-
-  ね va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  ね invita l'interlocutore ad allinearsi con l'informazione o il sentimento. Può chiedere conferma con intonazione ascendente o manifestare accordo e condivisione con intonazione discendente.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-239-ne-ask-for-confirmation-isnt-it
 card_type: concept
 front: "ね"
 back: >-
-  Question tags
+  Frase + ね vale spesso «vero? / eh / già» e costruisce terreno comune.
 example_jp: >-
-  これはねのかたちだ。
+  {{今日|きょう}}は{{寒|さむ}}いね。
 example_it: >-
-  Questa è la forma ね.
+  Oggi fa freddo, vero?
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Non è sempre una domanda letterale: può ammorbidire una dichiarazione, una promessa o un commento condiviso.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, sentence-enders]
 :::

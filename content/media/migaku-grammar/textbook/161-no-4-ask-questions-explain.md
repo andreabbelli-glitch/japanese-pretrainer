@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 161.
+  Domande contestuali e spiegazioni colloquiali, distinte tramite intonazione e registro.
 ---
 
-# 「の」(4) Ask or assert more emphatically
+# 「の」(4) Ask questions or explain
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/no-4-ask-questions-explain`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il の finale deriva dal valore esplicativo di のだ. Invita a collegare l'enunciato alla situazione visibile o al discorso, invece di formulare una domanda puramente neutra.
 
-- Tema: (4) Ask or assert more emphatically
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [の](grammar:grammar-161-no-4-ask-questions-explain)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Verbo o aggettivo in い piano + の: 行くの？, 高いの？
+- Nome o aggettivo in な + なの: 学生なの？, 静かなの？
+- L'intonazione distingue spesso domanda e spiegazione; nello scritto servono contesto e punteggiatura.
 
-Il centro del ripasso è riconoscere [の](grammar:grammar-161-no-4-ask-questions-explain) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ぼくのペンだ。
+  どうして{{泣|な}}いているの？
 translation_it: >-
-  È la mia penna.
+  Perché stai piangendo?
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   の -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+どうして e の trasformano 泣いているの？ in una richiesta del motivo della situazione osservata.
+
+## Sfumature d'uso
+
+- Una domanda in の cerca spesso motivo, circostanze o conferma di qualcosa già percepibile.
+- La dichiarativa in の è colloquiale e dal tono morbido; のだ／んだ e のです／んです offrono alternative più esplicite.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

@@ -10,45 +10,28 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 011.
+  Uso di これ per indicare una cosa vicina al parlante.
 ---
 
-# 「これ」”This"
+# 「これ」For this
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/kore-this`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Punto di vista
 
-## Punto da riconoscere
-
-- Tema: This
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [これ](grammar:grammar-011-kore-this)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [これ](grammar:grammar-011-kore-this) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+これ è un pronome dimostrativo: sostituisce il nome di una cosa vicina al parlante, oppure vicina a entrambe le persone. La serie こ- appartiene alla sfera di chi parla.
 
 :::example_sentence
 jp: >-
-  これはこれのかたちだ。
+  これは{{私|わたし}}のカバンだ。
 translation_it: >-
-  Questa è la forma これ.
+  Questa è la mia borsa.
 :::
 
-#### Anatomia rapida
+これ sta da solo; per modificare un nome si usa この: このカバン, «questa borsa». La grafia abituale è in hiragana, non in kanji.
 
-*   これ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Contrasto
 
-## Controllo attivo
+- これ: vicino al parlante
+- それ: vicino all'ascoltatore
+- あれ: lontano da entrambi
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+La scelta dipende dalla posizione e dalla sfera delle persone, non dal genere del nome italiano.

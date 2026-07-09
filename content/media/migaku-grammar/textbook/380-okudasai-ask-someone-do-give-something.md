@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, honorific-language]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 380.
+  Richiesta onorifica rivolta a una persona rispettata tramite prefisso e radice verbale.
 ---
 
-# 「お～ください」Respectfully ask someone to do something
+# 「お～ください」Ask someone to do or give something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/okudasai-ask-someone-do-give-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+お〜ください eleva l'azione che si chiede all'interlocutore, combinando rispetto per il soggetto e forza di richiesta.
 
-- Tema: Respectfully ask someone to do something
-- Sezione: honorific language
-- Livello: JLPT-N4
-- Pattern allenabile: [お～ください](grammar:grammar-380-okudasai-ask-someone-do-give-something)
+## Formazione e restrizioni
 
-## Lettura operativa
+- お + radice + ください: お待ちください, お使いください.
+- ご + nome + ください: ご利用ください, ご遠慮ください.
+- Eccezione lessicale: 見る → ご覧ください, non normalmente *お見ください.
 
-Il centro del ripasso è riconoscere [お～ください](grammar:grammar-380-okudasai-ask-someone-do-give-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ここでまってください。
+  こちらでお{{待|ま}}ちください。
 translation_it: >-
-  La prego di aspettare qui.
+  La prego di attendere qui.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   お～ください -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+L'attesa è azione dell'interlocutore; お待ちください la presenta rispettosamente.
+
+## Sfumature d'uso
+
+- È adatto ad annunci e servizio clienti, ma resta una richiesta/istruzione; forme interrogative possono attenuare ulteriormente.
+- Non va confuso con l'umile お〜する, che descrive l'azione del parlante.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

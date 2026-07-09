@@ -12,9 +12,10 @@ id: grammar-373-keredomo-express-contradiction
 pattern: "けれども"
 title: "「けれども」A formal structure to express contradiction"
 reading: "けれども"
-meaning_it: "A formal structure to express contradiction"
+meaning_it: >-
+  Sebbene; però; ma
 notes_it: >-
-  けれども va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Con V/Aい si aggiunge alla forma piana o cortese; con Nome/Aな: だけれども／ですけれども. È la variante più formale e piena di けど; けれど è intermedio. A inizio frase: だけれども／ですけれども. A fine frase può lasciare una richiesta implicita.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-373-keredomo-express-contradiction
 card_type: concept
 front: "けれども"
 back: >-
-  A formal structure to express contradiction
+  Proposizione + けれども collega un risultato contrario all'aspettativa; può anche preparare con cautela il seguito.
 example_jp: >-
-  ぼくもいく。
+  {{雨|あめ}}が{{降|ふ}}っていますけれども、{{出|で}}かけます。
 example_it: >-
-  Vado anche io.
+  Anche se piove, uscirò.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Con V/Aい si aggiunge alla forma piana o cortese; con Nome/Aな: だけれども／ですけれども. È la variante più formale e piena di けど; けれど è intermedio. A inizio frase: だけれども／ですけれども. A fine frase può lasciare una richiesta implicita.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

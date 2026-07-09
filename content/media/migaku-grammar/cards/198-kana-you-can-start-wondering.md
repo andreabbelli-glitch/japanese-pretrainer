@@ -12,9 +12,9 @@ id: grammar-198-kana-you-can-start-wondering
 pattern: "かな"
 title: "「かな」”I wonder\""
 reading: "かな"
-meaning_it: "I wonder"
+meaning_it: "Finale かな: chiedersi qualcosa tra sé e sé"
 notes_it: >-
-  かな va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  かな chiude una frase ed esprime dubbio, curiosità o riflessione: «mi chiedo se…». È informale; tradizionalmente associato più agli uomini, ma comune anche tra donne nel parlato contemporaneo.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-198-kana-you-can-start-wondering
 card_type: concept
 front: "かな"
 back: >-
-  I wonder
+  Frase + かな significa «chissà / mi domando se…».
 example_jp: >-
-  これはかなのかたちだ。
+  {{明日|あした}}は{{晴|は}}れるかな。
 example_it: >-
-  Questa è la forma かな.
+  Chissà se domani farà bel tempo.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Non richiede una risposta diretta: spesso il parlante verbalizza un pensiero. Può seguire forme piane verbali, aggettivali o nominali.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, sentence-enders]
 :::

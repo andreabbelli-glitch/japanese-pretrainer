@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, sentence-enders]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 267.
+  Divieti forti costruiti con verbo in forma dizionario più な.
 ---
-
 # 「な」 Tell someone to not do something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/Do-Not-%E3%81%AA`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Il verbo in forma dizionario seguito da な vieta direttamente l'azione. Nonostante な, il verbo non è in forma negativa.
 
-- Tema: Tell someone to not do something
-- Sezione: sentence enders
-- Livello: JLPT-N5
-- Pattern allenabile: [な](grammar:grammar-267-tell-someone-to-not-do-something)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [な](grammar:grammar-267-tell-someone-to-not-do-something) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `verbo in forma dizionario + な`. Il punto da riconoscere è [な](grammar:grammar-267-tell-someone-to-not-do-something).
 
 :::example_sentence
 jp: >-
-  これはなのかたちだ。
+  ここで{{写真|しゃしん}}を{{撮|と}}るな。
 translation_it: >-
-  Questa è la forma な.
+  Non scattare fotografie qui.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   な -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+撮る resta in forma dizionario; な aggiunge il divieto forte. Non va confuso con la particella finale な di altri usi.
+
+## Sfumature e limiti
+
+È brusco, emotivo e frequente in ordini maschili, avvertimenti o segnali. なよ può attenuare leggermente, ma resta colloquiale e diretto.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

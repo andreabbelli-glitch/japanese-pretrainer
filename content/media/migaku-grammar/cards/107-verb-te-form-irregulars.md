@@ -12,9 +12,10 @@ id: grammar-107-verb-te-form-irregulars
 pattern: "不規則動詞"
 title: "The て-form of irregular verbs"
 reading: "ふきそくどうし"
-meaning_it: "The て-form of irregular verbs"
+meaning_it: >-
+  て-forme fondamentali: して, 来て, 行って e あって
 notes_it: >-
-  {{不規則|ふきそく}}{{動詞|どうし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  する→して／来る→来て／行く→行って／ある→あって. する e 来る sono irregolari; 行く è un godan con esito eccezionale 行って, mentre ある forma regolarmente あって. Il predicato successivo porta tempo e polarità.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-107-verb-te-form-irregulars
 card_type: concept
 front: "{{不規則|ふきそく}}{{動詞|どうし}}"
 back: >-
-  The て-form of irregular verbs
+  て-forme fondamentali: して, 来て, 行って e あって
 example_jp: >-
-  これは{{不規則|ふきそく}}{{動詞|どうし}}のかたちだ。
+  {{友達|ともだち}}が{{来|き}}て、{{一緒|いっしょ}}に{{勉強|べんきょう}}した。
 example_it: >-
-  Questa è la forma 不規則動詞.
+  È venuto un amico e abbiamo studiato insieme.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  来る prende la forma irregolare 来て, letta きて; 勉強した chiude la sequenza e la colloca al passato. 行く è un godan con esito eccezionale 行って, mentre ある forma regolarmente あって. Il predicato successivo porta tempo e polarità.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, form-series]
 :::

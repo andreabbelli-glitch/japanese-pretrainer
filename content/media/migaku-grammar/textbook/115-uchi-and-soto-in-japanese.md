@@ -10,44 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 115.
+  Distinzione うち／そと: il gruppo relativo al parlante guida cortesia e scelta fra あげる e くれる.
 ---
-
 # Understanding ウチ and ソト in Japanese
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/uchi-and-soto-in-japanese`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+内（うち）comprende il parlante e le persone che, nella situazione, appartengono al suo gruppo; 外（そと）comprende gli interlocutori o gruppi esterni. Questa prospettiva influenza cortesia, umiltà e verbi di dare e ricevere.
 
-- Tema: Understanding ウチ and ソト in Japanese
-- Sezione: jlpt n4
-- Livello: JLPT-N4
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere il punto della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `内（うち）= gruppo interno; 外（そと）= gruppo esterno`. Il punto da riconoscere è `内（うち）／外（そと）`.
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{田中|たなか}}さんがうちの{{子|こ}}に{{本|ほん}}をくれた。
 translation_it: >-
-  Questa è una penna.
+  Tanaka ha regalato un libro a mio figlio.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   Prima individua il tipo di frase.
-*   Poi separa tema, informazione nuova e verbo finale.
-*   Infine traduci in italiano naturale, senza perdere la funzione grammaticale.
+田中さん è esterno al nucleo del parlante, mentre うちの子 ne fa parte. La direzione verso l'内 rende naturale くれた.
+
+## Sfumature e limiti
+
+Le categorie non sono fisse: un collega può essere 外 rispetto al proprio reparto, ma entrare nell'内 comune quando si parla con un'altra azienda. Verso 外 si onora l'altro e si evita di elevare il proprio 内.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 133.
+  Consigli affermativi e negativi, con forza pragmatica e cautele di registro.
 ---
 
-# 「方がいい」"You better do X"
+# 「方がいい」You better do something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/hougaii-you-better-do-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ほうがいい presenta una scelta come preferibile rispetto alle alternative. Con un verbo si usa per dare un consiglio concreto al parlante stesso o a un'altra persona.
 
-- Tema: You better do X
-- Sezione: jlpt n5
-- Livello: JLPT-N5
+## Formazione e restrizioni
 
-## Lettura operativa
+- Consiglio affermativo: Vた + ほうがいい, per esempio 休んだほうがいい.
+- Consiglio negativo: Vない + ほうがいい, per esempio 行かないほうがいい.
+- V non-passato + ほうがいい esiste, ma normalmente il passato dà un consiglio più deciso e idiomatico.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{熱|ねつ}}があるなら、{{今日|きょう}}は{{休|やす}}んだほうがいい。
 translation_it: >-
-  Questa è una penna.
+  Se hai la febbre, oggi faresti meglio a riposare.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+休んだほうがいい non descrive un riposo passato: la forma Vた fa parte della costruzione di consiglio.
+
+## Sfumature d'uso
+
+- Resta una forma di consiglio; rivolto a superiori o estranei può risultare troppo diretto.
+- Per attenuare si possono aggiungere と思う o かもしれない.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

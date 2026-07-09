@@ -12,9 +12,10 @@ id: grammar-262-youninaru-express-change
 pattern: "ようになる"
 title: "「ようになる」 Express something that has come to be"
 reading: "ようになる"
-meaning_it: "Express something that has come to be"
+meaning_it: >-
+  Passaggio a una nuova capacità, abitudine o condizione
 notes_it: >-
-  ようになる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo non passato, affermativo o negativo + ようになる. Il cambiamento è presentato come risultato o evoluzione, non come decisione diretta. ようになっている può descrivere lo stato risultante o il funzionamento previsto di un sistema.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-262-youninaru-express-change
 card_type: concept
 front: "ようになる"
 back: >-
-  Express something that has come to be
+  Passaggio a una nuova capacità, abitudine o condizione
 example_jp: >-
-  カフェにいく。
+  {{日本語|にほんご}}のニュースが{{分|わ}}かるようになった。
 example_it: >-
-  Vado al caffè.
+  Sono arrivato a capire le notizie in giapponese.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  分かるようになった mostra il passaggio da non capire a possedere ora quella capacità. Il cambiamento è presentato come risultato o evoluzione, non come decisione diretta. ようになっている può descrivere lo stato risultante o il funzionamento previsto di un sistema.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, series]
 :::

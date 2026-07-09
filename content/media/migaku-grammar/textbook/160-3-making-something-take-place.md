@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 160.
+  Cambiamenti causati intenzionalmente e alcuni usi lessicali legati a ruoli e accessori.
 ---
 
 # 「する」(3) Making something take place
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/%E3%81%99%E3%82%8B-3`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+する può presentare un cambiamento come prodotto intenzionalmente da un agente. Da questo nucleo derivano anche usi lessicali in cui si mantiene un ruolo o si porta un accessorio.
 
-- Tema: (3) Making something take place
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [する](grammar:grammar-160-3-making-something-take-place)
+## Formazione e restrizioni
 
-## Lettura operativa
+- Aggettivo in い: togliere い + くする — 明るい → 明るくする.
+- Aggettivo in な o nome + にする — 静かにする, 部屋を教室にする.
+- Collocazioni: 学生をしている («fare/essere lo studente»), ネクタイをする («mettere/portare la cravatta»).
 
-Il centro del ripasso è riconoscere [する](grammar:grammar-160-3-making-something-take-place) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  ゲームをする。
+  {{部屋|へや}}をもう{{少|すこ}}し{{明|あか}}るくする。
 translation_it: >-
-  Faccio una partita.
+  Renderò la stanza un po' più luminosa.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   する -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+明るく è la forma avverbiale di 明るい; する indica che il soggetto provoca il cambiamento della stanza.
+
+## Sfumature d'uso
+
+- 〜く／にする è transitivo e controllato; 〜く／になる descrive il cambiamento del soggetto senza indicarne necessariamente l'agente.
+- Gli accessori che usano する sono lessicalmente limitati; vestiti e calzature richiedono spesso 着る, 履く, かぶる e altri verbi.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione, tempo e registro.

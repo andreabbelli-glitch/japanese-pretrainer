@@ -10,44 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 324.
+  Esclusione di un elemento da un insieme e costruzioni che negano ogni altra alternativa.
 ---
 
-# 「以外」"Except (something)"
+# 「以外」Except something
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/igai-except-something`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+以外 crea un confine fra l'elemento nominato e tutto ciò che ne resta fuori. La particella successiva indica il ruolo di quell'insieme residuo.
 
-- Tema: Except (something)
-- Sezione: jlpt n4
-- Livello: JLPT-N4
+## Formazione e restrizioni
 
-## Lettura operativa
+- Nome + 以外: 私以外, 日曜日以外.
+- Verbo piano + 以外: 待つ以外ない («non resta che aspettare»).
+- A以外に〜ない: A a parte, non c'è altro; A以外のB: un B diverso da A.
 
-Il centro del ripasso è riconoscere il pattern della voce come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  これはペンだ。
+  {{日曜日|にちようび}}{{以外|いがい}}は{{毎日|まいにち}}{{働|はたら}}いている。
 translation_it: >-
-  Questa è una penna.
+  Lavoro tutti i giorni tranne la domenica.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   Il punto della voce -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+日曜日 è l'unico elemento escluso; は tematizza tutti gli altri giorni.
+
+## Sfumature d'uso
+
+- Per i limiti numerici si usano 以内 «entro» e 未満 «meno di»; 以外 esclude invece elementi da un insieme.
+- Con は può introdurre contrasto: 日曜日以外は働く.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

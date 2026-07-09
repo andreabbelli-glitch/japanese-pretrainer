@@ -10,45 +10,39 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 372.
+  Condizione ipotetica o ripresa di un'informazione come premessa, in stile relativamente formale.
 ---
 
-# 「ならば」Another way to say “if"
+# 「ならば」Express 'if'
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/naraba-express-if`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+ならば crea uno scenario condizionale sulla base di una situazione assunta o appena menzionata. Il risultato B è valido sotto quella premessa.
 
-- Tema: Another way to say if
-- Sezione: jlpt n4
-- Livello: JLPT-N4
-- Pattern allenabile: [ならば](grammar:grammar-372-naraba-express-if)
+## Formazione e restrizioni
 
-## Lettura operativa
+- V/Aい piano + ならば: 行くならば, 難しいならば.
+- Nome/Aな + ならば: 学生ならば, 静かならば.
+- Forma esplicativa: 行くのならば; colloquiale più comune なら.
 
-Il centro del ripasso è riconoscere [ならば](grammar:grammar-372-naraba-express-if) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+## Esempio
 
 :::example_sentence
 jp: >-
-  それならいく。
+  {{時間|じかん}}がないならば、{{明日|あした}}にしましょう。
 translation_it: >-
-  Se è così, vado.
+  Se non c'è tempo, rimandiamo a domani.
 :::
 
-#### Anatomia rapida
+#### Analisi
 
-*   ならば -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+L'assenza di tempo viene assunta come premessa; la proposta di rimandare vale in quel caso.
+
+## Sfumature d'uso
+
+- Nel parlato quotidiano なら è molto più frequente; ならば può suonare solenne o argomentativo.
+- A differenza di と, non esprime necessariamente una conseguenza automatica e permette decisioni o volontà.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Riconosci la forma, ricostruisci il blocco a cui si aggancia e produci una frase nuova rispettando formazione e registro.

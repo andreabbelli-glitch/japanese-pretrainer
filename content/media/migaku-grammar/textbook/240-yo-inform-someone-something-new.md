@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, sentence-enders]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 240.
+  Informazione rilevante ed enfasi con yo.
 ---
 
 # 「よ」Inform someone of something new
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/yo-inform-someone-something-new`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Portare qualcosa all'attenzione
 
-## Punto da riconoscere
-
-- Tema: Inform someone of something new
-- Sezione: sentence enders
-- Livello: JLPT-N5
-- Pattern allenabile: [よ](grammar:grammar-240-yo-inform-someone-something-new)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [よ](grammar:grammar-240-yo-inform-someone-something-new) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+よ chiude la frase e presenta il contenuto come informazione o posizione che l'ascoltatore deve notare. Può informare, insistere, avvertire, invitare o criticare.
 
 :::example_sentence
 jp: >-
-  これはよのかたちだ。
+  {{明日|あした}}は{{休|やす}}みだよ。
 translation_it: >-
-  Questa è la forma よ.
+  Domani è festa, sai.
 :::
 
-#### Anatomia rapida
+L'intonazione contribuisce alla forza: un よ più alto può sollecitare risposta o offrire informazione; più basso può sostenere volontà o critica.
 
-*   よ -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Traduzione
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Spesso l'italiano rende l'effetto con ordine delle parole, tono o particelle discorsive, senza tradurre よ letteralmente.

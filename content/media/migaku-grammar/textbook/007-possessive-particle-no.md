@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 007.
+  La particella の collega due nomi in molte relazioni, non solo di possesso.
 ---
 
-# 「の」(1) Show possession
+# 「の」(1) Being possessive
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/possessive-particle-no`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Struttura A の B
 
-## Punto da riconoscere
-
-- Tema: (1) Show possession
-- Sezione: series
-- Livello: JLPT-N5
-- Pattern allenabile: [の](grammar:grammar-007-possessive-particle-no)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [の](grammar:grammar-007-possessive-particle-no) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+B è il nome principale; A lo specifica. La relazione può essere possesso (私の本, «il mio libro»), luogo (ドイツの教会, «una chiesa in Germania»), argomento (歴史の本, «un libro di storia»), materiale, autore, tipo e altro ancora.
 
 :::example_sentence
 jp: >-
-  ぼくのペンだ。
+  これは{{歴史|れきし}}の{{本|ほん}}だ。
 translation_it: >-
-  È la mia penna.
+  Questo è un libro di storia.
 :::
 
-#### Anatomia rapida
+È possibile concatenare più specificazioni, come ドイツ語の先生の家, «la casa di un insegnante di tedesco». Se B è già noto, può essere sottinteso: 私の本だ → 私のだ, «è il mio».
 
-*   の -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Da ricordare
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Non tradurre meccanicamente の con «di»: individua prima la relazione semantica tra A e B, poi scegli la costruzione italiana naturale.

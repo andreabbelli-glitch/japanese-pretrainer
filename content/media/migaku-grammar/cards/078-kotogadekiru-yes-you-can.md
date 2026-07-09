@@ -12,9 +12,10 @@ id: grammar-078-kotogadekiru-yes-you-can
 pattern: "ことができる"
 title: "「ことができる」Indicate what you can do"
 reading: "ことができる"
-meaning_it: "Indicate what you can do"
+meaning_it: >-
+  Esprime capacità o possibilità: «poter fare»
 notes_it: >-
-  ことができる va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in forma dizionario + ことができる. La costruzione è generalmente più esplicita e formale della forma potenziale del verbo. La negazione ことができない indica impossibilità o incapacità.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-078-kotogadekiru-yes-you-can
 card_type: concept
 front: "ことができる"
 back: >-
-  Indicate what you can do
+  Esprime capacità o possibilità: «poter fare»
 example_jp: >-
-  ネコがいる。
+  この{{図書館|としょかん}}では{{無料|むりょう}}で{{本|ほん}}を{{借|か}}りることができる。
 example_it: >-
-  C'è un gatto.
+  In questa biblioteca si possono prendere libri in prestito gratuitamente.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  本を借りる è l'azione nominalizzata; ことができる ne dichiara la possibilità nelle condizioni indicate da この図書館では. La costruzione è generalmente più esplicita e formale della forma potenziale del verbo. La negazione ことができない indica impossibilità o incapacità.
 tags: [migaku, grammar, jlpt-n4, series, academy-level-1]
 :::

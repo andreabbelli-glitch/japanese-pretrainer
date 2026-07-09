@@ -12,9 +12,9 @@ id: grammar-201-goro-indicating-approximate-point-time
 pattern: "ごろ"
 title: "「ごろ」Indicating an approximate point in time"
 reading: "ごろ"
-meaning_it: "Indicating an approximate point in time"
+meaning_it: "Indicare un momento approssimativo con ごろ / ころ"
 notes_it: >-
-  ごろ va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  ごろ segue un'ora, data o periodo e significa «intorno a / verso». Con nome + のころ può indicare una fase più ampia, come 子供のころ «da bambino».
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-201-goro-indicating-approximate-point-time
 card_type: concept
 front: "ごろ"
 back: >-
-  Indicating an approximate point in time
+  Momento + ごろ colloca un evento attorno a quel punto nel tempo.
 example_jp: >-
-  これはごろのかたちだ。
+  {{七時|しちじ}}ごろ{{帰|かえ}}る。
 example_it: >-
-  Questa è la forma ごろ.
+  Tornerò verso le sette.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  ごろ non approssima durate o distanze: «per circa quattro ore» richiede くらい, mentre «verso le quattro» usa ごろ.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

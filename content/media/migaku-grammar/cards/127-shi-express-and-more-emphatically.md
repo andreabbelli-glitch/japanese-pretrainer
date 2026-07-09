@@ -12,9 +12,10 @@ id: grammar-127-shi-express-and-more-emphatically
 pattern: "し"
 title: "「し」Express “and\" more emphatically"
 reading: "し"
-meaning_it: "Express and more emphatically"
+meaning_it: >-
+  Collega ragioni o qualità cumulative: «e inoltre / visto che»
 notes_it: >-
-  し va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo / い-aggettivo + し; nome / な-aggettivo + だし. Le ragioni elencate dovrebbero avere peso comparabile. Una frase che termina in し può attenuare il tono e lasciare intendere «e poi ci sarebbe altro». Il passato resta prima di し.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-127-shi-express-and-more-emphatically
 card_type: concept
 front: "し"
 back: >-
-  Express and more emphatically
+  Collega ragioni o qualità cumulative: «e inoltre / visto che»
 example_jp: >-
-  これはしのかたちだ。
+  この{{店|みせ}}は{{安|やす}}いし、おいしいし、{{店員|てんいん}}も{{親切|しんせつ}}だ。
 example_it: >-
-  Questa è la forma し.
+  Questo locale è economico, si mangia bene e anche il personale è gentile.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  安いし e おいしいし accumulano qualità sullo stesso piano; 店員も親切だ completa la descrizione. Le ragioni elencate dovrebbero avere peso comparabile. Una frase che termina in し può attenuare il tono e lasciare intendere «e poi ci sarebbe altro». Il passato resta prima di し.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, particles]
 :::

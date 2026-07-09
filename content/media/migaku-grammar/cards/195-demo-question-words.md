@@ -12,9 +12,9 @@ id: grammar-195-demo-question-words
 pattern: "でも"
 title: "「でも」(2) “Anything, anyone, anywhere, anytime\""
 reading: "でも"
-meaning_it: "(2) Anything, anyone, anywhere, anytime"
+meaning_it: "Parola interrogativa + でも: «qualunque / chiunque / ovunque»"
 notes_it: >-
-  でも va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  何でも, 誰でも, どこでも e いつでも aprono la scelta a qualsiasi membro della categoria e si usano in frasi affermative. Altre particelle possono comparire all'interno, come どこの店でも.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-195-demo-question-words
 card_type: concept
 front: "でも"
 back: >-
-  (2) Anything, anyone, anywhere, anytime
+  QW + でも significa «qualsiasi… / chiunque / dovunque / in qualunque momento».
 example_jp: >-
-  ぼくもいく。
+  いつでも{{電話|でんわ}}していい。
 example_it: >-
-  Vado anche io.
+  Puoi telefonarmi in qualunque momento.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  A differenza di QW + も, questo schema è normalmente affermativo. 何でも si legge spesso なんでも.
 tags: [migaku, grammar, jlpt-n5, academy-level-1]
 :::

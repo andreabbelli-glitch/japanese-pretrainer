@@ -12,9 +12,9 @@ id: grammar-010-chan-address-someone-cutely
 pattern: "ちゃん"
 title: "「ちゃん」Refer to someone in a cute way"
 reading: "ちゃん"
-meaning_it: "Refer to someone in a cute way"
+meaning_it: "Suffisso affettuoso o diminutivo per persone vicine, bambini e animali"
 notes_it: >-
-  ちゃん va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  ちゃん esprime familiarità e tenerezza. È comune con bambini, animali, familiari o persone con cui esiste confidenza; usarlo senza la relazione adatta può risultare invadente o condiscendente.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-010-chan-address-someone-cutely
 card_type: concept
 front: "ちゃん"
 back: >-
-  Refer to someone in a cute way
+  Nome + ちゃん è un appellativo affettuoso, non un equivalente semplicemente «più cortese» di さん.
 example_jp: >-
-  これはちゃんのかたちだ。
+  さくらちゃんは{{五歳|ごさい}}だ。
 example_it: >-
-  Questa è la forma ちゃん.
+  Sakura ha cinque anni.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Può comparire anche in appellativi familiari come お母ちゃん e お兄ちゃん; la resa italiana dipende dal rapporto.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, name-suffixes]
 :::

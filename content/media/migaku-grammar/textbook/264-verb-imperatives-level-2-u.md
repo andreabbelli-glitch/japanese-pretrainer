@@ -10,45 +10,35 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 264.
+  Formazione e forza pragmatica dell'imperativo dei verbi godan.
 ---
-
 # The imperative form of う verbs
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/verb-imperatives-level-2-u`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Funzione
 
-## Punto da riconoscere
+Per formare l'imperativo di un verbo godan si sposta l'ultima mora dalla colonna in u a quella in e: 書く→書け, 読む→読め, 買う→買え.
 
-- Tema: The imperative form of う verbs
-- Sezione: verbs
-- Livello: JLPT-N4
-- Pattern allenabile: [う{{動詞|どうし}}](grammar:grammar-264-verb-imperatives-level-2-u)
+## Formazione
 
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [う{{動詞|どうし}}](grammar:grammar-264-verb-imperatives-level-2-u) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+La struttura di base è `base godan in e`. Il punto da riconoscere è [う動詞](grammar:grammar-264-verb-imperatives-level-2-u).
 
 :::example_sentence
 jp: >-
-  カフェにいく。
+  ここに{{名前|なまえ}}を{{書|か}}け。
 translation_it: >-
-  Vado al caffè.
+  Scrivi qui il tuo nome.
 :::
 
-#### Anatomia rapida
+#### Lettura dell'esempio
 
-*   う{{動詞|どうし}} -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+書く passa dalla finale く alla base in e 書け, che impartisce un ordine netto.
+
+## Sfumature e limiti
+
+È un comando diretto e brusco, naturale in emergenze, istruzioni severe, sport o rabbia. In una conversazione normale può risultare aggressivo.
 
 ## Controllo attivo
 
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+- Individua la forma e il blocco a cui si aggancia.
+- Spiega quale informazione aggiunge, senza tradurla parola per parola.
+- Crea un nuovo esempio rispettando formazione e limiti d'uso.

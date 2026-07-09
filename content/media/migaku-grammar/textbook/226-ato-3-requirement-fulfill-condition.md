@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n2, academy-level-1, numbers-and-counters]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 226.
+  Quantità mancante o parte restante con ato.
 ---
 
-# 「あと」(3) Indicate a requirement for a condition to be fulfilled
+# 「あと」(3) Requirement to fulfill a condition
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/ato-3-requirement-fulfill-condition`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## Quanto manca
 
-## Punto da riconoscere
-
-- Tema: (3) Indicate a requirement for a condition to be fulfilled
-- Sezione: numbers and counters
-- Livello: JLPT-N2
-- Pattern allenabile: [あと](grammar:grammar-226-ato-3-requirement-fulfill-condition)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [あと](grammar:grammar-226-ato-3-requirement-fulfill-condition) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+あと + quantità esprime l'ulteriore misura necessaria prima che una condizione sia soddisfatta: «ancora…», «ne mancano…».
 
 :::example_sentence
 jp: >-
-  ミカといく。
+  あと{{三日|みっか}}でテストだ。
 translation_it: >-
-  Vado con Mika.
+  Mancano tre giorni al test.
 :::
 
-#### Anatomia rapida
+あとちょっとで significa «manca pochissimo». La frase dopo で presenta ciò che accadrà al termine della quantità residua.
 
-*   あと -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Il resto + nome
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+Davanti a un nome si usa あとの: あとの箱, «le scatole restanti». È distinto da あと temporale «dopo», anche se l'idea di ciò che viene dopo collega gli usi.

@@ -12,9 +12,10 @@ id: grammar-180-kara-indicate-starting-point
 pattern: "から"
 title: "「から」(2) Indicate a starting point"
 reading: "から"
-meaning_it: "(2) Indicate a starting point"
+meaning_it: >-
+  Da; a partire da; fin da
 notes_it: >-
-  から va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Schema: punto di partenza + から. Può essere spaziale (駅から), temporale (九時から) o astratto. L'estremo finale può essere espresso con まで ma non è obbligatorio. Va distinto da から causale dopo una proposizione. Nel parlato ここから può contrarsi in こっから.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-180-kara-indicate-starting-point
 card_type: concept
 front: "から"
 back: >-
-  (2) Indicate a starting point
+  Luogo o tempo + から indica il punto iniziale di un movimento, intervallo o attività.
 example_jp: >-
-  あめだからいかない。
+  {{店|みせ}}は{{九時|くじ}}から{{開|あ}}く。
 example_it: >-
-  Non vado perché piove.
+  Il negozio apre alle nove.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  Schema: punto di partenza + から. Può essere spaziale (駅から), temporale (九時から) o astratto. L'estremo finale può essere espresso con まで ma non è obbligatorio. Va distinto da から causale dopo una proposizione. Nel parlato ここから può contrarsi in こっから.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, particles, series]
 :::

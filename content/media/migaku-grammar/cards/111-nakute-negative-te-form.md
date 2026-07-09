@@ -12,9 +12,10 @@ id: grammar-111-nakute-negative-te-form
 pattern: "なくて"
 title: "「なくて」(1) Link a negative state to the next clause"
 reading: "なくて"
-meaning_it: "collegare uno stato negativo alla frase successiva"
+meaning_it: >-
+  て-forma negativa che collega stati, eventi o una causa
 notes_it: >-
-  なくて va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  forma negativa senza い + くて. Il rapporto può essere coordinativo («non A, ma B») oppure causale («poiché non A, B»). Per un'azione deliberatamente omessa mentre se ne compie un'altra si preferisce spesso ないで.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-111-nakute-negative-te-form
 card_type: concept
 front: "なくて"
 back: >-
-  collegare uno stato negativo alla frase successiva
+  て-forma negativa che collega stati, eventi o una causa
 example_jp: >-
-  じかんがなくて、いけない。
+  {{道|みち}}が{{分|わ}}からなくて、{{駅員|えきいん}}に{{聞|き}}いた。
 example_it: >-
-  Non ho tempo, quindi non posso andare.
+  Non conoscendo la strada, ho chiesto a un addetto della stazione.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  分からなくて presenta il non sapere come causa di 駅員に聞いた. La forma deriva da 分からない. Il rapporto può essere coordinativo («non A, ma B») oppure causale («poiché non A, B»). Per un'azione deliberatamente omessa mentre se ne compie un'altra si preferisce spesso ないで.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, adjectives, verbs]
 :::

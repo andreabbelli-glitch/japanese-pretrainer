@@ -10,45 +10,24 @@ status: active
 tags: [migaku, grammar, jlpt-n3, academy-level-1, particles]
 prerequisites: []
 summary: >-
-  Ripasso del punto grammaticale numero 238.
+  Valutazione emotiva o auto-abbassamento con nanka.
 ---
 
-# 「なんか」"Someone like” or “something like"
+# 「なんか」Doing just about anything
 
-Riferimento Migaku: `https://migaku.com/grammar/japanese/nanka-doing-just-about-anything`. Il ripasso parte dalla forma giapponese, la isola nella frase e mostra quale scelta di traduzione produce in italiano.
+## «Uno/una cosa come X»
 
-## Punto da riconoscere
-
-- Tema: Someone like or something like
-- Sezione: particles
-- Livello: JLPT-N3
-- Pattern allenabile: [なんか](grammar:grammar-238-nanka-doing-just-about-anything)
-
-## Lettura operativa
-
-Il centro del ripasso è riconoscere [なんか](grammar:grammar-238-nanka-doing-just-about-anything) come una funzione, non come una traduzione isolata. Quando lo incontri in una frase, chiediti prima quale blocco modifica, quale informazione mette in primo piano e quale sfumatura aggiunge al verbo, al nome o all'intera battuta.
-
-La lettura procede in tre passi: individua la forma, osserva l'ambiente grammaticale vicino, poi scegli una resa italiana coerente con contesto, registro e verbo finale.
+なんか mette X a distanza e può comunicare disprezzo, modestia, incredulità o emozione intensa. Non possiede quindi una sola traduzione stabile.
 
 :::example_sentence
 jp: >-
-  これはなんかのかたちだ。
+  {{私|わたし}}なんか{{役|やく}}に{{立|た}}たない。
 translation_it: >-
-  Questa è la forma なんか.
+  Uno come me non è di alcun aiuto.
 :::
 
-#### Anatomia rapida
+Con un'altra persona può essere svalutante; con sé stessi spesso abbassa il parlante. In una domanda retorica rafforza l'incredulità, e con luogo + に può esprimere rifiuto appassionato.
 
-*   なんか -> **segnale grammaticale**: è il pezzo da isolare prima di tradurre tutta la frase.
-*   Il resto della frase -> **contesto**: decide se la resa italiana deve essere diretta, contrastiva, cortese, casuale o implicita.
-*   La traduzione -> **risultato**: deve conservare la funzione del pattern, non solo sostituire parola per parola.
+## Variante
 
-## Controllo attivo
-
-- Isola il segnale grammaticale prima di tradurre la frase intera.
-- Confronta esempio giapponese e resa italiana, cercando quale informazione viene aggiunta.
-- Produci una frase breve con lo stesso pattern senza guardare il modello.
-
-## Chiusura
-
-Quando il pattern è chiaro, rileggi una frase reale e controlla se riconosci subito funzione, registro e punto di aggancio.
+なんて copre molti degli stessi usi. Registro e intonazione sono essenziali per interpretare la sfumatura.

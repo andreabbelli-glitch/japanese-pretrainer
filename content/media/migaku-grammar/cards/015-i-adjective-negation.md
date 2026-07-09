@@ -12,9 +12,9 @@ id: grammar-015-i-adjective-negation
 pattern: "い形容詞"
 title: "The negative form of い adjectives"
 reading: "いけいようし"
-meaning_it: "The negative form of い adjectives"
+meaning_it: "Negativo degli aggettivi in い: sostituire い con くない"
 notes_it: >-
-  い{{形容詞|けいようし}} va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  Per formare il negativo piano di un aggettivo in い, si elimina l'い finale e si aggiunge くない. L'eccezione fondamentale è いい, che coniuga dalla forma storica よい: よくない.
 level_hint: jlpt-n5
 :::
 
@@ -26,12 +26,12 @@ entry_id: grammar-015-i-adjective-negation
 card_type: concept
 front: "い{{形容詞|けいようし}}"
 back: >-
-  The negative form of い adjectives
+  Radice dell'aggettivo in い + くない significa «non è…».
 example_jp: >-
-  これはたかい。
+  {{先生|せんせい}}の{{車|くるま}}は{{速|はや}}くない。
 example_it: >-
-  Questo è costoso.
+  L'auto dell'insegnante non è veloce.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  速い → 速くない; 高い → 高くない; いい → よくない, mai いくない.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, adjectives]
 :::

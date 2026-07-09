@@ -12,9 +12,10 @@ id: grammar-110-naide-do-b-without-doing-a
 pattern: "ないで"
 title: "「ないで」(1) \"Do B without doing A\""
 reading: "ないで"
-meaning_it: "(1) Do B without doing A"
+meaning_it: >-
+  Fare B senza fare A
 notes_it: >-
-  ないで va isolato come segnale grammaticale: osserva il blocco che precede o segue e poi scegli una resa italiana coerente con la funzione della frase.
+  verbo in forma negativa + で + azione principale. ないで è particolarmente adatto al senso intenzionale «senza fare». Non va confuso automaticamente con なくて, che spesso coordina stati negativi o introduce una causa.
 level_hint: jlpt-n4
 :::
 
@@ -26,12 +27,12 @@ entry_id: grammar-110-naide-do-b-without-doing-a
 card_type: concept
 front: "ないで"
 back: >-
-  (1) Do B without doing A
+  Fare B senza fare A
 example_jp: >-
-  カフェでたべる。
+  {{朝|あさ}}ご{{飯|はん}}を{{食|た}}べないで{{学校|がっこう}}へ{{行|い}}った。
 example_it: >-
-  Mangio al caffè.
+  Sono andato a scuola senza fare colazione.
 notes_it: >-
-  Ripassa la forma nel contesto dell'esempio: prima isola il segnale, poi scegli una resa naturale in italiano.
+  食べないで nega l'azione preliminare del mangiare; 学校へ行った è l'azione effettivamente compiuta. ないで è particolarmente adatto al senso intenzionale «senza fare». Non va confuso automaticamente con なくて, che spesso coordina stati negativi o introduce una causa.
 tags: [migaku, grammar, jlpt-n4, academy-level-1, verbs]
 :::
