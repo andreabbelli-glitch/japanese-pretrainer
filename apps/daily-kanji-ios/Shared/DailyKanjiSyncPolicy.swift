@@ -31,15 +31,21 @@ struct DailyKanjiSyncPolicy {
             return true
         }
 
-        if let lastFailureAt,
-           consecutiveFailureCount > 0,
-           now.timeIntervalSince(lastFailureAt) < failureDelay(
-               consecutiveFailureCount: consecutiveFailureCount
-           ) {
-            return false
+        if let lastFailureAt, consecutiveFailureCount > 0 {
+            let elapsedSinceFailure = now.timeIntervalSince(lastFailureAt)
+            if elapsedSinceFailure >= 0,
+               elapsedSinceFailure < failureDelay(
+                   consecutiveFailureCount: consecutiveFailureCount
+               ) {
+                return false
+            }
         }
 
         guard let metadata else {
+            return true
+        }
+
+        if metadata.cachedAt > now {
             return true
         }
 
@@ -61,8 +67,6 @@ struct DailyKanjiSyncPolicy {
     }
 
     private static func defaultCalendar() -> Calendar {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(secondsFromGMT: 0) ?? .gmt
-        return calendar
+        .autoupdatingCurrent
     }
 }

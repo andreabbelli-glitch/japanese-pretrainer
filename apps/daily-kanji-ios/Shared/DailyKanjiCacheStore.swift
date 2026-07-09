@@ -1,45 +1,88 @@
 import Foundation
 
-struct DailyKanjiCachedDatasetMetadata: Codable, Equatable {
+typealias DailyKanjiDatasetDecoder = @Sendable (Data) throws -> DailyKanjiDataset
+
+struct DailyKanjiCachedDatasetMetadata: Codable, Equatable, Sendable {
     let cachedAt: Date
     let generatedAt: String
     let cardCount: Int
 }
 
-struct DailyKanjiCacheStore {
+struct DailyKanjiCachedDatasetSnapshot: Sendable {
+    let dataset: DailyKanjiDataset
+    let metadata: DailyKanjiCachedDatasetMetadata?
+}
+
+protocol DailyKanjiCacheWriting: Sendable {
+    func write(
+        dataset: DailyKanjiDataset,
+        cachedAt: Date
+    ) async throws -> DailyKanjiCachedDatasetMetadata
+}
+
+actor DailyKanjiCacheWriter: DailyKanjiCacheWriting {
+    private let cacheStore: DailyKanjiCacheStore
+
+    init(cacheStore: DailyKanjiCacheStore) {
+        self.cacheStore = cacheStore
+    }
+
+    func write(
+        dataset: DailyKanjiDataset,
+        cachedAt: Date
+    ) async throws -> DailyKanjiCachedDatasetMetadata {
+        try cacheStore.writeSynchronously(dataset: dataset, cachedAt: cachedAt)
+    }
+}
+
+struct DailyKanjiCacheStore: Sendable {
     static let appGroupIdentifier = "group.dev.local.daily-kanji"
     static let datasetFileName = "daily-kanji-cards.json"
     static let metadataFileName = "daily-kanji-cache-metadata.json"
 
     private let directoryURL: URL
-    private let fileManager: FileManager
 
-    init(
-        directoryURL: URL = DailyKanjiCacheStore.defaultDirectoryURL(),
-        fileManager: FileManager = .default
-    ) {
+    init(directoryURL: URL = DailyKanjiCacheStore.defaultDirectoryURL()) {
         self.directoryURL = directoryURL
-        self.fileManager = fileManager
     }
 
-    func loadDataset() -> DailyKanjiDataset? {
+    func loadSnapshot(
+        now: Date = .now,
+        decodeDataset: DailyKanjiDatasetDecoder = {
+            try DailyKanjiDataset.decode(jsonData: $0)
+        }
+    ) -> DailyKanjiCachedDatasetSnapshot? {
         guard
             let data = try? Data(contentsOf: datasetURL),
-            let dataset = try? DailyKanjiDataset.decode(jsonData: data)
+            let dataset = try? decodeDataset(data),
+            dataset.version == DailyKanjiDataset.supportedVersion
         else {
             return nil
         }
 
-        return dataset
+        return DailyKanjiCachedDatasetSnapshot(
+            dataset: dataset,
+            metadata: loadCoherentMetadata(for: dataset, now: now)
+        )
     }
 
-    func loadMetadata() -> DailyKanjiCachedDatasetMetadata? {
+    func makeWriter() -> DailyKanjiCacheWriter {
+        DailyKanjiCacheWriter(cacheStore: self)
+    }
+
+    private func loadCoherentMetadata(
+        for dataset: DailyKanjiDataset,
+        now: Date
+    ) -> DailyKanjiCachedDatasetMetadata? {
         guard
             let data = try? Data(contentsOf: metadataURL),
             let metadata = try? JSONDecoder().decode(
                 DailyKanjiCachedDatasetMetadata.self,
                 from: data
-            )
+            ),
+            metadata.generatedAt == dataset.generatedAt,
+            metadata.cardCount == dataset.cards.count,
+            metadata.cachedAt <= now
         else {
             return nil
         }
@@ -47,7 +90,11 @@ struct DailyKanjiCacheStore {
         return metadata
     }
 
-    func write(dataset: DailyKanjiDataset, cachedAt: Date) throws {
+    fileprivate func writeSynchronously(
+        dataset: DailyKanjiDataset,
+        cachedAt: Date
+    ) throws -> DailyKanjiCachedDatasetMetadata {
+        let fileManager = FileManager.default
         try fileManager.createDirectory(
             at: directoryURL,
             withIntermediateDirectories: true
@@ -62,8 +109,18 @@ struct DailyKanjiCacheStore {
             cardCount: dataset.cards.count
         )
 
-        try writeAtomically(try encoder.encode(dataset), to: datasetURL)
-        try writeAtomically(try encoder.encode(metadata), to: metadataURL)
+        try writeAtomically(
+            try encoder.encode(dataset),
+            to: datasetURL,
+            fileManager: fileManager
+        )
+        try writeAtomically(
+            try encoder.encode(metadata),
+            to: metadataURL,
+            fileManager: fileManager
+        )
+
+        return metadata
     }
 
     private var datasetURL: URL {
@@ -74,7 +131,11 @@ struct DailyKanjiCacheStore {
         directoryURL.appendingPathComponent(Self.metadataFileName)
     }
 
-    private func writeAtomically(_ data: Data, to destinationURL: URL) throws {
+    private func writeAtomically(
+        _ data: Data,
+        to destinationURL: URL,
+        fileManager: FileManager
+    ) throws {
         let temporaryURL = directoryURL.appendingPathComponent(
             ".\(destinationURL.lastPathComponent).\(UUID().uuidString).tmp"
         )

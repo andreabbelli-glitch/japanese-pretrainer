@@ -1,6 +1,8 @@
 import Foundation
 
-struct DailyKanjiDataset: Codable {
+struct DailyKanjiDataset: Codable, Sendable {
+    static let supportedVersion = 1
+
     let version: Int
     let generatedAt: String
     let recentMistakeLookbackDays: Int
@@ -26,20 +28,20 @@ struct DailyKanjiDataset: Codable {
     }
 }
 
-struct DailyKanjiGlossarySnapshot: Codable, Equatable {
+struct DailyKanjiGlossarySnapshot: Codable, Equatable, Sendable {
     let version: Int
     let generatedAt: String
     let entryCount: Int
     let entries: [DailyKanjiGlossaryEntry]
 }
 
-struct DailyKanjiGlossaryEntry: Codable, Identifiable, Equatable {
-    struct Alias: Codable, Equatable {
+struct DailyKanjiGlossaryEntry: Codable, Identifiable, Equatable, Sendable {
+    struct Alias: Codable, Equatable, Sendable {
         let text: String
         let type: String?
     }
 
-    struct MediaRef: Codable, Equatable {
+    struct MediaRef: Codable, Equatable, Sendable {
         let audioSrc: String?
         let entryId: String
         let sourceId: String
@@ -91,13 +93,13 @@ enum DailyKanjiGlossaryIndex {
     }
 }
 
-struct DailyKanjiCard: Codable, Identifiable, Equatable {
-    struct Media: Codable, Equatable {
+struct DailyKanjiCard: Codable, Identifiable, Equatable, Sendable {
+    struct Media: Codable, Equatable, Sendable {
         let slug: String
         let title: String
     }
 
-    struct Lesson: Codable, Equatable {
+    struct Lesson: Codable, Equatable, Sendable {
         let slug: String
         let title: String
         let orderIndex: Int?
@@ -109,11 +111,11 @@ struct DailyKanjiCard: Codable, Identifiable, Equatable {
         }
     }
 
-    struct Segment: Codable, Equatable {
+    struct Segment: Codable, Equatable, Sendable {
         let title: String
     }
 
-    struct Entry: Codable, Equatable {
+    struct Entry: Codable, Equatable, Sendable {
         let audioSrc: String?
         let id: String
         let kind: DailyKanjiEntryKind
@@ -124,7 +126,7 @@ struct DailyKanjiCard: Codable, Identifiable, Equatable {
         let reading: String?
     }
 
-    struct SRS: Codable, Equatable {
+    struct SRS: Codable, Equatable, Sendable {
         let difficulty: Double?
         let dueAt: String?
         let lapses: Int
@@ -141,14 +143,14 @@ struct DailyKanjiCard: Codable, Identifiable, Equatable {
         let state: DailyKanjiStudyState
     }
 
-    struct StudyModeScope: Codable, Equatable {
+    struct StudyModeScope: Codable, Equatable, Sendable {
         let lessonOrderIndex: Int?
         let lessonSlug: String
         let lessonTitle: String
         let order: Int?
     }
 
-    struct StudyModes: Codable, Equatable {
+    struct StudyModes: Codable, Equatable, Sendable {
         let daily: Bool?
         let prestudy: StudyModeScope?
         let lastLessonsHardAgain: StudyModeScope?
@@ -288,12 +290,12 @@ struct DailyKanjiPitchAccentPattern: Equatable {
     }
 }
 
-enum DailyKanjiEntryKind: String, Codable {
+enum DailyKanjiEntryKind: String, Codable, Sendable {
     case term
     case grammar
 }
 
-enum DailyKanjiPriorityReason: String, Codable, Equatable {
+enum DailyKanjiPriorityReason: String, Codable, Equatable, Sendable {
     case recentHardAgain = "recent-hard-again"
     case learning
     case relearning
@@ -302,7 +304,7 @@ enum DailyKanjiPriorityReason: String, Codable, Equatable {
     case lapses
 }
 
-enum DailyKanjiStudyState: String, Codable, Equatable {
+enum DailyKanjiStudyState: String, Codable, Equatable, Sendable {
     case learning
     case review
     case relearning

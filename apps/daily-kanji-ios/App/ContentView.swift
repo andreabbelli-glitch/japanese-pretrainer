@@ -1323,8 +1323,8 @@ struct DailyKanjiSyncStatusPresentation: Equatable {
 
     private static func title(for source: DailyKanjiDatasetSource) -> String {
         switch source {
-        case .cache:
-            return "Sincronizzato"
+        case .cache(let metadata):
+            return metadata == nil ? "Cache da verificare" : "Sincronizzato"
         case .bundle:
             return "Bundle"
         case .sample:
@@ -1336,7 +1336,7 @@ struct DailyKanjiSyncStatusPresentation: Equatable {
         switch source {
         case .cache(let metadata):
             guard let metadata else {
-                return "Cache condivisa"
+                return "Cache condivisa - aggiornamento richiesto"
             }
 
             return "Cache condivisa - \(metadata.cardCount) card"
@@ -1358,8 +1358,8 @@ struct DailyKanjiSyncStatusPresentation: Equatable {
 
     private static func systemImage(for source: DailyKanjiDatasetSource) -> String {
         switch source {
-        case .cache:
-            return "checkmark.icloud"
+        case .cache(let metadata):
+            return metadata == nil ? "exclamationmark.triangle" : "checkmark.icloud"
         case .bundle:
             return "shippingbox"
         case .sample:

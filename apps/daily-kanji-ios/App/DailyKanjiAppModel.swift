@@ -24,8 +24,7 @@ final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var liveReviewState: DailyKanjiLiveReviewState
     @Published private(set) var selectedAppSection: DailyKanjiAppSection
 
-    private let repository: DailyKanjiRepository
-    private let cacheStore: DailyKanjiCacheStore
+    private let cacheWriter: any DailyKanjiCacheWriting
     private let historyStore: DailyKanjiHistoryStore
     private let widgetHistoryStore: DailyKanjiWidgetTimelineHistoryStore
     private let scopeStore: DailyKanjiStudyScopeStore
@@ -36,6 +35,9 @@ final class DailyKanjiAppModel: ObservableObject {
     private let reloadTimelines: () -> Void
     private let liveReviewNow: () -> Date
     private let deepLinkActivationSuppressionInterval: TimeInterval = 5
+    private var datasetSource: DailyKanjiDatasetSource
+    private var requiresStudyModeAwareSync: Bool
+    private var activeSyncId: UUID?
     private var syncTask: Task<Void, Never>?
     private var liveReviewFetchTask: Task<Void, Never>?
     private var activeLiveReviewFetchId: UUID?
@@ -72,7 +74,9 @@ final class DailyKanjiAppModel: ObservableObject {
 
     init(
         repository: DailyKanjiRepository? = nil,
+        initialRepositorySnapshot: DailyKanjiRepositorySnapshot? = nil,
         cacheStore: DailyKanjiCacheStore = DailyKanjiCacheStore(),
+        cacheWriter: (any DailyKanjiCacheWriting)? = nil,
         historyStore: DailyKanjiHistoryStore = DailyKanjiHistoryStore(),
         widgetHistoryStore: DailyKanjiWidgetTimelineHistoryStore =
             DailyKanjiWidgetTimelineHistoryStore(),
@@ -89,10 +93,11 @@ final class DailyKanjiAppModel: ObservableObject {
         now: Date = .now
     ) {
         let resolvedRepository = repository ?? DailyKanjiRepository(cacheStore: cacheStore)
-        self.repository = resolvedRepository
-        self.cacheStore = cacheStore
-        self.cards = resolvedRepository.loadCards()
-        self.glossaryEntries = resolvedRepository.loadGlossaryEntries()
+        let repositorySnapshot = initialRepositorySnapshot
+            ?? resolvedRepository.loadSnapshot(now: now)
+        self.cacheWriter = cacheWriter ?? resolvedRepository.makeCacheWriter()
+        self.cards = repositorySnapshot.cards
+        self.glossaryEntries = repositorySnapshot.glossaryEntries
         self.historyStore = historyStore
         self.widgetHistoryStore = widgetHistoryStore
         self.scopeStore = scopeStore
@@ -102,9 +107,11 @@ final class DailyKanjiAppModel: ObservableObject {
         self.notificationRegistrar = notificationRegistrar
         self.reloadTimelines = reloadTimelines
         self.liveReviewNow = liveReviewNow
+        self.datasetSource = repositorySnapshot.source
+        self.requiresStudyModeAwareSync = repositorySnapshot.requiresStudyModeAwareSync
         self.syncState = Self.initialSyncState(
             syncer: syncer,
-            source: resolvedRepository.loadDatasetSource()
+            source: repositorySnapshot.source
         )
         self.liveReviewState = Self.initialLiveReviewState(liveReviewClient: liveReviewClient)
         self.selectedAppSection = liveReviewClient == nil ? .daily : .review
@@ -123,6 +130,7 @@ final class DailyKanjiAppModel: ObservableObject {
         widgetHistoryStore: DailyKanjiWidgetTimelineHistoryStore =
             DailyKanjiWidgetTimelineHistoryStore.emptyTransientStore(),
         cacheStore: DailyKanjiCacheStore = DailyKanjiCacheStore(),
+        cacheWriter: (any DailyKanjiCacheWriting)? = nil,
         scopeStore: DailyKanjiStudyScopeStore = DailyKanjiStudyScopeStore(),
         syncPolicy: DailyKanjiSyncPolicy = DailyKanjiSyncPolicy(),
         syncer: DailyKanjiSyncing? = nil,
@@ -134,8 +142,7 @@ final class DailyKanjiAppModel: ObservableObject {
         liveReviewNow: @escaping () -> Date = { .now },
         now: Date = .now
     ) {
-        self.repository = DailyKanjiRepository(cacheStore: cacheStore)
-        self.cacheStore = cacheStore
+        self.cacheWriter = cacheWriter ?? cacheStore.makeWriter()
         self.cards = cards
         self.glossaryEntries = []
         self.historyStore = historyStore
@@ -147,6 +154,10 @@ final class DailyKanjiAppModel: ObservableObject {
         self.notificationRegistrar = notificationRegistrar
         self.reloadTimelines = reloadTimelines
         self.liveReviewNow = liveReviewNow
+        self.datasetSource = .sample
+        self.requiresStudyModeAwareSync = cards.contains {
+            $0.studyModes != nil
+        }
         self.syncState = Self.initialSyncState(syncer: syncer, source: .sample)
         self.liveReviewState = Self.initialLiveReviewState(liveReviewClient: liveReviewClient)
         self.selectedAppSection = liveReviewClient == nil ? .daily : .review
@@ -242,16 +253,19 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     func syncNow(now: Date = .now, force: Bool = false) async {
+        guard activeSyncId == nil else {
+            return
+        }
         guard let syncer else {
             syncState = .unavailable
             return
         }
 
-        let source = currentDatasetSource()
+        let source = datasetSource
         guard
             syncPolicy.shouldSync(
                 now: now,
-                metadata: cacheStore.loadMetadata(),
+                metadata: currentCacheMetadata,
                 lastFailureAt: lastFailureAt,
                 consecutiveFailureCount: consecutiveFailureCount,
                 force: force
@@ -261,18 +275,33 @@ final class DailyKanjiAppModel: ObservableObject {
             return
         }
 
+        let syncId = UUID()
+        activeSyncId = syncId
+        defer {
+            if activeSyncId == syncId {
+                activeSyncId = nil
+            }
+        }
         syncState = .syncing(source: source)
 
         do {
             let dataset = try await syncer.fetchDataset()
+            guard dataset.version == DailyKanjiDataset.supportedVersion else {
+                throw DailyKanjiAppSyncError.unsupportedDatasetVersion
+            }
             guard !dataset.cards.isEmpty else {
                 throw DailyKanjiAppSyncError.emptyDataset
             }
             guard
-                !repository.requiresStudyModeAwareSync()
+                !requiresStudyModeAwareSync
                     || dataset.supportsMediaStudyModes
             else {
                 throw DailyKanjiAppSyncError.missingStudyModes
+            }
+
+            let metadata = try await cacheWriter.write(dataset: dataset, cachedAt: now)
+            guard activeSyncId == syncId else {
+                return
             }
 
             let visibleCardId = selectedCard?.cardId
@@ -282,9 +311,11 @@ final class DailyKanjiAppModel: ObservableObject {
                     mediaSlug: draftMediaSlug
                 )
                 : nil
-            try cacheStore.write(dataset: dataset, cachedAt: now)
             cards = dataset.cards
             glossaryEntries = dataset.glossary?.entries ?? []
+            datasetSource = .cache(metadata: metadata)
+            requiresStudyModeAwareSync = requiresStudyModeAwareSync
+                || dataset.supportsMediaStudyModes
             lastFailureAt = nil
             consecutiveFailureCount = 0
             normalizeSelectedStudyScope()
@@ -302,7 +333,7 @@ final class DailyKanjiAppModel: ObservableObject {
                 recordsReplacement: true,
                 recordsPreparedSelection: false
             )
-            syncState = .idle(source: currentDatasetSource())
+            syncState = .idle(source: datasetSource)
             reloadTimelines()
         } catch {
             lastFailureAt = now
@@ -312,7 +343,7 @@ final class DailyKanjiAppModel: ObservableObject {
             )
             syncState = .failed(
                 message: Self.syncFailureMessage(for: error),
-                source: currentDatasetSource()
+                source: datasetSource
             )
         }
     }
@@ -809,16 +840,19 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     private func shouldStartSync(now: Date, force: Bool) -> Bool {
+        guard activeSyncId == nil else {
+            return false
+        }
         guard syncer != nil else {
             syncState = .unavailable
             return false
         }
 
-        let source = currentDatasetSource()
+        let source = datasetSource
         guard
             syncPolicy.shouldSync(
                 now: now,
-                metadata: cacheStore.loadMetadata(),
+                metadata: currentCacheMetadata,
                 lastFailureAt: lastFailureAt,
                 consecutiveFailureCount: consecutiveFailureCount,
                 force: force
@@ -954,8 +988,12 @@ final class DailyKanjiAppModel: ObservableObject {
         recentSelectionHistory
     }
 
-    private func currentDatasetSource() -> DailyKanjiDatasetSource {
-        repository.loadDatasetSource()
+    private var currentCacheMetadata: DailyKanjiCachedDatasetMetadata? {
+        guard case .cache(let metadata) = datasetSource else {
+            return nil
+        }
+
+        return metadata
     }
 
     private static func initialSyncState(
@@ -1009,6 +1047,7 @@ final class DailyKanjiAppModel: ObservableObject {
 private enum DailyKanjiAppSyncError: LocalizedError {
     case emptyDataset
     case missingStudyModes
+    case unsupportedDatasetVersion
 
     var errorDescription: String? {
         switch self {
@@ -1016,6 +1055,8 @@ private enum DailyKanjiAppSyncError: LocalizedError {
             return "Downloaded dataset has no cards."
         case .missingStudyModes:
             return "Downloaded dataset does not include Daily Kanji study modes."
+        case .unsupportedDatasetVersion:
+            return "Downloaded dataset version is not supported."
         }
     }
 }

@@ -236,9 +236,9 @@ restano installabili senza `aps-environment`, mentre `DAILY_KANJI_ENABLE_APNS=1`
 fa usare `DailyKanjiPush.entitlements` quando il provisioning lo supporta. Il
 widget resta senza push e senza rete. Dopo una
 build installata con `DAILY_KANJI_IOS_SYNC_*`, l'app prova il sync dataset al
-massimo ogni 4 ore nello stesso giorno, sempre a cambio giorno, oppure subito
-quando l'utente preme "Aggiorna ora". Il widget non fa rete direttamente; legge
-la cache condivisa App Group scritta dall'app.
+massimo ogni 4 ore nello stesso giorno, sempre al cambio del giorno locale del
+dispositivo, oppure subito quando l'utente preme "Aggiorna ora". Il widget non
+fa rete direttamente; legge la cache condivisa App Group scritta dall'app.
 
 Unit test iOS:
 

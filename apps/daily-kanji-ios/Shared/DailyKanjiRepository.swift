@@ -1,89 +1,121 @@
 import Foundation
 
-enum DailyKanjiDatasetSource: Equatable {
+enum DailyKanjiDatasetSource: Equatable, Sendable {
     case cache(metadata: DailyKanjiCachedDatasetMetadata?)
     case bundle
     case sample
 }
 
-struct DailyKanjiRepository {
+struct DailyKanjiRepositorySnapshot: Sendable {
+    let dataset: DailyKanjiDataset?
+    let source: DailyKanjiDatasetSource
+    let requiresStudyModeAwareSync: Bool
+
+    var cards: [DailyKanjiCard] {
+        dataset?.cards ?? DailyKanjiSampleData.cards
+    }
+
+    var glossaryEntries: [DailyKanjiGlossaryEntry] {
+        dataset?.glossary?.entries ?? []
+    }
+
+    var cacheMetadata: DailyKanjiCachedDatasetMetadata? {
+        guard case .cache(let metadata) = source else {
+            return nil
+        }
+
+        return metadata
+    }
+}
+
+struct DailyKanjiRepository: Sendable {
     private let bundle: Bundle
     private let cacheStore: DailyKanjiCacheStore
+    private let decodeDataset: DailyKanjiDatasetDecoder
 
     init(
         bundle: Bundle = .main,
-        cacheStore: DailyKanjiCacheStore = DailyKanjiCacheStore()
+        cacheStore: DailyKanjiCacheStore = DailyKanjiCacheStore(),
+        decodeDataset: @escaping DailyKanjiDatasetDecoder = {
+            try DailyKanjiDataset.decode(jsonData: $0)
+        }
     ) {
         self.bundle = bundle
         self.cacheStore = cacheStore
+        self.decodeDataset = decodeDataset
     }
 
     func loadCards() -> [DailyKanjiCard] {
-        if let dataset = loadPreferredDataset() {
-            return dataset.cards
+        loadSnapshot().cards
+    }
+
+    func loadSnapshot(now: Date = .now) -> DailyKanjiRepositorySnapshot {
+        let cachedSnapshot = cacheStore.loadSnapshot(
+            now: now,
+            decodeDataset: decodeDataset
+        )
+        let cachedDataset = cachedSnapshot.flatMap { snapshot in
+            snapshot.dataset.cards.isEmpty ? nil : snapshot.dataset
         }
 
-        return DailyKanjiSampleData.cards
-    }
+        if let cachedDataset, cachedDataset.supportsMediaStudyModes {
+            return DailyKanjiRepositorySnapshot(
+                dataset: cachedDataset,
+                source: .cache(metadata: cachedSnapshot?.metadata),
+                requiresStudyModeAwareSync: true
+            )
+        }
 
-    func loadGlossaryEntries() -> [DailyKanjiGlossaryEntry] {
-        loadPreferredDataset()?.glossary?.entries ?? []
-    }
-
-    private func loadPreferredDataset() -> DailyKanjiDataset? {
         let bundledDataset = loadBundledDataset()
-        if let dataset = loadCachedDataset(
-            requiresStudyModes: bundledDataset?.supportsMediaStudyModes == true
-        ) {
-            return dataset
+        let bundleRequiresStudyModes = bundledDataset?.supportsMediaStudyModes == true
+
+        if let cachedDataset, !bundleRequiresStudyModes {
+            return DailyKanjiRepositorySnapshot(
+                dataset: cachedDataset,
+                source: .cache(metadata: cachedSnapshot?.metadata),
+                requiresStudyModeAwareSync: false
+            )
         }
 
-        if let dataset = bundledDataset {
-            return dataset
+        if let bundledDataset {
+            return DailyKanjiRepositorySnapshot(
+                dataset: bundledDataset,
+                source: .bundle,
+                requiresStudyModeAwareSync: bundleRequiresStudyModes
+            )
         }
 
-        return nil
+        if let cachedDataset {
+            return DailyKanjiRepositorySnapshot(
+                dataset: cachedDataset,
+                source: .cache(metadata: cachedSnapshot?.metadata),
+                requiresStudyModeAwareSync: cachedDataset.supportsMediaStudyModes
+            )
+        }
+
+        return DailyKanjiRepositorySnapshot(
+            dataset: nil,
+            source: .sample,
+            requiresStudyModeAwareSync: false
+        )
     }
 
-    func loadDatasetSource() -> DailyKanjiDatasetSource {
-        let bundledDataset = loadBundledDataset()
-        if loadCachedDataset(
-            requiresStudyModes: bundledDataset?.supportsMediaStudyModes == true
-        ) != nil {
-            return .cache(metadata: cacheStore.loadMetadata())
-        }
-
-        if bundledDataset != nil {
-            return .bundle
-        }
-
-        return .sample
+    func loadSnapshotAsync(now: Date = .now) async -> DailyKanjiRepositorySnapshot {
+        await Task.detached(priority: .userInitiated) {
+            loadSnapshot(now: now)
+        }.value
     }
 
-    func requiresStudyModeAwareSync() -> Bool {
-        loadBundledDataset()?.supportsMediaStudyModes == true
-    }
-
-    private func loadCachedDataset(requiresStudyModes: Bool = false) -> DailyKanjiDataset? {
-        guard
-            let dataset = cacheStore.loadDataset(),
-            !dataset.cards.isEmpty
-        else {
-            return nil
-        }
-
-        if requiresStudyModes && !dataset.supportsMediaStudyModes {
-            return nil
-        }
-
-        return dataset
+    func makeCacheWriter() -> DailyKanjiCacheWriter {
+        cacheStore.makeWriter()
     }
 
     private func loadBundledDataset() -> DailyKanjiDataset? {
         guard
             let url = bundle.url(forResource: "daily-kanji-cards", withExtension: "json"),
             let data = try? Data(contentsOf: url),
-            let dataset = try? DailyKanjiDataset.decode(jsonData: data),
+            let dataset = try? decodeDataset(data),
+            dataset.version == DailyKanjiDataset.supportedVersion,
             !dataset.cards.isEmpty
         else {
             return nil

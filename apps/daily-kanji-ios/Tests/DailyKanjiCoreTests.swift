@@ -62,7 +62,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertTrue(relativePath.hasSuffix(".mp3"))
     }
 
-    func testRepositoryPrefersSyncedCacheOverBundle() throws {
+    func testRepositoryPrefersSyncedCacheOverBundle() async throws {
         let temporaryDirectory = try Self.makeTemporaryDirectory()
         defer { Self.removeTemporaryDirectory(temporaryDirectory) }
         let bundle = try Self.makeBundle(
@@ -78,14 +78,18 @@ final class DailyKanjiCoreTests: XCTestCase {
             recentMistakeLookbackDays: 3,
             cards: try Self.rankedCards(count: 1)
         )
-        try cacheStore.write(dataset: cachedDataset, cachedAt: now)
+        _ = try await cacheStore.makeWriter().write(
+            dataset: cachedDataset,
+            cachedAt: now
+        )
 
         let repository = DailyKanjiRepository(bundle: bundle, cacheStore: cacheStore)
+        let snapshot = repository.loadSnapshot(now: now)
 
-        XCTAssertEqual(repository.loadCards().map(\.cardId), ["card-0"])
+        XCTAssertEqual(snapshot.cards.map(\.cardId), ["card-0"])
     }
 
-    func testRepositoryReportsSyncedDatasetSourceMetadata() throws {
+    func testRepositoryReportsSyncedDatasetSourceMetadata() async throws {
         let temporaryDirectory = try Self.makeTemporaryDirectory()
         defer { Self.removeTemporaryDirectory(temporaryDirectory) }
         let bundle = try Self.makeBundle(
@@ -100,12 +104,16 @@ final class DailyKanjiCoreTests: XCTestCase {
             recentMistakeLookbackDays: 3,
             cards: try Self.rankedCards(count: 1)
         )
-        try cacheStore.write(dataset: dataset, cachedAt: cachedAt)
+        _ = try await cacheStore.makeWriter().write(
+            dataset: dataset,
+            cachedAt: cachedAt
+        )
 
         let repository = DailyKanjiRepository(bundle: bundle, cacheStore: cacheStore)
+        let snapshot = repository.loadSnapshot(now: cachedAt)
 
         XCTAssertEqual(
-            repository.loadDatasetSource(),
+            snapshot.source,
             .cache(
                 metadata: DailyKanjiCachedDatasetMetadata(
                     cachedAt: cachedAt,
@@ -131,16 +139,101 @@ final class DailyKanjiCoreTests: XCTestCase {
         try Data("not-json".utf8).write(
             to: cacheDirectory.appendingPathComponent(DailyKanjiCacheStore.datasetFileName)
         )
+        try Self.writeCacheMetadata(
+            DailyKanjiCachedDatasetMetadata(
+                cachedAt: now,
+                generatedAt: "2026-06-11T08:00:00.000Z",
+                cardCount: 1
+            ),
+            to: cacheDirectory
+        )
 
         let repository = DailyKanjiRepository(
             bundle: bundle,
             cacheStore: DailyKanjiCacheStore(directoryURL: cacheDirectory)
         )
+        let snapshot = repository.loadSnapshot(now: now)
 
-        XCTAssertEqual(repository.loadCards().map(\.cardId), ["hard", "stable"])
+        XCTAssertEqual(snapshot.cards.map(\.cardId), ["hard", "stable"])
+        XCTAssertEqual(snapshot.source, .bundle)
+        XCTAssertNil(snapshot.cacheMetadata)
     }
 
-    func testRepositoryFallsBackToStudyModeBundleWhenCacheDoesNotDeclareModes() throws {
+    func testRepositoryFallsBackToBundleForUnsupportedCacheVersion() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let bundledDataset = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON)
+        let bundle = try Self.makeBundle(
+            containing: bundledDataset,
+            in: temporaryDirectory
+        )
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let unsupportedDataset = DailyKanjiDataset(
+            version: DailyKanjiDataset.supportedVersion + 1,
+            generatedAt: "2026-06-11T09:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        _ = try await cacheStore.makeWriter().write(
+            dataset: unsupportedDataset,
+            cachedAt: now
+        )
+
+        let snapshot = DailyKanjiRepository(
+            bundle: bundle,
+            cacheStore: cacheStore
+        ).loadSnapshot(now: now)
+
+        XCTAssertEqual(snapshot.cards.map(\.cardId), bundledDataset.cards.map(\.cardId))
+        XCTAssertEqual(snapshot.source, .bundle)
+    }
+
+    func testInterruptedCachePairUsesDatasetWithNilMetadataAndForcesSync() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let cacheStore = DailyKanjiCacheStore(directoryURL: temporaryDirectory)
+        let previousDataset = DailyKanjiDataset(
+            version: DailyKanjiDataset.supportedVersion,
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        let interruptedDataset = try DailyKanjiDataset.decode(
+            jsonData: Self.modeScopedDatasetJSON
+        )
+        _ = try await cacheStore.makeWriter().write(
+            dataset: previousDataset,
+            cachedAt: now
+        )
+        try JSONEncoder()
+            .encode(interruptedDataset)
+            .write(
+                to: temporaryDirectory.appendingPathComponent(
+                    DailyKanjiCacheStore.datasetFileName
+                )
+            )
+
+        let snapshot = DailyKanjiRepository(
+            bundle: Bundle.main,
+            cacheStore: cacheStore
+        ).loadSnapshot(now: now)
+
+        XCTAssertEqual(snapshot.cards.map(\.cardId), interruptedDataset.cards.map(\.cardId))
+        XCTAssertEqual(snapshot.source, .cache(metadata: nil))
+        XCTAssertTrue(
+            DailyKanjiSyncPolicy().shouldSync(
+                now: now,
+                metadata: snapshot.cacheMetadata,
+                lastFailureAt: nil,
+                consecutiveFailureCount: 0,
+                force: false
+            )
+        )
+    }
+
+    func testRepositoryFallsBackToStudyModeBundleWhenCacheDoesNotDeclareModes() async throws {
         let temporaryDirectory = try Self.makeTemporaryDirectory()
         defer { Self.removeTemporaryDirectory(temporaryDirectory) }
         let bundle = try Self.makeBundle(
@@ -156,18 +249,206 @@ final class DailyKanjiCoreTests: XCTestCase {
             recentMistakeLookbackDays: 3,
             cards: try Self.rankedCards(count: 1)
         )
-        try cacheStore.write(dataset: legacyDataset, cachedAt: now)
+        _ = try await cacheStore.makeWriter().write(
+            dataset: legacyDataset,
+            cachedAt: now
+        )
 
-        let repository = DailyKanjiRepository(bundle: bundle, cacheStore: cacheStore)
+        let decoder = CountingDailyKanjiDatasetDecoder()
+        let repository = DailyKanjiRepository(
+            bundle: bundle,
+            cacheStore: cacheStore,
+            decodeDataset: decoder.decode
+        )
+        let snapshot = repository.loadSnapshot(now: now)
 
         XCTAssertEqual(
-            repository.loadCards().map(\.cardId),
+            snapshot.cards.map(\.cardId),
             ["daily-global", "prestudy-one", "last-one", "last-two"]
         )
-        XCTAssertEqual(repository.loadDatasetSource(), .bundle)
+        XCTAssertEqual(snapshot.source, .bundle)
+        XCTAssertEqual(decoder.count, 2)
     }
 
-    func testCacheStoreWritesDatasetAtomicallyWithMetadata() throws {
+    func testRepositorySnapshotDecodesModeAwareCacheOnlyOnce() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let bundle = try Self.makeBundle(
+            containing: try DailyKanjiDataset.decode(jsonData: Self.datasetJSON),
+            in: temporaryDirectory
+        )
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let modeDataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let glossary = try XCTUnwrap(
+            DailyKanjiDataset.decode(jsonData: Self.glossaryDatasetJSON).glossary
+        )
+        let cachedDataset = DailyKanjiDataset(
+            version: modeDataset.version,
+            generatedAt: modeDataset.generatedAt,
+            recentMistakeLookbackDays: modeDataset.recentMistakeLookbackDays,
+            cards: modeDataset.cards,
+            glossary: glossary
+        )
+        _ = try await cacheStore.makeWriter().write(
+            dataset: cachedDataset,
+            cachedAt: now
+        )
+        let decoder = CountingDailyKanjiDatasetDecoder()
+        let repository = DailyKanjiRepository(
+            bundle: bundle,
+            cacheStore: cacheStore,
+            decodeDataset: decoder.decode
+        )
+
+        let snapshot = repository.loadSnapshot(now: now)
+
+        XCTAssertEqual(decoder.count, 1)
+        XCTAssertEqual(snapshot.source, .cache(metadata: snapshot.cacheMetadata))
+        XCTAssertEqual(snapshot.cards.map(\.cardId), modeDataset.cards.map(\.cardId))
+        XCTAssertEqual(snapshot.glossaryEntries.map(\.id), glossary.entries.map(\.id))
+        XCTAssertTrue(snapshot.requiresStudyModeAwareSync)
+    }
+
+    @MainActor
+    func testRepositoryAsyncSnapshotDecodesOutsideTheMainThread() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let dataset = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON)
+        let bundle = try Self.makeBundle(containing: dataset, in: temporaryDirectory)
+        let decoder = CountingDailyKanjiDatasetDecoder()
+        let repository = DailyKanjiRepository(
+            bundle: bundle,
+            cacheStore: DailyKanjiCacheStore(
+                directoryURL: temporaryDirectory.appendingPathComponent(
+                    "Cache",
+                    isDirectory: true
+                )
+            ),
+            decodeDataset: decoder.decode
+        )
+
+        let snapshot = await repository.loadSnapshotAsync(now: now)
+
+        XCTAssertEqual(snapshot.cards.map(\.cardId), dataset.cards.map(\.cardId))
+        XCTAssertEqual(decoder.count, 1)
+        XCTAssertFalse(decoder.wasCalledOnMainThread)
+    }
+
+    @MainActor
+    func testAppModelUsesPreloadedRepositorySnapshotWithoutDecodingAgain() throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let defaultsName = "DailyKanjiPreloadedSnapshot.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let dataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let bundle = try Self.makeBundle(containing: dataset, in: temporaryDirectory)
+        let decoder = CountingDailyKanjiDatasetDecoder()
+        let repository = DailyKanjiRepository(
+            bundle: bundle,
+            cacheStore: DailyKanjiCacheStore(
+                directoryURL: temporaryDirectory.appendingPathComponent(
+                    "Cache",
+                    isDirectory: true
+                )
+            ),
+            decodeDataset: decoder.decode
+        )
+        let snapshot = DailyKanjiRepositorySnapshot(
+            dataset: dataset,
+            source: .bundle,
+            requiresStudyModeAwareSync: true
+        )
+
+        let model = DailyKanjiAppModel(
+            repository: repository,
+            initialRepositorySnapshot: snapshot,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            widgetHistoryStore: DailyKanjiWidgetTimelineHistoryStore(defaults: defaults),
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            syncer: nil,
+            liveReviewClient: nil,
+            now: now
+        )
+
+        XCTAssertEqual(decoder.count, 0)
+        XCTAssertEqual(model.cards.map(\.cardId), dataset.cards.map(\.cardId))
+        XCTAssertEqual(model.syncState, .unavailable)
+    }
+
+    func testCacheSnapshotKeepsUsableDatasetButDropsIncoherentMetadata() async throws {
+        let dataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let cases: [(String, DailyKanjiCachedDatasetMetadata?)] = [
+            ("missing", nil),
+            (
+                "generatedAt",
+                DailyKanjiCachedDatasetMetadata(
+                    cachedAt: now,
+                    generatedAt: "2026-06-12T00:00:00.000Z",
+                    cardCount: dataset.cards.count
+                )
+            ),
+            (
+                "cardCount",
+                DailyKanjiCachedDatasetMetadata(
+                    cachedAt: now,
+                    generatedAt: dataset.generatedAt,
+                    cardCount: dataset.cards.count + 1
+                )
+            ),
+            (
+                "future",
+                DailyKanjiCachedDatasetMetadata(
+                    cachedAt: now.addingTimeInterval(1),
+                    generatedAt: dataset.generatedAt,
+                    cardCount: dataset.cards.count
+                )
+            )
+        ]
+
+        for (name, replacementMetadata) in cases {
+            let temporaryDirectory = try Self.makeTemporaryDirectory()
+            defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+            let cacheStore = DailyKanjiCacheStore(directoryURL: temporaryDirectory)
+            _ = try await cacheStore.makeWriter().write(
+                dataset: dataset,
+                cachedAt: now
+            )
+            let metadataURL = temporaryDirectory.appendingPathComponent(
+                DailyKanjiCacheStore.metadataFileName
+            )
+            if let replacementMetadata {
+                try Self.writeCacheMetadata(replacementMetadata, to: temporaryDirectory)
+            } else {
+                try FileManager.default.removeItem(at: metadataURL)
+            }
+
+            let snapshot = DailyKanjiRepository(
+                bundle: Bundle.main,
+                cacheStore: cacheStore
+            ).loadSnapshot(now: now)
+
+            XCTAssertEqual(snapshot.cards.map(\.cardId), dataset.cards.map(\.cardId), name)
+            XCTAssertEqual(snapshot.source, .cache(metadata: nil), name)
+            XCTAssertNil(snapshot.cacheMetadata, name)
+            XCTAssertTrue(
+                DailyKanjiSyncPolicy().shouldSync(
+                    now: now,
+                    metadata: snapshot.cacheMetadata,
+                    lastFailureAt: nil,
+                    consecutiveFailureCount: 0,
+                    force: false
+                ),
+                name
+            )
+        }
+    }
+
+    func testCacheStoreWritesDatasetAtomicallyWithMetadata() async throws {
         let temporaryDirectory = try Self.makeTemporaryDirectory()
         defer { Self.removeTemporaryDirectory(temporaryDirectory) }
         let cacheStore = DailyKanjiCacheStore(directoryURL: temporaryDirectory)
@@ -179,17 +460,22 @@ final class DailyKanjiCoreTests: XCTestCase {
             cards: try Self.rankedCards(count: 1)
         )
 
-        try cacheStore.write(dataset: dataset, cachedAt: cachedAt)
+        let writtenMetadata = try await cacheStore.makeWriter().write(
+            dataset: dataset,
+            cachedAt: cachedAt
+        )
+        let snapshot = try XCTUnwrap(cacheStore.loadSnapshot(now: cachedAt))
 
-        XCTAssertEqual(cacheStore.loadDataset()?.cards.map(\.cardId), ["card-0"])
+        XCTAssertEqual(snapshot.dataset.cards.map(\.cardId), ["card-0"])
         XCTAssertEqual(
-            cacheStore.loadMetadata(),
+            snapshot.metadata,
             DailyKanjiCachedDatasetMetadata(
                 cachedAt: cachedAt,
                 generatedAt: "2026-06-11T08:00:00.000Z",
                 cardCount: 1
             )
         )
+        XCTAssertEqual(writtenMetadata, snapshot.metadata)
     }
 
     func testCacheStoreDeclaresTheSharedAppGroupIdentifier() {
@@ -218,18 +504,70 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
-    func testSyncPolicyRefreshesAfterCalendarDayChange() {
-        let policy = DailyKanjiSyncPolicy()
+    func testSyncPolicyDoesNotRefreshAtUtcMidnightWithinTheSameRomeDay() {
+        let policy = DailyKanjiSyncPolicy(calendar: Self.romeCalendar())
         let metadata = DailyKanjiCachedDatasetMetadata(
             cachedAt: Self.isoDate("2026-06-10T23:30:00.000Z"),
             generatedAt: "2026-06-10T23:30:00.000Z",
             cardCount: 1
         )
 
-        XCTAssertTrue(
+        XCTAssertFalse(
             policy.shouldSync(
                 now: Self.isoDate("2026-06-11T00:05:00.000Z"),
                 metadata: metadata,
+                lastFailureAt: nil,
+                consecutiveFailureCount: 0,
+                force: false
+            )
+        )
+    }
+
+    func testSyncPolicyRefreshesAfterRomeCalendarDayChange() {
+        let policy = DailyKanjiSyncPolicy(calendar: Self.romeCalendar())
+        let metadata = DailyKanjiCachedDatasetMetadata(
+            cachedAt: Self.isoDate("2026-06-10T21:55:00.000Z"),
+            generatedAt: "2026-06-10T21:55:00.000Z",
+            cardCount: 1
+        )
+
+        XCTAssertTrue(
+            policy.shouldSync(
+                now: Self.isoDate("2026-06-10T22:05:00.000Z"),
+                metadata: metadata,
+                lastFailureAt: nil,
+                consecutiveFailureCount: 0,
+                force: false
+            )
+        )
+    }
+
+    func testSyncPolicyRefreshesFutureMetadataButAcceptsCurrentMetadata() {
+        let policy = DailyKanjiSyncPolicy(calendar: Self.romeCalendar())
+        let futureMetadata = DailyKanjiCachedDatasetMetadata(
+            cachedAt: now.addingTimeInterval(1),
+            generatedAt: "2026-06-11T08:00:01.000Z",
+            cardCount: 1
+        )
+        let currentMetadata = DailyKanjiCachedDatasetMetadata(
+            cachedAt: now,
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            cardCount: 1
+        )
+
+        XCTAssertTrue(
+            policy.shouldSync(
+                now: now,
+                metadata: futureMetadata,
+                lastFailureAt: nil,
+                consecutiveFailureCount: 0,
+                force: false
+            )
+        )
+        XCTAssertFalse(
+            policy.shouldSync(
+                now: now,
+                metadata: currentMetadata,
                 lastFailureAt: nil,
                 consecutiveFailureCount: 0,
                 force: false
@@ -262,6 +600,25 @@ final class DailyKanjiCoreTests: XCTestCase {
                 lastFailureAt: lastFailureAt,
                 consecutiveFailureCount: 1,
                 force: true
+            )
+        )
+    }
+
+    func testSyncPolicyIgnoresFutureFailureTimestampAfterClockRollback() {
+        let policy = DailyKanjiSyncPolicy(calendar: Self.romeCalendar())
+        let staleMetadata = DailyKanjiCachedDatasetMetadata(
+            cachedAt: now.addingTimeInterval(-(5 * 60 * 60)),
+            generatedAt: "2026-06-11T03:00:00.000Z",
+            cardCount: 1
+        )
+
+        XCTAssertTrue(
+            policy.shouldSync(
+                now: now,
+                metadata: staleMetadata,
+                lastFailureAt: now.addingTimeInterval(60),
+                consecutiveFailureCount: 1,
+                force: false
             )
         )
     }
@@ -335,9 +692,210 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(syncer.fetchCount, 1)
         XCTAssertEqual(model.cards.map(\.cardId), ["card-0"])
         XCTAssertEqual(model.selectedCard?.cardId, "card-0")
-        XCTAssertEqual(cacheStore.loadMetadata()?.cardCount, 1)
+        let cachedMetadata = cacheStore.loadSnapshot(now: now)?.metadata
+        XCTAssertEqual(cachedMetadata?.cardCount, 1)
         XCTAssertEqual(reloadCount, 1)
-        XCTAssertEqual(model.syncState, .idle(source: .cache(metadata: cacheStore.loadMetadata())))
+        XCTAssertEqual(model.syncState, .idle(source: .cache(metadata: cachedMetadata)))
+    }
+
+    @MainActor
+    func testAppModelDoesNotDecodeRepositoryAgainDuringSuccessfulSync() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let dataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let bundle = try Self.makeBundle(containing: dataset, in: temporaryDirectory)
+        let decoder = CountingDailyKanjiDatasetDecoder()
+        let writer = ControllableDailyKanjiCacheWriter()
+        let model = DailyKanjiAppModel(
+            repository: DailyKanjiRepository(
+                bundle: bundle,
+                cacheStore: DailyKanjiCacheStore(
+                    directoryURL: temporaryDirectory.appendingPathComponent(
+                        "Cache",
+                        isDirectory: true
+                    )
+                ),
+                decodeDataset: decoder.decode
+            ),
+            cacheWriter: writer,
+            syncer: MockDailyKanjiSyncer(result: .success(dataset)),
+            now: now
+        )
+
+        XCTAssertEqual(decoder.count, 1)
+
+        await model.syncNow(now: now, force: true)
+
+        XCTAssertEqual(decoder.count, 1)
+        XCTAssertEqual(
+            model.syncState,
+            .idle(
+                source: .cache(
+                    metadata: DailyKanjiCachedDatasetMetadata(
+                        cachedAt: now,
+                        generatedAt: dataset.generatedAt,
+                        cardCount: dataset.cards.count
+                    )
+                )
+            )
+        )
+    }
+
+    @MainActor
+    func testSyncDoesNotPublishOrReloadBeforeCacheWriterCommits() async throws {
+        let initialCards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let replacementDataset = DailyKanjiDataset(
+            version: 1,
+            generatedAt: "2026-06-11T09:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        let writer = ControllableDailyKanjiCacheWriter(pausesWrites: true)
+        var reloadCount = 0
+        let model = DailyKanjiAppModel(
+            cards: initialCards,
+            cacheWriter: writer,
+            syncer: MockDailyKanjiSyncer(result: .success(replacementDataset)),
+            reloadTimelines: { reloadCount += 1 },
+            now: now
+        )
+
+        let syncTask = Task {
+            await model.syncNow(now: now, force: true)
+        }
+        await Self.waitUntilAsync { await writer.isWaiting }
+
+        XCTAssertEqual(model.cards.map(\.cardId), ["hard", "stable"])
+        XCTAssertEqual(model.syncState, .syncing(source: .sample))
+        XCTAssertEqual(reloadCount, 0)
+
+        await writer.resolve()
+        await syncTask.value
+
+        let metadata = DailyKanjiCachedDatasetMetadata(
+            cachedAt: now,
+            generatedAt: replacementDataset.generatedAt,
+            cardCount: replacementDataset.cards.count
+        )
+        XCTAssertEqual(model.cards.map(\.cardId), ["card-0"])
+        XCTAssertEqual(model.syncState, .idle(source: .cache(metadata: metadata)))
+        XCTAssertEqual(reloadCount, 1)
+    }
+
+    @MainActor
+    func testSyncPreservesUiChangesMadeWhileCacheWriterIsSuspended() async throws {
+        let defaultsName = "DailyKanjiCacheWriter-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let dataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let refreshedDataset = DailyKanjiDataset(
+            version: dataset.version,
+            generatedAt: "2026-06-11T09:00:00.000Z",
+            recentMistakeLookbackDays: dataset.recentMistakeLookbackDays,
+            cards: dataset.cards,
+            glossary: dataset.glossary
+        )
+        let writer = ControllableDailyKanjiCacheWriter(pausesWrites: true)
+        let model = DailyKanjiAppModel(
+            cards: dataset.cards,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            cacheWriter: writer,
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            syncer: MockDailyKanjiSyncer(result: .success(refreshedDataset)),
+            now: now
+        )
+        let deepLinkTime = now.addingTimeInterval(1)
+
+        let syncTask = Task {
+            await model.syncNow(now: now, force: true)
+        }
+        await Self.waitUntilAsync { await writer.isWaiting }
+        model.openDeepLink(
+            DailyKanjiDeepLink.cardURL(cardId: "prestudy-one"),
+            now: deepLinkTime
+        )
+        model.setDraftStudyMode(.prestudy)
+
+        await writer.resolve()
+        await syncTask.value
+
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+        XCTAssertEqual(model.selectedHistoryContext?.source, .widget)
+        XCTAssertEqual(
+            model.selectedHistoryContext?.shownAt,
+            DailyKanjiSelector.currentWidgetSlotStart(for: deepLinkTime)
+        )
+        XCTAssertEqual(model.draftStudyMode, .prestudy)
+        XCTAssertEqual(model.draftMediaSlug, "media-one")
+        XCTAssertTrue(model.hasStudyScopeDraftChanges)
+    }
+
+    @MainActor
+    func testConcurrentDirectSyncNowCallsAreSingleFlight() async throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let dataset = DailyKanjiDataset(
+            version: 1,
+            generatedAt: "2026-06-11T09:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        let syncer = MockDailyKanjiSyncer(result: .success(dataset))
+        let writer = ControllableDailyKanjiCacheWriter(pausesWrites: true)
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            cacheWriter: writer,
+            syncer: syncer,
+            now: now
+        )
+
+        let firstTask = Task {
+            await model.syncNow(now: now, force: true)
+        }
+        await Self.waitUntilAsync { await writer.isWaiting }
+        let secondTask = Task {
+            await model.syncNow(now: now.addingTimeInterval(1), force: true)
+        }
+        await secondTask.value
+
+        let writeCount = await writer.writeCount
+        XCTAssertEqual(syncer.fetchCount, 1)
+        XCTAssertEqual(writeCount, 1)
+
+        await writer.resolve()
+        await firstTask.value
+    }
+
+    @MainActor
+    func testCacheWriterFailureDoesNotPublishDatasetOrReloadTimelines() async throws {
+        let initialCards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let replacementDataset = DailyKanjiDataset(
+            version: 1,
+            generatedAt: "2026-06-11T09:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        let writer = ControllableDailyKanjiCacheWriter(failsWrites: true)
+        var reloadCount = 0
+        let model = DailyKanjiAppModel(
+            cards: initialCards,
+            cacheWriter: writer,
+            syncer: MockDailyKanjiSyncer(result: .success(replacementDataset)),
+            reloadTimelines: { reloadCount += 1 },
+            now: now
+        )
+
+        await model.syncNow(now: now, force: true)
+
+        let writeCount = await writer.writeCount
+        XCTAssertEqual(model.cards.map(\.cardId), ["hard", "stable"])
+        XCTAssertEqual(
+            model.syncState,
+            .failed(message: "Cache write failed.", source: .sample)
+        )
+        XCTAssertEqual(reloadCount, 0)
+        XCTAssertEqual(writeCount, 1)
     }
 
     @MainActor
@@ -566,12 +1124,43 @@ final class DailyKanjiCoreTests: XCTestCase {
             model.cards.map(\.cardId),
             ["daily-global", "prestudy-one", "last-one", "last-two"]
         )
-        XCTAssertNil(cacheStore.loadDataset())
+        XCTAssertNil(cacheStore.loadSnapshot(now: now))
         XCTAssertEqual(
             model.syncState,
             .failed(
                 message: "Downloaded dataset does not include Daily Kanji study modes.",
                 source: .bundle
+            )
+        )
+    }
+
+    @MainActor
+    func testManualRefreshRejectsUnsupportedDatasetVersionBeforeCacheWrite() async throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let unsupportedDataset = DailyKanjiDataset(
+            version: DailyKanjiDataset.supportedVersion + 1,
+            generatedAt: "2026-06-11T09:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        let writer = ControllableDailyKanjiCacheWriter()
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            cacheWriter: writer,
+            syncer: MockDailyKanjiSyncer(result: .success(unsupportedDataset)),
+            now: now
+        )
+
+        await model.syncNow(now: now, force: true)
+
+        let writeCount = await writer.writeCount
+        XCTAssertEqual(writeCount, 0)
+        XCTAssertEqual(model.cards.map(\.cardId), cards.map(\.cardId))
+        XCTAssertEqual(
+            model.syncState,
+            .failed(
+                message: "Downloaded dataset version is not supported.",
+                source: .sample
             )
         )
     }
@@ -636,6 +1225,22 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(presentation.subtitle, "Cache condivisa - 42 card")
         XCTAssertEqual(presentation.lastSyncAt, now)
         XCTAssertEqual(presentation.systemImage, "checkmark.icloud")
+        XCTAssertFalse(presentation.isRefreshing)
+        XCTAssertTrue(presentation.canRefresh)
+    }
+
+    func testSyncStatusPresentationMarksCacheWithoutMetadataAsUnverified() {
+        let presentation = DailyKanjiSyncStatusPresentation(
+            syncState: .idle(source: .cache(metadata: nil))
+        )
+
+        XCTAssertEqual(presentation.title, "Cache da verificare")
+        XCTAssertEqual(
+            presentation.subtitle,
+            "Cache condivisa - aggiornamento richiesto"
+        )
+        XCTAssertNil(presentation.lastSyncAt)
+        XCTAssertEqual(presentation.systemImage, "exclamationmark.triangle")
         XCTAssertFalse(presentation.isRefreshing)
         XCTAssertTrue(presentation.canRefresh)
     }
@@ -2938,6 +3543,17 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
+    func testAppBootstrapLoadsRepositoryBeforeConstructingTheModel() throws {
+        let source = try Self.appEntrySourceFileContents()
+
+        XCTAssertFalse(
+            source.contains("@StateObject private var model = DailyKanjiAppModel()")
+        )
+        XCTAssertTrue(source.contains("await repository.loadSnapshotAsync"))
+        XCTAssertTrue(source.contains("initialRepositorySnapshot: snapshot"))
+        XCTAssertTrue(source.contains("ProgressView(\"Caricamento Daily Kanji\")"))
+    }
+
     func testJapaneseFrontTypographyUsesSystemDefaultInsteadOfSerif() throws {
         let appSource = try Self.appSourceFileContents()
         let widgetSource = try Self.widgetSourceFileContents()
@@ -4224,6 +4840,15 @@ final class DailyKanjiCoreTests: XCTestCase {
         return try String(contentsOf: appSourceURL, encoding: .utf8)
     }
 
+    private static func appEntrySourceFileContents() throws -> String {
+        let testFileURL = URL(fileURLWithPath: #filePath)
+        let projectURL = testFileURL
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let appSourceURL = projectURL.appendingPathComponent("App/DailyKanjiApp.swift")
+        return try String(contentsOf: appSourceURL, encoding: .utf8)
+    }
+
     private static func makeBundle(
         containing dataset: DailyKanjiDataset,
         in directoryURL: URL
@@ -4275,6 +4900,29 @@ final class DailyKanjiCoreTests: XCTestCase {
         ISO8601DateFormatter.dailyKanjiTestFormatter.date(from: value)!
     }
 
+    private static func romeCalendar() -> Calendar {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "Europe/Rome")!
+        return calendar
+    }
+
+    private static func writeCacheMetadata(
+        _ metadata: DailyKanjiCachedDatasetMetadata,
+        to directoryURL: URL
+    ) throws {
+        try FileManager.default.createDirectory(
+            at: directoryURL,
+            withIntermediateDirectories: true
+        )
+        try JSONEncoder()
+            .encode(metadata)
+            .write(
+                to: directoryURL.appendingPathComponent(
+                    DailyKanjiCacheStore.metadataFileName
+                )
+            )
+    }
+
     private static func data(from stream: InputStream?) -> Data? {
         guard let stream else {
             return nil
@@ -4308,6 +4956,96 @@ final class DailyKanjiCoreTests: XCTestCase {
         for _ in 0..<50 where !condition() {
             try? await Task.sleep(nanoseconds: 10_000_000)
         }
+    }
+
+    private static func waitUntilAsync(
+        condition: @escaping () async -> Bool
+    ) async {
+        for _ in 0..<50 {
+            if await condition() {
+                return
+            }
+            try? await Task.sleep(nanoseconds: 10_000_000)
+        }
+    }
+}
+
+private final class CountingDailyKanjiDatasetDecoder: @unchecked Sendable {
+    private let lock = NSLock()
+    private var storedCount = 0
+    private var storedWasCalledOnMainThread = false
+
+    var count: Int {
+        lock.withLock {
+            storedCount
+        }
+    }
+
+    var wasCalledOnMainThread: Bool {
+        lock.withLock {
+            storedWasCalledOnMainThread
+        }
+    }
+
+    func decode(_ data: Data) throws -> DailyKanjiDataset {
+        lock.withLock {
+            storedCount += 1
+            storedWasCalledOnMainThread = storedWasCalledOnMainThread || Thread.isMainThread
+        }
+        return try DailyKanjiDataset.decode(jsonData: data)
+    }
+}
+
+private enum MockDailyKanjiCacheWriterError: LocalizedError, Sendable {
+    case failed
+
+    var errorDescription: String? {
+        "Cache write failed."
+    }
+}
+
+private actor ControllableDailyKanjiCacheWriter: DailyKanjiCacheWriting {
+    private let pausesWrites: Bool
+    private let failsWrites: Bool
+    private var pendingContinuation: CheckedContinuation<Void, Never>?
+    private(set) var writeCount = 0
+
+    init(
+        pausesWrites: Bool = false,
+        failsWrites: Bool = false
+    ) {
+        self.pausesWrites = pausesWrites
+        self.failsWrites = failsWrites
+    }
+
+    var isWaiting: Bool {
+        pendingContinuation != nil
+    }
+
+    func write(
+        dataset: DailyKanjiDataset,
+        cachedAt: Date
+    ) async throws -> DailyKanjiCachedDatasetMetadata {
+        writeCount += 1
+        if pausesWrites {
+            await withCheckedContinuation { continuation in
+                pendingContinuation = continuation
+            }
+        }
+        if failsWrites {
+            throw MockDailyKanjiCacheWriterError.failed
+        }
+
+        return DailyKanjiCachedDatasetMetadata(
+            cachedAt: cachedAt,
+            generatedAt: dataset.generatedAt,
+            cardCount: dataset.cards.count
+        )
+    }
+
+    func resolve() {
+        pendingContinuation?.resume()
+        pendingContinuation = nil
     }
 }
 
