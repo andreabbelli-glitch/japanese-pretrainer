@@ -12,12 +12,30 @@ struct DailyKanjiApp: App {
     }
 }
 
+struct DailyKanjiSceneActivationGate {
+    private var didActivateCurrentActivePhase = false
+
+    mutating func shouldActivate(for phase: ScenePhase, isModelLoaded: Bool) -> Bool {
+        guard phase == .active else {
+            didActivateCurrentActivePhase = false
+            return false
+        }
+        guard isModelLoaded, !didActivateCurrentActivePhase else {
+            return false
+        }
+
+        didActivateCurrentActivePhase = true
+        return true
+    }
+}
+
 @MainActor
 private struct DailyKanjiBootstrapView: View {
     let scenePhase: ScenePhase
 
     @State private var model: DailyKanjiAppModel?
     @State private var pendingDeepLink: URL?
+    @State private var activationGate = DailyKanjiSceneActivationGate()
 
     var body: some View {
         Group {
@@ -28,6 +46,7 @@ private struct DailyKanjiBootstrapView: View {
                             model.registerDeviceToken(token)
                         }
                         model.requestNotificationRegistration()
+                        activateIfNeeded(model, phase: scenePhase)
                     }
             } else {
                 ProgressView("Caricamento Daily Kanji")
@@ -45,9 +64,13 @@ private struct DailyKanjiBootstrapView: View {
             model.openDeepLink(url)
         }
         .onChange(of: scenePhase) { _, newPhase in
-            if newPhase == .active {
-                model?.activate()
-            }
+            activateIfNeeded(model, phase: newPhase)
+        }
+    }
+
+    private func activateIfNeeded(_ model: DailyKanjiAppModel?, phase: ScenePhase) {
+        if activationGate.shouldActivate(for: phase, isModelLoaded: model != nil) {
+            model?.activate()
         }
     }
 
@@ -73,10 +96,6 @@ private struct DailyKanjiBootstrapView: View {
             loadedModel.openDeepLink(pendingDeepLink)
             self.pendingDeepLink = nil
         }
-        if scenePhase == .active {
-            loadedModel.activate()
-        }
-
         model = loadedModel
     }
 }

@@ -24,9 +24,10 @@ La app legge il dataset completo `daily-kanji-cards.json`; il widget riceve
 invece `daily-kanji-widget-cards.json`, una proiezione cards-only dello stesso
 export senza glossary; il target widget non include gli asset audio. Se il file
 dedicato non e' presente usa un sample locale (`学`) per mantenere build e
-preview funzionanti. Lo storico locale conserva le aperture manuali dell'app e
-gli slot dei timeline effettivamente pianificati dall'estensione WidgetKit negli
-ultimi 3 giorni, anche quando la stessa card viene mostrata piu volte.
+preview funzionanti. Lo storico locale conserva le esposizioni effettive della
+sezione Daily (inclusi rientri e deep link) e gli slot dei timeline pianificati
+dall'estensione WidgetKit negli ultimi 3 giorni, anche quando la stessa card
+viene mostrata piu volte.
 Serve a evitare ripetizioni quando l'app viene aperta; le righe recenti sono
 tappabili per riaprire la card completa e fare una mini-review locale. App e
 widget condividono la cache JSON tramite App Group
@@ -281,7 +282,9 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   visibile. Lo storico conserva quindi gli slot pianificati da WidgetKit, senza
   ricostruire retroattivamente il passato dal dataset o dallo scope correnti; la
   selezione in-app usa gli slot persistiti dell'ultimo giorno per ridurre le
-  ripetizioni immediate.
+  ripetizioni immediate. Se WidgetKit rigenera la timeline a slot gia iniziato,
+  lo storico mantiene sia la card pianificata prima del reload sia l'eventuale
+  nuova card dello stesso slot e sostituisce soltanto gli slot ancora futuri.
 - Dopo reinstallazioni importanti puo essere necessario rimuovere e riaggiungere
   il widget per evitare preview cacheate di WidgetKit.
 - `devicectl` puo installare e lanciare la app, ma non puo aprire la widget

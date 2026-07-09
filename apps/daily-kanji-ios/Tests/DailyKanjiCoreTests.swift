@@ -1180,6 +1180,47 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
+    func testSyncOutsideDailyDefersReplacementExposureUntilDailyIsVisible() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let defaultsName = "DailyKanjiHiddenSync-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let initialDataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let replacementDataset = DailyKanjiDataset(
+            version: initialDataset.version,
+            generatedAt: "2026-06-11T09:00:00.000Z",
+            recentMistakeLookbackDays: initialDataset.recentMistakeLookbackDays,
+            cards: [initialDataset.cards.first { $0.cardId == "prestudy-one" }!]
+        )
+        let historyStore = DailyKanjiHistoryStore(defaults: defaults)
+        let model = DailyKanjiAppModel(
+            cards: initialDataset.cards,
+            historyStore: historyStore,
+            cacheStore: DailyKanjiCacheStore(
+                directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+            ),
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            syncer: MockDailyKanjiSyncer(result: .success(replacementDataset)),
+            now: now
+        )
+
+        model.selectAppSection(.glossary, now: now)
+        await model.syncNow(now: now.addingTimeInterval(10), force: true)
+
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+        XCTAssertTrue(historyStore.allItems().isEmpty)
+
+        let dailyEntryTime = now.addingTimeInterval(11)
+        model.selectAppSection(.daily, now: dailyEntryTime)
+
+        XCTAssertEqual(historyStore.allItems().map(\.cardId), ["prestudy-one"])
+        XCTAssertEqual(historyStore.allItems().map(\.shownAt), [dailyEntryTime])
+    }
+
+    @MainActor
     func testSyncBeforeActivationKeepsPreparedSelectionDeferred() async throws {
         let temporaryDirectory = try Self.makeTemporaryDirectory()
         defer { Self.removeTemporaryDirectory(temporaryDirectory) }
@@ -1987,7 +2028,7 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
-    func testFailedBufferedGradeRestoresOriginalSessionAndPresentationClock() async throws {
+    func testFailedBufferedGradeRestoresSessionAndReusesTheOriginalResponseDuration() async throws {
         let liveSession = try JSONDecoder().decode(
             DailyKanjiLiveReviewSession.self,
             from: Self.liveReviewSessionJSON
@@ -2040,7 +2081,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         liveReviewTime = now.addingTimeInterval(10)
         await model.gradeLiveReviewNow(card: try XCTUnwrap(liveSession.selectedCard), rating: .good)
 
-        XCTAssertEqual(liveClient.gradeRequests[1].responseMs, 10_000)
+        XCTAssertEqual(liveClient.gradeRequests[1].responseMs, 5_000)
         XCTAssertEqual(model.liveReviewState, .ready(session: completedSession))
     }
 
@@ -2085,6 +2126,63 @@ final class DailyKanjiCoreTests: XCTestCase {
         await model.gradeLiveReviewNow(card: try XCTUnwrap(liveSession.selectedCard), rating: .easy)
 
         XCTAssertEqual(liveClient.gradeRequests[0].responseMs, 8_000)
+    }
+
+    @MainActor
+    func testSameCardRefetchWithNewReviewStateResetsPresentationClock() async throws {
+        let liveSession = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let refreshedJSON = String(
+            decoding: Self.liveReviewSessionJSON,
+            as: UTF8.self
+        ).replacingOccurrences(
+            of: "\"reviewStateUpdatedAt\": \"2026-06-28T08:00:00.000Z\"",
+            with: "\"reviewStateUpdatedAt\": \"2026-06-28T08:10:00.000Z\""
+        )
+        let refreshedSession = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Data(refreshedJSON.utf8)
+        )
+        let completedSession = DailyKanjiLiveReviewSession(
+            source: "live",
+            queue: DailyKanjiLiveReviewQueue(dueCount: 0, queueCount: 0, nextDueAt: nil),
+            selectedCard: nil,
+            advanceCards: []
+        )
+        let liveClient = MockDailyKanjiLiveReviewClient(
+            fetchResults: [.success(liveSession), .success(refreshedSession)],
+            gradeResults: [
+                .success(
+                    DailyKanjiLiveReviewGradeResult(
+                        grade: DailyKanjiLiveReviewGradeResult.Grade(
+                            cardId: "live-card",
+                            rating: .easy
+                        ),
+                        session: completedSession
+                    )
+                )
+            ]
+        )
+        var liveReviewTime = now
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: liveClient,
+            liveReviewNow: { liveReviewTime },
+            now: now
+        )
+
+        await model.fetchLiveReviewSession()
+        liveReviewTime = now.addingTimeInterval(5)
+        await model.fetchLiveReviewSession()
+        liveReviewTime = now.addingTimeInterval(7)
+        await model.gradeLiveReviewNow(
+            card: try XCTUnwrap(refreshedSession.selectedCard),
+            rating: .easy
+        )
+
+        XCTAssertEqual(liveClient.gradeRequests[0].responseMs, 2_000)
     }
 
     @MainActor
@@ -2851,7 +2949,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertFalse(DailyKanjiWidgetFamilies.readingSupported.contains(.systemMedium))
     }
 
-    func testWidgetTimelineHistoryPreservesCompletedSlotsAndReplacesCurrentAndFuture() {
+    func testWidgetTimelineHistoryPreservesCompletedAndCurrentExposuresWhileReplacingFuture() {
         let defaultsName = "DailyKanjiWidgetHistory.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: defaultsName)!
         defer {
@@ -2896,9 +2994,25 @@ final class DailyKanjiCoreTests: XCTestCase {
         let items = store.recentItems(now: thirdSlot.addingTimeInterval(60))
         XCTAssertEqual(
             items.map(\.cardId),
-            ["third-replacement", "second-replacement", "first-original"]
+            [
+                "third-replacement",
+                "second-original",
+                "second-replacement",
+                "first-original"
+            ]
         )
-        XCTAssertEqual(items.map(\.slotStart), [thirdSlot, secondSlot, firstSlot])
+        XCTAssertEqual(
+            items.map(\.slotStart),
+            [thirdSlot, secondSlot, secondSlot, firstSlot]
+        )
+        XCTAssertEqual(
+            Set(
+                store.recentItems(now: secondSlot.addingTimeInterval(6 * 60))
+                    .filter { $0.slotStart == secondSlot }
+                    .map(\.id)
+            ).count,
+            2
+        )
     }
 
     func testWidgetTimelineHistoryRejectsOlderWritesAndDoesNotExposeFutureSlots() {
@@ -3021,6 +3135,39 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(
             model.recentHistory.dropFirst().first?.shownAt,
             previousSlot
+        )
+    }
+
+    @MainActor
+    func testActivationOutsideDailyDefersExposureAndDailyReentryRecordsItAgain() throws {
+        let defaultsName = "DailyKanjiHiddenActivation.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let historyStore = DailyKanjiHistoryStore(defaults: defaults)
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 2),
+            historyStore: historyStore,
+            now: now
+        )
+
+        model.selectAppSection(.review, now: now)
+        model.activate(now: now.addingTimeInterval(1))
+        model.selectAppSection(.glossary, now: now.addingTimeInterval(2))
+        model.activate(now: now.addingTimeInterval(3))
+        XCTAssertTrue(historyStore.allItems().isEmpty)
+
+        let firstDailyEntry = now.addingTimeInterval(4)
+        model.selectAppSection(.daily, now: firstDailyEntry)
+        model.selectAppSection(.review, now: now.addingTimeInterval(5))
+        let secondDailyEntry = now.addingTimeInterval(6)
+        model.selectAppSection(.daily, now: secondDailyEntry)
+
+        XCTAssertEqual(historyStore.allItems().map(\.cardId), ["card-0", "card-0"])
+        XCTAssertEqual(
+            historyStore.allItems().map(\.shownAt),
+            [secondDailyEntry, firstDailyEntry]
         )
     }
 
@@ -3345,6 +3492,16 @@ final class DailyKanjiCoreTests: XCTestCase {
             },
             generatedAt: firstSlot.addingTimeInterval(60)
         )
+        let originalCurrentCardId = try XCTUnwrap(timelineCards.last?.cardId)
+        store.replaceTimeline(
+            entries: [
+                DailyKanjiWidgetTimelineHistoryItem(
+                    slotStart: try XCTUnwrap(dates.last),
+                    cardId: "card-119"
+                )
+            ],
+            generatedAt: now
+        )
         let widgetSelectionHistory = store.recentSelectionItems(now: now)
         let selected = DailyKanjiSelector.select(
             cards: cards,
@@ -3353,8 +3510,11 @@ final class DailyKanjiCoreTests: XCTestCase {
             mode: .appOpen
         )
 
-        XCTAssertEqual(widgetSelectionHistory.count, 96)
-        XCTAssertEqual(Set(widgetSelectionHistory.map(\.cardId)).count, 96)
+        XCTAssertEqual(widgetSelectionHistory.count, 97)
+        XCTAssertEqual(Set(widgetSelectionHistory.map(\.cardId)).count, 97)
+        XCTAssertTrue(widgetSelectionHistory.contains { $0.cardId == timelineCards[0].cardId })
+        XCTAssertTrue(widgetSelectionHistory.contains { $0.cardId == originalCurrentCardId })
+        XCTAssertTrue(widgetSelectionHistory.contains { $0.cardId == "card-119" })
         XCTAssertFalse(Set(widgetSelectionHistory.map(\.cardId)).contains(selected?.cardId ?? ""))
     }
 
@@ -3776,6 +3936,41 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertTrue(source.contains("ProgressView(\"Caricamento Daily Kanji\")"))
     }
 
+    func testAppBootstrapActivatesFromTheLoadedViewUsingTheCurrentScenePhase() throws {
+        let source = try Self.appEntrySourceFileContents()
+        guard
+            let loadedBranchStart = source.range(of: "if let model {"),
+            let loadingBranchStart = source.range(
+                of: "} else {",
+                range: loadedBranchStart.upperBound..<source.endIndex
+            ),
+            let loadModelStart = source.range(of: "private func loadModel() async")
+        else {
+            XCTFail("Could not isolate the bootstrap branches.")
+            return
+        }
+
+        let loadedBranch = String(
+            source[loadedBranchStart.lowerBound..<loadingBranchStart.lowerBound]
+        )
+        let loadModelBlock = String(source[loadModelStart.lowerBound...])
+
+        XCTAssertTrue(loadedBranch.contains("activateIfNeeded(model, phase: scenePhase)"))
+        XCTAssertFalse(loadModelBlock.contains("if scenePhase == .active"))
+    }
+
+    func testSceneActivationGateActivatesOncePerLoadedActivePhase() {
+        var gate = DailyKanjiSceneActivationGate()
+
+        XCTAssertFalse(gate.shouldActivate(for: .active, isModelLoaded: false))
+        XCTAssertTrue(gate.shouldActivate(for: .active, isModelLoaded: true))
+        XCTAssertFalse(gate.shouldActivate(for: .active, isModelLoaded: true))
+
+        XCTAssertFalse(gate.shouldActivate(for: .inactive, isModelLoaded: true))
+        XCTAssertTrue(gate.shouldActivate(for: .active, isModelLoaded: true))
+        XCTAssertFalse(gate.shouldActivate(for: .active, isModelLoaded: true))
+    }
+
     func testJapaneseFrontTypographyUsesSystemDefaultInsteadOfSerif() throws {
         let appSource = try Self.appSourceFileContents()
         let widgetSource = try Self.widgetSourceFileContents()
@@ -3933,20 +4128,57 @@ final class DailyKanjiCoreTests: XCTestCase {
 
     @MainActor
     func testStaleCardDeepLinkStillRoutesToTheDailyFallback() throws {
+        let defaultsName = "DailyKanjiStaleDeepLink.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let historyStore = DailyKanjiHistoryStore(defaults: defaults)
         let model = DailyKanjiAppModel(
             cards: try Self.rankedCards(count: 2),
+            historyStore: historyStore,
             liveReviewClient: MockDailyKanjiLiveReviewClient(),
             now: now
         )
 
         model.selectAppSection(.glossary)
+        let deepLinkTime = now.addingTimeInterval(1)
         model.openDeepLink(
             DailyKanjiDeepLink.cardURL(cardId: "removed-card"),
-            now: now.addingTimeInterval(1)
+            now: deepLinkTime
         )
 
         XCTAssertEqual(model.selectedAppSection, .daily)
-        XCTAssertNotNil(model.selectedCard)
+        XCTAssertEqual(model.selectedCard?.cardId, "card-0")
+        XCTAssertEqual(historyStore.allItems().map(\.cardId), ["card-0"])
+        XCTAssertEqual(historyStore.allItems().map(\.shownAt), [deepLinkTime])
+    }
+
+    @MainActor
+    func testStaleCardDeepLinkRecordsTheFallbackOnceWhenDailyIsAlreadySelected() throws {
+        let defaultsName = "DailyKanjiStaleDailyDeepLink.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let historyStore = DailyKanjiHistoryStore(defaults: defaults)
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 2),
+            historyStore: historyStore,
+            now: now
+        )
+        let deepLinkTime = now.addingTimeInterval(1)
+
+        model.openDeepLink(
+            DailyKanjiDeepLink.cardURL(cardId: "removed-card"),
+            now: deepLinkTime
+        )
+        model.activate(now: deepLinkTime.addingTimeInterval(1))
+
+        XCTAssertEqual(model.selectedAppSection, .daily)
+        XCTAssertEqual(model.selectedCard?.cardId, "card-0")
+        XCTAssertEqual(historyStore.allItems().map(\.cardId), ["card-0"])
+        XCTAssertEqual(historyStore.allItems().map(\.shownAt), [deepLinkTime])
     }
 
     @MainActor
@@ -4240,6 +4472,7 @@ final class DailyKanjiCoreTests: XCTestCase {
             source.contains(
                 """
                 .onChange(of: currentLiveReviewCardKey) { _, _ in
+                                liveReviewAnswerRevealed = false
                                 guard model.selectedAppSection == .review else {
                                     return
                                 }

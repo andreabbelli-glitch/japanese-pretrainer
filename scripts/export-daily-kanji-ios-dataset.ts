@@ -152,7 +152,7 @@ function resolveCliOptions(args: string[]): CliOptions {
     outputPath,
     widgetOutputPath:
       widgetOutputPath ??
-      (outputPath === defaultOutputPath
+      (path.resolve(outputPath) === path.resolve(defaultOutputPath)
         ? defaultWidgetOutputPath
         : path.join(path.dirname(outputPath), "daily-kanji-widget-cards.json"))
   };

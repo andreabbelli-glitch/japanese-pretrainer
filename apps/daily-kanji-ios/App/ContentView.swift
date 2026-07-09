@@ -64,10 +64,10 @@ struct ContentView: View {
                 resetAndPreloadCurrentLiveReviewAudio()
             }
             .onChange(of: currentLiveReviewCardKey) { _, _ in
+                liveReviewAnswerRevealed = false
                 guard model.selectedAppSection == .review else {
                     return
                 }
-                liveReviewAnswerRevealed = false
                 resetAndPreloadCurrentLiveReviewAudio()
             }
             .onAppear {

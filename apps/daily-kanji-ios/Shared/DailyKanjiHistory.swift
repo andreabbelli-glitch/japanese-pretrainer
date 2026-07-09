@@ -201,7 +201,7 @@ struct DailyKanjiWidgetTimelineHistoryItem: Codable, Equatable, Identifiable {
     let cardId: String
 
     var id: String {
-        "widget-slot-\(Int(slotStart.timeIntervalSince1970))"
+        "widget-slot-\(Int(slotStart.timeIntervalSince1970))-\(cardId)"
     }
 }
 
@@ -251,22 +251,26 @@ final class DailyKanjiWidgetTimelineHistoryStore {
 
         let currentSlotStart = DailyKanjiSelector.currentWidgetSlotStart(for: generatedAt)
         let retentionCutoff = cutoff(now: generatedAt, days: retentionDays)
-        var itemsBySlotStart: [Date: DailyKanjiWidgetTimelineHistoryItem] = [:]
+        var itemsById: [String: DailyKanjiWidgetTimelineHistoryItem] = [:]
         for item in existingState?.items ?? []
-        where item.slotStart >= retentionCutoff && item.slotStart < currentSlotStart {
-            itemsBySlotStart[item.slotStart] = item
+        where item.slotStart >= retentionCutoff && item.slotStart <= currentSlotStart {
+            itemsById[item.id] = item
         }
 
         for entry in entries where entry.slotStart >= currentSlotStart {
-            itemsBySlotStart[entry.slotStart] = entry
+            itemsById[entry.id] = entry
         }
 
         save(
             DailyKanjiWidgetTimelineHistoryState(
                 version: Self.stateVersion,
                 generatedAt: generatedAt,
-                items: itemsBySlotStart.values.sorted { lhs, rhs in
-                    lhs.slotStart < rhs.slotStart
+                items: itemsById.values.sorted { lhs, rhs in
+                    if lhs.slotStart != rhs.slotStart {
+                        return lhs.slotStart < rhs.slotStart
+                    }
+
+                    return lhs.cardId < rhs.cardId
                 }
             )
         )
@@ -287,7 +291,11 @@ final class DailyKanjiWidgetTimelineHistoryStore {
                     && $0.slotStart <= currentSlotStart
             }
             .sorted { lhs, rhs in
-                lhs.slotStart > rhs.slotStart
+                if lhs.slotStart != rhs.slotStart {
+                    return lhs.slotStart > rhs.slotStart
+                }
+
+                return lhs.cardId < rhs.cardId
             }
 
         guard let maxItems else {
@@ -314,7 +322,7 @@ final class DailyKanjiWidgetTimelineHistoryStore {
     func recentSelectionItems(
         now: Date = .now,
         days: Int = DailyKanjiSelector.defaultWidgetNoRepeatLookbackDays,
-        maxItems: Int = DailyKanjiSelector.defaultWidgetSelectionHistoryMaxItems
+        maxItems: Int? = nil
     ) -> [DailyKanjiHistoryItem] {
         recentItems(now: now, days: days, maxItems: maxItems).map {
             DailyKanjiHistoryItem(

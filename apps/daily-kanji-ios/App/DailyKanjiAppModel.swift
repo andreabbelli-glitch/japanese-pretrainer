@@ -53,11 +53,13 @@ final class DailyKanjiAppModel: ObservableObject {
     private var recentSelectionHistory: [DailyKanjiHistoryItem] = []
     private var transientInitialActivationEvent: DailyKanjiHistoryItem?
     private var liveCardPresentedAt: Date?
+    private var pendingLiveReviewResponseRetry: LiveReviewResponseRetry?
 
     private struct LiveReviewFetchContext {
         let id: UUID
         let staleSession: DailyKanjiLiveReviewSession?
         let visibleCardId: String?
+        let visibleReviewStateUpdatedAt: String?
         let presentedAt: Date?
     }
 
@@ -70,6 +72,16 @@ final class DailyKanjiAppModel: ObservableObject {
         let optimisticSession: DailyKanjiLiveReviewSession?
         let optimisticPresentedAt: Date?
         let responseMs: Int?
+    }
+
+    private struct LiveReviewResponseRetry {
+        let cardId: String
+        let reviewStateUpdatedAt: String?
+        let responseMs: Int?
+
+        func matches(_ card: DailyKanjiLiveReviewCard) -> Bool {
+            cardId == card.cardId && reviewStateUpdatedAt == card.reviewStateUpdatedAt
+        }
     }
 
     init(
@@ -212,6 +224,10 @@ final class DailyKanjiAppModel: ObservableObject {
             startSyncTask(now: now, force: false)
         }
 
+        guard selectedAppSection == .daily else {
+            return
+        }
+
         if shouldSuppressActivationSelection(now: now) {
             return
         }
@@ -248,8 +264,20 @@ final class DailyKanjiAppModel: ObservableObject {
         startLiveReviewFetchTask(force: true)
     }
 
-    func selectAppSection(_ section: DailyKanjiAppSection) {
+    func selectAppSection(_ section: DailyKanjiAppSection, now: Date = .now) {
+        let previousSection = selectedAppSection
         selectedAppSection = section
+
+        guard
+            previousSection != .daily,
+            section == .daily,
+            let selectedCard
+        else {
+            return
+        }
+
+        pendingPreparedSelectionCardId = nil
+        select(card: selectedCard, shownAt: now)
     }
 
     func syncNow(now: Date = .now, force: Bool = false) async {
@@ -330,7 +358,7 @@ final class DailyKanjiAppModel: ObservableObject {
             updateVisibleSelection(
                 preferredCardId: visibleCardId,
                 now: now,
-                recordsReplacement: true,
+                recordsReplacement: selectedAppSection == .daily,
                 recordsPreparedSelection: false
             )
             syncState = .idle(source: datasetSource)
@@ -463,12 +491,19 @@ final class DailyKanjiAppModel: ObservableObject {
         guard let cardId = DailyKanjiDeepLink.cardId(from: url) else {
             return
         }
-        selectedAppSection = .daily
 
         guard let card = cards.first(where: { $0.cardId == cardId }) else {
+            selectedAppSection = .daily
+            pendingPreparedSelectionCardId = nil
+            removeTransientInitialActivationIfNeeded(now: now)
+            if let selectedCard {
+                select(card: selectedCard, shownAt: now)
+            }
+            suppressActivationUntil = now.addingTimeInterval(deepLinkActivationSuppressionInterval)
             return
         }
 
+        selectedAppSection = .daily
         pendingPreparedSelectionCardId = nil
         removeTransientInitialActivationIfNeeded(now: now)
         select(
@@ -540,8 +575,10 @@ final class DailyKanjiAppModel: ObservableObject {
         let isPreparedSelection = pendingPreparedSelectionCardId == nextCard.cardId
         let defersReplacementUntilActivation = !recordsPreparedSelection
             && pendingPreparedSelectionCardId != nil
+        let defersHiddenReplacement = !recordsReplacement
 
-        if previousCardId != nextCard.cardId && defersReplacementUntilActivation {
+        if previousCardId != nextCard.cardId
+            && (defersReplacementUntilActivation || defersHiddenReplacement) {
             selectedCard = nextCard
             selectedHistoryContext = DailyKanjiPresentationHistoryItem(
                 cardId: nextCard.cardId,
@@ -634,6 +671,7 @@ final class DailyKanjiAppModel: ObservableObject {
             id: UUID(),
             staleSession: staleSession,
             visibleCardId: staleSession?.selectedCard?.cardId,
+            visibleReviewStateUpdatedAt: staleSession?.selectedCard?.reviewStateUpdatedAt,
             presentedAt: liveCardPresentedAt
         )
         activeLiveReviewFetchId = context.id
@@ -696,10 +734,16 @@ final class DailyKanjiAppModel: ObservableObject {
     ) {
         guard let selectedCard = session.selectedCard else {
             liveCardPresentedAt = nil
+            pendingLiveReviewResponseRetry = nil
             return
         }
 
-        if selectedCard.cardId == context.visibleCardId {
+        if pendingLiveReviewResponseRetry?.matches(selectedCard) != true {
+            pendingLiveReviewResponseRetry = nil
+        }
+
+        if selectedCard.cardId == context.visibleCardId
+            && selectedCard.reviewStateUpdatedAt == context.visibleReviewStateUpdatedAt {
             liveCardPresentedAt = context.presentedAt ?? liveReviewNow()
         } else {
             liveCardPresentedAt = liveReviewNow()
@@ -728,6 +772,15 @@ final class DailyKanjiAppModel: ObservableObject {
         let originalPresentedAt = liveCardPresentedAt
         let optimisticSession = originalSession.optimisticallyAdvancingAfterGrade()
         let optimisticPresentedAt = optimisticSession?.selectedCard == nil ? nil : submittedAt
+        let responseMs: Int?
+        if let retry = pendingLiveReviewResponseRetry, retry.matches(card) {
+            responseMs = retry.responseMs
+        } else {
+            responseMs = originalPresentedAt.map {
+                max(Int(submittedAt.timeIntervalSince($0) * 1000), 0)
+            }
+        }
+        pendingLiveReviewResponseRetry = nil
         let context = LiveReviewGradeContext(
             id: UUID(),
             card: card,
@@ -736,9 +789,7 @@ final class DailyKanjiAppModel: ObservableObject {
             originalPresentedAt: originalPresentedAt,
             optimisticSession: optimisticSession,
             optimisticPresentedAt: optimisticPresentedAt,
-            responseMs: originalPresentedAt.map {
-                max(Int(submittedAt.timeIntervalSince($0) * 1000), 0)
-            }
+            responseMs: responseMs
         )
 
         activeLiveReviewFetchId = nil
@@ -784,6 +835,7 @@ final class DailyKanjiAppModel: ObservableObject {
                 return
             }
 
+            pendingLiveReviewResponseRetry = nil
             liveReviewState = .ready(session: result.session)
             updateLiveCardPresentationAfterGrade(
                 session: result.session,
@@ -794,6 +846,11 @@ final class DailyKanjiAppModel: ObservableObject {
                 return
             }
 
+            pendingLiveReviewResponseRetry = LiveReviewResponseRetry(
+                cardId: context.card.cardId,
+                reviewStateUpdatedAt: context.card.reviewStateUpdatedAt,
+                responseMs: context.responseMs
+            )
             if Task.isCancelled || Self.isCancellation(error) {
                 liveReviewState = .ready(session: context.originalSession)
             } else {

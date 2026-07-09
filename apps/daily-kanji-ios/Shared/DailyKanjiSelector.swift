@@ -9,7 +9,6 @@ struct DailyKanjiSelector {
     static let defaultHistoryLookbackDays = 3
     static let defaultWidgetRotationWindow = 8
     static let defaultWidgetNoRepeatLookbackDays = 1
-    static let defaultWidgetSelectionHistoryMaxItems = 96
     static let widgetSlotDuration: TimeInterval = 15 * 60
     static let defaultWidgetTimelineEntryCount = 96
 

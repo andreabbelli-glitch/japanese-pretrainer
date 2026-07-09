@@ -430,6 +430,46 @@ describe("daily kanji iOS export", () => {
         await expect(
           readFile(explicitWidgetOutputPath, "utf8")
         ).resolves.not.toContain('"glossary"');
+
+        const canonicalRelativeOutputPath = path.join(
+          "apps",
+          "daily-kanji-ios",
+          "App",
+          "Resources",
+          "daily-kanji-cards.json"
+        );
+        const canonicalWidgetOutputPath = path.join(
+          tempDir,
+          "apps",
+          "daily-kanji-ios",
+          "WidgetExtension",
+          "Resources",
+          "daily-kanji-widget-cards.json"
+        );
+        const canonicalResult = await execFileAsync(
+          process.execPath,
+          [
+            "--disable-warning=MODULE_TYPELESS_PACKAGE_JSON",
+            "--experimental-strip-types",
+            exportScriptPath,
+            "--out",
+            canonicalRelativeOutputPath,
+            "--limit",
+            "1"
+          ],
+          {
+            cwd: tempDir,
+            env: {
+              ...process.env,
+              DATABASE_URL: databasePath
+            }
+          }
+        );
+
+        expect(canonicalResult.stdout).toContain(canonicalWidgetOutputPath);
+        await expect(
+          readFile(canonicalWidgetOutputPath, "utf8")
+        ).resolves.not.toContain('"glossary"');
       }
     );
   });
