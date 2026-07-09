@@ -231,7 +231,7 @@ card_type: recognition
 front: '{{降|ふ}}る'
 back: 'ふる — cadere dal cielo; piovere'
 example_jp: '{{明日|あした}}、{{雨|あめ}}が{{降|ふ}}る。'
-example_it: Domani piovera'.
+example_it: Domani pioverà.
 notes_it: >-
   Per meteo, {{降|ふ}}る e' il verbo naturale con {{雨|あめ}} e neve.
 tags: [crystal-hunters, book-8, lesson-03]
@@ -305,8 +305,8 @@ entry_id: term-ch-b8-kuchi
 card_type: recognition
 front: '{{口|くち}}'
 back: 'くち — bocca; apertura'
-example_jp: '{{口|くち}}に{{入|はい}}る。'
-example_it: Entra in bocca.
+example_jp: '{{水|みず}}が{{口|くち}}に{{入|はい}}る。'
+example_it: L'acqua mi entra in bocca.
 notes_it: >-
   Può essere la bocca fisica o un'apertura, ma nel Book 8 il corpo del mostro
   rende la lettura concreta.
@@ -321,8 +321,8 @@ entry_id: term-ch-b8-moeru
 card_type: recognition
 front: '{{燃|も}}える'
 back: 'もえる — bruciare; essere in fiamme'
-example_jp: '{{火|ひ}}が{{燃|も}}える。'
-example_it: Il fuoco brucia.
+example_jp: '{{建物|たてもの}}が{{燃|も}}えている。'
+example_it: L'edificio è in fiamme.
 notes_it: >-
   {{燃|も}}える e' intransitivo; {{燃|も}}やす e' bruciare qualcosa.
 tags: [crystal-hunters, book-8, lesson-03]
@@ -410,9 +410,9 @@ entry_type: grammar
 entry_id: grammar-ch-b8-doushita
 card_type: concept
 front: どうした
-back: che e' successo? / cosa c'e'?
+back: che è successo? / cosa c'è?
 example_jp: '{{足|あし}}が{{痛|いた}}いの？どうした？'
-example_it: Ti fa male la gamba? Che e' successo?
+example_it: Ti fa male la gamba? Che è successo?
 notes_it: >-
   Chiede la causa o il problema dietro lo stato che il parlante vede.
 tags: [crystal-hunters, book-8, lesson-03]
@@ -425,9 +425,9 @@ entry_type: grammar
 entry_id: grammar-ch-b8-dou-naru
 card_type: concept
 front: どうなる
-back: che cosa succede / succedera'?
+back: che cosa succede / succederà?
 example_jp: 'お{{金|かね}}がない。どうなるの？'
-example_it: Non abbiamo soldi. Che cosa ci succedera'?
+example_it: Non abbiamo soldi. Che cosa ci succederà?
 notes_it: >-
   Si usa quando la situazione e' visibile ma il risultato non e' ancora chiaro.
 tags: [crystal-hunters, book-8, lesson-03]

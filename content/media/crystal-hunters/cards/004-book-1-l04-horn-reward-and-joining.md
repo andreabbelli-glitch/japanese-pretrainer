@@ -403,9 +403,9 @@ card_type: recognition
 front: '{{一員|いちいん}}'
 back: 'いちいん — membro; componente di un gruppo'
 example_jp: >-
-  {{私|わたし}}は{{一員|いちいん}}だ。
+  {{私|わたし}}はクリスタルハンターの{{一員|いちいん}}だ。
 example_it: >-
-  Io sono un membro.
+  Faccio parte dei Crystal Hunters.
 notes_it: >-
   {{一員|いちいん}} indica appartenenza a un gruppo. Nel finale dà forma
   linguistica all'ingresso dentro una compagnia.

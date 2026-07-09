@@ -343,7 +343,7 @@ entry_type: term
 entry_id: term-ch-naoru
 card_type: recognition
 front: '{{治|なお}}る'
-back: 'なおる — Guarire, rimettersi, sistemarsi'
+back: 'なおる — guarire; rimettersi; sistemarsi'
 example_jp: '{{怪我|けが}}が{{治|なお}}る。'
 example_it: 'La ferita guarisce.'
 notes_it: >-
@@ -377,8 +377,8 @@ entry_id: term-ch-ko-child
 card_type: recognition
 front: '{{子|こ}}'
 back: 'こ — bambino; persona giovane'
-example_jp: '{{子|こ}}がいる。'
-example_it: 'C''è un bambino.'
+example_jp: '{{火事|かじ}}の{{建物|たてもの}}に{{子|こ}}がいる。'
+example_it: 'C''è un bambino nell''edificio in fiamme.'
 notes_it: >-
   {{子|こ}} indica un bambino o una persona giovane. Come persona si presenta
   con `いる`; con `を` può diventare la persona portata, tenuta o salvata.

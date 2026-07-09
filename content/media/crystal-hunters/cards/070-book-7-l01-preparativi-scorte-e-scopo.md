@@ -290,7 +290,7 @@ card_type: recognition
 front: '{{全|すべ}}て'
 back: 'すべて — tutto; ogni cosa'
 example_jp: '{{全|すべ}}てが{{揃|そろ}}う。'
-example_it: È tutto riunito / pronto.
+example_it: È tutto pronto.
 notes_it: >-
   {{全|すべ}}て guarda l'insieme intero. Nel Book 7 spesso prepara verbi come
   {{揃|そろ}}う o {{作|つく}}る.

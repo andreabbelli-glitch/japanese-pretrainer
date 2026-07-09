@@ -315,8 +315,8 @@ entry_id: term-ch-imouto
 card_type: recognition
 front: '{{妹|いもうと}}'
 back: 'いもうと — sorella minore'
-example_jp: '{{妹|いもうと}}がいる。'
-example_it: 'C''è la sorella minore.'
+example_jp: 'カルには{{妹|いもうと}}がいる。'
+example_it: 'Kal ha una sorella minore.'
 notes_it: >-
   {{妹|いもうと}} è la sorella minore. Come persona prende `いる`; con `の`
   può specificare di chi è la sorella.

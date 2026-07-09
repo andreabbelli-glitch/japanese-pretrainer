@@ -271,7 +271,7 @@ card_type: recognition
 front: '{{何度|なんど}}も'
 back: 'なんども — molte volte; ripetutamente'
 example_jp: 'カルを{{何度|なんど}}も{{救|すく}}う。'
-example_it: 'Salvo Kal molte volte.'
+example_it: 'Ho salvato Kal molte volte.'
 notes_it: >-
   も allarga la ripetizione: non una volta sola, ma ancora e ancora.
 tags: [crystal-hunters, book-6, lesson-03]

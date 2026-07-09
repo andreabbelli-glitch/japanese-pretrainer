@@ -190,7 +190,7 @@ card_type: recognition
 front: '{{血|ち}}'
 back: 'ち — sangue'
 example_jp: '{{血|ち}}が{{出|で}}る。'
-example_it: Esce sangue / sanguina.
+example_it: Esce sangue.
 notes_it: >-
   {{血|ち}} è breve e facile da perdere nel testo, ma nella vignetta segnala
   subito ferita o rischio.

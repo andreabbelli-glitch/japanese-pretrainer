@@ -277,7 +277,7 @@ card_type: recognition
 front: '{{構|かま}}う'
 back: 'かまう — importare; occuparsi'
 example_jp: '{{別|べつ}}に{{構|かま}}わない。'
-example_it: A me va bene / non mi dà fastidio.
+example_it: Per me va bene.
 notes_it: >-
   In negativo può significare "non mi disturba".
 tags: [crystal-hunters, book-9, lesson-04]

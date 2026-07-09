@@ -165,8 +165,8 @@ entry_id: term-ch-b5-dake
 card_type: recognition
 front: 'だけ'
 back: 'だけ — solo; soltanto'
-example_jp: '{{一|ひと}}つだけ。'
-example_it: 'Solo uno.'
+example_jp: '{{卵|たまご}}を{{一|ひと}}つだけ{{運|はこ}}ぶ。'
+example_it: 'Trasporto un solo uovo.'
 notes_it: >-
   だけ limita ciò che precede. Se compare dopo una quantità, restringe la scena
   a quella quantità esatta.
@@ -213,7 +213,7 @@ card_type: recognition
 front: 'また'
 back: 'また — di nuovo; ancora'
 example_jp: 'また{{来|く}}る。'
-example_it: 'Torno di nuovo.'
+example_it: 'Verrò di nuovo.'
 notes_it: >-
   また segnala ripetizione o ritorno: la scena non succede per la prima volta.
 tags: [crystal-hunters, book-5, lesson-01]
@@ -243,8 +243,8 @@ entry_id: term-ch-b5-tsu-6
 card_type: recognition
 front: '{{一|ひと}}つ'
 back: 'ひとつ — una cosa'
-example_jp: '{{一|ひと}}つの{{卵|たまご}}。'
-example_it: 'Un uovo.'
+example_jp: '{{卵|たまご}}を{{一|ひと}}つ{{運|はこ}}ぶ。'
+example_it: 'Trasporto un uovo.'
 notes_it: >-
   {{一|ひと}}つ conta una cosa generica. Prima del nome, の collega numero e
   oggetto.
@@ -259,8 +259,8 @@ entry_id: term-ch-b5-tsu-7
 card_type: recognition
 front: '{{二|ふた}}つ'
 back: 'ふたつ — due cose'
-example_jp: '{{二|ふた}}つの{{卵|たまご}}。'
-example_it: 'Due uova.'
+example_jp: '{{卵|たまご}}を{{二|ふた}}つ{{運|はこ}}ぶ。'
+example_it: 'Trasporto due uova.'
 notes_it: >-
   {{二|ふた}}つ conta due cose generiche. La lettura è speciale: non è につ.
 tags: [crystal-hunters, book-5, lesson-01]

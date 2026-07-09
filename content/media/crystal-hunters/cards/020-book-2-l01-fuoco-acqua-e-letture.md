@@ -293,7 +293,7 @@ card_type: recognition
 front: '{{魔法|まほう}}'
 back: 'まほう — magia'
 example_jp: '{{魔法|まほう}}で{{水|みず}}を{{出|だ}}す。'
-example_it: 'Fa uscire acqua con la magia.'
+example_it: 'Faccio apparire dell''acqua con la magia.'
 notes_it: >-
   {{魔法|まほう}} nomina la magia come mezzo o forza in scena. Con `で` può
   indicare lo strumento dell'azione: {{魔法|まほう}}で{{水|みず}}を{{出|だ}}す.
@@ -372,8 +372,8 @@ entry_id: grammar-ch-desu-copula
 card_type: concept
 front: 'です'
 back: 'forma cortese per dichiarare o identificare qualcosa'
-example_jp: 'これは{{水|みず}}です。'
-example_it: 'Questa è acqua.'
+example_jp: '{{火|ひ}}を{{消|け}}す{{水|みず}}です。'
+example_it: 'È acqua per spegnere il fuoco.'
 notes_it: >-
   です chiude una frase dichiarativa con registro cortese. Non aggiunge un'azione:
   identifica o presenta qualcosa con una voce più controllata.

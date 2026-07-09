@@ -337,9 +337,9 @@ entry_type: term
 entry_id: term-ch-b8-saikyou
 card_type: recognition
 front: '{{最強|さいきょう}}'
-back: 'さいきょう — il piu'' forte'
+back: 'さいきょう — il più forte'
 example_jp: '{{最強|さいきょう}}の{{称号|しょうごう}}が{{欲|ほ}}しい。'
-example_it: Voglio il titolo di piu' forte.
+example_it: Voglio il titolo di più forte.
 notes_it: >-
   E' una parola da rivalita' e vanto: non solo "forte", ma il massimo.
 tags: [crystal-hunters, book-8, lesson-02]
@@ -398,9 +398,9 @@ entry_type: grammar
 entry_id: grammar-ch-b8-nan-nanda
 card_type: concept
 front: '{{何|なん}}なんだ'
-back: che cos'e' / cosa sarebbe, con enfasi
+back: che cos'è / cosa sarebbe, con enfasi
 example_jp: 'あれは{{何|なん}}なんだ？'
-example_it: Che cos'e' mai quello?
+example_it: Che cos'è mai quello?
 notes_it: >-
   Il secondo なん non ripete "cosa": e' な + んだ dopo {{何|なん}}.
 tags: [crystal-hunters, book-8, lesson-02]
@@ -415,7 +415,7 @@ card_type: concept
 front: 'N + {{持|も}}ち'
 back: persona che ha N
 example_jp: '{{力|ちから}}{{持|も}}ちの{{兄貴|あにき}}だ。'
-example_it: E' il fratellone forzuto.
+example_it: È il fratellone forzuto.
 notes_it: >-
   {{持|も}}ち non e' qui il proprietario: descrive una persona che possiede una
   qualita' o risorsa.
@@ -431,7 +431,7 @@ card_type: concept
 front: 'だから + frase'
 back: per questo; quindi
 example_jp: 'ここは{{魔法学校|まほうがっこう}}だ。だからポーションがある。'
-example_it: Questa e' una scuola di magia. Per questo ci sono pozioni.
+example_it: Questa è una scuola di magia. Per questo ci sono pozioni.
 notes_it: >-
   だから puo' aprire una nuova frase se la ragione e' gia' stata detta prima.
 tags: [crystal-hunters, book-8, lesson-02]
@@ -446,7 +446,7 @@ card_type: concept
 front: 'Vなきゃだめなの？'
 back: devo proprio fare V?
 example_jp: '{{町|まち}}に{{行|い}}かなきゃだめなの？'
-example_it: Devo proprio andare in citta'?
+example_it: Devo proprio andare in città?
 notes_it: >-
   だめ rende la domanda sull'obbligo piu' completa e naturale della sola forma
   contratta 〜なきゃ.

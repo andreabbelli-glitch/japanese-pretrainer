@@ -230,7 +230,7 @@ card_type: recognition
 front: '{{無力|むりょく}}'
 back: 'むりょく — senza potere; inefficace'
 example_jp: '{{攻撃|こうげき}}が{{無力|むりょく}}だ。'
-example_it: L'attacco e' inefficace.
+example_it: L'attacco è inefficace.
 notes_it: >-
   {{無|む}} nega la forza: manca potere reale.
 tags: [crystal-hunters, book-8, lesson-06]
@@ -290,7 +290,7 @@ card_type: recognition
 front: '{{潮時|しおどき}}'
 back: 'しおどき — momento giusto; ora di smettere'
 example_jp: 'もう{{潮時|しおどき}}だ。'
-example_it: E' arrivato il momento / e' ora di chiudere.
+example_it: È ora di chiudere.
 notes_it: >-
   Non indica solo l'ora: indica il punto opportuno per cambiare azione.
 tags: [crystal-hunters, book-8, lesson-06]
@@ -365,7 +365,7 @@ card_type: recognition
 front: '{{優秀|ゆうしゅう}}'
 back: 'ゆうしゅう — eccellente; superiore'
 example_jp: '{{優秀|ゆうしゅう}}な{{奴隷|どれい}}が{{到着|とうちゃく}}した。'
-example_it: E' arrivato uno schiavo eccellente.
+example_it: È arrivato uno schiavo eccellente.
 notes_it: >-
   Valuta capacita' o qualita' alte, spesso in modo freddo o gerarchico.
 tags: [crystal-hunters, book-8, lesson-06]

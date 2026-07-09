@@ -341,9 +341,9 @@ entry_type: grammar
 entry_id: grammar-ch-b10-sou-suru-sou-iu
 card_type: concept
 front: 'そうする／そう{{言|い}}う'
-back: fare quello / dire cosi'
+back: fare quello / dire così
 example_jp: 'いい{{考|かんが}}えだ。そうする。'
-example_it: E' una buona idea. Faccio cosi'.
+example_it: È una buona idea. Faccio così.
 notes_it: >-
   そう rimanda a qualcosa gia' detto o evidente nella scena.
 tags: [crystal-hunters, book-10, lesson-06]
@@ -386,9 +386,9 @@ entry_type: grammar
 entry_id: grammar-ch-b10-da-to
 card_type: concept
 front: だと
-back: citazione con sorpresa / incredulita'
+back: citazione con sorpresa / incredulità
 example_jp: '{{何|なん}}だと？'
-example_it: Che cosa hai detto!? / Come sarebbe!?
+example_it: Come sarebbe?!
 notes_it: >-
   In dialogo concentra sorpresa e citazione in pochissimo spazio.
 tags: [crystal-hunters, book-10, lesson-06]
@@ -402,7 +402,7 @@ entry_id: grammar-ch-b10-embedded-quote
 card_type: concept
 front: 'XはYは...だと{{言|い}}う'
 back: X dice che Y...
-example_jp: '{{女王|じょおう}}は{{私達|わたしたち}}はバカだと{{言|い}}った。'
+example_jp: '{{女王|じょおう}}は「お{{前達|まえたち}}はバカだ」と{{言|い}}った。'
 example_it: La regina ha detto che siamo stupidi.
 notes_it: >-
   Il primo は appartiene alla frase esterna; il secondo alla citazione.
@@ -416,7 +416,7 @@ entry_type: grammar
 entry_id: grammar-ch-b10-verb-before-noun
 card_type: concept
 front: 'forma piana + nome'
-back: nome che fa / ha fatto / fara' V
+back: nome che fa / ha fatto / farà V
 example_jp: '{{逃|に}}げている{{男|おとこ}}を{{見|み}}た。'
 example_it: Ho visto l'uomo che sta scappando.
 notes_it: >-

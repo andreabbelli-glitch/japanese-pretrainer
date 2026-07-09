@@ -301,7 +301,7 @@ back: 'いる — tirare una freccia; scoccare'
 example_jp: >-
   {{矢|や}}を{{射|い}}る。
 example_it: >-
-  Tira una freccia.
+  Scocco una freccia.
 notes_it: >-
   {{射|い}}る richiede il contesto di arco o frecce. La stessa lettura `いる`
   senza questo kanji sarebbe un'altra parola.

@@ -258,7 +258,7 @@ card_type: recognition
 front: '{{当然|とうぜん}}'
 back: 'とうぜん — ovvio; naturale'
 example_jp: 'お{{金|かね}}を{{払|はら}}うのは{{当然|とうぜん}}だ。'
-example_it: E' ovvio che si paghi.
+example_it: È ovvio che si paghi.
 notes_it: >-
   Puo' suonare sicuro o brusco: il parlante presenta la cosa come evidente.
 tags: [crystal-hunters, book-8, lesson-05]
@@ -272,8 +272,8 @@ entry_id: term-ch-b8-shokuji
 card_type: recognition
 front: '{{食事|しょくじ}}'
 back: 'しょくじ — pasto'
-example_jp: '{{食事|しょくじ}}をする。'
-example_it: Faccio un pasto.
+example_jp: '{{家|いえ}}で{{食事|しょくじ}}をする。'
+example_it: Mangio a casa.
 notes_it: >-
   E' il pasto come evento, non solo il cibo fisico.
 tags: [crystal-hunters, book-8, lesson-05]
@@ -318,7 +318,7 @@ card_type: recognition
 front: '{{持|も}}ち{{主|ぬし}}'
 back: 'もちぬし — proprietario; possessore'
 example_jp: 'この{{家|いえ}}の{{持|も}}ち{{主|ぬし}}だ。'
-example_it: E' il proprietario di questa casa.
+example_it: È il proprietario di questa casa.
 notes_it: >-
   {{主|ぬし}} indica chi ha titolo o possesso, non chi tiene in mano adesso.
 tags: [crystal-hunters, book-8, lesson-05]

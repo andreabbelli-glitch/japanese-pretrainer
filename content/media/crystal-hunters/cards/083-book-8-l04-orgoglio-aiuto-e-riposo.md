@@ -237,7 +237,7 @@ card_type: recognition
 front: '{{願|ねが}}い{{下|さ}}げ'
 back: 'ねがいさげ — rifiuto netto'
 example_jp: 'そんな{{手助|てだす}}けは{{願|ねが}}い{{下|さ}}げだ。'
-example_it: Di un aiuto cosi' faccio volentieri a meno.
+example_it: Di un aiuto così faccio volentieri a meno.
 notes_it: >-
   E' un rifiuto con fastidio: non voglio nemmeno che me lo offrano.
 tags: [crystal-hunters, book-8, lesson-04]
@@ -267,7 +267,7 @@ card_type: recognition
 front: '{{奴|やつ}}'
 back: 'やつ — tipo; tizio; cosa'
 example_jp: 'あの{{奴|やつ}}は{{強|つよ}}い。'
-example_it: Quel tipo e' forte.
+example_it: Quel tipo è forte.
 notes_it: >-
   E' informale e puo' essere sprezzante: non usarlo come "persona" neutra.
 tags: [crystal-hunters, book-8, lesson-04]
@@ -282,7 +282,7 @@ card_type: recognition
 front: '{{立派|りっぱ}}'
 back: 'りっぱ — splendido; ammirevole; degno'
 example_jp: '{{立派|りっぱ}}な{{仲間|なかま}}だ。'
-example_it: E' un compagno ammirevole.
+example_it: È un compagno ammirevole.
 notes_it: >-
   Elogia valore o dignita', non solo aspetto esterno.
 tags: [crystal-hunters, book-8, lesson-04]
@@ -312,7 +312,7 @@ card_type: recognition
 front: '{{話|はなし}}にならない'
 back: 'はなしにならない — non se ne parla; fuori discussione'
 example_jp: 'それは{{話|はなし}}にならない。'
-example_it: Questo e' fuori discussione.
+example_it: Questo è fuori discussione.
 notes_it: >-
   La proposta non merita nemmeno una trattativa.
 tags: [crystal-hunters, book-8, lesson-04]

@@ -311,9 +311,7 @@ entry_type: term
 entry_id: term-ch-b6-sugu-5
 card_type: recognition
 front: 'すぐ'
-back: >-
-  すぐ — subito, in questo preciso istante. Il tema è temporale e oggettivo:
-  l'azione è vicina al presente.
+back: 'すぐ — subito; immediatamente'
 example_jp: '{{今|いま}}すぐ{{行|い}}く。'
 example_it: 'Vado subito.'
 notes_it: >-

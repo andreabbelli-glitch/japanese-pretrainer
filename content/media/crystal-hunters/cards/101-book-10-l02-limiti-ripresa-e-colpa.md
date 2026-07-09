@@ -175,7 +175,7 @@ card_type: recognition
 front: '{{手出|てだ}}し'
 back: 'てだし — intromissione; metterci mano'
 example_jp: '{{手出|てだ}}しするな。'
-example_it: Non intervenire / non metterti in mezzo.
+example_it: Non intrometterti.
 notes_it: >-
   Non è una mano fisica: è l'intervento in una faccenda.
 tags: [crystal-hunters, book-10, lesson-02]
@@ -250,7 +250,7 @@ card_type: recognition
 front: '{{失格|しっかく}}'
 back: 'しっかく — squalifica; non essere degno del ruolo'
 example_jp: 'そんな{{事|こと}}をしたら{{友人|ゆうじん}}として{{失格|しっかく}}だ。'
-example_it: Se fai una cosa del genere, come amico non sei degno.
+example_it: Se fai una cosa del genere, non meriti di essere chiamato amico.
 notes_it: >-
   Può essere squalifica formale o giudizio morale sul ruolo di qualcuno.
 tags: [crystal-hunters, book-10, lesson-02]

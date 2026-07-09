@@ -245,7 +245,7 @@ card_type: recognition
 front: '{{行|い}}ってらっしゃい'
 back: 'いってらっしゃい — buon viaggio; torna sano e salvo'
 example_jp: '{{街|まち}}へ{{行|い}}くの？{{行|い}}ってらっしゃい。'
-example_it: Vai in citta'? Buon viaggio.
+example_it: Vai in città? Buon viaggio.
 notes_it: >-
   Si usa quando l'altra persona esce e tornera'. Non e' un addio definitivo.
 tags: [crystal-hunters, book-8, lesson-01]
@@ -304,7 +304,7 @@ entry_type: term
 entry_id: term-ch-b8-haiken
 card_type: recognition
 front: '{{拝見|はいけん}}'
-back: 'はいけん — vedere; guardare con umilta'''
+back: 'はいけん — vedere; guardare con umiltà'
 example_jp: '{{女王|じょおう}}のお{{姿|すがた}}を{{拝見|はいけん}}します。'
 example_it: Avrò l'onore di vedere Sua Maestà.
 notes_it: >-
@@ -336,7 +336,7 @@ card_type: recognition
 front: '{{我|われ}}ら'
 back: 'われら — noi'
 example_jp: '{{我|われ}}らの{{町|まち}}だ。'
-example_it: E' la nostra citta'.
+example_it: È la nostra città.
 notes_it: >-
   Suona piu' solenne o arcaico di {{私|わたし}}たち.
 tags: [crystal-hunters, book-8, lesson-01]
@@ -442,7 +442,7 @@ entry_type: term
 entry_id: term-ch-b8-sashiageru
 card_type: recognition
 front: '{{差|さ}}し{{上|あ}}げる'
-back: 'さしあげる — dare; offrire con umilta'''
+back: 'さしあげる — dare; offrire con umiltà'
 example_jp: '{{女王|じょおう}}に{{本|ほん}}を{{差|さ}}し{{上|あ}}げる。'
 example_it: Offro un libro alla regina.
 notes_it: >-
@@ -503,9 +503,9 @@ entry_type: grammar
 entry_id: grammar-ch-b8-dewa-arimasen
 card_type: concept
 front: 'Nではありません'
-back: 'non e'' N, in forma cortese'
+back: 'non è N, in forma cortese'
 example_jp: 'これはたくさんのお{{金|かね}}ではありません。'
-example_it: Questo non e' molto denaro.
+example_it: Questo non è molto denaro.
 notes_it: >-
   ではありません e' la forma non contratta e cortese di じゃない.
 tags: [crystal-hunters, book-8, lesson-01]

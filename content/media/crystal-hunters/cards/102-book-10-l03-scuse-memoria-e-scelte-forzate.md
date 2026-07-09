@@ -156,7 +156,7 @@ entry_type: term
 entry_id: term-ch-b10-muriyari
 card_type: recognition
 front: '{{無理|むり}}やり'
-back: 'むりやり - con la forza; contro la volonta'''
+back: 'むりやり - con la forza; contro la volontà'
 example_jp: '{{無理|むり}}やり{{連|つ}}れて{{行|い}}く。'
 example_it: Lo porto via con la forza.
 notes_it: >-
@@ -173,7 +173,7 @@ card_type: recognition
 front: '{{最低|さいてい}}'
 back: 'さいてい - pessimo; il peggiore'
 example_jp: '{{私|わたし}}は{{最低|さいてい}}だ。'
-example_it: Sono una pessima persona / sono il peggio.
+example_it: Sono una persona orribile.
 notes_it: >-
   Giudizio emotivo forte, non solo una posizione bassa.
 tags: [crystal-hunters, book-10, lesson-03]
@@ -188,7 +188,7 @@ card_type: recognition
 front: '{{気|き}}に{{病|や}}む'
 back: 'きにやむ - tormentarsi; prendersela a cuore'
 example_jp: 'そんなに{{気|き}}に{{病|や}}むな。'
-example_it: Non tormentarti cosi' tanto.
+example_it: Non tormentarti così tanto.
 notes_it: >-
   Il problema pesa dentro, non e' una semplice preoccupazione leggera.
 tags: [crystal-hunters, book-10, lesson-03]
@@ -218,7 +218,7 @@ card_type: recognition
 front: '{{損|そこ}}ねる'
 back: 'そこねる - rovinare; mancare l''occasione di'
 example_jp: '{{助|たす}}け{{損|そこ}}ねた。'
-example_it: Non sono riuscito ad aiutarlo / non sono riuscito a salvarlo.
+example_it: Non sono riuscito a salvarlo.
 notes_it: >-
   Dopo un verbo, indica che l'azione e' fallita o mancata.
 tags: [crystal-hunters, book-10, lesson-03]
@@ -233,7 +233,7 @@ card_type: recognition
 front: '{{口走|くちばし}}る'
 back: 'くちばしる - lasciarsi sfuggire; dire d''impulso'
 example_jp: '{{言|い}}ってはいけない{{事|こと}}を{{口走|くちばし}}った。'
-example_it: Mi e' scappata una cosa che non dovevo dire.
+example_it: Mi è scappata una cosa che non dovevo dire.
 notes_it: >-
   Il parlante non controlla del tutto cio' che esce dalla bocca.
 tags: [crystal-hunters, book-10, lesson-03]

@@ -252,7 +252,7 @@ entry_type: term
 entry_id: term-ch-b5-ru-13
 card_type: recognition
 front: '{{眠|ねむ}}る'
-back: 'ねむる — dormire; addormentarsi; anche: morire/riposare in pace, giacere sepolto, restare inutilizzato o dormiente'
+back: 'ねむる — dormire; addormentarsi'
 example_jp: 'カルが{{眠|ねむ}}る。'
 example_it: 'Kal dorme.'
 notes_it: >-
@@ -269,7 +269,7 @@ entry_type: term
 entry_id: term-ch-b5-ishiki-wo-ushinau
 card_type: recognition
 front: '{{意識|いしき}}を{{失|うしな}}う'
-back: 'いしきをうしなう — perdere conoscenza; perdere i sensi (registro formale/clinico, da referto o notiziario; più esplicito di 気を失う)'
+back: 'いしきをうしなう — perdere conoscenza; perdere i sensi'
 example_jp: 'カルが{{意識|いしき}}を{{失|うしな}}う。'
 example_it: 'Kal perde conoscenza.'
 notes_it: >-

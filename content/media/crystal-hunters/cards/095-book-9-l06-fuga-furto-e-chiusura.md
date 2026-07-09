@@ -160,7 +160,7 @@ card_type: recognition
 front: '{{始末|しまつ}}する'
 back: 'しまつする — sistemare; eliminare'
 example_jp: '{{奴|やつ}}を{{始末|しまつ}}する。'
-example_it: Sistemo quel tipo / lo elimino.
+example_it: Elimino quel tipo.
 notes_it: >-
   Il contesto decide se è "sistemare" o una minaccia.
 tags: [crystal-hunters, book-9, lesson-06]
@@ -190,7 +190,7 @@ card_type: recognition
 front: '{{懺悔|ざんげ}}'
 back: 'ざんげ — confessione; pentimento'
 example_jp: '{{罪|つみ}}を{{懺悔|ざんげ}}する。'
-example_it: Confesso la colpa / mi pento.
+example_it: Confesso il mio peccato.
 notes_it: >-
   Registro pesante, religioso o drammatico.
 tags: [crystal-hunters, book-9, lesson-06]
@@ -203,9 +203,7 @@ entry_type: term
 entry_id: term-ch-b9-temochi
 card_type: recognition
 front: '{{手持|ても}}ち'
-back: >-
-  てもち — ciò che si ha in mano o con sé; risorse disponibili, scorte o stock.
-  Prima di un nome può anche voler dire "portatile/da tenere in mano".
+back: 'てもち — ciò che si ha con sé; risorse disponibili'
 example_jp: '{{手持|ても}}ちの{{金|かね}}がない。'
 example_it: Non ho denaro con me.
 notes_it: >-

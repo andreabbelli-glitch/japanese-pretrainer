@@ -145,7 +145,7 @@ card_type: recognition
 front: '{{足止|あしど}}め'
 back: 'あしどめ - blocco; trattenere l''avanzata'
 example_jp: '{{敵|てき}}を{{足止|あしど}}めする。'
-example_it: Tengo fermo il nemico / gli blocco l'avanzata.
+example_it: Blocco l'avanzata del nemico.
 notes_it: >-
   Serve a guadagnare tempo o impedire un movimento.
 tags: [crystal-hunters, book-10, lesson-04]
@@ -175,7 +175,7 @@ card_type: recognition
 front: '{{以前|いぜん}}'
 back: 'いぜん - prima; in passato'
 example_jp: '{{以前|いぜん}}、{{父|とう}}さんがそう{{言|い}}った。'
-example_it: In passato papa' disse cosi'.
+example_it: In passato papà disse così.
 notes_it: >-
   Colloca il ricordo prima del momento attuale.
 tags: [crystal-hunters, book-10, lesson-04]
@@ -188,7 +188,7 @@ entry_type: term
 entry_id: term-ch-b10-tousan
 card_type: recognition
 front: '{{父|とう}}さん'
-back: 'とうさん - papa'''
+back: 'とうさん - papà'
 example_jp: '{{父|とう}}さんが{{来|く}}る。'
 example_it: Papa' arriva.
 notes_it: >-
@@ -235,7 +235,7 @@ card_type: recognition
 front: '{{足|あし}}を{{止|と}}める'
 back: 'あしをとめる - fermarsi; arrestare il passo'
 example_jp: '{{彼|かれ}}は{{足|あし}}を{{止|と}}めた。'
-example_it: Lui si e' fermato.
+example_it: Lui si è fermato.
 notes_it: >-
   Letteralmente "fermare i piedi": interrompere il movimento.
 tags: [crystal-hunters, book-10, lesson-04]
@@ -248,9 +248,9 @@ entry_type: term
 entry_id: term-ch-b10-heika
 card_type: recognition
 front: '{{陛下|へいか}}'
-back: 'へいか - Sua Maesta'''
+back: 'へいか - Sua Maestà'
 example_jp: '{{陛下|へいか}}にご{{報告|ほうこく}}{{申|もう}}し{{上|あ}}げる。'
-example_it: Riferisco rispettosamente a Sua Maesta'.
+example_it: Riferisco rispettosamente a Sua Maestà.
 notes_it: >-
   Titolo onorifico da corte: il registro sale subito.
 tags: [crystal-hunters, book-10, lesson-04]
@@ -265,7 +265,7 @@ card_type: recognition
 front: '{{申|もう}}し{{上|あ}}げる'
 back: 'もうしあげる - dire; riferire umilmente'
 example_jp: '{{陛下|へいか}}に{{感謝|かんしゃ}}を{{申|もう}}し{{上|あ}}げる。'
-example_it: Esprimo la mia gratitudine a Sua Maesta'.
+example_it: Esprimo la mia gratitudine a Sua Maestà.
 notes_it: >-
   Forma umile verso qualcuno di rango superiore.
 tags: [crystal-hunters, book-10, lesson-04]

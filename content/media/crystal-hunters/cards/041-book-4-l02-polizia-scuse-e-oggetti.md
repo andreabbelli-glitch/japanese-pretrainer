@@ -303,7 +303,7 @@ entry_type: term
 entry_id: term-ch-b4-su-32
 card_type: recognition
 front: '{{治|なお}}す'
-back: 'なおす — Curare qualcosa o qualcuno'
+back: 'なおす — curare qualcosa o qualcuno'
 example_jp: '{{怪我|けが}}を{{治|なお}}す。'
 example_it: 'Curo la ferita.'
 notes_it: >-

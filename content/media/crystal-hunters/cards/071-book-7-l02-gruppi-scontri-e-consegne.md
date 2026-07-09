@@ -395,7 +395,7 @@ card_type: recognition
 front: '{{届|とど}}ける'
 back: 'とどける — consegnare; far arrivare'
 example_jp: '{{魔法水|まほうすい}}を{{届|とど}}ける。'
-example_it: Consegnare l'acqua magica.
+example_it: Consegno l'acqua magica.
 notes_it: >-
   {{届|とど}}ける non è solo portare: l'oggetto deve arrivare dove serve.
 tags: [crystal-hunters, book-7, lesson-02]
@@ -425,7 +425,7 @@ card_type: recognition
 front: '{{荒|あ}}らす'
 back: 'あらす — devastare; mettere a soqquadro'
 example_jp: '{{店|みせ}}を{{荒|あ}}らす。'
-example_it: Devastare il negozio.
+example_it: Devasto il negozio.
 notes_it: >-
   {{荒|あ}}らす crea l'immagine di un luogo rovinato o messo sottosopra.
 tags: [crystal-hunters, book-7, lesson-02]

@@ -173,7 +173,7 @@ card_type: recognition
 front: '{{面会|めんかい}}'
 back: 'めんかい - incontro faccia a faccia; udienza'
 example_jp: '{{女王|じょおう}}と{{面会|めんかい}}する。'
-example_it: Ho un'udienza / un incontro con la regina.
+example_it: Ho un'udienza con la regina.
 notes_it: >-
   Suona piu' ufficiale o controllato di un semplice {{会|あ}}う.
 tags: [crystal-hunters, book-10, lesson-05]
@@ -218,7 +218,7 @@ card_type: recognition
 front: '{{盛大|せいだい}}'
 back: 'せいだい - grandioso; in grande stile'
 example_jp: '{{盛大|せいだい}}な{{会|かい}}を{{開|ひら}}く。'
-example_it: Teniamo un grande incontro.
+example_it: Organizziamo un evento in grande stile.
 notes_it: >-
   Aggettivo da celebrazione pubblica o evento importante.
 tags: [crystal-hunters, book-10, lesson-05]
@@ -263,7 +263,7 @@ card_type: recognition
 front: 'お{{風呂|ふろ}}'
 back: 'おふろ - bagno; vasca'
 example_jp: 'お{{風呂|ふろ}}に{{入|はい}}る。'
-example_it: Faccio il bagno / entro nella vasca.
+example_it: Faccio il bagno.
 notes_it: >-
   Momento concreto di lavarsi o rilassarsi, non una stanza qualsiasi.
 tags: [crystal-hunters, book-10, lesson-05]
@@ -323,7 +323,7 @@ card_type: recognition
 front: '{{隣|となり}}'
 back: 'となり - accanto; vicino'
 example_jp: '{{彼|かれ}}は{{隣|となり}}にいる。'
-example_it: Lui e' accanto.
+example_it: Lui è accanto.
 notes_it: >-
   Con に diventa un punto preciso della scena.
 tags: [crystal-hunters, book-10, lesson-05]

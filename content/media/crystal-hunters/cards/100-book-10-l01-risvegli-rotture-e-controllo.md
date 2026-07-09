@@ -145,7 +145,7 @@ card_type: recognition
 front: ほら
 back: 'ほら - guarda; ecco; vedi?'
 example_jp: 'ほら、{{見|み}}て。'
-example_it: Guarda, vedi.
+example_it: Ehi, guarda.
 notes_it: >-
   Usa ほら quando il parlante spinge l'altro a notare qualcosa.
 tags: [crystal-hunters, book-10, lesson-01]
@@ -205,7 +205,7 @@ card_type: recognition
 front: '{{気絶|きぜつ}}'
 back: 'きぜつ - svenimento; perdita di coscienza'
 example_jp: '{{男|おとこ}}が{{気絶|きぜつ}}した。'
-example_it: L'uomo e' svenuto.
+example_it: L'uomo è svenuto.
 notes_it: >-
   Non e' sonno: e' perdita di coscienza.
 tags: [crystal-hunters, book-10, lesson-01]
