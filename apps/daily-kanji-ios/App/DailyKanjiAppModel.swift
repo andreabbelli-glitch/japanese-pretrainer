@@ -33,9 +33,14 @@ final class DailyKanjiAppModel: ObservableObject {
     private let liveReviewClient: DailyKanjiLiveReviewing?
     private let notificationRegistrar: DailyKanjiNotificationRegistering?
     private let reloadTimelines: () -> Void
+    private let liveReviewNow: () -> Date
     private let deepLinkActivationSuppressionInterval: TimeInterval = 5
     private var syncTask: Task<Void, Never>?
-    private var liveReviewTask: Task<Void, Never>?
+    private var liveReviewFetchTask: Task<Void, Never>?
+    private var activeLiveReviewFetchId: UUID?
+    private var liveReviewGradeTask: Task<Void, Never>?
+    private var activeLiveReviewGradeId: UUID?
+    private var pendingForcedLiveReviewFetch = false
     private var notificationRegistrationTask: Task<Void, Never>?
     private var deviceTokenTask: Task<Void, Never>?
     private var lastFailureAt: Date?
@@ -45,6 +50,24 @@ final class DailyKanjiAppModel: ObservableObject {
     private var recentSelectionHistory: [DailyKanjiHistoryItem] = []
     private var transientInitialActivationEvent: DailyKanjiHistoryItem?
     private var liveCardPresentedAt: Date?
+
+    private struct LiveReviewFetchContext {
+        let id: UUID
+        let staleSession: DailyKanjiLiveReviewSession?
+        let visibleCardId: String?
+        let presentedAt: Date?
+    }
+
+    private struct LiveReviewGradeContext {
+        let id: UUID
+        let card: DailyKanjiLiveReviewCard
+        let rating: DailyKanjiLiveReviewRating
+        let originalSession: DailyKanjiLiveReviewSession
+        let originalPresentedAt: Date?
+        let optimisticSession: DailyKanjiLiveReviewSession?
+        let optimisticPresentedAt: Date?
+        let responseMs: Int?
+    }
 
     init(
         repository: DailyKanjiRepository? = nil,
@@ -59,6 +82,7 @@ final class DailyKanjiAppModel: ObservableObject {
         reloadTimelines: @escaping () -> Void = {
             WidgetCenter.shared.reloadAllTimelines()
         },
+        liveReviewNow: @escaping () -> Date = { .now },
         now: Date = .now
     ) {
         let resolvedRepository = repository ?? DailyKanjiRepository(cacheStore: cacheStore)
@@ -73,6 +97,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.liveReviewClient = liveReviewClient
         self.notificationRegistrar = notificationRegistrar
         self.reloadTimelines = reloadTimelines
+        self.liveReviewNow = liveReviewNow
         self.syncState = Self.initialSyncState(
             syncer: syncer,
             source: resolvedRepository.loadDatasetSource()
@@ -100,6 +125,7 @@ final class DailyKanjiAppModel: ObservableObject {
         reloadTimelines: @escaping () -> Void = {
             WidgetCenter.shared.reloadAllTimelines()
         },
+        liveReviewNow: @escaping () -> Date = { .now },
         now: Date = .now
     ) {
         self.repository = DailyKanjiRepository(cacheStore: cacheStore)
@@ -113,6 +139,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.liveReviewClient = liveReviewClient
         self.notificationRegistrar = notificationRegistrar
         self.reloadTimelines = reloadTimelines
+        self.liveReviewNow = liveReviewNow
         self.syncState = Self.initialSyncState(syncer: syncer, source: .sample)
         self.liveReviewState = Self.initialLiveReviewState(liveReviewClient: liveReviewClient)
         self.selectedAppSection = liveReviewClient == nil ? .daily : .review
@@ -162,7 +189,7 @@ final class DailyKanjiAppModel: ObservableObject {
 
     func activate(now: Date = .now) {
         refreshHistory(now: now)
-        startLiveReviewTask()
+        startLiveReviewFetchTask()
         defer {
             startSyncTask(now: now, force: false)
         }
@@ -200,7 +227,7 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     func refreshLiveReviewNow() {
-        startLiveReviewTask(force: true)
+        startLiveReviewFetchTask(force: true)
     }
 
     func selectAppSection(_ section: DailyKanjiAppSection) {
@@ -284,29 +311,11 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     func fetchLiveReviewSession() async {
-        guard let liveReviewClient else {
-            liveReviewState = .unavailable
-            return
-        }
-
-        liveReviewState = .loading(staleSession: liveReviewState.session)
-
-        do {
-            let session = try await liveReviewClient.fetchSession()
-            liveReviewState = .ready(session: session)
-            liveCardPresentedAt = session.selectedCard == nil ? nil : .now
-        } catch {
-            liveReviewState = .failed(
-                message: Self.liveReviewFailureMessage(for: error),
-                staleSession: liveReviewState.session
-            )
-        }
+        let task = startLiveReviewFetchTask(force: true)
+        await task?.value
     }
 
     func gradeLiveReview(_ rating: DailyKanjiLiveReviewRating) {
-        guard liveReviewTask == nil else {
-            return
-        }
         guard
             liveReviewState.canGrade,
             let card = liveReviewState.session?.selectedCard
@@ -314,59 +323,15 @@ final class DailyKanjiAppModel: ObservableObject {
             return
         }
 
-        liveReviewTask = Task { @MainActor [weak self] in
-            guard let self else {
-                return
-            }
-
-            await self.gradeLiveReviewNow(card: card, rating: rating)
-            self.liveReviewTask = nil
-        }
+        startLiveReviewGradeTask(card: card, rating: rating)
     }
 
     func gradeLiveReviewNow(
         card: DailyKanjiLiveReviewCard,
         rating: DailyKanjiLiveReviewRating
     ) async {
-        guard let liveReviewClient else {
-            liveReviewState = .unavailable
-            return
-        }
-
-        let responseMs = liveCardPresentedAt.map {
-            max(Int(Date.now.timeIntervalSince($0) * 1000), 0)
-        }
-        if let currentSession = liveReviewState.session {
-            if let optimisticSession = currentSession.optimisticallyAdvancingAfterGrade() {
-                liveReviewState = .submitting(session: optimisticSession, rating: rating)
-                liveCardPresentedAt = optimisticSession.selectedCard == nil ? nil : .now
-            } else {
-                liveReviewState = .submitting(session: currentSession, rating: rating)
-            }
-        } else {
-            liveReviewState = .loading(staleSession: nil)
-        }
-
-        do {
-            let result = try await liveReviewClient.grade(
-                cardId: card.cardId,
-                rating: rating,
-                expectedUpdatedAt: card.reviewStateUpdatedAt,
-                responseMs: responseMs
-            )
-            let currentlyVisibleCardId = liveReviewState.session?.selectedCard?.cardId
-            liveReviewState = .ready(session: result.session)
-            if result.session.selectedCard == nil {
-                liveCardPresentedAt = nil
-            } else if result.session.selectedCard?.cardId != currentlyVisibleCardId {
-                liveCardPresentedAt = .now
-            }
-        } catch {
-            liveReviewState = .failed(
-                message: Self.liveReviewFailureMessage(for: error),
-                staleSession: liveReviewState.session
-            )
-        }
+        let task = startLiveReviewGradeTask(card: card, rating: rating)
+        await task?.value
     }
 
     func requestNotificationRegistration() {
@@ -607,23 +572,232 @@ final class DailyKanjiAppModel: ObservableObject {
         }
     }
 
-    private func startLiveReviewTask(force: Bool = false) {
-        guard liveReviewTask == nil || force else {
-            return
-        }
+    @discardableResult
+    private func startLiveReviewFetchTask(
+        force: Bool = false
+    ) -> Task<Void, Never>? {
         guard liveReviewClient != nil else {
             liveReviewState = .unavailable
-            return
+            return nil
+        }
+        guard liveReviewGradeTask == nil else {
+            if force {
+                pendingForcedLiveReviewFetch = true
+            }
+            return nil
+        }
+        guard liveReviewFetchTask == nil || force else {
+            return nil
         }
 
-        liveReviewTask?.cancel()
-        liveReviewTask = Task { @MainActor [weak self] in
+        let previousTask = liveReviewFetchTask
+        let staleSession = liveReviewState.session
+        let context = LiveReviewFetchContext(
+            id: UUID(),
+            staleSession: staleSession,
+            visibleCardId: staleSession?.selectedCard?.cardId,
+            presentedAt: liveCardPresentedAt
+        )
+        activeLiveReviewFetchId = context.id
+        liveReviewState = .loading(staleSession: staleSession)
+
+        let task = Task { @MainActor [weak self] in
             guard let self else {
                 return
             }
 
-            await self.fetchLiveReviewSession()
-            self.liveReviewTask = nil
+            await self.performLiveReviewFetch(context: context)
+            self.finishLiveReviewFetch(id: context.id)
+        }
+        liveReviewFetchTask = task
+        previousTask?.cancel()
+        return task
+    }
+
+    private func performLiveReviewFetch(context: LiveReviewFetchContext) async {
+        guard let liveReviewClient else {
+            return
+        }
+
+        do {
+            let session = try await liveReviewClient.fetchSession()
+            try Task.checkCancellation()
+            guard activeLiveReviewFetchId == context.id else {
+                return
+            }
+
+            liveReviewState = .ready(session: session)
+            updateLiveCardPresentationAfterFetch(session: session, context: context)
+        } catch {
+            guard activeLiveReviewFetchId == context.id else {
+                return
+            }
+            guard !Task.isCancelled, !Self.isCancellation(error) else {
+                return
+            }
+
+            liveReviewState = .failed(
+                message: Self.liveReviewFailureMessage(for: error),
+                staleSession: context.staleSession
+            )
+        }
+    }
+
+    private func finishLiveReviewFetch(id: UUID) {
+        guard activeLiveReviewFetchId == id else {
+            return
+        }
+
+        activeLiveReviewFetchId = nil
+        liveReviewFetchTask = nil
+    }
+
+    private func updateLiveCardPresentationAfterFetch(
+        session: DailyKanjiLiveReviewSession,
+        context: LiveReviewFetchContext
+    ) {
+        guard let selectedCard = session.selectedCard else {
+            liveCardPresentedAt = nil
+            return
+        }
+
+        if selectedCard.cardId == context.visibleCardId {
+            liveCardPresentedAt = context.presentedAt ?? liveReviewNow()
+        } else {
+            liveCardPresentedAt = liveReviewNow()
+        }
+    }
+
+    @discardableResult
+    private func startLiveReviewGradeTask(
+        card: DailyKanjiLiveReviewCard,
+        rating: DailyKanjiLiveReviewRating
+    ) -> Task<Void, Never>? {
+        guard let liveReviewClient else {
+            liveReviewState = .unavailable
+            return nil
+        }
+        guard
+            liveReviewGradeTask == nil,
+            liveReviewState.canGrade,
+            let originalSession = liveReviewState.session,
+            originalSession.selectedCard?.cardId == card.cardId
+        else {
+            return nil
+        }
+
+        let submittedAt = liveReviewNow()
+        let originalPresentedAt = liveCardPresentedAt
+        let optimisticSession = originalSession.optimisticallyAdvancingAfterGrade()
+        let optimisticPresentedAt = optimisticSession?.selectedCard == nil ? nil : submittedAt
+        let context = LiveReviewGradeContext(
+            id: UUID(),
+            card: card,
+            rating: rating,
+            originalSession: originalSession,
+            originalPresentedAt: originalPresentedAt,
+            optimisticSession: optimisticSession,
+            optimisticPresentedAt: optimisticPresentedAt,
+            responseMs: originalPresentedAt.map {
+                max(Int(submittedAt.timeIntervalSince($0) * 1000), 0)
+            }
+        )
+
+        activeLiveReviewFetchId = nil
+        liveReviewFetchTask?.cancel()
+        liveReviewFetchTask = nil
+        activeLiveReviewGradeId = context.id
+
+        if let optimisticSession {
+            liveReviewState = .submitting(session: optimisticSession, rating: rating)
+            liveCardPresentedAt = optimisticPresentedAt
+        } else {
+            liveReviewState = .submitting(session: originalSession, rating: rating)
+        }
+
+        let task = Task { @MainActor [weak self] in
+            guard let self else {
+                return
+            }
+
+            await self.performLiveReviewGrade(
+                client: liveReviewClient,
+                context: context
+            )
+            self.finishLiveReviewGrade(id: context.id)
+        }
+        liveReviewGradeTask = task
+        return task
+    }
+
+    private func performLiveReviewGrade(
+        client: DailyKanjiLiveReviewing,
+        context: LiveReviewGradeContext
+    ) async {
+        do {
+            let result = try await client.grade(
+                cardId: context.card.cardId,
+                rating: context.rating,
+                expectedUpdatedAt: context.card.reviewStateUpdatedAt,
+                responseMs: context.responseMs
+            )
+            try Task.checkCancellation()
+            guard activeLiveReviewGradeId == context.id else {
+                return
+            }
+
+            liveReviewState = .ready(session: result.session)
+            updateLiveCardPresentationAfterGrade(
+                session: result.session,
+                context: context
+            )
+        } catch {
+            guard activeLiveReviewGradeId == context.id else {
+                return
+            }
+
+            if Task.isCancelled || Self.isCancellation(error) {
+                liveReviewState = .ready(session: context.originalSession)
+            } else {
+                liveReviewState = .failed(
+                    message: Self.liveReviewFailureMessage(for: error),
+                    staleSession: context.originalSession
+                )
+            }
+            liveCardPresentedAt = context.originalPresentedAt
+        }
+    }
+
+    private func finishLiveReviewGrade(id: UUID) {
+        guard activeLiveReviewGradeId == id else {
+            return
+        }
+
+        activeLiveReviewGradeId = nil
+        liveReviewGradeTask = nil
+
+        guard pendingForcedLiveReviewFetch else {
+            return
+        }
+
+        pendingForcedLiveReviewFetch = false
+        startLiveReviewFetchTask(force: true)
+    }
+
+    private func updateLiveCardPresentationAfterGrade(
+        session: DailyKanjiLiveReviewSession,
+        context: LiveReviewGradeContext
+    ) {
+        guard let selectedCard = session.selectedCard else {
+            liveCardPresentedAt = nil
+            return
+        }
+
+        if selectedCard.cardId == context.optimisticSession?.selectedCard?.cardId,
+           let optimisticPresentedAt = context.optimisticPresentedAt {
+            liveCardPresentedAt = optimisticPresentedAt
+        } else {
+            liveCardPresentedAt = liveReviewNow()
         }
     }
 
@@ -814,6 +988,14 @@ final class DailyKanjiAppModel: ObservableObject {
         }
 
         return "Could not refresh live review."
+    }
+
+    private static func isCancellation(_ error: Error) -> Bool {
+        if error is CancellationError {
+            return true
+        }
+
+        return (error as? URLError)?.code == .cancelled
     }
 }
 
