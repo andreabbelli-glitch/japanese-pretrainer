@@ -116,8 +116,7 @@ entry_id: term-tamesu
 card_type: recognition
 front: '{{試|ため}}す'
 back: >-
-  provare/testare; in `{{試|ため}}してみて`, l'idea è: prova e guarda che
-  succede
+  provare; testare; mettere alla prova
 example_jp: >-
   このスキルを{{試|ため}}してみてね。
 example_it: >-

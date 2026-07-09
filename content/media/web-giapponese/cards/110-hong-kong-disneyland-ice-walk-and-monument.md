@@ -124,9 +124,9 @@ card_type: concept
 front: 'なんだろう'
 back: 'chissà che cos’è; mi chiedo che cosa sia'
 example_jp: >-
-  これはなんだろう。
+  この{{大|おお}}きなモニュメントはなんだろう。
 example_it: >-
-  Chissà che cos'è questo.
+  Mi chiedo che cosa sia questo grande monumento.
 notes_it: >-
   [なんだろう](grammar:grammar-nandarou) è una domanda interiore. Davanti a una
   scritta o a un oggetto poco chiaro, il parlante sta formulando un dubbio tra

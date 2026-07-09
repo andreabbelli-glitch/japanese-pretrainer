@@ -164,11 +164,11 @@ entry_type: term
 entry_id: term-shokai-houshuu
 card_type: recognition
 front: '{{初回報酬|しょかいほうしゅう}}'
-back: 'ricompensa della prima volta'
+back: 'ricompensa iniziale; premio ottenibile una sola volta'
 example_jp: >-
   {{初回報酬|しょかいほうしゅう}}でジェムをもらった。
 example_it: >-
-  Ho ricevuto gemme come ricompensa della prima volta.
+  Ho ricevuto gemme come ricompensa iniziale.
 notes_it: >-
   [{{初回報酬|しょかいほうしゅう}}](term:term-shokai-houshuu) combina
   `{{初回|しょかい}}`, prima volta, e `{{報酬|ほうしゅう}}`, ricompensa. In gioco

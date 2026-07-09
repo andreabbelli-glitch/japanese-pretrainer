@@ -77,7 +77,7 @@ back: 'creare; generare'
 example_jp: >-
   {{手|て}}に{{入|い}}れたカードを{{使|つか}}って、{{自分|じぶん}}だけのオリジナルデッキを{{作成|さくせい}}する。
 example_it: >-
-  Uso le carte ottenute per creare un mio mazzo personalizzato ed originale.
+  Uso le carte ottenute per creare un mazzo originale tutto mio.
 notes_it: >-
   [{{作成|さくせい}}する](term:term-sakusei-suru) è il verbo della creazione
   da zero. In questa schermata si oppone bene al flusso in cui si
@@ -106,11 +106,11 @@ entry_type: term
 entry_id: term-deck-code
 card_type: recognition
 front: 'デッキコード'
-back: 'codice del mazzo; codice deck'
+back: 'codice del mazzo'
 example_jp: >-
   サイトに{{載|の}}っている{{強|つよ}}いデッキコードをコピーして、ゲームに{{入力|にゅうりょく}}する。
 example_it: >-
-  Copio il deck code di un mazzo forte presente sul sito per inserirlo in gioco.
+  Copio dal sito il codice di un mazzo forte e lo inserisco nel gioco.
 notes_it: >-
   [デッキコード](term:term-deck-code) non è il nome libero del mazzo: è una
   stringa tecnica che richiama una lista precisa.

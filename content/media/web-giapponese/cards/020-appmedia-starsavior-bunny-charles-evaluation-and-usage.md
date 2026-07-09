@@ -107,9 +107,9 @@ card_type: recognition
 front: '{{評価|ひょうか}}'
 back: 'valutazione; giudizio'
 example_jp: >-
-  このページで{{評価|ひょうか}}をみる。
+  このキャラの{{評価|ひょうか}}を{{見|み}}て、パーティーに{{入|い}}れるか{{決|き}}める。
 example_it: >-
-  In questa pagina consulto la valutazione.
+  Guardo la valutazione del personaggio e decido se inserirlo nel party.
 notes_it: >-
   In una guida [{{評価|ひょうか}}](term:term-hyoka) è il giudizio sintetico,
   non la spiegazione dettagliata di tutto il kit.
@@ -125,9 +125,10 @@ card_type: recognition
 front: '{{性能|せいのう}}'
 back: 'prestazioni; caratteristiche del kit'
 example_jp: >-
-  {{性能|せいのう}}をみてからきめる。
+  このキャラの{{性能|せいのう}}を{{見|み}}て、{{前衛|ぜんえい}}に{{置|お}}くか{{決|き}}める。
 example_it: >-
-  Decido dopo aver guardato le caratteristiche del kit.
+  Guardo le caratteristiche del personaggio e decido se metterlo in prima
+  linea.
 notes_it: >-
   [{{性能|せいのう}}](term:term-seino) ti dice che cosa il personaggio sa fare
   davvero, non ancora se conviene usarlo in uno scenario preciso.
@@ -141,11 +142,12 @@ entry_type: term
 entry_id: term-bunny-charles-hyoka-seino
 card_type: recognition
 front: 'バニーシャルルの{{評価|ひょうか}}と{{性能|せいのう}}'
-back: 'valutazione e performance di Bunny Charles'
+back: 'valutazione e prestazioni di Bunny Charles'
 example_jp: >-
-  バニーシャルルの{{評価|ひょうか}}と{{性能|せいのう}}をよむ。
+  バニーシャルルの{{評価|ひょうか}}と{{性能|せいのう}}を{{見|み}}て、パーティーに{{入|い}}れる。
 example_it: >-
-  Leggo la sezione su valutazione e performance di Bunny Charles.
+  Guardo la valutazione e le prestazioni di Bunny Charles, poi la inserisco nel
+  party.
 notes_it: >-
   Questo heading mette insieme il referente della pagina e il primo blocco di
   lettura utile: giudizio sintetico più dati di funzionamento.
@@ -180,9 +182,9 @@ card_type: recognition
 front: '{{強|つよ}}さ'
 back: 'forza; impatto reale'
 example_jp: >-
-  バニーシャルルの{{強|つよ}}さがわかる。
+  バニーシャルルの{{強|つよ}}さを{{高難易度|こう.なん.い.ど}}クエストで{{試|ため}}す。
 example_it: >-
-  Capisco quanto è forte Bunny Charles.
+  Metto alla prova la forza di Bunny Charles in una missione ad alta difficoltà.
 notes_it: >-
   [{{強|つよ}}さ](term:term-tsuyosa) riassume il peso pratico del personaggio:
   danno, pressione offensiva, tenuta o vantaggio tattico concreto.
@@ -196,7 +198,7 @@ entry_type: term
 entry_id: term-tsukaimichi
 card_type: recognition
 front: '{{使|つか}}い{{道|みち}}'
-back: 'uso; use case; impiego'
+back: 'uso; impiego; applicazione pratica'
 example_jp: >-
   このサポートキャラは、{{高難易度|こう.なん.い.ど}}クエストでの{{使|つか}}い{{道|みち}}がとても{{広|ひろ}}い。
 example_it: >-
@@ -214,11 +216,12 @@ entry_type: term
 entry_id: term-bunny-charles-tsuyosa-tsukaimichi
 card_type: recognition
 front: 'バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}'
-back: 'punti di forza e use case di Bunny Charles'
+back: 'punti di forza e impieghi di Bunny Charles'
 example_jp: >-
-  バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}をみる。
+  {{高難易度|こう.なん.い.ど}}クエストで、バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}が{{分|わ}}かる。
 example_it: >-
-  Guardo la sezione su forza e utilizzi di Bunny Charles.
+  Nelle missioni ad alta difficoltà emergono i punti di forza e gli impieghi di
+  Bunny Charles.
 notes_it: >-
   Questo heading apre la parte in cui la guida trasforma dati e skill in lettura
   pratica di combattimento.

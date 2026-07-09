@@ -75,7 +75,7 @@ entry_type: term
 entry_id: term-hensei
 card_type: recognition
 front: '{{編成|へんせい}}'
-back: 'composizione; setup'
+back: 'composizione; schieramento; configurazione'
 example_jp: >-
   ボスの{{攻撃|こうげき}}を{{耐|た}}えるために、{{回復役|かい.ふく.やく}}を{{後衛|こうえい}}に{{置|お}}くパーティー{{編成|へんせい}}にする。
 example_it: >-
@@ -109,7 +109,7 @@ entry_type: term
 entry_id: term-party-composition
 card_type: recognition
 front: 'パーティー{{編成|へんせい}}'
-back: 'composizione della squadra; party build'
+back: 'composizione della squadra; configurazione del party'
 example_jp: >-
   このパーティー{{編成|へんせい}}なら、{{最高|さいこう}}レアがいなくてもストーリーをクリアできる。
 example_it: >-
@@ -146,7 +146,8 @@ back: 'consigliato; raccomandato'
 example_jp: >-
   {{無課金|む.か.きん}}の{{人|ひと}}には、この{{記事|きじ}}のおすすめ{{編成|へんせい}}をそのまま{{使|つか}}うのが{{一番|いちばん}}だ。
 example_it: >-
-  Per i giocatori che non shoppano, la cosa migliore è adottare così com'è il team consigliato in questo articolo.
+  Per chi gioca senza spendere denaro, la scelta migliore è usare così com'è il
+  team consigliato nell'articolo.
 notes_it: >-
   In [おすすめ](term:term-osusume)
   [{{編成|へんせい}}](term:term-hensei) il primo pezzo modifica il secondo:
@@ -175,7 +176,7 @@ entry_type: term
 entry_id: term-osusume-composition
 card_type: recognition
 front: 'おすすめ{{編成|へんせい}}'
-back: 'build consigliata'
+back: 'composizione consigliata; build consigliata'
 example_jp: >-
   {{攻略|こうりゃく}}サイトのおすすめ{{編成|へんせい}}を{{真似|まね}}して、{{高難易度|こう.なん.い.ど}}をためしてみる。
 example_it: >-
@@ -206,7 +207,7 @@ entry_type: term
 entry_id: term-collab
 card_type: recognition
 front: 'コラボ{{開催|かいさい}}'
-back: 'annuncio di collaborazione; evento collab'
+back: 'collaborazione in corso; evento collaborativo'
 example_jp: >-
   {{期間限定|き.かん.げん.てい}}のコラボイベントが{{開催|かいさい}}されたので、{{忘|わす}}れずにログインする。
 example_it: >-
@@ -237,7 +238,7 @@ entry_type: term
 entry_id: term-shoban
 card_type: recognition
 front: '{{序盤|じょばん}}'
-back: 'fase iniziale; early game'
+back: 'fase iniziale; inizio del gioco'
 example_jp: >-
   ゲームの{{序盤|じょばん}}は、{{育成素材|いく.せい.そ.ざい}}が{{足|た}}りなくてレベル{{上|あ}}げが{{本当|ほんとう}}にむずかしい。
 example_it: >-
@@ -396,7 +397,7 @@ entry_type: term
 entry_id: term-frontline
 card_type: recognition
 front: '{{前衛|ぜんえい}}'
-back: 'prima linea; frontline'
+back: 'prima linea; avanguardia'
 example_jp: >-
   HPが{{高|たか}}く{{防御力|ぼう.ぎょ.りょく}}のあるキャラクターを、パーティーの{{前衛|ぜんえい}}におく。
 example_it: >-
@@ -583,7 +584,7 @@ entry_type: term
 entry_id: term-strategy-battle
 card_type: recognition
 front: 'ストラテジー{{戦|せん}}'
-back: 'battaglia strategica; strategy battle'
+back: 'battaglia strategica'
 example_jp: >-
   ユニットの{{配置|はいち}}がいちばん{{大切|たいせつ}}になるストラテジー{{戦|せん}}で、{{最後|さいご}}まで{{勝|か}}ち{{残|のこ}}る。
 example_it: >-
@@ -647,7 +648,7 @@ entry_type: term
 entry_id: term-rank-battle
 card_type: recognition
 front: 'ランク{{戦|せん}}'
-back: 'ranked match; battaglia rank'
+back: 'partita classificata; battaglia di rango'
 example_jp: >-
   {{強|つよ}}いプレイヤーと{{戦|たたか}}って{{自分|じぶん}}の{{実力|じつりょく}}を{{試|ため}}すために、ランク{{戦|せん}}にでることにした。
 example_it: >-
@@ -678,7 +679,7 @@ entry_type: term
 entry_id: term-shoshinsha
 card_type: recognition
 front: '{{初心者|しょしんしゃ}}'
-back: 'principiante; beginner'
+back: 'principiante; persona alle prime armi'
 example_jp: >-
   この{{記事|きじ}}はガチャの{{仕組|しく}}みが{{初心者|しょしんしゃ}}でもわかるように、ていねいに{{解説|かいせつ}}されている。
 example_it: >-

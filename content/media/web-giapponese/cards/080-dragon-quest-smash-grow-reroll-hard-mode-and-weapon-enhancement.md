@@ -308,7 +308,7 @@ back: >-
 example_jp: >-
   このふくびきは{{何度|なんど}}でも{{引|ひ}}き{{直|なお}}せる。
 example_it: >-
-  Questa lotteria può essere ripetuta quante volte vuoi.
+  Puoi rifare questa estrazione quante volte vuoi.
 notes_it: >-
   Il chunk combina assenza di limite e possibilità di reroll: la UI promette che
   il tentativo può essere rifatto.
@@ -326,7 +326,7 @@ back: 'quante volte vuoi; ogni volta che serve'
 example_jp: >-
   {{何度|なんど}}でもふくびきを{{引|ひ}}ける。
 example_it: >-
-  Puoi tirare la lotteria quante volte vuoi.
+  Puoi ripetere l'estrazione quante volte vuoi.
 notes_it: >-
   [{{何度|なんど}}でも](term:term-nando-demo) non dà un numero massimo: apre la
   ripetizione a tutti i tentativi necessari.
@@ -340,7 +340,7 @@ entry_type: term
 entry_id: term-hikinaoseru
 card_type: recognition
 front: '{{引|ひ}}き{{直|なお}}せる'
-back: "puoi rifare l'estrazione; può essere ritirato"
+back: "poter rifare l'estrazione; poter pescare di nuovo"
 example_jp: >-
   {{好|す}}きなぶきが{{出|で}}るまで{{引|ひ}}き{{直|なお}}せる。
 example_it: >-
@@ -363,7 +363,7 @@ back: >-
 example_jp: >-
   このふくびきは{{引|ひ}}き{{直|なお}}し{{可能|かのう}}だ。
 example_it: >-
-  Questa lotteria può essere ripetuta.
+  Questa estrazione può essere rifatta.
 notes_it: >-
   [{{可能|かのう}}](term:term-hikinaoshi-kanou) trasforma l'azione in stato UI:
   il reroll è disponibile.
@@ -381,7 +381,7 @@ back: 'lotteria; gacha'
 example_jp: >-
   {{1回|いっかい}}ふくびきを{{引|ひ}}く。
 example_it: >-
-  Faccio una tirata di lotteria.
+  Faccio una tirata alla lotteria.
 notes_it: >-
   [ふくびき](term:term-fukubiki) è il sistema di estrazione. Nel pulsante
   `{{1回|いっかい}}ふくびき`, `{{1回|いっかい}}` indica un singolo tentativo.
@@ -395,11 +395,11 @@ entry_type: term
 entry_id: term-hard-mode-ga-kaihou-saremashita
 card_type: recognition
 front: 'ハードモードが{{解放|かいほう}}されました'
-back: "l'hard mode è stato sbloccato"
+back: 'la modalità Difficile è stata sbloccata'
 example_jp: >-
   ハードモードが{{解放|かいほう}}されました。
 example_it: >-
-  L'hard mode è stato sbloccato.
+  La modalità Difficile è stata sbloccata.
 notes_it: >-
   `されました` rende l'avviso un risultato già completato: la modalità è ora
   disponibile.
@@ -413,11 +413,11 @@ entry_type: term
 entry_id: term-hard-mode-dewa-sarani-kyouryoku-na-monster-ga-shutsugen
 card_type: recognition
 front: 'ハードモードではさらに{{強力|きょうりょく}}なモンスターが{{出現|しゅつげん}}'
-back: "nell'hard mode compaiono mostri ancora più potenti"
+back: 'nella modalità Difficile compaiono mostri ancora più potenti'
 example_jp: >-
   ハードモードではさらに{{強力|きょうりょく}}なモンスターが{{出現|しゅつげん}}。
 example_it: >-
-  Nell'hard mode compaiono mostri ancora più potenti.
+  Nella modalità Difficile compaiono mostri ancora più potenti.
 notes_it: >-
   `では` limita la frase alla modalità hard, mentre `さらに` aggiunge il senso
   di “ancora di più” rispetto alla difficoltà precedente.
@@ -435,7 +435,7 @@ back: 'comparsa; apparizione'
 example_jp: >-
   ハードモードでモンスターが{{出現|しゅつげん}}した。
 example_it: >-
-  In hard mode è comparso un mostro.
+  Nella modalità Difficile è comparso un mostro.
 notes_it: >-
   [{{出現|しゅつげん}}](term:term-shutsugen) presenta l'arrivo del mostro come
   comparsa nella scena o nella modalità.
@@ -449,7 +449,7 @@ entry_type: term
 entry_id: term-buki-kyouka
 card_type: recognition
 front: 'ぶき{{強化|きょうか}}'
-back: 'rafforzamento armi; potenziamento arma'
+back: "rafforzamento delle armi; potenziamento di un'arma"
 example_jp: >-
   ぶき{{強化|きょうか}}で{{戦士|せんし}}がつよくなる。
 example_it: >-
@@ -487,9 +487,9 @@ card_type: recognition
 front: '{{戦士|せんし}}'
 back: 'guerriero'
 example_jp: >-
-  ひなたは{{戦士|せんし}}だ。
+  ひなたは{{戦士|せんし}}なので、つよいぶきを{{使|つか}}う。
 example_it: >-
-  Hinata è una guerriera.
+  Hinata è una guerriera, quindi usa un'arma potente.
 notes_it: >-
   [{{戦士|せんし}}](term:term-senshi) è la classe del personaggio: fa leggere il
   ruolo in party, non il nome proprio.
@@ -505,9 +505,9 @@ card_type: recognition
 front: '{{魔法使|まほうつか}}い'
 back: 'mago; utilizzatore di magia'
 example_jp: >-
-  ロッキャは{{魔法使|まほうつか}}いだ。
+  ロッキャは{{魔法使|まほうつか}}いなので、{{強力|きょうりょく}}なスキルを{{使|つか}}う。
 example_it: >-
-  Rokkya è un mago.
+  Rokkya è un mago, quindi usa abilità potenti.
 notes_it: >-
   [{{魔法使|まほうつか}}い](term:term-mahoutsukai) è una classe distinta dal
   [{{戦士|せんし}}](term:term-senshi): segnala un ruolo legato alla magia.

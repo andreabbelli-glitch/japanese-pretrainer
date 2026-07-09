@@ -142,9 +142,9 @@ card_type: recognition
 front: 'オート{{機能|きのう}}'
 back: 'funzione automatica'
 example_jp: >-
-  オート{{機能|きのう}}を{{使|つか}}う。
+  オート{{機能|きのう}}を{{使|つか}}うと、キャラクターが{{自動|じどう}}で{{移動|いどう}}する。
 example_it: >-
-  Uso la funzione automatica.
+  Quando uso la funzione automatica, il personaggio si muove da solo.
 notes_it: >-
   [オート{{機能|きのう}}](term:term-auto-kinou) nomina la feature, non l'azione:
   è la funzione Auto del gioco.
