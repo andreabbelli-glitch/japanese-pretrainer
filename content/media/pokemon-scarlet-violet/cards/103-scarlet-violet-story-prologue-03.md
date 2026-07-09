@@ -51,7 +51,7 @@ meaning_it: LP / punti League Pay
 notes_it: >-
   È una valuta di sistema usata sia per comprare sia per creare
   [わざマシン](term:term-waza-machine). Nel tutorial viene spiegato che ha un
-  valore spendibile come il denaro normale, quindi quando Nemona te ne regala o
+  valore spendibile come il denaro normale, quindi quando Nemi te ne regala o
   il gioco te ne assegna, non stai ricevendo un numero astratto ma risorse da
   usare subito.
 :::
@@ -89,7 +89,7 @@ notes_it: >-
   In questo gioco non è un semplice inglesismo trasparente. È il nome del
   comando con cui mandi avanti il Pokémon in testa alla squadra per fargli
   raccogliere oggetti o affrontare da solo piccoli scontri. Il termine compare
-  sia nel tutorial di Nemona sia nelle istruzioni future sul campo.
+  sia nel tutorial di Nemi sia nelle istruzioni future sul campo.
 :::
 :::term
 id: term-terastal
@@ -100,7 +100,7 @@ meaning_it: Terastal / teracristallizzazione
 notes_it: >-
   Nomina la trasformazione tipica di Paldea. In battaglia cambia il Pokémon nel
   suo [テラスタイプ](term:term-tera-type) e rende più forti le mosse del tipo
-  corrispondente. In questo prologo lo vedi prima come mossa di Nemona e subito
+  corrispondente. In questo prologo lo vedi prima come mossa di Nemi e subito
   dopo come sistema che il giocatore sblocca davvero.
 :::
 :::term
@@ -185,7 +185,7 @@ meaning_it: qualcuno fa qualcosa per te / a tuo vantaggio
 notes_it: >-
   È il punto di vista di chi riceve aiuto, servizio o gestione da parte di un
   altro. In questo capitolo marca la cura al [ポケモンセンター](term:term-pokemon-
-  center) e le procedure che Nemona organizza prima del primo
+  center) e le procedure che Nemi organizza prima del primo
   [テラスタル](term:term-terastal).
 :::
 :::card
@@ -199,7 +199,7 @@ back: ricevere un favore o un servizio
 example_jp: >-
   ポケモンセンターで {{手|て}}{{持|も}}ちを {{回復|かいふく}}してもらおう。
 example_it: >-
-  Al Centro Pokémon puoi far curare la squadra.
+  Facciamoci curare la squadra al Centro Pokémon.
 :::
 :::grammar
 id: grammar-te-kuru
@@ -274,7 +274,7 @@ example_jp: >-
 example_it: >-
   Facciamo una sfida e vediamo quanto sei diventato forte!
 notes_it: >-
-  In questo capitolo Nemona usa `{{勝負|しょうぶ}}` per misurare la tua crescita
+  In questo capitolo Nemi usa `{{勝負|しょうぶ}}` per misurare la tua crescita
   dopo il tratto di strada, non solo per proporti un'altra lotta qualsiasi.
 :::
 :::card
@@ -290,7 +290,7 @@ example_jp: >-
 example_it: >-
   Ti do un po' di LP, così li usi per comprare o creare quello che ti serve.
 notes_it: >-
-  Qui il pattern evidenzia un aiuto concreto di Nemona: trasferisce LP al
+  Qui il pattern evidenzia un aiuto concreto di Nemi: trasferisce LP al
   giocatore e abilita subito acquisti e crafting.
 :::
 :::card
@@ -305,7 +305,7 @@ example_jp: >-
   テーブルシティを {{見|み}}てまわったら {{学校|がっこう}}の {{前|まえ}}で
   {{合流|ごうりゅう}}しよう。
 example_it: >-
-  Dopo aver fatto un giro per Table City, ritroviamoci davanti alla scuola.
+  Dopo aver fatto un giro per Mesapoli, ritroviamoci davanti alla scuola.
 notes_it: >-
   In questo capitolo [～たら](grammar:grammar-tara) segna i passaggi che
   sbloccano il blocco successivo della progressione.

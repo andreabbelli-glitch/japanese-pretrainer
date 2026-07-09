@@ -142,7 +142,7 @@ back: 'inserire; digitare'
 example_jp: >-
   {{発行|はっこう}}されたパスワードを{{正|ただ}}しく{{入力|にゅうりょく}}して、データを{{引|ひ}}き{{継|つ}}ぐ。
 example_it: >-
-  Per ripristinare l'account inserisco correttamente la password emessa dal sistema.
+  Inserisco correttamente la password emessa dal sistema e trasferisco i dati.
 notes_it: >-
   [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) qui è il verbo del
   campo di testo: prima immetti il valore, poi confermi con `{{決定|けってい}}`.

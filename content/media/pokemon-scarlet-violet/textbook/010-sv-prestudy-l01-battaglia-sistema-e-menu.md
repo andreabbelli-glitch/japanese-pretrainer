@@ -119,7 +119,7 @@ translation_it: >-
 
 ### C. `かな`: pensiero ad alta voce, non comando
 
-[～かな](grammar:grammar-g002-mi-chiedo-se) ammorbidisce una frase e la fa suonare come dubbio o riflessione. In un dialogo con Nemona, un insegnante o un NPC, non sempre chi parla sta chiedendo a te di rispondere: può stare valutando la situazione davanti a sé.
+[～かな](grammar:grammar-g002-mi-chiedo-se) ammorbidisce una frase e la fa suonare come dubbio o riflessione. In un dialogo con Nemi, un insegnante o un NPC, non sempre chi parla sta chiedendo a te di rispondere: può stare valutando la situazione davanti a sé.
 
 :::example_sentence
 jp: >-

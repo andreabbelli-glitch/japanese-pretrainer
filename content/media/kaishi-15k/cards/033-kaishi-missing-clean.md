@@ -42,7 +42,7 @@ id: term-kaishi-1708637440830
 lemma: '差し出す'
 reading: 'さしだす'
 romaji: 'sashidasu'
-meaning_it: 'to submit'
+meaning_it: 'to hold out, to offer, to submit'
 aliases: ['さしだす', '差し出す']
 audio_src: 'assets/audio/term/term-kaishi-1708637440830/48a736725ddf296a21894db67b7b184c.mp3'
 audio_source: kaishi
@@ -57,9 +57,9 @@ entry_type: term
 entry_id: term-kaishi-1708637440830
 card_type: recognition
 front: '{{差|さ}}し{{出|だ}}す'
-back: 'to submit'
+back: 'to hold out, to offer, to submit'
 example_jp: '{{彼|かれ}}は{{握|あく}}{{手|しゅ}}をしようと{{手|て}}を{{差|さ}}し{{出|だ}}したの。'
-example_it: 'He put out his hand to shake hands.'
+example_it: 'He held out his hand for a handshake.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440830-recognition/a151814b32fd4479f1cc502d584bfa2a.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

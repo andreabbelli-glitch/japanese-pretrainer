@@ -16,7 +16,7 @@ summary: >-
 
 # Dialoghi e tutorial: inviti, condizioni e sblocchi
 
-Nei giochi Pokémon, molte istruzioni non suonano come ordini. Nemona ti invita
+Nei giochi Pokémon, molte istruzioni non suonano come ordini. Nemi ti invita
 a provare, un familiare ti raccomanda di riposare, un messaggio di sistema ti
 dice che una funzione è ora disponibile. Il tono resta amichevole, ma la frase
 sta guidando un'azione concreta: scegliere una destinazione, salvare, curare la
@@ -82,9 +82,9 @@ morbida l'istruzione di registrare qualcosa.
 
 :::image
 src: assets/story/nemona-second-battle-growth-check.webp
-alt: "Nemona parla prima di una sfida con una battuta che invita a mettere alla prova la crescita del giocatore."
+alt: "Nemi parla prima di una sfida con una battuta che invita a mettere alla prova la crescita del giocatore."
 caption: >-
-  Nemona usa il tono della prova: con `{{試|ため}}してみよう`, la sfida diventa un
+  Nemi usa il tono della prova: con `{{試|ため}}してみよう`, la sfida diventa un
   modo pratico per vedere quanto sei cresciuto, non un ordine secco.
 :::
 

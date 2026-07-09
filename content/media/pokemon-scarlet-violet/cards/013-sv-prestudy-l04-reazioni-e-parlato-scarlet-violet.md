@@ -192,16 +192,16 @@ back: foto
 example_jp: >-
   ネモと {{一緒|いっしょ}}に {{写真|しゃしん}}を {{撮|と}}ろう。
 example_it: >-
-  Scattiamo una foto insieme a Nemona.
+  Scattiamo una foto insieme a Nemi.
 :::
 :::term
 id: term-v044-nemo
 lemma: ネモ
 reading: ねも
 romaji: nemo
-meaning_it: Nemona
+meaning_it: Nemi
 notes_it: >-
-  Nome giapponese di Nemona. Quando compare, la scena di solito riguarda
+  Nome giapponese di Nemi. Quando compare, la scena di solito riguarda
   rivalità amichevole, lotte, consigli o spinta ad andare avanti.
 :::
 :::term
@@ -301,5 +301,5 @@ back: divertente
 example_jp: >-
   ネモとの バトルは {{楽|たの}}しいです。
 example_it: >-
-  La lotta con Nemona è divertente.
+  La lotta con Nemi è divertente.
 :::

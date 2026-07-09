@@ -110,12 +110,12 @@ Il dettaglio più utile è la particella: `へ` dopo un luogo o una domanda di l
 jp: >-
   ネモが {{待|ま}}ってる {{場所|ばしょ}}は どこですか。
 translation_it: >-
-  Dov'è il posto in cui Nemona sta aspettando?
+  Dov'è il posto in cui Nemi sta aspettando?
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `ネモが {{待|ま}}ってる` ➔ **Relativa descrittiva** (`が` marca Nemona come soggetto dell'azione dentro la frase che modifica `{{場所|ばしょ}}`).
+*   `ネモが {{待|ま}}ってる` ➔ **Relativa descrittiva** (`が` marca Nemi come soggetto dell'azione dentro la frase che modifica `{{場所|ばしょ}}`).
 *   `{{場所|ばしょ}}は` ➔ **Tema della domanda** (il luogo è ciò su cui la frase chiede informazione).
 *   `どこですか` ➔ **Domanda di posizione** (`どこ` non indica una destinazione da solo: qui chiede quale luogo corrisponde alla descrizione precedente).
 
@@ -127,13 +127,13 @@ translation_it: >-
 
 Le proposte dei compagni in Paldea spesso uniscono movimento e relazione. [{{一緒|いっしょ}}](term:term-v033-issho) nomina lo stare insieme; con に diventa [{{一緒|いっしょ}}に](term:term-v029-isshoni), cioè il modo in cui si compie l'azione: andare insieme, lottare insieme, preparare qualcosa insieme.
 
-La persona con cui fai l'azione di solito entra con と. In una frase come ネモと {{一緒|いっしょ}}に, と aggancia Nemona come compagna, mentre [{{一緒|いっしょ}}に](term:term-v029-isshoni) dice che l'azione successiva sarà condivisa. Se compare [{{元気|げんき}}](term:term-v037-genki), invece, il dialogo sta valutando se una persona o un Pokémon è in condizione di muoversi, combattere o continuare.
+La persona con cui fai l'azione di solito entra con と. In una frase come ネモと {{一緒|いっしょ}}に, と aggancia Nemi come compagna, mentre [{{一緒|いっしょ}}に](term:term-v029-isshoni) dice che l'azione successiva sarà condivisa. Se compare [{{元気|げんき}}](term:term-v037-genki), invece, il dialogo sta valutando se una persona o un Pokémon è in condizione di muoversi, combattere o continuare.
 
 :::example_sentence
 jp: >-
   ネモと {{一緒|いっしょ}}に ジムへ {{行|い}}く。
 translation_it: >-
-  Vado alla palestra insieme a Nemona.
+  Vado alla palestra insieme a Nemi.
 :::
 
 #### 🗺️ Anatomia della frase

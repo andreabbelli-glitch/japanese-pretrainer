@@ -306,7 +306,7 @@ card_type: recognition
 front: '{{拝見|はいけん}}'
 back: 'はいけん — vedere; guardare con umilta'''
 example_jp: '{{女王|じょおう}}のお{{姿|すがた}}を{{拝見|はいけん}}します。'
-example_it: Vedro' la figura della regina.
+example_it: Avrò l'onore di vedere Sua Maestà.
 notes_it: >-
   Il verbo e' umile: il parlante mostra rispetto abbassando se stesso.
 tags: [crystal-hunters, book-8, lesson-01]

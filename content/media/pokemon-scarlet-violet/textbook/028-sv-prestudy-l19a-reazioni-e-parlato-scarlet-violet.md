@@ -86,7 +86,7 @@ decidono il ritmo della scena.
 *   [ぜひ](term:term-v238-zehi) (**assolutamente / ti prego**) rafforza un invito.
     Non è un ordine secco come un comando di menu: è il parlante che spinge
     perché l'altra persona accetti, partecipi o provi qualcosa. In una battuta
-    di Nemona, Pepper o un insegnante, [ぜひ](term:term-v238-zehi) rende l'invito
+    di Nemi, Pepper o un insegnante, [ぜひ](term:term-v238-zehi) rende l'invito
     più caloroso e personale.
 *   [とにかく](term:term-e044-tonikaku) (**comunque / in ogni caso**) riporta il
     discorso su una linea d'azione dopo una deviazione. Se una scena si è

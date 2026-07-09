@@ -112,7 +112,7 @@ back: anche
 example_jp: >-
   ネモも {{来|く}}る。
 example_it: >-
-  Viene anche Nemona.
+  Viene anche Nemi.
 :::
 :::grammar
 id: grammar-g091-tra-gli-altri-eccetera

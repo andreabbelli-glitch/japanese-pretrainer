@@ -222,7 +222,7 @@ id: term-kaishi-1708637440811
 lemma: '相当'
 reading: 'そうとう'
 romaji: 'soutou'
-meaning_it: 'correspondence, suitability'
+meaning_it: 'equivalent to, corresponding to; considerable, quite'
 aliases: ['そうとう', '相当']
 audio_src: 'assets/audio/term/term-kaishi-1708637440811/1b005b80f56fd6c78994a52f144fe222.mp3'
 audio_source: kaishi
@@ -237,7 +237,7 @@ entry_type: term
 entry_id: term-kaishi-1708637440811
 card_type: recognition
 front: '{{相|そう}}{{当|とう}}'
-back: 'correspondence, suitability'
+back: 'equivalent to, corresponding to; considerable, quite'
 example_jp: '{{1|いち}}ポンドは{{454|よんひゃくごじゅうよん}}グラムに{{相|そう}}{{当|とう}}します。'
 example_it: 'One pound is equivalent to 454 grams.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440811-recognition/e9965effd413b24855c8a2232396cd82.mp3'

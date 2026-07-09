@@ -120,7 +120,7 @@ back: forma colloquiale di ～ている
 example_jp: >-
   ネモが {{待|ま}}ってる。
 example_it: >-
-  Nemona sta aspettando.
+  Nemi sta aspettando.
 :::
 :::term
 id: term-v013-mou
@@ -143,7 +143,7 @@ back: già / ormai
 example_jp: >-
   もう {{行|い}}こう、 ネモが {{待|ま}}ってる。
 example_it: >-
-  Andiamo, Nemona sta aspettando.
+  Andiamo, Nemi sta aspettando.
 :::
 :::term
 id: term-v014-raido

@@ -167,7 +167,7 @@ back: insieme
 example_jp: >-
   ネモと {{一緒|いっしょ}}に ジムへ {{行|い}}く。
 example_it: >-
-  Vado alla palestra insieme a Nemona.
+  Vado alla palestra insieme a Nemi.
 :::
 :::term
 id: term-v030-hitsuyou
@@ -282,7 +282,7 @@ back: luogo
 example_jp: >-
   ネモが {{待|ま}}ってる {{場所|ばしょ}}は どこですか。
 example_it: >-
-  Dov’è il posto in cui Nemona sta aspettando?
+  Dov’è il posto in cui Nemi sta aspettando?
 :::
 :::term
 id: term-v035-joutai

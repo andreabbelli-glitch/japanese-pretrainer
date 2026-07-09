@@ -138,7 +138,7 @@ translation_it: >-
 Il bello del giapponese nei media sta nel saper cogliere le relazioni tra i personaggi attraverso la grammatica.
 
 ### A. Esprimere desideri personali: `～てほしい`
-Quando un personaggio (es. Nemona o Pepper) vuole che tu faccia qualcosa, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in -te del verbo + ほしい** (desiderabile) ed esprime il desiderio dal punto di vista del parlante. Se si parla del desiderio di una terza persona, di solito serve una forma riportata o osservabile, come ～てほしいと{{思|おも}}っている o ～てほしがっている.
+Quando un personaggio (es. Nemi o Pepper) vuole che tu faccia qualcosa, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in -te del verbo + ほしい** (desiderabile) ed esprime il desiderio dal punto di vista del parlante. Se si parla del desiderio di una terza persona, di solito serve una forma riportata o osservabile, come ～てほしいと{{思|おも}}っている o ～てほしがっている.
 
 :::example_sentence
 jp: >-

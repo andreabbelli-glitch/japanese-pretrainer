@@ -26,7 +26,7 @@ di mappa.
 Il filo è molto concreto: la
 [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) autorizza l'uscita, il
 [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi) allarga l'idea di tesoro,
-Nemona presenta il [チャンピオンランク](term:term-champion-rank) come una route
+Nemi presenta il [チャンピオンランク](term:term-champion-rank) come una route
 riconoscibile e lo [スマホロトム](term:term-smartphone-rotom) traduce il primo
 passo in una [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) da fissare.
 
@@ -155,16 +155,16 @@ spuntare in ordine. Se lo leggi come "prima palestre, poi aiuti, fine", perdi
 il senso open world della frase. Qui il giapponese sta dicendo che il Treasure
 Hunt contiene azioni di quel tipo, non soltanto quelle due.
 
-## 3. Champion Rank: Nemona trasforma la libertà in una route
+## 3. Champion Rank: Nemi trasforma la libertà in una route
 
-Nel briefing di Nemona, [チャンピオンランク](term:term-champion-rank) non è solo un
+Nel briefing di Nemi, [チャンピオンランク](term:term-champion-rank) non è solo un
 titolo vistoso in katakana. È una categoria del mondo di gioco che va spiegata
 al protagonista. La forma [～ってのは](grammar:grammar-tte-no-wa) segnala proprio
 questa spiegazione parlata: `チャンピオンランクってのは...` suona come "il
 Champion Rank sarebbe...".
 
 - [チャンピオンランク](term:term-champion-rank) unisce una parola inglese riconoscibile a ランク, ma nel dialogo non basta tradurlo come "rango". La cosa decisiva è il riconoscimento: è uno status conferito dalla Lega a Trainer forti, quindi una meta istituzionale, non un soprannome.
-- [ジムバッジ](term:term-gym-badge) dà corpo a quella meta. Il badge non è solo un oggetto da collezione: nella route palestre è la prova visibile che hai superato un passaggio e che ti stai avvicinando al rango spiegato da Nemona.
+- [ジムバッジ](term:term-gym-badge) dà corpo a quella meta. Il badge non è solo un oggetto da collezione: nella route palestre è la prova visibile che hai superato un passaggio e che ti stai avvicinando al rango spiegato da Nemi.
 - [{{目指|めざ}}す](term:term-mezasu) è il verbo che orienta tutto. {{目|め}} richiama l'occhio, {{指|さ}}す il puntare o indicare: come gancio visivo, puoi pensarlo come "puntare lo sguardo verso un obiettivo". Nel dialogo serve a trasformare il Champion Rank in qualcosa verso cui dirigere il viaggio.
 
 :::example_sentence
@@ -206,15 +206,15 @@ route.
 #### 🧠 Gancio cognitivo
 
 Per [{{目指|めざ}}す](term:term-mezasu), usa l'immagine dello sguardo che punta
-un bersaglio. È solo un aiuto di memoria, ma funziona bene nella scena: Nemona
+un bersaglio. È solo un aiuto di memoria, ma funziona bene nella scena: Nemi
 non sta nominando una meta astratta, sta indicando una direzione possibile per
 il tuo viaggio.
 
 :::image
 src: assets/story/nemona-champion-rank-briefing.webp
-alt: "Nemona spiega al protagonista il Champion Rank e la raccolta dei Gym Badge."
+alt: "Nemi spiega al protagonista il Champion Rank e la raccolta dei Gym Badge."
 caption: >-
-  Il ってのは di Nemona segnala una definizione parlata: [チャンピオンランク](term:term-champion-rank) diventa un obiettivo spiegabile, mentre i [ジムバッジ](term:term-gym-badge) mostrano quale prova concreta sostiene quella route.
+  Il ってのは di Nemi segnala una definizione parlata: [チャンピオンランク](term:term-champion-rank) diventa un obiettivo spiegabile, mentre i [ジムバッジ](term:term-gym-badge) mostrano quale prova concreta sostiene quella route.
 :::
 
 ## 4. Smart Rotom: dalla libertà alla destinazione
@@ -271,7 +271,7 @@ caption: >-
 ## Esempi guidati di riepilogo
 
 Le parole del briefing lavorano insieme: la scuola apre il percorso, il nome
-del Treasure Hunt lo allarga, Nemona propone una route e la mappa ti chiede di
+del Treasure Hunt lo allarga, Nemi propone una route e la mappa ti chiede di
 rendere concreta la prima scelta.
 
 :::example_sentence

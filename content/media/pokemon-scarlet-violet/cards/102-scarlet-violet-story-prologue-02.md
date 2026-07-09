@@ -261,9 +261,9 @@ reading: せいぎょする
 romaji: seigyo suru
 meaning_it: controllare / tenere sotto controllo
 notes_it: >-
-  `{{制御|せいぎょ}}する` indica gestione stabile di un Pokémon, non semplice cattura.
-  Nella scena con Pepper la Ball non registra una presa standard: limita e
-  contiene il Pokémon in uno stato speciale.
+  `{{制御|せいぎょ}}する` indica controllo o regolazione intenzionale. Nella frase
+  con Pepper, `ための もの` presenta la funzione della Ball: serve a tenere quel
+  Pokémon sotto controllo.
 :::
 :::card
 id: card-seigyo-suru-recognition
@@ -276,8 +276,7 @@ back: controllare / tenere sotto controllo
 example_jp: >-
   その ボールは あの ポケモンを {{制御|せいぎょ}}するための ものなんだ。
 example_it: >-
-  Quella Ball contiene quel Pokémon speciale e ne limita lo stato, invece di
-  registrare una cattura standard.
+  Quella Ball serve a tenere sotto controllo quel Pokémon.
 :::
 :::term
 id: term-sainan

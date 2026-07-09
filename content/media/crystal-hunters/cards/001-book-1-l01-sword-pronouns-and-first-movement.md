@@ -285,7 +285,7 @@ card_type: recognition
 front: '{{僕|ぼく}}'
 back: 'ぼく — io; me'
 example_jp: >-
-  {{僕|ぼく}}は{{知|し}}る。
+  {{僕|ぼく}}は{{知|し}}っている。
 example_it: >-
   Io lo so.
 notes_it: >-

@@ -192,7 +192,7 @@ example_jp: >-
   ネモが {{新|あたら}}しい トレーナーに バトルの ルールを
   {{紹介|しょうかい}}する。
 example_it: >-
-  Nemona presenta le regole della battaglia al nuovo allenatore.
+  Nemi presenta le regole della battaglia al nuovo allenatore.
 :::
 :::term
 id: term-v548-himitsunomenyuu

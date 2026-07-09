@@ -233,7 +233,7 @@ translation_it: >-
 jp: >-
   きらいな わけじゃない。
 translation_it: >-
-  Mica lo odi / mica ti dispiace davvero.
+  Non è che non mi piaccia.
 :::
 
 #### 🗺️ Anatomia della frase

@@ -117,7 +117,7 @@ back: sembrare voler fare (terza persona)
 example_jp: >-
   ネモは すぐ バトルしたがる。
 example_it: >-
-  Nemona tende a voler lottare subito.
+  Nemi tende a voler lottare subito.
 :::
 :::grammar
 id: grammar-g081-e-meglio-fare

@@ -98,7 +98,7 @@ back: >-
 example_jp: >-
   チャンピオンの ネモに {{話|はなし}}を {{聞|き}}く。
 example_it: >-
-  Ascolto quello che ha da dire Nemona, la Campionessa.
+  Ascolto quello che ha da dire Nemi, la Campionessa.
 notes_it: >-
   Il verbo {{聞|き}}く racchiude sia la ricezione di un suono (“sentire/ascoltare”) sia la ricerca attiva di informazioni (“chiedere”). La persona a cui chiedi prende に: {{人|ひと}}に{{聞|き}}く. Il contenuto che ascolti o chiedi prende を: {{話|はなし}}を{{聞|き}}く, ポケモンのことを{{聞|き}}く.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
@@ -115,7 +115,7 @@ back: >-
 example_jp: >-
   テーブルシティで ネモを {{待|ま}}つ あいだ、ポケモンセンターに よろう。
 example_it: >-
-  Mentre aspettiamo Nemona a Mesapoli, passiamo dal Centro Pokémon.
+  Mentre aspettiamo Nemi a Mesapoli, passiamo dal Centro Pokémon.
 notes_it: >-
   Il verbo {{待|ま}}つ (aspettare) si usa frequentemente nella forma -て/-で per descrivere un'azione in corso ({{待|ま}}っている, spesso contratto in {{待|ま}}ってる) o per dire a qualcuno di aspettare ({{待|ま}}って). Il luogo dell'attesa si marca con で.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]

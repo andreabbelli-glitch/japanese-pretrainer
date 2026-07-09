@@ -33,7 +33,7 @@ reading: いまから
 romaji: imakara
 meaning_it: da ora; adesso
 notes_it: >-
-  Composto da {{今|いま}} (ora) e la particella から (da). Sottolinea l'imminenza di un'azione. È perfetto per annunci ufficiali dello staff o quando un personaggio, come Nemona, dichiara le proprie intenzioni immediate di sfidarti.
+  Composto da {{今|いま}} (ora) e la particella から (da). Sottolinea l'imminenza di un'azione. È perfetto per annunci ufficiali dello staff o quando un personaggio, come Nemi, dichiara le proprie intenzioni immediate di sfidarti.
 level_hint: custom
 :::
 :::term
@@ -154,7 +154,7 @@ example_jp: >-
 example_it: >-
   Da adesso daremo inizio all'Esame della Palestra.
 notes_it: >-
-  Composto da {{今|いま}} (ora) e la particella から (da). Sottolinea l'imminenza di un'azione. È perfetto per annunci ufficiali dello staff o quando un personaggio, come Nemona, dichiara le proprie intenzioni immediate di sfidarti.
+  Composto da {{今|いま}} (ora) e la particella から (da). Sottolinea l'imminenza di un'azione. È perfetto per annunci ufficiali dello staff o quando un personaggio, come Nemi, dichiara le proprie intenzioni immediate di sfidarti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-16]
 :::
 :::card

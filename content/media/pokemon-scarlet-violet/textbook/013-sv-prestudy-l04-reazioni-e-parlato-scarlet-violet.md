@@ -21,7 +21,7 @@ summary: >-
 
 # Conferme e slancio nel parlato di Paldea
 
-Nelle prime ore di *Pokémon Scarlet & Violet*, una battuta breve può decidere se la scena resta in pausa o si rimette in movimento. Un personaggio controlla che vada tutto bene, Nemona spinge verso il prossimo incontro, Arven porta il dialogo sul percorso dei Pokémon dominanti, e il gioco usa formule compatte per trasformare una reazione in azione.
+Nelle prime ore di *Pokémon Scarlet & Violet*, una battuta breve può decidere se la scena resta in pausa o si rimette in movimento. Un personaggio controlla che vada tutto bene, Nemi spinge verso il prossimo incontro, Arven porta il dialogo sul percorso dei Pokémon dominanti, e il gioco usa formule compatte per trasformare una reazione in azione.
 
 Il giapponese di questi scambi non è fatto solo di grandi istruzioni. Spesso bastano [{{大丈夫|だいじょうぶ}}](term:term-v039-daijoubu), [じゃあ](term:term-e008-jaa), [{{行|い}}こう](term:term-e009-iko-u), [～{{前|まえ}}に](grammar:grammar-g010-prima-di) e [～たい](grammar:grammar-g011-voler-fare) per capire chi sta rassicurando, chi sta proponendo di partire, quale azione deve venire prima e quale desiderio sta guidando il personaggio.
 
@@ -49,7 +49,7 @@ Il giapponese di questi scambi non è fatto solo di grandi istruzioni. Spesso ba
 ## Etichette da riconoscere
 
 - [ジムテスト](term:term-v038-jimutesuto) — prova preliminare della palestra
-- [ネモ](term:term-v044-nemo) — Nemona
+- [ネモ](term:term-v044-nemo) — Nemi
 - [ペパー](term:term-v048-pepaa) — Arven
 
 ---
@@ -89,7 +89,7 @@ Pensa a [{{大丈夫|だいじょうぶ}}](term:term-v039-daijoubu) come a un se
 
 Dopo una conferma, il parlato di *Scarlet & Violet* passa spesso all'azione con [じゃあ](term:term-e008-jaa). È il ponte tra "ho capito la situazione" e "facciamo la prossima cosa": in italiano può diventare "allora", "in tal caso", "bene, quindi". Non porta da solo il contenuto dell'azione; prepara il terreno per il verbo che segue.
 
-[{{行|い}}こう](term:term-e009-iko-u) è quel verbo in forma volitiva: viene da {{行|い}}く, "andare", e la forma ～こう lo trasforma in un invito condiviso, "andiamo". Non è un ordine secco; è una spinta a muoversi insieme, molto naturale nelle battute di Nemona quando il dialogo vuole riprendere ritmo.
+[{{行|い}}こう](term:term-e009-iko-u) è quel verbo in forma volitiva: viene da {{行|い}}く, "andare", e la forma ～こう lo trasforma in un invito condiviso, "andiamo". Non è un ordine secco; è una spinta a muoversi insieme, molto naturale nelle battute di Nemi quando il dialogo vuole riprendere ritmo.
 
 :::example_sentence
 jp: >-
@@ -109,13 +109,13 @@ La stessa forma diventa più calda quando entra una relazione personale. [{{友�
 jp: >-
   ネモとの バトルは {{楽|たの}}しいです。
 translation_it: >-
-  La lotta con Nemona è divertente.
+  La lotta con Nemi è divertente.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `ネモとの` ➔ **Relazione con un nome proprio**: `と` indica "con", `の` aggancia quel rapporto al nome successivo.
-*   `バトルは` ➔ **Tema della frase**: `は` dice che la frase sta parlando della lotta, non di Nemona in generale.
+*   `バトルは` ➔ **Tema della frase**: `は` dice che la frase sta parlando della lotta, non di Nemi in generale.
 *   `{{楽|たの}}しいです` ➔ **Giudizio positivo cortese**: aggettivo in `い` più `です`, naturale per descrivere un'esperienza in modo semplice.
 
 #### ⚖️ Contrasto operativo
@@ -187,7 +187,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{行|い}}こう](term:term-e009-iko-u) spinge il gruppo: "andiamo". {{行|い}}きたい espone una volontà: "voglio andare". Se Nemona dice una forma volitiva, senti l'invito all'azione; se un personaggio usa [～たい](grammar:grammar-g011-voler-fare), leggi prima il desiderio o l'intenzione che muove la frase.
+[{{行|い}}こう](term:term-e009-iko-u) spinge il gruppo: "andiamo". {{行|い}}きたい espone una volontà: "voglio andare". Se Nemi dice una forma volitiva, senti l'invito all'azione; se un personaggio usa [～たい](grammar:grammar-g011-voler-fare), leggi prima il desiderio o l'intenzione che muove la frase.
 
 #### 🧠 Gancio cognitivo
 
@@ -224,7 +224,7 @@ translation_it: >-
 jp: >-
   ネモとの バトルは {{楽|たの}}しいから、 もっと {{先|さき}}へ {{行|い}}きたい。
 translation_it: >-
-  La lotta con Nemona è divertente, quindi voglio andare ancora più avanti.
+  La lotta con Nemi è divertente, quindi voglio andare ancora più avanti.
 :::
 
 ---

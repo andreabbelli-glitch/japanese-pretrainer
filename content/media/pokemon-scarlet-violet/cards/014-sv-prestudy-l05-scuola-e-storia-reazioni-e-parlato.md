@@ -349,5 +349,5 @@ back: >-
 example_jp: >-
   きっと ネモも {{来|く}}ると {{思|おも}}う。
 example_it: >-
-  Penso che sicuramente verrà anche Nemona.
+  Penso che sicuramente verrà anche Nemi.
 :::

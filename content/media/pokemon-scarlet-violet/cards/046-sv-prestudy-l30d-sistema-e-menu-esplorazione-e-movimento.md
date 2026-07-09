@@ -671,7 +671,7 @@ back: ammirazione / aspirazione
 example_jp: >-
   ネモは みんなの {{憧|あこが}}れです。
 example_it: >-
-  Nemona è un modello per tutti.
+  Nemi è un modello per tutti.
 :::
 :::term
 id: term-v770-koutai

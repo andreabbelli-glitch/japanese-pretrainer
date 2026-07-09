@@ -210,7 +210,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `{{正直|しょうじき}}に {{言|い}}うと` ➔ **Cornice confessionale**: il parlante abbassa il filtro e prepara un giudizio personale.
-*   `ネモの バトルへの {{情|じょう}}{{熱|ねつ}}には` ➔ **Tema marcato con limite**: `には` mette a tema proprio la passione di Nemona per le lotte.
+*   `ネモの バトルへの {{情|じょう}}{{熱|ねつ}}には` ➔ **Tema marcato con limite**: `には` mette a tema proprio la passione di Nemi per le lotte.
 *   `ついていけない` ➔ **Difficoltà a reggere il ritmo**: `ついていけない` indica difficoltà a reggere il ritmo di qualcuno.
 
 :::example_sentence

@@ -69,14 +69,14 @@ All'inizio di *Scarlet & Violet* i personaggi parlano spesso mentre ti stanno gi
 jp: >-
   もう {{行|い}}こう、 ネモが {{待|ま}}ってる。
 translation_it: >-
-  Andiamo ormai: Nemona sta aspettando.
+  Andiamo ormai: Nemi sta aspettando.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `もう` ➔ **soglia temporale**: qui vale "ormai / su, adesso", non un semplice "già" da calendario.
 *   `{{行|い}}こう` ➔ **volitivo inclusivo**: la forma in `-ou` di `{{行|い}}く` invita l'interlocutore a muoversi insieme al parlante.
-*   `ネモが` ➔ **soggetto marcato da `が`**: mette Nemona come informazione nuova o rilevante.
+*   `ネモが` ➔ **soggetto marcato da `が`**: mette Nemi come informazione nuova o rilevante.
 *   {{待|ま}}ってる ➔ **stato in corso colloquiale**: è {{待|ま}}っている contratto in [～てる](grammar:grammar-g006-contrazione-colloquiale-di), quindi "sta aspettando" con tono naturale da parlato.
 
 #### ⚖️ Contrasto operativo

@@ -152,7 +152,7 @@ back: >-
 example_jp: >-
   この{{前|まえ}}、ネモと ポケモンバトルを した。
 example_it: >-
-  L'altro giorno ho fatto una lotta Pokémon con Nemona.
+  L'altro giorno ho fatto una lotta Pokémon con Nemi.
 notes_it: >-
   L'espressione temporale この{{前|まえ}} ("prima di questo momento") si usa come avverbio di tempo per riferirsi a un evento accaduto "l'altro giorno" o "recentemente". A differenza di {{昔|むかし}} (molto tempo fa), indica un passato ancora vivido e vicino. Non richiede particelle specifiche per essere inserita nella frase.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-08]

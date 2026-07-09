@@ -102,7 +102,7 @@ id: term-kaishi-1708637441076
 lemma: '空く'
 reading: 'すく'
 romaji: 'suku'
-meaning_it: 'to be empty, to become less crowded'
+meaning_it: 'to be empty or uncrowded, to become less crowded'
 aliases: ['すく', '空く']
 audio_src: 'assets/audio/term/term-kaishi-1708637441076/254V.mp3'
 audio_source: kaishi
@@ -117,9 +117,9 @@ entry_type: term
 entry_id: term-kaishi-1708637441076
 card_type: recognition
 front: '{{空|す}}く'
-back: 'to be empty, to become less crowded'
+back: 'to be empty or uncrowded, to become less crowded'
 example_jp: 'レストランは{{空|す}}いていました。'
-example_it: 'The restaurant was empty.'
+example_it: 'The restaurant wasn''t crowded.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441076-recognition/254S.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

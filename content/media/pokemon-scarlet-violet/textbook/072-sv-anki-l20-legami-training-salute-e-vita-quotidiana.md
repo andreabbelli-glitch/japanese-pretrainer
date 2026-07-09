@@ -352,7 +352,7 @@ translation_it: >-
 jp: >-
   {{特|とっ}}{{訓|くん}}を するか {{悩|なや}}んでいたら、{{突|とつ}}{{然|ぜん}} ネモが {{勝負|しょうぶ}}を {{申|もう}}し{{込|こ}}んできた。
 translation_it: >-
-  Mentre ero indeciso se fare un allenamento speciale, Nemona mi ha sfidato all'improvviso.
+  Mentre ero indeciso se fare un allenamento speciale, Nemi mi ha sfidato all'improvviso.
 :::
 
 :::example_sentence

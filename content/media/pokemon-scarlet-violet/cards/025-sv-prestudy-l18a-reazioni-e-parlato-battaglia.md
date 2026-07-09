@@ -59,7 +59,7 @@ back: '"..." / quanto a... / a proposito di...'
 example_jp: >-
   ネモって {{一番|いちばん}}だよね。
 example_it: >-
-  Nemona, dici? È la numero uno, vero?
+  Nemi, dici? È la numero uno, vero?
 :::
 :::term
 id: term-e038-masaka

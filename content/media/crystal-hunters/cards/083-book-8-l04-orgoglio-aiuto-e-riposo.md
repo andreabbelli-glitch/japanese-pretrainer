@@ -387,7 +387,7 @@ card_type: recognition
 front: '{{出直|でなお}}す'
 back: 'でなおす — ripartire da capo; tornare un''altra volta'
 example_jp: '{{明日|あした}}{{出直|でなお}}す。'
-example_it: Torno domani e riparto da capo.
+example_it: Tornerò domani.
 notes_it: >-
   Il tentativo attuale si chiude; si riprova piu' tardi o da capo.
 tags: [crystal-hunters, book-8, lesson-04]

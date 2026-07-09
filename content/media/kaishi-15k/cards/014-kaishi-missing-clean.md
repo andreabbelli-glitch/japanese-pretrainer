@@ -42,7 +42,7 @@ id: term-kaishi-1708637441121
 lemma: '当時'
 reading: 'とうじ'
 romaji: 'touji'
-meaning_it: 'at that time, at the present time'
+meaning_it: 'at that time, in those days'
 aliases: ['とうじ', '当時']
 audio_src: 'assets/audio/term/term-kaishi-1708637441121/ce00feeda5d0676afda58b27e433d908-1127531e029fb7523e2a8618d26f4b7f504eb2ce.mp3'
 audio_source: kaishi
@@ -57,7 +57,7 @@ entry_type: term
 entry_id: term-kaishi-1708637441121
 card_type: recognition
 front: '{{当|とう}}{{時|じ}}'
-back: 'at that time, at the present time'
+back: 'at that time, in those days'
 example_jp: '{{彼|かの}}{{女|じょ}}は{{当|とう}}{{時|じ}}、まだ{{3才|さんさい}}だった。'
 example_it: 'She was only three years old at the time.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441121-recognition/9ac2fda9718915b31fe96233a1ba9122-4632d4d9499c97c6829c58468a04ed601f55bcc7.mp3'
@@ -510,7 +510,7 @@ card_type: recognition
 front: '{{褒|ほ}}める'
 back: 'to praise, to commend'
 example_jp: '{{頑|がん}}{{張|ば}}ったので{{褒|ほ}}められました。'
-example_it: 'He was praised because he worked hard.'
+example_it: 'I was praised because I worked hard.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440784-recognition/c0e287b5c10761edf5e09ffb77ab57c9-2f08cc63a2e36594686cea6bae04923db7d3f4cb.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

@@ -192,7 +192,7 @@ id: term-kaishi-1708637440616
 lemma: 'どうか'
 reading: 'どうか'
 romaji: 'douka'
-meaning_it: 'if possible, somehow'
+meaning_it: 'please (emphatic), I beg you; somehow'
 aliases: ['どうか']
 audio_src: 'assets/audio/term/term-kaishi-1708637440616/3632V.mp3'
 audio_source: kaishi
@@ -209,7 +209,7 @@ entry_type: term
 entry_id: term-kaishi-1708637440616
 card_type: recognition
 front: 'どうか'
-back: 'if possible, somehow'
+back: 'please (emphatic), I beg you; somehow'
 example_jp: 'どうかお{{許|ゆる}}しください。'
 example_it: 'Please forgive me.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440616-recognition/3632S.mp3'
@@ -465,7 +465,7 @@ id: term-kaishi-1708637441084
 lemma: '際'
 reading: 'さい'
 romaji: 'sai'
-meaning_it: 'occasion, time'
+meaning_it: 'occasion, time, when'
 aliases: ['さい', '際']
 audio_src: 'assets/audio/term/term-kaishi-1708637441084/06db49015bf4b272360b031ef8157a14.mp3'
 audio_source: kaishi
@@ -480,9 +480,9 @@ entry_type: term
 entry_id: term-kaishi-1708637441084
 card_type: recognition
 front: '{{際|さい}}'
-back: 'occasion, time'
+back: 'occasion, time, when'
 example_jp: 'この{{際|さい}}はっきり{{言|い}}っておきます。'
-example_it: 'This is a good opportunity to speak frankly.'
+example_it: 'At this point, let me make myself clear.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441084-recognition/273e600f116452dd92dfc8980106ed82.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

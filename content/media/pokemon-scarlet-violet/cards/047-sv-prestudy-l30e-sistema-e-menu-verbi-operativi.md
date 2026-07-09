@@ -116,7 +116,7 @@ back: mica per forza... / conclusione da ridimensionare
 example_jp: >-
   きらいな わけじゃない。
 example_it: >-
-  Mica lo odi.
+  Non è che non mi piaccia.
 :::
 :::grammar
 id: grammar-g111-far-fare-lasciar-fare

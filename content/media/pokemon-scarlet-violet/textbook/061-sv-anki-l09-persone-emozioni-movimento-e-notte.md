@@ -95,7 +95,7 @@ translation_it: >-
 
 ## 2. Comunicare, rimandare e leggere lo stato emotivo
 
-Nei dialoghi scolastici e nelle scene con Clavel, Nemona o gli altri compagni, il giapponese distingue bene tra parlare, riferire, rimandare al passo successivo e mostrare un'emozione. La relazione tra contenuto, destinatario e tempo è quasi sempre affidata a blocchi piccoli.
+Nei dialoghi scolastici e nelle scene con Clavel, Nemi o gli altri compagni, il giapponese distingue bene tra parlare, riferire, rimandare al passo successivo e mostrare un'emozione. La relazione tra contenuto, destinatario e tempo è quasi sempre affidata a blocchi piccoli.
 
 *   [{{伝|つた}}える](term:term-anki-l09-tsutaeru) è transitivo: il messaggio o il contenuto prende [を](grammar:grammar-g033-marca-l-oggetto-diretto), mentre il destinatario prende に. In クラベル{{校長|こうちょう}}に{{伝|つた}}えることがある, c'è qualcosa da far arrivare al preside come informazione. Il verbo ha quindi una direzione comunicativa, non solo un suono prodotto.
 *   [{{次|じ}}{{回|かい}}](term:term-anki-l09-jikai) combina {{次|じ}}, "prossimo", e {{回|かい}}, "volta/episodio". Quando modifica un nome, passa naturalmente per [の](grammar:grammar-g030-possesso-collegamento-tra-nomi): {{次|じ}}{{回|かい}}の{{授業|じゅぎょう}} è "l'incontro della prossima volta". All'Accademia questa formula sposta lo sguardo dalla spiegazione attuale al prossimo appuntamento.

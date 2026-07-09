@@ -239,7 +239,7 @@ card_type: recognition
 front: '{{常|つね}}に'
 back: 'always, constantly'
 example_jp: '{{彼|かれ}}は{{常|つね}}に{{姿|し}}{{勢|せい}}がいい。'
-example_it: 'He always has a good attitude.'
+example_it: 'He always has good posture.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440923-recognition/75fd3d82e971545fb35f3c0621e49126.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

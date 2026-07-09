@@ -64,7 +64,7 @@ romaji: jimu bajji
 meaning_it: Medaglia Palestra
 notes_it: >-
   Segna il superamento di una Palestra, non un semplice souvenir. Nel flusso di
-  Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemona e, più avanti,
+  Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemi e, più avanti,
   incidono anche su quali Pokémon forti ti obbediscono senza problemi.
 :::
 :::card

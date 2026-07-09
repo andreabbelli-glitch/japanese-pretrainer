@@ -72,7 +72,7 @@ id: term-kaishi-1708637441139
 lemma: '動揺'
 reading: 'どうよう'
 romaji: 'douyou'
-meaning_it: 'shaking, turbulence'
+meaning_it: 'agitation, disturbance, being shaken'
 aliases: ['どうよう', '動揺']
 audio_src: 'assets/audio/term/term-kaishi-1708637441139/jw06327a.mp3'
 audio_source: kaishi
@@ -87,9 +87,9 @@ entry_type: term
 entry_id: term-kaishi-1708637441139
 card_type: recognition
 front: '{{動|どう}}{{揺|よう}}'
-back: 'shaking, turbulence'
+back: 'agitation, disturbance, being shaken'
 example_jp: '{{彼|かの}}{{女|じょ}}はその{{知|し}}らせを{{聞|き}}いて{{激|はげ}}しく{{動|どう}}{{揺|よう}}した。'
-example_it: 'She trembled violently upon hearing that news.'
+example_it: 'She was deeply shaken by the news.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441139-recognition/js06327a.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

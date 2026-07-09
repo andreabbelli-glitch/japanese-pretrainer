@@ -244,7 +244,7 @@ translation_it: >-
 jp: >-
   ネモは もう {{来|き}}たらしい。
 translation_it: >-
-  Pare che Nemona sia già arrivata.
+  Pare che Nemi sia già arrivata.
 :::
 
 #### 🗺️ Anatomia della frase

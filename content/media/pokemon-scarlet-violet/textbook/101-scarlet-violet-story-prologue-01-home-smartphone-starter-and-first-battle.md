@@ -19,7 +19,7 @@ summary: >-
 Il primo tratto giocabile di *Pokémon Scarlet / Violet* non parte con una
 grande missione, ma con segnali piccoli e molto leggibili: qualcuno bussa alla
 porta, un adulto parla in registro formale, la madre ti prepara per uscire, lo
-smartphone diventa interfaccia, Nemona trasforma una presentazione in una sfida.
+smartphone diventa interfaccia, Nemi trasforma una presentazione in una sfida.
 
 Il giapponese del blocco lavora su due piani insieme. Da una parte ci sono le
 formule di casa e scuola, come [ごめんください](term:term-gomen-kudasai) o
@@ -220,16 +220,16 @@ Pensa a `～づくし` come a un tavolo coperto tutto dallo stesso tipo di cosa.
 `{{初|はじ}}めてづくし` è quindi una giornata apparecchiata di "prime volte". È
 un trucco mnemonico, non un'etimologia.
 
-## 3. Starter e Nemona: da vicini a rivali
+## 3. Starter e Nemi: da vicini a rivali
 
-Nemona cambia subito la velocità della scena. Il suo parlato è meno formale,
+Nemi cambia subito la velocità della scena. Il suo parlato è meno formale,
 più diretto e pieno di agganci sociali: ti colloca come vicino, interpreta lo
 starter come partner e trasforma quasi subito la presentazione in lotta.
 
 *   [ご{{近所|きんじょ}}](term:term-gokinjo), o
     `ご{{近所|きんじょ}}{{同士|どうし}}`, crea una relazione di quartiere.
     `{{近所|きんじょ}}` lega due persone alla stessa zona e il prefisso `ご` la
-    rende socialmente morbida: Nemona usa la geografia per accorciare la
+    rende socialmente morbida: Nemi usa la geografia per accorciare la
     distanza tra voi.
 *   [{{勝負|しょうぶ}}](term:term-shoubu) qui nomina il match concreto. In
     `{{勝負|しょうぶ}}しよう` la parola diventa verbo con `する`; in
@@ -293,12 +293,12 @@ caption: >-
 vede. La frase suona quindi come un'osservazione messa in bocca al personaggio,
 non come una decisione fredda del sistema.
 
-Nemona carica poi il primo match come [デビュー{{戦|せん}}](term:term-debyuu-sen).
+Nemi carica poi il primo match come [デビュー{{戦|せん}}](term:term-debyuu-sen).
 `デビュー` nomina l'esordio e `{{戦|せん}}` lo aggancia alla prova di battaglia:
 è il debutto del partner come prima sfida in campo. Dopo il
 match, [{{素質|そしつ}}アリ](term:term-soshitsu-ari) compatta il
-giudizio di Nemona: `{{素質|そしつ}}` è la predisposizione, `アリ` è il "c'è /
-presente" colloquiale. Nel modo in cui combatti Nemona vede potenziale, più che
+giudizio di Nemi: `{{素質|そしつ}}` è la predisposizione, `アリ` è il "c'è /
+presente" colloquiale. Nel modo in cui combatti Nemi vede potenziale, più che
 una forza già compiuta.
 
 ## 4. Spiaggia e tipi: debolezza, superefficacia e autocontrollo
@@ -335,7 +335,7 @@ translation_it: >-
 
 :::image
 src: assets/story/nemona-first-battle-beach.webp
-alt: "Primo combattimento tutorial contro Nemona sulla spiaggia con i Pokémon in campo e interfaccia di lotta visibile."
+alt: "Primo combattimento tutorial contro Nemi sulla spiaggia con i Pokémon in campo e interfaccia di lotta visibile."
 caption: >-
   Nel primo match, [{{弱点|じゃくてん}}](term:term-jakuten) e
   [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun) formano una catena leggibile:
@@ -349,7 +349,7 @@ caption: >-
 il colpo. Se li fondi in una sola idea, perdi il timing: prima scegli la mossa
 in base alla debolezza, poi il gioco conferma l'effetto.
 
-La battuta di Nemona su `いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところでした`
+La battuta di Nemi su `いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところでした`
 spiega il suo autocontrollo in lingua di battaglia. [{{繰|く}}り{{出|だ}}す](term:term-kuridasu)
 è il verbo per mandare fuori qualcosa in modo deciso; nei dialoghi Pokémon
 indica anche mandare in campo un Pokémon. La forma [～てしまう](grammar:grammar-te-shimau),
@@ -380,7 +380,7 @@ verbo, non una spiegazione etimologica completa.
 
 ## 5. Pokédex e registrazione: dal quaderno all'app
 
-Dopo la lotta, Nemona sposta il focus dal combattimento al sistema. La
+Dopo la lotta, Nemi sposta il focus dal combattimento al sistema. La
 scena prende un oggetto familiare della serie, il Pokédex, e lo rilegge come
 app nello [スマホロトム](term:term-smartphone-rotom): non più quaderno da
 riempire a mano, ma interfaccia che aggiorna dati.
@@ -434,7 +434,7 @@ a mano richiederebbe annotazione manuale. Lo
 Il primo ti fa immaginare una nota scritta, il secondo un sistema che aggiorna
 una voce.
 
-Quando Nemona definisce l'app [{{要|よう}}チェック](term:term-you-check), il
+Quando Nemi definisce l'app [{{要|よう}}チェック](term:term-you-check), il
 tono diventa colloquiale ma non perde funzione. `{{要|よう}}` qui vale "richiede
 / è necessario", mentre `チェック` resta il controllo da fare: per un
 Allenatore, quella funzione è da guardare subito. Il pattern
@@ -478,7 +478,7 @@ jp: >-
   {{相手|あいて}}の {{弱点|じゃくてん}}を {{突|つ}}いて {{勝負|しょうぶ}}に
   {{勝|か}}ったら、 ネモは {{素質|そしつ}}アリ と {{言|い}}ってくれる。
 translation_it: >-
-  Se colpisci la debolezza dell'avversario e vinci il match, Nemona ti dice
+  Se colpisci la debolezza dell'avversario e vinci il match, Nemi ti dice
   che hai stoffa.
 :::
 
@@ -496,7 +496,7 @@ translation_it: >-
 Questo prologo insegna a leggere il passaggio da casa a viaggio come una serie
 di segnali linguistici: la cortesia apre la porta, [{{準備|じゅんび}}](term:term-junbi)
 marca i gate, [スマホロトム](term:term-smartphone-rotom) trasforma le battute in
-interfaccia, [{{勝負|しょうぶ}}](term:term-shoubu) porta Nemona sul campo e
+interfaccia, [{{勝負|しょうぶ}}](term:term-shoubu) porta Nemi sul campo e
 [{{登録|とうろく}}](term:term-touroku) collega cattura e Pokédex. Se riconosci
 questi pezzi mentre compaiono, il tutorial smette di essere una sequenza di
 frasi isolate e diventa un sistema leggibile.

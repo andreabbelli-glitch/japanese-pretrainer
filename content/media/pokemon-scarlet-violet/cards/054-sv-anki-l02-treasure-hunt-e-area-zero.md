@@ -166,7 +166,7 @@ back: >-
 example_jp: >-
   みんなは わたしの ことを ネモと {{呼|よ}}ぶの！
 example_it: >-
-  Tutti mi chiamano Nemona!
+  Tutti mi chiamano Nemi!
 notes_it: >-
   Oltre al significato fisico di 'chiamare ad alta voce', {{呼|よ}}ぶ (よぶ) è fondamentale per esprimere denominazioni. La struttura [A]を[B]と{{呼|よ}}ぶ (Chiamare A con il nome B) è usata continuamente per introdurre personaggi, luoghi o fenomeni rari al giocatore.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-02]
@@ -234,7 +234,7 @@ back: >-
 example_jp: >-
   ネモは ポケモンの ことを {{話|はな}}すのが {{大好|だいす}}きです。
 example_it: >-
-  A Nemona piace moltissimo parlare di Pokémon.
+  A Nemi piace moltissimo parlare di Pokémon.
 notes_it: >-
   Il verbo {{話|はな}}す (はなす) enfatizza l'atto verbale e bidirezionale. A differenza di {{言|い}}う (dire, affermare un concetto), {{話|はな}}す richiede un interlocutore che può essere marcato con と (per conversazioni alla pari) o に (per rivolgersi a qualcuno).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-02]

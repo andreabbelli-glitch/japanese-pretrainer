@@ -450,7 +450,7 @@ card_type: recognition
 front: '{{訓|くん}}{{練|れん}}'
 back: 'training, drill'
 example_jp: '{{学|がっ}}{{校|こう}}で{{避|ひ}}{{難|なん}}{{訓|くん}}{{練|れん}}がありました。'
-example_it: 'There was a fire drill at the school.'
+example_it: 'There was an evacuation drill at school.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441049-recognition/c0403aed903dd52ac65818e034b33c7a.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

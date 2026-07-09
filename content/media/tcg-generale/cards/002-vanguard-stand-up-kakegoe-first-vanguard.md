@@ -696,7 +696,7 @@ back: 'in più; ulteriormente; ancora'
 example_jp: >-
   このオーバートリガーは{{更|さら}}にもう{{1体|いったい}}{{追加|ついか}}で{{+1億|プラスいちおく}}{{出来|でき}}るんだよ。
 example_it: >-
-  Questo over trigger può aggiungere ancora un'altra unità e darle +100 milioni.
+  Questo over trigger può dare +100 milioni anche a un'altra unità.
 notes_it: >-
   {{更|さら}}に sposta la frase su un'aggiunta ulteriore. Qui introduce il
   secondo bersaglio possibile dell'over trigger, oltre a quello già previsto.
@@ -714,7 +714,7 @@ back: 'cento milioni'
 example_jp: >-
   このオーバートリガーは{{更|さら}}にもう{{1体|いったい}}{{追加|ついか}}で{{+1億|プラスいちおく}}{{出来|でき}}るんだよ。
 example_it: >-
-  Questo over trigger può aggiungere ancora un'altra unità e darle +100 milioni.
+  Questo over trigger può dare +100 milioni anche a un'altra unità.
 notes_it: >-
   `{{+1億|プラスいちおく}}` indica un aumento di cento milioni. In Vanguard è un
   numero volutamente enorme, legato alla forza esplosiva dell'over trigger.

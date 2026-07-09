@@ -123,7 +123,7 @@ Le scene di *Scarlet & Violet* non avanzano solo perché qualcuno combatte o si 
 jp: >-
   みんなは わたしの ことを ネモと {{呼|よ}}ぶの！
 translation_it: >-
-  Tutti mi chiamano Nemona!
+  Tutti mi chiamano Nemi!
 :::
 
 #### 🗺️ Anatomia della frase
@@ -135,7 +135,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{話|はなし}}](term:term-anki-l02-hanashi) è una cosa che esiste o viene raccontata; [{{話|はな}}す](term:term-anki-l02-hanasu) è l'azione di parlare. {{話|はなし}}がある non significa "parlare esiste" in italiano naturale: significa che c'è un discorso da fare. ネモと{{話|はな}}す, invece, descrive l'atto di parlare con Nemona.
+[{{話|はなし}}](term:term-anki-l02-hanashi) è una cosa che esiste o viene raccontata; [{{話|はな}}す](term:term-anki-l02-hanasu) è l'azione di parlare. {{話|はなし}}がある non significa "parlare esiste" in italiano naturale: significa che c'è un discorso da fare. ネモと{{話|はな}}す, invece, descrive l'atto di parlare con Nemi.
 
 #### 🧠 Gancio cognitivo
 
@@ -197,7 +197,7 @@ translation_it: >-
 jp: >-
   ネモと ポケモンの {{話|はなし}}を {{少|すこ}}し {{話|はな}}す。
 translation_it: >-
-  Parlo un po' con Nemona dei Pokémon.
+  Parlo un po' con Nemi dei Pokémon.
 :::
 
 :::example_sentence

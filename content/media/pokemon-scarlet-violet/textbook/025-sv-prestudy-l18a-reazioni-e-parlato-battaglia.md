@@ -21,7 +21,7 @@ summary: >-
 
 # Reazioni e battaglie: capire tono, confronto e condizioni
 
-Quando *Pokémon Scarlet & Violet* passa da una battuta tra personaggi a un prompt di battaglia, il giapponese cambia ritmo ma non smette di darti indizi. Una particella può trasformare Nemona in tema di conversazione, una forma condizionale può aprire il "se" di una sfida, e una parola come `{{戦闘|せんとう}}` può far capire che non stai leggendo una lotta generica, ma lo stato tecnico del combattimento.
+Quando *Pokémon Scarlet & Violet* passa da una battuta tra personaggi a un prompt di battaglia, il giapponese cambia ritmo ma non smette di darti indizi. Una particella può trasformare Nemi in tema di conversazione, una forma condizionale può aprire il "se" di una sfida, e una parola come `{{戦闘|せんとう}}` può far capire che non stai leggendo una lotta generica, ma lo stato tecnico del combattimento.
 
 Le reazioni brevi servono a seguire il tono della scena: chi capisce, chi conferma, chi resta incredulo. Le parole di torneo, tipo e oggetto tenuto servono invece a leggere cosa succede sullo schermo mentre una scelta diventa azione.
 
@@ -89,7 +89,7 @@ Quando entra [{{感謝|かんしゃ}}](term:term-v208-kansha), il registro si sp
 
 ## 2. Parlare di persone e parole: `って` mette il tema davanti
 
-Il parlato dei personaggi usa spesso [〜って](grammar:grammar-g037-citazione-tema-colloquiale) per agganciare qualcosa appena nominato. Può riprendere una citazione, ma in frasi come ネモって... funziona soprattutto da tema colloquiale: "quanto a Nemona...", "Nemona, dici?". È più leggero di は e dà alla frase un tono parlato, come se il personaggio stesse raccogliendo un nome dalla conversazione e lo mettesse sul tavolo.
+Il parlato dei personaggi usa spesso [〜って](grammar:grammar-g037-citazione-tema-colloquiale) per agganciare qualcosa appena nominato. Può riprendere una citazione, ma in frasi come ネモって... funziona soprattutto da tema colloquiale: "quanto a Nemi...", "Nemi, dici?". È più leggero di は e dà alla frase un tono parlato, come se il personaggio stesse raccogliendo un nome dalla conversazione e lo mettesse sul tavolo.
 
 [{{言葉|ことば}}](term:term-v198-kotoba) aiuta a leggere questo stesso territorio. Non indica solo una "parola" singola: può essere una frase, una scelta di parole o il modo in cui qualcuno si esprime. Nei dialoghi, quindi, その{{言葉|ことば}} può puntare a ciò che è stato detto, non a un vocabolo isolato da dizionario.
 
@@ -97,7 +97,7 @@ Il parlato dei personaggi usa spesso [〜って](grammar:grammar-g037-citazione-
 jp: >-
   ネモって {{一番|いちばん}} {{強|つよ}}いよね。
 translation_it: >-
-  Nemona, dici? È la più forte, vero?
+  Nemi, dici? È la più forte, vero?
 :::
 
 #### 🗺️ Anatomia della frase
@@ -108,7 +108,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`って` puo' introdurre un tema colloquiale: quanto a Nemona, quanto a quella persona. Se invece il blocco riprende una frase detta da qualcuno, allora la lettura da citazione torna possibile.
+`って` puo' introdurre un tema colloquiale: quanto a Nemi, quanto a quella persona. Se invece il blocco riprende una frase detta da qualcuno, allora la lettura da citazione torna possibile.
 
 #### 🧠 Gancio cognitivo
 
@@ -213,7 +213,7 @@ translation_it: >-
 jp: >-
   ネモって、 むしタイプより ずっと {{強|つよ}}い {{相手|あいて}}を {{選|えら}}ぶよね。
 translation_it: >-
-  Nemona sceglie avversari molto più forti del tipo Coleottero, vero?
+  Nemi sceglie avversari molto più forti del tipo Coleottero, vero?
 :::
 
 ---

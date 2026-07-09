@@ -89,7 +89,7 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
 - {{山札|やまふだ}}の{{上|うえ}}を{{1枚|いちまい}}[めくって](term:term-mekuru-vanguard-reveal)トリガーゾーンに{{置|お}}く
   — scopri una carta dalla cima del mazzo e mettila nella trigger zone
 - このオーバートリガーは[{{更|さら}}に](term:term-sarani-vanguard-further)もう{{1体|いったい}}{{追加|ついか}}で[{{+1億|プラスいちおく}}](term:term-ichioku-vanguard-hundred-million){{出来|でき}}るんだよ
-  — l'over trigger può aggiungere ancora un'altra unità e darle +100 milioni
+  — l'over trigger può dare +100 milioni anche a un'altra unità
 
 ---
 
@@ -328,8 +328,8 @@ aggancia al verbo finale `{{置|お}}く`, cioè "mettere" nella zona indicata d
 L'over trigger alza ancora la scala del bonus:
 このオーバートリガーは[{{更|さら}}に](term:term-sarani-vanguard-further)もう{{1体|いったい}}{{追加|ついか}}で[{{+1億|プラスいちおく}}](term:term-ichioku-vanguard-hundred-million){{出来|でき}}るんだよ.
 [{{更|さら}}に](term:term-sarani-vanguard-further) aggiunge un livello in più a
-un effetto già forte; `もう{{1体|いったい}}{{追加|ついか}}で` dice che entra un'altra
-unità come bersaglio e [{{+1億|プラスいちおく}}](term:term-ichioku-vanguard-hundred-million){{出来|でき}}る
+un effetto già forte; `もう{{1体|いったい}}{{追加|ついか}}で` aggiunge un'altra
+unità ai bersagli del bonus e [{{+1億|プラスいちおく}}](term:term-ichioku-vanguard-hundred-million){{出来|でき}}る
 traduce quel bonus in una cifra enorme, cento milioni di potenza. Il `んだよ`
 finale mantiene il tono spiegato dal tutorial e porta enfasi sul punto forte
 dell'effetto.
@@ -367,7 +367,7 @@ translation_it: >-
 jp: >-
   このオーバートリガーは{{更|さら}}にもう{{1体|いったい}}{{追加|ついか}}で{{+1億|プラスいちおく}}{{出来|でき}}るんだよ。
 translation_it: >-
-  Questo over trigger può aggiungere ancora un'altra unità e darle +100 milioni.
+  Questo over trigger può dare +100 milioni anche a un'altra unità.
 :::
 
 #### 🧠 Gancio cognitivo

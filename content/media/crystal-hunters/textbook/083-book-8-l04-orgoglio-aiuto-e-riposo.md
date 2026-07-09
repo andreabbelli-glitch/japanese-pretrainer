@@ -158,7 +158,7 @@ chiude il tentativo e prepara una ripartenza.
 jp: >-
   {{明日|あした}}{{出直|でなお}}す。
 translation_it: >-
-  Torno domani e riparto da capo.
+  Tornerò domani.
 :::
 
 [{{先|さき}}を{{越|こ}}す](term:term-ch-b8-saki-o-kosu) e' il rischio opposto:
@@ -237,7 +237,7 @@ translation_it: >-
 jp: >-
   {{話|はなし}}にならない。{{明日|あした}}{{出直|でなお}}す。
 translation_it: >-
-  Non se ne parla. Torno domani e riparto da capo.
+  Non se ne parla. Tornerò domani.
 :::
 
 :::example_sentence

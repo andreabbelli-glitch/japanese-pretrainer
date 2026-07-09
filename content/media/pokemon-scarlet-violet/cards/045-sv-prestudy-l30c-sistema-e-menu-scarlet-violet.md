@@ -80,7 +80,7 @@ back: pare che / tipico di
 example_jp: >-
   ネモは もう {{来|き}}たらしい。
 example_it: >-
-  Pare che Nemona sia già arrivata.
+  Pare che Nemi sia già arrivata.
 :::
 :::grammar
 id: grammar-g103-mentre-finche
@@ -314,7 +314,7 @@ back: coordinazione
 example_jp: >-
   ネモと {{連携|れんけい}}して バトルします。
 example_it: >-
-  Combatto coordinandomi con Nemona.
+  Combatto coordinandomi con Nemi.
 :::
 :::term
 id: term-v622-kuuchuu

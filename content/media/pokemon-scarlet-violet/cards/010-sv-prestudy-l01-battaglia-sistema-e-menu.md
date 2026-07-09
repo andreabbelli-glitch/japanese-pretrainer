@@ -304,5 +304,5 @@ back: battaglia
 example_jp: >-
   ジムで ネモと バトルを します。
 example_it: >-
-  Affronto una lotta con Nemona in palestra.
+  Affronto una lotta con Nemi in palestra.
 :::

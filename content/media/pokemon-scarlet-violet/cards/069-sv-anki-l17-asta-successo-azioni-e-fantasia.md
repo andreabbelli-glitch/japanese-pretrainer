@@ -203,7 +203,7 @@ back: >-
 example_jp: >-
   ネモを ポケモンしょうぶに {{誘|さそ}}う。
 example_it: >-
-  Invito Nemona a una lotta Pokémon.
+  Invito Nemi a una lotta Pokémon.
 notes_it: >-
   Il verbo {{誘|さそ}}う regge la particella を per la persona invitata ({{友|とも}}{{達|だち}}を{{誘|さそ}}う), ma nella narrazione si incontra spessissimo nella forma passiva {{誘|さそ}}われる (essere invitati). La persona che ti invita prende に. Implica sempre un coinvolgimento attivo in un'esperienza condivisa.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-17]

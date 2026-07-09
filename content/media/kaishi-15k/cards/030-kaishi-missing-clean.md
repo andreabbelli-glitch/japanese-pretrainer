@@ -253,7 +253,7 @@ id: term-kaishi-1708637440759
 lemma: '恐らく'
 reading: 'おそらく'
 romaji: 'osoraku'
-meaning_it: 'probably (usually negative), I''m afraid ...'
+meaning_it: 'probably, likely'
 aliases: ['おそらく', '恐らく']
 audio_src: 'assets/audio/term/term-kaishi-1708637440759/603acf929f44173af164ee625d4dc0b5.mp3'
 audio_source: kaishi
@@ -268,7 +268,7 @@ entry_type: term
 entry_id: term-kaishi-1708637440759
 card_type: recognition
 front: '{{恐|おそ}}らく'
-back: 'probably (usually negative), I''m afraid ...'
+back: 'probably, likely'
 example_jp: '{{明日|あした}}は{{恐|おそ}}らく{{晴|は}}れるでしょう。'
 example_it: 'The weather will probably clear up tomorrow.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440759-recognition/f70bc4d69cbe98bd8b06b25e18d3443b.mp3'

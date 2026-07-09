@@ -269,7 +269,7 @@ card_type: recognition
 front: '{{含|ふく}}む'
 back: 'to contain, to include'
 example_jp: 'その{{食|しょく}}{{品|ひん}}は{{有|ゆう}}{{害|がい}}{{物|ぶっ}}{{質|しつ}}を{{含|ふく}}んでいるぞ。'
-example_it: 'That food contains a poisonous substance.'
+example_it: 'That food contains a harmful substance.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441120-recognition/4c81df7dde6939f954393eef642eea12-8e441384976bddc8e20da24b3db8a91a2a4eb428.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
@@ -492,7 +492,7 @@ id: term-kaishi-1708637440699
 lemma: '立てる'
 reading: 'たてる'
 romaji: 'tateru'
-meaning_it: 'to put up, to erect'
+meaning_it: 'to stand something up, to set upright, to erect'
 aliases: ['たてる', '立てる']
 audio_src: 'assets/audio/term/term-kaishi-1708637440699/立てる_タテ＼ル_2_NHK-2016.mp3'
 audio_source: kaishi
@@ -507,9 +507,9 @@ entry_type: term
 entry_id: term-kaishi-1708637440699
 card_type: recognition
 front: '{{立|た}}てる'
-back: 'to put up, to erect'
+back: 'to stand something up, to set upright, to erect'
 example_jp: 'ドアのところに{{傘|かさ}}を{{立|た}}てておきます。'
-example_it: 'I''ll put my umbrella by the door.'
+example_it: 'I''ll leave my umbrella standing upright by the door.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440699-recognition/JLPT_Tango_N4_0060.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
@@ -582,7 +582,7 @@ id: term-kaishi-1708637440253
 lemma: '恥ずかしい'
 reading: 'はずかしい'
 romaji: 'hazukashii'
-meaning_it: 'embarrassing, shy'
+meaning_it: 'embarrassed, embarrassing'
 aliases: ['はずかしい', '恥ずかしい']
 audio_src: 'assets/audio/term/term-kaishi-1708637440253/a1f875d9e4316fada8d90e84ee26b12b-af79fce116eb386c31295ff91fab612ec215cc68.mp3'
 audio_source: kaishi
@@ -597,9 +597,9 @@ entry_type: term
 entry_id: term-kaishi-1708637440253
 card_type: recognition
 front: '{{恥|は}}ずかしい'
-back: 'embarrassing, shy'
+back: 'embarrassed, embarrassing'
 example_jp: 'とても{{恥|は}}ずかしかった。'
-example_it: 'It was very embarrassing.'
+example_it: 'I was very embarrassed.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440253-recognition/021c04e6a05d108c6df09ea8106770b0-e7bd86801ae10879f64321d406682453db1837d1.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

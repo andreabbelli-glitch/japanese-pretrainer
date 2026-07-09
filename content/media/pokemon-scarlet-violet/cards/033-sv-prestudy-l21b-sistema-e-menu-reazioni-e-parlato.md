@@ -275,7 +275,7 @@ back: all'improvviso
 example_jp: >-
   いきなり ネモが {{来|く}}る。
 example_it: >-
-  Nemona arriva all'improvviso.
+  Nemi arriva all'improvviso.
 :::
 :::term
 id: term-v338-kaihiritsu

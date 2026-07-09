@@ -493,7 +493,7 @@ id: term-kaishi-1708637441148
 lemma: '一生'
 reading: 'いっしょう'
 romaji: 'isshou'
-meaning_it: 'a lifetime'
+meaning_it: 'one''s whole life, lifetime'
 aliases: ['いっしょう', '一生']
 audio_src: 'assets/audio/term/term-kaishi-1708637441148/654ca0ea54cf12cedf110e6313e6a2a6.mp3'
 audio_source: kaishi
@@ -508,9 +508,9 @@ entry_type: term
 entry_id: term-kaishi-1708637441148
 card_type: recognition
 front: '{{一|いっ}}{{生|しょう}}'
-back: 'a lifetime'
+back: 'one''s whole life, lifetime'
 example_jp: '{{一|いっ}}{{生|しょう}}のお{{願|ねが}}いがあります。'
-example_it: 'I have a once-in-a-lifetime favor to ask.'
+example_it: 'I have one favor to ask—the only one I''ll ever ask of you.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441148-recognition/2bc550c2cc190f5904eb40fabd4ab6c4.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
@@ -553,7 +553,7 @@ id: term-kaishi-1708637440747
 lemma: '何より'
 reading: 'なにより'
 romaji: 'naniyori'
-meaning_it: 'above all, most important'
+meaning_it: 'above all, more than anything'
 aliases: ['なにより', '何より']
 audio_src: 'assets/audio/term/term-kaishi-1708637440747/d7533971b3894e65bd2a8ebffebc141d.mp3'
 audio_source: kaishi
@@ -568,9 +568,9 @@ entry_type: term
 entry_id: term-kaishi-1708637440747
 card_type: recognition
 front: '{{何|なに}}より'
-back: 'above all, most important'
+back: 'above all, more than anything'
 example_jp: 'ご{{無|ぶ}}{{事|じ}}で{{何|なに}}よりです。'
-example_it: 'The most important thing is that you''re safe.'
+example_it: 'I''m very glad you''re safe.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440747-recognition/6811349485a3080c574425fd487fb9a6.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

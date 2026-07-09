@@ -224,7 +224,7 @@ chi partecipa. [{{誘|さそ}}う](term:term-anki-l17-sasou) apre un invito,
 jp: >-
   ネモを ポケモンしょうぶに {{誘|さそ}}う。
 translation_it: >-
-  Invito Nemona a una lotta Pokémon.
+  Invito Nemi a una lotta Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -267,7 +267,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`ネモを{{誘|さそ}}う` mette Nemona come persona invitata. `ネモに{{誘|さそ}}われる`
+`ネモを{{誘|さそ}}う` mette Nemi come persona invitata. `ネモに{{誘|さそ}}われる`
 la mette invece come persona da cui arriva l'invito: la forma passiva cambia il
 punto di vista della scena. Con [{{遊|あそ}}ぶ](term:term-anki-l17-asobu), invece,
 non cercare per forza un `を`: la compagnia viene naturale con `と`.

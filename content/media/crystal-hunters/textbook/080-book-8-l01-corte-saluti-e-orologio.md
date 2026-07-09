@@ -132,7 +132,7 @@ Quando il parlante si abbassa davanti a qualcuno di status alto, entra
 jp: >-
   {{女王|じょおう}}のお{{姿|すがた}}を{{拝見|はいけん}}します。
 translation_it: >-
-  Vedro' la figura della regina.
+  Avrò l'onore di vedere Sua Maestà.
 :::
 
 #### 🗺️ Anatomia della frase

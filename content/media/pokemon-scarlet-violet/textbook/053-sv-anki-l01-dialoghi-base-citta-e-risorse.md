@@ -70,7 +70,7 @@ istruzioni di scena.
 
 ## 1. Parlare con qualcuno: ascoltare, chiedere, aspettare
 
-Nei primi incontri con Nemona, con il personale dell'Accademia o con i servizi
+Nei primi incontri con Nemi, con il personale dell'Accademia o con i servizi
 della città, molti dialoghi ruotano intorno a una domanda semplice: chi sta
 fornendo l'informazione, e che cosa devi fare dopo averla ricevuta?
 
@@ -78,7 +78,7 @@ fornendo l'informazione, e che cosa devi fare dopo averla ricevuta?
   italiano. Quando il focus è un suono o una spiegazione, vale "ascoltare" o
   "sentire"; quando la frase contiene una persona marcata da `に`, diventa
   "chiedere a". In un dialogo con un personaggio, `ネモに{{聞|き}}く` non ti dice
-  solo che Nemona parla: ti dice che lei è la fonte da cui arriva
+  solo che Nemi parla: ti dice che lei è la fonte da cui arriva
   l'informazione. Se invece compare `{{話|はなし}}を{{聞|き}}く`, il centro è il
   contenuto ascoltato.
 - [{{待|ま}}つ](term:term-anki-l01-matsu) blocca la scena su un'attesa concreta.
@@ -95,7 +95,7 @@ fornendo l'informazione, e che cosa devi fare dopo averla ricevuta?
 jp: >-
   ネモに {{話|はなし}}を {{聞|き}}く。
 translation_it: >-
-  Ascolto quello che Nemona ha da dire.
+  Ascolto quello che Nemi ha da dire.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -119,7 +119,7 @@ identifica la fonte e `を` identifica ciò che viene ascoltato o chiesto.
 jp: >-
   {{私|わたし}}は テーブルシティで ネモを {{待|ま}}っています。
 translation_it: >-
-  Io sto aspettando Nemona a Mesapoli.
+  Io sto aspettando Nemi a Mesapoli.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -330,7 +330,7 @@ jp: >-
   {{町|まち}}で ネモを {{待|ま}}っている あいだに、{{200円|にひゃくえん}}の
   ボールを {{買|か}}う。
 translation_it: >-
-  Mentre aspetto Nemona in città, compro una Ball da duecento yen.
+  Mentre aspetto Nemi in città, compro una Ball da duecento yen.
 :::
 
 :::example_sentence

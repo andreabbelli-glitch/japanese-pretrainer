@@ -137,7 +137,7 @@ Le battute tra allenatori e compagni usano piccoli segnali per farti sentire dis
 jp: >-
   この{{前|まえ}}、ネモと ポケモンバトルを した。
 translation_it: >-
-  L'altro giorno ho fatto una lotta Pokémon con Nemona.
+  L'altro giorno ho fatto una lotta Pokémon con Nemi.
 :::
 
 #### 🗺️ Anatomia della frase

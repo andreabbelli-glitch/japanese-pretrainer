@@ -193,7 +193,7 @@ reading: しょうぶ
 romaji: shoubu
 meaning_it: sfida / match / confronto di battaglia
 notes_it: >-
-  È la parola che Nemona usa continuamente per proporre un confronto vero.
+  È la parola che Nemi usa continuamente per proporre un confronto vero.
   Quando senti `{{勝負|しょうぶ}}しよう` o `{{勝負|しょうぶ}}の {{準備|じゅんび}}は いい？`, non è un
   riferimento astratto al combattimento: la scena entra in un tutorial o in un
   match concreto.
@@ -243,7 +243,7 @@ romaji: jakuten
 meaning_it: debolezza / punto debole
 notes_it: >-
   In battaglia indica il tipo contro cui un Pokémon subisce più danni. Nel
-  primo match con Nemona collega la teoria dei tipi al risultato del turno: se
+  primo match con Nemi collega la teoria dei tipi al risultato del turno: se
   colpisci la `{{弱点|じゃくてん}}`, il danno sale e compare spesso [こうかは
   ばつぐんだ！](term:term-kouka-wa-batsugun).
 :::
@@ -269,7 +269,7 @@ meaning_it: mandare in campo / far uscire
 notes_it: >-
   Nel giapponese Pokémon descrive l'atto di far scendere in campo un Pokémon o
   di lanciare una [わざ](term:term-waza). Nel prologo appare nella forma
-  colloquiale `くりだしちゃう`: Nemona segnala che, per abitudine, stava quasi
+  colloquiale `くりだしちゃう`: Nemi segnala che, per abitudine, stava quasi
   mandando in campo un Pokémon troppo forte.
 :::
 :::card
@@ -292,7 +292,7 @@ reading: ごきんじょ
 romaji: gokinjo
 meaning_it: vicinato / persona del quartiere
 notes_it: >-
-  Nel prologo Nemona lo usa per trasformare un rapporto geografico in un legame
+  Nel prologo Nemi lo usa per trasformare un rapporto geografico in un legame
   sociale immediato. La variante `ご{{近所|きんじょ}}{{同士|どうし}}` sottolinea che i due
   personaggi sono "del quartiere" allo stesso modo.
 :::
@@ -317,7 +317,7 @@ romaji: debyuu sen
 meaning_it: match di debutto / prima sfida ufficiale
 notes_it: >-
   Combina il prestito `デビュー` con `{{戦|せん}}` per marcare la prima vera prova di
-  un Pokémon o di un allenatore. Nemona lo usa per caricare il primo match di
+  un Pokémon o di un allenatore. Nemi lo usa per caricare il primo match di
   valore inaugurale.
 :::
 :::card
@@ -341,7 +341,7 @@ romaji: soshitsu ari
 meaning_it: ha stoffa / ha talento
 notes_it: >-
   Formula breve e colloquiale per dire che qualcuno mostra predisposizione
-  naturale. In Scarlet / Violet Nemona la usa per valutare il protagonista dopo
+  naturale. In Scarlet / Violet Nemi la usa per valutare il protagonista dopo
   il primo match.
 :::
 :::card
@@ -401,7 +401,7 @@ card_type: concept
 front: "～みたい"
 back: sembra / pare
 example_jp: >-
-  この {{子|こ}}は きみに {{気|き}}に {{入|い}}った みたいですね。
+  この {{子|こ}}は きみを {{気|き}}に {{入|い}}った みたいですね。
 example_it: >-
   Sembra proprio che questo Pokémon abbia preso simpatia per te.
 :::
@@ -412,7 +412,7 @@ title: Finire per / fare per errore
 meaning_it: completare del tutto; oppure fare senza volerlo / per errore
 aliases: [～ちゃう, ～じゃう]
 notes_it: >-
-  Nel parlato di Nemona compare spesso nella forma contratta `～ちゃう`. Nel primo
+  Nel parlato di Nemi compare spesso nella forma contratta `～ちゃう`. Nel primo
   match segnala un'abitudine che stava quasi partendo da sola:
   `{{繰|く}}り{{出|だ}}しちゃう` vuol dire che per poco non mandava in campo il team
   sbagliato.
@@ -438,7 +438,7 @@ meaning_it: aver appena fatto qualcosa
 aliases: [～たばっかり]
 notes_it: >-
   Nel prologo segnala che il protagonista è all'inizio assoluto del percorso.
-  Quando Nemona dice `ポケモンを {{始|はじ}}めたばっかり`, il tutorial viene calibrato su un
+  Quando Nemi dice `ポケモンを {{始|はじ}}めたばっかり`, il tutorial viene calibrato su un
   profilo principiante.
 :::
 :::card
@@ -461,7 +461,7 @@ reading: ようチェック
 romaji: you chekku
 meaning_it: da controllare assolutamente / da non perdere
 notes_it: >-
-  È un'etichetta colloquiale da tutorial o commento pratico. Quando Nemona dice
+  È un'etichetta colloquiale da tutorial o commento pratico. Quando Nemi dice
   `ポケモントレーナーなら {{要|よう}}チェック`, sta segnalando che quell'app o funzione merita
   attenzione immediata.
 :::

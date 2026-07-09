@@ -11,7 +11,7 @@ tags: [pokemon, scarlet-violet, prologue, story]
 prerequisites: []
 summary: >-
   Leggere il prologo da Platos Town al primo Terastal: servizi del Pokémon
-  Center, LP, TM Machine, Let's Go, sfida con Nemona e Tera Orb.
+  Center, LP, TM Machine, Let's Go, sfida con Nemi e Tera Orb.
 ---
 
 # Dal Pokémon Center al primo Terastal: servizi, campo e sfide guidate
@@ -22,7 +22,7 @@ risorse, comandi sul campo e prove di battaglia. Il
 [ポケモンセンター](term:term-pokemon-center) cura e ricarica, il
 [フレンドリィショップ](term:term-friendly-shop) introduce il lessico degli acquisti,
 [レッツゴー](term:term-lets-go) porta il Pokémon fuori dal turno classico e
-Nemona usa una nuova [{{勝負|しょうぶ}}](term:term-shoubu) per misurare quanto sei
+Nemi usa una nuova [{{勝負|しょうぶ}}](term:term-shoubu) per misurare quanto sei
 cresciuto lungo la salita.
 
 Il punto da tenere insieme è la funzione di ogni parola nella scena. [LP（リーグペイ）](term:term-lp)
@@ -250,10 +250,10 @@ Pokémon si allontana, fa qualcosa e il risultato torna verso il protagonista.
 È un'immagine pratica per leggere `{{拾|ひろ}}ってきて` come azione con ritorno,
 non come un semplice "raccoglie".
 
-## 3. Nemona legge la strada come prova di crescita
+## 3. Nemi legge la strada come prova di crescita
 
 Dopo {{南|みなみ}}{{1番|いちばん}}エリア, la seconda
-[{{勝負|しょうぶ}}](term:term-shoubu) di Nemona riprende quello che hai appena
+[{{勝負|しょうぶ}}](term:term-shoubu) di Nemi riprende quello che hai appena
 fatto: camminare, combattere, curare,
 raccogliere e usare il partner sul campo. La grammatica del suo parlato lega
 esperienza e verifica: se hai attraversato la salita, allora si può provare a
@@ -261,24 +261,24 @@ misurare quanto sei diventato forte.
 
 *   [{{勝負|しょうぶ}}](term:term-shoubu) è più pesante di "lotta" come evento
     casuale. Porta l'idea di confronto che decide qualcosa: nella voce di
-    Nemona, il match diventa un test concreto della tua crescita.
+    Nemi, il match diventa un test concreto della tua crescita.
 *   [{{弱点|じゃくてん}}](term:term-jakuten) resta il lessico tattico da tenere
     pronto. Nelle prime battaglie il gioco continua a farti collegare tipo,
     [わざ](term:term-waza) e decisione del turno: riconoscere il punto debole
     significa sapere dove conviene colpire.
 *   [～てみる](grammar:grammar-te-miru) rende l'azione una prova. In
-    `{{試|ため}}してみよう`, Nemona non sta ordinando in modo freddo: sta dicendo
+    `{{試|ため}}してみよう`, Nemi non sta ordinando in modo freddo: sta dicendo
     "proviamo a vedere", con il tono energico di chi vuole verificare subito il
     risultato.
 *   [～てあげる](grammar:grammar-te-ageru) e [～てもらう](grammar:grammar-te-morau)
-    distribuiscono i ruoli. Nemona fa qualcosa per te, mostra o guida; al
+    distribuiscono i ruoli. Nemi fa qualcosa per te, mostra o guida; al
     centro, invece, tu ricevi un servizio dal personale.
 
 :::image
 src: assets/story/nemona-second-battle-growth-check.webp
-alt: "Nemona sul sentiero prima della seconda sfida con la battuta giapponese sulla prova della tua crescita."
+alt: "Nemi sul sentiero prima della seconda sfida con la battuta giapponese sulla prova della tua crescita."
 caption: >-
-  In `{{勝負|しょうぶ}}して {{試|ため}}してみよう`, Nemona lega il match alla
+  In `{{勝負|しょうぶ}}して {{試|ため}}してみよう`, Nemi lega il match alla
   verifica della crescita: la sfida diventa un test pratico, non solo una
   battuta energica.
 :::
@@ -304,7 +304,7 @@ translation_it: >-
 #### ⚖️ Contrasto grammaticale: chi aiuta e chi riceve
 
 [～てあげる](grammar:grammar-te-ageru) guarda l'azione dal lato di chi fa
-qualcosa per qualcun altro: Nemona può spiegare, mostrare o farti provare una
+qualcosa per qualcun altro: Nemi può spiegare, mostrare o farti provare una
 meccanica. [～てもらう](grammar:grammar-te-morau) guarda invece l'azione dal
 lato di chi riceve: al [ポケモンセンター](term:term-pokemon-center) ti fai curare
 la squadra. Se segui questa differenza, il prologo diventa più chiaro anche nei
@@ -339,7 +339,7 @@ translation_it: >-
 
 Per ricordare [{{勝負|しょうぶ}}](term:term-shoubu), pensa alla sfida come a una
 bilancia: dopo il percorso, il match pesa il risultato. È un'immagine utile per
-questa scena, non una spiegazione etimologica. Nemona non vuole solo "fare una
+questa scena, non una spiegazione etimologica. Nemi non vuole solo "fare una
 lotta"; vuole vedere che cosa ha prodotto il tratto appena giocato.
 
 ## 4. Il primo Terastal: azione, oggetto e tipo
@@ -455,7 +455,7 @@ Il prologo dopo プラトタウン funziona come una catena: il
 [ポケモンセンター](term:term-pokemon-center) insegna il lessico del servizio,
 [LP（リーグペイ）](term:term-lp) e [おとしもの](term:term-otoshimono) trasformano la
 strada in risorse, [レッツゴー](term:term-lets-go) fa lavorare il partner fuori
-dalla battaglia classica, Nemona usa la [{{勝負|しょうぶ}}](term:term-shoubu) come
+dalla battaglia classica, Nemi usa la [{{勝負|しょうぶ}}](term:term-shoubu) come
 prova e il [テラスタルオーブ](term:term-terastal-orb) richiama il centro come
 punto di ricarica. Quando riconosci questi passaggi, i tutorial non sembrano
 consigli sparsi: diventano una sequenza leggibile di azioni, costi e decisioni.

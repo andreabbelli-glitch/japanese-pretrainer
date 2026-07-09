@@ -345,7 +345,7 @@ id: term-kaishi-1708637440365
 lemma: '頂きます'
 reading: 'いただきます'
 romaji: 'itadakimasu'
-meaning_it: 'let''s eat!, thank you for the meal'
+meaning_it: 'said before eating to express gratitude for the food'
 aliases: ['いただきます', '頂きます']
 audio_src: 'assets/audio/term/term-kaishi-1708637440365/頂く_イタダキマ＼ス_5_NHK-2016.mp3'
 audio_source: kaishi
@@ -360,9 +360,9 @@ entry_type: term
 entry_id: term-kaishi-1708637440365
 card_type: recognition
 front: '{{頂|いただ}}きます'
-back: 'let''s eat!, thank you for the meal'
+back: 'said before eating to express gratitude for the food'
 example_jp: '{{頂|いただ}}きます。'
-example_it: 'Thank you for the meal.'
+example_it: 'Thank you for the food. (Said before eating.)'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440365-recognition/JLPT_Tango_N5_0517.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

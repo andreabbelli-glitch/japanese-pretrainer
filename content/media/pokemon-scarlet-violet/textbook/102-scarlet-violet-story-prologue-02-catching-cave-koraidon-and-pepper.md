@@ -22,7 +22,7 @@ presentazione e diventa campo di gioco. Il tratto verso
 percorso, indizi sonori e spiegazioni sullo stato del Pokémon misterioso che
 compare nella grotta.
 
-Il cambio di voce separa subito i ruoli. Nemona usa [{{捕獲|ほかく}}](term:term-hokaku),
+Il cambio di voce separa subito i ruoli. Nemi usa [{{捕獲|ほかく}}](term:term-hokaku),
 [{{弱|よわ}}らせる](term:term-yowaraseru) e ボール come procedura guidata; Pepper
 porta [{{姿|すがた}}](term:term-sugata), `{{戦|たたか}}えねえ` e
 [{{制御|せいぎょ}}する](term:term-seigyo-suru) dentro sospetto, stato fisico e
@@ -91,7 +91,7 @@ più senso. Per questo [{{捕獲|ほかく}}](term:term-hokaku) e
 [{{捕獲|ほかく}}](term:term-hokaku) è l'attività o il risultato di cattura,
 mentre [{{捕|つか}}まえる](term:term-tsukamaeru) è il verbo dell'azione concreta.
 
-Nemona rende questa procedura più morbida con due pattern. Con
+Nemi rende questa procedura più morbida con due pattern. Con
 [～てあげる](grammar:grammar-te-ageru), frasi come わけてあげる presentano
 l'azione come aiuto fatto per te: ti dà Ball, spiegazioni o spazio per
 provare. `戦ってみて` propone una prova guidata immediata.
@@ -134,7 +134,7 @@ abbastanza margine perché la cattura possa riuscire.
 ## 2. Il percorso parla con avvisi, habitat e suoni
 
 Uscendo verso コサジの{{小道|こみち}}, il gioco non ti guida solo con indicatori
-visivi. Il giapponese comincia a segnalare rischio e direzione. Quando Nemona
+visivi. Il giapponese comincia a segnalare rischio e direzione. Quando Nemi
 usa [{{気|き}}をつける](term:term-ki-o-tsukeru), la frase non è un saluto
 gentile: `{{足元|あしもと}}に {{気|き}}をつけて` ti fa guardare dove cammini, perché
 dirupi, dislivelli e zone non ancora sicure hanno conseguenze reali.
@@ -273,39 +273,31 @@ adatta a cadute, consumo di risorse e crolli di energia.
 
 ## 4. Pepper legge la scena come controllo e cattivo presagio
 
-Con Pepper entra il lessico del controllo: la scena collega una Ball speciale
-alla gestione di un Pokémon fuori scala. Il verbo
-[{{制御|せいぎょ}}する](term:term-seigyo-suru) appartiene a un frame diverso da
-[{{捕獲|ほかく}}](term:term-hokaku): tenere qualcosa sotto controllo, regolarne
-il comportamento o contenerne la forza. Se la Ball serve a
-`{{制御|せいぎょ}}するため`, l'oggetto gestisce una creatura fuori scala.
+Con Pepper entra il lessico del controllo. In questa battuta,
+[{{制御|せいぎょ}}する](term:term-seigyo-suru) significa "controllare / tenere
+sotto controllo" e `ための もの` descrive la funzione della Ball: serve a
+controllare quel Pokémon. La frase non spiega il funzionamento dell'oggetto e
+non dice altro sul modo in cui esercita quel controllo.
 
 :::image
 src: assets/story/pepper-control-ball.webp
 alt: "Pepper in primo piano con una Monster Ball tesa in avanti verso il giocatore."
 caption: >-
-  La Ball di Pepper porta la scena da [{{捕獲|ほかく}}](term:term-hokaku) a [{{制御|せいぎょ}}する](term:term-seigyo-suru): non una cattura standard, ma un oggetto che tiene sotto controllo il Pokémon misterioso.
+  La battuta associa la Ball di Pepper a [{{制御|せいぎょ}}する](term:term-seigyo-suru): l'oggetto serve a tenere sotto controllo quel Pokémon.
 :::
 
 :::example_sentence
 jp: >-
   この ボールは あの ポケモンを {{制御|せいぎょ}}するための ものだ。
 translation_it: >-
-  Questa Ball è un oggetto usato per tenere sotto controllo quel Pokémon.
+  Questa Ball serve a tenere sotto controllo quel Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `この ボールは` ➔ tema: la frase spiega che cos'è quella Ball, non introduce una cattura qualunque.
+- `この ボールは` ➔ tema: la frase presenta quella Ball come argomento.
 - `あの ポケモンを` ➔ bersaglio del controllo: l'oggetto agisce su quel Pokémon specifico.
 - `{{制御|せいぎょ}}するための もの` ➔ scopo nominalizzato: `ための` trasforma "controllare" nella funzione dell'oggetto.
-
-#### ⚖️ Contrasto operativo: [{{捕獲|ほかく}}](term:term-hokaku) vs [{{制御|せいぎょ}}する](term:term-seigyo-suru)
-
-[{{捕獲|ほかく}}](term:term-hokaku) appartiene al ciclo normale indebolire e
-catturare. [{{制御|せいぎょ}}する](term:term-seigyo-suru) parla di gestione e
-contenimento. Se li confondi, leggi la Ball di Pepper come un oggetto comune
-invece che come chiave narrativa della scena.
 
 Il modo in cui Pepper commenta il protagonista è altrettanto marcato.
 [{{災難|さいなん}}](term:term-sainan) nomina un guaio capitato addosso: non una

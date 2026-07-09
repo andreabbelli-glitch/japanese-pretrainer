@@ -192,7 +192,7 @@ id: term-kaishi-1708637440444
 lemma: '一応'
 reading: 'いちおう'
 romaji: 'ichiou'
-meaning_it: 'for the time being, more or less'
+meaning_it: 'just in case, for now, more or less'
 aliases: ['いちおう', '一応']
 audio_src: 'assets/audio/term/term-kaishi-1708637440444/2563f2b9682e4f7d0fd7518c4341ad75.mp3'
 audio_source: kaishi
@@ -207,9 +207,9 @@ entry_type: term
 entry_id: term-kaishi-1708637440444
 card_type: recognition
 front: '{{一|いち}}{{応|おう}}'
-back: 'for the time being, more or less'
+back: 'just in case, for now, more or less'
 example_jp: '{{彼|かれ}}にも{{一|いち}}{{応|おう}}{{知|し}}らせておいたほうがいいだろう。'
-example_it: 'It might be better to just let him know for now.'
+example_it: 'We should probably let him know too, just in case.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440444-recognition/ce5586162bc2b3c8242d998e4827466c.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

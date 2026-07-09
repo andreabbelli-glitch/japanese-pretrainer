@@ -133,7 +133,7 @@ id: term-kaishi-1708637440690
 lemma: '苦しい'
 reading: 'くるしい'
 romaji: 'kurushii'
-meaning_it: 'painful, difficult'
+meaning_it: 'painful, distressing, difficult, uncomfortable'
 aliases: ['くるしい', '苦しい']
 audio_src: 'assets/audio/term/term-kaishi-1708637440690/67ccee186b7e3aa2652d599d116522ee-fe37c66b23710b57d9a93d24f516d218b083e453.mp3'
 audio_source: kaishi
@@ -148,9 +148,9 @@ entry_type: term
 entry_id: term-kaishi-1708637440690
 card_type: recognition
 front: '{{苦|くる}}しい'
-back: 'painful, difficult'
+back: 'painful, distressing, difficult, uncomfortable'
 example_jp: '{{食|た}}べすぎておなかが{{苦|くる}}しい。'
-example_it: 'I have eaten too much and my stomach hurts.'
+example_it: 'I ate too much, and my stomach feels uncomfortably full.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440690-recognition/356ff14a2808e420eb1e6ebe55563a76-6ef4207a29dbbc5aaecc479234d99acfeffa8acf.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio

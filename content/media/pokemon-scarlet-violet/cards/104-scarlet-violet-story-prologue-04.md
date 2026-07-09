@@ -54,7 +54,7 @@ example_jp: >-
   {{職員室|しょく.いん.しつ}}では ネモが {{次|つぎ}}の {{目標|もくひょう}}を
   {{説明|せつめい}}してくれる。
 example_it: >-
-  Nella sala insegnanti Nemona ti spiega il prossimo obiettivo.
+  Nella sala insegnanti Nemi ti spiega il prossimo obiettivo.
 :::
 :::term
 id: term-kouchoushitsu
@@ -260,7 +260,7 @@ notes_it: >-
   Attaccato alla radice in `ます`, `～{{放題|ほうだい}}` comunica disponibilità ampia o
   assenza pratica di limite. In questo arco si sente in frasi come
   `{{使|つか}}い{{放題|ほうだい}}` per le facility del campus e richiama anche il più
-  colloquiale `やり{{放題|ほうだい}}` di Nemona.
+  colloquiale `やり{{放題|ほうだい}}` di Nemi.
 :::
 :::card
 id: card-houdai-concept
