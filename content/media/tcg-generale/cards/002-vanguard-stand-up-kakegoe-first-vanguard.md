@@ -401,7 +401,7 @@ back: 'insieme; assieme'
 example_jp: >-
   リアガードは、ともに{{戦|たたか}}ってくれる{{仲間|なかま}}のユニットだよ。
 example_it: >-
-  I rear-guard sono unità compagne che combattono insieme a te.
+  I rear-guard sono unità alleate che combattono insieme a te.
 notes_it: >-
   ともに modifica `{{戦|たたか}}ってくれる`: indica che l'azione di combattere è
   condivisa e dà alla frase il senso di "al tuo fianco".
@@ -437,7 +437,7 @@ back: 'se; nel caso in cui'
 example_jp: >-
   もしグレード{{1|いち}}を{{持|も}}っていたらヴァンガードの{{後|うし}}ろにコールしてみて。
 example_it: >-
-  Se hai una unità di grado 1, prova a chiamarla dietro al Vanguard.
+  Se hai un'unità di grado 1, prova a chiamarla dietro al Vanguard.
 notes_it: >-
   もし segnala che la frase parte da una possibilità. Qui lavora con
   `{{持|も}}っていたら`: prima controlli se hai la unità richiesta, poi provi a
@@ -456,7 +456,7 @@ back: 'dietro; parte posteriore'
 example_jp: >-
   ヴァンガードの{{後|うし}}ろにグレード{{1|いち}}をコールする。
 example_it: >-
-  Chiami una unità di grado 1 dietro al Vanguard.
+  Chiami un'unità di grado 1 dietro al Vanguard.
 notes_it: >-
   {{後|うし}}ろ è una posizione spaziale. In `ヴァンガードの{{後|うし}}ろに`,
   `の` lega il punto di riferimento al Vanguard e `に` indica dove mettere la
@@ -475,7 +475,7 @@ back: 'proprio davanti; davanti agli occhi'
 example_jp: >-
   {{目|め}}の{{前|まえ}}のユニットをアタックする。
 example_it: >-
-  Attacchi la unità proprio davanti a te.
+  Attacchi l'unità proprio davanti a te.
 notes_it: >-
   {{目|め}}の{{前|まえ}} parte dal punto di vista di chi guarda o gioca. Qui
   indica una unità vicina e direttamente davanti al giocatore.
@@ -493,7 +493,7 @@ back: 'fila anteriore; prima fila'
 example_jp: >-
   {{前列|ぜんれつ}}のユニットでアタックする。
 example_it: >-
-  Attacchi con una unità della fila anteriore.
+  Attacchi con un'unità della fila anteriore.
 notes_it: >-
   {{前列|ぜんれつ}} è una posizione nella disposizione del campo. `の` la collega
   a `ユニット`: la frase parla delle unità che stanno sulla fila davanti.
@@ -511,7 +511,7 @@ back: 'fila posteriore; retrofila'
 example_jp: >-
   {{後列|こうれつ}}にユニットをコールする。
 example_it: >-
-  Chiami una unità nella fila posteriore.
+  Chiami un'unità nella fila posteriore.
 notes_it: >-
   {{後列|こうれつ}} è una posizione del campo. Con `に`, diventa la destinazione
   dove mettere una unità.
@@ -547,8 +547,8 @@ back: 'ridurre; diminuire; far calare'
 example_jp: >-
   アタックに{{成功|せいこう}}すると、{{相手|あいて}}のリアガードを{{減|へ}}らしたり、{{相手|あいて}}にダメージを{{与|あた}}えられるよ。
 example_it: >-
-  Quando un attacco riesce, puoi ridurre i rear-guard dell'avversario o
-  infliggere danno all'avversario.
+  Quando un attacco riesce, puoi ridurre il numero dei rear-guard avversari o
+  infliggere danni all'avversario.
 notes_it: >-
   {{減|へ}}らす guarda alla quantità che scende. Qui il bersaglio è
   `{{相手|あいて}}のリアガード`: l'attacco riuscito può far diminuire le unità
@@ -618,11 +618,11 @@ entry_type: term
 entry_id: term-hakki-vanguard-effect
 card_type: recognition
 front: '{{発揮|はっき}}'
-back: 'show of power; manifestazione; efficacia espressa; far valere un effetto'
+back: 'manifestazione; dispiegamento; entrata in funzione di un effetto'
 example_jp: >-
-  その{{能力|のうりょく}}は{{効果|こうか}}を{{発揮|はっき}}する。
+  オーバートリガーはここで{{効果|こうか}}を{{発揮|はっき}}する。
 example_it: >-
-  Quella capacità manifesta il suo effetto.
+  È qui che l'over trigger produce il suo effetto.
 notes_it: >-
   `{{効果|こうか}}を{{発揮|はっき}}する` guarda all'effetto che diventa operativo:
   `を` marca l'effetto come ciò che viene fatto emergere dalla capacità.
@@ -674,11 +674,11 @@ entry_type: term
 entry_id: term-shugosha-vanguard-guardian
 card_type: recognition
 front: '{{守護者|しゅごしゃ}}'
-back: 'guardiano; protettore'
+back: 'guardiano; protettore; in Vanguard, Sentinel'
 example_jp: >-
   {{手札|てふだ}}に{{守護者|しゅごしゃ}}と{{書|か}}かれたカードはある？
 example_it: >-
-  Hai in mano una carta con scritto Guardiano?
+  Hai in mano una carta con la dicitura «Sentinel»?
 notes_it: >-
   `{{守護者|しゅごしゃ}}と{{書|か}}かれたカード` identifica una carta tramite la
   dicitura stampata. `{{手札|てふだ}}に` restringe la ricerca alla mano.
@@ -694,9 +694,10 @@ card_type: recognition
 front: '{{更|さら}}に'
 back: 'in più; ulteriormente; ancora'
 example_jp: >-
-  このオーバートリガーは{{更|さら}}にもう{{1体|いったい}}{{追加|ついか}}で{{+1億|プラスいちおく}}{{出来|でき}}るんだよ。
+  このオーバートリガーは、{{更|さら}}にもう{{1体|いったい}}へパワー{{+1億|プラスいちおく}}を{{与|あた}}えられるんだよ。
 example_it: >-
-  Questo over trigger può dare +100 milioni anche a un'altra unità.
+  Questo over trigger può conferire +100 milioni di potenza anche a un'altra
+  unità.
 notes_it: >-
   {{更|さら}}に sposta la frase su un'aggiunta ulteriore. Qui introduce il
   secondo bersaglio possibile dell'over trigger, oltre a quello già previsto.
@@ -712,9 +713,10 @@ card_type: recognition
 front: '{{1億|いちおく}}'
 back: 'cento milioni'
 example_jp: >-
-  このオーバートリガーは{{更|さら}}にもう{{1体|いったい}}{{追加|ついか}}で{{+1億|プラスいちおく}}{{出来|でき}}るんだよ。
+  このオーバートリガーは、{{更|さら}}にもう{{1体|いったい}}へパワー{{+1億|プラスいちおく}}を{{与|あた}}えられるんだよ。
 example_it: >-
-  Questo over trigger può dare +100 milioni anche a un'altra unità.
+  Questo over trigger può conferire +100 milioni di potenza anche a un'altra
+  unità.
 notes_it: >-
   `{{+1億|プラスいちおく}}` indica un aumento di cento milioni. In Vanguard è un
   numero volutamente enorme, legato alla forza esplosiva dell'over trigger.
