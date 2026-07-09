@@ -29,17 +29,97 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
 
         XCTAssertEqual(
-            DailyKanjiGlossaryIndex.search(entries: glossary.entries, query: "iku").map(\.id),
+            DailyKanjiGlossaryIndex(entries: glossary.entries).search(query: "iku").map(\.id),
             ["term:term_fixture_iku"]
         )
         XCTAssertEqual(
-            DailyKanjiGlossaryIndex.search(entries: glossary.entries, query: "stato").map(\.id),
+            DailyKanjiGlossaryIndex(entries: glossary.entries).search(query: "stato").map(\.id),
             ["grammar:grammar_fixture_teiru"]
         )
         XCTAssertEqual(
-            DailyKanjiGlossaryIndex.search(entries: glossary.entries, query: "   ").map(\.id),
+            DailyKanjiGlossaryIndex(entries: glossary.entries).search(query: "   ").map(\.id),
             ["term:term_fixture_iku", "grammar:grammar_fixture_teiru"]
         )
+    }
+
+    func testGlossaryIndexFoldsCaseDiacriticsAndWidthAcrossTokens() throws {
+        let glossary = try XCTUnwrap(
+            DailyKanjiDataset.decode(jsonData: Self.glossaryDatasetJSON).glossary
+        )
+        let index = DailyKanjiGlossaryIndex(entries: glossary.entries)
+
+        XCTAssertEqual(index.search(query: "ＩＫＵ").map(\.id), ["term:term_fixture_iku"])
+        XCTAssertEqual(
+            index.search(query: "AZIÓNE stato").map(\.id),
+            ["grammar:grammar_fixture_teiru"]
+        )
+    }
+
+    @MainActor
+    func testGlossarySearchPublishesOnlyTheLatestDebouncedQuery() async throws {
+        let glossary = try XCTUnwrap(
+            DailyKanjiDataset.decode(jsonData: Self.glossaryDatasetJSON).glossary
+        )
+        let sleeper = ControllableGlossaryDebounceSleeper()
+        let model = DailyKanjiGlossarySearchModel(
+            entries: glossary.entries,
+            debounceSleep: { try await sleeper.sleep() }
+        )
+
+        model.updateQuery("iku")
+        await sleeper.waitForPendingCount(1)
+        model.updateQuery("stato")
+        await sleeper.waitForPendingCount(2)
+
+        await sleeper.resumeNext()
+        await Task.yield()
+        XCTAssertEqual(model.results.map(\.id), glossary.entries.map(\.id))
+
+        await sleeper.resumeNext()
+        await model.waitForPendingSearch()
+        XCTAssertEqual(model.results.map(\.id), ["grammar:grammar_fixture_teiru"])
+    }
+
+    @MainActor
+    func testGlossaryDatasetReplacementInvalidatesAnOlderPendingQuery() async throws {
+        let glossary = try XCTUnwrap(
+            DailyKanjiDataset.decode(jsonData: Self.glossaryDatasetJSON).glossary
+        )
+        let sleeper = ControllableGlossaryDebounceSleeper()
+        let model = DailyKanjiGlossarySearchModel(
+            entries: glossary.entries,
+            debounceSleep: { try await sleeper.sleep() }
+        )
+
+        model.updateQuery("iku")
+        await sleeper.waitForPendingCount(1)
+        model.replaceEntries([glossary.entries[1]])
+        XCTAssertTrue(model.results.isEmpty)
+
+        await sleeper.resumeNext()
+        await Task.yield()
+        XCTAssertTrue(model.results.isEmpty)
+    }
+
+    @MainActor
+    func testBlankGlossaryQueryCancelsPendingWorkAndRestoresAllEntries() async throws {
+        let glossary = try XCTUnwrap(
+            DailyKanjiDataset.decode(jsonData: Self.glossaryDatasetJSON).glossary
+        )
+        let sleeper = ControllableGlossaryDebounceSleeper()
+        let model = DailyKanjiGlossarySearchModel(
+            entries: glossary.entries,
+            debounceSleep: { try await sleeper.sleep() }
+        )
+
+        model.updateQuery("iku")
+        await sleeper.waitForPendingCount(1)
+        model.updateQuery("   ")
+        XCTAssertEqual(model.results.map(\.id), glossary.entries.map(\.id))
+
+        await sleeper.resumeNext()
+        await Task.yield()
+        XCTAssertEqual(model.results.map(\.id), glossary.entries.map(\.id))
     }
 
     func testAudioBundlePathSupportsGlossaryMediaReferences() throws {
@@ -5283,6 +5363,38 @@ private final class ControllableDailyKanjiLiveReviewClient: DailyKanjiLiveReview
     }
 
     func registerDeviceToken(_ deviceToken: String) async throws {}
+}
+
+private actor ControllableGlossaryDebounceSleeper {
+    private var continuations: [CheckedContinuation<Void, Error>] = []
+
+    func sleep() async throws {
+        try await withCheckedThrowingContinuation { continuation in
+            continuations.append(continuation)
+        }
+    }
+
+    func waitForPendingCount(_ expectedCount: Int) async {
+        for _ in 0..<1_000 {
+            if continuations.count >= expectedCount {
+                return
+            }
+            await Task.yield()
+        }
+
+        XCTFail(
+            "Expected \(expectedCount) pending glossary searches, found \(continuations.count)"
+        )
+    }
+
+    func resumeNext() {
+        guard !continuations.isEmpty else {
+            XCTFail("Expected a pending glossary search")
+            return
+        }
+
+        continuations.removeFirst().resume(returning: ())
+    }
 }
 
 private final class MockDailyKanjiNotificationRegistrar: DailyKanjiNotificationRegistering {

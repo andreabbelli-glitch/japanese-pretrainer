@@ -1,12 +1,21 @@
+import Combine
 import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var model: DailyKanjiAppModel
     @StateObject private var audioPlayer = DailyKanjiAudioPlayer()
+    @StateObject private var glossarySearch: DailyKanjiGlossarySearchModel
     @State private var selectedGlossaryEntry: DailyKanjiGlossaryEntry?
-    @State private var glossaryQuery = ""
     @State private var liveReviewAnswerRevealed = false
     private let liveReviewBaseURL = DailyKanjiMobileReviewConfiguration.load().endpointURL
+
+    @MainActor
+    init(model: DailyKanjiAppModel) {
+        _model = ObservedObject(wrappedValue: model)
+        _glossarySearch = StateObject(
+            wrappedValue: DailyKanjiGlossarySearchModel(entries: model.glossaryEntries)
+        )
+    }
 
     var body: some View {
         NavigationStack {
@@ -46,6 +55,8 @@ struct ContentView: View {
             .onChange(of: model.selectedAppSection) { _, section in
                 if section != .glossary {
                     selectedGlossaryEntry = nil
+                } else {
+                    glossarySearch.prepareIndex()
                 }
                 if section == .review {
                     model.refreshLiveReviewNow()
@@ -58,6 +69,9 @@ struct ContentView: View {
             }
             .onAppear {
                 resetAndPreloadCurrentLiveReviewAudio()
+            }
+            .onReceive(model.$glossaryEntries.dropFirst()) { entries in
+                glossarySearch.replaceEntries(entries)
             }
             .sheet(item: $selectedGlossaryEntry) { entry in
                 NavigationStack {
@@ -77,7 +91,7 @@ struct ContentView: View {
     }
 
     private var glossaryView: some View {
-        let results = glossaryResults
+        let results = glossarySearch.results
 
         return VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .center, spacing: 12) {
@@ -98,7 +112,13 @@ struct ContentView: View {
                 Spacer(minLength: 0)
             }
 
-            TextField("Cerca", text: $glossaryQuery)
+            TextField(
+                "Cerca",
+                text: Binding(
+                    get: { glossarySearch.query },
+                    set: { glossarySearch.updateQuery($0) }
+                )
+            )
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .textFieldStyle(.roundedBorder)
@@ -123,13 +143,6 @@ struct ContentView: View {
         .padding(14)
         .background(Color(.secondarySystemGroupedBackground))
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-    }
-
-    private var glossaryResults: [DailyKanjiGlossaryEntry] {
-        DailyKanjiGlossaryIndex.search(
-            entries: model.glossaryEntries,
-            query: glossaryQuery
-        )
     }
 
     private func glossaryEntryRow(_ entry: DailyKanjiGlossaryEntry) -> some View {

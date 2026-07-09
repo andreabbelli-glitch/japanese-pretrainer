@@ -65,30 +65,41 @@ struct DailyKanjiGlossaryEntry: Codable, Identifiable, Equatable, Sendable {
     let title: String?
 }
 
-enum DailyKanjiGlossaryIndex {
-    static func search(
+struct DailyKanjiGlossaryIndex: Sendable {
+    private let entries: [DailyKanjiGlossaryEntry]
+    private let normalizedSearchTexts: [String]
+    private let locale: Locale
+
+    init(
         entries: [DailyKanjiGlossaryEntry],
-        query: String
-    ) -> [DailyKanjiGlossaryEntry] {
+        locale: Locale = .current
+    ) {
+        self.entries = entries
+        self.locale = locale
+        self.normalizedSearchTexts = entries.map { entry in
+            Self.normalized(entry.searchText, locale: locale)
+        }
+    }
+
+    func search(query: String) -> [DailyKanjiGlossaryEntry] {
         let tokens = query
             .split(whereSeparator: \.isWhitespace)
-            .map { normalized(String($0)) }
+            .map { Self.normalized(String($0), locale: locale) }
             .filter { !$0.isEmpty }
 
         guard !tokens.isEmpty else {
             return entries
         }
 
-        return entries.filter { entry in
-            let haystack = normalized(entry.searchText)
-            return tokens.allSatisfy { haystack.contains($0) }
+        return zip(entries, normalizedSearchTexts).compactMap { entry, haystack in
+            tokens.allSatisfy { haystack.contains($0) } ? entry : nil
         }
     }
 
-    private static func normalized(_ value: String) -> String {
+    private static func normalized(_ value: String, locale: Locale) -> String {
         value.folding(
             options: [.caseInsensitive, .diacriticInsensitive, .widthInsensitive],
-            locale: .current
+            locale: locale
         )
     }
 }
