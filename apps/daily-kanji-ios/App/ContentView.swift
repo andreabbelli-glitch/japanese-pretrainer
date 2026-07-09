@@ -3,7 +3,6 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var model: DailyKanjiAppModel
     @StateObject private var audioPlayer = DailyKanjiAudioPlayer()
-    @State private var selectedAppSection: DailyKanjiAppSection = .review
     @State private var selectedGlossaryEntry: DailyKanjiGlossaryEntry?
     @State private var glossaryQuery = ""
     @State private var liveReviewAnswerRevealed = false
@@ -13,7 +12,7 @@ struct ContentView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    switch selectedAppSection {
+                    switch model.selectedAppSection {
                     case .daily:
                         dailyStudyView
                     case .review:
@@ -28,7 +27,13 @@ struct ContentView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Picker("Modalità", selection: $selectedAppSection) {
+                    Picker(
+                        "Modalità",
+                        selection: Binding(
+                            get: { model.selectedAppSection },
+                            set: { model.selectAppSection($0) }
+                        )
+                    ) {
                         ForEach(DailyKanjiAppSection.allCases) { section in
                             Text(section.label).tag(section)
                         }
@@ -38,7 +43,10 @@ struct ContentView: View {
                 }
             }
             .background(Color(.systemGroupedBackground))
-            .onChange(of: selectedAppSection) { _, section in
+            .onChange(of: model.selectedAppSection) { _, section in
+                if section != .glossary {
+                    selectedGlossaryEntry = nil
+                }
                 if section == .review {
                     model.refreshLiveReviewNow()
                     resetAndPreloadCurrentLiveReviewAudio()
@@ -741,7 +749,7 @@ struct ContentView: View {
     }
 
     private func resetAndPreloadCurrentLiveReviewAudio() {
-        guard selectedAppSection == .review,
+        guard model.selectedAppSection == .review,
               let card = model.liveReviewState.session?.selectedCard
         else {
             return
@@ -982,7 +990,7 @@ struct ContentView: View {
     ContentView(model: DailyKanjiAppModel())
 }
 
-private enum DailyKanjiAppSection: String, CaseIterable, Identifiable {
+enum DailyKanjiAppSection: String, CaseIterable, Identifiable {
     case daily
     case review
     case glossary

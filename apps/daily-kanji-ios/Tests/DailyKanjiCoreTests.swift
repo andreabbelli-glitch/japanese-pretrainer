@@ -341,6 +341,200 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
+    func testSuccessfulSyncPreservesTheVisibleCardAndWidgetContext() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let defaultsName = "DailyKanjiSync-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let dataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let syncer = PausableDailyKanjiSyncer(dataset: dataset)
+        let model = DailyKanjiAppModel(
+            cards: dataset.cards,
+            historyStore: DailyKanjiHistoryStore(defaults: defaults),
+            cacheStore: cacheStore,
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            syncer: syncer,
+            now: now
+        )
+        let deepLinkTime = now.addingTimeInterval(30)
+
+        let syncTask = Task {
+            await model.syncNow(now: deepLinkTime.addingTimeInterval(1), force: true)
+        }
+        await Self.waitUntil { syncer.fetchCount == 1 }
+        model.openDeepLink(
+            DailyKanjiDeepLink.cardURL(cardId: "prestudy-one"),
+            now: deepLinkTime
+        )
+        syncer.resolve()
+        await syncTask.value
+
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+        XCTAssertEqual(model.selectedHistoryContext?.source, .widget)
+        XCTAssertEqual(
+            model.selectedHistoryContext?.shownAt,
+            DailyKanjiSelector.currentWidgetSlotStart(for: deepLinkTime)
+        )
+    }
+
+    @MainActor
+    func testSuccessfulSyncPreservesAValidDirtyStudyScopeDraft() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let defaultsName = "DailyKanjiSync-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let dataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let syncer = PausableDailyKanjiSyncer(dataset: dataset)
+        let model = DailyKanjiAppModel(
+            cards: dataset.cards,
+            cacheStore: cacheStore,
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            syncer: syncer,
+            now: now
+        )
+
+        let syncTask = Task {
+            await model.syncNow(now: now.addingTimeInterval(1), force: true)
+        }
+        await Self.waitUntil { syncer.fetchCount == 1 }
+        model.setDraftStudyMode(.prestudy)
+        syncer.resolve()
+        await syncTask.value
+
+        XCTAssertEqual(model.selectedStudyMode, .daily)
+        XCTAssertNil(model.selectedMediaSlug)
+        XCTAssertEqual(model.draftStudyMode, .prestudy)
+        XCTAssertEqual(model.draftMediaSlug, "media-one")
+        XCTAssertTrue(model.hasStudyScopeDraftChanges)
+    }
+
+    @MainActor
+    func testSuccessfulSyncRecordsAReplacementCardImmediately() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let defaultsName = "DailyKanjiHistory-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let initialDataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let replacementDataset = DailyKanjiDataset(
+            version: initialDataset.version,
+            generatedAt: "2026-06-11T09:00:00.000Z",
+            recentMistakeLookbackDays: initialDataset.recentMistakeLookbackDays,
+            cards: [initialDataset.cards.first { $0.cardId == "prestudy-one" }!]
+        )
+        let historyStore = DailyKanjiHistoryStore(defaults: defaults)
+        let model = DailyKanjiAppModel(
+            cards: initialDataset.cards,
+            historyStore: historyStore,
+            cacheStore: DailyKanjiCacheStore(
+                directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+            ),
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            syncer: MockDailyKanjiSyncer(result: .success(replacementDataset)),
+            now: now
+        )
+
+        model.activate(now: now)
+        await model.syncNow(now: now.addingTimeInterval(10), force: true)
+
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+        XCTAssertEqual(
+            historyStore.allItems().map(\.cardId),
+            ["prestudy-one", "daily-global"]
+        )
+    }
+
+    @MainActor
+    func testSyncBeforeActivationKeepsPreparedSelectionDeferred() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let defaultsName = "DailyKanjiSync-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let initialDataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let replacementDataset = DailyKanjiDataset(
+            version: initialDataset.version,
+            generatedAt: "2026-06-11T09:00:00.000Z",
+            recentMistakeLookbackDays: initialDataset.recentMistakeLookbackDays,
+            cards: [initialDataset.cards.first { $0.cardId == "prestudy-one" }!]
+        )
+        let historyStore = DailyKanjiHistoryStore(defaults: defaults)
+        let model = DailyKanjiAppModel(
+            cards: initialDataset.cards,
+            historyStore: historyStore,
+            cacheStore: DailyKanjiCacheStore(
+                directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+            ),
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            syncer: MockDailyKanjiSyncer(result: .success(replacementDataset)),
+            now: now
+        )
+
+        await model.syncNow(now: now.addingTimeInterval(1), force: true)
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+        XCTAssertTrue(historyStore.allItems().isEmpty)
+
+        model.activate(now: now.addingTimeInterval(2))
+        XCTAssertEqual(historyStore.allItems().map(\.cardId), ["prestudy-one"])
+    }
+
+    @MainActor
+    func testSyncPreservesTransientInitialSelectionForImmediateWidgetDeepLink() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let defaultsName = "DailyKanjiSync-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let dataset = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON)
+        let historyStore = DailyKanjiHistoryStore(defaults: defaults)
+        let syncer = PausableDailyKanjiSyncer(dataset: dataset)
+        let model = DailyKanjiAppModel(
+            cards: dataset.cards,
+            historyStore: historyStore,
+            cacheStore: DailyKanjiCacheStore(
+                directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+            ),
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            syncer: syncer,
+            now: now
+        )
+
+        model.activate(now: now)
+        await Self.waitUntil { syncer.fetchCount == 1 }
+        syncer.resolve()
+        await Self.waitUntil {
+            if case .idle = model.syncState {
+                return true
+            }
+            return false
+        }
+        model.openDeepLink(
+            DailyKanjiDeepLink.cardURL(cardId: "prestudy-one"),
+            now: now.addingTimeInterval(2)
+        )
+
+        XCTAssertEqual(historyStore.allItems().map(\.cardId), ["prestudy-one"])
+    }
+
+    @MainActor
     func testManualRefreshRejectsLegacySyncDatasetWhenBundleRequiresStudyModes() async throws {
         let temporaryDirectory = try Self.makeTemporaryDirectory()
         defer { Self.removeTemporaryDirectory(temporaryDirectory) }
@@ -1151,6 +1345,29 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(model.selectedMediaSlug, "media-one")
         XCTAssertEqual(model.scopedCardCount, 1)
         XCTAssertEqual(reloadCount, 1)
+    }
+
+    @MainActor
+    func testApplyingStudyScopeRecordsTheCardShownImmediately() throws {
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.modeScopedDatasetJSON).cards
+        let defaultsName = "DailyKanjiHistory-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let historyStore = DailyKanjiHistoryStore(defaults: defaults)
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            historyStore: historyStore,
+            scopeStore: DailyKanjiStudyScopeStore(defaults: defaults),
+            now: now
+        )
+
+        model.setDraftStudyMode(.prestudy)
+        model.applyStudyScope(now: now.addingTimeInterval(5))
+
+        XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
+        XCTAssertEqual(historyStore.allItems().map(\.cardId), ["prestudy-one"])
     }
 
     @MainActor
@@ -2117,6 +2334,20 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertFalse(frontBlock.contains(".lineLimit(2)"))
     }
 
+    func testLeavingGlossaryDismissesThePresentedEntry() throws {
+        let source = try Self.appSourceFileContents()
+
+        XCTAssertTrue(
+            source.contains(
+                """
+                if section != .glossary {
+                                    selectedGlossaryEntry = nil
+                                }
+                """
+            )
+        )
+    }
+
     func testJapaneseFrontTypographyUsesSystemDefaultInsteadOfSerif() throws {
         let appSource = try Self.appSourceFileContents()
         let widgetSource = try Self.widgetSourceFileContents()
@@ -2243,6 +2474,51 @@ final class DailyKanjiCoreTests: XCTestCase {
         model.activate(now: now.addingTimeInterval(61))
 
         XCTAssertEqual(model.selectedCard?.cardId, "stable")
+    }
+
+    @MainActor
+    func testOfflineStartupAndCardDeepLinksChooseTheDailySection() throws {
+        let cards = try Self.rankedCards(count: 3)
+        let offlineModel = DailyKanjiAppModel(
+            cards: cards,
+            liveReviewClient: nil,
+            now: now
+        )
+        let liveModel = DailyKanjiAppModel(
+            cards: cards,
+            liveReviewClient: MockDailyKanjiLiveReviewClient(),
+            now: now
+        )
+
+        XCTAssertEqual(offlineModel.selectedAppSection, .daily)
+        XCTAssertEqual(liveModel.selectedAppSection, .review)
+
+        liveModel.selectAppSection(.glossary)
+        liveModel.openDeepLink(
+            DailyKanjiDeepLink.cardURL(cardId: "card-2"),
+            now: now.addingTimeInterval(1)
+        )
+
+        XCTAssertEqual(liveModel.selectedAppSection, .daily)
+        XCTAssertEqual(liveModel.selectedCard?.cardId, "card-2")
+    }
+
+    @MainActor
+    func testStaleCardDeepLinkStillRoutesToTheDailyFallback() throws {
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 2),
+            liveReviewClient: MockDailyKanjiLiveReviewClient(),
+            now: now
+        )
+
+        model.selectAppSection(.glossary)
+        model.openDeepLink(
+            DailyKanjiDeepLink.cardURL(cardId: "removed-card"),
+            now: now.addingTimeInterval(1)
+        )
+
+        XCTAssertEqual(model.selectedAppSection, .daily)
+        XCTAssertNotNil(model.selectedCard)
     }
 
     @MainActor
@@ -3441,6 +3717,29 @@ private final class MockDailyKanjiSyncer: DailyKanjiSyncing {
         }
 
         return try results.removeFirst().get()
+    }
+}
+
+private final class PausableDailyKanjiSyncer: DailyKanjiSyncing {
+    private let dataset: DailyKanjiDataset
+    private var continuation: CheckedContinuation<Void, Never>?
+    private(set) var fetchCount = 0
+
+    init(dataset: DailyKanjiDataset) {
+        self.dataset = dataset
+    }
+
+    func fetchDataset() async throws -> DailyKanjiDataset {
+        fetchCount += 1
+        await withCheckedContinuation { continuation in
+            self.continuation = continuation
+        }
+        return dataset
+    }
+
+    func resolve() {
+        continuation?.resume()
+        continuation = nil
     }
 }
 

@@ -22,6 +22,7 @@ final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var recentHistory: [DailyKanjiPresentationHistoryItem] = []
     @Published private(set) var syncState: DailyKanjiSyncState
     @Published private(set) var liveReviewState: DailyKanjiLiveReviewState
+    @Published private(set) var selectedAppSection: DailyKanjiAppSection
 
     private let repository: DailyKanjiRepository
     private let cacheStore: DailyKanjiCacheStore
@@ -77,6 +78,7 @@ final class DailyKanjiAppModel: ObservableObject {
             source: resolvedRepository.loadDatasetSource()
         )
         self.liveReviewState = Self.initialLiveReviewState(liveReviewClient: liveReviewClient)
+        self.selectedAppSection = liveReviewClient == nil ? .daily : .review
         let restoredScopeWasCorrected = restoreSavedScope()
         resetStudyScopeDraft()
         persistCurrentScope()
@@ -113,6 +115,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.reloadTimelines = reloadTimelines
         self.syncState = Self.initialSyncState(syncer: syncer, source: .sample)
         self.liveReviewState = Self.initialLiveReviewState(liveReviewClient: liveReviewClient)
+        self.selectedAppSection = liveReviewClient == nil ? .daily : .review
         let restoredScopeWasCorrected = restoreSavedScope()
         resetStudyScopeDraft()
         persistCurrentScope()
@@ -200,6 +203,10 @@ final class DailyKanjiAppModel: ObservableObject {
         startLiveReviewTask(force: true)
     }
 
+    func selectAppSection(_ section: DailyKanjiAppSection) {
+        selectedAppSection = section
+    }
+
     func syncNow(now: Date = .now, force: Bool = false) async {
         guard let syncer else {
             syncState = .unavailable
@@ -234,17 +241,33 @@ final class DailyKanjiAppModel: ObservableObject {
                 throw DailyKanjiAppSyncError.missingStudyModes
             }
 
+            let visibleCardId = selectedCard?.cardId
+            let dirtyDraftScope = hasStudyScopeDraftChanges
+                ? DailyKanjiStudyScope(
+                    studyMode: draftStudyMode,
+                    mediaSlug: draftMediaSlug
+                )
+                : nil
             try cacheStore.write(dataset: dataset, cachedAt: now)
             cards = dataset.cards
             glossaryEntries = dataset.glossary?.entries ?? []
             lastFailureAt = nil
             consecutiveFailureCount = 0
-            pendingPreparedSelectionCardId = nil
-            transientInitialActivationEvent = nil
             normalizeSelectedStudyScope()
-            resetStudyScopeDraft()
+            if let dirtyDraftScope {
+                draftStudyMode = dirtyDraftScope.studyMode
+                draftMediaSlug = dirtyDraftScope.mediaSlug
+                normalizeDraftStudyScope()
+            } else {
+                resetStudyScopeDraft()
+            }
             persistCurrentScope()
-            prepareInitialSelection(now: now)
+            updateVisibleSelection(
+                preferredCardId: visibleCardId,
+                now: now,
+                recordsReplacement: true,
+                recordsPreparedSelection: false
+            )
             syncState = .idle(source: currentDatasetSource())
             reloadTimelines()
         } catch {
@@ -416,10 +439,14 @@ final class DailyKanjiAppModel: ObservableObject {
 
         selectedStudyMode = draftStudyMode
         selectedMediaSlug = draftMediaSlug
-        pendingPreparedSelectionCardId = nil
         transientInitialActivationEvent = nil
         persistCurrentScope()
-        prepareInitialSelection(now: now)
+        updateVisibleSelection(
+            preferredCardId: nil,
+            now: now,
+            recordsReplacement: true,
+            recordsPreparedSelection: true
+        )
         reloadTimelines()
     }
 
@@ -430,10 +457,12 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     func openDeepLink(_ url: URL, now: Date = .now) {
-        guard
-            let cardId = DailyKanjiDeepLink.cardId(from: url),
-            let card = cards.first(where: { $0.cardId == cardId })
-        else {
+        guard let cardId = DailyKanjiDeepLink.cardId(from: url) else {
+            return
+        }
+        selectedAppSection = .daily
+
+        guard let card = cards.first(where: { $0.cardId == cardId }) else {
             return
         }
 
@@ -477,11 +506,74 @@ final class DailyKanjiAppModel: ObservableObject {
         }
     }
 
+    private func updateVisibleSelection(
+        preferredCardId: String?,
+        now: Date,
+        recordsReplacement: Bool,
+        recordsPreparedSelection: Bool
+    ) {
+        refreshHistory(now: now)
+        let preferredCard = preferredCardId.flatMap { cardId in
+            cards.first { $0.cardId == cardId }
+        }
+        let nextCard = preferredCard ?? DailyKanjiSelector.select(
+            cards: cards,
+            history: selectionHistoryItems(),
+            now: now,
+            mode: .appOpen,
+            mediaSlug: selectedMediaSlug,
+            studyMode: selectedStudyMode
+        )
+
+        guard let nextCard else {
+            selectedCard = nil
+            selectedHistoryContext = nil
+            pendingPreparedSelectionCardId = nil
+            transientInitialActivationEvent = nil
+            return
+        }
+
+        let previousCardId = selectedCard?.cardId
+        let isPreparedSelection = pendingPreparedSelectionCardId == nextCard.cardId
+        let defersReplacementUntilActivation = !recordsPreparedSelection
+            && pendingPreparedSelectionCardId != nil
+
+        if previousCardId != nextCard.cardId && defersReplacementUntilActivation {
+            selectedCard = nextCard
+            selectedHistoryContext = DailyKanjiPresentationHistoryItem(
+                cardId: nextCard.cardId,
+                shownAt: now,
+                source: .app
+            )
+            pendingPreparedSelectionCardId = nextCard.cardId
+            transientInitialActivationEvent = nil
+            return
+        }
+
+        if recordsReplacement
+            && (previousCardId != nextCard.cardId
+                || (recordsPreparedSelection && isPreparedSelection)) {
+            pendingPreparedSelectionCardId = nil
+            select(card: nextCard, shownAt: now, reloadsTimelines: false)
+            return
+        }
+
+        selectedCard = nextCard
+        if previousCardId != nextCard.cardId || selectedHistoryContext == nil {
+            selectedHistoryContext = DailyKanjiPresentationHistoryItem(
+                cardId: nextCard.cardId,
+                shownAt: now,
+                source: .app
+            )
+        }
+    }
+
     private func select(
         card: DailyKanjiCard,
         shownAt: Date,
         context: DailyKanjiPresentationHistoryItem? = nil,
-        tracksTransientInitialActivation: Bool = false
+        tracksTransientInitialActivation: Bool = false,
+        reloadsTimelines: Bool = true
     ) {
         selectedCard = card
         selectedHistoryContext = context ?? DailyKanjiPresentationHistoryItem(
@@ -492,7 +584,9 @@ final class DailyKanjiAppModel: ObservableObject {
         let historyItem = historyStore.record(cardId: card.cardId, shownAt: shownAt)
         transientInitialActivationEvent = tracksTransientInitialActivation ? historyItem : nil
         refreshHistory(now: shownAt)
-        reloadTimelines()
+        if reloadsTimelines {
+            reloadTimelines()
+        }
     }
 
     private func startSyncTask(now: Date, force: Bool) {
