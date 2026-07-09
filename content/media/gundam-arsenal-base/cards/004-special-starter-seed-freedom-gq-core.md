@@ -273,7 +273,7 @@ entry_type: term
 entry_id: term-mighty-strike-freedom-gundam
 card_type: recognition
 front: マイティーストライクフリーダムガンダム
-back: MS top-end del blocco SEED FREEDOM
+back: Mighty Strike Freedom Gundam
 example_jp: >-
   {{高|たか}}コストなので、マイティーストライクフリーダムガンダムは{{終盤|しゅうばん}}の{{押|お}}し{{込|こ}}みまで{{温存|おんぞん}}しやすいです。
 example_it: >-
@@ -293,7 +293,7 @@ entry_type: term
 entry_id: term-immortal-justice-gundam
 card_type: recognition
 front: イモータルジャスティスガンダム
-back: MS mobile del blocco SEED FREEDOM
+back: Immortal Justice Gundam
 example_jp: >-
   イモータルジャスティスガンダムは{{機動|きどう}}なので、{{開|あ}}いたレーンを{{見|み}}て{{動|うご}}かしやすいです。
 example_it: >-
@@ -314,12 +314,11 @@ entry_type: term
 entry_id: term-gelgoog-menace-lunamaria-custom
 card_type: recognition
 front: 'ゲルググメナース(ルナマリア・ホーク{{専用機|せん.よう.き}})'
-back: MS dedicata a Lunamaria Hawk
+back: Gelgoog Menace (unità dedicata a Lunamaria Hawke)
 example_jp: >-
-  ルナマリア・ホーク{{専用機|せん.よう.き}}と{{見|み}}えたら、まず[ルナマリア・ホーク](term:term-lunamaria-hawk)との{{組|く}}み{{合|あ}}わせを{{考|かんが}}えます。
+  ゲルググメナース(ルナマリア・ホーク{{専用機|せん.よう.き}})を[ルナマリア・ホーク](term:term-lunamaria-hawk)のPLカードと{{組|く}}み{{合|あ}}わせます。
 example_it: >-
-  Se vedi "macchina dedicata a Lunamaria Hawk", la prima cosa da fare è pensare
-  all'abbinamento con Lunamaria Hawk.
+  Abbino il Gelgoog Menace dedicato a Lunamaria Hawke alla sua carta PL.
 notes_it: >-
   Qui `～{{専用機|せん.よう.き}}` ti dice quale pilot card cercare per il
   pairing: la parentesi non aggiunge lore, ma dichiara a chi è assegnata quella
@@ -334,12 +333,11 @@ entry_type: term
 entry_id: term-gquuuuuux-omega-psycommu
 card_type: recognition
 front: GQuuuuuuX (オメガ・サイコミュ)
-back: GQuuuuuuX con specificazione Omega Psycommu
+back: GQuuuuuuX (Omega Psycommu)
 example_jp: >-
-  GQuuuuuuX (オメガ・サイコミュ)は、{{英字|えいじ}}とカタカナが{{混|ま}}ざる{{名前|なまえ}}に{{慣|な}}れるのに{{向|む}}いています。
+  GQuuuuuuX (オメガ・サイコミュ)を{{右|みぎ}}レーンへ{{出撃|しゅつげき}}させます。
 example_it: >-
-  GQuuuuuuX (Omega Psycommu) è perfetta per abituarti a leggere nomi misti con
-  lettere latine e katakana.
+  Schiero GQuuuuuuX (Omega Psycommu) nella corsia di destra.
 notes_it: >-
   Questa carta ti costringe a leggere due strati diversi del nome: base in
   alfabeto latino e specificazione tecnica in katakana. Qui la parentesi va
@@ -354,12 +352,11 @@ entry_type: term
 entry_id: term-red-gundam-0085
 card_type: recognition
 front: '{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})'
-back: Red Gundam con marcatore (0085)
+back: Red Gundam (0085)
 example_jp: >-
-  {{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})は、{{名前|なまえ}}の{{最初|さいしょ}}で{{色|いろ}}の{{漢字|かんじ}}を{{読|よ}}ませるタイプです。
+  {{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})を{{右|みぎ}}レーンへ{{出撃|しゅつげき}}させます。
 example_it: >-
-  Red Gundam (0085) è il tipo di nome che ti costringe a leggere un kanji di
-  colore già nel primo blocco del titolo.
+  Schiero Red Gundam (0085) nella corsia di destra.
 notes_it: >-
   `{{赤|あか}}い` + `{{(0085)|ぜろ.ぜろ.はち.ご}}` separano subito due informazioni
   operative: identita nominale in kanji e variante/versione del modello.
@@ -375,12 +372,12 @@ entry_type: term
 entry_id: term-kira-yamato-lacus-clyne
 card_type: recognition
 front: キラ・ヤマト＆ラクス・クライン
-back: PL con doppio nome in un'unica carta
+back: Kira Yamato & Lacus Clyne
 example_jp: >-
-  キラ・ヤマト＆ラクス・クラインのような{{表記|ひょうき}}では、`＆`を{{一枚|いちまい}}のPLカードの{{中|なか}}で{{読|よ}}みます。
+  キラ・ヤマト＆ラクス・クラインのPLカードをマイティーストライクフリーダムガンダムと{{組|く}}み{{合|あ}}わせます。
 example_it: >-
-  In una scrittura come Kira Yamato & Lacus Clyne, l'`＆` va letto all'interno
-  di una singola PL card.
+  Abbino la carta PL di Kira Yamato & Lacus Clyne al Mighty Strike Freedom
+  Gundam.
 notes_it: >-
   Su questa PL l'`＆` non separa due carte o due slot: unisce due nomi dentro
   una singola pilot card.
@@ -394,12 +391,11 @@ entry_type: term
 entry_id: term-shinn-asuka
 card_type: recognition
 front: シン・アスカ
-back: PL Shinn Asuka
+back: Shinn Asuka
 example_jp: >-
-  シン・アスカは{{短|みじか}}い{{名前|なまえ}}なので、{{長|なが}}いカード{{名|めい}}の{{中|なか}}で{{基準点|き.じゅん.てん}}にしやすいです。
+  シン・アスカのPLカードをイモータルジャスティスガンダムと{{組|く}}み{{合|あ}}わせます。
 example_it: >-
-  Shinn Asuka ha un nome corto, quindi funziona bene come punto di riferimento
-  in mezzo a carte dai titoli più lunghi.
+  Abbino la carta PL di Shinn Asuka all'Immortal Justice Gundam.
 notes_it: >-
   Il valore di [シン・アスカ](term:term-shinn-asuka) sta nel contrasto formale:
   nome singolo, senza `＆` e senza parentesi, quindi si riconosce subito nella
@@ -414,12 +410,11 @@ entry_type: term
 entry_id: term-lunamaria-hawk
 card_type: recognition
 front: ルナマリア・ホーク
-back: PL Lunamaria Hawk
+back: Lunamaria Hawke
 example_jp: >-
-  [ゲルググメナース(ルナマリア・ホーク{{専用機|せん.よう.き}})](term:term-gelgoog-menace-lunamaria-custom)と{{並|なら}}べて{{覚|おぼ}}えると、{{対応|たいおう}}がとても{{見|み}}えやすいです。
+  ルナマリア・ホークのPLカードをゲルググメナースと{{組|く}}み{{合|あ}}わせます。
 example_it: >-
-  Se la memorizzi accanto al Gelgoog Menace dedicato a lei, l'abbinamento
-  naturale diventa molto chiaro.
+  Abbino la carta PL di Lunamaria Hawke al Gelgoog Menace.
 notes_it: >-
   Va letta insieme alla sua MS dedicata perché il set rende esplicito il
   pairing già nel nome della variante [{{専用機|せん.よう.き}}](term:term-dedicated-machine).
@@ -433,12 +428,11 @@ entry_type: term
 entry_id: term-amate-yuzuriha-machu
 card_type: recognition
 front: アマテ・ユズリハ(マチュ)
-back: PL con soprannome in parentesi
+back: Amate Yuzuriha (Machu)
 example_jp: >-
-  アマテ・ユズリハ(マチュ)では、{{括弧|かっこ}}の{{中|なか}}が{{呼|よ}}び{{名|な}}だと{{分|わ}}かると{{読|よ}}みやすくなります。
+  アマテ・ユズリハ(マチュ)のPLカードをGQuuuuuuX (オメガ・サイコミュ)と{{組|く}}み{{合|あ}}わせます。
 example_it: >-
-  In Amate Yuzuriha (Machu), la lettura diventa più semplice quando capisci che
-  dentro la parentesi c'è il soprannome.
+  Abbino la carta PL di Amate Yuzuriha (Machu) a GQuuuuuuX (Omega Psycommu).
 notes_it: >-
   Carta ideale per allenare parentesi come nickname e non come testo tecnico.
 tags: [starter-deck, pl, gquuuuuux, parenthetical]
@@ -451,12 +445,11 @@ entry_type: term
 entry_id: term-shuji-itou
 card_type: recognition
 front: シュウジ・イトウ
-back: PL Shuji Ito
+back: Shuji Itō
 example_jp: >-
-  シュウジ・イトウは、[{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085)の{{相方|あいかた}}として{{見|み}}ておくと{{整理|せいり}}しやすいです。
+  シュウジ・イトウのPLカードをMSカードと{{組|く}}み{{合|あ}}わせます。
 example_it: >-
-  Se tieni Shuji Ito come partner naturale di Red Gundam (0085), diventa più
-  facile organizzare la lettura del board.
+  Abbino la carta PL di Shuji Itō a una carta MS.
 notes_it: >-
   Serve come etichetta della seconda coppia lineare del lato `GQ`: quando lo
   vedi vicino a [{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085), sai già
@@ -471,12 +464,11 @@ entry_type: term
 entry_id: term-ms-type-near-range
 card_type: recognition
 front: '{{近距離|きん.きょ.り}}'
-back: tipo MS ravvicinato
+back: tipo MS da combattimento ravvicinato
 example_jp: >-
-  {{近距離|きん.きょ.り}}と{{見|み}}えたら、まず{{前線|ぜんせん}}での{{戦闘|せんとう}}を{{想像|そうぞう}}します。
+  {{近距離|きん.きょ.り}}MSを{{右|みぎ}}レーンへ{{出撃|しゅつげき}}させます。
 example_it: >-
-  Quando leggi "ravvicinato", la prima immagine mentale deve essere il
-  combattimento in prima linea.
+  Schiero un MS da combattimento ravvicinato nella corsia di destra.
 notes_it: >-
   [{{近距離|きん.きょ.り}}](term:term-ms-type-near-range) ti dice che la MS vuole
   stare sulla linea di scontro: leggerla come pezzo di pressione da lontano
@@ -491,12 +483,11 @@ entry_type: term
 entry_id: term-ms-type-long-range
 card_type: recognition
 front: '{{遠距離|えん.きょ.り}}'
-back: tipo MS a distanza
+back: tipo MS da combattimento a distanza
 example_jp: >-
-  {{遠距離|えん.きょ.り}}の{{表示|ひょうじ}}があれば、{{位置|いち}}どりと{{射程|しゃてい}}をまず{{意識|いしき}}します。
+  {{遠距離|えん.きょ.り}}MSを{{左|ひだり}}レーンへ{{出撃|しゅつげき}}させます。
 example_it: >-
-  Se compare il tipo "a distanza", la prima cosa da considerare sono posizione e
-  gittata.
+  Schiero un MS da combattimento a distanza nella corsia di sinistra.
 notes_it: >-
   Leggerlo subito ti impedisce di trattare ogni MS come se avesse lo stesso
   modo di stare in campo.
@@ -512,10 +503,9 @@ card_type: recognition
 front: '{{機動|きどう}}'
 back: tipo MS orientato alla mobilità
 example_jp: >-
-  {{機動|きどう}}MSは、{{空|あ}}いたレーンへ{{回|まわ}}す{{感覚|かんかく}}で{{見|み}}ると{{整理|せいり}}しやすいです。
+  {{機動|きどう}}MSを{{空|あ}}いたレーンへ{{動|うご}}かします。
 example_it: >-
-  Guardare una MS mobilità come un pezzo da spostare verso la corsia aperta
-  rende molto più chiara la sua funzione.
+  Sposto l'MS di tipo Mobilità nella corsia libera.
 notes_it: >-
   [{{機動|きどう}}](term:term-ms-type-mobility) segnala la MS da riposizionare
   sulle corsie aperte. Qui `veloce` significa mobile sul campo: capace di muoversi bene sulle corsie aperte.
@@ -533,8 +523,8 @@ back: abilità primaria del pilota
 example_jp: >-
   PLスキルの{{欄|らん}}を{{先|さき}}に{{見|み}}ると、そのパイロットの{{仕事|しごと}}が{{早|はや}}く{{分|わ}}かります。
 example_it: >-
-  Se guardi prima il riquadro PL Skill, capisci molto più rapidamente il lavoro
-  reale di quel pilota.
+  Se guardi prima il riquadro PL Skill, capisci subito quale compito svolge il
+  pilota.
 notes_it: >-
   Nel retro PL è uno dei due pannelli essenziali da trovare subito.
   La sua lettura anticipa quale leva tattica aggiunge il pilota alla coppia.
@@ -550,10 +540,9 @@ card_type: recognition
 front: リンクアビリティ
 back: bonus di collegamento tra carte della stessa unità
 example_jp: >-
-  リンクアビリティを{{見|み}}ると、{{相性|あいしょう}}のいい{{組|く}}み{{合|あ}}わせかどうかを{{先|さき}}に{{考|かんが}}えられます。
+  リンクアビリティでMSとPLの{{組|く}}み{{合|あ}}わせが{{強|つよ}}くなります。
 example_it: >-
-  Guardare la Link Ability ti permette di pensare subito se la coppia è
-  coerente o meno.
+  La Link Ability rende più forte la combinazione tra MS e PL.
 notes_it: >-
   [リンクアビリティ](term:term-link-ability) è il pannello da controllare quando
   vuoi capire se MS e PL hanno un bonus di coppia. Trovarlo in fretta ti evita
@@ -570,10 +559,9 @@ card_type: recognition
 front: '{{専用機|せん.よう.き}}'
 back: macchina dedicata a un pilota specifico
 example_jp: >-
-  {{専用機|せん.よう.き}}と{{書|か}}かれていれば、その{{名前|なまえ}}のパイロットと{{組|く}}む{{前提|ぜんてい}}で{{読|よ}}みやすいです。
+  この{{専用機|せん.よう.き}}をルナマリア・ホークのPLカードと{{組|く}}み{{合|あ}}わせます。
 example_it: >-
-  Se c'è scritto "macchina dedicata", leggerla pensando a quel pilota come
-  partner naturale diventa molto più facile.
+  Abbino questa unità dedicata alla carta PL di Lunamaria Hawke.
 notes_it: >-
   [{{専用機|せん.よう.き}}](term:term-dedicated-machine) segnala che il nome della
   MS incorpora già il partner naturale da cercare tra le pilot card.
@@ -589,10 +577,9 @@ card_type: concept
 front: A＆B
 back: due nomi letti come una coppia in una sola carta
 example_jp: >-
-  キラ・ヤマト＆ラクス・クラインの`＆`は、{{二枚|にまい}}のカードではなく{{一枚|いちまい}}のPLカード{{内|ない}}の{{結合|けつごう}}です。
+  キラ・ヤマト＆ラクス・クラインのPLカードをMSと{{組|く}}み{{合|あ}}わせます。
 example_it: >-
-  L'`&` in Kira Yamato & Lacus Clyne indica l'unione dei due personaggi dentro
-  una sola PL card.
+  Abbino la carta PL di Kira Yamato & Lacus Clyne a un MS.
 notes_it: >-
   L'`&` segnala l'unione dei due personaggi come pairing della carta: due nomi
   convivono nella stessa PL e vanno letti come doppio nome.
@@ -608,10 +595,9 @@ card_type: concept
 front: '～{{専用機|せん.よう.き}}'
 back: macchina o variante dedicata a quel pilota
 example_jp: >-
-  ルナマリア・ホーク{{専用機|せん.よう.き}}とあれば、{{対応|たいおう}}するPLを{{探|さが}}す{{方向|ほうこう}}で{{読|よ}}みます。
+  ルナマリア・ホーク{{専用機|せん.よう.き}}をルナマリア・ホークのPLカードと{{組|く}}み{{合|あ}}わせます。
 example_it: >-
-  Se trovi "dedicata a Lunamaria Hawk", devi leggere la carta pensando a quale
-  PL corrispondente cercare.
+  Abbino l'unità dedicata a Lunamaria Hawke alla carta PL di Lunamaria Hawke.
 notes_it: >-
   Nel set `～{{専用機|せん.よう.き}}` marca una variante MS assegnata a quel
   pilota. Se lo leggi bene, il passo successivo naturale è cercare la PL
@@ -628,10 +614,9 @@ card_type: concept
 front: ～(～)
 back: soprannome, variante o specificazione nel nome
 example_jp: >-
-  {{括弧|かっこ}}の{{中|なか}}は、マチュのような{{呼|よ}}び{{名|な}}にも、オメガ・サイコミュのような{{仕様|しよう}}にもなります。
+  アマテ・ユズリハ(マチュ)のPLカードをセットします。
 example_it: >-
-  Il contenuto tra parentesi può essere un soprannome come Machu oppure una
-  specificazione come Omega Psycommu.
+  Inserisco la carta PL di Amate Yuzuriha (Machu).
 notes_it: >-
   In questo set le parentesi possono segnalare alias, specificazione
   tecnica o versione. Per questo vanno interpretate ogni volta, non saltate.

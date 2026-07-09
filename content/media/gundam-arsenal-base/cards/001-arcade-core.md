@@ -733,7 +733,7 @@ example_jp: >-
   [{{帰宅後|き.たく.ご}}](term:term-after-return-home)にMY PAGEを{{開|ひら}}くと、{{今日|きょう}}のミッション[{{進行|しんこう}}](term:term-progress)と[{{戦績|せんせき}}](term:term-battle-record)をまとめて{{確認|かくにん}}できます。
 example_it: >-
   Se apri MY PAGE una volta tornato a casa, puoi controllare insieme i
-  progressi missione e i risultati di oggi.
+  progressi delle missioni e i risultati di oggi.
 notes_it: >-
   Dopo aver collegato la tessera salvata e il Bandai Namco ID, qui controlli profilo, missioni, livelli, ultimi risultati e ranking. Non sostituisce la tessera fisica.
 tags: [term, onboarding]
@@ -771,7 +771,7 @@ back: >-
 example_jp: >-
   ミッション{{進行|しんこう}}をまとめて{{確認|かくにん}}する。
 example_it: >-
-  Controllare in blocco l'avanzamento delle missioni.
+  Controllo insieme l'avanzamento di tutte le missioni.
 notes_it: >-
   In [MY PAGE](term:term-mypage) non descrive il contenuto della missione: ti
   dice a che punto sei nel completamento. Va letto come stato di avanzamento,
@@ -788,11 +788,11 @@ card_type: recognition
 front: >-
   {{戦績|せんせき}}
 back: >-
-  risultati di battaglia / match record
+  risultati di battaglia; storico degli incontri
 example_jp: >-
   {{戦績|せんせき}}を{{見|み}}て{{次|つぎ}}のデッキを{{考|かんが}}える。
 example_it: >-
-  Guarda i risultati e pensa al deck successivo.
+  Guardo i risultati e preparo il mazzo per la prossima partita.
 notes_it: >-
   Non è lore o contorno: è il riepilogo pratico che ti fa rileggere come sono
   andate davvero le partite precedenti e se il deck mantiene rendimento.
@@ -812,8 +812,8 @@ back: >-
 example_jp: >-
   {{指揮官|し.き.かん}}レベルが{{5|ご}}に{{上|あ}}がると、{{作戦|さくせん}}カードの{{装備|そうび}}が{{解放|かいほう}}されます。
 example_it: >-
-  Quando il livello comandante arriva a 5, si sblocca l'equipaggiamento delle
-  carte tattiche.
+  Quando il livello del comandante arriva a 5, si sblocca l'equipaggiamento
+  delle carte tattiche.
 notes_it: >-
   Misura l'avanzamento generale del profilo e sblocca funzioni nuove. Al livello
   5 si sblocca l'equipaggiamento delle carte tattiche.
@@ -829,7 +829,7 @@ card_type: recognition
 front: >-
   {{作戦|さくせん}}カード
 back: >-
-  carta digitale di effetto tattico
+  carta digitale con effetto tattico
 example_jp: >-
   {{開幕|かいまく}}で{{守|まも}}りを{{固|かた}}めたいので、メイン{{枠|わく}}には{{防御|ぼうぎょ}}よりの{{作戦|さくせん}}カードを{{入|い}}れました。
 example_it: >-
@@ -853,7 +853,7 @@ back: >-
 example_jp: >-
   {{自軍|じぐん}}{{戦力|せんりょく}}ゲージが{{残|のこ}}り{{少|すく}}ないなら、{{無理|むり}}に{{攻|せ}}めず{{戦艦|せんかん}}の{{防衛|ぼうえい}}を{{優先|ゆうせん}}します。
 example_it: >-
-  Se la gauge alleata è quasi finita, dai priorità alla difesa della
+  Se la barra alleata è quasi esaurita, dai priorità alla difesa della
   nave invece di forzare l'attacco.
 notes_it: >-
   Riassume la resistenza residua di basi e nave alleate. Non è un semplice HP personale di un'unità: ti dice quanto sei vicino alla sconfitta.
@@ -873,8 +873,8 @@ back: >-
 example_jp: >-
   {{敵軍|てきぐん}}{{戦力|せんりょく}}ゲージがわずかなら、{{制圧|せいあつ}}を{{通|とお}}して{{戦艦|せんかん}}を{{狙|ねら}}う{{判断|はんだん}}になります。
 example_it: >-
-  Se la gauge nemica è quasi finita, la decisione giusta è far passare una
-  unità di pressione e puntare alla nave.
+  Se la barra nemica è quasi esaurita, conviene far passare un'unità di
+  soppressione e puntare alla nave.
 notes_it: >-
   Ti dice quanto danno complessivo manca per chiudere la partita. Se la nave nemica cade, la battaglia finisce subito a tuo favore.
 tags: [term, battle]
@@ -889,12 +889,12 @@ card_type: recognition
 front: >-
   {{出撃|しゅつげき}}
 back: >-
-  far entrare una unità in campo
+  far entrare un'unità in campo; schierare
 example_jp: >-
   コストが{{足|た}}りたら、{{右|みぎ}}レーンへ{{制圧|せいあつ}}ユニットを{{出撃|しゅつげき}}させます。
 example_it: >-
-  Quando hai costo sufficiente, schieri una unità di pressione nella corsia di
-  destra.
+  Quando hai costo sufficiente, schieri un'unità di soppressione nella corsia
+  di destra.
 notes_it: >-
   In pratica significa scegliere quando e dove far comparire un'unità sulla mappa pagando costo. È l'azione che trasforma una carta preparata in presenza reale sul campo.
 tags: [term, battle]
@@ -928,7 +928,7 @@ card_type: recognition
 front: >-
   {{戦術技|せん.じゅつ.ぎ}}
 back: >-
-  tecnica speciale dell'unità
+  tecnica tattica; mossa speciale dell'unità
 example_jp: >-
   SPゲージが{{満|まん}}タンでも、{{守|まも}}られた{{拠点|きょてん}}には{{戦術技|せん.じゅつ.ぎ}}を{{撃|う}}たないほうがいいです。
 example_it: >-
@@ -948,12 +948,12 @@ card_type: recognition
 front: >-
   {{殲滅|せんめつ}}
 back: >-
-  ruolo che punta prima alle unità nemiche
+  annientamento; ruolo che elimina le unità nemiche
 example_jp: >-
   {{殲滅|せんめつ}}の{{仕事|しごと}}は、{{制圧|せいあつ}}の{{前|まえ}}に{{敵|てき}}ユニットを{{片|かた}}づけることです。
 example_it: >-
-  Il compito dell'annientamento è eliminare le unità nemiche prima che entri la
-  pressione.
+  Il ruolo Annientamento elimina le unità nemiche prima che avanzino le unità
+  di soppressione.
 notes_it: >-
   Va letto come ruolo anti-unità. Se un avversario ti sta bloccando la corsia con presenza sul campo, questo è il ruolo che di solito apre la strada.
 tags: [term, battle]
@@ -988,7 +988,7 @@ card_type: recognition
 front: >-
   {{前線|ぜんせん}}
 back: >-
-  prima linea / frontline
+  prima linea; fronte
 example_jp: >-
   アーセナルベースでは、{{前線|ぜんせん}}で{{戦|たたか}}うユニットの{{役割|やくわり}}をどう{{決|き}}めるかが{{重要|じゅうよう}}だ。
 example_it: >-
@@ -1008,7 +1008,7 @@ card_type: recognition
 front: >-
   {{戦闘|せんとう}}
 back: >-
-  combattimento / combat
+  combattimento; scontro
 example_jp: >-
   {{近距離|きん.きょ.り}}{{戦闘|せんとう}}が{{強|つよ}}いMSを{{前線|ぜんせん}}に{{出|だ}}す。
 example_it: >-
@@ -1029,12 +1029,12 @@ card_type: recognition
 front: >-
   {{制圧|せいあつ}}
 back: >-
-  ruolo che colpisce basi e nave nemica
+  soppressione; conquista; ruolo che attacca basi e nave nemica
 example_jp: >-
   {{制圧|せいあつ}}を{{左|ひだり}}から{{通|とお}}せば、{{拠点|きょてん}}と{{戦艦|せんかん}}のゲージをまとめて{{削|けず}}れます。
 example_it: >-
-  Se riesci a far passare la pressione da sinistra, puoi ridurre insieme sia la
-  gauge della base sia quella della nave.
+  Se un'unità di soppressione passa da sinistra, puoi ridurre sia la barra della
+  base sia quella della nave.
 notes_it: >-
   Va letto come pressione sugli obiettivi. È il ruolo che converte una corsia aperta in danno reale alla gauge avversaria.
 tags: [term, battle]
@@ -1049,12 +1049,12 @@ card_type: recognition
 front: >-
   {{防衛|ぼうえい}}
 back: >-
-  ruolo che difende base o nave
+  difesa; ruolo che protegge base o nave
 example_jp: >-
   {{防衛|ぼうえい}}を{{自軍|じぐん}}{{拠点|きょてん}}に{{置|お}}くと、{{相手|あいて}}の{{制圧|せいあつ}}が{{通|とお}}りにくくなります。
 example_it: >-
-  Se metti una unità di difesa sulla tua base, la pressione avversaria passa con
-  molta più difficoltà.
+  Se metti un'unità di difesa sulla tua base, l'unità di soppressione avversaria
+  passa con molta più difficoltà.
 notes_it: >-
   Resta vicino all'obiettivo e ne aumenta la difesa. Quando compare, un attacco
   agli obiettivi può infliggere molto meno danno del previsto.
@@ -1074,8 +1074,8 @@ back: >-
 example_jp: >-
   {{新|あたら}}しいデッキを{{試|ため}}す{{日|ひ}}は、まずチャレンジモードで{{操作|そうさ}}と{{役割|やくわり}}を{{確認|かくにん}}します。
 example_it: >-
-  Nei giorni in cui provi un deck nuovo, controlli prima input e ruoli in
-  Challenge Mode.
+  Quando provo un mazzo nuovo, verifico prima comandi e ruoli in Challenge
+  Mode.
 notes_it: >-
   È la modalità ideale per rendere stabili input, ruoli e lettura della schermata prima di pensare ai risultati in classifica.
 tags: [term, progression]
@@ -1094,8 +1094,8 @@ back: >-
 example_jp: >-
   ランクマッチでは{{勝敗|しょうはい}}だけでなく、{{次|つぎ}}のランクポイントまで{{意識|いしき}}して{{潜|もぐ}}ります。
 example_it: >-
-  In Rank Match entri pensando non solo al risultato, ma anche ai prossimi rank
-  point in palio.
+  In Rank Match tengo d'occhio non solo il risultato, ma anche i punti necessari
+  per il grado successivo.
 notes_it: >-
   Qui le vittorie e le sconfitte cambiano il rank e i punti stagione. È la ladder principale del gioco.
 tags: [term, progression]
@@ -1110,12 +1110,12 @@ card_type: recognition
 front: >-
   EXバトル
 back: >-
-  evento EX citato in guide vecchie
+  modalità EX presente nelle versioni precedenti
 example_jp: >-
-  {{昔|むかし}}の{{記事|きじ}}にEXバトルと{{書|か}}いてあっても、{{今|いま}}の{{導線|どうせん}}とは{{分|わ}}けて{{読|よ}}むべきです。
+  {{昔|むかし}}はEXバトルがありましたが、{{今|いま}}はこのモードを{{選|えら}}べません。
 example_it: >-
-  Anche se un articolo vecchio parla di EX Battle, va letto separandolo dal
-  percorso di gioco attuale.
+  In passato esisteva EX Battle, ma oggi questa modalità non è più
+  selezionabile.
 notes_it: >-
   È un riferimento storico presente in guide precedenti. Nella versione
   ufficiale attuale il sistema non si attiva più dalle stagioni UNITRIBE
@@ -1136,7 +1136,7 @@ back: >-
 example_jp: >-
   {{下段|げだん}}にPLカードをセットすると、{{対応|たいおう}}するMSとすぐ{{組|く}}めます。
 example_it: >-
-  Se metti la PL card nella fila inferiore, la puoi subito abbinare alla MS
+  Se metti la PL card nello slot inferiore, la puoi subito abbinare alla MS
   corrispondente.
 notes_it: >-
   Nel lessico del cabinato segnala un'azione concreta di inserimento o preparazione visibile. Se lo vedi, la macchina non ti sta chiedendo di pensare al deck: ti sta chiedendo di mettere davvero tessera o carte.
