@@ -60,15 +60,22 @@ struct ContentView: View {
                 }
                 if section == .review {
                     model.refreshLiveReviewNow()
-                    resetAndPreloadCurrentLiveReviewAudio()
                 }
+                resetAndPreloadCurrentLiveReviewAudio()
             }
             .onChange(of: currentLiveReviewCardKey) { _, _ in
+                guard model.selectedAppSection == .review else {
+                    return
+                }
                 liveReviewAnswerRevealed = false
                 resetAndPreloadCurrentLiveReviewAudio()
             }
             .onAppear {
                 resetAndPreloadCurrentLiveReviewAudio()
+            }
+            .onDisappear {
+                audioPlayer.stopPlayback()
+                audioPlayer.preload(url: nil)
             }
             .onReceive(model.$glossaryEntries.dropFirst()) { entries in
                 glossarySearch.replaceEntries(entries)
@@ -762,9 +769,11 @@ struct ContentView: View {
     }
 
     private func resetAndPreloadCurrentLiveReviewAudio() {
+        audioPlayer.stopPlayback()
         guard model.selectedAppSection == .review,
               let card = model.liveReviewState.session?.selectedCard
         else {
+            audioPlayer.preload(url: nil)
             return
         }
 

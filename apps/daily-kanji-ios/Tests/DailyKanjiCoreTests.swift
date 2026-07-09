@@ -4097,6 +4097,167 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
+    func testRemoteAudioCacheUsesDeterministicBoundedLRUEviction() {
+        let firstURL = URL(string: "https://example.test/first.mp3")!
+        let secondURL = URL(string: "https://example.test/second.mp3")!
+        let thirdURL = URL(string: "https://example.test/third.mp3")!
+        let oversizedURL = URL(string: "https://example.test/oversized.mp3")!
+        var cache = DailyKanjiRemoteAudioCache(
+            maximumEntryCount: 2,
+            maximumByteCount: 6
+        )
+
+        XCTAssertTrue(cache.insert(Data(repeating: 1, count: 3), for: firstURL))
+        XCTAssertTrue(cache.insert(Data(repeating: 2, count: 3), for: secondURL))
+        XCTAssertNotNil(cache.data(for: firstURL))
+        XCTAssertTrue(cache.insert(Data(repeating: 3, count: 3), for: thirdURL))
+
+        XCTAssertEqual(cache.count, 2)
+        XCTAssertEqual(cache.byteCount, 6)
+        XCTAssertEqual(
+            cache.urlsInLeastRecentlyUsedOrder,
+            [firstURL, thirdURL]
+        )
+        XCTAssertFalse(cache.contains(secondURL))
+        XCTAssertFalse(
+            cache.insert(Data(repeating: 4, count: 7), for: oversizedURL)
+        )
+        XCTAssertFalse(cache.contains(oversizedURL))
+        XCTAssertEqual(cache.count, 2)
+        XCTAssertEqual(cache.byteCount, 6)
+    }
+
+    @MainActor
+    func testRemoteAudioPreloadRejectsStaleAndCancelledCompletions() async {
+        let loader = ControllableDailyKanjiAudioLoader()
+        let player = DailyKanjiAudioPlayer(
+            maximumRemoteCacheEntries: 8,
+            maximumRemoteCacheBytes: 64,
+            remoteAudioLoader: { try await loader.load($0) }
+        )
+        let firstURL = URL(string: "https://example.test/first.mp3")!
+        let secondURL = URL(string: "https://example.test/second.mp3")!
+        let cancelledURL = URL(string: "https://example.test/cancelled.mp3")!
+
+        player.preload(url: firstURL)
+        await loader.waitForRequestCount(1)
+        player.preload(url: secondURL)
+        await loader.waitForRequestCount(2)
+
+        await loader.resolveRequest(at: 0, with: Data(repeating: 1, count: 4))
+        await Task.yield()
+        XCTAssertEqual(player.cachedRemoteAudioCount, 0)
+        XCTAssertEqual(player.activePreloadURL, secondURL)
+
+        await loader.resolveRequest(at: 1, with: Data(repeating: 2, count: 5))
+        await player.waitForPendingPreload()
+        XCTAssertEqual(player.cachedRemoteAudioCount, 1)
+        XCTAssertEqual(player.cachedRemoteAudioByteCount, 5)
+        XCTAssertEqual(
+            player.cachedRemoteAudioURLsInLeastRecentlyUsedOrder,
+            [secondURL]
+        )
+
+        player.preload(url: cancelledURL)
+        await loader.waitForRequestCount(3)
+        player.preload(url: nil)
+        XCTAssertNil(player.activePreloadURL)
+        await loader.resolveRequest(at: 2, with: Data(repeating: 3, count: 6))
+        await Task.yield()
+        XCTAssertEqual(
+            player.cachedRemoteAudioURLsInLeastRecentlyUsedOrder,
+            [secondURL]
+        )
+    }
+
+    @MainActor
+    func testRemoteAudioPreloadDeduplicatesActiveAndCachedURLs() async {
+        let loader = ControllableDailyKanjiAudioLoader()
+        let player = DailyKanjiAudioPlayer(
+            remoteAudioLoader: { try await loader.load($0) }
+        )
+        let url = URL(string: "https://example.test/audio.mp3")!
+
+        player.preload(url: url)
+        player.preload(url: url)
+        await loader.waitForRequestCount(1)
+        let activeRequestCount = await loader.requestCount
+        XCTAssertEqual(activeRequestCount, 1)
+
+        await loader.resolveRequest(at: 0, with: Data(repeating: 1, count: 4))
+        await player.waitForPendingPreload()
+        player.preload(url: url)
+        await Task.yield()
+
+        let finalRequestCount = await loader.requestCount
+        XCTAssertEqual(finalRequestCount, 1)
+        XCTAssertEqual(player.cachedRemoteAudioCount, 1)
+    }
+
+    func testAudioPlayerStopsBothBackendsBeforeStartingPlayback() throws {
+        let source = try Self.audioPlayerSourceFileContents()
+        guard
+            let bundledStart = source.range(of: "private func playBundled"),
+            let remoteStart = source.range(of: "\n    func play(url: URL)"),
+            let preloadStart = source.range(of: "\n    func preload(url: URL?)")
+        else {
+            XCTFail("Could not isolate audio playback methods.")
+            return
+        }
+
+        let bundledBlock = String(source[bundledStart.lowerBound..<remoteStart.lowerBound])
+        let remoteBlock = String(source[remoteStart.lowerBound..<preloadStart.lowerBound])
+        XCTAssertTrue(bundledBlock.contains("stopPlayback()"))
+        XCTAssertTrue(remoteBlock.contains("stopPlayback()"))
+        XCTAssertTrue(source.contains("player?.stop()"))
+        XCTAssertTrue(source.contains("remotePlayer?.pause()"))
+        XCTAssertTrue(source.contains("remotePlayer?.replaceCurrentItem(with: nil)"))
+        XCTAssertTrue(source.contains("remoteAudioCache.removeData(for: url)"))
+    }
+
+    func testLiveReviewPreloadCancelsWhenTheReviewIsNotVisible() throws {
+        let source = try Self.appSourceFileContents()
+
+        XCTAssertTrue(
+            source.contains(
+                """
+                .onDisappear {
+                                audioPlayer.stopPlayback()
+                                audioPlayer.preload(url: nil)
+                            }
+                """
+            )
+        )
+        XCTAssertTrue(
+            source.contains(
+                """
+                private func resetAndPreloadCurrentLiveReviewAudio() {
+                        audioPlayer.stopPlayback()
+                """
+            )
+        )
+        XCTAssertTrue(
+            source.contains(
+                """
+                .onChange(of: currentLiveReviewCardKey) { _, _ in
+                                guard model.selectedAppSection == .review else {
+                                    return
+                                }
+                """
+            )
+        )
+        XCTAssertTrue(
+            source.contains(
+                """
+                else {
+                            audioPlayer.preload(url: nil)
+                            return
+                        }
+                """
+            )
+        )
+    }
+
     private static let liveReviewSessionJSON = """
     {
       "ok": true,
@@ -5062,6 +5223,17 @@ final class DailyKanjiCoreTests: XCTestCase {
         return try String(contentsOf: appSourceURL, encoding: .utf8)
     }
 
+    private static func audioPlayerSourceFileContents() throws -> String {
+        let testFileURL = URL(fileURLWithPath: #filePath)
+        let projectURL = testFileURL
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let audioPlayerSourceURL = projectURL.appendingPathComponent(
+            "App/DailyKanjiAudioPlayer.swift"
+        )
+        return try String(contentsOf: audioPlayerSourceURL, encoding: .utf8)
+    }
+
     private static func appEntrySourceFileContents() throws -> String {
         let testFileURL = URL(fileURLWithPath: #filePath)
         let projectURL = testFileURL
@@ -5537,6 +5709,48 @@ private actor ControllableGlossaryDebounceSleeper {
         }
 
         continuations.removeFirst().resume(returning: ())
+    }
+}
+
+private actor ControllableDailyKanjiAudioLoader {
+    private var nextRequestIndex = 0
+    private var continuations: [Int: CheckedContinuation<Data, Error>] = [:]
+    private var requestedURLs: [URL] = []
+
+    var requestCount: Int {
+        requestedURLs.count
+    }
+
+    func load(_ url: URL) async throws -> Data {
+        let requestIndex = nextRequestIndex
+        nextRequestIndex += 1
+        requestedURLs.append(url)
+
+        return try await withCheckedThrowingContinuation { continuation in
+            continuations[requestIndex] = continuation
+        }
+    }
+
+    func waitForRequestCount(_ expectedCount: Int) async {
+        for _ in 0..<1_000 {
+            if requestCount >= expectedCount {
+                return
+            }
+            await Task.yield()
+        }
+
+        XCTFail(
+            "Expected \(expectedCount) audio requests, found \(requestCount)"
+        )
+    }
+
+    func resolveRequest(at index: Int, with data: Data) {
+        guard let continuation = continuations.removeValue(forKey: index) else {
+            XCTFail("Expected pending audio request \(index)")
+            return
+        }
+
+        continuation.resume(returning: data)
     }
 }
 

@@ -2,12 +2,136 @@ import AVFoundation
 import Combine
 import Foundation
 
+struct DailyKanjiRemoteAudioCache {
+    private struct Entry {
+        let data: Data
+        let accessOrder: UInt64
+    }
+
+    let maximumEntryCount: Int
+    let maximumByteCount: Int
+
+    private var entries: [URL: Entry] = [:]
+    private var nextAccessOrder: UInt64 = 0
+    private(set) var byteCount = 0
+
+    init(maximumEntryCount: Int = 8, maximumByteCount: Int = 16 * 1_024 * 1_024) {
+        self.maximumEntryCount = max(maximumEntryCount, 0)
+        self.maximumByteCount = max(maximumByteCount, 0)
+    }
+
+    var count: Int {
+        entries.count
+    }
+
+    var urlsInLeastRecentlyUsedOrder: [URL] {
+        entries.sorted { lhs, rhs in
+            if lhs.value.accessOrder != rhs.value.accessOrder {
+                return lhs.value.accessOrder < rhs.value.accessOrder
+            }
+            return lhs.key.absoluteString < rhs.key.absoluteString
+        }.map(\.key)
+    }
+
+    func contains(_ url: URL) -> Bool {
+        entries[url] != nil
+    }
+
+    mutating func data(for url: URL) -> Data? {
+        guard let entry = entries[url] else {
+            return nil
+        }
+
+        nextAccessOrder &+= 1
+        entries[url] = Entry(data: entry.data, accessOrder: nextAccessOrder)
+        return entry.data
+    }
+
+    @discardableResult
+    mutating func insert(_ data: Data, for url: URL) -> Bool {
+        removeData(for: url)
+        guard
+            maximumEntryCount > 0,
+            maximumByteCount > 0,
+            !data.isEmpty,
+            data.count <= maximumByteCount
+        else {
+            return false
+        }
+
+        nextAccessOrder &+= 1
+        entries[url] = Entry(data: data, accessOrder: nextAccessOrder)
+        byteCount += data.count
+        evictIfNeeded()
+        return entries[url] != nil
+    }
+
+    mutating func removeData(for url: URL) {
+        guard let removedEntry = entries.removeValue(forKey: url) else {
+            return
+        }
+
+        byteCount -= removedEntry.data.count
+    }
+
+    private mutating func evictIfNeeded() {
+        while entries.count > maximumEntryCount || byteCount > maximumByteCount {
+            guard let oldestURL = urlsInLeastRecentlyUsedOrder.first else {
+                return
+            }
+            removeData(for: oldestURL)
+        }
+    }
+}
+
+typealias DailyKanjiRemoteAudioLoading = @Sendable (URL) async throws -> Data
+
 @MainActor
 final class DailyKanjiAudioPlayer: ObservableObject {
     private var player: AVAudioPlayer?
     private var remotePlayer: AVPlayer?
-    private var cachedRemoteAudioData: [URL: Data] = [:]
-    private var preloadTasks: [URL: Task<Void, Never>] = [:]
+    private var remoteAudioCache: DailyKanjiRemoteAudioCache
+    private let remoteAudioLoader: DailyKanjiRemoteAudioLoading
+    private var preloadTask: Task<Void, Never>?
+    private var preloadURL: URL?
+    private var preloadRequestID: UUID?
+
+    init(
+        maximumRemoteCacheEntries: Int = 8,
+        maximumRemoteCacheBytes: Int = 16 * 1_024 * 1_024,
+        remoteAudioLoader: @escaping DailyKanjiRemoteAudioLoading = { url in
+            let (data, response) = try await URLSession.shared.data(from: url)
+            guard
+                let httpResponse = response as? HTTPURLResponse,
+                (200..<300).contains(httpResponse.statusCode)
+            else {
+                throw URLError(.badServerResponse)
+            }
+            return data
+        }
+    ) {
+        remoteAudioCache = DailyKanjiRemoteAudioCache(
+            maximumEntryCount: maximumRemoteCacheEntries,
+            maximumByteCount: maximumRemoteCacheBytes
+        )
+        self.remoteAudioLoader = remoteAudioLoader
+    }
+
+    var cachedRemoteAudioCount: Int {
+        remoteAudioCache.count
+    }
+
+    var cachedRemoteAudioByteCount: Int {
+        remoteAudioCache.byteCount
+    }
+
+    var cachedRemoteAudioURLsInLeastRecentlyUsedOrder: [URL] {
+        remoteAudioCache.urlsInLeastRecentlyUsedOrder
+    }
+
+    var activePreloadURL: URL? {
+        preloadURL
+    }
 
     func play(card: DailyKanjiCard) {
         guard let url = DailyKanjiAudioResource.url(for: card) else {
@@ -29,20 +153,24 @@ final class DailyKanjiAudioPlayer: ObservableObject {
     }
 
     private func playBundled(url: URL) {
+        stopPlayback()
         player = try? AVAudioPlayer(contentsOf: url)
         player?.prepareToPlay()
         player?.play()
     }
 
     func play(url: URL) {
-        remotePlayer = nil
+        stopPlayback()
 
-        if let data = cachedRemoteAudioData[url],
-           let audioPlayer = try? AVAudioPlayer(data: data) {
-            player = audioPlayer
-            player?.prepareToPlay()
-            player?.play()
-            return
+        if let data = remoteAudioCache.data(for: url) {
+            if let audioPlayer = try? AVAudioPlayer(data: data) {
+                player = audioPlayer
+                player?.prepareToPlay()
+                player?.play()
+                return
+            }
+
+            remoteAudioCache.removeData(for: url)
         }
 
         remotePlayer = AVPlayer(url: url)
@@ -51,33 +179,61 @@ final class DailyKanjiAudioPlayer: ObservableObject {
     }
 
     func preload(url: URL?) {
-        guard let url, cachedRemoteAudioData[url] == nil, preloadTasks[url] == nil else {
+        guard let url else {
+            cancelPreload()
             return
         }
 
-        preloadTasks[url] = Task { [weak self] in
+        guard preloadURL != url else {
+            return
+        }
+
+        cancelPreload()
+        guard !remoteAudioCache.contains(url) else {
+            return
+        }
+
+        let requestID = UUID()
+        let remoteAudioLoader = remoteAudioLoader
+        preloadURL = url
+        preloadRequestID = requestID
+        preloadTask = Task { @MainActor [weak self] in
             do {
-                let (data, response) = try await URLSession.shared.data(from: url)
+                let data = try await remoteAudioLoader(url)
                 guard
-                    let httpResponse = response as? HTTPURLResponse,
-                    (200..<300).contains(httpResponse.statusCode)
+                    let self,
+                    !Task.isCancelled,
+                    self.preloadRequestID == requestID,
+                    self.preloadURL == url
                 else {
-                    await MainActor.run {
-                        self?.preloadTasks[url] = nil
-                    }
                     return
                 }
 
-                await MainActor.run {
-                    self?.cachedRemoteAudioData[url] = data
-                    self?.preloadTasks[url] = nil
-                }
+                self.remoteAudioCache.insert(data, for: url)
+                self.clearPreload(requestID: requestID)
             } catch {
-                await MainActor.run {
-                    self?.preloadTasks[url] = nil
+                guard
+                    let self,
+                    self.preloadRequestID == requestID,
+                    self.preloadURL == url
+                else {
+                    return
                 }
+                self.clearPreload(requestID: requestID)
             }
         }
+    }
+
+    func stopPlayback() {
+        player?.stop()
+        player = nil
+        remotePlayer?.pause()
+        remotePlayer?.replaceCurrentItem(with: nil)
+        remotePlayer = nil
+    }
+
+    func waitForPendingPreload() async {
+        await preloadTask?.value
     }
 
     func hasBundledAudio(card: DailyKanjiCard) -> Bool {
@@ -90,6 +246,23 @@ final class DailyKanjiAudioPlayer: ObservableObject {
         }
 
         return DailyKanjiAudioResource.url(mediaSlug: mediaSlug, audioSrc: audioSrc) != nil
+    }
+
+    private func cancelPreload() {
+        preloadRequestID = nil
+        preloadURL = nil
+        preloadTask?.cancel()
+        preloadTask = nil
+    }
+
+    private func clearPreload(requestID: UUID) {
+        guard preloadRequestID == requestID else {
+            return
+        }
+
+        preloadRequestID = nil
+        preloadURL = nil
+        preloadTask = nil
     }
 }
 
